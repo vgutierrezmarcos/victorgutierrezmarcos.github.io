@@ -22,7 +22,9 @@ Qué hace:
   - En Word reparte el título en líneas de longitud parecida, como el PDF.
   - Muestra los minutos sin decimales (\minutos{2,5} y \tiempo{2,5} → 2′30″).
   - Cada gráfico lleva como texto alternativo (alt en HTML, descripción en
-    Word) el título de su figura; el texto en color va con clases CSS
+    Word) el título de su figura; los de \graficonota, la primera frase de
+    la nota; los de una celda de tabla, el texto de la celda o de la cabecera
+    de su columna, y si no, su nombre (alt_imagenes); el texto en color va con clases CSS
     (.tcee-verde…) para que el tema oscuro pueda aclararlo; las celdas con
     fondo, con clases .celda-…; \findemo (∎) a la derecha.
   - Numera los apartados a partir del nivel del primer título (en HTML van
@@ -124,10 +126,100 @@ local function ruta_grafico(src)
   return graficos_html .. '/' .. nombre
 end
 
+-- Texto alternativo -------------------------------------------------------------
+-- Las fórmulas, legibles en el alt: sin órdenes de LaTeX (\overline{q}=q^* → q=q*)
+local GRIEGAS = {
+  alpha = 'α', beta = 'β', gamma = 'γ', delta = 'δ', epsilon = 'ε', varepsilon = 'ε', theta = 'θ',
+  lambda = 'λ', mu = 'μ', pi = 'π', rho = 'ρ', sigma = 'σ', tau = 'τ', xi = 'ξ', omega = 'ω',
+  Delta = 'Δ', Pi = 'Π', Sigma = 'Σ', partial = '∂', sum = 'Σ', leq = '≤', geq = '≥', le = '≤',
+  ge = '≥', neq = '≠', times = '×', cdot = '·', infty = '∞', ['in'] = '∈', to = '→',
+}
+local function limpiar_tex(t)
+  t = t:gsub('\\frac%s*(%b{})%s*(%b{})', '%1/%2')
+  t = t:gsub('\\[,;:! ]', ' '):gsub('\\(%a+)', function(w) return GRIEGAS[w] or '' end)
+  t = t:gsub('[{}]', ''):gsub('[_^]', ''):gsub('%s+', ' ')
+  return t
+end
+
+local function texto_alt(x)
+  local limpio = x:walk({
+    Math = function(m) return pandoc.Str(limpiar_tex(m.text)) end,
+    Image = function() return {} end,
+    Note = function() return {} end,
+  })
+  return (pandoc.utils.stringify(limpio):gsub('%s+', ' '):gsub('^ ', ''):gsub(' $', ''))
+end
+
+-- Primera frase de un texto, como mucho unos 160 caracteres (sin cortar palabras)
+local function frase_corta(t)
+  local frase = (t:match('^(.-[%.:;])%s') or t):gsub('[:;]$', '')
+  if utf8.len(frase) and utf8.len(frase) > 160 then
+    local corte = utf8.offset(frase, 161)
+    frase = frase:sub(1, corte - 1):gsub('%s+%S*$', '') .. '…'
+  end
+  return frase
+end
+
+local function sin_alt(im)
+  local c = pandoc.utils.stringify(im.caption)
+  return c == '' or c == 'image'
+end
+
+local function poner_alt(bloques, texto)
+  if texto == '' then return bloques end
+  return bloques:walk({ Image = function(im)
+    if sin_alt(im) then
+      im.caption = pandoc.Inlines({ pandoc.Str(texto) })
+      return im
+    end
+  end })
+end
+
+-- Toda imagen lleva texto alternativo (alt en HTML, descripción en Word). Las de
+-- las figuras lo toman del título (procesar); aquí, las demás:
+--   - \graficonota: «Gráfico de la nota: » y la primera frase de la nota;
+--   - un gráfico en una celda de tabla: el texto de la celda o, si no tiene, el
+--     de la cabecera de su columna;
+--   - y si no hay nada de eso (Image), el nombre del gráfico.
+local function alt_imagenes(doc)
+  doc = doc:walk({ Note = function(n)
+    local texto = texto_alt(n.content)
+    if texto ~= '' then n.content = poner_alt(n.content, 'Gráfico de la nota: ' .. frase_corta(texto)) end
+    return n
+  end })
+  return doc:walk({ Table = function(t)
+    local cabecera = {}
+    for _, fila in ipairs(t.head.rows) do
+      local col = 1
+      for _, celda in ipairs(fila.cells) do
+        local texto = texto_alt(celda.contents)
+        if texto ~= '' then cabecera[col] = texto end
+        col = col + (celda.col_span or 1)
+      end
+    end
+    local function filas(lista)
+      for _, fila in ipairs(lista) do
+        local col = 1
+        for _, celda in ipairs(fila.cells) do
+          local texto = texto_alt(celda.contents)
+          if texto == '' then texto = cabecera[col] or '' end
+          if texto ~= '' then celda.contents = poner_alt(celda.contents, 'Gráfico: ' .. frase_corta(texto)) end
+          col = col + (celda.col_span or 1)
+        end
+      end
+    end
+    for _, cuerpo in ipairs(t.bodies) do filas(cuerpo.body) end
+    return t
+  end })
+end
+
 local function Image(img)
+  local original = img.src
   img.src = ruta_grafico(img.src)
-  if #img.caption == 1 and pandoc.utils.stringify(img.caption) == 'image' then
-    img.caption = {}
+  if sin_alt(img) then
+    -- Sin título ni texto alrededor: el nombre del gráfico (curva-de-oferta → curva de oferta)
+    local nombre = original:gsub('^.*[/\\]', ''):gsub('%.%w+$', ''):gsub('[-_]', ' ')
+    img.caption = pandoc.Inlines({ pandoc.Str('Gráfico: ' .. nombre) })
   end
   if not es_docx then img.attributes['loading'] = 'lazy' end
   return img
@@ -206,6 +298,25 @@ local function Span(s)
   return s
 end
 
+-- ∎ en la web: va flotando a la derecha (tema.css). El «~» de «…texto.~\findemo»
+-- deja un espacio duro que lo pega a la última palabra, y entonces el navegador
+-- lo baja a otra línea y lo saca del párrafo: se cambia por un espacio normal,
+-- y así queda al final de la última línea, como en el PDF.
+local function espacio_findemo(inl)
+  local cambiado = false
+  for i = 2, #inl do
+    local el, prev = inl[i], inl[i - 1]
+    if el.t == 'Span' and el.classes:includes('findemo') then
+      if prev.t == 'Str' and prev.text:match('\u{a0}$') then
+        prev.text = prev.text:gsub('\u{a0}$', '')
+        if prev.text == '' then inl[i - 1] = pandoc.Space() else inl:insert(i, pandoc.Space()) end
+        cambiado = true
+      end
+    end
+  end
+  if cambiado then return inl end
+end
+
 -- Tablas: marcas que deja construir-tema.py (celdas combinadas, saltos, fondos)
 local function marcas_celda(celda)
   local filas, fondo, fondo_fila = nil, nil, nil
@@ -235,6 +346,13 @@ local function pintar_celda(celda, color)
     local bloques = pandoc.List()
     for _, b in ipairs(celda.contents) do
       bloques:insert(b.t == 'Plain' and pandoc.Para(b.content) or b)
+    end
+    -- Una celda vacía (la esquina de una fila con \rowcolor) también lleva el
+    -- estilo, para que salga sombreada como las demás
+    -- (pandoc escribe un párrafo vacío sin estilo: se le pone un texto vacío)
+    if pandoc.utils.stringify(bloques) == '' and #pandoc.List(bloques):filter(function(b)
+        return b.t ~= 'Para' and b.t ~= 'Plain' end) == 0 then
+      bloques = pandoc.List({ pandoc.Para({ pandoc.RawInline('openxml', '<w:r><w:t></w:t></w:r>') }) })
     end
     celda.contents = { pandoc.Div(bloques, pandoc.Attr('', {}, { ['custom-style'] = 'Celda ' .. color })) }
   else
@@ -435,15 +553,7 @@ function Pandoc(doc)
           cap.content:insert(1, pandoc.Span({ pandoc.Str(etiqueta) }, pandoc.Attr('', { 'etiqueta' })))
         end
         -- Texto alternativo del gráfico (alt en HTML, descripción en Word): el título de la figura
-        local alt = pandoc.utils.stringify(b.caption.long)
-        if alt ~= '' then
-          b.content = b.content:walk({ Image = function(im)
-            if #im.caption == 0 or pandoc.utils.stringify(im.caption) == 'image' then
-              im.caption = pandoc.Inlines({ pandoc.Str(alt) })
-              return im
-            end
-          end })
-        end
+        b.content = poner_alt(b.content, texto_alt(b.caption.long))
         b.content = separar_fuente(b.content)
         if es_docx then
           -- Word no conserva bloques extra dentro de la figura: la fuente va justo después
@@ -555,7 +665,9 @@ function Pandoc(doc)
   end
   if es_docx then doc = numerar_enumerate(doc) end
   doc = doc:walk({ Table = Table })
+  doc = alt_imagenes(doc)
   doc = doc:walk({ Image = Image, Span = Span, Link = Link })
+  if not es_docx then doc = doc:walk({ Inlines = espacio_findemo }) end
   -- La ancla de la bibliografía en castellano también en los enlaces
   return doc:walk({ Link = function(l)
     if l.target == '#bibliography' then l.target = '#bibliografia'; return l end

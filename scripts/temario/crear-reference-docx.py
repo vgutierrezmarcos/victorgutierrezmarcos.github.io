@@ -262,14 +262,16 @@ def main():
         ref = estilos.add_style('Referencia a tema', WD_STYLE_TYPE.CHARACTER)
     ref.font.color.rgb = GRIS
     # Celdas con fondo de las tablas de clasificación (\cellcolor, \rowcolor):
-    # un estilo por cada color de tcee-comun.sty (los oscuros, con texto blanco)
+    # un estilo por cada color de tcee-comun.sty (los oscuros, con texto blanco).
+    # La letra, del mismo tamaño que la del resto de la tabla (Compact, 11 pt):
+    # con 10 pt, la fila de cabecera sombreada (\rowcolor) salía más pequeña
     claros = (('tceesalvia', 'E2EFD9'), ('tceeazulpalido', 'DDEBF7'), ('tceesalmon', 'FBE4D5'),
               ('tceemoradopalido', 'F3EEF7'), ('tceegrisclaro', 'E7E6E6'), ('tceecrema', 'FAF9F6'))
     oscuros = (('tceemorado', '5F2987'), ('tceeverde', '3C7D3A'), ('tceeazul', '1F5F99'), ('tceerojo', 'B22222'),
                ('tceedorado', 'B8860B'), ('tceenaranja', 'E07B28'), ('tceegris', '767171'))
     for color, rgb in claros + oscuros:
         celda = estilo_parrafo(doc, f'Celda {color}')
-        fuente(celda, tam=10, color=RGBColor(0xFF, 0xFF, 0xFF) if (color, rgb) in oscuros else None)
+        fuente(celda, tam=11, color=RGBColor(0xFF, 0xFF, 0xFF) if (color, rgb) in oscuros else None)
         celda.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
         celda.paragraph_format.space_after = Pt(0)
         sombreado(celda.element.get_or_add_pPr(), rgb)

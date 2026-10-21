@@ -920,6 +920,7 @@ def filas_docx(partes):
         r'<w:style [^>]*w:styleId="(Celda\w+)"[^>]*>(?:(?!</w:style>).)*?<w:shd [^>]*w:fill="([0-9A-Fa-f]{6})"', estilos, re.S)}
     xml = re.sub(r'<w:tr>(?!<w:trPr>)', '<w:tr><w:trPr><w:cantSplit /></w:trPr>', xml)
     xml = re.sub(r'<w:trPr>(?!<w:cantSplit)', '<w:trPr><w:cantSplit />', xml)
+    xml = cabecera_con_tabla_docx(xml)
 
     def celda(m):
         tc = m.group(0)
@@ -939,6 +940,45 @@ def filas_docx(partes):
     # Solo las celdas más internas (sin otra tabla dentro)
     xml = re.sub(r'<w:tc>(?:(?!</?w:tc>).)*</w:tc>', celda, xml, flags=re.S)
     partes['word/document.xml'] = xml.encode('utf-8')
+
+
+def cabecera_con_tabla_docx(xml):
+    """La fila de cabecera de una tabla no se queda sola al pie de la página: sus
+    párrafos llevan «conservar con el siguiente» (w:keepNext), que en Word la une
+    a la primera fila del cuerpo. Es cabecera la fila marcada w:tblHeader o, si
+    la tabla no tiene ninguna, la primera fila si va entera sombreada (\\rowcolor,
+    estilos «Celda …»). El título de la tabla ya va unido a la cabecera (keepNext
+    del estilo Table Caption): título, cabecera y primera fila van juntos."""
+    def parrafo(p):
+        t = p.group(0)
+        if '<w:keepNext' in t:
+            return t
+        if '<w:pPr>' in t:
+            return re.sub(r'<w:pPr>((?:<w:pStyle [^>]*/>)?)', r'<w:pPr>\1<w:keepNext />', t, count=1)
+        if '<w:pPr />' in t:
+            return t.replace('<w:pPr />', '<w:pPr><w:keepNext /></w:pPr>', 1)
+        return re.sub(r'^(<w:p(?: [^>]*)?>)', r'\1<w:pPr><w:keepNext /></w:pPr>', t, count=1)
+
+    def sombreada(tr):
+        celdas = re.findall(r'<w:tc>.*?</w:tc>', tr, re.S)
+        llenas = [c for c in celdas if re.search(r'<w:t[ >]', c)]      # una celda vacía no cuenta
+        return bool(llenas) and all('<w:pStyle w:val="Celda' in c for c in llenas)
+
+    def tabla(m):
+        t = m.group(0)
+        filas = list(re.finditer(r'<w:tr>.*?</w:tr>', t, re.S))
+        if len(filas) < 2:
+            return t
+        cabecera = [f for f in filas if '<w:tblHeader' in f.group(0)]
+        if not cabecera and sombreada(filas[0].group(0)):
+            cabecera = [filas[0]]
+        nuevo, pos = '', 0
+        for f in cabecera:
+            nuevo += t[pos:f.start()] + _PARRAFO.sub(parrafo, f.group(0))
+            pos = f.end()
+        return nuevo + t[pos:]
+    # Solo las tablas más internas (sin otra tabla dentro)
+    return re.sub(r'<w:tbl>(?:(?!<w:tbl>).)*?</w:tbl>', tabla, xml, flags=re.S)
 
 
 ESTILOS_CAJA_DOCX = ('Esquema', 'Notaalopositor', 'Cajadeanotaciones', 'Ideaclave', 'Funcionclave')

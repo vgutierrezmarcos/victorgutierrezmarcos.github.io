@@ -310,5 +310,8 @@
 .celda-tceedorado { background: #B8860B; color: #fff; }
 .celda-tceenaranja { background: #E07B28; color: #fff; }
 .celda-tceegris { background: #767171; color: #fff; }
-/* ∎ de fin de demostración, a la derecha como en el PDF */
+/* ∎ de fin de demostración, a la derecha como en el PDF: al final de la última
+   línea si cabe y, si no, en una línea propia, siempre dentro de su párrafo
+   (flow-root), sin bajar al punto siguiente */
 .tema-documento .findemo { float: right; color: var(--color-primary); margin-left: 1em; }
+.tema-documento p:has(> .findemo) { display: flow-root; }

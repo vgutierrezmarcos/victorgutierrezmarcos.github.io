@@ -74,6 +74,17 @@ Víctor revisó el tema el 20/10/2026 y pidió hacerlo «para cantarse». Se hiz
 
 Errores de las referencias de otros preparadores (no publicables; no afectan al texto): ICEX-CECO fecha el concepto de Nash en 1954 (es 1950-1951), escribe «Roshental» y da las páginas de Asker (2010) como «724-62»; Tebar llama «amenazas creíbles (gatillo)» al ejemplo de Cortés, mezcla el maximin de Wald con el minimax de von Neumann y define mal el jugador nulo (C42, C43).
 
+Verificación de datos del 22/10/2026 (`_trabajo/verificacion-21oct.md`; las 13 afirmaciones del anexo de clásicos sobre el 3G y la subasta alemana de 1999 son correctas salvo la cita de la tabla):
+
+| Dónde | Decía | Dice ahora |
+|---|---|---|
+| Tabla `tab:subastas-3g`, fuente (C1) | «Klemperer (2002), tabla 1» con el artículo del *JEP*, que no tiene tablas | Tabla 1 de Klemperer (2002), «How (Not) to Run Auctions», *European Economic Review* 46(4-5), 829-845 (entrada nueva `Klemperer2002HowNot` en `3A14.bib`), junto al *JEP* y Binmore y Klemperer (2002) |
+| Tabla `tab:subastas-3g`, fila de Alemania (C2) | «más pujadores que licencias» | 7 pujadores para entre 4 y 6 licencias, en el primer diseño de ese tipo; Deutsche Telekom subió el precio antes de aceptar 6 ganadores (EER, sec. 4.1 y 7.1) |
+| Tabla `tab:subasta-alemana`, ronda 1 (C3) | Solo puja Mannesmann | «Mannesmann (T-Mobil puja menos)»: en la ronda 1 T-Mobil también pujó, por debajo (*JEP*, pp. 170-171) |
+| Anexo de clásicos, 3G (opcional de C1) | `\parencite{Klemperer2002WhatReallyMatters}` | Con página: p. 169 del *JEP* |
+
+La ficha de repaso no cambia: solo da las cifras por habitante, que son correctas.
+
 ## Marcas resueltas
 
 El Word de partida no tiene marcas amarillas, texto en rojo, texto oculto, comentarios, «Nota al opositor» ni «No cantar» (`pendientes.md`, A y B). Lo único asimilable:
@@ -102,6 +113,7 @@ No había datos en el Word salvo la conclusión del Nobel (V1-V7). Todos los dat
 | REER: primera subasta | — | 3.034 MW de 9.700 ofertados; 24,47 y 25,31 €/MWh | MITECO, 26/01/2021 | https://www.miteco.gob.es/es/prensa/210126resultadosprimerasubastaderenovablesd_tcm30-522089.pdf | 19/10/2026 | Nota del MITECO de 23/11/2022 (acumulados) (V41) |
 | REER: cuarta subasta | — | 45,5 de 3.300 MW (precio de reserva) | MITECO, 23/11/2022 | https://www.miteco.gob.es/es/prensa/221123_ndpelmitecocelebralacuartasubastadeasignacionderegimeneconomicodeenergiasrenovables_tcm30-548346.pdf | 19/10/2026 | Prensa sectorial (≈50 MW como avance) (V42) |
 | 3G de 2000 por habitante | — | RU y Alemania > 600 €; Países Bajos 170, Austria 100, Italia 240, Suiza 20 | Klemperer (2002), *JEP* | https://doi.org/10.1257/0895330027166 | 19/10/2026 | Comprobado por contenido en el artículo y en una conferencia del autor (C20) |
+| 3G de 2000, tabla por habitante | fuente: tabla 1 del *JEP* | RU 650, Alemania 615, Países Bajos 170, Suiza 20 (sin cambios); fuente: tabla 1 del *EER* | Klemperer (2002), *European Economic Review* 46(4-5) | https://doi.org/10.1016/S0014-2921(01)00218-5 | 22/10/2026 | Resumen del EER (20 a 650 €) y *JEP*, p. 169 |
 | Sanción a constructoras | — | 203,6 M€, 6 empresas, 25 años (julio de 2022) | CNMC, nota de prensa | https://www.cnmc.es/prensa/sancionador-obra-civil-20220707 | 19/10/2026 | Prensa (C20); la resolución está recurrida: el texto no dice que sea firme |
 | Derechos de emisión de la UE | — | ronda única, sobre cerrado, precio uniforme | Reglamento Delegado (UE) 2023/2830, considerando 13 | https://www.boe.es/doue/2023/2830/L00001-00056.pdf | 19/10/2026 | Considerando 13 en la versión española (boe.es/doue): «en una sola ronda, en oferta sellada y en formato de precio uniforme» (V45 cerrada) |
 

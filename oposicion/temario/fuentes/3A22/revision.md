@@ -61,6 +61,14 @@ Revisión del 21/10/2026 (/revisartema, fase 3, integración), en 2 tandas: la p
 | Conclusión | Relevancia, Extensiones y Opinión vacías; «CONCLUSI**Ó**N» | Completas (C20, K10) |
 | Bibliografía | Temas de ICEX-CECO, A. Sahuquillo y J. L. Cordero | Quitados: solo obras originales y manuales (P54) |
 
+Verificación de datos del 22/10/2026 (`_trabajo/verificacion-21oct.md`; 9 afirmaciones de la evidencia empírica del 1TFEB, 8 correctas):
+
+| Dónde | Decía | Dice ahora |
+|---|---|---|
+| II.1 (1TFEB), d) Evidencia empírica, Smith (1962) (D1) | «convergen en pocas rondas [...] y se aprovecha casi todo el excedente posible» (Smith mide la convergencia de los precios, no la eficiencia) | «convergen en pocos periodos de negociación [...], siempre que no haya colusión y todas las pujas sean públicas» (Smith, 1962, p. 134, conclusión 1) |
+
+No se aplica D2 (atribuir la eficiencia casi del 100 % también a los mercados con personas de Gode y Sunder): solo se ha podido leer el resumen del artículo, que lo afirma de los programas con restricción; la frase de Gode y Sunder se queda como estaba. La ficha de repaso no cambia: no decía nada del excedente.
+
 ## Marcas resueltas
 
 | Marca | Texto original | Qué se hizo |
