@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/calendario.dart';
+import '../../core/cronograma_providers.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
@@ -36,7 +37,7 @@ class CantePage extends ConsumerWidget {
     final temario = ref.watch(temarioProvider).valueOrNull;
     final ajustes = ref.watch(ajustesProvider);
     final agendas = ref.watch(agendasProvider);
-    final temas = temario == null ? const <Tema>[] : temasDeCante(c, temario, ajustes);
+    final temas = temario == null ? const <Tema>[] : temasDeCante(c, temario, ajustes, cronograma: ref.watch(cronogramaProvider));
     final conApuntes = [for (final t in temas) if ((agendas[t.codigo]?.pendientes ?? const []).isNotEmpty) t];
     final r = c.resultado;
     final notifier = ref.read(cantesProvider.notifier);
@@ -318,8 +319,8 @@ class CantePage extends ConsumerWidget {
                 icon: const Icon(Icons.draw_outlined, size: 18),
                 label: const Text('Pizarra compartida'),
               ),
-              // Las notas que el preparador escribió en la clase, cuando las comparte y la clase ha pasado.
-              if (c.notasCompartidas && c.terminada)
+              // Las notas que el preparador escribió en la clase, en cuanto las comparte.
+              if (c.notasCompartidas)
                 OutlinedButton.icon(
                   onPressed: () => abrirNotas(
                     context,

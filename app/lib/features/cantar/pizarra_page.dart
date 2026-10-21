@@ -81,7 +81,7 @@ class PizarraPage extends ConsumerStatefulWidget {
 
   /// Las notas del preparador de una clase: una segunda pizarra, igual que
   /// la compartida, que solo escribe el preparador y que el alumno ve (sin
-  /// tocarla) cuando el preparador la comparte y la clase ha terminado.
+  /// tocarla) en cuanto el preparador la comparte.
   const PizarraPage.notas({super.key, required this.alumnoUid, required this.canteId, required this.preparadorUid, required this.otroNombre, required this.soloLectura, this.alCompartir, this.etiqueta = '', this.db, @visibleForTesting this.fuente})
       : individual = false,
         notas = true,
@@ -1221,7 +1221,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     try {
       await pizarra.ponerEnTodas({'visible': v});
       await widget.alCompartir?.call(v);
-      if (mounted) setState(() => _avisar(v ? 'Compartidas: ${widget.otroNombre} las verá cuando acabe la clase' : 'Ya no se comparten'));
+      if (mounted) setState(() => _avisar(v ? 'Compartidas: ${widget.otroNombre} ya las ve en su clase' : 'Ya no se comparten'));
     } catch (_) {
       if (mounted) {
         setState(() {
@@ -1672,7 +1672,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               else if (widget.notas)
                 // Las notas: solo las escribe el preparador; el chip las comparte.
                 Tooltip(
-                  message: 'El alumno las ve cuando las compartes y la clase ha terminado',
+                  message: 'El alumno las ve en cuanto las compartes',
                   child: FilterChip(
                     label: Text(_compartida ? 'Compartidas con ${widget.otroNombre}' : 'Compartir con ${widget.otroNombre}', style: const TextStyle(fontSize: 12)),
                     avatar: Icon(_compartida ? Icons.visibility_outlined : Icons.visibility_off_outlined, size: 16),

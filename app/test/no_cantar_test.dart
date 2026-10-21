@@ -44,6 +44,21 @@ void main() {
     expect(c.temasLlevados(DateTime(2026, 10, 4)), {'3.A.5'});
   });
 
+  test('en una clase del preparador, el alumno ve la misma bolsa que él: estudiados más cronograma, sin los que pide no cantar', () {
+    final cronograma = Cronograma(
+      id: 'c',
+      ejercicio: 3,
+      temas: const ['3.A.1', '3.A.2', '3.A.3'],
+      inicio: DateTime(2020, 1, 6),
+      diaCante: 3,
+      semanas: [SemanaPlan(lunes: DateTime(2020, 1, 6), temas: const ['3.A.1', '3.A.2']), SemanaPlan(lunes: DateTime(2099, 1, 4), temas: const ['3.A.3'])],
+      hechos: const {},
+    );
+    final ajustes = Ajustes(temasEstudiados: const {'3.A.5', '3.A.2'}, noCantar: {'3.A.2': DateTime(2026, 10, 21)});
+    expect(temasQueLleva(ajustes, cronograma), {'3.A.1', '3.A.5'});
+    expect(temasQueLleva(ajustes, null), {'3.A.5'});
+  });
+
   test('el próximo día de la semana para la clase, nunca el mismo día', () {
     final miercoles = DateTime(2026, 10, 21, 11);
     expect(proximoDiaDeSemana(miercoles, 3), DateTime(2026, 10, 28, 17));

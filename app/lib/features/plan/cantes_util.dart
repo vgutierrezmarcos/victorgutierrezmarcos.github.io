@@ -1,24 +1,37 @@
 import 'package:intl/intl.dart';
 
 import '../../core/calendario.dart';
+import '../../data/models/cronograma.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../data/repos/usuario_repo.dart';
 
 /// Temas que entran en el sorteo de un cante según su tipo de bolsa.
-List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes) {
+///
+/// En una clase del preparador, «los estudiados» son los temas que lleva el
+/// alumno tal como los ve el preparador (`PreparadorRepo.progreso`): los
+/// marcados como estudiados más los del [cronograma] (hechos y semanas ya
+/// empezadas), sin los que ha pedido no cantar. Así los dos ven la misma
+/// bolsa.
+List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes, {Cronograma? cronograma}) {
   final oposicion = Oposiciones.actual;
   // Dictamen (1.º de TCEE): se canta sin temas.
   if (oposicion.esDictamen(c.ejercicio)) return const [];
   final ejercicios = oposicion.ejerciciosDeBolsa(c.ejercicio);
   bool delEjercicio(Tema t) => ejercicios.contains(t.ejercicio);
+  final estudiados = c.dePreparador ? temasQueLleva(ajustes, cronograma) : ajustes.temasEstudiados;
   return switch (c.bolsa) {
     TipoBolsa.lista => [for (final codigo in c.temas) if (temario.tema(codigo) != null) temario.tema(codigo)!],
-    TipoBolsa.estudiados => temario.todosLosTemas.where((t) => delEjercicio(t) && ajustes.temasEstudiados.contains(t.codigo)).toList(),
+    TipoBolsa.estudiados => temario.todosLosTemas.where((t) => delEjercicio(t) && estudiados.contains(t.codigo)).toList(),
     TipoBolsa.ejercicio => temario.todosLosTemas.where(delEjercicio).toList(),
   };
 }
+
+/// Los temas que lleva el opositor para las clases: estudiados más los del
+/// cronograma hasta hoy, sin los que pide no cantar (lo mismo que calcula el
+/// preparador en su ficha).
+Set<String> temasQueLleva(Ajustes ajustes, Cronograma? cronograma) => {...ajustes.temasEstudiados, ...?cronograma?.temasLlevados(DateTime.now())}..removeAll(ajustes.noCantar.keys);
 
 /// «Tercer ejercicio» (0: «3.º y 4.º ejercicio»).
 String nombreEjercicio(int ejercicio) => Oposiciones.actual.nombreEjercicio(ejercicio);

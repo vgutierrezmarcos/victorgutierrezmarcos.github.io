@@ -180,7 +180,7 @@ class Cante {
   final String id;
 
   /// El preparador ha compartido con el alumno sus notas de la clase (su
-  /// segunda pizarra); el alumno las ve cuando la clase ha terminado.
+  /// segunda pizarra): el alumno las ve en cuanto las comparte.
   final bool notasCompartidas;
 
   /// La clase ya ha pasado (o se dio por hecha).
