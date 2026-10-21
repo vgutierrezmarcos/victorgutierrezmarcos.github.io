@@ -8,7 +8,7 @@ Revisión del 21/10/2026 (/revisartema, fase 3, integración), en 2 tandas: la p
 - Estructura de `propuestas-coherencia.md` (§ 5). Minutos (ajustados el 21/10/2026 al añadir el equilibrio general competitivo al 1TFEB): introducción 2′30″; I, 9′30″ (I.1, 1′; I.2, 6′30″; I.3, 2′); II, 10′ (II.1, 5′30″; II.2, 4′30″); III, 7′ (III.1, 3′; III.2, 1′30″; III.3, 1′30″; III.4, 1′); a petición de Víctor, 1′30″ más al I y menos al III; conclusión, 1′. Total, 30′.
 - Bloque I: supuestos del 2×2×2×2 corregidos (como el 3.A.21), problemas de eficiencia con multiplicadores positivos, **un solo problema del planificador** con precios sombra que da las 3 condiciones (`\funcionclave`), FPP, FPU, GFPU, la FBS en mención y la valoración del criterio sin repeticiones.
 - Bloque II: equilibrio de referencia, **1TFEB** (tabla de 5 supuestos, condiciones marginales, tabla planificador/mercado, prueba por reducción al absurdo) y **2TFEB** (supuestos con convexidad y condición de renta, intuición en la caja, demostración con el hiperplano separador, límites y soluciones), con estructura a)-c).
-- Bloque III: teoría del *second best* con a)-c) (restricción no trivial, origen de la distorsión, resultado general con $\psi\neq1$, gráfico en la GFPU con F, P, Q, montaña, Davis-Whinston, Diamond-Mirrlees, Bhagwati-Ramaswami), aplicaciones rehechas, apartado nuevo de información y diseño de mecanismos (tabla `tab:mecanismos`) y valoración con la frase de Joan Robinson (A22-02, opción a). Conclusión con sus 5 bloques; la idea final retoma el refrán.
+- Bloque III: teoría del *second best* con a)-c) (restricción no trivial, origen de la distorsión, resultado general con $\psi\neq1$, gráfico en la GFPU con F, P, Q, montaña, Davis-Whinston, Diamond-Mirrlees, Bhagwati-Ramaswami), aplicaciones rehechas, apartado nuevo de información y diseño de mecanismos (tabla `tab:mecanismos`) y valoración (sin la frase de Joan Robinson, que Víctor reserva para otro tema). Conclusión con sus 5 bloques; la idea final retoma el refrán «No hay mal que por bien no venga».
 - Anexos: criterios de compensación (bloque 2 del Word, redactado de nuevo y corregido), curvas de contrato especiales, planificador general (con la caja de Maté y Pérez transcrita), demostraciones, *second best* analítico, qué estudia cada tema del bloque y test con preguntas del tribunal.
 - Fuente nueva en LaTeX (`3A22.tex`), `3A22.bib` (106 entradas, base `bib-datos.bib`) y `seo.json`. Construido entero (PDF, web y Word) y `verificar-tema.py` sin errores: 25 págs. de tema, 12 de anexos y 4 de bibliografía. Hay 15 gráficos (2 reutilizados y 13 dibujados en TikZ), y el texto está ajustado a lo dibujado: rótulos $E=E_2$, $W_k$, $W^*$, $\vec{x}_A$, F, P y Q, los 9 casos de curvas de contrato y las letras de los gráficos de compensación.
 
@@ -118,14 +118,14 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 
 ## Contenido añadido
 
-- **Introducción** completa (C1, K8, K9, K12): refrán «Lo mejor es enemigo de lo bueno» con el MAFC como hecho actual; Pigou y Atkinson en la relevancia; contextualización corregida; problemática y estructura.
+- **Introducción** completa (C1, K8, K9, K12): refrán «No hay mal que por bien no venga» (decisión de Víctor; sustituye a «Lo mejor es enemigo de lo bueno») con el MAFC como hecho actual; Pigou y Atkinson en la relevancia; contextualización corregida; problemática y estructura.
 - **Esquema y nota al opositor** con el reparto de minutos (K9, C3).
 - **I.2**: supuestos del 2×2×2×2 como el 3.A.21 (C6); problemas de producción y consumo con multiplicadores positivos e interpretados (C7, C8); problema del planificador con precios sombra y las 3 condiciones como función clave (K11, C9); FBS en mención con el punto de felicidad y los puntos a-d (K18).
 - **I.3**: ventajas y críticas una sola vez (C11), Sen con su obra, Huerta de Soto para la eficiencia dinámica, viñeta de las respuestas a la incompletitud con remisión al anexo de compensación (K17).
 - **II**: equilibrio de referencia y transferencias de suma fija (C12); 1TFEB con tabla de supuestos (K21), condiciones en el 2×2×2×2, tabla planificador/mercado y prueba general en 5 pasos (C13); 2TFEB con condición de renta, demostración con el hiperplano separador (Minkowski), límites (información, convexidad, cálculo, multiplicidad) y soluciones (Ramsey, Mirrlees, Diamond-Mirrlees, Atkinson-Stiglitz, *tagging*) (C14, K25).
 - Fuentes nuevas: las de `bib-datos.bib` y, de las propuestas de contenido (C38), Minkowski (1911), Diamond y Mirrlees (1971), Atkinson y Stiglitz (1976), Akerlof (1978), Huerta de Soto (2004), UE (2023) y las que usará el bloque III.
 
-- **Bloque III**: teorema general con la notación de coherencia ($\psi$, $\lambda_1$, $\lambda_2$, $\Psi_k$; CC3-CC4) y el origen de la distorsión; aplicaciones con la fórmula del impuesto óptimo al monopolio contaminante ($t^*=\mathrm{CMgE}-p/\lvert\varepsilon\rvert$, Buchanan, 1969; Barnett, 1980), Corlett-Hague, Ramsey-Boiteux, monopolio natural impugnable y variedad óptima (K14); eficiencia restringida (Hart, 1975; Greenwald y Stiglitz, 1986), mecanismos en estrategias dominantes (VCG, Green-Laffont, Gibbard-Satterthwaite) y bayesianos (d'Aspremont-Gérard-Varet, Arrow, 1979; Myerson-Satterthwaite) con la tabla `tab:mecanismos` (K28); frase de Joan Robinson en la valoración.
+- **Bloque III**: teorema general con la notación de coherencia ($\psi$, $\lambda_1$, $\lambda_2$, $\Psi_k$; CC3-CC4) y el origen de la distorsión; aplicaciones con la fórmula del impuesto óptimo al monopolio contaminante ($t^*=\mathrm{CMgE}-p/\lvert\varepsilon\rvert$, Buchanan, 1969; Barnett, 1980), Corlett-Hague, Ramsey-Boiteux, monopolio natural impugnable y variedad óptima (K14); eficiencia restringida (Hart, 1975; Greenwald y Stiglitz, 1986), mecanismos en estrategias dominantes (VCG, Green-Laffont, Gibbard-Satterthwaite) y bayesianos (d'Aspremont-Gérard-Varet, Arrow, 1979; Myerson-Satterthwaite) con la tabla `tab:mecanismos` (K28); la frase de Joan Robinson se quitó de la valoración (decisión de Víctor).
 - **Anexos**: compensación con 2 tablas de cumplimiento pasadas a LaTeX desde las imágenes 7 y 8; planificador general (MWG § 16.F) y transcripción de la caja de Maté y Pérez Domínguez en 4 bloques A-D con la notación del tema; demostraciones paso a paso (MWG prop. 16.C.1, 16.D.1 y 16.D.2); *second best* analítico corregido.
 
 ### Estado de las propuestas (parte 1)
@@ -135,7 +135,7 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 | Propuesta | Estado |
 |---|---|
 | C1 | Aplicada, con la problemática y la estructura de coherencia (K8, K9) y la cita de Pigou y Atkinson de datos (V2, V3) |
-| C2 | Aplicado el refrán recomendado (decisión del coordinador); Robinson irá en la valoración del *second best* (parte 2) |
+| C2 | Aplicado el refrán recomendado (decisión del coordinador); después Víctor eligió «No hay mal que por bien no venga» y la frase de Robinson no va en este tema |
 | C3 | Aplicada con el texto de coherencia (K9) |
 | C4 | Aplicada la idea; título del bloque I el del Word («Óptimo económico. Criterio de Pareto»), como pide coherencia |
 | C5 | Aplicada; título del subapartado el del Word. Gravelle y Rees sin capítulo (no comprobado, duda de C5) |
@@ -192,14 +192,13 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 - El 1TFEB y el 2TFEB se desarrollan aquí (tema de referencia, ficha `teoremas-bienestar`); el 3.A.21 los resume (duplicado de la demostración del 1TFEB aceptado por Víctor el 17/10/2026).
 - Contradicciones con otros temas (no se tocan; ver `propuestas-coherencia.md` § 9): 3.A.23 y 3.A.24 sin revisar repiten el 2×2×2×2, las críticas de Pareto y atribuyen el 2TFEB al 3.A.24; `mapa.yaml` propone 3.B.7 para la industria naciente cuando es el 3.B.8.
 
-- Las conclusiones del 3.A.23 y del 3.A.24 no deben repetir el cierre de Pigou y Pareto ni el refrán «Lo mejor es enemigo de lo bueno».
+- Las conclusiones del 3.A.23 y del 3.A.24 no deben repetir el cierre de Pigou y Pareto ni el refrán «No hay mal que por bien no venga».
 - `mapa.yaml`: añadir al 3.A.22 los modelos `diseno-mecanismos`, `clarke-groves`, `gibbard-satterthwaite`, `industria-naciente` y `ramsey-boiteux`, y crear la ficha `criterios-compensacion` con el 3.A.22 (anexo) como tema de referencia (K33, CC1).
 
 ## Dudas abiertas
 
 - **Gode y Sunder (1993)** y **Smith (1962)**: referencias comprobadas en Crossref; el contenido («eficiencia casi completa», convergencia en pocas rondas) es el resultado conocido de los 2 artículos, sin cifra exacta ni página: no se ha leído el texto completo.
 
-- **Voltaire y el refrán** (nota del enganche): «*Le mieux est l'ennemi du bien*» en *La Bégueule* (1772). Es la atribución habitual, pero la fase de datos no la comprobó (K12 lo pedía). Si Víctor prefiere, se quita la nota.
 - **Gravelle y Rees** (juicios de valor): citados sin capítulo; los «4 juicios de valor» no se han podido comprobar en el libro (V49).
 - **Sen (1970)**: la frase del lujo y la inanición, sin página (V32).
 - **Maté y Pérez Domínguez (2007)**: la caja del planificador, sin capítulo; además hay 2 claves para el mismo libro en el temario (`MatePerez2007Microeconomia` y `MateGarciaPerezDominguez2007`): se usa la primera (V50).
@@ -207,7 +206,6 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 - **Minkowski (1911)** como referencia del teorema de separación: si Víctor prefiere no citarla, basta con el nombre del teorema.
 
 - **Cita de Pareto en la idea final**: va parafraseada y sin página. No se ha localizado el pasaje en el *Manuale* (V33).
-- **Frase de Joan Robinson**: la página 33 de *Essays in the Theory of Economic Growth* (1962) y la traducción salen de la propuesta (clave del 3.A.18); conviene comprobarla.
 - **Stiglitz (2002)**: «la mano invisible parece invisible porque no está», parafraseada sin comillas.
 - **Lipsey (2007)**: solo se ha visto su ficha; la frase que se le atribuye es prudente.
 - **Davis y Whinston (1965)**: referencia comprobada, contenido leído solo en fuentes secundarias (V25).
@@ -217,7 +215,7 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 
 - **Minutos nuevos** (21/10/2026): I, 8′; II, 10′ (II.1, 5′30″); III, 8′30″ (III.3, 2′). El guion y las escenas hay que ajustarlos.
 
-- **Enganche e idea final**: tras leer el título, «Lo mejor es enemigo de lo bueno», dice el refrán, y el MAFC como solución de segundo óptimo; pregunta: ¿asigna bien los recursos un mercado competitivo y, si una condición falla, conviene cumplir las demás? La idea final retoma el refrán: el bloque I define lo mejor, el II dice cuándo el mercado lo alcanza y el III qué es lo bueno cuando lo mejor no está al alcance. El refrán se apunta en la pizarra junto al *second best*.
+- **Enganche e idea final**: tras leer el título, «No hay mal que por bien no venga», dice el refrán (si una distorsión no se puede quitar, añadir otra puede mejorar), y el MAFC como solución de segundo óptimo; pregunta: ¿asigna bien los recursos un mercado competitivo y, si una condición falla, conviene cumplir las demás? La idea final retoma el refrán: una distorsión bien elegida puede compensar otra que no se puede quitar, pero solo quien sabe cuál es el óptimo sabe qué mal trae un bien. El refrán se apunta en la pizarra junto al *second best*.
 - **Introducción**: sin pizarra (modo guion).
 - **I.1**: definición en una línea en la pizarra; los 4 juicios de valor, como guion.
 - **I.2**:
@@ -243,13 +241,13 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 - **III.1**:
   - en la pizarra, la restricción $U_1/U_n=\psi\,T_1/T_n$ debajo de las 3 condiciones recuadradas, tachando la que rompe;
   - el enunciado del teorema de palabra (la fórmula con los $\Psi_k$, como apoyo);
-  - `second-best-gfpu` (**imprescindible**): GFPU y F; después la restricción; por último P y Q, diciendo que lo bueno (Q) no es lo más parecido a lo mejor (P). Se apunta el refrán al lado;
+  - `second-best-gfpu` (**imprescindible**): GFPU y F; después la restricción; por último P y Q, diciendo que el segundo óptimo (Q) no es lo más parecido al óptimo de Pareto (P). Se apunta el refrán al lado;
   - `montana-second-best` como boceto rápido (perfil, V, D, B, A y la flecha);
   - las extensiones, como guion.
 - **III.2**: lista de 4 palabras clave en la pizarra (unión aduanera, monopolio contaminante, industria naciente, Rodrik); la fórmula del impuesto óptimo $t^*$ solo si sobra tiempo (si no, como apoyo).
 - **III.3**: esquema «tipos → mensajes → resultado» con $\mathrm{IC}_i$ y $\mathrm{PC}_i$, y la tabla `tab:mecanismos` (**imprescindible**) en la pizarra, solo con las marcas sí/no; Hart y Greenwald-Stiglitz, de palabra.
-- **III.4**: de palabra, con la frase de Joan Robinson como cierre del bloque (apunte en la franja).
-- **Conclusión**: sin pizarra. Empieza por «En conclusión,» y termina con la idea final que retoma el refrán. Responde a la pregunta del enganche: el mercado asigna bien cuando se cumplen todas las condiciones, y cuando no, lo mejor es enemigo de lo bueno si se persigue a ciegas, pero sin saber cuál es lo mejor no se encuentra lo bueno.
+- **III.4**: de palabra (sin la frase de Joan Robinson).
+- **Conclusión**: sin pizarra. Empieza por «En conclusión,» y termina con la idea final que retoma el refrán. Responde a la pregunta del enganche: el mercado asigna bien cuando se cumplen todas las condiciones, y cuando no, no hay mal que por bien no venga: una distorsión bien elegida puede compensar otra que no se puede quitar, pero solo quien sabe cuál es el óptimo sabe qué mal trae un bien.
 - Los anexos no se cantan.
 
 ## Control de calidad (21/10/2026)
@@ -265,3 +263,10 @@ Correcciones aplicadas tras el control de calidad del coordinador:
   - en `caja-consumo-fpu`, los rótulos $U_B^1$ y $U_B^3$ intercambiados;
   - en `segundo-teorema-no-convexo`, los rótulos de A dentro de la caja y la flecha E′→$\vec{x}_A$ curvada por debajo de la curva de A.
 - Los 3 gráficos están recompilados con `--grafico` y revisados en PNG; el tema, construido entero y verificado sin errores.
+
+
+## Cambios tras las respuestas de Víctor (21/10/2026)
+
+- **Refrán**: «Lo mejor es enemigo de lo bueno» pasa a «No hay mal que por bien no venga». Va solo en el enganche (primer ítem: si una distorsión no se puede quitar, añadir otra puede mejorar; el CBAM, un gravamen al comercio que compensa que el carbono no tenga precio fuera de la UE, es el ejemplo) y en la idea final. Se quita la nota de Voltaire. El esquema de la introducción pasa a «Introducción: el CBAM, un segundo óptimo»; la frase de la estructura («Es el hilo del refrán…»), el punto P/Q del gráfico del *second best* y el recapitulando de III.1 se reescriben sin «lo mejor/lo bueno». El refrán no sale en ningún otro tema de `fuentes/`.
+- **Joan Robinson**: se quita «El mapa imposible» de la valoración del *second best*; la idea (un modelo con todas las interdependencias sería inmanejable) pasa a la viñeta de exigencia de información, y «trabajar con mapas a escala» pasa a «simplificar el problema sin perder las interdependencias que importan». `Robinson1962Essays` sale de `3A22.bib`.
+- **Ficha de repaso**: los mismos cambios (esquema, enganche, III.1, III.4, idea final) y la etiqueta «Hilo» pasa a «Idea que guía».
