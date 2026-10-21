@@ -9,6 +9,7 @@ import '../../core/providers.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/sincronizar.dart';
 import '../cantar/probabilidades.dart';
 import '../plan/cantes_util.dart';
 import '../temario/tema_page.dart';
@@ -56,7 +57,8 @@ class OrganizacionHubPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: const BarraWeb(title: Text('Organización'), conOposicion: true),
-      body: ListaAdaptable(
+      body: Refrescable(
+          child: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 6, 16, 32),
         children: [
           TituloSeccion(preparador ? 'La oposición' : 'Tu plan'),
@@ -161,7 +163,7 @@ class OrganizacionHubPage extends ConsumerWidget {
             ),
           ),
         ],
-      ),
+      )),
     );
   }
 }

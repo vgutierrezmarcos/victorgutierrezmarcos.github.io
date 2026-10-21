@@ -9,6 +9,7 @@ import '../core/constants.dart';
 import '../core/providers.dart';
 import '../theme/app_theme.dart';
 import 'boton_oposicion.dart';
+import 'sincronizar.dart';
 
 /// Pestañas internas de un bloque (Estudiar, Cantes): en blanco sobre la
 /// cabecera morada, con el indicador dorado.
@@ -28,7 +29,7 @@ TabBar barraPestanas(BuildContext context, {required TabController controller, r
 /// Cabecera de la web (.site-header): degradado morado, título centrado en
 /// blanco y serif, y la línea dorada al pie. Sustituye a AppBar en toda la app.
 class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
-  const BarraWeb({super.key, this.title, this.subtitulo, this.actions, this.leading, this.bottom, this.conTema = true, this.conOposicion = false});
+  const BarraWeb({super.key, this.title, this.subtitulo, this.actions, this.leading, this.bottom, this.conTema = true, this.conOposicion = false, this.conSincronizar});
 
   final Widget? title;
   /// Línea en cursiva bajo el título (.site-description).
@@ -41,6 +42,10 @@ class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
   /// Botón para cambiar de oposición arriba a la izquierda (en las cinco
   /// pestañas; en las demás pantallas ahí va la flecha de volver).
   final bool conOposicion;
+
+  /// Botón de sincronizar con la nube (solo con sesión). Por defecto, en las
+  /// mismas pantallas que el de la oposición: las pestañas principales.
+  final bool? conSincronizar;
 
   static const _altoLinea = 2.0;
 
@@ -55,7 +60,7 @@ class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
       data: tema.copyWith(textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: Colors.white, textStyle: tema.textTheme.labelLarge))),
       child: AppBar(
         leading: leading ?? (conOposicion ? const BotonOposicion() : null),
-        actions: [...?actions, if (conTema) const BotonTema()],
+        actions: [...?actions, if (conSincronizar ?? conOposicion) const BotonSincronizar(), if (conTema) const BotonTema()],
         title: subtitulo == null
             ? title
             : Column(mainAxisSize: MainAxisSize.min, children: [
@@ -631,7 +636,9 @@ class ListaAdaptable extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, c) {
       final ancho = c.maxWidth;
-      if (ancho < anchoDosColumnas) return ListView(padding: padding, children: children);
+      // Siempre desplazable, aunque sea corta: así deslizar hacia abajo sincroniza.
+      const fisica = AlwaysScrollableScrollPhysics();
+      if (ancho < anchoDosColumnas) return ListView(padding: padding, physics: fisica, children: children);
       final grupos = <List<Widget>>[];
       for (final w in children) {
         if (w is TituloSeccion || grupos.isEmpty) {
@@ -642,7 +649,7 @@ class ListaAdaptable extends StatelessWidget {
       }
       if (grupos.length < 2) {
         final lado = ((ancho - anchoLectura) / 2).clamp(padding.left, double.infinity);
-        return ListView(padding: padding.copyWith(left: lado, right: lado), children: children);
+        return ListView(padding: padding.copyWith(left: lado, right: lado), physics: fisica, children: children);
       }
       // Corte que deja las dos columnas lo más parejas posible (por número de piezas).
       final pesos = [for (final g in grupos) g.length + 1];
@@ -660,6 +667,7 @@ class ListaAdaptable extends StatelessWidget {
       final lado = ((ancho - 2000) / 2).clamp(padding.left + 8, double.infinity);
       return ListView(
         padding: padding.copyWith(left: lado, right: lado),
+        physics: fisica,
         children: [
           Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Expanded(child: columna(grupos.take(mejor))),

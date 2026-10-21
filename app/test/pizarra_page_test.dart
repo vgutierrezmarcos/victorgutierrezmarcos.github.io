@@ -5,10 +5,12 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/features/cantar/pizarra_compartida.dart';
 import 'package:tcee_app/features/cantar/pizarra_page.dart';
 import 'package:tcee_app/features/cantar/pizarra_registro.dart';
@@ -232,6 +234,30 @@ void main() {
     final g = await tester.createGesture(kind: PointerDeviceKind.stylus, pointer: 1);
     await letra(tester, g, _lienzo, const Duration(seconds: 1));
     expect(fuente.paginas.single.trazos.length, 1);
+  });
+
+  testWidgets('las notas con permiso de edición: al alumno le sale la paleta y dibuja, pero no crea ni elimina páginas', (tester) async {
+    tester.view.physicalSize = const Size(1200, 800);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final db = FakeFirebaseFirestore();
+    final prep = PizarraCompartida.notasDeClase(db, Oposiciones.tcee, preparadorUid: 'paula', alumnoUid: 'alu', canteId: 'c1', miUid: 'paula');
+    await prep.nuevaPagina(1);
+    await prep.ponerEnTodas({'visible': true, 'editable': true});
+    final alu = PizarraCompartida.notasDeClase(db, Oposiciones.tcee, preparadorUid: 'paula', alumnoUid: 'alu', canteId: 'c1', miUid: 'alu');
+    await tester.pumpWidget(ProviderScope(child: MaterialApp(home: PizarraPage.notas(alumnoUid: 'alu', canteId: 'c1', preparadorUid: 'paula', otroNombre: 'Paula', soloLectura: true, fuente: alu))));
+    await tester.pump(const Duration(milliseconds: 100));
+    await tester.pump(const Duration(milliseconds: 100));
+    expect(find.byTooltip('Bolígrafo'), findsOneWidget, reason: 'con permiso, la paleta de siempre');
+    expect(find.text('Notas de Paula'), findsNothing);
+    expect(find.byTooltip('Nueva página'), findsNothing, reason: 'las páginas las crea el preparador');
+    final g = await tester.createGesture(kind: PointerDeviceKind.stylus, pointer: 1);
+    await letra(tester, g, _lienzo, const Duration(seconds: 1));
+    await tester.pump(const Duration(milliseconds: 400));
+    final pagina = (await prep.escuchar().firstWhere((p) => p.isNotEmpty && p.first.trazos.isNotEmpty)).first;
+    expect(pagina.trazos.single.de, 'alu');
+    expect(pagina.editable, isTrue);
+    await tester.pump(const Duration(seconds: 1));
   });
 
   test('corte del trazo: solo con pausa y salto a la vez', () {

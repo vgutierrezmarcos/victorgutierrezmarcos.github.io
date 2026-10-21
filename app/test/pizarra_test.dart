@@ -317,7 +317,18 @@ void main() {
     expect(vistas.map((p) => p.n), [1, 2, 3]);
     expect(vistas.every((p) => p.visible), isTrue);
 
-    await prep.ponerEnTodas({'visible': false});
+    // Con permiso de edición, el alumno escribe en las mismas páginas y lo ve el preparador.
+    await prep.ponerEnTodas({'editable': true});
+    final editables = await alu.escuchar().firstWhere((p) => p.length == 3 && p.every((x) => x.editable));
+    expect(editables.every((p) => p.visible), isTrue);
+    await alu.anadirTrazos('p1', 1, [const Trazo(id: 'b', de: 'alu', grosor: 3, puntos: [Point(5, 5), Point(6, 6)])]);
+    final p1Despues = (await col.doc('p1').get()).data()!;
+    expect(p1Despues['alumno'], 'alu', reason: 'el alumno no toca a quién va ni los permisos');
+    expect(p1Despues['editable'], isTrue);
+    expect((await prep.escuchar().firstWhere((p) => p.first.trazos.length == 2)).first.trazos.map((t) => t.de), ['paula', 'alu']);
+
+    await prep.ponerEnTodas({'visible': false, 'editable': false});
     expect(await alu.escuchar().firstWhere((p) => p.isEmpty), isEmpty);
+    expect((await col.doc('p1').get()).data()!['editable'], isFalse);
   });
 }

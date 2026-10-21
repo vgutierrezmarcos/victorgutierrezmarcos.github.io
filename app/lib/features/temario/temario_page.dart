@@ -8,6 +8,7 @@ import '../../data/models/revisado.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/sincronizar.dart';
 import 'tema_page.dart';
 
 /// Temario: ejercicios → partes → temas, con estado de estudio y descarga offline.
@@ -72,16 +73,16 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
           if (_busqueda.trim().isNotEmpty) {
             final q = _normalizar(_busqueda);
             final res = t.todosLosTemas.where((x) => _normalizar('${x.codigo} ${x.titulo}').contains(q) || _normalizar(x.codigo.replaceAll('.', '')).contains(q.replaceAll('.', '').replaceAll(' ', ''))).toList();
-            return ListaAdaptable(padding: const EdgeInsets.all(16), children: [
+            return Refrescable(child: ListaAdaptable(padding: const EdgeInsets.all(16), children: [
               Text('${res.length} resultados', style: context.textos.bodySmall),
               for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
-            ]);
+            ]));
           }
           // En TCEE todos los temas tienen PDF; en una oposición que aún publica sus
           // apuntes, el progreso es sobre el programa entero.
           final total = Oposiciones.actual.esPrincipal ? t.todosLosTemas.where((x) => x.disponible).length : t.todosLosTemas.length;
           final estudiados = ajustes.temasEstudiados.length;
-          return ListaAdaptable(
+          return Refrescable(child: ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
             children: [
               if (!_preparador) Tarjeta(
@@ -128,7 +129,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                     ),
               ],
             ],
-          );
+          ));
         },
       ),
     );

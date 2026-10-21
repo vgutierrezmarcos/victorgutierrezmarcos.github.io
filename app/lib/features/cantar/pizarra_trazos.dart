@@ -216,7 +216,10 @@ class Trazo {
 
 /// Una página de la pizarra (documento pizarra/{id}).
 class PaginaPizarra {
-  const PaginaPizarra({required this.id, required this.n, required this.trazos, this.borradoPor, this.fondo = fondoBlanco, this.visible = false});
+  const PaginaPizarra({required this.id, required this.n, required this.trazos, this.borradoPor, this.fondo = fondoBlanco, this.visible = false, this.editable = false});
+
+  /// En las notas del preparador: si el alumno, además de verla, puede escribir.
+  final bool editable;
 
   final String id;
   final int n;
@@ -241,6 +244,7 @@ class PaginaPizarra {
         borradoPor: j['borradoPor'] as String?,
         fondo: j['fondo']?.toString() ?? fondoBlanco,
         visible: j['visible'] == true,
+        editable: j['editable'] == true,
       );
 }
 
