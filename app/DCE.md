@@ -198,6 +198,10 @@ Lleva también todo lo de la 1.15.11. Lo pidieron Manuel y los testers tras prob
   - Con dos preparadores de prueba: tablón, choques, pasar una clase, propuestas y ocultar a uno.
 - Ojo: con `.aab` de versiones anteriores, el opositor no ve las propuestas nuevas de cada preparador (sí la última, en el campo antiguo).
 
+**Versión 1.17.15 (52): todo lo de la 1.17.0 a la 1.17.15 (22 oct.)**
+- `.aab` compilado el 22 oct. (`Escritorio\oposicion-tcee-dce-1.17.15.aab`, firma comprobada; 281 pruebas en verde). Las reglas que necesita (notas del preparador) ya están publicadas desde el 21 oct.
+- [ ] Víctor: subirlo a la prueba cerrada. Cuando Play lo apruebe: APK universal firmado por Google al Escritorio (`oposicion-tcee.apk`) para `app-latest` y `"versionActual": "1.17.15"`.
+
 **Red: crecimiento y estadísticas privadas (14 oct.)**
 - **Script:** `scripts/estadisticas-red.py` cuenta, sin nombres, las cuatro partes de la red (opositores y preparadores de TCEE y DCE).
   - Lee con la cuenta de servicio `estadisticas-lectura@web-vgm.iam.gserviceaccount.com` («Lector de Cloud Datastore»), cuya clave está en `~/.config/oposicion-red/clave.json` (14 oct.).

@@ -2,6 +2,7 @@
 // (tool/capturas_test.dart y tool/capturas_ayuda_test.dart): la app completa,
 // sin Firebase ni red, con un opositor ficticio (Álex Martín), su preparadora
 // (Paula Pérez), otros preparadores y alumnos de ejemplo.
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 import 'dart:io';
@@ -17,7 +18,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:pdfx/pdfx.dart';
+// La interfaz de la plataforma de pdfx no se exporta: hace falta para el PDF de demostración.
+// ignore: implementation_imports
+import 'package:pdfx/src/renderer/interfaces/platform.dart';
 import 'package:tcee_app/features/cantar/reloj_compartido.dart';
+import 'package:tcee_app/features/temario/anotaciones.dart';
+import 'package:tcee_app/data/models/revisado.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/constants.dart';
@@ -111,6 +118,26 @@ class Demo {
   var reservasRecibidas = <Reserva>[];
   var materialesParaMi = <MaterialCompartido>[];
   Busqueda? miBusqueda;
+  /// Temario revisado (vacío hasta que el recorrido llega a él).
+  var revisados = ManifiestoRevisados.vacio;
+  /// Varios preparadores: el tablón común del opositor y, del lado del
+  /// preparador, lo que comparte Lucía (sus cantes, sus otros preparadores,
+  /// las notas entre ellos, el reparto y los temas que le han mandado).
+  var tablonComun = <NotaEntrePreparadores>[];
+  late List<Cante> cantesDeAlumno;
+  var otrosPreparadores = <OtroPreparador>[];
+  var notasPreparadores = <NotaEntrePreparadores>[];
+  var reparto = <String, RepartoPreparador>{};
+  var mandadosPorOtros = <String, List<String>>{};
+  /// Carpeta de descargas de la app (los PDF que «ya se han bajado»).
+  late final Directory carpetaDescargas;
+  late final Box _perfil;
+
+  /// El opositor con dos preparadores enlazados (Paula y Olga).
+  Future<void> conDosPreparadores() => _perfil.put('vinculos', [
+        VinculoPreparador(uid: 'paula', nombre: 'Paula Pérez', codigo: 'P4ULA7', desde: hoy.subtract(const Duration(days: 120))).toJson(),
+        VinculoPreparador(uid: 'olga', nombre: 'Olga Martín', codigo: 'K9OLGA', desde: hoy.subtract(const Duration(days: 30))).toJson(),
+      ]);
   var estadoRed = const EstadoRed(verificacion: PreparadorVerificado(uid: 'yo', nombre: 'Víctor', avaladoPor: 'yo'));
 
   static Future<Demo> crear({bool preparadorEnRed = false, bool conCronograma = true}) async {
@@ -130,7 +157,9 @@ class Demo {
     final dbRed = FakeFirebaseFirestore();
     final auth = MockFirebaseAuth(signedIn: true, mockUser: yo);
     // Con [preparadorEnRed], el enlace por código va contra la Firestore simulada.
-    final preparador = PreparadorRepo(alumnos: await caja(), sesiones: await caja(), perfil: await caja(), firestore: preparadorEnRed ? dbRed : null, auth: preparadorEnRed ? auth : null);
+    final perfil = await caja();
+    final preparador = PreparadorRepo(alumnos: await caja(), sesiones: await caja(), perfil: perfil, firestore: preparadorEnRed ? dbRed : null, auth: preparadorEnRed ? auth : null);
+    final descargas = Directory.systemTemp.createTempSync('tcee_capturas');
 
     // ------------------------------------------------- Datos de demostración
     await usuario.guardarAjustes(Ajustes(
@@ -265,6 +294,7 @@ class Demo {
         Sustitucion(id: 't1', alumno: 'x', fecha: dia(1, 16, 0), hasta: dia(1, 21, 0), ejercicio: 3, temas: [for (var i = 1; i <= 18; i++) '3.A.$i', for (var i = 1; i <= 10; i++) '3.B.$i'], notas: 'Mi preparadora ha cancelado. Por videollamada.'),
         Sustitucion(id: 't2', alumno: 'y', fecha: dia(4, 17, 30), minutos: 45, ejercicio: 4, temas: [for (var i = 1; i <= 12; i++) '4.A.$i'], paraTodos: false, destinatarios: const ['yo']),
       ];
+    demo.cantesDeAlumno = [hecho('x1', 2, '3.B.10', 3, 27, 'Me he quedado sin tiempo antes de llegar a las uniones monetarias.', titulo: '')];
     demo.reservasRecibidas = [Reserva(id: 'r1', preparador: 'yo', alumno: 'marta', alumnoNombre: 'Marta', fecha: dia(2, 19, 0), nota: 'Quiero cantar el 4.A.9')];
     demo.overrides = [
       procesoJsonProvider.overrideWith((ref) async => proceso),
@@ -303,7 +333,7 @@ class Demo {
         usuario: usuario,
         plan: plan,
         preparador: preparador,
-        descargas: DescargasRepo(await caja(), Directory.systemTemp.createTempSync('tcee_capturas')),
+        descargas: DescargasRepo(await caja(), descargas),
         firebaseDisponible: true,
       )),
       authStateProvider.overrideWith((ref) => Stream<User?>.value(yo)),
@@ -330,8 +360,17 @@ class Demo {
       progresoAlumnoProvider.overrideWith((ref, id) async => ProgresoAlumno(
             estudiados: preparador.alumno(id)!.temas.toSet(),
             enRepaso: const {'3.A.5', '3.B.3'},
-            cantes: [hecho('x1', 2, '3.B.10', 3, 27, 'Me he quedado sin tiempo antes de llegar a las uniones monetarias.', titulo: '')],
+            cantes: demo.cantesDeAlumno,
           )),
+      revisadosProvider.overrideWith((ref) async => demo.revisados),
+      // Las anotaciones de los temas van a la base falsa, como la pizarra.
+      firestoreAnotacionesProvider.overrideWithValue(dbRed),
+      tablonComunProvider.overrideWith((ref, uid) async => demo.tablonComun),
+      otrosPreparadoresProvider.overrideWith((ref, id) async => demo.otrosPreparadores),
+      notasPreparadoresProvider.overrideWith((ref, id) async => demo.notasPreparadores),
+      comparteContactoProvider.overrideWith((ref, id) async => demo.otrosPreparadores.isNotEmpty),
+      repartoProvider.overrideWith((ref, uid) async => demo.reparto),
+      temasMandadosPorOtrosProvider.overrideWith((ref, id) async => demo.mandadosPorOtros),
     ];
     demo
       ..temario = temario
@@ -339,9 +378,126 @@ class Demo {
       ..plan = plan
       ..preparador = preparador
       ..dbRed = dbRed
+      ..carpetaDescargas = descargas
+      .._perfil = perfil
       ..yo = yo;
     return demo;
   }
+}
+
+/// PDF de demostración para el visor de temas. pdfx es nativo y en las
+/// pruebas no hay plataforma, así que las páginas se dibujan antes con
+/// PyMuPDF (como en scripts/componer-capturas-temas.py) y se sirven como
+/// imágenes. Se instala con [PdfxPlatform.instance]; abre siempre ese PDF.
+class PdfDemo extends PdfxPlatform {
+  PdfDemo._(this.tamanos, this.paginas, this.textos);
+
+  /// Tamaño de cada página, en puntos.
+  final List<Size> tamanos;
+  final List<Uint8List> paginas;
+
+  /// Dónde está cada texto buscado en la primera página (en fracciones del
+  /// ancho y del alto), para anotar encima.
+  final Map<String, Rect> textos;
+
+  /// Dibuja [rutaPdf] (rutas relativas a app/) y busca [buscar] en su primera página.
+  static Future<PdfDemo> preparar(String rutaPdf, {List<String> buscar = const []}) async {
+    final dir = Directory.systemTemp.createTempSync('tcee_pdf_demo');
+    const guion = '''
+import fitz, json, sys
+doc = fitz.open(sys.argv[1])
+salida = {'tamanos': [], 'textos': {}}
+for i, p in enumerate(doc):
+    salida['tamanos'].append([p.rect.width, p.rect.height])
+    p.get_pixmap(matrix=fitz.Matrix(1100 / p.rect.width, 1100 / p.rect.width)).save(f'{sys.argv[2]}/p{i + 1}.png')
+p = doc[0]
+for t in sys.argv[3:]:
+    r = p.search_for(t)
+    if r:
+        salida['textos'][t] = [r[0].x0 / p.rect.width, r[0].y0 / p.rect.height, r[0].x1 / p.rect.width, r[0].y1 / p.rect.height]
+print(json.dumps(salida))
+''';
+    final r = await Process.run('python3', ['-c', guion, rutaPdf, dir.path, ...buscar]);
+    if (r.exitCode != 0) throw StateError('No se ha podido dibujar $rutaPdf: ${r.stderr}');
+    final j = jsonDecode(r.stdout as String) as Map<String, dynamic>;
+    final tamanos = [for (final t in j['tamanos'] as List) Size((t[0] as num).toDouble(), (t[1] as num).toDouble())];
+    return PdfDemo._(
+      tamanos,
+      [for (var i = 1; i <= tamanos.length; i++) File('${dir.path}/p$i.png').readAsBytesSync()],
+      {for (final e in (j['textos'] as Map).entries) e.key as String: Rect.fromLTRB((e.value[0] as num).toDouble(), (e.value[1] as num).toDouble(), (e.value[2] as num).toDouble(), (e.value[3] as num).toDouble())},
+    );
+  }
+
+  /// Que los PDF de la app se abran con este.
+  void instalar() => PdfxPlatform.instance = this;
+
+  @override
+  Future<PdfDocument> openFile(String filePath, {String? password}) async => _DocumentoDemo(this, filePath);
+
+  @override
+  Future<PdfDocument> openAsset(String name, {String? password}) async => _DocumentoDemo(this, name);
+
+  @override
+  Future<PdfDocument> openData(FutureOr<Uint8List> data, {String? password}) async => _DocumentoDemo(this, 'memoria');
+}
+
+class _DocumentoDemo extends PdfDocument {
+  _DocumentoDemo(this.pdf, String nombre) : super(sourceName: nombre, id: nombre, pagesCount: pdf.paginas.length);
+  final PdfDemo pdf;
+
+  @override
+  Future<void> close() async => isClosed = true;
+
+  @override
+  Future<PdfPage> getPage(int pageNumber, {bool autoCloseAndroid = false}) async => _PaginaDemo(this, pageNumber);
+
+  @override
+  bool operator ==(Object other) => identical(this, other);
+
+  @override
+  int get hashCode => identityHashCode(this);
+}
+
+class _PaginaDemo extends PdfPage {
+  _PaginaDemo(_DocumentoDemo documento, int n)
+      : _pdf = documento.pdf,
+        super(document: documento, id: '$n', pageNumber: n, width: documento.pdf.tamanos[n - 1].width, height: documento.pdf.tamanos[n - 1].height, autoCloseAndroid: false);
+  final PdfDemo _pdf;
+
+  @override
+  Future<PdfPageImage?> render({
+    required double width,
+    required double height,
+    PdfPageImageFormat format = PdfPageImageFormat.jpeg,
+    String? backgroundColor,
+    Rect? cropRect,
+    int quality = 100,
+    bool forPrint = false,
+    bool removeTempFile = true,
+  }) async =>
+      _ImagenDemo(pageNumber, _pdf.paginas[pageNumber - 1]);
+
+  @override
+  Future<PdfPageTexture> createTexture() => throw UnimplementedError('Sin texturas en las capturas');
+
+  @override
+  Future<void> close() async => isClosed = true;
+
+  @override
+  bool operator ==(Object other) => identical(this, other);
+
+  @override
+  int get hashCode => identityHashCode(this);
+}
+
+class _ImagenDemo extends PdfPageImage {
+  const _ImagenDemo(int n, Uint8List bytes) : super(id: '$n', pageNumber: n, width: null, height: null, bytes: bytes, format: PdfPageImageFormat.png, quality: 100);
+
+  @override
+  bool operator ==(Object other) => identical(this, other);
+
+  @override
+  int get hashCode => identityHashCode(this);
 }
 
 /// Navegación por la app durante un recorrido.
