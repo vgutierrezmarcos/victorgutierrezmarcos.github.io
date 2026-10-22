@@ -82,7 +82,7 @@ def n_turno(e, clave, turnos=('tl', 'disc')):
     return sum(d.get(t, {}).get('n', 0) for t in turnos)
 
 
-def agregar(crudo, convocatorias_boe, aprobados_boe):
+def agregar(crudo, convocatorias_boe, aprobados_boe, cuerpo=None):
     """Una entrada por convocatoria (del BOE), ordenada por el año de los exámenes."""
     por_fecha = {}
     for fecha, c in sorted(convocatorias_boe.items()):
@@ -100,7 +100,7 @@ def agregar(crudo, convocatorias_boe, aprobados_boe):
         cands = [f for f in fechas if f < fd and 6 <= (int(fd[:4]) - int(f[:4])) * 12 + int(fd[5:7]) - int(f[5:7]) <= meses]
         return cands[-1] if cands else None
 
-    PRIORIDAD = {'aprobados': 0, 'practicas': 1, 'carrera': 2}
+    PRIORIDAD = {'aprobados': 0, 'promocion': 1, 'practicas': 2, 'carrera': 3}
     FUENTES = {'aprobados': 'relación de aprobados', 'practicas': 'nombramiento de funcionarios en prácticas (lectura OCR)', 'carrera': 'nombramiento de funcionarios de carrera (lectura OCR)'}
     for a in sorted(aprobados_boe, key=lambda a: (PRIORIDAD.get(a['tipo'], 9), a['fecha'])):
         if a['tipo'] not in PRIORIDAD or not a['libre']:
@@ -112,6 +112,23 @@ def agregar(crudo, convocatorias_boe, aprobados_boe):
         if 'aprobados' in e and (PRIORIDAD[e['aprobados']['tipo']] < PRIORIDAD[a['tipo']] or e['aprobados']['libre'] >= a['libre']):
             continue
         e['aprobados'] = {'libre': a['libre'], 'interna': a['interna'], 'boe': a['id'], 'publicado': a['fecha'], 'tipo': a['tipo'], 'fuente': FUENTES[a['tipo']]}
+    # Promociones de la ATCEE (nombramientos de funcionarios de carrera): mejor que el OCR de los nombramientos antiguos
+    for p in (cuerpo or {}).get('promociones', []):
+        if not p.get('fecha') or p.get('ampliacion'):
+            continue
+        f = anterior(p['fecha'].replace('-', ''), meses=30)
+        if not f:
+            continue
+        e = por_fecha[f]
+        if 'aprobados' in e and e['aprobados']['tipo'] == 'aprobados':
+            e.setdefault('promocion', {'nombre': p['promocion'], 'nombramientos': p['nombramientos'], 'fecha': p['fecha']})
+            continue
+        if 'promocion' in e and e['promocion']['fecha'] <= p['fecha']:
+            continue  # ya tiene una promoción más cercana
+        e['promocion'] = {'nombre': p['promocion'], 'nombramientos': p['nombramientos'], 'fecha': p['fecha']}
+        interna = e.get('aprobados', {}).get('interna') or 0
+        e['aprobados'] = {'libre': p['nombramientos'] - interna, 'interna': interna, 'promocion': p['promocion'], 'publicado': p['fecha'], 'tipo': 'promocion',
+                          'fuente': 'promoción de la ATCEE (nombramientos de funcionarios de carrera)'}
     vistos = set()
     for f in fechas:
         while por_fecha[f]['examenes'] in vistos:
@@ -209,7 +226,7 @@ def grafico_plazas(con_plazas, alto=g.ALTO, etiquetas=True):
                      alto=alto, etiquetas=etiquetas)
 
 
-def bloque_pagina(conv, hoy):
+def bloque_pagina(conv, hoy, cuerpo=None):
     con_plazas = [c for c in conv if c.get('plazas', {}).get('libre')]
     con_admitidos = [c for c in conv if c.get('admitidos')]
     completas = [c for c in con_plazas if c.get('aprobados') and c['aprobados'].get('fuente', '').startswith('relaci')]
@@ -228,7 +245,7 @@ def bloque_pagina(conv, hoy):
     if cobertura:
         tarjetas.append(tarjeta(f'{fmt(media(cobertura), 0)} %', f'de las plazas de turno libre se cubren de media ({completas[0]["examenes"]}-{completas[-1]["examenes"]})'))
     h.append('<ul class="cifras-clave">' + ''.join(tarjetas) + '</ul>')
-    h.append('<nav class="guia-indice" aria-label="Contenido"><ul><li><a href="#plazas">Plazas y aprobados</a></li><li><a href="#admitidos">Admitidos por plaza</a></li><li><a href="#suspensos">Suspensos por ejercicio</a></li><li><a href="#idiomas">Idiomas</a></li><li><a href="#repetidores">Cuántos repiten</a></li><li><a href="#tabla">Tabla completa</a></li><li><a href="#metodo">Método y fuentes</a></li></ul></nav>')
+    h.append('<nav class="guia-indice" aria-label="Contenido"><ul><li><a href="#plazas">Plazas y aprobados</a></li><li><a href="#admitidos">Admitidos por plaza</a></li><li><a href="#suspensos">Suspensos por ejercicio</a></li><li><a href="#idiomas">Idiomas</a></li><li><a href="#repetidores">Cuántos repiten</a></li><li><a href="#cuerpo">El cuerpo desde 1930</a></li><li><a href="#tabla">Tabla completa</a></li><li><a href="#metodo">Método y fuentes</a></li></ul></nav>')
 
     # 1. Plazas y aprobados
     h.append(f'<h2 id="plazas">Plazas convocadas y aprobados, {primero}-{ultimo}</h2>')
@@ -344,7 +361,11 @@ def bloque_pagina(conv, hoy):
         h.append(g.tabla(['Exámenes', 'Aprobados', 'Ya se habían presentado antes', 'Porcentaje'],
                          [[c['examenes'], c['repetidores']['aprobados'], c['repetidores']['ya_admitidos_antes'], f"{fmt(pct(c['repetidores']['ya_admitidos_antes'], c['repetidores']['aprobados']))} %"] for c in con_rep]))
 
-    # 6. Tabla completa
+    # 6. El cuerpo desde 1930 (promociones y asociados de la ATCEE)
+    if cuerpo and cuerpo.get('promociones'):
+        h.append(bloque_cuerpo(cuerpo))
+
+    # 7. Tabla completa
     h.append('<h2 id="tabla">Tabla completa por convocatoria</h2>')
     filas = []
     for c in conv:
@@ -361,8 +382,57 @@ def bloque_pagina(conv, hoy):
              '<li><strong>Aprobados:</strong> la relación de aprobados en la fase de oposición que el Ministerio publica en el BOE al terminar cada proceso, contando las filas por turno; para las convocatorias más antiguas, sin relación en el BOE con texto, el nombramiento de funcionarios en prácticas o, si falta, el de funcionarios de carrera, leídos por OCR. No se publican puntuaciones.</li>'
              '<li><strong>Admitidos, ejercicios, conservación de nota e idiomas:</strong> las listas definitivas de admitidos, las listas de aprobados de cada ejercicio y de cada parte, y las listas de aspirantes que conservan nota, de la página de cada convocatoria del Ministerio (desde la OEP 2018). Buena parte son imágenes escaneadas y se leen con reconocimiento óptico de caracteres: se cuentan las filas de cada lista, así que puede haber diferencias de una o dos personas con el documento original. Las tasas por ejercicio se calculan solo para el turno libre, porque la promoción interna tiene exenciones.</li>'
              '<li><strong>Idiomas y repetidores:</strong> cruces aproximados entre listas (aprobados con admitidos).</li>'
+             '<li><strong>El cuerpo desde 1930:</strong> la relación de Técnicos Comerciales y Economistas del Estado por promociones y el listado de asociados de la Asociación de Técnicos Comerciales y Economistas del Estado, contando personas por promoción y por situación. Para las convocatorias antiguas sin relación de aprobados en el BOE, el tamaño de la promoción sustituye a la lectura por OCR de los nombramientos.</li>'
              '</ul>')
     h.append('<p>Si encuentras un dato que no cuadra con el documento original, <a href="../sobre-mi.html">escríbeme</a> y lo reviso.</p>')
+    return '\n'.join(h)
+
+
+def anio_examen_promocion(fecha):
+    """Año de los exámenes de una promoción: el nombramiento de carrera llega al año siguiente (primer semestre) o al final del mismo año."""
+    a, m = int(fecha[:4]), int(fecha[5:7])
+    return a - 1 if m <= 6 else a
+
+
+def bloque_cuerpo(cuerpo):
+    proms = [p for p in cuerpo['promociones'] if p.get('anio')]
+    aso = cuerpo.get('asociados', {})
+    evo = cuerpo.get('evolucion_asociados', [])
+    h = []
+    primero, ultimo = proms[0]['anio'], proms[-1]['anio']
+    total = sum(p['nombramientos'] for p in proms)
+    h.append(f'<h2 id="cuerpo">El cuerpo desde 1930: cuántos entran cada año y cuántos están en activo</h2>')
+    h.append(f'<p>La Asociación de Técnicos Comerciales y Economistas del Estado mantiene la relación de las {len(proms)} promociones del cuerpo (y de los dos cuerpos que lo precedieron) desde la primera, de {primero}: {fmt(total)} nombramientos en total. Nombramientos por año de la promoción:</p>')
+    por_anio = Counter()
+    for p in proms:
+        por_anio[p['anio']] += p['nombramientos']
+    anios = list(range(primero, ultimo + 1))
+    svg = g.grafico([str(a) for a in anios], barras=[('Nombramientos', [por_anio.get(a) or None for a in anios])], titulo='Nombramientos de Técnicos Comerciales y Economistas del Estado por año',
+                    descripcion=f'Barras con el número de personas de cada promoción, por año del nombramiento, de {primero} a {ultimo}.', etiquetas=False)
+    tabla = g.tabla(['Promoción', 'Nombramiento', 'Personas'], [[p['promocion'], p['fecha'], p['nombramientos']] for p in proms])
+    h.append(g.figura('g-promociones', svg, 'Fuente: «TCEE por promociones», Asociación de Técnicos Comerciales y Economistas del Estado. Los años sin barra no tuvieron promoción.', tabla))
+    # Décadas
+    decadas = Counter()
+    for a, n in por_anio.items():
+        decadas[a // 10 * 10] += n
+    h.append('<p>Por décadas: ' + ', '.join(f'{d}-{d + 9}: {fmt(n)}' for d, n in sorted(decadas.items())) + '.</p>')
+    if aso.get('por_situacion'):
+        ps = aso['por_situacion']
+        h.append(f'<h3>Situación de los asociados ({aso.get("fecha", "")[:10]})</h3>')
+        h.append(f'<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta {fmt(aso["total"])} personas: {fmt(ps.get("activo", 0))} en activo, {fmt(ps.get("servicios_especiales", 0))} en servicios especiales, {fmt(ps.get("excedente", 0))} en excedencia y {fmt(ps.get("jubilado", 0))} jubiladas. Por año de nombramiento, cuántas siguen en activo:</p>')
+        pa = {int(a): v for a, v in aso.get('por_anio_nombramiento', {}).items()}
+        anios_a = sorted(pa)
+        claves = [('activo', 'En activo', 'var(--color-primary)'), ('servicios_especiales', 'Servicios especiales', 'var(--color-primary-light)'), ('excedente', 'Excedencia', 'var(--color-accent-gold)'), ('jubilado', 'Jubilación', 'var(--color-border-strong)')]
+        svg = g.grafico([str(a) for a in anios_a], barras=[(nombre, [pa[a].get(k) or None for a in anios_a], color) for k, nombre, color in claves], apiladas=True, etiquetas=False,
+                        titulo='Asociados por año de nombramiento y situación', descripcion='Columnas apiladas con los asociados de cada año de nombramiento según estén en activo, en servicios especiales, en excedencia o jubilados.')
+        tabla = g.tabla(['Año de nombramiento', 'En activo', 'Servicios especiales', 'Excedencia', 'Jubilación', 'Total'],
+                        [[a, pa[a].get('activo', 0), pa[a].get('servicios_especiales', 0), pa[a].get('excedente', 0), pa[a].get('jubilado', 0), sum(pa[a].values())] for a in anios_a])
+        h.append(g.figura('g-asociados', svg, f'Fuente: listado de asociados de la ATCEE, {aso.get("fecha", "")[:10]}; {fmt(aso.get("sin_fecha_nombramiento", 0))} asociados sin fecha de nombramiento no aparecen en el gráfico.', tabla))
+    if len(evo) > 1:
+        h.append('<h3>Evolución de los asociados por situación</h3>')
+        svg = g.grafico([e['fecha'][:7] for e in evo], lineas=[('En activo', [e['activo'] for e in evo]), ('Servicios especiales', [e['servicios_especiales'] for e in evo]), ('Excedencia', [e['excedente'] for e in evo]), ('Jubilación', [e['jubilado'] for e in evo])],
+                        titulo='Asociados por situación en cada lectura del listado', descripcion='Líneas con los asociados en activo, en servicios especiales, en excedencia y jubilados en cada fecha en que se leyó el listado.')
+        h.append(g.figura('g-evolucion-asociados', svg, 'Cada punto es una lectura del listado de asociados de la ATCEE.'))
     return '\n'.join(h)
 
 
@@ -397,8 +467,12 @@ def limpiar_json(conv):
     return [{k: v for k, v in c.items() if not k.startswith('_')} for c in conv]
 
 
+CUERPO = RAIZ / 'oposicion' / 'cuerpo.json'
+
+
 def generar(crudo, convocatorias_boe, aprobados_boe):
-    conv = agregar(crudo, convocatorias_boe, aprobados_boe)
+    cuerpo = json.loads(CUERPO.read_text(encoding='utf-8')) if CUERPO.exists() else None
+    conv = agregar(crudo, convocatorias_boe, aprobados_boe, cuerpo)
     hoy = date.today()
     meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
     hoy_texto = f'{hoy.day} de {meses[hoy.month - 1]} de {hoy.year}'
@@ -406,7 +480,7 @@ def generar(crudo, convocatorias_boe, aprobados_boe):
     JSON.write_text(json.dumps({'actualizado': hoy.isoformat(), 'fuente': 'BOE y Ministerio de Economía, Comercio y Empresa; cálculo propio',
                                 'licencia': 'CC BY-NC-ND 4.0', 'convocatorias': limpio}, ensure_ascii=False, indent=1), encoding='utf-8')
     html = PAGINA.read_text(encoding='utf-8')
-    html = sustituir(html, '<!-- cifras:inicio -->', '<!-- cifras:fin -->', bloque_pagina(limpio, hoy_texto))
+    html = sustituir(html, '<!-- cifras:inicio -->', '<!-- cifras:fin -->', bloque_pagina(limpio, hoy_texto, cuerpo))
     html = re.sub(r'"temporalCoverage": "[^"]*"', f'"temporalCoverage": "{limpio[0]["examenes"]}/{limpio[-1]["examenes"]}"', html)
     html = re.sub(r'"dateModified": "[^"]*"', f'"dateModified": "{hoy.isoformat()}"', html)
     PAGINA.write_text(html, encoding='utf-8')
