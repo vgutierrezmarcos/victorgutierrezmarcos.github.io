@@ -40,6 +40,7 @@
         var horizontal = !!spec.horizontal;
         var temporal = !!spec.temporal;
         var fechas = spec.tipo === 'fechas';
+        var promociones = spec.tipo === 'promociones';
         var datasets = spec.series.map(function (serie, i) {
             var color = c[serie.color] || c.primary;
             var ds = {
@@ -90,6 +91,10 @@
                 ticks: { color: c.texto, font: letra, stepSize: 10, maxRotation: 0, callback: function (v) { return String(v); } }
             };
         }
+        if (promociones) {
+            // Una barra por promoción, todas iguales; el eje marca el año al empezar cada década
+            ejeCategorias.ticks = { color: c.texto, font: letra, maxRotation: 0, autoSkip: false, callback: function (v, i) { return spec.decada[i] ? String(Math.floor(spec.anios[i] / 10) * 10) : ''; } };
+        }
         var escalas = horizontal ? { x: ejeValores, y: ejeCategorias } : { x: ejeCategorias, y: ejeValores };
         if (spec.ejes.y2 && !horizontal) {
             escalas.y2 = {
@@ -103,7 +108,7 @@
         }
         if (horizontal) { escalas.y.stacked = false; escalas.x.stacked = false; }
         else if (spec.series.some(function (s) { return s.apilar; })) { escalas.x.stacked = true; escalas.y.stacked = true; }
-        if (fechas) { escalas.y.position = 'right'; }
+        if (fechas || promociones) { escalas.y.position = 'right'; }
         var textos = spec.textos || null;
         return {
             type: 'bar',
@@ -136,7 +141,7 @@
                         callbacks: {
                             title: function (items) {
                                 if (!items.length) return '';
-                                if (fechas) { return spec.etiquetas[items[0].dataIndex]; }
+                                if (fechas || promociones) { return spec.etiquetas[items[0].dataIndex]; }
                                 var et = items[0].label;
                                 return temporal ? 'Exámenes de ' + et : et;
                             },
@@ -179,7 +184,7 @@
             }
             var apilado = spec.series.some(function (s) { return s.apilar; });
             var barras = spec.series.filter(function (s) { return s.tipo === 'bar'; }).length;
-            if (spec.tipo === 'fechas' || n > 20 || (!apilado && barras > 2)) { ctx.restore(); return; }
+            if (spec.tipo === 'fechas' || spec.tipo === 'promociones' || n > 20 || (!apilado && barras > 2)) { ctx.restore(); return; }
             chart.data.datasets.forEach(function (ds, i) {
                 if (ds.type !== 'bar' || !chart.isDatasetVisible(i)) return;
                 var meta = chart.getDatasetMeta(i);

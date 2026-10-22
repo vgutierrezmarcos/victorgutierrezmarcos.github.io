@@ -210,27 +210,28 @@ def anio_decimal(iso):
 
 
 def barras_fechas(fechas, etiquetas, series, titulo='', descripcion='', apiladas=False, alto=ALTO, unidad=''):
-    """Una barra por fecha exacta (eje x en años, marcas cada diez): fechas ISO,
-    etiquetas (una por barra, para el tooltip) y series [(nombre, valores, color)]."""
-    xs = [anio_decimal(f) for f in fechas]
-    x0, x1 = (int(min(xs)) // 10) * 10, (int(max(xs)) // 10 + 1) * 10
-    n = len(xs)
+    """Una barra por promoción, todas del mismo ancho y a la misma distancia, en orden de
+    fecha; el eje x marca el año al empezar cada década. fechas ISO, etiquetas (una por
+    barra, para el tooltip) y series [(nombre, valores, color)]."""
+    anios = [int(f[:4]) for f in fechas]
+    n = len(anios)
     izq, der, arr, aba = MARGEN['izq'], MARGEN['der'], MARGEN['arr'], MARGEN['aba']
     w, h = ANCHO - izq - der, alto - arr - aba
     totales = [sum((vals[i] or 0) for _, vals, *_ in series) if apiladas else max((vals[i] or 0) for _, vals, *_ in series) for i in range(n)]
     maximo = _escala(totales)
+    decada = [i == 0 or anios[i] // 10 != anios[i - 1] // 10 for i in range(n)]
     out = [f'<svg class="grafico" viewBox="0 0 {ANCHO} {alto}" role="img" aria-labelledby="{{id}}-t {{id}}-d" preserveAspectRatio="xMidYMid meet">',
            f'<title id="{{id}}-t">{_esc(titulo)}</title><desc id="{{id}}-d">{_esc(descripcion)}</desc>', f'<g style="{ESTILO}">']
     for i in range(5):
         y = arr + h - h * i / 4
         out.append(f'<line x1="{izq}" y1="{y:.1f}" x2="{izq + w}" y2="{y:.1f}" stroke="var(--color-border-light)"/>')
         out.append(f'<text x="{izq + w + 6}" y="{y + 4:.1f}">{_fmt(maximo * i / 4)}</text>')
-    for a in range(x0, x1 + 1, 10):
-        x = izq + w * (a - x0) / (x1 - x0)
-        out.append(f'<line x1="{x:.1f}" y1="{arr}" x2="{x:.1f}" y2="{arr + h}" stroke="var(--color-border-light)"/><text x="{x:.1f}" y="{arr + h + 16}" text-anchor="middle">{a}</text>')
-    ancho_barra = max(2.5, min(8, w / (x1 - x0) * 0.6))
-    for i, x in enumerate(xs):
-        px = izq + w * (x - x0) / (x1 - x0)
+    paso = w / n
+    ancho_barra = paso * 0.7
+    for i in range(n):
+        px = izq + paso * (i + 0.5)
+        if decada[i]:
+            out.append(f'<text x="{px:.1f}" y="{arr + h + 16}" text-anchor="middle">{anios[i] // 10 * 10}</text>')
         base = 0
         for j, (nombre, vals, *resto) in enumerate(series):
             v = vals[i] or 0
@@ -244,7 +245,7 @@ def barras_fechas(fechas, etiquetas, series, titulo='', descripcion='', apiladas
                 base += v
     out.append('</g></svg>')
     svg = '\n'.join(out)
-    spec = {'tipo': 'fechas', 'titulo': titulo, 'x': [round(x, 3) for x in xs], 'etiquetas': etiquetas, 'x_min': x0, 'x_max': x1,
+    spec = {'tipo': 'promociones', 'titulo': titulo, 'etiquetas': etiquetas, 'anios': anios, 'decada': decada,
             'series': [{'nombre': nombre, 'valores': vals, 'tipo': 'bar', 'color': _color_js(resto[0] if resto else None, j), 'eje': 'y', 'apilar': bool(apiladas)} for j, (nombre, vals, *resto) in enumerate(series)],
             'temporal': True, 'ejes': {'y': {'max': None, 'unidad': unidad, 'min': 0}, 'y2': None}}
     return interactivo(svg, spec, alto)
