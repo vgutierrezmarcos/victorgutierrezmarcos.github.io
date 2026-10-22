@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/avisos_breves.dart';
+import '../../core/cronograma_providers.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/cronograma.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
@@ -27,8 +29,11 @@ import 'red_widgets.dart';
 import 'tema_anticipado.dart';
 import '../mas/ayuda_videos.dart';
 
-/// Temas que entran en la sesión de un alumno: «los estudiados» son los suyos.
-List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario) => temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()));
+/// Temas que entran en la sesión de un alumno: «los estudiados» son los suyos
+/// y, con su [cronograma] compartido, los de la semana de esa clase (la misma
+/// lista que él ve en su cronograma para ese cante).
+List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario, {Cronograma? cronograma}) =>
+    temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()), cronograma: cronograma);
 
 /// Envía el informe de un cante al alumno por la app que elija el preparador.
 Future<void> enviarInforme(BuildContext context, Cante sesion, Alumno? alumno, Temario? temario) => compartirTexto(
@@ -84,7 +89,10 @@ class SesionPage extends ConsumerWidget {
     final alumnos = ref.watch(alumnosProvider);
     final alumno = alumnos.where((a) => a.id == s.alumno).firstOrNull;
     final temario = ref.watch(temarioProvider).valueOrNull;
-    final temas = temario == null || alumno == null ? const <Tema>[] : temasDeSesion(s, alumno, temario);
+    // El cronograma compartido del alumno (si lo hay): la bolsa de la clase es
+    // la de su semana. Sin red, se queda con los temas que lleva.
+    final cronograma = alumno == null || !alumno.enlazado ? null : ref.watch(cronogramaAlumnoProvider(alumno.id)).valueOrNull;
+    final temas = temario == null || alumno == null ? const <Tema>[] : temasDeSesion(s, alumno, temario, cronograma: cronograma);
     // Temas que el alumno pide no cantar y que ya se le habían mandado para esta clase.
     final noCantar = alumno == null ? const <String, DateTime>{} : (ref.watch(progresoAlumnoProvider(alumno.id)).valueOrNull?.noCantar ?? const <String, DateTime>{});
     final mandadosQueNoQuiere = s.temasMandados.where(noCantar.containsKey).toList();

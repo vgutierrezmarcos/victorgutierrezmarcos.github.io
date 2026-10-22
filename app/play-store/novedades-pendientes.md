@@ -33,6 +33,7 @@ opositor). Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 - (21 oct.) Cualquier pizarra (la de la clase y las notas) se guarda como PDF desde el menú ···
 - (21 oct.) En el navegador, el visor del tema ya no amplía solo al bajar con la rueda del ratón
 - (22 oct.) La app pregunta si quieres enviar estadísticas de uso anónimas e informes de errores; apagado si no dices que sí, y se cambia en Más → Ajustes
+- (22 oct.) En las clases con preparador, los temas que entran son los de la semana del cronograma del alumno para ese cante, iguales en las dos apps
 
 Además de lo anterior, al salir en Play conviene resumir lo que la app tiene
 desde la 1.16.0 (ver `registro-prueba-cerrada.md`): red de preparadores, clases

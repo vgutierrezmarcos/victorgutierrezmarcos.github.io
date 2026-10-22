@@ -10,17 +10,18 @@ import '../../data/repos/usuario_repo.dart';
 /// Temas que entran en el sorteo de un cante según su tipo de bolsa.
 ///
 /// En una clase del preparador, «los estudiados» son los temas que lleva el
-/// alumno tal como los ve el preparador (`PreparadorRepo.progreso`): los
-/// marcados como estudiados más los del [cronograma] (hechos y semanas ya
-/// empezadas), sin los que ha pedido no cantar. Así los dos ven la misma
-/// bolsa.
+/// alumno para esa clase, igual en su app y en la del preparador: si su
+/// [cronograma] compartido tiene una semana cuyo cante cae en la fecha de la
+/// clase, los temas de esa semana (lo que ve en Cronograma para ese cante);
+/// si no, los marcados como estudiados más los del cronograma hasta hoy. En
+/// los dos casos, sin los que ha pedido no cantar.
 List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes, {Cronograma? cronograma}) {
   final oposicion = Oposiciones.actual;
   // Dictamen (1.º de TCEE): se canta sin temas.
   if (oposicion.esDictamen(c.ejercicio)) return const [];
   final ejercicios = oposicion.ejerciciosDeBolsa(c.ejercicio);
   bool delEjercicio(Tema t) => ejercicios.contains(t.ejercicio);
-  final estudiados = c.dePreparador ? temasQueLleva(ajustes, cronograma) : ajustes.temasEstudiados;
+  final estudiados = c.dePreparador ? temasQueLleva(ajustes, cronograma, fecha: c.fecha) : ajustes.temasEstudiados;
   return switch (c.bolsa) {
     TipoBolsa.lista => [for (final codigo in c.temas) if (temario.tema(codigo) != null) temario.tema(codigo)!],
     TipoBolsa.estudiados => temario.todosLosTemas.where((t) => delEjercicio(t) && estudiados.contains(t.codigo)).toList(),
@@ -28,10 +29,16 @@ List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes, {Cronograma? 
   };
 }
 
-/// Los temas que lleva el opositor para las clases: estudiados más los del
-/// cronograma hasta hoy, sin los que pide no cantar (lo mismo que calcula el
-/// preparador en su ficha).
-Set<String> temasQueLleva(Ajustes ajustes, Cronograma? cronograma) => {...ajustes.temasEstudiados, ...?cronograma?.temasLlevados(DateTime.now())}..removeAll(ajustes.noCantar.keys);
+/// Los temas que lleva el opositor para las clases, sin los que pide no cantar.
+/// Con [fecha] (la de la clase) y un cronograma con una semana para ese cante,
+/// son los temas de esa semana ([Cronograma.temasDelCante]); si no, los
+/// estudiados más los del cronograma hasta hoy (lo que calcula el preparador
+/// en la ficha del alumno).
+Set<String> temasQueLleva(Ajustes ajustes, Cronograma? cronograma, {DateTime? fecha}) {
+  final delCante = fecha == null ? null : cronograma?.temasDelCante(fecha);
+  final base = delCante != null ? delCante.toSet() : {...ajustes.temasEstudiados, ...?cronograma?.temasLlevados(DateTime.now())};
+  return base..removeAll(ajustes.noCantar.keys);
+}
 
 /// «Tercer ejercicio» (0: «3.º y 4.º ejercicio»).
 String nombreEjercicio(int ejercicio) => Oposiciones.actual.nombreEjercicio(ejercicio);
