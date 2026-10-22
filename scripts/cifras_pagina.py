@@ -86,7 +86,7 @@ def agregar(crudo, convocatorias_boe, aprobados_boe):
     """Una entrada por convocatoria (del BOE), ordenada por el año de los exámenes."""
     por_fecha = {}
     for fecha, c in sorted(convocatorias_boe.items()):
-        if not c.get('libre'):
+        if 'corrig' in c['titulo'].lower() or 'rectific' in c['titulo'].lower():
             continue
         por_fecha[fecha] = {'examenes': anio_examen(fecha), 'convocatoria': fecha, 'boe_convocatoria': c['id'], 'oep': c.get('oep'),
                             'plazas': {'libre': c.get('libre'), 'libre_discapacidad': c.get('libre_discapacidad'),
@@ -94,20 +94,24 @@ def agregar(crudo, convocatorias_boe, aprobados_boe):
     fechas = sorted(por_fecha)
 
     def anterior(fecha_doc, meses=20):
-        cands = [f for f in fechas if f < fecha_doc and (int(fecha_doc[:4]) - int(f[:4])) * 12 + int(fecha_doc[4:6]) - int(f[5:7]) <= meses]
+        """La convocatoria más reciente anterior a un documento (fecha_doc «AAAAMMDD»), hasta `meses` antes."""
+        fd = f'{fecha_doc[:4]}-{fecha_doc[4:6]}-{fecha_doc[6:8]}'
+        # Entre la convocatoria y el nombramiento pasan al menos seis meses (el proceso dura cerca de un año)
+        cands = [f for f in fechas if f < fd and 6 <= (int(fd[:4]) - int(f[:4])) * 12 + int(fd[5:7]) - int(f[5:7]) <= meses]
         return cands[-1] if cands else None
 
-    for a in sorted(aprobados_boe, key=lambda a: (a['tipo'] != 'aprobados', a['fecha'])):
-        if a['tipo'] not in ('aprobados', 'practicas'):
+    PRIORIDAD = {'aprobados': 0, 'practicas': 1, 'carrera': 2}
+    FUENTES = {'aprobados': 'relación de aprobados', 'practicas': 'nombramiento de funcionarios en prácticas (lectura OCR)', 'carrera': 'nombramiento de funcionarios de carrera (lectura OCR)'}
+    for a in sorted(aprobados_boe, key=lambda a: (PRIORIDAD.get(a['tipo'], 9), a['fecha'])):
+        if a['tipo'] not in PRIORIDAD or not a['libre']:
             continue
         f = a['convocatoria'] if a['convocatoria'] in por_fecha else anterior(a['fecha'])
         if not f:
             continue
         e = por_fecha[f]
-        if 'aprobados' in e and (e['aprobados']['fuente'].startswith('relaci') or e['aprobados']['libre'] >= a['libre']):
+        if 'aprobados' in e and (PRIORIDAD[e['aprobados']['tipo']] < PRIORIDAD[a['tipo']] or e['aprobados']['libre'] >= a['libre']):
             continue
-        e['aprobados'] = {'libre': a['libre'], 'interna': a['interna'], 'boe': a['id'], 'publicado': a['fecha'],
-                          'fuente': 'relación de aprobados' if a['tipo'] == 'aprobados' else 'nombramiento de funcionarios en prácticas (lectura OCR)'}
+        e['aprobados'] = {'libre': a['libre'], 'interna': a['interna'], 'boe': a['id'], 'publicado': a['fecha'], 'tipo': a['tipo'], 'fuente': FUENTES[a['tipo']]}
     vistos = set()
     for f in fechas:
         while por_fecha[f]['examenes'] in vistos:
@@ -193,8 +197,13 @@ def grafico_plazas(con_plazas, alto=g.ALTO, etiquetas=True):
     anios = [str(c['examenes']) for c in con_plazas]
     aprobados = [c.get('aprobados', {}).get('libre') for c in con_plazas]
     sin_cubrir = [max(c['plazas']['libre'] - a, 0) if a is not None else None for c, a in zip(con_plazas, aprobados)]
-    sin_resultado = [c['plazas']['libre'] if a is None else None for c, a in zip(con_plazas, aprobados)]
-    return g.grafico(anios, barras=[('Aprobados de turno libre', aprobados, 'var(--color-accent-gold)'), ('Plazas sin cubrir', sin_cubrir, 'var(--color-border-strong)'), ('Convocatoria en curso (plazas)', sin_resultado, 'var(--color-primary-pale)')],
+    en_curso = [c['plazas']['libre'] if a is None and i == len(con_plazas) - 1 else None for i, (c, a) in enumerate(zip(con_plazas, aprobados))]
+    sin_dato = [c['plazas']['libre'] if a is None and i < len(con_plazas) - 1 else None for i, (c, a) in enumerate(zip(con_plazas, aprobados))]
+    barras = [('Aprobados de turno libre', aprobados, 'var(--color-accent-gold)'), ('Plazas sin cubrir', sin_cubrir, 'var(--color-border-strong)')]
+    if any(sin_dato):
+        barras.append(('Plazas sin dato de aprobados', sin_dato, 'var(--color-border-light)'))
+    barras.append(('Convocatoria en curso (plazas)', en_curso, 'var(--color-primary-pale)'))
+    return g.grafico(anios, barras=barras,
                      apiladas=True, titulo='Plazas de turno libre por convocatoria: aprobados y plazas sin cubrir',
                      descripcion=f'Columnas apiladas: en cada convocatoria entre {anios[0]} y {anios[-1]}, los aprobados de turno libre y, encima, las plazas que quedaron sin cubrir; la suma es el total de plazas convocadas.',
                      alto=alto, etiquetas=etiquetas)
@@ -253,11 +262,11 @@ def bloque_pagina(conv, hoy):
     if con_tasas:
         e0, e1 = con_tasas[0]['examenes'], con_tasas[-1]['examenes']
         h.append(f'<h2 id="suspensos">Qué ejercicio elimina a más gente, {e0}-{e1}</h2>')
-        h.append('<p>Porcentaje de aspirantes de turno libre que no supera cada ejercicio, calculado sobre los que tenían que hacerlo: los admitidos para el primero y, para los siguientes, los aprobados del anterior menos quienes conservaban la nota de la convocatoria anterior (las listas de conservación de nota existen desde 2025). El porcentaje mezcla a quienes suspenden y a quienes no llegan a presentarse. La promoción interna no entra en este cálculo: los funcionarios A2 están exentos de parte del quinto ejercicio y, si vienen del Cuerpo de Diplomados Comerciales del Estado, del segundo y del quinto enteros.</p>')
-        claves = ['1', '2', '3', '4', '5']
+        h.append('<p>Porcentaje de aspirantes de turno libre que no supera cada uno de los cuatro primeros ejercicios, calculado sobre los que tenían que hacerlo: los admitidos para el primero y, para los siguientes, los aprobados del anterior menos quienes conservaban la nota de la convocatoria anterior (las listas de conservación de nota existen desde 2025). El porcentaje mezcla a quienes suspenden y a quienes no llegan a presentarse. La promoción interna no entra en este cálculo: los funcionarios A2 están exentos de parte del quinto ejercicio y, si vienen del Cuerpo de Diplomados Comerciales del Estado, del segundo y del quinto enteros.</p>')
+        claves = ['1', '2', '3', '4']
         series = [(CORTOS[k], [100 - c['tasas_libre'][k]['superan_pct'] if c['tasas_libre'].get(k) else None for c in con_tasas]) for k in claves]
         svg = g.grafico([str(c['examenes']) for c in con_tasas], lineas=series, unidad=' %', y_max=100, titulo='Porcentaje que no supera cada ejercicio, por convocatoria (turno libre)',
-                        descripcion='Líneas con el porcentaje de aspirantes de turno libre que no supera el primer, segundo, tercer, cuarto y quinto ejercicio en cada convocatoria.', etiquetas=False)
+                        descripcion='Líneas con el porcentaje de aspirantes de turno libre que no supera el primer, segundo, tercer y cuarto ejercicio en cada convocatoria.', etiquetas=False)
         filas = []
         for c in con_tasas:
             fila = [c['examenes']]
@@ -265,26 +274,31 @@ def bloque_pagina(conv, hoy):
                 t = c['tasas_libre'].get(k)
                 fila.append(f"{fmt(t['aprobados'])} de {fmt(t['presentados'])} ({fmt(100 - t['superan_pct'])} %)" if t else None)
             filas.append(fila)
-        tabla = g.tabla(['Exámenes', '1.º: aprueban de los que lo hacen (% que no)', '2.º', '3.º', '4.º', '5.º'], filas)
+        tabla = g.tabla(['Exámenes', '1.º: aprueban de los que lo hacen (% que no)', '2.º', '3.º', '4.º'], filas)
         h.append(g.figura('g-suspensos', svg, 'Fuente: listas de admitidos, de aprobados de cada ejercicio y de conservación de nota publicadas por el tribunal en la página del Ministerio. En la convocatoria en curso faltan los ejercicios no celebrados.', tabla))
         medias = {k: media([100 - c['tasas_libre'][k]['superan_pct'] for c in con_tasas if c['tasas_libre'].get(k)], 0) for k in claves}
         peor = max((k for k in claves if medias[k] is not None), key=lambda k: medias[k])
-        h.append('<p>De media no supera ' + ', '.join(f'el {CORTOS[k]} el {fmt(medias[k])} % de los que lo hacen' for k in claves if medias[k] is not None) + f'. El ejercicio que más gente deja fuera es el {CORTOS[peor]}.</p>')
-        h.append('<h3>Dentro del primer y del segundo ejercicio</h3>')
-        h.append('<p>El primer ejercicio tiene dos partes: el test (quien no llega a la nota de corte no lee el dictamen) y el dictamen de coyuntura. El segundo, dos pruebas de idiomas: inglés y el segundo idioma elegido; hay que aprobar las dos. Porcentaje que no supera cada parte, sobre los que tenían que hacerla:</p>')
-        partes = [('1-test', 'Test'), ('1-dictamen', 'Dictamen'), ('2-ingles', 'Inglés'), ('2-resto', 'Segundo idioma')]
-        series = [(nombre, [100 - c['tasas_libre'][k]['superan_pct'] if c['tasas_libre'].get(k) else None for c in con_tasas]) for k, nombre in partes]
-        svg = g.grafico([str(c['examenes']) for c in con_tasas], lineas=series, unidad=' %', y_max=100, titulo='Porcentaje que no supera el test, el dictamen, el inglés y el segundo idioma',
-                        descripcion='Líneas con el porcentaje de aspirantes de turno libre que no supera cada parte del primer y del segundo ejercicio en cada convocatoria.', etiquetas=False)
-        filas = []
-        for c in con_tasas:
-            fila = [c['examenes']]
-            for k, _ in partes:
-                t = c['tasas_libre'].get(k)
-                fila.append(f"{fmt(t['aprobados'])} de {fmt(t['presentados'])} ({fmt(100 - t['superan_pct'])} %)" if t else None)
-            filas.append(fila)
-        tabla = g.tabla(['Exámenes', 'Test: aprueban de los que lo hacen (% que no)', 'Dictamen', 'Inglés', 'Segundo idioma'], filas)
-        h.append(g.figura('g-partes', svg, 'Antes de 2021 el tribunal no publicaba lista aparte de la primera parte del primer ejercicio, y algunos años tampoco la de cada idioma.', tabla))
+        h.append('<p>De media no supera ' + ', '.join(f'el {CORTOS[k]} el {fmt(medias[k])} % de los que lo hacen' for k in claves if medias[k] is not None) + f'. El ejercicio que más gente deja fuera es el {CORTOS[peor]}. El quinto ejercicio (escrito) no elimina en la práctica a nadie: quien llega a él y se presenta lo supera, así que no aparece en el gráfico.</p>')
+        h.append('<h3>Dentro del primer ejercicio: test y dictamen</h3>')
+        h.append('<p>El primer ejercicio tiene dos partes: el test (quien no llega a la nota de corte no lee el dictamen) y el dictamen de coyuntura. Porcentaje que no supera cada parte, sobre los que tenían que hacerla:</p>')
+        for ident, titulo, partes, caption in [
+            ('g-primero', 'Porcentaje que no supera el test y el dictamen', [('1-test', 'Test'), ('1-dictamen', 'Dictamen')], 'Antes de 2021 el tribunal no publicaba lista aparte de la primera parte del primer ejercicio.'),
+            ('g-segundo', 'Porcentaje que no supera el inglés y el segundo idioma', [('2-ingles', 'Inglés'), ('2-resto', 'Segundo idioma')], 'Algunos años el tribunal publica una sola lista del segundo ejercicio, sin separar los idiomas.')]:
+            if ident == 'g-segundo':
+                h.append('<h3>Dentro del segundo ejercicio: inglés y segundo idioma</h3>')
+                h.append('<p>El segundo ejercicio tiene dos pruebas de idiomas, inglés y el segundo idioma elegido, y hay que aprobar las dos. Porcentaje que no supera cada prueba, sobre los que tenían que hacerla (descontando a quienes conservaban la nota de los dos idiomas):</p>')
+            series = [(nombre, [100 - c['tasas_libre'][k]['superan_pct'] if c['tasas_libre'].get(k) else None for c in con_tasas]) for k, nombre in partes]
+            svg = g.grafico([str(c['examenes']) for c in con_tasas], lineas=series, unidad=' %', y_max=100, titulo=titulo,
+                            descripcion=f'Líneas con el porcentaje de aspirantes de turno libre que no supera {partes[0][1].lower()} y {partes[1][1].lower()} en cada convocatoria.', etiquetas=False, alto=300)
+            filas = []
+            for c in con_tasas:
+                fila = [c['examenes']]
+                for k, _ in partes:
+                    t = c['tasas_libre'].get(k)
+                    fila.append(f"{fmt(t['aprobados'])} de {fmt(t['presentados'])} ({fmt(100 - t['superan_pct'])} %)" if t else None)
+                filas.append(fila)
+            tabla = g.tabla(['Exámenes'] + [f'{nombre}: aprueban de los que lo hacen (% que no)' for _, nombre in partes], filas)
+            h.append(g.figura(ident, svg, caption, tabla))
 
     # 4. Idiomas
     con_idiomas = [c for c in conv if c.get('idiomas', {}).get('elegidos')]
@@ -344,7 +358,7 @@ def bloque_pagina(conv, hoy):
     h.append('<h2 id="metodo">Método y fuentes</h2>')
     h.append('<ul>'
              '<li><strong>Plazas:</strong> la resolución de cada convocatoria en el BOE (turno libre, reserva de discapacidad y promoción interna). Las convocatorias se identifican por el año en que se celebran los exámenes: las publicadas en diciembre corresponden al año siguiente.</li>'
-             '<li><strong>Aprobados:</strong> la relación de aprobados en la fase de oposición que el Ministerio publica en el BOE al terminar cada proceso, contando las filas por turno; para las convocatorias más antiguas, sin relación en el BOE con texto, el nombramiento de funcionarios en prácticas leído por OCR. No se publican puntuaciones.</li>'
+             '<li><strong>Aprobados:</strong> la relación de aprobados en la fase de oposición que el Ministerio publica en el BOE al terminar cada proceso, contando las filas por turno; para las convocatorias más antiguas, sin relación en el BOE con texto, el nombramiento de funcionarios en prácticas o, si falta, el de funcionarios de carrera, leídos por OCR. No se publican puntuaciones.</li>'
              '<li><strong>Admitidos, ejercicios, conservación de nota e idiomas:</strong> las listas definitivas de admitidos, las listas de aprobados de cada ejercicio y de cada parte, y las listas de aspirantes que conservan nota, de la página de cada convocatoria del Ministerio (desde la OEP 2018). Buena parte son imágenes escaneadas y se leen con reconocimiento óptico de caracteres: se cuentan las filas de cada lista, así que puede haber diferencias de una o dos personas con el documento original. Las tasas por ejercicio se calculan solo para el turno libre, porque la promoción interna tiene exenciones.</li>'
              '<li><strong>Idiomas y repetidores:</strong> cruces aproximados de apellidos y nombre entre listas (aprobados con admitidos), hechos en el ordenador que calcula las cifras. Ni los nombres ni las listas se publican: aquí solo hay recuentos.</li>'
              '</ul>')

@@ -565,7 +565,7 @@ def plazas_de_convocatoria(txt, ocr=False):
     return out
 
 
-REGISTRO = re.compile(r'\b\d{10}(?:S\d{4})?\b')
+REGISTRO = re.compile(r'\d{10}(?:\s?[AS5]\d{4})?')  # número de registro de personal; el código del cuerpo (S0601) sale a veces como 50601
 
 
 def aprobados_de_boe(xml):
@@ -590,7 +590,11 @@ def aprobados_de_boe(xml):
             elif 'Puntuaci' in m.group(2) or re.fullmatch(r'[\s/.:]*', m.group(2)):
                 out[turno].append(float(m.group(3).replace(',', '.')))
                 out[turno + '_n'] += 1
-        return out
+        if not out['libre_n'] and not out['interna_n']:
+            out['libre_n'] = len(re.findall(r'\d{10}\s?[AS5]0601', cuerpo))
+        if out['libre_n'] or out['interna_n'] or '<url_pdf' not in xml:
+            return out
+        xml = xml.replace('<texto>', '<sin_texto>', 1)  # el anexo era una imagen: por OCR del PDF
     if '<texto>' in xml:
         cuerpo = xml[xml.index('<texto>'):]
         trozos = re.findall(r'(<p[^>]*>.*?</p>|<tr.*?</tr>)', cuerpo, re.S)
@@ -618,7 +622,7 @@ def aprobados_de_boe(xml):
         nombre = normaliza(' '.join(celdas_texto))
         unido = ' '.join(f)
         identificador = bool(REGISTRO.search(unido) or re.search(r'\b\d{7,8}[A-Z]\b|\*{2,3}\d{3,5}\*{1,2}', unido))
-        otro_cuerpo = re.search(r'\d{10}S(\d{4})', unido)
+        otro_cuerpo = re.search(r'\d{10}\s?[AS5](\d{4})(?!\d)', unido)
         if otro_cuerpo and otro_cuerpo.group(1) != '0601':
             continue
         es_persona = len(nombre.split()) >= 2 and (identificador or not re.search(r'APELLIDOS|NOMBRE|NOTA|ORDEN|DNI|REGISTRO|ANEXO|CUERPO|SECRETARIA|RESOLUCION|ARTICULO', nombre))
@@ -635,7 +639,7 @@ def leer_boe():
     convocatorias, aprobados = {}, []
     for a in anuncios_boe():
         tipo = tipo_anuncio(a['titulo'])
-        if tipo not in ('convocatoria', 'aprobados', 'practicas'):
+        if tipo not in ('convocatoria', 'aprobados', 'practicas', 'carrera'):
             continue
         try:
             xml = xml_boe(a['id'])
@@ -661,7 +665,7 @@ def leer_boe():
             if not m:
                 m = re.search(r'convoc[oó] pruebas selectivas[^.]{0,200}?(Resoluci[oó]n[^.]{0,80}? de \d{1,2} de (?:' + MESES_RE + r') de \d{4})', txt)
             ref = fecha_texto(m.group(1), a['id'].split('-')[2]) if m else None
-            if tipo == 'practicas':
+            if tipo in ('practicas', 'carrera'):
                 ref = None  # los nombramientos antiguos se leen por OCR a dos columnas: se fechan por su publicación
             notas = aprobados_de_boe(xml)
             aprobados.append({'id': a['id'], 'fecha': a['fecha'], 'tipo': tipo, 'titulo': a['titulo'], 'convocatoria': ref,
