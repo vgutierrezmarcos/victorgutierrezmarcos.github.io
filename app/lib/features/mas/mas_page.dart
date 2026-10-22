@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../../core/analitica.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
@@ -115,6 +116,16 @@ class MasPage extends ConsumerWidget {
                         if (t != null) await ref.read(ajustesProvider.notifier).fijarRecordatorio(t.hour * 60 + t.minute);
                       },
               ),
+              if (Analitica.instancia.disponible)
+                ListTile(
+                  leading: const Icon(Icons.insights_outlined),
+                  title: const Text('Estadísticas de uso y errores'),
+                  subtitle: Text('Anónimas, para mejorar la app. Sin tus datos de estudio.', style: context.textos.labelSmall),
+                  trailing: Switch(
+                    value: ref.watch(ajustesProvider.select((a) => a.estadisticas ?? false)),
+                    onChanged: (v) => ref.read(ajustesProvider.notifier).fijarEstadisticas(v),
+                  ),
+                ),
               // El preparador tiene sus propios avisos de clases (en Preparador → Ajustes).
               if (Notificaciones.disponibles && papel != Papel.preparador) ListTile(
                 leading: const Icon(Icons.notifications_active_outlined),

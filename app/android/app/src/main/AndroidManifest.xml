@@ -15,6 +15,10 @@
         android:label="TCEE · DCE"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <!-- Estadísticas de uso e informes de errores apagados hasta que el
+             usuario los active (Más → Ajustes); lo enciende Analitica. -->
+        <meta-data android:name="firebase_analytics_collection_enabled" android:value="false"/>
+        <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

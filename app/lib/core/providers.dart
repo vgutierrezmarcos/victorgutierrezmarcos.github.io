@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'analitica.dart';
 import 'avisos_navegador.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -502,6 +503,13 @@ class AjustesNotifier extends Notifier<Ajustes> {
     await actualizar((a) => a.copyWith(horaRecordatorio: minutos));
     await reprogramarRecordatorio(ref);
   }
+
+  /// Estadísticas de uso anónimas e informes de errores: lo que contesta el
+  /// usuario (al preguntárselo o en Más → Ajustes) se guarda y se aplica.
+  Future<void> fijarEstadisticas(bool activo) async {
+    await actualizar((a) => a.copyWith(estadisticas: activo));
+    await Analitica.instancia.activar(activo);
+  }
 }
 
 final ajustesProvider = NotifierProvider<AjustesNotifier, Ajustes>(AjustesNotifier.new);
@@ -890,6 +898,7 @@ class MisPreparadoresNotifier extends Notifier<List<VinculoPreparador>> {
     try {
       await repo.enlazarConCodigo(codigo);
       state = repo.misPreparadores();
+      Analitica.instancia.evento('preparador_conectado');
       return null;
     } on ErrorEnlace catch (e) {
       return e.mensaje;

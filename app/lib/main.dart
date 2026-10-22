@@ -10,6 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'app.dart';
+import 'core/analitica.dart';
 import 'core/avisos_fondo.dart';
 import 'core/cache_http.dart';
 import 'core/constants.dart';
@@ -54,6 +55,12 @@ Future<void> main() async {
     debugPrint('Firebase no disponible: $e');
   }
 
+  // Estadísticas de uso e informes de errores: solo si el usuario lo activa
+  // (se enciende en crearServicios, al leer sus ajustes). Los errores se
+  // enganchan ya, además de la pantalla de error.
+  Analitica.instancia = Analitica.crear(firebaseDisponible: firebaseDisponible);
+  Analitica.instancia.instalarErrores();
+
   final http = await CacheHttp.crear();
   final cajaApp = await Hive.openBox(Cajas.app);
   await Notificaciones.iniciar();
@@ -71,6 +78,8 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
   final auth = firebaseDisponible ? FirebaseAuth.instance : null;
   final contenido = ContenidoRepo(http, oposicion);
   final usuario = await UsuarioRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
+  // Según lo que contestó (null = aún no: apagado).
+  await Analitica.instancia.iniciar(usuario.ajustes().estadisticas);
   final plan = await PlanRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
   final preparador = await PreparadorRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
   if (firebaseDisponible) preparador.calendario = crearCalendario();

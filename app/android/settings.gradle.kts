@@ -23,6 +23,8 @@ plugins {
     id("org.jetbrains.kotlin.android") version "2.4.0" apply false
     // Firebase: solo se aplica en app/build.gradle.kts si existe google-services.json.
     id("com.google.gms.google-services") version "4.5.0" apply false
+    // Crashlytics (símbolos y ficheros de mapeo); también solo con google-services.json.
+    id("com.google.firebase.crashlytics") version "3.0.8" apply false
 }
 
 include(":app")
