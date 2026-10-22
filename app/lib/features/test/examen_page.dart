@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/analitica.dart';
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
 import '../../data/models/pregunta.dart';
@@ -58,6 +59,7 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
     );
     final repo = ref.read(usuarioRepoProvider);
     await repo.guardarResultado(resultado);
+    Analitica.instancia.evento('test_terminado', parametros: {'preguntas': preguntas.length, 'aciertos': resultado.correctas});
     if (widget.config.tipo == 'diario') {
       try {
         await Notificaciones.programarRecordatorio(repo.ajustes().horaRecordatorio, hechoHoy: true);

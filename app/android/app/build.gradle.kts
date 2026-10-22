@@ -10,6 +10,7 @@ plugins {
 // funciona igualmente, pero sin inicio de sesión ni sincronización.
 if (file("google-services.json").exists()) {
     apply(plugin = "com.google.gms.google-services")
+    apply(plugin = "com.google.firebase.crashlytics")
 }
 
 // Firma: android/key.properties (fuera del repositorio) apunta al almacén de

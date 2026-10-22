@@ -19,6 +19,7 @@ class Ajustes {
     this.temaOscuro, // null = sistema
     this.temasExtraidos = 3,
     this.noCantar = const {},
+    this.estadisticas,
     this.updatedAt,
   });
 
@@ -33,6 +34,9 @@ class Ajustes {
   /// preparadores (aunque los lleve o estén en su cronograma), y desde cuándo.
   /// Los preparadores lo ven y los dejan fuera del sorteo.
   final Map<String, DateTime> noCantar;
+  /// Estadísticas de uso anónimas e informes de errores (Firebase): true si
+  /// lo activó, false si dijo que no, null si aún no se le ha preguntado.
+  final bool? estadisticas;
   final DateTime? updatedAt;
 
   Ajustes copyWith({
@@ -45,6 +49,7 @@ class Ajustes {
     bool borrarTema = false,
     int? temasExtraidos,
     Map<String, DateTime>? noCantar,
+    bool? estadisticas,
     DateTime? updatedAt,
   }) =>
       Ajustes(
@@ -55,6 +60,7 @@ class Ajustes {
         temaOscuro: borrarTema ? null : (temaOscuro ?? this.temaOscuro),
         temasExtraidos: temasExtraidos ?? this.temasExtraidos,
         noCantar: noCantar ?? this.noCantar,
+        estadisticas: estadisticas ?? this.estadisticas,
         updatedAt: updatedAt ?? DateTime.now(),
       );
 
@@ -68,6 +74,7 @@ class Ajustes {
         // Como lista («código@fecha»), no como mapa: el documento se guarda con
         // merge y un mapa no borraría en la nube lo que se quita aquí.
         'noCantar': [for (final e in noCantar.entries) '${e.key}@${e.value.toIso8601String()}']..sort(),
+        'estadisticas': estadisticas,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -98,6 +105,7 @@ class Ajustes {
       temaOscuro: j['temaOscuro'] as bool?,
       temasExtraidos: (j['temasExtraidos'] as num?)?.toInt() ?? 3,
       noCantar: noCantarDe(j),
+      estadisticas: j['estadisticas'] as bool?,
       updatedAt: f(j['updatedAt'] as String?),
     );
   }

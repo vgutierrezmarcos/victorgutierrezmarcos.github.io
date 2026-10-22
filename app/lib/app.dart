@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'core/analitica.dart';
 import 'core/constants.dart';
 import 'core/notificaciones.dart';
 import 'core/pantalla_error.dart';
@@ -23,6 +24,7 @@ import 'features/cantes/cantes_page.dart';
 import 'features/cronograma/cronograma_page.dart';
 import 'features/estudiar/estudiar_page.dart';
 import 'features/guia/guia.dart';
+import 'features/inicio/estadisticas_dialogo.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/inicio/permisos_sheet.dart';
 import 'features/mas/cuenta_page.dart';
@@ -162,6 +164,12 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       if (antes?.map((a) => '${a.id}:${a.uid}').join() != ahora.map((a) => '${a.id}:${a.uid}').join()) ref.read(sesionesProvider.notifier).escucharAlumnos();
     });
     ref.listenManual(papelProvider, (_, __) => _relojes.revisar());
+    // Estadísticas (si están activadas): la pantalla que se ve y, como
+    // propiedades, la oposición y el papel. Nunca datos personales.
+    _router.routerDelegate.addListener(_pantallaVista);
+    _pantallaVista();
+    ref.listenManual(papelProvider, (_, p) => Analitica.instancia.usuario(papel: p.name), fireImmediately: true);
+    Analitica.instancia.usuario(oposicion: ref.read(oposicionProvider).id);
     ref.listenManual(usuarioActualProvider, (_, __) => _relojes.revisar());
     // Widget de la pantalla de inicio: al abrir la app desde él o tocarlo con ella abierta.
     abiertoDesdeWidget().then(_desdeWidget);
@@ -177,6 +185,10 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         final c = _router.routerDelegate.navigatorKey.currentContext;
         // ignore: use_build_context_synchronously
         if (c != null && mounted) await mostrarHojaPermisosSiToca(c);
+        if (!mounted) return;
+        // ¿Enviar estadísticas de uso? Una vez; apagado si no dice que sí.
+        // ignore: use_build_context_synchronously
+        if (c != null && mounted) await preguntarEstadisticasSiToca(c, ref);
         if (!mounted) return;
         await empezarGuiaSiToca(ref);
         if (mounted) await _abrirAltaSiToca();
@@ -282,8 +294,17 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     _periodico = Timer.periodic(const Duration(minutes: 3), (_) => ref.read(sesionProvider.notifier).sincronizarSiToca());
   }
 
+  String? _ultimaPantalla;
+  void _pantallaVista() {
+    final nombre = Analitica.nombreDePantalla(_router.routerDelegate.currentConfiguration.uri.toString());
+    if (nombre == _ultimaPantalla) return;
+    _ultimaPantalla = nombre;
+    Analitica.instancia.pantalla(nombre);
+  }
+
   @override
   void dispose() {
+    _router.routerDelegate.removeListener(_pantallaVista);
     _periodico?.cancel();
     _ciclo.dispose();
     Notificaciones.alTocar = null;

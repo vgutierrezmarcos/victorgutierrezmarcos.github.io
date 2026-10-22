@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../core/analitica.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
@@ -88,6 +89,10 @@ class _TemaPageState extends ConsumerState<TemaPage> {
   @override
   void initState() {
     super.initState();
+    if (!widget.esRecurso) {
+      Analitica.instancia.pantalla('/tema');
+      Analitica.instancia.evento('tema_abierto', parametros: {'ejercicio': int.tryParse(widget.tema.codigo.split('.').first) ?? 0, 'formato': 'pdf'});
+    }
     // Al abrir el tema se recuerdan los apuntes que se dejaron para esta vuelta.
     if (!widget.esRecurso && widget.tema.url != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
