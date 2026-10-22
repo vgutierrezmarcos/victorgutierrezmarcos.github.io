@@ -35,7 +35,7 @@ def _escala(valores, y_max=None):
     return m * 1.1
 
 
-def grafico(categorias, barras=(), lineas=(), titulo='', descripcion='', y_max=None, y2_max=None, unidad='', unidad2='', ancho=ANCHO, alto=ALTO, etiquetas=True):
+def grafico(categorias, barras=(), lineas=(), titulo='', descripcion='', y_max=None, y2_max=None, unidad='', unidad2='', ancho=ANCHO, alto=ALTO, etiquetas=True, apiladas=False):
     """Barras agrupadas (eje izquierdo) y líneas (eje derecho si `unidad2`).
 
     categorias: etiquetas del eje x (años). barras/lineas: [(nombre, valores, color?)].
@@ -45,11 +45,13 @@ def grafico(categorias, barras=(), lineas=(), titulo='', descripcion='', y_max=N
     w = ancho - izq - der
     h = alto - arr - aba
     todas_barras = [v for _, vals, *_ in barras for v in vals]
+    if apiladas and barras:
+        todas_barras = [sum(vals[i] or 0 for _, vals, *_ in barras) for i in range(n)]
     maximo = _escala(todas_barras or [0], y_max) if barras else None
     todas_lineas = [v for _, vals, *_ in lineas for v in vals]
-    eje2 = bool(lineas) and (bool(unidad2) or not barras)
+    eje2 = bool(lineas) and bool(unidad2)  # eje derecho propio solo si las líneas van en otra unidad
     maximo2 = _escala(todas_lineas or [0], y2_max) if lineas else None
-    if not eje2 and lineas:
+    if lineas and not eje2:
         maximo = _escala((todas_barras or []) + (todas_lineas or []), y_max)
         maximo2 = maximo
     paso_x = w / max(n, 1)
@@ -71,7 +73,22 @@ def grafico(categorias, barras=(), lineas=(), titulo='', descripcion='', y_max=N
             out.append(f'<text x="{x:.1f}" y="{arr + h + 16}" text-anchor="middle">{_esc(c)}</text>')
     # Barras
     nb = len(barras)
-    if nb:
+    if nb and apiladas:
+        ancho_barra = paso_x * 0.72
+        base = [0.0] * n
+        for j, (nombre, valores, *resto) in enumerate(barras):
+            color = resto[0] if resto else COLORES[j % len(COLORES)]
+            for i, v in enumerate(valores):
+                if not v:
+                    continue
+                x = izq + paso_x * (i + 0.5) - ancho_barra / 2
+                hb = h * v / maximo
+                y = arr + h - h * base[i] / maximo - hb
+                out.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{ancho_barra - 2:.1f}" height="{hb:.1f}" fill="{color}"><title>{_esc(nombre)} {_esc(categorias[i])}: {_fmt(v)}{_esc(unidad)}</title></rect>')
+                if etiquetas and n <= 20 and hb > 12:
+                    out.append(f'<text x="{x + (ancho_barra - 2) / 2:.1f}" y="{y + hb / 2 + 4:.1f}" text-anchor="middle" font-size="10.5" fill="var(--color-bg-cream)">{_fmt(v)}</text>')
+                base[i] += v
+    elif nb:
         ancho_grupo = paso_x * 0.72
         ancho_barra = ancho_grupo / nb
         for j, (nombre, valores, *resto) in enumerate(barras):

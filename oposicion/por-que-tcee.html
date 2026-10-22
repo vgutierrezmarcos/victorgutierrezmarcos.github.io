@@ -200,14 +200,6 @@
         },
         {
             "@type": "Question",
-            "name": "¿Cuál es la nota de corte del test?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La fija el tribunal después de publicar la plantilla correctora, y no puede ser inferior a 8 puntos sobre 20. Además, para pasar el primer ejercicio hay que sumar al menos 12 puntos entre el test y el dictamen de coyuntura."
-            }
-        },
-        {
-            "@type": "Question",
             "name": "¿Cuántos temas tiene el temario de TCEE?",
             "acceptedAnswer": {
                 "@type": "Answer",
@@ -216,18 +208,10 @@
         },
         {
             "@type": "Question",
-            "name": "¿Dónde y cuándo se hacen los exámenes?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La provincia la decide el tribunal y se anuncia con la lista de admitidos; en las últimas convocatorias todos los ejercicios se han celebrado en Madrid. La convocatoria sale en el BOE en diciembre, el primer ejercicio es hacia marzo y los demás se reparten hasta el otoño, de modo que la lista de aprobados de la fase de oposición llega a final de año."
-            }
-        },
-        {
-            "@type": "Question",
             "name": "¿Cuánto tiempo se tarda en preparar la oposición?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No hay un plazo fijo: lo habitual son varios años de dedicación completa, con un preparador y cantando los temas en voz alta. Según la ATCEE, en las últimas convocatorias ha crecido la proporción de aprobados que se presentaban por segunda vez o más, y las plazas cubiertas de turno libre suponen entre el 6 y el 12 % de los inscritos."
+                "text": "No hay un plazo fijo: lo habitual son varios años de dedicación completa, con un preparador y cantando los temas en voz alta. En las últimas convocatorias, alrededor del 90 % de los aprobados ya se habían presentado en una convocatoria anterior (ver La oposición en cifras)."
             }
         },
         {
@@ -236,22 +220,6 @@
             "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Sí, en algunos casos y solo para la convocatoria siguiente. En las últimas convocatorias, cada idioma del segundo ejercicio se conserva si se supera el 70 % de la nota máxima. Los aspirantes de promoción interna del grupo A2 conservan además la nota del primer y del tercer ejercicio si superan el 60 %."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "¿Qué sueldo tiene un Técnico Comercial y Economista del Estado?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Es un cuerpo del subgrupo A1, el más alto de la Administración General del Estado. La retribución es la de los funcionarios A1 (sueldo base, complemento de destino y complemento específico, que fijan cada año los Presupuestos Generales del Estado) y depende del puesto; en las Oficinas Económicas y Comerciales en el exterior se añaden las retribuciones del servicio exterior."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "¿Qué diferencia hay entre TCEE y DCE?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El Cuerpo de Diplomados Comerciales del Estado (DCE) es el cuerpo de comercio del subgrupo A2 del mismo Ministerio: su oposición tiene cuatro ejercicios y un temario más corto, centrado en el comercio exterior. TCEE es el cuerpo superior (A1), con cinco ejercicios y un temario de economía más amplio. Las dos se preparan con la app para las oposiciones a TCEE y DCE."
             }
         }
     ]
@@ -370,10 +338,10 @@
                     <!-- Resumen que escribe scripts/cifras-oposicion.py: no editar a mano -->
                     <!-- cifras:inicio -->
 <p>Calculadas con los documentos oficiales (convocatorias y aprobados del BOE y listas del Ministerio); el detalle, convocatoria a convocatoria y con gráficos, está en <a href="cifras.html">La oposición a TCEE en cifras</a>.</p>
-<ul class="cifras-clave"><li><span class="n">24,7</span><span class="t">plazas de turno libre al año de media (2017-2026)</span></li><li><span class="n">9,0</span><span class="t">admitidos por cada plaza de turno libre (2019-2026)</span></li><li><span class="n">89 %</span><span class="t">de las plazas de turno libre se cubren (1996-2025)</span></li><li><span class="n">35 %</span><span class="t">de los admitidos superan el primer ejercicio (test y dictamen)</span></li></ul>
+<ul class="cifras-clave"><li><span class="n">24,7</span><span class="t">plazas de turno libre al año de media (2017-2026)</span></li><li><span class="n">9,0</span><span class="t">admitidos por cada plaza de turno libre (2019-2026)</span></li><li><span class="n">89 %</span><span class="t">de las plazas de turno libre se cubren (1996-2025)</span></li><li><span class="n">64 %</span><span class="t">de los admitidos de turno libre no supera el primer ejercicio (test y dictamen)</span></li></ul>
 <figure class="figura-cifras" id="g-guia-plazas">
 <svg class="grafico" viewBox="0 0 760 300" role="img" aria-labelledby="g-guia-plazas-t g-guia-plazas-d" preserveAspectRatio="xMidYMid meet">
-<title id="g-guia-plazas-t">Plazas convocadas y aprobados de turno libre por convocatoria</title><desc id="g-guia-plazas-d">Barras con las plazas de turno libre y los aprobados de cada convocatoria.</desc>
+<title id="g-guia-plazas-t">Plazas de turno libre por convocatoria: aprobados y plazas sin cubrir</title><desc id="g-guia-plazas-d">Columnas apiladas: en cada convocatoria entre 1985 y 2026, los aprobados de turno libre y, encima, las plazas que quedaron sin cubrir; la suma es el total de plazas convocadas.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <line x1="48" y1="242.0" x2="712" y2="242.0" stroke="var(--color-border-light)" stroke-width="1"/>
 <text x="42" y="246.0" text-anchor="end">0</text>
@@ -403,81 +371,75 @@
 <text x="610.6" y="258" text-anchor="middle">2021</text>
 <text x="647.4" y="258" text-anchor="middle">2023</text>
 <text x="684.3" y="258" text-anchor="middle">2025</text>
-<rect x="50.6" y="74.0" width="4.6" height="168.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1985: 30</title></rect>
-<rect x="69.0" y="68.4" width="4.6" height="173.6" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1986: 31</title></rect>
-<rect x="87.5" y="135.6" width="4.6" height="106.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1987: 19</title></rect>
-<rect x="105.9" y="102.0" width="4.6" height="140.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1988: 25</title></rect>
-<rect x="124.4" y="130.0" width="4.6" height="112.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1991: 20</title></rect>
-<rect x="142.8" y="191.6" width="4.6" height="50.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1993: 9</title></rect>
-<rect x="161.2" y="186.0" width="4.6" height="56.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1994: 10</title></rect>
-<rect x="179.7" y="186.0" width="4.6" height="56.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1996: 10</title></rect>
-<rect x="198.1" y="197.2" width="4.6" height="44.8" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1997: 8</title></rect>
-<rect x="216.6" y="191.6" width="4.6" height="50.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1998: 9</title></rect>
-<rect x="235.0" y="191.6" width="4.6" height="50.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1999: 9</title></rect>
-<rect x="253.5" y="174.8" width="4.6" height="67.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2000: 12</title></rect>
-<rect x="271.9" y="186.0" width="4.6" height="56.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2001: 10</title></rect>
-<rect x="290.4" y="174.8" width="4.6" height="67.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2002: 12</title></rect>
-<rect x="308.8" y="174.8" width="4.6" height="67.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2003: 12</title></rect>
-<rect x="327.2" y="174.8" width="4.6" height="67.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2004: 12</title></rect>
-<rect x="345.7" y="186.0" width="4.6" height="56.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2005: 10</title></rect>
-<rect x="364.1" y="174.8" width="4.6" height="67.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2006: 12</title></rect>
-<rect x="382.6" y="163.6" width="4.6" height="78.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2007: 14</title></rect>
-<rect x="401.0" y="102.0" width="4.6" height="140.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2008: 25</title></rect>
-<rect x="419.5" y="102.0" width="4.6" height="140.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2009: 25</title></rect>
-<rect x="437.9" y="163.6" width="4.6" height="78.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2010: 14</title></rect>
-<rect x="456.4" y="169.2" width="4.6" height="72.8" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2011: 13</title></rect>
-<rect x="474.8" y="174.8" width="4.6" height="67.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2014: 12</title></rect>
-<rect x="493.2" y="174.8" width="4.6" height="67.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2015: 12</title></rect>
-<rect x="511.7" y="124.4" width="4.6" height="117.6" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2016: 21</title></rect>
-<rect x="530.1" y="68.4" width="4.6" height="173.6" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2017: 31</title></rect>
-<rect x="548.6" y="130.0" width="4.6" height="112.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2018: 20</title></rect>
-<rect x="567.0" y="130.0" width="4.6" height="112.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2019: 20</title></rect>
-<rect x="585.5" y="124.4" width="4.6" height="117.6" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2020: 21</title></rect>
-<rect x="603.9" y="141.2" width="4.6" height="100.8" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2021: 18</title></rect>
-<rect x="622.4" y="62.8" width="4.6" height="179.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2022: 32</title></rect>
-<rect x="640.8" y="90.8" width="4.6" height="151.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2023: 27</title></rect>
-<rect x="659.2" y="79.6" width="4.6" height="162.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2024: 29</title></rect>
-<rect x="677.7" y="118.8" width="4.6" height="123.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2025: 22</title></rect>
-<rect x="696.1" y="90.8" width="4.6" height="151.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2026: 27</title></rect>
-<rect x="57.2" y="174.8" width="4.6" height="67.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1985: 12</title></rect>
-<rect x="75.7" y="174.8" width="4.6" height="67.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1986: 12</title></rect>
-<rect x="94.1" y="186.0" width="4.6" height="56.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1987: 10</title></rect>
-<rect x="112.6" y="130.0" width="4.6" height="112.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1988: 20</title></rect>
-<rect x="131.0" y="174.8" width="4.6" height="67.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1991: 12</title></rect>
-<rect x="186.3" y="202.8" width="4.6" height="39.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1996: 7</title></rect>
-<rect x="204.8" y="197.2" width="4.6" height="44.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1997: 8</title></rect>
-<rect x="223.2" y="191.6" width="4.6" height="50.4" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1998: 9</title></rect>
-<rect x="241.7" y="197.2" width="4.6" height="44.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1999: 8</title></rect>
-<rect x="260.1" y="174.8" width="4.6" height="67.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2000: 12</title></rect>
-<rect x="278.6" y="186.0" width="4.6" height="56.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2001: 10</title></rect>
-<rect x="297.0" y="174.8" width="4.6" height="67.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2002: 12</title></rect>
-<rect x="315.4" y="174.8" width="4.6" height="67.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2003: 12</title></rect>
-<rect x="333.9" y="174.8" width="4.6" height="67.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2004: 12</title></rect>
-<rect x="352.3" y="191.6" width="4.6" height="50.4" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2005: 9</title></rect>
-<rect x="370.8" y="174.8" width="4.6" height="67.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2006: 12</title></rect>
-<rect x="389.2" y="169.2" width="4.6" height="72.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2007: 13</title></rect>
-<rect x="407.7" y="130.0" width="4.6" height="112.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2008: 20</title></rect>
-<rect x="426.1" y="118.8" width="4.6" height="123.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2009: 22</title></rect>
-<rect x="444.6" y="169.2" width="4.6" height="72.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2010: 13</title></rect>
-<rect x="463.0" y="174.8" width="4.6" height="67.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2011: 12</title></rect>
-<rect x="481.4" y="186.0" width="4.6" height="56.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2014: 10</title></rect>
-<rect x="499.9" y="186.0" width="4.6" height="56.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2015: 10</title></rect>
-<rect x="518.3" y="158.0" width="4.6" height="84.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2016: 15</title></rect>
-<rect x="536.8" y="118.8" width="4.6" height="123.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2017: 22</title></rect>
-<rect x="555.2" y="169.2" width="4.6" height="72.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2018: 13</title></rect>
-<rect x="573.7" y="135.6" width="4.6" height="106.4" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2019: 19</title></rect>
-<rect x="592.1" y="135.6" width="4.6" height="106.4" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2020: 19</title></rect>
-<rect x="610.6" y="146.8" width="4.6" height="95.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2021: 17</title></rect>
-<rect x="629.0" y="85.2" width="4.6" height="156.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2022: 28</title></rect>
-<rect x="647.4" y="113.2" width="4.6" height="128.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2023: 23</title></rect>
-<rect x="665.9" y="102.0" width="4.6" height="140.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2024: 25</title></rect>
-<rect x="684.3" y="146.8" width="4.6" height="95.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2025: 17</title></rect>
-<rect x="48" y="282" width="18" height="11" fill="var(--color-primary)" rx="1.5"/>
-<text x="72" y="292">Plazas de turno libre</text>
-<rect x="237" y="282" width="18" height="11" fill="var(--color-accent-gold)" rx="1.5"/>
-<text x="261" y="292">Aprobados de turno libre</text>
+<rect x="50.6" y="174.8" width="11.3" height="67.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1985: 12</title></rect>
+<rect x="69.0" y="174.8" width="11.3" height="67.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1986: 12</title></rect>
+<rect x="87.5" y="186.0" width="11.3" height="56.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1987: 10</title></rect>
+<rect x="105.9" y="130.0" width="11.3" height="112.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1988: 20</title></rect>
+<rect x="124.4" y="174.8" width="11.3" height="67.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1991: 12</title></rect>
+<rect x="179.7" y="202.8" width="11.3" height="39.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1996: 7</title></rect>
+<rect x="198.1" y="197.2" width="11.3" height="44.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1997: 8</title></rect>
+<rect x="216.6" y="191.6" width="11.3" height="50.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1998: 9</title></rect>
+<rect x="235.0" y="197.2" width="11.3" height="44.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1999: 8</title></rect>
+<rect x="253.5" y="174.8" width="11.3" height="67.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2000: 12</title></rect>
+<rect x="271.9" y="186.0" width="11.3" height="56.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2001: 10</title></rect>
+<rect x="290.4" y="174.8" width="11.3" height="67.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2002: 12</title></rect>
+<rect x="308.8" y="174.8" width="11.3" height="67.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2003: 12</title></rect>
+<rect x="327.2" y="174.8" width="11.3" height="67.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2004: 12</title></rect>
+<rect x="345.7" y="191.6" width="11.3" height="50.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2005: 9</title></rect>
+<rect x="364.1" y="174.8" width="11.3" height="67.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2006: 12</title></rect>
+<rect x="382.6" y="169.2" width="11.3" height="72.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2007: 13</title></rect>
+<rect x="401.0" y="130.0" width="11.3" height="112.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2008: 20</title></rect>
+<rect x="419.5" y="118.8" width="11.3" height="123.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2009: 22</title></rect>
+<rect x="437.9" y="169.2" width="11.3" height="72.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2010: 13</title></rect>
+<rect x="456.4" y="174.8" width="11.3" height="67.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2011: 12</title></rect>
+<rect x="474.8" y="186.0" width="11.3" height="56.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2014: 10</title></rect>
+<rect x="493.2" y="186.0" width="11.3" height="56.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2015: 10</title></rect>
+<rect x="511.7" y="158.0" width="11.3" height="84.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2016: 15</title></rect>
+<rect x="530.1" y="118.8" width="11.3" height="123.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2017: 22</title></rect>
+<rect x="548.6" y="169.2" width="11.3" height="72.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2018: 13</title></rect>
+<rect x="567.0" y="135.6" width="11.3" height="106.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2019: 19</title></rect>
+<rect x="585.5" y="135.6" width="11.3" height="106.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2020: 19</title></rect>
+<rect x="603.9" y="146.8" width="11.3" height="95.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2021: 17</title></rect>
+<rect x="622.4" y="85.2" width="11.3" height="156.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2022: 28</title></rect>
+<rect x="640.8" y="113.2" width="11.3" height="128.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2023: 23</title></rect>
+<rect x="659.2" y="102.0" width="11.3" height="140.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2024: 25</title></rect>
+<rect x="677.7" y="146.8" width="11.3" height="95.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2025: 17</title></rect>
+<rect x="50.6" y="74.0" width="11.3" height="100.8" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1985: 18</title></rect>
+<rect x="69.0" y="68.4" width="11.3" height="106.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1986: 19</title></rect>
+<rect x="87.5" y="135.6" width="11.3" height="50.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1987: 9</title></rect>
+<rect x="105.9" y="102.0" width="11.3" height="28.0" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1988: 5</title></rect>
+<rect x="124.4" y="130.0" width="11.3" height="44.8" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1991: 8</title></rect>
+<rect x="179.7" y="186.0" width="11.3" height="16.8" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1996: 3</title></rect>
+<rect x="235.0" y="191.6" width="11.3" height="5.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1999: 1</title></rect>
+<rect x="345.7" y="186.0" width="11.3" height="5.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2005: 1</title></rect>
+<rect x="382.6" y="163.6" width="11.3" height="5.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2007: 1</title></rect>
+<rect x="401.0" y="102.0" width="11.3" height="28.0" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2008: 5</title></rect>
+<rect x="419.5" y="102.0" width="11.3" height="16.8" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2009: 3</title></rect>
+<rect x="437.9" y="163.6" width="11.3" height="5.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2010: 1</title></rect>
+<rect x="456.4" y="169.2" width="11.3" height="5.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2011: 1</title></rect>
+<rect x="474.8" y="174.8" width="11.3" height="11.2" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2014: 2</title></rect>
+<rect x="493.2" y="174.8" width="11.3" height="11.2" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2015: 2</title></rect>
+<rect x="511.7" y="124.4" width="11.3" height="33.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2016: 6</title></rect>
+<rect x="530.1" y="68.4" width="11.3" height="50.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2017: 9</title></rect>
+<rect x="548.6" y="130.0" width="11.3" height="39.2" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2018: 7</title></rect>
+<rect x="567.0" y="130.0" width="11.3" height="5.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2019: 1</title></rect>
+<rect x="585.5" y="124.4" width="11.3" height="11.2" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2020: 2</title></rect>
+<rect x="603.9" y="141.2" width="11.3" height="5.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2021: 1</title></rect>
+<rect x="622.4" y="62.8" width="11.3" height="22.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2022: 4</title></rect>
+<rect x="640.8" y="90.8" width="11.3" height="22.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2023: 4</title></rect>
+<rect x="659.2" y="79.6" width="11.3" height="22.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2024: 4</title></rect>
+<rect x="677.7" y="118.8" width="11.3" height="28.0" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2025: 5</title></rect>
+<rect x="142.8" y="191.6" width="11.3" height="50.4" fill="var(--color-primary-pale)"><title>Convocatoria en curso (plazas) 1993: 9</title></rect>
+<rect x="161.2" y="186.0" width="11.3" height="56.0" fill="var(--color-primary-pale)"><title>Convocatoria en curso (plazas) 1994: 10</title></rect>
+<rect x="696.1" y="90.8" width="11.3" height="151.2" fill="var(--color-primary-pale)"><title>Convocatoria en curso (plazas) 2026: 27</title></rect>
+<rect x="48" y="282" width="18" height="11" fill="var(--color-accent-gold)" rx="1.5"/>
+<text x="72" y="292">Aprobados de turno libre</text>
+<rect x="258" y="282" width="18" height="11" fill="var(--color-border-strong)" rx="1.5"/>
+<text x="282" y="292">Plazas sin cubrir</text>
+<rect x="419" y="282" width="18" height="11" fill="var(--color-primary-pale)" rx="1.5"/>
+<text x="443" y="292">Convocatoria en curso (plazas)</text>
 </g></svg>
-<figcaption>Plazas y aprobados de turno libre por año de los exámenes, 1985-2026. Fuente: BOE.</figcaption>
+<figcaption>Plazas de turno libre por año de los exámenes, 1985-2026: aprobados y plazas sin cubrir. Fuente: BOE.</figcaption>
 </figure>
 <p>En la última convocatoria con resultados (2025) aprobaron 17 de las 22 plazas de turno libre y se presentaron 172 admitidos. <a href="cifras.html">Ver todas las cifras</a>.</p>
 <!-- cifras:fin -->
@@ -565,20 +527,12 @@
                     <p><!-- faq-tasa -->En la convocatoria en curso (oferta de empleo público 2025), 31,10 € en turno libre y 15,55 € en promoción interna. Hay exenciones y reducciones para personas con discapacidad, demandantes de empleo, familias numerosas y víctimas del terrorismo. Se paga al presentar la solicitud por internet.<!-- /faq-tasa --></p>
                     <h3>¿Cuántos ejercicios tiene la oposición?</h3>
                     <p>Cinco ejercicios obligatorios y eliminatorios, más un examen voluntario de idiomas: test y dictamen de coyuntura, idiomas (inglés y otro), dos exámenes orales de dos temas cada uno y un examen escrito. Después hay que superar un curso selectivo.</p>
-                    <h3>¿Cuál es la nota de corte del test?</h3>
-                    <p>La fija el tribunal después de publicar la plantilla correctora, y no puede ser inferior a 8 puntos sobre 20. Además, para pasar el primer ejercicio hay que sumar al menos 12 puntos entre el test y el dictamen de coyuntura.</p>
                     <h3>¿Cuántos temas tiene el temario de TCEE?</h3>
                     <p>177 en la convocatoria en curso: 90 del tercer ejercicio (45 de Economía general y 45 de Economía financiera e internacional), 56 del cuarto (30 de Economía española y 26 de Economía del sector público) y 31 del quinto (10 de Marketing, 6 de Econometría y 15 de Derecho). El test del primer ejercicio pregunta sobre el temario del tercero. El programa vigente es el anexo de cada convocatoria.</p>
-                    <h3>¿Dónde y cuándo se hacen los exámenes?</h3>
-                    <p>La provincia la decide el tribunal y se anuncia con la lista de admitidos; en las últimas convocatorias todos los ejercicios se han celebrado en Madrid. La convocatoria sale en el BOE en diciembre, el primer ejercicio es hacia marzo y los demás se reparten hasta el otoño, de modo que la lista de aprobados de la fase de oposición llega a final de año.</p>
                     <h3>¿Cuánto tiempo se tarda en preparar la oposición?</h3>
-                    <p>No hay un plazo fijo: lo habitual son varios años de dedicación completa, con un preparador y cantando los temas en voz alta. Según la ATCEE, en las últimas convocatorias ha crecido la proporción de aprobados que se presentaban por segunda vez o más, y las plazas cubiertas de turno libre suponen entre el 6 y el 12 % de los inscritos.</p>
+                    <p>No hay un plazo fijo: lo habitual son varios años de dedicación completa, con un preparador y cantando los temas en voz alta. En las últimas convocatorias, alrededor del 90 % de los aprobados ya se habían presentado en una convocatoria anterior (ver <a href="cifras.html#repetidores">La oposición en cifras</a>).</p>
                     <h3>¿Se guarda la nota de un año para otro?</h3>
                     <p>Sí, en algunos casos y solo para la convocatoria siguiente. En las últimas convocatorias, cada idioma del segundo ejercicio se conserva si se supera el 70 % de la nota máxima. Los aspirantes de promoción interna del grupo A2 conservan además la nota del primer y del tercer ejercicio si superan el 60 %.</p>
-                    <h3>¿Qué sueldo tiene un Técnico Comercial y Economista del Estado?</h3>
-                    <p>Es un cuerpo del subgrupo A1, el más alto de la Administración General del Estado. La retribución es la de los funcionarios A1 (sueldo base, complemento de destino y complemento específico, que fijan cada año los Presupuestos Generales del Estado) y depende del puesto; en las Oficinas Económicas y Comerciales en el exterior se añaden las retribuciones del servicio exterior.</p>
-                    <h3>¿Qué diferencia hay entre TCEE y DCE?</h3>
-                    <p>El Cuerpo de Diplomados Comerciales del Estado (DCE) es el cuerpo de comercio del subgrupo A2 del mismo Ministerio: su oposición tiene cuatro ejercicios y un temario más corto, centrado en el comercio exterior. TCEE es el cuerpo superior (A1), con cinco ejercicios y un temario de economía más amplio. Las dos se preparan con la <a href="../app/">app para las oposiciones a TCEE y DCE</a>.</p>
                 </div>
             </article>
         </div>
