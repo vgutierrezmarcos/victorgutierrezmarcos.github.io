@@ -67,9 +67,12 @@ def grafico(categorias, barras=(), lineas=(), titulo='', descripcion='', y_max=N
         if eje2 and maximo2:
             out.append(f'<text x="{izq + w + 6}" y="{y + 4:.1f}" text-anchor="start" fill="var(--color-accent-gold)">{_fmt(maximo2 * i / 4)}{_esc(unidad2) if i == 4 else ""}</text>')
     # Eje x
+    salto = 1 if n <= 14 else 2 if n <= 40 else 5 if n <= 70 else 10
+    numericas = all(str(c).isdigit() for c in categorias)
+    consecutivas = numericas and all(int(categorias[i + 1]) == int(categorias[i]) + 1 for i in range(n - 1))
     for i, c in enumerate(categorias):
         x = izq + paso_x * (i + 0.5)
-        if n <= 14 or i % 2 == 0:
+        if n <= 14 or (int(c) % salto == 0 if consecutivas else i % salto == 0):
             out.append(f'<text x="{x:.1f}" y="{arr + h + 16}" text-anchor="middle">{_esc(c)}</text>')
     # Barras
     nb = len(barras)
