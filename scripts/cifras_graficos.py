@@ -17,10 +17,13 @@ def _color_js(color, j):
     return COLOR_JS.get(color or COLORES[j % len(COLORES)], 'primary')
 
 
-def interactivo(svg, spec, alto=ALTO):
-    """Canvas con los datos del gráfico (los pinta cifras-graficos.js con Chart.js) y el SVG como respaldo."""
+def interactivo(svg, spec, alto=ALTO, ancho_minimo=None):
+    """Canvas con los datos del gráfico (los pinta cifras-graficos.js con Chart.js) y el SVG como respaldo.
+    Con ancho_minimo (px), el gráfico es más ancho que la página y se desplaza en horizontal."""
     datos = json.dumps(spec, ensure_ascii=False)
-    return (f'<div class="grafico-js" style="--alto-grafico: {alto}px"><canvas role="img" aria-label="{_esc(spec["titulo"])}"></canvas>'
+    clase = 'grafico-js desplazable' if ancho_minimo else 'grafico-js'
+    estilo = f'--alto-grafico: {alto}px' + (f'; --ancho-minimo: {ancho_minimo}px' if ancho_minimo else '')
+    return (f'<div class="{clase}" style="{estilo}"><div class="lienzo"><canvas role="img" aria-label="{_esc(spec["titulo"])}"></canvas></div>'
             f'<script type="application/json" class="datos-grafico">{datos.replace("</", "<\\/")}</script>'
             f'<noscript>{svg}</noscript></div>')
 MARGEN = {'izq': 48, 'der': 48, 'arr': 18, 'aba': 58}
@@ -209,29 +212,36 @@ def anio_decimal(iso):
     return d.year + (d.timetuple().tm_yday - 1) / 366
 
 
+def anio_decimal(iso):
+    import datetime
+    d = datetime.date.fromisoformat(iso)
+    return d.year + (d.timetuple().tm_yday - 1) / 366
+
+
 def barras_fechas(fechas, etiquetas, series, titulo='', descripcion='', apiladas=False, alto=ALTO, unidad=''):
-    """Una barra por promoción, todas del mismo ancho y a la misma distancia, en orden de
-    fecha; el eje x marca el año al empezar cada década. fechas ISO, etiquetas (una por
-    barra, para el tooltip) y series [(nombre, valores, color)]."""
-    anios = [int(f[:4]) for f in fechas]
-    n = len(anios)
+    """Una barra por promoción, todas del mismo ancho, colocada en su fecha exacta sobre un
+    eje de tiempo (marcas cada diez años): se ven los huecos entre convocatorias. El gráfico
+    es más ancho que la página y se desplaza en horizontal para que no se solapen."""
+    xs = [anio_decimal(f) for f in fechas]
+    x0, x1 = (int(min(xs)) // 10) * 10, (int(max(xs)) // 10 + 1) * 10
+    n = len(xs)
+    ancho_svg = 1800
     izq, der, arr, aba = MARGEN['izq'], MARGEN['der'], MARGEN['arr'], MARGEN['aba']
-    w, h = ANCHO - izq - der, alto - arr - aba
+    w, h = ancho_svg - izq - der, alto - arr - aba
     totales = [sum((vals[i] or 0) for _, vals, *_ in series) if apiladas else max((vals[i] or 0) for _, vals, *_ in series) for i in range(n)]
     maximo = _escala(totales)
-    decada = [i == 0 or anios[i] // 10 != anios[i - 1] // 10 for i in range(n)]
-    out = [f'<svg class="grafico" viewBox="0 0 {ANCHO} {alto}" role="img" aria-labelledby="{{id}}-t {{id}}-d" preserveAspectRatio="xMidYMid meet">',
+    out = [f'<svg class="grafico" viewBox="0 0 {ancho_svg} {alto}" role="img" aria-labelledby="{{id}}-t {{id}}-d" preserveAspectRatio="xMidYMid meet">',
            f'<title id="{{id}}-t">{_esc(titulo)}</title><desc id="{{id}}-d">{_esc(descripcion)}</desc>', f'<g style="{ESTILO}">']
     for i in range(5):
         y = arr + h - h * i / 4
         out.append(f'<line x1="{izq}" y1="{y:.1f}" x2="{izq + w}" y2="{y:.1f}" stroke="var(--color-border-light)"/>')
         out.append(f'<text x="{izq + w + 6}" y="{y + 4:.1f}">{_fmt(maximo * i / 4)}</text>')
-    paso = w / n
-    ancho_barra = paso * 0.7
-    for i in range(n):
-        px = izq + paso * (i + 0.5)
-        if decada[i]:
-            out.append(f'<text x="{px:.1f}" y="{arr + h + 16}" text-anchor="middle">{anios[i] // 10 * 10}</text>')
+    for a_ in range(x0, x1 + 1, 10):
+        x = izq + w * (a_ - x0) / (x1 - x0)
+        out.append(f'<text x="{x:.1f}" y="{arr + h + 16}" text-anchor="middle">{a_}</text>')
+    ancho_barra = 7
+    for i, x in enumerate(xs):
+        px = izq + w * (x - x0) / (x1 - x0)
         base = 0
         for j, (nombre, vals, *resto) in enumerate(series):
             v = vals[i] or 0
@@ -240,12 +250,12 @@ def barras_fechas(fechas, etiquetas, series, titulo='', descripcion='', apiladas
             hb = h * v / maximo
             y = arr + h - h * (base if apiladas else 0) / maximo - hb
             color = resto[0] if resto else COLORES[j % len(COLORES)]
-            out.append(f'<rect x="{px - ancho_barra / 2:.1f}" y="{y:.1f}" width="{ancho_barra:.1f}" height="{hb:.1f}" fill="{color}"><title>{_esc(etiquetas[i])}: {_fmt(v)}</title></rect>')
+            out.append(f'<rect x="{px - ancho_barra / 2:.1f}" y="{y:.1f}" width="{ancho_barra}" height="{hb:.1f}" fill="{color}"><title>{_esc(etiquetas[i])}: {_fmt(v)}</title></rect>')
             if apiladas:
                 base += v
     out.append('</g></svg>')
     svg = '\n'.join(out)
-    spec = {'tipo': 'promociones', 'titulo': titulo, 'etiquetas': etiquetas, 'anios': anios, 'decada': decada,
+    spec = {'tipo': 'fechas', 'titulo': titulo, 'x': [round(x, 3) for x in xs], 'etiquetas': etiquetas, 'x_min': x0, 'x_max': x1,
             'series': [{'nombre': nombre, 'valores': vals, 'tipo': 'bar', 'color': _color_js(resto[0] if resto else None, j), 'eje': 'y', 'apilar': bool(apiladas)} for j, (nombre, vals, *resto) in enumerate(series)],
-            'temporal': True, 'ejes': {'y': {'max': None, 'unidad': unidad, 'min': 0}, 'y2': None}}
-    return interactivo(svg, spec, alto)
+            'temporal': True, 'desplazable': True, 'ejes': {'y': {'max': maximo, 'unidad': unidad, 'min': 0}, 'y2': None}}
+    return interactivo(svg, spec, alto, ancho_minimo=ancho_svg)
