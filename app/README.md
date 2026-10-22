@@ -313,11 +313,16 @@ Pruebas manuales en el móvil: programar un cante semanal y recibir el aviso; so
 ## Capturas, vídeo y página de la app
 
 ```bash
-flutter test tool/capturas_test.dart --update-goldens   # capturas en promo/capturas/ (no se suben)
-python3 ../scripts/montar-video-app.py --ffmpeg RUTA     # promo/*.webp, promo/oposicion-tcee.mp4 y promo/poster.jpg
+flutter test tool/capturas_test.dart --update-goldens       # capturas en promo/capturas/ (no se suben)
+flutter test tool/capturas_dce_test.dart --update-goldens   # las de DCE
+python3 ../scripts/video-app/preparar.py                     # recursos del vídeo (capturas, fuentes, música)
+cd ../scripts/video-app && npx hyperframes render            # el vídeo, en renders/
+python3 publicar.py                                          # promo/oposicion-tcee.mp4, póster y promo/*.webp
 ```
 
-`tool/capturas_test.dart` arranca la app con datos de demostración ficticios y guarda cada pantalla a 1080 × 2340. `scripts/montar-video-app.py` (Pillow + ffmpeg) exporta las capturas ligeras que usa `index.html` y monta el vídeo de un minuto. Hay que repetir los dos pasos cuando cambie el aspecto de la app. Los datos de demostración y la navegación comunes están en `tool/demo_comun.dart`.
+`tool/capturas_test.dart` arranca la app con datos de demostración ficticios y guarda cada pantalla a 1080 × 2340. Los datos de demostración y la navegación comunes están en `tool/demo_comun.dart`.
+
+El vídeo de presentación (90 s, 1920 × 1080) se monta con [HyperFrames](https://hyperframes.heygen.com) en `scripts/video-app/`: `index.html` es la composición (HTML y GSAP, con la estética «edición académica»: crema y berenjena lisos, filete dorado, versalitas), `guion.json` fija el orden de las escenas, el compás en que empieza cada una (la música va a 110 pulsaciones por minuto) y su bloque (empezar, con tu preparador, si preparas a opositores, estudiar, organizarte y final). El fondo dice a quién va cada bloque: claro (crema o salvia) para el opositor y berenjena para el preparador; arriba a la derecha, un rótulo lo dice con palabras («Para opositores · Estudiar») y un barrido dorado marca cada cambio de bloque, `preparar.py` lleva el guion al HTML y prepara los recursos (en `assets/`, que no se sube) y `musica.py` genera la banda sonora con los instrumentos de `scripts/montar-video-app.py` (que sigue sirviendo a los vídeos de ayuda y a los gráficos de Play). Para reordenar escenas basta con cambiar `guion.json` y volver a ejecutar `preparar.py`. Hay que repetirlo todo cuando cambie el aspecto de la app.
 
 ### Vídeos de ayuda
 

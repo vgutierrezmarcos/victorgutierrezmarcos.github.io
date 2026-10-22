@@ -4,7 +4,15 @@
 //
 // Arranca la app completa sin Firebase ni red, con datos de demostración
 // ficticios, y guarda cada pantalla en promo/capturas/ a 1080 × 2340.
+//
+// El tema revisado (tema-revisado y tema-anotado) se dibuja con PyMuPDF
+// (python3 con fitz) a partir del PDF de la rama revision-temario si está su
+// carpeta junto a la del repositorio; si no, el de la web.
 
+import 'dart:async';
+import 'dart:io';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -31,12 +39,33 @@ import 'package:tcee_app/features/plan/cante_page.dart';
 import 'package:tcee_app/features/preparador/semana_page.dart';
 import 'package:tcee_app/features/preparador/sustituciones.dart';
 import 'package:tcee_app/data/models/preparador.dart';
+import 'package:tcee_app/data/models/plan.dart';
+import 'package:tcee_app/data/models/revisado.dart';
+import 'package:tcee_app/features/preparador/ajustes_preparador_page.dart';
+import 'package:tcee_app/features/preparador/coordinacion.dart';
+import 'package:tcee_app/features/temario/tema_page.dart';
+import 'package:tcee_app/features/temario/visor_tema.dart';
+import 'package:pdfx/pdfx.dart' show PlatformNotSupportedException;
 
 
 import 'demo_comun.dart';
 
+/// El PDF del tema revisado 3.A.9: el de la rama revision-temario (su
+/// carpeta, junto a la del repositorio) o, si no está, el de la web.
+String pdfRevisado() {
+  const revisado = '../../victorgutierrezmarcos.github.io-revision/oposicion/temario/tercer-ejercicio/3A09.pdf';
+  return File(revisado).existsSync() ? revisado : '../oposicion/temario/tercer-ejercicio/3A09.pdf';
+}
+
+/// Textos de la primera página del 3.A.9 revisado sobre los que se anota.
+const _anotar = ['Cada mes de enero', 'interanuales del IPC', 'La utilidad es ordinal', 'función de gasto', 'Relevancia', 'índices de precios'];
+
 void main() {
-  setUpAll(prepararCapturas);
+  late PdfDemo pdf;
+  setUpAll(() async {
+    await prepararCapturas();
+    pdf = await PdfDemo.preparar(pdfRevisado(), buscar: _anotar);
+  });
 
   testWidgets('capturas', (tester) async {
     final demo = await Demo.crear();
@@ -231,6 +260,131 @@ void main() {
     Navigator.of(tester.element(find.byType(AltaPreparadorPage))).pop();
     await tester.pumpAndSettle();
 
+    // ------------------------------------------------- Temario revisado
+    // El 3.A.9, revisado y exclusivo de la app (datos del manifiesto real),
+    // con el PDF «ya descargado»: el visor lo abre con PdfDemo.
+    final tema39 = demo.temario.tema('3.A.9')!;
+    const dir = 'oposicion/temario/tercer-ejercicio';
+    final rev = TemaRevisado(
+      codigo: '3.A.9',
+      archivo: '3A09',
+      titulo: tema39.titulo,
+      aprobado: DateTime(2026, 10, 17),
+      version: '8824310',
+      pdf: const FicheroRevisado(ruta: '$dir/3A09.pdf', tamano: 945523, sha: '42aa768580'),
+      docx: const FicheroRevisado(ruta: '$dir/3A09.docx', tamano: 1363988, sha: '26e0b37e7e'),
+      html: const FicheroRevisado(ruta: '$dir/3A09.html', tamano: 270117, sha: 'b5d78bbf32'),
+      repaso: const FicheroRevisado(ruta: '$dir/3A09-repaso.pdf', tamano: 445402, sha: 'd128b0a1cf'),
+    );
+    demo.revisados = ManifiestoRevisados(temas: {'3.A.9': rev});
+    container.invalidate(revisadosProvider);
+    File(pdfRevisado()).copySync('${demo.carpetaDescargas.path}/${rev.nombreLocal(ClaseFichero.pdf)}');
+    pdf.instalar();
+    void sinAvisoDePdfx() {
+      final e = tester.takeException();
+      if (e != null) excepciones.add(e);
+    }
+
+    /// Deja que el visor dibuje las páginas (las imágenes se decodifican fuera del reloj del test).
+    Future<void> esperarPaginas() async {
+      for (var i = 0; i < 4; i++) {
+        await tester.pump(const Duration(milliseconds: 200));
+        sinAvisoDePdfx();
+        for (final e in find.descendant(of: find.byType(VisorTema), matching: find.byType(Image)).evaluate()) {
+          await tester.runAsync(() => precacheImage((e.widget as Image).image, e));
+        }
+      }
+      await tester.pumpAndSettle();
+    }
+
+    // pdfx comprueba aparte (sin esperar) si la plataforma tiene PDF y en las
+    // pruebas (Linux) dice que no: ese error, que haría fallar la prueba, se
+    // recoge en una zona propia al abrir el tema.
+    await runZonedGuarded(() => r.abrir(TemaPage(tema: tema39)), (e, s) {
+      if (e is! PlatformNotSupportedException) excepciones.add(e);
+    });
+    sinAvisoDePdfx();
+    await esperarPaginas();
+    await captura('tema-revisado');
+    // Anotar: fosforito amarillo y verde, y bolígrafo rojo, con el dedo.
+    await tocar(find.byTooltip('Pintar y subrayar'));
+    await esperarPaginas();
+    final origen = tester.getTopLeft(find.byType(VisorTema));
+    final ancho = tester.getSize(find.byType(VisorTema)).width - 16;
+    final alto = ancho * pdf.tamanos.first.height / pdf.tamanos.first.width;
+    Offset en(double x, double y) => origen + Offset(8 + x * ancho, 8 + y * alto);
+    var reloj = Duration.zero;
+    Future<void> trazar(Offset de, Offset a, {double onda = 0}) async {
+      final g = await tester.startGesture(de, kind: PointerDeviceKind.touch);
+      const pasos = 24;
+      for (var i = 1; i <= pasos; i++) {
+        reloj += const Duration(milliseconds: 16);
+        final p = Offset.lerp(de, a, i / pasos)!;
+        // Un poco de pulso, para que no parezca una regla.
+        await g.moveTo(p + Offset(0, onda * ((i % 4) - 1.5) / 1.5), timeStamp: reloj);
+        await tester.pump(const Duration(milliseconds: 16));
+      }
+      await g.up();
+      await tester.pump();
+    }
+
+    final t = pdf.textos;
+    const margenDerecho = 533 / 595.28;
+    await tocar(find.byTooltip('Fosforito (mantén al acabar para que salga recto)'));
+    if (t['Cada mes de enero'] case final r1?) await trazar(en(r1.left, r1.center.dy), en(margenDerecho, r1.center.dy));
+    if (t['interanuales del IPC'] case final r2?) await trazar(en(r2.left, r2.center.dy), en(margenDerecho, r2.center.dy));
+    await tocar(find.byTooltip('Verde'));
+    if (t['La utilidad es ordinal'] case final r3?) await trazar(en(r3.left, r3.center.dy), en(r3.right, r3.center.dy));
+    await tocar(find.byTooltip('Bolígrafo'));
+    await tocar(find.byTooltip('Rojo'));
+    if (t['función de gasto'] case final r4?) await trazar(en(r4.left, r4.bottom), en(r4.right, r4.bottom), onda: 0.6);
+    if ((t['Relevancia'], t['índices de precios']) case (final de?, final hasta?)) {
+      await trazar(en(0.085, de.top), en(0.085, hasta.bottom), onda: 0.8);
+    }
+    // La barra de herramientas, desde el principio (al tocar el rojo se ha desplazado).
+    await tester.drag(find.descendant(of: find.byType(VisorTema), matching: find.byType(SingleChildScrollView)).last, const Offset(800, 0));
+    await esperarPaginas();
+    await captura('tema-anotado');
+    await tocar(find.text('Listo'));
+    await r.cerrar(find.byType(TemaPage));
+    sinAvisoDePdfx();
+
+    // ------------------------------------- Varios preparadores: el opositor
+    // Álex tiene dos preparadoras: Paula Pérez (3.er ejercicio) y Olga Martín (4.º).
+    await demo.conDosPreparadores();
+    container.invalidate(vinculosPreparadorProvider);
+    DateTime hace(int dias, int hora, int minuto) => demo.dia(-dias, hora, minuto);
+    demo.tablonComun = [
+      NotaEntrePreparadores(id: 'm4', de: 'paula', deNombre: 'Paula Pérez', texto: 'Perfecto. Para la próxima le mando el 3.A.14 y el 3.B.5; Olga, esos ya no hace falta que se los mandes.', fecha: hace(0, 10, 5)),
+      NotaEntrePreparadores(id: 'm3', de: 'olga', deNombre: 'Olga Martín', texto: 'Sí. Yo sigo con el cuarto ejercicio y Paula con el tercero, como en el reparto.', fecha: hace(1, 21, 40)),
+      NotaEntrePreparadores(id: 'm2', de: 'yo', deNombre: 'Álex Martín', texto: 'Me va bien. Olga, ¿mantenemos la nuestra a las 18:00?', fecha: hace(1, 20, 15)),
+      NotaEntrePreparadores(id: 'm1', de: 'paula', deNombre: 'Paula Pérez', texto: 'Álex, esta semana tengo que cancelar nuestra clase. ¿La pasamos a la semana que viene, a la misma hora?', fecha: hace(1, 19, 2)),
+    ];
+    await r.abrir(TablonComunPage(alumnoUid: 'yo', nombreAlumno: 'Álex Martín', soyAlumno: true));
+    await captura('tablon-comun');
+    await r.cerrar(find.byType(TablonComunPage));
+    await r.abrir(const QueVenMisPreparadoresPage());
+    await captura('que-ven');
+    await r.cerrar(find.byType(QueVenMisPreparadoresPage));
+    // La agenda con las clases de las dos y el aviso al apuntar un cante que choca.
+    await demo.plan.guardarCantes([
+      Cante(id: 'o1', fecha: demo.dia(6, 18, 0), titulo: 'Con Olga Martín', preparador: 'olga', preparadorNombre: 'Olga Martín', minutos: 120, ejercicio: 4, bolsa: TipoBolsa.estudiados, modalidad: Modalidad.online, enlace: 'https://meet.google.com/oga-mrtn-lun', updatedAt: demo.hoy),
+      Cante(id: 'o2', fecha: demo.dia(13, 18, 0), titulo: 'Con Olga Martín', preparador: 'olga', preparadorNombre: 'Olga Martín', minutos: 120, ejercicio: 4, bolsa: TipoBolsa.estudiados, updatedAt: demo.hoy),
+      Cante(id: 'pv', fecha: demo.dia(10, 18, 0), titulo: 'Con Paula Pérez', preparador: 'paula', preparadorNombre: 'Paula Pérez', minutos: 120, bolsa: TipoBolsa.estudiados, updatedAt: demo.hoy),
+    ]);
+    container.invalidate(cantesProvider);
+    await subpestana('Agenda');
+    // Hasta los próximos cantes, cada clase con el color de su preparadora.
+    await tester.drag(find.text('Próximos cantes'), const Offset(0, -650));
+    await tester.pumpAndSettle();
+    await captura('agenda-comun');
+    final choques = choquesEnAgenda(container.read(cantesProvider), demo.dia(6, 19, 0), 30);
+    unawaited(confirmarChoques(tester.element(find.byType(Scaffold).first), choques));
+    await tester.pumpAndSettle();
+    await captura('agenda-choque');
+    await tocar(find.text('Cambiar la hora'));
+    await bajar(-20000);
+
     // Hasta aquí, la app de un opositor; a partir de aquí, la de un preparador.
     await demo.preparador.guardarPerfil(PerfilPreparador(activo: true, papelElegido: true, codigo: 'K7M3PQ', nombre: 'Víctor', updatedAt: demo.hoy));
     container.invalidate(perfilPreparadorProvider);
@@ -298,6 +452,41 @@ void main() {
     await buscarEn<AlumnoPage>(find.textContaining('3.A.9 ·'));
     await tocar(find.textContaining('3.A.9 ·'));
     await captura('sesion');
+    Navigator.of(tester.element(find.byType(SesionPage))).pop();
+    await tester.pumpAndSettle();
+
+    // ----------------------------------- Varios preparadores: el preparador
+    // Lucía también prepara el 4.º ejercicio con Olga Martín: se ven sus
+    // clases (sin la valoración), las notas entre los dos y el reparto.
+    demo.cantesDeAlumno = [
+      ...demo.cantesDeAlumno,
+      Cante(id: 'lo1', fecha: demo.dia(-5, 18, 0), titulo: '', preparador: 'olga', preparadorNombre: 'Olga Martín', estado: EstadoCante.hecho, ejercicio: 4, bolsa: TipoBolsa.estudiados, resultado: const ResultadoCante(sorteados: ['4.A.3'], temaCantado: '4.A.3', segundos: 1750), updatedAt: demo.hoy),
+      Cante(id: 'lo2', fecha: demo.dia(2, 18, 0), titulo: '', preparador: 'olga', preparadorNombre: 'Olga Martín', ejercicio: 4, minutos: 120, bolsa: TipoBolsa.estudiados, updatedAt: demo.hoy),
+    ];
+    demo.otrosPreparadores = const [OtroPreparador(uid: 'olga', nombre: 'Olga Martín', linkedin: 'https://www.linkedin.com/in/olga-martin', telefono: '611 22 33 44')];
+    demo.notasPreparadores = [
+      NotaEntrePreparadores(id: 'n2', de: 'yo', deNombre: 'Víctor', texto: 'Hecho. Esta semana le mando el 3.A.17 (el monopolio natural sigue flojo) y no toco el cuarto.', fecha: demo.dia(0, 9, 30)),
+      NotaEntrePreparadores(id: 'n1', de: 'olga', deNombre: 'Olga Martín', texto: 'Lucía va bien en el cuarto ejercicio; en micro me dice que le cuesta la discriminación de precios. ¿Lo refuerzas tú?', fecha: demo.dia(-1, 21, 10)),
+    ];
+    demo.reparto = {'yo': const RepartoPreparador(ejercicios: {3}, nota: 'micro y comercio'), 'olga': const RepartoPreparador(ejercicios: {4})};
+    demo.mandadosPorOtros = {'lo2': ['4.A.9']};
+    await demo.preparador.guardarPerfil(demo.preparador.perfil().copyWith(telefono: '600 11 22 33', calendarioGoogle: true));
+    for (final p in [progresoAlumnoProvider, otrosPreparadoresProvider, notasPreparadoresProvider, comparteContactoProvider, repartoProvider, temasMandadosPorOtrosProvider]) {
+      container.invalidate(p);
+    }
+    container.invalidate(perfilPreparadorProvider);
+    await tester.pumpAndSettle();
+    await bajarEn<AlumnoPage>(-20000);
+    await buscarEn<AlumnoPage>(find.text('Notas entre preparadores'));
+    // Desde el reparto («Qué lleva cada uno») hasta las notas.
+    await bajarEn<AlumnoPage>(-480);
+    await captura('otros-preparadores');
+    await bajarEn<AlumnoPage>(-20000);
+    // Google Calendar, conectado, en Ajustes de preparador.
+    await r.abrir(const AjustesPreparadorPage());
+    await buscarEn<AjustesPreparadorPage>(find.text('Mis clases en Google Calendar'));
+    await captura('calendario');
+    await r.cerrar(find.byType(AjustesPreparadorPage));
 
     // Una pregunta del simulador (pantalla completa: se deja para el final).
     await estudiar('Test');
