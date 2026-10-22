@@ -143,9 +143,13 @@ def promocion_por_nombre(apellidos, nombre, indice):
     conjunto, texto = nombre_clave(apellidos + ' ' + nombre)
     if conjunto in indice:
         return indice[conjunto]
-    # Tolerancia: todas las palabras menos una (segundo nombre o apellido compuesto)
-    cands = [et for conj, et in indice.items() if len(conj & conjunto) >= max(2, len(conjunto) - 1) and len(conj) <= len(conjunto) + 1]
-    return cands[0] if len(set(cands)) == 1 else None
+    # Tolerancia: una lista lleva un segundo nombre o una partícula más que la otra
+    if len(conjunto) >= 3:
+        cands = {et for conj, et in indice.items() if conjunto <= conj and len(conj) <= len(conjunto) + 2}
+        if len(cands) == 1:
+            return cands.pop()
+    cands = {et for conj, et in indice.items() if len(conj & conjunto) >= max(3, len(conjunto) - 1) and len(conj) <= len(conjunto) + 1}
+    return cands.pop() if len(cands) == 1 else None
 
 
 def promocion_de(fecha, proms):
