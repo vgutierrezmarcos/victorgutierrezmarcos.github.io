@@ -38,7 +38,8 @@ ANCHO_MOVIL, ANCHO_APAISADA = 760, 1700
 
 def sincronizar_guion():
     """Lleva a index.html los compases de guion.json: data-start y data-duration
-    de cada escena, la tabla E del guion y la capa de progreso."""
+    de cada escena y las tablas E (compás) y BLOQUE (bloque de cada escena).
+    Los rótulos de bloque (.capitulo) están en index.html."""
     with open(os.path.join(AQUI, 'guion.json'), encoding='utf-8') as f:
         guion = json.load(f)
     compas = 4 * 60 / guion['bpm']
@@ -55,12 +56,9 @@ def sincronizar_guion():
             sys.exit(f'No encuentro la escena «{e["id"]}» en index.html')
     tabla = ', '.join(f'{e["id"]}: {e["compas"]}' for e in escenas)
     html = re.sub(r'const E = \{[^}]*\}; // guion', f'const E = {{ {tabla} }}; // guion', html)
+    tabla = ', '.join(f'{e["id"]}: "{e["bloque"]}"' for e in escenas)
+    html = re.sub(r'const BLOQUE = \{[^}]*\}; // guion', f'const BLOQUE = {{ {tabla} }}; // guion', html)
     html = re.sub(r'const DURACION = [\d.]+;', f'const DURACION = {guion["duracion"]};', html)
-    # El progreso va de «Al empezar» al cierre.
-    desde = next(e['compas'] for e in escenas if e['id'] == 'elegir') * compas
-    hasta = next(e['compas'] for e in escenas if e['id'] == 'cierre') * compas
-    html = re.sub(r'(<div id="progreso" class="clip" )data-start="[\d.]+" data-duration="[\d.]+"',
-                  rf'\g<1>data-start="{desde:.4f}" data-duration="{hasta - desde:.4f}"', html)
     with open(ruta, 'w', encoding='utf-8') as f:
         f.write(html)
 

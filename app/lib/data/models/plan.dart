@@ -1,15 +1,25 @@
 import 'dart:math';
 
+import 'oposicion.dart';
+
 /// Modelos de planificación: cantes, convocatoria, horario y agenda por tema. Se guardan en local (Hive) y, con sesión, en Firestore
 /// bajo users/{uid}/cantes, users/{uid}/progress/plan y users/{uid}/notes.
 
 DateTime? _fecha(Object? s) => s is String ? DateTime.tryParse(s) : null;
 
 /// Identificador corto y único (no hace falta que sea criptográfico).
+///
+/// Ojo con la versión web: dart2js devuelve 0 en `1 << 32` (solo llega a 31
+/// bits), y `nextInt(0)` lanza un RangeError que tiraba cada pantalla o botón
+/// que creaba un id (cronogramas, clases, cantes…). Por eso el tope se escribe
+/// como número y no como desplazamiento.
 String nuevoId([Random? random]) {
   final r = random ?? Random();
-  return '${DateTime.now().microsecondsSinceEpoch.toRadixString(36)}${r.nextInt(1 << 32).toRadixString(36)}';
+  return '${DateTime.now().microsecondsSinceEpoch.toRadixString(36)}${r.nextInt(_topeAleatorio).toRadixString(36)}';
 }
+
+/// 2^30: cabe en un entero de la web y en el rango de [Random.nextInt].
+const _topeAleatorio = 1073741824;
 
 // ---------------------------------------------------------------------- Cantes
 
@@ -26,6 +36,7 @@ class ResultadoCante {
     this.otrosCantados = const [],
     this.segundos = 0,
     this.valoracion = 0,
+    this.valoraciones = const {},
     this.comentarios = '',
   });
 
@@ -37,17 +48,32 @@ class ResultadoCante {
   final List<String> otrosCantados;
   List<String> get temasCantados => [if (temaCantado != null) temaCantado!, ...otrosCantados];
   final int segundos;
-  /// 1-5; 0 = sin valorar.
+  /// 1-5; 0 = sin valorar. Con varios temas, la media de [valoraciones]
+  /// redondeada (lo que leen las versiones anteriores y las estadísticas
+  /// del cante entero).
   final int valoracion;
+  /// Con varios temas, la valoración de cada uno (1-5), por código.
+  final Map<String, int> valoraciones;
   /// Comentarios propios o del preparador.
   final String comentarios;
 
-  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, String? comentarios}) => ResultadoCante(
+  /// La valoración de [tema]: la suya si se valoró aparte; si no, la del cante.
+  int valoracionDe(String tema) => valoraciones[tema] ?? valoracion;
+
+  /// Media redondeada de las valoraciones dadas (0 si ninguna).
+  static int media(Iterable<int> valores) {
+    final dadas = valores.where((v) => v > 0).toList();
+    return dadas.isEmpty ? 0 : (dadas.fold<int>(0, (s, v) => s + v) / dadas.length).round();
+  }
+
+  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, Map<String, int>? valoraciones, String? comentarios}) =>
+      ResultadoCante(
         sorteados: sorteados ?? this.sorteados,
         temaCantado: temaCantado ?? this.temaCantado,
         otrosCantados: otrosCantados ?? this.otrosCantados,
         segundos: segundos ?? this.segundos,
         valoracion: valoracion ?? this.valoracion,
+        valoraciones: valoraciones ?? this.valoraciones,
         comentarios: comentarios ?? this.comentarios,
       );
 
@@ -57,6 +83,7 @@ class ResultadoCante {
         if (otrosCantados.isNotEmpty) 'otrosCantados': otrosCantados,
         'segundos': segundos,
         'valoracion': valoracion,
+        if (valoraciones.isNotEmpty) 'valoraciones': valoraciones,
         'comentarios': comentarios,
       };
 
@@ -66,6 +93,7 @@ class ResultadoCante {
         otrosCantados: ((j['otrosCantados'] as List?) ?? []).map((e) => e.toString()).toList(),
         segundos: (j['segundos'] as num?)?.toInt() ?? 0,
         valoracion: (j['valoracion'] as num?)?.toInt() ?? 0,
+        valoraciones: j['valoraciones'] is Map ? {for (final e in (j['valoraciones'] as Map).entries) if (e.value is num) e.key.toString(): (e.value as num).toInt()} : const {},
         comentarios: j['comentarios'] as String? ?? '',
       );
 }
@@ -146,9 +174,17 @@ class Cante {
     this.unoPorParte = false,
     this.plataforma = '',
     this.eventoGoogle = '',
+    this.notasCompartidas = false,
   });
 
   final String id;
+
+  /// El preparador ha compartido con el alumno sus notas de la clase (su
+  /// segunda pizarra): el alumno las ve en cuanto las comparte.
+  final bool notasCompartidas;
+
+  /// La clase ya ha pasado (o se dio por hecha).
+  bool get terminada => hecho || fecha.add(Duration(minutes: minutos)).isBefore(DateTime.now());
 
   /// Evento del Google Calendar del preparador que corresponde a esta clase
   /// (vacío si no está en su calendario). Solo lo usa el preparador: no va en
@@ -200,6 +236,8 @@ class Cante {
   final int minutos;
 
   /// Minutos de exposición por tema: lo que cuenta el cronómetro al cantar.
+  /// Quien crea el cante lo toma de [Oposicion.minutosExposicion] (TCEE 30,
+  /// DCE 20); el 30 del constructor es solo el de las versiones anteriores.
   final int exposicion;
   /// 3, 4 o 5; 0 = cualquiera.
   final int ejercicio;
@@ -267,6 +305,7 @@ class Cante {
     String? lugar,
     String? enlace,
     DateTime? temaA,
+    bool? notasCompartidas,
     List<String>? temasMandados,
     bool? temaSorteado,
     bool sinTema = false,
@@ -294,6 +333,7 @@ class Cante {
         motivo: motivo ?? this.motivo,
         canceladoPor: canceladoPor ?? this.canceladoPor,
         ocultaAlAlumno: ocultaAlAlumno ?? this.ocultaAlAlumno,
+        notasCompartidas: notasCompartidas ?? this.notasCompartidas,
         sustitucion: sustitucion ?? this.sustitucion,
         updatedAt: DateTime.now(),
         borrado: borrado ?? this.borrado,
@@ -317,7 +357,7 @@ class Cante {
         if (lugar.isNotEmpty) 'lugar': lugar,
         if (enlace.isNotEmpty) 'enlace': enlace,
         'minutos': minutos,
-        if (exposicion != 30) 'exposicion': exposicion,
+        'exposicion': exposicion,
         'ejercicio': ejercicio,
         'bolsa': bolsa.name,
         'temas': temas,
@@ -331,6 +371,7 @@ class Cante {
         if (motivo.isNotEmpty) 'motivo': motivo,
         if (canceladoPor != null) 'canceladoPor': canceladoPor,
         if (ocultaAlAlumno) 'ocultaAlAlumno': true,
+        if (notasCompartidas) 'notasCompartidas': true,
         if (sustitucion != null) 'sustitucion': sustitucion,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         'borrado': borrado,
@@ -345,13 +386,17 @@ class Cante {
         if (eventoGoogle.isNotEmpty) 'eventoGoogle': eventoGoogle,
       };
 
-  factory Cante.fromJson(Map<dynamic, dynamic> j) => Cante(
+  factory Cante.fromJson(Map<dynamic, dynamic> j) {
+    final ejercicio = (j['ejercicio'] as num?)?.toInt() ?? 3;
+    return Cante(
         id: j['id'].toString(),
         fecha: _fecha(j['fecha']) ?? DateTime.now(),
         titulo: j['titulo'] as String? ?? '',
         minutos: (j['minutos'] as num?)?.toInt() ?? 30,
-        exposicion: (j['exposicion'] as num?)?.toInt() ?? 30,
-        ejercicio: (j['ejercicio'] as num?)?.toInt() ?? 3,
+        // Las versiones anteriores no guardaban la exposición por defecto (30
+        // en todas las oposiciones): se lee como la del examen de cada una.
+        exposicion: (j['exposicion'] as num?)?.toInt() ?? Oposiciones.actual.minutosExposicion(ejercicio),
+        ejercicio: ejercicio,
         bolsa: TipoBolsa.values.firstWhere((b) => b.name == j['bolsa'], orElse: () => TipoBolsa.estudiados),
         temas: ((j['temas'] as List?) ?? []).map((e) => e.toString()).toList(),
         notas: j['notas'] as String? ?? '',
@@ -364,6 +409,7 @@ class Cante {
         motivo: j['motivo'] as String? ?? '',
         canceladoPor: j['canceladoPor'] as String?,
         ocultaAlAlumno: j['ocultaAlAlumno'] == true,
+        notasCompartidas: j['notasCompartidas'] == true,
         sustitucion: j['sustitucion'] as String?,
         updatedAt: _fecha(j['updatedAt']),
         borrado: j['borrado'] as bool? ?? false,
@@ -380,6 +426,7 @@ class Cante {
         plataforma: j['plataforma'] as String? ?? '',
         eventoGoogle: j['eventoGoogle'] as String? ?? '',
       );
+  }
 
   /// Fusiona dos listas de cantes por id quedándose con la versión más reciente.
   static List<Cante> fusionar(Iterable<Cante> a, Iterable<Cante> b) {
@@ -414,7 +461,8 @@ class EstadisticaTema {
       }
     }
     return porTema.map((codigo, lista) {
-      final valorados = lista.where((c) => c.resultado!.valoracion > 0).toList();
+      // La valoración de ese tema en cada cante (la suya, si se valoró aparte).
+      final valorados = lista.where((c) => c.resultado!.valoracionDe(codigo) > 0).toList();
       final conTiempo = lista.where((c) => c.resultado!.segundos > 0).toList();
       return MapEntry(
         codigo,
@@ -422,7 +470,7 @@ class EstadisticaTema {
           codigo: codigo,
           veces: lista.length,
           segundosMedios: conTiempo.isEmpty ? 0 : conTiempo.fold<int>(0, (s, c) => s + c.resultado!.segundos) ~/ conTiempo.length,
-          valoracionMedia: valorados.isEmpty ? 0 : valorados.fold<int>(0, (s, c) => s + c.resultado!.valoracion) / valorados.length,
+          valoracionMedia: valorados.isEmpty ? 0 : valorados.fold<int>(0, (s, c) => s + c.resultado!.valoracionDe(codigo)) / valorados.length,
           ultimo: lista.map((c) => c.fecha).reduce((x, y) => x.isAfter(y) ? x : y),
         ),
       );

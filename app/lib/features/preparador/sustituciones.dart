@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/analitica.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
@@ -115,6 +116,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
         modalidad: _modalidad,
       );
       await red.publicarSustitucion(s, ContactoRed(nombre: _nombre.text.trim(), telefono: _telefono.text.trim()));
+      Analitica.instancia.evento('clase_suelta_pedida', parametros: {'temas': temas.length});
       // El teléfono se recuerda para la próxima vez (solo en tu cuenta).
       await ref.read(planProvider.notifier).actualizar((p) => p.copyWith(telefono: _telefono.text.trim()));
       ref.invalidate(misPeticionesProvider);

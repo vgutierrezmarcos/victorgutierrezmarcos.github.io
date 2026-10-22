@@ -9,8 +9,10 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'core/analitica.dart';
 import 'core/constants.dart';
 import 'core/notificaciones.dart';
+import 'core/pantalla_error.dart';
 import 'core/red_providers.dart';
 import 'core/widget_inicio.dart';
 import 'core/widget_providers.dart';
@@ -22,6 +24,7 @@ import 'features/cantes/cantes_page.dart';
 import 'features/cronograma/cronograma_page.dart';
 import 'features/estudiar/estudiar_page.dart';
 import 'features/guia/guia.dart';
+import 'features/inicio/estadisticas_dialogo.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/inicio/permisos_sheet.dart';
 import 'features/mas/cuenta_page.dart';
@@ -52,6 +55,9 @@ import 'widgets/comunes.dart';
 /// Estudiar (temario y test), Cantes (programar, cantar y anotar), Organización
 /// (cronograma, probabilidades, convocatoria, horario y estructura del temario,
 /// como la sección de la web) y Más (preparador, cuenta y ajustes).
+/// Navegador de cada pestaña (para volver a su inicio con un segundo toque).
+final clavesRamas = [for (var i = 0; i < 5; i++) GlobalKey<NavigatorState>(debugLabel: 'rama$i')];
+
 final _router = GoRouter(
   initialLocation: '/hoy',
   // Una ruta que no existe (un aviso antiguo, un enlace roto) lleva a Hoy en
@@ -63,14 +69,14 @@ final _router = GoRouter(
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => _Shell(shell: shell),
       branches: [
-        StatefulShellBranch(routes: [GoRoute(path: '/hoy', builder: (c, s) => const InicioPage())]),
-        StatefulShellBranch(routes: [
+        StatefulShellBranch(navigatorKey: clavesRamas[0], routes: [GoRoute(path: '/hoy', builder: (c, s) => const InicioPage())]),
+        StatefulShellBranch(navigatorKey: clavesRamas[1], routes: [
           GoRoute(path: '/estudiar', builder: (c, s) => const EstudiarPage(), routes: [
             GoRoute(path: 'test/estadisticas', builder: (c, s) => const EstadisticasPage()),
           ]),
         ]),
-        StatefulShellBranch(routes: [GoRoute(path: '/cantes', builder: (c, s) => const CantesPage())]),
-        StatefulShellBranch(routes: [
+        StatefulShellBranch(navigatorKey: clavesRamas[2], routes: [GoRoute(path: '/cantes', builder: (c, s) => const CantesPage())]),
+        StatefulShellBranch(navigatorKey: clavesRamas[3], routes: [
           GoRoute(path: '/organizacion', builder: (c, s) => const OrganizacionHubPage(), routes: [
             GoRoute(path: 'cronograma', builder: (c, s) => const CronogramaPage()),
             GoRoute(path: 'probabilidades', builder: (c, s) => const ProbabilidadesPage()),
@@ -81,7 +87,7 @@ final _router = GoRouter(
             GoRoute(path: 'mapa-calor', builder: (c, s) => const MapaCalorPage()),
           ]),
         ]),
-        StatefulShellBranch(routes: [
+        StatefulShellBranch(navigatorKey: clavesRamas[4], routes: [
           GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
             GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
             GoRoute(path: 'preparador', builder: (c, s) => const PreparadorPage(), routes: [
@@ -158,6 +164,12 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       if (antes?.map((a) => '${a.id}:${a.uid}').join() != ahora.map((a) => '${a.id}:${a.uid}').join()) ref.read(sesionesProvider.notifier).escucharAlumnos();
     });
     ref.listenManual(papelProvider, (_, __) => _relojes.revisar());
+    // Estadísticas (si están activadas): la pantalla que se ve y, como
+    // propiedades, la oposición y el papel. Nunca datos personales.
+    _router.routerDelegate.addListener(_pantallaVista);
+    _pantallaVista();
+    ref.listenManual(papelProvider, (_, p) => Analitica.instancia.usuario(papel: p.name), fireImmediately: true);
+    Analitica.instancia.usuario(oposicion: ref.read(oposicionProvider).id);
     ref.listenManual(usuarioActualProvider, (_, __) => _relojes.revisar());
     // Widget de la pantalla de inicio: al abrir la app desde él o tocarlo con ella abierta.
     abiertoDesdeWidget().then(_desdeWidget);
@@ -173,6 +185,10 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         final c = _router.routerDelegate.navigatorKey.currentContext;
         // ignore: use_build_context_synchronously
         if (c != null && mounted) await mostrarHojaPermisosSiToca(c);
+        if (!mounted) return;
+        // ¿Enviar estadísticas de uso? Una vez; apagado si no dice que sí.
+        // ignore: use_build_context_synchronously
+        if (c != null && mounted) await preguntarEstadisticasSiToca(c, ref);
         if (!mounted) return;
         await empezarGuiaSiToca(ref);
         if (mounted) await _abrirAltaSiToca();
@@ -278,8 +294,17 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     _periodico = Timer.periodic(const Duration(minutes: 3), (_) => ref.read(sesionProvider.notifier).sincronizarSiToca());
   }
 
+  String? _ultimaPantalla;
+  void _pantallaVista() {
+    final nombre = Analitica.nombreDePantalla(_router.routerDelegate.currentConfiguration.uri.toString());
+    if (nombre == _ultimaPantalla) return;
+    _ultimaPantalla = nombre;
+    Analitica.instancia.pantalla(nombre);
+  }
+
   @override
   void dispose() {
+    _router.routerDelegate.removeListener(_pantallaVista);
     _periodico?.cancel();
     _ciclo.dispose();
     Notificaciones.alTocar = null;
@@ -290,6 +315,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
 
   @override
   Widget build(BuildContext context) {
+    PantallaError.alInicio = () => _router.go('/hoy');
     // Al cargarse la sesión (al arrancar o al iniciarla) se sincroniza todo.
     ref.listen(usuarioActualProvider, (antes, ahora) {
       if (ahora != null && antes?.uid != ahora.uid) {
@@ -341,7 +367,13 @@ class _Shell extends ConsumerWidget {
     (Icons.more_horiz, Icons.more_horiz, 'Más'),
   ];
 
-  void _ir(int i) => shell.goBranch(i, initialLocation: i == shell.currentIndex);
+  /// Un toque cambia de pestaña; otro toque en la misma vuelve a su página
+  /// principal: cierra lo abierto encima (fichas, temas, clases: rutas sin
+  /// nombre que goBranch no toca) y va a la ruta inicial de la rama.
+  void _ir(int i) {
+    if (i == shell.currentIndex) clavesRamas[i].currentState?.popUntil((r) => r.isFirst);
+    shell.goBranch(i, initialLocation: i == shell.currentIndex);
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

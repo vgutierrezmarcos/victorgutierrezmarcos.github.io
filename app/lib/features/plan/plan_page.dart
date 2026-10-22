@@ -14,7 +14,9 @@ import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/sincronizar.dart';
 import '../preparador/red_widgets.dart';
+import '../preparador/reservas.dart';
 import '../cantes/nuevo_cante_sheet.dart';
 import 'cante_form_page.dart';
 import 'cante_page.dart';
@@ -115,10 +117,13 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
     // Sin cabecera: va dentro de CantesPage, que pone el título y las subpestañas.
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(onPressed: () => mostrarHojaNuevoCante(context, ref, dia: _dia), icon: const Icon(Icons.add), label: const Text('Añadir')),
-      body: ListaAdaptable(
+      body: Refrescable(
+          child: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 96),
         children: [
           TarjetaAyudaCantes(clave: 'agenda', icono: Icons.event_note_outlined, titulo: ayudasCantes['agenda']!.$1, texto: ayudasCantes['agenda']!.$2),
+          // Clases pedidas al preparador que aún no ha contestado.
+          const TarjetasReservasPedidas(),
           for (final c in canceladas.where(pasa))
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
@@ -248,7 +253,7 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
             for (final c in proximos.take(6)) _filaCante(c, ahora, conFecha: true),
           ],
         ],
-      ),
+      )),
     );
   }
 

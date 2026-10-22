@@ -7,20 +7,24 @@ import 'package:go_router/go_router.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../core/analitica.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/esquema.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/revisado.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../test/preguntas_por_tema_page.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/frecuencia_test.dart';
 import '../cantar/pizarra_compartida.dart';
 import '../preparador/materiales_widgets.dart';
 import 'agenda_tema_page.dart';
 import 'anotaciones.dart';
+import 'esquema_tema.dart';
 import 'html_revisado.dart';
 import 'visor_html.dart';
 import 'visor_tema.dart';
@@ -65,7 +69,12 @@ class _TemaPageState extends ConsumerState<TemaPage> {
   bool _pideAnterior = false;
   /// Leer el tema revisado como página web (HTML) en vez de en PDF.
   bool _verHtml = false;
-  String? _html, _shaHtml;
+  /// El esquema al lado del PDF (en pantallas anchas; se puede plegar).
+  bool _verEsquema = true;
+  /// El HTML del tema revisado tal como se bajó; se prepara para el visor
+  /// según el modo (claro u oscuro) al pintarlo.
+  String? _htmlCrudo, _shaHtml;
+  String? _htmlPreparado, _clavePreparado;
   Object? _errorHtml;
 
   /// Dónde se guardan las anotaciones de cada versión del tema (null sin
@@ -80,6 +89,10 @@ class _TemaPageState extends ConsumerState<TemaPage> {
   @override
   void initState() {
     super.initState();
+    if (!widget.esRecurso) {
+      Analitica.instancia.pantalla('/tema');
+      Analitica.instancia.evento('tema_abierto', parametros: {'ejercicio': int.tryParse(widget.tema.codigo.split('.').first) ?? 0, 'formato': 'pdf'});
+    }
     // Al abrir el tema se recuerdan los apuntes que se dejaron para esta vuelta.
     if (!widget.esRecurso && widget.tema.url != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -111,10 +124,26 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     });
     await anterior?.close();
     try {
-      final pdf = await ref.read(descargasProvider).abrir(fuente.url, nombre: fuente.nombre, reemplaza: fuente.reemplaza, progreso: (r, t) {
+      final descargas = ref.read(descargasProvider);
+      void progreso(int r, int t) {
         if (t > 0 && mounted && _claveCargada == clave) setState(() => _progreso = r / t);
-      });
-      final documento = await (pdf.ruta != null ? PdfDocument.openFile(pdf.ruta!) : PdfDocument.openData(pdf.bytes!));
+      }
+
+      var pdf = await descargas.abrir(fuente.url, nombre: fuente.nombre, reemplaza: fuente.reemplaza, progreso: progreso);
+      PdfDocument documento;
+      try {
+        // En la web, pdf.js se queda con el búfer que se le pasa (lo
+        // transfiere a su worker y lo deja «detached»): siempre una copia,
+        // para poder volver a abrir el tema y exportarlo anotado.
+        documento = await (pdf.ruta != null ? PdfDocument.openFile(pdf.ruta!) : PdfDocument.openData(Uint8List.fromList(pdf.bytes!)));
+      } catch (_) {
+        // Un fichero ya descargado que no se abre (a medias o dañado): se
+        // borra y se descarga otra vez antes de dar el error.
+        if (pdf.ruta == null || !descargas.guardaSinConexion) rethrow;
+        await descargas.borrar(fuente.url, nombre: fuente.nombre);
+        pdf = await descargas.abrir(fuente.url, nombre: fuente.nombre, reemplaza: fuente.reemplaza, progreso: progreso);
+        documento = await PdfDocument.openFile(pdf.ruta!);
+      }
       // Si mientras tanto se ha pedido otra versión (o se ha cerrado), esta sobra.
       if (!mounted || _claveCargada != clave) {
         await documento.close();
@@ -137,13 +166,13 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     if (f == null || _shaHtml == f.sha) return;
     setState(() {
       _shaHtml = f.sha;
-      _html = null;
+      _htmlCrudo = null;
       _errorHtml = null;
     });
     try {
       final bytes = await ref.read(descargasProvider).bytes(rev.url(f), nombre: rev.nombreLocal(ClaseFichero.html), reemplaza: rev.prefijoLocal(ClaseFichero.html));
-      final html = prepararHtmlRevisado(utf8.decode(bytes, allowMalformed: true), urlDocumento: rev.urlDocumentoHtml!);
-      if (mounted && _shaHtml == f.sha) setState(() => _html = html);
+      final html = utf8.decode(bytes, allowMalformed: true);
+      if (mounted && _shaHtml == f.sha) setState(() => _htmlCrudo = html);
     } catch (e) {
       if (mounted && _shaHtml == f.sha) setState(() => _errorHtml = e);
     }
@@ -213,6 +242,34 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     setState(() => _anotando = !_anotando);
   }
 
+  /// El HTML preparado para el visor en el modo actual (se guarda hasta que
+  /// cambie el tema, el modo o el HTML).
+  String _htmlDelVisor(TemaRevisado rv) {
+    final oscuro = context.temaOscuro;
+    final clave = '$_shaHtml|$oscuro';
+    if (_clavePreparado != clave || _htmlPreparado == null) {
+      _htmlPreparado = prepararHtmlRevisado(_htmlCrudo!, urlDocumento: rv.urlDocumentoHtml!, oscuro: oscuro);
+      _clavePreparado = clave;
+    }
+    return _htmlPreparado!;
+  }
+
+  /// El visor con el esquema a su izquierda (en pantallas anchas).
+  Widget _conEsquema(List<EntradaEsquema>? esquema, Widget visor) {
+    if (esquema == null) return visor;
+    return Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      SizedBox(
+        width: 290,
+        child: Material(
+          color: context.colores.superficie,
+          child: PanelEsquema(esquema: esquema, pagina: _pagina, alIr: _visor.irAPagina),
+        ),
+      ),
+      VerticalDivider(width: 1, thickness: 1, color: context.colores.borde),
+      Expanded(child: visor),
+    ]);
+  }
+
   /// El tema con las anotaciones, en un PDF nuevo (para imprimirlo o compartirlo).
   Future<void> _descargarAnotado(bool revisada) async {
     final pdf = _pdf;
@@ -254,7 +311,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final conSesion = ref.watch(usuarioActualProvider) != null && ref.read(serviciosProvider).firebaseDisponible;
     final estadoRevisados = widget.esRecurso ? null : ref.watch(revisadosProvider);
     final rev = estadoRevisados?.valueOrNull?.de(widget.tema.codigo);
-    final eleccion = elegirVersion(revisado: rev, conSesion: conSesion, pideAnterior: _pideAnterior);
+    final eleccion = elegirVersion(revisado: rev, conSesion: conSesion, pideAnterior: _pideAnterior, hayAnterior: widget.tema.url != null);
     // La revisada, si es la que se enseña.
     final TemaRevisado? rv = eleccion.esRevisada ? rev : null;
     final revisada = rv != null;
@@ -279,6 +336,16 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     if (verHtml) WidgetsBinding.instance.addPostFrameCallback((_) => mounted ? _cargarHtml(rv) : null);
     // Solo con el PDF abierto (Firestore no hace falta hasta entonces).
     final anotaciones = _pdf == null ? null : _anotacionesDe(revisada ? '${widget.tema.codigo}-revisado' : widget.tema.codigo);
+    // El esquema del PDF que se lee: el del manifiesto en el revisado, el de
+    // esquemas.json en el de la web. Al lado en pantallas anchas; en el móvil,
+    // en una hoja desde la barra de páginas.
+    final List<EntradaEsquema>? esquema = _pdf == null || verHtml || sinPdf || web
+        ? null
+        : revisada
+            ? (rv.esquema.isEmpty ? null : rv.esquema)
+            : ref.watch(esquemasProvider).valueOrNull?.de(widget.tema.url);
+    final pantallaAncha = MediaQuery.sizeOf(context).width >= 900;
+    final esquemaAlLado = esquema != null && pantallaAncha && _verEsquema && !_anotando;
 
     return Scaffold(
       appBar: BarraWeb(
@@ -363,7 +430,10 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                     Text(widget.tema.titulo, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
                     // Cuánto cae en el test del primer ejercicio (solo los temas que entran en él).
                     if (ref.watch(frecuenciaTestProvider).valueOrNull case final f? when f.temas.containsKey(widget.tema.codigo))
-                      Text('En el test: ${textoFrecuencia(f, widget.tema.codigo)}', style: context.textos.labelSmall),
+                      InkWell(
+                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PreguntasPorTemaPage())),
+                        child: Text('En el test: ${textoFrecuencia(f, widget.tema.codigo)} · ver por tema', style: context.textos.labelSmall?.copyWith(decoration: TextDecoration.underline)),
+                      ),
                   ]),
                 ),
                 if (!preparador) IconButton(
@@ -386,9 +456,9 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               : verHtml
               ? (_errorHtml != null
                   ? ErrorVista(error: _errorHtml!, reintentar: () => setState(() { _errorHtml = null; _shaHtml = null; }))
-                  : _html == null
+                  : _htmlCrudo == null
                       ? Cargando(texto: kIsWeb ? 'Cargando el tema…' : 'Descargando el tema…')
-                      : VisorHtml(key: ValueKey(_shaHtml), html: _html!, urlDocumento: rv.urlDocumentoHtml!))
+                      : VisorHtml(key: ValueKey('$_shaHtml|${context.temaOscuro}'), html: _htmlDelVisor(rv), urlDocumento: rv.urlDocumentoHtml!))
               : sinPdf
               ? AgendaTemaVista(tema: widget.tema)
               : web
@@ -409,7 +479,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                   Expanded(child: AgendaTemaVista(tema: widget.tema)),
                 ])
               : _error != null
-              ? ErrorVista(error: _error!, reintentar: () => setState(() { _error = null; _claveCargada = null; }))
+              ? ErrorVista(error: _error!, detalle: true, reintentar: () => setState(() { _error = null; _claveCargada = null; }))
               : _pdf == null
                   ? Center(
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -418,16 +488,19 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                         Text(_progreso == 0 ? (kIsWeb ? 'Cargando PDF…' : 'Descargando PDF…') : 'Descargando ${(100 * _progreso).round()} %', style: context.textos.bodySmall),
                       ]),
                     )
-                  : VisorTema(
-                      key: ValueKey(_claveCargada),
-                      documento: _pdf!,
-                      fuente: anotaciones,
-                      miUid: ref.read(usuarioActualProvider)?.uid ?? '',
-                      controlador: _visor,
-                      anotando: _anotando,
-                      alCargar: (n) => setState(() => _paginas = n),
-                      alCambiarPagina: (p) => setState(() => _pagina = p),
-                      alAcabar: () => setState(() => _anotando = false),
+                  : _conEsquema(
+                      esquemaAlLado ? esquema : null,
+                      VisorTema(
+                        key: ValueKey(_claveCargada),
+                        documento: _pdf!,
+                        fuente: anotaciones,
+                        miUid: ref.read(usuarioActualProvider)?.uid ?? '',
+                        controlador: _visor,
+                        anotando: _anotando,
+                        alCargar: (n) => setState(() => _paginas = n),
+                        alCambiarPagina: (p) => setState(() => _pagina = p),
+                        alAcabar: () => setState(() => _anotando = false),
+                      ),
                     ),
         ),
         if (_paginas > 0 && !_anotando && !verHtml)
@@ -437,6 +510,14 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               color: context.colores.superficie,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Row(children: [
+                if (esquema != null)
+                  IconButton(
+                    tooltip: pantallaAncha ? (_verEsquema ? 'Ocultar el esquema' : 'Ver el esquema al lado') : 'Esquema del tema: saltar de bloque',
+                    visualDensity: VisualDensity.compact,
+                    isSelected: pantallaAncha && _verEsquema,
+                    icon: const Icon(Icons.toc),
+                    onPressed: pantallaAncha ? () => setState(() => _verEsquema = !_verEsquema) : () => abrirEsquema(context, esquema: esquema, pagina: _pagina, alIr: _visor.irAPagina),
+                  ),
                 Text('Página $_pagina de $_paginas', style: context.textos.labelSmall),
                 Expanded(
                   child: Slider(
@@ -516,7 +597,8 @@ class _BarraRevisado extends StatelessWidget {
             TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.repaso), icon: const Icon(Icons.summarize_outlined, size: 18), label: const Text('Ficha de repaso')),
           if (revisado.docx != null)
             TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.docx), icon: const Icon(Icons.description_outlined, size: 18), label: const Text('Word')),
-          TextButton.icon(style: compacto, onPressed: cambiar, icon: const Icon(Icons.history, size: 18), label: const Text('Ver versión anterior')),
+          if (eleccion.puedeCambiar)
+            TextButton.icon(style: compacto, onPressed: cambiar, icon: const Icon(Icons.history, size: 18), label: const Text('Ver versión anterior')),
         ]),
       ]);
     } else {

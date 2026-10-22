@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La oposición a TCEE en cifras: plazas, aprobados y notas de cada convocatoria</title>
+    <meta name="description" content="Estadísticas de la oposición a Técnico Comercial y Economista del Estado calculadas con los documentos oficiales: plazas, admitidos, aprobados por ejercicio, notas de corte, idiomas y cobertura, convocatoria a convocatoria.">
+
+    <!-- SEO: Canonical URL -->
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/oposicion/cifras.html">
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">
+
+    <!-- SEO: Palabras clave adicionales -->
+    <meta name="keywords" content="oposición TCEE cifras, estadísticas oposición economista del estado, plazas TCEE por año, aprobados TCEE, nota de corte test TCEE, cuántos se presentan a TCEE, TECO estadísticas">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="La oposición a TCEE en cifras: plazas, aprobados y notas de cada convocatoria">
+    <meta property="og:description" content="Estadísticas de la oposición a Técnico Comercial y Economista del Estado calculadas con los documentos oficiales: plazas, admitidos, aprobados por ejercicio, notas de corte, idiomas y cobertura.">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/oposicion/cifras.html">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La oposición a TCEE en cifras">
+    <meta name="twitter:description" content="Plazas, admitidos, aprobados por ejercicio, notas de corte, idiomas y cobertura de la oposición a TCEE, convocatoria a convocatoria, con los documentos oficiales.">
+    <meta name="twitter:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#5F2987">
+
+    <link rel="preload" href="../styles.css" as="style">
+    <link rel="alternate" type="application/rss+xml" title="Blog de Víctor Gutiérrez Marcos" href="https://www.victorgutierrezmarcos.es/blog/newsletter/rss.xml">
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../search-styles.css">
+    <link rel="stylesheet" href="../cookie-consent.css">
+
+    <style>
+        .content-text h2 { font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; color: var(--color-primary); margin: 2.5rem 0 1rem 0; }
+        .content-text .actualizado { font-family: var(--font-ui); font-size: 0.9rem; color: var(--color-text-muted); }
+        .guia-kicker { font-family: var(--font-ui); font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600; color: var(--color-primary); margin: 0 0 0.35rem 0; }
+        .guia-indice { font-family: var(--font-ui); font-size: 0.92rem; margin: 1.25rem 0 0.5rem; }
+        .guia-indice ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem; }
+        .guia-indice a { color: var(--color-primary); }
+        .cifras-clave { list-style: none; margin: 1.25rem 0 0.5rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.9rem; font-family: var(--font-ui); }
+        .cifras-clave li { border-top: 2px solid var(--color-accent-gold); padding-top: 0.5rem; }
+        .cifras-clave .n { display: block; font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; color: var(--color-primary); line-height: 1.1; }
+        .cifras-clave .t { font-size: 0.85rem; color: var(--color-text-muted); }
+        .grafico-js { position: relative; width: 100%; height: var(--alto-grafico, 340px); margin: 0.25rem 0 0.5rem; }
+        .grafico-js canvas { width: 100% !important; height: 100% !important; }
+        .grafico-js .lienzo { position: relative; width: 100%; height: 100%; }
+        .grafico-js.desplazable { overflow-x: auto; }
+        .grafico-js.desplazable .lienzo { min-width: var(--ancho-minimo, 1800px); }
+        .grafico-js noscript .grafico { width: 100%; height: auto; display: block; }
+        @media (max-width: 480px) { .grafico-js { height: calc(var(--alto-grafico, 340px) * 0.8); } }
+        .figura-cifras { margin: 1.25rem 0 2rem; }
+        .figura-cifras .grafico { width: 100%; height: auto; display: block; }
+        .figura-cifras figcaption { font-family: var(--font-ui); font-size: 0.88rem; color: var(--color-text-muted); margin-top: 0.4rem; }
+        .datos-figura { font-family: var(--font-ui); font-size: 0.9rem; margin-top: 0.5rem; }
+        .datos-figura summary { cursor: pointer; color: var(--color-primary); }
+        .tabla-scroll { overflow-x: auto; margin: 0.75rem 0 1rem; }
+        .tabla-guia { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.9rem; line-height: 1.4; font-variant-numeric: tabular-nums; }
+        .tabla-guia th, .tabla-guia td { padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--color-border-light); text-align: left; vertical-align: top; }
+        .tabla-guia thead th { font-variant-caps: all-small-caps; letter-spacing: 0.05em; color: var(--color-primary); border-bottom: 2px solid var(--color-primary); }
+        .tabla-guia tbody th { font-weight: 600; white-space: nowrap; }
+        .tabla-guia tfoot td, .tabla-guia tfoot th { font-weight: 600; border-bottom: none; }
+        .nota-metodo { font-family: var(--font-ui); font-size: 0.9rem; color: var(--color-text-muted); }
+        @media (max-width: 480px) { .content-text h2 { font-size: 1.2rem; } .tabla-guia { font-size: 0.82rem; } .cifras-clave .n { font-size: 1.5rem; } }
+    </style>
+
+    <!-- SEO: Datos estructurados Schema.org -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "La oposición a Técnico Comercial y Economista del Estado (TCEE) en cifras",
+    "description": "Plazas, admitidos, aprobados por ejercicio, notas de corte, idiomas y cobertura de cada convocatoria de la oposición a TCEE, calculados a partir de los documentos oficiales del Ministerio de Economía, Comercio y Empresa y del BOE.",
+    "url": "https://www.victorgutierrezmarcos.es/oposicion/cifras.html",
+    "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "creator": {"@type": "Person", "@id": "https://www.victorgutierrezmarcos.es/#victor", "name": "Víctor Gutiérrez Marcos", "jobTitle": "Técnico Comercial y Economista del Estado", "url": "https://www.victorgutierrezmarcos.es/sobre-mi.html"},
+    "isBasedOn": ["https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx", "https://www.boe.es/"],
+    "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://www.victorgutierrezmarcos.es/oposicion/cifras.json"},
+    "temporalCoverage": "1985/2026",
+    "dateModified": "2026-10-22",
+    "inLanguage": "es"
+}
+    </script>
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.victorgutierrezmarcos.es/"},
+        {"@type": "ListItem", "position": 2, "name": "Oposición", "item": "https://www.victorgutierrezmarcos.es/oposicion/"},
+        {"@type": "ListItem", "position": 3, "name": "La oposición en cifras", "item": "https://www.victorgutierrezmarcos.es/oposicion/cifras.html"}
+    ]
+}
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <p class="site-title"><a href="../index.html">Víctor Gutiérrez Marcos</a></p>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-app"><a href="../app/abrir/" title="Abrir la app" aria-label="Abrir la app Oposición TCEE y DCE"><img src="../app/assets/icon/icon.svg" alt="" width="30" height="30"></a></li>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="index.html" class="active">Oposición</a></li>
+                <li><a href="../blog/index.html">Blog</a></li>
+                <li><a href="../sobre-mi.html">Sobre mí</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="sub-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="index.html">Introducción</a></li>
+                <li><a href="temario.html">Temario</a></li>
+                <li><a href="organizacion.html">Organización</a></li>
+                <li><a href="enlaces.html">Enlaces</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-container">
+            <article class="page-content">
+                <nav class="breadcrumb">
+                    <a href="index.html">Oposición</a><span>›</span><a href="por-que-tcee.html">La oposición a TCEE</a><span>›</span>En cifras
+                </nav>
+
+                <p class="guia-kicker">Guía de la oposición · Estadísticas</p>
+                <h1 class="section-title">La oposición a Técnico Comercial y Economista del Estado en cifras</h1>
+
+                <div class="content-text">
+                    <!-- Todo lo que sigue hasta el cierre lo escribe scripts/cifras-oposicion.py: no editar a mano -->
+                    <!-- cifras:inicio -->
+<p class="actualizado">Por <a href="../sobre-mi.html">Víctor Gutiérrez Marcos</a>, Técnico Comercial y Economista del Estado · Actualizado el 22 de octubre de 2026</p>
+<p>Todo lo que hay en esta página sale de los documentos oficiales: las convocatorias y las relaciones de aprobados publicadas en el BOE y, desde la oferta de empleo público de 2018, las listas de admitidos, de aprobados de cada ejercicio y de conservación de nota que publica el Ministerio de Economía, Comercio y Empresa. Muchos de esos documentos son imágenes escaneadas, así que puede haber algún error de lectura de una o dos unidades. Solo se publican recuentos y porcentajes, nunca datos de personas ni puntuaciones. Las series llegan hasta donde llegan los documentos: cada apartado indica desde qué año hay datos.</p>
+<ul class="cifras-clave"><li><span class="n">22</span><span class="t">plazas de turno libre en la última convocatoria con resultado (2025)</span></li><li><span class="n">24,7</span><span class="t">plazas de turno libre al año de media en las últimas 10 convocatorias</span></li><li><span class="n">9,0</span><span class="t">admitidos por cada plaza de turno libre (2019-2026)</span></li><li><span class="n">89 %</span><span class="t">de las plazas de turno libre se cubren de media (1996-2025)</span></li></ul>
+<nav class="guia-indice" aria-label="Contenido"><ul><li><a href="#plazas">Plazas y aprobados</a></li><li><a href="#admitidos">Admitidos por plaza</a></li><li><a href="#suspensos">Suspensos por ejercicio</a></li><li><a href="#idiomas">Idiomas</a></li><li><a href="#repetidores">Cuántos repiten</a></li><li><a href="#cuerpo">El cuerpo desde 1930</a></li><li><a href="#tabla">Tabla completa</a></li><li><a href="#metodo">Método y fuentes</a></li></ul></nav>
+<h2 id="plazas">Plazas convocadas y aprobados, 1985-2026</h2>
+<p>Plazas de turno libre de cada convocatoria (por el año en que se celebran los exámenes), partidas entre las que se cubrieron (los aprobados de la fase de oposición que publica el BOE) y las que quedaron desiertas. La promoción interna, reservada a funcionarios A2, va aparte.</p>
+<figure class="figura-cifras" id="g-plazas">
+<div class="grafico-js" style="--alto-grafico: 340px"><div class="lienzo"><canvas role="img" aria-label="Plazas de turno libre por convocatoria: aprobados y plazas sin cubrir"></canvas></div><script type="application/json" class="datos-grafico">{"titulo": "Plazas de turno libre por convocatoria: aprobados y plazas sin cubrir", "etiquetas": ["1985", "1986", "1987", "1988", "1992", "1993", "1994", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "Aprobados de turno libre", "valores": [9, 12, 10, 20, 16, 9, 10, 7, 8, 9, 8, 12, 10, 12, 12, 12, 9, 12, 13, 20, 22, 13, 12, 10, 10, 15, 22, 13, 19, 19, 17, 28, 23, 25, 17, null], "tipo": "bar", "color": "gold", "eje": "y", "apilar": true}, {"nombre": "Plazas sin cubrir", "valores": [21, 19, 9, 5, 4, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 5, 3, 1, 1, 2, 2, 6, 9, 7, 1, 2, 1, 4, 4, 4, 5, null], "tipo": "bar", "color": "border-strong", "eje": "y", "apilar": true}, {"nombre": "Convocatoria en curso (plazas)", "valores": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 27], "tipo": "bar", "color": "primary-pale", "eje": "y", "apilar": true}], "temporal": true, "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-plazas-t g-plazas-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-plazas-t">Plazas de turno libre por convocatoria: aprobados y plazas sin cubrir</title><desc id="g-plazas-d">Columnas apiladas: en cada convocatoria entre 1985 y 2026, los aprobados de turno libre y, encima, las plazas que quedaron sin cubrir; la suma es el total de plazas convocadas.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="282.0" x2="712" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="286.0" text-anchor="end">0</text>
+<line x1="48" y1="216.0" x2="712" y2="216.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="220.0" text-anchor="end">10</text>
+<line x1="48" y1="150.0" x2="712" y2="150.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="154.0" text-anchor="end">20</text>
+<line x1="48" y1="84.0" x2="712" y2="84.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="88.0" text-anchor="end">30</text>
+<line x1="48" y1="18.0" x2="712" y2="18.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="22.0" text-anchor="end">40</text>
+<text x="57.2" y="298" text-anchor="middle">1985</text>
+<text x="94.1" y="298" text-anchor="middle">1987</text>
+<text x="131.0" y="298" text-anchor="middle">1992</text>
+<text x="167.9" y="298" text-anchor="middle">1994</text>
+<text x="204.8" y="298" text-anchor="middle">1997</text>
+<text x="241.7" y="298" text-anchor="middle">1999</text>
+<text x="278.6" y="298" text-anchor="middle">2001</text>
+<text x="315.4" y="298" text-anchor="middle">2003</text>
+<text x="352.3" y="298" text-anchor="middle">2005</text>
+<text x="389.2" y="298" text-anchor="middle">2007</text>
+<text x="426.1" y="298" text-anchor="middle">2009</text>
+<text x="463.0" y="298" text-anchor="middle">2011</text>
+<text x="499.9" y="298" text-anchor="middle">2015</text>
+<text x="536.8" y="298" text-anchor="middle">2017</text>
+<text x="573.7" y="298" text-anchor="middle">2019</text>
+<text x="610.6" y="298" text-anchor="middle">2021</text>
+<text x="647.4" y="298" text-anchor="middle">2023</text>
+<text x="684.3" y="298" text-anchor="middle">2025</text>
+<rect x="50.6" y="222.6" width="11.3" height="59.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1985: 9</title></rect>
+<rect x="69.0" y="202.8" width="11.3" height="79.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1986: 12</title></rect>
+<rect x="87.5" y="216.0" width="11.3" height="66.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1987: 10</title></rect>
+<rect x="105.9" y="150.0" width="11.3" height="132.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1988: 20</title></rect>
+<rect x="124.4" y="176.4" width="11.3" height="105.6" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1992: 16</title></rect>
+<rect x="142.8" y="222.6" width="11.3" height="59.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1993: 9</title></rect>
+<rect x="161.2" y="216.0" width="11.3" height="66.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1994: 10</title></rect>
+<rect x="179.7" y="235.8" width="11.3" height="46.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1996: 7</title></rect>
+<rect x="198.1" y="229.2" width="11.3" height="52.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1997: 8</title></rect>
+<rect x="216.6" y="222.6" width="11.3" height="59.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1998: 9</title></rect>
+<rect x="235.0" y="229.2" width="11.3" height="52.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 1999: 8</title></rect>
+<rect x="253.5" y="202.8" width="11.3" height="79.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2000: 12</title></rect>
+<rect x="271.9" y="216.0" width="11.3" height="66.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2001: 10</title></rect>
+<rect x="290.4" y="202.8" width="11.3" height="79.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2002: 12</title></rect>
+<rect x="308.8" y="202.8" width="11.3" height="79.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2003: 12</title></rect>
+<rect x="327.2" y="202.8" width="11.3" height="79.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2004: 12</title></rect>
+<rect x="345.7" y="222.6" width="11.3" height="59.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2005: 9</title></rect>
+<rect x="364.1" y="202.8" width="11.3" height="79.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2006: 12</title></rect>
+<rect x="382.6" y="196.2" width="11.3" height="85.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2007: 13</title></rect>
+<rect x="401.0" y="150.0" width="11.3" height="132.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2008: 20</title></rect>
+<rect x="419.5" y="136.8" width="11.3" height="145.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2009: 22</title></rect>
+<rect x="437.9" y="196.2" width="11.3" height="85.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2010: 13</title></rect>
+<rect x="456.4" y="202.8" width="11.3" height="79.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2011: 12</title></rect>
+<rect x="474.8" y="216.0" width="11.3" height="66.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2014: 10</title></rect>
+<rect x="493.2" y="216.0" width="11.3" height="66.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2015: 10</title></rect>
+<rect x="511.7" y="183.0" width="11.3" height="99.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2016: 15</title></rect>
+<rect x="530.1" y="136.8" width="11.3" height="145.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2017: 22</title></rect>
+<rect x="548.6" y="196.2" width="11.3" height="85.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2018: 13</title></rect>
+<rect x="567.0" y="156.6" width="11.3" height="125.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2019: 19</title></rect>
+<rect x="585.5" y="156.6" width="11.3" height="125.4" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2020: 19</title></rect>
+<rect x="603.9" y="169.8" width="11.3" height="112.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2021: 17</title></rect>
+<rect x="622.4" y="97.2" width="11.3" height="184.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2022: 28</title></rect>
+<rect x="640.8" y="130.2" width="11.3" height="151.8" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2023: 23</title></rect>
+<rect x="659.2" y="117.0" width="11.3" height="165.0" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2024: 25</title></rect>
+<rect x="677.7" y="169.8" width="11.3" height="112.2" fill="var(--color-accent-gold)"><title>Aprobados de turno libre 2025: 17</title></rect>
+<rect x="50.6" y="84.0" width="11.3" height="138.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1985: 21</title></rect>
+<rect x="69.0" y="77.4" width="11.3" height="125.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1986: 19</title></rect>
+<rect x="87.5" y="156.6" width="11.3" height="59.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1987: 9</title></rect>
+<rect x="105.9" y="117.0" width="11.3" height="33.0" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1988: 5</title></rect>
+<rect x="124.4" y="150.0" width="11.3" height="26.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1992: 4</title></rect>
+<rect x="179.7" y="216.0" width="11.3" height="19.8" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1996: 3</title></rect>
+<rect x="235.0" y="222.6" width="11.3" height="6.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 1999: 1</title></rect>
+<rect x="345.7" y="216.0" width="11.3" height="6.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2005: 1</title></rect>
+<rect x="382.6" y="189.6" width="11.3" height="6.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2007: 1</title></rect>
+<rect x="401.0" y="117.0" width="11.3" height="33.0" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2008: 5</title></rect>
+<rect x="419.5" y="117.0" width="11.3" height="19.8" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2009: 3</title></rect>
+<rect x="437.9" y="189.6" width="11.3" height="6.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2010: 1</title></rect>
+<rect x="456.4" y="196.2" width="11.3" height="6.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2011: 1</title></rect>
+<rect x="474.8" y="202.8" width="11.3" height="13.2" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2014: 2</title></rect>
+<rect x="493.2" y="202.8" width="11.3" height="13.2" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2015: 2</title></rect>
+<rect x="511.7" y="143.4" width="11.3" height="39.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2016: 6</title></rect>
+<rect x="530.1" y="77.4" width="11.3" height="59.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2017: 9</title></rect>
+<rect x="548.6" y="150.0" width="11.3" height="46.2" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2018: 7</title></rect>
+<rect x="567.0" y="150.0" width="11.3" height="6.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2019: 1</title></rect>
+<rect x="585.5" y="143.4" width="11.3" height="13.2" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2020: 2</title></rect>
+<rect x="603.9" y="163.2" width="11.3" height="6.6" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2021: 1</title></rect>
+<rect x="622.4" y="70.8" width="11.3" height="26.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2022: 4</title></rect>
+<rect x="640.8" y="103.8" width="11.3" height="26.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2023: 4</title></rect>
+<rect x="659.2" y="90.6" width="11.3" height="26.4" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2024: 4</title></rect>
+<rect x="677.7" y="136.8" width="11.3" height="33.0" fill="var(--color-border-strong)"><title>Plazas sin cubrir 2025: 5</title></rect>
+<rect x="696.1" y="103.8" width="11.3" height="178.2" fill="var(--color-primary-pale)"><title>Convocatoria en curso (plazas) 2026: 27</title></rect>
+<rect x="48" y="322" width="18" height="11" fill="var(--color-accent-gold)" rx="1.5"/>
+<text x="72" y="332">Aprobados de turno libre</text>
+<rect x="258" y="322" width="18" height="11" fill="var(--color-border-strong)" rx="1.5"/>
+<text x="282" y="332">Plazas sin cubrir</text>
+<rect x="419" y="322" width="18" height="11" fill="var(--color-primary-pale)" rx="1.5"/>
+<text x="443" y="332">Convocatoria en curso (plazas)</text>
+</g></svg></noscript></div>
+<figcaption>Fuente: convocatorias y relaciones de aprobados en la fase de oposición publicadas en el BOE. Las convocatorias en curso aún no tienen aprobados.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Convocatoria (BOE)</th><th scope="col">Plazas libre</th><th scope="col">Reserva discapacidad</th><th scope="col">Plazas interna</th><th scope="col">Aprobados libre</th><th scope="col">Sin cubrir</th><th scope="col">Aprobados interna</th><th scope="col">Cobertura libre</th></tr></thead>
+<tbody>
+<tr><th scope="row">1985</th><td>25/03/1985</td><td>30</td><td>—</td><td>5</td><td>9</td><td>21</td><td>0</td><td>30 %</td></tr>
+<tr><th scope="row">1986</th><td>24/03/1986</td><td>31</td><td>—</td><td>—</td><td>12</td><td>19</td><td>0</td><td>39 %</td></tr>
+<tr><th scope="row">1987</th><td>18/03/1987</td><td>19</td><td>—</td><td>4</td><td>10</td><td>9</td><td>0</td><td>53 %</td></tr>
+<tr><th scope="row">1988</th><td>28/03/1988</td><td>25</td><td>—</td><td>—</td><td>20</td><td>5</td><td>0</td><td>80 %</td></tr>
+<tr><th scope="row">1992</th><td>30/04/1991</td><td>20</td><td>—</td><td>—</td><td>16</td><td>4</td><td>0</td><td>80 %</td></tr>
+<tr><th scope="row">1993</th><td>02/03/1993</td><td>9</td><td>—</td><td>—</td><td>9</td><td>0</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">1994</th><td>23/06/1994</td><td>10</td><td>—</td><td>—</td><td>10</td><td>0</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">1996</th><td>24/11/1995</td><td>10</td><td>—</td><td>2</td><td>7</td><td>3</td><td>0</td><td>70 %</td></tr>
+<tr><th scope="row">1997</th><td>13/12/1996</td><td>8</td><td>—</td><td>2</td><td>8</td><td>0</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">1998</th><td>03/12/1997</td><td>9</td><td>—</td><td>3</td><td>9</td><td>0</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">1999</th><td>01/12/1998</td><td>9</td><td>—</td><td>—</td><td>8</td><td>1</td><td>0</td><td>89 %</td></tr>
+<tr><th scope="row">2000</th><td>08/11/1999</td><td>12</td><td>—</td><td>—</td><td>12</td><td>0</td><td>3</td><td>100 %</td></tr>
+<tr><th scope="row">2001</th><td>27/09/2000</td><td>10</td><td>—</td><td>—</td><td>10</td><td>0</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">2002</th><td>24/09/2001</td><td>12</td><td>—</td><td>—</td><td>12</td><td>0</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">2003</th><td>13/06/2002</td><td>12</td><td>—</td><td>—</td><td>12</td><td>0</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">2004</th><td>14/05/2003</td><td>12</td><td>—</td><td>—</td><td>12</td><td>0</td><td>2</td><td>100 %</td></tr>
+<tr><th scope="row">2005</th><td>05/05/2004</td><td>10</td><td>—</td><td>4</td><td>9</td><td>1</td><td>0</td><td>90 %</td></tr>
+<tr><th scope="row">2006</th><td>20/05/2005</td><td>12</td><td>—</td><td>3</td><td>12</td><td>0</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">2007</th><td>05/06/2006</td><td>14</td><td>—</td><td>2</td><td>13</td><td>1</td><td>0</td><td>93 %</td></tr>
+<tr><th scope="row">2008</th><td>19/04/2007</td><td>25</td><td>—</td><td>4</td><td>20</td><td>5</td><td>0</td><td>80 %</td></tr>
+<tr><th scope="row">2009</th><td>16/04/2008</td><td>25</td><td>—</td><td>6</td><td>22</td><td>3</td><td>1</td><td>88 %</td></tr>
+<tr><th scope="row">2010</th><td>05/06/2009</td><td>14</td><td>—</td><td>5</td><td>13</td><td>1</td><td>0</td><td>93 %</td></tr>
+<tr><th scope="row">2011</th><td>14/06/2011</td><td>13</td><td>—</td><td>—</td><td>12</td><td>1</td><td>0</td><td>92 %</td></tr>
+<tr><th scope="row">2014</th><td>25/09/2013</td><td>12</td><td>—</td><td>2</td><td>10</td><td>2</td><td>1</td><td>83 %</td></tr>
+<tr><th scope="row">2015</th><td>10/07/2014</td><td>12</td><td>—</td><td>2</td><td>10</td><td>2</td><td>0</td><td>83 %</td></tr>
+<tr><th scope="row">2016</th><td>30/10/2015</td><td>21</td><td>—</td><td>6</td><td>15</td><td>6</td><td>0</td><td>71 %</td></tr>
+<tr><th scope="row">2017</th><td>22/09/2016</td><td>31</td><td>2</td><td>11</td><td>22</td><td>9</td><td>2</td><td>71 %</td></tr>
+<tr><th scope="row">2018</th><td>07/11/2017</td><td>20</td><td>1</td><td>4</td><td>13</td><td>7</td><td>0</td><td>65 %</td></tr>
+<tr><th scope="row">2019</th><td>20/11/2018</td><td>20</td><td>1</td><td>5</td><td>19</td><td>1</td><td>0</td><td>95 %</td></tr>
+<tr><th scope="row">2020</th><td>30/10/2019</td><td>21</td><td>1</td><td>3</td><td>19</td><td>2</td><td>0</td><td>90 %</td></tr>
+<tr><th scope="row">2021</th><td>19/05/2021</td><td>18</td><td>1</td><td>5</td><td>17</td><td>1</td><td>0</td><td>94 %</td></tr>
+<tr><th scope="row">2022</th><td>13/05/2022</td><td>32</td><td>2</td><td>2</td><td>28</td><td>4</td><td>2</td><td>88 %</td></tr>
+<tr><th scope="row">2023</th><td>11/04/2023</td><td>27</td><td>1</td><td>4</td><td>23</td><td>4</td><td>2</td><td>85 %</td></tr>
+<tr><th scope="row">2024</th><td>05/04/2024</td><td>29</td><td>1</td><td>15</td><td>25</td><td>4</td><td>2</td><td>86 %</td></tr>
+<tr><th scope="row">2025</th><td>22/12/2024</td><td>22</td><td>2</td><td>15</td><td>17</td><td>5</td><td>2</td><td>77 %</td></tr>
+<tr><th scope="row">2026</th><td>22/12/2025</td><td>27</td><td>2</td><td>10</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<p>En las 28 convocatorias con relación de aprobados en el BOE (1996-2025), las plazas de turno libre se cubrieron de media al 89 %; en 8 se cubrieron todas y en 20 quedaron plazas desiertas (1996: 3, 1999: 1, 2005: 1, 2007: 1, 2008: 5, 2009: 3, 2010: 1, 2011: 1, 2014: 2, 2015: 2, 2016: 6, 2017: 9, 2018: 7, 2019: 1, 2020: 2, 2021: 1, 2022: 4, 2023: 4, 2024: 4, 2025: 5). Los aprobados de las convocatorias anteriores a 1996 son el tamaño de cada promoción según la ATCEE (turno libre y promoción interna juntos) y, si falta, los nombramientos leídos de BOE escaneados.</p>
+<h2 id="admitidos">Cuántos se presentan: admitidos por plaza, 2019-2026</h2>
+<p>Las listas definitivas de admitidos del Ministerio existen desde la oferta de empleo público de 2018. No todos los admitidos llegan a examinarse, pero es la mejor medida de cuánta gente opta a cada plaza.</p>
+<figure class="figura-cifras" id="g-admitidos">
+<div class="grafico-js" style="--alto-grafico: 340px"><div class="lienzo"><canvas role="img" aria-label="Admitidos de turno libre y admitidos por plaza"></canvas></div><script type="application/json" class="datos-grafico">{"titulo": "Admitidos de turno libre y admitidos por plaza", "etiquetas": ["2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "Admitidos de turno libre", "valores": [189, 218, 271, 260, 221, 186, 172, 186], "tipo": "bar", "color": "primary", "eje": "y", "apilar": false}, {"nombre": "Admitidos por plaza", "valores": [9.4, 10.4, 15.1, 8.1, 8.2, 6.4, 7.8, 6.9], "tipo": "line", "color": "gold", "eje": "y2"}], "temporal": true, "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": {"max": null, "unidad": "/plaza", "min": 0}}}</script><noscript><svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-admitidos-t g-admitidos-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-admitidos-t">Admitidos de turno libre y admitidos por plaza</title><desc id="g-admitidos-d">Barras con los admitidos de turno libre de cada convocatoria y línea con el cociente entre admitidos y plazas.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="282.0" x2="696" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="286.0" text-anchor="end">0</text>
+<text x="702" y="286.0" text-anchor="start" fill="var(--color-accent-gold)">0</text>
+<line x1="48" y1="216.0" x2="696" y2="216.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="220.0" text-anchor="end">75</text>
+<text x="702" y="220.0" text-anchor="start" fill="var(--color-accent-gold)">5</text>
+<line x1="48" y1="150.0" x2="696" y2="150.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="154.0" text-anchor="end">150</text>
+<text x="702" y="154.0" text-anchor="start" fill="var(--color-accent-gold)">10</text>
+<line x1="48" y1="84.0" x2="696" y2="84.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="88.0" text-anchor="end">225</text>
+<text x="702" y="88.0" text-anchor="start" fill="var(--color-accent-gold)">15</text>
+<line x1="48" y1="18.0" x2="696" y2="18.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="22.0" text-anchor="end">300</text>
+<text x="702" y="22.0" text-anchor="start" fill="var(--color-accent-gold)">20/plaza</text>
+<text x="88.5" y="298" text-anchor="middle">2019</text>
+<text x="169.5" y="298" text-anchor="middle">2020</text>
+<text x="250.5" y="298" text-anchor="middle">2021</text>
+<text x="331.5" y="298" text-anchor="middle">2022</text>
+<text x="412.5" y="298" text-anchor="middle">2023</text>
+<text x="493.5" y="298" text-anchor="middle">2024</text>
+<text x="574.5" y="298" text-anchor="middle">2025</text>
+<text x="655.5" y="298" text-anchor="middle">2026</text>
+<rect x="59.3" y="115.7" width="56.3" height="166.3" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2019: 189</title></rect>
+<text x="87.5" y="111.7" text-anchor="middle" font-size="10.5">189</text>
+<rect x="140.3" y="90.2" width="56.3" height="191.8" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2020: 218</title></rect>
+<text x="168.5" y="86.2" text-anchor="middle" font-size="10.5">218</text>
+<rect x="221.3" y="43.5" width="56.3" height="238.5" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2021: 271</title></rect>
+<text x="249.5" y="39.5" text-anchor="middle" font-size="10.5">271</text>
+<rect x="302.3" y="53.2" width="56.3" height="228.8" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2022: 260</title></rect>
+<text x="330.5" y="49.2" text-anchor="middle" font-size="10.5">260</text>
+<rect x="383.3" y="87.5" width="56.3" height="194.5" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2023: 221</title></rect>
+<text x="411.5" y="83.5" text-anchor="middle" font-size="10.5">221</text>
+<rect x="464.3" y="118.3" width="56.3" height="163.7" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2024: 186</title></rect>
+<text x="492.5" y="114.3" text-anchor="middle" font-size="10.5">186</text>
+<rect x="545.3" y="130.6" width="56.3" height="151.4" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2025: 172</title></rect>
+<text x="573.5" y="126.6" text-anchor="middle" font-size="10.5">172</text>
+<rect x="626.3" y="118.3" width="56.3" height="163.7" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2026: 186</title></rect>
+<text x="654.5" y="114.3" text-anchor="middle" font-size="10.5">186</text>
+<path d="M 88.5 157.9 L 169.5 144.7 L 250.5 82.7 L 331.5 175.1 L 412.5 173.8 L 493.5 197.5 L 574.5 179.0 L 655.5 190.9" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="88.5" cy="157.9" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2019: 9,4/plaza</title></circle>
+<circle cx="169.5" cy="144.7" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2020: 10,4/plaza</title></circle>
+<circle cx="250.5" cy="82.7" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2021: 15,1/plaza</title></circle>
+<circle cx="331.5" cy="175.1" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2022: 8,1/plaza</title></circle>
+<circle cx="412.5" cy="173.8" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2023: 8,2/plaza</title></circle>
+<circle cx="493.5" cy="197.5" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2024: 6,4/plaza</title></circle>
+<circle cx="574.5" cy="179.0" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2025: 7,8/plaza</title></circle>
+<circle cx="655.5" cy="190.9" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2026: 6,9/plaza</title></circle>
+<rect x="48" y="322" width="18" height="11" fill="var(--color-primary)" rx="1.5"/>
+<text x="72" y="332">Admitidos de turno libre</text>
+<line x1="258" y1="328" x2="276" y2="328" stroke="var(--color-accent-gold)" stroke-width="2.5"/><circle cx="267" cy="328" r="3" fill="var(--color-accent-gold)"/>
+<text x="282" y="332">Admitidos por plaza</text>
+</g></svg></noscript></div>
+<figcaption>Fuente: listas definitivas de admitidos (turno libre) del Ministerio de Economía, Comercio y Empresa.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Admitidos libre</th><th scope="col">Reserva discapacidad</th><th scope="col">Admitidos interna</th><th scope="col">Plazas libre</th><th scope="col">Admitidos por plaza</th><th scope="col">Aprobados libre</th><th scope="col">Aprobados por cada 100 admitidos</th></tr></thead>
+<tbody>
+<tr><th scope="row">2019</th><td>189</td><td>1</td><td>3</td><td>20</td><td>9,4</td><td>19</td><td>10,1</td></tr>
+<tr><th scope="row">2020</th><td>218</td><td>2</td><td>12</td><td>21</td><td>10,4</td><td>19</td><td>8,7</td></tr>
+<tr><th scope="row">2021</th><td>271</td><td>6</td><td>8</td><td>18</td><td>15,1</td><td>17</td><td>6,3</td></tr>
+<tr><th scope="row">2022</th><td>260</td><td>5</td><td>13</td><td>32</td><td>8,1</td><td>28</td><td>10,8</td></tr>
+<tr><th scope="row">2023</th><td>221</td><td>4</td><td>12</td><td>27</td><td>8,2</td><td>23</td><td>10,4</td></tr>
+<tr><th scope="row">2024</th><td>186</td><td>3</td><td>9</td><td>29</td><td>6,4</td><td>25</td><td>13,4</td></tr>
+<tr><th scope="row">2025</th><td>172</td><td>6</td><td>18</td><td>22</td><td>7,8</td><td>17</td><td>9,9</td></tr>
+<tr><th scope="row">2026</th><td>186</td><td>6</td><td>15</td><td>27</td><td>6,9</td><td>—</td><td>—</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<h2 id="suspensos">Qué ejercicio elimina a más gente, 2019-2026</h2>
+<p>Porcentaje de aspirantes de turno libre que no supera cada uno de los cuatro primeros ejercicios, calculado sobre los que tenían que hacerlo: los admitidos para el primero y, para los siguientes, los aprobados del anterior menos quienes conservaban la nota de la convocatoria anterior (las listas de conservación de nota existen desde 2025). El porcentaje mezcla a quienes suspenden y a quienes no llegan a presentarse. La promoción interna no entra en este cálculo: los funcionarios A2 están exentos de parte del quinto ejercicio y, si vienen del Cuerpo de Diplomados Comerciales del Estado, del segundo y del quinto enteros.</p>
+<figure class="figura-cifras" id="g-suspensos">
+<div class="grafico-js" style="--alto-grafico: 340px"><div class="lienzo"><canvas role="img" aria-label="Porcentaje que no supera cada ejercicio, por convocatoria (turno libre)"></canvas></div><script type="application/json" class="datos-grafico">{"titulo": "Porcentaje que no supera cada ejercicio, por convocatoria (turno libre)", "etiquetas": ["2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "1.º (test y dictamen)", "valores": [51.6, 61.4, 72.2, 61.5, 68.4, 61.9, 73.0, 64.1], "tipo": "line", "color": "primary", "eje": "y"}, {"nombre": "2.º (idiomas)", "valores": [26.099999999999994, 29.400000000000006, 39.0, 30.400000000000006, 23.900000000000006, 16.700000000000003, 25.0, 32.400000000000006], "tipo": "line", "color": "gold", "eje": "y"}, {"nombre": "3.º", "valores": [42.6, 45.0, 46.8, 49.3, 48.1, 35.0, 21.200000000000003, 50.0], "tipo": "line", "color": "primary-light", "eje": "y"}, {"nombre": "4.º", "valores": [64.1, 39.4, 32.0, 22.200000000000003, 17.900000000000006, 35.900000000000006, 34.599999999999994, 39.1], "tipo": "line", "color": "text-light", "eje": "y"}], "temporal": true, "ejes": {"y": {"max": 100, "unidad": " %", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-suspensos-t g-suspensos-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-suspensos-t">Porcentaje que no supera cada ejercicio, por convocatoria (turno libre)</title><desc id="g-suspensos-d">Líneas con el porcentaje de aspirantes de turno libre que no supera el primer, segundo, tercer y cuarto ejercicio en cada convocatoria.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="282.0" x2="712" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="286.0" text-anchor="end">0</text>
+<line x1="48" y1="216.0" x2="712" y2="216.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="220.0" text-anchor="end">25</text>
+<line x1="48" y1="150.0" x2="712" y2="150.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="154.0" text-anchor="end">50</text>
+<line x1="48" y1="84.0" x2="712" y2="84.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="88.0" text-anchor="end">75</text>
+<line x1="48" y1="18.0" x2="712" y2="18.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="22.0" text-anchor="end">100 %</text>
+<text x="89.5" y="298" text-anchor="middle">2019</text>
+<text x="172.5" y="298" text-anchor="middle">2020</text>
+<text x="255.5" y="298" text-anchor="middle">2021</text>
+<text x="338.5" y="298" text-anchor="middle">2022</text>
+<text x="421.5" y="298" text-anchor="middle">2023</text>
+<text x="504.5" y="298" text-anchor="middle">2024</text>
+<text x="587.5" y="298" text-anchor="middle">2025</text>
+<text x="670.5" y="298" text-anchor="middle">2026</text>
+<path d="M 89.5 145.8 L 172.5 119.9 L 255.5 91.4 L 338.5 119.6 L 421.5 101.4 L 504.5 118.6 L 587.5 89.3 L 670.5 112.8" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="89.5" cy="145.8" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2019: 51,6 %</title></circle>
+<circle cx="172.5" cy="119.9" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2020: 61,4 %</title></circle>
+<circle cx="255.5" cy="91.4" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2021: 72,2 %</title></circle>
+<circle cx="338.5" cy="119.6" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2022: 61,5 %</title></circle>
+<circle cx="421.5" cy="101.4" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2023: 68,4 %</title></circle>
+<circle cx="504.5" cy="118.6" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2024: 61,9 %</title></circle>
+<circle cx="587.5" cy="89.3" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2025: 73 %</title></circle>
+<circle cx="670.5" cy="112.8" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2026: 64,1 %</title></circle>
+<path d="M 89.5 213.1 L 172.5 204.4 L 255.5 179.0 L 338.5 201.7 L 421.5 218.9 L 504.5 237.9 L 587.5 216.0 L 670.5 196.5" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="89.5" cy="213.1" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2019: 26,1 %</title></circle>
+<circle cx="172.5" cy="204.4" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2020: 29,4 %</title></circle>
+<circle cx="255.5" cy="179.0" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2021: 39 %</title></circle>
+<circle cx="338.5" cy="201.7" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2022: 30,4 %</title></circle>
+<circle cx="421.5" cy="218.9" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2023: 23,9 %</title></circle>
+<circle cx="504.5" cy="237.9" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2024: 16,7 %</title></circle>
+<circle cx="587.5" cy="216.0" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2025: 25 %</title></circle>
+<circle cx="670.5" cy="196.5" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2026: 32,4 %</title></circle>
+<path d="M 89.5 169.5 L 172.5 163.2 L 255.5 158.4 L 338.5 151.8 L 421.5 155.0 L 504.5 189.6 L 587.5 226.0 L 670.5 150.0" fill="none" stroke="var(--color-primary-light)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="89.5" cy="169.5" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2019: 42,6 %</title></circle>
+<circle cx="172.5" cy="163.2" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2020: 45 %</title></circle>
+<circle cx="255.5" cy="158.4" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2021: 46,8 %</title></circle>
+<circle cx="338.5" cy="151.8" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2022: 49,3 %</title></circle>
+<circle cx="421.5" cy="155.0" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2023: 48,1 %</title></circle>
+<circle cx="504.5" cy="189.6" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2024: 35 %</title></circle>
+<circle cx="587.5" cy="226.0" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2025: 21,2 %</title></circle>
+<circle cx="670.5" cy="150.0" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2026: 50 %</title></circle>
+<path d="M 89.5 112.8 L 172.5 178.0 L 255.5 197.5 L 338.5 223.4 L 421.5 234.7 L 504.5 187.2 L 587.5 190.7 L 670.5 178.8" fill="none" stroke="var(--color-text-light)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="89.5" cy="112.8" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2019: 64,1 %</title></circle>
+<circle cx="172.5" cy="178.0" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2020: 39,4 %</title></circle>
+<circle cx="255.5" cy="197.5" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2021: 32 %</title></circle>
+<circle cx="338.5" cy="223.4" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2022: 22,2 %</title></circle>
+<circle cx="421.5" cy="234.7" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2023: 17,9 %</title></circle>
+<circle cx="504.5" cy="187.2" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2024: 35,9 %</title></circle>
+<circle cx="587.5" cy="190.7" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2025: 34,6 %</title></circle>
+<circle cx="670.5" cy="178.8" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2026: 39,1 %</title></circle>
+<line x1="48" y1="328" x2="66" y2="328" stroke="var(--color-primary)" stroke-width="2.5"/><circle cx="57" cy="328" r="3" fill="var(--color-primary)"/>
+<text x="72" y="332">1.º (test y dictamen)</text>
+<line x1="237" y1="328" x2="255" y2="328" stroke="var(--color-accent-gold)" stroke-width="2.5"/><circle cx="246" cy="328" r="3" fill="var(--color-accent-gold)"/>
+<text x="261" y="332">2.º (idiomas)</text>
+<line x1="370" y1="328" x2="388" y2="328" stroke="var(--color-primary-light)" stroke-width="2.5"/><circle cx="379" cy="328" r="3" fill="var(--color-primary-light)"/>
+<text x="394" y="332">3.º</text>
+<line x1="433" y1="328" x2="451" y2="328" stroke="var(--color-text-light)" stroke-width="2.5"/><circle cx="442" cy="328" r="3" fill="var(--color-text-light)"/>
+<text x="457" y="332">4.º</text>
+</g></svg></noscript></div>
+<figcaption>Fuente: listas de admitidos, de aprobados de cada ejercicio y de conservación de nota publicadas por el tribunal en la página del Ministerio. En la convocatoria en curso faltan los ejercicios no celebrados.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">1.º: aprueban de los que lo hacen (% que no)</th><th scope="col">2.º</th><th scope="col">3.º</th><th scope="col">4.º</th></tr></thead>
+<tbody>
+<tr><th scope="row">2019</th><td>92 de 190 (52 %)</td><td>68 de 92 (26 %)</td><td>39 de 68 (43 %)</td><td>14 de 39 (64 %)</td></tr>
+<tr><th scope="row">2020</th><td>85 de 220 (61 %)</td><td>60 de 85 (29 %)</td><td>33 de 60 (45 %)</td><td>20 de 33 (39 %)</td></tr>
+<tr><th scope="row">2021</th><td>77 de 277 (72 %)</td><td>47 de 77 (39 %)</td><td>25 de 47 (47 %)</td><td>17 de 25 (32 %)</td></tr>
+<tr><th scope="row">2022</th><td>102 de 265 (62 %)</td><td>71 de 102 (30 %)</td><td>36 de 71 (49 %)</td><td>28 de 36 (22 %)</td></tr>
+<tr><th scope="row">2023</th><td>71 de 225 (68 %)</td><td>54 de 71 (24 %)</td><td>28 de 54 (48 %)</td><td>23 de 28 (18 %)</td></tr>
+<tr><th scope="row">2024</th><td>72 de 189 (62 %)</td><td>60 de 72 (17 %)</td><td>39 de 60 (35 %)</td><td>25 de 39 (36 %)</td></tr>
+<tr><th scope="row">2025</th><td>48 de 178 (73 %)</td><td>33 de 44 (25 %)</td><td>26 de 33 (21 %)</td><td>17 de 26 (35 %)</td></tr>
+<tr><th scope="row">2026</th><td>69 de 192 (64 %)</td><td>46 de 68 (32 %)</td><td>23 de 46 (50 %)</td><td>14 de 23 (39 %)</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<p>De media no supera el 1.º (test y dictamen) el 64 % de los que lo hacen, el 2.º (idiomas) el 28 % de los que lo hacen, el 3.º el 42 % de los que lo hacen, el 4.º el 36 % de los que lo hacen. El ejercicio que más gente deja fuera es el 1.º (test y dictamen). El quinto ejercicio (escrito) no elimina en la práctica a nadie: quien llega a él y se presenta lo supera, así que no aparece en el gráfico.</p>
+<h3>Dentro del primer ejercicio: test y dictamen</h3>
+<p>El primer ejercicio tiene dos partes: el test (quien no llega a la nota de corte no lee el dictamen) y el dictamen de coyuntura. Porcentaje que no supera cada parte, sobre los que tenían que hacerla:</p>
+<figure class="figura-cifras" id="g-primero">
+<div class="grafico-js" style="--alto-grafico: 300px"><div class="lienzo"><canvas role="img" aria-label="Porcentaje que no supera el test y el dictamen"></canvas></div><script type="application/json" class="datos-grafico">{"titulo": "Porcentaje que no supera el test y el dictamen", "etiquetas": ["2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "Test", "valores": [null, null, 68.2, 53.6, 61.3, 60.8, 66.9, 56.8], "tipo": "line", "color": "primary", "eje": "y"}, {"nombre": "Dictamen", "valores": [null, null, 12.5, 17.099999999999994, 18.400000000000006, 2.700000000000003, 18.599999999999994, 16.900000000000006], "tipo": "line", "color": "gold", "eje": "y"}], "temporal": true, "ejes": {"y": {"max": 100, "unidad": " %", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 300" role="img" aria-labelledby="g-primero-t g-primero-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-primero-t">Porcentaje que no supera el test y el dictamen</title><desc id="g-primero-d">Líneas con el porcentaje de aspirantes de turno libre que no supera test y dictamen en cada convocatoria.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="242.0" x2="712" y2="242.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="246.0" text-anchor="end">0</text>
+<line x1="48" y1="186.0" x2="712" y2="186.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="190.0" text-anchor="end">25</text>
+<line x1="48" y1="130.0" x2="712" y2="130.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="134.0" text-anchor="end">50</text>
+<line x1="48" y1="74.0" x2="712" y2="74.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="78.0" text-anchor="end">75</text>
+<line x1="48" y1="18.0" x2="712" y2="18.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="22.0" text-anchor="end">100 %</text>
+<text x="89.5" y="258" text-anchor="middle">2019</text>
+<text x="172.5" y="258" text-anchor="middle">2020</text>
+<text x="255.5" y="258" text-anchor="middle">2021</text>
+<text x="338.5" y="258" text-anchor="middle">2022</text>
+<text x="421.5" y="258" text-anchor="middle">2023</text>
+<text x="504.5" y="258" text-anchor="middle">2024</text>
+<text x="587.5" y="258" text-anchor="middle">2025</text>
+<text x="670.5" y="258" text-anchor="middle">2026</text>
+<path d="M 255.5 89.2 L 338.5 121.9 L 421.5 104.7 L 504.5 105.8 L 587.5 92.1 L 670.5 114.8" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="255.5" cy="89.2" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Test 2021: 68,2 %</title></circle>
+<circle cx="338.5" cy="121.9" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Test 2022: 53,6 %</title></circle>
+<circle cx="421.5" cy="104.7" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Test 2023: 61,3 %</title></circle>
+<circle cx="504.5" cy="105.8" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Test 2024: 60,8 %</title></circle>
+<circle cx="587.5" cy="92.1" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Test 2025: 66,9 %</title></circle>
+<circle cx="670.5" cy="114.8" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Test 2026: 56,8 %</title></circle>
+<path d="M 255.5 214.0 L 338.5 203.7 L 421.5 200.8 L 504.5 236.0 L 587.5 200.3 L 670.5 204.1" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="255.5" cy="214.0" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Dictamen 2021: 12,5 %</title></circle>
+<circle cx="338.5" cy="203.7" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Dictamen 2022: 17,1 %</title></circle>
+<circle cx="421.5" cy="200.8" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Dictamen 2023: 18,4 %</title></circle>
+<circle cx="504.5" cy="236.0" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Dictamen 2024: 2,7 %</title></circle>
+<circle cx="587.5" cy="200.3" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Dictamen 2025: 18,6 %</title></circle>
+<circle cx="670.5" cy="204.1" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Dictamen 2026: 16,9 %</title></circle>
+<line x1="48" y1="288" x2="66" y2="288" stroke="var(--color-primary)" stroke-width="2.5"/><circle cx="57" cy="288" r="3" fill="var(--color-primary)"/>
+<text x="72" y="292">Test</text>
+<line x1="118" y1="288" x2="136" y2="288" stroke="var(--color-accent-gold)" stroke-width="2.5"/><circle cx="127" cy="288" r="3" fill="var(--color-accent-gold)"/>
+<text x="142" y="292">Dictamen</text>
+</g></svg></noscript></div>
+<figcaption>Antes de 2021 el tribunal no publicaba lista aparte de la primera parte del primer ejercicio.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Test: aprueban de los que lo hacen (% que no)</th><th scope="col">Dictamen: aprueban de los que lo hacen (% que no)</th></tr></thead>
+<tbody>
+<tr><th scope="row">2019</th><td>—</td><td>—</td></tr>
+<tr><th scope="row">2020</th><td>—</td><td>—</td></tr>
+<tr><th scope="row">2021</th><td>88 de 277 (68 %)</td><td>77 de 88 (12 %)</td></tr>
+<tr><th scope="row">2022</th><td>123 de 265 (54 %)</td><td>102 de 123 (17 %)</td></tr>
+<tr><th scope="row">2023</th><td>87 de 225 (61 %)</td><td>71 de 87 (18 %)</td></tr>
+<tr><th scope="row">2024</th><td>74 de 189 (61 %)</td><td>72 de 74 (3 %)</td></tr>
+<tr><th scope="row">2025</th><td>59 de 178 (67 %)</td><td>48 de 59 (19 %)</td></tr>
+<tr><th scope="row">2026</th><td>83 de 192 (57 %)</td><td>69 de 83 (17 %)</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<h3>Dentro del segundo ejercicio: inglés y segundo idioma</h3>
+<p>El segundo ejercicio tiene dos pruebas de idiomas, inglés y el segundo idioma elegido, y hay que aprobar las dos. Porcentaje que no supera cada prueba, sobre los que tenían que hacerla (descontando a quienes conservaban la nota de los dos idiomas):</p>
+<figure class="figura-cifras" id="g-segundo">
+<div class="grafico-js" style="--alto-grafico: 300px"><div class="lienzo"><canvas role="img" aria-label="Porcentaje que no supera el inglés y el segundo idioma"></canvas></div><script type="application/json" class="datos-grafico">{"titulo": "Porcentaje que no supera el inglés y el segundo idioma", "etiquetas": ["2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "Inglés", "valores": [null, null, 19.5, 24.5, 15.5, 9.700000000000003, 25.0, 29.400000000000006], "tipo": "line", "color": "primary", "eje": "y"}, {"nombre": "Segundo idioma", "valores": [null, null, 39.0, 30.400000000000006, 23.900000000000006, 16.700000000000003, null, 30.900000000000006], "tipo": "line", "color": "gold", "eje": "y"}], "temporal": true, "ejes": {"y": {"max": 100, "unidad": " %", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 300" role="img" aria-labelledby="g-segundo-t g-segundo-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-segundo-t">Porcentaje que no supera el inglés y el segundo idioma</title><desc id="g-segundo-d">Líneas con el porcentaje de aspirantes de turno libre que no supera inglés y segundo idioma en cada convocatoria.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="242.0" x2="712" y2="242.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="246.0" text-anchor="end">0</text>
+<line x1="48" y1="186.0" x2="712" y2="186.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="190.0" text-anchor="end">25</text>
+<line x1="48" y1="130.0" x2="712" y2="130.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="134.0" text-anchor="end">50</text>
+<line x1="48" y1="74.0" x2="712" y2="74.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="78.0" text-anchor="end">75</text>
+<line x1="48" y1="18.0" x2="712" y2="18.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="22.0" text-anchor="end">100 %</text>
+<text x="89.5" y="258" text-anchor="middle">2019</text>
+<text x="172.5" y="258" text-anchor="middle">2020</text>
+<text x="255.5" y="258" text-anchor="middle">2021</text>
+<text x="338.5" y="258" text-anchor="middle">2022</text>
+<text x="421.5" y="258" text-anchor="middle">2023</text>
+<text x="504.5" y="258" text-anchor="middle">2024</text>
+<text x="587.5" y="258" text-anchor="middle">2025</text>
+<text x="670.5" y="258" text-anchor="middle">2026</text>
+<path d="M 255.5 198.3 L 338.5 187.1 L 421.5 207.3 L 504.5 220.3 L 587.5 186.0 L 670.5 176.1" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="255.5" cy="198.3" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Inglés 2021: 19,5 %</title></circle>
+<circle cx="338.5" cy="187.1" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Inglés 2022: 24,5 %</title></circle>
+<circle cx="421.5" cy="207.3" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Inglés 2023: 15,5 %</title></circle>
+<circle cx="504.5" cy="220.3" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Inglés 2024: 9,7 %</title></circle>
+<circle cx="587.5" cy="186.0" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Inglés 2025: 25 %</title></circle>
+<circle cx="670.5" cy="176.1" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Inglés 2026: 29,4 %</title></circle>
+<path d="M 255.5 154.6 L 338.5 173.9 L 421.5 188.5 L 504.5 204.6 L 670.5 172.8" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="255.5" cy="154.6" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Segundo idioma 2021: 39 %</title></circle>
+<circle cx="338.5" cy="173.9" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Segundo idioma 2022: 30,4 %</title></circle>
+<circle cx="421.5" cy="188.5" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Segundo idioma 2023: 23,9 %</title></circle>
+<circle cx="504.5" cy="204.6" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Segundo idioma 2024: 16,7 %</title></circle>
+<circle cx="670.5" cy="172.8" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Segundo idioma 2026: 30,9 %</title></circle>
+<line x1="48" y1="288" x2="66" y2="288" stroke="var(--color-primary)" stroke-width="2.5"/><circle cx="57" cy="288" r="3" fill="var(--color-primary)"/>
+<text x="72" y="292">Inglés</text>
+<line x1="132" y1="288" x2="150" y2="288" stroke="var(--color-accent-gold)" stroke-width="2.5"/><circle cx="141" cy="288" r="3" fill="var(--color-accent-gold)"/>
+<text x="156" y="292">Segundo idioma</text>
+</g></svg></noscript></div>
+<figcaption>Algunos años el tribunal publica una sola lista del segundo ejercicio, sin separar los idiomas.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Inglés: aprueban de los que lo hacen (% que no)</th><th scope="col">Segundo idioma: aprueban de los que lo hacen (% que no)</th></tr></thead>
+<tbody>
+<tr><th scope="row">2019</th><td>—</td><td>—</td></tr>
+<tr><th scope="row">2020</th><td>—</td><td>—</td></tr>
+<tr><th scope="row">2021</th><td>62 de 77 (20 %)</td><td>47 de 77 (39 %)</td></tr>
+<tr><th scope="row">2022</th><td>77 de 102 (24 %)</td><td>71 de 102 (30 %)</td></tr>
+<tr><th scope="row">2023</th><td>60 de 71 (16 %)</td><td>54 de 71 (24 %)</td></tr>
+<tr><th scope="row">2024</th><td>65 de 72 (10 %)</td><td>60 de 72 (17 %)</td></tr>
+<tr><th scope="row">2025</th><td>33 de 44 (25 %)</td><td>—</td></tr>
+<tr><th scope="row">2026</th><td>48 de 68 (29 %)</td><td>47 de 68 (31 %)</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<h2 id="idiomas">El segundo idioma: cuál se elige y cuál se aprueba, 2019-2026</h2>
+<p>Además del inglés, obligatorio, cada admitido declara un segundo idioma. Reparto acumulado de las convocatorias con lista de admitidos:</p>
+<figure class="figura-cifras" id="g-idiomas">
+<div class="grafico-js" style="--alto-grafico: 232px"><div class="lienzo"><canvas role="img" aria-label="Segundo idioma elegido por los admitidos"></canvas></div><script type="application/json" class="datos-grafico">{"titulo": "Segundo idioma elegido por los admitidos", "etiquetas": ["Francés", "Portugués", "Italiano", "Alemán", "Chino", "Ruso", "Japonés", "Árabe"], "series": [{"nombre": "Personas", "valores": [988, 313, 179, 144, 29, 18, 8, 4], "tipo": "bar", "color": "primary", "eje": "y"}], "temporal": false, "horizontal": true, "textos": ["988 (59 %)", "313 (19 %)", "179 (11 %)", "144 (9 %)", "29 (2 %)", "18 (1 %)", "8 (0 %)", "4 (0 %)"], "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 232" role="img" aria-labelledby="g-idiomas-t g-idiomas-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-idiomas-t">Segundo idioma elegido por los admitidos</title><desc id="g-idiomas-d">Barras con el número de admitidos que eligen cada segundo idioma.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<text x="102" y="27" text-anchor="end" fill="var(--color-text)">Francés</text>
+<rect x="110" y="15" width="523.6" height="18" fill="var(--color-border-light)" rx="2"><title>Francés: 988</title></rect>
+<text x="641.6" y="27">988 (59 %)</text>
+<text x="102" y="53" text-anchor="end" fill="var(--color-text)">Portugués</text>
+<rect x="110" y="41" width="165.9" height="18" fill="var(--color-border-light)" rx="2"><title>Portugués: 313</title></rect>
+<text x="283.9" y="53">313 (19 %)</text>
+<text x="102" y="79" text-anchor="end" fill="var(--color-text)">Italiano</text>
+<rect x="110" y="67" width="94.9" height="18" fill="var(--color-border-light)" rx="2"><title>Italiano: 179</title></rect>
+<text x="212.9" y="79">179 (11 %)</text>
+<text x="102" y="105" text-anchor="end" fill="var(--color-text)">Alemán</text>
+<rect x="110" y="93" width="76.3" height="18" fill="var(--color-border-light)" rx="2"><title>Alemán: 144</title></rect>
+<text x="194.3" y="105">144 (9 %)</text>
+<text x="102" y="131" text-anchor="end" fill="var(--color-text)">Chino</text>
+<rect x="110" y="119" width="15.4" height="18" fill="var(--color-border-light)" rx="2"><title>Chino: 29</title></rect>
+<text x="133.4" y="131">29 (2 %)</text>
+<text x="102" y="157" text-anchor="end" fill="var(--color-text)">Ruso</text>
+<rect x="110" y="145" width="9.5" height="18" fill="var(--color-border-light)" rx="2"><title>Ruso: 18</title></rect>
+<text x="127.5" y="157">18 (1 %)</text>
+<text x="102" y="183" text-anchor="end" fill="var(--color-text)">Japonés</text>
+<rect x="110" y="171" width="4.2" height="18" fill="var(--color-border-light)" rx="2"><title>Japonés: 8</title></rect>
+<text x="122.2" y="183">8 (0 %)</text>
+<text x="102" y="209" text-anchor="end" fill="var(--color-text)">Árabe</text>
+<rect x="110" y="197" width="2.1" height="18" fill="var(--color-border-light)" rx="2"><title>Árabe: 4</title></rect>
+<text x="120.1" y="209">4 (0 %)</text>
+</g></svg></noscript></div>
+<figcaption>Fuente: listas definitivas de admitidos de turno libre (columna del segundo idioma).</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Francés</th><th scope="col">Portugués</th><th scope="col">Italiano</th><th scope="col">Alemán</th><th scope="col">Chino</th><th scope="col">Ruso</th><th scope="col">Japonés</th><th scope="col">Árabe</th></tr></thead>
+<tbody>
+<tr><th scope="row">2019</th><td>119</td><td>22</td><td>15</td><td>26</td><td>2</td><td>3</td><td>0</td><td>2</td></tr>
+<tr><th scope="row">2020</th><td>138</td><td>35</td><td>13</td><td>5</td><td>2</td><td>4</td><td>0</td><td>1</td></tr>
+<tr><th scope="row">2021</th><td>169</td><td>44</td><td>21</td><td>29</td><td>2</td><td>3</td><td>2</td><td>1</td></tr>
+<tr><th scope="row">2022</th><td>148</td><td>51</td><td>29</td><td>25</td><td>4</td><td>2</td><td>1</td><td>0</td></tr>
+<tr><th scope="row">2023</th><td>114</td><td>48</td><td>27</td><td>24</td><td>6</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><th scope="row">2024</th><td>104</td><td>39</td><td>23</td><td>14</td><td>4</td><td>2</td><td>0</td><td>0</td></tr>
+<tr><th scope="row">2025</th><td>95</td><td>36</td><td>24</td><td>9</td><td>5</td><td>1</td><td>2</td><td>0</td></tr>
+<tr><th scope="row">2026</th><td>101</td><td>38</td><td>27</td><td>12</td><td>4</td><td>2</td><td>2</td><td>0</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<h3>Aprobados del segundo idioma según el idioma elegido, 2021-2026</h3>
+<p>De los aspirantes de turno libre que superan el primer ejercicio, cuántos aprueban la prueba de su segundo idioma, por idioma (sumando las convocatorias con lista de aprobados del segundo idioma; se cruzan las listas por nombre, así que es aproximado):</p>
+<figure class="figura-cifras" id="g-idiomas-aprobados">
+<div class="grafico-js" style="--alto-grafico: 206px"><div class="lienzo"><canvas role="img" aria-label="Aprobados del segundo idioma según el idioma elegido"></canvas></div><script type="application/json" class="datos-grafico">{"titulo": "Aprobados del segundo idioma según el idioma elegido", "etiquetas": ["Francés", "Portugués", "Alemán", "Italiano", "Chino", "Ruso", "Japonés"], "series": [{"nombre": "Total", "valores": [225, 68, 41, 35, 4, 3, 1], "tipo": "bar", "color": "border-light", "eje": "y"}, {"nombre": "Aprueban", "valores": [162, 44, 34, 24, 3, 2, 1], "tipo": "bar", "color": "primary", "eje": "y"}], "temporal": false, "horizontal": true, "textos": ["162 de 225 (72 %)", "44 de 68 (65 %)", "34 de 41 (83 %)", "24 de 35 (69 %)", "3 de 4 (75 %)", "2 de 3 (67 %)", "1 de 1 (100 %)"], "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 206" role="img" aria-labelledby="g-idiomas-aprobados-t g-idiomas-aprobados-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-idiomas-aprobados-t">Aprobados del segundo idioma según el idioma elegido</title><desc id="g-idiomas-aprobados-d">Para cada idioma, barra clara con los aspirantes que llegan a la prueba y barra oscura con los que la aprueban.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<text x="102" y="27" text-anchor="end" fill="var(--color-text)">Francés</text>
+<rect x="110" y="15" width="477.0" height="18" fill="var(--color-border-light)" rx="2"><title>Francés: 225</title></rect>
+<rect x="110" y="15" width="343.4" height="18" fill="var(--color-primary)" rx="2"><title>Francés: 162</title></rect>
+<text x="595.0" y="27">162 de 225 (72 %)</text>
+<text x="102" y="53" text-anchor="end" fill="var(--color-text)">Portugués</text>
+<rect x="110" y="41" width="144.2" height="18" fill="var(--color-border-light)" rx="2"><title>Portugués: 68</title></rect>
+<rect x="110" y="41" width="93.3" height="18" fill="var(--color-primary)" rx="2"><title>Portugués: 44</title></rect>
+<text x="262.2" y="53">44 de 68 (65 %)</text>
+<text x="102" y="79" text-anchor="end" fill="var(--color-text)">Alemán</text>
+<rect x="110" y="67" width="86.9" height="18" fill="var(--color-border-light)" rx="2"><title>Alemán: 41</title></rect>
+<rect x="110" y="67" width="72.1" height="18" fill="var(--color-primary)" rx="2"><title>Alemán: 34</title></rect>
+<text x="204.9" y="79">34 de 41 (83 %)</text>
+<text x="102" y="105" text-anchor="end" fill="var(--color-text)">Italiano</text>
+<rect x="110" y="93" width="74.2" height="18" fill="var(--color-border-light)" rx="2"><title>Italiano: 35</title></rect>
+<rect x="110" y="93" width="50.9" height="18" fill="var(--color-primary)" rx="2"><title>Italiano: 24</title></rect>
+<text x="192.2" y="105">24 de 35 (69 %)</text>
+<text x="102" y="131" text-anchor="end" fill="var(--color-text)">Chino</text>
+<rect x="110" y="119" width="8.5" height="18" fill="var(--color-border-light)" rx="2"><title>Chino: 4</title></rect>
+<rect x="110" y="119" width="6.4" height="18" fill="var(--color-primary)" rx="2"><title>Chino: 3</title></rect>
+<text x="126.5" y="131">3 de 4 (75 %)</text>
+<text x="102" y="157" text-anchor="end" fill="var(--color-text)">Ruso</text>
+<rect x="110" y="145" width="6.4" height="18" fill="var(--color-border-light)" rx="2"><title>Ruso: 3</title></rect>
+<rect x="110" y="145" width="4.2" height="18" fill="var(--color-primary)" rx="2"><title>Ruso: 2</title></rect>
+<text x="124.4" y="157">2 de 3 (67 %)</text>
+<text x="102" y="183" text-anchor="end" fill="var(--color-text)">Japonés</text>
+<rect x="110" y="171" width="2.1" height="18" fill="var(--color-border-light)" rx="2"><title>Japonés: 1</title></rect>
+<rect x="110" y="171" width="2.1" height="18" fill="var(--color-primary)" rx="2"><title>Japonés: 1</title></rect>
+<text x="120.1" y="183">1 de 1 (100 %)</text>
+</g></svg></noscript></div>
+<figcaption>Fuente: listas de aprobados del primer ejercicio y de la segunda parte del segundo ejercicio, cruzadas con la lista de admitidos. Los idiomas con pocos aspirantes dan porcentajes poco fiables.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Francés: aprueban de los que llegan</th><th scope="col">Portugués: aprueban de los que llegan</th><th scope="col">Alemán: aprueban de los que llegan</th><th scope="col">Italiano: aprueban de los que llegan</th><th scope="col">Chino: aprueban de los que llegan</th><th scope="col">Ruso: aprueban de los que llegan</th><th scope="col">Japonés: aprueban de los que llegan</th></tr></thead>
+<tbody>
+<tr><th scope="row">2021</th><td>31 de 49</td><td>5 de 9</td><td>8 de 9</td><td>3 de 6</td><td>0 de 1</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">2022</th><td>43 de 60</td><td>12 de 17</td><td>9 de 12</td><td>6 de 8</td><td>1 de 1</td><td>0 de 1</td><td>—</td></tr>
+<tr><th scope="row">2023</th><td>31 de 41</td><td>7 de 11</td><td>7 de 8</td><td>6 de 8</td><td>1 de 1</td><td>1 de 1</td><td>1 de 1</td></tr>
+<tr><th scope="row">2024</th><td>31 de 37</td><td>9 de 15</td><td>7 de 7</td><td>5 de 5</td><td>1 de 1</td><td>1 de 1</td><td>—</td></tr>
+<tr><th scope="row">2026</th><td>26 de 38</td><td>11 de 16</td><td>3 de 5</td><td>4 de 8</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<p>Idiomas voluntarios declarados (puntúan hasta 4 puntos cada uno): Alemán (20), Francés (20), Italiano (11), Portugués (9), Ruso (2), Chino (1), Japonés (1).</p>
+<h2 id="repetidores">Cuántos aprobados ya se habían presentado antes, 2020-2025</h2>
+<p>Casi nadie aprueba a la primera. Aprobados de la fase de oposición que ya figuraban en la lista de admitidos de alguna convocatoria anterior (solo se puede comprobar desde las listas de 2019, así que en los primeros años el dato está por debajo del real; «admitido» no implica que llegara a examinarse):</p>
+<div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Aprobados</th><th scope="col">Ya se habían presentado antes</th><th scope="col">Porcentaje</th></tr></thead>
+<tbody>
+<tr><th scope="row">2020</th><td>19</td><td>7</td><td>37 %</td></tr>
+<tr><th scope="row">2022</th><td>30</td><td>28</td><td>93 %</td></tr>
+<tr><th scope="row">2023</th><td>25</td><td>22</td><td>88 %</td></tr>
+<tr><th scope="row">2024</th><td>27</td><td>25</td><td>93 %</td></tr>
+<tr><th scope="row">2025</th><td>19</td><td>18</td><td>95 %</td></tr>
+</tbody>
+</table></div>
+<h2 id="cuerpo">El cuerpo desde 1930: cuántos entran cada año y cuántos están en activo</h2>
+<p>La Asociación de Técnicos Comerciales y Economistas del Estado mantiene la relación de las 75 promociones del cuerpo (y de los dos cuerpos que lo precedieron) desde la primera, de 1930: 1 047 nombramientos en total. Nombramientos por año de la promoción:</p>
+<figure class="figura-cifras" id="g-promociones">
+<div class="grafico-js desplazable" style="--alto-grafico: 340px; --ancho-minimo: 1800px"><div class="lienzo"><canvas role="img" aria-label="Nombramientos de Técnicos Comerciales y Economistas del Estado por promoción"></canvas></div><script type="application/json" class="datos-grafico">{"tipo": "fechas", "titulo": "Nombramientos de Técnicos Comerciales y Economistas del Estado por promoción", "x": [1930.448, 1931.281, 1934.637, 1936.544, 1940.06, 1944.497, 1951.546, 1954.052, 1956.29, 1957.495, 1957.904, 1960.956, 1961.29, 1963.568, 1964.5, 1964.962, 1966.536, 1966.568, 1968.199, 1969.579, 1970.484, 1971.85, 1972.123, 1973.276, 1974.235, 1974.311, 1975.363, 1975.986, 1976.489, 1977.82, 1978.06, 1979.107, 1980.21, 1980.541, 1981.301, 1983.139, 1984.06, 1984.377, 1986.033, 1987.107, 1988.189, 1989.18, 1990.235, 1991.751, 1992.571, 1994.421, 1995.568, 1997.18, 1998.158, 1999.219, 2000.23, 2001.32, 2002.311, 2003.246, 2003.964, 2004.858, 2005.732, 2006.82, 2007.844, 2008.822, 2009.817, 2010.973, 2013.008, 2014.732, 2015.904, 2016.964, 2017.904, 2018.937, 2020.019, 2021.169, 2022.235, 2023.235, 2024.101, 2025.15, 2025.923], "etiquetas": ["I PROMOCIÓN · 14/06/1930", "II PROMOCIÓN · 14/04/1931", "III PROMOCIÓN · 22/08/1934", "IV PROMOCIÓN · 18/07/1936", "V PROMOCIÓN · 23/01/1940", "VI PROMOCIÓN · 01/07/1944", "VII PROMOCIÓN · 20/07/1951", "VIII PROMOCIÓN · 20/01/1954", "IX PROMOCIÓN · 16/04/1956", "X PROMOCIÓN · 01/07/1957", "XI PROMOCIÓN · 28/11/1957", "XII PROMOCIÓN · 16/12/1960", "XIII PROMOCIÓN · 17/04/1961", "XIV PROMOCIÓN · 28/07/1963", "XV PROMOCIÓN · 02/07/1964", "XVI PROMOCIÓN · 18/12/1964", "XVII PROMOCIÓN · 16/07/1966", "XVIII PROMOCIÓN · 28/07/1966", "XIX PROMOCIÓN · 14/03/1968", "XX PROMOCIÓN · 01/08/1969", "XXI PROMOCIÓN · 27/06/1970", "XXII PROMOCIÓN · 08/11/1971", "XXIII PROMOCIÓN · 15/02/1972", "XXIV PROMOCIÓN · 12/04/1973", "XXV PROMOCIÓN · 28/03/1974", "XXVI PROMOCIÓN · 25/04/1974", "XXVII PROMOCIÓN · 14/05/1975", "XXVIII PROMOCIÓN · 28/12/1975", "XXIX PROMOCIÓN · 28/06/1976", "XXX PROMOCIÓN · 28/10/1977", "XXXI PROMOCIÓN · 23/01/1978", "XXXII PROMOCIÓN · 09/02/1979", "XXXIII PROMOCIÓN · 18/03/1980", "XXXIV PROMOCIÓN · 17/07/1980", "XXXV PROMOCIÓN · 21/04/1981", "XXXVI PROMOCIÓN · 21/02/1983", "XXXVII PROMOCIÓN · 23/01/1984", "XXXVIII PROMOCIÓN · 18/05/1984", "XXXIX PROMOCIÓN · 13/01/1986", "XL PROMOCIÓN · 09/02/1987", "XLI PROMOCIÓN · 10/03/1988", "XLII PROMOCIÓN · 08/03/1989", "XLIII PROMOCIÓN · 28/03/1990", "XLIV PROMOCIÓN · 03/10/1991", "XLV PROMOCIÓN · 28/07/1992", "XLVI PROMOCIÓN · 04/06/1994", "XLVII PROMOCIÓN · 28/07/1995", "XLVIII PROMOCIÓN · 08/03/1997", "XLIX PROMOCIÓN · 28/02/1998", "L PROMOCIÓN · 22/03/1999", "LI PROMOCIÓN · 25/03/2000", "LII PROMOCIÓN · 28/04/2001", "LIII PROMOCIÓN · 25/04/2002", "LIV PROMOCIÓN · 01/04/2003", "LV PROMOCIÓN · 20/12/2003", "LVI PROMOCIÓN · 10/11/2004", "LVII PROMOCION · 26/09/2005", "LVIII PROMOCION · 28/10/2006", "LIX PROMOCION · 06/11/2007", "LX PROMOCIÓN · 28/10/2008", "LXI PROMOCIÓN · 27/10/2009", "LXII PROMOCIÓN · 23/12/2010", "LXIII PROMOCIÓN · 04/01/2013", "LXIV PROMOCIÓN · 26/09/2014", "LXV PROMOCIÓN · 28/11/2015", "LXVI PROMOCIÓN · 19/12/2016", "LXVII PROMOCIÓN · 28/11/2017", "LXVIII PROMOCIÓN · 10/12/2018", "LXIX PROMOCIÓN · 08/01/2020", "LXX PROMOCIÓN · 04/03/2021", "LXXI PROMOCIÓN · 28/03/2022", "LXXII PROMOCIÓN · 28/03/2023", "LXXIII PROMOCIÓN · 07/02/2024", "LXXIV PROMOCIÓN · 25/02/2025", "LXXV PROMOCIÓN · 05/12/2025"], "x_min": 1930, "x_max": 2030, "series": [{"nombre": "Nombramientos", "valores": [16, 14, 34, 23, 25, 4, 23, 20, 12, 12, 20, 5, 12, 11, 4, 6, 7, 8, 11, 14, 7, 5, 11, 12, 8, 11, 17, 8, 17, 18, 6, 20, 17, 6, 20, 12, 5, 13, 9, 12, 10, 20, 15, 16, 20, 9, 10, 10, 8, 9, 9, 15, 10, 13, 12, 14, 9, 12, 13, 20, 23, 13, 12, 11, 10, 15, 24, 13, 19, 20, 17, 30, 25, 27, 19], "tipo": "bar", "color": "primary", "eje": "y", "apilar": false}], "temporal": true, "desplazable": true, "ejes": {"y": {"max": 40, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 1800 340" role="img" aria-labelledby="g-promociones-t g-promociones-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-promociones-t">Nombramientos de Técnicos Comerciales y Economistas del Estado por promoción</title><desc id="g-promociones-d">Una barra por promoción, en la fecha exacta de su nombramiento, con el número de personas, de 1930 a 2025.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="282.0" x2="1752" y2="282.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="286.0">0</text>
+<line x1="48" y1="216.0" x2="1752" y2="216.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="220.0">10</text>
+<line x1="48" y1="150.0" x2="1752" y2="150.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="154.0">20</text>
+<line x1="48" y1="84.0" x2="1752" y2="84.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="88.0">30</text>
+<line x1="48" y1="18.0" x2="1752" y2="18.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="22.0">40</text>
+<text x="48.0" y="298" text-anchor="middle">1930</text>
+<text x="218.4" y="298" text-anchor="middle">1940</text>
+<text x="388.8" y="298" text-anchor="middle">1950</text>
+<text x="559.2" y="298" text-anchor="middle">1960</text>
+<text x="729.6" y="298" text-anchor="middle">1970</text>
+<text x="900.0" y="298" text-anchor="middle">1980</text>
+<text x="1070.4" y="298" text-anchor="middle">1990</text>
+<text x="1240.8" y="298" text-anchor="middle">2000</text>
+<text x="1411.2" y="298" text-anchor="middle">2010</text>
+<text x="1581.6" y="298" text-anchor="middle">2020</text>
+<text x="1752.0" y="298" text-anchor="middle">2030</text>
+<rect x="52.1" y="176.4" width="7" height="105.6" fill="var(--color-primary)"><title>I PROMOCIÓN · 14/06/1930: 16</title></rect>
+<rect x="66.3" y="189.6" width="7" height="92.4" fill="var(--color-primary)"><title>II PROMOCIÓN · 14/04/1931: 14</title></rect>
+<rect x="123.5" y="57.6" width="7" height="224.4" fill="var(--color-primary)"><title>III PROMOCIÓN · 22/08/1934: 34</title></rect>
+<rect x="156.0" y="130.2" width="7" height="151.8" fill="var(--color-primary)"><title>IV PROMOCIÓN · 18/07/1936: 23</title></rect>
+<rect x="215.9" y="117.0" width="7" height="165.0" fill="var(--color-primary)"><title>V PROMOCIÓN · 23/01/1940: 25</title></rect>
+<rect x="291.5" y="255.6" width="7" height="26.4" fill="var(--color-primary)"><title>VI PROMOCIÓN · 01/07/1944: 4</title></rect>
+<rect x="411.7" y="130.2" width="7" height="151.8" fill="var(--color-primary)"><title>VII PROMOCIÓN · 20/07/1951: 23</title></rect>
+<rect x="454.3" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>VIII PROMOCIÓN · 20/01/1954: 20</title></rect>
+<rect x="492.5" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>IX PROMOCIÓN · 16/04/1956: 12</title></rect>
+<rect x="513.0" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>X PROMOCIÓN · 01/07/1957: 12</title></rect>
+<rect x="520.0" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>XI PROMOCIÓN · 28/11/1957: 20</title></rect>
+<rect x="572.0" y="249.0" width="7" height="33.0" fill="var(--color-primary)"><title>XII PROMOCIÓN · 16/12/1960: 5</title></rect>
+<rect x="577.7" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>XIII PROMOCIÓN · 17/04/1961: 12</title></rect>
+<rect x="616.5" y="209.4" width="7" height="72.6" fill="var(--color-primary)"><title>XIV PROMOCIÓN · 28/07/1963: 11</title></rect>
+<rect x="632.4" y="255.6" width="7" height="26.4" fill="var(--color-primary)"><title>XV PROMOCIÓN · 02/07/1964: 4</title></rect>
+<rect x="640.2" y="242.4" width="7" height="39.6" fill="var(--color-primary)"><title>XVI PROMOCIÓN · 18/12/1964: 6</title></rect>
+<rect x="667.1" y="235.8" width="7" height="46.2" fill="var(--color-primary)"><title>XVII PROMOCIÓN · 16/07/1966: 7</title></rect>
+<rect x="667.6" y="229.2" width="7" height="52.8" fill="var(--color-primary)"><title>XVIII PROMOCIÓN · 28/07/1966: 8</title></rect>
+<rect x="695.4" y="209.4" width="7" height="72.6" fill="var(--color-primary)"><title>XIX PROMOCIÓN · 14/03/1968: 11</title></rect>
+<rect x="718.9" y="189.6" width="7" height="92.4" fill="var(--color-primary)"><title>XX PROMOCIÓN · 01/08/1969: 14</title></rect>
+<rect x="734.3" y="235.8" width="7" height="46.2" fill="var(--color-primary)"><title>XXI PROMOCIÓN · 27/06/1970: 7</title></rect>
+<rect x="757.6" y="249.0" width="7" height="33.0" fill="var(--color-primary)"><title>XXII PROMOCIÓN · 08/11/1971: 5</title></rect>
+<rect x="762.3" y="209.4" width="7" height="72.6" fill="var(--color-primary)"><title>XXIII PROMOCIÓN · 15/02/1972: 11</title></rect>
+<rect x="781.9" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>XXIV PROMOCIÓN · 12/04/1973: 12</title></rect>
+<rect x="798.3" y="229.2" width="7" height="52.8" fill="var(--color-primary)"><title>XXV PROMOCIÓN · 28/03/1974: 8</title></rect>
+<rect x="799.6" y="209.4" width="7" height="72.6" fill="var(--color-primary)"><title>XXVI PROMOCIÓN · 25/04/1974: 11</title></rect>
+<rect x="817.5" y="169.8" width="7" height="112.2" fill="var(--color-primary)"><title>XXVII PROMOCIÓN · 14/05/1975: 17</title></rect>
+<rect x="828.1" y="229.2" width="7" height="52.8" fill="var(--color-primary)"><title>XXVIII PROMOCIÓN · 28/12/1975: 8</title></rect>
+<rect x="836.7" y="169.8" width="7" height="112.2" fill="var(--color-primary)"><title>XXIX PROMOCIÓN · 28/06/1976: 17</title></rect>
+<rect x="859.3" y="163.2" width="7" height="118.8" fill="var(--color-primary)"><title>XXX PROMOCIÓN · 28/10/1977: 18</title></rect>
+<rect x="863.4" y="242.4" width="7" height="39.6" fill="var(--color-primary)"><title>XXXI PROMOCIÓN · 23/01/1978: 6</title></rect>
+<rect x="881.3" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>XXXII PROMOCIÓN · 09/02/1979: 20</title></rect>
+<rect x="900.1" y="169.8" width="7" height="112.2" fill="var(--color-primary)"><title>XXXIII PROMOCIÓN · 18/03/1980: 17</title></rect>
+<rect x="905.7" y="242.4" width="7" height="39.6" fill="var(--color-primary)"><title>XXXIV PROMOCIÓN · 17/07/1980: 6</title></rect>
+<rect x="918.7" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>XXXV PROMOCIÓN · 21/04/1981: 20</title></rect>
+<rect x="950.0" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>XXXVI PROMOCIÓN · 21/02/1983: 12</title></rect>
+<rect x="965.7" y="249.0" width="7" height="33.0" fill="var(--color-primary)"><title>XXXVII PROMOCIÓN · 23/01/1984: 5</title></rect>
+<rect x="971.1" y="196.2" width="7" height="85.8" fill="var(--color-primary)"><title>XXXVIII PROMOCIÓN · 18/05/1984: 13</title></rect>
+<rect x="999.3" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>XXXIX PROMOCIÓN · 13/01/1986: 9</title></rect>
+<rect x="1017.6" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>XL PROMOCIÓN · 09/02/1987: 12</title></rect>
+<rect x="1036.0" y="216.0" width="7" height="66.0" fill="var(--color-primary)"><title>XLI PROMOCIÓN · 10/03/1988: 10</title></rect>
+<rect x="1052.9" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>XLII PROMOCIÓN · 08/03/1989: 20</title></rect>
+<rect x="1070.9" y="183.0" width="7" height="99.0" fill="var(--color-primary)"><title>XLIII PROMOCIÓN · 28/03/1990: 15</title></rect>
+<rect x="1096.7" y="176.4" width="7" height="105.6" fill="var(--color-primary)"><title>XLIV PROMOCIÓN · 03/10/1991: 16</title></rect>
+<rect x="1110.7" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>XLV PROMOCIÓN · 28/07/1992: 20</title></rect>
+<rect x="1142.2" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>XLVI PROMOCIÓN · 04/06/1994: 9</title></rect>
+<rect x="1161.8" y="216.0" width="7" height="66.0" fill="var(--color-primary)"><title>XLVII PROMOCIÓN · 28/07/1995: 10</title></rect>
+<rect x="1189.3" y="216.0" width="7" height="66.0" fill="var(--color-primary)"><title>XLVIII PROMOCIÓN · 08/03/1997: 10</title></rect>
+<rect x="1205.9" y="229.2" width="7" height="52.8" fill="var(--color-primary)"><title>XLIX PROMOCIÓN · 28/02/1998: 8</title></rect>
+<rect x="1224.0" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>L PROMOCIÓN · 22/03/1999: 9</title></rect>
+<rect x="1241.2" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>LI PROMOCIÓN · 25/03/2000: 9</title></rect>
+<rect x="1259.8" y="183.0" width="7" height="99.0" fill="var(--color-primary)"><title>LII PROMOCIÓN · 28/04/2001: 15</title></rect>
+<rect x="1276.7" y="216.0" width="7" height="66.0" fill="var(--color-primary)"><title>LIII PROMOCIÓN · 25/04/2002: 10</title></rect>
+<rect x="1292.6" y="196.2" width="7" height="85.8" fill="var(--color-primary)"><title>LIV PROMOCIÓN · 01/04/2003: 13</title></rect>
+<rect x="1304.9" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>LV PROMOCIÓN · 20/12/2003: 12</title></rect>
+<rect x="1320.1" y="189.6" width="7" height="92.4" fill="var(--color-primary)"><title>LVI PROMOCIÓN · 10/11/2004: 14</title></rect>
+<rect x="1335.0" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>LVII PROMOCION · 26/09/2005: 9</title></rect>
+<rect x="1353.5" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>LVIII PROMOCION · 28/10/2006: 12</title></rect>
+<rect x="1371.0" y="196.2" width="7" height="85.8" fill="var(--color-primary)"><title>LIX PROMOCION · 06/11/2007: 13</title></rect>
+<rect x="1387.6" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>LX PROMOCIÓN · 28/10/2008: 20</title></rect>
+<rect x="1404.6" y="130.2" width="7" height="151.8" fill="var(--color-primary)"><title>LXI PROMOCIÓN · 27/10/2009: 23</title></rect>
+<rect x="1424.3" y="196.2" width="7" height="85.8" fill="var(--color-primary)"><title>LXII PROMOCIÓN · 23/12/2010: 13</title></rect>
+<rect x="1459.0" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>LXIII PROMOCIÓN · 04/01/2013: 12</title></rect>
+<rect x="1488.3" y="209.4" width="7" height="72.6" fill="var(--color-primary)"><title>LXIV PROMOCIÓN · 26/09/2014: 11</title></rect>
+<rect x="1508.3" y="216.0" width="7" height="66.0" fill="var(--color-primary)"><title>LXV PROMOCIÓN · 28/11/2015: 10</title></rect>
+<rect x="1526.4" y="183.0" width="7" height="99.0" fill="var(--color-primary)"><title>LXVI PROMOCIÓN · 19/12/2016: 15</title></rect>
+<rect x="1542.4" y="123.6" width="7" height="158.4" fill="var(--color-primary)"><title>LXVII PROMOCIÓN · 28/11/2017: 24</title></rect>
+<rect x="1560.0" y="196.2" width="7" height="85.8" fill="var(--color-primary)"><title>LXVIII PROMOCIÓN · 10/12/2018: 13</title></rect>
+<rect x="1578.4" y="156.6" width="7" height="125.4" fill="var(--color-primary)"><title>LXIX PROMOCIÓN · 08/01/2020: 19</title></rect>
+<rect x="1598.0" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>LXX PROMOCIÓN · 04/03/2021: 20</title></rect>
+<rect x="1616.2" y="169.8" width="7" height="112.2" fill="var(--color-primary)"><title>LXXI PROMOCIÓN · 28/03/2022: 17</title></rect>
+<rect x="1633.2" y="84.0" width="7" height="198.0" fill="var(--color-primary)"><title>LXXII PROMOCIÓN · 28/03/2023: 30</title></rect>
+<rect x="1648.0" y="117.0" width="7" height="165.0" fill="var(--color-primary)"><title>LXXIII PROMOCIÓN · 07/02/2024: 25</title></rect>
+<rect x="1665.9" y="103.8" width="7" height="178.2" fill="var(--color-primary)"><title>LXXIV PROMOCIÓN · 25/02/2025: 27</title></rect>
+<rect x="1679.0" y="156.6" width="7" height="125.4" fill="var(--color-primary)"><title>LXXV PROMOCIÓN · 05/12/2025: 19</title></rect>
+</g></svg></noscript></div>
+<figcaption>Fuente: «TCEE por promociones», Asociación de Técnicos Comerciales y Economistas del Estado. Cada barra es una promoción, colocada en la fecha exacta de su nombramiento: los huecos son años sin promoción. El gráfico se desplaza en horizontal.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Promoción</th><th scope="col">Nombramiento</th><th scope="col">Personas</th></tr></thead>
+<tbody>
+<tr><th scope="row">I PROMOCIÓN</th><td>14/06/1930</td><td>16</td></tr>
+<tr><th scope="row">II PROMOCIÓN</th><td>14/04/1931</td><td>14</td></tr>
+<tr><th scope="row">III PROMOCIÓN</th><td>22/08/1934</td><td>34</td></tr>
+<tr><th scope="row">IV PROMOCIÓN</th><td>18/07/1936</td><td>23</td></tr>
+<tr><th scope="row">V PROMOCIÓN</th><td>23/01/1940</td><td>25</td></tr>
+<tr><th scope="row">VI PROMOCIÓN</th><td>01/07/1944</td><td>4</td></tr>
+<tr><th scope="row">VII PROMOCIÓN</th><td>20/07/1951</td><td>23</td></tr>
+<tr><th scope="row">VIII PROMOCIÓN</th><td>20/01/1954</td><td>20</td></tr>
+<tr><th scope="row">IX PROMOCIÓN</th><td>16/04/1956</td><td>12</td></tr>
+<tr><th scope="row">X PROMOCIÓN</th><td>01/07/1957</td><td>12</td></tr>
+<tr><th scope="row">XI PROMOCIÓN</th><td>28/11/1957</td><td>20</td></tr>
+<tr><th scope="row">XII PROMOCIÓN</th><td>16/12/1960</td><td>5</td></tr>
+<tr><th scope="row">XIII PROMOCIÓN</th><td>17/04/1961</td><td>12</td></tr>
+<tr><th scope="row">XIV PROMOCIÓN</th><td>28/07/1963</td><td>11</td></tr>
+<tr><th scope="row">XV PROMOCIÓN</th><td>02/07/1964</td><td>4</td></tr>
+<tr><th scope="row">XVI PROMOCIÓN</th><td>18/12/1964</td><td>6</td></tr>
+<tr><th scope="row">XVII PROMOCIÓN</th><td>16/07/1966</td><td>7</td></tr>
+<tr><th scope="row">XVIII PROMOCIÓN</th><td>28/07/1966</td><td>8</td></tr>
+<tr><th scope="row">XIX PROMOCIÓN</th><td>14/03/1968</td><td>11</td></tr>
+<tr><th scope="row">XX PROMOCIÓN</th><td>01/08/1969</td><td>14</td></tr>
+<tr><th scope="row">XXI PROMOCIÓN</th><td>27/06/1970</td><td>7</td></tr>
+<tr><th scope="row">XXII PROMOCIÓN</th><td>08/11/1971</td><td>5</td></tr>
+<tr><th scope="row">XXIII PROMOCIÓN</th><td>15/02/1972</td><td>11</td></tr>
+<tr><th scope="row">XXIV PROMOCIÓN</th><td>12/04/1973</td><td>12</td></tr>
+<tr><th scope="row">XXV PROMOCIÓN</th><td>28/03/1974</td><td>8</td></tr>
+<tr><th scope="row">XXVI PROMOCIÓN</th><td>25/04/1974</td><td>11</td></tr>
+<tr><th scope="row">XXVII PROMOCIÓN</th><td>14/05/1975</td><td>17</td></tr>
+<tr><th scope="row">XXVIII PROMOCIÓN</th><td>28/12/1975</td><td>8</td></tr>
+<tr><th scope="row">XXIX PROMOCIÓN</th><td>28/06/1976</td><td>17</td></tr>
+<tr><th scope="row">XXX PROMOCIÓN</th><td>28/10/1977</td><td>18</td></tr>
+<tr><th scope="row">XXXI PROMOCIÓN</th><td>23/01/1978</td><td>6</td></tr>
+<tr><th scope="row">XXXII PROMOCIÓN</th><td>09/02/1979</td><td>20</td></tr>
+<tr><th scope="row">XXXIII PROMOCIÓN</th><td>18/03/1980</td><td>17</td></tr>
+<tr><th scope="row">XXXIV PROMOCIÓN</th><td>17/07/1980</td><td>6</td></tr>
+<tr><th scope="row">XXXV PROMOCIÓN</th><td>21/04/1981</td><td>20</td></tr>
+<tr><th scope="row">XXXVI PROMOCIÓN</th><td>21/02/1983</td><td>12</td></tr>
+<tr><th scope="row">XXXVII PROMOCIÓN</th><td>23/01/1984</td><td>5</td></tr>
+<tr><th scope="row">XXXVIII PROMOCIÓN</th><td>18/05/1984</td><td>13</td></tr>
+<tr><th scope="row">XXXIX PROMOCIÓN</th><td>13/01/1986</td><td>9</td></tr>
+<tr><th scope="row">XL PROMOCIÓN</th><td>09/02/1987</td><td>12</td></tr>
+<tr><th scope="row">XLI PROMOCIÓN</th><td>10/03/1988</td><td>10</td></tr>
+<tr><th scope="row">XLII PROMOCIÓN</th><td>08/03/1989</td><td>20</td></tr>
+<tr><th scope="row">XLIII PROMOCIÓN</th><td>28/03/1990</td><td>15</td></tr>
+<tr><th scope="row">XLIV PROMOCIÓN</th><td>03/10/1991</td><td>16</td></tr>
+<tr><th scope="row">XLV PROMOCIÓN</th><td>28/07/1992</td><td>20</td></tr>
+<tr><th scope="row">XLVI PROMOCIÓN</th><td>04/06/1994</td><td>9</td></tr>
+<tr><th scope="row">XLVII PROMOCIÓN</th><td>28/07/1995</td><td>10</td></tr>
+<tr><th scope="row">XLVIII PROMOCIÓN</th><td>08/03/1997</td><td>10</td></tr>
+<tr><th scope="row">XLIX PROMOCIÓN</th><td>28/02/1998</td><td>8</td></tr>
+<tr><th scope="row">L PROMOCIÓN</th><td>22/03/1999</td><td>9</td></tr>
+<tr><th scope="row">LI PROMOCIÓN</th><td>25/03/2000</td><td>9</td></tr>
+<tr><th scope="row">LII PROMOCIÓN</th><td>28/04/2001</td><td>15</td></tr>
+<tr><th scope="row">LIII PROMOCIÓN</th><td>25/04/2002</td><td>10</td></tr>
+<tr><th scope="row">LIV PROMOCIÓN</th><td>01/04/2003</td><td>13</td></tr>
+<tr><th scope="row">LV PROMOCIÓN</th><td>20/12/2003</td><td>12</td></tr>
+<tr><th scope="row">LVI PROMOCIÓN</th><td>10/11/2004</td><td>14</td></tr>
+<tr><th scope="row">LVII PROMOCION</th><td>26/09/2005</td><td>9</td></tr>
+<tr><th scope="row">LVIII PROMOCION</th><td>28/10/2006</td><td>12</td></tr>
+<tr><th scope="row">LIX PROMOCION</th><td>06/11/2007</td><td>13</td></tr>
+<tr><th scope="row">LX PROMOCIÓN</th><td>28/10/2008</td><td>20</td></tr>
+<tr><th scope="row">LXI PROMOCIÓN</th><td>27/10/2009</td><td>23</td></tr>
+<tr><th scope="row">LXII PROMOCIÓN</th><td>23/12/2010</td><td>13</td></tr>
+<tr><th scope="row">LXIII PROMOCIÓN</th><td>04/01/2013</td><td>12</td></tr>
+<tr><th scope="row">LXIV PROMOCIÓN</th><td>26/09/2014</td><td>11</td></tr>
+<tr><th scope="row">LXV PROMOCIÓN</th><td>28/11/2015</td><td>10</td></tr>
+<tr><th scope="row">LXVI PROMOCIÓN</th><td>19/12/2016</td><td>15</td></tr>
+<tr><th scope="row">LXVII PROMOCIÓN</th><td>28/11/2017</td><td>24</td></tr>
+<tr><th scope="row">LXVIII PROMOCIÓN</th><td>10/12/2018</td><td>13</td></tr>
+<tr><th scope="row">LXIX PROMOCIÓN</th><td>08/01/2020</td><td>19</td></tr>
+<tr><th scope="row">LXX PROMOCIÓN</th><td>04/03/2021</td><td>20</td></tr>
+<tr><th scope="row">LXXI PROMOCIÓN</th><td>28/03/2022</td><td>17</td></tr>
+<tr><th scope="row">LXXII PROMOCIÓN</th><td>28/03/2023</td><td>30</td></tr>
+<tr><th scope="row">LXXIII PROMOCIÓN</th><td>07/02/2024</td><td>25</td></tr>
+<tr><th scope="row">LXXIV PROMOCIÓN</th><td>25/02/2025</td><td>27</td></tr>
+<tr><th scope="row">LXXV PROMOCIÓN</th><td>05/12/2025</td><td>19</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<p>Por décadas: 1930-1939: 87, 1940-1949: 29, 1950-1959: 87, 1960-1969: 78, 1970-1979: 140, 1980-1989: 124, 1990-1999: 97, 2000-2009: 150, 2010-2019: 98, 2020-2029: 157.</p>
+<h3>Situación de los asociados (22/10/2026)</h3>
+<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta 739 personas: 424 en activo, 44 en servicios especiales, 58 en excedencia y 210 jubiladas. Cada asociado se asigna a su promoción cruzando el listado con la relación de promociones de la propia ATCEE y, si no aparece en ella, por la fecha de nombramiento. Cada barra suma todas las personas de la promoción: las que están en el listado, por su situación, y en gris claro las que no figuran en él (en las primeras promociones, casi todas):</p>
+<figure class="figura-cifras" id="g-asociados">
+<div class="grafico-js desplazable" style="--alto-grafico: 340px; --ancho-minimo: 1800px"><div class="lienzo"><canvas role="img" aria-label="Promociones por situación de sus miembros"></canvas></div><script type="application/json" class="datos-grafico">{"tipo": "fechas", "titulo": "Promociones por situación de sus miembros", "x": [1930.448, 1931.281, 1934.637, 1936.544, 1940.06, 1944.497, 1951.546, 1954.052, 1956.29, 1957.495, 1957.904, 1960.956, 1961.29, 1963.568, 1964.5, 1964.962, 1966.536, 1966.568, 1968.199, 1969.579, 1970.484, 1971.85, 1972.123, 1973.276, 1974.235, 1974.311, 1975.363, 1975.986, 1976.489, 1977.82, 1978.06, 1979.107, 1980.21, 1980.541, 1981.301, 1983.139, 1984.06, 1984.377, 1986.033, 1987.107, 1988.189, 1989.18, 1990.235, 1991.751, 1992.571, 1994.421, 1995.568, 1997.18, 1998.158, 1999.219, 2000.23, 2001.32, 2002.311, 2003.246, 2003.964, 2004.858, 2005.732, 2006.82, 2007.844, 2008.822, 2009.817, 2010.973, 2013.008, 2014.732, 2015.904, 2016.964, 2017.904, 2018.937, 2020.019, 2021.169, 2022.235, 2023.235, 2024.101, 2025.15, 2025.923], "etiquetas": ["I PROMOCIÓN · 14/06/1930", "II PROMOCIÓN · 14/04/1931", "III PROMOCIÓN · 22/08/1934", "IV PROMOCIÓN · 18/07/1936", "V PROMOCIÓN · 23/01/1940", "VI PROMOCIÓN · 01/07/1944", "VII PROMOCIÓN · 20/07/1951", "VIII PROMOCIÓN · 20/01/1954", "IX PROMOCIÓN · 16/04/1956", "X PROMOCIÓN · 01/07/1957", "XI PROMOCIÓN · 28/11/1957", "XII PROMOCIÓN · 16/12/1960", "XIII PROMOCIÓN · 17/04/1961", "XIV PROMOCIÓN · 28/07/1963", "XV PROMOCIÓN · 02/07/1964", "XVI PROMOCIÓN · 18/12/1964", "XVII PROMOCIÓN · 16/07/1966", "XVIII PROMOCIÓN · 28/07/1966", "XIX PROMOCIÓN · 14/03/1968", "XX PROMOCIÓN · 01/08/1969", "XXI PROMOCIÓN · 27/06/1970", "XXII PROMOCIÓN · 08/11/1971", "XXIII PROMOCIÓN · 15/02/1972", "XXIV PROMOCIÓN · 12/04/1973", "XXV PROMOCIÓN · 28/03/1974", "XXVI PROMOCIÓN · 25/04/1974", "XXVII PROMOCIÓN · 14/05/1975", "XXVIII PROMOCIÓN · 28/12/1975", "XXIX PROMOCIÓN · 28/06/1976", "XXX PROMOCIÓN · 28/10/1977", "XXXI PROMOCIÓN · 23/01/1978", "XXXII PROMOCIÓN · 09/02/1979", "XXXIII PROMOCIÓN · 18/03/1980", "XXXIV PROMOCIÓN · 17/07/1980", "XXXV PROMOCIÓN · 21/04/1981", "XXXVI PROMOCIÓN · 21/02/1983", "XXXVII PROMOCIÓN · 23/01/1984", "XXXVIII PROMOCIÓN · 18/05/1984", "XXXIX PROMOCIÓN · 13/01/1986", "XL PROMOCIÓN · 09/02/1987", "XLI PROMOCIÓN · 10/03/1988", "XLII PROMOCIÓN · 08/03/1989", "XLIII PROMOCIÓN · 28/03/1990", "XLIV PROMOCIÓN · 03/10/1991", "XLV PROMOCIÓN · 28/07/1992", "XLVI PROMOCIÓN · 04/06/1994", "XLVII PROMOCIÓN · 28/07/1995", "XLVIII PROMOCIÓN · 08/03/1997", "XLIX PROMOCIÓN · 28/02/1998", "L PROMOCIÓN · 22/03/1999", "LI PROMOCIÓN · 25/03/2000", "LII PROMOCIÓN · 28/04/2001", "LIII PROMOCIÓN · 25/04/2002", "LIV PROMOCIÓN · 01/04/2003", "LV PROMOCIÓN · 20/12/2003", "LVI PROMOCIÓN · 10/11/2004", "LVII PROMOCION · 26/09/2005", "LVIII PROMOCION · 28/10/2006", "LIX PROMOCION · 06/11/2007", "LX PROMOCIÓN · 28/10/2008", "LXI PROMOCIÓN · 27/10/2009", "LXII PROMOCIÓN · 23/12/2010", "LXIII PROMOCIÓN · 04/01/2013", "LXIV PROMOCIÓN · 26/09/2014", "LXV PROMOCIÓN · 28/11/2015", "LXVI PROMOCIÓN · 19/12/2016", "LXVII PROMOCIÓN · 28/11/2017", "LXVIII PROMOCIÓN · 10/12/2018", "LXIX PROMOCIÓN · 08/01/2020", "LXX PROMOCIÓN · 04/03/2021", "LXXI PROMOCIÓN · 28/03/2022", "LXXII PROMOCIÓN · 28/03/2023", "LXXIII PROMOCIÓN · 07/02/2024", "LXXIV PROMOCIÓN · 25/02/2025", "LXXV PROMOCIÓN · 05/12/2025"], "x_min": 1930, "x_max": 2030, "series": [{"nombre": "En activo", "valores": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, null, 2, 2, null, 2, 2, 4, 4, 9, 6, 12, 10, 6, 5, 7, 2, 5, 6, 8, 3, 9, 7, 12, 3, 9, 10, 15, 20, 9, 11, 9, 8, 15, 24, 13, 18, 20, 17, 29, 25, 27, 18], "tipo": "bar", "color": "primary", "eje": "y", "apilar": true}, {"nombre": "Servicios especiales", "valores": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, null, 1, 1, 3, 1, 1, 1, 1, 2, null, 1, 2, 1, 2, 5, 1, 2, 2, 2, 1, 2, 3, 1, 3, null, 1, 1, null, null, null, null, null, null, null, null, null, 1], "tipo": "bar", "color": "primary-light", "eje": "y", "apilar": true}, {"nombre": "Excedencia", "valores": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, null, null, 1, 2, 1, 5, 2, 1, 1, 3, 3, 1, 4, 2, 1, 3, 5, 1, 1, 2, 2, 2, 3, null, 4, 2, null, null, 1, null, 1, 1, 1, null, null, null, null, null, null, 1, null, null, null], "tipo": "bar", "color": "gold", "eje": "y", "apilar": true}, {"nombre": "Jubilación", "valores": [null, null, null, 1, null, null, 2, 2, 3, 4, 5, 1, 5, 7, 2, 3, 4, 5, 4, 11, 2, 5, 7, 7, 3, 7, 13, 5, 13, 14, 4, 10, 11, 4, 14, 7, 3, 4, 2, 3, 3, 5, 2, null, 2, null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "tipo": "bar", "color": "border-strong", "eje": "y", "apilar": true}, {"nombre": "No hay dato", "valores": [16, 14, 34, 22, 25, 4, 21, 18, 9, 8, 15, 4, 7, 4, 2, 3, 3, 3, 7, 3, 5, null, 4, 5, 5, 4, 4, 3, 4, 4, 2, 9, 5, 2, 3, 1, 1, null, 3, 3, 1, null, 3, 2, 3, null, 1, null, null, 1, 1, 3, null, 1, null, null, null, null, 1, 2, 1, 1, null, null, null, null, null, null, 1, null, null, null, null, null, null], "tipo": "bar", "color": "border-light", "eje": "y", "apilar": true}], "temporal": true, "desplazable": true, "ejes": {"y": {"max": 40, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 1800 340" role="img" aria-labelledby="g-asociados-t g-asociados-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-asociados-t">Promociones por situación de sus miembros</title><desc id="g-asociados-d">Columnas apiladas, una por promoción en la fecha exacta de su nombramiento: asociados en activo, en servicios especiales, en excedencia o jubilados, y personas sin dato porque no figuran en el listado de asociados; la suma es el total de la promoción.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="282.0" x2="1752" y2="282.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="286.0">0</text>
+<line x1="48" y1="216.0" x2="1752" y2="216.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="220.0">10</text>
+<line x1="48" y1="150.0" x2="1752" y2="150.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="154.0">20</text>
+<line x1="48" y1="84.0" x2="1752" y2="84.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="88.0">30</text>
+<line x1="48" y1="18.0" x2="1752" y2="18.0" stroke="var(--color-border-light)"/>
+<text x="1758" y="22.0">40</text>
+<text x="48.0" y="298" text-anchor="middle">1930</text>
+<text x="218.4" y="298" text-anchor="middle">1940</text>
+<text x="388.8" y="298" text-anchor="middle">1950</text>
+<text x="559.2" y="298" text-anchor="middle">1960</text>
+<text x="729.6" y="298" text-anchor="middle">1970</text>
+<text x="900.0" y="298" text-anchor="middle">1980</text>
+<text x="1070.4" y="298" text-anchor="middle">1990</text>
+<text x="1240.8" y="298" text-anchor="middle">2000</text>
+<text x="1411.2" y="298" text-anchor="middle">2010</text>
+<text x="1581.6" y="298" text-anchor="middle">2020</text>
+<text x="1752.0" y="298" text-anchor="middle">2030</text>
+<rect x="52.1" y="176.4" width="7" height="105.6" fill="var(--color-border-light)"><title>I PROMOCIÓN · 14/06/1930: 16</title></rect>
+<rect x="66.3" y="189.6" width="7" height="92.4" fill="var(--color-border-light)"><title>II PROMOCIÓN · 14/04/1931: 14</title></rect>
+<rect x="123.5" y="57.6" width="7" height="224.4" fill="var(--color-border-light)"><title>III PROMOCIÓN · 22/08/1934: 34</title></rect>
+<rect x="156.0" y="275.4" width="7" height="6.6" fill="var(--color-border-strong)"><title>IV PROMOCIÓN · 18/07/1936: 1</title></rect>
+<rect x="156.0" y="130.2" width="7" height="145.2" fill="var(--color-border-light)"><title>IV PROMOCIÓN · 18/07/1936: 22</title></rect>
+<rect x="215.9" y="117.0" width="7" height="165.0" fill="var(--color-border-light)"><title>V PROMOCIÓN · 23/01/1940: 25</title></rect>
+<rect x="291.5" y="255.6" width="7" height="26.4" fill="var(--color-border-light)"><title>VI PROMOCIÓN · 01/07/1944: 4</title></rect>
+<rect x="411.7" y="268.8" width="7" height="13.2" fill="var(--color-border-strong)"><title>VII PROMOCIÓN · 20/07/1951: 2</title></rect>
+<rect x="411.7" y="130.2" width="7" height="138.6" fill="var(--color-border-light)"><title>VII PROMOCIÓN · 20/07/1951: 21</title></rect>
+<rect x="454.3" y="268.8" width="7" height="13.2" fill="var(--color-border-strong)"><title>VIII PROMOCIÓN · 20/01/1954: 2</title></rect>
+<rect x="454.3" y="150.0" width="7" height="118.8" fill="var(--color-border-light)"><title>VIII PROMOCIÓN · 20/01/1954: 18</title></rect>
+<rect x="492.5" y="262.2" width="7" height="19.8" fill="var(--color-border-strong)"><title>IX PROMOCIÓN · 16/04/1956: 3</title></rect>
+<rect x="492.5" y="202.8" width="7" height="59.4" fill="var(--color-border-light)"><title>IX PROMOCIÓN · 16/04/1956: 9</title></rect>
+<rect x="513.0" y="255.6" width="7" height="26.4" fill="var(--color-border-strong)"><title>X PROMOCIÓN · 01/07/1957: 4</title></rect>
+<rect x="513.0" y="202.8" width="7" height="52.8" fill="var(--color-border-light)"><title>X PROMOCIÓN · 01/07/1957: 8</title></rect>
+<rect x="520.0" y="249.0" width="7" height="33.0" fill="var(--color-border-strong)"><title>XI PROMOCIÓN · 28/11/1957: 5</title></rect>
+<rect x="520.0" y="150.0" width="7" height="99.0" fill="var(--color-border-light)"><title>XI PROMOCIÓN · 28/11/1957: 15</title></rect>
+<rect x="572.0" y="275.4" width="7" height="6.6" fill="var(--color-border-strong)"><title>XII PROMOCIÓN · 16/12/1960: 1</title></rect>
+<rect x="572.0" y="249.0" width="7" height="26.4" fill="var(--color-border-light)"><title>XII PROMOCIÓN · 16/12/1960: 4</title></rect>
+<rect x="577.7" y="249.0" width="7" height="33.0" fill="var(--color-border-strong)"><title>XIII PROMOCIÓN · 17/04/1961: 5</title></rect>
+<rect x="577.7" y="202.8" width="7" height="46.2" fill="var(--color-border-light)"><title>XIII PROMOCIÓN · 17/04/1961: 7</title></rect>
+<rect x="616.5" y="235.8" width="7" height="46.2" fill="var(--color-border-strong)"><title>XIV PROMOCIÓN · 28/07/1963: 7</title></rect>
+<rect x="616.5" y="209.4" width="7" height="26.4" fill="var(--color-border-light)"><title>XIV PROMOCIÓN · 28/07/1963: 4</title></rect>
+<rect x="632.4" y="268.8" width="7" height="13.2" fill="var(--color-border-strong)"><title>XV PROMOCIÓN · 02/07/1964: 2</title></rect>
+<rect x="632.4" y="255.6" width="7" height="13.2" fill="var(--color-border-light)"><title>XV PROMOCIÓN · 02/07/1964: 2</title></rect>
+<rect x="640.2" y="262.2" width="7" height="19.8" fill="var(--color-border-strong)"><title>XVI PROMOCIÓN · 18/12/1964: 3</title></rect>
+<rect x="640.2" y="242.4" width="7" height="19.8" fill="var(--color-border-light)"><title>XVI PROMOCIÓN · 18/12/1964: 3</title></rect>
+<rect x="667.1" y="255.6" width="7" height="26.4" fill="var(--color-border-strong)"><title>XVII PROMOCIÓN · 16/07/1966: 4</title></rect>
+<rect x="667.1" y="235.8" width="7" height="19.8" fill="var(--color-border-light)"><title>XVII PROMOCIÓN · 16/07/1966: 3</title></rect>
+<rect x="667.6" y="249.0" width="7" height="33.0" fill="var(--color-border-strong)"><title>XVIII PROMOCIÓN · 28/07/1966: 5</title></rect>
+<rect x="667.6" y="229.2" width="7" height="19.8" fill="var(--color-border-light)"><title>XVIII PROMOCIÓN · 28/07/1966: 3</title></rect>
+<rect x="695.4" y="255.6" width="7" height="26.4" fill="var(--color-border-strong)"><title>XIX PROMOCIÓN · 14/03/1968: 4</title></rect>
+<rect x="695.4" y="209.4" width="7" height="46.2" fill="var(--color-border-light)"><title>XIX PROMOCIÓN · 14/03/1968: 7</title></rect>
+<rect x="718.9" y="209.4" width="7" height="72.6" fill="var(--color-border-strong)"><title>XX PROMOCIÓN · 01/08/1969: 11</title></rect>
+<rect x="718.9" y="189.6" width="7" height="19.8" fill="var(--color-border-light)"><title>XX PROMOCIÓN · 01/08/1969: 3</title></rect>
+<rect x="734.3" y="268.8" width="7" height="13.2" fill="var(--color-border-strong)"><title>XXI PROMOCIÓN · 27/06/1970: 2</title></rect>
+<rect x="734.3" y="235.8" width="7" height="33.0" fill="var(--color-border-light)"><title>XXI PROMOCIÓN · 27/06/1970: 5</title></rect>
+<rect x="757.6" y="249.0" width="7" height="33.0" fill="var(--color-border-strong)"><title>XXII PROMOCIÓN · 08/11/1971: 5</title></rect>
+<rect x="762.3" y="235.8" width="7" height="46.2" fill="var(--color-border-strong)"><title>XXIII PROMOCIÓN · 15/02/1972: 7</title></rect>
+<rect x="762.3" y="209.4" width="7" height="26.4" fill="var(--color-border-light)"><title>XXIII PROMOCIÓN · 15/02/1972: 4</title></rect>
+<rect x="781.9" y="235.8" width="7" height="46.2" fill="var(--color-border-strong)"><title>XXIV PROMOCIÓN · 12/04/1973: 7</title></rect>
+<rect x="781.9" y="202.8" width="7" height="33.0" fill="var(--color-border-light)"><title>XXIV PROMOCIÓN · 12/04/1973: 5</title></rect>
+<rect x="798.3" y="262.2" width="7" height="19.8" fill="var(--color-border-strong)"><title>XXV PROMOCIÓN · 28/03/1974: 3</title></rect>
+<rect x="798.3" y="229.2" width="7" height="33.0" fill="var(--color-border-light)"><title>XXV PROMOCIÓN · 28/03/1974: 5</title></rect>
+<rect x="799.6" y="235.8" width="7" height="46.2" fill="var(--color-border-strong)"><title>XXVI PROMOCIÓN · 25/04/1974: 7</title></rect>
+<rect x="799.6" y="209.4" width="7" height="26.4" fill="var(--color-border-light)"><title>XXVI PROMOCIÓN · 25/04/1974: 4</title></rect>
+<rect x="817.5" y="196.2" width="7" height="85.8" fill="var(--color-border-strong)"><title>XXVII PROMOCIÓN · 14/05/1975: 13</title></rect>
+<rect x="817.5" y="169.8" width="7" height="26.4" fill="var(--color-border-light)"><title>XXVII PROMOCIÓN · 14/05/1975: 4</title></rect>
+<rect x="828.1" y="249.0" width="7" height="33.0" fill="var(--color-border-strong)"><title>XXVIII PROMOCIÓN · 28/12/1975: 5</title></rect>
+<rect x="828.1" y="229.2" width="7" height="19.8" fill="var(--color-border-light)"><title>XXVIII PROMOCIÓN · 28/12/1975: 3</title></rect>
+<rect x="836.7" y="196.2" width="7" height="85.8" fill="var(--color-border-strong)"><title>XXIX PROMOCIÓN · 28/06/1976: 13</title></rect>
+<rect x="836.7" y="169.8" width="7" height="26.4" fill="var(--color-border-light)"><title>XXIX PROMOCIÓN · 28/06/1976: 4</title></rect>
+<rect x="859.3" y="189.6" width="7" height="92.4" fill="var(--color-border-strong)"><title>XXX PROMOCIÓN · 28/10/1977: 14</title></rect>
+<rect x="859.3" y="163.2" width="7" height="26.4" fill="var(--color-border-light)"><title>XXX PROMOCIÓN · 28/10/1977: 4</title></rect>
+<rect x="863.4" y="255.6" width="7" height="26.4" fill="var(--color-border-strong)"><title>XXXI PROMOCIÓN · 23/01/1978: 4</title></rect>
+<rect x="863.4" y="242.4" width="7" height="13.2" fill="var(--color-border-light)"><title>XXXI PROMOCIÓN · 23/01/1978: 2</title></rect>
+<rect x="881.3" y="275.4" width="7" height="6.6" fill="var(--color-accent-gold)"><title>XXXII PROMOCIÓN · 09/02/1979: 1</title></rect>
+<rect x="881.3" y="209.4" width="7" height="66.0" fill="var(--color-border-strong)"><title>XXXII PROMOCIÓN · 09/02/1979: 10</title></rect>
+<rect x="881.3" y="150.0" width="7" height="59.4" fill="var(--color-border-light)"><title>XXXII PROMOCIÓN · 09/02/1979: 9</title></rect>
+<rect x="900.1" y="275.4" width="7" height="6.6" fill="var(--color-primary)"><title>XXXIII PROMOCIÓN · 18/03/1980: 1</title></rect>
+<rect x="900.1" y="202.8" width="7" height="72.6" fill="var(--color-border-strong)"><title>XXXIII PROMOCIÓN · 18/03/1980: 11</title></rect>
+<rect x="900.1" y="169.8" width="7" height="33.0" fill="var(--color-border-light)"><title>XXXIII PROMOCIÓN · 18/03/1980: 5</title></rect>
+<rect x="905.7" y="255.6" width="7" height="26.4" fill="var(--color-border-strong)"><title>XXXIV PROMOCIÓN · 17/07/1980: 4</title></rect>
+<rect x="905.7" y="242.4" width="7" height="13.2" fill="var(--color-border-light)"><title>XXXIV PROMOCIÓN · 17/07/1980: 2</title></rect>
+<rect x="918.7" y="268.8" width="7" height="13.2" fill="var(--color-primary)"><title>XXXV PROMOCIÓN · 21/04/1981: 2</title></rect>
+<rect x="918.7" y="262.2" width="7" height="6.6" fill="var(--color-accent-gold)"><title>XXXV PROMOCIÓN · 21/04/1981: 1</title></rect>
+<rect x="918.7" y="169.8" width="7" height="92.4" fill="var(--color-border-strong)"><title>XXXV PROMOCIÓN · 21/04/1981: 14</title></rect>
+<rect x="918.7" y="150.0" width="7" height="19.8" fill="var(--color-border-light)"><title>XXXV PROMOCIÓN · 21/04/1981: 3</title></rect>
+<rect x="950.0" y="268.8" width="7" height="13.2" fill="var(--color-primary)"><title>XXXVI PROMOCIÓN · 21/02/1983: 2</title></rect>
+<rect x="950.0" y="255.6" width="7" height="13.2" fill="var(--color-accent-gold)"><title>XXXVI PROMOCIÓN · 21/02/1983: 2</title></rect>
+<rect x="950.0" y="209.4" width="7" height="46.2" fill="var(--color-border-strong)"><title>XXXVI PROMOCIÓN · 21/02/1983: 7</title></rect>
+<rect x="950.0" y="202.8" width="7" height="6.6" fill="var(--color-border-light)"><title>XXXVI PROMOCIÓN · 21/02/1983: 1</title></rect>
+<rect x="965.7" y="275.4" width="7" height="6.6" fill="var(--color-accent-gold)"><title>XXXVII PROMOCIÓN · 23/01/1984: 1</title></rect>
+<rect x="965.7" y="255.6" width="7" height="19.8" fill="var(--color-border-strong)"><title>XXXVII PROMOCIÓN · 23/01/1984: 3</title></rect>
+<rect x="965.7" y="249.0" width="7" height="6.6" fill="var(--color-border-light)"><title>XXXVII PROMOCIÓN · 23/01/1984: 1</title></rect>
+<rect x="971.1" y="268.8" width="7" height="13.2" fill="var(--color-primary)"><title>XXXVIII PROMOCIÓN · 18/05/1984: 2</title></rect>
+<rect x="971.1" y="255.6" width="7" height="13.2" fill="var(--color-primary-light)"><title>XXXVIII PROMOCIÓN · 18/05/1984: 2</title></rect>
+<rect x="971.1" y="222.6" width="7" height="33.0" fill="var(--color-accent-gold)"><title>XXXVIII PROMOCIÓN · 18/05/1984: 5</title></rect>
+<rect x="971.1" y="196.2" width="7" height="26.4" fill="var(--color-border-strong)"><title>XXXVIII PROMOCIÓN · 18/05/1984: 4</title></rect>
+<rect x="999.3" y="268.8" width="7" height="13.2" fill="var(--color-primary)"><title>XXXIX PROMOCIÓN · 13/01/1986: 2</title></rect>
+<rect x="999.3" y="255.6" width="7" height="13.2" fill="var(--color-accent-gold)"><title>XXXIX PROMOCIÓN · 13/01/1986: 2</title></rect>
+<rect x="999.3" y="242.4" width="7" height="13.2" fill="var(--color-border-strong)"><title>XXXIX PROMOCIÓN · 13/01/1986: 2</title></rect>
+<rect x="999.3" y="222.6" width="7" height="19.8" fill="var(--color-border-light)"><title>XXXIX PROMOCIÓN · 13/01/1986: 3</title></rect>
+<rect x="1017.6" y="255.6" width="7" height="26.4" fill="var(--color-primary)"><title>XL PROMOCIÓN · 09/02/1987: 4</title></rect>
+<rect x="1017.6" y="249.0" width="7" height="6.6" fill="var(--color-primary-light)"><title>XL PROMOCIÓN · 09/02/1987: 1</title></rect>
+<rect x="1017.6" y="242.4" width="7" height="6.6" fill="var(--color-accent-gold)"><title>XL PROMOCIÓN · 09/02/1987: 1</title></rect>
+<rect x="1017.6" y="222.6" width="7" height="19.8" fill="var(--color-border-strong)"><title>XL PROMOCIÓN · 09/02/1987: 3</title></rect>
+<rect x="1017.6" y="202.8" width="7" height="19.8" fill="var(--color-border-light)"><title>XL PROMOCIÓN · 09/02/1987: 3</title></rect>
+<rect x="1036.0" y="255.6" width="7" height="26.4" fill="var(--color-primary)"><title>XLI PROMOCIÓN · 10/03/1988: 4</title></rect>
+<rect x="1036.0" y="249.0" width="7" height="6.6" fill="var(--color-primary-light)"><title>XLI PROMOCIÓN · 10/03/1988: 1</title></rect>
+<rect x="1036.0" y="242.4" width="7" height="6.6" fill="var(--color-accent-gold)"><title>XLI PROMOCIÓN · 10/03/1988: 1</title></rect>
+<rect x="1036.0" y="222.6" width="7" height="19.8" fill="var(--color-border-strong)"><title>XLI PROMOCIÓN · 10/03/1988: 3</title></rect>
+<rect x="1036.0" y="216.0" width="7" height="6.6" fill="var(--color-border-light)"><title>XLI PROMOCIÓN · 10/03/1988: 1</title></rect>
+<rect x="1052.9" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>XLII PROMOCIÓN · 08/03/1989: 9</title></rect>
+<rect x="1052.9" y="202.8" width="7" height="19.8" fill="var(--color-primary-light)"><title>XLII PROMOCIÓN · 08/03/1989: 3</title></rect>
+<rect x="1052.9" y="183.0" width="7" height="19.8" fill="var(--color-accent-gold)"><title>XLII PROMOCIÓN · 08/03/1989: 3</title></rect>
+<rect x="1052.9" y="150.0" width="7" height="33.0" fill="var(--color-border-strong)"><title>XLII PROMOCIÓN · 08/03/1989: 5</title></rect>
+<rect x="1070.9" y="242.4" width="7" height="39.6" fill="var(--color-primary)"><title>XLIII PROMOCIÓN · 28/03/1990: 6</title></rect>
+<rect x="1070.9" y="235.8" width="7" height="6.6" fill="var(--color-primary-light)"><title>XLIII PROMOCIÓN · 28/03/1990: 1</title></rect>
+<rect x="1070.9" y="216.0" width="7" height="19.8" fill="var(--color-accent-gold)"><title>XLIII PROMOCIÓN · 28/03/1990: 3</title></rect>
+<rect x="1070.9" y="202.8" width="7" height="13.2" fill="var(--color-border-strong)"><title>XLIII PROMOCIÓN · 28/03/1990: 2</title></rect>
+<rect x="1070.9" y="183.0" width="7" height="19.8" fill="var(--color-border-light)"><title>XLIII PROMOCIÓN · 28/03/1990: 3</title></rect>
+<rect x="1096.7" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>XLIV PROMOCIÓN · 03/10/1991: 12</title></rect>
+<rect x="1096.7" y="196.2" width="7" height="6.6" fill="var(--color-primary-light)"><title>XLIV PROMOCIÓN · 03/10/1991: 1</title></rect>
+<rect x="1096.7" y="189.6" width="7" height="6.6" fill="var(--color-accent-gold)"><title>XLIV PROMOCIÓN · 03/10/1991: 1</title></rect>
+<rect x="1096.7" y="176.4" width="7" height="13.2" fill="var(--color-border-light)"><title>XLIV PROMOCIÓN · 03/10/1991: 2</title></rect>
+<rect x="1110.7" y="216.0" width="7" height="66.0" fill="var(--color-primary)"><title>XLV PROMOCIÓN · 28/07/1992: 10</title></rect>
+<rect x="1110.7" y="209.4" width="7" height="6.6" fill="var(--color-primary-light)"><title>XLV PROMOCIÓN · 28/07/1992: 1</title></rect>
+<rect x="1110.7" y="183.0" width="7" height="26.4" fill="var(--color-accent-gold)"><title>XLV PROMOCIÓN · 28/07/1992: 4</title></rect>
+<rect x="1110.7" y="169.8" width="7" height="13.2" fill="var(--color-border-strong)"><title>XLV PROMOCIÓN · 28/07/1992: 2</title></rect>
+<rect x="1110.7" y="150.0" width="7" height="19.8" fill="var(--color-border-light)"><title>XLV PROMOCIÓN · 28/07/1992: 3</title></rect>
+<rect x="1142.2" y="242.4" width="7" height="39.6" fill="var(--color-primary)"><title>XLVI PROMOCIÓN · 04/06/1994: 6</title></rect>
+<rect x="1142.2" y="235.8" width="7" height="6.6" fill="var(--color-primary-light)"><title>XLVI PROMOCIÓN · 04/06/1994: 1</title></rect>
+<rect x="1142.2" y="222.6" width="7" height="13.2" fill="var(--color-accent-gold)"><title>XLVI PROMOCIÓN · 04/06/1994: 2</title></rect>
+<rect x="1161.8" y="249.0" width="7" height="33.0" fill="var(--color-primary)"><title>XLVII PROMOCIÓN · 28/07/1995: 5</title></rect>
+<rect x="1161.8" y="235.8" width="7" height="13.2" fill="var(--color-primary-light)"><title>XLVII PROMOCIÓN · 28/07/1995: 2</title></rect>
+<rect x="1161.8" y="229.2" width="7" height="6.6" fill="var(--color-accent-gold)"><title>XLVII PROMOCIÓN · 28/07/1995: 1</title></rect>
+<rect x="1161.8" y="222.6" width="7" height="6.6" fill="var(--color-border-strong)"><title>XLVII PROMOCIÓN · 28/07/1995: 1</title></rect>
+<rect x="1161.8" y="216.0" width="7" height="6.6" fill="var(--color-border-light)"><title>XLVII PROMOCIÓN · 28/07/1995: 1</title></rect>
+<rect x="1189.3" y="235.8" width="7" height="46.2" fill="var(--color-primary)"><title>XLVIII PROMOCIÓN · 08/03/1997: 7</title></rect>
+<rect x="1189.3" y="216.0" width="7" height="19.8" fill="var(--color-accent-gold)"><title>XLVIII PROMOCIÓN · 08/03/1997: 3</title></rect>
+<rect x="1205.9" y="268.8" width="7" height="13.2" fill="var(--color-primary)"><title>XLIX PROMOCIÓN · 28/02/1998: 2</title></rect>
+<rect x="1205.9" y="262.2" width="7" height="6.6" fill="var(--color-primary-light)"><title>XLIX PROMOCIÓN · 28/02/1998: 1</title></rect>
+<rect x="1205.9" y="229.2" width="7" height="33.0" fill="var(--color-accent-gold)"><title>XLIX PROMOCIÓN · 28/02/1998: 5</title></rect>
+<rect x="1224.0" y="249.0" width="7" height="33.0" fill="var(--color-primary)"><title>L PROMOCIÓN · 22/03/1999: 5</title></rect>
+<rect x="1224.0" y="235.8" width="7" height="13.2" fill="var(--color-primary-light)"><title>L PROMOCIÓN · 22/03/1999: 2</title></rect>
+<rect x="1224.0" y="229.2" width="7" height="6.6" fill="var(--color-accent-gold)"><title>L PROMOCIÓN · 22/03/1999: 1</title></rect>
+<rect x="1224.0" y="222.6" width="7" height="6.6" fill="var(--color-border-light)"><title>L PROMOCIÓN · 22/03/1999: 1</title></rect>
+<rect x="1241.2" y="242.4" width="7" height="39.6" fill="var(--color-primary)"><title>LI PROMOCIÓN · 25/03/2000: 6</title></rect>
+<rect x="1241.2" y="235.8" width="7" height="6.6" fill="var(--color-primary-light)"><title>LI PROMOCIÓN · 25/03/2000: 1</title></rect>
+<rect x="1241.2" y="229.2" width="7" height="6.6" fill="var(--color-accent-gold)"><title>LI PROMOCIÓN · 25/03/2000: 1</title></rect>
+<rect x="1241.2" y="222.6" width="7" height="6.6" fill="var(--color-border-light)"><title>LI PROMOCIÓN · 25/03/2000: 1</title></rect>
+<rect x="1259.8" y="229.2" width="7" height="52.8" fill="var(--color-primary)"><title>LII PROMOCIÓN · 28/04/2001: 8</title></rect>
+<rect x="1259.8" y="216.0" width="7" height="13.2" fill="var(--color-primary-light)"><title>LII PROMOCIÓN · 28/04/2001: 2</title></rect>
+<rect x="1259.8" y="202.8" width="7" height="13.2" fill="var(--color-accent-gold)"><title>LII PROMOCIÓN · 28/04/2001: 2</title></rect>
+<rect x="1259.8" y="183.0" width="7" height="19.8" fill="var(--color-border-light)"><title>LII PROMOCIÓN · 28/04/2001: 3</title></rect>
+<rect x="1276.7" y="262.2" width="7" height="19.8" fill="var(--color-primary)"><title>LIII PROMOCIÓN · 25/04/2002: 3</title></rect>
+<rect x="1276.7" y="229.2" width="7" height="33.0" fill="var(--color-primary-light)"><title>LIII PROMOCIÓN · 25/04/2002: 5</title></rect>
+<rect x="1276.7" y="216.0" width="7" height="13.2" fill="var(--color-accent-gold)"><title>LIII PROMOCIÓN · 25/04/2002: 2</title></rect>
+<rect x="1292.6" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>LIV PROMOCIÓN · 01/04/2003: 9</title></rect>
+<rect x="1292.6" y="216.0" width="7" height="6.6" fill="var(--color-primary-light)"><title>LIV PROMOCIÓN · 01/04/2003: 1</title></rect>
+<rect x="1292.6" y="202.8" width="7" height="13.2" fill="var(--color-accent-gold)"><title>LIV PROMOCIÓN · 01/04/2003: 2</title></rect>
+<rect x="1292.6" y="196.2" width="7" height="6.6" fill="var(--color-border-light)"><title>LIV PROMOCIÓN · 01/04/2003: 1</title></rect>
+<rect x="1304.9" y="235.8" width="7" height="46.2" fill="var(--color-primary)"><title>LV PROMOCIÓN · 20/12/2003: 7</title></rect>
+<rect x="1304.9" y="222.6" width="7" height="13.2" fill="var(--color-primary-light)"><title>LV PROMOCIÓN · 20/12/2003: 2</title></rect>
+<rect x="1304.9" y="202.8" width="7" height="19.8" fill="var(--color-accent-gold)"><title>LV PROMOCIÓN · 20/12/2003: 3</title></rect>
+<rect x="1320.1" y="202.8" width="7" height="79.2" fill="var(--color-primary)"><title>LVI PROMOCIÓN · 10/11/2004: 12</title></rect>
+<rect x="1320.1" y="189.6" width="7" height="13.2" fill="var(--color-primary-light)"><title>LVI PROMOCIÓN · 10/11/2004: 2</title></rect>
+<rect x="1335.0" y="262.2" width="7" height="19.8" fill="var(--color-primary)"><title>LVII PROMOCION · 26/09/2005: 3</title></rect>
+<rect x="1335.0" y="249.0" width="7" height="13.2" fill="var(--color-primary-light)"><title>LVII PROMOCION · 26/09/2005: 2</title></rect>
+<rect x="1335.0" y="222.6" width="7" height="26.4" fill="var(--color-accent-gold)"><title>LVII PROMOCION · 26/09/2005: 4</title></rect>
+<rect x="1353.5" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>LVIII PROMOCION · 28/10/2006: 9</title></rect>
+<rect x="1353.5" y="216.0" width="7" height="6.6" fill="var(--color-primary-light)"><title>LVIII PROMOCION · 28/10/2006: 1</title></rect>
+<rect x="1353.5" y="202.8" width="7" height="13.2" fill="var(--color-accent-gold)"><title>LVIII PROMOCION · 28/10/2006: 2</title></rect>
+<rect x="1371.0" y="216.0" width="7" height="66.0" fill="var(--color-primary)"><title>LIX PROMOCION · 06/11/2007: 10</title></rect>
+<rect x="1371.0" y="202.8" width="7" height="13.2" fill="var(--color-primary-light)"><title>LIX PROMOCION · 06/11/2007: 2</title></rect>
+<rect x="1371.0" y="196.2" width="7" height="6.6" fill="var(--color-border-light)"><title>LIX PROMOCION · 06/11/2007: 1</title></rect>
+<rect x="1387.6" y="183.0" width="7" height="99.0" fill="var(--color-primary)"><title>LX PROMOCIÓN · 28/10/2008: 15</title></rect>
+<rect x="1387.6" y="163.2" width="7" height="19.8" fill="var(--color-primary-light)"><title>LX PROMOCIÓN · 28/10/2008: 3</title></rect>
+<rect x="1387.6" y="150.0" width="7" height="13.2" fill="var(--color-border-light)"><title>LX PROMOCIÓN · 28/10/2008: 2</title></rect>
+<rect x="1404.6" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>LXI PROMOCIÓN · 27/10/2009: 20</title></rect>
+<rect x="1404.6" y="143.4" width="7" height="6.6" fill="var(--color-primary-light)"><title>LXI PROMOCIÓN · 27/10/2009: 1</title></rect>
+<rect x="1404.6" y="136.8" width="7" height="6.6" fill="var(--color-accent-gold)"><title>LXI PROMOCIÓN · 27/10/2009: 1</title></rect>
+<rect x="1404.6" y="130.2" width="7" height="6.6" fill="var(--color-border-light)"><title>LXI PROMOCIÓN · 27/10/2009: 1</title></rect>
+<rect x="1424.3" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>LXII PROMOCIÓN · 23/12/2010: 9</title></rect>
+<rect x="1424.3" y="202.8" width="7" height="19.8" fill="var(--color-primary-light)"><title>LXII PROMOCIÓN · 23/12/2010: 3</title></rect>
+<rect x="1424.3" y="196.2" width="7" height="6.6" fill="var(--color-border-light)"><title>LXII PROMOCIÓN · 23/12/2010: 1</title></rect>
+<rect x="1459.0" y="209.4" width="7" height="72.6" fill="var(--color-primary)"><title>LXIII PROMOCIÓN · 04/01/2013: 11</title></rect>
+<rect x="1459.0" y="202.8" width="7" height="6.6" fill="var(--color-accent-gold)"><title>LXIII PROMOCIÓN · 04/01/2013: 1</title></rect>
+<rect x="1488.3" y="222.6" width="7" height="59.4" fill="var(--color-primary)"><title>LXIV PROMOCIÓN · 26/09/2014: 9</title></rect>
+<rect x="1488.3" y="216.0" width="7" height="6.6" fill="var(--color-primary-light)"><title>LXIV PROMOCIÓN · 26/09/2014: 1</title></rect>
+<rect x="1488.3" y="209.4" width="7" height="6.6" fill="var(--color-accent-gold)"><title>LXIV PROMOCIÓN · 26/09/2014: 1</title></rect>
+<rect x="1508.3" y="229.2" width="7" height="52.8" fill="var(--color-primary)"><title>LXV PROMOCIÓN · 28/11/2015: 8</title></rect>
+<rect x="1508.3" y="222.6" width="7" height="6.6" fill="var(--color-primary-light)"><title>LXV PROMOCIÓN · 28/11/2015: 1</title></rect>
+<rect x="1508.3" y="216.0" width="7" height="6.6" fill="var(--color-accent-gold)"><title>LXV PROMOCIÓN · 28/11/2015: 1</title></rect>
+<rect x="1526.4" y="183.0" width="7" height="99.0" fill="var(--color-primary)"><title>LXVI PROMOCIÓN · 19/12/2016: 15</title></rect>
+<rect x="1542.4" y="123.6" width="7" height="158.4" fill="var(--color-primary)"><title>LXVII PROMOCIÓN · 28/11/2017: 24</title></rect>
+<rect x="1560.0" y="196.2" width="7" height="85.8" fill="var(--color-primary)"><title>LXVIII PROMOCIÓN · 10/12/2018: 13</title></rect>
+<rect x="1578.4" y="163.2" width="7" height="118.8" fill="var(--color-primary)"><title>LXIX PROMOCIÓN · 08/01/2020: 18</title></rect>
+<rect x="1578.4" y="156.6" width="7" height="6.6" fill="var(--color-border-light)"><title>LXIX PROMOCIÓN · 08/01/2020: 1</title></rect>
+<rect x="1598.0" y="150.0" width="7" height="132.0" fill="var(--color-primary)"><title>LXX PROMOCIÓN · 04/03/2021: 20</title></rect>
+<rect x="1616.2" y="169.8" width="7" height="112.2" fill="var(--color-primary)"><title>LXXI PROMOCIÓN · 28/03/2022: 17</title></rect>
+<rect x="1633.2" y="90.6" width="7" height="191.4" fill="var(--color-primary)"><title>LXXII PROMOCIÓN · 28/03/2023: 29</title></rect>
+<rect x="1633.2" y="84.0" width="7" height="6.6" fill="var(--color-accent-gold)"><title>LXXII PROMOCIÓN · 28/03/2023: 1</title></rect>
+<rect x="1648.0" y="117.0" width="7" height="165.0" fill="var(--color-primary)"><title>LXXIII PROMOCIÓN · 07/02/2024: 25</title></rect>
+<rect x="1665.9" y="103.8" width="7" height="178.2" fill="var(--color-primary)"><title>LXXIV PROMOCIÓN · 25/02/2025: 27</title></rect>
+<rect x="1679.0" y="163.2" width="7" height="118.8" fill="var(--color-primary)"><title>LXXV PROMOCIÓN · 05/12/2025: 18</title></rect>
+<rect x="1679.0" y="156.6" width="7" height="6.6" fill="var(--color-primary-light)"><title>LXXV PROMOCIÓN · 05/12/2025: 1</title></rect>
+</g></svg></noscript></div>
+<figcaption>Fuente: listado de asociados de la ATCEE, 22/10/2026.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Promoción</th><th scope="col">Nombramiento</th><th scope="col">En activo</th><th scope="col">Servicios especiales</th><th scope="col">Excedencia</th><th scope="col">Jubilación</th><th scope="col">No hay dato</th><th scope="col">Personas en la promoción</th></tr></thead>
+<tbody>
+<tr><th scope="row">I PROMOCIÓN</th><td>14/06/1930</td><td>0</td><td>0</td><td>0</td><td>0</td><td>16</td><td>16</td></tr>
+<tr><th scope="row">II PROMOCIÓN</th><td>14/04/1931</td><td>0</td><td>0</td><td>0</td><td>0</td><td>14</td><td>14</td></tr>
+<tr><th scope="row">III PROMOCIÓN</th><td>22/08/1934</td><td>0</td><td>0</td><td>0</td><td>0</td><td>34</td><td>34</td></tr>
+<tr><th scope="row">IV PROMOCIÓN</th><td>18/07/1936</td><td>0</td><td>0</td><td>0</td><td>1</td><td>22</td><td>23</td></tr>
+<tr><th scope="row">V PROMOCIÓN</th><td>23/01/1940</td><td>0</td><td>0</td><td>0</td><td>0</td><td>25</td><td>25</td></tr>
+<tr><th scope="row">VI PROMOCIÓN</th><td>01/07/1944</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>4</td></tr>
+<tr><th scope="row">VII PROMOCIÓN</th><td>20/07/1951</td><td>0</td><td>0</td><td>0</td><td>2</td><td>21</td><td>23</td></tr>
+<tr><th scope="row">VIII PROMOCIÓN</th><td>20/01/1954</td><td>0</td><td>0</td><td>0</td><td>2</td><td>18</td><td>20</td></tr>
+<tr><th scope="row">IX PROMOCIÓN</th><td>16/04/1956</td><td>0</td><td>0</td><td>0</td><td>3</td><td>9</td><td>12</td></tr>
+<tr><th scope="row">X PROMOCIÓN</th><td>01/07/1957</td><td>0</td><td>0</td><td>0</td><td>4</td><td>8</td><td>12</td></tr>
+<tr><th scope="row">XI PROMOCIÓN</th><td>28/11/1957</td><td>0</td><td>0</td><td>0</td><td>5</td><td>15</td><td>20</td></tr>
+<tr><th scope="row">XII PROMOCIÓN</th><td>16/12/1960</td><td>0</td><td>0</td><td>0</td><td>1</td><td>4</td><td>5</td></tr>
+<tr><th scope="row">XIII PROMOCIÓN</th><td>17/04/1961</td><td>0</td><td>0</td><td>0</td><td>5</td><td>7</td><td>12</td></tr>
+<tr><th scope="row">XIV PROMOCIÓN</th><td>28/07/1963</td><td>0</td><td>0</td><td>0</td><td>7</td><td>4</td><td>11</td></tr>
+<tr><th scope="row">XV PROMOCIÓN</th><td>02/07/1964</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>4</td></tr>
+<tr><th scope="row">XVI PROMOCIÓN</th><td>18/12/1964</td><td>0</td><td>0</td><td>0</td><td>3</td><td>3</td><td>6</td></tr>
+<tr><th scope="row">XVII PROMOCIÓN</th><td>16/07/1966</td><td>0</td><td>0</td><td>0</td><td>4</td><td>3</td><td>7</td></tr>
+<tr><th scope="row">XVIII PROMOCIÓN</th><td>28/07/1966</td><td>0</td><td>0</td><td>0</td><td>5</td><td>3</td><td>8</td></tr>
+<tr><th scope="row">XIX PROMOCIÓN</th><td>14/03/1968</td><td>0</td><td>0</td><td>0</td><td>4</td><td>7</td><td>11</td></tr>
+<tr><th scope="row">XX PROMOCIÓN</th><td>01/08/1969</td><td>0</td><td>0</td><td>0</td><td>11</td><td>3</td><td>14</td></tr>
+<tr><th scope="row">XXI PROMOCIÓN</th><td>27/06/1970</td><td>0</td><td>0</td><td>0</td><td>2</td><td>5</td><td>7</td></tr>
+<tr><th scope="row">XXII PROMOCIÓN</th><td>08/11/1971</td><td>0</td><td>0</td><td>0</td><td>5</td><td>0</td><td>5</td></tr>
+<tr><th scope="row">XXIII PROMOCIÓN</th><td>15/02/1972</td><td>0</td><td>0</td><td>0</td><td>7</td><td>4</td><td>11</td></tr>
+<tr><th scope="row">XXIV PROMOCIÓN</th><td>12/04/1973</td><td>0</td><td>0</td><td>0</td><td>7</td><td>5</td><td>12</td></tr>
+<tr><th scope="row">XXV PROMOCIÓN</th><td>28/03/1974</td><td>0</td><td>0</td><td>0</td><td>3</td><td>5</td><td>8</td></tr>
+<tr><th scope="row">XXVI PROMOCIÓN</th><td>25/04/1974</td><td>0</td><td>0</td><td>0</td><td>7</td><td>4</td><td>11</td></tr>
+<tr><th scope="row">XXVII PROMOCIÓN</th><td>14/05/1975</td><td>0</td><td>0</td><td>0</td><td>13</td><td>4</td><td>17</td></tr>
+<tr><th scope="row">XXVIII PROMOCIÓN</th><td>28/12/1975</td><td>0</td><td>0</td><td>0</td><td>5</td><td>3</td><td>8</td></tr>
+<tr><th scope="row">XXIX PROMOCIÓN</th><td>28/06/1976</td><td>0</td><td>0</td><td>0</td><td>13</td><td>4</td><td>17</td></tr>
+<tr><th scope="row">XXX PROMOCIÓN</th><td>28/10/1977</td><td>0</td><td>0</td><td>0</td><td>14</td><td>4</td><td>18</td></tr>
+<tr><th scope="row">XXXI PROMOCIÓN</th><td>23/01/1978</td><td>0</td><td>0</td><td>0</td><td>4</td><td>2</td><td>6</td></tr>
+<tr><th scope="row">XXXII PROMOCIÓN</th><td>09/02/1979</td><td>0</td><td>0</td><td>1</td><td>10</td><td>9</td><td>20</td></tr>
+<tr><th scope="row">XXXIII PROMOCIÓN</th><td>18/03/1980</td><td>1</td><td>0</td><td>0</td><td>11</td><td>5</td><td>17</td></tr>
+<tr><th scope="row">XXXIV PROMOCIÓN</th><td>17/07/1980</td><td>0</td><td>0</td><td>0</td><td>4</td><td>2</td><td>6</td></tr>
+<tr><th scope="row">XXXV PROMOCIÓN</th><td>21/04/1981</td><td>2</td><td>0</td><td>1</td><td>14</td><td>3</td><td>20</td></tr>
+<tr><th scope="row">XXXVI PROMOCIÓN</th><td>21/02/1983</td><td>2</td><td>0</td><td>2</td><td>7</td><td>1</td><td>12</td></tr>
+<tr><th scope="row">XXXVII PROMOCIÓN</th><td>23/01/1984</td><td>0</td><td>0</td><td>1</td><td>3</td><td>1</td><td>5</td></tr>
+<tr><th scope="row">XXXVIII PROMOCIÓN</th><td>18/05/1984</td><td>2</td><td>2</td><td>5</td><td>4</td><td>0</td><td>13</td></tr>
+<tr><th scope="row">XXXIX PROMOCIÓN</th><td>13/01/1986</td><td>2</td><td>0</td><td>2</td><td>2</td><td>3</td><td>9</td></tr>
+<tr><th scope="row">XL PROMOCIÓN</th><td>09/02/1987</td><td>4</td><td>1</td><td>1</td><td>3</td><td>3</td><td>12</td></tr>
+<tr><th scope="row">XLI PROMOCIÓN</th><td>10/03/1988</td><td>4</td><td>1</td><td>1</td><td>3</td><td>1</td><td>10</td></tr>
+<tr><th scope="row">XLII PROMOCIÓN</th><td>08/03/1989</td><td>9</td><td>3</td><td>3</td><td>5</td><td>0</td><td>20</td></tr>
+<tr><th scope="row">XLIII PROMOCIÓN</th><td>28/03/1990</td><td>6</td><td>1</td><td>3</td><td>2</td><td>3</td><td>15</td></tr>
+<tr><th scope="row">XLIV PROMOCIÓN</th><td>03/10/1991</td><td>12</td><td>1</td><td>1</td><td>0</td><td>2</td><td>16</td></tr>
+<tr><th scope="row">XLV PROMOCIÓN</th><td>28/07/1992</td><td>10</td><td>1</td><td>4</td><td>2</td><td>3</td><td>20</td></tr>
+<tr><th scope="row">XLVI PROMOCIÓN</th><td>04/06/1994</td><td>6</td><td>1</td><td>2</td><td>0</td><td>0</td><td>9</td></tr>
+<tr><th scope="row">XLVII PROMOCIÓN</th><td>28/07/1995</td><td>5</td><td>2</td><td>1</td><td>1</td><td>1</td><td>10</td></tr>
+<tr><th scope="row">XLVIII PROMOCIÓN</th><td>08/03/1997</td><td>7</td><td>0</td><td>3</td><td>0</td><td>0</td><td>10</td></tr>
+<tr><th scope="row">XLIX PROMOCIÓN</th><td>28/02/1998</td><td>2</td><td>1</td><td>5</td><td>0</td><td>0</td><td>8</td></tr>
+<tr><th scope="row">L PROMOCIÓN</th><td>22/03/1999</td><td>5</td><td>2</td><td>1</td><td>0</td><td>1</td><td>9</td></tr>
+<tr><th scope="row">LI PROMOCIÓN</th><td>25/03/2000</td><td>6</td><td>1</td><td>1</td><td>0</td><td>1</td><td>9</td></tr>
+<tr><th scope="row">LII PROMOCIÓN</th><td>28/04/2001</td><td>8</td><td>2</td><td>2</td><td>0</td><td>3</td><td>15</td></tr>
+<tr><th scope="row">LIII PROMOCIÓN</th><td>25/04/2002</td><td>3</td><td>5</td><td>2</td><td>0</td><td>0</td><td>10</td></tr>
+<tr><th scope="row">LIV PROMOCIÓN</th><td>01/04/2003</td><td>9</td><td>1</td><td>2</td><td>0</td><td>1</td><td>13</td></tr>
+<tr><th scope="row">LV PROMOCIÓN</th><td>20/12/2003</td><td>7</td><td>2</td><td>3</td><td>0</td><td>0</td><td>12</td></tr>
+<tr><th scope="row">LVI PROMOCIÓN</th><td>10/11/2004</td><td>12</td><td>2</td><td>0</td><td>0</td><td>0</td><td>14</td></tr>
+<tr><th scope="row">LVII PROMOCION</th><td>26/09/2005</td><td>3</td><td>2</td><td>4</td><td>0</td><td>0</td><td>9</td></tr>
+<tr><th scope="row">LVIII PROMOCION</th><td>28/10/2006</td><td>9</td><td>1</td><td>2</td><td>0</td><td>0</td><td>12</td></tr>
+<tr><th scope="row">LIX PROMOCION</th><td>06/11/2007</td><td>10</td><td>2</td><td>0</td><td>0</td><td>1</td><td>13</td></tr>
+<tr><th scope="row">LX PROMOCIÓN</th><td>28/10/2008</td><td>15</td><td>3</td><td>0</td><td>0</td><td>2</td><td>20</td></tr>
+<tr><th scope="row">LXI PROMOCIÓN</th><td>27/10/2009</td><td>20</td><td>1</td><td>1</td><td>0</td><td>1</td><td>23</td></tr>
+<tr><th scope="row">LXII PROMOCIÓN</th><td>23/12/2010</td><td>9</td><td>3</td><td>0</td><td>0</td><td>1</td><td>13</td></tr>
+<tr><th scope="row">LXIII PROMOCIÓN</th><td>04/01/2013</td><td>11</td><td>0</td><td>1</td><td>0</td><td>0</td><td>12</td></tr>
+<tr><th scope="row">LXIV PROMOCIÓN</th><td>26/09/2014</td><td>9</td><td>1</td><td>1</td><td>0</td><td>0</td><td>11</td></tr>
+<tr><th scope="row">LXV PROMOCIÓN</th><td>28/11/2015</td><td>8</td><td>1</td><td>1</td><td>0</td><td>0</td><td>10</td></tr>
+<tr><th scope="row">LXVI PROMOCIÓN</th><td>19/12/2016</td><td>15</td><td>0</td><td>0</td><td>0</td><td>0</td><td>15</td></tr>
+<tr><th scope="row">LXVII PROMOCIÓN</th><td>28/11/2017</td><td>24</td><td>0</td><td>0</td><td>0</td><td>0</td><td>24</td></tr>
+<tr><th scope="row">LXVIII PROMOCIÓN</th><td>10/12/2018</td><td>13</td><td>0</td><td>0</td><td>0</td><td>0</td><td>13</td></tr>
+<tr><th scope="row">LXIX PROMOCIÓN</th><td>08/01/2020</td><td>18</td><td>0</td><td>0</td><td>0</td><td>1</td><td>19</td></tr>
+<tr><th scope="row">LXX PROMOCIÓN</th><td>04/03/2021</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0</td><td>20</td></tr>
+<tr><th scope="row">LXXI PROMOCIÓN</th><td>28/03/2022</td><td>17</td><td>0</td><td>0</td><td>0</td><td>0</td><td>17</td></tr>
+<tr><th scope="row">LXXII PROMOCIÓN</th><td>28/03/2023</td><td>29</td><td>0</td><td>1</td><td>0</td><td>0</td><td>30</td></tr>
+<tr><th scope="row">LXXIII PROMOCIÓN</th><td>07/02/2024</td><td>25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>25</td></tr>
+<tr><th scope="row">LXXIV PROMOCIÓN</th><td>25/02/2025</td><td>27</td><td>0</td><td>0</td><td>0</td><td>0</td><td>27</td></tr>
+<tr><th scope="row">LXXV PROMOCIÓN</th><td>05/12/2025</td><td>18</td><td>1</td><td>0</td><td>0</td><td>0</td><td>19</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<h2 id="tabla">Tabla completa por convocatoria</h2>
+<div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">OEP</th><th scope="col">Convocatoria</th><th scope="col">Plazas libre</th><th scope="col">Plazas interna</th><th scope="col">Admitidos libre</th><th scope="col">Admitidos interna</th><th scope="col">Aprueban 1.º</th><th scope="col">2.º</th><th scope="col">3.º</th><th scope="col">4.º</th><th scope="col">5.º</th><th scope="col">Aprobados libre</th><th scope="col">Aprobados interna</th></tr></thead>
+<tbody>
+<tr><th scope="row">1985</th><td>—</td><td>25/03/1985</td><td>30</td><td>5</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>9</td><td>0</td></tr>
+<tr><th scope="row">1986</th><td>—</td><td>24/03/1986</td><td>31</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">1987</th><td>1987</td><td>18/03/1987</td><td>19</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>10</td><td>0</td></tr>
+<tr><th scope="row">1988</th><td>1988</td><td>28/03/1988</td><td>25</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>20</td><td>0</td></tr>
+<tr><th scope="row">1989</th><td>1989</td><td>28/04/1989</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>15</td><td>0</td></tr>
+<tr><th scope="row">1991</th><td>—</td><td>26/09/1990</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>13</td><td>0</td></tr>
+<tr><th scope="row">1992</th><td>1990</td><td>30/04/1991</td><td>20</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>16</td><td>0</td></tr>
+<tr><th scope="row">1993</th><td>—</td><td>02/03/1993</td><td>9</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>9</td><td>0</td></tr>
+<tr><th scope="row">1994</th><td>—</td><td>23/06/1994</td><td>10</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>10</td><td>0</td></tr>
+<tr><th scope="row">1996</th><td>1995</td><td>24/11/1995</td><td>10</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>7</td><td>0</td></tr>
+<tr><th scope="row">1997</th><td>1996</td><td>13/12/1996</td><td>8</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>8</td><td>0</td></tr>
+<tr><th scope="row">1998</th><td>1997</td><td>03/12/1997</td><td>9</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>9</td><td>0</td></tr>
+<tr><th scope="row">1999</th><td>1998</td><td>01/12/1998</td><td>9</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>8</td><td>0</td></tr>
+<tr><th scope="row">2000</th><td>1999</td><td>08/11/1999</td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>3</td></tr>
+<tr><th scope="row">2001</th><td>2000</td><td>27/09/2000</td><td>10</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>10</td><td>0</td></tr>
+<tr><th scope="row">2002</th><td>2001</td><td>24/09/2001</td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">2003</th><td>2002</td><td>13/06/2002</td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">2004</th><td>2003</td><td>14/05/2003</td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>2</td></tr>
+<tr><th scope="row">2005</th><td>2004</td><td>05/05/2004</td><td>10</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>9</td><td>0</td></tr>
+<tr><th scope="row">2006</th><td>2005</td><td>20/05/2005</td><td>12</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">2007</th><td>2006</td><td>05/06/2006</td><td>14</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>13</td><td>0</td></tr>
+<tr><th scope="row">2008</th><td>2007</td><td>19/04/2007</td><td>25</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>20</td><td>0</td></tr>
+<tr><th scope="row">2009</th><td>2008</td><td>16/04/2008</td><td>25</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>22</td><td>1</td></tr>
+<tr><th scope="row">2010</th><td>2009</td><td>05/06/2009</td><td>14</td><td>5</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>13</td><td>0</td></tr>
+<tr><th scope="row">2011</th><td>2011</td><td>14/06/2011</td><td>13</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">2014</th><td>2013</td><td>25/09/2013</td><td>12</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>10</td><td>1</td></tr>
+<tr><th scope="row">2015</th><td>2014</td><td>10/07/2014</td><td>12</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>10</td><td>0</td></tr>
+<tr><th scope="row">2016</th><td>2015</td><td>30/10/2015</td><td>21</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>15</td><td>0</td></tr>
+<tr><th scope="row">2017</th><td>2016</td><td>22/09/2016</td><td>31</td><td>11</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>22</td><td>2</td></tr>
+<tr><th scope="row">2018</th><td>2017</td><td>07/11/2017</td><td>20</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>13</td><td>0</td></tr>
+<tr><th scope="row">2019</th><td>2018</td><td>20/11/2018</td><td>20</td><td>5</td><td>189</td><td>3</td><td>94</td><td>68</td><td>39</td><td>14</td><td>17</td><td>19</td><td>0</td></tr>
+<tr><th scope="row">2020</th><td>2019</td><td>30/10/2019</td><td>21</td><td>3</td><td>218</td><td>12</td><td>85</td><td>60</td><td>34</td><td>20</td><td>19</td><td>19</td><td>0</td></tr>
+<tr><th scope="row">2021</th><td>2020</td><td>19/05/2021</td><td>18</td><td>5</td><td>271</td><td>8</td><td>77</td><td>47</td><td>25</td><td>17</td><td>17</td><td>17</td><td>0</td></tr>
+<tr><th scope="row">2022</th><td>2021</td><td>13/05/2022</td><td>32</td><td>2</td><td>260</td><td>13</td><td>102</td><td>71</td><td>38</td><td>30</td><td>28</td><td>28</td><td>2</td></tr>
+<tr><th scope="row">2023</th><td>2022</td><td>11/04/2023</td><td>27</td><td>4</td><td>221</td><td>12</td><td>75</td><td>54</td><td>31</td><td>25</td><td>19</td><td>23</td><td>2</td></tr>
+<tr><th scope="row">2024</th><td>2023</td><td>05/04/2024</td><td>29</td><td>15</td><td>186</td><td>9</td><td>72</td><td>60</td><td>41</td><td>27</td><td>26</td><td>25</td><td>2</td></tr>
+<tr><th scope="row">2025</th><td>2024</td><td>22/12/2024</td><td>22</td><td>15</td><td>172</td><td>18</td><td>53</td><td>33</td><td>30</td><td>19</td><td>17</td><td>17</td><td>2</td></tr>
+<tr><th scope="row">2026</th><td>2025</td><td>22/12/2025</td><td>27</td><td>10</td><td>186</td><td>15</td><td>75</td><td>46</td><td>28</td><td>17</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table></div>
+<p class="nota-metodo">Los aprobados por ejercicio de esta tabla incluyen todos los turnos. Los datos están también en <a href="cifras.json">cifras.json</a> (licencia CC BY-NC-ND 4.0, citando esta página).</p>
+<h2 id="metodo">Método y fuentes</h2>
+<ul><li><strong>Plazas:</strong> la resolución de cada convocatoria en el BOE (turno libre, reserva de discapacidad y promoción interna). Las convocatorias se identifican por el año en que se celebran los exámenes: las publicadas en diciembre corresponden al año siguiente.</li><li><strong>Aprobados:</strong> la relación de aprobados en la fase de oposición que el Ministerio publica en el BOE al terminar cada proceso, contando las filas por turno; para las convocatorias más antiguas, sin relación en el BOE con texto, el nombramiento de funcionarios en prácticas o, si falta, el de funcionarios de carrera, leídos por OCR. No se publican puntuaciones.</li><li><strong>Admitidos, ejercicios, conservación de nota e idiomas:</strong> las listas definitivas de admitidos, las listas de aprobados de cada ejercicio y de cada parte, y las listas de aspirantes que conservan nota, de la página de cada convocatoria del Ministerio (desde la OEP 2018). Buena parte son imágenes escaneadas y se leen con reconocimiento óptico de caracteres: se cuentan las filas de cada lista, así que puede haber diferencias de una o dos personas con el documento original. Las tasas por ejercicio se calculan solo para el turno libre, porque la promoción interna tiene exenciones.</li><li><strong>Idiomas y repetidores:</strong> cruces aproximados entre listas (aprobados con admitidos).</li><li><strong>El cuerpo desde 1930:</strong> la relación de Técnicos Comerciales y Economistas del Estado por promociones y el listado de asociados de la Asociación de Técnicos Comerciales y Economistas del Estado, contando personas por promoción y por situación. Para las convocatorias antiguas sin relación de aprobados en el BOE, el tamaño de la promoción sustituye a la lectura por OCR de los nombramientos.</li></ul>
+<p>Si encuentras un dato que no cuadra con el documento original, <a href="../sobre-mi.html">escríbeme</a> y lo reviso.</p>
+<!-- cifras:fin -->
+                </div>
+            </article>
+        </div>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-columnas">
+            <nav class="footer-col" aria-label="Secciones">
+                <p class="footer-col-titulo">Secciones</p>
+                <ul>
+                    <li><a href="../oposicion/index.html">Oposición</a></li>
+                    <li><a href="../oposicion/temario.html">Temario</a></li>
+                    <li><a href="../oposicion/temario/primer-ejercicio/test/simulador.html">Simulador de test</a></li>
+                    <li><a href="../oposicion/por-que-tcee.html">¿Por qué TCEE?</a></li>
+                    <li><a href="../app/">App TCEE y DCE</a></li>
+                    <li><a href="../blog/index.html">Blog</a></li>
+                    <li><a href="../novedades.html">Novedades</a></li>
+                    <li><a href="../sobre-mi.html">Sobre mí</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Fuentes oficiales">
+                <p class="footer-col-titulo">Fuentes oficiales</p>
+                <ul>
+                    <li><a href="https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx" target="_blank" rel="noopener">Procesos selectivos del Ministerio</a></li>
+                    <li><a href="https://atcee.es/la-oposicion-tcee/" target="_blank" rel="noopener">Asociación de Técnicos Comerciales y Economistas del Estado</a></li>
+                    <li><a href="https://www.boe.es/" target="_blank" rel="noopener">Boletín Oficial del Estado</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-licencia">
+            <a class="footer-cc" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener" aria-label="Licencia Creative Commons BY-NC-ND 4.0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M10.4 9.7a2.7 2.7 0 1 0 0 4.6M16.4 9.7a2.7 2.7 0 1 0 0 4.6" transform="translate(-1.4 0)"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><circle cx="12" cy="6.9" r="1.45" fill="currentColor" stroke="none"/><path d="M9.6 9.6h4.8v4.3h-1.25v4h-2.3v-4H9.6z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M14.5 9.7c-.5-.8-1.4-1.2-2.5-1.2-1.3 0-2.3.7-2.3 1.6 0 2.3 4.9 1.3 4.9 3.8 0 1-1.1 1.7-2.6 1.7-1.2 0-2.2-.5-2.7-1.4M12 6.7v1.7M12 15.6v1.7M4.8 4.8l14.4 14.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M7.6 10h8.8M7.6 14h8.8" stroke-width="1.8"/></svg></a>
+            <p>El temario y los artículos se publican con licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener">Creative Commons BY-NC-ND 4.0</a>: puedes copiarlos y compartirlos citando al autor y enlazando el original, pero no venderlos ni publicar versiones modificadas.</p>
+        </div>
+        <div class="footer-inf">
+            <span>© Víctor Gutiérrez Marcos</span>
+            <nav aria-label="Enlaces legales">
+                <a href="../politica-cookies.html">Política de cookies</a>
+                <a href="../sobre-mi.html">Contacto</a>
+            </nav>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/victorgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://x.com/i/lists/2013750304991268900" target="_blank" rel="noopener noreferrer" aria-label="Lista de X (Twitter)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                </a>
+                <a href="https://github.com/vgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a href="mailto:contacto@victorgutierrezmarcos.es" aria-label="Correo electrónico">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Gráficos interactivos (sin JavaScript queda el SVG) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+    <script src="cifras-graficos.js" defer></script>
+    <script src="../search-engine.js"></script>
+    <script src="../search-ui.js"></script>
+    <script src="../cookie-consent.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- Configuración y Lógica de Auth -->
+    <script src="../firebase-config.js"></script>
+    <script src="../auth.js"></script>
+</body>
+</html>

@@ -44,7 +44,8 @@ void main() {
       expect(t.aprobado, DateTime(2026, 10, 17));
       expect(t.version, '1a3f226');
       expect(t.url(t.pdf), '${raw}oposicion/temario/tercer-ejercicio/3A12.pdf');
-      expect(t.urlDocumentoHtml, '${cdn}oposicion/temario/tercer-ejercicio/3A12.html');
+      // El CDN del HTML es githack fijado al commit (jsDelivr, el del manifiesto, da 503 con este repositorio).
+      expect(t.urlDocumentoHtml, 'https://rawcdn.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/$commit/oposicion/temario/tercer-ejercicio/3A12.html');
       expect(t.repaso!.tamano, 491508);
       expect(t.docx!.extension, 'docx');
       expect(m.de('3.A.21')!.repaso, isNull);
@@ -107,7 +108,7 @@ void main() {
       expect(t.pdf.sha, 'x');
       // Sin bases en el manifiesto: las de la rama.
       expect(t.url(t.pdf), startsWith('https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/'));
-      expect(t.urlDocumentoHtml, startsWith('https://cdn.jsdelivr.net/gh/vgutierrezmarcos/victorgutierrezmarcos.github.io@revision-temario/'));
+      expect(t.urlDocumentoHtml, startsWith('https://raw.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/'));
     });
 
     test('un manifiesto que no vale queda vacío', () {
@@ -125,7 +126,8 @@ void main() {
       });
       final t = m.de('3.A.12')!;
       expect(t.url(t.pdf), startsWith('https://raw.githubusercontent.com/'));
-      expect(t.urlDocumentoHtml, 'https://cdn.jsdelivr.net/gh/otro@abc/oposicion/temario/tercer-ejercicio/3A12.html');
+      // Un CDN de jsDelivr se cambia por githack con la misma referencia.
+      expect(t.urlDocumentoHtml, 'https://raw.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/abc/oposicion/temario/tercer-ejercicio/3A12.html');
     });
   });
 
@@ -155,6 +157,12 @@ void main() {
       expect(e.version, VersionTema.anterior);
       expect(e.hayRevisada, isTrue);
       expect(e.puedeCambiar, isTrue);
+    });
+
+    test('sin versión anterior, la revisada y sin «Ver versión anterior»', () {
+      final e = elegirVersion(revisado: rev, conSesion: true, pideAnterior: true, hayAnterior: false);
+      expect(e.esRevisada, isTrue);
+      expect(e.puedeCambiar, isFalse);
     });
 
     test('sin sesión, la anterior con la invitación a entrar, aunque se pida la revisada', () {

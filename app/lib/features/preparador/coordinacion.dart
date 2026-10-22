@@ -353,7 +353,12 @@ Future<List<Cante>> agendaDeAlumno(WidgetRef ref, String idAlumno) async {
   final mias = ref.read(sesionesProvider).where((s) => s.alumno == idAlumno).toList();
   ProgresoAlumno? progreso;
   try {
-    progreso = await ref.read(progresoAlumnoProvider(idAlumno).future);
+    // Al repositorio directamente (no al provider autoDispose, que sin nadie
+    // que lo escuche puede desecharse antes de contestar) y con plazo: sin
+    // red se sigue con lo que hay en local, en vez de quedarse esperando.
+    final repo = ref.read(preparadorRepoProvider);
+    final a = repo.alumno(idAlumno);
+    if (a != null) progreso = await repo.progreso(a).timeout(const Duration(seconds: 8));
   } catch (_) {}
   final ids = {for (final s in mias) s.id};
   return [...mias, ...?progreso?.cantes.where((c) => !ids.contains(c.id))];

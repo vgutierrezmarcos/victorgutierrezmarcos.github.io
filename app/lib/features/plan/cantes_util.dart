@@ -1,23 +1,43 @@
 import 'package:intl/intl.dart';
 
 import '../../core/calendario.dart';
+import '../../data/models/cronograma.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../data/repos/usuario_repo.dart';
 
 /// Temas que entran en el sorteo de un cante según su tipo de bolsa.
-List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes) {
+///
+/// En una clase del preparador, «los estudiados» son los temas que lleva el
+/// alumno para esa clase, igual en su app y en la del preparador: si su
+/// [cronograma] compartido tiene una semana cuyo cante cae en la fecha de la
+/// clase, los temas de esa semana (lo que ve en Cronograma para ese cante);
+/// si no, los marcados como estudiados más los del cronograma hasta hoy. En
+/// los dos casos, sin los que ha pedido no cantar.
+List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes, {Cronograma? cronograma}) {
   final oposicion = Oposiciones.actual;
   // Dictamen (1.º de TCEE): se canta sin temas.
   if (oposicion.esDictamen(c.ejercicio)) return const [];
   final ejercicios = oposicion.ejerciciosDeBolsa(c.ejercicio);
   bool delEjercicio(Tema t) => ejercicios.contains(t.ejercicio);
+  final estudiados = c.dePreparador ? temasQueLleva(ajustes, cronograma, fecha: c.fecha) : ajustes.temasEstudiados;
   return switch (c.bolsa) {
     TipoBolsa.lista => [for (final codigo in c.temas) if (temario.tema(codigo) != null) temario.tema(codigo)!],
-    TipoBolsa.estudiados => temario.todosLosTemas.where((t) => delEjercicio(t) && ajustes.temasEstudiados.contains(t.codigo)).toList(),
+    TipoBolsa.estudiados => temario.todosLosTemas.where((t) => delEjercicio(t) && estudiados.contains(t.codigo)).toList(),
     TipoBolsa.ejercicio => temario.todosLosTemas.where(delEjercicio).toList(),
   };
+}
+
+/// Los temas que lleva el opositor para las clases, sin los que pide no cantar.
+/// Con [fecha] (la de la clase) y un cronograma con una semana para ese cante,
+/// son los temas de esa semana ([Cronograma.temasDelCante]); si no, los
+/// estudiados más los del cronograma hasta hoy (lo que calcula el preparador
+/// en la ficha del alumno).
+Set<String> temasQueLleva(Ajustes ajustes, Cronograma? cronograma, {DateTime? fecha}) {
+  final delCante = fecha == null ? null : cronograma?.temasDelCante(fecha);
+  final base = delCante != null ? delCante.toSet() : {...ajustes.temasEstudiados, ...?cronograma?.temasLlevados(DateTime.now())};
+  return base..removeAll(ajustes.noCantar.keys);
 }
 
 /// «Tercer ejercicio» (0: «3.º y 4.º ejercicio»).
@@ -41,6 +61,24 @@ String detalleCante(Cante c) => [descripcionBolsa(c), if (c.online) 'online' els
 
 String tituloCante(Cante c) => c.titulo.isEmpty ? 'Cante' : c.titulo;
 
+/// El próximo [diaSemana] (1 = lunes … 7 = domingo) después de [desde], a las
+/// [hora]:[minuto]: el día de cante del cronograma del alumno al programarle
+/// una clase. Nunca el mismo día de [desde].
+DateTime proximoDiaDeSemana(DateTime desde, int diaSemana, {int hora = 17, int minuto = 0}) {
+  final hoy = DateTime(desde.year, desde.month, desde.day);
+  final salto = (diaSemana - hoy.weekday + 7) % 7;
+  return DateTime(hoy.year, hoy.month, hoy.day + (salto == 0 ? 7 : salto), hora, minuto);
+}
+
+/// Línea de un cante hecho en el diario: «3.A.1 · Objeto y métodos» o, con
+/// varios temas, «3.A.1 y 3.B.2» (todos, no solo el primero).
+String tituloCanteHecho(Cante c, String Function(String codigo) titulo) {
+  final temas = c.resultado?.temasCantados ?? const <String>[];
+  if (temas.isEmpty) return tituloCante(c);
+  if (temas.length == 1) return '${temas.first} · ${titulo(temas.first)}';
+  return temas.join(' y ');
+}
+
 /// «2 h», «1 h 30 min», «45 min».
 String textoDuracion(int minutos) {
   if (minutos <= 0) return '';
@@ -52,7 +90,7 @@ String textoDuracion(int minutos) {
 const duracionesClase = [60, 90, 120, 150, 180];
 
 /// Duraciones que se ofrecen para un cante por cuenta propia (minutos).
-const duracionesCante = [15, 20, 30, 45, 60];
+const duracionesCante = [30, 45, 60, 90, 120];
 
 /// Minutos de exposición por tema que se ofrecen.
 const duracionesExposicion = [10, 15, 20, 30, 45];

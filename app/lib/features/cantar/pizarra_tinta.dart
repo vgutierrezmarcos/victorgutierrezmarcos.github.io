@@ -147,8 +147,11 @@ Path caminoDeTrazo(Trazo t) {
   return camino;
 }
 
-/// Los polígonos de un trazo guardado, en unidades del lienzo.
-List<List<Offset>> contornosDeTrazo(Trazo t) => contornosTinta(
+/// Los polígonos de un trazo guardado, en unidades del lienzo (un texto no
+/// tiene tinta: se pinta aparte).
+List<List<Offset>> contornosDeTrazo(Trazo t) => t.esTexto
+    ? const []
+    : contornosTinta(
       _sinRedondeo([for (final p in t.puntos) Offset(p.x.toDouble(), p.y.toDouble())]),
       [for (var i = 0; i < t.puntos.length; i++) t.grosor * (t.presiones == null ? 1.0 : factorDeDigito(t.presiones![i]))],
     );

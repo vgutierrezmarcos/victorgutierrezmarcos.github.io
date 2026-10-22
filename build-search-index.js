@@ -36,11 +36,19 @@ searchIndex.pages = [
   },
   {
     id: 'por-que-tcee',
-    title: '¿Por qué TCEE? Qué es la oposición',
+    title: '¿Por qué TCEE? Guía de la oposición a Técnico Comercial y Economista del Estado',
     url: '/oposicion/por-que-tcee.html',
-    description: 'Guía de la oposición a Técnico Comercial y Economista del Estado: funciones del cuerpo, requisitos, ejercicios, temario y curso selectivo',
-    keywords: ['qué es', 'por qué', 'TECO', 'requisitos', 'plazas', 'convocatoria', 'ejercicios', 'curso selectivo', 'destinos', 'funciones', 'titulación', 'BOE', 'ICEX', 'Tesoro'],
-    content: 'Qué hace el cuerpo y dónde trabaja, requisitos, convocatorias y plazas, los cinco ejercicios, el temario, el curso selectivo, DCE y SOIVRE y preguntas frecuentes'
+    description: 'Requisitos, plazas y estado de la convocatoria en curso, los cinco ejercicios, el temario de 177 temas, tasas, curso selectivo y preguntas frecuentes',
+    keywords: ['qué es', 'por qué', 'TECO', 'requisitos', 'plazas', 'convocatoria', 'ejercicios', 'curso selectivo', 'destinos', 'funciones', 'titulación', 'BOE', 'ICEX', 'Tesoro', 'tasa', 'nota de corte', 'sueldo', 'cifras', 'economista del estado'],
+    content: 'Qué hace el cuerpo y dónde trabaja, requisitos, convocatoria en curso con plazas y estado del proceso, la oposición en cifras, los cinco ejercicios en una tabla, el temario por partes, el curso selectivo, DCE y SOIVRE y preguntas frecuentes'
+  },
+  {
+    id: 'cifras',
+    title: 'La oposición a TCEE en cifras',
+    url: '/oposicion/cifras.html',
+    description: 'Plazas, admitidos, aprobados por ejercicio, idiomas y repetidores de cada convocatoria, con gráficos, calculados con los documentos oficiales',
+    keywords: ['cifras', 'estadísticas', 'plazas', 'admitidos', 'aprobados', 'cobertura', 'idiomas', 'repetidores', 'gráficos', 'convocatorias', 'BOE'],
+    content: 'Plazas convocadas y aprobados por convocatoria desde los años ochenta, admitidos por plaza, qué ejercicio elimina a más gente, idiomas elegidos y cuántos aprueban a la primera'
   },
   {
     id: 'novedades',
@@ -68,10 +76,10 @@ searchIndex.pages = [
   },
   {
     id: 'app',
-    title: 'App móvil',
+    title: 'App Oposición TCEE · DCE',
     url: '/app/',
-    description: 'App Oposición TCEE: agenda de cantes, sorteo y cronómetro, temario, test y sección para preparadores',
-    keywords: ['app', 'aplicación', 'móvil', 'android', 'cantes', 'sorteo', 'cronómetro', 'preparador', 'preparadores', 'alumnos'],
+    description: 'App gratuita para las oposiciones a TCEE y a Diplomado Comercial del Estado (DCE): agenda de cantes, sorteo y cronómetro, temario, test, cronograma y preparadores',
+    keywords: ['app', 'aplicación', 'móvil', 'android', 'cantes', 'sorteo', 'cronómetro', 'preparador', 'preparadores', 'alumnos', 'dce', 'diplomado', 'diplomado comercial del estado', 'tcee', 'oposición'],
     content: 'Qué hace la app, capturas, vídeo de presentación, cómo instalarla y cómo se enlazan preparador y alumno'
   },
   {

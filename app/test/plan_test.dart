@@ -229,6 +229,12 @@ void main() {
       expect(r.enPreparacion(en(40)), isFalse);
       expect(r.restanteFase(en(40)), const Duration(minutes: 30));
       expect(r.hitosPasados(en(40)), 1); // el fin del esquema ya ha pasado
+      // El cronómetro nuevo empieza en pausa: no corre hasta que se le da a continuar.
+      expect(r.corriendo, isFalse);
+      expect(r.restanteFase(en(45)), const Duration(minutes: 30));
+      r.iniciar(en(45));
+      expect(r.corriendo, isTrue);
+      expect(r.restanteFase(en(46)), const Duration(minutes: 29));
       r.ampliarFase(en(50), const Duration(minutes: 1));
       expect(r.exposicion, const Duration(minutes: 31));
       r.reiniciarExposicion();
@@ -250,6 +256,25 @@ void main() {
       expect(Oposiciones.dce.ejercicio(3)!.segundosEsquemaPara(2), 1800);
       expect(Oposiciones.tcee.ejercicio(1)!.minutosEsquema, 0);
       expect(textoMinutos(const Duration(minutes: 22, seconds: 30)), '22 minutos 30 segundos');
+    });
+
+    test('exposición por tema del examen: TCEE 30 min, DCE 20 (40 para dos)', () {
+      expect(Oposiciones.tcee.minutosExposicion(3), 30);
+      expect(Oposiciones.tcee.minutosExposicion(4), 30);
+      expect(Oposiciones.tcee.minutosExposicion(0), 30);
+      expect(Oposiciones.dce.minutosExposicion(3), 20);
+      expect(Oposiciones.dce.minutosExposicion(0), 20);
+      expect(Oposiciones.dce.ejercicio(3)!.segundosEsquemaPara(1), 900); // 15 min
+      // Una clase de DCE guardada sin exposición por una versión anterior vale lo del examen.
+      Oposiciones.actual = Oposiciones.dce;
+      try {
+        final clase = Cante.fromJson({'id': 'd', 'fecha': '2026-10-21T18:00:00.000', 'ejercicio': 3});
+        expect(clase.exposicion, 20);
+        expect(Cante.fromJson(clase.toJson()).exposicion, 20);
+        expect(Cante.fromJson({'id': 'e', 'fecha': '2026-10-21T18:00:00.000', 'ejercicio': 3, 'exposicion': 30}).exposicion, 30);
+      } finally {
+        Oposiciones.actual = Oposiciones.tcee;
+      }
     });
   });
 
@@ -301,6 +326,21 @@ void main() {
       final p = Cante(id: 'p', fecha: DateTime(2026, 10, 8, 18), modalidad: Modalidad.presencial, lugar: 'Academia');
       expect(Cante.fromJson(p.toJson()).descripcionModalidad, 'Presencial · Academia');
       expect(Cante.fromJson(Cante(id: 'x', fecha: DateTime(2026)).toJson()).modalidad, Modalidad.sinIndicar);
+    });
+  });
+
+  group('notas del preparador', () {
+    test('si están compartidas va en la clase (y en la copia del alumno), y la clase sabe si ha terminado', () {
+      final pasada = Cante(id: 'c', fecha: DateTime.now().subtract(const Duration(hours: 3)), minutos: 60, preparador: 'paula', notasCompartidas: true);
+      expect(pasada.toJson()['notasCompartidas'], isTrue);
+      expect(Cante.fromJson(pasada.toJson()).notasCompartidas, isTrue);
+      expect(Cante.fromJson({'id': 'v', 'fecha': '2026-10-08T18:00:00.000'}).notasCompartidas, isFalse, reason: 'las clases de antes no la llevan');
+      expect(pasada.terminada, isTrue);
+      expect(pasada.copyWith(notasCompartidas: false).toJson().containsKey('notasCompartidas'), isFalse);
+      final enCurso = Cante(id: 'e', fecha: DateTime.now().subtract(const Duration(minutes: 20)), minutos: 60);
+      expect(enCurso.terminada, isFalse);
+      expect(enCurso.copyWith(estado: EstadoCante.hecho).terminada, isTrue);
+      expect(Cante(id: 'f', fecha: DateTime.now().add(const Duration(days: 1))).terminada, isFalse);
     });
   });
 

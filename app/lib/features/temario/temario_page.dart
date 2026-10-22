@@ -8,6 +8,7 @@ import '../../data/models/revisado.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/sincronizar.dart';
 import 'tema_page.dart';
 
 /// Temario: ejercicios → partes → temas, con estado de estudio y descarga offline.
@@ -72,16 +73,16 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
           if (_busqueda.trim().isNotEmpty) {
             final q = _normalizar(_busqueda);
             final res = t.todosLosTemas.where((x) => _normalizar('${x.codigo} ${x.titulo}').contains(q) || _normalizar(x.codigo.replaceAll('.', '')).contains(q.replaceAll('.', '').replaceAll(' ', ''))).toList();
-            return ListaAdaptable(padding: const EdgeInsets.all(16), children: [
+            return Refrescable(child: ListaAdaptable(padding: const EdgeInsets.all(16), children: [
               Text('${res.length} resultados', style: context.textos.bodySmall),
               for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
-            ]);
+            ]));
           }
           // En TCEE todos los temas tienen PDF; en una oposición que aún publica sus
           // apuntes, el progreso es sobre el programa entero.
           final total = Oposiciones.actual.esPrincipal ? t.todosLosTemas.where((x) => x.disponible).length : t.todosLosTemas.length;
           final estudiados = ajustes.temasEstudiados.length;
-          return ListaAdaptable(
+          return Refrescable(child: ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
             children: [
               if (!_preparador) Tarjeta(
@@ -128,7 +129,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                     ),
               ],
             ],
-          );
+          ));
         },
       ),
     );
@@ -153,13 +154,15 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
               tooltip: 'Estudiado',
               onPressed: () => ref.read(ajustesProvider.notifier).alternarEstudiado(x.codigo),
             ),
-      title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible, color: _colorDe(x.codigo)),
+      title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible && !revisado, color: _colorDe(x.codigo)),
       subtitle: Wrap(crossAxisAlignment: WrapCrossAlignment.center, runSpacing: 2, children: [
         if (revisado) const Padding(padding: EdgeInsets.only(right: 6), child: Etiqueta('Revisado · exclusivo de la app')),
         if (!x.disponible && !revisado) Padding(padding: const EdgeInsets.only(right: 6), child: Text(Oposiciones.actual.esPrincipal ? 'Sin PDF' : 'En preparación', style: context.textos.labelSmall)),
         if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
         if (offline && !x.pdfDeParte) Icon(Icons.offline_pin, size: 14, color: context.colores.textoClaro),
         if (repaso && !_preparador) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.replay, size: 14, color: context.esquema.primary)),
+        if (!_preparador && ref.watch(ajustesProvider).noCantar.containsKey(x.codigo))
+          Padding(padding: const EdgeInsets.only(left: 4), child: Tooltip(message: 'Has pedido no cantarlo por ahora', child: Icon(Icons.mic_off_outlined, size: 14, color: context.colores.textoClaro))),
         if (conNota) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.sticky_note_2_outlined, size: 14, color: context.colores.dorado)),
         if (apuntes > 0 && !_preparador) Padding(padding: const EdgeInsets.only(left: 6), child: Etiqueta(apuntes == 1 ? '1 apunte' : '$apuntes apuntes', color: context.colores.dorado)),
       ]),

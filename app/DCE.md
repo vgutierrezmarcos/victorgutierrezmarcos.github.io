@@ -65,6 +65,7 @@ Las reglas (`firestore.rules`, generadas con `tool/reglas/generar.py`) ya separa
 - Página de la app: `https://www.victorgutierrezmarcos.es/app/`
 - App en el navegador: `https://www.victorgutierrezmarcos.es/app/abrir/`
 - Descarga para Android: la `urlApk` de `https://www.victorgutierrezmarcos.es/oposicion/app-config.json` (o copiar `app-banner.js`, que la rellena sola).
+- Para Google, el texto del enlace cuenta: mejor «app para la oposición a DCE» o «app de la oposición a Diplomado Comercial del Estado» que «instala la app». Lo ideal: portada y menú de su web, `temario.html` y el pie de cada tema (pedido el 20 oct. 2026).
 
 ## Lanzamiento: 12 de octubre de 2026
 
@@ -97,6 +98,13 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 **Cuando Google Play esté en producción:** `urlPlayStore` en `oposicion/app-config.json`; unas semanas después, `urlApk: null`.
 
 ## Próximos días
+
+**SEO para DCE (20 oct. 2026)**: hasta hoy Google no mostraba la web para ninguna búsqueda con «dce» o «diplomado» (Search Console, 16 meses). `/app/` lleva ahora h2, la sección «Si preparas la oposición a Diplomado Comercial del Estado», JSON-LD con las dos oposiciones y enlaces desde portada, `/oposicion/`, la guía y los pies.
+- [x] Víctor: mandar a Manuel el correo pidiendo los enlaces (resumen arriba, en «Enlazar la app desde su web»). — **20 oct.: enviado; esperar su respuesta y comprobar los enlaces en su web.**
+- [ ] Víctor: Search Console → Inspección de URL → Solicitar indexación de `/app/`, `/`, `/oposicion/` y `/oposicion/por-que-tcee.html`. — **20 oct.: publicado a las 23:40 e `indexnow.yml` lanzado a mano (sitemap entero); `/app/` estaba indexada con el último rastreo del 15 oct., falta pedir el nuevo.**
+- [ ] 22 oct., al poner `urlPlayStore`: en el JSON-LD de `app/index.html`, `downloadUrl` → URL de Play y `"sameAs": ["<URL de Play>"]`; `softwareVersion` = `versionActual`.
+- [ ] A las 2 y 4 semanas: `python3 scripts/estadisticas-web.py --dias 28` (ya saca «Búsquedas con «dce» o «diplomado»»).
+- [ ] Decidir si se hace una guía informativa de DCE (`oposicion/…`), hermana de `por-que-tcee.html`: es el tipo de página que Google premia para «Diplomado Comercial del Estado»; Víctor la descartó el 20 oct. (sin páginas nuevas), queda apuntada.
 
 **Prueba cerrada de Google Play**
 - [ ] 14 días seguidos con 12 o más testers: desde el 8 oct. a las 11:30 hasta el **22 oct.** Que no bajen de 12. — **13 oct.: en marcha, solo queda esperar.**
@@ -190,6 +198,10 @@ Lleva también todo lo de la 1.15.11. Lo pidieron Manuel y los testers tras prob
   - Con dos preparadores de prueba: tablón, choques, pasar una clase, propuestas y ocultar a uno.
 - Ojo: con `.aab` de versiones anteriores, el opositor no ve las propuestas nuevas de cada preparador (sí la última, en el campo antiguo).
 
+**Versión 1.17.15 (52): todo lo de la 1.17.0 a la 1.17.15 (22 oct.)**
+- `.aab` compilado el 22 oct. (`Escritorio\oposicion-tcee-dce-1.17.15.aab`, firma comprobada; 281 pruebas en verde). Las reglas que necesita (notas del preparador) ya están publicadas desde el 21 oct.
+- [ ] Víctor: subirlo a la prueba cerrada. Cuando Play lo apruebe: APK universal firmado por Google al Escritorio (`oposicion-tcee.apk`) para `app-latest` y `"versionActual": "1.17.15"`.
+
 **Red: crecimiento y estadísticas privadas (14 oct.)**
 - **Script:** `scripts/estadisticas-red.py` cuenta, sin nombres, las cuatro partes de la red (opositores y preparadores de TCEE y DCE).
   - Lee con la cuenta de servicio `estadisticas-lectura@web-vgm.iam.gserviceaccount.com` («Lector de Cloud Datastore»), cuya clave está en `~/.config/oposicion-red/clave.json` (14 oct.).
@@ -234,3 +246,12 @@ Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.googl
 - [x] Verificación en dos pasos en la cuenta del proyecto (9 oct.); Manuel, en la suya.
 - [x] Siguiente versión de la app (1.15.0): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador) y las mejoras de los testers.
 
+
+## Peticiones de Manuel del 21 oct. 2026
+
+Hechas el 21 oct.: valoración por tema, temas y minutos corregibles a posteriori (1.17.8), tiempos del cronómetro de DCE (1.17.6) y, en la 1.17.9, las tres de la pizarra:
+- [x] **Pizarra: escribir a máquina**: herramienta «Texto» en el menú ··· (`pizarra_texto.dart`, elemento `h: 't'` en `pizarra_trazos.dart`).
+- [x] **«Notas del preparador» en la clase**: segunda pizarra en los datos del preparador (`users/{prep}/sesiones/{id}/notas/{p}`, páginas con `alumno` y `visible`), botón en la ficha de la clase (preparador, con el chip «Compartir») y en el cante del alumno en cuanto están compartidas. Reglas publicadas en la consola de Firebase el 21 oct. 2026; la 1.17.11 añade `allow update` para que el alumno escriba con permiso (publicadas también el 21 oct.).
+- [x] **Exportar las pizarras**: «Guardar como PDF» en el menú ··· de la pizarra de la clase y de las notas (`pizarra_pdf.dart`). No caducan: se guardan con la cuenta del alumno (la de la clase) o del preparador (las notas); si algún día pesan, borrado automático a los N días.
+- [x] Rama `revision-temario`: `manifiesto-app.py` añade `esquema` a cada tema y usa githack como CDN (hecho el 21 oct.; regenerar el manifiesto tras cada tema).
+- [ ] Probar `tool/reglas/prueba.mjs` con el emulador (aquí no hay Java ni emulador) antes de publicar las reglas.

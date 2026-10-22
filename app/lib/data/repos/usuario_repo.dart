@@ -18,6 +18,8 @@ class Ajustes {
     this.horaRecordatorio = -1, // minutos desde medianoche; -1 = desactivado (valor por defecto)
     this.temaOscuro, // null = sistema
     this.temasExtraidos = 3,
+    this.noCantar = const {},
+    this.estadisticas,
     this.updatedAt,
   });
 
@@ -28,6 +30,13 @@ class Ajustes {
   final bool? temaOscuro;
   /// Nº de temas que se extraen en el sorteo real.
   final int temasExtraidos;
+  /// Temas que el opositor pide no cantar por ahora en las clases con sus
+  /// preparadores (aunque los lleve o estén en su cronograma), y desde cuándo.
+  /// Los preparadores lo ven y los dejan fuera del sorteo.
+  final Map<String, DateTime> noCantar;
+  /// Estadísticas de uso anónimas e informes de errores (Firebase): true si
+  /// lo activó, false si dijo que no, null si aún no se le ha preguntado.
+  final bool? estadisticas;
   final DateTime? updatedAt;
 
   Ajustes copyWith({
@@ -39,6 +48,8 @@ class Ajustes {
     bool? temaOscuro,
     bool borrarTema = false,
     int? temasExtraidos,
+    Map<String, DateTime>? noCantar,
+    bool? estadisticas,
     DateTime? updatedAt,
   }) =>
       Ajustes(
@@ -48,6 +59,8 @@ class Ajustes {
         horaRecordatorio: horaRecordatorio ?? this.horaRecordatorio,
         temaOscuro: borrarTema ? null : (temaOscuro ?? this.temaOscuro),
         temasExtraidos: temasExtraidos ?? this.temasExtraidos,
+        noCantar: noCantar ?? this.noCantar,
+        estadisticas: estadisticas ?? this.estadisticas,
         updatedAt: updatedAt ?? DateTime.now(),
       );
 
@@ -58,8 +71,26 @@ class Ajustes {
         'recordatorio': horaRecordatorio,
         'temaOscuro': temaOscuro,
         'temasExtraidos': temasExtraidos,
+        // Como lista («código@fecha»), no como mapa: el documento se guarda con
+        // merge y un mapa no borraría en la nube lo que se quita aquí.
+        'noCantar': [for (final e in noCantar.entries) '${e.key}@${e.value.toIso8601String()}']..sort(),
+        'estadisticas': estadisticas,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
+
+  /// Lo que pide no cantar, leído del JSON de los ajustes (también lo lee el
+  /// preparador del documento del alumno).
+  static Map<String, DateTime> noCantarDe(Map<dynamic, dynamic>? j) {
+    final v = j?['noCantar'];
+    return {
+      if (v is List)
+        for (final s in v)
+          if (s.toString().split('@') case [final codigo, final fecha] when DateTime.tryParse(fecha) != null) codigo: DateTime.parse(fecha),
+      if (v is Map)
+        for (final e in v.entries)
+          if (DateTime.tryParse(e.value.toString()) case final d?) e.key.toString(): d,
+    };
+  }
 
   factory Ajustes.fromJson(Map<dynamic, dynamic>? j) {
     if (j == null) return const Ajustes();
@@ -73,6 +104,8 @@ class Ajustes {
       horaRecordatorio: (j['recordatorio'] as num?)?.toInt() ?? -1,
       temaOscuro: j['temaOscuro'] as bool?,
       temasExtraidos: (j['temasExtraidos'] as num?)?.toInt() ?? 3,
+      noCantar: noCantarDe(j),
+      estadisticas: j['estadisticas'] as bool?,
       updatedAt: f(j['updatedAt'] as String?),
     );
   }
@@ -246,7 +279,9 @@ class UsuarioRepo {
     final doc = _docUsuario;
     if (doc == null) return;
     try {
-      await doc.collection('progress').doc('settings').set(a.toJson(), SetOptions(merge: true));
+      // Con merge, una lista vacía no siempre borra la de la nube (y un mapa
+      // vacío nunca): lo que se quita de «no cantar» se borra de verdad.
+      await doc.collection('progress').doc('settings').set({...a.toJson(), if (a.noCantar.isEmpty) 'noCantar': FieldValue.delete()}, SetOptions(merge: true));
     } catch (_) {}
   }
 

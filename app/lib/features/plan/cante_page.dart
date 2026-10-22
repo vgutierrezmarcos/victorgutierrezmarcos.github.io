@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/analitica.dart';
 import '../../core/calendario.dart';
+import '../../core/cronograma_providers.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
@@ -36,7 +38,7 @@ class CantePage extends ConsumerWidget {
     final temario = ref.watch(temarioProvider).valueOrNull;
     final ajustes = ref.watch(ajustesProvider);
     final agendas = ref.watch(agendasProvider);
-    final temas = temario == null ? const <Tema>[] : temasDeCante(c, temario, ajustes);
+    final temas = temario == null ? const <Tema>[] : temasDeCante(c, temario, ajustes, cronograma: ref.watch(cronogramaProvider));
     final conApuntes = [for (final t in temas) if ((agendas[t.codigo]?.pendientes ?? const []).isNotEmpty) t];
     final r = c.resultado;
     final notifier = ref.read(cantesProvider.notifier);
@@ -49,7 +51,9 @@ class CantePage extends ConsumerWidget {
 
     Future<void> anotar() async {
       final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas);
-      if (res != null) await notifier.guardar(c.copyWith(estado: EstadoCante.hecho, resultado: res));
+      if (res == null) return;
+      Analitica.instancia.evento('cante_terminado', parametros: {'minutos': res.segundos ~/ 60, 'temas': (res.temaCantado == null ? 0 : 1) + res.otrosCantados.length});
+      await notifier.guardar(c.copyWith(estado: EstadoCante.hecho, resultado: res));
     }
 
     Future<void> borrar() async {
@@ -312,17 +316,34 @@ class CantePage extends ConsumerWidget {
           ],
           if (c.dePreparador && usuario != null && !c.cancelado) ...[
             const SizedBox(height: 10),
-            OutlinedButton.icon(
-              onPressed: () => abrirPizarra(context, alumnoUid: usuario.uid, canteId: c.id, otroNombre: (c.preparadorNombre ?? '').isEmpty ? 'tu preparador' : c.preparadorNombre!),
-              icon: const Icon(Icons.draw_outlined, size: 18),
-              label: const Text('Pizarra compartida'),
-            ),
+            Wrap(spacing: 8, runSpacing: 6, children: [
+              OutlinedButton.icon(
+                onPressed: () => abrirPizarra(context, alumnoUid: usuario.uid, canteId: c.id, otroNombre: (c.preparadorNombre ?? '').isEmpty ? 'tu preparador' : c.preparadorNombre!, etiqueta: fechaCorta(c.fecha)),
+                icon: const Icon(Icons.draw_outlined, size: 18),
+                label: const Text('Pizarra compartida'),
+              ),
+              // Las notas que el preparador escribió en la clase, en cuanto las comparte.
+              if (c.notasCompartidas)
+                OutlinedButton.icon(
+                  onPressed: () => abrirNotas(
+                    context,
+                    alumnoUid: usuario.uid,
+                    canteId: c.id,
+                    preparadorUid: c.preparador!,
+                    otroNombre: (c.preparadorNombre ?? '').isEmpty ? 'tu preparador' : c.preparadorNombre!,
+                    soloLectura: true,
+                    etiqueta: fechaCorta(c.fecha),
+                  ),
+                  icon: const Icon(Icons.edit_note_outlined, size: 18),
+                  label: const Text('Notas del preparador'),
+                ),
+            ]),
           ],
           if (c.hecho && r != null) ...[
             TituloSeccion(c.dePreparador ? 'Valoración del preparador' : 'Cómo fue', accion: TextButton(onPressed: anotar, child: const Text('Editar'))),
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                for (final t in r.temasCantados) Text('$t · ${temario?.tema(t)?.titulo ?? ''}', style: context.textos.titleSmall),
+                TemasValorados(resultado: r, titulo: (t) => temario?.tema(t)?.titulo ?? ''),
                 const SizedBox(height: 6),
                 Row(children: [
                   Estrellas(valor: r.valoracion, tamano: 20),

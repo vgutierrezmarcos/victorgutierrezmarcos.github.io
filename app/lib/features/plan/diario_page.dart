@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/sincronizar.dart';
 import 'cante_page.dart';
 import 'cantes_util.dart';
 import '../cantes/nuevo_cante_sheet.dart';
@@ -31,8 +32,10 @@ class DiarioVista extends ConsumerWidget {
                 child: const VacioVista(icono: Icons.record_voice_over_outlined, texto: 'Aún no hay cantes anotados. Al terminar un cante, guarda el tema, el tiempo y cómo te ha ido para ver aquí tu evolución.'),
               ),
             )
-          : ListView(
+          : Refrescable(
+              child: ListView(
               padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
+              physics: const AlwaysScrollableScrollPhysics(),
               children: [
                 TarjetaAyudaCantes(clave: 'diario', icono: Icons.auto_stories_outlined, titulo: ayudasCantes['diario']!.$1, texto: ayudasCantes['diario']!.$2),
                 Row(children: [
@@ -81,13 +84,13 @@ class DiarioVista extends ConsumerWidget {
                       padding: EdgeInsets.zero,
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id))),
                       child: ListTile(
-                        title: Text(c.resultado?.temaCantado == null ? tituloCante(c) : '${c.resultado!.temaCantado} · ${titulo(c.resultado!.temaCantado!)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
+                        title: Text(tituloCanteHecho(c, titulo), maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
                         subtitle: Text('${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${c.titulo.isEmpty ? '' : ' · ${c.titulo}'}${c.dePreparador ? ' · valorado por tu preparador' : ''}', style: context.textos.labelSmall),
                         trailing: Estrellas(valor: c.resultado?.valoracion ?? 0, tamano: 14),
                       ),
                     ),
                   ),
               ],
-            );
+            ));
   }
 }

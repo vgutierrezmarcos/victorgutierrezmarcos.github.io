@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/avisos_breves.dart';
+import '../../core/cronograma_providers.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/cronograma.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
@@ -27,8 +29,11 @@ import 'red_widgets.dart';
 import 'tema_anticipado.dart';
 import '../mas/ayuda_videos.dart';
 
-/// Temas que entran en la sesión de un alumno: «los estudiados» son los suyos.
-List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario) => temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()));
+/// Temas que entran en la sesión de un alumno: «los estudiados» son los suyos
+/// y, con su [cronograma] compartido, los de la semana de esa clase (la misma
+/// lista que él ve en su cronograma para ese cante).
+List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario, {Cronograma? cronograma}) =>
+    temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()), cronograma: cronograma);
 
 /// Envía el informe de un cante al alumno por la app que elija el preparador.
 Future<void> enviarInforme(BuildContext context, Cante sesion, Alumno? alumno, Temario? temario) => compartirTexto(
@@ -84,7 +89,13 @@ class SesionPage extends ConsumerWidget {
     final alumnos = ref.watch(alumnosProvider);
     final alumno = alumnos.where((a) => a.id == s.alumno).firstOrNull;
     final temario = ref.watch(temarioProvider).valueOrNull;
-    final temas = temario == null || alumno == null ? const <Tema>[] : temasDeSesion(s, alumno, temario);
+    // El cronograma compartido del alumno (si lo hay): la bolsa de la clase es
+    // la de su semana. Sin red, se queda con los temas que lleva.
+    final cronograma = alumno == null || !alumno.enlazado ? null : ref.watch(cronogramaAlumnoProvider(alumno.id)).valueOrNull;
+    final temas = temario == null || alumno == null ? const <Tema>[] : temasDeSesion(s, alumno, temario, cronograma: cronograma);
+    // Temas que el alumno pide no cantar y que ya se le habían mandado para esta clase.
+    final noCantar = alumno == null ? const <String, DateTime>{} : (ref.watch(progresoAlumnoProvider(alumno.id)).valueOrNull?.noCantar ?? const <String, DateTime>{});
+    final mandadosQueNoQuiere = s.temasMandados.where(noCantar.containsKey).toList();
     final r = s.resultado;
     final notifier = ref.read(sesionesProvider.notifier);
     final repo = ref.read(preparadorRepoProvider);
@@ -372,46 +383,71 @@ class SesionPage extends ConsumerWidget {
             const TituloSeccion('Temas antes de la clase'),
             if (s.sustitucion != null && !conUid) _RecuperarClaseSuelta(id: s.id) else SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid),
             if (temas.isEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
+            if (mandadosQueNoQuiere.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Aviso(
+                  tipo: TipoAviso.aviso,
+                  icono: Icons.mic_off_outlined,
+                  titulo: '${alumno?.nombre ?? 'El alumno'} pide no cantar por ahora ${mandadosQueNoQuiere.length == 1 ? 'el tema' : 'los temas'} ${mandadosQueNoQuiere.join(' y ')}',
+                  texto: 'Ya se lo habías mandado para esta clase: cámbialo.',
+                ),
+              ),
           ],
           if (conUid && usuario != null && alumno != null) ...[
             const SizedBox(height: 10),
-            OutlinedButton.icon(
-              onPressed: () => abrirPizarra(context, alumnoUid: alumno.uid!, canteId: s.id, otroNombre: alumno.nombre),
-              icon: const Icon(Icons.draw_outlined, size: 18),
-              label: const Text('Pizarra compartida'),
-            ),
+            Wrap(spacing: 8, runSpacing: 6, children: [
+              OutlinedButton.icon(
+                onPressed: () => abrirPizarra(context, alumnoUid: alumno.uid!, canteId: s.id, otroNombre: alumno.nombre, etiqueta: fechaCorta(s.fecha)),
+                icon: const Icon(Icons.draw_outlined, size: 18),
+                label: const Text('Pizarra compartida'),
+              ),
+              // La segunda pizarra, solo del preparador: el alumno la ve cuando
+              // se comparte y la clase ha terminado.
+              OutlinedButton.icon(
+                onPressed: () => abrirNotas(
+                  context,
+                  alumnoUid: alumno.uid!,
+                  canteId: s.id,
+                  preparadorUid: usuario.uid,
+                  otroNombre: alumno.nombre,
+                  soloLectura: false,
+                  etiqueta: fechaCorta(s.fecha),
+                  alCompartir: (v) => guardar(s.copyWith(notasCompartidas: v)),
+                ),
+                icon: Icon(s.notasCompartidas ? Icons.visibility_outlined : Icons.edit_note_outlined, size: 18),
+                label: Text(s.notasCompartidas ? 'Notas del preparador (compartidas)' : 'Notas del preparador'),
+              ),
+            ]),
           ],
           if (!s.hecho) ...[
             const TituloSeccion('Detalles de la clase'),
-            Tarjeta(
-              padding: EdgeInsets.zero,
-              child: Column(children: [
-                FilaEnlace(icono: Icons.event_outlined, titulo: 'Día y hora', subtitulo: '${fechaCorta(s.fecha)}, ${horaDe(s.fecha)}', onTap: cambiarHora),
-                FilaEnlace(icono: Icons.timelapse_outlined, titulo: 'Duración de la clase', subtitulo: textoDuracion(s.minutos), onTap: cambiarDuracion),
-                FilaEnlace(
-                  icono: s.online ? Icons.videocam_outlined : Icons.place_outlined,
-                  titulo: 'Presencial u online',
-                  subtitulo: s.modalidad == Modalidad.sinIndicar ? 'Sin indicar' : s.descripcionModalidad,
-                  onTap: cambiarModalidad,
-                ),
-                if (!dictamen) ...[
-                  FilaEnlace(
-                    icono: Icons.format_list_numbered,
-                    titulo: 'Temas que se cantan',
-                    subtitulo: '${s.numTemas == 1 ? '1 tema' : '${s.numTemas} temas'}${s.unoPorParte && s.numTemas > 1 ? ' · uno de cada parte' : ''}',
-                    onTap: cambiarTemas,
-                  ),
-                  FilaEnlace(icono: Icons.timer_outlined, titulo: 'Exposición por tema', subtitulo: '${s.exposicion} min en el cronómetro', onTap: cambiarExposicion),
-                ],
-                if (perfil.calendarioGoogle && s.pendiente && s.fecha.isAfter(ahora)) _FilaCalendario(sesion: s),
-              ]),
+            // Cada fila ya es una tarjeta (FilaEnlace): sin otra tarjeta alrededor,
+            // que salían cajas dentro de una caja.
+            FilaEnlace(icono: Icons.event_outlined, titulo: 'Día y hora', subtitulo: '${fechaCorta(s.fecha)}, ${horaDe(s.fecha)}', onTap: cambiarHora),
+            FilaEnlace(icono: Icons.timelapse_outlined, titulo: 'Duración de la clase', subtitulo: textoDuracion(s.minutos), onTap: cambiarDuracion),
+            FilaEnlace(
+              icono: s.online ? Icons.videocam_outlined : Icons.place_outlined,
+              titulo: 'Presencial u online',
+              subtitulo: s.modalidad == Modalidad.sinIndicar ? 'Sin indicar' : s.descripcionModalidad,
+              onTap: cambiarModalidad,
             ),
+            if (!dictamen) ...[
+              FilaEnlace(
+                icono: Icons.format_list_numbered,
+                titulo: 'Temas que se cantan',
+                subtitulo: '${s.numTemas == 1 ? '1 tema' : '${s.numTemas} temas'}${s.unoPorParte && s.numTemas > 1 ? ' · uno de cada parte' : ''}',
+                onTap: cambiarTemas,
+              ),
+              FilaEnlace(icono: Icons.timer_outlined, titulo: 'Exposición por tema', subtitulo: '${s.exposicion} min en el cronómetro', onTap: cambiarExposicion),
+            ],
+            if (perfil.calendarioGoogle && s.pendiente && s.fecha.isAfter(ahora)) _FilaCalendario(sesion: s),
           ],
           if (s.hecho && r != null) ...[
             TituloSeccion('Valoración', accion: TextButton(onPressed: valorar, child: const Text('Editar'))),
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                for (final t in r.temasCantados) TextoTema(t, temario?.tema(t)?.titulo ?? '', color: ref.watch(estructuraProvider).valueOrNull?.colorDe(t)),
+                TemasValorados(resultado: r, titulo: (t) => temario?.tema(t)?.titulo ?? '', colorDe: (t) => ref.watch(estructuraProvider).valueOrNull?.colorDe(t)),
                 const SizedBox(height: 6),
                 Row(children: [
                   Estrellas(valor: r.valoracion, tamano: 20),

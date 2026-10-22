@@ -9,10 +9,12 @@ import '../../core/providers.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/sincronizar.dart';
 import '../cantar/probabilidades.dart';
 import '../plan/cantes_util.dart';
 import '../temario/tema_page.dart';
 import 'probabilidad_test_page.dart';
+import '../test/preguntas_por_tema_page.dart';
 
 /// Organización: lo que sirve para planificar la oposición, como la sección
 /// «Organización» de la web. Tu plan (cronograma, probabilidades, convocatoria
@@ -55,7 +57,8 @@ class OrganizacionHubPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: const BarraWeb(title: Text('Organización'), conOposicion: true),
-      body: ListaAdaptable(
+      body: Refrescable(
+          child: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 6, 16, 32),
         children: [
           TituloSeccion(preparador ? 'La oposición' : 'Tu plan'),
@@ -109,6 +112,13 @@ class OrganizacionHubPage extends ConsumerWidget {
                   subtitulo: 'Al azar, pregunta a pregunta o con tus temas, y qué temas caen más',
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProbabilidadTestPage())),
                 ),
+              if (oposicion.esPrincipal)
+                FilaEnlace(
+                  icono: Icons.table_chart_outlined,
+                  titulo: 'Preguntas por tema en el test',
+                  subtitulo: 'Cuántas ha tenido cada tema en los exámenes oficiales, examen a examen',
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PreguntasPorTemaPage())),
+                ),
               if (!preparador) FilaEnlace(
                 icono: Icons.schedule_outlined,
                 titulo: 'Horario de estudio',
@@ -153,7 +163,7 @@ class OrganizacionHubPage extends ConsumerWidget {
             ),
           ),
         ],
-      ),
+      )),
     );
   }
 }

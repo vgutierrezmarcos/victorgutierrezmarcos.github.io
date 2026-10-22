@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'analitica.dart';
 import 'avisos_navegador.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,6 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../data/models/esquema.dart';
 import '../data/models/estructura.dart';
 import '../data/models/frecuencia_test.dart';
 import '../data/models/oposicion.dart';
@@ -111,6 +113,10 @@ final revisadosProvider = FutureProvider<ManifiestoRevisados>((ref) {
 final estructuraProvider = FutureProvider<EstructuraTemario>((ref) {
   ref.watch(versionContenidoProvider);
   return ref.watch(contenidoProvider).estructura();
+});
+final esquemasProvider = FutureProvider<Esquemas>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).esquemas();
 });
 final enlacesProvider = FutureProvider<List<CategoriaEnlaces>>((ref) {
   ref.watch(versionContenidoProvider);
@@ -480,6 +486,13 @@ class AjustesNotifier extends Notifier<Ajustes> {
         return a.copyWith(temasEstudiados: s);
       });
 
+  /// Pide (o deja de pedir) no cantar [codigo] en las clases con el preparador.
+  Future<void> alternarNoCantar(String codigo) => actualizar((a) {
+        final m = {...a.noCantar};
+        m.containsKey(codigo) ? m.remove(codigo) : m[codigo] = DateTime.now();
+        return a.copyWith(noCantar: m);
+      });
+
   Future<void> alternarRepaso(String codigo) => actualizar((a) {
         final s = {...a.temasEnRepaso};
         s.contains(codigo) ? s.remove(codigo) : s.add(codigo);
@@ -489,6 +502,13 @@ class AjustesNotifier extends Notifier<Ajustes> {
   Future<void> fijarRecordatorio(int minutos) async {
     await actualizar((a) => a.copyWith(horaRecordatorio: minutos));
     await reprogramarRecordatorio(ref);
+  }
+
+  /// Estadísticas de uso anónimas e informes de errores: lo que contesta el
+  /// usuario (al preguntárselo o en Más → Ajustes) se guarda y se aplica.
+  Future<void> fijarEstadisticas(bool activo) async {
+    await actualizar((a) => a.copyWith(estadisticas: activo));
+    await Analitica.instancia.activar(activo);
   }
 }
 
@@ -550,7 +570,8 @@ class CantesNotifier extends Notifier<List<Cante>> {
     final repo = ref.read(planRepoProvider);
     await repo.guardarCantes(lista);
     state = repo.cantes();
-    await reprogramarAvisos();
+    // Con plazo: si el servicio de avisos no contesta, el cante ya está guardado.
+    await reprogramarAvisos().timeout(const Duration(seconds: 5), onTimeout: () {});
   }
 
   Future<void> borrar(Cante c) async {
@@ -810,7 +831,7 @@ class SesionesNotifier extends Notifier<List<Cante>> {
     final repo = ref.read(preparadorRepoProvider);
     await repo.guardarSesiones(lista);
     state = repo.sesiones();
-    await reprogramarAvisos();
+    await reprogramarAvisos().timeout(const Duration(seconds: 5), onTimeout: () {});
   }
 
   Future<void> borrar(Cante s) async {
@@ -877,6 +898,7 @@ class MisPreparadoresNotifier extends Notifier<List<VinculoPreparador>> {
     try {
       await repo.enlazarConCodigo(codigo);
       state = repo.misPreparadores();
+      Analitica.instancia.evento('preparador_conectado');
       return null;
     } on ErrorEnlace catch (e) {
       return e.mensaje;

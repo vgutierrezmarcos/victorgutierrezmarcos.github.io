@@ -159,6 +159,8 @@ Privacidad, tal como se explica en la app (`TarjetaPrivacidad` en Cuenta), en `i
 
 **Sin pagos ni precios, a propósito.** La app no cobra, no gestiona pagos y no guarda precios, tarifas ni importes de las clases (ni en reservas, sustituciones, clases sueltas ni búsquedas): si una clase es de pago lo acuerdan preparador y alumno fuera de ella. Solo se dice, sin darle importancia, en las condiciones (apartado 4); ni en la app ni en `/app/` se menciona. No hay que añadirlos: además de minimizar datos (RGPD), una plataforma que conoce la contraprestación de servicios personales tendría que informar a la AEAT de lo que ingresa cada preparador (DAC7, Ley 13/2023).
 
+**Estadísticas de uso e informes de errores, solo si el usuario lo activa.** Firebase Analytics y Crashlytics van apagados por defecto (en el manifiesto y en `core/analitica.dart`, `Analitica.instancia`); al arrancar se pregunta una vez (`features/inicio/estadisticas_dialogo.dart`) y se cambia en Más → Ajustes (`Ajustes.estadisticas`, null = sin contestar). Solo se envían pantallas (rutas sin identificadores), seis eventos con números (`test_terminado`, `cante_terminado`, `tema_abierto`, `clase_creada`, `preparador_conectado`, `clase_suelta_pedida`) y las propiedades `oposicion` y `papel`; nunca nombre, temas, tests ni cantes. Crashlytics solo en Android; en el navegador se mide solo si `measurementIdWeb` (`core/firebase_web.dart`) tiene el `G-…` de la app web. En las pruebas, `Analitica.instancia` es la nula (ni pregunta ni envía).
+
 ## Duración de las clases y exposición
 
 `Cante.minutos` es lo que dura la clase o el cante (lo que ocupa en la agenda, la semana y el calendario): 30 min en un cante por cuenta propia y, en las clases del preparador (nuevas, fijas, huecos para reservas y clases sueltas), `PerfilPreparador.minutosClase` (2 h por defecto; Ajustes → «Duración habitual»). Aparte, `Cante.exposicion` son los minutos de exposición por tema que cuenta el cronómetro (30 por defecto). `textoDuracion` escribe «2 h», «1 h 30 min»; las listas de opciones están en `cantes_util.dart` (`duracionesClase`, `duracionesCante`, `duracionesExposicion`).
@@ -212,6 +214,11 @@ La primera vez que se abre la app (y la primera con la 1.15.0) una hoja (`featur
   - **Aviso:** `avisarPushProceso` avisa sin repetir lo que ya avisó la comprobación periódica.
 - **Cronograma del preparador** (`CronogramaFormPage(para: alumno)` desde «Su cronograma» en la ficha; `features/cronograma/cronograma_recibido.dart`): se escribe en `users/{alumno}/cronogramasRecibidos/{id}` firmado por el preparador; al alumno le llega el aviso `crono:` y, en Cronograma, una tarjeta para verlo y usarlo (pasa a ser el activo, compartido con ese preparador; el anterior se archiva) o descartarlo.
 - **Pizarra para practicar** (`PizarraPage.individual`, `PizarraLocal`): en Cantar, sin clase, la pizarra guarda los trazos solo en memoria y se pierde al cerrarla.
+- **Texto a máquina (1.17.9)** (`pizarra_texto.dart`): herramienta «Texto» (en el menú ···): un toque abre un cuadro para escribir con el teclado; el texto es un elemento más de la página (`h: 't'`, `t` texto, `g` tamaño de letra, `a`×`l` caja medida, un solo punto: la esquina), con la misma letra (Source Sans 3) en el móvil, la web y el PDF. Tocarlo lo corrige o lo quita; el lazo lo mueve; el borrador lo quita entero. Las versiones anteriores lo ven como un punto.
+- **Notas del preparador (1.17.9)** (`PizarraPage.notas`, `PizarraCompartida.notasDeClase`): segunda pizarra de cada clase, que solo escribe el preparador, en sus datos (`users/{prep}/sesiones/{id}/notas/{p}`; cada página lleva `alumno` y `visible`). «Compartir con X» pone `visible` en todas las páginas (y en las nuevas) y `notasCompartidas` en la clase del alumno; el alumno la ve, solo para mirar, en cuanto está compartida; con el chip «Dejar escribir a X» (`editable` en las páginas) el alumno también escribe, a la vez, como en la pizarra compartida (sin crear ni eliminar páginas). Reglas: el alumno lee solo las páginas a su nombre y visibles (su consulta filtra por los dos campos; sin índice compuesto) y escribe (update) solo en las editables, sin tocar `alumno`, `visible` ni `editable`.
+- **Guardar como PDF (1.17.9)** (`pizarra_pdf.dart`): cualquier pizarra de una clase (y las notas) se guarda como PDF apaisado, una página por página, con su papel, los trazos como vectores y el texto con la letra incrustada; el PDF del tema anotado usa el mismo dibujo.
+- **Sincronizar a mano (1.17.11)** (`widgets/sincronizar.dart`): botón en la cabecera de las pestañas principales (`BarraWeb.conSincronizar`, por defecto donde va el de la oposición) y `Refrescable` (deslizar hacia abajo) en las listas; hacen lo de «Sincronizar ahora» y releen el contenido de la web.
+- **Esquema del tema (1.17.14)** (`data/models/esquema.dart`, `features/temario/esquema_tema.dart`): los marcadores de cada PDF, generados por `scripts/esquemas-temario.py` en `oposicion/temario/esquemas.json` (por nombre de fichero, `[nivel, título, página]`); en pantallas anchas, panel a la izquierda del PDF; en el móvil, hoja desde la barra de páginas. Los temas revisados lo leen de `esquema` en el manifiesto (pendiente de generarlo).
 
 En la interfaz se dice «clase» (nunca «sesión») y «clase suelta» (nunca «sustitución»); los identificadores internos (`Sesion…`, `sustitucion`) no cambian.
 
@@ -308,11 +315,16 @@ Pruebas manuales en el móvil: programar un cante semanal y recibir el aviso; so
 ## Capturas, vídeo y página de la app
 
 ```bash
-flutter test tool/capturas_test.dart --update-goldens   # capturas en promo/capturas/ (no se suben)
-python3 ../scripts/montar-video-app.py --ffmpeg RUTA     # promo/*.webp, promo/oposicion-tcee.mp4 y promo/poster.jpg
+flutter test tool/capturas_test.dart --update-goldens       # capturas en promo/capturas/ (no se suben)
+flutter test tool/capturas_dce_test.dart --update-goldens   # las de DCE
+python3 ../scripts/video-app/preparar.py                     # recursos del vídeo (capturas, fuentes, música)
+cd ../scripts/video-app && npx hyperframes render            # el vídeo, en renders/
+python3 publicar.py                                          # promo/oposicion-tcee.mp4, póster y promo/*.webp
 ```
 
-`tool/capturas_test.dart` arranca la app con datos de demostración ficticios y guarda cada pantalla a 1080 × 2340. `scripts/montar-video-app.py` (Pillow + ffmpeg) exporta las capturas ligeras que usa `index.html` y monta el vídeo de un minuto. Hay que repetir los dos pasos cuando cambie el aspecto de la app. Los datos de demostración y la navegación comunes están en `tool/demo_comun.dart`.
+`tool/capturas_test.dart` arranca la app con datos de demostración ficticios y guarda cada pantalla a 1080 × 2340. Los datos de demostración y la navegación comunes están en `tool/demo_comun.dart`.
+
+El vídeo de presentación (90 s, 1920 × 1080) se monta con [HyperFrames](https://hyperframes.heygen.com) en `scripts/video-app/`: `index.html` es la composición (HTML y GSAP, con la estética «edición académica»: crema y berenjena lisos, filete dorado, versalitas), `guion.json` fija el orden de las escenas, el compás en que empieza cada una (la música va a 110 pulsaciones por minuto) y su bloque (empezar, con tu preparador, si preparas a opositores, estudiar, organizarte y final). El fondo dice a quién va cada bloque: claro (crema o salvia) para el opositor y berenjena para el preparador; arriba a la derecha, un rótulo lo dice con palabras («Para opositores · Estudiar») y un barrido dorado marca cada cambio de bloque, `preparar.py` lleva el guion al HTML y prepara los recursos (en `assets/`, que no se sube) y `musica.py` genera la banda sonora con los instrumentos de `scripts/montar-video-app.py` (que sigue sirviendo a los vídeos de ayuda y a los gráficos de Play). Para reordenar escenas basta con cambiar `guion.json` y volver a ejecutar `preparar.py`. Hay que repetirlo todo cuando cambie el aspecto de la app.
 
 ### Vídeos de ayuda
 

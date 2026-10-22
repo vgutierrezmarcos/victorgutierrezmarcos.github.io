@@ -10,7 +10,9 @@ import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../data/models/coordinacion.dart';
 import '../plan/cantes_util.dart';
+import 'coordinacion.dart';
 import 'ajustes_preparador_page.dart';
 import '../mas/ayuda_videos.dart';
 
@@ -73,7 +75,50 @@ class _FilaReservaPedidaState extends ConsumerState<FilaReservaPedida> {
   }
 }
 
-/// El alumno elige un hueco libre de su preparador y pide la clase.
+/// Las clases que el alumno ha pedido a sus preparadores y están sin
+/// contestar (tarjetas para la agenda): día, hora y «Anular».
+class TarjetasReservasPedidas extends ConsumerWidget {
+  const TarjetasReservasPedidas({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ahora = DateTime.now();
+    final pedidas = (ref.watch(misReservasProvider).valueOrNull ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(ahora)).toList();
+    if (pedidas.isEmpty) return const SizedBox.shrink();
+    final nombres = {for (final v in ref.watch(misPreparadoresProvider)) v.uid: v.nombre};
+    return Column(children: [
+      for (final r in pedidas)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Tarjeta(
+            color: context.colores.dorado.withValues(alpha: 0.12),
+            padding: const EdgeInsets.fromLTRB(14, 10, 4, 10),
+            child: Row(children: [
+              Icon(Icons.hourglass_top, color: context.colores.dorado, size: 28),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('Clase pedida a ${(nombres[r.preparador] ?? '').isEmpty ? 'tu preparador' : nombres[r.preparador]}', style: context.textos.titleSmall),
+                  Text('${fechaCorta(r.fecha)} · ${franja(r.fecha, r.minutos)} · pendiente de que la confirme', style: context.textos.labelSmall),
+                ]),
+              ),
+              TextButton(
+                onPressed: () async {
+                  await ref.read(redRepoProvider).cambiarReserva(r, EstadoReserva.cancelada);
+                  ref.invalidate(misReservasProvider);
+                },
+                child: const Text('Anular'),
+              ),
+            ]),
+          ),
+        ),
+    ]);
+  }
+}
+
+/// El alumno elige un hueco libre de su preparador y pide la clase. Si el
+/// preparador no tiene las reservas abiertas (o ningún hueco le viene bien),
+/// propone él un día y una hora.
 class ReservarPage extends ConsumerWidget {
   const ReservarPage({super.key, required this.preparador});
   final VinculoPreparador preparador;
@@ -85,13 +130,16 @@ class ReservarPage extends ConsumerWidget {
     final pedidas = mias.where((r) => r.pedida || r.estado == EstadoReserva.aceptada).map((r) => r.fecha);
     final nombre = preparador.nombre.isEmpty ? 'tu preparador' : preparador.nombre;
 
-    Future<void> pedir(DateTime f, int minutos) async {
+    Future<void> pedir(DateTime f, int minutos, {bool propuesta = false}) async {
       final nota = TextEditingController();
       final ok = await showDialog<bool>(
         context: context,
         builder: (d) => AlertDialog(
           title: Text('¿Pedir clase el ${DateFormat("EEEE d 'a las' HH:mm", 'es').format(f)}?'),
-          content: TextField(controller: nota, decoration: const InputDecoration(labelText: 'Nota (opcional)', hintText: 'Qué quieres cantar, si llegas tarde…')),
+          content: Column(mainAxisSize: MainAxisSize.min, children: [
+            if (propuesta) Padding(padding: const EdgeInsets.only(bottom: 10), child: Text('${textoDuracion(minutos)}. $nombre la ve como una petición y la acepta o te propone otra hora.', style: context.textos.bodySmall)),
+            TextField(controller: nota, decoration: const InputDecoration(labelText: 'Nota (opcional)', hintText: 'Qué quieres cantar, si llegas tarde…')),
+          ]),
           actions: [
             TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
             FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Pedir')),
@@ -106,6 +154,29 @@ class ReservarPage extends ConsumerWidget {
       if (context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('Pedida. Te avisaremos cuando $nombre la acepte.')));
     }
 
+    /// Un día y una hora cualesquiera (sin huecos publicados o fuera de ellos).
+    Future<void> proponer() async {
+      final manana = DateTime.now().add(const Duration(days: 1));
+      final d = await showDatePicker(context: context, initialDate: manana, firstDate: DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365)), helpText: 'Día de la clase');
+      if (d == null || !context.mounted) return;
+      final t = await showTimePicker(context: context, initialTime: const TimeOfDay(hour: 17, minute: 0), helpText: 'Hora de la clase');
+      if (t == null || !context.mounted) return;
+      final f = DateTime(d.year, d.month, d.day, t.hour, t.minute);
+      if (!f.isAfter(DateTime.now())) {
+        ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Esa hora ya ha pasado.')));
+        return;
+      }
+      final minutos = huecos.valueOrNull?.huecos.firstOrNull?.minutos ?? PerfilPreparador.minutosClasePorDefecto;
+      final choques = choquesEnAgenda(ref.read(cantesProvider), f, minutos);
+      if (!await confirmarChoques(context, choques)) return;
+      await pedir(f, minutos, propuesta: true);
+    }
+
+    final botonProponer = Padding(
+      padding: const EdgeInsets.only(top: 12),
+      child: OutlinedButton.icon(onPressed: proponer, icon: const Icon(Icons.edit_calendar_outlined, size: 18), label: const Text('Proponer otro día y hora')),
+    );
+
     return Scaffold(
       appBar: BarraWeb(title: Text('Reservar con $nombre'), actions: const [BotonVideoAyuda('reservar-clase')]),
       body: RefreshIndicator(
@@ -117,14 +188,17 @@ class ReservarPage extends ConsumerWidget {
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             ...switch (huecos) {
-              AsyncData(:final value) when value == null || !value.activo => [Text('$nombre no ofrece reservas ahora mismo.', style: context.textos.bodySmall)],
+              AsyncData(:final value) when value == null || !value.activo => [
+                  Text('$nombre no tiene abiertas las reservas por huecos. Puedes proponerle tú el día y la hora: le llega como una petición y la acepta o te dice otra.', style: context.textos.bodySmall),
+                  botonProponer,
+                ],
               AsyncData(:final value) => () {
                   // Sin los que chocan con mi agenda (clases con otros
                   // preparadores o cantes con hora).
                   final agenda = ref.watch(cantesProvider);
                   int minutosDe(DateTime f) => value!.huecos.where((h) => h.diaSemana == f.weekday && h.minutoDelDia == f.hour * 60 + f.minute).firstOrNull?.minutos ?? 60;
                   final libres = value!.libres(desde: DateTime.now(), semanas: 4, pedidos: pedidas).where((f) => choquesEnAgenda(agenda, f, minutosDe(f)).isEmpty).toList();
-                  if (libres.isEmpty) return [Text('No quedan huecos libres en las próximas cuatro semanas.', style: context.textos.bodySmall)];
+                  if (libres.isEmpty) return [Text('No quedan huecos libres en las próximas cuatro semanas.', style: context.textos.bodySmall), botonProponer];
                   final porDia = <DateTime, List<DateTime>>{};
                   for (final f in libres) {
                     porDia.putIfAbsent(DateTime(f.year, f.month, f.day), () => []).add(f);
@@ -141,9 +215,11 @@ class ReservarPage extends ConsumerWidget {
                           }(),
                       ]),
                     ],
+                    Padding(padding: const EdgeInsets.only(top: 14), child: Text('¿Ninguno te viene bien?', style: context.textos.bodySmall)),
+                    botonProponer,
                   ];
                 }(),
-              AsyncError() => [Text('No se han podido cargar los huecos.', style: context.textos.bodySmall)],
+              AsyncError() => [Text('No se han podido cargar los huecos.', style: context.textos.bodySmall), botonProponer],
               _ => [const Center(child: CircularProgressIndicator())],
             },
             if (mias.any((r) => r.fecha.isAfter(DateTime.now()))) ...[

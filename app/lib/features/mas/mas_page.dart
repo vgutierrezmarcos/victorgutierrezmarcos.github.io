@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../../core/analitica.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
@@ -17,6 +18,7 @@ import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/boton_oposicion.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/sincronizar.dart';
 import '../plan/proceso_page.dart';
 import '../inicio/permisos_sheet.dart';
 import '../guia/guia.dart';
@@ -43,7 +45,8 @@ class MasPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Más'), conOposicion: true),
-      body: ListaAdaptable(
+      body: Refrescable(
+          child: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Tarjeta(
@@ -113,6 +116,16 @@ class MasPage extends ConsumerWidget {
                         if (t != null) await ref.read(ajustesProvider.notifier).fijarRecordatorio(t.hour * 60 + t.minute);
                       },
               ),
+              if (Analitica.instancia.disponible)
+                ListTile(
+                  leading: const Icon(Icons.insights_outlined),
+                  title: const Text('Estadísticas de uso y errores'),
+                  subtitle: Text('Anónimas, para mejorar la app. Sin tus datos de estudio.', style: context.textos.labelSmall),
+                  trailing: Switch(
+                    value: ref.watch(ajustesProvider.select((a) => a.estadisticas ?? false)),
+                    onChanged: (v) => ref.read(ajustesProvider.notifier).fijarEstadisticas(v),
+                  ),
+                ),
               // El preparador tiene sus propios avisos de clases (en Preparador → Ajustes).
               if (Notificaciones.disponibles && papel != Papel.preparador) ListTile(
                 leading: const Icon(Icons.notifications_active_outlined),
@@ -197,7 +210,7 @@ class MasPage extends ConsumerWidget {
             ),
           ),
         ],
-      ),
+      )),
     );
   }
 

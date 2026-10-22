@@ -11,7 +11,7 @@ const fondoPaleta = Colors.white;
 const tintaBarra = Color(0xFF1C1C1E);
 
 /// Herramientas que se eligen en la paleta.
-enum HerramientaPizarra { boligrafo, rotulador, fosforito, borrador, lazo }
+enum HerramientaPizarra { boligrafo, rotulador, fosforito, borrador, lazo, texto }
 
 /// La paleta: blanca, redondeada y con sombra.
 class PaletaFlotante extends StatelessWidget {
@@ -165,6 +165,20 @@ class _PintorPunta extends CustomPainter {
         for (var k = 0; k < n; k += 2) {
           canvas.drawArc(Rect.fromCenter(center: Offset(w / 2, alto * 0.16), width: w * 0.62, height: alto * 0.22), 2 * pi * k / n, 2 * pi / n, false, lazo);
         }
+      case HerramientaPizarra.texto:
+        // Una tecla con una «A» del color elegido.
+        final r = RRect.fromLTRBR(x0 - 1, alto * 0.30, x1 + 1, alto + 4, const Radius.circular(3));
+        canvas.drawRRect(r, cuerpo);
+        canvas.drawRRect(r, borde);
+        final tecla = RRect.fromLTRBR(x0 - 1, alto * 0.06, x1 + 1, alto * 0.42, const Radius.circular(4));
+        canvas.drawRRect(tecla, Paint()..color = Colors.white);
+        canvas.drawRRect(tecla, borde);
+        final letra = TextPainter(
+          text: TextSpan(text: 'A', style: TextStyle(color: color.withValues(alpha: 1), fontSize: 15, fontWeight: FontWeight.w700, fontFamily: 'SourceSans3')),
+          textDirection: TextDirection.ltr,
+        )..layout();
+        letra.paint(canvas, Offset(w / 2 - letra.width / 2, alto * 0.24 - letra.height / 2));
+        letra.dispose();
     }
   }
 

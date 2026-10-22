@@ -115,8 +115,12 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
         );
         if (ok != true) return;
       }
-      await ref.read(cronogramaProvider.notifier).empezar(c);
-      nav.pop();
+      try {
+        await ref.read(cronogramaProvider.notifier).empezar(c);
+        nav.pop();
+      } catch (e) {
+        if (context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('No se pudo crear: $e')));
+      }
     }
 
     return Scaffold(
