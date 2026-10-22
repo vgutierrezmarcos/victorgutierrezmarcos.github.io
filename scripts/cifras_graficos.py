@@ -6,8 +6,23 @@ lleva <title> y <desc>, y se acompaña en la página de una tabla con los
 mismos datos, que es lo que leen los buscadores.
 """
 import html
+import json
 
 ANCHO, ALTO = 760, 340
+COLOR_JS = {'var(--color-primary)': 'primary', 'var(--color-accent-gold)': 'gold', 'var(--color-primary-light)': 'primary-light', 'var(--color-text-light)': 'text-light',
+            'var(--color-border-strong)': 'border-strong', 'var(--color-border-light)': 'border-light', 'var(--color-primary-pale)': 'primary-pale'}
+
+
+def _color_js(color, j):
+    return COLOR_JS.get(color or COLORES[j % len(COLORES)], 'primary')
+
+
+def interactivo(svg, spec, alto=ALTO):
+    """Canvas con los datos del gráfico (los pinta cifras-graficos.js con Chart.js) y el SVG como respaldo."""
+    datos = json.dumps(spec, ensure_ascii=False)
+    return (f'<div class="grafico-js" style="--alto-grafico: {alto}px"><canvas role="img" aria-label="{_esc(spec["titulo"])}"></canvas>'
+            f'<script type="application/json" class="datos-grafico">{datos.replace("</", "<\\/")}</script>'
+            f'<noscript>{svg}</noscript></div>')
 MARGEN = {'izq': 48, 'der': 48, 'arr': 18, 'aba': 58}
 COLORES = ['var(--color-primary)', 'var(--color-accent-gold)', 'var(--color-primary-light)', 'var(--color-text-light)', 'var(--color-border-strong)']
 ESTILO = 'font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)'
@@ -133,7 +148,15 @@ def grafico(categorias, barras=(), lineas=(), titulo='', descripcion='', y_max=N
         if lx > izq + w - 120 and j < len(series) - 1:
             lx, ly = izq, ly + 14
     out.append('</g></svg>')
-    return '\n'.join(out)
+    svg = '\n'.join(out)
+    series = []
+    for j, (nombre, valores, *resto) in enumerate(barras):
+        series.append({'nombre': nombre, 'valores': valores, 'tipo': 'bar', 'color': _color_js(resto[0] if resto else None, j), 'eje': 'y', 'apilar': bool(apiladas)})
+    for j, (nombre, valores, *resto) in enumerate(lineas):
+        series.append({'nombre': nombre, 'valores': valores, 'tipo': 'line', 'color': _color_js(resto[0] if resto else None, j + nb), 'eje': 'y2' if eje2 else 'y'})
+    spec = {'titulo': titulo, 'etiquetas': list(categorias), 'series': series, 'temporal': all(str(c).isdigit() for c in categorias),
+            'ejes': {'y': {'max': y_max, 'unidad': unidad, 'min': 0}, 'y2': {'max': y2_max, 'unidad': unidad2, 'min': 0} if eje2 else None}}
+    return interactivo(svg, spec, alto)
 
 
 def barras_horizontales(filas, titulo='', descripcion='', unidad='', ancho=ANCHO, formato=0):
@@ -153,7 +176,13 @@ def barras_horizontales(filas, titulo='', descripcion='', unidad='', ancho=ANCHO
             out.append(f'<rect x="{izq}" y="{y + 3}" width="{w * v2 / maximo:.1f}" height="18" fill="var(--color-primary)" rx="2"><title>{_esc(et)}: {_fmt(v2, formato)}</title></rect>')
         out.append(f'<text x="{izq + w * max(v, v2 or 0) / maximo + 8:.1f}" y="{y + 15}">{_esc(texto)}</text>')
     out.append('</g></svg>')
-    return '\n'.join(out)
+    svg = '\n'.join(out)
+    series = [{'nombre': 'Total' if any(f[2] is not None for f in filas) else 'Personas', 'valores': [f[1] for f in filas], 'tipo': 'bar', 'color': 'border-light' if any(f[2] is not None for f in filas) else 'primary', 'eje': 'y'}]
+    if any(f[2] is not None for f in filas):
+        series.append({'nombre': 'Aprueban', 'valores': [f[2] for f in filas], 'tipo': 'bar', 'color': 'primary', 'eje': 'y'})
+    spec = {'titulo': titulo, 'etiquetas': [f[0] for f in filas], 'series': series, 'temporal': False, 'horizontal': True, 'textos': [f[3] for f in filas],
+            'ejes': {'y': {'max': None, 'unidad': unidad, 'min': 0}, 'y2': None}}
+    return interactivo(svg, spec, alto)
 
 
 def figura(id_, svg, caption, tabla_html=''):

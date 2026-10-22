@@ -60,6 +60,10 @@
         .cifras-clave li { border-top: 2px solid var(--color-accent-gold); padding-top: 0.5rem; }
         .cifras-clave .n { display: block; font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; color: var(--color-primary); line-height: 1.1; }
         .cifras-clave .t { font-size: 0.85rem; color: var(--color-text-muted); }
+        .grafico-js { position: relative; width: 100%; height: var(--alto-grafico, 340px); margin: 0.25rem 0 0.5rem; }
+        .grafico-js canvas { width: 100% !important; height: 100% !important; }
+        .grafico-js noscript .grafico { width: 100%; height: auto; display: block; }
+        @media (max-width: 480px) { .grafico-js { height: calc(var(--alto-grafico, 340px) * 0.8); } }
         .figura-cifras { margin: 1.25rem 0 2rem; }
         .figura-cifras .grafico { width: 100%; height: auto; display: block; }
         .figura-cifras figcaption { font-family: var(--font-ui); font-size: 0.88rem; color: var(--color-text-muted); margin-top: 0.4rem; }
@@ -155,7 +159,7 @@
 <h2 id="plazas">Plazas convocadas y aprobados, 1985-2026</h2>
 <p>Plazas de turno libre de cada convocatoria (por el año en que se celebran los exámenes), partidas entre las que se cubrieron (los aprobados de la fase de oposición que publica el BOE) y las que quedaron desiertas. La promoción interna, reservada a funcionarios A2, va aparte.</p>
 <figure class="figura-cifras" id="g-plazas">
-<svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-plazas-t g-plazas-d" preserveAspectRatio="xMidYMid meet">
+<div class="grafico-js" style="--alto-grafico: 340px"><canvas role="img" aria-label="Plazas de turno libre por convocatoria: aprobados y plazas sin cubrir"></canvas><script type="application/json" class="datos-grafico">{"titulo": "Plazas de turno libre por convocatoria: aprobados y plazas sin cubrir", "etiquetas": ["1985", "1986", "1987", "1988", "1992", "1993", "1994", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "Aprobados de turno libre", "valores": [9, 12, 10, 20, 16, 9, 10, 7, 8, 9, 8, 12, 10, 12, 12, 12, 9, 12, 13, 20, 22, 13, 12, 10, 10, 15, 22, 13, 19, 19, 17, 28, 23, 25, 17, null], "tipo": "bar", "color": "gold", "eje": "y", "apilar": true}, {"nombre": "Plazas sin cubrir", "valores": [21, 19, 9, 5, 4, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 5, 3, 1, 1, 2, 2, 6, 9, 7, 1, 2, 1, 4, 4, 4, 5, null], "tipo": "bar", "color": "border-strong", "eje": "y", "apilar": true}, {"nombre": "Convocatoria en curso (plazas)", "valores": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 27], "tipo": "bar", "color": "primary-pale", "eje": "y", "apilar": true}], "temporal": true, "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-plazas-t g-plazas-d" preserveAspectRatio="xMidYMid meet">
 <title id="g-plazas-t">Plazas de turno libre por convocatoria: aprobados y plazas sin cubrir</title><desc id="g-plazas-d">Columnas apiladas: en cada convocatoria entre 1985 y 2026, los aprobados de turno libre y, encima, las plazas que quedaron sin cubrir; la suma es el total de plazas convocadas.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <line x1="48" y1="282.0" x2="712" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
@@ -253,7 +257,7 @@
 <text x="282" y="332">Plazas sin cubrir</text>
 <rect x="419" y="322" width="18" height="11" fill="var(--color-primary-pale)" rx="1.5"/>
 <text x="443" y="332">Convocatoria en curso (plazas)</text>
-</g></svg>
+</g></svg></noscript></div>
 <figcaption>Fuente: convocatorias y relaciones de aprobados en la fase de oposición publicadas en el BOE. Las convocatorias en curso aún no tienen aprobados.</figcaption>
 <details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
 <thead><tr><th scope="col">Exámenes</th><th scope="col">Convocatoria (BOE)</th><th scope="col">Plazas libre</th><th scope="col">Reserva discapacidad</th><th scope="col">Plazas interna</th><th scope="col">Aprobados libre</th><th scope="col">Sin cubrir</th><th scope="col">Aprobados interna</th><th scope="col">Cobertura libre</th></tr></thead>
@@ -297,11 +301,11 @@
 </tbody>
 </table></div></details>
 </figure>
-<p>En las 28 convocatorias con relación de aprobados en el BOE (1996-2025), las plazas de turno libre se cubrieron de media al 89 %; en 8 se cubrieron todas y en 20 quedaron plazas desiertas (1996: 3, 1999: 1, 2005: 1, 2007: 1, 2008: 5, 2009: 3, 2010: 1, 2011: 1, 2014: 2, 2015: 2, 2016: 6, 2017: 9, 2018: 7, 2019: 1, 2020: 2, 2021: 1, 2022: 4, 2023: 4, 2024: 4, 2025: 5). Los aprobados de las convocatorias anteriores a 1996 salen de los nombramientos de funcionarios en prácticas leídos de BOE escaneados y son aproximados.</p>
+<p>En las 28 convocatorias con relación de aprobados en el BOE (1996-2025), las plazas de turno libre se cubrieron de media al 89 %; en 8 se cubrieron todas y en 20 quedaron plazas desiertas (1996: 3, 1999: 1, 2005: 1, 2007: 1, 2008: 5, 2009: 3, 2010: 1, 2011: 1, 2014: 2, 2015: 2, 2016: 6, 2017: 9, 2018: 7, 2019: 1, 2020: 2, 2021: 1, 2022: 4, 2023: 4, 2024: 4, 2025: 5). Los aprobados de las convocatorias anteriores a 1996 son el tamaño de cada promoción según la ATCEE (turno libre y promoción interna juntos) y, si falta, los nombramientos leídos de BOE escaneados.</p>
 <h2 id="admitidos">Cuántos se presentan: admitidos por plaza, 2019-2026</h2>
 <p>Las listas definitivas de admitidos del Ministerio existen desde la oferta de empleo público de 2018. No todos los admitidos llegan a examinarse, pero es la mejor medida de cuánta gente opta a cada plaza.</p>
 <figure class="figura-cifras" id="g-admitidos">
-<svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-admitidos-t g-admitidos-d" preserveAspectRatio="xMidYMid meet">
+<div class="grafico-js" style="--alto-grafico: 340px"><canvas role="img" aria-label="Admitidos de turno libre y admitidos por plaza"></canvas><script type="application/json" class="datos-grafico">{"titulo": "Admitidos de turno libre y admitidos por plaza", "etiquetas": ["2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "Admitidos de turno libre", "valores": [189, 218, 271, 260, 221, 186, 172, 186], "tipo": "bar", "color": "primary", "eje": "y", "apilar": false}, {"nombre": "Admitidos por plaza", "valores": [9.4, 10.4, 15.1, 8.1, 8.2, 6.4, 7.8, 6.9], "tipo": "line", "color": "gold", "eje": "y2"}], "temporal": true, "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": {"max": null, "unidad": "/plaza", "min": 0}}}</script><noscript><svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-admitidos-t g-admitidos-d" preserveAspectRatio="xMidYMid meet">
 <title id="g-admitidos-t">Admitidos de turno libre y admitidos por plaza</title><desc id="g-admitidos-d">Barras con los admitidos de turno libre de cada convocatoria y línea con el cociente entre admitidos y plazas.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <line x1="48" y1="282.0" x2="696" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
@@ -356,7 +360,7 @@
 <text x="72" y="332">Admitidos de turno libre</text>
 <line x1="258" y1="328" x2="276" y2="328" stroke="var(--color-accent-gold)" stroke-width="2.5"/><circle cx="267" cy="328" r="3" fill="var(--color-accent-gold)"/>
 <text x="282" y="332">Admitidos por plaza</text>
-</g></svg>
+</g></svg></noscript></div>
 <figcaption>Fuente: listas definitivas de admitidos (turno libre) del Ministerio de Economía, Comercio y Empresa.</figcaption>
 <details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
 <thead><tr><th scope="col">Exámenes</th><th scope="col">Admitidos libre</th><th scope="col">Reserva discapacidad</th><th scope="col">Admitidos interna</th><th scope="col">Plazas libre</th><th scope="col">Admitidos por plaza</th><th scope="col">Aprobados libre</th><th scope="col">Aprobados por cada 100 admitidos</th></tr></thead>
@@ -375,7 +379,7 @@
 <h2 id="suspensos">Qué ejercicio elimina a más gente, 2019-2026</h2>
 <p>Porcentaje de aspirantes de turno libre que no supera cada uno de los cuatro primeros ejercicios, calculado sobre los que tenían que hacerlo: los admitidos para el primero y, para los siguientes, los aprobados del anterior menos quienes conservaban la nota de la convocatoria anterior (las listas de conservación de nota existen desde 2025). El porcentaje mezcla a quienes suspenden y a quienes no llegan a presentarse. La promoción interna no entra en este cálculo: los funcionarios A2 están exentos de parte del quinto ejercicio y, si vienen del Cuerpo de Diplomados Comerciales del Estado, del segundo y del quinto enteros.</p>
 <figure class="figura-cifras" id="g-suspensos">
-<svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-suspensos-t g-suspensos-d" preserveAspectRatio="xMidYMid meet">
+<div class="grafico-js" style="--alto-grafico: 340px"><canvas role="img" aria-label="Porcentaje que no supera cada ejercicio, por convocatoria (turno libre)"></canvas><script type="application/json" class="datos-grafico">{"titulo": "Porcentaje que no supera cada ejercicio, por convocatoria (turno libre)", "etiquetas": ["2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "1.º (test y dictamen)", "valores": [51.6, 61.4, 72.2, 61.5, 68.4, 61.9, 73.0, 64.1], "tipo": "line", "color": "primary", "eje": "y"}, {"nombre": "2.º (idiomas)", "valores": [26.099999999999994, 29.400000000000006, 39.0, 30.400000000000006, 23.900000000000006, 16.700000000000003, 25.0, 32.400000000000006], "tipo": "line", "color": "gold", "eje": "y"}, {"nombre": "3.º", "valores": [42.6, 45.0, 46.8, 49.3, 48.1, 35.0, 21.200000000000003, 50.0], "tipo": "line", "color": "primary-light", "eje": "y"}, {"nombre": "4.º", "valores": [64.1, 39.4, 32.0, 22.200000000000003, 17.900000000000006, 35.900000000000006, 34.599999999999994, 39.1], "tipo": "line", "color": "text-light", "eje": "y"}], "temporal": true, "ejes": {"y": {"max": 100, "unidad": " %", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-suspensos-t g-suspensos-d" preserveAspectRatio="xMidYMid meet">
 <title id="g-suspensos-t">Porcentaje que no supera cada ejercicio, por convocatoria (turno libre)</title><desc id="g-suspensos-d">Líneas con el porcentaje de aspirantes de turno libre que no supera el primer, segundo, tercer y cuarto ejercicio en cada convocatoria.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <line x1="48" y1="282.0" x2="712" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
@@ -440,7 +444,7 @@
 <text x="394" y="332">3.º</text>
 <line x1="433" y1="328" x2="451" y2="328" stroke="var(--color-text-light)" stroke-width="2.5"/><circle cx="442" cy="328" r="3" fill="var(--color-text-light)"/>
 <text x="457" y="332">4.º</text>
-</g></svg>
+</g></svg></noscript></div>
 <figcaption>Fuente: listas de admitidos, de aprobados de cada ejercicio y de conservación de nota publicadas por el tribunal en la página del Ministerio. En la convocatoria en curso faltan los ejercicios no celebrados.</figcaption>
 <details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
 <thead><tr><th scope="col">Exámenes</th><th scope="col">1.º: aprueban de los que lo hacen (% que no)</th><th scope="col">2.º</th><th scope="col">3.º</th><th scope="col">4.º</th></tr></thead>
@@ -460,7 +464,7 @@
 <h3>Dentro del primer ejercicio: test y dictamen</h3>
 <p>El primer ejercicio tiene dos partes: el test (quien no llega a la nota de corte no lee el dictamen) y el dictamen de coyuntura. Porcentaje que no supera cada parte, sobre los que tenían que hacerla:</p>
 <figure class="figura-cifras" id="g-primero">
-<svg class="grafico" viewBox="0 0 760 300" role="img" aria-labelledby="g-primero-t g-primero-d" preserveAspectRatio="xMidYMid meet">
+<div class="grafico-js" style="--alto-grafico: 300px"><canvas role="img" aria-label="Porcentaje que no supera el test y el dictamen"></canvas><script type="application/json" class="datos-grafico">{"titulo": "Porcentaje que no supera el test y el dictamen", "etiquetas": ["2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "Test", "valores": [null, null, 68.2, 53.6, 61.3, 60.8, 66.9, 56.8], "tipo": "line", "color": "primary", "eje": "y"}, {"nombre": "Dictamen", "valores": [null, null, 12.5, 17.099999999999994, 18.400000000000006, 2.700000000000003, 18.599999999999994, 16.900000000000006], "tipo": "line", "color": "gold", "eje": "y"}], "temporal": true, "ejes": {"y": {"max": 100, "unidad": " %", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 300" role="img" aria-labelledby="g-primero-t g-primero-d" preserveAspectRatio="xMidYMid meet">
 <title id="g-primero-t">Porcentaje que no supera el test y el dictamen</title><desc id="g-primero-d">Líneas con el porcentaje de aspirantes de turno libre que no supera test y dictamen en cada convocatoria.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <line x1="48" y1="242.0" x2="712" y2="242.0" stroke="var(--color-border-light)" stroke-width="1"/>
@@ -499,7 +503,7 @@
 <text x="72" y="292">Test</text>
 <line x1="118" y1="288" x2="136" y2="288" stroke="var(--color-accent-gold)" stroke-width="2.5"/><circle cx="127" cy="288" r="3" fill="var(--color-accent-gold)"/>
 <text x="142" y="292">Dictamen</text>
-</g></svg>
+</g></svg></noscript></div>
 <figcaption>Antes de 2021 el tribunal no publicaba lista aparte de la primera parte del primer ejercicio.</figcaption>
 <details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
 <thead><tr><th scope="col">Exámenes</th><th scope="col">Test: aprueban de los que lo hacen (% que no)</th><th scope="col">Dictamen: aprueban de los que lo hacen (% que no)</th></tr></thead>
@@ -518,7 +522,7 @@
 <h3>Dentro del segundo ejercicio: inglés y segundo idioma</h3>
 <p>El segundo ejercicio tiene dos pruebas de idiomas, inglés y el segundo idioma elegido, y hay que aprobar las dos. Porcentaje que no supera cada prueba, sobre los que tenían que hacerla (descontando a quienes conservaban la nota de los dos idiomas):</p>
 <figure class="figura-cifras" id="g-segundo">
-<svg class="grafico" viewBox="0 0 760 300" role="img" aria-labelledby="g-segundo-t g-segundo-d" preserveAspectRatio="xMidYMid meet">
+<div class="grafico-js" style="--alto-grafico: 300px"><canvas role="img" aria-label="Porcentaje que no supera el inglés y el segundo idioma"></canvas><script type="application/json" class="datos-grafico">{"titulo": "Porcentaje que no supera el inglés y el segundo idioma", "etiquetas": ["2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "series": [{"nombre": "Inglés", "valores": [null, null, 19.5, 24.5, 15.5, 9.700000000000003, 25.0, 29.400000000000006], "tipo": "line", "color": "primary", "eje": "y"}, {"nombre": "Segundo idioma", "valores": [null, null, 39.0, 30.400000000000006, 23.900000000000006, 16.700000000000003, null, 30.900000000000006], "tipo": "line", "color": "gold", "eje": "y"}], "temporal": true, "ejes": {"y": {"max": 100, "unidad": " %", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 300" role="img" aria-labelledby="g-segundo-t g-segundo-d" preserveAspectRatio="xMidYMid meet">
 <title id="g-segundo-t">Porcentaje que no supera el inglés y el segundo idioma</title><desc id="g-segundo-d">Líneas con el porcentaje de aspirantes de turno libre que no supera inglés y segundo idioma en cada convocatoria.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <line x1="48" y1="242.0" x2="712" y2="242.0" stroke="var(--color-border-light)" stroke-width="1"/>
@@ -556,7 +560,7 @@
 <text x="72" y="292">Inglés</text>
 <line x1="132" y1="288" x2="150" y2="288" stroke="var(--color-accent-gold)" stroke-width="2.5"/><circle cx="141" cy="288" r="3" fill="var(--color-accent-gold)"/>
 <text x="156" y="292">Segundo idioma</text>
-</g></svg>
+</g></svg></noscript></div>
 <figcaption>Algunos años el tribunal publica una sola lista del segundo ejercicio, sin separar los idiomas.</figcaption>
 <details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
 <thead><tr><th scope="col">Exámenes</th><th scope="col">Inglés: aprueban de los que lo hacen (% que no)</th><th scope="col">Segundo idioma: aprueban de los que lo hacen (% que no)</th></tr></thead>
@@ -575,7 +579,7 @@
 <h2 id="idiomas">El segundo idioma: cuál se elige y cuál se aprueba, 2019-2026</h2>
 <p>Además del inglés, obligatorio, cada admitido declara un segundo idioma. Reparto acumulado de las convocatorias con lista de admitidos:</p>
 <figure class="figura-cifras" id="g-idiomas">
-<svg class="grafico" viewBox="0 0 760 232" role="img" aria-labelledby="g-idiomas-t g-idiomas-d" preserveAspectRatio="xMidYMid meet">
+<div class="grafico-js" style="--alto-grafico: 232px"><canvas role="img" aria-label="Segundo idioma elegido por los admitidos"></canvas><script type="application/json" class="datos-grafico">{"titulo": "Segundo idioma elegido por los admitidos", "etiquetas": ["Francés", "Portugués", "Italiano", "Alemán", "Chino", "Ruso", "Japonés", "Árabe"], "series": [{"nombre": "Personas", "valores": [988, 313, 179, 144, 29, 18, 8, 4], "tipo": "bar", "color": "primary", "eje": "y"}], "temporal": false, "horizontal": true, "textos": ["988 (59 %)", "313 (19 %)", "179 (11 %)", "144 (9 %)", "29 (2 %)", "18 (1 %)", "8 (0 %)", "4 (0 %)"], "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 232" role="img" aria-labelledby="g-idiomas-t g-idiomas-d" preserveAspectRatio="xMidYMid meet">
 <title id="g-idiomas-t">Segundo idioma elegido por los admitidos</title><desc id="g-idiomas-d">Barras con el número de admitidos que eligen cada segundo idioma.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <text x="102" y="27" text-anchor="end" fill="var(--color-text)">Francés</text>
@@ -602,7 +606,7 @@
 <text x="102" y="209" text-anchor="end" fill="var(--color-text)">Árabe</text>
 <rect x="110" y="197" width="2.1" height="18" fill="var(--color-border-light)" rx="2"><title>Árabe: 4</title></rect>
 <text x="120.1" y="209">4 (0 %)</text>
-</g></svg>
+</g></svg></noscript></div>
 <figcaption>Fuente: listas definitivas de admitidos de turno libre (columna del segundo idioma).</figcaption>
 <details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
 <thead><tr><th scope="col">Exámenes</th><th scope="col">Francés</th><th scope="col">Portugués</th><th scope="col">Italiano</th><th scope="col">Alemán</th><th scope="col">Chino</th><th scope="col">Ruso</th><th scope="col">Japonés</th><th scope="col">Árabe</th></tr></thead>
@@ -621,7 +625,7 @@
 <h3>Aprobados del segundo idioma según el idioma elegido, 2021-2026</h3>
 <p>De los aspirantes de turno libre que superan el primer ejercicio, cuántos aprueban la prueba de su segundo idioma, por idioma (sumando las convocatorias con lista de aprobados del segundo idioma; se cruzan las listas por nombre, así que es aproximado):</p>
 <figure class="figura-cifras" id="g-idiomas-aprobados">
-<svg class="grafico" viewBox="0 0 760 206" role="img" aria-labelledby="g-idiomas-aprobados-t g-idiomas-aprobados-d" preserveAspectRatio="xMidYMid meet">
+<div class="grafico-js" style="--alto-grafico: 206px"><canvas role="img" aria-label="Aprobados del segundo idioma según el idioma elegido"></canvas><script type="application/json" class="datos-grafico">{"titulo": "Aprobados del segundo idioma según el idioma elegido", "etiquetas": ["Francés", "Portugués", "Alemán", "Italiano", "Chino", "Ruso", "Japonés"], "series": [{"nombre": "Total", "valores": [225, 68, 41, 35, 4, 3, 1], "tipo": "bar", "color": "border-light", "eje": "y"}, {"nombre": "Aprueban", "valores": [162, 44, 34, 24, 3, 2, 1], "tipo": "bar", "color": "primary", "eje": "y"}], "temporal": false, "horizontal": true, "textos": ["162 de 225 (72 %)", "44 de 68 (65 %)", "34 de 41 (83 %)", "24 de 35 (69 %)", "3 de 4 (75 %)", "2 de 3 (67 %)", "1 de 1 (100 %)"], "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 206" role="img" aria-labelledby="g-idiomas-aprobados-t g-idiomas-aprobados-d" preserveAspectRatio="xMidYMid meet">
 <title id="g-idiomas-aprobados-t">Aprobados del segundo idioma según el idioma elegido</title><desc id="g-idiomas-aprobados-d">Para cada idioma, barra clara con los aspirantes que llegan a la prueba y barra oscura con los que la aprueban.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <text x="102" y="27" text-anchor="end" fill="var(--color-text)">Francés</text>
@@ -652,7 +656,7 @@
 <rect x="110" y="171" width="2.1" height="18" fill="var(--color-border-light)" rx="2"><title>Japonés: 1</title></rect>
 <rect x="110" y="171" width="2.1" height="18" fill="var(--color-primary)" rx="2"><title>Japonés: 1</title></rect>
 <text x="120.1" y="183">1 de 1 (100 %)</text>
-</g></svg>
+</g></svg></noscript></div>
 <figcaption>Fuente: listas de aprobados del primer ejercicio y de la segunda parte del segundo ejercicio, cruzadas con la lista de admitidos. Los idiomas con pocos aspirantes dan porcentajes poco fiables.</figcaption>
 <details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
 <thead><tr><th scope="col">Exámenes</th><th scope="col">Francés: aprueban de los que llegan</th><th scope="col">Portugués: aprueban de los que llegan</th><th scope="col">Alemán: aprueban de los que llegan</th><th scope="col">Italiano: aprueban de los que llegan</th><th scope="col">Chino: aprueban de los que llegan</th><th scope="col">Ruso: aprueban de los que llegan</th><th scope="col">Japonés: aprueban de los que llegan</th></tr></thead>
@@ -681,7 +685,7 @@
 <h2 id="cuerpo">El cuerpo desde 1930: cuántos entran cada año y cuántos están en activo</h2>
 <p>La Asociación de Técnicos Comerciales y Economistas del Estado mantiene la relación de las 76 promociones del cuerpo (y de los dos cuerpos que lo precedieron) desde la primera, de 1930: 1 047 nombramientos en total. Nombramientos por año de la promoción:</p>
 <figure class="figura-cifras" id="g-promociones">
-<svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-promociones-t g-promociones-d" preserveAspectRatio="xMidYMid meet">
+<div class="grafico-js" style="--alto-grafico: 340px"><canvas role="img" aria-label="Nombramientos de Técnicos Comerciales y Economistas del Estado por año"></canvas><script type="application/json" class="datos-grafico">{"titulo": "Nombramientos de Técnicos Comerciales y Economistas del Estado por año", "etiquetas": ["1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], "series": [{"nombre": "Nombramientos", "valores": [16, 14, null, null, 34, null, 20, null, null, null, 28, null, null, null, 4, null, null, null, null, null, null, 23, null, null, 20, null, 12, 32, null, null, 5, 12, null, 11, 10, null, 15, null, 11, 14, 7, 5, 11, 12, 19, 25, 17, 18, 6, 20, 23, 20, null, 12, 18, null, 9, 12, 10, 20, 15, 16, 20, null, 9, 10, null, 10, 8, 9, 9, 15, 10, 25, 14, 9, 12, 13, 20, 23, 13, null, null, 12, 11, 10, 15, 24, 13, null, 19, 20, 17, 30, 25, 46], "tipo": "bar", "color": "primary", "eje": "y", "apilar": false}], "temporal": true, "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-promociones-t g-promociones-d" preserveAspectRatio="xMidYMid meet">
 <title id="g-promociones-t">Nombramientos de Técnicos Comerciales y Economistas del Estado por año</title><desc id="g-promociones-d">Barras con el número de personas de cada promoción, por año del nombramiento, de 1930 a 2025.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <line x1="48" y1="282.0" x2="712" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
@@ -772,7 +776,7 @@
 <rect x="706.1" y="39.1" width="3.0" height="242.9" fill="var(--color-primary)" rx="1.5"><title>Nombramientos 2025: 46</title></rect>
 <rect x="48" y="322" width="18" height="11" fill="var(--color-primary)" rx="1.5"/>
 <text x="72" y="332">Nombramientos</text>
-</g></svg>
+</g></svg></noscript></div>
 <figcaption>Fuente: «TCEE por promociones», Asociación de Técnicos Comerciales y Economistas del Estado. Los años sin barra no tuvieron promoción.</figcaption>
 <details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
 <thead><tr><th scope="col">Promoción</th><th scope="col">Nombramiento</th><th scope="col">Personas</th></tr></thead>
@@ -860,7 +864,7 @@
 <h3>Situación de los asociados (2026-10-22)</h3>
 <p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta 739 personas: 424 en activo, 44 en servicios especiales, 58 en excedencia y 210 jubiladas. Por año de nombramiento, cuántas siguen en activo:</p>
 <figure class="figura-cifras" id="g-asociados">
-<svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-asociados-t g-asociados-d" preserveAspectRatio="xMidYMid meet">
+<div class="grafico-js" style="--alto-grafico: 340px"><canvas role="img" aria-label="Asociados por año de nombramiento y situación"></canvas><script type="application/json" class="datos-grafico">{"titulo": "Asociados por año de nombramiento y situación", "etiquetas": ["1936", "1951", "1954", "1956", "1957", "1960", "1961", "1963", "1964", "1966", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1983", "1984", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1994", "1995", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2013", "2014", "2015", "2016", "2017", "2018", "2020", "2021", "2022", "2023"], "series": [{"nombre": "En activo", "valores": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 2, 2, 2, 2, 4, 4, 9, 6, 12, 10, 6, 5, 7, 2, 5, 6, 8, 3, 16, 12, 3, 9, 10, 15, 20, 9, 11, 9, 8, 15, 24, 13, 1, 20, 15, 1], "tipo": "bar", "color": "primary", "eje": "y", "apilar": true}, {"nombre": "Servicios especiales", "valores": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, null, 1, 1, 3, 1, 1, 1, 1, 2, null, 1, 2, 1, 2, 5, 3, 2, 2, 1, 2, 3, 1, 3, null, 1, 1, null, null, null, null, null, null, null], "tipo": "bar", "color": "primary-light", "eje": "y", "apilar": true}, {"nombre": "Excedencia", "valores": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, null, 1, 2, 6, 2, 1, 1, 3, 3, 1, 4, 2, 1, 3, 5, 1, 1, 2, 2, 5, null, 4, 2, null, null, 1, null, 1, 1, 1, null, null, null, null, null, null, null], "tipo": "bar", "color": "gold", "eje": "y", "apilar": true}, {"nombre": "Jubilación", "valores": [1, 2, 2, 3, 9, 1, 5, 7, 5, 9, 3, 11, 2, 5, 7, 7, 10, 18, 13, 14, 4, 10, 15, 14, 7, 7, 2, 3, 3, 5, 2, null, 2, null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "tipo": "bar", "color": "border-strong", "eje": "y", "apilar": true}], "temporal": true, "ejes": {"y": {"max": null, "unidad": "", "min": 0}, "y2": null}}</script><noscript><svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-asociados-t g-asociados-d" preserveAspectRatio="xMidYMid meet">
 <title id="g-asociados-t">Asociados por año de nombramiento y situación</title><desc id="g-asociados-d">Columnas apiladas con los asociados de cada año de nombramiento según estén en activo, en servicios especiales, en excedencia o jubilados.</desc>
 <g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
 <line x1="48" y1="282.0" x2="712" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
@@ -1013,7 +1017,7 @@
 <text x="359" y="332">Excedencia</text>
 <rect x="447" y="322" width="18" height="11" fill="var(--color-border-strong)" rx="1.5"/>
 <text x="471" y="332">Jubilación</text>
-</g></svg>
+</g></svg></noscript></div>
 <figcaption>Fuente: listado de asociados de la ATCEE, 2026-10-22; 121 asociados sin fecha de nombramiento no aparecen en el gráfico.</figcaption>
 <details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
 <thead><tr><th scope="col">Año de nombramiento</th><th scope="col">En activo</th><th scope="col">Servicios especiales</th><th scope="col">Excedencia</th><th scope="col">Jubilación</th><th scope="col">Total</th></tr></thead>
@@ -1186,6 +1190,9 @@
         </div>
     </div>
 </footer>
+    <!-- Gráficos interactivos (sin JavaScript queda el SVG) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+    <script src="cifras-graficos.js" defer></script>
     <script src="../search-engine.js"></script>
     <script src="../search-ui.js"></script>
     <script src="../cookie-consent.js"></script>
