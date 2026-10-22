@@ -98,6 +98,12 @@ python3 scripts/guia-convocatoria.py
 python3 scripts/atcee-cuerpo.py      # first: promociones and asociados counts from atcee.es (member login in ~/.config/oposicion-red/atcee.json) -> oposicion/cuerpo.json
 ~/.local/share/oposicion-web/venv-ocr/bin/python scripts/cifras-oposicion.py
 
+# Monthly report of the web (SEO, visits) and the app (accounts, network, Play, app Analytics): skill /informe-web.
+# Only aggregates, saved outside the repo (~/.local/share/oposicion-web/informes/). Sources that are not connected show as «pendiente».
+python3 scripts/informe-web.py --datos          # then write valoracion.json and run --render <folder>
+python3 scripts/comprobar-seo.py                # technical SEO check with a 0-100 score (PageSpeed needs an API key)
+python3 scripts/estadisticas-app.py             # Play, app Analytics, APK downloads and the network (estadisticas-red.py)
+
 # Generate RSS feed manually
 node generate-rss.js
 
