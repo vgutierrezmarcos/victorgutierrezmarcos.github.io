@@ -370,8 +370,8 @@ def render(carpeta):
                           [[e(corta(x['page'])), num(x['clics']), num(x['impresiones']), num(x['posicion'], 1)] for x in sc.get('paginas', [])[:10]])
     paginas_vistas = tabla(['Página', 'Vistas', 'Usuarios'],
                            [[e(x['pagePath']), num(x['screenPageViews']), num(x['activeUsers'])] for x in ga.get('paginas', [])[:10]])
-    canales = barras_h([(x['sessionDefaultChannelGroup'], x['sessions']) for x in ga.get('canales', [])[:7]])
-    origenes = barras_h([(x['sessionSource'], x['sessions']) for x in ga.get('origenes', [])[:8]])
+    canales = barras_h([(x['sessionDefaultChannelGroup'], x['sessions']) for x in ga.get('canales', [])[:7]], alto_fila=17)
+    origenes = barras_h([(x['sessionSource'], x['sessions']) for x in ga.get('origenes', [])[:8]], alto_fila=17)
     dce_busq = sc.get('busquedas_dce', [])
     app_busq = sc.get('busquedas_app', [])
     temas_pedidos = ga.get('temas_pedidos', [])
@@ -382,7 +382,7 @@ def render(carpeta):
         pedidos[tema] = pedidos.get(tema, 0) + x.get('screenPageViews', 0)
     pedidos = sorted(pedidos.items(), key=lambda kv: -kv[1])[:8]
     filas_prob = [[f'<span class="nivel nivel-{p["nivel"].lower()}">{e(p["nivel"])}</span>', e(p['categoría']), e(p['página']), e(p['texto'])]
-                  for p in problemas[:10]]
+                  for p in problemas[:6]]
     psi = seo.get('pagespeed', {})
     filas_psi = []
     for ruta, x in psi.items():
@@ -568,7 +568,13 @@ h4 {{ font-size: 9.5pt; margin: 6px 0 2px; color: var(--suave); font-weight: 600
 .pie {{ position: absolute; left: 13mm; right: 13mm; bottom: 7mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--suave); border-top: 1px solid var(--regla); padding-top: 3px; }}
 @media (max-width: 640px) {{ .pie {{ position: static; margin-top: 14px; }} }}
 .nota-seo {{ display: flex; gap: 12px; align-items: center; }}
-@media print {{ @page {{ size: A4; margin: 0; }} body {{ background: #fff; padding: 0; }} .hoja {{ border: 0; margin: 0; max-width: none; min-height: 297mm; }} }}
+@media print {{ @page {{ size: A4; margin: 0; }} body {{ background: #fff; padding: 0; font-size: 9.3pt; line-height: 1.32; }}
+  .hoja {{ border: 0; margin: 0; max-width: none; min-height: 0; height: 297mm; padding: 10mm 12mm 9mm; overflow: hidden; }}
+  .hoja header {{ margin-bottom: 6px; }} h1 {{ font-size: 18pt; }} h2 {{ font-size: 15pt; }} h3 {{ font-size: 11pt; margin: 7px 0 3px; }}
+  .kpis {{ gap: 6px; margin: 2px 0 5px; }} .kpi-v {{ font-size: 16pt; }} .resumen {{ font-size: 10.3pt; margin: 4px 0 6px; }}
+  .diagnostico {{ font-size: 9.2pt; margin-bottom: 4px; }} .tabla {{ font-size: 8.2pt; }} .tabla td, .tabla th {{ padding: 1px 4px; }}
+  .prioridades, .faltan {{ font-size: 8.8pt; }} .prioridades li, .faltan li {{ margin-bottom: 2px; }} .dos {{ gap: 8px 14px; }} .grafico {{ max-height: 150px; }}
+  .pie {{ bottom: 6mm; left: 12mm; right: 12mm; }} }}
 </style>
 
 <section class="hoja">
@@ -608,16 +614,16 @@ h4 {{ font-size: 9.5pt; margin: 6px 0 2px; color: var(--suave); font-weight: 600
   <div class="dos">
     <div><h3>Búsquedas de DCE y de la app</h3>
       {tabla(['Búsqueda', 'Clics', 'Impr.', 'Pos.'], [[e(x['query']), num(x['clics']), num(x['impresiones']), num(x['posicion'], 1)] for x in (dce_busq[:5] + [b for b in app_busq if b not in dce_busq][:5])])}
-    </div>
-    <div><h3>Temas sin PDF que se piden</h3>
-      {barras_h(pedidos, alto_fila=16) if pedidos else '<p class="vacio">Ninguno en el periodo</p>'}
       <h3>Core Web Vitals (PageSpeed, móvil)</h3>
       {tabla(['Página', 'Nota', 'LCP / CLS', 'Campo'], filas_psi, num_desde=1) if filas_psi else '<p class="vacio">Sin medir</p>'}
+    </div>
+    <div><h3>Temas sin PDF que se piden</h3>
+      {barras_h(pedidos, alto_fila=14) if pedidos else '<p class="vacio">Ninguno en el periodo</p>'}
     </div>
   </div>
   <h3>Problemas técnicos por prioridad</h3>
   {tabla(['Nivel', 'Categoría', 'Página', 'Problema'], filas_prob, 'problemas', num_desde=9) if filas_prob else '<p class="nota">Ningún problema en la comprobación técnica.</p>'}
-  {('<p class="nota">… y ' + str(len(problemas) - 10) + ' más de prioridad baja, en seo-' + e(seo.get('fecha')) + '.json.</p>') if len(problemas) > 10 else ''}
+  {('<p class="nota">… y ' + str(len(problemas) - 6) + ' más de prioridad baja, en seo-' + e(seo.get('fecha')) + '.json.</p>') if len(problemas) > 6 else ''}
   <h3>Prioridades de la web para el mes</h3>
   {lista_prioridades(vw.get('prioridades'))}
   <div class="pie"><span>Comprobación técnica: scripts/comprobar-seo.py · Search Console y Analytics: scripts/estadisticas-web.py</span><span>2 / 4</span></div>
