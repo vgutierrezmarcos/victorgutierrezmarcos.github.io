@@ -1,0 +1,1354 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A20.bib}
+\tcetema[Poder de mercado y regulación óptima]{3.A.20}{Poder de mercado y regulación óptima. Definición del mercado relevante. Desarrollos en presencia de información asimétrica. Aplicaciones prácticas.}
+\tcefecha{22/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Tener la sartén por el mango», decimos de quien manda. Una empresa con poder de mercado la tiene: puede fijar el precio. Y si, además, es la única que sabe lo que hay dentro de la sartén, cuánto le cuesta de verdad producir, quien quiera regularla cocina a ciegas.
+  \item Lo vemos hoy en las redes eléctricas. En diciembre de 2025, la Comisión Nacional de los Mercados y la Competencia (CNMC) subió del 5,58~\% al 6,58~\% la tasa de retribución financiera que aplica a los activos de las redes de transporte y distribución de electricidad para 2026-2031 \parencites{CNMC2025Circular9}{CNMC2025NPCirculares}. ¿Es mucho o es poco? Si es poco, no se invertirá en las redes que exige la transición energética; si es mucho, los consumidores pagarán rentas. Y quien mejor lo sabe es la empresa regulada.
+  \item Detrás están las preguntas de esta exposición: ¿cuándo hay que regular a una empresa con poder de mercado, en qué mercado se mide ese poder y cómo se regula cuando la empresa sabe más que el regulador?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Teórica}: es una de las aplicaciones más logradas de la economía de la información y del diseño de mecanismos; Jean \autor{Tirole} recibió el Premio Nobel de Economía en 2014 «por su análisis del poder de mercado y la regulación» \parencite{Nobel2014Tirole}.
+  \item \emph{Empírica}: con datos de empresas cotizadas de Estados Unidos, el precio medio pasó de estar un 21~\% por encima del coste marginal en 1980 a un 61~\% en 2016 \parencite{DeLoeckerEeckhoutUnger2020Rise}, y unas pocas empresas «superestrella», con márgenes altos, explican parte de la caída de la participación del trabajo en la renta \parencite{AutorEtAl2020Fall}.
+  \item \emph{De política económica}: la energía, las telecomunicaciones, el transporte, el agua y, desde 2023, las grandes plataformas digitales están regulados \emph{ex ante} \parencite{UE2022DMA}; la CNMC y los ministerios aplican a diario estos instrumentos, y la política de competencia de la Unión Europea empieza siempre por definir el mercado relevante \vertema{3.B.39} \vertema{4.A.15}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Definiciones}. Decimos que una empresa tiene \concepto{poder de mercado} cuando puede cobrar, durante un tiempo y sin perder a todos sus clientes, un precio superior a su coste marginal y ganar con ello. La \concepto{regulación económica} es la intervención pública \emph{ex ante} que fija precios, condiciones de entrada, calidad o acceso. Y la \concepto{regulación óptima}, la que lleva el bienestar social a su máximo dentro de lo que permiten la viabilidad de la empresa y la información del regulador.
+  \item El poder de mercado rompe un supuesto del primer teorema fundamental de la economía del bienestar (1TFEB), el de agentes precio-aceptantes, y el equilibrio deja de ser eficiente \vertema{3.A.22} \vertema{3.A.23}. \textcite{Harberger1954Monopoly} midió por primera vez su coste.
+  \item La \concepto{teoría tradicional de la regulación}, de Jules \textcite{Dupuit1844Mesure} a Harold \textcite{Hotelling1938General}, Ronald \textcite{Coase1946Marginal} y Marcel \textcite{Boiteux1956Gestion}, busca los precios óptimos de un monopolio natural con un regulador benevolente e informado. En Estados Unidos se reguló durante buena parte del siglo XX con la tasa de rentabilidad, cuya distorsión mostraron \textcite{AverchJohnson1962Behavior}.
+  \item En los años 70, George \textcite{Stigler1971Theory} pone en duda la benevolencia del regulador (la \emph{captura}), y a finales de los 70 y en los 80 la \concepto{nueva economía de la regulación} incorpora la información asimétrica \parencites{LoebMagat1979Decentralized}{BaronMyerson1982Regulating}{LaffontTirole1986Using}{LaffontTirole1993Theory}. A la vez, las privatizaciones británicas traen el \emph{price cap} \parencite{Littlechild1983Regulation}, y la Unión Europea liberaliza en los 90 las industrias de red.
+  \item La \concepto{definición del mercado relevante} se formaliza con el test del monopolista hipotético de las directrices de concentraciones de Estados Unidos de 1982 \parencite{DOJ1982Merger}; la Comisión Europea lo recoge en su Comunicación de 1997, sustituida en 2024 \parencite{CE2024DefinicionMercado}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Qué es el poder de mercado, cómo se mide y por qué hay que corregirlo?
+  \item ¿En qué mercado se mide? ¿Cómo se define el mercado relevante?
+  \item Si el regulador lo sabe todo, ¿cuál es la regulación óptima? ¿Y si la empresa sabe más que él sobre sus costes y su esfuerzo?
+  \item ¿Qué cambia cuando hay varias empresas, y cómo se aplica todo esto en la regulación real?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición tiene 3 partes, en el orden del título:
+  \begin{itemize}
+  \item \concepto{I. Poder de mercado, mercado relevante y regulación con información completa} (\ref{sec:informacion-completa}): qué es el poder de mercado, en qué mercado se mide y qué haría un regulador que lo supiera todo;
+  \item \concepto{II. Desarrollos en presencia de información asimétrica} (\ref{sec:informacion-asimetrica}), el centro del título: qué hace el regulador cuando la empresa sabe más que él, desde la tasa de rentabilidad hasta el menú de contratos de \autor{Laffont} y \autor{Tirole}, el \emph{price cap} y la captura;
+  \item \concepto{III. Regulación con varias empresas y aplicaciones prácticas} (\ref{sec:varias-empresas}): cómo ayudan la comparación, la competencia por el mercado y el acceso a la red, y cómo se regula hoy en España y en Europa.
+  \end{itemize}
+  El orden va de menos a más realismo: primero se levanta solo el supuesto de precio-aceptación; después, también el de información.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.20. Poder de mercado y regulación óptima}\\[2pt]
+Introducción\\
+I. Poder de mercado, mercado relevante y regulación con información completa\\
+\hspace*{1.5em}1. Poder de mercado: $\mathcal{L}=(p-\mathrm{CMg})/p$, IHH, 3 ineficiencias\\
+\hspace*{1.5em}2. Mercado relevante: test del monopolista hipotético (SSNIP), celofán\\
+\hspace*{1.5em}3. Información completa: $p=\mathrm{CMg}$, $p=\mathrm{CMe}$, dos partes, \autor{Ramsey}-\autor{Boiteux}\\
+II. Desarrollos en presencia de información asimétrica\\
+\hspace*{1.5em}1. Tasa de rentabilidad: efecto \autor{Averch}-\autor{Johnson}\\
+\hspace*{1.5em}2. Selección adversa: \autor{Loeb}-\autor{Magat}, \autor{Baron}-\autor{Myerson}\\
+\hspace*{1.5em}3. Selección adversa y riesgo moral: menú de \autor{Laffont}-\autor{Tirole}\\
+\hspace*{1.5em}4. Precios máximos ($\mathrm{IPC}-X$) y esquemas intermedios\\
+\hspace*{1.5em}5. Compromiso y captura: trinquete, \autor{Stigler}, \autor{Peltzman}\\
+III. Regulación con varias empresas y aplicaciones prácticas\\
+\hspace*{1.5em}1. Competencia por comparación \hspace{1em}2. Competencia por el mercado\\
+\hspace*{1.5em}3. Acceso a la red y mercados de 2 lados \hspace{1em}4. Aplicaciones prácticas\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{7,5} (I.1, \tiempo{2,5}; I.2, \tiempo{2,5}; I.3, \tiempo{2,5}); II, \tiempo{11,5} (II.1, \tiempo{2}; II.2, \tiempo{2}; II.3, \tiempo{3,5}; II.4, \tiempo{2}; II.5, \tiempo{2}); III, \tiempo{7,5} (III.1, \tiempo{2}; III.2, \tiempo{1,5}; III.3, \tiempo{1,5}; III.4, \tiempo{2,5}), y conclusión, \tiempo{1}. El bloque~\ref{sec:informacion-asimetrica} pesa más porque esta exposición es la de referencia de los modelos de regulación con información asimétrica; la teoría tradicional (\ref{sec:regulacion-informacion-completa}) se resume. Los gráficos imprescindibles son el test del monopolista hipotético (gráfico~\ref{fig:ssnip}), la regulación del monopolio natural (gráfico~\ref{fig:regulacion-monopolio-natural}), el efecto \autor{Averch}-\autor{Johnson} (gráfico~\ref{fig:averch-johnson}), \autor{Baron}-\autor{Myerson} (gráfico~\ref{fig:baron-myerson}), el menú de contratos (gráfico~\ref{fig:menu-contratos}) y la escala de la potencia de los incentivos (gráfico~\ref{fig:escala-potencia}), que se va completando en la pizarra desde \ref{sec:coste-servicio} y en la que se coloca cada instrumento al estudiarlo. Se quedan escritos y recuadrados el índice de \autor{Lerner}, \eqref{eq:lerner}, todo el cante, y la condición del esfuerzo de \autor{Laffont} y \autor{Tirole}, \eqref{eq:laffont-tirole}, desde \ref{sec:laffont-tirole}. Las derivaciones van en los anexos y no se cantan. A lo largo del tema se retoma un ejemplo, \emph{Redes del Valle}, una distribuidora eléctrica ficticia, con números redondos.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Poder de mercado, mercado relevante\newline y regulación con información completa}\label{sec:informacion-completa}
+\minutos{7,5}
+
+\begin{notaopositor}
+En el cante: el índice de \autor{Lerner} como función clave (se queda en una esquina de la pizarra todo el tema), el IHH y las 3 ineficiencias de palabra (\tiempo{2,5}); el test del monopolista hipotético con su gráfico, aplicado a Redes del Valle, y la falacia del celofán (\tiempo{2,5}); y la teoría tradicional resumida con el gráfico de la regulación del monopolio natural y la regla de \autor{Ramsey}-\autor{Boiteux} escrita junto a la de \autor{Lerner} (\tiempo{2,5}). La tabla de supuestos y el esquema por etapas, como apoyo.
+\end{notaopositor}
+
+\begin{itemize}
+\item Empezamos por el problema que justifica la regulación. La \emph{conclusión anticipada} del bloque: el poder de mercado aleja al mercado del óptimo; se mide en un mercado que hay que definir antes; y un regulador con toda la información sobre costes y demanda sabría qué precios poner, aunque rara vez coincidirían con los de competencia perfecta.
+\item \emph{Qué supuesto se levanta}. Partimos de los 5 supuestos del primer teorema fundamental de la economía del bienestar (1TFEB) \vertema{3.A.22} (tabla~\ref{tab:supuestos-1tfeb}). En este bloque se levanta el~3: hay empresas que no son precio-aceptantes y fijan $p>\mathrm{CMg}$. En el bloque~\ref{sec:informacion-asimetrica} se levanta, además, el~5: el regulador sabe de los costes y del esfuerzo de la empresa menos que ella.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Supuestos del 1TFEB: la regulación del poder de mercado levanta el 3 y el 5}\label{tab:supuestos-1tfeb}
+\begin{tabular}{>{\centering\arraybackslash}m{0.6cm}>{\raggedright\arraybackslash}m{2.7cm}>{\raggedright\arraybackslash}m{4.4cm}>{\raggedright\arraybackslash}m{4.6cm}>{\centering\arraybackslash}m{2.1cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{N.º} & \textbf{Supuesto} & \textbf{Qué significa} & \textbf{Si se levanta} & \textbf{Dónde}\\
+\midrule
+\textcolor{tceemorado}{\textbf{1}} & \textbf{No saciedad local} & cerca de cualquier cesta hay otra que el consumidor prefiere, de modo que gasta toda su renta & un consumidor saciado puede dejar renta sin gastar y el equilibrio puede no ser eficiente & \vertema{3.A.22}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{2}} & \textbf{Mercados completos} & todo lo que afecta a la utilidad o a la producción tiene mercado y precio: no hay externalidades ni bienes públicos & \textcolor{tceerojo}{externalidades y bienes públicos} & \vertema{3.A.23}\\
+\addlinespace[0.3em]
+\rowcolor{tceesalmon}\textcolor{tceemorado}{\textbf{3}} & \textbf{Agentes precio-aceptantes} & nadie mueve los precios con sus decisiones (el supuesto de atomicidad de la competencia perfecta, \vertema{3.A.16}) & \textcolor{tceerojo}{\textbf{Se levanta}}: \emph{poder de mercado}; una empresa (o pocas), protegida por barreras de entrada, fija $p>\mathrm{CMg}$ y se produce menos de lo óptimo & bloque~\ref{sec:informacion-completa}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{4}} & \textbf{Precios comunes} & todos se enfrentan a los mismos precios: no hay impuestos que abran cuñas entre lo que paga el comprador y lo que cobra el vendedor & \textcolor{tceerojo}{exceso de gravamen} & \vertema{4.B.9}\\
+\addlinespace[0.3em]
+\rowcolor{tceesalmon}\textcolor{tceemorado}{\textbf{5}} & \textbf{Información perfecta y simétrica} & todos observan lo que entra en el intercambio: su calidad, su precio y lo que hace cada parte & \textcolor{tceerojo}{\textbf{Se levanta}}: la empresa regulada conoce sus costes y su esfuerzo, y el regulador no: \emph{selección adversa y riesgo moral} & bloque~\ref{sec:informacion-asimetrica}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de la tabla de supuestos del 1TFEB de \vertema{3.A.22} y de \textcite[§~16.C]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Poder de mercado: concepto, medida y coste social}\label{sec:poder-mercado}
+
+\paragraph{Concepto}
+
+\begin{itemize}
+\item Las directrices europeas de concentraciones entienden por \concepto{poder de mercado} la posibilidad de que una o varias empresas suban precios con beneficio, o recorten producción, calidad, variedad o innovación, respecto de lo que habría con competencia \parencite[apdo.~8]{CE2004Horizontales}. Analíticamente: sostener $p>\mathrm{CMg}$ en el tiempo sin quedarse sin ventas.
+\item Nace de levantar el supuesto~3 (tabla~\ref{tab:supuestos-1tfeb}): pocas empresas o productos diferenciados, protegidos por \concepto{barreras de entrada} \vertema{3.A.15}:
+  \begin{itemize}
+  \item \emph{legales}: patentes, licencias, concesiones;
+  \item \emph{estratégicas}: conductas de la empresa instalada que disuaden la entrada;
+  \item \emph{tecnológicas}: costes subaditivos, que hacen más barato producir con una sola empresa; es el \emph{monopolio natural} (\ref{sec:regulacion-informacion-completa}) \vertema{3.A.17}.
+  \end{itemize}
+\item El derecho de la competencia habla de \concepto{posición dominante}: una posición de fuerza económica que permite a una empresa impedir que se mantenga una competencia efectiva en el mercado de referencia, porque puede comportarse con un grado apreciable de independencia frente a sus competidores, sus clientes y los consumidores \parencite{TJUE1979HoffmannLaRoche}. Tenerla no es ilegal; abusar de ella, sí (art.~102 del Tratado de Funcionamiento de la Unión Europea, TFUE).
+  \begin{itemize}
+  \item Pensemos en Redes del Valle, la única distribuidora eléctrica de una comarca. Tiene todas las conexiones de la zona, y nadie tenderá otra red al lado porque duplicaría un coste enorme: su poder de mercado nace de la tecnología, no de su conducta.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Medida}
+
+\begin{itemize}
+\item \emph{Índice de \autor{Lerner}} \parencite{Lerner1934Concept}: el margen relativo sobre el coste marginal, que en el óptimo del monopolista es la inversa de la elasticidad de la demanda \vertema{3.A.17}:
+  \funcionclave[eq:lerner]{\mathcal{L}\equiv\frac{p-\mathrm{CMg}}{p}=\frac{1}{|\varepsilon_{q,p}|}}
+  Vale 0 en competencia perfecta y es mayor cuanto menos elástica es la demanda a la que se enfrenta la empresa. En el oligopolio de \autor{Cournot}, $\mathcal{L}_i=s_i/|\varepsilon_{Q,p}|$, con $s_i\in[0,1]$ la cuota de mercado \vertema{3.A.19}.
+\item \emph{Problemas del índice}:
+  \begin{itemize}
+  \item el coste marginal no se observa: hay que estimarlo;
+  \item un margen alto puede ser necesario para cubrir costes fijos (con economías de escala, $p=\mathrm{CMg}$ da pérdidas);
+  \item un margen bajo puede esconder poder de mercado si la empresa, sin rivales que la presionen, no minimiza costes (ineficiencia X).
+  \end{itemize}
+\item \emph{Medidas de estructura}, en un mercado ya definido (\ref{sec:mercado-relevante}):
+  \begin{itemize}
+  \item las cuotas de mercado, $s_i$;
+  \item la ratio de concentración de las $m$ mayores, $\mathrm{CR}_m=\sum_{i=1}^{m}s_i$;
+  \item el \concepto{índice de Herfindahl-Hirschman} (IHH; HHI en inglés), que tiene una justificación teórica: en \autor{Cournot}, el margen medio ponderado por las cuotas es $\sum_is_i\mathcal{L}_i=\mathrm{IHH}/(10.000\,|\varepsilon_{Q,p}|)$ \parencite{CowlingWaterson1976Price} \vertema{3.A.15} \vertema{3.A.19}:
+    \begin{equation}
+    \mathrm{IHH}\equiv\sum_i(100\,s_i)^2\in(0;\,10.000]. \label{eq:ihh}
+    \end{equation}
+  \end{itemize}
+\item \emph{Umbrales en la práctica}:
+  \begin{itemize}
+  \item una cuota del 50~\% o más hace presumir la posición dominante \parencite{TJUE1991AKZO}, y por debajo del 40~\% esta es, en general, improbable \parencite[punto~24]{CE2026DirectricesExclusion};
+  \item en las concentraciones, la Comisión ve improbables los problemas si el IHH resultante no llega a 1.000, si está entre 1.000 y 2.000 y sube menos de 250 puntos, o si supera 2.000 y sube menos de 150 \parencite[apdos.~19-20]{CE2004Horizontales};\footnote{Las directrices de concentraciones de Estados Unidos de 2023 presumen que una concentración reduce sustancialmente la competencia si deja un IHH mayor que 1.800 con un aumento mayor que 100 \parencite{DOJFTC2023Merger}. Las directrices europeas de 2004 están en revisión: el borrador se publicó en 2026 y la Comisión prevé adoptarlas en el cuarto trimestre de ese año \parencite{CE2026RevisionMerger}.}
+  \item los acuerdos verticales quedan exentos por categorías si ni el proveedor ni el comprador superan el 30~\% de su mercado de referencia \parencite[art.~3]{UE2022RECAV}, y los acuerdos de menor importancia (\emph{de minimis}) no restringen la competencia de forma sensible si la cuota conjunta no pasa del 10~\% entre competidores o la de cada parte del 15~\% entre no competidores \parencite[puntos~8-9]{CE2014DeMinimis}.
+  \end{itemize}
+  \begin{itemize}
+  \item Volvamos a Redes del Valle: con todo su mercado, $\mathrm{IHH}=100^2=10.000$, el máximo. Y la demanda de acceso a la red es muy inelástica: la luz se usa casi igual aunque el peaje suba. Sin regulación, su margen sería altísimo.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Por qué preocupa: las 3 ineficiencias}
+
+\begin{itemize}
+\item \emph{Asignativa}: con $p>\mathrm{CMg}$ se produce menos de lo eficiente, y se pierde el triángulo de \textcite{Harberger1954Monopoly}, $\mathrm{PIE}\approx\tfrac12\,\mathcal{L}\,p^Mq^M$ \vertema{3.A.17}. \autor{Harberger}, con datos de la industria manufacturera de Estados Unidos de 1924-1928, lo estimó por debajo del 0,1~\% de la renta nacional \parencite{Schmitz2012New}; \textcite{CowlingMueller1978Social} obtienen pérdidas muy superiores. Si las empresas gastan recursos en conseguir y defender la posición, se pierde además parte del rectángulo de beneficios: la \concepto{búsqueda de rentas} \parencites{Tullock1967Welfare}{Posner1975Social}.
+\item \emph{Productiva}: sin la presión de los rivales, la empresa no minimiza costes: la \concepto{ineficiencia X} \parencite{Leibenstein1966Allocative} \vertema{3.A.12}.
+\item \emph{Dinámica}: el efecto sobre la innovación es ambiguo. El monopolista puede financiar la investigación y la usa para proteger su posición \parencite{Schumpeter1942Capitalism}, pero gana menos que una empresa en competencia con la misma innovación, porque sustituye sus propios beneficios \parencite{Arrow1962Economic}; la evidencia apunta a una relación en U invertida entre competencia e innovación \parencite{AghionEtAl2005Competition}.
+\item Hay además un efecto \emph{distributivo}: parte del excedente del consumidor pasa a la empresa, lo que pesa en bienes esenciales como la electricidad o el agua.
+\end{itemize}
+
+\paragraph{Respuesta pública: defensa de la competencia y regulación}
+
+\begin{itemize}
+\item La respuesta depende del origen del poder de mercado \parencite{Braeutigam1989Optimal} (gráfico~\ref{fig:algoritmo-regulacion}):
+  \begin{itemize}
+  \item cuando nace de conductas o de fusiones y cabe la competencia, la respuesta es la \concepto{defensa de la competencia}, que interviene caso a caso y \emph{ex post}: prohíbe los cárteles (art.~101 del TFUE) y el abuso de posición dominante (art.~102) y vigila las concentraciones \parencites{UE2016TFUE}{UE2004Reglamento139} \vertema{3.B.39} \vertema{4.A.15};
+  \item si procede de la tecnología (monopolio natural) o de un cuello de botella que no se puede duplicar, la competencia no es viable, o no es deseable, y hace falta \concepto{regulación económica}: reglas \emph{ex ante} sobre los precios, la entrada, la calidad y el acceso.
+  \end{itemize}
+\item Las 2 se complementan y a veces chocan: cumplir la regulación sectorial no exime del derecho de la competencia. La Comisión multó en 2007 a Telefónica con 151,9 millones de euros por estrechar el margen entre su precio mayorista de acceso a la banda ancha y sus precios minoristas, y el Tribunal de Justicia lo confirmó en 2014 \parencite{TJUE2014Telefonica}.
+\item En España, la CNMC reúne las 2 funciones desde 2013 \parencite{Ley3_2013CNMC}; en la mayoría de los países hay organismos separados.
+\item Llamamos \concepto{regulación óptima} al conjunto de normas sobre precios, entrada y calidad que hace máximo el bienestar social (excedente de los consumidores más beneficio de la empresa, menos el coste de los fondos públicos que recibe) con 2 límites: que la empresa sobreviva y lo que el regulador alcanza a ver. A menos información, más distancia respecto del óptimo competitivo.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Esquema por etapas para la regulación del poder de mercado}\label{fig:algoritmo-regulacion}
+\grafico[0.9\textwidth]{algoritmo-regulacion}
+\fuente{elaboración propia a partir de \textcite{Braeutigam1989Optimal}.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Definición del mercado relevante}\label{sec:mercado-relevante}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Un precio solo se puede subir si los clientes no tienen adónde ir. Si les basta con pasarse a otro producto o comprar fuera de la zona, ser el único vendedor de algo no da poder. Por eso el primer paso, antes de calcular cuotas, es acotar el \concepto{mercado relevante} (\emph{de referencia}, en la terminología de la Comisión): los productos y las zonas que se disciplinan mutuamente \parencite{CE2024DefinicionMercado}.
+\item Ni muy estrecho (casi toda empresa sería un monopolio) ni muy amplio (todo es en algún grado sustitutivo de todo): debe recoger las interacciones principales entre las empresas, y depende del uso que se le vaya a dar \parencite[12-13]{Tirole1988Theory} \vertema{3.A.18}.
+\item Se usa en el control de concentraciones (para calcular las cuotas y los índices), en los casos de abuso de posición dominante (para saber si la hay), en los acuerdos (umbrales de exención) y en la regulación \emph{ex ante} de las telecomunicaciones, donde la Comisión recomienda qué mercados deben analizar los reguladores nacionales \parencite{UE2020RecomendacionMercados}.
+\end{itemize}
+
+\paragraph{b) Modelo: el test del monopolista hipotético}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El \concepto{mercado de producto} reúne los productos que los clientes consideran sustituibles por sus características, su precio y su uso; el \concepto{mercado geográfico}, la zona en la que las condiciones de competencia son suficientemente homogéneas y distintas de las de las zonas vecinas \parencite{CE2024DefinicionMercado}.
+\item La disciplina principal es la \emph{sustitución por el lado de la demanda}; la del lado de la \emph{oferta} (empresas que podrían pasar a producir el bien enseguida y sin grandes costes) solo cuenta si es tan inmediata como la de la demanda, y la competencia potencial se valora después, al juzgar el poder de mercado.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item El \concepto{test del monopolista hipotético}, o \concepto{SSNIP} (del inglés \emph{small but significant non-transitory increase in price}), nace en las directrices de concentraciones de Estados Unidos de 1982 \parencite{DOJ1982Merger}. La Comisión lo aplica así \parencite[punto~29 y nota~53]{CE2024DefinicionMercado}:
+  \begin{enumerate}
+  \item se parte del producto y de la zona de las empresas investigadas: el \emph{mercado candidato};
+  \item la pregunta: un monopolista hipotético de ese conjunto, ¿ganaría encareciéndolo de forma «pequeña, pero significativa y no transitoria», que suele ser un 5-10~\%?;
+  \item si la respuesta es \emph{no}, porque la clientela huye hacia otros productos o zonas, el conjunto se amplía con el sustitutivo más próximo y se vuelve a preguntar;
+  \item el mercado relevante es el \emph{menor} conjunto para el que la subida sí es rentable (gráfico~\ref{fig:ssnip}).
+  \end{enumerate}
+\item La subida es rentable si las ventas que se pierden no superan la \concepto{pérdida crítica}, $\ell^{c}=\tau/(\tau+\mathcal{L})$, con $\tau$ la subida relativa del precio y $\mathcal{L}$ el margen relativo inicial, el índice de \autor{Lerner} \eqref{eq:lerner} \parencite{HarrisSimons1989Focusing} (anexo~\ref{anexo:mercado-relevante}): con una subida del 5~\% y un margen del 20~\%, basta con perder menos del 20~\% de las ventas.
+  \begin{itemize}
+  \item Apliquémoslo a Redes del Valle. Mercado candidato: la distribución de electricidad en su comarca. Si un monopolista hipotético de esa red subiera los peajes un 5-10~\%, ¿cuántos clientes se desconectarían para producir su propia electricidad con placas y baterías, o pasarían la calefacción al gas? Muy pocos: vivir sin red cuesta todavía mucho más. La subida es rentable, y el mercado relevante es la \emph{distribución eléctrica en la comarca}; el geográfico es la zona de su red, porque nadie puede conectarse a la red de la comarca vecina.
+  \item La \emph{comercialización} de electricidad es otro mercado: si una comercializadora sube su precio un 5~\%, sus clientes se van a otra en pocos días. Es un mercado nacional con muchas empresas. El mercado relevante ya dice qué hay que regular: la red, no la venta.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Test del monopolista hipotético: el mercado candidato se amplía hasta que la subida es rentable}\label{fig:ssnip}
+\grafico[0.8\textwidth]{ssnip}
+\fuente{elaboración propia a partir de \textcite{DOJ1982Merger} y \textcite{CE2024DefinicionMercado}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \concepto{Falacia del celofán}. En 1956, el Tribunal Supremo de Estados Unidos absolvió a du Pont, que vendía cerca del 75~\% del celofán del país, porque el celofán competía con los demás envoltorios flexibles \parencite{SupremeCourt1956DuPont}. Pero la sustitución que se observaba era la que había a un precio ya de monopolio: el monopolista sube el precio hasta el tramo elástico de la demanda, donde $|\varepsilon_{q,p}|=1/\mathcal{L}>1$ \eqref{eq:lerner}, y allí ninguna subida adicional es rentable.\footnote{Con la pérdida crítica: a un precio de monopolio, $\mathcal{L}=1/|\varepsilon_{q,p}|$, y una subida $\tau$ hace perder en torno a $|\varepsilon_{q,p}|\,\tau$ de las ventas, más que la pérdida crítica $\tau/(\tau+\mathcal{L})$ para cualquier $\tau>0$. El test nunca sale rentable a los precios de un monopolista que ya maximiza su beneficio.} Si se aplica el test a los precios vigentes de una empresa dominante, el mercado sale más amplio de lo que es y la empresa parece no tener poder \parencite[nota~55]{CE2024DefinicionMercado}. Por eso, en los casos de abuso la referencia debería ser el precio competitivo; en las concentraciones, que miran al futuro, se usan los precios vigentes.
+\item Definir el mercado es el primer paso, no el diagnóstico: dentro de un mercado bien definido puede haber mucha competencia o ninguna.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Herramientas}: las elasticidades propia y cruzada de la demanda y los \emph{ratios de desvío} (qué parte de las ventas perdidas va a cada rival); la correlación de los precios, que es como mucho una condición necesaria \parencite{StiglerSherwin1985Extent}; los flujos de comercio, para el mercado geográfico \parencite{ElzingaHogarty1973Problem}; las características y los usos del producto, las encuestas a clientes y los costes de cambiar de proveedor.
+\item \emph{Productos de precio cero}: cuando el usuario no paga (un buscador, una red social), subir un 5~\% un precio nulo carece de sentido. La Comunicación admite entonces medir la reacción a un empeoramiento de la calidad, la \concepto{SSNDQ} (\emph{small but significant non-transitory decrease in quality}), que la Comisión ya aplicó en el caso Google Android \parencite[punto~30 y nota~54]{CE2024DefinicionMercado}.
+\item \emph{Mercados de 2 lados}: las plataformas reúnen a 2 grupos (compradores y vendedores, usuarios y anunciantes) que ganan con que el otro sea grande; la Comunicación permite definir un mercado para toda la plataforma o uno para cada lado, según la fuerza de esos efectos cruzados, y el precio cero de un lado no impide que haya mercado \parencite[puntos~94-98]{CE2024DefinicionMercado} (\ref{sec:acceso-red}).
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item La definición es binaria (un producto está dentro o fuera), y con productos diferenciados exagera o subestima la competencia: 2 marcas pueden estar en el mismo mercado y ser sustitutivos lejanos. Por eso se han propuesto medidas directas de la presión al alza sobre los precios que no necesitan definir el mercado \parencite{FarrellShapiro2010Antitrust}, que las directrices de Estados Unidos de 2023 usan junto al test \parencite{DOJFTC2023Merger}.
+\item Aun así, sigue siendo el punto de partida de la práctica: delimitado el mercado, se mide el poder y se decide si basta la defensa de la competencia o hace falta regular, que es lo que vemos a continuación.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Regulación óptima con información completa}\label{sec:regulacion-informacion-completa}
+
+\begin{itemize}
+\item Una vez definido el mercado y medido el poder, ¿qué haría un regulador \emph{benevolente}, que maximiza el excedente total, e \emph{informado}, al que no se le escapa ni la tecnología de la empresa ni la disposición a pagar de los clientes? Es la \concepto{teoría tradicional de la regulación}, pensada para el monopolio natural \vertema{3.A.17}.
+\end{itemize}
+
+\paragraph{El monopolio natural}
+
+\begin{itemize}
+\item Un mercado es un \concepto{monopolio natural} si la función de costes es \concepto{subaditiva} en la producción relevante: producirlo todo en una sola empresa es más barato que repartirlo entre varias, $C\big(\sum_jq_j\big)<\sum_jC(q_j)$ \parencite{Baumol1977Proper}. Las economías de escala en todo el tramo son suficientes, pero no necesarias.
+\item Es \emph{sostenible} si existe un precio que cubre costes atendiendo toda la demanda y al que ningún entrante gana vendiendo una parte; si no lo es, la regulación tiene que ocuparse también de la entrada \parencites{PanzarWillig1977Free}{BaumolBaileyWillig1977Weak}.
+\item Aquí está el dilema: dejar un único productor ahorra costes, pero, si nadie lo controla, cobrará como un monopolista. Regular es buscar el punto medio entre la \emph{eficiencia asignativa} y que la empresa sea \emph{financieramente viable}.
+\end{itemize}
+
+\paragraph{Primer óptimo y segundos óptimos}
+
+\begin{itemize}
+\item \concepto{Primer óptimo} (\emph{first best}): $p=\mathrm{CMg}$ \parencite{Hotelling1938General}.\footnote{Hablamos de primer, segundos y terceros óptimos, y no de óptimos «de primer y segundo orden», para no confundirlos con las condiciones de primer y segundo orden de los problemas de optimización. El tercer óptimo de la regulación (\ref{sec:informacion-asimetrica}) es lo que la teoría de los contratos llama \emph{óptimo restringido}: el mejor resultado posible con las restricciones de información \vertema{3.A.13} \vertema{3.A.22}.} Si la demanda corta en el tramo decreciente del coste medio, $\mathrm{CMg}<\mathrm{CMe}$ y la empresa pierde $(\mathrm{CMe}-\mathrm{CMg})\,q$ (gráfico~\ref{fig:regulacion-monopolio-natural}), que hay que cubrir con una subvención. Esa subvención sale de impuestos que distorsionan, de modo que cada euro transferido le supone a la sociedad $1+\lambda$, con $\lambda>0$ el \concepto{coste sombra de los fondos públicos}; además, una empresa con las pérdidas cubiertas pierde interés en abaratar.
+\item \concepto{Segundos óptimos} (\emph{second best}), que cubren los costes sin subvención \vertema{3.A.22}:
+  \begin{itemize}
+  \item \emph{precio igual al coste medio}: beneficio nulo y la mayor cantidad sin pérdidas, con una pérdida de eficiencia pequeña;
+  \item \emph{tarifa en dos partes}, $T(q)=A+p\,q$ con $A=\mathrm{CF}/n$ y $p=\mathrm{CMg}$ \parencite{Coase1946Marginal}: eficiente en el margen mientras la cuota fija no expulse a nadie \parencite{Oi1971Disneyland};
+  \item \emph{tarifas de punta y valle}: quien usa la capacidad en las horas punta paga, además del coste de operación, el coste de la capacidad, que se dimensiona para la punta; en el valle solo se paga el de operación \parencites{Boiteux1949Tarification}{Steiner1957Peak};
+  \item \emph{precios de \autor{Ramsey}-\autor{Boiteux}}, para el monopolio natural multiproducto, que maximizan el excedente total con beneficio no negativo \parencites{Ramsey1927Contribution}{Boiteux1956Gestion}:
+    \begin{equation}
+    \frac{p_i-\mathrm{CMg}_i}{p_i}=\frac{\lambda}{1+\lambda}\cdot\frac{1}{|\varepsilon_{q_i,p_i}|}\qquad\forall i. \label{eq:ramsey-boiteux}
+    \end{equation}
+    Es la regla de \autor{Lerner} \eqref{eq:lerner} \emph{amortiguada}: el número de \autor{Ramsey}, $\lambda/(1+\lambda)\in[0,1)$, crece con $\lambda$, el multiplicador de la restricción presupuestaria; con $\lambda=0$, $p_i=\mathrm{CMg}_i$, y si $\lambda\to\infty$, cada precio sería el de monopolio. Se carga más margen donde la demanda es menos elástica.
+  \end{itemize}
+  \begin{itemize}
+  \item Volvamos a Redes del Valle. Su red cuesta unos 90 millones de euros al año, casi todo fijo, y llevar un kilovatio hora más por un cable ya tendido apenas cuesta: con $p=\mathrm{CMg}$ perdería los 90 millones. La factura eléctrica española usa la solución de \autor{Coase}: un \emph{término de potencia}, fijo según la potencia contratada, y un \emph{término de energía} por kilovatio hora; y los peajes son más caros en las horas punta, para las que se dimensiona la red \parencite{CNMC2020Circular3}.
+  \end{itemize}
+\item La lógica de \autor{Ramsey} está también en los cánones ferroviarios: los de ADIF cubren el coste directamente imputable a cada circulación y añaden recargos, según lo que pueda soportar cada segmento del mercado, hasta recuperar el coste total \parencites{BOE2015LSF}{UE2012Directiva34}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Regulación del monopolio natural: pérdidas con $p=\mathrm{CMg}$ y beneficio nulo con $p=\mathrm{CMe}$}\label{fig:regulacion-monopolio-natural}
+\grafico[0.6\textwidth]{regulacion-monopolio-natural}
+\fuente{elaboración propia a partir de \textcite{Braeutigam1989Optimal}.}
+\end{figure}
+
+\paragraph{Valoración: lo que exige al regulador}
+
+\begin{itemize}
+\item Todas estas reglas suponen que el regulador conoce los costes (y, para \autor{Ramsey}-\autor{Boiteux}, las elasticidades) y que solo le mueve el bienestar. Pero la información está en manos de la empresa regulada, que tiene incentivos a declarar costes altos y, si se le cubren, a no reducirlos.
+\item Además, con otras distorsiones en la economía, estos precios dejan de ser los segundos óptimos \parencite{LipseyLancaster1956General} \vertema{3.A.22}. Por ejemplo, si el monopolista contamina, romper el monopolio sin gravar la contaminación puede reducir el bienestar: el monopolio, al producir menos, contamina menos \parencite{Buchanan1969External}.
+\item \emph{Recapitulación}: el poder de mercado aleja al mercado del óptimo; se mide en un mercado relevante que hay que delimitar; y, con información completa, el regulador sabe qué precios fijar. Pasamos al segundo bloque, que levanta el supuesto de información.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Desarrollos en presencia de información asimétrica}\label{sec:informacion-asimetrica}
+\minutos{11,5}
+
+\begin{notaopositor}
+En el cante: el marco de agencia y la tabla de lo que observa el regulador como apoyo, y \autor{Averch}-\autor{Johnson} con su gráfico (\tiempo{2}); \autor{Loeb}-\autor{Magat} de palabra y \autor{Baron}-\autor{Myerson} con su gráfico y el ejemplo (\tiempo{2}); \autor{Laffont}-\autor{Tirole} con la condición del esfuerzo recuadrada, la tabla del ejemplo como apoyo y el menú a mano (\tiempo{3,5}); la regla del \emph{price cap} y su senda (\tiempo{2}); y el compromiso y la captura, con la condición de \autor{Peltzman} (\tiempo{2}). La escala de la potencia (gráfico~\ref{fig:escala-potencia}) se va completando en la franja de abajo de la pizarra: cada instrumento se coloca en ella al estudiarlo.
+\end{notaopositor}
+
+\begin{itemize}
+\item Una vez vista la regulación de un regulador que lo sabe todo, pasamos a la de uno que sabe menos que la empresa. La \emph{conclusión anticipada} del bloque: con información asimétrica no se puede alcanzar el primer óptimo; para que la empresa eficiente no se haga pasar por ineficiente hay que dejarle una renta informativa, y la regulación óptima equilibra los \emph{incentivos} a reducir costes con la \emph{extracción de esas rentas}.
+\item «Más sabe el loco en su casa que el cuerdo en la ajena», dice el refrán: la empresa regulada sabe de sus costes más que el regulador más sabio, y toda la regulación con información asimétrica gira en torno a eso.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El problema de información y la regulación por coste del servicio}\label{sec:coste-servicio}
+
+\paragraph{El problema de información}
+
+\begin{itemize}
+\item Se levanta el supuesto~5 (tabla~\ref{tab:supuestos-1tfeb}). La \concepto{nueva economía de la regulación} trata la relación como una de \emph{agencia}: el regulador es el principal y la empresa, el agente \vertema{3.A.13}. La información asimétrica toma 2 formas:
+  \begin{itemize}
+  \item \concepto{selección adversa}: la empresa conoce su tecnología, su tipo de coste, antes de que se fije la regulación, y puede declarar un coste mayor que el real;
+  \item \concepto{riesgo moral}: el esfuerzo de los directivos por abaratar costes no se ve, de modo que un coste elevado puede venir de una tecnología peor o de la desidia.
+  \end{itemize}
+\item La \concepto{renta informativa} es el pago extra que evita que la empresa eficiente se haga pasar por ineficiente. Responde a la misma lógica que la discriminación de segundo grado \vertema{3.A.17} y el diseño de mecanismos: el \emph{principio de revelación} permite limitarse a contratos en los que cada tipo prefiere decir la verdad, sujetos por tipo a una restricción de participación ($\mathrm{PC}_i$) y a otra de compatibilidad de incentivos ($\mathrm{IC}_i$) \vertema{3.A.14}.
+\item Los resultados son \emph{terceros óptimos} (\ref{sec:regulacion-informacion-completa}), y los modelos se ordenan por lo que el regulador observa (tabla~\ref{tab:que-observa}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La regulación con información asimétrica: qué observa el regulador en cada modelo}\label{tab:que-observa}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\raggedright\arraybackslash}m{3.9cm}>{\raggedright\arraybackslash}m{3.6cm}>{\raggedright\arraybackslash}m{3.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Modelo} & \textbf{Qué observa el regulador} & \textbf{Incentivo a reducir costes} & \textbf{Rentas de la empresa}\\
+\midrule
+Tasa de rentabilidad (\ref{sec:coste-servicio}) & beneficio contable y capital & bajo (salvo el desfase) & bajas; sobrecapitaliza\\
+\addlinespace[0.3em]
+\autor{Loeb}-\autor{Magat} (\ref{sec:seleccion-adversa-regulacion}) & la demanda & máximo & todo el excedente\\
+\addlinespace[0.3em]
+\autor{Baron}-\autor{Myerson} (\ref{sec:seleccion-adversa-regulacion}) & la distribución de los costes & no hay esfuerzo & renta informativa\\
+\addlinespace[0.3em]
+\autor{Laffont}-\autor{Tirole} (\ref{sec:laffont-tirole}) & el coste realizado, no el esfuerzo & alto en el eficiente & renta informativa\\
+\addlinespace[0.3em]
+\emph{Price cap} (\ref{sec:price-cap}) & nada del coste durante el periodo & máximo & altas si $X$ es bajo\\
+\addlinespace[0.3em]
+\emph{Yardstick} (\ref{sec:yardstick}) & los costes de las demás & máximo & bajas\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{LaffontTirole1993Theory} y \textcite{ArmstrongSappington2007Recent}.}
+\end{table}
+
+\paragraph{Regulación de la tasa de rentabilidad: efecto \autor{Averch}-\autor{Johnson}}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item La forma más antigua de regular sin conocer los costes eficientes es la \concepto{regulación por coste del servicio} o \concepto{de la tasa de rentabilidad}: el regulador fija precios que cubren los costes de operación contables y dan al capital invertido (la \emph{base de activos}) una rentabilidad «justa». Dominó en Estados Unidos durante buena parte del siglo XX. Su atractivo es informativo: el regulador no conoce los costes eficientes, pero sí datos contables que se auditan con facilidad, el beneficio y el capital.
+\item La pregunta de \textcite{AverchJohnson1962Behavior}: ¿qué distorsión crea limitar la rentabilidad del capital?
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item Un monopolista con función de producción $q=F(z_K,z_L)$, demanda inversa $p(q)$ y precios de los factores $w_K$ (coste del capital) y $w_L$.
+\item El regulador le permite una rentabilidad máxima $s$ sobre el capital,\footnote{$s$ es aquí la tasa de rentabilidad permitida, como en la fuente; no es la cuota de mercado $s_i$ de \ref{sec:poder-mercado}.} mayor que su coste, $s>w_K$ (si no, la empresa no invertiría), y menor que la que obtendría sin regular (si no, no sería una restricción).
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item La empresa resuelve
+  \begin{equation}
+  \optim{\max}{z_K,z_L}{B=p(q)\,q-w_Kz_K-w_Lz_L}{q=F(z_K,z_L)\\ \dfrac{p(q)\,q-w_Lz_L}{z_K}\leq s}
+  \end{equation}
+  La restricción equivale a $B\leq(s-w_K)\,z_K$: \emph{el beneficio permitido crece con el capital}.
+\item \emph{Gráficamente}, en el plano $(z_K,B)$ (gráfico~\ref{fig:averch-johnson}), el beneficio sin restricción tiene forma de U invertida, porque en algún momento la productividad marginal del capital cae mientras su coste sigue constante, con un máximo en $z_K^{*}$. El beneficio permitido es la recta $(s-w_K)\,z_K$. Si $z_K^{*}$ queda por encima de la recta, no está permitido, y la empresa elige el mayor beneficio permitido, en $z_K'>z_K^{*}$: \emph{sobrecapitaliza}.
+\item \emph{Analíticamente}, con la restricción activa y su multiplicador $0<\mu<1$ (anexo~\ref{anexo:aj}):
+  \begin{equation}
+  \mathrm{RMST}_{LK}=\frac{\mathrm{PMg}_L}{\mathrm{PMg}_K}=\frac{w_L}{w_K-\frac{\mu}{1-\mu}\,(s-w_K)}>\frac{w_L}{w_K}. \label{eq:averch-johnson}
+  \end{equation}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Regulación de la tasa de rentabilidad y efecto \autor{Averch}-\autor{Johnson}}\label{fig:averch-johnson}
+\grafico[0.55\textwidth]{averch-johnson}
+\fuente{elaboración propia a partir de \textcite{AverchJohnson1962Behavior}.}
+\end{figure}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item Es el \concepto{efecto \autor{Averch}-\autor{Johnson}}: como cada euro de capital agranda la base sobre la que se le deja ganar, la empresa usa más capital del que minimizaría costes, igual que si el capital le resultara más barato. El resultado es \emph{ineficiencia productiva} (costes y precios por encima de los de la combinación eficiente), aunque su beneficio esté vigilado y acotado.
+\item Tampoco le interesa abaratar: cualquier ahorro acabará rebajando su tarifa cuando el regulador la vuelva a calcular. En la escala de la potencia de los incentivos (gráfico~\ref{fig:escala-potencia}), la tasa de rentabilidad está en el extremo de la baja potencia.
+  \begin{itemize}
+  \item Volvamos a Redes del Valle. Si la CNMC le reconoce un 6,58~\% sobre sus activos y su capital le cuesta menos, le conviene cambiar un transformador antes de tiempo (un activo, que se retribuye) en lugar de alargar su vida con más mantenimiento (un gasto, que solo se le reembolsa): el sesgo hacia el capital del modelo.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Desfase regulatorio}: si las tarifas se revisan cada pocos años, entre una revisión y otra la empresa se queda con lo que ahorra, y eso le devuelve algo de incentivo a reducir costes \parencites{BaumolKlevorick1970Input}{Joskow1974Inflation}.
+\item \emph{Calidad}: parte de la sobreinversión puede ser más calidad o seguridad de suministro, que el regulador valora pero no puede exigir directamente.
+\end{itemize}
+
+\subparagraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Los primeros contrastes, con eléctricas de Estados Unidos, confirmaron la sobrecapitalización \parencites{Spann1974Rate}{Courville1974Regulation}; la evidencia posterior es mixta, en parte porque los reguladores vigilaban más el nivel de los precios que la tasa de rentabilidad \parencite{Joskow1974Inflation}.
+\item En España, la retribución de las redes de electricidad y de gas aplica una \emph{tasa de retribución financiera} al valor de los activos regulados \parencite{CNMC2019Circular2}: el 6,58~\% en la electricidad para 2026-2031 \parencite{CNMC2025Circular9} y el 6,46~\% en el transporte y la regasificación de gas para 2027-2032 \parencite{CNMC2026Circular5}. Las tarifas de la corriente de tracción que ADIF cobra a las empresas ferroviarias se fijan a partir de sus costes, con supervisión de la CNMC \parencite{CNMC2018TarifasAdif}.
+\end{itemize}
+
+\subparagraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{Ventajas}: necesita poca información (datos contables auditables) y da a la empresa seguridad de que recuperará sus inversiones hundidas, lo que favorece la inversión en redes.
+\item \emph{Inconvenientes}:
+  \begin{itemize}
+  \item la sobrecapitalización;
+  \item regula la remuneración contable del capital, que no es el beneficio económico;
+  \item no da incentivos a reducir costes ni a innovar, salvo por el desfase regulatorio;
+  \item la empresa tiene incentivos a exagerar sus costes en cada revisión.
+  \end{itemize}
+\item Por eso los reguladores la combinan con incentivos: la nueva metodología de la CNMC para la distribución eléctrica compara de forma conjunta la inversión y los gastos de operación (enfoque TOTEX) con unos costes de referencia, para quitar el sesgo hacia el capital \parencite{CNMC2025Circular8}. Para ir más allá hay que preguntarse cuál es el mejor contrato cuando el regulador no conoce los costes, que es lo que hacen los modelos que siguen.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Selección adversa: \autor{Loeb}-\autor{Magat} y \autor{Baron}-\autor{Myerson}}\label{sec:seleccion-adversa-regulacion}
+
+\begin{itemize}
+\item La tasa de rentabilidad no le pregunta nada a la empresa. Los 2 modelos que siguen son los primeros que tratan la regulación como un problema de información: el regulador no conoce el coste de la empresa y diseña un mecanismo para que lo revele.
+\end{itemize}
+
+\paragraph{Mecanismo de \autor{Loeb} y \autor{Magat} (1979)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Si el problema es que la empresa no quiere revelar su coste, ¿se puede diseñar una regla que no lo necesite? \textcite{LoebMagat1979Decentralized} responden que sí, si el regulador conoce la demanda.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item El regulador conoce la demanda inversa $p(q)$ y, con ella, el valor bruto que los consumidores dan a la cantidad $q$, $S(q)\equiv\int_0^q p(x)\,dx$, con $S'(q)=p(q)$; no conoce el coste $C(q)$. Las transferencias no tienen coste social.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item La empresa fija libremente el precio y recibe, además de sus ventas, una subvención igual al excedente del consumidor que genera, $S(q)-p(q)\,q$. Su beneficio es entonces
+  \[
+  p(q)\,q+\big[S(q)-p(q)\,q\big]-C(q)=S(q)-C(q)=\mathrm{ET}(q),
+  \]
+  el excedente total: al maximizarlo elige $p(q)=\mathrm{CMg}(q)$, la cantidad eficiente, cualquiera que sea su coste y sin revelarlo.
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item Convierte a la empresa en \emph{reclamante residual} de todo el excedente y así alinea sus intereses con los sociales: es un mecanismo de \autor{Groves}, en el que actuar de forma eficiente es una estrategia dominante \parencite{LaffontMartimort2002Theory} \vertema{3.A.14} \vertema{3.A.23}.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item Logra la eficiencia, pero a cambio el regulador tiene que conocer la demanda y la empresa se embolsa todo el excedente: solo tiene sentido si financiar transferencias no cuesta nada y el reparto da igual. Se puede corregir subastando el derecho a recibir el esquema, de modo que la puja devuelva la renta al Estado \vertema{3.A.14}.
+\item El problema, por tanto, no es la eficiencia, sino las rentas: el monopolista se queda con todo el excedente. El modelo siguiente hace costosas esas rentas y las recorta, a cambio de algo de eficiencia.
+\end{itemize}
+
+\paragraph{Modelo de \autor{Baron} y \autor{Myerson} (1982)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item En \textcite{BaronMyerson1982Regulating} la regulación es un problema de selección adversa en el que el regulador pondera el beneficio empresarial por debajo del excedente de los consumidores. Ceder rentas tiene, pues, un coste, y hay que decidir cuánta eficiencia se sacrifica para reducirlas.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item La empresa tiene un coste marginal constante que solo ella conoce: bajo, $\underline{\beta}$, con probabilidad $\nu$, o alto, $\overline{\beta}$, con probabilidad $1-\nu$, con $\Delta\beta\equiv\overline{\beta}-\underline{\beta}>0$. La distribución es conocimiento común.
+\item A cada tipo se le propone un par cantidad-pago, $(\underline{q},\underline{t})$ y $(\overline{q},\overline{t})$, y su renta es lo que cobra menos lo que gasta: $\underline{U}=\underline{t}-\underline{\beta}\,\underline{q}$ y $\overline{U}=\overline{t}-\overline{\beta}\,\overline{q}$.
+\item El bienestar es $S(q)-t+\alpha\,U$, con $\alpha\in[0,1)$ el peso del beneficio de la empresa: un euro de renta resta $1-\alpha$ de bienestar.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item El regulador maximiza el bienestar esperado con una restricción de participación y otra de compatibilidad de incentivos por tipo:
+  \begin{equation}
+  \optim{\max}{\underline{q},\overline{q},\underline{U},\overline{U}}{\nu\big[S(\underline{q})-\underline{\beta}\,\underline{q}-(1-\alpha)\,\underline{U}\big]+(1-\nu)\big[S(\overline{q})-\overline{\beta}\,\overline{q}-(1-\alpha)\,\overline{U}\big]}{\underline{U}\geq\overline{U}+\Delta\beta\,\overline{q}\quad(\mathrm{IC}_1)\\ \overline{U}\geq\underline{U}-\Delta\beta\,\underline{q}\quad(\mathrm{IC}_2)\\ \underline{U}\geq 0,\quad \overline{U}\geq 0\quad(\mathrm{PC}_1,\ \mathrm{PC}_2)}
+  \end{equation}
+  La empresa eficiente siempre puede elegir el contrato de la ineficiente y producir $\overline{q}$ con un coste $\Delta\beta$ menor por unidad: de ahí $\mathrm{IC}_1$.
+\item En el óptimo solo aprietan la compatibilidad de incentivos de la eficiente y la participación de la ineficiente (anexo~\ref{anexo:baron-myerson}):
+  \begin{equation}
+  \overline{U}=0,\qquad \underline{U}=\Delta\beta\,\overline{q};\qquad\qquad p(\underline{q})=\underline{\beta},\qquad p(\overline{q})=\overline{\beta}+(1-\alpha)\,\frac{\nu}{1-\nu}\,\Delta\beta>\overline{\beta}. \label{eq:baron-myerson}
+  \end{equation}
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{No hay distorsión arriba}: la empresa eficiente produce la cantidad eficiente.
+\item \emph{Distorsión abajo}: a la ineficiente se le encarga menos cantidad, con un precio superior a su coste marginal, porque cada unidad suya obliga a ceder $\Delta\beta$ más de renta a la eficiente. El recargo sube con la probabilidad de la eficiente ($\nu$), con la diferencia de costes ($\Delta\beta$) y cuanto menos cuenta el beneficio ($\alpha$); si $\alpha=1$, las rentas no cuestan nada y la distorsión desaparece.
+\item La regulación óptima acepta \emph{ineficiencia asignativa} para \emph{extraer rentas}: es el resultado de la discriminación de segundo grado \vertema{3.A.17} y de la autoselección \vertema{3.A.13}, ahora con el regulador como principal.
+  \begin{itemize}
+  \item Volvamos a Redes del Valle, ahora con un coste por unidad de 20 o de 40 euros (con la misma probabilidad), una demanda $p(q)=100-q$ y un regulador que no valora su beneficio ($\alpha=0$). Con información completa produciría 80 si es eficiente y 60 si no. Con información asimétrica, a la ineficiente se le piden 40 al precio de 60 \eqref{eq:baron-myerson}; la eficiente produce 80 y se queda una renta de $20\times 40=800$, en lugar de los $20\times 60=1.200$ que tendría sin la distorsión (gráfico~\ref{fig:baron-myerson}).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\autor{Baron}-\autor{Myerson} con 2 tipos: no hay distorsión arriba y la ineficiente produce menos para recortar la renta informativa}\label{fig:baron-myerson}
+\grafico[0.6\textwidth]{baron-myerson}
+\fuente{elaboración propia a partir de \textcite{BaronMyerson1982Regulating} y \textcite[cap.~2]{LaffontMartimort2002Theory}.}
+\end{figure}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item Con un continuo de tipos, el regulador fija el precio igual a un \emph{coste virtual}, el coste más un recargo informativo que crece con el peso de los tipos más eficientes \parencite{BaronMyerson1982Regulating}, como el valor virtual de la subasta óptima \vertema{3.A.14}.
+\item Si los tipos eficientes son muy probables, puede convenir \emph{cerrar} la ineficiente para no dejar renta: en el ejemplo, si $\nu\geq 3/4$.
+\end{itemize}
+
+\subparagraph{d) Valoración}
+
+\begin{itemize}
+\item Supone que el regulador puede comprometerse con el contrato y que el coste solo depende de la tecnología: la empresa no puede esforzarse para reducirlo. Si puede, el coste observado mezcla suerte y esfuerzo, que es lo que añaden \autor{Laffont} y \autor{Tirole}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Selección adversa y riesgo moral: el menú de contratos de \autor{Laffont} y \autor{Tirole}}\label{sec:laffont-tirole}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{LaffontTirole1986Using} aplican la teoría de la agencia a la regulación y a la contratación pública: el regulador (principal) contrata con una empresa (agente) que sabe más que él sobre su eficiencia \emph{y} cuyo esfuerzo no ve \parencite{LaffontTirole1993Theory}. Es el modelo canónico de la nueva economía de la regulación.
+\item Añade a \autor{Baron} y \autor{Myerson} 2 cosas: el \emph{riesgo moral} (la empresa puede bajar su coste esforzándose) y una razón para que las rentas cuesten: cada euro transferido se financia con impuestos que distorsionan.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Un proyecto de tamaño dado (la red que hay que mantener) de valor social $S$. El coste observado es $C=\beta-e$, con $\beta$ la eficiencia intrínseca de la empresa (\emph{información oculta}: baja, $\underline{\beta}$, con probabilidad $\nu$, o alta, $\overline{\beta}$; $\Delta\beta\equiv\overline{\beta}-\underline{\beta}$) y $e$ el esfuerzo de sus gestores en reducir costes (\emph{acción oculta}), que les cuesta $\psi(e)$, creciente y convexa ($\psi'>0$, $\psi''>0$).
+\item El regulador observa $C$, pero no $\beta$ ni $e$: no sabe si un coste bajo se debe a la suerte de ser eficiente o al esfuerzo. Reembolsa el coste y paga una transferencia neta $t$, que cuesta a la sociedad $1+\lambda$ por euro, con $\lambda>0$ el coste sombra de los fondos públicos.\footnote{Es la misma $\lambda$ de la regla de \autor{Ramsey}-\autor{Boiteux} \eqref{eq:ramsey-boiteux}: el valor social de un euro más de presupuesto. Con fondos públicos costosos, \textcite[cap.~3]{LaffontTirole1993Theory} llegan al mismo número de \autor{Ramsey}, $\lambda/(1+\lambda)$.}
+\item La empresa obtiene $U=t-\psi(e)$ y acepta el contrato si $U\geq 0$. El bienestar es el valor del proyecto menos su coste social, más la renta de la empresa; cada euro de renta cuesta $\lambda$, así que el regulador quiere dejar la menor posible:
+  \[
+  W=S-(1+\lambda)\,(C+t)+U=S-(1+\lambda)\big[\beta-e+\psi(e)\big]-\lambda\,U.
+  \]
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Información completa}: el regulador exige a cada tipo el esfuerzo que minimiza $\beta-e+\psi(e)$, $\psi'(e^{*})=1$ (el último euro de desutilidad del esfuerzo ahorra un euro de coste), y no deja rentas: $U=0$.
+\item \emph{Información asimétrica}: la empresa eficiente puede llegar al coste de la ineficiente, $\overline{C}=\overline{\beta}-\overline{e}$, esforzándose $\Delta\beta$ menos. Para que no lo haga, hay que dejarle la \concepto{renta informativa}, que \emph{crece con el esfuerzo que se pide a la ineficiente}:
+  \[
+  \Phi(\overline{e})\equiv\psi(\overline{e})-\psi(\overline{e}-\Delta\beta),\qquad \Phi'(e)=\psi'(e)-\psi'(e-\Delta\beta)>0.
+  \]
+\item El regulador resuelve
+  \begin{equation}
+  \optim{\max}{\underline{e},\overline{e},\underline{U},\overline{U}}{\nu\big[S-(1+\lambda)\big(\underline{\beta}-\underline{e}+\psi(\underline{e})\big)-\lambda\underline{U}\big]+(1-\nu)\big[S-(1+\lambda)\big(\overline{\beta}-\overline{e}+\psi(\overline{e})\big)-\lambda\overline{U}\big]}{\underline{U}\geq\overline{U}+\Phi(\overline{e})\quad(\mathrm{IC}_1)\\ \overline{U}\geq 0\quad(\mathrm{PC}_2)}
+  \end{equation}
+  En el óptimo, $\overline{U}=0$ y $\underline{U}=\Phi(\overline{e})$, y (anexo~\ref{anexo:laffont-tirole})
+  \funcionclave[eq:laffont-tirole]{\psi'(\underline{e})=1,\qquad \psi'(\overline{e})=1-\frac{\lambda}{1+\lambda}\cdot\frac{\nu}{1-\nu}\cdot\Phi'(\overline{e})<1}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{No hay distorsión arriba}: la eficiente hace el esfuerzo óptimo y se queda una renta informativa.
+\item \emph{Distorsión abajo}: a la ineficiente se le pide \emph{menos} esfuerzo del óptimo, y por eso tiene más coste, porque cada unidad de esfuerzo que se le exige aumenta la renta de la eficiente. Cuanto mayores son $\lambda$ y $\nu$, mayor es la distorsión; con $\lambda=0$ desaparece.
+\item El dilema de la regulación con información asimétrica es entre \concepto{incentivos y extracción de rentas}: dar más incentivos al esfuerzo deja más renta, y recortar la renta exige sacrificar eficiencia productiva. Es el mismo resultado que \autor{Baron} y \autor{Myerson} \eqref{eq:baron-myerson} y que la discriminación de segundo grado \vertema{3.A.17}.
+\item «El que algo quiere, algo le cuesta», dice el refrán: si el regulador quiere que la empresa eficiente se esfuerce y no se haga pasar por ineficiente, tiene que pagarle una renta.
+  \begin{itemize}
+  \item Sigamos con Redes del Valle, ahora con su coste anual de mantener la red: 100 millones de euros si es eficiente o 110 si no, con la misma probabilidad ($\nu=\tfrac12$), $\psi(e)=e^2/40$ y $\lambda=0{,}25$. Con información completa, $\psi'(e)=e/20=1$: cada tipo se esfuerza $e^{*}=20$, la eficiente cuesta 80 y la ineficiente 90, y a las 2 se les paga $\psi(20)=10$ por el esfuerzo. Con información asimétrica, $\Phi(e)=e/2-2{,}5$, $\Phi'=\tfrac12$ y $\psi'(\overline{e})=1-0{,}2\cdot1\cdot0{,}5=0{,}9$: se pide $\overline{e}=18$ a la ineficiente, que cuesta 92, y la eficiente se queda una renta de $\Phi(18)=6{,}5$ millones (tabla~\ref{tab:ejemplo-laffont-tirole}).
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Redes del Valle con el modelo de \autor{Laffont} y \autor{Tirole} (millones de euros al año)}\label{tab:ejemplo-laffont-tirole}
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.2cm}>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{2.2cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \multicolumn{2}{c}{\textbf{Información completa}} & \multicolumn{2}{c}{\textbf{Información asimétrica}}\\
+\rowcolor{tceeazulpalido} & \textbf{Eficiente} & \textbf{Ineficiente} & \textbf{Eficiente} & \textbf{Ineficiente}\\
+\midrule
+Esfuerzo, $e$ & 20 & 20 & 20 & \textcolor{tceerojo}{18}\\
+Coste, $C=\beta-e$ & 80 & 90 & 80 & \textcolor{tceerojo}{92}\\
+Transferencia, $t$ & 10 & 10 & 16,5 & 8,1\\
+Renta, $U=t-\psi(e)$ & 0 & 0 & \textcolor{tceerojo}{6,5} & 0\\
+Pago total, $C+t$ & 90 & 100 & 96,5 & 100,1\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{LaffontTirole1993Theory}.}
+\end{table}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Puesta en práctica: un menú de contratos lineales}. Con muchos tipos, y bajo condiciones de regularidad, el óptimo se alcanza dejando que la empresa elija entre contratos lineales en el coste \parencites{LaffontTirole1986Using}[cap.~1]{LaffontTirole1993Theory}, con $C^a$ el coste que anuncia y $b\in[0,1]$ la \concepto{potencia} del incentivo, la parte del sobrecoste que paga la empresa (gráfico~\ref{fig:menu-contratos}):
+  \begin{equation}
+  t(C)=a-b\,(C-C^a). \label{eq:menu}
+  \end{equation}
+  \begin{itemize}
+  \item $b=1$, contrato de \concepto{precio fijo} (\emph{fixed price}): la empresa recibe en total $C+t=a+C^a$ cueste lo que cueste, se queda con todo lo que ahorre y se esfuerza como en el óptimo; lo elige la eficiente;
+  \item $b\to 0$, contrato de \concepto{coste incrementado} (\emph{cost plus}): se le reembolsa casi todo el coste; no tiene incentivos al esfuerzo, pero tampoco renta; lo eligen los tipos menos eficientes.
+  \end{itemize}
+  Con un contrato de potencia $b$ la empresa se esfuerza hasta $\psi'(e)=b$; por eso la potencia que se ofrece a cada tipo baja con su ineficiencia, y cada tipo ocupa su lugar en la escala de la potencia (gráfico~\ref{fig:escala-potencia}).\footnote{Con 2 tipos basta un par de contratos: uno de precio fijo para la eficiente (en el ejemplo, un pago total de 96,5 millones, cueste lo que cueste) y otro para la ineficiente que reembolsa el coste y paga 8,1 millones si este no pasa de 92. A la eficiente le da igual elegir el segundo: llegaría a 92 esforzándose 8, con una desutilidad de 1,6, y ganaría $8{,}1-1{,}6=6{,}5$, su misma renta.}
+\item \emph{Dicotomía precios-incentivos}: si la empresa además vende al público, bajo ciertas condiciones los precios obedecen a la regla de \autor{Ramsey}-\autor{Boiteux} \eqref{eq:ramsey-boiteux}, con $\lambda$ el coste de los fondos públicos, mientras que las transferencias se encargan por separado de limitar las rentas \parencite[cap.~3]{LaffontTirole1993Theory}.
+\item \emph{Más información}: si una auditoría hace más probable que la empresa sea eficiente (sube $\nu$), el regulador distorsiona más a la ineficiente y la renta de la eficiente, $\Phi(\overline{e})$, baja.
+\item \emph{Subastas y dinámica}: si se subasta el contrato, la competencia recorta la renta (\ref{sec:competencia-por-mercado}); si se repite sin compromiso, aparece el efecto trinquete (\ref{sec:compromiso-captura}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Menú de contratos lineales: precio fijo para la empresa eficiente y baja potencia para la ineficiente}\label{fig:menu-contratos}
+\grafico[0.55\textwidth]{menu-contratos}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{LaffontTirole1993Theory}.}
+\end{figure}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Los reguladores de las redes eléctricas han pasado de contratos de baja potencia a esquemas de incentivos y menús: el regulador británico de la energía ofrece a las empresas un menú de reparto del ahorro en el que quien presenta previsiones de gasto más bajas recibe una parte mayor de lo que ahorre, con la lógica del modelo; y esos esquemas han reducido los costes de operación \parencite{Joskow2014Incentive}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Es la teoría normativa más completa de la regulación: da forma a la intuición de que el \emph{price cap} (alta potencia) da incentivos y deja rentas, y la tasa de rentabilidad (baja potencia), al revés, y dice cuándo conviene cada uno.
+\item Pero supone un regulador benevolente que se compromete, y que conoce la distribución de los tipos y la función $\psi(\cdot)$. Los reguladores reales usan reglas más sencillas, como el \emph{price cap}; y, si no se comprometen o pueden ser capturados, la recomendación cambia (\ref{sec:compromiso-captura}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Regulación por incentivos: precios máximos y esquemas intermedios}\label{sec:price-cap}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item El menú de \autor{Laffont} y \autor{Tirole} pide mucha información. La regulación por incentivos de la práctica lo simplifica desligando el precio de los costes que declara la empresa. Su forma más conocida es el \concepto{precio máximo} (\emph{price cap}), que Stephen \textcite{Littlechild1983Regulation} propuso para la privatización de British Telecom y que se extendió después al gas, el agua, la electricidad y los aeropuertos. Es un contrato de alta potencia, cercano al de precio fijo ($b=1$ en \eqref{eq:menu}).
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Al principio de un \emph{periodo regulatorio} de varios años, el regulador fija un nivel inicial de ingresos que permite recuperar los «costes razonables» de la empresa y, con él, un precio medio (o el de una cesta de servicios).
+\item Mientras dura el periodo, el precio puede subir como mucho la inflación descontado un \emph{factor de eficiencia} $X$, que es la mejora de productividad exigida a la industria; precio y $X$ se revisan al terminar.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La regla es
+  \funcionclave[eq:price-cap]{p_{t+1}\leq p_t\,(1+\mathrm{IPC}_t-X)}
+  Cuanto mayor es $X$, menos sube el precio y más ganancias de productividad pasan a los consumidores.\footnote{«Productividad de la industria» no implica que haya varias empresas. En una autopista, por ejemplo, el monopolista puede aumentar su productividad consiguiendo que circulen más vehículos con los mismos costes o reduciendo los costes para el mismo tráfico.}
+\item Hasta la siguiente revisión, el tope no se mueve aunque cambien los costes: \emph{lo que la empresa ahorra se lo queda íntegro}, igual que con un contrato de precio fijo.
+\item Si el tope se aplica a la media de una cesta ponderada con las cantidades del periodo anterior, la empresa decide los precios relativos y acaba acercándose por sí sola a una estructura de tipo \autor{Ramsey}-\autor{Boiteux}, sin que el regulador tenga que estimar elasticidades \parencite{VogelsangFinsinger1979Regulatory}.
+  \begin{itemize}
+  \item Volvamos a Redes del Valle con un \emph{price cap}: si su peaje medio es de 40 euros por megavatio hora, la inflación del 2,5~\% y $X=1{,}5$, el año siguiente no puede pasar de $40\times1{,}01=40{,}40$. Si consigue bajar sus costes un 3~\% al año, se queda con la diferencia hasta la revisión, cuando el regulador ajustará el precio a los nuevos costes (gráfico~\ref{fig:price-cap}).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\emph{Price cap}: el precio sigue la senda $\mathrm{IPC}-X$ y la empresa se queda con lo que ahorre hasta la revisión}\label{fig:price-cap}
+\grafico[0.65\textwidth]{price-cap}
+\fuente{elaboración propia a partir de \textcite{Littlechild1983Regulation} y \textcite{ArmstrongCowanVickers1994Regulatory}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Para un $X$ dado, el incentivo a reducir costes es mayor cuanto más largo es el periodo regulatorio, pero entonces se trasladan menos ganancias a los precios: la duración óptima equilibra los 2 efectos.
+\item A diferencia de la tasa de rentabilidad, no distorsiona la combinación de factores: el capital no amplía el beneficio permitido. En la escala de la potencia (gráfico~\ref{fig:escala-potencia}), está en el extremo $b=1$.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Ingresos máximos} (\emph{revenue cap}): el tope recae sobre el ingreso total y no sobre el precio, y así la empresa no gana empujando el volumen en redes cuyo coste apenas depende de él. Es la lógica del modelo RIIO de Ofgem, el regulador británico de la energía: ingresos permitidos para varios años, inversión y gasto de operación tratados en bloque y desviaciones compartidas con los consumidores; su tercera edición abarca 2026-2031 \parencite{Ofgem2025RIIO3ET}.
+\item \emph{Esquemas intermedios}: entre la tasa de rentabilidad (baja potencia, sin rentas) y el \emph{price cap} (alta potencia, con rentas) caben el \concepto{reparto de beneficios} o \emph{escala móvil}, en el que la empresa conserva solo una fracción de lo que gane por encima de una banda de rentabilidad, y los menús de reparto del ahorro \parencite{ArmstrongSappington2007Recent}. Todos admiten la forma de un precio lineal en el coste, con $F$ una cuantía fija y $b$ la potencia, la misma del menú \eqref{eq:menu} ($b=0$, coste incrementado; $b=1$, precio fijo):
+  \[
+  p=b\,F+(1-b)\,C.
+  \]
+\item \emph{Calidad}: como ahorrar en calidad también es beneficio, los esquemas añaden incentivos y penalizaciones por calidad.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item British Telecom empezó en 1984 con un tope de RPI$-$3, el índice de precios minoristas menos 3 puntos \parencite{ArmstrongCowanVickers1994Regulatory}. En la distribución y el transporte de electricidad, los esquemas de incentivos han reducido los costes de operación, pero obligan a vigilar la calidad y la inversión \parencite{Joskow2014Incentive}.
+\item En España, la cuota de abono de Telefónica siguió una regla $\mathrm{IPC}-X$ hasta 2012 \parencite{CNMC2018CuotaAbono}. Hoy el caso vivo es Aena: el Documento de Regulación Aeroportuaria (DORA) fija para 5 años un \emph{ingreso máximo por pasajero}, que evoluciona con un índice de costes de insumos ajenos a la gestión de la empresa más un componente $X$. El DORA 2027-2031 parte de 10,52 euros por pasajero en 2026 y llega a 10,69 en 2031, con una $X$ del 0,33~\% anual que aquí \emph{se suma} \parencite{BOE2026DORA}; la CNMC había propuesto bajarlo un 0,59~\% al año, y Aena, subirlo un 3,82~\% \parencite{CNMC2026InformeDORA}. Una $X$ positiva no es, por tanto, un descuento por productividad, sino el ajuste que cuadra los ingresos con los costes previstos.\footnote{La Ley~2/2015 de desindexación, desarrollada por el Real Decreto~55/2017, desvincula del IPC las revisiones de precios del sector público \parencites{BOE2015Desindexacion}{BOE2017RD55}: por eso una regla $\mathrm{IPC}-X$ pura choca con ella, y los reguladores usan índices de costes propios, como el de los insumos de Aena.}
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{Ventajas}: incentiva la eficiencia productiva; traslada las mejoras a los consumidores \emph{a priori}, con $X$, y \emph{a posteriori}, en cada revisión; es sencillo y no distorsiona la combinación de factores.
+\item \emph{Inconvenientes}:
+  \begin{itemize}
+  \item hace falta mucha información para fijar el precio inicial y $X$: si el precio es muy alto deja rentas, y si es muy bajo la empresa pierde y querrá renegociar;
+  \item al acercarse la revisión, la empresa retrasa mejoras para disfrutarlas en el ciclo siguiente;
+  \item puede deteriorar la calidad o aplazar inversiones de larga vida;
+  \item traslada más riesgo a la empresa, lo que puede encarecer su capital.
+  \end{itemize}
+\item En el fondo, si en cada revisión el tope se recalibra a los costes, el \emph{price cap} equivale a regular por coste del servicio con un desfase pactado de antemano: que funcione depende de que el regulador se comprometa, la cuestión del apartado siguiente.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Compromiso y captura: la teoría positiva de la regulación}\label{sec:compromiso-captura}
+
+\begin{itemize}
+\item Todos los modelos anteriores suponen un regulador que se compromete con el contrato y que solo busca el bienestar. Levantar esos 2 supuestos explica buena parte de lo que se observa en la práctica.
+\end{itemize}
+
+\paragraph{Compromiso: efecto trinquete y desfase regulatorio}
+
+\begin{itemize}
+\item \concepto{Efecto trinquete} (\emph{ratchet}): si el regulador usa lo que observa hoy para fijar el objetivo de mañana, la empresa sabe que cada mejora se le quitará en la siguiente revisión, y no la hace o la oculta: un coste bajo hoy es una exigencia mayor mañana \parencite{Weitzman1980Ratchet}. Sin compromiso a largo plazo, a la empresa eficiente le conviene parecer ineficiente al principio, y el regulador tiene que dejarle más renta para que revele su tipo, o agruparla con la ineficiente \parencites{FreixasGuesnerieTirole1985Planning}{LaffontTirole1988Dynamics}.
+\item \concepto{Desfase regulatorio} (\emph{regulatory lag}): el tiempo \emph{entre 2 revisiones}, durante el que el precio no cambia aunque cambien los costes; cuanto más largo, más incentivos a reducir costes y menos traslado a los consumidores \parencites{BaumolKlevorick1970Input}{Joskow1974Inflation}.
+\item Detrás está la \emph{inconsistencia temporal} que \textcite{KydlandPrescott1977Rules} describen para la política económica \vertema{3.A.23} \vertema{3.A.36}: con la red ya construida y la inversión hundida, al regulador le tienta bajar el precio al coste de operación, y la empresa, que lo prevé, invierte menos. Los antídotos: reglas pactadas por adelantado, periodos regulatorios largos y reguladores independientes que tengan una reputación que cuidar.
+\end{itemize}
+
+\paragraph{Captura del regulador: la teoría positiva de la regulación}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Las teorías anteriores son \emph{normativas}: dicen cómo debería regular un regulador benevolente. La \concepto{teoría positiva de la regulación}, de la escuela de Chicago, pregunta por qué se regula como se regula. George \textcite{Stigler1971Theory} sostiene que, por regla general, la industria adquiere la regulación, que se diseña y se aplica sobre todo en su beneficio: es la \concepto{captura del regulador}.\footnote{George \autor{Stigler} recibió el Nobel en 1982 «por sus estudios pioneros de las estructuras industriales, el funcionamiento de los mercados y las causas y efectos de la regulación pública» \parencite{Nobel1982Stigler}.}
+\item Es como «poner al zorro a cuidar de las gallinas», dice el dicho: el regulador acaba sirviendo al regulado.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item La regulación es un bien que se \emph{demanda} (los grupos que ganan con ella) y se \emph{ofrece} (el regulador o el político, que buscan apoyos: votos, financiación, un puesto futuro).
+\item Los productores son pocos, están organizados y tienen mucho en juego; los consumidores son muchos, cada uno con poco en juego y con el problema del polizón para organizarse: es la lógica de la acción colectiva de \textcite{Olson1965Logic} \vertema{4.B.2}.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item \textcite{Peltzman1976Toward} lo formaliza: el regulador elige el precio para maximizar su apoyo político, $\mathcal{A}\big(p,B(p)\big)$, que baja con el precio (los consumidores) y sube con el beneficio de la industria, $\partial\mathcal{A}/\partial p<0$ y $\partial\mathcal{A}/\partial B>0$. La condición de primer orden exige $B'(p)>0$:
+  \[
+  \frac{\partial\mathcal{A}}{\partial p}+\frac{\partial\mathcal{A}}{\partial B}\,B'(p)=0.
+  \]
+  El precio regulado queda \emph{por debajo del de monopolio}, donde $B'(p)=0$, y \emph{por encima del competitivo}: el regulador reparte la renta entre los 2 grupos.
+\item \textcite{Becker1983Theory} lo modeliza como una competencia entre grupos de presión: gana influencia el grupo que presiona con menos coste, y la pérdida irrecuperable limita la propia regulación, porque cuanto mayor es, más se resiste el grupo perjudicado. Las intervenciones que sobreviven tienden a ser las que menos eficiencia destruyen.
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item La regulación puede servir para crear o proteger rentas, y no solo para corregir fallos de mercado; los recursos que se gastan en conseguirlas son un coste social, el de la búsqueda de rentas (\ref{sec:poder-mercado}).
+\end{itemize}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item Para \textcite{LaffontTirole1991Politics}, la captura es un pacto colusorio: el regulador tiene información que el legislador ignora y puede callarla a cambio de un soborno o de un futuro empleo en la empresa. Los incentivos potentes aumentan las rentas en juego y, con ellas, la tentación; si el riesgo es alto, compensa recurrir a contratos de \emph{baja potencia}, próximos al coste incrementado, aun a costa de eficiencia productiva.
+  \begin{itemize}
+  \item Volvamos a Redes del Valle: si su sector presiona para subir la tasa de retribución y el riesgo de que el regulador pacte con la empresa es alto, mejor un contrato que deje poca renta que repartir, aunque la empresa se esfuerce menos.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{Stigler1971Theory} encontró que los límites de peso de los camiones en los estados de Estados Unidos protegían a los ferrocarriles y que las licencias profesionales favorecían a los que ya ejercían.
+\item La desregulación de los años 70 y 80 en Estados Unidos (aviación, transporte por carretera) parecía contradecir la teoría, pero puede explicarse por cambios en lo que ganaban y perdían los grupos \parencite{Peltzman1989Economic}.
+\item Las «puertas giratorias» entre reguladores y regulados son la vía de captura más estudiada \parencite{DalBo2006Regulatory}.
+\end{itemize}
+
+\subparagraph{e) Valoración}
+
+\begin{itemize}
+\item Recuerda que hay que comparar los fallos del mercado con los de la regulación \vertema{3.A.23}, y justifica los reguladores independientes, las reglas transparentes, la evaluación de resultados y las incompatibilidades.
+\item Pero es difícil de contrastar (casi todo se puede explicar como el apoyo de algún grupo) y no dice cómo diseñar el regulador, que es lo que añade el enfoque de \autor{Laffont} y \autor{Tirole}.
+\item \emph{Recapitulación}: con información asimétrica el regulador no puede alcanzar el primer óptimo: deja una renta informativa y equilibra incentivos y rentas. La tasa de rentabilidad (baja potencia) y el \emph{price cap} (alta potencia) son los 2 extremos del menú de \autor{Laffont} y \autor{Tirole}, y el compromiso y la captura deciden hacia cuál inclinarse (gráfico~\ref{fig:escala-potencia}). Pasamos al tercer bloque: cómo ayudan otras empresas a reducir esas rentas.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Escala de la potencia de los incentivos: cada instrumento en su lugar, entre más incentivos y más rentas}\label{fig:escala-potencia}
+\grafico[0.9\textwidth]{escala-potencia}
+\fuente{elaboración propia a partir de \textcite{LaffontTirole1993Theory} y \textcite{ArmstrongSappington2007Recent}.}
+\end{figure}
+
+
+% ==========================================================================
+\section{Regulación con varias empresas\newline y aplicaciones prácticas}\label{sec:varias-empresas}
+\minutos{7,5}
+
+\begin{notaopositor}
+En el cante: el \emph{yardstick} con su regla y el ejemplo de las 3 distribuidoras escritos a mano, y su lugar en la escala de la potencia (\tiempo{2}); la competencia por el mercado de palabra, con sus límites (\tiempo{1,5}); el acceso a la red con la regla del precio eficiente de los componentes en una línea y los mercados de 2 lados (\tiempo{1,5}); y las aplicaciones, cada una con su lectura teórica, con la tabla de instrumentos como apoyo (\tiempo{2,5}).
+\end{notaopositor}
+
+\begin{itemize}
+\item Hasta ahora el regulador trataba con una sola empresa; ahora tiene varias. \emph{Conclusión anticipada} de este último bloque: las demás empresas son una fuente de información, porque compararlas o hacerlas competir por la concesión rebaja la renta que hay que ceder a cada una. A cambio surge una cuestión nueva: en qué condiciones usan los rivales la red del antiguo monopolista. En la práctica se combinan todas estas herramientas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Competencia por comparación}\label{sec:yardstick}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Si hay varias empresas reguladas parecidas que operan en zonas distintas (distribuidoras de electricidad o de agua, hospitales), el regulador puede fijar el precio de cada una a partir de los costes de las \emph{demás}, no de los suyos: es la \concepto{competencia por comparación} (\emph{yardstick competition}) \parencite{Shleifer1985Theory}. Así crea entre monopolios locales una competencia que no existe en el mercado, y resuelve el problema de la revelación de costes.
+\item «Las comparaciones son odiosas», dice el refrán, y para la empresa comparada lo son: ya no puede justificar sus costes con su propia contabilidad.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item $N$ empresas idénticas, cada una con un coste unitario $c_i$ que puede reducir invirtiendo $R(c_i)$, con $R'<0$ (bajar el coste cuesta), y una demanda $q(p)$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item El regulador fija a la empresa $i$ el precio y la transferencia
+  \begin{equation}
+  p_i=\bar{c}_{-i}\equiv\frac{1}{N-1}\sum_{j\neq i}c_j,\qquad T_i=\bar{R}_{-i}\equiv\frac{1}{N-1}\sum_{j\neq i}R(c_j). \label{eq:yardstick}
+  \end{equation}
+\item Como la empresa $i$ no influye en su propio precio, maximiza $(\bar{c}_{-i}-c_i)\,q(\bar{c}_{-i})+T_i-R(c_i)$ eligiendo $c_i$, y la condición de primer orden es
+  \[
+  -R'(c_i)=q(\bar{c}_{-i}):
+  \]
+  invierte hasta que el último euro ahorra un euro de coste. En el equilibrio simétrico todas eligen el coste eficiente, el precio es igual al coste y no hay rentas (anexo~\ref{anexo:yardstick}).
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La empresa no gana nada inflando sus costes, porque solo sube el precio de las demás; y si sus costes están por encima de la media de sus pares, solo se le paga esa media, así que reducirlos le compensa: tiene incentivos de precio fijo sin las rentas de un \emph{price cap} mal calibrado. En la escala de la potencia (gráfico~\ref{fig:escala-potencia}) está en $b=1$, pero sin rentas.
+  \begin{itemize}
+  \item Imaginemos que Redes del Valle tiene 2 vecinas parecidas y que sus costes son 20, 22 y 24 euros por megavatio hora (Redes del Valle es la de 20). Con la regla, el precio de cada una es la media de las otras 2: 23 para Redes del Valle, que gana 3 por megavatio hora; 22 para la segunda, que cubre costes, y 21 para la tercera, que pierde 3. A todas les conviene bajar costes, y, como todas lo hacen, el precio converge al coste eficiente.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Empresas heterogéneas}: si las diferencias entre empresas son observables (densidad de clientes, orografía, clima), se corrige la comparación con una regresión o con fronteras de eficiencia \parencite{Shleifer1985Theory}.
+\item \emph{Perturbaciones comunes}: empresas parecidas sufren choques de coste parecidos, y la comparación filtra lo que no depende del esfuerzo \parencite{ArmstrongSappington2007Recent}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item La comparación exige medir la eficiencia relativa con el análisis envolvente de datos (DEA) o con la frontera estocástica (SFA) \vertema{3.A.12} \vertema{3.A.17}.
+\item En Alemania, el regulador fija los ingresos máximos de las distribuidoras eléctricas comparando su eficiencia con los 2 métodos, se queda con el valor más favorable (con un mínimo del 60~\%) y exige eliminar la ineficiencia durante el periodo regulatorio \parencites{BNetzA2026Effizienzvergleich}{ARegV2007}.
+\item \textcite{JamasbPollitt2001Benchmarking} repasan la experiencia internacional en la regulación de la electricidad.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{Requisitos}: empresas comparables, o corregir las diferencias observables; si no, se castiga a la empresa por su entorno y no por su esfuerzo.
+\item \emph{Colusión}: las empresas pueden ponerse de acuerdo en no reducir costes \parencite{BaldwinCaveLodge2012Understanding}; es el problema del cártel, más fácil con pocas empresas que se ven repetidamente \vertema{3.A.19}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Competencia por el mercado}\label{sec:competencia-por-mercado}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item ¿Es necesario regular? \textcite{Demsetz1968Why} responde que, aunque \emph{en} el mercado solo quepa una empresa, se puede competir \emph{por} él: el derecho exclusivo a prestar el servicio durante un plazo se subasta y se adjudica a quien pida el precio más bajo para una calidad fijada.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Varios licitadores con acceso a la tecnología, que no se ponen de acuerdo, y un contrato que se puede especificar y hacer cumplir (precio y calidad).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Cada aspirante puja con el precio mínimo que le cubre costes. Si todos son iguales, el precio cae hasta el coste medio, $p=\mathrm{CMe}$ (el segundo óptimo), sin que el regulador tenga que conocerlo. Si difieren, se impone el más eficiente con un precio próximo al coste del segundo: la subasta escoge a la empresa más eficiente \vertema{3.A.14}.
+\item Hay competencia \emph{ex ante}, al adjudicar, y \emph{ex post}, si la subasta se repite cada cierto tiempo; cuantos más aspirantes, menor la renta del adjudicatario \parencite{ArmstrongSappington2007Recent}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La subasta sustituye al regulador como fuente de información: la competencia entre los aspirantes revela lo que cuesta prestar el servicio.
+  \begin{itemize}
+  \item Si la comarca de Redes del Valle subastara la explotación de su red durante 20 años, quien ofreciera el peaje más bajo revelaría lo que de verdad cuesta mantenerla. El problema llegaría al cabo de los 20 años: ¿qué pasa con los transformadores y los cables, y quién los habrá cuidado si el concesionario no sabía si iba a seguir?
+  \end{itemize}
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \textcite{LaffontTirole1987Auctioning} combinan subasta e incentivos. Cuando lo que se licita es un contrato de incentivos, el adjudicatario firma un contrato lineal con un pago fijo ligado a la segunda mejor puja: la competencia le recorta así la renta informativa, y cuanto más eficiente dice ser, mayor es la fracción de los sobrecostes que asume.
+\item Si el coste es en parte común e incierto, gana quien más lo infravaloró: la \emph{maldición del ganador}, que lleva a pujar con prudencia \vertema{3.A.14}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Es la forma habitual de gestionar servicios locales (agua, recogida de residuos, transporte urbano) y autopistas. Pero las concesiones se renegocian a menudo: \textcite{GuaschLaffontStraub2008Renegotiation} estudian 307 concesiones de agua y de transporte adjudicadas en América Latina entre 1989 y 2000, con una alta incidencia de renegociaciones que depende de las instituciones regulatorias, de los choques económicos y del diseño de los contratos.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Sus límites \parencite{Williamson1976Franchise}:
+  \begin{itemize}
+  \item la posible \emph{colusión} entre los licitadores \vertema{3.A.19};
+  \item con activos específicos y contratos largos e incompletos, es difícil prever todas las contingencias y valorar y transferir los activos al renovar, y la concesión acaba necesitando la misma supervisión que la regulación \vertema{3.A.15};
+  \item el adjudicatario acumula ventajas de información y de aprendizaje que reducen la competencia en la renovación;
+  \item la \emph{duración} plantea un dilema: si es corta, el concesionario no invierte en activos de larga vida ni los mantiene; si es larga, desaparece la competencia periódica.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Acceso a la red y mercados de 2 lados}\label{sec:acceso-red}
+
+\begin{itemize}
+\item En muchas industrias de red solo la infraestructura es un monopolio natural; los servicios que viajan por ella (electricidad, gas, ferrocarril, telecomunicaciones) admiten competencia. El regulador debe fijar entonces en qué condiciones usan los rivales la red del antiguo monopolista, y eso plantea 2 cuestiones:
+  \begin{enumerate}
+  \item ¿debe el dueño de la red competir también en los servicios? Integrado, aprovecha las economías de coordinación y de alcance, pero tiene incentivos a discriminar a sus rivales;
+  \item si compite, ¿qué precio deben pagar los rivales por usar la red? Si es alto, frena la entrada; si es bajo, desanima la inversión en la red y deja entrar a rivales menos eficientes.
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{Regla del precio eficiente de los componentes}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Si el incumbente vende el servicio final y además alquila la red a sus rivales, ¿cuánto debe cobrarles? \textcite{Willig1979Network} y \textcite{BaumolSidak1994Pricing} proponen la \concepto{regla del precio eficiente de los componentes} (ECPR, por sus siglas en inglés): el peaje tiene que compensar al incumbente por lo que cuesta dar el acceso y por el margen al que renuncia con cada cliente que se lleva el rival.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item El precio final $p$ lo fija el regulador. Para el incumbente, proporcionar una unidad de acceso supone un coste $c_a$, y completar el servicio, otro $c_I$.
+\item El rival paga un peaje $A$ por unidad de acceso y añade su propio coste $c_E$; el producto es homogéneo, así que cada venta del rival es una venta menos del incumbente.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item El coste de oportunidad del incumbente por unidad cedida es su margen, $p-(c_a+c_I)$; sumado al coste del acceso, el peaje queda en
+  \begin{equation}
+  A=c_a+\big[p-(c_a+c_I)\big]=p-c_I. \label{eq:ecpr}
+  \end{equation}
+  Con ese peaje, al entrante le salen las cuentas si $A+c_E\leq p$, es decir, si $c_E\leq c_I$ (anexo~\ref{anexo:acceso}).\footnote{Con un precio final de 12, un coste del acceso de 4 y un coste del resto del servicio de 3, el peaje es $4+(12-4-3)=9$, que es $12-3$: solo cubre costes un entrante cuyo coste propio no supere 3.}
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item Al incumbente le da igual vender él o ceder el cliente, y la regla solo deja pasar a rivales que, en la parte del servicio en la que compiten, sean como mínimo igual de eficientes que él: la entrada no encarece la producción.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item Da por bueno el precio final: si $p$ lleva margen de monopolio, la regla lo traslada al peaje y lo perpetúa.
+\item Según \textcite{ArmstrongDoyleVickers1996Access}, solo es óptima en casos especiales (producto homogéneo, sin posibilidad de esquivar la red y con $p$ regulado); fuera de ellos, el peaje óptimo varía con las elasticidades y se parece a una regla de \autor{Ramsey}-\autor{Boiteux} \eqref{eq:ramsey-boiteux}.
+\end{itemize}
+
+\paragraph{Separación vertical y servicio universal}
+
+\begin{itemize}
+\item La alternativa estructural es separar la red de los servicios, con grados crecientes: separación contable, jurídica, funcional y de propiedad. Cuanto más intensa, menor es el incentivo a discriminar y menores las economías de integración \parencite{ArmstrongCowanVickers1994Regulatory} \vertema{3.A.15} \vertema{4.B.15}.
+  \begin{itemize}
+  \item Es lo que pasa con Redes del Valle: las comercializadoras usan su red y le pagan el peaje que fija la CNMC (acceso regulado de terceros), y la ley obliga a que la distribución la haga una sociedad que no genere ni comercialice electricidad \parencite[art.~12]{Ley24_2013SectorElectrico}. Es la frontera entre los 2 mercados relevantes de \ref{sec:mercado-relevante}: la red, regulada, y la comercialización, en competencia.
+  \end{itemize}
+\item Con la liberalización, las \emph{obligaciones de servicio universal} (llevar el servicio básico a todos a un precio asequible, aunque en algunas zonas no sea rentable) dejan de financiarse con subvenciones cruzadas dentro del monopolio y pasan a tener un coste explícito, que se reparte entre los operadores o se cubre con fondos públicos \vertema{4.A.12}.
+\end{itemize}
+
+\paragraph{Mercados de 2 lados}
+
+\begin{itemize}
+\item Una \concepto{plataforma de 2 lados} pone en contacto a 2 grupos de usuarios que se benefician de que el otro sea grande (compradores y vendedores, usuarios y anunciantes): hay \emph{efectos de red cruzados} \parencite{RochetTirole2003Platform}. El precio óptimo de cada lado descuenta el valor que sus usuarios dan al otro: puede ser nulo o negativo en el lado que más atrae al otro, sin que sea depredación \parencite{Armstrong2006Competition} \vertema{3.A.15}.
+\item Así, el margen de \autor{Lerner} \eqref{eq:lerner} de un solo lado dice poco del poder de la plataforma, y la plataforma es poco impugnable porque los efectos de red, los datos acumulados y las inversiones irrecuperables protegen su posición \vertema{3.A.15}. Por eso la regulación mira sobre todo cómo da acceso, más que qué precios cobra.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Aplicaciones prácticas}\label{sec:aplicaciones}
+
+\begin{itemize}
+\item La regulación real combina los instrumentos anteriores (tabla~\ref{tab:instrumentos}), y su evolución reciente reproduce la de la exposición: de la tasa de rentabilidad a los incentivos, y de regular los precios a regular el acceso.
+\end{itemize}
+
+\paragraph{Redes eléctricas y gasistas y ferrocarril en España}
+
+\begin{itemize}
+\item Las redes españolas de electricidad y de gas, de transporte y de distribución, son actividades reguladas; su retribución la decide la CNMC mediante circulares:
+  \begin{itemize}
+  \item \emph{tasa de rentabilidad}: sobre el valor neto de los activos se aplica una tasa de retribución financiera, a la que se suma su amortización \parencite{CNMC2019Circular2}; en la electricidad, el 6,58~\% para 2026-2031, un punto por encima del 5,58~\% de 2020-2025 \parencites{CNMC2025Circular9}{CNMC2025NPCirculares}, y en el transporte y la regasificación de gas, el 6,46~\% para 2027-2032 \parencite{CNMC2026Circular5};
+  \item \emph{incentivos}: la nueva metodología de la distribución eléctrica compara de forma conjunta la inversión y los gastos de operación (TOTEX) con unos costes de referencia \parencite{CNMC2025Circular8}.
+  \end{itemize}
+  \begin{itemize}
+  \item Redes del Valle sería una de esas distribuidoras: cobra los peajes que fija la CNMC, recibe el 6,58~\% sobre sus activos y se le compara con unos costes de referencia, como en el \emph{yardstick}.
+  \end{itemize}
+\item \emph{Lectura teórica}: el sistema mezcla instrumentos. La tasa de rentabilidad asegura la inversión en redes; los incentivos y la comparación con costes de referencia suben la potencia del contrato y corrigen el sesgo de \autor{Averch} y \autor{Johnson} (\ref{sec:coste-servicio}). La tasa es lo más discutido, porque decide cuánto va a la rentabilidad de las empresas y cuánto sale de la factura de los consumidores.
+\item En el ferrocarril, los cánones de ADIF cubren el coste directamente imputable a cada circulación y añaden recargos según lo que soporte cada segmento, hasta recuperar el coste total, una lógica de \autor{Ramsey} (\ref{sec:regulacion-informacion-completa}); ADIF los revisa cada año con informe previo de la CNMC \parencite{BOE2015LSF}.
+\item La \emph{excepción ibérica} fue otro tipo de intervención. A partir del 14 de junio de 2022, España puso un tope al precio del gas que usan las centrales que marcan el precio de la electricidad: 40 euros por megavatio hora al principio, con una senda creciente después, y una prórroga que la mantuvo hasta el final de 2023 \parencites{BOE2022RDL10}{BOE2022OrdenTED517}{BOE2023RDL3}. No atacaba el poder de mercado de ninguna empresa, sino el contagio del coste de la tecnología marginal al precio mayorista en plena crisis del gas; se hizo temporal y acotada para no dañar la credibilidad de la regulación ante los inversores (\ref{sec:compromiso-captura}).
+\end{itemize}
+
+\paragraph{El \emph{price cap} en la práctica}
+
+\begin{itemize}
+\item \emph{Reino Unido}: el tope de RPI$-$3 de British Telecom en 1984 se extendió a todos los servicios privatizados, y hoy el regulador de la energía aplica el modelo RIIO de ingresos máximos (\ref{sec:price-cap}). El RIIO-3, para las redes de transporte entre abril de 2026 y marzo de 2031, reconoce a los fondos propios una rentabilidad real del 5,70~\% en la electricidad y del 6,12~\% en el gas \parencite{Ofgem2025RIIO3Finanzas}, y exige mejorar la eficiencia un 1~\% al año, la $X$ del modelo \parencite{Ofgem2025RIIO3ET}.
+\item \emph{Aena}: el ingreso máximo por pasajero del DORA 2027-2031 pasa de 10,52 euros en 2026 a 10,69 en 2031, con una $X$ del 0,33~\% anual que se suma (\ref{sec:price-cap}) \parencite{BOE2026DORA}.
+\end{itemize}
+
+\paragraph{Telecomunicaciones: una regulación del acceso que se retira}
+
+\begin{itemize}
+\item El Código Europeo de las Comunicaciones Electrónicas ordena una regulación \emph{ex ante} en 3 pasos \parencites{UE2018CECE}{Ley11_2022Telecomunicaciones}:
+  \begin{enumerate}
+  \item definir los mercados relevantes (\ref{sec:mercado-relevante});
+  \item comprobar que cumplen a la vez 3 criterios: barreras de entrada elevadas y duraderas, ninguna tendencia hacia la competencia efectiva y un derecho de la competencia que no basta por sí solo;
+  \item exigir a quien tenga \emph{peso significativo en el mercado}, el equivalente de la posición dominante, obligaciones de acceso, de no discriminación o de precios orientados a costes.
+  \end{enumerate}
+\item La Comisión solo recomienda hoy regular \emph{ex ante} 2 mercados mayoristas, el acceso local en una ubicación fija y la capacidad dedicada \parencite{UE2020RecomendacionMercados}.
+\item En España, durante años la CNMC impuso a Telefónica ofrecer al por mayor el acceso a su fibra (los servicios NEBA). Desde octubre de 2021 esa obligación ya solo afectaba al 30~\% de la población, y en agosto de 2025 se suprimió, con 6 meses de transición; sigue regulado el acceso a su infraestructura física, es decir, conductos, canalizaciones y postes \parencite{CNMC2025Desregulacion}.
+\item \emph{Lectura teórica}: se regula mientras hay un cuello de botella y se retira cuando la competencia en infraestructuras es sostenible.
+\end{itemize}
+
+\paragraph{Mercados digitales: de la defensa de la competencia a la regulación \emph{ex ante}}
+
+\begin{itemize}
+\item Los efectos de red, los costes de cambiar de proveedor, las economías de escala y los datos hacen que las grandes plataformas sean poco impugnables, y la defensa de la competencia \emph{ex post} ha resultado lenta. El Tribunal de Justicia de la UE confirmó en 2024 la multa de 2.424 millones de euros a Google por favorecer su comparador de compras \parencite{TJUE2024GoogleShopping} y en 2026 la de 4.125 millones por las condiciones impuestas a los fabricantes de móviles Android \parencite{TJUE2026GoogleAndroid}.
+\item El \concepto{Reglamento de Mercados Digitales} (DMA), «sobre mercados disputables y equitativos en el sector digital» y aplicable desde mayo de 2023, lleva a las plataformas el enfoque \emph{ex ante} de las industrias de red, aunque centrado en conductas y no en precios \parencite{UE2022DMA}:
+  \begin{itemize}
+  \item \emph{designación con poca información}: la Comisión no delimita mercados uno a uno, sino que nombra \emph{guardianes de acceso} a las plataformas que rebasan ciertos umbrales cuantitativos;\footnote{El art.~3.2 del Reglamento \parencite{UE2022DMA} establece la presunción cuando concurren a la vez: a) tamaño: una facturación en la Unión de 7.500 millones de euros o más en cada uno de los 3 últimos ejercicios, o una capitalización media de 75.000 millones o más en el último, y el mismo servicio en 3 Estados miembros como mínimo; b) usuarios: 45 millones o más de usuarios finales activos al mes y 10.000 o más usuarios profesionales activos al año en la Unión; c) duración: los umbrales de usuarios se han cumplido en cada uno de los 3 últimos ejercicios.} hoy son 7, Alphabet, Amazon, Apple, ByteDance, Meta y Microsoft, designados en 2023, y Booking, en 2024, con 23 servicios básicos de plataforma en total \parencite{CE2026GuardianesDMA};
+  \item \emph{obligaciones y prohibiciones directas}: no favorecer sus propios servicios (la misma no discriminación que se exige a un incumbente integrado), dejar desinstalar aplicaciones y cambiar las predeterminadas, portabilidad de los datos, interoperabilidad gratuita de las funciones básicas de mensajería si otro proveedor la pide y libertad de los usuarios profesionales para llevar a sus clientes a ofertas fuera de la plataforma \parencite{UE2022DMA};
+  \item \emph{sanciones}: multas de hasta el 10~\% de la facturación mundial, que suben al 20~\% en caso de reincidencia \parencite[art.~30]{UE2022DMA}. Apple (500 millones de euros) y Meta (200 millones) fueron las primeras empresas sancionadas por incumplimiento, en abril de 2025 \parencite{CE2025DMAAppleMeta}; en julio de 2026, Google recibió 890 millones por dar ventaja a sus propios servicios en el buscador y por las restricciones de Google Play \parencite{CE2026DMAGoogle}.
+  \end{itemize}
+\item \emph{Lectura teórica}: designar por umbrales es una manera de regular sin conocer costes ni demandas, es decir, una salida al problema de la información asimétrica. Pero los límites de siempre siguen ahí: la plataforma conoce sus algoritmos mejor que nadie y tiene interés en moldear cómo se le aplican las obligaciones (\ref{sec:compromiso-captura}).
+\item \emph{Recapitulación}: con varias empresas, la comparación y la subasta sustituyen a la información que le falta al regulador, y el acceso a la red ordena la competencia en los servicios; la tabla~\ref{tab:instrumentos} resume qué da y qué cuesta cada instrumento.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los instrumentos de regulación, comparados por sus propiedades}\label{tab:instrumentos}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{1.4cm}>{\raggedright\arraybackslash}m{2.4cm}>{\raggedright\arraybackslash}m{2.3cm}>{\raggedright\arraybackslash}m{2.6cm}>{\raggedright\arraybackslash}m{2.3cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Instrumento} & \textbf{Potencia $b$} & \textbf{¿Empuja a abaratar?} & \textbf{Renta para la empresa} & \textbf{Qué tiene que saber el regulador} & \textbf{Qué puede salir mal}\\
+\midrule
+\multicolumn{6}{l}{\emph{Información completa} (\ref{sec:regulacion-informacion-completa})}\\
+$p=\mathrm{CMg}$ y subvención & \textcolor{tceeazul}{0} & no: las pérdidas se cubren & nula & costes y demanda & impuestos para pagar la subvención\\
+\addlinespace[0.2em]
+$p=\mathrm{CMe}$, dos partes, \autor{Ramsey}-\autor{Boiteux} & \textcolor{tceeazul}{0} & poco & nula & costes; elasticidades para \autor{Ramsey} & clientes expulsados por la cuota fija; cargas mayores a los inelásticos\\
+\addlinespace[0.2em]
+\rowcolor{tceesalvia}\multicolumn{6}{l}{\emph{Información asimétrica} (\ref{sec:informacion-asimetrica})}\\
+Tasa de rentabilidad & \textcolor{tceeazul}{$\approx 0$} & casi nada, salvo por el desfase & baja & beneficio contable y base de activos & \textcolor{tceerojo}{exceso de capital}\\
+\addlinespace[0.2em]
+Menú de \autor{Laffont}-\autor{Tirole} & \textcolor{tceemorado}{de baja a 1, según el tipo} & sí, sobre todo la eficiente & informativa, solo la eficiente & distribución de los tipos y $\psi(e)$ & falta de compromiso; captura\\
+\addlinespace[0.2em]
+\emph{Price cap} & \textcolor{tceemorado}{1} & \textcolor{tceeverde}{al máximo} & alta si el tope es holgado & precio inicial y $X$ & menos calidad; trinquete; renegociación\\
+\addlinespace[0.2em]
+\rowcolor{tceesalvia}\multicolumn{6}{l}{\emph{Varias empresas} (\ref{sec:varias-empresas})}\\
+\emph{Yardstick} & \textcolor{tceemorado}{1} & \textcolor{tceeverde}{al máximo} & casi nula & costes de las demás & pacto entre las comparadas; entornos distintos\\
+\addlinespace[0.2em]
+Subasta de la concesión & \textcolor{tceemorado}{la del contrato subastado} & sí, al pujar & menor cuantos más pujan & nada de costes; sí, calidad exigible & contratos incompletos; ventaja del titular al renovar\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{LaffontTirole1993Theory} y \textcite{ArmstrongSappington2007Recent}.}
+\end{table}
+
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión,
+  \begin{itemize}
+  \item el poder de mercado, la capacidad de fijar de forma duradera precios por encima del coste marginal, aleja al mercado del óptimo, y se mide (con el índice de \autor{Lerner} o con las cuotas y el IHH) en un mercado relevante que se delimita con el test del monopolista hipotético (\ref{sec:informacion-completa});
+  \item con información completa, el regulador sabe qué hacer: $p=\mathrm{CMg}$ con subvención o, si los fondos públicos cuestan, los segundos óptimos, de la tarifa en dos partes a \autor{Ramsey}-\autor{Boiteux};
+  \item con información asimétrica, tiene que dejar una renta informativa a la empresa eficiente: la regulación óptima equilibra incentivos y rentas, y la tasa de rentabilidad y el \emph{price cap} son los 2 extremos del menú de \autor{Laffont} y \autor{Tirole}; el compromiso y la captura deciden hacia cuál inclinarse (\ref{sec:informacion-asimetrica});
+  \item con varias empresas, la comparación y la competencia por el mercado recortan esas rentas, y el acceso a la red ordena la competencia en los servicios (\ref{sec:varias-empresas}).
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: descarbonizar la economía obliga a ampliar mucho las redes eléctricas, y el dinero para hacerlo solo aparecerá si las reglas son estables y creíbles; y en la economía digital los cuellos de botella ya no son cables, sino datos y plataformas.
+\item \textbf{\emph{Extensiones}}: la empresa pública como alternativa a regular una empresa privada, y las privatizaciones \vertema{4.B.15}; la política de competencia de la Unión Europea y de España \vertema{3.B.39} \vertema{4.A.15}; la regulación de la energía, el transporte y las telecomunicaciones \vertema{4.A.5} \vertema{4.A.12}; la información asimétrica y el diseño de mecanismos \vertema{3.A.13} \vertema{3.A.14}; los fallos del sector público \vertema{3.A.23} y los grupos de interés \vertema{4.B.2}.
+\item \textbf{\emph{Opinión}}: no hay un instrumento óptimo en general: depende de los costes, de lo que el regulador puede observar y del origen del poder de mercado. La defensa de la competencia basta frente a las conductas; frente a los monopolios naturales hace falta regulación con incentivos, y la potencia que conviene darles crece con la capacidad de compromiso y la independencia del regulador. Por eso importan tanto como las fórmulas las instituciones que las aplican.
+\item \textbf{\emph{Idea final}}: quien tiene poder de mercado tiene la sartén por el mango, y además es el único que sabe lo que hay dentro. La regulación óptima no le quita la sartén al monopolista natural, que es quien mejor cocina, sino que le paga lo justo para que nos deje ver lo que hay dentro: esa es la renta informativa.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: derivaciones}\label{anexo:derivaciones}
+
+\subsection{Efecto \autor{Averch}-\autor{Johnson}}\label{anexo:aj}
+
+\begin{itemize}
+\item Sea $I(z_K,z_L)=p\big(F(z_K,z_L)\big)\,F(z_K,z_L)$ el ingreso, con $I_i=\mathrm{IMg}\cdot\mathrm{PMg}_i$. La restricción de rentabilidad es $I-w_Lz_L\leq s\,z_K$. Con su multiplicador $\mu\geq 0$, el problema penalizado es
+  \[
+  I-w_Kz_K-w_Lz_L-\mu\,\big[I-w_Lz_L-s\,z_K\big].
+  \]
+\item \emph{Condición de primer orden respecto a $z_L$}: $(1-\mu)\,I_L-(1-\mu)\,w_L=0\Rightarrow I_L=w_L$.
+\item \emph{Condición de primer orden respecto a $z_K$}: $(1-\mu)\,I_K-w_K+\mu\,s=0\Rightarrow I_K=\dfrac{w_K-\mu s}{1-\mu}=w_K-\dfrac{\mu}{1-\mu}\,(s-w_K)$.
+\item \emph{Signo del multiplicador}: con la restricción activa y $s>w_K$, $0<\mu<1$ \parencite{AverchJohnson1962Behavior}; con $\mu=0$ la restricción no aprieta.
+\item \emph{Cociente}: dividiendo las 2 condiciones,
+  \[
+  \frac{\mathrm{PMg}_L}{\mathrm{PMg}_K}=\frac{I_L}{I_K}=\frac{w_L}{w_K-\frac{\mu}{1-\mu}(s-w_K)}>\frac{w_L}{w_K}.
+  \]
+  Con $s>w_K$ y $0<\mu<1$, el denominador es menor que $w_K$: la empresa usa capital hasta donde su productividad marginal es menor que la que exige el mínimo coste, como si el capital le costara $w_K-\mu(s-w_K)/(1-\mu)<w_K$. Sobrecapitaliza \eqref{eq:averch-johnson}.
+\item \emph{Casos límite}: si $s$ supera la rentabilidad sin regular, la restricción no aprieta ($\mu=0$) y no hay efecto; si $s=w_K$, el beneficio económico permitido es cero y no hay una combinación de factores determinada.\findemo
+\end{itemize}
+
+\subsection{\autor{Baron}-\autor{Myerson} con 2 tipos}\label{anexo:baron-myerson}
+
+\begin{itemize}
+\item \emph{Restricciones}. Si la empresa eficiente elige $(\overline{q},\overline{t})$, obtiene $\overline{t}-\underline{\beta}\,\overline{q}=\overline{U}+\Delta\beta\,\overline{q}$: de ahí $\mathrm{IC}_1$. Si la ineficiente elige $(\underline{q},\underline{t})$, obtiene $\underline{t}-\overline{\beta}\,\underline{q}=\underline{U}-\Delta\beta\,\underline{q}$: de ahí $\mathrm{IC}_2$. Sumando las 2, $\Delta\beta\,(\underline{q}-\overline{q})\geq 0$: la eficiente produce al menos tanto como la ineficiente.
+\item \emph{Restricciones activas}. Como cada euro de renta resta $1-\alpha>0$ de bienestar, el regulador deja la menor renta compatible: $\overline{U}=0$ ($\mathrm{PC}_2$) y $\underline{U}=\Delta\beta\,\overline{q}$ ($\mathrm{IC}_1$); $\mathrm{PC}_1$ se cumple sola.
+\item \emph{Problema reducido}:
+  \[
+  \max_{\underline{q},\overline{q}}\ \nu\big[S(\underline{q})-\underline{\beta}\,\underline{q}\big]+(1-\nu)\big[S(\overline{q})-\overline{\beta}\,\overline{q}\big]-\nu\,(1-\alpha)\,\Delta\beta\,\overline{q}.
+  \]
+\item \emph{Condiciones de primer orden}: $S'(\underline{q})=p(\underline{q})=\underline{\beta}$, y $(1-\nu)\big[p(\overline{q})-\overline{\beta}\big]=\nu\,(1-\alpha)\,\Delta\beta$, que es \eqref{eq:baron-myerson}. Subir la cantidad de la ineficiente añade eficiencia cuando ese es el tipo (probabilidad $1-\nu$), pero encarece en $\Delta\beta$ por unidad la renta que se cede a la eficiente (probabilidad $\nu$). Las de segundo orden se cumplen porque $S''=p'<0$.
+\item \emph{Comprobación de $\mathrm{IC}_2$}: $\overline{U}=0\geq\underline{U}-\Delta\beta\,\underline{q}=\Delta\beta\,(\overline{q}-\underline{q})$, porque $\underline{q}>\overline{q}$.
+\item \emph{Cierre}: si $p(0)\leq\overline{\beta}+(1-\alpha)\,\frac{\nu}{1-\nu}\,\Delta\beta$, lo óptimo es $\overline{q}=0$: no contratar con la ineficiente para no dejar renta a la eficiente. En el ejemplo ($p=100-q$, $\underline{\beta}=20$, $\overline{\beta}=40$, $\alpha=0$), si $100\leq 40+20\,\nu/(1-\nu)$, es decir, si $\nu\geq 3/4$.\findemo
+\end{itemize}
+
+\subsection{Menú de contratos de \autor{Laffont} y \autor{Tirole}}\label{anexo:laffont-tirole}
+
+\begin{itemize}
+\item \emph{Restricciones}. Si la empresa eficiente elige el contrato de la ineficiente, tiene que llegar al coste $\overline{C}=\overline{\beta}-\overline{e}$, para lo que le basta un esfuerzo $\underline{\beta}-\overline{C}=\overline{e}-\Delta\beta$, y obtiene $\overline{t}-\psi(\overline{e}-\Delta\beta)=\overline{U}+\psi(\overline{e})-\psi(\overline{e}-\Delta\beta)=\overline{U}+\Phi(\overline{e})$. De ahí $\mathrm{IC}_1$: $\underline{U}\geq\overline{U}+\Phi(\overline{e})$. Si la ineficiente imitara a la eficiente, necesitaría un esfuerzo $\underline{e}+\Delta\beta$ y obtendría $\underline{U}-\Phi(\underline{e}+\Delta\beta)$: $\mathrm{IC}_2$ es $\overline{U}\geq\underline{U}-\Phi(\underline{e}+\Delta\beta)$.
+\item \emph{Restricciones activas}. Como cada euro de renta cuesta $\lambda>0$, $\overline{U}=0$ ($\mathrm{PC}_2$) y $\underline{U}=\Phi(\overline{e})$ ($\mathrm{IC}_1$).
+\item \emph{Problema reducido}. Sustituyendo y quitando las constantes ($S$, $\underline{\beta}$, $\overline{\beta}$), el regulador elige $\underline{e}$ y $\overline{e}$ para maximizar
+  \[
+  -\nu\,(1+\lambda)\big[\psi(\underline{e})-\underline{e}\big]-\nu\,\lambda\,\Phi(\overline{e})-(1-\nu)\,(1+\lambda)\big[\psi(\overline{e})-\overline{e}\big].
+  \]
+\item \emph{Condiciones de primer orden}. Respecto a $\underline{e}$: $\nu\,(1+\lambda)\big[1-\psi'(\underline{e})\big]=0$, de donde $\psi'(\underline{e})=1$. Respecto a $\overline{e}$: $(1-\nu)\,(1+\lambda)\big[1-\psi'(\overline{e})\big]-\nu\,\lambda\,\Phi'(\overline{e})=0$, de donde
+  \[
+  \psi'(\overline{e})=1-\frac{\lambda}{1+\lambda}\cdot\frac{\nu}{1-\nu}\cdot\Phi'(\overline{e}),
+  \]
+  que es \eqref{eq:laffont-tirole}. Como $\psi$ es convexa, $\Phi'(e)=\psi'(e)-\psi'(e-\Delta\beta)>0$, así que $\psi'(\overline{e})<1$ y $\overline{e}<e^{*}$. La condición de segundo orden se cumple si $\psi'''\geq 0$, que hace a $\Phi$ convexa.
+\item \emph{Comprobación de $\mathrm{IC}_2$}: como $\underline{e}=e^{*}>\overline{e}$, $\underline{e}+\Delta\beta>\overline{e}$ y, al ser $\Phi$ creciente, $\underline{U}-\Phi(\underline{e}+\Delta\beta)=\Phi(\overline{e})-\Phi(\underline{e}+\Delta\beta)<0=\overline{U}$: la ineficiente no quiere el contrato de la eficiente.\findemo
+\item \emph{Coste proporcional a la producción}: con $C=(\beta-e)\,q$, el esfuerzo ahorra $q$ por unidad y la condición de información completa es $\psi'(e^{*})=q$ \parencite[cap.~2]{LaffontTirole1993Theory}; con un proyecto de tamaño dado, como aquí, $\psi'(e^{*})=1$.
+\item \emph{Por qué un contrato de potencia $b$ induce $\psi'(e)=b$}: con $t(C)=a-b\,(C-C^a)$ y $C=\beta-e$, la empresa maximiza $a-b\,(\beta-e-C^a)-\psi(e)$, y la condición de primer orden es $\psi'(e)=b$. Con $b=1$ se esfuerza como en el óptimo; con $b\to0$, nada.\findemo
+\item \emph{Ejemplo} ($\psi(e)=e^2/40$, $\underline{\beta}=100$, $\overline{\beta}=110$, $\nu=\tfrac12$, $\lambda=0{,}25$): $\psi'(e)=e/20$; $\Phi(e)=\big[e^2-(e-10)^2\big]/40=e/2-2{,}5$ y $\Phi'=\tfrac12$; $\psi'(\overline{e})=1-0{,}2\cdot 1\cdot\tfrac12=0{,}9$, así que $\overline{e}=18$; $\underline{U}=\Phi(18)=6{,}5$; $\overline{t}=\psi(18)=8{,}1$ y $\underline{t}=\psi(20)+6{,}5=16{,}5$. El bienestar esperado, sin $S$, es $-1{,}25\cdot 95{,}05-0{,}25\cdot 0{,}5\cdot 6{,}5=-119{,}625$, frente a $-119{,}6875$ si se pidiera $\overline{e}=20$ con una renta de $\Phi(20)=7{,}5$ (tabla~\ref{tab:ejemplo-laffont-tirole}).
+\end{itemize}
+
+\subsection{Competencia por comparación}\label{anexo:yardstick}
+
+\begin{itemize}
+\item La empresa $i$ obtiene $\Pi_i=(p_i-c_i)\,q(p_i)+T_i-R(c_i)$, con $p_i=\bar{c}_{-i}$ y $T_i=\bar{R}_{-i}$ \eqref{eq:yardstick}, que no dependen de su $c_i$. Derivando respecto a $c_i$, la condición de primer orden es $-q(\bar{c}_{-i})-R'(c_i)=0$, y la de segundo orden, $-R''(c_i)<0$, se cumple si reducir costes es cada vez más caro ($R''>0$).
+\item \emph{Equilibrio simétrico}: si todas eligen $c^{*}$, entonces $\bar{c}_{-i}=c^{*}$ y $-R'(c^{*})=q(c^{*})$. Es la misma condición que elegiría un planificador que maximiza $\int_{c}^{\infty}q(x)\,dx-R(c)$, el excedente de los consumidores con $p=c$ menos el gasto en reducir costes: el coste es el eficiente. Además, $p_i=c^{*}$ y $T_i=R(c^{*})$, así que $\Pi_i=0$: no hay rentas.
+\item Con los precios dados, $c^{*}$ es la mejor respuesta de cada empresa: es un equilibrio de \autor{Nash} \vertema{3.A.14}.\findemo
+\end{itemize}
+
+\subsection{Precio de acceso a la red}\label{anexo:acceso}
+
+\begin{itemize}
+\item Notación: $p$, precio del servicio final del incumbente; $c_a$, su coste por unidad de acceso; $c_I$, su coste propio por el resto del servicio; $c_E$, el coste propio del entrante, y $A$, el peaje que este paga por unidad de acceso.
+\item \emph{Regla del precio eficiente de los componentes}: $A$ tiene que cubrir 2 cosas, lo que cuesta dar el acceso y el margen al que renuncia el incumbente por cada cliente que pasa al entrante (su coste de oportunidad): $A=c_a+(p-c_a-c_I)=p-c_I$ \eqref{eq:ecpr}. Al entrante le compensa si $A+c_E\leq p$, es decir, si $c_E\leq c_I$.
+\item \emph{Sustitución imperfecta}: si cada unidad que vende el entrante le quita al incumbente solo $d\leq 1$ unidades (el \emph{ratio de desvío}), el coste de oportunidad se multiplica por $d$: $A=c_a+d\,(p-c_a-c_I)$ \parencite{ArmstrongDoyleVickers1996Access}. La regla simple es el caso $d=1$.
+\item \emph{Fondos públicos costosos}: si el incumbente tiene que cubrir sus costes, el precio de acceso óptimo añade al coste de oportunidad un recargo de tipo \autor{Ramsey}, mayor cuanto menos elástica es la demanda de acceso \parencite{ArmstrongDoyleVickers1996Access}.
+\item \emph{Limitación}: la regla toma $p$ como dado; si $p$ es de monopolio, el margen de monopolio pasa al precio de acceso. Por eso solo es óptima con el precio final regulado.\findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el mercado relevante en la práctica}\label{anexo:mercado-relevante}
+
+\subsection{Pérdida crítica y falacia del celofán}\label{anexo:perdida-critica}
+
+\begin{itemize}
+\item Sea $\mathcal{L}=(p-c)/p$ el margen relativo inicial, con $c$ el coste marginal (constante), y $\tau$ la subida relativa del precio que se contrasta. Si con la subida se pierde una fracción $\ell$ de las ventas, el beneficio no cambia cuando
+  \[
+  \big[p\,(1+\tau)-c\big]\,q\,(1-\ell)=(p-c)\,q\ \Longleftrightarrow\ (\mathcal{L}+\tau)(1-\ell)=\mathcal{L}\ \Longleftrightarrow\ \ell=\ell^{c}\equiv\frac{\tau}{\tau+\mathcal{L}}.
+  \]
+  Es la \emph{pérdida crítica} \parencite{HarrisSimons1989Focusing}: si la pérdida real es menor, la subida es rentable y el mercado candidato es el relevante.
+\item Con $\tau=5$~\%: si $\mathcal{L}=20$~\%, la pérdida crítica es del 20~\%; si $\mathcal{L}=50$~\%, de algo menos del 10~\%. Cuanto mayor es el margen, menos ventas basta perder para que la subida no compense.
+\item \emph{Pérdida real aproximada}: con una elasticidad $|\varepsilon_{q,p}|$ de la demanda del conjunto candidato, se pierde en torno a $\ell\approx|\varepsilon_{q,p}|\,\tau$, y el test sale rentable si $|\varepsilon_{q,p}|<1/(\tau+\mathcal{L})$.
+\item \emph{Falacia del celofán}: si el precio ya es el del monopolista, $\mathcal{L}=1/|\varepsilon_{q,p}|$ \eqref{eq:lerner}, y la condición pasa a ser $|\varepsilon_{q,p}|\,\tau+1<1$, que no se cumple con ninguna $\tau>0$: a precios de monopolio, ninguna subida adicional es rentable y el mercado sale más amplio de lo que es \parencite[nota~55]{CE2024DefinicionMercado}.\findemo
+\end{itemize}
+
+\subsection{Herramientas}\label{anexo:herramientas-mercado}
+
+\begin{itemize}
+\item \emph{Elasticidades y ratios de desvío}: el ratio de desvío del producto $i$ al $j$ es la parte de las ventas que pierde $i$ al subir su precio que se lleva $j$, $-\,(\partial q_j/\partial p_i)/(\partial q_i/\partial p_i)$; cuanto mayor, más cercanos son.
+\item \emph{Correlación de precios}: los productos del mismo mercado sufren perturbaciones parecidas y sus precios se mueven juntos \parencite{StiglerSherwin1985Extent}. Es, como mucho, una condición necesaria: 2 distribuidoras eléctricas de países distintos tienen precios correlacionados porque lo están sus costes, y no compiten.
+\item \emph{Flujos de comercio} para el mercado geográfico \parencite{ElzingaHogarty1973Problem}: una zona es un mercado si casi nada de lo que se consume en ella viene de fuera y casi nada de lo que se produce en ella sale.
+\item \emph{Pruebas cualitativas}: las características, los usos y la evolución de los precios del producto; las encuestas a clientes y competidores; los costes de cambiar de proveedor; y la sustitución por la oferta (si otras empresas pueden pasar a fabricar el producto en poco tiempo y sin grandes costes).
+\item \emph{Mercados geográficos}: pueden ser locales (estaciones de servicio, hospitales), nacionales (por la regulación, la lengua o los costes de transporte), europeos o mundiales (aviones comerciales).
+\end{itemize}
+
+\subsection{Usos de la definición}\label{anexo:usos-mercado}
+
+\begin{itemize}
+\item \emph{Acuerdos} (art.~101 del TFUE): los de menor importancia no restringen la competencia de forma sensible si las cuotas no superan el 10~\% entre competidores o el 15~\% entre no competidores \parencite[puntos~8-9]{CE2014DeMinimis}; los verticales quedan exentos por categorías hasta el 30~\% \parencite[art.~3]{UE2022RECAV}.
+\item \emph{Abuso} (art.~102): cuota del 50~\% o más como presunción de dominancia \parencite{TJUE1991AKZO}; por debajo del 40~\%, en general improbable \parencite[punto~24]{CE2026DirectricesExclusion}.
+\item \emph{Concentraciones}: cuotas e IHH antes y después \parencites{UE2004Reglamento139}{CE2004Horizontales}.
+\item \emph{Regulación ex ante de las telecomunicaciones}: la Comisión recomienda 2 mercados mayoristas para el análisis de los reguladores nacionales, el de acceso local en una ubicación fija y el de capacidad dedicada \parencite{UE2020RecomendacionMercados}; el regulador puede añadir otros si cumplen los 3 criterios (\ref{sec:aplicaciones}).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: teoría positiva, el modelo de \autor{Peltzman}}\label{anexo:peltzman}
+
+\begin{itemize}
+\item \emph{Planteamiento}. El regulador elige el precio $p$ para maximizar su apoyo político $\mathcal{A}\big(p,B(p)\big)$, con $\partial\mathcal{A}/\partial p<0$ (los consumidores le retiran apoyo cuando sube el precio) y $\partial\mathcal{A}/\partial B>0$ (la industria se lo da cuando gana más) \parencite{Peltzman1976Toward}. El beneficio de la industria, $B(p)$, es nulo con el precio competitivo, $p^c$, y máximo con el de monopolio, $p^M$.
+\item \emph{Gráficamente} (gráfico~\ref{fig:peltzman}), en el plano $(p,B)$, las curvas de iso-apoyo son crecientes: un precio más alto solo deja igual al regulador si la industria gana más. Su pendiente es la relación marginal de sustitución política, $\left.dB/dp\right|_{\mathcal{A}}=-(\partial\mathcal{A}/\partial p)/(\partial\mathcal{A}/\partial B)>0$, y el apoyo crece hacia arriba y a la izquierda.
+\item \emph{Óptimo}: la tangencia entre la curva de beneficios y la curva de iso-apoyo más alta,
+  \[
+  B'(p^{*})=-\frac{\partial\mathcal{A}/\partial p}{\partial\mathcal{A}/\partial B}>0,
+  \]
+  que es la condición de primer orden del cuerpo (\ref{sec:compromiso-captura}). Como $B'(p^{*})>0$, el precio está en el tramo creciente del beneficio: $p^c<p^{*}<p^M$. El regulador no entrega todo a la industria (la teoría de la captura pura de \autor{Stigler}) ni todo a los consumidores (la teoría normativa): reparte.
+\item \emph{Implicación}: la regulación es más probable en las industrias más competitivas o más monopolísticas, donde uno de los 2 grupos tiene más que ganar con ella \parencite{Peltzman1976Toward}.\findemo
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Modelo de \autor{Peltzman}: el regulador elige un precio intermedio entre el de competencia y el de monopolio}\label{fig:peltzman}
+\grafico[0.55\textwidth]{peltzman}
+\fuente{elaboración propia a partir de \textcite{Peltzman1976Toward}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: marco normativo e instituciones de la regulación}\label{anexo:marco-normativo}
+
+\subsection{Instituciones regulatorias}\label{anexo:instituciones}
+
+\begin{itemize}
+\item Los Estados combinan varios instrumentos:
+  \begin{itemize}
+  \item la \emph{legislación}, que regula directamente, pero choca con la falta de conocimientos técnicos de los legisladores, su vulnerabilidad ante los grupos organizados y el peso del corto plazo;
+  \item los \emph{contratos de concesión}, que venden a una empresa el derecho a explotar el monopolio durante un tiempo (\ref{sec:competencia-por-mercado});
+  \item las \emph{comisiones reguladoras independientes}, con pocos miembros que deciden con el apoyo de equipos técnicos; más independencia de los poderes ejecutivo y legislativo suele asociarse a mejores resultados, porque protege el compromiso (\ref{sec:compromiso-captura});
+  \item la \emph{provisión directa} por una empresa pública, habitual en Europa antes de las privatizaciones de los años 80 y 90 \vertema{4.B.15}.
+  \end{itemize}
+\item En España, desde la Ley 3/2013 un solo organismo, la CNMC, vela por la competencia en toda la economía y supervisa a la vez los sectores regulados: energía, telecomunicaciones y audiovisual, ferrocarril y aeropuertos, y correos \parencite{Ley3_2013CNMC}.
+\item En la Unión Europea, la Comisión aplica los arts.~101 y 102 del TFUE y el control de las concentraciones \parencites{UE2016TFUE}{UE2004Reglamento139}, y desde 2023 designa y supervisa a los guardianes de acceso de la DMA \parencite{UE2022DMA}.
+\item En el Reino Unido, cada sector tiene su regulador independiente; el de la energía, Ofgem, fija los ingresos de las redes con el modelo RIIO \parencite{Ofgem2025RIIO3ET}.
+\end{itemize}
+
+\subsection{Normas de referencia}\label{anexo:normas}
+
+\begin{itemize}
+\item \emph{Unión Europea}:
+  \begin{itemize}
+  \item Tratado de Funcionamiento de la Unión Europea, arts.~101 (acuerdos), 102 (abuso de posición dominante), 106 (empresas públicas y servicios de interés económico general) y 107-109 (ayudas de Estado) \parencite{UE2016TFUE};
+  \item Reglamento (CE) 139/2004, de control de las concentraciones \parencite{UE2004Reglamento139}, y las Directrices sobre concentraciones horizontales de 2004, en revisión \parencites{CE2004Horizontales}{CE2026RevisionMerger};
+  \item Reglamento (UE) 2022/720, de exención por categorías de los acuerdos verticales \parencite{UE2022RECAV}, y Comunicación \emph{de minimis} de 2014 \parencite{CE2014DeMinimis};
+  \item Comunicación de 2024 sobre la definición del mercado de referencia \parencite{CE2024DefinicionMercado} y Directrices de 2026 sobre los abusos excluyentes, que sustituyen a las Orientaciones de 2009 \parencite{CE2026DirectricesExclusion};
+  \item Reglamento (UE) 2022/1925, de Mercados Digitales \parencite{UE2022DMA};
+  \item Directiva (UE) 2018/1972, Código Europeo de las Comunicaciones Electrónicas \parencite{UE2018CECE}, y Recomendación (UE) 2020/2245 sobre los mercados pertinentes \parencite{UE2020RecomendacionMercados};
+  \item Directiva 2012/34/UE, del espacio ferroviario europeo único (cánones) \parencite{UE2012Directiva34}.
+  \end{itemize}
+\item \emph{España}:
+  \begin{itemize}
+  \item Ley 15/2007, de Defensa de la Competencia \parencite{BOE2007LDC}, y Ley 3/2013, de creación de la CNMC \parencite{Ley3_2013CNMC} \vertema{4.A.15};
+  \item Ley 24/2013, del Sector Eléctrico: actividades reguladas, separación de actividades y acceso de terceros a las redes \parencite{Ley24_2013SectorElectrico};
+  \item Ley 38/2015, del Sector Ferroviario \parencite{BOE2015LSF}, y Ley 11/2022, General de Telecomunicaciones \parencite{Ley11_2022Telecomunicaciones};
+  \item DORA 2027-2031 de Aena \parencite{BOE2026DORA};
+  \item circulares de la CNMC: 2/2019 (tasa de retribución financiera) \parencite{CNMC2019Circular2} y su reforma, la 9/2025 \parencite{CNMC2025Circular9}; 8/2025, de la retribución de la distribución eléctrica \parencite{CNMC2025Circular8}; 3/2020, de los peajes eléctricos \parencite{CNMC2020Circular3}; 5/2026, de la tasa de retribución del gas \parencite{CNMC2026Circular5};
+  \item Ley 2/2015, de desindexación de la economía española \parencite{BOE2015Desindexacion}, y Real Decreto 55/2017 \parencite{BOE2017RD55}.
+  \end{itemize}
+\item \emph{Estados Unidos}: leyes Sherman (1890) y Clayton (1914); directrices de concentraciones de 1982 y 2023 \parencites{DOJ1982Merger}{DOJFTC2023Merger} \vertema{3.A.15}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: qué estudia cada tema del bloque}\label{anexo:bloque}
+
+\begin{itemize}
+\item \emph{Competencia perfecta en un mercado} \vertema{3.A.16}: equilibrio parcial, plazos y bienestar medido con excedentes; la lista común de supuestos de las estructuras de mercado.
+\item \emph{Este tema}: el poder de mercado y su regulación óptima, también con información asimétrica, y la teoría positiva de la regulación (captura).
+\item \emph{Equilibrio general} \vertema{3.A.21}: la competencia perfecta en todos los mercados a la vez: excesos de demanda, ley de \autor{Walras}, existencia, unicidad y estabilidad.
+\item \emph{Teoremas del bienestar} \vertema{3.A.22}: el óptimo de \autor{Pareto}, los 2 teoremas fundamentales con todos sus supuestos y su demostración, y el \emph{second best}.
+\item \emph{Fallos de mercado} \vertema{3.A.23}: las externalidades y los bienes públicos, cómo puede intervenir el sector público y los fallos del propio sector público.
+\item \emph{Funciones de bienestar social y elección colectiva} \vertema{3.A.24}: cómo elegir entre los óptimos y cómo decide la sociedad (votación, teorema de \autor{Arrow}).
+\item \emph{Cambio climático} \vertema{3.B.31}: la mayor externalidad global y los acuerdos y medidas para hacerle frente.
+\item En el cuarto ejercicio, los mecanismos de decisión del sector público y la burocracia \vertema{4.B.2}, la evaluación de políticas \vertema{4.B.6}, la imposición indirecta y la fiscalidad verde \vertema{4.B.13}, el federalismo fiscal \vertema{4.B.14} y la empresa pública \vertema{4.B.15}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: aspectos para el test y preguntas del tribunal}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test}.
+\end{anotaciones}
+
+\paragraph{Lo que se suele preguntar en el test}
+
+\begin{itemize}
+\item \emph{Índice de \autor{Lerner}}: $\mathcal{L}=(p-\mathrm{CMg})/p=1/|\varepsilon_{q,p}|$ en el óptimo del monopolista; entre 0 y 1; el monopolista opera en el tramo elástico ($|\varepsilon_{q,p}|>1$).
+\item \emph{IHH}: $\sum_i(100\,s_i)^2$, de 0 a 10.000; con $n$ empresas iguales, $10.000/n$. Monopolio: 10.000.
+\item \emph{SSNIP}: subida del 5 al 10~\%, «pequeña pero significativa y no transitoria»; el mercado relevante es el \emph{menor} conjunto en el que la subida es rentable. Pérdida crítica: $\ell^{c}=\tau/(\tau+\mathcal{L})$. \emph{Celofán}: con precios ya de monopolio, el mercado sale demasiado amplio. SSNDQ: la variante con la calidad, para productos de precio cero.
+\item \emph{Umbrales}: 50~\% presunción de dominancia \parencite{TJUE1991AKZO}; por debajo del 40~\%, dominancia improbable \parencite[punto~24]{CE2026DirectricesExclusion}; 30~\% acuerdos verticales \parencite{UE2022RECAV}; 10 y 15~\% \emph{de minimis} \parencite{CE2014DeMinimis}.
+\item \emph{Ramsey-Boiteux}: el margen crece con $\lambda$; con $\lambda=0$, $p=\mathrm{CMg}$; con $\lambda\to\infty$, monopolio.
+\item \emph{Averch-Johnson}: sobrecapitalización con $s>w_K$; $\mathrm{RMST}_{LK}>w_L/w_K$; $0<\mu<1$.
+\item \emph{Baron-Myerson}: no hay distorsión arriba; la ineficiente produce menos y sin renta; la eficiente se queda $\Delta\beta\,\overline{q}$.
+\item \emph{Laffont-Tirole}: $\psi'(\underline{e})=1$, $\psi'(\overline{e})<1$; renta $\Phi(\overline{e})=\psi(\overline{e})-\psi(\overline{e}-\Delta\beta)$; $b=1$ precio fijo (para la eficiente), $b\to0$ coste incrementado; dilema incentivos frente a extracción de rentas.
+\item \emph{Price cap}: $p_{t+1}\leq p_t(1+\mathrm{IPC}_t-X)$; contrato de alta potencia; \autor{Littlechild} (1983), British Telecom, RPI$-$3 en 1984. Trampa: en el DORA de Aena la $X$ (+0,33~\%) se suma.
+\item \emph{Yardstick}: $p_i=\bar{c}_{-i}$; incentivos de precio fijo; riesgo de colusión.
+\item \emph{ECPR}: $A=p-c_I$; solo entran rivales al menos tan eficientes.
+\item \emph{Peltzman}: $p^c<p^{*}<p^M$.
+\item \emph{DMA}: Reglamento (UE) 2022/1925, aplicable desde mayo de 2023, con multas de hasta el 10~\% (el 20~\% si reincide) \parencite{UE2022DMA}; 7 guardianes de acceso y 23 servicios básicos \parencite{CE2026GuardianesDMA}.
+\item \emph{Fechas}: \autor{Dupuit} (1844), \autor{Hotelling} (1938), \autor{Coase} (1946), \autor{Harberger} (1954), \autor{Boiteux} (1956), \autor{Averch} y \autor{Johnson} (1962), \autor{Leibenstein} (1966), \autor{Demsetz} (1968), \autor{Stigler} (1971), \autor{Peltzman} (1976), \autor{Williamson} (1976), \autor{Loeb} y \autor{Magat} (1979), \autor{Weitzman} (1980), \autor{Baron} y \autor{Myerson} (1982), directrices de Estados Unidos (1982), \autor{Littlechild} (1983), \autor{Becker} (1983), \autor{Shleifer} (1985), \autor{Laffont} y \autor{Tirole} (1986, 1987, 1991, 1993), \autor{Armstrong}, \autor{Doyle} y \autor{Vickers} (1996), \autor{Rochet} y \autor{Tirole} (2003), Nobel de \autor{Tirole} (2014), Comunicación de la Comisión (2024).
+\end{itemize}
+
+\paragraph{Preguntas probables del tribunal}
+
+\begin{itemize}
+\item ¿Por qué el índice de \autor{Lerner} no basta para medir el poder de mercado? ¿Y la cuota?
+\item ¿Qué es la falacia del celofán y cómo se evita?
+\item ¿Qué diferencia hay entre la defensa de la competencia y la regulación? ¿Cuándo se usa cada una?
+\item ¿Por qué el regulador no fija sin más $p=\mathrm{CMg}$ en un monopolio natural?
+\item ¿Qué es el efecto \autor{Averch}-\autor{Johnson}? ¿Lo ve en la retribución de las redes españolas?
+\item ¿Qué es la renta informativa y por qué el regulador acepta distorsionar al tipo ineficiente?
+\item En el modelo de \autor{Laffont} y \autor{Tirole}, ¿qué contrato elige la empresa eficiente y por qué?
+\item ¿Por qué el \emph{price cap} da incentivos a reducir costes? ¿Qué problemas tiene? ¿Es el DORA de Aena un \emph{price cap}?
+\item ¿Qué supuestos necesita la competencia por comparación? ¿Qué riesgo tiene?
+\item ¿Por qué, con riesgo de captura, conviene un contrato de baja potencia?
+\item ¿Por qué la DMA designa a los guardianes con umbrales en lugar de definir mercados?
+\end{itemize}
+
+\nocite{ViscusiHarringtonVernon2005Economics,BaldwinCaveLodge2012Understanding,ArmstrongCowanVickers1994Regulatory}
+
+\bibliografia
+\end{document}

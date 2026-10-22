@@ -1,0 +1,31 @@
+% Menú de contratos lineales de Laffont y Tirole (3.A.20, II.3), esquemático.
+%   Transferencia t frente al coste observado C, t(C) = a - b(C - C^a).
+%   Coordenadas con las proporciones del ejemplo de Redes del Valle (sin escala en
+%   los ejes): x = (C - 70)·0,3; y = t·0,25.
+%   Precio fijo (b = 1): t = 96,5 - C, pendiente -1; la eficiente elige
+%   E = (C̲, t̲) = (80; 16,5).
+%   Baja potencia (b -> 0; aquí b = 0,1): t = 8,1 - 0,1(C - 92); la ineficiente elige
+%   I = (C̄, t̄) = (92; 8,1). Se cortan en C ≈ 88,1: a la izquierda del corte la
+%   eficiente prefiere la recta empinada.
+% Elaboración propia a partir de Laffont y Tirole (1993, cap. 1).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes
+  \capa{1}{\ejes{$C$}{$t$}{9.6}{6.4}}
+  % 2: contrato de precio fijo (b = 1) y su rótulo, pegado a la recta
+  \capa{2}{\draw[curva1] (0.9,5.875) -- (7.5,0.375);}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (1.05,5.75) {$b=1$: precio fijo};}
+  % 3: la eficiente lo elige
+  \capa{3}{\node[punto,label={[etiqueta]above right:$E$}] (E) at (3,4.125) {};}
+  \capa{3}{\proyeccion{(3,4.125)}{$\underline{C}$}{$\underline{t}$}}
+  % 4: contrato de baja potencia (b -> 0) y su rótulo
+  \capa{4}{\draw[curva3] (0.6,2.525) -- (9,1.825);}
+  \capa{4}{\node[etiqueta,text=tceeverde,anchor=north east,align=right] at (9.1,1.7) {$b\to 0$: coste\\ incrementado};}
+  % 5: la ineficiente lo elige
+  \capa{5}{\node[punto,label={[etiqueta]above:$I$}] (I) at (6.6,2.025) {};}
+  \capa{5}{\proyeccion{(6.6,2.025)}{$\overline{C}$}{$\overline{t}$}}
+\end{tikzpicture}
+\end{document}

@@ -1,7 +1,7 @@
 # Equilibrio de Lindahl: precios personalizados del bien público (Wicksell, 1896; Lindahl, 1919)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.23** (Bienestar II: bienes públicos; revisado el 21/10/2026, II.2.3 `sec:provision-publica`, «Según el beneficio: los precios de Lindahl», con a)-c)). Motivo: es una de las 3 respuestas a cómo financiar el bien público (capacidad de pago, beneficio, mecanismo), justo después de la condición de Samuelson.
-- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.B.7 (resumen: el principio del beneficio como principio impositivo y su límite, la revelación), 3.A.24 (mención: unanimidad de Wicksell y elección colectiva de los bienes públicos), 4.B.2 (mención: provisión de bienes públicos por decisión colectiva).
+- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.B.7 (resumen: el principio del beneficio como principio impositivo y su límite, la revelación), 3.A.24 (mención; hecho, 22/10/2026: la unanimidad de Wicksell en III.2.4, con `\vertema{3.A.23}`), 4.B.2 (mención: provisión de bienes públicos por decisión colectiva).
 - **Manuales de referencia:** Wicksell (1896), *Finanztheoretische Untersuchungen*; Lindahl (1919), *Die Gerechtigkeit der Besteuerung*; Samuelson (1954), *REStat*; Mas-Colell, Whinston y Green, cap. 11.C (ejercicio) y 16.G; Atkinson y Stiglitz, *Lectures on Public Economics*, lección 16; Johansen (1963).
 
 ## Presentación de referencia
@@ -24,7 +24,7 @@ Sumando, $\mathrm{RMS}^A_{GX}+\mathrm{RMS}^B_{GX}=\mathrm{RMT}_{GX}$: cumple la 
 |---|---|---|---|---|
 | 3.A.23 | Provisión pública de bienes públicos | desarrollo (hecho, 21/10/2026) | Wicksell y Lindahl; definición del equilibrio con $p^i_G$; cumple Samuelson; ventaja (beneficio) y problemas (revelación, precio-aceptación); sobre el gráfico de Bowen | — |
 | 4.B.7 | Principios impositivos | resumen | El principio del beneficio llevado al límite: precios personalizados que suman el coste marginal; por qué no se aplica (revelación, polizón); `\vertema{3.A.23}` | La derivación |
-| 3.A.24 | Elección colectiva | mención | Unanimidad de Wicksell (protege a cada uno pero da poder de veto) y Lindahl como solución «de mercado» frente a la votación; `\vertema{3.A.23}` | El equilibrio |
+| 3.A.24 | Elección colectiva | mención (hecho, 22/10/2026) | Unanimidad de Wicksell (protege a cada uno pero da poder de veto) y Lindahl como solución «de mercado» frente a la votación; `\vertema{3.A.23}` | El equilibrio |
 | 4.B.2 | Elección pública | mención | Decisión colectiva sobre el bien público; Bowen y Lindahl solo nombrados con remisión | El gráfico |
 
 ## Divergencias encontradas en el temario actual

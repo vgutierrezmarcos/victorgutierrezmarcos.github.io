@@ -1,0 +1,37 @@
+% Mayoría óptima de Buchanan y Tullock (1962) (3.A.24, III.2.4).
+% Gráfico de referencia de la ficha del canon buchanan-tullock-mayoria-optima.
+% M: mayoría exigida, de 0 a 1 (0 % a 100 %), 5 cm; costes: 0,45 cm por unidad.
+%   Costes externos CE(M) = 8(1 - M)^2: decrecientes, nulos con unanimidad (M = 1).
+%   Costes de decisión CD(M) = 6M^3: crecientes.
+%   Suma: d/dM = -16(1 - M) + 18M^2 = 0  ->  M* = (-16 + sqrt(1408))/36 = 0,5979;
+%   CE(M*) = 1,294, CD(M*) = 1,282, mínimo de la suma = 2,576.
+% El original (dibujado a mano) tenía los nombres de los 2 costes cambiados: aquí,
+% como en el texto, los externos bajan y los de decisión suben.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=5cm,y=0.45cm,
+    declare function={ce(\m)=8*(1-\m)^2; cd(\m)=6*\m^3;}]
+  \def\Mopt{0.5979}
+  % 1: ejes, con las marcas del 50 % y del 100 %
+  \capa{1}{\draw[eje] (0,0) -- (1.15,0) node[right] {$M$};
+    \draw[eje] (0,0) -- (0,9) node[left] {costes};
+    \node[below left] at (0,0) {$0$};
+    \draw (0.5,0.15) -- (0.5,-0.15) node[below] {$50\,\%$};
+    \draw (1,0.15) -- (1,-0.15) node[below] {$100\,\%$};
+    \node[below,font=\small] at (0.3,-1.6) {mayoría exigida};}
+  % 2: costes externos, decrecientes
+  \capa{2}{\draw[curva1] plot[domain=0:1,samples=60] (\x,{ce(\x)});
+    \node[etiqueta,right,text=tceemorado,align=left] at (0.03,7.9) {$\mathrm{CE}(M)$: costes externos};}
+  % 3: costes de decisión, crecientes
+  \capa{3}{\draw[curva2] plot[domain=0:1,samples=60] (\x,{cd(\x)});
+    \node[etiqueta,left,text=tceeazul,align=right] at (0.97,6.2) {costes de decisión: $\mathrm{CD}(M)$};}
+  % 4: suma, en U
+  \capa{4}{\draw[curva4] plot[domain=0:1,samples=80] (\x,{ce(\x)+cd(\x)});
+    \node[etiqueta,text=tceedorado] at (0.6,4.4) {$\mathrm{CE}+\mathrm{CD}$};}
+  % 5: mínimo de la suma: mayoría óptima M*
+  \capa{5}{\node[punto] (E) at (\Mopt,{ce(\Mopt)+cd(\Mopt)}) {};
+    \draw[guia] (E) -- (\Mopt,0) node[below=13pt,inner sep=0pt,text=black] {$M^*$};}
+\end{tikzpicture}
+\end{document}

@@ -1,7 +1,7 @@
 # Mecanismo de Clarke-Groves
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.23** (Bienestar II: bienes públicos; revisado el 21/10/2026, II.2.3 «Mecanismo de Clarke-Groves», con a)-c), la tabla `tab:clarke-groves` y el anexo `anexo:clarke-groves` con los mecanismos de Groves y el pivote de Clarke).
-- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 3.A.24 (mención: mecanismo no manipulable frente a Gibbard-Satterthwaite; hoy un título «Ejemplo: Mecanismo de Clarke y Groves» sin contenido), 4.B.7 (mención: principio del beneficio). Es una aplicación del diseño de mecanismos (ficha `diseno-mecanismos`). 3.A.14 (mención; hecho, 19/10/2026: los mecanismos VCG en el diseño de mecanismos, III.2; la subasta de segundo precio como su caso más sencillo; remite a 3.A.23). 3.A.22 (mención; hecho, 21/10/2026: VCG en estrategias dominantes en la tabla `tab:mecanismos` de III.3, con el presupuesto no equilibrado de Green y Laffont).
+- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 3.A.24 (mención; hecho, 22/10/2026: salida a Gibbard-Satterthwaite con utilidad cuasilineal y pagos, III.3, con `\vertema{3.A.23}` y `\vertema{3.A.14}`), 4.B.7 (mención: principio del beneficio). Es una aplicación del diseño de mecanismos (ficha `diseno-mecanismos`). 3.A.14 (mención; hecho, 19/10/2026: los mecanismos VCG en el diseño de mecanismos, III.2; la subasta de segundo precio como su caso más sencillo; remite a 3.A.23). 3.A.22 (mención; hecho, 21/10/2026: VCG en estrategias dominantes en la tabla `tab:mecanismos` de III.3, con el presupuesto no equilibrado de Green y Laffont); 3.A.20 (mención; hecho, 22/10/2026: Loeb-Magat como mecanismo de Groves, con `\vertema{3.A.14}` `\vertema{3.A.23}`).
 - **Manuales de referencia:** Vickrey (1961); Clarke (1971); Groves (1973); Groves y Ledyard (1977); Green y Laffont (1977), *Econometrica*; Mas-Colell, Whinston y Green, cap. 23.C.
 
 ## Presentación de referencia
@@ -24,12 +24,13 @@ $$H_i=\Big|\sum_{j\neq i}(\tilde v_j-c_j)\Big|\ \text{si es pivotal};\qquad H_i=
 |---|---|---|---|---|
 | 3.A.23 | Revelación de preferencias | desarrollo (hecho, 21/10/2026) | Regla, `eq:clarke`, ejemplo de la mota con su tabla, propiedades y límites; Groves y Clarke en el anexo | — |
 | 3.A.22 | *Second best* con información | mención (hecho, 21/10/2026) | VCG en la tabla `tab:mecanismos`: eficiente y veraz, sin presupuesto equilibrado (Green y Laffont, 1977) | El ejemplo |
-| 3.A.24 | Elección colectiva | mención | Mecanismo no manipulable frente a Gibbard-Satterthwaite (dominio restringido a cuasilineales); `\vertema{3.A.23}` | El ejemplo |
+| 3.A.24 | Elección colectiva | mención (hecho, 22/10/2026) | Mecanismo no manipulable frente a Gibbard-Satterthwaite (dominio restringido a cuasilineales); `\vertema{3.A.23}` | El ejemplo |
 | 4.B.7 | Principio del beneficio | mención | Dificultad de revelar la disposición a pagar | — |
 | 3.A.14 | Diseño de mecanismos | mención (hecho, 19/10/2026) | VCG: cada uno paga el daño que su presencia causa a los demás; decir la verdad es dominante; segundo precio como caso más sencillo; necesitan pagos monetarios (Gibbard-Satterthwaite) | El ejemplo numérico |
+| 3.A.20 | Regulación sin conocer los costes | mención (hecho, 22/10/2026) | Loeb-Magat: pagar a la empresa todo el EC la hace reclamante residual, como un mecanismo de Groves | El mecanismo pivote |
 
 ## Divergencias encontradas en el temario actual
 - Notación: $c_i$, $v_i$ (como las valoraciones de las subastas del 3.A.14), $\tilde v_i$ declaradas, $H_i$ impuesto de Clarke, $\tau_i$ transferencia de Groves (no $t_i$, que en el 3.A.14 son los tipos).
 - 3.A.14 (revisado): dice «decir la verdad es una estrategia dominante y la decisión es eficiente» (l. 943) sin añadir que el presupuesto no se equilibra: matiz opcional en `pendientes-coherencia.md`.
 - Resuelto en el 3.A.23 (21/10/2026): texto copiado sin ejemplo propio; Clarke-Groves sin terminar.
-- 3.A.24 (sin revisar): título sin contenido; al revisarlo, mención y `\vertema{3.A.23}`.
+- 3.A.24: resuelto en su revisión (22/10/2026): el título «Ejemplo: Clarke y Groves» sin contenido desaparece; mención en III.3 con `\vertema{3.A.23}`.

@@ -1,0 +1,27 @@
+% Test del monopolista hipotético (SSNIP) como bucle (3.A.20, I.2).
+% Elaboración propia a partir de U.S. DoJ (1982) y Comisión Europea (2024).
+% Estilo de cajas de 3A17/graficos/algoritmo-regulacion.tex.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=3pt,align=center,
+                 minimum height=1.0cm,inner sep=5pt,font=\footnotesize,text width=3.6cm},
+    pregunta/.style={caja,fill=white,very thick,font=\footnotesize\itshape},
+    une/.style={->,thick,tceemorado},
+    papel/.style={font=\scriptsize,inner sep=1.5pt,fill=white,align=center}]
+  % 1: mercado candidato
+  \capa{1}{\node[caja] (C) at (0,0) {Mercado candidato:\\ producto y zona\\ de las empresas};}
+  % 2: la pregunta del test
+  \capa{2}{\node[pregunta] (P) at (5.2,0) {¿Le compensa a un monopolista\\ hipotético subir el precio\\ un 5-10~\% de forma duradera?};}
+  \capa{2}{\draw[une] (C) -- (P);}
+  % 3: si no compensa, se amplía el mercado
+  \capa{3}{\node[caja,draw=tceerojo,fill=tceerojo!8] (A) at (5.2,-2.9) {Añadir el sustitutivo\\ más cercano\\ (producto o zona)};}
+  \capa{3}{\draw[une,tceerojo] (P) -- node[papel,text=tceerojo] {no: los clientes\\ se van} (A);}
+  \capa{3}{\draw[une,tceerojo] (A.west) -| (C.south);}
+  % 4: si compensa, es el mercado relevante
+  \capa{4}{\node[caja,draw=tceeverde,fill=tceeverde!10] (M) at (10.4,0) {Mercado relevante:\\ el menor conjunto\\ en que sí compensa};}
+  \capa{4}{\draw[une,tceeverde] (P) -- node[papel,text=tceeverde] {sí} (M);}
+\end{tikzpicture}
+\end{document}

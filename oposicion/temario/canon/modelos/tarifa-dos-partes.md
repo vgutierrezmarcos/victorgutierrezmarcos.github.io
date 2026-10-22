@@ -1,7 +1,7 @@
 # Tarifa en dos partes (Coase, 1946; Oi, 1971) y tarifas de punta y valle (Boiteux, 1949; Steiner, 1957)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (discriminación de precios, II.1.2; regulación del monopolio natural, II.2.3 y anexo A; revisado el 17/10/2026). Se queda en el 3.A.17 aunque prospere la propuesta D1 de pasar al 3.A.20 la regulación con información asimétrica.
-- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones); 4.A.5 (tarifas eléctricas) podría citarlo.
+- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones); 4.A.5 (tarifas eléctricas) podría citarlo; 3.A.20 (resumen; hecho, 22/10/2026: I.3, T(q) = A + pq con A = CF/n y p = CMg, Coase, 1946, y Oi, 1971; punta y valle **de palabra**, sin p_p = b + β, para que β solo sea la eficiencia intrínseca; términos de potencia y de energía de la factura eléctrica).
 - **Manuales de referencia:** Coase (1946); Oi (1971), *QJE*; Boiteux (1949) y Steiner (1957), *QJE*, para punta y valle; Tirole, cap. 3; Viscusi, Harrington y Vernon, cap. 12.
 
 ## Presentación de referencia (3.A.17)
@@ -20,6 +20,7 @@ $$p-c=\frac{n_2\,[q_2(p)-q_1(p)]}{-[n_1q_1'(p)+n_2q_2'(p)]};$$
 | 3.A.17 | Discriminación y regulación | desarrollo (hecho, 17/10/2026) | Se cuenta **una vez** como 2.º grado (II.1.2, 3 casos) y en II.2.3 se remite a ella con A = CF/n; punta y valle en una viñeta y en el anexo A | — |
 | 4.B.15 | Precios públicos | resumen (hoy mención; D139 (13/10/2026)) | Cuota fija que cubre el déficit y precio igual al CMg; punta y valle con p_p = b + β; aplicación (luz, agua, transporte) | Gráfico |
 | 4.A.5 | Sector energético | mención (prevista) | Periodos de punta, llano y valle de los peajes | Teoría |
+| 3.A.20 | Segundos óptimos | resumen (hecho, 22/10/2026) | Tarifa en dos partes con A = CF/n y p = CMg; punta y valle de palabra (Boiteux, 1949; Steiner, 1957); factura eléctrica (CNMC, Circular 3/2020) | Las fórmulas de punta y valle (p_p = b + β) |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.17 original: «CF/n + CMg·q» como tarifa de punta y la tarifa en dos partes como no eficiente; porcentajes de la factura sin fuente. **Resuelto** (17/10/2026).

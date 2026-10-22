@@ -1,7 +1,7 @@
 # Medición de la eficiencia: Farrell, frontera estocástica y análisis envolvente de datos (DEA)
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.12** (Teoría de los costes … Aplicaciones empíricas; revisado el 14/10/2026, IV.3) — es la aplicación empírica de la función de costes como frontera y la medida de la ineficiencia X. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.12 (desarrollo; hecho); previstos (mención, al revisarlos): 3.A.20 (regulación por comparación), 3.A.17 (con `yardstick`, en el anexo A; hecho, 17/10/2026), 3.A.45 (productividad: cambio técnico frente a cambio en la eficiencia, Malmquist), 4.B.15 (eficiencia de la empresa pública), 4.A.5 (regulación de redes eléctricas). La valoración remite al 3.A.15 («incentivos y organización»): cumplido en I.2 del 3.A.15 revisado (20/10/2026: gerencialistas, ineficiencia X y agencia), que no cita la frontera; no es usuario.
+- **Temas que lo usan:** 3.A.12 (desarrollo; hecho); 3.A.20 (mención; hecho, 22/10/2026: III.1, DEA y SFA en la competencia por comparación y el caso alemán, `\vertema{3.A.12}`); previstos (mención, al revisarlos): 3.A.17 (con `yardstick`, en el anexo A; hecho, 17/10/2026), 3.A.45 (productividad: cambio técnico frente a cambio en la eficiencia, Malmquist), 4.B.15 (eficiencia de la empresa pública), 4.A.5 (regulación de redes eléctricas). La valoración remite al 3.A.15 («incentivos y organización»): cumplido en I.2 del 3.A.15 revisado (20/10/2026: gerencialistas, ineficiencia X y agencia), que no cita la frontera; no es usuario.
 - **Manuales de referencia:** Farrell (1957), *JRSS A*; Aigner, Lovell y Schmidt (1977); Meeusen y van den Broeck (1977); Jondrow et al. (1982); Charnes, Cooper y Rhodes (1978); Banker, Charnes y Cooper (1984); Battese y Coelli (1995); Kumbhakar y Lovell (2000); Coelli et al. (2005), *An Introduction to Efficiency and Productivity Analysis*.
 
 ## Presentación de referencia
@@ -24,7 +24,7 @@ Gráficos de referencia (3.A.12): `oposicion/temario/fuentes/3A12/graficos/farre
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.12 | ¿Minimizan costes las empresas? Medición | desarrollo (hecho, 14/10/2026) | Todo lo anterior (IV.3, 2 minutos en el cante) | — |
-| 3.A.20 | Regulación con información asimétrica, aplicaciones | mención (prevista) | Cómo se fija el precio o el ingreso permitido con DEA y SFA (regulación alemana) | Farrell y los métodos (remitir a 3.A.12) |
+| 3.A.20 | Competencia por comparación | mención (hecho, 22/10/2026) | Cómo se fija el ingreso permitido con DEA y SFA (Alemania: el más favorable de los 2, mínimo del 60 %), con las mismas palabras que el 3.A.12 | Farrell y los métodos (remitir a 3.A.12) |
 | 3.A.17 | Regulación del monopolio natural | mención (hecho, 17/10/2026) | Anexo A, `yardstick`: la comparación exige medir la eficiencia relativa con DEA o frontera estocástica; caso alemán (el valor más favorable de los 2, mínimo del 60 %); remite a 3.A.12 | Los métodos |
 | 3.A.45 | Productividad total de los factores | mención (prevista) | Malmquist: cambio técnico frente a acercamiento a la frontera | — |
 | 4.B.15, 4.A.5 | Empresa pública; sector eléctrico | mención (prevista) | Eficiencia comparada de empresas públicas y distribuidoras | — |

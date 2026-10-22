@@ -1,0 +1,42 @@
+% Curvas de indiferencia social de la familia isoelástica (3.A.24, II.3): 3 paneles.
+% Izquierda, utilitarista (epsilon = 0): rectas U_A + U_B = k, k = 3, 5, 7 (escala 0,4 cm).
+% Centro, intermedia (epsilon = 1, Bernoulli-Nash): hipérbolas U_A U_B = k, k = 2, 4, 8 (0,75 cm).
+% Derecha, rawlsiana (epsilon -> infinito): curvas en L con los vértices (1,1), (2,2), (3,3)
+%   en la bisectriz (0,75 cm). Los 3 paneles miden lo mismo en el papel.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes de los 3 paneles
+  \capa{1}{\begin{scope}[x=0.4cm,y=0.4cm]\ejes{$U_A$}{$U_B$}{8.4}{8.4}\end{scope}}
+  \capa{1}{\begin{scope}[xshift=4.6cm,x=0.75cm,y=0.75cm]\ejes{$U_A$}{$U_B$}{4.5}{4.5}\end{scope}}
+  \capa{1}{\begin{scope}[xshift=9.2cm,x=0.75cm,y=0.75cm]\ejes{$U_A$}{$U_B$}{4.5}{4.5}\end{scope}}
+  % 2: bisectrices
+  \capa{2}{\draw[guia,x=0.4cm,y=0.4cm] (0,0) -- (7.6,7.6);}
+  \capa{2}{\draw[guia,xshift=4.6cm,x=0.75cm,y=0.75cm] (0,0) -- (4.05,4.05);}
+  \capa{2}{\draw[guia,xshift=9.2cm,x=0.75cm,y=0.75cm] (0,0) -- (4.05,4.05);}
+  % 3: utilitarista: rectas de pendiente -1
+  \begin{scope}[x=0.4cm,y=0.4cm]
+    \capa{3}{\draw[curva4] (0,3) -- (3,0) node[etiqueta,above right,text=black] {$W_1$};}
+    \capa{3}{\draw[curva4] (0,5) -- (5,0) node[etiqueta,above right,text=black] {$W_2$};}
+    \capa{3}{\draw[curva4] (0,7) -- (7,0) node[etiqueta,above right,text=black] {$W_3$};}
+  \end{scope}
+  % 4: intermedia: hipérbolas U_A U_B = k
+  \begin{scope}[xshift=4.6cm,x=0.75cm,y=0.75cm]
+    \capa{4}{\draw[curva4] plot[domain=0.47:4.2,samples=80] (\x,{2/\x}) node[etiqueta,right,text=black] {$W_1$};}
+    \capa{4}{\draw[curva4] plot[domain=0.94:4.2,samples=80] (\x,{4/\x}) node[etiqueta,right,text=black] {$W_2$};}
+    \capa{4}{\draw[curva4] plot[domain=1.88:4.2,samples=80] (\x,{8/\x}) node[etiqueta,right,text=black] {$W_3$};}
+  \end{scope}
+  % 5: rawlsiana: curvas en L con el vértice en la bisectriz
+  \begin{scope}[xshift=9.2cm,x=0.75cm,y=0.75cm]
+    \capa{5}{\draw[curva4] (1,4.2) -- (1,1) -- (4.2,1) node[etiqueta,right,text=black] {$W_1$};}
+    \capa{5}{\draw[curva4] (2,4.2) -- (2,2) -- (4.2,2) node[etiqueta,right,text=black] {$W_2$};}
+    \capa{5}{\draw[curva4] (3,4.2) -- (3,3) -- (4.2,3) node[etiqueta,right,text=black] {$W_3$};}
+  \end{scope}
+  % 6: rótulos de epsilon
+  \capa{6}{\node[etiqueta] at (1.7,-0.95) {utilitarista, $\epsilon=0$};}
+  \capa{6}{\node[etiqueta] at (6.3,-0.95) {intermedia, $\epsilon=1$};}
+  \capa{6}{\node[etiqueta] at (10.9,-0.95) {rawlsiana, $\epsilon\to\infty$};}
+\end{tikzpicture}
+\end{document}

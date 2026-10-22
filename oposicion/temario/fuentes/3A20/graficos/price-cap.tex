@@ -1,0 +1,32 @@
+% Senda del price cap y revisión (3.A.20, II.4), en términos reales.
+%   Coste: baja de 4 a 2 en 10 años (0,2 al año).
+%   Precio máximo: baja X = 0,08 al año desde 4; en t = 5 se revisa y se iguala al coste (3);
+%   después vuelve a bajar 0,08 al año hasta 2,6.
+%   Área dorada: lo que la empresa retiene entre revisiones (incentivo); en la revisión,
+%   el regulador se lo quita (efecto trinquete).
+% Elaboración propia a partir de Littlechild (1983) y Armstrong, Cowan y Vickers (1994).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.7cm,y=1.1cm]
+  % 1: ejes
+  \capa{1}{\ejes{$t$}{$p_t$, coste}{11}{4.7}}
+  % 2: coste de la empresa, que baja con su esfuerzo
+  \capa{2}{\draw[curva2] (0,4) -- (10,2) node[etiqueta,right,text=tceeazul] {coste};}
+  % 3: senda del precio máximo en el primer periodo
+  \capa{3}{\draw[curva1] (0,4) -- (5,3.6);}
+  \capa{3}{\node[etiqueta,text=tceemorado,anchor=south west] at (1.2,3.98) {senda $\mathrm{IPC}-X$};}
+  % 4: lo que retiene la empresa
+  \capa{4}{\fill[area2] (0,4) -- (5,3.6) -- (5,3) -- cycle;}
+  \capa{4}{\node[etiqueta,font=\footnotesize,align=center] (ahorro) at (2.3,2.55) {ahorro que retiene\\ la empresa};}
+  \capa{4}{\draw[->,thin] (ahorro.north) -- (3.4,3.45);}
+  % 5: revisión: el precio se ajusta al coste
+  \capa{5}{\draw[guia] (5,0) node[below,text=black] {revisión} -- (5,4.3);}
+  \capa{5}{\draw[flecha] (5.25,3.55) -- (5.25,3.05);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west] at (5.3,3.3) {trinquete};}
+  % 6: segundo periodo
+  \capa{6}{\draw[curva1] (5,3) -- (10,2.6) node[etiqueta,right,text=tceemorado] {$p_t$};}
+  \capa{6}{\fill[area2] (5,3) -- (10,2.6) -- (10,2) -- cycle;}
+\end{tikzpicture}
+\end{document}

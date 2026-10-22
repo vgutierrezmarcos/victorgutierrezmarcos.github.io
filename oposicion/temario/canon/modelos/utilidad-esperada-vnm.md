@@ -25,7 +25,7 @@ $$U(\tilde x)=\mathbb{E}\big[u(\tilde x)\big]=\sum_{s=1}^{S}\pi_s\,u(x_s)\qquad(
 | 3.A.8 | Teoría del consumidor con certidumbre | mención (hecho) | Bernoulli y San Petersburgo en una frase; la utilidad de vNM es cardinal (afín positiva) y no permite comparaciones interpersonales, frente a la ordinal | Axiomas y teorema |
 | 3.A.13 | Información asimétrica | resumen (hecho) | Lotería del seguro (W̄, W̄ − L; 1 − π, π) y U = (1 − π)u(x_1) + πu(x_2); agente averso; riesgo frente a incertidumbre en una nota | Axiomas |
 | 3.A.14 | Teoría de juegos | mención (hecho, 19/10/2026) | Pagos esperados de vNM, $U_i=\mathbb E[u_i]$, en las estrategias mixtas, los juegos bayesianos y las subastas (*Theory of Games*, 1944, con la teoría de la utilidad en el apéndice de la 2.ª edición, 1947); decisión frente a la naturaleza (maximin de Wald, Laplace) frente a interdependencia estratégica; aversión al riesgo en la subasta de primer precio | El teorema |
-| 3.A.24 | Elección social | mención | Harsanyi: utilitarismo como utilidad esperada tras el velo (neutral respecto a la **utilidad**, no a la renta) frente al maximin de Rawls | El teorema |
+| 3.A.24 | Elección social | mención (hecho, 22/10/2026) | Harsanyi: utilitarismo como utilidad esperada tras el velo (neutral respecto a la **utilidad**, no a la renta) frente al maximin de Rawls | El teorema |
 | 3.A.27 | Contratos implícitos | mención | Trabajador averso con utilidad de vNM; empresa neutral | — |
 | 3.A.33 | Consumo con incertidumbre | mención | 𝔼_t[u(C_{t+1})] como utilidad esperada; prudencia en la ficha `aversion-riesgo-arrow-pratt` | Axiomas |
 | 3.B.23 | Elección de cartera | resumen | La utilidad esperada como fundamento; cuándo se reduce a media-varianza (cuadrática o normales) | Axiomas |
@@ -34,7 +34,7 @@ $$U(\tilde x)=\mathbb{E}\big[u(\tilde x)\big]=\sum_{s=1}^{S}\pi_s\,u(x_s)\qquad(
 ## Divergencias encontradas en el temario actual
 - 3.A.10 original: axiomas sobre ℝⁿ₊, «independencia de alternativas irrelevantes», p ∈ (0,1) en la continuidad, independencia en un solo sentido, V(ỹ), V(F), U(F), ū(ỹ) y E[u(ỹ)] para lo mismo, vNM «ordinal» por admitir «transformaciones lineales crecientes» con el ejemplo 24[∫u dF]³, Savage con la «independencia ampliada» de Anscombe-Aumann, *Theory of Games* «de 1994». **Resuelto** en la revisión (19/10/2026).
 - 3.A.18 y 3.A.19 remiten a 3.A.10 la teoría de juegos como «extensión de la decisión bajo incertidumbre» y *Theory of Games*: es 3.A.14 (ya `corregir -> 3.A.14` en el mapa). **3.A.18 resuelto** (19/10/2026); queda el 3.A.19.
-- 3.A.24: Harsanyi con individuos «neutrales al riesgo» tras el velo: son neutrales respecto a la utilidad (maximizan la utilidad media), no a la renta (`mapa.yaml`, contradicciones del 3.A.10).
+- 3.A.24: resuelto en su revisión (22/10/2026): Harsanyi neutral respecto a la **utilidad**, no a la renta (II.3.1); y la IAI de Arrow distinta del axioma de independencia, en nota de I.2.
 - Ids `san-petersburgo` y `allais` del inventario (solo 3.A.10): fusionados aquí (`_inventario/alias.json`, 19/10/2026).
 
 Autor: Víctor Gutiérrez Marcos

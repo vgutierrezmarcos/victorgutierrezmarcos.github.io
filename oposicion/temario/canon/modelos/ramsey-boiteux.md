@@ -1,7 +1,7 @@
 # Precios de Ramsey-Boiteux
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (regulación del monopolio natural; revisado el 17/10/2026, II.2.3 y anexo `anexo:ramsey`) — único que lo desarrolla. Es la misma regla que la imposición óptima de Ramsey (4.B.11, id `ramsey`): el 3.A.17 remite a 4.B.11 solo para ampliar (D138). Se queda en el 3.A.17 aunque la regulación con información asimétrica pase al 3.A.20 (P21-02, Víctor, 21/10/2026).
-- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones), 4.B.11 (mención: equivalencia formal con la regla de Ramsey); 3.A.22 (mención; hecho, 21/10/2026).
+- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones), 4.B.11 (mención: equivalencia formal con la regla de Ramsey); 3.A.22 (mención; hecho, 21/10/2026); 3.A.20 (resumen; hecho, 22/10/2026: I.3, la regla escrita una vez como Lerner amortiguado, λ/(1+λ) creciente en λ, con la nota de la λ común con Laffont-Tirole; dicotomía precios-incentivos, cánones de ADIF, *price cap* sobre una cesta y recargo de tipo Ramsey del precio de acceso).
 - **Manuales de referencia:** Ramsey (1927); Boiteux (1956); Baumol y Bradford (1970); Laffont y Tirole (1993), cap. 3; Viscusi, Harrington y Vernon, cap. 11.
 
 ## Presentación de referencia (3.A.17)
@@ -24,6 +24,7 @@ Gráfico: no tiene uno propio; en la pizarra, la regla junto a la `\funcionclave
 | 4.B.15 | Precios públicos | resumen (hoy mención; D139 (13/10/2026)) | Regla con \|ε_{q_i,p_i}\| y su interpretación (margen inverso a la elasticidad, λ/(1+λ) creciente en λ), remitiendo a 3.A.17 | Derivación |
 | 4.B.11 | Imposición óptima | mención | Equivalencia formal con la regla de Ramsey | — |
 | 3.A.22 | *Second best* (aplicaciones) | mención (hecho, 21/10/2026) | Los precios de Ramsey-Boiteux de un monopolio natural que debe cubrir sus costes, segundo óptimo con presupuesto equilibrado; `\vertema{3.A.17}` | La regla |
+| 3.A.20 | Regulación óptima con información completa | resumen (hecho, 22/10/2026) | `eq:ramsey-boiteux` sin derivar (\vertema{3.A.17}); la misma λ que el coste de los fondos públicos de Laffont-Tirole; dicotomía precios-incentivos (Laffont y Tirole, 1993, cap. 3); ADIF; Vogelsang y Finsinger (1979); peaje de acceso con recargo de Ramsey | La derivación (anexo del 3.A.17) |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.17 original: W(P) para el bienestar, «Ramsey-Boiteaux (1927)», P_i y, sobre todo, «**cuanto mayor sea λ menor será el margen**», que es al revés. **Resuelto** (17/10/2026): ET(p⃗), Ramsey (1927) y Boiteux (1956), p_i, y el margen crece con λ.

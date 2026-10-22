@@ -1,0 +1,52 @@
+% Paradoja de Condorcet y preferencias unimodales de Black (3.A.24, III.2.1).
+% Gráfico de referencia de las fichas del canon paradoja-condorcet y votante-mediano
+% (el 4.B.2 debe usar el mismo).
+% 3 vecinos deciden cuánto gastar en el portal: poco (x), algo (y) o mucho (z).
+% Eje horizontal: alternativas en su orden natural; eje vertical: puesto en la ordenación
+% (3.ª abajo, 1.ª arriba).
+% Izquierda (multimodales, ciclo x >_G y >_G z >_G x):
+%   vecino 1: x ≻ y ≻ z; vecino 2: y ≻ z ≻ x; vecino 3: z ≻ x ≻ y (2 picos, en V).
+% Derecha (unimodales): vecinos 1 y 2 igual; vecino 3: z ≻ y ≻ x. Picos en x, y, z:
+%   el mediano es el vecino 2, con pico en y, que gana a todas por parejas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Alternativas (abscisas) y puestos (ordenadas)
+\def\ax{1}\def\ay{2.5}\def\az{4}
+\def\pt{0.6}\def\ps{1.7}\def\pp{2.8}
+% \ejesvoto{título del panel}: ejes, marcas de las alternativas y de los puestos
+\newcommand{\ejesvoto}[1]{%
+  \draw[eje] (0,0) -- (5,0);
+  \draw[eje] (0,0) -- (0,3.5) node[left] {puesto};
+  \foreach \a/\t/\d in {\ax/x/poco,\ay/y/algo,\az/z/mucho}
+    \draw (\a,0.08) -- (\a,-0.08) node[below,align=center] {$\t$\\[-2pt]{\footnotesize(\d)}};
+  \foreach \p/\t in {\pt/3.ª,\ps/2.ª,\pp/1.ª}
+    \draw (0.08,\p) -- (-0.08,\p) node[left] {\t};
+  \node at (2.5,-1.15) {gasto en el portal};
+  \node[font=\small\itshape] at (2.5,-1.7) {#1};}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------- Panel izquierdo: preferencias multimodales ----------
+  % 1: ejes
+  \capa{1}{\ejesvoto{preferencias multimodales}}
+  % 2: vecino 1 (x ≻ y ≻ z)
+  \capa{2}{\draw[curva1] (\ax,\pp) -- (\ay,\ps) -- (\az,\pt) node[etiqueta,right,text=tceemorado] {vecino 1};}
+  % 3: vecino 2 (y ≻ z ≻ x)
+  \capa{3}{\draw[curva2] (\ax,\pt) -- (\ay,\pp) -- (\az,\ps) node[etiqueta,right,text=tceeazul] {vecino 2};}
+  % 4: vecino 3 (z ≻ x ≻ y): 2 picos
+  \capa{4}{\draw[curva4] (\ax,\ps) -- (\ay,\pt) -- (\az,\pp) node[etiqueta,right,text=tceedorado] {vecino 3};}
+  % ---------- Panel derecho: preferencias unimodales ----------
+  \begin{scope}[xshift=7.2cm]
+    % 5: ejes
+    \capa{5}{\ejesvoto{preferencias unimodales}}
+    % 6: vecinos 1 y 2, como antes
+    \capa{6}{\draw[curva1] (\ax,\pp) -- (\ay,\ps) -- (\az,\pt) node[etiqueta,right,text=tceemorado] {vecino 1};}
+    \capa{6}{\draw[curva2] (\ax,\pt) -- (\ay,\pp) -- (\az,\ps) node[etiqueta,right,text=tceeazul] {vecino 2};}
+    % 7: vecino 3 (z ≻ y ≻ x): un solo pico
+    \capa{7}{\draw[curva4] (\ax,\pt) -- (\ay,\ps) -- (\az,\pp) node[etiqueta,right,text=tceedorado] {vecino 3};}
+    % 8: pico del votante mediano (vecino 2, en y)
+    \capa{8}{\draw[guia] (\ay,0) -- (\ay,3.3) node[above,etiqueta,text=black] {pico del mediano};}
+    \capa{8}{\node[punto] at (\ay,\pp) {};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

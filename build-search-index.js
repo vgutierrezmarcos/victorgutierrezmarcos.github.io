@@ -119,7 +119,7 @@ const tercerEjercicioParteA = [
   { num: 21, titulo: 'La teoría del equilibrio general.', disponible: true, file: '3A21.html' },
   { num: 22, titulo: 'Economía del bienestar (I). Los teoremas fundamentales del bienestar. Óptimo económico y «second-best».', disponible: true, file: '3A22.html' },
   { num: 23, titulo: 'Economía del bienestar (II). Fallos de mercado: externalidades y bienes públicos. Intervención y fallos del sector público.', disponible: true, file: '3A23.html' },
-  { num: 24, titulo: 'Economía del bienestar (III). Las funciones de bienestar social. Teoría de la elección colectiva. El teorema de imposibilidad de Arrow y desarrollos posteriores.', disponible: true, file: '3A24.pdf' },
+  { num: 24, titulo: 'Economía del bienestar (III). Las funciones de bienestar social. Teoría de la elección colectiva. El teorema de imposibilidad de Arrow y desarrollos posteriores.', disponible: true, file: '3A24.html' },
   { num: 25, titulo: 'La teoría neoclásica del mercado de trabajo. Análisis intertemporal de la oferta de trabajo. Teoría del capital humano. Función de ingresos de capital humano y evidencia empírica.', disponible: true, file: '3A25.pdf' },
   { num: 26, titulo: 'Desempleo friccional. La curva de Beveridge, el modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides. Costes de ajuste y dinámica de la demanda de trabajo.', disponible: true, file: '3A26.pdf' },
   { num: 27, titulo: 'Determinación de salarios: modelos de negociación, salarios de eficiencia y contratos implícitos.', disponible: true, file: '3A27.pdf' },

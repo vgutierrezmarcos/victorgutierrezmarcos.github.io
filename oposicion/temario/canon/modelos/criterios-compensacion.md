@@ -1,7 +1,7 @@
 # Criterios de compensación (Kaldor, Hicks, Scitovsky, Little, Samuelson, Gorman)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.22** (Bienestar I; revisado el 21/10/2026, anexo `anexo:compensacion`, con una viñeta en I.3 `sec:valoracion-pareto`). Motivo: el contenido estaba en el Word del 3.A.22 (su bloque 2 entero) y los temas revisados (3.A.9) ya remiten aquí; con el título de 2023 los criterios salen del título y pasan a un anexo (decisión A22-01, opción a, de Víctor; aplicada en el 3.A.22, `anexo:compensacion`) en lugar de irse al 3.A.24, que deja un resumen. Resuelto: el 3.A.9 remite al 3.A.22.
-- **Temas que lo usan:** 3.A.22 (desarrollo en anexo; hecho, 21/10/2026), 3.A.24 (resumen: la nueva economía del bienestar antes de las FBS; hoy menciona la compensación con Pareto), 3.A.9 (mención; hecho, 13/10/2026: VC, excedentes y Kaldor-Hicks, l. 1262 y 1378, con `\vertema{3.A.22}`), 4.B.6 (mención: el análisis coste-beneficio aplica Kaldor-Hicks al sumar excedentes; le falta la remisión, `mapa.yaml`).
+- **Temas que lo usan:** 3.A.22 (desarrollo en anexo; hecho, 21/10/2026), 3.A.24 (resumen; hecho, 22/10/2026: una viñeta en I.1.2 `sec:criterios-adicionales`, la nueva economía del bienestar antes de las FBS, con `\vertema{3.A.22}`; el ACB del anexo E aplica Kaldor-Hicks), 3.A.9 (mención; hecho, 13/10/2026: VC, excedentes y Kaldor-Hicks, l. 1262 y 1378, con `\vertema{3.A.22}`), 4.B.6 (mención: el análisis coste-beneficio aplica Kaldor-Hicks al sumar excedentes; le falta la remisión, `mapa.yaml`).
 - **Manuales de referencia:** Kaldor (1939), *EJ*; Hicks (1939), *EJ*; Scitovsky (1941), *REStud*; Little (1949, 1950), *A Critique of Welfare Economics*; Samuelson (1950), *OEP*; Gorman (1955), *REStud*; Mas-Colell, Whinston y Green, cap. 22.C; Boadway y Bruce, *Welfare Economics* (1984), cap. 4.
 
 ## Presentación de referencia
@@ -34,11 +34,11 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.22 | Incompletitud de Pareto | desarrollo en anexo (hecho, 21/10/2026) | En el cuerpo, una viñeta en la valoración de Pareto (I.3) con remisión al anexo; en el anexo, los 6 criterios con sus 5 gráficos y 2 tablas, y la valoración | — |
-| 3.A.24 | FBS y elección colectiva | resumen | De la compensación potencial (Kaldor-Hicks, Scitovsky) a las FBS (Bergson, Samuelson): la comparación interpersonal implícita lleva a hacerla explícita; `\vertema{3.A.22}` | Los gráficos y Little, Gorman |
+| 3.A.24 | FBS y elección colectiva | resumen (hecho, 22/10/2026) | De la compensación potencial (Kaldor-Hicks, Scitovsky) a las FBS (Bergson, Samuelson): la comparación interpersonal implícita lleva a hacerla explícita; `\vertema{3.A.22}` | Los gráficos y Little, Gorman |
 | 3.A.9 | Medidas del bienestar | mención (hecho, 13/10/2026) | Variación compensatoria y compensación de los perjudicados «como en el criterio de Kaldor y Hicks», con `\vertema{3.A.22}` | Los criterios |
 | 4.B.6 | Evaluación de políticas, ACB | mención | El ACB suma excedentes: aplica Kaldor-Hicks (compensación potencial) con sus límites; `\vertema{3.A.22}` | Los criterios |
 
 ## Divergencias encontradas en el temario actual
 - `mapa.yaml` listaba el id en el 3.A.22 sin ficha (corregido el 21/10/2026, fase canon del 3.A.22).
-- `informe-repaso.md` § 7 mandaba el desarrollo al 3.A.24 (resumen): el 3.A.22 lo conserva en anexo (A22-01); el 3.A.24, cuando se revise, resume y remite.
+- `informe-repaso.md` § 7 mandaba el desarrollo al 3.A.24 (resumen): el 3.A.22 lo conserva en anexo (A22-01); el 3.A.24 resume y remite (hecho, 22/10/2026).
 - Word del 3.A.22: Little «tanto el punto 2 como el 6» cumplen Kaldor y Hicks (son 2, 3, 4, 5 y 6; Little se queda con 2, 4 y 5): corregido en la revisión.

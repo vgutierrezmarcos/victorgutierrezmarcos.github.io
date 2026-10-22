@@ -1,0 +1,39 @@
+% Los agentes de la elección pública en una democracia representativa (3.A.24, anexo D).
+% Gráfico de referencia (esquema) para la elección pública (3.A.23, 4.B.2):
+% ciudadanos -> políticos (votan; Downs-Hotelling, ignorancia racional) -> burócratas
+% (presupuesto; Niskanen) -> servicios públicos de vuelta a los ciudadanos;
+% grupos de presión (Olson) presionan a políticos y burócratas (búsqueda de rentas).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{
+  agente/.style={draw=tceemorado,very thick,rounded corners=3pt,fill=tceesalvia,
+    minimum width=2.6cm,minimum height=1.1cm,align=center,font=\normalsize},
+  relacion/.style={->,thick,black},
+  rotulo/.style={font=\footnotesize,align=center,inner sep=2pt},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: los ciudadanos
+  \capa{1}{\node[agente] (C) at (0,0) {Ciudadanos\\[-1pt]{\small(votantes)}};}
+  % 2: los políticos y el voto
+  \capa{2}{\node[agente] (P) at (4.6,0) {Políticos};}
+  \capa{2}{\draw[relacion] (C) -- (P)
+    node[midway,above,rotulo] {votan}
+    node[midway,below,rotulo,tceegris] {\textit{ignorancia}\\\textit{racional}};}
+  % 3: los burócratas y el presupuesto
+  \capa{3}{\node[agente] (B) at (9.2,0) {Burócratas};}
+  \capa{3}{\draw[relacion] (P) -- (B)
+    node[midway,above,rotulo] {presupuesto}
+    node[midway,below,rotulo,tceegris] {\textit{Niskanen}};}
+  % 4: los servicios públicos vuelven a los ciudadanos
+  \capa{4}{\draw[relacion] (B.south) -- ++(0,-0.9) -| (C.south)
+    node[pos=0.25,below,rotulo] {servicios públicos};}
+  % 5: los grupos de presión y sus flechas
+  \capa{5}{\node[agente] (G) at (6.9,2.3) {Grupos de presión};}
+  \capa{5}{\draw[relacion] (G.south west) ++(0.4,0) -- (P.north east)
+    node[midway,left,rotulo] {búsqueda\\de rentas};}
+  \capa{5}{\draw[relacion] (G.south east) ++(-0.4,0) -- (B.north west);}
+  \capa{5}{\node[rotulo,tceegris,right] at (G.east) {\textit{Olson}};}
+\end{tikzpicture}
+\end{document}

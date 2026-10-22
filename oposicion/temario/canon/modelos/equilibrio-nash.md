@@ -38,7 +38,8 @@ $$\mathbb{E}_{t_{-i}}\big[u_i(s_i^*(t_i),s_{-i}^*(t_{-i});t_i)\mid t_i\big]\geq\
 | 3.A.36, 3.A.6 | Credibilidad de la política monetaria | mención | La discreción es el EN; la regla no es creíble; reputación en juegos repetidos (ficha `barro-gordon`) | Las definiciones |
 | 3.A.21 | Existencia del equilibrio | mención (hecho) | El EN como punto fijo (Kakutani), en paralelo con el equilibrio walrasiano | — |
 | 3.A.15 | Barreras a la entrada | mención (hecho, 20/10/2026) | Juego de entrada con una etapa previa de inversión (3 etapas, $B^M$, $B^D$, $B^G$, CH): la disuasión es un ENPS si $B^D-B^G<\mathrm{CH}<B^M-B^D$; postulado de Sylos-Labini no creíble; señal de Milgrom-Roberts como EBP; ficha `disuasion-entrada` | Las definiciones |
-| 3.B.7, 3.B.8, 3.B.17, 3.A.23, 3.A.24, 4.A.15 | Aplicaciones | mención | La estructura del juego (dilema, ENPS, coordinación) con remisión a 3.A.14 | Las definiciones |
+| 3.A.24 | Ultimátum (II.4.2) | mención (hecho, 22/10/2026) | Con jugadores egoístas, el ENPS por inducción hacia atrás es ofrecer lo mínimo y aceptarlo, `\vertema{3.A.14}` | Las definiciones |
+| 3.B.7, 3.B.8, 3.B.17, 3.A.23, 4.A.15 | Aplicaciones | mención | La estructura del juego (dilema, ENPS, coordinación) con remisión a 3.A.14 | Las definiciones |
 | 3.A.23 | Bienes públicos; inconsistencia temporal | mención (hecho, 21/10/2026) | La provisión privada como EN con $g_A=R_A(g_B)$ y $G^{\mathrm N}<G^*$ (gráfico `provision-privada` en el anexo); la política discrecional como EN de un juego en el que la promesa no es creíble; `\vertema{3.A.14}` | Los conceptos |
 
 ## Divergencias encontradas en el temario actual

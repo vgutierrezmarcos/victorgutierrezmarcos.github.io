@@ -1,7 +1,7 @@
 # Ineficiencia X (Leibenstein, 1966)
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.12 (Teoría de los costes; revisado el 14/10/2026, III.3.2, y su medición en IV.3) — es donde se cuestiona el supuesto de minimización de costes.
-- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.A.17 (mención: pérdida de bienestar del monopolio; hecho, 17/10/2026), 3.A.15 (mención: bisagra entre los gerencialistas y la agencia; hecho, 20/10/2026; ficha `modelos-gerencialistas`), 3.B.39, 4.A.14, 4.A.15, 4.A.24, 4.A.25, 4.B.2, 4.B.15 (mención); 3.A.23 (mención; hecho, 21/10/2026).
+- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.A.17 (mención: pérdida de bienestar del monopolio; hecho, 17/10/2026), 3.A.15 (mención: bisagra entre los gerencialistas y la agencia; hecho, 20/10/2026; ficha `modelos-gerencialistas`), 3.B.39, 4.A.14, 4.A.15, 4.A.24, 4.A.25, 4.B.2, 4.B.15 (mención); 3.A.23 (mención; hecho, 21/10/2026); 3.A.20 (mención; hecho, 22/10/2026: I.1, ineficiencia productiva del poder de mercado y margen bajo que esconde poder, Leibenstein, 1966, `\vertema{3.A.12}`).
 - **Manuales de referencia:** Leibenstein (1966), «Allocative efficiency vs. "X-efficiency"», *AER*; Leibenstein (1982); Hicks (1935) «vida tranquila»; Stigler (1976), «The Xistence of X-efficiency», *AER*; Nickell (1996), *JPE*; Bloom y Van Reenen (2007), *QJE*; Tirole, *The Theory of Industrial Organization*, introducción.
 
 ## Presentación de referencia
@@ -27,6 +27,7 @@ Gráfico de referencia: no tiene uno propio en el 3.A.12 (se canta con la fórmu
 | 4.B.2, 4.B.15 | Burocracia y empresa pública | mención | El burócrata (Niskanen) y la empresa pública no minimizan costes; restricción presupuestaria blanda | — |
 | 4.A.14, 4.A.24, 4.A.25 | Productividad del comercio / internacionalización | mención | La exposición a la competencia reduce la ineficiencia X | — |
 | 3.A.23 | Fallos del sector público (burócratas) | mención (hecho, 21/10/2026) | La falta de competencia relaja el esfuerzo de los burócratas (Leibenstein, 1966), `\vertema{3.A.12}` | La medición |
+| 3.A.20 | Poder de mercado | mención (hecho, 22/10/2026) | Ineficiencia productiva sin rivales; un margen de Lerner bajo puede esconder poder si la empresa no minimiza costes | La medición |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.12 original: texto copiado casi literalmente de Policonomics, atribución a Leibenstein de la ley de Yerkes-Dodson (no comprobable), «el comportamiento optimizador es una excepción». Resuelto en la revisión (14/10/2026).

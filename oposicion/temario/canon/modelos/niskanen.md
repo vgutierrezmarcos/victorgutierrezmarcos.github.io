@@ -21,7 +21,8 @@
 |---|---|---|---|---|
 | 4.B.2 | Burocracia | Desarrollo | Modelo, gráfico, variantes y soluciones | — |
 | 4.B.5 | Crecimiento del gasto | Resumen | Resultado como causa del crecimiento del gasto; «[ver tema 4.B.2]» | El gráfico |
-| 3.A.24 / 4.B.11 / 4.B.15 | Fallos del sector público | Mención | — | — |
+| 3.A.24 | Elección pública (anexo D) | mención (hecho, 22/10/2026) | El burócrata maximiza su presupuesto y conoce mejor el coste: presupuesto mayor que el eficiente; `\vertema{3.A.23}`; esquema `oposicion/temario/fuentes/3A24/graficos/eleccion-publica.tex` | El modelo |
+| 4.B.11 / 4.B.15 | Fallos del sector público | Mención | — | — |
 | 3.A.15 | Agencia sin disciplina de mercado | Mención (hecho, 20/10/2026) | Empresa pública sin mercado de control: el burócrata maximiza el presupuesto, con exceso de tamaño; justificación de privatizaciones y liberalizaciones | El modelo |
 | 3.A.23 | Fallos del sector público (incentivos) | Mención (hecho, 21/10/2026) | El burócrata maximiza el presupuesto y, como conoce los costes mejor que el político que lo financia, logra uno mayor que el eficiente; gráfico en nota (`\graficonota`), `\vertema{4.B.2}`; junto a Weber y la ineficiencia X | La derivación y las variantes |
 

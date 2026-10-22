@@ -28,7 +28,7 @@ $$\phi_i(v)=\sum_{T\subseteq N\setminus\{i\}}\frac{|T|!\,\big(n-|T|-1\big)!}{n!}
 | 3.A.14 | Juegos cooperativos | desarrollo (hecho, 19/10/2026) | Todo lo anterior | La caja de intercambio y el teorema del límite (3.A.21) |
 | 3.A.21 | Núcleo de una economía | mención (hecho) | Núcleo sin utilidad transferible (Gillies), Debreu-Scarf; Shapley con un continuo de agentes; remite a 3.A.14 el concepto con utilidad transferible (ficha `nucleo`) | La definición con utilidad transferible |
 | 3.A.19 | Cárteles y alianzas | resumen aplicado (hecho, 20/10/2026; 3′ en el cante con la negociación) | Función característica de un cártel con Cournot fuera (3 empresas, $p=4-Q$, $c=0$: 1, 16/9, 4); núcleo no vacío; Shapley 4/3 en el núcleo; la estabilidad cooperativa no es la no cooperativa (16/9 > 4/3 fuera); paradoja de las fusiones; la teoría describe mejor la cooperación legal (consorcios, alianzas); remite a 3.A.14 | Las definiciones, la fórmula general y el ejemplo del vendedor |
-| 3.A.24 | Elección colectiva | mención | Índice de poder de Shapley-Shubik (1954) | La fórmula |
+| 3.A.24 | Elección colectiva | mención (hecho, 22/10/2026) | Nota de III.2.4: en el voto ponderado (Consejo de la UE) el poder no es proporcional al peso; el índice de Shapley-Shubik (1954) es el valor de Shapley del juego de votación, `\vertema{3.A.14}` | La fórmula |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.14 (Word de partida): núcleo como vector «que no bloquea ninguna coalición» con Σx_i ≤ v(S) (signo cambiado), sin eficiencia; fórmula de Shapley sin «∖{i}»; «jugador ficticio» confuso; aditividad mal dicha; «fácil de computar»; notación I, P(I), S. **Resuelto** (19/10/2026).

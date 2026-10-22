@@ -1,0 +1,30 @@
+% Modelo de Peltzman (1976) en el plano (p, B) (3.A.20, anexo de teoría positiva).
+%   Beneficio de la industria B(p) = (p - 2)(10 - p)/4: nulo en p^c = 2, máximo en p^M = 6 (B = 4).
+%   Curva de iso-apoyo creciente tangente a B(p) en p* = 4 (B = 3; pendiente 1):
+%   B = 3 + (p - 4) + 0,25 (p - 4)^2; la de trazos, más apoyo (más beneficio con el mismo precio).
+%   El óptimo p* queda entre el competitivo y el de monopolio.
+% Elaboración propia a partir de Peltzman (1976).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.85cm,
+    declare function={ben(\p)=(\p-2)*(10-\p)/4; iso(\p,\k)=3+\k+(\p-4)+0.25*(\p-4)*(\p-4);}]
+  % 1: ejes
+  \capa{1}{\ejes{$p$}{$B$}{9.4}{5.6}}
+  % 2: beneficio de la industria, en U invertida entre p^c y p^M
+  \capa{2}{\draw[curva1] plot[domain=2:9,samples=60,smooth] (\x,{ben(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=west] at (8.4,1.2) {$B(p)$};}
+  \capa{2}{\node[etiqueta,below] at (2,0) {$p^{c}$};}
+  \capa{2}{\draw[guia] (6,4) -- (6,0) node[below,text=black] {$p^{M}$};}
+  % 3: curvas de iso-apoyo político, crecientes
+  \capa{3}{\draw[curva2] plot[domain=2.4:5.8,samples=50,smooth] (\x,{iso(\x,0)});}
+  \capa{3}{\draw[curva2,dashed] plot[domain=2.4:5.0,samples=50,smooth] (\x,{iso(\x,1.2)});}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=east] at (2.4,{iso(2.4,1.2)}) {más apoyo};}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=west] at (5.8,{iso(5.8,0)}) {$\mathcal{A}=\overline{\mathcal{A}}$};}
+  % 4: óptimo del regulador: tangencia entre p^c y p^M
+  \capa{4}{\node[punto] (P) at (4,3) {};}
+  \capa{4}{\draw[guia] (P) -- (4,0) node[below,text=black] {$p^{*}$};}
+  \capa{4}{\draw[flecha] (2.2,-0.9) -- node[below,etiqueta,font=\footnotesize,text=tceerojo] {$p^{c}<p^{*}<p^{M}$} (5.8,-0.9);}
+\end{tikzpicture}
+\end{document}

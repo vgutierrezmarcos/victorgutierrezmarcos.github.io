@@ -1,0 +1,68 @@
+% Copia de 3A22/graficos/caja-edgeworth-fpp.tex (3.A.22, I.2); mismo código y cifras.
+% Caja de Edgeworth de la producción y frontera de posibilidades de producción.
+% Caja L̄ = 6, K̄ = 4. X = L_X^0,7 K_X^0,3 (desde O_X, intensivo en trabajo);
+% Y = L_Y^0,3 K_Y^0,7 (desde O_Y, intensivo en capital).
+% Curva de contrato (igualdad de RMST): K_X = 4 L_X / (5,444 (6 - L_X) + L_X).
+% C (L_X = 3,4; K_X = 0,775): X_1 = 2,182, Y_2 = 3,023 (tangencia X_1-Y_2).
+% B (L_X = 4,8; K_X = 1,694): X_2 = 3,512, Y_1 = 1,896 (tangencia X_2-Y_1).
+% A = corte de X_1 e Y_1 en (2,017; 2,621): produce (X_1, Y_1), dentro de la FPP.
+% La FPP se traza con la propia curva de contrato; en B su pendiente es -0,925.
+% Copia del gráfico del 3.A.11 sin la capa 10 (FPP desplazada), que este tema no usa.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={
+      kc(\l)=4*\l/(5.444444*(6-\l)+\l);
+      xx(\l)=\l^0.7*kc(\l)^0.3;
+      yy(\l)=(6-\l)^0.3*(4-kc(\l))^0.7;
+      kx(\l,\q)=(\q/\l^0.7)^(1/0.3);
+      ky(\l,\q)=4-(\q/(6-\l)^0.3)^(1/0.7);},
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % 1: la caja y sus orígenes
+  \capa{1}{
+    \draw[thick] (0,0) rectangle (6,4);
+    \node[below left,text=tceemorado] at (0,0) {$O_X$};
+    \node[above right,text=tceeverde] at (6,4) {$O_Y$};
+    \node[etiqueta] at (5.7,-0.25) {$L_X$};
+    \node[etiqueta] at (-0.3,3.7) {$K_X$};
+    \node[etiqueta] at (0.3,4.25) {$L_Y$};
+    \node[etiqueta] at (6.3,0.3) {$K_Y$};
+    \draw[llave] (6,-0.65) -- (0,-0.65) node[midway,below=5pt,text=black] {$\bar L$};
+    \draw[llave] (-0.75,0) -- (-0.75,4) node[midway,left=5pt,text=black] {$\bar K$};
+  }
+  % 2: isocuantas de X
+  \capa{2}{\draw[curva1] plot[domain=5.75:1.69,samples=100] (\x,{kx(\x,2.181587)})
+    node[etiqueta,above] {$X_1$};}
+  \capa{2}{\draw[curva1] plot[domain=5.9:3.33,samples=100] (\x,{kx(\x,3.511979)})
+    node[etiqueta,above] {$X_2$};}
+  % 3: isocuantas de Y
+  \capa{3}{\draw[curva3] plot[domain=5.668:0.5,samples=100] (\x,{ky(\x,1.895572)})
+    node[etiqueta,left] {$Y_1$};}
+  \capa{3}{\draw[curva3] plot[domain=4.426:0.5,samples=100] (\x,{ky(\x,3.023379)})
+    node[etiqueta,left] {$Y_2$};}
+  % 4: A, ineficiente
+  \capa{4}{\node[punto,label={[etiqueta]above right:$A$}] at (2.0165,2.6211) {};}
+  % 5: B y C, tangencias
+  \capa{5}{\node[punto,label={[etiqueta]above left:$B$}] at (4.8,1.6941) {};}
+  \capa{5}{\node[punto,label={[etiqueta]above left:$C$}] at (3.4,0.7747) {};}
+  % 6: curva de contrato
+  \capa{6}{\draw[curva2] plot[domain=0:6,samples=150] (\x,{kc(\x)});}
+  \capa{6}{\node[etiqueta,text=tceeazul,align=center] at (2.75,3.5) {curva de\\ contrato};}
+  % 7: FPP con B y C
+  \begin{scope}[shift={(8.6,0)},scale=0.65]
+    \capa{7}{\ejes{$X$}{$Y$}{7.0}{6.2}}
+    \capa{7}{\draw[curva2] plot[domain=0:6,samples=150] ({xx(\x)},{yy(\x)});}
+    \capa{7}{\node[etiqueta,text=tceeazul,anchor=north east] at (4.44,0.99) {FPP};}
+    \capa{7}{\node[punto,label={[etiqueta]above right:$B$}] at (3.512,1.896) {};}
+    \capa{7}{\node[punto,label={[etiqueta]above right:$C$}] at (2.182,3.023) {};}
+    % 8: A dentro de la frontera
+    \capa{8}{\node[punto,label={[etiqueta]below left:$A$}] (A2) at (2.182,1.896) {};}
+    \capa{8}{\draw[guia] (2.182,3.023) -- (A2) -- (3.512,1.896);}
+    % 9: pendiente en B
+    \capa{9}{\draw[curva4] (2.3,3.017) -- (4.7,0.797);}
+    \capa{9}{\node[etiqueta,text=tceedorado,anchor=west] at (3.6,5.3) {$\mathrm{RMT}_{XY}=-\dfrac{\mathrm d Y}{\mathrm d X}$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

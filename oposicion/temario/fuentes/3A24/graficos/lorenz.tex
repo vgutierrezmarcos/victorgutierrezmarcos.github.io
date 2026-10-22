@@ -1,0 +1,31 @@
+% Curva de Lorenz e índice de Gini (3.A.24, II.4.1). Gráfico de referencia de la ficha
+% curva-lorenz del canon.
+% Cuadrado unitario; diagonal de igualdad perfecta; L_y(s) = s^2,2, con
+%   IG = 1 - 2/3,2 = 0,375 (el área sombreada es IG/2 = 0,1875);
+%   L_y'(s) = s^3, siempre por debajo (dominada en el sentido de Lorenz), IG = 0,5.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=5.5cm,y=5.5cm]
+  % 1: ejes y cuadrado unitario
+  \capa{1}{\ejes{$s$}{$L(s)$}{1.13}{1.13}}
+  \capa{1}{\draw[thin] (1,0) -- (1,1) -- (0,1);}
+  \capa{1}{\node[etiqueta,below] at (1,0) {$1$};}
+  \capa{1}{\node[etiqueta,left] at (0,1) {$1$};}
+  \capa{1}{\node[etiqueta,text width=4.6cm,align=center] at (0.5,-0.13) {fracción de la población,\\de más pobre a más rica};}
+  \capa{1}{\node[etiqueta,rotate=90] at (-0.12,0.5) {fracción de la renta};}
+  % 2: diagonal de igualdad perfecta
+  \capa{2}{\draw[curva2] (0,0) -- (1,1);}
+  \capa{2}{\node[etiqueta,text=tceeazul,rotate=45,anchor=south] at (0.42,0.42) {igualdad perfecta};}
+  % 3: curva de Lorenz L_y(s) = s^2,2
+  \capa{3}{\draw[curva1] plot[domain=0:1,samples=100] (\x,{\x^2.2});}
+  \capa{3}{\node[etiqueta,text=tceemorado,rotate=59,anchor=south] at (0.80,0.612) {$L_{\vect{y}}(s)$};}
+  % 4: área entre la diagonal y la curva: IG/2
+  \capa{4}{\begin{pgfonlayer}{background}\fill[area] plot[domain=0:1,samples=100] (\x,{\x^2.2}) -- cycle;\end{pgfonlayer}}
+  \capa{4}{\node[etiqueta] at (0.53,0.38) {$\mathrm{IG}/2$};}
+  % 5: curva dominada L_y'(s) = s^3
+  \capa{5}{\draw[curva3] plot[domain=0:1,samples=100] (\x,{\x^3});}
+  \capa{5}{\node[etiqueta,text=tceeverde,rotate=62,anchor=north] at (0.82,0.551) {$L_{\vect{y}'}(s)$};}
+\end{tikzpicture}
+\end{document}

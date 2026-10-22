@@ -1,0 +1,30 @@
+% Efecto Averch-Johnson (3.A.20, II.1; gráfico de referencia, copiado del 3.A.17), en el plano (z_K, B).
+%   Beneficio sin restricción: B(z_K) = 2 z_K - 0,25 z_K^2 (U invertida),
+%   máximo en z_K* = 4, B = 4.
+%   Beneficio permitido: (s - w_K) z_K = 0,5 z_K; en z_K* vale 2 < 4: z_K* no
+%   está permitido. Corte con el tramo decreciente de B(z_K):
+%   2 z - 0,25 z^2 = 0,5 z -> z_K' = 6, B = 3.
+% Elaboración propia a partir de Averch y Johnson (1962).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm,
+    declare function={ben(\z)=2*\z-0.25*\z*\z; perm(\z)=0.5*\z;}]
+  % 1: ejes
+  \capa{1}{\ejes{$z_K$}{$B$}{9.2}{5.6}}
+  % 2: beneficio sin restricción, en U invertida
+  \capa{2}{\draw[curva1] plot[domain=0:8,samples=80,smooth] (\x,{ben(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=west] at (7.3,1.4) {$B(z_K)$};}
+  % 3: máximo sin restricción
+  \capa{3}{\node[punto] (S) at (4,4) {};}
+  \capa{3}{\draw[guia] (S) -- (4,0) node[below,text=black] {$z_K^{*}$};}
+  % 4: beneficio permitido por la regulación
+  \capa{4}{\draw[curvanueva] (0,0) -- (8.6,4.3) node[etiqueta,above,align=center] {$(s-w_K)\,z_K$};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris,align=center] at (4,4.6) {no permitido};}
+  % 5: óptimo regulado y sobrecapitalización
+  \capa{5}{\node[punto] (R) at (6,3) {};}
+  \capa{5}{\draw[guia] (R) -- (6,0) node[below,text=black] {$z_K'$};}
+  \capa{5}{\draw[flecha] (4.15,-0.95) -- node[below,etiqueta,font=\footnotesize,text=tceerojo] {sobrecapitalización} (5.85,-0.95);}
+\end{tikzpicture}
+\end{document}

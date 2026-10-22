@@ -1,0 +1,39 @@
+% Copia de 3A22/graficos/fbs-gfpu.tex (3.A.22, I.2); mismo código y cifras.
+% Función de bienestar social y gran frontera de posibilidades de utilidad (3.A.22, I.2).
+% GFPU: la del gráfico gfpu, envolvente (suavizada) de 3 FPU superelípticas: tramos cóncavos
+%   en torno a cada punto de tangencia y 2 hondonadas convexas donde se cruzan las FPU
+%   (cerca de (4,3; 6,4) y de (6,7; 3,4)); decreciente, de (0; 7,747) a (7,843; 0).
+%   Coordenadas calculadas aparte (las mismas en los 4 gráficos).
+% Curvas de indiferencia social de W = (U_A U_B)^(1/2): U_B = k/U_A con k = W².
+% c = (5,392; 4,891), punto de felicidad: máximo global de U_A U_B en la GFPU (k = 26,368,
+%   único máximo local, comprobado), en un tramo cóncavo: tangencia con W_3.
+% d = (7,598; 1,615), en la GFPU (ángulo 12°), sobre W_1 (k = 12,272).
+% a = (3,4; 5,294) y b = (5,6; 3,214), sobre W_2 (k = 18) y dentro de la GFPU.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm]
+  % 1: ejes U_A, U_B
+  \capa{1}{\ejes{$U_A$}{$U_B$}{9.6}{8.6}}
+  % 2: la GFPU
+  \capa{2}{\draw[curva2] plot[smooth,tension=0.3] coordinates {(0.000,7.747) (0.081,7.746) (0.162,7.745) (0.243,7.744) (0.324,7.742) (0.406,7.740) (0.487,7.737) (0.568,7.734) (0.649,7.730) (0.730,7.726) (0.811,7.720) (0.893,7.714) (0.974,7.707) (1.055,7.698) (1.135,7.689) (1.216,7.678) (1.296,7.665) (1.377,7.651) (1.456,7.635) (1.536,7.618) (1.615,7.599) (1.694,7.578) (1.772,7.555) (1.850,7.531) (1.927,7.505) (2.003,7.477) (2.079,7.448) (2.155,7.416) (2.229,7.384) (2.303,7.349) (2.376,7.313) (2.449,7.276) (2.520,7.237) (2.591,7.196) (2.661,7.154) (2.729,7.110) (2.797,7.065) (2.864,7.017) (2.929,6.968) (2.993,6.917) (3.056,6.864) (3.117,6.808) (3.177,6.751) (3.234,6.691) (3.290,6.628) (3.344,6.563) (3.396,6.496) (3.445,6.426) (3.493,6.353) (3.537,6.278) (3.582,6.204) (3.629,6.136) (3.677,6.072) (3.728,6.012) (3.781,5.958) (3.838,5.909) (3.897,5.865) (3.960,5.827) (4.026,5.793) (4.096,5.764) (4.168,5.736) (4.238,5.706) (4.306,5.674) (4.374,5.639) (4.441,5.603) (4.506,5.564) (4.571,5.525) (4.634,5.484) (4.697,5.441) (4.759,5.398) (4.821,5.354) (4.882,5.309) (4.942,5.263) (5.002,5.216) (5.062,5.169) (5.121,5.121) (5.180,5.073) (5.239,5.024) (5.297,4.974) (5.355,4.924) (5.411,4.872) (5.467,4.820) (5.522,4.767) (5.576,4.712) (5.629,4.657) (5.680,4.600) (5.730,4.541) (5.777,4.481) (5.823,4.420) (5.866,4.357) (5.907,4.292) (5.946,4.226) (5.982,4.158) (6.015,4.088) (6.045,4.017) (6.073,3.944) (6.098,3.870) (6.119,3.794) (6.140,3.719) (6.165,3.646) (6.193,3.576) (6.226,3.508) (6.262,3.442) (6.302,3.379) (6.346,3.318) (6.394,3.258) (6.446,3.200) (6.502,3.143) (6.561,3.087) (6.623,3.032) (6.685,2.976) (6.745,2.919) (6.803,2.860) (6.859,2.799) (6.914,2.737) (6.967,2.674) (7.019,2.610) (7.069,2.545) (7.119,2.479) (7.167,2.412) (7.213,2.344) (7.259,2.275) (7.303,2.205) (7.345,2.134) (7.386,2.062) (7.426,1.990) (7.464,1.916) (7.500,1.842) (7.535,1.767) (7.568,1.692) (7.598,1.615) (7.627,1.538) (7.654,1.460) (7.678,1.382) (7.701,1.302) (7.721,1.223) (7.739,1.143) (7.756,1.062) (7.770,0.982) (7.783,0.901) (7.794,0.819) (7.804,0.738) (7.812,0.656) (7.819,0.574) (7.825,0.492) (7.830,0.410) (7.834,0.328) (7.837,0.246) (7.839,0.164) (7.842,0.082) (7.843,0.000)};}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south west] at (7.95,0.3) {GFPU};}
+  % 3: curvas de indiferencia social
+  \capa{3}{\draw[curva4,thick] plot[domain=1.45:8.2,samples=100] (\x,{12.272/\x})
+    node[etiqueta,right,text=black] {$W(U_A,U_B)=W_1$};}
+  \capa{3}{\draw[curva4,thick] plot[domain=2.15:8.2,samples=100] (\x,{18/\x})
+    node[etiqueta,right,text=black] {$W_2$};}
+  \capa{3}{\draw[curva4,thick] plot[domain=3.1:8.2,samples=100] (\x,{26.368/\x})
+    node[etiqueta,right,text=black] {$W_3$};}
+  % 4: el punto de felicidad c
+  \capa{4}{\node[punto,label={[etiqueta]below left:$c$}] (c) at (5.3916,4.8905) {};}
+  \capa{4}{\node[etiqueta,anchor=south west] at (5.9,6.35) {punto de felicidad};}
+  \capa{4}{\draw[->,thin] (6.3,6.3) -- (5.6,5.15);}
+  % 5: d, eficiente pero muy desigual, sobre W_1
+  \capa{5}{\node[punto,label={[etiqueta]above right:$d$}] at (7.5982,1.6151) {};}
+  % 6: a y b sobre W_2 (dentro de la frontera)
+  \capa{6}{\node[punto,label={[etiqueta]below left:$a$}] at (3.4,5.2941) {};}
+  \capa{6}{\node[punto,label={[etiqueta]below left:$b$}] at (5.6,3.2143) {};}
+\end{tikzpicture}
+\end{document}

@@ -1,7 +1,7 @@
 # Condición de Samuelson (1954) para la provisión óptima de bienes públicos
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.23** (Bienestar II: bienes públicos; revisado el 21/10/2026, II.2: definición y clasificación con la tabla `tab:rivalidad-exclusion`, asignación competitiva frente a óptima con a)-e), y provisión pública; anexos `anexo:samuelson` y `anexo:provision-privada`). Recoge el id `bowen` (alias desde el 21/10/2026): la versión de equilibrio parcial de Bowen (1943) es una extensión de esta ficha.
-- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.B.5 (mención: tamaño del sector público), 3.A.24 (mención: el votante mediano en general no cumple la condición; Wicksell; hoy escribe $|\mathrm{RMT}_X^G|=\sum|\mathrm{RMS}_X^G|$), 4.B.7 (principio del beneficio) y 4.B.2 (Bowen) la presuponen; 3.A.14 (mención; hecho, 19/10/2026: el polizón como dilema del prisionero, `\vertema{3.A.23}`).
+- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.B.5 (mención: tamaño del sector público), 3.A.24 (mención; hecho, 22/10/2026: el votante mediano en general no cumple la condición; condición de Bowen $G^m=G^*\iff\mathrm{RMS}^m_{GX}(G^*)=\frac1I\sum_i\mathrm{RMS}^i_{GX}(G^*)$, con `\vertema{3.A.23}`), 4.B.7 (principio del beneficio) y 4.B.2 (Bowen) la presuponen; 3.A.14 (mención; hecho, 19/10/2026: el polizón como dilema del prisionero, `\vertema{3.A.23}`).
 - **Manuales de referencia:** Samuelson (1954), *REStat*, y (1955), *REStat* (diagrama); Bowen (1943), *QJE*; Bergstrom, Blume y Varian (1986), *JPubE*; Warr (1983); Andreoni (1990); Mas-Colell, Whinston y Green, cap. 11.C; Atkinson y Stiglitz, *Lectures on Public Economics*, lección 16; Ostrom y Ostrom (1977) para la clasificación.
 
 ## Presentación de referencia
@@ -33,11 +33,11 @@ Con un bien privado se igualan las valoraciones; con uno público, se **suman**.
 |---|---|---|---|---|
 | 3.A.23 | Bienes públicos | desarrollo (hecho, 21/10/2026) | Clasificación; planificador, condición, gráfico en EG; mercado e infraprovisión; polizón como dilema; Bowen; provisión de Nash; evidencia; revelación | — |
 | 4.B.5 | Tamaño del sector público | mención | FPP bien público–privado y FBS: nivel óptimo de gasto | La derivación |
-| 3.A.24 | Elección colectiva | mención | La regla de mayoría (votante mediano) en general no cumple la condición de Samuelson; con $\mathrm{RMS}^i_{GX}$ y $\mathrm{RMT}_{GX}$ (no $|\mathrm{RMT}_X^G|$); `\vertema{3.A.23}` | La derivación |
+| 3.A.24 | Elección colectiva | mención (hecho, 22/10/2026) | La regla de mayoría (votante mediano) en general no cumple la condición de Samuelson; con $\mathrm{RMS}^i_{GX}$ y $\mathrm{RMT}_{GX}$ (no $|\mathrm{RMT}_X^G|$); `\vertema{3.A.23}` | La derivación |
 | 4.B.2 | Elección pública | mención | Bowen y la votación del bien público, con remisión (Bowen se dibuja en el 3.A.23) | El gráfico |
 | 3.A.14 | Juegos | mención (hecho, 19/10/2026) | El polizón como dilema del prisionero | La condición |
 
 ## Divergencias encontradas en el temario actual
 - Resueltas en el 3.A.23 (21/10/2026): $X_A+X_B=\overline X$ a la vez que $T(X,G)=0$ (sobra $\overline X$); $|\mathrm{RMT}_X^G|$ y $\mathrm{RMT}_G^X$ (→ $\mathrm{RMS}^i_{GX}$, $\mathrm{RMT}_{GX}$); «libre» en lugar de planificador; Bowen con $\mathrm{UMg}^A$, $D_T$, $G'$ (→ $\mathrm{RMS}^i_{GX}(G)$, tilde para lo declarado, $\tilde G$); manuscrito de la provisión privada con $u_i$, $R_1$, $G^{EN}$ (→ $U_A$, $g_A$, $R_A(g_B)$, $G^{\mathrm N}$).
-- 3.A.24 (sin revisar): $|\mathrm{RMT}_X^G|=\sum|\mathrm{RMS}_X^G|$ (canon $\mathrm{RMS}^i_{GX}$, $\mathrm{RMT}_{GX}$).
+- 3.A.24: resuelto en su revisión (22/10/2026): $|\mathrm{RMT}_X^G|=\sum|\mathrm{RMS}_X^G|$ → $\sum_i\mathrm{RMS}^i_{GX}=\mathrm{RMT}_{GX}$.
 - 4.B.2 (sin revisar): comentario sobre «la representación de Bowen del tema 3.A.23»: con el reparto, Bowen está en el 3.A.23 y allí basta mencionarlo.

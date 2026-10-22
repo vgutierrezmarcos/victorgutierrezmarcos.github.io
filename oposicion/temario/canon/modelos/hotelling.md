@@ -27,7 +27,7 @@ Implicaciones: **principio de diferenciación máxima** ($a=0$, $b=1$, $p^*=c+t$
 |---|---|---|---|---|
 | 3.A.18 | Diferenciación horizontal con direcciones | desarrollo (hecho, 19/10/2026) | Todo lo anterior, en 2 subapartados (precio; localización) y el anexo D | — |
 | 3.A.19 | Oligopolio: paradoja de Bertrand y sus salidas | no lo usa (hecho, 20/10/2026) | La salida diferenciada va con Singh y Vives (ficha `oligopolio-diferenciado`); si se quiere un ejemplo con direcciones, $p=c+t$ en una línea con remisión al 3.A.18 (II.3.2) | El gráfico y el modelo |
-| 3.A.24, 4.B.2 | Competencia electoral | mención | El segmento ideológico es la ciudad lineal con precios fijos: solo el efecto demanda, convergencia al votante mediano (ficha `downs-hotelling`); Hotelling (1929), Downs (1957) | La competencia en precios |
+| 3.A.24, 4.B.2 | Competencia electoral | mención (3.A.24 hecho, 22/10/2026) | El segmento ideológico es la ciudad lineal con precios fijos: solo el efecto demanda, convergencia al votante mediano (ficha `downs-hotelling`); Hotelling (1929), Downs (1957) | La competencia en precios |
 | 3.A.14 | Juegos dinámicos | mención (hecho, 19/10/2026) | Juegos en 2 etapas (localización y precio) resueltos por inducción hacia atrás, con remisión | El modelo |
 
 ## Divergencias encontradas en el temario actual

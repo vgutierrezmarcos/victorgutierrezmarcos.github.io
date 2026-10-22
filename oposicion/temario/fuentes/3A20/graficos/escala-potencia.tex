@@ -1,0 +1,41 @@
+% Escala de la potencia de los incentivos b en [0, 1] (3.A.20, de II.1 a III.1).
+%   Se queda en la franja de abajo de la pizarra y cada instrumento se coloca en la
+%   recta al estudiarlo, en el orden del tema: tasa de rentabilidad y coste
+%   incrementado (b = 0, II.1); el dilema incentivos-rentas (flechas, II.3) y el
+%   menú de Laffont-Tirole (II.3); price cap (b = 1, II.4); reparto de beneficios y
+%   escala móvil (intermedios, II.4); yardstick (b = 1 sin rentas, III.1).
+%   Encima, «más incentivos»; debajo, «más rentas».
+% Elaboración propia a partir de Laffont y Tirole (1993) y Armstrong y Sappington (2007).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.3cm,
+    marca/.style={draw=black,thick},
+    inst/.style={font=\footnotesize,align=center,inner sep=1.5pt}]
+  % 1: la recta de la potencia, de 0 a 1
+  \capa{1}{\draw[eje,<->] (-0.4,0) -- (10.4,0);}
+  \capa{1}{\draw[marca] (0,-0.12) -- (0,0.12);}
+  \capa{1}{\draw[marca] (10,-0.12) -- (10,0.12);}
+  \capa{1}{\node[etiqueta,below] at (0,-0.15) {$b=0$};}
+  \capa{1}{\node[etiqueta,below] at (10,-0.15) {$b=1$};}
+  \capa{1}{\node[etiqueta,anchor=west] at (10.45,0) {potencia $b$};}
+  % 2: tasa de rentabilidad y coste incrementado (b = 0), II.1
+  \capa{2}{\node[punto,fill=tceeazul] at (0,0) {};}
+  \capa{2}{\node[inst,text=tceeazul] at (0,0.85) {coste incrementado\\ tasa de rentabilidad};}
+  % 3: el dilema: flechas de incentivos (encima) y rentas (debajo), II.3
+  \capa{3}{\draw[flecha,tceemorado] (2,2.75) -- node[above,etiqueta,text=tceemorado] {más incentivos a reducir costes} (8,2.75);}
+  \capa{3}{\draw[flecha] (2,-2.45) -- node[below,etiqueta,text=tceerojo] {más rentas para la empresa} (8,-2.45);}
+  % 4: menú de Laffont-Tirole: cada tipo su potencia, II.3
+  \capa{4}{\draw[curva1,|-|] (2,-0.85) -- (10,-0.85);}
+  \capa{4}{\node[inst,text=tceemorado] at (6,-1.5) {menú de \textsc{Laffont}-\textsc{Tirole}:\\ la ineficiente, baja potencia; la eficiente, $b=1$};}
+  % 5: price cap (b = 1), II.4
+  \capa{5}{\node[punto,fill=tceemorado] at (10,0) {};}
+  \capa{5}{\node[inst,text=tceemorado] at (10,0.85) {\emph{price cap}\\ (precio fijo)};}
+  % 6: esquemas intermedios, II.4
+  \capa{6}{\node[punto,fill=tceeverde] at (5,0) {};}
+  \capa{6}{\node[inst,text=tceeverde] at (5,0.85) {reparto de beneficios\\ escala móvil};}
+  % 7: yardstick (b = 1 sin rentas), III.1
+  \capa{7}{\node[inst,text=tceedorado] at (10,1.95) {\emph{yardstick}:\\ $b=1$ sin rentas};}
+\end{tikzpicture}
+\end{document}

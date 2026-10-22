@@ -1,0 +1,40 @@
+% Baron y Myerson (1982) con 2 tipos (3.A.20, II.2), con el ejemplo conductor.
+%   Demanda p(q) = 100 - q; coste marginal 20 (eficiente, prob. 1/2) o 40; alfa = 0.
+%   Eficiente: p(q_) = 20 -> q_ = 80 (no hay distorsión arriba).
+%   Ineficiente con información completa: p = 40 -> 60.
+%   Con información asimétrica: p(q̄) = 40 + 1·20 = 60 -> q̄ = 40 (distorsión abajo).
+%   Renta informativa de la eficiente: Δβ·q̄ = 20·40 = 800 (rectángulo dorado).
+%   Pérdida en el tipo ineficiente: triángulo (40,40)-(40,60)-(60,40) = 200 (rojo).
+% Elaboración propia a partir de Baron y Myerson (1982) y Laffont y Martimort (2002).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.06cm,y=0.05cm]
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{114}{108}}
+  % 2: demanda
+  \capa{2}{\draw[curva1] (0,100) -- (100,0);}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (88,12) {$p(q)$};}
+  % 3: costes marginales de los 2 tipos
+  \capa{3}{\draw[curva3] (0,20) -- (106,20) node[etiqueta,right,text=tceeverde] {$\underline{\beta}=20$};}
+  \capa{3}{\draw[curva4] (0,40) -- (106,40) node[etiqueta,right,text=tceedorado] {$\overline{\beta}=40$};}
+  % 4: tipo eficiente: cantidad eficiente (no hay distorsión arriba)
+  \capa{4}{\node[punto] (E) at (80,20) {};}
+  \capa{4}{\draw[guia] (E) -- (80,0) node[below,text=black] {$\underline{q}$};}
+  % 5: tipo ineficiente con información completa (no se le ofrece)
+  \capa{5}{\node[circle,draw=black,fill=white,inner sep=1.3pt] (F) at (60,40) {};}
+  \capa{5}{\draw[guia] (F) -- (60,0) node[below,text=black] {$\overline{q}^{\,e}$};}
+  % 6: coste virtual y cantidad distorsionada
+  \capa{6}{\draw[curvanueva,dashed] (0,60) -- (106,60) node[etiqueta,right,text=tceerojo] {$\overline{\beta}+\frac{\nu}{1-\nu}\Delta\beta=60$};}
+  \capa{6}{\node[punto] (I) at (40,60) {};}
+  \capa{6}{\draw[guia] (I) -- (40,0) node[below,text=black] {$\overline{q}$};}
+  \capa{6}{\draw[flecha] (57,8) -- (43,8);}
+  \capa{6}{\node[etiqueta,font=\footnotesize,text=tceerojo] at (50,14) {distorsión abajo};}
+  % 7: pérdida de eficiencia en el tipo ineficiente
+  \capa{7}{\fill[tceerojo,fill opacity=0.3] (40,40) -- (40,60) -- (60,40) -- cycle;}
+  % 8: renta informativa de la eficiente
+  \capa{8}{\fill[area2] (0,20) rectangle (40,40);}
+  \capa{8}{\node[etiqueta,font=\footnotesize,align=center] at (20,30) {renta informativa\\ $\Delta\beta\,\overline{q}=800$};}
+\end{tikzpicture}
+\end{document}
