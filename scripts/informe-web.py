@@ -11,9 +11,9 @@ quien lo lee (la skill /informe-web):
         Imprime un resumen con las cifras que hacen falta para valorar.
 
     python3 scripts/informe-web.py --render ~/.local/share/oposicion-web/informes/AAAA-MM-DD
-        Compone informe.html (cuatro caras A4, imprimible) a partir de
+        Compone informe.html (seis caras A4, imprimible: cuatro de la web y dos de la app) a partir de
         datos.json y, si existe, valoracion.json:
-        {"resumen": "…", "web": {"diagnostico": "…", "prioridades": [{"nivel": "Alto", "texto": "…"}]},
+        {"resumen": "…", "web": {"diagnostico": "…", "anual": "…", "publico": "…", "prioridades": [{"nivel": "Alto", "texto": "…"}]},
          "app": {"diagnostico": "…", "prioridades": […]}, "proximo": ["…"]}
 
 Todo son agregados: nunca nombres, correos ni uid. Los informes se guardan
@@ -105,6 +105,25 @@ def resumen_para_valorar(d):
         out.append('Canales: ' + ', '.join(f"{x['sessionDefaultChannelGroup']} {x['sessions']}" for x in ga.get('canales', [])))
         out.append('Orígenes: ' + ', '.join(f"{x['sessionSource']} {x['sessions']}" for x in ga.get('origenes', [])[:8]))
         out.append('Más vistas: ' + ', '.join(f"{x['pagePath']} {x['screenPageViews']}" for x in ga.get('paginas', [])[:8]))
+    an, pu = w.get('anual', {}), w.get('publico', {})
+    if an:
+        gt, st = an.get('ga_total', {}), an.get('sc_total', {})
+        out.append(f"AÑO ({an.get('periodo_ga', ['', ''])[0]} → {an.get('periodo_ga', ['', ''])[1]}): {gt.get('activeUsers')} personas, {gt.get('sessions')} visitas, "
+                   f"{gt.get('screenPageViews')} vistas, {an.get('descargas_total')} descargas; Google {st.get('clics')} clics / {st.get('impresiones')} impresiones, pos {st.get('posicion')}")
+        out.append('  Visitas por mes: ' + ', '.join(f"{x['yearMonth'][4:]} {x['sessions']}" for x in an.get('ga_por_mes', [])))
+        out.append('  Clics por mes: ' + ', '.join(f"{x['mes'][5:]} {x['clics']}/{x['impresiones']}" for x in an.get('sc_por_mes', [])))
+        out.append('  Grupos: ' + '; '.join(f"{g['grupo'][:22]} {g['clics']}/{g['impresiones']} pos {g['posicion']}" for g in an.get('grupos', [])))
+        out.append('  Orígenes del año: ' + ', '.join(f"{x['sessionSource']} {x['sessions']}/{x['activeUsers']}" for x in an.get('origenes', [])[:8]))
+        out.append('  Descargas del año: ' + ', '.join(f"{x['fileName'].rsplit('/', 1)[-1]} {x['eventCount']}" for x in an.get('descargas', [])[:8]))
+    if pu and 'error' not in pu:
+        nr = {x['newVsReturning']: x for x in pu.get('nuevos_vs_recurrentes', [])}
+        out.append(f"PÚBLICO (periodo): ciudades " + ', '.join(f"{x['city']} {x['activeUsers']}" for x in pu.get('ciudades', [])[:6])
+                   + f"; países " + ', '.join(f"{x['country']} {x['activeUsers']}" for x in pu.get('paises', [])[:4])
+                   + f"; finde {pu.get('finde_sobre_laborable')} % de un laborable; visita media {pu.get('duracion_media')} s; "
+                   f"nuevos {nr.get('new', {}).get('activeUsers')} / vuelven {nr.get('returning', {}).get('activeUsers')} ({nr.get('returning', {}).get('sessions')} visitas); "
+                   f"descargas {pu.get('descargas_total')}: " + ', '.join(f"{x['fileName'].rsplit('/', 1)[-1]} {x['eventCount']}" for x in pu.get('descargas', [])[:6]))
+        horas = sorted(((int(x['hour']), x['sessions']) for x in pu.get('horas', []) if x['hour'].isdigit()), key=lambda t: -t[1])[:3]
+        out.append('  Horas punta: ' + ', '.join(f'{h} h {n}' for h, n in horas))
     out.append(f"SEO técnico: nota {s.get('nota')} · " + ' · '.join(f"{c} {v['nota']}" for c, v in s.get('categorías', {}).items())
                + ' · problemas ' + ', '.join(f'{k} {v}' for k, v in s.get('por nivel', {}).items()))
     for p in s.get('problemas', [])[:10]:
@@ -257,6 +276,122 @@ def linea(puntos, ancho=330, alto=90, etiqueta_y=True, formato=lambda v: num(v))
     out.append(f'<text x="{X(len(puntos) - 1) + 7:.1f}" y="{Y(vals[-1]) + 4:.1f}" class="val fuerte">{formato(vals[-1])}</text>')
     out.append('</svg>')
     return ''.join(out)
+
+
+def barras_v(puntos, ancho=330, alto=120, destacar_ultimo=True):
+    """Barras verticales (meses, horas) con el valor sobre las que destacan."""
+    puntos = [(k, v or 0) for k, v in puntos]
+    if not puntos:
+        return '<p class="vacio">Sin datos</p>'
+    maximo = max(v for _, v in puntos) or 1
+    mi, md, base, arriba = 6, 6, alto - 16, 16
+    paso = (ancho - mi - md) / len(puntos)
+    w = max(3, paso * 0.68)
+    alto_util = base - arriba
+    muchos = len(puntos) > 14
+    out = [f'<svg class="grafico" viewBox="0 0 {ancho} {alto}" role="img">',
+           f'<line x1="{mi}" x2="{ancho - md}" y1="{base}" y2="{base}" class="eje"/>']
+    vals = [v for _, v in puntos]
+    for i, (k, v) in enumerate(puntos):
+        x = mi + paso * i + (paso - w) / 2
+        h = alto_util * v / maximo
+        out.append(f'<rect x="{x:.1f}" y="{base - h:.1f}" width="{w:.1f}" height="{h:.1f}" rx="2" fill="var(--serie1)"/>')
+        if v == max(vals) or (destacar_ultimo and i == len(puntos) - 1) or (not muchos and v == min(vals)):
+            out.append(f'<text x="{x + w / 2:.1f}" y="{base - h - 3:.1f}" text-anchor="middle" class="val">{num(v)}</text>')
+        if not muchos or i % 3 == 0:
+            out.append(f'<text x="{x + w / 2:.1f}" y="{alto - 4}" text-anchor="middle" class="etq">{e(k)}</text>')
+    out.append('</svg>')
+    return ''.join(out)
+
+
+MES_CORTO = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+ORIGENES = {'sites.google.com': 'Repositorio de apuntes de la ATCEE', '(direct)': 'Directo (favoritos o dirección escrita)', 'google': 'Google',
+            'victorgutierrezmarcos.blogspot.com': 'Antiguo blog (blogspot)', 'linkedin.com': 'LinkedIn', 'bing': 'Bing', 'manuelcabadogarcia.es': 'Web de Manuel Cabado García',
+            'scholar.google.com': 'Google Académico', 'chatgpt.com': 'ChatGPT', 'duckduckgo': 'DuckDuckGo', 'l.instagram.com': 'Instagram', 'm.facebook.com': 'Facebook',
+            'lm.facebook.com': 'Facebook', 'atcee.es': 'Web de la ATCEE', 'perplexity': 'Perplexity', 'com.google.android.gm': 'Gmail', 'mail.google.com': 'Gmail', 'whatsapp': 'WhatsApp'}
+CIUDADES = {'Seville': 'Sevilla', 'Malaga': 'Málaga', 'Cordoba': 'Córdoba', 'Caceres': 'Cáceres', 'Logrono': 'Logroño', 'Castellon de la Plana': 'Castellón',
+            'Las Palmas de Gran Canaria': 'Las Palmas', 'Santa Cruz de Tenerife': 'Tenerife', 'San Sebastian': 'San Sebastián', 'Leon': 'León', 'Almeria': 'Almería', 'Cadiz': 'Cádiz', 'Jaen': 'Jaén'}
+PAISES = {'Spain': 'España', 'France': 'Francia', 'United States': 'Estados Unidos', 'United Kingdom': 'Reino Unido', 'Germany': 'Alemania', 'Belgium': 'Bélgica', 'Italy': 'Italia',
+          'Portugal': 'Portugal', 'Peru': 'Perú', 'Ecuador': 'Ecuador', 'Mexico': 'México', 'Argentina': 'Argentina', 'Colombia': 'Colombia', 'Chile': 'Chile', 'India': 'India',
+          'Netherlands': 'Países Bajos', 'Switzerland': 'Suiza', 'Ireland': 'Irlanda', 'Morocco': 'Marruecos', 'China': 'China'}
+
+
+def nombre_origen(o):
+    return ORIGENES.get(o, o)
+
+
+def nombre_pagina(ruta):
+    r = ruta.split('?')[0]
+    nombres = {'/': 'Portada', '/index.html': 'Portada', '/oposicion': 'Oposición', '/oposicion/': 'Oposición', '/oposicion/index.html': 'Oposición',
+               '/oposicion/temario.html': 'Temario', '/oposicion/temario/tercer-ejercicio.html': 'Tercer ejercicio', '/oposicion/temario/cuarto-ejercicio.html': 'Cuarto ejercicio',
+               '/oposicion/temario/primer-ejercicio.html': 'Primer ejercicio', '/oposicion/temario/segundo-ejercicio.html': 'Segundo ejercicio',
+               '/oposicion/temario/quinto-ejercicio.html': 'Quinto ejercicio', '/oposicion/temario/primer-ejercicio/test/simulador.html': 'Simulador de test',
+               '/app/': 'Página de la app', '/app/index.html': 'Página de la app', '/app/instalar.html': 'Instalar la app', '/sobre-mi.html': 'Sobre mí', '/blog/index.html': 'Blog',
+               '/oposicion/por-que-tcee.html': 'Guía ¿Por qué TCEE?', '/oposicion/que-es-tcee.html': 'Guía (dirección antigua)', '/oposicion/organizacion.html': 'Organización',
+               '/oposicion/enlaces.html': 'Enlaces', '/novedades.html': 'Novedades', '/oposicion/cifras.html': 'La oposición en cifras'}
+    if r in nombres:
+        return nombres[r]
+    if r.endswith('.pdf'):
+        return 'PDF ' + r.rsplit('/', 1)[-1]
+    return r
+
+
+_TITULOS = None
+
+
+def titulos_temas():
+    """Código → título corto, del temario.json que usa la app."""
+    global _TITULOS
+    if _TITULOS is None:
+        _TITULOS = {}
+        d = _leer(RAIZ / 'oposicion/temario/temario.json') or {}
+
+        def andar(x):
+            if isinstance(x, dict):
+                if 'codigo' in x and 'titulo' in x:
+                    _TITULOS[str(x['codigo'])] = str(x['titulo'])
+                for v in x.values():
+                    andar(v)
+            elif isinstance(x, list):
+                for v in x:
+                    andar(v)
+        andar(d)
+    return _TITULOS
+
+
+def nombre_fichero(ruta):
+    """«3A08.pdf» → «3.A.8 Teoría de la demanda…»; otros PDF, por su nombre."""
+    import re
+    f = ruta.rsplit('/', 1)[-1]
+    m = re.match(r'^([345])([AB])(\d{2})\.pdf$', f)
+    if m:
+        codigo = f'{m.group(1)}.{m.group(2)}.{int(m.group(3))}'
+        t = titulos_temas().get(codigo, '')
+        t = t.split('.')[0].split(':')[0]
+        return f'{codigo} {t[:34]}'.strip()
+    conocidos = {'examenes_oficiales_test.pdf': 'Tests oficiales (1.er ejercicio)', 'esquema_dictamen_economico.pdf': 'Esquema del dictamen',
+                 'como_cantar_un_tema.pdf': 'Cómo cantar un tema', 'parte_B.pdf': '5.º ejercicio, parte B', 'parte_A.pdf': '5.º ejercicio, parte A',
+                 'parte_C.pdf': '5.º ejercicio, parte C', 'estructura_temario.ppsx': 'Estructura del temario (PowerPoint)'}
+    if f in conocidos:
+        return conocidos[f]
+    return f.replace('_', ' ').replace('.pdf', '')[:40]
+
+
+def bloque_fichero(ruta):
+    import re
+    m = re.match(r'^([345])([AB])\d{2}\.pdf$', ruta.rsplit('/', 1)[-1])
+    if m:
+        return f'{m.group(1)}.{m.group(2)}' if m.group(1) == '3' else '4.º y 5.º'
+    if 'primer-ejercicio' in ruta or 'test' in ruta or 'dictamen' in ruta:
+        return 'Tests y dictamen'
+    return 'Otros'
+
+
+def mmss(segundos):
+    if segundos is None:
+        return '—'
+    s = int(segundos)
+    return f'{s // 60} min {s % 60:02d} s' if s >= 60 else f'{s} s'
 
 
 def dial(nota):
@@ -497,6 +632,61 @@ def render(carpeta):
             break
     bloque_faltan = ('<ul class="faltan">' + ''.join(faltan) + '</ul>') if faltan else '<p class="nota">Todas las fuentes responden.</p>'
 
+    # --- Web, caras 3 y 4: el año y el público (lo que tenía el informe del 15 oct. 2026)
+    an, pu = web.get('anual', {}), web.get('publico', {})
+    gat = an.get('ga_total', {})
+    sct = an.get('sc_total', {})
+    rec = {x['newVsReturning']: x for x in an.get('recurrentes', [])}
+    ses_rec = rec.get('returning', {}).get('sessions', 0)
+    pct_rec = round(100 * ses_rec / gat['sessions']) if gat.get('sessions') else None
+    kpis_anio = ''.join([
+        kpi('Personas en el año', num(gat.get('activeUsers')), f"{num(gat.get('newUsers'))} nuevas"),
+        kpi('Visitas', num(gat.get('sessions')), f"{num(gat.get('screenPageViews'))} páginas vistas"),
+        kpi('Descargas de temas y materiales', num(an.get('descargas_total')), 'PDF y otros ficheros'),
+        kpi('Visitas de quien repite', f"{num(pct_rec)} %" if pct_rec is not None else '—', f"{num(rec.get('returning', {}).get('activeUsers'))} personas que vuelven"),
+        kpi('Clics desde Google', num(sct.get('clics')), f"mostrada {num(sct.get('impresiones'))} veces · posición {num(sct.get('posicion'), 1)}"),
+    ])
+    visitas_mes = barras_v([(MES_CORTO[int(x['yearMonth'][4:6]) - 1], x['sessions']) for x in an.get('ga_por_mes', [])])
+    clics_mes = barras_v([(MES_CORTO[int(x['mes'][5:7]) - 1], x['clics']) for x in an.get('sc_por_mes', [])])
+    donde = an.get('donde_entran', {})
+    filas_llegan = []
+    for x in an.get('origenes', [])[:9]:
+        o = x['sessionSource']
+        if o == '(not set)':
+            continue
+        entran = ', '.join(nombre_pagina(l) for l, _ in donde.get(o, []) if l != '(not set)')[:70]
+        filas_llegan.append([e(nombre_origen(o)), num(x['sessions']), num(x['activeUsers']), e(entran)])
+    llegan = tabla(['Origen', 'Visitas', 'Personas', 'Dónde entran'], filas_llegan, num_desde=1) if filas_llegan else '<p class="vacio">Sin datos</p>'
+    buscan = tabla(['Tipo de búsqueda', 'Clics', 'Veces mostrada', 'Posición'],
+                   [[e(g['grupo']), num(g['clics']), num(g['impresiones']), num(g['posicion'], 1)] for g in an.get('grupos', [])])
+    economia = sorted(an.get('economia', []), key=lambda b: -b['impresiones'])[:6]
+    economia_t = tabla(['Búsqueda de economía', 'Clics', 'Impr.', 'Pos.'], [[e(b['query']), num(b['clics']), num(b['impresiones']), num(b['posicion'], 1)] for b in economia]) if economia else '<p class="vacio">Ninguna búsqueda de contenidos de economía</p>'
+    descargas_anio = barras_h([(nombre_fichero(x['fileName']), x['eventCount']) for x in an.get('descargas', [])[:10]], alto_fila=16, etiq=190, corte=40)
+
+    ciudades = barras_h([(CIUDADES.get(x['city'], x['city']), x['activeUsers']) for x in pu.get('ciudades', []) if x['city'] != '(not set)'][:8], alto_fila=16, corte=26)
+    sin_ciudad = next((x['activeUsers'] for x in pu.get('ciudades', []) if x['city'] == '(not set)'), 0)
+    total_pais = sum(x['activeUsers'] for x in pu.get('paises', [])) or 1
+    paises_t = ', '.join(f"{PAISES.get(x['country'], x['country'])} {round(100 * x['activeUsers'] / total_pais)} %" for x in pu.get('paises', [])[:5])
+    horas = {int(x['hour']): x['sessions'] for x in pu.get('horas', []) if x['hour'].isdigit()}
+    horas_g = barras_v([(str(h) if h % 3 == 0 else '', horas.get(h, 0)) for h in range(24)], alto=100, destacar_ultimo=False)
+    nr = {x['newVsReturning']: x for x in pu.get('nuevos_vs_recurrentes', [])}
+    disp = {x['deviceCategory']: x['activeUsers'] for x in ga.get('dispositivos', [])}
+    tot_disp = sum(disp.values()) or 1
+    disp_t = ' · '.join(f"{ {'desktop': 'ordenador', 'mobile': 'móvil', 'tablet': 'tableta'}.get(k, k)} {round(100 * v / tot_disp)} %" for k, v in disp.items())
+    descargas_mes = barras_h([(nombre_fichero(x['fileName']), x['eventCount']) for x in pu.get('descargas', [])[:10]], alto_fila=16, etiq=190, corte=40)
+    def por_bloques(lista):
+        b = {}
+        for x in lista:
+            b[bloque_fichero(x['fileName'])] = b.get(bloque_fichero(x['fileName']), 0) + x['eventCount']
+        return ' · '.join(f'{k} {num(v)}' for k, v in sorted(b.items(), key=lambda kv: -kv[1]))
+    bloques_t = por_bloques(pu.get('descargas', []))
+    bloques_anio = por_bloques(an.get('descargas', []))
+    quien = (f"<p class=\"nota\">{num(nr.get('new', {}).get('activeUsers'))} personas nuevas y {num(nr.get('returning', {}).get('activeUsers'))} que vuelven; "
+             f"estas últimas hacen {num(nr.get('returning', {}).get('sessions'))} de las {num(g.get('sessions'))} visitas. Visita media de {mmss(pu.get('duracion_media'))}. "
+             f"Dispositivos: {e(disp_t)}.</p>")
+    cuando = (f"<p class=\"nota\">Visitas por hora de inicio (hora peninsular). Sábado y domingo, en torno al {num(pu.get('finde_sobre_laborable'))} % de un día laborable.</p>")
+    anio_txt = f"{an.get('periodo_ga', ['', ''])[0]} a {an.get('periodo_ga', ['', ''])[1]}"
+
     vw, va = v.get('web', {}), v.get('app', {})
     proximo = v.get('proximo', [])
     doc = f'''<meta charset="utf-8">
@@ -598,7 +788,7 @@ h4 {{ font-size: 9.5pt; margin: 6px 0 2px; color: var(--suave); font-weight: 600
     <div><h3>Clics en Google, foto a foto</h3>{serie_clics}</div>
     <div><h3>Usuarios en Analytics, foto a foto</h3>{serie_usuarios}</div>
   </div>
-  <div class="pie"><span>Víctor Gutiérrez Marcos · victorgutierrezmarcos.es</span><span>1 / 4</span></div>
+  <div class="pie"><span>Víctor Gutiérrez Marcos · victorgutierrezmarcos.es</span><span>1 / 6</span></div>
 </section>
 
 <section class="hoja">
@@ -626,7 +816,39 @@ h4 {{ font-size: 9.5pt; margin: 6px 0 2px; color: var(--suave); font-weight: 600
   {('<p class="nota">… y ' + str(len(problemas) - 6) + ' más de prioridad baja, en seo-' + e(seo.get('fecha')) + '.json.</p>') if len(problemas) > 6 else ''}
   <h3>Prioridades de la web para el mes</h3>
   {lista_prioridades(vw.get('prioridades'))}
-  <div class="pie"><span>Comprobación técnica: scripts/comprobar-seo.py · Search Console y Analytics: scripts/estadisticas-web.py</span><span>2 / 4</span></div>
+  <div class="pie"><span>Comprobación técnica: scripts/comprobar-seo.py · Search Console y Analytics: scripts/estadisticas-web.py</span><span>2 / 6</span></div>
+</section>
+
+<section class="hoja">
+  <header><h2>La web, el año</h2><span class="sello">{e(anio_txt)} · Search Console desde {e(an.get('periodo_sc', ['', ''])[0])}</span></header>
+  <div class="kpis">{kpis_anio}</div>
+  {parrafos(vw.get('anual'))}
+  <div class="dos">
+    <div><h3>Visitas por mes (Analytics)</h3>{visitas_mes}</div>
+    <div><h3>Clics desde Google por mes (Search Console)</h3>{clics_mes}</div>
+  </div>
+  <h3>Cómo llega la gente</h3>
+  {llegan}
+  <p class="nota">Analytics, visitas del año por origen; solo quien acepta las cookies. «Dónde entran»: las páginas por las que llega cada origen.</p>
+  <div class="dos">
+    <div><h3>Qué buscan en Google</h3>{buscan}<p class="nota">Search Console, último año. Google oculta parte de las búsquedas por privacidad, así que los grupos no suman el total.</p></div>
+    <div><h3>Búsquedas de contenidos de economía</h3>{economia_t}</div>
+  </div>
+  <div class="pie"><span>Grupos de búsquedas: por las palabras de cada una (nombre del autor, la oposición, el resto)</span><span>3 / 6</span></div>
+</section>
+
+<section class="hoja">
+  <header><h2>La web, el público</h2><span class="sello">{e(periodo)} (descargas del año aparte)</span></header>
+  {parrafos(vw.get('publico'))}
+  <div class="dos">
+    <div><h3>Dónde</h3>{ciudades}<p class="nota">Personas por ciudad; {num(sin_ciudad)} sin ciudad identificada. Países: {e(paises_t)}.</p></div>
+    <div><h3>Cuándo</h3>{horas_g}{cuando}<h3>Quién</h3>{quien}</div>
+  </div>
+  <div class="dos">
+    <div><h3>Lo más descargado en el periodo</h3>{descargas_mes}<p class="nota">{num(pu.get('descargas_total'))} descargas en total. Por bloques: {e(bloques_t)}.</p></div>
+    <div><h3>Lo más descargado en el año</h3>{descargas_anio}<p class="nota">{num(an.get('descargas_total'))} descargas en el año. Por bloques: {e(bloques_anio)}.</p></div>
+  </div>
+  <div class="pie"><span>Analytics: descargas de ficheros, ciudades y horas; solo quien acepta las cookies</span><span>4 / 6</span></div>
 </section>
 
 <section class="hoja">
@@ -647,7 +869,7 @@ h4 {{ font-size: 9.5pt; margin: 6px 0 2px; color: var(--suave); font-weight: 600
     <div><h3>Personas que usan la app, foto a foto</h3>{serie_app}</div>
     <div><h3>Google Play</h3>{bloque_play}</div>
   </div>
-  <div class="pie"><span>Red: scripts/estadisticas-red.py · Play, Analytics y GitHub: scripts/estadisticas-app.py</span><span>3 / 4</span></div>
+  <div class="pie"><span>Red: scripts/estadisticas-red.py · Play, Analytics y GitHub: scripts/estadisticas-app.py</span><span>5 / 6</span></div>
 </section>
 
 <section class="hoja">
@@ -665,7 +887,7 @@ h4 {{ font-size: 9.5pt; margin: 6px 0 2px; color: var(--suave); font-weight: 600
   {lista_prioridades(va.get('prioridades'))}
   {('<h3>Para el próximo informe</h3><ul class="faltan">' + ''.join(f'<li>{e(x)}</li>' for x in proximo) + '</ul>') if proximo else ''}
   <p class="nota">Método: todas las cifras de la app son recuentos agregados de Firestore, Firebase Authentication, Google Play y Analytics de la app (esta última, solo de quien acepta enviar estadísticas desde la 1.18.0). No se consultan nombres, correos ni contenidos, y el informe no se publica ni se cede (fila «Estadísticas agregadas de la app» de la política de privacidad).</p>
-  <div class="pie"><span>Informe generado con scripts/informe-web.py · guardado fuera del repositorio</span><span>4 / 4</span></div>
+  <div class="pie"><span>Informe generado con scripts/informe-web.py · guardado fuera del repositorio</span><span>6 / 6</span></div>
 </section>
 '''
     (carpeta / 'informe.html').write_text(doc, encoding='utf-8')

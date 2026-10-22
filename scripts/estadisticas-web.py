@@ -104,13 +104,17 @@ def totales(api, desde, hasta):
 
 # ----------------------------------------------------------------- Analytics
 
-def analytics(api, desde, hasta, dimensiones, metricas, filas=15, contiene=None):
+def analytics(api, desde, hasta, dimensiones, metricas, filas=15, contiene=None, filtro=None, por_dimension=False):
     cuerpo = {'dateRanges': [{'startDate': desde.isoformat(), 'endDate': hasta.isoformat()}],
               'dimensions': [{'name': d} for d in dimensiones], 'metrics': [{'name': m} for m in metricas],
-              'limit': filas, 'orderBys': [{'metric': {'metricName': metricas[0]}, 'desc': True}]}
+              'limit': filas, 'orderBys': [{'dimension': {'dimensionName': dimensiones[0]}} if por_dimension and dimensiones
+                                           else {'metric': {'metricName': metricas[0]}, 'desc': True}]}
     if contiene:
         cuerpo['dimensionFilter'] = {'filter': {'fieldName': dimensiones[0],
                                                 'stringFilter': {'matchType': 'CONTAINS', 'value': contiene}}}
+    elif filtro:
+        campo, valor = filtro
+        cuerpo['dimensionFilter'] = {'filter': {'fieldName': campo, 'stringFilter': {'matchType': 'EXACT', 'value': valor}}}
     r = api.post(f'https://analyticsdata.googleapis.com/v1beta/properties/{PROPIEDAD_GA}:runReport', cuerpo)
     return [{**{d: v['value'] for d, v in zip(dimensiones, f.get('dimensionValues', []))},
              **{m: int(float(v['value'])) for m, v in zip(metricas, f['metricValues'])}} for f in r.get('rows', [])]
@@ -154,7 +158,85 @@ def foto(dias):
         }
     except urllib.error.HTTPError as e:
         ga = {'error': f'{e.code}: {e.read().decode()[:200]}'}
-    return {'fecha': date.today().isoformat(), 'dias': dias, 'search_console': sc, 'analytics': ga}
+    return {'fecha': date.today().isoformat(), 'dias': dias, 'search_console': sc, 'analytics': ga,
+            'anual': anual(api, hasta, ga_hasta), 'publico': publico(api, ga_desde, ga_hasta)}
+
+
+# Para agrupar las búsquedas de Google por lo que buscan (el informe del 15 oct. 2026)
+_AUTOR = ('victor', 'víctor', 'gutierrez', 'gutiérrez', 'vgm')
+_OPOSICION = ('tcee', 'teco', 'economista', 'comercial', 'oposici', 'temario', 'atcee', 'icex', 'opositor', 'dce', 'diplomad', 'convocatoria', 'plazas')
+
+
+def grupo_busqueda(q):
+    q = q.lower()
+    if any(a in q for a in _AUTOR):
+        return 'Nombre del autor'
+    if any(o in q for o in _OPOSICION):
+        return 'La oposición (temario, TCEE, economista del Estado…)'
+    return 'Contenidos de economía (modelos, teorías, autores)'
+
+
+def anual(api, sc_hasta, ga_hasta):
+    """Los últimos doce meses: cifras del año, mes a mes y qué buscan."""
+    sc_desde = date(sc_hasta.year - 1, sc_hasta.month, 1)
+    ga_desde = date(ga_hasta.year - 1, ga_hasta.month, 1)
+    por_mes = {}
+    for f in consola(api, sc_desde, sc_hasta, ['date'], 400):
+        m = f['date'][:7]
+        x = por_mes.setdefault(m, {'mes': m, 'clics': 0, 'impresiones': 0})
+        x['clics'] += f['clics']
+        x['impresiones'] += f['impresiones']
+    busquedas = consola(api, sc_desde, sc_hasta, ['query'], 1000)
+    grupos = {}
+    for b in busquedas:
+        g = grupos.setdefault(grupo_busqueda(b['query']), {'grupo': grupo_busqueda(b['query']), 'clics': 0, 'impresiones': 0, 'busquedas': 0, '_pos': []})
+        g['clics'] += b['clics']
+        g['impresiones'] += b['impresiones']
+        g['busquedas'] += 1
+        g['_pos'].append((b['posicion'], b['impresiones']))
+    for g in grupos.values():
+        peso = sum(i for _, i in g['_pos']) or 1
+        g['posicion'] = round(sum(p * i for p, i in g['_pos']) / peso, 1)
+        del g['_pos']
+    r = {'periodo_sc': [sc_desde.isoformat(), sc_hasta.isoformat()], 'periodo_ga': [ga_desde.isoformat(), ga_hasta.isoformat()],
+         'sc_total': totales(api, sc_desde, sc_hasta), 'sc_por_mes': [por_mes[k] for k in sorted(por_mes)],
+         'grupos': sorted(grupos.values(), key=lambda g: -g['clics']),
+         'economia': [b for b in busquedas if grupo_busqueda(b['query']).startswith('Contenidos')][:10]}
+    try:
+        r['ga_total'] = (analytics(api, ga_desde, ga_hasta, [], ['activeUsers', 'newUsers', 'sessions', 'screenPageViews', 'averageSessionDuration'], 1) or [{}])[0]
+        r['recurrentes'] = analytics(api, ga_desde, ga_hasta, ['newVsReturning'], ['activeUsers', 'sessions'], 5)
+        r['ga_por_mes'] = analytics(api, ga_desde, ga_hasta, ['yearMonth'], ['sessions', 'activeUsers'], 14, por_dimension=True)
+        r['descargas_total'] = (analytics(api, ga_desde, ga_hasta, [], ['eventCount'], 1, filtro=('eventName', 'file_download')) or [{}])[0].get('eventCount', 0)
+        r['descargas'] = analytics(api, ga_desde, ga_hasta, ['fileName'], ['eventCount'], 200, filtro=('eventName', 'file_download'))
+        r['origenes'] = analytics(api, ga_desde, ga_hasta, ['sessionSource'], ['sessions', 'activeUsers'], 12)
+        entradas = analytics(api, ga_desde, ga_hasta, ['sessionSource', 'landingPage'], ['sessions'], 120)
+        donde = {}
+        for x in entradas:
+            donde.setdefault(x['sessionSource'], []).append((x['landingPage'], x['sessions']))
+        r['donde_entran'] = {k: sorted(v, key=lambda t: -t[1])[:3] for k, v in donde.items()}
+    except urllib.error.HTTPError as e:
+        r['error'] = f'{e.code}: {e.read().decode()[:200]}'
+    return r
+
+
+def publico(api, desde, hasta):
+    """Quién usa la web en el periodo: ciudades, países, horas, días y descargas."""
+    try:
+        dias = analytics(api, desde, hasta, ['dayOfWeek'], ['sessions'], 7)
+        laborables = [x['sessions'] for x in dias if x['dayOfWeek'] in ('1', '2', '3', '4', '5')]
+        finde = [x['sessions'] for x in dias if x['dayOfWeek'] in ('0', '6')]
+        return {
+            'ciudades': analytics(api, desde, hasta, ['city'], ['activeUsers'], 10),
+            'paises': analytics(api, desde, hasta, ['country'], ['activeUsers'], 6),
+            'horas': analytics(api, desde, hasta, ['hour'], ['sessions'], 24, por_dimension=True),
+            'finde_sobre_laborable': round(100 * (sum(finde) / max(len(finde), 1)) / max(sum(laborables) / max(len(laborables), 1), 1)),
+            'nuevos_vs_recurrentes': analytics(api, desde, hasta, ['newVsReturning'], ['activeUsers', 'sessions'], 5),
+            'duracion_media': (analytics(api, desde, hasta, [], ['averageSessionDuration'], 1) or [{}])[0].get('averageSessionDuration'),
+            'descargas_total': (analytics(api, desde, hasta, [], ['eventCount'], 1, filtro=('eventName', 'file_download')) or [{}])[0].get('eventCount', 0),
+            'descargas': analytics(api, desde, hasta, ['fileName'], ['eventCount'], 200, filtro=('eventName', 'file_download')),
+        }
+    except urllib.error.HTTPError as e:
+        return {'error': f'{e.code}: {e.read().decode()[:200]}'}
 
 
 def _corta(url):
