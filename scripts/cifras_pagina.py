@@ -435,7 +435,7 @@ def bloque_cuerpo(cuerpo):
             """Personas de la promoción que no están en el listado o sin situación: la barra suma el total de la promoción."""
             return max(p['nombramientos'] - sum(v for k, v in pp[p['promocion']].items() if k != 'sin_dato'), 0)
         series = [(nombre, [pp[p['promocion']].get(k) or None for p in con], color) for k, nombre, color in claves]
-        series.append(('No hay dato (no asociados)', [sin_dato(p) or None for p in con], 'var(--color-border-light)'))
+        series.append(('No hay dato', [sin_dato(p) or None for p in con], 'var(--color-border-light)'))
         svg = g.barras_fechas([p['fecha'] for p in con], [f"{p['promocion']} · {dmy(p['fecha'])}" for p in con], series, apiladas=True,
                               titulo='Promociones por situación de sus miembros', descripcion='Columnas apiladas, una por promoción en la fecha de su nombramiento: asociados en activo, en servicios especiales, en excedencia o jubilados, y personas sin dato porque no figuran en el listado de asociados; la suma es el total de la promoción.')
         tabla = g.tabla(['Promoción', 'Nombramiento', 'En activo', 'Servicios especiales', 'Excedencia', 'Jubilación', 'No hay dato', 'Personas en la promoción'],
