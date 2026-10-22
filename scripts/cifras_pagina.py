@@ -258,7 +258,7 @@ def bloque_pagina(conv, hoy, cuerpo=None):
     if cobertura:
         sin_cubrir = [c for c in completas if c['aprobados']['libre'] < c['plazas']['libre']]
         h.append(f'<p>En las {len(completas)} convocatorias con relación de aprobados en el BOE ({completas[0]["examenes"]}-{completas[-1]["examenes"]}), las plazas de turno libre se cubrieron de media al {fmt(media(cobertura))} %; en {len(completas) - len(sin_cubrir)} se cubrieron todas y en {len(sin_cubrir)} quedaron plazas desiertas'
-                 + (' (' + ', '.join(f'{c["examenes"]}: {c["plazas"]["libre"] - c["aprobados"]["libre"]}' for c in sin_cubrir) + ')' if sin_cubrir else '') + '. Los aprobados de las convocatorias anteriores a 1996 salen de los nombramientos de funcionarios en prácticas leídos de BOE escaneados y son aproximados.</p>')
+                 + (' (' + ', '.join(f'{c["examenes"]}: {c["plazas"]["libre"] - c["aprobados"]["libre"]}' for c in sin_cubrir) + ')' if sin_cubrir else '') + '. Los aprobados de las convocatorias anteriores a 1996 son el tamaño de cada promoción según la ATCEE (turno libre y promoción interna juntos) y, si falta, los nombramientos leídos de BOE escaneados.</p>')
 
     # 2. Admitidos
     if con_admitidos:
