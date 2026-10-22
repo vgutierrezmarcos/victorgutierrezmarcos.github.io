@@ -6,14 +6,18 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../core/analitica.dart';
 import '../../core/avisos_breves.dart';
+import '../../core/conectar_calendario.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
+import '../../core/permiso_calendario.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
 import '../plan/plan_page.dart';
+import '../preparador/calendario_google_tarjeta.dart';
 import '../preparador/red_widgets.dart';
 import '../../data/models/preparador.dart';
+import '../../data/repos/preparador_repo.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/boton_oposicion.dart';
@@ -126,6 +130,9 @@ class MasPage extends ConsumerWidget {
                     onChanged: (v) => ref.read(ajustesProvider.notifier).fijarEstadisticas(v),
                   ),
                 ),
+              // El preparador conecta su calendario en Preparador → Ajustes.
+              if (calendarioDisponible && papel != Papel.preparador && ref.watch(calendarioPermitidoProvider).valueOrNull == PermisoCalendario.permitido)
+                const _FilaCalendarioOpositor(),
               // El preparador tiene sus propios avisos de clases (en Preparador → Ajustes).
               if (Notificaciones.disponibles && papel != Papel.preparador) ListTile(
                 leading: const Icon(Icons.notifications_active_outlined),
@@ -248,4 +255,50 @@ Future<void> cambiarPapel(BuildContext context, WidgetRef ref, Papel papel) asyn
     ),
   );
   if (ok == true) await ref.read(perfilPreparadorProvider.notifier).fijarPapel(Papel.opositor);
+}
+
+/// «Mis cantes en Google Calendar» (opositor): sus cantes y las clases con su
+/// preparador, en su propio calendario. Encender pide el permiso a Google.
+class _FilaCalendarioOpositor extends ConsumerStatefulWidget {
+  const _FilaCalendarioOpositor();
+
+  @override
+  ConsumerState<_FilaCalendarioOpositor> createState() => _FilaCalendarioOpositorState();
+}
+
+class _FilaCalendarioOpositorState extends ConsumerState<_FilaCalendarioOpositor> {
+  bool _ocupado = false;
+
+  Future<void> _alternar(bool si) async {
+    final messenger = ScaffoldMessenger.of(context);
+    if (!si) {
+      await ref.read(ajustesProvider.notifier).fijarCalendarioGoogle(false);
+      messenger.mostrar(const SnackBar(content: Text('Los cantes nuevos ya no irán a tu calendario. Los que ya están se quedan.')));
+      return;
+    }
+    setState(() => _ocupado = true);
+    try {
+      final r = await conectarCalendario(ref, preparador: false);
+      messenger.mostrar(SnackBar(content: Text(r.mensaje)));
+    } finally {
+      if (mounted) setState(() => _ocupado = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final activo = ref.watch(ajustesProvider.select((a) => a.calendarioGoogle));
+    final error = ref.watch(errorCalendarioAlumnoProvider);
+    return ListTile(
+      leading: _ocupado
+          ? const SizedBox(width: 22, height: 22, child: CircularProgressIndicator(strokeWidth: 2.4))
+          : const Icon(Icons.event_available_outlined),
+      title: const Text('Mis cantes en Google Calendar'),
+      subtitle: Text(
+        'Tus cantes y las clases con tu preparador, en tu calendario de Google.${activo && error != null ? '\nLa última vez Google respondió con un error (se reintenta al guardar el cante): $error' : ''}',
+        style: context.textos.labelSmall?.copyWith(color: activo && error != null ? context.esquema.error : null),
+      ),
+      trailing: Switch(value: activo, onChanged: _ocupado ? null : _alternar),
+    );
+  }
 }

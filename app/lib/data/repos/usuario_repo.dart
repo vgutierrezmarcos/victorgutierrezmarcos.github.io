@@ -20,6 +20,7 @@ class Ajustes {
     this.temasExtraidos = 3,
     this.noCantar = const {},
     this.estadisticas,
+    this.calendarioGoogle = false,
     this.updatedAt,
   });
 
@@ -37,6 +38,9 @@ class Ajustes {
   /// Estadísticas de uso anónimas e informes de errores (Firebase): true si
   /// lo activó, false si dijo que no, null si aún no se le ha preguntado.
   final bool? estadisticas;
+  /// «Mis cantes en Google Calendar»: el opositor lleva sus cantes y las
+  /// clases con su preparador a su propio calendario (solo en Android).
+  final bool calendarioGoogle;
   final DateTime? updatedAt;
 
   Ajustes copyWith({
@@ -50,6 +54,7 @@ class Ajustes {
     int? temasExtraidos,
     Map<String, DateTime>? noCantar,
     bool? estadisticas,
+    bool? calendarioGoogle,
     DateTime? updatedAt,
   }) =>
       Ajustes(
@@ -61,6 +66,7 @@ class Ajustes {
         temasExtraidos: temasExtraidos ?? this.temasExtraidos,
         noCantar: noCantar ?? this.noCantar,
         estadisticas: estadisticas ?? this.estadisticas,
+        calendarioGoogle: calendarioGoogle ?? this.calendarioGoogle,
         updatedAt: updatedAt ?? DateTime.now(),
       );
 
@@ -75,6 +81,7 @@ class Ajustes {
         // merge y un mapa no borraría en la nube lo que se quita aquí.
         'noCantar': [for (final e in noCantar.entries) '${e.key}@${e.value.toIso8601String()}']..sort(),
         'estadisticas': estadisticas,
+        'calendarioGoogle': calendarioGoogle,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -106,6 +113,7 @@ class Ajustes {
       temasExtraidos: (j['temasExtraidos'] as num?)?.toInt() ?? 3,
       noCantar: noCantarDe(j),
       estadisticas: j['estadisticas'] as bool?,
+      calendarioGoogle: j['calendarioGoogle'] == true,
       updatedAt: f(j['updatedAt'] as String?),
     );
   }
