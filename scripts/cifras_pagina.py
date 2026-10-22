@@ -425,17 +425,21 @@ def bloque_cuerpo(cuerpo):
     if aso.get('por_situacion'):
         ps = aso['por_situacion']
         h.append(f'<h3>Situación de los asociados ({dmy(aso.get("fecha", ""))})</h3>')
-        h.append(f'<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta {fmt(aso["total"])} personas: {fmt(ps.get("activo", 0))} en activo, {fmt(ps.get("servicios_especiales", 0))} en servicios especiales, {fmt(ps.get("excedente", 0))} en excedencia y {fmt(ps.get("jubilado", 0))} jubiladas. Cada asociado se asigna a su promoción cruzando el listado con la relación de promociones de la propia ATCEE y, si no aparece en ella, por la fecha de nombramiento. El gráfico cuenta solo a los asociados, no a toda la promoción (las primeras promociones ya no tienen asociados); la tabla compara los asociados de cada promoción con las personas que la formaron:</p>')
+        h.append(f'<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta {fmt(aso["total"])} personas: {fmt(ps.get("activo", 0))} en activo, {fmt(ps.get("servicios_especiales", 0))} en servicios especiales, {fmt(ps.get("excedente", 0))} en excedencia y {fmt(ps.get("jubilado", 0))} jubiladas. Cada asociado se asigna a su promoción cruzando el listado con la relación de promociones de la propia ATCEE y, si no aparece en ella, por la fecha de nombramiento. Cada barra suma todas las personas de la promoción: las que están en el listado, por su situación, y en gris claro las que no figuran en él (en las primeras promociones, casi todas):</p>')
         pp = aso.get('por_promocion', {})
         con = [p for p in proms if not p.get('ampliacion')]
         for p in con:
             pp.setdefault(p['promocion'], {})
         claves = [('activo', 'En activo', 'var(--color-primary)'), ('servicios_especiales', 'Servicios especiales', 'var(--color-primary-light)'), ('excedente', 'Excedencia', 'var(--color-accent-gold)'), ('jubilado', 'Jubilación', 'var(--color-border-strong)')]
-        svg = g.barras_fechas([p['fecha'] for p in con], [f"{p['promocion']} · {dmy(p['fecha'])}" for p in con],
-                              [(nombre, [pp[p['promocion']].get(k) or None for p in con], color) for k, nombre, color in claves], apiladas=True,
-                              titulo='Asociados por promoción y situación', descripcion='Columnas apiladas, una por promoción en la fecha de su nombramiento, con los asociados en activo, en servicios especiales, en excedencia o jubilados.')
-        tabla = g.tabla(['Promoción', 'Nombramiento', 'En activo', 'Servicios especiales', 'Excedencia', 'Jubilación', 'Asociados', 'Personas en la promoción'],
-                        [[p['promocion'], dmy(p['fecha']), pp[p['promocion']].get('activo', 0), pp[p['promocion']].get('servicios_especiales', 0), pp[p['promocion']].get('excedente', 0), pp[p['promocion']].get('jubilado', 0), sum(pp[p['promocion']].values()), p['nombramientos']] for p in con])
+        def sin_dato(p):
+            """Personas de la promoción que no están en el listado o sin situación: la barra suma el total de la promoción."""
+            return max(p['nombramientos'] - sum(v for k, v in pp[p['promocion']].items() if k != 'sin_dato'), 0)
+        series = [(nombre, [pp[p['promocion']].get(k) or None for p in con], color) for k, nombre, color in claves]
+        series.append(('No hay dato (no asociados)', [sin_dato(p) or None for p in con], 'var(--color-border-light)'))
+        svg = g.barras_fechas([p['fecha'] for p in con], [f"{p['promocion']} · {dmy(p['fecha'])}" for p in con], series, apiladas=True,
+                              titulo='Promociones por situación de sus miembros', descripcion='Columnas apiladas, una por promoción en la fecha de su nombramiento: asociados en activo, en servicios especiales, en excedencia o jubilados, y personas sin dato porque no figuran en el listado de asociados; la suma es el total de la promoción.')
+        tabla = g.tabla(['Promoción', 'Nombramiento', 'En activo', 'Servicios especiales', 'Excedencia', 'Jubilación', 'No hay dato', 'Personas en la promoción'],
+                        [[p['promocion'], dmy(p['fecha']), pp[p['promocion']].get('activo', 0), pp[p['promocion']].get('servicios_especiales', 0), pp[p['promocion']].get('excedente', 0), pp[p['promocion']].get('jubilado', 0), sin_dato(p), p['nombramientos']] for p in con])
         h.append(g.figura('g-asociados', svg, f'Fuente: listado de asociados de la ATCEE, {dmy(aso.get("fecha", ""))}' + (f'; no aparecen {fmt(aso["sin_promocion"])} asociados que no se han podido asignar a una promoción' if aso.get('sin_promocion') else '') + '.', tabla))
     if len(evo) > 1:
         h.append('<h3>Evolución de los asociados por situación</h3>')
