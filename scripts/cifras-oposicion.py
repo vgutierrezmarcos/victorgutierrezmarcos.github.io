@@ -181,15 +181,35 @@ def normaliza(s):
     return re.sub(r'[^A-Z ]+', ' ', s).strip()
 
 
+def turno_de_encabezado(cab):
+    """Si la fila es un encabezado de sección, el turno que abre: tl, disc, pi."""
+    if len(cab) > 60 or 'APELLIDO' in cab:
+        return None
+    if 'PROMOCION INTERNA' in cab:
+        return 'pi'
+    if 'DISCAPACIDAD' in cab or 'CUPO' in cab:
+        return 'disc'
+    if 'TURNO LIBRE' in cab or 'ACCESO LIBRE' in cab:
+        return 'tl'
+    return None
+
+
 def filas_con_nota(paginas, maximo=None):
-    """Filas que parecen un aspirante con nota: [(nombre normalizado, [notas])].
+    """Filas que parecen un aspirante con nota: [(nombre normalizado, [notas], turno)].
+    El turno sale de los encabezados de sección del documento («Turno libre»,
+    «Promoción interna», «Cupo de reserva de discapacidad»); None si no hay.
     Si la lista va a dos columnas («Aspirante Nota Aspirante Nota»), cada nota es
     una persona (los nombres largos saltan de fila y pierden su nota)."""
     out = []
     dos_columnas = False
+    turno = None
     for p in paginas:
         for f in p['filas']:
             cab = normaliza(' '.join(f))
+            t = turno_de_encabezado(cab)
+            if t:
+                turno = t
+                continue
             if cab.count('ASPIRANTE') >= 2 and cab.count('NOTA') >= 2 and len(f) <= 8:
                 dos_columnas = True
                 continue
@@ -200,21 +220,23 @@ def filas_con_nota(paginas, maximo=None):
                 trozos = re.split(r'\d{1,3}[,.]\d{1,2}', ' '.join(f))
                 for n, trozo in zip(ns, trozos):
                     if maximo is None or n <= maximo:
-                        out.append((normaliza(re.sub(r'\S*[:/.]\S*', ' ', trozo)), [n]))
+                        out.append((normaliza(re.sub(r'\S*[:/.]\S*', ' ', trozo)), [n], turno))
                 continue
             if maximo is not None and ns[-1] > maximo:
                 continue
-            texto = ' '.join(c for c in f if not NUM.match(c.strip()) and not DNI.match(c.strip()))
+            texto = ' '.join(c for c in f if not NUM.match(c.strip()) and not DNI.match(c.strip()) and not re.search(r'[:/]|\d', c))
             texto = re.sub(r'\d{1,3}[,.]\d{1,2}', ' ', texto)
             texto = re.sub(r'\b\d+\b', ' ', texto)
             nombre = normaliza(texto)
+            nombre = re.sub(r'\b(?:VERIFICACION|VERIFICABLE|CODIGO|SEGURO|FOLIOS?|FECHA|FIRMADO|CONSTA|DOCUMENTO|MINISTERIAL|SEGUN|ORDEN|EUBA|ALDAPE|APTO)\b', ' ', nombre)
+            nombre = re.sub(r'\s+', ' ', nombre).strip()
             if len(nombre) < 6 or len(nombre.split()) < 2:
                 continue
             if re.search(r'PRIMER APELLIDO|CALIFICACION|APELLIDOS Y NOMBRE|\bNOTA|\bORDEN|TRIBUNAL|RESOLUCION|ARTICULO|\bLEY\b|DECRETO|MADRID|BOLETIN|PLAZO|RECURSO|SECRETARIA|MINISTERIO|CONVOCATORIA|PUNTOS|EJERCICIO|CORTE|PLAZAS|FIRMADO|FOLIO|CODIGO|VERIFICA', nombre):
                 continue
             if len(nombre.split()) > 7:
                 continue
-            out.append((nombre, ns))
+            out.append((nombre, ns, turno))
     return out
 
 
@@ -224,19 +246,23 @@ def filas_admitidos(paginas):
     idioma (todo admitido declara su segundo idioma); si no hay ninguno, los nombres."""
     con_dni = con_idioma = 0
     nombres = []
+    personas = []
     for p in paginas:
         for f in p['filas']:
             celdas = [c.strip() for c in f]
             if any(DNI.match(c) for c in celdas):
                 con_dni += 1
-            if IDIOMA_RE.search(normaliza(' '.join(celdas))):
+            idiomas_fila = IDIOMA_RE.findall(normaliza(' '.join(celdas)))
+            if idiomas_fila:
                 con_idioma += 1
             texto = IDIOMA_RE.sub(' ', normaliza(' '.join(c for c in celdas if not DNI.match(c))))
             texto = re.sub(r'\b[A-Z]\b', ' ', texto).strip()
             texto = re.sub(r'\s+', ' ', texto)
             if len(celdas) >= 3 and len(texto.split()) >= 2 and not re.search(r'PRIMER APELLIDO|APELLIDO|NOMBRE|DATOS|MINISTERIO|CUERPO|LISTADO|TURNO|ADMITIDOS|RESERVA|PROMOCION|CONVOCATORIA|RESOLUCION|TRIBUNAL|NIF|DNI|FIRMADO|PRESIDENT|FECHA|SECRETARI|DIGITALMENTE', texto):
                 nombres.append(texto)
-    return (max(con_dni, con_idioma) or len(nombres)), nombres
+                if idiomas_fila:
+                    personas.append((texto, IDIOMAS[idiomas_fila[0]]))
+    return (max(con_dni, con_idioma) or len(nombres)), nombres, personas
 
 
 def idiomas_admitidos(paginas):
@@ -267,7 +293,10 @@ def clasificar(seccion, titulo):
         turno = 'pi' if 'PROMOCION' in t or ' PI' in t else 'disc' if 'DISCAPA' in t or 'CUPO' in t else 'tl'
         return ('admitidos', turno, 'DEFINITIV' in t)
     if 'CONSERVA' in t:
-        return None
+        if 'SIGUIENTE' in t:
+            return None  # la lista de notas que se guardan para la convocatoria siguiente
+        ej = 2 if 'SEGUNDO' in s or 'SEGUNDO' in t else 3 if 'TERCER' in s or 'TERCER' in t else None
+        return ('conservan', ej) if ej else None
     if 'APROBAD' not in t and 'APROBAD' not in s:
         return None
     ej = None
@@ -314,14 +343,20 @@ def leer_convocatoria_ministerio(anio, solo_extraer=False):
             continue
         if solo_extraer:
             continue
+        if clase[0] == 'conservan':
+            filas = filas_con_nota(paginas, maximo=40)
+            datos.setdefault('conservan', {})[str(clase[1])] = {'doc': d['titulo'], 'url': d['url'], 'n': len(filas),
+                                                               'ambos': sum(1 for f in filas if len(f[1]) >= 2), 'nombres': [f[0] for f in filas]}
+            continue
         if clase[0] == 'admitidos':
             _, turno, definitiva = clase
-            n, nombres = filas_admitidos(paginas)
+            n, nombres, personas = filas_admitidos(paginas)
             actual = datos['admitidos'].get(turno)
             # Preferimos la lista definitiva; si no, la provisional
             if actual is None or (definitiva and not actual['definitiva']):
                 datos['admitidos'][turno] = {'n': n, 'definitiva': definitiva, 'doc': d['titulo'], 'url': d['url'], 'filas_nombre': len(nombres)}
-                datos['nombres'].setdefault('admitidos_' + turno, nombres)
+                datos['nombres']['admitidos_' + turno] = nombres
+                datos.setdefault('personas', {})[turno] = personas
                 if turno == 'tl':
                     datos['idiomas'] = idiomas_admitidos(paginas)
         elif clase[0] == 'ejercicio':
@@ -330,12 +365,16 @@ def leer_convocatoria_ministerio(anio, solo_extraer=False):
             filas = filas_con_nota(paginas, maximo=maximo)
             clave = f'{ej}{"-" + parte if parte else ""}'
             e = datos['ejercicios'].setdefault(clave, {})
-            e[turno] = {'n': len(filas), 'doc': d['titulo'], 'url': d['url'],
-                        'notas': [max(f[1]) for f in filas], 'nombres': [f[0] for f in filas]}
+            por_turno = {}
+            for nombre, ns, t in filas:
+                k = t or (turno if turno != 'todos' else 'tl')
+                por_turno.setdefault(k, []).append(nombre)
+            for k, nombres_k in por_turno.items():
+                e[k] = {'n': len(nombres_k), 'doc': d['titulo'], 'url': d['url'], 'nombres': nombres_k}
+            e.setdefault('tl', {'n': 0, 'doc': d['titulo'], 'url': d['url'], 'nombres': []})
         else:
             filas = filas_con_nota(paginas)
-            datos['ejercicios'].setdefault(clase[0], {})['todos'] = {'n': len(filas), 'doc': d['titulo'], 'url': d['url'],
-                                                                      'notas': [max(f[1]) for f in filas], 'nombres': [f[0] for f in filas]}
+            datos['ejercicios'].setdefault(clase[0], {})['todos'] = {'n': len(filas), 'doc': d['titulo'], 'url': d['url'], 'nombres': [f[0] for f in filas]}
     return datos
 
 
@@ -662,6 +701,7 @@ def main():
             d = crudo[anio]
             print('   admitidos:', {k: v['n'] for k, v in d['admitidos'].items()})
             print('   ejercicios:', {k: {t: v['n'] for t, v in e.items()} for k, e in d['ejercicios'].items()})
+            print('   conservan:', {k: (v['n'], v['ambos']) for k, v in d.get('conservan', {}).items()})
     if args.volcar:
         Path(args.volcar).write_text(json.dumps(crudo, ensure_ascii=False, indent=1, default=lambda o: dict(o)), encoding='utf-8')
     if args.solo_extraer:
