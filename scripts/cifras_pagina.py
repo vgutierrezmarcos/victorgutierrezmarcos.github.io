@@ -27,6 +27,13 @@ def fmt(v, d=0):
     return f'{v:,.{d}f}'.replace(',', ' ').replace('.', ',')
 
 
+def dmy(iso):
+    """'2025-12-22' → '22/12/2025'."""
+    if not iso or len(iso) < 10:
+        return iso or ''
+    return f'{iso[8:10]}/{iso[5:7]}/{iso[:4]}'
+
+
 def pct(a, b):
     return round(100 * a / b, 1) if a is not None and b else None
 
@@ -251,7 +258,7 @@ def bloque_pagina(conv, hoy, cuerpo=None):
     h.append(f'<h2 id="plazas">Plazas convocadas y aprobados, {primero}-{ultimo}</h2>')
     h.append('<p>Plazas de turno libre de cada convocatoria (por el año en que se celebran los exámenes), partidas entre las que se cubrieron (los aprobados de la fase de oposición que publica el BOE) y las que quedaron desiertas. La promoción interna, reservada a funcionarios A2, va aparte.</p>')
     tabla = g.tabla(['Exámenes', 'Convocatoria (BOE)', 'Plazas libre', 'Reserva discapacidad', 'Plazas interna', 'Aprobados libre', 'Sin cubrir', 'Aprobados interna', 'Cobertura libre'],
-                    [[c['examenes'], c.get('convocatoria', '')[:10], c['plazas']['libre'], c['plazas'].get('libre_discapacidad'), c['plazas'].get('interna'),
+                    [[c['examenes'], dmy(c.get('convocatoria', '')[:10]), c['plazas']['libre'], c['plazas'].get('libre_discapacidad'), c['plazas'].get('interna'),
                       c.get('aprobados', {}).get('libre'), (max(c['plazas']['libre'] - c['aprobados']['libre'], 0) if c.get('aprobados') else None), c.get('aprobados', {}).get('interna'),
                       (f"{fmt(pct(c['aprobados']['libre'], c['plazas']['libre']))} %" if c.get('aprobados') else None)] for c in con_plazas])
     h.append(g.figura('g-plazas', grafico_plazas(con_plazas), 'Fuente: convocatorias y relaciones de aprobados en la fase de oposición publicadas en el BOE. Las convocatorias en curso aún no tienen aprobados.', tabla))
@@ -370,7 +377,7 @@ def bloque_pagina(conv, hoy, cuerpo=None):
     filas = []
     for c in conv:
         p, a, ad, ej = c.get('plazas', {}), c.get('aprobados', {}), c.get('admitidos', {}), c.get('ejercicios', {})
-        filas.append([c['examenes'], c.get('oep'), c.get('convocatoria', '')[:10], p.get('libre'), p.get('interna'), ad.get('libre'), ad.get('interna'),
+        filas.append([c['examenes'], c.get('oep'), dmy(c.get('convocatoria', '')[:10]), p.get('libre'), p.get('interna'), ad.get('libre'), ad.get('interna'),
                       ej.get('1', {}).get('todos'), ej.get('2', {}).get('todos'), ej.get('3', {}).get('todos'), ej.get('4', {}).get('todos'), ej.get('5', {}).get('todos'), a.get('libre'), a.get('interna')])
     h.append(g.tabla(['Exámenes', 'OEP', 'Convocatoria', 'Plazas libre', 'Plazas interna', 'Admitidos libre', 'Admitidos interna', 'Aprueban 1.º', '2.º', '3.º', '4.º', '5.º', 'Aprobados libre', 'Aprobados interna'], filas))
     h.append('<p class="nota-metodo">Los aprobados por ejercicio de esta tabla incluyen todos los turnos. Los datos están también en <a href="cifras.json">cifras.json</a> (licencia CC BY-NC-ND 4.0, citando esta página).</p>')
@@ -406,31 +413,31 @@ def bloque_cuerpo(cuerpo):
     por_anio = Counter()
     for p in proms:
         por_anio[p['anio']] += p['nombramientos']
-    anios = list(range(primero, ultimo + 1))
-    svg = g.grafico([str(a) for a in anios], barras=[('Nombramientos', [por_anio.get(a) or None for a in anios])], titulo='Nombramientos de Técnicos Comerciales y Economistas del Estado por año',
-                    descripcion=f'Barras con el número de personas de cada promoción, por año del nombramiento, de {primero} a {ultimo}.', etiquetas=False)
-    tabla = g.tabla(['Promoción', 'Nombramiento', 'Personas'], [[p['promocion'], p['fecha'], p['nombramientos']] for p in proms])
-    h.append(g.figura('g-promociones', svg, 'Fuente: «TCEE por promociones», Asociación de Técnicos Comerciales y Economistas del Estado. Los años sin barra no tuvieron promoción.', tabla))
-    # Décadas
+    svg = g.barras_fechas([p['fecha'] for p in proms], [f"{p['promocion']} · {dmy(p['fecha'])}" for p in proms], [('Nombramientos', [p['nombramientos'] for p in proms])],
+                          titulo='Nombramientos de Técnicos Comerciales y Economistas del Estado por promoción',
+                          descripcion=f'Una barra por promoción, en la fecha de su nombramiento, con el número de personas, de {primero} a {ultimo}.')
+    tabla = g.tabla(['Promoción', 'Nombramiento', 'Personas'], [[p['promocion'], dmy(p['fecha']), p['nombramientos']] for p in proms])
+    h.append(g.figura('g-promociones', svg, 'Fuente: «TCEE por promociones», Asociación de Técnicos Comerciales y Economistas del Estado. Cada barra es una promoción, en la fecha exacta de su nombramiento.', tabla))
     decadas = Counter()
     for a, n in por_anio.items():
         decadas[a // 10 * 10] += n
     h.append('<p>Por décadas: ' + ', '.join(f'{d}-{d + 9}: {fmt(n)}' for d, n in sorted(decadas.items())) + '.</p>')
     if aso.get('por_situacion'):
         ps = aso['por_situacion']
-        h.append(f'<h3>Situación de los asociados ({aso.get("fecha", "")[:10]})</h3>')
-        h.append(f'<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta {fmt(aso["total"])} personas: {fmt(ps.get("activo", 0))} en activo, {fmt(ps.get("servicios_especiales", 0))} en servicios especiales, {fmt(ps.get("excedente", 0))} en excedencia y {fmt(ps.get("jubilado", 0))} jubiladas. Por año de nombramiento, cuántas siguen en activo:</p>')
-        pa = {int(a): v for a, v in aso.get('por_anio_nombramiento', {}).items()}
-        anios_a = sorted(pa)
+        h.append(f'<h3>Situación de los asociados ({dmy(aso.get("fecha", ""))})</h3>')
+        h.append(f'<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta {fmt(aso["total"])} personas: {fmt(ps.get("activo", 0))} en activo, {fmt(ps.get("servicios_especiales", 0))} en servicios especiales, {fmt(ps.get("excedente", 0))} en excedencia y {fmt(ps.get("jubilado", 0))} jubiladas. Cada asociado se asigna a su promoción por la fecha de nombramiento que figura en el listado; por promoción, cuántos siguen en activo:</p>')
+        pp = aso.get('por_promocion', {})
+        con = [p for p in proms if p['promocion'] in pp]
         claves = [('activo', 'En activo', 'var(--color-primary)'), ('servicios_especiales', 'Servicios especiales', 'var(--color-primary-light)'), ('excedente', 'Excedencia', 'var(--color-accent-gold)'), ('jubilado', 'Jubilación', 'var(--color-border-strong)')]
-        svg = g.grafico([str(a) for a in anios_a], barras=[(nombre, [pa[a].get(k) or None for a in anios_a], color) for k, nombre, color in claves], apiladas=True, etiquetas=False,
-                        titulo='Asociados por año de nombramiento y situación', descripcion='Columnas apiladas con los asociados de cada año de nombramiento según estén en activo, en servicios especiales, en excedencia o jubilados.')
-        tabla = g.tabla(['Año de nombramiento', 'En activo', 'Servicios especiales', 'Excedencia', 'Jubilación', 'Total'],
-                        [[a, pa[a].get('activo', 0), pa[a].get('servicios_especiales', 0), pa[a].get('excedente', 0), pa[a].get('jubilado', 0), sum(pa[a].values())] for a in anios_a])
-        h.append(g.figura('g-asociados', svg, f'Fuente: listado de asociados de la ATCEE, {aso.get("fecha", "")[:10]}; {fmt(aso.get("sin_fecha_nombramiento", 0))} asociados sin fecha de nombramiento no aparecen en el gráfico.', tabla))
+        svg = g.barras_fechas([p['fecha'] for p in con], [f"{p['promocion']} · {dmy(p['fecha'])}" for p in con],
+                              [(nombre, [pp[p['promocion']].get(k) or None for p in con], color) for k, nombre, color in claves], apiladas=True,
+                              titulo='Asociados por promoción y situación', descripcion='Columnas apiladas, una por promoción en la fecha de su nombramiento, con los asociados en activo, en servicios especiales, en excedencia o jubilados.')
+        tabla = g.tabla(['Promoción', 'Nombramiento', 'En activo', 'Servicios especiales', 'Excedencia', 'Jubilación', 'Asociados', 'Personas en la promoción'],
+                        [[p['promocion'], dmy(p['fecha']), pp[p['promocion']].get('activo', 0), pp[p['promocion']].get('servicios_especiales', 0), pp[p['promocion']].get('excedente', 0), pp[p['promocion']].get('jubilado', 0), sum(pp[p['promocion']].values()), p['nombramientos']] for p in con])
+        h.append(g.figura('g-asociados', svg, f'Fuente: listado de asociados de la ATCEE, {dmy(aso.get("fecha", ""))}; no aparecen {fmt(aso.get("sin_fecha_nombramiento", 0))} asociados sin fecha de nombramiento' + (f' ni {fmt(aso["sin_promocion"])} cuya fecha no casa con ninguna promoción' if aso.get('sin_promocion') else '') + '.', tabla))
     if len(evo) > 1:
         h.append('<h3>Evolución de los asociados por situación</h3>')
-        svg = g.grafico([e['fecha'][:7] for e in evo], lineas=[('En activo', [e['activo'] for e in evo]), ('Servicios especiales', [e['servicios_especiales'] for e in evo]), ('Excedencia', [e['excedente'] for e in evo]), ('Jubilación', [e['jubilado'] for e in evo])],
+        svg = g.grafico([dmy(e['fecha']) for e in evo], lineas=[('En activo', [e['activo'] for e in evo]), ('Servicios especiales', [e['servicios_especiales'] for e in evo]), ('Excedencia', [e['excedente'] for e in evo]), ('Jubilación', [e['jubilado'] for e in evo])],
                         titulo='Asociados por situación en cada lectura del listado', descripcion='Líneas con los asociados en activo, en servicios especiales, en excedencia y jubilados en cada fecha en que se leyó el listado.')
         h.append(g.figura('g-evolucion-asociados', svg, 'Cada punto es una lectura del listado de asociados de la ATCEE.'))
     return '\n'.join(h)

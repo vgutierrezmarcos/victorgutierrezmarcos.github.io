@@ -35,6 +35,7 @@ CLAVE = Path(os.path.expanduser('~/.config/oposicion-red/atcee.json'))
 PAGINAS = {'promociones': 'https://atcee.es/promociones/tecos-por-promociones/', 'asociados': 'https://atcee.es/directorio/listado-de-asociados/'}
 MESES = {m: i + 1 for i, m in enumerate(['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'])}
 MESES_EN = {m: i + 1 for i, m in enumerate(['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'])}
+MESES_EN.update({m: i + 1 for i, m in enumerate(['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'])})
 ROMANOS = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100}
 
 
@@ -86,7 +87,7 @@ def fecha_es(s):
 
 def fecha_en(s):
     """«25-Feb-25» → '2025-02-25' (años de dos cifras: hasta el actual son 20xx)."""
-    m = re.match(r'(\d{1,2})-([A-Za-z]{3})-(\d{2})$', s.strip())
+    m = re.match(r'(\d{1,2})-([A-Za-z]{3})\.?-(\d{2})$', s.strip())  # «25-Feb-25» o «01-ene.-23»
     if not m or m.group(2).lower() not in MESES_EN:
         return None
     yy = int(m.group(3))
@@ -117,13 +118,28 @@ def promociones():
 SITUACIONES = {'ACTIVO': 'activo', 'ACTIVA': 'activo', 'JUBILADO': 'jubilado', 'JUBILADA': 'jubilado', 'EXCEDENTE': 'excedente', 'SERVICIOS ESPECIALES': 'servicios_especiales'}
 
 
-def asociados():
+def promocion_de(fecha, proms):
+    """La promoción de un asociado por su fecha de nombramiento: la de fecha más cercana
+    (el listado trae fechas irregulares: desde tres meses antes hasta un año después)."""
+    d = date.fromisoformat(fecha)
+    mejor, dist = None, None
+    for p in proms:
+        if not p['fecha'] or p.get('ampliacion'):
+            continue
+        delta = (d - date.fromisoformat(p['fecha'])).days
+        if -100 <= delta <= 400 and (dist is None or abs(delta) < dist):
+            mejor, dist = p, abs(delta)
+    return mejor
+
+
+def asociados(proms=()):
     f = filas((CACHE / 'asociados.html').read_text(encoding='utf-8'))
     cab = [c.upper() for c in f[0]]
     i_sit, i_fec = cab.index('SITUACION'), next(i for i, c in enumerate(cab) if c.startswith('FEC'))
     por_situacion = collections.Counter()
     por_anio = collections.defaultdict(collections.Counter)
-    sin_fecha = 0
+    por_promocion = collections.defaultdict(collections.Counter)
+    sin_fecha = sin_promocion = 0
     total = 0
     for fila in f[1:]:
         if len(fila) <= max(i_sit, i_fec):
@@ -135,10 +151,16 @@ def asociados():
         fd = fecha_en(fila[i_fec])
         if fd:
             por_anio[int(fd[:4])][sit] += 1
+            p = promocion_de(fd, proms)
+            if p:
+                por_promocion[p['promocion']][sit] += 1
+            else:
+                sin_promocion += 1
         else:
             sin_fecha += 1
-    return {'total': total, 'por_situacion': dict(por_situacion), 'sin_fecha_nombramiento': sin_fecha,
-            'por_anio_nombramiento': {str(a): dict(c) for a, c in sorted(por_anio.items())}}
+    return {'total': total, 'por_situacion': dict(por_situacion), 'sin_fecha_nombramiento': sin_fecha, 'sin_promocion': sin_promocion,
+            'por_anio_nombramiento': {str(a): dict(c) for a, c in sorted(por_anio.items())},
+            'por_promocion': {p['promocion']: dict(por_promocion[p['promocion']]) for p in proms if p['promocion'] in por_promocion}}
 
 
 def main():
@@ -149,7 +171,7 @@ def main():
         descargar()
     hoy = date.today().isoformat()
     proms = promociones()
-    aso = asociados()
+    aso = asociados(proms)
     historial_ruta = CACHE / 'historial.json'
     historial = json.loads(historial_ruta.read_text(encoding='utf-8')) if historial_ruta.exists() else {}
     historial[hoy] = {'asociados': aso, 'promociones': proms}
