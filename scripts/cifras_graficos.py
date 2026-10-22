@@ -201,3 +201,50 @@ def tabla(cabeceras, filas, pie=None):
         out.append('<tfoot><tr>' + ''.join(('<th scope="row">' if i == 0 else '<td>') + _esc(c) + ('</th>' if i == 0 else '</td>') for i, c in enumerate(pie)) + '</tr></tfoot>')
     out.append('</table></div>')
     return '\n'.join(out)
+
+
+def anio_decimal(iso):
+    import datetime
+    d = datetime.date.fromisoformat(iso)
+    return d.year + (d.timetuple().tm_yday - 1) / 366
+
+
+def barras_fechas(fechas, etiquetas, series, titulo='', descripcion='', apiladas=False, alto=ALTO, unidad=''):
+    """Una barra por fecha exacta (eje x en años, marcas cada diez): fechas ISO,
+    etiquetas (una por barra, para el tooltip) y series [(nombre, valores, color)]."""
+    xs = [anio_decimal(f) for f in fechas]
+    x0, x1 = (int(min(xs)) // 10) * 10, (int(max(xs)) // 10 + 1) * 10
+    n = len(xs)
+    izq, der, arr, aba = MARGEN['izq'], MARGEN['der'], MARGEN['arr'], MARGEN['aba']
+    w, h = ANCHO - izq - der, alto - arr - aba
+    totales = [sum((vals[i] or 0) for _, vals, *_ in series) if apiladas else max((vals[i] or 0) for _, vals, *_ in series) for i in range(n)]
+    maximo = _escala(totales)
+    out = [f'<svg class="grafico" viewBox="0 0 {ANCHO} {alto}" role="img" aria-labelledby="{{id}}-t {{id}}-d" preserveAspectRatio="xMidYMid meet">',
+           f'<title id="{{id}}-t">{_esc(titulo)}</title><desc id="{{id}}-d">{_esc(descripcion)}</desc>', f'<g style="{ESTILO}">']
+    for i in range(5):
+        y = arr + h - h * i / 4
+        out.append(f'<line x1="{izq}" y1="{y:.1f}" x2="{izq + w}" y2="{y:.1f}" stroke="var(--color-border-light)"/>')
+        out.append(f'<text x="{izq + w + 6}" y="{y + 4:.1f}">{_fmt(maximo * i / 4)}</text>')
+    for a in range(x0, x1 + 1, 10):
+        x = izq + w * (a - x0) / (x1 - x0)
+        out.append(f'<line x1="{x:.1f}" y1="{arr}" x2="{x:.1f}" y2="{arr + h}" stroke="var(--color-border-light)"/><text x="{x:.1f}" y="{arr + h + 16}" text-anchor="middle">{a}</text>')
+    ancho_barra = max(2.5, min(8, w / (x1 - x0) * 0.6))
+    for i, x in enumerate(xs):
+        px = izq + w * (x - x0) / (x1 - x0)
+        base = 0
+        for j, (nombre, vals, *resto) in enumerate(series):
+            v = vals[i] or 0
+            if not v:
+                continue
+            hb = h * v / maximo
+            y = arr + h - h * (base if apiladas else 0) / maximo - hb
+            color = resto[0] if resto else COLORES[j % len(COLORES)]
+            out.append(f'<rect x="{px - ancho_barra / 2:.1f}" y="{y:.1f}" width="{ancho_barra:.1f}" height="{hb:.1f}" fill="{color}"><title>{_esc(etiquetas[i])}: {_fmt(v)}</title></rect>')
+            if apiladas:
+                base += v
+    out.append('</g></svg>')
+    svg = '\n'.join(out)
+    spec = {'tipo': 'fechas', 'titulo': titulo, 'x': [round(x, 3) for x in xs], 'etiquetas': etiquetas, 'x_min': x0, 'x_max': x1,
+            'series': [{'nombre': nombre, 'valores': vals, 'tipo': 'bar', 'color': _color_js(resto[0] if resto else None, j), 'eje': 'y', 'apilar': bool(apiladas)} for j, (nombre, vals, *resto) in enumerate(series)],
+            'temporal': True, 'ejes': {'y': {'max': None, 'unidad': unidad, 'min': 0}, 'y2': None}}
+    return interactivo(svg, spec, alto)
