@@ -59,6 +59,38 @@ void main() {
     expect(temasQueLleva(ajustes, null), {'3.A.5'});
   });
 
+  test('la bolsa de una clase es la semana del cronograma cuyo cante cae ese día, en la app del alumno y en la del preparador', () {
+    final cronograma = Cronograma(
+      id: 'c',
+      ejercicio: 3,
+      temas: const ['3.A.8', '3.A.9', '3.B.1', '3.B.2'],
+      inicio: DateTime(2026, 10, 16),
+      diaCante: 4, // jueves
+      semanas: [
+        SemanaPlan(lunes: DateTime(2026, 10, 16), temas: const ['3.A.8', '3.A.9']), // cante del jueves 22
+        SemanaPlan(lunes: DateTime(2026, 10, 23), temas: const ['3.B.1', '3.B.2']), // cante del jueves 29
+        SemanaPlan(lunes: DateTime(2026, 10, 30), descanso: true),
+      ],
+      desmarcados: const {'3.B.2'},
+    );
+    // Clase del jueves 29: los temas de esa semana, aunque lleve 67 estudiados.
+    expect(cronograma.temasDelCante(DateTime(2026, 10, 29, 17)), ['3.B.1']);
+    // Si la clase se mueve un par de días, sigue siendo la del cante más cercano.
+    expect(cronograma.temasDelCante(DateTime(2026, 10, 31)), ['3.B.1']);
+    expect(cronograma.temasDelCante(DateTime(2026, 10, 27)), ['3.B.1']);
+    expect(cronograma.temasDelCante(DateTime(2026, 10, 24)), ['3.A.8', '3.A.9']);
+    // Fuera del cronograma o en descanso: null, y vale la regla general.
+    expect(cronograma.temasDelCante(DateTime(2026, 10, 10)), isNull);
+    expect(cronograma.temasDelCante(DateTime(2026, 11, 5)), isNull);
+    expect(cronograma.temasDelCante(DateTime(2026, 12, 1)), isNull);
+    final muchos = Ajustes(temasEstudiados: {for (var i = 1; i <= 44; i++) '3.A.$i'}, noCantar: {'3.A.9': DateTime(2026, 10, 20)});
+    expect(temasQueLleva(muchos, cronograma, fecha: DateTime(2026, 10, 29)), {'3.B.1'});
+    expect(temasQueLleva(muchos, cronograma, fecha: DateTime(2026, 10, 22)), {'3.A.8'});
+    // Sin fecha de clase (o sin semana para ella), lo de siempre: estudiados más cronograma.
+    expect(temasQueLleva(muchos, cronograma).length, greaterThan(40));
+    expect(temasQueLleva(muchos, cronograma, fecha: DateTime(2026, 12, 1)).length, greaterThan(40));
+  });
+
   test('el próximo día de la semana para la clase, nunca el mismo día', () {
     final miercoles = DateTime(2026, 10, 21, 11);
     expect(proximoDiaDeSemana(miercoles, 3), DateTime(2026, 10, 28, 17));

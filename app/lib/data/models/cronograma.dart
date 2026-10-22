@@ -135,6 +135,30 @@ class Cronograma {
         if (!s.lunes.isAfter(dia)) ...s.temas,
     }..removeAll(desmarcados);
   }
+
+  /// Temas que entran en la clase de [fecha] según el cronograma: los de la
+  /// semana cuyo cante cae en esa fecha (o el más cercano, por si la clase se
+  /// mueve unos días), sin los desmarcados. Es la misma lista que ve el
+  /// opositor en su cronograma para ese cante, y por eso la bolsa de la clase
+  /// es esta y no todo lo que ha estudiado. null si la fecha queda fuera del
+  /// cronograma o cae en una semana de descanso: entonces vale la regla
+  /// general ([temasLlevados]).
+  List<String>? temasDelCante(DateTime fecha) {
+    final dia = DateTime(fecha.year, fecha.month, fecha.day);
+    SemanaPlan? mejor;
+    var distancia = 99;
+    for (final s in semanas) {
+      final d = s.domingo.difference(dia).inDays.abs();
+      if (d < distancia) {
+        distancia = d;
+        mejor = s;
+      }
+    }
+    // Las semanas van seguidas: el cante más cercano está a 3 días como mucho.
+    if (mejor == null || distancia > 3 || mejor.descanso) return null;
+    final temas = mejor.temas.where((t) => !desmarcados.contains(t)).toList();
+    return temas.isEmpty ? null : temas;
+  }
   final int temasPorSemana;
   /// Fecha de fin que fijó el opositor (null = la que salga del ritmo).
   final DateTime? fin;
