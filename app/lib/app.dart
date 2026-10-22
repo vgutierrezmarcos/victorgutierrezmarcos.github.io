@@ -24,6 +24,7 @@ import 'features/cantes/cantes_page.dart';
 import 'features/cronograma/cronograma_page.dart';
 import 'features/estudiar/estudiar_page.dart';
 import 'features/guia/guia.dart';
+import 'features/inicio/calendario_dialogo.dart';
 import 'features/inicio/estadisticas_dialogo.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/inicio/permisos_sheet.dart';
@@ -188,7 +189,12 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         if (!mounted) return;
         // ¿Enviar estadísticas de uso? Una vez; apagado si no dice que sí.
         // ignore: use_build_context_synchronously
-        if (c != null && mounted) await preguntarEstadisticasSiToca(c, ref);
+        final preguntado = c != null && mounted && await preguntarEstadisticasSiToca(c, ref);
+        if (!mounted) return;
+        // ¿Las clases y los cantes a Google Calendar? Una vez por dispositivo,
+        // y no en el mismo arranque que la pregunta anterior.
+        // ignore: use_build_context_synchronously
+        if (c != null && mounted) await preguntarCalendarioSiToca(c, ref, trasOtraPregunta: preguntado);
         if (!mounted) return;
         await empezarGuiaSiToca(ref);
         if (mounted) await _abrirAltaSiToca();

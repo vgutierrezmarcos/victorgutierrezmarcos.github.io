@@ -58,8 +58,10 @@ Future<bool> renovarPermisoCalendario() async {
 /// caducado): hay que volver a pedirlo.
 bool permisoRetirado(Object e) => e is DioException && (e.response?.statusCode == 401 || e.response?.statusCode == 403);
 
-/// El cliente del calendario para el preparador de una oposición.
-CalendarioGoogle crearCalendario() => CalendarioGoogle(
+/// El cliente del calendario para el preparador de una oposición (o, con
+/// [prefijo] 'cala:', el del propio opositor: sus huellas van aparte).
+CalendarioGoogle crearCalendario({String prefijo = 'cal:'}) => CalendarioGoogle(
       token: tokenCalendario,
       huellas: Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app) : null,
+      prefijo: prefijo,
     );

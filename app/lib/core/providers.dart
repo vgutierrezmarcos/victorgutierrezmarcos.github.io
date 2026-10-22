@@ -510,6 +510,10 @@ class AjustesNotifier extends Notifier<Ajustes> {
     await actualizar((a) => a.copyWith(estadisticas: activo));
     await Analitica.instancia.activar(activo);
   }
+
+  /// «Mis cantes en Google Calendar» (el permiso de Google lo pide
+  /// `conectarCalendario`; aquí solo se guarda lo que decide).
+  Future<void> fijarCalendarioGoogle(bool activo) => actualizar((a) => a.copyWith(calendarioGoogle: activo));
 }
 
 final ajustesProvider = NotifierProvider<AjustesNotifier, Ajustes>(AjustesNotifier.new);
@@ -536,7 +540,10 @@ class CantesNotifier extends Notifier<List<Cante>> {
   @override
   List<Cante> build() {
     ref.onDispose(dejarDeEscuchar);
-    return ref.read(planRepoProvider).cantes();
+    final repo = ref.read(planRepoProvider);
+    // Cuando Google Calendar cambia un cante (su evento o el enlace de Meet).
+    repo.alCambiarCantes = () => state = repo.cantes();
+    return repo.cantes();
   }
 
   StreamSubscription<List<Cante>>? _escucha;

@@ -8,9 +8,9 @@ import '../../theme/app_theme.dart';
 /// Una sola vez, al arrancar: ¿envía la app estadísticas de uso anónimas e
 /// informes de errores? Apagado si no dice que sí; se cambia en Más → Ajustes.
 /// No sale si en esta compilación no se puede medir nada (sin Firebase, en el
-/// navegador sin `measurementId`, en las pruebas).
-Future<void> preguntarEstadisticasSiToca(BuildContext context, WidgetRef ref) async {
-  if (!Analitica.instancia.disponible || ref.read(ajustesProvider).estadisticas != null) return;
+/// navegador sin `measurementId`, en las pruebas). Devuelve si ha salido.
+Future<bool> preguntarEstadisticasSiToca(BuildContext context, WidgetRef ref) async {
+  if (!Analitica.instancia.disponible || ref.read(ajustesProvider).estadisticas != null) return false;
   final respuesta = await showDialog<bool>(
     context: context,
     barrierDismissible: false,
@@ -27,6 +27,7 @@ Future<void> preguntarEstadisticasSiToca(BuildContext context, WidgetRef ref) as
       ],
     ),
   );
-  if (respuesta == null) return;
+  if (respuesta == null) return true;
   await ref.read(ajustesProvider.notifier).fijarEstadisticas(respuesta);
+  return true;
 }

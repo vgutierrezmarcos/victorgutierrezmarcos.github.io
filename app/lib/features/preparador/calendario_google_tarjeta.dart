@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/avisos_breves.dart';
+import '../../core/conectar_calendario.dart';
 import '../../core/permiso_calendario.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
@@ -35,6 +36,12 @@ final errorCalendarioProvider = Provider<String?>((ref) {
   return ref.watch(preparadorRepoProvider).calendario?.ultimoError;
 });
 
+/// El último error de Google al llevar un cante al calendario del opositor.
+final errorCalendarioAlumnoProvider = Provider<String?>((ref) {
+  ref.watch(cantesProvider);
+  return ref.watch(planRepoProvider).calendario?.ultimoError;
+});
+
 /// En Ajustes del preparador: llevar las clases a su Google Calendar, con la
 /// reunión de Meet de las online y la invitación al alumno. Si la cuenta no
 /// puede todavía, dice por qué.
@@ -51,7 +58,6 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
   Future<void> _alternar(bool si) async {
     final messenger = ScaffoldMessenger.of(context);
     final notifier = ref.read(perfilPreparadorProvider.notifier);
-    final repo = ref.read(preparadorRepoProvider);
     if (!si) {
       await notifier.guardar(ref.read(perfilPreparadorProvider).copyWith(calendarioGoogle: false));
       messenger.mostrar(const SnackBar(content: Text('Las clases nuevas ya no irán a tu calendario. Las que ya están se quedan.')));
@@ -59,36 +65,8 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
     }
     setState(() => _ocupado = true);
     try {
-      if (!await pedirPermisoCalendario()) {
-        messenger.mostrar(const SnackBar(content: Text('Google no ha dado acceso a tu calendario. Si sale «aplicación no verificada», entra en «Configuración avanzada» y continúa.')));
-        return;
-      }
-      final cal = repo.calendario;
-      if (cal == null) return;
-      try {
-        await cal.comprobar();
-      } catch (e) {
-        // Permiso retirado desde la cuenta de Google (o token caducado): se
-        // vuelve a pedir desde cero, con la ventana de Google, y se reintenta.
-        if (permisoRetirado(e) && await renovarPermisoCalendario()) {
-          try {
-            await cal.comprobar();
-          } catch (e2) {
-            cal.ultimoError = e2.toString();
-            messenger.mostrar(SnackBar(content: Text('Google no deja usar tu calendario desde la app todavía: $e2')));
-            return;
-          }
-        } else {
-          cal.ultimoError = e.toString();
-          messenger.mostrar(SnackBar(content: Text(permisoRetirado(e) ? 'Google ha retirado el permiso del calendario y no se ha podido volver a pedir. Prueba otra vez.' : 'Google no deja usar tu calendario desde la app todavía: $e')));
-          return;
-        }
-      }
-      cal.ultimoError = null;
-      await notifier.guardar(ref.read(perfilPreparadorProvider).copyWith(calendarioGoogle: true));
-      final n = await repo.llevarClasesAlCalendario();
-      ref.invalidate(sesionesProvider);
-      messenger.mostrar(SnackBar(content: Text(n == 0 ? 'Conectado. Las clases que programes irán a tu Google Calendar.' : 'Conectado: $n ${n == 1 ? 'clase' : 'clases'} en tu Google Calendar.')));
+      final r = await conectarCalendario(ref, preparador: true);
+      messenger.mostrar(SnackBar(content: Text(r.mensaje)));
     } finally {
       if (mounted) setState(() => _ocupado = false);
     }
