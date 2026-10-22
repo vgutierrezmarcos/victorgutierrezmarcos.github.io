@@ -149,6 +149,18 @@ def promocion_por_nombre(apellidos, nombre, indice):
         if len(cands) == 1:
             return cands.pop()
     cands = {et for conj, et in indice.items() if len(conj & conjunto) >= max(3, len(conjunto) - 1) and len(conj) <= len(conjunto) + 1}
+    if len(cands) == 1:
+        return cands.pop()
+    # Dos palabras del asociado dentro de un nombre más largo, o una palabra con una errata (parecido ≥ 0,75)
+    import difflib
+    cands = set()
+    for conj, et in indice.items():
+        comunes = conj & conjunto
+        if len(comunes) < 2 or len(conj) > len(conjunto) + 2:
+            continue
+        sobran_a, sobran_c = conjunto - conj, conj - conjunto
+        if not sobran_a or all(any(difflib.SequenceMatcher(None, a, c).ratio() >= 0.75 for c in sobran_c) for a in sobran_a):
+            cands.add(et)
     return cands.pop() if len(cands) == 1 else None
 
 
