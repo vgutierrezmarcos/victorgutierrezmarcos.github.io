@@ -64,7 +64,7 @@
                 categoryPercentage: 0.8,
                 barPercentage: 0.9
             };
-            if (fechas) { ds.barThickness = 5; ds.borderRadius = 0; }
+            if (fechas) { ds.barThickness = 7; ds.borderRadius = 0; }
             if (horizontal) { ds.grouped = false; ds.barThickness = 18; ds.order = spec.series.length - i; }
             return ds;
         });
@@ -109,6 +109,11 @@
         if (horizontal) { escalas.y.stacked = false; escalas.x.stacked = false; }
         else if (spec.series.some(function (s) { return s.apilar; })) { escalas.x.stacked = true; escalas.y.stacked = true; }
         if (fechas || promociones) { escalas.y.position = 'right'; }
+        if (spec.desplazable) {
+            // El gráfico se desplaza en horizontal: el eje vertical se repite a la izquierda para verlo desde el principio
+            escalas.yIzq = { position: 'left', min: spec.ejes.y.min, max: spec.ejes.y.max || undefined, grid: { drawOnChartArea: false }, border: { display: false },
+                ticks: { color: c.texto, font: letra, callback: function (v, i, ticks) { return formato(v, i === ticks.length - 1 ? spec.ejes.y.unidad : ''); } } };
+        }
         var textos = spec.textos || null;
         return {
             type: 'bar',
