@@ -425,7 +425,7 @@ def bloque_cuerpo(cuerpo):
     if aso.get('por_situacion'):
         ps = aso['por_situacion']
         h.append(f'<h3>Situación de los asociados ({dmy(aso.get("fecha", ""))})</h3>')
-        h.append(f'<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta {fmt(aso["total"])} personas: {fmt(ps.get("activo", 0))} en activo, {fmt(ps.get("servicios_especiales", 0))} en servicios especiales, {fmt(ps.get("excedente", 0))} en excedencia y {fmt(ps.get("jubilado", 0))} jubiladas. Cada asociado se asigna a su promoción por la fecha de nombramiento que figura en el listado. El gráfico cuenta solo a los asociados, no a toda la promoción (las primeras promociones ya no tienen asociados); la tabla compara los asociados de cada promoción con las personas que la formaron:</p>')
+        h.append(f'<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta {fmt(aso["total"])} personas: {fmt(ps.get("activo", 0))} en activo, {fmt(ps.get("servicios_especiales", 0))} en servicios especiales, {fmt(ps.get("excedente", 0))} en excedencia y {fmt(ps.get("jubilado", 0))} jubiladas. Cada asociado se asigna a su promoción cruzando el listado con la relación de promociones de la propia ATCEE y, si no aparece en ella, por la fecha de nombramiento. El gráfico cuenta solo a los asociados, no a toda la promoción (las primeras promociones ya no tienen asociados); la tabla compara los asociados de cada promoción con las personas que la formaron:</p>')
         pp = aso.get('por_promocion', {})
         con = [p for p in proms if not p.get('ampliacion')]
         for p in con:
@@ -436,7 +436,7 @@ def bloque_cuerpo(cuerpo):
                               titulo='Asociados por promoción y situación', descripcion='Columnas apiladas, una por promoción en la fecha de su nombramiento, con los asociados en activo, en servicios especiales, en excedencia o jubilados.')
         tabla = g.tabla(['Promoción', 'Nombramiento', 'En activo', 'Servicios especiales', 'Excedencia', 'Jubilación', 'Asociados', 'Personas en la promoción'],
                         [[p['promocion'], dmy(p['fecha']), pp[p['promocion']].get('activo', 0), pp[p['promocion']].get('servicios_especiales', 0), pp[p['promocion']].get('excedente', 0), pp[p['promocion']].get('jubilado', 0), sum(pp[p['promocion']].values()), p['nombramientos']] for p in con])
-        h.append(g.figura('g-asociados', svg, f'Fuente: listado de asociados de la ATCEE, {dmy(aso.get("fecha", ""))}; no aparecen {fmt(aso.get("sin_fecha_nombramiento", 0))} asociados sin fecha de nombramiento' + (f' ni {fmt(aso["sin_promocion"])} cuya fecha no casa con ninguna promoción' if aso.get('sin_promocion') else '') + '.', tabla))
+        h.append(g.figura('g-asociados', svg, f'Fuente: listado de asociados de la ATCEE, {dmy(aso.get("fecha", ""))}' + (f'; no aparecen {fmt(aso["sin_promocion"])} asociados que no se han podido asignar a una promoción' if aso.get('sin_promocion') else '') + '.', tabla))
     if len(evo) > 1:
         h.append('<h3>Evolución de los asociados por situación</h3>')
         svg = g.grafico([dmy(e['fecha']) for e in evo], lineas=[('En activo', [e['activo'] for e in evo]), ('Servicios especiales', [e['servicios_especiales'] for e in evo]), ('Excedencia', [e['excedente'] for e in evo]), ('Jubilación', [e['jubilado'] for e in evo])],

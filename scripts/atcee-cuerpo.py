@@ -23,6 +23,7 @@ import json
 import os
 import re
 import ssl
+import unicodedata
 import urllib.parse
 import urllib.request
 from datetime import date
@@ -118,6 +119,35 @@ def promociones():
 SITUACIONES = {'ACTIVO': 'activo', 'ACTIVA': 'activo', 'JUBILADO': 'jubilado', 'JUBILADA': 'jubilado', 'EXCEDENTE': 'excedente', 'SERVICIOS ESPECIALES': 'servicios_especiales'}
 
 
+def nombre_clave(s):
+    """Apellidos y nombre como conjunto de palabras, sin tratamiento (D., Dª., Dña.) ni acentos."""
+    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().upper()
+    palabras = [w for w in re.findall(r'[A-Z]+', s) if w not in ('D', 'DA', 'DNA', 'DON', 'DONA')]
+    return frozenset(palabras), ' '.join(palabras)
+
+
+def indice_promociones():
+    """Nombre normalizado → etiqueta de promoción, con la tabla «TCEE por promociones» (solo en memoria)."""
+    f = filas((CACHE / 'promociones.html').read_text(encoding='utf-8'))
+    indice = {}
+    for fila in f[1:]:
+        if len(fila) < 3 or 'MOCI' not in fila[1].upper() or fila[1].upper() == 'PROMOCIÓN':
+            continue
+        etiqueta = fila[1].strip().replace('LVXX', 'LXX').replace('PORMOCI', 'PROMOCI')
+        conjunto, texto = nombre_clave(fila[0])
+        indice[conjunto] = etiqueta
+    return indice
+
+
+def promocion_por_nombre(apellidos, nombre, indice):
+    conjunto, texto = nombre_clave(apellidos + ' ' + nombre)
+    if conjunto in indice:
+        return indice[conjunto]
+    # Tolerancia: todas las palabras menos una (segundo nombre o apellido compuesto)
+    cands = [et for conj, et in indice.items() if len(conj & conjunto) >= max(2, len(conjunto) - 1) and len(conj) <= len(conjunto) + 1]
+    return cands[0] if len(set(cands)) == 1 else None
+
+
 def promocion_de(fecha, proms):
     """La promoción de un asociado por su fecha de nombramiento: la de fecha más cercana
     (el listado trae fechas irregulares: desde tres meses antes hasta un año después)."""
@@ -136,6 +166,9 @@ def asociados(proms=()):
     f = filas((CACHE / 'asociados.html').read_text(encoding='utf-8'))
     cab = [c.upper() for c in f[0]]
     i_sit, i_fec = cab.index('SITUACION'), next(i for i, c in enumerate(cab) if c.startswith('FEC'))
+    i_ape, i_nom = cab.index('APELLIDOS'), next(i for i, c in enumerate(cab) if c.startswith('NOMBRE'))
+    indice = indice_promociones()
+    por_nombre = por_fecha_n = 0
     por_situacion = collections.Counter()
     por_anio = collections.defaultdict(collections.Counter)
     por_promocion = collections.defaultdict(collections.Counter)
@@ -151,14 +184,22 @@ def asociados(proms=()):
         fd = fecha_en(fila[i_fec])
         if fd:
             por_anio[int(fd[:4])][sit] += 1
-            p = promocion_de(fd, proms)
-            if p:
-                por_promocion[p['promocion']][sit] += 1
-            else:
-                sin_promocion += 1
         else:
             sin_fecha += 1
+        # Promoción: primero por el nombre en «TCEE por promociones» (fiable); si no, por la fecha de nombramiento
+        etiqueta = promocion_por_nombre(fila[i_ape], fila[i_nom], indice)
+        if etiqueta:
+            por_nombre += 1
+        elif fd:
+            p = promocion_de(fd, proms)
+            etiqueta = p['promocion'] if p else None
+            por_fecha_n += 1 if etiqueta else 0
+        if etiqueta:
+            por_promocion[etiqueta][sit] += 1
+        else:
+            sin_promocion += 1
     return {'total': total, 'por_situacion': dict(por_situacion), 'sin_fecha_nombramiento': sin_fecha, 'sin_promocion': sin_promocion,
+            'asignados_por_nombre': por_nombre, 'asignados_por_fecha': por_fecha_n,
             'por_anio_nombramiento': {str(a): dict(c) for a, c in sorted(por_anio.items())},
             'por_promocion': {p['promocion']: dict(por_promocion[p['promocion']]) for p in proms if p['promocion'] in por_promocion}}
 
