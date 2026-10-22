@@ -425,9 +425,11 @@ def bloque_cuerpo(cuerpo):
     if aso.get('por_situacion'):
         ps = aso['por_situacion']
         h.append(f'<h3>Situación de los asociados ({dmy(aso.get("fecha", ""))})</h3>')
-        h.append(f'<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta {fmt(aso["total"])} personas: {fmt(ps.get("activo", 0))} en activo, {fmt(ps.get("servicios_especiales", 0))} en servicios especiales, {fmt(ps.get("excedente", 0))} en excedencia y {fmt(ps.get("jubilado", 0))} jubiladas. Cada asociado se asigna a su promoción por la fecha de nombramiento que figura en el listado; por promoción, cuántos siguen en activo:</p>')
+        h.append(f'<p>El listado de asociados de la ATCEE, que no incluye a todo el cuerpo ni está siempre al día, cuenta {fmt(aso["total"])} personas: {fmt(ps.get("activo", 0))} en activo, {fmt(ps.get("servicios_especiales", 0))} en servicios especiales, {fmt(ps.get("excedente", 0))} en excedencia y {fmt(ps.get("jubilado", 0))} jubiladas. Cada asociado se asigna a su promoción por la fecha de nombramiento que figura en el listado. El gráfico cuenta solo a los asociados, no a toda la promoción (las primeras promociones ya no tienen asociados); la tabla compara los asociados de cada promoción con las personas que la formaron:</p>')
         pp = aso.get('por_promocion', {})
-        con = [p for p in proms if p['promocion'] in pp]
+        con = [p for p in proms if not p.get('ampliacion')]
+        for p in con:
+            pp.setdefault(p['promocion'], {})
         claves = [('activo', 'En activo', 'var(--color-primary)'), ('servicios_especiales', 'Servicios especiales', 'var(--color-primary-light)'), ('excedente', 'Excedencia', 'var(--color-accent-gold)'), ('jubilado', 'Jubilación', 'var(--color-border-strong)')]
         svg = g.barras_fechas([p['fecha'] for p in con], [f"{p['promocion']} · {dmy(p['fecha'])}" for p in con],
                               [(nombre, [pp[p['promocion']].get(k) or None for p in con], color) for k, nombre, color in claves], apiladas=True,
