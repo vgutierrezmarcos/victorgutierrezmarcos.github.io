@@ -415,9 +415,9 @@ def bloque_cuerpo(cuerpo):
         por_anio[p['anio']] += p['nombramientos']
     svg = g.barras_fechas([p['fecha'] for p in proms], [f"{p['promocion']} · {dmy(p['fecha'])}" for p in proms], [('Nombramientos', [p['nombramientos'] for p in proms])],
                           titulo='Nombramientos de Técnicos Comerciales y Economistas del Estado por promoción',
-                          descripcion=f'Una barra por promoción, en la fecha de su nombramiento, con el número de personas, de {primero} a {ultimo}.')
+                          descripcion=f'Una barra por promoción, en orden de nombramiento, con el número de personas, de {primero} a {ultimo}.')
     tabla = g.tabla(['Promoción', 'Nombramiento', 'Personas'], [[p['promocion'], dmy(p['fecha']), p['nombramientos']] for p in proms])
-    h.append(g.figura('g-promociones', svg, 'Fuente: «TCEE por promociones», Asociación de Técnicos Comerciales y Economistas del Estado. Cada barra es una promoción, en la fecha exacta de su nombramiento.', tabla))
+    h.append(g.figura('g-promociones', svg, 'Fuente: «TCEE por promociones», Asociación de Técnicos Comerciales y Economistas del Estado. Cada barra es una promoción, en orden de nombramiento; el eje marca el año en que empieza cada década.', tabla))
     decadas = Counter()
     for a, n in por_anio.items():
         decadas[a // 10 * 10] += n
@@ -437,7 +437,7 @@ def bloque_cuerpo(cuerpo):
         series = [(nombre, [pp[p['promocion']].get(k) or None for p in con], color) for k, nombre, color in claves]
         series.append(('No hay dato', [sin_dato(p) or None for p in con], 'var(--color-border-light)'))
         svg = g.barras_fechas([p['fecha'] for p in con], [f"{p['promocion']} · {dmy(p['fecha'])}" for p in con], series, apiladas=True,
-                              titulo='Promociones por situación de sus miembros', descripcion='Columnas apiladas, una por promoción en la fecha de su nombramiento: asociados en activo, en servicios especiales, en excedencia o jubilados, y personas sin dato porque no figuran en el listado de asociados; la suma es el total de la promoción.')
+                              titulo='Promociones por situación de sus miembros', descripcion='Columnas apiladas, una por promoción en orden de nombramiento: asociados en activo, en servicios especiales, en excedencia o jubilados, y personas sin dato porque no figuran en el listado de asociados; la suma es el total de la promoción.')
         tabla = g.tabla(['Promoción', 'Nombramiento', 'En activo', 'Servicios especiales', 'Excedencia', 'Jubilación', 'No hay dato', 'Personas en la promoción'],
                         [[p['promocion'], dmy(p['fecha']), pp[p['promocion']].get('activo', 0), pp[p['promocion']].get('servicios_especiales', 0), pp[p['promocion']].get('excedente', 0), pp[p['promocion']].get('jubilado', 0), sin_dato(p), p['nombramientos']] for p in con])
         h.append(g.figura('g-asociados', svg, f'Fuente: listado de asociados de la ATCEE, {dmy(aso.get("fecha", ""))}' + (f'; no aparecen {fmt(aso["sin_promocion"])} asociados que no se han podido asignar a una promoción' if aso.get('sin_promocion') else '') + '.', tabla))
