@@ -792,7 +792,11 @@ un tema (§1-§10), con estas diferencias:
   `verificar-tema.py`) ni límite de tres apartados. Los tiempos que cuentan
   son los del examen (los de la convocatoria vigente: hoy 1 h 45 min para
   escribir el dictamen; lectura pública y hasta 15 minutos de preguntas),
-  que se citan con `\tiempo{…}` donde haga falta.
+  que se citan con `\tiempo{…}` donde haga falta. El reparto del tiempo se da como **regla
+  según la duración y el número de preguntas** (han cambiado: 2 h, 2 h 15 min,
+  1 h 45 min; de 7-10 a 5-6 preguntas), con una tabla de las últimas
+  convocatorias; para el formato vigente, 10-12 minutos iniciales de lectura
+  (Víctor, 23/10/2026).
 - **Estructura**:
   1. *El ejercicio y el método*: qué es, cómo se califica, qué valora el
      tribunal, reparto del tiempo, cómo leer el cuadernillo (dividir el
