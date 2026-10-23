@@ -808,6 +808,9 @@ un tema (§1-§10), con estas diferencias:
   3. Anexos: tabla de indicadores con umbrales de referencia, qué se ha
      preguntado en los dictámenes oficiales (pregunta por pregunta y año) y
      expresiones útiles para redactar.
+- **Extensión** (Víctor, 23/10/2026): el cuerpo (método y bloques), **40-50
+  páginas como máximo**; lo de ampliación (series, cálculos tipo, programación
+  del FMI, España, hechos estilizados en detalle) va a los anexos.
 - **Cada indicador**, con el mismo esquema: *qué mide* · *cómo se calcula* ·
   *umbral o referencia* (cuadro de indicadores del procedimiento de
   desequilibrios macroeconómicos, Basilea III, Pacto de Estabilidad, BCE…,
