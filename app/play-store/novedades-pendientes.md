@@ -35,6 +35,7 @@ opositor). Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 - (22 oct.) La app pregunta si quieres enviar estadísticas de uso anónimas e informes de errores; apagado si no dices que sí, y se cambia en Más → Ajustes
 - (22 oct.) En las clases con preparador, los temas que entran son los de la semana del cronograma del alumno para ese cante, iguales en las dos apps
 - (22 oct.) Google Calendar para todos: al abrir, la app pregunta si quieres tus clases y cantes en tu calendario (opcional); el opositor lo activa en Más → Ajustes
+- (23 oct.) Las pestañas Temas · Test y Agenda · Cantar · Diario son ahora botones con su icono y su cifra, para que se vean
 
 Además de lo anterior, al salir en Play conviene resumir lo que la app tiene
 desde la 1.16.0 (ver `registro-prueba-cerrada.md`): red de preparadores, clases

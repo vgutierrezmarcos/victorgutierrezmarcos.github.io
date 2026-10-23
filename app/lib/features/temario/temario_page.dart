@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
+import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/revisado.dart';
 import '../../data/models/temario.dart';
+import '../../data/repos/descargas_repo.dart';
+import '../../data/repos/usuario_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/sincronizar.dart';
+import '../test/motor_test.dart';
 import 'tema_page.dart';
 
 /// Temario: ejercicios → partes → temas, con estado de estudio y descarga offline.
-/// Es la subpestaña TEMAS de Estudiar; [pestanas] va bajo el buscador.
+/// Es la subpestaña TEMAS de Estudiar; [pestanas] (los botones) va bajo el buscador, ya en el cuerpo.
 class TemarioPage extends ConsumerStatefulWidget {
   const TemarioPage({super.key, this.pestanas});
-  final PreferredSizeWidget? pestanas;
+  final Widget? pestanas;
   @override
   ConsumerState<TemarioPage> createState() => _TemarioPageState();
 }
@@ -26,6 +31,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
 
   String _busqueda = '';
   Color? Function(String) _colorDe = (_) => null;
+
   /// Temas revisados, exclusivos de la app (vacío hasta que se descarga).
   ManifiestoRevisados _revisados = ManifiestoRevisados.vacio;
 
@@ -48,9 +54,8 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
         conOposicion: widget.pestanas != null,
         title: Text(widget.pestanas == null ? 'Temario' : 'Estudiar'),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(56 + (widget.pestanas?.preferredSize.height ?? 0)),
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Padding(
+          preferredSize: const Size.fromHeight(56),
+          child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             child: TextField(
               decoration: InputDecoration(
@@ -61,31 +66,60 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
               ),
               onChanged: (v) => setState(() => _busqueda = v),
             ),
-            ),
-            if (widget.pestanas != null) widget.pestanas!,
-          ]),
+          ),
         ),
       ),
-      body: temario.when(
-        loading: () => const Cargando(),
-        error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(temarioProvider)),
-        data: (t) {
-          if (_busqueda.trim().isNotEmpty) {
-            final q = _normalizar(_busqueda);
-            final res = t.todosLosTemas.where((x) => _normalizar('${x.codigo} ${x.titulo}').contains(q) || _normalizar(x.codigo.replaceAll('.', '')).contains(q.replaceAll('.', '').replaceAll(' ', ''))).toList();
-            return Refrescable(child: ListaAdaptable(padding: const EdgeInsets.all(16), children: [
-              Text('${res.length} resultados', style: context.textos.bodySmall),
-              for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
-            ]));
-          }
-          // En TCEE todos los temas tienen PDF; en una oposición que aún publica sus
-          // apuntes, el progreso es sobre el programa entero.
-          final total = Oposiciones.actual.esPrincipal ? t.todosLosTemas.where((x) => x.disponible).length : t.todosLosTemas.length;
-          final estudiados = ajustes.temasEstudiados.length;
-          return Refrescable(child: ListaAdaptable(
-            padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
-            children: [
-              if (!_preparador) Tarjeta(
+      body: Column(children: [
+        if (widget.pestanas != null) widget.pestanas!,
+        Expanded(child: _cuerpo(temario, ajustes, descargas, notas, agendas, apuntes)),
+      ]),
+    );
+  }
+
+  /// Al principio de Temas, el camino a la otra subpestaña: el test diario
+  /// (se abre si aún no está hecho; si no, la pestaña Test).
+  Widget _enlaceTest() {
+    final hecho = ref.watch(testDiarioHechoProvider);
+    return Aviso(
+      icono: Icons.fact_check_outlined,
+      titulo: 'Test diario',
+      texto: hecho ? 'Hecho hoy. Más tests, en la pestaña Test' : '10 preguntas de exámenes oficiales',
+      onTap: () {
+        final banco = ref.read(preguntasProvider).valueOrNull;
+        if (hecho || banco == null) {
+          ref.read(subpestanaEstudiarProvider.notifier).state = 1;
+          return;
+        }
+        context.push('/examen', extra: ConfigTest(idsFijos: MotorTest.testDiario(banco, DateTime.now()).map((p) => p.id).toList(), minutos: 15, tipo: 'diario'));
+      },
+    );
+  }
+
+  Widget _cuerpo(AsyncValue<Temario> temario, Ajustes ajustes, DescargasRepo descargas, Map<String, String> notas, Map<String, AgendaTema> agendas, int Function(String) apuntes) {
+    return temario.when(
+      loading: () => const Cargando(),
+      error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(temarioProvider)),
+      data: (t) {
+        if (_busqueda.trim().isNotEmpty) {
+          final q = _normalizar(_busqueda);
+          final res = t.todosLosTemas.where((x) => _normalizar('${x.codigo} ${x.titulo}').contains(q) || _normalizar(x.codigo.replaceAll('.', '')).contains(q.replaceAll('.', '').replaceAll(' ', ''))).toList();
+          return Refrescable(
+              child: ListaAdaptable(padding: const EdgeInsets.all(16), children: [
+            Text('${res.length} resultados', style: context.textos.bodySmall),
+            for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
+          ]));
+        }
+        // En TCEE todos los temas tienen PDF; en una oposición que aún publica sus
+        // apuntes, el progreso es sobre el programa entero.
+        final total = Oposiciones.actual.esPrincipal ? t.todosLosTemas.where((x) => x.disponible).length : t.todosLosTemas.length;
+        final estudiados = ajustes.temasEstudiados.length;
+        return Refrescable(
+            child: ListaAdaptable(
+          padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
+          children: [
+            if (widget.pestanas != null) _enlaceTest(),
+            if (!_preparador)
+              Tarjeta(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Row(children: [
                     Expanded(child: Text('Progreso: $estudiados temas marcados como estudiados', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
@@ -95,43 +129,41 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                   ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: total == 0 ? 0 : estudiados / total, minHeight: 8, backgroundColor: context.colores.fondoClaro)),
                 ]),
               ),
-              const SizedBox(height: 10),
-              for (final ej in t.ejercicios) ...[
-                TituloSeccion(ej.nombre),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 0, 4, 10),
-                  child: Text(ej.descripcion, style: TextStyle(fontFamily: Fuentes.serif, fontStyle: FontStyle.italic, fontSize: 15, color: context.colores.textoSuave)),
-                ),
-                if (ej.id == 2)
-                  Tarjeta(onTap: () => abrirUrl(context, ej.urlPagina, enApp: true), child: Row(children: [Expanded(child: Text('Descripción de la prueba de idiomas en la web', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))), const Icon(Icons.open_in_new, size: 18)])),
-                for (final r in ej.recursos) _filaRecurso(r, descargas.descargado(r.url)),
-                for (final p in ej.partes)
-                  if (p.temas.isEmpty)
-                    _filaParte(p, p.url != null && descargas.descargado(p.url!))
-                  else
-                    GrupoDesplegable(
-                        titulo: 'Parte ${p.letra}: ${p.nombre}',
-                        subtitulo: [
-                          if (!_preparador) '${p.temas.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length} de ${p.temas.length} estudiados' else '${p.temas.length} temas',
-                          '${p.temas.where((x) => x.disponible).length} ${Oposiciones.actual.esPrincipal ? 'con PDF' : 'publicados'}',
-                        ].join(' · '),
-                        children: [
-                          // Quinto ejercicio: un único PDF con todos los temas de la parte.
-                          if (p.url != null)
-                            ListTile(
-                              dense: true,
-                              leading: Icon(Icons.picture_as_pdf_outlined, color: context.esquema.primary),
-                              title: Text('PDF completo de la parte', style: context.textos.titleSmall?.copyWith(color: context.esquema.primary)),
-                              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: Tema(codigo: '${ej.id}.${p.letra}', titulo: p.nombre, disponible: true, temarioAnterior: false, url: p.url), esRecurso: true))),
-                            ),
-                          for (final x in p.temas) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
-                        ],
-                    ),
-              ],
+            const SizedBox(height: 10),
+            for (final ej in t.ejercicios) ...[
+              TituloSeccion(ej.nombre),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4, 0, 4, 10),
+                child: Text(ej.descripcion, style: TextStyle(fontFamily: Fuentes.serif, fontStyle: FontStyle.italic, fontSize: 15, color: context.colores.textoSuave)),
+              ),
+              if (ej.id == 2) Tarjeta(onTap: () => abrirUrl(context, ej.urlPagina, enApp: true), child: Row(children: [Expanded(child: Text('Descripción de la prueba de idiomas en la web', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))), const Icon(Icons.open_in_new, size: 18)])),
+              for (final r in ej.recursos) _filaRecurso(r, descargas.descargado(r.url)),
+              for (final p in ej.partes)
+                if (p.temas.isEmpty)
+                  _filaParte(p, p.url != null && descargas.descargado(p.url!))
+                else
+                  GrupoDesplegable(
+                    titulo: 'Parte ${p.letra}: ${p.nombre}',
+                    subtitulo: [
+                      if (!_preparador) '${p.temas.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length} de ${p.temas.length} estudiados' else '${p.temas.length} temas',
+                      '${p.temas.where((x) => x.disponible).length} ${Oposiciones.actual.esPrincipal ? 'con PDF' : 'publicados'}',
+                    ].join(' · '),
+                    children: [
+                      // Quinto ejercicio: un único PDF con todos los temas de la parte.
+                      if (p.url != null)
+                        ListTile(
+                          dense: true,
+                          leading: Icon(Icons.picture_as_pdf_outlined, color: context.esquema.primary),
+                          title: Text('PDF completo de la parte', style: context.textos.titleSmall?.copyWith(color: context.esquema.primary)),
+                          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: Tema(codigo: '${ej.id}.${p.letra}', titulo: p.nombre, disponible: true, temarioAnterior: false, url: p.url), esRecurso: true))),
+                        ),
+                      for (final x in p.temas) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
+                    ],
+                  ),
             ],
-          ));
-        },
-      ),
+          ],
+        ));
+      },
     );
   }
 
@@ -161,8 +193,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
         if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
         if (offline && !x.pdfDeParte) Icon(Icons.offline_pin, size: 14, color: context.colores.textoClaro),
         if (repaso && !_preparador) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.replay, size: 14, color: context.esquema.primary)),
-        if (!_preparador && ref.watch(ajustesProvider).noCantar.containsKey(x.codigo))
-          Padding(padding: const EdgeInsets.only(left: 4), child: Tooltip(message: 'Has pedido no cantarlo por ahora', child: Icon(Icons.mic_off_outlined, size: 14, color: context.colores.textoClaro))),
+        if (!_preparador && ref.watch(ajustesProvider).noCantar.containsKey(x.codigo)) Padding(padding: const EdgeInsets.only(left: 4), child: Tooltip(message: 'Has pedido no cantarlo por ahora', child: Icon(Icons.mic_off_outlined, size: 14, color: context.colores.textoClaro))),
         if (conNota) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.sticky_note_2_outlined, size: 14, color: context.colores.dorado)),
         if (apuntes > 0 && !_preparador) Padding(padding: const EdgeInsets.only(left: 6), child: Etiqueta(apuntes == 1 ? '1 apunte' : '$apuntes apuntes', color: context.colores.dorado)),
       ]),
@@ -178,9 +209,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
           leading: Icon(Icons.picture_as_pdf_outlined, color: p.disponible ? context.esquema.primary : context.colores.textoClaro),
           title: Text('Parte ${p.letra}: ${p.nombre}', style: context.textos.titleSmall),
           subtitle: Text(p.disponible ? (offline ? 'Descargado' : 'PDF completo de la parte') : 'No disponible', style: context.textos.labelSmall),
-          onTap: p.disponible
-              ? () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: Tema(codigo: '5.${p.letra}', titulo: p.nombre, disponible: true, temarioAnterior: true, url: p.url))))
-              : null,
+          onTap: p.disponible ? () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: Tema(codigo: '5.${p.letra}', titulo: p.nombre, disponible: true, temarioAnterior: true, url: p.url)))) : null,
         ),
       );
 
@@ -202,10 +231,4 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
       );
 }
 
-String _normalizar(String s) => s
-    .toLowerCase()
-    .replaceAll(RegExp('[áàä]'), 'a')
-    .replaceAll(RegExp('[éèë]'), 'e')
-    .replaceAll(RegExp('[íìï]'), 'i')
-    .replaceAll(RegExp('[óòö]'), 'o')
-    .replaceAll(RegExp('[úùü]'), 'u');
+String _normalizar(String s) => s.toLowerCase().replaceAll(RegExp('[áàä]'), 'a').replaceAll(RegExp('[éèë]'), 'e').replaceAll(RegExp('[íìï]'), 'i').replaceAll(RegExp('[óòö]'), 'o').replaceAll(RegExp('[úùü]'), 'u');
