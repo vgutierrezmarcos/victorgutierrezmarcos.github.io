@@ -277,11 +277,16 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
         m = re.search(r'\\section\*\{' + titulo + r'\}\s*(?:\\label\{[^}]*\}\s*)?\\minutos\{([\d.,]+)\}', cuerpo)
         return float(m.group(1).replace(',', '.')) if m else None
     todos = [float(x.replace(',', '.')) for x in re.findall(r'\\minutos\{(\d+(?:[.,]\d+)?)\}', cuerpo)]
-    if todos:
+    if tema.es_dictamen:
+        # La guía del dictamen no se canta en 30 minutos (CRITERIOS §11)
+        if todos:
+            errores.append('La guía del dictamen no lleva \\minutos (CRITERIOS §11)')
+    elif todos:
         datos['minutos'] = round(sum(todos), 2)
         if abs(sum(todos) - 30) > 1e-6:
             errores.append(f'Los \\minutos suman {sum(todos):g}, no 30')
-    for titulo, lo, hi, nombre in (('Introducción', 2, 2.5, 'La introducción'), ('Conclusión', 1, 1.5, 'La conclusión')):
+    for titulo, lo, hi, nombre in (() if tema.es_dictamen else
+                                   (('Introducción', 2, 2.5, 'La introducción'), ('Conclusión', 1, 1.5, 'La conclusión'))):
         mins = minutos_tras(titulo)
         if mins is None:
             avisos.append(f'{nombre} no lleva \\minutos justo tras \\section*{{{titulo}}}')

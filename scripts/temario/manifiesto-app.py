@@ -54,7 +54,9 @@ REPO = 'vgutierrezmarcos/victorgutierrezmarcos.github.io'
 RAMA = 'revision-temario'
 FUENTES = 'oposicion/temario/fuentes'
 SALIDA = 'oposicion/temario/app/revisados.json'
-EJERCICIOS = {'3': 'tercer-ejercicio', '4': 'cuarto-ejercicio'}
+EJERCICIOS = {'1': 'primer-ejercicio', '3': 'tercer-ejercicio', '4': 'cuarto-ejercicio'}
+# La guía del dictamen (1D01) va aparte, en «dictamen»: no es un tema del temario
+DICTAMEN = '1D01'
 
 
 def git(*args, binario=False):
@@ -90,7 +92,9 @@ def titulos():
 
 
 def codigo_de(archivo):
-    """3A08 → 3.A.8"""
+    """3A08 → 3.A.8 (1D01 → Dictamen)"""
+    if archivo == DICTAMEN:
+        return 'Dictamen'
     return f'{archivo[0]}.{archivo[1]}.{int(archivo[2:])}'
 
 
@@ -173,7 +177,8 @@ def manifiesto():
         tema = {
             'codigo': codigo,
             'archivo': archivo,
-            'titulo': nombres.get(codigo, ''),
+            'titulo': nombres.get(codigo, '') or ('Guía para el dictamen de coyuntura económica'
+                                                   if archivo == DICTAMEN else ''),
             'aprobado': aprobado['tema'],
             'version': version,
             'fecha': fecha,
@@ -187,6 +192,8 @@ def manifiesto():
         elif PdfReader is None:
             avisos.append(f'{archivo}: sin pypdf no se saca el esquema del PDF')
         temas.append(tema)
+    dictamen = next((t for t in temas if t['archivo'] == DICTAMEN), None)
+    temas = [t for t in temas if t['archivo'] != DICTAMEN]
     datos = {
         'descripcion': 'Temas revisados para la app Oposición TCEE (exclusivos de la app). '
                        'Generado por scripts/temario/manifiesto-app.py: no editar a mano.',
@@ -198,6 +205,8 @@ def manifiesto():
         'cdn': f'https://rawcdn.githack.com/{REPO}/{commit}/',
         'temas': temas,
     }
+    if dictamen:
+        datos['dictamen'] = dictamen
     return datos, avisos
 
 

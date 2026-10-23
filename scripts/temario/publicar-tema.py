@@ -93,6 +93,30 @@ def main():
             print(f'{script}: {salida.strip().splitlines()[-1] if salida.strip() else "hecho"}')
 
 
+def publicar_dictamen(tema):
+    """La guía del dictamen (1D01) no está en la lista de temas: en
+    primer-ejercicio.html se cambia su tarjeta (solo en la rama; la web de main
+    sigue con la guía antigua hasta que Víctor decida)."""
+    ruta = os.path.join(TEMARIO, f'{tema.carpeta}.html')
+    html = open(ruta, encoding='utf-8').read()
+    m = re.search(r'(<div class="tema-card">\s*<a href=")([^"]+)("[^>]*>\s*<span class="tema-card-number">Parte II</span>.*?'
+                  r'<p class="tema-card-extra">)(.*?)(</p>)', html, re.S)
+    if not m:
+        print(f'No encuentro la tarjeta del dictamen en {os.path.basename(ruta)}')
+        sys.exit(1)
+    c, a = tema.carpeta, tema.archivo
+    enlaces = [f'<a href="{c}/{a}.pdf" target="_blank">Guía en PDF</a> · <a href="{c}/{a}.docx" download>en Word</a>']
+    if os.path.exists(os.path.join(tema.dir_publico, f'{a}-repaso.pdf')):
+        enlaces[0] += f' · <a href="{c}/{a}-repaso.pdf" target="_blank">ficha de repaso</a>'
+    enlaces.append(f'<a href="{c}/examenes_oficiales_dictamen.pdf" target="_blank">Recopilación de dictámenes oficiales (2011-2026, PDF)</a>')
+    enlaces.append(f'<a href="{c}/esquema_dictamen_economico.pdf" target="_blank" rel="nofollow">Versión anterior (PDF)</a> · '
+                   f'<a href="{c}/esquema_dictamen_economico_2025.docx" download rel="nofollow">Versión anterior (Word)</a>')
+    html = (html[:m.start()] + m.group(1) + f'{c}/{a}.html' + m.group(3).replace(' target="_blank"', '', 1)
+            + '<br>'.join(enlaces) + m.group(5) + html[m.end():])
+    open(ruta, 'w', encoding='utf-8').write(html)
+    print(f'{os.path.relpath(ruta, RAIZ)}: guía del dictamen con web, PDF y DOCX')
+
+
 def publicar(tema):
     guardar_pdf_anterior(tema)
     guardar_docx_anterior(tema)
@@ -101,6 +125,8 @@ def publicar(tema):
             print(f'Falta {tema.archivo}.{ext}: ejecuta antes construir-tema.py')
             sys.exit(1)
     enlace_word_anterior(tema)
+    if tema.es_dictamen:
+        return publicar_dictamen(tema)
     videos_ruta = os.path.join(TEMARIO, 'videos.json')
     videos = json.load(open(videos_ruta, encoding='utf-8')) if os.path.exists(videos_ruta) else {}
     video = videos.get(tema.archivo)

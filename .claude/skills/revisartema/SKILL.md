@@ -15,7 +15,9 @@ Víctor aprueba una a una:
 3. **El vídeo** del cante, solo con el tema y la ficha aprobados → **parada**.
 
 Argumentos: `$ARGUMENTS`. El primero es el código del tema (3A08, 3.A.8,
-4B12…). Sin `--fase`, se hace la entrega que toque según `D/estado.json`.
+4B12…) o `1D01` (`dictamen`): la guía del dictamen de coyuntura del primer
+ejercicio, que se revisa igual con las diferencias de CRITERIOS §11 (sin
+cante de 30 minutos; vídeo explicativo de unos 15). Sin `--fase`, se hace la entrega que toque según `D/estado.json`.
 Además:
 - `--fase X`: empezar o repetir esa fase.
 - `--fase coherencia`: poner al día un tema **ya revisado** con los cambios

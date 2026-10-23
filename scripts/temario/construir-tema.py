@@ -532,9 +532,12 @@ def comunes_pandoc(tema, datos):
     # citeproc va antes del filtro para que tcee.lua vea ya la bibliografía (salto de página en Word)
     orden = ['-f', 'latex', '--figure-caption-position=above'] + (['--citeproc', '--csl', ruta_windows(os.path.join(LATEX, 'tcee.csl'))] if os.path.exists(tema.bib) else []) + [
              '--lua-filter', ruta_windows(os.path.join(LATEX, 'tcee.lua')),
-             '-M', 'lang=es-ES', '-M', f'codigo={tema.codigo}', '-M', f'titulo={datos["titulo"]}',
+             '-M', 'lang=es-ES', '-M', f'codigo={tema.codigo}', '-M', f'etiqueta={tema.etiqueta}',
+             '-M', f'titulo={datos["titulo"]}',
              '-M', f'fecha={datos["fecha"]}', '-M', f'archivo={tema.archivo}',
              '-M', f'carpeta={tema.carpeta}', '-M', f'ejercicio={tema.nombre_ejercicio}']
+    if tema.es_dictamen:
+        orden += ['-M', 'dictamen=true']
     try:
         dia = datetime.datetime.strptime(datos['fecha'], '%d/%m/%Y').date()
     except ValueError:
@@ -640,7 +643,7 @@ def generar_docx(tema, tex_pandoc, datos):
     orden = [PANDOC, ruta_windows(tex_pandoc), '-t', 'docx',
              '--reference-doc', ruta_windows(os.path.join(LATEX, 'reference.docx')),
              '-M', f'graficos-docx={ruta_windows(tema.graficos)}',
-             '-M', f'title={tema.codigo}: {datos["titulo"]}',
+             '-M', 'title=' + (datos['titulo'] if tema.es_dictamen else f'{tema.codigo}: {datos["titulo"]}'),
              '-M', 'author=Víctor Gutiérrez Marcos',
              '-M', f'date=Última actualización: {datos["fecha"]}',
              # Licencia en las propiedades del documento (Comentarios y personalizadas)
@@ -1164,7 +1167,7 @@ def main():
             destino = os.path.join(tema.dir_publico, f'{tema.archivo}.{ext}')
             shutil.copyfile(ruta, destino)
             print('Publicado en la rama:', os.path.relpath(destino, TEMARIO))
-    if datos['duracion']:
+    if datos['duracion'] and not tema.es_dictamen:
         print(f'Duración del cante según \\minutos: {datos["duracion"]} min')
         if datos['duracion'] != '30':
             print('AVISO: los \\minutos no suman 30 (CRITERIOS §2)')

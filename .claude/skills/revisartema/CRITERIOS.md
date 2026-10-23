@@ -23,6 +23,7 @@ las comprueban):
 | Vídeo | exactamente 30:00, 1920×1080, en `oposicion/temario/videos/` (fuera de git); hasta el ordenador nuevo, borrador sin voz (`--borrador`) |
 | Voz | motor `voicestudio` (OmniVoice, voz clonada; referencia `Documents/voz/referencia-12s.wav`), elegido el 13/10/2026; `xtts` y `edge` siguen disponibles para pruebas |
 | Resumen SEO | 160 caracteres como máximo; título SEO de 40–50 |
+| Guía del dictamen (1D01) | sin `\minutos` ni cante; vídeo explicativo de unos **15 minutos** (≈2.350 palabras); ficha de repaso de cuatro páginas como las demás (§11) |
 
 ## 1. Objetivo
 
@@ -768,3 +769,65 @@ también a universitarios y a quien aprende economía, sin perder la oposición
 - Tocar otros temas que no sean el que se revisa.
 - Subir notas privadas (comentarios, texto oculto) a la fuente pública.
 - Inventar datos, citas o referencias. Si no se encuentra la fuente, se dice.
+
+## 11. Guía del dictamen de coyuntura (`1D01`)
+
+Decidido por Víctor el 23/10/2026. La guía para el dictamen del primer
+ejercicio se revisa con el mismo equipo de agentes y los mismos criterios que
+un tema (§1-§10), con estas diferencias:
+
+- **Código y carpeta**: `/revisartema 1D01` (también `dictamen`); fuente en
+  `fuentes/1D01/`, salida en `primer-ejercicio/1D01.{pdf,html,docx}` de la
+  rama. En el PDF, `\tcetema[Guía del dictamen]{Primer ejercicio}{Guía para el dictamen de coyuntura económica}`.
+- **Originales**: la columna vertebral es el Word
+  `primer-ejercicio/oculto/2. Dictamen económico/2025_Esquema dictamen económico [Víctor Gutiérrez Marcos].docx`
+  (el de 2024 y el PDF publicado son versiones anteriores). Lo útil de
+  «Claves para preparar el dictamen (con fichas).pdf» (las cuatro capacidades
+  que valora el tribunal, los 10-12 minutos iniciales, la frase de diagnóstico,
+  no adivinar el país) va a un capítulo de método. De apoyo: los dictámenes
+  oficiales (`examenes_oficiales_dictamen.pdf`, 2011-2026) y el simulacro
+  Meridia (`Simulacros/20260216_Meridia/`). Como en los temas, las referencias
+  y citas del original se mantienen: se buscan, no se quitan.
+- **No hay cante de 30 minutos**: ni `\minutos` (es un error en
+  `verificar-tema.py`) ni límite de tres apartados. Los tiempos que cuentan
+  son los del examen (los de la convocatoria vigente: hoy 1 h 45 min para
+  escribir el dictamen; lectura pública y hasta 15 minutos de preguntas),
+  que se citan con `\tiempo{…}` donde haga falta.
+- **Estructura**:
+  1. *El ejercicio y el método*: qué es, cómo se califica, qué valora el
+     tribunal, reparto del tiempo, cómo leer el cuadernillo (dividir el
+     ciclo, marcar fortalezas en verde y debilidades en rojo, emparejar
+     gráficos y tablas con cada pregunta), cómo redactar y errores típicos.
+  2. Los bloques del esquema de 2025, en su orden: *perfil cíclico*
+     (medidores, demanda, oferta, diagnóstico), *mercados de factores*
+     (trabajo y capitales: financiero, bancario, vivienda, deuda),
+     *competitividad* (precio e inflación, tipo de cambio, no precio),
+     *sector exterior* (cuenta corriente, financiación, posición de inversión
+     internacional, sostenibilidad), *políticas* (monetaria, fiscal, *policy
+     mix*, de oferta) y *recomendaciones* por desequilibrio.
+  3. Anexos: tabla de indicadores con umbrales de referencia, qué se ha
+     preguntado en los dictámenes oficiales (pregunta por pregunta y año) y
+     expresiones útiles para redactar.
+- **Cada indicador**, con el mismo esquema: *qué mide* · *cómo se calcula* ·
+  *umbral o referencia* (cuadro de indicadores del procedimiento de
+  desequilibrios macroeconómicos, Basilea III, Pacto de Estabilidad, BCE…,
+  con su fuente) · *cómo se lee y con qué se cruza* · `\vertema{…}` del tema
+  donde se estudia a fondo.
+- **Datos y gráficos**: los ejemplos (zona del euro, España, mundo) se
+  actualizan al último dato oficial (Eurostat, BCE, INE, Banco de España, FMI,
+  Comisión Europea) con su cita, como en §4, y se redibujan en TikZ (§7). Los
+  gráficos son de ejemplo de lectura: el pie dice qué hay que ver en ellos.
+- **Coherencia**: definiciones, notación y referencias como en §6 (la
+  numeración de los temas que cita el original puede ser la antigua: se
+  comprueba en `temario.json`). La guía no desarrolla modelos: remite al tema.
+- **Ficha de repaso**: cuatro páginas como las demás (§8 bis), con el método y
+  el reparto del tiempo, la tabla de indicadores y umbrales, desequilibrios
+  típicos → recomendaciones y frases útiles, en lugar del esquema del cante.
+- **Vídeo**: explicativo, de unos 15 minutos (tabla §0), sin voz por ahora:
+  cómo se lee el cuadernillo, cómo se ordena el dictamen y cómo se reparte el
+  tiempo, con un caso (un dictamen oficial). Mismas reglas de pizarra y
+  guion que §8 salvo la duración.
+- **Publicación**: solo en la app (como los temas). En la web sigue la guía
+  antigua (`esquema_dictamen_economico.pdf` y `_2025.docx`), que
+  `publicar-tema.py` guarda como `1D01-anterior.*`. En el manifiesto de la
+  app va aparte, en la clave `dictamen`.

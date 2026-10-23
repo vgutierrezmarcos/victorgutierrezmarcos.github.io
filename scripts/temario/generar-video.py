@@ -1601,7 +1601,7 @@ class Pantallas:
         d = ImageDraw.Draw(img)
         e = self.escenas[escena]
         # Fila 1: tema, apartado y reloj
-        izq = f'Tema {self.tema.codigo}'
+        izq = self.tema.etiqueta
         d.text((30, 11), izq, font=F_BARRA, fill='white')
         x = 30 + d.textlength(izq, font=F_BARRA) + 22
         # Sin decimales y con primas, como en el tema (CRITERIOS.md): 12′05″ / 30′ · quedan 17′55″
@@ -1759,7 +1759,7 @@ class Pantallas:
     def portada(self):
         img = Image.new('RGB', (ANCHO, ALTO), MORADO)
         d = ImageDraw.Draw(img)
-        d.text((ANCHO / 2, 330), f'Tema {self.tema.codigo}', font=F_TITULO, fill='white', anchor='mm')
+        d.text((ANCHO / 2, 330), self.tema.etiqueta, font=F_TITULO, fill='white', anchor='mm')
         y = 450
         for l in partir(self.titulo, F_SUBTITULO, 1500):
             d.text((ANCHO / 2, y), l, font=F_SUBTITULO, fill=(236, 226, 246), anchor='mm')
@@ -1774,7 +1774,7 @@ class Pantallas:
         img = Image.new('RGB', (ANCHO, ALTO), MORADO)
         d = ImageDraw.Draw(img)
         d.text((ANCHO / 2, 400), 'Fin de la exposición', font=F_TITULO, fill='white', anchor='mm')
-        d.text((ANCHO / 2, 500), f'Tema {self.tema.codigo}: {self.corto}', font=F_SUBTITULO,
+        d.text((ANCHO / 2, 500), f'{self.tema.etiqueta}: {self.corto}', font=F_SUBTITULO,
                fill=(236, 226, 246), anchor='mm')
         d.text((ANCHO / 2, 640), 'El tema completo (web, PDF y Word) y el resto del temario en',
                font=F_UI, fill=(220, 210, 230), anchor='mm')
@@ -1991,7 +1991,7 @@ def main():
 
     # 1. Voz de cada paso (y del título, al principio) ------------------------------------
     # «[pausa]» o «[pausa 800]» (ms) en lo que se dice: silencio para dar énfasis o separar ideas
-    lectura_titulo = guion.get('lectura_titulo') or f'Tema {tema.codigo.replace(".", " ")}. {titulo}'
+    lectura_titulo = guion.get('lectura_titulo') or (titulo if tema.es_dictamen else f'Tema {tema.codigo.replace(".", " ")}. {titulo}')
     dichos = [lectura_titulo] + [p.get('di', '').strip() for e in escenas for p in e.get('pasos', [])]
     if args.borrador:
         duraciones = [max(1.0, len(sin_pausas(t).split()) / 2.75) + sum(s for _, s in trozos_pausa(t)) if t else 0

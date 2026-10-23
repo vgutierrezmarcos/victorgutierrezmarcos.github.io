@@ -45,22 +45,40 @@ LYX = _buscar_lyx()
 TEX2LYX = os.path.join(os.path.dirname(LYX), 'tex2lyx.exe') if LYX else None
 
 EJERCICIOS = {
+    '1': ('primer-ejercicio', 'Primer ejercicio'),
     '3': ('tercer-ejercicio', 'Tercer ejercicio'),
     '4': ('cuarto-ejercicio', 'Cuarto ejercicio'),
 }
 
 
+# Guía del dictamen de coyuntura (primer ejercicio): se revisa como un tema más
+# con el código 1D01 (CRITERIOS §11), pero no tiene cante de 30 minutos.
+DICTAMEN = {'archivo': '1D01', 'codigo': 'Dictamen',
+            'etiqueta': 'Guía del dictamen de coyuntura',
+            'titulo': 'Guía para el dictamen de coyuntura económica',
+            'original': '2. Dictamen económico/2025_Esquema dictamen económico [Víctor Gutiérrez Marcos].docx'}
+
+
 class Tema:
-    """Un tema identificado por su código: 3A08, 3.A.8, 4B12…"""
+    """Un tema identificado por su código: 3A08, 3.A.8, 4B12… o 1D01 (la guía del dictamen)."""
 
     def __init__(self, codigo):
-        m = re.fullmatch(r'\s*([34])\.?([AB])\.?(\d{1,2})\s*', codigo, re.I)
-        if not m:
-            raise ValueError(f'Código de tema no válido: {codigo!r} (ejemplos: 3A08, 3.A.8, 4B12)')
-        self.ejercicio, self.parte, n = m.group(1), m.group(2).upper(), int(m.group(3))
-        self.numero = n
-        self.archivo = f'{self.ejercicio}{self.parte}{n:02d}'      # 3A08
-        self.codigo = f'{self.ejercicio}.{self.parte}.{n}'          # 3.A.8
+        if re.fullmatch(r'\s*(1\.?D\.?0?1|dictamen)\s*', codigo, re.I):
+            self.ejercicio, self.parte, self.numero = '1', 'D', 1
+            self.archivo = DICTAMEN['archivo']
+            self.codigo = DICTAMEN['codigo']
+            self.etiqueta = DICTAMEN['etiqueta']
+            self.es_dictamen = True
+        else:
+            m = re.fullmatch(r'\s*([34])\.?([AB])\.?(\d{1,2})\s*', codigo, re.I)
+            if not m:
+                raise ValueError(f'Código de tema no válido: {codigo!r} (ejemplos: 3A08, 3.A.8, 4B12, 1D01)')
+            self.ejercicio, self.parte, n = m.group(1), m.group(2).upper(), int(m.group(3))
+            self.numero = n
+            self.archivo = f'{self.ejercicio}{self.parte}{n:02d}'      # 3A08
+            self.codigo = f'{self.ejercicio}.{self.parte}.{n}'          # 3.A.8
+            self.etiqueta = f'Tema {self.codigo}'                       # lo que se escribe delante del título
+            self.es_dictamen = False
         self.carpeta, self.nombre_ejercicio = EJERCICIOS[self.ejercicio]
         self.dir = os.path.join(FUENTES, self.archivo)
         self.dir_publico = os.path.join(TEMARIO, self.carpeta)
@@ -85,6 +103,8 @@ class Tema:
         return None
 
     def titulo(self):
+        if self.es_dictamen:
+            return DICTAMEN['titulo']
         t = self.info()
         return t['titulo'] if t else ''
 
@@ -97,6 +117,9 @@ class Tema:
         indica de qué original viejo sale cada tema nuevo.
         """
         oculto = os.path.join(REPO_MAIN, 'oposicion', 'temario', self.carpeta, 'oculto')
+        if self.es_dictamen:
+            ruta = os.path.join(oculto, DICTAMEN['original'])
+            return ruta if os.path.exists(ruta) else None
         codigo_original = self.codigo
         if self.ejercicio == '4':
             html = open(os.path.join(TEMARIO, 'cuarto-ejercicio.html'), encoding='utf-8').read()
@@ -109,7 +132,8 @@ class Tema:
         return candidatos[0] if candidatos else None
 
     def pdf_publicado(self):
-        ruta = os.path.join(REPO_MAIN, 'oposicion', 'temario', self.carpeta, f'{self.archivo}.pdf')
+        nombre = 'esquema_dictamen_economico.pdf' if self.es_dictamen else f'{self.archivo}.pdf'
+        ruta = os.path.join(REPO_MAIN, 'oposicion', 'temario', self.carpeta, nombre)
         return ruta if os.path.exists(ruta) else None
 
     # --- Estado de la revisión ---------------------------------------------------
@@ -177,7 +201,10 @@ def guardar_anterior(tema, ext, firma):
     destino = os.path.join(tema.dir_publico, f'{tema.archivo}-anterior.{ext}')
     if os.path.exists(destino):
         return destino
-    relativa = os.path.relpath(os.path.join(tema.dir_publico, f'{tema.archivo}.{ext}'), RAIZ).replace(os.sep, '/')
+    # La guía del dictamen estaba en main con otro nombre (la web la sigue sirviendo así)
+    nombre = {'pdf': 'esquema_dictamen_economico.pdf', 'docx': 'esquema_dictamen_economico_2025.docx'}[ext] \
+        if tema.es_dictamen else f'{tema.archivo}.{ext}'
+    relativa = os.path.relpath(os.path.join(tema.dir_publico, nombre), RAIZ).replace(os.sep, '/')
     for rama in ('origin/main', 'main'):
         r = subprocess.run(['git', '-C', RAIZ, 'show', f'{rama}:{relativa}'], capture_output=True)
         if r.returncode == 0 and r.stdout.startswith(firma):
