@@ -523,8 +523,8 @@ el texto original y lo que se hizo.
     por el mango», con las pegatinas «más sabe el loco en su casa…», «el que
     algo quiere, algo le cuesta», «las comparaciones son odiosas» y «poner al
     zorro a cuidar de las gallinas»; el 3.A.24, «nunca llueve a gusto de
-    todos», con «donde hay patrón no manda marinero», «cada cabeza es un
-    mundo» y «cada maestrillo tiene su librillo»).
+    todos», con «donde hay patrón no manda marinero» y «cada cabeza es un
+    mundo»).
 
 ### `guion-cante.md`
 

@@ -22,7 +22,7 @@
 
 Lecturas: Borda no elige al ganador de Condorcet ($x$); al retirar $z$, que nadie mueve respecto a $x$ e $y$, cambia el orden social de $x$ e $y$ (**viola la IAI**); a los 3 de $x$ les basta con *enterrar* a la rival poniendo $z$ segunda (**manipulable**). En la pizarra, 3 líneas: 11-12-7; sin $z$, 8-7; manipulado, 11-9-10.
 
-**Valoración:** «Cada maestrillo tiene su librillo» (refrán del 3.A.24): con las mismas preferencias, la mayoría elige $x$ y Borda, $y$; el ganador depende de la regla. Deja entrar la intensidad a través de lo que se **declara**: abre la puerta a mentir (enlace con Gibbard-Satterthwaite, III.3 del 3.A.24). Otras reglas también invitan al voto estratégico: la segunda vuelta y D'Hondt con circunscripciones pequeñas (voto útil), en nota; D'Hondt reparte escaños, no elige una alternativa. El voto ponderado (Shapley-Shubik) va en nota de III.2.4 (ficha `nucleo-shapley`), no con Borda.
+**Valoración:** Con las mismas preferencias, la mayoría elige $x$ y Borda, $y$; el ganador depende de la regla. Deja entrar la intensidad a través de lo que se **declara**: abre la puerta a mentir (enlace con Gibbard-Satterthwaite, III.3 del 3.A.24). Otras reglas también invitan al voto estratégico: la segunda vuelta y D'Hondt con circunscripciones pequeñas (voto útil), en nota; D'Hondt reparte escaños, no elige una alternativa. El voto ponderado (Shapley-Shubik) va en nota de III.2.4 (ficha `nucleo-shapley`), no con Borda.
 
 **Gráfico de referencia:** no tiene; la tabla `tab:borda`.
 

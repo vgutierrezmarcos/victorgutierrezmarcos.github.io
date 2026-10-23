@@ -123,7 +123,7 @@ Estado de las propuestas:
   - C15: el gráfico de Inman se sustituye por la tabla de K18;
   - C20: la salida informativa queda en una viñeta de III.3, en la tabla y en el anexo C, como pide coherencia;
   - C27: el anexo del ACB se conserva corregido (decidido, A24-04);
-  - C31: pegatina «Donde hay patrón no manda marinero» y «Cada cabeza es un mundo»; en III, «Cada maestrillo tiene su librillo»; descartada «Quien hace la ley hace la trampa», que choca con el 3.A.23;
+  - C31: pegatina «Donde hay patrón no manda marinero» y «Cada cabeza es un mundo»; descartada «Quien hace la ley hace la trampa», que choca con el 3.A.23;
   - C35 N2: se usa T y no R.
 - **Datos (V1-V52, L1-L12)**:
   - Aplicados V2, V3, V5-V20, V22-V36, V40, V41, V44-V52 y L1-L12.
@@ -206,8 +206,7 @@ Estado de las propuestas:
   - *Centro*: los gráficos, que se borran al acabar cada bloque.
   - *Derecha*: las funciones clave, recuadradas y conservadas: $R_G=f(R_1,\dots,R_I)$ (I.2), $W(U_1,\dots,U_I)$ (II.2) y la isoelástica (II.3). $A_\epsilon$ se escribe en II.4 y se borra. Junto a ellas, los refranes:
     - «Donde hay patrón no manda marinero», junto al pivote;
-    - «Cada cabeza es un mundo», junto a las comparaciones interpersonales;
-    - «Cada maestrillo tiene su librillo», junto a Borda.
+    - «Cada cabeza es un mundo», junto a las comparaciones interpersonales (Víctor quitó el 23/10/2026 «Cada maestrillo tiene su librillo» junto a Borda).
 - **Gráfico conjunto por partes**: la GFPU se dibuja en I.1, solo los ejes y la frontera. En II.2 se completa sobre ella `fbs-gfpu-tradeoff`: primero las CIS $W_1$-$W_3$ y $c$; después $d$, $a$ y $b$; al final la bisectriz, $e$ y las flechas $d\to b\to e$. No se dibuja otra GFPU.
 - **Pizarra y apoyo, bloque a bloque**:
   - **I.2**: los 5 axiomas con el ejemplo de los vecinos, como guion; los 3 pasos de la prueba en 3 líneas cortas. La demostración completa, ni como apoyo.
