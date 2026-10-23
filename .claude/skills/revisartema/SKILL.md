@@ -224,6 +224,12 @@ fecha}): léelas al empezar la siguiente entrega y aplícalas; mientras no
 conteste, se aplica la recomendada. En el resumen, el enlace a la página y
 cuántas dudas nuevas hay.
 
+**Desde la cuenta del trabajo** (`claude`, vgutierrez@economia.gob.es; Víctor,
+23/10/2026) no se pueden leer ni escribir los datos de esa página (es de la
+cuenta personal): las dudas se le preguntan **en la conversación** con
+AskUserQuestion (opciones, la recomendada primero) y se anotan igualmente en
+«Dudas abiertas» de `revision.md` con la respuesta.
+
 Breve, en castellano:
 - qué se ha hecho (cinco líneas como máximo) y las cifras clave;
 - las **dudas abiertas** que necesitan su decisión;
