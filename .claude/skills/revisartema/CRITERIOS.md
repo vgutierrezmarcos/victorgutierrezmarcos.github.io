@@ -519,7 +519,12 @@ el texto original y lo que se hizo.
   - **Refranes pegatina**: refranes o dichos cortos que se dicen una vez al
     presentar el concepto y se apuntan a su lado en la pizarra. No se repite
     un refrán que ya sea el enganche de otro tema (el 3.A.17 usa «quien parte
-    y reparte…», y el 3.A.16 «a río revuelto…»).
+    y reparte…», y el 3.A.16 «a río revuelto…»; el 3.A.20, «tener la sartén
+    por el mango», con las pegatinas «más sabe el loco en su casa…», «el que
+    algo quiere, algo le cuesta», «las comparaciones son odiosas» y «poner al
+    zorro a cuidar de las gallinas»; el 3.A.24, «nunca llueve a gusto de
+    todos», con «donde hay patrón no manda marinero», «cada cabeza es un
+    mundo» y «cada maestrillo tiene su librillo»).
 
 ### `guion-cante.md`
 

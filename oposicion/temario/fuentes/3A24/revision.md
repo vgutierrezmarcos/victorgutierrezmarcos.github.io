@@ -15,7 +15,7 @@
 | Dónde | Decía | Dice ahora |
 |---|---|---|
 | Intro, enganche | Definición de Marshall en cursiva, como si fuera una cita literal | Se quita (no es literal; el enganche es nuevo) |
-| Intro, relevancia | Cita de Atkinson («curiosidad y vanidad de los economistas») | Paráfrasis con Jimeno (2017) y Atkinson (2009, 2011) |
+| Intro, relevancia | Cita de Atkinson («curiosidad y vanidad de los economistas») | Como idea de Atkinson, sin comillas (la frase no aparece literal en su obra), con la cita comprobada de Atkinson (2011, p. 157) [23/10/2026, A24-05] |
 | Nota 4 | Cita de Pigou no literal | Cita literal de Pigou (1920), parte I, cap. I, en nota |
 | Nota 5 | Dupuit (1884) | 1844 |
 | Contextualización | «Ya en el siglo XIX, Bentham» | Finales del XVIII (1789) |
@@ -117,18 +117,18 @@ Estado de las propuestas:
 - **Contenido (C1-C38)**: aplicadas, salvo las siguientes:
   - C1, opción c (orden del título): no se aplica, por la decisión del coordinador de mantener los bloques del original; queda como duda;
   - C4, el planificador general en el cuerpo: va en nota;
-  - C5, la cita de Roberts (1980): fila sin cita;
-  - C7: la crítica de Harsanyi (1975) queda sin cita, y se quita Hobbes, porque Rawls cita a Locke, Rousseau y Kant;
+  - C5, la cita de Roberts (1980): aplicada el 23/10/2026 (A24-05), junto a Blackorby y Donaldson (1982);
+  - C7: la crítica de Harsanyi (1975, pp. 595-597) se cita desde el 23/10/2026 (A24-05); se quita Hobbes, porque Rawls cita a Locke, Rousseau y Kant;
   - C12: Condorcet, en III.2.1 y no en un II.1 nuevo, por el orden a;
   - C15: el gráfico de Inman se sustituye por la tabla de K18;
   - C20: la salida informativa queda en una viñeta de III.3, en la tabla y en el anexo C, como pide coherencia;
-  - C27: el anexo del ACB se conserva corregido (duda);
+  - C27: el anexo del ACB se conserva corregido (decidido, A24-04);
   - C31: pegatina «Donde hay patrón no manda marinero» y «Cada cabeza es un mundo»; en III, «Cada maestrillo tiene su librillo»; descartada «Quien hace la ley hace la trampa», que choca con el 3.A.23;
   - C35 N2: se usa T y no R.
 - **Datos (V1-V52, L1-L12)**:
   - Aplicados V2, V3, V5-V20, V22-V36, V40, V41, V44-V52 y L1-L12.
   - V1 y V4 no se usan, porque esa definición y esas notas salen del tema.
-  - V21: Nerón, sin atribuir.
+  - V21: Nerón, atribuido a Sen (2003, pp. 188-189) el 23/10/2026 (A24-05).
   - V43: la nota de la ofelimidad se quita.
 
 ## Coherencia
@@ -161,6 +161,8 @@ Estado de las propuestas:
 - **3.A.23** (opcional, menor): añadir al *logrolling* que también recoge la intensidad de las preferencias \vertema{3.A.24}.
 - **3.A.14, 3.A.22 y 3.A.23** (opcional, menor): en Gibbard-Satterthwaite, añadir «(si cualquiera de ellas puede salir elegida)», que es la sobreyectividad.
 
+- **3.A.22**: cita a Gravelle y Rees (2004) como cap. 12 para los juicios de valor; es el cap. 13 («Welfare economics», pp. 289-290); el 12 es «General equilibrium».
+
 **Con temas sin revisar** (para su revisión):
 - **4.B.2**:
   - teorema de May mal enunciado (nota 20); «inmune a la manipulación» (nota 23);
@@ -177,26 +179,23 @@ Estado de las propuestas:
 
 ## Dudas abiertas
 
-1. **Orden de los bloques** (D1): se mantiene el del original (I Arrow, II FBS, III axiomas), con la razón en la «Estructura». La alternativa es la opción c del revisor de contenido: el orden del título (I FBS, II elección colectiva y Arrow, III desarrollos), que evita el aviso de que la FBS es anterior a Arrow. ¿Cuál prefieres?
-2. **Refrán del enganche**: «Nunca llueve a gusto de todos» (no lo usa ningún tema) con el veto de diciembre de 2023. ¿Vale, o prefieres «Cien cabezas, cien sentencias» o un hecho de 2026?
-3. **Siglas de Arrow**: T (transitividad, como la ficha) frente a R (racionalidad, como MWG e Inman). Se ha usado T.
-4. **Anexo E (ACB)**: se ha conservado corregido. ¿Lo quitamos y dejamos solo la remisión al 4.B.6 en «Extensiones»?
-5. **Wilson (1972)**: el enunciado (regla nula, dictatorial o dictatorial inversa) se ha tomado de fuentes secundarias coincidentes; no se ha leído el artículo.
-6. **Citas que no se pudieron comprobar**:
-   - Atkinson, «curiosidad y vanidad de los economistas»: no encontrada, sustituida por una paráfrasis;
-   - Ekelund y Hébert: la nota sale del tema;
-   - el ejemplo de Nerón: queda sin atribuir;
-   - Kahneman, Knetsch y Thaler (1986): la frase solo se ha visto en el fragmento de un buscador; va parafraseada;
-   - Inman (1987), fig. 3.6: el número no se ha comprobado; la tabla cita a Inman sin figura;
-   - Gravelle y los 4 juicios de valor (anexo A), sin capítulo, como en el 3.A.22.
-7. **Referencias excluidas por no estar comprobadas**:
-   - Roberts (1980), para la familia isoelástica con escala de razón: la fila de la tabla queda sin cita;
-   - Harsanyi (1975), crítica del maximin: el reproche va sin cita;
-   - Gibbard (1974), derechos alienables: no se cita.
-8. **Letras de las alternativas** (D2): $x$, $y$, $z$, como el 3.A.23. Hay que cambiar las fichas del canon.
-9. **Gini como IG** (D9), para no chocar con el bien público $G$.
-10. **Ejemplo de los vecinos** (D8): ¿te convence como hilo del bloque III?
-11. Control de calidad, segunda pasada (22/10/2026): las 10 correcciones están bien en el PDF y en el HTML, `verificar-tema.py` da 0 errores y los párrafos reescritos no comparten con Cerezal ni con el original ninguna secuencia de 7 palabras. Queda 1 incidencia: en el HTML y en el Word, Condorcet sale en el texto como «Condorcet, Marie-Jean-Antoine-Nicolas de Caritat, marqués de (1785)» (4 veces), porque pandoc no lee `shortauthor`. En el PDF sale bien. [hecho, 22/10/2026] En el `.bib`, el autor va ahora como persona (`Condorcet, Marie-Jean-Antoine-Nicolas de Caritat`, sin `shortauthor`): sale «Condorcet (1785)» en el PDF, el HTML y el Word.
+1. **Orden de los bloques** (D1, A24-01): [decidido por Víctor, 23/10/2026] se mantiene el del original (I Arrow, II FBS, III axiomas), con la razón en la «Estructura».
+2. **Refrán del enganche** (A24-02): [decidido por Víctor, 23/10/2026] «Nunca llueve a gusto de todos», con el veto de diciembre de 2023.
+3. **Siglas y letras** (A24-03): [decidido por Víctor, 23/10/2026] alternativas $x$, $y$, $z$, como el 3.A.23 (hay que cambiar las fichas del canon); Gini como IG, para no chocar con el bien público $G$; T (transitividad, como la ficha) en los axiomas de Arrow.
+4. **Anexo E (ACB)** (A24-04): [decidido por Víctor, 23/10/2026] se conserva, corregido.
+5. **Fuentes** (A24-05): [decidido por Víctor, 23/10/2026: «Prefiero mantener las fuentes y que busques bien»] se restauran las citas y referencias del original y se han buscado (detalle en `_trabajo/fuentes-restaurar.md`; entradas nuevas en el `.bib`: Sen 2003 y 1999, Roberts 1980, Blackorby y Donaldson 1982, Harsanyi 1975 y Gibbard 1974; ISBN añadidos a Ekelund y Hébert y a Gravelle y Rees):
+   - Atkinson, «curiosidad y vanidad de los economistas»: la frase **no aparece literal** en ninguna obra suya que se haya podido leer (2009 y 2011 completos; de 2001, solo el resumen); sale tal cual en el 3.A.22 de F. Salazar, sin fuente. Por eso va **sin comillas**, como idea de Atkinson, y se añade la frase comprobada de Atkinson (2011, p. 157), entre comillas: la economía del bienestar debe volver «a un lugar destacado en la agenda de los economistas»;
+   - Ekelund y Hébert (2014, p. 649): se restaura la nota del original (la separación entre consumidores y productores, «una simplificación excesiva…», y las tecnologías del consumo), en la relevancia teórica de la introducción;
+   - el ejemplo de Nerón es de Sen, en su conferencia del Nobel (2003, pp. 188-189);
+   - Kahneman, Knetsch y Thaler (1986, p. S285): cita literal;
+   - Inman (1987), figura 3.6 («The performance of alternative collective choice processes»), p. 693, en el texto de los 3 caminos y en la fuente de la tabla de axiomas y salidas (la página se deduce del PDF del capítulo, 47 de 131);
+   - Roberts (1980), con Blackorby y Donaldson (1982), en la fila de la escala de razón y en el anexo: con comparabilidad plena en escala de razón, las FBS son homotéticas; con separabilidad, isoelásticas;
+   - Harsanyi (1975, pp. 595-597) en la crítica del maximin;
+   - Gibbard (1974): los derechos alienables, como en el original;
+   - Wilson (1972): se añade «con al menos 3 alternativas»; el enunciado sigue tomado de 3 fuentes secundarias coincidentes (el artículo no se ha podido leer);
+   - Gravelle y Rees (2004), cap. 13, pp. 289-290, en los juicios de valor del anexo A.
+6. **Ejemplo de los vecinos** (D8): ¿te convence como hilo del bloque III?
+7. Control de calidad, segunda pasada (22/10/2026): las 10 correcciones están bien en el PDF y en el HTML, `verificar-tema.py` da 0 errores y los párrafos reescritos no comparten con Cerezal ni con el original ninguna secuencia de 7 palabras. Queda 1 incidencia: en el HTML y en el Word, Condorcet sale en el texto como «Condorcet, Marie-Jean-Antoine-Nicolas de Caritat, marqués de (1785)» (4 veces), porque pandoc no lee `shortauthor`. En el PDF sale bien. [hecho, 22/10/2026] En el `.bib`, el autor va ahora como persona (`Condorcet, Marie-Jean-Antoine-Nicolas de Caritat`, sin `shortauthor`): sale «Condorcet (1785)» en el PDF, el HTML y el Word.
 
 ## Instrucciones para el vídeo
 

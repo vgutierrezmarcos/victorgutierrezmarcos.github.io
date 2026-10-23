@@ -10,8 +10,10 @@ Revisión del 22/10/2026 (`/revisartema`, fase integrar). **Tema sin original de
   Baron-Myerson, teoría positiva, acceso, aplicaciones y la idea de la tabla de instrumentos). Se
   añadieron las fichas del canon y el anexo A del 3.A.17. No se copia texto de ninguno de los 2: los pasajes que el control de calidad encontró casi literales del tema de Cabado se reescribieron (ver «Contenido añadido»).
   Tres apartados: I. Poder de mercado, mercado relevante y regulación con información completa
-  (7′30″); II. Desarrollos en presencia de información asimétrica (11′30″); III. Regulación con
-  varias empresas y aplicaciones prácticas (7′30″). La introducción dura 2′30″ y la conclusión, 1′.
+  (8′: I.1 2′30″, I.2 2′30″, I.3 3′); II. Desarrollos en presencia de información asimétrica (11′:
+  II.1 2′, II.2 2′, II.3 3′30″, II.4 2′, II.5 1′30″); III. Regulación con varias empresas y
+  aplicaciones prácticas (7′30″: III.1 2′, III.2 1′30″, III.3 1′30″, III.4 2′30″). La introducción
+  dura 2′30″ y la conclusión, 1′ (reparto decidido por Víctor el 23/10/2026, A20-02).
 - **Tema de referencia**: el 3.A.20 pasa a serlo (P21-02, D092) de Averch-Johnson, Loeb-Magat,
   Baron-Myerson, el menú de Laffont-Tirole, el *price cap*, el *yardstick*, la captura del regulador
   y la definición del mercado relevante. Se usa la misma notación, las mismas ecuaciones y los
@@ -240,19 +242,25 @@ Todo el tema es contenido nuevo. Estado de cada propuesta:
 
 ## Dudas abiertas
 
-1. **Refrán del enganche**: «Tener la sartén por el mango», con las pegatinas «Más sabe el loco…»,
-   «El que algo quiere…», «Las comparaciones son odiosas» y «Poner al zorro…». ¿Se mantienen?
-   Si se aprueban, hay que añadirlos a la lista de CRITERIOS §8.
-2. **Baron-Myerson en el cuerpo** (2′ con Loeb-Magat, con gráfico) o solo como viñeta de
-   Laffont-Tirole y anexo.
-3. **Reparto** 7′30″ / 11′30″ / 7′30″ en lugar del 8′ / 11′ / 7′30″ de `estructura.md`.
-4. **Fichas nuevas del canon**: `mercado-relevante` (SSNIP, celofán, pérdida crítica, SSNDQ),
-   `competencia-por-mercado` (Demsetz, Williamson, Laffont-Tirole 1987) y `precio-acceso` (regla
-   del precio eficiente de los componentes, Armstrong-Doyle-Vickers), con el 3.A.20 como tema de
-   referencia. Y Baron-Myerson dentro de `laffont-tirole`.
-5. **El DORA como *price cap***: se presenta así, con la advertencia de que su X (+0,33 %) se suma
-   y cuadra ingresos con costes. La alternativa es llamarlo regulación de ingreso máximo.
-6. **Lo quitado por no estar comprobado**:
+**Decididas por Víctor el 23/10/2026**:
+
+1. **Refrán del enganche** (A20-01): **decidido**, se mantienen «Tener la sartén por el mango» y
+   las pegatinas «Más sabe el loco…», «El que algo quiere…», «Las comparaciones son odiosas» y
+   «Poner al zorro…». Hay que añadirlos a la lista de CRITERIOS §8.
+2. **Baron-Myerson en el cuerpo** (A20-02): **decidido**, sigue en el cuerpo (II.2, 2′ con
+   Loeb-Magat, con gráfico).
+3. **Reparto** (A20-02, opción c): **decidido**, 8′ / 11′ / 7′30″. Se pasa medio minuto de II a I:
+   II.5 (compromiso y captura) baja de 2′ a 1′30″ y I.3 (información completa) sube de 2′30″ a 3′.
+   Cambiados los `\minutos{}` de I y II, la nota del reparto y los `\tiempo{}` de los párrafos
+   «En el cante» de I y II.
+4. **Fichas nuevas del canon** (A20-03): **decidido**, se aprueban `mercado-relevante` (SSNIP,
+   celofán, pérdida crítica, SSNDQ), `competencia-por-mercado` (Demsetz, Williamson,
+   Laffont-Tirole 1987) y `precio-acceso` (regla del precio eficiente de los componentes,
+   Armstrong-Doyle-Vickers), con el 3.A.20 como tema de referencia, y Baron-Myerson dentro de
+   `laffont-tirole`.
+5. **El DORA como *price cap*** (A20-04): **decidido**, se presenta así, con la advertencia de que
+   su X (+0,33 %) se suma y cuadra ingresos con costes.
+6. **Lo quitado por no estar comprobado** (A20-05): **decidido**, se queda fuera:
    - Google Adtech (2.950 M€, solo prensa).
    - La designación de AWS y Azure en la DMA.
    - El recurso contra la Circular 9/2025.
@@ -262,7 +270,8 @@ Todo el tema es contenido nuevo. Estado de cada propuesta:
    - El «desde 2029» del TOTEX y el 0,13 % del PIB de la Circular 8/2025.
    - Las *killer acquisitions*.
 
-   ¿Se busca la fuente primaria de alguno?
+**Siguen abiertas**:
+
 7. **Referencias por verificar**:
    - Los identificadores del BOE de los RDL 10/2022 (BOE-A-2022-7843) y 3/2023 (BOE-A-2023-7937)
      los dio el agente de datos con las URL del BOE; conviene confirmarlos al publicar.

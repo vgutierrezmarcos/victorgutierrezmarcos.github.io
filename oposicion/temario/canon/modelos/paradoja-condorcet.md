@@ -10,7 +10,7 @@
 
 **Idea:** Condorcet (1785) defiende comparar las alternativas por parejas, por mayoría, y descubre que, aunque cada individuo sea transitivo, la mayoría puede no serlo. Es el problema que generaliza Arrow.
 
-**Ejemplo canónico (común con el 4.B.2; CC4 del 3.A.24):** la comunidad de 3 vecinos decide cuánto gastar en reformar el portal: poco ($x$), algo ($y$) o mucho ($z$) (**[decidir]** D2 del 3.A.24: letras $x$, $y$, $z$, aplicadas, frente a $A$, $B$, $C$ de la versión anterior de esta ficha; pendiente de Víctor). Tabla `tab:condorcet`:
+**Ejemplo canónico (común con el 4.B.2; CC4 del 3.A.24):** la comunidad de 3 vecinos decide cuánto gastar en reformar el portal: poco ($x$), algo ($y$) o mucho ($z$) (**[decidido 23/10/2026: A24-03, x, y, z]** D2 del 3.A.24: letras $x$, $y$, $z$, aplicadas, frente a $A$, $B$, $C$ de la versión anterior de esta ficha; pendiente de Víctor). Tabla `tab:condorcet`:
 
 | Vecino | 1.ª | 2.ª | 3.ª |
 |---|---|---|---|
