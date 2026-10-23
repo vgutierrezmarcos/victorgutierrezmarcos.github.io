@@ -1,0 +1,24 @@
+% Copia de 3A23/graficos/niskanen.tex (mismo modelo, misma forma; 3.A.20, anexo de la regulación en la economía del bienestar).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Modelo de burocracia de Niskanen (1971).
+% B(G) = 8G - 0,5G^2 (cóncava); C(G) = G + 0,5G^2 (convexa).
+% Eficiente: BMg = CMg -> 8 - G = 1 + G -> G* = 3,5 (B = 21,875; C = 9,625).
+% Burócrata: B(G') = C(G') -> G' = 7 (B = C = 31,5).
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.13cm,font=\normalsize]
+  \capa{1}{\ejes{$G$}{€}{8.6}{37}}
+  \capa{2}{\draw[curva1] plot[domain=0:8,samples=60,smooth] (\x,{8*\x-0.5*\x^2})
+    node[etiqueta,above right=-2pt,font=\normalsize] {$B(G)$};}
+  \capa{3}{\draw[curva2] plot[domain=0:7.7,samples=60,smooth] (\x,{\x+0.5*\x^2})
+    node[etiqueta,right,font=\normalsize] {$C(G)$};}
+  \capa{4}{%
+    \draw[thick,tceegris] (2.3,16.475) -- (4.7,27.275);
+    \draw[thick,tceegris] (2.3,4.225) -- (4.7,15.025);
+    \draw[<->,thick,tceerojo] (3.5,9.625) -- (3.5,21.875);
+    \draw[guia] (3.5,9.625) -- (3.5,0) node[below,black] {$G^*$};}
+  \capa{5}{%
+    \node[punto] (P) at (7,31.5) {};
+    \draw[guia] (P) -- (7,0) node[below,black] {$G'$};}
+\end{tikzpicture}
+\end{document}

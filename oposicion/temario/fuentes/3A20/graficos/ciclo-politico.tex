@@ -1,0 +1,27 @@
+% Ciclo político de Nordhaus (1975) (3.A.20, anexo de la regulación en la
+% economía del bienestar, nota del ciclo político). Rehace el gráfico de la
+% nota 26 del Word de Víctor (antiguo 3.A.25; PDF de 2023, p. 21, nota 23):
+% inflación (pi) y paro (u) en el tiempo, con elecciones cada 4 años. Antes de
+% cada elección, el gobierno expande la economía (baja el paro y sube la
+% inflación a lo largo de la curva de Phillips); justo después, ajusta
+% bruscamente (el paro salta y la inflación cae).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.4cm,y=1cm]
+  % 1: ejes (tiempo en años)
+  \capa{1}{\draw[eje] (0,0) -- (13.5,0) node[below left=2pt and 0pt] {$t$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,3.6) node[left] {$\pi,\ u$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: las elecciones, cada 4 años
+  \capa{2}{\foreach \t in {4,8,12} {\draw[guia] (\t,0) node[below,text=black] {\footnotesize\t} -- (\t,3.3);}}
+  \capa{2}{\node[etiqueta,font=\scriptsize,anchor=south] at (8,3.3) {elecciones};}
+  % 3: la inflación sube antes de cada elección y cae después
+  \capa{3}{\draw[guia] (0,2.65) -- (12.8,2.65);}
+  \capa{3}{\draw[curva1] (0,2.2) -- (4,3.1) -- (4,2.2) -- (8,3.1) -- (8,2.2) -- (12,3.1) -- (12,2.2) -- (12.8,2.38) node[etiqueta,right] {$\pi$};}
+  % 4: el paro baja antes de cada elección y salta después
+  \capa{4}{\draw[guia] (0,0.95) -- (12.8,0.95);}
+  \capa{4}{\draw[curva2] (0,1.4) -- (4,0.5) -- (4,1.4) -- (8,0.5) -- (8,1.4) -- (12,0.5) -- (12,1.4) -- (12.8,1.22) node[etiqueta,right] {$u$};}
+\end{tikzpicture}
+\end{document}

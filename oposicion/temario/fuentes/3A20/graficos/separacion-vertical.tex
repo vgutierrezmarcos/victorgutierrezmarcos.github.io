@@ -1,0 +1,120 @@
+% Acceso regulado y formas de separación vertical (3.A.20, III.3).
+% Rehace los 4 esquemas del Word de Víctor (antiguo 3.A.25, 5.2.3; PDF de 2023,
+% pp. 30-31) y añade los 2 que faltaban, a partir de OCDE (2001, pp. 11-19,
+% figs. 1-5). Corrige «propiedad compartida del componente competitivo»: lo
+% compartido es el activo NO competitivo (la red).
+% ANC: activo no competitivo; AC: actividad competitiva.
+% Flechas continuas: suministro dentro de la empresa o al consumidor;
+% discontinuas: acceso a la red; rectángulos de trazos: una misma empresa.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    bloque/.style={draw=tceemorado,thick,rounded corners=2pt,align=center,
+                   minimum height=0.6cm,inner sep=3pt,font=\footnotesize},
+    anc/.style={bloque,fill=tceemorado!15,minimum width=1.1cm},
+    ac/.style={bloque,fill=tceesalvia,minimum width=1.1cm},
+    cons/.style={bloque,fill=white,minimum width=3.4cm},
+    sum/.style={->,thick,tceemorado},
+    acc/.style={->,thick,dashed,tceemorado},
+    empresa/.style={draw=tceegris,dashed,thick,rounded corners=3pt},
+    rotulo/.style={font=\scriptsize,inner sep=1.5pt,align=center},
+    titulo/.style={font=\footnotesize,align=center,text width=5cm}]
+  % ---------------------------------------------------------------- a) acceso regulado
+  \capa{1}{\begin{scope}[shift={(0,0)}]
+    \node[anc] (aN) at (-1.5,1.5) {ANC};
+    \node[ac] (a1) at (-1.5,0) {AC$_1$};
+    \node[ac] (a2) at (0,0) {AC$_2$};
+    \node[ac] (a3) at (1.5,0) {AC$_3$};
+    \node[cons] (aC) at (0,-1.4) {Consumidores};
+    \draw[empresa] ($(aN.north west)+(-0.15,0.15)$) rectangle ($(a1.south east)+(0.15,-0.15)$);
+    \draw[sum] (aN) -- (a1);
+    \draw[acc] (aN.east) -- (a2.north);
+    \draw[acc] (aN.east) -- (a3.north);
+    \node[rotulo,anchor=south west] at ([xshift=0.25cm]aN.north east) {precio de acceso\\ regulado};
+    \foreach \i in {1,2,3} {\draw[sum] (a\i.south) -- (a\i.south |- aC.north);}
+    \node[titulo] at (0,-2.35) {a) Acceso regulado};
+  \end{scope}}
+  % ---------------------------------------------------------------- b) separación de la propiedad
+  \capa{2}{\begin{scope}[shift={(5.8,0)}]
+    \node[anc] (bN) at (0,1.5) {ANC};
+    \node[ac] (b1) at (-1.5,0) {AC$_1$};
+    \node[ac] (b2) at (0,0) {AC$_2$};
+    \node[ac] (b3) at (1.5,0) {AC$_3$};
+    \node[cons] (bC) at (0,-1.4) {Consumidores};
+    \foreach \i in {1,2,3} {\draw[acc] (bN.south) -- (b\i.north);}
+    \foreach \i in {1,2,3} {\draw[sum] (b\i.south) -- (b\i.south |- bC.north);}
+    \node[titulo] at (0,-2.35) {b) Separación de la propiedad};
+  \end{scope}}
+  % ---------------------------------------------------------------- c) propiedad compartida
+  \capa{3}{\begin{scope}[shift={(11.6,0)}]
+    \node[anc,minimum width=4.0cm] (cN) at (0,1.5) {ANC};
+    \node[ac] (c1) at (-1.5,0) {AC$_1$};
+    \node[ac] (c2) at (0,0) {AC$_2$};
+    \node[ac] (c3) at (1.5,0) {AC$_3$};
+    \node[cons] (cC) at (0,-1.4) {Consumidores};
+    \foreach \x/\i in {-1.5/1,0/2,1.5/3} {
+      \draw[empresa] (\x-0.66,-0.45) rectangle (\x+0.66,1.95);
+      \draw[sum] (\x,1.2) -- (c\i.north);
+      \draw[sum] (c\i.south) -- (c\i.south |- cC.north);}
+    \node[titulo] at (0,-2.35) {c) Propiedad compartida\\ de la red};
+  \end{scope}}
+  % ---------------------------------------------------------------- d) separación operativa
+  \capa{4}{\begin{scope}[shift={(0,-5.6)}]
+    \node[anc] (dN) at (0,1.5) {ANC};
+    \draw[tceerojo,thick,rounded corners=8pt] (-0.95,1.05) rectangle (0.95,2.0);
+    \node[rotulo,text=tceerojo,anchor=south] at (0,2.0) {control: entidad independiente};
+    \node[ac] (d1) at (-1.5,0) {AC$_1$};
+    \node[ac] (d2) at (0,0) {AC$_2$};
+    \node[ac] (d3) at (1.5,0) {AC$_3$};
+    \node[cons] (dC) at (0,-1.4) {Consumidores};
+    \draw[thick,dotted,tceegris] (-0.95,1.5) -| (d1.north);
+    \node[rotulo,text=tceegris,anchor=south east] at (-1.25,1.55) {propiedad};
+    \foreach \i in {1,2,3} {\draw[acc] (dN.south) -- (d\i.north);}
+    \foreach \i in {1,2,3} {\draw[sum] (d\i.south) -- (d\i.south |- dC.north);}
+    \node[titulo] at (0,-2.35) {d) Separación operativa};
+  \end{scope}}
+  % ---------------------------------------------------------------- e) partes recíprocas
+  \capa{5}{\begin{scope}[shift={(5.8,-5.6)}]
+    \node[anc] (eN1) at (-1.3,1.5) {ANC$_1$};
+    \node[anc] (eN2) at (1.3,1.5) {ANC$_2$};
+    \node[ac] (e1) at (-1.3,0) {AC$_1$};
+    \node[ac] (e2) at (1.3,0) {AC$_2$};
+    \node[cons] (eC) at (0,-1.4) {Consumidores};
+    \draw[empresa] ($(eN1.north west)+(-0.15,0.15)$) rectangle ($(e1.south east)+(0.15,-0.15)$);
+    \draw[empresa] ($(eN2.north west)+(-0.15,0.15)$) rectangle ($(e2.south east)+(0.15,-0.15)$);
+    \draw[sum] (eN1) -- (e1);
+    \draw[sum] (eN2) -- (e2);
+    \draw[acc] (eN1.south east) -- (e2.north west);
+    \draw[acc] (eN2.south west) -- (e1.north east);
+    \node[rotulo,anchor=south] at (0,1.95) {acceso recíproco};
+    \draw[sum] (e1.south) -- (e1.south |- eC.north);
+    \draw[sum] (e2.south) -- (e2.south |- eC.north);
+    \node[titulo] at (0,-2.35) {e) Separación en partes recíprocas};
+  \end{scope}}
+  % ---------------------------------------------------------------- f) partes más pequeñas
+  \capa{6}{\begin{scope}[shift={(11.6,-5.6)}]
+    \node[ac] (f1) at (-1.5,1.5) {AC$_1$};
+    \node[ac] (f2) at (0,1.5) {AC$_2$};
+    \node[ac] (f3) at (1.5,1.5) {AC$_3$};
+    \node[anc] (fN1) at (-0.9,0) {ANC$_1$};
+    \node[anc] (fN2) at (0.9,0) {ANC$_2$};
+    \node[cons] (fC) at (0,-1.4) {Consumidores};
+    \foreach \i in {1,2,3} {\draw[sum,thin] (f\i.south) -- (fN1.north); \draw[sum,thin] (f\i.south) -- (fN2.north);}
+    \draw[sum] (fN1.south) -- (fN1.south |- fC.north);
+    \draw[sum] (fN2.south) -- (fN2.south |- fC.north);
+    \node[rotulo,anchor=east] at (-1.6,0) {zona 1};
+    \node[rotulo,anchor=west] at (1.6,0) {zona 2};
+    \node[titulo] at (0,-2.35) {f) Separación en partes\\ más pequeñas (red aguas abajo)};
+  \end{scope}}
+  % ---------------------------------------------------------------- leyenda
+  \begin{scope}[shift={(5.8,-8.75)}]
+    \draw[sum] (-4.6,0) -- (-3.9,0) node[rotulo,right,text=black] {suministro};
+    \draw[acc] (-2.2,0) -- (-1.5,0) node[rotulo,right,text=black] {acceso a la red};
+    \draw[empresa] (0.6,-0.18) rectangle (1.2,0.18);
+    \node[rotulo,right] at (1.25,0) {misma empresa};
+    \node[rotulo] at (0,-0.45) {ANC: activo no competitivo; AC: actividad competitiva};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

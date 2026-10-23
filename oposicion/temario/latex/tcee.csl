@@ -37,6 +37,13 @@
     <updated>2018-01-24T12:00:00+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
+  <!-- TCEE: «§» en los localizadores (\parencite[§17.C]{…}) se escribe «§», no «párr.» ni «sec.» (citeproc lee «§» como etiqueta) -->
+  <locale xml:lang="es">
+    <terms>
+      <term name="paragraph" form="short"><single>§</single><multiple>§§</multiple></term>
+      <term name="section" form="short"><single>§</single><multiple>§§</multiple></term>
+    </terms>
+  </locale>
   <locale xml:lang="en">
     <terms>
       <term name="editor" form="verb-short">ed.</term>

@@ -1,40 +1,61 @@
-% Esquema por etapas para la regulación del poder de mercado (3.A.17, anexo A.2).
-% Rehace el «policy roadmap» de Braeutigam (1989, fig. 23.6) y el esquema del
-% tema anterior, con el estilo de 3A09/graficos/esquema-ingredientes-dualidad.tex,
-% y añade la rama de la información asimétrica (terceros óptimos).
+% Algoritmo de la regulación del poder de mercado (3.A.20, I.1).
+% Rehace el «algoritmo de Braeutigam que seguiremos» de Víctor (Word antiguo 3.A.25, Imagen 9;
+% PDF de 2023, p. 17), a partir de Braeutigam (1989, fig. 23.6), con la caja vacía rellena,
+% «primer/segundo/tercer óptimo» en lugar de «de 1.er/2.º/3.er orden» y los mercados impugnables
+% en la rama del monopolio sostenible.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
 \begin{tikzpicture}[tcee,
     caja/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=3pt,align=center,
-                 minimum height=1.0cm,inner sep=5pt,font=\footnotesize},
-    pregunta/.style={caja,fill=white,very thick,font=\footnotesize\itshape},
-    une/.style={->,thick,tceemorado},
+                 minimum height=0.9cm,inner sep=5pt,font=\footnotesize},
+    pregunta/.style={caja,font=\footnotesize\itshape},
+    sino/.style={caja,minimum height=0.6cm,minimum width=0.9cm,inner sep=3pt},
+    trazos/.style={draw=tceemorado,dashed,thick,align=left,inner sep=5pt,font=\scriptsize,fill=white},
+    rama/.style={thick,tceemorado},
     papel/.style={font=\scriptsize,inner sep=1.5pt,fill=white,align=center}]
-  % 1: raíz y ramas según el origen del poder de mercado
-  \capa{1}{\node[pregunta] (O) at (0,0) {¿Origen del poder de mercado?};}
-  \capa{1}{\node[caja] (DC) at (-5.6,-2.4) {Defensa de la\\ competencia};}
-  \capa{1}{\node[caja] (CP) at (-1.6,-2.4) {Control de precios};}
-  \capa{1}{\node[pregunta] (S) at (3.6,-2.4) {¿Es sostenible?};}
-  \capa{1}{\draw[une] (O.south) -- node[papel,pos=0.55] {comportamientos\\ estratégicos} (DC.north);}
-  \capa{1}{\draw[une] (O.south) -- node[papel,pos=0.55] {recursos\\ exclusivos} (CP.north);}
-  \capa{1}{\draw[une] (O.south) -- node[papel,pos=0.55] {subaditividad\\ (monopolio natural)} (S.north);}
-  % 2: monopolio natural no sostenible
-  \capa{2}{\node[caja] (NS) at (0.4,-5.0) {Regular la entrada;\\ competencia \emph{por} el mercado\\ (\textsc{Demsetz}) o intermodal};}
-  \capa{2}{\draw[une] (S.south) -- node[papel] {no} (NS.north);}
-  % 3: monopolio natural sostenible: primer y segundo óptimo
-  \capa{3}{\node[pregunta] (T) at (6.6,-5.0) {¿Se pueden usar transferencias?};}
-  \capa{3}{\draw[une] (S.south) -- node[papel] {sí (mercados\\ impugnables)} (T.north);}
-  \capa{3}{\node[caja] (P1) at (3.9,-7.7) {Primer óptimo: $p=\mathrm{CMg}$\\ con subvención o\\ impuesto de suma fija};}
-  \capa{3}{\node[caja] (P2) at (8.6,-7.7) {Segundo óptimo: $p=\mathrm{CMe}$,\\ tarifa en dos partes,\\ punta y valle, \textsc{Ramsey}-\textsc{Boiteux}};}
-  \capa{3}{\draw[une] (T.south) -- node[papel] {sí} (P1.north);}
-  \capa{3}{\draw[une] (T.south) -- node[papel] {no} (P2.north);}
-  % 4: rama nueva: información asimétrica
-  \capa{4}{\node[pregunta] (I) at (6.25,-10.2) {¿Conoce el regulador\\ los costes y la demanda?};}
-  \capa{4}{\draw[une,dashed] (P1.south) -- (I.north);}
-  \capa{4}{\draw[une,dashed] (P2.south) -- (I.north);}
-  \capa{4}{\node[caja,draw=tceerojo,fill=tceerojo!8] (T3) at (-1.6,-10.2) {Terceros óptimos: tasa de rentabilidad,\\ \emph{price cap}, menú de \textsc{Laffont}-\textsc{Tirole},\\ competencia por comparación};}
-  \capa{4}{\draw[une,tceerojo] (I.west) -- node[papel,text=tceerojo] {no} (T3.east);}
+  % 1: raíz y 3 orígenes
+  \capa{1}{\node[caja] (O) at (0,0) {Origen del poder de mercado};}
+  \capa{1}{\node[caja] (CE) at (-5.2,-1.6) {Comportamientos\\ estratégicos};}
+  \capa{1}{\node[caja] (RE) at (-1.6,-1.6) {Posesión en exclusiva\\ de recursos};}
+  \capa{1}{\node[caja] (SA) at (2.6,-1.6) {Subaditividad de costes\\ (monopolio natural)};}
+  \capa{1}{\draw[rama] (O.south) -- ++(0,-0.35) coordinate (b0) -| (CE.north);}
+  \capa{1}{\draw[rama] (b0) -| (RE.north);}
+  \capa{1}{\draw[rama] (b0) -| (SA.north);}
+  % 2: la llave y la defensa de la competencia
+  \capa{2}{\draw[rama,decorate,decoration={brace,mirror,amplitude=6pt}] ([yshift=-3pt]CE.south west) -- ([yshift=-3pt]RE.south east |- CE.south) coordinate[midway,yshift=-9pt] (llave);}
+  \capa{2}{\node[trazos,align=center,anchor=north] (DC) at ([yshift=-0.3cm]llave) {Competencia posible:\\ políticas de defensa de la competencia\\ (con recursos exclusivos, también control de precios)};}
+  % 3: ¿es sostenible?
+  \capa{3}{\node[pregunta] (S) at (2.6,-3.3) {¿Es sostenible?};}
+  \capa{3}{\draw[rama] (SA.south) -- (S.north);}
+  \capa{3}{\node[sino] (S1) at (1.7,-4.6) {Sí};}
+  \capa{3}{\node[sino] (S0) at (3.5,-4.6) {No};}
+  \capa{3}{\draw[rama] (S.south) -- ++(0,-0.35) coordinate (b1) -| (S1.north);}
+  \capa{3}{\draw[rama] (b1) -| (S0.north);}
+  \capa{3}{\node[trazos,anchor=west] (NS) at ([xshift=0.5cm]S0.east) {Regular la entrada y, si es posible,\\ introducir competencia:\\ $\bullet$ por el mercado (\textsc{Demsetz})\\ $\bullet$ intermodal (sustitutivos cercanos)};}
+  \capa{3}{\draw[rama,decorate,decoration={brace,amplitude=4pt}] ([xshift=3pt]S0.north east) -- ([xshift=3pt]S0.south east);}
+  \capa{3}{\node[papel,anchor=east,align=right] at ([xshift=-0.3cm]S1.west) {si además es impugnable\\ (\textsc{Baumol}), basta la amenaza\\ de entrada: $p=\mathrm{CMe}$};}
+  % 4: ¿primer óptimo?
+  \capa{4}{\node[pregunta] (P1) at (1.7,-6.1) {¿Primer óptimo?\\ $p=\mathrm{CMg}$};}
+  \capa{4}{\draw[rama] (S1.south) -- (P1.north);}
+  \capa{4}{\node[sino] (P11) at (0.8,-7.4) {Sí};}
+  \capa{4}{\node[sino] (P10) at (2.6,-7.4) {No};}
+  \capa{4}{\draw[rama] (P1.south) -- ++(0,-0.35) coordinate (b2) -| (P11.north);}
+  \capa{4}{\draw[rama] (b2) -| (P10.north);}
+  \capa{4}{\node[trazos,anchor=east] (C1) at ([xshift=-0.5cm]P11.west) {Fijar $p=\mathrm{CMg}$:\\ $\bullet$ si hay beneficios, retirarlos con un impuesto de suma fija;\\ $\bullet$ si hay pérdidas, cubrirlas con una subvención\\ \phantom{$\bullet$} pagada con impuestos de suma fija (\textsc{Hotelling})};}
+  \capa{4}{\draw[rama,decorate,decoration={brace,mirror,amplitude=4pt}] ([xshift=-3pt]P11.north west) -- ([xshift=-3pt]P11.south west);}
+  % 5: ¿segundo óptimo?
+  \capa{5}{\node[pregunta] (P2) at (2.6,-8.9) {¿Segundo óptimo?\\ $p=\mathrm{CMe}\Rightarrow\pi=0$};}
+  \capa{5}{\draw[rama] (P10.south) -- (P2.north);}
+  \capa{5}{\node[sino] (P21) at (1.7,-10.2) {Sí};}
+  \capa{5}{\node[sino] (P20) at (3.5,-10.2) {No};}
+  \capa{5}{\draw[rama] (P2.south) -- ++(0,-0.35) coordinate (b3) -| (P21.north);}
+  \capa{5}{\draw[rama] (b3) -| (P20.north);}
+  \capa{5}{\node[trazos,anchor=east] (C2) at ([xshift=-0.5cm]P21.west) {Si hay pérdidas y no se pueden cubrir con impuestos de suma fija\\ (los que hay distorsionan y son impopulares):\\ $p=\mathrm{CMe}$, tarifa en dos partes, punta y valle, \textsc{Ramsey}-\textsc{Boiteux}};}
+  \capa{5}{\draw[rama,decorate,decoration={brace,mirror,amplitude=4pt}] ([xshift=-3pt]P21.north west) -- ([xshift=-3pt]P21.south west);}
+  % 6: tercer óptimo (bloque II)
+  \capa{6}{\node[caja,draw=tceerojo,fill=tceerojo!8] (P3) at (3.5,-11.8) {Tercer óptimo (el regulador no conoce los costes):\\ tasa de rentabilidad, \emph{price cap}, menú de \textsc{Laffont}-\textsc{Tirole},\\ competencia por comparación};}
+  \capa{6}{\draw[rama,tceerojo] (P20.south) -- (P3.north);}
 \end{tikzpicture}
 \end{document}

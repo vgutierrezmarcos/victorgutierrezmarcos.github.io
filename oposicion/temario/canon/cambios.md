@@ -315,3 +315,5 @@ Autor: Víctor Gutiérrez Marcos
 - A24-01…05 y A20-01, 03, 04, 05: opción recomendada (orden del original en el 3.A.24; x, y, z, IG y T; anexo E; refranes; fichas `mercado-relevante`, `competencia-por-mercado` y `precio-acceso` creadas; Baron-Myerson dentro de `laffont-tirole`; DORA como *price cap*). A24-05 con nota: se mantienen las fuentes del original y se buscan a fondo (restauradas en el 3.A.24).
 - A20-02, opción c: reparto del 3.A.20 en 8′ / 11′ / 7′30″.
 - Pendiente nuevo: capítulo de Gravelle y Rees en el 3.A.22.
+- 3.A.20: aparece el Word de Víctor (su antiguo 3.A.25, «Teoría de la regulación. Implicación sobre la liberalización de los sectores») y se integra en la estructura ya revisada (decisión de Víctor, 23/10/2026); `mapa.yaml` pasa a `fuente_disponible: otro-titulo`. Gráficos nuevos en `fuentes/3A20/graficos`: `algoritmo-regulacion` (el de Víctor), `separacion-vertical`, `ciclo-politico`.
+- `latex/tcee.csl`: «§» en los localizadores sale «§» (no «párr.») en HTML y Word; reconstruidos los temas revisados.
