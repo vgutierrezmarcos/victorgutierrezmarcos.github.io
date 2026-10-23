@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../../data/models/plan.dart';
+import '../../core/cronograma_providers.dart';
+import '../../data/models/temas_clase.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
@@ -43,6 +46,20 @@ class InicioPage extends ConsumerWidget {
     final prob = ref.watch(probabilidadAprobarProvider);
     final versionNueva = ref.watch(actualizacionProvider).valueOrNull;
     final canceladas = ref.watch(canceladasProximasProvider);
+    // Clases con preparador de los próximos 14 días sin temas (ni elegidos ni
+    // de una semana del cronograma) o con una propuesta del preparador sin
+    // responder: el opositor tiene que decir qué lleva.
+    final ajustesTemas = ref.watch(ajustesProvider);
+    final cronogramaTemas = ref.watch(cronogramaProvider);
+    final ahoraTemas = DateTime.now();
+    final clasesPorTemas = [
+      for (final c in ref.watch(cantesProvider))
+        if (c.dePreparador && c.pendiente && !c.cancelado && c.bolsa == TipoBolsa.estudiados && !Oposiciones.actual.esDictamen(c.ejercicio) &&
+            c.fecha.isAfter(ahoraTemas) && c.fecha.isBefore(ahoraTemas.add(const Duration(days: 14))) &&
+            (temasDeLaClase(c, elegidos: ajustesTemas.temasClases, cronograma: cronogramaTemas, noCantar: ajustesTemas.noCantar).pendiente ||
+                propuestaPendiente(c, ajustesTemas.temasClases)))
+          c,
+    ];
     // Con la app instalada desde Google Play, la actualización se ofrece dentro de la app.
     ref.listen(actualizacionProvider, (_, v) {
       if (v.valueOrNull != null) comprobarActualizacionDePlay(context);
@@ -95,6 +112,19 @@ class InicioPage extends ConsumerWidget {
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id))),
                   titulo: '${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} ha cancelado la clase del ${fechaCorta(c.fecha)}',
                   texto: '${horaDe(c.fecha)}${c.motivo.isEmpty ? '' : ' · ${c.motivo}'}. Toca para verla o pedírsela a ${ref.watch(misPreparadoresProvider).length > 1 ? 'tu otro preparador' : 'otro preparador'}.',
+                ),
+            if (opositor)
+              for (final c in clasesPorTemas)
+                Aviso(
+                  tipo: TipoAviso.aviso,
+                  icono: Icons.playlist_add,
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id))),
+                  titulo: propuestaPendiente(c, ajustesTemas.temasClases)
+                      ? '${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} te propone temas para la clase del ${fechaCorta(c.fecha)}'
+                      : 'Indica qué temas llevas a la clase del ${fechaCorta(c.fecha)}',
+                  texto: propuestaPendiente(c, ajustesTemas.temasClases)
+                      ? 'Toca para aceptarlos o elegir otros.'
+                      : 'No hay ninguna semana de tu cronograma para ese día. Toca para elegirlos; tu preparador verá los mismos.',
                 ),
             if (versionNueva != null)
               Aviso(
