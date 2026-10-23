@@ -1,0 +1,296 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Economía del bienestar (III)]{3.A.24}{Economía del bienestar (III). Las funciones de bienestar social. Teoría de la elección colectiva. El teorema de imposibilidad de Arrow y desarrollos posteriores.}
+\tcefecha{23/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «nunca llueve a gusto de todos»}{2,5}
+\apartadocante{I. Elección colectiva y teorema de \autor{Arrow}}{8,5}
+\subcante{1. Contexto: \autor{Pareto} incompleto (compensación, FBS)}{1,5}
+\subcante{2. Teorema (1951): $R_G=f(R_1,\dots,R_I)$; U, T, P, I, D}{6}
+\subcante{3. Valoración y escapatorias}{1}
+\apartadocante{II. 1.ª escapatoria: las FBS}{9}
+\subcante{1. Rechazo de la metodología}{1}
+\subcante{2. FBS de \autor{Bergson}-\autor{Samuelson}}{3}
+\subcante{3. Valores éticos: \autor{Harsanyi}, \autor{Rawls}, $\epsilon$}{2}
+\subcante{4. \autor{Lorenz}, \autor{Gini}, \autor{Atkinson}; juegos; \autor{Sen}}{2,5}
+\subcante{5. Valoración}{0,5}
+\apartadocante{III. 2.ª escapatoria: levantar axiomas}{9}
+\subcante{1. Aceptar la metodología: \autor{May}}{0,75}
+\subcante{2. Renuncia a U, IAI, T/P/D; otras reglas}{6,75}
+\subcante{3. Información: \autor{Gibbard}-\autor{Satterthwaite}}{1,5}
+\apartadocante{Conclusión}{1}}
+\emph{Hilo}: 3 vecinos votan cuánto gastar en el portal: poco ($x$), algo ($y$), mucho ($z$) (\hyperref[rep:I]{I}, \hyperref[rep:III]{III}); $A$ y $B$ en la GFPU (\hyperref[rep:II]{II}). \emph{Pizarra}: izquierda, U, T, P, I, D con su salida; centro, gráficos; derecha, $R_G=f(\cdot)$, $W(\cdot)$ e isoelástica.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{Nunca llueve a gusto de todos}»: ¿puede una sociedad decidir con coherencia si cada uno quiere una cosa? Dic. 2023: un solo Estado bloquea en el Consejo Europeo la revisión del MFP (50.000 M€ para Ucrania; exige unanimidad); acuerdo de los 27 el 1/2/2024. Con unanimidad, cualquiera bloquea; con mayoría, la minoría pierde y la mayoría puede no saber qué quiere.
+\item \textbf{Relevancia}: \emph{teórica}: \concepto{economía del bienestar} = parte normativa de la micro; 2 funciones (\autor{Koutsoyiannis}): juzgar qué situaciones son mejores y dar normas de política; las 2 exigen \emph{agregar}. \emph{De política}: toda política mejora a unos y empeora a otros; \autor{Atkinson}: devolver el bienestar a la agenda tras su «extraña desaparición». Nobel: \autor{Arrow} (1972), \autor{Buchanan} (1986), \autor{Sen} (1998), \autor{Hurwicz}-\autor{Maskin}-\autor{Myerson} (2007).
+\item \textbf{Contextualización}: \autor{Bentham} (1789): suma de utilidades $\to$ marginalistas (redistribuir ↑ utilidad: \autor{Edgeworth}, \autor{Pigou}) $\to$ \autor{Pareto} (1906), ordinal; \autor{Robbins} (1932): comparar = juicio de valor $\to$ compensación (\autor{Kaldor}, \autor{Hicks}, 1939) y FBS (\autor{Bergson}, 1938; \autor{Samuelson}, 1947) $\to$ \autor{Arrow} (1951) recupera \autor{Borda} y \autor{Condorcet}: \concepto{teoría de la elección colectiva} $\to$ \autor{Black}, \autor{May}, \autor{Buchanan}-\autor{Tullock}, \autor{Sen}, \autor{Gibbard}-\autor{Satterthwaite}. Cierra el bloque \vertema{3.A.22}, \vertema{3.A.23}.
+\item \textbf{Problemática}: ¿cómo elegir entre los infinitos óptimos de \autor{Pareto}? ¿Qué juicios de valor y cómo medir la desigualdad? ¿Hay una regla que agregue preferencias en una ordenación social razonable? Si no, ¿a qué condición renunciar y con qué coste? ¿Y si cada uno puede mentir?
+\item \textbf{Estructura}: eje = teorema de \autor{Arrow}. \hyperref[rep:I]{I}, de la incompletitud de \autor{Pareto} al teorema; \hyperref[rep:II]{II}, 1.ª escapatoria: rechazar la metodología (FBS, sus formas y la desigualdad); \hyperref[rep:III]{III}, 2.ª: aceptarla y renunciar a un axioma (votación, costes, información). Decir por qué la FBS (anterior) va después: tras 1951 es una salida y sus desarrollos son posteriores.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8,5]{I. Elección colectiva y teorema de \autor{Arrow}\label{rep:I}}
+\begin{ideaclave}
+Con $\geq3$ alternativas, ninguna regla que use solo ordenaciones individuales cumple a la vez 5 condiciones mínimas de racionalidad y democracia: toda regla razonable sacrifica alguna.
+\end{ideaclave}
+
+\sub{I.1. Contexto: incompletitud del criterio de \autor{Pareto}\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Óptimo de \autor{Pareto}}: no se puede mejorar a nadie sin empeorar a otro; 4 juicios de valor; ordinal \vertema{3.A.22}. 2×2×2×2: $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}$, $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\mathrm{RMT}_{XY}$ $\Rightarrow$ \concepto{GFPU}.
+\item 1TFEB: EC = óptimo; 2TFEB: cualquier óptimo es un EC (convexidad, suma fija). Pero el criterio es \emph{incompleto}: no ordena los puntos de la GFPU (necesario, no suficiente); 2TFEB: ¿cuál elegir?
+\item \emph{Neoparetiana} (LSE): \concepto{compensación} (\autor{Kaldor}, \autor{Hicks}, 1939): los ganadores \emph{podrían} compensar; comparación implícita, contradicciones (\autor{Scitovsky}, 1941). \emph{Neoutilitarista} (Harvard): FBS con juicios explícitos.
+\item \autor{Arrow} cambia la pregunta: ¿puede $W$ salir de las preferencias de los individuos?
+\end{itemize}
+\graficorepaso[0.82\linewidth]{gfpu}{GFPU: envolvente de las FPU de cada punto de la FPP; \autor{Pareto} no ordena sus puntos}
+
+\sub{I.2. Teorema de imposibilidad de \autor{Arrow} (1951)\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Social Choice and Individual Values} (1951): qué condiciones debe cumplir cualquier procedimiento y si existe alguno. Solo \emph{ordenaciones} (como pedía \autor{Robbins}); \emph{axiomático} (como \autor{Debreu}, 1959).
+\item \emph{Supuestos}: $I$ finito; $\geq3$ alternativas $x,y,z$. \emph{Inputs}: ordenaciones $R_i$ ($\succsim_i$ completa, reflexiva, transitiva \vertema{3.A.8}); \emph{perfil} = lista de las $I$. \emph{Output}: \concepto{regla de agregación} (\autor{Arrow}: \emph{social welfare function}):
+\funcionclave{R_G=f(R_1,R_2,\dots,R_I)}
+\item \textbf{5 condiciones} (con los vecinos):
+\begin{itemize}
+\item \textbf{(U) Dominio universal}: definida para cualquier perfil (vale tanto si el vecino 3 prefiere los extremos como si no).
+\item \textbf{(T) Transitividad}: $R_G$ completa y transitiva: $x\succsim_Gy$, $y\succsim_Gz\Rightarrow x\succsim_Gz$.
+\item \textbf{(P) \autor{Pareto} débil}: $x\succ_iy\ \forall i\Rightarrow x\succ_Gy$ (eficiencia). El fuerte es más exigente; con el débil el teorema es más fuerte.
+\item \textbf{(\textup{I}) IAI}: la ordenación \emph{social} de $x$ e $y$ depende solo de cómo ordena cada uno $x$ e $y$ (entre poco y algo, no importa dónde pone cada vecino «mucho»): impide usar la distancia entre $x$ e $y$.
+\item \textbf{(D) No dictadura}: no hay $d$ con $x\succ_dy\Rightarrow x\succ_Gy$ para todo perfil y todo par (el presidente no impone siempre su orden).
+\end{itemize}
+\item \concepto{Teorema de imposibilidad}: con $\geq3$ alternativas e $I$ finito, ninguna regla cumple U, T, P, I y D. Al revés: U, T, P e I $\Rightarrow$ dictadura. (1.ª ed. con un error, \autor{Blau}, 1957; 2.ª ed., 1963: 4 condiciones, T dentro de la definición.)
+\item \emph{Idea de la prueba} (\autor{Geanakoplos}, 2005), 3 pasos:
+\begin{enumerate}
+\item \emph{Extremos}: si todos ponen $y$ en un extremo, la sociedad también (si no, IAI y T chocan con P).
+\item \emph{Votante pivote}: de $y$ la última para todos (P: última social) se sube al primer puesto individuo a individuo; por 1, salta de golpe de última a primera social: quien la sube entonces, $n$, es \emph{pivote}.
+\item \emph{El pivote es dictador}: con la IAI, perfiles en los que el orden social de cualquier par depende solo de $n$. Contradice D.
+\end{enumerate}
+\item «\emph{Donde hay patrón no manda marinero}»: con U, T, P e I siempre hay un patrón (un vecino pivote con la última palabra).
+\item \emph{Implicaciones}: mayoría por parejas incumple T (\autor{Condorcet}); \autor{Borda}, la IAI; unanimidad, no ordena muchos pares; dictadura, D. Razón última: \emph{pérdida de información} ($I$ ordenaciones $\to$ 1, sin comparar ganancias y pérdidas; la IAI impide sacarla de otras alternativas). Toda regla tiene un defecto: hay que decir cuál.
+\end{itemize}
+
+\sub{I.3. Valoración y escapatorias\label{rep:I.3}}
+\begin{itemize}
+\item \concepto{Aportación constructiva}: abre una línea de análisis. 2 direcciones: \emph{rechazar} la metodología (FBS con juicios de valor y comparaciones, \hyperref[rep:II]{II}) o \emph{aceptarla} y renunciar a un axioma (\hyperref[rep:III]{III}).
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.62\linewidth}>{\centering\arraybackslash}p{0.09\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Axioma} & \textbf{Si se renuncia a él} & \textbf{Dónde}\\
+\midrule
+\textbf{(U) Dominio} & unimodales: mayoría transitiva, votante mediano (\autor{Black}) & \hyperref[rep:III.2]{III.2}\\
+\textbf{(T) Transitividad} & cuasitransitividad: oligarquía con veto (\autor{Sen}; \autor{Gibbard}) & \hyperref[rep:III.2]{III.2}\\
+\textbf{(P) \autor{Pareto}} & nula, dictatorial o dictatorial inversa (\autor{Wilson}); choca con la libertad (\autor{Sen}) & \hyperref[rep:III.2]{III.2}\\
+\textbf{(\textup{I}) IAI} & cuenta la intensidad: \autor{Borda}, intercambio de votos; manipulables & \hyperref[rep:III.2]{III.2}\\
+\textbf{(D) No dictadura} & la dictadura cumple todo lo demás & \hyperref[rep:III.2]{III.2}\\
+\textbf{Base informativa} & FBS con comparaciones (\autor{Bergson}, \autor{Samuelson}, \autor{Sen}) & \hyperref[rep:II]{II}\\
+\textbf{Prefer. conocidas} & si son privadas, toda regla razonable es manipulable (\autor{Gibbard}-\autor{Satterthwaite}) & \hyperref[rep:III.3]{III.3}\\
+\bottomrule
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque[9]{II. 1.ª escapatoria: las funciones de bienestar social\label{rep:II}}
+\begin{ideaclave}
+La FBS completa el criterio de \autor{Pareto} solo a cambio de juicios de valor explícitos y comparaciones interpersonales; cada forma es una idea de la justicia, y cada una lleva a una medida de la desigualdad.
+\end{ideaclave}
+
+\sub{II.1. Rechazo de la metodología de \autor{Arrow}\label{rep:II.1}}
+\begin{itemize}
+\item \autor{Little} (1952), \autor{Bergson} (1954): juicios éticos, no un procedimiento para votar. \autor{Little}: la regla decide, no juzga. \autor{Bergson}: aconsejar a un individuo $\neq$ decir a un funcionario qué hacer. Fase \emph{deliberativa} (FBS) y \emph{decisiva} (\autor{Arrow}); \autor{Arrow}: esa es la pregunta central.
+\item \autor{Samuelson} (1977): un solo perfil, no la afecta; \autor{Kemp}-\autor{Ng}, \autor{Parks} (1976): imposibilidad también con uno. Salida: comparaciones.
+\end{itemize}
+
+\sub{II.2. La FBS de \autor{Bergson} y \autor{Samuelson}\label{rep:II.2}}
+\begin{itemize}
+\item \autor{Bergson} (1938), \autor{Samuelson} (1947): el bienestar de una sociedad es función de las utilidades de sus miembros:
+\funcionclave{W=W(U_1,\dots,U_I),\quad U_i=U_i(\vect{x}_i),\quad \frac{\partial W}{\partial U_i}>0}
+\item[] $\partial W/\partial U_i$ = \concepto{utilidad marginal social} de $i$. \emph{Inputs}: utilidades; \emph{output}: índice que ordena todos los estados.
+\item \emph{Propiedades}: \emph{individualismo} (bienestarismo, no paternalismo); \emph{coherencia con \autor{Pareto}} (monotonía); \emph{anonimato} (simetría); \emph{cuasiconcavidad} (aversión a la desigualdad: CIS convexas); \emph{comparabilidad}. Las 2 primeras, de \autor{Samuelson}; las otras, juicios sobre el reparto. «\emph{Cada cabeza es un mundo}».
+\item \emph{Medir $\neq$ comparar}: la FBS \emph{no} exige cardinalidad, sino \emph{comparabilidad}. Cada combinación es una \concepto{base informativa} (\autor{Sen}, 1970): ordinal o cardinal no comparable: imposibilidad; niveles: \emph{leximin} (\autor{Hammond}, 1976); unidades: utilitarismo (\autor{d'Aspremont}-\autor{Gevers}, 1977); escala de razón: isoelástica.
+\item \concepto{CIS}: curvas de nivel de $W$ en $(U_A,U_B)$; decrecientes, no se cortan; convexas solo si hay aversión a la desigualdad. Pendiente:
+\begin{formula}
+\centering $-\left.\dfrac{dU_B}{dU_A}\right|_{\overline{W}}=\dfrac{\partial W/\partial U_A}{\partial W/\partial U_B}$
+\end{formula}
+\item \emph{Planificador}: $\max W(U_A,U_B)$ s.a. $(U_A,U_B)\in$ GFPU $\Rightarrow$ cumple \autor{Pareto} y pendiente CIS = pendiente GFPU. \concepto{Punto de felicidad} (\emph{bliss point}, \emph{optimum optimorum}): máximo \emph{global} (la GFPU puede tener tramos convexos). Ej.: $c=(5{,}39;\,4{,}89)$ en $W_3$; $d=(7{,}60;\,1{,}62)$ en $W_1$.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{fbs-gfpu-tradeoff}{FBS sobre la GFPU: punto de felicidad $c$; con impuestos distorsionantes, $d\to b\to e$}
+\begin{itemize}
+\item \emph{\autor{Pareto} necesario, no suficiente}: $a=(3{,}4;\,5{,}29)$, ineficiente en $W_2$, mejor que $d$ (eficiente, en $W_1$); $b$ en la misma $W_2$. Aun así, todo punto ineficiente es mejorable en la GFPU.
+\item \emph{Tecnocrática}: el EGC coincide con $c$ solo por casualidad; 2TFEB: suma fija + mercado $\Rightarrow$ $c$.
+\item \emph{Disyuntiva equidad-eficiencia}: no hay suma fija \vertema{3.A.22}; de $d$, los impuestos distorsionantes llevan a $b$ (ineficiente, mejor que $d$); si sigue, $e\approx(3{,}45;\,3{,}45)$ en la bisectriz pero peor que $d$ ($3{,}45^2\approx11{,}9<12{,}27$). Imposición óptima \vertema{4.B.11}.
+\item \emph{Valoración}: resuelve la incompletitud; instrumento de la economía pública. Pero exige comparaciones (\autor{Samuelson}) y su forma es un juicio de valor (\autor{Bergson} no propone ninguna).
+\end{itemize}
+
+\sub{II.3. Valores éticos: la forma funcional\label{rep:II.3}}
+\begin{itemize}
+\item \textbf{Utilitarismo} (\autor{Bentham}; \autor{Harsanyi}): preferencias personales (vNM \vertema{3.A.10}) y morales (su FBS); elige sin saber qué lugar ocupará, prob. $1/I$ de ser cada uno (\autor{Harsanyi}, 1953) $\Rightarrow$ $\max\sum_i\frac1IU_i$. \emph{Teorema de agregación} (1955): sociedad e individuos vNM + indiferencia social si lo son todos $\Rightarrow$ suma ponderada; con anonimato, $W=\sum_iU_i$. CIS \emph{rectas de pendiente $-1$}. Neutral a la \emph{utilidad}, no a la renta: con igual $U$ cóncava, $U'(y_i)=U'(y_j)$ $\Rightarrow$ rentas iguales (\autor{Edgeworth}). Sacrifica minorías; \emph{conclusión repugnante} (\autor{Parfit}, 1984).
+\item \textbf{\autor{Rawls}} (1971, contractualismo): \emph{posición original} tras el \concepto{velo de la ignorancia}; decisión grave, irreversible, sin probabilidades $\Rightarrow$ \emph{maximin} (aversión infinita a la incertidumbre): $W=\min\{U_1,\dots,U_I\}$. CIS \emph{en L}, vértices en la bisectriz. \emph{Leximin}: si empatan, el 2.º peor; cumple \autor{Pareto} fuerte. \emph{Críticas}: \autor{Harsanyi} (1975), regla extrema; \autor{Nozick} (1974), justicia histórica (títulos).
+\item \textbf{Familia isoelástica} (\autor{Atkinson}, 1970), aversión a la desigualdad $\epsilon\geq0$; utilidades positivas, escala de razón, anonimato:
+\funcionclave{W=\sum_{i=1}^{I}\frac{U_i^{1-\epsilon}}{1-\epsilon}\ (\epsilon\neq1),\qquad W=\sum_{i=1}^{I}\ln U_i\ (\epsilon=1)}
+\item[] Pendiente de las CIS $-(U_B/U_A)^{\epsilon}$ ($-1$ en la bisectriz). $\epsilon=0$: utilitarista; $\epsilon=1$: \autor{Bernoulli}-\autor{Nash} (producto); $\epsilon\to\infty$: rawlsiana. Discutir la justicia = discutir $\epsilon$.
+\end{itemize}
+\graficorepaso[0.98\linewidth]{cis-formas}{CIS: utilitarista ($\epsilon=0$, rectas), intermedia ($\epsilon=1$) y rawlsiana ($\epsilon\to\infty$, en L)}
+
+\sub{II.4. Criterios equitativos y de justicia\label{rep:II.4}}
+\begin{itemize}
+\item ¿Cómo medir la desigualdad? (\autor{Atkinson}); ¿importa el reparto? (experimentos); ¿bastan las utilidades? (\autor{Sen}). \autor{Atkinson} (1970): todo índice de desigualdad lleva dentro una FBS.
+\item \concepto{Curva de \autor{Lorenz}} $L(s)$: parte de la renta de la fracción $s$ más pobre; igualdad = diagonal.
+\item \concepto{Índice de \autor{Gini}}: doble del área entre diagonal y curva:
+\begin{formula}
+\centering $\mathrm{IG}=1-2\displaystyle\int_0^1L(s)\,ds,\qquad 0\leq\mathrm{IG}\leq1$
+\end{formula}
+\item \emph{Dominancia de \autor{Lorenz}} (\autor{Atkinson}, 1970): misma media y $L_{\vect{y}}(s)\geq L_{\vect{y}'}(s)\ \forall s$ $\Rightarrow$ \emph{toda} FBS utilitarista con $U$ creciente y cóncava prefiere $\vect{y}$; medias distintas: \autor{Lorenz} generalizada $\overline{y}L(s)$ (\autor{Shorrocks}, 1983). Si se cortan, hay que elegir FBS.
+\end{itemize}
+\graficorepaso[0.4\linewidth]{lorenz}{Curva de \autor{Lorenz}: área sombreada = IG/2; $L_{\vect{y}}$ domina a $L_{\vect{y}'}$}
+\begin{itemize}
+\item \concepto{Índice de \autor{Atkinson}}, con $y_{EDE}$ = \emph{renta equivalente igualmente distribuida} (igual para todos, mismo bienestar):
+\funcionclave{A_\epsilon=1-\frac{y_{EDE}}{\overline{y}},\quad y_{EDE}=\Big[\frac1I\sum_{i=1}^{I}y_i^{1-\epsilon}\Big]^{\frac{1}{1-\epsilon}}}
+\item[] $\epsilon=1$: media geométrica. $A_\epsilon$ = parte de la renta que se sacrificaría por repartir el resto por igual; ↑$\epsilon$ $\Rightarrow$ pesa más la cola baja. Ej. 10 y 30 € ($\overline{y}=20$): $A_0=0$; $A_1\approx0{,}13$ ($\sqrt{300}\approx17{,}3$); $A_2=0{,}25$ ($y_{EDE}=15$); $A_\infty=0{,}5$. \emph{Normativo} (cada $\epsilon$ es una FBS), a diferencia del \autor{Gini}; pero $\epsilon$ no sale de los datos.
+\item \textbf{Experimentos}. \emph{Ultimátum} (\autor{Güth} et al., 1982): ENPS = ofrecer lo mínimo \vertema{3.A.14}; laboratorio: oferta media 40\,\%, rechazo 16\,\%. \emph{Dictador} (\autor{Forsythe} et al., 1994): sin rechazo, 28\,\% de media, $>$1/3 no da nada, 1 de cada 6 a medias (\autor{Engel}, 2011). Importa el reparto, pero menos (miedo al rechazo) $\Rightarrow$ FBS no neutral.
+\item \textbf{\autor{Sen}}: FBS \concepto{bienestarista}: la utilidad mide mal (adaptación a la privación). \concepto{Capacidades}: libertad real para lograr \emph{funcionamientos} (1985); IDH (1990).
+\end{itemize}
+
+\sub{II.5. Valoración de las FBS\label{rep:II.5}}
+\begin{itemize}
+\item \emph{Ventajas}: resuelven la incompletitud; imposición óptima \vertema{4.B.11}, redistribución \vertema{4.B.3}, evaluación de proyectos \vertema{4.B.6}. \emph{Inconvenientes}: comparaciones que los ordinalistas rechazan; forma = juicio de valor; ¿de quién son los juicios? Si son de la sociedad, volvemos a \autor{Arrow}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{III. 2.ª escapatoria: levantamiento de los axiomas\label{rep:III}}
+\begin{ideaclave}
+Cada renuncia tiene un coste: restringir las preferencias salva a la mayoría, pero no recoge la intensidad; recogerla invita a mentir; debilitar la transitividad crea grupos con veto, y con preferencias privadas toda regla razonable es manipulable.
+\end{ideaclave}
+
+\sub{III.1. Aceptación de la metodología: \autor{May}\label{rep:III.1}}
+\begin{itemize}
+\item Se acepta el marco (ordinal, sin comparaciones); se decide votando: una regla de votación es una regla de agregación. \autor{Inman}: sin P, ineficiencia asignativa; sin U, IAI o T, en la decisión; sin D, dictadura. Lo razonable: renunciar a U o IAI.
+\item \concepto{Teorema de \autor{May}} (1952): con 2 alternativas, una regla es la mayoría simple \emph{si y solo si} cumple: \emph{decisión universal}, \emph{anonimato}, \emph{neutralidad} y \emph{respuesta positiva}. Resultado de \emph{posibilidad}; con $\geq3$, la mayoría tropieza con \autor{Arrow}.
+\end{itemize}
+
+\sub{III.2. Levantamiento de los axiomas\label{rep:III.2}}
+\begin{itemize}
+\item \textbf{Renuncia a U.} \concepto{Paradoja de \autor{Condorcet}} (1785): votando por parejas, individuos transitivos, mayoría intransitiva. Vecinos (1: $x\succ y\succ z$; 2: $y\succ z\succ x$; 3: $z\succ x\succ y$): $x$ gana a $y$ (1 y 3), $y$ a $z$ (1 y 2), $z$ a $x$ (2 y 3) $\Rightarrow$ $x\succ_Gy\succ_Gz\succ_Gx$: no hay \concepto{ganador de \autor{Condorcet}}.
+\item[] \emph{Agenda}: por eliminación gana la que entra en la última votación: quien fija el orden fija el resultado. \emph{Causa}: el vecino 3 prefiere los extremos: 2 picos (\concepto{multimodales}). 3 salidas: mismas preferencias (no haría falta votar), fijar el orden, restringir a \concepto{unimodales} (\autor{Black}).
+\end{itemize}
+\graficorepaso[0.9\linewidth]{condorcet}{Multimodales (\autor{Condorcet}, izq.) y unimodales (vecino 3: $z\succ y\succ x$; pico del mediano, dcha.)}
+\begin{itemize}
+\item \concepto{Unimodales}: alternativas en una línea; cada uno, una favorita y prefiere menos cuanto más se aleja. \emph{Supuestos}: 1 dimensión, unimodales, nº impar, por parejas con mayoría simple, voto sincero.
+\item \concepto{Teorema del votante mediano} (\autor{Black}, 1948, 1958): la favorita del mediano gana a cualquier otra: es el ganador de \autor{Condorcet} y la mayoría es transitiva. Vecinos: picos $x$, $y$, $z$; mediano el 2; $y$ gana a $x$ (2 y 3) y a $z$ (1 y 2). T, P, IAI y D a costa de U.
+\item \emph{Extensiones}: \autor{Hotelling}-\autor{Downs} (1957): 2 partidos convergen al mediano \vertema{3.A.18}; varias dimensiones: la agenda lleva a casi cualquier sitio (\autor{McKelvey}, 1976).
+\item \emph{¿Restrictivo?} Poco si se vota una cantidad; mucho si es cualitativa o con varias dimensiones. \emph{¿Eficiente?} Con cuotas iguales, $\mathrm{RMS}^i_{GX}=\mathrm{RMT}_{GX}/I$; gana $G^m$; eficiencia = \autor{Samuelson} \vertema{3.A.23} (\autor{Bowen}, 1943):
+\begin{formula}
+\centering $G^m=G^*\iff\mathrm{RMS}^m_{GX}(G^*)=\dfrac1I\displaystyle\sum_{i=1}^{I}\mathrm{RMS}^i_{GX}(G^*)$
+\end{formula}
+\item[] Vecino del bajo que valora mucho el portal: media $>$ mediana $\Rightarrow$ se gasta de menos. Causa: la mayoría cuenta cabezas, no intensidades.
+\item \textbf{Renuncia a la IAI} (que cuente la intensidad). \concepto{Recuento de \autor{Borda}} (1781): $m$ puntos a la favorita, \dots, 1 a la última; ordinal (posicional), no cardinal. Cumple U, T, P, D; incumple IAI. 5 vecinos: 3 con $x\succ y\succ z$, 2 con $y\succ z\succ x$:
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}m{0.5\linewidth}>{\centering\arraybackslash}m{0.08\linewidth}>{\centering\arraybackslash}m{0.08\linewidth}>{\centering\arraybackslash}m{0.08\linewidth}>{\centering\arraybackslash}m{0.14\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Caso} & $x$ & $y$ & $z$ & \textbf{Gana}\\
+\midrule
+Preferencias verdaderas & 11 & 12 & 7 & $y$\\
+Sin $z$ (2 y 1 puntos) & 8 & 7 & --- & $x$\\
+Los 3 de $x$ declaran $x\succ z\succ y$ & 11 & 9 & 10 & $x$\\
+Mayoría por parejas & \multicolumn{3}{c}{$x$ gana 3 a 2} & $x$\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item[] $x$ es ganador de \autor{Condorcet} y \autor{Borda} no lo elige; retirar $z$ cambia $x$ vs $y$ (viola IAI); \emph{enterrar} a la rival lo manipula. «\emph{Cada maestrillo tiene su librillo}»: el ganador depende de la regla. También 2.ª vuelta y \autor{D'Hondt} (voto útil).
+\item \concepto{Intercambio de votos} (\emph{logrolling}, \autor{Tullock}, 1959): «yo voto tu carretera y tú mi polideportivo». Ascensor (vecino 1) y rampa (vecino 2), coste 6 cada una (2 por vecino): si valen 7, saldo $(+5,-2,-2)$, suma $+1$, pierde 2 a 1; con intercambio se aprueban, bien. Si valen 5: $(+3,-2,-2)$, suma $-1$; se aprueban igual: el 3 paga 4 y la comunidad pierde 2. Sobreprovisión; exige pocos votantes y un paquete.
+\item \textbf{Renuncia a T.} \concepto{Cuasitransitividad} (\autor{Sen}, 1969): solo la preferencia estricta transitiva; cabe U, P, IAI y D (extensión de \autor{Pareto}). Pero con U, P e IAI $\Rightarrow$ \concepto{oligarquía} con veto (\autor{Gibbard}, 1969, publ. 2014; \autor{Mas-Colell}-\autor{Sonnenschein}, 1972). Aciclicidad: sigue el veto (\autor{Brown}, 1975).
+\item \textbf{Sin P}: con U, IAI y no imposición, regla nula, dictatorial o dictatorial inversa (\autor{Wilson}, 1972). \textbf{Sin D}: renunciar a la democracia.
+\item \concepto{Liberal paretiano} (\autor{Sen}, 1970): U + \autor{Pareto} débil + liberalismo mínimo (2 decisivos en su esfera) $\Rightarrow$ ciclos. Libro escandaloso: lo lee el puritano ($x$), el lascivo ($y$) o nadie ($z$). Puritano $z\succ x\succ y$; lascivo $x\succ y\succ z$:
+\begin{formula}
+\centering $z\succ_Gx$ (puritano), $y\succ_Gz$ (lascivo), $x\succ_Gy$ (P) $\Rightarrow$ ciclo
+\end{formula}
+\item[] \autor{Pareto} respeta preferencias \emph{entrometidas}. Salidas: restringir el dominio, respetar solo las de la propia vida, derechos \emph{alienables} (\autor{Gibbard}, 1974).
+\item \textbf{Otras reglas.} \concepto{Unanimidad} (\autor{Wicksell}, 1896): solo mejoras de \autor{Pareto}; base de \autor{Lindahl} \vertema{3.A.23}. Pero cara, veto, \emph{statu quo} (enganche).
+\item \concepto{Mayoría óptima} (\autor{Buchanan}-\autor{Tullock}, 1962, \emph{The Calculus of Consent}; Nobel 1986): decisión \emph{constitucional}, sin saber si estará en la mayoría. \concepto{Costes externos} $\mathrm{CE}(M)$: \emph{bajan} con $M$, nulos con unanimidad; \concepto{costes de decisión} $\mathrm{CD}(M)$: \emph{suben}:
+\begin{formula}
+\centering $M^*=\arg\min_M\big[\mathrm{CE}(M)+\mathrm{CD}(M)\big]$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.52\linewidth]{buchanan-tullock}{\autor{Buchanan}-\autor{Tullock}: $M^*$ en el mínimo de la suma, no en el corte de las 2 curvas}
+\begin{itemize}
+\item[] Más alta cuanto más graves e irreversibles las decisiones. CE: mayoría simple (leyes ordinarias), absoluta del Congreso (orgánicas, art.~81), 3/5 (reforma ordinaria, art.~167), 2/3 + disolución + referéndum (agravada, art.~168). UE: mayoría cualificada; unanimidad en fiscalidad, exterior y MFP. \emph{Límites}: costes conocidos ex ante; olvida quién decide (elección pública \vertema{4.B.2}).
+\end{itemize}
+
+\sub{III.3. Problemas de información\label{rep:III.3}}
+\begin{itemize}
+\item 2 problemas: \emph{sobre el bienestar} (con comparaciones desaparece la imposibilidad: \emph{leximin}, utilitarismo $\to$ \hyperref[rep:II]{II}) y \emph{sobre las preferencias} (se declaran y se puede mentir).
+\item \concepto{Función de elección social}: a cada perfil declarado, \emph{una} alternativa. \emph{No manipulable}: decir la verdad es dominante para todos.
+\item \concepto{Teorema de \autor{Gibbard}-\autor{Satterthwaite}} (1973, 1975): dominio universal y $\geq3$ alternativas elegibles (sobreyectiva) $\Rightarrow$ toda función no manipulable es dictatorial. O dictadura, o alternativas que nunca ganan, o manipulable. No pide IAI ni T (elige, no ordena); análogo de \autor{Arrow} para incentivos; misma idea del pivote (\autor{Reny}, 2001).
+\item \emph{Salidas}: restringir el dominio: unimodales $\Rightarrow$ mediana de los picos no manipulable (\autor{Moulin}, 1980; al vecino 3 no le sirve mentir); cuasilineal + pagos: \autor{Clarke}-\autor{Groves} (verdad dominante; cada uno paga el daño que causa) \vertema{3.A.23}, \vertema{3.A.14}.
+\item \concepto{Diseño de mecanismos}: diseñar la regla para que el interés lleve al resultado deseado; \emph{principio de revelación} (\autor{Gibbard}, 1973; \autor{Myerson}, 1979): basta buscar mecanismos directos veraces. Nobel 2007 (\autor{Hurwicz}, \autor{Maskin}, \autor{Myerson}).
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: \autor{Pareto} no ordena los óptimos; \autor{Arrow} (1951): con $\geq3$ alternativas y ordenaciones no comparables, ninguna regla cumple U, T, P, IAI y D; las FBS escapan con juicios de valor y comparaciones ($\epsilon$, \autor{Atkinson}); las reglas de votación renuncian a un axioma, con coste (mediano sin intensidad, manipulación, oligarquías, \autor{Sen}, \autor{Gibbard}-\autor{Satterthwaite}).
+\item \textbf{Relevancia}: las democracias combinan reglas según la decisión (mayorías reforzadas, unanimidades, vetos: Constitución, UE); el diseño institucional importa tanto como las preferencias.
+\item \textbf{Extensiones}: elección pública \vertema{3.A.23}, \vertema{4.B.2}; diseño de mecanismos \vertema{3.A.14}; imposición óptima \vertema{4.B.11}; redistribución \vertema{4.B.3}; desigualdad en España \vertema{4.A.3}; ACB (\autor{Kaldor}-\autor{Hicks}) \vertema{3.A.22}, \vertema{4.B.6}; economía conductual \vertema{3.A.1}.
+\item \textbf{Opinión}: \autor{Arrow} no va contra la democracia, sino contra la ilusión de una regla neutral; elegir qué axioma sacrificar es un juicio de valor: mejor a la vista, como en las constituciones.
+\item \textbf{Idea final}: «\emph{nunca llueve a gusto de todos}», y ninguna regla lo consigue; pero una sociedad decide con coherencia si dice qué valora: cuánto pesa cada persona y qué se sacrifica en cada decisión.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1781}{\autor{Borda}: recuento por puestos}
+\hito{1785}{\autor{Condorcet}: mayoría por parejas; paradoja}
+\hito{1906}{\autor{Pareto}: óptimo, ordinal}
+\hito{1938}{\autor{Bergson}: FBS (\autor{Samuelson}, 1947)}
+\hito{1939}{\autor{Kaldor}, \autor{Hicks}: compensación (\autor{Scitovsky}, 1941)}
+\hito{1948}{\autor{Black}: votante mediano}
+\hito{1951}{\autor{Arrow}: imposibilidad (2.ª ed., 1963; Nobel 1972)}
+\hito{1952}{\autor{May}: mayoría simple}
+\hito{1957}{\autor{Downs}: convergencia al mediano}
+\hito{1962}{\autor{Buchanan}-\autor{Tullock}: mayoría óptima}
+\hito{1969}{\autor{Sen}: cuasitransitividad; \autor{Gibbard}: oligarquía}
+\hito{1970}{\autor{Sen}: liberal paretiano; \autor{Atkinson}: índice}
+\hito{1971}{\autor{Rawls}: \emph{A Theory of Justice}}
+\hito{1972}{\autor{Wilson}: sin \autor{Pareto}}
+\hito{1973}{\autor{Gibbard} (\autor{Satterthwaite}, 1975): manipulación}
+\hito{1977}{\autor{d'Aspremont}-\autor{Gevers}: bases informativas}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Gini de la renta disponible equivalente en España: \dato{30,8 (ECV 2025, rentas de 2024)}{INE, 2026}; UE: \dato{29,2}{Eurostat, 2026}.
+\item Ultimátum: \dato{oferta media 40\,\%, 16\,\% rechazadas}{\autor{Oosterbeek} et al., 2004}. Dictador: \dato{28\,\% de media; $>$1/3 no da nada; 1 de cada 6 a medias}{\autor{Engel}, 2011}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Cómo casa \autor{Arrow} con los óptimos únicos de otras ramas?} Un óptimo único supone una sola función objetivo; \autor{Arrow} pregunta si se puede construir con muchas ordenaciones sin comparaciones. Si hay óptimo único, alguien ya fijó los juicios de valor o el dominio está restringido.
+\item \textbf{¿Aplicación en la Constitución?} Mayorías reforzadas (arts. 81, 167, 168): \autor{Buchanan}-\autor{Tullock}; \autor{D'Hondt} invita al voto útil; unanimidad en el Consejo de la UE = veto.
+\item \textbf{¿Exige la FBS utilidades cardinales?} No: exige comparabilidad (niveles, unidades), no cardinalidad.
+\item \textbf{¿Qué axioma levanta el votante mediano? ¿Es eficiente?} U (unimodales); eficiente solo si la valoración mediana = media (\autor{Bowen}).
+\item \textbf{¿Relación \autor{Arrow}-\autor{Gibbard}-\autor{Satterthwaite}?} Análogo para incentivos: elige un ganador (no ordena), sin IAI ni T; misma idea del pivote.
+\item \textbf{¿Por qué \autor{Clarke}-\autor{Groves} no lo contradice?} Dominio restringido: cuasilineal y pagos monetarios.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item \autor{Arrow}: U, T, P (\emph{débil}), IAI, D; $\geq3$ alternativas e $I$ finito. Con 2 alternativas, la mayoría funciona (\autor{May}).
+\item IAI de \autor{Arrow} (orden \emph{social} de $x$, $y$ solo por los individuales de $x$, $y$) $\neq$ independencia vNM \vertema{3.A.10} $\neq$ IIA de la negociación de \autor{Nash} \vertema{3.A.14}.
+\item Regla de agregación (ordena) $\neq$ FBS de \autor{Bergson}-\autor{Samuelson} (una función de utilidades) $\neq$ función de elección social (elige una alternativa).
+\item \autor{Borda}: ordinal (posicional), no cardinal; cumple U, T, P, D; incumple IAI; manipulable.
+\item Votante mediano: 1 dimensión, unimodales, nº impar, parejas, voto sincero; renuncia a U, no a T.
+\item Cuasitransitividad $\Rightarrow$ \emph{oligarquía}, no dictadura. Sin P: nula, dictatorial o dictatorial inversa (\autor{Wilson}).
+\item \autor{Buchanan}-\autor{Tullock}: los costes \emph{externos} bajan y los \emph{de decisión} suben; $M^*$ en el mínimo de la suma, \emph{no} en el corte de las curvas.
+\item \autor{Rawls}: aversión infinita a la \emph{incertidumbre}; CIS en L. Utilitarista: rectas.
+\item \autor{Atkinson}: $\epsilon=0$ $\Rightarrow$ $A_0=0$; $\epsilon\to\infty$ rawlsiana; normativo; \autor{Gini} no. $\epsilon=1$: media geométrica.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
