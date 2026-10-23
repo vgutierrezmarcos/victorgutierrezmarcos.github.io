@@ -1,3 +1,4 @@
+import 'temas_clase.dart';
 import 'dart:math';
 
 import 'coordinacion.dart';
@@ -385,7 +386,7 @@ class SolicitudEnlace {
 /// Lo que un alumno enlazado comparte con su preparador: los temas que marca
 /// y sus cantes. No incluye tests, notas ni grabaciones.
 class ProgresoAlumno {
-  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.delCronograma = const {}, this.noCantar = const {}, this.cantes = const [], this.ajustes = const AjustesCoordinacion(), this.reparto = const {}, this.yoAislado = false});
+  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.delCronograma = const {}, this.noCantar = const {}, this.temasClases = const {}, this.cantes = const [], this.ajustes = const AjustesCoordinacion(), this.reparto = const {}, this.yoAislado = false});
   final Set<String> estudiados;
   final Set<String> enRepaso;
   /// Temas que lleva según su cronograma compartido (ver
@@ -393,6 +394,9 @@ class ProgresoAlumno {
   final Set<String> delCronograma;
   /// Temas que pide no cantar por ahora en clase, y desde cuándo.
   final Map<String, DateTime> noCantar;
+  /// Temas que el alumno ha indicado para cada clase (por id de clase); si
+  /// una clase no está, cuentan los de su cronograma ([temasDeLaClase]).
+  final Map<String, TemasClase> temasClases;
   /// Cantes del alumno (los suyos y los programados por preparadores), ya
   /// filtrados según lo que el alumno deja ver (ver [AjustesCoordinacion]).
   final List<Cante> cantes;

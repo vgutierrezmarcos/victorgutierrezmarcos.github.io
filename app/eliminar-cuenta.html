@@ -34,6 +34,82 @@
         .eliminar a:not(.download-btn):not(.boton):not(.insignia-play):not(.dispositivo) { color: var(--color-primary); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--color-primary) 35%, transparent); text-underline-offset: 3px; }
         .eliminar a:not(.download-btn):not(.boton):not(.insignia-play):not(.dispositivo):hover { text-decoration-color: var(--color-primary); }
     </style>
+    <!-- Datos estructurados: la página, su sitio, su autor y las migas (invisible; para Google) -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://www.victorgutierrezmarcos.es/#website",
+            "url": "https://www.victorgutierrezmarcos.es/",
+            "name": "Víctor Gutiérrez Marcos",
+            "inLanguage": "es",
+            "publisher": {
+                "@id": "https://www.victorgutierrezmarcos.es/#victor"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://www.victorgutierrezmarcos.es/#victor",
+            "name": "Víctor Gutiérrez Marcos",
+            "url": "https://www.victorgutierrezmarcos.es/sobre-mi.html"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://www.victorgutierrezmarcos.es/app/eliminar-cuenta.html",
+            "url": "https://www.victorgutierrezmarcos.es/app/eliminar-cuenta.html",
+            "name": "Eliminar tu cuenta de la app | Oposición TCEE · DCE",
+            "description": "Cómo eliminar tu cuenta de la app Oposición TCEE · DCE y todos tus datos: desde la propia app o pidiéndolo por correo.",
+            "inLanguage": "es",
+            "isPartOf": {
+                "@id": "https://www.victorgutierrezmarcos.es/#website"
+            },
+            "author": {
+                "@id": "https://www.victorgutierrezmarcos.es/#victor"
+            },
+            "publisher": {
+                "@id": "https://www.victorgutierrezmarcos.es/#victor"
+            },
+            "breadcrumb": {
+                "@id": "https://www.victorgutierrezmarcos.es/app/eliminar-cuenta.html#migas"
+            },
+            "about": {
+                "@id": "https://www.victorgutierrezmarcos.es/app/#app"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.victorgutierrezmarcos.es/app/eliminar-cuenta.html#migas",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Inicio",
+                    "item": "https://www.victorgutierrezmarcos.es/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Oposición",
+                    "item": "https://www.victorgutierrezmarcos.es/oposicion/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "App TCEE y DCE",
+                    "item": "https://www.victorgutierrezmarcos.es/app/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "Eliminar tu cuenta de la app"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
     <header class="site-header">

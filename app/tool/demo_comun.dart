@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tcee_app/widgets/comunes.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -552,7 +553,7 @@ class Recorrido {
 
   Future<void> subpestana(String nombre) async {
     await pestana('Cantes');
-    await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)));
+    await tocar(find.descendant(of: find.byType(BotonesPestanas), matching: find.textContaining(nombre, findRichText: true)));
   }
 
   Future<void> bajar(double puntos) async {

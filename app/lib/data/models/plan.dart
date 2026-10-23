@@ -174,10 +174,23 @@ class Cante {
     this.unoPorParte = false,
     this.plataforma = '',
     this.eventoGoogle = '',
+    this.eventoGoogleAlumno = '',
     this.notasCompartidas = false,
+    this.temasPropuestos = const [],
+    this.propuestaTemasA,
   });
 
   final String id;
+
+  /// Temas que el preparador propone para esta clase (vacío si no propone
+  /// nada). Los temas de la clase los decide el opositor
+  /// ([TemasClase] en sus ajustes); el preparador solo propone y el opositor
+  /// acepta o rechaza. Van en la copia del alumno.
+  final List<String> temasPropuestos;
+
+  /// Cuándo hizo el preparador la propuesta: está pendiente mientras el
+  /// opositor no haya respondido después.
+  final DateTime? propuestaTemasA;
 
   /// El preparador ha compartido con el alumno sus notas de la clase (su
   /// segunda pizarra): el alumno las ve en cuanto las comparte.
@@ -190,6 +203,12 @@ class Cante {
   /// (vacío si no está en su calendario). Solo lo usa el preparador: no va en
   /// la copia del alumno.
   final String eventoGoogle;
+
+  /// Evento del Google Calendar del propio opositor (si tiene conectado «Mis
+  /// cantes en Google Calendar»): el de sus cantes y el de las clases cuyo
+  /// preparador no las lleva a su calendario. Nunca es el del preparador, que
+  /// va en [eventoGoogle] y se pisaría al copiar la clase.
+  final String eventoGoogleAlumno;
 
   /// Hora a la que el preparador manda un tema al alumno antes de la clase
   /// (la ve el alumno; el tema no, hasta esa hora).
@@ -313,6 +332,10 @@ class Cante {
     bool? unoPorParte,
     String? plataforma,
     String? eventoGoogle,
+    String? eventoGoogleAlumno,
+    List<String>? temasPropuestos,
+    DateTime? propuestaTemasA,
+    bool sinPropuesta = false,
   }) =>
       Cante(
         id: id,
@@ -347,6 +370,9 @@ class Cante {
         unoPorParte: unoPorParte ?? this.unoPorParte,
         plataforma: plataforma ?? this.plataforma,
         eventoGoogle: eventoGoogle ?? this.eventoGoogle,
+        eventoGoogleAlumno: eventoGoogleAlumno ?? this.eventoGoogleAlumno,
+        temasPropuestos: sinPropuesta ? const [] : (temasPropuestos ?? this.temasPropuestos),
+        propuestaTemasA: sinPropuesta ? null : (propuestaTemasA ?? this.propuestaTemasA),
       );
 
   Map<String, dynamic> toJson() => {
@@ -384,6 +410,9 @@ class Cante {
         if (unoPorParte) 'unoPorParte': true,
         if (plataforma.isNotEmpty) 'plataforma': plataforma,
         if (eventoGoogle.isNotEmpty) 'eventoGoogle': eventoGoogle,
+        if (eventoGoogleAlumno.isNotEmpty) 'eventoGoogleAlumno': eventoGoogleAlumno,
+        if (temasPropuestos.isNotEmpty) 'temasPropuestos': temasPropuestos,
+        if (propuestaTemasA != null) 'propuestaTemasA': propuestaTemasA!.toIso8601String(),
       };
 
   factory Cante.fromJson(Map<dynamic, dynamic> j) {
@@ -425,6 +454,9 @@ class Cante {
         unoPorParte: j['unoPorParte'] as bool? ?? false,
         plataforma: j['plataforma'] as String? ?? '',
         eventoGoogle: j['eventoGoogle'] as String? ?? '',
+        eventoGoogleAlumno: j['eventoGoogleAlumno'] as String? ?? '',
+        temasPropuestos: ((j['temasPropuestos'] as List?) ?? []).map((e) => e.toString()).toList(),
+        propuestaTemasA: _fecha(j['propuestaTemasA']),
       );
   }
 

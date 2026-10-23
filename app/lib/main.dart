@@ -82,7 +82,13 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
   await Analitica.instancia.iniciar(usuario.ajustes().estadisticas);
   final plan = await PlanRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
   final preparador = await PreparadorRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
-  if (firebaseDisponible) preparador.calendario = crearCalendario();
+  if (firebaseDisponible) {
+    preparador.calendario = crearCalendario();
+    // El del opositor: sus cantes y las clases con su preparador, si lo activa
+    // en Más → Ajustes («Mis cantes en Google Calendar»).
+    plan.calendario = crearCalendario(prefijo: 'cala:');
+    plan.calendarioActivo = () => usuario.ajustes().calendarioGoogle;
+  }
   final descargas = await DescargasRepo.crear(oposicion: oposicion);
   await iniciarAvisosEnSegundoPlano(oposicion: oposicion.id);
 

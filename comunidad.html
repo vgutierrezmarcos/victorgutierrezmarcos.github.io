@@ -90,6 +90,67 @@
         .boton.join-btn.telegram { --b-fondo: #0088cc; --b-texto: #ffffff; --b-borde: #006699; }
         .boton.join-btn.telegram:hover { --b-fondo: #0077b5; }
     </style>
+    <!-- Datos estructurados: la página, su sitio, su autor y las migas (invisible; para Google) -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://www.victorgutierrezmarcos.es/#website",
+            "url": "https://www.victorgutierrezmarcos.es/",
+            "name": "Víctor Gutiérrez Marcos",
+            "inLanguage": "es",
+            "publisher": {
+                "@id": "https://www.victorgutierrezmarcos.es/#victor"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://www.victorgutierrezmarcos.es/#victor",
+            "name": "Víctor Gutiérrez Marcos",
+            "url": "https://www.victorgutierrezmarcos.es/sobre-mi.html"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://www.victorgutierrezmarcos.es/comunidad.html",
+            "url": "https://www.victorgutierrezmarcos.es/comunidad.html",
+            "name": "Comunidad de opositores a TCEE | Víctor Gutiérrez Marcos",
+            "description": "Comunidad de opositores a Técnico Comercial y Economista del Estado. Comparte dudas, recursos y experiencia con otros candidatos.",
+            "inLanguage": "es",
+            "isPartOf": {
+                "@id": "https://www.victorgutierrezmarcos.es/#website"
+            },
+            "author": {
+                "@id": "https://www.victorgutierrezmarcos.es/#victor"
+            },
+            "publisher": {
+                "@id": "https://www.victorgutierrezmarcos.es/#victor"
+            },
+            "breadcrumb": {
+                "@id": "https://www.victorgutierrezmarcos.es/comunidad.html#migas"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.victorgutierrezmarcos.es/comunidad.html#migas",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Inicio",
+                    "item": "https://www.victorgutierrezmarcos.es/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Comunidad"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
     <header class="site-header">

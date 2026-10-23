@@ -22,13 +22,16 @@ const ambitoCalendario = 'https://www.googleapis.com/auth/calendar.events';
 /// (null si no lo hay). [huellas] guarda, por clase, lo último que se mandó,
 /// para no volver a mandar el evento si no ha cambiado.
 class CalendarioGoogle {
-  CalendarioGoogle({required this.token, Dio? dio, Box? huellas})
+  CalendarioGoogle({required this.token, Dio? dio, Box? huellas, this.prefijo = 'cal:'})
       : _dio = dio ?? Dio(BaseOptions(connectTimeout: const Duration(seconds: 15), receiveTimeout: const Duration(seconds: 20))),
         _huellas = huellas;
 
   final Future<String?> Function() token;
   final Dio _dio;
   final Box? _huellas;
+  /// Prefijo de las huellas en la caja: el del preparador ('cal:') y el del
+  /// opositor ('cala:') no se pisan aunque compartan caja y un mismo cante.
+  final String prefijo;
   final Map<String, String> _huellasMemoria = {};
 
   static const _eventos = 'https://www.googleapis.com/calendar/v3/calendars/primary/events';
@@ -44,19 +47,21 @@ class CalendarioGoogle {
     } catch (_) {}
   }
 
-  String? _huella(String id) => _huellas?.get('cal:$id') as String? ?? _huellasMemoria[id];
+  String? _huella(String id) => _huellas?.get('$prefijo$id') as String? ?? _huellasMemoria[id];
   Future<void> _guardarHuella(String id, String? h) async {
     if (h == null) {
       _huellasMemoria.remove(id);
-      await _huellas?.delete('cal:$id');
+      await _huellas?.delete('$prefijo$id');
     } else {
       _huellasMemoria[id] = h;
-      await _huellas?.put('cal:$id', h);
+      await _huellas?.put('$prefijo$id', h);
     }
   }
 
   /// El evento de la clase [c] con [alumno] (y su [email], si se le invita).
-  Map<String, dynamic> evento(Cante c, {String alumno = '', String email = '', String preparador = '', String siglas = ''}) {
+  /// [titulo] sustituye al nombre del evento (el opositor pone «Cante de TCEE»
+  /// o «Clase de TCEE con Víctor»).
+  Map<String, dynamic> evento(Cante c, {String alumno = '', String email = '', String preparador = '', String siglas = '', String? titulo}) {
     final inicio = c.fecha.toUtc();
     final fin = inicio.add(Duration(minutes: c.minutos <= 0 ? 60 : c.minutos));
     final con = [if (preparador.isNotEmpty) preparador, if (alumno.isNotEmpty) alumno].join(' y ');
@@ -64,7 +69,7 @@ class CalendarioGoogle {
     // y la videollamada elegida es Meet (con Teams, el preparador pega su enlace).
     final crearMeet = c.online && c.enlace.isEmpty && c.plataformaEfectiva != plataformaTeams;
     return {
-      'summary': 'Clase de ${siglas.isEmpty ? 'oposición' : siglas}${con.isEmpty ? '' : ': $con'}',
+      'summary': titulo ?? 'Clase de ${siglas.isEmpty ? 'oposición' : siglas}${con.isEmpty ? '' : ': $con'}',
       'description': [
         if (c.temas.isNotEmpty) 'Temas: ${c.temas.join(', ')}',
         if (c.notas.trim().isNotEmpty) c.notas.trim(),
@@ -94,7 +99,7 @@ class CalendarioGoogle {
   /// (el evento y, si se ha creado la reunión, su enlace de Meet) o null si
   /// no hay nada que guardar. Sin token no hace nada (null). Lanza
   /// [DioException] si Google responde con error.
-  Future<Cante?> sincronizar(Cante c, {String alumno = '', String email = '', String preparador = '', String siglas = '', DateTime? ahora}) async {
+  Future<Cante?> sincronizar(Cante c, {String alumno = '', String email = '', String preparador = '', String siglas = '', String? titulo, DateTime? ahora}) async {
     final hoy = ahora ?? DateTime.now();
     // Cancelada o borrada: fuera del calendario.
     if (c.borrado || c.cancelado) {
@@ -108,7 +113,7 @@ class CalendarioGoogle {
     // Hecha, o pasada sin evento: no se toca.
     if (c.hecho || (c.eventoGoogle.isEmpty && c.fecha.isBefore(hoy.subtract(const Duration(hours: 12))))) return null;
 
-    final cuerpo = evento(c, alumno: alumno, email: email, preparador: preparador, siglas: siglas);
+    final cuerpo = evento(c, alumno: alumno, email: email, preparador: preparador, siglas: siglas, titulo: titulo);
     final huella = _huellaDe(cuerpo);
     if (c.eventoGoogle.isNotEmpty && _huella(c.id) == huella) return null;
     final t = await token();
@@ -132,7 +137,7 @@ class CalendarioGoogle {
     final enlace = c.online && c.enlace.isEmpty && meet != null && meet.isNotEmpty ? meet : null;
     // La huella, con el enlace ya puesto (así no se vuelve a mandar).
     final guardada = enlace == null ? c.copyWith(eventoGoogle: id) : c.copyWith(eventoGoogle: id, enlace: enlace);
-    await _guardarHuella(c.id, _huellaDe(evento(guardada, alumno: alumno, email: email, preparador: preparador, siglas: siglas)));
+    await _guardarHuella(c.id, _huellaDe(evento(guardada, alumno: alumno, email: email, preparador: preparador, siglas: siglas, titulo: titulo)));
     if (id == c.eventoGoogle && enlace == null) return null;
     return guardada;
   }
