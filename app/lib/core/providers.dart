@@ -12,6 +12,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../data/models/temas_clase.dart';
+import '../features/cronograma/planificador.dart' show compararCodigos;
 import '../data/models/esquema.dart';
 import '../data/models/estructura.dart';
 import '../data/models/frecuencia_test.dart';
@@ -514,6 +516,15 @@ class AjustesNotifier extends Notifier<Ajustes> {
   /// «Mis cantes en Google Calendar» (el permiso de Google lo pide
   /// `conectarCalendario`; aquí solo se guarda lo que decide).
   Future<void> fijarCalendarioGoogle(bool activo) => actualizar((a) => a.copyWith(calendarioGoogle: activo));
+
+  /// Los temas que lleva a la clase [idClase] (los elige él o acepta los que
+  /// propone su preparador; responder a una propuesta también los fija). Se
+  /// guardan las 80 clases más recientes para que el documento no crezca.
+  Future<void> fijarTemasClase(String idClase, List<String> temas) => actualizar((a) {
+        final m = {...a.temasClases, idClase: TemasClase(temas: [...temas]..sort(compararCodigos), fecha: DateTime.now())};
+        final recientes = (m.entries.toList()..sort((x, y) => y.value.fecha.compareTo(x.value.fecha))).take(80);
+        return a.copyWith(temasClases: {for (final e in recientes) e.key: e.value});
+      });
 }
 
 final ajustesProvider = NotifierProvider<AjustesNotifier, Ajustes>(AjustesNotifier.new);

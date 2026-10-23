@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../plan/temas_clase_vista.dart';
+import '../../data/models/temas_clase.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/avisos_breves.dart';
@@ -29,11 +31,13 @@ import 'red_widgets.dart';
 import 'tema_anticipado.dart';
 import '../mas/ayuda_videos.dart';
 
-/// Temas que entran en la sesión de un alumno: «los estudiados» son los suyos
-/// y, con su [cronograma] compartido, los de la semana de esa clase (la misma
-/// lista que él ve en su cronograma para ese cante).
-List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario, {Cronograma? cronograma}) =>
-    temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()), cronograma: cronograma);
+/// Temas que entran en la sesión de un alumno: los que él lleva a esa clase
+/// ([temasDeLaClase]: los que eligió para ella o la semana de su [cronograma]
+/// compartido), la misma lista que ve él. Sin ninguno, vacía (pendiente).
+/// Sin la app (ficha que lleva el preparador), los que él apunta en la ficha.
+List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario, {Cronograma? cronograma, ProgresoAlumno? progreso}) => alumno.enlazado
+    ? temasDeCante(sesion, temario, Ajustes(temasClases: progreso?.temasClases ?? const {}, noCantar: progreso?.noCantar ?? const {}), cronograma: cronograma, clase: true)
+    : temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()), clase: false);
 
 /// Envía el informe de un cante al alumno por la app que elija el preparador.
 Future<void> enviarInforme(BuildContext context, Cante sesion, Alumno? alumno, Temario? temario) => compartirTexto(
@@ -92,9 +96,10 @@ class SesionPage extends ConsumerWidget {
     // El cronograma compartido del alumno (si lo hay): la bolsa de la clase es
     // la de su semana. Sin red, se queda con los temas que lleva.
     final cronograma = alumno == null || !alumno.enlazado ? null : ref.watch(cronogramaAlumnoProvider(alumno.id)).valueOrNull;
-    final temas = temario == null || alumno == null ? const <Tema>[] : temasDeSesion(s, alumno, temario, cronograma: cronograma);
+    final progreso = alumno == null || !alumno.enlazado ? null : ref.watch(progresoAlumnoProvider(alumno.id)).valueOrNull;
+    final temas = temario == null || alumno == null ? const <Tema>[] : temasDeSesion(s, alumno, temario, cronograma: cronograma, progreso: progreso);
     // Temas que el alumno pide no cantar y que ya se le habían mandado para esta clase.
-    final noCantar = alumno == null ? const <String, DateTime>{} : (ref.watch(progresoAlumnoProvider(alumno.id)).valueOrNull?.noCantar ?? const <String, DateTime>{});
+    final noCantar = progreso?.noCantar ?? const <String, DateTime>{};
     final mandadosQueNoQuiere = s.temasMandados.where(noCantar.containsKey).toList();
     final r = s.resultado;
     final notifier = ref.read(sesionesProvider.notifier);
@@ -462,6 +467,29 @@ class SesionPage extends ConsumerWidget {
             OutlinedButton.icon(onPressed: () => enviarInforme(context, s, alumno, temario), icon: const Icon(Icons.ios_share, size: 18), label: const Text('Enviar informe al alumno')),
             if (conUid) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Además, la valoración ya está en su diario de cantes.', textAlign: TextAlign.center, style: context.textos.labelSmall)),
           ],
+          // Alumno con la app y bolsa «los que lleva»: los temas de ESTA clase,
+          // los mismos que ve él; el preparador solo propone cambios.
+          if (!dictamen && s.bolsa == TipoBolsa.estudiados && alumno != null && alumno.enlazado)
+            Builder(builder: (context) {
+              final resueltos = temasDeLaClase(s, elegidos: progreso?.temasClases ?? const {}, cronograma: cronograma, noCantar: noCantar);
+              Future<void> proponer(List<String> actuales) async {
+                if (temario == null) return;
+                final r = await elegirTemasDeClase(context, temario: temario, clase: s, actuales: actuales, titulo: 'Proponer temas');
+                if (r != null && r.isNotEmpty) await notifier.guardar(s.copyWith(temasPropuestos: r, propuestaTemasA: DateTime.now()));
+              }
+              return TemasDeLaClaseVista(
+                clase: s,
+                resueltos: resueltos,
+                temario: temario,
+                esPreparador: true,
+                otro: alumno.nombre.isEmpty ? 'tu alumno' : alumno.nombre,
+                cronograma: cronograma,
+                propuestaPendiente: propuestaPendiente(s, progreso?.temasClases ?? const {}),
+                onProponer: proponer,
+                onRetirarPropuesta: () => notifier.guardar(s.copyWith(sinPropuesta: true)),
+              );
+            })
+          else ...[
           if (!dictamen) TituloSeccion('Temas que entran (${temas.length})'),
           if (dictamen)
             const SizedBox()
@@ -478,6 +506,7 @@ class SesionPage extends ConsumerWidget {
                   ),
               ]),
             ),
+          ],
         ],
       ),
     );

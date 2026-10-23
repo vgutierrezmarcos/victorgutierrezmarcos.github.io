@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/constants.dart';
 import '../../core/permiso_calendario.dart';
+import '../models/temas_clase.dart';
 import '../models/oposicion.dart';
 import '../models/cronograma.dart';
 import 'usuario_repo.dart';
@@ -928,6 +929,7 @@ class PreparadorRepo {
         enRepaso: ((ajustes['temasEnRepaso'] as List?) ?? []).map((e) => e.toString()).toSet(),
         delCronograma: delCronograma,
         noCantar: noCantar,
+        temasClases: TemasClase.deLista(ajustes['temasClases']),
         // De las clases con otros preparadores se ve el tema, la fecha y con
         // quién, no su valoración, sus comentarios ni sus indicaciones; y lo
         // que el alumno haya decidido ocultar, tampoco.

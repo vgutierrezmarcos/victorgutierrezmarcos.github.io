@@ -5,23 +5,26 @@ import '../../data/models/cronograma.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
+import '../../data/models/temas_clase.dart';
 import '../../data/repos/usuario_repo.dart';
 
 /// Temas que entran en el sorteo de un cante según su tipo de bolsa.
 ///
-/// En una clase del preparador, «los estudiados» son los temas que lleva el
-/// alumno para esa clase, igual en su app y en la del preparador: si su
-/// [cronograma] compartido tiene una semana cuyo cante cae en la fecha de la
-/// clase, los temas de esa semana (lo que ve en Cronograma para ese cante);
-/// si no, los marcados como estudiados más los del cronograma hasta hoy. En
-/// los dos casos, sin los que ha pedido no cantar.
-List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes, {Cronograma? cronograma}) {
+/// En una clase con preparador ([clase]; por defecto, las que trae el alumno
+/// de su preparador), «los estudiados» son los temas que el opositor lleva a
+/// ESA clase, iguales en las dos apps ([temasDeLaClase]): los que eligió para
+/// ella o, si no, los de la semana de su cronograma cuyo cante cae ese día; si
+/// no hay ninguno, la bolsa está vacía hasta que los indique. En la app del
+/// preparador la clase no lleva `preparador`, así que se pasa `clase: true`.
+List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes, {Cronograma? cronograma, bool? clase}) {
   final oposicion = Oposiciones.actual;
   // Dictamen (1.º de TCEE): se canta sin temas.
   if (oposicion.esDictamen(c.ejercicio)) return const [];
   final ejercicios = oposicion.ejerciciosDeBolsa(c.ejercicio);
   bool delEjercicio(Tema t) => ejercicios.contains(t.ejercicio);
-  final estudiados = c.dePreparador ? temasQueLleva(ajustes, cronograma, fecha: c.fecha) : ajustes.temasEstudiados;
+  final estudiados = (clase ?? c.dePreparador)
+      ? temasDeLaClase(c, elegidos: ajustes.temasClases, cronograma: cronograma, noCantar: ajustes.noCantar).temas.toSet()
+      : ajustes.temasEstudiados;
   return switch (c.bolsa) {
     TipoBolsa.lista => [for (final codigo in c.temas) if (temario.tema(codigo) != null) temario.tema(codigo)!],
     TipoBolsa.estudiados => temario.todosLosTemas.where((t) => delEjercicio(t) && estudiados.contains(t.codigo)).toList(),

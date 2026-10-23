@@ -176,9 +176,21 @@ class Cante {
     this.eventoGoogle = '',
     this.eventoGoogleAlumno = '',
     this.notasCompartidas = false,
+    this.temasPropuestos = const [],
+    this.propuestaTemasA,
   });
 
   final String id;
+
+  /// Temas que el preparador propone para esta clase (vacío si no propone
+  /// nada). Los temas de la clase los decide el opositor
+  /// ([TemasClase] en sus ajustes); el preparador solo propone y el opositor
+  /// acepta o rechaza. Van en la copia del alumno.
+  final List<String> temasPropuestos;
+
+  /// Cuándo hizo el preparador la propuesta: está pendiente mientras el
+  /// opositor no haya respondido después.
+  final DateTime? propuestaTemasA;
 
   /// El preparador ha compartido con el alumno sus notas de la clase (su
   /// segunda pizarra): el alumno las ve en cuanto las comparte.
@@ -321,6 +333,9 @@ class Cante {
     String? plataforma,
     String? eventoGoogle,
     String? eventoGoogleAlumno,
+    List<String>? temasPropuestos,
+    DateTime? propuestaTemasA,
+    bool sinPropuesta = false,
   }) =>
       Cante(
         id: id,
@@ -356,6 +371,8 @@ class Cante {
         plataforma: plataforma ?? this.plataforma,
         eventoGoogle: eventoGoogle ?? this.eventoGoogle,
         eventoGoogleAlumno: eventoGoogleAlumno ?? this.eventoGoogleAlumno,
+        temasPropuestos: sinPropuesta ? const [] : (temasPropuestos ?? this.temasPropuestos),
+        propuestaTemasA: sinPropuesta ? null : (propuestaTemasA ?? this.propuestaTemasA),
       );
 
   Map<String, dynamic> toJson() => {
@@ -394,6 +411,8 @@ class Cante {
         if (plataforma.isNotEmpty) 'plataforma': plataforma,
         if (eventoGoogle.isNotEmpty) 'eventoGoogle': eventoGoogle,
         if (eventoGoogleAlumno.isNotEmpty) 'eventoGoogleAlumno': eventoGoogleAlumno,
+        if (temasPropuestos.isNotEmpty) 'temasPropuestos': temasPropuestos,
+        if (propuestaTemasA != null) 'propuestaTemasA': propuestaTemasA!.toIso8601String(),
       };
 
   factory Cante.fromJson(Map<dynamic, dynamic> j) {
@@ -436,6 +455,8 @@ class Cante {
         plataforma: j['plataforma'] as String? ?? '',
         eventoGoogle: j['eventoGoogle'] as String? ?? '',
         eventoGoogleAlumno: j['eventoGoogleAlumno'] as String? ?? '',
+        temasPropuestos: ((j['temasPropuestos'] as List?) ?? []).map((e) => e.toString()).toList(),
+        propuestaTemasA: _fecha(j['propuestaTemasA']),
       );
   }
 

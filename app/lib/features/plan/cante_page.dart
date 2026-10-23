@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'temas_clase_vista.dart';
+import '../../data/models/temas_clase.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
@@ -370,6 +372,31 @@ class CantePage extends ConsumerWidget {
                 ),
               ),
           ],
+          // Clase con preparador: los temas que lleva a ESA clase, los mismos que
+          // ve su preparador; los cambia él y responde a sus propuestas.
+          if (c.dePreparador && c.bolsa == TipoBolsa.estudiados && !Oposiciones.actual.esDictamen(c.ejercicio))
+            Builder(builder: (context) {
+              final cronograma = ref.watch(cronogramaProvider);
+              final resueltos = temasDeLaClase(c, elegidos: ajustes.temasClases, cronograma: cronograma, noCantar: ajustes.noCantar);
+              final preparador = (c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre!;
+              Future<void> elegir(List<String> actuales) async {
+                if (temario == null) return;
+                final r = await elegirTemasDeClase(context, temario: temario, clase: c, actuales: actuales, titulo: 'Temas que llevas');
+                if (r != null) await ref.read(ajustesProvider.notifier).fijarTemasClase(c.id, r);
+              }
+              return TemasDeLaClaseVista(
+                clase: c,
+                resueltos: resueltos,
+                temario: temario,
+                esPreparador: false,
+                otro: preparador,
+                cronograma: cronograma,
+                propuestaPendiente: propuestaPendiente(c, ajustes.temasClases),
+                onElegir: elegir,
+                onAceptarPropuesta: () => ref.read(ajustesProvider.notifier).fijarTemasClase(c.id, c.temasPropuestos),
+              );
+            })
+          else ...[
           if (!Oposiciones.actual.esDictamen(c.ejercicio)) TituloSeccion('Temas que entran (${temas.length})'),
           if (Oposiciones.actual.esDictamen(c.ejercicio))
             const SizedBox()
@@ -386,6 +413,7 @@ class CantePage extends ConsumerWidget {
                   ),
               ]),
             ),
+          ],
         ],
       ),
     );

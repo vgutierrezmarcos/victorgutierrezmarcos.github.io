@@ -18,6 +18,7 @@ import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
 import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
+import '../preparador/sesion_page.dart' show temasDeSesion;
 import '../../data/models/oposicion.dart';
 import '../../data/models/coordinacion.dart';
 import '../../data/models/plan.dart';
@@ -547,6 +548,14 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   /// Temas de la bolsa propia según la fuente elegida (o el cante en curso).
   List<Tema> _bolsa(Temario t, Cante? cante) {
     final ajustes = _ajustesDeLaBolsa();
+    // Clase de preparador: la bolsa es la de esa clase, la misma que ve el alumno.
+    final sesion = widget.sesion;
+    if (cante != null && sesion != null) {
+      final a = sesion.alumno;
+      return temasDeSesion(cante, a, t,
+          cronograma: a.enlazado ? ref.read(cronogramaAlumnoProvider(a.id)).valueOrNull : null,
+          progreso: a.enlazado ? ref.read(progresoAlumnoProvider(a.id)).valueOrNull : null);
+    }
     if (cante != null) return temasDeCante(cante, t, ajustes, cronograma: ref.read(cronogramaProvider));
     final delEjercicio = t.todosLosTemas.where((x) => x.ejercicio == _ejercicio);
     return switch (_fuente) {
@@ -680,6 +689,12 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     final temario = ref.watch(temarioProvider);
     final sesion = widget.sesion;
     final ajustes = ref.watch(ajustesProvider);
+    // En una clase, el cronograma y los temas que el alumno ha indicado para
+    // ella se mantienen cargados para el sorteo (_bolsa los lee).
+    if (sesion != null && sesion.alumno.enlazado) {
+      ref.watch(cronogramaAlumnoProvider(sesion.alumno.id));
+      ref.watch(progresoAlumnoProvider(sesion.alumno.id));
+    }
     final estudiados = sesion == null ? ajustes.temasEstudiados : sesion.alumno.temas.toSet();
     // Preparador cantando sin alumno: sin probabilidad propia, sin «estudiados» ni diario.
     final soloPreparador = sesion == null && ref.watch(papelProvider) == Papel.preparador;

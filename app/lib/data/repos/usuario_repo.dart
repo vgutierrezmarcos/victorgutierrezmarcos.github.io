@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/constants.dart';
+import '../models/temas_clase.dart';
 import '../models/oposicion.dart';
 import '../../features/test/leitner.dart';
 import '../models/resultado.dart';
@@ -19,6 +20,7 @@ class Ajustes {
     this.temaOscuro, // null = sistema
     this.temasExtraidos = 3,
     this.noCantar = const {},
+    this.temasClases = const {},
     this.estadisticas,
     this.calendarioGoogle = false,
     this.updatedAt,
@@ -35,6 +37,10 @@ class Ajustes {
   /// preparadores (aunque los lleve o estén en su cronograma), y desde cuándo.
   /// Los preparadores lo ven y los dejan fuera del sorteo.
   final Map<String, DateTime> noCantar;
+  /// Temas que lleva a cada clase con su preparador (por id de clase), si los
+  /// ha elegido o aceptado; si no, cuentan los de su cronograma
+  /// ([temasDeLaClase]). Los lee también el preparador.
+  final Map<String, TemasClase> temasClases;
   /// Estadísticas de uso anónimas e informes de errores (Firebase): true si
   /// lo activó, false si dijo que no, null si aún no se le ha preguntado.
   final bool? estadisticas;
@@ -53,6 +59,7 @@ class Ajustes {
     bool borrarTema = false,
     int? temasExtraidos,
     Map<String, DateTime>? noCantar,
+    Map<String, TemasClase>? temasClases,
     bool? estadisticas,
     bool? calendarioGoogle,
     DateTime? updatedAt,
@@ -65,6 +72,7 @@ class Ajustes {
         temaOscuro: borrarTema ? null : (temaOscuro ?? this.temaOscuro),
         temasExtraidos: temasExtraidos ?? this.temasExtraidos,
         noCantar: noCantar ?? this.noCantar,
+        temasClases: temasClases ?? this.temasClases,
         estadisticas: estadisticas ?? this.estadisticas,
         calendarioGoogle: calendarioGoogle ?? this.calendarioGoogle,
         updatedAt: updatedAt ?? DateTime.now(),
@@ -80,6 +88,7 @@ class Ajustes {
         // Como lista («código@fecha»), no como mapa: el documento se guarda con
         // merge y un mapa no borraría en la nube lo que se quita aquí.
         'noCantar': [for (final e in noCantar.entries) '${e.key}@${e.value.toIso8601String()}']..sort(),
+        'temasClases': TemasClase.aLista(temasClases),
         'estadisticas': estadisticas,
         'calendarioGoogle': calendarioGoogle,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
@@ -112,6 +121,7 @@ class Ajustes {
       temaOscuro: j['temaOscuro'] as bool?,
       temasExtraidos: (j['temasExtraidos'] as num?)?.toInt() ?? 3,
       noCantar: noCantarDe(j),
+      temasClases: TemasClase.deLista(j['temasClases']),
       estadisticas: j['estadisticas'] as bool?,
       calendarioGoogle: j['calendarioGoogle'] == true,
       updatedAt: f(j['updatedAt'] as String?),
