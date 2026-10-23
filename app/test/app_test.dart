@@ -98,14 +98,14 @@ void main() {
   /// Subpestaña del bloque Cantes: Agenda, Cantar o Diario.
   Future<void> subpestana(WidgetTester tester, String nombre) async {
     await pestana(tester, 'Cantes');
-    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)));
+    await tester.tap(find.descendant(of: find.byType(BotonesPestanas), matching: find.textContaining(nombre, findRichText: true)));
     await tester.pumpAndSettle();
   }
 
   /// Subpestaña del bloque Estudiar: Temas o Test.
   Future<void> estudiar(WidgetTester tester, String nombre) async {
     await pestana(tester, 'Estudiar');
-    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)).first);
+    await tester.tap(find.descendant(of: find.byType(BotonesPestanas), matching: find.textContaining(nombre, findRichText: true)).first);
     await tester.pumpAndSettle();
   }
 

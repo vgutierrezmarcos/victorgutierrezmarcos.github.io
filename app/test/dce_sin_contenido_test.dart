@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:tcee_app/widgets/comunes.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/app.dart';
 import 'package:tcee_app/core/cache_http.dart';
@@ -103,7 +104,7 @@ void main() {
     await arrancar(tester);
     await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text('Cantes')));
     await tester.pumpAndSettle();
-    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text('Cantar')));
+    await tester.tap(find.descendant(of: find.byType(BotonesPestanas), matching: find.textContaining('Cantar', findRichText: true)));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Cuenta atrás'));
     await tester.pumpAndSettle();

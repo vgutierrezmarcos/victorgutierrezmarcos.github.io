@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../core/avisos_breves.dart';
@@ -11,20 +12,86 @@ import '../theme/app_theme.dart';
 import 'boton_oposicion.dart';
 import 'sincronizar.dart';
 
-/// Pestañas internas de un bloque (Estudiar, Cantes): en blanco sobre la
-/// cabecera morada, con el indicador dorado.
-TabBar barraPestanas(BuildContext context, {required TabController controller, required List<String> textos, ValueChanged<int>? onTap}) => TabBar(
-      controller: controller,
-      onTap: onTap,
-      labelColor: Colors.white,
-      unselectedLabelColor: Colors.white.withValues(alpha: 0.7),
-      indicatorColor: context.colores.dorado,
-      indicatorWeight: 3,
-      dividerColor: Colors.transparent,
-      labelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 14, fontWeight: FontWeight.w700, letterSpacing: 0.2),
-      unselectedLabelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.2),
-      tabs: [for (final t in textos) Tab(text: t)],
+/// Una subpestaña de un bloque (Estudiar, Cantes): su texto, su icono y, si
+/// aporta, una cifra («177», «1.004 preguntas»); [cifraCorta] es la que cabe
+/// en pantallas estrechas (solo el número).
+class PestanaBoton {
+  const PestanaBoton({required this.texto, required this.icono, this.cifra, this.cifraCorta, this.descripcion});
+  final String texto;
+  final IconData icono;
+  final String? cifra;
+  final String? cifraCorta;
+  /// Para el lector de pantalla y el tooltip («Temas del temario, 177»).
+  final String? descripcion;
+}
+
+/// Subpestañas de un bloque como botones segmentados, debajo de la cabecera y
+/// sobre el fondo: el activo relleno en morado, los demás con borde. Antes
+/// eran pestañas de texto dentro de la cabecera morada y había quien no veía
+/// que «Test» era otro sitio al que ir. Es la misma pieza que «Tu papel en
+/// TCEE» (Más), con icono y cifra. Solo cambia [indice]; el estado lo lleva
+/// quien la usa (`subpestana*Provider`).
+class BotonesPestanas extends StatelessWidget {
+  const BotonesPestanas({super.key, required this.indice, required this.pestanas, required this.onCambiar});
+  final int indice;
+  final List<PestanaBoton> pestanas;
+  final ValueChanged<int> onCambiar;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(Espacio.e4, Espacio.e3, Espacio.e4, Espacio.e1),
+      child: LayoutBuilder(builder: (context, c) {
+        // En estrecho (tres botones en un móvil pequeño) la cifra se queda en el número.
+        final estrecho = c.maxWidth / pestanas.length < 170;
+        return SizedBox(
+          width: double.infinity,
+          child: SegmentedButton<int>(
+            segments: [
+              for (var i = 0; i < pestanas.length; i++)
+                ButtonSegment(
+                  value: i,
+                  icon: Icon(pestanas[i].icono, size: 18),
+                  label: _EtiquetaPestana(pestanas[i], estrecho: estrecho),
+                  tooltip: pestanas[i].descripcion ?? pestanas[i].texto,
+                ),
+            ],
+            selected: {indice.clamp(0, pestanas.length - 1)},
+            onSelectionChanged: (s) => onCambiar(s.first),
+            showSelectedIcon: false,
+            style: ButtonStyle(
+              textStyle: WidgetStatePropertyAll(context.textos.labelLarge?.copyWith(fontSize: 14, fontWeight: FontWeight.w700, letterSpacing: 0.1)),
+              padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 8, vertical: 11)),
+              side: WidgetStateProperty.resolveWith((s) => BorderSide(color: s.contains(WidgetState.selected) ? context.esquema.primary : context.colores.borde, width: 1.2)),
+            ),
+          ),
+        );
+      }),
     );
+  }
+}
+
+class _EtiquetaPestana extends StatelessWidget {
+  const _EtiquetaPestana(this.p, {required this.estrecho});
+  final PestanaBoton p;
+  final bool estrecho;
+
+  @override
+  Widget build(BuildContext context) {
+    final cifra = estrecho ? (p.cifraCorta ?? p.cifra) : p.cifra;
+    final color = DefaultTextStyle.of(context).style.color;
+    return Text.rich(
+      TextSpan(children: [
+        TextSpan(text: p.texto),
+        if (cifra != null && cifra.isNotEmpty)
+          TextSpan(text: ' · $cifra', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: color?.withValues(alpha: 0.78))),
+      ]),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      softWrap: false,
+    );
+  }
+}
 
 /// Cabecera de la web (.site-header): degradado morado, título centrado en
 /// blanco y serif, y la línea dorada al pie. Sustituye a AppBar en toda la app.
@@ -863,3 +930,6 @@ class SelectorCadaSemanas extends StatelessWidget {
     ]);
   }
 }
+
+/// «1.004» (separador de miles en español), para las cifras de las pestañas.
+String cifraEs(int n) => NumberFormat.decimalPattern('es').format(n);

@@ -14,10 +14,10 @@ import 'motor_test.dart';
 import 'preguntas_por_tema_page.dart';
 
 /// Fase de selección del simulador: temas, exámenes, nº de preguntas, tiempo y baremo.
-/// Es la subpestaña TEST de Estudiar; [pestanas] va en la cabecera.
+/// Es la subpestaña TEST de Estudiar; [pestanas] (los botones) va bajo la cabecera, en el cuerpo.
 class ConfigTestPage extends ConsumerStatefulWidget {
   const ConfigTestPage({super.key, this.pestanas});
-  final PreferredSizeWidget? pestanas;
+  final Widget? pestanas;
   @override
   ConsumerState<ConfigTestPage> createState() => _ConfigTestPageState();
 }
@@ -37,7 +37,6 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
       appBar: BarraWeb(
         conOposicion: widget.pestanas != null,
         title: Text(widget.pestanas == null ? 'Simulador de test' : 'Estudiar'),
-        bottom: widget.pestanas,
         actions: [
           IconButton(
             tooltip: 'Estadísticas',
@@ -46,128 +45,135 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
           ),
         ],
       ),
-      body: banco.when(
-        loading: () => const Cargando(texto: 'Cargando preguntas…'),
-        error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(preguntasProvider)),
-        data: (b) {
-          final disponibles = MotorTest.filtrar(b, _cfg).length;
-          final delTest = disponibles == 0 ? 0 : _cfg.numPreguntas.clamp(1, disponibles);
-          return ListaAdaptable(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
-            children: [
-              if (ref.watch(oposicionProvider).testVoluntario)
-                Tarjeta(
-                  color: context.colores.primarioPalido,
-                  child: Text(
-                    'Tu examen no tiene test. Esto es práctica voluntaria con las preguntas del test de ${Oposiciones.porId(ref.watch(oposicionProvider).testDe).siglas}: muchas tratan materias que también entran en tu temario.',
-                    style: context.textos.bodySmall,
-                  ),
-                ),
-              if (pendientes.isNotEmpty)
-                Tarjeta(
-                  color: context.colores.primarioPalido,
-                  onTap: () => _repasar(pendientes),
-                  child: Row(children: [
-                    Icon(Icons.replay, color: context.esquema.primary),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text('Repaso pendiente', style: context.textos.titleMedium),
-                        Text('${pendientes.length} preguntas falladas por revisar (método Leitner)',
-                            style: context.textos.bodySmall),
-                      ]),
-                    ),
-                    const Icon(Icons.chevron_right),
-                  ]),
-                ),
-              if (ref.watch(oposicionProvider).esPrincipal)
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: FilaEnlace(
-                    icono: Icons.fact_check_outlined,
-                    titulo: 'Probabilidad de aprobar el test',
-                    subtitulo: 'Cuánto te da cada estrategia y qué temas caen más',
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProbabilidadTestPage())),
-                  ),
-                ),
-              if (ref.watch(oposicionProvider).esPrincipal)
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: FilaEnlace(
-                    icono: Icons.table_chart_outlined,
-                    titulo: 'Preguntas por tema',
-                    subtitulo: 'Cuántas ha tenido cada tema en los exámenes oficiales, examen a examen',
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PreguntasPorTemaPage())),
-                  ),
-                ),
-              TituloSeccion('Selección', accion: SegmentedButton<String>(showSelectedIcon: false,
-                segments: const [
-                  ButtonSegment(value: 'temas', label: Text('Temas')),
-                  ButtonSegment(value: 'examenes', label: Text('Exámenes')),
-                ],
-                selected: {_modo},
-                onSelectionChanged: (s) => setState(() {
-                  _modo = s.first;
-                  _cfg = _cfg.copyWith(temas: const {}, examenes: const {});
-                }),
-                style: const ButtonStyle(visualDensity: VisualDensity.compact),
-              )),
-              if (_modo == 'temas') _selectorTemas(b, bloques) else _selectorExamenes(b),
-              const SizedBox(height: 8),
-              // .config-examen de la web: caja verde clara con el título subrayado en dorado.
-              Container(
-                padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
-                decoration: BoxDecoration(color: context.colores.fondoClaro, border: Border.all(color: context.colores.bordeClaro), borderRadius: BorderRadius.circular(8)),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                  const Subtitulo('Configuración del examen'),
-                  _slider('Preguntas', _cfg.numPreguntas.toDouble(), 5, 100, 19,
-                      (v) => _cfg = _cfg.copyWith(numPreguntas: v.round()), '${_cfg.numPreguntas}'),
-                  _slider('Tiempo', _cfg.minutos.toDouble(), 0, 180, 36,
-                      (v) => _cfg = _cfg.copyWith(minutos: v.round()),
-                      _cfg.minutos == 0 ? 'Sin límite' : '${_cfg.minutos} min'),
-                  const SizedBox(height: 8),
-                  Row(children: [
-                    Expanded(child: _numero('Acierto', _cfg.puntosAcierto, (v) => _cfg = _cfg.copyWith(puntosAcierto: v))),
-                    const SizedBox(width: 8),
-                    Expanded(child: _numero('Fallo', _cfg.puntosFallo, (v) => _cfg = _cfg.copyWith(puntosFallo: v))),
-                    const SizedBox(width: 8),
-                    Expanded(child: _numero('Blanco', _cfg.puntosBlanco, (v) => _cfg = _cfg.copyWith(puntosBlanco: v))),
-                  ]),
-                ]),
-              ),
-              const SizedBox(height: 12),
-              // .filtro-oficial
+      body: Column(children: [
+        if (widget.pestanas != null) widget.pestanas!,
+        Expanded(child: _cuerpo(banco, bloques, pendientes)),
+      ]),
+    );
+  }
+
+  Widget _cuerpo(AsyncValue<BancoPreguntas> banco, Bloques bloques, List<int> pendientes) {
+    return banco.when(
+      loading: () => const Cargando(texto: 'Cargando preguntas…'),
+      error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(preguntasProvider)),
+      data: (b) {
+        final disponibles = MotorTest.filtrar(b, _cfg).length;
+        final delTest = disponibles == 0 ? 0 : _cfg.numPreguntas.clamp(1, disponibles);
+        return ListaAdaptable(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
+          children: [
+            // El camino a la otra subpestaña.
+            if (widget.pestanas != null) Aviso(icono: Icons.menu_book_outlined, titulo: 'Ver el temario', texto: 'Los temas, con sus PDF y tu progreso', onTap: () => ref.read(subpestanaEstudiarProvider.notifier).state = 0),
+            if (ref.watch(oposicionProvider).testVoluntario)
               Tarjeta(
                 color: context.colores.primarioPalido,
-                padding: EdgeInsets.zero,
-                child: CheckboxListTile(
-                  controlAffinity: ListTileControlAffinity.leading,
-                  title: Text('Solo preguntas de exámenes oficiales', style: context.textos.titleSmall),
-                  value: _cfg.soloOficiales,
-                  onChanged: (v) => setState(() => _cfg = _cfg.copyWith(soloOficiales: v ?? false)),
+                child: Text(
+                  'Tu examen no tiene test. Esto es práctica voluntaria con las preguntas del test de ${Oposiciones.porId(ref.watch(oposicionProvider).testDe).siglas}: muchas tratan materias que también entran en tu temario.',
+                  style: context.textos.bodySmall,
                 ),
               ),
-              const SizedBox(height: 12),
-              // .contador-seleccion
-              Contador(cifras: [
-                (valor: _modo == 'temas' ? (_cfg.temas.isEmpty ? 'Todos' : '${_cfg.temas.length}') : (_cfg.examenes.isEmpty ? 'Todos' : '${_cfg.examenes.length}'), etiqueta: _modo == 'temas' ? 'Temas' : 'Exámenes'),
-                (valor: '$disponibles', etiqueta: 'Disponibles'),
-                (valor: '$delTest', etiqueta: 'En el test'),
+            if (pendientes.isNotEmpty)
+              Tarjeta(
+                color: context.colores.primarioPalido,
+                onTap: () => _repasar(pendientes),
+                child: Row(children: [
+                  Icon(Icons.replay, color: context.esquema.primary),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text('Repaso pendiente', style: context.textos.titleMedium),
+                      Text('${pendientes.length} preguntas falladas por revisar (método Leitner)', style: context.textos.bodySmall),
+                    ]),
+                  ),
+                  const Icon(Icons.chevron_right),
+                ]),
+              ),
+            if (ref.watch(oposicionProvider).esPrincipal)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: FilaEnlace(
+                  icono: Icons.fact_check_outlined,
+                  titulo: 'Probabilidad de aprobar el test',
+                  subtitulo: 'Cuánto te da cada estrategia y qué temas caen más',
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProbabilidadTestPage())),
+                ),
+              ),
+            if (ref.watch(oposicionProvider).esPrincipal)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: FilaEnlace(
+                  icono: Icons.table_chart_outlined,
+                  titulo: 'Preguntas por tema',
+                  subtitulo: 'Cuántas ha tenido cada tema en los exámenes oficiales, examen a examen',
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PreguntasPorTemaPage())),
+                ),
+              ),
+            TituloSeccion('Selección',
+                accion: SegmentedButton<String>(
+                  showSelectedIcon: false,
+                  segments: const [
+                    ButtonSegment(value: 'temas', label: Text('Temas')),
+                    ButtonSegment(value: 'examenes', label: Text('Exámenes')),
+                  ],
+                  selected: {_modo},
+                  onSelectionChanged: (s) => setState(() {
+                    _modo = s.first;
+                    _cfg = _cfg.copyWith(temas: const {}, examenes: const {});
+                  }),
+                  style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                )),
+            if (_modo == 'temas') _selectorTemas(b, bloques) else _selectorExamenes(b),
+            const SizedBox(height: 8),
+            // .config-examen de la web: caja verde clara con el título subrayado en dorado.
+            Container(
+              padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
+              decoration: BoxDecoration(color: context.colores.fondoClaro, border: Border.all(color: context.colores.bordeClaro), borderRadius: BorderRadius.circular(8)),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                const Subtitulo('Configuración del examen'),
+                _slider('Preguntas', _cfg.numPreguntas.toDouble(), 5, 100, 19, (v) => _cfg = _cfg.copyWith(numPreguntas: v.round()), '${_cfg.numPreguntas}'),
+                _slider('Tiempo', _cfg.minutos.toDouble(), 0, 180, 36, (v) => _cfg = _cfg.copyWith(minutos: v.round()), _cfg.minutos == 0 ? 'Sin límite' : '${_cfg.minutos} min'),
+                const SizedBox(height: 8),
+                Row(children: [
+                  Expanded(child: _numero('Acierto', _cfg.puntosAcierto, (v) => _cfg = _cfg.copyWith(puntosAcierto: v))),
+                  const SizedBox(width: 8),
+                  Expanded(child: _numero('Fallo', _cfg.puntosFallo, (v) => _cfg = _cfg.copyWith(puntosFallo: v))),
+                  const SizedBox(width: 8),
+                  Expanded(child: _numero('Blanco', _cfg.puntosBlanco, (v) => _cfg = _cfg.copyWith(puntosBlanco: v))),
+                ]),
               ]),
-              const SizedBox(height: 18),
-              // .btn-comenzar
-              Center(
-                child: FilledButton.icon(
-                  style: FilledButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16), textStyle: context.textos.labelLarge?.copyWith(fontSize: 16.5), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)), elevation: 3),
-                  onPressed: disponibles == 0 ? null : () => context.push('/examen', extra: _cfg),
-                  icon: const Icon(Icons.play_arrow),
-                  label: Text(disponibles == 0 ? 'No hay preguntas con esos filtros' : 'Comenzar test'),
-                ),
+            ),
+            const SizedBox(height: 12),
+            // .filtro-oficial
+            Tarjeta(
+              color: context.colores.primarioPalido,
+              padding: EdgeInsets.zero,
+              child: CheckboxListTile(
+                controlAffinity: ListTileControlAffinity.leading,
+                title: Text('Solo preguntas de exámenes oficiales', style: context.textos.titleSmall),
+                value: _cfg.soloOficiales,
+                onChanged: (v) => setState(() => _cfg = _cfg.copyWith(soloOficiales: v ?? false)),
               ),
-            ],
-          );
-        },
-      ),
+            ),
+            const SizedBox(height: 12),
+            // .contador-seleccion
+            Contador(cifras: [
+              (valor: _modo == 'temas' ? (_cfg.temas.isEmpty ? 'Todos' : '${_cfg.temas.length}') : (_cfg.examenes.isEmpty ? 'Todos' : '${_cfg.examenes.length}'), etiqueta: _modo == 'temas' ? 'Temas' : 'Exámenes'),
+              (valor: '$disponibles', etiqueta: 'Disponibles'),
+              (valor: '$delTest', etiqueta: 'En el test'),
+            ]),
+            const SizedBox(height: 18),
+            // .btn-comenzar
+            Center(
+              child: FilledButton.icon(
+                style: FilledButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16), textStyle: context.textos.labelLarge?.copyWith(fontSize: 16.5), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)), elevation: 3),
+                onPressed: disponibles == 0 ? null : () => context.push('/examen', extra: _cfg),
+                icon: const Icon(Icons.play_arrow),
+                label: Text(disponibles == 0 ? 'No hay preguntas con esos filtros' : 'Comenzar test'),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -175,8 +181,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
     context.push('/examen', extra: ConfigTest(idsFijos: ids, minutos: 0, tipo: 'repaso'));
   }
 
-  Widget _slider(String etiqueta, double valor, double min, double max, int divisiones,
-      void Function(double) onChange, String texto) {
+  Widget _slider(String etiqueta, double valor, double min, double max, int divisiones, void Function(double) onChange, String texto) {
     return Row(children: [
       SizedBox(width: 80, child: Text(etiqueta, style: context.textos.labelLarge)),
       Expanded(
@@ -219,8 +224,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
         child: Wrap(alignment: WrapAlignment.spaceBetween, crossAxisAlignment: WrapCrossAlignment.center, children: [
           Wrap(children: [
             TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: const {})), child: const Text('Todos')),
-            for (final letra in partes.keys.toList()..sort())
-              TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes[letra]!.toSet())), child: Text('Parte $letra')),
+            for (final letra in partes.keys.toList()..sort()) TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes[letra]!.toSet())), child: Text('Parte $letra')),
             // Los temas que más caen en los exámenes oficiales (frecuencia_temas.json).
             if (ref.watch(frecuenciaTestProvider).valueOrNull case final f?)
               for (final n in const [20, 40])

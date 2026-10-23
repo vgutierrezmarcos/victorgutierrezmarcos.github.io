@@ -9,11 +9,13 @@ import 'nuevo_cante_sheet.dart';
 import '../plan/diario_page.dart';
 import '../plan/plan_page.dart';
 import '../preparador/semana_page.dart';
+import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 
 /// Cantes: todo lo que rodea a cantar un tema, en tres subpestañas que siguen
 /// el orden natural: Agenda (cuándo), Cantar (sacar bola y cronómetro) y Diario
-/// (cómo fue). Al preparador: Clases (su semana con sus alumnos) y Cantar.
+/// (cómo fue). Al preparador: Clases (su semana con sus alumnos) y Cantar. Las
+/// subpestañas son botones ([BotonesPestanas]) bajo la cabecera.
 class CantesPage extends ConsumerStatefulWidget {
   const CantesPage({super.key});
   @override
@@ -44,7 +46,14 @@ class _CantesPageState extends ConsumerState<CantesPage> with TickerProviderStat
     // El preparador no tiene diario propio: dos subpestañas.
     final n = preparador ? 2 : 3;
     final indice = ref.watch(subpestanaCantesProvider).clamp(0, n - 1);
-    final pestanas = _pestanas(n, indice);
+    _pestanas(n, indice);
+    // Las cifras de los botones: cantes que vienen, cantes hechos y, al preparador, clases próximas.
+    final hoy = DateTime.now();
+    final inicioHoy = DateTime(hoy.year, hoy.month, hoy.day);
+    final cantes = ref.watch(cantesProvider);
+    final proximos = cantes.where((c) => !c.borrado && c.estado == EstadoCante.pendiente && !c.fecha.isBefore(inicioHoy)).length;
+    final hechos = cantes.where((c) => !c.borrado && c.hecho).length;
+    final proximas = preparador ? ref.watch(sesionesProvider).where((c) => !c.borrado && c.estado == EstadoCante.pendiente && !c.fecha.isBefore(inicioHoy)).length : 0;
     // Otras pantallas cambian de subpestaña (p. ej. «Sacar bola y cantar» desde un cante).
     ref.listen(subpestanaCantesProvider, (_, i) {
       final j = i.clamp(0, (_controlador?.length ?? 1) - 1);
@@ -69,13 +78,30 @@ class _CantesPageState extends ConsumerState<CantesPage> with TickerProviderStat
             ],
           ),
         ],
-        bottom: barraPestanas(context, controller: pestanas, textos: preparador ? const ['Clases', 'Cantar'] : const ['Agenda', 'Cantar', 'Diario'], onTap: (i) => ref.read(subpestanaCantesProvider.notifier).state = i),
       ),
-      // IndexedStack y no TabBarView: el cronómetro sigue vivo al mirar la agenda o el diario.
-      body: IndexedStack(
-        index: indice,
-        children: preparador ? const [SemanaPage(embebida: true), CantarPage()] : const [AgendaCantesVista(), CantarPage(), DiarioVista()],
-      ),
+      body: Column(children: [
+        BotonesPestanas(
+          indice: indice,
+          onCambiar: (i) => ref.read(subpestanaCantesProvider.notifier).state = i,
+          pestanas: preparador
+              ? [
+                  PestanaBoton(texto: 'Clases', icono: Icons.school_outlined, cifra: proximas > 0 ? cifraEs(proximas) : null, descripcion: 'Clases con tus alumnos${proximas > 0 ? ': $proximas próximas' : ''}'),
+                  const PestanaBoton(texto: 'Cantar', icono: Icons.mic_none, descripcion: 'Sacar bola y cronómetro'),
+                ]
+              : [
+                  PestanaBoton(texto: 'Agenda', icono: Icons.event_note_outlined, cifra: proximos > 0 ? cifraEs(proximos) : null, descripcion: 'Agenda de cantes${proximos > 0 ? ': $proximos próximos' : ''}'),
+                  const PestanaBoton(texto: 'Cantar', icono: Icons.mic_none, descripcion: 'Sacar bola y cronómetro'),
+                  PestanaBoton(texto: 'Diario', icono: Icons.history, cifra: hechos > 0 ? cifraEs(hechos) : null, descripcion: 'Diario de cantes${hechos > 0 ? ': $hechos hechos' : ''}'),
+                ],
+        ),
+        // IndexedStack y no TabBarView: el cronómetro sigue vivo al mirar la agenda o el diario.
+        Expanded(
+          child: IndexedStack(
+            index: indice,
+            children: preparador ? const [SemanaPage(embebida: true), CantarPage()] : const [AgendaCantesVista(), CantarPage(), DiarioVista()],
+          ),
+        ),
+      ]),
     );
   }
 }

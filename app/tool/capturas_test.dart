@@ -95,7 +95,7 @@ void main() {
     // ------------------------------------------------------------- Estudiar
     Future<void> estudiar(String nombre) async {
       await pestana('Estudiar');
-      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)));
+      await tocar(find.descendant(of: find.byType(BotonesPestanas), matching: find.textContaining(nombre, findRichText: true)));
     }
 
     await estudiar('Temas');
