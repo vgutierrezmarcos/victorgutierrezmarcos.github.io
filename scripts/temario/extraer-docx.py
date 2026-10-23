@@ -198,7 +198,8 @@ def bloques_estilo(md, estilo):
 
 def inventario(tema, md, coms, origen):
     inv = {'tema': tema.codigo, 'titulo': tema.titulo(), 'original': origen,
-           'palabras': len(re.findall(r'\w+', re.sub(r'⟦/?\w+⟧|\$[^$]*\$', ' ', md)))}
+           # Solo las fórmulas (una línea o $$…$$): un «\$» suelto no debe comerse párrafos enteros
+           'palabras': len(re.findall(r'\w+', re.sub(r'⟦/?\w+⟧|\$\$.*?\$\$|(?<!\\)\$[^$\n]+?(?<!\\)\$', ' ', md, flags=re.S)))}
     for marca in ('AMARILLO', 'ROJO', 'OCULTO'):
         lista = []
         for m in re.finditer(r'⟦%s⟧(.*?)⟦/%s⟧' % (marca, marca), md, re.S):
