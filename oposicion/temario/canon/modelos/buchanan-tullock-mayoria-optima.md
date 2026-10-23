@@ -22,7 +22,7 @@
 
 **Valoración:** explica por qué las democracias combinan reglas según la decisión; supone costes conocidos en la fase constitucional y deja fuera a quién decide en la práctica: democracia representativa y elección pública (anexo D del 3.A.24, \vertema{3.A.23}, \vertema{4.B.2}).
 
-**Gráfico de referencia:** `oposicion/temario/fuentes/3A24/graficos/buchanan-tullock.tex` (3.A.24, 22/10/2026; lo reutilizará el 4.B.2). Eje horizontal $M$ de 0 a 100 %; $\mathrm{CE}(M)=8(1-M)^2$ decreciente y nulo en $M=1$; $\mathrm{CD}(M)=6M^3$ creciente; su suma en U con mínimo en $M^*\approx0{,}60$. En el cante, boceto (unos 20″) o de palabra.
+**Gráfico de referencia:** `oposicion/temario/fuentes/3A24/graficos/buchanan-tullock.tex` (3.A.24, 22/10/2026; lo reutilizará el 4.B.2). Eje horizontal $M$ de 0 a 100 %; $\mathrm{CE}(M)=9(1-M)^2$ decreciente y nulo en $M=1$; $\mathrm{CD}(M)=1+5M^3$ creciente; su suma en U con mínimo en $M^*\approx0{,}65$, **a la derecha del corte de las 2 curvas** ($M\approx0{,}55$): el óptimo está donde las pendientes se compensan ($-\mathrm{CE}'=\mathrm{CD}'$), no donde los costes se igualan, y el gráfico no debe sugerir que coinciden (Víctor, 23/10/2026). En el cante, boceto (unos 20″) o de palabra.
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
