@@ -569,3 +569,10 @@ comprobación allí.
 - **Al final la pizarra** queda con la regla del tiempo en la esquina y el esquema de fases: lo que hay que llevar
   memorizado.
 - **Apoyo, nunca pizarra**: tablas de umbrales, de bancos y de preguntas, y los gráficos de datos.
+
+### Decisiones de Víctor sobre la segunda vuelta (24/10/2026)
+
+- Los 11 «Ejemplo de redacción» largos se quedan en el anexo D.1, con remisión desde su indicador.
+- La tabla de calificaciones (S&P, Moody's, Fitch; DBRS en cursiva) pasa al cuerpo, en el apartado de política fiscal, junto a la calidad crediticia de la deuda; las tablas bancarias siguen en el anexo B.
+- El anexo E («Análisis de casos frecuentes») se mantiene.
+- Para que el cuerpo siga en 50 páginas, la conclusión se compacta (el «qué hay que llevarse» ya está en el índice de la introducción) y la tabla de desequilibrios comparte página con ella. Resultado: cuerpo 50, anexos 38, bibliografía 9 (97 págs.).
