@@ -786,7 +786,11 @@ h1, h2, h3, h4 { text-wrap: balance; }
     .cards-grid-half { grid-template-columns: 1fr; }
 }
 
-/* Enlaces secundarios dentro de una tarjeta */
+/* Enlaces secundarios dentro de una tarjeta: el enlace principal no ocupa
+   toda la altura, para que estos queden dentro del borde */
+.tema-card:has(.tema-card-extra) { display: flex; flex-direction: column; }
+.tema-card:has(.tema-card-extra) > a { height: auto; flex: 1; }
+
 .tema-card-extra {
     margin: -0.75rem 1.6rem 1.25rem;
     font-family: var(--font-ui);
