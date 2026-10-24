@@ -1,7 +1,7 @@
 # Encuesta de Población Activa (EPA) e indicadores del mercado de trabajo
 
 - **Área:** economia-espanola · **Tema de referencia:** 4.A.1 (fuentes estadísticas: metodología y limitaciones); los **datos** de España, en 4.A.16
-- **Temas que lo usan:** 4.A.1 (desarrollo metodológico), 4.A.16 (desarrollo de datos), 4.A.2 (resumen previsto: actividad y demografía), 4.A.17 (resumen: tasas por CA), 4.A.29 (resumen: situación actual), 4.A.28 (mención), 3.B.40-3.B.42 (mención: objetivos de empleo de la UE)
+- **Temas que lo usan:** 4.A.1 (desarrollo metodológico), 4.A.16 (desarrollo de datos), 4.A.2 (resumen previsto: actividad y demografía), 4.A.17 (resumen: tasas por CA), 4.A.29 (resumen: situación actual), 4.A.28 (mención), 3.B.40-3.B.42 (mención: objetivos de empleo de la UE), 1D01 (uso: III.1)
 - **Manuales de referencia:** INE, metodología de la EPA (2021); OIT, resolución de la 19.ª CIET (2013); Reglamento (UE) 2019/1700 (IESS); Eurostat, LFS
 - **Decisión D049 (13/10/2026):** ¿Qué definición de la tasa de actividad se usa? La de la EPA (activos / población de 16 y más años) en todo el temario; si se usa 16-64, decirlo y dar su valor (≈ 75 %)
 
@@ -19,6 +19,7 @@ Otras fuentes y por qué difieren: paro registrado (SEPE, administrativo; fijos 
 | 4.A.1 | Fuentes estadísticas | Desarrollo | Diseño, definiciones, tasas, limitaciones, comparación con paro registrado y afiliación | Datos coyunturales |
 | 4.A.16 | Mercado de trabajo | Desarrollo de datos | Últimos datos EPA y su evolución | La metodología (remitir a 4.A.1) |
 | 4.A.17 / 4.A.29 | Regiones / situación actual | Resumen | Las tasas que usen, con definición EPA | Definiciones |
+| 1D01 | Dictamen de coyuntura | Uso | $L$, $U$, $A=L+U$, $P_{16}$; tasa de actividad $A/P_{16}$, de empleo $L/P_{16}$, de paro $u=U/A$; Eurostat y la OCDE usan 15-64: comparar con la misma edad (España ≈ 75 % con 15-64, ≈ 58 % con 16 y más) | La metodología de la encuesta |
 
 ## Divergencias encontradas en el temario actual
 - **Tasa de actividad mal definida** en 4.A.16 y 4.A.29 («activos/población 16-64» con 59,41 % y 58,97 %, que son valores de 16 y más). Canon: definición EPA (activos / población de 16 y más años) en todo el temario; si se usa 16-64, se dice y se da su valor (≈ 75 %).

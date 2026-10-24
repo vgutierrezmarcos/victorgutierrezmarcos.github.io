@@ -1,7 +1,7 @@
 # Contabilidad del crecimiento (Solow 1957) y enfoque dual (Hsieh 2002)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.45 (contabilidad del crecimiento y PTF) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.45 (desarrollo), 4.A.27 (mención)
+- **Temas que lo usan:** 3.A.45 (desarrollo), 4.A.27 (mención), 1D01 (uso: II.4)
 - **Manuales de referencia:** Solow (1957); Jorgenson y Griliches (1967); Hsieh (2002); Barro y Sala i Martín (2004), cap. 10; Romer (2019), cap. 1.
 
 ## Presentación de referencia
@@ -18,6 +18,7 @@ Gráfico de referencia: barras apiladas de la descomposición del crecimiento (a
 |---|---|---|---|---|
 | 3.A.45 | Contabilidad del crecimiento y PTF | desarrollo | Primal y dual, resultados, críticas, extensiones (KLEMS) | — |
 | 4.A.27 | Crecimiento de la economía española (1960-1973) | mención | Descomposición del crecimiento (≈60 % PTF) | Derivación [ver tema 3.A.45] |
+| 1D01 | Dictamen de coyuntura | Uso | $\gamma_Y=\gamma_A+\alpha\gamma_K+(1-\alpha)\gamma_L$ con α participación del capital (no $s_L$, $s_K$: s es la tasa de ahorro); PAT y su descomposición | La derivación |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.45 mezcla α y (1−α) con α_K y α_L, y escribe el residuo como RS y como Ȧ/A: propuesta **γ_A** y **α, 1−α** (α_i solo con más de dos factores).

@@ -675,7 +675,8 @@ function Pandoc(doc)
 end
 
 -- Enlaces de \vertema ---------------------------------------------------------
--- construir-tema.py deja cada \vertema{3.A.12} dentro de un \href al tema
+-- construir-tema.py deja cada \vertema{3.A.12} (y \vertemacorto{3.A.12}, que
+-- solo muestra el código) dentro de un \href al tema
 -- citado; el enlace lleva la clase «vertema» (gris, sin subrayar en tema.css).
 -- El Span de dentro ya tiene la clase (la walk visita antes a los hijos).
 function Link(l)

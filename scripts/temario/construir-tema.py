@@ -450,7 +450,7 @@ def preparar_pandoc(tema, tex, formato):
         url = d['html'] if formato == 'html' else d['pdf']
         # En \href, «#», «%» y «~» se escapan; las rutas de los temas no los llevan
         return f'\\href{{{url}}}{{{m.group(0)}}}'
-    cuerpo = re.sub(r'\\vertema\{([^{}]*)\}', enlace_tema, cuerpo)
+    cuerpo = re.sub(r'\\vertema(?:corto)?\{([^{}]*)\}', enlace_tema, cuerpo)
     cuerpo = expandir_funcionclave(expandir_optim(cuerpo))
     # Gráfico o tabla dentro de una caja (figuracaja, tablacaja de tcee.sty): en
     # la web y en Word son figuras y tablas normales dentro del Div de la caja
@@ -553,7 +553,8 @@ def comunes_pandoc(tema, datos):
         publicada = None
     if publicada and publicada <= dia:
         orden += ['-M', f'fecha-publicada={publicada.isoformat()}', '-M', f'fecha-publicada-cita={publicada:%Y/%m/%d}']
-    paginas = linea_paginas(paginas_partes(os.path.join(tema.trabajo, f'{tema.archivo}.aux')))
+    paginas = linea_paginas(paginas_partes(os.path.join(tema.trabajo, f'{tema.archivo}.aux')),
+                            'Guía' if tema.es_dictamen else 'Tema')
     if paginas:
         orden += ['-M', f'paginas={paginas}']
     for campo, valor in datos_seo(tema).items():
@@ -612,7 +613,7 @@ def enlaces_app_html(ruta, tema):
         else:
             app = d['pdf']
         return m.group(0).replace('<a ', f'<a data-app="{app}" ', 1)
-    html = re.sub(r'(<a href="[^"]*" class="vertema">)\s*<span class="vertema"[^>]*>\[ver tema ([^\]<]*)\]</span>\s*</a>',
+    html = re.sub(r'(<a href="[^"]*" class="vertema">)\s*<span class="vertema"[^>]*>(?:\[ver tema )?([^\]<]*?)\]?</span>\s*</a>',
                   poner, html)
     with open(ruta, 'w', encoding='utf-8') as f:
         f.write(html)

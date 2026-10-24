@@ -1,7 +1,7 @@
 # Índices de coste de la vida e índices de Laspeyres y Paasche
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.9** (Demanda II: medidas de cambio en el bienestar; revisado el 13/10/2026, III.3) — único que lo desarrolla con la función de gasto.
-- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 4.A.1 (resumen: IPC, IPI, ICLA); 3.A.8 lo menciona (preferencia revelada) y 3.A.30 lo usa (deflactor del PIB).
+- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 4.A.1 (resumen: IPC, IPI, ICLA); 3.A.8 lo menciona (preferencia revelada) y 3.A.30 lo usa (deflactor del PIB), 1D01 (mención: IV.1, remite al 3.A.9).
 - **Manuales de referencia:** Konüs (1924/1939); Mas-Colell, Whinston y Green, §3.I; Deaton y Muellbauer (1980), cap. 7; Diewert (1976) (índices superlativos); Varian, cap. 8; manual del IPC del INE y de Eurostat (4.A.1).
 - **Decisión D044 (13/10/2026):** ¿Qué letra llevan las ponderaciones de los índices (IPC, tipos de cambio efectivos, ITC)? ω_i (ω_{i,t−1} en el IPC; media geométrica con pesos ω_i en los tipos efectivos)
 
@@ -31,6 +31,7 @@ Gráfico de referencia: plano $(x_1,x_2)$, cesta $x^0$ en $\overline U^0$, recta
 | 4.A.1 | Fuentes estadísticas | resumen | IPC como Laspeyres encadenado con ponderaciones $\omega_{i,t-1}$ actualizadas cada año; sesgos (sustitución, calidad, nuevos bienes); deflactor del PIB como Paasche encadenado | La derivación con la función de gasto (remitir a 3.A.9) |
 | 3.A.30 | Contabilidad nacional | mención | Deflactor implícito del PIB como Paasche encadenado | — |
 | 3.A.8 | Preferencia revelada | mención | Las comparaciones con Laspeyres y Paasche se basan en el ADPR [3.A.9] | — |
+| 1D01 | Dictamen de coyuntura | Mención | IPC Laspeyres encadenado y deflactor Paasche encadenado, con $\vect{p}^t\cdot\vect{x}^0$ (no $q_i$) | La teoría |
 
 ## Divergencias encontradas en el temario actual
 - **Esta ficha** decía «$p^1\cdot x^0-\overline W\ge VC$» (signo cambiado con la convención de `vc-ve`) y presentaba Laspeyres y Paasche como cotas del mismo índice; corregida el 13/10/2026 a raíz del 3.A.9 (ver `cambios.md`).

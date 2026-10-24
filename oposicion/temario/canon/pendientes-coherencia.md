@@ -281,3 +281,30 @@ P21-01 (a): el estándar q̄ del 3.A.23 se mantiene (`notacion.md` § 5); sin ca
 - La entrada del 3.A.13 (remisiones de Laffont-Tirole al 3.A.20) está en su sección, con las líneas actualizadas el 22/10/2026: también se aplica con `--fase coherencia` cuando Víctor apruebe el 3.A.20.
 
 - **3.A.22 — capítulo de Gravelle y Rees.** El 3.A.22 cita los juicios de valor de Gravelle y Rees (2004) como capítulo 12; son del capítulo 13 (pp. 289–290: individualismo, no paternalismo y benevolencia; la independencia del proceso, en la sección B del mismo capítulo). Corregir la cita. *A raíz de:* búsqueda de fuentes del 3.A.24 (A24-05, 23/10/2026).
+
+## Pendiente de la 1D01 (24/10/2026)
+
+Cambios del canon a raíz de la revisión de la guía del dictamen de coyuntura (`fuentes/1D01/revision.md`, § 6; `_trabajo/propuestas-coherencia.md`, K8-K31 y C1-C14; decisiones de Víctor del 23/10/2026 en `_trabajo/decisiones-victor.md`). Ninguno obliga a cambiar un tema del 3.er ejercicio ya revisado: la guía cita sobre todo temas de macro, sector exterior y política económica que están sin revisar.
+
+- **Comprobado sin cambios en los temas revisados:**
+  - **3.A.9**: las cajas del IPC (Laspeyres encadenado, base 2025 desde enero de 2026, precios de diciembre, ponderaciones anuales, 487 artículos) y del deflactor (Paasche encadenado, +3,0 % en 2025) dicen lo mismo que la guía, que las resume y remite a ellas con `\vertema{3.A.9}` (IV.1). Su remisión al 4.A.1 y al 3.A.30 sigue bien. La notación de la guía ($\vect{p}^t\cdot\vect{x}^0$) es la del 3.A.9.
+  - **3.A.17**: la guía remite el salario mínimo a `\vertema{3.A.17}` sin repetir la cifra del SMI de 2026; no hay contradicción.
+  - **3.A.10** (prudencia y ahorro precautorio) y **3.A.13** (racionamiento del crédito): la guía los usa con las mismas palabras.
+  - **3.A.22**: su $(X^*,Y^*)$ es el punto de la caja de producción (micro, local), no la renta extranjera ni el potencial: no choca con $Y^p$.
+- [pendiente, opcional, menor] **1D01 — brecha crédito-PIB.** En III.2 (`sec:capitales`, párrafo «Brecha crédito-PIB») y en `tab:indicadores-financiero`, la brecha remite solo a `\vertema{3.A.42}`; añadir `\vertema{3.B.27}` (tema de referencia de la ficha nueva `brecha-credito-pib`, colchón anticíclico). *Por qué:* ficha `brecha-credito-pib`. *A raíz de:* fase canon de la 1D01.
+- [condicional a las **[decidir]** del canon] **1D01:**
+  1. ~~Tasa de paro~~ **decidido (Víctor, 24/10/2026)**: la regla con nota, que es la que ya sigue la guía; la 1D01 no cambia.
+  2. ~~Volatilidad del empleo~~ **decidido (Víctor, 24/10/2026)**: «similar o algo menor», la de la guía; la 1D01 no cambia.
+  3. Si se adopta «norma salarial» para la regla de Watt (`notacion.md` § 14): la nota de los CLU (III.1, «Es la "regla de oro" salarial de Watt») pasa a «Es la "norma salarial" de Watt (2007), que él llama regla de oro».
+  4. Si se adopta ϑ para el coeficiente de Okun: la guía no cambia (lo cuenta en palabras).
+- **Para cuando se revisen** (no son pendientes de coherencia; detalle en `mapa.yaml`, contradicciones de 1D01, y en las fichas):
+  - **3.A.42 — volatilidad del empleo (decidido, Víctor, 24/10/2026)**: en «0.2.2. Hechos estilizados de los ciclos económicos», «el empleo es más volátil que el producto» → «el empleo es procíclico, algo retrasado y con una volatilidad similar o algo menor que la del producto (Stock y Watson, 1999)»; revisar también la frase de las horas por trabajador. *Por qué:* decisión de Víctor para todo el temario (ficha `hechos-estilizados-ciclo`). *A raíz de:* 1D01 (duda 14). Comprobado: ningún tema revisado (3.A.8-3.A.24) dice lo contrario; se aplica al revisar el 3.A.42 (no está revisado).
+  - **4.A.16, 4.A.29, 4.B.4 — tasa de paro (decidido, Víctor, 24/10/2026)**: $U_t$/$U^n$ en Phillips, NAIRU y Okun, y $U$ parados con $u=U/A$ en la EPA, con la nota estándar (`notacion.md` § 6). Ningún tema revisado usa la tasa de paro: se aplica al revisarlos.
+  - **3.A.42**: referencia (doble con 4.B.4) de `brecha-produccion` y de `hechos-estilizados-ciclo`: inversión residencial (adelantada) y existencias en su tabla; brecha con $Y^p$ (no $Y^*$); gráficos reutilizables de la guía (`ciclo-tendencia`, `comovimientos`, `fases-ciclo-brecha`); brecha crédito-PIB en el ciclo financiero.
+  - **4.B.4**: el filtro HP remite a «[ver tema 3.A.41]» (numeración antigua) → `\vertema{3.A.42}`; $Y^p$ para el potencial; ε, no η (D029); tono = variación de $b^{pe}$, no su nivel; impulso fiscal $=-\Delta b^{pe}$; Okun en puntos de paro frente a crecimiento (ficha `okun`), no como $\varepsilon_{U,Y}$.
+  - **3.A.28**: añadir la ley de Okun si se confirma como su tema de referencia (ficha `okun`, **[decidir]**).
+  - **3.B.12**: referencia de `marshall-lerner` (ficha creada): los 2 sentidos del traspaso; $q$ en lugar de $\varkappa$; $\gamma_Y$ y $\gamma^N$ en la sostenibilidad (ficha `sostenibilidad-deuda-externa`, corregida).
+  - **4.A.16, 4.A.29**: regla de la tasa de paro (`notacion.md` § 6) y tasa de actividad con su edad (ficha `epa`); el 4.A.29 con el cuadro del PDM de 2025 (ficha `semestre-europeo`), no el anterior.
+  - **4.A.22**: $\gamma_{\mathrm{CLU}}=\gamma_W-\gamma_{\mathrm{PAT}}$ con $W$ nominal (ficha `tipo-cambio-real`, corregida).
+  - **4.A.1**: subyacente del INE sin alimentos **no elaborados** ni energía, y la del BCE (ficha `ipc`).
+  - **3.A.30** (`contribuciones-crecimiento`), **3.A.40** (`policy-mix`), **3.B.22** (`adecuacion-reservas`), **4.A.19** (`indicadores-bancarios`) y **3.B.27** (`brecha-credito-pib`): temas de referencia de las fichas nuevas; desarrollarlas con la presentación de la ficha.

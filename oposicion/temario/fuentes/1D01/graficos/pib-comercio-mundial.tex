@@ -1,0 +1,78 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Mundo, 2005-2027: crecimiento del PIB real y del volumen del comercio de
+% bienes y servicios (%). FMI, WEO de octubre de 2026 (consulta 23/10/2026);
+% 2026-2027 son previsiones. Las medias 2005-2019 se calculan con el CSV.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/pib-comercio-mundial.csv}\mundo
+\pgfmathsetmacro{\sumapib}{0}\pgfmathsetmacro{\sumacom}{0}\pgfmathsetmacro{\nmedia}{0}
+\pgfplotstablegetrowsof{\mundo}\pgfmathtruncatemacro{\ultima}{\pgfplotsretval-1}
+\foreach \i in {0,...,\ultima}{%
+  \pgfplotstablegetelem{\i}{anio}\of\mundo\let\anio\pgfplotsretval
+  \ifnum\anio<2020
+    \pgfplotstablegetelem{\i}{pib_mundial}\of\mundo
+    \pgfmathsetmacro{\a}{\sumapib+\pgfplotsretval}\global\let\sumapib\a
+    \pgfplotstablegetelem{\i}{comercio_mundial}\of\mundo
+    \pgfmathsetmacro{\a}{\sumacom+\pgfplotsretval}\global\let\sumacom\a
+    \pgfmathsetmacro{\a}{\nmedia+1}\global\let\nmedia\a
+  \fi}
+\pgfmathsetmacro{\mediapib}{\sumapib/\nmedia}
+\pgfmathsetmacro{\mediacom}{\sumacom/\nmedia}
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1,mark repeat=2,mark phase=2] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=7.5cm, set layers,
+      xmin=2004.4, xmax=2027.6, xtick={2005,...,2027},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize, rotate=45, anchor=north east},
+      ymin=-12, ymax=14, ytick={-10,-5,...,10},
+      yticklabel style={font=\footnotesize},
+      ylabel={Tasa de variación real (\%)},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.17)}, anchor=north, legend columns=2,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left,
+    ]
+    % 1: ejes, cero y años
+    \capa{1}{
+      \draw[thin,black] (axis cs:2004.4,0) -- (axis cs:2027.6,0);
+    }
+    % 2: PIB mundial (observado y, en discontinuo, previsión)
+    \capa{2}{
+      \addplot[leyenda linea corta, very thick, tceemorado, mark=*, mark size=1.6pt,
+        mark options={fill=white,solid}, restrict x to domain=2005:2025]
+        table[x=anio, y=pib_mundial] {\mundo};
+      \addlegendentry{PIB real mundial}
+      \addplot[forget plot, very thick, dashed, tceemorado, mark=*, mark size=1.6pt,
+        mark options={fill=white,solid}, restrict x to domain=2025:2027]
+        table[x=anio, y=pib_mundial] {\mundo};
+    }
+    % 3: comercio mundial
+    \capa{3}{
+      \addplot[leyenda linea corta, very thick, tceeazul, mark=square*, mark size=1.5pt,
+        mark options={fill=white,solid}, restrict x to domain=2005:2025]
+        table[x=anio, y=comercio_mundial] {\mundo};
+      \addlegendentry{Volumen del comercio mundial de bienes y servicios}
+      \addplot[forget plot, very thick, dashed, tceeazul, mark=square*, mark size=1.5pt,
+        mark options={fill=white,solid}, restrict x to domain=2025:2027]
+        table[x=anio, y=comercio_mundial] {\mundo};
+    }
+    % 4: medias 2005-2019 y marca de las previsiones
+    \capa{4}{
+      \addplot[forget plot, thick, dashed, tceemorado!80, domain=2005:2019, samples=2] {\mediapib};
+      \addplot[forget plot, thick, dashed, tceeazul!80, domain=2005:2019, samples=2] {\mediacom};
+      \addlegendimage{leyenda linea corta, thick, dashed, tceemorado!80}
+      \addlegendentry{Media 2005-2019 del PIB: \pgfmathprintnumber[use comma,fixed,fixed zerofill,precision=1]{\mediapib}\,\%}
+      \addlegendimage{leyenda linea corta, thick, dashed, tceeazul!80}
+      \addlegendentry{Media 2005-2019 del comercio: \pgfmathprintnumber[use comma,fixed,fixed zerofill,precision=1]{\mediacom}\,\%}
+      \fill[tceegris, opacity=0.12, on layer=axis background]
+        (axis cs:2025.5,-12) rectangle (axis cs:2027.6,14);
+      \node[font=\footnotesize, text=tceegris, anchor=north] at (axis cs:2026.55,13.6) {Previsión};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

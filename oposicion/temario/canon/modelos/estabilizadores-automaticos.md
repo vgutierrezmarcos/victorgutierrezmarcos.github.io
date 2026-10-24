@@ -1,7 +1,7 @@
 # Estabilizadores automáticos (elasticidad de la recaudación y del gasto)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.4 (presupuesto compensador; componentes discrecionales y automáticos) — está en el título.
-- **Temas que lo usan:** 4.B.4 (desarrollo), 4.B.7 (desarrollo; debe quedar en resumen), 4.B.3 (mención: prestaciones por desempleo)
+- **Temas que lo usan:** 4.B.4 (desarrollo), 4.B.7 (desarrollo; debe quedar en resumen), 4.B.3 (mención: prestaciones por desempleo), 1D01 (mención: VI.2, política neutral)
 - **Manuales de referencia:** Blanchard, *Macroeconomics*, cap. 22; Girouard y André (2005), OCDE WP 434; Mourre, Isbasoiu, Paternoster y Salto (2013), *European Economy Economic Papers* 501; Price, Dang y Botev (2015), OCDE; Dolls, Fuest y Peichl (2012), *JPubE*.
 
 ## Presentación de referencia
@@ -22,6 +22,7 @@ Agregando por figuras, la semielasticidad del saldo $\varepsilon=\sum_i\frac{T_i
 | 4.B.4 | Componentes automáticos | Desarrollo | Elasticidades, cálculo de la Comisión, evidencia | — |
 | 4.B.7 | Clasificar impuestos por su sensibilidad a la renta | Resumen | Definir $\varepsilon_{BI,Y}$ y $\varepsilon_{T,BI}$ y clasificar figuras; «[ver tema 4.B.4]» | El papel estabilizador desarrollado |
 | 4.B.3 | Redistribución | Mención | Prestaciones por desempleo como estabilizador | — |
+| 1D01 | Dictamen de coyuntura | Mención | Una política fiscal neutral deja actuar a los estabilizadores; saldo cíclico $\varepsilon\cdot\mathrm{OG}$ | Las elasticidades |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.7 explica «$\varepsilon_{T,Y}>1$ por el mínimo exento» bajo el epígrafe de $\varepsilon_{BI,Y}>1$: mezcla elasticidad de la base y de la recaudación.

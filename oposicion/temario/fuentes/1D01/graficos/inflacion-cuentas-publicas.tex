@@ -1,0 +1,49 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Efectos de la inflación sobre las cuentas públicas (a partir del FMI,
+% Fiscal Monitor de abril de 2023): la inflación en el centro y cinco cauces.
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=#1, very thick, rounded corners=3pt, fill=white, align=center,
+      text width=3.9cm, font=\footnotesize, inner sep=5pt, execute at begin node={\hyphenpenalty=10000 }},
+    caja/.default=tceegris,
+    via/.style={->, thick, #1}, via/.default=tceegris]
+  % 1: inflación
+  \capa{1}{
+    \node[draw=tceemorado, very thick, circle, fill=tceemorado!10, font=\small\bfseries,
+      text=tceemorado, inner sep=5pt] (inf) at (0,0) {Inflación};
+  }
+  % 2: ingresos
+  \capa{2}{
+    \node[caja=tceeverde] (ing) at (0,2.6)
+      {\textbf{Ingresos nominales} y progresividad en frío: suben enseguida};
+    \draw[via=tceeverde] (inf) -- (ing);
+  }
+  % 3: gasto indexado y compras
+  \capa{3}{
+    \node[caja=tceerojo] (gas) at (-4.9,1.2)
+      {\textbf{Gasto indexado} (pensiones, salarios públicos): con retraso};
+    \draw[via=tceerojo] (inf) -- (gas);
+    \node[caja=tceerojo] (com) at (4.9,1.2)
+      {\textbf{Compras y contratos}: con retraso};
+    \draw[via=tceerojo] (inf) -- (com);
+  }
+  % 4: intereses y ratio de deuda
+  \capa{4}{
+    \node[caja=tceedorado] (int) at (-4.9,-1.3)
+      {\textbf{Intereses}: según la vida media de la deuda};
+    \draw[via=tceedorado] (inf) -- (int);
+    \node[caja=tceeverde] (deu) at (4.9,-1.3)
+      {\textbf{Ratio de deuda}: baja por el denominador (PIB nominal)};
+    \draw[via=tceeverde] (inf) -- (deu);
+  }
+  % 5: flecha temporal
+  \capa{5}{
+    \draw[->, very thick, tceegris] (-6.5,-3.1) -- (6.5,-3.1);
+    \node[font=\footnotesize, text=tceeverde!80!black, anchor=south, align=center] at (-3.3,-3.05)
+      {\textbf{Corto plazo}: mejora del saldo y de la deuda};
+    \node[font=\footnotesize, text=tceerojo, anchor=south, align=center] at (3.3,-3.05)
+      {\textbf{Medio plazo}: se invierte};
+  }
+\end{tikzpicture}
+\end{document}

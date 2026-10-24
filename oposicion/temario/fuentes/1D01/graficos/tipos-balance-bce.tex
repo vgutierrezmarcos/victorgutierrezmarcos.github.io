@@ -1,0 +1,87 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{dateplot}
+\begin{document}
+% Izquierda: tipos oficiales del BCE (%), 1/1/1999-16/9/2026, en escalón.
+% Derecha: balance del Eurosistema (billones de euros), último dato de cada
+% trimestre 2014-2026 (último: semana 41 de 2026). BCE, Data Portal (FM e ILM;
+% consulta 23/10/2026). Resto del activo = activo total − valores − préstamos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/tipos-bce.csv}\tipos
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/balance-eurosistema.csv}\balance
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+  panel/.style={
+    width=7.6cm, height=6.5cm,
+    date coordinates in=x, xticklabel={\year},
+    ticklabel style={font=\footnotesize},
+    tick align=outside, clip=false,
+    title style={font=\small\bfseries, anchor=south west, at={(0,1)}, xshift=-1cm},
+    legend style={anchor=north, at={(0.5,-0.15)}, draw=none, font=\footnotesize, legend columns=1},
+    legend cell align=left,
+    /pgf/number format/use comma,
+  },
+}
+\begin{tikzpicture}[tcee]
+  % 1: ejes del panel de tipos
+  \capa{1}{
+  \begin{axis}[panel, name=tipos,
+      title={a) Tipos de interés oficiales (\%)},
+      xmin=1999-01-01, xmax=2026-12-31,
+      xtick={1999-01-01,2004-01-01,2009-01-01,2014-01-01,2019-01-01,2024-01-01},
+      ymin=-1, ymax=6, ytick={-1,0,...,6},
+      axis lines*=left, ymajorgrids, grid style={tceegris!25},
+    ]
+    \draw[thin,black] (axis cs:1999-01-01,0) -- (axis cs:2026-12-31,0);
+    % 2: facilidad de depósito (el tipo que guía la política desde 2022)
+    \capa{2}{
+      \addplot[const plot, curva1, line width=1.6pt, leyenda linea corta]
+        table[x=fecha, y=facilidad_deposito] {\tipos};
+      \addlegendentry{Facilidad de depósito}
+    }
+    % 3: operaciones principales de financiación y facilidad marginal de crédito
+    \capa{3}{
+      \addplot[const plot, curva2, thick, leyenda linea corta]
+        table[x=fecha, y=opf] {\tipos};
+      \addlegendentry{Operaciones principales de financiación}
+      \addplot[const plot, curva3, thick, leyenda linea corta]
+        table[x=fecha, y=facilidad_marginal] {\tipos};
+      \addlegendentry{Facilidad marginal de crédito}
+      \node[font=\scriptsize, text=tceemorado, anchor=west, inner sep=2pt]
+        at (axis cs:2026-10-01,2.5) {2,50};
+    }
+  \end{axis}
+  }
+  % 4: ejes del panel del balance
+  \capa{4}{
+  \begin{axis}[panel, at={(tipos.east)}, anchor=west, xshift=2cm,
+      title={b) Balance del Eurosistema (billones de euros)},
+      xmin=2014-01-01, xmax=2026-12-31,
+      xtick={2014-01-01,2016-01-01,2018-01-01,2020-01-01,2022-01-01,2024-01-01,2026-01-01},
+      ymin=0, ymax=10, ytick={0,2,...,10},
+      axis lines*=left, ymajorgrids, grid style={tceegris!25},
+      stack plots=y, area style,
+    ]
+    % 5: valores de política monetaria, préstamos a los bancos y resto del activo
+    \capa{5}{
+      \addplot[fill=tceemorado!55, draw=none] table[x=fecha, y=valores_politica_monetaria] {\balance} \closedcycle;
+      \addlegendentry{Valores de política monetaria}
+      \addplot[fill=tceedorado!70, draw=none] table[x=fecha, y=prestamos_bancos] {\balance} \closedcycle;
+      \addlegendentry{Préstamos a los bancos}
+      \addplot[fill=tceegris!35, draw=none]
+        table[x=fecha, y expr=\thisrow{activo_total}-\thisrow{valores_politica_monetaria}-\thisrow{prestamos_bancos}] {\balance} \closedcycle;
+      \addlegendentry{Resto del activo}
+    }
+    % 6: activo total y rótulos del máximo y del último dato
+    \capa{6}{
+      \addplot[stack plots=false, black, very thick, leyenda linea corta]
+        table[x=fecha, y=activo_total] {\balance};
+      \addlegendentry{Activo total}
+      \node[font=\scriptsize, anchor=south, inner sep=2pt] at (axis cs:2022-06-24,8.836) {2022: 8,8};
+      \node[font=\scriptsize, anchor=south west, inner sep=2pt] at (axis cs:2026-10-16,5.935) {5,9};
+    }
+  \end{axis}
+  }
+\end{tikzpicture}
+\end{document}

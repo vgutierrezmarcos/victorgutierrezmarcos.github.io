@@ -1,0 +1,28 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Comovimientos con el ciclo: en morado, el PIB (misma senoide en los 3
+% paneles); en azul, otra serie. a) procíclica y coincidente (misma fase,
+% más amplitud); b) contracíclica (fase opuesta); c) adelantada (gira antes).
+\begin{tikzpicture}[tcee, scale=0.85]
+  \foreach \col/\desf/\amp/\tit/\ej [count=\k] in
+      {0/0/1.6/a) Procíclica y coincidente/inversión,
+       5.4/180/0.8/b) Contracíclica/paro,
+       10.8/60/1.0/c) Adelantada/{PMI, curva de tipos, bolsa}}{
+    % k: panel k completo (ejes, PIB, la otra serie y rótulos)
+    \capa{\k}{
+      \begin{scope}[xshift=\col cm]
+        \draw[eje] (0,0) -- (4.5,0) node[below left] {$t$};
+        \draw[eje] (0,-1.8) -- (0,1.9);
+        \draw[curva1, domain=0:4.0, samples=80] plot (\x,{sin(\x*171.9)});
+        \draw[curva2, domain=0:4.0, samples=80] plot (\x,{\amp*sin(\x*171.9+\desf)});
+        \node[etiqueta, font=\small\bfseries, anchor=south west] at (-0.2,2.0) {\tit};
+        \node[etiqueta, font=\footnotesize, text=tceeazul, anchor=north] at (2.2,-1.85) {\ej};
+      \end{scope}
+    }
+  }
+  % Leyenda común
+  \draw[curva1] (4.6,-3.0) -- (5.3,-3.0) node[right, etiqueta, font=\footnotesize, text=black] {PIB};
+  \draw[curva2] (6.6,-3.0) -- (7.3,-3.0) node[right, etiqueta, font=\footnotesize, text=black] {otra serie};
+\end{tikzpicture}
+\end{document}

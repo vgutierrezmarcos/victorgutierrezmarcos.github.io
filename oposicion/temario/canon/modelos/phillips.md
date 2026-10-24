@@ -1,7 +1,7 @@
 # Curva de Phillips: original, Lipsey, Samuelson-Solow y aumentada con expectativas (Friedman-Phelps)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.28 (La tasa natural de paro y la NAIRU) — la curva aumentada y la tasa natural son el título.
-- **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.5 (resumen: la Phillips como pieza de la síntesis y la crítica monetarista; hoy mención con epígrafe vacío), 3.A.4 (hoy desarrollo de la historia de la curva, que pasa a 3.A.5), 3.A.37 (resumen), 3.A.41 (resumen: inflación de demanda y de costes). La NKPC está en `nek-3-ecuaciones`.
+- **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.5 (resumen: la Phillips como pieza de la síntesis y la crítica monetarista; hoy mención con epígrafe vacío), 3.A.4 (hoy desarrollo de la historia de la curva, que pasa a 3.A.5), 3.A.37 (resumen), 3.A.41 (resumen: inflación de demanda y de costes). La NKPC está en `nek-3-ecuaciones`, 1D01 (uso: III.1 (2021-P2: Okun y Phillips)).
 - **Manuales de referencia:** Phillips (1958), *Economica*; Lipsey (1960); Samuelson y Solow (1960), *AER*; Friedman (1968), *AER*; Phelps (1967, 1968); Romer (2019), cap. 6; Blanchard, *Macroeconomics*, cap. 8; Gordon (1997) para el triángulo.
 - **Decisión D031 (13/10/2026):** ¿Se deshace el cruce de contenidos entre los Word de 3.A.4 y 3.A.5? Sí: IS-LM y la curva de Phillips (síntesis) a 3.A.5 (Phillips en resumen; desarrollo en 3.A.28); el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud) a 3.A.4
 - **Decisión D060 (13/10/2026):** ¿Qué letra lleva la pendiente de la curva de Phillips ampliada π_t = π^e_t − a(U_t − U^n)? a (y α = 1/a en Barro-Gordon)
@@ -32,6 +32,7 @@ con π^e_t ≡ E_{t−1}[π_t]. Con expectativas adaptativas (π^e_t = π_{t−1
 | 3.A.4 | Keynes | Mención o nada | Solo si se cita la evolución posterior de la síntesis | Todo (pasa a 3.A.5) |
 | 3.A.37 | Transmisión monetaria | Mención | La curva aumentada como razón de la neutralidad a largo plazo | — |
 | 3.A.41 | Inflación | Resumen | Inflación de demanda (U < U^n), de costes (ε_t) e inercial (π^e); triángulo de Gordon | La historia de la curva |
+| 1D01 | Dictamen de coyuntura | Uso | $\pi_t=\pi^e_t-a(U_t-U^n)+\varepsilon_t$ con la nota de la tasa de paro ($U_t$ tasa; en la EPA $U$ parados y $u=U/A$); cuándo es razonable usarla | La historia de la curva |
 
 ## Divergencias encontradas en el temario actual
 

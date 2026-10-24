@@ -1,7 +1,7 @@
 # Identidades de la balanza de pagos y brecha ahorro-inversión
 
 - **Área:** macro-abierta · **Tema de referencia:** 3.B.11 (Balanza de pagos: concepto, medición e interpretación) — lo tiene en el título y es el único que deriva las identidades desde el MBP6 y la contabilidad nacional.
-- **Temas que lo usan:** 3.B.11 (desarrollo), 4.A.1 (resumen), 4.A.21 (resumen), 4.A.22 (resumen), 4.A.23 (resumen)
+- **Temas que lo usan:** 3.B.11 (desarrollo), 4.A.1 (resumen), 4.A.21 (resumen), 4.A.22 (resumen), 4.A.23 (resumen), 1D01 (uso: V.1, `eq:identidad-bp`)
 - **Manuales de referencia:** FMI, *Manual de Balanza de Pagos y Posición de Inversión Internacional*, 6.ª ed. (MBP6, 2009), caps. 2-3 y 14; Krugman, Obstfeld y Melitz, *Economía internacional*, cap. 13 (contabilidad nacional y BP); Obstfeld y Rogoff, *Foundations of International Macroeconomics*, cap. 1; Banco de España, *Balanza de Pagos y Posición de Inversión Internacional de España* (notas metodológicas).
 
 ## Presentación de referencia
@@ -27,6 +27,7 @@ y el enlace con el stock: $PII_t = PII_{t-1} + CF_t + \text{otras variaciones}_t
 | 4.A.21 | Sector exterior español: evolución de la BP | resumen | Identidad + $CC = S-I$ por sectores institucionales (hogares, SNF, AAPP, IF) para leer 1999-2008 y el ajuste | Derivación de la identidad |
 | 4.A.22 | Comercio exterior de bienes de España | mención | Una línea con la identidad y la remisión [ver tema 3.B.11] | Desglose de la cuenta financiera |
 | 4.A.23 | Servicios / rentas en la BP de España | mención | Una línea con la identidad y la remisión | Desglose de la cuenta financiera |
+| 1D01 | Dictamen de coyuntura | Uso | $\mathrm{CC}+\mathrm{CK}+\mathrm{EO}=\mathrm{CF}=\mathrm{ID}+\mathrm{IC}+\mathrm{D}+\mathrm{OI}+\Delta R$, escrita una vez; $\mathrm{CC}=S-I=(S_P-I_P)+(T-G)$; signos del MBP6; déficits gemelos con $\downarrow(T-G)$ | La metodología del MBP6 |
 
 ## Divergencias encontradas en el temario actual
 - **Copia literal** del bloque «Identidad contable de la balanza de pagos (6MBP)» (mismas tres ecuaciones y la misma imagen) en 4.A.21, 4.A.22 y 4.A.23. Propuesta: dejar el desarrollo aplicado en 4.A.21 y reducir 4.A.22-4.A.23 a mención.

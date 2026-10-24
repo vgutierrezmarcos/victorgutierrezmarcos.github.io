@@ -1,0 +1,39 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Policy mix: tono de la política fiscal (horizontal) y de la monetaria
+% (vertical); en cada cuadrante, la combinación y cuándo se da.
+\begin{tikzpicture}[tcee, cuadrante/.style={etiqueta, align=center, text width=4.8cm, font=\footnotesize, execute at begin node={\hyphenpenalty=10000 }}]
+  % 1: ejes y rótulos de los tonos
+  \capa{1}{
+    \draw[eje,<->] (-5.4,0) -- (5.4,0);
+    \draw[eje,<->] (0,-3.4) -- (0,3.4);
+    \node[below, font=\footnotesize, align=center] at (-4.6,-0.1) {Fiscal\\contractiva};
+    \node[below, font=\footnotesize, align=center] at (4.6,-0.1) {Fiscal\\expansiva};
+    \node[left, font=\footnotesize, align=right] at (-0.1,3.2) {Monetaria\\expansiva};
+    \node[left, font=\footnotesize, align=right] at (-0.1,-3.2) {Monetaria\\contractiva};
+    \node[font=\small\bfseries, anchor=west] at (5.5,0) {fiscal};
+    \node[font=\small\bfseries, anchor=south] at (0,3.45) {monetaria};
+  }
+  % 2: ambas expansivas
+  \capa{2}{
+    \node[cuadrante, text=tceemorado] at (2.8,1.7)
+      {\textbf{Ambas expansivas}\\recesión con inflación baja (2020)};
+  }
+  % 3: ambas contractivas
+  \capa{3}{
+    \node[cuadrante, text=tceeazul] at (-2.8,-1.7)
+      {\textbf{Ambas contractivas}\\sobrecalentamiento e inflación};
+  }
+  % 4: fiscal expansiva y monetaria contractiva
+  \capa{4}{
+    \node[cuadrante, text=tceerojo] at (2.8,-1.7)
+      {\textbf{Fiscal expansiva y monetaria contractiva}\\tensión; tipos y moneda al alza (2022-2023)};
+  }
+  % 5: fiscal contractiva y monetaria expansiva
+  \capa{5}{
+    \node[cuadrante, text=tceeverde] at (-2.8,1.7)
+      {\textbf{Fiscal contractiva y monetaria expansiva}\\consolidar sin hundir la demanda};
+  }
+\end{tikzpicture}
+\end{document}

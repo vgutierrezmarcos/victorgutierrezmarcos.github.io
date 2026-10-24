@@ -1,7 +1,7 @@
 # Restricción presupuestaria del sector público y dinámica de la deuda
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.39 (Déficit público: financiación, dominación monetaria y fiscal, dinámica y sostenibilidad de la deuda) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.39 (desarrollo), 4.B.26 (desarrollo aplicado a España: descomposición de la variación de la deuda), 3.A.35 y 3.A.41 (resumen dentro del señoreaje), 4.B.4 (mención en el NEK con gasto).
+- **Temas que lo usan:** 3.A.39 (desarrollo), 4.B.26 (desarrollo aplicado a España: descomposición de la variación de la deuda), 3.A.35 y 3.A.41 (resumen dentro del señoreaje), 4.B.4 (mención en el NEK con gasto), 1D01 (uso: VI.2, `eq:dinamica-deuda`).
 - **Manuales de referencia:** Walsh (2017), cap. 4; Blanchard y Fischer (1989), cap. 10; Sargent y Wallace (1981); Blanchard, *Macroeconomics* (8.ª ed.), cap. 22; Blanchard (2019), «Public Debt and Low Interest Rates», *AER*; Esteve y Prats (2023).
 - **Decisión D028 (13/10/2026):** ¿Cómo se escriben los intereses de la deuda en la restricción del gobierno? i_{t−1}D_{t−1} (Walsh: la deuda emitida en t−1 paga el tipo pactado al emitirla); i_t D_{t−1} solo si i_t se define como tipo implícito pagado en t
 
@@ -38,6 +38,7 @@ Si r < γ_Y la deuda se estabiliza sola con déficit primario constante (Blancha
 | 3.A.35 | Demanda de dinero | Mención | Solo para definir el señoreaje S_t = (M_t − M_{t−1})/P_t | La restricción completa |
 | 3.A.41 | Hiperinflación | Resumen | Déficit financiado con dinero → señoreaje → Cagan | La dinámica de la deuda |
 | 4.B.4 | Política fiscal en el NEK | Mención | Restricción en términos reales con r_{t−1}D_{t−1} | — |
+| 1D01 | Dictamen de coyuntura | Uso | $d_t-d_{t-1}=(g_t-\tau_t)+\frac{i_t-\gamma^N_t}{1+\gamma^N_t}d_{t-1}+\mathrm{ADD}_t$ (sin señoreaje en el euro), bola de nieve, saldo primario estabilizador con ejemplo | La solvencia intertemporal |
 
 ## Divergencias encontradas en el temario actual
 

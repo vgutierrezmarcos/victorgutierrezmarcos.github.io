@@ -1,0 +1,75 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Zona del euro (EA21), 1T2015-2T2026. Izquierda: empleo y horas trabajadas
+% (índice 4T2019 = 100). Derecha: tasa de actividad 15-74 (%) y tasa de paro
+% (%, eje derecho). Eurostat (namq_10_a10_e, lfsq_argan, une_rt_q; consulta
+% 23/10/2026). Eje x: n.º de trimestre desde 1T2015 (fila del CSV); marcas en
+% el primer trimestre de cada año.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/empleo-horas-actividad-zona-euro.csv}\empleo
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+  panel/.style={
+    width=7.4cm, height=6.5cm,
+    xmin=-1, xmax=46,
+    xtick={0,8,...,40}, xticklabels={2015,2017,2019,2021,2023,2025},
+    minor xtick={4,12,...,44},
+    ticklabel style={font=\footnotesize},
+    tick align=outside, clip=false,
+    title style={font=\small\bfseries, anchor=south west, at={(0,1)}, xshift=-1.2cm},
+    legend style={anchor=north, draw=none, font=\footnotesize, legend columns=1},
+    legend cell align=left,
+  },
+}
+\begin{tikzpicture}[tcee]
+  % 1: ejes del panel izquierdo
+  \capa{1}{
+  \begin{axis}[panel, name=izq,
+      title={a) Empleo y horas (4T2019 = 100)},
+      ymin=82, ymax=108, ytick={85,90,...,105},
+      axis lines*=left, ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.15)}},
+    ]
+    \draw[guia] (axis cs:19,82) -- (axis cs:19,108);
+    \draw[thin,tceegris] (axis cs:-1,100) -- (axis cs:46,100);
+    % 2: empleo
+    \capa{2}{
+      \addplot[curva1, thick, leyenda linea corta] table[x expr=\coordindex, y=empleo_indice] {\empleo};
+      \addlegendentry{Empleo (personas)}
+      \node[font=\scriptsize, text=tceemorado, anchor=south east] at (axis cs:45.5,106.2) {106,0};
+    }
+    % 3: horas trabajadas
+    \capa{3}{
+      \addplot[curva2, thick, leyenda linea corta] table[x expr=\coordindex, y=horas_indice] {\empleo};
+      \addlegendentry{Horas trabajadas}
+      \node[font=\scriptsize, text=tceeazul, anchor=north east] at (axis cs:45.5,104.9) {105,2};
+    }
+  \end{axis}
+  }
+  % 4: panel derecho con actividad (eje izquierdo) y paro (eje derecho)
+  \capa{4}{
+  \begin{axis}[panel, at={(izq.east)}, anchor=west, xshift=2.4cm, name=der,
+      title={b) Actividad y paro (\%)},
+      ymin=61, ymax=67, ytick={61,62,...,67},
+      axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!25},
+      ylabel={Tasa de actividad (\%)}, ylabel style={font=\footnotesize, text=tceeverde},
+      legend style={at={(0.5,-0.15)}},
+    ]
+    \addplot[curva3, thick, leyenda linea corta] table[x expr=\coordindex, y=tasa_actividad_15_74] {\empleo};
+    \addlegendentry{Tasa de actividad, 15-74 años}
+    \addlegendimage{curva4, thick, leyenda linea corta}
+    \addlegendentry{Tasa de paro (eje derecho)}
+  \end{axis}
+  \begin{axis}[panel, at={(izq.east)}, anchor=west, xshift=2.4cm,
+      ymin=4, ymax=13, ytick={4,6,...,12},
+      axis x line=none, axis y line*=right,
+      ylabel={Tasa de paro (\%)}, ylabel style={font=\footnotesize, text=tceedorado!80!black},
+    ]
+    \addplot[curva4, thick] table[x expr=\coordindex, y=tasa_paro] {\empleo};
+    \node[font=\scriptsize, text=tceedorado!80!black, anchor=north east] at (axis cs:45.5,6.2) {6,4};
+  \end{axis}
+  }
+\end{tikzpicture}
+\end{document}

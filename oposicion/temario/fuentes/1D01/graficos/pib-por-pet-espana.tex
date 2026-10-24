@@ -1,0 +1,59 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% España, 1T2019-2T2026: PIB por persona en edad de trabajar (15-64) y sus dos
+% componentes, PIB por hora y horas por persona en edad de trabajar; variación
+% acumulada desde 4T2019 (%, aproximación logarítmica: los componentes suman el
+% total). Eurostat (namq_10_gdp, namq_10_a10_e, lfsq_pganws); cálculo propio
+% (consulta 23/10/2026). Eje x: n.º de trimestre desde 1T2019 (fila del CSV).
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/pib-por-pet-espana.csv}\pet
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1,mark repeat=2,mark phase=2] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=8cm,
+      ybar stacked, stack negative=separate, bar width=0.7,
+      xmin=-0.7, xmax=29.7,
+      % marcas en el cambio de año y el año rotulado entre ellas
+      xtick={-0.5,3.5,...,27.5,29.5}, x tick label as interval,
+      xticklabels={2019,2020,2021,2022,2023,2024,2025,2026},
+      ymin=-34, ymax=12, ytick={-30,-25,...,10},
+      ticklabel style={font=\footnotesize},
+      ylabel={Variación acumulada desde 4T2019 (\%)},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.1)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left, area legend,
+    ]
+    % 1: ejes, cero y trimestres
+    \capa{1}{
+      \draw[thin,black] (axis cs:-0.7,0) -- (axis cs:29.7,0);
+    }
+    % 2: PIB por hora trabajada
+    \capa{2}{
+      \addplot[fill=tceeazul!65, draw=tceeazul!70!black]
+        table[x expr=\coordindex, y=pib_por_hora] {\pet};
+      \addlegendentry{PIB por hora trabajada}
+    }
+    % 3: horas por persona en edad de trabajar
+    \capa{3}{
+      \addplot[fill=tceedorado!80, draw=tceedorado!70!black]
+        table[x expr=\coordindex, y=horas_por_pet] {\pet};
+      \addlegendentry{Horas por persona en edad de trabajar}
+    }
+    % 4: PIB por persona en edad de trabajar (la suma) y leyenda
+    \capa{4}{
+      \addplot[stack plots=false, sharp plot, leyenda linea corta, very thick, tceemorado,
+        mark=*, mark size=1.5pt, mark options={fill=white}]
+        table[x expr=\coordindex, y=pib_por_pet] {\pet};
+      \addlegendentry{PIB por persona en edad de trabajar}
+      \node[font=\footnotesize, text=tceemorado, anchor=south east, inner sep=2pt]
+        at (axis cs:29.3,6.2) {2T2026: $+5{,}5\,\%$ (por hora, $+1{,}7$; horas, $+3{,}9$)};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

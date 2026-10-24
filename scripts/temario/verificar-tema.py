@@ -123,7 +123,7 @@ def remisiones_a_mano(tex, ficha=False):
     numeros = numeros_apartados(tex, ficha)
     zonas = [(m.start(), m.end()) for m in re.finditer(r'(?<!\\)%[^\n]*', tex)]
     zonas += [(m.start(), m.end()) for m in re.finditer(
-        r'\\(?:label|ref|eqref|autoref|cref|Cref|nameref|hyperref|hypertarget|vertema|\w*cite\w*|href|url'
+        r'\\(?:label|ref|eqref|autoref|cref|Cref|nameref|hyperref|hypertarget|vertema|vertemacorto|\w*cite\w*|href|url'
         r'|sub|bloque|subcante|apartadocante|caption|grafico|graficorepaso|includegraphics)\*?(?:\[[^\]]*\])?\{[^}]*\}', tex)]
     zonas += [(m.start(), _fin_argumento(tex, m.end() - 1))
               for m in re.finditer(r'^\\(?:sub)*section\*?\{', tex, re.M)]
@@ -171,13 +171,13 @@ def comprobar_remisiones(tema, tex, errores, datos):
         for m in re.finditer(r'\[ver tema', sin_coment):
             errores.append(f'«[ver tema» escrito a mano en {nombre}:{sin_coment.count(chr(10), 0, m.start()) + 1}: '
                            'usar \\vertema{…}')
-        for arg in re.findall(r'\\vertema\{([^{}]*)\}', sin_coment):
+        for arg in re.findall(r'\\vertema(?:corto)?\{([^{}]*)\}', sin_coment):
             if primer_tema(arg) not in destinos:
                 errores.append(f'\\vertema{{{arg}}} en {nombre}: no es un tema de temario.json (no se puede enlazar)')
         for linea, texto_m in remisiones_a_mano(texto, ficha):
             orden = '\\hyperref[rep:…]{…}' if ficha else '\\ref{…}'
             errores.append(f'Remisión escrita a mano en {nombre}:{linea} (usar {orden}): «{texto_m.strip()}»')
-    datos['remisiones_a_temas'] = len(re.findall(r'\\vertema\{', re.sub(r'(?<!\\)%[^\n]*', '', tex)))
+    datos['remisiones_a_temas'] = len(re.findall(r'\\vertema(?:corto)?\{', re.sub(r'(?<!\\)%[^\n]*', '', tex)))
     datos['remisiones_internas'] = len(re.findall(r'\\(?:ref|eqref|autoref|hyperref)\b', re.sub(r'(?<!\\)%[^\n]*', '', tex)))
     try:
         import fitz
@@ -298,7 +298,7 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
     # --- Tres apartados (§2)
     n = len(re.findall(r'^\\section\{', antes_anexos, re.M))
     datos['apartados'] = n
-    if n and n not in (2, 3):
+    if n and n not in (2, 3) and not tema.es_dictamen:   # la guía no tiene ese límite (§11)
         avisos.append(f'{n} apartados de primer nivel (CRITERIOS §2: tres, o dos si la materia se parte así)')
     # --- Final del documento (§2): \clearpage antes de \appendix; bibliografía tras los anexos
     if '\\appendix' in cuerpo and not re.search(r'\\clearpage\s*\\appendix', cuerpo):
@@ -371,7 +371,7 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
     if apellidos:
         # (los \autor{} se dejan como marca, para reconocer «John \autor{Hicks}»)
         texto = re.sub(r'\\(?:autor|textsc)\{(?:[^{}]|\{[^{}]*\})*\}', r' \\AUTOR ', cuerpo)
-        texto = re.sub(r'\\(?:\w*cites?|label|ref|eqref|hyperref|href|url|vertema|includegraphics|grafico\w*|'
+        texto = re.sub(r'\\(?:\w*cites?|label|ref|eqref|hyperref|href|url|vertema|vertemacorto|includegraphics|grafico\w*|'
                        r'addbibresource|tcetema|bibliografia)\*?(?:\[[^\]]*\])?\{(?:[^{}]|\{[^{}]*\})*\}', ' ', texto)
         texto = re.sub(r'\\begin\{(figure|figuracaja|table|tablacaja)\}.*?\\end\{\1\}', ' ', texto, flags=re.S)
         sueltos = []
@@ -654,7 +654,7 @@ def main():
         print(json.dumps({'tema': tema.codigo, 'errores': errores, 'avisos': avisos, 'datos': datos},
                          ensure_ascii=False, indent=2))
     else:
-        print(f'Tema {tema}: {len(errores)} errores, {len(avisos)} avisos')
+        print(f'{tema.etiqueta}: {len(errores)} errores, {len(avisos)} avisos')
         if datos.get('paginas_tema'):
             print(f'  páginas del tema: {datos["paginas_tema"]} (anexos: {datos.get("paginas_anexos", 0)}; '
                   f'bibliografía: {datos.get("paginas_bibliografia", 0)}; total: {datos.get("paginas_total", "?")})')

@@ -111,8 +111,11 @@
 \preto\appendix{\tcee@nuevaparte{anexos}{A}}
 \AtEndDocument{\tcee@cierraparte}
 % Línea de la portada: «Tema: 18 págs. · Anexos: 6 · Bibliografía: 2»
+% \tceeguia: en la guía del dictamen (1D01) dice «Guía:» en vez de «Tema:»
+\newcommand{\tcee@nombrepags}{Tema}
+\newcommand{\tceeguia}{\renewcommand{\tcee@nombrepags}{Guía}}
 \newcommand{\tcee@lineapaginas}{{\footnotesize\itshape\color{tceegris}%
-  Tema: \tcee@pags{tema}~págs.%
+  \tcee@nombrepags: \tcee@pags{tema}~págs.%
   \ifcsname tcee@pags@anexos\endcsname\ \textperiodcentered\ Anexos: \tcee@pags{anexos}\fi
   \ifcsname tcee@pags@bib\endcsname\ \textperiodcentered\ Bibliografía: \tcee@pags{bib}\fi\par}}
 

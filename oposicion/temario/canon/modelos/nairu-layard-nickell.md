@@ -1,7 +1,7 @@
 # NAIRU: fijación de salarios y precios (Layard, Nickell y Jackman, 1991)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.28 (La tasa natural de paro y la NAIRU) — está en el título.
-- **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.7 (resumen: modelo agregado de la NEK de 1.ª generación; hoy desarrollo con ecuaciones mientras 3.A.28 solo tiene el gráfico).
+- **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.7 (resumen: modelo agregado de la NEK de 1.ª generación; hoy desarrollo con ecuaciones mientras 3.A.28 solo tiene el gráfico), 1D01 (mención: III.1 y II.2).
 - **Manuales de referencia:** Layard, Nickell y Jackman (1991), *Unemployment*; Blanchard, *Macroeconomics*, cap. 7; Carlin y Soskice (2015), cap. 2; Cahuc, Carcillo y Zylberberg (2014), cap. 9.
 
 ## Presentación de referencia
@@ -26,6 +26,7 @@ con Z factores institucionales (prestaciones, poder sindical) y PAT productivida
 |---|---|---|---|---|
 | 3.A.28 | Tasa natural y NAIRU | Desarrollo | Ecuaciones, gráfico, determinantes de U^n, diferencia entre tasa natural (Friedman) y NAIRU, estimaciones para España | — |
 | 3.A.7 | NEK de 1.ª generación | Resumen | El modelo como síntesis de las rigideces reales (negociación, eficiencia) de la NEK | El gráfico y los determinantes |
+| 1D01 | Dictamen de coyuntura | Mención | NAIRU (y NAWRU de la Comisión) como referencia del paro estructural; paro con brecha ≈ 0 | El modelo WS-PS |
 
 ## Divergencias encontradas en el temario actual
 

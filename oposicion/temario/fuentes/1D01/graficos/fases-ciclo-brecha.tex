@@ -1,0 +1,50 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Las cuatro fases del ciclo sobre el eje de la brecha de producción.
+% Arriba la brecha aumenta (gamma_Y > gamma_Yp); abajo disminuye.
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-6.2,-2.05) rectangle (6.2,2.05);
+  % 1: eje de la brecha con −, 0 y +
+  \capa{1}{
+    \draw[thick] (-5.8,0) -- (5.8,0);
+    \node[left] at (-5.8,0) {$-$};
+    \node[right] at (5.8,0) {$+$};
+    \draw[thick] (0,-0.12) -- (0,0.12);
+    \node[fill=white,inner sep=1.5pt] at (0,0) {$0$};
+    \node[etiqueta,below,font=\footnotesize] at (0,-0.15) {brecha, $OG$ (\% de $Y^p$)};
+  }
+  % 2: recuperación (de − a 0, arriba)
+  \capa{2}{
+    \draw[curva1,->] (-3.6,0.8) -- (-0.25,0.8)
+      node[midway,above,etiqueta] {Recuperación};
+  }
+  % 3: expansión (de 0 a +, arriba)
+  \capa{3}{
+    \draw[curva1,->] (0.25,0.8) -- (3.6,0.8)
+      node[midway,above,etiqueta] {Expansión};
+  }
+  % 4: desaceleración (de + a 0, abajo)
+  \capa{4}{
+    \draw[curva2,->] (3.6,-0.8) -- (0.25,-0.8)
+      node[midway,below,etiqueta] {Desaceleración};
+  }
+  % 5: recesión (de 0 a −, abajo)
+  \capa{5}{
+    \draw[curva2,->] (-0.25,-0.8) -- (-3.6,-0.8)
+      node[midway,below,etiqueta] {Recesión};
+  }
+  % 6: arcos de cierre (pico y valle) y rótulos de las tasas
+  \capa{6}{
+    \draw[guia,->,solid,thick] (3.75,0.8) arc[start angle=90,end angle=-90,radius=0.8]
+      node[pos=0.5,above left,etiqueta,font=\footnotesize,text=tceegris] {pico};
+    \draw[guia,->,solid,thick] (-3.75,-0.8) arc[start angle=270,end angle=90,radius=0.8]
+      node[pos=0.5,above right,etiqueta,font=\footnotesize,text=tceegris] {valle};
+    \node[etiqueta,font=\footnotesize,text=tceemorado] at (0,1.75)
+      {$\gamma_Y > \gamma_{Y^p}$: la brecha aumenta};
+    \node[etiqueta,font=\footnotesize,text=tceeazul] at (0,-1.75)
+      {$\gamma_Y < \gamma_{Y^p}$ (en recesión, $\gamma_Y < 0$): la brecha disminuye};
+  }
+\end{tikzpicture}
+\end{document}

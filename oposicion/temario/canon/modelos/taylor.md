@@ -1,7 +1,7 @@
 # Regla de Taylor (Taylor, 1993) y principio de Taylor
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.36 (Política monetaria I: diseño e instrumentación) — es una regla de instrumentación y el título pide el diseño; 3.A.7 la usa para cerrar el modelo NEK.
-- **Temas que lo usan:** 3.A.36 (desarrollo), 3.A.7 (resumen: cierre del modelo; hoy desarrollo), 3.A.37, 3.A.38, 3.A.42 (dentro del modelo NEK), 4.B.4 (resumen; hoy mención).
+- **Temas que lo usan:** 3.A.36 (desarrollo), 3.A.7 (resumen: cierre del modelo; hoy desarrollo), 3.A.37, 3.A.38, 3.A.42 (dentro del modelo NEK), 4.B.4 (resumen; hoy mención), 1D01 (uso: VI.1, tono de la política monetaria).
 - **Manuales de referencia:** Taylor (1993), *Carnegie-Rochester Conference Series* 39; Clarida, Galí y Gertler (1999, 2000); Galí (2015), cap. 4; Walsh (2017), cap. 8; Woodford (2003), cap. 4.
 - **Decisión D021 (13/10/2026):** ¿Qué forma de la regla de Taylor se usa en los modelos? La canónica i_t = r^n + φ_π π_t + φ_x x_t (+ suavización ν i_{t−1} con (1−ν) en la respuesta) en todos los modelos; la original de 1993 solo como cita histórica en 3.A.36, con la equivalencia φ_π = 1 + 0,5
 
@@ -31,6 +31,7 @@ Las dos son la misma regla: φ_π = 1 + 0,5 = 1,5 y φ_x = 0,5. En el modelo NEK
 | 3.A.7 | NEK de 2.ª generación | Resumen | Forma canónica como cierre del modelo y el principio de Taylor como condición de determinación | La forma original y el debate reglas/discreción |
 | 3.A.37, 3.A.38, 3.A.42 | Transmisión, política fiscal, ciclos | Mención | Forma canónica (con ν si interesa la persistencia) | — |
 | 4.B.4 | Multiplicadores fiscales | Resumen (hoy mención; D139 (13/10/2026)) | Forma canónica $i_t=r^n_t+\phi_\pi\pi_t+\phi_x x_t$ y principio de Taylor ($\phi_\pi>1$); el multiplicador es mayor si el banco central no sube el tipo (ELB, φ_π bajo) | — |
+| 1D01 | Dictamen de coyuntura | Uso | Forma de Taylor (1993) escrita como $i_t=r^*+\pi^*+1{,}5(\pi_t-\pi^*)+0{,}5\,\mathrm{OG}_t$ con $r^*=\pi^*=2\,\%$ (la misma que la canónica con $\phi_\pi=1{,}5$, $\phi_x=0{,}5$ y la brecha OG en lugar de $x_t$); el tono por $r_t$ frente a $r^n$ | El principio de Taylor y el NEK |
 
 ## Divergencias encontradas en el temario actual
 

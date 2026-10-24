@@ -1,0 +1,73 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Zona del euro (EA21), 2012-2025: consumo real y renta bruta disponible real
+% de los hogares (% de variación, eje izquierdo) y tasa de ahorro bruto
+% (% de la renta disponible, eje derecho). Eurostat (consulta 23/10/2026).
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/consumo-renta-ahorro-zona-euro.csv}\hogares
+\pgfplotsset{
+  hogares/.style={
+    width=14cm, height=7.5cm, scale only axis=false,
+    xmin=2011.4, xmax=2025.6, xtick={2012,...,2025},
+    xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+    yticklabel style={font=\footnotesize},
+    tick align=outside, clip=false,
+  },
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1,mark repeat=2,mark phase=2] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}},
+}
+\begin{tikzpicture}[tcee]
+  % Eje izquierdo: tasas de variación real
+  \begin{axis}[hogares,
+      ybar, bar width=0.28cm,
+      ymin=-9, ymax=9, ytick={-8,-6,...,8},
+      ylabel={Tasa de variación real (\%)},
+      axis x line*=bottom, axis y line*=left,
+      ymajorgrids, grid style={tceegris!25},
+    ]
+    % 1: ejes, cero, años y 2020 resaltado
+    \capa{1}{
+      \fill[tceedorado,opacity=0.12] (axis cs:2019.5,-9) rectangle (axis cs:2020.5,9);
+      \draw[thin,black] (axis cs:2011.4,0) -- (axis cs:2025.6,0);
+    }
+    % 2: crecimiento del consumo real
+    \capa{2}{
+      \addplot[fill=tceemorado!75, draw=tceemorado!70!black]
+        table[x=anio, y=consumo_real] {\hogares};
+      \node[font=\footnotesize,text=tceemorado,anchor=north east,inner sep=1pt]
+        at (axis cs:2020,-7.75) {$-7{,}7$};
+    }
+    % 3: crecimiento de la renta disponible real
+    \capa{3}{
+      \addplot[fill=tceeverde!70, draw=tceeverde!70!black]
+        table[x=anio, y=renta_disponible_real] {\hogares};
+      \node[font=\footnotesize,text=tceeverde!80!black,anchor=north west,inner sep=1pt]
+        at (axis cs:2020.05,-0.4) {$-0{,}3$};
+    }
+  \end{axis}
+  % Eje derecho: tasa de ahorro
+  \begin{axis}[hogares,
+      ymin=10, ymax=21, ytick={10,12,...,20},
+      ylabel={Tasa de ahorro (\% de la renta disponible)},
+      axis x line=none, axis y line*=right,
+      legend style={at={(0.5,-0.12)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left,
+    ]
+    % 4: tasa de ahorro y leyenda
+    \capa{4}{
+      \addlegendimage{area legend, fill=tceemorado!75, draw=tceemorado!70!black}
+      \addlegendentry{Consumo real de los hogares (\%)}
+      \addlegendimage{area legend, fill=tceeverde!70, draw=tceeverde!70!black}
+      \addlegendentry{Renta disponible real (\%)}
+      \addplot[leyenda linea corta, very thick, tceedorado,
+        mark=*, mark size=1.8pt, mark options={fill=white}]
+        table[x=anio, y=tasa_ahorro] {\hogares};
+      \addlegendentry{Tasa de ahorro (eje derecho)}
+      \node[font=\footnotesize,text=tceedorado!80!black,anchor=south west,inner sep=2pt]
+        at (axis cs:2020.1,19.31) {$19{,}3$};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

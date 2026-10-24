@@ -143,6 +143,9 @@
 \newcommand{\tcee@textovertema}[1]{[ver tema #1]}
 % Gris y sin subrayar (hyperref usa colorlinks; el \color de dentro manda)
 \newcommand{\vertema}[1]{\tcee@enlacetema{#1}{{\color{tceegris}\tcee@textovertema{#1}}}}
+% \vertemacorto{3.A.12}: el mismo enlace que \vertema, pero el texto es solo el
+% código, en gris (para tablas con muchos temas; Víctor, 24/10/2026, D-13 de 1D01)
+\newcommand{\vertemacorto}[1]{\tcee@enlacetema{#1}{{\color{tceegris}#1}}}
 
 % --- Fórmulas: funciones clave y problemas de optimización ------------------------
 % Estilo de las funciones clave (morada, recuadrada, fondo morado pálido); el

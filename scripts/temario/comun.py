@@ -319,11 +319,12 @@ def paginas_partes(aux):
             for m in re.finditer(r'\\global\s*\\@namedef\s*\{tcee@pags@(\w+)\}\{(\d+)\}', texto)}
 
 
-def linea_paginas(partes):
-    """«Tema: 18 págs. · Anexos: 6 · Bibliografía: 2», como en la portada del PDF."""
+def linea_paginas(partes, nombre='Tema'):
+    """«Tema: 18 págs. · Anexos: 6 · Bibliografía: 2», como en la portada del PDF
+    («Guía: …» en la guía del dictamen)."""
     if 'tema' not in partes:
         return ''
-    trozos = [f'Tema: {partes["tema"]} págs.']
+    trozos = [f'{nombre}: {partes["tema"]} págs.']
     if partes.get('anexos'):
         trozos.append(f'Anexos: {partes["anexos"]}')
     if partes.get('bib'):

@@ -1,7 +1,7 @@
 # Descomposición contable del PIB per cápita (y convergencia real de España)
 
 - **Área:** economia-espanola · **Tema de referencia:** **4.A.30** (convergencia real con la UE; el bloque del antiguo 4.A.29 se traslada allí), con la descomposición de cuatro factores; **4.A.17** la aplica a las regiones.
-- **Temas que lo usan:** 4.A.17 (desarrollo, dos factores), 4.A.29 (hoy desarrollo, tres factores; sobra con el título nuevo), 4.A.30 (desarrollo previsto), 4.A.16 y 4.A.2 (mención: tasas de actividad y empleo), 3.B.40 (mención: convergencia real en la UE)
+- **Temas que lo usan:** 4.A.17 (desarrollo, dos factores), 4.A.29 (hoy desarrollo, tres factores; sobra con el título nuevo), 4.A.30 (desarrollo previsto), 4.A.16 y 4.A.2 (mención: tasas de actividad y empleo), 3.B.40 (mención: convergencia real en la UE), 1D01 (mención: III.1, factor demográfico)
 - **Manuales de referencia:** Comisión Europea y BdE (informes de convergencia real); De la Fuente; Moral, Vázquez y Pampillón, *Manual de economía española* (Funcas, 2022)
 - **Decisión D034 (13/10/2026):** ¿Cómo se escribe la dispersión de la renta en la σ-convergencia si σ es también la elasticidad de sustitución? σ_t (desviación típica de ln y, como Sala i Martín), siempre con subíndice t; en 3.B.40, que mezcla ambas, se avisa
 - **Decisión D048 (13/10/2026):** ¿Qué símbolo lleva la población total en la descomposición del PIB per cápita? N, con la descomposición de cuatro factores Y/N = (Y/L)(L/A)(A/P_16)(P_16/N)
@@ -24,6 +24,7 @@ Convergencia β y σ: ficha `convergencia-beta-sigma` (área de crecimiento, tem
 | 4.A.17 | Convergencia entre CC. AA. | Desarrollo aplicado | Dos o cuatro factores por CA, β y σ regional | Datos frente a la UE |
 | 4.A.29 | Situación actual | Nada / mención | Quitar el bloque (va a 4.A.30) | — |
 | 4.A.16 | Mercado de trabajo | Mención | Definiciones EPA de las tasas | — |
+| 1D01 | Dictamen de coyuntura | Mención | $Y/N=(Y/L)(L/A)(A/P_{16})(P_{16}/N)$ para situar el factor demográfico y la tasa de actividad | La descomposición de España |
 
 ## Divergencias encontradas en el temario actual
 - **Notación distinta**: 4.A.17 usa $Y/POB=(Y/L)(L/POB)$; el antiguo 4.A.29 (futuro 4.A.30) usa $Y/N=(Y/L)(L/A)(A/N)$. Canon: la forma de cuatro factores de arriba con $N$ para la población (no $POB$).

@@ -1,0 +1,66 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Zona del euro (EA21), 2012-2025: crecimiento del PIB real (%) y
+% contribuciones de la demanda (pp). Eurostat, nama_10_gdp (consulta 23/10/2026).
+% Leyenda de la línea del mismo ancho que la de las barras (columnas alineadas)
+\pgfplotsset{leyenda linea corta/.style={legend image code/.code={%
+  \draw[##1,mark repeat=2,mark phase=2] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}}}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/contribuciones-pib-zona-euro.csv}\contrib
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=7.5cm,
+      ybar stacked, stack negative=separate, bar width=0.5cm,
+      xmin=2011.4, xmax=2025.6,
+      xtick={2012,...,2025},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      ymin=-7, ymax=7, ytick={-6,-4,...,6},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% y puntos porcentuales},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.12)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left, area legend,
+    ]
+    % 1: ejes, cero y años
+    \capa{1}{
+      \draw[thin,black] (axis cs:2011.4,0) -- (axis cs:2025.6,0);
+    }
+    % 2-5: contribuciones (stack negative=separate: las positivas se apilan hacia
+    % arriba y las negativas hacia abajo, cada una en su lado del cero)
+    \capa{2}{
+      \addplot[fill=tceedorado!85, draw=tceedorado!70!black]
+        table[x=anio, y=consumo_privado] {\contrib};
+      \addlegendentry{Consumo privado}
+    }
+    \capa{3}{
+      \addplot[fill=tceenaranja!85, draw=tceenaranja!70!black]
+        table[x=anio, y=consumo_publico] {\contrib};
+      \addlegendentry{Consumo público}
+      \addplot[fill=tceeverde!80, draw=tceeverde!70!black]
+        table[x=anio, y=fbcf] {\contrib};
+      \addlegendentry{Formación bruta de capital fijo}
+    }
+    \capa{4}{
+      \addplot[fill=tceegris!70, draw=tceegris!70!black]
+        table[x=anio, y=existencias] {\contrib};
+      \addlegendentry{Variación de existencias}
+    }
+    \capa{5}{
+      \addplot[fill=tceeazul!75, draw=tceeazul!70!black]
+        table[x=anio, y=demanda_externa_neta] {\contrib};
+      \addlegendentry{Demanda externa neta}
+    }
+    % 6: crecimiento del PIB real (línea) sobre las barras
+    \capa{6}{
+      \addplot[stack plots=false, sharp plot, very thick, tceemorado,
+        leyenda linea corta,
+        mark=*, mark size=1.8pt, mark options={fill=white}]
+        table[x=anio, y=pib_real] {\contrib};
+      \addlegendentry{Crecimiento del PIB real (\%)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}
