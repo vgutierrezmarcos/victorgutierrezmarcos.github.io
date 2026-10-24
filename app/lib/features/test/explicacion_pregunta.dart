@@ -23,6 +23,10 @@ class ExplicacionPregunta extends ConsumerStatefulWidget {
 }
 
 class _ExplicacionPreguntaState extends ConsumerState<ExplicacionPregunta> {
+  /// El aviso de que las explicaciones son de IA sale una sola vez por
+  /// arranque: en la primera que se abre (y en esa se queda).
+  static int? _conAviso;
+
   bool _abierta = false;
   bool _todas = false;
 
@@ -102,10 +106,12 @@ class _ExplicacionPreguntaState extends ConsumerState<ExplicacionPregunta> {
           const SizedBox(height: 10),
           Text('Fuentes: ${e.fuentes.join(' · ')}', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11.5, fontStyle: FontStyle.italic, color: context.colores.textoSuave)),
         ],
-        Padding(
-          padding: const EdgeInsets.only(top: 6),
-          child: Text('Explicación redactada con ayuda de IA y revisada con el temario. Si ves un error, repórtalo.', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11, color: context.colores.textoSuave)),
-        ),
+        if ((_conAviso ??= p.id) == p.id)
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Text('Explicaciones redactadas con IA a partir del temario: pueden tener algún error. Si ves uno, «Reportar respuesta».',
+                style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11, color: context.colores.textoSuave)),
+          ),
       ]),
     );
   }
