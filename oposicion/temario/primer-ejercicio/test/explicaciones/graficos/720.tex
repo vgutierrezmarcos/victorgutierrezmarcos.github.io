@@ -1,0 +1,40 @@
+% Pregunta 720 (2007-julio-OEP2007, n.º 28): subsidio a la exportación en un país pequeño.
+% D: P = 4,6 - 0,8Q; S: P = 0,4 + 0,6Q (autarquía Q = 3, P = 2,2). P^W = 2,8; P^W + s = 3,5.
+% C0 = 2,25, Q0 = 4; C1 = 1,375, Q1 = 5,167. Consumidor -(a+b), productor +(a+b+c+d),
+% Estado -(b+c+d+e): pérdida neta b + e. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$Q$}{$P$}{6.6}{5}
+  % Áreas: transferencias (a, c, d) y pérdidas netas (b, e)
+  \fill[area] (0,2.8) rectangle (1.375,3.5);
+  \fill[area] (1.375,3.5) -- (2.25,2.8) -- (4,2.8) -- (5.167,3.5) -- cycle;
+  \fill[area2] (1.375,3.5) -- (1.375,2.8) -- (2.25,2.8) -- cycle;
+  \fill[area2] (4,2.8) -- (5.167,2.8) -- (5.167,3.5) -- cycle;
+  \draw[guia] (4,2.8) -- (4,3.5);
+  \node[font=\small] at (0.69,3.15) {$a$};
+  \node[font=\small] at (1.62,3.02) {$b$};
+  \node[font=\small] at (3.0,3.15) {$c$};
+  \node[font=\small] at (4.33,3.32) {$d$};
+  \node[font=\small] at (4.85,2.98) {$e$};
+  % Curvas
+  \draw[curva2] (0,4.6) -- (5.5,0.2) node[etiqueta,right] {$D$};
+  \draw[curva1] (0,0.4) -- (6.2,4.12) node[etiqueta,right] {$S$};
+  % Precios
+  \draw[curva4] (0,2.8) node[left] {$P^W$} -- (6.3,2.8);
+  \draw[curvanueva] (0,3.5) node[left,text=tceerojo] {$P^W\!+s$} -- (6.3,3.5);
+  \node[punto,label={[etiqueta]below right:$A$}] at (3,2.2) {};
+  % Cantidades
+  \draw[guia] (1.375,2.8) -- (1.375,0) node[below] {$C_1$};
+  \draw[guia] (2.25,2.8) -- (2.25,0) node[below] {$C_0$};
+  \draw[guia] (4,2.8) -- (4,0) node[below] {$Q_0$};
+  \draw[guia] (5.167,2.8) -- (5.167,0) node[below] {$Q_1$};
+  \foreach \x/\y in {1.375/3.5,2.25/2.8,4/2.8,5.167/3.5} \node[punto] at (\x,\y) {};
+  % Exportaciones
+  \draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (1.375,3.62) -- node[above=4pt,text=tceerojo,font=\small] {exportaciones con subsidio $Q_1-C_1$} (5.167,3.62);
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceedorado] (2.25,-0.62) -- node[below=4pt,text=tceedorado,font=\small] {exportaciones con libre comercio $Q_0-C_0$} (4,-0.62);
+  % Balance
+  \node[etiqueta,align=center,font=\small,anchor=north] at (3.2,-1.35) {Consumidor $-(a+b)$ \quad Productor $+(a+b+c+d)$\\Estado $-(b+c+d+e)$ \quad Neto $-(b+e)<0$};
+\end{tikzpicture}
+\end{document}

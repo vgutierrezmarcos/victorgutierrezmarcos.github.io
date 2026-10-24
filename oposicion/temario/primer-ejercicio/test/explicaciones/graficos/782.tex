@@ -1,0 +1,36 @@
+% Pregunta 782 (2005-septiembre-OEP2005, n.º 1): mercado de dinero keynesiano. Al aumentar la oferta
+% monetaria (M0 -> M1) el tipo baja; cuando la oferta corta el tramo horizontal de la demanda
+% (trampa de la liquidez, M2 y M3) el tipo ya no baja más (b correcta, a falsa).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$M/P$}{$i$}{6.6}{5}
+  % Demanda de dinero: decreciente y convexa, tangente al suelo i_min en M/P = 3.6
+  \draw[curva1,domain=0.6:3.6,samples=60] plot (\x,{0.8+3.2*((3.6-\x)/3)^2}) -- (6.2,0.8)
+    node[etiqueta,above,text=tceemorado] {$L$};
+  % Ofertas monetarias
+  \draw[curva2] (1.4,0) -- (1.4,4.3) node[etiqueta,above] {$M_0$};
+  \draw[curvanueva,desplazada] (2.4,0) -- (2.4,4.3) node[etiqueta,above] {$M_1$};
+  \draw[curvanueva,desplazada] (4.3,0) -- (4.3,4.3) node[etiqueta,above] {$M_2$};
+  \draw[curvanueva,desplazada] (5.3,0) -- (5.3,4.3) node[etiqueta,above] {$M_3$};
+  \draw[flecha] (1.55,3.9) -- (2.25,3.9);
+  \draw[flecha] (2.55,3.9) -- (4.15,3.9);
+  \draw[flecha] (4.45,3.9) -- (5.15,3.9);
+  % Equilibrios y tipos
+  \draw[guia] (0,2.521) -- (1.4,2.521);
+  \draw[guia] (0,1.312) -- (2.4,1.312);
+  \node[etiqueta,left] at (0,2.521) {$i_0$};
+  \node[etiqueta,left] at (0,1.312) {$i_1$};
+  \node[etiqueta,left] at (0,0.8) {$i_{\min}$};
+  \draw[guia] (0,0.8) -- (3.6,0.8);
+  \node[punto] at (1.4,2.521) {};
+  \node[punto] at (2.4,1.312) {};
+  \node[punto] at (4.3,0.8) {};
+  \node[punto] at (5.3,0.8) {};
+  % Rótulo del tramo horizontal (con flecha hacia el suelo)
+  \draw[->,thin,tceemorado] (3.9,1.45) -- (4.6,0.95);
+  \node[etiqueta,font=\footnotesize,text=tceemorado,align=center] at (3.35,2.05) {trampa de la\\liquidez: $i$ ya\\no baja más};
+\end{tikzpicture}
+\end{document}

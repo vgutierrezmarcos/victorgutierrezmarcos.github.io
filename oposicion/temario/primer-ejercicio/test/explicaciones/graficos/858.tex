@@ -1,0 +1,34 @@
+% Pregunta 858 (2004-junio-OEP2004, n.º 31): Mundell-Fleming con tipo de cambio flexible y movilidad
+% perfecta. La caída de exportaciones desplaza la IS a la izquierda; la depreciación la devuelve a su sitio.
+% Rectas a escala:
+%   BP: i = i* = 2   LM: i = 0,2 + 0,6 Y   IS: i = 4,4 - 0,8 Y   IS': i = 3,2 - 0,8 Y (1,5 a la izquierda)
+%   E0 = (3; 2)   A = IS'∩LM = (2,14; 1,49), por debajo de i*: salen capitales y la moneda se deprecia
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.1cm]
+  \ejes{$Y$}{$i$}{6}{5}
+  % Curvas iniciales
+  \draw[curva3] (0,2) -- (5.8,2) node[etiqueta,right,text=tceeverde] {$BP$};
+  \node[etiqueta,left,text=tceeverde] at (0,2) {$i^*$};
+  \draw[curva2] (0.3,0.38) -- (5.6,3.56) node[etiqueta,above right,text=tceeazul] {$LM$};
+  \draw[curva1] (5.2,0.24) -- (0.6,3.92) node[etiqueta,above,text=tceemorado] {$IS$};
+  % Lo que cambia
+  \draw[curvanueva,desplazada] (3.7,0.24) -- (0.2,3.04) node[etiqueta,above,text=tceerojo] {$IS'$};
+  % Flechas: ida (caída de exportaciones) y vuelta (depreciación)
+  \draw[flecha,tceerojo] (3.82,1.3) -- (2.55,1.3);
+  \node[etiqueta,font=\footnotesize,text=tceerojo,above=1pt,fill=white,inner sep=1pt] at (3.15,1.3) {caída de $X$};
+  \draw[flecha,tceemorado] (3.2,0.72) -- (4.5,0.72);
+  \node[etiqueta,font=\footnotesize,text=tceemorado,right=2pt,inner sep=1pt] at (4.62,0.72) {depreciación};
+  % Proyección
+  \draw[guia] (3,2) -- (3,0) node[below] {$Y_0$};
+  % Puntos
+  \node[punto] at (3,2) {};
+  \node[etiqueta,above right] at (3,2) {$E_0 = E_1$};
+  \node[punto,fill=tceerojo] at (2.143,1.486) {};
+  \node[etiqueta,left=2pt,text=tceerojo] at (2.143,1.486) {$A$};
+  \node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (2.2,4.9)
+    {En $A$, $i<i^*$: salen capitales\\y la moneda se deprecia; $NX$ sube\\y la $IS$ vuelve a su sitio};
+\end{tikzpicture}
+\end{document}

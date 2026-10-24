@@ -1,0 +1,42 @@
+% Pregunta 214 (2021-julio-OEP2020, n.º 19): curva de Phillips ampliada con expectativas adaptativas.
+% pi = pi^e - alpha (u - u_n): a largo plazo vertical en u_n (sin trade-off permanente, a falsa);
+% mantener u1 < u_n exige una inflación cada vez mayor (aceleracionismo, b falsa).
+% Escala: 1 punto de inflación = 0,6 cm; pi = 0 % en y = 1,2; u1 = 1,6, u_n = 3,6, pendiente -0,6.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm]
+  \draw[eje] (0,0) -- (7.0,0) node[right] {$u$};
+  \draw[eje] (0,0) -- (0,5.7) node[left] {$\pi$};
+  % Marcas de inflación
+  \foreach \y/\t in {1.2/0\,\%, 2.4/2\,\%, 3.6/4\,\%, 4.8/6\,\%}
+    \draw (0,\y) -- (-0.08,\y) node[left] {$\t$};
+  % Guías de la inflación de cada periodo, que pasa a ser la esperada del siguiente
+  \draw[guia] (0,2.4) -- (3.6,2.4);
+  \draw[guia] (0,3.6) -- (3.6,3.6);
+  \draw[guia] (0,4.8) -- (1.6,4.8);
+  \draw[guia] (1.6,0) -- (1.6,5.3);
+  \draw (1.6,0) -- (1.6,-0.08) node[below] {$u_1$};
+  % Curvas de corto plazo: pi = pi^e - 0,6 (u - u_n)
+  \draw[curva2] (1.0,2.76) -- (5.2,0.24) node[etiqueta,right,text=tceeazul] {$\pi^e=0\,\%$};
+  \draw[curvanueva] (1.0,3.96) -- (5.2,1.44) node[etiqueta,right,text=tceerojo] {$\pi^e=2\,\%$};
+  \draw[curvanueva,desplazada] (1.0,5.16) -- (5.2,2.64) node[etiqueta,right,text=tceerojo] {$\pi^e=4\,\%$};
+  \node[etiqueta,align=left,font=\footnotesize] at (5.75,3.35) {CPh a\\corto plazo};
+  % Curva de largo plazo
+  \draw[curva1] (3.6,0) -- (3.6,5.4) node[etiqueta,above,text=tceemorado] {CPh a largo plazo};
+  \draw (3.6,0) -- (3.6,-0.08) node[below] {$u_n$};
+  % Punto de partida y escalera aceleracionista
+  \node[punto] at (3.6,1.2) {};
+  \node[etiqueta,above right] at (3.6,1.2) {$E_0$};
+  \node[punto] at (1.6,2.4) {};
+  \node[etiqueta,below left] at (1.6,2.4) {$A$};
+  \node[punto] at (1.6,3.6) {};
+  \node[etiqueta,left] at (1.6,3.6) {$B$};
+  \node[punto] at (1.6,4.8) {};
+  \node[etiqueta,left] at (1.6,4.8) {$C$};
+  \draw[flecha,tceeazul] (3.4,1.45) -- (1.85,2.38);
+  \draw[flecha] (1.75,2.5) to[bend right=35] (1.75,3.5);
+  \draw[flecha] (1.75,3.7) to[bend right=35] (1.75,4.7);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,28 @@
+% Pregunta 701 (2007-julio-OEP2007, n.º 9): equilibrio a largo plazo de la empresa competitiva; con p > min CMe produce en la rama creciente del CMg, a la derecha de la escala mínima eficiente, con beneficio extraordinario; solo con libre entrada p = min CMe y x = x_min. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1.25cm]
+  % C(x) = 2x - 0,6x^2 + 0,12x^3 (largo plazo)
+  % CMe = 2 - 0,6x + 0,12x^2 (mínimo en x = 2,5; CMe = 1,25)
+  % CMg = 2 - 1,2x + 0,36x^2 (mínimo en x = 1,67; corta al CMe en x = 2,5)
+  % p1 = CMg(4) = 2,96 ; CMe(4) = 1,52
+  \fill[area] (0,1.52) rectangle (4,2.96);
+  \ejes{$x$}{$p,\ \mathit{CMe},\ \mathit{CMg}$}{6}{4.6}
+  \draw[curva1] plot[domain=0.4:4.5,samples=60] (\x,{2-1.2*\x+0.36*\x*\x}) node[etiqueta,above] {$\mathit{CMg}_L$};
+  \draw[curva2] plot[domain=0.4:5.6,samples=60] (\x,{2-0.6*\x+0.12*\x*\x}) node[etiqueta,right] {$\mathit{CMe}_L$};
+  % precio por encima del mínimo
+  \draw[curva4] (0,2.96) -- (5.6,2.96) node[etiqueta,right] {$p_1$};
+  \draw[guia] (4,0) node[below] {$x_1$} -- (4,2.96);
+  \draw[guia] (4,1.52) -- (0,1.52) node[left] {$\mathit{CMe}(x_1)$};
+  \node[punto,tceerojo] at (4,2.96) {};
+  \node[punto] at (4,1.52) {};
+  \node[font=\small,align=center] at (2.0,2.24) {beneficio\\extraordinario};
+  % equilibrio con libre entrada
+  \draw[curva4,desplazada] (0,1.25) -- (5.6,1.25) node[etiqueta,right] {$p^*$};
+  \draw[guia] (2.5,0) node[below] {$x_{\min}$} -- (2.5,1.25);
+  \node[left] at (0,1.25) {$p^*=\min \mathit{CMe}_L$};
+  \node[punto] at (2.5,1.25) {};
+  \node[font=\footnotesize,align=left,anchor=north west] at (2.65,1.1) {solo con libre entrada:\\$\pi=0$ y $x=x_{\min}$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,34 @@
+% Pregunta 791 (2005-septiembre-OEP2005, n.º 10): envolvente de costes, a escala.
+% C^L = 4x (recta) y C^C(x, K=1) = 4x^2 + 1 (parábola) tangentes en x = 1/2, C = 2; el hueco entre ambas es (2x-1)^2.
+% Con K = 4, C^C = 8x^2 + 4 vale 6 en x = 1/2, no 2: la tangencia es propia de K = 1 (opción c falsa).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=5cm,y=0.6cm]
+  % Hueco entre corto y largo plazo con K = 1
+  \fill[area] plot[domain=0:1.12,samples=60] (\x,{4*\x*\x+1}) -- plot[domain=1.12:0,samples=2] (\x,{4*\x});
+  \draw[eje] (0,0) -- (1.25,0) node[right] {$x$};
+  \draw[eje] (0,0) -- (0,8.4) node[left] {$C$};
+  \node[below left] at (0,0) {$0$};
+  \foreach \t in {1} \draw (\t,0) -- (\t,-0.12) node[below] {$\t$};
+  \foreach \t in {1,4,6} \draw (0,\t) -- (-0.016,\t) node[left] {$\t$};
+  % Largo plazo
+  \draw[curva1] (0,0) -- (1.15,4.6) node[etiqueta,right,text=tceemorado] {$C^L=4x$};
+  % Corto plazo con K = 1
+  \draw[curva2] plot[domain=0:1.12,samples=60] (\x,{4*\x*\x+1}) node[etiqueta,right,text=tceeazul,align=left] {$C^C(x,1)$\\$=4x^2+1$};
+  % Corto plazo con K = 4
+  \draw[curvanueva,desplazada] plot[domain=0:0.69,samples=60] (\x,{8*\x*\x+4}) node[etiqueta,right,text=tceerojo] {$C^C(x,4)=8x^2+4$};
+  % Tangencia
+  \proyeccion{(0.5,2)}{$\tfrac{1}{2}$}{$2$}
+  \node[punto] at (0.5,2) {};
+  \node[etiqueta,below right,align=left,font=\footnotesize] at (0.52,1.9) {tangentes:\\$C^C=C^L=2$};
+  % K = 4 en x = 1/2
+  \draw[guia] (0.5,2) -- (0.5,6) -- (0,6);
+  \node[punto,fill=tceerojo] at (0.5,6) {};
+  \node[etiqueta,left,text=tceerojo,font=\footnotesize] at (0.48,6.6) {$\sqrt{4}+4=6\neq2$};
+  % Rótulo del hueco
+  \draw[flecha] (0.95,2.4) -- (0.9,3.9);
+  \node[etiqueta,below,font=\footnotesize] at (0.98,2.45) {hueco $=(2x-1)^2\geq0$};
+\end{tikzpicture}
+\end{document}

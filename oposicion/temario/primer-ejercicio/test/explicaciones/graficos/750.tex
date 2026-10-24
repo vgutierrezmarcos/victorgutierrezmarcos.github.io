@@ -1,0 +1,32 @@
+% Pregunta 750 (2006-septiembre-OEP2006, n.º 13): óptimo de Pareto con producción y preferencias iguales.
+% FPP x^2/25 + y^2/17.64 = 1; U = xy igual para todos. P* = (5/sqrt2, 4.2/sqrt2): |RMS| = |RMT| = 0.84.
+% P = (1.5; 4.006) está en la FPP pero |RMS| = 2.67 > |RMT| = 0.26: más X mejora (d falsa, b verdadera).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$X$}{$Y$}{6.4}{5.2}
+  % FPP (cuarto de elipse, semiejes 5 y 4.2)
+  \draw[curva1,domain=0:90,samples=80] plot ({5*cos(\x)},{4.2*sin(\x)});
+  \node[etiqueta,text=tceemorado,below left] at (5,0.05) {FPP};
+  % Curva de indiferencia tangente: xy = 10.5
+  \draw[curva2,domain=2.25:6.1,samples=80] plot (\x,{10.5/\x});
+  \node[etiqueta,text=tceeazul,right] at (6.1,{10.5/6.1}) {$U^*$};
+  % Tangente común en P*
+  \draw[guia] (2.6,{2.970+0.84*0.936}) -- (5.9,{2.970-0.84*2.364});
+  % Curva de indiferencia por P: xy = 6.01, corta a la FPP
+  \draw[curvanueva,domain=1.32:5.6,samples=80] plot (\x,{6.01/\x});
+  \node[etiqueta,text=tceerojo,right] at (5.6,{6.01/5.6}) {$U_P$};
+  % Movimiento a lo largo de la FPP desde P hacia P*
+  \draw[flecha,domain=67:53,samples=30] plot ({4.65*cos(\x)},{3.906*sin(\x)});
+  % Puntos
+  \node[punto] (P) at (1.5,4.006) {};
+  \node[etiqueta,left] at (1.4,3.95) {$P$};
+  \node[punto] at (3.536,2.970) {};
+  \node[etiqueta,below left] at (3.536,2.970) {$P^*$};
+  % Notas
+  \node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=west] at (0.15,5.45) {En $P$ (en la FPP): $|RMS|>|RMT|$};
+  \node[etiqueta,font=\footnotesize,text=tceeazul,align=left,anchor=west] at (4.1,4.4) {En $P^*$:\\$|RMS|=|RMT|$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,35 @@
+% Pregunta 473 (2014-septiembre-OEP2014, n.º 5): utilidad convexa u(x)=x^2, equivalente cierto mayor que el valor esperado y prima de riesgo negativa. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.35cm,y=0.3cm]
+  \ejes{$x$}{$u(x)$}{4.6}{17.5}
+  % Curva de utilidad convexa
+  \draw[curva1] plot[domain=0:4.15,samples=60] (\x,{\x*\x}) node[etiqueta,above left] {$u(x)=x^2$};
+  % Premios de la lotería
+  \draw[guia] (4,0) -- (4,16) -- (0,16);
+  \node[below] at (4,0) {$4$};
+  \node[left] at (0,16) {$16$};
+  \node[punto] at (0,0) {};
+  \node[punto] at (2,4) {};
+  \node[punto] at (4,16) {};
+  \node[etiqueta,right,tceegris!80!black,align=left] at (0.2,11.5) {premios $0,\,2,\,4$\\[-1pt]prob. $\tfrac38,\,\tfrac12,\,\tfrac18$};
+  % Valor esperado y su utilidad
+  \draw[guia] (1.5,0) -- (1.5,4);
+  \draw[guia] (0,2.25) -- (1.5,2.25);
+  \node[left] at (0,2.25) {$2{,}25$};
+  \node[punto,label={[etiqueta]below right:$u(E(x))$}] at (1.5,2.25) {};
+  % Utilidad esperada y equivalente cierto
+  \draw[guia] (0,4) -- (1.5,4);
+  \draw[guia] (2,0) -- (2,4);
+  \node[left] at (0,4) {$4$};
+  \node[punto,fill=tceerojo,label={[etiqueta,tceerojo]above left:$Eu(L)$}] at (1.5,4) {};
+  \draw[flecha] (1.56,4) -- (1.93,4);
+  % Etiquetas del eje x
+  \node[below left,inner sep=2pt] at (1.55,0) {$E(x)\!=\!1{,}5$};
+  \node[below right,inner sep=2pt] at (1.95,0) {$\xi\!=\!2$};
+  % Prima de riesgo
+  \draw[curvanueva,decorate,decoration={brace,amplitude=4pt}] (2,-2.3) -- (1.5,-2.3);
+  \node[etiqueta,below,tceerojo] at (1.75,-3.0) {$PR=1{,}5-2=-\tfrac12$};
+\end{tikzpicture}
+\end{document}

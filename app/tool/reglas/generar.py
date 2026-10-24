@@ -532,6 +532,25 @@ RED = """
       }
 """
 
+# Reportes del test, comunes a todas las oposiciones (el banco es el mismo).
+REPORTES = """
+    // ------------------------------------------------ Reportes del test
+    // «Reportar respuesta» en la revisión de un test: lo crea quien tiene
+    // cuenta, firmado con su uid; nadie lo lee ni lo cambia desde la app. Los
+    // recoge cada hora la Action reportes-test.yml (cuenta de servicio, que no
+    // pasa por estas reglas) y se los manda por correo al administrador.
+    match /reportesTest/{id} {
+      allow create: if conSesion()
+        && request.resource.data.keys().hasOnly(['uid', 'correo', 'nombre', 'oposicion', 'pregunta', 'examen', 'numero', 'elegida', 'motivo', 'comentario', 'version', 'creado', 'enviado'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.enviado == false
+        && request.resource.data.pregunta is int
+        && request.resource.data.motivo in ['respuesta', 'explicacion', 'enunciado', 'otro']
+        && request.resource.data.comentario is string && request.resource.data.comentario.size() <= 2000
+        && request.resource.data.creado == request.time;
+    }
+"""
+
 PIE = """
     match /{document=**} {
       allow read, write: if false;
@@ -571,6 +590,7 @@ def generar() -> str:
     match /oposiciones/{op} {""")
     partes.append(bloque(RED, 'op').rstrip('\n'))
     partes.append('    }')
+    partes.append(REPORTES.rstrip('\n'))
     partes.append(PIE)
     return '\n'.join(partes)
 

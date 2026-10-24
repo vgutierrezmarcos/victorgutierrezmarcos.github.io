@@ -1,0 +1,48 @@
+% Pregunta 14 (2025-marzo-A, n.º 16): prestatario ante una subida del tipo de interés.
+% A escala con U = C1·C2 (logarítmica, beta = 1), A0 = 0, dotación E = (Y1, Y2) = (0,5; 5,5).
+% r = 0: C1 + C2 = 6, óptimo A = (3; 3), U0 = 9.
+% r = 1: C2 = 6,5 - 2 C1, óptimo C = (1,625; 3,25), U1 = 5,28.
+% Recta compensada (pendiente -2, tangente a U0): B = (2,12; 4,24).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.75cm]
+  \draw[eje] (0,0) -- (6.8,0) node[below left=2pt and 0pt] {$C_1$};
+  \draw[eje] (0,0) -- (0,7.4) node[left] {$C_2$};
+  \node[below left] at (0,0) {$0$};
+  % Rectas de balance
+  \draw[curva1] (0,6) -- (6,0) node[etiqueta,below] {$r_0$};
+  \draw[curvanueva] (0,6.5) -- (3.25,0) node[etiqueta,below] {$r_1$};
+  \draw[curvanueva,desplazada,semithick] (1.05,6.385) -- (4.243,0) node[etiqueta,below,text=tceerojo] {comp.};
+  % Curvas de indiferencia
+  \draw[curva2,domain=1.42:6.3,samples=60] plot (\x,{9/\x}) node[etiqueta,right] {$U_0$};
+  \draw[curva3,domain=0.78:5.7,samples=60] plot (\x,{5.28125/\x}) node[etiqueta,right] {$U_1$};
+  % Guías
+  \draw[guia] (3,0) -- (3,3) -- (0,3);
+  \draw[guia] (2.121,0) -- (2.121,4.243) -- (0,4.243);
+  \draw[guia] (1.625,0) -- (1.625,3.25) -- (0,3.25);
+  \draw[guia] (0.5,0) -- (0.5,5.5);
+  \node[etiqueta,below] at (0.5,0) {$Y_1$};
+  \node[etiqueta,left] at (0,5.5) {$Y_2$};
+  % Puntos
+  \node[punto] at (0.5,5.5) {};
+  \node[etiqueta,above right] at (0.5,5.5) {$E$};
+  \node[punto] at (3,3) {};
+  \node[etiqueta,above right] at (3,3) {$A$};
+  \node[punto,fill=tceerojo] at (2.121,4.243) {};
+  \node[etiqueta,above right] at (2.121,4.243) {$B$};
+  \node[punto,fill=tceerojo] at (1.625,3.25) {};
+  \node[etiqueta,left=3pt,fill=white,inner sep=1pt] at (1.625,3.25) {$C$};
+  % Efectos sobre C1 (debajo del eje)
+  \draw[flecha,tceeazul] (3,-1.1) -- (2.121,-1.1);
+  \node[etiqueta,right,text=tceeazul,font=\footnotesize] at (3,-1.1) {sustitución};
+  \draw[flecha,tceerojo] (2.121,-1.8) -- (1.625,-1.8);
+  \node[etiqueta,right,text=tceerojo,font=\footnotesize] at (2.121,-1.8) {renta};
+  % Efectos sobre C2 (a la izquierda del eje)
+  \draw[flecha,tceeazul] (-0.5,3) -- (-0.5,4.243);
+  \node[etiqueta,below,text=tceeazul,font=\footnotesize] at (-0.5,3) {sust.};
+  \draw[flecha,tceerojo] (-1.15,4.243) -- (-1.15,3.25);
+  \node[etiqueta,above,text=tceerojo,font=\footnotesize] at (-1.15,4.243) {renta};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,47 @@
+% Pregunta 10 (2025-marzo-A, n.º 10): ciudad lineal de Hotelling en cuatro variantes.
+% Precios fijos: ambas en 1/2 (c, correcta). Costes lineales con precios: sin equilibrio si están cerca (b falsa).
+% Costes cuadráticos con precios: extremos 0 y 1 (a falsa). Óptimo social: 1/4 y 3/4 (d falsa).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=6.4cm,y=1cm]
+  \newcommand{\segmento}[2]{%
+    \draw[thick] (0,#1) -- (1,#1);
+    \foreach \m in {0,0.25,0.5,0.75,1} \draw (\m,#1-0.08) -- (\m,#1+0.08);
+    \node[etiqueta,anchor=south west,align=left] at (-0.02,#1+0.12) {#2};
+  }
+  % Fila 1: precios fijos
+  \segmento{0}{c) Precios fijos: \textbf{las dos en el centro}}
+  \draw[flecha,tceemorado] (0.18,-0.32) -- (0.46,-0.32);
+  \draw[flecha,tceeazul] (0.82,-0.32) -- (0.54,-0.32);
+  \node[circle,fill=tceemorado,inner sep=2.2pt] at (0.485,0) {};
+  \node[circle,fill=tceeazul,inner sep=2.2pt] at (0.515,0) {};
+  \node[etiqueta,font=\footnotesize,below] at (0.5,-0.42) {cada una se acerca a la rival para ganar cuota};
+  % Fila 2: costes lineales
+  \segmento{-2}{b) Costes lineales, precios y localización}
+  \node[circle,fill=tceemorado,inner sep=2.2pt] at (0.44,-2) {};
+  \node[circle,fill=tceeazul,inner sep=2.2pt] at (0.56,-2) {};
+  \node[etiqueta,font=\footnotesize,below,text=tceerojo,align=center] at (0.5,-2.12) {si están cerca no hay equilibrio en precios\\(d'Aspremont, Gabszewicz y Thisse)};
+  % Fila 3: costes cuadráticos
+  \segmento{-4.2}{a) Costes cuadráticos, precios y localización}
+  \draw[flecha,tceemorado] (0.4,-4.5) -- (0.06,-4.5);
+  \draw[flecha,tceeazul] (0.6,-4.5) -- (0.94,-4.5);
+  \node[circle,fill=tceemorado,inner sep=2.2pt] at (0,-4.2) {};
+  \node[circle,fill=tceeazul,inner sep=2.2pt] at (1,-4.2) {};
+  \node[etiqueta,font=\footnotesize,below] at (0.5,-4.6) {diferenciación máxima: en $0$ y en $1$};
+  % Fila 4: óptimo social
+  \segmento{-6.4}{d) Óptimo social (el que minimiza el transporte)}
+  \fill[tceedorado,opacity=0.35] (0,-6.48) rectangle (0.5,-6.32);
+  \fill[tceeverde,opacity=0.3] (0.5,-6.48) rectangle (1,-6.32);
+  \node[circle,fill=tceemorado,inner sep=2.2pt] at (0.25,-6.4) {};
+  \node[circle,fill=tceeazul,inner sep=2.2pt] at (0.75,-6.4) {};
+  \foreach \a/\b in {0/0.25,0.25/0.5,0.5/0.75,0.75/1}
+    \draw[guia,|<->|] (\a,-6.75) -- node[below,font=\footnotesize,text=black] {$\tfrac14$} (\b,-6.75);
+  \node[etiqueta,font=\footnotesize,below] at (0.5,-7.35) {en $\tfrac14$ y $\tfrac34$: nadie recorre más de $\tfrac14$};
+  % Escala y leyenda
+  \foreach \m/\t in {0/0,0.25/\tfrac14,0.5/\tfrac12,0.75/\tfrac34,1/1} \node[font=\footnotesize,tceegris] at (\m,0.95) {$\t$};
+  \node[circle,fill=tceemorado,inner sep=2.2pt,label={[font=\footnotesize]right:empresa A}] at (0.2,-8.25) {};
+  \node[circle,fill=tceeazul,inner sep=2.2pt,label={[font=\footnotesize]right:empresa B}] at (0.6,-8.25) {};
+\end{tikzpicture}
+\end{document}

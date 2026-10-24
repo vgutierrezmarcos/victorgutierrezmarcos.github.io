@@ -1,0 +1,33 @@
+% Pregunta 752 (2006-septiembre-OEP2006, n.º 15): mercado de trabajo con salario real rígido.
+% Rectas a escala:  N^d: w = 4,5 - 0,7 N   N^s: w = 0,5 + 0,6 N  (equilibrio N* = 3,08; w* = 2,35)
+%   salario rígido w = 3    -> N^d = 2,14 (N_0); N^s = 4,17
+%   salario rígido w' = 3,7 -> N^d = 1,14 (N_1); N^s = 5,33
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.1cm]
+  \ejes{$N$}{$W/P$}{6.2}{5}
+  \node[font=\small\bfseries,text=tceemorado] at (3.1,5.4) {Mercado de trabajo};
+  % Curvas
+  \draw[curva1] (0.5,4.15) -- (5.8,0.44) node[etiqueta,right,text=tceemorado] {$N^d$};
+  \draw[curva2] (0.2,0.62) -- (5.8,3.98) node[etiqueta,right,text=tceeazul] {$N^s$};
+  % Salario rígido inicial
+  \draw[guia] (0,3) node[left] {$\bar{\omega}$} -- (4.167,3);
+  \draw[guia] (2.143,3) -- (2.143,0) node[below] {$N_0$};
+  \node[punto] at (2.143,3) {};
+  \node[punto,fill=tceeazul] at (4.167,3) {};
+  % Salario rígido nuevo
+  \draw[curvanueva,desplazada] (0,3.7) node[left,text=tceerojo] {$\bar{\omega}'$} -- (5.333,3.7);
+  \draw[guia] (1.143,3.7) -- (1.143,0) node[below,text=tceerojo] {$N_1$};
+  \node[punto,fill=tceerojo] at (1.143,3.7) {};
+  \draw[flecha] (0.35,3.1) -- (0.35,3.6);
+  % Caída del empleo
+  \draw[flecha,tceerojo] (2.05,0.45) -- (1.25,0.45);
+  % Paro clásico al salario nuevo
+  \draw[decorate,decoration={brace,amplitude=4pt},tceerojo] (1.143,3.82) -- (5.333,3.82)
+    node[midway,above=4pt,font=\footnotesize,text=tceerojo] {paro clásico};
+  \node[etiqueta,font=\footnotesize,align=left,anchor=west] at (4.15,2.2)
+    {$N=N^d(\bar{\omega})$};
+\end{tikzpicture}
+\end{document}

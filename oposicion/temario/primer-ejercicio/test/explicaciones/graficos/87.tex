@@ -1,0 +1,32 @@
+% Pregunta 87 (2024-junio-A, n.º 40): resultado al vencimiento del comprador y del vendedor de una put con K=50 y prima 2. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.09cm,y=0.06cm]
+  % Zona en la que pierde el vendedor (S<48)
+  \fill[fill=tceerojo,fill opacity=0.15] (0,0) -- (0,-48) -- (48,0) -- cycle;
+  \node[etiqueta,align=center,tceerojo!80!black] at (13,-13) {el vendedor\\pierde};
+  % Ejes
+  \draw[eje] (0,0) -- (74,0) node[right] {$S$};
+  \draw[eje] (0,-54) -- (0,56) node[left] {Resultado};
+  \node[below left] at (0,0) {$0$};
+  % Curvas
+  \draw[curva1] (0,48) -- (50,-2) -- (71,-2);
+  \draw[curva2] (0,-48) -- (50,2) -- (71,2);
+  \node[etiqueta,right,tceemorado] at (21,31) {Comprador};
+  \node[etiqueta,right,tceeazul] at (23,-31) {Vendedor};
+  % Valores en el eje vertical
+  \draw (-1,48) -- (1,48) node[pos=0,left] {$48$};
+  \draw (-1,-48) -- (1,-48) node[pos=0,left] {$-48$};
+  % Precio de ejercicio y punto muerto
+  \draw[guia] (50,-2) -- (50,6);
+  \node[etiqueta,above] at (50,6) {$K=50$};
+  \node[punto] at (48,0) {};
+  \node[etiqueta] at (46,-7) {$48$};
+  % Pérdida y beneficio máximos en la parte plana
+  \node[etiqueta,align=center] (bv) at (62,20) {beneficio máx.\\del vendedor: $2$};
+  \draw[->,thin,tceegris] (bv.south) -- (62,3);
+  \node[etiqueta,align=center] (pc) at (62,-20) {pérdida máx.\\del comprador: $2$};
+  \draw[->,thin,tceegris] (pc.north) -- (62,-3);
+\end{tikzpicture}
+\end{document}

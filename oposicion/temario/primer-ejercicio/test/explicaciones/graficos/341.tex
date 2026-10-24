@@ -1,0 +1,47 @@
+% Pregunta 341 (2020-enero-OEP2019, n.º 8): selección adversa de Akerlof.
+% Precio p en [1,2]. Lo que pide el vendedor: p (solo vende s <= p).
+% Disposición a pagar: 1,2 E[s | s <= p] = 0,6(1+p). Corte en p = 1,5 (500 coches, s en [1; 1,5]).
+% Escala: x = 0,6 + 5(p-1); y = 0,5 + 4(v-1).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Ejes con corte (empiezan en 1)
+  \draw[eje] (0,0) -- (6.2,0) node[below left=2pt and 0pt] {$p$};
+  \draw[eje] (0,0) -- (0,5.0) node[left] {valor};
+  \draw[thick] (0.22,-0.1) -- (0.30,0.1) (0.32,-0.1) -- (0.40,0.1);
+  \draw[thick] (-0.1,0.18) -- (0.1,0.26) (-0.1,0.28) -- (0.1,0.36);
+  % Marcas
+  \foreach \p/\t in {1/1, 1.5/{1{,}5}, 2/2} {
+    \draw (0.6+5*\p-5,0.06) -- (0.6+5*\p-5,-0.06) node[below] {$\t$};
+    \draw (0.06,0.5+4*\p-4) -- (-0.06,0.5+4*\p-4) node[left] {$\t$};}
+  \draw (-0.06,0.5+4*0.8) -- (0.06,0.5+4*0.8);
+  \node[left] at (-0.06,0.5+4*0.8) {$1{,}8$};
+  \draw (-0.06,0.5+4*0.2) -- (0.06,0.5+4*0.2);
+  \node[left] at (-0.06,0.5+4*0.2) {$1{,}2$};
+  % Tramo viable: disposición a pagar >= precio
+  \fill[area] (0.6,0.5) -- (0.6,1.3) -- (3.1,2.5) -- cycle;
+  % Recta p (lo que pide el vendedor)
+  \draw[curva2] (0.6,0.5) -- (5.6,4.5) node[etiqueta,above left,text=tceeazul,align=right] {precio $p$\\(se venden $s\le p$)};
+  % Disposición a pagar 0,6(1+p)
+  \draw[curva1] (0.6,1.3) -- (5.6,3.7);
+  \node[etiqueta,text=tceemorado,align=left,anchor=north west] at (3.35,2.3) {disposición a pagar\\$1{,}2\,E[s\mid s\le p]$\\$=0{,}6(1+p)$};
+  % Equilibrio
+  \proyeccion{(3.1,2.5)}{}{}
+  \node[punto] at (3.1,2.5) {};
+  \node[etiqueta,above left] at (3.1,2.5) {$E$};
+  % Opción b: a p = 2 solo pagarían 1,8
+  \draw[guia] (5.6,0) -- (5.6,4.5);
+  \draw[guia] (0,3.7) -- (5.6,3.7);
+  \node[punto] at (5.6,3.7) {};
+  \node[punto,fill=tceeazul] at (5.6,4.5) {};
+  \draw[flecha] (5.85,4.45) -- (5.85,3.75);
+  \node[etiqueta,right,text=tceerojo,align=left] at (5.9,4.1) {a $p=2$ solo\\pagarían $1{,}8$};
+  % Leyenda del área
+  \node[etiqueta,text=tceemorado,align=left,font=\footnotesize] at (1.75,3.2) {pagan más de lo que\\pide el vendedor};
+  \draw[->,thin,tceemorado] (1.6,2.85) -- (1.45,1.55);
+  \draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceemorado] (0.6,-0.55) -- (3.1,-0.55);
+  \node[etiqueta,align=center,font=\footnotesize,text=tceemorado] at (1.85,-1.05) {en $E$ se venden 500 coches\\($s\in[1;1{,}5]$)};
+\end{tikzpicture}
+\end{document}

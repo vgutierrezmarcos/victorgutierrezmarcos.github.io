@@ -1,0 +1,30 @@
+% Pregunta 297 (2019-febrero-OEP2018, n.º 8): el impuesto fijo sube el coste medio pero no mueve IMg ni CMg; x = 14 y p = 78 no cambian y el beneficio baja exactamente 100 (484 -> 384). Autor: Víctor Gutiérrez Marcos
+% A escala: p = 120 - 3x, IMg = 120 - 6x, CMg = 2x + 8, CMe = x + 8 + 300/x, CMe' = x + 8 + 400/x.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.23cm,y=0.042cm]
+  \ejes{$x$}{$p$}{27.5}{128}
+  % Beneficio tras el impuesto: 14 (78 - 50,6) = 384
+  \fill[area] (0,50.571) rectangle (14,78);
+  % Lo que se lleva el impuesto: 14 (50,6 - 43,4) = 100
+  \fill[area2] (0,43.429) rectangle (14,50.571);
+  % Demanda, ingreso marginal y coste marginal
+  \draw[curva1] (0,120) -- (20,60) node[etiqueta,above right] {$D$};
+  \draw[curva2] (0,120) -- (18,12) node[etiqueta,right] {$\mathit{IMg}$};
+  \draw[curva3] (0,8) -- (26,60) node[etiqueta,above] {$\mathit{CMg}$};
+  % Coste medio antes y después del impuesto fijo
+  \draw[curva4] plot[domain=3.1:25,samples=80,smooth] (\x,{\x+8+300/\x}) node[etiqueta,below right] {$\mathit{CMe}$};
+  \draw[curvanueva,desplazada] plot[domain=4.2:25,samples=80,smooth] (\x,{\x+8+400/\x}) node[etiqueta,right] {$\mathit{CMe}'$};
+  % IMg = CMg en x = 14; precio 78 en la demanda
+  \draw[guia] (14,0) node[below] {$14$} -- (14,78);
+  \draw[guia] (0,78) node[left] {$78$} -- (14,78);
+  \node[punto] at (14,36) {};
+  \node[punto] at (14,78) {};
+  \node[punto] at (14,43.429) {};
+  \node[punto] at (14,50.571) {};
+  % Rótulos de las áreas
+  \node[etiqueta,tceemorado,align=center] at (2.6,64.3) {$B'$\\$384$};
+  \node[etiqueta,font=\small,inner sep=0pt,anchor=west] at (0.5,47) {impuesto $100$};
+\end{tikzpicture}
+\end{document}

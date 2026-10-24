@@ -1,0 +1,27 @@
+% Pregunta 274 (2018-enero-OEP2017, n.º 30): curva en J; tras la devaluación el saldo comercial cae por el efecto precio y luego sube por encima del inicial cuando se cumple Marshall-Lerner. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$t$}{$SC$}{6.4}{5}
+  % Saldo inicial y momento de la devaluación
+  \draw[guia] (0,2.6) -- (6.2,2.6);
+  \node[left] at (0,2.6) {$SC_0$};
+  \draw[guia] (1.5,0) -- (1.5,4.8);
+  \node[below] at (1.5,0) {$t_0$};
+  \node[etiqueta,font=\footnotesize,align=center,anchor=south] at (1.5,4.8) {devaluación};
+  % Sin Marshall-Lerner (opciones a y c): no se recupera
+  \draw[tceegris,very thick,dashed] (1.5,2.6) .. controls (1.75,1.9) and (2.0,1.45) .. (2.5,1.25)
+        .. controls (3.5,0.95) and (5.0,0.8) .. (6.0,0.7);
+  \node[etiqueta,tceegris,font=\footnotesize,align=left,anchor=west] at (3.9,0.4) {sin Marshall-Lerner};
+  % Curva en J
+  \draw[curva1] (0.2,2.6) -- (1.5,2.6) .. controls (1.75,1.9) and (2.0,1.55) .. (2.4,1.55)
+        .. controls (3.2,1.55) and (4.2,3.2) .. (6.0,4.1);
+  \node[etiqueta,tceemorado,right] at (6.0,4.1) {$J$};
+  \node[punto] at (2.4,1.55) {};
+  % Rótulos de los dos efectos
+  \node[etiqueta,font=\footnotesize,align=center,anchor=east] at (1.42,1.7) {efecto\\precio};
+  \node[etiqueta,font=\footnotesize,align=center,anchor=west] at (2.0,4.1) {efecto cantidad\\(Marshall-Lerner)};
+  \draw[flecha] (3.4,3.75) -- (4.1,3.1);
+\end{tikzpicture}
+\end{document}

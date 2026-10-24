@@ -1,0 +1,43 @@
+% Pregunta 837 (2004-junio-OEP2004, n.º 10): caja de Edgeworth 10x10 con u_A = x_A y_A y u_B = x_B y_B.
+% Curva de contrato: la diagonal O_A-O_B (RMS_A = y_A/x_A = RMS_B = y_B/x_B). Las tres asignaciones están en ella:
+% (iii) en el centro (5,5), donde x_A y_A = 25 y x_B y_B = 25 son tangentes (RMS = 1); (i) en O_B (todo para A)
+% y (ii) en O_A (todo para B), los extremos de la curva de contrato. Respuesta a): todas; eficiencia no es equidad.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,y=0.6cm]
+  % Caja
+  \draw[thick] (0,0) rectangle (10,10);
+  % Ejes de A (abajo a la izquierda)
+  \draw[eje] (0,0) -- (11,0) node[right] {$x_A$};
+  \draw[eje] (0,0) -- (0,11) node[above] {$y_A$};
+  \node[below left] at (0,0) {$O_A$};
+  % Ejes de B (arriba a la derecha, invertidos)
+  \draw[eje] (10,10) -- (-1,10) node[left] {$x_B$};
+  \draw[eje] (10,10) -- (10,-1) node[below] {$y_B$};
+  \node[above right] at (10,10) {$O_B$};
+  % Marcas de escala
+  \foreach \v in {5} {
+    \draw (\v,0) -- (\v,-0.2) node[below,font=\small] {$\v$};
+    \draw (0,\v) -- (-0.2,\v) node[left,font=\small] {$\v$};
+  }
+  % Curva de contrato
+  \draw[curva1] (0,0) -- (10,10);
+  \node[etiqueta,text=tceemorado,rotate=45,above,font=\small] at (2.4,2.4) {curva de contrato};
+  % Curvas de indiferencia que pasan por (5,5)
+  \draw[curva2] plot[domain=2.5:10,samples=80] (\x,{25/\x});
+  \node[etiqueta,text=tceeazul,font=\small] at (8.6,1.9) {$u_A=25$};
+  \draw[curva3] plot[domain=0:7.5,samples=80] (\x,{10-25/(10-\x)});
+  \node[etiqueta,text=tceeverde,font=\small] at (1.5,8.1) {$u_B=25$};
+  % Tangente común en (iii): pendiente -1
+  \draw[guia] (3,7) -- (7,3);
+  % Asignaciones
+  \node[punto] at (5,5) {};
+  \node[etiqueta,right,align=left,font=\small] at (5.15,5.75) {(iii) $(5,5)$\\$\mathit{RMS}_A=\mathit{RMS}_B=1$};
+  \node[punto] at (10,10) {};
+  \node[etiqueta,font=\small,left] at (8.7,9.45) {(i) todo para A};
+  \node[punto] at (0,0) {};
+  \node[etiqueta,font=\small,right] at (1.1,0.45) {(ii) todo para B};
+\end{tikzpicture}
+\end{document}

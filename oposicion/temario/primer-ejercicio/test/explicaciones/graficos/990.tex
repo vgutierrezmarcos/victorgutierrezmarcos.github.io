@@ -1,0 +1,34 @@
+% Pregunta 990 (2026-marzo, n.º 26): Brander y Spencer. La subvención a la exportación desplaza hacia fuera la función de reacción de la empresa nacional; el equilibrio pasa de Cournot (C) a Stackelberg con la nacional como líder (S): sube su producción, baja la de la rival y se trasladan rentas. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm]
+  % Modelo lineal: P = a - x - x*, a - c = 6, subvención s = 1,5
+  % R: x* = 6 - 2x ; R': x* = 7,5 - 2x ; R*: x* = (6 - x)/2
+  \ejes{$x$ (nacional)}{$x^*$ (extranjera)}{6.8}{5.6}
+  % Isobeneficio de la empresa nacional tangente a R* en S (pi = 4,5)
+  \draw[curva4,domain=1.0:4.7,samples=60] plot (\x,{6-\x-4.5/\x});
+  \node[etiqueta,tceedorado,anchor=east] at (1.0,0.5) {$\pi^N$};
+  % Funciones de reacción
+  \draw[curva2] (0,3) -- (6,0);
+  \node[etiqueta,tceeazul,anchor=south] at (5.7,0.2) {$R^*$};
+  \draw[curva1] (0.5,5) -- (3,0);
+  \node[etiqueta,tceemorado,anchor=south] at (0.5,5) {$R$};
+  \draw[curvanueva,desplazada] (1.25,5) -- (3.75,0);
+  \node[etiqueta,tceerojo,anchor=south] at (1.25,5) {$R'$};
+  \draw[flecha] (1.15,3.9) -- (1.75,3.9);
+  \node[etiqueta,tceerojo,anchor=west,font=\footnotesize,align=left] at (1.85,3.95) {subvención a\\la exportación};
+  % Equilibrios
+  \proyeccion{(2,2)}{$x_C$}{$x^*_C$}
+  \draw[guia] (3,1.5) -- (3,0);
+  \draw[guia] (3,1.5) -- (0,1.5);
+  \node[below] at (3,0) {$x_S$};
+  \node[left] at (0,1.5) {$x^*_S$};
+  \node[punto,label={[etiqueta]above right:$C$}] at (2,2) {};
+  \node[punto,label={[etiqueta]above right:$S$}] at (3,1.5) {};
+  % Cambios en los ejes
+  \draw[flecha] (2.1,-0.55) -- (2.9,-0.55);
+  \draw[flecha] (-0.75,1.95) -- (-0.75,1.55);
+  \node[etiqueta,tceerojo,font=\footnotesize,align=left,anchor=west] at (3.55,2.45) {traslado de rentas:\\$x$ sube, $x^*$ baja};
+\end{tikzpicture}
+\end{document}

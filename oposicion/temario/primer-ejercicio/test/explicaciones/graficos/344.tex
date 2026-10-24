@@ -1,0 +1,39 @@
+% Pregunta 344 (2020-enero-OEP2019, n.º 11): ciudad lineal de Hotelling con coste de transporte cuadrático.
+% Precios fijos: las dos empresas en 1/2 (diferenciación mínima; d falsa en el juego en dos etapas).
+% Localización y después precios: en 0 y 1, p = c + t (c, correcta; a falsa).
+% Óptimo social: 1/4 y 3/4 (b falsa: el equilibrio da demasiada diferenciación).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=6.4cm,y=1cm]
+  \newcommand{\segmento}[2]{%
+    \draw[thick] (0,#1) -- (1,#1);
+    \foreach \m in {0,0.25,0.5,0.75,1} \draw (\m,#1-0.08) -- (\m,#1+0.08);
+    \node[etiqueta,anchor=south west,align=left] at (-0.02,#1+0.12) {#2};
+  }
+  % Escala
+  \foreach \m/\t in {0/0,0.25/\tfrac14,0.5/\tfrac12,0.75/\tfrac34,1/1} \node[font=\footnotesize,tceegris] at (\m,0.95) {$\t$};
+  % Fila 1: solo localización (precios fijos)
+  \segmento{0}{Solo localización (precios fijos)}
+  \draw[flecha,tceemorado] (0.16,-0.32) -- (0.45,-0.32);
+  \draw[flecha,tceemorado] (0.84,-0.32) -- (0.55,-0.32);
+  \node[circle,fill=tceemorado,inner sep=2.2pt] at (0.485,0) {};
+  \node[circle,fill=tceemorado,inner sep=2.2pt] at (0.515,0) {};
+  \node[etiqueta,font=\footnotesize,below,align=center] at (0.5,-0.42) {las dos en el centro: diferenciación mínima\\(Hotelling)};
+  % Fila 2: localización y después precios
+  \segmento{-2.4}{\textbf{Localización y después precios} (coste $td^2$)}
+  \draw[flecha] (0.4,-2.72) -- (0.06,-2.72);
+  \draw[flecha] (0.6,-2.72) -- (0.94,-2.72);
+  \node[circle,fill=tceerojo,inner sep=2.2pt] at (0,-2.4) {};
+  \node[circle,fill=tceerojo,inner sep=2.2pt] at (1,-2.4) {};
+  \node[etiqueta,font=\footnotesize,below,text=tceerojo,align=center] at (0.5,-2.82) {en $0$ y en $1$: diferenciación máxima, con $p_1=p_2=c+t$\\(alejarse suaviza la competencia en precios)};
+  % Fila 3: óptimo social
+  \segmento{-4.8}{Óptimo social (mínima distancia media)}
+  \node[circle,fill=tceeverde,inner sep=2.2pt] at (0.25,-4.8) {};
+  \node[circle,fill=tceeverde,inner sep=2.2pt] at (0.75,-4.8) {};
+  \foreach \a/\b in {0/0.25,0.25/0.5,0.5/0.75,0.75/1}
+    \draw[guia,|<->|] (\a,-5.15) -- node[below,font=\footnotesize,text=black] {$\tfrac14$} (\b,-5.15);
+  \node[etiqueta,font=\footnotesize,below,text=tceeverde] at (0.5,-5.75) {en $\tfrac14$ y $\tfrac34$: nadie recorre más de $\tfrac14$};
+\end{tikzpicture}
+\end{document}

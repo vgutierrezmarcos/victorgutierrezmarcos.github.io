@@ -1,0 +1,29 @@
+% Pregunta 397 (2011-octubre-OEP2011, n.º 18): la restricción de liquidez (c1 <= y1) corta la recta presupuestaria en la dotación E; no afecta a quien ahorra (A) y lleva a la esquina E a quien querría endeudarse (B). Autor: Víctor Gutiérrez Marcos
+% Recta c1 + c2/(1+r) = y1 + y2/(1+r) con 1+r = 1 y E = (2,4; 2,2). Curvas Cobb-Douglas: A con alfa = 1,3/4,6; B con alfa = 3,4/4,6.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$c_1$}{$c_2$}{5.8}{5.3}
+  % Tramo de la recta que exige endeudarse: ya no es alcanzable
+  \draw[guia,thick] (2.4,2.2) -- (4.6,0);
+  % Restricción efectiva: la recta hasta E y luego la vertical c1 = y1
+  \draw[curva1] (0,4.6) -- (2.4,2.2) -- (2.4,0);
+  \node[etiqueta,tceemorado,right] at (2.4,0.35) {$c_1\le y_1$};
+  % Consumidor A: ahorra, su óptimo no cambia
+  \draw[curva2,domain=0.45:5.0,samples=80] plot (\x,{3.6593*\x^(-0.39394)}) node[etiqueta,right] {$U_A$};
+  % Consumidor B: óptimo libre B* (inalcanzable) y esquina E en una curva más baja
+  \draw[curva3,desplazada,domain=2.06:4.3,samples=80] plot (\x,{38.4626*\x^(-2.83333)}) node[etiqueta,right] {$U_B^*$};
+  \draw[curvanueva,domain=1.80:5.3,samples=80] plot (\x,{26.2838*\x^(-2.83333)}) node[etiqueta,right] {$U_B$};
+  % De B* a E
+  \draw[flecha,shorten >=3pt,shorten <=3pt] (3.4,1.2) to[bend right=30] (2.4,2.2);
+  % Guías y valores
+  \draw[guia] (0,2.2) -- (2.4,2.2);
+  \node[left] at (0,2.2) {$y_2$};
+  \node[below] at (2.4,0) {$y_1$};
+  % Puntos
+  \node[punto,label={[etiqueta,tceeazul]above right:{$A$}}] at (1.3,3.3) {};
+  \node[punto,label={[etiqueta,tceeverde]right:{$B^*$}}] at (3.4,1.2) {};
+  \node[punto,label={[etiqueta]below left:{$E$}}] at (2.4,2.2) {};
+\end{tikzpicture}
+\end{document}

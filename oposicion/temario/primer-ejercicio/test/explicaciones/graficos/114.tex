@@ -1,0 +1,32 @@
+% Pregunta 114 (2023-junio-A, n.º 17): Síntesis Neoclásica con ilusión monetaria. La subida de P desplaza la demanda de trabajo W = P·PMgN hacia arriba en proporción a P; la oferta, que depende de W, no se mueve: W sube menos que P (W/P cae) y el empleo aumenta. Autor: Víctor Gutiérrez Marcos
+% A escala: PMgN = 4,4 - 0,7N; P0 = 1, P1 = 1,4; oferta W = 0,6 + 0,5N.
+% E0: N0 = 3,17, W0 = 2,18. E1: N1 = 3,76, W1 = 2,48 (W sube un 14 %, P un 40 %).
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.85cm]
+  \ejes{$N$}{$W$}{6.6}{6.4}
+  % Oferta con ilusión monetaria: depende de W, no de P
+  \draw[curva2] (0,0.6) -- (5.8,3.5) node[etiqueta,tceeazul,right] {$N^s(W)$};
+  % Demanda inicial W = P0·PMgN
+  \draw[curva1] (0.6,3.98) -- (5.6,0.48) node[etiqueta,tceemorado,right] {$W=P_0\,\mathit{PMgN}$};
+  % Demanda tras la subida de precios W = P1·PMgN
+  \draw[curvanueva,desplazada] (0.6,5.572) -- (4.9,1.358) node[etiqueta,tceerojo,right] {$W=P_1\,\mathit{PMgN}$};
+  % Desplazamiento proporcional hacia arriba
+  \draw[flecha] (1.4,3.44) -- (1.4,4.7);
+  \node[etiqueta,left,font=\footnotesize] at (1.36,4.45) {$P_0\to P_1$};
+  % Equilibrios
+  \draw[guia] (3.167,0) -- (3.167,2.183) -- (0,2.183);
+  \draw[guia] (3.757,0) -- (3.757,2.478) -- (0,2.478);
+  \node[punto] at (3.167,2.183) {};
+  \node[punto] at (3.757,2.478) {};
+  \node[etiqueta,below left] at (3.167,2.183) {$E_0$};
+  \node[etiqueta,anchor=south west] at (3.82,2.55) {$E_1$};
+  \node[below] at (3.167,0) {$N_0$};
+  \node[below] at (3.757,0) {$N_1$};
+  \node[left] at (0,2.03) {$W_0$};
+  \node[left] at (0,2.63) {$W_1$};
+  % Rótulo
+  \node[etiqueta,align=left,font=\footnotesize,anchor=west] at (3.0,5.6) {$W$ sube menos que $P$:\\$W/P$ baja y $N$ sube};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,39 @@
+% Pregunta 216 (2021-julio-OEP2020, n.º 21): equivalencia ricardiana con dos periodos, beta = 0,5 y r = 0,1.
+% Riqueza ilustrativa W = 6 (valor presente). Restricción C1 + C2/1,1 = W; Euler C2 = 0,55 C1; C1 = W/1,5.
+% E0 = (4; 2,2) con W = 6; G1 sube 1 -> W = 5 (igual con impuestos o con deuda) -> E1 = (3,33; 1,83).
+% Curvas de indiferencia C1^2 C2 = cte (tangentes con pendiente -1,1). A escala.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm]
+  \draw[eje] (0,0) -- (7.6,0) node[below left=2pt and 0pt] {$C_1$};
+  \draw[eje] (0,0) -- (0,7.3) node[left] {$C_2$};
+  \node[below left] at (0,0) {$0$};
+  % Senda de Euler
+  \draw[guia,thick] (0,0) -- (7.2,3.96) node[etiqueta,above,text=tceegris,align=center,font=\footnotesize] {Euler:\\$C_2=0{,}55\,C_1$};
+  % Curvas de indiferencia (C1^2 C2 = cte)
+  \draw[curva2,thick,domain=2.55:7.2,samples=60] plot (\x,{35.2/(\x*\x)});
+  \draw[curva2,thick,dashed,domain=2.1:7.2,samples=60] plot (\x,{20.37/(\x*\x)});
+  % Restricciones
+  \draw[curva1] (0,6.6) -- (6,0);
+  \draw[curvanueva,desplazada] (0,5.5) -- (5,0);
+  \draw (0,6.6) -- (-0.08,6.6) node[left] {$6{,}6$};
+  \draw (0,5.5) -- (-0.08,5.5) node[left,text=tceerojo] {$5{,}5$};
+  \node[etiqueta,text=tceemorado,align=left,anchor=west,font=\footnotesize] at (0.45,6.75) {$C_1+\frac{C_2}{1{,}1}=6$};
+  \node[etiqueta,text=tceerojo,align=left,anchor=west,font=\footnotesize] at (3.0,5.6) {$C_1+\frac{C_2}{1{,}1}=5$ tras $\Delta G_1=1$:\\la misma con impuestos\\o con deuda};
+  \draw[->,thin,tceerojo] (2.95,5.0) -- (1.45,3.97);
+  % Óptimos
+  \draw[guia] (4,0) -- (4,2.2);
+  \draw[guia] (3.333,0) -- (3.333,1.833);
+  \node[punto,fill=tceemorado] at (4,2.2) {};
+  \node[etiqueta,anchor=south west,text=tceemorado,inner sep=1pt] at (3.95,2.62) {$E_0$};
+  \node[punto,fill=tceerojo] at (3.333,1.833) {};
+  \node[etiqueta,left,text=tceerojo] at (3.1,1.62) {$E_1$};
+  % Ticks en C1
+  \foreach \v/\t in {3.333/3{,}33,4/4,5/5,6/6} \draw (\v,0) -- (\v,-0.08) node[below,font=\footnotesize] {$\t$};
+  % Llaves: el corte se mueve 1, C1 baja 0,67
+  \draw[thick,tceerojo,|<->|] (5,-0.75) -- node[below,font=\footnotesize,text=tceerojo] {corte: $-1$} (6,-0.75);
+  \draw[thick,tceerojo,|<->|] (3.333,-0.75) -- node[below,font=\footnotesize,text=tceerojo,align=center] {$\Delta C_1=-0{,}67$} (4,-0.75);
+\end{tikzpicture}
+\end{document}

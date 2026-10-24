@@ -1,0 +1,23 @@
+% Pregunta 383 (2011-octubre-OEP2011, n.º 3): el coste medio baja mientras el coste marginal está por debajo de él y sube cuando está por encima; el coste fijo medio baja siempre, pero no basta para que baje el coste medio. Autor: Víctor Gutiérrez Marcos
+% C(q) = 1,5 + 1,4q - 0,45q^2 + 0,075q^3 (a escala): mínimo del CMe en q = 3,72.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$q$}{costes}{6}{5}
+  % Tramo en que CMg < CMe: el coste medio baja
+  \fill[area] plot[domain=0.45:3.72,samples=60,smooth] (\x,{1.5/\x+1.4-0.45*\x+0.075*\x*\x})
+    -- plot[domain=3.72:0.45,samples=60,smooth] (\x,{1.4-0.9*\x+0.225*\x*\x}) -- cycle;
+  % Coste fijo medio (siempre decreciente)
+  \draw[curva4] plot[domain=0.42:5.6,samples=80,smooth] (\x,{1.5/\x}) node[etiqueta,right] {$\mathit{CFMe}$};
+  % Coste medio y coste marginal
+  \draw[curva1] plot[domain=0.45:5.6,samples=100,smooth] (\x,{1.5/\x+1.4-0.45*\x+0.075*\x*\x}) node[etiqueta,right] {$\mathit{CMe}$};
+  \draw[curva2] plot[domain=0.15:5.6,samples=100,smooth] (\x,{1.4-0.9*\x+0.225*\x*\x}) node[etiqueta,right] {$\mathit{CMg}$};
+  % Mínimo del coste medio
+  \draw[guia] (3.72,0) node[below] {$q_{\min}$} -- (3.72,1.167);
+  \node[punto] at (3.72,1.167) {};
+  % Rótulos de los dos tramos
+  \node[etiqueta,align=center,tceemorado] at (1.95,3.6) {$\mathit{CMg}<\mathit{CMe}$\\$\mathit{CMe}$ baja};
+  \node[etiqueta,align=center,tceemorado] at (4.75,3.9) {$\mathit{CMg}>\mathit{CMe}$\\$\mathit{CMe}$ sube};
+\end{tikzpicture}
+\end{document}

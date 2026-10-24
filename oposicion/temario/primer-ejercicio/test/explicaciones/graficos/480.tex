@@ -1,0 +1,26 @@
+% Pregunta 480 (2014-septiembre-OEP2014, n.º 12): mercado de trabajo competitivo y de producto no competitivo; la empresa iguala w* al IPMg_L, por debajo de p·PMg_L (explotación monopolística de Robinson). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$L$}{$w$}{6}{5}
+  % Valor del producto marginal e ingreso del producto marginal: parten del mismo punto (con q=0, IMg=p) y el IPMg cae más deprisa
+  \draw[curva2] (0.4,4.6) -- (5.6,1.2) node[etiqueta,right] {$p\cdot\mathrm{PMg}_L$};
+  \draw[curva1] (0.4,4.6) -- (3.87,0.5) node[etiqueta,right] {$\mathrm{IMg}\cdot\mathrm{PMg}_L$};
+  % Oferta de trabajo horizontal (competencia perfecta)
+  \draw[curva3] (0,2) -- (6,2) node[etiqueta,above left] {$S_L$};
+  \node[left] at (0,2) {$w^*$};
+  % Contratación con competencia en el producto (opción b)
+  \draw[guia] (4.38,0) -- (4.38,2);
+  \node[below] at (4.38,0) {$L^{c}$};
+  \node[circle,draw=tceegris,fill=white,inner sep=1.3pt] at (4.38,2) {};
+  % Equilibrio
+  \draw[guia] (2.6,0) -- (2.6,2);
+  \node[below] at (2.6,0) {$L^*$};
+  \draw[curvanueva] (2.6,2) -- (2.6,3.16);
+  \node[punto] at (2.6,2) {};
+  \node[etiqueta,below left] at (2.6,2) {$E$};
+  \node[punto,fill=tceerojo] at (2.6,3.16) {};
+  \draw[thin,tceerojo] (2.65,2.6) -- (3.6,4.3) node[above,etiqueta,tceerojo,align=center] {explotación\\monopolística};
+\end{tikzpicture}
+\end{document}

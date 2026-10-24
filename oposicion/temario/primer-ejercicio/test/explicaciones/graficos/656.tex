@@ -1,0 +1,35 @@
+% Pregunta 656 (2008-julio-OEP2008, n.º 8): funciones de mejor respuesta en estrategias mixtas
+% de un juego de coordinación. q = prob. de que el jugador 1 juegue A, p = la del jugador 2.
+% MR del jugador 2: p = 0 si q < 1/2, p = 1 si q > 1/2; MR del jugador 1: q = 0 si p < 4/5, q = 1 si p > 4/5.
+% Se cortan en tres puntos: (B,B), (A,A) y el mixto (1/2, 4/5). A escala.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=5.2cm,y=5.2cm]
+  \draw[eje] (0,0) -- (1.18,0) node[right] {$q$};
+  \draw[eje] (0,0) -- (0,1.16) node[above] {$p$};
+  \node[below left] at (0,0) {$0$};
+  % Cuadrado unidad
+  \draw[guia] (1,0) -- (1,1) -- (0,1);
+  \draw (1,0) -- (1,-0.02) node[below] {$1$};
+  \draw (0,1) -- (-0.02,1) node[left] {$1$};
+  % Mejor respuesta del jugador 2 (elige p según q)
+  \draw[curva1] (0,0) -- (0.5,0) -- (0.5,1) -- (1,1);
+  % Mejor respuesta del jugador 1 (elige q según p)
+  \draw[curva2] (0,0) -- (0,0.8) -- (1,0.8) -- (1,1);
+  % Etiquetas de las curvas
+  \node[etiqueta,text=tceemorado,align=center,font=\small] at (0.75,1.08) {MR del jugador 2};
+  \node[etiqueta,text=tceeazul,align=center,font=\small] at (0.25,0.88) {MR del jugador 1};
+  % Valores críticos
+  \draw (0.5,0) -- (0.5,-0.02) node[below] {$\tfrac12$};
+  \draw (0,0.8) -- (-0.02,0.8) node[left] {$\tfrac45$};
+  % Equilibrios de Nash
+  \node[punto] at (0,0) {};
+  \node[punto] at (1,1) {};
+  \node[punto] at (0.5,0.8) {};
+  \node[etiqueta,above right,font=\small] at (0.03,0.02) {$(B,B)$};
+  \node[etiqueta,right,font=\small] at (1.03,1) {$(A,A)$};
+  \node[etiqueta,below right,font=\small,align=left] at (0.52,0.78) {mixto\\$(q,p)=(\tfrac12,\tfrac45)$};
+\end{tikzpicture}
+\end{document}

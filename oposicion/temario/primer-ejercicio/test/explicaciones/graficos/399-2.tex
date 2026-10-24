@@ -1,0 +1,18 @@
+% Pregunta 399 (2011-octubre-OEP2011, n.º 20): consumo de estado estacionario c* = f(k*) - (n+delta)k* con f(k)=1,6*sqrt(k) y n+delta=0,40; máximo en k_oro=4 (regla de oro); a la derecha, más capital da menos consumo. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=2.4cm]
+  \ejes{$k^*$}{$c^*$}{12}{2}
+  \fill[tceerojo,opacity=0.08] (4,0) rectangle (11.5,1.85);
+  \draw[curva1,domain=0:11.5,samples=100] plot (\x,{1.6*sqrt(\x)-0.4*\x}) node[etiqueta,right] {$c^*$};
+  \draw[guia] (4,1.6) -- (4,0) node[below] {$k_{\text{oro}}$};
+  \draw[guia] (4,1.6) -- (0,1.6) node[left] {$c_{\text{oro}}$};
+  \node[punto] at (4,1.6) {};
+  \node[etiqueta,anchor=south,font=\footnotesize] at (4,1.63) {$f'(k_{\text{oro}})=n+\delta$};
+  \draw[flecha,tceeverde] (1.2,0.72) -- (2.6,1.18);
+  \node[etiqueta,tceeverde,font=\footnotesize,align=center] at (2.4,0.5) {$k\uparrow\Rightarrow c\uparrow$};
+  \draw[flecha,tceerojo] (6.4,1.66) -- (9.6,1.33);
+  \node[etiqueta,tceerojo,font=\footnotesize,align=center] at (8.4,0.62) {$k\uparrow\Rightarrow c\downarrow$\\(ineficiencia\\dinámica)};
+\end{tikzpicture}
+\end{document}

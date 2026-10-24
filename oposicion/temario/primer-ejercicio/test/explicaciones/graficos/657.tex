@@ -1,0 +1,41 @@
+% Pregunta 657 (2008-julio-OEP2008, n.º 9): aversión al riesgo con utilidad VNM cóncava.
+% Esquemático: u(x) = 5 (1 - exp(-x/2,2)). Lotería L2: x1 = 0,8 y x2 = 5,2 con prob. 1/2.
+%   u(x1) = 1,53 ; u(x2) = 4,53 ; E(L2) = 3,0 ; UE(L2) = 3,03 (cuerda) ; U(E(L2)) = u(3) = 3,72.
+%   UE(L2) < U(E(L2)): averso (opción c). Equivalente cierto: u(EC) = 3,03 -> EC = 2,05;
+%   prima de riesgo = E(L2) - EC = 0,95. b y d comparan euros (eje x) con útiles (eje u).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,declare function={u(\x)=5*(1-exp(-\x/2.2));}]
+  \ejes{$x$ (euros)}{$u(x)$ (útiles)}{7.0}{5.3}
+  % Utilidad VNM cóncava
+  \draw[curva1] plot[domain=0:5.8,samples=80] (\x,{u(\x)}) node[etiqueta,above] {$u(x)$};
+  % Resultados de L2 y la cuerda
+  \coordinate (A) at (0.8,{u(0.8)});
+  \coordinate (B) at (5.2,{u(5.2)});
+  \draw[guia] (A) -- (0.8,0) node[below,text=black] {$x_1$};
+  \draw[guia] (B) -- (5.2,0) node[below,text=black] {$x_2$};
+  \draw[curva2] (A) -- (B);
+  \node[punto] at (A) {};
+  \node[punto] at (B) {};
+  % Valor esperado: utilidad del valor esperado (curva) y utilidad esperada (cuerda)
+  \draw[guia] (3,0) -- (3,{u(3)});
+  \node[below] at (3,0) {$E(L_2)$};
+  \draw[guia] (0,{u(3)}) -- (3,{u(3)});
+  \draw[guia] (0,3.03) -- (3,3.03);
+  \node[left] at (0,{u(3)}) {$U(E(L_2))=U(L_1)$};
+  \node[left,text=tceeazul] at (0,3.03) {$UE(L_2)$};
+  \node[punto] at (3,{u(3)}) {};
+  \node[punto,fill=tceeazul] at (3,3.03) {};
+  % Equivalente cierto y prima de riesgo
+  \draw[guia] (2.05,3.03) -- (2.05,0) node[below,text=black] {$EC$};
+  \node[punto,fill=tceerojo] at (2.05,3.03) {};
+  \draw[<->,thick,tceerojo] (2.05,0.75) -- (3,0.75);
+  \node[font=\small,text=tceerojo,fill=white,inner sep=1.5pt] at (2.525,0.35) {prima de riesgo};
+  % La desigualdad de la opción c
+  \draw[<->,thick,tceeverde!70!black] (3.12,3.06) -- (3.12,{u(3)-0.03});
+  \node[etiqueta,anchor=north west,align=left,font=\small,fill=white,inner sep=1.5pt,text=tceeverde!70!black] at (3.2,2.95)
+    {$UE(L_2)<U(E(L_2))$:\\la cuerda, bajo la curva\\(averso: opción c)};
+\end{tikzpicture}
+\end{document}

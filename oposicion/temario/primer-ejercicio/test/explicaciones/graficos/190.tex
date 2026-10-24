@@ -1,0 +1,45 @@
+% Pregunta 190 (2022-julio, n.º 45): fórmula suiza con a = 10 frente a un recorte lineal del 10 %.
+% A escala: suiza t1 = 10 t0/(10 + t0); lineal t1 = 0,9 t0; bisectriz t1 = t0.
+%   A: 5 -> 3,33; 10 -> 5.   B: 15 -> 6; 20 -> 6,67 (lineal: 13,5 y 18).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.27cm,y=0.24cm]
+  \ejes{$t_0$ (\%)}{$t_1$ (\%)}{27}{25}
+  % Marcas
+  \foreach \v in {5,10,15,20} {
+    \draw (\v,0) -- (\v,-0.4) node[below] {$\v$};
+    \draw (0,\v) -- (-0.4,\v) node[left] {$\v$};
+  }
+  % Bisectriz y techo
+  \draw[guia] (0,0) -- (24,24) node[etiqueta,text=tceegris,above] {$t_1=t_0$};
+  \draw[guia] (0,10) -- (26,10) node[pos=0,etiqueta,text=tceegris,above right=0pt and 2pt] {techo $a=10$};
+  % Recorte lineal del 10 %
+  \draw[curva2] (0,0) -- (25,22.5) node[etiqueta,text=tceeazul,right] {$0{,}9\,t_0$};
+  % Fórmula suiza
+  \draw[curva1,domain=0:25,samples=80] plot (\x,{10*\x/(10+\x)}) node[etiqueta,text=tceemorado,right] {suiza};
+  % De la lineal a la suiza en B
+  \draw[flecha] (15,13.5) -- (15,6.6);
+  \draw[flecha] (20,18) -- (20,7.3);
+  \node[punto,fill=tceeazul] at (15,13.5) {};
+  \node[punto,fill=tceeazul] at (20,18) {};
+  \node[etiqueta,text=tceeazul,below right=-1pt and 1pt] at (15,13.5) {$13{,}5$};
+  \node[etiqueta,text=tceeazul,below right=-1pt and 1pt] at (20,18) {$18$};
+  % Puntos de A
+  \node[punto] at (5,3.333) {};
+  \node[punto] at (10,5) {};
+  \node[etiqueta,below right=0pt and -1pt] at (5,3.333) {$3{,}33$};
+  \node[etiqueta,below right=0pt and -1pt] at (10,5) {$5$};
+  % Puntos de B
+  \node[punto,fill=tceedorado] at (15,6) {};
+  \node[punto,fill=tceedorado] at (20,6.667) {};
+  \node[etiqueta,text=tceedorado!70!black,below] at (15,6) {$6$};
+  \node[etiqueta,text=tceedorado!70!black,below] at (20,6.667) {$6{,}67$};
+  % Rótulos de los países
+  \node[etiqueta,align=center] at (7.5,-4.6) {país A};
+  \node[etiqueta,align=center,text=tceedorado!70!black] at (17.5,-4.6) {país B};
+  \draw[thin] (4,-3.3) -- (11,-3.3);
+  \draw[thin,tceedorado!70!black] (14,-3.3) -- (21,-3.3);
+\end{tikzpicture}
+\end{document}

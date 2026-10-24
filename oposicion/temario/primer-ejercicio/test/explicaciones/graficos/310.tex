@@ -1,0 +1,34 @@
+% Pregunta 310 (2019-febrero-OEP2018, n.º 21): Solow por unidad de trabajo eficiente con y = k^(1/3) y n+g+delta = 1/12, a escala. La regla de oro está en k_oro = 8 (f' = n+g+delta, tangente paralela a la recta), que se alcanza con s = alfa = 1/3; allí el ahorro s*y = 2/3 es igual a las rentas del capital alfa*y = f'(k)k = 2/3 y el consumo es (1-alfa)*y = 4/3. Con s = 0,22 < alfa, k* = 4,29; con s = 0,45 > alfa, k* = 12,55, en la zona dinámicamente ineficiente. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.4cm,y=1.7cm]
+  \ejes{$\tilde k$}{$\tilde y$}{16.6}{2.9}
+  % Tangente a f en k_oro, paralela a la recta de reposición: y = k/12 + 4/3
+  \draw[guia] (0,1.3333) -- (15.5,2.625);
+  % Función de producción
+  \draw[curva1,domain=0:15.5,samples=120] plot (\x,{(\x)^(1/3)}) node[etiqueta,right] {$\tilde y=\tilde k^{\alpha}$};
+  % Inversión de reposición
+  \draw[curva2] (0,0) -- (15.5,1.2917) node[etiqueta,above right=-1pt] {$(n+g+\delta)\tilde k$};
+  % Ahorro con s < alfa, s = alfa y s > alfa
+  \draw[curva3,domain=0:15.5,samples=120] plot (\x,{0.22*(\x)^(1/3)}) node[etiqueta,right,tceeverde] {$s<\alpha$};
+  \draw[curva4,domain=0:15.5,samples=120] plot (\x,{(1/3)*(\x)^(1/3)}) node[etiqueta,right,tceedorado] {$s=\alpha$};
+  \draw[curvanueva,domain=0:14.2,samples=120] plot (\x,{0.45*(\x)^(1/3)}) node[etiqueta,below right=-1pt,tceerojo] {$s>\alpha$};
+  % Estados estacionarios
+  \draw[guia] (4.29,0.3575) -- (4.29,0) node[below,tceeverde] {$\tilde k^*_1$};
+  \draw[guia] (8,2) -- (8,0) node[below,text=black] {$\tilde k_{\mathrm{oro}}$};
+  \draw[guia] (12.55,1.0458) -- (12.55,0) node[below,tceerojo] {$\tilde k^*_2$};
+  \node[punto,fill=tceeverde] at (4.29,0.3575) {};
+  \node[punto,fill=tceedorado] at (8,0.6667) {};
+  \node[punto,fill=tceerojo] at (12.55,1.0458) {};
+  \node[punto] at (8,2) {};
+  % Reparto del producto en la regla de oro
+  \draw[tceedorado,line width=2.2pt] (8,0) -- (8,0.6667);
+  \draw[tceemorado,line width=2.2pt] (8,0.6667) -- (8,2);
+  \node[etiqueta,anchor=west,font=\footnotesize,tceemorado] at (8.3,1.5) {$\tilde c_{\mathrm{oro}}=(1-\alpha)\tilde y$};
+  \node[etiqueta,anchor=west,font=\footnotesize,tceedorado!80!black] at (8.3,0.2) {$s\tilde y=\alpha\tilde y$};
+  % Zona dinámicamente ineficiente
+  \draw[tceerojo,thick,decorate,decoration={brace,amplitude=5pt,mirror}] (8,-0.38) -- (16,-0.38)
+    node[midway,below=5pt,etiqueta,tceerojo,align=center,font=\footnotesize] {dinámicamente ineficiente\\($s>\alpha$: opciones a y d)};
+\end{tikzpicture}
+\end{document}

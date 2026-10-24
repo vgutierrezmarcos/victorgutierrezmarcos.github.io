@@ -1,0 +1,36 @@
+% Pregunta 134 (2023-junio-A, n.º 37): resultado al vencimiento (sin primas). Venta de put + venta de forward a K = venta de call. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\newcommand{\ejesres}{%
+  \draw[eje] (0,0) -- (4.6,0) node[below left=2pt and 0pt] {$S$};
+  \draw[eje] (0,-2.4) -- (0,2.5) node[left] {resultado};
+  \draw (2,0.07) -- (2,-0.07);
+  \node[below left] at (0,0) {$0$};}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Panel izquierdo: las dos piezas
+  \begin{scope}
+    \ejesres
+    \node[above right,font=\small] at (2,0) {$K$};
+    % Forward vendido a K: K - S
+    \draw[curva3,desplazada] (0,2) -- (4.2,-2.2);
+    \node[etiqueta,text=tceeverde,align=left,anchor=west,font=\small] at (0.25,2.25) {forward vendido: $K-S$};
+    % Put vendida: -max(K-S,0)
+    \draw[curva2,desplazada] (0,-2) -- (2,0) -- (4.2,0);
+    \node[etiqueta,text=tceeazul,align=left,anchor=north west,font=\small] at (0.85,-1.35) {put vendida:\\$-\max(K-S,0)$};
+    \node[font=\small\bfseries,align=center] at (2.3,3.15) {venta de put + venta de forward};
+  \end{scope}
+  % Signo igual
+  \node[font=\Large] at (5.3,0.4) {$=$};
+  % Panel derecho: la suma
+  \begin{scope}[xshift=6.1cm]
+    \ejesres
+    \node[above,font=\small] at (2,0.05) {$K$};
+    \draw[curva1,line width=2pt] (0,0) -- (2,0) -- (4.2,-2.2);
+    \node[etiqueta,text=tceemorado,align=left,anchor=north east,font=\small] at (4.3,-2.25) {$-\max(S-K,0)$};
+    \node[etiqueta,text=tceemorado,font=\small,anchor=south] at (1,0.15) {0 si $S\le K$};
+    \node[etiqueta,text=tceemorado,font=\small,anchor=west] at (3.3,-0.85) {pendiente $-1$};
+    \node[font=\small\bfseries,align=center] at (2.3,3.15) {venta de call};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

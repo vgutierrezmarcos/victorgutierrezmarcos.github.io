@@ -1,0 +1,28 @@
+% Pregunta 69 (2024-junio-A, n.º 22): shock de costes en el modelo de tres ecuaciones y respuesta del banco central discrecional (acomodación parcial). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=1.1]
+  % Ejes: la brecha x puede ser negativa
+  \draw[eje] (-3.4,0) -- (2.9,0) node[below left=2pt and 0pt] {$x$ (output gap)};
+  \draw[eje] (0,-1.3) -- (0,4.3) node[left] {$\pi$};
+  % Curva de Phillips de partida (pi = 0,8 x) y tras el shock (pi = 0,8 x + 2)
+  \draw[curva1] (-1.6,-1.28) -- (2.5,2.0) node[etiqueta,right] {$\pi=\kappa x$};
+  \draw[curvanueva,desplazada] (-3.0,-0.4) -- (2.2,3.76) node[etiqueta,above right] {$\pi=\kappa x+u$};
+  % Regla discrecional (pi = -1,25 x)
+  \draw[curva2] (-3.0,3.75) -- (0.9,-1.125) node[etiqueta,right] {$x=-\frac{\kappa}{\alpha_x}\pi$};
+  % Desplazamiento por el shock
+  \draw[flecha] (1.6,1.32) -- (1.6,3.2) node[midway,right,etiqueta,tceerojo] {$+u$};
+  % Guías de C
+  \draw[guia] (-0.976,0) -- (-0.976,1.22) -- (0,1.22);
+  \node[below,etiqueta] at (-0.976,0) {$x_C<0$};
+  % Puntos
+  \node[punto] at (0,0) {};
+  \node[etiqueta] at (0.24,0.4) {$A$};
+  \node[punto,label={[etiqueta]right:$B$}] at (0,2) {};
+  \node[punto,label={[etiqueta]above left=1pt:$C$}] at (-0.976,1.22) {};
+  \node[left,etiqueta] at (0,2.15) {$u$};
+  \node[right,etiqueta] at (0,1.05) {$\pi_C$};
+  \draw[flecha] (-0.05,0.35) -- (-0.7,1.2);
+\end{tikzpicture}
+\end{document}

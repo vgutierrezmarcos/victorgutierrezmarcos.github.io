@@ -1,0 +1,31 @@
+% Pregunta 926 (2002-octubre-OEP2002, n.º 9): duopolio de Cournot con demanda Q = 200 - 20P y coste marginal 4. Funciones de reacción q1 = 60 - q2/2 y q2 = 60 - q1/2, equilibrio en (40, 40), con producción total 80 entre la de monopolio (60) y la competitiva (120); los puntos (30, 30) y (50, 50) de las opciones a y b no están sobre las funciones de reacción. Escala: 1 cm = 20 unidades. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$q_1$}{$q_2$}{7}{6.6}
+  % Rectas de producción total (isocantidades)
+  \draw[curva4,desplazada] (3,0) -- (0,3);
+  \node[etiqueta,font=\footnotesize,align=center,text=tceedorado] at (0.95,0.65) {$Q=60$\\monopolio};
+  \draw[curva3,desplazada] (6,0) -- (0,6)
+    node[pos=0.8,etiqueta,font=\footnotesize,sloped,above,text=tceeverde] {$Q=120$ competencia};
+  % Funciones de reacción
+  \draw[curva1] (3,0) -- (0,6) node[pos=0.78,etiqueta,right=1pt,text=tceemorado] {$\mathit{FR}_1$};
+  \draw[curva2] (0,3) -- (6,0) node[pos=0.8,etiqueta,below=1pt,text=tceeazul] {$\mathit{FR}_2$};
+  % Leyenda de las funciones de reacción
+  \node[etiqueta,anchor=west,text=tceemorado] at (3.7,6.0) {$\mathit{FR}_1$: $q_1=60-\tfrac{q_2}{2}$};
+  \node[etiqueta,anchor=west,text=tceeazul] at (3.7,5.35) {$\mathit{FR}_2$: $q_2=60-\tfrac{q_1}{2}$};
+  % Marcas en los ejes
+  \foreach \v/\t in {3/60,6/120} {
+    \draw (\v,0) -- (\v,-0.08) node[below] {\t};
+    \draw (0,\v) -- (-0.08,\v) node[left] {\t};
+  }
+  % Equilibrio de Cournot
+  \proyeccion{(2,2)}{40}{40}
+  \node[punto] at (2,2) {};
+  \node[etiqueta,above right] at (2,2) {$C$};
+  % Puntos de las opciones a y b
+  \draw[tceerojo,thick] (1.5,1.5) circle (2.2pt) node[etiqueta,below left=1pt,text=tceerojo] {a};
+  \draw[tceerojo,thick] (2.5,2.5) circle (2.2pt) node[etiqueta,above right=1pt,text=tceerojo] {b};
+\end{tikzpicture}
+\end{document}

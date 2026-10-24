@@ -1,0 +1,33 @@
+% Pregunta 156 (2022-julio, n.º 11): horas extraordinarias pagadas a w' > w solo a partir de l*.
+% Ocio h (de 0 a T = 6), consumo C. Sin renta no laboral, U = hC (a escala):
+% recta inicial C = 0,75(6 - h), óptimo E = (3; 2,25), U = 6,75.
+% Tramo nuevo para h < 3: C = 2,25 + 1,5(3 - h); óptimo E' = (2,25; 3,375), U = 7,59.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.7cm]
+  \draw[eje] (0,0) -- (7,0) node[right] {$h$ (ocio)};
+  \draw[eje] (0,0) -- (0,7.4) node[above] {$C$};
+  \node[below left] at (0,0) {$0$};
+  % Recta inicial (pendiente -w)
+  \draw[curva1,desplazada,thin] (0,4.5) -- (3,2.25);
+  \draw[curva1] (3,2.25) -- (6,0) node[below] {$T$};
+  \node[etiqueta,text=tceemorado] at (5.0,0.25) {$-w$};
+  % Tramo de horas extraordinarias (pendiente -w')
+  \draw[curvanueva] (0,6.75) -- (3,2.25);
+  \node[etiqueta,text=tceerojo] at (0.95,6.0) {$-w'$};
+  % Curvas de indiferencia
+  \draw[curva2,domain=1.15:6.4,samples=60] plot (\x,{6.75/\x}) node[etiqueta,right] {$U_0$};
+  \draw[curva3,domain=1.2:5.6,samples=60] plot (\x,{7.59375/\x}) node[etiqueta,above right] {$U_1$};
+  % Guías y puntos
+  \draw[guia] (3,0) node[below] {$T-l^*$} -- (3,2.25);
+  \draw[guia] (2.25,0) -- (2.25,3.375);
+  \draw[flecha,tceerojo] (3,-1.05) -- (2.25,-1.05);
+  \node[etiqueta,left,text=tceerojo,font=\footnotesize] at (2.25,-1.05) {horas extra};
+  \node[punto] at (3,2.25) {};
+  \node[etiqueta,below left] at (3,2.25) {$E$};
+  \node[punto,fill=tceerojo] at (2.25,3.375) {};
+  \node[etiqueta,text=tceerojo] at (2.55,3.85) {$E'$};
+\end{tikzpicture}
+\end{document}

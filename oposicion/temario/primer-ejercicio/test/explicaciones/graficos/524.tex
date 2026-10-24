@@ -1,0 +1,39 @@
+% Pregunta 524 (2016-enero-OEP2015, n.º 11): con libre entrada y CMeL en U, cada empresa produce q* a p* = min CMeL y la oferta de la industria a largo plazo es horizontal en p*. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % ---------- Panel izquierdo: la empresa ----------
+  \node[font=\small\bfseries] at (2.4,5.2) {Empresa};
+  \ejes{$q$}{$p$}{4.8}{4.8}
+  % CMeL = 1,8 + 0,5 (q - 2,2)^2 ; CMgL = CMeL + q CMeL'
+  \draw[curva1,domain=0.5:4.1,samples=80] plot (\x,{1.8+0.5*(\x-2.2)^2}) node[etiqueta,above] {$CMeL$};
+  \draw[curva2,domain=0.75:2.95,samples=80] plot (\x,{1.8+0.5*(\x-2.2)^2+\x*(\x-2.2)}) node[etiqueta,above] {$CMgL$};
+  \proyeccion{(2.2,1.8)}{$q^*$}{$p^*$}
+  \node[punto] at (2.2,1.8) {};
+  \node[etiqueta,font=\footnotesize,anchor=north west] at (2.3,1.75) {mín.\ $CMeL$};
+  % ---------- Panel derecho: la industria ----------
+  \begin{scope}[xshift=6.3cm]
+    \node[font=\small\bfseries] at (2.9,5.2) {Industria};
+    \ejes{$Q$}{$p$}{6}{4.8}
+    \draw[curva4] (0,1.8) -- (5.5,1.8) node[etiqueta,right] {$S_L$};
+    \node[left] at (0,1.8) {$p^*$};
+    % Demanda inicial y nueva
+    \draw[curva1] (0.5,4.2) -- (3.5,0.6) node[etiqueta,below] {$D$};
+    \draw[curvanueva,desplazada] (2.1,4.2) -- (5.1,0.6) node[etiqueta,below] {$D'$};
+    % Oferta a corto: inicial y con más empresas
+    \draw[curva2] (1.3,0.6) -- (3.8,3.1) node[etiqueta,above right=0pt] {$S$};
+    \draw[curvanueva,desplazada] (2.9,0.6) -- (5.3,3.0) node[etiqueta,above right=0pt] {$S'$};
+    % Equilibrios
+    \draw[guia] (2.5,0) -- (2.5,1.8);
+    \draw[guia] (4.1,0) -- (4.1,1.8);
+    \node[below] at (2.5,0) {$Q_0$};
+    \node[below] at (4.1,0) {$Q_1$};
+    \node[punto,label={[etiqueta]below left:$A$}] at (2.5,1.8) {};
+    \node[punto,label={[etiqueta]left:$B$}] at (3.373,2.673) {};
+    \node[punto,label={[etiqueta]below right=1pt and 3pt:$C$}] at (4.1,1.8) {};
+    \draw[flecha] (2.35,2.1) -- (2.85,2.6);
+    \draw[flecha] (3.45,2.35) -- (3.9,1.95);
+  \end{scope}
+\end{tikzpicture}
+\end{document}

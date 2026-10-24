@@ -1,0 +1,34 @@
+% Pregunta 150 (2022-julio, n.º 5): sube p_x de un bien normal; |VC| > excedente > |VE|.
+% Rectas: marshalliana x = 4 - (p - 1,5); hicksianas (más inclinadas)
+%   h(p,U0) = 4 - (p - 1,5)/2 (corta a la marshalliana en p0 = 1,5)
+%   h(p,U1) = 3 - (p - 1,5)/2 (corta a la marshalliana en p1 = 3,5)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm,y=1cm]
+  % Áreas: |VE| (a la izquierda de h(U1)) y franja que añade la |VC| (hasta h(U0))
+  \fill[area2] (0,1.5) -- (3,1.5) -- (2,3.5) -- (0,3.5) -- cycle;
+  \fill[area] (3,1.5) -- (4,1.5) -- (3,3.5) -- (2,3.5) -- cycle;
+  \ejes{$x$}{$p_x$}{6.2}{5.2}
+  % Guías de precios
+  \draw[guia] (0,1.5) node[left,text=black] {$p^0_x$} -- (4,1.5);
+  \draw[guia] (0,3.5) node[left,text=black] {$p^1_x$} -- (3,3.5);
+  % Curvas
+  \draw[curva2] (1.45,4.6) -- (3.55,0.4) node[pos=0,etiqueta,above left,text=tceeazul] {$h(p,U^1)$};
+  \draw[curva3] (2.45,4.6) -- (4.55,0.4) node[pos=0,etiqueta,above right,text=tceeverde] {$h(p,U^0)$};
+  \draw[curva1] (0.9,4.6) -- (5,0.5) node[etiqueta,right,text=tceemorado] {$x(p,R)$};
+  % Puntos
+  \node[punto] at (4,1.5) {}; \node[etiqueta,above right] at (4,1.5) {$A$};
+  \node[punto] at (2,3.5) {}; \node[etiqueta,below left] at (2,3.5) {$B$};
+  \draw[flecha] (4.3,1.8) -- (4.3,2.95);
+  % Leyenda de áreas
+  \begin{scope}[shift={(4.2,4.45)}]
+    \fill[area2] (0,0) rectangle (0.3,0.25);
+    \node[etiqueta,right] at (0.3,0.125) {$|VE|$};
+    \fill[area] (0,-0.5) rectangle (0.3,-0.25);
+    \node[etiqueta,right] at (0.3,-0.375) {$|VC|-|VE|$};
+    \node[etiqueta,right,align=left,text=tceemorado] at (-0.05,-1.05) {$|\Delta EC|$: área hasta $x(p,R)$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

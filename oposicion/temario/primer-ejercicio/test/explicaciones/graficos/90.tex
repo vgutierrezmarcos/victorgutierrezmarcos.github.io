@@ -1,0 +1,25 @@
+% Pregunta 90 (2024-junio-A, n.º 43): curva del elefante de Milanovic, estilizada. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.065cm,y=0.05cm]
+  \ejes{}{}{108}{100}
+  \node[etiqueta,below] at (54,-9) {percentil de la renta mundial en 1988};
+  \node[etiqueta,above right] at (0,100) {crecimiento real de la renta, 1988-2008 (\%)};
+  % Marcas
+  \foreach \p in {20,40,60,80,100} {\draw (\p,0) -- (\p,-1.5) node[below] {\p};}
+  \foreach \c in {20,40,60,80} {\draw (0,\c) -- (-1.5,\c) node[left] {\c};}
+  % Curva estilizada
+  \draw[curva1] plot[smooth,tension=0.6] coordinates {
+    (5,25) (15,40) (30,55) (42,70) (52,77) (60,74) (66,58) (72,28) (80,3) (88,12) (95,30) (99,58) (100,65)};
+  % Lomo
+  \node[punto] at (52,77) {};
+  \node[etiqueta,anchor=south,align=center] at (52,80) {clases medias emergentes\\(sobre todo China)};
+  % Trompa: punto A
+  \node[punto,label={[etiqueta]above right:$A$}] at (80,3) {};
+  \node[etiqueta,align=left,anchor=west,tceerojo] (txA) at (16,16) {$A$: clases medias y bajas\\de países ricos (p.~80)};
+  \draw[flecha] (txA.east) to[bend right=15] (78.5,4);
+  % Punta de la trompa
+  \node[punto,label={[etiqueta,align=right]left:1\,\% más\\rico}] at (100,65) {};
+\end{tikzpicture}
+\end{document}

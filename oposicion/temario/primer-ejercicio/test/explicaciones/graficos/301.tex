@@ -1,0 +1,23 @@
+% Pregunta 301 (2019-febrero-OEP2018, n.º 12): las funciones de reacción en publicidad de las dos tiendas, ambas crecientes (la publicidad de una sube el beneficio marginal de la otra), se cortan en el equilibrio de Nash (23, 32); el punto (32, 23) de la opción c no está en ninguna. Autor: Víctor Gutiérrez Marcos
+% A escala: R1: x1 = (60 + x2)/4; R2: x2 = (105 + x1)/4.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.13cm,y=0.11cm]
+  \ejes{$x_1$}{$x_2$}{46}{46}
+  % Función de reacción de la tienda de telefonía: x1 = (60 + x2)/4
+  \draw[curva1] (15,0) -- (26,44) node[etiqueta,above] {$R_1$};
+  \node[etiqueta,tceemorado,font=\footnotesize,anchor=east] at (16.2,9) {$x_1=(60+x_2)/4$};
+  % Función de reacción de la tienda de juegos: x2 = (105 + x1)/4
+  \draw[curva2] (0,26.25) -- (44,37.25) node[etiqueta,right] {$R_2$};
+  \node[etiqueta,tceeazul,font=\footnotesize,anchor=south] at (34.5,38.3) {$x_2=(105+x_1)/4$};
+  % Equilibrio de Nash
+  \proyeccion{(23,32)}{$23$}{$32$}
+  \node[punto] at (23,32) {};
+  \node[etiqueta,above left] at (23,32) {$N$};
+  % Opción c: valores intercambiados, fuera de las dos funciones
+  \draw[guia] (32,0) node[below] {$32$} -- (32,23) -- (0,23) node[left] {$23$};
+  \node[circle,draw=tceegris,fill=white,thick,inner sep=1.5pt] at (32,23) {};
+  \node[etiqueta,tceegris,right,font=\footnotesize] at (32.6,23) {c $(32,\,23)$};
+\end{tikzpicture}
+\end{document}

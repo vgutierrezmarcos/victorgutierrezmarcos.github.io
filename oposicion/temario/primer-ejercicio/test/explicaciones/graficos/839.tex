@@ -1,0 +1,34 @@
+% Pregunta 839 (2004-junio-OEP2004, n.º 12): monopolio natural regulado con p = CMe.
+% A: p = CMe, beneficio nulo, q menor que la eficiente; triángulo = pérdida irrecuperable (b).
+% B: p = CMg, cantidad eficiente (la de competencia, d), pero pérdidas (CMe - CMg)q que hay que subvencionar (a).
+% D: p = 5 - q; CMg = 1; CMe = 1 + 3/q. A = (3, 2), B = (4, 1), CMe(4) = 1,75.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm,y=1cm]
+  \ejes{$q$}{$p$}{6.4}{5.6}
+  % Pérdidas con p = CMg: rectángulo (CMe - CMg) q
+  \fill[pattern=north east lines,pattern color=tceedorado] (0,1) rectangle (4,1.75);
+  \draw[tceedorado,thick] (0,1.75) -- (4,1.75);
+  % Pérdida irrecuperable con p = CMe
+  \fill[tceemorado,fill opacity=0.35] (3,2) -- (4,1) -- (3,1) -- cycle;
+  % Curvas
+  \draw[curva1] (0,5) -- (5,0) node[etiqueta,above right] {$D$};
+  \draw[curva2,domain=0.7:6.1,samples=80] plot (\x,{1+3/\x}) node[etiqueta,above] {$\mathrm{CMe}$};
+  \draw[curva3] (0,1) -- (6.1,1) node[etiqueta,right] {$\mathrm{CMg}$};
+  % Puntos y proyecciones
+  \draw[guia] (3,0) -- (3,2) -- (0,2);
+  \draw[guia] (4,0) -- (4,1);
+  \node[left] at (0,2) {$p_A$};
+  \node[below] at (3,0) {$q_A$};
+  \node[below] at (4,0) {$q^{*}$};
+  \node[punto] at (3,2) {};
+  \node[punto] at (4,1) {};
+  \node[etiqueta,above right] at (3,2) {$A$: $p=\mathrm{CMe}$};
+  \node[etiqueta,anchor=north west] at (4.45,0.95) {$B$: $p=\mathrm{CMg}$};
+  % Rótulos de las áreas
+  \draw[thin,tceemorado] (3.35,1.35) -- (4.6,2.9) node[etiqueta,above,align=center,text=tceemorado] {pérdida\\irrecuperable};
+  \node[etiqueta,align=center,text=tceedorado!70!black,font=\footnotesize] at (1.6,0.5) {pérdidas en $B$:\\$(\mathrm{CMe}-\mathrm{CMg})\,q^{*}$};
+\end{tikzpicture}
+\end{document}

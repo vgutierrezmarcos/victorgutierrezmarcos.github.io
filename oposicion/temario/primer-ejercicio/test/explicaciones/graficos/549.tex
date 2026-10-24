@@ -1,0 +1,19 @@
+% Pregunta 549 (2016-enero-OEP2015, n.º 37): riesgo de la cartera según el número de activos; la diversificación elimina el riesgo específico y deja el sistemático. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % sigma_p^2(n) = 1,6 + 2,4/n (en coordenadas del dibujo)
+  \ejes{$n$ (n.\textsuperscript{o} de activos)}{$\sigma_p^2$}{6.4}{5}
+  \fill[area] plot[domain=0.8:6.0,samples=80] (\x,{1.6+2.4/\x}) -- (6.0,1.6) -- (0.8,1.6) -- cycle;
+  \draw[guia] (0,1.6) node[etiqueta,left] {$\beta_p^2\sigma_M^2$} -- (6.0,1.6);
+  \draw[curva1] plot[domain=0.8:6.0,samples=80] (\x,{1.6+2.4/\x}) node[etiqueta,above,tceemorado] {riesgo total};
+  % riesgo específico
+  \node[etiqueta,align=center,tceemorado] (esp) at (4.2,4.0) {riesgo específico\\(se elimina diversificando)};
+  \draw[flecha] (esp.south west) ++(0.3,0) -- (1.85,2.55);
+  % riesgo sistemático
+  \fill[area2] (0.8,0) rectangle (6.0,1.6);
+  \node[etiqueta,align=center] at (3.4,0.8) {riesgo sistemático o de mercado\\(no se puede diversificar)};
+  \node[etiqueta,align=center,tceerojo,font=\footnotesize] at (3.2,-1.4) {La opción a los invierte: diversificando desaparece\\el riesgo específico, no el sistemático};
+\end{tikzpicture}
+\end{document}

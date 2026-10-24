@@ -37,6 +37,7 @@ opositor). Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 - (22 oct.) Google Calendar para todos: al abrir, la app pregunta si quieres tus clases y cantes en tu calendario (opcional); el opositor lo activa en Más → Ajustes
 - (23 oct.) Las pestañas Temas · Test y Agenda · Cantar · Diario son ahora botones con su icono y su cifra, para que se vean
 - (23 oct.) Los temas de cada clase con el preparador son los de la semana del cronograma o los que elige el opositor, iguales en las dos apps; el preparador propone cambios y el opositor los acepta
+- (24 oct.) «¿Por qué?» en la revisión del test: las 1004 preguntas oficiales tienen explicación de la respuesta correcta y de por qué falla cada opción, con el tema donde se estudia y, en más de 200, un gráfico que se amplía al tocarlo; y «Reportar respuesta» para avisar de un error
 
 Además de lo anterior, al salir en Play conviene resumir lo que la app tiene
 desde la 1.16.0 (ver `registro-prueba-cerrada.md`): red de preparadores, clases

@@ -1,0 +1,45 @@
+% Pregunta 299 (2019-febrero-OEP2018, n.º 10): equilibrio a largo plazo de Chamberlin,
+% tangencia de la demanda con el CMe en su tramo decreciente y exceso de capacidad.
+% Costes (los del tema 3.A.18): CMg = 1 - 1,2 x + 0,45 x^2; CMe = 2/x + 1 - 0,6 x + 0,15 x^2;
+%   mínimo del CMe en x_min = 2,832 (CMe = 1,21).
+% Tangencia en x_LP = 1,6: CMe(1,6) = 1,674, CMe'(1,6) = -0,90125:
+%   d: p = 3,116 - 0,90125 x; IMg = 3,116 - 1,8025 x = 0,232 = CMg(1,6).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.3cm,y=1.1cm,
+    declare function={cmg(\q)=1-1.2*\q+0.45*\q^2; cme(\q)=2/\q+1-0.6*\q+0.15*\q^2;
+      dd(\q)=3.116-0.90125*\q; img(\q)=3.116-1.8025*\q;}]
+  \ejes{$x$}{$p$}{4.7}{4.2}
+  % Costes
+  \draw[curva1] plot[domain=0.66:4.3,samples=80,smooth] (\x,{cme(\x)})
+    node[etiqueta,right,text=tceemorado] {CMe};
+  \draw[curva2] plot[domain=0.3:3.75,samples=80,smooth] (\x,{cmg(\x)})
+    node[etiqueta,right,text=tceeazul] {CMg};
+  % Demanda de la empresa e ingreso marginal
+  \draw[curva3] (0.15,{dd(0.15)}) -- (3.1,{dd(3.1)}) node[etiqueta,right,text=tceeverde] {$d$};
+  \draw[curva4] (0.05,{img(0.05)}) -- (1.7,{img(1.7)});
+  \node[etiqueta,text=tceedorado,anchor=east] at (0.55,2.05) {IMg};
+  % Tangencia: P = CMe
+  \node[punto] (E) at (1.6,1.674) {};
+  \node[etiqueta,above right,align=left] at (1.62,1.72) {$P=\mathrm{CMe}$};
+  \draw[guia] (E) -- (0,1.674) node[left,text=black] {$P$};
+  % IMg = CMg
+  \node[punto] (I) at (1.6,0.232) {};
+  \draw[guia] (E) -- (1.6,0) node[below,text=black] {$x_{LP}$};
+  % P > CMg
+  \draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo]
+    (1.48,0.26) -- (1.48,1.64);
+  \node[etiqueta,text=tceerojo,anchor=east] at (1.0,0.98) {$P>\mathrm{CMg}$};
+  \draw[->,thin,tceerojo] (1.03,0.96) -- (1.38,0.95);
+  % Mínimo del CMe: escala eficiente
+  \node[punto] (M) at (2.832,1.21) {};
+  \draw[guia] (M) -- (2.832,0) node[below,text=black] {$x_{\min}$};
+  \node[etiqueta,below right,font=\footnotesize,align=left] at (2.85,1.2) {mín. CMe};
+  % Exceso de capacidad
+  \draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceegris]
+    (1.6,-0.5) -- (2.832,-0.5)
+    node[midway,below=5pt,etiqueta,align=center,font=\small,text=black] {exceso de capacidad};
+\end{tikzpicture}
+\end{document}

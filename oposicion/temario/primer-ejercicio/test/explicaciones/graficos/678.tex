@@ -1,0 +1,29 @@
+% Pregunta 678 (2008-julio-OEP2008, n.º 30): primer tramo de la curva J. Tras la devaluación en t0 los volúmenes apenas cambian y las importaciones cuestan más: el saldo cae por debajo del inicial (zona sombreada, d) aunque el volumen importado aún no baja (c falsa). Después, cumplida Marshall-Lerner, sube por encima. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$t$}{$\mathit{BC}$}{6.4}{5.2}
+  \def\jota{(1.0,3.0)
+    .. controls (1.4,3.0) and (1.7,1.9) .. (2.3,1.9)
+    .. controls (2.9,1.9) and (3.3,3.0) .. (3.9,3.8)
+    .. controls (4.5,4.5) and (5.2,4.75) .. (5.9,4.8)}
+  % Primer tramo: saldo por debajo del inicial
+  \begin{scope}
+    \clip (1.0,0) rectangle (6.2,3.0);
+    \fill[area] \jota -- (5.9,3.0) -- cycle;
+  \end{scope}
+  % Saldo inicial
+  \draw[guia] (0,3.0) node[left] {$\mathit{BC}_0$} -- (6.2,3.0);
+  % Devaluación en t0
+  \draw[guia] (1.0,0) node[below] {$t_0$} -- (1.0,5.0);
+  \node[etiqueta,font=\footnotesize,align=left,right] at (1.05,4.75) {devaluación};
+  % Trayectoria del saldo: la J
+  \draw[curva1] (0.2,3.0) -- \jota node[etiqueta,right] {$\mathit{BC}$};
+  \node[punto] at (1.0,3.0) {};
+  % Rótulos de los dos tramos
+  \node[etiqueta,font=\footnotesize,align=center,below] at (2.7,1.75) {primer tramo: las\\importaciones cuestan\\más, volúmenes casi fijos\\$\Rightarrow$ efecto positivo anulado};
+  \node[etiqueta,font=\footnotesize,align=center] at (5.15,2.3) {se ajustan los\\volúmenes: se cumple\\Marshall-Lerner};
+  \draw[flecha] (4.6,2.75) .. controls (4.5,3.3) .. (4.25,3.95);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,27 @@
+% Pregunta 391 (2011-octubre-OEP2011, n.º 12): con r=0 y beta=0,6 el óptimo intertemporal E=(12.500; 7.500) queda a la derecha de la bisectriz; el individuo se endeuda 2.500 en el periodo 1. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.28cm,y=0.28cm]
+  \ejes{$C_1$}{$C_2$}{24}{23}
+  % Bisectriz (consumo igual en los dos periodos)
+  \draw[guia] (0,0) -- (21,21) node[etiqueta,tceegris,above] {$45^\circ$: $C_1=C_2$};
+  % Recta presupuestaria con r=0: C1 + C2 = 20 (miles de euros), pendiente -1
+  \draw[curva1] (0,20) -- (20,0);
+  \node[etiqueta,tceemorado,anchor=south west] at (1.0,19.9) {$C_1+C_2=20$};
+  % Curva de indiferencia tangente en E: ln C1 + 0,6 ln C2 = cte  =>  C2 = K C1^(-5/3)
+  \draw[curva2,domain=7.6:23,samples=200,smooth] plot (\x,{504.9*\x^(-5/3)});
+  \node[etiqueta,tceeazul,anchor=west] at (23,2.4) {$U^*$};
+  % Cortes de la recta
+  \node[below] at (20,0) {$20$};
+  \node[left] at (0,20) {$20$};
+  % Dotación Y y óptimo E
+  \proyeccion{(12.5,7.5)}{$12{,}5$}{$7{,}5$}
+  \draw[guia] (10,0) node[below] {$10$} -- (10,10) -- (0,10) node[left] {$10$};
+  \draw[flecha,shorten <=3pt,shorten >=3pt] (10,10) -- (12.5,7.5);
+  \node[punto,label={[etiqueta,label distance=3pt]left:$Y$}] at (10,10) {};
+  \node[punto,label={[etiqueta]above right:$E$}] at (12.5,7.5) {};
+  \node[etiqueta,tceerojo,font=\footnotesize,align=left,anchor=south west] at (11.6,9.0) {se endeuda\\2.500 \texteuro};
+  \node[etiqueta,font=\footnotesize,anchor=north east] at (24,-1.6) {miles de euros};
+\end{tikzpicture}
+\end{document}

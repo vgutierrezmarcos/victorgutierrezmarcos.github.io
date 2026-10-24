@@ -1,0 +1,54 @@
+% Pregunta 351 (2020-enero-OEP2019, n.º 18): Mundell-Fleming con movilidad perfecta del capital,
+% política monetaria expansiva con tipo fijo (izquierda) y flexible (derecha). Rectas a escala:
+%   BP: i = 2,2   IS: i = 4,45 - 0,9 Y   LM: i = 0,9 Y - 0,05   E0 = (2,5; 2,2)
+%   LM': i = 0,9 (Y - 1,2) - 0,05   A = IS∩LM' = (3,1; 1,66), por debajo de la BP
+%   IS' (depreciación): i = 4,45 - 0,9 (Y - 1,2)   E1 = IS'∩LM'∩BP = (3,7; 2,2)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------- Panel izquierdo: tipo de cambio fijo ----------
+  \begin{scope}
+  \ejes{$Y$}{$i$}{6}{4.8}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.45)
+    {Tipo fijo: $Y$ no cambia\\(i, falsa)};
+  \draw[curva3] (0.1,2.2) -- (5.6,2.2) node[etiqueta,right,text=tceeverde] {$BP$};
+  \draw[curva2] (0.5,4.0) -- (4.5,0.4) node[etiqueta,right,text=tceeazul] {$IS$};
+  \draw[curva1] (0.8,0.67) -- (4.6,4.09) node[etiqueta,above,text=tceemorado] {$LM$};
+  \draw[curvanueva,desplazada] (2.0,0.67) -- (5.6,3.91) node[etiqueta,above,text=tceerojo] {$LM'$};
+  \draw[flecha] (1.4,0.8) to[bend left=25] (2.3,0.8);
+  \draw[flecha,tceemorado] (4.75,3.35) to[bend right=20] (3.95,3.35);
+  \draw[guia] (2.5,2.2) -- (2.5,0) node[below] {$Y_0 = Y_1$};
+  \node[punto] at (2.5,2.2) {};
+  \node[etiqueta,above=3pt] at (2.5,2.2) {$E_0$};
+  \node[punto] at (3.1,1.66) {};
+  \node[etiqueta,right=4pt] at (3.1,1.66) {$A$};
+  \node[etiqueta,align=center,text=tceerojo,anchor=north] at (3,-0.75)
+    {$A$ bajo la $BP$: salen capitales, se venden\\divisas, $M\downarrow$ y la $LM'$ vuelve a $LM$};
+  \end{scope}
+  % ---------- Panel derecho: tipo de cambio flexible ----------
+  \begin{scope}[xshift=8.6cm]
+  \ejes{$Y$}{$i$}{6}{4.8}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.45)
+    {Tipo flexible: $Y$ sube mucho\\(ii, verdadera)};
+  \draw[curva3] (0.1,2.2) -- (5.6,2.2) node[etiqueta,right,text=tceeverde] {$BP$};
+  \draw[curva2] (0.5,4.0) -- (4.5,0.4) node[etiqueta,below,text=tceeazul] {$IS$};
+  \draw[curva1] (0.8,0.67) -- (4.6,4.09) node[etiqueta,above,text=tceemorado] {$LM$};
+  \draw[curvanueva,desplazada] (2.0,0.67) -- (5.6,3.91) node[etiqueta,above,text=tceerojo] {$LM'$};
+  \draw[curvanueva,desplazada] (1.7,4.0) -- (5.7,0.4) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[flecha] (1.4,0.8) to[bend left=25] (2.3,0.8);
+  \draw[flecha] (0.95,3.75) to[bend left=25] (1.95,3.75);
+  \draw[guia] (2.5,2.2) -- (2.5,0) node[below] {$Y_0$};
+  \draw[guia] (3.7,2.2) -- (3.7,0) node[below] {$Y_1$};
+  \node[punto] at (2.5,2.2) {};
+  \node[etiqueta,above=3pt] at (2.5,2.2) {$E_0$};
+  \node[punto] at (3.1,1.66) {};
+  \node[etiqueta,right=4pt] at (3.1,1.66) {$A$};
+  \node[punto] at (3.7,2.2) {};
+  \node[etiqueta,above=3pt] at (3.7,2.2) {$E_1$};
+  \node[etiqueta,align=center,text=tceerojo,anchor=north] at (3,-0.75)
+    {$A$ bajo la $BP$: salen capitales, la moneda\\se deprecia, $XN\uparrow$ y la $IS$ pasa a $IS'$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

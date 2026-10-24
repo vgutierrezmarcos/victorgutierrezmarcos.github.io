@@ -1,0 +1,36 @@
+% Pregunta 357 (2020-enero-OEP2019, n.º 24): diagrama de Solow en tasas, a escala.
+% gamma_k = sAk^(alpha-1) - (n+delta), con alpha = 1/3 y n+delta = 0,03; en el eje x, ln k
+% (1,35 cm por unidad de ln k; 36 cm por unidad de tasa). La curva es 0,03*exp(-(2/3)(ln k - ln k*)).
+% La tangente en k* tiene pendiente -(1-alpha)(n+delta) = -0,02: la velocidad lineal, 2 % al año.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \draw[eje] (0,0) -- (6.6,0) node[below left=2pt and 0pt] {$\ln k$};
+  \draw[eje] (0,0) -- (0,5.4) node[left] {tasas};
+  \node[below left] at (0,0) {$0$};
+  % Tangente en k*: pendiente -0,02 (a escala: -0,02*36/1,35)
+  \draw[guia,thick,tceedorado] (3.6,1.40) -- (5.82,0.216);
+  % Curva s A k^(alpha-1)
+  \draw[curva1,domain=1.1:6.0,samples=80] plot (\x,{1.08*exp(-(2/3)*(\x-4.2)/1.35)});
+  \node[etiqueta,right,text=tceemorado] at (1.2,5.0) {$sAk^{\alpha-1}$};
+  % n + delta
+  \draw[curva2] (0.9,1.08) -- (6.2,1.08) node[etiqueta,above,text=tceeazul] {$n+\delta$};
+  \draw (0,1.08) -- (-0.08,1.08) node[left] {$0{,}03$};
+  % Estado estacionario
+  \node[punto] at (4.2,1.08) {};
+  \draw[guia] (4.2,1.08) -- (4.2,0) node[below] {$\ln k^*$};
+  % k0 lejos: gamma_k grande
+  \draw[guia] (1.905,0) node[below] {$\ln k_0$} -- (1.905,1.08);
+  \draw[flecha] (1.905,1.08) -- (1.905,3.354);
+  \node[etiqueta,left,text=tceerojo,align=right] at (1.905,2.2) {$\gamma_k$\\grande};
+  % k1 cerca: gamma_k pequeña
+  \draw[guia] (3.39,0) node[below] {$\ln k_1$} -- (3.39,1.08);
+  \draw[flecha] (3.39,1.08) -- (3.39,1.612);
+  \node[etiqueta,text=tceerojo,anchor=south west] at (3.42,1.6) {$\gamma_k$ pequeña};
+  % Rótulo de la tangente
+  \node[etiqueta,text=tceedorado,align=left,font=\footnotesize,anchor=west] at (4.55,2.85) {tangente en $k^*$:\\pendiente $-\beta=-0{,}02$\\(2\,\% al año)};
+  \draw[->,thin,tceedorado] (4.9,2.25) to[out=-80,in=80] (4.75,0.85);
+\end{tikzpicture}
+\end{document}

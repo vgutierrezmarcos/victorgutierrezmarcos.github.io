@@ -1,0 +1,31 @@
+% Pregunta 474 (2014-septiembre-OEP2014, n.º 6): dos tecnologías y precio competitivo de largo plazo en el mínimo del coste medio más bajo. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+% Eje vertical cortado: por encima del corte, la altura y del dibujo es p = y + 10
+\begin{tikzpicture}[tcee,x=1.9cm,y=0.24cm]
+  \ejes{$q$}{$p$}{3.4}{22}
+  \fill[white] (-0.07,0.55) rectangle (0.07,0.95);
+  \draw[thick] (-0.07,0.35) -- (0.07,0.75) (-0.07,0.75) -- (0.07,1.15);
+  % Costes marginales (discontinuos)
+  \draw[tceemorado,thick,dashed] (0,2) -- (2.3,15.8) node[etiqueta,above,tceemorado] {$\mathit{CMg}_A$};
+  \draw[tceeazul,thick,dashed] (1.15,1.5) -- (3.0,20) node[etiqueta,above,tceeazul] {$\mathit{CMg}_B$};
+  % Costes medios
+  \draw[curva1,domain=0.215:3.2,samples=100] plot (\x,{3*\x+2+3/\x});
+  \node[etiqueta,left,tceemorado] at (0.215,16) {$\mathit{CMe}_A$};
+  \draw[curva2,domain=0.74:3.2,samples=100] plot (\x,{5*\x-10+20/\x});
+  \node[etiqueta,right,tceeazul] at (0.8,20.5) {$\mathit{CMe}_B$};
+  % Precio de largo plazo
+  \draw[curvanueva] (0,8) -- (3.3,8) node[etiqueta,right,tceerojo] {$p_L=18$};
+  % Mínimos
+  \draw[guia] (1,0) -- (1,8);
+  \draw[guia] (2,0) -- (2,10) (0,10) -- (2,10);
+  \node[below] at (1,0) {$1$};
+  \node[below] at (2,0) {$2$};
+  \node[left] at (0,8) {$18$};
+  \node[left] at (0,10) {$20$};
+  \node[left] at (0,2) {$12$};
+  \node[punto,label={[etiqueta]above:$A$}] at (1,8) {};
+  \node[punto,label={[etiqueta]above left:$B$}] at (2,10) {};
+\end{tikzpicture}
+\end{document}

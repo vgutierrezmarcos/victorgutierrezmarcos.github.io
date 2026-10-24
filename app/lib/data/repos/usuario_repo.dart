@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -174,6 +175,31 @@ class UsuarioRepo {
 
   DocumentReference<Map<String, dynamic>>? get _docUsuario =>
       uid == null || _db == null ? null : oposicion.raizUsuario(_db, uid!);
+
+  // ---------------------------------------------------------------- Reportes
+
+  /// «Reportar respuesta» en la revisión de un test: va a `reportesTest` (en la
+  /// raíz: el banco es común) y una Action se lo manda por correo al
+  /// administrador. Hace falta cuenta; sin red, Firestore lo envía al volver.
+  Future<void> reportarPregunta({required int pregunta, required String examen, required int numero, String? elegida, required String motivo, required String comentario}) async {
+    final usuario = _auth?.currentUser;
+    if (usuario == null || _db == null) throw StateError('Sin sesión');
+    await _db.collection('reportesTest').add({
+      'uid': usuario.uid,
+      'correo': usuario.email ?? '',
+      'nombre': usuario.displayName ?? '',
+      'oposicion': oposicion.id,
+      'pregunta': pregunta,
+      'examen': examen,
+      'numero': numero,
+      'elegida': elegida ?? '',
+      'motivo': motivo,
+      'comentario': comentario,
+      'version': (await PackageInfo.fromPlatform()).version,
+      'creado': FieldValue.serverTimestamp(),
+      'enviado': false,
+    });
+  }
 
   // ---------------------------------------------------------------- Resultados
 

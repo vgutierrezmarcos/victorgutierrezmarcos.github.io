@@ -1,0 +1,32 @@
+% Pregunta 843 (2004-junio-OEP2004, n.º 16): restricción de crédito vinculante en la elección intertemporal. Autor: Víctor Gutiérrez Marcos
+% A escala con u = ln c, y_1 = 1,5, y_2 = 3,5, 1+r = 1,2, beta = 0,8 (beta(1+r) = 0,96 y y_2 = 3,5 > 0,96 x 1,5 = 1,44):
+%   recta c_2 = y_2 + (1+r)(y_1 - c_1), cortes (0; 5,3) y (4,417; 0)
+%   óptimo sin restricción C* = (2,454; 2,356), con c_1* > y_1: querría endeudarse
+%   indiferencia c_2 = c_2^0 (c_1^0/c_1)^(1/beta) por C* (U = 1,583) y por E (U = 1,407)
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$c_1$}{$c_2$}{5.6}{5.8}
+  % Restricción de crédito c_1 <= y_1
+  \draw[curvanueva,desplazada] (1.5,0) -- (1.5,5.6) node[etiqueta,above,text=tceerojo] {$c_1\le y_1$};
+  % Curvas de indiferencia
+  \draw[curva2,domain=1.24:4.9,samples=60] plot (\x,{2.356*(2.454/\x)^1.25});
+  \node[etiqueta,right,text=tceeazul] at (4.9,1.0) {$U^*$};
+  \draw[curva3,domain=1.04:4.9,samples=60] plot (\x,{3.5*(1.5/\x)^1.25});
+  \node[etiqueta,right,text=tceeverde] at (4.9,0.55) {$U_E$};
+  % Recta presupuestaria: accesible hasta E, inaccesible a su derecha
+  \draw[curva1] (0,5.3) -- (1.5,3.5);
+  \draw[curva1,desplazada,opacity=0.55] (1.5,3.5) -- (4.417,0);
+  \node[etiqueta,anchor=north east,text=tceemorado] at (0.75,4.35) {$-(1+r)$};
+  % Dotación E (esquina elegida) y óptimo sin restricción C*
+  \node[punto] (E) at (1.5,3.5) {};
+  \proyeccion{(E)}{$y_1$}{$y_2$}
+  \node[etiqueta,anchor=north east] at (1.45,3.42) {$E$};
+  \node[punto,fill=tceeazul] (C) at (2.454,2.356) {};
+  \proyeccion{(C)}{$c_1^*$}{$c_2^*$}
+  \node[etiqueta,above right] at (C) {$C^*$};
+  % Rótulo
+  \node[etiqueta,align=left,anchor=west,fill=white,fill opacity=0.85,text opacity=1] at (2.6,4.6) {$y_2>\beta(1+r)\,y_1$\\$\Rightarrow c_1^*>y_1$: querría\\endeudarse y se queda en $E$};
+\end{tikzpicture}
+\end{document}

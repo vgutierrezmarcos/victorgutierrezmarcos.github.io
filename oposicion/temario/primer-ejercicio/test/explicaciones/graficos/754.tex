@@ -1,0 +1,35 @@
+% Pregunta 754 (2006-septiembre-OEP2006, n.º 17): Mundell-Fleming con movilidad perfecta de capitales,
+% tipo de cambio flexible y precios rígidos: la expansión fiscal no cambia la renta. Rectas a escala:
+%   BP: i = i* = 2   LM: i = 0,5 + 0,6 Y   IS: i = 4 - 0,8 Y   IS': i = 5,6 - 0,8 Y
+%   E0 = (2,5; 2)   A = IS'∩LM = (3,64; 2,69), por encima de i*: entran capitales y la moneda se aprecia
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm]
+  \ejes{$Y$}{$i$}{6}{5}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.4)
+    {Tipo flexible, movilidad perfecta, precios rígidos};
+  % Curvas iniciales
+  \draw[curva4] (0,2) -- (5.6,2) node[etiqueta,right,text=tceedorado] {$BP$};
+  \node[etiqueta,left] at (0,2) {$i^*$};
+  \draw[curva2] (0.2,0.62) -- (5.6,3.86) node[etiqueta,right,text=tceeazul] {$LM$};
+  \draw[curva1] (0.5,3.6) -- (4.6,0.32) node[etiqueta,right,text=tceemorado] {$IS$};
+  % Lo que cambia
+  \draw[curvanueva,desplazada] (2.5,3.6) -- (6.0,0.8) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[flecha] (0.9,3.85) -- (2.4,3.85) node[midway,above,font=\footnotesize,text=tceerojo] {$G\uparrow$};
+  \draw[flecha] (5.3,1.36) -- (3.95,1.36);
+  \node[etiqueta,font=\footnotesize,align=center,text=tceerojo,anchor=north] at (4.5,1.25)
+    {apreciación:\\caen $XN$};
+  % Proyecciones
+  \draw[guia] (2.5,2) -- (2.5,0) node[below] {$Y_0 = Y_1$};
+  \draw[guia] (3.643,2.686) -- (0,2.686) node[left] {$i_A$};
+  % Puntos
+  \node[punto] at (2.5,2) {};
+  \node[etiqueta,below=15pt,fill=white,inner sep=1pt] at (2.5,2) {$E_0 = E_1$};
+  \node[punto] at (3.643,2.686) {};
+  \node[etiqueta,above=3pt] at (3.643,2.686) {$A$};
+  \node[etiqueta,font=\footnotesize,align=left,text=tceerojo,anchor=south] at (4.6,3.95)
+    {$i_A > i^*$: entran\\capitales};
+\end{tikzpicture}
+\end{document}

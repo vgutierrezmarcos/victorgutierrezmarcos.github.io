@@ -1,0 +1,49 @@
+% Pregunta 109 (2023-junio-A, n.º 12): subida del salario en el modelo ocio-consumo con ocio normal; el efecto sustitución (A -> B) reduce el ocio más de lo que el efecto renta (B -> C) lo aumenta, así que León trabaja más. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing,calc}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Preferencias CES: U = (0,5 sqrt(H) + 0,5 sqrt(C))^2 (sustitución fácil, ocio normal)
+  % T = 5; w = 0,6 -> A = (3,125; 1,125), U0 = 2 ; w' = 1 -> C = (2,5; 2,5), U1 = 2,5
+  % Compensada (pendiente -1, misma U0): B = (2; 2), recta C = 4 - H
+  \ejes{$H$ (ocio)}{$C$ (consumo)}{7.4}{5.6}
+  % rectas de balance
+  \draw[curva1] (0,3) -- (5,0);
+  \node[etiqueta,tceemorado,left] at (0,3) {pendiente $-w$};
+  \draw[curvanueva] (0,5) -- (5,0);
+  \node[etiqueta,tceerojo,left] at (0,5) {pendiente $-w'$};
+  \draw[guia,thick] (0,4) -- (4,0);
+  \node[font=\footnotesize,tceegris,left] at (0,4) {compensada};
+  % curvas de indiferencia
+  \draw[curva1,domain=0.62:5.35,samples=60,smooth] plot (\x,{(2*sqrt(2)-sqrt(\x))^2});
+  \node[etiqueta,tceemorado,anchor=west] at (5.35,0.27) {$U_0$};
+  \draw[curvanueva,desplazada,domain=1.05:5.9,samples=60,smooth] plot (\x,{(sqrt(10)-sqrt(\x))^2});
+  \node[etiqueta,tceerojo,anchor=west] at (5.9,0.55) {$U_1$};
+  % puntos
+  \draw[guia] (3.125,1.125) -- (3.125,0);
+  \draw[guia] (2,2) -- (2,0);
+  \draw[guia] (2.5,2.5) -- (2.5,0);
+  \node[punto] at (3.125,1.125) {};
+  \node[etiqueta,above right] at (3.125,1.125) {$A$};
+  \node[punto,tceegris] at (2,2) {};
+  \node[etiqueta,left=2pt] at (2,2) {$B$};
+  \node[punto,tceerojo] at (2.5,2.5) {};
+  \node[etiqueta,above right] at (2.5,2.5) {$C$};
+  % dotación de tiempo
+  \node[below] at (5,0) {$T$};
+  \node[below] at (3.125,0) {$H_A$};
+  \node[below] at (2,0) {$H_B$};
+  \node[below] at (2.5,0) {$H_C$};
+  % efectos sobre el ocio
+  \draw[flecha,tceeazul] (3.125,-0.75) -- (2,-0.75);
+  \node[font=\footnotesize,tceeazul,anchor=west] at (3.25,-0.75) {sustitución: menos ocio};
+  \draw[flecha,tceeverde] (2,-1.2) -- (2.5,-1.2);
+  \node[font=\footnotesize,tceeverde,anchor=west] at (3.25,-1.2) {renta: más ocio (ocio normal)};
+  \draw[flecha,black] (3.125,-1.65) -- (2.5,-1.65);
+  \node[font=\footnotesize,anchor=west] at (3.25,-1.65) {total: menos ocio};
+  % horas trabajadas
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick] (3.125,-2.0) -- (5,-2.0) node[midway,below=5pt,font=\footnotesize] {horas en $A$};
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceerojo] (2.5,-2.75) -- (5,-2.75) node[midway,below=5pt,font=\footnotesize,tceerojo] {horas en $C$: más};
+\end{tikzpicture}
+\end{document}

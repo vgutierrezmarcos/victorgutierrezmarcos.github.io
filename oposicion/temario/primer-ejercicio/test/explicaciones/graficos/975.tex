@@ -1,0 +1,24 @@
+% Pregunta 975 (2026-marzo, n.º 11): regla del margen del monopolista con demanda isoelástica (epsilon = 3), p = 1,5 CMg a escala; la subvención de 2 baja el CMg de 12 a 10 y el precio de 18 a 15 (baja 3). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.42cm,y=0.26cm]
+  \ejes{$\mathrm{CMg}$}{$p$}{15}{21.5}
+  % Competencia perfecta: p = CMg
+  \draw[guia,thick] (0,0) -- (15,15);
+  \node[etiqueta,tceegris,anchor=west,align=left,font=\footnotesize] at (15.2,15) {$p=\mathrm{CMg}$\\(competencia\\perfecta)};
+  % Regla del margen del monopolista: p = 3/2 CMg
+  \draw[curva1] (0,0) -- (13.6,20.4);
+  \node[etiqueta,tceemorado,anchor=west] at (13.6,20.4) {$p=\frac{\varepsilon}{\varepsilon-1}\,\mathrm{CMg}=1{,}5\,\mathrm{CMg}$};
+  % Sin subvención (A) y con subvención (B)
+  \proyeccion{(12,18)}{$12$}{$18$}
+  \proyeccion{(10,15)}{$10$}{$15$}
+  \node[punto,tceemorado,label={[etiqueta,tceemorado]right:$A$}] at (12,18) {};
+  \node[punto,tceerojo,label={[etiqueta,tceerojo]above left:$B$}] at (10,15) {};
+  % Desplazamientos
+  \draw[flecha] (12,2) -- (10,2);
+  \node[etiqueta,tceerojo,left] at (9.8,2) {subvención: $-2$};
+  \draw[flecha] (1.5,18) -- (1.5,15);
+  \node[etiqueta,tceerojo,right] at (1.6,16.5) {$-3$};
+\end{tikzpicture}
+\end{document}

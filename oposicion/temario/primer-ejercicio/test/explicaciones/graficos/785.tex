@@ -1,0 +1,27 @@
+% Pregunta 785 (2005-septiembre-OEP2005, n.º 4): externalidad negativa de X sobre Y; el equilibrio competitivo E tiene |RMT|>|RMS| y exceso de X respecto al óptimo O. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$X$}{$Y$}{6.4}{5.2}
+  % FPP social (con la externalidad): X=5cos t, Y=4.2 sin t
+  \draw[curva1,domain=0:90,samples=60] plot ({5*cos(\x)},{4.2*sin(\x)});
+  \node[etiqueta,above,tceemorado] at (0.7,4.15) {FPP};
+  % Tangente a la FPP en E (|RMT|=1,455)
+  \draw[guia,thick] (3.55,3.235) -- (4.95,1.198) node[etiqueta,right,tceegris] {$|RMT|$};
+  % Curvas de indiferencia Y = C X^{-0,49}
+  \draw[curva2,domain=1.05:6.1,samples=60] plot (\x,{4.307*\x^(-0.49)}) node[etiqueta,right,tceeazul] {$U_0$};
+  \draw[curva3,domain=1.75:6.1,samples=60] plot (\x,{5.766*\x^(-0.49)}) node[etiqueta,right,tceeverde] {$U_1$};
+  % Recta de precios tangente a U_0 en E (|RMS|=P_x/P_y=0,238)
+  \draw[curva4] (2.3,2.582) -- (5.9,1.727);
+  \node[etiqueta,tceedorado,left] at (2.3,2.582) {$P_x/P_y$};
+  % Puntos
+  \proyeccion{(4.33,2.1)}{$X_E$}{$Y_E$}
+  \proyeccion{(2.868,3.44)}{$X^{*}$}{$Y^{*}$}
+  \node[punto] at (4.33,2.1) {};
+  \node[etiqueta,below left] at (4.33,2.1) {$E$};
+  \node[punto] at (2.868,3.44) {};
+  \node[etiqueta,above right] at (2.868,3.44) {$O$};
+  \draw[flecha,domain=31:51,samples=30] plot ({5.45*cos(\x)},{4.6*sin(\x)});
+\end{tikzpicture}
+\end{document}

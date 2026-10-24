@@ -1,0 +1,34 @@
+% Pregunta 898 (2003-julio-OEP2003, n.º 26): paradoja de Metzler con curvas de oferta de Marshall-Edgeworth.
+% A exporta X e importa Y y pone el arancel. La curva de B tiene un tramo elástico (sube) y otro inelástico
+% (baja). El arancel contrae OC_A y el corte pasa de E0 a E1 dentro del tramo inelástico de OC_B: A exporta
+% menos X y recibe más Y, y el rayo de la RRI se empina mucho (de 0,54 a 0,87).
+% Curvas: OC_B: Y = 5.2(1 - e^{-X/1.1}) - 0.55X; OC_A: Y = 0.12X + 0.09X^2; OC_A': Y = 2(0.12X + 0.09X^2).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \draw[eje] (0,0) -- (6.6,0) node[below left,align=right] {$X$\\[-2pt]{\footnotesize(exporta A)}};
+  \draw[eje] (0,0) -- (0,5.0) node[left,align=right] {$Y$\\[-2pt]{\footnotesize(importa A)}};
+  \node[below left] at (0,0) {$0$};
+  % Rayos de la RRI de A (pendiente = p_X/p_Y)
+  \draw[guia,thick] (0,0) -- (6.3,3.417) node[etiqueta,right,text=tceemorado,font=\footnotesize] {$\mathit{RRI}_0$};
+  \draw[guia,thick,tceerojo] (0,0) -- (5.0,4.357) node[etiqueta,right,text=tceerojo,font=\footnotesize] {$\mathit{RRI}_1\uparrow\uparrow$};
+  % Curva de oferta de B: tramo elástico (sube) e inelástico (baja)
+  \draw[curva2] plot[domain=0:6.3,samples=80] (\x,{5.2*(1-exp(-\x/1.1))-0.55*\x}) node[etiqueta,right] {$OC_B$};
+  \node[etiqueta,text=tceeazul,font=\footnotesize,align=center] at (0.85,3.85) {tramo\\elástico};
+  \draw[->,thick,tceeazul] (0.95,3.45) -- (1.12,2.95);
+  \node[etiqueta,text=tceeazul,font=\footnotesize,align=center] at (5.55,1.55) {tramo\\inelástico};
+  \draw[->,thick,tceeazul] (5.55,1.9) -- (5.55,2.25);
+  % Curva de oferta de A, libre comercio
+  \draw[curva1] plot[domain=0:5.42,samples=60] (\x,{0.12*\x+0.09*\x*\x}) node[etiqueta,above] {$OC_A$};
+  % Curva de oferta de A con arancel: se contrae
+  \draw[curvanueva,desplazada] plot[domain=0:4.32,samples=60] (\x,{2*(0.12*\x+0.09*\x*\x)}) node[etiqueta,above,text=tceerojo] {$OC_A'$};
+  \draw[flecha] (4.3,1.15) -- (3.5,1.15);
+  % Equilibrios
+  \node[punto] at (4.693,2.546) {};
+  \node[etiqueta,anchor=north] at (4.76,2.34) {$E_0$};
+  \node[punto,fill=tceerojo] at (3.508,3.056) {};
+  \node[etiqueta,anchor=east,text=tceerojo] at (3.38,3.55) {$E_1$};
+\end{tikzpicture}
+\end{document}

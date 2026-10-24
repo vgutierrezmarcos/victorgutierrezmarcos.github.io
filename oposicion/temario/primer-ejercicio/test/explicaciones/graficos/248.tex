@@ -1,0 +1,26 @@
+% Pregunta 248 (2018-enero-OEP2017, n.º 4): complementarios perfectos U = min(x1, 3x2) con m = 40 y p1 = p2 = 1; el óptimo es el vértice (30,10) sobre el rayo x1 = 3x2, y la cesta (10,30) de la opción b está en el brazo vertical de la L de U = 10. Autor: Víctor Gutiérrez Marcos
+% A escala: 1 unidad = 0,14 cm.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.14cm,y=0.14cm]
+  \ejes{$x_1$}{$x_2$}{47}{46}
+  % Rayo de vértices x1 = 3 x2
+  \draw[guia,thick] (0,0) -- (45,15) node[etiqueta,right,tceegris!70!black] {$x_1=3x_2$};
+  % Curvas de indiferencia en L (vértice en (3u, u))
+  \draw[curva2,thick,tceeazul!55] (10,42) -- (10,10/3) -- (43,10/3);
+  \draw[curva2] (30,42) -- (30,10) -- (43,10);
+  \node[etiqueta,above,tceeazul!70] at (10,42) {$U=10$};
+  \node[etiqueta,above,tceeazul] at (30,42) {$U=30$};
+  % Recta de balance x1 + x2 = 40
+  \draw[curva1] (0,40) -- (40,0);
+  \node[etiqueta,tceemorado,below left] at (0,40) {$40$};
+  \node[etiqueta,tceemorado,below] at (40,0) {$40$};
+  \node[etiqueta,tceemorado,rotate=-45] at (23.2,21.6) {$x_1+x_2=40$};
+  % Óptimo
+  \proyeccion{(30,10)}{$30$}{$10$}
+  \node[punto,label={[etiqueta,fill=white,inner sep=1pt]above right:{$E\,(30,10)$}}] at (30,10) {};
+  % Cesta errónea de la opción b
+  \node[circle,fill=tceegris,inner sep=1.6pt,label={[etiqueta,tceegris!70!black,fill=white,inner sep=1pt]right:{b: $(10,30)$}}] at (10,30) {};
+\end{tikzpicture}
+\end{document}

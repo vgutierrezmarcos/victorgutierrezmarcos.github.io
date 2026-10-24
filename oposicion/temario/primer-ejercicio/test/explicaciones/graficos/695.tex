@@ -1,0 +1,29 @@
+% Pregunta 695 (2007-julio-OEP2007, n.º 3): con |RMS_{y,x}| > Px/Py no hay tangencia,
+% pero hay equilibrio de esquina en E (solo x): la d es falsa. Desde A, sustituir y por x a lo largo de la recta mejora.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$x$}{$y$}{6}{5}
+  % Recta de balance: pendiente -Px/Py = -0,8
+  \draw[curva2] (0,3.6) -- (4.5,0);
+  \node[etiqueta,left] at (0,3.6) {$\dfrac{m}{P_y}$};
+  \node[etiqueta,anchor=north] at (4.5,-0.15) {$\dfrac{m}{P_x}$};
+  \node[etiqueta,text=tceeazul,anchor=west,align=left] at (0.15,1.3) {pendiente\\$-P_x/P_y$};
+  % Curva de indiferencia más baja, que corta la recta en A
+  \draw[curva3,desplazada,domain=1.3:3.5,samples=40] plot (\x,{1.05*(3.5-\x)+0.3*(3.5-\x)^2});
+  \node[etiqueta,text=tceeverde,above] at (1.3,3.76) {$U_0$};
+  % Curva de indiferencia que toca la recta solo en la esquina E
+  \draw[curva1,domain=2.3:4.5,samples=40] plot (\x,{1.05*(4.5-\x)+0.3*(4.5-\x)^2});
+  \node[etiqueta,text=tceemorado,above] at (2.3,3.76) {$U_1$};
+  % Punto interior A y movimiento a lo largo de la recta
+  \node[punto,label={[etiqueta]left:$A$}] at (2.23,1.815) {};
+  \draw[flecha] (2.5,1.75) -- (3.95,0.6);
+  \node[etiqueta,text=tceerojo,align=left,anchor=west] at (3.75,1.75) {cambiar $y$ por $x$\\mejora};
+  % Esquina E
+  \node[punto,minimum size=0pt,inner sep=1.8pt] at (4.5,0) {};
+  \node[etiqueta,align=center,anchor=south] at (5.15,0.25) {$E$: óptimo\\de esquina};
+  \node[etiqueta,align=center,text=tceemorado,anchor=north] at (2.6,-1.0) {en $E$: $|RMS_{y,x}|>P_x/P_y$\\sin tangencia y en equilibrio (d falsa)};
+\end{tikzpicture}
+\end{document}

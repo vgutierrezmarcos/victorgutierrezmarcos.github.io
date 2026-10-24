@@ -1,0 +1,34 @@
+% Pregunta 107 (2023-junio-A, n.º 10): con solo costes fijos CMg = 0; el monopolista produce donde IMg = 0 (q = 5), punto de elasticidad unitaria y de ingreso máximo, con precio positivo (p = 5 > IMg). Autor: Víctor Gutiérrez Marcos
+% A escala: p = 10 - q, IMg = 10 - 2q, CMg = 0.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.52cm,y=0.46cm]
+  \ejes{$q$}{$p$}{11.5}{11}
+  % Ingreso máximo: 5 x 5 = 25
+  \fill[area] (0,0) rectangle (5,5);
+  % Coste marginal nulo: coincide con el eje horizontal
+  \draw[curva3] (0,0) -- (10.6,0);
+  \node[etiqueta,tceeverde,above] at (7.3,0.05) {$\mathit{CMg}=0$};
+  % Demanda e ingreso marginal
+  \draw[curva1] (0,10) -- (10,0);
+  \node[etiqueta,tceemorado,above right] at (8.4,1.6) {$D$};
+  \draw[curva2] (0,10) -- (5,0);
+  \node[etiqueta,tceeazul,left] at (3.1,3.2) {$\mathit{IMg}$};
+  % IMg = 0 en q = 5; precio en la demanda
+  \draw[guia] (5,0) -- (5,5);
+  \draw[guia] (0,5) -- (5,5);
+  \node[left] at (0,5) {$5$};
+  \node[below] at (5,-0.15) {$5$};
+  \node[left] at (0,10) {$10$};
+  \node[below] at (10,-0.15) {$10$};
+  \node[punto] at (5,0) {};
+  \node[punto] at (5,5) {};
+  \node[etiqueta,right] at (5.15,5.25) {$|\varepsilon|=1$};
+  % Tramos de la demanda
+  \node[etiqueta,font=\footnotesize,tceegris,above right] at (2.4,7.6) {elástica};
+  \node[etiqueta,font=\footnotesize,tceegris,above right] at (7.1,2.9) {inelástica};
+  % Rótulo del área
+  \node[etiqueta,tceemorado,align=center,font=\footnotesize] at (1.75,1.5) {ingreso\\máximo\\$=25$};
+\end{tikzpicture}
+\end{document}

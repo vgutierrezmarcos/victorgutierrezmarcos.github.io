@@ -1,0 +1,33 @@
+% Pregunta 978 (2026-marzo, n.º 14): externalidad positiva en el consumo de manzanas. El individuo iguala BMgP = 50 - 5x al precio 20 y consume 6; el óptimo social iguala BMgS = 50 - 3x a 20 y está en 10; la subvención es el beneficio externo marginal en el óptimo, s = 2·10 = 20, y el gasto 20·10 = 200. Autor: Víctor Gutiérrez Marcos
+% A escala: BMgP = 50 - 5x, BMgS = 50 - 3x, CMg = p = 20.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=0.1cm]
+  \ejes{$x$}{u.\,m.}{14}{58}
+  % Gasto público: s·x = 20·10
+  \fill[area] (0,0) rectangle (10,20);
+  % Pérdida de eficiencia sin intervención
+  \fill[area2] (6,20) -- (10,20) -- (6,32) -- cycle;
+  % Coste marginal = precio
+  \draw[curva4] (0,20) -- (13.2,20) node[etiqueta,tceedorado,right] {$\mathit{CMg}=p$};
+  % Beneficios marginales
+  \draw[curva1] (0,50) -- (10,0);
+  \node[etiqueta,tceemorado,left] at (2.9,33) {$\mathit{BMgP}$};
+  \draw[curva2] (0,50) -- (12.5,12.5) node[etiqueta,tceeazul,right] {$\mathit{BMgS}$};
+  % Proyecciones
+  \draw[guia] (6,20) -- (6,0) node[below] {$6$};
+  \node[left] at (0,20) {$20$};
+  \node[left] at (0,50) {$50$};
+  \node[below] at (10,-0.5) {$10$};
+  % Subvención en x = 10: de BMgP(10) = 0 a BMgS(10) = 20
+  \draw[flecha,<->] (10.4,0.8) -- (10.4,19.2);
+  \node[etiqueta,tceerojo,right,align=left,font=\footnotesize] at (10.5,6.5) {$s=2\cdot10=20$};
+  \node[punto] at (6,20) {};
+  \node[punto] at (10,20) {};
+  \node[etiqueta,above right] at (6.1,20.5) {$E_{\mathrm{privado}}$};
+  \node[etiqueta,above right] at (9.6,23.5) {$E_{\mathrm{social}}$};
+  % Rótulo del área
+  \node[etiqueta,tceemorado,align=center,font=\footnotesize] at (3,8) {gasto\\$=20\cdot10=200$};
+\end{tikzpicture}
+\end{document}

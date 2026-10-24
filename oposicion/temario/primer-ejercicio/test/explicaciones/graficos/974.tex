@@ -1,0 +1,32 @@
+% Pregunta 974 (2026-marzo, n.º 10): C(x) = x^2 + 6x. CMg = 2x + 6, CVMe = CMe = x + 6,
+% ambos parten de (0, 6), mínimo del CVMe. Oferta inversa: p = 2x + 6 si p >= 6; x = 0 si p < 6.
+% A escala: x de 0 a 6 (1 cm por unidad), p de 0 a 18 (0,27 cm por unidad). Ejemplo p = 12 -> x = 3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.27cm]
+  \draw[eje] (0,0) -- (7,0) node[below left=2pt and 0pt] {$x$};
+  \draw[eje] (0,0) -- (0,20.5) node[left,align=right] {$p$, costes};
+  \node[below left] at (0,0) {$0$};
+  \foreach \t in {1,2,3,4,5,6} \draw (\t,0) -- (\t,-0.25) node[below] {$\t$};
+  \foreach \t in {6,12,18} \draw (0,\t) -- (-0.07,\t) node[left] {$\t$};
+  % Oferta de la empresa (fondo rojo ancho): x = 0 si p < 6; p = 2x + 6 si p >= 6
+  \draw[tceerojo,line width=5pt,opacity=0.35,line cap=butt] (0,0) -- (0,6);
+  \draw[tceerojo,line width=5pt,opacity=0.35] (0,6) -- (6,18);
+  % Mínimo del CVMe
+  \draw[guia] (0,6) -- (6.6,6);
+  \node[etiqueta,above,text=tceegris,font=\small] at (5.3,6) {mín CVMe $=6$};
+  % Curvas de costes
+  \draw[curva2] (0,6) -- (6,12) node[etiqueta,right,text=tceeazul] {CVMe $=$ CMe $=x+6$};
+  \draw[curva1] (0,6) -- (6,18) node[etiqueta,right,text=tceemorado] {CMg $=2x+6$};
+  % Ejemplo: p = 12 -> x = 3
+  \draw[guia] (3,0) -- (3,12) -- (0,12);
+  \node[punto] at (3,12) {};
+  \node[etiqueta,above left,font=\small] at (3,12) {$p=12\Rightarrow x=3$};
+  \node[punto] at (0,6) {};
+  % Rótulos de la oferta
+  \node[etiqueta,text=tceerojo,align=left,font=\small,rotate=0] at (1.5,17.3) {oferta:\\$p=2x+6$, $p\geq 6$};
+  \node[etiqueta,text=tceerojo,align=left,font=\small,right] at (0.15,2.8) {$p<6$: no cubre el CVMe, $x=0$};
+\end{tikzpicture}
+\end{document}

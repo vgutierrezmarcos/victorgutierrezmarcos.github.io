@@ -1,0 +1,36 @@
+% Pregunta 318 (2019-febrero-OEP2018, n.º 30): curva J. Tras la devaluación en t0 el saldo comercial (en déficit) empeora a corto plazo y a largo plazo mejora por encima del nivel inicial. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \draw[eje] (0,0) -- (6.3,0) node[below left=2pt and 0pt] {$t$};
+  \draw[eje] (0,0) -- (0,5.6) node[left,align=right,font=\small] {saldo\\comercial};
+  % Saldo nulo: todo lo que queda por debajo es déficit
+  \draw[guia] (0,4.9) -- (6.1,4.9);
+  \node[left,font=\small] at (0,4.9) {$0$};
+  \node[etiqueta,tceegris,font=\footnotesize,anchor=south east] at (6.2,4.9) {equilibrio};
+  % Saldo inicial (déficit) y momento de la devaluación
+  \draw[guia] (0,2.6) -- (6.1,2.6);
+  \node[left,font=\small] at (0,2.6) {$SC_0$};
+  \node[etiqueta,tceegris,font=\footnotesize,anchor=north east] at (6.2,2.5) {déficit inicial};
+  \draw[guia] (1.4,0) -- (1.4,4.4);
+  \node[below] at (1.4,0) {$t_0$};
+  \node[etiqueta,tceegris,font=\footnotesize,anchor=south] at (1.4,4.4) {devaluación};
+  % Curva J
+  \draw[curva1] (0.2,2.6) -- (1.4,2.6)
+    .. controls (1.75,2.6) and (1.9,1.0) .. (2.4,1.0)
+    .. controls (3.0,1.0) and (3.5,3.0) .. (5.8,4.3)
+    node[etiqueta,right] {$J$};
+  \node[punto] at (2.4,1.0) {};
+  \node[punto,fill=tceeverde] at (3.8,2.6) {};
+  \draw[guia] (3.8,0) -- (3.8,2.6);
+  % Tramos
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceerojo] (1.45,-0.45) -- (3.75,-0.45)
+    node[midway,below=4pt,etiqueta,text=tceerojo,font=\small,align=center] {corto plazo:\\empeora};
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceeverde] (3.85,-0.45) -- (5.9,-0.45)
+    node[midway,below=4pt,etiqueta,text=tceeverde,font=\small,align=center] {largo plazo:\\mejora};
+  % Explicación de cada tramo
+  \node[etiqueta,font=\footnotesize,align=left,anchor=north west,text=tceerojo] at (2.5,0.85) {$\varepsilon_X+\varepsilon_M<1$};
+  \node[etiqueta,font=\footnotesize,align=left,anchor=east,text=tceeverde] at (4.4,3.9) {$\varepsilon_X+\varepsilon_M>1$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,31 @@
+% Pregunta 747 (2006-septiembre-OEP2006, n.º 10): el coste a largo plazo es la envolvente del de corto.
+% C^L(x) = 0,8x + 0,05x^2; C^C(x; y2) = C^L(x) + 0,13(x - 3)^2, con coste fijo 1,17 > 0 (ambas crecientes).
+% C^C >= C^L para todo x, con igualdad y tangencia en x* = 3 (pendiente común 1,1): CMg^L = CMg^C.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.7cm]
+  \ejes{$x$}{$C$}{6.3}{7.4}
+  % Coste a corto plazo con y2 fijo: por encima salvo en x*
+  \draw[curva2,domain=0:5.6,samples=60] plot (\x,{0.8*\x+0.05*\x*\x+0.13*(\x-3)*(\x-3)})
+    node[etiqueta,above,text=tceeazul] {$C^{C}(x;\bar{y}_2)$};
+  % Coste a largo plazo: envolvente
+  \draw[curva1,domain=0:5.9,samples=60] plot (\x,{0.8*\x+0.05*\x*\x})
+    node[etiqueta,right,text=tceemorado] {$C^{L}(x)$};
+  % Coste fijo a corto
+  \node[etiqueta,left,text=tceeazul] at (0,1.17) {$CF>0$};
+  \node[punto,fill=tceeazul] at (0,1.17) {};
+  % Tangente común en x*
+  \draw[curva4] (1.3,0.98) -- (4.9,4.94);
+  \node[etiqueta,right,align=left,font=\footnotesize,text=tceedorado!80!black] at (3.6,1.75) {pendiente común:\\$\mathrm{CMg}^{L}=\mathrm{CMg}^{C}$};
+  \draw[flecha,tceedorado!80!black] (3.65,1.95) -- (3.4,3.2);
+  % Punto de tangencia
+  \proyeccion{(3,2.85)}{$x^*$}{}
+  \node[punto] at (3,2.85) {};
+  \node[etiqueta,below,font=\footnotesize] at (3,-0.75) {$y_2^{L}(x^*)=\bar{y}_2$};
+  % Hueco entre curvas
+  \node[etiqueta,align=center,font=\footnotesize] at (1.3,4.4) {$C^{C}\ge C^{L}$\\lo contrario de la a)};
+  \draw[flecha,black!65] (1.2,3.75) -- (1.05,1.08);
+\end{tikzpicture}
+\end{document}

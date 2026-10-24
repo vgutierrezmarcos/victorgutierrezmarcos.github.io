@@ -1,0 +1,33 @@
+% Pregunta 252 (2018-enero-OEP2017, n.º 8): empresa competitiva a corto plazo. Lo horizontal es la
+% demanda de la empresa (el precio), no el coste marginal, que es creciente en el tramo relevante.
+% Mismas curvas que oferta-corto-plazo del 3.A.16: CV(q) = q^3 - 6 q^2 + 15 q, CF = 15:
+%   CMg = 3 q^2 - 12 q + 15; CVMe = q^2 - 6 q + 15 (mínimo 6 en q = 3);
+%   CTMe = CVMe + 15/q (mínimo 10,53 en q = 3,584).
+% Precios: p1 = 14 (q = 3,915, beneficios), p2 = 9 (q = 3,414, pérdidas, sigue), p3 = 6 (q = 3, cierre).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.4cm,y=0.25cm,
+    declare function={CMg(\q)=3*\q^2-12*\q+15; CVMe(\q)=\q^2-6*\q+15; CMe(\q)=\q^2-6*\q+15+15/\q;}]
+  \draw[eje] (0,0) -- (5.6,0) node[below left=2pt and 0pt] {$q_i$};
+  \draw[eje] (0,0) -- (0,19) node[left] {$p$, costes};
+  \node[below left] at (0,0) {$0$};
+  % Costes
+  \draw[curva3] plot[domain=0.6:4.6,samples=80,smooth] (\x,{CVMe(\x)});
+  \node[etiqueta,text=tceeverde,above] at (0.6,{CVMe(0.6)}) {CVMe};
+  \draw[curva2] plot[domain=1.55:4.7,samples=80,smooth] (\x,{CMe(\x)})
+    node[etiqueta,right] {CTMe};
+  \draw[curva1] plot[domain=0.45:4.15,samples=80,smooth] (\x,{CMg(\x)})
+    node[etiqueta,above] {CMg};
+  % Rectas de demanda de la empresa: p = IMg
+  \foreach \p/\t in {14/{$d_1$: beneficios},9/{$d_2$: pérdidas, sigue},6/{$d_3$: umbral de cierre}}
+    \draw[curva4] (0,\p) -- (5.0,\p) node[etiqueta,right,text=black,font=\footnotesize] {\t};
+  % Óptimos p = CMg
+  \foreach \q/\p/\n in {3.9149/14/1,3.4142/9/2,3/6/3} {
+    \node[punto] at (\q,\p) {};
+    \draw[guia] (\q,\p) -- (\q,0) node[below] {$q_\n^*$};
+    \node[left] at (0,\p) {$p_\n$};
+  }
+\end{tikzpicture}
+\end{document}

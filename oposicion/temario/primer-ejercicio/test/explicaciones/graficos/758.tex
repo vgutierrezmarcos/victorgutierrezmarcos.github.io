@@ -1,0 +1,29 @@
+% Pregunta 758 (2006-septiembre-OEP2006, n.º 21): regla de oro en Solow por unidad de trabajo efectivo; en k_RO la pendiente de f iguala n+delta+g (tangente paralela), el consumo es máximo y la curva de ahorro alpha f(k) corta la recta justo ahí, luego s_RO = alpha. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.95cm]
+  % alpha = 0,4 ; f(k) = 2,35 k^0,4 ; (n+delta+g) = 0,53 ; k_RO = 2,6
+  % f(k_RO) = 3,446 ; (n+delta+g) k_RO = alpha f(k_RO) = 1,378
+  \ejes{$k$}{$y$}{7.2}{5.7}
+  % Tangente a f en k_RO, paralela a la recta
+  \draw[guia] (0.7,2.439) -- (5.0,4.718);
+  % Producción, inversión necesaria y ahorro de la regla de oro
+  \draw[curva1,domain=0:6.6,samples=100] plot (\x,{2.35*(\x)^0.4});
+  \node[etiqueta,tceemorado,anchor=west] at (6.6,5.0) {$f(k)=k^{\alpha}$};
+  \draw[curva2] (0,0) -- (6.6,3.498);
+  \node[etiqueta,tceeazul,anchor=west] at (6.6,3.5) {$(n{+}\delta{+}g)k$};
+  \draw[curva3,domain=0:6.6,samples=100] plot (\x,{0.4*2.35*(\x)^0.4});
+  \node[etiqueta,tceeverde,anchor=west] at (6.6,2.0) {$\alpha f(k)$};
+  % Consumo máximo en k_RO
+  \draw[guia] (2.6,0) -- (2.6,1.378);
+  \draw[tceedorado,line width=1.6pt,{Stealth[length=6pt]}-{Stealth[length=6pt]}] (2.6,1.40) -- (2.6,3.42);
+  \node[etiqueta,tceedorado,anchor=west] at (2.7,2.45) {$c^*$ máximo};
+  \node[punto] at (2.6,3.446) {};
+  \node[punto] at (2.6,1.378) {};
+  \node[below] at (2.6,0) {$k_{RO}$};
+  % Rótulos
+  \node[etiqueta,font=\footnotesize,align=center,tceegris] at (1.3,5.1) {tangente paralela:\\$\alpha k^{\alpha-1}=n{+}\delta{+}g$};
+  \node[etiqueta,font=\footnotesize,align=left,tceeverde] at (4.6,0.75) {$s_{RO}f(k)=\alpha f(k)$\\corta la recta en $k_{RO}$};
+\end{tikzpicture}
+\end{document}

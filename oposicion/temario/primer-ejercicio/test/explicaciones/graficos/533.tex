@@ -1,0 +1,27 @@
+% Pregunta 533 (2016-enero-OEP2015, n.º 20): sin préstamos netos se consume la dotación neta de gasto; en A (menos consumo hoy) la recta tangente es más inclinada que -1 y r>0; en B, más plana y r<0. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm]
+  % Dotación y = 4, gasto g = 1,5 (a escala). A = (y-g, y), B = (y, y-g)
+  \ejes{$c_t$}{$c_{t+1}$}{6.6}{6.4}
+  % Diagonal de 45°: consumo igual en los dos períodos
+  \draw[guia] (0,0) -- (5.6,5.6) node[etiqueta,tceegris,above right=-2pt] {$45^\circ$};
+  % Recta de referencia r = 0 (pendiente -1), tangente en la diagonal
+  \draw[guia,thick] (1.55,4.775) -- (4.775,1.55) node[etiqueta,tceegris,below=1pt] {$r=0$};
+  % Curva de indiferencia U = sqrt(c_t c_{t+1}): c_t c_{t+1} = 10 pasa por A y por B
+  \draw[curva1,domain=1.72:6.25,samples=80] plot (\x,{10/\x});
+  \node[etiqueta,tceemorado,right] at (6.25,1.6) {$U$};
+  % Régimen A: pendiente -y/(y-g) = -1,6 (más inclinada que -1)
+  \draw[curva2] (1.25,6.0) -- (4.2,1.28);
+  \node[etiqueta,tceeazul,anchor=south west,align=left] at (1.3,5.85) {$-(1+r_A)=-\frac{y}{y-g}$\\ $r_A>0$};
+  % Régimen B: pendiente -(y-g)/y = -0,625 (más plana que -1)
+  \draw[curva3] (1.4,4.125) -- (6.3,1.0625);
+  \node[etiqueta,tceeverde,anchor=north,align=center] at (5.6,0.95) {$-(1+r_B)=-\frac{y-g}{y}$\\ $r_B<0$};
+  % Dotaciones netas de gasto
+  \proyeccion{(2.5,4)}{$y-g$}{$y$}
+  \proyeccion{(4,2.5)}{$y$}{$y-g$}
+  \node[punto,label={[etiqueta]above right:$A$}] at (2.5,4) {};
+  \node[punto,label={[etiqueta]above right:$B$}] at (4,2.5) {};
+\end{tikzpicture}
+\end{document}

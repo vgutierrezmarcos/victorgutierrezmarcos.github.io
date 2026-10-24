@@ -1,0 +1,36 @@
+% Pregunta 983 (2026-marzo, n.º 19): sendas temporales de la inversión neta (I = Kdot, con delta = 0)
+% en el modelo q tras un aumento de la renta permanente o transitorio (de t0 a t1).
+% Calculadas con la misma linealización que 983.tex: Kdot = (q-1), qdot = 0,5(q-1) + 0,5(K-K*), K1-K0 = 2.
+%   Permanente: I = e^{-0,5 t} (empieza en 1).
+%   Transitorio (dura 1,5): I(t0) = 0,78, cruza 0 en t = 1,22, I(t1) = -0,23 y vuelve a 0 desde abajo.
+%   Escala: x = 0,6 + 0,9 t ; y = 1,4 + 2,6 I.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.1cm]
+  % Ejes: la inversión puede ser negativa
+  \draw[eje] (0,0.3) -- (0,4.8) node[left] {$I$};
+  \draw[eje] (0,1.4) -- (6.3,1.4) node[below left=2pt and 0pt] {$t$};
+  \node[left] at (0,1.4) {$0$};
+  \node[font=\small\bfseries,text=tceemorado] at (3.1,5.2) {Inversión neta en el tiempo ($\delta=0$)};
+  % Marcas de tiempo
+  \draw[guia] (0.6,0.3) -- (0.6,4.0);
+  \draw[guia] (1.95,0.3) -- (1.95,1.4);
+  \node[below] at (0.6,0.3) {$t_0$};
+  \node[below,align=center] at (1.95,0.3) {$t_1$\\[-2pt]{\footnotesize fin del shock}};
+  % Antes del shock, I = 0
+  \draw[curva1] (0,1.4) -- (0.6,1.4);
+  % Permanente
+  \draw[curva1] (0.6,1.4) -- (0.6,4.0);
+  \draw[curva1] (0.600,4.000) -- (0.780,3.753) -- (0.960,3.529) -- (1.140,3.326) -- (1.320,3.143) -- (1.500,2.977) -- (1.680,2.827) -- (1.860,2.691) -- (2.040,2.568) -- (2.220,2.457) -- (2.400,2.356) -- (2.580,2.265) -- (2.760,2.183) -- (2.940,2.109) -- (3.120,2.041) -- (3.300,1.980) -- (3.480,1.925) -- (3.660,1.875) -- (3.840,1.830) -- (4.020,1.789) -- (4.200,1.752) -- (4.380,1.718) -- (4.560,1.688) -- (4.740,1.661) -- (4.920,1.636) -- (5.100,1.613) -- (5.280,1.593) -- (5.460,1.575) -- (5.640,1.558) -- (5.820,1.543);
+  \node[etiqueta,text=tceemorado,anchor=west] at (1.6,3.25) {permanente};
+  % Transitorio (de t0 a t1)
+  \draw[curva4] (0.6,1.4) -- (0.6,3.42);
+  \draw[curva4] (0.600,3.420) -- (0.690,3.262) -- (0.780,3.105) -- (0.870,2.949) -- (0.960,2.793) -- (1.050,2.637) -- (1.140,2.478) -- (1.230,2.317) -- (1.320,2.152) -- (1.410,1.983) -- (1.500,1.808) -- (1.590,1.627) -- (1.680,1.437) -- (1.770,1.237) -- (1.860,1.027) -- (1.950,0.803) -- (2.111,0.855) -- (2.272,0.901) -- (2.434,0.944) -- (2.595,0.983) -- (2.756,1.019) -- (2.918,1.052) -- (3.079,1.081) -- (3.240,1.109) -- (3.401,1.134) -- (3.563,1.156) -- (3.724,1.177) -- (3.885,1.196) -- (4.046,1.214) -- (4.207,1.230) -- (4.369,1.244) -- (4.530,1.258) -- (4.691,1.270) -- (4.852,1.281) -- (5.014,1.291) -- (5.175,1.301) -- (5.336,1.309) -- (5.497,1.317) -- (5.659,1.324) -- (5.820,1.331);
+  \node[etiqueta,text=tceedorado,anchor=west] at (2.2,0.75) {transitorio};
+  % Mensaje
+  \node[etiqueta,font=\footnotesize,align=left,text=tceerojo,anchor=west] at (3.0,4.3)
+    {Con $\delta=0$ la inversión vuelve\\a 0 en los dos casos: lo\\permanente es el nivel de $K$};
+\end{tikzpicture}
+\end{document}

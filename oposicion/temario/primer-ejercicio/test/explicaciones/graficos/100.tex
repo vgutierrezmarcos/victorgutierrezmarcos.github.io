@@ -1,0 +1,30 @@
+% Pregunta 100 (2023-junio-A, n.º 3): complementarios perfectos, tres novelas (x) por cada dos ensayos (y).
+% U = min{2x, 3y}: vértices sobre 2x = 3y (y = 2x/3), en (3,2) con U = 6 y en (6,4) con U = 12, a escala.
+% La opción b), min{3x, 2y}, tendría los vértices sobre y = 3x/2: la proporción inversa.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.85cm]
+  \draw[eje] (0,0) -- (7.6,0) node[right,align=left] {$x$\\[-2pt](novelas)};
+  \draw[eje] (0,0) -- (0,5.8) node[left] {$y$ (ensayos)};
+  \node[below left] at (0,0) {$0$};
+  \foreach \t in {1,...,7} \draw (\t,0) -- (\t,-0.08) node[below] {$\t$};
+  \foreach \t in {1,...,5} \draw (0,\t) -- (-0.08,\t) node[left] {$\t$};
+  % Rayo de la opción b), proporción inversa
+  \draw[curvanueva,thin] (0,0) -- (3.6,5.4) node[etiqueta,above,text=tceerojo] {b): $3x=2y$};
+  % Rayo de vértices de la opción c)
+  \draw[guia,thick] (0,0) -- (7.4,4.933) node[etiqueta,right,text=tceemorado] {c): $2x=3y$};
+  % Curvas de indiferencia en L
+  \draw[curva1] (3,5.4) -- (3,2) -- (7.4,2) node[etiqueta,above left,text=tceemorado] {$U=6$};
+  \draw[curva1] (6,5.4) -- (6,4) -- (7.4,4) node[etiqueta,below left,text=tceemorado] {$U=12$};
+  % Cestas
+  \draw[guia] (3,0) -- (3,2);
+  \draw[guia] (0,2) -- (3,2);
+  \node[punto] at (3,2) {};
+  \node[etiqueta,above left,align=right] at (3,2) {$(3,2)$\\$\min\{6,6\}$};
+  \node[punto] at (6,4) {};
+  \node[punto,fill=tceerojo] at (4,2) {};
+  \node[etiqueta,below,text=tceerojo,align=center] at (4.9,1.9) {$(4,2)$: $\min\{8,6\}=6$\\la novela de más no sirve};
+\end{tikzpicture}
+\end{document}

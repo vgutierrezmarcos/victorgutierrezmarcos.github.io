@@ -1,0 +1,41 @@
+% Pregunta 434 (2013-noviembre-OEP2013, n.º 10): precio mínimo de 12 en un mercado con demanda P = 15 - Q/200 y oferta P = Q/100.
+% Se intercambian 600 unidades (lado corto); la pérdida irrecuperable es el triángulo (600;12), (600;6), (1.000;10): 1/2·400·6 = 1.200 (d).
+% A escala: 1 cm = 250 unidades de Q y 3 unidades de P. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.004cm,y=0.3333cm]
+  % Pérdida irrecuperable de eficiencia
+  \fill[area,fill opacity=0.35] (600,12) -- (600,6) -- (1000,10) -- cycle;
+  \ejes{$Q$}{$P$}{1650}{16.5}
+  % Demanda y oferta de mercado
+  \draw[curva1] (0,15) -- (1500,7.5) node[etiqueta,right] {$D$};
+  \draw[curva2] (0,0) -- (1500,15) node[etiqueta,right] {$S$};
+  % Precio mínimo
+  \draw[curvanueva] (0,12) -- (1380,12) node[etiqueta,right,text=tceerojo] {$P_{\min}$};
+  % Guías y marcas en los ejes
+  \draw[guia] (1000,0) -- (1000,10) -- (0,10);
+  \draw[guia] (600,0) -- (600,12);
+  \draw[guia] (1200,0) -- (1200,12);
+  \draw[guia] (600,6) -- (0,6);
+  \node[below] at (600,0) {600};
+  \node[below] at (1000,0) {1.000};
+  \node[below] at (1200,0) {1.200};
+  \node[left] at (0,6) {6};
+  \node[left] at (0,10) {10};
+  \node[left,text=tceerojo] at (0,12) {12};
+  \node[left] at (0,15) {15};
+  % Puntos
+  \node[punto,label={[etiqueta]below right:$E$}] at (1000,10) {};
+  \node[punto,tceerojo] at (600,12) {};
+  \node[punto,tceerojo] at (600,6) {};
+  \node[punto,tceerojo] at (1200,12) {};
+  % Exceso de oferta
+  \draw[decorate,decoration={brace,amplitude=5pt},thick,tceerojo] (600,12.35) -- (1200,12.35)
+    node[midway,above=5pt,font=\footnotesize,text=tceerojo] {exceso de oferta: 600};
+  % Rótulo de la pérdida
+  \draw[->,thin] (1240,5.6) -- (760,8.9);
+  \node[etiqueta,anchor=north west,align=left] at (1225,5.9) {PIE $=$\\$\tfrac12\cdot400\cdot6$\\$=1.200$};
+\end{tikzpicture}
+\end{document}

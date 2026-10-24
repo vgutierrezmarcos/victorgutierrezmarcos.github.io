@@ -1,0 +1,44 @@
+% Pregunta 741 (2006-septiembre-OEP2006, n.º 4): impuesto unitario t en una industria competitiva con libre entrada y costes idénticos; a la izquierda la empresa (CMe y CMg suben t, el mínimo sigue en q*), a la derecha el mercado (la oferta a largo plazo horizontal sube t, Q cae y salen empresas). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing,calc}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % ---------- Panel 1: la empresa ----------
+  % C(q) = 1,8 + 0,2 q^2 -> CMe = 1,8/q + 0,2 q ; CMg = 0,4 q
+  % q* = 3 ; CMe_min = p0 = 1,2 ; t = 1,4 ; p1 = 2,6
+  \node[font=\small\bfseries] at (3,5.4) {La empresa};
+  \ejes{$q$}{$p,\ \text{costes}$}{6}{5}
+  \draw[guia] (3,0) node[below] {$q^*$} -- (3,2.6);
+  \draw[guia] (3,1.2) -- (0,1.2) node[left] {$p_0$};
+  \draw[guia] (3,2.6) -- (0,2.6) node[left] {$p_1=p_0+t$};
+  \draw[curva1,domain=0.7:5.6,samples=60] plot (\x,{1.8/\x+0.2*\x}) node[etiqueta,right] {$CMe$};
+  \draw[curva1,domain=0.3:5.3] plot (\x,{0.4*\x}) node[etiqueta,right] {$CMg$};
+  \draw[curvanueva,desplazada,domain=0.7:5.6,samples=60] plot (\x,{1.8/\x+0.2*\x+1.4}) node[etiqueta,right] {$CMe+t$};
+  \draw[curvanueva,desplazada,domain=0.3:5.3] plot (\x,{0.4*\x+1.4}) node[etiqueta,right] {$CMg+t$};
+  \node[punto] at (3,1.2) {};
+  \node[punto,tceerojo] at (3,2.6) {};
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick] (3.15,1.25) -- (3.15,2.55) node[midway,right=4pt,fill=white,inner sep=1pt] {$t$};
+
+  % ---------- Panel 2: el mercado ----------
+  % D: p = 4,4 - 0,6 Q ; S_LP: p = 1,2 ; S_LP': p = 2,6
+  % E0: Q0 = 5,33 ; E1: Q1 = 3
+  \begin{scope}[xshift=9.2cm]
+  \node[font=\small\bfseries] at (3,5.4) {El mercado};
+  \ejes{$Q$}{$p$}{6.6}{5}
+  \draw[curva2] (0.3,4.22) -- (6.4,0.56) node[etiqueta,right] {$D$};
+  \draw[curva1] (0,1.2) -- (6.4,1.2) node[etiqueta,right] {$S_{LP}$};
+  \draw[curvanueva,desplazada] (0,2.6) -- (6.4,2.6) node[etiqueta,right] {$S_{LP}'$};
+  \node[left] at (0,1.2) {$p_0$};
+  \node[left] at (0,2.6) {$p_0+t$};
+  \draw[guia] (5.333,0) node[below] {$Q_0$} -- (5.333,1.2);
+  \draw[guia] (3,0) node[below] {$Q_1$} -- (3,2.6);
+  \node[punto] (E0) at (5.333,1.2) {};
+  \node[above right] at (5.333,1.2) {$E_0$};
+  \node[punto,tceerojo] at (3,2.6) {};
+  \node[above right] at (3,2.6) {$E_1$};
+  \draw[flecha] (4.9,0.5) -- (3.4,0.5);
+  \node[anchor=base] at (3.3,-1.0) {$n_1=Q_1/q^*\;<\;n_0=Q_0/q^*$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

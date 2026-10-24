@@ -1,0 +1,26 @@
+% Pregunta 708 (2007-julio-OEP2007, n.º 16): en el diagrama de Solow por trabajador efectivo, k̂ solo crece por debajo del estado estacionario. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$\hat k$}{}{6.4}{5}
+  % s f(k) = 1.6 sqrt(k); (n+g+delta) k = 0.8 k; corte en k* = 4
+  \draw[curva2] (0,0) -- (5.6,4.48) node[etiqueta,above left] {$(n+g+\delta)\,\hat k$};
+  \draw[curva1] plot[domain=0:5.8,samples=200,smooth] (\x*\x/5.8,{1.6*sqrt(\x*\x/5.8)}) node[etiqueta,right] {$s\,f(\hat k)$};
+  % estado estacionario
+  \draw[guia] (4,0) node[below] {$\hat k^*$} -- (4,3.2);
+  \node[punto] at (4,3.2) {};
+  \node[etiqueta,above left,align=center,font=\small] at (4,3.25) {$\dot{\hat k}=0$};
+  % k0 por debajo
+  \draw[guia] (1.5,0) node[below] {$\hat k_0$} -- (1.5,1.96);
+  \node[punto] at (1.5,1.96) {};
+  \node[punto] at (1.5,1.2) {};
+  \draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (1.58,1.94) -- (1.58,1.22);
+  \draw[thin,tceerojo] (1.72,1.58) -- (1.95,1.0);
+  \node[etiqueta,below right,tceerojo,align=left,font=\small] at (1.8,1.02) {$\hat k$ crece (1\,\%)};
+  % flechas de convergencia
+  \draw[flecha] (1.9,0.18) -- (3.6,0.18);
+  \draw[flecha] (5.8,0.18) -- (4.4,0.18);
+\end{tikzpicture}
+\end{document}

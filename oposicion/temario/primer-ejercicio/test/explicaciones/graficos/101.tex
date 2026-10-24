@@ -1,0 +1,40 @@
+% Pregunta 101 (2023-junio-A, n.º 4): RMS = y/4, I = 3, px = py = 1. Solución de esquina en (0,3).
+% Curvas de indiferencia de U = x + 4 ln y (x = U - 4 ln y), a escala:
+%   U = 4 ln 3 = 4,394 (por d = (0,3)); U = 1 + 4 ln 2 = 3,773 (por c = (1,2)); U = 2 (por b = (2,1)).
+% La tangencia exigiría y = 4 (RMS = 1), fuera del alcance con renta 3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.25cm,y=1.1cm,
+    declare function={ci(\y,\u)=\u-4*ln(\y);}]
+  \draw[eje] (0,0) -- (4.5,0) node[below left=2pt and 0pt] {$x$};
+  \draw[eje] (0,0) -- (0,5) node[left] {$y$};
+  \node[below left] at (0,0) {$0$};
+  \foreach \t in {1,2,3} {
+    \draw (\t,0) -- (\t,-0.07) node[below] {$\t$};
+    \draw (0,\t) -- (-0.07,\t) node[left] {$\t$};
+  }
+  \draw (0,4) -- (-0.07,4) node[left] {$4$};
+  % Tangencia imposible: RMS = 1 exige y = 4
+  \draw[guia] (0,4) -- (4.2,4);
+  \node[etiqueta,above left,text=tceegris,font=\footnotesize] at (4.2,4) {tangencia exigiría $y=4$};
+  % Curvas de indiferencia
+  \draw[curva2] plot[domain=0.62:1.65,samples=60,smooth] ({ci(\x,2)},\x);
+  \draw[curva2] plot[domain=1.12:2.57,samples=60,smooth] ({ci(\x,3.7726)},\x);
+  \draw[curva2] plot[domain=3:1.04,samples=60,smooth] ({ci(\x,4.3944)},\x)
+    node[etiqueta,right,text=tceeazul] {$U^*$};
+  % Recta de balance
+  \draw[curva1] (0,3) -- (3,0) node[etiqueta,above right,text=tceemorado] {$x+y=3$};
+  % Movimiento a lo largo de la recta
+  \draw[flecha] (1.6,1.2) -- (0.25,2.55);
+  \node[etiqueta,text=tceerojo,font=\footnotesize,align=center] at (0.8,0.65) {pasar gasto\\de $x$ a $y$};
+  % Cestas
+  \node[punto,minimum size=0pt,inner sep=1pt] at (2,1) {};
+  \node[etiqueta,above right,font=\footnotesize] at (2,1) {b};
+  \node[punto,inner sep=1pt] at (1,2) {};
+  \node[etiqueta,above right,font=\footnotesize] at (1,2) {c};
+  \node[punto,inner sep=2pt] at (0,3) {};
+  \node[etiqueta,above right,align=left] at (0,3) {d: óptimo de esquina\\$RMS=3/4<1$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,33 @@
+% Pregunta 155 (2022-julio, n.º 10): Bertrand con costes asimétricos, B fija su precio de monopolio.
+% A escala: P = 6 - 2Q, IMg = 6 - 4Q, c_B = 2, c_A = 5.
+%   IMg = c_B -> Q = 1, P = 4 < c_A = 5; beneficio de B = (4 - 2)·1 = 2.
+%   Precio casi 5 -> Q = 0,5, beneficio = (5 - 2)·0,5 = 1,5.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.9cm,y=0.85cm]
+  % Beneficio de B con P = 4
+  \fill[area] (0,2) rectangle (1,4);
+  \node[etiqueta,text=tceemorado,align=center] at (0.33,2.55) {$\pi_B=2$};
+  \ejes{$Q$}{$P$}{3.4}{6.6}
+  % Costes marginales
+  \draw[curva4] (0,5) -- (3.1,5) node[etiqueta,right,text=tceedorado!80!black] {$c_A=5$};
+  \draw[curva3] (0,2) -- (3.1,2) node[etiqueta,right,text=tceeverde] {$c_B=2$};
+  % Demanda e ingreso marginal
+  \draw[curva1] (0,6) -- (3,0) node[etiqueta,above right,text=tceemorado] {$D$};
+  \draw[curva2] (0,6) -- (1.5,0) node[etiqueta,above right,text=tceeazul] {$IMg_B$};
+  % Equilibrio: IMg = c_B en Q = 1, P = 4
+  \node[punto] at (1,2) {};
+  \proyeccion{(1,4)}{$1$}{$4$}
+  \node[punto] at (1,4) {};
+  \node[etiqueta,right] at (1,4.1) {$P^m_B=4<c_A$};
+  % Precio límite casi 5: Q = 0,5, beneficio 1,5
+  \node[punto,fill=tceerojo] at (0.5,5) {};
+  \node[etiqueta,text=tceerojo,above right] at (0.5,5) {$P\approx5$: $\pi_B=1{,}5$};
+  \node[left] at (0,6) {$6$};
+  \node[below] at (3,0) {$3$};
+  \node[left] at (0,5) {$5$};
+  \node[left] at (0,2) {$2$};
+\end{tikzpicture}
+\end{document}

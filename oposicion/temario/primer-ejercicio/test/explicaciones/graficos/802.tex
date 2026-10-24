@@ -1,0 +1,39 @@
+% Pregunta 802 (2005-septiembre-OEP2005, n.º 21): Solow-Swan con progreso técnico; al subir s la curva de ahorro sube, k* pasa a k*' (sube de forma gradual, sin caída inicial) y la pendiente de y=k^alfa (PMgK) es menor en k*'. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.95cm]
+  % y = 2 sqrt(k) (alfa = 1/2); (n+g+delta)k con pendiente 0.5; s = 0.4 -> k* = 2.56 ; s' = 0.55 -> k*' = 4.84
+  \ejes{$k$}{$y,\ sy,\ (n{+}g{+}\delta)k$}{7}{5.7}
+  % Producción por unidad de trabajo efectivo
+  \draw[curva3,domain=0:6.3,samples=80] plot (\x,{2*sqrt(\x)});
+  \node[etiqueta,tceeverde,anchor=west] at (6.3,5.02) {$y=k^{\alpha}$};
+  % Pendiente (PMgK) en k* y en k*'
+  \draw[tceedorado,line width=2.4pt] (1.76,2.70) -- (3.36,3.70);
+  \draw[tceerojo,line width=2.4pt] (4.04,4.04) -- (5.64,4.76);
+  \node[etiqueta,font=\footnotesize,align=center,tceedorado] at (1.25,3.75) {pendiente\\$=\mathit{PMgK}$};
+  \node[etiqueta,font=\footnotesize,align=center,tceerojo] at (4.45,5.25) {en $k^{*\prime}$: menor $\mathit{PMgK}$};
+  % Depreciación efectiva y ahorro
+  \draw[curva1] (0,0) -- (6.3,3.15);
+  \node[etiqueta,tceemorado,anchor=west] at (6.3,3.15) {$(n{+}g{+}\delta)k$};
+  \draw[curva2,domain=0:6.3,samples=80] plot (\x,{0.8*sqrt(\x)});
+  \node[etiqueta,tceeazul,anchor=west] at (6.3,1.92) {$s\,k^{\alpha}$};
+  \draw[curvanueva,desplazada,domain=0:6.3,samples=80] plot (\x,{1.1*sqrt(\x)});
+  \node[etiqueta,tceerojo,anchor=west] at (6.3,2.62) {$s'k^{\alpha}$};
+  \draw[flecha] (1.3,0.95) -- (1.3,1.2);
+  % Estados estacionarios
+  \draw[guia] (2.56,0) -- (2.56,3.2);
+  \draw[guia] (4.84,0) -- (4.84,4.4);
+  \node[punto] at (2.56,1.28) {};
+  \node[punto] at (4.84,2.42) {};
+  \node[punto] at (2.56,3.2) {};
+  \node[punto] at (4.84,4.4) {};
+  \node[below] at (2.56,0) {$k^*$};
+  \node[below] at (4.84,0) {$k^{*\prime}$};
+  % Transición: k sube poco a poco, sin caer
+  \draw[flecha] (2.75,-0.75) -- (3.25,-0.75);
+  \draw[flecha] (3.4,-0.75) -- (3.9,-0.75);
+  \draw[flecha] (4.05,-0.75) -- (4.6,-0.75);
+  \node[etiqueta,font=\footnotesize,tceerojo] at (3.7,-1.2) {$\dot k>0$: $k$ sube sin caer};
+\end{tikzpicture}
+\end{document}

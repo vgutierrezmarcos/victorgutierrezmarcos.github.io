@@ -1,0 +1,37 @@
+% Pregunta 742 (2006-septiembre-OEP2006, n.º 5): baja p_1 de un bien normal; |VC| < |VExc| < |VE|.
+% Rectas: marshalliana x = 4 - (p - 1,5); hicksianas (más inclinadas)
+%   h(p,U0) = 2 - (p - 3,5)/2 (corta a la marshalliana en el punto inicial, p0 = 3,5)
+%   h(p,U1) = 4 - (p - 1,5)/2 (corta a la marshalliana en el punto final, p1 = 1,5)
+% Sin efecto renta (cuasilineal) las tres rectas coinciden y las tres áreas son iguales (opción d).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm,y=1cm]
+  % Áreas: |VC| (a la izquierda de h(U0)), lo que añade |VExc| (hasta x) y lo que añade |VE| (hasta h(U1))
+  \fill[area] (0,1.5) -- (3,1.5) -- (2,3.5) -- (0,3.5) -- cycle;
+  \fill[area2] (3,1.5) -- (4,1.5) -- (2,3.5) -- cycle;
+  \fill[fill=tceeverde,fill opacity=0.22,draw=none] (4,1.5) -- (3,3.5) -- (2,3.5) -- cycle;
+  \ejes{$x_1$}{$p_1$}{6.2}{5.2}
+  % Guías de precios
+  \draw[guia] (0,3.5) node[left,text=black] {$p^0_1$} -- (3,3.5);
+  \draw[guia] (0,1.5) node[left,text=black] {$p^1_1$} -- (4,1.5);
+  % Curvas
+  \draw[curva2] (1.45,4.6) -- (3.55,0.4) node[pos=0,etiqueta,above left,text=tceeazul] {$h_1(p,U^0)$};
+  \draw[curva3] (2.45,4.6) -- (4.55,0.4) node[pos=0,etiqueta,above right,text=tceeverde] {$h_1(p,U^1)$};
+  \draw[curva1] (0.9,4.6) -- (5.1,0.4) node[etiqueta,right,text=tceemorado] {$x_1(p,M)$};
+  % Puntos
+  \node[punto] at (2,3.5) {}; \node[etiqueta,left,xshift=-2pt,yshift=6pt] at (2,3.5) {$A$};
+  \node[punto] at (4,1.5) {}; \node[etiqueta,below left] at (4,1.5) {$B$};
+  \draw[flecha] (0.5,3.3) -- (0.5,1.75);
+  % Leyenda de áreas
+  \begin{scope}[shift={(4.3,4.6)}]
+    \fill[area] (0,0) rectangle (0.3,0.25);
+    \node[etiqueta,right] at (0.3,0.125) {$|\mathit{VC}|$};
+    \fill[area2] (0,-0.5) rectangle (0.3,-0.25);
+    \node[etiqueta,right] at (0.3,-0.375) {$+$ hasta $|\mathit{VExc}|$};
+    \fill[fill=tceeverde,fill opacity=0.22] (0,-1.0) rectangle (0.3,-0.75);
+    \node[etiqueta,right] at (0.3,-0.875) {$+$ hasta $|\mathit{VE}|$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

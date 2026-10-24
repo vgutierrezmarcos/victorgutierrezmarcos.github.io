@@ -1,0 +1,48 @@
+% Pregunta 213 (2021-julio-OEP2020, n.º 18): costes de menú; con la nueva demanda, beneficio de mantener P = 60 (560) frente a ajustar a P = 110 (810). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.3cm,y=0.025cm]
+  % Escala: 1 unidad de Q = 0,3 cm; 1 unidad de P = 0,025 cm
+  % D1: P = 100 - 10Q ; IMg1 = 100 - 20Q ; D2: P = 200 - 10Q ; IMg2 = 200 - 20Q ; CMg = 20
+  % ---------- Panel 1: mantener P = 60 ----------
+  \node[font=\small\bfseries] at (10.5,232) {Mantener $P=60$};
+  \fill[area] (0,20) rectangle (14,60);
+  \node[font=\small\bfseries,tceemorado] at (11.6,40) {$\pi=560$};
+  \ejes{$Q$}{$P$}{21.5}{212}
+  \draw[guia] (0,100) -- (9,10);
+  \node[etiqueta,tceegris,anchor=south west] at (1.4,88) {$D_1$};
+  \draw[curvanueva] (0,200) -- (17.5,25);
+  \node[etiqueta,tceerojo,anchor=south west] at (9,120) {$D_2$};
+  \draw[curvanueva,desplazada] (0,200) -- (9.6,8);
+  \node[etiqueta,tceerojo,anchor=east] at (2.9,140) {$IMg_2$};
+  \draw[curva4] (0,20) -- (20.5,20) node[etiqueta,above left] {$CMg$};
+  \draw[guia] (0,60) -- (14,60) -- (14,0) node[below] {$14$};
+  \draw[guia] (4,60) -- (4,0) node[below] {$4$};
+  \node[left] at (0,60) {$60$};
+  \node[left] at (0,20) {$20$};
+  \node[left] at (0,200) {$200$};
+  \node[punto] at (4,60) {};
+  \node[etiqueta,above right] at (4,60) {$E_1$};
+  \node[punto,tceerojo] at (14,60) {};
+
+  % ---------- Panel 2: ajustar a P = 110 ----------
+  \begin{scope}[xshift=8.6cm]
+  \node[font=\small\bfseries] at (10.5,232) {Ajustar a $P=110$};
+  \fill[area2] (0,20) rectangle (9,110);
+  \node[font=\small\bfseries,tceedorado!70!black] at (3.1,50) {$\pi=810$};
+  \ejes{$Q$}{$P$}{21.5}{212}
+  \draw[curvanueva] (0,200) -- (17.5,25);
+  \node[etiqueta,tceerojo,anchor=south west] at (9,120) {$D_2$};
+  \draw[curvanueva,desplazada] (0,200) -- (9.6,8);
+  \node[etiqueta,tceerojo,anchor=east] at (2.9,140) {$IMg_2$};
+  \draw[curva4] (0,20) -- (20.5,20) node[etiqueta,above left] {$CMg$};
+  \draw[guia] (0,110) -- (9,110) -- (9,0) node[below] {$9$};
+  \node[left] at (0,110) {$110$};
+  \node[left] at (0,20) {$20$};
+  \node[left] at (0,200) {$200$};
+  \node[punto] at (9,20) {};
+  \node[punto,tceerojo] at (9,110) {};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

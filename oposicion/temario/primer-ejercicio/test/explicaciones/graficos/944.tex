@@ -1,0 +1,35 @@
+% Pregunta 944 (2002-octubre-OEP2002, n.º 27): modelo ricardiano con un país grande y otro pequeño; el precio mundial es el de autarquía del grande, que sigue produciendo los dos bienes y no gana; el pequeño se especializa por completo en X y se queda con toda la ganancia. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % ---------- Panel 1: país grande ----------
+  % FPP: Y = 4,5 - (5/6) X ; precio mundial = pendiente de su FPP (5/6)
+  \node[font=\small\bfseries] at (3,5.4) {País grande: no gana};
+  \ejes{$X$}{$Y$}{6}{5}
+  \draw[curva1,line width=2.6pt] (0,4.5) -- (5.4,0);
+  \draw[curvanueva,desplazada] (0,4.5) -- (5.4,0);
+  \node[etiqueta,right,align=left] at (2.9,2.6) {FPP $=$ recta de\\precio mundial};
+  \node[punto] at (2.4,2.5) {};
+  \node[left=3pt,font=\small] at (2.4,2.5) {$P=C$};
+  \node[font=\small,align=center] at (3.0,-1.0) {produce los dos bienes};
+
+  % ---------- Panel 2: país pequeño ----------
+  % FPP: Y = 1,5 - 0,5 X (autarquía 0,5) ; comercio a 5/6 desde (3,0): Y = 2,5 - (5/6) X
+  \begin{scope}[xshift=8.2cm]
+  \node[font=\small\bfseries] at (3,5.4) {País pequeño: gana todo};
+  \fill[area] (0,1.5) -- (0,2.5) -- (3,0) -- cycle;
+  \ejes{$X$}{$Y$}{6}{5}
+  \draw[curva2] (0,1.5) -- (3,0);
+  \draw[curvanueva,desplazada] (0,2.5) -- (3,0);
+  \node[etiqueta,tceeazul] at (1.0,0.3) {FPP};
+  \draw[flecha] (1.3,3.3) node[above,font=\small,align=center] {ganancia\\del comercio} -- (0.55,1.55);
+  \draw[flecha] (3.9,1.5) node[right,font=\small,align=left] {precio mundial\\(el del grande)} -- (2.35,0.6);
+  \node[punto,tceerojo] at (3,0) {};
+  \node[above right,font=\small] at (3,0) {$P$};
+  \node[punto,tceerojo] at (1.2,1.5) {};
+  \node[left=2pt,font=\small] at (1.2,1.5) {$C$};
+  \node[font=\small,align=center] at (3.0,-1.0) {se especializa del todo en $X$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

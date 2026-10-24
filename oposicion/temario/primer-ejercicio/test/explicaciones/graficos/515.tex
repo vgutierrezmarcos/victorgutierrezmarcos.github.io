@@ -1,0 +1,33 @@
+% Pregunta 515 (2016-enero-OEP2015, n.º 2): la nueva recta 7x+4y=150 pasa por la cesta inicial A=(10,20), que sigue siendo asequible pero ya no es tangente; el consumidor sube a una curva más alta con menos x y más y. Autor: Víctor Gutiérrez Marcos
+% Curvas de ejemplo de u = (k x^(1/3) + y^(1/3))^3 con k = 2^(-2/3) (CES, sigma = 1,5): da A=(10,20) con (5,5) y B=(5,88; 27,21) con (7,4).
+% Curva de indiferencia: y = (c - k x^(1/3))^3, con c0 = 4,0716 (pasa por A) y c1 = 4,1448 (pasa por B). La nueva recta corta a U0 en x=2,59 y en x=10.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.17cm,y=0.17cm]
+  \ejes{$x$}{$y$}{36}{42}
+  % Cestas asequibles con los nuevos precios y mejores que A
+  \fill[area,domain=2.59:10,samples=40]
+    plot (\x,{37.5-1.75*\x}) -- plot[domain=10:2.59] (\x,{(4.0716-0.62996*\x^(1/3))^3}) -- cycle;
+  % Recta presupuestaria inicial: 5x+5y=150
+  \draw[curva1] (0,30) -- (30,0) node[pos=0.8,sloped,above,etiqueta,tceemorado] {$5x+5y=150$};
+  % Nueva recta presupuestaria: 7x+4y=150 (gira alrededor de A)
+  \draw[curvanueva] (0,37.5) -- (150/7,0) node[pos=0.78,sloped,below,etiqueta,tceerojo] {$7x+4y=150$};
+  % Curvas de indiferencia
+  \draw[curva2,domain=1.1:34,samples=100] plot (\x,{(4.0716-0.62996*\x^(1/3))^3}) node[etiqueta,below right] {$U_0$};
+  \draw[curva3,domain=1.45:34,samples=100] plot (\x,{(4.1448-0.62996*\x^(1/3))^3}) node[etiqueta,above right] {$U_1$};
+  % Proyecciones de A y de B y valores en los ejes
+  \proyeccion{(10,20)}{$10$}{$20$}
+  \draw[guia] (5.877,27.214) -- (0,27.214) node[left] {$27{,}2$};
+  \draw[guia] (5.877,27.214) -- (5.877,0) node[below] {$5{,}9$};
+  \node[left] at (0,30) {$30$};
+  \node[left] at (0,37.5) {$37{,}5$};
+  \node[below] at (30,0) {$30$};
+  \node[below] at (150/7,0) {$21{,}4$};
+  % Paso de A a B
+  \draw[flecha,shorten <=3pt,shorten >=3pt] (10,20) -- (5.877,27.214);
+  % Puntos
+  \node[punto,label={[etiqueta]right:{$A\,(10,20)$}}] at (10,20) {};
+  \node[punto,label={[etiqueta]right:{$B$: menos $x$, más $y$}}] at (5.877,27.214) {};
+\end{tikzpicture}
+\end{document}

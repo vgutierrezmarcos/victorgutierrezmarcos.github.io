@@ -1,0 +1,33 @@
+% Pregunta 154 (2022-julio, n.º 9): monopolio con dos mercados y precio único, CMg = 0.
+% A escala: D1: Q = 10 - P; D2: Q = 10 - 4P (solo compra si P < 2,5).
+%   Demanda agregada quebrada: Q = 10 - P si P >= 2,5; Q = 20 - 5P si P <= 2,5.
+%   Solo mercado 1: P = 5, Q = 5, ingreso 25.  Los dos: P = 2, Q = 10, ingreso 20.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.3cm,y=0.5cm]
+  % Ingresos (= beneficios, CMg = 0)
+  \fill[area2] (0,0) rectangle (10,2);
+  \fill[area] (0,0) rectangle (5,5);
+  \ejes{$Q$}{$P$}{24}{11}
+  % Demanda agregada quebrada
+  \draw[curva1] (0,10) -- (7.5,2.5) -- (20,0);
+  \node[etiqueta,text=tceemorado] at (16.5,2.1) {$D_1+D_2$};
+  \node[etiqueta,text=tceemorado,right] at (1.6,8.6) {$D_1$};
+  % Proyecciones
+  \proyeccion{(5,5)}{$5$}{$5$}
+  \proyeccion{(10,2)}{$10$}{$2$}
+  \node[below] at (20,0) {$20$};
+  \node[left] at (0,10) {$10$};
+  % Puntos
+  \node[punto] at (5,5) {};
+  \node[punto,fill=tceedorado!80!black] at (10,2) {};
+  \node[punto,fill=tceerojo] at (7.5,2.5) {};
+  \node[etiqueta,text=tceerojo,align=left,anchor=south west] at (8.3,2.9)
+    {en $P=2{,}5$ entra\\el mercado 2};
+  % Rótulos de los rectángulos
+  \node[etiqueta,text=tceemorado,align=center] at (2.5,3.5) {solo\\mercado 1\\$5\cdot5=25$};
+  \node[etiqueta,text=tceedorado!70!black] at (7.6,1) {$2\cdot10=20$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,33 @@
+% Pregunta 979 (2026-marzo, n.º 15): principio de Le Chatelier en la demanda de trabajo.
+% Las dos demandas pasan por E0 (L0, w0); la de corto plazo (K fijo) es más inclinada que la de largo plazo (K ajustable).
+% Al bajar el salario de w0 a w1 el empleo sube a L_CP a corto plazo y a L_LP > L_CP a largo plazo: la demanda es menos elástica a corto plazo (opción b).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing,calc}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$L$}{$w$}{6.6}{5.4}
+  % Demanda a corto plazo (K fijo): w = 3,4 - 2 (L - 2,4)
+  \draw[curva1] (1.7,4.8) -- (3.6,1.0) node[etiqueta,below,text=tceemorado,align=center] {$L^d_{CP}$\\($\bar K$ fijo)};
+  % Demanda a largo plazo (K ajustable): w = 3,4 - 0,7 (L - 2,4)
+  \draw[curva2] (0.6,4.66) -- (5.9,0.95) node[etiqueta,right,text=tceeazul,align=left] {$L^d_{LP}$\\($K$ ajustable)};
+  % Puntos y proyecciones
+  \proyeccion{(2.4,3.4)}{$L_0$}{$w_0$}
+  \proyeccion{(3.2,1.8)}{$L_{CP}$}{$w_1$}
+  \draw[guia] (4.686,0) node[below] {$L_{LP}$} -- (4.686,1.8);
+  \draw[guia] (3.2,1.8) -- (4.686,1.8);
+  \node[punto] at (2.4,3.4) {};
+  \node[etiqueta,above right] at (2.4,3.4) {$E_0$};
+  \node[punto] at (3.2,1.8) {};
+  \node[etiqueta,below left] at (3.2,1.8) {$E_{CP}$};
+  \node[punto] at (4.686,1.8) {};
+  \node[etiqueta,above right] at (4.686,1.8) {$E_{LP}$};
+  % Bajada del salario
+  \draw[flecha] (0.3,3.25) -- (0.3,1.95);
+  % Ajuste del capital a largo plazo: efectos sustitución y escala
+  \draw[flecha] (3.3,1.55) -- (4.6,1.55);
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,tceerojo] (3.2,-0.5) -- (4.686,-0.5)
+    node[midway,below=6pt,etiqueta,text=tceerojo,align=center,font=\footnotesize] {ajuste del capital\\(sustitución y escala)};
+\end{tikzpicture}
+\end{document}

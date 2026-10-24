@@ -1,0 +1,30 @@
+% Pregunta 579 (2016-noviembre-OEP2016, n.º 24): arancel en el Mundell-Fleming de Mankiw (país pequeño,
+% tipo flexible, movilidad perfecta). La IS* se desplaza a la derecha sobre una LM* vertical: el euro se
+% aprecia (e en $/€ sube) y la renta no cambia (b). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$Y$}{}{6}{5}
+  \node[etiqueta,align=center,anchor=south] at (0,5.05) {$e$ (\$/\texteuro)\\[-1pt]{\footnotesize $\uparrow$ apreciación del \texteuro}};
+  % LM* vertical
+  \draw[curva2] (3,0.3) -- (3,4.6) node[etiqueta,above] {$LM^*$};
+  % IS* inicial y desplazada
+  \draw[curva1] (0.8,4.2) -- (5.2,0.6) node[etiqueta,right] {$IS^*$};
+  \draw[curvanueva,desplazada] (2.1,4.2) -- (5.6,1.336) node[etiqueta,right] {$IS^{*\prime}$};
+  % desplazamiento
+  \draw[flecha] (3.65,1.95) -- (4.7,1.95);
+  \node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=south west] at (4.35,2.45) {arancel: $NX$\\sube a cada $e$};
+  % equilibrios
+  \proyeccion{(3,2.4)}{$Y_0$}{$e_0$}
+  \draw[guia] (3,3.46) -- (0,3.46) node[left] {$e_1$};
+  \node[punto] at (3,2.4) {};
+  \node[etiqueta,below left] at (3,2.4) {$E_0$};
+  \node[punto] at (3,3.46) {};
+  \node[etiqueta,above right] at (3,3.46) {$E_1$};
+  % apreciación
+  \draw[flecha] (0.25,2.5) -- (0.25,3.36);
+  \node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west] at (0.3,2.93) {apreciación};
+  \node[etiqueta,font=\footnotesize,anchor=north,text=tceeazul] at (3,-0.45) {la renta no cambia};
+\end{tikzpicture}
+\end{document}

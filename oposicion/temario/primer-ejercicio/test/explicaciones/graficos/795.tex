@@ -1,0 +1,40 @@
+% Pregunta 795 (2005-septiembre-OEP2005, n.º 14): expansión monetaria con salario nominal rígido (sube Y) frente a precios flexibles o salario real rígido (OA vertical, solo sube P). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % ---------- Panel 1: mercado de trabajo con W rígido ----------
+  % N^d: W/P = 4,6 - 0,8N ; W/P0 = 3,0 -> N0 = 2,0 ; W/P1 = 2,0 -> N1 = 3,25
+  \node[font=\small\bfseries] at (3,5.4) {Mercado de trabajo ($W$ fijo)};
+  \ejes{$N$}{$\frac{W}{P}$}{6}{5}
+  \draw[curva1] (0.4,4.28) -- (5.4,0.28) node[etiqueta,above right] {$N^d$ ($PMgL$)};
+  \draw[guia] (0,3.0) node[left] {$\frac{W}{P_0}$} -- (2.0,3.0) -- (2.0,0) node[below] {$N_0$};
+  \draw[curvanueva] (0,2.0) node[left,tceerojo] {$\frac{W}{P_1}$} -- (5.2,2.0);
+  \draw[guia] (3.25,2.0) -- (3.25,0) node[below] {$N_1$};
+  \node[punto] at (2.0,3.0) {};
+  \node[punto,tceerojo] at (3.25,2.0) {};
+  \draw[flecha] (0.35,2.85) -- (0.35,2.15);
+  \node[font=\small,align=left,anchor=west] at (3.0,4.3) {$P\uparrow$ con $W$ fijo:\\ $\frac{W}{P}\downarrow$ y $N\uparrow$};
+
+  % ---------- Panel 2: oferta y demanda agregadas ----------
+  % DA: P = 4,0 - 0,8Y ; DA': P = 5,4 - 0,8Y ; OA (c): P = 0,5 + 0,6Y ; OA vertical en Y0 = 2,5
+  % E0 = (2,5; 2,0) ; E1 (c) = (3,5; 2,6) ; E1 (a, b) = (2,5; 3,4)
+  \begin{scope}[xshift=8.6cm]
+  \node[font=\small\bfseries] at (3,5.4) {Oferta y demanda agregadas};
+  \ejes{$Y$}{$P$}{6}{5}
+  \draw[curva3,desplazada] (2.5,0) -- (2.5,4.6) node[etiqueta,above] {$OA$ (a) y (b)};
+  \draw[curva1] (0.5,0.8) -- (5.2,3.62) node[etiqueta,right] {$OA$ (c)};
+  \draw[curva2] (0.5,3.6) -- (4.6,0.32) node[etiqueta,right] {$DA$};
+  \draw[curvanueva,desplazada] (1.5,4.2) -- (5.6,0.92) node[etiqueta,right] {$DA'$};
+  \draw[flecha] (3.9,1.05) -- (4.55,1.05) node[right,font=\small] {$M\uparrow$};
+  \draw[guia] (2.5,2.0) -- (0,2.0) node[left] {$P_0$};
+  \draw[guia] (3.5,2.6) -- (0,2.6) node[left] {$P_1$};
+  \draw[guia] (2.5,3.4) -- (0,3.4) node[left] {$P_1'$};
+  \draw[guia] (3.5,2.6) -- (3.5,0) node[below] {$Y_1$};
+  \node[below] at (2.5,0) {$Y_0$};
+  \node[punto] at (2.5,2.0) {};
+  \node[punto,tceerojo] at (3.5,2.6) {};
+  \node[punto,tceerojo] at (2.5,3.4) {};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

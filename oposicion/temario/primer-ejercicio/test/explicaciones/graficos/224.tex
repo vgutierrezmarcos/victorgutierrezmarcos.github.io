@@ -1,0 +1,33 @@
+% Pregunta 224 (2021-julio-OEP2020, n.º 29): Sylvania (abundante en capital) pasa del libre comercio a la autarquía: produce más calzado y menos ordenadores y sube el precio relativo del calzado. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{Calzado}{Ordenadores}{6.4}{6.0}
+  % Frontera de posibilidades, sesgada hacia los ordenadores: (x/4)^2+(y/5)^2=1
+  \draw[curva1,domain=0:90,samples=80] plot ({4*cos(\x)},{5*sin(\x)});
+  \node[etiqueta,tceemorado,right] at (3.95,0.7) {$FPP$};
+  % Libre comercio: precio mundial p_C/p_O = 0,45, tangente en P_L = (1,35; 4,70)
+  \draw[curva2] (0,5.314) -- (5.6,2.794);
+  \node[etiqueta,tceeazul,above right,font=\footnotesize] at (0.05,5.3) {libre comercio};
+  % Autarquía: precio p_C/p_O = 1,29, tangente en A = (2,87; 3,48)
+  \draw[curvanueva,desplazada] (1.95,4.666) -- (4.25,1.703);
+  \node[etiqueta,tceerojo,right,font=\footnotesize] at (4.25,1.75) {autarquía};
+  % Curvas de indiferencia (mismas preferencias CES): U_L más alta que U_A
+  \draw[curva3] plot[smooth] coordinates {(3.350,4.101) (3.406,4.030) (3.462,3.964) (3.519,3.903) (3.575,3.847) (3.631,3.795) (3.688,3.746) (3.744,3.701) (3.800,3.659) (3.856,3.619) (3.913,3.582) (3.969,3.547) (4.025,3.514) (4.081,3.483) (4.138,3.453) (4.194,3.425) (4.250,3.399) (4.306,3.374) (4.362,3.350) (4.419,3.327) (4.475,3.306) (4.531,3.285) (4.588,3.266) (4.644,3.247) (4.700,3.229) (4.756,3.211) (4.812,3.195) (4.869,3.179) (4.925,3.164) (4.981,3.149) (5.037,3.135) (5.094,3.122) (5.150,3.109) (5.206,3.096) (5.262,3.084) (5.319,3.073) (5.375,3.061) (5.431,3.051) (5.487,3.040) (5.544,3.030) (5.600,3.020)} node[etiqueta,right] {$U_L$};
+  \draw[curva3,desplazada] plot[smooth] coordinates {(2.450,4.357) (2.529,4.119) (2.607,3.925) (2.686,3.765) (2.765,3.630) (2.844,3.515) (2.923,3.415) (3.001,3.328) (3.080,3.251) (3.159,3.183) (3.237,3.122) (3.316,3.068) (3.395,3.018) (3.474,2.974) (3.553,2.933) (3.631,2.895) (3.710,2.861) (3.789,2.830) (3.867,2.800) (3.946,2.773) (4.025,2.748) (4.104,2.725) (4.182,2.703) (4.261,2.682) (4.340,2.663) (4.419,2.645) (4.498,2.628) (4.576,2.612) (4.655,2.597) (4.734,2.583) (4.812,2.569) (4.891,2.557) (4.970,2.545) (5.049,2.533) (5.127,2.522) (5.206,2.512) (5.285,2.502) (5.364,2.492) (5.442,2.483) (5.521,2.474) (5.600,2.466)} node[etiqueta,right] {$U_A$};
+  % Triángulo de comercio
+  \draw[guia,tceeazul,thick] (1.355,4.704) -- (4.27,4.704) -- (4.27,3.39);
+  \node[etiqueta,tceeazul,above,font=\footnotesize] at (2.8,4.704) {importa calzado};
+  \node[etiqueta,tceeazul,right,align=left,font=\footnotesize] at (4.27,4.1) {exporta\\ordenadores};
+  % Puntos
+  \node[punto] at (1.355,4.704) {};
+  \node[etiqueta,below left] at (1.355,4.704) {$P_L$};
+  \node[punto] at (4.27,3.39) {};
+  \node[etiqueta,below left] at (4.27,3.39) {$C_L$};
+  \node[punto,fill=tceerojo] at (2.873,3.479) {};
+  \node[etiqueta,tceerojo,left] at (2.873,3.479) {$A$};
+  % Rótulo del cambio
+  \node[etiqueta,align=left,anchor=west,font=\footnotesize] at (0.1,1.2) {Al cerrar: de $P_L$ a $A$,\\más calzado y menos\\ordenadores; recta más\\empinada: $p_C/p_O$ sube};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,26 @@
+% Pregunta 503 (2014-septiembre-OEP2014, n.º 35): con préstamo y endeudamiento ilimitados a R_f, la frontera eficiente es la CML, recta creciente desde R_f tangente a la frontera de Markowitz en M. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$\sigma$}{$E(R)$}{6.2}{5.4}
+  % Frontera de Markowitz: sigma = sqrt(4 + 5 (E - 2.2)^2); rama inferior (ineficiente) fina
+  \draw[thick,tceeazul,dashed,smooth,variable=\y,domain=1.0:2.2,samples=40]
+    plot ({sqrt(4+5*(\y-2.2)^2)},\y);
+  % Rama superior (eficiente sin activo seguro)
+  \draw[curva2,smooth,variable=\y,domain=2.2:4.2,samples=60]
+    plot ({sqrt(4+5*(\y-2.2)^2)},\y) node[etiqueta,right,align=left] {frontera de\\Markowitz};
+  % CML: E = 1.2 + 0.6708 sigma, tangente en M = (2.683, 3.0)
+  \draw[curva1] (0,1.2) -- (5.4,4.822) node[etiqueta,above] {CML};
+  \node[punto] at (0,1.2) {};
+  \node[left] at (0,1.2) {$R_f$};
+  \node[punto] at (2.683,3.0) {};
+  \node[etiqueta,below right] at (2.683,3.0) {$M$};
+  \proyeccion{(2.683,3.0)}{$\sigma_M$}{$E(R_M)$}
+  % Tramos
+  \node[etiqueta,tceemorado,rotate=33.85,above] at (1.3,2.07) {prestar};
+  \node[etiqueta,tceemorado,rotate=33.85,above] at (4.05,3.92) {endeudarse};
+  % Pendiente
+  \node[etiqueta,tceemorado,anchor=west] at (0.25,4.95) {pendiente $=\dfrac{E(R_M)-R_f}{\sigma_M}>0$};
+\end{tikzpicture}
+\end{document}

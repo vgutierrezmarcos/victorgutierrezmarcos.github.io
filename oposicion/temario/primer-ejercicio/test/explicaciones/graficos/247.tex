@@ -1,0 +1,35 @@
+% Pregunta 247 (2018-enero-OEP2017, n.º 3): bajan a la mitad los dos precios con la renta fija; la recta de balance se desplaza en paralelo hacia fuera y la cesta inicial deja renta sin gastar. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1.5cm]
+  % Zonas: menos de ambos bienes (opción c) y más de ambos (si los dos son normales)
+  \fill[area2] (0,0) rectangle (1.5,0.75);
+  \fill[area] (1.5,0.75) -- (1.5,2.25) -- (4.5,0.75) -- cycle;
+  \ejes{$x_1$}{$x_2$}{7}{3.6}
+  % Rectas de balance (pendiente -p1/p2 = -1/2 en las dos)
+  \draw[curva1] (0,1.5) -- (3,0);
+  \node[etiqueta,tceemorado,anchor=west] at (3.05,0.17) {$RB$};
+  \draw[curvanueva] (0,3) -- (6,0);
+  \node[etiqueta,tceerojo,anchor=south west] at (0.55,2.74) {$RB'$};
+  % Curvas de indiferencia (u = x1 x2): tangentes en A y en B
+  \draw[curva2,domain=0.42:6.6,samples=60] plot (\x,{1.125/\x});
+  \node[etiqueta,tceeazul,right] at (6.6,0.17) {$U_0$};
+  \draw[curva2,desplazada,domain=1.65:6.6,samples=60] plot (\x,{4.5/\x});
+  \node[etiqueta,tceeazul,right] at (6.6,0.68) {$U_1$};
+  % Desplazamiento paralelo
+  \draw[flecha] (2.25,0.55) -- (3.6,1.1);
+  % Cortes
+  \node[below] at (3,0) {$\frac{m}{p_1}$};
+  \node[below] at (6,0) {$\frac{2m}{p_1}$};
+  \node[left] at (0,1.5) {$\frac{m}{2p_1}$};
+  \node[left] at (0,3) {$\frac{m}{p_1}$};
+  % Cesta inicial y nueva
+  \proyeccion{(1.5,0.75)}{$x_1^0$}{$x_2^0$}
+  \node[punto,label={[etiqueta]above right:$A$}] at (1.5,0.75) {};
+  \node[punto,label={[etiqueta]above right:$B$}] at (3,1.5) {};
+  % Rótulos de las zonas
+  \node[etiqueta,font=\footnotesize,align=center] at (2.2,1.42) {más de\\ambos};
+  \node[etiqueta,font=\footnotesize,align=center] at (0.72,0.36) {menos\\de ambos};
+\end{tikzpicture}
+\end{document}

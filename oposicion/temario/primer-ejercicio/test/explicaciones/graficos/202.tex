@@ -1,0 +1,26 @@
+% Pregunta 202 (2021-julio-OEP2020, n.º 7): sendas de consumo en escala logarítmica.
+% Con utilidad isoelástica, ln C_{t+1} - ln C_t = (1/theta) ln[(1+r)/(1+rho)], constante en t:
+% las tres sendas son rectas (crecimiento constante); rho solo decide la pendiente (signo).
+% Pendientes dibujadas: +0,36, 0 y -0,36; triángulos de pendiente iguales (base 1,2) en cada recta.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$t$}{$\ln C_t$}{6}{5}
+  \node[below] at (5.5,0) {$T$};
+  \draw[guia] (5.5,0) -- (5.5,4.7);
+  % Sendas (mismo punto de partida para comparar pendientes)
+  \draw[curva2] (0,2.5) -- (5.5,4.5) node[etiqueta,right,text=tceeazul] {$\rho<r$};
+  \draw[curva1] (0,2.5) -- (5.5,2.5) node[etiqueta,right,text=tceemorado] {$\rho=r$};
+  \draw[curva3] (0,2.5) -- (5.5,0.5) node[etiqueta,right,text=tceeverde] {$\rho>r$};
+  % Triángulos de pendiente: misma subida (o bajada) por periodo en toda la senda
+  \foreach \a in {1.2,3.6}{
+    \draw[guia,tceeazul] (\a,{2.5+0.3636*\a}) -- ({\a+1.2},{2.5+0.3636*\a}) -- ({\a+1.2},{2.5+0.3636*(\a+1.2)});
+    \draw[guia,tceeverde] (\a,{2.5-0.3636*\a}) -- ({\a+1.2},{2.5-0.3636*\a}) -- ({\a+1.2},{2.5-0.3636*(\a+1.2)});
+  }
+  \node[punto] at (0,2.5) {};
+  \node[etiqueta,left] at (0,2.5) {$\ln C_0$};
+  \node[etiqueta,align=center,font=\small] at (2.2,4.55) {pendiente $\displaystyle\frac{1}{\theta}\ln\frac{1+r}{1+\rho}$\\constante en cada senda};
+\end{tikzpicture}
+\end{document}

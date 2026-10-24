@@ -1,0 +1,37 @@
+% Pregunta 347 (2020-enero-OEP2019, n.º 14): caja de Edgeworth 10 x 20 con u = xy para los dos; la curva de contrato es la diagonal y = 2x; I (esquina O_B) y III (4, 8) son óptimos, II (10, 0) no: repartir hasta (5, 10) mejora a los dos. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=0.3cm]
+  % Caja: 10 unidades de x (5 cm) y 20 de y (6 cm)
+  \draw[thick] (0,0) rectangle (10,20);
+  % Ejes de A (abajo a la izquierda) y de B (arriba a la derecha, invertidos)
+  \draw[eje] (0,0) -- (11.4,0) node[below] {$x_A$};
+  \draw[eje] (0,0) -- (0,22.5) node[left] {$y_A$};
+  \draw[eje] (10,20) -- (-1.4,20) node[above] {$x_B$};
+  \draw[eje] (10,20) -- (10,-2.5) node[right] {$y_B$};
+  \node[below left] at (0,0) {$O_A$};
+  \node[above right] at (10,20) {$O_B$};
+  % Curva de contrato: la diagonal y = 2x (RMS = y/x igual para los dos)
+  \draw[curva1] (0,0) -- (10,20);
+  \node[etiqueta,tceemorado,font=\footnotesize,rotate=50,anchor=south] at (1.9,3.8) {curva de contrato};
+  % Curvas de indiferencia tangentes en III = (4, 8)
+  \draw[curva2,domain=1.75:10,samples=60] plot (\x,{32/\x});
+  \node[etiqueta,tceeazul,anchor=west] at (10,3.2) {$U_A$};
+  \draw[curva3,domain=0:6.2,samples=60] plot (\x,{20-72/(10-\x)});
+  \node[etiqueta,tceeverde,anchor=east] at (0,12.8) {$U_B$};
+  % Guías de III
+  \draw[guia] (4,0) -- (4,8) -- (0,8);
+  \node[below] at (4,0) {$4$};
+  \node[left] at (0,8) {$8$};
+  % II = (10, 0): utilidad 0 para los dos; repartir hasta (5, 10) los lleva a 50
+  \draw[flecha,shorten >=3pt,shorten <=3pt] (10,0) -- (5,10);
+  \node[circle,draw=tceerojo,fill=white,inner sep=1.3pt] at (5,10) {};
+  \node[etiqueta,tceerojo,font=\footnotesize,anchor=west,align=left] at (5.8,9.9) {$(5,10)$\\$u_A=u_B=50$};
+  \node[punto,fill=tceerojo,label={[etiqueta,tceerojo]below left:II}] at (10,0) {};
+  \node[etiqueta,tceerojo,font=\footnotesize,anchor=north east] at (9.6,-1.6) {$u_A=u_B=0$};
+  % Óptimos: I (A lo tiene todo) y III
+  \node[punto,label={[etiqueta]below right:I}] at (10,20) {};
+  \node[punto,label={[etiqueta]above left:III}] at (4,8) {};
+\end{tikzpicture}
+\end{document}

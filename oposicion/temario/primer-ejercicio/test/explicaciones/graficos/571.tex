@@ -1,0 +1,36 @@
+% Pregunta 571 (2016-noviembre-OEP2016, n.º 16): monopolio con demanda x = 10/p y coste c(x) = x.
+% El ingreso es siempre 10 (IMg = 0) y el coste crece con pendiente 1: el beneficio 10 - x es la distancia
+% vertical entre ambas rectas, se anula en x = 10 y crece al reducir x (d correcta). A escala.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=0.4cm]
+  % Área de beneficio positivo (entre el ingreso y el coste)
+  \fill[area] (0,0) -- (10,10) -- (0,10) -- cycle;
+  % Ejes y marcas
+  \draw[eje] (0,0) -- (13.4,0) node[right] {$x$};
+  \draw[eje] (0,0) -- (0,13) node[left] {euros};
+  \node[below left] at (0,0) {$0$};
+  \foreach \t in {2,4,6,8,12} \draw (\t,0) -- (\t,-0.25) node[below,font=\footnotesize] {$\t$};
+  \draw (10,0) -- (10,-0.25) node[below,font=\footnotesize] {$10$};
+  \foreach \t in {2,4,6,8,10,12} \draw (0,\t) -- (-0.2,\t) node[left,font=\footnotesize] {$\t$};
+  % Rectas
+  \draw[curva1] (0,10) -- (12,10);
+  \node[etiqueta,above,text=tceemorado] at (5,10) {$I=p\,x=10$};
+  \draw[curva2] (0,0) -- (12,12) node[etiqueta,right,text=tceeazul] {$C=x$};
+  % Beneficio en x = 4
+  \draw[<->,thick,tceemorado] (4,4.15) -- (4,9.85) node[pos=0.7,right,etiqueta,text=black] {$\pi(4)=6$};
+  \node[etiqueta,text=tceemorado] at (1.9,8.3) {$\pi=10-x$};
+  % Punto de beneficio nulo
+  \draw[guia] (10,0) -- (10,10);
+  \node[punto] at (10,10) {};
+  \node[etiqueta,align=left,anchor=north west] at (10.2,9.4) {$\pi=0$\\(opción c)};
+  % Sentido en que crece el beneficio
+  \draw[flecha] (9,-2.6) -- (0.6,-2.6);
+  \node[etiqueta,text=tceerojo,below] at (4.8,-2.7) {$\pi$ crece al reducir $x$};
+  % Pendientes
+  \node[etiqueta,align=left,draw=tceegris,rounded corners=2pt,fill=white,anchor=north west] at (6.4,4.6)
+    {$\mathit{IMg}=0$ (ingreso plano)\\$\mathit{CMg}=1$ (pendiente de $C$)};
+\end{tikzpicture}
+\end{document}

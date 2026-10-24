@@ -1,0 +1,37 @@
+% Pregunta 272 (2018-enero-OEP2017, n.º 28): creación de comercio en el país importador; al suprimir el arancel frente al socio, el precio baja de P_s+t a P_s, la producción interna cara se sustituye por importaciones del socio eficiente (triángulo a, ganancia de producción de Viner) y el consumo sube (triángulo b, ganancia de consumo de Meade y Lipsey). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % D: P = 5 - 0,8 Q ; S: P = 0,8 + Q ; P_s+t = 2,8 ; P_s = 1,6
+  % Triángulos de ganancia
+  \fill[area] (0.8,1.6) -- (2,1.6) -- (2,2.8) -- cycle;
+  \fill[area2] (2.75,1.6) -- (4.25,1.6) -- (2.75,2.8) -- cycle;
+  \ejes{$Q$}{$P$}{6.2}{5.4}
+  % Demanda y oferta interna
+  \draw[curva1] (0.3,4.76) -- (5.6,0.52) node[etiqueta,right] {$D$};
+  \draw[curva2] (0,0.8) -- (4.2,5.0) node[etiqueta,above] {$S$};
+  % Precios: antes (socio con arancel) y después de la unión (socio sin arancel)
+  \draw[curva3] (0,2.8) -- (5.6,2.8) node[etiqueta,right,tceeverde,font=\footnotesize,align=left] {antes de\\la unión};
+  \draw[curvanueva] (0,1.6) -- (5.6,1.6) node[etiqueta,right,tceerojo,font=\footnotesize,align=left] {tras la\\unión};
+  \node[left,tceeverde] at (0,2.8) {$P_s+t$};
+  \node[left,tceerojo] at (0,1.6) {$P_s$};
+  % Cantidades
+  \draw[guia] (0.8,1.6) -- (0.8,0) node[below] {$S_1$};
+  \draw[guia] (2,2.8) -- (2,0) node[below] {$S_0$};
+  \draw[guia] (2.75,2.8) -- (2.75,0) node[below] {$D_0$};
+  \draw[guia] (4.25,1.6) -- (4.25,0) node[below] {$D_1$};
+  \node[punto] at (2,2.8) {};
+  \node[punto] at (2.75,2.8) {};
+  \node[punto] at (0.8,1.6) {};
+  \node[punto] at (4.25,1.6) {};
+  % Rótulos de los triángulos
+  \node[etiqueta,font=\small\bfseries] at (1.62,1.98) {$a$};
+  \node[etiqueta,font=\small\bfseries] at (3.25,1.98) {$b$};
+  % Bajada del precio
+  \draw[flecha] (5.0,2.72) -- (5.0,1.68);
+  % Importaciones antes y después
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceeverde] (2.05,2.68) -- (2.7,2.68) node[midway,below=4pt,font=\footnotesize,tceeverde] {$M_0$};
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceerojo] (0.8,-0.55) -- (4.25,-0.55) node[midway,below=4pt,font=\footnotesize,tceerojo] {$M_1$: importaciones del socio tras la unión};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,47 @@
+% Pregunta 133 (2023-junio-A, n.º 36): SML con r_f = 5 %, E(R_M) = 8 %; título con beta 0,5 y E(R) = 7 %.
+% A escala: x = beta (1 = 4 cm); y = E(R) desde el 4 % (1 punto = 1,1 cm). Rendimiento exigido 6,5 %, alfa = +0,5.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=4cm,y=1.1cm]
+  % Ejes (el vertical empieza en el 4 %)
+  \draw[eje] (0,0) -- (1.45,0) node[below left=2pt and 0pt] {$\beta$};
+  \draw[eje] (0,0) -- (0,5.4) node[left] {$E(R)$};
+  \draw[thick,fill=white] (-0.025,0.35) -- (0.025,0.45) (-0.025,0.5) -- (0.025,0.6);
+  \foreach \b/\t in {0.5/0{,}5,1/1} \draw (\b,0) -- (\b,-0.07) node[below] {$\t$};
+  \node[below left] at (0,0) {$0$};
+  % SML: E(R) = 5 + 3 beta
+  \draw[curva1] (0,1) -- (1.38,5.14) node[etiqueta,above,text=tceemorado] {SML};
+  % Guías
+  \draw[guia] (1,0) -- (1,4);
+  \draw[guia] (0.5,0) -- (0.5,2.5);
+  \draw[guia] (0,2.5) -- (0.5,2.5);
+  \draw[guia] (0,3) -- (0.5,3);
+  % Marcas del eje vertical
+  \draw (0,1) -- (-0.018,1) node[left] {$5\,\%$};
+  \draw (0,2.5) -- (-0.018,2.5) node[left] {$6{,}5\,\%$};
+  \draw (0,3) -- (-0.018,3) node[left] {$7\,\%$};
+  \draw (0,4) -- (-0.018,4) node[left] {$8\,\%$};
+  % Puntos
+  \node[punto] at (0,1) {};
+  \node[etiqueta,below right] at (0,1) {$r_f$};
+  \node[punto] at (1,4) {};
+  \node[etiqueta,below right] at (1,4) {$M$};
+  \node[punto] at (0.5,2.5) {};
+  \node[etiqueta,below right,font=\footnotesize,align=left] at (0.5,2.5) {exigido\\(CAPM)};
+  \node[circle,fill=tceerojo,inner sep=2pt] at (0.5,3) {};
+  % Alfa de Jensen
+  \draw[decorate,decoration={brace,amplitude=3pt},thick,tceerojo] (0.46,2.53) -- (0.46,2.97)
+    node[midway,left=3pt,text=tceerojo,font=\footnotesize] {$\alpha=+0{,}5$};
+  % Ajuste: el precio sube y E(R) baja hasta la SML
+  \draw[flecha] (0.555,2.95) -- (0.555,2.71);
+  % Zonas
+  \node[etiqueta,align=left,text=tceegris,font=\footnotesize,anchor=west] at (0.06,4.95)
+    {por encima de la SML:\\infravalorado (comprar)};
+  \node[etiqueta,align=left,text=tceegris,font=\footnotesize,anchor=west,fill=white] at (0.6,0.6)
+    {por debajo de la SML:\\sobrevalorado (vender)};
+  \node[etiqueta,align=left,text=tceerojo,font=\footnotesize,anchor=south west] at (0.06,3.3)
+    {título (7\,\%): su precio\\sube y su $E(R)$ baja\\hasta la SML};
+\end{tikzpicture}
+\end{document}

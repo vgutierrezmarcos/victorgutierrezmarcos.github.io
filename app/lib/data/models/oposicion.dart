@@ -263,6 +263,9 @@ class Oposicion {
   /// Preguntas de cada tema en cada examen oficial del test (scripts/frecuencia-test.py).
   String get urlFrecuenciaTest => '$urlTest/frecuencia_temas.json';
   String get urlImagenesTest => '$urlTest/img';
+  /// Explicaciones de las preguntas de un examen (solo las lee la app).
+  String urlExplicaciones(String examen) => '$urlTest/explicaciones/$examen.json';
+  String urlGraficoExplicacion(String archivo) => '$urlTest/explicaciones/graficos/$archivo.webp';
   String get urlSimuladorWeb => '$urlTest/simulador.html';
   String get urlTemario => '$_base/temario/temario.json';
   String get urlEnlaces => '$_base/enlaces.json';

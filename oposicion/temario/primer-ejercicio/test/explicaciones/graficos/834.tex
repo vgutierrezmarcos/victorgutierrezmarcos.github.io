@@ -1,0 +1,30 @@
+% Pregunta 834 (2004-junio-OEP2004, n.º 7): duopolio de Cournot con P = 150 - Y y CMg = 0. Las funciones de reacción y1 = (150 - y2)/2 e y2 = (150 - y1)/2 se cortan en (50, 50); la producción total, 100, queda entre la de monopolio (75) y la de competencia (150). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.034cm,y=0.034cm]
+  % A escala: 1 unidad de producción = 0,034 cm
+  \ejes{$y_1$}{$y_2$}{175}{170}
+  % Rectas de producción total (guías)
+  \draw[guia] (75,0) -- (0,75);
+  \draw[guia] (150,0) -- (0,150);
+  % Leyenda de las guías
+  \draw[guia] (88,160) -- (100,160);
+  \node[etiqueta,tceegris,font=\small,anchor=west] at (101,160) {$Y=75$: monopolio};
+  \draw[guia] (88,146) -- (100,146);
+  \node[etiqueta,tceegris,font=\small,anchor=west] at (101,146) {$Y=150$: competencia};
+  % Funciones de reacción
+  \draw[curva1] (75,0) -- (0,150);
+  \node[etiqueta,tceemorado,anchor=west] at (29,100) {$R_1$};
+  \draw[curva2] (0,75) -- (150,0);
+  \node[etiqueta,tceeazul,anchor=south west] at (4,74) {$R_2$};
+  % Equilibrio de Cournot
+  \proyeccion{(50,50)}{$50$}{$50$}
+  \node[punto,label={[etiqueta]above right:$C$}] at (50,50) {};
+  % Cortes con los ejes
+  \node[below] at (75,0) {$75$};
+  \node[below] at (150,0) {$150$};
+  \node[left] at (0,75) {$75$};
+  \node[left] at (0,150) {$150$};
+\end{tikzpicture}
+\end{document}

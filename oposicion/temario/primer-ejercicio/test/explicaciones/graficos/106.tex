@@ -1,0 +1,50 @@
+% Pregunta 106 (2023-junio-A, n.º 9): incidencia de un impuesto unitario t sobre la oferta; a la izquierda, caso general (el consumidor soporta parte); a la derecha, demanda perfectamente elástica (el consumidor no soporta nada). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing,calc}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % ---------- Panel 1: caso general ----------
+  % D: p = 4,4 - 0,6Q ; S: p = 0,8 + 0,6Q ; S+t: p = 2,0 + 0,6Q (t = 1,2)
+  % E0: Q0 = 3, p0 = 2,6 ; E1: Q1 = 2, pc = 3,2, pv = 2,0
+  \node[font=\small\bfseries] at (3,5.4) {Caso general};
+  \fill[area] (0,2.6) rectangle (2,3.2);
+  \fill[area2] (0,2.0) rectangle (2,2.6);
+  \ejes{$Q$}{$p$}{6}{5}
+  \draw[curva1] (0.3,4.22) -- (5.6,1.04) node[etiqueta,right] {$D$};
+  \draw[curva2] (0.3,0.98) -- (5.6,4.16) node[etiqueta,right] {$S$};
+  \draw[curvanueva,desplazada] (0.3,2.18) -- (4.3,4.58) node[etiqueta,right] {$S+t$};
+  \draw[guia] (3,0) node[below] {$Q_0$} -- (3,2.6) -- (0,2.6) node[left] {$p_0$};
+  \draw[guia] (2,0) node[below] {$Q_1$} -- (2,3.2) -- (0,3.2) node[left] {$p_c$};
+  \draw[guia] (2,2.0) -- (0,2.0) node[left] {$p_v$};
+  \node[punto] at (3,2.6) {};
+  \node[punto,tceerojo] at (2,3.2) {};
+  \node[punto,tceerojo] at (2,2.0) {};
+  \draw[decorate,decoration={brace,amplitude=4pt},thick] (2.12,3.2) -- (2.12,2.0) node[midway,right=4pt,fill=white,inner sep=1pt] {$t$};
+  % Leyenda: quién soporta el impuesto
+  \fill[area] (0.2,-1.0) rectangle (0.5,-0.75); \node[anchor=base west] at (0.55,-0.97) {consumidor};
+  \fill[area2] (2.9,-1.0) rectangle (3.2,-0.75); \node[anchor=base west] at (3.25,-0.97) {productor};
+
+  % ---------- Panel 2: demanda perfectamente elástica ----------
+  % D: p = 2,6 ; S: p = 0,8 + 0,6Q ; S+t: p = 2,0 + 0,6Q
+  % E0: Q0 = 3 ; E1: Q1 = 1, pc = p0 = 2,6, pv = 1,4
+  \begin{scope}[xshift=8.2cm]
+  \node[font=\small\bfseries] at (3,5.4) {Demanda perfectamente elástica};
+  \fill[area2] (0,1.4) rectangle (1,2.6);
+  \ejes{$Q$}{$p$}{6}{5}
+  \draw[curva1] (0.3,2.6) -- (5.6,2.6) node[etiqueta,right] {$D$};
+  \draw[curva2] (0.3,0.98) -- (5.6,4.16) node[etiqueta,right] {$S$};
+  \draw[curvanueva,desplazada] (0.3,2.18) -- (4.3,4.58) node[etiqueta,right] {$S+t$};
+  \draw[guia] (3,0) node[below] {$Q_0$} -- (3,2.6);
+  \node[left,tceegris] at (0,2.6) {$p_0=p_c$};
+  \draw[guia] (1,0) node[below] {$Q_1$} -- (1,2.6);
+  \draw[guia] (1,1.4) -- (0,1.4) node[left] {$p_v$};
+  \node[punto] at (3,2.6) {};
+  \node[punto,tceerojo] at (1,2.6) {};
+  \node[punto,tceerojo] at (1,1.4) {};
+  \draw[decorate,decoration={brace,amplitude=4pt},thick] (1.12,2.6) -- (1.12,1.4) node[midway,right=4pt,fill=white,inner sep=1pt] {$t$};
+  \fill[area2] (0.2,-1.0) rectangle (0.5,-0.75); \node[anchor=base west] at (0.55,-0.97) {productor: todo};
+  \node[anchor=base west] at (3.4,-0.97) {consumidor: nada};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

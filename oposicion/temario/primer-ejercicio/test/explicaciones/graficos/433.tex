@@ -1,0 +1,26 @@
+% Pregunta 433 (2013-noviembre-OEP2013, n.º 9): monopolio natural con coste medio creciente; la subaditividad, no el coste medio decreciente, define el monopolio natural. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+% C(q) = F + c q^2 con F = 2, c = 0,5: CMe = 2/q + q/2, mínimo en q_m = 2.
+% C(q) < 2C(q/2)  <=>  q < sqrt(2) q_m = 2,83 (límite de la subaditividad, \hat q).
+% Escala: x = 1,4 q ; y = 2,5 (CMe - 1,4) (eje vertical sin origen en cero).
+% q_D = 2,5: CMe(q_D) = 2,05 ; CMe(q_D/2) = 2,225.
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \fill[area] (2.8,0) rectangle (3.96,4.4);
+  \node[font=\small,align=center] at (3.38,5.05) {$CMe$ creciente, pero sigue\\siendo monopolio natural};
+  \ejes{$q$}{$CMe$}{6.4}{5.6}
+  \draw[curva1] plot[domain=0.75:4.2,samples=100] ({1.4*\x},{2.5*(2/\x+0.5*\x-1.4)}) node[etiqueta,right] {$CMe$};
+  \draw[curva2] (1.2,4.385) -- (4.7,0.185) node[etiqueta,right] {$D$};
+  % mínimo del coste medio y límite de la subaditividad
+  \draw[guia] (2.8,1.5) -- (2.8,0) node[below] {$q_m$};
+  \draw[guia] (3.96,0) node[below] {$\hat q$} -- (3.96,4.4);
+  % una empresa produce q_D; dos empresas producen q_D/2 cada una
+  \draw[guia] (3.5,0) node[below] {$q_D$} -- (3.5,1.625) -- (0,1.625) node[left] {$CMe(q_D)$};
+  \draw[guia] (1.75,0) node[below] {$\frac{q_D}{2}$} -- (1.75,2.0625) -- (0,2.0625) node[left] {$CMe(\frac{q_D}{2})$};
+  \node[punto] at (2.8,1.5) {};
+  \node[punto,tceerojo] at (3.5,1.625) {};
+  \node[punto,tceerojo] at (1.75,2.0625) {};
+  \node[font=\small,align=left,anchor=west] at (4.75,1.15) {más allá de $\hat q$,\\dos empresas\\cuestan menos};
+\end{tikzpicture}
+\end{document}

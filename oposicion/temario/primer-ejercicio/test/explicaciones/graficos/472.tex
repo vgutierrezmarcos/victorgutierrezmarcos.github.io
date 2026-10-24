@@ -1,0 +1,32 @@
+% Pregunta 472 (2014-septiembre-OEP2014, n.º 4): en la esquina (0,2) la RMS (1) supera el precio relativo (1/2), así que conviene moverse por la recta de balance hacia más x y menos y. Autor: Víctor Gutiérrez Marcos
+% Curvas de U = ln(x+2) + y/2: RMS(0,2) = 1 y tangencia con la recta en (2,1).
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.25cm,y=1.25cm]
+  \ejes{$x$}{$y$}{5}{3.1}
+  % Recta de balance: x + 2y = 4
+  \draw[curva1] (0,2) -- (4,0);
+  \node[etiqueta,tceemorado] (rb) at (3.75,1.25) {$\dfrac{p_x}{p_y}=\dfrac12$};
+  \draw[thin,tceemorado] (rb.south west) ++(0.1,0.05) -- (3.1,0.45);
+  % Curva de indiferencia que pasa por A (pendiente -1 en A)
+  \draw[curva2,domain=0:3.3,samples=60] plot (\x,{2-2*ln((\x+2)/2)});
+  \node[etiqueta,tceeazul] at (1.72,0.5) {$U_0$};
+  % Curva de indiferencia más alta, tangente en E
+  \draw[curvanueva,domain=0:4.4,samples=60] plot (\x,{1-2*ln((\x+2)/4)}) node[etiqueta,above right] {$U_1$};
+  % Tangente a U_0 en A (pendiente -1)
+  \draw[guia,thick] (0,2) -- (1.35,0.65);
+  \node[etiqueta,tceegris!70!black] at (0.62,0.62) {$RMS=1$};
+  % Desplazamiento por la recta, de A hacia E
+  \draw[flecha] (0.5,1.65) -- (1.72,1.04);
+  \node[etiqueta,tceerojo] at (2.2,1.75) {más $x$, menos $y$};
+  % Guías y valores
+  \draw[guia] (2,0) -- (2,1) -- (0,1);
+  \node[below] at (2,0) {$2$};
+  \node[below] at (4,0) {$4$};
+  \node[left] at (0,1) {$1$};
+  % Puntos
+  \node[punto,label={[etiqueta]left:{$A\,(0,2)$}}] at (0,2) {};
+  \node[punto,label={[etiqueta]above right:{$E\,(2,1)$}}] at (2,1) {};
+\end{tikzpicture}
+\end{document}

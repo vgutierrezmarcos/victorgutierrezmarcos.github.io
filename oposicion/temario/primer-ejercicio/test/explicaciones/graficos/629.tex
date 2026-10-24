@@ -1,0 +1,49 @@
+% Pregunta 629 (2009-octubre-OEP2009, n.º 26): monopolio nacional con arancel y con una cuota
+% que deja entrar las mismas importaciones (no equivalencia, Bhagwati 1965). Rectas a escala:
+%   D: P = 4,6 - 0,6 Q    CMg: P = 0,6 + 0,7 Q    P* = 1,2    P* + t = 2,1
+%   Arancel: Q_s = 2,143 (CMg = P*+t), Q_d = 4,167, M = 2,024
+%   Cuota M = 2,024: D - M: P = 3,386 - 0,6 Q;  IMg_r: P = 3,386 - 1,2 Q
+%   IMg_r = CMg en Q_c = 1,466; P_c = 2,506 > P*+t; CMg(Q_c) = 1,626
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm]
+  % ---------------- Panel izquierdo: arancel ----------------
+  \begin{scope}
+    \ejes{$Q$}{$P$}{6.6}{5}
+    \node[font=\small\bfseries,text=tceemorado,align=center] at (3.2,5.55) {Arancel $t$};
+    \draw[curva1] (0,4.6) -- (6,1.0) node[etiqueta,right,text=tceemorado] {$D$};
+    \draw[curva2] (0,0.6) -- (5.4,4.38) node[etiqueta,above,text=tceeazul] {$CMg$};
+    \draw[guia] (0,1.2) node[left,text=tceegris] {$P^*$} -- (5.5,1.2);
+    \draw[curvanueva] (0,2.1) -- (6.2,2.1) node[etiqueta,right,text=tceerojo] {$P^*\!+t$};
+    \draw[guia] (2.143,2.1) -- (2.143,0) node[below] {$Q_s$};
+    \draw[guia] (4.167,2.1) -- (4.167,0) node[below] {$Q_d$};
+    \node[punto] at (2.143,2.1) {};
+    \node[punto] at (4.167,2.1) {};
+    \draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo]
+      (4.167,1.98) -- (2.143,1.98) node[midway,below=4pt,text=tceerojo] {$M$};
+    \node[etiqueta,font=\footnotesize,align=center,text=tceerojo] at (3.2,0.6)
+      {$P = CMg$: precio-aceptante};
+  \end{scope}
+  % ---------------- Panel derecho: cuota con el mismo M ----------------
+  \begin{scope}[xshift=8.3cm]
+    \ejes{$Q$}{$P$}{6.6}{5}
+    \node[font=\small\bfseries,text=tceemorado,align=center] at (3.2,5.55) {Cuota $\bar{M}=M$};
+    \draw[curva1] (0,4.6) -- (6,1.0) node[etiqueta,right,text=tceemorado] {$D$};
+    \draw[curva2] (0,0.6) -- (5.4,4.38) node[etiqueta,above,text=tceeazul] {$CMg$};
+    \draw[guia] (0,2.1) -- (6.2,2.1) node[etiqueta,right,text=tceegris] {$P^*\!+t$};
+    \draw[curvanueva] (0,3.386) -- (5.0,0.386) node[etiqueta,right,text=tceerojo] {$D-\bar{M}$};
+    \draw[curva4,desplazada] (0,3.386) -- (2.6,0.266) node[etiqueta,right,text=tceedorado] {$IMg_r$};
+    % margen: precio por encima del coste marginal
+    \fill[area] (0,1.626) rectangle (1.466,2.506);
+    \draw[guia] (1.466,2.506) -- (1.466,0) node[below] {$Q_c$};
+    \draw[guia] (1.466,2.506) -- (0,2.506) node[left] {$P_c$};
+    \node[punto] at (1.466,2.506) {};
+    \node[punto] at (1.466,1.626) {};
+    \node[etiqueta,left,text=tceemorado] at (0,1.78) {margen};
+    % las importaciones fijas: distancia horizontal entre D y D - M
+    \draw[flecha,<->] (1.466,2.506) -- (3.49,2.506) node[midway,above,text=tceerojo] {$\bar{M}$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,41 @@
+% Pregunta 753 (2006-septiembre-OEP2006, n.º 16): salario real rígido por encima del de pleno empleo
+% y precios rígidos por encima del equilibrio (régimen keynesiano con paro clásico, Barro-Grossman/Malinvaud).
+% Paro clásico N^s(w) - N^d(w), que no cambia; paro keynesiano N^d(w) - N^e, que la expansión monetaria reduce.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1cm]
+  \ejes{$N$}{$w/p$}{6.6}{5}
+  % Demanda y oferta de trabajo: y = 4.6 - 0.667(x-0.5) ; y = 0.6 + 0.702(x-0.5)
+  \draw[curva1] (0.5,4.6) -- (6.2,0.8) node[etiqueta,right] {$N^d$};
+  \draw[curva2] (0.5,0.6) -- (6.2,4.6) node[etiqueta,right] {$N^s$};
+  % Cruce de pleno empleo
+  \node[punto,fill=tceegris] at (3.42,2.65) {};
+  \node[etiqueta,text=tceegris,font=\footnotesize,align=center] at (3.42,1.85) {pleno\\empleo};
+  % Salario real rígido
+  \draw[guia] (0,3.3) -- (5.6,3.3);
+  \node[left] at (0,3.3) {$\bar\omega$};
+  \node[punto] at (2.45,3.3) {};
+  \node[punto] at (4.35,3.3) {};
+  \draw[guia] (2.45,0) -- (2.45,3.3);
+  \draw[guia] (4.35,0) -- (4.35,3.3);
+  % Empleo efectivo limitado por la demanda de bienes
+  \draw[curva3] (1.0,0) -- (1.0,3.3);
+  \node[punto] at (1.0,3.3) {};
+  \draw[curvanueva,desplazada] (1.7,0) -- (1.7,3.3);
+  \node[punto,fill=tceerojo] at (1.7,3.3) {};
+  \draw[flecha] (1.08,3.62) -- (1.62,3.62);
+  \node[etiqueta,below,text=tceeverde] at (1.0,0) {$N^e$};
+  \node[etiqueta,below,text=tceerojo] at (1.7,0) {$N^{e\prime}$};
+  \node[etiqueta,below,font=\footnotesize] at (2.45,0) {$N^d(\bar\omega)$};
+  \node[etiqueta,below,font=\footnotesize] at (4.35,0) {$N^s(\bar\omega)$};
+  % Llaves de paro
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,tceerojo] (1.0,-0.55) -- (2.45,-0.55)
+    node[midway,below=5pt,align=center,font=\footnotesize,text=tceerojo] {paro\\keynesiano\\(se reduce)};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,tceemorado] (2.45,-0.55) -- (4.35,-0.55)
+    node[midway,below=5pt,align=center,font=\footnotesize,text=tceemorado] {paro clásico\\(no cambia)};
+  \node[etiqueta,rotate=90,above,font=\footnotesize,text=tceeverde] at (1.0,2.2) {límite de ventas};
+  \node[etiqueta,left,font=\footnotesize,text=tceerojo] at (1.05,3.62) {$\uparrow M/\bar P$};
+\end{tikzpicture}
+\end{document}

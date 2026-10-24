@@ -1,0 +1,44 @@
+% Pregunta 793 (2005-septiembre-OEP2005, n.º 12): impuesto unitario de 5 con libre entrada y costes constantes. A la izquierda, la empresa: el CMe sube en paralelo y su mínimo sigue en x*. A la derecha, el mercado: la oferta de largo plazo pasa de P=10 a P=15 y la cantidad cae de A-10 a A-15 (dibujado con A=20). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Escala vertical común: 1 cm = 5 euros
+  % ---------------- Panel izquierdo: la empresa ----------------
+  \begin{scope}
+    \ejes{$x$}{$P$, $CMe$}{4.6}{4.6}
+    \node[font=\small\bfseries] at (2.2,4.95) {Empresa};
+    \draw[guia] (2,0) -- (2,3);
+    \draw[guia] (0,2) -- (2,2);
+    \draw[guia] (0,3) -- (2,3);
+    \node[below] at (2,0) {$x^*$};
+    \node[left] at (0,2) {$10$};
+    \node[left] at (0,3) {$15$};
+    \draw[curva1,domain=0.55:3.9,samples=60] plot (\x,{2+0.32*(\x-2)^2});
+    \draw[curvanueva,desplazada,domain=0.75:3.6,samples=60] plot (\x,{3+0.32*(\x-2)^2});
+    \node[etiqueta,text=tceemorado,anchor=west] at (3.9,3.15) {$CMe$};
+    \node[etiqueta,text=tceerojo,anchor=west] at (3.6,3.83) {$CMe+5$};
+    \draw[flecha] (3.25,2.6) -- (3.25,3.45) node[midway,right,font=\footnotesize] {$+5$};
+    \node[punto] at (2,2) {};
+    \node[punto,fill=tceerojo] at (2,3) {};
+  \end{scope}
+  % ---------------- Panel derecho: el mercado ----------------
+  \begin{scope}[xshift=6.6cm]
+    \ejes{$X$}{$P$}{5}{4.6}
+    \node[font=\small\bfseries] at (2.4,4.95) {Mercado};
+    % Demanda X = A - P con A = 20: X a 0,22 cm por unidad
+    \draw[curva2] (0,4) -- (4.4,0) node[etiqueta,above right] {$D$};
+    \draw[curva1] (0,2) -- (4.6,2) node[etiqueta,right] {$S_{LP}$};
+    \draw[curvanueva,desplazada] (0,3) -- (4.6,3) node[etiqueta,right] {$S'_{LP}$};
+    \node[left] at (0,2) {$10$};
+    \node[left] at (0,3) {$15$};
+    \draw[guia] (2.2,0) -- (2.2,2);
+    \draw[guia] (1.1,0) -- (1.1,3);
+    \node[below,font=\footnotesize] at (2.35,0) {$A-10$};
+    \node[below,font=\footnotesize] at (0.95,0) {$A-15$};
+    \node[punto] at (2.2,2) {};
+    \node[punto,fill=tceerojo] at (1.1,3) {};
+    \draw[flecha] (2.2,-0.75) -- (1.1,-0.75) node[midway,below,font=\footnotesize] {$-5$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

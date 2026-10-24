@@ -1,0 +1,45 @@
+% Pregunta 20 (2025-marzo-A, n.º 22): dinámica de la ratio deuda/PIB, Δb = (r-g)b - s con r-g = 3 %.
+% Rectas s = 1 (corta en b* = 33,3) y s = 2 (corta en b* = 66,7), a escala. b = 50 y b = 40 con s = 1
+% y b = 80 con s = 2 quedan a la derecha de b*: Δb > 0 y la deuda se aleja (a correcta; b y c falsas).
+% A la izquierda de b* la deuda baja (d falsa). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.065cm,y=1.6cm]
+  % Ejes: b en horizontal (eje en Δb = 0), Δb en vertical
+  \draw[eje] (0,0) -- (106,0) node[right] {$b$};
+  \node[font=\small,anchor=north east] at (106,-0.62) {(\% del PIB)};
+  \draw[eje] (0,-1.6) -- (0,1.75) node[left] {$\Delta b$};
+  \foreach \y/\t in {-1.5/{-1{,}5},-1/{-1},-0.5/{-0{,}5},0.5/{0{,}5},1/{1},1.5/{1{,}5}}
+    {\draw (0,\y) -- (-1.2,\y) node[left,font=\small] {$\t$};}
+  \node[below left,font=\small] at (0,0) {$0$};
+  % Zonas
+  \node[etiqueta,font=\small,tceegris,anchor=north west,align=left] at (3,1.7) {$\Delta b>0$: la deuda sube};
+  \node[etiqueta,font=\small,tceegris,anchor=south east,align=right] at (104,-1.62) {$\Delta b<0$: la deuda baja};
+  % Rectas Δb = 0,03 b - s
+  \draw[curva1] (0,-1) -- (83.33,1.5) node[etiqueta,above right=0pt] {$s=1$};
+  \draw[curva2] (16.67,-1.5) -- (100,1) node[etiqueta,right] {$s=2$};
+  % Equilibrios b* (inestables)
+  \node[circle,draw=tceemorado,fill=white,thick,inner sep=1.8pt] at (33.33,0) {};
+  \node[circle,draw=tceeazul,fill=white,thick,inner sep=1.8pt] at (66.67,0) {};
+  \node[font=\small,text=tceemorado,anchor=south east] at (32.6,0.03) {$b^*\!=33{,}3$};
+  \node[font=\small,text=tceeazul,anchor=north west] at (67.2,-0.25) {$b^*\!=66{,}7$};
+  % Flechas de la dinámica sobre el eje: se alejan de b*
+  \draw[flecha,tceemorado] (30,-0.13) -- (22,-0.13);
+  \draw[flecha,tceeazul] (63.5,-0.13) -- (55.5,-0.13);
+  \draw[flecha,tceeazul] (69.8,-0.13) -- (76.5,-0.13);
+  % Puntos de las opciones
+  \draw[guia] (40,0.2) -- (40,0);
+  \draw[guia] (50,0.5) -- (50,0);
+  \draw[guia] (80,0.4) -- (80,0);
+  \node[punto,fill=tceemorado] at (40,0.2) {};
+  \node[punto,fill=tceemorado] at (50,0.5) {};
+  \node[punto,fill=tceeazul] at (80,0.4) {};
+  \node[font=\small,below] at (40,-0.02) {$40$};
+  \node[font=\small,below] at (50,-0.02) {$50$};
+  \node[font=\small,below] at (80,-0.02) {$80$};
+  \node[font=\small,text=tceemorado,anchor=south east] at (39.5,0.22) {c: $+0{,}2$};
+  \node[font=\small,text=tceemorado,anchor=south east] at (49.5,0.52) {a: $+0{,}5$};
+  \node[font=\small,text=tceeazul,anchor=south east] at (79.5,0.42) {b: $+0{,}4$};
+\end{tikzpicture}
+\end{document}

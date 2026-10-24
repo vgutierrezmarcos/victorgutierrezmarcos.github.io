@@ -1,0 +1,25 @@
+% Pregunta 177 (2022-julio, n.º 32): equilibrio de libre comercio con curvas de oferta neta.
+% ON_A: y = 0,15x + 0,15x^2 ; ON_B: y = 1,2x - 0,1125x^2 ; se cortan en E0 = (4, 3), RRI de pendiente 3/4.
+% CIC_A: y = 3 + 0,75(x-4) + 0,25(x-4)^2 (convexa); CIC_B: y = 3 + 0,75(x-4) - 0,25(x-4)^2 (cóncava):
+% ambas tangentes a la RRI en E0 y, por tanto, tangentes entre sí (la opción c lo niega).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \draw[eje] (0,0) -- (6.6,0) node[below left,align=right,font=\footnotesize] {$X$: exportaciones de A\\importaciones de B};
+  \draw[eje] (0,0) -- (0,5.6) node[above right,align=left,font=\footnotesize] {$Y$: importaciones de A, exportaciones de B};
+  \node[below left] at (0,0) {$0$};
+  % RRI de equilibrio
+  \draw[curva4] (0,0) -- (5.6,4.2) node[etiqueta,below right,text=tceedorado] {RRI};
+  % Curvas de oferta neta
+  \draw[curva1,domain=0:5.45,samples=60] plot (\x,{0.15*\x+0.15*\x*\x}) node[etiqueta,above,text=tceemorado] {$ON_A$};
+  \draw[curva2,domain=0:5.3,samples=60] plot (\x,{1.2*\x-0.1125*\x*\x}) node[etiqueta,below,text=tceeazul] {$ON_B$};
+  % Curvas de indiferencia comercial tangentes en E0
+  \draw[curva1,semithick,domain=3.0:5.6,samples=50] plot (\x,{3+0.75*(\x-4)+0.25*(\x-4)*(\x-4)}) node[etiqueta,right,text=tceemorado] {$CIC_A$};
+  \draw[curva2,semithick,domain=2.9:5.9,samples=50] plot (\x,{3+0.75*(\x-4)-0.25*(\x-4)*(\x-4)}) node[etiqueta,right,text=tceeazul] {$CIC_B$};
+  % Equilibrio
+  \node[punto] at (4,3) {};
+  \node[etiqueta,left] at (3.95,3.15) {$E_0$};
+\end{tikzpicture}
+\end{document}

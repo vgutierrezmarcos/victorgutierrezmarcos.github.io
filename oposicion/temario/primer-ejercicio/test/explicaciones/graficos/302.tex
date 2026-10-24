@@ -1,0 +1,43 @@
+% Pregunta 302 (2019-febrero-OEP2018, n.º 13): Mundell-Fleming a largo plazo (Mankiw). NX = S - I(r*) fija el saldo; el tipo de cambio real se ajusta.
+% Izquierda: la expansión fiscal mueve S - I a la izquierda (apreciación real y NX baja: b falsa). Derecha: la renta mundial mueve NX(eps) a la derecha (apreciación, NX igual: c falsa). La expansión monetaria no mueve ninguna (a correcta). Autor: Víctor Gutiérrez Marcos
+% NX(eps): eps = 4,4 - 0,75 (NX - 0,6); NX'(eps) desplazada 1,2 a la derecha. S - I en 3,2 y S' - I en 2.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------- Panel izquierdo: expansión fiscal ----------
+  \begin{scope}
+    \ejes{$NX$}{$\varepsilon$}{6}{5}
+    \node[font=\small\bfseries,tceerojo,anchor=west] at (0.3,5.35) {Expansión fiscal ($G\uparrow$)};
+    \draw[guia] (3.2,0) node[below] {$NX_0$} -- (3.2,2.45) -- (0,2.45) node[left] {$\varepsilon_0$};
+    \draw[guia] (2,0) node[below] {$NX_1$} -- (2,3.35) -- (0,3.35) node[left] {$\varepsilon_1$};
+    \draw[curva2] (0.6,4.4) -- (5.4,0.8) node[etiqueta,right] {$NX(\varepsilon)$};
+    \draw[curva1] (3.2,0.25) -- (3.2,4.7) node[etiqueta,above right=0pt and -6pt] {$S-I(r^*)$};
+    \draw[curvanueva,desplazada] (2,0.25) -- (2,4.7) node[etiqueta,above left=0pt and -6pt,tceerojo] {$S'-I(r^*)$};
+    \draw[flecha] (3.05,0.6) -- (2.15,0.6);
+    \node[punto] at (3.2,2.45) {};
+    \node[etiqueta,below left] at (3.2,2.45) {$E_0$};
+    \node[punto] at (2,3.35) {};
+    \node[etiqueta,above right] at (2,3.35) {$E_1$};
+  \end{scope}
+  % ---------- Panel derecho: aumento de la renta mundial ----------
+  \begin{scope}[xshift=7.6cm]
+    \ejes{$NX$}{$\varepsilon$}{6}{5}
+    \node[font=\small\bfseries,tceerojo,anchor=west] at (0.3,5.35) {Renta mundial $\uparrow$};
+    \draw[guia] (3.2,0) node[below] {$NX_0=NX_1$} -- (3.2,3.35);
+    \draw[guia] (3.2,2.45) -- (0,2.45) node[left] {$\varepsilon_0$};
+    \draw[guia] (3.2,3.35) -- (0,3.35) node[left] {$\varepsilon_1$};
+    \draw[curva2] (0.6,4.4) -- (5.4,0.8) node[etiqueta,below] {$NX(\varepsilon)$};
+    \draw[curvanueva,desplazada] (1.8,4.4) -- (5.8,1.4) node[etiqueta,right,tceerojo] {$NX'(\varepsilon)$};
+    \draw[curva1] (3.2,0.25) -- (3.2,4.7) node[etiqueta,above] {$S-I(r^*)$};
+    \draw[flecha] (4.75,1.4) -- (5.6,1.4);
+    \node[punto] at (3.2,2.45) {};
+    \node[etiqueta,below left] at (3.2,2.45) {$E_0$};
+    \node[punto] at (3.2,3.35) {};
+    \node[etiqueta,above right] at (3.2,3.35) {$E_1$};
+  \end{scope}
+  % ---------- Nota: la política monetaria no mueve ninguna curva ----------
+  \node[etiqueta,anchor=north,align=center,text width=14cm] at (6.8,-0.85)
+    {Expansión monetaria: no mueve $S-I(r^*)$ ni $NX(\varepsilon)$, así que $\varepsilon$ y $NX$ no cambian\\(sube $P$ y el tipo de cambio nominal se deprecia en la misma proporción).};
+\end{tikzpicture}
+\end{document}
