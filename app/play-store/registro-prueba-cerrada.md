@@ -333,3 +333,9 @@ El formulario tiene tres bloques. Hay que adaptar los números y nombres al fina
 - Vale para las clases ya programadas: se calcula al vuelo en cada clase.
 - El sorteo de la clase en Cantar del preparador y «mandar el tema antes de la clase» usan la misma bolsa. Alumnos sin la app (fichas del preparador): lo de siempre, los temas que el preparador apunta.
 - Pruebas: `temas_clase_test.dart` (JSON, cronograma, elección del opositor, pendiente, propuesta).
+
+### 24 oct. 2026 (para la 1.20.0)
+- **«¿Por qué?» en la revisión del test** (idea de un opositor por correo): las 1004 preguntas oficiales tienen explicación (idea clave, desarrollo, por qué acierta la correcta y por qué falla cada opción, tema y fuentes). Las redactaron y verificaron agentes con el temario de Víctor y otros como fuente; se publican por examen en `test/explicaciones/<examen>.json` (solo las lee la app, `scripts/explicaciones-test.py`). Cuando la clave oficial está desfasada o es discutible, un párrafo «Ojo:» lo explica, y en 29 preguntas hay nota nueva o ya existente en `preguntas.json`.
+- **Gráficos** en 218 preguntas (232 figuras TikZ con los estilos del temario revisado, compiladas a WebP con `scripts/graficos-explicaciones.py`), sobre papel blanco y ampliables al tocarlos.
+- **«Reportar respuesta»**: motivo y comentario a `reportesTest` (regla nueva en `firestore.rules`); la Action `reportes-test.yml` los manda cada hora por correo a Víctor con Brevo.
+

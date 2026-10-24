@@ -10,6 +10,7 @@ import '../../data/models/resultado.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/texto_formulas.dart';
+import 'explicacion_pregunta.dart';
 import 'motor_test.dart';
 
 class DatosResultado {
@@ -215,6 +216,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
                 ),
                 child: TextoConFormulas('Nota: ${p.nota}', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
               ),
+            ExplicacionPregunta(pregunta: p, elegida: resp),
             // .revision-meta
             Container(
               margin: const EdgeInsets.only(top: 4),

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../core/cache_http.dart';
 import '../models/esquema.dart';
 import '../models/estructura.dart';
+import '../models/explicacion.dart';
 import '../models/frecuencia_test.dart';
 import '../models/oposicion.dart';
 import '../models/pregunta.dart';
@@ -39,6 +40,15 @@ class ContenidoRepo {
       return FrecuenciaTest.fromJson(Map<String, dynamic>.from(await _http.json(oposicion.urlFrecuenciaTest, preferirCache: !forzar, forzar: forzar) as Map));
     } catch (_) {
       return null;
+    }
+  }
+
+  /// Explicaciones de las preguntas de un examen; vacío si aún no las hay o sin red ni copia.
+  Future<Map<int, Explicacion>> explicaciones(String examen, {bool forzar = false}) async {
+    try {
+      return Explicacion.deExamen(await _http.json(oposicion.urlExplicaciones(examen), preferirCache: !forzar, forzar: forzar));
+    } catch (_) {
+      return const {};
     }
   }
 

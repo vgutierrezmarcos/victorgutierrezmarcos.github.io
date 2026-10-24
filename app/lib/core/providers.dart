@@ -16,6 +16,7 @@ import '../data/models/temas_clase.dart';
 import '../features/cronograma/planificador.dart' show compararCodigos;
 import '../data/models/esquema.dart';
 import '../data/models/estructura.dart';
+import '../data/models/explicacion.dart';
 import '../data/models/frecuencia_test.dart';
 import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
@@ -106,6 +107,11 @@ final frecuenciaTestProvider = FutureProvider<FrecuenciaTest?>((ref) {
 final temarioProvider = FutureProvider<Temario>((ref) {
   ref.watch(versionContenidoProvider);
   return ref.watch(contenidoProvider).temario();
+});
+/// Explicaciones de las preguntas de un examen (exclusivas de la app).
+final explicacionesProvider = FutureProvider.family<Map<int, Explicacion>, String>((ref, examen) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).explicaciones(examen);
 });
 /// Temas revisados, exclusivos de la app (manifiesto de la rama revision-temario).
 final revisadosProvider = FutureProvider<ManifiestoRevisados>((ref) {
