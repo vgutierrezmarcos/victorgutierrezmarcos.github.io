@@ -6,7 +6,9 @@
 % (índice 4T2019 = 100). Derecha: tasa de actividad 15-74 (%) y tasa de paro
 % (%, eje derecho). Eurostat (namq_10_a10_e, lfsq_argan, une_rt_q; consulta
 % 23/10/2026). Eje x: n.º de trimestre desde 1T2015 (fila del CSV); marcas en
-% el primer trimestre de cada año.
+% el primer trimestre de cada año. Paleta «dictamen»: empleo y horas en
+% verdes azulados (oscuro y claro), actividad en verde azulado muy oscuro y
+% paro en teja. Capas: referencias → líneas → rótulos.
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/empleo-horas-actividad-zona-euro.csv}\empleo
 \pgfplotsset{
   leyenda linea corta/.style={legend image code/.code={%
@@ -32,43 +34,49 @@
       axis lines*=left, ymajorgrids, grid style={tceegris!25},
       legend style={at={(0.5,-0.15)}},
     ]
-    \draw[guia] (axis cs:19,82) -- (axis cs:19,108);
-    \draw[thin,tceegris] (axis cs:-1,100) -- (axis cs:46,100);
+    \draw[dicumbral] (axis cs:19,82) -- (axis cs:19,108);
+    \draw[thin,dicreferencia] (axis cs:-1,100) -- (axis cs:46,100);
     % 2: empleo
     \capa{2}{
-      \addplot[curva1, thick, leyenda linea corta] table[x expr=\coordindex, y=empleo_indice] {\empleo};
+      \addplot[diclinea=dicempleo, leyenda linea corta] table[x expr=\coordindex, y=empleo_indice] {\empleo};
       \addlegendentry{Empleo (personas)}
-      \node[font=\scriptsize, text=tceemorado, anchor=south east] at (axis cs:45.5,106.2) {106,0};
     }
     % 3: horas trabajadas
     \capa{3}{
-      \addplot[curva2, thick, leyenda linea corta] table[x expr=\coordindex, y=horas_indice] {\empleo};
+      \addplot[diclinea=dichoras!80!black, dashed, leyenda linea corta] table[x expr=\coordindex, y=horas_indice] {\empleo};
       \addlegendentry{Horas trabajadas}
-      \node[font=\scriptsize, text=tceeazul, anchor=north east] at (axis cs:45.5,104.9) {105,2};
+    }
+    % 4: rótulos del último dato
+    \capa{4}{
+      \node[font=\scriptsize, text=dicempleo, anchor=south east] at (axis cs:45.5,106.2) {106,0};
+      \node[font=\scriptsize, text=dichoras!60!black, anchor=north east] at (axis cs:45.5,104.9) {105,2};
     }
   \end{axis}
   }
-  % 4: panel derecho con actividad (eje izquierdo) y paro (eje derecho)
-  \capa{4}{
+  % 5: panel derecho con actividad (eje izquierdo) y paro (eje derecho)
+  \capa{5}{
   \begin{axis}[panel, at={(izq.east)}, anchor=west, xshift=2.4cm, name=der,
       title={b) Actividad y paro (\%)},
       ymin=61, ymax=67, ytick={61,62,...,67},
       axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!25},
-      ylabel={Tasa de actividad (\%)}, ylabel style={font=\footnotesize, text=tceeverde},
+      ylabel={Tasa de actividad (\%)}, ylabel style={font=\footnotesize, text=dicactividad},
       legend style={at={(0.5,-0.15)}},
     ]
-    \addplot[curva3, thick, leyenda linea corta] table[x expr=\coordindex, y=tasa_actividad_15_74] {\empleo};
+    \addplot[diclinea=dicactividad, leyenda linea corta] table[x expr=\coordindex, y=tasa_actividad_15_74] {\empleo};
     \addlegendentry{Tasa de actividad, 15-74 años}
-    \addlegendimage{curva4, thick, leyenda linea corta}
+    \addlegendimage{diclinea=dicparo, leyenda linea corta}
     \addlegendentry{Tasa de paro (eje derecho)}
   \end{axis}
   \begin{axis}[panel, at={(izq.east)}, anchor=west, xshift=2.4cm,
       ymin=4, ymax=13, ytick={4,6,...,12},
       axis x line=none, axis y line*=right,
-      ylabel={Tasa de paro (\%)}, ylabel style={font=\footnotesize, text=tceedorado!80!black},
+      ylabel={Tasa de paro (\%)}, ylabel style={font=\footnotesize, text=dicparo},
     ]
-    \addplot[curva4, thick] table[x expr=\coordindex, y=tasa_paro] {\empleo};
-    \node[font=\scriptsize, text=tceedorado!80!black, anchor=north east] at (axis cs:45.5,6.2) {6,4};
+    \addplot[diclinea=dicparo] table[x expr=\coordindex, y=tasa_paro] {\empleo};
+    % 6: rótulo del último dato del paro
+    \capa{6}{
+      \node[font=\scriptsize, text=dicparo, anchor=north east] at (axis cs:45.5,6.2) {6,4};
+    }
   \end{axis}
   }
 \end{tikzpicture}

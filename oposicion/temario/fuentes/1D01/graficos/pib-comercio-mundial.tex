@@ -5,6 +5,10 @@
 % Mundo, 2005-2027: crecimiento del PIB real y del volumen del comercio de
 % bienes y servicios (%). FMI, WEO de octubre de 2026 (consulta 23/10/2026);
 % 2026-2027 son previsiones. Las medias 2005-2019 se calculan con el CSV.
+% Paleta «dictamen»: PIB en morado (círculos), comercio en el azul claro de la
+% demanda externa (cuadrados); medias en punteado fino (no se confunden con la
+% previsión, en discontinuo). Capas: sombreado → cero y medias → líneas →
+% puntos → rótulos.
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/pib-comercio-mundial.csv}\mundo
 \pgfmathsetmacro{\sumapib}{0}\pgfmathsetmacro{\sumacom}{0}\pgfmathsetmacro{\nmedia}{0}
 \pgfplotstablegetrowsof{\mundo}\pgfmathtruncatemacro{\ultima}{\pgfplotsretval-1}
@@ -37,40 +41,52 @@
         draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=10pt}},
       legend cell align=left,
     ]
-    % 1: ejes, cero y años
+    % 1: sombreado de las previsiones (área, lo primero)
     \capa{1}{
-      \draw[thin,black] (axis cs:2004.4,0) -- (axis cs:2027.6,0);
+      \fill[tceegris, opacity=0.12]
+        (axis cs:2025.5,-12) rectangle (axis cs:2027.6,14);
     }
-    % 2: PIB mundial (observado y, en discontinuo, previsión)
+    % 2: eje del cero
     \capa{2}{
-      \addplot[leyenda linea corta, very thick, tceemorado, mark=*, mark size=1.6pt,
-        mark options={fill=white,solid}, restrict x to domain=2005:2025]
+      \draw[diccero] (axis cs:2004.4,0) -- (axis cs:2027.6,0);
+    }
+    % 3: medias 2005-2019 (líneas de referencia, punteado fino)
+    \capa{3}{
+      \addplot[forget plot, thick, densely dotted, dicpib, domain=2005:2019, samples=2] {\mediapib};
+      \addplot[forget plot, thick, densely dotted, dicexterna!80!black, domain=2005:2019, samples=2] {\mediacom};
+    }
+    % 4: PIB mundial (observado y, en discontinuo, previsión)
+    \capa{4}{
+      \addplot[diclinea=dicpib, leyenda linea corta,
+        legend image post style={mark=*, mark size=1.6pt, mark options={fill=white, solid}},
+        restrict x to domain=2005:2025]
         table[x=anio, y=pib_mundial] {\mundo};
       \addlegendentry{PIB real mundial}
-      \addplot[forget plot, very thick, dashed, tceemorado, mark=*, mark size=1.6pt,
-        mark options={fill=white,solid}, restrict x to domain=2025:2027]
+      \addplot[forget plot, diclinea=dicpib, dashed, restrict x to domain=2025:2027]
         table[x=anio, y=pib_mundial] {\mundo};
     }
-    % 3: comercio mundial
-    \capa{3}{
-      \addplot[leyenda linea corta, very thick, tceeazul, mark=square*, mark size=1.5pt,
-        mark options={fill=white,solid}, restrict x to domain=2005:2025]
+    % 5: comercio mundial
+    \capa{5}{
+      \addplot[diclinea=dicexterna, leyenda linea corta,
+        legend image post style={mark=square*, mark size=1.5pt, mark options={fill=white, solid}},
+        restrict x to domain=2005:2025]
         table[x=anio, y=comercio_mundial] {\mundo};
       \addlegendentry{Volumen del comercio mundial de bienes y servicios}
-      \addplot[forget plot, very thick, dashed, tceeazul, mark=square*, mark size=1.5pt,
-        mark options={fill=white,solid}, restrict x to domain=2025:2027]
+      \addplot[forget plot, diclinea=dicexterna, dashed, restrict x to domain=2025:2027]
         table[x=anio, y=comercio_mundial] {\mundo};
     }
-    % 4: medias 2005-2019 y marca de las previsiones
-    \capa{4}{
-      \addplot[forget plot, thick, dashed, tceemorado!80, domain=2005:2019, samples=2] {\mediapib};
-      \addplot[forget plot, thick, dashed, tceeazul!80, domain=2005:2019, samples=2] {\mediacom};
-      \addlegendimage{leyenda linea corta, thick, dashed, tceemorado!80}
+    % 6: puntos de las dos series
+    \capa{6}{
+      \addplot[forget plot, dicpuntos=dicpib] table[x=anio, y=pib_mundial] {\mundo};
+      \addplot[forget plot, dicpuntos=dicexterna!80!black, mark=square*, mark size=1.5pt]
+        table[x=anio, y=comercio_mundial] {\mundo};
+    }
+    % 7: leyenda de las medias y rótulo de la previsión
+    \capa{7}{
+      \addlegendimage{leyenda linea corta, thick, densely dotted, dicpib}
       \addlegendentry{Media 2005-2019 del PIB: \pgfmathprintnumber[use comma,fixed,fixed zerofill,precision=1]{\mediapib}\,\%}
-      \addlegendimage{leyenda linea corta, thick, dashed, tceeazul!80}
+      \addlegendimage{leyenda linea corta, thick, densely dotted, dicexterna!80!black}
       \addlegendentry{Media 2005-2019 del comercio: \pgfmathprintnumber[use comma,fixed,fixed zerofill,precision=1]{\mediacom}\,\%}
-      \fill[tceegris, opacity=0.12, on layer=axis background]
-        (axis cs:2025.5,-12) rectangle (axis cs:2027.6,14);
       \node[font=\footnotesize, text=tceegris, anchor=north] at (axis cs:2026.55,13.6) {Previsión};
     }
   \end{axis}

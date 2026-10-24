@@ -3,6 +3,129 @@
 Editor de /revisartema, 23-24/10/2026. Escrita en 4 partes (método y perfil cíclico; mercados de factores y competitividad; sector exterior,
 políticas y recomendaciones; anexos). Este informe recoge las 4.
 
+## Segunda vuelta 24/10/2026
+
+Aplicados los comentarios de Víctor del 24/10 (`_trabajo/comentarios-victor-24oct.md`), CRITERIOS §7 y §11 actualizados e
+inventario `_trabajo/recuperar.md` (R-01 a R-122). Fuente `1D01.tex` + `1D01.bib` (161 entradas) y `1D01.lyx` sincronizado
+por `construir-tema.py`. Compila sin errores; `verificar-tema.py 1D01`: **0 errores, 11 avisos** (9 «cifra sin cita» en
+anexos, que son fechas de exámenes o datos del recuadro de Beveridge ya citados en su párrafo, y guion y vídeo pendientes).
+
+### Páginas
+
+- **Cuerpo: 50 páginas** (introducción con esquema, I-VI y conclusión). **Anexos: 37** (A-J). **Bibliografía: 9.** Total 96.
+- Anexos: A El ejercicio y el método · B Indicadores y umbrales · C Qué se ha preguntado · D Expresiones (D.1 Párrafos
+  modelo por bloque) · E Análisis de casos frecuentes · F Lectura de series · G Cálculos tipo · H FMI (programación y
+  programas) · I España · J Temas.
+
+### Qué se ha hecho, punto por punto
+
+- **Método al anexo A**: «El ejercicio y el método» sale del cuerpo entero (etiquetas `anexo:metodo`, `anexo:tiempo`,
+  `anexo:leer`…), con la **matriz completa de 9 columnas** de la guía antigua (tabla 8, R-05), la tabla antigua de minutos
+  por número de preguntas (tabla 5, R-03, con sus supuestos), las normas de la sala del examen de 2022 (R-01, con el pie
+  corregido: era 2022, no 2021), el matiz «no suelen ser países de renta baja, sí emergentes» (R-02), «releer cada
+  pregunta» y «si el dictamen es libre, anunciar la estructura», y «dónde practicar y leer ejemplos» (R-106).
+- **Lo de exámenes, en notas al opositor**: todas las menciones a años de examen del texto corrido («se preguntó en…»,
+  «(2021)», «(2016, 2019 y 2024)») pasan a 14 recuadros `notaopositor`, uno por bloque. Ninguna idea teórica queda atada a
+  un año suelto; los efectos no keynesianos ya no dicen «(2022)».
+- **Esquema (índice) al final de la introducción**, numerado desde I (Perfil cíclico = I … Recomendaciones = VI), con
+  enlaces a cada apartado y el segundo nivel, inspirado en el índice de la pág. 2 del PDF antiguo (R-04).
+- **Reparto del tiempo**: en la introducción, 4 reglas ligeras y orientativas (no se sabe cuántas preguntas habrá; ~10 %
+  de lectura y ~5 % de repaso; más tiempo a las preguntas donde están los retos reales de la economía; ninguna en blanco).
+  La regla, la tabla por convocatoria y la tabla antigua, en el anexo A.3.
+- **Balanza de pagos desarrollada** (R-80): 2 fórmulas recuadradas (`\funcionclave`): la identidad completa con llaves
+  (CC + CK = capacidad/necesidad; + EO = CF = ID + IC + D + OI + ΔR), numerada como `eq:identidad-bp`, y la cadena
+  CC = (X − M) + RP + RS = (Y − A) + RP + RS = S − I = (S_P − I_P) + (T − G), con su lectura en palabras. Nota 33 antigua
+  reescrita con la forma alternativa bien explicada.
+- **IPC y deflactor** (R-68 a R-73): 2 cuadros grises paralelos, «El IPC, un índice de Laspeyres» y «El deflactor del PIB,
+  un índice de Paasche», con qué compara cada uno, la fórmula con sumatorios (y en vectores), cesta fija o variable,
+  encadenamiento (INE base 2025) y el sesgo. **Nota 30 corregida**: el IPC no recoge que los consumidores sustituyen los
+  bienes *más caros por otros más baratos* (la antigua lo decía al revés). Las 2 diferencias entre índices, en lista.
+  Índices especializados (IPP/IPRI, IPRIX/IPRIM, costes laborales), las 3 familias de subyacente y el triángulo de Gordon.
+- **Política fiscal** (págs. 19-20 antiguas, R-91 a R-101, R-119): consenso y política discrecional; las 5 variables del
+  saldo en lista con su definición; tono; ejemplo del Consejo Fiscal Europeo; **efectos no keynesianos** con texto completo,
+  Giavazzi y Pagano (1990) y la evidencia posterior (Guajardo et al., 2014), sin años de examen; **la inflación y las
+  cuentas públicas** punto por punto (ingresos, intereses, gasto indexado, compras, denominador) y el esquema del FMI
+  «Repercusiones inmediatas de la inflación en las finanzas públicas» **redibujado como tabla** (tabla 1: 4 canales → 4
+  efectos); otros análisis: nivel de ingresos y gastos con el esquema de la ficha 4 (más impuestos / ingresos no
+  tributarios), estabilizadores automáticos ($b-b^{ca}=\varepsilon\cdot\mathrm{OG}$), deuda a corto, vida media, deuda
+  regional y corresponsabilidad, calidad crediticia.
+- **Tabla de calificaciones** (antigua tabla 11, hoy tabla 14, anexo B): S&P, Moody's y Fitch en las primeras columnas;
+  DBRS en cursiva y discreta; Scope en la fuente; una fila por escalón de AAA a D, cada celda en una línea, con el bloque
+  (inversión, especulativo, impago) y el nivel del Eurosistema.
+- **Nuevo V.2 «Estabilidad financiera y política macroprudencial»** (R-50 a R-62, R-118, R-120), justo después de la
+  monetaria: endeudamiento y ciclo financiero (umbrales del PDM, brecha crédito-PIB, bucle bancario-soberano); solvencia
+  (APR explicados, CET1/Tier 1/total, *fully loaded* y *phased-in*, apalancamiento, regla antigua del 12 % con su
+  advertencia); calidad de los activos (dudosos explicados); liquidez (LCR, NSFR, LTD alta y baja); rentabilidad (por qué
+  importa, ROE/ROA, eficiencia, coste del capital); riesgos (vivienda, crédito, divisas, tipos bajos, bolsa, externos);
+  regulación microprudencial (Basilea III y sus 3 pilares, MREL/TLAC); supervisión y unión bancaria (MUS, MUR, garantía
+  de depósitos pendiente; euro de 21); política macroprudencial (colchones, LTV/LTI/DSTI, fase alcista y bajista con
+  «operar por debajo de los colchones»). Nota al opositor: pregunta propia (2020, 2022) o coletilla de la monetaria
+  (2023, Meridia). En II.2 «Mercado de capitales» queda el capital físico (R-49) y el crédito y la financiación como
+  factor, con remisión a V.2.
+- **Anexo C**: quitada la transcripción de los exámenes; queda hasta la tabla de bloques por año (hoy tabla 16).
+- **Cálculos (anexo G)**: tabla visual de las fórmulas imprescindibles por bloque (la del A.5 antiguo, con la fórmula 10
+  corregida: el CLU real es la participación salarial; y la 14: $\mathrm{PIIN}_t=\mathrm{PIIN}_{t-1}+\mathrm{CF}_t+
+  \mathrm{OV}_t$), y cuadros por bloque con la fórmula recuadrada, sus términos y un ejemplo: la derivación de las
+  contribuciones paso a paso (R-13), brecha y potencial, tasas trimestrales, deflactor, tipos reales, salario real,
+  índices, PAT-CLU-margen (con tabla de ejemplo), ahorro e inversión, PIIN, exportaciones, saldos y esfuerzo, saldo
+  estabilizador. Fuera «desde 2022 no se piden cálculos» (y el «sin cálculos» de la tabla de formatos).
+- **Recuperado de la guía antigua** (además de lo anterior): A.8 en I.1 «Conceptos generales: el PIB» (3 enfoques con
+  fórmulas, RNB y RNDB, 5 problemas de medida, R-115); funciones del consumo, la renta disponible, la inversión, las
+  exportaciones, las importaciones y la sostenibilidad con sus signos (R-17, R-24, R-30, R-87); SEC 2010 de la inversión
+  (R-22, en nota); nota 12 de la curva de tipos completa (R-19); nota 17 con la hipótesis de inflación de los *swaps*
+  (R-26); nota 18 completa (R-27); definiciones del mercado de trabajo, fuga de cerebros, pleno empleo con la OIT, cadena
+  CLU-beneficios-bolsa-precios, usos de los CLU nominales, Calmfors y Driffill (R-40 a R-46); nota 27 de Beveridge como
+  lectura de la curva española 1994-2022 (R-48); RRI, preguntas guía del saldo, cuenta de capital, reservas, monedas y
+  valoración de la PIIN (R-31, R-82 a R-88); tipos de interés (R-89); políticas de oferta por tipo de paro con su
+  diagnóstico (R-103, en V.5); recomendaciones que faltaban (R-36, R-105, R-121, R-122); anexos A.1 y A.3 completos
+  (tipos de datos, tendencias, frecuencia, cointegración, los rasgos del comovimiento; proporciones, porcentajes, índices,
+  tasas; R-107, R-110), A.4 (R-111) y el contexto 2020-2022 de A.6 (R-113, con la fecha de recuperación corregida).
+- **Ejemplos de redacción** (22 entradas de la antigua): `tcee.sty` no tiene entorno propio, así que van en cajas grises
+  `anotaciones` con el rótulo en negrita «Ejemplo de redacción: …», con años y cifras genéricos (20xx). Corregidos al
+  recuperarlos: tipo real «contractivo» con el nominal en cero (ahora: el tipo real cercano a cero no recoge todo el
+  estímulo; R-90), «Numitor» → «esta economía» (R-90, R-99), coste del capital frente a «tipos de mercado» (R-52), punto
+  iv) vacío (R-52, ahora liquidez), erratas. **15 cuadros en el cuerpo y 11 en el anexo D.1** (ver abajo).
+- **Gráfico de comovimientos**: pie y ancho nuevos (`\textwidth`, panel d del Conference Board) según
+  `pies-graficos-24oct.md`. Ningún pie nombra colores, así que no hubo que ajustarlos a la paleta.
+- `seo.json` al día (estabilidad financiera, balanza de pagos, IPC y deflactor).
+
+### Lo que se ha llevado a los anexos para no pasar de 50 páginas (con remisión en el cuerpo)
+
+- Tablas de consulta: indicadores del sistema financiero, Basilea III, ratios de la banca (con una columna nueva de 2021,
+  R-61) y calificaciones → anexo B.
+- Gráficos de lectura: consumo-renta-ahorro, PIB y comercio mundial, empleo y horas, PIB por persona en edad de trabajar,
+  impulso fiscal y el gráfico de la inflación en las cuentas públicas (la tabla del FMI sí está en el cuerpo) → anexo F.
+- Casos concretos → anexo E: un sector dominante (petróleo), demografía/visados/salario mínimo, aranceles, la curva de
+  Beveridge española, los fondos europeos en la balanza de pagos, el brote de inflación (resistencia, cambio de tendencia,
+  «última milla») y el detalle de las reglas fiscales (en el cuerpo queda un resumen de 2 líneas).
+- Ejemplos de redacción largos → anexo D.1: frase del FMI de 2022, sector dominante y tejido productivo, el párrafo del
+  BCE sobre el mercado de trabajo, demanda de trabajo y paro persistente, exportaciones e importaciones, relación con el
+  ciclo de la monetaria, endeudamiento, banca bien capitalizada, macroprudencial con tipos bajos, tono fiscal con déficit
+  alto y paquetes de estímulo.
+- El programa del FMI (antiguo VI.3) → anexo H.
+- Para evitar huecos, la tabla de recomendaciones y el gráfico de tipos del BCE van con `[tbp]` (pueden moverse a la
+  página siguiente); el resto, `[H]`.
+
+### Dudas nuevas para Víctor
+
+1. **Ejemplos junto al indicador frente a las 50 páginas**: para no pasar del límite, 11 ejemplos largos están en el
+   anexo D.1 con remisión. ¿Prefiere subir el límite (todos en el cuerpo serían unas 53 páginas) o así vale?
+2. **Tablas de la banca y de calificaciones en el anexo B** (el texto de regulación sí está en el cuerpo, V.2). ¿Las
+   quiere en el cuerpo aunque haya que mover otra cosa?
+3. **Anexo E de casos** (petróleo, aranceles, demografía, reglas fiscales en detalle, brote de inflación): ¿le parece bien
+   sacarlos del cuerpo?
+4. **Método del Banco de España para el tipo real a largo** (nota 17 antigua: *swaps* de inflación a 15, 10 y 5 años
+   según el préstamo): no he podido comprobar que siga usando esos plazos; en la nota queda la idea sin los plazos.
+5. **Regla del 33 % de esfuerzo en vivienda**: se mantiene como orientativa, sin fuente (junto a la de sobrecarga de
+   Eurostat, 40 %).
+6. **Curso del FMI en español (edX)**: el enlace de la guía antigua da error 404; se mantiene la referencia con la nota
+   «enlace de la guía anterior». La entrada de Bankinter no tiene fecha (la web bloquea la consulta automática).
+7. **Imagen 2 antigua** (descomposición del consumo por fuentes de renta, BCE): no se ha rehecho; ¿pedimos un gráfico
+   nuevo con las cuentas sectoriales de Eurostat?
+8. **Vídeos de YouTube del anexo A.6 antiguo**: no se han recuperado (no se sabe qué son).
+9. La numeración de tablas ha cambiado: la antigua «tabla 11» es la 14 y la «tabla 13» es la 16.
+
+
 ## 1. Resumen
 
 - Guía nueva en LaTeX (`1D01.tex`, sin `\minutos`, CRITERIOS §11): **cuerpo de 44 páginas** (introducción, método,

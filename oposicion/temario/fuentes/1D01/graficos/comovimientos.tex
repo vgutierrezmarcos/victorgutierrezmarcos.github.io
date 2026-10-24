@@ -1,28 +1,114 @@
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
-% Comovimientos con el ciclo: en morado, el PIB (misma senoide en los 3
-% paneles); en azul, otra serie. a) procíclica y coincidente (misma fase,
-% más amplitud); b) contracíclica (fase opuesta); c) adelantada (gira antes).
-\begin{tikzpicture}[tcee, scale=0.85]
-  \foreach \col/\desf/\amp/\tit/\ej [count=\k] in
-      {0/0/1.6/a) Procíclica y coincidente/inversión,
-       5.4/180/0.8/b) Contracíclica/paro,
-       10.8/60/1.0/c) Adelantada/{PMI, curva de tipos, bolsa}}{
+% Comovimientos con el ciclo (paleta «dictamen» de tikz-tcee.tex: el PIB en
+% dicpib, la misma senoide en todos los paneles; cada serie con el color de su
+% concepto en el resto de la guía).
+% Fila de arriba: a) procíclica y coincidente (inversión: misma fase, más
+% amplitud); b) contracíclica (paro: fase opuesta); c) adelantada (gira antes).
+% Fila de abajo, d): el orden de los picos de los indicadores adelantados,
+% coincidentes y retrasados, con ejemplos de cada grupo (redibujado de la
+% imagen 13 de la guía anterior, a partir de The Conference Board, «US Leading
+% Indicators», y adaptado a los indicadores de España y la zona del euro).
+% El coincidente pica 6-12 meses después del adelantado y el retrasado,
+% 12-24 meses después del adelantado (The Conference Board).
+\begin{tikzpicture}[tcee, scale=0.85,
+    caja/.style={draw=#1, fill=#1!8, rounded corners=2pt, line width=0.6pt,
+      text width=3.95cm, align=left, font=\scriptsize, inner sep=4pt, anchor=north,
+      execute at begin node={\hyphenpenalty=10000 }},
+    cabecera/.style={font=\footnotesize\bfseries, text=#1, anchor=south}]
+  \foreach \col/\desf/\amp/\serie/\tit/\ej [count=\k] in
+      {0/0/1.6/dicfbcf/a) Procíclica y coincidente/inversión,
+       5.4/180/0.8/dicparo/b) Contracíclica/paro,
+       10.8/60/1.0/dicadelantada/c) Adelantada/{PMI, curva de tipos, bolsa}}{
     % k: panel k completo (ejes, PIB, la otra serie y rótulos)
     \capa{\k}{
       \begin{scope}[xshift=\col cm]
         \draw[eje] (0,0) -- (4.5,0) node[below left] {$t$};
         \draw[eje] (0,-1.8) -- (0,1.9);
-        \draw[curva1, domain=0:4.0, samples=80] plot (\x,{sin(\x*171.9)});
-        \draw[curva2, domain=0:4.0, samples=80] plot (\x,{\amp*sin(\x*171.9+\desf)});
+        \draw[very thick, dicpib, domain=0:4.0, samples=80] plot (\x,{sin(\x*171.9)});
+        \draw[very thick, \serie, domain=0:4.0, samples=80] plot (\x,{\amp*sin(\x*171.9+\desf)});
         \node[etiqueta, font=\small\bfseries, anchor=south west] at (-0.2,2.0) {\tit};
-        \node[etiqueta, font=\footnotesize, text=tceeazul, anchor=north] at (2.2,-1.85) {\ej};
+        \node[etiqueta, font=\footnotesize, text=\serie, anchor=north] at (2.2,-1.85) {\ej};
       \end{scope}
     }
   }
-  % Leyenda común
-  \draw[curva1] (4.6,-3.0) -- (5.3,-3.0) node[right, etiqueta, font=\footnotesize, text=black] {PIB};
-  \draw[curva2] (6.6,-3.0) -- (7.3,-3.0) node[right, etiqueta, font=\footnotesize, text=black] {otra serie};
+  % Leyenda común de la fila de arriba
+  \draw[very thick, dicpib] (5.4,-2.85) -- (6.1,-2.85)
+    node[right, etiqueta, font=\footnotesize, text=black] {PIB};
+  \node[etiqueta, font=\footnotesize, anchor=west] at (7.2,-2.85) {en color, la otra serie};
+
+  % ---- d) Adelantados, coincidentes y retrasados -------------------------
+  % Ondas de periodo 8 (unidades de x), picos en x = 4,2 (adelantado),
+  % 6,5 (coincidente, el PIB) y 9,1 (retrasado), sobre la base y = -7,2.
+  \def\base{-7.2}
+  % 4: título y eje del tiempo
+  \capa{4}{
+    \node[etiqueta, font=\small\bfseries, anchor=south west] at (-0.2,-4.1)
+      {d) Adelantados, coincidentes y retrasados: quién gira primero};
+    \draw[eje] (0,{\base-1.45}) -- (15.3,{\base-1.45}) node[below left] {$t$};
+    \draw[eje] (0,{\base-1.45}) -- (0,{\base+1.6});
+  }
+  % 5: indicador adelantado
+  \capa{5}{
+    \draw[very thick, dicadelantada, domain=0.3:9.2, samples=90]
+      plot (\x,{\base+1.15*cos(45*(\x-4.2))});
+  }
+  % 6: indicador coincidente (el PIB)
+  \capa{6}{
+    \draw[very thick, dicpib, domain=2.6:11.5, samples=90]
+      plot (\x,{\base+1.15*cos(45*(\x-6.5))});
+  }
+  % 7: indicador retrasado
+  \capa{7}{
+    \draw[very thick, dicretrasada, domain=5.2:14.1, samples=90]
+      plot (\x,{\base+1.15*cos(45*(\x-9.1))});
+  }
+  % 8: los tres picos
+  \capa{8}{
+    \node[punto, fill=dicadelantada] at (4.2,{\base+1.15}) {};
+    \node[punto, fill=dicpib] at (6.5,{\base+1.15}) {};
+    \node[punto, fill=dicretrasada!80!black] at (9.1,{\base+1.15}) {};
+  }
+  % 9: rótulos de los picos y distancias entre ellos
+  \capa{9}{
+    \node[font=\footnotesize\bfseries, text=dicadelantada, anchor=south] at (4.2,{\base+1.25}) {1.º};
+    \node[font=\footnotesize\bfseries, text=dicpib, anchor=south] at (6.5,{\base+1.25}) {2.º};
+    \node[font=\footnotesize\bfseries, text=dicretrasada!80!black, anchor=south] at (9.1,{\base+1.25}) {3.º};
+    \draw[guia, <->] (4.2,{\base+1.8}) -- (6.5,{\base+1.8})
+      node[midway, above, font=\scriptsize, text=black, inner sep=2.5pt] {6-12 meses};
+    \draw[guia, <->] (4.2,{\base+2.4}) -- (9.1,{\base+2.4})
+      node[midway, above, font=\scriptsize, text=black, inner sep=2.5pt] {12-24 meses};
+    \node[font=\scriptsize, text=dicadelantada, anchor=south, align=center] at (13.2,{\base-0.35})
+      {el adelantado dice\\hacia dónde van\\los otros dos};
+  }
+  % 10: ejemplos de cada grupo (los de la guía, con los de The Conference Board)
+  \capa{10}{
+    \node[cabecera=dicadelantada] at (2.45,{\base-2.15}) {Adelantados (1.º)};
+    \node[caja=dicadelantada] at (2.45,{\base-2.2}) {%
+      $\bullet$ PMI y pedidos industriales\\
+      $\bullet$ confianza de consumidores y empresas (ESI)\\
+      $\bullet$ bolsa\\
+      $\bullet$ pendiente de la curva de tipos\\
+      $\bullet$ crédito nuevo\\
+      $\bullet$ visados y permisos de construcción\\
+      $\bullet$ horas semanales en la industria y peticiones de subsidio (EE.\,UU.)};
+    \node[cabecera=dicpib] at (7.65,{\base-2.15}) {Coincidentes (2.º)};
+    \node[caja=dicpib] at (7.65,{\base-2.2}) {%
+      $\bullet$ PIB\\
+      $\bullet$ producción industrial\\
+      $\bullet$ afiliación a la Seguridad Social y empleo\\
+      $\bullet$ ventas minoristas y de grandes empresas\\
+      $\bullet$ consumo de electricidad\\
+      $\bullet$ renta personal sin transferencias (EE.\,UU.)};
+    \node[cabecera=dicretrasada!80!black] at (12.85,{\base-2.15}) {Retrasados (3.º)};
+    \node[caja=dicretrasada!80!black] at (12.85,{\base-2.2}) {%
+      $\bullet$ tasa de paro y duración media del paro\\
+      $\bullet$ inflación subyacente (servicios)\\
+      $\bullet$ costes laborales unitarios\\
+      $\bullet$ tipos de interés de los préstamos\\
+      $\bullet$ saldo vivo del crédito a empresas y hogares\\
+      $\bullet$ existencias sobre ventas};
+  }
 \end{tikzpicture}
 \end{document}

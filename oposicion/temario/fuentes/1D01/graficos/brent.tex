@@ -5,7 +5,9 @@
 % Precio del Brent (media mensual, al contado), enero de 2005 a septiembre de
 % 2026, en dólares y en euros por barril. EIA (RBRTE); en euros con el tipo de
 % referencia del BCE (consulta 23/10/2026). Eje x: n.º de mes desde enero de
-% 2005 (fila del CSV); marcas en enero de cada año.
+% 2005 (fila del CSV); marcas en enero de cada año. Paleta «dictamen»: dólares
+% en el bermellón de la energía, euros en el azul de la zona del euro.
+% Capas: ejes → líneas → rótulos.
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/brent.csv}\brent
 \pgfplotsset{
   leyenda linea corta/.style={legend image code/.code={%
@@ -29,21 +31,21 @@
     % 1: ejes (los dibuja el entorno axis)
     % 2: en dólares
     \capa{2}{
-      \addplot[curva1, thick, leyenda linea corta] table[x expr=\coordindex, y=usd_barril] {\brent};
+      \addplot[diclinea=dicenergia, leyenda linea corta] table[x expr=\coordindex, y=usd_barril] {\brent};
       \addlegendentry{Dólares por barril}
     }
     % 3: en euros
     \capa{3}{
-      \addplot[curva2, thick, leyenda linea corta] table[x expr=\coordindex, y=eur_barril] {\brent};
+      \addplot[diclinea=dicze, leyenda linea corta] table[x expr=\coordindex, y=eur_barril] {\brent};
       \addlegendentry{Euros por barril}
     }
     % 4: rótulos de los picos (jul. 2008, jun. 2022, abr. y sep. 2026)
     \capa{4}{
-      \node[font=\footnotesize, anchor=south, align=center] at (axis cs:42,133) {jul.\ 2008\\\textcolor{tceemorado}{133\,\$}};
-      \node[font=\footnotesize, anchor=south, align=center] at (axis cs:209,123) {jun.\ 2022\\\textcolor{tceemorado}{123\,\$}};
+      \node[font=\footnotesize, anchor=south, align=center] at (axis cs:42,133) {jul.\ 2008\\\textcolor{dicenergia}{133\,\$}};
+      \node[font=\footnotesize, anchor=south, align=center] at (axis cs:209,123) {jun.\ 2022\\\textcolor{dicenergia}{123\,\$}};
       \draw[guia, solid] (axis cs:210,116) -- (axis cs:230,110);
-      \node[font=\footnotesize, anchor=west, inner sep=1pt, text=tceeazul] at (axis cs:230,110) {116\,€};
-      \node[font=\footnotesize, anchor=south, align=center] at (axis cs:253,118) {abr.\ y sep.\ 2026\\\textcolor{tceemorado}{117\,\$ y 114\,\$}};
+      \node[font=\footnotesize, anchor=west, inner sep=1pt, text=dicze] at (axis cs:230,110) {116\,€};
+      \node[font=\footnotesize, anchor=south, align=center] at (axis cs:253,118) {abr.\ y sep.\ 2026\\\textcolor{dicenergia}{117\,\$ y 114\,\$}};
     }
   \end{axis}
 \end{tikzpicture}

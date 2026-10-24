@@ -466,6 +466,25 @@ el texto original y lo que se hizo.
   ejes de Jehle y Reny.
 - Los gráficos de datos (series) se hacen con pgfplots a partir de
   `datos/*.csv` con el último dato y la fuente en la cabecera del CSV.
+- **Gráficos de datos: tres reglas** (Víctor, 24/10/2026; valen para todo
+  gráfico de datos, en los temas, la guía del dictamen y cualquier otro sitio):
+  1. **Orden de capas** (lo que va después tapa a lo de antes): primero
+     columnas o barras (y áreas sombreadas), luego los ejes horizontal y
+     vertical (y las líneas de referencia o umbral), luego las líneas, luego
+     los puntos y, al final, etiquetas, rótulos y comentarios. Así ningún dato
+     queda tapado (p. ej., en el gráfico de contribuciones: barras → ejes →
+     línea del PIB → puntos → etiquetas). Es el mismo orden en el código y en
+     las `\capa{n}`.
+  2. **Paletas coherentes** en todo el documento: lo mismo, el mismo color en
+     todos los gráficos; familias de color por bloque que se distingan de un
+     vistazo (p. ej., demanda externa en una gama claramente distinta de la
+     interna; dentro de la interna, tonos emparentados: consumo privado y
+     público de una familia, inversión de otra). Las paletas se definen una
+     vez (en `tikz-tcee.tex` o en el preámbulo de los gráficos del tema) y se
+     usan por nombre, nunca con colores sueltos.
+  3. **Colores bien distinguibles**: pocos colores y con contraste (entre sí,
+     en escala de grises y para daltónicos); si hay muchas series, se agrupan
+     o se pasa a pequeños múltiplos antes que usar tonos parecidos.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las
   capturas de tablas se convierten en tablas LaTeX.
 - Si un gráfico o una tabla pertenecen a una caja (anotaciones, ejemplo…),
@@ -797,21 +816,44 @@ un tema (§1-§10), con estas diferencias:
   1 h 45 min; de 7-10 a 5-6 preguntas), con una tabla de las últimas
   convocatorias; para el formato vigente, 10-12 minutos iniciales de lectura
   (Víctor, 23/10/2026).
-- **Estructura**:
-  1. *El ejercicio y el método*: qué es, cómo se califica, qué valora el
-     tribunal, reparto del tiempo, cómo leer el cuadernillo (dividir el
-     ciclo, marcar fortalezas en verde y debilidades en rojo, emparejar
-     gráficos y tablas con cada pregunta), cómo redactar y errores típicos.
-  2. Los bloques del esquema de 2025, en su orden: *perfil cíclico*
-     (medidores, demanda, oferta, diagnóstico), *mercados de factores*
-     (trabajo y capitales: financiero, bancario, vivienda, deuda),
-     *competitividad* (precio e inflación, tipo de cambio, no precio),
-     *sector exterior* (cuenta corriente, financiación, posición de inversión
-     internacional, sostenibilidad), *políticas* (monetaria, fiscal, *policy
-     mix*, de oferta) y *recomendaciones* por desequilibrio.
-  3. Anexos: tabla de indicadores con umbrales de referencia, qué se ha
-     preguntado en los dictámenes oficiales (pregunta por pregunta y año) y
-     expresiones útiles para redactar.
+- **Estructura** (rehecha por Víctor el 24/10/2026): la guía se centra en
+  la **teoría económica y en cómo interpretar los datos de un país**; lo del
+  examen va a los anexos.
+  1. *Introducción*, que acaba con un **esquema (índice)** de lo que se va a
+     ver, ordenado por los títulos de los bloques.
+  2. Los bloques del esquema de 2025, en su orden y numerados desde I:
+     *perfil cíclico* (medidores, demanda, oferta, diagnóstico), *mercados de
+     factores* (trabajo y capitales), *competitividad* (precio e inflación,
+     con los índices de precios —IPC, deflactor, Laspeyres y Paasche— en
+     detalle; tipo de cambio; no precio), *sector exterior* (balanza de
+     pagos con su identidad **desarrollada**, financiación, posición de
+     inversión internacional, sostenibilidad), *políticas* (monetaria;
+     **estabilidad financiera y política macroprudencial**, justo después de
+     la monetaria porque así se pregunta: indicadores bancarios, riesgos,
+     regulación micro y macroprudencial, Basilea III, colchones, supervisión;
+     fiscal con todos sus análisis, incluida la repercusión de la inflación
+     en las finanzas públicas; *policy mix*; de oferta) y *recomendaciones*
+     por desequilibrio.
+  3. Lo que se refiere a exámenes de otros años (qué cayó, cómo se
+     preguntó) va en cuadros `notaopositor` o grises, no en el texto.
+  4. Anexos: *el ejercicio y el método* (qué es, cómo se califica, qué valora
+     el tribunal, cómo leer el cuadernillo, cómo redactar, errores típicos,
+     matriz de fortalezas y debilidades, y la **tabla orientativa** del
+     reparto del tiempo), tabla de indicadores con umbrales, qué se ha
+     preguntado (resumen por bloque y año, **sin transcribir** los
+     exámenes), expresiones útiles, series, cálculos tipo con las fórmulas
+     en cuadros visuales, FMI, España y temas por bloque.
+- **Reparto del tiempo**: en el cuerpo, solo unas reglas ligeras y muy
+  orientativas: el opositor no sabe cuántas preguntas habrá hasta que abre
+  el cuadernillo, y debe dar más tiempo a las preguntas donde están los retos
+  reales de la economía. La tabla, en el anexo de método.
+- **Fechas en el texto**: no se ata una idea teórica a un año suelto («desde
+  2022», «en 2022») salvo que sea un hecho que lo exija; nunca afirmaciones
+  del tipo «desde 2022 no se piden cálculos».
+- **Nada de la guía anterior se pierde** (Víctor, 24/10/2026): todo lo que
+  había, incluidos anexos y notas al pie, se mantiene salvo que estuviera
+  mal; los párrafos de ejemplo entre comillas van en cuadros «Ejemplo de
+  redacción» junto al indicador, con años y cifras genéricos (20xx).
 - **Extensión** (Víctor, 23/10/2026): el cuerpo (método y bloques), **40-50
   páginas como máximo**; lo de ampliación (series, cálculos tipo, programación
   del FMI, España, hechos estilizados en detalle) va a los anexos.
@@ -827,9 +869,12 @@ un tema (§1-§10), con estas diferencias:
 - **Coherencia**: definiciones, notación y referencias como en §6 (la
   numeración de los temas que cita el original puede ser la antigua: se
   comprueba en `temario.json`). La guía no desarrolla modelos: remite al tema.
-- **Ficha de repaso**: cuatro páginas como las demás (§8 bis), con el método y
-  el reparto del tiempo, la tabla de indicadores y umbrales, desequilibrios
-  típicos → recomendaciones y frases útiles, en lugar del esquema del cante.
+- **Resumen** (en lugar de la ficha de cuatro páginas; Víctor, 24/10/2026):
+  un resumen del cuerpo (sin anexos) de **6-8 páginas**, con frases
+  redactadas enteras y que se lea por sí solo: el objetivo es compactar las
+  ideas clave, no memorizar. Formato parecido al de la ficha de repaso, con
+  al menos un anexo de las funciones y fórmulas principales que hay que
+  recordar.
 - **Vídeo**: explicativo, de unos 15 minutos (tabla §0), sin voz por ahora:
   cómo se lee el cuadernillo, cómo se ordena el dictamen y cómo se reparte el
   tiempo, con un caso (un dictamen oficial). Mismas reglas de pizarra y

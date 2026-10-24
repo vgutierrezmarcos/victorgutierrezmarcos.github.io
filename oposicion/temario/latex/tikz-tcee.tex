@@ -66,3 +66,75 @@
 % \proyeccion{(x,y)}{etq x}{etq y}: líneas guía a los ejes con etiquetas
 \newcommand{\proyeccion}[3]{%
   \draw[guia] let \p1=#1 in (\x1,0) node[below] {#2} |- (0,\y1) node[left] {#3};}
+
+% --------------------------------------------------------------------------
+% Paleta «dictamen» (dic…): gráficos de datos de la Guía del dictamen (1D01) y
+% de cualquier gráfico de coyuntura que quiera los mismos colores. Un concepto,
+% un color en todos los gráficos (CRITERIOS §7, «tres reglas», 24/10/2026);
+% tabla completa en fuentes/1D01/_trabajo/paleta-1D01.md. No cambia nada de
+% lo anterior: son colores y estilos nuevos.
+% Actividad: el PIB (y sus variantes: PIB por persona, PIB mundial), morado.
+\definecolor{dicpib}{HTML}{5F2987}
+% Demanda interna, gama cálida: consumo (naranjas: privado oscuro, público
+% claro), inversión (verde) y existencias (gris con trama, aparte).
+\definecolor{dicconspriv}{HTML}{C76A1F}
+\definecolor{dicconspub}{HTML}{F5C690}
+\definecolor{dicfbcf}{HTML}{2A6B3C}
+\definecolor{dicexistencias}{HTML}{B4B4B4}
+% Demanda externa y comercio, gama fría (azul claro, que se separa del morado)
+\definecolor{dicexterna}{HTML}{6AA6DA}
+% Zonas: zona del euro (azul marino), España (rojo), resto de países (grises)
+\definecolor{dicze}{HTML}{17406D}
+\definecolor{dicespana}{HTML}{C8382E}
+\definecolor{dicotro}{HTML}{8A8A8A}
+\definecolor{dicotroclaro}{HTML}{B5B5B5}
+\definecolor{dicotromasclaro}{HTML}{DADADA}
+% Precios: inflación general (negro, continuo) y subyacente (negro,
+% discontinuo); componentes: energía (bermellón), alimentos (amarillo) y los
+% de la subyacente en azules (bienes industriales claro, servicios oscuro).
+\definecolor{dicinflacion}{HTML}{1A1A1A}
+\definecolor{dicenergia}{HTML}{D55E00}
+\definecolor{dicalimentos}{HTML}{F2D45C}
+\definecolor{dicbine}{HTML}{7FB2E0}
+\definecolor{dicservicios}{HTML}{1F4E89}
+% Trabajo: empleo (verde azulado), horas (el mismo, claro), tasa de actividad
+% (verde azulado oscuro), paro (teja); productividad (dorado de la web).
+\definecolor{dicempleo}{HTML}{1B7F6B}
+\definecolor{dichoras}{HTML}{86CBB8}
+\definecolor{dicactividad}{HTML}{0F5247}
+\definecolor{dicparo}{HTML}{A23B2A}
+\definecolor{dicproductividad}{HTML}{B8860B}
+% Hogares: renta disponible (pizarra) y tasa de ahorro (negro); el consumo es
+% dicconspriv.
+\definecolor{dicrenta}{HTML}{4A5A6A}
+\definecolor{dicahorro}{HTML}{1A1A1A}
+% Política monetaria: tipos del BCE en azules (depósito, el de la zona del
+% euro; operaciones principales, medio; facilidad marginal, claro); balance:
+% préstamos a los bancos (dorado claro), resto del activo (gris claro).
+\definecolor{dicdeposito}{HTML}{17406D}
+\definecolor{dicopf}{HTML}{4F86C6}
+\definecolor{dicfmc}{HTML}{9EC5EA}
+\definecolor{dicprestamos}{HTML}{D9A520}
+\definecolor{dicresto}{HTML}{CFCFCF}
+% Ciclo: series adelantadas, coincidentes (el PIB) y retrasadas
+\definecolor{dicadelantada}{HTML}{D55E00}
+\definecolor{dicretrasada}{HTML}{6AA6DA}
+% Referencias: rejilla, previsión, sombreados
+\definecolor{dicreferencia}{HTML}{767171}
+
+\tikzset{
+  % barra de un componente: \addplot[dicbarra=dicfbcf]
+  dicbarra/.style={fill=#1, draw=#1!65!black, line width=0.3pt},
+  % existencias: gris con trama, para que se distinga también en gris
+  dicbarratrama/.style={fill=#1, draw=#1!65!black, line width=0.3pt,
+    postaction={pattern=north east lines, pattern color=white}},
+  % línea de una serie; con halo blanco cuando pasa sobre barras
+  diclinea/.style={very thick, #1},
+  diclineahalo/.style={very thick, #1, preaction={draw=white, line width=3.4pt, solid}},
+  % puntos de una serie (capa aparte, después de la línea)
+  dicpuntos/.style={only marks, mark=*, mark size=1.8pt,
+    mark options={fill=white, draw=#1, line width=0.9pt, solid}},
+  % línea del cero o de un umbral, después de las barras
+  diccero/.style={thin, black},
+  dicumbral/.style={thin, dashed, dicreferencia},
+}

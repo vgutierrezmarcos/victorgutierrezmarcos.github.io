@@ -21,30 +21,35 @@
         draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
       legend cell align=left, area legend,
     ]
-    % 1: ejes y cero
+    % Paleta «dictamen»: zona del euro (azul marino) y España (rojo) en color;
+    % el resto, en grises de distinta claridad. Capas: sombreado de la previsión
+    % → barras → cero → rótulos.
+    % 1: marca de las previsiones (área sombreada, lo primero)
     \capa{1}{
-      \draw[thin,black] (axis cs:2018.45,0) -- (axis cs:2027.55,0);
+      \fill[tceegris, opacity=0.10] (axis cs:2025.5,-7.5) rectangle (axis cs:2027.55,9);
+    }
+    % 2: barras por país (zona del euro y España, juntas y en color)
+    \capa{2}{
+      \addplot[dicbarra=dicze] table[x=anio, y=zona_euro] {\impulso};
+      \addlegendentry{Zona del euro}
+      \addplot[dicbarra=dicespana] table[x=anio, y=espana] {\impulso};
+      \addlegendentry{España}
+      \addplot[dicbarra=dicotro] table[x=anio, y=eeuu] {\impulso};
+      \addlegendentry{EE.\,UU.}
+      \addplot[dicbarra=dicotroclaro] table[x=anio, y=reino_unido] {\impulso};
+      \addlegendentry{Reino Unido}
+      \addplot[dicbarra=dicotromasclaro] table[x=anio, y=japon] {\impulso};
+      \addlegendentry{Japón}
+    }
+    % 3: eje del cero, encima de las barras
+    \capa{3}{
+      \draw[diccero] (axis cs:2018.45,0) -- (axis cs:2027.55,0);
+    }
+    % 4: rótulos (sentido del impulso y previsión)
+    \capa{4}{
       \node[font=\scriptsize, text=tceegris, anchor=north west] at (axis cs:2018.5,8.9) {$+$ expansivo};
       \node[font=\scriptsize, text=tceegris, anchor=south west] at (axis cs:2018.5,-7.4) {$-$ contractivo};
-    }
-    % 2: barras por país
-    \capa{2}{
-      \addplot[fill=tceeazul!75, draw=tceeazul!70!black] table[x=anio, y=eeuu] {\impulso};
-      \addlegendentry{EE.\,UU.}
-      \addplot[fill=tceerojo!70, draw=tceerojo!70!black] table[x=anio, y=reino_unido] {\impulso};
-      \addlegendentry{Reino Unido}
-      \addplot[fill=tceemorado!70, draw=tceemorado!70!black] table[x=anio, y=zona_euro] {\impulso};
-      \addlegendentry{Zona del euro}
-      \addplot[fill=tceegris!60, draw=tceegris!70!black] table[x=anio, y=japon] {\impulso};
-      \addlegendentry{Japón}
-      \addplot[fill=tceedorado!80, draw=tceedorado!70!black] table[x=anio, y=espana] {\impulso};
-      \addlegendentry{España}
-    }
-    % 3: marca de las previsiones (trama sobre 2026-2027)
-    \capa{3}{
-      \fill[pattern=north east lines, pattern color=tceegris!70, on layer=axis foreground]
-        (axis cs:2025.5,-7.5) rectangle (axis cs:2027.55,9);
-      \node[font=\footnotesize, text=tceegris, anchor=north, fill=white, inner sep=1pt]
+      \node[font=\footnotesize, text=tceegris, anchor=north, inner sep=1pt]
         at (axis cs:2026.5,8.9) {Previsión};
     }
   \end{axis}
