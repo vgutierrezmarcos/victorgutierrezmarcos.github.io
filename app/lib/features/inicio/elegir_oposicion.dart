@@ -16,11 +16,14 @@ import '../../theme/app_theme.dart';
 /// oposición). Va antes de crear los servicios, así que no usa Riverpod.
 /// Estética neutra ([PaletaNeutra]); cada tarjeta, con la de su oposición.
 class ElegirOposicionApp extends StatelessWidget {
-  const ElegirOposicionApp({super.key, required this.alElegir, this.conBienvenida = false, this.conOposicion = true});
+  const ElegirOposicionApp({super.key, required this.alElegir, this.conBienvenida = false, this.conOposicion = true, this.buscarEnCuenta});
   /// Con una sola oposición no se pregunta ni la oposición ni el papel: [Papel] es null.
   final Future<void> Function(Oposicion, Papel?) alElegir;
   final bool conBienvenida;
   final bool conOposicion;
+  /// Tras entrar con Google en la bienvenida: la oposición de la cuenta, si
+  /// ya la tiene (entonces no se pregunta ni ella ni el papel).
+  final Future<Oposicion?> Function()? buscarEnCuenta;
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -35,15 +38,16 @@ class ElegirOposicionApp extends StatelessWidget {
         locale: const Locale('es'),
         supportedLocales: const [Locale('es')],
         localizationsDelegates: GlobalMaterialLocalizations.delegates,
-        home: _ElegirOposicionPage(alElegir: alElegir, conBienvenida: conBienvenida, conOposicion: conOposicion),
+        home: _ElegirOposicionPage(alElegir: alElegir, conBienvenida: conBienvenida, conOposicion: conOposicion, buscarEnCuenta: buscarEnCuenta),
       );
 }
 
 class _ElegirOposicionPage extends StatefulWidget {
-  const _ElegirOposicionPage({required this.alElegir, required this.conBienvenida, required this.conOposicion});
+  const _ElegirOposicionPage({required this.alElegir, required this.conBienvenida, required this.conOposicion, this.buscarEnCuenta});
   final Future<void> Function(Oposicion, Papel?) alElegir;
   final bool conBienvenida;
   final bool conOposicion;
+  final Future<Oposicion?> Function()? buscarEnCuenta;
 
   @override
   State<_ElegirOposicionPage> createState() => _ElegirOposicionPageState();
@@ -76,11 +80,24 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
     });
     final r = await entrarConGoogle();
     if (!mounted) return;
-    setState(() {
-      _entrando = false;
-      _error = r.error;
-    });
-    if (r.dentro) await _seguir();
+    if (!r.dentro) {
+      setState(() {
+        _entrando = false;
+        _error = r.error;
+      });
+      return;
+    }
+    // Cuenta que ya usaba la app (otro móvil, el navegador): a su oposición.
+    final deLaCuenta = await widget.buscarEnCuenta?.call();
+    if (!mounted) return;
+    setState(() => _entrando = false);
+    if (deLaCuenta != null) {
+      await Hive.box(Cajas.app).put(claveBienvenidaVista, true);
+      setState(() => _cargando = true);
+      await widget.alElegir(deLaCuenta, null);
+      return;
+    }
+    await _seguir();
   }
 
   List<Widget> _pasoBienvenida(String serif) {
