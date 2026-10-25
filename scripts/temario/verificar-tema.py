@@ -27,7 +27,7 @@ Errores (el tema no está terminado):
     antes de los anexos;
   - «se ha visto en el tema…» (cada tema se canta solo), nombres de
     preparadores (referencias.json) o enlaces a quia.com;
-  - la ficha de repaso no tiene cuatro páginas o es anterior a su fuente;
+  - la ficha de repaso no tiene cuatro páginas (el resumen de 1D01, de 6 a 8) o es anterior a su fuente;
   - un título queda al pie de una página del PDF, o una fórmula destacada
     separada de la frase que la presenta.
 
@@ -517,7 +517,10 @@ def verificar(tema):
             import fitz
             n_pags = fitz.open(repaso).page_count
             datos['paginas_repaso'] = n_pags
-            if n_pags != 4:
+            # el resumen de la guía del dictamen (1D01) ocupa de 6 a 8 (CRITERIOS § 11)
+            if tema.es_dictamen and not 6 <= n_pags <= 8:
+                errores.append(f'El resumen de la guía tiene {n_pags} páginas, no 6-8 (construir-repaso.py)')
+            elif not tema.es_dictamen and n_pags != 4:
                 errores.append(f'La ficha de repaso tiene {n_pags} páginas, no 4 (construir-repaso.py)')
         except Exception as e:
             avisos.append(f'No se pudo abrir la ficha de repaso: {e}')

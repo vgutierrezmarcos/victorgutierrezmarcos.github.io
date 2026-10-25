@@ -9,7 +9,8 @@ La fuente es fuentes/<tema>/repaso/<tema>-repaso.tex (estilo tcee-repaso.sty,
 la escribe el agente tema-repaso). El script prueba tamaños de letra de 10,5 a
 8 puntos (empezando por el de la vez anterior, guardado en estado.json) y se
 queda con el mayor con el que la ficha cabe en cuatro páginas. Falla si no
-salen exactamente cuatro: si ni con 8 puntos cabe (hay que recortar) o si con
+salen exactamente cuatro (en la guía del dictamen, 1D01, el resumen ocupa de 6 a
+8 páginas: CRITERIOS § 11): si ni con 8 puntos cabe (hay que recortar) o si con
 10,5 sobran páginas (hay que añadir contenido). Avisa si sobra mucho sitio en
 la última página y de las referencias sin definir del .log.
 
@@ -30,7 +31,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import Tema, MIKTEX, LATEX, entorno_tex, ejecutar, errores_log, ruta_windows, escribir_destinos_tex  # noqa: E402
 
 TAMANOS = (10.5, 10, 9.5, 9, 8.75, 8.5, 8.25, 8)
-PAGINAS = 4
+PAGINAS = 4                # ficha de repaso de un tema: exactamente cuatro
+PAGINAS_DICTAMEN = (6, 8)  # resumen de la guía del dictamen (1D01): de 6 a 8
 LLENADO_MINIMO = 0.80      # parte de la última página que debe estar ocupada
 
 
@@ -95,6 +97,9 @@ def main():
     ap.add_argument('--no-publicar', action='store_true')
     args = ap.parse_args()
     tema = Tema(args.tema)
+    minimo, maximo = PAGINAS_DICTAMEN if tema.es_dictamen else (PAGINAS, PAGINAS)
+    que = 'el resumen' if tema.es_dictamen else 'la ficha'
+    rango = f'{minimo}-{maximo}' if minimo != maximo else f'{maximo}'
     fuente = os.path.join(tema.dir, 'repaso', f'{tema.archivo}-repaso.tex')
     if not os.path.exists(fuente):
         print(f'No existe {os.path.relpath(fuente, tema.dir)} (lo escribe el agente tema-repaso)')
@@ -117,29 +122,29 @@ def main():
             print(f'  {tam} pt: {paginas_de[tam]} páginas', flush=True)
         return paginas_de[tam]
 
-    # El mayor tamaño con el que cabe en cuatro páginas, empezando por el de la
+    # El mayor tamaño con el que cabe en cuatro páginas (o en ocho, el resumen del dictamen), empezando por el de la
     # vez anterior: si cabe, se prueban los mayores; si no, los menores.
     elegido = None
     if previo in TAMANOS:
-        if paginas_con(previo) <= PAGINAS:
+        if paginas_con(previo) <= maximo:
             elegido = previo
             for tam in sorted(t for t in TAMANOS if t > previo):
-                if paginas_con(tam) <= PAGINAS:
+                if paginas_con(tam) <= maximo:
                     elegido = tam
                 else:
                     break
         else:
             for tam in [t for t in TAMANOS if t < previo]:
-                if paginas_con(tam) <= PAGINAS:
+                if paginas_con(tam) <= maximo:
                     elegido = tam
                     break
     else:
         for tam in TAMANOS:
-            if paginas_con(tam) <= PAGINAS:
+            if paginas_con(tam) <= maximo:
                 elegido = tam
                 break
     if elegido is None:
-        print(f'ERROR: ni con {TAMANOS[-1]} pt cabe en {PAGINAS} páginas: hay que recortar la ficha')
+        print(f'ERROR: ni con {TAMANOS[-1]} pt cabe en {maximo} páginas: hay que recortar {que}')
         sys.exit(1)
     # Segunda pasada (número total de páginas del pie) solo con el elegido; si
     # con ella cambia el recuento, se baja un tamaño
@@ -147,7 +152,7 @@ def main():
     while True:
         pdf = compilar(tema, tam, salida, pasadas=2)
         paginas = len(fitz.open(pdf))
-        if paginas <= PAGINAS or tam == TAMANOS[-1]:
+        if paginas <= maximo or tam == TAMANOS[-1]:
             break
         tam = TAMANOS[TAMANOS.index(tam) + 1]
         print(f'  (con la segunda pasada salen {paginas} páginas: se prueba {tam} pt)')
@@ -158,12 +163,13 @@ def main():
     if 'Token not allowed' in texto_log:
         print('AVISO: algún marcador del PDF lleva una orden que hyperref quita (ver el .log)')
     doc = fitz.open(pdf)
-    if paginas != PAGINAS:
-        print(f'ERROR: la ficha ocupa {paginas} páginas con {tam} pt: tiene que ocupar exactamente {PAGINAS} '
-              f'({"hay que añadir contenido" if paginas < PAGINAS else "hay que recortar"})')
+    if not minimo <= paginas <= maximo:
+        print(f'ERROR: {que} ocupa {paginas} páginas con {tam} pt: tiene que ocupar '
+              f'{"exactamente " if minimo == maximo else ""}{rango} '
+              f'({"hay que añadir contenido" if paginas < minimo else "hay que recortar"})')
         sys.exit(1)
-    lleno, columnas = ocupacion(doc[PAGINAS - 1])
-    print(f'Letra de {tam} pt; última página ocupada al {lleno:.0%} '
+    lleno, columnas = ocupacion(doc[paginas - 1])
+    print(f'{paginas} páginas; letra de {tam} pt; última página ocupada al {lleno:.0%} '
           f'(columnas: {", ".join(f"{c:.0%}" for c in columnas)})')
     if lleno < LLENADO_MINIMO:
         print(f'AVISO: sobra sitio en la última página ({lleno:.0%}): conviene añadir contenido')
