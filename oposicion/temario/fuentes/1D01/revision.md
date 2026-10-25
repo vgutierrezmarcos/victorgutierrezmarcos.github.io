@@ -576,3 +576,8 @@ comprobación allí.
 - La tabla de calificaciones (S&P, Moody's, Fitch; DBRS en cursiva) pasa al cuerpo, en el apartado de política fiscal, junto a la calidad crediticia de la deuda; las tablas bancarias siguen en el anexo B.
 - El anexo E («Análisis de casos frecuentes») se mantiene.
 - Para que el cuerpo siga en 50 páginas, la conclusión se compacta (el «qué hay que llevarse» ya está en el índice de la introducción) y la tabla de desequilibrios comparte página con ella. Resultado: cuerpo 50, anexos 38, bibliografía 9 (97 págs.).
+
+### Tercera vuelta (25/10/2026)
+
+- Anexos reordenados a petición de Víctor: A Hechos estilizados del ciclo económico y lectura de series; B Indicadores y umbrales; C Cálculos tipo; D Gráficos de lectura (anexo nuevo, separado del de series); E Análisis de casos frecuentes; F FMI; G Un caso: la economía española; H El ejercicio y el método; I Qué se ha preguntado; J Dónde se estudia cada bloque; K Expresiones útiles para redactar (al final). Primero la economía y después el examen. La introducción describe este orden.
+- Capas de todos los gráficos rehechas con capas de pgfplots (cuadrícula al fondo; barras y áreas; ejes, cero y umbrales; líneas; puntos; rótulos).

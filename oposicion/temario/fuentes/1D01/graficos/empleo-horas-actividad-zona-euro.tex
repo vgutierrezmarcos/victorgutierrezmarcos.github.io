@@ -8,7 +8,8 @@
 % 23/10/2026). Eje x: n.º de trimestre desde 1T2015 (fila del CSV); marcas en
 % el primer trimestre de cada año. Paleta «dictamen»: empleo y horas en
 % verdes azulados (oscuro y claro), actividad en verde azulado muy oscuro y
-% paro en teja. Capas: referencias → líneas → rótulos.
+% paro en teja. Capas «dic» de tikz-tcee.tex: cuadrícula → referencias →
+% líneas → rótulos.
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/empleo-horas-actividad-zona-euro.csv}\empleo
 \pgfplotsset{
   leyenda linea corta/.style={legend image code/.code={%
@@ -25,6 +26,8 @@
     legend cell align=left,
   },
 }
+% Capas «dic» (tikz-tcee.tex): fuera de los axis, porque hay varios en el dibujo.
+\pgfplotsset{dicapas}
 \begin{tikzpicture}[tcee]
   % 1: ejes del panel izquierdo
   \capa{1}{
@@ -34,8 +37,8 @@
       axis lines*=left, ymajorgrids, grid style={tceegris!25},
       legend style={at={(0.5,-0.15)}},
     ]
-    \draw[dicumbral] (axis cs:19,82) -- (axis cs:19,108);
-    \draw[thin,dicreferencia] (axis cs:-1,100) -- (axis cs:46,100);
+    \dicraya[dicumbral]{(19,82) (19,108)}
+    \dicraya[thin, dicreferencia]{(-1,100) (46,100)}
     % 2: empleo
     \capa{2}{
       \addplot[diclinea=dicempleo, leyenda linea corta] table[x expr=\coordindex, y=empleo_indice] {\empleo};
@@ -48,14 +51,17 @@
     }
     % 4: rótulos del último dato
     \capa{4}{
-      \node[font=\scriptsize, text=dicempleo, anchor=south east] at (axis cs:45.5,106.2) {106,0};
-      \node[font=\scriptsize, text=dichoras!60!black, anchor=north east] at (axis cs:45.5,104.9) {105,2};
+      \dicrotulo[font=\scriptsize, text=dicempleo, anchor=south east]{(45.5,106.2)}{106,0}
+      \dicrotulo[font=\scriptsize, text=dichoras!60!black, anchor=north east]{(45.5,104.9)}{105,2}
     }
   \end{axis}
   }
   % 5: panel derecho con actividad (eje izquierdo) y paro (eje derecho)
   \capa{5}{
-  \begin{axis}[panel, at={(izq.east)}, anchor=west, xshift=2.4cm, name=der,
+  % (con capas, xshift en el axis no mueve su recuadro: el desplazamiento va
+  % en un punto aparte)
+  \coordinate (panelb) at ([xshift=2.4cm]izq.east);
+  \begin{axis}[panel, at={(panelb)}, anchor=west, name=der,
       title={b) Actividad y paro (\%)},
       ymin=61, ymax=67, ytick={61,62,...,67},
       axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!25},
@@ -67,7 +73,7 @@
     \addlegendimage{diclinea=dicparo, leyenda linea corta}
     \addlegendentry{Tasa de paro (eje derecho)}
   \end{axis}
-  \begin{axis}[panel, at={(izq.east)}, anchor=west, xshift=2.4cm,
+  \begin{axis}[panel, at={(panelb)}, anchor=west,
       ymin=4, ymax=13, ytick={4,6,...,12},
       axis x line=none, axis y line*=right,
       ylabel={Tasa de paro (\%)}, ylabel style={font=\footnotesize, text=dicparo},
@@ -75,7 +81,7 @@
     \addplot[diclinea=dicparo] table[x expr=\coordindex, y=tasa_paro] {\empleo};
     % 6: rótulo del último dato del paro
     \capa{6}{
-      \node[font=\scriptsize, text=dicparo, anchor=north east] at (axis cs:45.5,6.2) {6,4};
+      \dicrotulo[font=\scriptsize, text=dicparo, anchor=north east]{(45.5,6.2)}{6,4}
     }
   \end{axis}
   }

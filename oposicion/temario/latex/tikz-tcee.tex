@@ -138,3 +138,38 @@
   diccero/.style={thin, black},
   dicumbral/.style={thin, dashed, dicreferencia},
 }
+% Capas de los gráficos de datos (CRITERIOS §7, «tres reglas»), de abajo
+% arriba: cuadrícula → sombreados (dicfondo) → barras y áreas (dicbarras) → ejes, cero y umbrales
+% (axis lines) → líneas (main) → puntos (dicpuntos) → rótulos (axis
+% descriptions). No basta el orden del código: pgfplots dibuja cuadrícula,
+% ejes y marcas en sus propias capas (y area style pone los ejes encima), y
+% dentro de un axis los \draw, \fill y \node no admiten capa (van con los
+% datos de main); por eso todo lo que se dibuja dentro del axis es un \addplot.
+% Uso: \begin{axis}[…, dicapas] (al final de las opciones);
+%   barras y áreas: \addplot[on layer=dicbarras, …];
+%   sombreados:     \dicsombra[estilo]{x1}{y1}{x2}{y2} (rectángulo, en dicfondo,
+%                   bajo las barras y sobre la cuadrícula);
+%   cero y umbrales: \dicraya[estilo]{(x1,y1) (x2,y2)} (en axis lines);
+%   líneas: \addplot normal (main); puntos: \addplot[on layer=dicpuntos, …]
+%   (las marcas de cualquier serie van solas a dicpuntos);
+%   rótulos: \dicrotulo[opciones del nodo]{(x,y)}{texto} (en axis descriptions).
+% Los \capa{n} del vídeo no cambian: siguen envolviendo instrucciones completas.
+\pgfdeclarelayer{dicfondo}
+\pgfdeclarelayer{dicbarras}
+\pgfdeclarelayer{dicpuntos}
+\pgfplotsset{
+  % (el segundo argumento reparte cuadrícula, ejes y rótulos como el estándar)
+  layers/dic/.define layer set={axis background, axis grid, dicfondo, dicbarras,
+    axis ticks, axis lines, axis tick labels, pre main, main, dicpuntos,
+    axis descriptions, axis foreground}{/pgfplots/layers/standard},
+  dicapas/.style={axis on top=false, set layers=dic, mark layer=dicpuntos},
+  dicsuelto/.style={forget plot, stack plots=false, sharp plot, mark=none},
+}
+\newcommand{\dicraya}[2][]{%
+  \addplot[on layer=axis lines, dicsuelto, diccero, #1] coordinates {#2};}
+\newcommand{\dicsombra}[5][]{%
+  \addplot[on layer=dicfondo, dicsuelto, draw=none, #1]
+    coordinates {(#2,#3) (#4,#3) (#4,#5) (#2,#5)};}
+\newcommand{\dicrotulo}[3][]{%
+  \addplot[on layer=axis descriptions, dicsuelto, draw=none] coordinates {#2}
+    node[pos=0, #1] {#3};}

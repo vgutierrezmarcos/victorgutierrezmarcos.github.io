@@ -7,7 +7,7 @@
 % referencia del BCE (consulta 23/10/2026). Eje x: n.º de mes desde enero de
 % 2005 (fila del CSV); marcas en enero de cada año. Paleta «dictamen»: dólares
 % en el bermellón de la energía, euros en el azul de la zona del euro.
-% Capas: ejes → líneas → rótulos.
+% Capas «dic» (tikz-tcee.tex): cuadrícula → ejes → líneas → rótulos.
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/brent.csv}\brent
 \pgfplotsset{
   leyenda linea corta/.style={legend image code/.code={%
@@ -26,7 +26,7 @@
       ymajorgrids, grid style={tceegris!25},
       legend style={at={(0.5,-0.12)}, anchor=north, legend columns=2,
         draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=10pt}},
-      legend cell align=left,
+      legend cell align=left, dicapas,
     ]
     % 1: ejes (los dibuja el entorno axis)
     % 2: en dólares
@@ -41,11 +41,11 @@
     }
     % 4: rótulos de los picos (jul. 2008, jun. 2022, abr. y sep. 2026)
     \capa{4}{
-      \node[font=\footnotesize, anchor=south, align=center] at (axis cs:42,133) {jul.\ 2008\\\textcolor{dicenergia}{133\,\$}};
-      \node[font=\footnotesize, anchor=south, align=center] at (axis cs:209,123) {jun.\ 2022\\\textcolor{dicenergia}{123\,\$}};
-      \draw[guia, solid] (axis cs:210,116) -- (axis cs:230,110);
-      \node[font=\footnotesize, anchor=west, inner sep=1pt, text=dicze] at (axis cs:230,110) {116\,€};
-      \node[font=\footnotesize, anchor=south, align=center] at (axis cs:253,118) {abr.\ y sep.\ 2026\\\textcolor{dicenergia}{117\,\$ y 114\,\$}};
+      \dicrotulo[font=\footnotesize, anchor=south, align=center]{(42,133)}{jul.\ 2008\\\textcolor{dicenergia}{133\,\$}}
+      \dicrotulo[font=\footnotesize, anchor=south, align=center]{(209,123)}{jun.\ 2022\\\textcolor{dicenergia}{123\,\$}}
+      \addplot[on layer=axis descriptions, dicsuelto, guia, solid] coordinates {(210,116) (230,110)};
+      \dicrotulo[font=\footnotesize, anchor=west, inner sep=1pt, text=dicze]{(230,110)}{116\,€}
+      \dicrotulo[font=\footnotesize, anchor=south, align=center]{(253,118)}{abr.\ y sep.\ 2026\\\textcolor{dicenergia}{117\,\$ y 114\,\$}}
     }
   \end{axis}
 \end{tikzpicture}

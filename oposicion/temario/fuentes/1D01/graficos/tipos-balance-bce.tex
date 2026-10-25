@@ -8,7 +8,8 @@
 % trimestre 2014-2026 (último: semana 41 de 2026). BCE, Data Portal (FM e ILM;
 % consulta 23/10/2026). Resto del activo = activo total − valores − préstamos.
 % Paleta «dictamen»: tipos en azules (depósito oscuro, OPF medio, facilidad
-% marginal claro); balance: áreas → línea del activo total → rótulos.
+% marginal claro); balance: áreas → línea del activo total → rótulos. Capas
+% «dic» de tikz-tcee.tex: cuadrícula → áreas → ejes y cero → líneas → rótulos.
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/tipos-bce.csv}\tipos
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/balance-eurosistema.csv}\balance
 \pgfplotsset{
@@ -25,6 +26,10 @@
     /pgf/number format/use comma,
   },
 }
+% Capas «dic» para los dos paneles (fuera de los axis: con varios axis en el
+% mismo dibujo, set layers tiene que ir antes de ellos). Con capas, xshift en
+% el axis no mueve su recuadro: el desplazamiento va en un punto aparte (panelb).
+\pgfplotsset{dicapas}
 \begin{tikzpicture}[tcee]
   % 1: ejes del panel de tipos
   \capa{1}{
@@ -35,7 +40,7 @@
       ymin=-1, ymax=6, ytick={-1,0,...,6},
       axis lines*=left, ymajorgrids, grid style={tceegris!25},
     ]
-    \draw[diccero] (axis cs:1999-01-01,0) -- (axis cs:2026-12-31,0);
+    \dicraya{(1999-01-01,0) (2026-12-31,0)}
     % 2: facilidad de depósito (el tipo que guía la política desde 2022)
     \capa{2}{
       \addplot[const plot, diclinea=dicdeposito, line width=1.6pt, leyenda linea corta]
@@ -53,28 +58,29 @@
     }
     % 4: rótulo del último tipo de la facilidad de depósito
     \capa{4}{
-      \node[font=\scriptsize, text=dicdeposito, anchor=west, inner sep=2pt]
-        at (axis cs:2026-10-01,2.5) {2,50};
+      \dicrotulo[font=\scriptsize, text=dicdeposito, anchor=west, inner sep=2pt]
+        {(2026-10-01,2.5)}{2,50}
     }
   \end{axis}
   }
   % 5: ejes del panel del balance
   \capa{5}{
-  \begin{axis}[panel, at={(tipos.east)}, anchor=west, xshift=2cm,
+  \coordinate (panelb) at ([xshift=2cm]tipos.east);
+  \begin{axis}[panel, at={(panelb)}, anchor=west,
       title={b) Balance del Eurosistema (billones de euros)},
       xmin=2014-01-01, xmax=2026-12-31,
       xtick={2014-01-01,2016-01-01,2018-01-01,2020-01-01,2022-01-01,2024-01-01,2026-01-01},
       ymin=0, ymax=10, ytick={0,2,...,10},
       axis lines*=left, ymajorgrids, grid style={tceegris!25},
-      stack plots=y, area style,
+      stack plots=y, area style, axis on top=false,
     ]
     % 6: valores de política monetaria, préstamos a los bancos y resto del activo
     \capa{6}{
-      \addplot[fill=dicdeposito!75, draw=none] table[x=fecha, y=valores_politica_monetaria] {\balance} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicdeposito!75, draw=none] table[x=fecha, y=valores_politica_monetaria] {\balance} \closedcycle;
       \addlegendentry{Valores de política monetaria}
-      \addplot[fill=dicprestamos, draw=none] table[x=fecha, y=prestamos_bancos] {\balance} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicprestamos, draw=none] table[x=fecha, y=prestamos_bancos] {\balance} \closedcycle;
       \addlegendentry{Préstamos a los bancos}
-      \addplot[fill=dicresto, draw=none]
+      \addplot[on layer=dicbarras, fill=dicresto, draw=none]
         table[x=fecha, y expr=\thisrow{activo_total}-\thisrow{valores_politica_monetaria}-\thisrow{prestamos_bancos}] {\balance} \closedcycle;
       \addlegendentry{Resto del activo}
     }
@@ -86,8 +92,8 @@
     }
     % 8: rótulos del máximo y del último dato
     \capa{8}{
-      \node[font=\scriptsize, anchor=south, inner sep=2pt] at (axis cs:2022-06-24,8.836) {2022: 8,8};
-      \node[font=\scriptsize, anchor=south west, inner sep=2pt] at (axis cs:2026-10-16,5.935) {5,9};
+      \dicrotulo[font=\scriptsize, anchor=south, inner sep=2pt]{(2022-06-24,8.836)}{2022: 8,8}
+      \dicrotulo[font=\scriptsize, anchor=south west, inner sep=2pt]{(2026-10-16,5.935)}{5,9}
     }
   \end{axis}
   }

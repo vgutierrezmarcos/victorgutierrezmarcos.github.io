@@ -27,25 +27,25 @@
       ymajorgrids, grid style={tceegris!25},
       legend style={at={(0.5,-0.1)}, anchor=north, legend columns=3,
         draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
-      legend cell align=left, area legend,
+      legend cell align=left, area legend, dicapas,
     ]
     % Paleta «dictamen»: productividad = dicproductividad, horas = dichoras,
-    % PIB por persona = dicpib. Capas: barras → cero → línea → puntos → rótulo.
+    % PIB por persona = dicpib. Capas «dic»: cuadrícula → barras → cero → línea → puntos → rótulo.
     % 1: PIB por hora trabajada
     \capa{1}{
-      \addplot[dicbarra=dicproductividad]
+      \addplot[on layer=dicbarras, dicbarra=dicproductividad]
         table[x expr=\coordindex, y=pib_por_hora] {\pet};
       \addlegendentry{PIB por hora trabajada}
     }
     % 2: horas por persona en edad de trabajar
     \capa{2}{
-      \addplot[dicbarra=dichoras]
+      \addplot[on layer=dicbarras, dicbarra=dichoras]
         table[x expr=\coordindex, y=horas_por_pet] {\pet};
       \addlegendentry{Horas por persona en edad de trabajar}
     }
     % 3: eje del cero, encima de las barras
     \capa{3}{
-      \draw[diccero] (axis cs:-0.7,0) -- (axis cs:29.7,0);
+      \dicraya{(-0.7,0) (29.7,0)}
     }
     % 4: PIB por persona en edad de trabajar (la suma)
     \capa{4}{
@@ -56,13 +56,12 @@
     }
     % 5: puntos
     \capa{5}{
-      \addplot[forget plot, stack plots=false, dicpuntos=dicpib, mark size=1.5pt]
+      \addplot[on layer=dicpuntos, forget plot, stack plots=false, dicpuntos=dicpib, mark size=1.5pt]
         table[x expr=\coordindex, y=pib_por_pet] {\pet};
     }
     % 6: rótulo del último dato
     \capa{6}{
-      \node[font=\footnotesize, text=dicpib, anchor=south east, inner sep=2pt]
-        at (axis cs:29.3,6.2) {2T2026: $+5{,}5\,\%$ (por hora, $+1{,}7$; horas, $+3{,}9$)};
+      \dicrotulo[font=\footnotesize, text=dicpib, anchor=south east, inner sep=2pt]{(29.3,6.2)}{2T2026: $+5{,}5\,\%$ (por hora, $+1{,}7$; horas, $+3{,}9$)}
     }
   \end{axis}
 \end{tikzpicture}

@@ -7,7 +7,8 @@
 % (% de la renta disponible, eje derecho). Eurostat (consulta 23/10/2026).
 % Paleta «dictamen»: consumo = dicconspriv (el del gráfico de contribuciones),
 % renta = dicrenta, ahorro = dicahorro. Capas: sombreado de 2020 → barras →
-% cero → línea del ahorro → puntos → rótulos.
+% cero → línea del ahorro → puntos → rótulos (capas «dic» de tikz-tcee.tex:
+% las barras del eje izquierdo quedan debajo de todo lo del derecho).
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/consumo-renta-ahorro-zona-euro.csv}\hogares
 \pgfplotsset{
   hogares/.style={
@@ -20,6 +21,8 @@
   leyenda linea corta/.style={legend image code/.code={%
     \draw[##1,mark repeat=2,mark phase=2] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}},
 }
+% Capas «dic» (tikz-tcee.tex): fuera de los axis, porque hay varios en el dibujo.
+\pgfplotsset{dicapas}
 \begin{tikzpicture}[tcee]
   % Eje izquierdo: tasas de variación real
   \begin{axis}[hogares,
@@ -31,19 +34,19 @@
     ]
     % 1: 2020 resaltado (área sombreada, lo primero)
     \capa{1}{
-      \fill[tceedorado,opacity=0.12] (axis cs:2019.5,-9) rectangle (axis cs:2020.5,9);
+      \dicsombra[fill=tceedorado, opacity=0.12]{2019.5}{-9}{2020.5}{9}
     }
     % 2: crecimiento del consumo real
     \capa{2}{
-      \addplot[dicbarra=dicconspriv] table[x=anio, y=consumo_real] {\hogares};
+      \addplot[on layer=dicbarras, dicbarra=dicconspriv] table[x=anio, y=consumo_real] {\hogares};
     }
     % 3: crecimiento de la renta disponible real
     \capa{3}{
-      \addplot[dicbarra=dicrenta] table[x=anio, y=renta_disponible_real] {\hogares};
+      \addplot[on layer=dicbarras, dicbarra=dicrenta] table[x=anio, y=renta_disponible_real] {\hogares};
     }
     % 4: eje del cero, encima de las barras
     \capa{4}{
-      \draw[diccero] (axis cs:2011.4,0) -- (axis cs:2025.6,0);
+      \dicraya{(2011.4,0) (2025.6,0)}
     }
   \end{axis}
   % Eje derecho: tasa de ahorro (se dibuja después: queda encima de las barras)
@@ -68,16 +71,13 @@
     }
     % 6: puntos de la tasa de ahorro
     \capa{6}{
-      \addplot[forget plot, dicpuntos=dicahorro] table[x=anio, y=tasa_ahorro] {\hogares};
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=dicahorro] table[x=anio, y=tasa_ahorro] {\hogares};
     }
     % 7: rótulos de 2020 (en coordenadas del eje derecho: y = 10 + (y_izq + 9)·11/18)
     \capa{7}{
-      \node[font=\footnotesize,text=dicconspriv!80!black,anchor=north east,inner sep=1pt]
-        at (axis cs:2020,10.764) {$-7{,}7$};
-      \node[font=\footnotesize,text=dicrenta,anchor=north west,inner sep=1pt]
-        at (axis cs:2020.05,15.256) {$-0{,}3$};
-      \node[font=\footnotesize,text=dicahorro,anchor=south west,inner sep=2pt]
-        at (axis cs:2020.1,19.31) {$19{,}3$};
+      \dicrotulo[font=\footnotesize,text=dicconspriv!80!black,anchor=north east,inner sep=1pt]{(2020,10.764)}{$-7{,}7$}
+      \dicrotulo[font=\footnotesize,text=dicrenta,anchor=north west,inner sep=1pt]{(2020.05,15.256)}{$-0{,}3$}
+      \dicrotulo[font=\footnotesize,text=dicahorro,anchor=south west,inner sep=2pt]{(2020.1,19.31)}{$19{,}3$}
     }
   \end{axis}
 \end{tikzpicture}
