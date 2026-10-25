@@ -65,7 +65,13 @@ final _router = GoRouter(
   // vez de a la página de error del enrutador, de la que no se puede salir.
   onException: (_, state, router) => router.go('/hoy'),
   // Rutas de antes de la reorganización (avisos, enlaces guardados): a su sitio nuevo.
-  redirect: (context, state) => rutaNueva(state.uri.path),
+  // El examen y los resultados llevan sus datos en `extra`, que el historial
+  // del navegador no guarda: al volver a ellos con «atrás» (o al recargar), a Estudiar.
+  redirect: (context, state) => switch (state.uri.path) {
+        '/examen' when state.extra is! ConfigTest => '/estudiar',
+        '/resultados' when state.extra is! DatosResultado => '/estudiar',
+        final ruta => rutaNueva(ruta),
+      },
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => _Shell(shell: shell),
