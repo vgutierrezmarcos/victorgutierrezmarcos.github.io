@@ -20,6 +20,7 @@ fuentes/<tema>/_trabajo/repaso/<tema>-repaso-p1.png … -p4.png.
 Autor: Víctor Gutiérrez Marcos
 """
 import argparse
+import glob
 import os
 import re
 import shutil
@@ -50,6 +51,27 @@ def compilar(tema, tam, salida, pasadas=2):
             raise RuntimeError(f'Error de LaTeX ({tam} pt):\n'
                                + '\n'.join(errores_log(os.path.join(salida, trabajo + '.log'))))
     return os.path.join(salida, trabajo + '.pdf')
+
+
+def compilar_graficos_repaso(tema):
+    """Compila los esquemas e infografías propios de la ficha
+    (fuentes/<tema>/repaso/graficos/*.tex, TikZ standalone con tikz-tcee) a PDF,
+    solo los que han cambiado. Los gráficos del tema (graficos/) los compila
+    construir-tema.py; la ficha los usa tal cual. Si no hay carpeta, no hace nada."""
+    carpeta = os.path.join(tema.dir, 'repaso', 'graficos')
+    env = entorno_tex()
+    for tex in sorted(glob.glob(os.path.join(carpeta, '*.tex'))):
+        pdf = tex[:-4] + '.pdf'
+        if os.path.exists(pdf) and os.path.getmtime(pdf) >= os.path.getmtime(tex):
+            continue
+        cod, _ = ejecutar([os.path.join(MIKTEX, 'pdflatex.exe'), '-interaction=nonstopmode', '-halt-on-error',
+                           os.path.basename(tex)], cwd=carpeta, env=env, timeout=300, comprobar=False)
+        if cod != 0:
+            raise RuntimeError(f'Error en {os.path.basename(tex)}:\n' + '\n'.join(errores_log(tex[:-4] + '.log')))
+        for ext in ('.aux', '.log'):
+            if os.path.exists(tex[:-4] + ext):
+                os.remove(tex[:-4] + ext)
+        print(f'  gráfico de la ficha: {os.path.basename(pdf)}', flush=True)
 
 
 def margenes_sty():
@@ -107,6 +129,7 @@ def main():
     salida = os.path.join(tema.trabajo, 'repaso')
     os.makedirs(salida, exist_ok=True)
     escribir_destinos_tex()     # destinos de \vertema (tcee-repaso.sty)
+    compilar_graficos_repaso(tema)
     estado = tema.estado()
     previo = (estado.get('repaso') or {}).get('tam')
     paginas_de = {}

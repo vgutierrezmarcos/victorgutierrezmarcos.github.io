@@ -4,7 +4,9 @@
 \tcefecha{25/10/2026}
 \tceeresumen
 % Resumen de la guía (CRITERIOS § 11, entregable 2): de 6 a 8 páginas, frases
-% enteras, solo lo que hay que saber para el examen y en el orden de la guía.
+% enteras y breves, solo lo que hay que saber para el examen, en el orden de la
+% guía y con esquemas: los propios del resumen están en repaso/graficos/ (los
+% compila construir-repaso.py) y los de la guía, en graficos/.
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
@@ -12,343 +14,415 @@
 % ==========================================================================
 \bloque{Esquema de la guía}
 \esquemacante{%
-\apartadocante{Introducción: qué es el dictamen y cómo se contesta}{}
 \apartadocante{I. Perfil cíclico}{}
-\subcante{PIB y fases; medidores; demanda; oferta; diagnóstico}{}
+\subcante{Fases; medidores; demanda; oferta; diagnóstico}{}
 \apartadocante{II. Mercados de factores}{}
-\subcante{Trabajo (empleo, productividad, CLU, paro); capitales}{}
+\subcante{Trabajo (empleo, CLU, paro); capitales}{}
 \apartadocante{III. Competitividad}{}
 \subcante{Precios e inflación; tipo de cambio; no precio}{}
 \apartadocante{IV. Sector exterior}{}
-\subcante{Capacidad o necesidad; financiación; PIIN; sostenibilidad}{}
+\subcante{Capacidad o necesidad; financiación; PIIN}{}
 \apartadocante{V. Políticas}{}
-\subcante{Monetaria; estabilidad financiera y macroprudencial;}{}
-\subcante{fiscal; \emph{policy mix}; de oferta}{}
+\subcante{Monetaria; financiera; fiscal; \emph{policy mix}; oferta}{}
 \apartadocante{VI. Recomendaciones}{}
-\apartadocante{Anexos: fórmulas y umbrales}{}}
-Cada bloque responde a una pregunta del examen y sigue el mismo orden: \emph{qué hay que contestar}, \emph{qué mirar}, \emph{cómo se lee}, \emph{umbrales} (oficiales u orientativos) y \emph{recomendación tipo}.
-
-% ==========================================================================
-\bloque{Introducción\label{rep:intro}}
-\begin{itemize}
-\item \textbf{El ejercicio}: la segunda parte del primer ejercicio es un \concepto{dictamen de coyuntura}. Con un cuadro macroeconómico y unos gráficos de un país, casi siempre anónimo, hay que contestar por escrito a varias preguntas en un tiempo limitado (hoy, 1 hora y 45 minutos).
-\item \textbf{Qué se pide}: el \concepto{análisis de coyuntura} estudia la situación actual de una economía, los factores que la han llevado hasta ahí y su evolución probable a corto plazo. No basta con describir qué sube y qué baja: hay que interpretar, proponer relaciones causales con prudencia y decir qué importa en ese país.
-\item \textbf{Las 3 partes de un buen análisis}: (1) una idea de conjunto, con fortalezas y debilidades; (2) los factores que han llevado ahí, viendo qué relaciones teóricas funcionan en \emph{ese} país; (3) un esbozo de la evolución futura y de las políticas que corregirían los desequilibrios.
-\item \textbf{Dos tipos de umbrales}: los \emph{oficiales} los fija una norma o una institución (Tratado y reglas fiscales, Basilea~III, cuadro de indicadores del procedimiento de desequilibrios macroeconómicos de la Comisión, PDM, objetivo del BCE); los \emph{orientativos} son reglas prácticas sin norma detrás, que ordenan el análisis pero nunca permiten afirmar nada con rotundidad.
-\item \textbf{El tiempo, en pocas reglas}: nadie sabe cuántas preguntas habrá hasta abrir el cuadernillo. Unos 10-12 minutos de lectura al principio (en torno al 10~\% del tiempo), sin escribir en las hojas de respuesta, y unos minutos de repaso al final (en torno al 5~\%). El resto, no a partes iguales: más tiempo a las preguntas que tocan los retos reales de esa economía y algo más al perfil cíclico, que ordena todo lo demás. Ninguna pregunta en blanco: si se acaba el tiempo de una, se cierra con una frase de conclusión.
-\item \textbf{Síntesis}: «lo bueno, si breve, dos veces bueno» (\autor{Gracián}). El dictamen no se valora al peso: el tribunal pide capacidad de análisis y de síntesis.
+\apartadocante{Anexos: fórmulas, umbrales y lo que más cae}{}}
+\begin{itemize}[itemsep=1.5pt]
+\item Cada bloque responde a una \textbf{pregunta del examen}: qué hay que contestar, qué mirar, cómo se lee, \textbf{umbrales} y \textbf{recomendación tipo}.
+\item Los umbrales son de 2 tipos:
+  \begin{itemize}
+  \item \textbf{oficiales}: los fija una norma o institución (Tratado, Basilea~III, BCE, cuadro del procedimiento de desequilibrios de la Comisión, \textbf{PDM});
+  \item \textbf{orientativos}: reglas prácticas; ordenan el análisis, pero nunca permiten afirmar con rotundidad.
+  \end{itemize}
 \end{itemize}
 
 % ==========================================================================
+\medskip
 \bloque{I. Perfil cíclico de la economía\label{rep:I}}
 \begin{ideaclave}
-\textbf{Qué hay que contestar}: ¿en qué fase está la economía y desde cuándo? ¿Qué tira del crecimiento, la demanda interna o la externa; el empleo o la productividad? ¿Crece por encima o por debajo de su potencial?
+\textbf{Qué hay que contestar}: ¿en qué fase está la economía y desde cuándo? ¿Qué tira del crecimiento? ¿Crece por encima o por debajo de su potencial?
 \end{ideaclave}
-\begin{itemize}
-\item Es la pregunta más larga y casi nunca falta (13 de los 14 dictámenes de 2011 a 2026). Se contesta siempre en 3 pasos: (1) dividir la serie en fases con el crecimiento del PIB real y la brecha de producción; (2) explicar qué tira del crecimiento por el lado de la demanda y, si hay datos, por el de la oferta; (3) anticipar el diagnóstico, con desequilibrios y fortalezas.
+\graficorepaso[0.97\linewidth]{rep-perfil}{Los 3 pasos de la respuesta, siempre los mismos.}
+\begin{itemize}[itemsep=1.5pt]
+\item Es la \textbf{pregunta más larga} y casi nunca falta (13 de 14 dictámenes de 2011 a 2026).
+\item Empieza con una \textbf{frase ejecutiva}, que se escribe al final en un hueco: dónde está la economía y qué la ha sostenido, qué la frena y qué riesgos tiene.
+  \begin{itemize}
+  \item Ejemplo (FMI, España, 2026): la economía «siguió creciendo más que la zona del euro pese al impacto adverso de la guerra en Oriente Medio».
+  \end{itemize}
 \end{itemize}
 
-\sub{I.1. El PIB, el diagnóstico y las fases\label{rep:I.1}}
-\begin{itemize}
-\item El \concepto{PIB} es el valor de mercado de los bienes y servicios nuevos y finales producidos en un territorio en un periodo. Sus 3 enfoques son también las 3 formas de descomponerlo: \emph{gasto} (demanda), \emph{producción} (suma de los VAB, la oferta) y \emph{renta}. Por el gasto,
+\sub{I.1. Las fases y sus medidores\label{rep:I.1}}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Crecimiento del PIB real}: el signo y el nivel dicen si crece; su variación, si se acelera.
+  \begin{itemize}
+  \item \emph{Orientativo} (avanzadas): $<0$ contracción; 0-1~\% estancamiento; 1-2~\% moderado; 2-3~\% sobre el potencial; $\geq3$~\% sólido.
+  \item En un emergente, un 3~\% puede ser débil.
+  \end{itemize}
+\item \textbf{Brecha de producción}: distancia del PIB al \textbf{potencial}, el que se produce sin tensiones inflacionistas. Referencia: 0.
+\funcionclave{\mathrm{OG}_t\equiv\frac{Y_t-Y^p_t}{Y^p_t}\times100,\qquad \Delta\mathrm{OG}_t\approx\gamma_{Y,t}-\gamma_{Y^p,t}}
+  \begin{itemize}
+  \item \textbf{Negativa}: recursos ociosos. \textbf{Positiva}: cuellos de botella y riesgo de inflación.
+  \item Crecer mucho sin cerrar la brecha no es débil: el potencial crece mucho.
+  \item El potencial se estima y se revisa mucho: no se divide el ciclo solo con él.
+  \end{itemize}
+\end{itemize}
+\graficorepaso[0.9\linewidth]{fases-ciclo-brecha}{Las 4 fases: \textbf{recuperación} y \textbf{expansión} si el PIB crece más que el potencial; \textbf{desaceleración} y \textbf{recesión} si crece menos o cae.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Recesión} (regla práctica): 2 trimestres seguidos de caída del PIB real. Su forma: V, U, W o L.
+\item \textbf{PIB frente a RNB}, con $\mathrm{RNB}=\mathrm{PIB}+\mathrm{RP}$:
+  \begin{itemize}
+  \item $\mathrm{RNB}<\mathrm{PIB}$: deudor neto o mucha inversión extranjera directa;
+  \item $\mathrm{RNB}>\mathrm{PIB}$: acreedor neto o muchos trabajadores fuera.
+  \end{itemize}
+\item \textbf{Alta frecuencia}: un \textbf{PMI} $>50$ indica que la actividad \emph{crece}, no que esté alta; el \textbf{ESI} tiene media 100; una \textbf{curva de tipos invertida} anticipa una recesión.
+  \begin{itemize}
+  \item Coincidentes: producción industrial, afiliación, ventas. Retrasados: paro, subyacente, tipos de los préstamos.
+  \item Si los mensuales caen mientras el PIB anual aún crece, la economía se desacelera.
+  \end{itemize}
+\end{itemize}
+
+\sub{I.2. Demanda: el motor\label{rep:I.2}}
+\begin{itemize}[itemsep=1.5pt]
+\item Cada \textbf{contribución} es el peso del componente en $t-1$ por su crecimiento:
+\funcionclave{\begin{gathered}\gamma_{Y,t}=\underbrace{\tfrac{C_{t-1}}{Y_{t-1}}\gamma_{C,t}+\tfrac{I_{t-1}}{Y_{t-1}}\gamma_{I,t}+\tfrac{G_{t-1}}{Y_{t-1}}\gamma_{G,t}}_{\text{demanda interna}}\\+\underbrace{\tfrac{X_{t-1}}{Y_{t-1}}\gamma_{X,t}-\tfrac{M_{t-1}}{Y_{t-1}}\gamma_{M,t}}_{\text{demanda externa}}\end{gathered}}
+  \begin{itemize}
+  \item Se miden en \textbf{puntos porcentuales}; las importaciones restan.
+  \item En las crisis la demanda interna resta (\textbf{procíclica}) y la externa suma.
+  \item Si la externa «toma el relevo»: ¿suben las exportaciones o solo caen las importaciones?
+  \end{itemize}
+\end{itemize}
+\graficorepaso[0.97\linewidth]{contribuciones-pib-zona-euro}{Contribuciones al PIB de la zona del euro (Eurostat): la demanda interna explica casi todo el crecimiento, salvo en las crisis.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Consumo privado}: el mayor componente (53~\% del PIB en la UE) y el menos volátil de los privados.
+\funcionclave{C=f\big(\overset{+}{Y^d_{\text{real}}},\overset{+}{\text{riqueza}},\overset{-}{r^{cp}},\overset{-}{\pi},\overset{+}{\text{crédito}},\overset{-}{\text{deuda}},\overset{-}{\text{incert.}}\big)}
+\end{itemize}
+\graficorepaso[0.97\linewidth]{consumo-renta-ahorro-zona-euro}{Hogares de la zona del euro: el consumo sigue a la renta disponible; en 2020, ahorro forzoso.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Inversión}: el componente más volátil; es demanda hoy y oferta mañana.
+\funcionclave{I=f\big(\overset{-}{r^{lp}},\overset{+}{\gamma^e_Y},\overset{+}{\mathrm{OG}},\overset{+}{\mathrm{EBE}},\overset{+}{\text{crédito}},\overset{-}{\text{incert.}}\big)}
+\item \textbf{Cómo se escribe}: los 2 o 3 determinantes que el cuadro deja ver, con sus años; los que faltan, con condicionales.
+\item \textbf{Demanda externa}: 1 o 2 frases; sus determinantes van en el sector exterior.
+\end{itemize}
+\graficorepaso[0.97\linewidth]{pib-comercio-mundial}{El comercio mundial es más volátil que el PIB (cae un 10~\% en 2009 y un 8~\% en 2020).}
+
+\sub{I.3. Oferta y diagnóstico\label{rep:I.3}}
+\begin{itemize}[itemsep=1.5pt]
+\item Con la \textbf{productividad aparente del trabajo}, $\mathrm{PAT}=Y/L$:
 \begin{formula}
-\centering $\mathrm{PIB}=C+I+G+(X-M)$, con $G$ solo el consumo público (la inversión pública va en $I$).
+\centering $\gamma_Y=\gamma_A+\alpha\,\gamma_K+(1-\alpha)\,\gamma_L\quad\Rightarrow\quad\gamma_Y=\gamma_{\mathrm{PAT}}+\gamma_L$
 \end{formula}
-\item De la producción a la renta de los residentes: $\mathrm{RNB}=\mathrm{PIB}+\mathrm{RP}$ y $\mathrm{RNDB}=\mathrm{RNB}+\mathrm{RS}$, con RP y RS las rentas primarias y secundarias netas recibidas del exterior.
-\item \textbf{La frase ejecutiva}: como el FMI en sus consultas del artículo~IV o el Banco de España en su informe anual, el dictamen empieza con una frase que resume el estado de la economía y encadena 3 ideas: dónde está y qué la ha sostenido, qué la frena y qué riesgos tiene. Se escribe al final, en un hueco que se deja antes de la primera respuesta.
-\item \textbf{Las 4 fases} se reconocen por el crecimiento del PIB real ($\gamma_Y$) frente al potencial ($\gamma_{Y^p}$) y por el signo de la brecha ($\mathrm{OG}$): \concepto{recuperación} (el PIB crece más que el potencial, pero la brecha aún es negativa), \concepto{expansión} (brecha positiva que se sigue abriendo), \concepto{desaceleración} (crece menos que el potencial y la brecha se reduce) y \concepto{recesión} (el PIB cae y la brecha se vuelve negativa).
+  \begin{itemize}
+  \item Con empleo y PAT estancada, patrón \textbf{extensivo}; con PAT al alza, \textbf{intensivo} y más sostenible.
+  \item Si el empleo cae más que el PIB, la PAT sube de forma \textbf{espuria}.
+  \end{itemize}
+\item \textbf{Sectores}: si uno (petróleo, turismo) pesa mucho en el VAB, las exportaciones o los ingresos, su precio mueve todo el cuadro.
 \end{itemize}
-\graficorepaso[0.92\linewidth]{fases-ciclo-brecha}{Las 4 fases según la brecha: arriba, el PIB crece más que su potencial; abajo, menos o cae. El paso por cero separa cada pareja de fases.}
-\begin{itemize}
-\item La recesión, como regla práctica, son 2 trimestres seguidos de caída del PIB real; la depresión, una caída de más del 10~\% o una recesión de más de 3 años. Su forma: \emph{V}, \emph{U}, \emph{W} o \emph{L}.
-\item \textbf{Cómo se escribe}: si el cuadro recoge más de un ciclo (por ejemplo, la crisis financiera y la de la COVID-19), se dice al principio y cada etapa se divide en fases. Lo atípico se señala como excepción, sin contar la serie año a año.
-\end{itemize}
-
-\sub{I.2. Medidores\label{rep:I.2}}
-\begin{itemize}
-\item \textbf{Crecimiento del PIB real}, $\gamma_{Y,t}=\frac{Y_t-Y_{t-1}}{Y_{t-1}}\times100$: el signo y el nivel dicen si crece y cuánto; su variación, si se acelera o se desacelera. \emph{Umbral orientativo} (avanzadas): negativo, contracción; 0-1~\%, estancamiento; 1-2~\%, moderado, cerca del potencial; 2-3~\%, por encima del potencial; desde el 3~\%, sólido. En un emergente un 3~\% puede ser débil (en 2025 las avanzadas crecieron un 2,0~\% y las emergentes, un 4,5~\%).
-\item \textbf{Brecha de producción}, $\mathrm{OG}_t\equiv\frac{Y_t-Y^p_t}{Y^p_t}\times100$: compara el PIB con el \concepto{potencial}, el que se produce con los factores empleados con intensidad normal y sin tensiones inflacionistas. \emph{Referencia}: 0. Negativa, recursos ociosos y presión a la baja sobre la inflación; positiva, cuellos de botella y riesgo de sobrecalentamiento; cercana a 0, lo deseable. Su variación en puntos dice si el PIB crece más o menos que el potencial: $\Delta\mathrm{OG}_t\approx\gamma_{Y,t}-\gamma_{Y^p,t}$ («la brecha se cierra» o «se abre»).
-\item Si el cuadro da la brecha y el crecimiento, se deduce el potencial, $\gamma_{Y^p,t}\approx\gamma_{Y,t}-(\mathrm{OG}_t-\mathrm{OG}_{t-1})$. Crecer con fuerza sin cerrar la brecha no es un cuadro débil (el potencial crece mucho); cerrarla creciendo poco no es buena señal. El potencial se estima (función de producción o filtro de \autor{Hodrick}-\autor{Prescott}) y se revisa mucho: no conviene dividir el ciclo solo con la brecha.
-\item \textbf{PIB frente a RNB}: el PIB es lo que se produce dentro; la RNB, lo que ganan los residentes. $\mathrm{RNB}<\mathrm{PIB}$ es típico de un deudor neto o de un país con mucha inversión extranjera directa que repatría beneficios; $\mathrm{RNB}>\mathrm{PIB}$, de un acreedor neto o de un país con muchos trabajadores fuera. Un salto puntual suele deberse a multinacionales que trasladan activos (Irlanda, 2015).
-\item \textbf{Indicadores adelantados y de alta frecuencia}: dicen cómo está la economía ahora y hacia dónde va. El \concepto{PMI} por encima de 50 indica que la actividad \emph{crece} frente al mes anterior, no que esté alta; el \concepto{ESI} y los de confianza tienen media de largo plazo 100; una \emph{curva de tipos invertida} (tipo a 10 años menos tipo a corto, negativo) suele anticipar una recesión. Importa la dirección y que varios coincidan: si caen mientras el PIB anual aún crece, la economía se desacelera.
-\end{itemize}
-
-\sub{I.3. Demanda: el motor del crecimiento\label{rep:I.3}}
-\begin{itemize}
-\item \textbf{Contribuciones}: restando a la identidad del gasto la del año anterior y dividiendo por $Y_{t-1}$, cada contribución es el peso del componente en el año anterior por su crecimiento:
-\begin{formula}
-\centering $\displaystyle\gamma_{Y,t}=\underbrace{\tfrac{C_{t-1}}{Y_{t-1}}\gamma_{C,t}+\tfrac{I_{t-1}}{Y_{t-1}}\gamma_{I,t}+\tfrac{G_{t-1}}{Y_{t-1}}\gamma_{G,t}}_{\text{demanda interna}}+\underbrace{\tfrac{X_{t-1}}{Y_{t-1}}\gamma_{X,t}-\tfrac{M_{t-1}}{Y_{t-1}}\gamma_{M,t}}_{\text{demanda externa}}$
-\end{formula}
-\item Las contribuciones se miden en \emph{puntos porcentuales}: si el PIB crece un 3~\% y la demanda interna aporta 2~pp, no ha crecido un 2~\%. Con volúmenes encadenados la suma no es exacta, y las existencias también contribuyen; si el cuadernillo da las contribuciones, se usan esas.
-\item \textbf{Cómo se lee}: contribuciones positivas y parecidas, crecimiento equilibrado. En las crisis la demanda interna pasa a restar (procíclica) y la externa a sumar (componente contracíclico). Si el sector exterior «toma el relevo», hay que ver si suben las exportaciones (fortaleza) o solo caen las importaciones (reflejo de la caída de la renta).
-\item \textbf{Consumo privado}: el componente más cuantioso (53~\% del PIB en la UE en 2025), el menos volátil de los privados (los hogares lo suavizan según su renta permanente) y procíclico y contemporáneo. Sus determinantes, con su signo:
-\funcionclave{\begin{gathered}C=f\big(\overset{+}{Y^d_{\text{real}}},\overset{+}{\text{riqueza}},\overset{-}{r^{cp}},\overset{-}{\pi},\overset{?}{\pi^e},\overset{+}{\text{crédito}},\\ \overset{-}{\text{deuda}},\overset{+}{N},\overset{-}{\text{incertidumbre}},\overset{+}{\text{expectativas}}\big)\end{gathered}}
-El principal es la renta disponible real (empleo, salario real $w=W/\mathrm{IPC}$, rentas del capital, impuestos y transferencias). Si los hogares esperan más impuestos para pagar la deuda de hoy, ahorran más (\concepto{equivalencia ricardiana}, \autor{Barro}, 1974).
-\item \textbf{Inversión}: FBCF, variación de existencias y objetos valiosos. Es demanda a corto plazo y oferta a largo; pesa en torno a una quinta parte del PIB (FBCF del 21,5~\% en la UE en 2025) y es el componente más volátil (\emph{animal spirits}) y procíclico; las existencias, muy procíclicas.
-\funcionclave{I=f\big(\overset{-}{r^{lp}},\overset{+}{\gamma^e_Y},\overset{+}{\mathrm{OG}},\overset{+}{D},\overset{+}{\mathrm{EBE}},\overset{-}{\pi},\overset{+}{\pi^e},\overset{+}{\text{crédito}},\overset{-}{\text{incert.}}\big)}
-Con la brecha positiva las empresas amplían capacidad (acelerador); si falta el EBE, se aproxima con el margen. Con déficit alto y tipos al alza puede haber \emph{expulsión}.
-\item \textbf{Cómo se escribe}: se eligen los 2 o 3 determinantes que el cuadro permite ver, se vinculan con los años y se dice con condicionales cuáles faltan.
-\item \textbf{Consumo e inversión públicos}: responden a decisiones políticas (en las avanzadas, acíclicos o algo contracíclicos; en muchos emergentes, procíclicos); el resto va en la política fiscal.
-\item \textbf{Demanda externa}: en el perfil cíclico, 1 o 2 frases (su contribución y si la explican las exportaciones o las importaciones); sus determinantes van en el sector exterior, para no contar 2 veces lo mismo.
-\end{itemize}
-
-\sub{I.4. Oferta: productividad o factores\label{rep:I.4}}
-\begin{itemize}
-\item A corto plazo la economía depende de la demanda; a largo, de la oferta. La contabilidad del crecimiento descompone $\gamma_Y=\gamma_A+\alpha\,\gamma_K+(1-\alpha)\,\gamma_L$; como el cuadro casi nunca da el capital, se usa la \concepto{productividad aparente del trabajo}, $\mathrm{PAT}=Y/L$, con $\gamma_{\mathrm{PAT}}=\gamma_Y-\gamma_L$.
-\item \textbf{Cómo se lee}: crecer con empleo y PAT estancada es un patrón \emph{extensivo}; con PAT al alza, \emph{intensivo} y más sostenible. Si el empleo cae más que el PIB, la PAT sube de forma espuria (se destruye el empleo menos productivo): mejor no concluir que la expansión se debe a un choque de productividad.
-\item \textbf{Sectores}: se mira el VAB y el peso de cada uno: ¿cambia la estructura productiva?, ¿qué factores usa?, ¿tira del resto?, ¿genera externalidades? Si un sector (petróleo, turismo) pesa mucho en el VAB, las exportaciones o los ingresos públicos, su precio mueve todo el cuadro; un tejido empresarial muy atomizado limita la productividad.
-\end{itemize}
-
-\sub{I.5. Anticipar el diagnóstico\label{rep:I.5}}
-\begin{itemize}
-\item Si da tiempo, la respuesta se cierra con un diagnóstico general que anuncia lo que vendrá: «parece tratarse de una economía avanzada cuyo crecimiento se ha apoyado en la demanda interna, pero que presenta desequilibrios como un déficit exterior persistente y una deuda pública elevada».
-\item \textbf{Los desequilibrios que más se repiten}, con su indicio: crecimiento débil; demanda interna anémica; sobrecalentamiento (brecha positiva persistente, caída brusca de existencias, salto de las importaciones); paro alto y CLU crecientes; déficit y deuda públicos; déficit corriente y deuda externa; riesgos financieros; dependencia de un sector. Las fortalezas son su reverso.
-\item Sin intentar adivinar el país, conviene ver si es avanzada o emergente, porque cambia la lectura: en una emergente el potencial es mayor y más volátil, la inflación y el traspaso son mayores, la política fiscal suele ser procíclica, la deuda está a menudo en divisas y hay riesgo de frenazo súbito de capitales. Los problemas estructurales se formulan con condicionales y apoyados en 2 o 3 datos.
+\graficorepaso[0.97\linewidth]{brent}{El Brent: grandes picos en 2008, 2011-2012, 2022 y 2026; en euros pesa también el tipo de cambio.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Diagnóstico anticipado}: «parece una economía avanzada que crece con la demanda interna, pero con un déficit exterior persistente y una deuda pública elevada».
+  \begin{itemize}
+  \item Sin adivinar el país; lo estructural, con condicionales y 2 o 3 datos.
+  \end{itemize}
 \end{itemize}
 
 % ==========================================================================
+\medskip
 \bloque{II. Mercados de factores\label{rep:II}}
-\begin{itemize}
-\item En los mercados de factores se ve si el crecimiento es sostenible: en el de trabajo, si crea empleo, qué paro hay y si los salarios siguen a la productividad; en el de capitales, si hay financiación para invertir.
-\end{itemize}
+\begin{ideaclave}
+\textbf{Qué hay que contestar}: ¿cuánto empleo crea el crecimiento? ¿Qué tipo de paro hay? ¿Los salarios siguen a la productividad? ¿Llega el crédito?
+\end{ideaclave}
 
 \sub{II.1. Mercado de trabajo\label{rep:II.1}}
-\begin{ideaclave}
-\textbf{Qué hay que contestar}: ¿cuánto empleo crea el crecimiento? ¿Qué tipo de paro hay? ¿Los salarios siguen a la productividad? ¿Es flexible y competitivo el mercado de trabajo?
-\end{ideaclave}
-\begin{itemize}
-\item Lo concreto que se pida (tasa de actividad, CLU, \autor{Beveridge}…) se contesta al principio, con un rótulo.
-\item \textbf{Cantidades}: con $L$ ocupados, $U$ parados, $A=L+U$ activos y $P_{16}$ la población de 16 y más años, la tasa de actividad es $A/P_{16}$, la de empleo $L/P_{16}$ y la de paro $u=U/A$. \emph{Ojo con la edad}: el INE usa 16 y más años y Eurostat y la OCDE, 15 a 64; España tiene una tasa de actividad del 74,9~\% con la definición de 15-64 (por encima de la media de la OCDE) y del 58~\% sobre 16 y más.
-\item \textbf{Umbrales}: \emph{oficial} (PDM), paro por encima del 10~\% y caída de la tasa de actividad de más de 0,2 puntos en 3 años; \emph{orientativo}, un paro del 3-6~\% suele considerarse pleno empleo en las avanzadas.
-\item \textbf{Cómo se lee}: hay que ver a partir de qué crecimiento se crea empleo. El empleo y el paro pueden subir a la vez si llegan más activos (inmigración) de los que encuentran trabajo, y bajar a la vez si se van parados (emigración).
-\item \textbf{Productividad}: la PAT recoge también el capital y la tecnología; crece por intensificación del capital, capital intangible o progreso técnico, y a largo plazo eleva la renta per cápita y los salarios reales.
-\item \textbf{Costes laborales unitarios}: lo que cuesta en salarios producir una unidad, la medida de competitividad en costes más usada:
-\begin{formula}
-\centering $\mathrm{CLU}=\dfrac{WL}{Y}=\dfrac{W}{\mathrm{PAT}}\;\Rightarrow\;\gamma_{\mathrm{CLU}}=\gamma_W-\gamma_{\mathrm{PAT}}$;\quad $P=(1+\mu)\,\mathrm{CLU}\;\Rightarrow\;\gamma_{1+\mu}\approx\gamma_P-\gamma_{\mathrm{CLU}}$
-\end{formula}
-El \concepto{CLU real} ($\mathrm{CLU}/P$, con $P$ el deflactor) es la participación de los salarios en el PIB; los márgenes suben exactamente cuando caen los CLU reales.
-\item \textbf{Umbrales de los CLU}: \emph{oficial} (PDM), CLU nominales por hora que crecen más del 9~\% en 3 años en la zona del euro (12~\% fuera); \emph{orientativo}, salarios nominales que crecen como la productividad más el objetivo de inflación mantienen estables los CLU reales (en el euro, CLU en torno al 2~\% anual).
-\item \textbf{Cómo se leen}: CLU nominales que crecen más que la inflación (reales al alza) anticipan presiones inflacionistas, menos margen y, a medio plazo, menos empleo; si crecen más que en los socios, pérdida de competitividad-precio; si crecen poco con paro alto, ajuste por salarios (devaluación interna). La indexación a la inflación pasada y la negociación sectorial (\autor{Calmfors}-\autor{Driffill}) favorecen los efectos de segunda ronda.
-\item \textbf{Tipos de paro}, porque la receta depende del diagnóstico: \concepto{clásico} (salarios reales demasiado altos para la productividad; CLU que crecen mucho y de forma sistemática), \concepto{keynesiano} (demanda insuficiente; consumo anémico), \concepto{friccional} o de desajuste (vacantes altas con paro alto) y \concepto{de larga duración} (pérdida de cualificación, desánimo; causa de histéresis).
-\item La \concepto{NAIRU} es el paro compatible con una inflación estable: por debajo, la inflación tiende a acelerarse. Se aproxima con el paro de los años de brecha nula (la Comisión estima una NAWRU del 6-7~\% en la zona del euro y del 12~\% en España). Hay \concepto{histéresis} si el paro de equilibrio depende del pasado (\emph{insiders}-\emph{outsiders}, larga duración, pérdida de capital): entonces las políticas de demanda tienen efectos a largo plazo.
-\item \textbf{\autor{Okun} y \autor{Phillips}}: \autor{Okun} relaciona la variación del paro con el crecimiento por encima del potencial (en EE.~UU., medio punto menos de paro por punto); \autor{Phillips} con expectativas, $\pi_t=\pi^e_t-a\,(U_t-U^n)+\varepsilon_t$. Valen con un mercado formal y asalariado y una serie estable; no con mucha informalidad, choques de oferta o esquemas de mantenimiento del empleo.
-\item \textbf{Curva de \autor{Beveridge}} (vacantes frente a paro): moverse \emph{a lo largo} de ella es el ciclo; \emph{desplazarse hacia fuera}, peor emparejamiento (desajuste de cualificaciones o geográfico). Si suben las vacantes y el paro no baja, el problema es estructural. España tiene pocas vacantes (en torno al 0,9~\%) con mucho paro: una curva lejos del origen.
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Cantidades}, con $L$ ocupados, $U$ parados y $A=L+U$ activos:
+\funcionclave{\text{tasa de actividad}=\frac{A}{P_{16}},\qquad u=\frac{U}{A}}
+  \begin{itemize}
+  \item \textbf{Ojo con la edad}: el INE usa 16 y más años; Eurostat y la OCDE, 15-64.
+  \item \emph{Oficial} (PDM): paro $>10$~\%. \emph{Orientativo}: pleno empleo con un paro del 3-6~\%.
+  \item Empleo y paro pueden subir a la vez si llegan más activos (inmigración).
+  \item En la pandemia el empleo apenas reflejó la caída del PIB, por los esquemas de mantenimiento del empleo.
+  \end{itemize}
 \end{itemize}
+\graficorepaso[0.97\linewidth]{empleo-horas-actividad-zona-euro}{Zona del euro: el empleo supera el nivel de 2019 más que las horas (baja la jornada media); el paro, cerca de su mínimo.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Productividad}: la PAT recoge también el capital y la tecnología; crece por \textbf{intensificación del capital}, capital intangible o \textbf{progreso técnico}. A largo plazo es la que eleva la renta per cápita y los salarios reales.
+\end{itemize}
+\graficorepaso[0.97\linewidth]{pib-por-pet-espana}{España: desde 2019 el PIB por persona en edad de trabajar crece sobre todo por más horas por persona y poco por la productividad por hora.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Costes laborales unitarios} (CLU): lo que cuesta en salarios producir una unidad.
+\end{itemize}
+\graficorepaso[0.97\linewidth]{rep-clu}{De la productividad al margen: las 4 fórmulas encadenadas.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Umbrales de los CLU}:
+  \begin{itemize}
+  \item \emph{oficial} (PDM): CLU nominales $>+9$~\% en 3 años en el euro (12~\% fuera);
+  \item \emph{orientativo}: salarios que crecen como la productividad más el objetivo de inflación mantienen estables los CLU reales.
+  \end{itemize}
+\end{itemize}
+\graficorepaso[0.97\linewidth]{rep-paro}{\textbf{Tipos de paro}: la receta depende del diagnóstico; cómo se ve cada uno en el cuadro y qué receta tiene.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{NAIRU}: el paro compatible con una inflación estable; se aproxima con el paro de los años de brecha nula.
+\item \textbf{\autor{Okun}}: medio punto menos de paro por punto de crecimiento sobre el potencial (EE.~UU.). \textbf{\autor{Phillips}} con expectativas:
+\begin{formula}
+\centering $\pi_t=\pi^e_t-a\,(U_t-U^n)+\varepsilon_t$
+\end{formula}
+\item \textbf{Curva de \autor{Beveridge}}: moverse \emph{a lo largo} de ella es el ciclo; \emph{desplazarse hacia fuera}, peor emparejamiento.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{beveridge-espana-zona-euro}{\autor{Beveridge}: la zona del euro se mueve con el ciclo; España, con pocas vacantes y mucho paro, está lejos del origen.}
 
 \sub{II.2. Mercado de capitales\label{rep:II.2}}
-\begin{itemize}
-\item \textbf{Qué hay que contestar}: ¿hay capital y financiación suficientes para crecer? ¿Llega el crédito a empresas y hogares, y a qué coste?
-\item \textbf{Qué mirar}: el flujo de crédito nuevo, su coste y el diferencial entre los tipos de los préstamos y los de los depósitos (cuanto más estrecho, más eficiente la intermediación). Un sistema que funciona mal frena la productividad: financia empresas \emph{zombis} y deja sin crédito proyectos rentables. Un \emph{racionamiento} (crédito que cae con demanda y tipos estables) frena la inversión y el consumo duradero. El endeudamiento, la banca y los riesgos van en \hyperref[rep:V.2]{V.2}, que es como se preguntan.
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Qué mirar}: el crédito nuevo, su coste y el diferencial entre préstamos y depósitos (cuanto más estrecho, mejor intermediación).
+\item Un sistema que funciona mal financia \textbf{empresas zombis} y deja sin crédito proyectos rentables.
+\item El endeudamiento, la banca y los riesgos van en \hyperref[rep:V.2]{V.2}.
 \end{itemize}
 
 % ==========================================================================
+\medskip
 \bloque{III. Competitividad\label{rep:III}}
-\begin{itemize}
-\item Tiene 2 caras: la de \emph{precio} (inflación, costes y tipo de cambio) y la de \emph{no precio} (calidad, diferenciación, mercados). Una economía puede perder la primera y ganar cuota por la segunda.
+\begin{ideaclave}
+\textbf{Qué hay que contestar}: ¿está controlada la inflación? ¿Viene de la demanda o de los costes, de dentro o de fuera? ¿Es transitoria o persistente? ¿Qué política requiere?
+\end{ideaclave}
+\begin{itemize}[itemsep=1.5pt]
+\item Tiene 2 caras: \textbf{precio} (inflación, costes, tipo de cambio) y \textbf{no precio} (calidad, diferenciación, mercados).
 \end{itemize}
 
 \sub{III.1. Precios e inflación\label{rep:III.1}}
-\begin{ideaclave}
-\textbf{Qué hay que contestar}: ¿está controlada la inflación? ¿Viene de dentro o de fuera, de la demanda o de los costes? ¿Es transitoria o persistente? ¿Qué política requiere?
-\end{ideaclave}
-\begin{itemize}
-\item La \concepto{inflación} es el aumento sostenido y generalizado del nivel de precios, no el cambio de un precio relativo: $\pi_t=(\mathrm{IPC}_t/\mathrm{IPC}_{t-1}-1)\times100$. Un índice vale 100 en el periodo base; si el cuadro da un porcentaje, es su tasa de variación.
-\item \textbf{IPC, un \autor{Laspeyres}}: compara el coste de una cesta fija a los precios de hoy con el de esa misma cesta a los precios del periodo de referencia. Por no recoger que los consumidores sustituyen lo que se encarece, \emph{sobrevalora} la inflación (sesgo de sustitución). En la UE, el IAPC es la referencia del BCE.
-\item \textbf{Deflactor del PIB, un \autor{Paasche}}: el PIB nominal sobre el real, con las cantidades de hoy (cesta variable). Recoge los precios de lo que se produce dentro, exportaciones, inversión y servicios públicos incluidos, sin importaciones; \emph{infravalora} la inflación y refleja peor el bienestar del consumidor.
+\graficorepaso[0.97\linewidth]{rep-indices}{IPC y deflactor: qué compara cada uno y por qué se separan.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Inflación subyacente}: sin los componentes volátiles (energía, alimentos). Dice si el choque se extiende: \textbf{efectos de segunda ronda}.
+\item \textbf{Efecto base}: la tasa interanual baja cuando sale de la comparación una subida excepcional.
 \begin{formula}
-\centering $I_L\equiv\dfrac{\sum_i p_i^t\,x_i^0}{\sum_i p_i^0\,x_i^0}\times100,\qquad I_P\equiv\dfrac{\sum_i p_i^t\,x_i^t}{\sum_i p_i^0\,x_i^t}\times100$
+\centering $\pi^{12}_t-\pi^{12}_{t-1}\approx\pi^{m}_t-\pi^{m}_{t-12}$
 \end{formula}
-\item \textbf{IPC frente a deflactor}: si el IPC crece \emph{más}, hay \concepto{inflación importada} (energía, alimentos, depreciación); si crece \emph{menos}, suben más los precios de lo que el país produce y no consume, como las exportaciones (mejora de la relación real de intercambio). Por eso el salario real del trabajador se deflacta con el IPC y el coste real para la empresa, con el deflactor.
-\item \textbf{Inflación subyacente}: quita los componentes más volátiles (el INE, alimentos no elaborados y energía; el BCE, energía y todos los alimentos) para aislar el componente persistente. Dice si un choque de oferta se está extendiendo al resto de la cesta: los \concepto{efectos de segunda ronda}, una espiral de precios y salarios.
-\item \textbf{De dónde viene} (el triángulo de \autor{Gordon}: demanda, costes e inercia). \emph{De demanda}: la demanda interna crece más que el PIB, brecha positiva, crédito y agregados monetarios dinámicos, estímulo fiscal. \emph{De costes}: salarios y CLU, energía y materias primas, depreciación; márgenes amplios señalan poca competencia.
-\item \concepto{Efecto base}: la tasa interanual baja cuando sale de la comparación una subida excepcional, aunque los precios no bajen: $\pi^{12}_t-\pi^{12}_{t-1}\approx\pi^{m}_t-\pi^{m}_{t-12}$.
-\item \textbf{¿Transitoria o persistente?} Transitoria si se concentra en energía y alimentos con la subyacente contenida, salarios moderados y expectativas ancladas. Persistente si la subyacente sube y se generaliza (servicios), salarios y márgenes se aceleran, la brecha es positiva, el paro está bajo la NAIRU y suben las expectativas.
-\item \textbf{Umbral oficial}: el objetivo del BCE, 2~\% simétrico a medio plazo.
-\item \textbf{Recomendación tipo}: si es de demanda, subir tipos y que la política fiscal no empuje en contra; si es de oferta y transitoria con expectativas ancladas, el banco central puede «mirar a través» y vigilar la segunda ronda, pero si las expectativas se desanclan tiene que subir. En una unión monetaria quedan la fiscal y las de oferta. Con deflación, política monetaria expansiva (y, en el límite inferior, compras de activos y fiscal). Siempre, más competencia.
+\end{itemize}
+\graficorepaso[0.97\linewidth]{iapc-zona-euro}{IAPC de la zona del euro por componentes: la energía explica el brote; la subyacente muestra si se extiende.}
+\graficorepaso[0.82\linewidth]{rep-inflacion}{De dónde viene la inflación: el triángulo de \autor{Gordon}.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{¿Transitoria o persistente?}
+  \begin{itemize}
+  \item \textbf{Transitoria}: energía y alimentos, subyacente contenida, expectativas ancladas.
+  \item \textbf{Persistente}: subyacente que se generaliza (servicios), salarios y márgenes al alza, brecha positiva.
+  \end{itemize}
+\item \textbf{Umbral oficial}: el objetivo del BCE, \textbf{2~\% simétrico} a medio plazo.
+\item \textbf{Recomendación tipo}:
+  \begin{itemize}
+  \item si es de demanda, subir tipos, sin estímulo fiscal en contra;
+  \item si es de oferta y transitoria, «mirar a través» y vigilar la segunda ronda;
+  \item en una unión monetaria, fiscal y oferta; siempre, más competencia.
+  \end{itemize}
 \end{itemize}
 
 \sub{III.2. Tipo de cambio\label{rep:III.2}}
-\begin{itemize}
-\item \textbf{Cómo se calcula}: el \concepto{nominal bilateral} $E$, en convención directa, son unidades de moneda nacional por unidad de moneda extranjera (si sube, la moneda se \emph{deprecia}); el \concepto{efectivo}, una media geométrica ponderada por el comercio; el \concepto{real}, $q\equiv EP^*/P$: si sube, la producción nacional se abarata y se gana competitividad-precio. Con los CLU en lugar de los precios, competitividad en costes.
-\item \textbf{Umbral oficial} (PDM): apreciación real efectiva de más del 3~\% en 3 años en la zona del euro (10~\% fuera).
-\item \textbf{Traspaso}: la parte de una depreciación que pasa a los precios (0,3 significa que una depreciación del 10~\% sube los precios un 3~\%). Se ve comparando la depreciación con la inflación posterior. Es mayor con inflación alta y poco creíble, muchas importaciones y facturación en dólares.
-\item \textbf{\autor{Marshall}-\autor{Lerner} y curva J}: una depreciación real mejora la balanza comercial si, partiendo del equilibrio, $|\varepsilon_{X,q}|+|\varepsilon_{M,q}|>1$; a corto plazo puede empeorar antes de mejorar (\concepto{curva J}). En el cuadro, se cumple si el saldo mejora en 1 o 2 años, con más volumen exportado y menos importado.
-\item \textbf{Régimen e intervención}: con libertad de capitales, un tipo fijo obliga a renunciar a la política monetaria (\concepto{trilema}). La intervención se ve en las reservas: si caen mientras la moneda se deprecia, el banco central vende divisas; si suben mientras se aprecia, las compra (\emph{miedo a flotar}). Comprar divisas sin esterilizar aumenta la base monetaria y la presión inflacionista; esterilizar tiene un coste financiero.
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Tipo de cambio real}: si sube, hay depreciación real y más competitividad-precio.
+\funcionclave{\begin{gathered}q\equiv\frac{EP^*}{P}\\ |\varepsilon_{X,q}|+|\varepsilon_{M,q}|>1\ \ (\text{\autor{Marshall}-\autor{Lerner}})\end{gathered}}
+  \begin{itemize}
+  \item \textbf{Ojo}: el BCE y el Banco de España publican el índice al revés (sube = apreciación).
+  \item \emph{Oficial} (PDM): apreciación real $>3$~\% en 3 años en el euro (10~\% fuera).
+  \item \textbf{Curva J}: la balanza empeora antes de mejorar.
+  \end{itemize}
+\item \textbf{Traspaso}: la parte de la depreciación que pasa a los precios; mayor con inflación alta y poco creíble.
+\item \textbf{Intervención}: se ve en las reservas. Comprar divisas sin esterilizar sube la base monetaria (\textbf{trilema}).
 \end{itemize}
 
 \sub{III.3. Competitividad no precio\label{rep:III.3}}
-\begin{itemize}
-\item Es vender fuera por calidad, diferenciación, marca, contenido tecnológico o diversificación. Se aproxima con la \concepto{cuota de mercado} de las exportaciones: si crece aunque se aprecie el tipo real o suban los CLU relativos, la competitividad no precio es fuerte (\concepto{paradoja de \autor{Kaldor}}). \emph{Umbral oficial} (PDM): caída de los resultados de exportación de más del 3~\% en 3 años frente a las avanzadas.
-\item Perder cuota sin perder competitividad-precio es un problema de oferta exportadora o de mercados de destino. \textbf{Recomendación tipo}: I+D, más tamaño empresarial, diversificación de mercados, promoción comercial (red de oficinas, agencia de exportación, seguro de crédito) y acuerdos comerciales.
-\item Los aranceles de un tercero afectan por el canal directo, las cadenas de valor, la desviación de comercio, la incertidumbre y el tipo de cambio.
+\begin{itemize}[itemsep=1.5pt]
+\item Una \textbf{cuota de mercado} que crece aunque se aprecie el tipo real indica no precio fuerte (\textbf{paradoja de \autor{Kaldor}}).
+\item \textbf{Recomendación}: I+D, más tamaño empresarial, diversificación y promoción comercial.
 \end{itemize}
 
 % ==========================================================================
+\medskip
 \bloque{IV. Sector exterior\label{rep:IV}}
 \begin{ideaclave}
-\textbf{Qué hay que contestar}: ¿hay capacidad o necesidad de financiación y de qué subcuenta viene? ¿Es un problema de ahorro o de inversión, del sector público o del privado? ¿Cómo se financia? ¿Es sostenible la posición exterior?
+\textbf{Qué hay que contestar}: ¿hay capacidad o necesidad de financiación y de dónde viene? ¿Es de ahorro o de inversión, pública o privada? ¿Cómo se financia? ¿Es sostenible?
 \end{ideaclave}
-\begin{itemize}
-\item Ha caído en todos los dictámenes. Se analiza en 4 preguntas encadenadas (capacidad o necesidad, financiación, posición y sostenibilidad). Ser deudor no es malo en sí: importa la sostenibilidad, y los desequilibrios externos suelen ser síntoma de los internos (exceso de gasto, poco ahorro, pérdida de competitividad).
+\begin{itemize}[itemsep=1.5pt]
+\item Ha caído en \textbf{todos los dictámenes}. Ser deudor no es malo en sí: importa la \textbf{sostenibilidad}.
 \end{itemize}
 
 \sub{IV.1. Capacidad o necesidad de financiación\label{rep:IV.1}}
-\begin{itemize}
-\item \textbf{La balanza de pagos} registra las transacciones de los residentes con el resto del mundo; es una variable nominal y está equilibrada en conjunto. Su identidad, desarrollada (MBP6):
-\funcionclave{\begin{gathered}\underbrace{\overbrace{(X-M)+\mathrm{RP}+\mathrm{RS}}^{\mathrm{CC}}+\mathrm{CK}}_{\text{capacidad }(+)\text{ o necesidad }(-)}+\mathrm{EO}=\mathrm{CF}\\=\mathrm{ID}+\mathrm{IC}+\mathrm{D}+\mathrm{OI}+\Delta R\end{gathered}}
-y la cuenta corriente es, además,
-\funcionclave{\mathrm{CC}=(Y-A)+\mathrm{RP}+\mathrm{RS}=S-I=(S_P-I_P)+(T-G)}
-con $A=C+I+G$ la absorción. Con el MBP6 una salida de capitales se anota en CF con signo positivo y una necesidad de financiación sale negativa.
-\item \textbf{Por subcuentas}: \emph{bienes y servicios} (competitividad, renta exterior, energía); \emph{rentas primarias} (intereses de la deuda externa, beneficios de la inversión extranjera: explican PIB frente a RNB); \emph{rentas secundarias} (remesas, muy estables y contracíclicas; aportaciones a la UE); \emph{cuenta de capital} (fondos europeos para inversión, venta de activos no producidos), que hay que sumar para obtener la capacidad o necesidad.
-\item \textbf{Umbral oficial} (PDM): saldo corriente medio de 3 años inferior al $-4$~\% del PIB o superior al $+6$~\%.
-\item \textbf{Apertura}, $(X+M)/\mathrm{PIB}$ (\emph{orientativo}: por debajo del 15-20~\%, cerrada; en torno al 50~\%, normal; por encima del 75~\%, muy abierta). \textbf{Penetración de importaciones}, $M/\mathrm{PIB}$: un salto brusco apunta a sobrecalentamiento. \textbf{Relación real de intercambio}, $\mathrm{RRI}=P_X/P_M$: si sube, enriquecimiento o pérdida de competitividad (sin inflación marcada, lo primero).
-\item \textbf{Determinantes de exportaciones e importaciones} (aquí una subida de $q$ es una depreciación real; con la convención contraria los signos se invierten):
-\funcionclave{\begin{gathered}X=f\big(\overset{+}{q},\overset{+}{\text{no precio}},\overset{+}{Y^*},\overset{-}{\text{demanda interna}}\big)\\ M=f\big(\overset{-}{q},\overset{-}{\text{no precio}},\overset{+}{Y}\big)\end{gathered}}
-\item \textbf{Ahorro, inversión y sectores}: un déficit corriente es un exceso de inversión sobre el ahorro nacional. Un déficit por \emph{poco ahorro} (consumo excesivo, déficit público) es peor que uno por \emph{mucha inversión} productiva. Si viene del sector privado, el riesgo es una corrección brusca cuando se corte el crédito; si del público, un problema de sostenibilidad fiscal. Un superávit puede reflejar demanda interna débil, inversión baja o ingresos extraordinarios.
-\item \concepto{Déficits gemelos}: si el saldo privado no cambia, más déficit público es más déficit exterior (por la apreciación y por las importaciones); en los datos no siempre van juntos.
+\graficorepaso[0.97\linewidth]{rep-balanza}{La identidad de la balanza de pagos, desarrollada (MBP6).}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Signos} (MBP6): una salida de capitales es CF positiva; una necesidad de financiación sale negativa.
+\item \textbf{La cuenta de capital} (fondos europeos) se suma a la corriente.
+\item \emph{Oficial} (PDM): saldo corriente medio de 3 años $<-4$~\% o $>+6$~\% del PIB.
+\item \textbf{Exportaciones e importaciones} (con $q$ al alza = depreciación real):
+\funcionclave{\begin{gathered}X=f\big(\overset{+}{q},\overset{+}{\text{no precio}},\overset{+}{Y^*}\big)\\ M=f\big(\overset{-}{q},\overset{-}{\text{no precio}},\overset{+}{Y}\big)\end{gathered}}
+\item \textbf{Ahorro e inversión}:
+  \begin{itemize}
+  \item un déficit por \textbf{poco ahorro} es peor que uno por \textbf{mucha inversión} productiva;
+  \item si viene del \textbf{sector privado}, hay riesgo de corrección brusca; si del \textbf{público}, de sostenibilidad;
+  \item \textbf{déficits gemelos}: más déficit público, más déficit exterior (no siempre).
+  \end{itemize}
 \end{itemize}
 
-\sub{IV.2. Cómo se financia\label{rep:IV.2}}
-\begin{itemize}
-\item No es lo mismo financiarse con capital que con deuda: la \emph{inversión directa} es estable y trae tecnología; la \emph{de cartera} es volátil y con efecto rebaño; los \emph{derivados}, más aún; la \emph{otra inversión} son préstamos y depósitos (incluido TARGET); las \emph{reservas} varían mucho si el banco central interviene.
-\item \textbf{Adecuación de las reservas} (referencias \emph{orientativas} del FMI): al menos 3 meses de importaciones; al menos el 100~\% de la deuda externa a corto plazo (\autor{Greenspan}-\autor{Guidotti}, mide la liquidez); al menos el 20~\% de M2 (riesgo de fuga de depósitos, sobre todo con tipo fijo). Demasiadas reservas también cuestan.
-\item \textbf{Recomendación tipo}, si la financiación es vulnerable: atraer inversión directa, incentivar la inversión productiva y una fiscalidad estable.
+\sub{IV.2. Financiación y posición\label{rep:IV.2}}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Cómo se financia}: no es lo mismo con capital que con deuda.
 \end{itemize}
-
-\sub{IV.3. Posición de inversión internacional y sostenibilidad\label{rep:IV.3}}
-\begin{itemize}
-\item La \concepto{PIIN} es activos menos pasivos frente al exterior (negativa en un deudor neto); la \concepto{deuda externa}, solo los pasivos exigibles. \emph{Umbral oficial} (PDM): PIIN inferior al $-35$~\% del PIB. Importa tanto la composición como el nivel: mejor instrumentos no exigibles, plazos largos, moneda nacional y pasivos del banco central.
-\item \textbf{Efecto valoración}: la PIIN cambia por las transacciones y por las otras variaciones (precios, tipo de cambio); un empeoramiento por valoración no siempre es más vulnerabilidad (los pasivos valen más si mejoran las perspectivas del país).
-\item \textbf{Dinámica}, en porcentaje del PIB: con PIIN negativa, el crecimiento nominal la \emph{mejora} aunque el país siga pidiendo prestado; los intereses ya están en la cuenta corriente.
-\begin{formula}
-\centering $\mathrm{PIIN}_t-\mathrm{PIIN}_{t-1}\approx\mathrm{CF}_t+\mathrm{OV}_t-\dfrac{\gamma^N_t}{1+\gamma^N_t}\,\mathrm{PIIN}_{t-1}$
-\end{formula}
-\item \textbf{Sostenibilidad}: un país no puede mantener un déficit crónico. Depende de
+\graficorepaso[0.97\linewidth]{rep-financiacion}{La cuenta financiera por instrumentos y la adecuación de las reservas (demasiadas también cuestan).}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{PIIN}: activos menos pasivos exteriores. \emph{Oficial} (PDM): $<-35$~\% del PIB.
+  \begin{itemize}
+  \item Importa la composición: no exigibles, plazos largos, moneda nacional.
+  \item Mejora con el crecimiento nominal aunque el país siga pidiendo prestado:
+\funcionclave{\mathrm{PIIN}_t-\mathrm{PIIN}_{t-1}\approx\mathrm{CF}_t+\mathrm{OV}_t-\frac{\gamma^N_t}{1+\gamma^N_t}\,\mathrm{PIIN}_{t-1}}
+  \end{itemize}
+\item \textbf{Sostenibilidad}: un país no puede mantener un déficit crónico.
 \funcionclave{\begin{gathered}\text{Sostenibilidad}=f\big(\overset{-}{\text{deuda}},\overset{+}{\gamma_Y},\overset{-}{i},\overset{?}{\pi},\\ \overset{-}{\text{absorción}},\overset{-}{E},\overset{+}{\text{acceso a los mercados}}\big)\end{gathered}}
-La inflación solo licúa la deuda en moneda nacional, y el tipo de cambio cuenta si la deuda está en divisas (\concepto{pecado original}). \emph{Orientativo}: la regla de la deuda externa preocupante por encima del 100~\% del PIB y muy preocupante por encima del 200~\% no sirve para el euro ni para los centros financieros; mejor la PIIN y su composición.
-\item \textbf{Recomendación tipo}: más ahorro nacional (consolidación fiscal), competitividad, financiación con inversión directa antes que con deuda, reservas suficientes y flexibilizar un tipo fijo sobrevalorado.
+La inflación solo licúa la deuda en moneda nacional (\textbf{pecado original}).
+\item \textbf{Recomendación tipo}: más ahorro nacional, competitividad, inversión directa antes que deuda y reservas suficientes.
 \end{itemize}
 
 % ==========================================================================
+\medskip
 \bloque{V. Políticas\label{rep:V}}
-\begin{itemize}
-\item Las políticas de \emph{demanda} (monetaria y fiscal) estabilizan el ciclo; las de \emph{oferta} elevan el crecimiento a largo plazo. En cada una se juzga el tono, su relación con el ciclo y si ha funcionado.
+\begin{itemize}[itemsep=1.5pt]
+\item Las de \textbf{demanda} (monetaria, fiscal) estabilizan el ciclo; las de \textbf{oferta} elevan el potencial. En cada una se juzga el \textbf{tono}, la relación con el ciclo y la eficacia.
 \end{itemize}
 
 \sub{V.1. Política monetaria\label{rep:V.1}}
 \begin{ideaclave}
-\textbf{Qué hay que contestar}: ¿qué objetivo e instrumentos tiene el banco central? ¿Qué tono ha tenido y por qué? ¿Ha funcionado sobre la inflación y la actividad? ¿Qué debería hacer ahora?
+\textbf{Qué hay que contestar}: ¿qué objetivo e instrumentos tiene? ¿Qué tono y por qué? ¿Ha funcionado? ¿Qué debería hacer ahora?
 \end{ideaclave}
-\begin{itemize}
-\item Ha caído en 11 de los 14 dictámenes, casi siempre con el tono, y a menudo lleva una coletilla sobre el sistema financiero (\hyperref[rep:V.2]{V.2}).
-\item \textbf{Diseño}: la política monetaria apenas altera la actividad a largo plazo, aunque sí a corto; su papel básico es la estabilidad de precios (el BCE, 2~\% simétrico a medio plazo). El tipo \emph{oficial} señala el signo de la política; con exceso de liquidez, como en la zona del euro, guía el de la facilidad de depósito. Instrumentos: tipos oficiales, financiación a plazo largo, compras de activos y orientación sobre los tipos futuros.
-\item \textbf{Tono}: se juzga por el nivel del tipo real a corto, $r_t\equiv i_t-\mathbb{E}_t[\pi_{t+1}]$ (en la práctica, $i_t-\pi_t$), frente al natural $r^n$: \emph{expansiva} o acomodaticia si $r_t<r^n$, neutral si $r_t\approx r^n$ y contractiva si $r_t>r^n$. Como $r^n$ no se observa, se completa con la regla de \autor{Taylor}:
-\begin{formula}
-\centering $i_t=r^*+\pi^*+1{,}5\,(\pi_t-\pi^*)+0{,}5\,\mathrm{OG}_t,\qquad r^*=\pi^*=2~\%$
-\end{formula}
-Con los tipos en su límite inferior, el tono se ve en el \emph{balance} y en agregados como M3. Si el nominal sube con fuerza pero la inflación sube más, el tipo real cae, aunque la subida indique un endurecimiento.
-\item \textbf{Canales}: tipo de interés (de la curva a los préstamos, el consumo y la inversión), crédito (oferta bancaria y garantías), precios de los activos (riqueza, $q$ de \autor{Tobin}), tipo de cambio (apreciación, menos inflación importada) y expectativas.
-\item \textbf{Eficacia}: la transmisión funciona si tras las subidas baja la inflación (con 1 o 2 años de retraso), se frena el crédito y se aprecia la moneda; es menor con un sistema financiero poco desarrollado, dolarización o dominancia fiscal. El balance del Eurosistema pasó de 2 billones de euros en 2014 a 8,8 a mediados de 2022 y a 5,9 en octubre de 2026.
-\item \concepto{Dominancia fiscal}: el banco central acaba financiando el déficit y pierde el control de la inflación. Indicios: déficit y deuda altos, crédito al Estado, tipos reales muy negativos con inflación alta, objetivos incumplidos.
-\item \textbf{Relación con el ciclo}: contracíclica si sube los tipos con la brecha positiva y los baja con la negativa; procíclica si al revés.
+\begin{itemize}[itemsep=1.5pt]
+\item Cae en 11 de 14 dictámenes, a menudo con una coletilla sobre el sistema financiero.
+\item \textbf{Tono}: el tipo real a corto frente al natural; se completa con la \textbf{regla de \autor{Taylor}}:
+\funcionclave{\begin{gathered}i_t=r^*+\pi^*+1{,}5\,(\pi_t-\pi^*)+0{,}5\,\mathrm{OG}_t\\ r^*=\pi^*=2~\%\end{gathered}}
+\end{itemize}
+\graficorepaso[0.97\linewidth]{rep-tono}{El tono: monetario por el nivel del tipo real; fiscal por la variación del saldo estructural primario.}
+\begin{itemize}[itemsep=1.5pt]
+\item En el límite inferior de los tipos, el tono se ve en el \textbf{balance} y en M3.
+\item Si el nominal sube pero la inflación sube más, el tipo real cae.
+\end{itemize}
+\graficorepaso[0.97\linewidth]{tipos-balance-bce}{BCE: el tipo de la facilidad de depósito guía la política; el balance crece con las compras de activos y baja desde 2022.}
+\graficorepaso[0.92\linewidth]{rep-canales}{Canales de transmisión: funcionan si baja la inflación, se frena el crédito y se aprecia la moneda.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Dominancia fiscal}: el banco central financia el déficit y pierde el control de la inflación.
+\item Es \textbf{contracíclica} si sube los tipos con la brecha positiva y los baja con la negativa.
 \end{itemize}
 
-\sub{V.2. Estabilidad financiera y política macroprudencial\label{rep:V.2}}
+\sub{V.2. Estabilidad financiera y macroprudencial\label{rep:V.2}}
 \begin{ideaclave}
-\textbf{Qué hay que contestar}: ¿es resiliente el sistema financiero? ¿Está endeudada la economía, y con quién? ¿En qué punto del ciclo financiero está? ¿Es la banca solvente, líquida y rentable? ¿Hay burbujas? ¿Qué deben hacer la regulación y la política macroprudencial?
+\textbf{Qué hay que contestar}: ¿es resiliente el sistema? ¿Quién está endeudado? ¿Es la banca solvente, líquida y rentable? ¿Hay burbujas? ¿Qué debe hacer la política macroprudencial?
 \end{ideaclave}
-\begin{itemize}
-\item Cae como pregunta propia o como coletilla de la monetaria. Se empieza con una frase de resumen («el sistema financiero parece resiliente, aunque…») y se sigue siempre el mismo orden: endeudamiento, banca, riesgos y políticas. La \concepto{estabilidad financiera} es que el sistema siga canalizando el ahorro hacia la inversión ante un choque, sin cortar el crédito ni amplificar la recesión.
-\item \textbf{Endeudamiento}: \emph{umbrales oficiales} (PDM), deuda de los hogares por encima del 55~\% del PIB y de las empresas no financieras por encima del 85~\%; flujos de crédito de más del 14~\% (hogares) y 13~\% (empresas) de la deuda del año anterior. La \concepto{brecha crédito-PIB} es la desviación de la ratio crédito/PIB respecto a su tendencia: por encima de 2 puntos se recomienda activar el colchón anticíclico. El \emph{bucle bancario-soberano} es la razón de ser de la unión bancaria. Un desapalancamiento sano se hace con más ahorro y más renta, no hundiendo el consumo y la inversión.
-\item \textbf{Solvencia}: las \concepto{ratios de capital} dividen el capital entre los \concepto{activos ponderados por riesgo} (APR): \concepto{CET1} (capital y reservas, máxima calidad), \concepto{Tier~1} (más el capital adicional de nivel 1) y \concepto{capital total} (más el de nivel 2). \emph{Oficial} (Basilea~III con el colchón de conservación): 7, 8,5 y 10,5~\%; con los demás colchones y el Pilar~2, los requisitos totales del MUS rondan el 11~\% de CET1 y el 16~\% de capital total. \emph{Orientativo} (ABE): un CET1 por encima del 14~\% es holgado. La \concepto{ratio de apalancamiento} (Tier~1 sobre la exposición total, sin ponderar) tiene un mínimo del 3~\%. Un capital que cumple muy justo puede no bastar ante un choque.
-\item \textbf{Calidad de los activos}: la \concepto{ratio de dudosos} (más de 90 días de impago o pago improbable, sobre el crédito) y la de cobertura (provisiones sobre dudosos). \emph{Orientativo} (ABE): por debajo del 3~\%, baja; por encima del 8~\%, alta. Va retrasada respecto al ciclo.
-\item \textbf{Liquidez}: \concepto{LCR} (activos líquidos sobre salidas netas a 30 días) y \concepto{NSFR} (financiación estable a un año), con mínimos \emph{oficiales} del 100~\%; la \concepto{ratio créditos/depósitos} por encima del 100~\% indica dependencia de la financiación mayorista.
-\item \textbf{Rentabilidad}: el \concepto{ROE} (beneficio neto sobre patrimonio neto, $\mathrm{ROE}=\mathrm{ROA}\times\text{activo}/\text{patrimonio}$) es suficiente si supera el \concepto{coste del capital} (8-12~\% en la banca europea); \emph{orientativo} (ABE): ROE favorable por encima del 10~\%, \concepto{eficiencia} (gastos sobre margen bruto) favorable por debajo del 50~\% y desfavorable por encima del 60~\%. Con tipos más bajos se estrecha el margen (efecto precio) pero crece el crédito y mejora su calidad (efecto volumen). Las debilidades se refuerzan: más dudosos, más provisiones, menos beneficio y menos capital.
-\item \textbf{Riesgos}: \emph{vivienda} (separar fundamentos de burbuja: precio que crece mucho más que la renta o los alquileres, crédito hipotecario muy dinámico con criterios relajados; \emph{oficial} (PDM), subida del precio nominal de más del 9~\% anual; \emph{orientativo}, esfuerzo de más de un tercio de la renta, y sobrecarga de Eurostat por encima del 40~\%); auge del crédito; préstamos en divisas; tipos muy bajos mucho tiempo (búsqueda de rentabilidad); bolsa que sube mucho más que los beneficios.
-\item \textbf{Regulación}: la \concepto{microprudencial} vela por cada entidad; la \concepto{macroprudencial}, por el sistema. Basilea~III tiene 3 pilares: requisitos mínimos de capital, apalancamiento y liquidez (Pilar~1); revisión supervisora de cada banco (Pilar~2); disciplina de mercado (Pilar~3). La \concepto{unión bancaria} tiene el MUS (desde 2014), el MUR y un sistema europeo de garantía de depósitos aún pendiente; en un país del euro la supervisión es europea y la macroprudencial, sobre todo nacional.
-\item \textbf{Política macroprudencial}: limita el riesgo sistémico, temporal (ciclo financiero) y estructural (bancos grandes e interconectados). Instrumentos: colchones de conservación (2,5~\%), anticíclico (0-2,5~\%), sistémicos y de riesgo sistémico sectorial; límites a los prestatarios (\concepto{LTV}, \concepto{LTI}, \concepto{DSTI}); límites a la concentración.
-\item \textbf{Recomendación tipo}: en la fase alcista, activar el colchón anticíclico o uno sectorial y limitar a los prestatarios; en la bajista, liberar colchones, permitir operar bajo los mínimos de forma temporal, suavizar los límites y restringir dividendos (como en 2020). Con fragilidad: saneamiento y recapitalización, supervisión y resolución ordenada.
+\begin{itemize}[itemsep=1.5pt]
+\item Orden fijo: \textbf{endeudamiento → banca → riesgos → políticas}, tras una frase de resumen («el sistema parece resiliente, aunque…»).
+\item \textbf{Endeudamiento} (\emph{oficial}, PDM): hogares $>55$~\% del PIB; empresas $>85$~\%.
+  \begin{itemize}
+  \item \textbf{Brecha crédito-PIB} $>2$~pp: activar el colchón anticíclico.
+  \item \textbf{Bucle bancario-soberano}: la razón de ser de la unión bancaria.
+  \end{itemize}
+\item \textbf{Solvencia}: capital sobre \textbf{activos ponderados por riesgo} (APR); apalancamiento (Tier~1 sobre la exposición total) de al menos el 3~\%.
+\end{itemize}
+\graficorepaso[0.97\linewidth]{rep-basilea}{Basilea~III: mínimos por calidad del capital más colchones (\% de los APR).}
+\graficorepaso[0.97\linewidth]{rep-semaforo}{Semáforo de la banca: las debilidades se refuerzan (más dudosos, menos beneficio, menos capital).}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Liquidez}: LCR y NSFR de al menos el 100~\%; una LTD $>100$~\% indica dependencia de la financiación mayorista.
+\item \textbf{Riesgos}: vivienda (\emph{oficial}: precio $>+9$~\% anual), auge del crédito, préstamos en divisas, tipos bajos mucho tiempo.
+\item \textbf{Regulación}: \textbf{micro} (cada entidad; los 3 pilares de Basilea) y \textbf{macro} (el sistema). Unión bancaria: MUS, MUR y garantía de depósitos pendiente.
+\item \textbf{Recomendación tipo}:
+  \begin{itemize}
+  \item en la fase alcista, colchón anticíclico y límites \textbf{LTV}, \textbf{LTI} y \textbf{DSTI};
+  \item en la bajista, liberar colchones y limitar dividendos;
+  \item con fragilidad, sanear, recapitalizar y resolver ordenadamente.
+  \end{itemize}
 \end{itemize}
 
 \sub{V.3. Política fiscal y deuda pública\label{rep:V.3}}
 \begin{ideaclave}
-\textbf{Qué hay que contestar}: ¿qué tono tiene la política fiscal y es adecuado al ciclo? ¿Es sostenible la deuda? ¿Qué riesgos tiene y cómo se reducen? ¿Qué exigen las reglas fiscales?
+\textbf{Qué hay que contestar}: ¿qué tono tiene y es adecuado al ciclo? ¿Es sostenible la deuda? ¿Qué riesgos tiene? ¿Qué exigen las reglas?
 \end{ideaclave}
-\begin{itemize}
-\item Ha caído en todos los dictámenes. El punto de partida: una política fiscal expansiva no cambia la producción a largo plazo (salvo con histéresis), así que lo recomendable es una política \emph{neutral} que deje actuar a los \concepto{estabilizadores automáticos}, y solo ante una recesión grave o un sobrecalentamiento una \emph{discrecional} contracíclica.
-\item \textbf{Los 5 saldos}, en porcentaje del PIB: el \concepto{saldo público} $b$; el \concepto{primario} $b^p$ (sin intereses); el \concepto{ajustado por el ciclo} $b^{ca}=b-\varepsilon\cdot\mathrm{OG}$, con $\varepsilon$ en torno a 0,5-0,6 en la UE; el \concepto{estructural} $b^e$ (además, sin medidas puntuales); y el \concepto{estructural primario} $b^{pe}$.
-\item \textbf{Tono}: el \concepto{esfuerzo fiscal} es $\Delta b^{pe}_t$: positivo, contractivo; negativo, expansivo; en torno a 0, neutral. El FMI llama impulso fiscal a $-\Delta b^{pe}_t$. Con déficits muy altos hay que mirar también el nivel: un déficit estructural primario alto que se reduce algo sigue siendo expansivo. Desde 2024 la Comisión mide la orientación con el gasto primario neto frente al potencial. Es contracíclica si $b^{pe}$ sube con la brecha positiva y baja con la negativa.
-\item \textbf{Efectos no keynesianos}: una consolidación creíble podría generar confianza y más consumo (multiplicador negativo; Dinamarca e Irlanda en los años 80), pero la evidencia indica que en la mayoría de los casos reduce la actividad a corto plazo. En el cuadro: consumo e inversión que se aceleran cuando $b^{pe}$ mejora con fuerza y baja la prima de riesgo, con prudencia.
-\item \textbf{Reglas de la UE} (\emph{oficial}): déficit del 3~\% y deuda del 60~\% del PIB, procedimiento de déficit excesivo y, desde 2024, una senda de gasto primario neto dentro de un plan fiscal-estructural a 4 años (ampliable a 7).
-\item \textbf{Dinámica de la deuda}, con $d$ la deuda sobre el PIB, $g-\tau$ el déficit primario, $i$ el tipo implícito y $\gamma^N$ el crecimiento nominal:
-\begin{formula}
-\centering $d_t-d_{t-1}=(g_t-\tau_t)+\dfrac{i_t-\gamma^N_t}{1+\gamma^N_t}\,d_{t-1}+\mathrm{ADD}_t$
-\end{formula}
-El segundo término es el \concepto{efecto bola de nieve} y ADD, el ajuste déficit-deuda. El saldo primario que estabiliza la deuda es $\tau-g=\frac{i-\gamma^N}{1+\gamma^N}\,d$: si $i<\gamma^N$, basta un déficit primario pequeño; si $i>\gamma^N$, hacen falta superávits, mayores cuanto más deuda.
-\item \textbf{Riesgos}: \emph{macroeconómicos} (menos crecimiento, deflación, subidas de tipos, pasivos contingentes, envejecimiento) y \emph{financieros} (deuda en divisas, vencimientos cortos, tenedores no residentes, concentración en la banca nacional, calificación cerca de BBB$-$/Baa3, por debajo de la cual la deuda es especulativa y deja de admitirse como garantía en el Eurosistema).
-\item \textbf{La inflación y las cuentas públicas}: a corto plazo mejora el déficit y la ratio de deuda, porque los ingresos suben deprisa (bases nominales, \emph{progresividad en frío}) y el PIB nominal infla el denominador; a medio plazo el efecto se invierte, porque los gastos suben más despacio (intereses al refinanciar, pensiones y salarios indexados con retraso, contratos al renovarse).
-\item \textbf{Otros análisis}: $b-b^{ca}=\varepsilon\cdot\mathrm{OG}$ mide la fuerza de los estabilizadores; cuentan también el nivel de ingresos y gastos (sostenibilidad y eficiencia, no tamaño), la deuda a corto plazo, la vida media y la deuda regional.
-\item \textbf{Recomendación tipo}: consolidación gradual, creíble y anunciada pronto (mejor por el gasto corriente y ampliando bases), reglas fiscales y techo de gasto, alargar la vida media y emitir en moneda nacional, diversificar inversores, lucha contra el fraude y reformas que eleven el potencial. Con ingresos bajos: más bases (menos exenciones, menos economía sumergida, más actividad) e ingresos no tributarios.
+\begin{itemize}[itemsep=1.5pt]
+\item Lo recomendable es una política \textbf{neutral}, que deje actuar a los \textbf{estabilizadores automáticos}.
+\item \textbf{Los 5 saldos}: $b$ total; $b^p$ primario; $b^{ca}$ ajustado por el ciclo; $b^e$ estructural; $b^{pe}$ estructural primario.
+\funcionclave{b^{ca}=b-\varepsilon\cdot\mathrm{OG},\qquad \text{esfuerzo}_t=\Delta b^{pe}_t}
+  \begin{itemize}
+  \item $\Delta b^{pe}>0$, \textbf{contractiva}; $<0$, \textbf{expansiva}; $\approx0$, neutral.
+  \item \textbf{Ojo}: si un saldo negativo se hace más negativo, ha \emph{bajado}: es expansiva.
+  \end{itemize}
+\end{itemize}
+\graficorepaso[0.97\linewidth]{impulso-fiscal}{Impulso fiscal ($-\Delta b^{pe}$, FMI): positivo, política expansiva.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Reglas de la UE} (\emph{oficial}): déficit del 3~\% y deuda del 60~\% del PIB; senda de gasto primario neto en un plan de 4 años (hasta 7).
+\item \textbf{Dinámica de la deuda} (efecto bola de nieve):
+\funcionclave{d_t-d_{t-1}=(g_t-\tau_t)+\frac{i_t-\gamma^N_t}{1+\gamma^N_t}\,d_{t-1}+\mathrm{ADD}_t}
+\end{itemize}
+\graficorepaso[0.97\linewidth]{rep-deuda}{Saldo primario que estabiliza la deuda: $\tau-g=\frac{i-\gamma^N}{1+\gamma^N}\,d$.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Inflación y cuentas públicas}: a corto plazo mejoran (ingresos rápidos, PIB nominal mayor); a medio, empeoran (intereses y gastos indexados con retraso).
+\end{itemize}
+\graficorepaso[0.97\linewidth]{inflacion-cuentas-publicas}{El calendario de los efectos de la inflación en las cuentas públicas.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Estabilizadores automáticos}: $b-b^{ca}=\varepsilon\cdot\mathrm{OG}$ mide cuánto del saldo explica el ciclo; si apenas se separan, son débiles.
+\item \textbf{Riesgos}: menos crecimiento, subidas de tipos, envejecimiento, deuda en divisas o a corto, calificación cerca del grado especulativo.
+\end{itemize}
+\graficorepaso[0.97\linewidth]{rep-calificaciones}{Por debajo de BBB$-$/Baa3 la deuda deja de ser grado de inversión.}
+\begin{itemize}[itemsep=1.5pt]
+\item \textbf{Recomendación tipo}: consolidación \textbf{gradual, creíble y anunciada pronto}; reglas y techo de gasto; alargar la vida media; reformas que eleven el potencial.
 \end{itemize}
 
-\sub{V.4. Combinación de políticas (\emph{policy mix})\label{rep:V.4}}
-\begin{itemize}
-\item El \emph{policy mix} es \emph{coherente} si cada política contribuye a los objetivos de la otra (no si tienen el mismo signo), y \emph{tensionado} si una deshace lo que hace la otra. La fiscal se mide por la variación del saldo primario (estructural, si se puede) y la monetaria, por el tipo oficial o, en su límite, por el balance.
-\end{itemize}
-\graficorepaso[0.95\linewidth]{policy-mix}{Los 4 cuadrantes: la coherencia depende de la situación (inflación, brecha, deuda), no de que las 2 vayan en el mismo sentido.}
-\begin{itemize}
-\item \emph{Ambas expansivas}: adecuado en una recesión con inflación baja. \emph{Ambas contractivas}: con sobrecalentamiento e inflación. \emph{Fiscal expansiva y monetaria contractiva}: suben tipos y moneda; poco coherente salvo ayudas temporales y focalizadas. \emph{Fiscal contractiva y monetaria expansiva}: la combinación clásica para consolidar con deuda alta y brecha negativa. En una unión monetaria solo queda la fiscal, que compensa si el ciclo del país va por delante o por detrás del de la zona.
-\item Según el FMI, en 2020 el 77~\% de las economías aplicó ambas expansivas; en 2021, el 62~\%, monetaria expansiva y fiscal contractiva; en 2022, el 74~\%, ambas contractivas.
-\end{itemize}
-
-\sub{V.5. Políticas de oferta\label{rep:V.5}}
-\begin{itemize}
-\item \textbf{Diagnóstico previo}: potencial bajo, productividad estancada, inversión baja, paro estructural o tasa de actividad baja. Se recomienda según el cuello de botella: progreso técnico (I+D, capital riesgo), capital (incentivos, infraestructuras), capital humano (FP dual), mercado de trabajo, competencia e instituciones.
-\item \textbf{El mercado de trabajo, según el tipo de paro}: \emph{clásico}, salarios ligados a la productividad (negociación más cercana a la empresa, sin indexar a la inflación pasada), menos dualidad y menos cuña fiscal sobre los salarios bajos, y más productividad; \emph{keynesiano}, políticas de demanda temporales; \emph{friccional}, servicios de empleo eficaces, planes de estudio adaptados y movilidad geográfica (alquiler); \emph{larga duración}, planes de choque con incentivos a su contratación y formación. En todos, políticas activas bien focalizadas y evaluadas y prestaciones decrecientes ligadas a la búsqueda de empleo.
+\sub{V.4. \emph{Policy mix} y políticas de oferta\label{rep:V.4}}
+\graficorepaso[0.97\linewidth]{policy-mix}{\emph{Policy mix}: es coherente si cada política ayuda a la otra, no si van en el mismo sentido.}
+\begin{itemize}[itemsep=1.5pt]
+\item En una \textbf{unión monetaria} solo queda la fiscal, que compensa si el ciclo del país se separa del de la zona.
+\item \textbf{Oferta}, según el cuello de botella: I+D, capital, capital humano, competencia e instituciones.
+\item \textbf{Paro}: la receta, según su tipo (cuadro de \hyperref[rep:II.1]{II.1}); en todos, políticas activas bien focalizadas y prestaciones ligadas a la búsqueda de empleo.
 \end{itemize}
 
 % ==========================================================================
+\medskip
 \bloque{VI. Recomendaciones de política económica\label{rep:VI}}
 \begin{ideaclave}
-\textbf{Qué hay que contestar}: ¿cuáles son los puntos fuertes de la economía? ¿Cuáles son sus vulnerabilidades y cómo pueden corregirse?
+\textbf{Qué hay que contestar}: ¿cuáles son los puntos fuertes? ¿Cuáles son las vulnerabilidades y cómo se corrigen?
 \end{ideaclave}
-\begin{itemize}
-\item Cayó en 12 de los 14 dictámenes y suele ser la última; a veces va dentro de cada pregunta («proponga medidas…»). Se escribe al final, con la matriz de fortalezas y debilidades anotada durante el examen.
-\item \textbf{En 3 pasos}: qué va bien (fortalezas), qué hay que cambiar (los 2 o 3 desequilibrios principales, por orden de importancia) y cómo (medida, objetivo y riesgo). Nunca tajante: «parece necesaria una consolidación fiscal, pero sin que resulte excesiva para no lastrar la recuperación». Puntúan las recomendaciones que responden a los datos del cuadro, no las que valen para cualquier país.
+\begin{itemize}[itemsep=1.5pt]
+\item Cae en 12 de 14 dictámenes; se escribe al final, con la \textbf{matriz de fortalezas y debilidades}.
+\item \textbf{3 pasos}: qué va bien, qué hay que cambiar (2 o 3 desequilibrios) y cómo.
+\item Nunca tajante: «parece necesaria una consolidación, sin que resulte excesiva».
+\item \textbf{A medio plazo}: el envejecimiento, la transición energética y digital y la defensa piden reducir poco a poco las ratios de deuda altas y proteger la inversión pública.
+\item Ante la fragmentación de las cadenas de valor, \textbf{autonomía estratégica abierta}: seguir abiertos y diversificar los suministros críticos.
 \end{itemize}
-{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.05}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}X}
+\graficorepaso[0.97\linewidth]{rep-recomendacion}{Del dato a la recomendación: puntúan las que responden al cuadro.}
+{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.3\linewidth}>{\raggedright\arraybackslash}X}
 \toprule
 \rowcolor{tceemoradopalido}\textbf{Desequilibrio} & \textbf{Recomendación tipo}\\
 \midrule
-Crecimiento débil o recesión & Monetaria y fiscal expansivas a corto plazo si hay margen (inflación baja, deuda sostenible), mientras actúan las reformas de oferta.\\
-\rowcolor{tceesalvia}Potencial bajo & Reformas estructurales: capital humano, I+D, infraestructuras, competencia, sistema financiero y mercado de trabajo.\\
-Demanda interna débil & Apoyo a la renta de los hogares con más propensión a consumir; crédito; certidumbre fiscal.\\
-\rowcolor{tceesalvia}Inflación y sobrecalentamiento & Monetaria contractiva con un banco central independiente; fiscal que no empuje (ayudas temporales, focalizadas y que mantengan el incentivo a ahorrar energía); competencia; diversificación energética.\\
-Paro alto y persistente & Según el tipo de paro (\hyperref[rep:V.5]{V.5}).\\
-\end{tabularx}}
-{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.05}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}X}
-\rowcolor{tceesalvia}Pérdida de competitividad & Salarios ligados a la productividad; competencia; I+D; promoción comercial.\\
-Déficit exterior y deuda externa & Más ahorro nacional; competitividad; inversión directa antes que deuda; reservas suficientes; flexibilizar un tipo fijo sobrevalorado.\\
-\rowcolor{tceesalvia}Déficit y deuda públicos & Consolidación gradual y creíble; reglas y techo de gasto; corresponsabilidad fiscal; fraude; quitar gasto ineficaz; pensiones; alargar la vida media.\\
-Fragilidad financiera & Saneamiento y recapitalización; requisitos de capital y liquidez; macroprudencial; resolución ordenada; mercado de capitales más profundo.\\
-\rowcolor{tceesalvia}Dependencia de un sector & Diversificación productiva; fondo de estabilización o regla fiscal estructural; formación para reasignar el empleo.\\
-Envejecimiento & Más actividad de mujeres y mayores, inmigración, productividad, reforma de pensiones.\\
+Recesión & Monetaria y fiscal expansivas si hay margen.\\
+\rowcolor{tceesalvia}Potencial bajo & Reformas: capital humano, I+D, competencia.\\
+Demanda interna débil & Renta de los hogares; crédito; certidumbre.\\
+\rowcolor{tceesalvia}Sobrecalentamiento & Monetaria contractiva; ayudas temporales y focalizadas.\\
+Paro persistente & Según el tipo de paro (\hyperref[rep:II.1]{II.1}).\\
+\rowcolor{tceesalvia}Competitividad & Salarios y productividad; I+D; promoción.\\
+Déficit exterior & Ahorro nacional; inversión directa; reservas.\\
+\rowcolor{tceesalvia}Deuda pública & Consolidación gradual; reglas; vida media.\\
+Fragilidad financiera & Sanear; capital; macroprudencial.\\
+\rowcolor{tceesalvia}Dependencia de un sector & Diversificar; fondo de estabilización.\\
+Envejecimiento & Actividad, inmigración, pensiones.\\
 \bottomrule
 \end{tabularx}}
-\begin{itemize}
-\item \textbf{Además}: las presiones de gasto a medio plazo (envejecimiento, transición energética y digital, defensa) piden reducir poco a poco las ratios de deuda altas y proteger la inversión pública. Ante la fragmentación de las cadenas de valor, una \emph{autonomía estratégica abierta}: seguir con la apertura y diversificar los suministros críticos. Si el país tiene un programa del FMI, hay que ver si el cuadro refleja sus efectos típicos.
-\end{itemize}
 
 \begin{trampa}
-Las contribuciones se dan en \emph{puntos porcentuales}, no en \%. El tipo de cambio puede venir en cualquier convención (el BCE y el Banco de España publican los índices al revés: una subida es una apreciación); hay que comprobarla antes de leer el signo. El esfuerzo fiscal es $\Delta b^{pe}$: si un saldo negativo se hace más negativo, ha \emph{bajado} y el tono es expansivo. Un PMI por encima de 50 indica que la actividad crece, no que esté alta. Las tasas de actividad solo se comparan con la misma edad. La PAT puede subir porque se destruye empleo poco productivo. La cuenta de capital se suma a la corriente para obtener la capacidad o necesidad, y los intereses de la deuda externa ya están en la cuenta corriente. No hay que intentar adivinar el país.
+errores típicos:
+\begin{itemize}
+\item las contribuciones van en \textbf{pp}, no en \%;
+\item hay que comprobar la \textbf{convención del tipo de cambio} antes de leer el signo;
+\item un PMI $>50$ indica que la actividad crece, no que esté alta;
+\item las tasas de actividad se comparan con la \textbf{misma edad};
+\item los intereses de la deuda externa ya están en la cuenta corriente;
+\item la cuenta de capital se suma a la corriente para obtener la capacidad o necesidad;
+\item la PAT puede subir solo porque se destruye empleo poco productivo;
+\item no hay que intentar adivinar el país.
+\end{itemize}
 \end{trampa}
 
 % ==========================================================================
+\medskip
 \bloque{Anexo A. Funciones y fórmulas principales\label{rep:A}}
 \begin{itemize}
-\item Cuando se pide un cálculo, se escribe siempre el procedimiento: la fórmula, los datos y el resultado con su unidad (\%, pp, \% del PIB). Notación: $\gamma$, tasa de variación; $Y$, PIB real; $Y^p$, potencial; $P$, deflactor; $W$, remuneración por asalariado; $L$, empleo; $i$, tipo nominal; $d$, deuda sobre el PIB.
+\item Si se pide un cálculo: \textbf{fórmula, datos y resultado con su unidad} (\%, pp, \% del PIB). Las fórmulas de los bloques, en sus cuadros morados; aquí, las demás.
 \end{itemize}
 {\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.3}
 \begin{tabularx}{\linewidth}{>{\centering\arraybackslash}p{0.52\linewidth}>{\raggedright\arraybackslash}X}
@@ -356,106 +430,80 @@ Las contribuciones se dan en \emph{puntos porcentuales}, no en \%. El tipo de ca
 \rowcolor{tceemoradopalido}\textbf{Fórmula} & \textbf{En palabras}\\
 \midrule
 \rowcolor{tceesalvia}\multicolumn{2}{l}{\emph{Ciclo y demanda}}\\
-$\mathrm{OG}_t=\dfrac{Y_t-Y^p_t}{Y^p_t}\times100$ & Brecha: distancia al potencial, en \% del potencial.\\
-$\Delta\mathrm{OG}_t\approx\gamma_{Y,t}-\gamma_{Y^p,t}$ & La brecha se abre si el PIB crece más que el potencial.\\
-$\gamma_{Y^p,t}\approx\gamma_{Y,t}-(\mathrm{OG}_t-\mathrm{OG}_{t-1})$ & Crecimiento del potencial deducido del cuadro.\\
-$\gamma_{Y,t}=\sum_j\dfrac{Z^j_{t-1}}{Y_{t-1}}\,\gamma_{Z^j,t}$ & Contribución de cada componente: peso por crecimiento, en pp (las importaciones restan).\\
+$\gamma_{Y^p,t}\approx\gamma_{Y,t}-(\mathrm{OG}_t-\mathrm{OG}_{t-1})$ & Potencial deducido del cuadro.\\
 $g^{\text{anual}}=(1+g)^4-1\approx4g$ & Tasa anualizada de una trimestral.\\
 \end{tabularx}}
+
 {\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.3}
 \begin{tabularx}{\linewidth}{>{\centering\arraybackslash}p{0.52\linewidth}>{\raggedright\arraybackslash}X}
-\rowcolor{tceesalvia}\multicolumn{2}{l}{\emph{Precios, tipos de interés y tipo de cambio}}\\
-$\text{Deflactor}=\dfrac{\text{PIB nominal}}{\text{PIB real}}\times100$ & Precios de lo que se produce dentro (\autor{Paasche}).\\
-$\gamma_P\approx\gamma^N-\gamma_Y$ & Crecimiento del deflactor: nominal menos real.\\
-$r^{cp}\approx i^{cp}-\pi^{\mathrm{IPC}}$, \ $r^{lp}\approx i^{lp}-\gamma_P$ & Tipos reales a corto (con el IPC) y a largo (con el deflactor).\\
-$\gamma_{W/\mathrm{IPC}}\approx\gamma_W-\pi^{\mathrm{IPC}}$ & Salario real del trabajador; con $\gamma_P$, coste real para la empresa.\\
-$q\equiv EP^*/P$ & Tipo de cambio real: si sube, depreciación real y más competitividad-precio.\\
-$|\varepsilon_{X,q}|+|\varepsilon_{M,q}|>1$ & \autor{Marshall}-\autor{Lerner}: la depreciación mejora la balanza.\\
+\rowcolor{tceesalvia}\multicolumn{2}{l}{\emph{Precios y tipos de interés}}\\
+$\text{Deflactor}=\dfrac{\text{PIB nominal}}{\text{PIB real}}\times100$ & Precios de lo producido (\autor{Paasche}).\\
+$\gamma_P\approx\gamma^N-\gamma_Y$ & Deflactor: nominal menos real.\\
+$r^{cp}\approx i^{cp}-\pi^{\mathrm{IPC}}$, \ $r^{lp}\approx i^{lp}-\gamma_P$ & Tipos reales a corto y a largo.\\
+$\gamma_{W/\mathrm{IPC}}\approx\gamma_W-\pi^{\mathrm{IPC}}$ & Salario real del trabajador.\\
 \end{tabularx}}
+
 {\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.3}
 \begin{tabularx}{\linewidth}{>{\centering\arraybackslash}p{0.52\linewidth}>{\raggedright\arraybackslash}X}
-\rowcolor{tceesalvia}\multicolumn{2}{l}{\emph{Trabajo y costes}}\\
-$\gamma_{\mathrm{PAT}}=\gamma_Y-\gamma_L$ & Productividad aparente: PIB real menos empleo.\\
-$\gamma_{\mathrm{CLU}}=\gamma_W-\gamma_{\mathrm{PAT}}$ & CLU nominales: salarios menos productividad.\\
-$\gamma_{\mathrm{CLU}/P}=\gamma_{\mathrm{CLU}}-\gamma_P$ & CLU reales: participación de los salarios en el PIB.\\
-$\gamma_{1+\mu}\approx\gamma_P-\gamma_{\mathrm{CLU}}$ & Margen: deflactor menos CLU nominales.\\
-$\pi_t=\pi^e_t-a\,(U_t-U^n)+\varepsilon_t$ & \autor{Phillips} con expectativas ($U^n$, la NAIRU).\\
-$\Delta u_t\approx-0{,}5\,(\gamma_{Y,t}-\gamma_{Y^p,t})$ & \autor{Okun} (EE.~UU.): medio punto menos de paro por punto de crecimiento sobre el potencial.\\
-\end{tabularx}}
-{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.3}
-\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}p{0.52\linewidth}>{\raggedright\arraybackslash}X}
-\rowcolor{tceesalvia}\multicolumn{2}{l}{\emph{Sector exterior}}\\
-$\mathrm{CC}+\mathrm{CK}+\mathrm{EO}=\mathrm{CF}$ & Identidad de la balanza de pagos (desarrollada en \hyperref[rep:IV.1]{IV.1}).\\
-$\mathrm{CC}=S-I=(S_P-I_P)+(T-G)$ & Saldo corriente: ahorro menos inversión, privado más público.\\
+\rowcolor{tceesalvia}\multicolumn{2}{l}{\emph{Trabajo y sector exterior}}\\
+$\gamma_{\mathrm{CLU}}=\gamma_W-(\gamma_Y-\gamma_L)$ & CLU nominales, todo junto.\\
+$\Delta u_t\approx-0{,}5\,(\gamma_{Y,t}-\gamma_{Y^p,t})$ & \autor{Okun} (EE.~UU.).\\
 $\dfrac{S}{\mathrm{PIB}}=\dfrac{I}{\mathrm{PIB}}+\dfrac{\mathrm{CC}}{\mathrm{PIB}}$ & Tasa de ahorro nacional.\\
 $\mathrm{OV}_t=\Delta\mathrm{PIIN}_t-\mathrm{CF}_t$ & Efecto valoración de la PIIN.\\
-$\text{pendiente}=i^{lp}-i^{cp}$ & Curva de tipos: negativa, anticipa recesión.\\
+$\text{pendiente}=i^{lp}-i^{cp}$ & Curva de tipos; negativa, recesión.\\
 \end{tabularx}}
+
 {\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.3}
 \begin{tabularx}{\linewidth}{>{\centering\arraybackslash}p{0.52\linewidth}>{\raggedright\arraybackslash}X}
 \rowcolor{tceesalvia}\multicolumn{2}{l}{\emph{Políticas y banca}}\\
-$i_t=r^*+\pi^*+1{,}5\,(\pi_t-\pi^*)+0{,}5\,\mathrm{OG}_t$ & Regla de \autor{Taylor}, con $r^*=\pi^*=2~\%$.\\
 $b^{pe}=b-\varepsilon\cdot\mathrm{OG}$ \ $-\,\text{puntuales}+\text{intereses}$ & Saldo estructural primario.\\
-$\text{esfuerzo}_t=b^{pe}_t-b^{pe}_{t-1}$ & Tono fiscal: $>0$ contractivo; $<0$ expansivo.\\
 $\tau-g=\dfrac{i-\gamma^N}{1+\gamma^N}\,d$ & Saldo primario que estabiliza la deuda.\\
-$\mathrm{ROE}=\mathrm{ROA}\times\dfrac{\text{activo}}{\text{patrimonio}}$ & El ROE supera al ROA por el apalancamiento.\\
-$\dfrac{\text{CET1}}{\text{APR}}$, \ $\dfrac{\text{Tier 1}}{\text{exposición total}}$ & Ratio de capital y ratio de apalancamiento.\\
+$\mathrm{ROE}=\mathrm{ROA}\times\dfrac{\text{activo}}{\text{patrimonio}}$ & El apalancamiento eleva el ROE.\\
 \bottomrule
 \end{tabularx}}
 
-\begin{itemize}
-\item \textbf{Ejemplos rápidos}: el consumo que pesa el 55~\% y crece un 2~\% aporta $0{,}55\times2=1{,}1$~pp. Con PIB real $+2$, empleo $+1{,}5$, remuneración $+3$ y deflactor $+2$: PAT $+0{,}5$, CLU $+2{,}5$, CLU reales $+0{,}5$ y margen $-0{,}5$~\%. Un saldo de $-4$~\% con brecha de $-2$ ($\varepsilon=0{,}5$) e intereses del 2~\% da $b^{pe}=-4+1+2=-1$~\%. Con deuda del 100~\%, $i=3$~\% y $\gamma^N=4$~\%, la deuda se estabiliza con un déficit primario de casi 1 punto.
-\end{itemize}
+\begin{formula}
+\textbf{Ejemplos}: un consumo del 55~\% que crece un 2~\% aporta $0{,}55\times2=1{,}1$~pp. Con PIB $+2$, empleo $+1{,}5$, salarios $+3$ y deflactor $+2$: PAT $+0{,}5$, CLU $+2{,}5$, CLU reales $+0{,}5$ y margen $-0{,}5$. Con deuda del 100~\%, $i=3$~\% y $\gamma^N=4$~\%, la deuda se estabiliza con un déficit primario de casi 1 punto.
+\end{formula}
 
 % ==========================================================================
+\medskip
 \bloque{Anexo B. Umbrales: oficiales y orientativos\label{rep:B}}
+\graficorepaso[0.97\linewidth]{rep-umbrales}{Semáforo de los umbrales oficiales más usados.}
 {\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}X}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}X}
 \toprule
 \rowcolor{tceemoradopalido}\textbf{Indicador} & \textbf{Oficial} & \textbf{Orientativo}\\
 \midrule
 \rowcolor{tceesalvia}\multicolumn{3}{l}{\emph{Ciclo, trabajo y precios}}\\
-Crecimiento real & — & $<0$; 0-1; 1-2; 2-3; $\geq3$~\% (avanzadas)\\
 Brecha & 0 & —\\
-PMI / ESI & 50 / 100 & Curva de tipos invertida: recesión\\
+PMI / ESI & 50 / 100 & Curva invertida: recesión\\
 Paro & PDM: 10~\% & Pleno empleo: 3-6~\%\\
-Tasa de actividad & PDM: caída de más de 0,2~pp en 3 años & Comparar con la misma edad\\
-CLU nominales & PDM: $+9$~\% en 3 años (euro), $+12$~\% (resto) & En torno al 2~\% anual en el euro\\
+Tasa de actividad & PDM: caída $>0{,}2$~pp en 3 años & Misma edad\\
+CLU nominales & PDM: $+9$~\% en 3 años (euro), $+12$~\% (resto) & $\approx2$~\% anual en el euro\\
 Inflación & BCE: 2~\% simétrico & —\\
 \end{tabularx}}
+
 {\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}X}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}X}
 \rowcolor{tceesalvia}\multicolumn{3}{l}{\emph{Competitividad y sector exterior}}\\
 Tipo de cambio real & PDM: $\pm3$~\% en 3 años (euro), $\pm10$~\% (resto) & —\\
-Resultados de exportación & PDM: $-3$~\% en 3 años frente a las avanzadas & —\\
+Exportaciones & PDM: $-3$~\% en 3 años frente a las avanzadas & —\\
 Apertura & — & $<15$-20; $\approx50$; $>75$~\%\\
 Cuenta corriente & PDM: $-4$~\% y $+6$~\% (media de 3 años) & —\\
 PIIN & PDM: $-35$~\% del PIB & —\\
 Deuda externa & — & 100 y 200~\% (no en el euro)\\
-Reservas & — & 3 meses de M; 100~\% de la deuda a corto; 20~\% de M2\\
 \end{tabularx}}
+
 {\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}X}
-\rowcolor{tceesalvia}\multicolumn{3}{l}{\emph{Cuentas públicas}}\\
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}X}
+\rowcolor{tceesalvia}\multicolumn{3}{l}{\emph{Cuentas públicas y sistema financiero}}\\
 Déficit / deuda & Tratado: 3~\% / 60~\% del PIB & —\\
-Reducción de la deuda & 1~pp al año si supera el 90~\% (0,5 entre el 60 y el 90~\%); estructural hacia $-1{,}5$~\% & —\\
-Saldo primario estabilizador & — & Si $i>\gamma^N$, hace falta superávit\\
-Esfuerzo fiscal & — & $>0$ contractivo; $\approx0$ neutral; $<0$ expansivo\\
-Calificación & Grado de inversión: BBB$-$/Baa3 o mejor & —\\
-\end{tabularx}}
-{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}X}
-\rowcolor{tceesalvia}\multicolumn{3}{l}{\emph{Sistema financiero}}\\
-CET1 / Tier~1 / total & 7 / 8,5 / 10,5~\% (con conservación); MUS: $\approx11$ y 16~\% & ABE: CET1 $>14$~\% holgado\\
-Apalancamiento & 3~\% & —\\
-LCR y NSFR & 100~\% & —\\
-Dudosos & Más de 90 días de impago & ABE: $<3$~\% bajo; $>8$~\% alto\\
-ROE / eficiencia & — & Coste del capital 8-12~\%; ABE: ROE $>10$~\%; eficiencia $<50$ / $>60$~\%\\
-Créditos / depósitos & — & $>100$~\%: financiación mayorista\\
-Brecha crédito-PIB & — & $>2$~pp: colchón anticíclico\\
-Deuda de hogares / empresas & PDM: 55~\% / 85~\% del PIB & —\\
+Reducción de la deuda & 1~pp al año si supera el 90~\% (0,5 entre 60 y 90~\%) & —\\
+Deuda hogares / empresas & PDM: 55~\% / 85~\% del PIB & —\\
 Flujo de crédito & PDM: 14~\% / 13~\% de la deuda & —\\
-Vivienda & PDM: $+9$~\% anual & Esfuerzo $>1/3$ de la renta; sobrecarga $>40$~\%\\
+Brecha crédito-PIB & — & $>2$~pp: colchón anticíclico\\
+Vivienda & PDM: $+9$~\% anual & Esfuerzo $>1/3$ de la renta\\
 \bottomrule
 \end{tabularx}}
 
@@ -465,22 +513,71 @@ Vivienda & PDM: $+9$~\% anual & Esfuerzo $>1/3$ de la renta; sobrecarga $>40$~\%
 \toprule
 \rowcolor{tceemoradopalido} & \textbf{Avanzada} & \textbf{Emergente o en desarrollo}\\
 \midrule
-Crecimiento & Potencial del 1-2~\%; menos volátil & Potencial mayor (4-6~\%); más volátil (menos estabilizadores)\\
+Crecimiento & Potencial del 1-2~\%; menos volátil & Potencial mayor (4-6~\%); más volátil\\
 \rowcolor{tceesalvia}Inflación & Cerca del objetivo (2~\%) & Más alta y volátil; mayor traspaso\\
-Estructura & Servicios en torno a 3 cuartas partes del VAB & Más agricultura y materias primas; dependencia de un sector\\
-\rowcolor{tceesalvia}Política fiscal & Contracíclica o acíclica; deuda en moneda propia & A menudo procíclica; ingresos bajos (informalidad); deuda en divisas\\
-Política monetaria & Tipos y objetivo de inflación creíble & A veces agregados o tipo de cambio; posible dominancia fiscal\\
-\rowcolor{tceesalvia}Sector exterior & Déficits financiables con inversión directa y de cartera & Riesgo de frenazo súbito; remesas; reservas como seguro\\
-Sistema financiero & Profundo, con mercados de capitales & Bancarizado y poco profundo; préstamos en divisas\\
-\rowcolor{tceesalvia}Demografía & Envejecimiento & Transición demográfica inacabada\\
+Estructura & Servicios, en torno a 3 cuartas partes del VAB & Más agricultura y materias primas\\
+\rowcolor{tceesalvia}Política fiscal & Contracíclica o acíclica; deuda en moneda propia & A menudo procíclica; ingresos bajos; deuda en divisas\\
+Política monetaria & Tipos y objetivo de inflación creíble & A veces agregados o tipo de cambio; dominancia fiscal\\
+\rowcolor{tceesalvia}Sector exterior & Déficits financiables con inversión directa y de cartera & Riesgo de frenazo súbito; remesas; reservas\\
+Sistema financiero & Profundo, con mercados de capitales & Bancarizado y poco profundo\\
+\rowcolor{tceesalvia}Demografía & Envejecimiento & Transición inacabada\\
+\bottomrule
+\end{tabularx}}
+
+\sub{La banca que opera en España frente a la europea (\%)\label{rep:B.3}}
+{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{0.2\linewidth}>{\centering\arraybackslash}p{0.2\linewidth}>{\centering\arraybackslash}p{0.2\linewidth}}
+\toprule
+\rowcolor{tceemoradopalido}\textbf{Ratio} & \textbf{España 2021} & \textbf{España 2026} & \textbf{UE 2026}\\
+\midrule
+ROE & 10,86 & 16,05 & 11,3\\
+\rowcolor{tceesalvia}CET1 & 13,64 & 14,11 & 16,1\\
+Capital total & 17,27 & 18,30 & 20,2\\
+\rowcolor{tceesalvia}Dudosos & 3,02 & 2,53 & 1,8\\
+Apalancamiento & 5,94 & 5,60 & 5,8\\
+\rowcolor{tceesalvia}LCR & 211,89 & 171,07 & 158,5\\
+Créditos/depósitos & 102,13 & 97,17 & 106,3\\
 \bottomrule
 \end{tabularx}}
 \begin{itemize}
-\item Ojo con los exportadores de petróleo, con rentas per cápita altas y rasgos de emergente. Como referencia, en 2025 las avanzadas crecieron un 2,0~\% con una inflación del 2,5~\%.
+\item La banca española es \textbf{más rentable} que la europea, pero tiene \textbf{menos capital de máxima calidad} (2.º trimestre; Banco de España y ABE).
 \end{itemize}
 
+\medskip
+\bloque{Anexo C. Lo que más cae en el examen\label{rep:C}}
+\graficorepaso[0.97\linewidth]{rep-frecuencia}{Dictámenes de 2011 a 2026 en que ha caído cada pregunta (de 14).}
+\begin{itemize}[itemsep=1.5pt]
+\item El \textbf{perfil cíclico} conviene llevarlo muy preparado: unos preparadores lo hacen primero, porque ordena todo lo demás; otros, al final. Nunca más tiempo del previsto.
+\item Lo concreto que se pida (un cálculo, una definición) se contesta \textbf{al principio} de la respuesta, con un rótulo, para que el tribunal lo encuentre en la lectura.
+\end{itemize}
+
+\sub{Qué se ha pedido, bloque a bloque\label{rep:C.2}}
+{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}X}
+\toprule
+\rowcolor{tceemoradopalido}\textbf{Bloque} & \textbf{Preguntas concretas (año)}\\
+\midrule
+Perfil cíclico & Potencial o brecha (2018, 2021); PIB frente a RNB (2023, 2026); alta frecuencia (2016, 2019, 2024); determinantes del consumo y la inversión (2023, 2026); oferta (2013, 2014, 2024); petróleo (2016, 2025).\\
+\rowcolor{tceesalvia}Trabajo & Productividad y CLU (2011, 2016, 2018, 2019, 2021); tasa de actividad y \autor{Beveridge} (2023); \autor{Okun} y \autor{Phillips} (2021); salario mínimo (2019); visados (2020); demografía (2026).\\
+\end{tabularx}}
+
+{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}X}
+Precios y tipo de cambio & Factores de la inflación (2025); su resistencia y cambio de tendencia (2026); efecto base (2016, 2023); traspaso (2026); \autor{Marshall}-\autor{Lerner} (2022); compra de divisas (2021); aranceles de EE.~UU. (2026).\\
+\rowcolor{tceesalvia}Sector exterior & Determinantes de las exportaciones (2016, 2019); saldos sectoriales (2018); volatilidad de la capacidad de financiación (2023); reservas (2021, 2024); efecto valoración de la PIIN (2016, 2018); déficit permanente (2022); crisis exterior (2021).\\
+Monetaria & Tono y si debe seguir (2016, 2018, 2021, 2022, 2025); canales (2020, 2024); dominancia fiscal y balance (2021); «última milla» (2024); eficacia (2026).\\
+\end{tabularx}}
+
+{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}X}
+\rowcolor{tceesalvia}Estabilidad financiera & Valoración macroprudencial (2020); vulnerabilidades de la banca (2022); coletilla de la monetaria (2023).\\
+Fiscal & Esfuerzo estructural (2011, 2016, 2018, 2019); saldo estructural según el ciclo (2021); efectos no keynesianos e ingresos bajos (2022); nuevas reglas (2023); sostenibilidad y eficiencia (2024); tamaño del sector público y gestión de la deuda (2025); riesgos de la deuda (2026); inversión en infraestructuras y vivienda (2020).\\
+\rowcolor{tceesalvia}\emph{Policy mix} y recomendaciones & \emph{Policy mix} (2020, 2021); reformas estructurales y de oferta (2023, 2024, 2026); calidad institucional (2022).\\
+\bottomrule
+\end{tabularx}}
+
 \begin{ideaclave}
-El dictamen premia interpretar, no describir: cada dato se lee con su umbral (diciendo si es oficial u orientativo), se cruza con otro bloque y se cierra con lo que importa para \emph{ese} país.
+El dictamen premia \textbf{interpretar}, no describir: cada dato con su umbral, cruzado con otro bloque y cerrado con lo que importa para \emph{ese} país.
 \end{ideaclave}
 
 \end{columnas}

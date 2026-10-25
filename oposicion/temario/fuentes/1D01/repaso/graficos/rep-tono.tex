@@ -1,0 +1,35 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Escalas del tono: monetario (r frente a r^n) y fiscal (variación del saldo estructural primario)
+\begin{tikzpicture}[tcee, font=\footnotesize]
+  % zonas de color (antes que los ejes)
+  \fill[dicfmc!45] (0,0) rectangle (2.7,0.45);
+  \fill[dicreferencia!20] (2.7,0) rectangle (5.4,0.45);
+  \fill[dicdeposito!75] (5.4,0) rectangle (8.1,0.45);
+  \fill[dicfmc!45] (0,-1.55) rectangle (2.7,-1.1);
+  \fill[dicreferencia!20] (2.7,-1.55) rectangle (5.4,-1.1);
+  \fill[dicdeposito!75] (5.4,-1.55) rectangle (8.1,-1.1);
+  % ejes
+  \draw[thick,->] (0,0) -- (8.3,0);
+  \draw[thick,->] (0,-1.55) -- (8.3,-1.55);
+  \draw[thick] (4.05,-0.08) -- (4.05,0.53);
+  \draw[thick] (4.05,-1.63) -- (4.05,-1.02);
+  % rótulos
+  \node[anchor=south west, font=\footnotesize\bfseries, text=dicdeposito] at (0,0.5) {Monetaria: tipo real a corto $r_t=i_t-\pi_t$ frente al natural $r^n$};
+  \node at (1.35,0.225) {expansiva};
+  \node at (4.05,0.225) [fill=dicreferencia!20, inner sep=1pt] {neutral};
+  \node[text=white] at (6.75,0.225) {contractiva};
+  \node[below, font=\scriptsize] at (1.35,0) {$r_t<r^n$};
+  \node[below, font=\scriptsize] at (4.05,0) {$r_t\approx r^n$};
+  \node[below, font=\scriptsize] at (6.75,0) {$r_t>r^n$};
+  \node[anchor=south west, font=\footnotesize\bfseries, text=dicdeposito] at (0,-1.05) {Fiscal: esfuerzo $\Delta b^{pe}_t$ (variación del saldo estructural primario)};
+  \node at (1.35,-1.325) {expansiva};
+  \node at (4.05,-1.325) [fill=dicreferencia!20, inner sep=1pt] {neutral};
+  \node[text=white] at (6.75,-1.325) {contractiva};
+  \node[below, font=\scriptsize] at (1.35,-1.55) {$\Delta b^{pe}<0$};
+  \node[below, font=\scriptsize] at (4.05,-1.55) {$\Delta b^{pe}\approx0$};
+  \node[below, font=\scriptsize] at (6.75,-1.55) {$\Delta b^{pe}>0$};
+\end{tikzpicture}
+\end{document}

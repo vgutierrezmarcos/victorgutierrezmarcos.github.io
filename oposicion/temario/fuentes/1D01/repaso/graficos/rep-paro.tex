@@ -1,0 +1,18 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Tipos de paro: cómo se detectan en el cuadro y qué receta tienen
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  t/.style={fill=#1, text=white, font=\footnotesize\bfseries, minimum width=4.1cm, minimum height=0.48cm, rounded corners=2pt},
+  c/.style={draw=#1, fill=#1!10, text width=3.95cm, minimum height=1.5cm, align=left, rounded corners=2pt, inner sep=3pt}]
+  \foreach \x/\y/\col/\nom/\det/\rec in {
+     0/0/dicparo/Clásico/{CLU que crecen mucho y de forma sistemática}/{salarios ligados a la productividad; menos dualidad y cuña fiscal},
+     4.3/0/dicconspriv/Keynesiano/{consumo privado y demanda interna anémicos}/{políticas de demanda temporales (impuestos, transferencias)},
+     0/-2.6/dicexterna/Friccional o de desajuste/{vacantes altas con paro alto: \textsc{Beveridge} lejos del origen}/{servicios de empleo eficaces, formación adaptada, movilidad (alquiler)},
+     4.3/-2.6/dicrenta/De larga duración/{paro persistente; pérdida de cualificación y desánimo (histéresis)}/{planes de choque: incentivos a contratar y formación}}{
+    \node[t=\col] at (\x,\y) {\nom};
+    \node[c=\col, anchor=north] at (\x,\y-0.3) {\textbf{Se detecta}: \det\\[1pt]\textbf{Receta}: \rec};
+  }
+\end{tikzpicture}
+\end{document}

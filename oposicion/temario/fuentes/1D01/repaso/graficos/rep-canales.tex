@@ -1,0 +1,19 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Canales de transmisión de la política monetaria
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  c/.style={draw=#1, fill=#1!14, rounded corners=2pt, line width=0.7pt, text width=2.55cm, align=center, minimum height=0.85cm, font=\scriptsize, inner sep=2pt},
+  sig/.style={-{Stealth[length=1.6mm]}, thick, tceegris}]
+  \node[draw=dicdeposito, fill=dicdeposito, text=white, rounded corners=2pt, text width=1.55cm, align=center, minimum height=5.2cm] (bc) at (0,0) {\textbf{Tipo oficial}\\ y balance del banco central};
+  \node[c=dicopf] (k1) at (2.75,2.2) {\textbf{Tipo de interés}\\ curva y préstamos};
+  \node[c=dicprestamos] (k2) at (2.75,1.1) {\textbf{Crédito}\\ oferta y garantías};
+  \node[c=dicpib] (k3) at (2.75,0) {\textbf{Activos}\\ riqueza, $q$ de \textsc{Tobin}};
+  \node[c=dicexterna] (k4) at (2.75,-1.1) {\textbf{Tipo de cambio}\\ inflación importada};
+  \node[c=dicservicios] (k5) at (2.75,-2.2) {\textbf{Expectativas}\\ credibilidad};
+  \foreach \k in {k1,k2,k3,k4,k5} \draw[sig] (bc.east |- \k) -- (\k.west);
+  \node[draw=dicinflacion, line width=0.7pt, rounded corners=2pt, text width=2.0cm, align=center, minimum height=5.2cm] (obj) at (5.75,0) {\textbf{Demanda}\\($C$, $I$, $X$)\\[4pt]$\Downarrow$\\[4pt]\textbf{Inflación}\\(con 1-2 años de retraso)};
+  \foreach \k in {k1,k2,k3,k4,k5} \draw[sig] (\k.east) -- (obj.west |- \k);
+\end{tikzpicture}
+\end{document}

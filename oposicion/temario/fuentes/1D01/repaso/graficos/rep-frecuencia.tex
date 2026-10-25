@@ -1,0 +1,19 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Cuántas veces ha caído cada pregunta en los 14 dictámenes de 2011 a 2026
+% (cifras de la guía). Barras, después el eje y la referencia, al final rótulos.
+\begin{tikzpicture}[tcee, font=\scriptsize, x=0.36cm]
+  \foreach \y/\n/\col in {0/14/dicze, -0.6/14/dicrenta, -1.2/13/dicpib, -1.8/12/dicfbcf, -2.4/11/dicopf}
+    \fill[\col] (0,\y-0.2) rectangle (\n,\y+0.2);
+  \draw[thick] (0,-2.7) -- (0,0.35);
+  \draw[dicreferencia, dashed] (14,-2.7) -- (14,0.45) node[above, font=\scriptsize] {14 dictámenes};
+  \foreach \y/\t/\n in {0/{Sector exterior}/14, -0.6/{Política fiscal}/14, -1.2/{Perfil cíclico}/13, -1.8/{Recomendaciones}/12, -2.4/{Política monetaria}/11}{
+    \node[anchor=east, font=\footnotesize] at (-0.15,\y) {\t};
+    \node[anchor=east, text=white, font=\scriptsize\bfseries] at (\n-0.1,\y) {\n};
+  }
+  \node[anchor=north west, text width=8.3cm, font=\scriptsize\itshape, text=tceegris] at (-7.6,-2.8)
+    {La estabilidad financiera cae como pregunta propia (2020, 2022) o como coletilla de la monetaria (2023); el mercado de trabajo, con preguntas concretas (CLU, \textsc{Beveridge}, \textsc{Okun}, salario mínimo, demografía).};
+\end{tikzpicture}
+\end{document}
