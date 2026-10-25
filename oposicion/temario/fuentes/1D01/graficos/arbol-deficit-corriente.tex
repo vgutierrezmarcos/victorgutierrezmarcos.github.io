@@ -1,0 +1,56 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Árbol de diagnóstico de un déficit corriente que se amplía: las 3 lecturas de
+% la identidad (subcuentas, ahorro-inversión, renta-absorción) y, en cada rama,
+% si conviene financiar (verde) o ajustar (teja). Elaboración propia a partir del
+% enfoque de programación financiera del FMI.
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  raiz/.style={fill=dicze, text=white, rounded corners=2pt, font=\footnotesize\bfseries, text width=9.6cm, align=center, minimum height=0.62cm},
+  cab/.style={draw=dicze, fill=dicze!12, rounded corners=2pt, line width=0.7pt, font=\footnotesize, text width=4.35cm, align=center, minimum height=0.95cm},
+  cond/.style={draw=dicreferencia, fill=dicreferencia!8, rounded corners=1pt, text width=2.25cm, align=left, minimum height=0.9cm, inner sep=2pt},
+  fin/.style={draw=dicfbcf, fill=dicfbcf!14, rounded corners=1pt, line width=0.6pt, text width=1.95cm, align=center, minimum height=0.9cm, inner sep=2pt},
+  aju/.style={draw=dicparo, fill=dicparo!12, rounded corners=1pt, line width=0.6pt, text width=1.95cm, align=center, minimum height=0.9cm, inner sep=2pt},
+  sig/.style={-{Stealth[length=1.5mm]}, thick, tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-7.45cm,-7.56cm) rectangle (7.36cm,0.31cm);
+  % 1: la pregunta
+  \capa{1}{\node[raiz] (r) at (0,0) {Un déficit corriente que se amplía: ¿por qué y qué hacer?};}
+  % 2: primera lectura, por subcuentas
+  \capa{2}{\node[cab] (c1) at (-5.05,-1.25) {\textbf{1. Por subcuentas}\\ ¿lo explica una partida?};
+  \draw[sig] (r.south) ++(-3.2,0) -- (c1.north);
+  \node[cond] (a1) at (-6.25,-2.55) {Choque \textbf{temporal} (petróleo, cosecha, turismo)};
+  \node[fin] (b1) at (-3.8,-2.55) {\textbf{Financiar} si hay reservas};
+  \node[cond] (a2) at (-6.25,-3.6) {Choque \textbf{permanente} en una partida};
+  \node[aju] (b2) at (-3.8,-3.6) {\textbf{Ajustar} demanda o tipo real};
+  \node[cond] (a3) at (-6.25,-4.65) {Pérdida de \textbf{competitividad} (CLU, $q$, cuota)};
+  \node[aju] (b3) at (-3.8,-4.65) {\textbf{Ajustar} costes y no precio};
+  \foreach \k in {1,2,3} \draw[sig] (a\k) -- (b\k);}
+  % 3: segunda lectura, ahorro e inversión
+  \capa{3}{\node[cab] (c2) at (0,-1.25) {\textbf{2. Ahorro e inversión}\\ $\mathrm{CC}=(S_P-I_P)+(T-G)$};
+  \draw[sig] (r.south) -- (c2.north);
+  \node[cond] (d1) at (-1.2,-2.55) {Déficit público \textbf{estructural}};
+  \node[aju] (e1) at (1.25,-2.55) {\textbf{Ajustar}: consolidación};
+  \node[cond] (d2) at (-1.2,-3.6) {Déficit público \textbf{cíclico}};
+  \node[fin] (e2) at (1.25,-3.6) {\textbf{Financiar}: estabilizadores};
+  \node[cond] (d3) at (-1.2,-4.65) {Privado: \textbf{inversión} productiva};
+  \node[fin] (e3) at (1.25,-4.65) {\textbf{Financiar} y vigilar};
+  \node[cond] (d4) at (-1.2,-5.7) {Privado: \textbf{consumo} o auge del crédito};
+  \node[aju] (e4) at (1.25,-5.7) {\textbf{Ajustar}: monetaria y macroprudencial};
+  \foreach \k in {1,2,3,4} \draw[sig] (d\k) -- (e\k);}
+  % 4: tercera lectura, renta y absorción
+  \capa{4}{\node[cab] (c3) at (5.05,-1.25) {\textbf{3. Renta y absorción}\\ $\mathrm{CC}=(Y-A)+\mathrm{RP}+\mathrm{RS}$};
+  \draw[sig] (r.south) ++(3.2,0) -- (c3.north);
+  \node[cond] (f1) at (3.85,-2.55) {Cae la \textbf{renta} por un choque pasajero};
+  \node[fin] (g1) at (6.3,-2.55) {\textbf{Financiar} si hay acceso};
+  \node[cond] (f2) at (3.85,-3.6) {Sube la \textbf{absorción} (exceso de gasto)};
+  \node[aju] (g2) at (6.3,-3.6) {\textbf{Ajustar} la demanda interna};
+  \node[cond] (f3) at (3.85,-4.65) {Déficit \textbf{persistente} que acumula deuda};
+  \node[aju] (g3) at (6.3,-4.65) {\textbf{Ajustar} antes de que falte liquidez};
+  \foreach \k in {1,2,3} \draw[sig] (f\k) -- (g\k);}
+  % 5: la regla
+  \capa{5}{\node[draw=dicpib, fill=dicpib!8, rounded corners=2pt, line width=0.7pt, text width=14.2cm, align=center, font=\footnotesize] at (0,-6.95)
+    {\textbf{Regla}: \textcolor{dicfbcf}{\textbf{financiar lo temporal}} (si hay reservas y acceso a los mercados) y \textcolor{dicparo}{\textbf{ajustar lo permanente}}, con políticas \emph{reductoras} del gasto (fiscal y monetaria) y \emph{desviadoras} del gasto (tipo de cambio real, competitividad). Ante la duda, prudencia: un choque que parece temporal puede no serlo.};}
+\end{tikzpicture}
+\end{document}

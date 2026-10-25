@@ -3,6 +3,147 @@
 Editor de /revisartema, 23-24/10/2026. Escrita en 4 partes (método y perfil cíclico; mercados de factores y competitividad; sector exterior,
 políticas y recomendaciones; anexos). Este informe recoge las 4.
 
+## Cuarta vuelta (25/10/2026)
+
+Encargo: `_trabajo/comentarios-victor-24oct.md`, «Cuarta vuelta». Guía larga rehecha con las fuentes de D: (informes
+`_trabajo/guias-d-comparacion-esquemas.md` y `-materiales.md`), más visual y coherente con el resumen.
+
+### Páginas
+
+- **Cuerpo: 74** (antes 50; objetivo «~70»). **Anexos: 32** (antes 37). **Bibliografía: 11** (169 → 206 entradas: 37 nuevas). Total 117.
+- `verificar-tema.py 1D01`: **0 errores**; avisos: solo guion y vídeo pendientes (las cifras sin cita bajan de 9 a 0).
+  0 líneas desbordadas. Revisadas a ojo las 36 páginas con gráficos o tablas: nada se solapa y no quedan huecos de más
+  del 10 % en el cuerpo (la última página del cuerpo, al 30 %).
+- Si hay que bajar a 70: lo más fácil sería devolver al anexo A la tabla de economías avanzadas y emergentes y la de
+  hechos estilizados (≈ 1,2 págs.) o pasar al anexo B los cuadros «Ejemplo de redacción» del perfil cíclico (≈ 1,5 págs.).
+
+### Qué ha cambiado
+
+- **Gráficos de los anexos, al cuerpo, junto a su indicador** (14): ciclo y tendencia y 4 fases (I.2), comovimientos y
+  tabla de hechos estilizados (I.2, nuevo párrafo «Hechos estilizados: cómo se mueve cada variable con el ciclo»),
+  consumo-renta-ahorro (I.4), PIB y comercio mundial (I.4), Brent (I.5), empleo y horas, PIB por persona en edad de
+  trabajar y Beveridge (II.1), IAPC (III.1), tipos y balance del BCE (V.1), impulso fiscal, inflación y cuentas públicas
+  (V.3), *policy mix* (V.4). También al cuerpo: el caso del petróleo (I.5 «Un sector dominante»), la tabla de economías
+  avanzadas y emergentes (I.6), **Okun y Phillips** (II.1, con la fórmula de Phillips en cuadro morado y la de Okun
+  numerada) y las **reglas fiscales completas** (V.3).
+- **Infografías del resumen en la guía** (14, copiadas de `repaso/graficos/rep-*.tex` a `graficos/` con nombre
+  descriptivo y `\capa{n}` y marco fijo para el vídeo): `esquema-perfil-ciclico`, `-clu-margen`, `-tipos-paro`,
+  `-ipc-deflactor`, `-origen-inflacion`, `-devaluacion`, `-cuenta-financiera`, `-tono-politicas`, `-canales-monetaria`,
+  `-basilea`, `-semaforo-banca`, `-deuda-estabilizadora`, `-dato-recomendacion` y `-umbrales-pdm` (anexo A; en él el
+  tipo de cambio real pasa a tener los 2 umbrales, $\pm3$). **2 nuevas**: `arbol-deficit-corriente` (árbol propio
+  «financiar o ajustar», IV.4) y `canales-choque-externo` (anexo B). Todas con la paleta `dic…`. Pedidas en
+  `_trabajo/graficos-pedidos.json`. No se ha usado `rep-calificaciones` (la tabla de calificaciones ya está en V.3).
+- **Fórmulas en cuadros morados como en el resumen**: contribuciones (`eq:contribuciones`), identidad PAT, tasas del
+  mercado de trabajo, CLU, tipo de cambio real, PIIN, regla de Taylor (`eq:taylor`), saldo estructural primario y
+  esfuerzo (`eq:esfuerzo`); efecto base y Okun numeradas.
+- **Énfasis** (código explicado en la introducción): **negrita** en palabras clave de cada viñeta; *cursiva* para
+  rótulos, términos y matices; **subrayado** (`\uline`, paquete `ulem` con `normalem` cargado en el preámbulo de
+  `1D01.tex`) en unas 40 ideas «para decir sí o sí» (1-2 por apartado). Sale en el PDF, en la web (`<u>`), en Word
+  (subrayado sencillo) y en LyX (`\bar under`).
+- **Anexos reordenados** (primero la economía, después el examen; pares pedidos por Víctor):
+  A. **Indicadores, umbrales y fórmulas** (antes B y C): umbrales de un vistazo (infografía), tablas de indicadores
+  (con deuda externa, su servicio, tasa de renovación y necesidades brutas de financiación nuevas), fórmulas
+  imprescindibles partidas en 2 tablas (ahora con efecto base, PPA, Okun, saldo corriente que estabiliza la deuda
+  externa, $b^{pe}$ y ROE), cálculos tipo (nuevo: saldo corriente que estabiliza la deuda externa) y lectura de series
+  (lo que quedaba de «Los datos» del antiguo A). B. **Casos frecuentes y expresiones útiles** (antes E y K): nuevos
+  «choque externo o geopolítico» (con gráfico), «crisis bancaria: liquidez, solvencia y resolución», «curva de Phillips
+  plana: una lección de prudencia» y, dentro del brote de inflación, por qué fue baja durante años y por qué repuntó.
+  C. **FMI, un caso de España y dónde se estudia cada bloque** (antes F, G y J): nuevo «escenario base y brecha de
+  financiación» (presentación analítica, financiación excepcional, marco vigente de riesgo de tensión soberana).
+  D. **El ejercicio y el método** (antes H) **y qué se ha preguntado** (antes I, ahora D.9): nuevo D.7 «Comprobaciones de
+  coherencia entre bloques» y, en «dónde practicar», leer el artículo IV de un emergente.
+  **Desaparecen** el anexo de hechos estilizados y el de gráficos de lectura (su contenido económico está en el cuerpo;
+  «Los datos» va a A.4).
+- **Huecos**: las figuras y tablas del cuerpo pasan de `[H]` a `[!htb]` (quedan en la página del párrafo o arriba de la
+  siguiente); con `[H]` quedaban huecos de un tercio de página. En los anexos siguen en `[H]`.
+- **Umbral de la vivienda del PDM: comprobado**. El cuadro vigente (desde el informe de alerta de 2025) usa el precio
+  **nominal, +9 %** (Eurostat, *Statistics Explained*, «The Macroeconomic Imbalance Procedure (MIP) introduced», tabla 2,
+  consultada el 25/10/2026). El 6 % **real** (deflactado) era el del cuadro anterior: se deja dicho en una nota al pie
+  para quien lo vea en cuadros antiguos. No hay que corregir nada (tampoco en el resumen).
+
+### Fuentes de D: incorporadas (prioridad alta y media), con fuente primaria propia
+
+Nada copiado ni citado de otros preparadores; las ideas se redactan de nuevo y se citan con su fuente primaria.
+
+| Bloque | Qué entra | Dónde | Fuente primaria |
+|---|---|---|---|
+| I | Contribución real frente a saldo nominal (efecto precio) | I.4 | (razonamiento; sin cifras) |
+| I | Efecto sustitución y renta del tipo en el consumo; distribución de la renta | I.4, nota | FMI2022edXFPP |
+| I | Inversión: coste de otros insumos; volatilidad cambiaria y de la inflación | I.4 | FMI2022edXFPP |
+| I | Ahorro forzoso frente a precautorio; por qué la demanda embalsada sale despacio | I.4 | Eurostat2026nama10gdp |
+| II | Efecto desánimo; acaparamiento de trabajo (productividad procíclica); efecto composición en los salarios reales | II.1 | INE2025EPA; Biddle2014LaborHoarding; Solon1994Composicion |
+| II | Ajuste por cantidades o por precios (flexibilidad); NAIRU para toda la serie; secuelas de una recesión | II.1 | FMI2021WEOabr |
+| III | Choque de oferta o de demanda (regla de precios y cantidades) | III.1 | Shapiro2022Oferta |
+| III | Efectos directos, indirectos y de segunda ronda; pacto de rentas | III.1 | BdE2022InformeAnual2021 (cap. 4, comprobado en el PDF) |
+| III | Inflación desigual por renta y percibida | III.1 | BCE2022RentaBaja |
+| III | Causas de la baja inflación y del repunte | Anexo B.1 | BPI2022Inflacion |
+| III | Inflación a largo plazo ≈ dinero menos crecimiento real | III.1 | McCandlessWeber1995 |
+| III | Efecto valor y volumen (curva J); PPA relativa; Balassa-Samuelson y convergencia frente a exceso de demanda | III.2 | Rogoff1996PPA; Balassa1964; Samuelson1964 |
+| III | Ancla cambiaria y sobrevaloración; defensa de un tipo fijo; entradas de capital y coste de esterilizar | III.2 | KrugmanObstfeldMelitz2018; Calvo1991Esterilizacion; FMI2012VisionInstitucional |
+| IV | Exportaciones: oferta, precio-aceptante, diversificación, contenido importado, aranceles | IV.1 | FMI2022edXFPP; OCDE2023TiVA |
+| IV | 3 combinaciones de saldos sectoriales (tabla nueva) | IV.1 | FMI2013CaseStudy |
+| IV | Déficits y superávits razonables; superávit persistente (y fila nueva en la tabla de recomendaciones) | IV.1, VI.2 | FMI2013CaseStudy; BlanchardGiavazzi2002; CE2025AMR2026 |
+| IV | Presentación analítica y financiación excepcional | IV.2 (pregunta) y anexo C.1 | FMI2009MBP6 |
+| IV | Paridad con prima de riesgo, *carry trade*, factores de empuje y atracción, ciclo financiero mundial; lectura de la IED y la cartera | IV.2 | CalvoLeidermanReinhart1993; Rey2013Dilema |
+| IV | Deuda a corto a vencimiento residual; deuda externa y servicio sobre exportaciones; tipo implícito, renovación; EMBI y CDS | IV.2-IV.3 y tabla del anexo A | FMI2014DeudaExterna; FMI2013CaseStudy |
+| IV | Lista del signo del efecto valoración; tenedores no residentes; círculo flujo-stock | IV.3 | LaneMilesiFerretti2007; ArslanalpTsuda2014 |
+| IV | Enfoque de balances (4 descalces; deuda en divisas entre residentes) | IV.3 | Allen2002Balances |
+| IV | Saldo corriente sin intereses que estabiliza la deuda externa; frenazo y compresión de importaciones | IV.4 y anexo A | FMI2013CaseStudy; Calvo1998SuddenStops |
+| IV/VI | Árbol del déficit corriente: financiar lo temporal, ajustar lo permanente; reductoras y desviadoras del gasto | IV.4 (gráfico propio) | FMI2013CaseStudy; Johnson1958 |
+| V.1 | Objetivo aparente del banco central; tipo real frente al crecimiento (orientativo); tipo natural y sus determinantes | V.1 | RachelSmith2017 |
+| V.1 | Retardos (29 meses de media); canal del crédito roto; deuda privada y transmisión | V.1 | HavranekRusnak2013; BernankeGertler1995 |
+| V.2 | CAMELS; PER; CDS; sector empresarial (cobertura de intereses) | V.2 | FMI2013CaseStudy; CampbellShiller1998 |
+| V.2 | Prestamista de última instancia, garantía de depósitos y herramientas de resolución | V.2 (remisión) y anexo B.1 | Bagehot1873; DiamondDybvig1983; DirUE2014BRRD |
+| V.3 | Saldo estructural engañoso en los auges | V.3 | MorrisSchuknecht2007 |
+| V.3 | Prociclicidad y sus causas; saldos alternativos (no petrolero, operativo, sin donaciones, aumentado) | V.3 | Kaminsky2004Rains; FMI2013CaseStudy |
+| V.3 | Multiplicadores según el instrumento (cualitativo) y mayores de lo previsto | V.3 | Coenen2012Multiplicadores; BlanchardLeigh2013 |
+| V.3 | Tipos de reglas fiscales | V.3 | Schaechter2012Reglas |
+| V.3 | Necesidades brutas de financiación; 4 formas de financiar el déficit; pasivos contingentes y APP; escenario histórico y a políticas constantes | V.3 | FMI2021DSA; FMI2013CaseStudy |
+| V.3 | Calidad del ajuste; política fiscal en una crisis según su origen | V.3 | FMI2013CaseStudy |
+| VI | Naturaleza, origen y gravedad del desequilibrio; menú (demanda, oferta, tipo de cambio) | VI.1 | FMI2013CaseStudy |
+| VI | Pacto de rentas; política energética | VI.2 | BdE2022InformeAnual2021; CE2022REPowerEU |
+| Anexos | Canales de un choque externo; Phillips plana y el error de previsión de 2021; comprobaciones de coherencia; artículo IV de un emergente; escenario base y marco de sostenibilidad del FMI | B.1, D.7, C.1 | FMI2022WEOabr; FMI2021WEOoct; FMI2013CaseStudy; FMI2021DSA |
+
+No ha entrado nada de lo marcado como dudoso o erróneo en los informes (EBE = deflactor − CLU, PIIN = pasivos −
+activos, intereses contados 2 veces en la PIIN, umbrales antiguos del PDM, «zonas» del DSA, tono por la variación del
+tipo, etc.).
+
+### Prioridad baja: pendiente de que decida Víctor (no se ha metido)
+
+- NAIRU deducida del paro a partir del cual se acelera la inflación (complemento del criterio de la brecha nula).
+- Variabilidad de la inflación como coste y calidad de los datos de precios en emergentes.
+- Precios hedónicos (ajuste por calidad), en una nota del IPC.
+- Vivienda como activo refugio con oferta rígida.
+- Estrategia de salida de la política monetaria no convencional.
+- «Datos que dan el diagnóstico y datos que lo contrastan» (anexo de método).
+- El salario como coste y como demanda a la vez («arma de doble filo»).
+- Políticas de mantenimiento del empleo frente a reasignación; competencia tras las crisis; transición climática (V.5).
+- Del resumen del WEO 2020-2021: empresas zombis y moratorias, marco común del G-20 y cláusulas de acción colectiva.
+- Cuadrantes paro-empleo entre países (gráfico de dispersión): idea de prioridad media que **no** se ha hecho porque
+  pide datos nuevos de Eurostat; si se quiere, se pide como gráfico de datos.
+- Descomposición del ROA de la banca (idea del enunciado de práctica): no entra por ahora.
+
+### Dudas para Víctor
+
+1. **Extensión**: el cuerpo queda en 74 páginas (pedía ~70). ¿Vale así o devuelvo al anexo A las tablas de economías
+   avanzadas/emergentes y de hechos estilizados (≈ 72) o los ejemplos de redacción del perfil cíclico (≈ 70)?
+2. **Infografías duplicadas**: las 13 del resumen están ahora también en `graficos/` (con capas y otro nombre). Si te
+   parece, el resumen puede usar directamente las de `graficos/` (`tcee-repaso.sty` ya busca en `../graficos/`) y se
+   borran las `rep-*` repetidas, para no mantener 2 copias.
+3. **`[!htb]` en lugar de `[H]`** en el cuerpo (CRITERIOS §2 pide `[H]`): evita los huecos de un tercio de página; la
+   figura queda como mucho arriba de la página siguiente. ¿Lo dejamos así (y lo anoto en CRITERIOS) o vuelvo a `[H]`?
+4. **Subrayado**: con `ulem` cargado solo en este documento. Si se va a usar en más temas, convendría una orden
+   semántica en `tcee-comun.sty` (p. ej. `\clave{}`) con su equivalente en `pandoc-macros.tex` y en el módulo de LyX.
+5. **Multiplicadores por instrumento**: solo en cualitativo (Coenen et al., 2012). Las cifras de los materiales
+   (inversión ≈ 1, consumo ≈ 0,8, transferencias ≈ 0,2…, del modelo NiGEM) no tienen aún fuente primaria localizada;
+   tampoco la prueba de tensión del FMI (+10 puntos de deuda por pasivos contingentes, depreciación del 30 %).
+6. **Árbol del déficit corriente**: la figura de `Imagen.docx` no tiene fuente identificada; el gráfico es propio, «a
+   partir del enfoque de programación financiera del FMI» (FMI2013CaseStudy, el manual del curso, que sí trata
+   financiar frente a ajustar).
+7. **Cláusula de defensa**: el texto antiguo decía «en 17 Estados» sin fuente; ahora dice que la Comisión invitó a
+   pedirla con un margen de hasta el 1,5 % del PIB y que la mayoría la pidió (Comunicación C(2025) 2000). Si quieres el
+   número exacto de Estados, hay que citar la decisión del Consejo.
+
 ## Aportaciones de la guía v24 (25/10/2026)
 
 Del inventario `_trabajo/v24-comparacion.md` se ha metido en el **cuerpo** todo el apartado (b) pedido, cada cosa en su

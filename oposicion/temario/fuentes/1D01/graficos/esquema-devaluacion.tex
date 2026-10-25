@@ -1,0 +1,30 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Efectos de una devaluación para corregir el déficit exterior: el positivo a la
+% izquierda (verde), los negativos a la derecha (teja), en el orden del texto.
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  dev/.style={draw=dicze, fill=dicze, text=white, rounded corners=2pt, font=\footnotesize\bfseries, text width=2.2cm, align=center, minimum height=1cm},
+  positivo/.style={draw=dicfbcf, fill=dicfbcf!12, rounded corners=2pt, line width=0.7pt, text width=2.3cm, align=center, inner sep=2pt},
+  neg/.style={draw=dicparo, fill=dicparo!10, rounded corners=2pt, line width=0.7pt, text width=3.75cm, align=left, inner sep=2pt, minimum height=0.62cm},
+  sig/.style={-{Stealth[length=1.6mm]}, thick, #1}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.23cm,-3.02cm) rectangle (5.92cm,2.62cm);
+  \capa{1}{\node[dev] (d) at (0,0) {Devaluación\\ ($E\uparrow$)};}
+  \capa{2}{\node[positivo] (p) at (0,-2.1) {\textbf{Medio plazo}: mejora el saldo si se cumple \textsc{Marshall}-\textsc{Lerner}};
+  \draw[sig=dicfbcf] (d) -- (p);}
+  \capa{3}{\node[neg, anchor=west] (n1) at (2.0,2.3) {\textbf{Curva J}: a corto plazo empeora};
+  \draw[sig=dicparo] (d.east) -- (n1.west);}
+  \capa{4}{\node[neg, anchor=west] (n2) at (2.0,1.4) {\textbf{Puede no mejorar}: socios con tipo fijo, traspaso bajo, inflación que aprecia el tipo real};
+  \draw[sig=dicparo] (d.east) -- (n2.west);}
+  \capa{5}{\node[neg, anchor=west] (n3) at (2.0,0.15) {\textbf{Inflación}: mayor con más apertura, precios flexibles, salarios indexados y exceso de demanda de trabajo};
+  \draw[sig=dicparo] (d.east) -- (n3.west);}
+  \capa{6}{\node[neg, anchor=west] (n4) at (2.0,-1.05) {\textbf{Deuda en divisas} más cara (pecado original)};
+  \draw[sig=dicparo] (d.east) -- (n4.west);}
+  \capa{7}{\node[neg, anchor=west] (n5) at (2.0,-1.9) {\textbf{Paro friccional} al reasignarse el empleo};
+  \draw[sig=dicparo] (d.east) -- (n5.west);}
+  \capa{8}{\node[neg, anchor=west] (n6) at (2.0,-2.7) {\textbf{Empleo} según la intensidad factorial};
+  \draw[sig=dicparo] (d.east) -- (n6.west);}
+\end{tikzpicture}
+\end{document}

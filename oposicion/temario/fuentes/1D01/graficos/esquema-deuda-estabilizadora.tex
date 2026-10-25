@@ -1,0 +1,15 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Efecto bola de nieve: tipo implícito frente al crecimiento nominal
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  k/.style={draw=#1, fill=#1!12, rounded corners=2pt, line width=0.7pt, text width=3.75cm, align=center, minimum height=1.25cm}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.00cm,-0.80cm) rectangle (6.10cm,1.76cm);
+  \capa{1}{\node[draw=dicpib, line width=0.7pt, rounded corners=2pt, fill=dicpib!8, text width=7.85cm, align=center] at (2.05,1.25)
+    {Saldo primario que estabiliza la deuda: $\tau-g=\dfrac{i-\gamma^N}{1+\gamma^N}\,d$};}
+  \capa{2}{\node[k=dicfbcf] at (0,0) {\textbf{$i<\gamma^N$}\\ el crecimiento reduce la ratio por sí solo: basta un \textbf{déficit primario} pequeño};}
+  \capa{3}{\node[k=dicparo] at (4.1,0) {\textbf{$i>\gamma^N$}\\ hacen falta \textbf{superávits primarios}, mayores cuanta más deuda};}
+\end{tikzpicture}
+\end{document}

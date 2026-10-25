@@ -1,0 +1,37 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Los 3 pasos del perfil cíclico: fases, motor (demanda y oferta) y diagnóstico.
+% Mismo esquema que el resumen (rep-perfil); capas en el orden de la pizarra.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  caja/.style={draw=#1, fill=#1!14, rounded corners=2pt, line width=0.7pt, align=center, inner sep=3pt},
+  rama/.style={-{Stealth[length=1.6mm]}, thick, tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-4.29cm,-3.91cm) rectangle (4.34cm,0.26cm);
+  % 1: las fases
+  \capa{1}{\node[caja=dicpib, text width=8.1cm] (top) at (0,0)
+    {\textbf{1. Fases}: crecimiento del PIB real $\gamma_Y$ y brecha $\mathrm{OG}$};}
+  % 2: demanda y oferta
+  \capa{2}{\node[caja=dicreferencia, text width=3.9cm] (dem) at (-2.1,-1.05)
+    {\textbf{2a. Demanda} (gasto)\\contribuciones en pp};
+  \draw[rama] (top.south -| dem.north) -- (dem.north);}
+  \capa{3}{\node[caja=dicreferencia, text width=3.9cm] (ofe) at (2.1,-1.05)
+    {\textbf{2b. Oferta} (producción)\\$\gamma_Y=\gamma_{\mathrm{PAT}}+\gamma_L$};
+  \draw[rama] (top.south -| ofe.north) -- (ofe.north);}
+  % 4: componentes de la demanda
+  \capa{4}{\node[caja=dicconspriv, text width=1.35cm, font=\scriptsize] (c) at (-3.5,-2.3) {Consumo\\$C$ (y $G$)};
+  \node[caja=dicfbcf, text width=1.25cm, font=\scriptsize] (i) at (-1.85,-2.3) {Inversión\\$I$};
+  \node[caja=dicexterna, text width=1.25cm, font=\scriptsize] (x) at (-0.3,-2.3) {Externa\\$X-M$};
+  \foreach \n in {c,i,x} \draw[rama] (dem.south) -- (\n.north);}
+  % 5: empleo y productividad
+  \capa{5}{\node[caja=dicempleo, text width=1.25cm, font=\scriptsize] (l) at (1.45,-2.3) {Empleo\\$L$};
+  \node[caja=dicproductividad, text width=1.75cm, font=\scriptsize] (p) at (3.35,-2.3) {Productividad\\PAT};
+  \foreach \n in {l,p} \draw[rama] (ofe.south) -- (\n.north);}
+  % 6: diagnóstico anticipado
+  \capa{6}{\node[caja=dicparo, text width=8.1cm] (dia) at (0,-3.65)
+    {\textbf{3. Diagnóstico anticipado}: desequilibrios y fortalezas};
+  \draw[rama] (-1.85,-2.75) -- (-1.85,-3.4);
+  \draw[rama] (2.4,-2.75) -- (2.4,-3.4);}
+\end{tikzpicture}
+\end{document}

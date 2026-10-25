@@ -1,0 +1,28 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Cómo se financia: los instrumentos de la cuenta financiera, de más estable a
+% más volátil, y las 3 referencias de adecuación de las reservas (FMI).
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  i/.style={draw=#1, fill=#1!14, rounded corners=2pt, line width=0.7pt, text width=1.45cm, align=center, minimum height=1.05cm, inner sep=2pt},
+  r/.style={draw=dicze, fill=dicze!10, rounded corners=2pt, line width=0.7pt, text width=2.45cm, align=center, minimum height=1.2cm, inner sep=2pt}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.96cm,-3.06cm) rectangle (8.01cm,0.63cm);
+  % 1: la escala de estabilidad (debajo de las cajas)
+  \capa{1}{\fill[left color=dicfbcf!55, right color=dicparo!55] (-0.95,-0.85) rectangle (7.85,-0.65);
+  \node[anchor=north west, font=\scriptsize\bfseries, text=dicfbcf] at (-0.95,-0.9) {más estable};
+  \node[anchor=north east, font=\scriptsize\bfseries, text=dicparo] at (7.85,-0.9) {más volátil};}
+  % 2: los instrumentos
+  \capa{2}{\node[i=dicfbcf] at (0,0) {\textbf{Inversión directa}\\ trae tecnología};
+  \node[i=dicexterna] at (1.8,0) {\textbf{Otra inversión}\\ préstamos, depósitos};
+  \node[i=dicprestamos] at (3.6,0) {\textbf{Cartera}\\ efecto rebaño};
+  \node[i=dicparo] at (5.4,0) {\textbf{Derivados}\\ aún más volátiles};
+  \node[i=dicreferencia] at (7.2,0) {\textbf{Reservas}\\ ($\Delta R$)};}
+  % 3: las reservas
+  \capa{3}{\node[font=\footnotesize\bfseries, text=dicze, anchor=west] at (-0.95,-1.55) {¿Reservas suficientes? (orientativo, FMI)};
+  \node[r] at (0.35,-2.45) {$\geq$ \textbf{3 meses} de importaciones\\ \emph{poco acceso a mercados}};
+  \node[r] at (3.45,-2.45) {$\geq$ \textbf{100 \%} de la deuda a corto\\ \emph{\textsc{Greenspan}-\textsc{Guidotti}}};
+  \node[r] at (6.55,-2.45) {$\geq$ \textbf{20 \%} de M2\\ \emph{fuga de depósitos}};}
+\end{tikzpicture}
+\end{document}

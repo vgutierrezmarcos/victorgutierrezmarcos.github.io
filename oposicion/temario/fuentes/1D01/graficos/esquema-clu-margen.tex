@@ -1,0 +1,24 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Cadena productividad -> CLU nominales -> CLU reales -> margen (como en el resumen)
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  f/.style={draw=#1, fill=#1!12, rounded corners=2pt, line width=0.7pt, minimum height=0.62cm, text width=3.6cm, align=center},
+  l/.style={text width=4.6cm, align=left, font=\scriptsize},
+  sig/.style={-{Stealth[length=1.6mm]}, thick, tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.93cm,-3.20cm) rectangle (7.02cm,0.38cm);
+  \capa{1}{\node[f=dicproductividad] (a) at (0,0) {$\gamma_{\mathrm{PAT}}=\gamma_Y-\gamma_L$};
+  \node[l, right=0.25cm of a] {\textbf{Productividad}: si el empleo cae más que el PIB, sube de forma espuria};}
+  \capa{2}{\node[f=dicparo] (b) at (0,-0.95) {$\gamma_{\mathrm{CLU}}=\gamma_W-\gamma_{\mathrm{PAT}}$};
+  \node[l, right=0.25cm of b] {\textbf{CLU nominales}: frente a los socios, competitividad en costes};
+  \draw[sig] (a) -- (b);}
+  \capa{3}{\node[f=dicparo] (c) at (0,-1.9) {$\gamma_{\mathrm{CLU}/P}=\gamma_{\mathrm{CLU}}-\gamma_P$};
+  \node[l, right=0.25cm of c] {\textbf{CLU reales}: participación de los salarios; si suben, presiones de costes};
+  \draw[sig] (b) -- (c);}
+  \capa{4}{\node[f=dicpib] (d) at (0,-2.85) {$\gamma_{1+\mu}\approx\gamma_P-\gamma_{\mathrm{CLU}}$};
+  \node[l, right=0.25cm of d] {\textbf{Margen}: sube exactamente cuando caen los CLU reales};
+  \draw[sig] (c) -- (d);}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Canales por los que un choque externo o geopolítico (guerra, crisis energética,
+% aranceles) llega a una economía, y qué fila del cuadro mirar en cada uno.
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  centro/.style={fill=dicze, text=white, rounded corners=3pt, font=\footnotesize\bfseries, text width=2.6cm, align=center, minimum height=1.2cm},
+  k/.style={draw=#1, fill=#1!13, rounded corners=2pt, line width=0.7pt, text width=3.7cm, align=left, inner sep=3pt, minimum height=1.25cm},
+  sig/.style={-{Stealth[length=1.6mm]}, thick, tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-5.94cm,-2.09cm) rectangle (5.94cm,2.10cm);
+  \capa{1}{\node[centro] (z) at (0,0) {Choque externo o geopolítico};}
+  \capa{2}{\node[k=dicenergia, anchor=east] (k1) at (-2.0,1.45) {\textbf{Materias primas}: energía y alimentos; inflación importada y renta real (IPC frente a deflactor, RRI)};
+  \draw[sig] (z) -- (k1.east);}
+  \capa{3}{\node[k=dicexterna, anchor=east] (k2) at (-2.0,0) {\textbf{Comercio y cadenas de valor}: exportaciones al destino, cuellos de botella, desviación de comercio};
+  \draw[sig] (z) -- (k2.east);}
+  \capa{4}{\node[k=dicze, anchor=east] (k3) at (-2.0,-1.45) {\textbf{Financiero}: huida hacia la calidad, primas de riesgo, tipo de cambio, salidas de capital};
+  \draw[sig] (z) -- (k3.east);}
+  \capa{5}{\node[k=dicservicios, anchor=west] (k4) at (2.0,1.45) {\textbf{Confianza e incertidumbre}: retrasa la inversión y eleva el ahorro (PMI, confianza)};
+  \draw[sig] (z) -- (k4.west);}
+  \capa{6}{\node[k=dicempleo, anchor=west] (k5) at (2.0,0) {\textbf{Migratorio}: oferta de trabajo, paro y potencial};
+  \draw[sig] (z) -- (k5.west);}
+  \capa{7}{\node[k=dicrenta, anchor=west] (k6) at (2.0,-1.45) {\textbf{Institucional}: sanciones, bloques comerciales, gasto en defensa, cuentas públicas};
+  \draw[sig] (z) -- (k6.west);}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,17 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Triángulo de Gordon: de dónde viene la inflación (como en el resumen)
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  v/.style={draw=#1, fill=#1!14, rounded corners=2pt, line width=0.7pt, text width=3.4cm, align=center, inner sep=3pt}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-4.47cm,-1.74cm) rectangle (4.47cm,3.13cm);
+  \capa{1}{\fill[dicinflacion!6] (0,2.15) -- (-2.75,-0.6) -- (2.75,-0.6) -- cycle;
+  \draw[thick, dicreferencia] (0,2.15) -- (-2.75,-0.6) -- (2.75,-0.6) -- cycle;
+  \node[font=\large\bfseries] at (0,0.35) {$\pi$};}
+  \capa{2}{\node[v=dicfbcf] at (0,2.55) {\textbf{Demanda}\\brecha $+$, crédito y M3 $\uparrow$, estímulo fiscal};}
+  \capa{3}{\node[v=dicenergia] at (-2.65,-1.15) {\textbf{Costes} (oferta)\\CLU, energía, depreciación, márgenes};}
+  \capa{4}{\node[v=dicservicios] at (2.65,-1.15) {\textbf{Inercia}\\expectativas, indexación, segunda ronda};}
+\end{tikzpicture}
+\end{document}
