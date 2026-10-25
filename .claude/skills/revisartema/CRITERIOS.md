@@ -23,7 +23,7 @@ las comprueban):
 | Vídeo | exactamente 30:00, 1920×1080, en `oposicion/temario/videos/` (fuera de git); hasta el ordenador nuevo, borrador sin voz (`--borrador`) |
 | Voz | motor `voicestudio` (OmniVoice, voz clonada; referencia `Documents/voz/referencia-12s.wav`), elegido el 13/10/2026; `xtts` y `edge` siguen disponibles para pruebas |
 | Resumen SEO | 160 caracteres como máximo; título SEO de 40–50 |
-| Guía del dictamen (1D01) | sin `\minutos` ni cante; seis entregables (§11): guía, resumen de 6-8 págs., vídeo de la guía de **1 h 30 min**, examen de ejemplo de España, solución de máximos y vídeo de la solución de **1 h 30 min** |
+| Guía del dictamen (1D01) | sin `\minutos` ni cante; seis entregables (§11): guía, resumen de 6-10 págs., vídeo de la guía de **1 h 30 min**, examen de ejemplo de España, solución de máximos y vídeo de la solución de **1 h 30 min** |
 
 ## 1. Objetivo
 
@@ -873,7 +873,7 @@ un tema (§1-§10), con estas diferencias:
   en este orden: guía → resumen → examen y solución → vídeo de la guía →
   vídeo de la solución.
   1. **Guía larga** (`1D01.tex`).
-  2. **Resumen de 6-8 páginas** (en lugar de la ficha de cuatro páginas):
+  2. **Resumen de 6-8 páginas, hasta 10** si hace falta para que entre todo lo relevante (Víctor, 25/10/2026; la última, de anexos) (en lugar de la ficha de cuatro páginas):
      centrado únicamente en lo que el opositor tiene que saber para el
      examen; frases redactadas enteras, que se lea por sí solo (compactar las
      ideas clave, no memorizar); formato parecido al de la ficha de repaso,

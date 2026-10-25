@@ -3,6 +3,43 @@
 Editor de /revisartema, 23-24/10/2026. Escrita en 4 partes (método y perfil cíclico; mercados de factores y competitividad; sector exterior,
 políticas y recomendaciones; anexos). Este informe recoge las 4.
 
+## Aportaciones de la guía v24 (25/10/2026)
+
+Del inventario `_trabajo/v24-comparacion.md` se ha metido en el **cuerpo** todo el apartado (b) pedido, cada cosa en su
+bloque y con fuente propia (no se cita la guía de otro preparador); nada del apartado (c).
+
+- **Método (introducción y I.4)**: «los gráficos no suelen ser gratuitos» y «ser perspicaz, no descriptivo», con un cuadro
+  «Ejemplo de redacción: descriptivo frente a perspicaz» antes del del motor del crecimiento.
+- **II.2**: fuentes de financiación (crédito bancario, valores, capital riesgo, banca pública) (encuesta SAFE del BCE).
+- **III.1**: por qué es mala la deflación de demanda (aplazamiento de compras, deflación por deudas de Fisher, tipo real
+  con tipos en el límite) y la «buena» de oferta (Bordo y Filardo, 2005). Antes solo estaba la recomendación con deflación.
+- **III.2**: nuevo párrafo «Efectos de una devaluación para corregir el déficit exterior» (Marshall-Lerner, curva J,
+  casos en que no mejora, efecto inflacionista con sus 4 determinantes, deuda en divisas, paro friccional, empleo según la
+  intensidad factorial; Krugman, Obstfeld y Melitz; Campa y Goldberg; pecado original).
+- **IV.1**: tasa de cobertura y comercio inter e intraindustrial (índice de Grubel y Lloyd).
+- **IV.2**: factores de la inversión directa y de cartera, huida hacia la liquidez o la seguridad, falta de consenso sobre
+  abrir la cuenta financiera (FMI, 2012); las partidas de la balanza son **flujos**; ajuste con tipo fijo (reservas y
+  agregados monetarios, riesgo de crisis cambiaria) o flexible (tipo de cambio), sin la frase errónea de que «la balanza
+  estaría siempre en equilibrio».
+- **V.1**: desequilibrios a vigilar: liquidez, monetización y *liquidity crunch* (Taylor y Williams, 2009).
+- **V.3**: aviso de deuda bruta frente a neta y tipo a corto frente a tipo medio de la deuda viva (FMI, Fiscal Monitor
+  2018; Reinhart et al., 2003); gasto corriente frente a gasto de capital (SEC 2010).
+- **VI**: recomendaciones para el déficit exterior según su causa (precio, no precio, entradas de capital con controles
+  temporales y excepcionales; visión institucional del FMI).
+- Bibliografía: 8 entradas nuevas (BCE2026SAFE, Fisher1933, BordoFilardo2005Deflacion, KrugmanObstfeldMelitz2018,
+  FMI2012VisionInstitucional, GrubelLloyd1975, TaylorWilliams2009, FMI2018FiscalMonitor).
+
+**Lo que se ha llevado a los anexos para compensar (≈ 2 páginas), con remisión desde el cuerpo**: los gráficos de la
+inflación de la zona del euro, de los tipos y el balance del BCE, de la curva de Beveridge, de las 4 fases del ciclo y de
+los cuadrantes del *policy mix* (a los anexos de series y de gráficos de lectura); la ley de Okun y la curva de Phillips
+(al anexo de casos, con una línea en el cuerpo); la volatilidad y el comovimiento del consumo y la inversión, condensados
+con remisión a la tabla de hechos estilizados; el ejemplo del FMI para España de la recomendación de gasto (está en el
+anexo de España); y el texto largo de «rigidez del sistema financiero» de VI, que ya está en V.2.
+
+Resultado: **cuerpo 50 páginas**, anexos 39, bibliografía 9 (98 en total). `verificar-tema.py 1D01`: 0 errores,
+11 avisos (cifras sin cita en anexos y guion/vídeo pendientes). Para evitar falsos «títulos al pie», en el esquema de la
+introducción los números de apartado van sin punto y la función de importaciones va en línea.
+
 ## Segunda vuelta 24/10/2026
 
 Aplicados los comentarios de Víctor del 24/10 (`_trabajo/comentarios-victor-24oct.md`), CRITERIOS §7 y §11 actualizados e
