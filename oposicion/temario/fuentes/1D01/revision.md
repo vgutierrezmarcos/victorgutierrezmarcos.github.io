@@ -581,3 +581,4 @@ comprobación allí.
 
 - Anexos reordenados a petición de Víctor: A Hechos estilizados del ciclo económico y lectura de series; B Indicadores y umbrales; C Cálculos tipo; D Gráficos de lectura (anexo nuevo, separado del de series); E Análisis de casos frecuentes; F FMI; G Un caso: la economía española; H El ejercicio y el método; I Qué se ha preguntado; J Dónde se estudia cada bloque; K Expresiones útiles para redactar (al final). Primero la economía y después el examen. La introducción describe este orden.
 - Capas de todos los gráficos rehechas con capas de pgfplots (cuadrícula al fondo; barras y áreas; ejes, cero y umbrales; líneas; puntos; rótulos).
+- (25/10) El esquema de la guía va en la caja `esquema` de los temas («Esquema de la guía») al final de la introducción; se quita la conclusión (la guía se cierra con el apartado VI de recomendaciones); la tabla de desequilibrios pasa al principio de VI.2. Cuerpo 50, anexos 37, bibliografía 9.
