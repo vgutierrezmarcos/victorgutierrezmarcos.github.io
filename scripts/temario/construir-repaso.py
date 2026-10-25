@@ -10,7 +10,7 @@ la escribe el agente tema-repaso). El script prueba tamaños de letra de 10,5 a
 8 puntos (empezando por el de la vez anterior, guardado en estado.json) y se
 queda con el mayor con el que la ficha cabe en cuatro páginas. Falla si no
 salen exactamente cuatro (en la guía del dictamen, 1D01, el resumen ocupa de 6 a
-8 páginas: CRITERIOS § 11): si ni con 8 puntos cabe (hay que recortar) o si con
+10 páginas: CRITERIOS § 11): si ni con 8 puntos cabe (hay que recortar) o si con
 10,5 sobran páginas (hay que añadir contenido). Avisa si sobra mucho sitio en
 la última página y de las referencias sin definir del .log.
 
@@ -33,7 +33,7 @@ from comun import Tema, MIKTEX, LATEX, entorno_tex, ejecutar, errores_log, ruta_
 
 TAMANOS = (10.5, 10, 9.5, 9, 8.75, 8.5, 8.25, 8)
 PAGINAS = 4                # ficha de repaso de un tema: exactamente cuatro
-PAGINAS_DICTAMEN = (6, 8)  # resumen de la guía del dictamen (1D01): de 6 a 8
+PAGINAS_DICTAMEN = (6, 10) # resumen de la guía del dictamen (1D01): de 6 a 10 (Víctor, 25/10/2026)
 TAMANO_DICTAMEN = 10       # y con letra fija (Víctor, 25/10/2026: 7 págs. de resumen + 1 de anexos)
 LLENADO_MINIMO = 0.80      # parte de la última página que debe estar ocupada
 
@@ -147,7 +147,7 @@ def main():
             print(f'  {tam} pt: {paginas_de[tam]} páginas', flush=True)
         return paginas_de[tam]
 
-    # El mayor tamaño con el que cabe en cuatro páginas (o en ocho, el resumen del dictamen), empezando por el de la
+    # El mayor tamaño con el que cabe en cuatro páginas (o en diez, el resumen del dictamen), empezando por el de la
     # vez anterior: si cabe, se prueban los mayores; si no, los menores.
     elegido = None
     if previo in tamanos:

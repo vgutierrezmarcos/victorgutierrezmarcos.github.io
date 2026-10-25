@@ -1,0 +1,26 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Efectos de una devaluación para corregir el déficit exterior: positivo a la
+% izquierda (verde), negativos a la derecha (teja), en el orden de la guía.
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  dev/.style={draw=dicze, fill=dicze, text=white, rounded corners=2pt, font=\footnotesize\bfseries, text width=2.2cm, align=center, minimum height=1cm},
+  positivo/.style={draw=dicfbcf, fill=dicfbcf!12, rounded corners=2pt, line width=0.7pt, text width=2.3cm, align=center, inner sep=2pt},
+  neg/.style={draw=dicparo, fill=dicparo!10, rounded corners=2pt, line width=0.7pt, text width=3.75cm, align=left, inner sep=2pt, minimum height=0.62cm},
+  sig/.style={-{Stealth[length=1.6mm]}, thick, #1}]
+  \node[dev] (d) at (0,0) {Devaluación\\ ($E\uparrow$)};
+  \node[positivo] (p) at (0,-2.1) {\textbf{Medio plazo}: mejora el saldo si se cumple \textsc{Marshall}-\textsc{Lerner}};
+  \draw[sig=dicfbcf] (d) -- (p);
+  \foreach \y/\t [count=\k] in {
+     2.3/{\textbf{Curva J}: a corto plazo empeora},
+     1.4/{\textbf{Puede no mejorar}: socios con tipo fijo, traspaso bajo, inflación que aprecia el tipo real},
+     0.15/{\textbf{Inflación}: mayor con más apertura, precios flexibles, salarios indexados y exceso de demanda de trabajo},
+     -1.05/{\textbf{Deuda en divisas} más cara (pecado original)},
+     -1.9/{\textbf{Paro friccional} al reasignarse el empleo},
+     -2.7/{\textbf{Empleo} según la intensidad factorial}}{
+    \node[neg, anchor=west] (n\k) at (2.0,\y) {\t};
+    \draw[sig=dicparo] (d.east) -- (n\k.west);
+  }
+\end{tikzpicture}
+\end{document}
