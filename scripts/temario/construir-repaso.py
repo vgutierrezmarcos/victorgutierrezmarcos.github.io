@@ -34,6 +34,7 @@ from comun import Tema, MIKTEX, LATEX, entorno_tex, ejecutar, errores_log, ruta_
 TAMANOS = (10.5, 10, 9.5, 9, 8.75, 8.5, 8.25, 8)
 PAGINAS = 4                # ficha de repaso de un tema: exactamente cuatro
 PAGINAS_DICTAMEN = (6, 8)  # resumen de la guía del dictamen (1D01): de 6 a 8
+TAMANO_DICTAMEN = 10       # y con letra fija (Víctor, 25/10/2026: 7 págs. de resumen + 1 de anexos)
 LLENADO_MINIMO = 0.80      # parte de la última página que debe estar ocupada
 
 
@@ -122,6 +123,7 @@ def main():
     minimo, maximo = PAGINAS_DICTAMEN if tema.es_dictamen else (PAGINAS, PAGINAS)
     que = 'el resumen' if tema.es_dictamen else 'la ficha'
     rango = f'{minimo}-{maximo}' if minimo != maximo else f'{maximo}'
+    tamanos = (TAMANO_DICTAMEN,) if tema.es_dictamen else TAMANOS
     fuente = os.path.join(tema.dir, 'repaso', f'{tema.archivo}-repaso.tex')
     if not os.path.exists(fuente):
         print(f'No existe {os.path.relpath(fuente, tema.dir)} (lo escribe el agente tema-repaso)')
@@ -148,26 +150,26 @@ def main():
     # El mayor tamaño con el que cabe en cuatro páginas (o en ocho, el resumen del dictamen), empezando por el de la
     # vez anterior: si cabe, se prueban los mayores; si no, los menores.
     elegido = None
-    if previo in TAMANOS:
+    if previo in tamanos:
         if paginas_con(previo) <= maximo:
             elegido = previo
-            for tam in sorted(t for t in TAMANOS if t > previo):
+            for tam in sorted(t for t in tamanos if t > previo):
                 if paginas_con(tam) <= maximo:
                     elegido = tam
                 else:
                     break
         else:
-            for tam in [t for t in TAMANOS if t < previo]:
+            for tam in [t for t in tamanos if t < previo]:
                 if paginas_con(tam) <= maximo:
                     elegido = tam
                     break
     else:
-        for tam in TAMANOS:
+        for tam in tamanos:
             if paginas_con(tam) <= maximo:
                 elegido = tam
                 break
     if elegido is None:
-        print(f'ERROR: ni con {TAMANOS[-1]} pt cabe en {maximo} páginas: hay que recortar {que}')
+        print(f'ERROR: ni con {tamanos[-1]} pt cabe en {maximo} páginas: hay que recortar {que}')
         sys.exit(1)
     # Segunda pasada (número total de páginas del pie) solo con el elegido; si
     # con ella cambia el recuento, se baja un tamaño
@@ -175,9 +177,9 @@ def main():
     while True:
         pdf = compilar(tema, tam, salida, pasadas=2)
         paginas = len(fitz.open(pdf))
-        if paginas <= maximo or tam == TAMANOS[-1]:
+        if paginas <= maximo or tam == tamanos[-1]:
             break
-        tam = TAMANOS[TAMANOS.index(tam) + 1]
+        tam = tamanos[tamanos.index(tam) + 1]
         print(f'  (con la segunda pasada salen {paginas} páginas: se prueba {tam} pt)')
     log = os.path.join(salida, f'{tema.archivo}-repaso-{str(tam).replace(".", "_")}.log')
     texto_log = open(log, encoding='latin-1').read() if os.path.exists(log) else ''
