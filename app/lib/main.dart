@@ -26,6 +26,7 @@ import 'data/models/oposicion.dart';
 import 'data/models/preparador.dart';
 import 'data/repos/contenido_repo.dart';
 import 'data/repos/descargas_repo.dart';
+import 'data/repos/oposicion_cuenta.dart';
 import 'data/repos/plan_repo.dart';
 import 'data/repos/preparador_repo.dart';
 import 'data/repos/usuario_repo.dart';
@@ -146,17 +147,47 @@ class _RaizAppState extends State<RaizApp> {
   /// Google (una vez; sin Firebase no tiene sentido).
   late final bool _bienvenida = widget.firebaseDisponible && widget.elegida == null && Hive.box(Cajas.app).get(claveBienvenidaVista) != true;
 
+  /// Sin oposición en este dispositivo pero con sesión: se mira la de la
+  /// cuenta antes de preguntar (mientras, pantalla vacía).
+  bool _buscandoEnCuenta = false;
+  StreamSubscription<User?>? _sesion;
+
   @override
   void initState() {
     super.initState();
     final elegida = Oposiciones.todas.where((o) => o.id == widget.elegida).firstOrNull;
-    if (elegida != null || (!Oposiciones.variasDisponibles && !_bienvenida)) _arrancar(elegida ?? Oposiciones.todas.first);
+    if (elegida != null || (!Oposiciones.variasDisponibles && !_bienvenida)) {
+      _arrancar(elegida ?? Oposiciones.todas.first);
+    } else if (widget.firebaseDisponible) {
+      _buscandoEnCuenta = true;
+      OposicionCuenta.buscar().then((o) async {
+        if (!mounted) return;
+        if (o == null) return setState(() => _buscandoEnCuenta = false);
+        await Hive.box(Cajas.app).put(claveBienvenidaVista, true);
+        await _arrancar(o);
+      });
+    }
+    // Al iniciar sesión (también más tarde, en Más → Cuenta), la cuenta se
+    // queda con la oposición de este dispositivo como la última usada.
+    if (widget.firebaseDisponible) {
+      _sesion = FirebaseAuth.instance.authStateChanges().listen((u) {
+        final s = _servicios;
+        if (u != null && s != null) OposicionCuenta.guardar(s.oposicion);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _sesion?.cancel();
+    super.dispose();
   }
 
   /// Arranca con [oposicion]. Con [papel] (al elegirla la primera vez), lo fija.
   Future<void> _arrancar(Oposicion oposicion, {Papel? papel}) async {
     await Hive.box(Cajas.app).put('oposicion', oposicion.id);
     final servicios = await crearServicios(oposicion, http: widget.http, firebaseDisponible: widget.firebaseDisponible);
+    if (widget.firebaseDisponible) unawaited(OposicionCuenta.guardar(oposicion));
     if (papel != null) {
       final repo = servicios.preparador;
       if (papel == Papel.preparador && !repo.perfil().activo) await repo.activar();
@@ -171,8 +202,13 @@ class _RaizAppState extends State<RaizApp> {
   Widget build(BuildContext context) {
     final servicios = _servicios;
     if (servicios == null) {
-      return (Oposiciones.variasDisponibles && widget.elegida == null) || _bienvenida
-          ? ElegirOposicionApp(conBienvenida: _bienvenida, conOposicion: Oposiciones.variasDisponibles, alElegir: (o, papel) => _arrancar(o, papel: papel))
+      return !_buscandoEnCuenta && ((Oposiciones.variasDisponibles && widget.elegida == null) || _bienvenida)
+          ? ElegirOposicionApp(
+              conBienvenida: _bienvenida,
+              conOposicion: Oposiciones.variasDisponibles,
+              alElegir: (o, papel) => _arrancar(o, papel: papel),
+              buscarEnCuenta: OposicionCuenta.buscar,
+            )
           : const SizedBox.shrink();
     }
     // Una clave por oposición: al cambiarla se descartan todos los providers.
