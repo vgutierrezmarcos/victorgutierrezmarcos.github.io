@@ -23,7 +23,7 @@ las comprueban):
 | Vídeo | exactamente 30:00, 1920×1080, en `oposicion/temario/videos/` (fuera de git); hasta el ordenador nuevo, borrador sin voz (`--borrador`) |
 | Voz | motor `voicestudio` (OmniVoice, voz clonada; referencia `Documents/voz/referencia-12s.wav`), elegido el 13/10/2026; `xtts` y `edge` siguen disponibles para pruebas |
 | Resumen SEO | 160 caracteres como máximo; título SEO de 40–50 |
-| Guía del dictamen (1D01) | sin `\minutos` ni cante; vídeo explicativo de unos **15 minutos** (≈2.350 palabras); ficha de repaso de cuatro páginas como las demás (§11) |
+| Guía del dictamen (1D01) | sin `\minutos` ni cante; seis entregables (§11): guía, resumen de 6-8 págs., vídeo de la guía de **1 h 30 min**, examen de ejemplo de España, solución de máximos y vídeo de la solución de **1 h 30 min** |
 
 ## 1. Objetivo
 
@@ -869,17 +869,33 @@ un tema (§1-§10), con estas diferencias:
 - **Coherencia**: definiciones, notación y referencias como en §6 (la
   numeración de los temas que cita el original puede ser la antigua: se
   comprueba en `temario.json`). La guía no desarrolla modelos: remite al tema.
-- **Resumen** (en lugar de la ficha de cuatro páginas; Víctor, 24/10/2026):
-  un resumen del cuerpo (sin anexos) de **6-8 páginas**, con frases
-  redactadas enteras y que se lea por sí solo: el objetivo es compactar las
-  ideas clave, no memorizar. Formato parecido al de la ficha de repaso, con
-  al menos un anexo de las funciones y fórmulas principales que hay que
-  recordar.
-- **Vídeo**: explicativo, de unos 15 minutos (tabla §0), sin voz por ahora:
-  cómo se lee el cuadernillo, cómo se ordena el dictamen y cómo se reparte el
-  tiempo, con un caso (un dictamen oficial). Mismas reglas de pizarra y
-  guion que §8 salvo la duración.
-- **Publicación**: solo en la app (como los temas). En la web sigue la guía
+- **Seis entregables** (Víctor, 25/10/2026), con parada para su aprobación
+  en este orden: guía → resumen → examen y solución → vídeo de la guía →
+  vídeo de la solución.
+  1. **Guía larga** (`1D01.tex`).
+  2. **Resumen de 6-8 páginas** (en lugar de la ficha de cuatro páginas):
+     centrado únicamente en lo que el opositor tiene que saber para el
+     examen; frases redactadas enteras, que se lea por sí solo (compactar las
+     ideas clave, no memorizar); formato parecido al de la ficha de repaso,
+     con al menos un anexo de las funciones y fórmulas principales.
+  3. **Vídeo de la guía, 1 h 30 min**, sin voz (como los del cante: guion en
+     pantalla y pizarra con los gráficos trazo a trazo; mismas reglas que
+     §8 salvo la duración): a) introducción con las cuestiones
+     transversales; b) una sección por cada pregunta que hay que contestar
+     (los bloques de la guía), a modo de clase teórica que recorre toda la
+     guía; c) conclusión.
+  4. **Examen de ejemplo de España**, en el formato vigente (como el
+     dictamen de 2026): cuadro macroeconómico de España con previsiones, unos
+     6-8 gráficos y tablas y 5-6 preguntas para 1 h 45 min; datos oficiales al
+     último dato (INE, Banco de España, Eurostat, Comisión, FMI), con fuente;
+     el país se nombra.
+  5. **Solución de España** (PDF): una solución *de máximos*, con cuadros que
+     complementan el análisis e incorporan más información de la que trae el
+     examen; entra al detalle y aplica de forma práctica todo lo que explica
+     la guía (remitiendo a sus apartados).
+  6. **Vídeo de la solución, 1 h 30 min**, sin voz, que recorre toda la
+     solución del PDF.
+- **Publicación**: de momento, solo la guía (y su resumen) y solo en la app (como los temas); el examen, la solución y los vídeos no se publican hasta que Víctor lo decida (25/10/2026). En la web sigue la guía
   antigua (`esquema_dictamen_economico.pdf` y `_2025.docx`), que
   `publicar-tema.py` guarda como `1D01-anterior.*`. En el manifiesto de la
   app va aparte, en la clave `dictamen`.
