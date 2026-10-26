@@ -11,6 +11,12 @@
 \documentclass[11pt]{article}
 \usepackage{tcee}
 \usepackage{pdfcol}
+\usepackage[leftbars,xcolor]{changebar}
+\cbcolor{tceemorado}
+\setlength{\changebarwidth}{1.6pt}
+\setlength{\changebarsep}{-1.6pt}
+% changebar pone la raya también en las notas de una zona marcada: se quita
+\makeatletter\let\@footnotetext\ltx@footnotetext\makeatother
 \addbibresource{../../1D01.bib}
 \addbibresource{solucion.bib}
 \tcetema[Solución del examen de ejemplo: España]{Primer ejercicio}{Solución de máximos del examen de ejemplo del dictamen: España}
@@ -24,11 +30,16 @@
 % Enunciado de cada pregunta, con su peso, su tiempo y su extensión
 \newtcolorbox{enunciado}{enhanced,breakable,colback=tceesalvia,colframe=tceesalviaoscuro,
   boxrule=0.5pt,arc=2pt,fontupper=\small,left=8pt,right=8pt,top=4pt,bottom=4pt}
-% Texto de examen: lo que escribiría el opositor (raya morada a la izquierda)
-\newtcolorbox{examen}{enhanced,breakable,frame hidden,colback=white,interior hidden,
-  borderline west={1.6pt}{0pt}{tceemorado},left=10pt,right=0pt,top=1pt,bottom=1pt,
-  boxsep=0pt,before skip=6pt,after skip=8pt,
-  before upper={\clubpenalty=10000 \widowpenalty=10000 \predisplaypenalty=200 \setlist{beginpenalty=300}}}
+% Texto de examen: lo que escribiría el opositor (raya morada a la izquierda).
+% No es una tcolorbox (atraparía las notas al final de la caja, como un
+% minipage): es una lista con la sangría de antes (raya de 1,6 pt y 10 pt) y la raya de changebar, así las
+% notas van al pie de su página.
+\newenvironment{examen}{\par\addvspace{6pt}%
+  \begin{list}{}{\setlength{\leftmargin}{11.6pt}\setlength{\rightmargin}{0pt}%
+    \setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}\setlength{\parsep}{\parskip}%
+    \setlength{\itemsep}{0pt}\setlength{\listparindent}{0pt}\setlength{\itemindent}{0pt}}%
+  \item\relax\clubpenalty=10000 \widowpenalty=10000 \predisplaypenalty=200 \setlist{beginpenalty=300}\cbstart\ignorespaces}%
+  {\par\cbend\end{list}\par\addvspace{8pt}}
 % Cuadro complementario: por qué, cálculos, gráficos, errores y alternativas
 \newtcolorbox{complementocaja}[1]{enhanced,breakable,colback=tceegrisclaro!45,colframe=tceedorado,
   boxrule=0pt,leftrule=3pt,arc=1pt,fontupper=\footnotesize,left=8pt,right=8pt,top=5pt,bottom=5pt,
@@ -38,7 +49,7 @@
 % empezar (fuera de la caja; dentro, \Needspace provoca saltos en falso): así su
 % título nunca queda solo al pie de una página.
 \newenvironment{complemento}[1]{\par\Needspace{9\baselineskip}\begin{complementocaja}{#1}}{\end{complementocaja}}
-% (En «examen» y «complemento», before upper fija en 10000 las penalizaciones de
+% (En «examen» y «complemento» se fijan en 10000 las penalizaciones de
 % líneas viudas y huérfanas: ninguna caja deja una línea sola al pie o al principio
 % de una página.)
 % Rótulo de una parte del texto de examen («a) …»)
@@ -51,7 +62,11 @@
 \newcommand{\fmi}[1]{\parencite[informe del personal técnico, p.~#1]{FMI2026ArticuloIV}}
 \newcommand{\fmicp}[1]{\parencite[comunicado de prensa, p.~#1]{FMI2026ArticuloIV}}
 % Etiqueta dentro de un cuadro complementario
-\newcommand{\que}[1]{\par\smallskip{\bfseries\color{tceemoradooscuro}#1}\enspace}
+% Sin espacio si sigue un signo de puntuación («… demanda, con sus fuentes:»)
+\makeatletter
+\newcommand{\que}[1]{\par\smallskip{\bfseries\color{tceemoradooscuro}#1}\que@espacio}
+\newcommand{\que@espacio}{\@ifnextchar,{}{\@ifnextchar.{}{\@ifnextchar:{}{\@ifnextchar;{}{\@ifnextchar){}{\enspace}}}}}}
+\makeatother
 \setlength{\emergencystretch}{1.5em}
 
 \begin{document}
