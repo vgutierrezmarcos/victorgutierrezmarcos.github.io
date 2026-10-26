@@ -38,11 +38,11 @@ AVISO = ('Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCE
 PIE = '© Víctor Gutiérrez Marcos · Exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE'
 CONDICIONES = 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html'
 
-# Ficheros de la web que son exclusivos (ruta desde la raíz del sitio).
-WEB = [
-    {'ruta': 'oposicion/temario/primer-ejercicio/test/examenes_oficiales_test.pdf', 'tipo': 'examenes', 'titulo': 'Recopilación de los tests oficiales (2002-2026)', 'nota': 'Los exámenes son del Ministerio; lo exclusivo es la recopilación.'},
-    {'ruta': 'oposicion/temario/primer-ejercicio/examenes_oficiales_dictamen.pdf', 'tipo': 'examenes', 'titulo': 'Recopilación de los dictámenes de coyuntura oficiales (2011-2026)', 'nota': 'Los exámenes son del Ministerio; lo exclusivo es la recopilación.'},
-]
+# Ficheros de la web que son exclusivos (ruta desde la raíz del sitio). Las
+# recopilaciones de exámenes oficiales quedan fuera (Víctor, 27 oct. 2026): los
+# exámenes son del Ministerio y no llevan aviso. Formato de cada entrada:
+# {'ruta': 'oposicion/…/fichero.pdf', 'tipo': 'guia', 'titulo': '…'}
+WEB = []
 
 
 def fecha_git(ruta):
