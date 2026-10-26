@@ -100,6 +100,18 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
       loading: () => const Cargando(),
       error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(temarioProvider)),
       data: (t) {
+        if (_soloExclusivos && _busqueda.trim().isEmpty) {
+          // Materiales exclusivos (uso personal): los temas revisados desde el 1 oct. 2026.
+          final res = t.todosLosTemas.where((x) => _revisados.de(x.codigo)?.exclusivo == true).toList();
+          return Refrescable(
+              child: ListaAdaptable(padding: const EdgeInsets.all(16), children: [
+            _filtroExclusivos(res.length),
+            const SizedBox(height: 6),
+            Text(res.isEmpty ? 'Aún no hay materiales exclusivos descargados: inicia sesión y sincroniza.' : 'Temas revisados a fondo, con datos al día y gráficos nuevos, en PDF, Word y página web, con ficha de repaso. Son de uso personal y se leen dentro de la app.', style: context.textos.bodySmall),
+            const SizedBox(height: 6),
+            for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
+          ]));
+        }
         if (_busqueda.trim().isNotEmpty) {
           final q = _normalizar(_busqueda);
           final res = t.todosLosTemas.where((x) => _normalizar('${x.codigo} ${x.titulo}').contains(q) || _normalizar(x.codigo.replaceAll('.', '')).contains(q.replaceAll('.', '').replaceAll(' ', ''))).toList();
@@ -118,6 +130,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             if (widget.pestanas != null) _enlaceTest(),
+            if (_revisados.exclusivos.isNotEmpty) _filtroExclusivos(_revisados.exclusivos.length),
             if (!_preparador)
               Tarjeta(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -167,6 +180,22 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     );
   }
 
+  bool _soloExclusivos = false;
+
+  /// Chip «Solo exclusivos»: la sección de materiales exclusivos del temario.
+  Widget _filtroExclusivos(int n) => Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Wrap(spacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
+          FilterChip(
+            avatar: _soloExclusivos ? null : const Icon(Icons.workspace_premium_outlined, size: 18),
+            label: Text(_soloExclusivos ? 'Solo exclusivos · $n' : 'Materiales exclusivos · $n'),
+            selected: _soloExclusivos,
+            onSelected: (v) => setState(() => _soloExclusivos = v),
+          ),
+          if (_soloExclusivos) TextButton(onPressed: () => abrirUrl(context, urlCondicionesMateriales, enApp: true), child: const Text('Condiciones de uso')),
+        ]),
+      );
+
   /// Descargado para leer sin red (la versión anterior o la revisada).
   bool _descargado(Tema x) {
     final descargas = ref.read(descargasProvider);
@@ -176,7 +205,8 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
   }
 
   Widget _filaTema(Tema x, bool estudiado, bool repaso, bool offline, bool conNota, int apuntes) {
-    final revisado = _revisados.de(x.codigo) != null;
+    final rev = _revisados.de(x.codigo);
+    final revisado = rev != null;
     return ListTile(
       dense: true,
       leading: _preparador
@@ -188,7 +218,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
             ),
       title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible && !revisado, color: _colorDe(x.codigo)),
       subtitle: Wrap(crossAxisAlignment: WrapCrossAlignment.center, runSpacing: 2, children: [
-        if (revisado) const Padding(padding: EdgeInsets.only(right: 6), child: Etiqueta('Revisado · exclusivo de la app')),
+        if (revisado) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta(rev.exclusivo ? 'Exclusivo · revisado' : 'Revisado · exclusivo de la app')),
         if (!x.disponible && !revisado) Padding(padding: const EdgeInsets.only(right: 6), child: Text(Oposiciones.actual.esPrincipal ? 'Sin PDF' : 'En preparación', style: context.textos.labelSmall)),
         if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
         if (offline && !x.pdfDeParte) Icon(Icons.offline_pin, size: 14, color: context.colores.textoClaro),

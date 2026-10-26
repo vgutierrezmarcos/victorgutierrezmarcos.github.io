@@ -315,6 +315,8 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     // La revisada, si es la que se enseña.
     final TemaRevisado? rv = eleccion.esRevisada ? rev : null;
     final revisada = rv != null;
+    // Exclusivo (uso personal): se lee dentro de la app; sin compartir, sin Word y sin descargar anotado.
+    final exclusivo = rv?.exclusivo ?? false;
     // Con sesión, se espera al manifiesto antes de abrir nada (para no bajar
     // la versión anterior y luego la revisada).
     final listo = estadoRevisados == null || !conSesion || estadoRevisados.hasValue || estadoRevisados.hasError;
@@ -375,7 +377,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               selectedIcon: const Icon(Icons.draw),
               onPressed: () => _alternarAnotar(anotaciones),
             ),
-          if (_ruta != null && !verHtml)
+          if (_ruta != null && !verHtml && !exclusivo)
             IconButton(
               tooltip: 'Compartir PDF',
               icon: const Icon(Icons.share_outlined),
@@ -400,7 +402,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
             itemBuilder: (_) => [
               // El revisado no tiene página pública: no se abre fuera de la app.
               if (!revisada && widget.nombreDescarga == null) PopupMenuItem(value: 'web', child: Text(kIsWeb ? 'Abrir en otra pestaña' : 'Abrir en el navegador')),
-              if (_pdf != null && anotaciones != null) const PopupMenuItem(value: 'anotado', child: Text('Descargar con mis anotaciones')),
+              if (_pdf != null && anotaciones != null && !exclusivo) const PopupMenuItem(value: 'anotado', child: Text('Descargar con mis anotaciones')),
               if (ref.read(descargasProvider).guardaSinConexion) const PopupMenuItem(value: 'borrar', child: Text('Eliminar descarga')),
             ],
           ),
@@ -588,14 +590,19 @@ class _BarraRevisado extends StatelessWidget {
       final aprobado = revisado.aprobado;
       contenido = Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
         Wrap(spacing: 8, runSpacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
-          const Etiqueta('Revisado · exclusivo de la app'),
+          Etiqueta(revisado.exclusivo ? 'Exclusivo · uso personal' : 'Revisado · exclusivo de la app'),
           if (aprobado != null) Text('Versión del ${_fecha(aprobado)}', style: context.textos.labelSmall),
+          if (revisado.exclusivo)
+            Tooltip(
+              message: avisoExclusivo,
+              child: InkWell(onTap: () => abrirUrl(context, urlCondicionesMateriales, enApp: true), child: Text('Solo lectura en la app · condiciones', style: context.textos.labelSmall?.copyWith(decoration: TextDecoration.underline))),
+            ),
         ]),
         const SizedBox(height: 2),
         Wrap(spacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
           if (revisado.repaso != null)
             TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.repaso), icon: const Icon(Icons.summarize_outlined, size: 18), label: const Text('Ficha de repaso')),
-          if (revisado.docx != null)
+          if (revisado.docx != null && !revisado.exclusivo)
             TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.docx), icon: const Icon(Icons.description_outlined, size: 18), label: const Text('Word')),
           if (eleccion.puedeCambiar)
             TextButton.icon(style: compacto, onPressed: cambiar, icon: const Icon(Icons.history, size: 18), label: const Text('Ver versión anterior')),
