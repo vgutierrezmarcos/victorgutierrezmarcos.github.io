@@ -1,47 +1,16 @@
 # Novedades de la app pendientes de publicar
 
 Las mejoras de la app no van una a una a `novedades.json`: se apuntan aquí y se
-publican **juntas, en una sola novedad**, cuando la app esté disponible en Google
-Play (y después, una por versión que llegue a Play, solo con lo que importe al
-opositor). Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
+publican **juntas, en una sola novedad**, cada vez que una versión llega a Google
+Play (solo con lo que importe al opositor). La app está en producción en Google
+Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 
-## Para la novedad de la salida en Google Play
+## Para la siguiente versión en Google Play (1.20.2, aún en la prueba cerrada)
 
-- (19 oct.) Pizarra en el navegador del iPad: tinta más limpia con el Apple Pencil y aviso para desactivar Scribble, que se queda con las letras rápidas
-- (19 oct.) Pizarra en el navegador del iPad: al escribir deprisa con el Apple Pencil ya no se pierden ni se retrasan los trazos
-- (19 oct.) La pizarra tiene ahora su propia sección en Cantar, igual de visible que el cronómetro
-- (20 oct.) Tabla de preguntas por tema en los exámenes oficiales del test (examen a examen), desde Test, Organización y cada tema
-- (20 oct.) Si una pantalla falla, la app lo explica y deja volver (ya no se queda en gris); y en la calculadora del test se puede escribir el acierto de cada grupo
-- (20 oct.) Pedir clase al preparador para un día y una hora, aunque no tenga abiertas las reservas; desde «Nuevo cante → Con quién» o desde «Añadir → Reservar clase»
-- (20 oct.) Pizarra: selector de color rehecho, con una paleta de colores con nombre que cabe en el móvil
-- (20 oct.) Cronómetro compartido: al pasar a exponer, la exposición espera en pausa; y la rueda del ratón ya no amplía el PDF del tema
-- (21 oct.) La versión web ya crea cronogramas, clases y cantes desde el navegador (fallaba al generar el identificador)
-- (21 oct.) El cronómetro sale con los tiempos del examen de cada oposición: en DCE, 20 min por tema y 15 de esquema; en TCEE, 30 min por tema y 22 min 30 s de esquema (el doble con dos temas)
-- (21 oct.) Al valorar un cante de dos temas, cada tema tiene sus estrellas; y los temas y los minutos se pueden corregir después (si falló el cronómetro o el sorteo)
-- (21 oct.) El preparador ve como «temas que lleva» el alumno también los de su cronograma compartido, y al programarle una clase se propone el día en que canta según ese cronograma
-- (21 oct.) En el navegador, volver a abrir un tema ya abierto (por ejemplo, tras anotarlo) ya no da «No se pudo cargar el contenido»
-- (21 oct.) El opositor puede pedir no cantar un tema por ahora (en la agenda del tema): queda fuera del sorteo de sus clases y el preparador recibe un aviso, con la clase a cambiar si ya se lo había mandado
-- (21 oct.) Pizarra: se puede escribir a máquina (herramienta «Texto» en el menú ···: un toque abre el cuadro; se corrige, se mueve con el lazo y se borra como un trazo)
-- (21 oct.) Notas del preparador: cada clase tiene una segunda pizarra solo del preparador, que el alumno ve en cuanto él la comparte
-- (21 oct.) En las clases del preparador, el alumno ve la misma bolsa de temas que su preparador (los estudiados más los de su cronograma, sin los que pide no cantar)
-- (21 oct.) Botón de sincronizar arriba en las pestañas principales, y deslizar hacia abajo en cualquier lista trae lo nuevo de la nube y de la web
-- (21 oct.) Notas del preparador: el preparador puede dejar escribir al opositor, y entonces los dos escriben a la vez, como en la pizarra compartida
-- (21 oct.) El preparador abre de un toque el tema que le van a cantar, desde Hoy y desde la ficha de la clase
-- (21 oct.) Esquema del tema junto al PDF: en el ordenador, a la izquierda; en el móvil, un botón en la barra de páginas abre el esquema y tocar un apartado salta a su página
-- (21 oct.) El tema revisado «como página web» vuelve a salir con su formato, a todo el ancho y en modo oscuro si la app lo está
-- (21 oct.) Un segundo toque en una pestaña de abajo vuelve a su página principal
-- (21 oct.) Cualquier pizarra (la de la clase y las notas) se guarda como PDF desde el menú ···
-- (21 oct.) En el navegador, el visor del tema ya no amplía solo al bajar con la rueda del ratón
-- (22 oct.) La app pregunta si quieres enviar estadísticas de uso anónimas e informes de errores; apagado si no dices que sí, y se cambia en Más → Ajustes
-- (22 oct.) En las clases con preparador, los temas que entran son los de la semana del cronograma del alumno para ese cante, iguales en las dos apps
-- (22 oct.) Google Calendar para todos: al abrir, la app pregunta si quieres tus clases y cantes en tu calendario (opcional); el opositor lo activa en Más → Ajustes
-- (23 oct.) Las pestañas Temas · Test y Agenda · Cantar · Diario son ahora botones con su icono y su cifra, para que se vean
-- (23 oct.) Los temas de cada clase con el preparador son los de la semana del cronograma o los que elige el opositor, iguales en las dos apps; el preparador propone cambios y el opositor los acepta
 - (24 oct.) «¿Por qué?» en la revisión del test: las 1004 preguntas oficiales tienen explicación de la respuesta correcta y de por qué falla cada opción, con el tema donde se estudia y, en más de 200, un gráfico que se amplía al tocarlo; y «Reportar respuesta» para avisar de un error
-
-Además de lo anterior, al salir en Play conviene resumir lo que la app tiene
-desde la 1.16.0 (ver `registro-prueba-cerrada.md`): red de preparadores, clases
-y cantes compartidos, cronograma, pizarra, test con exámenes oficiales, proceso
-selectivo con avisos, y TCEE y DCE en la misma app.
 - (25 oct.) Al entrar con tu cuenta en otro móvil o en el navegador, la app recuerda tu oposición y tu papel y no vuelve a preguntarlos
 - (26 oct.) La app se llama «Oposición TCEE · DCE» también en el móvil, para encontrarla en el buscador, y tiene una animación de arranque nueva
+
+## Publicado el 26 oct. 2026 (salida en Google Play, 1.19.2)
+
+Novedad en `novedades.json`: «La app ya está en Google Play, para TCEE y DCE: agenda de cantes y clases con tu preparador, cronograma, pizarra compartida, test con los exámenes oficiales, temario y avisos del proceso selectivo». Resumía lo acumulado del 19 al 23 oct. (pizarra con Apple Pencil, texto y PDF; notas del preparador; tabla de preguntas por tema; pedir clase; cronómetro por oposición; valoración por tema; no cantar un tema; sincronizar a mano; esquema del tema; estadísticas opcionales; Google Calendar para todos; subpestañas como botones; temas de cada clase iguales en las dos apps).
