@@ -855,7 +855,7 @@ un tema (§1-§10), con estas diferencias:
   mal; los párrafos de ejemplo entre comillas van en cuadros «Ejemplo de
   redacción» junto al indicador, con años y cifras genéricos (20xx).
 - **Extensión** (Víctor, 23/10/2026; ampliada el 25/10/2026): el cuerpo, **hasta ~70
-  páginas**, lo más visual posible y coherente con el resumen (gráficos e infografías en el cuerpo, viñetas por niveles, **negrita** para palabras clave, *cursiva* para términos y matices, subrayado con moderación para la idea que hay que decir sí o sí), pero bien redactado y con explicaciones más detalladas que el resumen; lo de ampliación (series, cálculos tipo, programación
+  páginas**, lo más visual posible y coherente con el resumen (gráficos e infografías en el cuerpo, viñetas por niveles, **negrita** para palabras clave, *cursiva* para términos y matices, subrayado con moderación para la idea que hay que decir sí o sí, con `\uline{…}`, que `tcee-comun.sty` carga para todo el temario), pero bien redactado y con explicaciones más detalladas que el resumen; lo de ampliación (series, cálculos tipo, programación
   del FMI, España, hechos estilizados en detalle) va a los anexos.
 - **Cada indicador**, con el mismo esquema: *qué mide* · *cómo se calcula* ·
   *umbral o referencia* (cuadro de indicadores del procedimiento de
