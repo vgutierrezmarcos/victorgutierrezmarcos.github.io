@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 """
+OBSOLETO PARA EL PROMOCIONAL: desde el 21 oct. 2026 el vídeo de /app/
+(app/promo/oposicion-tcee.mp4) se monta con HyperFrames en scripts/video-app/
+(ver «Vídeo de presentación» en app/README.md). Ejecutar este script machaca ese
+vídeo con la versión antigua; solo sigue sirviendo por sus instrumentos (los usan
+scripts/video-app/musica.py, los vídeos de ayuda y los gráficos de Play).
+
 Monta el vídeo promocional de la app (noventa segundos, 1920 × 1080, con una banda
 sonora electrónica propia generada aquí) a partir de las capturas de
 app/promo/capturas/.
