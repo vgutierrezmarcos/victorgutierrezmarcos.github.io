@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/analitica.dart';
+import '../../core/resenas.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/permiso_calendario.dart';
 import '../../core/cronograma_providers.dart';
@@ -243,7 +244,10 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
       final nombre = _alumnos.length == 1 ? widget.alumnos!.where((a) => a.id == _alumnos.first).firstOrNull?.nombre : null;
       if (!mounted || !await confirmarChoques(context, choques, yo: ref.read(usuarioActualProvider)?.uid, quien: nombre ?? 'el alumno')) return;
       await ref.read(sesionesProvider.notifier).guardarVarias(sesiones);
-      if (!_edicion) Analitica.instancia.evento('clase_creada', parametros: {'clases': sesiones.length});
+      if (!_edicion) {
+        Analitica.instancia.evento('clase_creada', parametros: {'clases': sesiones.length});
+        Resenas.momento();
+      }
       nav.pop();
       return;
     }

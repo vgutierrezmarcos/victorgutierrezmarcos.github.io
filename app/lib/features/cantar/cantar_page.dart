@@ -12,6 +12,7 @@ import 'package:vibration/vibration.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../../core/analitica.dart';
+import '../../core/resenas.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
@@ -664,6 +665,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     );
     if (res == null) return;
     Analitica.instancia.evento('cante_terminado', parametros: {'minutos': res.segundos ~/ 60, 'temas': (res.temaCantado == null ? 0 : 1) + res.otrosCantados.length});
+    if (res.valoracion > 0) Resenas.momento();
     if (sesion != null) {
       // Sesión de preparador: se guarda en la ficha del alumno (y en su diario, si está enlazado).
       await ref.read(sesionesProvider.notifier).guardar((cante ?? sesion.cante).copyWith(estado: EstadoCante.hecho, resultado: res));

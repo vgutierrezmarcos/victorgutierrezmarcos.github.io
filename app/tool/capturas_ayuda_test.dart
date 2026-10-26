@@ -119,7 +119,7 @@ void main() {
             ]).toJson()));
     final v = Video('reservar-clase', tester);
     await r.subpestana('Agenda');
-    await r.tocar(find.byTooltip('Entendido'));
+    if (find.byTooltip('Entendido').evaluate().isNotEmpty) await r.tocar(find.byTooltip('Entendido'));
     // La hoja del «+» mira los huecos ya cargados.
     await r.container.read(huecosDeProvider('paula').future);
     await v.foto('agenda');
@@ -159,11 +159,13 @@ void main() {
     final v = Video('conectar-preparador', tester);
     await r.pestana('Más');
     await v.foto('mas');
-    await v.toque(find.text('Mi preparador'));
+    // La fila, no el título de la sección «Mi preparador» de Más.
+    await v.toque(find.text('Conecta con tu preparador o pide una clase suelta'));
     await v.foto('mi-preparador');
     await v.escribir(find.byType(TextField), 'P4UL4X');
     await v.foto('codigo');
-    await v.toque(find.text('Conectar'));
+    // Con seis caracteres el código se envía solo; si el botón sigue ahí, se toca.
+    if (find.text('Conectar').evaluate().isNotEmpty) await v.toque(find.text('Conectar'));
     await tester.pump(const Duration(seconds: 5)); // que se vaya el aviso de abajo
     await tester.pumpAndSettle();
     await v.foto('pendiente');
@@ -186,7 +188,7 @@ void main() {
     final (demo, r) = await arrancar(tester, extra: [vinculosPreparadorProvider.overrideWith(() => _Vinculos([paula]))]);
     final v = Video('clase-suelta', tester);
     await r.subpestana('Agenda');
-    await r.tocar(find.byTooltip('Entendido'));
+    if (find.byTooltip('Entendido').evaluate().isNotEmpty) await r.tocar(find.byTooltip('Entendido'));
     await v.foto('agenda');
     await v.toque(find.textContaining('ha cancelado la clase'));
     await v.foto('cancelada');
@@ -278,26 +280,35 @@ void main() {
     await r.buscar(find.textContaining('Empezar el esquema'));
     await v.foto('temas');
     await v.toque(find.textContaining('Empezar el esquema'));
-    await r.tocar(find.byTooltip('Entendido'));
+    if (find.byTooltip('Entendido').evaluate().isNotEmpty) await r.tocar(find.byTooltip('Entendido'));
     await v.foto('esquema');
     await r.buscar(find.textContaining('Compartir con'));
     await r.bajar(120);
     await v.foto('compartir');
-    await v.toque(find.byType(Switch));
-    await v.foto('compartido');
+    // El reloj compartido se queda escuchando: sin esperar a que «se asiente».
+    // Mientras el reloj está compartido (latidos a la base falsa) nada «se asienta»: solo pump.
+    final compartir = find.byWidgetPredicate((w) => w is SwitchListTile && w.title is Text && ((w.title as Text).data ?? '').startsWith('Compartir con'));
+    await v.toque(compartir, asentar: false);
+    await v.foto('compartido', asentar: false);
     await v.toque(find.text('Empezar'), asentar: false);
     await tester.pump(const Duration(minutes: 3, seconds: 12));
     await v.foto('corriendo', asentar: false);
-    await r.bajar(-300);
+    await tester.drag(find.byType(ListView).first, const Offset(0, 300));
     await tester.pump(const Duration(seconds: 1));
     await v.foto('arriba', asentar: false);
     await v.toque(find.text('Pantalla grande'), asentar: false);
     await tester.pump(const Duration(seconds: 2));
     await v.foto('grande', asentar: false);
-    await r.cerrar(find.byType(RelojGrandePage));
-    // Se para el cronómetro (si no, el test no acaba nunca de asentarse).
-    await r.buscar(find.text('Pausar'));
-    await r.tocar(find.text('Pausar'));
+    Navigator.of(tester.element(find.byType(RelojGrandePage).first)).pop();
+    // Varios fotogramas: la transición termina en uno y la ruta se quita en el siguiente.
+    for (var i = 0; i < 4; i++) {
+      await tester.pump(const Duration(milliseconds: 400));
+    }
+    expect(find.byType(RelojGrandePage), findsNothing);
+    // Se para el cronómetro y se deja de compartir (si no, el test no acaba nunca de asentarse).
+    await tester.scrollUntilVisible(find.text('Pausar').first, 250, scrollable: find.descendant(of: find.byType(ListView).first, matching: find.byType(Scrollable)).first);
+    await tester.tap(find.text('Pausar').first);
+    await tester.pumpAndSettle();
     // La pizarra, apaisada (como se usa).
     tester.view.physicalSize = const Size(2340, 1080);
     await r.abrir(PizarraPage(alumnoUid: 'yo', canteId: 'pt', otroNombre: 'Paula Pérez', db: demo.dbRed));
@@ -307,7 +318,7 @@ void main() {
     await tester.pumpAndSettle();
     // Al acabar, la valoración de Paula queda en el diario.
     await r.subpestana('Diario');
-    await r.tocar(find.byTooltip('Entendido'));
+    if (find.byTooltip('Entendido').evaluate().isNotEmpty) await r.tocar(find.byTooltip('Entendido'));
     await v.foto('diario', asentar: false);
     v.terminar();
   });

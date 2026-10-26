@@ -45,6 +45,7 @@ import 'package:tcee_app/features/inicio/elegir_oposicion.dart';
 import 'package:tcee_app/features/plan/cante_page.dart';
 import 'package:tcee_app/features/preparador/preparador_page.dart';
 import 'package:tcee_app/features/preparador/sustituciones.dart';
+import 'package:tcee_app/features/cantar/reloj_compartido.dart';
 import 'package:tcee_app/widgets/comunes.dart';
 import 'package:tcee_app/features/temario/tema_page.dart';
 import 'package:tcee_app/theme/app_theme.dart';
@@ -158,6 +159,8 @@ void main() {
     overrides.addAll([
       preguntasProvider.overrideWith((ref) => BancoPreguntas.fromJson(_json('../oposicion/temario/primer-ejercicio/test/preguntas.json'))),
       authStateProvider.overrideWith((ref) => Stream<User?>.value(yo)),
+      // El vigilante de relojes compartidos lee Firestore al arrancar (1.20.x).
+      firestoreRelojProvider.overrideWithValue(FakeFirebaseFirestore()),
     ]);
     await tester.pumpWidget(ProviderScope(overrides: overrides, child: const TceeApp()));
     await tester.pumpAndSettle();
@@ -230,6 +233,7 @@ void main() {
       // El test de DCE es el de TCEE, voluntario.
       preguntasProvider.overrideWith((ref) => BancoPreguntas.fromJson(_json('../oposicion/temario/primer-ejercicio/test/preguntas.json'))),
       authStateProvider.overrideWith((ref) => Stream<User?>.value(yo)),
+      firestoreRelojProvider.overrideWithValue(FakeFirebaseFirestore()),
       redRepoProvider.overrideWithValue(RedRepo(firestore: FakeFirebaseFirestore(), auth: MockFirebaseAuth(signedIn: true, mockUser: yo), oposicion: Oposiciones.dce)),
       verificadosProvider.overrideWith((ref) async => const [
             PreparadorVerificado(uid: 'tomas', nombre: 'Tomás Herrero', ejercicios: [3], avaladoPor: 'yo'),
@@ -273,7 +277,7 @@ void main() {
     // ------------------------------------------------------------- Estudiar
     Future<void> estudiar(String nombre) async {
       await pestana('Estudiar');
-      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)));
+      await tocar(find.descendant(of: find.byType(BotonesPestanas), matching: find.textContaining(nombre, findRichText: true)));
     }
 
     await estudiar('Temas');
@@ -293,7 +297,7 @@ void main() {
 
     // --------------------------------------------------------------- Cantes
     await pestana('Cantes');
-    await tocar(find.descendant(of: find.byType(TabBar), matching: find.text('Cantar')));
+    await tocar(find.descendant(of: find.byType(BotonesPestanas), matching: find.textContaining('Cantar', findRichText: true)));
     await tocar(find.text('Sacar 2 bolas de cada parte'));
     // Sin organización por bloques, cada tema sale como «3.A.9 · título».
     await tocar(find.textContaining(RegExp(r'^3\.A\.\d+ ·')));

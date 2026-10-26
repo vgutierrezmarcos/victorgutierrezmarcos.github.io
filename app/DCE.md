@@ -115,7 +115,8 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] **URGENTE (26 oct. noche):** la 1.19.2 de producción no inicia Firebase en el móvil de Víctor (Android 15/16; también tras reinstalar): nadie puede iniciar sesión. Ver el registro de la prueba cerrada (26 oct., noche). Pasos: compilar la 1.20.3 (muestra el error exacto en Más → Cuenta) con las otras sesiones de Claude cerradas (`~/.local/share/tcee-herramientas/compilar-aab.sh ~/.local/share/tcee-herramientas/compilacion/app`), subirla a la prueba cerrada, leer el detalle, corregir y promocionar.
 - [ ] Subir la 1.20.3 (61) a la prueba cerrada y, tras uno o dos días, promocionarla a producción; entonces, su novedad desde `app/play-store/novedades-pendientes.md` y `versionActual: "1.20.3"`. Con ella, quien tenga el APK ve «La app ya está en Google Play → Ir a Google Play» (y mientras, con la 1.18.1 del APK, el aviso de la 1.19.2 ya les lleva a la ficha de Play).
 - [ ] Víctor, en GA4 (propiedad de la app → Administrar → Definiciones personalizadas → Dimensiones personalizadas → Crear, ámbito Usuario, propiedad `instalacion`): registrar la propiedad `instalacion` (play/apk/web, desde la 1.20.3) para que `scripts/estadisticas-app.py` y el informe mensual la saquen.
-- [ ] Víctor: el post de LinkedIn de la salida en Play (sin cifras: «varios preparadores y opositores»).
+- [ ] Víctor: el post de LinkedIn de la salida en Play (sin cifras: «varios preparadores y opositores»), cuando esté resuelto lo de Firebase. — **26 oct.: la web de Manuel ya enlaza la ficha de Play y las etiquetas de la ficha están puestas.**
+- [ ] 1.20.4 (62): corrección de Firebase (cuando se sepa el detalle) + petición de reseña (`core/resenas.dart`); regenerar la versión web (`python3 scripts/publicar-app-web.py`) y compilar el AAB.
 
 **Versión 1.15.0 (24): mejoras de los testers (8 oct.)**
 - [x] Víctor: reglas nuevas (`firestore.rules`, 180 casos) publicadas (8 oct.).

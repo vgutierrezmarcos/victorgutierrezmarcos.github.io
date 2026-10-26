@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/analitica.dart';
+import '../../core/resenas.dart';
 import '../../core/calendario.dart';
 import '../../core/cronograma_providers.dart';
 import '../../core/plataforma.dart';
@@ -55,6 +56,7 @@ class CantePage extends ConsumerWidget {
       final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas);
       if (res == null) return;
       Analitica.instancia.evento('cante_terminado', parametros: {'minutos': res.segundos ~/ 60, 'temas': (res.temaCantado == null ? 0 : 1) + res.otrosCantados.length});
+      if (res.valoracion > 0) Resenas.momento();
       await notifier.guardar(c.copyWith(estado: EstadoCante.hecho, resultado: res));
     }
 

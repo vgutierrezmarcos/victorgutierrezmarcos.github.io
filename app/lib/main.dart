@@ -19,6 +19,7 @@ import 'core/firebase_web.dart';
 import 'core/notificaciones.dart';
 import 'core/pantalla_error.dart';
 import 'core/providers.dart';
+import 'core/resenas.dart';
 import 'core/push_proceso.dart';
 import 'features/inicio/elegir_oposicion.dart';
 import 'theme/app_theme.dart';
@@ -67,6 +68,7 @@ Future<void> main() async {
 
   final http = await CacheHttp.crear();
   final cajaApp = await Hive.openBox(Cajas.app);
+  Resenas.iniciar(cajaApp);
   await Notificaciones.iniciar();
 
   runApp(RaizApp(http: http, firebaseDisponible: firebaseDisponible, elegida: cajaApp.get('oposicion') as String?));
