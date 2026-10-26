@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'analitica.dart';
 import 'instalacion.dart';
+import 'resenas.dart';
 import 'avisos_navegador.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -931,6 +932,7 @@ class MisPreparadoresNotifier extends Notifier<List<VinculoPreparador>> {
       await repo.enlazarConCodigo(codigo);
       state = repo.misPreparadores();
       Analitica.instancia.evento('preparador_conectado');
+      Resenas.momento();
       return null;
     } on ErrorEnlace catch (e) {
       return e.mensaje;

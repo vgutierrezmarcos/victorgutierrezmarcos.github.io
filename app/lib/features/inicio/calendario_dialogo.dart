@@ -14,7 +14,9 @@ import '../preparador/calendario_google_tarjeta.dart';
 
 /// Marca, por dispositivo, de que ya se ha preguntado por Google Calendar
 /// (el permiso de Google es de cada dispositivo, así que no va en los ajustes).
-const _clavePreguntado = 'cal_preguntado';
+/// Marca de «ya se preguntó en este dispositivo» (la demo de capturas la pone a true).
+const claveCalendarioPreguntado = 'cal_preguntado';
+const _clavePreguntado = claveCalendarioPreguntado;
 
 Box? get _caja => Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app) : null;
 

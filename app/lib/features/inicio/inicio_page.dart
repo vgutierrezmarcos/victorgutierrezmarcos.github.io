@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 
 import '../../core/actualizaciones.dart';
 import '../../core/instalacion.dart';
+import '../../core/resenas.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import 'para_empezar.dart';
@@ -138,6 +139,11 @@ class InicioPage extends ConsumerWidget {
                   accion: TextButton(onPressed: () => actualizar(context, config?.urlPlayStore ?? config?.urlApk), child: Text(t.boton)),
                 );
               }),
+            if (!kIsWeb && config?.urlPlayStore != null)
+              ValueListenableBuilder<bool>(
+                valueListenable: Resenas.pendiente,
+                builder: (context, pendiente, _) => !pendiente ? const SizedBox.shrink() : _TarjetaResena(opositor: opositor, urlPlay: config!.urlPlayStore!, email: config.email),
+              ),
             if (config != null && config.avisos.isNotEmpty)
               for (final a in config.avisos)
                 Aviso(tipo: TipoAviso.aviso, icono: Icons.campaign_outlined, titulo: a),
@@ -222,6 +228,45 @@ class InicioPage extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Una sola vez, tras tres momentos buenos (ver [Resenas]): valorar en Google
+/// Play o escribir una sugerencia por correo. Las dos salidas, y «Ahora no»,
+/// cierran la tarjeta para siempre.
+class _TarjetaResena extends StatelessWidget {
+  const _TarjetaResena({required this.opositor, required this.urlPlay, required this.email});
+  final bool opositor;
+  final String urlPlay;
+  final String email;
+
+  @override
+  Widget build(BuildContext context) {
+    final asunto = Uri.encodeComponent(opositor ? 'Sugerencia para la app (opositor)' : 'Sugerencia para la app (preparador)');
+    return Aviso(
+      icono: Icons.star_outline,
+      titulo: '¿Nos ayudas a mejorar la app?',
+      texto: opositor
+          ? 'Si te está sirviendo, una valoración en Google Play ayuda a que la encuentren otros opositores. Y si algo falla o se te ocurre una mejora, escríbenos: lo leemos todo y lo arreglamos en la siguiente versión.'
+          : 'Si te sirve para llevar a tus alumnos, una valoración en Google Play ayuda a que la encuentren otros preparadores y opositores. Y si algo falla o echas algo en falta, escríbenos: lo leemos todo y lo arreglamos en la siguiente versión.',
+      accion: Wrap(spacing: 4, children: [
+        TextButton(
+          onPressed: () {
+            Resenas.resuelta();
+            abrirEnPlay(context, urlPlay);
+          },
+          child: const Text('Valorar en Google Play'),
+        ),
+        TextButton(
+          onPressed: () {
+            Resenas.resuelta();
+            abrirUrl(context, 'mailto:$email?subject=$asunto');
+          },
+          child: const Text('Enviar una sugerencia'),
+        ),
+        TextButton(onPressed: Resenas.resuelta, child: const Text('Ahora no')),
+      ]),
     );
   }
 }

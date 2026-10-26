@@ -425,8 +425,9 @@ void main() {
     await tester.pumpAndSettle();
     // Dos temas de los primeros de la lista de la hoja (el código va solo en
     // su casilla; en la ficha, detrás, va con el título, así que no se confunden).
-    await tocar(find.textContaining(RegExp(r'^3\.A\.2$')));
-    await tocar(find.textContaining(RegExp(r'^3\.A\.3$')));
+    // Desde la 1.19.2 la hoja ofrece los temas de esa clase, no todo el temario: los dos primeros.
+    await tocar(find.textContaining(RegExp(r'^3\.[AB]\.\d+$')).at(0));
+    await tocar(find.textContaining(RegExp(r'^3\.[AB]\.\d+$')).at(1));
     await captura('tema-programar');
     // El botón queda por debajo del borde de la hoja: se sube la hoja.
     await tester.drag(find.textContaining('Cuándo le llegan'), const Offset(0, -700));

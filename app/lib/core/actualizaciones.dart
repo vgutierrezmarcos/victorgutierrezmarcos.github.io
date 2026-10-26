@@ -53,14 +53,20 @@ Future<void> actualizar(BuildContext context, String? url) async {
         return;
       }
     } catch (_) {}
-    if (esFichaDePlay(url)) {
-      try {
-        final id = Uri.parse(url!).queryParameters['id'] ?? (await PackageInfo.fromPlatform()).packageName;
-        if (await launchUrl(Uri.parse('market://details?id=$id'), mode: LaunchMode.externalApplication)) return;
-      } catch (_) {}
-    }
   }
-  if (context.mounted) abrirUrl(context, url);
+  if (context.mounted) await abrirEnPlay(context, url);
+}
+
+/// Abre la ficha de la app en la propia app de Google Play (`market://`) y,
+/// si no se puede (sin Play, en el navegador), [url] tal cual.
+Future<void> abrirEnPlay(BuildContext context, String? url) async {
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android && esFichaDePlay(url)) {
+    try {
+      final id = Uri.parse(url!).queryParameters['id'] ?? (await PackageInfo.fromPlatform()).packageName;
+      if (await launchUrl(Uri.parse('market://details?id=$id'), mode: LaunchMode.externalApplication)) return;
+    } catch (_) {}
+  }
+  if (context.mounted) await abrirUrl(context, url);
 }
 
 /// Si [url] es la ficha de la app en Google Play.

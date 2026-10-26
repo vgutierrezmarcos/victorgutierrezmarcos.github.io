@@ -24,6 +24,7 @@ import 'package:pdfx/pdfx.dart';
 // La interfaz de la plataforma de pdfx no se exporta: hace falta para el PDF de demostración.
 // ignore: implementation_imports
 import 'package:pdfx/src/renderer/interfaces/platform.dart';
+import 'package:tcee_app/data/models/temas_clase.dart';
 import 'package:tcee_app/features/cantar/reloj_compartido.dart';
 import 'package:tcee_app/features/temario/anotaciones.dart';
 import 'package:tcee_app/data/models/revisado.dart';
@@ -32,6 +33,7 @@ import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/constants.dart';
 import 'package:tcee_app/features/guia/guia.dart';
 import 'package:tcee_app/features/inicio/para_empezar.dart';
+import 'package:tcee_app/features/inicio/calendario_dialogo.dart';
 import 'package:tcee_app/features/inicio/permisos_sheet.dart';
 import 'package:tcee_app/features/organizacion/organizacion_hub_page.dart';
 import 'package:tcee_app/core/providers.dart';
@@ -81,6 +83,8 @@ Future<void> cajaAppSinPrimerosPasos() async {
     clavePermisosPedidos: true,
     claveBateriaPedida: true,
     claveMasHerramientas: true,
+    // Sin la pregunta de Google Calendar de la 1.19.0 (salía tras el primer toque y tapaba la app).
+    claveCalendarioPreguntado: true,
     for (final o in Oposiciones.todas)
       for (final p in Papel.values) ...{claveGuiaVista(o.id, p): true, claveParaEmpezarOculta(o.id, p): true},
   });
@@ -363,6 +367,8 @@ class Demo {
             estudiados: preparador.alumno(id)!.temas.toSet(),
             enRepaso: const {'3.A.5', '3.B.3'},
             cantes: demo.cantesDeAlumno,
+            // Los temas que lleva a la clase s4 (desde la 1.19.2, la hoja de «Mandarle los temas» ofrece los de esa clase).
+            temasClases: {'s4': TemasClase(temas: const ['3.A.2', '3.A.3', '3.A.4', '3.B.1'], fecha: demo.dia(0))},
           )),
       revisadosProvider.overrideWith((ref) async => demo.revisados),
       // Las anotaciones de los temas van a la base falsa, como la pizarra.
