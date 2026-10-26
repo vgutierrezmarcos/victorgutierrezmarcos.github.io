@@ -9,7 +9,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | Pista | Prueba cerrada |
 | Primera versión en la pista | 1.14.1 (22), aprobada el 7-8 oct. 2026; después 1.14.2 (23) y 1.15.0 (24) el 8 oct. y 1.15.1 (25) el 9 oct. |
 | Día en que se llegó a 12 testers apuntados | 8 oct. 2026, 11:30 |
-| Día en que se pueden pedir producción | 22 oct. 2026 (se solicitará el 21 o el 22; comprobar en el Panel de Play Console) |
+| Día en que se pueden pedir producción | 22 oct. 2026: pedido ese día y **aprobado el 26 oct. 2026**; la 1.19.2 (57) está en producción |
 | Testers apuntados | 12 el 8 oct.; 14-15 el 9 oct. (seguir sumando) |
 | Cómo se reclutaron | Opositores y preparadores de TCEE y DCE del entorno de los dos autores (Víctor Gutiérrez Marcos, TCEE; Manuel Cabado García, DCE). |
 | Cómo se recogen los comentarios | En persona y por WhatsApp a los autores; se anotan aquí con fecha. |
@@ -52,6 +52,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | 21 oct. 2026 | 1.17.11 (48) | Botón de sincronizar en la cabecera de las pestañas principales y deslizar hacia abajo sincroniza en todas las listas (Víctor); en las notas del preparador, chip «Dejar escribir a X»: con permiso, el alumno escribe a la vez, como en la pizarra compartida (reglas nuevas, publicadas el mismo día). Solo web. |
 | 21 oct. 2026 | 1.17.10 (47) | Tras probarlo Víctor con Manuel: las notas del preparador le salen al alumno en cuanto se comparten (ya no espera a que acabe la clase) y en una clase del preparador el alumno ve la misma bolsa de «temas que lleva» que el preparador (estudiados más cronograma, sin los que pide no cantar; antes solo los estudiados: a Víctor le salían 6 y a Manuel 3). Solo web. |
 | 21 oct. 2026 | 1.17.9 (46) | Las tres peticiones de Manuel sobre la pizarra: texto a máquina (cuadros de texto con el teclado), «Notas del preparador» (segunda pizarra de cada clase, que el alumno ve cuando el preparador la comparte y la clase ha terminado; **requiere publicar las reglas nuevas de Firestore**) y «Guardar como PDF» de cualquier pizarra; y en la web, el visor del tema ya no amplía solo al bajar con la rueda (Víctor). Solo web; sin compilar para Android. |
+| 23 oct. 2026 | 1.19.2 (57) | Subida a la prueba cerrada y a **Producción** (100 %, España) el 23 oct.; Google aprobó el acceso a producción (pedido el 22 oct.) y la **app está publicada en Google Play desde el 26 oct. 2026**: `https://play.google.com/store/apps/details?id=es.victorgutierrezmarcos.tcee_app`. Ese día llegó también la clasificación IARC (cuestionario del 26 oct.). Desde ahora la prueba cerrada hace de canal beta: cada versión va primero a ella y, tras uno o dos días sin problemas, se promociona. |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 

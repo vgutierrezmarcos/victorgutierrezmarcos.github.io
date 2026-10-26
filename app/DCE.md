@@ -95,22 +95,25 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 5. Comprobar en vivo: portada y /oposicion con el aviso, /app/, /app/instalar.html, /app/abrir/ en 1.14.2, `proceso.json`, la descarga del APK.
 6. Si algo sale mal: `git revert -m 1 <fusión>` y push; volver a subir el APK anterior.
 
-**Cuando Google Play esté en producción:** `urlPlayStore` en `oposicion/app-config.json`; unas semanas después, `urlApk: null`.
+**Google Play en producción desde el 26 oct. 2026** (1.19.2, 57): `urlPlayStore` puesto en `oposicion/app-config.json`; unas semanas después, `urlApk: null`.
 
 ## Próximos días
 
 **SEO para DCE (20 oct. 2026)**: hasta hoy Google no mostraba la web para ninguna búsqueda con «dce» o «diplomado» (Search Console, 16 meses). `/app/` lleva ahora h2, la sección «Si preparas la oposición a Diplomado Comercial del Estado», JSON-LD con las dos oposiciones y enlaces desde portada, `/oposicion/`, la guía y los pies.
 - [x] Víctor: mandar a Manuel el correo pidiendo los enlaces (resumen arriba, en «Enlazar la app desde su web»). — **20 oct.: enviado; esperar su respuesta y comprobar los enlaces en su web.**
 - [ ] Víctor: Search Console → Inspección de URL → Solicitar indexación de `/app/`, `/`, `/oposicion/` y `/oposicion/por-que-tcee.html`. — **20 oct.: publicado a las 23:40 e `indexnow.yml` lanzado a mano (sitemap entero); `/app/` estaba indexada con el último rastreo del 15 oct., falta pedir el nuevo.**
-- [ ] 22 oct., al poner `urlPlayStore`: en el JSON-LD de `app/index.html`, `downloadUrl` → URL de Play y `"sameAs": ["<URL de Play>"]`; `softwareVersion` = `versionActual`.
+- [x] Al poner `urlPlayStore`: en el JSON-LD de `app/index.html`, `downloadUrl` → URL de Play y `"sameAs": ["<URL de Play>"]`; `softwareVersion` = `versionActual`. — **26 oct.: hecho (1.19.2).**
 - [ ] A las 2 y 4 semanas: `python3 scripts/estadisticas-web.py --dias 28` (ya saca «Búsquedas con «dce» o «diplomado»»).
 - [ ] Decidir si se hace una guía informativa de DCE (`oposicion/…`), hermana de `por-que-tcee.html`: es el tipo de página que Google premia para «Diplomado Comercial del Estado»; Víctor la descartó el 20 oct. (sin páginas nuevas), queda apuntada.
 
 **Prueba cerrada de Google Play**
 - [ ] 14 días seguidos con 12 o más testers: desde el 8 oct. a las 11:30 hasta el **22 oct.** Que no bajen de 12. — **13 oct.: en marcha, solo queda esperar.**
 - [x] Ir anotando comentarios y cambios en `app/play-store/registro-prueba-cerrada.md` (rellenar fechas y número de testers). — **13 oct.: en curso.**
-- [ ] Cumplidos los 14 días: Play Console → Panel → **Solicitar acceso a producción**, con el borrador del registro.
-- [ ] Aprobado el acceso: subir la última versión a **Producción** y, publicada, `urlPlayStore` en `oposicion/app-config.json` (la web y la app pasan a enlazar a Play). Unas semanas después, `urlApk: null`.
+- [x] Cumplidos los 14 días: Play Console → Panel → **Solicitar acceso a producción**, con el borrador del registro. — **22 oct.: pedido; aprobado el 26 oct.**
+- [x] Aprobado el acceso: subir la última versión a **Producción** y, publicada, `urlPlayStore` en `oposicion/app-config.json` (la web y la app pasan a enlazar a Play). — **26 oct.: 1.19.2 (57) en producción al 100 %; `urlPlayStore` y `versionActual` puestos.**
+- [ ] Unas semanas después (mediados de noviembre): `urlApk: null` en `oposicion/app-config.json` y quitar el APK de `app-latest`.
+- [ ] Subir la 1.20.2 (60) a la prueba cerrada y, tras uno o dos días, promocionarla a producción; entonces, su novedad desde `app/play-store/novedades-pendientes.md` y `versionActual: "1.20.2"`.
+- [ ] Víctor: el post de LinkedIn de la salida en Play (sin cifras: «varios preparadores y opositores»).
 
 **Versión 1.15.0 (24): mejoras de los testers (8 oct.)**
 - [x] Víctor: reglas nuevas (`firestore.rules`, 180 casos) publicadas (8 oct.).
