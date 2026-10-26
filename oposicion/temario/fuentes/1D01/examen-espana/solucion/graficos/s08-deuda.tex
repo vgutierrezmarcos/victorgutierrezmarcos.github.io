@@ -1,0 +1,42 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{tikz-tcee}
+\usepackage{pgfplotstable}
+\input{colores-solucion}
+\begin{document}
+% Solución, gráfico s08. Variación de la deuda pública (pp del PIB, puntos) y
+% sus 3 componentes (barras): déficit primario, efecto bola de nieve
+% (i - g)/(1 + g)·d(t-1) y ajuste déficit-deuda (residuo), 2021-2027
+% (2026-2027: previsión de la Comisión). Datos: ../datos/s08-deuda.csv (cuadro 9).
+% Capas: sombra de la previsión → barras → cero → puntos → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/s08-deuda.csv}\deuda
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicsol, width=11.5cm, height=6.4cm,
+      ybar stacked, stack negative=separate, bar width=0.6cm,
+      xmin=2020.4, xmax=2027.6, xtick={2021,...,2027},
+      ymin=-10, ymax=6, ytick={-10,-8,...,6},
+      ylabel={puntos del PIB},
+      legend columns=2, area legend, dicapas]
+    \capa{1}{\dicsombra[fill=tceegris!12]{2025.5}{-10}{2027.6}{6}
+      \dicrotulo[font=\scriptsize\itshape, anchor=north]{(2026.5,5.8)}{Previsión}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=dicfiscal] table[x=anio, y=primario] {\deuda};
+      \addlegendentry{Déficit primario (+) o superávit ($-$)}}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=dicbola] table[x=anio, y=bola] {\deuda};
+      \addlegendentry{Bola de nieve: $\frac{i-\gamma^N}{1+\gamma^N}\,d_{t-1}$}}
+    \capa{4}{\addplot[on layer=dicbarras, dicbarratrama=dicresiduo] table[x=anio, y=add] {\deuda};
+      \addlegendentry{Ajuste déficit-deuda (residuo)}}
+    \capa{5}{\dicraya{(2020.4,0) (2027.6,0)}}
+    \capa{6}{\addplot[on layer=dicpuntos, stack plots=false, only marks, mark=diamond*, mark size=3.3pt,
+        mark options={fill=dicsaldo, draw=white, line width=0.4pt}, leyendamarca] table[x=anio, y=var_deuda] {\deuda};
+      \addlegendentry{Variación de la deuda ($\Delta d$)}}
+    \capa{7}{
+      \dicrotulo[font=\scriptsize, anchor=east, xshift=-6pt, fill=white, inner sep=1pt]{(2021,-3.6)}{$-$3,6}
+      \dicrotulo[font=\scriptsize, anchor=east, xshift=-6pt, fill=white, inner sep=1pt]{(2022,-6.4)}{$-$6,4}
+      \dicrotulo[font=\scriptsize, anchor=east, xshift=-6pt, fill=white, inner sep=1pt]{(2023,-4.0)}{$-$4,0}
+      \dicrotulo[font=\scriptsize, anchor=east, xshift=-6pt, fill=white, inner sep=1pt]{(2024,-3.9)}{$-$3,9}
+      \dicrotulo[font=\scriptsize, anchor=east, xshift=-6pt, fill=white, inner sep=1pt]{(2025,-0.9)}{$-$0,9}
+      \dicrotulo[font=\scriptsize, anchor=east, xshift=-6pt, fill=white, inner sep=1pt]{(2026,-0.9)}{$-$0,9}
+      \dicrotulo[font=\scriptsize, anchor=east, xshift=-6pt, fill=white, inner sep=1pt]{(2027,-0.7)}{$-$0,7}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

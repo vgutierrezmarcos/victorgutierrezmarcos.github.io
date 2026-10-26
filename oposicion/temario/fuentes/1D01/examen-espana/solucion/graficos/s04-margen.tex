@@ -1,0 +1,38 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{tikz-tcee}
+\usepackage{pgfplotstable}
+\input{colores-solucion}
+\begin{document}
+% Solución, gráfico s04. CLU nominales y deflactor del PIB (variación anual, %)
+% y margen aproximado, γ(1+μ) ≈ γP - γCLU (pp, rombos), 2019-2025.
+% Datos: ../datos/s04-margen.csv (cuadros 3 y 5). Colores: CLU en el teja del
+% paro/costes laborales de la guía, deflactor en el morado del PIB, margen en negro.
+% Capas: barras → cero → puntos del margen → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/s04-margen.csv}\marg
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicsol, width=11cm, height=6.2cm,
+      ybar, bar width=0.42cm,
+      xmin=2018.4, xmax=2025.6, xtick={2019,...,2025},
+      ymin=-8, ymax=9, ytick={-8,-6,...,8},
+      ylabel={\% y puntos porcentuales},
+      legend columns=3, area legend, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicparo] table[x=anio, y=clu] {\marg};
+      \addlegendentry{CLU nominales}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=dicpib] table[x=anio, y=deflactor] {\marg};
+      \addlegendentry{Deflactor del PIB}}
+    \capa{3}{\dicraya{(2018.4,0) (2025.6,0)}}
+    \capa{4}{\addplot[on layer=dicpuntos, only marks, mark=diamond*, mark size=3.2pt, bar shift=0pt,
+        mark options={fill=dicsaldo, draw=white, line width=0.4pt}, leyendamarca] table[x=anio, y=margen] {\marg};
+      \addlegendentry{Margen ($\gamma_P-\gamma_{\mathrm{CLU}}$)}}
+    \capa{5}{
+      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt]{(2019,-2.7)}{$-$2,7}
+      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt]{(2020,-7.1)}{$-$7,1}
+      \dicrotulo[font=\scriptsize, anchor=south, yshift=3pt, fill=white, inner sep=1pt]{(2021,1.8)}{+1,8}
+      \dicrotulo[font=\scriptsize, anchor=south, yshift=3pt, fill=white, inner sep=1pt]{(2022,2.6)}{+2,6}
+      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt, fill=white, inner sep=1pt]{(2023,0.3)}{+0,3}
+      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt, fill=white, inner sep=1pt]{(2024,0.1)}{+0,1}
+      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt]{(2025,-1.4)}{$-$1,4}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

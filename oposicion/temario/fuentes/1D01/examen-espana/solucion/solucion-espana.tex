@@ -1,0 +1,61 @@
+% ==========================================================================
+% solucion-espana.tex — Solución de máximos del examen de ejemplo de España
+% Guía del dictamen (1D01), entregable 5. Autor: Víctor Gutiérrez Marcos.
+% Texto de examen (raya morada a la izquierda, entorno «examen») y cuadros
+% complementarios (fondo gris y raya dorada, entorno «complemento»), una
+% sección por pregunta (secciones/p01.tex … p10.tex).
+% Cifras: cuadernillo del examen (../datos, consulta 26/10/2026); cálculos en
+% calculos.py → calculos.txt y datos/; gráficos propios en graficos/s*.tex;
+% infografías de la guía en ../../graficos/. Compilación: README.md.
+% ==========================================================================
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{../../1D01.bib}
+\tcetema[Solución del examen de ejemplo: España]{Primer ejercicio}{Solución de máximos del examen de ejemplo del dictamen: España}
+\tcefecha{26/10/2026}
+\makeatletter
+\renewcommand{\tcee@nombrepags}{Solución}
+\makeatother
+\graphicspath{{graficos/}{../../graficos/}}
+
+% --- Cajas propias de la solución ------------------------------------------------
+% Enunciado de cada pregunta, con su peso, su tiempo y su extensión
+\newtcolorbox{enunciado}{enhanced,breakable,colback=tceesalvia,colframe=tceesalviaoscuro,
+  boxrule=0.5pt,arc=2pt,fontupper=\small,left=8pt,right=8pt,top=4pt,bottom=4pt}
+% Texto de examen: lo que escribiría el opositor (raya morada a la izquierda)
+\newtcolorbox{examen}{enhanced,breakable,frame hidden,colback=white,interior hidden,
+  borderline west={1.6pt}{0pt}{tceemorado},left=10pt,right=0pt,top=1pt,bottom=1pt,
+  boxsep=0pt,before skip=6pt,after skip=8pt,
+  before upper={\clubpenalty=500 \widowpenalty=500 \predisplaypenalty=200 \setlist{beginpenalty=300}}}
+% Cuadro complementario: por qué, cálculos, gráficos, errores y alternativas
+\newtcolorbox{complemento}[1]{enhanced,breakable,colback=tceegrisclaro!45,colframe=tceedorado,
+  boxrule=0pt,leftrule=3pt,arc=1pt,fontupper=\footnotesize,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  detach title,before upper={\clubpenalty=500 \widowpenalty=500 \setlist{beginpenalty=300}{\small\bfseries\color{tceedorado!75!black}Cuadro complementario #1}\par\smallskip},
+  before skip=8pt,after skip=10pt}
+% (En «examen» y «complemento», before upper relaja las penalizaciones de líneas
+% viudas y huérfanas de tcee.sty, 10000: si no, la caja no encuentra dónde
+% partirse y deja huecos.)
+% Rótulo de una parte del texto de examen («a) …»)
+% (sin \Needspace: dentro de una tcolorbox partible fuerza saltos y deja páginas casi vacías)
+\newcommand{\rotulo}[1]{\par\addvspace{4pt}{\color{tceemorado}\bfseries #1}\par\nopagebreak\smallskip}
+% Etiqueta dentro de un cuadro complementario
+\newcommand{\que}[1]{\par\smallskip{\bfseries\color{tceemoradooscuro}#1}\enspace}
+\setlength{\emergencystretch}{1.5em}
+
+\begin{document}
+\tceetitulo
+
+\input{secciones/p00-introduccion}
+\input{secciones/p01}
+\input{secciones/p02}
+\input{secciones/p03}
+\input{secciones/p04}
+\input{secciones/p05}
+\input{secciones/p06}
+\input{secciones/p07}
+\input{secciones/p08}
+\input{secciones/p09}
+\input{secciones/p10}
+
+\bibliografia
+\end{document}

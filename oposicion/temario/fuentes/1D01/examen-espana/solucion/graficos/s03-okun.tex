@@ -1,0 +1,48 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{tikz-tcee}
+\usepackage{pgfplotstable}
+\input{colores-solucion}
+\begin{document}
+% Solución, gráfico s03. Ley de Okun en España, 2008-2025: crecimiento del PIB
+% por encima del potencial (pp, eje horizontal) y variación de la tasa de paro
+% (pp, eje vertical). Recta de referencia: ΔU = -0,5 (γY - γYp) (Okun, EE. UU.).
+% Datos: ../datos/s03-okun.csv (cuadros 1 y 3). Capas: ejes y cero → recta →
+% puntos por fase → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/s03-okun.csv}\okun
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicsol, width=11cm, height=7cm,
+      xmin=-12, xmax=7, xtick={-12,-10,...,6},
+      ymin=-3, ymax=7, ytick={-3,-2,...,7},
+      xlabel={Crecimiento del PIB menos crecimiento del potencial (pp)},
+      ylabel={Variación de la tasa de paro (pp)},
+      legend columns=2, legend style={at={(0.5,-0.24)}}, dicapas]
+    \capa{1}{\dicraya{(-12,0) (7,0)} \dicraya{(0,-3) (0,7)}}
+    \capa{2}{\addplot[dicsuelto, dicumbral, thick] coordinates {(-12,6) (6,-3)};
+      \dicrotulo[font=\scriptsize\itshape, anchor=south west, text=dicreferencia]{(-11.8,6)}{Okun: $\Delta U=-0{,}5\,(\gamma_Y-\gamma_{Y^p})$}}
+    \capa{3}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=2.2pt, mark options={fill=dicotro, draw=dicotro},
+        restrict expr to domain={\thisrow{anio}}{2008:2013}] table[x=crec_sobre_pot, y=var_paro] {\okun};
+      \addlegendentry{2008-2013 (doble recesión)}}
+    \capa{4}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=2.2pt, mark options={fill=dicempleo, draw=dicempleo},
+        restrict expr to domain={\thisrow{anio}}{2014:2019}] table[x=crec_sobre_pot, y=var_paro] {\okun};
+      \addlegendentry{2014-2019 (recuperación)}}
+    \capa{5}{\addplot[on layer=dicpuntos, only marks, mark=square*, mark size=2pt, mark options={fill=white, draw=dicotro, line width=0.8pt},
+        restrict expr to domain={\thisrow{anio}}{2020:2021}] table[x=crec_sobre_pot, y=var_paro] {\okun};
+      \addlegendentry{2020-2021 (pandemia, ERTE)}}
+    \capa{6}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=2.2pt, mark options={fill=white, draw=dicparo, line width=1pt},
+        restrict expr to domain={\thisrow{anio}}{2022:2025}] table[x=crec_sobre_pot, y=var_paro] {\okun};
+      \addlegendentry{2022-2025 (expansión con inmigración)}}
+    \capa{7}{
+      \dicrotulo[font=\tiny, anchor=west, inner sep=2pt]{(-5.0,6.6)}{2009}
+      \dicrotulo[font=\tiny, anchor=east, inner sep=2pt]{(-2.6,3.4)}{2012}
+      \dicrotulo[font=\tiny, anchor=north, inner sep=2pt]{(-11.2,1.4)}{2020}
+      \dicrotulo[font=\tiny, anchor=south, inner sep=2pt]{(5.7,-0.6)}{2021}
+      \dicrotulo[font=\tiny, anchor=west, inner sep=2pt]{(4.0,-2.4)}{2015}
+      \dicrotulo[font=\tiny, anchor=north, inner sep=2pt]{(1.0,-1.2)}{2019}
+      \dicrotulo[font=\tiny, anchor=north, inner sep=2pt]{(4.5,-1.9)}{2022}
+      \dicrotulo[font=\tiny, anchor=east, inner sep=2pt]{(-0.1,-0.9)}{2025}
+      \dicrotulo[font=\tiny, anchor=south, inner sep=2pt]{(0.0,-0.8)}{2023}
+      \dicrotulo[font=\tiny, anchor=south west, inner sep=2pt]{(1.2,-0.8)}{2024}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

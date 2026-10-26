@@ -1,0 +1,37 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{tikz-tcee}
+\usepackage{pgfplotstable}
+\input{colores-solucion}
+\begin{document}
+% Solución, gráfico s07. Facilidad de depósito del BCE y tipo de interés real
+% ex post (facilidad de depósito menos la inflación del IPCA interanual) con la
+% inflación de España y la de la zona del euro, enero de 2021-septiembre de 2026.
+% Datos: ../datos/s07-tipo-real.csv (gráficos 6 y 12). Colores de la guía:
+% facilidad de depósito en gris (referencia nominal; el azul marino es la zona
+% del euro), España en rojo, zona del euro
+% en azul. Capas: cero → líneas → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/s07-tipo-real.csv}\real
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicsol, width=13cm, height=6.4cm,
+      xmin=2021, xmax=2026.85, xtick={2021,...,2026},
+      minor x tick num=1,
+      ymin=-11, ymax=5, ytick={-10,-8,...,4},
+      ylabel={\% y puntos porcentuales},
+      legend columns=3, dicapas]
+    \capa{1}{\dicraya{(2021,0) (2026.85,0)}}
+    \capa{2}{\addplot[const plot, very thick, dicreferencia, leyendalinea, restrict x to domain=2021:2027] table[x=x, y=dfr] {\real};
+      \addlegendentry{Facilidad de depósito (nominal)}}
+    \capa{3}{\addplot[sharp plot, diclinea=dicze, leyendalinea, restrict x to domain=2021:2027] table[x=x, y=r_ze] {\real};
+      \addlegendentry{Tipo real con la inflación de la zona del euro}}
+    \capa{4}{\addplot[sharp plot, diclinea=dicespana, leyendalinea, restrict x to domain=2021:2027] table[x=x, y=r_es] {\real};
+      \addlegendentry{Tipo real con la inflación de España}}
+    \capa{5}{
+      \dicrotulo[font=\scriptsize, anchor=west, text=dicespana]{(2026.75,-2.5)}{$-$2,5}
+      \dicrotulo[font=\scriptsize, anchor=west, text=dicze]{(2026.75,-1.3)}{$-$1,3}
+      \dicrotulo[font=\scriptsize, anchor=west, text=dicreferencia]{(2026.75,2.5)}{2,50}
+      \dicrotulo[font=\scriptsize\itshape, anchor=west, align=left]{(2021.05,-8.6)}{tipos reales muy\\negativos: la inflación\\va por delante}
+      \dicrotulo[font=\scriptsize\itshape, anchor=north, align=center]{(2024.4,-2.6)}{2023-2025: único tramo\\con tipo real positivo}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

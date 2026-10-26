@@ -1,0 +1,43 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{tikz-tcee}
+\usepackage{pgfplotstable}
+\input{colores-solucion}
+\begin{document}
+% Solución, gráfico s02. Descomposición del crecimiento del PIB por periodos
+% (tasas medias anuales logarítmicas, pp): población, peso de la población en
+% edad de trabajar, tasa de ocupación, horas por ocupado y PIB por hora; el
+% punto es el PIB. Datos: ../datos/s02-descomposicion.csv (cuadro 2 bis).
+% Paleta de la guía: trabajo en verdes azulados, productividad en dorado,
+% demografía en grises, PIB en morado. Capas: barras → cero → puntos → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/s02-descomposicion.csv}\desc
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicsol, width=11cm, height=6.4cm,
+      ybar stacked, stack negative=separate, bar width=1.3cm,
+      xmin=-0.6, xmax=2.6, xtick={0,1,2},
+      xticklabels={{2007-2013\\(crisis)},{2013-2019\\(recuperación)},{2019-2025\\(pandemia y después)}},
+      xticklabel style={align=center},
+      ymin=-4, ymax=4, ytick={-4,-3,...,4},
+      ylabel={puntos porcentuales al año},
+      legend columns=2, area legend, legend style={at={(0.5,-0.24)}}, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicotro] table[x=x, y=poblacion] {\desc};
+      \addlegendentry{Población}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=dicotromasclaro] table[x=x, y=pet] {\desc};
+      \addlegendentry{Peso de la población de 15-64 años}}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=dicempleo] table[x=x, y=ocupacion] {\desc};
+      \addlegendentry{Tasa de ocupación (15-64)}}
+    \capa{4}{\addplot[on layer=dicbarras, dicbarra=dichoras] table[x=x, y=horas] {\desc};
+      \addlegendentry{Horas por ocupado}}
+    \capa{5}{\addplot[on layer=dicbarras, dicbarra=dicproductividad] table[x=x, y=pibhora] {\desc};
+      \addlegendentry{PIB por hora (productividad)}}
+    \capa{6}{\dicraya{(-0.6,0) (2.6,0)}}
+    \capa{7}{\addplot[on layer=dicpuntos, stack plots=false, only marks, mark=*, mark size=2.6pt,
+        mark options={fill=white, draw=dicpib, line width=1.1pt}, leyendamarca] table[x=x, y=pib] {\desc};
+      \addlegendentry{PIB (tasa media anual, \%)}}
+    \capa{8}{
+      \dicrotulo[font=\scriptsize, anchor=west, xshift=4pt]{(0,-1.33)}{$-$1,33}
+      \dicrotulo[font=\scriptsize, anchor=west, xshift=4pt]{(1,2.59)}{\colorbox{white}{2,59}}
+      \dicrotulo[font=\scriptsize, anchor=west, xshift=4pt]{(2,1.59)}{1,59}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

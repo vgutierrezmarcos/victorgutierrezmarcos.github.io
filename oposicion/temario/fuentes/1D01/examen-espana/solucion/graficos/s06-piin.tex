@@ -1,0 +1,36 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{tikz-tcee}
+\usepackage{pgfplotstable}
+\input{colores-solucion}
+\begin{document}
+% Solución, gráfico s06. De la PIIN de 2024 a la de 2025 (% del PIB), en
+% cascada: PIIN(t) - PIIN(t-1) = CF + OV - g/(1+g)·PIIN(t-1). Datos:
+% ../datos/s06-piin.csv (cuadros 7 y 9). Colores: PIIN en el marrón del
+% cuadernillo; cuenta financiera en el azul de la balanza; crecimiento nominal
+% en el morado del PIB; otras variaciones (residuo) en gris con trama.
+% Capas: barras → cero → rótulos.
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicsol, width=10cm, height=6.2cm,
+      xmin=-0.6, xmax=4.6, xtick={0,...,4},
+      xticklabels={{PIIN\\2024},{Cuenta\\financiera},{Crecimiento\\nominal},{Otras\\variaciones},{PIIN\\2025}},
+      xticklabel style={align=center, font=\scriptsize},
+      ymin=-50, ymax=0, ytick={-50,-40,...,0},
+      ylabel={\% del PIB}, ymajorgrids, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicsuelto, dicbarra=dicpiin] coordinates {(-0.32,0) (0.32,0) (0.32,-40.0) (-0.32,-40.0)} --cycle;}
+    \capa{2}{\addplot[on layer=dicbarras, dicsuelto, dicbarra=dicbienes] coordinates {(0.68,-40.0) (1.32,-40.0) (1.32,-34.96) (0.68,-34.96)} --cycle;}
+    \capa{3}{\addplot[on layer=dicbarras, dicsuelto, dicbarra=dicpib] coordinates {(1.68,-34.96) (2.32,-34.96) (2.32,-32.80) (1.68,-32.80)} --cycle;}
+    \capa{4}{\addplot[on layer=dicbarras, dicsuelto, dicbarratrama=dicresiduo] coordinates {(2.68,-32.80) (3.32,-32.80) (3.32,-42.7) (2.68,-42.7)} --cycle;}
+    \capa{5}{\addplot[on layer=dicbarras, dicsuelto, dicbarra=dicpiin] coordinates {(3.68,0) (4.32,0) (4.32,-42.7) (3.68,-42.7)} --cycle;}
+    \capa{6}{\dicraya{(-0.6,0) (4.6,0)}
+      \dicraya[dicumbral]{(-0.6,-35) (4.6,-35)}
+      \dicrotulo[font=\scriptsize\itshape, anchor=west, text=dicreferencia, align=left]{(4.65,-35)}{umbral\\del PDM}}
+    \capa{7}{
+      \dicrotulo[font=\scriptsize, anchor=north]{(0,-40.0)}{$-$40,0}
+      \dicrotulo[font=\scriptsize, anchor=west]{(1.34,-37.5)}{+5,0}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2.34,-33.9)}{+2,2}
+      \dicrotulo[font=\scriptsize, anchor=west]{(3.34,-37.75)}{$-$9,9}
+      \dicrotulo[font=\scriptsize, anchor=north]{(4,-42.7)}{$-$42,7}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

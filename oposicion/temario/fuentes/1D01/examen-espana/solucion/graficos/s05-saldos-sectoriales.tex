@@ -1,0 +1,35 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{tikz-tcee}
+\usepackage{pgfplotstable}
+\input{colores-solucion}
+\begin{document}
+% Solución, gráfico s05. Capacidad (+) o necesidad (-) de financiación de la
+% nación (línea) = sector privado (barras, por diferencia) + AAPP (barras),
+% % del PIB, 2007-2025. Datos: ../datos/s05-saldos.csv (cuadros 7 y 9).
+% Capas: barras → cero → línea de la nación → puntos → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/s05-saldos.csv}\saldos
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicsol, width=14cm, height=6.4cm,
+      ybar stacked, stack negative=separate, bar width=0.4cm,
+      xmin=2006.4, xmax=2025.6, xtick={2007,...,2025},
+      xticklabel style={rotate=90, anchor=east, font=\scriptsize, /pgf/number format/1000 sep={}},
+      ymin=-14, ymax=14, ytick={-12,-8,...,12},
+      ylabel={\% del PIB},
+      legend columns=3, area legend, legend style={at={(0.5,-0.2)}}, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicprivado] table[x=anio, y=privado] {\saldos};
+      \addlegendentry{Sector privado (hogares, empresas e IF)}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=dicfiscal] table[x=anio, y=publico] {\saldos};
+      \addlegendentry{Administraciones públicas}}
+    \capa{3}{\dicraya{(2006.4,0) (2025.6,0)}}
+    \capa{4}{\addplot[stack plots=false, sharp plot, diclineahalo=dicsaldo, leyendalinea] table[x=anio, y=nacion] {\saldos};
+      \addlegendentry{Nación (cuenta corriente y de capital)}}
+    \capa{5}{\addplot[on layer=dicpuntos, forget plot, stack plots=false, dicpuntos=dicsaldo] table[x=anio, y=nacion] {\saldos};}
+    \capa{6}{
+      \dicrotulo[font=\scriptsize, anchor=west, fill=white, inner sep=1pt]{(2007.3,-11.6)}{privado $-$10,9}
+      \dicrotulo[font=\scriptsize, anchor=south, fill=white, inner sep=1pt]{(2012,12.4)}{privado +12,2}
+      \dicrotulo[font=\scriptsize, anchor=south, fill=white, inner sep=1pt]{(2025,7.0)}{+6,7}
+      \dicrotulo[font=\scriptsize, anchor=north, fill=white, inner sep=1pt]{(2025,-2.7)}{$-$2,4}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}
