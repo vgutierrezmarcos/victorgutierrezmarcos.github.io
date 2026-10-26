@@ -8,6 +8,7 @@ import 'package:timezone/timezone.dart' as tz;
 
 import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
+import 'instalacion.dart';
 import 'avisos_navegador.dart';
 
 /// Notificaciones locales: recordatorio diario de estudio, avisos del
@@ -428,15 +429,21 @@ class Notificaciones {
     );
   }
 
+  static Future<bool> _desdePlay() async => await origenInstalacion() == OrigenInstalacion.play;
+
   /// Hay una versión nueva de la app: al tocarlo se abre [url] (Play o el APK).
+  /// Con la app instalada desde el APK y la ficha en Play, se dice que se
+  /// actualice desde Play (así Play pasa a ser quien la actualiza).
   static Future<void> avisoVersion(String version, String url) async {
     if (!disponibles) return;
     await iniciar();
     if (kIsWeb) return mostrarAvisoNavegador(1000 + ('version:$version'.hashCode & 0x7ffff), 'Hay una versión nueva de la app ($version)', 'Toca para abrirla.', contenido: 'url:$url');
     await _plugin.show(
       1000 + ('version:$version'.hashCode & 0x7ffff),
-      'Hay una versión nueva de la app ($version)',
-      'Toca para actualizarla. Se instala encima de la actual, sin perder tus datos.',
+      url.contains('play.google.com') && !(await _desdePlay()) ? 'La app ya está en Google Play' : 'Hay una versión nueva de la app ($version)',
+      url.contains('play.google.com') && !(await _desdePlay())
+          ? 'Toca para actualizarla desde Google Play (versión $version). Se instala encima, sin perder tus datos, y después se actualizará sola.'
+          : 'Toca para actualizarla. Se instala encima de la actual, sin perder tus datos.',
       const NotificationDetails(
         android: AndroidNotificationDetails(color: _colorAviso, 'version', 'Versiones nuevas',
             channelDescription: 'Aviso de que hay una versión nueva de la app', importance: Importance.defaultImportance),

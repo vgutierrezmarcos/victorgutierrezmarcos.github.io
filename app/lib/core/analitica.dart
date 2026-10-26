@@ -10,8 +10,8 @@ import 'analitica_io.dart' if (dart.library.js_interop) 'analitica_web.dart' as 
 /// el manifiesto y aquí se enciende o apaga en cada arranque según el ajuste.
 ///
 /// Nunca lleva datos personales: ni nombre, ni correo, ni temas, ni tests, ni
-/// cantes. Solo pantallas, seis eventos con números (`evento`) y dos
-/// propiedades (oposición y papel).
+/// cantes. Solo pantallas, seis eventos con números (`evento`) y tres
+/// propiedades (oposición, papel y de dónde se instaló).
 ///
 /// [instancia] es lo que usa la app: [AnaliticaNula] (nada) hasta que `main`
 /// la sustituye por la de Firebase, y la que pongan las pruebas.
@@ -38,9 +38,10 @@ abstract class Analitica {
   /// Un evento con parámetros numéricos o de pocas palabras (nunca personales).
   void evento(String nombre, {Map<String, Object> parametros = const {}});
 
-  /// Propiedades del usuario: la oposición (tcee/dce) y el papel
-  /// (opositor/preparador).
-  void usuario({String? oposicion, String? papel});
+  /// Propiedades del usuario: la oposición (tcee/dce), el papel
+  /// (opositor/preparador) y de dónde se instaló la app (play/apk/web), para
+  /// contar cuántos vienen de Google Play aunque empezaran con el APK.
+  void usuario({String? oposicion, String? papel, String? instalacion});
 
   /// Un error no capturado (lo envía Crashlytics si está activo).
   void error(Object excepcion, StackTrace? pila, {bool fatal = false});
@@ -86,7 +87,7 @@ class AnaliticaNula extends Analitica {
   @override
   void evento(String nombre, {Map<String, Object> parametros = const {}}) {}
   @override
-  void usuario({String? oposicion, String? papel}) {}
+  void usuario({String? oposicion, String? papel, String? instalacion}) {}
   @override
   void error(Object excepcion, StackTrace? pila, {bool fatal = false}) {}
 }

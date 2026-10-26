@@ -119,7 +119,7 @@ def pantallas_app():
 
 
 # ===================================================================== Android
-def ficha_tienda(abrir=False):
+def ficha_tienda(abrir=False, actualizar=False):
     img = lienzo()
     barra_estado(img)
     d = ImageDraw.Draw(img)
@@ -131,7 +131,10 @@ def ficha_tienda(abrir=False):
     d.text((310, 300), NOMBRE, font=sans(54, 'Semibold'), fill=NEGRO)
     d.text((310, 378), 'Víctor Gutiérrez Marcos', font=sans(38, 'Semibold'), fill=VERDE)
     d.text((310, 432), 'Educación · Gratis, sin anuncios', font=sans(36), fill=GRIS)
-    if abrir:
+    if actualizar:
+        boton(d, (60, 580, 525, 700), 'Desinstalar', BLANCO, VERDE, borde=LINEA)
+        toque = boton(d, (555, 580, 1020, 700), 'Actualizar', VERDE)
+    elif abrir:
         boton(d, (60, 580, 525, 700), 'Desinstalar', BLANCO, VERDE, borde=LINEA)
         toque = boton(d, (555, 580, 1020, 700), 'Abrir', VERDE)
     else:
@@ -216,28 +219,12 @@ def android():
     abrir, toque = ficha_tienda(abrir=True)
     pasos.append(('abrir', abrir, toque))
     pasos += pantallas_app()
-    # Mientras tanto, desde la web.
-    guia = Image.open(GUIA).convert('RGB').resize((M_ANCHO, M_ALTO))
-    web, dy = con_navegador(guia, 'victorgutierrezmarcos.es/app/instalar.html')
-    boton_web = [66, 875 + dy, 500, 125]
-    pasos.append(('web', web, boton_web))
-    descarga = web.copy()
-    tarjeta(descarga, (40, 2040, 1040, 2230), 30, (48, 49, 52))
-    d = ImageDraw.Draw(descarga)
-    d.text((90, 2100), 'Archivo descargado', font=sans(40, 'Semibold'), fill=BLANCO)
-    d.text((90, 2155), 'oposicion-tcee.apk', font=sans(36), fill=(200, 200, 200))
-    d.text((960, 2135), 'Abrir', font=sans(44, 'Semibold'), fill=(138, 180, 248), anchor='rm')
-    pasos.append(('descarga', descarga, [820, 2085, 160, 100]))
-    fuente, (cancelar, configuracion) = dialogo(web, 'Instalar apps desconocidas', ['Por tu seguridad, tu teléfono no puede', 'instalar aplicaciones desconocidas', 'de esta fuente.'], ['Cancelar', 'Configuración'])
-    pasos.append(('fuente', fuente, configuracion))
-    sin, interruptor, _ = ajustes(False)
-    pasos.append(('permitir', sin, interruptor))
-    con, _, atras = ajustes(True)
-    pasos.append(('permitido', con, atras))
-    instalar, (_, inst) = dialogo(web, '', ['¿Quieres instalar esta aplicación?'], ['Cancelar', 'Instalar'], icono_app=True)
-    pasos.append(('instalar', instalar, inst))
-    hecha, (_, abrir_apk) = dialogo(web, '', ['Aplicación instalada.'], ['Hecho', 'Abrir'], icono_app=True)
-    pasos.append(('instalada', hecha, abrir_apk))
+    # Quien tenía la versión descargada de la web (APK): en Play sale
+    # «Actualizar» (misma firma) y desde entonces Play la actualiza sola.
+    # (Hasta el 26 oct. 2026 el vídeo seguía con la instalación del APK:
+    # descarga, permitir la fuente e instalar; ya no hace falta.)
+    actualizar, toque = ficha_tienda(actualizar=True)
+    pasos.append(('actualizar', actualizar, toque))
     guardar('instalar-android', pasos)
 
 

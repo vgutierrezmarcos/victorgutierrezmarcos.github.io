@@ -10,6 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'core/analitica.dart';
+import 'core/instalacion.dart';
 import 'core/constants.dart';
 import 'core/notificaciones.dart';
 import 'core/pantalla_error.dart';
@@ -172,11 +173,13 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     });
     ref.listenManual(papelProvider, (_, __) => _relojes.revisar());
     // Estadísticas (si están activadas): la pantalla que se ve y, como
-    // propiedades, la oposición y el papel. Nunca datos personales.
+    // propiedades, la oposición, el papel y de dónde se instaló (Play, APK o
+    // navegador). Nunca datos personales.
     _router.routerDelegate.addListener(_pantallaVista);
     _pantallaVista();
     ref.listenManual(papelProvider, (_, p) => Analitica.instancia.usuario(papel: p.name), fireImmediately: true);
     Analitica.instancia.usuario(oposicion: ref.read(oposicionProvider).id);
+    origenInstalacion().then((o) => Analitica.instancia.usuario(instalacion: o.name));
     ref.listenManual(usuarioActualProvider, (_, __) => _relojes.revisar());
     // Widget de la pantalla de inicio: al abrir la app desde él o tocarlo con ella abierta.
     abiertoDesdeWidget().then(_desdeWidget);
