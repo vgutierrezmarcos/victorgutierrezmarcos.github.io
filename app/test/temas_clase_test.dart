@@ -56,4 +56,25 @@ void main() {
     expect(j.temasPropuestos, ['3.A.1']);
     expect(j.copyWith(sinPropuesta: true).temasPropuestos, isEmpty);
   });
+
+  group('clasesParaFijar (1.20.4): las clases cuyos temas salen del cronograma se fijan solas', () {
+    final ahora = DateTime(2026, 10, 26, 10);
+    test('la clase de la semana del cronograma, sin temas fijados: se fija', () {
+      final r = clasesParaFijar([clase], elegidos: const {}, cronograma: cronograma, noCantar: {'3.B.2': DateTime(2026, 10, 20)}, ahora: ahora);
+      expect(r, {'k1': ['3.B.1']});
+    });
+    test('no se toca lo ya fijado, lo pendiente de una propuesta, lo pasado, lo lejano, lo hecho ni los cantes propios', () {
+      expect(clasesParaFijar([clase], elegidos: {'k1': TemasClase(temas: const ['3.A.40'], fecha: DateTime(2026, 10, 24))}, cronograma: cronograma, ahora: ahora), isEmpty);
+      expect(clasesParaFijar([clase.copyWith(temasPropuestos: const ['3.A.1'], propuestaTemasA: DateTime(2026, 10, 25))], elegidos: const {}, cronograma: cronograma, ahora: ahora), isEmpty);
+      expect(clasesParaFijar([clase], elegidos: const {}, cronograma: cronograma, ahora: DateTime(2026, 11, 2)), isEmpty);
+      expect(clasesParaFijar([clase], elegidos: const {}, cronograma: cronograma, ahora: DateTime(2026, 9, 1)), isEmpty);
+      expect(clasesParaFijar([clase.copyWith(estado: EstadoCante.hecho)], elegidos: const {}, cronograma: cronograma, ahora: ahora), isEmpty);
+      expect(clasesParaFijar([Cante(id: 'propio', fecha: DateTime(2026, 10, 29, 17))], elegidos: const {}, cronograma: cronograma, ahora: ahora), isEmpty);
+      expect(clasesParaFijar([clase], elegidos: const {}, cronograma: null, ahora: ahora), isEmpty);
+    });
+    test('fuera del cronograma queda pendiente: no hay nada que fijar', () {
+      final fuera = Cante(id: 'k2', fecha: DateTime(2026, 11, 5, 17), preparador: 'p');
+      expect(clasesParaFijar([fuera], elegidos: const {}, cronograma: cronograma, ahora: ahora), isEmpty);
+    });
+  });
 }
