@@ -297,7 +297,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
           const SizedBox(height: 4),
           Text(
             !firebase
-                ? 'Esta compilación no incluye credenciales de Firebase: la sección funciona solo en este dispositivo.'
+                ? 'No se ha podido conectar con la cuenta: la sección funciona solo en este dispositivo.${errorFirebase == null ? '' : ' Detalle: $errorFirebase'}'
                 : (conSesion
                     ? switch (ref.read(preparadorRepoProvider).errorCodigo) {
                         ErrorCodigo.permiso => 'El servidor ha rechazado la reserva del código (permiso denegado). Es un problema de configuración de la base de datos, no de tu cuenta: avisa en contacto@victorgutierrezmarcos.es. Mientras, puedes llevar a tus alumnos en este dispositivo.',

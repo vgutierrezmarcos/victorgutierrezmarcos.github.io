@@ -28,7 +28,15 @@ class CuentaPage extends ConsumerWidget {
         padding: const EdgeInsets.all(16),
         children: [
           if (!firebase)
-            Tarjeta(child: Text('Esta compilación no incluye credenciales de Firebase: la app funciona solo en local.', style: context.textos.bodySmall))
+            Tarjeta(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('No se ha podido conectar con la cuenta: la app funciona solo en local.', style: context.textos.bodySmall),
+                if (errorFirebase != null) ...[
+                  const SizedBox(height: 8),
+                  SelectableText('Detalle técnico (cópialo y mándalo a contacto@victorgutierrezmarcos.es): $errorFirebase', style: context.textos.bodySmall),
+                ],
+              ]),
+            )
           else if (usuario == null) ...[
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

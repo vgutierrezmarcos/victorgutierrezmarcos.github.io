@@ -9,6 +9,10 @@ import '../theme/app_theme.dart';
 /// llama a [alTerminar] para quitarla.
 class Arranque extends StatefulWidget {
   const Arranque({super.key, required this.listo, required this.alTerminar});
+
+  /// Sin pantalla de arranque: lo ponen las herramientas de capturas
+  /// (tool/demo_comun.dart), para que la diana no tape la app en los recorridos.
+  static bool omitir = false;
   final bool listo;
   final VoidCallback alTerminar;
 

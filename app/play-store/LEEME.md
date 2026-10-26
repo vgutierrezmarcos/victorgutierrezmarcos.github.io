@@ -84,6 +84,33 @@ La app enlaza siempre al documento original:
 **Correo de contacto**: contacto@victorgutierrezmarcos.es · **Sitio web**: https://www.victorgutierrezmarcos.es/app/
 **Política de privacidad**: https://www.victorgutierrezmarcos.es/politica-cookies.html
 
+## Posicionamiento en Google Play (ASO): propuesta del 26 oct. 2026
+
+Lo que mueve la búsqueda y el ranking en Play, por orden: **título** (el campo con más peso; solo cuenta lo que el usuario teclea), **descripción breve**, **primeras líneas de la descripción completa** (todo el texto indexa, pero las tres primeras líneas son las que se ven sin «leer más» y las que convierten), **valoraciones y reseñas**, **conversión de la ficha** (capturas, vídeo, icono) y **tráfico externo** (enlaces desde la web, LinkedIn, ATCEE, manuelcabadogarcia.es). Las palabras clave que de verdad escribe un opositor: «oposiciones», «oposición técnico comercial», «economista del estado», «diplomado comercial», «TCEE», «DCE», «test oposiciones», «temario», «cantar temas», «oposiciones comercio», «oposiciones economía».
+
+**Cambios propuestos (para pegar en Play Console → Ficha principal):**
+
+- **Nombre** (30): `Oposiciones TCEE y DCE` (22). Añade «Oposiciones», la palabra más buscada, y conserva las siglas. Con «Comercio» o «Economía» pasa de 30: no cabe. Cambiar el nombre no afecta a la app instalada ni al `android:label`.
+- **Descripción breve** (80): `Oposiciones a Técnico Comercial del Estado y Diplomado Comercial: temario y test` (80). Saca las siglas del campo (ya están en el título) y mete «temario» y «test», que es lo que busca quien aún no sabe que existe la app.
+- **Descripción completa**: empezar vendiendo y poner el aviso de «no oficial» en el segundo párrafo (sigue estando arriba, que es lo que Google pidió el 7 oct.; lo que no puede ser es que sea lo único que se lea). Primer párrafo propuesto:
+
+```
+Prepara la oposición a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE), las dos oposiciones de comercio del Ministerio de Economía: el temario completo, el test con las preguntas de los exámenes oficiales (y por qué es correcta cada respuesta), los cantes con cronómetro y sorteo de bolas como en el examen, el cronograma de vueltas, el proceso selectivo al día y tu preparador en la misma app. Gratis, sin anuncios y también en el navegador.
+
+AVISO: esta app no es oficial. No está asociada al Ministerio de Economía, Comercio y Empresa ni a ningún organismo público y no los representa. La información oficial está en las fuentes indicadas al final.
+```
+
+  Y en ESTUDIAR, añadir la explicación del test (es lo que no tiene nadie): `• Cada pregunta del test explica por qué es correcta la respuesta y por qué falla cada opción, con el tema donde se estudia y, en muchas, un gráfico.` Repetir con naturalidad a lo largo del texto «oposición», «temario», «test», «examen», «preparador», «cantar»: Play indexa todo el texto y premia la densidad moderada (sin listas de palabras clave, que penaliza).
+- **Vídeo de la ficha**: subir `app/promo/oposicion-tcee.mp4` a YouTube (público o no listado) y poner el enlace en «Vídeo promocional»: aparece el primero en la ficha y es lo que más sube la conversión instalación/visita.
+- **Capturas**: las ocho con rótulo ya están bien; que las dos primeras sean las de más gancho (test con explicación y cantes con cronómetro), porque en el móvil solo se ven dos o tres sin desplazar.
+- **Valoraciones**: Play ordena mucho por nota y número de reseñas. Pedir reseña dentro de la app con la API de Google (`in_app_review`, aparece la ventana de Play sin salir de la app) tras un momento bueno (p. ej. al terminar el quinto test o el tercer cante), nunca al abrir, y una sola vez. Pedírsela también a los testers y preparadores que ya la usan: las diez primeras reseñas son las que más pesan.
+- **Tráfico externo**: enlazar la ficha de Play desde la portada y `/app/` (ya hecho el 26 oct.), desde manuelcabadogarcia.es (Manuel, pendiente) y en el post de LinkedIn; Play mide las instalaciones que vienen de fuera y las premia.
+- **Etiquetas** (hasta cinco): Educación, Estudio y, si existen en el selector, «Exámenes» y «Preparación de exámenes».
+- **Actualizar con regularidad** (ya se hace): cada versión publicada con notas claras es una señal positiva; el texto de «Novedades» de cada versión también se indexa.
+- Lo que **no** se puede hacer: comprar palabras clave (no existen en Play, a diferencia de App Store), pedir reseñas a cambio de algo o poner las siglas de otros productos.
+
+**Cómo medirlo**: Play Console → Estadísticas → Adquisición de usuarios → «Explorar en la tienda» y «Términos de búsqueda» (tras unas semanas de datos); `scripts/estadisticas-app.py` saca ya las instalaciones y valoraciones de los informes de Play.
+
 ## Contenido de la app (formularios)
 
 **Política de privacidad**: la URL de arriba.
