@@ -539,6 +539,49 @@ def pastilla(texto, color_punto=DORADO, oscura=False, tam=34):
     return cache(('pastilla', texto, color_punto, oscura, tam), crear)
 
 
+LOGOS = os.path.join(PROMO, 'logos')
+
+
+def logo(nombre, tam):
+    """Icono oficial de una integración (app/promo/logos/<nombre>.png), a [tam] px de alto."""
+    def crear():
+        im = Image.open(os.path.join(LOGOS, nombre + '.png')).convert('RGBA')
+        im = im.resize((round(im.width * tam / im.height), tam), Image.LANCZOS)
+        return im
+    return cache(('logo', nombre, tam), crear)
+
+
+def pastilla_logo(texto, logos, oscura=False, tam=34):
+    """Como [pastilla], con uno o varios logos oficiales en vez del punto."""
+    if isinstance(logos, str):
+        logos = [logos]
+    def crear():
+        f = fuente('sans', tam, 'Semibold')
+        alto_logo = round(tam * 1.25)
+        ims = [logo(n, alto_logo) for n in logos]
+        ancho_logos = sum(i.width for i in ims) + 14 * (len(ims) - 1)
+        w = round(f.getlength(texto)) + ancho_logos + 82 if texto else ancho_logos + 56
+        h = round(tam * 2.1)
+        img = Image.new('RGBA', (w + 60, h + 60), (0, 0, 0, 0))
+        s = Image.new('L', img.size, 0)
+        ImageDraw.Draw(s).rounded_rectangle((30, 40, 30 + w, 40 + h), h // 2, fill=90)
+        s = s.filter(ImageFilter.GaussianBlur(12))
+        img.paste((30, 14, 44, 255), (0, 0), s)
+        img.putalpha(s)
+        capa = Image.new('RGBA', img.size, (0, 0, 0, 0))
+        d = ImageDraw.Draw(capa)
+        fondo = (46, 34, 53, 255) if oscura else (255, 255, 255, 255)
+        d.rounded_rectangle((30, 30, 30 + w, 30 + h), h // 2, fill=fondo)
+        x = 30 + 28
+        for i in ims:
+            capa.paste(i, (x, 30 + (h - i.height) // 2), i)
+            x += i.width + 14
+        if texto:
+            d.text((x + 6, 30 + h / 2), texto, font=f, fill=BLANCO if oscura else TEXTO, anchor='lm')
+        return Image.alpha_composite(img, capa)
+    return cache(('pastilla_logo', texto, tuple(logos), oscura, tam), crear)
+
+
 def aviso(titulo, texto, color, ancho=520):
     """Notificación como las del móvil: icono, título y texto."""
     def crear():
@@ -554,8 +597,8 @@ def aviso(titulo, texto, color, ancho=520):
     return cache(('aviso', titulo, texto, color, ancho), crear)
 
 
-def documento(etiqueta, color):
-    """Icono de fichero (hoja con la esquina doblada y su etiqueta)."""
+def documento(etiqueta, color, logo_=None):
+    """Icono de fichero (hoja con la esquina doblada y su etiqueta); con [logo_], el icono del servicio en la hoja."""
     def crear():
         w, h = 130, 160
         img = Image.new('RGBA', (w + 40, h + 40), (0, 0, 0, 0))
@@ -572,8 +615,11 @@ def documento(etiqueta, color):
             d.rounded_rectangle((38, 76 + i * 18, 20 + w - 18 - (i % 2) * 24, 84 + i * 18), 4, fill=(225, 220, 230, 255))
         d.rounded_rectangle((30, 20 + h - 52, 20 + w - 10, 20 + h - 14), 8, fill=color + (255,))
         d.text((20 + w / 2 + 4, 20 + h - 33), etiqueta, font=fuente('sans', 28, 'Bold'), fill=BLANCO, anchor='mm')
+        if logo_:
+            lg = logo(logo_, 54)
+            capa.paste(lg, (20 + (w - lg.width) // 2, 48), lg)
         return Image.alpha_composite(img, capa)
-    return cache(('documento', etiqueta, color), crear)
+    return cache(('documento', etiqueta, color, logo_), crear)
 
 
 def bola(codigo, color):
@@ -917,7 +963,7 @@ def e_organizacion(t):
             continue
         x = x0 + (cx - x0) * u
         y = y0 + (cy - 80 - y0) * u - 260 * math.sin(math.pi * u)
-        pegar(img, documento(etq, color), x, y + 6 * math.sin(t * 3 + i), escala=1.15 - 0.75 * u, giro=(1 - u) * (6 - 6 * i) + 30 * u, alfa=aparece * (1 - u * 0.5))
+        pegar(img, documento(etq, color, logo_=('drive' if etq == 'DRIVE' else None)), x, y + 6 * math.sin(t * 3 + i), escala=1.15 - 0.75 * u, giro=(1 - u) * (6 - 6 * i) + 30 * u, alfa=aparece * (1 - u * 0.5))
     e = entre(t, c1 + PULSO * 3, c1 + PULSO * 3 + 0.4) * (1 - entre(t, c2 - 0.2, c2))
     pegar(img, pastilla('9 temas en 3 semanas', VERDE), 1060, 300 + 5 * math.sin(t * 2), alfa=e, escala=0.85 + 0.15 * rebote(e))
     # La probabilidad del tercer ejercicio en un medidor que se llena contando;
@@ -1030,11 +1076,15 @@ def e_mi_preparador(t):
     else:
         tel = telefono('buscar-preparador', 380, 'mi-preparador', entre(t, c2 - 0.1, c2 + 0.35))
     pegar(img, tel, cx, cy + round(100 * (1 - a)), alfa=a)
-    # 1) Lo que encaja cada uno (en palabras, nunca una nota).
+    # 1) Lo que encaja cada uno (en palabras, nunca una nota), y su LinkedIn.
     for i, (txt, color, y) in enumerate([('Encaja mucho', VERDE, 330), ('Encaja', DORADO, 520)]):
         e = entre(t, 0.6 + i * PULSO, 1.0 + i * PULSO) * (1 - entre(t, c1 - 0.3, c1))
         if e > 0:
             pegar(img, pastilla(txt, color), 1000, y + 5 * math.sin(t * 2 + i), alfa=e, escala=0.85 + 0.15 * rebote(e))
+    # Con el aviso de la 2.ª parte («Toca para ver su perfil»): su perfil es el de LinkedIn.
+    e = entre(t, c1 + 0.9, c1 + 1.3) * (1 - entre(t, c2 - 0.3, c2))
+    if e > 0:
+        pegar(img, pastilla_logo('Su perfil de LinkedIn', 'linkedin'), cx + 40, 300 + 5 * math.sin(t * 2), alfa=e, escala=0.85 + 0.15 * rebote(e))
     # 2) El aviso: a una preparadora le interesa.
     e = entre(t, c1 + 0.5, c1 + 0.85) * (1 - entre(t, c2 - 0.3, c2))
     if e > 0:
@@ -1060,6 +1110,14 @@ def e_preparadores(t):
     for i, (nombre, x, y, giro) in enumerate([('dce-hoy-preparador', 1080, 590, 5), ('tema-programar', 1760, 590, -5), ('clase-detalles', 1420, 560, 0)]):
         e = entre(t, i * PULSO, i * PULSO + 0.7)
         pegar(img, telefono(nombre, 340), x + round(300 * (1 - e)), y, giro=giro, alfa=e)
+    # Con qué se integra la clase: Meet o Teams para la reunión y Google Calendar para la agenda.
+    x = 120
+    for i, (txt, logos_) in enumerate([('Meet o Teams', ['meet', 'teams']), ('Google Calendar', 'calendar')]):
+        past = pastilla_logo(txt, logos_, oscura=True)
+        e = entre(t, COMPAS + 0.3 + i * MEDIO, COMPAS + 0.7 + i * MEDIO)
+        if e > 0:
+            pegar(img, past, x + past.width / 2 - 30, 930 + 5 * math.sin(t * 2 + i), alfa=e, escala=0.85 + 0.15 * rebote(e))
+        x += past.width - 60 + 24
     return img
 
 
@@ -1067,7 +1125,11 @@ def e_ordenador(t):
     img = lienzo_luz(t)
     rotulo(img, 'EN TODAS PARTES', 120, 330, t)
     titular(img, ['En el móvil', '*y *en *el *ordenador.'], 120, 400, t, tam=80, paso=MEDIO / 2)
-    parrafo(img, 'Con tu cuenta de Google, todo sincronizado: lo que haces en uno aparece en el otro.', 120, 640, t, inicio=0.6, ancho=600)
+    parrafo(img, 'Con tu cuenta de Google, todo sincronizado: lo que haces en uno aparece en el otro. Y tus clases y cantes, si quieres, en Google Calendar.', 120, 640, t, inicio=0.6, ancho=600)
+    for i, (txt, logos_) in enumerate([('Inicia sesión con Google', 'google-g'), ('Google Calendar', 'calendar')]):
+        e = entre(t, PULSO * 2 + i * MEDIO, PULSO * 2 + 0.4 + i * MEDIO)
+        if e > 0:
+            pegar(img, pastilla_logo(txt, logos_), 330 + i * 10, 880 + i * 95 + 5 * math.sin(t * 2 + i), alfa=e, escala=0.85 + 0.15 * rebote(e))
     a = entre(t, 0, 0.8)
     lap = cache('portatil', lambda: portatil('dce-escritorio', 860)[0])
     pegar(img, lap, 1390, 500 + round(80 * (1 - a)), alfa=a, escala=0.86 + 0.04 * a)
@@ -1093,8 +1155,13 @@ def e_cierre(t):
     titular(img, ['Empieza hoy.'], ANCHO // 2, 520, t, tam=140, color=BLANCO, centrado=True, inicio=0.9, paso=PULSO / 2)
     a = entre(t, 1.8, 2.4)
     ImageDraw.Draw(img).rectangle((ANCHO // 2 - round(170 * a), 712, ANCHO // 2 + round(170 * a), 717), fill=DORADO_CLARO)
-    titular(img, ['Oposición TCEE · DCE  ·  Gratis  ·  Sin anuncios  ·  Android y navegador'], ANCHO // 2, 750, t, tam=40, color=CREMA, centrado=True, inicio=2.0, paso=0.04, tipo='sans', estilo='Medium')
+    titular(img, ['Oposición TCEE · DCE  ·  Gratis  ·  Sin anuncios  ·  En Google Play y en el navegador'], ANCHO // 2, 750, t, tam=40, color=CREMA, centrado=True, inicio=2.0, paso=0.04, tipo='sans', estilo='Medium')
     titular(img, ['Apuntes de TCEE: victorgutierrezmarcos.es  ·  Apuntes de DCE: manuelcabadogarcia.es'], ANCHO // 2, 830, t, tam=34, color=(210, 200, 220), centrado=True, inicio=2.8, paso=0.03, tipo='sans', estilo='Regular')
+    # El distintivo oficial de Google Play (la app está publicada desde el 26 oct. 2026).
+    e = entre(t, 3.4, 4.0)
+    if e > 0:
+        insignia = cache('insignia-play', lambda: (lambda im: im.resize((round(im.width * 96 / im.height), 96), Image.LANCZOS))(Image.open(os.path.join(PROMO, 'google-play-es.png')).convert('RGBA')))
+        pegar(img, insignia, ANCHO // 2, 960, alfa=e, escala=0.9 + 0.1 * rebote(e))
     return img
 
 
@@ -1164,6 +1231,9 @@ def e_pizarra(t):
     for i, (txt, ini) in enumerate([('Tú', 0.8), ('Paula Pérez', 1.1)]):
         e = entre(t, ini, ini + 0.4)
         pegar(img, pastilla(txt, [(43, 87, 154), (192, 102, 43)][i], oscura=True, tam=30), 1660, 150 + i * 70, alfa=e, escala=0.85 + 0.15 * rebote(e))
+    e = entre(t, c1 + 0.2, c1 + 0.6)
+    if e > 0:
+        pegar(img, pastilla_logo('Con Meet o Teams a la vez', ['meet', 'teams'], oscura=True), 400, 700 + 5 * math.sin(t * 2), alfa=e, escala=0.85 + 0.15 * rebote(e))
     return img
 
 
@@ -1190,7 +1260,7 @@ def e_materiales(t):
     e = entre(t, c1 + 0.6, c1 + 1.0) * (1 - entre(t, c2 - 0.2, c2))
     pegar(img, aviso('Paula Pérez te ha compartido material', 'Mis apuntes del tema 3.A.14 · Toca para abrirlo', VERDE, 620), cx + 40, 150, alfa=e)
     p = entre(t, c2 + 0.3, c2 + 0.7)
-    pegar(img, pastilla('Meet o Teams: lo elige tu preparador', DORADO), 430, 1000 + 5 * math.sin(t * 2), alfa=p, escala=0.85 + 0.15 * rebote(p))
+    pegar(img, pastilla_logo('Meet o Teams: lo elige tu preparador', ['meet', 'teams']), 430, 1000 + 5 * math.sin(t * 2), alfa=p, escala=0.85 + 0.15 * rebote(p))
     return img
 
 

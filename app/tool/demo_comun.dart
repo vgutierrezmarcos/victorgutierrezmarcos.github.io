@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tcee_app/widgets/arranque.dart';
 import 'package:tcee_app/widgets/comunes.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -508,6 +509,7 @@ class Recorrido {
 
   /// Pone la vista de un móvil de 1080 × 2340 a 2,625 de densidad (411 × 891 puntos).
   static void vistaMovil(WidgetTester tester) {
+    Arranque.omitir = true;
     tester.view.physicalSize = const Size(1080, 2340);
     tester.view.devicePixelRatio = 2.625;
     addTearDown(tester.view.reset);
@@ -546,8 +548,11 @@ class Recorrido {
   }
 
   Future<void> pestana(String nombre) async {
+    // La barra inferior siempre está a la vista: sin `ensureVisible`, que desde
+    // la 1.20.x dejaba el toque fuera de la barra (26 oct. 2026).
     for (var i = 0; i < 2; i++) {
-      await tocar(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
+      await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)).first);
+      await tester.pumpAndSettle();
     }
   }
 

@@ -43,6 +43,10 @@ import 'red_providers.dart';
 import 'temas_anticipados.dart';
 
 /// Servicios creados en main() antes de arrancar la app.
+/// Por qué no se pudo iniciar Firebase en este arranque (null si se inició).
+/// Lo pone `main()` y lo enseñan Más → Cuenta y la sección del preparador.
+String? errorFirebase;
+
 class Servicios {
   const Servicios({
     required this.oposicion,

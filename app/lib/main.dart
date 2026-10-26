@@ -55,6 +55,8 @@ Future<void> main() async {
     unawaited(iniciarPushProceso());
   } catch (e) {
     debugPrint('Firebase no disponible: $e');
+    // Se enseña en Más → Cuenta: sin él no hay forma de saber por qué falla en un móvil.
+    errorFirebase = '$e';
   }
 
   // Estadísticas de uso e informes de errores: solo si el usuario lo activa
@@ -155,7 +157,7 @@ class _RaizAppState extends State<RaizApp> {
 
   /// La diana del arranque, encima hasta que hay algo que enseñar (en el
   /// navegador ya está la pantalla de carga de web/index.html).
-  bool _arranqueVisto = kIsWeb;
+  bool _arranqueVisto = kIsWeb || Arranque.omitir;
 
   @override
   void initState() {
