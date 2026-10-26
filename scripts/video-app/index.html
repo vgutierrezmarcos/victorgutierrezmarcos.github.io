@@ -101,6 +101,11 @@
       .pastilla.verde i { background: var(--verde); }
       .oscura .pastilla { background: var(--tinta-clara); border-color: #5b3d69; color: var(--sobre-oscuro); }
       .oscura .pastilla i { background: var(--dorado-claro); }
+      /* Logos oficiales de las integraciones (app/promo/logos/), en lugar del punto */
+      .pastilla .logo { display: block; height: 38px; width: auto; }
+      .doc.con-logo::before { display: none; }
+      .doc .logo { position: absolute; left: 50%; top: 26px; width: 60px; transform: translateX(-50%); }
+      .insignia-play { display: block; height: 96px; width: auto; }
 
       /* Bolas del sorteo */
       .bola {
@@ -393,6 +398,7 @@
           <img id="mi_preparador-p2" src="assets/capturas/busqueda-form.webp" alt="" />
         </div></div>
         <div id="mi_preparador-aviso" class="aviso verde" style="left: 960px; top: 120px"><img src="assets/icono.png" alt="" /><div><b>A Olga Martín le interesa prepararte</b><span>Toca para ver su perfil y escribirle</span></div></div>
+        <div id="mi_preparador-linkedin" class="pastilla" style="left: 990px; top: 290px"><img class="logo" src="assets/logos/linkedin.png" alt="" />Su perfil de LinkedIn</div>
       </section>
 
       <!-- La clase, al día -->
@@ -411,6 +417,7 @@
             <p class="par">Uno o dos, elegidos por tu preparador o a suerte entre los que llevas. Te llegan cuando toca, con el cronómetro listo.</p>
           </div>
         </div>
+        <div id="clase_viva-online" class="pastilla" style="left: 120px; top: 880px"><img class="logo" src="assets/logos/meet.png" alt="" /><img class="logo" src="assets/logos/teams.png" alt="" />Online, con Meet o Teams</div>
         <div id="clase_viva-movil" class="movil" style="left: 1240px; top: 99px"><div class="pantalla">
           <img id="clase_viva-p1" src="assets/capturas/cante.webp" alt="" />
           <img id="clase_viva-p2" src="assets/capturas/tema-recibido.webp" alt="" />
@@ -453,8 +460,8 @@
         <div id="materiales-movil" class="movil" style="left: 1240px; top: 99px"><div class="pantalla">
           <img src="assets/capturas/mi-preparador.webp" alt="" />
         </div></div>
-        <div id="materiales-d1" class="doc" style="left: 1020px; top: 380px"><span style="background: #b7312c">PDF</span></div>
-        <div id="materiales-d2" class="doc" style="left: 1020px; top: 560px"><span style="background: #2b579a">DOCX</span></div>
+        <div id="materiales-d1" class="doc con-logo" style="left: 1020px; top: 380px"><img class="logo" src="assets/logos/drive.png" alt="" /><span style="background: #1e8e3e">DRIVE</span></div>
+        <div id="materiales-d2" class="doc" style="left: 1020px; top: 560px"><span style="background: #b7312c">PDF</span></div>
         <div id="materiales-d3" class="doc" style="left: 1020px; top: 740px"><span style="background: #43294f">VÍDEO</span></div>
         <div id="materiales-aviso" class="aviso verde" style="left: 950px; top: 120px; width: 640px"><img src="assets/icono.png" alt="" /><div><b>Paula Pérez te ha compartido material</b><span>Mis apuntes del tema 3.A.14 · Toca para abrirlo</span></div></div>
       </section>
@@ -543,7 +550,7 @@
         <div id="preparadores-m1" class="movil" style="left: 880px; top: 150px"><div class="pantalla"><img src="assets/capturas/hoy-preparador.webp" alt="" /></div></div>
         <div id="preparadores-m2" class="movil" style="left: 1200px; top: 99px"><div class="pantalla"><img src="assets/capturas/alumno.webp" alt="" /></div></div>
         <div id="preparadores-m3" class="movil" style="left: 1500px; top: 150px"><div class="pantalla"><img src="assets/capturas/calendario.webp" alt="" /></div></div>
-        <div id="preparadores-pastilla" class="pastilla" style="left: 1180px; top: 960px"><i></i>Tus clases, también en Google Calendar</div>
+        <div id="preparadores-pastilla" class="pastilla" style="left: 1180px; top: 960px"><img class="logo" src="assets/logos/calendar.png" alt="" />Tus clases, también en Google Calendar</div>
         <div id="preparadores-m4" class="movil" style="left: 1240px; top: 99px"><div class="pantalla"><img src="assets/capturas/busquedas.webp" alt="" /></div></div>
         <div id="preparadores-aviso" class="aviso verde" style="left: 950px; top: 120px; width: 640px"><img src="assets/icono.png" alt="" /><div><b>2 opositores buscan preparador</b><span>Tercer ejercicio · online · Toca para verlos</span></div></div>
       </section>
@@ -555,8 +562,10 @@
         <div class="texto" style="width: 640px"><div class="bloque">
           <p class="rot">en todas partes</p>
           <h2 id="ordenador-tit" class="tit" style="font-size: 80px"><span class="l">En el móvil</span><span class="l"><em>y en el ordenador.</em></span></h2>
-          <p id="ordenador-par" class="par">Con tu cuenta de Google, todo sincronizado: lo que haces en uno aparece en el otro.</p>
+          <p id="ordenador-par" class="par">Con tu cuenta de Google, todo sincronizado: lo que haces en uno aparece en el otro. Y tus clases y cantes, si quieres, en Google Calendar.</p>
         </div></div>
+        <div id="ordenador-google" class="pastilla" style="left: 120px; top: 800px"><img class="logo" src="assets/logos/google-g.png" alt="" />Inicia sesión con Google</div>
+        <div id="ordenador-calendar" class="pastilla" style="left: 130px; top: 900px"><img class="logo" src="assets/logos/calendar.png" alt="" />Google Calendar</div>
         <div id="ordenador-portatil" class="portatil" style="left: 800px; top: 190px">
           <div class="tapa"><div class="pantalla"><img src="assets/capturas/escritorio.webp" alt="" /></div></div>
           <div class="base"></div>
@@ -577,8 +586,9 @@
           </div>
           <h2 id="cierre-tit" class="tit" style="font-size: 140px"><span class="l">Empieza hoy.</span></h2>
           <span id="cierre-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
-          <p id="cierre-n1" class="nota-cierre">Para opositores y preparadores  ·  Gratis  ·  Sin anuncios  ·  Android y navegador</p>
+          <p id="cierre-n1" class="nota-cierre">Para opositores y preparadores  ·  Gratis  ·  Sin anuncios  ·  En Google Play y en el navegador</p>
           <p id="cierre-n2" class="nota-cierre suave">Apuntes de TCEE: victorgutierrezmarcos.es  ·  Apuntes de DCE: manuelcabadogarcia.es</p>
+          <img id="cierre-play" class="insignia-play" src="assets/logos/google-play-es.png" alt="Disponible en Google Play" />
         </div>
       </section>
 
@@ -791,6 +801,7 @@
       textos("#mi_preparador-b", B(E.mi_preparador) + C);
       pantalla("#mi_preparador-p2", B(E.mi_preparador) + C);
       aviso("#mi_preparador-aviso", B(E.mi_preparador) + C + 0.5);
+      salta("#mi_preparador-linkedin", B(E.mi_preparador) + C + 0.5 + 2 * P);
       sale("mi_preparador");
 
       // La clase, al día
@@ -798,7 +809,8 @@
       textos("#clase_viva-a", B(E.clase_viva));
       movil("#clase_viva-movil", B(E.clase_viva) + 0.1);
       aviso("#clase_viva-aviso", B(E.clase_viva) + 0.35);
-      funde("#clase_viva-a, #clase_viva-aviso", B(E.clase_viva) + C - 0.25, 0.25);
+      salta("#clase_viva-online", B(E.clase_viva) + 2 * P);
+      funde("#clase_viva-a, #clase_viva-aviso, #clase_viva-online", B(E.clase_viva) + C - 0.25, 0.25);
       bloque("#clase_viva-b", B(E.clase_viva) + C);
       textos("#clase_viva-b", B(E.clase_viva) + C);
       pantalla("#clase_viva-p2", B(E.clase_viva) + C);
@@ -879,6 +891,8 @@
       textos("#ordenador", B(E.ordenador));
       tl.fromTo("#ordenador-portatil", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.75, ease: "power3.out" }, B(E.ordenador) + 0.1);
       movil("#ordenador-movil", B(E.ordenador) + 0.6);
+      salta("#ordenador-google", B(E.ordenador) + 2 * P);
+      salta("#ordenador-calendar", B(E.ordenador) + 2 * P + M);
       sale("ordenador");
 
       // Cierre
@@ -889,6 +903,7 @@
       filete("#cierre-filete", B(E.cierre) + 1.6);
       aparece("#cierre-n1", B(E.cierre) + 2.0);
       aparece("#cierre-n2", B(E.cierre) + 2.8);
+      salta("#cierre-play", B(E.cierre) + 3.4);
 
       window.__timelines["main"] = tl;
     </script>
