@@ -35,9 +35,25 @@ import '../mas/ayuda_videos.dart';
 /// ([temasDeLaClase]: los que eligió para ella o la semana de su [cronograma]
 /// compartido), la misma lista que ve él. Sin ninguno, vacía (pendiente).
 /// Sin la app (ficha que lleva el preparador), los que él apunta en la ficha.
-List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario, {Cronograma? cronograma, ProgresoAlumno? progreso}) => alumno.enlazado
-    ? temasDeCante(sesion, temario, Ajustes(temasClases: progreso?.temasClases ?? const {}, noCantar: progreso?.noCantar ?? const {}), cronograma: cronograma, clase: true)
-    : temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()), clase: false);
+List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario, {Cronograma? cronograma, ProgresoAlumno? progreso}) {
+  if (!alumno.enlazado) return temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()), clase: false);
+  final deLaClase = temasDeCante(sesion, temario, Ajustes(temasClases: progreso?.temasClases ?? const {}, noCantar: progreso?.noCantar ?? const {}), cronograma: cronograma, clase: true);
+  if (deLaClase.isNotEmpty || sesion.bolsa != TipoBolsa.estudiados) return deLaClase;
+  // Pendiente de que el alumno indique sus temas: mientras tanto, para
+  // mandarle o sortear un tema, todos los que lleva (estudiados más los de su
+  // cronograma hasta hoy, sin los que pide no cantar) y, si no hay ninguno,
+  // todos los del ejercicio.
+  return temasDeRespaldo(sesion, alumno, temario, progreso: progreso);
+}
+
+/// La bolsa de respaldo de una clase pendiente de temas (ver [temasDeSesion]).
+List<Tema> temasDeRespaldo(Cante sesion, Alumno alumno, Temario temario, {ProgresoAlumno? progreso}) {
+  final noCantar = progreso?.noCantar ?? const <String, DateTime>{};
+  final lleva = {...alumno.temas, ...?progreso?.estudiados, ...?progreso?.delCronograma}..removeAll(noCantar.keys);
+  final todos = temasDeCante(sesion.copyWith(bolsa: TipoBolsa.ejercicio), temario, const Ajustes(), clase: false);
+  final suyos = todos.where((t) => lleva.contains(t.codigo)).toList();
+  return suyos.isNotEmpty ? suyos : todos;
+}
 
 /// Envía el informe de un cante al alumno por la app que elija el preparador.
 Future<void> enviarInforme(BuildContext context, Cante sesion, Alumno? alumno, Temario? temario) => compartirTexto(
@@ -487,6 +503,7 @@ class SesionPage extends ConsumerWidget {
                 propuestaPendiente: propuestaPendiente(s, progreso?.temasClases ?? const {}),
                 onProponer: proponer,
                 onRetirarPropuesta: () => notifier.guardar(s.copyWith(sinPropuesta: true)),
+                respaldo: resueltos.pendiente ? temas.length : null,
               );
             })
           else ...[

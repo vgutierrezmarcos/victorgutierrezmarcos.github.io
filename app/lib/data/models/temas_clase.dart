@@ -62,3 +62,19 @@ bool propuestaPendiente(Cante c, Map<String, TemasClase> elegidos) {
   final suyos = elegidos[c.id];
   return suyos == null || suyos.fecha.isBefore(c.propuestaTemasA!);
 }
+
+/// Clases con preparador de los próximos días cuyos temas salen del
+/// cronograma del opositor y aún no están fijados en sus ajustes: hay que
+/// fijarlos ([AjustesNotifier.fijarTemasClase]) para que el preparador vea la
+/// misma lista aunque el opositor no comparta su cronograma (hasta la 1.20.4,
+/// el preparador veía «pendiente» en ese caso). No se tocan las clases con una
+/// propuesta del preparador sin responder ni las que ya tienen temas fijados.
+Map<String, List<String>> clasesParaFijar(Iterable<Cante> cantes, {required Map<String, TemasClase> elegidos, Cronograma? cronograma, Map<String, DateTime> noCantar = const {}, required DateTime ahora, int dias = 21}) {
+  if (cronograma == null) return const {};
+  final hasta = ahora.add(Duration(days: dias));
+  return {
+    for (final c in cantes)
+      if (c.dePreparador && c.pendiente && !c.fecha.isBefore(DateTime(ahora.year, ahora.month, ahora.day)) && c.fecha.isBefore(hasta) && !propuestaPendiente(c, elegidos))
+        if (temasDeLaClase(c, elegidos: elegidos, cronograma: cronograma, noCantar: noCantar) case final r when r.origen == OrigenTemas.cronograma) c.id: r.temas,
+  };
+}

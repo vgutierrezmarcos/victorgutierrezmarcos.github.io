@@ -29,6 +29,7 @@ class TemasDeLaClaseVista extends StatelessWidget {
     this.onAceptarPropuesta,
     this.onProponer,
     this.onRetirarPropuesta,
+    this.respaldo,
   });
 
   final Cante clase;
@@ -45,10 +46,16 @@ class TemasDeLaClaseVista extends StatelessWidget {
   /// Preparador: proponer otros temas.
   final Future<void> Function(List<String> actuales)? onProponer;
   final Future<void> Function()? onRetirarPropuesta;
+  /// Preparador: cuántos temas entran mientras la clase esté pendiente (la bolsa de respaldo).
+  final int? respaldo;
 
   String _origen() {
-    final cante = cronograma?.temasDelCante(clase.fecha) != null ? DateFormat("EEEE d 'de' MMMM", 'es').format(clase.fecha) : '';
+    final semana = cronograma?.temasDelCante(clase.fecha);
+    final cante = semana != null ? DateFormat("EEEE d 'de' MMMM", 'es').format(clase.fecha) : '';
+    // Fijados solos desde el cronograma (1.20.4): se dice de dónde vienen.
+    final delCronograma = semana != null && semana.toSet().containsAll(resueltos.temas) && resueltos.temas.toSet().containsAll(semana);
     return switch (resueltos.origen) {
+      OrigenTemas.opositor when delCronograma => esPreparador ? 'De su cronograma: la semana del cante del $cante.' : 'De tu cronograma: la semana del cante del $cante. $otro ve los mismos.',
       OrigenTemas.opositor => esPreparador ? 'Los ha indicado $otro para esta clase.' : 'Los has elegido tú para esta clase. $otro ve los mismos.',
       OrigenTemas.cronograma => esPreparador
           ? 'De su cronograma: la semana del cante del $cante.'
@@ -95,8 +102,8 @@ class TemasDeLaClaseVista extends StatelessWidget {
           tipo: TipoAviso.aviso,
           titulo: esPreparador ? 'Pendiente de que $otro indique sus temas' : 'Indica qué temas llevas a esta clase',
           texto: esPreparador
-              ? 'No tiene ninguna semana del cronograma para este día. Le sale un aviso para indicarlos; mientras tanto, la clase no tiene temas para sortear ni mandar.'
-              : 'No hay ninguna semana de tu cronograma para este día. Hasta que los indiques, $otro no tiene temas para sortear ni para mandarte.',
+              ? 'No ha indicado temas para esta clase y no comparte ningún cronograma con una semana para este día (con la app al día se fijan solos desde su cronograma). Mientras tanto, para mandarle o sortear un tema entran todos los que lleva${respaldo == null ? '' : ' ($respaldo)'}.'
+              : 'No hay ninguna semana de tu cronograma para este día. Hasta que los indiques, $otro puede mandarte o sortear cualquiera de los temas que llevas.',
           accion: esPreparador
               ? (onProponer == null ? null : TextButton(onPressed: () => onProponer!(const []), child: const Text('Proponer temas')))
               : (onElegir == null ? null : FilledButton(onPressed: () => onElegir!(const []), child: const Text('Elegir temas'))),

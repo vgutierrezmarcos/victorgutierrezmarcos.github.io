@@ -10,7 +10,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'core/analitica.dart';
+import 'core/cronograma_providers.dart';
 import 'core/instalacion.dart';
+import 'data/models/temas_clase.dart';
 import 'core/constants.dart';
 import 'core/notificaciones.dart';
 import 'core/pantalla_error.dart';
@@ -167,6 +169,12 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     _relojes.empezar();
     ref.listenManual(sesionesProvider, (_, __) => _relojes.revisar());
     ref.listenManual(cantesProvider, (_, __) => _relojes.revisar());
+    // Los temas de las próximas clases con preparador, fijados desde el
+    // cronograma para que el preparador vea la misma lista (comparta o no el
+    // cronograma). Converge: una vez fijados, el origen ya no es el cronograma.
+    ref.listenManual(cantesProvider, (_, __) => _fijarTemasDeClases(), fireImmediately: true);
+    ref.listenManual(cronogramaProvider, (_, __) => _fijarTemasDeClases());
+    ref.listenManual(ajustesProvider, (_, __) => _fijarTemasDeClases());
     // Un alumno nuevo (o uno que se va): se escuchan sus clases.
     ref.listenManual(alumnosProvider, (antes, ahora) {
       if (antes?.map((a) => '${a.id}:${a.uid}').join() != ahora.map((a) => '${a.id}:${a.uid}').join()) ref.read(sesionesProvider.notifier).escucharAlumnos();
@@ -310,6 +318,24 @@ class _TceeAppState extends ConsumerState<TceeApp> {
   }
 
   String? _ultimaPantalla;
+  bool _fijando = false;
+  Future<void> _fijarTemasDeClases() async {
+    if (_fijando) return;
+    final ajustes = ref.read(ajustesProvider);
+    final pendientes = clasesParaFijar(ref.read(cantesProvider), elegidos: ajustes.temasClases, cronograma: ref.read(cronogramaProvider), noCantar: ajustes.noCantar, ahora: DateTime.now());
+    if (pendientes.isEmpty) return;
+    _fijando = true;
+    try {
+      for (final e in pendientes.entries) {
+        await ref.read(ajustesProvider.notifier).fijarTemasClase(e.key, e.value);
+      }
+    } catch (_) {
+      // Sin ajustes todavía (arranque) o sin sitio: se intenta en el siguiente cambio.
+    } finally {
+      _fijando = false;
+    }
+  }
+
   void _pantallaVista() {
     final nombre = Analitica.nombreDePantalla(_router.routerDelegate.currentConfiguration.uri.toString());
     if (nombre == _ultimaPantalla) return;
