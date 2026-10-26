@@ -2,6 +2,10 @@
 
 > 26/10/2026: el examen pasa a 7 preguntas y 2 horas (ver «Lo general»). Las secciones de abajo conservan el
 > contenido por bloque; su título dice en qué pregunta nueva entra cada uno.
+>
+> 26/10/2026 (tarde): los **cuadros anuales pasan a salir del FMI** (WEO de octubre de 2026 y Artículo IV de 2026) y las
+> previsiones 2026-2027 son del FMI, no de la Comisión. Las cifras de abajo ya están actualizadas; la lista de lo que
+> cambia está en «Cifras que cambian con el paso al FMI», al final.
 
 Para el agente que escriba la solución de máximos (entregable 4). Todas las cifras salen de `datos/*.csv`
 (consulta 26/10/2026; fuentes y códigos en `datos/fuentes.md`). Entre corchetes, dónde está cada dato en el
@@ -43,15 +47,17 @@ cuadernillo: C = cuadro, G = gráfico (la numeración es la del PDF y la de los 
   condicionales.
 - **Diagnóstico general (frase para abrir la 1)**: España encadena desde 2021 una expansión más intensa que la de la
   zona del euro (PIB 2019-2025: +10,0 % frente a +6,8 % [G2]), apoyada en el empleo y en la población (inmigración),
-  con brecha positiva desde 2022 (+2,0 % en 2025 [C1]), superávit exterior y desapalancamiento privado, pero con
+  con la brecha de producción ligeramente positiva y casi cerrada (+0,6 % en 2025 según el FMI [C1]: la expansión se ha
+  apoyado en el aumento del potencial, no en un sobrecalentamiento), superávit exterior y desapalancamiento privado, pero con
   productividad estancada, paro que dobla al europeo, deuda pública en torno al 100 % del PIB y, en 2026, un nuevo
   choque energético que lleva la inflación al 5,0 % (septiembre) y al BCE a subir tipos.
 - **Fases del ciclo** (guía `sec:etapas`, `fig:fases-ciclo`): 2007-2008, final de la expansión inmobiliaria (PIB +3,5 %
-  y +0,8 %; brecha +3,3 %; déficit exterior −9,4 %); 2009-2013, doble recesión (−3,8 % en 2009, −2,9 % en 2012; brecha
-  −9,6 % en 2013; paro 26,1 %; prima de riesgo 435 pb en 2012); 2014-2019, recuperación con desapalancamiento y
-  superávit exterior; 2020, pandemia (−10,9 %, frente a −6,0 % en la zona del euro [G2]); 2021-2023, rebote y choque
-  de precios; 2024-2026, expansión con brecha positiva (+3,7 %, +2,6 %; 0,6 % y 0,7 % trimestral en 1T y 2T de 2026
-  [G1]) y moderación prevista (2,4 % y 1,9 %, Comisión, primavera de 2026 [C1]).
+  y +0,8 %; brecha +4,9 % y +3,6 %; déficit exterior −9,4 %); 2009-2013, doble recesión (−3,8 % en 2009, −2,9 % en 2012; brecha
+  −6,9 % en 2013; paro 26,1 %; prima de riesgo 435 pb en 2012); 2014-2019, recuperación con desapalancamiento y
+  superávit exterior (brecha positiva desde 2018, +2,6 % en 2019); 2020, pandemia (−10,9 %, frente a −6,0 % en la zona
+  del euro [G2]; brecha −9,0 %); 2021-2023, rebote y choque de precios; 2024-2026, expansión con brecha casi cerrada
+  (+3,7 %, +2,6 %; brecha +0,5 % y +0,6 %; 0,6 % y 0,7 % trimestral en 1T y 2T de 2026 [G1]) y moderación prevista
+  (2,5 % y 1,8 %, FMI, WEO de octubre de 2026 [C1]).
 
 ## 1. Perfil cíclico (bloque I) · peso ALTO
 
@@ -63,12 +69,15 @@ la oferta, posición cíclica con la brecha, coyuntura de 2026 y el PIB por habi
   en 2009, −4,9 pp en 2012); la externa es contracíclica (+2,8 pp en 2009, +2,3 pp en 2011 y 2022, por el turismo) y
   resta en 2025 (−0,8 pp; importaciones +5,5 %). Existencias −1,5 pp en 2023 (dato atípico).
 - Trimestral [G1]: 0,5-0,8 % trimestral desde 2023; 2T2026, consumo privado +0,67 pp y externa −0,46 pp. Ritmo
-  anualizado ≈ 2,6-2,8 % ($(1+g)^4-1$), algo por encima de la previsión de 2026 (2,4 %).
+  anualizado ≈ 2,6-2,8 % ($(1+g)^4-1$), en línea con la previsión del FMI para 2026 (2,5 %). Previsión de los
+  componentes (Artículo IV, mayo de 2026): consumo privado 2,5 % y 2,2 %, consumo público 2,3 % y 1,5 %, FBCF 4,1 % y
+  1,7 %, demanda externa −0,6 pp y 0,0 pp en 2026-2027.
 - Oferta [C2]: industria débil (−2,1 % en 2023, +0,6 % en 2025), agricultura volátil (−16,9 % en 2022, sequía; +15,0 % y
   +11,9 % después), servicios de mercado al alza (profesionales +8,3 % y +7,2 % en 2024-2025), construcción +6,0 % en 2025.
-- Brecha y potencial [C1]: brecha −9,6 % (2013) → +3,1 % (2019) → −8,5 % (2020) → +2,0 % (2025); potencial 2,7 % (alto
-  por la población). $\Delta OG\approx\gamma_Y-\gamma_{Y^p}$: 2025, 2,6 − 2,7 ≈ 0 (la brecha casi no se abre; la serie
-  de AMECO es de otra vintage, ver avisos).
+- Brecha y potencial [C1, FMI]: brecha +4,9 % (2007) → −6,9 % (2013) → +2,6 % (2019) → −9,0 % (2020) → +0,6 % (2025),
+  +0,6 % y +0,3 % previstos; potencial 2,8 %, 3,2 % y 2,5 % en 2023-2025 (alto por la población; potencial implícito en la
+  brecha del WEO). $\Delta OG\approx\gamma_Y-\gamma_{Y^p}$: 2025, 2,6 − 2,5 ≈ +0,1 (la brecha casi no se abre). Lectura
+  clave: con el FMI la economía está **cerca de su potencial**, no sobrecalentada (la Comisión daba +2,0 %).
 - PIB por habitante [C1, C2 bis, G2]: 2019-2025 PIB +10,0 % y por habitante +5,0 % (zona del euro +6,8 % y +4,7 %).
   Descomposición 2019-2025 (tasas medias anuales, C2 bis): PIB 1,59 = población 0,79 + peso de la población en edad de
   trabajar −0,01 + tasa de ocupación 0,95 + horas por ocupado −0,46 + PIB por hora 0,33. Crecimiento extensivo
@@ -221,15 +230,20 @@ Respuesta corta y ordenada (semáforo) con una o dos medidas macroprudenciales.
 **Por qué alto**: deuda en torno al 100 %, déficit estructural del 3 % con brecha positiva, envejecimiento y nuevas reglas
 fiscales: es uno de los retos mayores.
 
-- [C9]: saldo −2,4 % (2025), primario 0,0 %, estructural −3,2 % y estructural primario −0,8 % del PIB potencial;
-  previsión −2,4 % y −2,0 %. Deuda 100,5 % (2025), 99,6 % y 98,9 % previstos; máximo 119,3 % (2020).
-- Tono [G13]: 2012-2013 consolidación en recesión (+2,9 y +2,5 pp con brecha −8,7 y −9,6: procíclica); 2019 relajación
-  con brecha +3,1 (−1,3 pp: procíclica expansiva); 2020-2022 expansiva; 2023-2027 consolidación moderada (+1,3, +0,4, +0,3,
-  +0,4, +0,4 pp) con brecha positiva: contracíclica pero tímida.
+- [C9, FMI]: saldo −2,4 % (2025), primario −0,5 % (el FMI no suma los intereses cobrados), estructural −2,3 % del PIB
+  potencial y estructural primario (estructural más intereses) +0,1 %; previsión del saldo −2,4 % y −2,3 % y del
+  estructural −2,3 % y −2,3 %. Deuda bruta 100,5 % (2025), 97,6 % y 95,2 % previstos; máximo 119,2 % (2020). Deuda neta
+  86,0 % (2025).
+- Tono [G13, FMI]: 2008-2009 fuerte expansión (−6,0 y −3,5 pp; en 2008 con brecha aún positiva, +3,6: procíclica);
+  2010-2013 consolidación en recesión (+2,1, +1,3, +4,4 y +1,6 pp con brecha −1,9 a −6,9: procíclica); 2019 relajación con
+  brecha +2,6 (−1,4 pp: procíclica expansiva); 2020-2022 expansiva; 2023-2025 consolidación (+1,7, +0,7, +0,3 pp) con
+  brecha casi cerrada; 2026-2027 tono casi neutral (+0,0 y +0,1 pp). Con el FMI el ajuste estructural pendiente es
+  menor (estructural −2,3 %) que con la Comisión (−3,2 %).
 - Sostenibilidad [G14]: $i$ 2,5 % y $g$ 5,7 % en 2025, $i-g=-3,2$ pp. Saldo primario que estabiliza la deuda:
   (2,49 − 5,72)/1,0572 × 101,4 ≈ −3,1 % del PIB; con primario 0,0 % la deuda debería bajar ≈ 3 pp y bajó 0,9: ajuste
   déficit-deuda de ≈ +2 pp (acumulación de activos; a comprobar, no está en el cuadernillo). Riesgos: el tipo marginal
-  (bono 3,9 %) supera ya al implícito (2,5 %) y $g$ se modera (5,1 % y 4,5 %); envejecimiento; defensa. Reglas de 2024:
+  (bono 3,9 %) supera ya al implícito (2,5 %; intereses al 2,5 % y 2,6 % del PIB en 2026-2027, Artículo IV) y $g$ se
+  modera (6,2 % y 5,4 %, FMI); envejecimiento; defensa. Reglas de 2024:
   senda de gasto primario neto del plan fiscal-estructural de medio plazo (deuda > 60 %).
 - *Policy mix* 2026: monetaria contractiva para la zona y fiscal ligeramente contractiva: coherentes; como el tipo real es
   más bajo para España, la fiscal debería apretar algo más.
@@ -244,9 +258,9 @@ deuda, demografía).
 - Fortalezas: crecimiento por encima de la zona del euro; empleo récord; superávit exterior y PIIN mejorando (NENDI
   −9,7 %); desapalancamiento privado; banca rentable; prima de riesgo baja.
 - Debilidades: productividad estancada (PIB por hora +0,33 % anual en 2019-2025); paro estructural (10,5 %; juvenil
-  24,9 %); deuda pública ≈ 100 % con déficit estructural −3,2 %; envejecimiento (dependencia 31,2 %); dependencia
+  24,9 %); deuda pública ≈ 100 % con déficit estructural −2,3 % (FMI); envejecimiento (dependencia 31,2 %); dependencia
   energética; vivienda; pérdida de competitividad coste desde 2019; I+D baja (1,50 % frente a 2,26 %).
-- Riesgos a la baja de las previsiones (2,4 % y 1,9 %): petróleo caro, endurecimiento del BCE, aranceles, consolidación
+- Riesgos a la baja de las previsiones del FMI (2,5 % y 1,8 %): petróleo caro, endurecimiento del BCE, aranceles, consolidación
   fiscal, fin de los fondos europeos (2026), corrección inmobiliaria. Al alza: inmigración, turismo, ejecución de los
   fondos, inversión en intangibles, datos de 2026 por encima de lo previsto.
 - Reformas: productividad (capital humano, tamaño empresarial, I+D, competencia), mercado de trabajo (políticas activas,
@@ -259,12 +273,53 @@ deuda, demografía).
 
 - **Convenciones**: en el tipo de cambio efectivo real un aumento es una apreciación; la deuda externa neta va en C7 con
   signo positivo y en G11 con signo negativo; en la cuenta financiera, + es salida neta de capital.
-- **Dos vintages**: AMECO (primavera de 2026) es anterior a la última revisión del INE (PIB 2025: 2,6 % en el cuadro,
-  2,8 % en AMECO). Brecha, potencial y saldos ajustados son de AMECO en toda la serie. Se actualizará con las previsiones
-  de otoño (17/11/2026; pasos en README.md).
+- **FMI**: WEO de octubre de 2026 (datos de España del 25/09/2026, ya con la revisión del INE: PIB 2025 = 2,6 %, como
+  Eurostat) para la serie completa de las filas que da; Artículo IV de mayo de 2026 para las previsiones que el WEO no
+  tiene (componentes de la demanda, intereses, subcuentas de la balanza y PIIN). Ojo: el Artículo IV es anterior (PIB
+  2026 = 2,1 % allí, 2,5 % en el WEO; brecha 2025 = 1,2 % allí, 0,6 % en el WEO). El empleo del FMI es el de la EPA
+  (2024: +2,2 %), no el de la contabilidad nacional (+3,0 %). Se actualizará con el WEO de abril de 2027 y el Artículo IV
+  de 2027 (pasos en README.md).
 - **IPCA**: anual con ECOICOP 1 (hasta 2025) y mensual con ECOICOP 2 (G6); coinciden en 2025 (2,7 %).
 - **Vacantes**: salto de serie 2009-2010 (C3 y G3 desde 2010). **Banca**: CET1 y dudosos desde 2014. **Alta tecnología**:
   hasta 2022. **I+D**: hasta 2024. **Calificación crediticia y colchón anticíclico**: no hay fuente oficial descargable; no
   están en el cuadernillo.
 - **Brent**: EIA, comprobado con FRED. **Exportaciones a EE. UU.**: Comext, valor en euros sin deflactar; la suma móvil de
   12 meses tarda en reflejar los cambios.
+
+## Cifras que cambian con el paso al FMI (26/10/2026)
+
+Lo que cambia en el cuadernillo y, por tanto, en la solución (antes: Eurostat y Comisión, AMECO de primavera de 2026;
+ahora: FMI). Lo que no está en la lista no cambia.
+
+| Cifra | Antes | Ahora (FMI) | Dónde |
+|---|---|---|---|
+| Brecha de producción 2025 | +2,0 % | **+0,6 %** (2026-2027: +0,6 % y +0,3 %) | C1, G13 |
+| Brecha 2007 / 2013 / 2019 / 2020 | +3,3 / −9,6 / +3,1 / −8,5 % | +4,9 / −6,9 / +2,6 / −9,0 % | C1, G13 |
+| PIB potencial 2025 | 2,7 % | 2,5 % (implícito en la brecha del WEO) | C1 |
+| Previsión del PIB 2026 / 2027 | 2,4 / 1,9 % | **2,5 / 1,8 %** | C1 |
+| Previsión del consumo privado / público / FBCF 2026 | 2,9 / 1,7 / 4,4 % | 2,5 / 2,3 / 4,1 % (2027: 2,2 / 1,5 / 1,7 %) | C1 |
+| Previsión de la demanda externa 2026 / 2027 | — | −0,6 / 0,0 pp (nueva) | C1 |
+| Exportaciones 2022 / 2025 | 14,2 / 2,6 % | 14,9 / 2,8 % (previsiones 2,2 y 2,4 %) | C1 |
+| Empleo 2024 (y serie) | +3,0 % (contabilidad nacional) | +2,2 % (EPA, FMI); previsiones 1,5 y 0,6 % | C3 |
+| Paro previsto 2026 / 2027 | 9,9 / 9,6 % | 9,8 / 9,8 % | C3 |
+| IPCA previsto 2026 / 2027 | 3,0 / 2,5 % | **3,7 / 2,7 %** | C5 |
+| Deflactor del PIB previsto | — | 3,6 / 3,5 % (nuevo) | C5 |
+| Cuenta corriente prevista 2026 / 2027 | 1,9 / 1,8 % | 2,6 / 2,0 % | C7 |
+| Bienes / servicios / PIIN previstos 2026 | — | −4,3 / 6,9 / −39,1 % (2027: −4,5 / 6,9 / −35,2 %) | C7 |
+| Ahorro nacional / FBC previstos 2026 | — | 24,3 / 21,7 % | C4 |
+| Saldo primario 2025 | 0,0 % | −0,5 % (definición del FMI) | C9 |
+| Saldo ajustado de ciclo | −3,6 % (2025) | fila retirada (el FMI no la da) | C9 |
+| Saldo estructural 2025 | −3,2 % | **−2,3 %** (previsión −2,3 y −2,3 %) | C9 |
+| Saldo estructural primario 2025 | −0,8 % | **+0,1 %** (estructural + intereses) | C9, G13 |
+| Δ saldo estructural primario 2023 / 2024 / 2025 | +1,3 / +0,4 / +0,3 pp | +1,7 / +0,7 / +0,3 pp; 2012 +4,4 (antes +2,9) | G13 |
+| Deuda prevista 2026 / 2027 | 99,6 / 98,9 % | **97,6 / 95,2 %** | C9 |
+| Deuda neta | — | 86,0 % en 2025 (nueva fila) | C9 |
+| PIB nominal previsto | 5,1 / 4,5 % | 6,2 / 5,4 % | C9 |
+| Gastos previstos | 45,8 / 45,5 % | 46,1 / 46,3 % | C9 |
+| Intereses previstos | 2,5 / 2,5 % | 2,5 / 2,6 % (Artículo IV) | C9 |
+
+Consecuencias para el texto de la solución: (1) el diagnóstico cíclico pasa de «brecha positiva del 2 %, cierto
+sobrecalentamiento» a «economía cerca del potencial, que crece por la oferta (población)»: esto refuerza la lectura de la
+inflación de 2026 como choque de oferta y quita peso al argumento de la demanda; (2) el esfuerzo fiscal pendiente es
+menor (estructural −2,3 %, estructural primario ≈ 0) y la deuda baja algo más deprisa; (3) las previsiones de inflación
+del FMI (3,7 % en 2026) recogen ya el choque del petróleo.

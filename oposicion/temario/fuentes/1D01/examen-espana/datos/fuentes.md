@@ -1,11 +1,12 @@
 # Fuentes de los datos del examen de ejemplo de España (1D01)
 
-Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guía: 23/10/2026). Todo se descarga con `descargar.py` de las API oficiales; ninguna cifra se ha tecleado a mano. Las cifras clave se comprobaron dos veces con otra fuente o con otro cálculo (`verificar.py` → `verificacion.csv`: 14 comprobaciones, todas «OK»).
+Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guía: 23/10/2026). Todo se descarga con `descargar.py` de las API oficiales; ninguna cifra se ha tecleado a mano. Las cifras clave se comprobaron dos veces con otra fuente o con otro cálculo (`verificar.py` → `verificacion.csv`: 15 comprobaciones «OK» y 4 comparaciones informativas entre el WEO y el Artículo IV).
 
 ## Accesos (API)
 
 - **Eurostat**, API de difusión: `https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/<código>?<filtros>` (navegador: `https://ec.europa.eu/eurostat/databrowser/view/<código>/default/table`). Comercio de bienes: API de Comext, `https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409`.
-- **Comisión Europea, AMECO** (previsiones de primavera de 2026, publicadas el 21/05/2026; versión de 03/06/2026; la siguiente, de otoño, el 17/11/2026): `https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=<código>&countries=ESP`.
+- **FMI, World Economic Outlook** de octubre de 2026 (publicado el 13/10/2026; datos de España del 25/09/2026; último dato observado, 2025): API SDMX `https://api.imf.org/external/sdmx/2.1/data/IMF.RES,WEO/ESP..A` (extracto en `fmi-weo-2026-10.csv`; códigos del WEO en la columna fuente).
+- **FMI, Spain: 2026 Article IV Consultation** (IMF Country Report 26/102, 21/05/2026): cuadros 1, 2b y 4 del informe del staff, extraídos del PDF `https://www.imf.org/-/media/files/publications/cr/2026/english/1espea2026001.pdf` (extracto en `fmi-articulo-iv-2026.csv`). Consulta: 26/10/2026.
 - **Banco Central Europeo**, portal de datos: `https://data-api.ecb.europa.eu/service/data/<flujo>/<clave>`.
 - **EIA** (Brent, serie RBRTE), vía la guía 1D01 (`fuentes/1D01/datos/brent.csv`); comprobado con FRED (MCOILBRENTEU) el 26/10/2026.
 
@@ -13,8 +14,9 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 
 | Conjunto | Actualizado |
 |---|---|
-| `AMECO` | previsiones de primavera de 2026 (21/05/2026; versión de 03/06/2026) |
 | `BCE` | 2026-10-26 |
+| `FMI Artículo IV` | IMF Country Report 26/102, 21/05/2026 |
+| `FMI WEO` | octubre de 2026 (publicado el 13/10/2026; España, 25/09/2026) |
 | `bop_c6_a` | 2026-10-02 |
 | `bop_gdp6_q` | 2026-10-02 |
 | `demo_pjanbroad` | 2026-09-25 |
@@ -55,28 +57,28 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 
 ### Cuadro 1. Demanda agregada y actividad (España) (`cuadro1.csv`)
 
-- Eurostat (nama_10_gdp, nama_10_an6, nama_10_pe; contabilidad nacional del INE). PIB potencial, brecha y previsiones 2026-2027: Comisión Europea, AMECO (primavera de 2026), anterior a la última revisión de la contabilidad nacional (PIB de 2025: +2,8 % en AMECO, +2,6 % en Eurostat).
+- FMI, WEO de octubre de 2026 (PIB, exportaciones, importaciones, PIB por habitante, PIB nominal, brecha y potencial, con previsiones 2026-2027); Eurostat (componentes de la demanda y contribuciones; nama_10_gdp, nama_10_an6); previsiones de los componentes: FMI, Artículo IV de 2026 (cuadro 1).
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
 |---|---|---|---|
-| `pib` | PIB | Eurostat nama_10_gdp B1GQ CLV_PCH_PRE; prev. AMECO OVGD | 2025 (+ previsión 2026-2027) |
-| `cpriv` | Consumo privado (hogares e ISFLSH) | nama_10_gdp P31_S14_S15; prev. AMECO OCPH | 2025 (+ previsión 2026-2027) |
-| `cpub` | Consumo público | nama_10_gdp P3_S13; prev. AMECO OCTG | 2025 (+ previsión 2026-2027) |
-| `fbcf` | Formación bruta de capital fijo | nama_10_gdp P51G; prev. AMECO OIGT | 2025 (+ previsión 2026-2027) |
+| `pib` | PIB | FMI WEO oct. 2026 NGDP_RPCH | 2025 (+ previsión 2026-2027) |
+| `cpriv` | Consumo privado (hogares e ISFLSH) | nama_10_gdp P31_S14_S15; prev. FMI Artículo IV 2026, cuadro 1 | 2025 (+ previsión 2026-2027) |
+| `cpub` | Consumo público | nama_10_gdp P3_S13; prev. FMI Artículo IV 2026, cuadro 1 | 2025 (+ previsión 2026-2027) |
+| `fbcf` | Formación bruta de capital fijo | nama_10_gdp P51G; prev. FMI Artículo IV 2026, cuadro 1 | 2025 (+ previsión 2026-2027) |
 | `fbcf_viv` | Viviendas | nama_10_an6 N111G CLV_PCH_PRE | 2025 |
 | `fbcf_otc` | Otras construcciones | nama_10_an6 N112G | 2025 |
 | `fbcf_maq` | Maquinaria, bienes de equipo y armamento | nama_10_an6 N11MG | 2025 |
 | `fbcf_pi` | Productos de la propiedad intelectual | nama_10_an6 N117G | 2025 |
-| `x` | Exportaciones de bienes y servicios | nama_10_gdp P6; prev. AMECO OXGS | 2025 (+ previsión 2026-2027) |
-| `m` | Importaciones de bienes y servicios | nama_10_gdp P7; prev. AMECO OMGS | 2025 (+ previsión 2026-2027) |
+| `x` | Exportaciones de bienes y servicios | FMI WEO TX_RPCH | 2025 (+ previsión 2026-2027) |
+| `m` | Importaciones de bienes y servicios | FMI WEO TM_RPCH | 2025 (+ previsión 2026-2027) |
 | `c_int` | Demanda nacional (contribución, pp) | nama_10_gdp CON_PPCH_PRE: P3+P51G+P52_P53 | 2025 |
 | `c_exist` | de la cual, variación de existencias (pp) | nama_10_gdp CON_PPCH_PRE P52_P53 | 2025 |
-| `c_ext` | Demanda externa neta (contribución, pp) | nama_10_gdp CON_PPCH_PRE: P6+P7 | 2025 |
-| `pib_pc` | PIB real por habitante | nama_10_gdp B1GQ CLV10_MEUR / nama_10_pe POP_NC | 2025 |
-| `pib_nom` | PIB nominal (miles de millones de euros) | nama_10_gdp B1GQ CP_MEUR; prev. AMECO UVGD | 2025 (+ previsión 2026-2027) |
-| `pot` | PIB potencial | AMECO OVGDP (Comisión, función de producción) | 2025 (+ previsión 2026-2027) |
-| `brecha` | Brecha de producción (% del PIB potencial) | AMECO AVGDGP | 2025 (+ previsión 2026-2027) |
+| `c_ext` | Demanda externa neta (contribución, pp) | nama_10_gdp CON_PPCH_PRE: P6+P7; prev. FMI Artículo IV 2026, cuadro 1 | 2025 (+ previsión 2026-2027) |
+| `pib_pc` | PIB real por habitante | FMI WEO NGDPRPC (variación) | 2025 (+ previsión 2026-2027) |
+| `pib_nom` | PIB nominal (miles de millones de euros) | FMI WEO NGDP | 2025 (+ previsión 2026-2027) |
+| `pot` | PIB potencial | FMI WEO: NGDP_R / (1 + NGAP_NPGDP/100), variación | 2025 (+ previsión 2026-2027) |
+| `brecha` | Brecha de producción (% del PIB potencial) | FMI WEO NGAP_NPGDP | 2025 (+ previsión 2026-2027) |
 
 ### Cuadro 2. Oferta: valor añadido bruto real por ramas (España) (`cuadro2.csv`)
 
@@ -97,16 +99,16 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 
 ### Cuadro 3. Mercado de trabajo, productividad, costes y demografía (España) (`cuadro3.csv`)
 
-- Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc; lfsa_*, une_*; jvs_q_r21; migr_pop1ctz, demo_pjanind. Previsiones: AMECO.
+- Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc; lfsa_*, une_*; jvs_q_r21; migr_pop1ctz, demo_pjanind. Empleo, paro y población: FMI WEO de octubre de 2026.
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
 |---|---|---|---|
-| `emp` | Empleo (personas, contabilidad nacional) | nama_10_pe EMP_DC; prev. AMECO NETD | 2025 (+ previsión 2026-2027) |
+| `emp` | Empleo (personas) | FMI WEO LE (variación) | 2025 (+ previsión 2026-2027) |
 | `horas` | Horas trabajadas | nama_10_a10_e THS_HW TOTAL | 2025 |
 | `act` | Tasa de actividad (15-64 años, % de la población) | lfsa_argan Y15-64 | 2025 |
 | `templeo` | Tasa de empleo (15-64 años, % de la población) | lfsa_ergan Y15-64 | 2025 |
-| `paro` | Tasa de paro (15-74 años, % de los activos) | lfsa_urgan Y15-74; prev. AMECO ZUTN | 2025 (+ previsión 2026-2027) |
+| `paro` | Tasa de paro | FMI WEO LUR | 2025 (+ previsión 2026-2027) |
 | `paro_ze` | Tasa de paro de la zona del euro (15-74 años) | une_rt_a EA20 Y15-74 | 2025 |
 | `paro_juv` | Tasa de paro juvenil (15-24 años) | lfsa_urgan Y15-24 | 2025 |
 | `paro_ld` | Paro de larga duración (% de los activos) | une_ltu_a LTU Y15-74 PC_ACT | 2025 |
@@ -117,7 +119,7 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 | `rem` | Remuneración por asalariado | nama_10_gdp D1 CP_MEUR / nama_10_pe SAL_DC | 2025 |
 | `clu` | Costes laborales unitarios nominales | nama_10_lp_ulc NULC_PER | 2025 |
 | `clu_ze` | Costes laborales unitarios nominales, zona del euro | nama_10_lp_ulc NULC_PER EA20 | 2025 |
-| `pob` | Población | nama_10_pe POP_NC | 2025 |
+| `pob` | Población | FMI WEO LP (variación) | 2025 (+ previsión 2026-2027) |
 | `extr` | Población de nacionalidad extranjera (% del total, 1 de enero) | migr_pop1ctz TOTAL-NAT | 2025 |
 | `dep` | Tasa de dependencia de los mayores (65+ sobre 15-64, %) | demo_pjanind OLDDEP1 | 2025 |
 
@@ -133,8 +135,8 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 | `inv_hog` | Tasa de inversión de los hogares (% de la renta disponible) | nasa_10_ki IRG_S14_S15 | 2025 |
 | `inv_snf` | Tasa de inversión de las empresas no financieras (% del VAB) | nasa_10_ki IRG_S11 | 2025 |
 | `ben_snf` | Participación de los beneficios de las empresas (% del VAB) | nasa_10_ki B2G_B3G_RAT_S11 | 2025 |
-| `fbc` | Formación bruta de capital (% del PIB) | nama_10_gdp P5G PC_GDP | 2025 |
-| `ahorro_nac` | Ahorro nacional bruto (% del PIB) | nasa_10_nf_tr B8G S1 / nama_10_gdp B1GQ | 2025 |
+| `fbc` | Formación bruta de capital (% del PIB) | FMI WEO NID_NGDP | 2025 (+ previsión 2026-2027) |
+| `ahorro_nac` | Ahorro nacional bruto (% del PIB) | FMI WEO NGSD_NGDP | 2025 (+ previsión 2026-2027) |
 | `flujo_cred` | Flujo de crédito al sector privado (% del PIB) | tipspc10 PC_GDP | 2025 |
 | `phog` | Préstamos bancarios a hogares (variación interanual en diciembre) | BCE BSI.M.ES.N.A.A20.A.I.U2.2250.Z01.A | 2025 |
 | `psnf` | Préstamos bancarios a sociedades no financieras (variación interanual en diciembre) | BCE BSI.M.ES.N.A.A20.A.I.U2.2240.Z01.A | 2025 |
@@ -148,18 +150,18 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 
 ### Cuadro 5. Precios (España y zona del euro) (`cuadro5.csv`)
 
-- Eurostat: prc_hicp_aind (IPCA, ECOICOP ver. 1), nama_10_gdp (deflactores). Previsión del IPCA: AMECO ZCPIH.
+- Eurostat: prc_hicp_aind (IPCA, ECOICOP ver. 1), nama_10_gdp (deflactores). IPCA general y deflactor del PIB: FMI WEO de octubre de 2026 (con previsiones).
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
 |---|---|---|---|
-| `ipca` | IPCA: índice general | prc_hicp_aind CP00 RCH_A_AVG; prev. AMECO ZCPIH | 2025 (+ previsión 2026-2027) |
+| `ipca` | IPCA: índice general | FMI WEO PCPIPCH | 2025 (+ previsión 2026-2027) |
 | `ipca_sub` | IPCA sin energía ni alimentos (subyacente) | prc_hicp_aind TOT_X_NRG_FOOD | 2025 |
 | `ipca_nrg` | IPCA: energía | prc_hicp_aind NRG | 2025 |
 | `ipca_food` | IPCA: alimentos, bebidas y tabaco | prc_hicp_aind FOOD | 2025 |
 | `ipca_ze` | IPCA de la zona del euro: índice general | prc_hicp_aind CP00 EA | 2025 |
 | `ipca_ze_sub` | IPCA de la zona del euro: subyacente | prc_hicp_aind TOT_X_NRG_FOOD EA | 2025 |
-| `def_pib` | Deflactor del PIB | nama_10_gdp B1GQ PD_PCH_PRE_EUR | 2025 |
+| `def_pib` | Deflactor del PIB | FMI WEO NGDP_D (variación) | 2025 (+ previsión 2026-2027) |
 | `def_c` | Deflactor del consumo privado | nama_10_gdp P31_S14_S15 PD_PCH_PRE_EUR | 2025 |
 | `def_x` | Deflactor de las exportaciones | nama_10_gdp P6 PD_PCH_PRE_EUR | 2025 |
 | `def_m` | Deflactor de las importaciones | nama_10_gdp P7 PD_PCH_PRE_EUR | 2025 |
@@ -184,18 +186,18 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 
 ### Cuadro 7. Sector exterior (España) (`cuadro7.csv`)
 
-- Eurostat: bop_c6_a (balanza de pagos MBP6 del Banco de España, en % del PIB de nama_10_gdp), bop_gdp6_q, tipsii10. Previsión: AMECO UBCA. Cuenta financiera: variación neta de activos menos variación neta de pasivos (+ = salida neta de capital).
+- Eurostat: bop_c6_a (balanza de pagos MBP6 del Banco de España, en % del PIB de nama_10_gdp), bop_gdp6_q, tipsii10. Cuenta corriente: FMI WEO de octubre de 2026; previsiones de las subcuentas y de la PIIN: FMI, Artículo IV de 2026 (cuadro 4). Cuenta financiera: variación neta de activos menos variación neta de pasivos (+ = salida neta de capital).
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
 |---|---|---|---|
-| `cc` | Cuenta corriente | bop_c6_a CA BAL; prev. AMECO UBCA (contabilidad nacional) | 2025 (+ previsión 2026-2027) |
-| `bie` | Bienes | bop_c6_a G BAL | 2025 |
-| `ser` | Servicios | bop_c6_a S BAL | 2025 |
+| `cc` | Cuenta corriente | FMI WEO BCA_NGDPD | 2025 (+ previsión 2026-2027) |
+| `bie` | Bienes | bop_c6_a G BAL; prev. FMI Artículo IV 2026, cuadro 4 (exportaciones menos importaciones) | 2025 (+ previsión 2026-2027) |
+| `ser` | Servicios | bop_c6_a S BAL; prev. FMI Artículo IV 2026, cuadro 4 (exportaciones menos importaciones) | 2025 (+ previsión 2026-2027) |
 | `tur` | de los cuales, viajes (turismo) | bop_c6_a SD BAL | 2025 |
-| `rp` | Rentas primarias | bop_c6_a IN1 BAL | 2025 |
-| `rs` | Rentas secundarias | bop_c6_a IN2 BAL | 2025 |
-| `kap` | Cuenta de capital | bop_c6_a KA BAL | 2025 |
+| `rp` | Rentas primarias | bop_c6_a IN1 BAL; prev. FMI Artículo IV 2026, cuadro 4 | 2025 (+ previsión 2026-2027) |
+| `rs` | Rentas secundarias | bop_c6_a IN2 BAL; prev. FMI Artículo IV 2026, cuadro 4 | 2025 (+ previsión 2026-2027) |
+| `kap` | Cuenta de capital | bop_c6_a KA BAL; prev. FMI Artículo IV 2026, cuadro 4 | 2025 (+ previsión 2026-2027) |
 | `cnf` | Capacidad (+) o necesidad (-) de financiación | bop_c6_a CKA BAL | 2025 |
 | `fa` | Cuenta financiera, saldo neto (+ = salida neta) | bop_c6_a FA NET | 2025 |
 | `fa_d` | Inversión directa | bop_c6_a FA__D__F NET | 2025 |
@@ -205,7 +207,7 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 | `fa_o_bde` | de la cual, Banco de España | bop_c6_a FA__O__F NET sector S121 | 2025 |
 | `fa_r` | Activos de reserva | bop_c6_a FA__R__F ASS sector S121 | 2025 |
 | `eo` | Errores y omisiones | bop_c6_a EO NET | 2025 |
-| `piin` | Posición de inversión internacional neta | tipsii10 PC_GDP | 2025 |
+| `piin` | Posición de inversión internacional neta | tipsii10 PC_GDP; prev. FMI Artículo IV 2026, cuadro 4 | 2025 (+ previsión 2026-2027) |
 | `piin_nendi` | PIIN sin instrumentos que no generan impago | bop_gdp6_q FA__NENDI N_LE | 2025 |
 | `den` | Deuda externa neta | bop_gdp6_q FA__FNED NE_LE | 2025 |
 
@@ -233,22 +235,22 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 
 ### Cuadro 9. Cuentas públicas (España) (`cuadro9.csv`)
 
-- Eurostat: gov_10a_main, gov_10dd_edpt1 (notificación de octubre de 2026), irt_lt_mcby_a. Saldos ajustados y previsiones: AMECO (primavera de 2026).
+- Eurostat: gov_10a_main, gov_10dd_edpt1 (notificación de octubre de 2026), irt_lt_mcby_a. Ingresos, gastos, saldos, saldo estructural, deuda y PIB nominal: FMI WEO de octubre de 2026; intereses: Eurostat (2026-2027, Artículo IV de 2026).
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
 |---|---|---|---|
-| `ing` | Ingresos | gov_10a_main TR | 2025 |
-| `gas` | Gastos | gov_10a_main TE; prev. AMECO UUTGE | 2025 (+ previsión 2026-2027) |
-| `int` | de los cuales, intereses | gov_10a_main D41PAY; prev. AMECO UYIGE | 2025 (+ previsión 2026-2027) |
-| `saldo` | Saldo (capacidad o necesidad de financiación) | gov_10a_main B9; prev. AMECO UBLGE | 2025 (+ previsión 2026-2027) |
-| `prim` | Saldo primario | B9 + D41PAY; prev. AMECO UBLGE + UYIGE | 2025 (+ previsión 2026-2027) |
-| `cicl` | Saldo ajustado de ciclo | AMECO UBLGAP | 2025 (+ previsión 2026-2027) |
-| `estr` | Saldo estructural | AMECO UBLGAPS | 2025 (+ previsión 2026-2027) |
-| `estr_p` | Saldo estructural primario | AMECO UBLGBPS | 2025 (+ previsión 2026-2027) |
-| `deuda` | Deuda pública (definición del PDE) | gov_10dd_edpt1 GD; prev. AMECO UDGG | 2025 (+ previsión 2026-2027) |
+| `ing` | Ingresos | FMI WEO GGR_NGDP | 2025 (+ previsión 2026-2027) |
+| `gas` | Gastos | FMI WEO GGX_NGDP | 2025 (+ previsión 2026-2027) |
+| `int` | de los cuales, intereses | gov_10a_main D41PAY; prev. FMI Artículo IV 2026, cuadro 2b | 2025 (+ previsión 2026-2027) |
+| `saldo` | Saldo | FMI WEO GGXCNL_NGDP | 2025 (+ previsión 2026-2027) |
+| `prim` | Saldo primario | FMI WEO GGXONLB_NGDP (sin intereses cobrados) | 2025 (+ previsión 2026-2027) |
+| `estr` | Saldo estructural (% del PIB potencial) | FMI WEO GGSB_NPGDP | 2025 (+ previsión 2026-2027) |
+| `estr_p` | Saldo estructural primario (% del PIB potencial) | FMI WEO GGSB_NPGDP + intereses (Eurostat D41PAY; 2026-2027, Artículo IV) | 2025 (+ previsión 2026-2027) |
+| `deuda` | Deuda pública bruta | FMI WEO GGXWDG_NGDP | 2025 (+ previsión 2026-2027) |
+| `deuda_neta` | Deuda pública neta | FMI WEO GGXWDN_NGDP | 2025 (+ previsión 2026-2027) |
 | `impl` | Tipo de interés implícito de la deuda (intereses / deuda del año anterior) | D41PAY MIO_EUR / GD MIO_EUR (t-1) | 2025 |
-| `pibn` | PIB nominal | nama_10_gdp B1GQ CP_MEUR; prev. AMECO UVGD | 2025 (+ previsión 2026-2027) |
+| `pibn` | PIB nominal | FMI WEO NGDP (variación) | 2025 (+ previsión 2026-2027) |
 | `rend` | Rendimiento de la deuda pública a 10 años (media anual) | irt_lt_mcby_a MCBY ES | 2025 |
 | `dif` | Diferencial frente al bono alemán a 10 años (pb) | irt_lt_mcby_a ES - DE | 2025 |
 
@@ -275,18 +277,19 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 | 10 | `g10-cuenta-corriente.csv` | Cuenta corriente de España por componentes y capacidad/necesidad de financiación (% del PIB). Eurostat bop_c6_a (MIO_EUR, BAL, sector S1) dividido por nama_10_gdp B1GQ CP_MEUR. rentas = IN1 + IN2; resto_servicios = S - SD. Consulta: 2026-10-26. Último dato: 2025. |
 | 11 | `g11-piin.csv` | Posición de inversión internacional neta, PIIN sin instrumentos que no generan impago (NENDI) y deuda externa neta con signo cambiado (% del PIB). Eurostat tipsii10 (PC_GDP) y bop_gdp6_q (FA__NENDI N_LE; FA__FNED NE_LE, que aquí se cambia de signo: negativo = deudor neto). Consulta: 2026-10-26. Último dato: 2025. |
 | 12 | `g12-tipos.csv` | Tipos de interés (%), mensual: facilidad de depósito del BCE (último día del mes), Euríbor a 12 meses (media), coste de los préstamos nuevos a hogares para vivienda en España, rendimiento de la deuda pública a 10 años de España y Alemania (media). BCE FM.D.U2.EUR.4F.KR.DFR.LEV, FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA, MIR.M.ES.B.A2C.AM.R.A.2250.EUR.N; Eurostat irt_lt_mcby_m (actualizado el 2026-10-13T11:00:00+0200). Consulta: 2026-10-26. Último dato: 2026-09. |
-| 13 | `g13-orientacion-fiscal.csv` | Brecha de producción (% del PIB potencial) y saldo estructural primario de las AAPP (% del PIB potencial) y su variación (pp), 2007-2027 (2026-2027, previsión). Comisión Europea, AMECO: AVGDGP, UBLGBPS (previsiones de primavera de 2026). Consulta: 2026-10-26. Último dato: 2027. |
+| 13 | `g13-orientacion-fiscal.csv` | Brecha de producción (% del PIB potencial) y saldo estructural primario de las AAPP (% del PIB potencial) y su variación (pp), 2008-2027 (2026-2027, previsión). FMI, WEO de octubre de 2026: NGAP_NPGDP y GGSB_NPGDP; saldo estructural primario = GGSB_NPGDP + intereses (Eurostat gov_10a_main D41PAY; 2026-2027, Artículo IV de 2026, cuadro 2b). Consulta: 2026-10-26. Último dato: 2027. |
 | 14 | `g14-deuda-i-g.csv` | Deuda pública (% del PIB), tipo de interés implícito (intereses del año / deuda del año anterior, %), crecimiento del PIB nominal (%) y diferencial i - g (pp). Eurostat gov_10dd_edpt1 (GD, MIO_EUR y PC_GDP), gov_10a_main (D41PAY, MIO_EUR), nama_10_gdp (B1GQ, CP_MEUR). Consulta: 2026-10-26. Último dato: 2025. |
 
 ## Lo que no se encontró o se cambió
 
-- **Saldo estructural 2007-2009**: AMECO solo lo da desde 2010 para España (celdas en blanco).
+- **Saldo ajustado de ciclo**: el FMI no lo publica en el WEO ni en el Artículo IV; la fila se retiró (el de la Comisión no casa con la brecha del FMI). El **saldo estructural primario** es el estructural del WEO más los intereses (Eurostat; 2026-2027, Artículo IV): en 2025 da +0,1 %, frente a −0,1 % en el Artículo IV (que excluye además los intereses cobrados).
 - **CET1 y préstamos dudosos antes de 2014**: los datos bancarios consolidados del BCE (CBD2) empiezan en 2014 con la definición de Basilea III y FINREP; para 2008-2013 habría que acudir al Boletín Estadístico del Banco de España (otra definición), que no se ha descargado ni se mezcla. ROE y ROA de España desde 2008.
 - **Tasa de vacantes 2007-2009**: la serie de Eurostat (jvs_q_r21) salta de 0,7 % (4T2009) a 1,4 % (1T2010) sin marca de ruptura; el cuadro y el gráfico de Beveridge la dan desde 2010.
 - **Paro de la zona del euro y paro de larga duración 2007-2008**: une_rt_a y une_ltu_a empiezan en 2009.
 - **Exportaciones de alta tecnología**: tipsex12 llega a 2022 (Eurostat no la ha actualizado). **Gasto en I+D**: hasta 2024.
-- **Previsiones 2026-2027**: solo en las filas que AMECO publica. No hay previsión de contribuciones ni de la balanza por componentes. Las del Banco de España de septiembre de 2026 no se descargaron (sin enlace legible por programa): una sola fuente, la Comisión. Pendiente: actualizarlas con las de otoño (17/11/2026; ver README.md).
-- **AMECO frente a Eurostat**: AMECO (mayo de 2026) es anterior a la última revisión del INE: PIB de 2025 +2,8 % en AMECO y +2,6 % en Eurostat; deuda de 2025, 100,7 % frente a 100,5 %. Brecha, potencial y saldos ajustados: AMECO en toda la serie.
+- **Previsiones 2026-2027**: del FMI. WEO de octubre de 2026 en las filas que da (PIB, exportaciones, importaciones, PIB por habitante y nominal, brecha y potencial, empleo, paro, población, IPCA, deflactor, cuenta corriente, ahorro e inversión, cuentas públicas); Artículo IV de mayo de 2026 para los componentes de la demanda, la demanda externa, los intereses, las subcuentas de la balanza y la PIIN (sobre la historia de Eurostat). El WEO no trae la cuenta financiera de España (series vacías). Sin previsión: contribución de la demanda nacional, existencias, componentes de la inversión, ramas, salarios y CLU, banca, crédito.
+- **FMI frente a Eurostat**: el WEO de octubre (datos del 25/09/2026) ya recoge la revisión del INE (PIB 2025 +2,6 %, deuda 100,5 %); el Artículo IV (mayo) no (PIB 2025 +2,8 %, cuenta corriente 2,9 %, PIIN −44,8 %): por eso solo se usan sus previsiones. El empleo del WEO es el de la EPA.
+- **Componentes de la demanda y balanza por subcuentas**: el WEO no los da y el Artículo IV solo desde 2023; la historia es de Eurostat.
 - **IPCA anual**: prc_hicp_aind (ECOICOP ver. 1, hasta 2025); el mensual de 2026, prc_hicp_minr (ECOICOP ver. 2). En 2025 coinciden (2,7 %).
 - **Calificación crediticia**: no hay fuente oficial (las agencias son privadas); no se incluye. **Vida media de la deuda y tenedores**: el Tesoro los publica en PDF, sin API; no se incluyen.
 - **Colchón de capital anticíclico (macroprudencial)**: no se encontró una serie descargable por programa (Banco de España/JERS); no se incluye. La pregunta 8 se responde con las ratios bancarias, el crédito, la deuda privada y el precio de la vivienda.

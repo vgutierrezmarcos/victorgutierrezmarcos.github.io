@@ -5,13 +5,15 @@ act = dict(l.rstrip('\n').split('\t') for l in open('actualizaciones.txt', encod
 L = ['# Fuentes de los datos del examen de ejemplo de España (1D01)\n',
      'Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guía: 23/10/2026). Todo se descarga con `descargar.py` '
      'de las API oficiales; ninguna cifra se ha tecleado a mano. Las cifras clave se comprobaron dos veces con otra fuente o con '
-     'otro cálculo (`verificar.py` → `verificacion.csv`: 14 comprobaciones, todas «OK»).\n',
+     'otro cálculo (`verificar.py` → `verificacion.csv`: 15 comprobaciones «OK» y 4 comparaciones informativas entre el WEO y el Artículo IV).\n',
      '## Accesos (API)\n',
      '- **Eurostat**, API de difusión: `https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/<código>?<filtros>` '
      '(navegador: `https://ec.europa.eu/eurostat/databrowser/view/<código>/default/table`). Comercio de bienes: API de Comext, '
      '`https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409`.',
-     '- **Comisión Europea, AMECO** (previsiones de primavera de 2026, publicadas el 21/05/2026; versión de 03/06/2026; la siguiente, '
-     'de otoño, el 17/11/2026): `https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=<código>&countries=ESP`.',
+     '- **FMI, World Economic Outlook** de octubre de 2026 (publicado el 13/10/2026; datos de España del 25/09/2026; último dato observado, 2025): '
+     'API SDMX `https://api.imf.org/external/sdmx/2.1/data/IMF.RES,WEO/ESP..A` (extracto en `fmi-weo-2026-10.csv`; códigos del WEO en la columna fuente).',
+     '- **FMI, Spain: 2026 Article IV Consultation** (IMF Country Report 26/102, 21/05/2026): cuadros 1, 2b y 4 del informe del staff, extraídos del PDF '
+     '`https://www.imf.org/-/media/files/publications/cr/2026/english/1espea2026001.pdf` (extracto en `fmi-articulo-iv-2026.csv`). Consulta: 26/10/2026.',
      '- **Banco Central Europeo**, portal de datos: `https://data-api.ecb.europa.eu/service/data/<flujo>/<clave>`.',
      '- **EIA** (Brent, serie RBRTE), vía la guía 1D01 (`fuentes/1D01/datos/brent.csv`); comprobado con FRED (MCOILBRENTEU) el 26/10/2026.\n',
      '## Última actualización de cada conjunto de datos (según su API)\n', '| Conjunto | Actualizado |\n|---|---|']

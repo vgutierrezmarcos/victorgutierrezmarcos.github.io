@@ -5,7 +5,7 @@
   \begin{axis}[dicgraf,
       xmin=2006.6, xmax=2025.4, xtick={2007,2009,...,2025},
       ymin=80, ymax=160, ytick={80,100,...,160},
-      legend columns=2, dicapas]
+      legend columns=1, dicapas]
     \capa{1}{\dicraya[dicumbral]{(2006.6,100) (2025.4,100)}}
     \capa{2}{\addplot[diclinea=dicespana, leyendalinea] table[x=anio, y=tcer_ipc42] {\gOcho}; \addlegendentry{Tipo de cambio efectivo real (IPC, 42 socios)}}
     \capa{3}{\addplot[diclinea=dicespana, densely dashed, leyendalinea] table[x=anio, y=tcer_clu_ze] {\gOcho}; \addlegendentry{Tipo de cambio efectivo real (CLU, zona del euro)}}

@@ -29,9 +29,9 @@ def es(ds, **f):
 
 
 def am(var):
-    v, _, _ = ameco(var, 'ESP', tuple(range(A0 - 1, 2028)))
-    ACTUALIZ['AMECO'] = 'previsiones de primavera de 2026 (21/05/2026; versión de 03/06/2026)'
-    return v
+    """AMECO (Comisión) ya no se usa: desde el 26/10/2026 las previsiones y los saldos ajustados son del FMI
+    (aplicar_fmi). Se deja la función vacía para no tocar las definiciones de las filas."""
+    return {}
 
 
 def tasa(nivel):
@@ -463,18 +463,89 @@ def filas_nuevas():
         FILAS[r['id']] = r
 
 
+# ---------------------------------------------------------------- FMI (decisión de Víctor, 26/10/2026)
+def aplicar_fmi():
+    """Las filas que da el FMI pasan a salir del FMI (como en los exámenes reales): serie completa
+    del WEO de octubre de 2026 (historia y previsiones 2026-2027); donde el WEO no llega, historia de
+    Eurostat y previsiones del Artículo IV de 2026. Lo demás sigue de Eurostat, el BCE o la EIA."""
+    import fmi
+    W, A = fmi.weo(), fmi.art4()
+    ACTUALIZ['FMI WEO'] = 'octubre de 2026 (publicado el 13/10/2026; España, 25/09/2026)'
+    ACTUALIZ['FMI Artículo IV'] = 'IMF Country Report 26/102, 21/05/2026'
+    T = [str(a) for a in range(A0, 2028)]
+    w = lambda ind: {a: v for a, v in W.get(ind, {}).items() if str(A0 - 1) <= a <= '2027'}   # 2006 para las tasas
+    def poner(id_, etiqueta, vals, fuente, dec=None):
+        r = {'id': id_, 'indicador': etiqueta, 'unidad': FILAS.get(id_, {}).get('unidad', '%'), 'fuente': fuente,
+             'dec': dec if dec is not None else FILAS.get(id_, {}).get('dec', 1)}
+        r.update({a: vals[a] for a in T if a in vals})
+        FILAS[id_] = r
+    def prev_art4(id_, tabla, fila, fuente_extra):
+        r = FILAS[id_]
+        for a in ('2026', '2027'):
+            r[a] = A[(tabla, fila)][a]
+        r['fuente'] = r['fuente'].split('; prev.')[0] + '; prev. ' + fuente_extra
+    # Serie completa del WEO
+    ngdp_r, gap = w('NGDP_R'), w('NGAP_NPGDP')
+    pot = tasa({a: ngdp_r[a] / (1 + gap[a] / 100) for a in ngdp_r if a in gap})
+    poner('pib', 'PIB', w('NGDP_RPCH'), 'FMI WEO oct. 2026 NGDP_RPCH')
+    poner('x', 'Exportaciones de bienes y servicios', w('TX_RPCH'), 'FMI WEO TX_RPCH')
+    poner('m', 'Importaciones de bienes y servicios', w('TM_RPCH'), 'FMI WEO TM_RPCH')
+    poner('pib_pc', 'PIB real por habitante', tasa(w('NGDPRPC')), 'FMI WEO NGDPRPC (variación)')
+    poner('pib_nom', 'PIB nominal (miles de millones de euros)', {a: v / 1e9 for a, v in w('NGDP').items()}, 'FMI WEO NGDP', 0)
+    poner('pot', 'PIB potencial', pot, 'FMI WEO: NGDP_R / (1 + NGAP_NPGDP/100), variación')
+    poner('brecha', 'Brecha de producción (% del PIB potencial)', gap, 'FMI WEO NGAP_NPGDP')
+    poner('emp', 'Empleo (personas)', tasa(w('LE')), 'FMI WEO LE (variación)')
+    poner('paro', 'Tasa de paro', w('LUR'), 'FMI WEO LUR')
+    poner('pob', 'Población', tasa(w('LP')), 'FMI WEO LP (variación)')
+    poner('ipca', 'IPCA: índice general', w('PCPIPCH'), 'FMI WEO PCPIPCH')
+    poner('def_pib', 'Deflactor del PIB', tasa(w('NGDP_D')), 'FMI WEO NGDP_D (variación)')
+    poner('cc', 'Cuenta corriente', w('BCA_NGDPD'), 'FMI WEO BCA_NGDPD')
+    poner('fbc', 'Formación bruta de capital (% del PIB)', w('NID_NGDP'), 'FMI WEO NID_NGDP')
+    poner('ahorro_nac', 'Ahorro nacional bruto (% del PIB)', w('NGSD_NGDP'), 'FMI WEO NGSD_NGDP')
+    poner('ing', 'Ingresos', w('GGR_NGDP'), 'FMI WEO GGR_NGDP')
+    poner('gas', 'Gastos', w('GGX_NGDP'), 'FMI WEO GGX_NGDP')
+    poner('saldo', 'Saldo', w('GGXCNL_NGDP'), 'FMI WEO GGXCNL_NGDP')
+    poner('prim', 'Saldo primario', w('GGXONLB_NGDP'), 'FMI WEO GGXONLB_NGDP (sin intereses cobrados)')
+    poner('estr', 'Saldo estructural (% del PIB potencial)', w('GGSB_NPGDP'), 'FMI WEO GGSB_NPGDP')
+    poner('deuda', 'Deuda pública bruta', w('GGXWDG_NGDP'), 'FMI WEO GGXWDG_NGDP')
+    poner('deuda_neta', 'Deuda pública neta', w('GGXWDN_NGDP'), 'FMI WEO GGXWDN_NGDP')
+    poner('pibn', 'PIB nominal', tasa(w('NGDP')), 'FMI WEO NGDP (variación)')
+    # Historia de Eurostat y previsiones del Artículo IV (el WEO no da estas filas)
+    for id_, fila in [('cpriv', 'Private consumption'), ('cpub', 'Public consumption'), ('fbcf', 'Gross fixed investment')]:
+        prev_art4(id_, 'Cuadro 1', fila, 'FMI Artículo IV 2026, cuadro 1')
+    prev_art4('c_ext', 'Cuadro 1', 'Net exports (contribution to growth)', 'FMI Artículo IV 2026, cuadro 1')
+    prev_art4('int', 'Cuadro 2b', 'Interest', 'FMI Artículo IV 2026, cuadro 2b')
+    for id_, fila in [('rp', 'Primary income (% del PIB)'), ('rs', 'Secondary income (% del PIB)'),
+                      ('kap', 'Capital account (% del PIB)'), ('piin', 'Net international investment position')]:
+        prev_art4(id_, 'Cuadro 4', fila, 'FMI Artículo IV 2026, cuadro 4')
+    for id_, x, m in [('bie', 'Exports of goods (% del PIB)', 'Imports of goods (% del PIB)'),
+                      ('ser', 'Exports of services (% del PIB)', 'Imports of services (% del PIB)')]:
+        r = FILAS[id_]
+        for a in ('2026', '2027'):
+            r[a] = A[('Cuadro 4', x)][a] - A[('Cuadro 4', m)][a]
+        r['fuente'] += '; prev. FMI Artículo IV 2026, cuadro 4 (exportaciones menos importaciones)'
+    # Saldo estructural primario: estructural del WEO más intereses (Eurostat; 2026-2027, Artículo IV)
+    estr, inte = w('GGSB_NPGDP'), dict(FILAS['int'])
+    poner('estr_p', 'Saldo estructural primario (% del PIB potencial)',
+          {a: estr[a] + float(inte[a]) for a in estr if a in inte and inte[a] not in ('', None)},
+          'FMI WEO GGSB_NPGDP + intereses (Eurostat D41PAY; 2026-2027, Artículo IV)')
+    # Lo que no tiene el FMI y no casa con su brecha: el saldo ajustado de ciclo de AMECO se retira
+    FILAS.pop('cicl', None)
+    ACTUALIZ.pop('AMECO', None)
+
+
 ESTRUCTURA = [
     ('cuadro1.csv', 'Cuadro 1. Demanda agregada y actividad (España)',
      ['pib', 'cpriv', 'cpub', 'fbcf', 'fbcf_viv', 'fbcf_otc', 'fbcf_maq', 'fbcf_pi', 'x', 'm', 'c_int', 'c_exist', 'c_ext',
       'pib_pc', 'pib_nom', 'pot', 'brecha'],
-     'Eurostat (nama_10_gdp, nama_10_an6, nama_10_pe; contabilidad nacional del INE). PIB potencial, brecha y previsiones 2026-2027: '
-     'Comisión Europea, AMECO (primavera de 2026), anterior a la última revisión de la contabilidad nacional (PIB de 2025: +2,8 % en AMECO, +2,6 % en Eurostat).'),
+     'FMI, WEO de octubre de 2026 (PIB, exportaciones, importaciones, PIB por habitante, PIB nominal, brecha y potencial, con previsiones 2026-2027); '
+     'Eurostat (componentes de la demanda y contribuciones; nama_10_gdp, nama_10_an6); previsiones de los componentes: FMI, Artículo IV de 2026 (cuadro 1).'),
     ('cuadro2.csv', 'Cuadro 2. Oferta: valor añadido bruto real por ramas (España)',
      ['vab', 'vab_a', 'vab_be', 'vab_c', 'vab_f', 'vab_gi', 'vab_j', 'vab_mn', 'vab_oq'], 'Eurostat nama_10_a10 (CLV_PCH_PRE).'),
     ('cuadro3.csv', 'Cuadro 3. Mercado de trabajo, productividad, costes y demografía (España)',
      ['emp', 'horas', 'act', 'templeo', 'paro', 'paro_ze', 'paro_juv', 'paro_ld', 'temp', 'vac', 'prod_oc', 'prod_h', 'rem', 'clu', 'clu_ze',
       'pob', 'extr', 'dep'],
-     'Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc; lfsa_*, une_*; jvs_q_r21; migr_pop1ctz, demo_pjanind. Previsiones: AMECO.'),
+     'Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc; lfsa_*, une_*; jvs_q_r21; migr_pop1ctz, demo_pjanind. Empleo, paro y población: FMI WEO de octubre de 2026.'),
     ('cuadro4.csv', 'Cuadro 4. Ahorro, inversión y financiación del sector privado (España)',
      ['ahorro_hog', 'rdb', 'inv_hog', 'inv_snf', 'ben_snf', 'fbc', 'ahorro_nac', 'flujo_cred', 'phog', 'psnf', 'hip', 'hip_ze', 'snf_t',
       'dhog', 'dsnf', 'viv', 'viv_r'],
@@ -482,21 +553,21 @@ ESTRUCTURA = [
      'BCE: BSI (préstamos de las IFM) y MIR (tipos de las operaciones nuevas, media anual).'),
     ('cuadro5.csv', 'Cuadro 5. Precios (España y zona del euro)',
      ['ipca', 'ipca_sub', 'ipca_nrg', 'ipca_food', 'ipca_ze', 'ipca_ze_sub', 'def_pib', 'def_c', 'def_x', 'def_m'],
-     'Eurostat: prc_hicp_aind (IPCA, ECOICOP ver. 1), nama_10_gdp (deflactores). Previsión del IPCA: AMECO ZCPIH.'),
+     'Eurostat: prc_hicp_aind (IPCA, ECOICOP ver. 1), nama_10_gdp (deflactores). IPCA general y deflactor del PIB: FMI WEO de octubre de 2026 (con previsiones).'),
     ('cuadro6.csv', 'Cuadro 6. Competitividad precio y no precio (España)',
      ['tcer_ipc', 'tcer_clu', 'cuota', 'cuota_g', 'cuota_s', 'cuota_5a', 'htec', 'id', 'id_ue', 'apert'],
      'Eurostat: ert_eff_ic_a (un aumento es una apreciación real), tipsex20, tipsex10, tipsex12 (hasta 2022), rd_e_gerdtot, nama_10_gdp.'),
     ('cuadro7.csv', 'Cuadro 7. Sector exterior (España)',
      ['cc', 'bie', 'ser', 'tur', 'rp', 'rs', 'kap', 'cnf', 'fa', 'fa_d', 'fa_p', 'fa_f', 'fa_o', 'fa_o_bde', 'fa_r', 'eo', 'piin', 'piin_nendi', 'den'],
-     'Eurostat: bop_c6_a (balanza de pagos MBP6 del Banco de España, en % del PIB de nama_10_gdp), bop_gdp6_q, tipsii10. Previsión: AMECO UBCA. '
+     'Eurostat: bop_c6_a (balanza de pagos MBP6 del Banco de España, en % del PIB de nama_10_gdp), bop_gdp6_q, tipsii10. Cuenta corriente: FMI WEO de octubre de 2026; previsiones de las subcuentas y de la PIIN: FMI, Artículo IV de 2026 (cuadro 4). '
      'Cuenta financiera: variación neta de activos menos variación neta de pasivos (+ = salida neta de capital).'),
     ('cuadro8.csv', 'Cuadro 8. Política monetaria y sistema bancario',
      ['dfr', 'mro', 'eur12', 'm3', 'eurosis', 'cet1', 'cet1_ue', 'solv', 'npl', 'npl_ue', 'roe', 'roe_ue', 'roa', 'roa_ue'],
      'BCE: tipos oficiales (FM), Euríbor, M3 (BSI), estado financiero del Eurosistema (ILM) y datos bancarios consolidados (CBD2: CET1 y dudosos '
      'desde 2014; ROE y ROA de España desde 2008). Eurostat nama_10_gdp (PIB de la zona del euro).'),
     ('cuadro9.csv', 'Cuadro 9. Cuentas públicas (España)',
-     ['ing', 'gas', 'int', 'saldo', 'prim', 'cicl', 'estr', 'estr_p', 'deuda', 'impl', 'pibn', 'rend', 'dif'],
-     'Eurostat: gov_10a_main, gov_10dd_edpt1 (notificación de octubre de 2026), irt_lt_mcby_a. Saldos ajustados y previsiones: AMECO (primavera de 2026).'),
+     ['ing', 'gas', 'int', 'saldo', 'prim', 'estr', 'estr_p', 'deuda', 'deuda_neta', 'impl', 'pibn', 'rend', 'dif'],
+     'Eurostat: gov_10a_main, gov_10dd_edpt1 (notificación de octubre de 2026), irt_lt_mcby_a. Ingresos, gastos, saldos, saldo estructural, deuda y PIB nominal: FMI WEO de octubre de 2026; intereses: Eurostat (2026-2027, Artículo IV de 2026).'),
 ]
 
 
@@ -648,12 +719,12 @@ def graficos():
         ['mes', 'dfr', 'euribor12', 'hipotecas_es', 'bono10_es', 'bono10_de'], filas)
 
     # G10: orientación de la política fiscal: brecha y variación del saldo estructural primario
-    br = am('1.0.0.0.AVGDGP')
-    sp = am('1.0.319.0.UBLGBPS')
-    filas = [[k, br[k], sp[k], sp[k] - sp[str(int(k) - 1)]] for k in TODOS if k in br and str(int(k) - 1) in sp]
+    br = {k: v for k, v in FILAS['brecha'].items() if k[:2] == '20'}
+    sp = {k: float(v) for k, v in FILAS['estr_p'].items() if k[:2] == '20' and v not in ('', None)}
+    filas = [[k, br[k], sp[k], sp[k] - sp[str(int(k) - 1)]] for k in TODOS if k in br and k in sp and str(int(k) - 1) in sp]
     escribir_serie('g13-orientacion-fiscal.csv', [
-        'Brecha de producción (% del PIB potencial) y saldo estructural primario de las AAPP (% del PIB potencial) y su variación (pp), 2007-2027 (2026-2027, previsión).',
-        'Comisión Europea, AMECO: AVGDGP, UBLGBPS (previsiones de primavera de 2026).'],
+        'Brecha de producción (% del PIB potencial) y saldo estructural primario de las AAPP (% del PIB potencial) y su variación (pp), 2008-2027 (2026-2027, previsión).',
+        'FMI, WEO de octubre de 2026: NGAP_NPGDP y GGSB_NPGDP; saldo estructural primario = GGSB_NPGDP + intereses (Eurostat gov_10a_main D41PAY; 2026-2027, Artículo IV de 2026, cuadro 2b).'],
         ['anio', 'brecha', 'saldo_estr_prim', 'var_saldo_estr_prim'], filas)
 
     # G11: deuda pública y diferencial i - g
@@ -693,7 +764,7 @@ def graficos():
 
 
 if __name__ == '__main__':
-    cuadro1(); cuadro2(); cuadro3(); cuadro4(); cuadro5(); cuadro6(); cuadro7(); filas_nuevas(); ensamblar(); graficos()
+    cuadro1(); cuadro2(); cuadro3(); cuadro4(); cuadro5(); cuadro6(); cuadro7(); filas_nuevas(); aplicar_fmi(); ensamblar(); graficos()
     with open(os.path.join(AQUI, 'actualizaciones.txt'), 'w', encoding='utf-8') as f:
         f.write(f'# Fecha de actualización de cada fuente según su API (consulta {HOY})\n')
         for k, v in sorted(ACTUALIZ.items()):

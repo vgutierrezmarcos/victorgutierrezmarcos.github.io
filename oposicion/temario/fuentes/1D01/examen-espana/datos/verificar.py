@@ -12,11 +12,13 @@ F = {}
 for k in range(1, 10):
     F.update(leer(f'cuadro{k}.csv'))
 out = []
-def comp(desc, a, b, fuente_b, tol=0.15):
+def comp(desc, a, b, fuente_b, tol=0.15, info=False):
     ok = abs(float(a) - float(b)) <= tol
-    out.append([desc, round(float(a), 2), round(float(b), 2), fuente_b, 'OK' if ok else 'DIFIERE'])
+    res = 'INFORMATIVO (otra fecha de cierre)' if info else ('OK' if ok else 'DIFIERE')
+    out.append([desc, round(float(a), 2), round(float(b), 2), fuente_b, res])
 
 y = '2025'
+es_pib, _ = eurostat1('nama_10_gdp', since=2025, geo='ES', unit='CP_MEUR', na_item='B1GQ')
 # 1. PIB 2025: crecimiento anual frente a la media de los trimestres (CLV, namq)
 q, _ = eurostat1('namq_10_gdp', since='2024-Q1', geo='ES', unit='CLV10_MEUR', s_adj='NSA', na_item='B1GQ')
 g = 100 * (sum(v for k, v in q.items() if k.startswith('2025')) / sum(v for k, v in q.items() if k.startswith('2024')) - 1)
@@ -33,7 +35,8 @@ comp('IPCA 2025 (%)', F['ipca'][y], 100 * (a25 / a24 - 1), 'prc_hicp_minr, índi
 # 4. Déficit y deuda 2025 frente a AMECO (otra vintage) y gov_10dd_edpt1
 d, _ = eurostat1('gov_10dd_edpt1', since=2025, geo='ES', unit='PC_GDP', sector='S13', na_item='B9')
 comp('Saldo AAPP 2025 (% PIB)', F['saldo'][y], d['2025'], 'gov_10dd_edpt1 B9')
-comp('Deuda AAPP 2025 (% PIB)', F['deuda'][y], ameco('1.0.319.0.UDGG')[0]['2025'], 'AMECO UDGG (primavera 2026)', 0.5)
+dd, _ = eurostat1('gov_10dd_edpt1', since=2025, geo='ES', unit='PC_GDP', sector='S13', na_item='GD')
+comp('Deuda AAPP 2025 (% PIB)', F['deuda'][y], dd['2025'], 'Eurostat gov_10dd_edpt1 GD', 0.2)
 # 5. Cuenta corriente 2025: bop_c6_a / PIB frente a bop_gdp6_q
 cc, _ = eurostat1('bop_gdp6_q', since=2025, geo='ES', freq='A', unit='PC_GDP', partner='WRL_REST', s_adj='NSA', stk_flow='BAL', bop_item='CA')
 comp('Cuenta corriente 2025 (% PIB)', F['cc'][y], cc['2025'], 'bop_gdp6_q CA')
@@ -49,8 +52,16 @@ for a in ['2020', '2022', '2025']:
 dfr, _ = ecb('FM.D.U2.EUR.4F.KR.DFR.LEV', '2025-12-01')
 comp('Facilidad de depósito, 31/12/2025 (%)', F['dfr'][y], dfr['2025-12-31'], 'BCE, dato diario')
 # 9. Empleo 2025 frente a AMECO NETD
-n = ameco('1.0.0.0.NETD')[0]
-comp('Empleo 2025 (%)', F['emp'][y], 100 * (n['2025'] / n['2024'] - 1), 'AMECO NETD (otra vintage)', 0.3)
+e, _ = eurostat1('lfsa_egan', since=2024, geo='ES', age='Y15-74', sex='T', citizen='TOTAL')
+comp('Empleo 2025 (%, FMI = EPA)', F['emp'][y], 100 * (e['2025'] / e['2024'] - 1), 'Eurostat lfsa_egan (ocupados EPA 15-74)', 0.3)
+# FMI: WEO (octubre) frente al Artículo IV (mayo) y frente a Eurostat
+import fmi
+A = fmi.art4()
+comp('Previsión PIB 2026: WEO oct. frente a Artículo IV (mayo)', F['pib']['2026'], A[('Cuadro 1', 'Gross domestic product')]['2026'], 'Artículo IV 2026, cuadro 1', 0.5, info=True)
+comp('Deuda 2026 prevista: WEO frente a Artículo IV', F['deuda']['2026'], A[('Cuadro 2b', 'General government gross debt (Maastricht)')]['2026'], 'Artículo IV 2026, cuadro 2b', 1.5, info=True)
+comp('Brecha 2025: WEO frente a Artículo IV', F['brecha']['2025'], A[('Cuadro 1', 'Output gap (percent of potential output)')]['2025'], 'Artículo IV 2026, cuadro 1', 0.7, info=True)
+comp('Saldo estructural primario 2025 (WEO + intereses) frente al Artículo IV', F['estr_p']['2025'], A[('Cuadro 2b', 'Primary structural balance 3/')]['2025'], 'Artículo IV 2026, cuadro 2b', 0.5, info=True)
+comp('PIB nominal 2025 (mm€): WEO frente a Eurostat', F['pib_nom']['2025'], es_pib['2025'] / 1000, 'Eurostat nama_10_gdp CP_MEUR', 1.0)
 # 10. Rendimiento a 10 años 2025: anual frente a media mensual
 b, _ = eurostat1('irt_lt_mcby_m', since='2025-01', geo='ES')
 comp('Bono a 10 años 2025 (%)', F['rend'][y], sum(v for k, v in b.items() if k.startswith('2025')) / 12, 'irt_lt_mcby_m, media', 0.02)

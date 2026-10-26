@@ -6,7 +6,7 @@
       ybar stacked, stack negative=separate, bar width=0.36cm,
       xmin=2006.4, xmax=2025.6, xtick={2007,2009,...,2025}, minor xtick={2008,2010,...,2024},
       ymin=-14, ymax=10, ytick={-12,-8,...,8},
-      legend columns=3, area legend, dicapas]
+      legend columns=2, area legend, dicapas]
     \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicbienes] table[x=anio, y=bienes] {\gSeis}; \addlegendentry{Bienes}}
     \capa{2}{\addplot[on layer=dicbarras, dicbarra=dicturismo] table[x=anio, y=turismo] {\gSeis}; \addlegendentry{Viajes (turismo)}}
     \capa{3}{\addplot[on layer=dicbarras, dicbarrarayada=dicturismo] table[x=anio, y=resto_servicios] {\gSeis}; \addlegendentry{Resto de servicios}}

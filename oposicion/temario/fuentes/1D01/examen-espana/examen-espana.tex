@@ -49,7 +49,7 @@
 \tikzset{dicbarrarayada/.style={fill=#1, draw=#1!65!black, line width=0.3pt,
     postaction={pattern=north east lines, pattern color=dicbienes}}}
 \pgfplotsset{
-  dicgraf/.style={width=12.0cm, height=\altograf, scale only axis=false,
+  dicgraf/.style={width=11.5cm, height=\altograf, scale only axis=false,
     axis lines*=left, tick align=outside, clip=false,
     ymajorgrids, grid style={tceegris!25},
     ticklabel style={font=\scriptsize}, label style={font=\scriptsize},
@@ -80,6 +80,8 @@
   \end{minipage}}
 
 \setlist{itemsep=3pt,topsep=4pt}
+% Sin líneas huérfanas ni viudas (Víctor, 26/10/2026)
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
 \setlength{\parindent}{0pt}
 
 \begin{document}
@@ -115,26 +117,6 @@ convocatoria de 2026 tenía cinco cuestiones y 1 hora y 45 minutos; aquí el tie
 \item El tribunal no responderá a preguntas. En caso de duda, cada aspirante debe interpretar lo que está escrito. No será posible abandonar la sala durante los 10 primeros ni los 10 últimos minutos, y al anunciarse el final habrá que dejar de escribir inmediatamente.
 \end{itemize}
 
-\textbf{Reparto orientativo del tiempo} (regla de la guía: lectura en torno al 10~\% y repaso en torno al 5~\%; el resto, $t=W/(n+0{,}25)$ por pregunta y $1{,}25\,t$ para el perfil cíclico; dentro de esa regla, más tiempo a las preguntas donde la economía tiene más retos)
-
-\begin{center}\small\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lccccc@{}}
-\toprule
-\rowcolor{cabecera} & \textbf{Lectura y plan} & \textbf{Pregunta 1} & \textbf{Preguntas 2 a 7} & \textbf{Repaso} & \textbf{Total} \\
-\midrule
-Este examen (7 preguntas) & 12 min & 18 min & 14 min de media & 6 min & 2 h \\
-Examen real de 2026 (5 preguntas) & 12 min & 21 min & 17 min cada una & 4 min & 1 h 45 min \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\textbf{Contenido del cuadernillo}
-
-\begin{itemize}[leftmargin=1.2em, itemsep=2pt]
-\item Enunciado (página 2). Cuadros 1 a 9 y cuadro 2 bis: datos anuales de 2007 a 2025 y, en algunas filas, previsiones de la Comisión Europea para 2026 y 2027 (columnas marcadas con P y sombreadas). Gráficos 1 a 14: datos anuales, trimestrales y mensuales, hasta el tercer trimestre de 2026.
-\item Salvo que se indique otra cosa, «zona del euro» se refiere a los veinte países que la formaban en 2025 y «UE», a los veintisiete Estados miembros. Las celdas en blanco corresponden a datos no disponibles.
-\end{itemize}
-
 \vfill
 \begin{center}
 \textbf{NO DÉ LA VUELTA A LAS HOJAS HASTA QUE SE LO INDIQUE EL TRIBUNAL}
@@ -144,7 +126,10 @@ Examen real de 2026 (5 preguntas) & 12 min & 21 min & 17 min cada una & 4 min & 
 % ==========================================================================
 % Página 2: enunciado (los bloques de la guía, I-VI, en 7 preguntas)
 % ==========================================================================
-En los cuadros y gráficos a continuación de este enunciado se facilita información económica sobre \textbf{España} referida a los años naturales 2007 a 2025, con previsiones de la Comisión Europea para 2026 y 2027 y datos trimestrales y mensuales hasta 2026. Atendiendo a esa información, elabore un escrito respondiendo a las siguientes cuestiones:
+En los cuadros y gráficos a continuación de este enunciado se facilita información económica sobre \textbf{España} referida a los años naturales 2007 a 2025, con previsiones del Fondo Monetario Internacional para 2026 y 2027 y datos trimestrales y mensuales hasta 2026. Atendiendo a esa información, elabore un escrito respondiendo a las siguientes cuestiones:
+
+\medskip
+Salvo que se indique otra cosa, «zona del euro» se refiere a los veinte países que la formaban en 2025 y «UE», a los veintisiete Estados miembros (UE-27). Las celdas en blanco de los cuadros corresponden a datos no disponibles; las columnas marcadas con P son previsiones.
 
 \begin{enumerate}[leftmargin=1.8em, label=\textbf{\arabic*.}, itemsep=7pt]
 % I. Perfil cíclico y II. Capital y crédito
@@ -229,7 +214,7 @@ En los cuadros y gráficos a continuación de este enunciado se facilita informa
 % ---- Cuentas públicas: cuadro 9; gráficos 13 y 14 ---------------------------------
 \begin{bloquecuadro}\input{cuadros/cuadro9}\end{bloquecuadro}
 \vspace{8pt}\noindent\setlength{\altograf}{5.6cm}
-\grafico{13}{Brecha de producción y variación del saldo estructural primario}{Comisión Europea (AMECO, previsiones de primavera de 2026). Saldo estructural primario y brecha, en \% del PIB potencial; 2026 y 2027 (círculos huecos): previsión.}{g13-orientacion-fiscal}\hfill
+\grafico{13}{Brecha de producción y variación del saldo estructural primario}{FMI, \textit{World Economic Outlook} (octubre de 2026) y consulta del artículo~IV de 2026; Eurostat (intereses). Saldo estructural primario: saldo estructural más intereses. En \% del PIB potencial; 2026 y 2027 (círculos huecos): previsión.}{g13-orientacion-fiscal}\hfill
 \grafico{14}{Deuda pública: tipo de interés implícito (i) y crecimiento del PIB nominal (g)}{Eurostat (cuentas de las administraciones públicas y contabilidad nacional). i: intereses del año entre la deuda del año anterior.}{g14-deuda-i-g}
 
 \vspace{14pt}

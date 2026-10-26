@@ -6,7 +6,7 @@
       ybar, bar width=0.34cm,
       xmin=2006.4, xmax=2025.6, xtick={2007,2009,...,2025},
       ymin=-12, ymax=14, ytick={-12,-8,...,12},
-      legend columns=3, dicapas]
+      legend columns=2, dicapas]
     \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicotroclaro, area legend] table[x=anio, y=i_menos_g] {\gDoce}; \addlegendentry{Diferencial i $-$ g (pp)}}
     \capa{2}{\dicraya{(2006.4,0) (2025.6,0)}}
     \capa{3}{\addplot[sharp plot, diclinea=dicfiscal, leyendalinea] table[x=anio, y=i_implicito] {\gDoce}; \addlegendentry{Tipo de interés implícito, i (\%)}}

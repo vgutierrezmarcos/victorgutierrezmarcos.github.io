@@ -1,12 +1,12 @@
 # Cuadro 3. Mercado de trabajo, productividad, costes y demografía (España)
-# Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc; lfsa_*, une_*; jvs_q_r21; migr_pop1ctz, demo_pjanind. Previsiones: AMECO.
+# Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc; lfsa_*, une_*; jvs_q_r21; migr_pop1ctz, demo_pjanind. Empleo, paro y población: FMI WEO de octubre de 2026.
 # Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 id,indicador,unidad,fuente,dec,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027
-emp,"Empleo (personas, contabilidad nacional)",%,nama_10_pe EMP_DC; prev. AMECO NETD,1,3.2462,0.0728,-6.3081,-1.8129,-2.4258,-4.2901,-2.1989,1.037,2.8863,2.1375,2.6277,2.1838,2.6517,-4.3978,2.5834,3.7624,3.1194,3.0097,2.6135,2.257,1.4455
+emp,Empleo (personas),%,FMI WEO LE (variación),1,3.2139,-0.5358,-6.6577,-2.0012,-1.6185,-4.2817,-2.7998,1.1971,3.0089,2.6615,2.6347,2.6716,2.3364,-2.9166,3.2862,3.6002,3.0889,2.2269,2.6195,1.5458,0.5894
 horas,Horas trabajadas,%,nama_10_a10_e THS_HW TOTAL,1,2.5092,0.6754,-5.9737,-2.2688,-2.1177,-4.815,-2.8384,1.0394,2.9966,2.5533,2.1411,2.4684,1.7264,-10.9803,7.2309,5.0651,2.6368,2.7694,2.0003,,
 act,"Tasa de actividad (15-64 años, % de la población)",%,lfsa_argan Y15-64,1,71.8,72.7,73.1,73.5,73.9,74.3,74.3,74.2,74.3,74.2,73.9,73.7,73.8,72.2,73.7,74,74.5,74.6,74.9,,
 templeo,"Tasa de empleo (15-64 años, % de la población)",%,lfsa_ergan Y15-64,1,65.8,64.5,60,58.8,58,55.8,54.8,56,57.8,59.5,61.1,62.4,63.3,60.9,62.6,64.3,65.3,66.1,67,,
-paro,"Tasa de paro (15-74 años, % de los activos)",%,lfsa_urgan Y15-74; prev. AMECO ZUTN,1,8.2,11.3,17.9,19.9,21.4,24.8,26.1,24.5,22.1,19.6,17.2,15.3,14.1,15.5,14.9,13,12.2,11.4,10.5,9.9,9.6
+paro,Tasa de paro,%,FMI WEO LUR,1,8.2325,11.245,17.855,19.8575,21.39,24.7875,26.095,24.4425,22.0575,19.635,17.225,15.255,14.105,15.5325,14.92,13.035,12.185,11.345,10.5075,9.8022,9.8422
 paro_ze,Tasa de paro de la zona del euro (15-74 años),%,une_rt_a EA20 Y15-74,1,,,9.7,10.3,10.3,11.5,12.2,11.7,11,10.1,9.1,8.2,7.6,8,7.8,6.8,6.6,6.4,6.4,,
 paro_juv,Tasa de paro juvenil (15-24 años),%,lfsa_urgan Y15-24,1,18.1,24.5,37.7,41.5,46.2,52.9,55.5,53.2,48.3,44.4,38.6,34.3,32.5,38.3,35,29.7,28.7,26.5,24.9,,
 paro_ld,Paro de larga duración (% de los activos),%,une_ltu_a LTU Y15-74 PC_ACT,1,,,4.3,7.3,8.9,11,13,12.9,11.4,9.5,7.7,6.4,5.3,5,6.2,5.1,4.3,3.8,3.4,,
@@ -17,6 +17,6 @@ prod_h,Productividad por hora trabajada,%,nama_10_lp_ulc RLPR_HW,1,1,0.1,2.3,2.4
 rem,Remuneración por asalariado,%,nama_10_gdp D1 CP_MEUR / nama_10_pe SAL_DC,1,4.0245,6.8415,4.004,1.2347,0.013,-1.1405,-0.1417,0.2087,1.1846,-0.0517,0.7368,1.7085,3.4203,0.7551,4.7944,4.6851,5.1247,3.6951,4.3962,,
 clu,Costes laborales unitarios nominales,%,nama_10_lp_ulc NULC_PER,1,3.7,6.1,1.3,-0.7,-1.8,-2.6,-0.9,-0.3,0,-0.8,0.5,1.5,4.1,8.2,0.8,2.1,5.9,3,4.4,,
 clu_ze,"Costes laborales unitarios nominales, zona del euro",%,nama_10_lp_ulc NULC_PER EA20,1,1.4,3.9,4.4,-0.5,0.5,2.1,1.2,0.6,0.3,0.8,0.7,2,1.9,4.4,-0.4,3.2,6.5,4.2,3.3,,
-pob,Población,%,nama_10_pe POP_NC,1,1.9736,1.6517,0.8359,0.4204,0.3732,0.0279,-0.3597,-0.3179,-0.1048,0.0921,0.1796,0.4406,0.7972,0.5459,0.0042,0.9276,1.1855,1.0785,0.9992,,
+pob,Población,%,FMI WEO LP (variación),1,1.9745,1.2488,0.5349,0.3884,0.3237,-0.2255,-0.4643,-0.1506,-0.0147,0.1691,0.3176,0.5872,0.8506,0.1749,0.1813,1.2606,1.1112,1.0461,0.6598,0.9854,0.9488
 extr,"Población de nacionalidad extranjera (% del total, 1 de enero)",%,migr_pop1ctz TOTAL-NAT,1,9.9352,11.1373,11.6495,11.6218,11.3837,11.1837,10.842,10.0576,9.5938,9.5206,9.5009,9.8131,10.3386,11.0767,11.3979,11.6014,12.6642,13.3738,14.0692,,
 dep,"Tasa de dependencia de los mayores (65+ sobre 15-64, %)",%,demo_pjanind OLDDEP1,1,24,23.8,24.1,24.6,25.2,25.7,26.3,27.2,27.8,28.2,28.6,29,29.2,29.5,29.7,30.2,30.4,30.8,31.2,,

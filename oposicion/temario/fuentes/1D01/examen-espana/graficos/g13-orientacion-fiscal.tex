@@ -1,37 +1,41 @@
-% Gráfico 13. Brecha de producción y variación del saldo estructural primario de las AAPP (pp del PIB potencial), 2011-2027.
-% Datos: ../datos/g13-orientacion-fiscal.csv (Comisión Europea, AMECO: AVGDGP y UBLGBPS). Filas 15-16 (2026-2027): previsión, en hueco.
+% Gráfico 13. Brecha de producción y variación del saldo estructural primario de las AAPP (pp del PIB potencial), 2008-2027.
+% Datos: ../datos/g13-orientacion-fiscal.csv (FMI, WEO de octubre de 2026: NGAP_NPGDP y GGSB_NPGDP + intereses). Filas 18-19 (2026-2027): previsión, en hueco.
+% Rótulos de los años colocados a mano (para que no se pisen): revisar si cambian los datos.
 \pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g13-orientacion-fiscal.csv}\gOnce
 \begin{tikzpicture}[tcee]
   \begin{axis}[dicgraf,
-      xmin=-10, xmax=4, xtick={-10,-8,...,4},
-      ymin=-2.5, ymax=3.5, ytick={-2,-1,...,3},
+      xmin=-10, xmax=5, xtick={-10,-8,...,4},
+      ymin=-7, ymax=5, ytick={-6,-4,...,4},
       xlabel={Brecha de producción (\% del PIB potencial)},
       ylabel={Variación del saldo estructural primario (pp)},
       dicapas]
-    \capa{1}{\dicraya{(-10,0) (4,0)} \dicraya{(0,-2.5) (0,3.5)}}
+    \capa{1}{\dicraya{(-10,0) (5,0)} \dicraya{(0,-7) (0,5)}}
     \capa{2}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=1.9pt, mark options={fill=dicfiscal, draw=dicfiscal},
-        skip coords between index={15}{17}] table[x=brecha, y=var_saldo_estr_prim] {\gOnce};}
+        skip coords between index={18}{20}] table[x=brecha, y=var_saldo_estr_prim] {\gOnce};}
     \capa{3}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=1.9pt, mark options={fill=white, draw=dicfiscal, line width=0.8pt},
-        skip coords between index={0}{15}] table[x=brecha, y=var_saldo_estr_prim] {\gOnce};}
+        skip coords between index={0}{18}] table[x=brecha, y=var_saldo_estr_prim] {\gOnce};}
     % 4: año de cada punto, colocados a mano
     \capa{4}{
-      \dicrotulo[font=\tiny, anchor=south, inner sep=1.5pt]{(-6.293,1.359)}{2011}
-      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(-8.723,2.945)}{2012}
-      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(-9.565,2.491)}{2013}
-      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(-8.077,0.606)}{2014}
-      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(-4.475,-1.877)}{2015}
-      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(-1.939,-1.197)}{2016}
-      \dicrotulo[font=\tiny, anchor=north east, inner sep=1.5pt]{(0.368,-0.315)}{2017}
-      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(2.065,-0.355)}{2018}
-      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(3.062,-1.311)}{2019}
-      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(-8.481,0.137)}{2020}
-      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(-3.332,-0.370)}{2021}
-      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(0.872,-0.341)}{2022}
-      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(0.972,1.336)}{2023}
-      \dicrotulo[font=\tiny, anchor=south, inner sep=1.5pt]{(1.880,0.428)}{2024}
-      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(2.012,0.270)}{2025}
-      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(1.747,0.362)}{2026}
-      \dicrotulo[font=\tiny, anchor=east, inner sep=1.5pt]{(1.190,0.412)}{2027}
+      \dicrotulo[font=\tiny, anchor=south, inner sep=1.5pt]{(3.635,-5.963)}{2008}
+      \dicrotulo[font=\tiny, anchor=east, inner sep=1.5pt]{(-1.393,-3.479)}{2009}
+      \dicrotulo[font=\tiny, anchor=south, inner sep=1.5pt]{(-1.864,2.146)}{2010}
+      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(-2.769,1.341)}{2011}
+      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(-5.610,4.415)}{2012}
+      \dicrotulo[font=\tiny, anchor=east, inner sep=1.5pt]{(-6.943,1.610)}{2013}
+      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(-6.226,0.657)}{2014}
+      \dicrotulo[font=\tiny, anchor=north east, inner sep=1.5pt]{(-4.139,-0.872)}{2015}
+      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(-2.368,-0.547)}{2016}
+      \dicrotulo[font=\tiny, anchor=north east, inner sep=1.5pt]{(-0.407,-0.351)}{2017}
+      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(1.466,-0.034)}{2018}
+      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(2.615,-1.427)}{2019}
+      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(-8.957,0.247)}{2020}
+      \dicrotulo[font=\tiny, anchor=south west, inner sep=1.5pt]{(-3.757,-0.607)}{2021}
+      \dicrotulo[font=\tiny, anchor=north, inner sep=1.5pt]{(0.439,-0.508)}{2022}
+      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(0.036,1.689)}{2023}
+      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(0.495,0.721)}{2024}
+      \dicrotulo[font=\tiny, anchor=west, inner sep=1.5pt]{(0.622,0.298)}{2025}
+      \dicrotulo[font=\tiny, anchor=north west, inner sep=1.5pt]{(0.637,0.028)}{2026}
+      \dicrotulo[font=\tiny, anchor=east, inner sep=1.5pt]{(0.335,0.103)}{2027}
     }
   \end{axis}
 \end{tikzpicture}

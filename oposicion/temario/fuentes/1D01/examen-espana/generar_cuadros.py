@@ -35,8 +35,9 @@ CUADROS = {
         ('c_ext', 'Demanda externa neta (contribución, pp)', 0),
         ('pib_pc', 'PIB por habitante', 0), ('pib_nom', 'PIB nominal (miles de millones de euros)', 0),
         ('pot', 'PIB potencial', 0), ('brecha', 'Brecha de producción (\\% del PIB potencial)', 0)],
-        'Eurostat (contabilidad nacional del INE); PIB potencial, brecha de producción y previsiones: Comisión Europea (AMECO, '
-        'previsiones de primavera de 2026). P: previsión.'),
+        'FMI, \\textit{World Economic Outlook} (octubre de 2026): PIB, exportaciones, importaciones, PIB por habitante, PIB nominal, PIB potencial y brecha, '
+        'con sus previsiones; FMI, consulta del artículo~IV de 2026: previsiones de los componentes de la demanda y de la demanda externa; '
+        'Eurostat (contabilidad nacional del INE): resto de las filas. P: previsión.'),
     2: ('Oferta: valor añadido bruto por ramas de actividad', 'variación anual en volumen, en \\%', [
         ('vab', 'Valor añadido bruto total', 0), ('vab_a', 'Agricultura, ganadería, silvicultura y pesca', 1),
         ('vab_be', 'Industria', 1), ('vab_c', 'de la cual, manufacturas', 2), ('vab_f', 'Construcción', 1),
@@ -59,7 +60,8 @@ CUADROS = {
         ('extr', 'Población extranjera (\\% de la población)', 0),
         ('dep', 'Tasa de dependencia de los mayores (65+ / 15-64)', 0)],
         'Eurostat (contabilidad nacional y encuesta de población activa del INE; estadística de vacantes; población a 1 de enero); '
-        'previsiones: Comisión Europea (AMECO). La tasa de vacantes se da desde 2010 (salto de la serie entre 2009 y 2010).'),
+        'FMI, \\textit{World Economic Outlook} (octubre de 2026): empleo, tasa de paro y población, con sus previsiones. '
+        'La tasa de vacantes se da desde 2010 (salto de la serie entre 2009 y 2010).'),
     4: ('Ahorro, inversión y financiación del sector privado', 'en \\%, salvo indicación', [
         ('ahorro_hog', 'Tasa de ahorro de los hogares (\\% de la renta disponible)', 0),
         ('rdb', 'Renta disponible real por habitante (variación anual)', 1),
@@ -74,6 +76,7 @@ CUADROS = {
         ('snf_t', 'Tipo de los préstamos nuevos a empresas no financieras', 0),
         ('dhog', 'Deuda de los hogares (\\% del PIB)', 0), ('dsnf', 'Deuda de las empresas no financieras (\\% del PIB)', 0),
         ('viv', 'Precio de la vivienda (variación anual)', 0), ('viv_r', 'Precio de la vivienda deflactado (variación anual)', 1)],
+        'FMI, \\textit{World Economic Outlook} (octubre de 2026): formación bruta de capital y ahorro nacional, con sus previsiones; '
         'Eurostat (cuentas de los sectores institucionales y contabilidad nacional del INE; indicadores del procedimiento de desequilibrios '
         'macroeconómicos; índice de precios de la vivienda del INE) y Banco Central Europeo (préstamos y tipos de interés de las entidades de crédito; '
         'tipos: media anual, España salvo indicación).'),
@@ -83,7 +86,8 @@ CUADROS = {
         ('ipca_ze', 'IPCA de la zona del euro: índice general', 0), ('ipca_ze_sub', 'IPCA de la zona del euro: subyacente', 1),
         ('def_pib', 'Deflactor del PIB', 0), ('def_c', 'Deflactor del consumo privado', 0),
         ('def_x', 'Deflactor de las exportaciones', 0), ('def_m', 'Deflactor de las importaciones', 0)],
-        'Eurostat (IPCA y contabilidad nacional del INE); previsión del IPCA: Comisión Europea (AMECO).'),
+        'FMI, \\textit{World Economic Outlook} (octubre de 2026): IPCA general y deflactor del PIB, con sus previsiones; '
+        'Eurostat (IPCA y contabilidad nacional del INE): resto de las filas.'),
     6: ('Competitividad precio y no precio', 'en \\%, salvo indicación', [
         ('tcer_ipc', 'Tipo de cambio efectivo real: IPC, 42 socios (2020 = 100)', 0),
         ('tcer_clu', 'Tipo de cambio efectivo real: CLU, zona del euro (2020 = 100)', 0),
@@ -104,7 +108,8 @@ CUADROS = {
         ('fa_o_bde', 'de la cual, Banco de España', 2), ('fa_r', 'Activos de reserva', 1), ('eo', 'Errores y omisiones', 0),
         ('piin', 'Posición de inversión internacional neta (PIIN)', 0),
         ('piin_nendi', 'PIIN sin instrumentos que no generan impago', 1), ('den', 'Deuda externa neta', 0)],
-        'Eurostat (balanza de pagos y posición de inversión internacional del Banco de España); previsión: Comisión Europea (AMECO, contabilidad nacional).'),
+        'FMI, \\textit{World Economic Outlook} (octubre de 2026): cuenta corriente, con su previsión; FMI, consulta del artículo~IV de 2026: '
+        'previsiones de las subcuentas y de la PIIN; Eurostat (balanza de pagos y posición de inversión internacional del Banco de España): resto.'),
     8: ('Política monetaria y sistema bancario', 'en \\%, salvo indicación', [
         ('dfr', 'Facilidad de depósito del BCE (fin de año)', 0),
         ('mro', 'Operaciones principales de financiación (fin de año)', 0),
@@ -115,18 +120,20 @@ CUADROS = {
         ('npl', 'Bancos: préstamos dudosos (\\% de los préstamos)', 0), ('npl_ue', 'Ídem, Unión Europea', 1),
         ('roe', 'Bancos: rentabilidad de los recursos propios (ROE)', 0), ('roe_ue', 'Ídem, Unión Europea', 1),
         ('roa', 'Bancos: rentabilidad del activo (ROA)', 0), ('roa_ue', 'Ídem, Unión Europea', 1)],
-        'Banco Central Europeo (tipos oficiales, Euríbor, agregados monetarios, estado financiero del Eurosistema y datos bancarios consolidados) y '
-        'Eurostat (PIB de la zona del euro). APR: activos ponderados por riesgo.'),
+        'Banco Central Europeo (tipos oficiales, Euríbor, agregados monetarios, estado financiero del Eurosistema y datos bancarios consolidados, con la '
+        'comparación con la UE) y Eurostat (PIB de la zona del euro). APR: activos ponderados por riesgo.'),
     9: ('Cuentas públicas', 'en \\% del PIB, salvo indicación', [
         ('ing', 'Ingresos', 0), ('gas', 'Gastos', 0), ('int', 'de los cuales, intereses', 1),
         ('saldo', 'Saldo (capacidad o necesidad de financiación)', 0), ('prim', 'Saldo primario', 0),
-        ('cicl', 'Saldo ajustado de ciclo (\\% del PIB potencial)', 0), ('estr', 'Saldo estructural (\\% del PIB potencial)', 0),
-        ('estr_p', 'Saldo estructural primario (\\% del PIB potencial)', 0), ('deuda', 'Deuda pública', 0),
+        ('estr', 'Saldo estructural (\\% del PIB potencial)', 0),
+        ('estr_p', 'Saldo estructural primario (\\% del PIB potencial)', 0), ('deuda', 'Deuda pública bruta', 0),
+        ('deuda_neta', 'Deuda pública neta', 0),
         ('impl', 'Tipo de interés implícito de la deuda (\\%)', 0), ('pibn', 'PIB nominal (variación anual en \\%)', 0),
         ('rend', 'Rendimiento de la deuda a 10 años (\\%, media anual)', 0),
         ('dif', 'Diferencial frente al bono alemán a 10 años (pb)', 0)],
-        'Eurostat (cuentas de las administraciones públicas, notificación del procedimiento de déficit excesivo de octubre de 2026; tipos de interés a '
-        'largo plazo); saldos ajustados y previsiones: Comisión Europea (AMECO). Tipo implícito: intereses del año entre la deuda del año anterior.'),
+        'FMI, \\textit{World Economic Outlook} (octubre de 2026): ingresos, gastos, saldos, saldo estructural, deuda y PIB nominal, con sus previsiones '
+        '(saldo primario sin los intereses cobrados); FMI, consulta del artículo~IV de 2026: previsión de los intereses; Eurostat (intereses, tipos de interés '
+        'a largo plazo). Saldo estructural primario: saldo estructural más intereses. Tipo implícito: intereses del año entre la deuda del año anterior.'),
 }
 ANCHO = {4: '7.6cm', 6: '7.6cm', 7: '7.2cm', 8: '7.8cm', 9: '7.0cm'}
 OMITIR = {('vac', '2007'), ('vac', '2008'), ('vac', '2009')}
