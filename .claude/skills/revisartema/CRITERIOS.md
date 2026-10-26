@@ -485,6 +485,11 @@ el texto original y lo que se hizo.
   3. **Colores bien distinguibles**: pocos colores y con contraste (entre sí,
      en escala de grises y para daltónicos); si hay muchas series, se agrupan
      o se pasa a pequeños múltiplos antes que usar tonos parecidos.
+  4. **Etiquetas y leyendas sin fondo blanco** (Víctor, 26/10/2026): las
+     etiquetas de datos y los rótulos van sin recuadro blanco (`fill=none`;
+     si hace falta separarlas de una línea, se desplazan, no se tapan), y la
+     leyenda toma el fondo del gráfico: si el fondo es gris, la leyenda
+     también es gris (o transparente), nunca una caja blanca encima.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las
   capturas de tablas se convierten en tablas LaTeX.
 - Si un gráfico o una tabla pertenecen a una caja (anotaciones, ejemplo…),

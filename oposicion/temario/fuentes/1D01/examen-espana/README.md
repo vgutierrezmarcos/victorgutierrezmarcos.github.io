@@ -1,10 +1,11 @@
 # Examen de ejemplo completo del dictamen: España (1D01, entregable 3)
 
-Examen de ejemplo **completo** del dictamen de coyuntura (primer ejercicio, segunda parte): una pregunta por
-cada bloque de la guía (I perfil cíclico; II mercados de factores: trabajo y productividad, capital y crédito;
-III competitividad precio y no precio; IV sector exterior; V políticas monetaria, macroprudencial y fiscal;
-VI desequilibrios y recomendaciones), diez en total, con la redacción del tribunal y el formato de 2026 salvo el
-número de preguntas y el tiempo (3 h 30 min orientativas; la portada lo explica). **Datos reales y oficiales de
+Examen de ejemplo **completo** del dictamen de coyuntura (primer ejercicio, segunda parte): todos los bloques
+de la guía en 7 preguntas (Víctor, 26/10/2026): 1 perfil cíclico con la demanda privada y el crédito; 2 trabajo y
+productividad; 3 sector exterior con la competitividad precio y no precio y los aranceles; 4 inflación y política
+monetaria (como en 2016 y 2023); 5 banca y estabilidad financiera; 6 cuentas públicas y deuda; 7 desequilibrios y
+reformas. Redacción del tribunal y formato de 2026 salvo el número de preguntas y el tiempo (2 horas orientativas;
+la portada lo explica). **Datos reales y oficiales de
 España** disponibles el 26/10/2026. No se publica (de momento solo se publican las guías): vive en la rama
 `revision-temario`.
 
@@ -22,7 +23,7 @@ España** disponibles el 26/10/2026. No se publica (de momento solo se publican 
 | `generar_cuadros.py` → `cuadros/*.tex` | Escribe los cuadros en LaTeX desde los CSV (no se editan a mano) |
 | `graficos/gNN-*.tex` | Gráficos en pgfplots (paleta `dic…` de `latex/tikz-tcee.tex` y colores añadidos en el preámbulo del examen) |
 | `compilar.sh` | Compila con el MiKTeX de Windows y deja el PDF aquí |
-| `notas-para-la-solucion.md` | Para la solución de máximos: la historia de los datos por pregunta, el peso de cada una y lo que aplica de la guía |
+| `notas-para-la-solucion.md` | Para la solución de máximos (`solucion/`): la historia de los datos por pregunta, el peso de cada una y lo que aplica de la guía |
 
 ## Cómo se rehace
 

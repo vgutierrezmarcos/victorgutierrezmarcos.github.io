@@ -172,21 +172,25 @@ p('PIIN % PIB: CF', R(cf), 'crecimiento', R(crec), 'OV', R(ov))
 for i in (2.0, 3.0, 3.5):
     p('CC sin intereses que estabiliza la deuda externa (D*=42,7), i*=', i, ':', R((i / 100 - gn) / (1 + gn) * C['c7.den'][2025]))
 
-# --- s07: tipo de interés real ----------------------------------------------------
-_, ip = serie('g06-ipca-mensual.csv')
-ipca = {r[0]: [float(x) for x in r[1:]] for r in ip}
+# --- s07: tipo de interés real (2007-2026) -----------------------------------------
+# IPCA mensual largo: datos/ipca-mensual-2007.csv (descargar-ipca.py; 2026 = gráfico 6)
+with open(os.path.join(SAL, 'ipca-mensual-2007.csv'), encoding='utf-8') as fi:
+    rs = [r for r in csv.reader(fi) if r and not r[0].startswith('#')][1:]
+ipca = {r[0]: (float(r[1]), float(r[2])) for r in rs}
 _, tp = serie('g12-tipos.csv')
 d = []
 for r in tp:
     mes = r[0]
     if mes in ipca and r[1] != '':
         dfr = float(r[1])
-        d.append([mes, int(mes[:4]) + (int(mes[5:]) - 0.5) / 12, dfr, R(dfr - ipca[mes][0], 1), R(dfr - ipca[mes][2], 1),
-                  R(dfr - ipca[mes][1], 1), R(dfr - ipca[mes][3], 1)])
-escribir('s07-tipo-real.csv', ['mes', 'x', 'dfr', 'r_es', 'r_ze', 'r_es_sub', 'r_ze_sub'],
-         ['Solución, gráfico s07: facilidad de depósito del BCE (%) y tipo real ex post: facilidad de depósito menos la inflación interanual del IPCA de España y de la zona del euro (pp).',
-          'Gráficos 6 y 12 del cuadernillo (BCE; Eurostat).'], d)
-p('== P7. tipos reales (septiembre de 2026):', d[-1])
+        d.append([mes, R(int(mes[:4]) + (int(mes[5:]) - 0.5) / 12, 3), dfr, R(dfr - ipca[mes][0], 1), R(dfr - ipca[mes][1], 1)])
+escribir('s07-tipo-real.csv', ['mes', 'x', 'dfr', 'r_es', 'r_ze'],
+         ['Solución, gráfico s07: facilidad de depósito del BCE (%) y tipo real ex post: facilidad de depósito menos la inflación interanual del IPCA de España y de la zona del euro (pp), enero de 2007-septiembre de 2026.',
+          'Gráfico 12 del cuadernillo (BCE) y datos/ipca-mensual-2007.csv (Eurostat prc_hicp_manr hasta 2025; 2026, gráfico 6 del cuadernillo).'], d)
+p('== P4. tipos reales (septiembre de 2026):', d[-1])
+media = lambda a, b, k: R(sum(x[k] for x in d if a <= x[0][:4] <= b) / len([x for x in d if a <= x[0][:4] <= b]), 1)
+for a_, b_ in [('2007', '2008'), ('2009', '2013'), ('2014', '2021'), ('2022', '2022'), ('2023', '2024'), ('2025', '2026')]:
+    p('tipo real medio', a_, b_, 'España', media(a_, b_, 3), 'zona', media(a_, b_, 4))
 taylor = lambda pi, og: 4 + 1.5 * (pi - 2) + 0.5 * og
 p('Taylor España (π 2026 ene-sep 3,6; OG 1,7):', R(taylor(3.61, 1.75)), 'con subyacente 3,5:', R(taylor(3.5, 1.75)))
 p('Taylor zona del euro sin brecha (π sep 3,8):', R(taylor(3.8, 0)), 'subyacente 2,5:', R(taylor(2.5, 0)))

@@ -152,7 +152,9 @@
 %   cero y umbrales: \dicraya[estilo]{(x1,y1) (x2,y2)} (en axis lines);
 %   líneas: \addplot normal (main); puntos: \addplot[on layer=dicpuntos, …]
 %   (las marcas de cualquier serie van solas a dicpuntos);
-%   rótulos: \dicrotulo[opciones del nodo]{(x,y)}{texto} (en axis descriptions).
+%   rótulos: \dicrotulo[opciones del nodo]{(x,y)}{texto} (en axis descriptions),
+%   siempre sin fondo (nada de fill=white: si chocan con una línea, se desplazan;
+%   CRITERIOS §7, regla 4).
 % Los \capa{n} del vídeo no cambian: siguen envolviendo instrucciones completas.
 \pgfdeclarelayer{dicfondo}
 \pgfdeclarelayer{dicbarras}
@@ -162,7 +164,10 @@
   layers/dic/.define layer set={axis background, axis grid, dicfondo, dicbarras,
     axis ticks, axis lines, axis tick labels, pre main, main, dicpuntos,
     axis descriptions, axis foreground}{/pgfplots/layers/standard},
-  dicapas/.style={axis on top=false, set layers=dic, mark layer=dicpuntos},
+  % leyenda sin caja blanca: toma el fondo del gráfico, también si el gráfico va
+  % dentro de un cuadro gris (CRITERIOS §7, regla 4, 26/10/2026)
+  dicapas/.style={axis on top=false, set layers=dic, mark layer=dicpuntos,
+    legend style={fill=none}},
   dicsuelto/.style={forget plot, stack plots=false, sharp plot, mark=none},
 }
 \newcommand{\dicraya}[2][]{%

@@ -13,7 +13,7 @@
   \begin{axis}[dicsol, width=11cm, height=6.2cm,
       ybar, bar width=0.42cm,
       xmin=2018.4, xmax=2025.6, xtick={2019,...,2025},
-      ymin=-8, ymax=9, ytick={-8,-6,...,8},
+      ymin=-8, ymax=11, ytick={-8,-6,...,8},
       ylabel={\% y puntos porcentuales},
       legend columns=3, area legend, dicapas]
     \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicparo] table[x=anio, y=clu] {\marg};
@@ -24,14 +24,16 @@
     \capa{4}{\addplot[on layer=dicpuntos, only marks, mark=diamond*, mark size=3.2pt, bar shift=0pt,
         mark options={fill=dicsaldo, draw=white, line width=0.4pt}, leyendamarca] table[x=anio, y=margen] {\marg};
       \addlegendentry{Margen ($\gamma_P-\gamma_{\mathrm{CLU}}$)}}
+    % 5: el margen de cada año, en una fila arriba (sin fondo, sin tapar barras)
     \capa{5}{
-      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt]{(2019,-2.7)}{$-$2,7}
-      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt]{(2020,-7.1)}{$-$7,1}
-      \dicrotulo[font=\scriptsize, anchor=south, yshift=3pt, fill=white, inner sep=1pt]{(2021,1.8)}{+1,8}
-      \dicrotulo[font=\scriptsize, anchor=south, yshift=3pt, fill=white, inner sep=1pt]{(2022,2.6)}{+2,6}
-      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt, fill=white, inner sep=1pt]{(2023,0.3)}{+0,3}
-      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt, fill=white, inner sep=1pt]{(2024,0.1)}{+0,1}
-      \dicrotulo[font=\scriptsize, anchor=north, yshift=-3pt]{(2025,-1.4)}{$-$1,4}
+      \dicrotulo[font=\scriptsize\itshape, anchor=east]{(2018.55,10.3)}{margen:}
+      \dicrotulo[font=\scriptsize\bfseries, anchor=center]{(2019,10.3)}{$-$2,7}
+      \dicrotulo[font=\scriptsize\bfseries, anchor=center]{(2020,10.3)}{$-$7,1}
+      \dicrotulo[font=\scriptsize\bfseries, anchor=center]{(2021,10.3)}{+1,8}
+      \dicrotulo[font=\scriptsize\bfseries, anchor=center]{(2022,10.3)}{+2,6}
+      \dicrotulo[font=\scriptsize\bfseries, anchor=center]{(2023,10.3)}{+0,3}
+      \dicrotulo[font=\scriptsize\bfseries, anchor=center]{(2024,10.3)}{+0,1}
+      \dicrotulo[font=\scriptsize\bfseries, anchor=center]{(2025,10.3)}{$-$1,4}
     }
   \end{axis}
 \end{tikzpicture}

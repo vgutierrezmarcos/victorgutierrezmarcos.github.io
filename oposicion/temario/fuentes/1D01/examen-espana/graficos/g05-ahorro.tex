@@ -6,7 +6,7 @@
       ybar, bar width=0.34cm,
       xmin=2006.4, xmax=2025.6, xtick={2007,2009,...,2025},
       ymin=-14, ymax=20, ytick={-12,-8,...,20},
-      legend columns=3, dicapas]
+      legend columns=2, dicapas]
     \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicrenta, area legend] table[x=anio, y=renta_real_hab] {\gCinco}; \addlegendentry{Renta disponible real por habitante (\%)}}
     \capa{2}{\dicraya{(2006.4,0) (2025.6,0)}}
     \capa{3}{\addplot[sharp plot, diclinea=dicconspriv, leyendalinea] table[x=anio, y=consumo_real] {\gCinco}; \addlegendentry{Consumo privado real (\%)}}

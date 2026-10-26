@@ -3,11 +3,13 @@
 \begin{document}
 \hyphenpenalty=10000 \exhyphenpenalty=10000
 % Semáforo de los umbrales oficiales: verde dentro, rojo fuera (alerta).
-% Barras primero, después las marcas del umbral y, al final, los rótulos.
+% Barras primero, después las marcas del umbral y, al final, los rótulos (el
+% valor de cada umbral, en blanco sobre la barra, a la derecha de su marca y sin
+% recuadro: CRITERIOS §7, regla 4).
 \begin{tikzpicture}[tcee, font=\scriptsize,
   ok/.style={fill=tceeverde!70}, mal/.style={fill=tceerojo!75},
   n/.style={anchor=east, font=\scriptsize, text width=3.3cm, align=right},
-  u/.style={font=\scriptsize\bfseries, fill=white, inner sep=1pt}]
+  u/.style={font=\scriptsize\bfseries, text=white, anchor=west, inner sep=1pt, xshift=1.5pt}]
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
   \path (-3.64cm,-6.60cm) rectangle (5.34cm,0.53cm);
   % 1: barras

@@ -1,7 +1,7 @@
 # Solución de máximos del examen de ejemplo de España (1D01, entregable 5)
 
 Solución *de máximos* del examen de ejemplo completo del dictamen de coyuntura sobre España
-(`../examen-espana.pdf`, 10 preguntas, una por bloque de la guía). Aplica toda la guía
+(`../examen-espana.pdf`, 7 preguntas que recorren todos los bloques de la guía, 2 horas). Aplica toda la guía
 (`../../1D01.tex`) y remite a sus apartados. **No se publica** (vive en la rama
 `revision-temario`; Víctor decide cuándo).
 
@@ -14,10 +14,12 @@ Solución *de máximos* del examen de ejemplo completo del dictamen de coyuntura
   dice cada cosa, qué apartado de la guía se aplica, cálculos, gráficos que el examen no
   trae, errores típicos, alternativas de redacción, qué añadir con más tiempo y qué recortar
   en el examen.
-- **Pesos** (de `../notas-para-la-solucion.md`): alto en 1, 2, 4, 9 y 10; medio en 3, 6 y 7;
-  bajo en 5 y 8. La tabla 1 da el reparto del tiempo (23, 21, 17 o 13 minutos; suman 184 de
-  los 210, con 15 de lectura y 11 de repaso) y las palabras del texto de examen de cada
-  pregunta, que cuenta `contar-palabras.py`.
+- **Pesos** (de `../notas-para-la-solucion.md`): alto en 1 (×1,25), 2, 4, 6 y 7; medio en 3; bajo en 5. La tabla 1
+  da el reparto de 2 horas con la regla de la guía (12 minutos de lectura, 6 de repaso; 18, 15, 14, 15, 10, 15 y 15
+  minutos por pregunta), las palabras del texto de máximos (`contar-palabras.py`) y las que serían realistas a mano
+  (≈ 22 por minuto).
+- **Texto de examen solo con el cuadernillo**: lo externo (normas, NAWRU, colchón anticíclico, supuestos) está en los
+  cuadros «Contexto y fuentes» de cada pregunta.
 - **Cifras**: todas del cuadernillo (`../datos/*.csv`, consulta 26/10/2026). Lo externo
   (NAWRU, colchón anticíclico, requisitos del MUS, FMI) va citado con `1D01.bib`.
 
@@ -27,15 +29,16 @@ Solución *de máximos* del examen de ejemplo completo del dictamen de coyuntura
 |---|---|
 | `solucion-espana.tex` / `.pdf` | Documento principal (preámbulo, cajas propias) |
 | `secciones/p00-introduccion.tex` | Cómo leer la solución, retos, tabla del reparto y la lectura del cuadernillo |
-| `secciones/p01.tex` … `p10.tex` | Una pregunta por fichero: enunciado, texto de examen y cuadros complementarios |
+| `secciones/p01.tex` … `p07.tex` | Una pregunta por fichero: enunciado, texto de examen y cuadros complementarios |
 | `secciones/palabras-*.tex` | Palabras del texto de examen (las escribe `contar-palabras.py`; no se editan) |
 | `calculos.py` → `calculos.txt`, `datos/s0*.csv` | Todos los cálculos que cita el texto y los datos de los gráficos propios |
-| `graficos/s01…s08-*.tex` / `.pdf` | Gráficos propios (pgfplots, paleta `dic…` de `latex/tikz-tcee.tex` + `graficos/colores-solucion.tex`, capas `\capa{n}` para el vídeo) |
+| `descargar-ipca.py` → `datos/ipca-mensual-2007.csv` | IPCA mensual de España y la zona del euro desde 2007 (Eurostat) para el gráfico s07 a largo plazo |
+| `graficos/s01…s09-*.tex` / `.pdf` | Gráficos propios (pgfplots, paleta `dic…` de `latex/tikz-tcee.tex` + `graficos/colores-solucion.tex`, capas `\capa{n}` para el vídeo) |
 | `notas-para-el-video.md` | Bloques del vídeo de 1 h 30 min de la solución |
 | `compilar.sh` | Compila gráficos y documento |
 
 Las infografías de la guía (árbol del déficit corriente, semáforo de la banca, *policy mix*,
-tipos de paro, canales de un choque externo, umbrales, del dato a la recomendación) se toman
+tipos de paro, canales de un choque externo, del dato a la recomendación); la de los umbrales se rehace en `graficos/s09` con la posición de España se toman
 de `../../graficos/*.pdf` sin copiarlas.
 
 ## Cómo se compila
@@ -69,8 +72,8 @@ bibliografía en `../../1D01.bib`.
 ## Cuando cambien los datos (previsiones de otoño, 17/11/2026)
 
 1. Rehacer el cuadernillo (`../README.md`, «Pendiente: previsiones de otoño»).
-2. `./compilar.sh` (recalcula `calculos.txt` y los CSV de los gráficos).
+2. `python3 descargar-ipca.py` y `./compilar.sh` (recalcula `calculos.txt` y los CSV de los gráficos).
 3. Comparar `calculos.txt` con la versión anterior (`git diff`) y corregir en
    `secciones/p*.tex` las cifras que cambien: sobre todo previsiones, brecha, potencial,
-   saldos estructurales y deuda (preguntas 1, 9 y 10) y la tabla 1 de la pregunta 9.
-4. Recolocar a mano los rótulos de `graficos/s01`, `s03`, `s06` y `s08` si se mueven los puntos.
+   saldos estructurales y deuda (preguntas 1, 6 y 7) y la tabla de saldos de la pregunta 6.
+4. Recolocar a mano los rótulos de `graficos/s01`, `s03`, `s06`, `s07`, `s08` y `s09` si se mueven los puntos.

@@ -1,5 +1,8 @@
 # Notas para la solución de máximos del examen de España (1D01, entregable 3)
 
+> 26/10/2026: el examen pasa a 7 preguntas y 2 horas (ver «Lo general»). Las secciones de abajo conservan el
+> contenido por bloque; su título dice en qué pregunta nueva entra cada uno.
+
 Para el agente que escriba la solución de máximos (entregable 4). Todas las cifras salen de `datos/*.csv`
 (consulta 26/10/2026; fuentes y códigos en `datos/fuentes.md`). Entre corchetes, dónde está cada dato en el
 cuadernillo: C = cuadro, G = gráfico (la numeración es la del PDF y la de los ficheros). Las referencias
@@ -7,24 +10,30 @@ cuadernillo: C = cuadro, G = gráfico (la numeración es la del PDF y la de los 
 
 ## Lo general
 
-- **Examen completo**: una pregunta por bloque de la guía (I-VI), diez en total; 3 h 30 min orientativas (la portada
-  lo explica y da el reparto por la regla de la guía: 15 min de lectura, 22 para la 1, 18 para cada una de las demás,
-  11 de repaso).
+- **Examen completo, en 7 preguntas** (Víctor, 26/10/2026; antes eran 10, una por bloque): la antigua 3 (consumo,
+  ahorro, inversión y crédito) va dentro de la 1; la competitividad precio (de la antigua 4) y la no precio con los
+  aranceles (antigua 5) van dentro del sector exterior (nueva 3); la inflación (antigua 4) va con la política
+  monetaria (nueva 4), como en los dictámenes de 2016 y 2023. Los cuadros y gráficos del cuadernillo no cambian.
+- **Tiempo: 2 horas** orientativas, con la regla de la guía (anexo `anexo:tiempo`): lectura ≈ 10 % (12 min), repaso
+  ≈ 5 % (6 min); $W=102$; $t=W/(n+0{,}25)=102/7{,}25\approx14$; perfil cíclico $1{,}25\,t\approx18$; dentro de esa
+  media, más a las preguntas con más retos.
 - **Pesos** (decisión de Víctor, 26/10/2026): la solución da más extensión donde España tiene de verdad más retos o
   más que contar. Resumen (detalle y razones en cada pregunta):
 
-| Pregunta | Bloque de la guía | Peso | Minutos que sugiere el peso (de 184) |
+| Pregunta | Bloques de la guía | Peso | Minutos (de 102) |
 |---|---|---|---|
-| 1 | I. Perfil cíclico | **alto** | 24 |
-| 2 | II. Trabajo y productividad | **alto** | 21 |
-| 3 | II. Capital, ahorro y crédito | medio | 17 |
-| 4 | III. Inflación y competitividad precio | **alto** | 21 |
-| 5 | III. Competitividad no precio y aranceles | bajo | 13 |
-| 6 | IV. Sector exterior | medio | 17 |
-| 7 | V. Política monetaria | medio | 17 |
-| 8 | V. Estabilidad financiera y macroprudencial | bajo | 13 |
-| 9 | V. Política fiscal y deuda | **alto** | 21 |
-| 10 | VI. Desequilibrios y recomendaciones | **alto** | 21 |
+| 1 | I. Perfil cíclico + II. Capital, ahorro y crédito | **alto** (×1,25) | 18 |
+| 2 | II. Trabajo y productividad | **alto** | 15 |
+| 3 | IV. Sector exterior + III. Competitividad precio, no precio y aranceles | medio | 14 |
+| 4 | III. Inflación + V. Política monetaria | **alto** | 15 |
+| 5 | V. Estabilidad financiera y macroprudencial | bajo | 10 |
+| 6 | V. Política fiscal y deuda | **alto** | 15 |
+| 7 | VI. Desequilibrios y recomendaciones | **alto** | 15 |
+
+  Por qué así: la 4 junta el problema coyuntural de 2026 (inflación del 5,0 % frente a 3,8 %, riesgo de segunda
+  ronda) con la respuesta del BCE, y sube a peso alto; la 3 tiene mucho que contar (la gran corrección exterior, la
+  devaluación interna, los aranceles), pero el reto actual es moderado (energía, una PIIN aún bajo el −35 %), y se
+  queda en medio; la banca sigue en bajo.
 
   La solución puede decirlo así al principio («los retos están en la productividad, el paro estructural, las cuentas
   públicas y el nuevo choque de precios; el sector exterior, la banca y el crédito no son hoy un problema»): es el
@@ -93,7 +102,7 @@ temporalidad y productividad.
   $\gamma_{CLU}=\gamma_W-\gamma_{PAT}$ (2025: 4,4 − 0,0). Complementarios: tabla de productividad por fases; Beveridge
   de la zona del euro para comparar.
 
-## 3. Consumo, ahorro, inversión y crédito (bloque II, capital) · peso MEDIO
+## 1 (cont.). Consumo, ahorro, inversión y crédito (bloque II, capital) · dentro de la pregunta 1
 
 **Por qué medio**: hay buena historia (desapalancamiento ejemplar, inversión más sana que en 2007), pero hoy no es un
 problema; el único foco de riesgo es la vivienda (precios al alza con poca inversión residencial).
@@ -115,7 +124,7 @@ problema; el único foco de riesgo es la vivienda (precios al alza con poca inve
   de 2007 (G4: índice 87, 2007 = 100).
 - Guía: `sec:capitales`, `fig:consumo-renta-ahorro`, `tab:saldos-sectoriales`, `sec:estabilidad` (desapalancamiento sano).
 
-## 4. Inflación y competitividad precio (bloque III) · peso ALTO
+## 4 (y 3). Inflación (pregunta 4) y competitividad precio (pregunta 3) (bloque III)
 
 **Por qué alto**: es el problema coyuntural de 2026 (5,0 % frente a 3,8 %), con riesgo de segunda vuelta y pérdida de
 competitividad coste desde 2019.
@@ -138,7 +147,7 @@ competitividad coste desde 2019.
 - Guía: `sec:precios`, `fig:esquema-indices`, `eq:efecto-base`, `fig:esquema-inflacion`, `fig:iapc-zona-euro`,
   `fig:brent`, `anexo:casos-frecuentes` (el último brote y la «última milla»), `sec:tipo-cambio`, `fig:esquema-devaluacion`.
 
-## 5. Competitividad no precio y política comercial (bloque III) · peso BAJO
+## 3 (cont.). Competitividad no precio y política comercial (bloque III) · dentro de la pregunta 3
 
 **Por qué bajo**: la exposición directa a EE. UU. es pequeña y las cuotas se mantienen; el reto de fondo (I+D, tamaño
 empresarial) se desarrolla mejor en la 10. Basta un análisis ordenado y dos o tres medidas.
@@ -154,7 +163,7 @@ empresarial) se desarrolla mejor en la 10. Basta un análisis ordenado y dos o t
   tamaño empresarial, defensa comercial dentro de la UE (la política comercial es comunitaria).
 - Guía: `sec:no-precio`, anexo de casos (aranceles de un tercero), `tab:indicadores-exterior`.
 
-## 6. Sector exterior (bloque IV) · peso MEDIO
+## 3. Sector exterior (bloque IV) · peso MEDIO
 
 **Por qué medio**: la gran historia (de −9,4 % a +3,2 %) está resuelta y la PIIN mejora; queda la vulnerabilidad
 energética y una PIIN todavía más negativa que el umbral del −35 %.
@@ -176,7 +185,7 @@ energética y una PIIN todavía más negativa que el umbral del −35 %.
 - Guía: `sec:exterior` (`eq:identidad-bp`), `sec:cuenta-corriente`, `sec:financiacion`, `sec:piin`, `fig:umbrales-pdm`,
   `sec:sostenibilidad-exterior`, `fig:arbol-deficit`.
 
-## 7. Política monetaria (bloque V) · peso MEDIO
+## 4 (cont.). Política monetaria (bloque V) · dentro de la pregunta 4, peso ALTO
 
 **Por qué medio**: la política es común (el tono no lo decide España), pero hay dos cosas propias que contar: la
 transmisión rápida (hipotecas variables) y que el tipo real es más bajo para España.
@@ -192,7 +201,7 @@ transmisión rápida (hipotecas variables) y que el tipo real es más bajo para 
   2,4-2,6 % desde mayo, general 3,8 %, lección de 2021-2022); subidas graduales de 25 pb.
 - Guía: `sec:monetaria`, `fig:esquema-tono`, `fig:esquema-canales`, `fig:tipos-balance-bce`.
 
-## 8. Sistema bancario y estabilidad financiera (bloque V) · peso BAJO
+## 5. Sistema bancario y estabilidad financiera (bloque V) · peso BAJO
 
 **Por qué bajo**: la banca es rentable y solvente y la deuda privada está en mínimos; el riesgo a vigilar es la vivienda.
 Respuesta corta y ordenada (semáforo) con una o dos medidas macroprudenciales.
@@ -207,7 +216,7 @@ Respuesta corta y ordenada (semáforo) con una o dos medidas macroprudenciales.
 - Guía: `sec:estabilidad`, `fig:esquema-basilea`, `fig:esquema-semaforo`, `tab:indicadores-financiero`, `tab:basilea`,
   `tab:ratios-banca`.
 
-## 9. Cuentas públicas y política fiscal (bloque V) · peso ALTO
+## 6. Cuentas públicas y política fiscal (bloque V) · peso ALTO
 
 **Por qué alto**: deuda en torno al 100 %, déficit estructural del 3 % con brecha positiva, envejecimiento y nuevas reglas
 fiscales: es uno de los retos mayores.
@@ -227,7 +236,7 @@ fiscales: es uno de los retos mayores.
 - Guía: `sec:fiscal`, `eq:dinamica-deuda`, `fig:esquema-deuda`, `fig:impulso-fiscal`, `tab:inflacion-cuentas`,
   `sec:policy-mix`, `fig:policy-mix`.
 
-## 10. Desequilibrios, riesgos y recomendaciones (bloque VI) · peso ALTO
+## 7. Desequilibrios, riesgos y recomendaciones (bloque VI) · peso ALTO
 
 **Por qué alto**: es la síntesis que cierra el examen y donde se juntan los retos de verdad (productividad, paro,
 deuda, demografía).

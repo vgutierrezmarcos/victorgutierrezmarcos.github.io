@@ -20,7 +20,7 @@ def limpiar(t):
 
 
 total = 0
-for n in range(1, 11):
+for n in range(1, 8):
     f = os.path.join(SEC, f'p{n:02d}.tex')
     texto = open(f, encoding='utf-8').read() if os.path.exists(f) else ''
     bloques = re.findall(r'\\begin\{examen\}(.*?)\\end\{examen\}', texto, flags=re.S)
