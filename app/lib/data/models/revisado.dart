@@ -73,7 +73,14 @@ class TemaRevisado {
     this.esquema = const [],
     this.raw = _rawPorDefecto,
     this.cdn = _cdnPorDefecto,
+    this.exclusivo = true,
   });
+
+  /// Materiales publicados o revisados desde el 1 de octubre de 2026: de uso
+  /// personal (sin licencia CC), solo lectura dentro de la app (sin compartir,
+  /// sin Word y sin descargar el PDF anotado). Lo dice el manifiesto
+  /// (`exclusivo`); si no lo trae, por la fecha de aprobación.
+  final bool exclusivo;
 
   /// Marcadores del PDF revisado (`esquema` en el manifiesto: [nivel, título,
   /// página]); vacío si el manifiesto aún no los trae.
@@ -155,15 +162,28 @@ class TemaRevisado {
       esquema: EntradaEsquema.listaDeJson(j['esquema']),
       raw: raw,
       cdn: cdn,
+      exclusivo: j['exclusivo'] is bool ? j['exclusivo'] as bool : !(j['aprobado'] is String && DateTime.tryParse(j['aprobado'] as String) != null && DateTime.parse(j['aprobado'] as String).isBefore(corteExclusivo)),
     );
   }
 }
 
+/// Desde cuándo lo revisado es exclusivo (uso personal).
+final corteExclusivo = DateTime(2026, 10, 1);
+
+/// Aviso de los materiales exclusivos (el mismo que llevan los ficheros).
+const avisoExclusivo = 'Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. Puedes usarlo libremente para tu estudio personal. No se autoriza su incorporación a otras plataformas, aplicaciones o servicios.';
+const urlCondicionesMateriales = 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html';
+
 /// revisados.json
 class ManifiestoRevisados {
-  const ManifiestoRevisados({this.temas = const {}, this.commit = ''});
+  const ManifiestoRevisados({this.temas = const {}, this.commit = '', this.condiciones = urlCondicionesMateriales});
   final Map<String, TemaRevisado> temas;
   final String commit;
+  /// Página de condiciones de uso de los materiales (la trae el manifiesto).
+  final String condiciones;
+
+  /// Los temas exclusivos (uso personal).
+  Iterable<TemaRevisado> get exclusivos => temas.values.where((t) => t.exclusivo);
 
   static const vacio = ManifiestoRevisados();
 
@@ -195,7 +215,8 @@ class ManifiestoRevisados {
         if (t != null) temas[t.codigo] = t;
       }
     }
-    return ManifiestoRevisados(temas: temas, commit: j['commit'] is String ? j['commit'] as String : '');
+    final condiciones = j['condiciones'];
+    return ManifiestoRevisados(temas: temas, commit: j['commit'] is String ? j['commit'] as String : '', condiciones: condiciones is String && condiciones.startsWith('https://') ? condiciones : urlCondicionesMateriales);
   }
 }
 

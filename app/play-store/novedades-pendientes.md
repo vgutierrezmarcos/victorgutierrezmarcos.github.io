@@ -12,6 +12,7 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 - (26 oct.) La app se llama «Oposición TCEE · DCE» también en el móvil, para encontrarla en el buscador, y tiene una animación de arranque nueva
 - (26 oct.) Si la instalaste con el fichero descargado de la web, la app te lleva a Google Play para actualizarla desde allí; desde entonces se actualiza sola
 - (26 oct., 1.20.4) Una sola vez, cuando ya le has sacado partido a la app, te pide una valoración en Google Play o una sugerencia por correo
+- (27 oct., 1.20.4) Los temas revisados y la guía del dictamen son materiales exclusivos de uso personal: llevan su aviso, se leen dentro de la app y el temario tiene el filtro «Materiales exclusivos»
 - (26 oct., 1.20.4) Los temas de tus clases con el preparador se fijan solos desde tu cronograma, de modo que él ve la misma lista aunque no compartas el cronograma; y mientras no haya temas fijados, el preparador puede mandarte o sortear cualquiera de los que llevas
 
 ## Publicado el 26 oct. 2026 (salida en Google Play, 1.19.2)

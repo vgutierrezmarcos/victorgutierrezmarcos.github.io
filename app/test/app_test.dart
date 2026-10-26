@@ -479,7 +479,9 @@ void main() {
     await arrancar(tester);
     await estudiar(tester, 'Temas');
     await tocar(tester, find.textContaining('Parte C: Derecho'));
-    expect(find.text('Revisado · exclusivo de la app'), findsOneWidget);
+    // Aprobado desde el 1 oct. 2026: exclusivo (uso personal); el chip del filtro cuenta uno.
+    expect(find.text('Exclusivo · revisado'), findsOneWidget);
+    expect(find.text('Materiales exclusivos · 1'), findsOneWidget);
     // Sin cuenta: se ve la versión anterior (aquí, la agenda: no tiene PDF) y la invitación.
     await tocar(tester, find.textContaining('5.C.4 ·'));
     expect(find.text('Versión revisada disponible: inicia sesión para leerla'), findsOneWidget);
