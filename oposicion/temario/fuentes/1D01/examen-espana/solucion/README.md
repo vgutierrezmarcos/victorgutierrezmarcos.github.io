@@ -20,6 +20,8 @@ Solución *de máximos* del examen de ejemplo completo del dictamen de coyuntura
   (≈ 22 por minuto).
 - **Texto de examen solo con el cuadernillo**: lo externo (normas, NAWRU, colchón anticíclico, supuestos) está en los
   cuadros «Contexto y fuentes» de cada pregunta.
+- **Datos del FMI** (26/10/2026): los cuadros anuales y las previsiones del cuadernillo son ahora del FMI (WEO de octubre de 2026 y artículo IV de 2026). Cada pregunta tiene un cuadro «El diagnóstico del FMI» con el artículo IV (IMF Country Report 26/102, en `~/.local/share/oposicion-web/fmi/`) citado por página; los Selected Issues de 2026 (26/103) no se pudieron descargar (acceso denegado).
+- **Maquetación**: salto de página antes de cada pregunta, sin líneas viudas ni huérfanas, un anexo de cálculos al final y ningún nombre de fichero en el PDF.
 - **Cifras**: todas del cuadernillo (`../datos/*.csv`, consulta 26/10/2026). Lo externo
   (NAWRU, colchón anticíclico, requisitos del MUS, FMI) va citado con `1D01.bib`.
 

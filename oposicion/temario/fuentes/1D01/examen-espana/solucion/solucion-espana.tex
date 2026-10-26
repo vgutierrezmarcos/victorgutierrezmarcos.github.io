@@ -26,18 +26,26 @@
 \newtcolorbox{examen}{enhanced,breakable,frame hidden,colback=white,interior hidden,
   borderline west={1.6pt}{0pt}{tceemorado},left=10pt,right=0pt,top=1pt,bottom=1pt,
   boxsep=0pt,before skip=6pt,after skip=8pt,
-  before upper={\clubpenalty=500 \widowpenalty=500 \predisplaypenalty=200 \setlist{beginpenalty=300}}}
+  before upper={\clubpenalty=10000 \widowpenalty=10000 \predisplaypenalty=200 \setlist{beginpenalty=300}}}
 % Cuadro complementario: por qué, cálculos, gráficos, errores y alternativas
-\newtcolorbox{complemento}[1]{enhanced,breakable,colback=tceegrisclaro!45,colframe=tceedorado,
+\newtcolorbox{complementocaja}[1]{enhanced,breakable,colback=tceegrisclaro!45,colframe=tceedorado,
   boxrule=0pt,leftrule=3pt,arc=1pt,fontupper=\footnotesize,left=8pt,right=8pt,top=5pt,bottom=5pt,
-  detach title,before upper={\clubpenalty=500 \widowpenalty=500 \setlist{beginpenalty=300}{\small\bfseries\color{tceedorado!75!black}Cuadro complementario #1}\par\smallskip},
+  detach title,before upper={\clubpenalty=10000 \widowpenalty=10000 \setlist{beginpenalty=300}{\small\bfseries\color{tceedorado!75!black}Cuadro complementario #1}\par\nopagebreak\smallskip},
   before skip=8pt,after skip=10pt}
-% (En «examen» y «complemento», before upper relaja las penalizaciones de líneas
-% viudas y huérfanas de tcee.sty, 10000: si no, la caja no encuentra dónde
-% partirse y deja huecos.)
+% El cuadro complementario pide sitio para su título y unas líneas antes de
+% empezar (fuera de la caja; dentro, \Needspace provoca saltos en falso): así su
+% título nunca queda solo al pie de una página.
+\newenvironment{complemento}[1]{\par\Needspace{9\baselineskip}\begin{complementocaja}{#1}}{\end{complementocaja}}
+% (En «examen» y «complemento», before upper fija en 10000 las penalizaciones de
+% líneas viudas y huérfanas: ninguna caja deja una línea sola al pie o al principio
+% de una página.)
 % Rótulo de una parte del texto de examen («a) …»)
 % (sin \Needspace: dentro de una tcolorbox partible fuerza saltos y deja páginas casi vacías)
 \newcommand{\rotulo}[1]{\par\addvspace{4pt}{\color{tceemorado}\bfseries #1}\par\nopagebreak\smallskip}
+% Citas del artículo IV de 2026 del FMI con página (informe del personal técnico
+% o comunicado de prensa, con su paginación impresa)
+\newcommand{\fmi}[1]{\parencite[informe del personal técnico, p.~#1]{FMI2026ArticuloIV}}
+\newcommand{\fmicp}[1]{\parencite[comunicado de prensa, p.~#1]{FMI2026ArticuloIV}}
 % Etiqueta dentro de un cuadro complementario
 \newcommand{\que}[1]{\par\smallskip{\bfseries\color{tceemoradooscuro}#1}\enspace}
 \setlength{\emergencystretch}{1.5em}
@@ -53,6 +61,7 @@
 \input{secciones/p05}
 \input{secciones/p06}
 \input{secciones/p07}
+\input{secciones/p08-anexo-calculos}
 
 \bibliografia
 \end{document}

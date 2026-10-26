@@ -65,7 +65,7 @@ R = lambda x, n=2: round(x, n)
 d = [[y, C['c1.pib'][y], C['c1.brecha'][y], 1 if y >= 2026 else 0] for y in range(2007, 2028)]
 escribir('s01-fases.csv', ['anio', 'pib', 'brecha', 'prevision'],
          ['Solución, gráfico s01: crecimiento del PIB real (%) y brecha de producción (% del PIB potencial), 2007-2027.',
-          'Cuadro 1 del cuadernillo (Eurostat; brecha y previsiones 2026-2027: Comisión Europea, AMECO, primavera de 2026).'], d)
+          'Cuadro 1 del cuadernillo (FMI, WEO de octubre de 2026: PIB, brecha y previsiones de 2026-2027).'], d)
 p('== P1. Fases (medias)')
 for a, b in [(2007, 2008), (2009, 2013), (2014, 2019), (2020, 2020), (2021, 2023), (2024, 2025)]:
     ys = range(a, b + 1)
@@ -107,7 +107,7 @@ for y in range(2008, 2026):
     d.append([y, gap, du, grupo])
 escribir('s03-okun.csv', ['anio', 'crec_sobre_pot', 'var_paro', 'grupo'],
          ['Solución, gráfico s03: ley de Okun. Crecimiento del PIB real menos el del potencial (pp) y variación de la tasa de paro (pp).',
-          'Cuadros 1 y 3 del cuadernillo (Eurostat; PIB potencial: AMECO).'], d)
+          'Cuadros 1 y 3 del cuadernillo (FMI, WEO de octubre de 2026: PIB, potencial y paro).'], d)
 p('== P2. Okun')
 for a, b in [(2014, 2019), (2022, 2025)]:
     ys = range(a, b + 1); n = len(ys)
@@ -122,7 +122,7 @@ for k in ('c3.prod_h', 'c3.prod_oc'):
 
 # --- s04: CLU, deflactor y margen -------------------------------------------------
 d = []
-p('== P4. CLU y margen')
+p('== P3-P4. CLU y margen')
 for y in range(2019, 2026):
     clu = C['c3.clu'][y]; df = C['c5.def_pib'][y]
     d.append([y, R(clu, 1), R(df, 1), R(df - clu, 1)])
@@ -143,7 +143,7 @@ for y in range(2007, 2026):
 escribir('s05-saldos.csv', ['anio', 'privado', 'publico', 'nacion'],
          ['Solución, gráfico s05: capacidad (+) o necesidad (-) de financiación de la nación, de las AAPP y del sector privado (por diferencia), % del PIB.',
           'Cuadros 7 y 9 del cuadernillo (Eurostat: balanza de pagos del Banco de España y cuentas de las AAPP).'], d)
-p('== P6. Saldos y balanza')
+p('== P3 (exterior). Saldos y balanza')
 for y in (2007, 2012, 2013, 2019, 2025):
     p(y, 'nación', R(C['c7.cnf'][y], 1), 'AAPP', C['c9.saldo'][y], 'privado', R(C['c7.cnf'][y] - C['c9.saldo'][y], 1),
       'S-I', R(C['c4.ahorro_nac'][y] - C['c4.fbc'][y], 1), 'CC', R(C['c7.cc'][y], 1))
@@ -192,17 +192,18 @@ media = lambda a, b, k: R(sum(x[k] for x in d if a <= x[0][:4] <= b) / len([x fo
 for a_, b_ in [('2007', '2008'), ('2009', '2013'), ('2014', '2021'), ('2022', '2022'), ('2023', '2024'), ('2025', '2026')]:
     p('tipo real medio', a_, b_, 'España', media(a_, b_, 3), 'zona', media(a_, b_, 4))
 taylor = lambda pi, og: 4 + 1.5 * (pi - 2) + 0.5 * og
-p('Taylor España (π 2026 ene-sep 3,6; OG 1,7):', R(taylor(3.61, 1.75)), 'con subyacente 3,5:', R(taylor(3.5, 1.75)))
+og26 = C['c1.brecha'][2026]
+p('Taylor España (π 2026 ene-sep 3,6; OG 2026', R(og26), '):', R(taylor(3.61, og26)), 'con subyacente 3,5:', R(taylor(3.5, og26)), 'con la previsión del FMI (3,7):', R(taylor(C['c5.ipca'][2026], og26)))
 p('Taylor zona del euro sin brecha (π sep 3,8):', R(taylor(3.8, 0)), 'subyacente 2,5:', R(taylor(2.5, 0)))
 
 # --- s08: dinámica de la deuda pública --------------------------------------------
 d = []
-p('== P9. Deuda')
+p('== P6 (fiscal). Deuda')
 tot = [0, 0, 0]
 for y in range(2021, 2026):
     d0, d1 = C['c9.deuda'][y - 1], C['c9.deuda'][y]
     i, g = C['c9.impl'][y] / 100, C['c9.pibn'][y] / 100
-    prim = -C['c9.prim'][y]; bola = (i - g) / (1 + g) * d0; add = (d1 - d0) - prim - bola
+    prim = -(C['c9.saldo'][y] + C['c9.int'][y]); bola = (i - g) / (1 + g) * d0; add = (d1 - d0) - prim - bola
     tot = [tot[0] + prim, tot[1] + bola, tot[2] + add]
     d.append([y, R(prim), R(bola), R(add), R(d1 - d0), 0])
     p(y, 'Δd', R(d1 - d0), 'déficit primario', R(prim), 'bola de nieve', R(bola), 'ADD', R(add),
@@ -210,20 +211,23 @@ for y in range(2021, 2026):
 for y in (2026, 2027):
     d0, d1 = C['c9.deuda'][y - 1], C['c9.deuda'][y]
     i, g = C['c9.int'][y] / d0, C['c9.pibn'][y] / 100
-    prim = -C['c9.prim'][y]; bola = (i - g) / (1 + g) * d0; add = (d1 - d0) - prim - bola
+    prim = -(C['c9.saldo'][y] + C['c9.int'][y]); bola = (i - g) / (1 + g) * d0; add = (d1 - d0) - prim - bola
     d.append([y, R(prim), R(bola), R(add), R(d1 - d0), 1])
     p(y, '(previsión) Δd', R(d1 - d0), 'déficit primario', R(prim), 'bola de nieve', R(bola), 'ADD implícito', R(add))
 p('Total 2021-2025: déficits primarios', R(tot[0]), 'bola de nieve', R(tot[1]), 'ADD', R(tot[2]),
   'Δd', R(C['c9.deuda'][2025] - C['c9.deuda'][2020]))
 escribir('s08-deuda.csv', ['anio', 'primario', 'bola', 'add', 'var_deuda', 'prevision'],
          ['Solución, gráfico s08: variación de la deuda pública (pp del PIB) y sus 3 componentes: déficit primario, efecto bola de nieve (i-g)/(1+g)·d(t-1) y ajuste déficit-deuda (residuo).',
-          'Cuadro 9 del cuadernillo (Eurostat; previsiones de 2026-2027: AMECO, primavera de 2026; tipo implícito previsto = intereses / deuda del año anterior).'], d)
+          'Cuadro 9 del cuadernillo (FMI y Eurostat; previsiones de 2026-2027: FMI; saldo primario = saldo + intereses pagados; tipo implícito previsto = intereses / deuda del año anterior).'], d)
 for i, g in [(2.5, 5.7), (2.5, 4.5), (3.5, 4.0), (3.5, 3.5), (4.0, 3.0)]:
     p('saldo primario que estabiliza una deuda del 100 %: i', i, 'g', g, '->', R((i - g) / (100 + g) * 100))
 for y in range(2019, 2028):
-    p(y, 'b', C['c9.saldo'][y], 'b^ca', R(C['c9.cicl'][y]), 'b^e', R(C['c9.estr'][y]), 'b^pe', R(C['c9.estr_p'][y]),
+    p(y, 'b', R(C['c9.saldo'][y]), 'primario (b+int)', R(C['c9.saldo'][y] + C['c9.int'][y]), 'primario FMI', R(C['c9.prim'][y]),
+      'b^e', R(C['c9.estr'][y]), 'b^pe', R(C['c9.estr_p'][y]),
       'Δb^pe', R(C['c9.estr_p'][y] - C['c9.estr_p'][y - 1]), 'OG', R(C['c1.brecha'][y]),
-      'ε implícita', R((C['c9.saldo'][y] - C['c9.cicl'][y]) / C['c1.brecha'][y]))
+      'b-b^e (ciclo y puntuales)', R(C['c9.saldo'][y] - C['c9.estr'][y]), 'deuda', R(C['c9.deuda'][y]))
+for y in (2008, 2012, 2013, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022):
+    p(y, 'Δb^pe', R(C['c9.estr_p'][y] - C['c9.estr_p'][y - 1]) if C['c9.estr_p'][y - 1] is not None else '-', 'OG', R(C['c1.brecha'][y]))
 
 with open(os.path.join(AQUI, 'calculos.txt'), 'w', encoding='utf-8', newline='\n') as f:
     f.write('\n'.join(out) + '\n')
