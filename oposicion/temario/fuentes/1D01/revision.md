@@ -123,13 +123,42 @@ tipo, etc.).
   pide datos nuevos de Eurostat; si se quiere, se pide como gráfico de datos.
 - Descomposición del ROA de la banca (idea del enunciado de práctica): no entra por ahora.
 
+### El resumen, al día con la cuarta vuelta (26/10/2026)
+
+- **Páginas**: 10 exactas a 10 pt (9 de resumen + 1 de anexos); revisadas una a una en PNG: columnas al 93-99 % en las
+  9 primeras (la 9.ª, al 95 %), la de anexos al 91 %; nada cortado ni desbordado (0 *overfull*), tablas pegadas a la
+  frase que las presenta, ningún título al pie de columna. `verificar-tema.py 1D01`: 0 errores.
+- **Orden y numeración de la guía**: I.1-I.3, I.4, I.5-I.6; IV.1 a IV.4 (capacidad o necesidad, cómo se financia, PIIN y
+  deuda externa, ¿es sostenible?); V.1 a V.5. Identidad de la balanza de pagos desarrollada, igual que en la guía.
+- **Entra de la guía nueva**: contribución real frente a saldo nominal; ahorro forzoso y precautorio (pie del gráfico);
+  efecto desánimo, acaparamiento de trabajo y efecto composición; choque de oferta o de demanda (regla de precios y
+  cantidades); efectos directos, indirectos y de segunda ronda; π ≈ γ_M − γ_Y; pacto de rentas; PPA
+  relativa y Balassa-Samuelson; efecto valor y volumen de la curva J; ancla cambiaria, defensa de un tipo fijo
+  y respuesta a las entradas de capital; aranceles de un tercero e integración asimétrica; canales de un choque externo
+  (con su infografía, en I.6); saldos sectoriales (tabla de las 3 historias); déficits y superávits razonables;
+  financiación excepcional, *carry trade*, empuje y atracción; composición por tenedores, círculo flujo-stock, signo del
+  efecto valoración, indicadores de deuda externa y enfoque de balances; saldo corriente sin intereses que estabiliza la
+  deuda externa; frenazo súbito; **financiar o ajustar** con el árbol del déficit corriente (a lo ancho de la página);
+  objetivo aparente, retardos (29 meses) y canal del crédito roto; CAMELS, cobertura de intereses y liquidez frente a
+  solvencia; saldo estructural engañoso en los auges, prociclicidad, multiplicadores, tipos de reglas fiscales,
+  necesidades brutas de financiación, 4 formas de financiar el déficit, pasivos contingentes, calidad del ajuste y
+  fiscal en una crisis según su origen; naturaleza, origen y gravedad del desequilibrio y el menú de ajustes; fila de
+  superávit persistente en la tabla de recomendaciones.
+- **Sale** (para caber): los gráficos del Brent, del PIB por persona en edad de trabajar y de empleo, horas y actividad
+  (su idea queda en el texto); la cita del FMI sobre España en la frase ejecutiva. «Ojo en el dictamen» pasa a la
+  página de anexos (con un error típico más: tono monetario por el nivel, fiscal por la variación) y el anexo A suma
+  π ≈ γ_M − γ_Y, PPA, servicio de la deuda externa, Greenspan-Guidotti, NBF y cobertura de intereses.
+- **Subrayado** (`\uline`): 12, solo en las ideas que hay que decir sí o sí (antes no había ninguno).
+- **Una sola copia de las infografías** (decisión de Víctor): el resumen usa las de `graficos/` (las mismas de la
+  guía; `tcee-repaso.sty` ya las busca en `../graficos/`, sin cambiar `construir-repaso.py`). Se han borrado las 15
+  `repaso/graficos/rep-*`: 14 tenían equivalente (`esquema-…`) y `rep-calificaciones` pasa a
+  `graficos/escala-calificaciones.tex` (paleta `dic…`, con capas y marco fijo; la guía no la usa).
+
 ### Dudas para Víctor
 
 1. **Extensión**: el cuerpo queda en 74 páginas (pedía ~70). ¿Vale así o devuelvo al anexo A las tablas de economías
    avanzadas/emergentes y de hechos estilizados (≈ 72) o los ejemplos de redacción del perfil cíclico (≈ 70)?
-2. **Infografías duplicadas**: las 13 del resumen están ahora también en `graficos/` (con capas y otro nombre). Si te
-   parece, el resumen puede usar directamente las de `graficos/` (`tcee-repaso.sty` ya busca en `../graficos/`) y se
-   borran las `rep-*` repetidas, para no mantener 2 copias.
+2. **Infografías duplicadas**: resuelto el 26/10/2026 (una sola copia en `graficos/`; ver «El resumen, al día con la cuarta vuelta»).
 3. **`[!htb]` en lugar de `[H]`** en el cuerpo (CRITERIOS §2 pide `[H]`): evita los huecos de un tercio de página; la
    figura queda como mucho arriba de la página siguiente. ¿Lo dejamos así (y lo anoto en CRITERIOS) o vuelvo a `[H]`?
 4. **Subrayado**: con `ulem` cargado solo en este documento. Si se va a usar en más temas, convendría una orden
@@ -760,3 +789,10 @@ comprobación allí.
 - Anexos reordenados a petición de Víctor: A Hechos estilizados del ciclo económico y lectura de series; B Indicadores y umbrales; C Cálculos tipo; D Gráficos de lectura (anexo nuevo, separado del de series); E Análisis de casos frecuentes; F FMI; G Un caso: la economía española; H El ejercicio y el método; I Qué se ha preguntado; J Dónde se estudia cada bloque; K Expresiones útiles para redactar (al final). Primero la economía y después el examen. La introducción describe este orden.
 - Capas de todos los gráficos rehechas con capas de pgfplots (cuadrícula al fondo; barras y áreas; ejes, cero y umbrales; líneas; puntos; rótulos).
 - (25/10) El esquema de la guía va en la caja `esquema` de los temas («Esquema de la guía») al final de la introducción; se quita la conclusión (la guía se cierra con el apartado VI de recomendaciones); la tabla de desequilibrios pasa al principio de VI.2. Cuerpo 50, anexos 37, bibliografía 9.
+
+### Respuestas de Víctor (26/10/2026)
+
+- Cuerpo de 74 págs.: se queda así. Figuras en `[!htb]` (sin huecos). Infografías en una sola copia (`graficos/`). Subrayado `\uline` común a todo el temario (ulem en `tcee-comun.sty`).
+- Semáforo de la banca: CET1 <11 % / 11-14 % / >14 %; ROE <8 % / 8-12 % (coste del capital) / >12 %, con el 10 % de la ABE como referencia dentro del tramo intermedio (texto, `tab:indicadores-financiero` y gráfico coherentes).
+- Okun con la tasa de paro en mayúscula: $\Delta U_t\approx-0{,}5(\gamma_{Y,t}-\gamma_{Y^p,t})$ (guía, anexo de fórmulas y resumen).
+- Duda 6 resuelta: las guías de preparadores se mantienen en la bibliografía como consulta.

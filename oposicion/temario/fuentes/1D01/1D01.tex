@@ -781,9 +781,9 @@ Como $\mathrm{CLU}=P\cdot\frac{WL}{PY}$, el \concepto{CLU real} ($\mathrm{CLU}/P
 \begin{itemize}
 \item Relacionan el paro con el crecimiento y con la inflación, y sirven para cruzar el mercado de trabajo con el ciclo y con los precios \vertema{3.A.28}:
   \begin{itemize}
-  \item la \textbf{ley de \autor{Okun}} relaciona la variación del paro con el crecimiento por encima del potencial; en EE.~UU., en torno a medio punto menos de paro por cada punto de crecimiento por encima del potencial \parencite{Okun1962}:
+  \item la \textbf{ley de \autor{Okun}} relaciona la variación de la tasa de paro ($U$) con el crecimiento por encima del potencial; en EE.~UU., en torno a medio punto menos de paro por cada punto de crecimiento por encima del potencial \parencite{Okun1962}:
 \begin{equation}\label{eq:okun}
-\Delta u_t\approx-0{,}5\,(\gamma_{Y,t}-\gamma_{Y^p,t}) .
+\Delta U_t\approx-0{,}5\,(\gamma_{Y,t}-\gamma_{Y^p,t}) .
 \end{equation}
   En el cuadro sirve para ver a partir de qué crecimiento baja el paro (si el PIB crece mucho y el empleo poco, la elasticidad es baja);
   \item la \textbf{curva de \autor{Phillips}} con expectativas relaciona la inflación con la distancia entre la tasa de paro y la NAIRU \parencite{Phillips1958}:\footnote{En la curva de \autor{Phillips}, $U_t$ es la \emph{tasa} de paro y $U^n$ la NAIRU, como en \vertema{3.A.28}; en las fórmulas de la EPA, $U$ son los parados y $u=U/A$ la tasa.}
@@ -1530,7 +1530,7 @@ La estabilidad financiera cae como pregunta propia (en 2020, una valoración mac
 \begin{itemize}
 \item \emph{Por qué importa}: una empresa con pérdidas continuadas está condenada a desaparecer, porque nadie quiere perder dinero año tras año; un banco necesita beneficios para generar capital y atraer inversores. Con tipos de interés cercanos a cero y costes de estructura altos (oficinas, sistemas, personal), la banca europea fue poco rentable durante años; con las subidas de tipos su rentabilidad mejoró.
 \item \emph{Indicadores}: el \concepto{ROE} (beneficio neto sobre patrimonio neto), la más usada, también en las empresas no financieras; el ROA bancario (beneficio neto sobre activo medio, distinto del ROA de la empresa no financiera \vertema{3.B.1}), con $\mathrm{ROE}=\mathrm{ROA}\times\text{activo}/\text{patrimonio}$ (el ROE supera al ROA por el apalancamiento); y la \concepto{ratio de eficiencia} (gastos de explotación sobre margen bruto; cuanto menor, mejor).
-\item \emph{Umbral}: el ROE es suficiente si supera el \concepto{coste del capital}, la rentabilidad que exigen los accionistas (el tipo sin riesgo más una prima), que los bancos europeos estiman entre el 8 y el 12~\% \parencite{ABE2025RAR}; no basta compararlo con los tipos de mercado. Referencias orientativas de la Autoridad Bancaria Europea: ROE favorable por encima del 10~\%; eficiencia favorable por debajo del 50~\% y desfavorable por encima del 60~\% \parencite{ABE2026RiskDashboard}.
+\item \emph{Umbral}: el ROE es suficiente si supera el \concepto{coste del capital}, la rentabilidad que exigen los accionistas (el tipo sin riesgo más una prima), que los bancos europeos estiman entre el 8 y el 12~\% \parencite{ABE2025RAR}; no basta compararlo con los tipos de mercado. En el semáforo de la guía (gráfico~\ref{fig:esquema-semaforo}), débil por debajo del 8~\%, a vigilar entre el 8 y el 12~\% y holgado por encima del 12~\%; la referencia de la Autoridad Bancaria Europea (ROE favorable por encima del 10~\%) cae dentro del tramo intermedio. Otras referencias orientativas de la ABE: eficiencia favorable por debajo del 50~\% y desfavorable por encima del 60~\% \parencite{ABE2026RiskDashboard}.
 \item \emph{Cómo se lee}: la rentabilidad sube con el margen entre los tipos de los préstamos y los de los depósitos y con más crédito, y baja con más gastos de explotación o más provisiones. Con los tipos hay 2 efectos opuestos: tipos más bajos estrechan el margen de intermediación (efecto precio) pero aumentan el crédito y mejoran la calidad de los préstamos (efecto volumen); con subidas de tipos, al revés.
 \item \emph{Las debilidades se refuerzan entre sí}: más dudosos, más provisiones, menos beneficio y menos capital. Todas las referencias, oficiales y orientativas, están en la tabla~\ref{tab:indicadores-financiero}, y las ratios de la banca española y la europea, en la tabla~\ref{tab:ratios-banca} (las 2, en los anexos). A mediados de 2026 la banca española era más rentable que la europea (ROE del 16~\%, frente al 11~\%) pero tenía menos capital de máxima calidad (CET1 del 14~\%, frente al 16~\%) \parencite{BdE2026EstadSupervisoras,ABE2026RiskDashboard}.
 \item \emph{Las empresas, la otra cara del crédito}: si el cuadro da datos del sector empresarial, la \textbf{cobertura de intereses} (resultado bruto de explotación, EBITDA, sobre los gastos financieros) dice si las empresas pueden pagar su deuda; por debajo de 1, no la pagan con lo que generan. La rentabilidad del activo (EBITDA sobre activos) y el endeudamiento completan el cuadro: empresas poco rentables y muy endeudadas son la morosidad de mañana.
@@ -2055,7 +2055,7 @@ CET1 / Tier~1 / total & recursos propios/APR & 4,5/6/8~\% + 2,5~\% de conservaci
 Apalancamiento & Tier~1/exposición total & 3~\% & ABE: $>8~\%$ holgado; $<5~\%$ débil & \vertema{3.B.27} \\
 LCR y NSFR & activos líquidos/salidas netas a 30 días; financiación estable & 100~\% & ABE (LCR): $>140~\%$ holgado & \vertema{3.B.27} \\
 Dudosos & dudosos/crédito & Dudoso: más de 90 días de impago & ABE: $<3~\%$ bajo; $>8~\%$ alto & \vertema{4.A.19} \\
-ROE & beneficio\slash patrimonio neto & — & Coste del capital: 8-12~\%; ABE: $>10~\%$ favorable & \vertema{3.B.1} \\
+ROE & beneficio\slash patrimonio neto & — & $<8~\%$ débil, 8-12~\% (coste del capital) a vigilar, $>12~\%$ holgado; ABE: $>10~\%$ favorable & \vertema{3.B.1} \\
 Eficiencia & gastos/margen bruto & — & ABE: $<50~\%$ favorable; $>60~\%$ desfavorable & \vertema{4.A.19} \\
 Créditos\slash depósitos & crédito\slash depósitos & — & ABE: $<100~\%$; $>150~\%$ desfavorable & \vertema{4.A.19} \\
 Brecha crédito-PIB & crédito/PIB $-$ tendencia & — & $>2$ pp: activar el colchón anticíclico & \vertema{3.B.27} \\
@@ -2144,7 +2144,7 @@ $\displaystyle \mathrm{CLU}=\frac{WL}{Y}=\frac{W}{Y/L}$ & Coste laboral unitario
 $\displaystyle \gamma_{\mathrm{CLU}}=\gamma_W-\gamma_{\mathrm{PAT}}=\gamma_W-(\gamma_Y-\gamma_L)$ & CLU nominales: salarios menos productividad \\
 $\displaystyle \gamma_{\mathrm{CLU}/P}=\gamma_{\mathrm{CLU}}-\gamma_P$ & CLU reales: participación de los salarios en el PIB \\
 $\displaystyle \gamma_{1+\mu}\approx\gamma_P-\gamma_{\mathrm{CLU}}$ & Margen: deflactor menos CLU nominales \\
-$\displaystyle \Delta u_t\approx-0{,}5\,(\gamma_{Y,t}-\gamma_{Y^p,t})$ & Ley de \autor{Okun} (EE.~UU.): el paro baja si se crece por encima del potencial \\
+$\displaystyle \Delta U_t\approx-0{,}5\,(\gamma_{Y,t}-\gamma_{Y^p,t})$ & Ley de \autor{Okun} (EE.~UU.): el paro baja si se crece por encima del potencial \\
 \bottomrule
 \end{tabular}
 \fuente{Elaboración propia a partir de la guía anterior. Notación: $\gamma$, tasa de variación; $Y$, PIB real; $Y^p$, potencial; $P$, deflactor del PIB; $W$, remuneración por asalariado; $L$, empleo.}

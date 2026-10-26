@@ -1,0 +1,22 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Escala de calificaciones de la deuda: grado de inversión hasta BBB-/Baa3
+% (antes repaso/graficos/rep-calificaciones; lo usa el resumen de la guía)
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  e/.style={minimum width=0.98cm, minimum height=0.5cm, inner sep=0pt, font=\scriptsize\bfseries, text=white, fill=#1}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.55cm,-1.45cm) rectangle (7.55cm,1.05cm);
+  \capa{1}{\foreach \x/\r/\col in {0/AAA/dicze, 1/AA/dicze!88, 2/A/dicze!76, 3/BBB/dicze!64}
+    \node[e=\col] at (\x,0) {\r};}
+  \capa{2}{\foreach \x/\r/\col in {4/BB/dicproductividad, 5/B/dicenergia, 6/CCC/dicparo, 7/{CC-D}/dicparo!70!black}
+    \node[e=\col] at (\x,0) {\r};}
+  \capa{3}{\draw[very thick, dicinflacion] (3.5,-0.45) -- (3.5,0.75);}
+  \capa{3}{\node[above, font=\scriptsize\bfseries] at (3.5,0.75) {BBB$-$ / Baa3};}
+  \capa{4}{\draw[decorate, decoration={brace, mirror, amplitude=4pt}, thick] (-0.45,-0.35) -- (3.45,-0.35)
+    node[midway, below=5pt, text width=3.9cm, align=center] {\textbf{grado de inversión}\\ admisible en el Eurosistema (niveles 1-3)};}
+  \capa{5}{\draw[decorate, decoration={brace, mirror, amplitude=4pt}, thick] (3.55,-0.35) -- (7.45,-0.35)
+    node[midway, below=5pt, text width=3.9cm, align=center] {\textbf{grado especulativo}\\ deja de admitirse como garantía};}
+\end{tikzpicture}
+\end{document}
