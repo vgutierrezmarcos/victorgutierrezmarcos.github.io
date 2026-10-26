@@ -44,3 +44,4 @@ desde la 1.16.0 (ver `registro-prueba-cerrada.md`): red de preparadores, clases
 y cantes compartidos, cronograma, pizarra, test con exámenes oficiales, proceso
 selectivo con avisos, y TCEE y DCE en la misma app.
 - (25 oct.) Al entrar con tu cuenta en otro móvil o en el navegador, la app recuerda tu oposición y tu papel y no vuelve a preguntarlos
+- (26 oct.) La app se llama «Oposición TCEE · DCE» también en el móvil, para encontrarla en el buscador, y tiene una animación de arranque nueva
