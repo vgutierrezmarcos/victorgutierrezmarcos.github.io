@@ -1,0 +1,17 @@
+% Gráfico 12. Tipos de interés (%), enero 2007-septiembre 2026.
+% Datos: ../datos/g12-tipos.csv (BCE: FM y MIR; Eurostat irt_lt_mcby_m). Fila 0 = enero de 2007.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g12-tipos.csv}\gDiez
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicgraf,
+      xmin=-2, xmax=238, xtick={0,24,...,216}, minor xtick={12,36,...,228},
+      xticklabels={2007,2009,2011,2013,2015,2017,2019,2021,2023,2025},
+      ymin=-1, ymax=8, ytick={-1,0,...,8},
+      unbounded coords=jump, legend columns=2, dicapas]
+    \capa{1}{\dicraya{(-2,0) (238,0)}}
+    \capa{2}{\addplot[diclinea=dicdeposito, const plot, leyendalinea] table[x expr=\coordindex, y=dfr] {\gDiez}; \addlegendentry{Facilidad de depósito del BCE}}
+    \capa{3}{\addplot[diclinea=dicopf, leyendalinea] table[x expr=\coordindex, y=euribor12] {\gDiez}; \addlegendentry{Euríbor a 12 meses}}
+    \capa{4}{\addplot[diclinea=dicprestamos, leyendalinea] table[x expr=\coordindex, y=hipotecas_es] {\gDiez}; \addlegendentry{Préstamos nuevos para vivienda, España}}
+    \capa{5}{\addplot[diclinea=dicespana, leyendalinea] table[x expr=\coordindex, y=bono10_es] {\gDiez}; \addlegendentry{Deuda pública a 10 años, España}}
+    \capa{6}{\addplot[diclinea=dicotro, densely dashed, leyendalinea] table[x expr=\coordindex, y=bono10_de] {\gDiez}; \addlegendentry{Deuda pública a 10 años, Alemania}}
+  \end{axis}
+\end{tikzpicture}

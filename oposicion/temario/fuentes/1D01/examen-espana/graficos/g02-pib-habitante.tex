@@ -1,0 +1,15 @@
+% Gráfico 2. PIB real y PIB real por habitante, España y zona del euro (2007 = 100).
+% Datos: ../datos/g02-pib-por-habitante.csv (Eurostat nama_10_gdp, nama_10_pe).
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g02-pib-por-habitante.csv}\gDos
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicgraf,
+      xmin=2006.6, xmax=2025.4, xtick={2007,2009,...,2025},
+      ymin=85, ymax=125, ytick={85,90,...,125},
+      legend columns=2, dicapas]
+    \capa{1}{\dicraya[dicumbral]{(2006.6,100) (2025.4,100)}}
+    \capa{2}{\addplot[diclinea=dicespana, leyendalinea] table[x=anio, y=pib_es] {\gDos}; \addlegendentry{PIB, España}}
+    \capa{3}{\addplot[diclinea=dicespana, densely dashed, leyendalinea] table[x=anio, y=pibpc_es] {\gDos}; \addlegendentry{PIB por habitante, España}}
+    \capa{4}{\addplot[diclinea=dicze, leyendalinea] table[x=anio, y=pib_ze] {\gDos}; \addlegendentry{PIB, zona del euro}}
+    \capa{5}{\addplot[diclinea=dicze, densely dashed, leyendalinea] table[x=anio, y=pibpc_ze] {\gDos}; \addlegendentry{PIB por habitante, zona del euro}}
+  \end{axis}
+\end{tikzpicture}

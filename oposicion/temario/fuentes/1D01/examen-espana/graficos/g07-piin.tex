@@ -1,0 +1,13 @@
+% Gráfico 7. Posición de inversión internacional neta y deuda externa neta (% del PIB), 2007-2025.
+% Datos: ../datos/g07-piin.csv (Eurostat tipsii10 y bop_gdp6_q). La deuda externa neta va con signo negativo (deudor neto).
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g07-piin.csv}\gSiete
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicgraf,
+      xmin=2006.6, xmax=2025.4, xtick={2007,2009,...,2025},
+      ymin=-100, ymax=0, ytick={-100,-80,...,0},
+      legend columns=2, dicapas]
+    \capa{1}{\addplot[diclinea=dicpiin, leyendalinea] table[x=anio, y=piin] {\gSiete}; \addlegendentry{PIIN}}
+    \capa{2}{\addplot[diclinea=dicpiin, densely dashed, leyendalinea] table[x=anio, y=piin_nendi] {\gSiete}; \addlegendentry{PIIN sin instrumentos que no generan impago}}
+    \capa{3}{\addplot[diclinea=dicotro, densely dotted, leyendalinea] table[x=anio, y=menos_deuda_ext_neta] {\gSiete}; \addlegendentry{Deuda externa neta (con signo negativo)}}
+  \end{axis}
+\end{tikzpicture}

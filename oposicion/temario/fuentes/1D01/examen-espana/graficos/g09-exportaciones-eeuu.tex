@@ -1,0 +1,14 @@
+% Gráfico 9. Exportaciones de bienes a EE. UU. y al total del mundo: suma móvil de 12 meses, índice (media de 2024 = 100), agosto 2023-agosto 2026.
+% Datos: ../datos/g09-exportaciones-eeuu.csv (Eurostat Comext DS-045409). Fila 0 = agosto de 2023.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g09-exportaciones-eeuu.csv}\gNueve
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicgraf,
+      xmin=-0.5, xmax=36.5, xtick={5,17,29}, minor xtick={2,8,11,14,20,23,26,32,35},
+      xticklabels={enero 2024,enero 2025,enero 2026},
+      ymin=85, ymax=106, ytick={85,90,...,105},
+      legend columns=2, dicapas]
+    \capa{1}{\dicraya[dicumbral]{(-0.5,100) (36.5,100)}}
+    \capa{2}{\addplot[diclinea=dicexterna, leyendalinea] table[x expr=\coordindex, y=mundo_idx] {\gNueve}; \addlegendentry{Al total del mundo}}
+    \capa{3}{\addplot[diclinea=dicotro, leyendalinea] table[x expr=\coordindex, y=eeuu_idx] {\gNueve}; \addlegendentry{A Estados Unidos}}
+  \end{axis}
+\end{tikzpicture}

@@ -1,0 +1,30 @@
+% Gráfico 1. Contribuciones al crecimiento intertrimestral del PIB (pp), 1T2022-2T2026.
+% Datos: ../datos/g01-contribuciones-trimestrales.csv (Eurostat namq_10_gdp, CON_PPCH_PRE, SCA).
+% Capas (CRITERIOS §7): barras → cero → línea del PIB → puntos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g01-contribuciones-trimestrales.csv}\gUno
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicgraf,
+      ybar stacked, stack negative=separate, bar width=0.34cm,
+      xmin=-0.6, xmax=17.6, xtick={0,...,17},
+      xticklabels={{1T\\2022},{2T},{3T},{4T},{1T\\2023},{2T},{3T},{4T},{1T\\2024},{2T},{3T},{4T},{1T\\2025},{2T},{3T},{4T},{1T\\2026},{2T}},
+      xticklabel style={align=center, anchor=north},
+      ymin=-2, ymax=2.5, ytick={-2,-1.5,...,2.5},
+      legend columns=3, area legend, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicconspriv] table[x expr=\coordindex, y=cpriv] {\gUno};
+      \addlegendentry{Consumo privado}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=dicconspub] table[x expr=\coordindex, y=cpub] {\gUno};
+      \addlegendentry{Consumo público}}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=dicfbcf] table[x expr=\coordindex, y=fbcf] {\gUno};
+      \addlegendentry{Formación bruta de capital fijo}}
+    \capa{4}{\addplot[on layer=dicbarras, dicbarratrama=dicexistencias] table[x expr=\coordindex, y=existencias] {\gUno};
+      \addlegendentry{Variación de existencias}}
+    \capa{5}{\addplot[on layer=dicbarras, dicbarra=dicexterna] table[x expr=\coordindex, y=externa] {\gUno};
+      \addlegendentry{Demanda externa neta}}
+    \capa{6}{\dicraya{(-0.6,0) (17.6,0)}}
+    \capa{7}{\addplot[stack plots=false, sharp plot, diclineahalo=dicpib, leyendalinea,
+        legend image post style={mark=*, mark size=1.6pt, mark options={fill=white, line width=0.8pt}}]
+        table[x expr=\coordindex, y=pib] {\gUno};
+      \addlegendentry{PIB (variación intertrimestral, \%)}}
+    \capa{8}{\addplot[on layer=dicpuntos, forget plot, stack plots=false, dicpuntos=dicpib] table[x expr=\coordindex, y=pib] {\gUno};}
+  \end{axis}
+\end{tikzpicture}

@@ -1,0 +1,16 @@
+% Gráfico 4. IPCA general y subyacente, España y zona del euro (tasa interanual, %), enero 2019-septiembre 2026.
+% Datos: ../datos/g04-ipca-mensual.csv (Eurostat prc_hicp_minr). x: n.º de mes desde enero de 2019.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g04-ipca-mensual.csv}\gCuatro
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicgraf,
+      xmin=-1, xmax=93, xtick={0,12,...,84}, minor xtick={6,18,...,90},
+      xticklabels={2019,2020,2021,2022,2023,2024,2025,2026},
+      ymin=-2, ymax=12, ytick={-2,0,...,12},
+      legend columns=2, dicapas]
+    \capa{1}{\dicraya{(-1,0) (93,0)}}
+    \capa{2}{\addplot[diclinea=dicespana, leyendalinea] table[x expr=\coordindex, y=ipca_es] {\gCuatro}; \addlegendentry{General, España}}
+    \capa{3}{\addplot[diclinea=dicespana, densely dashed, leyendalinea] table[x expr=\coordindex, y=sub_es] {\gCuatro}; \addlegendentry{Sin energía ni alimentos, España}}
+    \capa{4}{\addplot[diclinea=dicze, leyendalinea] table[x expr=\coordindex, y=ipca_ze] {\gCuatro}; \addlegendentry{General, zona del euro}}
+    \capa{5}{\addplot[diclinea=dicze, densely dashed, leyendalinea] table[x expr=\coordindex, y=sub_ze] {\gCuatro}; \addlegendentry{Sin energía ni alimentos, zona del euro}}
+  \end{axis}
+\end{tikzpicture}

@@ -1,0 +1,210 @@
+% ==========================================================================
+% examen-espana.tex — Examen de ejemplo del dictamen de coyuntura: España
+% Guía del dictamen (1D01), entregable 3. Autor: Víctor Gutiérrez Marcos.
+% Formato de la convocatoria de 2026 (1 h 45 min, cinco cuestiones, cuadernillo
+% de cuadros y gráficos). Datos reales y oficiales al 26/10/2026 (datos/).
+% Cuadros: cuadros/*.tex, generados con generar_cuadros.py desde datos/*.csv.
+% Gráficos: graficos/*.tex (pgfplots, paleta «dic» de latex/tikz-tcee.tex).
+% Compilación: ver README.md.
+% ==========================================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage[table]{xcolor}
+\input{tikz-tcee}                        % fuentes (newpx), colores dic…, capas
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-noshorthands,es-nodecimaldot]{babel}
+\usepackage[a4paper,top=1.9cm,bottom=1.8cm,left=2.2cm,right=2.2cm,headheight=14pt]{geometry}
+\usepackage{pgfplotstable}
+\usepackage{booktabs,array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{microtype}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\hypersetup{pdftitle={Dictamen de coyuntura: España (examen de ejemplo)},pdfauthor={Víctor Gutiérrez Marcos}}
+
+% --- Cabecera y pie, sobrios, como el cuadernillo oficial ---------------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\footnotesize\textcolor{tceegris}{Oposición TCEE · Primer ejercicio, segunda parte: dictamen}}
+\fancyhead[R]{\footnotesize\textcolor{tceegris}{Examen de ejemplo (no oficial)}}
+\fancyfoot[C]{\footnotesize Página \thepage\ de \pageref{LastPage}}
+
+% --- Colores añadidos para este cuadernillo (CRITERIOS §7: se definen una vez) --
+% Balanza de pagos, gama fría del sector exterior: bienes (azul medio), viajes
+% (azul claro) y resto de servicios (azul claro rayado); rentas (gris); saldos
+% (negro). PIIN y deuda externa (marrón, sin otro uso). Cuentas públicas (pizarra).
+\definecolor{dicbienes}{HTML}{2C6E9B}
+\definecolor{dicturismo}{HTML}{8CC3E6}
+\definecolor{dicrentas}{HTML}{A6A6A6}
+\definecolor{dicsaldo}{HTML}{1A1A1A}
+\definecolor{dicpiin}{HTML}{8C510A}
+\definecolor{dicfiscal}{HTML}{4A5A6A}
+\definecolor{cabecera}{HTML}{E8E8E8}
+\definecolor{fondoprev}{HTML}{F4F4F4}
+
+\tikzset{dicbarrarayada/.style={fill=#1, draw=#1!65!black, line width=0.3pt,
+    postaction={pattern=north east lines, pattern color=dicbienes}}}
+\pgfplotsset{
+  dicgraf/.style={width=12.0cm, height=\altograf, scale only axis=false,
+    axis lines*=left, tick align=outside, clip=false,
+    ymajorgrids, grid style={tceegris!25},
+    ticklabel style={font=\scriptsize}, label style={font=\scriptsize},
+    xticklabel style={/pgf/number format/1000 sep=},
+    yticklabel style={/pgf/number format/.cd, use comma, 1000 sep={}},
+    legend style={at={(xticklabel cs:0.5)}, anchor=north, yshift=-3pt, draw=none, font=\scriptsize,
+      /tikz/every even column/.append style={column sep=7pt}},
+    legend cell align=left},
+  leyendalinea/.style={legend image code/.code={\draw[##1] (0cm,0cm) -- (0.55cm,0cm);}},
+}
+
+% --- Cuadros -------------------------------------------------------------------
+\newlength{\altograf}\setlength{\altograf}{5.6cm}
+\newlength{\anchonum}\newlength{\anchoetq}\setlength{\anchoetq}{6.3cm}
+\newcolumntype{N}{>{\raggedleft\arraybackslash}p{\anchonum}}
+\newcommand{\cuadro}[3]{\par\noindent{\small\textbf{Cuadro #1.} #2 \textit{(#3)}}\par\vspace{2pt}}
+\newcommand{\fuentecuadro}[1]{\par\vspace{1pt}\noindent{\tiny\textit{Fuente:} #1}\par}
+\newcommand{\cabprev}[1]{\cellcolor{cabecera}\textbf{#1\,P}}
+\newcommand{\prevcel}[1]{\cellcolor{fondoprev}#1}
+\newenvironment{bloquecuadro}{\par\noindent\begingroup\scriptsize\setlength{\tabcolsep}{1.6pt}\renewcommand{\arraystretch}{1.08}}{\endgroup\par}
+
+% --- Gráficos: \grafico{n}{título}{fuente}{fichero} ---------------------------------
+\newcommand{\grafico}[4]{%
+  \begin{minipage}[t]{0.495\linewidth}\centering
+    {\small\textbf{Gráfico #1.} #2\par}\vspace{1pt}
+    \input{graficos/#4}\par\vspace{-2pt}
+    \begin{minipage}{0.95\linewidth}\raggedright\tiny\textit{Fuente:} #3\end{minipage}
+  \end{minipage}}
+
+\setlist{itemsep=3pt,topsep=4pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+% ==========================================================================
+% Página 1: instrucciones
+% ==========================================================================
+\thispagestyle{fancy}
+\begin{center}
+{\large\textbf{Oposición al Cuerpo Superior de Técnicos Comerciales y Economistas del Estado}}\\[4pt]
+{\normalsize Primer ejercicio, segunda parte: dictamen sobre un escenario macroeconómico}\\[10pt]
+{\Large\textbf{Examen de ejemplo: la economía española}}\\[4pt]
+{\small Preparado por Víctor Gutiérrez Marcos con el formato de la convocatoria de 2026 · No es un examen oficial}\\[2pt]
+{\small Datos oficiales disponibles el 26 de octubre de 2026}
+\end{center}
+\vspace{8pt}
+\rule{\linewidth}{0.4pt}
+\vspace{2pt}
+
+\textbf{Instrucciones}
+
+\begin{itemize}[leftmargin=1.2em]
+\item El ejercicio consta de \textbf{cinco cuestiones}. El tribunal valorará fundamentalmente \textbf{las capacidades analítica y de síntesis del aspirante, así como su claridad expositiva}.
+\item Dispone de \textbf{1 hora y 45 minutos} para responder a las cuestiones planteadas. No se podrá dar la vuelta al cuadernillo ni acceder a su contenido hasta que lo indique el tribunal; el incumplimiento de este punto supondrá la eliminación del aspirante.
+\item Las respuestas se redactarán en las hojas autocopiativas depositadas sobre la mesa, con bolígrafo de tinta azul o negra. En la parte superior de cada hoja deberán consignarse el nombre y los apellidos antes de que finalice la prueba.
+\item No escriba con abreviaturas, ya que la lectura se realizará de forma literal. Solo se admiten las abreviaturas que figuran en el propio enunciado y las convencionales del análisis económico (por ejemplo, PIB, pp, pb o FMI).
+\item \textbf{No está permitido el uso de calculadora.} Está permitido el uso de tapones para los oídos desde el comienzo de la prueba, pero no el de cascos o auriculares de ningún tipo. Los dispositivos electrónicos (móviles, relojes inteligentes, etc.) deberán permanecer apagados y fuera del alcance de los aspirantes.
+\item El tribunal no responderá a preguntas, para garantizar la igualdad de oportunidades. En caso de duda, cada aspirante debe interpretar lo que está escrito.
+\item No será posible abandonar la sala durante los 10 primeros minutos ni durante los 10 últimos minutos de la prueba.
+\item Cuando se anuncie el final de la prueba, los aspirantes deberán dejar de escribir inmediatamente; el incumplimiento de este punto supondrá la eliminación del aspirante.
+\end{itemize}
+
+\vspace{6pt}
+\textbf{Contenido del cuadernillo}
+
+\begin{itemize}[leftmargin=1.2em]
+\item Enunciado (página 2).
+\item Cuadros 1 a 7 y cuadro 2 bis: datos anuales de 2007 a 2025 y, en algunas filas, previsiones de la Comisión Europea para 2026 y 2027 (columnas marcadas con P y sombreadas).
+\item Gráficos 1 a 12: datos anuales, trimestrales y mensuales; los más recientes, hasta el tercer trimestre de 2026.
+\item Salvo que se indique otra cosa, «zona del euro» se refiere a los veinte países que la formaban en 2025 y «UE», a los veintisiete Estados miembros. Las celdas en blanco corresponden a datos no disponibles.
+\end{itemize}
+
+\vfill
+\begin{center}
+\textbf{NO DÉ LA VUELTA A LAS HOJAS HASTA QUE SE LO INDIQUE EL TRIBUNAL}
+\end{center}
+\vspace{10pt}
+
+\clearpage
+% ==========================================================================
+% Página 2: enunciado
+% ==========================================================================
+En los cuadros y gráficos a continuación de este enunciado se facilita información económica sobre \textbf{España} referida a los años naturales 2007 a 2025, con previsiones de la Comisión Europea para 2026 y 2027 y datos trimestrales y mensuales hasta 2026. Atendiendo a esa información, elabore un escrito respondiendo a las siguientes cuestiones:
+
+\begin{enumerate}[leftmargin=1.6em, label=\textbf{\arabic*.}, itemsep=9pt]
+\item Describa brevemente el \textbf{perfil cíclico} de la economía española a lo largo del periodo 2007-2025, desde la óptica de la demanda y de la oferta, y valore su situación coyuntural a la luz de los datos trimestrales de 2026 y de las previsiones para 2026 y 2027. ¿Qué factores podrían explicar el dinamismo de la inversión en los últimos años y su distinta composición respecto de la fase expansiva anterior a 2008? ¿A qué podría deberse que, desde 2019, el PIB por habitante haya crecido bastante menos que el PIB?
+
+\item Caracterice el \textbf{mercado laboral} español a lo largo de la serie. ¿Puede afirmarse que se encuentra tensionado? ¿A qué podría deberse la caída de la temporalidad desde 2022? Analice la evolución de la \textbf{inflación} desde 2021 y sus principales determinantes. ¿Qué factores podrían explicar que en 2026 la inflación española se sitúe por encima de la de la zona del euro? ¿Aprecia riesgo de efectos de segunda vuelta?
+
+\item Analice la evolución del \textbf{sector exterior} a lo largo de todo el horizonte temporal, identificando sus fortalezas y debilidades. ¿Considera que la corrección del desequilibrio exterior posterior a 2008 tiene carácter estructural o cíclico? ¿Por qué la posición de inversión internacional neta empeora en 2025 pese al superávit exterior? ¿Cree que la política arancelaria de la actual administración de Estados Unidos ha tenido algún impacto sobre la economía española?
+
+\item Valore la orientación de la \textbf{política monetaria} y su transmisión a la economía española, en particular la reacción del Banco Central Europeo ante el repunte de la inflación de 2026. Valore brevemente la situación del \textbf{sistema bancario}. Evalúe asimismo el tono de la \textbf{política fiscal}, su relación con el ciclo y su combinación con la política monetaria. ¿Considera que existen riesgos apreciables para la sostenibilidad de la deuda pública en el marco de las reglas fiscales europeas vigentes?
+
+\item Identifique los principales \textbf{desequilibrios y vulnerabilidades} de la economía española y los riesgos al alza y a la baja que rodean las previsiones para 2026 y 2027. Teniendo en cuenta las tendencias demográficas, ¿qué \textbf{reformas estructurales y medidas de política económica} recomendaría para sostener el crecimiento a medio y largo plazo?
+\end{enumerate}
+
+\clearpage
+% ==========================================================================
+% Cuadernillo: páginas apaisadas
+% ==========================================================================
+% (A4 apaisado desde aquí: se cambia el tamaño de la página y la caja de texto)
+\paperwidth=297mm \paperheight=210mm \pdfpagewidth=297mm \pdfpageheight=210mm
+\newgeometry{layoutwidth=297mm,layoutheight=210mm,top=1.5cm,bottom=1.4cm,left=1.4cm,right=1.4cm,headheight=14pt,headsep=8pt,footskip=16pt}
+\fancyheadoffset{0pt}
+
+% ---- Página 3: cuadros 1 y 2 --------------------------------------------------
+\begin{bloquecuadro}\input{cuadros/cuadro1}\end{bloquecuadro}
+\vspace{10pt}
+\begin{bloquecuadro}\input{cuadros/cuadro2}\end{bloquecuadro}
+\clearpage
+
+% ---- Página 4: cuadro 2 bis y gráficos 1 a 3 -------------------------------------
+\setlength{\altograf}{6.2cm}\noindent
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}\setlength{\anchoetq}{7.4cm}
+\begin{bloquecuadro}\input{cuadros/cuadro2b}\end{bloquecuadro}
+\end{minipage}\hfill
+\grafico{1}{Contribuciones al crecimiento intertrimestral del PIB (pp)}{Eurostat (contabilidad nacional trimestral del INE, datos corregidos de estacionalidad y calendario).}{g01-contribuciones}
+\par\vspace{10pt}\noindent
+\grafico{2}{PIB real y PIB real por habitante (índice, 2007 = 100)}{Eurostat (contabilidad nacional del INE y de los países de la zona del euro).}{g02-pib-habitante}\hfill
+\grafico{3}{Curva de Beveridge (medias anuales; 2026: primer semestre)}{Eurostat (estadística de vacantes, sin desestacionalizar; encuesta de población activa, tasa de paro desestacionalizada).}{g03-beveridge}
+\clearpage
+
+\setlength{\altograf}{5.6cm}
+% ---- Página 5: cuadros 3 y 4 ----------------------------------------------------
+\begin{bloquecuadro}\input{cuadros/cuadro3}\end{bloquecuadro}
+\vspace{10pt}
+\begin{bloquecuadro}\input{cuadros/cuadro4}\end{bloquecuadro}
+\clearpage
+
+% ---- Página 6: gráficos 4 a 7 ---------------------------------------------------
+\setlength{\altograf}{6.4cm}\noindent
+\grafico{4}{Inflación: IPCA general y sin energía ni alimentos (tasa interanual, \%)}{Eurostat (índice de precios de consumo armonizado).}{g04-ipca}\hfill
+\grafico{5}{Precio del petróleo Brent (media mensual, por barril)}{Administración de Información Energética de Estados Unidos (EIA); conversión a euros con el tipo de cambio de referencia del BCE.}{g05-brent}
+\par\vspace{10pt}\noindent
+\grafico{6}{Cuenta corriente y capacidad o necesidad de financiación (\% del PIB)}{Eurostat (balanza de pagos del Banco de España; contabilidad nacional del INE).}{g06-cuenta-corriente}\hfill
+\grafico{7}{Posición de inversión internacional neta y deuda externa neta (\% del PIB)}{Eurostat (posición de inversión internacional del Banco de España).}{g07-piin}
+\clearpage
+
+% ---- Página 7: cuadro 5 y gráficos 8 y 9 ------------------------------------------
+\begin{bloquecuadro}\input{cuadros/cuadro5}\end{bloquecuadro}
+\vspace{4pt}\noindent\setlength{\altograf}{4.6cm}
+\grafico{8}{Tipo de cambio efectivo real y exportaciones (índice, 2007 = 100)}{Eurostat (tipos de cambio efectivos reales; contabilidad nacional del INE). Un aumento del tipo de cambio efectivo real indica una apreciación.}{g08-competitividad}\hfill
+\grafico{9}{Exportaciones de bienes, suma de 12 meses (índice, 2024 = 100)}{Eurostat (Comext, estadística de comercio exterior de bienes). Valor en euros; suma de los últimos 12 meses en relación con su media de 2024.}{g09-exportaciones-eeuu}
+\clearpage
+
+% ---- Página 8: cuadro 6 y gráficos 10 y 11 ----------------------------------------
+\begin{bloquecuadro}\input{cuadros/cuadro6}\end{bloquecuadro}
+\vspace{8pt}\noindent\setlength{\altograf}{5.6cm}
+\grafico{10}{Brecha de producción y variación del saldo estructural primario}{Comisión Europea (AMECO, previsiones de primavera de 2026). Saldo estructural primario y brecha, en \% del PIB potencial; 2026 y 2027 (círculos huecos): previsión.}{g10-orientacion-fiscal}\hfill
+\grafico{11}{Deuda pública: tipo de interés implícito (i) y crecimiento del PIB nominal (g)}{Eurostat (cuentas de las administraciones públicas y contabilidad nacional). i: intereses del año entre la deuda del año anterior.}{g11-deuda-i-g}
+\clearpage
+
+% ---- Página 9: cuadro 7 y gráfico 12 ----------------------------------------------
+\begin{bloquecuadro}\input{cuadros/cuadro7}\end{bloquecuadro}
+\vspace{6pt}\noindent\setlength{\altograf}{5.0cm}
+\grafico{12}{Tipos de interés (\%, datos mensuales)}{Banco Central Europeo (tipos oficiales, Euríbor y tipos de interés de las entidades de crédito) y Eurostat (rendimientos de la deuda pública a 10 años).}{g12-tipos}\hfill
+\begin{minipage}[t]{0.47\linewidth}\vspace{30pt}\centering
+\textbf{FIN DEL CUADERNILLO}
+\end{minipage}
+
+\end{document}

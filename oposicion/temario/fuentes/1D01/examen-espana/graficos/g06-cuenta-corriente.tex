@@ -1,0 +1,22 @@
+% Gráfico 6. Cuenta corriente por componentes y capacidad/necesidad de financiación (% del PIB), 2007-2025.
+% Datos: ../datos/g06-cuenta-corriente.csv (Eurostat bop_c6_a y nama_10_gdp).
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g06-cuenta-corriente.csv}\gSeis
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicgraf,
+      ybar stacked, stack negative=separate, bar width=0.36cm,
+      xmin=2006.4, xmax=2025.6, xtick={2007,2009,...,2025}, minor xtick={2008,2010,...,2024},
+      ymin=-14, ymax=10, ytick={-12,-8,...,8},
+      legend columns=3, area legend, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicbienes] table[x=anio, y=bienes] {\gSeis}; \addlegendentry{Bienes}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=dicturismo] table[x=anio, y=turismo] {\gSeis}; \addlegendentry{Viajes (turismo)}}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarrarayada=dicturismo] table[x=anio, y=resto_servicios] {\gSeis}; \addlegendentry{Resto de servicios}}
+    \capa{4}{\addplot[on layer=dicbarras, dicbarra=dicrentas] table[x=anio, y=rentas] {\gSeis}; \addlegendentry{Rentas primarias y secundarias}}
+    \capa{5}{\dicraya{(2006.4,0) (2025.6,0)}}
+    \capa{6}{\addplot[stack plots=false, sharp plot, diclineahalo=dicsaldo, leyendalinea,
+        legend image post style={mark=*, mark size=1.6pt, mark options={fill=white, line width=0.8pt}}] table[x=anio, y=cc] {\gSeis};
+      \addlegendentry{Cuenta corriente}}
+    \capa{7}{\addplot[stack plots=false, sharp plot, diclineahalo=dicsaldo, densely dashed, leyendalinea] table[x=anio, y=cnf] {\gSeis};
+      \addlegendentry{Capacidad o necesidad de financiación}}
+    \capa{8}{\addplot[on layer=dicpuntos, forget plot, stack plots=false, dicpuntos=dicsaldo] table[x=anio, y=cc] {\gSeis};}
+  \end{axis}
+\end{tikzpicture}
