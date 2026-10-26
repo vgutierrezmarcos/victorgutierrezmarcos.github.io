@@ -748,34 +748,17 @@ comprobación allí.
 16. **Extensión**: con los gráficos reales el PDF tiene 72 páginas y el cuerpo, 44 (máximo, 50). Si hubiera que recortar, lo primero que podría ir a anexos es la tabla de reparto por convocatoria (I.3) o el apartado de demografía, migración y salario mínimo (III.1).
 17. **Tabla de temas por bloque**: **Resuelta (D-13)**: nueva orden `\vertemacorto{código}` (mismo enlace que `\vertema`, texto solo el código, en gris) en `tcee-comun.sty`, `pandoc-macros.tex`, `tcee.module` (LyX), `tcee.lua` (comentario), `construir-tema.py` (enlaces en HTML y Word y `data-app`) y `verificar-tema.py`; usada en `tab:donde-se-estudia`. Los temas ya revisados no la usan, así que no cambian.
 
-## 8. Instrucciones para el vídeo (explicativo, unos 15 minutos, sin voz por ahora)
+## 8. Instrucciones para el vídeo (clase de 1 h 30 min, sin voz por ahora)
 
-- **Formato**: explicativo, no un cante (§11): ≈ 2.350 palabras; modo `guion` en la introducción y el cierre y
-  `pizarra` + `apoyo` en el resto. Mismas reglas de pizarra que §8 (solo fórmulas y esquemas a mano).
-- **Enganche y cierre**: el dicho «Lo bueno, si breve, dos veces bueno» (Gracián) y la pregunta «¿Cómo se analiza
-  una economía entera en 105 minutos?». La idea final la responde: con un método fijo (leer, repartir,
-  diagnosticar, anotar) y frases que analizan, no describen.
-- **Caso conductor**: el dictamen de 2026 (formato vigente, 5 preguntas; enunciado en `anexo:preguntas`). Su
-  cuadernillo sale como apoyo y se marca en pantalla, paso a paso, lo que dice I.4 (líneas de fases, verde y
-  rojo, «P1-P5» al lado de cada gráfico). No se dice qué país es.
-- **Reparto y escenas**:
-  1. *Introducción* (1′): qué es el ejercicio, la tabla de formato como apoyo.
-  2. *El tiempo* (1′30″): en la pizarra, $W=T-\text{lectura}-\text{repaso}$, $t=W/(n+0{,}25)$, perfil $1{,}25\,t$
-     y el resultado para 105′ y 5 preguntas (12′, 21′, 17′, 4′). Se conserva en una esquina todo el vídeo.
-  3. *Leer el cuadernillo* (2′30″): el caso de 2026 marcado; apoyo `tab:cuadernillo`.
-  4. *Redactar* (1′): frase de diagnóstico; ejemplo «descriptivo frente a analítico» como apoyo.
-  5. *Perfil cíclico* (2′30″): `fases-ciclo-brecha` por capas en la pizarra; fórmula de las contribuciones;
-     $\Delta\mathrm{OG}\approx\gamma_Y-\gamma_{Y^p}$; apoyo: gráfico de contribuciones de la zona del euro.
-  6. *Trabajo y competitividad* (2′): $\gamma_{\mathrm{CLU}}=\gamma_W-\gamma_{\mathrm{PAT}}$ y el margen; boceto de
-     Beveridge; $q=EP^*/P$ con «sube = depreciación»; caso 2026, preguntas 2 y 3.
-  7. *Sector exterior* (1′30″): `eq:identidad-bp` por partes; PIIN = activos − pasivos.
-  8. *Políticas* (2′): tono monetario (tipo real frente a natural) y fiscal ($\Delta b^{pe}$); `eq:dinamica-deuda`
-     con la bola de nieve rodeada; `policy-mix` por cuadrantes; caso 2026, preguntas 4 y 5; apoyo: gráfico de
-     tipos y balance del BCE.
-  9. *Recomendaciones y cierre* (1′): `tab:recomendaciones` como apoyo (resumen final) y la idea final.
-- **Al final la pizarra** queda con la regla del tiempo en la esquina y el esquema de fases: lo que hay que llevar
-  memorizado.
-- **Apoyo, nunca pizarra**: tablas de umbrales, de bancos y de preguntas, y los gráficos de datos.
+> Sustituye al plan de 15 minutos (entregables del 25/10/2026, CRITERIOS §11, punto 5). El guion completo y el plan de pizarra están en `guion-cante.md`, generado desde `video/escenas.yaml` (`duracion: 5400`).
+
+- **Formato**: una clase que recorre toda la guía, con una sección por cada pregunta del dictamen; 40 escenas y unas 14.100 palabras. Modo `guion` en la introducción, las aperturas de bloque y la conclusión; `pizarra` + `apoyo` en el resto. Solo fórmulas y esquemas a mano; los gráficos de datos y las tablas de umbrales van siempre como apoyo.
+- **Minutos por bloque**: Introducción 3 · 0. El ejercicio y el método 5 · I. Perfil cíclico 15 · II. Mercados de factores 10 · III. Competitividad 10 · IV. Sector exterior 10 · V. Políticas 26 (fiscal y deuda, unos 9) · VI. Recomendaciones 7 · Conclusión 4.
+- **La esquina**: desde I.3 la brecha de producción (OG y ΔOG ≈ γY − γYp) queda recuadrada en la celda 1a hasta el final de las políticas; se vuelve a ella en Okun, Taylor, el saldo estructural primario y los estabilizadores.
+- **La escala del tono crece**: monetaria en V.1, fiscal añadida en V.3 y el *policy mix* debajo en V.4.
+- **Boceto nuevo, solo para el vídeo**: `graficos/beveridge-pizarra.tex` (curva de Beveridge en 5 capas, II.4).
+- **Script**: `generar-video.py` admite la duración de 5400 s, la clave `corto` de los bloques, la cabecera con más de 6 bloques, el esquema compactado y portada, cierre y texto de YouTube propios de la guía; los avisos de pizarra dan minuto y escena. `verificar-tema.py` escala los objetivos de palabras con `duracion`. Comprobado que 3A08 sale igual (4816 palabras, ×1,027, 0 avisos).
+- **Dudas para Víctor** (no impiden seguir): la introducción partida en 3′ + «0. El ejercicio y el método» de 5′ con la regla del tiempo en la pizarra; V.3 (fiscal y deuda) con unos 9′ en vez de 10′.
 
 ### Decisiones de Víctor sobre la segunda vuelta (24/10/2026)
 

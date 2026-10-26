@@ -1,0 +1,30 @@
+% Solo para la pizarra del vídeo de la guía (el documento usa el gráfico de datos
+% beveridge-espana-zona-euro): la curva de Beveridge como boceto a mano.
+% Capas: 1 ejes; 2 la curva; 3 moverse a lo largo (el ciclo: expansión arriba,
+% recesión abajo); 4 desplazarse hacia
+% fuera (peor emparejamiento); 5 la ratio vacantes/parados (tensión).
+% Curvas del tipo v = k/u (k = 1,6 y 3,2).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.6,-0.6) rectangle (6.4,4.6);
+  % 1: ejes
+  \capa{1}{\ejes{tasa de paro, $u$}{tasa de vacantes, $v$}{5.6}{4.2}}
+  % 2: la curva de Beveridge
+  \capa{2}{\draw[curva1] plot[domain=0.45:4.6, samples=60, smooth] (\x,{1.6/\x}) node[etiqueta, right] {$BC$};}
+  % 3: a lo largo de la curva: el ciclo (de la expansión, arriba, a la recesión, abajo)
+  \capa{3}{\node[punto] at (0.8,2.0) {};
+    \node[punto] at (2.5,0.64) {};
+    \draw[flecha, tceegris, domain=0.95:2.3, samples=30, smooth] plot (\x,{1.6/\x+0.18});
+    \node[etiqueta, text=tceegris] at (2.05,1.24) {ciclo};}
+  % 4: desplazamiento hacia fuera: peor emparejamiento
+  \capa{4}{\draw[curvanueva, desplazada] plot[domain=0.9:4.6, samples=60, smooth] (\x,{3.2/\x}) node[etiqueta, above right] {$BC'$};
+    \draw[flecha] (2.65,0.66) -- (3.15,1.0);
+    \node[etiqueta, text=tceerojo, align=left, anchor=west] at (2.9,2.6) {desajuste:\\estructural};}
+  % 5: la ratio vacantes/parados
+  \capa{5}{\draw[guia, tceeazul, solid, thick] (0,0) -- (1.5,3.75) node[etiqueta, above, text=tceeazul] {$v/u$: tensión};}
+\end{tikzpicture}
+\end{document}

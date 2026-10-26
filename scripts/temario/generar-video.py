@@ -41,7 +41,8 @@ Cómo es el vídeo (CRITERIOS.md, «Vídeo»):
     que se pidan conservar (las funciones clave: ver «Conservar» abajo).
   - Pausa entre pasos, más larga entre escenas y más aún entre apartados y
     bloques.
-  - Dura exactamente lo que diga «duracion» (1800 s): se ajusta el ritmo de
+  - Dura exactamente lo que diga «duracion» (1800 s; la guía del dictamen, 1D01,
+    5400 s): se ajusta el ritmo de
     toda la narración a la vez (sin cambiar el tono) para que acabe justo
     antes de la pantalla final, que sale unos segundos en silencio.
 
@@ -55,6 +56,8 @@ Formato de escenas.yaml:
       - {nombre: Introducción, minutos: 3}
       - {nombre: "I. La función de demanda", minutos: 10}
       - {nombre: Conclusión, minutos: 2}
+      # con muchos bloques (la guía del dictamen), «corto» es lo que sale en la cabecera:
+      # - {nombre: "II. Mercados de factores", corto: "II. Factores", minutos: 10}
     escenas:
       - bloque: Introducción
         titulo: Introducción           # sale en la cabecera
@@ -486,8 +489,14 @@ def compilar_capa(tema, nombre, capa, carpeta):
              f'-jobname={trabajo}', '-output-directory=../_trabajo/video',
              f'\\def\\tceepaso{{{capa}}}\\input{{{nombre}.tex}}']
     # Se compila desde graficos/ para que \input{../../../latex/tikz-tcee} funcione
-    cod, _ = ejecutar(orden, cwd=tema.graficos, env=entorno_tex(), timeout=300, comprobar=False)
+    # Se reintenta si pdflatex.exe (Windows, desde WSL) no llega a arrancar: a veces la
+    # interoperabilidad falla («UtilAcceptVsock») y no deja ni el .log
     salida = os.path.join(carpeta, f'{trabajo}.pdf')
+    for intento in range(3):
+        cod, _ = ejecutar(orden, cwd=tema.graficos, env=entorno_tex(), timeout=300, comprobar=False)
+        if cod == 0 and os.path.exists(salida) or os.path.exists(os.path.join(carpeta, f'{trabajo}.log')):
+            break
+        time.sleep(2)
     if cod != 0 or not os.path.exists(salida):
         raise RuntimeError(f'Error al compilar {nombre} (capa {capa}):\n'
                            + '\n'.join(errores_log(os.path.join(carpeta, f'{trabajo}.log'))))
@@ -1524,6 +1533,7 @@ def marca_hecho(d, cx, cy, r, color, grosor=3):
 class Pantallas:
     def __init__(self, tema, guion, titulo, corto):
         self.tema, self.titulo, self.corto = tema, titulo, corto
+        self.total = float(guion.get('duracion', 1800))
         # Rótulo de la licencia (portada y cierre): «© 2026 Víctor Gutiérrez Marcos · CC BY-NC-ND 4.0»
         self.licencia = licencia_corta(anio_tema(tema))
         self.bloques = guion['bloques']
@@ -1531,6 +1541,14 @@ class Pantallas:
         total = sum(b.get('minutos', 1) for b in self.bloques)
         # Cada bloque ocupa en la cabecera lo que dura (como mínimo 200 px)
         anchos = [max(200, (ANCHO - 60) * b.get('minutos', 1) / total) for b in self.bloques]
+        if len(self.bloques) > 6:
+            # Con muchos bloques (la guía del dictamen) cada uno lleva el ancho de su nombre (o de
+            # su «corto») y el sitio que sobra se reparte según los minutos, para que no se recorten
+            medida = ImageDraw.Draw(Image.new('RGB', (8, 8)))
+            nombres = [medida.textlength(b.get('corto') or b['nombre'], font=F_UI_N) + 50 for b in self.bloques]
+            sobra = (ANCHO - 60) - sum(nombres)
+            if sobra > 0:
+                anchos = [n + sobra * b.get('minutos', 1) / total for n, b in zip(nombres, self.bloques)]
         f = (ANCHO - 60) / sum(anchos)
         x = 30
         self.celdas = []
@@ -1630,14 +1648,17 @@ class Pantallas:
             if b.get('minutos') is not None:
                 etiqueta_min = minutos_texto(b['minutos'])
                 ancho_min = d.textlength(etiqueta_min, font=F_PASO)
-                if d.textlength(b['nombre'], font=fnt) + ancho_min + 24 <= x1 - xt - 10 \
+                if d.textlength(b.get('corto') or b['nombre'], font=fnt) + ancho_min + 24 <= x1 - xt - 10 \
                         or x1 - xt - 10 - ancho_min - 14 >= 260:
                     d.text((x1 - 12 - ancho_min, 66), etiqueta_min, font=F_PASO,
                            fill=(225, 212, 238) if actual else LILA_APAGADO)
                     ancho_min += 14
                 else:
                     ancho_min = 0
-            d.text((xt, 63), recortar(d, b['nombre'], fnt, x1 - xt - 10 - ancho_min), font=fnt, fill=color)
+            # «corto» (opcional): el nombre que cabe en la cabecera si hay muchos bloques (la guía
+            # del dictamen); el esquema de la exposición usa siempre el nombre completo
+            d.text((xt, 63), recortar(d, b.get('corto') or b['nombre'], fnt, x1 - xt - 10 - ancho_min), font=fnt,
+                   fill=color)
         # Fila 3: apartados del bloque actual (o partes de la introducción y la conclusión)
         d.rectangle([0, 98, ANCHO, CAB - 6], fill=(72, 33, 102))
         filas = self._pasos_fila(escena, parte)
@@ -1711,9 +1732,22 @@ class Pantallas:
         """Tarjeta con el esquema; la banda de resalte va del apartado anterior al nuevo."""
         filas = self._filas_esquema(escena)
         altos = {'bloque': 62, 'apartado': 50, 'sub': 42}
+        altos_base = dict(altos)
         sangria = {'bloque': 0, 'apartado': 48, 'sub': 96}
         fuentes = {'bloque': F_TARJETA_B, 'apartado': F_TARJETA_A, 'sub': F_TARJETA_S}
         ancho = 1240
+        # Con muchos bloques y apartados (la guía del dictamen, de 1 h 30 min) el esquema no
+        # cabría en la pantalla: se quitan los subapartados que no son el actual y, si aún no
+        # cabe, se reducen las filas y la letra (en los cantes de 30 minutos no cambia nada)
+        disponible = ALTO - CAB - 20 - 140   # lo que ya cabía no cambia
+        if sum(altos[f[0]] for f in filas) > disponible:
+            filas = [f for f in filas if f[0] != 'sub' or f[2] == 'actual']
+        necesario = sum(altos[f[0]] for f in filas)
+        if necesario > disponible:
+            k = disponible / necesario
+            altos = {t: int(a * k) for t, a in altos.items()}
+            fuentes = {'bloque': fuente('palab.ttf', int(38 * k)), 'apartado': fuente('pala.ttf', int(33 * k)),
+                       'sub': fuente('palai.ttf', int(28 * k))}
         alto = 110 + sum(altos[f[0]] for f in filas) + 30
         img = Image.new('RGBA', (ancho, alto), (0, 0, 0, 0))
         d = ImageDraw.Draw(img)
@@ -1752,9 +1786,18 @@ class Pantallas:
             if estado == 'hecho':
                 marca_hecho(d, x + 10, ys[k] + altos[tipo] / 2 - 6, 12, SALVIA_OSCURO, 4)
             elif estado == 'actual' and k == destino:
-                d.polygon([(x + 2, ys[k] + 8), (x + 2, ys[k] + 32), (x + 20, ys[k] + 20)], fill=MORADO)
+                m = altos[tipo] / altos_base[tipo]
+                d.polygon([(x + 2, ys[k] + 8 * m), (x + 2, ys[k] + 32 * m), (x + 20, ys[k] + 20 * m)], fill=MORADO)
             d.text((x + 36, ys[k]), recortar(d, texto, fnt, ancho - x - 90), font=fnt, fill=color)
         return img
+
+    def rotulo_duracion(self):
+        """«Cante del tema · 30 minutos» o, en la guía del dictamen, «Vídeo de la guía · 1 h 30 min»."""
+        minutos = int(round(self.total / 60))
+        if self.tema.es_dictamen:
+            h, m = divmod(minutos, 60)
+            return 'Vídeo de la guía · ' + (f'{h} h {m} min' if h and m else f'{h} h' if h else f'{m} min')
+        return f'Cante del tema · {minutos} minutos'
 
     def portada(self):
         img = Image.new('RGB', (ANCHO, ALTO), MORADO)
@@ -1764,7 +1807,7 @@ class Pantallas:
         for l in partir(self.titulo, F_SUBTITULO, 1500):
             d.text((ANCHO / 2, y), l, font=F_SUBTITULO, fill=(236, 226, 246), anchor='mm')
             y += 60
-        d.text((ANCHO / 2, ALTO - 150), 'Cante del tema · 30 minutos', font=F_BARRA_L, fill=SALVIA, anchor='mm')
+        d.text((ANCHO / 2, ALTO - 150), self.rotulo_duracion(), font=F_BARRA_L, fill=SALVIA, anchor='mm')
         d.text((ANCHO / 2, ALTO - 100), 'Víctor Gutiérrez Marcos · victorgutierrezmarcos.es', font=F_UI,
                fill=(220, 210, 230), anchor='mm')
         d.text((ANCHO / 2, ALTO - 42), self.licencia, font=F_MARCO, fill=(176, 150, 200), anchor='mm')
@@ -1776,7 +1819,8 @@ class Pantallas:
         d.text((ANCHO / 2, 400), 'Fin de la exposición', font=F_TITULO, fill='white', anchor='mm')
         d.text((ANCHO / 2, 500), f'{self.tema.etiqueta}: {self.corto}', font=F_SUBTITULO,
                fill=(236, 226, 246), anchor='mm')
-        d.text((ANCHO / 2, 640), 'El tema completo (web, PDF y Word) y el resto del temario en',
+        d.text((ANCHO / 2, 640), 'La guía completa (PDF, web y Word), su resumen y el temario, en la app y en'
+               if self.tema.es_dictamen else 'El tema completo (web, PDF y Word) y el resto del temario en',
                font=F_UI, fill=(220, 210, 230), anchor='mm')
         d.text((ANCHO / 2, 690), 'victorgutierrezmarcos.es', font=F_BARRA, fill=SALVIA, anchor='mm')
         d.text((ANCHO / 2, ALTO - 42), self.licencia + ' · puedes compartirlo citando al autor, sin fines '
@@ -2082,6 +2126,7 @@ def main():
                                     'ultima': None}
                     if not estructura:
                         estado_guion['partes'].append({'nombre': None, 'estado': 'actual', 'lineas': []})
+            avisos_antes = len(avisos)
             if not str(paso.get('di') or '').strip():
                 avisos.append(f'{mmss(t0)} (escena {p["escena"] + 1}): paso sin «di»: la voz no se para nunca')
             elif len(re.findall(r'\[pausa', paso['di'])) > 2:
@@ -2162,6 +2207,10 @@ def main():
                     op['listo'], op['paso'], op['dicho'] = listo, n, sin_pausas(paso.get('di') or '')
                     ops.append(op)
                     pendientes.append(op)
+            # Los avisos de la pizarra (se llena, se sale, no cabe…) dicen en qué paso pasa
+            for j in range(avisos_antes, len(avisos)):
+                if not re.match(r'\d+:\d\d', avisos[j]):
+                    avisos[j] = f'{mmss(t0)} (escena {p["escena"] + 1}): {avisos[j]}'
             modo_previo = modo
         barrera(contenido_fin - 0.2)
         return ops, tarjetas, avisos, subtitulos, capitulos
@@ -2377,14 +2426,22 @@ def main():
             f.write(f'{i}\n{srt_tiempo(a)} --> {srt_tiempo(b)}\n{texto}\n\n')
     with open(base_salida + '-youtube.txt', 'w', encoding='utf-8') as f:
         # YouTube admite 100 caracteres en el título: si no cabe, solo hasta el primer punto
-        titulo_yt = f'Tema {tema.codigo}: {titulo} | Cante (Oposición TCEE)'
-        if len(titulo_yt) > 100:
-            titulo_yt = f'Tema {tema.codigo}: {titulo.split(". ")[0].rstrip(".")} | Cante TCEE'
-        f.write(f'{titulo_yt[:100]}\n\n{titulo}\n\n')
-        f.write(f'Exposición oral (cante) del tema {tema.codigo} de la oposición a Técnico Comercial y Economista '
-                f'del Estado, en 30 minutos, con el guion y la pizarra.\n\n'
-                f'Tema completo (web, PDF y Word): https://www.victorgutierrezmarcos.es/oposicion/temario/'
-                f'{tema.carpeta}/{tema.archivo}.html\n\nCapítulos:\n')
+        if tema.es_dictamen:
+            titulo_yt = f'{titulo} | Clase en vídeo (Oposición TCEE)'
+            f.write(f'{titulo_yt[:100]}\n\n{titulo}\n\n')
+            f.write(f'Clase en vídeo de la guía para el dictamen de coyuntura económica (primer ejercicio de la '
+                    f'oposición a Técnico Comercial y Economista del Estado), {pantallas.rotulo_duracion().split(" · ")[1]}, '
+                    f'con el guion y la pizarra.\n\nLa guía completa, en la app Oposición TCEE: '
+                    f'https://www.victorgutierrezmarcos.es/app/\n\nCapítulos:\n')
+        else:
+            titulo_yt = f'Tema {tema.codigo}: {titulo} | Cante (Oposición TCEE)'
+            if len(titulo_yt) > 100:
+                titulo_yt = f'Tema {tema.codigo}: {titulo.split(". ")[0].rstrip(".")} | Cante TCEE'
+            f.write(f'{titulo_yt[:100]}\n\n{titulo}\n\n')
+            f.write(f'Exposición oral (cante) del tema {tema.codigo} de la oposición a Técnico Comercial y Economista '
+                    f'del Estado, en {int(round(total / 60))} minutos, con el guion y la pizarra.\n\n'
+                    f'Tema completo (web, PDF y Word): https://www.victorgutierrezmarcos.es/oposicion/temario/'
+                    f'{tema.carpeta}/{tema.archivo}.html\n\nCapítulos:\n')
         vistos = []
         for inicio, nombre in capitulos:
             if vistos and inicio - vistos[-1][0] < 10:

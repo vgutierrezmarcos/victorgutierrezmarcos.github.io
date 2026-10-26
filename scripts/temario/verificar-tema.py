@@ -581,6 +581,16 @@ def verificar(tema):
             avisos.append(f'El resumen de seo.json tiene {len(seo["resumen"])} caracteres (máximo 160)')
         if re.search(r'\bTECOs?\b', seo.get('titulo_seo', '') + ' ' + seo.get('resumen', '')):
             avisos.append('seo.json: «TECO» no puede salir en el título ni en el resumen')
+    # Minutos del vídeo: 30 en los cantes; lo que diga «duracion» de escenas.yaml si no (la guía
+    # del dictamen dura 1 h 30 min). Las cifras de palabras se escalan con la duración
+    minutos_video = 30.0
+    try:
+        import yaml
+        minutos_video = float((yaml.safe_load(leer(os.path.join(tema.dir, 'video', 'escenas.yaml')) or '') or {})
+                              .get('duracion', 1800)) / 60
+    except Exception:
+        pass
+    escala_video = minutos_video / 30
     guion = leer(os.path.join(tema.dir, 'guion-cante.md'))
     if guion is None:
         avisos.append('Aún no hay guion-cante.md (entrega 3, --fase video)')
@@ -592,7 +602,7 @@ def verificar(tema):
         palabras = len(re.findall(r'\w+', hablado))
         datos['guion_palabras'] = palabras
         datos['guion_minutos_estimados'] = round(palabras / PALABRAS_POR_MINUTO, 1)
-        if not 28 <= palabras / PALABRAS_POR_MINUTO <= 32:
+        if not 28 * escala_video <= palabras / PALABRAS_POR_MINUTO <= 32 * escala_video:
             avisos.append(f'El guion da {palabras / PALABRAS_POR_MINUTO:.1f} min a {PALABRAS_POR_MINUTO} palabras/min')
     escenas = leer(os.path.join(tema.dir, 'video', 'escenas.yaml'))
     if escenas is None:
@@ -608,8 +618,9 @@ def verificar(tema):
             # Con pausas y cambios de escena caben unas 4.700 palabras en 30:00 (≈158 por
             # minuto); generar-video.py --medir da la cifra exacta y ajusta el ritmo
             datos['video_minutos_naturales_estimados'] = round(palabras_video / PALABRAS_POR_MINUTO, 1)
-            if not 4300 <= palabras_video <= 5100:
-                avisos.append(f'La narración del vídeo tiene {palabras_video} palabras (objetivo ≈4.700)')
+            if not 4300 * escala_video <= palabras_video <= 5100 * escala_video:
+                avisos.append(f'La narración del vídeo tiene {palabras_video} palabras '
+                              f'(objetivo ≈{round(4700 * escala_video):,})'.replace(',', '.'))
             if 'bloques' not in g:
                 errores.append('escenas.yaml sin «bloques» (formato antiguo del vídeo)')
             nombres = {b['nombre'] for b in g.get('bloques', [])}
