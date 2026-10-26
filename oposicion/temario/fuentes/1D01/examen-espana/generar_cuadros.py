@@ -44,7 +44,7 @@ CUADROS = {
         ('vab_mn', 'Actividades profesionales y administrativas', 1),
         ('vab_oq', 'Administración pública, educación y sanidad', 1)],
         'Eurostat (contabilidad nacional del INE).'),
-    3: ('Mercado de trabajo, costes laborales y demografía', 'en \\%, salvo indicación', [
+    3: ('Mercado de trabajo, productividad, costes laborales y demografía', 'en \\%, salvo indicación', [
         ('emp', 'Empleo, personas (variación anual)', 0), ('horas', 'Horas trabajadas (variación anual)', 0),
         ('act', 'Tasa de actividad (15-64 años)', 0), ('templeo', 'Tasa de empleo (15-64 años)', 0),
         ('paro', 'Tasa de paro (15-74 años)', 0), ('paro_ze', 'Tasa de paro de la zona del euro', 1),
@@ -60,15 +60,42 @@ CUADROS = {
         ('dep', 'Tasa de dependencia de los mayores (65+ / 15-64)', 0)],
         'Eurostat (contabilidad nacional y encuesta de población activa del INE; estadística de vacantes; población a 1 de enero); '
         'previsiones: Comisión Europea (AMECO). La tasa de vacantes se da desde 2010 (salto de la serie entre 2009 y 2010).'),
-    4: ('Precios', 'variación anual en \\%', [
+    4: ('Ahorro, inversión y financiación del sector privado', 'en \\%, salvo indicación', [
+        ('ahorro_hog', 'Tasa de ahorro de los hogares (\\% de la renta disponible)', 0),
+        ('rdb', 'Renta disponible real por habitante (variación anual)', 1),
+        ('inv_hog', 'Tasa de inversión de los hogares (\\% de la renta disponible)', 0),
+        ('inv_snf', 'Tasa de inversión de las empresas no financieras (\\% del VAB)', 0),
+        ('ben_snf', 'Participación de los beneficios de las empresas (\\% del VAB)', 0),
+        ('fbc', 'Formación bruta de capital (\\% del PIB)', 0), ('ahorro_nac', 'Ahorro nacional bruto (\\% del PIB)', 0),
+        ('flujo_cred', 'Flujo de crédito al sector privado (\\% del PIB)', 0),
+        ('phog', 'Préstamos a hogares (var. interanual, diciembre)', 0),
+        ('psnf', 'Préstamos a empresas no financieras (var. interanual, dic.)', 0),
+        ('hip', 'Tipo de los préstamos nuevos para vivienda', 0), ('hip_ze', 'Ídem, zona del euro', 1),
+        ('snf_t', 'Tipo de los préstamos nuevos a empresas no financieras', 0),
+        ('dhog', 'Deuda de los hogares (\\% del PIB)', 0), ('dsnf', 'Deuda de las empresas no financieras (\\% del PIB)', 0),
+        ('viv', 'Precio de la vivienda (variación anual)', 0), ('viv_r', 'Precio de la vivienda deflactado (variación anual)', 1)],
+        'Eurostat (cuentas de los sectores institucionales y contabilidad nacional del INE; indicadores del procedimiento de desequilibrios '
+        'macroeconómicos; índice de precios de la vivienda del INE) y Banco Central Europeo (préstamos y tipos de interés de las entidades de crédito; '
+        'tipos: media anual, España salvo indicación).'),
+    5: ('Precios', 'variación anual en \\%', [
         ('ipca', 'IPCA: índice general', 0), ('ipca_sub', 'IPCA sin energía ni alimentos (subyacente)', 1),
         ('ipca_nrg', 'IPCA: energía', 1), ('ipca_food', 'IPCA: alimentos, bebidas alcohólicas y tabaco', 1),
         ('ipca_ze', 'IPCA de la zona del euro: índice general', 0), ('ipca_ze_sub', 'IPCA de la zona del euro: subyacente', 1),
         ('def_pib', 'Deflactor del PIB', 0), ('def_c', 'Deflactor del consumo privado', 0),
-        ('def_x', 'Deflactor de las exportaciones', 0), ('def_m', 'Deflactor de las importaciones', 0),
-        ('viv', 'Precio de la vivienda', 0), ('viv_r', 'Precio de la vivienda deflactado', 1)],
-        'Eurostat (IPCA, contabilidad nacional e índice de precios de la vivienda del INE); previsión del IPCA: Comisión Europea (AMECO).'),
-    5: ('Sector exterior', 'en \\% del PIB, salvo indicación', [
+        ('def_x', 'Deflactor de las exportaciones', 0), ('def_m', 'Deflactor de las importaciones', 0)],
+        'Eurostat (IPCA y contabilidad nacional del INE); previsión del IPCA: Comisión Europea (AMECO).'),
+    6: ('Competitividad precio y no precio', 'en \\%, salvo indicación', [
+        ('tcer_ipc', 'Tipo de cambio efectivo real: IPC, 42 socios (2020 = 100)', 0),
+        ('tcer_clu', 'Tipo de cambio efectivo real: CLU, zona del euro (2020 = 100)', 0),
+        ('cuota', 'Cuota en las exportaciones mundiales de bienes y servicios', 0),
+        ('cuota_g', 'Bienes', 1), ('cuota_s', 'Servicios', 1),
+        ('cuota_5a', 'Variación de la cuota de exportación en 5 años', 0),
+        ('htec', 'Exportaciones de alta tecnología (\\% de las exportaciones)', 0),
+        ('id', 'Gasto en I+D (\\% del PIB)', 0), ('id_ue', 'Ídem, Unión Europea', 1),
+        ('apert', 'Apertura: (exportaciones + importaciones) / PIB', 0)],
+        'Eurostat (tipos de cambio efectivos reales; cuadro de indicadores del procedimiento de desequilibrios macroeconómicos; estadística de I+D del INE; '
+        'contabilidad nacional). Un aumento del tipo de cambio efectivo real indica una apreciación real. Alta tecnología: hasta 2022.'),
+    7: ('Sector exterior', 'en \\% del PIB', [
         ('cc', 'Cuenta corriente', 0), ('bie', 'Bienes', 1), ('ser', 'Servicios', 1), ('tur', 'de los cuales, viajes (turismo)', 2),
         ('rp', 'Rentas primarias', 1), ('rs', 'Rentas secundarias', 1), ('kap', 'Cuenta de capital', 0),
         ('cnf', 'Capacidad (+) o necesidad ($-$) de financiación', 0),
@@ -76,15 +103,21 @@ CUADROS = {
         ('fa_p', 'Inversión de cartera', 1), ('fa_f', 'Derivados financieros', 1), ('fa_o', 'Otra inversión', 1),
         ('fa_o_bde', 'de la cual, Banco de España', 2), ('fa_r', 'Activos de reserva', 1), ('eo', 'Errores y omisiones', 0),
         ('piin', 'Posición de inversión internacional neta (PIIN)', 0),
-        ('piin_nendi', 'PIIN sin instrumentos que no generan impago', 1), ('den', 'Deuda externa neta', 0),
-        ('tcer_ipc', 'Tipo de cambio efectivo real: IPC, 42 socios (2020 = 100)', 0),
-        ('tcer_clu', 'Tipo de cambio efectivo real: CLU, zona del euro (2020 = 100)', 0),
-        ('cuota', 'Cuota en las exportaciones mundiales (\\%)', 0),
-        ('apert', 'Apertura: (exportaciones + importaciones) / PIB', 0)],
-        'Eurostat (balanza de pagos y posición de inversión internacional del Banco de España; tipos de cambio efectivos; cuadro de '
-        'indicadores del procedimiento de desequilibrios macroeconómicos); previsión: Comisión Europea (AMECO, contabilidad nacional). '
-        'Un aumento del tipo de cambio efectivo real indica una apreciación real.'),
-    6: ('Cuentas públicas', 'en \\% del PIB, salvo indicación', [
+        ('piin_nendi', 'PIIN sin instrumentos que no generan impago', 1), ('den', 'Deuda externa neta', 0)],
+        'Eurostat (balanza de pagos y posición de inversión internacional del Banco de España); previsión: Comisión Europea (AMECO, contabilidad nacional).'),
+    8: ('Política monetaria y sistema bancario', 'en \\%, salvo indicación', [
+        ('dfr', 'Facilidad de depósito del BCE (fin de año)', 0),
+        ('mro', 'Operaciones principales de financiación (fin de año)', 0),
+        ('eur12', 'Euríbor a 12 meses (media anual)', 0), ('m3', 'M3 de la zona del euro (var. interanual, diciembre)', 0),
+        ('eurosis', 'Activo del Eurosistema (\\% PIB zona del euro, fin de año)', 0),
+        ('cet1', 'Bancos: capital ordinario de nivel 1, CET1 (\\% APR)', 0), ('cet1_ue', 'Ídem, Unión Europea', 1),
+        ('solv', 'Bancos: capital total (\\% de los APR)', 0),
+        ('npl', 'Bancos: préstamos dudosos (\\% de los préstamos)', 0), ('npl_ue', 'Ídem, Unión Europea', 1),
+        ('roe', 'Bancos: rentabilidad de los recursos propios (ROE)', 0), ('roe_ue', 'Ídem, Unión Europea', 1),
+        ('roa', 'Bancos: rentabilidad del activo (ROA)', 0), ('roa_ue', 'Ídem, Unión Europea', 1)],
+        'Banco Central Europeo (tipos oficiales, Euríbor, agregados monetarios, estado financiero del Eurosistema y datos bancarios consolidados) y '
+        'Eurostat (PIB de la zona del euro). APR: activos ponderados por riesgo.'),
+    9: ('Cuentas públicas', 'en \\% del PIB, salvo indicación', [
         ('ing', 'Ingresos', 0), ('gas', 'Gastos', 0), ('int', 'de los cuales, intereses', 1),
         ('saldo', 'Saldo (capacidad o necesidad de financiación)', 0), ('prim', 'Saldo primario', 0),
         ('cicl', 'Saldo ajustado de ciclo (\\% del PIB potencial)', 0), ('estr', 'Saldo estructural (\\% del PIB potencial)', 0),
@@ -92,26 +125,10 @@ CUADROS = {
         ('impl', 'Tipo de interés implícito de la deuda (\\%)', 0), ('pibn', 'PIB nominal (variación anual en \\%)', 0),
         ('rend', 'Rendimiento de la deuda a 10 años (\\%, media anual)', 0),
         ('dif', 'Diferencial frente al bono alemán a 10 años (pb)', 0)],
-        'Eurostat (cuentas de las administraciones públicas del INE y del Banco de España, notificación del procedimiento de déficit '
-        'excesivo de octubre de 2026; tipos de interés a largo plazo); saldos ajustados y previsiones: Comisión Europea (AMECO). '
-        'Tipo implícito: intereses del año entre la deuda del año anterior.'),
-    7: ('Política monetaria, crédito y sistema bancario', 'en \\%, salvo indicación', [
-        ('dfr', 'Facilidad de depósito del BCE (fin de año)', 0),
-        ('mro', 'Operaciones principales de financiación (fin de año)', 0),
-        ('eur12', 'Euríbor a 12 meses (media anual)', 0), ('m3', 'M3 de la zona del euro (var. interanual, diciembre)', 0),
-        ('hip', 'Tipo de los préstamos nuevos para vivienda', 0), ('hip_ze', 'Ídem, zona del euro', 1),
-        ('snf_t', 'Tipo de los préstamos nuevos a empresas no financieras', 0),
-        ('phog', 'Préstamos a hogares (var. interanual, diciembre)', 0),
-        ('psnf', 'Préstamos a empresas no financieras (var. interanual, dic.)', 0),
-        ('dhog', 'Deuda de los hogares (\\% del PIB)', 0), ('dsnf', 'Deuda de las empresas no financieras (\\% del PIB)', 0),
-        ('cet1', 'Bancos: capital ordinario de nivel 1, CET1 (\\% APR)', 0), ('cet1_ue', 'Ídem, Unión Europea', 1),
-        ('solv', 'Bancos: capital total (\\% de los APR)', 0),
-        ('npl', 'Bancos: préstamos dudosos (\\% de los préstamos)', 0), ('npl_ue', 'Ídem, Unión Europea', 1),
-        ('roe', 'Bancos: rentabilidad de los recursos propios (ROE)', 0), ('roe_ue', 'Ídem, Unión Europea', 1)],
-        'Banco Central Europeo (tipos oficiales, tipos de interés de las entidades de crédito, balance de las entidades y datos '
-        'bancarios consolidados) y Eurostat (deuda consolidada del sector privado). Tipos de los préstamos nuevos: media anual, España salvo indicación. APR: activos ponderados por riesgo.'),
+        'Eurostat (cuentas de las administraciones públicas, notificación del procedimiento de déficit excesivo de octubre de 2026; tipos de interés a '
+        'largo plazo); saldos ajustados y previsiones: Comisión Europea (AMECO). Tipo implícito: intereses del año entre la deuda del año anterior.'),
 }
-ANCHO = {5: '7.8cm', 6: '7.0cm', 7: '7.4cm'}
+ANCHO = {4: '7.6cm', 6: '7.6cm', 7: '7.2cm', 8: '7.8cm', 9: '7.0cm'}
 OMITIR = {('vac', '2007'), ('vac', '2008'), ('vac', '2009')}
 
 

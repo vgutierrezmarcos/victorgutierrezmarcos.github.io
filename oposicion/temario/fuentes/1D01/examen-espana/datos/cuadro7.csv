@@ -1,22 +1,23 @@
-# Cuadro 7. Política monetaria, crédito y sistema bancario
-# BCE, portal de datos (data-api.ecb.europa.eu): tipos oficiales (FM), tipos de interés de las IFM (MIR), balance de las IFM (BSI) y datos bancarios consolidados (CBD2, grupos bancarios nacionales y bancos independientes; datos de 2014 en adelante para CET1 y dudosos; ROE desde 2008 en España). Eurostat tipspd22 y tipspd30 (cuadro de indicadores del procedimiento de desequilibrios).
+# Cuadro 7. Sector exterior (España)
+# Eurostat: bop_c6_a (balanza de pagos MBP6 del Banco de España, en % del PIB de nama_10_gdp), bop_gdp6_q, tipsii10. Previsión: AMECO UBCA. Cuenta financiera: variación neta de activos menos variación neta de pasivos (+ = salida neta de capital).
 # Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 id,indicador,unidad,fuente,dec,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027
-dfr,Tipo de la facilidad de depósito del BCE (fin de año),%,BCE FM.D.U2.EUR.4F.KR.DFR.LEV,2,3,2,0.25,0.25,0.25,0,0,-0.2,-0.3,-0.4,-0.4,-0.4,-0.5,-0.5,-0.5,2,4,3,2,,
-mro,Tipo de las operaciones principales de financiación (fin de año),%,BCE FM.D.U2.EUR.4F.KR.MRR_RT.LEV,2,4,2.5,1,1,1,0.75,0.25,0.05,0.05,0,0,0,0,0,0,2.5,4.5,3.15,2.15,,
-eur12,Euríbor a 12 meses (media anual),%,BCE FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA,2,4.4497,4.8135,1.6179,1.3504,2.0057,1.1109,0.5362,0.4764,0.1685,-0.0344,-0.1452,-0.1729,-0.2155,-0.3033,-0.4906,1.0877,3.8646,3.2743,2.2226,,
-m3,M3 de la zona del euro (variación interanual en diciembre),%,BCE BSI.M.U2.Y.V.M30.X.I.U2.2300.Z01.A,1,11.5159,7.7078,-0.2861,1.2263,1.5645,3.5566,1.0014,3.7411,4.7232,4.9684,4.6415,4.2009,4.833,12.2727,6.9178,3.7613,0.0486,3.6118,2.8439,,
-hip,Tipo de los préstamos nuevos a hogares para vivienda (media anual),%,BCE MIR.M.ES.B.A2C.AM.R.A.2250.EUR.N,2,5.0908,5.67,3.2467,2.5133,3.3375,3.2708,2.9925,2.9317,2.2325,1.94,1.905,1.94,1.9775,1.73,1.4792,1.9675,3.7767,3.3975,2.7275,,
-hip_ze,"Ídem, zona del euro",%,BCE MIR.M.U2.B.A2C.AM.R.A.2250.EUR.N,2,4.9275,5.3017,4.0142,3.4375,3.7358,3.4708,3.0675,2.8008,2.2617,1.9725,1.865,1.8183,1.6308,1.3933,1.3133,2.0758,3.6658,3.7033,3.3,,
-snf_t,Tipo de los préstamos nuevos a sociedades no financieras (media anual),%,BCE MIR.M.ES.B.A2A.A.R.A.2240.EUR.N,2,5.1325,5.5675,2.9842,2.6958,3.5683,3.5125,3.6142,3.4717,2.62,2.2267,1.9925,1.8017,1.69,1.6383,1.52,1.9108,4.6442,4.7217,3.4,,
-phog,Préstamos bancarios a hogares (variación interanual en diciembre),%,BCE BSI.M.ES.N.A.A20.A.I.U2.2250.Z01.A,1,12.7462,4.9347,-0.2262,0.4825,-1.6574,-3.5778,-4.6302,-3.6408,-2.8329,-1.2032,-0.3069,0.5053,-0.0998,-0.6586,0.9685,0.4435,-2.0427,1.3752,4.456,,
-psnf,Préstamos bancarios a sociedades no financieras (variación interanual en diciembre),%,BCE BSI.M.ES.N.A.A20.A.I.U2.2240.Z01.A,1,19.6633,6.9407,-3.2704,-1.0924,-4.0909,-10.8656,-11.4599,-7.1443,-0.8578,-0.6059,0.3892,-2.6731,0.0922,9.1119,1.6365,0.6247,-3.7167,0.3089,4.155,,
-dhog,Deuda de los hogares (consolidada),% PIB,Eurostat tipspd22,1,81.9,82.8,85,84.3,82.4,81.4,77.6,73.1,67.6,64.1,60.9,58.6,56.5,62.1,57.2,51.4,46.2,43.6,42.9,,
-dsnf,Deuda de las sociedades no financieras (consolidada),% PIB,Eurostat tipspd30,1,111.5,114.8,119,118.5,115.3,106.8,100,97.1,89.3,86.2,82.6,77.1,75.6,89.9,84.3,73,68.1,65.3,62,,
-cet1,"Bancos: capital ordinario de nivel 1 (CET1, % de los APR)",%,BCE CBD2 I4008 ES,1,,,,,,,,11.7262,12.6324,12.7379,12.6242,12.197,12.5159,13.2298,13.2464,12.9693,13.1323,13.4231,13.913,,
-cet1_ue,"Ídem, media de la UE",%,BCE CBD2 I4008 B0,1,,,,,,,,15.7954,13.5799,14.1134,15.0213,14.7538,15.0209,15.8069,15.7648,15.4915,16.1043,16.3663,16.4266,,
-solv,Bancos: ratio de capital total (% de los APR),%,BCE CBD2 I4001 ES,1,,11.2961,12.2178,11.8656,12.1178,11.3573,13.1642,13.5397,14.4824,14.6675,15.3833,15.4302,15.7348,16.8364,17.2885,16.5152,16.9903,17.4677,18.0989,,
-npl,Bancos: préstamos dudosos (% de los préstamos brutos),%,BCE CBD2 I3632 (FINREP) ES,1,,,,,,,,8.0238,6.2225,5.6815,4.5082,3.735,3.2056,2.89,2.9999,2.7388,2.7831,2.6472,2.4449,,
-npl_ue,"Ídem, media de la UE",%,BCE CBD2 I3632 (FINREP) B0,1,,,,,,,,6.7155,6.8432,5.2916,4.0601,3.2059,2.7815,2.5866,2.0753,1.8586,1.9126,1.9688,1.9657,,
-roe,Bancos: rentabilidad sobre recursos propios (ROE),%,BCE CBD2 I2003 ES,1,,12.6977,9.2337,8.7941,0.2411,-25.6116,6.0332,5.739,6.6157,5.0746,7.1025,8.2716,6.8452,-3.5743,10.5498,10.1421,12.0495,13.9173,14.197,,
-roe_ue,"Ídem, media de la UE",%,BCE CBD2 I2003 B0,1,10.0218,-2.7787,1.0229,3.9052,-0.7794,-1.5708,2.0985,3.1988,4.3541,3.4544,5.7913,6.0822,5.3767,2.3065,6.7735,7.2891,9.228,9.3164,9.3008,,
+cc,Cuenta corriente,% PIB,bop_c6_a CA BAL; prev. AMECO UBCA (contabilidad nacional),1,-9.3507,-8.7912,-3.9767,-3.5583,-2.6135,0.1557,2.0813,1.7797,2.0463,3.1464,2.7935,1.8771,2.1289,0.7887,0.773,0.4191,2.7435,3.3403,3.2443,1.8782,1.7503
+bie,Bienes,% PIB,bop_c6_a G BAL,1,-8.7273,-7.8998,-3.9061,-4.4529,-4.0307,-2.7005,-1.2297,-2.0462,-1.9018,-1.2238,-1.8109,-2.3303,-2.0096,-0.6226,-1.7243,-4.3765,-2.3357,-2.0802,-2.9743,,
+ser,Servicios,% PIB,bop_c6_a S BAL,1,2.9465,3.1671,3.0401,3.4151,4.2958,4.746,5.0718,5.0856,4.9171,5.1892,5.4442,5.0705,4.9945,2.1386,2.7138,5.2541,6.1649,6.3943,6.8266,,
+tur,"de los cuales, viajes (turismo)",% PIB,bop_c6_a SD BAL,1,2.9532,2.9207,2.8401,2.9325,3.3647,3.5973,3.8248,3.88,3.7333,3.8607,4.0231,3.8583,3.6973,0.7644,1.4998,3.4952,3.9296,4.288,4.2621,,
+rp,Rentas primarias,% PIB,bop_c6_a IN1 BAL,1,-2.4565,-2.778,-1.9199,-1.4615,-1.7579,-0.8118,-0.6426,-0.3546,-0.0781,0.1612,-0.0422,0.036,0.096,0.1824,0.6678,0.4987,-0.2989,-0.2475,0.2202,,
+rs,Rentas secundarias,% PIB,bop_c6_a IN2 BAL,1,-1.1135,-1.2808,-1.1909,-1.0591,-1.1206,-1.078,-1.1181,-0.9051,-0.8907,-0.9803,-0.7978,-0.899,-0.9521,-0.9096,-0.8843,-0.9573,-0.7869,-0.7263,-0.8283,,
+kap,Cuenta de capital,% PIB,bop_c6_a KA BAL,1,0.363,0.3486,0.3879,0.373,0.3303,0.5207,0.603,0.4373,0.6352,0.2158,0.2385,0.4779,0.3346,0.4464,0.8687,0.9125,1.1296,1.1314,1.0315,,
+cnf,Capacidad (+) o necesidad (-) de financiación,% PIB,bop_c6_a CKA BAL,1,-8.9879,-8.4426,-3.5888,-3.1854,-2.2832,0.6765,2.6842,2.217,2.6816,3.3623,3.0321,2.3551,2.4634,1.2352,1.6418,1.3316,3.8731,4.4716,4.2758,,
+fa,"Cuenta financiera, saldo neto (+ = salida neta)",% PIB,bop_c6_a FA NET,1,-9.439,-8.48,-4.1433,-2.9625,-2.607,0.8142,3.0746,1.9177,2.7577,3.014,3.044,2.5638,2.136,0.9388,2.0921,1.3449,3.7834,5.2561,5.0413,,
+fa_d,Inversión directa,% PIB,bop_c6_a FA__D__F NET,1,5.0911,0.1767,0.4256,0.474,1.1044,-1.6495,-1.0196,1.1536,2.8563,1.2406,1.1309,-1.4769,0.7416,1.458,-0.9391,0.0627,0.1239,1.3919,1.4954,,
+fa_p,Inversión de cartera,% PIB,bop_c6_a FA__P__F NET,1,-8.2384,0.138,-4.545,-3.2928,2.9545,4.0225,-6.3644,-0.6183,0.9272,5.1871,2.7935,1.9747,-4.0367,6.8117,3.0439,2.0503,-1.4985,-0.264,1.5638,,
+fa_f,Derivados financieros,% PIB,bop_c6_a FA__F__F7 NET,1,0.3799,0.7126,0.5335,-0.8005,0.1939,-0.8171,0.1041,0.0924,0.3503,0.2344,0.6568,-0.0737,-0.4424,-0.6285,0.0676,0.1419,-0.3692,0.1075,0.1941,,
+fa_o,Otra inversión,% PIB,bop_c6_a FA__O__F NET,1,-6.687,-9.5651,-0.9608,0.5811,-7.807,-0.9744,10.2912,0.9147,-1.8348,-4.3831,-1.8506,1.9596,5.8195,-6.6717,-0.9152,-1.2311,5.1262,3.9377,1.7192,,
+fa_o_bde,"de la cual, Banco de España",% PIB,bop_c6_a FA__O__F NET sector S121,1,-2.0999,-1.914,0.5849,-0.1948,-10.5638,-14.8874,13.0472,2.62,-5.6825,-6.6208,-3.7634,-2.0723,1.1866,-9.4864,-2.2684,1.3088,7.2725,-2.8846,2.1767,,
+fa_r,Activos de reserva,% PIB,bop_c6_a FA__R__F ASS sector S121,1,0.0153,0.058,0.4032,0.0756,0.9472,0.2326,0.0632,0.3755,0.4586,0.735,0.3134,0.18,0.0538,-0.0307,0.8349,0.3213,0.401,0.0829,0.0688,,
+eo,Errores y omisiones,% PIB,bop_c6_a EO NET,1,-0.4512,-0.0374,-0.5545,0.2228,-0.3239,0.1377,0.3902,-0.2992,0.0761,-0.3482,0.0121,0.2087,-0.3276,-0.2963,0.4503,0.0134,-0.0898,0.7844,0.7656,,
+piin,Posición de inversión internacional neta,% PIB,tipsii10 PC_GDP,1,-85,-85.1,-97.2,-90.5,-93.3,-88.5,-92.4,-95.2,-87.7,-84.3,-84.4,-78,-72,-83.7,-69.2,-56.4,-49.5,-40,-42.7,,
+piin_nendi,PIIN sin instrumentos que no generan impago,% PIB,bop_gdp6_q FA__NENDI N_LE,1,-55.2,-63.6,-72.2,-72.6,-77.1,-73.9,-70,-70.2,-64.4,-60.9,-57.2,-51.8,-45.7,-51.6,-39.1,-29.2,-23.2,-16.3,-9.7,,
+den,Deuda externa neta,% PIB,bop_gdp6_q FA__FNED NE_LE,1,70.9,77.5,88.4,91.4,95.3,93.3,92.5,95.2,91.1,86.9,85.5,79.4,74.3,86.4,76.7,59.8,51.9,46.8,42.7,,

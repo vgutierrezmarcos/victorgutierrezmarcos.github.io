@@ -6,7 +6,7 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 
 - **Eurostat**, API de difusión: `https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/<código>?<filtros>` (navegador: `https://ec.europa.eu/eurostat/databrowser/view/<código>/default/table`). Comercio de bienes: API de Comext, `https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409`.
 - **Comisión Europea, AMECO** (previsiones de primavera de 2026, publicadas el 21/05/2026; versión de 03/06/2026; la siguiente, de otoño, el 17/11/2026): `https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=<código>&countries=ESP`.
-- **Banco Central Europeo**, portal de datos: `https://data-api.ecb.europa.eu/service/data/<flujo>/<clave>` (navegador: `https://data.ecb.europa.eu/data/datasets/<flujo>`).
+- **Banco Central Europeo**, portal de datos: `https://data-api.ecb.europa.eu/service/data/<flujo>/<clave>`.
 - **EIA** (Brent, serie RBRTE), vía la guía 1D01 (`fuentes/1D01/datos/brent.csv`); comprobado con FRED (MCOILBRENTEU) el 26/10/2026.
 
 ## Última actualización de cada conjunto de datos (según su API)
@@ -35,11 +35,17 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 | `nama_10_gdp` | 2026-10-22 |
 | `nama_10_lp_ulc` | 2026-10-22 |
 | `nama_10_pe` | 2026-10-21 |
+| `nasa_10_ki` | 2026-10-14 |
+| `nasa_10_nf_tr` | 2026-10-14 |
 | `prc_hicp_aind` | 2026-02-06 |
 | `prc_hpi_a` | 2026-10-01 |
+| `rd_e_gerdtot` | 2026-09-29 |
+| `tipsex10` | 2026-07-15 |
+| `tipsex12` | 2024-01-31 |
 | `tipsex20` | 2026-07-15 |
 | `tipsho10` | 2026-10-01 |
 | `tipsii10` | 2026-10-02 |
+| `tipspc10` | 2026-10-24 |
 | `tipspd22` | 2026-10-24 |
 | `tipspd30` | 2026-10-24 |
 | `une_ltu_a` | 2026-09-10 |
@@ -47,12 +53,9 @@ Consulta de todas las series: **26/10/2026** (salvo el Brent, copiado de la guí
 
 ## Cuadros: serie a serie
 
-Columnas: identificador de la fila en `cuadroN.csv`, indicador, código y filtros, último dato.
-
 ### Cuadro 1. Demanda agregada y actividad (España) (`cuadro1.csv`)
 
-- Eurostat (nama_10_gdp, nama_10_an6, nama_10_pe), actualizados el 2026-10-22T23:00:00+0200; contabilidad nacional del INE (SEC 2010).
-- Previsiones 2026-2027 y PIB potencial/brecha: Comisión Europea, AMECO (previsiones de primavera de 2026). La serie de AMECO es anterior a la última revisión de la contabilidad nacional (en 2025, PIB +2,8 % en AMECO frente a +2,6 % en Eurostat).
+- Eurostat (nama_10_gdp, nama_10_an6, nama_10_pe; contabilidad nacional del INE). PIB potencial, brecha y previsiones 2026-2027: Comisión Europea, AMECO (primavera de 2026), anterior a la última revisión de la contabilidad nacional (PIB de 2025: +2,8 % en AMECO, +2,6 % en Eurostat).
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
@@ -77,7 +80,7 @@ Columnas: identificador de la fila en `cuadroN.csv`, indicador, código y filtro
 
 ### Cuadro 2. Oferta: valor añadido bruto real por ramas (España) (`cuadro2.csv`)
 
-- Eurostat nama_10_a10 (CLV_PCH_PRE), actualizado el 2026-10-22T23:00:00+0200.
+- Eurostat nama_10_a10 (CLV_PCH_PRE).
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
@@ -92,9 +95,9 @@ Columnas: identificador de la fila en `cuadroN.csv`, indicador, código y filtro
 | `vab_mn` | Actividades profesionales y administrativas | nama_10_a10 B1G M_N | 2025 |
 | `vab_oq` | Administración pública, educación y sanidad | nama_10_a10 B1G O-Q | 2025 |
 
-### Cuadro 3. Mercado de trabajo, costes y demografía (España) (`cuadro3.csv`)
+### Cuadro 3. Mercado de trabajo, productividad, costes y demografía (España) (`cuadro3.csv`)
 
-- Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc (contabilidad nacional); lfsa_* y une_* (encuesta de población activa); jvs_q_r21 (vacantes, NACE Rev. 2.1); migr_pop1ctz y demo_pjanind (población a 1 de enero). Previsiones: AMECO.
+- Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc; lfsa_*, une_*; jvs_q_r21; migr_pop1ctz, demo_pjanind. Previsiones: AMECO.
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
@@ -118,9 +121,34 @@ Columnas: identificador de la fila en `cuadroN.csv`, indicador, código y filtro
 | `extr` | Población de nacionalidad extranjera (% del total, 1 de enero) | migr_pop1ctz TOTAL-NAT | 2025 |
 | `dep` | Tasa de dependencia de los mayores (65+ sobre 15-64, %) | demo_pjanind OLDDEP1 | 2025 |
 
-### Cuadro 4. Precios (España y zona del euro) (`cuadro4.csv`)
+### Cuadro 4. Ahorro, inversión y financiación del sector privado (España) (`cuadro4.csv`)
 
-- Eurostat: prc_hicp_aind (IPCA, ECOICOP ver. 1, medias anuales; actualizado el 2026-02-06T23:00:00+0100), nama_10_gdp (deflactores), prc_hpi_a y tipsho10 (precios de la vivienda). Previsión del IPCA: AMECO ZCPIH.
+- Eurostat: nasa_10_ki (cuentas de los sectores), nasa_10_nf_tr, nama_10_gdp, tipspc10, tipspd22, tipspd30, prc_hpi_a, tipsho10. BCE: BSI (préstamos de las IFM) y MIR (tipos de las operaciones nuevas, media anual).
+- Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
+
+| id | Indicador | Fuente y código | Último dato |
+|---|---|---|---|
+| `ahorro_hog` | Tasa de ahorro de los hogares (% de la renta disponible bruta) | nasa_10_ki SRG_S14_S15 | 2025 |
+| `rdb` | Renta disponible bruta real ajustada por habitante (variación) | nasa_10_ki B7G_R_HAB_GR | 2025 |
+| `inv_hog` | Tasa de inversión de los hogares (% de la renta disponible) | nasa_10_ki IRG_S14_S15 | 2025 |
+| `inv_snf` | Tasa de inversión de las empresas no financieras (% del VAB) | nasa_10_ki IRG_S11 | 2025 |
+| `ben_snf` | Participación de los beneficios de las empresas (% del VAB) | nasa_10_ki B2G_B3G_RAT_S11 | 2025 |
+| `fbc` | Formación bruta de capital (% del PIB) | nama_10_gdp P5G PC_GDP | 2025 |
+| `ahorro_nac` | Ahorro nacional bruto (% del PIB) | nasa_10_nf_tr B8G S1 / nama_10_gdp B1GQ | 2025 |
+| `flujo_cred` | Flujo de crédito al sector privado (% del PIB) | tipspc10 PC_GDP | 2025 |
+| `phog` | Préstamos bancarios a hogares (variación interanual en diciembre) | BCE BSI.M.ES.N.A.A20.A.I.U2.2250.Z01.A | 2025 |
+| `psnf` | Préstamos bancarios a sociedades no financieras (variación interanual en diciembre) | BCE BSI.M.ES.N.A.A20.A.I.U2.2240.Z01.A | 2025 |
+| `hip` | Tipo de los préstamos nuevos a hogares para vivienda (media anual) | BCE MIR.M.ES.B.A2C.AM.R.A.2250.EUR.N | 2025 |
+| `hip_ze` | Ídem, zona del euro | BCE MIR.M.U2.B.A2C.AM.R.A.2250.EUR.N | 2025 |
+| `snf_t` | Tipo de los préstamos nuevos a sociedades no financieras (media anual) | BCE MIR.M.ES.B.A2A.A.R.A.2240.EUR.N | 2025 |
+| `dhog` | Deuda de los hogares (consolidada) | Eurostat tipspd22 | 2025 |
+| `dsnf` | Deuda de las sociedades no financieras (consolidada) | Eurostat tipspd30 | 2025 |
+| `viv` | Precio de la vivienda (variación) | prc_hpi_a TOTAL RCH_A_AVG | 2025 |
+| `viv_r` | Precio de la vivienda deflactado (variación) | tipsho10 RCH_A_AVG | 2025 |
+
+### Cuadro 5. Precios (España y zona del euro) (`cuadro5.csv`)
+
+- Eurostat: prc_hicp_aind (IPCA, ECOICOP ver. 1), nama_10_gdp (deflactores). Previsión del IPCA: AMECO ZCPIH.
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
@@ -135,13 +163,28 @@ Columnas: identificador de la fila en `cuadroN.csv`, indicador, código y filtro
 | `def_c` | Deflactor del consumo privado | nama_10_gdp P31_S14_S15 PD_PCH_PRE_EUR | 2025 |
 | `def_x` | Deflactor de las exportaciones | nama_10_gdp P6 PD_PCH_PRE_EUR | 2025 |
 | `def_m` | Deflactor de las importaciones | nama_10_gdp P7 PD_PCH_PRE_EUR | 2025 |
-| `viv` | Precio de la vivienda (nominal) | prc_hpi_a TOTAL RCH_A_AVG | 2025 |
-| `viv_r` | Precio de la vivienda deflactado (real) | tipsho10 RCH_A_AVG | 2025 |
 
-### Cuadro 5. Sector exterior (España) (`cuadro5.csv`)
+### Cuadro 6. Competitividad precio y no precio (España) (`cuadro6.csv`)
 
-- Eurostat: bop_c6_a (balanza de pagos MBP6, millones de euros; actualizado el 2026-10-02T11:00:00+0200; aquí en % del PIB nominal de nama_10_gdp), bop_gdp6_q, tipsii10 (cuadro de indicadores del procedimiento de desequilibrios), ert_eff_ic_a (un aumento del índice es una apreciación real), tipsex20, nama_10_gdp. Elaboradas por el Banco de España.
-- Cuenta financiera con el criterio del MBP6: saldo neto = variación neta de activos - variación neta de pasivos (+ = salida neta de capital).
+- Eurostat: ert_eff_ic_a (un aumento es una apreciación real), tipsex20, tipsex10, tipsex12 (hasta 2022), rd_e_gerdtot, nama_10_gdp.
+- Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
+
+| id | Indicador | Fuente y código | Último dato |
+|---|---|---|---|
+| `tcer_ipc` | Tipo de cambio efectivo real, IPC, 42 socios (2020 = 100) | ert_eff_ic_a REER_IC42_CPI I20 | 2025 |
+| `tcer_clu` | Tipo de cambio efectivo real, CLU, frente a la zona del euro (2020 = 100) | ert_eff_ic_a REER_EA20_ULCT I20 | 2025 |
+| `cuota` | Cuota en las exportaciones mundiales de bienes y servicios | tipsex20 GS | 2025 |
+| `cuota_g` | Cuota en las exportaciones mundiales de bienes | tipsex20 G | 2025 |
+| `cuota_s` | Cuota en las exportaciones mundiales de servicios | tipsex20 S | 2025 |
+| `cuota_5a` | Cuota de exportación: variación en 5 años | tipsex10 GS WRL_REST | 2025 |
+| `htec` | Exportaciones de alta tecnología (% de las exportaciones) | tipsex12 | 2022 |
+| `id` | Gasto en I+D (% del PIB) | rd_e_gerdtot TOTAL PC_GDP ES | 2024 |
+| `id_ue` | Ídem, Unión Europea | rd_e_gerdtot TOTAL PC_GDP EU27_2020 | 2024 |
+| `apert` | Grado de apertura ((X + M) / PIB) | nama_10_gdp P6+P7 / B1GQ CP_MEUR | 2025 |
+
+### Cuadro 7. Sector exterior (España) (`cuadro7.csv`)
+
+- Eurostat: bop_c6_a (balanza de pagos MBP6 del Banco de España, en % del PIB de nama_10_gdp), bop_gdp6_q, tipsii10. Previsión: AMECO UBCA. Cuenta financiera: variación neta de activos menos variación neta de pasivos (+ = salida neta de capital).
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
@@ -165,14 +208,32 @@ Columnas: identificador de la fila en `cuadroN.csv`, indicador, código y filtro
 | `piin` | Posición de inversión internacional neta | tipsii10 PC_GDP | 2025 |
 | `piin_nendi` | PIIN sin instrumentos que no generan impago | bop_gdp6_q FA__NENDI N_LE | 2025 |
 | `den` | Deuda externa neta | bop_gdp6_q FA__FNED NE_LE | 2025 |
-| `tcer_ipc` | Tipo de cambio efectivo real, IPC, 42 socios (2020 = 100) | ert_eff_ic_a REER_IC42_CPI I20 | 2025 |
-| `tcer_clu` | Tipo de cambio efectivo real, CLU, frente a la zona del euro (2020 = 100) | ert_eff_ic_a REER_EA20_ULCT I20 | 2025 |
-| `cuota` | Cuota en las exportaciones mundiales de bienes y servicios | tipsex20 GS | 2025 |
-| `apert` | Grado de apertura ((X + M) / PIB) | nama_10_gdp P6+P7 / B1GQ CP_MEUR | 2025 |
 
-### Cuadro 6. Cuentas públicas (España) (`cuadro6.csv`)
+### Cuadro 8. Política monetaria y sistema bancario (`cuadro8.csv`)
 
-- Eurostat: gov_10a_main y gov_10dd_edpt1 (notificación del procedimiento de déficit excesivo de octubre de 2026; actualizados el 2026-10-21T11:00:00+0200), irt_lt_mcby_a (rendimiento de convergencia). Saldos ajustados: Comisión Europea, AMECO (primavera de 2026).
+- BCE: tipos oficiales (FM), Euríbor, M3 (BSI), estado financiero del Eurosistema (ILM) y datos bancarios consolidados (CBD2: CET1 y dudosos desde 2014; ROE y ROA de España desde 2008). Eurostat nama_10_gdp (PIB de la zona del euro).
+- Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
+
+| id | Indicador | Fuente y código | Último dato |
+|---|---|---|---|
+| `dfr` | Tipo de la facilidad de depósito del BCE (fin de año) | BCE FM.D.U2.EUR.4F.KR.DFR.LEV | 2025 |
+| `mro` | Tipo de las operaciones principales de financiación (fin de año) | BCE FM.D.U2.EUR.4F.KR.MRR_RT.LEV | 2025 |
+| `eur12` | Euríbor a 12 meses (media anual) | BCE FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA | 2025 |
+| `m3` | M3 de la zona del euro (variación interanual en diciembre) | BCE BSI.M.U2.Y.V.M30.X.I.U2.2300.Z01.A | 2025 |
+| `eurosis` | Activo del Eurosistema (% del PIB de la zona del euro, fin de año) | BCE ILM.W.U2.C.T000000.Z5.Z01 / nama_10_gdp EA20 | 2025 |
+| `cet1` | Bancos: capital ordinario de nivel 1 (CET1, % de los APR) | BCE CBD2 I4008 ES | 2025 |
+| `cet1_ue` | Ídem, media de la UE | BCE CBD2 I4008 B0 | 2025 |
+| `solv` | Bancos: ratio de capital total (% de los APR) | BCE CBD2 I4001 ES | 2025 |
+| `npl` | Bancos: préstamos dudosos (% de los préstamos brutos) | BCE CBD2 I3632 (FINREP) ES | 2025 |
+| `npl_ue` | Ídem, media de la UE | BCE CBD2 I3632 (FINREP) B0 | 2025 |
+| `roe` | Bancos: rentabilidad sobre recursos propios (ROE) | BCE CBD2 I2003 ES | 2025 |
+| `roe_ue` | Ídem, media de la UE | BCE CBD2 I2003 B0 | 2025 |
+| `roa` | Bancos: rentabilidad del activo (ROA) | BCE CBD2 I2004 ES | 2025 |
+| `roa_ue` | Ídem, media de la UE | BCE CBD2 I2004 B0 | 2025 |
+
+### Cuadro 9. Cuentas públicas (España) (`cuadro9.csv`)
+
+- Eurostat: gov_10a_main, gov_10dd_edpt1 (notificación de octubre de 2026), irt_lt_mcby_a. Saldos ajustados y previsiones: AMECO (primavera de 2026).
 - Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 
 | id | Indicador | Fuente y código | Último dato |
@@ -191,32 +252,6 @@ Columnas: identificador de la fila en `cuadroN.csv`, indicador, código y filtro
 | `rend` | Rendimiento de la deuda pública a 10 años (media anual) | irt_lt_mcby_a MCBY ES | 2025 |
 | `dif` | Diferencial frente al bono alemán a 10 años (pb) | irt_lt_mcby_a ES - DE | 2025 |
 
-### Cuadro 7. Política monetaria, crédito y sistema bancario (`cuadro7.csv`)
-
-- BCE, portal de datos (data-api.ecb.europa.eu): tipos oficiales (FM), tipos de interés de las IFM (MIR), balance de las IFM (BSI) y datos bancarios consolidados (CBD2, grupos bancarios nacionales y bancos independientes; datos de 2014 en adelante para CET1 y dudosos; ROE desde 2008 en España). Eurostat tipspd22 y tipspd30 (cuadro de indicadores del procedimiento de desequilibrios).
-- Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
-
-| id | Indicador | Fuente y código | Último dato |
-|---|---|---|---|
-| `dfr` | Tipo de la facilidad de depósito del BCE (fin de año) | BCE FM.D.U2.EUR.4F.KR.DFR.LEV | 2025 |
-| `mro` | Tipo de las operaciones principales de financiación (fin de año) | BCE FM.D.U2.EUR.4F.KR.MRR_RT.LEV | 2025 |
-| `eur12` | Euríbor a 12 meses (media anual) | BCE FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA | 2025 |
-| `m3` | M3 de la zona del euro (variación interanual en diciembre) | BCE BSI.M.U2.Y.V.M30.X.I.U2.2300.Z01.A | 2025 |
-| `hip` | Tipo de los préstamos nuevos a hogares para vivienda (media anual) | BCE MIR.M.ES.B.A2C.AM.R.A.2250.EUR.N | 2025 |
-| `hip_ze` | Ídem, zona del euro | BCE MIR.M.U2.B.A2C.AM.R.A.2250.EUR.N | 2025 |
-| `snf_t` | Tipo de los préstamos nuevos a sociedades no financieras (media anual) | BCE MIR.M.ES.B.A2A.A.R.A.2240.EUR.N | 2025 |
-| `phog` | Préstamos bancarios a hogares (variación interanual en diciembre) | BCE BSI.M.ES.N.A.A20.A.I.U2.2250.Z01.A | 2025 |
-| `psnf` | Préstamos bancarios a sociedades no financieras (variación interanual en diciembre) | BCE BSI.M.ES.N.A.A20.A.I.U2.2240.Z01.A | 2025 |
-| `dhog` | Deuda de los hogares (consolidada) | Eurostat tipspd22 | 2025 |
-| `dsnf` | Deuda de las sociedades no financieras (consolidada) | Eurostat tipspd30 | 2025 |
-| `cet1` | Bancos: capital ordinario de nivel 1 (CET1, % de los APR) | BCE CBD2 I4008 ES | 2025 |
-| `cet1_ue` | Ídem, media de la UE | BCE CBD2 I4008 B0 | 2025 |
-| `solv` | Bancos: ratio de capital total (% de los APR) | BCE CBD2 I4001 ES | 2025 |
-| `npl` | Bancos: préstamos dudosos (% de los préstamos brutos) | BCE CBD2 I3632 (FINREP) ES | 2025 |
-| `npl_ue` | Ídem, media de la UE | BCE CBD2 I3632 (FINREP) B0 | 2025 |
-| `roe` | Bancos: rentabilidad sobre recursos propios (ROE) | BCE CBD2 I2003 ES | 2025 |
-| `roe_ue` | Ídem, media de la UE | BCE CBD2 I2003 B0 | 2025 |
-
 ### Cuadro 2 bis (`cuadro2b-descomposicion.csv`)
 
 - Cuadro 2 (bis). Descomposición del crecimiento del PIB (tasas medias anuales logarítmicas, en %).
@@ -224,32 +259,36 @@ Columnas: identificador de la fila en `cuadroN.csv`, indicador, código y filtro
 - Eurostat: nama_10_gdp (B1GQ, CLV10_MEUR), nama_10_pe (POP_NC, EMP_DC; personas, contabilidad nacional), nama_10_a10_e (THS_HW, horas totales), demo_pjanbroad (población de 15-64 años a 1 de enero; media de 1 de enero de t y t+1).
 - Consulta: 2026-10-26.
 
-## Gráficos
+## Gráficos (el número del fichero es el del gráfico)
 
 | Gráfico | CSV | Fuente, códigos y último dato |
 |---|---|---|
 | 1 | `g01-contribuciones-trimestrales.csv` | Contribuciones al crecimiento intertrimestral del PIB (pp), datos corregidos de estacionalidad y calendario. Eurostat namq_10_gdp, unit=CON_PPCH_PRE, s_adj=SCA, geo=ES; actualizado el 2026-10-22T23:00:00+0200. Demanda externa = P6 + P7. Consulta: 2026-10-26. Último dato: 2026-Q2. |
 | 2 | `g02-pib-por-habitante.csv` | PIB real y PIB real por habitante, España y zona del euro (20 países), índice 2007 = 100. Eurostat nama_10_gdp (B1GQ, CLV10_MEUR) y nama_10_pe (POP_NC), geo=ES y EA20. Consulta: 2026-10-26. Último dato: 2025. |
 | 3 | `g03-beveridge.csv` | Curva de Beveridge de España: medias anuales de la tasa de vacantes (JVR, B-T, todas las empresas, sin desestacionalizar) y la tasa de paro (15-74, desestacionalizada). Eurostat jvs_q_r21 (actualizado el 2026-09-15T11:00:00+0200) y une_rt_q (actualizado el 2026-09-10T23:00:00+0200). El último año solo con los trimestres disponibles (columna trimestres). Consulta: 2026-10-26. Último dato: 2026. |
-| 4 | `g04-ipca-mensual.csv` | IPCA, tasa de variación interanual (%), general y sin energía ni alimentos, alcohol y tabaco; España y zona del euro. Eurostat prc_hicp_minr (ECOICOP ver. 2), unit=RCH_A, coicop18=TOTAL y TOT_X_NRG_FOOD, geo=ES y EA; actualizado el 2026-10-16T23:00:00+0200. Consulta: 2026-10-26. Último dato: 2026-09. |
-| 5 | `g05-brent.csv` | Gráfico 5. Precio del petróleo Brent (media mensual del precio al contado, FOB Europa): dólares y euros por barril, enero 2005-septiembre 2026. Fuente: U.S. Energy Information Administration (EIA), serie RBRTE, https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RBRTE&f=M (publicada el 21/10/2026; copia en FRED, serie MCOILBRENTEU, https://fred.stlouisfed.org/series/MCOILBRENTEU); conversión a euros con el tipo de cambio de referencia del BCE, media mensual (EXR.M.USD.EUR.SP00.A, https://data.ecb.europa.eu/data/datasets/EXR). Consulta: 23/10/2026. Copia de oposicion/temario/fuentes/1D01/datos/brent.csv (guía 1D01; consulta 23/10/2026); se usa desde 2019-01. Último dato: 2026-09. |
-| 6 | `g06-cuenta-corriente.csv` | Cuenta corriente de España por componentes y capacidad/necesidad de financiación (% del PIB). Eurostat bop_c6_a (MIO_EUR, BAL, sector S1) dividido por nama_10_gdp B1GQ CP_MEUR. rentas = IN1 + IN2; resto_servicios = S - SD. Consulta: 2026-10-26. Último dato: 2025. |
-| 7 | `g07-piin.csv` | Posición de inversión internacional neta, PIIN sin instrumentos que no generan impago (NENDI) y deuda externa neta con signo cambiado (% del PIB). Eurostat tipsii10 (PC_GDP) y bop_gdp6_q (FA__NENDI N_LE; FA__FNED NE_LE, que aquí se cambia de signo: negativo = deudor neto). Consulta: 2026-10-26. Último dato: 2025. |
+| 4 | `g04-deuda-privada-vivienda.csv` | Deuda consolidada de los hogares (con ISFLSH) y de las sociedades no financieras (% del PIB) y precio real de la vivienda (índice 2007 = 100). Eurostat tipspd22, tipspd30 (PC_GDP) y tipsho10 (precio de la vivienda deflactado, I15_A_AVG rebasado a 2007). Consulta: 2026-10-26. Último dato: 2025. |
+| 5 | `g05-ahorro-hogares.csv` | Hogares (con ISFLSH): tasa de ahorro bruto (% de la renta disponible bruta), variación de la renta disponible bruta real ajustada por habitante (%) y del consumo privado en volumen (%). Eurostat nasa_10_ki (SRG_S14_S15, unit=PC; B7G_R_HAB_GR, unit=PC) y nama_10_gdp (P31_S14_S15, CLV_PCH_PRE). Consulta: 2026-10-26. Último dato: 2025. |
+| 6 | `g06-ipca-mensual.csv` | IPCA, tasa de variación interanual (%), general y sin energía ni alimentos, alcohol y tabaco; España y zona del euro. Eurostat prc_hicp_minr (ECOICOP ver. 2), unit=RCH_A, coicop18=TOTAL y TOT_X_NRG_FOOD, geo=ES y EA; actualizado el 2026-10-16T23:00:00+0200. Consulta: 2026-10-26. Último dato: 2026-09. |
+| 7 | `g07-brent.csv` | Gráfico 7. Precio del petróleo Brent (media mensual del precio al contado, FOB Europa): dólares y euros por barril, enero 2005-septiembre 2026. Fuente: U.S. Energy Information Administration (EIA), serie RBRTE, https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RBRTE&f=M (publicada el 21/10/2026; copia en FRED, serie MCOILBRENTEU, https://fred.stlouisfed.org/series/MCOILBRENTEU); conversión a euros con el tipo de cambio de referencia del BCE, media mensual (EXR.M.USD.EUR.SP00.A, https://data.ecb.europa.eu/data/datasets/EXR). Consulta: 23/10/2026. Copia de oposicion/temario/fuentes/1D01/datos/brent.csv (guía 1D01; consulta 23/10/2026); se usa desde 2019-01. Último dato: 2026-09. |
 | 8 | `g08-competitividad.csv` | Tipo de cambio efectivo real de España (un aumento es una apreciación real) y exportaciones reales, índices 2007 = 100. Eurostat ert_eff_ic_a (REER_IC42_CPI: deflactado con IPC, 42 socios; REER_EA20_ULCT: deflactado con CLU del total de la economía, frente a los 20 países de la zona del euro), rebasados a 2007 = 100 desde I20; nama_10_gdp P6 CLV10_MEUR. Consulta: 2026-10-26. Último dato: 2025. |
 | 9 | `g09-exportaciones-eeuu.csv` | Exportaciones españolas de bienes a EE. UU. y al mundo (Comext, euros corrientes, mensual). sm12: suma móvil de 12 meses (miles de millones); idx: índice de la suma móvil, media de 2024 = 100; yoy: variación interanual del mes (%). Eurostat Comext DS-045409 (reporter=ES, partner=US / WORLD, product=TOTAL, flow=2 exportaciones, VALUE_IN_EUROS); actualizado el 2026-10-16T11:00:00+0200. Consulta: 2026-10-26. Último dato: 2026-08. |
-| 10 | `g10-orientacion-fiscal.csv` | Brecha de producción (% del PIB potencial) y saldo estructural primario de las AAPP (% del PIB potencial) y su variación (pp), 2007-2027 (2026-2027, previsión). Comisión Europea, AMECO: AVGDGP, UBLGBPS (previsiones de primavera de 2026). Consulta: 2026-10-26. Último dato: 2027. |
-| 11 | `g11-deuda-i-g.csv` | Deuda pública (% del PIB), tipo de interés implícito (intereses del año / deuda del año anterior, %), crecimiento del PIB nominal (%) y diferencial i - g (pp). Eurostat gov_10dd_edpt1 (GD, MIO_EUR y PC_GDP), gov_10a_main (D41PAY, MIO_EUR), nama_10_gdp (B1GQ, CP_MEUR). Consulta: 2026-10-26. Último dato: 2025. |
+| 10 | `g10-cuenta-corriente.csv` | Cuenta corriente de España por componentes y capacidad/necesidad de financiación (% del PIB). Eurostat bop_c6_a (MIO_EUR, BAL, sector S1) dividido por nama_10_gdp B1GQ CP_MEUR. rentas = IN1 + IN2; resto_servicios = S - SD. Consulta: 2026-10-26. Último dato: 2025. |
+| 11 | `g11-piin.csv` | Posición de inversión internacional neta, PIIN sin instrumentos que no generan impago (NENDI) y deuda externa neta con signo cambiado (% del PIB). Eurostat tipsii10 (PC_GDP) y bop_gdp6_q (FA__NENDI N_LE; FA__FNED NE_LE, que aquí se cambia de signo: negativo = deudor neto). Consulta: 2026-10-26. Último dato: 2025. |
 | 12 | `g12-tipos.csv` | Tipos de interés (%), mensual: facilidad de depósito del BCE (último día del mes), Euríbor a 12 meses (media), coste de los préstamos nuevos a hogares para vivienda en España, rendimiento de la deuda pública a 10 años de España y Alemania (media). BCE FM.D.U2.EUR.4F.KR.DFR.LEV, FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA, MIR.M.ES.B.A2C.AM.R.A.2250.EUR.N; Eurostat irt_lt_mcby_m (actualizado el 2026-10-13T11:00:00+0200). Consulta: 2026-10-26. Último dato: 2026-09. |
-| — | `extra-deuda-privada-vivienda.csv` | Deuda consolidada de los hogares (con ISFLSH) y de las sociedades no financieras (% del PIB) y precio real de la vivienda (índice 2007 = 100). Eurostat tipspd22, tipspd30 (PC_GDP) y tipsho10 (precio de la vivienda deflactado, I15_A_AVG rebasado a 2007). Consulta: 2026-10-26. Último dato: 2025. |
+| 13 | `g13-orientacion-fiscal.csv` | Brecha de producción (% del PIB potencial) y saldo estructural primario de las AAPP (% del PIB potencial) y su variación (pp), 2007-2027 (2026-2027, previsión). Comisión Europea, AMECO: AVGDGP, UBLGBPS (previsiones de primavera de 2026). Consulta: 2026-10-26. Último dato: 2027. |
+| 14 | `g14-deuda-i-g.csv` | Deuda pública (% del PIB), tipo de interés implícito (intereses del año / deuda del año anterior, %), crecimiento del PIB nominal (%) y diferencial i - g (pp). Eurostat gov_10dd_edpt1 (GD, MIO_EUR y PC_GDP), gov_10a_main (D41PAY, MIO_EUR), nama_10_gdp (B1GQ, CP_MEUR). Consulta: 2026-10-26. Último dato: 2025. |
 
 ## Lo que no se encontró o se cambió
 
 - **Saldo estructural 2007-2009**: AMECO solo lo da desde 2010 para España (celdas en blanco).
-- **CET1 y préstamos dudosos antes de 2014**: los datos bancarios consolidados del BCE (CBD2) empiezan en 2014 con la definición de Basilea III y FINREP; para 2008-2013 habría que acudir al Boletín Estadístico del Banco de España (otra definición: dudosos del crédito a otros sectores residentes), que no se ha descargado ni se mezcla. ROE de España desde 2008.
-- **Tasa de vacantes 2007-2009**: la serie de Eurostat (jvs_q_r21) salta de 0,7 % (4T2009) a 1,4 % (1T2010) sin marca de ruptura; el cuadro la da desde 2010 y el gráfico de Beveridge también.
-- **Paro de la zona del euro y paro de larga duración 2007-2008**: une_rt_a y une_ltu_a empiezan en 2009 (celdas en blanco).
-- **Previsiones 2026-2027**: solo en las filas que AMECO publica (PIB y componentes, empleo, paro, IPCA, cuenta corriente, saldos, deuda, gastos, intereses, PIB nominal y potencial). No hay previsión de contribuciones ni de la balanza por componentes. Las previsiones del Banco de España de septiembre de 2026 no se descargaron (la web no dio un enlace legible por programa): se usa una sola fuente, la Comisión.
-- **AMECO frente a Eurostat**: AMECO (mayo de 2026) es anterior a la última revisión del INE: PIB de 2025 +2,8 % en AMECO y +2,6 % en Eurostat; deuda de 2025, 100,7 % frente a 100,5 %. Los saldos ajustados de ciclo y estructurales son de AMECO para toda la serie (coherentes entre sí).
-- **IPCA anual**: prc_hicp_aind (ECOICOP ver. 1, hasta 2025); el mensual de 2026 sale de prc_hicp_minr (ECOICOP ver. 2). La media anual de 2025 coincide (2,7 %).
-- **Calificación crediticia, vida media de la deuda y tenedores**: no hay API oficial (las agencias no son fuente oficial; el Tesoro publica la vida media en PDF). No se incluyen.
-- **Exportaciones a EE. UU. (sql_comex)**: la base interna de DataComex no estaba accesible desde la herramienta (tabla no encontrada); se usó Comext de Eurostat.
+- **CET1 y préstamos dudosos antes de 2014**: los datos bancarios consolidados del BCE (CBD2) empiezan en 2014 con la definición de Basilea III y FINREP; para 2008-2013 habría que acudir al Boletín Estadístico del Banco de España (otra definición), que no se ha descargado ni se mezcla. ROE y ROA de España desde 2008.
+- **Tasa de vacantes 2007-2009**: la serie de Eurostat (jvs_q_r21) salta de 0,7 % (4T2009) a 1,4 % (1T2010) sin marca de ruptura; el cuadro y el gráfico de Beveridge la dan desde 2010.
+- **Paro de la zona del euro y paro de larga duración 2007-2008**: une_rt_a y une_ltu_a empiezan en 2009.
+- **Exportaciones de alta tecnología**: tipsex12 llega a 2022 (Eurostat no la ha actualizado). **Gasto en I+D**: hasta 2024.
+- **Previsiones 2026-2027**: solo en las filas que AMECO publica. No hay previsión de contribuciones ni de la balanza por componentes. Las del Banco de España de septiembre de 2026 no se descargaron (sin enlace legible por programa): una sola fuente, la Comisión. Pendiente: actualizarlas con las de otoño (17/11/2026; ver README.md).
+- **AMECO frente a Eurostat**: AMECO (mayo de 2026) es anterior a la última revisión del INE: PIB de 2025 +2,8 % en AMECO y +2,6 % en Eurostat; deuda de 2025, 100,7 % frente a 100,5 %. Brecha, potencial y saldos ajustados: AMECO en toda la serie.
+- **IPCA anual**: prc_hicp_aind (ECOICOP ver. 1, hasta 2025); el mensual de 2026, prc_hicp_minr (ECOICOP ver. 2). En 2025 coinciden (2,7 %).
+- **Calificación crediticia**: no hay fuente oficial (las agencias son privadas); no se incluye. **Vida media de la deuda y tenedores**: el Tesoro los publica en PDF, sin API; no se incluyen.
+- **Colchón de capital anticíclico (macroprudencial)**: no se encontró una serie descargable por programa (Banco de España/JERS); no se incluye. La pregunta 8 se responde con las ratios bancarias, el crédito, la deuda privada y el precio de la vivienda.
+- **Exportaciones a EE. UU. (sql_comex)**: la base interna de DataComex no estaba accesible desde la herramienta; se usó Comext de Eurostat.
+

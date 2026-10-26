@@ -1,8 +1,9 @@
 % ==========================================================================
 % examen-espana.tex — Examen de ejemplo del dictamen de coyuntura: España
 % Guía del dictamen (1D01), entregable 3. Autor: Víctor Gutiérrez Marcos.
-% Formato de la convocatoria de 2026 (1 h 45 min, cinco cuestiones, cuadernillo
-% de cuadros y gráficos). Datos reales y oficiales al 26/10/2026 (datos/).
+% Examen de ejemplo COMPLETO: una pregunta por bloque de la guía (I-VI), diez en
+% total, con la redacción del tribunal; formato de 2026 salvo el número de
+% preguntas y el tiempo. Datos reales y oficiales al 26/10/2026 (datos/).
 % Cuadros: cuadros/*.tex, generados con generar_cuadros.py desde datos/*.csv.
 % Gráficos: graficos/*.tex (pgfplots, paleta «dic» de latex/tikz-tcee.tex).
 % Compilación: ver README.md.
@@ -40,6 +41,7 @@
 \definecolor{dicsaldo}{HTML}{1A1A1A}
 \definecolor{dicpiin}{HTML}{8C510A}
 \definecolor{dicfiscal}{HTML}{4A5A6A}
+\definecolor{dicvivienda}{HTML}{B07AA1}  % precio de la vivienda (malva, sin otro uso)
 \definecolor{cabecera}{HTML}{E8E8E8}
 \definecolor{fondoprev}{HTML}{F4F4F4}
 
@@ -88,34 +90,47 @@
 \begin{center}
 {\large\textbf{Oposición al Cuerpo Superior de Técnicos Comerciales y Economistas del Estado}}\\[4pt]
 {\normalsize Primer ejercicio, segunda parte: dictamen sobre un escenario macroeconómico}\\[10pt]
-{\Large\textbf{Examen de ejemplo: la economía española}}\\[4pt]
-{\small Preparado por Víctor Gutiérrez Marcos con el formato de la convocatoria de 2026 · No es un examen oficial}\\[2pt]
-{\small Datos oficiales disponibles el 26 de octubre de 2026}
+{\Large\textbf{Examen de ejemplo completo: la economía española}}\\[4pt]
+{\small Preparado por Víctor Gutiérrez Marcos · Examen de ejemplo (no oficial) · Datos oficiales disponibles el 26 de octubre de 2026}
 \end{center}
-\vspace{8pt}
-\rule{\linewidth}{0.4pt}
 \vspace{2pt}
+\begin{center}
+\fcolorbox{tceegris}{cabecera}{\begin{minipage}{0.93\linewidth}\small
+\textbf{Examen de ejemplo completo: más preguntas que un examen real.} Tiene una pregunta por cada bloque de la guía del dictamen
+(perfil cíclico; mercados de factores; competitividad precio y no precio; sector exterior; políticas monetaria, macroprudencial y fiscal;
+desequilibrios y recomendaciones), diez en total, para practicarlos todos. El examen real de la convocatoria de 2026 tenía cinco
+cuestiones y 1 hora y 45 minutos; aquí el tiempo es orientativo y proporcional.
+\end{minipage}}
+\end{center}
 
 \textbf{Instrucciones}
 
-\begin{itemize}[leftmargin=1.2em]
-\item El ejercicio consta de \textbf{cinco cuestiones}. El tribunal valorará fundamentalmente \textbf{las capacidades analítica y de síntesis del aspirante, así como su claridad expositiva}.
-\item Dispone de \textbf{1 hora y 45 minutos} para responder a las cuestiones planteadas. No se podrá dar la vuelta al cuadernillo ni acceder a su contenido hasta que lo indique el tribunal; el incumplimiento de este punto supondrá la eliminación del aspirante.
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt]
+\item El ejercicio consta de \textbf{diez cuestiones}. El tribunal valorará fundamentalmente \textbf{las capacidades analítica y de síntesis del aspirante, así como su claridad expositiva}.
+\item \textbf{Tiempo orientativo: 3 horas y 30 minutos} (en el examen real, 1 hora y 45 minutos para cinco o seis cuestiones). No se podrá dar la vuelta al cuadernillo ni acceder a su contenido hasta que lo indique el tribunal; el incumplimiento de este punto supondrá la eliminación del aspirante.
 \item Las respuestas se redactarán en las hojas autocopiativas depositadas sobre la mesa, con bolígrafo de tinta azul o negra. En la parte superior de cada hoja deberán consignarse el nombre y los apellidos antes de que finalice la prueba.
 \item No escriba con abreviaturas, ya que la lectura se realizará de forma literal. Solo se admiten las abreviaturas que figuran en el propio enunciado y las convencionales del análisis económico (por ejemplo, PIB, pp, pb o FMI).
-\item \textbf{No está permitido el uso de calculadora.} Está permitido el uso de tapones para los oídos desde el comienzo de la prueba, pero no el de cascos o auriculares de ningún tipo. Los dispositivos electrónicos (móviles, relojes inteligentes, etc.) deberán permanecer apagados y fuera del alcance de los aspirantes.
-\item El tribunal no responderá a preguntas, para garantizar la igualdad de oportunidades. En caso de duda, cada aspirante debe interpretar lo que está escrito.
-\item No será posible abandonar la sala durante los 10 primeros minutos ni durante los 10 últimos minutos de la prueba.
-\item Cuando se anuncie el final de la prueba, los aspirantes deberán dejar de escribir inmediatamente; el incumplimiento de este punto supondrá la eliminación del aspirante.
+\item \textbf{No está permitido el uso de calculadora.} Está permitido el uso de tapones para los oídos desde el comienzo de la prueba, pero no el de cascos o auriculares. Los dispositivos electrónicos deberán permanecer apagados y fuera del alcance de los aspirantes.
+\item El tribunal no responderá a preguntas. En caso de duda, cada aspirante debe interpretar lo que está escrito. No será posible abandonar la sala durante los 10 primeros ni los 10 últimos minutos, y al anunciarse el final habrá que dejar de escribir inmediatamente.
 \end{itemize}
 
-\vspace{6pt}
+\textbf{Reparto orientativo del tiempo} (regla de la guía: lectura y repaso fijos; el resto, $t=W/(n+0{,}25)$ por pregunta y $1{,}25\,t$ para el perfil cíclico; dentro de esa regla, más tiempo a las preguntas donde la economía tiene más retos)
+
+\begin{center}\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\rowcolor{cabecera} & \textbf{Lectura y plan} & \textbf{Pregunta 1} & \textbf{Preguntas 2 a 10} & \textbf{Repaso} & \textbf{Total} \\
+\midrule
+Este examen (10 preguntas) & 15 min & 22 min & 18 min cada una & 11 min & 3 h 30 min \\
+Examen real de 2026 (5 preguntas) & 12 min & 21 min & 17 min cada una & 4 min & 1 h 45 min \\
+\bottomrule
+\end{tabular}
+\end{center}
+
 \textbf{Contenido del cuadernillo}
 
-\begin{itemize}[leftmargin=1.2em]
-\item Enunciado (página 2).
-\item Cuadros 1 a 7 y cuadro 2 bis: datos anuales de 2007 a 2025 y, en algunas filas, previsiones de la Comisión Europea para 2026 y 2027 (columnas marcadas con P y sombreadas).
-\item Gráficos 1 a 12: datos anuales, trimestrales y mensuales; los más recientes, hasta el tercer trimestre de 2026.
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt]
+\item Enunciado (página 2). Cuadros 1 a 9 y cuadro 2 bis: datos anuales de 2007 a 2025 y, en algunas filas, previsiones de la Comisión Europea para 2026 y 2027 (columnas marcadas con P y sombreadas). Gráficos 1 a 14: datos anuales, trimestrales y mensuales, hasta el tercer trimestre de 2026.
 \item Salvo que se indique otra cosa, «zona del euro» se refiere a los veinte países que la formaban en 2025 y «UE», a los veintisiete Estados miembros. Las celdas en blanco corresponden a datos no disponibles.
 \end{itemize}
 
@@ -123,24 +138,34 @@
 \begin{center}
 \textbf{NO DÉ LA VUELTA A LAS HOJAS HASTA QUE SE LO INDIQUE EL TRIBUNAL}
 \end{center}
-\vspace{10pt}
 
 \clearpage
 % ==========================================================================
-% Página 2: enunciado
+% Página 2: enunciado (una pregunta por bloque de la guía, I-VI)
 % ==========================================================================
 En los cuadros y gráficos a continuación de este enunciado se facilita información económica sobre \textbf{España} referida a los años naturales 2007 a 2025, con previsiones de la Comisión Europea para 2026 y 2027 y datos trimestrales y mensuales hasta 2026. Atendiendo a esa información, elabore un escrito respondiendo a las siguientes cuestiones:
 
-\begin{enumerate}[leftmargin=1.6em, label=\textbf{\arabic*.}, itemsep=9pt]
-\item Describa brevemente el \textbf{perfil cíclico} de la economía española a lo largo del periodo 2007-2025, desde la óptica de la demanda y de la oferta, y valore su situación coyuntural a la luz de los datos trimestrales de 2026 y de las previsiones para 2026 y 2027. ¿Qué factores podrían explicar el dinamismo de la inversión en los últimos años y su distinta composición respecto de la fase expansiva anterior a 2008? ¿A qué podría deberse que, desde 2019, el PIB por habitante haya crecido bastante menos que el PIB?
-
-\item Caracterice el \textbf{mercado laboral} español a lo largo de la serie. ¿Puede afirmarse que se encuentra tensionado? ¿A qué podría deberse la caída de la temporalidad desde 2022? Analice la evolución de la \textbf{inflación} desde 2021 y sus principales determinantes. ¿Qué factores podrían explicar que en 2026 la inflación española se sitúe por encima de la de la zona del euro? ¿Aprecia riesgo de efectos de segunda vuelta?
-
-\item Analice la evolución del \textbf{sector exterior} a lo largo de todo el horizonte temporal, identificando sus fortalezas y debilidades. ¿Considera que la corrección del desequilibrio exterior posterior a 2008 tiene carácter estructural o cíclico? ¿Por qué la posición de inversión internacional neta empeora en 2025 pese al superávit exterior? ¿Cree que la política arancelaria de la actual administración de Estados Unidos ha tenido algún impacto sobre la economía española?
-
-\item Valore la orientación de la \textbf{política monetaria} y su transmisión a la economía española, en particular la reacción del Banco Central Europeo ante el repunte de la inflación de 2026. Valore brevemente la situación del \textbf{sistema bancario}. Evalúe asimismo el tono de la \textbf{política fiscal}, su relación con el ciclo y su combinación con la política monetaria. ¿Considera que existen riesgos apreciables para la sostenibilidad de la deuda pública en el marco de las reglas fiscales europeas vigentes?
-
-\item Identifique los principales \textbf{desequilibrios y vulnerabilidades} de la economía española y los riesgos al alza y a la baja que rodean las previsiones para 2026 y 2027. Teniendo en cuenta las tendencias demográficas, ¿qué \textbf{reformas estructurales y medidas de política económica} recomendaría para sostener el crecimiento a medio y largo plazo?
+\begin{enumerate}[leftmargin=1.8em, label=\textbf{\arabic*.}, itemsep=7pt]
+% I. Perfil cíclico
+\item Describa brevemente el \textbf{perfil cíclico} de la economía española a lo largo del periodo 2007-2025, desde la óptica de la demanda y de la oferta, identificando sus distintas fases, y valore su situación coyuntural a la luz de los datos trimestrales de 2026 y de las previsiones para 2026 y 2027. ¿Qué indica la brecha de producción sobre la posición cíclica? ¿A qué podría deberse que, desde 2019, el PIB por habitante haya crecido bastante menos que el PIB?
+% II. Mercados de factores: trabajo
+\item Caracterice el \textbf{mercado laboral} español a lo largo de la serie. ¿Puede afirmarse que se encuentra tensionado? Analice la evolución de la curva de Beveridge. ¿A qué podría deberse la caída de la temporalidad desde 2022? Valore la evolución de la \textbf{productividad} y su contribución al crecimiento.
+% II. Mercados de factores: capital y crédito
+\item Analice el comportamiento del \textbf{consumo, el ahorro y la inversión} del sector privado, así como sus principales determinantes. ¿Qué factores podrían explicar el dinamismo de la inversión en los últimos años y su distinta composición respecto de la fase expansiva anterior a 2008? Valore la evolución del \textbf{endeudamiento y del crédito} al sector privado.
+% III. Competitividad precio
+\item Analice la evolución de la \textbf{inflación} desde 2021 y sus principales determinantes. ¿Qué factores podrían explicar que en 2026 la inflación española se sitúe por encima de la de la zona del euro? ¿Aprecia riesgo de efectos de segunda vuelta? Valore la evolución de la \textbf{competitividad precio y coste} a lo largo de la serie.
+% III. Competitividad no precio y política comercial
+\item Valore la \textbf{competitividad no precio} de la economía española. ¿Cree que la política arancelaria de la actual administración de Estados Unidos ha tenido algún impacto sobre la economía española? ¿Qué medidas de política comercial y de internacionalización recomendaría?
+% IV. Sector exterior
+\item Analice la evolución del \textbf{sector exterior} a lo largo de todo el horizonte temporal, identificando sus fortalezas y debilidades. ¿Considera que la corrección del desequilibrio exterior posterior a 2008 tiene carácter estructural o cíclico? ¿Cómo se ha financiado la economía española? ¿Por qué la posición de inversión internacional neta empeora en 2025 pese al superávit exterior? ¿Es sostenible la posición exterior?
+% V. Política monetaria
+\item Valore la orientación de la \textbf{política monetaria} a lo largo de la serie y sus canales de transmisión a la economía española. ¿Cómo valora la reacción del Banco Central Europeo ante el repunte de la inflación de 2026?
+% V. Estabilidad financiera y política macroprudencial
+\item Valore la situación del \textbf{sistema bancario} español en términos de solvencia, calidad de los activos y rentabilidad. ¿Qué riesgos para la \textbf{estabilidad financiera} aprecia? ¿Qué medidas de política macroprudencial considera oportunas?
+% V. Política fiscal, policy mix
+\item Describa la situación de las \textbf{cuentas públicas} y los principales rasgos de la \textbf{política fiscal}, su relación con el ciclo y su combinación con la política monetaria. ¿Considera que existen riesgos apreciables para la sostenibilidad de la deuda pública? ¿Cómo condicionarán las reglas fiscales europeas vigentes la política fiscal de los próximos años?
+% VI. Recomendaciones
+\item Identifique los principales \textbf{desequilibrios y vulnerabilidades} de la economía española y los riesgos al alza y a la baja que rodean las previsiones para 2026 y 2027. Teniendo en cuenta las tendencias demográficas, ¿qué \textbf{reformas estructurales y políticas de oferta} recomendaría para sostener el crecimiento a medio y largo plazo?
 \end{enumerate}
 
 \clearpage
@@ -152,13 +177,12 @@ En los cuadros y gráficos a continuación de este enunciado se facilita informa
 \newgeometry{layoutwidth=297mm,layoutheight=210mm,top=1.5cm,bottom=1.4cm,left=1.4cm,right=1.4cm,headheight=14pt,headsep=8pt,footskip=16pt}
 \fancyheadoffset{0pt}
 
-% ---- Página 3: cuadros 1 y 2 --------------------------------------------------
+% ---- Perfil cíclico: cuadros 1, 2 y 2 bis; gráficos 1 a 3 -------------------------
 \begin{bloquecuadro}\input{cuadros/cuadro1}\end{bloquecuadro}
 \vspace{10pt}
 \begin{bloquecuadro}\input{cuadros/cuadro2}\end{bloquecuadro}
 \clearpage
 
-% ---- Página 4: cuadro 2 bis y gráficos 1 a 3 -------------------------------------
 \setlength{\altograf}{6.2cm}\noindent
 \begin{minipage}[t]{0.47\linewidth}\vspace{0pt}\setlength{\anchoetq}{7.4cm}
 \begin{bloquecuadro}\input{cuadros/cuadro2b}\end{bloquecuadro}
@@ -169,42 +193,51 @@ En los cuadros y gráficos a continuación de este enunciado se facilita informa
 \grafico{3}{Curva de Beveridge (medias anuales; 2026: primer semestre)}{Eurostat (estadística de vacantes, sin desestacionalizar; encuesta de población activa, tasa de paro desestacionalizada).}{g03-beveridge}
 \clearpage
 
-\setlength{\altograf}{5.6cm}
-% ---- Página 5: cuadros 3 y 4 ----------------------------------------------------
+% ---- Mercados de factores: cuadros 3 y 4 -----------------------------------------
 \begin{bloquecuadro}\input{cuadros/cuadro3}\end{bloquecuadro}
-\vspace{10pt}
+\vspace{8pt}
 \begin{bloquecuadro}\input{cuadros/cuadro4}\end{bloquecuadro}
 \clearpage
 
-% ---- Página 6: gráficos 4 a 7 ---------------------------------------------------
-\setlength{\altograf}{6.4cm}\noindent
-\grafico{4}{Inflación: IPCA general y sin energía ni alimentos (tasa interanual, \%)}{Eurostat (índice de precios de consumo armonizado).}{g04-ipca}\hfill
-\grafico{5}{Precio del petróleo Brent (media mensual, por barril)}{Administración de Información Energética de Estados Unidos (EIA); conversión a euros con el tipo de cambio de referencia del BCE.}{g05-brent}
+% ---- Gráficos 4 a 7 ---------------------------------------------------------------
+\setlength{\altograf}{6.2cm}\noindent
+\grafico{4}{Deuda privada (\% del PIB) y precio real de la vivienda (2007 = 100)}{Eurostat (indicadores del procedimiento de desequilibrios macroeconómicos: deuda consolidada; índice de precios de la vivienda del INE deflactado).}{g04-deuda-privada}\hfill
+\grafico{5}{Hogares: renta disponible, consumo y tasa de ahorro}{Eurostat (cuentas de los hogares e ISFLSH; contabilidad nacional del INE).}{g05-ahorro}
 \par\vspace{10pt}\noindent
-\grafico{6}{Cuenta corriente y capacidad o necesidad de financiación (\% del PIB)}{Eurostat (balanza de pagos del Banco de España; contabilidad nacional del INE).}{g06-cuenta-corriente}\hfill
-\grafico{7}{Posición de inversión internacional neta y deuda externa neta (\% del PIB)}{Eurostat (posición de inversión internacional del Banco de España).}{g07-piin}
+\grafico{6}{Inflación: IPCA general y sin energía ni alimentos (tasa interanual, \%)}{Eurostat (índice de precios de consumo armonizado).}{g06-ipca}\hfill
+\grafico{7}{Precio del petróleo Brent (media mensual, por barril)}{Administración de Información Energética de Estados Unidos (EIA); conversión a euros con el tipo de cambio de referencia del BCE.}{g07-brent}
 \clearpage
 
-% ---- Página 7: cuadro 5 y gráficos 8 y 9 ------------------------------------------
+% ---- Competitividad: cuadros 5 y 6; gráficos 8 y 9 --------------------------------
 \begin{bloquecuadro}\input{cuadros/cuadro5}\end{bloquecuadro}
-\vspace{4pt}\noindent\setlength{\altograf}{4.6cm}
+\vspace{6pt}
+\begin{bloquecuadro}\input{cuadros/cuadro6}\end{bloquecuadro}
+\vspace{4pt}\noindent\setlength{\altograf}{4.4cm}
 \grafico{8}{Tipo de cambio efectivo real y exportaciones (índice, 2007 = 100)}{Eurostat (tipos de cambio efectivos reales; contabilidad nacional del INE). Un aumento del tipo de cambio efectivo real indica una apreciación.}{g08-competitividad}\hfill
 \grafico{9}{Exportaciones de bienes, suma de 12 meses (índice, 2024 = 100)}{Eurostat (Comext, estadística de comercio exterior de bienes). Valor en euros; suma de los últimos 12 meses en relación con su media de 2024.}{g09-exportaciones-eeuu}
 \clearpage
 
-% ---- Página 8: cuadro 6 y gráficos 10 y 11 ----------------------------------------
-\begin{bloquecuadro}\input{cuadros/cuadro6}\end{bloquecuadro}
-\vspace{8pt}\noindent\setlength{\altograf}{5.6cm}
-\grafico{10}{Brecha de producción y variación del saldo estructural primario}{Comisión Europea (AMECO, previsiones de primavera de 2026). Saldo estructural primario y brecha, en \% del PIB potencial; 2026 y 2027 (círculos huecos): previsión.}{g10-orientacion-fiscal}\hfill
-\grafico{11}{Deuda pública: tipo de interés implícito (i) y crecimiento del PIB nominal (g)}{Eurostat (cuentas de las administraciones públicas y contabilidad nacional). i: intereses del año entre la deuda del año anterior.}{g11-deuda-i-g}
+% ---- Sector exterior: cuadro 7; gráficos 10 y 11 ----------------------------------
+\begin{bloquecuadro}\input{cuadros/cuadro7}\end{bloquecuadro}
+\vspace{6pt}\noindent\setlength{\altograf}{5.8cm}
+\grafico{10}{Cuenta corriente y capacidad o necesidad de financiación (\% del PIB)}{Eurostat (balanza de pagos del Banco de España; contabilidad nacional del INE).}{g10-cuenta-corriente}\hfill
+\grafico{11}{Posición de inversión internacional neta y deuda externa neta (\% del PIB)}{Eurostat (posición de inversión internacional del Banco de España).}{g11-piin}
 \clearpage
 
-% ---- Página 9: cuadro 7 y gráfico 12 ----------------------------------------------
-\begin{bloquecuadro}\input{cuadros/cuadro7}\end{bloquecuadro}
-\vspace{6pt}\noindent\setlength{\altograf}{5.0cm}
+% ---- Política monetaria y banca: cuadro 8; gráfico 12 -----------------------------
+\begin{bloquecuadro}\input{cuadros/cuadro8}\end{bloquecuadro}
+\vspace{8pt}\noindent\setlength{\altograf}{5.8cm}
 \grafico{12}{Tipos de interés (\%, datos mensuales)}{Banco Central Europeo (tipos oficiales, Euríbor y tipos de interés de las entidades de crédito) y Eurostat (rendimientos de la deuda pública a 10 años).}{g12-tipos}\hfill
-\begin{minipage}[t]{0.47\linewidth}\vspace{30pt}\centering
-\textbf{FIN DEL CUADERNILLO}
-\end{minipage}
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}\end{minipage}
+\clearpage
+
+% ---- Cuentas públicas: cuadro 9; gráficos 13 y 14 ---------------------------------
+\begin{bloquecuadro}\input{cuadros/cuadro9}\end{bloquecuadro}
+\vspace{8pt}\noindent\setlength{\altograf}{5.6cm}
+\grafico{13}{Brecha de producción y variación del saldo estructural primario}{Comisión Europea (AMECO, previsiones de primavera de 2026). Saldo estructural primario y brecha, en \% del PIB potencial; 2026 y 2027 (círculos huecos): previsión.}{g13-orientacion-fiscal}\hfill
+\grafico{14}{Deuda pública: tipo de interés implícito (i) y crecimiento del PIB nominal (g)}{Eurostat (cuentas de las administraciones públicas y contabilidad nacional). i: intereses del año entre la deuda del año anterior.}{g14-deuda-i-g}
+
+\vspace{14pt}
+\begin{center}\textbf{FIN DEL CUADERNILLO}\end{center}
 
 \end{document}

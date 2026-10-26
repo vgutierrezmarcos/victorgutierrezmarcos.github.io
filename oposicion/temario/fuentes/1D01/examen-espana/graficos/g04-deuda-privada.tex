@@ -1,0 +1,13 @@
+% Gráfico 4. Deuda consolidada de los hogares y de las empresas no financieras (% del PIB) y precio real de la vivienda (2007 = 100), 2007-2025.
+% Datos: ../datos/g04-deuda-privada-vivienda.csv (Eurostat tipspd22, tipspd30, tipsho10).
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g04-deuda-privada-vivienda.csv}\gCuatro
+\begin{tikzpicture}[tcee]
+  \begin{axis}[dicgraf,
+      xmin=2006.6, xmax=2025.4, xtick={2007,2009,...,2025},
+      ymin=20, ymax=130, ytick={20,40,...,120},
+      legend columns=2, dicapas]
+    \capa{1}{\addplot[diclinea=dicconspriv, leyendalinea] table[x=anio, y=deuda_hogares] {\gCuatro}; \addlegendentry{Deuda de los hogares (\% del PIB)}}
+    \capa{2}{\addplot[diclinea=dicfbcf, leyendalinea] table[x=anio, y=deuda_snf] {\gCuatro}; \addlegendentry{Deuda de las empresas no financieras (\% del PIB)}}
+    \capa{3}{\addplot[diclinea=dicvivienda, densely dashed, leyendalinea] table[x=anio, y=vivienda_real] {\gCuatro}; \addlegendentry{Precio real de la vivienda (2007 = 100)}}
+  \end{axis}
+\end{tikzpicture}

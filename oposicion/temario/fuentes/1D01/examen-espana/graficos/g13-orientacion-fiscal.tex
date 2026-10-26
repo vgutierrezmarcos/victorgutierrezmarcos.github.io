@@ -1,6 +1,6 @@
-% Gráfico 10. Brecha de producción y variación del saldo estructural primario de las AAPP (pp del PIB potencial), 2011-2027.
-% Datos: ../datos/g10-orientacion-fiscal.csv (Comisión Europea, AMECO: AVGDGP y UBLGBPS). Filas 15-16 (2026-2027): previsión, en hueco.
-\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g10-orientacion-fiscal.csv}\gOnce
+% Gráfico 13. Brecha de producción y variación del saldo estructural primario de las AAPP (pp del PIB potencial), 2011-2027.
+% Datos: ../datos/g13-orientacion-fiscal.csv (Comisión Europea, AMECO: AVGDGP y UBLGBPS). Filas 15-16 (2026-2027): previsión, en hueco.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g13-orientacion-fiscal.csv}\gOnce
 \begin{tikzpicture}[tcee]
   \begin{axis}[dicgraf,
       xmin=-10, xmax=4, xtick={-10,-8,...,4},

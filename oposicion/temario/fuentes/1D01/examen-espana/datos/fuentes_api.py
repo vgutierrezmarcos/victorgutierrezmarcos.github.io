@@ -1,13 +1,22 @@
 """Acceso a las API oficiales (Eurostat, AMECO de la Comisión, BCE) para el
 examen de ejemplo de España (1D01). Solo lectura; sin dependencias externas."""
-import json, re, urllib.request, urllib.parse, csv, io, functools, html
+import json, re, urllib.request, urllib.error, urllib.parse, csv, io, functools, html
 
 UA = {'User-Agent': 'Mozilla/5.0 (examen-espana 1D01)'}
 
-def _get(url, timeout=90):
-    req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read().decode('utf-8')
+def _get(url, timeout=90, intentos=5):
+    import time
+    for k in range(intentos):
+        try:
+            req = urllib.request.Request(url, headers=UA)
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read().decode('utf-8')
+        except urllib.error.HTTPError:
+            raise
+        except Exception:
+            if k == intentos - 1:
+                raise
+            time.sleep(10 * (k + 1))
 
 @functools.lru_cache(maxsize=None)
 def _eurostat_raw(ds, query):

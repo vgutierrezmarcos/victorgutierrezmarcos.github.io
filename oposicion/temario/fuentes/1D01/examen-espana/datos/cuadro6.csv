@@ -1,17 +1,14 @@
-# Cuadro 6. Cuentas públicas (España)
-# Eurostat: gov_10a_main y gov_10dd_edpt1 (notificación del procedimiento de déficit excesivo de octubre de 2026; actualizados el 2026-10-21T11:00:00+0200), irt_lt_mcby_a (rendimiento de convergencia). Saldos ajustados: Comisión Europea, AMECO (primavera de 2026). 
+# Cuadro 6. Competitividad precio y no precio (España)
+# Eurostat: ert_eff_ic_a (un aumento es una apreciación real), tipsex20, tipsex10, tipsex12 (hasta 2022), rd_e_gerdtot, nama_10_gdp.
 # Consulta: 2026-10-26. Valores sin redondear salvo los que la fuente da redondeados.
 id,indicador,unidad,fuente,dec,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027
-ing,Ingresos,% PIB,gov_10a_main TR,1,41.1,36.8,34.8,36.4,36.2,37.7,38.7,39,38.4,37.9,37.9,39,39,41.5,42.8,41.7,42.1,42.2,42.9,,
-gas,Gastos,% PIB,gov_10a_main TE; prev. AMECO UUTGE,1,39.2,41.3,46.1,45.8,45.9,49.2,46.2,45,43.7,42.1,41,41.5,42,51.4,49.5,46.3,45.5,45.4,45.3,45.8206,45.458
-int,"de los cuales, intereses",% PIB,gov_10a_main D41PAY; prev. AMECO UYIGE,1,1.6,1.6,1.7,1.9,2.5,3,3.6,3.5,3.1,2.8,2.5,2.4,2.3,2.2,2.1,2.3,2.4,2.4,2.4,2.4786,2.5439
-saldo,Saldo (capacidad o necesidad de financiación),% PIB,gov_10a_main B9; prev. AMECO UBLGE,1,1.9,-4.6,-11.2,-9.5,-9.7,-11.5,-7.5,-6,-5.3,-4.2,-3.1,-2.6,-3.1,-9.9,-6.7,-4.6,-3.3,-3.2,-2.4,-2.4184,-2.0209
-prim,Saldo primario,% PIB,B9 + D41PAY; prev. AMECO UBLGE + UYIGE,1,3.5,-3,-9.5,-7.6,-7.2,-8.5,-3.9,-2.5,-2.2,-1.4,-0.6,-0.2,-0.8,-7.7,-4.6,-2.3,-0.9,-0.8,0,0.0602,0.523
-cicl,Saldo ajustado de ciclo,% PIB pot.,AMECO UBLGAP,1,-0.0837,-5.2023,-8.8947,-6.4667,-5.935,-6.2882,-1.7784,-1.2143,-2.5946,-3.0635,-3.2882,-3.7855,-4.8929,-4.8463,-4.6621,-5.1069,-3.9202,-4.338,-3.5915,-3.4616,-2.7316
-estr,Saldo estructural,% PIB pot.,AMECO UBLGAPS,1,,,,-6.4667,-5.6962,-3.2921,-1.3386,-0.7014,-2.1152,-3.0237,-3.0892,-3.3542,-4.476,-4.3121,-4.5747,-5.1069,-3.8348,-3.4659,-3.152,-2.8791,-2.532
-estr_p,Saldo estructural primario,% PIB pot.,AMECO UBLGBPS,1,,,,-4.5693,-3.2107,-0.2657,2.2253,2.8316,0.9542,-0.243,-0.5582,-0.9131,-2.2242,-2.0869,-2.4565,-2.7974,-1.4612,-1.0328,-0.7625,-0.4005,0.0119
-deuda,Deuda pública (definición del PDE),% PIB,gov_10dd_edpt1 GD; prev. AMECO UDGG,1,35.7,39.6,53.1,60.3,69.5,89.6,100,104.4,102.5,102,101.2,99.8,97.7,119.3,115.7,109.3,105.3,101.4,100.5,99.6087,98.8985
-impl,Tipo de interés implícito de la deuda (intereses / deuda del año anterior),%,D41PAY MIO_EUR / GD MIO_EUR (t-1),1,4.3376,4.5604,4.1657,3.5884,4.0918,4.2195,3.9397,3.5783,3.0749,2.8027,2.5848,2.4991,2.3336,2.0522,1.943,2.223,2.3636,2.4694,2.4949,,
-pibn,PIB nominal,%,nama_10_gdp B1GQ CP_MEUR; prev. AMECO UVGD,1,7.2206,3.238,-3.5456,0.3872,-0.7849,-3.0623,-0.9954,1.2964,4.6357,3.2982,4.1904,3.6112,3.4179,-9.9302,9.4101,11.3632,8.7519,6.8377,5.719,5.0799,4.5458
-rend,Rendimiento de la deuda pública a 10 años (media anual),%,irt_lt_mcby_a MCBY ES,2,4.31,4.37,3.98,4.25,5.44,5.85,4.56,2.72,1.73,1.39,1.56,1.42,0.66,0.38,0.35,2.18,3.48,3.15,3.2138,,
-dif,Diferencial frente al bono alemán a 10 años (pb),pb,irt_lt_mcby_a ES - DE,0,9,39,76,151,283,435,299,156,123,130,124,102,91,89,72,104,105,83,62.175,,
+tcer_ipc,"Tipo de cambio efectivo real, IPC, 42 socios (2020 = 100)",índice,ert_eff_ic_a REER_IC42_CPI I20,1,102.4715,105.0653,105.5679,102.2463,102.4742,100.0019,101.9275,101.4934,96.9186,97.6123,99.0533,101.0447,99.3426,100,100.5554,98.6639,99.0006,99.5325,100.7097,,
+tcer_clu,"Tipo de cambio efectivo real, CLU, frente a la zona del euro (2020 = 100)",índice,ert_eff_ic_a REER_EA20_ULCT I20,1,109.1865,111.8667,108.3711,108.1568,105.5634,100.6424,98.3153,97.5238,97.2675,95.4036,95.0065,94.3549,96.4373,100,101.0105,99.7818,99.0896,98.0013,98.8805,,
+cuota,Cuota en las exportaciones mundiales de bienes y servicios,%,tipsex20 GS,1,2.2,2.1,2.2,2,2,1.8,1.9,1.9,1.9,2,2,2,2,1.8,1.8,1.8,2,2,2,,
+cuota_g,Cuota en las exportaciones mundiales de bienes,%,tipsex20 G,1,1.9,1.8,1.9,1.7,1.7,1.6,1.7,1.7,1.7,1.8,1.8,1.8,1.8,1.8,1.7,1.7,1.8,1.8,1.8,,
+cuota_s,Cuota en las exportaciones mundiales de servicios,%,tipsex20 S,1,3.5,3.4,3.3,3,3,2.8,2.7,2.7,2.4,2.5,2.6,2.5,2.5,1.7,1.9,2.2,2.4,2.5,2.7,,
+cuota_5a,Cuota de exportación: variación en 5 años,%,tipsex10 GS WRL_REST,1,-6.7,-4.3,2.3,-11.8,-8.2,-15.7,-3.1,-1.6,3.2,4.9,4.6,4.7,-1.7,-12.7,-11.5,-7.4,12.3,12.4,10.7,,
+htec,Exportaciones de alta tecnología (% de las exportaciones),%,tipsex12,1,4.24,4.16,4.78,4.75,4.81,4.98,5.44,5.16,5.46,5.85,5.74,5.5,5.84,6.05,7.13,8.46,,,,,
+id,Gasto en I+D (% del PIB),%,rd_e_gerdtot TOTAL PC_GDP ES,2,1.24,1.32,1.36,1.35,1.33,1.29,1.27,1.23,1.21,1.18,1.2,1.23,1.24,1.4,1.4,1.4,1.49,1.5,,,
+id_ue,"Ídem, Unión Europea",%,rd_e_gerdtot TOTAL PC_GDP EU27_2020,2,1.79,1.87,1.96,1.96,2,2.06,2.08,2.09,2.1,2.1,2.14,2.17,2.21,2.28,2.24,2.22,2.25,2.26,,,
+apert,Grado de apertura ((X + M) / PIB),% PIB,nama_10_gdp P6+P7 / B1GQ CP_MEUR,1,57.6269,55.8281,46.8367,52.6934,58.5118,60.554,61.6688,63.3993,63.582,63.1887,66.1674,67.0094,66.3662,59.4461,66.5246,78.4657,71.8626,70.1329,69.1045,,

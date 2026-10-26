@@ -1,6 +1,6 @@
-% Gráfico 4. IPCA general y subyacente, España y zona del euro (tasa interanual, %), enero 2019-septiembre 2026.
-% Datos: ../datos/g04-ipca-mensual.csv (Eurostat prc_hicp_minr). x: n.º de mes desde enero de 2019.
-\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g04-ipca-mensual.csv}\gCuatro
+% Gráfico 6. IPCA general y subyacente, España y zona del euro (tasa interanual, %), enero 2019-septiembre 2026.
+% Datos: ../datos/g06-ipca-mensual.csv (Eurostat prc_hicp_minr). x: n.º de mes desde enero de 2019.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g06-ipca-mensual.csv}\gCuatro
 \begin{tikzpicture}[tcee]
   \begin{axis}[dicgraf,
       xmin=-1, xmax=93, xtick={0,12,...,84}, minor xtick={6,18,...,90},

@@ -1,6 +1,6 @@
-% Gráfico 5. Precio del petróleo Brent (media mensual), dólares y euros por barril, enero 2019-septiembre 2026.
-% Datos: ../datos/g05-brent.csv (EIA, RBRTE; euros con el tipo de referencia del BCE). Fila 168 = enero de 2019.
-\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g05-brent.csv}\gCinco
+% Gráfico 7. Precio del petróleo Brent (media mensual), dólares y euros por barril, enero 2019-septiembre 2026.
+% Datos: ../datos/g07-brent.csv (EIA, RBRTE; euros con el tipo de referencia del BCE). Fila 168 = enero de 2019.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{datos/g07-brent.csv}\gCinco
 \begin{tikzpicture}[tcee]
   \begin{axis}[dicgraf,
       xmin=-1, xmax=93, xtick={0,12,...,84}, minor xtick={6,18,...,90},

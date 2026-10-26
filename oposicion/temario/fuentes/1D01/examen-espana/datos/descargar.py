@@ -57,6 +57,15 @@ def fila(id_, etiqueta, unidad, fuente, hist=None, prev=None, dec=1):
     return {'id': id_, 'indicador': etiqueta, 'unidad': unidad, 'fuente': fuente, 'dec': dec, **vals}
 
 
+FILAS = {}
+
+
+def guardar(titulo, filas, notas):
+    """Guarda las filas por su id; ensamblar() las reparte en los cuadros del examen."""
+    for r in filas:
+        FILAS[r['id']] = r
+
+
 def escribir_cuadro(nombre, titulo, filas, notas):
     ruta = os.path.join(AQUI, nombre)
     with open(ruta, 'w', newline='', encoding='utf-8') as f:
@@ -124,7 +133,7 @@ def cuadro1():
         d = cint[a] + cext[a] - g('B1GQ')[a]
         if abs(d) > 0.15:
             print('  aviso contribuciones', a, round(d, 2))
-    escribir_cuadro('cuadro1.csv', 'Cuadro 1. Demanda agregada y actividad (España)', filas, [
+    guardar( 'Cuadro 1. Demanda agregada y actividad (España)', filas, [
         'Eurostat (nama_10_gdp, nama_10_an6, nama_10_pe), actualizados el %s; contabilidad nacional del INE (SEC 2010).'
         % ACTUALIZ.get('nama_10_gdp'),
         'Previsiones 2026-2027 y PIB potencial/brecha: Comisión Europea, AMECO (previsiones de primavera de 2026). '
@@ -145,7 +154,7 @@ def cuadro2():
         fila('vab_mn', 'Actividades profesionales y administrativas', '%', 'nama_10_a10 B1G M_N', a10('M_N')),
         fila('vab_oq', 'Administración pública, educación y sanidad', '%', 'nama_10_a10 B1G O-Q', a10('O-Q')),
     ]
-    escribir_cuadro('cuadro2.csv', 'Cuadro 2. Oferta: valor añadido bruto real por ramas (España)', filas, [
+    guardar( 'Cuadro 2. Oferta: valor añadido bruto real por ramas (España)', filas, [
         'Eurostat nama_10_a10 (CLV_PCH_PRE), actualizado el %s.' % ACTUALIZ.get('nama_10_a10')])
     # Descomposición del PIB por habitante y por persona en edad de trabajar (tasas medias anuales, log)
     pib = es('nama_10_gdp', geo='ES', unit='CLV10_MEUR', na_item='B1GQ')
@@ -232,7 +241,7 @@ def cuadro3():
         fila('dep', 'Tasa de dependencia de los mayores (65+ sobre 15-64, %)', '%', 'demo_pjanind OLDDEP1',
              es('demo_pjanind', geo='ES', indic_de='OLDDEP1')),
     ]
-    escribir_cuadro('cuadro3.csv', 'Cuadro 3. Mercado de trabajo, costes y demografía (España)', filas, [
+    guardar( 'Cuadro 3. Mercado de trabajo, costes y demografía (España)', filas, [
         'Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc (contabilidad nacional); lfsa_* y une_* (encuesta de población activa); '
         'jvs_q_r21 (vacantes, NACE Rev. 2.1); migr_pop1ctz y demo_pjanind (población a 1 de enero). Previsiones: AMECO.'])
 
@@ -255,7 +264,7 @@ def cuadro4():
         fila('viv', 'Precio de la vivienda (nominal)', '%', 'prc_hpi_a TOTAL RCH_A_AVG', es('prc_hpi_a', geo='ES', purchase='TOTAL', unit='RCH_A_AVG')),
         fila('viv_r', 'Precio de la vivienda deflactado (real)', '%', 'tipsho10 RCH_A_AVG', es('tipsho10', geo='ES', unit='RCH_A_AVG')),
     ]
-    escribir_cuadro('cuadro4.csv', 'Cuadro 4. Precios (España y zona del euro)', filas, [
+    guardar( 'Cuadro 4. Precios (España y zona del euro)', filas, [
         'Eurostat: prc_hicp_aind (IPCA, ECOICOP ver. 1, medias anuales; actualizado el %s), nama_10_gdp (deflactores), '
         'prc_hpi_a y tipsho10 (precios de la vivienda). Previsión del IPCA: AMECO ZCPIH.' % ACTUALIZ.get('prc_hicp_aind')])
 
@@ -299,7 +308,7 @@ def cuadro5():
         fila('cuota', 'Cuota en las exportaciones mundiales de bienes y servicios', '%', 'tipsex20 GS', es('tipsex20', geo='ES', bop_item='GS')),
         fila('apert', 'Grado de apertura ((X + M) / PIB)', '% PIB', 'nama_10_gdp P6+P7 / B1GQ CP_MEUR', apert),
     ]
-    escribir_cuadro('cuadro5.csv', 'Cuadro 5. Sector exterior (España)', filas, [
+    guardar( 'Cuadro 5. Sector exterior (España)', filas, [
         'Eurostat: bop_c6_a (balanza de pagos MBP6, millones de euros; actualizado el %s; aquí en %% del PIB nominal de nama_10_gdp), '
         'bop_gdp6_q, tipsii10 (cuadro de indicadores del procedimiento de desequilibrios), ert_eff_ic_a (un aumento del índice es una '
         'apreciación real), tipsex20, nama_10_gdp. Elaboradas por el Banco de España.' % ACTUALIZ.get('bop_c6_a'),
@@ -336,7 +345,7 @@ def cuadro6():
         fila('rend', 'Rendimiento de la deuda pública a 10 años (media anual)', '%', 'irt_lt_mcby_a MCBY ES', rend, dec=2),
         fila('dif', 'Diferencial frente al bono alemán a 10 años (pb)', 'pb', 'irt_lt_mcby_a ES - DE', dif, dec=0),
     ]
-    escribir_cuadro('cuadro6.csv', 'Cuadro 6. Cuentas públicas (España)', filas, [
+    guardar( 'Cuadro 6. Cuentas públicas (España)', filas, [
         'Eurostat: gov_10a_main y gov_10dd_edpt1 (notificación del procedimiento de déficit excesivo de octubre de 2026; actualizados el %s), '
         'irt_lt_mcby_a (rendimiento de convergencia). Saldos ajustados: Comisión Europea, AMECO (primavera de 2026). '
         % ACTUALIZ.get('gov_10a_main')])
@@ -397,10 +406,103 @@ def cuadro7():
         fila('roe', 'Bancos: rentabilidad sobre recursos propios (ROE)', '%', 'BCE CBD2 I2003 ES', cbd('ES', 'I2003')),
         fila('roe_ue', 'Ídem, media de la UE', '%', 'BCE CBD2 I2003 B0', cbd('B0', 'I2003')),
     ]
-    escribir_cuadro('cuadro7.csv', 'Cuadro 7. Política monetaria, crédito y sistema bancario', filas, [
+    guardar( 'Cuadro 7. Política monetaria, crédito y sistema bancario', filas, [
         'BCE, portal de datos (data-api.ecb.europa.eu): tipos oficiales (FM), tipos de interés de las IFM (MIR), balance de las IFM (BSI) y '
         'datos bancarios consolidados (CBD2, grupos bancarios nacionales y bancos independientes; datos de 2014 en adelante para CET1 y dudosos; '
         'ROE desde 2008 en España). Eurostat tipspd22 y tipspd30 (cuadro de indicadores del procedimiento de desequilibrios).'])
+
+
+# ---------------------------------------------------------------- Filas añadidas (examen completo)
+def filas_nuevas():
+    pib = es('nama_10_gdp', geo='ES', unit='CP_MEUR', na_item='B1GQ')
+    ki = lambda item, sector: es('nasa_10_ki', geo='ES', na_item=item, sector=sector, unit='PC')
+    fbc = es('nama_10_gdp', geo='ES', unit='PC_GDP', na_item='P5G')
+    try:
+        b8g = es('nasa_10_nf_tr', geo='ES', unit='CP_MEUR', na_item='B8G', sector='S1', direct='PAID')
+    except Exception:
+        b8g = {}
+    ahorro_nac = {a: 100 * b8g[a] / pib[a] for a in b8g if a in pib}
+    ahorro_hog = ki('SRG_S14_S15', 'S14_S15')
+    try:
+        rdb = es('nasa_10_ki', geo='ES', na_item='B7G_R_HAB_GR', sector='S14_S15', unit='PC')
+    except Exception:
+        rdb = {}
+    nuevas = [
+        fila('ahorro_hog', 'Tasa de ahorro de los hogares (% de la renta disponible bruta)', '%', 'nasa_10_ki SRG_S14_S15', ahorro_hog),
+        fila('rdb', 'Renta disponible bruta real ajustada por habitante (variación)', '%', 'nasa_10_ki B7G_R_HAB_GR', rdb),
+        fila('inv_hog', 'Tasa de inversión de los hogares (% de la renta disponible)', '%', 'nasa_10_ki IRG_S14_S15', ki('IRG_S14_S15', 'S14_S15')),
+        fila('inv_snf', 'Tasa de inversión de las empresas no financieras (% del VAB)', '%', 'nasa_10_ki IRG_S11', ki('IRG_S11', 'S11')),
+        fila('ben_snf', 'Participación de los beneficios de las empresas (% del VAB)', '%', 'nasa_10_ki B2G_B3G_RAT_S11', ki('B2G_B3G_RAT_S11', 'S11')),
+        fila('fbc', 'Formación bruta de capital (% del PIB)', '%', 'nama_10_gdp P5G PC_GDP', fbc),
+        fila('ahorro_nac', 'Ahorro nacional bruto (% del PIB)', '%', 'nasa_10_nf_tr B8G S1 / nama_10_gdp B1GQ', ahorro_nac),
+        fila('flujo_cred', 'Flujo de crédito al sector privado (% del PIB)', '%', 'tipspc10 PC_GDP', es('tipspc10', geo='ES', unit='PC_GDP')),
+        fila('viv', 'Precio de la vivienda (variación)', '%', 'prc_hpi_a TOTAL RCH_A_AVG', es('prc_hpi_a', geo='ES', purchase='TOTAL', unit='RCH_A_AVG')),
+        fila('viv_r', 'Precio de la vivienda deflactado (variación)', '%', 'tipsho10 RCH_A_AVG', es('tipsho10', geo='ES', unit='RCH_A_AVG')),
+        fila('cuota_g', 'Cuota en las exportaciones mundiales de bienes', '%', 'tipsex20 G', es('tipsex20', geo='ES', bop_item='G')),
+        fila('cuota_s', 'Cuota en las exportaciones mundiales de servicios', '%', 'tipsex20 S', es('tipsex20', geo='ES', bop_item='S')),
+        fila('cuota_5a', 'Cuota de exportación: variación en 5 años', '%', 'tipsex10 GS WRL_REST', es('tipsex10', geo='ES', bop_item='GS', partner='WRL_REST')),
+        fila('htec', 'Exportaciones de alta tecnología (% de las exportaciones)', '%', 'tipsex12', es('tipsex12', geo='ES')),
+        fila('id', 'Gasto en I+D (% del PIB)', '%', 'rd_e_gerdtot TOTAL PC_GDP ES', es('rd_e_gerdtot', geo='ES', sectperf='TOTAL', unit='PC_GDP'), dec=2),
+        fila('id_ue', 'Ídem, Unión Europea', '%', 'rd_e_gerdtot TOTAL PC_GDP EU27_2020', es('rd_e_gerdtot', geo='EU27_2020', sectperf='TOTAL', unit='PC_GDP'), dec=2),
+    ]
+    # Activo del Eurosistema en % del PIB nominal de la zona del euro (última semana del año)
+    ilm, _ = ecb('ILM.W.U2.C.T000000.Z5.Z01', '2006-01')
+    pib_ze = es('nama_10_gdp', geo='EA20', unit='CP_MEUR', na_item='B1GQ')
+    act = {}
+    for a in ANIOS:
+        ks = sorted(k for k in ilm if k.startswith(a + '-W'))
+        if ks and a in pib_ze:
+            act[a] = 100 * ilm[ks[-1]] / pib_ze[a]
+    cbd = lambda area, it: ecb(f'CBD2.A.{area}.W0.11._Z._Z.A.A.{it}._Z._Z._Z._Z._Z._Z.PC', '2006')[0]
+    nuevas += [
+        fila('eurosis', 'Activo del Eurosistema (% del PIB de la zona del euro, fin de año)', '%', 'BCE ILM.W.U2.C.T000000.Z5.Z01 / nama_10_gdp EA20', act),
+        fila('roa', 'Bancos: rentabilidad del activo (ROA)', '%', 'BCE CBD2 I2004 ES', cbd('ES', 'I2004'), dec=2),
+        fila('roa_ue', 'Ídem, media de la UE', '%', 'BCE CBD2 I2004 B0', cbd('B0', 'I2004'), dec=2),
+    ]
+    for r in nuevas:
+        FILAS[r['id']] = r
+
+
+ESTRUCTURA = [
+    ('cuadro1.csv', 'Cuadro 1. Demanda agregada y actividad (España)',
+     ['pib', 'cpriv', 'cpub', 'fbcf', 'fbcf_viv', 'fbcf_otc', 'fbcf_maq', 'fbcf_pi', 'x', 'm', 'c_int', 'c_exist', 'c_ext',
+      'pib_pc', 'pib_nom', 'pot', 'brecha'],
+     'Eurostat (nama_10_gdp, nama_10_an6, nama_10_pe; contabilidad nacional del INE). PIB potencial, brecha y previsiones 2026-2027: '
+     'Comisión Europea, AMECO (primavera de 2026), anterior a la última revisión de la contabilidad nacional (PIB de 2025: +2,8 % en AMECO, +2,6 % en Eurostat).'),
+    ('cuadro2.csv', 'Cuadro 2. Oferta: valor añadido bruto real por ramas (España)',
+     ['vab', 'vab_a', 'vab_be', 'vab_c', 'vab_f', 'vab_gi', 'vab_j', 'vab_mn', 'vab_oq'], 'Eurostat nama_10_a10 (CLV_PCH_PRE).'),
+    ('cuadro3.csv', 'Cuadro 3. Mercado de trabajo, productividad, costes y demografía (España)',
+     ['emp', 'horas', 'act', 'templeo', 'paro', 'paro_ze', 'paro_juv', 'paro_ld', 'temp', 'vac', 'prod_oc', 'prod_h', 'rem', 'clu', 'clu_ze',
+      'pob', 'extr', 'dep'],
+     'Eurostat: nama_10_pe, nama_10_a10_e, nama_10_gdp, nama_10_lp_ulc; lfsa_*, une_*; jvs_q_r21; migr_pop1ctz, demo_pjanind. Previsiones: AMECO.'),
+    ('cuadro4.csv', 'Cuadro 4. Ahorro, inversión y financiación del sector privado (España)',
+     ['ahorro_hog', 'rdb', 'inv_hog', 'inv_snf', 'ben_snf', 'fbc', 'ahorro_nac', 'flujo_cred', 'phog', 'psnf', 'hip', 'hip_ze', 'snf_t',
+      'dhog', 'dsnf', 'viv', 'viv_r'],
+     'Eurostat: nasa_10_ki (cuentas de los sectores), nasa_10_nf_tr, nama_10_gdp, tipspc10, tipspd22, tipspd30, prc_hpi_a, tipsho10. '
+     'BCE: BSI (préstamos de las IFM) y MIR (tipos de las operaciones nuevas, media anual).'),
+    ('cuadro5.csv', 'Cuadro 5. Precios (España y zona del euro)',
+     ['ipca', 'ipca_sub', 'ipca_nrg', 'ipca_food', 'ipca_ze', 'ipca_ze_sub', 'def_pib', 'def_c', 'def_x', 'def_m'],
+     'Eurostat: prc_hicp_aind (IPCA, ECOICOP ver. 1), nama_10_gdp (deflactores). Previsión del IPCA: AMECO ZCPIH.'),
+    ('cuadro6.csv', 'Cuadro 6. Competitividad precio y no precio (España)',
+     ['tcer_ipc', 'tcer_clu', 'cuota', 'cuota_g', 'cuota_s', 'cuota_5a', 'htec', 'id', 'id_ue', 'apert'],
+     'Eurostat: ert_eff_ic_a (un aumento es una apreciación real), tipsex20, tipsex10, tipsex12 (hasta 2022), rd_e_gerdtot, nama_10_gdp.'),
+    ('cuadro7.csv', 'Cuadro 7. Sector exterior (España)',
+     ['cc', 'bie', 'ser', 'tur', 'rp', 'rs', 'kap', 'cnf', 'fa', 'fa_d', 'fa_p', 'fa_f', 'fa_o', 'fa_o_bde', 'fa_r', 'eo', 'piin', 'piin_nendi', 'den'],
+     'Eurostat: bop_c6_a (balanza de pagos MBP6 del Banco de España, en % del PIB de nama_10_gdp), bop_gdp6_q, tipsii10. Previsión: AMECO UBCA. '
+     'Cuenta financiera: variación neta de activos menos variación neta de pasivos (+ = salida neta de capital).'),
+    ('cuadro8.csv', 'Cuadro 8. Política monetaria y sistema bancario',
+     ['dfr', 'mro', 'eur12', 'm3', 'eurosis', 'cet1', 'cet1_ue', 'solv', 'npl', 'npl_ue', 'roe', 'roe_ue', 'roa', 'roa_ue'],
+     'BCE: tipos oficiales (FM), Euríbor, M3 (BSI), estado financiero del Eurosistema (ILM) y datos bancarios consolidados (CBD2: CET1 y dudosos '
+     'desde 2014; ROE y ROA de España desde 2008). Eurostat nama_10_gdp (PIB de la zona del euro).'),
+    ('cuadro9.csv', 'Cuadro 9. Cuentas públicas (España)',
+     ['ing', 'gas', 'int', 'saldo', 'prim', 'cicl', 'estr', 'estr_p', 'deuda', 'impl', 'pibn', 'rend', 'dif'],
+     'Eurostat: gov_10a_main, gov_10dd_edpt1 (notificación de octubre de 2026), irt_lt_mcby_a. Saldos ajustados y previsiones: AMECO (primavera de 2026).'),
+]
+
+
+def ensamblar():
+    for nombre, titulo, ids, nota in ESTRUCTURA:
+        escribir_cuadro(nombre, titulo, [FILAS[i] for i in ids], [nota])
 
 
 # ---------------------------------------------------------------- Gráficos
@@ -456,7 +558,7 @@ def graficos():
             if c in k and geo in k:
                 return v
     filas = [[mm, g('TOTAL', 'ES').get(mm), g('TOT_X_NRG_FOOD', 'ES').get(mm), g('TOTAL', 'EA').get(mm), g('TOT_X_NRG_FOOD', 'EA').get(mm)] for mm in meses]
-    escribir_serie('g04-ipca-mensual.csv', [
+    escribir_serie('g06-ipca-mensual.csv', [
         'IPCA, tasa de variación interanual (%), general y sin energía ni alimentos, alcohol y tabaco; España y zona del euro.',
         'Eurostat prc_hicp_minr (ECOICOP ver. 2), unit=RCH_A, coicop18=TOTAL y TOT_X_NRG_FOOD, geo=ES y EA; actualizado el %s.' % upd],
         ['mes', 'ipca_es', 'sub_es', 'ipca_ze', 'sub_ze'], filas)
@@ -479,7 +581,7 @@ def graficos():
         return {k: 100 * v[k] / pib[k] for k in v if k in pib}
     G, S, SD, I1, I2, CA, CKA = (bop(i) for i in ['G', 'S', 'SD', 'IN1', 'IN2', 'CA', 'CKA'])
     filas = [[k, G[k], SD[k], S[k] - SD[k], I1[k] + I2[k], CA[k], CKA[k]] for k in ANIOS]
-    escribir_serie('g06-cuenta-corriente.csv', [
+    escribir_serie('g10-cuenta-corriente.csv', [
         'Cuenta corriente de España por componentes y capacidad/necesidad de financiación (% del PIB).',
         'Eurostat bop_c6_a (MIO_EUR, BAL, sector S1) dividido por nama_10_gdp B1GQ CP_MEUR. rentas = IN1 + IN2; resto_servicios = S - SD.'],
         ['anio', 'bienes', 'turismo', 'resto_servicios', 'rentas', 'cc', 'cnf'], filas)
@@ -490,7 +592,7 @@ def graficos():
     nendi = [v for k, v in o.items() if 'FA__NENDI' in k][0]
     fned = [v for k, v in o.items() if 'FA__FNED' in k][0]
     filas = [[k, piin.get(k), nendi.get(k), -fned[k] if k in fned else None] for k in ANIOS]
-    escribir_serie('g07-piin.csv', [
+    escribir_serie('g11-piin.csv', [
         'Posición de inversión internacional neta, PIIN sin instrumentos que no generan impago (NENDI) y deuda externa neta con signo cambiado (% del PIB).',
         'Eurostat tipsii10 (PC_GDP) y bop_gdp6_q (FA__NENDI N_LE; FA__FNED NE_LE, que aquí se cambia de signo: negativo = deudor neto).'],
         ['anio', 'piin', 'piin_nendi', 'menos_deuda_ext_neta'], filas)
@@ -500,7 +602,8 @@ def graficos():
     def comext(partner):
         url = ('https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=EN'
                f'&reporter=ES&partner={partner}&product=TOTAL&flow=2&freq=M&indicators=VALUE_IN_EUROS&sinceTimePeriod=2022-01')
-        d = json.loads(urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'}), timeout=120).read())
+        from fuentes_api import _get
+        d = json.loads(_get(url, timeout=120))
         t = d['dimension']['time']['category']['index']
         inv = {v: k for k, v in t.items()}
         return {inv[int(k)]: v for k, v in d['value'].items()}, d.get('updated')
@@ -548,7 +651,7 @@ def graficos():
     br = am('1.0.0.0.AVGDGP')
     sp = am('1.0.319.0.UBLGBPS')
     filas = [[k, br[k], sp[k], sp[k] - sp[str(int(k) - 1)]] for k in TODOS if k in br and str(int(k) - 1) in sp]
-    escribir_serie('g10-orientacion-fiscal.csv', [
+    escribir_serie('g13-orientacion-fiscal.csv', [
         'Brecha de producción (% del PIB potencial) y saldo estructural primario de las AAPP (% del PIB potencial) y su variación (pp), 2007-2027 (2026-2027, previsión).',
         'Comisión Europea, AMECO: AVGDGP, UBLGBPS (previsiones de primavera de 2026).'],
         ['anio', 'brecha', 'saldo_estr_prim', 'var_saldo_estr_prim'], filas)
@@ -563,7 +666,7 @@ def graficos():
         km = str(int(k) - 1)
         i = 100 * d41[k] / gd[km]
         filas.append([k, gdp[k], i, pibn[k], i - pibn[k]])
-    escribir_serie('g11-deuda-i-g.csv', [
+    escribir_serie('g14-deuda-i-g.csv', [
         'Deuda pública (% del PIB), tipo de interés implícito (intereses del año / deuda del año anterior, %), crecimiento del PIB nominal (%) y diferencial i - g (pp).',
         'Eurostat gov_10dd_edpt1 (GD, MIO_EUR y PC_GDP), gov_10a_main (D41PAY, MIO_EUR), nama_10_gdp (B1GQ, CP_MEUR).'],
         ['anio', 'deuda', 'i_implicito', 'g_nominal', 'i_menos_g'], filas)
@@ -573,14 +676,24 @@ def graficos():
     ds = es('tipspd30', geo='ES', unit='PC_GDP')
     hp = es('tipsho10', geo='ES', unit='I15_A_AVG')
     filas = [[k, dh.get(k), ds.get(k), 100 * hp[k] / hp['2007'] if k in hp else None] for k in ANIOS]
-    escribir_serie('extra-deuda-privada-vivienda.csv', [
+    escribir_serie('g04-deuda-privada-vivienda.csv', [
         'Deuda consolidada de los hogares (con ISFLSH) y de las sociedades no financieras (% del PIB) y precio real de la vivienda (índice 2007 = 100).',
         'Eurostat tipspd22, tipspd30 (PC_GDP) y tipsho10 (precio de la vivienda deflactado, I15_A_AVG rebasado a 2007).'],
         ['anio', 'deuda_hogares', 'deuda_snf', 'vivienda_real'], filas)
 
+    # G5: renta disponible real, consumo y tasa de ahorro de los hogares
+    sr = es('nasa_10_ki', geo='ES', na_item='SRG_S14_S15', sector='S14_S15', unit='PC')
+    rd = es('nasa_10_ki', geo='ES', na_item='B7G_R_HAB_GR', sector='S14_S15', unit='PC')
+    cp = es('nama_10_gdp', geo='ES', unit='CLV_PCH_PRE', na_item='P31_S14_S15')
+    escribir_serie('g05-ahorro-hogares.csv', [
+        'Hogares (con ISFLSH): tasa de ahorro bruto (% de la renta disponible bruta), variación de la renta disponible bruta real ajustada por habitante (%) '
+        'y del consumo privado en volumen (%).',
+        'Eurostat nasa_10_ki (SRG_S14_S15, unit=PC; B7G_R_HAB_GR, unit=PC) y nama_10_gdp (P31_S14_S15, CLV_PCH_PRE).'],
+        ['anio', 'tasa_ahorro', 'renta_real_hab', 'consumo_real'], [[k, sr.get(k), rd.get(k), cp.get(k)] for k in ANIOS])
+
 
 if __name__ == '__main__':
-    cuadro1(); cuadro2(); cuadro3(); cuadro4(); cuadro5(); cuadro6(); cuadro7(); graficos()
+    cuadro1(); cuadro2(); cuadro3(); cuadro4(); cuadro5(); cuadro6(); cuadro7(); filas_nuevas(); ensamblar(); graficos()
     with open(os.path.join(AQUI, 'actualizaciones.txt'), 'w', encoding='utf-8') as f:
         f.write(f'# Fecha de actualización de cada fuente según su API (consulta {HOY})\n')
         for k, v in sorted(ACTUALIZ.items()):
