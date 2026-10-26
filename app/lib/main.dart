@@ -22,6 +22,7 @@ import 'core/providers.dart';
 import 'core/push_proceso.dart';
 import 'features/inicio/elegir_oposicion.dart';
 import 'theme/app_theme.dart';
+import 'widgets/arranque.dart';
 import 'data/models/oposicion.dart';
 import 'data/models/preparador.dart';
 import 'data/repos/contenido_repo.dart';
@@ -152,6 +153,10 @@ class _RaizAppState extends State<RaizApp> {
   bool _buscandoEnCuenta = false;
   StreamSubscription<User?>? _sesion;
 
+  /// La diana del arranque, encima hasta que hay algo que enseñar (en el
+  /// navegador ya está la pantalla de carga de web/index.html).
+  bool _arranqueVisto = kIsWeb;
+
   @override
   void initState() {
     super.initState();
@@ -200,6 +205,22 @@ class _RaizAppState extends State<RaizApp> {
 
   @override
   Widget build(BuildContext context) {
+    final contenido = _contenido();
+    // Siempre en el mismo Stack: al quitar la diana no se reconstruye la app.
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Stack(fit: StackFit.expand, children: [
+        contenido,
+        if (!_arranqueVisto)
+          Arranque(
+            listo: contenido is! SizedBox,
+            alTerminar: () => setState(() => _arranqueVisto = true),
+          ),
+      ]),
+    );
+  }
+
+  Widget _contenido() {
     final servicios = _servicios;
     if (servicios == null) {
       return !_buscandoEnCuenta && ((Oposiciones.variasDisponibles && widget.elegida == null) || _bienvenida)
