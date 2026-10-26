@@ -112,7 +112,8 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [x] Cumplidos los 14 días: Play Console → Panel → **Solicitar acceso a producción**, con el borrador del registro. — **22 oct.: pedido; aprobado el 26 oct.**
 - [x] Aprobado el acceso: subir la última versión a **Producción** y, publicada, `urlPlayStore` en `oposicion/app-config.json` (la web y la app pasan a enlazar a Play). — **26 oct.: 1.19.2 (57) en producción al 100 %; `urlPlayStore` y `versionActual` puestos.**
 - [ ] Unas semanas después (mediados de noviembre): `urlApk: null` en `oposicion/app-config.json` y quitar el APK de `app-latest`.
-- [ ] Subir la 1.20.2 (60) a la prueba cerrada y, tras uno o dos días, promocionarla a producción; entonces, su novedad desde `app/play-store/novedades-pendientes.md` y `versionActual: "1.20.2"`.
+- [ ] Subir la 1.20.3 (61) a la prueba cerrada y, tras uno o dos días, promocionarla a producción; entonces, su novedad desde `app/play-store/novedades-pendientes.md` y `versionActual: "1.20.3"`. Con ella, quien tenga el APK ve «La app ya está en Google Play → Ir a Google Play» (y mientras, con la 1.18.1 del APK, el aviso de la 1.19.2 ya les lleva a la ficha de Play).
+- [ ] Víctor, en GA4 (propiedad de la app → Administrar → Definiciones personalizadas → Dimensiones personalizadas → Crear, ámbito Usuario, propiedad `instalacion`): registrar la propiedad `instalacion` (play/apk/web, desde la 1.20.3) para que `scripts/estadisticas-app.py` y el informe mensual la saquen.
 - [ ] Víctor: el post de LinkedIn de la salida en Play (sin cifras: «varios preparadores y opositores»).
 
 **Versión 1.15.0 (24): mejoras de los testers (8 oct.)**

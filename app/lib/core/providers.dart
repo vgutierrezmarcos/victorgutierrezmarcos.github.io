@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'analitica.dart';
+import 'instalacion.dart';
 import 'avisos_navegador.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -159,6 +160,9 @@ final actualizacionProvider = FutureProvider<String?>((ref) async {
     return null;
   }
 });
+
+/// De dónde se instaló la app (Google Play, APK o navegador).
+final origenInstalacionProvider = FutureProvider<OrigenInstalacion>((ref) => origenInstalacion());
 
 /// Esta versión de la app es más antigua que `versionMinima` de
 /// app-config.json: ya no es compatible con los datos de las versiones nuevas

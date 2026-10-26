@@ -189,17 +189,14 @@ VIDEOS = {
     'instalar-android': {
         'titulo': 'Instala la app en Android', 'para': INSTALAR,
         'pasos': [
-            ('En Google Play, busca la app y toca [Instalar]', ['tienda']),
+            ('En Google Play, busca [Oposición TCEE · DCE] y toca [Instalar]', ['tienda']),
             ('Cuando acabe, toca [Abrir]', ['abrir']),
             ('Elige tu oposición: [DCE] o TCEE', ['elegir']),
             ('Y si [te preparas] o preparas a otros', ['papel']),
             ('[Listo]: tu oposición, en el móvil', ['hoy']),
-            ('Mientras llega a Google Play: [Descargar para Android]', ['web']),
-            ('Abre el archivo [descargado]', ['descarga']),
-            ('Toca [Configuración] y permite esta fuente', ['fuente', 'permitir', 'permitido']),
-            ('Toca [Instalar] y luego [Abrir]', ['instalar', 'instalada']),
+            ('¿La descargaste de la web? En Google Play, toca [Actualizar]', ['actualizar']),
         ],
-        'cierre': 'Para tenerlo en todos tus dispositivos, inicia sesión en Más → Cuenta.',
+        'cierre': 'Se actualiza sola. Para tenerla en todos tus dispositivos, inicia sesión en Más → Cuenta.',
     },
     'instalar-iphone': {
         'titulo': 'Instala la app en iPhone', 'para': INSTALAR, 'enlace': 'victorgutierrezmarcos.es/app/abrir',

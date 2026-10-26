@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/actualizaciones.dart';
+import '../../core/instalacion.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import 'para_empezar.dart';
@@ -45,6 +46,7 @@ class InicioPage extends ConsumerWidget {
     final cante = ref.watch(proximosCantesProvider).firstOrNull;
     final prob = ref.watch(probabilidadAprobarProvider);
     final versionNueva = ref.watch(actualizacionProvider).valueOrNull;
+    final origen = ref.watch(origenInstalacionProvider).valueOrNull ?? (kIsWeb ? OrigenInstalacion.web : OrigenInstalacion.otro);
     final canceladas = ref.watch(canceladasProximasProvider);
     // Clases con preparador de los próximos 14 días sin temas (ni elegidos ni
     // de una semana del cronograma) o con una propuesta del preparador sin
@@ -127,12 +129,15 @@ class InicioPage extends ConsumerWidget {
                       : 'No hay ninguna semana de tu cronograma para ese día. Toca para elegirlos; tu preparador verá los mismos.',
                 ),
             if (versionNueva != null)
-              Aviso(
-                icono: Icons.system_update_outlined,
-                titulo: 'Versión $versionNueva disponible',
-                texto: kIsWeb ? 'Recarga la página para usarla; tus datos están en tu cuenta.' : 'Se instala encima de la actual, sin perder tus datos.',
-                accion: TextButton(onPressed: () => actualizar(context, config?.urlPlayStore ?? config?.urlApk), child: Text(kIsWeb ? 'Recargar' : 'Actualizar')),
-              ),
+              Builder(builder: (context) {
+                final t = textosVersionNueva(versionNueva, origen, hayPlay: config?.urlPlayStore != null);
+                return Aviso(
+                  icono: origen == OrigenInstalacion.apk && config?.urlPlayStore != null ? Icons.shop_outlined : Icons.system_update_outlined,
+                  titulo: t.titulo,
+                  texto: t.texto,
+                  accion: TextButton(onPressed: () => actualizar(context, config?.urlPlayStore ?? config?.urlApk), child: Text(t.boton)),
+                );
+              }),
             if (config != null && config.avisos.isNotEmpty)
               for (final a in config.avisos)
                 Aviso(tipo: TipoAviso.aviso, icono: Icons.campaign_outlined, titulo: a),

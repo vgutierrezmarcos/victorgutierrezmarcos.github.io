@@ -121,15 +121,14 @@ Cierre: «Activa los avisos de clases sueltas en Ajustes».
 Pantallas de `scripts/maquetas-instalar.py` (tienda, navegador y sistema dibujados de forma genérica, y la app de verdad con **DCE** elegida). Van en la sección «Cómo se usa» de `/app/` y en `app/instalar.html`, cada uno en su dispositivo.
 
 ### instalar-android · Instala la app en Android
-1. En Google Play, busca la app y toca **Instalar**.
+1. En Google Play, busca **Oposición TCEE · DCE** y toca **Instalar**.
 2. Cuando acabe, toca **Abrir**.
 3. Elige tu oposición: **DCE** o TCEE.
 4. Y si **te preparas** o preparas a otros.
 5. **Listo**: tu oposición, en el móvil.
-6. Mientras llega a Google Play: **Descargar para Android** (la guía de la web).
-7. Abre el archivo **descargado**.
-8. Toca **Configuración** y permite esta fuente.
-9. Toca **Instalar** y luego **Abrir**.
+6. ¿La descargaste de la web? En Google Play, toca **Actualizar** (misma firma: se instala encima y desde entonces Play la actualiza sola).
+
+Cierre: se actualiza sola; para tenerla en todos tus dispositivos, inicia sesión en Más → Cuenta. (Hasta el 26 oct. 2026, antes de estar en Google Play, el vídeo seguía con la instalación del APK.)
 
 ### instalar-iphone · Instala la app en iPhone
 1. Abre la app **en Safari** y toca **Compartir**.
