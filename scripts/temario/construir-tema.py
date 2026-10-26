@@ -35,7 +35,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import (Tema, guardar_pdf_anterior, guardar_docx_anterior, LATEX, MIKTEX, PANDOC, LYX, TEX2LYX, TEMARIO, entorno_tex, ejecutar,  # noqa: E402
                    errores_log, ruta_windows, minutos_texto, paginas_partes, linea_paginas,
                    licencia_corta, licencia_larga, LICENCIA_URL_LEGAL, destinos_temas, primer_tema,
-                   escribir_destinos_tex)
+                   escribir_destinos_tex, es_exclusivo, AVISO_EXCLUSIVO, CONDICIONES_URL)
 
 PDFLATEX = os.path.join(MIKTEX, 'pdflatex.exe')
 BIBER = os.path.join(MIKTEX, 'biber.exe')
@@ -538,6 +538,9 @@ def comunes_pandoc(tema, datos):
              '-M', f'carpeta={tema.carpeta}', '-M', f'ejercicio={tema.nombre_ejercicio}']
     if tema.es_dictamen:
         orden += ['-M', 'dictamen=true']
+    if es_exclusivo(tema):
+        # Aviso de uso personal en vez de la licencia CC (plantilla-tema.html).
+        orden += ['-M', 'exclusivo=true', '-M', f'condiciones-url={CONDICIONES_URL}']
     try:
         dia = datetime.datetime.strptime(datos['fecha'], '%d/%m/%Y').date()
     except ValueError:
@@ -648,8 +651,8 @@ def generar_docx(tema, tex_pandoc, datos):
              '-M', 'author=Víctor Gutiérrez Marcos',
              '-M', f'date=Última actualización: {datos["fecha"]}',
              # Licencia en las propiedades del documento (Comentarios y personalizadas)
-             '-M', f'description={licencia_larga(anio_de(datos))}',
-             '-M', f'Licencia={licencia_corta(anio_de(datos))}',
+             '-M', f'description={licencia_larga(anio_de(datos), es_exclusivo(tema))}',
+             '-M', f'Licencia={licencia_corta(anio_de(datos), es_exclusivo(tema))}',
              '-M', f'URL de la licencia={LICENCIA_URL_LEGAL}',
              '--resource-path', ruta_windows(tema.dir), '-o', ruta_windows(destino)]
     orden += comunes_pandoc(tema, datos)
@@ -850,7 +853,9 @@ def retocar_docx(ruta, anio):
     cajas_enteras_docx(partes)
     sin_huecos_docx(partes)
     numerar_paginas_docx(partes)
-    licencia_pie_docx(partes, anio)
+    licencia_pie_docx(partes, anio, es_exclusivo(tema))
+    if es_exclusivo(tema):
+        aviso_portada_docx(partes)
     imagenes_notas_docx(partes)
     _guardar_docx(ruta, partes, infos)
 
@@ -1070,7 +1075,7 @@ def sin_huecos_docx(partes):
     partes[nombre] = xml.encode('utf-8')
 
 
-def licencia_pie_docx(partes, anio):
+def licencia_pie_docx(partes, anio, exclusivo=False):
     """«© 2026 Víctor Gutiérrez Marcos · CC BY-NC-ND 4.0» a la izquierda del pie,
     pequeño y en gris, en la misma línea que el número de página (que sigue a la
     derecha con un tabulador alineado al margen). Va en todos los pies (los de
@@ -1080,7 +1085,7 @@ def licencia_pie_docx(partes, anio):
     izq = re.search(r'<w:pgMar [^>]*w:left="(\d+)"', xml)
     der = re.search(r'<w:pgMar [^>]*w:right="(\d+)"', xml)
     ancho = int(tam.group(1)) - int(izq.group(1)) - int(der.group(1)) if tam and izq and der else 9412
-    texto = licencia_corta(anio)
+    texto = licencia_corta(anio, exclusivo)
     run = ('<w:r><w:rPr><w:i /><w:color w:val="767171" /><w:sz w:val="14" /></w:rPr>'
            f'<w:t xml:space="preserve">{texto}</w:t></w:r><w:r><w:tab /></w:r>')
     for nombre in [n for n in partes if re.fullmatch(r'word/footer[^/]*\.xml', n)]:
@@ -1092,6 +1097,24 @@ def licencia_pie_docx(partes, anio):
         pie, n = re.subn(r'<w:p>\s*<w:pPr>(?:(?!</w:pPr>).)*</w:pPr>', lambda _: f'<w:p>{ppr}{run}', pie, count=1, flags=re.S)
         if n:
             partes[nombre] = pie.encode('utf-8')
+
+
+def aviso_portada_docx(partes):
+    """En los exclusivos, el aviso de uso personal como primer párrafo del Word
+    (pequeño, en gris, en cursiva), debajo del título que pone pandoc."""
+    xml = partes['word/document.xml'].decode('utf-8')
+    if AVISO_EXCLUSIVO[:40] in xml:
+        return
+    parrafo = ('<w:p><w:pPr><w:spacing w:before="0" w:after="200" /></w:pPr>'
+               '<w:r><w:rPr><w:b /><w:smallCaps /><w:color w:val="5F2987" /><w:sz w:val="16" /></w:rPr><w:t xml:space="preserve">Exclusivo · uso personal. </w:t></w:r>'
+               '<w:r><w:rPr><w:i /><w:color w:val="767171" /><w:sz w:val="16" /></w:rPr>'
+               f'<w:t xml:space="preserve">{AVISO_EXCLUSIVO} Condiciones: {CONDICIONES_URL}</w:t></w:r></w:p>')
+    # Tras el primer párrafo del cuerpo (el título o la primera línea), si lo hay.
+    i = xml.find('<w:body>')
+    j = xml.find('</w:p>', i)
+    if i < 0 or j < 0:
+        return
+    partes['word/document.xml'] = (xml[:j + 6] + parrafo + xml[j + 6:]).encode('utf-8')
 
 
 def imagenes_notas_docx(partes):

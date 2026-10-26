@@ -72,7 +72,25 @@
 \newcommand{\tceecodigo}{\tcee@codigo}
 % Año de la licencia: el de \tcefecha{dd/mm/aaaa} (el año en curso si la fecha no es así)
 \newcommand{\tcee@anno}{\the\year}
-\def\tcee@sacaanno#1/#2/#3/#4\@nil{\if\relax\detokenize{#3}\relax\else\edef\tcee@anno{\zap@space#3 \@empty}\fi}
+\newcommand{\tcee@mes}{\the\month}
+\def\tcee@sacaanno#1/#2/#3/#4\@nil{\if\relax\detokenize{#3}\relax\else\edef\tcee@anno{\zap@space#3 \@empty}\edef\tcee@mes{\zap@space#2 \@empty}\fi\tcee@evaluaexclusivo}
+
+% --- Exclusividad (materiales publicados o revisados desde el 1 de octubre de 2026) ---
+% Se decide sola con la fecha de \tcefecha: desde el corte, el tema es «exclusivo»
+% (aviso de uso personal en la portada, pie en todas las páginas y metadatos de
+% derechos en vez de la licencia CC). \tceeexclusivofalse después de \tcefecha lo
+% desactiva para un tema concreto. Los textos están también en
+% scripts/temario/comun.py (web, Word, vídeo y manifiesto): cambiarlos a la vez.
+\newif\iftceeexclusivo
+\newcommand{\tcee@corteanno}{2026}
+\newcommand{\tcee@cortemes}{10}
+\newcommand{\tcee@evaluaexclusivo}{\tceeexclusivofalse
+  \ifnum\tcee@anno>\tcee@corteanno\relax\tceeexclusivotrue\else
+    \ifnum\tcee@anno=\tcee@corteanno\relax\ifnum\tcee@mes<\tcee@cortemes\relax\else\tceeexclusivotrue\fi\fi\fi}
+\newcommand{\tcee@exclusivoaviso}{Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. Puedes usarlo libremente para tu estudio personal. No se autoriza su incorporación a otras plataformas, aplicaciones o servicios.}
+\newcommand{\tcee@exclusivopie}{\textcopyright\,\tcee@anno\ Víctor Gutiérrez Marcos \textperiodcentered\ Exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE \textperiodcentered\ DCE}
+\newcommand{\tcee@exclusivoreserva}{Se reserva expresamente el derecho de minería de textos y datos (art. 4 de la Directiva (UE) 2019/790).}
+\newcommand{\tcee@condicionesurl}{https://www.victorgutierrezmarcos.es/condiciones-materiales.html}
 
 % --- Licencia (CC BY-NC-ND 4.0) ----------------------------------------------------
 % El texto está solo aquí (scripts/temario/comun.py lo lee de este fichero para
@@ -84,9 +102,16 @@
   \RequirePackage{hyperxmp}%
   % keeppdfinfo: sin él, hyperxmp quita el autor y las palabras clave del diccionario Info
   \hypersetup{keeppdfinfo,pdfauthor={Víctor Gutiérrez Marcos}}%
-  \AtBeginDocument{\hypersetup{pdfcopyright={© \tcee@anno\ Víctor Gutiérrez Marcos. Licencia CC BY-NC-ND 4.0: \tcee@licenciapermisos.},
-    pdflicenseurl={\tcee@licenciaurllegal},
-    pdfcontacturl={https://www.victorgutierrezmarcos.es/}}}}
+  \AtBeginDocument{\iftceeexclusivo
+    \hypersetup{pdfcopyright={© \tcee@anno\ Víctor Gutiérrez Marcos. Todos los derechos reservados. \tcee@exclusivoaviso\ \tcee@exclusivoreserva},
+      pdflicenseurl={\tcee@condicionesurl},
+      pdfkeywords={Exclusivo · uso personal},
+      pdfcontacturl={https://www.victorgutierrezmarcos.es/}}%
+  \else
+    \hypersetup{pdfcopyright={© \tcee@anno\ Víctor Gutiérrez Marcos. Licencia CC BY-NC-ND 4.0: \tcee@licenciapermisos.},
+      pdflicenseurl={\tcee@licenciaurllegal},
+      pdfcontacturl={https://www.victorgutierrezmarcos.es/}}%
+  \fi}}
 
 % --- Minutos del cante sin decimales ------------------------------------------------
 % \tceemmss{2,5} → 2′30″; 26,5 → 26′30″; 1 → 1′. En el texto, \tiempo{2,5}

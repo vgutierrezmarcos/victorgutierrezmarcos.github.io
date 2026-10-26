@@ -180,7 +180,7 @@ from skimage.morphology import skeletonize
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import (Tema, LATEX, MIKTEX, entorno_tex, ejecutar, errores_log, minutos_texto, segundos_texto,  # noqa: E402
-                   anio_tema, licencia_corta, licencia_larga)
+                   anio_tema, licencia_corta, licencia_larga, es_exclusivo)
 
 ANCHO, ALTO = 1920, 1080
 FPS = 25
@@ -1535,7 +1535,8 @@ class Pantallas:
         self.tema, self.titulo, self.corto = tema, titulo, corto
         self.total = float(guion.get('duracion', 1800))
         # Rótulo de la licencia (portada y cierre): «© 2026 Víctor Gutiérrez Marcos · CC BY-NC-ND 4.0»
-        self.licencia = licencia_corta(anio_tema(tema))
+        self.exclusivo = es_exclusivo(tema)
+        self.licencia = licencia_corta(anio_tema(tema), self.exclusivo)
         self.bloques = guion['bloques']
         self.escenas = guion['escenas']
         total = sum(b.get('minutos', 1) for b in self.bloques)
@@ -1696,6 +1697,9 @@ class Pantallas:
                     else:
                         d.ellipse([px - rr, cy - rr, px + rr, cy + rr], outline=LILA_APAGADO, width=2)
                     px += 14
+        # Marca de agua discreta de los exclusivos, en todos los fotogramas (sobre la barra de progreso)
+        if self.exclusivo:
+            d.text((ANCHO - 30, CAB - 10), self.licencia, font=F_MARCO, fill=(150, 120, 172), anchor='rs')
         # Barra de progreso
         d.rectangle([0, CAB - 6, ANCHO, CAB], fill=(90, 60, 112))
         d.rectangle([0, CAB - 6, int(ANCHO * min(1, t / total)), CAB], fill=SALVIA_OSCURO)
@@ -1823,8 +1827,9 @@ class Pantallas:
                if self.tema.es_dictamen else 'El tema completo (web, PDF y Word) y el resto del temario en',
                font=F_UI, fill=(220, 210, 230), anchor='mm')
         d.text((ANCHO / 2, 690), 'victorgutierrezmarcos.es', font=F_BARRA, fill=SALVIA, anchor='mm')
-        d.text((ANCHO / 2, ALTO - 42), self.licencia + ' · puedes compartirlo citando al autor, sin fines '
-               'comerciales y sin modificarlo', font=F_MARCO, fill=(176, 150, 200), anchor='mm')
+        d.text((ANCHO / 2, ALTO - 42), self.licencia + (' · solo para tu estudio personal; no se autoriza su incorporación a otras plataformas'
+               if self.exclusivo else ' · puedes compartirlo citando al autor, sin fines comerciales y sin modificarlo'),
+               font=F_MARCO, fill=(176, 150, 200), anchor='mm')
         return img
 
 

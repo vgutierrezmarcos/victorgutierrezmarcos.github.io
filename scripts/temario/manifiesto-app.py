@@ -76,6 +76,16 @@ def en_head(ruta):
     return meta[2][:10], int(meta[3])
 
 
+def exclusivo_en_head(archivo):
+    """Si el tema es exclusivo según \\tcefecha{dd/mm/aaaa} de su .tex en HEAD (ver comun.py)."""
+    try:
+        tex = git('show', f'HEAD:{FUENTES}/{archivo}/{archivo}.tex')
+    except Exception:
+        return False
+    m = re.search(r'\\tcefecha\{\s*(\d{1,2})/(\d{1,2})/(\d{4})\s*\}', tex)
+    return bool(m) and (int(m.group(3)), int(m.group(2)), int(m.group(1))) >= (2026, 10, 1)
+
+
 def leer_json_head(ruta):
     try:
         return json.loads(git('show', f'HEAD:{ruta}', binario=True).decode('utf-8'))
@@ -177,6 +187,9 @@ def manifiesto():
         tema = {
             'codigo': codigo,
             'archivo': archivo,
+            # Exclusivo (uso personal, sin licencia CC) si la \tcefecha del .tex es del
+            # 1 oct. 2026 o posterior: la misma regla que tcee-comun.sty y comun.py.
+            'exclusivo': exclusivo_en_head(archivo),
             'titulo': nombres.get(codigo, '') or ('Guía para el dictamen de coyuntura económica'
                                                    if archivo == DICTAMEN else ''),
             'aprobado': aprobado['tema'],
@@ -197,6 +210,8 @@ def manifiesto():
     datos = {
         'descripcion': 'Temas revisados para la app Oposición TCEE (exclusivos de la app). '
                        'Generado por scripts/temario/manifiesto-app.py: no editar a mano.',
+        'condiciones': 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html',
+        'aviso': 'Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. Puedes usarlo libremente para tu estudio personal. No se autoriza su incorporación a otras plataformas, aplicaciones o servicios.',
         'rama': RAMA,
         'commit': commit,
         'raw': f'https://raw.githubusercontent.com/{REPO}/{commit}/',

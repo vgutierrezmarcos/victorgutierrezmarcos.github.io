@@ -177,6 +177,9 @@ $if(resumen)$
                     <p class="tema-resumen">$resumen$</p>
 $endif$
                 </header>
+$if(exclusivo)$
+                <p class="aviso-exclusivo"><strong class="etiqueta-exclusivo">Exclusivo</strong> Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. Puedes usarlo libremente para tu estudio personal. No se autoriza su incorporación a otras plataformas, aplicaciones o servicios. <a href="$condiciones-url$">Condiciones de uso</a>.</p>
+$endif$
 $body$
                 <footer class="tema-pie">
                     <section class="tema-oposicion">
@@ -186,7 +189,11 @@ $body$
                     <section class="tema-cita">
                         <h2 class="tema-pie-titulo">Cómo citar</h2>
                         <p>Gutiérrez Marcos, V. ($anio$). <em>$titulo$</em> [$if(dictamen)$Guía del dictamen de coyuntura$else$$etiqueta$ del temario$endif$ de la oposición a Técnico Comercial y Economista del Estado]. https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.html</p>
+$if(exclusivo)$
+                        <p class="licencia-fin">© $anio$ Víctor Gutiérrez Marcos · Todos los derechos reservados · <strong class="etiqueta-exclusivo">Exclusivo</strong> Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE, para tu estudio personal; no se autoriza su incorporación a otras plataformas, aplicaciones o servicios, ni la minería de textos y datos. <a href="$condiciones-url$">Condiciones de uso</a>.</p>
+$else$
                         <p class="licencia-fin">© $anio$ Víctor Gutiérrez Marcos · Licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="noopener license">CC BY-NC-ND 4.0</a>: puedes compartirlo citando al autor, sin fines comerciales y sin modificarlo.</p>
+$endif$
                     </section>
                 </footer>
             </article>

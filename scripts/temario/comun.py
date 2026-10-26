@@ -357,6 +357,40 @@ LICENCIA_PERMISOS = _de_tcee_comun('licenciapermisos',
                                    'puedes compartirlo citando al autor, sin fines comerciales y sin modificarlo')
 
 
+# --- Exclusividad (desde el 1 de octubre de 2026) -------------------------------------
+# Los temas con \tcefecha desde el corte son «exclusivos»: aviso de uso personal en
+# vez de la licencia CC en todos los formatos (tcee-comun.sty decide lo mismo con
+# la fecha; estos textos son copia de los de ahí: cambiarlos a la vez) y campo
+# «exclusivo» en el manifiesto de la app. La web pública los anuncia pero no los
+# enlaza (oposicion/exclusivos.json y condiciones-materiales.html en main).
+CORTE_EXCLUSIVO = (2026, 10, 1)
+AVISO_EXCLUSIVO = ('Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. '
+                   'Puedes usarlo libremente para tu estudio personal. No se autoriza su incorporación a otras plataformas, aplicaciones o servicios.')
+RESERVA_EXCLUSIVO = 'Se reserva expresamente el derecho de minería de textos y datos (art. 4 de la Directiva (UE) 2019/790).'
+CONDICIONES_URL = 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html'
+
+
+def fecha_tema(tema):
+    """(año, mes, día) de \\tcefecha{dd/mm/aaaa} del .tex; None si no se encuentra."""
+    ruta = os.path.join(tema.dir, f'{tema.archivo}.tex')
+    if os.path.exists(ruta):
+        m = re.search(r'\\tcefecha\{\s*(\d{1,2})/(\d{1,2})/(\d{4})\s*\}', open(ruta, encoding='utf-8').read())
+        if m:
+            return int(m.group(3)), int(m.group(2)), int(m.group(1))
+    return None
+
+
+def es_exclusivo(tema):
+    """Si el tema es exclusivo: su \\tcefecha es del corte o posterior (sin fecha, no)."""
+    f = fecha_tema(tema)
+    return f is not None and f >= CORTE_EXCLUSIVO
+
+
+def pie_exclusivo(anio):
+    """«© 2026 Víctor Gutiérrez Marcos · Exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE»"""
+    return f'© {anio} {AUTOR} · Exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE'
+
+
 def anio_tema(tema):
     """Año de la última actualización del tema (\\tcefecha{dd/mm/aaaa} de su .tex);
     si no se encuentra, el año en curso."""
@@ -369,11 +403,13 @@ def anio_tema(tema):
     return datetime.date.today().year
 
 
-def licencia_corta(anio):
-    """«© 2026 Víctor Gutiérrez Marcos · CC BY-NC-ND 4.0»"""
-    return f'© {anio} {AUTOR} · {LICENCIA}'
+def licencia_corta(anio, exclusivo=False):
+    """«© 2026 Víctor Gutiérrez Marcos · CC BY-NC-ND 4.0» o, en los exclusivos, el pie de uso personal."""
+    return pie_exclusivo(anio) if exclusivo else f'© {anio} {AUTOR} · {LICENCIA}'
 
 
-def licencia_larga(anio):
-    """La línea completa, con el enlace y lo que permite."""
+def licencia_larga(anio, exclusivo=False):
+    """La línea completa, con el enlace y lo que permite (o el aviso de uso personal y la reserva)."""
+    if exclusivo:
+        return f'© {anio} {AUTOR}. Todos los derechos reservados. {AVISO_EXCLUSIVO} {RESERVA_EXCLUSIVO} Condiciones: {CONDICIONES_URL}'
     return f'© {anio} {AUTOR} · Licencia {LICENCIA} ({LICENCIA_URL}): {LICENCIA_PERMISOS}.'

@@ -89,9 +89,16 @@
 % al final). Lo mismo en la web (plantilla-tema.html), el Word
 % (construir-tema.py), la ficha (tcee-repaso.sty) y el vídeo (generar-video.py).
 \RequirePackage{ccicons}
-\newcommand{\tcee@linealicencia}{{\fontsize{6.8}{8}\selectfont\itshape\color{tceegris}%
+\newcommand{\tcee@linealicencia}{\iftceeexclusivo
+  {\fontsize{6.8}{8}\selectfont\color{tceegris}%
+   \textbf{\textsc{Exclusivo \textperiodcentered\ uso personal}}\ \textperiodcentered\ {\itshape\tcee@exclusivoaviso}\ \href{\tcee@condicionesurl}{\color{tceegris}\itshape Condiciones de uso.}\par}%
+  \else
+  {\fontsize{6.8}{8}\selectfont\itshape\color{tceegris}%
   \textcopyright\,\tcee@anno\ Víctor Gutiérrez Marcos\ \textperiodcentered\
-  \href{\tcee@licenciaurl}{\color{tceegris}\ccbyncnd\ CC BY-NC-ND 4.0}: \tcee@licenciapermisos.\par}}
+  \href{\tcee@licenciaurl}{\color{tceegris}\ccbyncnd\ CC BY-NC-ND 4.0}: \tcee@licenciapermisos.\par}%
+  \fi}
+% Pie breve de los exclusivos (izquierda, en todas las páginas; vacío en los demás)
+\newcommand{\tcee@pieexclusivo}{\iftceeexclusivo{\fontsize{6.5}{7}\selectfont\itshape\color{tceegris}\tcee@exclusivopie}\fi}
 
 % --- Numeración de páginas por partes ------------------------------------------
 % El tema (de la portada a la conclusión) va en 1…N; tras \appendix, los anexos
@@ -125,6 +132,7 @@
   \fancyhead[L]{\footnotesize\color{tceemorado}\textbf{\tcee@codigo}}%
   \fancyhead[C]{\footnotesize\itshape\color{tceemorado}\parbox[b]{0.62\textwidth}{\centering\tcee@corto}}%
   \fancyhead[R]{\footnotesize\itshape\color{tceemorado}Víctor Gutiérrez Marcos}%
+  \fancyfoot[L]{\tcee@pieexclusivo}%
   \fancyfoot[R]{\footnotesize\color{tceemorado}\textbf{\thepage/\tcee@totalparte}}%
   \renewcommand{\headrule}{{\color{tceemorado}\hrule height 0.6pt}}%
   \renewcommand{\footrule}{{\color{tceemorado}\hrule height 0.6pt}}%
@@ -135,6 +143,7 @@
   \fancyhead[L]{\parbox[b]{0.24\textwidth}{\raggedright\scriptsize\itshape\color{tceemorado}Última actualización:\\\tcee@fecha}}%
   \fancyhead[C]{\small\itshape\color{tceemorado}Oposición a Técnico Comercial y Economista del Estado}%
   \fancyhead[R]{\small\itshape\color{tceemorado}\tcee@codigo}%
+  \fancyfoot[L]{\tcee@pieexclusivo}%
   \fancyfoot[R]{\footnotesize\color{tceemorado}\textbf{\thepage/\tcee@totalparte}}%
   \renewcommand{\headrule}{{\color{tceemorado}\hrule height 0.6pt}}%
   \renewcommand{\footrule}{{\color{tceemorado}\hrule height 0.6pt}}%
