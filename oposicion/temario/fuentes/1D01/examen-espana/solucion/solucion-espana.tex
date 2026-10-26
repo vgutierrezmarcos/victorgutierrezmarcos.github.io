@@ -10,7 +10,9 @@
 % ==========================================================================
 \documentclass[11pt]{article}
 \usepackage{tcee}
+\usepackage{pdfcol}
 \addbibresource{../../1D01.bib}
+\addbibresource{solucion.bib}
 \tcetema[Solución del examen de ejemplo: España]{Primer ejercicio}{Solución de máximos del examen de ejemplo del dictamen: España}
 \tcefecha{26/10/2026}
 \makeatletter
@@ -41,7 +43,9 @@
 % de una página.)
 % Rótulo de una parte del texto de examen («a) …»)
 % (sin \Needspace: dentro de una tcolorbox partible fuerza saltos y deja páginas casi vacías)
-\newcommand{\rotulo}[1]{\par\addvspace{4pt}{\color{tceemorado}\bfseries #1}\par\nopagebreak\smallskip}
+% \textcolor y no \color suelto: con un flotante o una nota en medio, \color perdía
+% el morado (pila de color de pdftex)
+\newcommand{\rotulo}[1]{\par\addvspace{4pt}\noindent\textcolor{tceemorado}{\bfseries #1}\par\nopagebreak\smallskip}
 % Citas del artículo IV de 2026 del FMI con página (informe del personal técnico
 % o comunicado de prensa, con su paginación impresa)
 \newcommand{\fmi}[1]{\parencite[informe del personal técnico, p.~#1]{FMI2026ArticuloIV}}
