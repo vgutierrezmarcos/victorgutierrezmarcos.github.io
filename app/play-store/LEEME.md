@@ -16,9 +16,9 @@ Todo lo necesario para publicar «Oposición TCEE · DCE» en Google Play, prepa
 
 ## Ficha de Play Store
 
-**Nombre** (máx. 30): `Oposición TCEE · DCE`
+**Nombre** (máx. 30): `Oposiciones TCEE y DCE` (el de la ficha desde el 27 oct. 2026; la app instalada se sigue llamando «Oposición TCEE · DCE»)
 
-**Descripción breve** (máx. 80): `Oposiciones a Técnico Comercial (TCEE) y Diplomado Comercial del Estado (DCE)`
+**Descripción breve** (máx. 80): `Oposición a Técnico y Diplomado Comercial del Estado: temas, preparadores y más` (la de la ficha a 27 oct. 2026)
 
 **Descripción completa** (máx. 4000):
 
