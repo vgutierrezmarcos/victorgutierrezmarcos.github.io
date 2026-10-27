@@ -658,7 +658,7 @@ def generar_docx(tema, tex_pandoc, datos):
     orden += comunes_pandoc(tema, datos)
     ejecutar(orden, timeout=600)
     centrar_celdas_docx(destino)
-    retocar_docx(destino, anio_de(datos))
+    retocar_docx(destino, anio_de(datos), es_exclusivo(tema))
     return destino
 
 
@@ -840,7 +840,7 @@ def fuente_reserva_docx(partes):
     partes[nombre] = xml.encode('utf-8')
 
 
-def retocar_docx(ruta, anio):
+def retocar_docx(ruta, anio, exclusivo=False):
     """Postproceso del Word: listas que no se separan de lo que las introduce,
     cajas y filas de tabla que no se parten entre páginas, fondo de celda
     entero, numeración de páginas por partes, licencia en el pie y fuente de
@@ -853,8 +853,8 @@ def retocar_docx(ruta, anio):
     cajas_enteras_docx(partes)
     sin_huecos_docx(partes)
     numerar_paginas_docx(partes)
-    licencia_pie_docx(partes, anio, es_exclusivo(tema))
-    if es_exclusivo(tema):
+    licencia_pie_docx(partes, anio, exclusivo)
+    if exclusivo:
         aviso_portada_docx(partes)
     imagenes_notas_docx(partes)
     _guardar_docx(ruta, partes, infos)

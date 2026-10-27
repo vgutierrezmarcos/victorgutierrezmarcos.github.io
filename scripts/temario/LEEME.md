@@ -105,3 +105,7 @@ de main antes de la revisión). Los SVG de la web se sirven desde `fuentes/<tema
   los scripts los leen de ahí (`TCEE_REPO_MAIN`).
 
 Autor: Víctor Gutiérrez Marcos
+
+## Materiales exclusivos (desde el 1 de octubre de 2026)
+
+Un tema cuya `\tcefecha{dd/mm/aaaa}` es del 1 de octubre de 2026 o posterior es **exclusivo**: en vez de la licencia CC BY-NC-ND lleva el aviso de uso personal («Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE…»), en la portada del PDF, en el pie de todas las páginas (PDF y ficha), en el HTML (recuadro bajo la cabecera y pie), en el Word (primer párrafo y pie) y en el vídeo (portada, cierre y marca de agua en la cabecera), y los metadatos de derechos (XMP: todos los derechos reservados y reserva de minería de textos y datos). Lo decide solo la fecha: `tcee-comun.sty` (`\iftceeexclusivo`, `\tceeexclusivofalse` tras `\tcefecha` para desactivarlo en un tema) y `comun.py` (`es_exclusivo`, `AVISO_EXCLUSIVO`, `pie_exclusivo`), que deben decir lo mismo. `manifiesto-app.py` añade `exclusivo` a cada tema (la app lo lee: solo lectura) y la URL de las condiciones. Las condiciones públicas están en `condiciones-materiales.html` de `main`, y el registro de la web en `oposicion/exclusivos.json` (`scripts/exclusivos.py`, que lee este manifiesto).
