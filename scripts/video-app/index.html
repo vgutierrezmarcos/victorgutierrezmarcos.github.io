@@ -106,6 +106,11 @@
       .doc.con-logo::before { display: none; }
       .doc .logo { position: absolute; left: 50%; top: 26px; width: 60px; transform: translateX(-50%); }
       .insignia-play { display: block; height: 96px; width: auto; }
+      /* Las páginas oficiales del proceso (TCEE y DCE): barra de dirección propia y el título del cuerpo, sin la cabecera del Ministerio */
+      .web { position: absolute; width: 400px; border-radius: 14px; overflow: hidden; background: #fff; border: 1.5px solid var(--borde); box-shadow: 0 14px 40px rgba(46, 34, 53, 0.22); }
+      .web .barra { display: flex; align-items: center; gap: 10px; padding: 11px 18px; background: #eeeef1; border-bottom: 1px solid #dcdce2; font-size: 23px; font-weight: 500; color: #3c3c43; }
+      .web .barra svg { width: 20px; height: 20px; flex: 0 0 auto; }
+      .web p { margin: 0; padding: 18px 24px 22px; font-weight: 700; font-size: 25px; line-height: 1.18; letter-spacing: 0.01em; text-transform: uppercase; color: #00447c; }
 
       /* Bolas del sorteo */
       .bola {
@@ -295,6 +300,8 @@
           <h2 id="proceso-tit" class="tit" style="font-size: 74px"><span class="l">Novedades del proceso,</span><span class="l"><em>al momento.</em></span></h2>
           <p id="proceso-par" class="par">La app vigila la web oficial y te avisa en cuanto se publica algo: convocatorias, listas de admitidos y de aprobados.</p>
         </div></div>
+        <div id="proceso-web1" class="web" style="left: 880px; top: 600px"><div class="barra"><svg viewBox="0 0 24 24" fill="none" stroke="#3c3c43" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>portal.mineco.gob.es</div><p>Cuerpo Superior de Técnicos Comerciales y Economistas del Estado</p></div>
+        <div id="proceso-web2" class="web" style="left: 930px; top: 790px"><div class="barra"><svg viewBox="0 0 24 24" fill="none" stroke="#3c3c43" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>portal.mineco.gob.es</div><p>Cuerpo de Diplomados Comerciales del Estado</p></div>
         <div id="proceso-movil" class="movil" style="left: 1330px; top: 99px"><div class="pantalla">
           <img src="assets/capturas/proceso.webp" alt="" />
         </div></div>
@@ -742,7 +749,9 @@
       // Proceso selectivo: tres avisos (con la música, en los pulsos 1, 3 y 5)
       textos("#proceso", B(E.proceso));
       movil("#proceso-movil", B(E.proceso) + 0.1);
-      aviso("#proceso-a1", B(E.proceso) + P);
+      tl.fromTo("#proceso-web1", { opacity: 0, y: 40, rotation: 0 }, { opacity: 1, y: 0, rotation: -4, duration: 0.6, ease: "power3.out" }, B(E.proceso) + 0.3);
+      tl.fromTo("#proceso-web2", { opacity: 0, y: 40, rotation: 0 }, { opacity: 1, y: 0, rotation: 2, duration: 0.6, ease: "power3.out" }, B(E.proceso) + 0.3 + M);
+      aviso("#proceso-a1", B(E.proceso) + P + M);
       aviso("#proceso-a2", B(E.proceso) + 3 * P);
       aviso("#proceso-a3", B(E.proceso) + 5 * P);
       sale("proceso");
