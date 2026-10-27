@@ -321,6 +321,9 @@ class _TceeAppState extends ConsumerState<TceeApp> {
   bool _fijando = false;
   Future<void> _fijarTemasDeClases() async {
     if (_fijando) return;
+    // Nunca dentro de un build (el primer aviso llega en initState): se espera al siguiente tick.
+    await Future<void>.delayed(Duration.zero);
+    if (!mounted || _fijando) return;
     final ajustes = ref.read(ajustesProvider);
     final pendientes = clasesParaFijar(ref.read(cantesProvider), elegidos: ajustes.temasClases, cronograma: ref.read(cronogramaProvider), noCantar: ajustes.noCantar, ahora: DateTime.now());
     if (pendientes.isEmpty) return;

@@ -281,6 +281,7 @@ void main() {
     }
 
     await estudiar('Temas');
+    await tocar(find.text('Tercer ejercicio'));
     final parte = find.textContaining('Parte A: Microeconom');
     await tester.scrollUntilVisible(parte, 300, scrollable: find.descendant(of: find.byType(ListView).first, matching: find.byType(Scrollable)).first);
     // Que no quede detrás del menú inferior al tocarla.

@@ -100,6 +100,8 @@ void main() {
 
     await estudiar('Temas');
     await captura('temario');
+    // Desde la 1.20.4, Temas enseña una tarjeta por ejercicio; las partes, dentro.
+    await tocar(find.text('Tercer ejercicio'));
     await buscar(find.textContaining('Parte A: Economía general'));
     await tocar(find.textContaining('Parte A: Economía general'));
     await bajar(330);

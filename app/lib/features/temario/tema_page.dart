@@ -186,7 +186,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     if (clase == ClaseFichero.repaso) {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => TemaPage(
-          tema: Tema(codigo: '${rev.codigo}-repaso', titulo: 'Ficha de repaso del tema ${rev.codigo}', disponible: true, temarioAnterior: false, url: rev.url(f)),
+          tema: Tema(codigo: '${rev.codigo}-repaso', titulo: rev.esDictamen ? 'Resumen de repaso de la guía del dictamen' : 'Ficha de repaso del tema ${rev.codigo}', disponible: true, temarioAnterior: false, url: rev.url(f)),
           esRecurso: true,
           nombreDescarga: rev.nombreLocal(clase),
           reemplazaDescarga: rev.prefijoLocal(clase),
@@ -351,7 +351,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
 
     return Scaffold(
       appBar: BarraWeb(
-        title: Text(widget.esRecurso ? widget.tema.titulo : 'Tema ${widget.tema.codigo}', overflow: TextOverflow.ellipsis),
+        title: Text(widget.esRecurso ? widget.tema.titulo : (widget.tema.codigo == codigoDictamen ? 'Guía del dictamen' : 'Tema ${widget.tema.codigo}'), overflow: TextOverflow.ellipsis),
         actions: [
           if (!widget.esRecurso && !sinPdf)
             IconButton(
@@ -601,7 +601,7 @@ class _BarraRevisado extends StatelessWidget {
         const SizedBox(height: 2),
         Wrap(spacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
           if (revisado.repaso != null)
-            TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.repaso), icon: const Icon(Icons.summarize_outlined, size: 18), label: const Text('Ficha de repaso')),
+            TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.repaso), icon: const Icon(Icons.summarize_outlined, size: 18), label: Text(revisado.esDictamen ? 'Resumen de repaso' : 'Ficha de repaso')),
           if (revisado.docx != null && !revisado.exclusivo)
             TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.docx), icon: const Icon(Icons.description_outlined, size: 18), label: const Text('Word')),
           if (eleccion.puedeCambiar)
