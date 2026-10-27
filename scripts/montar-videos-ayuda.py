@@ -615,6 +615,15 @@ def montar(vid, ffmpeg):
     print(f'{vid}: {total:.1f} s, {os.path.getsize(salida) / 1e6:.1f} MB', flush=True)
 
 
+def a_youtube(claves):
+    """Lleva los vídeos a YouTube (scripts/publicar-videos-app.py) si hay permiso en este ordenador."""
+    raiz = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if not os.path.exists(os.path.expanduser('~/.config/oposicion-red/youtube-token.json')):
+        print('Sin permiso de YouTube en este ordenador: los vídeos quedan solo en la web.')
+        return
+    subprocess.run([sys.executable, os.path.join(raiz, 'scripts', 'publicar-videos-app.py'), *claves])
+    print('Haz commit de videos.json para que la web y la app enlacen los vídeos nuevos.')
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument('--ffmpeg', default=os.environ.get('FFMPEG') or shutil.which('ffmpeg'), help='ruta de ffmpeg')
@@ -639,6 +648,7 @@ def main():
         sys.exit('No se encuentra ffmpeg: indícalo con --ffmpeg o con la variable FFMPEG.')
     for vid in ids:
         montar(vid, args.ffmpeg)
+    a_youtube([f'ayuda-{vid}' for vid in ids])
 
 
 if __name__ == '__main__':

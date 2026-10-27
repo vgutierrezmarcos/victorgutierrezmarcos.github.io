@@ -651,11 +651,11 @@
         .ayuda-grupo { font-size: 1.1rem; margin: 1.6rem 0 0.8rem; }
         .ayuda-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.1rem; }
         .ayuda-video { margin: 0; scroll-margin-top: 1.5rem; }
-        .ayuda-video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: var(--radius-card); border: 1px solid var(--color-border); background: #2e2235; }
+        .ayuda-video video, .ayuda-video .video-yt { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: var(--radius-card); border: 1px solid var(--color-border); background: #2e2235; }
         .ayuda-video figcaption { font-family: var(--fuente-ui); font-size: 0.9rem; line-height: 1.4; margin-top: 0.55rem; color: var(--color-text); }
         .ayuda-video figcaption strong { display: block; font-size: 0.98rem; }
         .ayuda-video figcaption span { color: var(--color-text-light); }
-        .ayuda-video:target video { outline: 2px solid var(--oro); outline-offset: 3px; }
+        .ayuda-video:target video, .ayuda-video:target .video-yt { outline: 2px solid var(--oro); outline-offset: 3px; }
         @media (max-width: 640px) {
             .ayuda-lista { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 0.9rem; padding-bottom: 0.6rem; margin: 0 -1.5rem; padding-inline: 1.5rem; }
             .ayuda-video { flex: 0 0 62%; scroll-snap-align: start; }
@@ -911,7 +911,7 @@
             <div class="interior revelar">
                 <span class="app-etiqueta">En minuto y medio</span>
                 <h2>La app, de un vistazo</h2>
-                <video class="app-video" controls playsinline preload="none" poster="promo/poster.webp" width="1920" height="1080" aria-label="Vídeo de presentación de la app Oposición TCEE · DCE (minuto y medio)">
+                <video class="app-video" data-video="promo-app" controls playsinline preload="none" poster="promo/poster.webp" width="1920" height="1080" aria-label="Vídeo de presentación de la app Oposición TCEE · DCE (minuto y medio)">
                     <source src="promo/oposicion-tcee.mp4?v=20261022" type="video/mp4">
                     Tu navegador no reproduce vídeo. Puedes <a href="promo/oposicion-tcee.mp4?v=20261022">descargarlo</a>.
                 </video>
@@ -1326,25 +1326,25 @@
                     <h4 class="ayuda-grupo">Cómo instalarla</h4>
                     <div class="ayuda-lista">
                         <figure class="ayuda-video" id="ayuda-instalar-android">
-                            <video controls playsinline preload="none" poster="promo/ayuda/instalar-android.webp" width="1080" height="1920" aria-label="Vídeo: En Android">
+                            <video data-video="ayuda-instalar-android" controls playsinline preload="none" poster="promo/ayuda/instalar-android.webp" width="1080" height="1920" aria-label="Vídeo: En Android">
                                 <source src="promo/ayuda/instalar-android.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>En Android</strong><span>Desde Google Play; y si la descargaste de la web, cómo pasar a la de Play.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-instalar-iphone">
-                            <video controls playsinline preload="none" poster="promo/ayuda/instalar-iphone.webp" width="1080" height="1920" aria-label="Vídeo: En iPhone">
+                            <video data-video="ayuda-instalar-iphone" controls playsinline preload="none" poster="promo/ayuda/instalar-iphone.webp" width="1080" height="1920" aria-label="Vídeo: En iPhone">
                                 <source src="promo/ayuda/instalar-iphone.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>En iPhone</strong><span>Desde Safari, a la pantalla de inicio.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-instalar-windows">
-                            <video controls playsinline preload="none" poster="promo/ayuda/instalar-windows.webp" width="1080" height="1920" aria-label="Vídeo: En Windows">
+                            <video data-video="ayuda-instalar-windows" controls playsinline preload="none" poster="promo/ayuda/instalar-windows.webp" width="1080" height="1920" aria-label="Vídeo: En Windows">
                                 <source src="promo/ayuda/instalar-windows.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>En Windows</strong><span>Con Edge o Chrome, como un programa más.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-instalar-mac">
-                            <video controls playsinline preload="none" poster="promo/ayuda/instalar-mac.webp" width="1080" height="1920" aria-label="Vídeo: En Mac">
+                            <video data-video="ayuda-instalar-mac" controls playsinline preload="none" poster="promo/ayuda/instalar-mac.webp" width="1080" height="1920" aria-label="Vídeo: En Mac">
                                 <source src="promo/ayuda/instalar-mac.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>En Mac</strong><span>Desde Safari, al Dock.</span></figcaption>
@@ -1353,37 +1353,37 @@
                     <h4 class="ayuda-grupo">Si te preparas la oposición</h4>
                     <div class="ayuda-lista">
                         <figure class="ayuda-video" id="ayuda-reservar-clase">
-                            <video controls playsinline preload="none" poster="promo/ayuda/reservar-clase.webp" width="1080" height="1920" aria-label="Vídeo: Reserva clase con tu preparador">
+                            <video data-video="ayuda-reservar-clase" controls playsinline preload="none" poster="promo/ayuda/reservar-clase.webp" width="1080" height="1920" aria-label="Vídeo: Reserva clase con tu preparador">
                                 <source src="promo/ayuda/reservar-clase.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>Reserva clase con tu preparador</strong><span>Elige un hueco libre de tu preparador y pídele la clase.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-clase-suelta">
-                            <video controls playsinline preload="none" poster="promo/ayuda/clase-suelta.webp" width="1080" height="1920" aria-label="Vídeo: ¿Te cancelan? Pide una clase suelta">
+                            <video data-video="ayuda-clase-suelta" controls playsinline preload="none" poster="promo/ayuda/clase-suelta.webp" width="1080" height="1920" aria-label="Vídeo: ¿Te cancelan? Pide una clase suelta">
                                 <source src="promo/ayuda/clase-suelta.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>¿Te cancelan? Pide una clase suelta</strong><span>Si te cancelan, otro preparador verificado te coge el cante.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-conectar-preparador">
-                            <video controls playsinline preload="none" poster="promo/ayuda/conectar-preparador.webp" width="1080" height="1920" aria-label="Vídeo: Conecta con tu preparador">
+                            <video data-video="ayuda-conectar-preparador" controls playsinline preload="none" poster="promo/ayuda/conectar-preparador.webp" width="1080" height="1920" aria-label="Vídeo: Conecta con tu preparador">
                                 <source src="promo/ayuda/conectar-preparador.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>Conecta con tu preparador</strong><span>Su código de seis letras, y qué ve y qué no.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-buscar-preparador">
-                            <video controls playsinline preload="none" poster="promo/ayuda/buscar-preparador.webp" width="1080" height="1920" aria-label="Vídeo: Busca preparador">
+                            <video data-video="ayuda-buscar-preparador" controls playsinline preload="none" poster="promo/ayuda/buscar-preparador.webp" width="1080" height="1920" aria-label="Vídeo: Busca preparador">
                                 <source src="promo/ayuda/buscar-preparador.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>Busca preparador</strong><span>Quién admite alumnos y cómo contar lo que buscas.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-cronograma">
-                            <video controls playsinline preload="none" poster="promo/ayuda/cronograma.webp" width="1080" height="1920" aria-label="Vídeo: Tu cronograma">
+                            <video data-video="ayuda-cronograma" controls playsinline preload="none" poster="promo/ayuda/cronograma.webp" width="1080" height="1920" aria-label="Vídeo: Tu cronograma">
                                 <source src="promo/ayuda/cronograma.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>Tu cronograma</strong><span>Planifica la vuelta y mira cada semana lo que te toca.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-clase">
-                            <video controls playsinline preload="none" poster="promo/ayuda/clase.webp" width="1080" height="1920" aria-label="Vídeo: La clase con tu preparador">
+                            <video data-video="ayuda-clase" controls playsinline preload="none" poster="promo/ayuda/clase.webp" width="1080" height="1920" aria-label="Vídeo: La clase con tu preparador">
                                 <source src="promo/ayuda/clase.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>La clase con tu preparador</strong><span>Meet, los temas mandados, el cronómetro compartido y la pizarra.</span></figcaption>
@@ -1392,31 +1392,31 @@
                     <h4 class="ayuda-grupo">Si preparas a opositores</h4>
                     <div class="ayuda-lista">
                         <figure class="ayuda-video" id="ayuda-empezar-preparador">
-                            <video controls playsinline preload="none" poster="promo/ayuda/empezar-preparador.webp" width="1080" height="1920" aria-label="Vídeo: Empieza como preparador">
+                            <video data-video="ayuda-empezar-preparador" controls playsinline preload="none" poster="promo/ayuda/empezar-preparador.webp" width="1080" height="1920" aria-label="Vídeo: Empieza como preparador">
                                 <source src="promo/ayuda/empezar-preparador.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>Empieza como preparador</strong><span>Date de alta, verifícate y pasa tu código.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-huecos-reservas">
-                            <video controls playsinline preload="none" poster="promo/ayuda/huecos-reservas.webp" width="1080" height="1920" aria-label="Vídeo: Abre huecos y acepta reservas">
+                            <video data-video="ayuda-huecos-reservas" controls playsinline preload="none" poster="promo/ayuda/huecos-reservas.webp" width="1080" height="1920" aria-label="Vídeo: Abre huecos y acepta reservas">
                                 <source src="promo/ayuda/huecos-reservas.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>Abre huecos y acepta reservas</strong><span>Ofrece tus huecos libres y acepta lo que te piden.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-programar-clase">
-                            <video controls playsinline preload="none" poster="promo/ayuda/programar-clase.webp" width="1080" height="1920" aria-label="Vídeo: Programa una clase y manda los temas">
+                            <video data-video="ayuda-programar-clase" controls playsinline preload="none" poster="promo/ayuda/programar-clase.webp" width="1080" height="1920" aria-label="Vídeo: Programa una clase y manda los temas">
                                 <source src="promo/ayuda/programar-clase.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>Programa una clase y manda los temas</strong><span>La clase, la reunión de Meet y los temas antes, a su hora.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-coger-clase">
-                            <video controls playsinline preload="none" poster="promo/ayuda/coger-clase.webp" width="1080" height="1920" aria-label="Vídeo: Coge una clase suelta">
+                            <video data-video="ayuda-coger-clase" controls playsinline preload="none" poster="promo/ayuda/coger-clase.webp" width="1080" height="1920" aria-label="Vídeo: Coge una clase suelta">
                                 <source src="promo/ayuda/coger-clase.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>Coge una clase suelta</strong><span>El tablón de clases sueltas y cómo coger una.</span></figcaption>
                         </figure>
                         <figure class="ayuda-video" id="ayuda-materiales">
-                            <video controls playsinline preload="none" poster="promo/ayuda/materiales.webp" width="1080" height="1920" aria-label="Vídeo: Comparte materiales">
+                            <video data-video="ayuda-materiales" controls playsinline preload="none" poster="promo/ayuda/materiales.webp" width="1080" height="1920" aria-label="Vídeo: Comparte materiales">
                                 <source src="promo/ayuda/materiales.mp4" type="video/mp4">
                             </video>
                             <figcaption><strong>Comparte materiales</strong><span>Enlaces de Drive, PDF o vídeos para tus alumnos.</span></figcaption>
@@ -1828,6 +1828,7 @@
         .catch(function () { /* silencio */ });
     </script>
     <script src="../exclusivos.js" defer></script>
+    <script src="../videos.js" defer></script>
     <script src="../search-engine.js"></script>
     <script src="../search-ui.js"></script>
     <script src="../cookie-consent.js"></script>

@@ -10,6 +10,7 @@ borran después con «purgar», cuando se confirma que el nuevo está bien.
     python3 scripts/youtube.py autorizar                    # una vez: abre el navegador
     python3 scripts/youtube.py subir CLAVE video.mp4 --titulo "…" [--descripcion "…"]
     python3 scripts/youtube.py sustituir CLAVE video.mp4 [--titulo "…"]
+    python3 scripts/youtube.py publicar CLAVE video.mp4 --titulo "…"   # sube, sustituye o nada, según toque
     python3 scripts/youtube.py lista
     python3 scripts/youtube.py enlace CLAVE                 # https://youtu.be/…
     python3 scripts/youtube.py comprobar                    # que cada ID exista y siga no listado
@@ -241,19 +242,21 @@ def huella(archivo):
 
 # ---------------------------------------------------------------- Órdenes
 
-def subir(a, sustituir):
+def subir(a, modo):
     archivo = Path(a.archivo)
     if not archivo.is_file():
         sys.exit(f'No existe {archivo}')
     r = leer()
     viejo = r['videos'].get(a.clave)
+    sustituir = modo == 'sustituir' or (modo == 'publicar' and viejo)
     if viejo and not sustituir:
         sys.exit(f'La clave {a.clave} ya existe ({viejo["youtube"]}): usa «sustituir».')
     if sustituir and not viejo:
         sys.exit(f'La clave {a.clave} no existe: usa «subir».')
     sha = huella(archivo)
     if viejo and viejo.get('sha256') == sha:
-        sys.exit(f'{archivo.name} es idéntico al que ya está subido: nada que hacer.')
+        print(f'{a.clave}: {archivo.name} es idéntico al que ya está subido; nada que hacer.')
+        sys.exit(0 if modo == 'publicar' else 1)
     titulo = a.titulo or (viejo or {}).get('titulo')
     if not titulo:
         sys.exit('Falta --titulo')
@@ -359,7 +362,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     s = p.add_subparsers(dest='orden', required=True)
     s.add_parser('autorizar')
-    for nombre in ('subir', 'sustituir'):
+    for nombre in ('subir', 'sustituir', 'publicar'):
         o = s.add_parser(nombre)
         o.add_argument('clave')
         o.add_argument('archivo')
@@ -377,10 +380,19 @@ def main():
     o.add_argument('--si', action='store_true')
     s.add_parser('quitar').add_argument('clave')
     a = p.parse_args()
-    {'autorizar': lambda _: autorizar(), 'subir': lambda a: subir(a, False), 'sustituir': lambda a: subir(a, True),
+    {'autorizar': lambda _: autorizar(), 'subir': lambda a: subir(a, 'subir'), 'sustituir': lambda a: subir(a, 'sustituir'),
+     'publicar': lambda a: subir(a, 'publicar'),
      'retocar': retocar, 'lista': lista, 'enlace': enlace, 'comprobar': comprobar, 'purgar': purgar,
      'quitar': quitar}[a.orden](a)
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except urllib.error.HTTPError as e:
+        try:
+            error = json.loads(e.read().decode())['error']
+            motivo = ', '.join(x.get('reason', '') for x in error.get('errors', []))
+            sys.exit(f'YouTube respondió {e.code} ({motivo}): {error.get("message", "")}')
+        except (ValueError, KeyError):
+            sys.exit(f'YouTube respondió {e.code}')
