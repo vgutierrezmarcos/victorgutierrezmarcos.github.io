@@ -3,10 +3,11 @@
 
     python3 scripts/play.py estado                          # qué versión hay en cada pista
     python3 scripts/play.py subir app.aab [--pistas alpha,production] [--notas "…" | --notas-archivo f.txt]
+                                [--video-clave promo-app] [--graficos app/play-store/graficos]
     python3 scripts/play.py promocionar [--de alpha] [--a production] [--fraccion 0.2]
     python3 scripts/play.py despliegue 0.5                  # producción escalonada: sube el porcentaje
     python3 scripts/play.py despliegue completar | detener | reanudar
-    python3 scripts/play.py ficha [--video-clave promo-app | --video URL]
+    python3 scripts/play.py ficha [--video-clave promo-app | --video URL] [--graficos app/play-store/graficos]
     python3 scripts/play.py resenas [--dias 30]
     python3 scripts/play.py responder ID_RESEÑA "texto"
 
@@ -119,6 +120,31 @@ class Edicion:
         return self.api.pedir('POST', f'{SUBIDA}/edits/{self.id}/bundles?uploadType=media', aab.read_bytes(),
                               'application/octet-stream', espera=900)['versionCode']
 
+    def poner_video(self, video):
+        url = f'{self.url}/listings/{IDIOMA}'
+        antes = self.api.pedir('GET', url).get('video')
+        self.api.pedir('PATCH', url, {'video': video})
+        print(f'Vídeo de la ficha: {antes or "ninguno"} → {video}')
+
+    def poner_graficos(self, carpeta):
+        """Sustituye icono, gráfico destacado y capturas por los de la carpeta
+        (generar-graficos-play.py): capturas/ para el teléfono y tablet/ para las
+        tabletas de 7 y 10 pulgadas."""
+        carpeta = Path(carpeta)
+        tipos = {'icon': [carpeta / 'icono-512.png'], 'featureGraphic': [carpeta / 'grafico-destacado.png'],
+                 'phoneScreenshots': sorted((carpeta / 'capturas').glob('*.png')),
+                 'sevenInchScreenshots': sorted((carpeta / 'tablet').glob('*.png')),
+                 'tenInchScreenshots': sorted((carpeta / 'tablet').glob('*.png'))}
+        for tipo, archivos in tipos.items():
+            archivos = [f for f in archivos if f.is_file()]
+            if not archivos:
+                continue
+            self.api.pedir('DELETE', f'{self.url}/listings/{IDIOMA}/{tipo}')
+            for f in archivos:
+                self.api.pedir('POST', f'{SUBIDA}/edits/{self.id}/listings/{IDIOMA}/{tipo}?uploadType=media',
+                               f.read_bytes(), 'image/png')
+            print(f'{tipo}: {len(archivos)} imagen(es)')
+
     def confirmar(self, enviar=False):
         """Con enviar, a revisión (sin cancelar nunca lo que ya esté en ella);
         sin enviar, Google valida la edición y se descarta: no cambia nada."""
@@ -132,6 +158,14 @@ class Edicion:
 
 
 # ---------------------------------------------------------------- Órdenes
+
+def _video(a):
+    if getattr(a, 'video_clave', None):
+        registro = json.loads((Path(__file__).resolve().parent.parent / 'videos.json').read_text())
+        v = registro['videos'].get(a.video_clave) or sys.exit(f'No está la clave {a.video_clave} en videos.json')
+        return f'https://www.youtube.com/watch?v={v["youtube"]}'
+    return getattr(a, 'video', None)
+
 
 def _vigente(pista):
     """La versión que manda en una pista: la última no borrador."""
@@ -177,6 +211,10 @@ def subir(a):
     pistas = a.pistas.split(',')
     for pista in pistas:
         e.poner_pista(pista, [version])
+    if video := _video(a):
+        e.poner_video(video)
+    if a.graficos:
+        e.poner_graficos(a.graficos)
     e.confirmar(a.enviar)
     print(f'{version["name"]} en {" y ".join(pistas)}' + (' como borrador.' if a.borrador else _aviso(a.enviar)))
 
@@ -221,20 +259,18 @@ def despliegue(a):
 
 def ficha(a):
     e = Edicion(Api())
-    url = f'{e.url}/listings/{IDIOMA}'
-    actual = e.api.pedir('GET', url)
-    video = a.video
-    if a.video_clave:
-        registro = json.loads((Path(__file__).resolve().parent.parent / 'videos.json').read_text())
-        v = registro['videos'].get(a.video_clave) or sys.exit(f'No está la clave {a.video_clave} en videos.json')
-        video = f'https://www.youtube.com/watch?v={v["youtube"]}'
-    if not video:
+    video = _video(a)
+    if not video and not a.graficos:
+        actual = e.api.pedir('GET', f'{e.url}/listings/{IDIOMA}')
         e.descartar()
         print(f'Título: {actual.get("title")}\nBreve: {actual.get("shortDescription")}\nVídeo: {actual.get("video") or "ninguno"}')
         return
-    e.api.pedir('PATCH', url, {'video': video})
+    if video:
+        e.poner_video(video)
+    if a.graficos:
+        e.poner_graficos(a.graficos)
     e.confirmar(a.enviar)
-    print(f'Vídeo de la ficha: {actual.get("video") or "ninguno"} → {video}' + _aviso(a.enviar))
+    print('Ficha' + _aviso(a.enviar))
 
 
 def resenas(a):
@@ -267,6 +303,8 @@ def main():
     o.add_argument('--notas')
     o.add_argument('--notas-archivo')
     o.add_argument('--borrador', action='store_true')
+    o.add_argument('--video-clave', help='vídeo de la ficha: clave de videos.json (p. ej. promo-app)')
+    o.add_argument('--graficos', help='carpeta de gráficos de la ficha (app/play-store/graficos)')
     o.add_argument('--enviar', action='store_true', help='mandar a revisión ya (solo con permiso de Víctor)')
     o = s.add_parser('promocionar')
     o.add_argument('--enviar', action='store_true', help='mandar a revisión ya (solo con permiso de Víctor)')
@@ -279,6 +317,7 @@ def main():
     o = s.add_parser('ficha')
     o.add_argument('--video', help='URL de YouTube')
     o.add_argument('--video-clave', help='clave de videos.json (p. ej. promo-app)')
+    o.add_argument('--graficos', help='carpeta de gráficos de la ficha (app/play-store/graficos)')
     o.add_argument('--enviar', action='store_true', help='mandar a revisión ya (solo con permiso de Víctor)')
     s.add_parser('resenas').add_argument('--dias', type=int, default=30)
     o = s.add_parser('responder')

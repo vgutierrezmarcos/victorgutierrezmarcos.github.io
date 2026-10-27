@@ -76,7 +76,7 @@ void main() {
     final excepciones = <Object>[];
     Future<void> captura(String nombre) async {
       await tester.pumpAndSettle();
-      await expectLater(find.byType(MaterialApp), matchesGoldenFile('../promo/capturas/$nombre.png'));
+      await expectLater(find.byType(MaterialApp), matchesGoldenFile(rutaCaptura(nombre)));
       // Si una pantalla ha fallado (p. ej. un desbordamiento), que se sepa en cuál.
       final e = tester.takeException();
       if (e != null) {
@@ -208,7 +208,7 @@ void main() {
     await captura('pizarra');
     Navigator.of(tester.element(find.byType(PizarraPage))).pop();
     await tester.pumpAndSettle();
-    tester.view.physicalSize = const Size(1080, 2340);
+    tester.view.physicalSize = tamCaptura;
     await tester.pumpAndSettle();
     // Los avisos: lo que pide la app al abrirla por primera vez.
     showModalBottomSheet<void>(context: tester.element(find.byType(Scaffold).first), isScrollControlled: true, showDragHandle: true, builder: (_) => const HojaPermisos());
