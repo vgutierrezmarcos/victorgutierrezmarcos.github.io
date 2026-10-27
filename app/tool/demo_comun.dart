@@ -58,6 +58,13 @@ import 'package:tcee_app/data/repos/usuario_repo.dart';
 /// Lee un JSON de la web (rutas relativas a app/).
 Map<String, dynamic> leerJson(String ruta) => jsonDecode(File(ruta).readAsStringSync()) as Map<String, dynamic>;
 
+/// Capturas de tableta para la ficha de Google Play (`flutter test … --dart-define=TABLETA=true`):
+/// 1920 × 1080 a 1,5 de densidad (1280 × 720 puntos), en promo/capturas-tableta/.
+const capturasTableta = bool.fromEnvironment('TABLETA');
+const tamCaptura = capturasTableta ? Size(1920, 1080) : Size(1080, 2340);
+const densidadCaptura = capturasTableta ? 1.5 : 2.625;
+String rutaCaptura(String nombre) => '../promo/${capturasTableta ? 'capturas-tableta' : 'capturas'}/$nombre.png';
+
 /// Versión de pubspec.yaml, para el pie de la pantalla Más.
 String versionApp() => RegExp(r'^version:\s*([\d.]+)', multiLine: true).firstMatch(File('pubspec.yaml').readAsStringSync())!.group(1)!;
 
@@ -516,8 +523,8 @@ class Recorrido {
   /// Pone la vista de un móvil de 1080 × 2340 a 2,625 de densidad (411 × 891 puntos).
   static void vistaMovil(WidgetTester tester) {
     Arranque.omitir = true;
-    tester.view.physicalSize = const Size(1080, 2340);
-    tester.view.devicePixelRatio = 2.625;
+    tester.view.physicalSize = tamCaptura;
+    tester.view.devicePixelRatio = densidadCaptura;
     addTearDown(tester.view.reset);
     // En los tests las sombras se pintan como bloques negros si no se activan.
     debugDisableShadows = false;
@@ -556,8 +563,10 @@ class Recorrido {
   Future<void> pestana(String nombre) async {
     // La barra inferior siempre está a la vista: sin `ensureVisible`, que desde
     // la 1.20.x dejaba el toque fuera de la barra (26 oct. 2026).
+    // En pantallas anchas (tableta) las pestañas van en un raíl lateral.
+    final barra = find.byWidgetPredicate((w) => w is NavigationBar || w is NavigationRail);
     for (var i = 0; i < 2; i++) {
-      await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)).first);
+      await tester.tap(find.descendant(of: barra, matching: find.text(nombre)).first);
       await tester.pumpAndSettle();
     }
   }

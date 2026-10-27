@@ -50,7 +50,7 @@ import 'package:tcee_app/widgets/comunes.dart';
 import 'package:tcee_app/features/temario/tema_page.dart';
 import 'package:tcee_app/theme/app_theme.dart';
 
-import 'demo_comun.dart' show cajaAppSinPrimerosPasos, versionApp;
+import 'demo_comun.dart' show cajaAppSinPrimerosPasos, densidadCaptura, rutaCaptura, tamCaptura, versionApp;
 
 Map<String, dynamic> _json(String ruta) => jsonDecode(File(ruta).readAsStringSync()) as Map<String, dynamic>;
 
@@ -79,8 +79,8 @@ void main() {
 
   /// Móvil de 1080 × 2340 a 2,625 de densidad, como en capturas_test.dart.
   void movil(WidgetTester tester) {
-    tester.view.physicalSize = const Size(1080, 2340);
-    tester.view.devicePixelRatio = 2.625;
+    tester.view.physicalSize = tamCaptura;
+    tester.view.devicePixelRatio = densidadCaptura;
     addTearDown(tester.view.reset);
     debugDisableShadows = false;
   }
@@ -90,7 +90,7 @@ void main() {
 
   Future<void> captura(WidgetTester tester, String nombre) async {
     await tester.pumpAndSettle();
-    await expectLater(find.byType(MaterialApp), matchesGoldenFile('../promo/capturas/$nombre.png'));
+    await expectLater(find.byType(MaterialApp), matchesGoldenFile(rutaCaptura(nombre)));
   }
 
   Future<List<Override>> base(Oposicion o, Temario temario, UsuarioRepo usuario, PlanRepo plan, PreparadorRepo preparador) async {
@@ -261,7 +261,7 @@ void main() {
 
     Future<void> pestana(String nombre) async {
       for (var i = 0; i < 2; i++) {
-        await tocar(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
+        await tocar(find.descendant(of: find.byWidgetPredicate((w) => w is NavigationBar || w is NavigationRail), matching: find.text(nombre)));
       }
     }
 
@@ -288,7 +288,7 @@ void main() {
     await bajar(350);
     await tocar(parte);
     await captura(tester, 'dce-temario');
-    Navigator.of(tester.element(find.byType(NavigationBar))).push(MaterialPageRoute(builder: (_) => TemaPage(tema: temario.tema('3.A.9')!)));
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => TemaPage(tema: temario.tema('3.A.9')!)));
     await captura(tester, 'dce-tema');
     Navigator.of(tester.element(find.byType(TemaPage))).pop();
     await tester.pumpAndSettle();
@@ -306,7 +306,7 @@ void main() {
     await captura(tester, 'dce-cantar');
 
     // ------------------------------------------- Clase cancelada: sustituto
-    Navigator.of(tester.element(find.byType(NavigationBar))).push(MaterialPageRoute(builder: (_) => const CantePage(id: 'dc')));
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const CantePage(id: 'dc')));
     await tester.pumpAndSettle();
     await tocar(find.text('Pedir una clase suelta'));
     await captura(tester, 'dce-buscar-preparador');
