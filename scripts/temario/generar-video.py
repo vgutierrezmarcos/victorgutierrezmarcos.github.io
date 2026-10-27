@@ -126,10 +126,55 @@ después de su contenido, como a mano.
 Franjas y guion: lo que no tenga Palatino (→ ⇒ ≫ ℝ ∈ ᵢ ⱼ…) sale con Cambria,
 Cambria Math o Segoe UI Symbol; si ninguna lo tiene, el script avisa.
 
+Formato «slides» (`formato: slides` en escenas.yaml; la guía del dictamen, 1D01; Víctor,
+27/10/2026). Una sucesión de slides con libertad total para usar la pizarra: slide entera,
+pizarra entera, slide con un panel de pizarra al lado o anotaciones a mano encima de la slide.
+Sin franja «Se dice» ni «Apunte» ni tarjetas de apoyo: la explicación es la voz («di», que es
+también la nota de cada slide y va al .srt y a videos/<tema>-notas.json, con el inicio de cada
+slide y su sitio en la guía, para sacar luego una presentación con notas). La cabecera lleva el
+tiempo transcurrido sobre el total («38′ / 90′») y se mantienen los esquemas entre apartados y
+bloques. Los pasos van dentro de cada slide; los cantes (formato por defecto) no cambian.
+
+    formato: slides
+    escenas:
+      - bloque: "I. Perfil cíclico"
+        titulo: "I.3. Medidores: crecimiento, brecha y renta"   # cabecera y esquema, como siempre
+        guia: "I.3"                    # apartado de la guía (por defecto de sus slides)
+        estructura: [...]              # en la introducción y la conclusión, con «parte:» en los pasos
+        slides:
+          - titulo: "Crecimiento del PIB real"
+            guia: "I.3 > Crecimiento del PIB real"   # esquina «§ I.3 · pág. 9» (páginas del .aux)
+            pizarra: {ancho: 38, lado: derecha, rejilla: "100"}   # panel; «pizarra: 100», pizarra entera
+            columnas: [55, 45]         # opcional; cada elemento con «col: 2»
+            vertical: centro           # opcional
+            contenido: [...]           # lo que se ve desde el principio
+            pasos:
+              - di: "Lo que dice la voz."
+                muestra: [...]         # lo que aparece en este paso (de golpe, como en una presentación)
+                pizarra: [{formula: '…'}]   # lo que se escribe en el panel (como en los cantes:
+                                             # rejilla, borrar, conservar, zona, gráficos por capas)
+                anota: [{rodea: "umbrales/fila 3"}, {escribe: "≈ potencial", junto: "umbrales/fila 3"}]
+
+  Elementos de slide: {vinetas: [..]} («>» sangra; numerada: true o 3), {texto: .., grande,
+  centrado, cursiva}, {formula: ..}, {grafico: nombre, capa, alto, pie} (sin «alto», ocupa el
+  sitio que quede; con otra «capa» en un paso posterior, se le añade esa capa), {tabla: true,
+  cabecera: [..], filas: [[..]], anchos: [..], destaca: [..]}, {caja: clave|pregunta|nota|ejemplo|
+  umbral|anexo, texto: .. o [..], titulo}, {cifras: [[cifra, texto], ..]} y {flujo: [..]}. Todos
+  admiten «id» (para anotarlos) y «col». En los textos, **negrita** y *cursiva*.
+  Anotaciones a mano (en rojo; «color» para otro): rodea, subraya, tacha, flecha (con «desde» o
+  «lado»), escribe y formula (junto a algo, con «lado», o en «pos: [x, y]» de la slide).
+  Selectores: «id», «id/fila 2» (0, la cabecera), «id/celda 2,1», «id/vineta 3», «id/cifra 1»,
+  «id/paso 2» (flujo) e «id/zona x0,y0,x1,y1» (fracciones de la caja: un dato de un gráfico).
+  Ningún texto se corta: cada slide se mide y, si no cabe, se reduce la letra hasta el 80 %; si
+  aun así no cabe (o una palabra no cabe en su caja, un carácter no tiene fuente, una anotación
+  tapa algo o se sale, o la cabecera o el esquema recortarían un título), es un ERROR con
+  minuto, escena y texto: --medir termina con código 4 y el montaje no se hace.
+
 Salida (fuera de git, en oposicion/temario/videos/, que está en .gitignore):
   videos/<tema>.mp4          el vídeo
   videos/<tema>.srt          subtítulos (para YouTube)
   videos/<tema>-youtube.txt  título, descripción y capítulos para YouTube
+  videos/<tema>-notas.json   (slides) las notas de cada slide, con su inicio y su sitio en la guía
 
 Voces (voz.motor): «edge» (Edge TTS neural, gratis), «xtts» (voz clonada a
 partir de una grabación, con scripts/temario/voz-xtts.py en ~/.venvs/voz) o
@@ -1025,9 +1070,12 @@ def partes_formula(png, img):
 class Rejilla:
     """División de la pizarra en 1-3 columnas y cada columna en 1 o 2 filas."""
 
-    def __init__(self, spec=None, lineas=None):
+    def __init__(self, spec=None, lineas=None, ancho=None, alto=None):
         """spec: "100", "40|60(55/45)" o {columnas, filas, lineas}; lineas, si se da,
-        manda sobre la del dict (así `lineas: true` puede ir junto a `rejilla: "40|60"`)."""
+        manda sobre la del dict (así `lineas: true` puede ir junto a `rejilla: "40|60"`).
+        ancho y alto: los de la pizarra (por defecto, la de los cantes; en las slides de la
+        guía, el panel de pizarra)."""
+        self.W, self.H = ancho or PZ_W, alto or PZ_H
         lineas_spec, filas = False, {}
         if spec is None or isinstance(spec, (int, float)):
             cols = [100]
@@ -1051,17 +1099,17 @@ class Rejilla:
             raise ValueError(f'Rejilla no válida: {spec!r} (de 1 a 3 columnas; cada una con 1 o 2 filas)')
         self.columnas, x = [], 0.0
         for c in cols:
-            ancho = PZ_W * c / sum(cols)
+            ancho = self.W * c / sum(cols)
             self.columnas.append((x, x + ancho))
             x += ancho
         self.filas = {}
         for i in range(1, len(cols) + 1):
             if i in filas:
                 a, b = filas[i]
-                corte = PZ_H * a / (a + b)
-                self.filas[i] = [(0, corte), (corte, PZ_H)]
+                corte = self.H * a / (a + b)
+                self.filas[i] = [(0, corte), (corte, self.H)]
             else:
-                self.filas[i] = [(0, PZ_H)]
+                self.filas[i] = [(0, self.H)]
         self.lineas = lineas
         self.clave = (tuple(cols), tuple(sorted((k, tuple(v)) for k, v in filas.items())), lineas)
 
@@ -1094,13 +1142,13 @@ class Rejilla:
             for c in range(c1, c2 + 1):
                 celdas.append(f'{c}{f2}' if len(self.filas[c]) == 2 else str(c))
         else:
-            y0, y1 = 0, PZ_H
+            y0, y1 = 0, self.H
             for c in range(c1, c2 + 1):
                 celdas.extend(self.celdas_columna(c))
         return (x0, y0, x1, y1), celdas
 
     def segmentos(self):
-        segs = [((x1, 12), (x1, PZ_H - 12)) for _, x1 in self.columnas[:-1]]
+        segs = [((x1, 12), (x1, self.H - 12)) for _, x1 in self.columnas[:-1]]
         for c, fs in self.filas.items():
             if len(fs) == 2:
                 x0, x1 = self.columnas[c - 1]
@@ -1108,7 +1156,7 @@ class Rejilla:
         return segs
 
     def fondo(self):
-        img = Image.new('RGB', (PZ_W, PZ_H), PIZARRA)
+        img = Image.new('RGB', (self.W, self.H), PIZARRA)
         if self.lineas:
             d = ImageDraw.Draw(img)
             for a, b in self.segmentos():
@@ -1121,9 +1169,10 @@ class Pizarra:
     """Coloca lo que se escribe en la rejilla (cada cosa debajo de lo último de su
     zona) y devuelve las operaciones de dibujo y de borrado para el tablero."""
 
-    def __init__(self, tema, carpeta):
+    def __init__(self, tema, carpeta, ancho=None, alto=None):
         self.tema, self.carpeta = tema, carpeta
-        self.rejilla = Rejilla(None)
+        self.W, self.H = ancho or PZ_W, alto or PZ_H
+        self.rejilla = Rejilla(None, None, self.W, self.H)
         self.fondo = self.rejilla.fondo()
         self.elementos = []           # {'celdas': set, 'y_fin': y, 'caja': (x0, y0, x1, y1)}
         self.graficos = {}
@@ -1169,7 +1218,7 @@ class Pizarra:
     def cambiar_rejilla(self, spec, conservar=None, lineas=None):
         """Cambia la rejilla y borra la pizarra, salvo lo escrito en las zonas «conservar» (de la
         rejilla vieja), que se queda donde está y pasa a la celda de la rejilla nueva que lo contiene."""
-        nueva = Rejilla(spec, lineas)
+        nueva = Rejilla(spec, lineas, self.W, self.H)
         if nueva.clave == self.rejilla.clave:
             return []
         guardar = self._celdas_de(conservar)
@@ -1177,7 +1226,7 @@ class Pizarra:
         graficos = {n: g for n, g in self.graficos.items() if g['celdas'] <= guardar} if guardar else {}
         ops = []
         if len(quedan) < len(self.elementos) or self.rejilla.lineas:
-            op = op_borrar((0, 0, PZ_W, PZ_H), Image.new('RGB', (PZ_W, PZ_H), PIZARRA))
+            op = op_borrar((0, 0, self.W, self.H), Image.new('RGB', (self.W, self.H), PIZARRA))
             if quedan:
                 op['conservar'] = [e['caja'] for e in quedan]
             ops.append(op)
@@ -1196,7 +1245,7 @@ class Pizarra:
                 largo = math.dist(a, b)
                 partes.append({'tipo': 'trazo', 'tramos': [[a, b]], 'grosor': 7, 'caja': None,
                                'dur': largo / VEL_REGLA + 0.1})
-            ops.append({'tipo': 'lineas', 'caja': (0, 0, PZ_W, PZ_H), 'fondo': self.fondo, 'partes': partes})
+            ops.append({'tipo': 'lineas', 'caja': (0, 0, self.W, self.H), 'fondo': self.fondo, 'partes': partes})
         return ops
 
     def borrar(self, cuales, conservar=None):
@@ -1205,7 +1254,7 @@ class Pizarra:
         else:
             zonas = [str(z) for z in (cuales if isinstance(cuales, list) else [cuales])]
         if zonas is None:
-            cajas, celdas = [(0, 0, PZ_W, PZ_H)], set(self.rejilla.todas())
+            cajas, celdas = [(0, 0, self.W, self.H)], set(self.rejilla.todas())
         else:
             cajas, celdas = [], set()
             for z in zonas:
@@ -1539,6 +1588,10 @@ class Pantallas:
         self.licencia = licencia_corta(anio_tema(tema), self.exclusivo)
         self.bloques = guion['bloques']
         self.escenas = guion['escenas']
+        # Formato «slides» (la guía del dictamen): en la cabecera, el tiempo transcurrido sobre el
+        # total («38′ / 90′»), y ningún texto se puede recortar (lo que no cabe se apunta en «cortes»)
+        self.slides = guion.get('formato') == 'slides'
+        self.cortes = []
         total = sum(b.get('minutos', 1) for b in self.bloques)
         # Cada bloque ocupa en la cabecera lo que dura (como mínimo 200 px)
         anchos = [max(200, (ANCHO - 60) * b.get('minutos', 1) / total) for b in self.bloques]
@@ -1572,6 +1625,12 @@ class Pantallas:
                 else:
                     lista.append({'clave': clave, 'etiqueta': etiqueta, 'escenas': [i]})
             self.apartados[b['nombre']] = lista
+
+    def _recortar(self, d, texto, fnt, ancho):
+        corto = recortar(d, texto, fnt, ancho)
+        if self.slides and corto != texto and texto not in self.cortes:
+            self.cortes.append(texto)
+        return corto
 
     def clave_apartado(self, i):
         e = self.escenas[i]
@@ -1623,11 +1682,13 @@ class Pantallas:
         izq = self.tema.etiqueta
         d.text((30, 11), izq, font=F_BARRA, fill='white')
         x = 30 + d.textlength(izq, font=F_BARRA) + 22
-        # Sin decimales y con primas, como en el tema (CRITERIOS.md): 12′05″ / 30′ · quedan 17′55″
-        reloj = f'{segundos_texto(t)} / {segundos_texto(total)}   ·   quedan {segundos_texto(total - t)}'
+        # Sin decimales y con primas, como en el tema (CRITERIOS.md): 12′05″ / 30′ · quedan 17′55″;
+        # en las slides, solo los minutos transcurridos sobre el total: 38′ / 90′
+        reloj = (f'{int(t // 60)}′ / {int(round(total / 60))}′' if self.slides else
+                 f'{segundos_texto(t)} / {segundos_texto(total)}   ·   quedan {segundos_texto(total - t)}')
         w_reloj = d.textlength(reloj, font=F_BARRA_L)
         d.text((ANCHO - 30 - w_reloj, 11), reloj, font=F_BARRA_L, fill=(236, 226, 246))
-        d.text((x, 11), recortar(d, e.get('titulo') or e['bloque'], F_BARRA_L, ANCHO - 90 - w_reloj - x),
+        d.text((x, 11), self._recortar(d, e.get('titulo') or e['bloque'], F_BARRA_L, ANCHO - 90 - w_reloj - x),
                font=F_BARRA_L, fill=(236, 226, 246))
         # Fila 2: bloques de la exposición
         d.rectangle([0, 54, ANCHO, 98], fill=MORADO_OSCURO)
@@ -1658,7 +1719,7 @@ class Pantallas:
                     ancho_min = 0
             # «corto» (opcional): el nombre que cabe en la cabecera si hay muchos bloques (la guía
             # del dictamen); el esquema de la exposición usa siempre el nombre completo
-            d.text((xt, 63), recortar(d, b.get('corto') or b['nombre'], fnt, x1 - xt - 10 - ancho_min), font=fnt,
+            d.text((xt, 63), self._recortar(d, b.get('corto') or b['nombre'], fnt, x1 - xt - 10 - ancho_min), font=fnt,
                    fill=color)
         # Fila 3: apartados del bloque actual (o partes de la introducción y la conclusión)
         d.rectangle([0, 98, ANCHO, CAB - 6], fill=(72, 33, 102))
@@ -1672,7 +1733,7 @@ class Pantallas:
                     d.line([(x0 - 14, cy), (x0 + 2, cy)], fill=LILA_APAGADO, width=2)
                 fnt = F_PASO_N if estado == 'actual' else F_PASO
                 ancho_puntos = 14 * len(puntos) + (8 if puntos else 0)
-                texto = recortar(d, etiqueta, fnt, espacio - 60 - ancho_puntos)
+                texto = self._recortar(d, etiqueta, fnt, espacio - 60 - ancho_puntos)
                 w = d.textlength(texto, font=fnt)
                 if estado == 'actual':
                     d.rounded_rectangle([x0 - 2, 103, x0 + 40 + w + ancho_puntos + 10, 139], radius=17,
@@ -1697,8 +1758,9 @@ class Pantallas:
                     else:
                         d.ellipse([px - rr, cy - rr, px + rr, cy + rr], outline=LILA_APAGADO, width=2)
                     px += 14
-        # Marca de agua discreta de los exclusivos, en todos los fotogramas (sobre la barra de progreso)
-        if self.exclusivo:
+        # Marca de agua discreta de los exclusivos, en todos los fotogramas (sobre la barra de progreso;
+        # en las slides, al pie de cada slide, porque aquí taparía los pasos de la tercera fila)
+        if self.exclusivo and not self.slides:
             d.text((ANCHO - 30, CAB - 10), self.licencia, font=F_MARCO, fill=(150, 120, 172), anchor='rs')
         # Barra de progreso
         d.rectangle([0, CAB - 6, ANCHO, CAB], fill=(90, 60, 112))
@@ -1792,7 +1854,7 @@ class Pantallas:
             elif estado == 'actual' and k == destino:
                 m = altos[tipo] / altos_base[tipo]
                 d.polygon([(x + 2, ys[k] + 8 * m), (x + 2, ys[k] + 32 * m), (x + 20, ys[k] + 20 * m)], fill=MORADO)
-            d.text((x + 36, ys[k]), recortar(d, texto, fnt, ancho - x - 90), font=fnt, fill=color)
+            d.text((x + 36, ys[k]), self._recortar(d, texto, fnt, ancho - x - 90), font=fnt, fill=color)
         return img
 
     def rotulo_duracion(self):
@@ -2026,8 +2088,12 @@ def main():
         # Solo el motor edge toma los valores por defecto (su velocidad es «+15%»;
         # en xtts y voicestudio es un número y no debe colarse)
         voz = {**VOZ_DEFECTO, **voz}
-    for aviso in comprobar_guion(guion, tema):
+    # Formato «slides» (la guía del dictamen): pasos dentro de cada slide; se aplanan para la voz
+    slides = guion.get('formato') == 'slides'
+    for aviso in (comprobar_slides(guion) if slides else comprobar_guion(guion, tema)):
         print('AVISO:', aviso, flush=True)
+    if slides:
+        preparar_slides(guion)
     total = float(guion.get('duracion', 1800))
     titulo = guion.get('titulo') or tema.titulo()
     corto = guion.get('titulo_corto') or re.split(r'[.:]', titulo)[0].strip()
@@ -2076,6 +2142,7 @@ def main():
         k = 1
         for i, e in enumerate(escenas):
             for p in e.get('pasos', []):
+                t += p.get('_pausa_antes', 0.0)       # solo en las slides (cambio de slide)
                 dur = duraciones[k] if dichos[k] else 1.2
                 hueco = max(dur, minimos.get(len(pasos), 0.0))
                 pasos.append({'escena': i, 'paso': p, 'inicio': t, 'dur': dur, 'hueco': hueco, 'audio': k})
@@ -2239,11 +2306,25 @@ def main():
             p['inicio'] /= factor
             p['dur'] /= factor
             p['hueco'] /= factor
-        ops_m, _, avisos_m, _, _ = planificar(prueba, total - CIERRE)
-        programar(ops_m, avisos_m)
+        errores_m = []
+        if slides:
+            plan_m = planificar_slides(tema, carpeta, escenas, pantallas, prueba, total - CIERRE)
+            avisos_m, errores_m = plan_m['avisos'], plan_m['errores']
+            # Cuándo empieza cada slide (para revisar fotogramas sueltos con --fotogramas)
+            json.dump(plan_m['notas'], open(os.path.join(carpeta, 'slides-medida.json'), 'w', encoding='utf-8'),
+                      ensure_ascii=False, indent=1)
+        else:
+            ops_m, _, avisos_m, _, _ = planificar(prueba, total - CIERRE)
+            programar(ops_m, avisos_m)
         for aviso in dict.fromkeys(avisos_m):
             print('AVISO:', aviso)
         print(f'{len(set(avisos_m))} avisos de pizarra')
+        if slides:
+            for error in errores_m:
+                print('ERROR:', error)
+            print(f'{len(errores_m)} errores de maquetación (texto que no cabe o que se cortaría)')
+            if errores_m:
+                sys.exit(4)
         if ritmo_fuera:
             sys.exit(3)
         return
@@ -2276,8 +2357,17 @@ def main():
                         '-ar', str(MUESTREO), audio_wav], check=True)
 
     # 4. Plan definitivo de la pizarra --------------------------------------------------------
-    ops, tarjetas, avisos, subtitulos, capitulos = planificar(pasos, contenido_fin)
-    programar(ops, avisos)
+    if slides:
+        plan = planificar_slides(tema, carpeta, escenas, pantallas, pasos, contenido_fin)
+        if plan['errores']:
+            for error in plan['errores']:
+                print('ERROR:', error)
+            sys.exit(f'{len(plan["errores"])} errores de maquetación: no se monta un vídeo con texto cortado')
+        ops, tarjetas, avisos = [], plan['tarjetas'], plan['avisos']
+        subtitulos, capitulos = plan['subtitulos'], plan['capitulos']
+    else:
+        ops, tarjetas, avisos, subtitulos, capitulos = planificar(pasos, contenido_fin)
+        programar(ops, avisos)
     for p in pasos:
         p['fin'] = None
     for a, b in zip(pasos, pasos[1:]):
@@ -2314,99 +2404,103 @@ def main():
                                     '-t', f'{tramo[1] - tramo[0]:.3f}', '-movflags', '+faststart', mp4],
                                    stdin=subprocess.PIPE)
 
-    tablero = Tablero(ops)
-    primer_paso = {}
-    for q in pasos:
-        primer_paso.setdefault(q['escena'], q)
-    portada = pantallas.portada().tobytes()
-    cierre = pantallas.cierre().tobytes()
-    cache_guion, cache_fondo, cache_tarjeta = {}, {}, {}
-    cabecera_clave, cabecera_bytes = None, None
-    cuerpo_clave, cuerpo_img, cuerpo_bytes = None, None, None
-    ultimo_de_paso = {}            # n → última imagen del cuerpo mostrada en ese paso
-    n = 0
-    marcos = int(round(total * FPS))
-    siguiente_instante = 0
-    for marco in range(int(round(tramo[0] * FPS)) if not instantes else 0, min(marcos, int(math.ceil(tramo[1] * FPS)))):
-        t = marco / FPS
-        if instantes:
-            if siguiente_instante >= len(instantes):
-                break
-            # Solo se pintan los instantes pedidos (el tablero avanza solo)
-            if t + 1e-9 < instantes[siguiente_instante] - 0.5 / FPS:
-                continue
-        if t < portada_fin or t >= contenido_fin:
-            datos = portada if t < portada_fin else cierre
+    if slides:
+        fotogramas_slides(plan, pasos, escenas, pantallas, total, portada_fin, contenido_fin, tramo, instantes,
+                          proceso, carpeta_f if instantes else None)
+    else:
+        tablero = Tablero(ops)
+        primer_paso = {}
+        for q in pasos:
+            primer_paso.setdefault(q['escena'], q)
+        portada = pantallas.portada().tobytes()
+        cierre = pantallas.cierre().tobytes()
+        cache_guion, cache_fondo, cache_tarjeta = {}, {}, {}
+        cabecera_clave, cabecera_bytes = None, None
+        cuerpo_clave, cuerpo_img, cuerpo_bytes = None, None, None
+        ultimo_de_paso = {}            # n → última imagen del cuerpo mostrada en ese paso
+        n = 0
+        marcos = int(round(total * FPS))
+        siguiente_instante = 0
+        for marco in range(int(round(tramo[0] * FPS)) if not instantes else 0, min(marcos, int(math.ceil(tramo[1] * FPS)))):
+            t = marco / FPS
             if instantes:
-                Image.frombytes('RGB', (ANCHO, ALTO), datos).save(
+                if siguiente_instante >= len(instantes):
+                    break
+                # Solo se pintan los instantes pedidos (el tablero avanza solo)
+                if t + 1e-9 < instantes[siguiente_instante] - 0.5 / FPS:
+                    continue
+            if t < portada_fin or t >= contenido_fin:
+                datos = portada if t < portada_fin else cierre
+                if instantes:
+                    Image.frombytes('RGB', (ANCHO, ALTO), datos).save(
+                        os.path.join(carpeta_f, f"t{t:07.2f}.png"))
+                    siguiente_instante += 1
+                else:
+                    proceso.stdin.write(datos)
+                continue
+            while n + 1 < len(pasos) and pasos[n + 1]['inicio'] <= t:
+                n += 1
+            p = pasos[n]
+            if t < p['inicio']:          # pausa tras la portada
+                p = pasos[0]
+            # Cuerpo
+            if p['modo'] == 'guion':
+                if n not in cache_guion:
+                    cache_guion.clear()
+                    img = Image.new('RGB', (ANCHO, ALTO), PAPEL)
+                    pintar_guion(img, escenas[p['escena']], p['guion'])
+                    cache_guion[n] = img
+                img, clave = cache_guion[n], ('g', n)
+            else:
+                tab, ck = tablero.imagen(t)
+                clave_f = (p['dice'], p['apunte'])
+                if clave_f not in cache_fondo:
+                    cache_fondo.clear()
+                    cache_fondo[clave_f] = fondo_pizarra(*clave_f)
+                clave = ('p', clave_f, ck)
+                if clave == cuerpo_clave:
+                    img = cuerpo_img
+                else:
+                    img = cache_fondo[clave_f].copy()
+                    img.paste(tab, (PZ_X0, PZ_Y0))
+            if p['fundido'] and t - p['inicio'] < FUNDIDO and (n - 1) in ultimo_de_paso:
+                u = (t - p['inicio']) / FUNDIDO
+                img = Image.blend(ultimo_de_paso[n - 1], img, u)
+                clave = clave + ('f', marco)
+            ultimo_de_paso = {n - 1: ultimo_de_paso.get(n - 1), n: img} if (n - 1) in ultimo_de_paso else {n: img}
+            tarjeta = next((c for c in tarjetas if c['c0'] <= t < c['c1']), None)
+            if tarjeta:
+                alfa = min(1.0, (t - tarjeta['c0']) / 0.3, (tarjeta['c1'] - t) / 0.3)
+                u = min(1.0, max(0.0, (t - tarjeta['c0'] - 0.25) / 0.7))
+                ct = (tarjeta['escena'], round(u * 20))
+                if ct not in cache_tarjeta:
+                    if len(cache_tarjeta) > 40:
+                        cache_tarjeta.clear()
+                    cache_tarjeta[ct] = pantallas.tarjeta(tarjeta['escena'], tarjeta['previa'], u)
+                img = con_tarjeta(img, cache_tarjeta[ct], alfa)
+                clave = clave + ('t', marco)
+            if clave != cuerpo_clave:
+                cuerpo_clave, cuerpo_img = clave, img
+                cuerpo_bytes = img.crop((0, CAB, ANCHO, ALTO)).tobytes()
+            # Cabecera
+            escena_cab = p['escena']
+            brillo, brillo_bloque = 0.0, 0.0
+            primero = primer_paso[escena_cab]
+            if primero.get('brillo_desde') is not None and 0 <= t - primero['brillo_desde'] < 2.0:
+                brillo = round(1 - (t - primero['brillo_desde']) / 2.0, 1)
+                brillo_bloque = brillo if primero.get('brillo_bloque') else 0.0
+            cc = (escena_cab, int(t), p['parte'], brillo, brillo_bloque)
+            if cc != cabecera_clave:
+                cabecera_clave = cc
+                cabecera_bytes = pantallas.cabecera(escena_cab, int(t), total, p['parte'], brillo, brillo_bloque).tobytes()
+            if instantes:
+                Image.frombytes('RGB', (ANCHO, ALTO), cabecera_bytes + cuerpo_bytes).save(
                     os.path.join(carpeta_f, f"t{t:07.2f}.png"))
                 siguiente_instante += 1
             else:
-                proceso.stdin.write(datos)
-            continue
-        while n + 1 < len(pasos) and pasos[n + 1]['inicio'] <= t:
-            n += 1
-        p = pasos[n]
-        if t < p['inicio']:          # pausa tras la portada
-            p = pasos[0]
-        # Cuerpo
-        if p['modo'] == 'guion':
-            if n not in cache_guion:
-                cache_guion.clear()
-                img = Image.new('RGB', (ANCHO, ALTO), PAPEL)
-                pintar_guion(img, escenas[p['escena']], p['guion'])
-                cache_guion[n] = img
-            img, clave = cache_guion[n], ('g', n)
-        else:
-            tab, ck = tablero.imagen(t)
-            clave_f = (p['dice'], p['apunte'])
-            if clave_f not in cache_fondo:
-                cache_fondo.clear()
-                cache_fondo[clave_f] = fondo_pizarra(*clave_f)
-            clave = ('p', clave_f, ck)
-            if clave == cuerpo_clave:
-                img = cuerpo_img
-            else:
-                img = cache_fondo[clave_f].copy()
-                img.paste(tab, (PZ_X0, PZ_Y0))
-        if p['fundido'] and t - p['inicio'] < FUNDIDO and (n - 1) in ultimo_de_paso:
-            u = (t - p['inicio']) / FUNDIDO
-            img = Image.blend(ultimo_de_paso[n - 1], img, u)
-            clave = clave + ('f', marco)
-        ultimo_de_paso = {n - 1: ultimo_de_paso.get(n - 1), n: img} if (n - 1) in ultimo_de_paso else {n: img}
-        tarjeta = next((c for c in tarjetas if c['c0'] <= t < c['c1']), None)
-        if tarjeta:
-            alfa = min(1.0, (t - tarjeta['c0']) / 0.3, (tarjeta['c1'] - t) / 0.3)
-            u = min(1.0, max(0.0, (t - tarjeta['c0'] - 0.25) / 0.7))
-            ct = (tarjeta['escena'], round(u * 20))
-            if ct not in cache_tarjeta:
-                if len(cache_tarjeta) > 40:
-                    cache_tarjeta.clear()
-                cache_tarjeta[ct] = pantallas.tarjeta(tarjeta['escena'], tarjeta['previa'], u)
-            img = con_tarjeta(img, cache_tarjeta[ct], alfa)
-            clave = clave + ('t', marco)
-        if clave != cuerpo_clave:
-            cuerpo_clave, cuerpo_img = clave, img
-            cuerpo_bytes = img.crop((0, CAB, ANCHO, ALTO)).tobytes()
-        # Cabecera
-        escena_cab = p['escena']
-        brillo, brillo_bloque = 0.0, 0.0
-        primero = primer_paso[escena_cab]
-        if primero.get('brillo_desde') is not None and 0 <= t - primero['brillo_desde'] < 2.0:
-            brillo = round(1 - (t - primero['brillo_desde']) / 2.0, 1)
-            brillo_bloque = brillo if primero.get('brillo_bloque') else 0.0
-        cc = (escena_cab, int(t), p['parte'], brillo, brillo_bloque)
-        if cc != cabecera_clave:
-            cabecera_clave = cc
-            cabecera_bytes = pantallas.cabecera(escena_cab, int(t), total, p['parte'], brillo, brillo_bloque).tobytes()
-        if instantes:
-            Image.frombytes('RGB', (ANCHO, ALTO), cabecera_bytes + cuerpo_bytes).save(
-                os.path.join(carpeta_f, f"t{t:07.2f}.png"))
-            siguiente_instante += 1
-        else:
-            proceso.stdin.write(cabecera_bytes + cuerpo_bytes)
-        if marco % (FPS * 60) == 0:
-            print(f'  {mmss(t)} · {escenas[p["escena"]].get("titulo") or escenas[p["escena"]]["bloque"]}', flush=True)
+                proceso.stdin.write(cabecera_bytes + cuerpo_bytes)
+            if marco % (FPS * 60) == 0:
+                print(f'  {mmss(t)} · {escenas[p["escena"]].get("titulo") or escenas[p["escena"]]["bloque"]}', flush=True)
 
     if proceso:
         proceso.stdin.close()
@@ -2425,6 +2519,10 @@ def main():
         return
 
     base_salida = os.path.join(SALIDA, f'{tema.archivo}{sufijo}')
+    if slides:
+        # Las notas de cada slide (lo que dice la voz), con su inicio y su sitio en la guía: lo
+        # que haría falta para sacar luego una presentación con notas
+        json.dump(plan['notas'], open(base_salida + '-notas.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     with open(base_salida + '.srt', 'w', encoding='utf-8') as f:
         f.write(f'1\n{srt_tiempo(0)} --> {srt_tiempo(portada_fin - 0.2)}\n{lectura_titulo}\n\n')
         for i, (a, b, texto) in enumerate(subtitulos, 2):
@@ -2436,7 +2534,7 @@ def main():
             f.write(f'{titulo_yt[:100]}\n\n{titulo}\n\n')
             f.write(f'Clase en vídeo de la guía para el dictamen de coyuntura económica (primer ejercicio de la '
                     f'oposición a Técnico Comercial y Economista del Estado), {pantallas.rotulo_duracion().split(" · ")[1]}, '
-                    f'con el guion y la pizarra.\n\nLa guía completa, en la app Oposición TCEE: '
+                    f'{"con diapositivas y pizarra" if slides else "con el guion y la pizarra"}.\n\nLa guía completa, en la app Oposición TCEE: '
                     f'https://www.victorgutierrezmarcos.es/app/\n\nCapítulos:\n')
         else:
             titulo_yt = f'Tema {tema.codigo}: {titulo} | Cante (Oposición TCEE)'
@@ -2466,6 +2564,1152 @@ def main():
     if ritmo_fuera:
         print(f'El ritmo ×{factor:.3f} queda fuera de ×{RITMO_MIN:.2f}–×{RITMO_MAX:.2f}: hay que ajustar el guion')
         sys.exit(3)
+
+
+# --- Formato «slides»: la guía del dictamen (1D01) -----------------------------------------------
+# Decidido por Víctor el 27/10/2026: el vídeo de la guía es una sucesión de slides con libertad
+# total para usar la pizarra (slide entera, pizarra entera, slide con un panel de pizarra al lado o
+# anotaciones a mano encima de la slide). Las slides llevan lo esencial; la explicación es la voz
+# («di», que también es la nota de cada slide y va al .srt). Cada slide dice en una esquina dónde
+# está en la guía («§ I.3 · pág. 10», páginas del .aux). Ningún texto se corta: si algo no cabe,
+# se reduce la letra hasta un mínimo legible y, si aun así no cabe, es un error con minuto, escena
+# y texto (también con --medir). Los cantes (formato por defecto) no usan nada de esta sección.
+
+ORO = (176, 141, 58)
+CUERPO_H = ALTO - CAB
+SL_X0, SL_X1 = 56, ANCHO - 56
+SL_Y0, SL_Y1 = 106, CUERPO_H - 52           # contenido de la slide (coordenadas del cuerpo)
+SL_HUECO = 24                               # entre elementos
+SL_ESCALAS = (1.0, 0.95, 0.9, 0.85, 0.8)    # si no cabe se reduce la letra, hasta el 80 % (mínimo legible)
+GRAFICO_ESCALA_MIN = 1.9                    # píxeles por punto del PDF: por debajo, los rótulos no se leen
+GRAFICO_ALTO_MIN = 230
+PAUSA_SLIDE = 0.3                           # pausa (además de la de paso) al cambiar de slide
+NOTA_FONDO = (247, 243, 231)
+EJEMPLO_FONDO = (240, 239, 236)
+FAMILIAS = {'pala': {'n': 'pala.ttf', 'b': 'palab.ttf', 'i': 'palai.ttf', 'bi': 'palabi.ttf'},
+            'segoe': {'n': 'segoeui.ttf', 'b': 'segoeuib.ttf', 'i': 'segoeuii.ttf', 'bi': 'segoeuiz.ttf'},
+            'mano': {'n': 'segoeprb.ttf', 'b': 'segoeprb.ttf', 'i': 'segoeprb.ttf', 'bi': 'segoeprb.ttf'}}
+CAJAS = {   # tipo: (fondo, raya y título, título por defecto, estilo del texto); como los cuadros de la guía
+    'pregunta': (MORADO_PALIDO, MORADO, 'Qué hay que contestar', 'n'),
+    'clave': (MORADO_PALIDO, MORADO, 'La idea clave', 'n'),
+    'nota': (NOTA_FONDO, (150, 115, 35), 'Nota al opositor', 'n'),
+    'ejemplo': (EJEMPLO_FONDO, (105, 102, 110), 'Ejemplo de redacción', 'i'),
+    'umbral': (SALVIA, (64, 98, 52), 'Umbrales', 'n'),
+    'anexo': (APOYO_FONDO, (70, 95, 140), 'Del anexo', 'n'),
+}
+_FS = {}
+
+
+def fs(nombre, tam):
+    clave = (nombre, max(8, int(round(tam))))
+    if clave not in _FS:
+        _FS[clave] = fuente(nombre, clave[1])
+    return _FS[clave]
+
+
+class ErrorSlides(Exception):
+    pass
+
+
+def _estilos(texto):
+    """[(trozo, estilo)] de un texto con **negrita** y *cursiva* (estilos 'n', 'b', 'i')."""
+    trozos = []
+    for t in re.split(r'(\*\*[^*]+\*\*|(?<![\w*])\*[^*\s][^*]*\*(?![\w*]))', str(texto)):
+        if not t:
+            continue
+        if len(t) > 4 and t.startswith('**') and t.endswith('**'):
+            trozos.append((t[2:-2], 'b'))
+        elif len(t) > 2 and t.startswith('*') and t.endswith('*'):
+            trozos.append((t[1:-1], 'i'))
+        else:
+            trozos.append((t, 'n'))
+    return trozos
+
+
+class Parrafo:
+    """Texto con estilos partido en renglones para un ancho. No recorta nunca: lo que no cabe
+    (una palabra más ancha que la caja o un carácter sin fuente) queda en «problemas»."""
+
+    def __init__(self, texto, tam, ancho, familia='pala', base='n', interlinea=1.28):
+        self.texto, self.tam, self.ancho = str(texto), tam, ancho
+        self.alto_linea = int(round(tam * interlinea))
+        self.problemas = []
+        fam = FAMILIAS[familia]
+        tokens, espacio_pendiente = [], False
+        for trozo, est in _estilos(texto):
+            est = base if est == 'n' else ('bi' if base == 'i' and est == 'b' else est)
+            f = fs(fam[est], tam)
+            for m in re.finditer(r'\s+|\S+', trozo):
+                if m.group().isspace():
+                    espacio_pendiente = True
+                    continue
+                if tokens and not espacio_pendiente:
+                    tokens[-1][0].append((m.group(), f))
+                else:
+                    tokens.append([[(m.group(), f)]])
+                espacio_pendiente = False
+                faltan = sin_glifo(m.group(), f)
+                if faltan:
+                    self.problemas.append(f'caracteres sin fuente {" ".join(faltan)}')
+        espacio = ancho_texto(' ', fs(fam['n'], tam))
+        self.lineas, self.anchos, x = [[]], [0], 0
+        for (grupo,) in tokens:
+            w = sum(ancho_texto(t, f) for t, f in grupo)
+            if w > ancho + 0.5:
+                self.problemas.append(f'«{"".join(t for t, _ in grupo)}» es más ancho que la caja')
+            if self.lineas[-1] and x + espacio + w > ancho:
+                self.lineas.append([])
+                self.anchos.append(0)
+                x = 0
+            x0 = x + (espacio if self.lineas[-1] else 0)
+            for t, f in grupo:
+                self.lineas[-1].append((x0, t, f))
+                x0 += ancho_texto(t, f)
+            x = x0
+            self.anchos[-1] = x
+        self.alto = self.alto_linea * len(self.lineas)
+        self.ancho_usado = max(self.anchos) if self.anchos else 0
+
+    def pintar(self, d, x, y, color, centrado=False):
+        for i, linea in enumerate(self.lineas):
+            dx = (self.ancho - self.anchos[i]) / 2 if centrado else 0
+            for xt, t, f in linea:
+                escribir(d, (x + dx + xt, y + i * self.alto_linea), t, f, color)
+
+
+def _rgba(w, h):
+    return Image.new('RGBA', (max(1, int(round(w))), max(1, int(round(h)))), (0, 0, 0, 0))
+
+
+class Elemento:
+    """Algo que se enseña en una slide (aparece de golpe, como en una presentación)."""
+    flexible = False
+    alinear = 'izquierda'
+
+    def __init__(self, spec, ctx):
+        self.spec, self.ctx = spec, ctx
+        self.id = spec.get('id')
+        self.col = int(spec.get('col', 1))
+        self.x = self.y = self.w = self.h = 0
+        self.problemas = []
+        self.subcajas = {}
+
+    def texto(self):
+        return ''
+
+    def ocupado(self):
+        """Las cajas (en el cuerpo) donde hay algo pintado: lo que una anotación no puede tapar."""
+        return [(self.x, self.y, self.x + self.w, self.y + self.h)]
+
+    def caja(self, sub=None):
+        """Caja (en el cuerpo) del elemento o de una parte: ('fila', 2), ('celda', (2, 1)), ('vineta', 3)."""
+        if sub is None:
+            return (self.x, self.y, self.x + self.w, self.y + self.h)
+        if sub not in self.subcajas:
+            raise ErrorSlides(f'«{self.id}» no tiene {sub[0]} {sub[1]}')
+        x0, y0, x1, y1 = self.subcajas[sub]
+        return (self.x + x0, self.y + y0, self.x + x1, self.y + y1)
+
+
+class ElVinetas(Elemento):
+    def texto(self):
+        return ' · '.join(map(str, self.spec['vinetas']))
+
+    def medir(self, ancho, s):
+        self.items, y, self.subcajas = [], 0, {}
+        tam0 = float(self.spec.get('tam', 1.0)) * 34 * s
+        for k, it in enumerate(self.spec['vinetas'] if isinstance(self.spec['vinetas'], list) else [self.spec['vinetas']], 1):
+            it = str(it)
+            nivel = len(it) - len(it.lstrip('>'))
+            limpio = it.lstrip('> ').strip()
+            tam = tam0 * (0.88 if nivel else 1.0)
+            sangria = 46 * s * nivel
+            marca = 36 * s
+            p = Parrafo(limpio, tam, ancho - sangria - marca, base='i' if self.spec.get('cursiva') else 'n')
+            self.problemas += p.problemas
+            self.items.append((nivel, sangria, marca, p, y, k))
+            self.subcajas[('vineta', k)] = (sangria + marca - 6, y - 4, sangria + marca + p.ancho_usado + 6, y + p.alto + 2)
+            y += p.alto + (14 if nivel == 0 else 8) * s
+        self.w, self.h = ancho, max(1, y - 8 * s)
+        return self.h
+
+    def ocupado(self):
+        return [(self.x + sangria, self.y + y, self.x + sangria + marca + p.ancho_usado, self.y + y + p.alto)
+                for nivel, sangria, marca, p, y, k in self.items]
+
+    def imagen(self):
+        img = _rgba(self.w, self.h)
+        d = ImageDraw.Draw(img)
+        for nivel, sangria, marca, p, y, k in self.items:
+            if self.spec.get('numerada') and nivel == 0:
+                num = self.spec['numerada']
+                inicio = num if isinstance(num, int) and not isinstance(num, bool) else 1
+                d.text((sangria, y), f'{k + inicio - 1}.', font=fs('palab.ttf', p.tam), fill=MORADO)
+            else:
+                d.text((sangria + 4, y), '–' if nivel == 0 else '·', font=fs('palab.ttf', p.tam), fill=MORADO)
+            p.pintar(d, sangria + marca, y, TINTA + (255,))
+        return img
+
+
+class ElTexto(Elemento):
+    def texto(self):
+        return str(self.spec['texto'])
+
+    def medir(self, ancho, s):
+        grande = self.spec.get('grande')
+        tam = float(self.spec.get('tam', 1.0)) * (40 if grande else 32) * s
+        self.p = Parrafo(self.spec['texto'], tam, ancho, base='b' if grande else ('i' if self.spec.get('cursiva') else 'n'))
+        self.problemas = list(self.p.problemas)
+        self.w, self.h = ancho, self.p.alto
+        return self.h
+
+    def ocupado(self):
+        dx = (self.w - self.p.ancho_usado) / 2 if self.spec.get('centrado') else 0
+        return [(self.x + dx, self.y, self.x + dx + self.p.ancho_usado, self.y + self.h)]
+
+    def imagen(self):
+        img = _rgba(self.w, self.h)
+        color = ROTULADOR.get(self.spec.get('color'), MORADO if self.spec.get('grande') else TINTA)
+        self.p.pintar(ImageDraw.Draw(img), 0, 0, color + (255,), centrado=bool(self.spec.get('centrado')))
+        return img
+
+
+class ElFormula(Elemento):
+    alinear = 'centro'
+
+    def texto(self):
+        return self.spec['formula']
+
+    def medir(self, ancho, s):
+        color = ROTULADOR.get(self.spec.get('color'), TINTA)
+        self.png = formula_png(self.spec['formula'], color, self.ctx['carpeta'])
+        w0, h0 = Image.open(self.png).size
+        tam = float(self.spec.get('tam', 1.0))
+        self.escala = min(0.78 * tam * s, ancho / w0)
+        if self.escala < 0.5 * tam:
+            self.problemas.append(f'la fórmula no cabe (habría que reducirla al {self.escala / (0.78 * tam):.0%})')
+        self.w, self.h = int(w0 * self.escala), int(h0 * self.escala)
+        if self.spec.get('alinear') == 'izquierda':
+            self.alinear = 'izquierda'
+        return self.h
+
+    def imagen(self):
+        return Image.open(self.png).convert('RGBA').resize((max(1, self.w), max(1, self.h)), Image.LANCZOS)
+
+
+class ElGrafico(Elemento):
+    alinear = 'centro'
+
+    def __init__(self, spec, ctx):
+        super().__init__(spec, ctx)
+        self.nombre = spec['grafico']
+        self.capa = int(spec.get('capa', 1000))
+        self.flexible = spec.get('alto') is None
+        self.g = None
+
+    def texto(self):
+        return f'gráfico {self.nombre}'
+
+    def _pie(self, ancho, s):
+        if not self.spec.get('pie'):
+            return None
+        p = Parrafo(self.spec['pie'], 24 * s, ancho, base='i')
+        self.problemas += p.problemas
+        return p
+
+    def natural(self, ancho, s):
+        """Alto que tendría a todo el ancho de la columna."""
+        pdf = compilar_capa(self.ctx['tema'], self.nombre, 1000, self.ctx['carpeta'])
+        pag = fitz.open(pdf)[0]
+        pie = self._pie(ancho, s)
+        return ancho * pag.rect.height / pag.rect.width + (pie.alto + 10 if pie else 0)
+
+    def medir(self, ancho, s, alto=None):
+        if alto is None:
+            a = float(self.spec['alto'])
+            alto = a * (SL_Y1 - SL_Y0) if a <= 1 else a
+        self.problemas = []
+        self.pie = self._pie(ancho, s)
+        alto_g = alto - (self.pie.alto + 10 if self.pie else 0)
+        self.g = Grafico(self.ctx['tema'], self.nombre, self.ctx['carpeta'], (0, 0, ancho, max(10, alto_g)))
+        if self.g.escala < GRAFICO_ESCALA_MIN:
+            self.problemas.append(f'el gráfico {self.nombre} queda demasiado pequeño para leer sus rótulos '
+                                  f'({self.g.escala:.2f} px/pt; mínimo {GRAFICO_ESCALA_MIN})')
+        self.gx = int((ancho - self.g.w) / 2)
+        self.w, self.h = ancho, self.g.h + (self.pie.alto + 10 if self.pie else 0)
+        return self.h
+
+    def imagen(self, capa=None):
+        img = _rgba(self.w, self.h)
+        img.alpha_composite(self.g.imagen(self.capa if capa is None else capa), (int(self.gx), 0))
+        self.g._cache.clear()           # la memoria: cada capa se pinta una vez
+        if self.pie:
+            self.pie.pintar(ImageDraw.Draw(img), 0, self.g.h + 10, GRIS + (255,), centrado=True)
+        return img
+
+    def caja(self, sub=None):
+        """La del gráfico (no la de la columna): para rodearlo o señalarlo."""
+        if sub is None:
+            return (self.x + self.gx, self.y, self.x + self.gx + self.g.w, self.y + self.g.h)
+        return super().caja(sub)
+
+
+class ElTabla(Elemento):
+    def texto(self):
+        return ' | '.join(map(str, self.spec.get('cabecera') or [])) or str(self.spec['tabla'])
+
+    def medir(self, ancho, s):
+        cab = self.spec.get('cabecera') or []
+        filas = self.spec.get('filas') or []
+        ncol = max([len(cab)] + [len(f) for f in filas])
+        rel = self.spec.get('anchos') or [1] * ncol
+        cols = [ancho * r / sum(rel) for r in rel]
+        pad = 12 * s
+        tam = float(self.spec.get('tam', 1.0)) * 27 * s
+        self.celdas, self.subcajas, y = [], {}, 0
+        destaca = set(self.spec.get('destaca') or [])
+        for i, fila in enumerate(([cab] if cab else []) + filas):
+            k = i if cab else i + 1           # 0, la cabecera; 1…, las filas
+            ps, x = [], 0
+            for j in range(ncol):
+                t = fila[j] if j < len(fila) else ''
+                p = Parrafo(t, tam * (0.88 if k == 0 else 1.0), cols[j] - 2 * pad,
+                            familia='segoe' if k == 0 else 'pala', base='b' if (k == 0 or (k in destaca and j == 0)) else 'n')
+                self.problemas += p.problemas
+                ps.append((x, cols[j], p))
+                x += cols[j]
+            alto = max(p.alto for _, _, p in ps) + 2 * pad
+            self.celdas.append((k, y, alto, ps))
+            self.subcajas[('fila', k)] = (0, y, ancho, y + alto)
+            for j, (xc, wc, _) in enumerate(ps, 1):
+                self.subcajas[('celda', (k, j))] = (xc, y, xc + wc, y + alto)
+            y += alto
+        self.pad, self.destaca = pad, destaca
+        self.w, self.h = ancho, y
+        return self.h
+
+    def imagen(self):
+        img = _rgba(self.w, self.h)
+        d = ImageDraw.Draw(img)
+        for k, y, alto, ps in self.celdas:
+            fondo = MORADO if k == 0 else (MORADO_PALIDO if k in self.destaca else ((255, 255, 255) if k % 2 else (246, 244, 248)))
+            d.rectangle([0, y, self.w - 1, y + alto], fill=fondo + (255,))
+            for xc, wc, p in ps:
+                p.pintar(d, xc + self.pad, y + self.pad, ((255, 255, 255) if k == 0 else TINTA) + (255,))
+            d.line([(0, y + alto), (self.w, y + alto)], fill=LILA + (255,), width=1)
+        for xc, wc, p in self.celdas[0][3][1:]:
+            d.line([(xc, 0), (xc, self.h)], fill=LILA + (255,), width=1)
+        d.rectangle([0, 0, self.w - 1, self.h - 1], outline=MORADO + (255,), width=2)
+        return img
+
+
+class ElCaja(Elemento):
+    def texto(self):
+        t = self.spec.get('texto')
+        return ' · '.join(map(str, t)) if isinstance(t, list) else str(t)
+
+    def medir(self, ancho, s):
+        tipo = self.spec.get('caja', 'clave')
+        if tipo not in CAJAS:
+            raise ErrorSlides(f'caja de tipo desconocido «{tipo}» (tipos: {", ".join(CAJAS)})')
+        self.fondo, self.tinta_t, titulo, estilo = CAJAS[tipo]
+        titulo = self.spec.get('titulo', titulo)
+        self.pad = 22 * s
+        dentro = ancho - 2 * self.pad - 8
+        self.pt = Parrafo(titulo, 23 * s, dentro, familia='segoe', base='b') if titulo else None
+        t = self.spec.get('texto')
+        if isinstance(t, list):
+            self.cuerpo = ElVinetas({'vinetas': t, 'tam': 0.9, 'cursiva': estilo == 'i'}, self.ctx)
+            self.cuerpo.medir(dentro, s)
+        else:
+            self.cuerpo = ElTexto({'texto': t, 'cursiva': estilo == 'i', 'tam': 0.94}, self.ctx)
+            self.cuerpo.medir(dentro, s)
+        self.problemas = (self.pt.problemas if self.pt else []) + self.cuerpo.problemas
+        self.yc = self.pad + (self.pt.alto + 6 * s if self.pt else 0)
+        self.w, self.h = ancho, self.yc + self.cuerpo.h + self.pad
+        return self.h
+
+    def imagen(self):
+        img = _rgba(self.w, self.h)
+        d = ImageDraw.Draw(img)
+        d.rounded_rectangle([0, 0, self.w - 1, self.h - 1], radius=12, fill=self.fondo + (255,))
+        d.rounded_rectangle([0, 0, 8, self.h - 1], radius=4, fill=self.tinta_t + (255,))
+        if self.pt:
+            self.pt.pintar(d, self.pad + 8, self.pad, self.tinta_t + (255,))
+        img.alpha_composite(self.cuerpo.imagen(), (int(self.pad + 8), int(self.yc)))
+        return img
+
+
+class ElCifras(Elemento):
+    def texto(self):
+        return ' · '.join(f'{a} {b}' for a, b in self.spec['cifras'])
+
+    def medir(self, ancho, s):
+        items = self.spec['cifras']
+        self.colw = ancho / len(items)
+        self.ps, alto = [], 0
+        for k, (cifra, etiqueta) in enumerate(items, 1):
+            pc = Parrafo(cifra, 64 * s, self.colw - 30, base='b', interlinea=1.15)
+            pe = Parrafo(etiqueta, 26 * s, self.colw - 40)
+            self.problemas += pc.problemas + pe.problemas
+            self.ps.append((pc, pe))
+            alto = max(alto, pc.alto + 6 + pe.alto)
+        for k, (pc, pe) in enumerate(self.ps, 1):
+            w = max(pc.ancho_usado, pe.ancho_usado)
+            x0 = (k - 1) * self.colw + (self.colw - w) / 2
+            self.subcajas[('cifra', k)] = (x0, 0, x0 + w, alto)
+        self.w, self.h = ancho, alto
+        return alto
+
+    def imagen(self):
+        img = _rgba(self.w, self.h)
+        d = ImageDraw.Draw(img)
+        for k, (pc, pe) in enumerate(self.ps):
+            x = k * self.colw
+            if k:
+                d.line([(x, 10), (x, self.h - 10)], fill=LILA + (255,), width=2)
+            pc.pintar(d, x + 15, 0, MORADO + (255,), centrado=True)
+            pe.pintar(d, x + 20, pc.alto + 6, TINTA + (255,), centrado=True)
+        return img
+
+
+class ElFlujo(Elemento):
+    def texto(self):
+        return ' → '.join(map(str, self.spec['flujo']))
+
+    def medir(self, ancho, s):
+        items = self.spec['flujo']
+        self.fl = 60 * s
+        self.bw = (ancho - self.fl * (len(items) - 1)) / len(items)
+        self.pad = 16 * s
+        self.ps = [Parrafo(t, 30 * s, self.bw - 2 * self.pad, base='b') for t in items]
+        for p in self.ps:
+            self.problemas += p.problemas
+        alto = max(p.alto for p in self.ps) + 2 * self.pad
+        for k in range(len(items)):
+            x = k * (self.bw + self.fl)
+            self.subcajas[('paso', k + 1)] = (x, 0, x + self.bw, alto)
+        self.w, self.h = ancho, alto
+        return alto
+
+    def imagen(self):
+        img = _rgba(self.w, self.h)
+        d = ImageDraw.Draw(img)
+        for k, p in enumerate(self.ps):
+            x = k * (self.bw + self.fl)
+            d.rounded_rectangle([x, 0, x + self.bw, self.h - 1], radius=14, fill=MORADO_PALIDO + (255,),
+                                outline=MORADO + (255,), width=2)
+            p.pintar(d, x + self.pad, (self.h - p.alto) / 2, MORADO_OSCURO + (255,), centrado=True)
+            if k + 1 < len(self.ps):
+                xa, xb, ym = x + self.bw + 8, x + self.bw + self.fl - 8, self.h / 2
+                d.line([(xa, ym), (xb, ym)], fill=MORADO + (255,), width=4)
+                d.polygon([(xb, ym), (xb - 14, ym - 9), (xb - 14, ym + 9)], fill=MORADO + (255,))
+        return img
+
+
+TIPOS_ELEMENTO = {'vinetas': ElVinetas, 'texto': ElTexto, 'formula': ElFormula, 'grafico': ElGrafico,
+                  'tabla': ElTabla, 'caja': ElCaja, 'cifras': ElCifras, 'flujo': ElFlujo}
+
+
+def crear_elemento(spec, ctx):
+    # La caja lleva «texto» dentro: el tipo es la primera clave que aparece en este orden
+    tipos = [k for k in ('caja', 'tabla', 'grafico', 'formula', 'cifras', 'flujo', 'vinetas', 'texto') if k in spec][:1]
+    if len(tipos) != 1:
+        raise ErrorSlides(f'elemento de slide no válido (tiene que llevar uno de {", ".join(TIPOS_ELEMENTO)}): {spec}')
+    if tipos[0] == 'tabla' and spec['tabla'] is not True and 'filas' not in spec:
+        spec = {**spec, **spec['tabla']} if isinstance(spec['tabla'], dict) else spec
+    return TIPOS_ELEMENTO[tipos[0]](spec, ctx)
+
+
+# --- Índice de la guía: «§ I.3 · pág. 10» desde el .aux -------------------------------------------
+def _limpiar_tex(t):
+    t = re.sub(r'\\(?:numberline|ignorespaces|protect|relax)\s*', '', t)
+    t = re.sub(r'\\[a-zA-Z]+\s*', '', t)
+    return re.sub(r'\s+', ' ', t.replace('{', '').replace('}', '').replace('~', ' ')).strip()
+
+
+class IndiceGuia:
+    """Apartados, párrafos, gráficos y tablas de la guía con su página impresa (la del .aux)."""
+
+    def __init__(self, tema):
+        aux = os.path.join(tema.trabajo, f'{tema.archivo}.aux')
+        if not os.path.exists(aux):
+            raise ErrorSlides(f'No existe {aux}: hay que compilar la guía para sacar las páginas')
+        self.entradas = []
+        patron = re.compile(r'\\@writefile\{(toc|lof|lot)\}\{\\contentsline \{(\w+)\}\{(.*)\}\{([^{}]*)\}\{[^{}]*\}'
+                            r'\\protected@file@percent \}')
+        for linea in open(aux, encoding='utf-8'):
+            m = patron.match(linea.strip())
+            if not m:
+                continue
+            fichero, nivel, cuerpo, pagina = m.groups()
+            num = re.match(r'\\numberline \{([^{}]*)\}', cuerpo)
+            numero = num.group(1) if num else None
+            titulo = _limpiar_tex(cuerpo[num.end():] if num else cuerpo)
+            self.entradas.append({'tipo': fichero, 'nivel': nivel, 'numero': numero, 'titulo': titulo, 'pagina': pagina})
+
+    def buscar(self, ref):
+        """«I.3», «I.3 > Brecha de producción», «Gráfico 5», «Tabla 7» o «Introducción»
+        → (rótulo de la esquina, página)."""
+        ref = str(ref).strip()
+        m = re.fullmatch(r'(Gráfico|Tabla)\s+(\d+)', ref, re.I)
+        if m:
+            tipo = 'lof' if m.group(1).lower().startswith('g') else 'lot'
+            for k, e in enumerate(self.entradas):
+                if e['tipo'] == tipo and e['numero'] == m.group(2):
+                    sec = next((x for x in reversed(self.entradas[:k]) if x['tipo'] == 'toc' and x['numero']), None)
+                    pre = f'§ {sec["numero"]} · ' if sec else ''
+                    return f'{pre}{m.group(1).lower()} {m.group(2)} · pág. {e["pagina"]}', e['pagina']
+            raise ErrorSlides(f'la guía no tiene «{ref}»')
+        partes = [x.strip() for x in ref.split('>')]
+        for k, e in enumerate(self.entradas):
+            if e['tipo'] != 'toc':
+                continue
+            if e['numero'] == partes[0] or (e['numero'] is None and e['titulo'].lower() == partes[0].lower()):
+                if len(partes) == 1:
+                    return f'§ {partes[0]} · pág. {e["pagina"]}', e['pagina']
+                for x in self.entradas[k + 1:]:
+                    if x['tipo'] != 'toc':
+                        continue
+                    if x['nivel'] in ('section', 'subsection') and x['numero']:
+                        break
+                    if x['titulo'].lower().startswith(partes[1].lower()):
+                        return f'§ {partes[0]} · pág. {x["pagina"]}', x['pagina']
+                raise ErrorSlides(f'el apartado {partes[0]} de la guía no tiene «{partes[1]}»')
+        raise ErrorSlides(f'la guía no tiene el apartado «{partes[0]}»')
+
+
+# --- Una slide: maquetación, imagen y anotaciones -------------------------------------------------
+class Slide:
+    def __init__(self, spec, escena, ctx):
+        self.spec, self.ctx = spec, ctx
+        self.titulo = spec.get('titulo') or escena.get('titulo') or escena['bloque']
+        self.guia = spec.get('guia') or escena.get('guia')
+        panel = spec.get('pizarra')
+        self.panel = None
+        if panel:
+            panel = {'ancho': panel} if isinstance(panel, (int, float)) else dict(panel)
+            a = float(panel.get('ancho', 40))
+            if a >= 100:
+                self.panel, self.area = (SL_X0, SL_Y0, SL_X1, SL_Y1), None
+            else:
+                wp = (SL_X1 - SL_X0) * a / 100
+                if panel.get('lado', 'derecha') == 'izquierda':
+                    self.panel, self.area = (SL_X0, SL_Y0, SL_X0 + wp, SL_Y1), (SL_X0 + wp + 40, SL_Y0, SL_X1, SL_Y1)
+                else:
+                    self.panel, self.area = (SL_X1 - wp, SL_Y0, SL_X1, SL_Y1), (SL_X0, SL_Y0, SL_X1 - wp - 40, SL_Y1)
+            self.panel = tuple(int(round(v)) for v in self.panel)
+            self.panel_spec = panel
+        else:
+            self.area = (SL_X0, SL_Y0, SL_X1, SL_Y1)
+        # Los elementos, en el orden en que aparecen: los de «contenido» al empezar la slide y los
+        # de «muestra» de cada paso al empezar ese paso. Un gráfico que ya está y vuelve con otra
+        # capa no es un elemento nuevo: se le añade la capa
+        self.elementos, self.capas, self.ids = [], [], {}
+        pasos = spec.get('pasos') or []
+        listas = [(0, spec.get('contenido') or [])] + [(k, p.get('muestra') or []) for k, p in enumerate(pasos)]
+        for k, lista in listas:
+            for el in (lista if isinstance(lista, list) else [lista]):
+                previo = next((e for e in self.elementos if isinstance(e, ElGrafico) and 'grafico' in el
+                               and e.nombre == el['grafico'] and not el.get('id')), None)
+                if previo is not None:
+                    self.capas.append((k, previo, int(el.get('capa', 1000))))
+                    continue
+                e = crear_elemento(el, ctx)
+                e.paso = k
+                self.elementos.append(e)
+                if e.id:
+                    self.ids[e.id] = e
+        if self.elementos and self.area is None:
+            raise ErrorSlides('la slide es una pizarra entera (pizarra: 100) y lleva elementos de slide')
+
+    def maquetar(self):
+        """Coloca los elementos (columnas y de arriba abajo). Devuelve los problemas (texto que no cabe)."""
+        if not self.elementos:
+            return []
+        x0, y0, x1, y1 = self.area
+        rel = self.spec.get('columnas') or [100]
+        hueco_col = 44
+        util = x1 - x0 - hueco_col * (len(rel) - 1)
+        cols, x = [], x0
+        for r in rel:
+            w = util * r / sum(rel)
+            cols.append((x, x + w))
+            x += w + hueco_col
+        alto = y1 - y0
+        ultimo = None
+        for s in SL_ESCALAS:
+            problemas, colocados = [], []
+            for c, (cx0, cx1) in enumerate(cols, 1):
+                en = [e for e in self.elementos if e.col == c]
+                if not en:
+                    continue
+                ancho = cx1 - cx0
+                fijos = [e for e in en if not e.flexible]
+                flex = [e for e in en if e.flexible]
+                usado = sum(e.medir(ancho, s) for e in fijos) + SL_HUECO * s * (len(en) - 1)
+                resto = alto - usado
+                if flex:
+                    cada = resto / len(flex)
+                    if cada < GRAFICO_ALTO_MIN:
+                        problemas.append((en[-1], f'no queda sitio para {len(flex)} gráfico(s) ({int(cada)} px; mínimo {GRAFICO_ALTO_MIN})'))
+                    for e in flex:
+                        usado += e.medir(ancho, s, max(GRAFICO_ALTO_MIN, min(cada, e.natural(ancho, s))))
+                if usado > alto + 0.5:
+                    problemas.append((en[-1], f'no cabe ni con la letra al {SL_ESCALAS[-1]:.0%}: la columna {c} mide '
+                                              f'{int(usado)} px y caben {int(alto)} (partir la slide o quitar algo)'))
+                for e in en:
+                    for pr in e.problemas:
+                        problemas.append((e, pr))
+                y = y0 + (max(0, alto - usado) / 2 if self.spec.get('vertical') == 'centro' else 0)
+                for e in en:
+                    e.w, e.h = int(round(e.w)), int(round(e.h))
+                    e.x = int(cx0 + ((ancho - e.w) / 2 if e.alinear == 'centro' else 0))
+                    e.y = int(y)
+                    y += e.h + SL_HUECO * s
+                    colocados.append(e)
+            ultimo = problemas
+            if not problemas:
+                self.escala = s
+                return []
+        return [f'{pr} — «{e.texto()[:70]}»' for e, pr in ultimo]
+
+    def esquina(self):
+        if not self.guia:
+            raise ErrorSlides('la slide no dice dónde está en la guía («guia: "I.3"»)')
+        return self.ctx['indice'].buscar(self.guia)[0]
+
+    def problemas_titulo(self):
+        for tam in (46, 42, 38):
+            p = Parrafo(self.titulo, tam, SL_X1 - SL_X0 - 10, base='b')
+            if len(p.lineas) == 1 and not p.problemas:
+                self.p_titulo = p
+                return []
+        return [f'el título de la slide no cabe en una línea — «{self.titulo}»']
+
+    def base(self, hasta_paso=0):
+        """Imagen del cuerpo al empezar la slide (con lo que se ve desde el primer paso)."""
+        img = Image.new('RGBA', (ANCHO, CUERPO_H), PAPEL + (255,))
+        d = ImageDraw.Draw(img)
+        self.p_titulo.pintar(d, SL_X0, 22, MORADO + (255,))
+        d.line([(SL_X0, 88), (SL_X1, 88)], fill=ORO + (255,), width=2)
+        esquina = self.esquina()
+        f = fs('segoeui.ttf', 21)
+        w = d.textlength(esquina, font=f)
+        d.rounded_rectangle([SL_X1 - w - 22, CUERPO_H - 44, SL_X1, CUERPO_H - 12], radius=14,
+                            fill=MORADO_PALIDO + (255,))
+        d.text((SL_X1 - 11, CUERPO_H - 28), esquina, font=f, fill=MORADO_MEDIO + (255,), anchor='rm')
+        if self.ctx.get('licencia'):
+            d.text((SL_X0, CUERPO_H - 28), self.ctx['licencia'], font=F_MARCO, fill=(165, 150, 178, 255), anchor='lm')
+        if self.panel:
+            px0, py0, px1, py1 = self.panel
+            d.rounded_rectangle([px0 - 9, py0 - 9, px1 + 9, py1 + 9], radius=10, fill=MARCO + (255,))
+            d.rectangle([px0, py0, px1, py1], fill=PIZARRA + (255,))
+        for e in self.elementos:
+            if e.paso <= hasta_paso:
+                img.alpha_composite(e.imagen(), (e.x, e.y))
+        for k, e, capa in self.capas:
+            if k <= hasta_paso:
+                img.alpha_composite(e.imagen(capa), (e.x, e.y))
+        return img
+
+    def objetivo(self, sel):
+        """Caja (en el cuerpo) de un selector: «id», «id/fila 2», «id/celda 2,1», «id/vineta 3»."""
+        sel = str(sel)
+        nombre, _, resto = sel.partition('/')
+        if nombre not in self.ids:
+            raise ErrorSlides(f'la anotación apunta a «{nombre}», que no está en la slide')
+        e = self.ids[nombre]
+        if not resto:
+            return e.caja()
+        z = re.fullmatch(r'\s*zona\s+([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*', resto)
+        if z:       # un trozo del elemento, en fracciones de su caja (p. ej., un dato de un gráfico)
+            x0, y0, x1, y1 = e.caja()
+            f = [float(v) for v in z.groups()]
+            return (x0 + f[0] * (x1 - x0), y0 + f[1] * (y1 - y0), x0 + f[2] * (x1 - x0), y0 + f[3] * (y1 - y0))
+        m = re.fullmatch(r'\s*(fila|celda|vineta|cifra|paso)\s+(\d+)(?:\s*,\s*(\d+))?\s*', resto)
+        if not m:
+            raise ErrorSlides(f'selector de anotación no válido: «{sel}»')
+        arg = (int(m.group(2)), int(m.group(3))) if m.group(1) == 'celda' else int(m.group(2))
+        return e.caja((m.group(1), arg))
+
+
+def _trazo(puntos, color, grosor=5):
+    """Una línea a mano (lista de puntos) → (imagen RGBA, parte del tablero, caja en el cuerpo)."""
+    xs, ys = [p[0] for p in puntos], [p[1] for p in puntos]
+    m = grosor + 6
+    x0, y0 = int(max(0, min(xs) - m)), int(max(0, min(ys) - m))
+    x1, y1 = int(min(ANCHO, max(xs) + m)), int(min(CUERPO_H, max(ys) + m))
+    loc = [(x - x0, y - y0) for x, y in puntos]
+    img = _rgba(x1 - x0, y1 - y0)
+    ImageDraw.Draw(img).line(loc, fill=color + (255,), width=grosor, joint='curve')
+    largo = largo_tramos([loc])
+    parte = {'tipo': 'trazo', 'tramos': [loc], 'grosor': grosor + 4, 'caja': None,
+             'dur': min(1.4, max(0.35, largo / VEL_TRAZO)) + LEVANTAR}
+    return img, parte, (x0, y0, x1, y1)
+
+
+def _semilla(*cosas):
+    return int(huella(*cosas)[:8], 16)
+
+
+def anotacion(slide, a):
+    """Lo que se escribe a mano encima de la slide: rodear, subrayar, una flecha, un texto o una
+    fórmula junto a algo. Devuelve operaciones de dibujo (coordenadas del cuerpo)."""
+    color = ROTULADOR.get(a.get('color', 'rojo'), ROTULADOR['rojo'])
+    rng = np.random.default_rng(_semilla(json.dumps(a, sort_keys=True, ensure_ascii=False)))
+    if 'rodea' in a:
+        x0, y0, x1, y1 = slide.objetivo(a['rodea'])
+        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+        w, h = x1 - x0, y1 - y0
+        ancha = w > 2.6 * h          # una fila o una caja ancha: un rectángulo redondeado a mano
+        if ancha:
+            rx, ry, n = w / 2 + 12, h / 2 + 8, 5.0
+        else:
+            rx, ry, n = w / 2 + 14 + min(30, 0.06 * w), h / 2 + 10 + min(18, 0.14 * h), 2.0
+        rx = max(10, min(rx, cx - 8, ANCHO - 8 - cx))           # sin salirse del cuerpo
+        ry = max(8, min(ry, cy - SL_Y0 + 30, CUERPO_H - 8 - cy))
+        ini = math.radians(200 + rng.uniform(-10, 10))
+        pts = []
+        for k in range(97):
+            ang = ini - math.radians(380) * k / 96
+            r = 1 + 0.02 * math.sin(3 * ang + rng.uniform(0, 0.3)) + (0.04 * k / 96)
+            c, sn = math.cos(ang), math.sin(ang)
+            ex = abs(c) ** (2 / n) * (1 if c >= 0 else -1)
+            ey = abs(sn) ** (2 / n) * (1 if sn >= 0 else -1)
+            pts.append((cx + rx * r * ex, cy - ry * r * ey))
+        img, parte, caja = _trazo(pts, color)
+        return [op_dibujo(caja[:2], img, False, None, [parte])]
+    if 'subraya' in a:
+        x0, y0, x1, y1 = slide.objetivo(a['subraya'])
+        y = y1 + 4
+        pts = [(x0 + (x1 - x0) * k / 20, y + 2.5 * math.sin(k * 0.9 + rng.uniform(0, 1)) - 3 * k / 20) for k in range(21)]
+        img, parte, caja = _trazo(pts, color)
+        return [op_dibujo(caja[:2], img, False, None, [parte])]
+    if 'tacha' in a:           # una raya a mano que atraviesa lo que no hay que hacer
+        x0, y0, x1, y1 = slide.objetivo(a['tacha'])
+        pts = [(x0 + (x1 - x0) * k / 20, y1 - (y1 - y0) * (0.25 + 0.5 * k / 20) + 2 * math.sin(k + rng.uniform(0, 1)))
+               for k in range(21)]
+        img, parte, caja = _trazo(pts, color, 6)
+        return [op_dibujo(caja[:2], img, False, None, [parte])]
+    if 'flecha' in a:
+        bx0, by0, bx1, by1 = slide.objetivo(a['flecha'])
+        if a.get('desde'):
+            ax0, ay0, ax1, ay1 = slide.objetivo(a['desde'])
+            acx, acy, bcx, bcy = (ax0 + ax1) / 2, (ay0 + ay1) / 2, (bx0 + bx1) / 2, (by0 + by1) / 2
+            if abs(bcx - acx) > abs(bcy - acy):
+                p0 = (ax1 + 10, acy) if bcx > acx else (ax0 - 10, acy)
+                p1 = (bx0 - 12, bcy) if bcx > acx else (bx1 + 12, bcy)
+            else:
+                p0 = (acx, ay1 + 8) if bcy > acy else (acx, ay0 - 8)
+                p1 = (bcx, by0 - 10) if bcy > acy else (bcx, by1 + 10)
+        else:
+            lado = a.get('lado', 'izquierda')
+            largo = float(a.get('largo', 90))
+            bcx, bcy = (bx0 + bx1) / 2, (by0 + by1) / 2
+            p1 = {'izquierda': (bx0 - 10, bcy), 'derecha': (bx1 + 10, bcy), 'arriba': (bcx, by0 - 8),
+                  'abajo': (bcx, by1 + 8)}[lado]
+            dx, dy = {'izquierda': (-1, 0.25), 'derecha': (1, 0.25), 'arriba': (0.2, -1), 'abajo': (0.2, 1)}[lado]
+            p0 = (p1[0] + dx * largo, p1[1] + dy * largo * 0.6)
+        ang = math.atan2(p1[1] - p0[1], p1[0] - p0[0])
+        medio = ((p0[0] + p1[0]) / 2 - math.sin(ang) * 8, (p0[1] + p1[1]) / 2 + math.cos(ang) * 8)
+        cuerpo = [(p0[0] + (medio[0] - p0[0]) * k / 10, p0[1] + (medio[1] - p0[1]) * k / 10) for k in range(11)] + \
+                 [(medio[0] + (p1[0] - medio[0]) * k / 10, medio[1] + (p1[1] - medio[1]) * k / 10) for k in range(1, 11)]
+        punta = [(p1[0] - 22 * math.cos(ang - 0.45), p1[1] - 22 * math.sin(ang - 0.45)), p1,
+                 (p1[0] - 22 * math.cos(ang + 0.45), p1[1] - 22 * math.sin(ang + 0.45))]
+        ops = []
+        for pts in (cuerpo, punta):
+            img, parte, caja = _trazo(pts, color)
+            ops.append(op_dibujo(caja[:2], img, False, None, [parte]))
+        return ops
+    if 'escribe' in a or 'formula' in a:
+        if 'escribe' in a:
+            p = Parrafo(a['escribe'], 34 * float(a.get('tam', 1.0)), float(a.get('ancho', 620)), familia='mano',
+                        interlinea=1.25)
+            if p.problemas:
+                raise ErrorSlides(f'anotación «{a["escribe"]}»: {"; ".join(p.problemas)}')
+            img = _rgba(p.ancho_usado + 4, p.alto + 8)
+            p.pintar(ImageDraw.Draw(img), 0, 0, color + (255,))
+            partes = trazos_mano(np.asarray(img)[:, :, 3])
+        else:
+            png = formula_png(a['formula'], color, slide.ctx['carpeta'])
+            img = Image.open(png).convert('RGBA')
+            esc = 0.8 * float(a.get('tam', 1.0))
+            img = img.resize((max(1, int(img.width * esc)), max(1, int(img.height * esc))), Image.LANCZOS)
+            partes = partes_formula(png, img)
+        if a.get('pos'):
+            fx, fy = a['pos']
+            ax0, ay0, ax1, ay1 = slide.area or (SL_X0, SL_Y0, SL_X1, SL_Y1)
+            x, y = ax0 + fx * (ax1 - ax0), ay0 + fy * (ay1 - ay0)
+        else:
+            x0, y0, x1, y1 = slide.objetivo(a.get('junto'))
+            lado = a.get('lado', 'derecha')
+            if lado == 'derecha':
+                x, y = x1 + 22, (y0 + y1) / 2 - img.height / 2
+            elif lado == 'izquierda':
+                x, y = x0 - 22 - img.width, (y0 + y1) / 2 - img.height / 2
+            elif lado == 'abajo':
+                x, y = x0, y1 + 10
+            else:
+                x, y = x0, y0 - 10 - img.height
+        x, y = int(round(x)), int(round(y))
+        texto = a.get('escribe') or a.get('formula')
+        if x < SL_X0 - 30 or y < SL_Y0 - 20 or x + img.width > SL_X1 + 30 or y + img.height > SL_Y1 + 20:
+            raise ErrorSlides(f'la anotación «{texto}» se sale de la slide')
+        if slide.panel and x < slide.panel[2] and x + img.width > slide.panel[0] and y < slide.panel[3] \
+                and y + img.height > slide.panel[1]:
+            raise ErrorSlides(f'la anotación «{texto}» se mete en la pizarra')
+        for e in slide.elementos:          # lo escrito a mano no puede tapar nada de la slide
+            for ex0, ey0, ex1, ey1 in ([e.caja()] if isinstance(e, ElGrafico) else e.ocupado()):
+                if x < ex1 - 4 and x + img.width > ex0 + 4 and y < ey1 - 4 and y + img.height > ey0 + 4:
+                    raise ErrorSlides(f'la anotación «{texto}» tapa «{e.texto()[:50]}»')
+        return [op_dibujo((x, y), img, False, None, partes)]
+    raise ErrorSlides(f'anotación desconocida: {a}')
+
+
+class TableroSlides(Tablero):
+    """El tablero de las slides (o de un panel de pizarra): como el de la pizarra, pero de otro
+    tamaño y con imágenes que se pintan al llegar su momento (crear), para no tenerlas todas en memoria."""
+
+    def __init__(self, ops, tam, color):
+        super().__init__(ops)
+        self.img = Image.new('RGB', tam, color)
+
+    def _preparar(self, op):
+        if 'crear' in op:
+            op['img'] = op.pop('crear')()
+        super()._preparar(op)
+
+
+# --- Plan de las slides: qué se ve y se escribe en cada momento ------------------------------------
+def preparar_slides(guion):
+    """Pone en cada escena la lista plana de sus pasos (la de los cantes), con la slide de cada uno."""
+    for i, e in enumerate(guion['escenas']):
+        if 'pasos' in e and 'slides' not in e:
+            raise ErrorSlides(f'escena {i + 1}: en el formato slides los pasos van dentro de «slides»')
+        e['pasos'] = []
+        for j, sl in enumerate(e.get('slides') or []):
+            for k, p in enumerate(sl.get('pasos') or []):
+                p['_slide'] = (i, j)
+                p['_k'] = k
+                p['_pausa_antes'] = PAUSA_SLIDE if k == 0 and j > 0 else 0.0
+                e['pasos'].append(p)
+            if not sl.get('pasos'):
+                raise ErrorSlides(f'escena {i + 1}, slide «{sl.get("titulo")}»: sin pasos (sin voz)')
+
+
+def planificar_slides(tema, carpeta, escenas, pantallas, pasos, contenido_fin):
+    """Como planificar() de los cantes, para las slides: operaciones del tablero de las slides,
+    sesiones del panel de pizarra, esquemas entre apartados, subtítulos, capítulos, notas de cada
+    slide y los errores de maquetación (texto que no cabe)."""
+    ctx = {'tema': tema, 'carpeta': carpeta, 'indice': IndiceGuia(tema),
+           'licencia': pantallas.licencia if pantallas.exclusivo else None}
+    ops, pendientes, tarjetas, avisos, errores = [], [], [], [], []
+    subtitulos, capitulos, notas = [], [(0.0, 'Título')], []
+    sesiones, sesion = [], None
+    slides = {}
+
+    def barrera(tb):
+        for op in pendientes:
+            op['barrera'] = tb
+        pendientes.clear()
+
+    escena_actual, parte_actual = -1, None
+    slide_actual = None
+    for n, p in enumerate(pasos):
+        e = escenas[p['escena']]
+        paso = p['paso']
+        t0 = p['inicio']
+        listo = t0
+        clave_sl = paso['_slide']
+        nueva_slide = clave_sl != slide_actual
+        nueva = p['escena'] != escena_actual
+        p['brillo_desde'] = None
+        p['fundido'] = nueva_slide and n > 0
+        if nueva:
+            escena_actual = p['escena']
+            parte_actual = None
+            capitulos.append((t0, e.get('titulo') or e['bloque']))
+            if n > 0 and pantallas.cambia_apartado(pasos[n - 1]['escena'], p['escena']):
+                previo = pasos[n - 1]
+                c0 = previo['inicio'] + previo['dur'] + 0.15
+                c1 = max(c0 + TARJETA_MIN, t0 + 0.6)
+                tarjetas.append({'c0': c0, 'c1': c1, 'escena': p['escena'], 'previa': previo['escena']})
+                barrera(c0 - 0.1)
+                listo = c1
+                p['brillo_desde'] = t0
+                p['brillo_bloque'] = escenas[previo['escena']]['bloque'] != e['bloque']
+        if paso.get('parte'):
+            parte_actual = paso['parte']
+        p['parte'] = parte_actual if e.get('estructura') else None
+        donde = f'{mmss(t0)} (escena {p["escena"] + 1}, «{e["slides"][clave_sl[1]].get("titulo") or e.get("titulo")}»)'
+        if not str(paso.get('di') or '').strip():
+            avisos.append(f'{donde}: paso sin «di»: la voz no se para nunca')
+        elif len(re.findall(r'\[pausa', paso['di'])) > 2:
+            avisos.append(f'{donde}: más de dos [pausa] en un paso (una o dos como mucho)')
+        if paso.get('di'):
+            fr = frases(sin_pausas(paso['di']))
+            largo = sum(len(f) for f in fr) or 1
+            ti = t0
+            for f in fr:
+                tf = ti + p['dur'] * len(f) / largo
+                subtitulos.append((ti, tf, f))
+                ti = tf
+        barrera(t0)
+        # La slide: al empezar, su imagen de base (título, esquina, marco del panel y lo que se ve desde el principio)
+        if nueva_slide:
+            slide_actual = clave_sl
+            try:
+                sl = Slide(e['slides'][clave_sl[1]], e, ctx)
+                problemas = sl.problemas_titulo() + sl.maquetar()
+                sl.esquina()
+            except ErrorSlides as ex:
+                errores.append(f'{donde}: {ex}')
+                sl = None
+                problemas = []
+            for pr in problemas:
+                errores.append(f'{donde}: {pr}')
+            if problemas:
+                sl = None
+            slides[clave_sl] = sl
+            notas.append({'inicio': round(t0, 2), 'escena': p['escena'] + 1, 'apartado': e.get('titulo'),
+                          'slide': (e['slides'][clave_sl[1]].get('titulo') or e.get('titulo')),
+                          'guia': sl.esquina() if sl else None, 'notas': []})
+            if sl:
+                ops.append({'tipo': 'dibujo', 'caja': (0, 0, ANCHO, CUERPO_H), 'crear': (lambda s=sl: s.base(0)),
+                            'reemplaza': False, 'fondo': None, 'listo': t0, 'paso': n, 'dicho': '',
+                            'partes': [{'tipo': 'relleno', 'caja': (0, 0, ANCHO, CUERPO_H), 'dur': 0.02}]})
+                pendientes.append(ops[-1])
+            # El panel de pizarra: sigue el mismo mientras las slides lo tengan en el mismo sitio
+            if sesion and (not sl or sl.panel != sesion['rect'] or (sl.panel_spec or {}).get('nueva')):
+                sesion['t1'] = t0
+                sesion = None
+            if sl and sl.panel and sesion is None:
+                x0, y0, x1, y1 = sl.panel
+                sesion = {'rect': sl.panel, 't0': t0, 't1': contenido_fin, 'ops': [], 'pendientes': [],
+                          'pizarra': Pizarra(tema, carpeta, x1 - x0, y1 - y0)}
+                sesiones.append(sesion)
+            if sl and sl.panel and sesion is not None and (sl.panel_spec.get('rejilla') is not None):
+                # rejilla de la slide: se aplica en su primer paso (si no la cambia el propio paso)
+                if 'rejilla' not in paso:
+                    paso = {**paso, 'rejilla': sl.panel_spec['rejilla'], 'lineas': sl.panel_spec.get('lineas')}
+        sl = slides.get(clave_sl)
+        if sesion is not None:
+            for op in sesion['pendientes']:
+                op['barrera'] = t0
+            sesion['pendientes'].clear()
+        notas[-1]['notas'].append(sin_pausas(paso.get('di') or ''))
+        notas[-1].setdefault('pasos', []).append([round(t0, 2), round(p['dur'], 2)])
+        if sl is None:
+            continue
+        k = paso['_k']
+        nuevos = []
+        # Lo que aparece en este paso (salvo en el primero, que ya está en la base)
+        if k > 0:
+            for el in sl.elementos:
+                if el.paso == k:
+                    nuevos.append({'tipo': 'dibujo', 'caja': (el.x, el.y, el.x + el.w, el.y + el.h), 'crear': (lambda el=el: el.imagen()),
+                                   'reemplaza': False, 'fondo': None,
+                                   'partes': [{'tipo': 'relleno', 'caja': (0, 0, el.w, el.h), 'dur': 0.45}]})
+            for kc, el, capa in sl.capas:
+                if kc == k:
+                    nuevos.append({'tipo': 'dibujo', 'caja': (el.x, el.y, el.x + el.w, el.y + el.h), 'crear': (lambda el=el, c=capa: el.imagen(c)),
+                                   'reemplaza': False, 'fondo': None,
+                                   'partes': [{'tipo': 'relleno', 'caja': (0, 0, el.w, el.h), 'dur': 0.6}]})
+        try:
+            for a in (paso.get('anota') or []):
+                nuevos += anotacion(sl, a)
+        except ErrorSlides as ex:
+            errores.append(f'{donde}: {ex}')
+        for op in nuevos:
+            op['listo'], op['paso'], op['dicho'] = listo + (FUNDIDO if p['fundido'] else 0), n, sin_pausas(paso.get('di') or '')
+            ops.append(op)
+            pendientes.append(op)
+        # La pizarra del panel: lo mismo que en los cantes (rejilla, borrar, conservar y lo que se escribe)
+        acciones = paso.get('pizarra') or []
+        acciones = [acciones] if isinstance(acciones, dict) else acciones
+        if (acciones or paso.get('borrar') or 'rejilla' in paso) and sesion is None:
+            errores.append(f'{donde}: el paso escribe en la pizarra, pero la slide no tiene panel de pizarra')
+            continue
+        if sesion is None:
+            continue
+        piz = sesion['pizarra']
+        antes = len(piz.avisos)
+        nuevos = []
+        if 'rejilla' in paso and paso['rejilla'] is not None:
+            nuevos += piz.cambiar_rejilla(paso['rejilla'], paso.get('conservar'), paso.get('lineas'))
+        if paso.get('borrar'):
+            nuevos += piz.borrar(paso['borrar'], paso.get('conservar'))
+        for accion in acciones:
+            try:
+                nuevos.append(piz.anadir(accion))
+            except (ValueError, RuntimeError) as ex:
+                errores.append(f'{donde}: pizarra: {ex}')
+        for op in nuevos:
+            op['listo'], op['paso'], op['dicho'] = listo + (FUNDIDO if p['fundido'] else 0), n, sin_pausas(paso.get('di') or '')
+            sesion['ops'].append(op)
+            sesion['pendientes'].append(op)
+        for j in range(antes, len(piz.avisos)):
+            avisos.append(f'{donde}: {piz.avisos[j]}')
+    barrera(contenido_fin - 0.2)
+    for s in sesiones:
+        for op in s['pendientes']:
+            op['barrera'] = min(s['t1'], contenido_fin) - 0.2
+        s['pendientes'].clear()
+    programar(ops, avisos)
+    for s in sesiones:
+        programar(s['ops'], avisos)
+    # Ningún texto de la cabecera ni del esquema puede recortarse
+    for i in range(len(escenas)):
+        partes = [None] + list(escenas[i].get('estructura') or [])
+        for parte in partes:
+            pantallas.cabecera(i, 0, pantallas.total, parte)
+    for c in tarjetas:
+        pantallas.tarjeta(c['escena'], c['previa'], 1.0)
+    for texto in pantallas.cortes:
+        errores.append(f'la cabecera o el esquema recortarían «{texto}» (acortar el título o usar «corto»)')
+    return {'ops': ops, 'sesiones': sesiones, 'tarjetas': tarjetas, 'avisos': avisos, 'errores': errores,
+            'subtitulos': subtitulos, 'capitulos': capitulos, 'notas': notas}
+
+
+def fotogramas_slides(plan, pasos, escenas, pantallas, total, portada_fin, contenido_fin, tramo, instantes,
+                      proceso, carpeta_f):
+    """El bucle de fotogramas de las slides (el de los cantes está en main)."""
+    tablero = TableroSlides(plan['ops'], (ANCHO, CUERPO_H), PAPEL)
+    for s in plan['sesiones']:
+        x0, y0, x1, y1 = s['rect']
+        s['tablero'] = TableroSlides(s['ops'], (x1 - x0, y1 - y0), PIZARRA)
+    tarjetas = plan['tarjetas']
+    primer_paso = {}
+    for q in pasos:
+        primer_paso.setdefault(q['escena'], q)
+    portada = pantallas.portada().tobytes()
+    cierre = pantallas.cierre().tobytes()
+    cache_tarjeta = {}
+    cabecera_clave = cabecera_bytes = None
+    cuerpo_clave = cuerpo_img = cuerpo_bytes = None
+    ultimo, antes_de_paso, n_visto = None, None, -1
+    n = 0
+    siguiente_instante = 0
+    marcos = int(round(total * FPS))
+    for marco in range(int(round(tramo[0] * FPS)) if not instantes else 0, min(marcos, int(math.ceil(tramo[1] * FPS)))):
+        t = marco / FPS
+        if instantes:
+            if siguiente_instante >= len(instantes):
+                break
+            if t + 1e-9 < instantes[siguiente_instante] - 0.5 / FPS:
+                continue
+        if t < portada_fin or t >= contenido_fin:
+            datos = portada if t < portada_fin else cierre
+            if instantes:
+                Image.frombytes('RGB', (ANCHO, ALTO), datos).save(os.path.join(carpeta_f, f"t{t:07.2f}.png"))
+                siguiente_instante += 1
+            else:
+                proceso.stdin.write(datos)
+            continue
+        while n + 1 < len(pasos) and pasos[n + 1]['inicio'] <= t:
+            n += 1
+        p = pasos[n]
+        if t < p['inicio']:
+            p = pasos[0]
+        if n != n_visto:
+            antes_de_paso, n_visto = ultimo, n
+        img, ck = tablero.imagen(t)
+        clave = ('s', ck)
+        ses = next((s for s in plan['sesiones'] if s['t0'] <= t < s['t1']), None)
+        if ses:
+            pimg, pk = ses['tablero'].imagen(t)
+            clave += (id(ses), pk)
+        if clave == cuerpo_clave:
+            img = cuerpo_img
+        else:
+            img = img.copy()          # el tablero sigue pintando sobre su imagen
+            if ses:
+                img.paste(pimg, ses['rect'][:2])
+        if p.get('fundido') and t - p['inicio'] < FUNDIDO and antes_de_paso is not None:
+            img = Image.blend(antes_de_paso, img, (t - p['inicio']) / FUNDIDO)
+            clave += ('f', marco)
+        else:
+            ultimo = img
+        tarjeta = next((c for c in tarjetas if c['c0'] <= t < c['c1']), None)
+        if tarjeta:
+            alfa = min(1.0, (t - tarjeta['c0']) / 0.3, (tarjeta['c1'] - t) / 0.3)
+            u = min(1.0, max(0.0, (t - tarjeta['c0'] - 0.25) / 0.7))
+            ct = (tarjeta['escena'], round(u * 20))
+            if ct not in cache_tarjeta:
+                if len(cache_tarjeta) > 40:
+                    cache_tarjeta.clear()
+                cache_tarjeta[ct] = pantallas.tarjeta(tarjeta['escena'], tarjeta['previa'], u)
+            entero = Image.new('RGB', (ANCHO, ALTO), PAPEL)
+            entero.paste(img, (0, CAB))
+            img = con_tarjeta(entero, cache_tarjeta[ct], alfa).crop((0, CAB, ANCHO, ALTO))
+            clave += ('t', marco)
+        if clave != cuerpo_clave:
+            cuerpo_clave, cuerpo_img = clave, img
+            cuerpo_bytes = img.tobytes()
+        escena_cab = p['escena']
+        brillo, brillo_bloque = 0.0, 0.0
+        primero = primer_paso[escena_cab]
+        if primero.get('brillo_desde') is not None and 0 <= t - primero['brillo_desde'] < 2.0:
+            brillo = round(1 - (t - primero['brillo_desde']) / 2.0, 1)
+            brillo_bloque = brillo if primero.get('brillo_bloque') else 0.0
+        cc = (escena_cab, int(t), p.get('parte'), brillo, brillo_bloque)
+        if cc != cabecera_clave:
+            cabecera_clave = cc
+            cabecera_bytes = pantallas.cabecera(escena_cab, t, total, p.get('parte'), brillo, brillo_bloque).tobytes()
+        if instantes:
+            Image.frombytes('RGB', (ANCHO, ALTO), cabecera_bytes + cuerpo_bytes).save(
+                os.path.join(carpeta_f, f"t{t:07.2f}.png"))
+            siguiente_instante += 1
+        else:
+            proceso.stdin.write(cabecera_bytes + cuerpo_bytes)
+        if marco % (FPS * 60) == 0:
+            print(f'  {mmss(t)} · {escenas[p["escena"]].get("titulo") or escenas[p["escena"]]["bloque"]}', flush=True)
+
+
+CLAVES_SLIDES = {
+    'escena': {'bloque', 'titulo', 'apartado', 'estructura', 'guia', 'slides'},
+    'slide': {'titulo', 'guia', 'pizarra', 'columnas', 'vertical', 'contenido', 'pasos'},
+    'paso': {'di', 'parte', 'muestra', 'anota', 'pizarra', 'rejilla', 'conservar', 'lineas', 'borrar'},
+    'elemento': {'vinetas', 'texto', 'formula', 'grafico', 'tabla', 'caja', 'cifras', 'flujo', 'id', 'col', 'capa',
+                 'alto', 'pie', 'tam', 'color', 'alinear', 'centrado', 'grande', 'cursiva', 'numerada', 'cabecera',
+                 'filas', 'anchos', 'destaca', 'titulo'},
+    'anota': {'rodea', 'subraya', 'tacha', 'flecha', 'escribe', 'formula', 'junto', 'lado', 'desde', 'pos', 'color', 'tam',
+              'largo', 'ancho'},
+    'panel': {'ancho', 'lado', 'rejilla', 'lineas', 'nueva'},
+}
+
+
+def comprobar_slides(guion):
+    avisos = []
+    for k in guion:
+        if k not in CLAVES_RAIZ | {'formato'}:
+            avisos.append(f'clave desconocida «{k}» en escenas.yaml (se ignora)')
+
+    def desconocidas(d, validas, donde):
+        if isinstance(d, dict):
+            for k in d:
+                if k not in validas:
+                    avisos.append(f'clave desconocida «{k}» en {donde} (se ignora)')
+    for i, e in enumerate(guion.get('escenas') or [], 1):
+        desconocidas(e, CLAVES_SLIDES['escena'], f'la escena {i}')
+        for j, sl in enumerate(e.get('slides') or [], 1):
+            donde = f'la escena {i}, slide {j}'
+            desconocidas(sl, CLAVES_SLIDES['slide'], donde)
+            if isinstance(sl.get('pizarra'), dict):
+                desconocidas(sl['pizarra'], CLAVES_SLIDES['panel'], donde + ', pizarra')
+            for el in sl.get('contenido') or []:
+                desconocidas(el, CLAVES_SLIDES['elemento'], donde + ', contenido')
+            for k, p in enumerate(sl.get('pasos') or [], 1):
+                desconocidas(p, CLAVES_SLIDES['paso'], f'{donde}, paso {k}')
+                for el in p.get('muestra') or []:
+                    desconocidas(el, CLAVES_SLIDES['elemento'], f'{donde}, paso {k}, muestra')
+                for a in p.get('anota') or []:
+                    desconocidas(a, CLAVES_SLIDES['anota'], f'{donde}, paso {k}, anota')
+                acciones = p.get('pizarra') or []
+                for a in (acciones if isinstance(acciones, list) else [acciones]):
+                    desconocidas(a, CLAVES_ACCION, f'{donde}, paso {k}, pizarra')
+    return avisos
 
 
 # --- Comprobaciones del guion ---------------------------------------------------------------------

@@ -889,6 +889,18 @@ un tema (§1-§10), con estas diferencias:
      transversales; b) una sección por cada pregunta que hay que contestar
      (los bloques de la guía), a modo de clase teórica que recorre toda la
      guía; c) conclusión.
+     **Formato «slides»** (Víctor, 27/10/2026; `formato: slides` en
+     `escenas.yaml`, descrito en `generar-video.py`): sucesión de slides que
+     siguen los apartados, gráficos, cuadros y tablas de la guía, con libertad
+     para usar la pizarra (slide entera, pizarra entera, panel de pizarra o
+     anotaciones a mano encima); sin franja «Se dice» ni apuntes ni apoyo; las
+     slides llevan lo esencial y el guion hablado va en la voz, el .srt y las
+     notas de cada slide; cada slide dice en una esquina «§ apartado · pág.» de
+     la guía; lo del anexo que sirve para el examen (umbrales, cálculos tipo,
+     expresiones) va junto a su indicador; el método cierra la introducción;
+     el reparto del tiempo, solo cualitativo; cabecera con el tiempo
+     transcurrido sobre el total. Ningún texto puede cortarse: `--medir` falla
+     si algo no cabe.
   4. **Examen de ejemplo de España**, en el formato vigente (como el
      dictamen de 2026): cuadro macroeconómico de España con previsiones, unos
      6-8 gráficos y tablas y 5-6 preguntas para 1 h 45 min; datos oficiales al

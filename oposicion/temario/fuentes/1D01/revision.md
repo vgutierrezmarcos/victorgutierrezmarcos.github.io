@@ -750,15 +750,28 @@ comprobación allí.
 
 ## 8. Instrucciones para el vídeo (clase de 1 h 30 min, sin voz por ahora)
 
-> Sustituye al plan de 15 minutos (entregables del 25/10/2026, CRITERIOS §11, punto 5). El guion completo y el plan de pizarra están en `guion-cante.md`, generado desde `video/escenas.yaml` (`duracion: 5400`).
+> Sustituye al plan de 15 minutos (entregables del 25/10/2026, CRITERIOS §11, punto 5). El guion completo, con lo que enseña cada slide, está en `guion-cante.md`, generado desde `video/escenas.yaml` (`duracion: 5400`, `formato: slides`).
 
-- **Formato**: una clase que recorre toda la guía, con una sección por cada pregunta del dictamen; 40 escenas y unas 14.100 palabras. Modo `guion` en la introducción, las aperturas de bloque y la conclusión; `pizarra` + `apoyo` en el resto. Solo fórmulas y esquemas a mano; los gráficos de datos y las tablas de umbrales van siempre como apoyo.
-- **Minutos por bloque**: Introducción 3 · 0. El ejercicio y el método 5 · I. Perfil cíclico 15 · II. Mercados de factores 10 · III. Competitividad 10 · IV. Sector exterior 10 · V. Políticas 26 (fiscal y deuda, unos 9) · VI. Recomendaciones 7 · Conclusión 4.
-- **La esquina**: desde I.3 la brecha de producción (OG y ΔOG ≈ γY − γYp) queda recuadrada en la celda 1a hasta el final de las políticas; se vuelve a ella en Okun, Taylor, el saldo estructural primario y los estabilizadores.
-- **La escala del tono crece**: monetaria en V.1, fiscal añadida en V.3 y el *policy mix* debajo en V.4.
-- **Boceto nuevo, solo para el vídeo**: `graficos/beveridge-pizarra.tex` (curva de Beveridge en 5 capas, II.4).
-- **Script**: `generar-video.py` admite la duración de 5400 s, la clave `corto` de los bloques, la cabecera con más de 6 bloques, el esquema compactado y portada, cierre y texto de YouTube propios de la guía; los avisos de pizarra dan minuto y escena. `verificar-tema.py` escala los objetivos de palabras con `duracion`. Comprobado que 3A08 sale igual (4816 palabras, ×1,027, 0 avisos).
-- **Dudas para Víctor** (no impiden seguir): la introducción partida en 3′ + «0. El ejercicio y el método» de 5′ con la regla del tiempo en la pizarra; V.3 (fiscal y deuda) con unos 9′ en vez de 10′.
+- **Formato** (desde el 27/10/2026, abajo): una clase que recorre toda la guía, con una sección por cada pregunta del dictamen, como **sucesión de slides** que siguen los apartados, gráficos, cuadros y tablas de la guía, con libertad para usar la pizarra. 38 escenas, 148 slides, 244 pasos y unas 14.060 palabras (ritmo ×0,986). Cada slide dice abajo a la derecha su apartado y su página de la guía («§ I.3 · pág. 10», del `.aux`).
+- **Minutos por bloque** (cabecera): Introducción 8 (con el método al final) · I. Perfil cíclico 15 · II. Mercados de factores 10 · III. Competitividad 10 · IV. Sector exterior 10 · V. Políticas 26 · VI. Recomendaciones 7 · Conclusión 4.
+- **Apartados como en la guía**: I.1-I.6 (I.6, anticipar el diagnóstico, aparte de la oferta), II.1 Mercado de trabajo (4 escenas: cantidades; productividad, CLU y margen; tipos de paro; Okun, Phillips y Beveridge) y II.2 Capitales, III.1 Precios (índices y origen), III.2 Tipo de cambio, III.3 No precio, IV.1-IV.4, V.1-V.5, VI.1-VI.2.
+- **Pizarra**: entera en tendencia y ciclo (I.2), el triángulo de Gordon (III.1), los déficits gemelos (IV.1) y los canales de la monetaria (V.1); en un panel al lado de la slide, las fórmulas que conviene llevar al examen (el panel se conserva entre slides seguidas: la brecha de producción en I.3, los determinantes del consumo y de la inversión en I.4, la cadena de los CLU en II.1) y el boceto de Beveridge (`graficos/beveridge-pizarra.tex`, solo del vídeo). Anotaciones a mano encima de las slides: rodear una fila de umbrales o un dato de un gráfico, subrayar la idea clave, tachar la redacción descriptiva, una flecha o una palabra.
+- **Lo del anexo junto a su indicador**: umbrales del procedimiento de desequilibrios, Basilea III y reglas fiscales (cuadros verdes), cálculos tipo del anexo A.3 (cuadros azules), expresiones útiles y párrafos modelo (cuadros «Ejemplo de redacción»), lo preguntado en los dictámenes («Nota al opositor») y tablas de la guía (1, 2, 3, 5, 6, 11 y 14) y de los anexos.
+- **Script**: `generar-video.py` tiene el formato «slides» como modo nuevo y aditivo (los cantes no cambian: 3A08 sigue en 4816 palabras, ×1,027, 0 avisos, y sus fotogramas son idénticos a los de antes). Mide cada slide y, si algo no cabe aun reduciendo la letra al 80 %, para con un error que dice minuto, escena y texto (también con `--medir`, código 4). `verificar-tema.py` lee los pasos dentro de las slides.
+
+### Formato nuevo de los vídeos de la guía y de la solución (27/10/2026)
+
+Tras ver el borrador de 1 h 30 (sin renderizar de nuevo hasta que Víctor lo pida):
+1. El método se junta al final de la introducción (la cabecera queda con 8 bloques).
+2. Sucesión de slides con libertad total para usar la pizarra: slide entera, pizarra entera, slide con panel de pizarra o anotaciones a mano encima, según convenga. Sin la franja «Se dice» ni los apuntes. La explicación la dará una voz grabada más adelante; las slides llevan lo esencial y el guion completo queda en el .srt y en las notas.
+3. Ningún texto cortado (el borrador cortaba la caja de umbrales del PIB): el generador mide cada caja y parte la slide o falla.
+4. Estructura y visualizaciones de la guía en papel, con lo del anexo que sirve para el examen; cada slide lleva «§ … · pág. …» de la guía.
+5. Cabecera con el tiempo transcurrido sobre el total, sin lo que queda.
+6. Se mantienen las transiciones entre bloques.
+7. La ppt del deck, solo cuando Víctor la pida, tras la versión final.
+- Vídeo de la solución: como en el examen (cuadro del cuadernillo con el dato resaltado, respuesta escribiéndose como en el papel, slides de por qué entre preguntas).
+- El reparto del tiempo, en los 2 vídeos, solo como idea cualitativa (dedicar más tiempo a lo más importante): sin la fórmula ni minutos por pregunta. Sin pausa activa ni «hoja del examen» al final.
+- **Aplicado al vídeo de la guía (27/10/2026)**: `escenas.yaml` reescrito en formato slides con el mismo texto hablado aprobado, salvo lo que cambian estas decisiones (el paso de la estructura anuncia el método al final de la introducción; el del uso de la pizarra describe las slides; el reparto del tiempo se cuenta en 2 pasos cualitativos, sin la regla t = W/(n + 0,25) ni los minutos por pregunta). Borrador montado sin audio (`videos/1D01-borrador.mp4`, 90:00), con las notas de cada slide en `videos/1D01-borrador-notas.json`. La ppt, cuando Víctor la pida.
 
 ### Decisiones de Víctor sobre la segunda vuelta (24/10/2026)
 

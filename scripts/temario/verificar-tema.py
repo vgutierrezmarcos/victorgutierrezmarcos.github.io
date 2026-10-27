@@ -612,7 +612,21 @@ def verificar(tema):
         try:
             g = yaml.safe_load(escenas)
             escs = g['escenas']
-            dichos = [p.get('di', '') for e in escs for p in e.get('pasos', [])]
+
+            # En el formato «slides» (la guía del dictamen) los pasos van dentro de cada slide
+            def pasos_de(e):
+                return e.get('pasos') or [p for s in e.get('slides') or [] for p in s.get('pasos') or []]
+
+            def graficos_de(e):
+                """(clave, nombre) de los gráficos que usa una escena, en cualquiera de los 2 formatos."""
+                listas = [('contenido', s.get('contenido')) for s in e.get('slides') or []]
+                for p in pasos_de(e):
+                    listas += [(k, p.get(k)) for k in ('pizarra', 'apoyo', 'muestra')]
+                for clave, acciones in listas:
+                    for a in (acciones if isinstance(acciones, list) else [acciones] if acciones else []):
+                        if isinstance(a, dict) and a.get('grafico'):
+                            yield clave, a['grafico']
+            dichos = [p.get('di', '') for e in escs for p in pasos_de(e)]
             palabras_video = len(re.findall(r'\w+', ' '.join(dichos)))
             datos['video_palabras'] = palabras_video
             # Con pausas y cambios de escena caben unas 4.700 palabras en 30:00 (≈158 por
@@ -627,13 +641,10 @@ def verificar(tema):
             for i, e in enumerate(escs, 1):
                 if e.get('bloque') not in nombres:
                     errores.append(f'Escena {i}: el bloque «{e.get("bloque")}» no está en «bloques»')
-                for k, p in enumerate(e.get('pasos', []), 1):
-                    for clave in ('pizarra', 'apoyo'):
-                        acciones = p.get(clave) or []
-                        for a in (acciones if isinstance(acciones, list) else [acciones]):
-                            if isinstance(a, dict) and a.get('grafico') and not os.path.exists(
-                                    os.path.join(tema.graficos, a['grafico'] + '.tex')):
-                                errores.append(f'escenas.yaml usa un gráfico inexistente en «{clave}»: {a["grafico"]}')
+                for clave, nombre in graficos_de(e):
+                    if not os.path.exists(os.path.join(tema.graficos, nombre + '.tex')):
+                        errores.append(f'escenas.yaml usa un gráfico inexistente en «{clave}»: {nombre}')
+                for k, p in enumerate(pasos_de(e), 1):
                     if not str(p.get('di', '')).strip():
                         avisos.append(f'Escena {i}, paso {k}: sin «di» (la voz no se para nunca; CRITERIOS §8)')
                     if len(re.findall(r'\[pausa', str(p.get('di', '')))) > 2:
@@ -646,7 +657,7 @@ def verificar(tema):
                 errores.append('El cante termina dando las gracias')
             concl = [e for e in escs if re.match(r'conclusi', str(e.get('bloque', '')), re.I)]
             if concl:
-                primero = next((p.get('di', '') for p in concl[0].get('pasos', []) if p.get('di')), '')
+                primero = next((p.get('di', '') for p in pasos_de(concl[0]) if p.get('di')), '')
                 if not re.match(r'\s*(En conclusión|A modo de conclusión)', primero):
                     errores.append('La conclusión no empieza por «En conclusión» o «A modo de conclusión»')
             for m in set(re.findall(r'\btema\s+(?:\d|tres|cuatro)[\w .]*?(?=[,.;:]|$)', texto, re.I)):
