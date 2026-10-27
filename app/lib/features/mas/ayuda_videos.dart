@@ -7,9 +7,10 @@ import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 
-/// Vídeo de ayuda de menos de un minuto: está en la página de la app
-/// (app/index.html, sección «Cómo se usa») y se monta con
-/// scripts/montar-videos-ayuda.py (guiones en app/promo/ayuda/GUIONES.md).
+/// Vídeo de ayuda de menos de un minuto: está en YouTube con la clave
+/// `ayuda-<id>` de videos.json y en la página de la app (app/index.html,
+/// sección «Cómo se usa»); se monta con scripts/montar-videos-ayuda.py
+/// (guiones en app/promo/ayuda/GUIONES.md).
 class VideoAyuda {
   const VideoAyuda(this.id, this.titulo, this.texto, this.papel);
   final String id;
@@ -32,8 +33,23 @@ const videosAyuda = [
   VideoAyuda('materiales', 'Comparte materiales', 'Enlaces de Drive, PDF o vídeos para tus alumnos', Papel.preparador),
 ];
 
-/// Abre el vídeo [id] en la página de la app.
-Future<void> verVideoAyuda(BuildContext context, String id) => abrirUrl(context, Urls.videoAyuda(id));
+/// videos.json de la web: clave → ID del vídeo de YouTube que vale hoy.
+final videosYoutubeProvider = FutureProvider<Map<String, String>>((ref) async {
+  final j = await ref.watch(serviciosProvider).http.json(Urls.videos, preferirCache: true);
+  final videos = (j['videos'] as Map?) ?? const {};
+  return {for (final e in videos.entries) e.key as String: (e.value as Map)['youtube'] as String};
+});
+
+/// Abre el vídeo [id] en YouTube; si aún no está en videos.json (o no se
+/// puede leer), en la página de la app.
+Future<void> verVideoAyuda(BuildContext context, String id) async {
+  final videos = await ProviderScope.containerOf(context, listen: false)
+      .read(videosYoutubeProvider.future)
+      .catchError((_) => const <String, String>{});
+  if (!context.mounted) return;
+  final youtube = videos['ayuda-$id'];
+  await abrirUrl(context, youtube != null ? 'https://youtu.be/$youtube' : Urls.videoAyuda(id));
+}
 
 /// Botón de la cabecera de una pantalla que abre su vídeo de ayuda.
 class BotonVideoAyuda extends StatelessWidget {
@@ -64,7 +80,7 @@ class AyudaVideosPage extends ConsumerWidget {
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
-          Text('Cada cosa, en un vídeo de menos de un minuto. Se abren en la página de la app.', style: context.textos.bodySmall),
+          Text('Cada cosa, en un vídeo de menos de un minuto. Se abren en YouTube.', style: context.textos.bodySmall),
           ...grupo(papel),
           ...grupo(otro),
         ],

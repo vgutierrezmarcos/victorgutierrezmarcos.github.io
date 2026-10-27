@@ -16,6 +16,8 @@ class Urls {
   static final String paginaApp = '$base/app/';
   /// Un vídeo de ayuda (sección «Cómo se usa» de la página de la app).
   static String videoAyuda(String id) => '$paginaApp#ayuda-$id';
+  /// Registro de los vídeos de YouTube: clave → vídeo vigente (scripts/youtube.py).
+  static final String videos = '$base/videos.json';
   /// La misma app, compilada para el navegador.
   static final String appWeb = '$base/app/abrir/';
 }
