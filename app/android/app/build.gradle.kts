@@ -63,6 +63,8 @@ android {
         val firma = signingConfigs.findByName("tcee") ?: signingConfigs.getByName("debug")
         release {
             signingConfig = firma
+            // Reglas para que R8 no rompa Firebase (ver proguard-rules.pro).
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
         debug {
             signingConfig = firma
