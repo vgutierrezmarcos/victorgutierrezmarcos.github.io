@@ -9,6 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:tcee_app/features/temario/temario_page.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/app.dart';
 import 'package:tcee_app/core/cache_http.dart';
@@ -194,8 +195,24 @@ void main() {
     expect(find.text('Haz tu primer test'), findsOneWidget);
 
     await estudiar(tester, 'Temas');
+    // Temas: una tarjeta por ejercicio; dentro, sus partes.
+    expect(find.text('Primer ejercicio'), findsOneWidget);
+    expect(find.text('Quinto ejercicio'), findsOneWidget);
+    await tocar(tester, find.text('Tercer ejercicio'));
     expect(find.textContaining('Parte A: Economía general'), findsOneWidget);
+    Navigator.of(tester.element(find.byType(EjercicioPage))).pop();
+    await tester.pumpAndSettle();
+    await tocar(tester, find.text('Quinto ejercicio'));
     expect(find.textContaining('Parte B: Econometría'), findsOneWidget);
+    Navigator.of(tester.element(find.byType(EjercicioPage))).pop();
+    await tester.pumpAndSettle();
+    // El primer ejercicio: el simulador, el test diario y el dictamen.
+    await tocar(tester, find.text('Primer ejercicio'));
+    expect(find.text('Simulador de test'), findsOneWidget);
+    expect(find.text('Test diario'), findsOneWidget);
+    expect(find.text('Dictamen de coyuntura'), findsOneWidget);
+    Navigator.of(tester.element(find.byType(EjercicioPage))).pop();
+    await tester.pumpAndSettle();
 
     await subpestana(tester, 'Agenda');
     expect(find.text('Programa tu próximo cante'), findsOneWidget);
@@ -447,6 +464,7 @@ void main() {
   testWidgets('agenda por tema: apuntar algo para la próxima vuelta', (tester) async {
     await arrancar(tester);
     await estudiar(tester, 'Temas');
+    await tocar(tester, find.text('Quinto ejercicio'));
     await tocar(tester, find.textContaining('Parte C: Derecho'));
     // Tema sin PDF: se abre directamente su agenda.
     await tocar(tester, find.textContaining('5.C.4 ·'));
@@ -478,10 +496,11 @@ void main() {
         })));
     await arrancar(tester);
     await estudiar(tester, 'Temas');
-    await tocar(tester, find.textContaining('Parte C: Derecho'));
     // Aprobado desde el 1 oct. 2026: exclusivo (uso personal); el chip del filtro cuenta uno.
-    expect(find.text('Exclusivo · revisado'), findsOneWidget);
     expect(find.text('Materiales exclusivos · 1'), findsOneWidget);
+    await tocar(tester, find.text('Quinto ejercicio'));
+    await tocar(tester, find.textContaining('Parte C: Derecho'));
+    expect(find.text('Exclusivo · revisado'), findsOneWidget);
     // Sin cuenta: se ve la versión anterior (aquí, la agenda: no tiene PDF) y la invitación.
     await tocar(tester, find.textContaining('5.C.4 ·'));
     expect(find.text('Versión revisada disponible: inicia sesión para leerla'), findsOneWidget);

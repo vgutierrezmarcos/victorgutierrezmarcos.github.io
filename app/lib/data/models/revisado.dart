@@ -130,7 +130,16 @@ class TemaRevisado {
   String prefijoLocal(ClaseFichero c) => '$archivo-revisado-${c.name}-';
 
   /// Nombre con el que se comparte o guarda el fichero.
-  String nombreVisible(ClaseFichero c) => switch (c) {
+  bool get esDictamen => codigo == codigoDictamen;
+
+  String nombreVisible(ClaseFichero c) => esDictamen
+      ? switch (c) {
+          ClaseFichero.pdf => 'Guía del dictamen (revisada).pdf',
+          ClaseFichero.docx => 'Guía del dictamen (revisada).docx',
+          ClaseFichero.html => 'Guía del dictamen (revisada).html',
+          ClaseFichero.repaso => 'Guía del dictamen - resumen de repaso.pdf',
+        }
+      : switch (c) {
         ClaseFichero.pdf => 'Tema $codigo (revisado).pdf',
         ClaseFichero.docx => 'Tema $codigo (revisado).docx',
         ClaseFichero.html => 'Tema $codigo (revisado).html',
@@ -141,14 +150,15 @@ class TemaRevisado {
   static TemaRevisado? fromJson(Object? j, {String raw = _rawPorDefecto, String cdn = _cdnPorDefecto}) {
     if (j is! Map) return null;
     final codigo = j['codigo'];
-    if (codigo is! String || !RegExp(r'^\d\.[A-Z]\.\d{1,2}$').hasMatch(codigo.trim())) return null;
+    // «Dictamen» es la guía del dictamen de coyuntura (clave `dictamen` del manifiesto).
+    if (codigo is! String || !(RegExp(r'^\d\.[A-Z]\.\d{1,2}$').hasMatch(codigo.trim()) || codigo.trim() == codigoDictamen)) return null;
     final pdf = FicheroRevisado.fromJson(j['pdf']);
     if (pdf == null) return null;
     final c = codigo.trim();
     final partes = c.split('.');
     final archivo = j['archivo'] is String && (j['archivo'] as String).isNotEmpty
         ? (j['archivo'] as String).replaceAll(RegExp(r'[^0-9A-Za-z]'), '')
-        : '${partes[0]}${partes[1]}${partes[2].padLeft(2, '0')}';
+        : (c == codigoDictamen ? '1D01' : '${partes[0]}${partes[1]}${partes[2].padLeft(2, '0')}');
     return TemaRevisado(
       codigo: c,
       archivo: archivo,
@@ -167,6 +177,9 @@ class TemaRevisado {
   }
 }
 
+/// Código con el que la app trata la guía del dictamen de coyuntura (1D01).
+const codigoDictamen = 'Dictamen';
+
 /// Desde cuándo lo revisado es exclusivo (uso personal).
 final corteExclusivo = DateTime(2026, 10, 1);
 
@@ -176,20 +189,22 @@ const urlCondicionesMateriales = 'https://www.victorgutierrezmarcos.es/condicion
 
 /// revisados.json
 class ManifiestoRevisados {
-  const ManifiestoRevisados({this.temas = const {}, this.commit = '', this.condiciones = urlCondicionesMateriales});
+  const ManifiestoRevisados({this.temas = const {}, this.commit = '', this.condiciones = urlCondicionesMateriales, this.dictamen});
   final Map<String, TemaRevisado> temas;
+  /// La guía del dictamen de coyuntura revisada (clave `dictamen`), si está aprobada.
+  final TemaRevisado? dictamen;
   final String commit;
   /// Página de condiciones de uso de los materiales (la trae el manifiesto).
   final String condiciones;
 
   /// Los temas exclusivos (uso personal).
-  Iterable<TemaRevisado> get exclusivos => temas.values.where((t) => t.exclusivo);
+  Iterable<TemaRevisado> get exclusivos => [...temas.values, if (dictamen != null) dictamen!].where((t) => t.exclusivo);
 
   static const vacio = ManifiestoRevisados();
 
-  bool get isEmpty => temas.isEmpty;
+  bool get isEmpty => temas.isEmpty && dictamen == null;
 
-  TemaRevisado? de(String codigo) => temas[codigo];
+  TemaRevisado? de(String codigo) => codigo == codigoDictamen ? dictamen : temas[codigo];
 
   /// Tolerante: lo que no se entiende se ignora (una entrada mal escrita no
   /// tumba las demás) y, si el JSON entero no vale, queda vacío.
@@ -216,7 +231,9 @@ class ManifiestoRevisados {
       }
     }
     final condiciones = j['condiciones'];
-    return ManifiestoRevisados(temas: temas, commit: j['commit'] is String ? j['commit'] as String : '', condiciones: condiciones is String && condiciones.startsWith('https://') ? condiciones : urlCondicionesMateriales);
+    final d = j['dictamen'];
+    final dictamen = d is Map ? TemaRevisado.fromJson({...d, 'codigo': codigoDictamen}, raw: raw, cdn: cdn) : null;
+    return ManifiestoRevisados(temas: temas, dictamen: dictamen, commit: j['commit'] is String ? j['commit'] as String : '', condiciones: condiciones is String && condiciones.startsWith('https://') ? condiciones : urlCondicionesMateriales);
   }
 }
 
