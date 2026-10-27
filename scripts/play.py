@@ -145,11 +145,13 @@ class Edicion:
                                f.read_bytes(), 'image/png')
             print(f'{tipo}: {len(archivos)} imagen(es)')
 
-    def confirmar(self, enviar=False):
-        """Con enviar, a revisión (sin cancelar nunca lo que ya esté en ella);
-        sin enviar, Google valida la edición y se descarta: no cambia nada."""
+    def confirmar(self, enviar=False, cancelar=False):
+        """Con enviar, a revisión (sin cancelar lo que ya esté en ella, salvo con
+        cancelar, que solo se usa si Víctor lo pide); sin enviar, Google valida la
+        edición y se descarta: no cambia nada."""
         if enviar:
-            return self.api.pedir('POST', f'{self.url}:commit?changesInReviewBehavior=ERROR_IF_IN_REVIEW')
+            modo = 'CANCEL_IN_REVIEW_AND_SUBMIT' if cancelar else 'ERROR_IF_IN_REVIEW'
+            return self.api.pedir('POST', f'{self.url}:commit?changesInReviewBehavior={modo}')
         self.api.pedir('POST', f'{self.url}:validate')
         self.descartar()
 
@@ -215,7 +217,7 @@ def subir(a):
         e.poner_video(video)
     if a.graficos:
         e.poner_graficos(a.graficos)
-    e.confirmar(a.enviar)
+    e.confirmar(a.enviar, a.cancelar_revision)
     print(f'{version["name"]} en {" y ".join(pistas)}' + (' como borrador.' if a.borrador else _aviso(a.enviar)))
 
 
@@ -304,6 +306,7 @@ def main():
     o.add_argument('--notas-archivo')
     o.add_argument('--borrador', action='store_true')
     o.add_argument('--video-clave', help='vídeo de la ficha: clave de videos.json (p. ej. promo-app)')
+    o.add_argument('--cancelar-revision', action='store_true', help='con --enviar, retira lo que esté en revisión (solo si Víctor lo pide)')
     o.add_argument('--graficos', help='carpeta de gráficos de la ficha (app/play-store/graficos)')
     o.add_argument('--enviar', action='store_true', help='mandar a revisión ya (solo con permiso de Víctor)')
     o = s.add_parser('promocionar')
