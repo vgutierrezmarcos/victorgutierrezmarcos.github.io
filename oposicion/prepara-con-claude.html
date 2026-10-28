@@ -392,35 +392,25 @@
 
                     <h2 id="carpeta">Tu carpeta de la oposición</h2>
                     <p>Una carpeta ordenada en el ordenador, con todo lo de la oposición, hace que Claude trabaje mejor: encuentra el tema que toca, guarda cada informe junto al cante que corrige y no hay que subir los mismos ficheros cada vez. Esta es la estructura que recomendamos; adáptala, pero mantén los códigos de tema en los nombres (<code>3A08</code>), que es lo que la skill y la app usan para encontrar las cosas.</p>
-<pre class="carpeta">Oposición TCEE/                     (o «Oposición DCE»)
-  prepara-con-claude.zip            la skill
-  00 Organización/
-     programa-oficial.pdf           el anexo de la convocatoria
-     oposicion_tcee_para_claude.json   la exportación de la app (cada semana)
-     cronograma.txt                 el último cronograma acordado con Claude
-  01 Temario/
-     3º/3A/3A08/                    una carpeta por tema
-        3A08.pdf                    el tema (o tus apuntes)
-        3A08-repaso.pdf             la ficha de repaso, si existe
-        mis-apuntes-3A08.docx
-  02 Cantes/
-     2026-11-03_3A08.txt            la transcripción que manda la app
-     2026-11-03_3A08-informe.pdf    el informe de Claude
-  03 Dictámenes/
-     2026-11-15_meridia.pdf         las hojas escaneadas y el cuadernillo
-     2026-11-15_meridia-informe.pdf
-  04 Test/                          resultados y preguntas que fallas
-  05 Idiomas/</pre>
+<pre class="carpeta">Oposición TCEE/
+  0_organizacion/            convocatoria, Excel de estrategia, exportación de la app, cronograma
+  1_primer_ejercicio/1_test/           exámenes oficiales de test y tus simulacros
+  1_primer_ejercicio/2_dictamen/       esquema del dictamen, exámenes; simulacros/ con tus dictámenes e informes
+  2_segundo_ejercicio/       idiomas
+  3_tercer_ejercicio/A/3A08/ el tema en PDF y Word, tus apuntes y cantes/ (transcripciones e informes)
+  3_tercer_ejercicio/B/…  4_cuarto_ejercicio/…  5_quinto_ejercicio/…
+  prepara-con-claude.zip     la skill</pre>
+                    <p><strong>Con un solo prompt.</strong> La skill lleva un script que crea esta carpeta y baja a cada sitio los materiales públicos de la web (los 177 temas en PDF y Word, la organización, los exámenes oficiales, el esquema del dictamen). En Claude Code o Claude Desktop con acceso a ficheros basta con pedir: «Crea mi carpeta de la oposición en Documentos/Oposición TCEE con todos los materiales de la web». Los materiales exclusivos no se descargan: están en la app y dentro de la skill.</p>
                     <p>Desde esa carpeta puedes trabajar de tres formas:</p>
                     <ul>
-                        <li><strong>Un Proyecto de Claude.ai</strong> (en el navegador o en el móvil) con la skill activada y los ficheros de <code>00 Organización</code> como conocimiento: así no los subes cada vez. Crea el proyecto «Oposición» y usa siempre ese.</li>
+                        <li><strong>Un Proyecto de Claude.ai</strong> (en el navegador o en el móvil) con la skill activada y los ficheros de <code>0_organizacion</code> como conocimiento: así no los subes cada vez. Crea el proyecto «Oposición» y usa siempre ese.</li>
                         <li><strong>Claude Desktop</strong> (Windows y Mac) con acceso a la carpeta: dale permiso sobre <code>Oposición TCEE</code> y pídele «corrige el cante de hoy» o «guarda el informe junto a la transcripción»; lee y escribe ahí. La skill se instala igual que en Claude.ai, con la misma cuenta.</li>
-                        <li><strong>Claude Code</strong> en la terminal: abre una terminal en la carpeta y escribe <code>claude</code>, con el ZIP descomprimido en <code>.claude/skills/</code>. Es la forma más cómoda de que los informes queden guardados solos en <code>02 Cantes</code>.</li>
+                        <li><strong>Claude Code</strong> en la terminal: abre una terminal en la carpeta y escribe <code>claude</code>, con el ZIP descomprimido en <code>.claude/skills/</code>. Es la forma más cómoda de que los informes queden guardados solos en la carpeta <code>cantes/</code> de cada tema.</li>
                     </ul>
                     <p>Dos ejemplos de lo que le puedes pedir cuando trabaja en la carpeta:</p>
                     <ul class="ejemplos">
-                        <li>«Corrige <code>02 Cantes/2026-11-03_3A08.txt</code> y guarda el informe en PDF al lado.»</li>
-                        <li>«Lee los tres últimos informes de <code>02 Cantes</code> y dime qué error se repite.»</li>
+                        <li>«Corrige <code>3_tercer_ejercicio/A/3A08/cantes/2026-11-03.txt</code> y guarda el informe en PDF al lado.»</li>
+                        <li>«Lee los tres últimos informes de <code>cantes/</code> de los temas que he cantado este mes y dime qué error se repite.»</li>
                     </ul>
                     <p>Los informes llegan en PDF con la estética de la oposición (morado y dorado en TCEE, granate y azul en DCE) y en Markdown, para que los guardes o los pegues donde quieras. Los documentos de la skill no se copian a la carpeta: lo que se guarda son tus informes, tus cronogramas y tus fichas.</p>
 
