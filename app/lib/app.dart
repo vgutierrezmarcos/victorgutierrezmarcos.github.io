@@ -13,6 +13,7 @@ import 'core/analitica.dart';
 import 'data/repos/usuario_repo.dart' show Ajustes;
 import 'core/cronograma_providers.dart';
 import 'core/instalacion.dart';
+import 'data/models/plan.dart';
 import 'data/models/temas_clase.dart';
 import 'core/constants.dart';
 import 'core/enlaces.dart';
@@ -183,6 +184,10 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     ref.listenManual(cantesProvider, (_, __) => _fijarTemasDeClases(), fireImmediately: true);
     ref.listenManual(cronogramaProvider, (_, __) => _fijarTemasDeClases());
     ref.listenManual(ajustesProvider, (_, __) => _fijarTemasDeClases());
+    // Los deberes que se tachan solos (tema estudiado, esquema, cante, test).
+    ref.listenManual(cantesProvider, (_, __) => _tacharDeberes(), fireImmediately: true);
+    ref.listenManual(ajustesProvider, (_, __) => _tacharDeberes());
+    ref.listenManual(historialProvider, (_, __) => _tacharDeberes());
     // Un alumno nuevo (o uno que se va): se escuchan sus clases.
     ref.listenManual(alumnosProvider, (antes, ahora) {
       if (antes?.map((a) => '${a.id}:${a.uid}').join() != ahora.map((a) => '${a.id}:${a.uid}').join()) ref.read(sesionesProvider.notifier).escucharAlumnos();
@@ -372,6 +377,30 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       // Sin ajustes todavía (arranque) o sin sitio: se intenta en el siguiente cambio.
     } finally {
       _fijando = false;
+    }
+  }
+
+  bool _tachando = false;
+  Future<void> _tacharDeberes() async {
+    if (_tachando) return;
+    await Future<void>.delayed(Duration.zero);
+    if (!mounted || _tachando) return;
+    final repo = ref.read(usuarioRepoProvider);
+    final cambiadas = tacharDeberes(
+      ref.read(cantesProvider).where((c) => c.dePreparador),
+      estudiados: ref.read(ajustesProvider).temasEstudiados,
+      cantes: ref.read(cantesProvider),
+      tests: ref.read(historialProvider).valueOrNull ?? repo.resultadosLocales(),
+      banco: ref.read(preguntasProvider).valueOrNull,
+    );
+    if (cambiadas.isEmpty) return;
+    _tachando = true;
+    try {
+      await ref.read(cantesProvider.notifier).guardarVarios(cambiadas);
+    } catch (_) {
+      // Se vuelve a intentar en el siguiente cambio.
+    } finally {
+      _tachando = false;
     }
   }
 

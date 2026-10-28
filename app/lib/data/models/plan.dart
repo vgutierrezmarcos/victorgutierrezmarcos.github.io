@@ -1,5 +1,8 @@
 import 'dart:math';
 
+import 'pregunta.dart';
+import 'resultado.dart';
+
 import 'oposicion.dart';
 
 /// Modelos de planificación: cantes, convocatoria, horario y agenda por tema. Se guardan en local (Hive) y, con sesión, en Firestore
@@ -217,6 +220,130 @@ class CoberturaApartados {
   List<String> get nuncaCubiertos => [for (final e in porApartado.entries) if (e.value.ofrecido >= 2 && e.value.cubierto == 0) e.key];
 }
 
+/// Deber que el preparador deja para una clase: estudiar un tema, hacer su
+/// esquema a ciegas, cantarlo por su cuenta, un test o algo libre. Va en la
+/// clase ([Cante.tareas]), que el preparador escribe en la agenda del alumno;
+/// el alumno marca [hecha] (algunas se tachan solas: [tacharDeberes]).
+class Tarea {
+  const Tarea({required this.id, required this.tipo, this.tema, this.texto = '', this.preguntas = 0, required this.creada, this.hecha = false, this.hechaEn});
+
+  /// estudiar | esquema | cantar | test | libre
+  final String tipo;
+  final String id;
+  final String? tema;
+  final String texto;
+  /// Mínimo de preguntas del test (tipo `test`).
+  final int preguntas;
+  final DateTime creada;
+  final bool hecha;
+  final DateTime? hechaEn;
+
+  static const tipos = ['estudiar', 'esquema', 'cantar', 'test', 'libre'];
+
+  /// «Estudiar 3.A.12 · Título», «Esquema a ciegas de 3.A.12», …
+  String etiqueta({String Function(String codigo)? tituloDe}) {
+    final t = tema == null ? '' : '$tema${tituloDe == null || tituloDe(tema!).isEmpty ? '' : ' · ${tituloDe(tema!)}'}';
+    return switch (tipo) {
+      'estudiar' => 'Estudiar $t',
+      'esquema' => 'Esquema a ciegas de $t',
+      'cantar' => 'Cantar $t por tu cuenta',
+      'test' => 'Test de ${preguntas > 0 ? '$preguntas preguntas' : 'preguntas'}${tema == null ? '' : ' de $t'}',
+      _ => texto,
+    }.trim();
+  }
+
+  /// Si se tacha sola con lo que hace el alumno (estudiar, esquema, cantar y test).
+  bool get automatica => tipo != 'libre';
+
+  Tarea copyWith({bool? hecha, DateTime? hechaEn, bool borrarHechaEn = false, String? texto}) =>
+      Tarea(id: id, tipo: tipo, tema: tema, texto: texto ?? this.texto, preguntas: preguntas, creada: creada, hecha: hecha ?? this.hecha, hechaEn: borrarHechaEn ? null : (hechaEn ?? this.hechaEn));
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'tipo': tipo,
+        if (tema != null) 'tema': tema,
+        if (texto.isNotEmpty) 'texto': texto,
+        if (preguntas > 0) 'preguntas': preguntas,
+        'creada': creada.toIso8601String(),
+        if (hecha) 'hecha': true,
+        if (hechaEn != null) 'hechaEn': hechaEn!.toIso8601String(),
+      };
+
+  static Tarea? deJson(Object? j) {
+    if (j is! Map) return null;
+    final id = j['id']?.toString(), tipo = j['tipo']?.toString();
+    if (id == null || id.isEmpty || tipo == null || !tipos.contains(tipo)) return null;
+    return Tarea(
+      id: id,
+      tipo: tipo,
+      tema: j['tema']?.toString(),
+      texto: j['texto']?.toString() ?? '',
+      preguntas: (j['preguntas'] as num?)?.toInt() ?? 0,
+      creada: DateTime.tryParse(j['creada']?.toString() ?? '') ?? DateTime(2000),
+      hecha: j['hecha'] == true,
+      hechaEn: DateTime.tryParse(j['hechaEn']?.toString() ?? ''),
+    );
+  }
+
+  static List<Tarea> listaDeJson(Object? j) => j is! List ? const [] : [for (final e in j) if (deJson(e) case final t?) t];
+}
+
+/// Tacha solas las tareas de las clases pendientes con lo que ha hecho el
+/// alumno después de ponerlas: estudiar (tema marcado estudiado), esquema
+/// (esquema a ciegas del tema), cantar (cante propio del tema) y test (un test
+/// con al menos esas preguntas del tema, o de todo). Devuelve las clases que
+/// cambian, ya con las tareas tachadas.
+List<Cante> tacharDeberes(
+  Iterable<Cante> clases, {
+  required Set<String> estudiados,
+  Iterable<Cante> cantes = const [],
+  Iterable<ResultadoTest> tests = const [],
+  BancoPreguntas? banco,
+  DateTime? ahora,
+}) {
+  final hoy = ahora ?? DateTime.now();
+  final out = <Cante>[];
+  for (final c in clases) {
+    if (!c.pendiente || c.borrado || c.tareas.isEmpty || !c.tareas.any((t) => !t.hecha && t.automatica)) continue;
+    var cambio = false;
+    final nuevas = [
+      for (final t in c.tareas)
+        if (t.hecha || !t.automatica)
+          t
+        else if (_hecha(t, c, estudiados: estudiados, cantes: cantes, tests: tests, banco: banco))
+          () {
+            cambio = true;
+            return t.copyWith(hecha: true, hechaEn: hoy);
+          }()
+        else
+          t,
+    ];
+    if (cambio) out.add(c.copyWith(tareas: nuevas));
+  }
+  return out;
+}
+
+bool _hecha(Tarea t, Cante clase, {required Set<String> estudiados, required Iterable<Cante> cantes, required Iterable<ResultadoTest> tests, BancoPreguntas? banco}) {
+  final tema = t.tema;
+  switch (t.tipo) {
+    case 'estudiar':
+      return tema != null && estudiados.contains(tema);
+    case 'esquema':
+      return tema != null && cantes.any((c) => c.esquema && c.hecho && !c.borrado && c.fecha.isAfter(t.creada) && (c.resultado?.temasCantados.contains(tema) ?? false));
+    case 'cantar':
+      return tema != null && cantes.any((c) => !c.esquema && c.hecho && !c.borrado && c.id != clase.id && c.fecha.isAfter(t.creada) && (c.resultado?.temasCantados.contains(tema) ?? false));
+    case 'test':
+      return tests.any((r) {
+        if (!r.timestamp.isAfter(t.creada) || r.tipo == 'repaso' || r.totalPreguntas < t.preguntas) return false;
+        if (tema == null || r.temas.contains(tema)) return true;
+        if (banco == null) return false;
+        return r.respuestas.keys.where((id) => banco.porId(id)?.temas.contains(tema) ?? false).length >= 3;
+      });
+    default:
+      return false;
+  }
+}
+
 /// Dónde es un cante: en persona o por videollamada.
 enum Modalidad { sinIndicar, presencial, online }
 
@@ -298,7 +425,12 @@ class Cante {
     this.temasPropuestos = const [],
     this.propuestaTemasA,
     this.esquema = false,
+    this.tareas = const [],
   });
+
+  /// Deberes para esta clase (los pone el preparador; el alumno los tacha).
+  final List<Tarea> tareas;
+  int get tareasHechas => tareas.where((t) => t.hecha).length;
 
   final String id;
 
@@ -457,6 +589,7 @@ class Cante {
     bool? unoPorParte,
     String? plataforma,
     bool? esquema,
+    List<Tarea>? tareas,
     String? eventoGoogle,
     String? eventoGoogleAlumno,
     List<String>? temasPropuestos,
@@ -496,6 +629,7 @@ class Cante {
         unoPorParte: unoPorParte ?? this.unoPorParte,
         plataforma: plataforma ?? this.plataforma,
         esquema: esquema ?? this.esquema,
+        tareas: tareas ?? this.tareas,
         eventoGoogle: eventoGoogle ?? this.eventoGoogle,
         eventoGoogleAlumno: eventoGoogleAlumno ?? this.eventoGoogleAlumno,
         temasPropuestos: sinPropuesta ? const [] : (temasPropuestos ?? this.temasPropuestos),
@@ -537,6 +671,7 @@ class Cante {
         if (unoPorParte) 'unoPorParte': true,
         if (plataforma.isNotEmpty) 'plataforma': plataforma,
         if (esquema) 'esquema': true,
+        if (tareas.isNotEmpty) 'tareas': [for (final t in tareas) t.toJson()],
         if (eventoGoogle.isNotEmpty) 'eventoGoogle': eventoGoogle,
         if (eventoGoogleAlumno.isNotEmpty) 'eventoGoogleAlumno': eventoGoogleAlumno,
         if (temasPropuestos.isNotEmpty) 'temasPropuestos': temasPropuestos,
@@ -582,6 +717,7 @@ class Cante {
         unoPorParte: j['unoPorParte'] as bool? ?? false,
         plataforma: j['plataforma'] as String? ?? '',
         esquema: j['esquema'] == true,
+        tareas: Tarea.listaDeJson(j['tareas']),
         eventoGoogle: j['eventoGoogle'] as String? ?? '',
         eventoGoogleAlumno: j['eventoGoogleAlumno'] as String? ?? '',
         temasPropuestos: ((j['temasPropuestos'] as List?) ?? []).map((e) => e.toString()).toList(),
