@@ -1,0 +1,342 @@
+% ==========================================================================
+% informe.sty — Los documentos de «Prepara con Claude» (informes de cantes,
+% dictámenes, escritos, cronogramas, fichas) con la misma plantilla que los
+% temas del temario (oposicion/temario/latex/tcee.sty), en versión corta y
+% autocontenida: cabecera y pie, apartados en banda, cajas, listas, tablas.
+% Autor: Víctor Gutiérrez Marcos
+%
+% Se compila con XeLaTeX (fontspec): las fuentes OTF son las de assets/fuentes
+% (TeX Gyre Pagella para TCEE, Latin Modern para DCE); la ruta la pone el
+% script informe-pdf.py en \informefuentes antes de cargar el paquete.
+% No depende de newpx, ulem, ccicons ni babel: si babel o polyglossia están
+% (silabeo en español) se usan; si no, se definen a mano «Gráfico» y «Tabla».
+%
+% Uso (lo hace la plantilla informe.tex de pandoc):
+%   \providecommand{\informefuentes}{fuentes/}
+%   \usepackage[tcee]{informe}        % o [dce]
+%   \renewcommand{\informefecha}{29 de octubre de 2026}
+%   \begin{document}\informetitulo{Informe del cante · 3.A.8} … \end{document}
+% Entornos: quote (pandoc, las citas «>») sale como caja con el fondo de la
+% app; informeaviso es la caja pálida del aviso final.
+% ==========================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{informe}[2026/10/29 Documentos de Prepara con Claude]
+
+% --- Oposición ------------------------------------------------------------
+\newif\ifinforme@dce
+\DeclareOption{tcee}{\informe@dcefalse}
+\DeclareOption{dce}{\informe@dcetrue}
+\DeclareOption*{\PackageWarning{informe}{Opción desconocida: \CurrentOption}}
+\ExecuteOptions{tcee}
+\ProcessOptions\relax
+
+% --- Textos de cada oposición -----------------------------------------------
+\ifinforme@dce
+  \newcommand{\informe@oposicion}{Oposición a Diplomado Comercial del Estado}
+  \newcommand{\informe@web}{manuelcabadogarcia.es}
+  \newcommand{\informe@weburl}{https://manuelcabadogarcia.es/}
+\else
+  \newcommand{\informe@oposicion}{Oposición a Técnico Comercial y Economista del Estado}
+  \newcommand{\informe@web}{victorgutierrezmarcos.es}
+  \newcommand{\informe@weburl}{https://www.victorgutierrezmarcos.es/}
+\fi
+\newcommand{\informe@marca}{Prepara con Claude}
+\newcommand{\informe@pieuso}{Uso personal del opositor \textperiodcentered\ Redactado por una IA: no sustituye a un preparador, lo complementa}
+
+% --- Fecha (sin babel: los meses a mano) ---------------------------------------
+\newcommand{\informehoy}{\number\day\ de \ifcase\month\or enero\or febrero\or marzo\or abril\or mayo\or junio\or julio\or agosto\or septiembre\or octubre\or noviembre\or diciembre\fi\ de \number\year}
+\newcommand{\informefecha}{\informehoy}
+
+% --- Fuentes (XeLaTeX + fontspec, OTF de assets/fuentes) -----------------------
+\RequirePackage{amsmath}
+\RequirePackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\providecommand{\informefuentes}{../fuentes/}
+\ifinforme@dce
+  \edef\informe@cargafuente{\noexpand\setmainfont{lmroman10}[Path=\informefuentes,Extension=.otf,
+    UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]}
+\else
+  \edef\informe@cargafuente{\noexpand\setmainfont{texgyrepagella}[Path=\informefuentes,Extension=.otf,
+    UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]}
+\fi
+\informe@cargafuente
+% Código (`[04:00]`, ficheros): Latin Modern Mono si la distribución la tiene; si no, la de TeX
+\IfFontExistsTF{lmmono10-regular.otf}{\setmonofont{lmmono10-regular.otf}[Scale=MatchLowercase]}{}
+% Matemáticas: en TCEE, TeX Gyre Pagella Math si está (unicode-math); si no,
+% o en DCE, las de Computer Modern (que son las de Latin Modern)
+\newif\ifinforme@unicodemath
+\ifinforme@dce\else
+  \IfFileExists{unicode-math.sty}{\IfFontExistsTF{texgyrepagella-math.otf}{\informe@unicodemathtrue}{}}{}
+\fi
+\ifinforme@unicodemath
+  \RequirePackage{unicode-math}
+  \setmathfont{texgyrepagella-math.otf}
+\else
+  \RequirePackage{amssymb}
+\fi
+\IfFileExists{microtype.sty}{\RequirePackage{microtype}}{}
+
+% --- Colores (los mismos tokens que la web y la app) -----------------------------
+\RequirePackage[table]{xcolor}
+\ifinforme@dce
+  \definecolor{informeprimario}{HTML}{7A1F4B}   % granate
+  \definecolor{informesecundario}{HTML}{234A6B} % azul
+  \definecolor{informefilete}{HTML}{234A6B}
+  \definecolor{informefondo}{HTML}{F7F4EC}      % crema
+  \definecolor{informefondoclaro}{HTML}{FBF9F4}
+  \definecolor{informepalido}{HTML}{F4E9EE}
+  \definecolor{informetexto}{HTML}{2B2A28}
+  \definecolor{informegris}{HTML}{57534B}
+\else
+  \definecolor{informeprimario}{HTML}{5F2987}   % morado
+  \definecolor{informesecundario}{HTML}{4A1F6B}
+  \definecolor{informefilete}{HTML}{B8860B}     % dorado
+  \definecolor{informefondo}{HTML}{E2EFD9}      % salvia
+  \definecolor{informefondoclaro}{HTML}{EDF5E7}
+  \definecolor{informepalido}{HTML}{F1EBF6}
+  \definecolor{informetexto}{HTML}{2A2530}
+  \definecolor{informegris}{HTML}{5E5866}
+\fi
+\AtBeginDocument{\color{informetexto}}
+
+% --- Idioma: silabeo en español si la distribución lo trae -------------------------
+\IfFileExists{spanish.ldf}
+  {\RequirePackage[spanish,es-noshorthands,es-nolists,es-noindentfirst,es-nolayout,es-tabla]{babel}%
+   \ifcsname unaccentedoperators\endcsname\unaccentedoperators\fi}% \min, \max sin tilde, como en los temas
+  {\IfFileExists{polyglossia.sty}{\RequirePackage{polyglossia}\setdefaultlanguage{spanish}}{}}
+
+% --- Página (como tcee.sty) -----------------------------------------------------
+\RequirePackage[a4paper,top=2.6cm,bottom=2.4cm,left=2.2cm,right=2.2cm,headheight=26pt,footskip=1.2cm]{geometry}
+\RequirePackage{setspace}
+\setstretch{1.08}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\predisplaypenalty=10000 \brokenpenalty=10000
+
+% --- Paquetes -------------------------------------------------------------------
+\RequirePackage{graphicx}
+\RequirePackage{booktabs,longtable,tabularx,array,multirow,calc}
+\RequirePackage{enumitem}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{etoolbox}
+\RequirePackage{caption}
+\RequirePackage{float}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{titlesec}
+\RequirePackage{needspace}
+
+% --- Cabecera y pie ------------------------------------------------------------------
+% Cabecera: «Prepara con Claude · Oposición a … · web»; pie: fecha, nota de uso
+% personal y «página n de N».
+\fancypagestyle{informe}{%
+  \fancyhf{}%
+  \fancyhead[L]{\footnotesize\bfseries\color{informeprimario}\informe@marca}%
+  \fancyhead[C]{\footnotesize\itshape\color{informeprimario}\parbox[b]{0.56\textwidth}{\centering\informe@oposicion}}%
+  \fancyhead[R]{\footnotesize\itshape\color{informeprimario}\href{\informe@weburl}{\color{informeprimario}\informe@web}}%
+  \fancyfoot[L]{\fontsize{6.8}{8}\selectfont\itshape\color{informegris}\informefecha}%
+  \fancyfoot[C]{\fontsize{6.8}{8}\selectfont\itshape\color{informegris}\informe@pieuso}%
+  \fancyfoot[R]{\footnotesize\color{informeprimario}\textbf{página \thepage\ de \pageref*{LastPage}}}%
+  \renewcommand{\headrule}{{\color{informeprimario}\hrule height 0.6pt}}%
+  \renewcommand{\footrule}{{\color{informeprimario}\hrule height 0.6pt}}%
+  \renewcommand{\footrulewidth}{0.6pt}%
+}
+\pagestyle{informe}
+
+% --- Título del informe --------------------------------------------------------------
+% Título en el color principal, filete debajo y una línea en versalitas con
+% la marca, la oposición, la web y la fecha (la «cabecera» del DOCX).
+\newcommand{\informetitulo}[1]{%
+  {\raggedright\LARGE\bfseries\color{informeprimario}\hyphenpenalty=10000\exhyphenpenalty=10000 #1\par}%
+  \nobreak\vspace{0.4em}\nobreak
+  {\color{informefilete}\rule{\textwidth}{1pt}}\par\nobreak
+  \vspace{0.35em}\nobreak
+  {\footnotesize\scshape\color{informeprimario}\informe@marca\ \textperiodcentered\ \informe@oposicion\ \textperiodcentered\ \informe@web\ \textperiodcentered\ \informefecha\par}%
+  \vspace{1.3em}}
+
+% --- Apartados (como los temas) -------------------------------------------------------
+% # (\section)         → banda en el color principal con texto blanco
+% ## (\subsection)     → principal, negrita, con el filete debajo
+% ### (\subsubsection) → secundario, negrita
+% #### (\paragraph)    → secundario, cursiva
+\setcounter{secnumdepth}{-2}
+\newcommand{\informe@banda}[1]{%
+  \colorbox{informeprimario}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
+    \large\bfseries\color{white}\raggedright\strut\MakeUppercase{#1}\strut}}}
+\titleformat{\section}[block]{\normalfont}{}{0pt}{\informe@banda}
+\titleformat{name=\section,numberless}[block]{\normalfont}{}{0pt}{\informe@banda}
+\titlespacing*{\section}{0pt}{1.4em}{0.8em}
+\titleformat{\subsection}{\normalfont\large\bfseries\color{informeprimario}\nobreak}{}{0pt}{}
+  [\nobreak\vspace{-0.15em}{\color{informefilete}\nobreak\titlerule[0.6pt]}\nobreak]
+\titlespacing*{\subsection}{0pt}{1.3em}{0.5em}
+\titleformat{\subsubsection}{\normalfont\bfseries\color{informesecundario}\nobreak}{}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{1em}{0.3em}
+\titleformat{\paragraph}{\normalfont\itshape\color{informesecundario}\nobreak}{}{0pt}{}
+\titlespacing*{\paragraph}{0pt}{0.8em}{0.2em}
+\titleformat{\subparagraph}{\normalfont\small\bfseries\color{informesecundario}\nobreak}{}{0pt}{}
+\titlespacing*{\subparagraph}{0pt}{0.6em}{0.15em}
+% Ningún título queda solo al pie de una página
+\newcommand{\informe@sitio}[1]{\if@nobreak\else\Needspace{#1\baselineskip}\fi}
+\preto\section{\informe@sitio{7}}
+\preto\subsection{\informe@sitio{5}}
+\preto\subsubsection{\informe@sitio{4}}
+\preto\paragraph{\informe@sitio{3}}
+
+% --- Listas (compactas, viñetas en el color principal) ---------------------------------
+\setlist{itemsep=0.15em,topsep=0.3em,parsep=0.15em,beginpenalty=10000}
+\setlist[itemize,1]{label={\color{informeprimario}\scriptsize$\blacksquare$},leftmargin=1.4em}
+\setlist[itemize,2]{label={\color{informeprimario}--},leftmargin=1.4em}
+\setlist[itemize,3]{label={\color{informeprimario}\footnotesize$\circ$},leftmargin=1.4em}
+\setlist[enumerate,1]{label={\color{informeprimario}\arabic*.},leftmargin=1.6em}
+\setlist[enumerate,2]{label={\color{informeprimario}\alph*)},leftmargin=1.6em}
+\setlist[enumerate,3]{label={\color{informeprimario}\roman*.},leftmargin=1.6em}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% --- Cajas ------------------------------------------------------------------------------
+% Las citas «>» de pandoc (quote), con el bloque «Para la app»: fondo de la app
+% (salvia o crema) y una raya del color del filete a la izquierda.
+\tcolorboxenvironment{quote}{enhanced,breakable,
+  colback=informefondo,colframe=informefilete,boxrule=0pt,leftrule=3pt,arc=1pt,
+  fontupper=\small,colupper=informesecundario,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  before skip=0.6em,after skip=0.6em}
+% Aviso final («Este informe lo ha redactado una IA…»): caja pálida en cursiva
+\newtcolorbox{informeaviso}{enhanced,breakable,
+  colback=informepalido,colframe=informepalido,boxrule=0pt,arc=2pt,
+  fontupper=\footnotesize\itshape,colupper=informegris,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  before skip=1.6em,after skip=0.4em}
+
+% --- Tablas, figuras y código -------------------------------------------------------
+\arrayrulecolor{informeprimario}
+\renewcommand{\arraystretch}{1.15}
+\AtBeginEnvironment{longtable}{\small}
+\setlength{\LTpre}{0.6em}\setlength{\LTpost}{0.6em}
+\captionsetup{font=small,labelfont={bf,color=informeprimario},labelsep=endash,justification=centering,skip=4pt}
+\AtBeginDocument{\captionsetup[figure]{name=Gráfico}\captionsetup[table]{name=Tabla}}
+\floatplacement{figure}{H}
+\floatplacement{table}{H}
+% Imágenes: nunca más anchas que el texto (pandoc antiguo: \maxwidth; nuevo: \pandocbounded)
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>0.8\textheight 0.8\textheight\else\Gin@nat@height\fi}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\informe@caja
+\providecommand*\pandocbounded[1]{%
+  \sbox\informe@caja{#1}%
+  \Gscale@div\@tempa{0.8\textheight}{\dimexpr\ht\informe@caja+\dp\informe@caja\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\informe@caja}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\informe@caja}\else\usebox{\informe@caja}\fi}
+\def\verbatim@font{\small\ttfamily}
+% Tachado (~~…~~ de pandoc) sin ulem ni soul
+\providecommand{\st}[1]{\leavevmode\begingroup\setbox0\hbox{#1}\rlap{\rule[0.45ex]{\wd0}{0.4pt}}\box0\endgroup}
+
+% --- Notas al pie ----------------------------------------------------------------------
+\renewcommand{\footnoterule}{{\color{informeprimario}\hrule width 0.3\textwidth height 0.4pt}\vspace{3pt}}
+\setlength{\footnotesep}{0.8\baselineskip}
+
+% --- Símbolos que la fuente no tiene -----------------------------------------------------
+% XeTeX deja en blanco los caracteres que faltan en la fuente (Pagella no tiene
+% ✘ ni los dígitos en subíndice; Latin Modern tampoco griego ni ≤, →, ∂…). Al
+% empezar el documento se comprueba cada uno con \iffontchar y, si falta, el
+% carácter pasa a ser activo y escribe su equivalente en LaTeX. Solo en el
+% texto: en las fórmulas $…$ se escribe \alpha, \leq, \rightarrow…
+\newcommand{\informe@simbolo}[2]{%
+  \iffontchar\font #1 \else
+    \begingroup\lccode`\~=#1 \lowercase{\endgroup\gdef~}{#2}%
+    \global\catcode#1=\active
+  \fi}
+\newcommand{\informe@aspa}{\ifmmode\times\else\textbf{\char"D7}\fi}
+\AtBeginDocument{\normalfont\normalsize
+  \informe@simbolo{"2718}{\textcolor{informeprimario}{\informe@aspa}}% ✘
+  \informe@simbolo{"2717}{\textcolor{informeprimario}{\informe@aspa}}% ✗
+  \informe@simbolo{"274C}{\textcolor{informeprimario}{\informe@aspa}}% ❌
+  \informe@simbolo{"2714}{\ensuremath{\checkmark}}% ✔
+  \informe@simbolo{"2713}{\ensuremath{\checkmark}}% ✓
+  \informe@simbolo{"2705}{\ensuremath{\checkmark}}% ✅
+  \informe@simbolo{"2611}{\ensuremath{\checkmark}}% ☑
+  \informe@simbolo{"2610}{\ensuremath{\square}}% ☐
+  \informe@simbolo{"2612}{\ensuremath{\boxtimes}}% ☒
+  \informe@simbolo{"26A0}{\textbf{(!)}}% ⚠
+  \informe@simbolo{"FE0F}{}% selector de variante de los emoji
+  \informe@simbolo{"200B}{}% espacio de anchura cero
+  \informe@simbolo{"1F534}{\textcolor{red!80!black}{\textbullet}}% 🔴
+  \informe@simbolo{"1F7E2}{\textcolor{green!60!black}{\textbullet}}% 🟢
+  \informe@simbolo{"1F7E1}{\textcolor{yellow!70!orange}{\textbullet}}% 🟡
+  \informe@simbolo{"2B50}{\ensuremath{\bigstar}}% ⭐
+  \informe@simbolo{"2605}{\ensuremath{\bigstar}}% ★
+  \informe@simbolo{"2606}{\ensuremath{\star}}% ☆
+  % superíndices y subíndices
+  \informe@simbolo{"2070}{\textsuperscript{0}}\informe@simbolo{"2074}{\textsuperscript{4}}%
+  \informe@simbolo{"2075}{\textsuperscript{5}}\informe@simbolo{"2076}{\textsuperscript{6}}%
+  \informe@simbolo{"2077}{\textsuperscript{7}}\informe@simbolo{"2078}{\textsuperscript{8}}%
+  \informe@simbolo{"2079}{\textsuperscript{9}}\informe@simbolo{"2071}{\textsuperscript{i}}%
+  \informe@simbolo{"02B2}{\textsuperscript{j}}\informe@simbolo{"207F}{\textsuperscript{n}}%
+  \informe@simbolo{"2080}{\textsubscript{0}}\informe@simbolo{"2081}{\textsubscript{1}}%
+  \informe@simbolo{"2082}{\textsubscript{2}}\informe@simbolo{"2083}{\textsubscript{3}}%
+  \informe@simbolo{"2084}{\textsubscript{4}}\informe@simbolo{"2085}{\textsubscript{5}}%
+  \informe@simbolo{"2086}{\textsubscript{6}}\informe@simbolo{"2087}{\textsubscript{7}}%
+  \informe@simbolo{"2088}{\textsubscript{8}}\informe@simbolo{"2089}{\textsubscript{9}}%
+  \informe@simbolo{"1D62}{\textsubscript{i}}\informe@simbolo{"2C7C}{\textsubscript{j}}%
+  % griego
+  \informe@simbolo{"03B1}{\ensuremath{\alpha}}\informe@simbolo{"03B2}{\ensuremath{\beta}}%
+  \informe@simbolo{"03B3}{\ensuremath{\gamma}}\informe@simbolo{"03B4}{\ensuremath{\delta}}%
+  \informe@simbolo{"03B5}{\ensuremath{\varepsilon}}\informe@simbolo{"03B6}{\ensuremath{\zeta}}%
+  \informe@simbolo{"03B7}{\ensuremath{\eta}}\informe@simbolo{"03B8}{\ensuremath{\theta}}%
+  \informe@simbolo{"03B9}{\ensuremath{\iota}}\informe@simbolo{"03BA}{\ensuremath{\kappa}}%
+  \informe@simbolo{"03BB}{\ensuremath{\lambda}}\informe@simbolo{"03BC}{\ensuremath{\mu}}%
+  \informe@simbolo{"03BD}{\ensuremath{\nu}}\informe@simbolo{"03BE}{\ensuremath{\xi}}%
+  \informe@simbolo{"03C0}{\ensuremath{\pi}}\informe@simbolo{"03C1}{\ensuremath{\rho}}%
+  \informe@simbolo{"03C2}{\ensuremath{\varsigma}}\informe@simbolo{"03C3}{\ensuremath{\sigma}}%
+  \informe@simbolo{"03C4}{\ensuremath{\tau}}\informe@simbolo{"03C5}{\ensuremath{\upsilon}}%
+  \informe@simbolo{"03C6}{\ensuremath{\varphi}}\informe@simbolo{"03C7}{\ensuremath{\chi}}%
+  \informe@simbolo{"03C8}{\ensuremath{\psi}}\informe@simbolo{"03C9}{\ensuremath{\omega}}%
+  \informe@simbolo{"0393}{\ensuremath{\Gamma}}\informe@simbolo{"0394}{\ensuremath{\Delta}}%
+  \informe@simbolo{"0398}{\ensuremath{\Theta}}\informe@simbolo{"039B}{\ensuremath{\Lambda}}%
+  \informe@simbolo{"039E}{\ensuremath{\Xi}}\informe@simbolo{"03A0}{\ensuremath{\Pi}}%
+  \informe@simbolo{"03A3}{\ensuremath{\Sigma}}\informe@simbolo{"03A5}{\ensuremath{\Upsilon}}%
+  \informe@simbolo{"03A6}{\ensuremath{\Phi}}\informe@simbolo{"03A8}{\ensuremath{\Psi}}%
+  \informe@simbolo{"03A9}{\ensuremath{\Omega}}%
+  % flechas y relaciones
+  \informe@simbolo{"2192}{\ensuremath{\rightarrow}}\informe@simbolo{"2190}{\ensuremath{\leftarrow}}%
+  \informe@simbolo{"2194}{\ensuremath{\leftrightarrow}}\informe@simbolo{"2191}{\ensuremath{\uparrow}}%
+  \informe@simbolo{"2193}{\ensuremath{\downarrow}}\informe@simbolo{"21D2}{\ensuremath{\Rightarrow}}%
+  \informe@simbolo{"21D0}{\ensuremath{\Leftarrow}}\informe@simbolo{"21D4}{\ensuremath{\Leftrightarrow}}%
+  \informe@simbolo{"2264}{\ensuremath{\leq}}\informe@simbolo{"2265}{\ensuremath{\geq}}%
+  \informe@simbolo{"2260}{\ensuremath{\neq}}\informe@simbolo{"2248}{\ensuremath{\approx}}%
+  \informe@simbolo{"2261}{\ensuremath{\equiv}}\informe@simbolo{"223C}{\ensuremath{\sim}}%
+  \informe@simbolo{"2212}{\ensuremath{-}}\informe@simbolo{"00B1}{\ensuremath{\pm}}%
+  \informe@simbolo{"00D7}{\ensuremath{\times}}\informe@simbolo{"00F7}{\ensuremath{\div}}%
+  \informe@simbolo{"22C5}{\ensuremath{\cdot}}\informe@simbolo{"2211}{\ensuremath{\sum}}%
+  \informe@simbolo{"220F}{\ensuremath{\prod}}\informe@simbolo{"222B}{\ensuremath{\int}}%
+  \informe@simbolo{"2202}{\ensuremath{\partial}}\informe@simbolo{"221E}{\ensuremath{\infty}}%
+  \informe@simbolo{"2208}{\ensuremath{\in}}\informe@simbolo{"2209}{\ensuremath{\notin}}%
+  \informe@simbolo{"2200}{\ensuremath{\forall}}\informe@simbolo{"2203}{\ensuremath{\exists}}%
+  \informe@simbolo{"2205}{\ensuremath{\emptyset}}\informe@simbolo{"220E}{\ensuremath{\blacksquare}}%
+  \informe@simbolo{"221D}{\ensuremath{\propto}}\informe@simbolo{"221A}{\ensuremath{\surd}}%
+  \informe@simbolo{"2206}{\ensuremath{\Delta}}\informe@simbolo{"2207}{\ensuremath{\nabla}}%
+  \informe@simbolo{"2032}{\ensuremath{{}^{\prime}}}\informe@simbolo{"2033}{\ensuremath{{}^{\prime\prime}}}%
+  \informe@simbolo{"2034}{\ensuremath{{}^{\prime\prime\prime}}}%
+  \informe@simbolo{"227D}{\ensuremath{\succcurlyeq}}\informe@simbolo{"227B}{\ensuremath{\succ}}%
+  \informe@simbolo{"227C}{\ensuremath{\preccurlyeq}}\informe@simbolo{"227A}{\ensuremath{\prec}}%
+  \informe@simbolo{"2282}{\ensuremath{\subset}}\informe@simbolo{"2283}{\ensuremath{\supset}}%
+  \informe@simbolo{"2286}{\ensuremath{\subseteq}}\informe@simbolo{"2287}{\ensuremath{\supseteq}}%
+  \informe@simbolo{"222A}{\ensuremath{\cup}}\informe@simbolo{"2229}{\ensuremath{\cap}}%
+  \informe@simbolo{"2227}{\ensuremath{\wedge}}\informe@simbolo{"2228}{\ensuremath{\vee}}%
+  \informe@simbolo{"00AC}{\ensuremath{\neg}}\informe@simbolo{"27E8}{\ensuremath{\langle}}%
+  \informe@simbolo{"27E9}{\ensuremath{\rangle}}\informe@simbolo{"2502}{\textbar}%
+  \informe@simbolo{"2500}{--}\informe@simbolo{"2022}{\textbullet}%
+  \informe@simbolo{"25AA}{\ensuremath{\scriptscriptstyle\blacksquare}}\informe@simbolo{"25A0}{\ensuremath{\blacksquare}}%
+  \informe@simbolo{"25A1}{\ensuremath{\square}}\informe@simbolo{"25B6}{\ensuremath{\blacktriangleright}}%
+  \informe@simbolo{"25B8}{\ensuremath{\blacktriangleright}}\informe@simbolo{"2026}{\ldots}%
+}
+
+% --- Hiperenlaces (al final) ------------------------------------------------------------
+\RequirePackage[unicode]{hyperref}
+\hypersetup{colorlinks=true,linkcolor=informeprimario,urlcolor=informesecundario,citecolor=informesecundario,
+  pdfauthor={Prepara con Claude · Víctor Gutiérrez Marcos},pdfcreator={informe-pdf.py (Prepara con Claude)}}
+\urlstyle{same}
+\IfFileExists{bookmark.sty}{\RequirePackage{bookmark}}{}
+% En los marcadores del PDF, los símbolos sustituidos salen como texto llano
+\pdfstringdefDisableCommands{\def\ensuremath#1{#1}\def\textsuperscript#1{#1}\def\textsubscript#1{#1}\def\textcolor#1#2{#2}}
+
+\endinput

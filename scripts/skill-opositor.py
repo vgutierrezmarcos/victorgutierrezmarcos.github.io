@@ -13,6 +13,7 @@ y de los JSON públicos de la web, todo convertido a Markdown.
     python3 scripts/skill-opositor.py --solo 3A08 3A09  # solo esos temas (para probar)
     python3 scripts/skill-opositor.py --salida DIR    # carpeta de construcción (por defecto, temporal)
     python3 scripts/skill-opositor.py --solo-test     # solo references/test/ (banco del test) en la copia desplegada; sin ZIP ni rama
+    python3 scripts/skill-opositor.py --ligera        # además, el ZIP «ligero» para el conector MCP (sin temas, dictamen ni canon)
 
 Qué genera (dentro de prepara-con-claude/references/):
 - test/: las preguntas oficiales del test con su explicación, por bloque y tema
@@ -65,6 +66,7 @@ CANON = os.path.join(WT, 'oposicion', 'temario', 'canon')
 FUENTE_SKILL = os.path.join(RAIZ, 'claude', 'prepara-con-claude')
 MACROS = os.path.join(RAIZ, 'scripts', 'skill-opositor', 'macros-repaso.tex')
 ZIP_RUTA = 'oposicion/temario/app/prepara-con-claude.zip'
+ZIP_LIGERA = 'oposicion/temario/app/prepara-con-claude-ligera.zip'  # sin material exclusivo: lo sirve el conector MCP
 TEST = os.path.join(RAIZ, 'oposicion', 'temario', 'primer-ejercicio', 'test')
 # Nombre técnico de la skill (carpeta dentro del ZIP y `name` de SKILL.md): Claude.ai
 # no admite la palabra «claude» en el nombre, así que el título «Prepara con Claude»
@@ -1229,6 +1231,36 @@ def empaquetar(destino, manifiesto, temas, sin_temas):
     return zip_destino, len(contenido)
 
 
+def aligerar(destino):
+    """Variante «ligera» para el conector MCP (fase 2): quita el material exclusivo
+    (references/temas/<T>/, dictamen/ y canon/), que Claude leerá del conector con
+    leer_tema, leer_ficha y leer_guia_dictamen; deja temas/INDICE.md (qué temas
+    están revisados) y escribe la nota que remite a references/conector.md."""
+    refs = os.path.join(destino, 'references')
+    for sub in ('dictamen', 'canon'):
+        shutil.rmtree(os.path.join(refs, sub), ignore_errors=True)
+    temas = os.path.join(refs, 'temas')
+    if os.path.isdir(temas):
+        for nombre in os.listdir(temas):
+            ruta = os.path.join(temas, nombre)
+            if os.path.isdir(ruta):
+                shutil.rmtree(ruta)
+    escribir(os.path.join(refs, 'LIGERA.md'),
+             '# Skill ligera\n\nEsta copia de la skill no lleva el material exclusivo (temas revisados, fichas, guía del dictamen '
+             'ni canon): se lee con las herramientas del conector «Prepara con Claude» (`references/conector.md`: '
+             '`listar_temas_revisados`, `leer_tema`, `leer_ficha`, `leer_guia_dictamen`). Si el conector no está activo, '
+             'dilo en una línea y trabaja con los índices de `references/temario/` y conocimiento general.\n')
+    zip_destino = os.path.join(WT, ZIP_LIGERA)
+    os.makedirs(os.path.dirname(zip_destino), exist_ok=True)
+    with zipfile.ZipFile(zip_destino, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+        for base, carpetas, ficheros in os.walk(destino):
+            carpetas.sort()
+            for f in sorted(ficheros):
+                ruta = os.path.join(base, f)
+                z.write(ruta, os.path.join(NOMBRE, os.path.relpath(ruta, destino)))
+    return zip_destino, os.path.getsize(zip_destino)
+
+
 def instalar(destino):
     final = os.path.join(SKILLS_USUARIO, NOMBRE)
     if os.path.exists(final):
@@ -1271,6 +1303,8 @@ def main():
     p.add_argument('--comprobar', action='store_true', help='no escribe: dice si el ZIP está al día con el manifiesto')
     p.add_argument('--solo', nargs='+', metavar='T', help='solo estos temas (3A08 3A09 1D01…)')
     p.add_argument('--salida', metavar='DIR', help='carpeta de construcción (por defecto, una temporal)')
+    p.add_argument('--ligera', action='store_true',
+                   help=f'además del ZIP completo, el ZIP «ligero» para el conector MCP ({ZIP_LIGERA}): sin temas, dictamen ni canon')
     p.add_argument('--solo-test', action='store_true',
                    help='solo references/test/ (banco del test con explicaciones) en la copia desplegada de main '
                         f'({SKILL_RUTA}/{NOMBRE}/references/test/); no toca el ZIP, version.json ni la rama')
@@ -1307,6 +1341,9 @@ def main():
             if f.endswith('.md') and os.path.getsize(ruta) > UMBRAL_MD:
                 grandes.append((os.path.relpath(ruta, destino), os.path.getsize(ruta)))
     zip_destino, tamano_zip = empaquetar(destino, manifiesto, temas, args.sin_temas)
+    if args.ligera:
+        zip_ligera, tamano_ligera = aligerar(destino)
+        print(f'ZIP ligero (conector MCP): {os.path.relpath(zip_ligera, WT)} ({kb(tamano_ligera)})')
     if args.instalar:
         print('Instalada en', instalar(destino))
 

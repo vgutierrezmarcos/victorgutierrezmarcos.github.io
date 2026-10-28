@@ -1,0 +1,22 @@
+% Plantilla de pandoc para los documentos de «Prepara con Claude» (la usa
+% scripts/informe-pdf.py): Markdown -> LaTeX con informe.sty, compilado con XeLaTeX.
+% Variables: oposicion (tcee|dce), fuentes (carpeta de las OTF, con barra final),
+% fecha (texto), title (del Markdown) y body.
+\documentclass[11pt,a4paper]{article}
+\providecommand{\informefuentes}{$if(fuentes)$$fuentes$$else$../fuentes/$endif$}
+\usepackage[$if(oposicion)$$oposicion$$else$tcee$endif$]{informe}
+$if(fecha)$
+\renewcommand{\informefecha}{$fecha$}
+$endif$
+$for(header-includes)$
+$header-includes$
+$endfor$
+$if(title)$
+\hypersetup{pdftitle={$title-meta$}}
+$endif$
+\begin{document}
+$if(title)$
+\informetitulo{$title$}
+$endif$
+$body$
+\end{document}
