@@ -141,6 +141,24 @@ class MasPage extends ConsumerWidget {
                 trailing: Switch(value: avisosCante, onChanged: (_) => alternarAvisosCante(context, ref)),
               ),
               const FilasAvisosSistema(),
+              // Lo opcional de «Hoy te toca», para quien lo quiera.
+              if (papel != Papel.preparador) ...[
+                ListTile(
+                  leading: const Icon(Icons.local_fire_department_outlined),
+                  title: const Text('Racha de días en Hoy'),
+                  subtitle: Text(
+                    'Días seguidos con test, cante o vuelta a un tema. Un día suelto no la rompe y puedes congelarla si descansas más.${ajustes.mejorRacha > 0 ? ' Mejor racha: ${ajustes.mejorRacha} días.' : ''}',
+                    style: context.textos.labelSmall,
+                  ),
+                  trailing: Switch(value: ajustes.racha, onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(racha: v))),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.ac_unit_outlined),
+                  title: const Text('El tema más frío, en Hoy'),
+                  subtitle: Text('Te sugiere el tema estudiado que lleves más tiempo sin repasar ni cantar.', style: context.textos.labelSmall),
+                  trailing: Switch(value: ajustes.temaFrio, onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temaFrio: v))),
+                ),
+              ],
               if ((ref.watch(oposicionesVisiblesProvider).valueOrNull ?? Oposiciones.disponibles).length > 1)
                 ListTile(
                   leading: const Icon(Icons.school_outlined),

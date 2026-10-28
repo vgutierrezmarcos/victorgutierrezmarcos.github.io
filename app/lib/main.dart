@@ -23,6 +23,7 @@ import 'core/providers.dart';
 import 'core/resenas.dart';
 import 'core/push_proceso.dart';
 import 'features/inicio/elegir_oposicion.dart';
+import 'features/inicio/racha.dart';
 import 'theme/app_theme.dart';
 import 'widgets/arranque.dart';
 import 'data/models/oposicion.dart';
@@ -112,7 +113,8 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
     try {
       final hoy = Ajustes.claveDia(DateTime.now());
       final hecho = usuario.resultadosLocales().any((r) => r.tipo == 'diario' && Ajustes.claveDia(r.timestamp) == hoy);
-      await Notificaciones.programarRecordatorio(usuario.ajustes().horaRecordatorio, hechoHoy: hecho, pendientesRepaso: usuario.leitner().pendientes().length);
+      final racha = rachaDe(usuario.ajustes(), tests: usuario.resultadosLocales(), cantes: plan.cantes(), vueltas: plan.agendas().values.expand((a) => a.vueltas));
+      await Notificaciones.programarRecordatorio(usuario.ajustes().horaRecordatorio, hechoHoy: hecho, pendientesRepaso: usuario.leitner().pendientes().length, racha: racha != null && racha.enJuego ? racha.dias : 0);
     } catch (_) {}
     // Los avisos de cantes se reprograman en cada arranque (y tras sincronizar).
     if (plan.plan().avisosCante) await Notificaciones.programarCantes(plan.cantes());

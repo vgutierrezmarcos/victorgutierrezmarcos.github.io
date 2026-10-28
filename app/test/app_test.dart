@@ -23,6 +23,7 @@ import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/pregunta.dart';
 import 'package:tcee_app/data/models/preparador.dart';
+import 'package:tcee_app/data/models/resultado.dart';
 import 'package:tcee_app/data/models/revisado.dart';
 import 'package:tcee_app/data/models/temario.dart';
 import 'package:tcee_app/data/models/frecuencia_test.dart';
@@ -720,6 +721,31 @@ void main() {
     final msg = mensajeTemasClase(preparador.sesiones().single, titulo: (t) => temario.tema(t)?.titulo);
     expect(msg, contains('· 3.A.1 '));
     expect(msg, contains('Tienes 22 min 30 s de esquema'));
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('Hoy te toca: test diario y, si se activan, la racha (congelable) y el tema más frío', (tester) async {
+    await usuario.guardarAjustes(const Ajustes(racha: true, temaFrio: true, temasEstudiados: {'3.A.1', '3.A.2'}));
+    // Ayer hubo test: racha de 1 día en juego hoy.
+    final ayer = DateTime.now().subtract(const Duration(days: 1));
+    await usuario.guardarResultado(ResultadoTest(id: 'r1', timestamp: ayer, puntosBrutos: 5, maxPuntos: 10, notaSobre10: 5, correctas: 5, incorrectas: 5, sinResponder: 0, totalPreguntas: 10, tiempoSeconds: 60, temas: const []));
+    await plan.guardarAgenda(AgendaTema(codigo: '3.A.2', vueltas: [DateTime.now().subtract(const Duration(days: 40))], updatedAt: DateTime.now()));
+    await arrancar(tester);
+    await pestana(tester, 'Hoy'); // el enrutador conserva la pantalla de la prueba anterior
+    expect(find.text('Hoy te toca'), findsOneWidget);
+    expect(find.text('Test diario'), findsOneWidget);
+    expect(find.text('1 día seguidos'), findsOneWidget);
+    // El más frío es el 3.A.1: estudiado y sin vuelta (el 3.A.2 tiene una, aunque vieja).
+    expect(find.text('Repasa 3.A.1, el tema más frío'), findsOneWidget);
+    // Congelar 7 días desde la etiqueta de la racha.
+    await tocar(tester, find.text('1 día seguidos'));
+    expect(find.text('Congelar la racha'), findsOneWidget);
+    await tocar(tester, find.text('7 días'));
+    expect(usuario.ajustes().rachaCongelaciones.length, 1);
+    expect(find.textContaining('Congelada hasta el'), findsOneWidget);
+    // Descongelar.
+    await tocar(tester, find.textContaining('Congelada hasta el'));
+    await tocar(tester, find.text('Descongelar'));
+    expect(find.text('1 día seguidos'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }
