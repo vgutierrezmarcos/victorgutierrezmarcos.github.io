@@ -9,6 +9,7 @@ import '../../core/constants.dart';
 import '../models/temas_clase.dart';
 import '../models/oposicion.dart';
 import '../../features/test/leitner.dart';
+import '../../features/test/motor_test.dart' show TestEnCurso;
 import '../models/resultado.dart';
 
 /// Ajustes del usuario (locales y, con sesión, en users/{uid}/progress/settings).
@@ -279,6 +280,22 @@ class UsuarioRepo {
   }
 
   // ---------------------------------------------------------------- Leitner
+
+  // ------------------------------------------------------------ Test en curso
+
+  /// Test a medias guardado en este dispositivo (no se sincroniza: las
+  /// preguntas son las de este banco y el tiempo, el de este reloj).
+  TestEnCurso? testEnCurso() {
+    final m = _ajustes.get('test_en_curso') as Map?;
+    if (m == null) return null;
+    try {
+      return TestEnCurso.fromJson(m);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<void> guardarTestEnCurso(TestEnCurso? t) => t == null ? _ajustes.delete('test_en_curso') : _ajustes.put('test_en_curso', t.toJson());
 
   EstadoLeitner leitner() => EstadoLeitner.fromJson(_leitner.get('estado') as Map?);
 

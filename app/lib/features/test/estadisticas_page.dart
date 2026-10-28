@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
@@ -8,6 +9,9 @@ import '../../data/models/pregunta.dart';
 import '../../data/models/resultado.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/texto_formulas.dart';
+import 'motor_test.dart';
+import 'resultados_page.dart';
 
 /// Estadísticas: tarjetas, evolución de los últimos 15 tests, rendimiento por bloque y cajas Leitner.
 class EstadisticasPage extends ConsumerWidget {
@@ -68,6 +72,12 @@ class EstadisticasPage extends ConsumerWidget {
                   const TituloSeccion('Rendimiento por bloque'),
                   Tarjeta(child: _porBloque(context, tests, banco, bloques)),
                 ],
+                if (banco != null) ...[
+                  const TituloSeccion('Acierto por tema'),
+                  Tarjeta(child: _porTema(context, tests, banco)),
+                  const TituloSeccion('Las que más fallas'),
+                  Tarjeta(child: _masFalladas(context, tests, banco)),
+                ],
                 const TituloSeccion('Repaso Leitner'),
                 Tarjeta(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -101,14 +111,16 @@ class EstadisticasPage extends ConsumerWidget {
                     for (final r in tests.take(30))
                       ListTile(
                         dense: true,
+                        // Con el detalle (tests de la app) se vuelve a revisar pregunta a pregunta.
+                        onTap: banco == null || !r.conDetalle ? null : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ResultadosPage(datos: DatosResultado.deHistorial(r, banco)))),
                         leading: CircleAvatar(
                           radius: 18,
                           backgroundColor: (r.notaSobre10 >= 5 ? Paleta.acierto : Paleta.fallo).withValues(alpha: 0.15),
                           child: Text(formatoNota(r.notaSobre10), style: context.textos.labelMedium?.copyWith(color: r.notaSobre10 >= 5 ? Paleta.acierto : Paleta.fallo)),
                         ),
                         title: Text(DateFormat('d MMM y, HH:mm', 'es').format(r.timestamp), style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
-                        subtitle: Text('${r.correctas}/${r.totalPreguntas} aciertos · ${formatoTiempo(r.tiempoSeconds)}${r.origen == 'web' ? ' · web' : ''}${r.tipo == 'diario' ? ' · diario' : ''}', style: context.textos.labelSmall),
-                        trailing: r.sincronizado ? null : Icon(Icons.cloud_upload_outlined, size: 18, color: context.colores.textoClaro),
+                        subtitle: Text('${r.correctas}/${r.totalPreguntas} aciertos · ${formatoTiempo(r.tiempoSeconds)}${r.origen == 'web' ? ' · web' : ''}${r.tipo == 'diario' ? ' · diario' : ''}${r.conDetalle ? '' : ' · sin detalle'}', style: context.textos.labelSmall),
+                        trailing: !r.sincronizado ? Icon(Icons.cloud_upload_outlined, size: 18, color: context.colores.textoClaro) : (r.conDetalle && banco != null ? const Icon(Icons.chevron_right, size: 20) : null),
                       ),
                   ]),
                 ),
@@ -148,6 +160,77 @@ class EstadisticasPage extends ConsumerWidget {
         barTouchData: BarTouchData(touchTooltipData: BarTouchTooltipData(getTooltipItem: (g, _, rod, __) => BarTooltipItem(formatoNota(rod.toY), const TextStyle(color: Colors.white)))),
       ),
     );
+  }
+
+  /// Acierto por tema (tests de la app), de peor a mejor: los 15 peores con
+  /// al menos 3 respuestas; cada fila abre un test de ese tema.
+  Widget _porTema(BuildContext context, List<ResultadoTest> tests, BancoPreguntas banco) {
+    const minimo = 3;
+    final acum = MotorTest.aciertoPorTema(tests, banco).entries.where((e) => e.value.total >= minimo).toList()
+      ..sort((a, b) => (a.value.ok / a.value.total).compareTo(b.value.ok / b.value.total));
+    if (acum.isEmpty) {
+      return Text('Se calcula con los tests hechos en la app, a partir de $minimo respuestas por tema.', style: context.textos.bodySmall);
+    }
+    final peores = acum.take(15).toList();
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(acum.length > peores.length ? 'Los ${peores.length} temas con peor acierto (de ${acum.length} con datos). Toca uno para hacer un test de sus preguntas.' : 'De peor a mejor. Toca un tema para hacer un test de sus preguntas.', style: context.textos.labelSmall),
+      const SizedBox(height: 6),
+      for (final e in peores)
+        InkWell(
+          onTap: () => context.push('/examen', extra: ConfigTest(temas: {e.key}, numPreguntas: 20, minutos: 0)),
+          borderRadius: BorderRadius.circular(6),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Row(children: [
+              Expanded(flex: 5, child: TextoTema(e.key, banco.temas[e.key] ?? '')),
+              const SizedBox(width: 8),
+              Expanded(
+                flex: 3,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: LinearProgressIndicator(value: e.value.ok / e.value.total, minHeight: 8, backgroundColor: context.colores.fondoClaro, color: e.value.ok / e.value.total >= 0.5 ? Paleta.acierto : Paleta.fallo),
+                ),
+              ),
+              SizedBox(width: 64, child: Text('${(100 * e.value.ok / e.value.total).round()} % · ${e.value.total}', textAlign: TextAlign.end, style: context.textos.labelMedium)),
+            ]),
+          ),
+        ),
+    ]);
+  }
+
+  /// Las diez preguntas más falladas, con «Hacer test con ellas».
+  Widget _masFalladas(BuildContext context, List<ResultadoTest> tests, BancoPreguntas banco) {
+    final lista = MotorTest.masFalladas(tests, banco).take(10).toList();
+    if (lista.isEmpty) {
+      return Text('Todavía no has fallado ninguna pregunta en los tests hechos en la app.', style: context.textos.bodySmall);
+    }
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      for (final f in lista)
+        Builder(builder: (context) {
+          final p = banco.porId(f.id)!;
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              SizedBox(width: 44, child: Text('${f.fallos}/${f.intentos}', style: context.textos.labelMedium?.copyWith(color: Paleta.fallo))),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  TextoConFormulas(p.enunciado, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
+                  Text('${p.tema} · ${p.examen}', style: context.textos.labelSmall),
+                ]),
+              ),
+            ]),
+          );
+        }),
+      const SizedBox(height: 6),
+      Align(
+        alignment: Alignment.centerLeft,
+        child: FilledButton.tonalIcon(
+          onPressed: () => context.push('/examen', extra: ConfigTest(idsFijos: [for (final f in lista) f.id], minutos: 0, modoEstudio: true)),
+          icon: const Icon(Icons.replay, size: 18),
+          label: const Text('Hacer test con ellas (corrigiendo cada una)'),
+        ),
+      ),
+    ]);
   }
 
   /// Agrega aciertos por bloque usando `respuestas` (solo tests hechos en la app: la web no guarda el detalle).

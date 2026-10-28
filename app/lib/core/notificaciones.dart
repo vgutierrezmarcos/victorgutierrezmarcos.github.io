@@ -133,16 +133,20 @@ class Notificaciones {
   /// ([hechoHoy]); si no, mañana. No se repite solo: la app lo vuelve a
   /// programar en cada arranque, al sincronizar y al terminar el test, así
   /// que no llega si no hay nada que recordar.
-  static Future<void> programarRecordatorio(int minutosDesdeMedianoche, {bool hechoHoy = false}) async {
+  static Future<void> programarRecordatorio(int minutosDesdeMedianoche, {bool hechoHoy = false, int pendientesRepaso = 0}) async {
     if (!disponibles) return;
     await iniciar();
     await _cancelar(_idRecordatorio);
     if (minutosDesdeMedianoche < 0) return;
+    // Con preguntas de repaso vencidas (Leitner), el aviso lo dice.
+    final texto = pendientesRepaso > 0
+        ? 'Tus 10 preguntas de hoy te esperan y tienes $pendientesRepaso de repaso. Toca para empezar.'
+        : 'Tus 10 preguntas de hoy te esperan. Toca para empezar.';
     if (kIsWeb) {
       final ahora = DateTime.now();
       var cuando = DateTime(ahora.year, ahora.month, ahora.day, minutosDesdeMedianoche ~/ 60, minutosDesdeMedianoche % 60);
       if (cuando.isBefore(ahora) || hechoHoy) cuando = DateTime(ahora.year, ahora.month, ahora.day + 1, minutosDesdeMedianoche ~/ 60, minutosDesdeMedianoche % 60);
-      _programarWeb(_idRecordatorio, cuando, 'Test diario ${Oposiciones.actual.siglas}', 'Tus 10 preguntas de hoy te esperan. Toca para empezar.', contenido: 'ruta:/hoy?test=diario');
+      _programarWeb(_idRecordatorio, cuando, 'Test diario ${Oposiciones.actual.siglas}', texto, contenido: 'ruta:/hoy?test=diario');
       return;
     }
     final ahora = tz.TZDateTime.now(tz.local);
@@ -152,7 +156,7 @@ class Notificaciones {
     await _plugin.zonedSchedule(
       _idRecordatorio,
       'Test diario ${Oposiciones.actual.siglas}',
-      'Tus 10 preguntas de hoy te esperan. Toca para empezar.',
+      texto,
       cuando,
       const NotificationDetails(
         android: AndroidNotificationDetails(color: _colorAviso, 'recordatorio', 'Recordatorio diario',

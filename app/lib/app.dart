@@ -73,7 +73,7 @@ final _router = GoRouter(
   // El examen y los resultados llevan sus datos en `extra`, que el historial
   // del navegador no guarda: al volver a ellos con «atrás» (o al recargar), a Estudiar.
   redirect: (context, state) => switch (state.uri.path) {
-        '/examen' when state.extra is! ConfigTest => '/estudiar',
+        '/examen' when state.extra is! ConfigTest && state.extra is! TestEnCurso => '/estudiar',
         '/resultados' when state.extra is! DatosResultado => '/estudiar',
         final ruta => rutaNueva(ruta),
       },
@@ -111,7 +111,11 @@ final _router = GoRouter(
       ],
     ),
     // Fuera del shell: pantalla completa sin barra inferior.
-    GoRoute(path: '/examen', builder: (c, s) => ExamenPage(config: s.extra as ConfigTest)),
+    GoRoute(
+      path: '/examen',
+      // Un test nuevo (ConfigTest) o uno a medias que se continúa (TestEnCurso).
+      builder: (c, s) => s.extra is TestEnCurso ? ExamenPage(config: (s.extra as TestEnCurso).config, reanudar: s.extra as TestEnCurso) : ExamenPage(config: s.extra as ConfigTest),
+    ),
     GoRoute(path: '/resultados', builder: (c, s) => ResultadosPage(datos: s.extra as DatosResultado)),
   ],
 );
