@@ -25,15 +25,16 @@ Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de panta
 6. **Un cante**: la app transcribe (móviles de TCEE y DCE) → adjuntar y pedir (G4a) → el informe con el minuto y la fuente, el tribunal y el PDF (G4b).
 7. **Un dictamen** (G5a, G5b): aunque esté a mano; diagnóstico, coherencia, preguntas de la defensa.
 8. **Una duda** (G6a, G6b): ve el temario en conjunto.
-9. **El cronograma**: exportar (las dos apps) → Manuel, opositor a DCE, pide el reparto del cante de 20 minutos y el cronograma por fases (G9ma, G9mb; colores y letra de DCE) → en TCEE igual (G7b) → traerlo a la app.
+9. **El cronograma**: exportar (las dos apps) → un opositor a DCE pide el reparto del cante de 20 minutos y el cronograma por fases (G9na, G9nb; colores y letra de DCE; el nombre «Manuel» solo en el saludo «Buenas noches, Manuel») → en TCEE igual (G7b) → traerlo a la app.
 10. **Tu carpeta** (G8): la estructura por ejercicios y Claude trabajando desde ella.
-11. **Y mucho más**: «Pide lo que se te ocurra», seis ejemplos.
-12. **Al día**: se actualiza sola, tus datos son tuyos, material exclusivo.
-13. **Cierre**: Claude Pro, aviso y dirección.
+11. **En el móvil**: la app de Claude con la misma skill (la app → el chat con el cante adjunto → la respuesta; capturas de claude.ai con viewport de móvil).
+12. **Y mucho más**: «Pide lo que se te ocurra», seis ejemplos.
+13. **Al día**: se actualiza sola, tus datos son tuyos, material exclusivo.
+14. **Cierre**: Claude Pro, aviso y dirección.
 
 ## Montaje (hecho el 28 oct. con HyperFrames)
 
-`index.html` es la composición (copiada del promocional `scripts/video-app/`: misma paleta, GSAP, rótulos de bloque y barrido dorado; la escena de DCE usa el granate, el azul y Latin Modern). `guion.json` fija el compás en que empieza cada escena; `preparar.py` lo lleva al HTML y prepara `assets/` (fuentes, logo de Claude, capturas de la app, páginas del informe en PDF, las tomas MP4 y la música del promocional en bucle). Las tomas se graban en un Edge aparte con `cdp.mjs` y se montan con `montar-toma.py` (carpeta `C:\Users\vgutierrez\AppData\Local\Temp\claude-video`); van en la raíz de `index.html`, fuera de las escenas, porque HyperFrames no admite un `<video data-start>` dentro de otro elemento con `data-start`. Rótulos sobre cada toma: qué está pasando y qué aporta.
+`index.html` es la composición (copiada del promocional `scripts/video-app/`: misma paleta, GSAP, rótulos de bloque y barrido dorado; la escena de DCE usa el granate, el azul y Latin Modern). `guion.json` fija el compás en que empieza cada escena; `preparar.py` lo lleva al HTML y prepara `assets/` (fuentes, el asterisco del logo de Claude —el nombre va siempre en Pagella, nunca con la letra de la marca; el icono de la app aparece aparte, en la portada y el cierre—, capturas de la app y de claude.ai en el móvil, páginas del informe en PDF, las tomas MP4 y la banda sonora de `musica.py`: la música del promocional compuesta de una pieza para esta duración, con un respiro en cada cambio de bloque, sin bucle ni cortes). La ventana de las tomas tiene su misma proporción (1912 × 948) y `object-fit: contain`, para que no se recorten los lados. El rótulo de bloque (arriba a la derecha) lleva solo el nombre del bloque; «Prepara con Claude» aparece una vez, en la marca de arriba a la izquierda. Las tomas se graban en un Edge aparte con `cdp.mjs` y se montan con `montar-toma.py` (carpeta `C:\Users\vgutierrez\AppData\Local\Temp\claude-video`); van en la raíz de `index.html`, fuera de las escenas, porque HyperFrames no admite un `<video data-start>` dentro de otro elemento con `data-start`. Rótulos sobre cada toma: qué está pasando y qué aporta.
 
 ```bash
 python3 scripts/video-claude/preparar.py        # recursos y compases
