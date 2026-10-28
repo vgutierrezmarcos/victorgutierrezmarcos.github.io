@@ -50,9 +50,12 @@
 5. … (pista: …)
 
 ## 8. Para la app
-**Para la app**
-Valoración: …/5
-Comentarios: … (≤ 300 caracteres)
-Antes del próximo cante: 1) … 2) … 3) …
+> **Para la app**
+>
+> Valoración: …/5
+>
+> Comentarios: … (≤ 300 caracteres)
+>
+> Antes del próximo cante: 1) … 2) … 3) …
 
 *Este informe lo ha redactado una IA con el temario de victorgutierrezmarcos.es y tus propios datos. No sustituye a un preparador para la oposición: lo complementa. Contrasta con él lo que te sorprenda y, en caso de duda, manda su criterio.*
