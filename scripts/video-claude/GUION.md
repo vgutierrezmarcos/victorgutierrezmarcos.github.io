@@ -15,17 +15,21 @@ Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de panta
 | G7 | App: Más → Prepara con Claude → Exportar mis datos → claude.ai: «hazme el cronograma hasta el examen» → copiar el bloque → app: Cronograma → Traer el tuyo → pegar → el cronograma en Hoy | móvil + claude.ai | 35 |
 | G8 | El explorador de ficheros con la carpeta «Oposición TCEE» ordenada (0_organizacion, 1_primer_ejercicio, 3_tercer_ejercicio/A/3A08/cantes…) y Claude Desktop (o Claude Code) trabajando sobre ella: «corrige el cante de hoy y guarda el informe al lado» → el PDF aparece en `cantes/` del tema | escritorio | 30 |
 
-## Escenas
+## Escenas (versión del 28 oct., unos 3:36)
 
-1. **Portada** (0:00-0:08). «Prepara con Claude» · «Tu equipo de preparación, con tu temario y tus datos» · rótulo pequeño: «No sustituye a un preparador: lo complementa».
-2. **Qué es** (0:08-0:25). Tres rótulos sobre la página web: corrige tus cantes y dictámenes · resuelve dudas viendo el temario entero · organiza tu cronograma y lo manda a la app. Logo de Claude.
-3. **Instalar** (0:25-0:50). G1 + G2 con tres rótulos: «1. Descarga el ZIP» · «2. Ajustes → Skills → Añadir → Subir Skill» · «3. Escribe lo que quieras».
-4. **Un cante** (0:50-1:45). G3 + G4. Rótulos: «La app transcribe con marcas de minuto» · «Errores con el minuto y la fuente» · «Lo que te preguntaría el tribunal» · «El informe, en PDF con la estética de tu oposición».
-5. **Un dictamen** (1:45-2:05). G5. Rótulo: «Aunque esté a mano».
-6. **Una duda** (2:05-2:20). G6. Rótulo: «Ve el temario en conjunto y cita dónde se estudia».
-7. **El cronograma** (2:20-2:55). G7. Rótulos: «Exporta tus datos» · «Pide el cronograma» · «Tráelo a la app».
-8. **Tu carpeta** (2:55-3:25). G8. Rótulos: «Una carpeta ordenada con toda la oposición» · «Claude trabaja desde ella: lee, corrige y guarda» · «Los informes, junto a cada cante».
-9. **Cierre** (3:25-3:40). «Hace falta Claude Pro (unos 20 € al mes)» · «Material exclusivo: para tu uso personal» · «No sustituye a un preparador: lo complementa» · victorgutierrezmarcos.es/oposicion/prepara-con-claude.html.
+1. **Portada**: «Prepara con Claude» · «Complementa tu preparación con la skill de Claude» · aviso «No sustituye a un preparador para la oposición: lo complementa».
+2. **Gancho**: «Tu preparador te corrige una vez a la semana. Entre clase y clase, las dudas esperan.» → «A la medida de cada opositor. Cada semana te conoce mejor.»
+3. **Qué hace**: seis tarjetas (cantes, dictámenes, dudas, cronograma, tribunal, test), para TCEE y DCE.
+4. **No es un chatbot genérico**: «Sabe tu temario. Y tú aprendes de ella.» · lleva el temario · parte de tu preparación real · tiene memoria (cada vez te conoce mejor) · se mantiene al día sola.
+5. **Instalar** (toma G2): tres pasos, una sola vez.
+6. **Un cante**: la app transcribe (móviles de TCEE y DCE) → adjuntar y pedir (G4a) → el informe con el minuto y la fuente, el tribunal y el PDF (G4b).
+7. **Un dictamen** (G5a, G5b): aunque esté a mano; diagnóstico, coherencia, preguntas de la defensa.
+8. **Una duda** (G6a, G6b): ve el temario en conjunto.
+9. **El cronograma**: exportar (las dos apps) → Manuel, opositor a DCE, pide el reparto del cante de 20 minutos y el cronograma por fases (G9ma, G9mb; colores y letra de DCE) → en TCEE igual (G7b) → traerlo a la app.
+10. **Tu carpeta** (G8): la estructura por ejercicios y Claude trabajando desde ella.
+11. **Y mucho más**: «Pide lo que se te ocurra», seis ejemplos.
+12. **Al día**: se actualiza sola, tus datos son tuyos, material exclusivo.
+13. **Cierre**: Claude Pro, aviso y dirección.
 
 ## Montaje (hecho el 28 oct. con HyperFrames)
 

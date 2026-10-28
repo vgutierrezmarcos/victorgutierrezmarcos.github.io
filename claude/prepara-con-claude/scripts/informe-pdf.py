@@ -34,17 +34,19 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 FUENTES = os.path.join(os.path.dirname(AQUI), 'assets', 'fuentes')
 
 # Estética de cada oposición: fuente del texto, fuente de los títulos, color
-# principal (títulos), color secundario (subtítulos), color del filete y texto
-# de la cabecera.
+# principal (títulos), color secundario (subtítulos), color del filete, fondo
+# de la app (cajas: cabecera, citas y bloque «Para la app»), color pálido del
+# aviso y texto de la cabecera. Son los mismos tokens que la web y la app
+# (TCEE: morado y verde salvia; DCE: granate, azul y crema).
 ESTILOS = {
     'tcee': {
         'texto': 'TeX Gyre Pagella', 'titulos': 'TeX Gyre Pagella',
-        'primario': '5F2987', 'secundario': '4A1F6B', 'filete': 'B8860B', 'gris': '5E5866',
+        'primario': '5F2987', 'secundario': '4A1F6B', 'filete': 'B8860B', 'gris': '5E5866', 'fondo': 'E2EFD9', 'palido': 'F1EBF6',
         'cabecera': 'Prepara con Claude · Oposición a Técnico Comercial y Economista del Estado · victorgutierrezmarcos.es',
     },
     'dce': {
         'texto': 'Latin Modern Roman', 'titulos': 'Latin Modern Roman',
-        'primario': '7A1F4B', 'secundario': '234A6B', 'filete': '7A1F4B', 'gris': '5E5866',
+        'primario': '7A1F4B', 'secundario': '234A6B', 'filete': '234A6B', 'gris': '57534B', 'fondo': 'F7F4EC', 'palido': 'F4E9EE',
         'cabecera': 'Prepara con Claude · Oposición a Diplomado Comercial del Estado · manuelcabadogarcia.es',
     },
 }
@@ -86,16 +88,17 @@ def detectar_oposicion(texto):
     return 'tcee'
 
 
-def estilo_parrafo(id_, nombre, basado, fuente, tamano, color, negrita=False, cursiva=False, antes=0, despues=120, filete=None, versalitas=False, alineacion=None, siguiente='BodyText'):
+def estilo_parrafo(id_, nombre, basado, fuente, tamano, color, negrita=False, cursiva=False, antes=0, despues=120, filete=None, versalitas=False, alineacion=None, siguiente='BodyText', fondo=None):
     """Un estilo de párrafo de styles.xml (medidas en medios puntos y vigésimos de punto)."""
     pbdr = f'<w:pBdr><w:bottom w:val="single" w:sz="8" w:space="2" w:color="{filete}"/></w:pBdr>' if filete else ''
     jc = f'<w:jc w:val="{alineacion}"/>' if alineacion else ''
+    shd = f'<w:shd w:val="clear" w:color="auto" w:fill="{fondo}"/>' if fondo else ''
     rpr = (f'<w:rFonts w:ascii="{fuente}" w:hAnsi="{fuente}" w:cs="{fuente}" w:eastAsia="{fuente}"/>'
            + ('<w:b/><w:bCs/>' if negrita else '') + ('<w:i/><w:iCs/>' if cursiva else '') + ('<w:smallCaps/>' if versalitas else '')
            + f'<w:color w:val="{color}"/><w:sz w:val="{tamano}"/><w:szCs w:val="{tamano}"/>')
     return (f'<w:style w:type="paragraph" w:customStyle="1" w:styleId="{id_}"><w:name w:val="{nombre}"/>'
             f'<w:basedOn w:val="{basado}"/><w:next w:val="{siguiente}"/><w:qFormat/>'
-            f'<w:pPr><w:keepNext/><w:spacing w:before="{antes}" w:after="{despues}"/>{pbdr}{jc}</w:pPr><w:rPr>{rpr}</w:rPr></w:style>')
+            f'<w:pPr><w:keepNext/><w:spacing w:before="{antes}" w:after="{despues}"/>{pbdr}{shd}{jc}</w:pPr><w:rPr>{rpr}</w:rPr></w:style>')
 
 
 def redefinir(xml, style_id, nuevo):
@@ -133,9 +136,9 @@ def reference_docx(pandoc, destino, e):
     for n in ('Heading1', 'Heading2', 'Heading3', 'Heading4'):
         s = s.replace(f'w:customStyle="1" w:styleId="{n}"', f'w:styleId="{n}"')
     # Cabecera (línea pequeña en versalitas sobre el título), aviso final y citas
-    s = redefinir(s, 'Cabecera', estilo_parrafo('Cabecera', 'Cabecera', 'Normal', titulos, 18, e['gris'], versalitas=True, antes=0, despues=240, filete=e['filete']))
-    s = redefinir(s, 'Aviso', estilo_parrafo('Aviso', 'Aviso', 'Normal', texto, 18, e['gris'], cursiva=True, antes=360, despues=0))
-    s = redefinir(s, 'BlockText', estilo_parrafo('BlockText', 'Block Text', 'BodyText', texto, 21, e['secundario'], antes=120, despues=120).replace('<w:keepNext/>', '<w:ind w:left="567"/><w:pBdr><w:left w:val="single" w:sz="12" w:space="8" w:color="%s"/></w:pBdr>' % e['filete']))
+    s = redefinir(s, 'Cabecera', estilo_parrafo('Cabecera', 'Cabecera', 'Normal', titulos, 18, e['primario'], versalitas=True, antes=0, despues=240, filete=e['filete'], fondo=e['fondo']))
+    s = redefinir(s, 'Aviso', estilo_parrafo('Aviso', 'Aviso', 'Normal', texto, 18, e['gris'], cursiva=True, antes=360, despues=0, fondo=e['palido']))
+    s = redefinir(s, 'BlockText', estilo_parrafo('BlockText', 'Block Text', 'BodyText', texto, 21, e['secundario'], antes=120, despues=120, fondo=e['fondo']).replace('<w:keepNext/>', '<w:ind w:left="567"/><w:pBdr><w:left w:val="single" w:sz="12" w:space="8" w:color="%s"/></w:pBdr>' % e['filete']))
     # Enlaces en el color principal; tablas con cabecera en negrita
     s = re.sub(r'(<w:style [^>]*w:styleId="Hyperlink".*?<w:color w:val=")[^"]*(")', r'\g<1>%s\2' % e['primario'], s, count=1, flags=re.S)
     partes['word/styles.xml'] = s.encode('utf-8')
