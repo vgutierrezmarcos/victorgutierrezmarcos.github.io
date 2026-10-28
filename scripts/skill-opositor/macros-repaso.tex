@@ -1,0 +1,69 @@
+% macros-repaso.tex — Equivalencias en LaTeX llano de las órdenes de tcee-repaso.sty
+% (y de las de tcee-comun.sty que usan las fichas) para que pandoc las convierta a
+% Markdown. scripts/skill-opositor.py lo antepone al cuerpo de cada ficha de repaso
+% (fuentes/<T>/repaso/<T>-repaso.tex) y del resumen de la guía del dictamen (1D01).
+%
+% Lo que una macro no puede calcular lo sustituye antes el script en Python: los
+% minutos del cante (\bloque[2,5]{…} → \bloquemin{2′30″}{…}; el segundo argumento de
+% \apartadocante y \subcante pasa a «2′30″», o a \apartadocantesin{…} y \subcantesin{…}
+% si no hay minutos; \tiempo{2,5} → 2′30″) y el título de la caja «trampa»
+% (\trampatitulo: «Ojo en el test» en las fichas, «Ojo en el dictamen» en el resumen).
+%
+% Si se añade una orden nueva a tcee-repaso.sty, hay que añadir aquí su equivalente.
+% Autor: Víctor Gutiérrez Marcos
+
+% --- Cabecera y estructura del documento (el script escribe el título en Markdown) ---
+\newcommand{\tcetema}[3][]{}
+\newcommand{\tcefecha}[1]{}
+\newcommand{\cabecerarepaso}{}
+\newcommand{\tceeresumen}{}
+\newcommand{\tceetam}{}
+\newcommand{\tceetitulo}{}
+\newenvironment{columnas}{}{}
+\providecommand{\trampatitulo}{Ojo en el test}
+
+% --- Bloques y subapartados: títulos de nivel 1 y 2 (pandoc los baja un nivel) ---
+\newcommand{\bloque}[2][]{\section{#2}}
+\newcommand{\bloquemin}[2]{\section{#2 (#1)}}
+\newcommand{\sub}[1]{\subsection{#1}}
+
+% --- Esquema del cante: una lista con los minutos de cada apartado ---
+\newcommand{\esquemacante}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\apartadocante}[2]{\item \textbf{#1} · #2}
+\newcommand{\subcante}[2]{\item #1 · #2}
+\newcommand{\apartadocantesin}[1]{\item \textbf{#1}}
+\newcommand{\subcantesin}[1]{\item #1}
+\newcommand{\hito}[2]{\par\textbf{#1} #2\par}
+
+% --- Énfasis y remisiones ---
+\newcommand{\autor}[1]{#1}
+\newcommand{\concepto}[1]{\textbf{#1}}
+\newcommand{\vertema}[1]{[ver tema #1]}
+\newcommand{\vertemacorto}[1]{#1}
+\newcommand{\dato}[2]{\textbf{#1} (#2)}
+\newcommand{\minutos}[1]{(#1)}
+\renewcommand{\hyperref}[2][]{#2}
+\newcommand{\findemo}{∎}
+
+% --- Gráficos: solo el pie, entre corchetes ---
+\newcommand{\graficorepaso}[3][]{\par\emph{[Gráfico: #3]}\par}
+\newcommand{\pareja}[4]{\par\emph{[Gráfico: #2]} · \emph{[Gráfico: #4]}\par}
+\renewcommand{\includegraphics}[2][]{\emph{[Gráfico: #2]}}
+\newcommand{\fuente}[1]{\par\emph{Fuente: #1}\par}
+
+% --- Fórmulas ---
+\newcommand{\funcionclave}[1]{\[#1\]}
+\providecommand{\vect}[1]{\mathbf{#1}}
+% \optim{\max}{x}{objetivo}{restricciones}: «max» con la variable debajo y «s.a.»
+\newcommand{\optim}[4]{\begin{array}{rl}#1_{#2} & #3 \\ \text{s.a.} & #4\end{array}}
+
+% --- Cajas: la fórmula se queda como está; idea clave y trampa, como citas ---
+\newenvironment{formula}{}{}
+\newenvironment{ideaclave}{\begin{quote}}{\end{quote}}
+\newenvironment{trampa}{\begin{quote}\textbf{\trampatitulo.} }{\end{quote}}
+
+% --- Tablas: lo que pandoc no entiende se vacía ---
+\newcommand{\rowcolor}[1]{}
+\newcommand{\cellcolor}[1]{}
+\newcommand{\arraybackslash}{}
+\newcommand{\addlinespace}[1][]{}

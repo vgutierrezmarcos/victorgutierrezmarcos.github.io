@@ -5,7 +5,10 @@
  *   - pone la etiqueta «Exclusivo» junto a cada enlace a un fichero exclusivo
  *     de la web y, debajo de su tarjeta, la llamada a la app;
  *   - rellena la sección «Materiales exclusivos» (#exclusivos-lista) del
- *     temario y la frase de la portada (#exclusivos-portada).
+ *     temario y la frase de la portada (#exclusivos-portada);
+ *   - rellena el botón de descarga de la skill «Prepara con Claude»
+ *     (#descargar-skill): con sesión iniciada apunta al ZIP; sin sesión, pide
+ *     iniciarla o manda a la app.
  * Sin el JSON (sin red, fichero ausente), la página se queda como está.
  */
 (function () {
@@ -61,7 +64,7 @@
     }
 
     function formatos(f) {
-        var n = { pdf: 'PDF', html: 'página web', docx: 'Word', repaso: 'ficha de repaso', app: 'en la app' };
+        var n = { pdf: 'PDF', html: 'página web', docx: 'Word', repaso: 'ficha de repaso', app: 'en la app', zip: 'skill para Claude.ai (ZIP)' };
         return (f || []).map(function (x) { return n[x] || x; }).join(', ');
     }
 
@@ -81,6 +84,7 @@
                 var li = document.createElement('li');
                 var t = m.codigo && m.tipo === 'tema' ? '<strong>' + m.codigo + '</strong> · ' + m.titulo : m.titulo;
                 var det = [formatos(m.formatos), m.fecha ? (m.tipo === 'tema' || m.tipo === 'guia' ? 'revisado el ' : 'publicado el ') + fecha(m.revisado || m.fecha) : ''].filter(Boolean).join(' · ');
+                if (m.tipo === 'skill') t = '<a href="' + RAIZ + 'oposicion/prepara-con-claude.html">' + m.titulo + '</a>';
                 li.innerHTML = (m.ruta ? '<a href="' + RAIZ + m.ruta + '" target="_blank">' + t + '</a>' : t) + ' <span class="etiqueta-exclusivo">Exclusivo</span>' + (det ? '<span class="exclusivos-detalle">' + det + '</span>' : '');
                 ul.appendChild(li);
             });
@@ -103,6 +107,42 @@
         e.hidden = false;
     }
 
+    // La skill se descarga con sesión (es material exclusivo: la copia queda
+    // ligada a quien la baja). auth.js carga Firebase después de este script,
+    // así que se espera a que exista y se escucha el estado de la sesión.
+    function skill(datos) {
+        var boton = document.getElementById('descargar-skill');
+        if (!boton) return;
+        var s = datos.materiales.filter(function (m) { return m.tipo === 'skill' && m.url; })[0];
+        if (!s) { boton.hidden = true; return; }
+        var sinSesion = boton.getAttribute('data-sin-sesion') || 'Inicia sesión para descargar la skill o descárgala desde la app';
+        var nota = document.createElement('p');
+        nota.className = 'exclusivos-nota';
+        boton.parentNode.insertBefore(nota, boton.nextSibling);
+        function pinta(usuario) {
+            if (usuario) {
+                boton.href = s.url;
+                boton.setAttribute('download', 'prepara-con-claude.zip');
+                boton.textContent = 'Descargar la skill (ZIP' + (s.tamano ? ', ' + Math.round(s.tamano / 1024 / 1024 * 10) / 10 + ' MB' : '') + ')';
+                nota.textContent = 'Versión ' + (s.version || '') + (s.temas ? ' · ' + s.temas + ' temas revisados' : '') + ' · Para tu uso personal; la copia va ligada a tu cuenta.';
+            } else {
+                boton.href = APP;
+                boton.removeAttribute('download');
+                boton.textContent = 'Descargar la skill';
+                nota.textContent = sinSesion;
+            }
+        }
+        pinta(null);
+        var intentos = 0;
+        (function espera() {
+            if (window.firebase && firebase.auth) {
+                firebase.auth().onAuthStateChanged(pinta);
+            } else if (intentos++ < 50) {
+                setTimeout(espera, 200);
+            }
+        })();
+    }
+
     fetch(RAIZ + 'oposicion/exclusivos.json', { cache: 'no-cache' })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (datos) {
@@ -110,6 +150,7 @@
             marcarEnlaces(datos);
             lista(datos);
             portada(datos);
+            skill(datos);
         })
         .catch(function () {});
 })();
