@@ -203,6 +203,15 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Cargando lo que comparte el alumno…', style: context.textos.labelSmall))
             else if (a.enlazado && progreso?.value == null)
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Sin conexión con su app: se muestran los últimos datos guardados.', style: context.textos.labelSmall)),
+            // Solo si el alumno comparte cuándo usó la app por última vez (solo el día).
+            if (progreso?.value?.ultimoUso case final u? when DateTime.tryParse(u) != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Text(
+                  switch (DateTime.now().difference(DateTime.parse(u)).inDays) { 0 => 'Ha usado la app hoy.', 1 => 'Usó la app ayer.', final d => 'Última vez que usó la app: hace $d días.' },
+                  style: context.textos.labelSmall,
+                ),
+              ),
             if (a.telefono.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 10), child: BotonWhatsApp(telefono: a.telefono, texto: 'Escribir a ${a.nombre}')),
             // Sin la app: invitarle en un toque con el código.
             if (!a.enlazado && telefonoWhatsApp(a.telefono) != null && ref.watch(perfilPreparadorProvider).codigo != null)

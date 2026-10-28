@@ -175,6 +175,11 @@ class PerfilPreparador {
     this.telefono = '',
     this.avisosSustitucion = true,
     this.avisosReservas = true,
+    this.avisoTemasClase = true,
+    this.avisoCantesPropios = false,
+    this.avisoEstudiados = false,
+    this.avisoInactividad = false,
+    this.avisoExamen = true,
     this.reservas = false,
     this.huecos = const [],
     this.linkedin = '',
@@ -251,6 +256,15 @@ class PerfilPreparador {
   final bool avisosSustitucion;
   /// Avisar de las reservas de sus alumnos (activado por defecto).
   final bool avisosReservas;
+  /// Avisos de la actividad de cada alumno, siempre que él la comparta
+  /// (Ajustes.avisosPreparador): temas fijados para una clase y cercanía del
+  /// examen (activados), cantes por su cuenta, temas marcados como estudiados
+  /// y días sin usar la app (apagados por defecto).
+  final bool avisoTemasClase;
+  final bool avisoCantesPropios;
+  final bool avisoEstudiados;
+  final bool avisoInactividad;
+  final bool avisoExamen;
   /// Sus alumnos pueden reservar en sus huecos libres (desactivado por defecto).
   final bool reservas;
   /// Huecos semanales en los que acepta reservas.
@@ -259,13 +273,18 @@ class PerfilPreparador {
   final String linkedin;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, bool antelacionDelExamen = false, List<int>? avisosClase, String? modalidad, String? ciudad, bool? calendarioGoogle, int? minutosClase, int? temasPorClase, String? plataforma}) => PerfilPreparador(
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? avisoTemasClase, bool? avisoCantesPropios, bool? avisoEstudiados, bool? avisoInactividad, bool? avisoExamen, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, bool antelacionDelExamen = false, List<int>? avisosClase, String? modalidad, String? ciudad, bool? calendarioGoogle, int? minutosClase, int? temasPorClase, String? plataforma}) => PerfilPreparador(
         activo: activo ?? this.activo,
         codigo: codigo ?? this.codigo,
         nombre: nombre ?? this.nombre,
         telefono: telefono ?? this.telefono,
         avisosSustitucion: avisosSustitucion ?? this.avisosSustitucion,
         avisosReservas: avisosReservas ?? this.avisosReservas,
+        avisoTemasClase: avisoTemasClase ?? this.avisoTemasClase,
+        avisoCantesPropios: avisoCantesPropios ?? this.avisoCantesPropios,
+        avisoEstudiados: avisoEstudiados ?? this.avisoEstudiados,
+        avisoInactividad: avisoInactividad ?? this.avisoInactividad,
+        avisoExamen: avisoExamen ?? this.avisoExamen,
         reservas: reservas ?? this.reservas,
         huecos: huecos ?? this.huecos,
         linkedin: linkedin ?? this.linkedin,
@@ -288,6 +307,11 @@ class PerfilPreparador {
         'telefono': telefono,
         'avisosSustitucion': avisosSustitucion,
         'avisosReservas': avisosReservas,
+        'avisoTemasClase': avisoTemasClase,
+        'avisoCantesPropios': avisoCantesPropios,
+        'avisoEstudiados': avisoEstudiados,
+        'avisoInactividad': avisoInactividad,
+        'avisoExamen': avisoExamen,
         'reservas': reservas,
         'huecos': huecos.map((h) => h.toJson()).toList(),
         'linkedin': linkedin,
@@ -312,6 +336,11 @@ class PerfilPreparador {
           telefono: j['telefono'] as String? ?? '',
           avisosSustitucion: j['avisosSustitucion'] as bool? ?? true,
           avisosReservas: j['avisosReservas'] as bool? ?? true,
+          avisoTemasClase: j['avisoTemasClase'] as bool? ?? true,
+          avisoCantesPropios: j['avisoCantesPropios'] as bool? ?? false,
+          avisoEstudiados: j['avisoEstudiados'] as bool? ?? false,
+          avisoInactividad: j['avisoInactividad'] as bool? ?? false,
+          avisoExamen: j['avisoExamen'] as bool? ?? true,
           reservas: j['reservas'] as bool? ?? false,
           huecos: [for (final h in (j['huecos'] as List?) ?? const []) if (h is Map) Hueco.fromJson(h)],
           linkedin: j['linkedin'] as String? ?? '',
@@ -386,7 +415,10 @@ class SolicitudEnlace {
 /// Lo que un alumno enlazado comparte con su preparador: los temas que marca
 /// y sus cantes. No incluye tests, notas ni grabaciones.
 class ProgresoAlumno {
-  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.delCronograma = const {}, this.noCantar = const {}, this.temasClases = const {}, this.cantes = const [], this.ajustes = const AjustesCoordinacion(), this.reparto = const {}, this.yoAislado = false});
+  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.delCronograma = const {}, this.noCantar = const {}, this.temasClases = const {}, this.cantes = const [], this.ajustes = const AjustesCoordinacion(), this.reparto = const {}, this.yoAislado = false, this.ultimoUso});
+
+  /// Último día en que el alumno usó la app (clave de día), solo si lo comparte.
+  final String? ultimoUso;
   final Set<String> estudiados;
   final Set<String> enRepaso;
   /// Temas que lleva según su cronograma compartido (ver

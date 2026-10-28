@@ -938,7 +938,9 @@ class PreparadorRepo {
       // Se guarda la lista para poder sortear sin conexión.
       final ordenados = ({...estudiados, ...delCronograma}..removeAll(noCantar.keys)).toList()..sort();
       if (ordenados.join(',') != (List.of(a.temas)..sort()).join(',')) await guardarAlumno(a.copyWith(temas: ordenados));
+      final comparte = ((ajustes['avisosPreparador'] as List?) ?? const []).map((e) => e.toString()).toSet();
       return ProgresoAlumno(
+        ultimoUso: comparte.contains('uso') ? ajustes['ultimoUso'] as String? : null,
         estudiados: estudiados,
         enRepaso: ((ajustes['temasEnRepaso'] as List?) ?? []).map((e) => e.toString()).toSet(),
         delCronograma: delCronograma,

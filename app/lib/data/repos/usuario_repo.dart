@@ -29,8 +29,16 @@ class Ajustes {
     this.temaFrio = false,
     this.mejorRacha = 0,
     this.rachaCongelaciones = const [],
+    this.avisosPreparador = const {},
+    this.ultimoUso,
     this.updatedAt,
   });
+
+  /// Tipos de actividad de los que el preparador puede recibir aviso, si el
+  /// opositor los comparte (apagados por defecto): temas fijados para una
+  /// clase, cantes por su cuenta, temas marcados como estudiados, último día
+  /// de uso de la app (solo el día) y cercanía del examen.
+  static const avisosPreparadorTipos = ['temas', 'cantes', 'estudiados', 'uso', 'examen'];
 
   final DateTime? fechaConvocatoria;
   final Set<String> temasEstudiados;
@@ -61,6 +69,10 @@ class Ajustes {
   /// Días en que la racha está congelada (descansos), como «desde|hasta» en
   /// claves de día (ver features/inicio/racha.dart).
   final List<String> rachaCongelaciones;
+  /// Qué avisos de su actividad recibe el preparador (ver [avisosPreparadorTipos]).
+  final Set<String> avisosPreparador;
+  /// Último día en que usó la app (clave de día), solo si comparte `uso`.
+  final String? ultimoUso;
   final DateTime? updatedAt;
 
   Ajustes copyWith({
@@ -80,6 +92,8 @@ class Ajustes {
     bool? temaFrio,
     int? mejorRacha,
     List<String>? rachaCongelaciones,
+    Set<String>? avisosPreparador,
+    String? ultimoUso,
     DateTime? updatedAt,
   }) =>
       Ajustes(
@@ -97,6 +111,8 @@ class Ajustes {
         temaFrio: temaFrio ?? this.temaFrio,
         mejorRacha: mejorRacha ?? this.mejorRacha,
         rachaCongelaciones: rachaCongelaciones ?? this.rachaCongelaciones,
+        avisosPreparador: avisosPreparador ?? this.avisosPreparador,
+        ultimoUso: ultimoUso ?? this.ultimoUso,
         updatedAt: updatedAt ?? DateTime.now(),
       );
 
@@ -117,6 +133,8 @@ class Ajustes {
         'temaFrio': temaFrio,
         'mejorRacha': mejorRacha,
         'rachaCongelaciones': rachaCongelaciones,
+        'avisosPreparador': avisosPreparador.toList()..sort(),
+        if (ultimoUso != null) 'ultimoUso': ultimoUso,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -154,6 +172,8 @@ class Ajustes {
       temaFrio: j['temaFrio'] == true,
       mejorRacha: (j['mejorRacha'] as num?)?.toInt() ?? 0,
       rachaCongelaciones: ((j['rachaCongelaciones'] as List?) ?? []).map((e) => e.toString()).toList(),
+      avisosPreparador: ((j['avisosPreparador'] as List?) ?? []).map((e) => e.toString()).toSet(),
+      ultimoUso: j['ultimoUso'] as String?,
       updatedAt: f(j['updatedAt'] as String?),
     );
   }
@@ -392,6 +412,7 @@ class UsuarioRepo {
         temasEnRepaso: {...local.temasEnRepaso, ...nube.temasEnRepaso},
         mejorRacha: local.mejorRacha > nube.mejorRacha ? local.mejorRacha : nube.mejorRacha,
         rachaCongelaciones: {...local.rachaCongelaciones, ...nube.rachaCongelaciones}.toList()..sort(),
+        ultimoUso: [local.ultimoUso, nube.ultimoUso].whereType<String>().fold<String?>(null, (m, v) => m == null || v.compareTo(m) > 0 ? v : m),
       );
       await _ajustes.put('ajustes', fusion.toJson());
       return fusion;
