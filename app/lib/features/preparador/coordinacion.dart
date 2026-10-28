@@ -317,6 +317,30 @@ class _QueVenMisPreparadoresPageState extends ConsumerState<QueVenMisPreparadore
                   subtitle: Text('Los ven, con tu nota y tus comentarios. Ayuda a que no te repitan temas.', style: context.textos.labelSmall),
                 ),
               ),
+              const TituloSeccion('Avisos que les llegan de tu actividad'),
+              Text(
+                'Apagados hasta que los actives. Cada preparador elige además cuáles quiere recibir; lo que no compartas aquí no le llega nunca.',
+                style: context.textos.labelSmall,
+              ),
+              const SizedBox(height: 6),
+              Tarjeta(
+                padding: EdgeInsets.zero,
+                child: Column(children: [
+                  for (final (clave, titulo, subtitulo) in const <(String, String, String)>[
+                    ('temas', 'Cuando fijo los temas de una clase', 'Qué temas llevo a cada clase con él.'),
+                    ('cantes', 'Cuando canto un tema por mi cuenta', 'Con mi valoración (solo si también comparto mis cantes, arriba).'),
+                    ('estudiados', 'Cuando marco temas como estudiados', 'Los temas nuevos desde su última comprobación.'),
+                    ('uso', 'Si llevo una semana sin usar la app', 'Comparte solo el último día en que la usé, nunca la hora ni qué hice.'),
+                    ('examen', 'Cuando faltan 30 y 7 días para mi examen', 'Según la fecha que tengo puesta en Convocatoria.'),
+                  ])
+                    SwitchListTile(
+                      value: ref.watch(ajustesProvider.select((a) => a.avisosPreparador.contains(clave))),
+                      title: Text(titulo),
+                      subtitle: Text(subtitulo, style: context.textos.labelSmall),
+                      onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(avisosPreparador: v ? {...a.avisosPreparador, clave} : ({...a.avisosPreparador}..remove(clave)))),
+                    ),
+                ]),
+              ),
               if (preparadores.length > 1) ...[
                 const TituloSeccion('Si saben que tienes otros preparadores'),
                 Text(

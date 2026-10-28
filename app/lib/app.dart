@@ -10,6 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'core/analitica.dart';
+import 'data/repos/usuario_repo.dart' show Ajustes;
 import 'core/cronograma_providers.dart';
 import 'core/instalacion.dart';
 import 'data/models/temas_clase.dart';
@@ -154,6 +155,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       onResume: () {
         ref.read(sesionProvider.notifier).sincronizarSiToca();
         _programar();
+        _anotarUso();
         // En el navegador: si se ha publicado otra versión, se ofrece recargar.
         if (kIsWeb) ref.invalidate(actualizacionProvider);
         // Lo que haya cambiado en los ajustes del sistema, y la escucha en
@@ -191,6 +193,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     // navegador). Nunca datos personales.
     _router.routerDelegate.addListener(_pantallaVista);
     _pantallaVista();
+    _anotarUso();
     ref.listenManual(papelProvider, (_, p) => Analitica.instancia.usuario(papel: p.name), fireImmediately: true);
     Analitica.instancia.usuario(oposicion: ref.read(oposicionProvider).id);
     origenInstalacion().then((o) => Analitica.instancia.usuario(instalacion: o.name));
@@ -228,6 +231,16 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         if (mounted) await _abrirAltaSiToca();
       });
     });
+  }
+
+  /// El día de hoy como último uso de la app, si el opositor comparte con su
+  /// preparador cuándo la usó por última vez (solo el día). Una escritura al día.
+  void _anotarUso() {
+    final a = ref.read(ajustesProvider);
+    if (!a.avisosPreparador.contains('uso')) return;
+    final hoy = Ajustes.claveDia(DateTime.now());
+    if (a.ultimoUso == hoy) return;
+    ref.read(ajustesProvider.notifier).actualizar((x) => x.copyWith(ultimoUso: hoy));
   }
 
   /// Abre el test diario de hoy (si no está hecho; si no, Hoy).

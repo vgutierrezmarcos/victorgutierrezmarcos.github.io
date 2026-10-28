@@ -3,10 +3,13 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../core/vistos.dart';
+import '../models/coordinacion.dart';
 import '../models/oposicion.dart';
 import '../models/plan.dart';
 import '../models/preparador.dart';
 import '../models/red.dart';
+import '../models/temas_clase.dart';
 import 'usuario_repo.dart';
 
 /// Aviso de la red (sustitución nueva, cogida, reserva…) para notificar una vez.
@@ -492,9 +495,10 @@ class RedRepo {
       // preparadores (notas, tablón, preparadores nuevos, respuestas a sus
       // cronogramas y propuestas).
       if (verificacion != null) {
+        final perfil = await _miPerfil();
         final alumnos = await oposicion.red(_db!, 'preparadores').doc(uid).collection('alumnos').get();
         for (final d in alumnos.docs.where((d) => d.data()['aceptado'] != false)) {
-          out.addAll(await _avisosDeCoordinacion(d.id, (d.data()['nombre'] as String?)?.trim() ?? '', reciente));
+          out.addAll(await _avisosDeCoordinacion(d.id, (d.data()['nombre'] as String?)?.trim() ?? '', reciente, perfil: perfil, ahora: ahora));
         }
       }
       if (admin || verificacion != null) {
@@ -604,7 +608,18 @@ class RedRepo {
   /// Avisos al preparador sobre su alumno [alumno] ([nombre]) desde [reciente].
   /// Si el alumno le ha ocultado a los demás, las reglas no le dejan leer lo
   /// de los otros preparadores: esa parte se salta sin más.
-  Future<List<AvisoRed>> _avisosDeCoordinacion(String alumno, String nombre, DateTime reciente) async {
+  /// Mi perfil de preparador tal como está en la nube (los interruptores de
+  /// los avisos; también lo lee la tarea en segundo plano).
+  Future<PerfilPreparador> _miPerfil() async {
+    try {
+      final d = await oposicion.raizUsuario(_db!, uid!).collection('progress').doc('preparador').get();
+      return PerfilPreparador.fromJson(d.data());
+    } catch (_) {
+      return const PerfilPreparador();
+    }
+  }
+
+  Future<List<AvisoRed>> _avisosDeCoordinacion(String alumno, String nombre, DateTime reciente, {PerfilPreparador perfil = const PerfilPreparador(), DateTime? ahora}) async {
     final out = <AvisoRed>[];
     final raiz = oposicion.raizUsuario(_db!, alumno);
     final quien = nombre.isEmpty ? 'tu alumno' : nombre;
@@ -614,6 +629,53 @@ class RedRepo {
         await f();
       } catch (_) {}
     }
+
+    // La actividad del alumno, solo la que él comparte (Ajustes.avisosPreparador)
+    // y el preparador quiere (interruptores de su perfil).
+    await intentar(() async {
+      final ajustes = (await raiz.collection('progress').doc('settings').get()).data() ?? const {};
+      final compartido = ((ajustes['avisosPreparador'] as List?) ?? const []).map((e) => e.toString()).toSet();
+      if (compartido.isEmpty) return;
+      final quiereTemas = perfil.avisoTemasClase && compartido.contains('temas');
+      final quiereCantes = perfil.avisoCantesPropios && compartido.contains('cantes');
+      final quiereEstudiados = perfil.avisoEstudiados && compartido.contains('estudiados');
+      final misClases = <Cante>[];
+      if (quiereTemas) {
+        final mias = await oposicion.raizUsuario(_db, uid!).collection('sesiones').where('alumno', isEqualTo: alumno).get();
+        misClases.addAll([for (final d in mias.docs) Cante.fromJson({...d.data(), 'id': d.id})]);
+      }
+      final cantes = <Cante>[];
+      var verPropios = true;
+      if (quiereCantes) {
+        verPropios = (await ajustesCoordinacionDe(alumno)).verCantesPropios;
+        if (verPropios) cantes.addAll([for (final d in (await raiz.collection('cantes').get()).docs) Cante.fromJson({...d.data(), 'id': d.id})]);
+      }
+      final estudiados = ((ajustes['temasEstudiados'] as List?) ?? const []).map((e) => e.toString()).toSet();
+      Set<String>? antes;
+      if (quiereEstudiados) {
+        // La instantánea anterior, en un fichero (también la lee la tarea en
+        // segundo plano); la primera vez solo se guarda.
+        antes = await leerVistos(lista: 'estudiados_${oposicion.id}_$alumno');
+        if (antes.isEmpty) antes = null;
+        await guardarVistos(estudiados, lista: 'estudiados_${oposicion.id}_$alumno', maximo: 1000);
+      }
+      out.addAll(avisosDeActividad(
+        alumno: alumno,
+        nombre: nombre,
+        perfil: perfil,
+        compartido: compartido,
+        temasClases: TemasClase.deLista(ajustes['temasClases']),
+        misClases: misClases,
+        cantesAlumno: cantes,
+        verCantesPropios: verPropios,
+        estudiados: estudiados,
+        estudiadosAntes: antes,
+        ultimoUso: ajustes['ultimoUso'] as String?,
+        fechaExamen: DateTime.tryParse(ajustes['fechaConvocatoria'] as String? ?? ''),
+        ahora: ahora ?? DateTime.now(),
+        reciente: reciente,
+      ));
+    });
 
     await intentar(() async {
       for (final d in (await raiz.collection('notasPreparadores').where('fecha', isGreaterThan: desde).get()).docs) {
@@ -682,6 +744,16 @@ class RedRepo {
     return out;
   }
 
+  /// Devuelve el documento del alumno enlazado [alumno] en esta red.
+  Future<AjustesCoordinacion> ajustesCoordinacionDe(String alumno) async {
+    try {
+      final d = await oposicion.raizUsuario(_db!, alumno).collection('coordinacion').doc('ajustes').get();
+      return AjustesCoordinacion.fromJson(d.data());
+    } catch (_) {
+      return const AjustesCoordinacion();
+    }
+  }
+
   /// ¿Tiene activados los avisos de reservas? (lo lee la tarea en segundo plano).
   Future<bool> quiereAvisosDeReservas() async {
     if (!conSesion) return false;
@@ -709,3 +781,91 @@ class RedRepo {
 }
 
 String _hm(DateTime d) => '${d.hour.toString().padLeft(2, '0')}:${d.minute.toString().padLeft(2, '0')}';
+
+/// Avisos de la actividad de un alumno para su preparador (lógica pura, sin
+/// Firestore): solo de los tipos que el alumno comparte ([compartido], de
+/// `Ajustes.avisosPreparador`) y que el preparador quiere ([perfil]).
+///   - `temas:`        ha fijado (o cambiado) los temas de una clase conmigo.
+///   - `cante-propio:` ha cantado por su cuenta y lo ha valorado (si además comparte sus cantes).
+///   - `estudiados:`   temas nuevos marcados como estudiados desde la instantánea anterior.
+///   - `inactivo:`     lleva una semana o más sin usar la app (un aviso por semana).
+///   - `examen:`       le quedan 30 o 7 días para el examen (una vez cada uno).
+List<AvisoRed> avisosDeActividad({
+  required String alumno,
+  required String nombre,
+  required PerfilPreparador perfil,
+  required Set<String> compartido,
+  Map<String, TemasClase> temasClases = const {},
+  Iterable<Cante> misClases = const [],
+  Iterable<Cante> cantesAlumno = const [],
+  bool verCantesPropios = true,
+  Set<String> estudiados = const {},
+  Set<String>? estudiadosAntes,
+  String? ultimoUso,
+  DateTime? fechaExamen,
+  required DateTime ahora,
+  required DateTime reciente,
+}) {
+  final out = <AvisoRed>[];
+  final quien = nombre.isEmpty ? 'Tu alumno' : nombre;
+  final hoy = DateTime(ahora.year, ahora.month, ahora.day);
+  String dm(DateTime d) => '${d.day}/${d.month}';
+
+  if (perfil.avisoTemasClase && compartido.contains('temas')) {
+    for (final c in misClases) {
+      if (!c.pendiente || c.borrado || !c.fecha.isAfter(ahora)) continue;
+      final tc = temasClases[c.id];
+      if (tc == null || tc.temas.isEmpty) continue;
+      out.add(AvisoRed(
+        id: 'temas:$alumno:${c.id}:${tc.temas.join(',')}',
+        titulo: '$quien ha fijado los temas de la clase del ${dm(c.fecha)}',
+        texto: tc.temas.join(', '),
+        ruta: '/clase?id=${c.id}',
+      ));
+    }
+  }
+  if (perfil.avisoCantesPropios && compartido.contains('cantes') && verCantesPropios) {
+    for (final c in cantesAlumno) {
+      final r = c.resultado;
+      if (c.preparador != null || !c.hecho || c.borrado || r == null) continue;
+      final cuando = c.updatedAt ?? c.fecha;
+      if (cuando.isBefore(reciente)) continue;
+      out.add(AvisoRed(
+        id: 'cante-propio:$alumno:${c.id}',
+        titulo: '$quien ha cantado ${c.temas.isEmpty ? 'un tema' : c.temas.join(' y ')} por su cuenta',
+        texto: '${r.valoracion > 0 ? '${r.valoracion} de 5 estrellas' : 'Sin valorar'}${r.comentarios.trim().isEmpty ? '' : ' · ${r.comentarios.trim()}'}',
+        ruta: '/mas/preparador',
+      ));
+    }
+  }
+  if (perfil.avisoEstudiados && compartido.contains('estudiados') && estudiadosAntes != null) {
+    final nuevos = estudiados.difference(estudiadosAntes).toList()..sort();
+    if (nuevos.isNotEmpty) {
+      out.add(AvisoRed(
+        id: 'estudiados:$alumno:${nuevos.join(',')}',
+        titulo: '$quien ha marcado ${nuevos.length == 1 ? 'un tema más' : '${nuevos.length} temas más'} como ${nuevos.length == 1 ? 'estudiado' : 'estudiados'}',
+        texto: '${nuevos.take(8).join(', ')}${nuevos.length > 8 ? '…' : ''} · ${estudiados.length} en total',
+        ruta: '/mas/preparador',
+      ));
+    }
+  }
+  if (perfil.avisoInactividad && compartido.contains('uso') && ultimoUso != null) {
+    final ultimo = DateTime.tryParse(ultimoUso);
+    if (ultimo != null) {
+      final dias = hoy.difference(DateTime(ultimo.year, ultimo.month, ultimo.day)).inDays;
+      if (dias >= 7) {
+        // Una vez por semana natural mientras siga sin usarla.
+        final semana = (hoy.difference(DateTime(hoy.year)).inDays ~/ 7);
+        out.add(AvisoRed(id: 'inactivo:$alumno:${hoy.year}-$semana', titulo: '$quien lleva $dias días sin usar la app', texto: 'Última vez: ${dm(ultimo)}. Quizá le venga bien un mensaje.', ruta: '/mas/preparador'));
+      }
+    }
+  }
+  if (perfil.avisoExamen && compartido.contains('examen') && fechaExamen != null) {
+    final dias = DateTime(fechaExamen.year, fechaExamen.month, fechaExamen.day).difference(hoy).inDays;
+    final hito = dias >= 0 && dias <= 7 ? 7 : (dias >= 8 && dias <= 30 ? 30 : null);
+    if (hito != null) {
+      out.add(AvisoRed(id: 'examen:$alumno:$hito', titulo: 'A $quien le ${dias == 1 ? 'queda 1 día' : 'quedan $dias días'} para el examen', texto: 'El ${dm(fechaExamen)}, según la fecha que tiene puesta.', ruta: '/mas/preparador'));
+    }
+  }
+  return out;
+}

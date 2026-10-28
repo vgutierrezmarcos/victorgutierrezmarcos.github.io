@@ -309,6 +309,30 @@ class AjustesPreparadorPage extends ConsumerWidget {
             ),
             ]),
           ),
+          const TituloSeccion('Avisos de la actividad de tus alumnos'),
+          Text('Solo de los alumnos que lo compartan (en su app: Mi preparador → Qué ven tus preparadores). Lo que no comparten no llega aunque lo actives aquí.', style: context.textos.labelSmall),
+          const SizedBox(height: 6),
+          Tarjeta(
+            padding: EdgeInsets.zero,
+            child: Column(children: [
+              for (final (valor, titulo, subtitulo, cambiar) in <(bool, String, String, PerfilPreparador Function(bool))>[
+                (perfil.avisoTemasClase, 'Fija o cambia los temas de una clase contigo', 'Para saber qué te va a cantar antes del día.', (v) => perfil.copyWith(avisoTemasClase: v)),
+                (perfil.avisoCantesPropios, 'Canta un tema por su cuenta', 'Con su valoración, para comentarlo en clase.', (v) => perfil.copyWith(avisoCantesPropios: v)),
+                (perfil.avisoEstudiados, 'Marca temas como estudiados', 'Los temas nuevos desde la última vez.', (v) => perfil.copyWith(avisoEstudiados: v)),
+                (perfil.avisoInactividad, 'Lleva una semana sin usar la app', 'Un aviso por semana mientras siga así.', (v) => perfil.copyWith(avisoInactividad: v)),
+                (perfil.avisoExamen, 'Le quedan 30 y 7 días para el examen', 'Según la fecha que tenga puesta.', (v) => perfil.copyWith(avisoExamen: v)),
+              ])
+                SwitchListTile(
+                  value: valor,
+                  title: Text(titulo),
+                  subtitle: Text(subtitulo, style: context.textos.labelSmall),
+                  onChanged: (v) async {
+                    if (v && !await asegurarAvisos(context)) return;
+                    await notifier.guardar(cambiar(v));
+                  },
+                ),
+            ]),
+          ),
           const TituloSeccion('Reservas de tus alumnos'),
           Tarjeta(
             padding: EdgeInsets.zero,
