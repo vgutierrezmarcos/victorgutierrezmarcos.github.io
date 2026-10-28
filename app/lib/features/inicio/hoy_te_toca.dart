@@ -14,6 +14,7 @@ import '../plan/cantes_util.dart';
 import '../temario/abrir_tema.dart';
 import '../test/motor_test.dart';
 import '../cantar/esquema_ciegas_page.dart';
+import '../preparador/deberes.dart';
 import '../temario/esquema_tema.dart';
 import 'racha.dart';
 
@@ -84,6 +85,17 @@ class TarjetaHoyTeToca extends ConsumerWidget {
       } else if (semana.temas.isNotEmpty) {
         lineas.add(_Linea(Icons.event_note, 'Los temas de esta semana', null, hecho: true, detalle: '${semana.temas.length} de ${semana.temas.length}'));
       }
+    }
+
+    // Deberes de la próxima clase con preparador que aún tiene alguno sin hacer.
+    final conDeberes = opositor ? ref.watch(proximosCantesProvider).where((c) => c.dePreparador && c.tareas.any((t) => !t.hecha)).firstOrNull : null;
+    if (conDeberes != null) {
+      lineas.add(_Linea(
+        Icons.checklist,
+        'Deberes para la clase de ${cuentaAtras(conDeberes.fecha, ahora)}: ${resumenDeberes(conDeberes)}',
+        () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: conDeberes.id))),
+        detalle: conDeberes.tareas.where((t) => !t.hecha).take(2).map((t) => t.etiqueta(tituloDe: (c) => '')).join(' · '),
+      ));
     }
 
     // El próximo cante o clase (hoy o mañana) con temas: para repasarlos.

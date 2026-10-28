@@ -25,8 +25,9 @@ String mensajeTemasClase(Cante s, {String? Function(String codigo)? titulo}) {
   final n = s.temasMandados.length;
   final seg = Oposiciones.actual.ejercicio(s.ejercicio)?.segundosEsquemaPara(n) ?? 0;
   final lineas = [for (final t in s.temasMandados) '· $t${(titulo?.call(t) ?? '').isEmpty ? '' : ' ${titulo!(t)}'}'];
+  final deberes = s.tareas.isEmpty ? '' : '\n\nPara esta clase: ${s.tareas.map((t) => t.etiqueta(tituloDe: titulo == null ? null : (c) => titulo(c) ?? '')).join('; ')}.';
   return 'Para la clase del ${cuandoTema(s.fecha)}, ${n == 1 ? 'el tema es' : 'los temas son'}:\n${lineas.join('\n')}'
-      '${seg > 0 ? '\n\nTienes ${textoAntelacion(seg)} de esquema desde ahora, como en el examen.' : ''}';
+      '${seg > 0 ? '\n\nTienes ${textoAntelacion(seg)} de esquema desde ahora, como en el examen.' : ''}$deberes';
 }
 
 /// Antelaciones que se ofrecen para mandar el tema, en segundos antes de la

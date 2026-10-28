@@ -551,7 +551,18 @@ class PreparadorRepo {
     final a = s.alumno == null ? null : alumno(s.alumno!);
     if (!conSesion || a?.uid == null) return EstadoCopia.enviada;
     try {
-      await oposicion.raizUsuario(_db!, a!.uid!).collection('cantes').doc(s.id).set(copiaParaAlumno(s));
+      final doc = oposicion.raizUsuario(_db!, a!.uid!).collection('cantes').doc(s.id);
+      var copia = s;
+      if (s.tareas.isNotEmpty) {
+        // Los deberes que el alumno ya ha tachado en su copia no se destachan
+        // al volver a escribirla.
+        try {
+          final suya = (await doc.get()).data();
+          final hechas = {for (final t in Tarea.listaDeJson(suya?['tareas'])) if (t.hecha) t.id: t};
+          if (hechas.isNotEmpty) copia = s.copyWith(tareas: [for (final t in s.tareas) hechas[t.id] == null || t.hecha ? t : t.copyWith(hecha: true, hechaEn: hechas[t.id]!.hechaEn)]);
+        } catch (_) {}
+      }
+      await doc.set(copiaParaAlumno(copia));
       await _anotarCopia(s.id, null);
       return EstadoCopia.enviada;
     } on FirebaseException catch (e) {

@@ -25,6 +25,7 @@ import '../plan/cantes_util.dart';
 import '../plan/modalidad.dart';
 import '../plan/resultado_sheet.dart';
 import '../temario/esquema_tema.dart';
+import 'deberes.dart';
 import 'alumno_page.dart';
 import 'calendario_google_tarjeta.dart';
 import 'coordinacion.dart';
@@ -149,7 +150,27 @@ class SesionPage extends ConsumerWidget {
         esquemas: esquemasDe(ref, [...temas, ...?r?.temasCantados.map((t) => temario?.tema(t))]),
         criterios: ref.read(perfilPreparadorProvider).rubrica,
       );
-      if (res != null) await notifier.guardar(s.copyWith(estado: EstadoCante.hecho, resultado: res));
+      if (res == null) return;
+      await notifier.guardar(s.copyWith(estado: EstadoCante.hecho, resultado: res));
+      // ¿Deberes para la siguiente clase con este alumno (si ya está programada)?
+      final siguiente = ref.read(sesionesProvider).where((x) => x.alumno == s.alumno && x.id != s.id && x.pendiente && !x.borrado && x.fecha.isAfter(s.fecha)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
+      if (siguiente.isEmpty || !context.mounted) return;
+      final dejar = await showDialog<bool>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: const Text('¿Deberes para la siguiente clase?'),
+          content: Text('La del ${fechaCorta(siguiente.first.fecha)}${alumno == null ? '' : ' con ${alumno.nombre}'}. Los verá en su app y se tachan solos al hacerlos.'),
+          actions: [TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Ahora no')), FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Dejar deberes'))],
+        ),
+      );
+      if (dejar != true || !context.mounted) return;
+      final tareas = await editarDeberes(context, clase: siguiente.first, bolsa: temas, temario: temario);
+      if (tareas != null) await notifier.guardar(siguiente.first.copyWith(tareas: tareas));
+    }
+
+    Future<void> deberes() async {
+      final tareas = await editarDeberes(context, clase: s, bolsa: temas, temario: temario);
+      if (tareas != null) await notifier.guardar(s.copyWith(tareas: tareas));
     }
 
     // Lista de control mientras escucha: los temas que se están cantando (los
@@ -425,6 +446,17 @@ class SesionPage extends ConsumerWidget {
               )
             else
               TarjetaRelojAlumno(claseId: s.id, onAbrir: () => cantar()),
+          ],
+          // Deberes para esta clase (los pone el preparador; el alumno los tacha).
+          if (s.pendiente || s.tareas.isNotEmpty) ...[
+            TituloSeccion(
+              s.tareas.isEmpty ? 'Deberes para esta clase' : 'Deberes: ${resumenDeberes(s)}',
+              accion: s.pendiente ? TextButton.icon(onPressed: deberes, icon: Icon(s.tareas.isEmpty ? Icons.add : Icons.edit_outlined, size: 18), label: Text(s.tareas.isEmpty ? 'Dejar' : 'Cambiar')) : null,
+            ),
+            if (s.tareas.isEmpty)
+              Text('Estudiar un tema, su esquema a ciegas, cantarlo por su cuenta, un test o lo que quieras. ${conUid ? 'Los ve en Hoy y en la clase, y se tachan solos al hacerlos.' : 'Sin la app, van en el mensaje de los temas y en el informe.'}', style: context.textos.labelSmall)
+            else
+              Tarjeta(child: ListaDeberes(clase: s)),
           ],
           // Lo principal de la clase: mandarle los temas antes.
           if (!dictamen && s.pendiente && (s.mandaTema || s.fecha.isAfter(ahora))) ...[

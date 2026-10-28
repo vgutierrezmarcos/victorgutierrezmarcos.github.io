@@ -27,6 +27,7 @@ import 'cantes_util.dart';
 import 'modalidad.dart';
 import 'resultado_sheet.dart';
 import '../temario/esquema_tema.dart';
+import '../preparador/deberes.dart';
 import '../mas/ayuda_videos.dart';
 
 /// Detalle de un cante: cuenta atrás, temas que entran, apuntes pendientes
@@ -359,6 +360,17 @@ class CantePage extends ConsumerWidget {
                 if (r.comentarios.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(r.comentarios, style: context.textos.bodyMedium)),
                 if (r.sorteados.length > 1) Padding(padding: const EdgeInsets.only(top: 8), child: Text('Salieron: ${r.sorteados.join(', ')}', style: context.textos.labelSmall)),
               ]),
+            ),
+          ],
+          // Deberes que deja el preparador para esta clase.
+          if (c.dePreparador && c.tareas.isNotEmpty) ...[
+            TituloSeccion('Deberes para esta clase · ${resumenDeberes(c)}'),
+            Tarjeta(
+              color: c.tareasHechas == c.tareas.length ? null : context.colores.primarioPalido,
+              child: ListaDeberes(
+                clase: c,
+                onTachar: (t, v) => notifier.guardar(c.copyWith(tareas: [for (final x in c.tareas) x.id == t.id ? x.copyWith(hecha: v, hechaEn: v ? DateTime.now() : null, borrarHechaEn: !v) : x])),
+              ),
             ),
           ],
           if (conApuntes.isNotEmpty) ...[

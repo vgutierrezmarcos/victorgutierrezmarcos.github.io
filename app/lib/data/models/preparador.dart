@@ -481,6 +481,7 @@ String informeCante(Cante c, {String? alumno, String Function(String codigo)? ti
     if ((r?.segundos ?? 0) > 0) 'Tiempo: ${r!.segundos ~/ 60}:${dos(r.segundos % 60)} (previsto: ${c.minutos} min)',
     if (r?.textoCoberturaTotal case final cob?) 'Apartados tocados: $cob',
     if (r != null && r.criterios.isNotEmpty) r.textoCriterios(separador: '\n'),
+    if (c.tareas.isNotEmpty) 'Deberes: ${c.tareas.map((t) => '${t.hecha ? '✓ ' : ''}${t.etiqueta(tituloDe: tituloDe)}').join('; ')}',
     if (r != null && r.sorteados.length > 1) 'Salieron en el sorteo: ${r.sorteados.join(', ')}',
     if (r != null && r.comentarios.isNotEmpty) ...['', r.comentarios],
   ];

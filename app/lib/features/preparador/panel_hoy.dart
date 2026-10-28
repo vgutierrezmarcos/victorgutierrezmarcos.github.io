@@ -12,6 +12,8 @@ import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
 import '../temario/abrir_tema.dart';
 import 'red_widgets.dart';
+import 'deberes.dart';
+import 'sesion_page.dart';
 import 'semana_page.dart';
 import 'sustituciones.dart';
 import 'verificacion_page.dart';
@@ -108,6 +110,15 @@ class PanelPreparadorHoy extends ConsumerWidget {
               () => ir(const SemanaPage()),
               detalle: [for (final s in hoy) '${horaDe(s.fecha)} ${nombres[s.alumno] ?? ''}'.trim()].join(' · '),
             ),
+          // Lo que traen hecho de los deberes de las clases de hoy.
+          for (final s in hoy)
+            if (s.tareas.isNotEmpty)
+              fila(
+                Icons.checklist,
+                '${nombres[s.alumno] ?? 'Tu alumno'} trae ${resumenDeberes(s)}',
+                () => ir(SesionPage(id: s.id)),
+                detalle: s.tareas.where((t) => !t.hecha).isEmpty ? 'Todo hecho' : 'Sin hacer: ${s.tareas.where((t) => !t.hecha).map((t) => t.etiqueta()).join(' · ')}',
+              ),
           for (final s in teCantan)
             for (final t in s.temasMandados)
               if (temario?.tema(t) != null)
