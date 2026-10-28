@@ -37,8 +37,11 @@ Lo genera la app en Más → Prepara con Claude → «Exportar mis datos para Cl
   "cronograma": {"ejercicio": 3, "inicio": "2026-10-05", "temasPorSemana": 3, "diaCante": 6, "fin": "2027-05-29",
     "semanas": [{"lunes": "2026-10-05", "temas": ["3.A.8", "3.A.9", "3.B.1"]}, {"lunes": "2026-10-12", "descanso": true}],
     "hechos": {"3.A.8": "2026-10-10"}, "fases": [{"tipo": "vuelta", "inicio": "…", "fin": "…"}]},
-  "cantes": [{"fecha": "2026-10-10", "ejercicio": 3, "temas": ["3.A.8", "3.B.1"], "exposicion": 30,
-    "resultado": {"temaCantado": "3.A.8", "segundos": 1781, "valoracion": 3, "valoraciones": {"3.A.8": 3}, "comentarios": "Bien la intro; me perdí en Slutsky cruzado", "descartados": ["3.A.11"]}}],
+  "cantes": [{"fecha": "2026-10-10", "ejercicio": 3, "temas": ["3.A.8", "3.B.1"], "exposicion": 30, "esquema": false,
+    "resultado": {"temaCantado": "3.A.8", "segundos": 1781, "valoracion": 3, "valoraciones": {"3.A.8": 3}, "comentarios": "Bien la intro; me perdí en Slutsky cruzado", "descartados": ["3.A.11"],
+      "criterios": {"Esquema": 4, "Rigor": 2, "Tiempo": 3}, "cubiertos": {"3.A.8": ["Introducción", "I.1 Ingredientes"]}, "apartados": {"3.A.8": 19}}},
+   {"fecha": "2026-10-12", "ejercicio": 3, "temas": ["3.A.9"], "esquema": true, "resultado": {"temaCantado": "3.A.9", "valoracion": 4, "comentarios": "esquema a ciegas"}}],
+  "racha": {"dias": 12, "enJuego": true}, "deberes": [{"clase": "2026-11-06", "texto": "Esquema a ciegas del 3.A.9", "hecha": false}],
   "tests": [{"fecha": "2026-10-28", "tipo": "test", "notaSobre10": 6.4, "correctas": 48, "incorrectas": 19, "sinResponder": 8, "totalPreguntas": 75, "tiempoSeconds": 6900,
     "porTema": {"3.A.8": {"correctas": 3, "incorrectas": 2}, "3.B.4": {"correctas": 1, "incorrectas": 3}}}],
   "leitner": {"porCaja": {"1": 40, "2": 85, "3": 120, "4": 60, "5": 30}, "vencidas": 23, "temasConMasFallos": ["3.B.4", "3.A.19"]},
@@ -46,7 +49,7 @@ Lo genera la app en Más → Prepara con Claude → «Exportar mis datos para Cl
 }
 ```
 
-Claves: `examen.fechas` va por número de ejercicio; `cronograma.diaCante` es 1 (lunes) a 7 (domingo); `cantes[].resultado.valoracion` y `valoraciones` van de 1 a 5 (5 = lo cantaría así en el examen; 3 = regular; 1 = mal); `tests[].tipo` es `test` (simulacro completo), `diario` (reto del día) o `repaso` (Leitner); `leitner.porCaja` cuenta preguntas por caja de repetición espaciada (la 1 son las que más falla). Todo lo que falte, pregúntalo solo si lo necesitas de verdad.
+Claves: `esquema: true` marca un esquema a ciegas (no un cante completo); `criterios`, `cubiertos` y `apartados` solo aparecen si el opositor usa la rúbrica y la lista de control; `racha` y `deberes` solo si los tiene activados; `examen.fechas` va por número de ejercicio; `cronograma.diaCante` es 1 (lunes) a 7 (domingo); `cantes[].resultado.valoracion` y `valoraciones` van de 1 a 5 (5 = lo cantaría así en el examen; 3 = regular; 1 = mal); `tests[].tipo` es `test` (simulacro completo), `diario` (reto del día) o `repaso` (Leitner); `leitner.porCaja` cuenta preguntas por caja de repetición espaciada (la 1 son las que más falla). Todo lo que falte, pregúntalo solo si lo necesitas de verdad.
 
 Si el opositor sube en su lugar **`oposicion_<id>_datos.json`** (la exportación completa de Más → Cuenta, pensada para la portabilidad de datos), el contenido equivalente está en `resultados[]` (cada test, con `respuestas` por pregunta y `temas`), `leitner.questions` (por pregunta: `box`, `timesCorrect`, `timesFailed`), `ajustes` (`fechaConvocatoria`, `temasEstudiados`, `temasEnRepaso`), `notas` (por tema), `cantes[]` (cada uno con `resultado`), `plan` (`fechas`, `hitos`, `horario`), `agendaTemas` y `cronogramas[]` (el activo es el no `archivado` más reciente). Ignora `preparador`, `alumnos` y `sesiones`: son datos de la red de preparadores y no te hacen falta.
 
@@ -65,6 +68,8 @@ Comentarios: Intro completa y buen ritmo. Error de signo en el efecto sustituci�
 Antes del próximo cante: 1) reescribir II.2 con la ecuación de Slutsky en la pizarra; 2) cronometrar la intro a 2′30″; 3) tres preguntas de tribunal sobre preferencia revelada.
 ```
 
+- **Criterios** (solo si el opositor tiene activada la rúbrica en la app; el JSON lo dice en `ajustes.rubrica` o se lo preguntas): una nota de 1 a 5 por criterio, por defecto Esquema, Rigor, Tiempo, Exposición y Actualidad, en una línea: `Criterios: Esquema 4 · Rigor 2 · Tiempo 1 · Exposición 3 · Actualidad 2`.
+- **Apartados**: los apartados del esquema del tema que ha tocado, como la lista de control de la app: `Apartados: 12/19 · faltan: I.3 Demanda de mercado, II.2 Precio cruzado, …`.
 - **Valoración** de 1 a 5, con este criterio: **5** lo cantaría así en el examen; **4** cantable con uno o dos retoques; **3** estructura bien y dos o tres errores o huecos que hay que arreglar; **2** errores de fondo o reparto del tiempo muy desviado; **1** sin estructura, sin tiempo o con errores graves de contenido. Si cantó dos temas, una por tema y la general.
 - **Comentarios**: hasta 300 caracteres, los que el opositor pegará en la app. Lo más importante primero.
 - **Tres tareas** concretas para antes del próximo cante.
