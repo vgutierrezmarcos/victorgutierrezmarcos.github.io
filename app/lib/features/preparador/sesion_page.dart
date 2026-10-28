@@ -402,7 +402,7 @@ class SesionPage extends ConsumerWidget {
           // Lo principal de la clase: mandarle los temas antes.
           if (!dictamen && s.pendiente && (s.mandaTema || s.fecha.isAfter(ahora))) ...[
             const TituloSeccion('Temas antes de la clase'),
-            if (s.sustitucion != null && !conUid) _RecuperarClaseSuelta(id: s.id) else SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid),
+            if (s.sustitucion != null && !conUid) _RecuperarClaseSuelta(id: s.id) else SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid, telefono: alumno?.telefono ?? ''),
             if (temas.isEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
             if (mandadosQueNoQuiere.isNotEmpty)
               Padding(

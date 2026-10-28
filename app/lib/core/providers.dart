@@ -911,9 +911,11 @@ class SesionesNotifier extends Notifier<List<Cante>> {
   /// Recordatorios de las próximas clases (si es preparador en esta oposición).
   Future<void> reprogramarAvisos() async {
     final perfil = ref.read(perfilPreparadorProvider);
-    final alumnos = {for (final a in ref.read(preparadorRepoProvider).alumnos()) a.id: a.nombre};
+    final lista = ref.read(preparadorRepoProvider).alumnos();
+    final alumnos = {for (final a in lista) a.id: a.nombre};
+    final sinApp = {for (final a in lista) if (!a.enlazado) a.id};
     try {
-      await Notificaciones.programarClases(perfil.activo ? state : const [], alumno: (c) => alumnos[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase);
+      await Notificaciones.programarClases(perfil.activo ? state : const [], alumno: (c) => alumnos[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase, sinApp: (c) => sinApp.contains(c.alumno));
     } catch (_) {}
   }
 }

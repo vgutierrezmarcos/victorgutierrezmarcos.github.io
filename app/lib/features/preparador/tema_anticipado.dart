@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import 'package:flutter/services.dart';
+
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../data/models/coordinacion.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
+import '../../data/models/red.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -12,6 +17,17 @@ import '../cantar/sorteo.dart';
 import '../plan/cantes_util.dart';
 import '../temario/abrir_tema.dart';
 import '../mas/ayuda_videos.dart';
+
+/// Mensaje con los temas de la clase para un alumno sin la app: el preparador
+/// se lo manda por WhatsApp (o lo copia) a la hora programada, con el tiempo
+/// de esquema del examen para esos temas.
+String mensajeTemasClase(Cante s, {String? Function(String codigo)? titulo}) {
+  final n = s.temasMandados.length;
+  final seg = Oposiciones.actual.ejercicio(s.ejercicio)?.segundosEsquemaPara(n) ?? 0;
+  final lineas = [for (final t in s.temasMandados) '· $t${(titulo?.call(t) ?? '').isEmpty ? '' : ' ${titulo!(t)}'}'];
+  return 'Para la clase del ${cuandoTema(s.fecha)}, ${n == 1 ? 'el tema es' : 'los temas son'}:\n${lineas.join('\n')}'
+      '${seg > 0 ? '\n\nTienes ${textoAntelacion(seg)} de esquema desde ahora, como en el examen.' : ''}';
+}
 
 /// Antelaciones que se ofrecen para mandar el tema, en segundos antes de la
 /// clase: el tiempo de esquema de un tema (22'30"), de dos (45 min) o una hora.
@@ -79,22 +95,25 @@ String parteDeTema(Tema t) => t.codigo.split('.').take(2).join('.');
 
 /// Abre la hoja para mandar los temas de la clase [s] (elegidos o a suerte,
 /// a una hora). Devuelve la clase con el envío programado, o null.
-Future<Cante?> elegirTemasAnticipados(BuildContext context, {required Cante sesion, required List<Tema> temas}) => showModalBottomSheet<Cante>(
+Future<Cante?> elegirTemasAnticipados(BuildContext context, {required Cante sesion, required List<Tema> temas, bool enlazado = true}) => showModalBottomSheet<Cante>(
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
-      builder: (_) => _HojaTemaAnticipado(sesion: sesion, temas: temas),
+      builder: (_) => _HojaTemaAnticipado(sesion: sesion, temas: temas, enlazado: enlazado),
     );
 
 /// Ficha de la clase (preparador): mandar al alumno los temas antes de la
 /// clase para que haga el esquema y los practique. Elegidos o sacados a
 /// suerte entre los de la clase (uno o dos); a una hora fija o con cierta
-/// antelación.
+/// antelación. Con la app enlazada le llegan solos a esa hora; sin ella
+/// ([enlazado] falso: alumno apuntado a mano), a esa hora se avisa al
+/// preparador para que se los mande por WhatsApp ([telefono]) o los copie.
 class SeccionTemaAnticipado extends ConsumerWidget {
-  const SeccionTemaAnticipado({super.key, required this.sesion, required this.temas, required this.enlazado});
+  const SeccionTemaAnticipado({super.key, required this.sesion, required this.temas, required this.enlazado, this.telefono = ''});
   final Cante sesion;
   final List<Tema> temas;
   final bool enlazado;
+  final String telefono;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -105,13 +124,10 @@ class SeccionTemaAnticipado extends ConsumerWidget {
     final ahora = DateTime.now();
 
     Future<void> elegir() async {
-      final r = await elegirTemasAnticipados(context, sesion: s, temas: temas);
+      final r = await elegirTemasAnticipados(context, sesion: s, temas: temas, enlazado: enlazado);
       if (r != null) await notifier.guardar(r);
     }
 
-    if (!enlazado) {
-      return Text('Cuando el alumno enlace su app (o si es una clase suelta pedida desde la app), podrás mandarle los temas antes de la clase para que haga el esquema. Si ya la tiene y sale duplicado, une las dos fichas desde la suya.', style: context.textos.labelSmall);
-    }
     if (!s.mandaTema) {
       return Tarjeta(
         padding: const EdgeInsets.fromLTRB(14, 10, 10, 10),
@@ -123,7 +139,11 @@ class SeccionTemaAnticipado extends ConsumerWidget {
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Mandarle ${s.numTemas == 1 ? 'un tema' : 'los temas'} antes', style: context.textos.titleSmall),
               Text(
-                temas.isEmpty ? 'Primero elige los temas que entran en la clase.' : 'Elegidos por ti o a suerte. Le llegan como un mensaje tuyo, a la hora que elijas, para que haga el esquema.',
+                temas.isEmpty
+                    ? 'Primero ${enlazado ? 'elige' : 'apunta en su ficha'} los temas que ${enlazado ? 'entran en la clase' : 'lleva'}.'
+                    : enlazado
+                        ? 'Elegidos por ti o a suerte. Le llegan como un mensaje tuyo, a la hora que elijas, para que haga el esquema.'
+                        : 'Elegidos por ti o a suerte. A la hora que elijas te avisaremos para que se los mandes por WhatsApp (no tiene la app).',
                 style: context.textos.labelSmall,
               ),
             ]),
@@ -135,6 +155,9 @@ class SeccionTemaAnticipado extends ConsumerWidget {
     final llegado = !s.temaA!.isAfter(ahora);
     final oculto = s.temaSorteado && !llegado;
     final n = s.temasMandados.length;
+    // Sin la app: el mensaje se lo manda el preparador (WhatsApp o copiar).
+    final mensaje = enlazado || oculto ? null : mensajeTemasClase(s, titulo: (t) => temario?.tema(t)?.titulo);
+    final whatsapp = mensaje == null ? null : enlaceWhatsApp(telefono, mensaje);
     return Tarjeta(
       color: context.colores.primarioPalido,
       padding: const EdgeInsets.fromLTRB(14, 10, 6, 10),
@@ -143,7 +166,12 @@ class SeccionTemaAnticipado extends ConsumerWidget {
         const SizedBox(width: 12),
         Expanded(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(llegado ? '${n == 1 ? 'Tema enviado' : 'Temas enviados'} ${cuandoTema(s.temaA!)}' : 'Se le ${n == 1 ? 'manda' : 'mandan'} ${cuandoTema(s.temaA!)}', style: context.textos.titleSmall),
+            Text(
+              enlazado
+                  ? (llegado ? '${n == 1 ? 'Tema enviado' : 'Temas enviados'} ${cuandoTema(s.temaA!)}' : 'Se le ${n == 1 ? 'manda' : 'mandan'} ${cuandoTema(s.temaA!)}')
+                  : (llegado ? 'Toca mandárselos: ${n == 1 ? 'el tema' : 'los temas'} de la clase' : 'Se ${n == 1 ? 'lo' : 'los'} mandas tú ${cuandoTema(s.temaA!)}'),
+              style: context.textos.titleSmall,
+            ),
             const SizedBox(height: 2),
             if (oculto)
               Text(n == 1 ? 'Bola sorteada: ni tú la verás hasta esa hora.' : '$n bolas sorteadas: ni tú las verás hasta esa hora.', style: context.textos.bodySmall)
@@ -161,7 +189,31 @@ class SeccionTemaAnticipado extends ConsumerWidget {
                     ]),
                   ),
                 ),
-            if (!llegado) Text('Hasta entonces el alumno solo sabe a qué hora le ${n == 1 ? 'llegará' : 'llegarán'}.', style: context.textos.labelSmall),
+            if (!llegado && enlazado) Text('Hasta entonces el alumno solo sabe a qué hora le ${n == 1 ? 'llegará' : 'llegarán'}.', style: context.textos.labelSmall),
+            if (!enlazado && !llegado) Text(oculto ? 'A esa hora te avisaremos y verás las bolas para mandárselas.' : 'A esa hora te avisaremos. Si quieres, mándaselos ya.', style: context.textos.labelSmall),
+            if (mensaje != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Wrap(spacing: 6, runSpacing: 4, children: [
+                  if (whatsapp != null)
+                    FilledButton.icon(
+                      style: FilledButton.styleFrom(backgroundColor: const Color(0xFF1F8F4E), visualDensity: VisualDensity.compact),
+                      onPressed: () => abrirUrl(context, whatsapp),
+                      icon: const Icon(Icons.chat_outlined, size: 18),
+                      label: const Text('Enviar por WhatsApp'),
+                    ),
+                  OutlinedButton.icon(
+                    style: OutlinedButton.styleFrom(visualDensity: VisualDensity.compact),
+                    onPressed: () async {
+                      final messenger = ScaffoldMessenger.of(context);
+                      await Clipboard.setData(ClipboardData(text: mensaje));
+                      messenger.mostrar(const SnackBar(content: Text('Mensaje copiado')));
+                    },
+                    icon: const Icon(Icons.copy, size: 18),
+                    label: Text(whatsapp == null ? 'Copiar el mensaje (sin teléfono en su ficha)' : 'Copiar'),
+                  ),
+                ]),
+              ),
           ]),
         ),
         if (!llegado)
@@ -182,9 +234,10 @@ class SeccionTemaAnticipado extends ConsumerWidget {
 }
 
 class _HojaTemaAnticipado extends ConsumerStatefulWidget {
-  const _HojaTemaAnticipado({required this.sesion, required this.temas});
+  const _HojaTemaAnticipado({required this.sesion, required this.temas, required this.enlazado});
   final Cante sesion;
   final List<Tema> temas;
+  final bool enlazado;
   @override
   ConsumerState<_HojaTemaAnticipado> createState() => _HojaTemaAnticipadoState();
 }
@@ -286,7 +339,12 @@ class _HojaTemaAnticipadoState extends ConsumerState<_HojaTemaAnticipado> {
               const BotonVideoAyuda('programar-clase'),
             ]),
             const SizedBox(height: 4),
-            Text('Le llegan como un mensaje tuyo con el número y el título de cada tema, para que haga el esquema y los practique. Antes de esa hora no puede verlos.', style: context.textos.bodySmall),
+            Text(
+              widget.enlazado
+                  ? 'Le llegan como un mensaje tuyo con el número y el título de cada tema, para que haga el esquema y los practique. Antes de esa hora no puede verlos.'
+                  : 'Este alumno no tiene la app: a la hora que elijas te avisaremos y, desde la ficha de la clase, se los mandas por WhatsApp con un toque (con el tiempo de esquema del examen).',
+              style: context.textos.bodySmall,
+            ),
             const TituloSeccion('¿Cuántos temas?'),
             SegmentedButton<int>(
               showSelectedIcon: false,
