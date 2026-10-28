@@ -28,6 +28,7 @@ Antes de nada, lee `LICENCIA.md`: el material de `references/temas`, `references
 | Pregunta qué le toca hoy o esta semana | `references/agentes/hoy.md` | El plan del día con el cronograma, los repasos y las dudas pendientes |
 | Manda sus propios apuntes para resumirlos o hacer una ficha | `references/agentes/ficha-propia.md` | La ficha de repaso con el formato del temario |
 | Pregunta cómo va, qué tal sus tests o sus cantes | `references/agentes/estadisticas.md` | La lectura de sus datos con recomendaciones |
+| Pide crear u ordenar su carpeta de la oposición en el ordenador, o trabajar con Claude desde sus ficheros | `references/carpeta-oposicion.md` | La estructura por ejercicios; con acceso a ficheros, ejecuta `scripts/carpeta-oposicion.py` |
 
 Para cualquier trabajo sobre un cante, lee también `references/como-se-canta.md` (cómo se canta un tema de 30 minutos y qué valora el tribunal).
 

@@ -24,4 +24,4 @@
 | 3.A.24 (3A24) | Economía del bienestar (III). Las funciones de bienestar social. Teoría de la elección colectiva. El teorema de imposibilidad de Arrow y desarrollos posteriores. | no | no | sí | 2026-10-23 | 781f131 |
 | Dictamen (1D01) | Guía para el dictamen de coyuntura económica | sí (resumen) | sí | sí (guía) | 2026-10-26 | 8f36bf3 |
 
-Manifiesto de la rama revision-temario: commit 0b5c4b16ba (generado el 2026-10-28T12:06); skill construida el 2026-10-28 12:45.
+Manifiesto de la rama revision-temario: commit 14e6938281 (generado el 2026-10-28T13:37); skill construida el 2026-10-28 16:11.
