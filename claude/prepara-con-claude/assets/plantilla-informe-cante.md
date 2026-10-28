@@ -55,4 +55,4 @@ Valoración: …/5
 Comentarios: … (≤ 300 caracteres)
 Antes del próximo cante: 1) … 2) … 3) …
 
-*Este informe lo ha redactado una IA con el temario de victorgutierrezmarcos.es y tus propios datos. Orienta, pero no sustituye la preparación con un preparador que haya pasado por la oposición: contrasta con él lo que te sorprenda y, en caso de duda, manda su criterio.*
+*Este informe lo ha redactado una IA con el temario de victorgutierrezmarcos.es y tus propios datos. No sustituye a un preparador para la oposición: lo complementa. Contrasta con él lo que te sorprenda y, en caso de duda, manda su criterio.*

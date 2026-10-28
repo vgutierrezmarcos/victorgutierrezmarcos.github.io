@@ -36,7 +36,7 @@ Para cualquier trabajo sobre un cante, lee también `references/como-se-canta.md
 - `references/temas/INDICE.md` y `references/temas/<T>/`: los temas **revisados** (ficha de repaso de cuatro páginas con el esquema del cante y sus minutos, guion del cante cuando existe y el texto íntegro del tema). Son la referencia para corregir: lo que dice el tema manda sobre lo que recuerdes.
 - `references/dictamen/`: la guía del dictamen de coyuntura (1D01), su resumen, un examen de ejemplo de España y su solución.
 - `references/canon/`: la notación común del temario y qué modelo se estudia en qué tema (`modelos-indice.md`).
-- `assets/`: la plantilla del informe del cante y un cronograma de ejemplo en el formato que lee la app.
+- `assets/`: la plantilla del informe del cante, un cronograma de ejemplo en el formato que lee la app y las fuentes de los PDF. `scripts/informe-pdf.py` convierte un informe en PDF con la estética de la oposición. `references/carpeta-oposicion.md` explica cómo ordenar los ficheros de la oposición en el ordenador y trabajar con Claude desde ahí.
 
 Si el tema no está en `temas/INDICE.md`, dilo en una línea («este tema aún no está revisado; corrijo con el índice del temario y conocimiento general») y sigue: el índice de `indices-temas.md`, las conexiones y tu propio conocimiento bastan para un informe útil. Nunca te niegues a corregir por falta de material.
 
@@ -55,8 +55,9 @@ Si el tema no está en `temas/INDICE.md`, dilo en una línea («este tema aún n
 ## Cómo termina toda entrega
 
 1. Cuando haya algo que apuntar en la app (valoración de un cante, comentarios, cronograma, temas que marcar), el bloque **«Para la app»** con el formato de `references/datos-app.md`.
-2. Siempre, este aviso en cursiva, sin cambiarlo:
+2. **Los informes se entregan también en PDF**, con la estética de la oposición del opositor (TCEE: morado, filete dorado y letra Pagella; DCE: granate, azul y Latin Modern). Cuando el informe esté terminado (cante, dictamen, escrito, cronograma, «cómo voy», ficha de repaso), guárdalo como `.md` y ejecuta `python3 scripts/informe-pdf.py informe.md --oposicion tcee` (o `dce`) desde la carpeta de esta skill; entrega el PDF (y el Markdown, por si quiere editarlo). Si el entorno no puede ejecutar código, entrega el Markdown y dilo en una línea. Para una respuesta corta (una duda, una pregunta del simulacro) no hace falta PDF.
+3. Siempre, este aviso en cursiva, sin cambiarlo:
 
-> *Este informe lo ha redactado una IA con el temario de victorgutierrezmarcos.es y tus propios datos. Orienta, pero no sustituye la preparación con un preparador que haya pasado por la oposición: contrasta con él lo que te sorprenda y, en caso de duda, manda su criterio.*
+> *Este informe lo ha redactado una IA con el temario de victorgutierrezmarcos.es y tus propios datos. No sustituye a un preparador para la oposición: lo complementa. Contrasta con él lo que te sorprenda y, en caso de duda, manda su criterio.*
 
-Si el opositor pregunta por la skill misma: hace falta una cuenta de Claude.ai de pago (plan Pro, unos 20 € al mes; también Max o Team), que es lo que permite subir skills; la skill y el material son gratuitos y Víctor no tiene relación con Anthropic ni cobra nada por ello. La skill se descarga desde la app (Más → Prepara con Claude) o desde victorgutierrezmarcos.es/oposicion/prepara-con-claude.html, donde está el vídeo de cómo usarla.
+Si el opositor pregunta por la skill misma: hace falta una cuenta de Claude.ai de pago (plan Pro, unos 20 € al mes; también Max o Team), que es lo que permite subir skills; la skill y el material son gratuitos. La skill se descarga desde la app (Más → Prepara con Claude) o desde victorgutierrezmarcos.es/oposicion/prepara-con-claude.html, donde está el vídeo de cómo usarla. Si pregunta cómo organizar sus ficheros o cómo trabajar con Claude desde su ordenador (Claude Desktop, Claude Code, un Proyecto de Claude.ai), lee `references/carpeta-oposicion.md`.
