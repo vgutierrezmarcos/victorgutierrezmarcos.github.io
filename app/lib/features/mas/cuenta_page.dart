@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
@@ -67,6 +68,9 @@ class CuentaPage extends ConsumerWidget {
                   Text(usuario.displayName ?? '', style: context.textos.titleMedium),
                   Text(usuario.email ?? '', style: context.textos.bodySmall),
                   if (pendientes > 0) Text('$pendientes resultados pendientes de subir', style: context.textos.labelSmall?.copyWith(color: context.colores.dorado)),
+                  if (((Hive.box(Cajas.app).get(claveSesionesRecuperadas) as int?) ?? 0) > 0)
+                    // Para saber si en este móvil la sesión se pierde al cerrar la app (y que la recuperación funciona).
+                    Text('La sesión se había perdido al cerrar la app y se recuperó sola ${Hive.box(Cajas.app).get(claveSesionesRecuperadas)} ${Hive.box(Cajas.app).get(claveSesionesRecuperadas) == 1 ? 'vez' : 'veces'}${sesionRecuperada ? ', también en este arranque' : ''}.', style: context.textos.labelSmall),
                 ])),
               ]),
             ),

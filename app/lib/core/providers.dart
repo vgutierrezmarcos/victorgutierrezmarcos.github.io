@@ -52,6 +52,37 @@ import 'temas_anticipados.dart';
 /// Lo pone `main()` y lo enseñan Más → Cuenta y la sección del preparador.
 String? errorFirebase;
 
+/// En este arranque la sesión de Firebase se había perdido y se recuperó
+/// sola con la cuenta de Google del móvil (ver [recuperarSesion]).
+bool sesionRecuperada = false;
+
+/// Al arrancar en el móvil sin sesión de Firebase pero con la cuenta de Google
+/// todavía elegida en los servicios de Google Play: vuelve a entrar sin
+/// preguntar. «Cerrar sesión» cierra también la de Google, así que quien salió
+/// a propósito no vuelve a entrar solo; esto cubre los móviles en los que la
+/// sesión guardada desaparece al cerrar la app del todo (visto en un Galaxy
+/// S24 con la 1.20.5, 28 oct. 2026). Cuenta las veces en la caja `app` para
+/// enseñarlo en Más → Cuenta. Devuelve si ha recuperado la sesión.
+Future<bool> recuperarSesion() async {
+  if (kIsWeb) return false;
+  final auth = FirebaseAuth.instance;
+  if (auth.currentUser != null) return false;
+  try {
+    final google = await GoogleSignIn(scopes: const ['email']).signInSilently().timeout(const Duration(seconds: 8));
+    if (google == null) return false;
+    final a = await google.authentication;
+    if (a.idToken == null && a.accessToken == null) return false;
+    await auth.signInWithCredential(GoogleAuthProvider.credential(idToken: a.idToken, accessToken: a.idToken == null ? a.accessToken : null));
+    sesionRecuperada = true;
+    final caja = Hive.box(Cajas.app);
+    await caja.put(claveSesionesRecuperadas, ((caja.get(claveSesionesRecuperadas) as int?) ?? 0) + 1);
+    return true;
+  } catch (e) {
+    debugPrint('No se pudo recuperar la sesión: $e');
+    return false;
+  }
+}
+
 class Servicios {
   const Servicios({
     required this.oposicion,
