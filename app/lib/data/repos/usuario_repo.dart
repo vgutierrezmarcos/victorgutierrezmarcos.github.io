@@ -25,6 +25,10 @@ class Ajustes {
     this.temasClases = const {},
     this.estadisticas,
     this.calendarioGoogle = false,
+    this.racha = false,
+    this.temaFrio = false,
+    this.mejorRacha = 0,
+    this.rachaCongelaciones = const [],
     this.updatedAt,
   });
 
@@ -49,6 +53,14 @@ class Ajustes {
   /// «Mis cantes en Google Calendar»: el opositor lleva sus cantes y las
   /// clases con su preparador a su propio calendario (solo en Android).
   final bool calendarioGoogle;
+  /// Racha de días con actividad en Hoy (la activa el opositor).
+  final bool racha;
+  /// En Hoy, el tema estudiado que lleva más tiempo sin repasar (lo activa el opositor).
+  final bool temaFrio;
+  final int mejorRacha;
+  /// Días en que la racha está congelada (descansos), como «desde|hasta» en
+  /// claves de día (ver features/inicio/racha.dart).
+  final List<String> rachaCongelaciones;
   final DateTime? updatedAt;
 
   Ajustes copyWith({
@@ -64,6 +76,10 @@ class Ajustes {
     Map<String, TemasClase>? temasClases,
     bool? estadisticas,
     bool? calendarioGoogle,
+    bool? racha,
+    bool? temaFrio,
+    int? mejorRacha,
+    List<String>? rachaCongelaciones,
     DateTime? updatedAt,
   }) =>
       Ajustes(
@@ -77,6 +93,10 @@ class Ajustes {
         temasClases: temasClases ?? this.temasClases,
         estadisticas: estadisticas ?? this.estadisticas,
         calendarioGoogle: calendarioGoogle ?? this.calendarioGoogle,
+        racha: racha ?? this.racha,
+        temaFrio: temaFrio ?? this.temaFrio,
+        mejorRacha: mejorRacha ?? this.mejorRacha,
+        rachaCongelaciones: rachaCongelaciones ?? this.rachaCongelaciones,
         updatedAt: updatedAt ?? DateTime.now(),
       );
 
@@ -93,6 +113,10 @@ class Ajustes {
         'temasClases': TemasClase.aLista(temasClases),
         'estadisticas': estadisticas,
         'calendarioGoogle': calendarioGoogle,
+        'racha': racha,
+        'temaFrio': temaFrio,
+        'mejorRacha': mejorRacha,
+        'rachaCongelaciones': rachaCongelaciones,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -126,6 +150,10 @@ class Ajustes {
       temasClases: TemasClase.deLista(j['temasClases']),
       estadisticas: j['estadisticas'] as bool?,
       calendarioGoogle: j['calendarioGoogle'] == true,
+      racha: j['racha'] == true,
+      temaFrio: j['temaFrio'] == true,
+      mejorRacha: (j['mejorRacha'] as num?)?.toInt() ?? 0,
+      rachaCongelaciones: ((j['rachaCongelaciones'] as List?) ?? []).map((e) => e.toString()).toList(),
       updatedAt: f(j['updatedAt'] as String?),
     );
   }
@@ -362,6 +390,8 @@ class UsuarioRepo {
       final fusion = ganador.copyWith(
         temasEstudiados: {...local.temasEstudiados, ...nube.temasEstudiados},
         temasEnRepaso: {...local.temasEnRepaso, ...nube.temasEnRepaso},
+        mejorRacha: local.mejorRacha > nube.mejorRacha ? local.mejorRacha : nube.mejorRacha,
+        rachaCongelaciones: {...local.rachaCongelaciones, ...nube.rachaCongelaciones}.toList()..sort(),
       );
       await _ajustes.put('ajustes', fusion.toJson());
       return fusion;

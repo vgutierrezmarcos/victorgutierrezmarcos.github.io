@@ -1,7 +1,7 @@
 /// Lo que muestra el widget de la pantalla de inicio. Las fechas van en bruto:
 /// los días que faltan y el «hoy»/«mañana» los calcula el propio widget.
 class DatosWidget {
-  const DatosWidget({required this.siglas, this.examen, this.examenNombre = '', this.cante, this.canteTexto = '', this.semana, this.testHecho, this.preparador = false});
+  const DatosWidget({required this.siglas, this.examen, this.examenNombre = '', this.cante, this.canteTexto = '', this.semana, this.testHecho, this.preparador = false, this.racha});
 
   final String siglas;
 
@@ -13,6 +13,8 @@ class DatosWidget {
   /// («con Paula · 3.A.7, 3.B.2» o «Clase con Ana»).
   final DateTime? cante;
   final String canteTexto;
+  /// Días de racha (null si el opositor no la tiene activada).
+  final int? racha;
 
   /// «Esta semana: 2 de 3 temas» (null sin cronograma).
   final String? semana;

@@ -133,15 +133,18 @@ class Notificaciones {
   /// ([hechoHoy]); si no, mañana. No se repite solo: la app lo vuelve a
   /// programar en cada arranque, al sincronizar y al terminar el test, así
   /// que no llega si no hay nada que recordar.
-  static Future<void> programarRecordatorio(int minutosDesdeMedianoche, {bool hechoHoy = false, int pendientesRepaso = 0}) async {
+  static Future<void> programarRecordatorio(int minutosDesdeMedianoche, {bool hechoHoy = false, int pendientesRepaso = 0, int racha = 0}) async {
     if (!disponibles) return;
     await iniciar();
     await _cancelar(_idRecordatorio);
     if (minutosDesdeMedianoche < 0) return;
     // Con preguntas de repaso vencidas (Leitner), el aviso lo dice.
-    final texto = pendientesRepaso > 0
-        ? 'Tus 10 preguntas de hoy te esperan y tienes $pendientesRepaso de repaso. Toca para empezar.'
-        : 'Tus 10 preguntas de hoy te esperan. Toca para empezar.';
+    // Con racha en juego (activada, sin nada hecho hoy y sin congelar), se dice.
+    final texto = racha > 0 && !hechoHoy
+        ? 'No pierdas la racha de $racha ${racha == 1 ? 'día' : 'días'}: el test diario son 15 minutos${pendientesRepaso > 0 ? ' y tienes $pendientesRepaso de repaso' : ''}.'
+        : pendientesRepaso > 0
+            ? 'Tus 10 preguntas de hoy te esperan y tienes $pendientesRepaso de repaso. Toca para empezar.'
+            : 'Tus 10 preguntas de hoy te esperan. Toca para empezar.';
     if (kIsWeb) {
       final ahora = DateTime.now();
       var cuando = DateTime(ahora.year, ahora.month, ahora.day, minutosDesdeMedianoche ~/ 60, minutosDesdeMedianoche % 60);

@@ -17,6 +17,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../data/models/temas_clase.dart';
 import '../features/cronograma/planificador.dart' show compararCodigos;
+import '../features/inicio/racha.dart';
 import '../features/test/motor_test.dart' show TestEnCurso;
 import '../data/models/esquema.dart';
 import '../data/models/estructura.dart';
@@ -463,7 +464,8 @@ Future<void> reprogramarRecordatorio(Ref ref) async {
     final hora = ref.read(usuarioRepoProvider).ajustes().horaRecordatorio;
     final hoy = Ajustes.claveDia(DateTime.now());
     final hecho = ref.read(usuarioRepoProvider).resultadosLocales().any((r) => r.tipo == 'diario' && Ajustes.claveDia(r.timestamp) == hoy);
-    await Notificaciones.programarRecordatorio(hora, hechoHoy: hecho, pendientesRepaso: ref.read(usuarioRepoProvider).leitner().pendientes().length);
+    final racha = ref.read(rachaProvider);
+    await Notificaciones.programarRecordatorio(hora, hechoHoy: hecho, pendientesRepaso: ref.read(usuarioRepoProvider).leitner().pendientes().length, racha: racha != null && racha.enJuego ? racha.dias : 0);
   } catch (_) {}
 }
 
@@ -495,6 +497,15 @@ final leitnerProvider = NotifierProvider<LeitnerNotifier, EstadoLeitner>(Leitner
 /// Test a medias guardado en este dispositivo (para «Continuar el test»).
 /// Se invalida al guardarlo, al terminarlo y al abandonarlo.
 final testEnCursoProvider = Provider<TestEnCurso?>((ref) => ref.watch(usuarioRepoProvider).testEnCurso());
+
+/// Racha de días con actividad (null si el opositor no la tiene activada).
+final rachaProvider = Provider<Racha?>((ref) {
+  final ajustes = ref.watch(ajustesProvider);
+  if (!ajustes.racha) return null;
+  final repo = ref.watch(usuarioRepoProvider);
+  final tests = ref.watch(historialProvider).valueOrNull ?? repo.resultadosLocales();
+  return rachaDe(ajustes, tests: tests, cantes: ref.watch(cantesProvider), vueltas: ref.watch(agendasProvider).values.expand((a) => a.vueltas));
+});
 
 class AjustesNotifier extends Notifier<Ajustes> {
   @override

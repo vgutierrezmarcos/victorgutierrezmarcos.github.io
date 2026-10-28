@@ -351,6 +351,12 @@ Los cuatro de instalación (`instalar-android`, `-iphone`, `-windows`, `-mac`, c
 
 `tool/capturas_ayuda_test.dart` recorre cada vídeo tocando los botones de verdad y guarda, con cada pantalla, dónde se toca (`pasos.json`). Los guiones están en `promo/ayuda/GUIONES.md` y, como datos, en `VIDEOS` del script. Si se añade o cambia un vídeo, hay que tocar los tres sitios a la vez: el script, `videosAyuda` en `ayuda_videos.dart` y la sección `#ayuda` de `index.html`. Con poca memoria, mejor montar los vídeos de uno en uno (`--solo`).
 
+## «Hoy te toca» y la racha
+
+`features/inicio/hoy_te_toca.dart` (`TarjetaHoyTeToca`, la primera tarjeta de Hoy tras «Para empezar»): qué hacer ahora, en orden y con un toque cada línea: el test diario (o «Continuar el test» a medias), el repaso Leitner vencido, los temas de la semana del cronograma que faltan, el tema de la próxima clase o cante (hoy o mañana) para repasarlo, el **tema más frío** (el estudiado que lleva más tiempo sin vuelta ni cante, `datosPorTema` → `ultimo`; solo si el opositor lo activa en Más → Ajustes, `Ajustes.temaFrio`) y, sin cronograma, el tema sugerido por las conexiones (`EstructuraTemario.sugeridos`). Absorbe las tarjetas de test diario, test a medias y repaso que había en Hoy; al preparador le enseña solo esas tres líneas.
+
+**Racha** (`features/inicio/racha.dart`, opcional: `Ajustes.racha`, Más → Ajustes): días seguidos con test terminado, cante hecho o vuelta anotada (`diasActivos`), contados hacia atrás desde hoy (`calcularRacha`; hoy sin nada no rompe mientras no acabe: `enJuego`). **Un día suelto** sin actividad no la rompe (dos seguidos, sí) y se puede **congelar** de 2 a 30 días seguidos (chip de la racha → `congelarRachaDialogo`; rangos «desde|hasta» en `Ajustes.rachaCongelaciones`, que se sincronizan y se unen entre dispositivos): los días congelados ni suman ni rompen; «Descongelar» acorta el rango hasta ayer. La mejor racha se guarda (`mejorRacha`). Sobria: un número, sin insignias. Sale también en el widget de Android (junto al test diario) y en el recordatorio diario cuando está en juego («No pierdas la racha de N días»). Pruebas: `racha_test.dart` y una en `app_test.dart`.
+
 ## El test a partir de tus respuestas
 
 Cada test de la app guarda `respuestas` (id → letra) y, desde el 28 oct. 2026, `marcadas` (la bandera «para revisar»; la web lo ignora), y la app lo explota (`features/test/`):

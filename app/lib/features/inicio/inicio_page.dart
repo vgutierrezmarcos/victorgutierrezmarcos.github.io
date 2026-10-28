@@ -23,8 +23,7 @@ import '../plan/proceso_page.dart';
 import '../plan/cante_page.dart';
 import '../plan/cantes_util.dart';
 import '../preparador/panel_hoy.dart';
-import '../test/config_test_page.dart' show TarjetaTestEnCurso;
-import '../test/motor_test.dart';
+import 'hoy_te_toca.dart';
 
 /// Hoy: lo que toca cada día. Al opositor, cuentas atrás (examen y próximo
 /// cante), test diario, cronograma, repaso pendiente y probabilidad de
@@ -37,9 +36,6 @@ class InicioPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final config = ref.watch(configProvider).valueOrNull;
     final usuario = ref.watch(usuarioActualProvider);
-    final diarioHecho = ref.watch(testDiarioHechoProvider);
-    final banco = ref.watch(preguntasProvider);
-    final leitner = ref.watch(leitnerProvider);
     // Próxima fecha de examen: el primer ejercicio que aún no ha pasado.
     final fechas = ref.watch(fechasEjerciciosProvider).entries.where((e) => diasHasta(e.value) >= 0).toList()..sort((a, b) => a.value.compareTo(b.value));
     final proximo = fechas.firstOrNull;
@@ -152,6 +148,9 @@ class InicioPage extends ConsumerWidget {
             const TarjetaElegirPapel(),
             const TarjetaParaEmpezar(),
             if (!opositor) ...[const PanelPreparadorHoy(), const SizedBox(height: 10)],
+            // Qué hacer ahora (test diario o el que está a medias, repaso, la semana,
+            // el tema de la próxima clase…) y la racha, si la activa.
+            TarjetaHoyTeToca(opositor: opositor),
             // Sin fecha de examen ni cantes no se ven sus tarjetas vacías: esos
             // pasos están en «Para empezar».
             if (opositor && fecha != null) ...[
@@ -180,41 +179,8 @@ class InicioPage extends ConsumerWidget {
               ),
               const SizedBox(height: 12),
             ],
-            // Un test a medias guardado en este dispositivo.
-            const TarjetaTestEnCurso(),
-            Tarjeta(
-              color: diarioHecho ? null : context.colores.primarioPalido,
-              onTap: diarioHecho || banco.value == null
-                  ? null
-                  : () {
-                      final ids = MotorTest.testDiario(banco.value!, DateTime.now()).map((p) => p.id).toList();
-                      context.push('/examen', extra: ConfigTest(idsFijos: ids, minutos: 15, tipo: 'diario'));
-                    },
-              child: Row(children: [
-                Icon(diarioHecho ? Icons.check_circle : Icons.today, color: diarioHecho ? Paleta.acierto : context.esquema.primary, size: 24),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text('Test diario', style: context.textos.titleMedium),
-                    Text(diarioHecho ? 'Hecho. ¡Hasta mañana!' : '10 preguntas oficiales, las mismas para todos hoy. 15 minutos.', style: context.textos.bodySmall),
-                  ]),
-                ),
-                if (!diarioHecho) const Icon(Icons.chevron_right),
-              ]),
-            ),
+            // El test diario, el test a medias y el repaso van en «Hoy te toca».
             if (opositor) TarjetaCronogramaHoy(abrir: () => context.go('/organizacion/cronograma')),
-            if (leitner.pendientes().isNotEmpty) ...[
-              const SizedBox(height: 12),
-              Tarjeta(
-                onTap: () => context.push('/examen', extra: ConfigTest(idsFijos: leitner.pendientes(), minutos: 0, tipo: 'repaso')),
-                child: Row(children: [
-                  Icon(Icons.replay, color: context.esquema.primary),
-                  const SizedBox(width: 14),
-                  Expanded(child: Text('${leitner.pendientes().length} preguntas pendientes de repaso', style: context.textos.bodyMedium)),
-                  const Icon(Icons.chevron_right),
-                ]),
-              ),
-            ],
             if (opositor && prob != null && prob.temasSabidos > 0) ...[
               const SizedBox(height: 12),
               Tarjeta(

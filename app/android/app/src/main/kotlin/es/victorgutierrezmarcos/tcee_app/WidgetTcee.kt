@@ -54,7 +54,10 @@ class WidgetTcee : HomeWidgetProvider() {
         // Semana del cronograma y test diario.
         v.setTextViewText(R.id.widget_semana, datos.getString("semana", null) ?: "Sin cronograma")
         val hoy = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(ahora)
-        v.setTextViewText(R.id.widget_test, if (datos.getString("test_hecho", "") == hoy) "Test diario ✓" else "Test diario: te espera")
+        // Racha de días (solo si el opositor la tiene activada: la app manda el número).
+        val racha = datos.getString("racha", "")?.toIntOrNull()
+        val test = if (datos.getString("test_hecho", "") == hoy) "Test diario ✓" else "Test diario: te espera"
+        v.setTextViewText(R.id.widget_test, if (racha != null && racha > 0) "$test · $racha ${if (racha == 1) "día" else "días"}" else test)
 
         v.setOnClickPendingIntent(R.id.widget_cabecera, abrir(context, "organizacion/convocatoria"))
         v.setOnClickPendingIntent(R.id.widget_cante, abrir(context, "cantes"))

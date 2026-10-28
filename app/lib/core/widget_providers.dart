@@ -49,6 +49,7 @@ final datosWidgetProvider = Provider<DatosWidget>((ref) {
                   : 'Semana: ${semana.temas.where(estado.hechos.contains).length} de ${semana.temas.length}';
 
   return DatosWidget(
+    racha: preparador ? null : ref.watch(rachaProvider)?.dias,
     siglas: oposicion.siglas,
     // El preparador, como en Hoy: sin cuenta atrás al examen ni cronograma propio.
     examen: preparador ? null : proximo?.value,
