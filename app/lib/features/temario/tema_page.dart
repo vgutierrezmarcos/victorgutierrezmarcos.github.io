@@ -25,6 +25,7 @@ import '../preparador/materiales_widgets.dart';
 import 'agenda_tema_page.dart';
 import 'anotaciones.dart';
 import 'esquema_tema.dart';
+import '../cantar/esquema_ciegas_page.dart';
 import 'html_revisado.dart';
 import 'visor_html.dart';
 import 'visor_tema.dart';
@@ -438,6 +439,12 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                       ),
                   ]),
                 ),
+                if (!preparador && listaControlDisponible(esquemaDelTema(ref, widget.tema)))
+                  IconButton(
+                    tooltip: 'Esquema a ciegas',
+                    icon: Icon(Icons.psychology_outlined, color: context.esquema.primary),
+                    onPressed: () => abrirEsquemaCiegas(context, widget.tema.codigo),
+                  ),
                 if (!preparador) IconButton(
                   tooltip: 'En repaso',
                   icon: Icon(Icons.replay, color: repaso ? context.esquema.primary : context.colores.textoClaro),

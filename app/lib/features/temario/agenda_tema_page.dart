@@ -7,6 +7,7 @@ import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/estructura.dart';
+import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -224,7 +225,25 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
             Expanded(child: Estadistica(valor: '${stats.veces}', etiqueta: stats.veces == 1 ? 'vez cantado' : 'veces cantado', icono: Icons.record_voice_over_outlined)),
             const SizedBox(width: 10),
             Expanded(child: Estadistica(valor: stats.valoracionMedia == 0 ? '—' : stats.valoracionMedia.toStringAsFixed(1).replaceAll('.', ','), etiqueta: 'valoración media', icono: Icons.star_outline, color: stats.flojo ? Paleta.fallo : null)),
+            if (stats.esquemas > 0) ...[
+              const SizedBox(width: 10),
+              Expanded(child: Estadistica(valor: '${stats.esquemas}', etiqueta: stats.esquemas == 1 ? 'esquema a ciegas' : 'esquemas a ciegas', icono: Icons.psychology_outlined)),
+            ],
           ]),
+          // Los apartados que, con lista de control, nunca se han tocado.
+          if (CoberturaApartados.desde(ref.watch(cantesProvider), _codigo).nuncaCubiertos case final nunca when nunca.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Tarjeta(
+                color: context.colores.primarioPalido,
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('Apartados que no has tocado en ninguno de tus cantes con lista de control', style: context.textos.titleSmall),
+                  const SizedBox(height: 4),
+                  for (final a in nunca.take(8)) Text('· $a', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
+                  if (nunca.length > 8) Text('… y ${nunca.length - 8} más', style: context.textos.labelSmall),
+                ]),
+              ),
+            ),
         ],
         if (delTema.isNotEmpty) ...[
           const TituloSeccion('Test de este tema'),

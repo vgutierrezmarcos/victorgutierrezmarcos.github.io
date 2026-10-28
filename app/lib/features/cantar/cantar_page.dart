@@ -32,6 +32,8 @@ import '../../widgets/selector_temas.dart';
 import '../cantes/nuevo_cante_sheet.dart';
 import '../plan/cantes_util.dart';
 import '../plan/resultado_sheet.dart';
+import '../temario/esquema_tema.dart';
+import 'esquema_ciegas_page.dart';
 import '../preparador/tema_anticipado.dart' show leerAntelacion, textoAntelacion;
 import 'probabilidades.dart';
 import 'reloj_cante.dart';
@@ -662,6 +664,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
         segundos: _reloj.expuesto(DateTime.now()).inSeconds,
       ),
       opciones: opciones,
+      esquemas: esquemasDe(ref, {...opciones, ..._aCantar, if (_elegido != null) _elegido!}),
     );
     if (res == null) return;
     Analitica.instancia.evento('cante_terminado', parametros: {'minutos': res.segundos ~/ 60, 'temas': (res.temaCantado == null ? 0 : 1) + res.otrosCantados.length});
@@ -1029,6 +1032,18 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                   ],
                 ]),
               ),
+              if (sesion == null && cante == null) ...[
+                const TituloSeccion('Esquema a ciegas'),
+                FilaEnlace(
+                  icono: Icons.psychology_outlined,
+                  titulo: 'Sacar un esquema de memoria',
+                  subtitulo: 'Con el tiempo de esquema del examen y comparado después con el del tema, apartado a apartado',
+                  onTap: () async {
+                    final codigo = await elegirTemaParaEsquema(context, ref);
+                    if (codigo != null && context.mounted) await abrirEsquemaCiegas(context, codigo);
+                  },
+                ),
+              ],
               const TituloSeccion('Pizarra'),
               Tarjeta(
                 child: Center(

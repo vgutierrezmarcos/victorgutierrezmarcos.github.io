@@ -85,7 +85,7 @@ class DiarioVista extends ConsumerWidget {
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id))),
                       child: ListTile(
                         title: Text(tituloCanteHecho(c, titulo), maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
-                        subtitle: Text('${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${c.titulo.isEmpty ? '' : ' · ${c.titulo}'}${c.dePreparador ? ' · valorado por tu preparador' : ''}', style: context.textos.labelSmall),
+                        subtitle: Text('${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${c.titulo.isEmpty || c.esquema ? '' : ' · ${c.titulo}'}${c.dePreparador ? ' · valorado por tu preparador' : ''}${sufijoCobertura(c)}', style: context.textos.labelSmall),
                         trailing: Estrellas(valor: c.resultado?.valoracion ?? 0, tamano: 14),
                       ),
                     ),

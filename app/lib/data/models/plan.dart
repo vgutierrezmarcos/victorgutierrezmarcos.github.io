@@ -38,9 +38,34 @@ class ResultadoCante {
     this.valoracion = 0,
     this.valoraciones = const {},
     this.comentarios = '',
+    this.descartados = const [],
+    this.cubiertos = const {},
+    this.apartados = const {},
   });
 
+  /// Lista de control: por tema, los apartados del esquema que se tocaron
+  /// (sus títulos) y cuántos tenía el esquema ([apartados]). Lo marca el
+  /// opositor al valorar (o en el esquema a ciegas) o el preparador mientras
+  /// escucha. Las versiones anteriores lo ignoran.
+  final Map<String, List<String>> cubiertos;
+  final Map<String, int> apartados;
+
+  /// «14/19 apartados» del tema, o null si no se marcó la lista.
+  String? textoCobertura(String tema) {
+    final total = apartados[tema] ?? 0;
+    return total == 0 ? null : '${(cubiertos[tema] ?? const []).length}/$total apartados';
+  }
+
+  /// La cobertura de todos los temas cantados («14/19 · 9/12 apartados»), o null.
+  String? get textoCoberturaTotal {
+    final partes = [for (final t in temasCantados) if (apartados[t] case final n? when n > 0) '${(cubiertos[t] ?? const []).length}/$n'];
+    return partes.isEmpty ? null : '${partes.join(' · ')} apartados';
+  }
+
   final List<String> sorteados;
+  /// En un simulacro escrito, el tema que se dejó de cada par sorteado. Si
+  /// un tema se descarta casi siempre, es que no se domina (temas flojos).
+  final List<String> descartados;
   final String? temaCantado;
   /// Cuando se cantan varios (los dos que manda el preparador o los dos de un
   /// simulacro): los demás, en orden, después de [temaCantado]. Va aparte para
@@ -66,7 +91,7 @@ class ResultadoCante {
     return dadas.isEmpty ? 0 : (dadas.fold<int>(0, (s, v) => s + v) / dadas.length).round();
   }
 
-  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, Map<String, int>? valoraciones, String? comentarios}) =>
+  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, Map<String, int>? valoraciones, String? comentarios, List<String>? descartados, Map<String, List<String>>? cubiertos, Map<String, int>? apartados}) =>
       ResultadoCante(
         sorteados: sorteados ?? this.sorteados,
         temaCantado: temaCantado ?? this.temaCantado,
@@ -75,6 +100,9 @@ class ResultadoCante {
         valoracion: valoracion ?? this.valoracion,
         valoraciones: valoraciones ?? this.valoraciones,
         comentarios: comentarios ?? this.comentarios,
+        descartados: descartados ?? this.descartados,
+        cubiertos: cubiertos ?? this.cubiertos,
+        apartados: apartados ?? this.apartados,
       );
 
   Map<String, dynamic> toJson() => {
@@ -85,6 +113,9 @@ class ResultadoCante {
         'valoracion': valoracion,
         if (valoraciones.isNotEmpty) 'valoraciones': valoraciones,
         'comentarios': comentarios,
+        if (descartados.isNotEmpty) 'descartados': descartados,
+        if (cubiertos.isNotEmpty) 'cubiertos': cubiertos,
+        if (apartados.isNotEmpty) 'apartados': apartados,
       };
 
   factory ResultadoCante.fromJson(Map<dynamic, dynamic> j) => ResultadoCante(
@@ -95,7 +126,37 @@ class ResultadoCante {
         valoracion: (j['valoracion'] as num?)?.toInt() ?? 0,
         valoraciones: j['valoraciones'] is Map ? {for (final e in (j['valoraciones'] as Map).entries) if (e.value is num) e.key.toString(): (e.value as num).toInt()} : const {},
         comentarios: j['comentarios'] as String? ?? '',
+        descartados: ((j['descartados'] as List?) ?? []).map((e) => e.toString()).toList(),
+        cubiertos: j['cubiertos'] is Map ? {for (final e in (j['cubiertos'] as Map).entries) if (e.value is List) e.key.toString(): [for (final x in e.value as List) x.toString()]} : const {},
+        apartados: j['apartados'] is Map ? {for (final e in (j['apartados'] as Map).entries) if (e.value is num) e.key.toString(): (e.value as num).toInt()} : const {},
       );
+}
+
+/// Qué apartados de un tema se cuentan y cuáles no, a partir de las listas de
+/// control de sus cantes y esquemas a ciegas: título → (veces tocado, veces
+/// que estuvo en la lista).
+class CoberturaApartados {
+  const CoberturaApartados(this.porApartado);
+  final Map<String, ({int cubierto, int ofrecido})> porApartado;
+
+  static CoberturaApartados desde(Iterable<Cante> cantes, String tema, {Iterable<String>? apartados}) {
+    final out = <String, ({int cubierto, int ofrecido})>{for (final a in apartados ?? const <String>[]) a: (cubierto: 0, ofrecido: 0)};
+    for (final c in cantes) {
+      final r = c.resultado;
+      if (!c.hecho || c.borrado || r == null || (r.apartados[tema] ?? 0) == 0) continue;
+      final marcados = (r.cubiertos[tema] ?? const <String>[]).toSet();
+      // Lo que no se marcó también cuenta como ofrecido: solo se sabe de los
+      // apartados que aparecen en alguna lista (los marcados) o en [apartados].
+      for (final a in {...out.keys, ...marcados}) {
+        final p = out[a] ?? (cubierto: 0, ofrecido: 0);
+        out[a] = (cubierto: p.cubierto + (marcados.contains(a) ? 1 : 0), ofrecido: p.ofrecido + 1);
+      }
+    }
+    return CoberturaApartados(out);
+  }
+
+  /// Apartados que en dos o más cantes con lista nunca se han tocado.
+  List<String> get nuncaCubiertos => [for (final e in porApartado.entries) if (e.value.ofrecido >= 2 && e.value.cubierto == 0) e.key];
 }
 
 /// Dónde es un cante: en persona o por videollamada.
@@ -178,9 +239,15 @@ class Cante {
     this.notasCompartidas = false,
     this.temasPropuestos = const [],
     this.propuestaTemasA,
+    this.esquema = false,
   });
 
   final String id;
+
+  /// Esquema a ciegas (sacar el esquema de memoria y compararlo), no un cante
+  /// entero: cuenta aparte en las estadísticas y las versiones anteriores lo
+  /// ven como un cante corto.
+  final bool esquema;
 
   /// Temas que el preparador propone para esta clase (vacío si no propone
   /// nada). Los temas de la clase los decide el opositor
@@ -331,6 +398,7 @@ class Cante {
     int? numTemas,
     bool? unoPorParte,
     String? plataforma,
+    bool? esquema,
     String? eventoGoogle,
     String? eventoGoogleAlumno,
     List<String>? temasPropuestos,
@@ -369,6 +437,7 @@ class Cante {
         numTemas: numTemas ?? this.numTemas,
         unoPorParte: unoPorParte ?? this.unoPorParte,
         plataforma: plataforma ?? this.plataforma,
+        esquema: esquema ?? this.esquema,
         eventoGoogle: eventoGoogle ?? this.eventoGoogle,
         eventoGoogleAlumno: eventoGoogleAlumno ?? this.eventoGoogleAlumno,
         temasPropuestos: sinPropuesta ? const [] : (temasPropuestos ?? this.temasPropuestos),
@@ -409,6 +478,7 @@ class Cante {
         if (numTemas != 2) 'numTemas': numTemas,
         if (unoPorParte) 'unoPorParte': true,
         if (plataforma.isNotEmpty) 'plataforma': plataforma,
+        if (esquema) 'esquema': true,
         if (eventoGoogle.isNotEmpty) 'eventoGoogle': eventoGoogle,
         if (eventoGoogleAlumno.isNotEmpty) 'eventoGoogleAlumno': eventoGoogleAlumno,
         if (temasPropuestos.isNotEmpty) 'temasPropuestos': temasPropuestos,
@@ -453,6 +523,7 @@ class Cante {
         numTemas: (j['numTemas'] as num?)?.toInt() ?? 2,
         unoPorParte: j['unoPorParte'] as bool? ?? false,
         plataforma: j['plataforma'] as String? ?? '',
+        esquema: j['esquema'] == true,
         eventoGoogle: j['eventoGoogle'] as String? ?? '',
         eventoGoogleAlumno: j['eventoGoogleAlumno'] as String? ?? '',
         temasPropuestos: ((j['temasPropuestos'] as List?) ?? []).map((e) => e.toString()).toList(),
@@ -473,9 +544,12 @@ class Cante {
 
 /// Estadísticas de un tema en el diario de cantes.
 class EstadisticaTema {
-  const EstadisticaTema({required this.codigo, required this.veces, required this.segundosMedios, required this.valoracionMedia, this.ultimo});
+  const EstadisticaTema({required this.codigo, required this.veces, required this.segundosMedios, required this.valoracionMedia, this.ultimo, this.esquemas = 0});
   final String codigo;
+  /// Cantes enteros (sin los esquemas a ciegas).
   final int veces;
+  /// Esquemas a ciegas hechos del tema.
+  final int esquemas;
   final int segundosMedios;
   /// Media de las valoraciones (0 si ninguna vez se valoró).
   final double valoracionMedia;
@@ -493,14 +567,18 @@ class EstadisticaTema {
       }
     }
     return porTema.map((codigo, lista) {
+      // Los esquemas a ciegas cuentan aparte (y refrescan el tema); la
+      // valoración y el tiempo medios son de los cantes enteros.
+      final enteros = lista.where((c) => !c.esquema).toList();
       // La valoración de ese tema en cada cante (la suya, si se valoró aparte).
-      final valorados = lista.where((c) => c.resultado!.valoracionDe(codigo) > 0).toList();
-      final conTiempo = lista.where((c) => c.resultado!.segundos > 0).toList();
+      final valorados = enteros.where((c) => c.resultado!.valoracionDe(codigo) > 0).toList();
+      final conTiempo = enteros.where((c) => c.resultado!.segundos > 0).toList();
       return MapEntry(
         codigo,
         EstadisticaTema(
           codigo: codigo,
-          veces: lista.length,
+          veces: enteros.length,
+          esquemas: lista.length - enteros.length,
           segundosMedios: conTiempo.isEmpty ? 0 : conTiempo.fold<int>(0, (s, c) => s + c.resultado!.segundos) ~/ conTiempo.length,
           valoracionMedia: valorados.isEmpty ? 0 : valorados.fold<int>(0, (s, c) => s + c.resultado!.valoracionDe(codigo)) / valorados.length,
           ultimo: lista.map((c) => c.fecha).reduce((x, y) => x.isAfter(y) ? x : y),

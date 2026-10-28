@@ -1,7 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/providers.dart';
 import '../../data/models/esquema.dart';
+import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
+
+/// Los apartados del tema [tema] (los marcadores de su PDF: los del manifiesto
+/// si está revisado, si no los de esquemas.json), o null si no hay.
+List<EntradaEsquema>? esquemaDelTema(WidgetRef ref, Tema tema) {
+  final rv = ref.watch(revisadosProvider).valueOrNull?.de(tema.codigo);
+  if (rv != null && rv.esquema.isNotEmpty) return rv.esquema;
+  return ref.watch(esquemasProvider).valueOrNull?.de(tema.url);
+}
+
+/// Los esquemas de varios temas (por código), solo los que tienen bastantes
+/// apartados para una lista de control.
+Map<String, List<EntradaEsquema>> esquemasDe(WidgetRef ref, Iterable<Tema?> temas) {
+  final out = <String, List<EntradaEsquema>>{};
+  for (final t in temas) {
+    if (t == null) continue;
+    final e = esquemaDelTema(ref, t);
+    if (listaControlDisponible(e)) out[t.codigo] = e!;
+  }
+  return out;
+}
+
+/// Con menos de cuatro apartados la lista de control no aporta nada.
+bool listaControlDisponible(List<EntradaEsquema>? esquema) => esquema != null && esquema.length >= 4;
 
 /// El esquema del tema (los marcadores de su PDF) para leerlo al lado y
 /// saltar de bloque: en el ordenador, un panel a la izquierda del PDF; en el

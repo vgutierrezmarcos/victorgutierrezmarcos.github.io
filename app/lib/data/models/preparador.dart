@@ -473,6 +473,7 @@ String informeCante(Cante c, {String? alumno, String Function(String codigo)? ti
       'Tema $t${tituloDe == null || tituloDe(t).isEmpty ? '' : ' · ${tituloDe(t)}'}${(r!.valoraciones[t] ?? 0) > 0 ? ': ${'★' * r.valoraciones[t]!}${'☆' * (5 - r.valoraciones[t]!)}' : ''}',
     if ((r?.valoracion ?? 0) > 0) '${r!.valoraciones.isEmpty ? 'Valoración' : 'Valoración del cante'}: ${'★' * r.valoracion}${'☆' * (5 - r.valoracion)}',
     if ((r?.segundos ?? 0) > 0) 'Tiempo: ${r!.segundos ~/ 60}:${dos(r.segundos % 60)} (previsto: ${c.minutos} min)',
+    if (r?.textoCoberturaTotal case final cob?) 'Apartados tocados: $cob',
     if (r != null && r.sorteados.length > 1) 'Salieron en el sorteo: ${r.sorteados.join(', ')}',
     if (r != null && r.comentarios.isNotEmpty) ...['', r.comentarios],
   ];

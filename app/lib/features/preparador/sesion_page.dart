@@ -24,6 +24,7 @@ import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
 import '../plan/modalidad.dart';
 import '../plan/resultado_sheet.dart';
+import '../temario/esquema_tema.dart';
 import 'alumno_page.dart';
 import 'calendario_google_tarjeta.dart';
 import 'coordinacion.dart';
@@ -145,8 +146,23 @@ class SesionPage extends ConsumerWidget {
         opciones: temas,
         titulo: '¿Cómo ha ido el cante${alumno == null ? '' : ' de ${alumno.nombre}'}?',
         textoGuardar: 'Guardar valoración',
+        esquemas: esquemasDe(ref, [...temas, ...?r?.temasCantados.map((t) => temario?.tema(t))]),
       );
       if (res != null) await notifier.guardar(s.copyWith(estado: EstadoCante.hecho, resultado: res));
+    }
+
+    // Lista de control mientras escucha: los temas que se están cantando (los
+    // ya anotados, los mandados o, si no, los dos primeros de la clase).
+    final temasEnCurso = (r?.temasCantados.isNotEmpty ?? false) ? r!.temasCantados : (s.temasMandados.isNotEmpty ? s.temasMandados : [for (final t in temas.take(s.numTemas.clamp(1, 2))) t.codigo]);
+    final esquemasEnCurso = esquemasDe(ref, temasEnCurso.map((t) => temario?.tema(t)));
+    Future<void> apartados() async {
+      final res = await marcarApartados(
+        context,
+        inicial: r ?? ResultadoCante(temaCantado: temasEnCurso.firstOrNull, otrosCantados: temasEnCurso.skip(1).toList()),
+        temas: temasEnCurso,
+        esquemas: esquemasEnCurso,
+      );
+      if (res != null) await notifier.guardar(s.copyWith(resultado: res));
     }
 
     Future<void> borrar() async {
@@ -386,6 +402,16 @@ class SesionPage extends ConsumerWidget {
               const SizedBox(width: 10),
               OutlinedButton(onPressed: valorar, child: const Text('Valorar')),
             ]),
+            // Los apartados del esquema que va tocando, para marcarlos mientras escucha.
+            if (esquemasEnCurso.isNotEmpty)
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  onPressed: apartados,
+                  icon: const Icon(Icons.checklist, size: 18),
+                  label: Text(r?.textoCoberturaTotal == null ? 'Apartados que va tocando' : 'Apartados: ${r!.textoCoberturaTotal}'),
+                ),
+              ),
             // El cronómetro compartido de la clase, el mismo que ve el alumno.
             if (alumno?.uid != null && usuario != null)
               RelojDeClaseTarjeta(

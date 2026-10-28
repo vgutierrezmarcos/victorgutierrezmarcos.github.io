@@ -26,6 +26,7 @@ import 'cante_form_page.dart';
 import 'cantes_util.dart';
 import 'modalidad.dart';
 import 'resultado_sheet.dart';
+import '../temario/esquema_tema.dart';
 import '../mas/ayuda_videos.dart';
 
 /// Detalle de un cante: cuenta atrás, temas que entran, apuntes pendientes
@@ -53,7 +54,7 @@ class CantePage extends ConsumerWidget {
     final temasRecibidos = c.dePreparador && c.temaA != null && !c.temaA!.isAfter(DateTime.now()) ? ref.watch(temaAnticipadoProvider(c.id)).valueOrNull : null;
 
     Future<void> anotar() async {
-      final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas);
+      final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas, esquemas: esquemasDe(ref, [...temas, ...?r?.temasCantados.map((t) => temario?.tema(t))]));
       if (res == null) return;
       Analitica.instancia.evento('cante_terminado', parametros: {'minutos': res.segundos ~/ 60, 'temas': (res.temaCantado == null ? 0 : 1) + res.otrosCantados.length});
       if (res.valoracion > 0) Resenas.momento();
