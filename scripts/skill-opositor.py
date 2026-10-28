@@ -12,8 +12,13 @@ y de los JSON públicos de la web, todo convertido a Markdown.
     python3 scripts/skill-opositor.py --comprobar     # no escribe: dice si el ZIP está al día
     python3 scripts/skill-opositor.py --solo 3A08 3A09  # solo esos temas (para probar)
     python3 scripts/skill-opositor.py --salida DIR    # carpeta de construcción (por defecto, temporal)
+    python3 scripts/skill-opositor.py --solo-test     # solo references/test/ (banco del test) en la copia desplegada; sin ZIP ni rama
 
 Qué genera (dentro de prepara-con-claude/references/):
+- test/: las preguntas oficiales del test con su explicación, por bloque y tema
+  (preguntas.json + explicaciones/<examen>.json; INDICE.md dice qué fichero lleva
+  cada tema). No necesita pandoc ni la rama: --solo-test lo escribe en la copia
+  desplegada de main sin tocar el ZIP, version.json ni el manifiesto.
 - temario/: programa-tcee.md y programa-dce.md (temario oficial con lo disponible y
   revisado), bloques-y-conexiones.md (estructura_temario.json), indices-temas.md
   (esquemas.json: el índice de cada PDF, para saber dónde se estudia algo en los
@@ -60,6 +65,7 @@ CANON = os.path.join(WT, 'oposicion', 'temario', 'canon')
 FUENTE_SKILL = os.path.join(RAIZ, 'claude', 'prepara-con-claude')
 MACROS = os.path.join(RAIZ, 'scripts', 'skill-opositor', 'macros-repaso.tex')
 ZIP_RUTA = 'oposicion/temario/app/prepara-con-claude.zip'
+TEST = os.path.join(RAIZ, 'oposicion', 'temario', 'primer-ejercicio', 'test')
 # Nombre técnico de la skill (carpeta dentro del ZIP y `name` de SKILL.md): Claude.ai
 # no admite la palabra «claude» en el nombre, así que el título «Prepara con Claude»
 # es solo el nombre comercial.
@@ -771,6 +777,125 @@ def frecuencia_md(f):
     return '\n'.join(lineas) + '\n'
 
 
+# --- Banco del test: preguntas oficiales con su explicación, por bloque y tema --------
+def _slug(texto):
+    t = texto.lower()
+    for a, b in zip('áéíóúüñ', 'aeiouun'):
+        t = t.replace(a, b)
+    return re.sub(r'[^a-z0-9]+', '-', t).strip('-')
+
+
+def _pregunta_md(q, examen, explicacion, otros_temas):
+    anio = (examen.get('fecha') or '')[:4]
+    nombre = examen.get('nombre') or q['examen']
+    cabecera = f'### {q["temas"][0]} · {q["examen"]} ({anio}) · pregunta {q["numero"]} · id {q["id"]}'
+    if otros_temas:
+        cabecera += f' · también {", ".join(otros_temas)}'
+    lineas = [cabecera, '', q['enunciado'].strip()]
+    for letra in ('a', 'b', 'c', 'd'):
+        if letra in q.get('opciones', {}):
+            lineas.append(f'- {letra}) {q["opciones"][letra].strip()}')
+    for img in q.get('imagenes') or []:
+        lineas.append(f'- *(Figura que no se incluye; en el simulador de la web: {img.get("src", "")}. Describe: {img.get("alt", "").strip()})*')
+    resp = q.get('respuesta') or []
+    if not resp:
+        linea = '**Anulada por el tribunal.**'
+    elif len(resp) == 1:
+        linea = f'**Respuesta: {resp[0]}).**'
+    elif len(resp) == 4:
+        linea = '**Respuesta: el tribunal dio por válidas las cuatro.**'
+    else:
+        linea = f'**Respuesta: {" o ".join(r + ")" for r in resp)} (el tribunal admitió las dos).**'
+    if q.get('nota'):
+        linea += f' {q["nota"].strip()}'
+    if explicacion and explicacion.get('clave'):
+        linea += f' {explicacion["clave"].strip()}'
+    elif not explicacion:
+        linea += ' *(Sin explicación en la web todavía.)*'
+    lineas += ['', linea, '']
+    return '\n'.join(lineas), nombre
+
+
+def test_md():
+    """Devuelve {ruta relativa dentro de references/test: texto} con las preguntas
+    oficiales del test (preguntas.json) y su explicación («¿Por qué?» de la web,
+    explicaciones/<examen>.json), un fichero por bloque temático (bloques.json) y,
+    dentro, por tema y examen (del más reciente al más antiguo). También el número de
+    preguntas y explicaciones que han entrado."""
+    datos = leer_json(os.path.join(TEST, 'preguntas.json'))
+    bloques = leer_json(os.path.join(TEST, 'bloques.json'))
+    examenes = {e['id']: e for e in datos.get('examenes', [])}
+    titulos = datos.get('temas') or {}
+    explicaciones = {}
+    carpeta = os.path.join(TEST, 'explicaciones')
+    for f in sorted(os.listdir(carpeta)) if os.path.isdir(carpeta) else []:
+        if f.endswith('.json'):
+            explicaciones.update(leer_json(os.path.join(carpeta, f)).get('explicaciones') or {})
+    sin_texto = leer_json(os.path.join(TEST, 'examenes_sin_texto.json')).get('examenes') or [] \
+        if os.path.exists(os.path.join(TEST, 'examenes_sin_texto.json')) else []
+
+    por_tema = {}
+    n_preg = n_expl = 0
+    for q in datos.get('preguntas', []):
+        if not q.get('temas') or not (q.get('enunciado') or '').strip():
+            continue
+        por_tema.setdefault(q['temas'][0], []).append(q)
+    orden_examen = {e['id']: e.get('fecha', '') for e in datos.get('examenes', [])}
+
+    ficheros = {}
+    indice = [cabecera_publica('oposicion/temario/primer-ejercicio/test/preguntas.json y explicaciones/*.json'),
+              '# Banco del test: preguntas oficiales por tema\n',
+              'Las preguntas oficiales del test del primer ejercicio de TCEE (desde 2002) con la respuesta y la explicación '
+              'que la app enseña con «¿Por qué?». Un fichero por bloque temático; dentro, por tema (código del programa del 3.er '
+              'ejercicio) y examen, del más reciente al más antiguo. Cada pregunta lleva su `id`, el mismo que usa la app y el simulador '
+              'de la web, para no repetirle al opositor las que ya ha hecho.\n',
+              'Úsalo así: para un test a medida (`agentes/test-personal.md`) abre solo el fichero del bloque de cada tema flojo y '
+              'busca `### 3.B.4 ·`; no leas los catorce ficheros. La explicación es la «clave» (dos o tres líneas): el desarrollo '
+              'completo está en el simulador de la web y en la app.\n',
+              '| Tema | Título | Preguntas | Fichero |', '|---|---|---|---|']
+    for b in bloques.get('bloques', []):
+        nombre = f'bloque-{b["id"]:02d}-{_slug(b["nombre"])}.md'
+        lineas = [cabecera_publica('oposicion/temario/primer-ejercicio/test/preguntas.json y explicaciones/*.json'),
+                  f'# Test · Bloque {b["id"]} · {b["nombre"]} (parte {b["parte"]})\n',
+                  'Formato de cada pregunta: tema · examen (año) · número · id; enunciado; opciones; respuesta y explicación. '
+                  'Las preguntas con figura la describen pero no la incluyen. Las anuladas se marcan.\n']
+        total_bloque = 0
+        for t in b.get('temas', []):
+            qs = sorted(por_tema.get(t, []), key=lambda q: (orden_examen.get(q['examen'], ''), q['numero']), reverse=True)
+            lineas.append(f'## {t} · {titulos.get(t, "")}\n')
+            if not qs:
+                lineas.append('*Sin preguntas con texto en el banco.*\n')
+            for q in qs:
+                ex = explicaciones.get(str(q['id']))
+                md, _ = _pregunta_md(q, examenes.get(q['examen'], {}), ex, q['temas'][1:])
+                lineas.append(md)
+                n_preg += 1
+                n_expl += 1 if ex and ex.get('clave') else 0
+            total_bloque += len(qs)
+            indice.append(f'| {t} | {corto(titulos.get(t, ""))} | {len(qs)} | `{nombre}` |')
+        ficheros[nombre] = '\n'.join(lineas)
+    sueltos = sorted(t for t in por_tema if t not in (bloques.get('temaABloque') or {}))
+    if sueltos:
+        aviso(f'test: temas sin bloque en bloques.json: {", ".join(sueltos)}')
+    if sin_texto:
+        indice.append(f'\nHay además {len(sin_texto)} exámenes sin el texto de las preguntas (solo cuentan en `temario/frecuencia-test.md`).')
+    indice.append(f'\n{n_preg} preguntas, {n_expl} con explicación. Generado el {datetime.now().strftime("%Y-%m-%d")}.')
+    ficheros['INDICE.md'] = '\n'.join(indice)
+    return ficheros, n_preg, n_expl
+
+
+def escribir_test(refs):
+    """Escribe references/test/ (borra lo anterior) y devuelve (preguntas, explicaciones, bytes)."""
+    carpeta = os.path.join(refs, 'test')
+    if os.path.exists(carpeta):
+        shutil.rmtree(carpeta)
+    ficheros, n_preg, n_expl = test_md()
+    for nombre, texto in ficheros.items():
+        escribir(os.path.join(carpeta, nombre), texto)
+    return n_preg, n_expl, tamano_carpeta(carpeta)
+
+
+
 def proceso_cifras_md(proceso, cifras, config):
     lineas = [cabecera_publica('oposicion/proceso.json, oposicion/cifras.json y oposicion/app-config.json'),
               '# Convocatoria en curso, cifras de las últimas convocatorias y reglas del sorteo\n']
@@ -895,6 +1020,8 @@ def construir(args):
              proceso_cifras_md(leer_json(os.path.join(RAIZ, 'oposicion', 'proceso.json')),
                                leer_json(os.path.join(RAIZ, 'oposicion', 'cifras.json')),
                                leer_json(os.path.join(RAIZ, 'oposicion', 'app-config.json'))))
+    n_preg, n_expl, _ = escribir_test(refs)
+    print(f'  test: {n_preg} preguntas, {n_expl} con explicación (references/test/)')
 
     # 2-4. Temas revisados: ficha, guion y tema
     filas = []
@@ -902,7 +1029,7 @@ def construir(args):
         a = t['archivo']
         carpeta = os.path.join(refs, 'temas', a)
         fila = {'archivo': a, 'codigo': t.get('codigo', codigo_de(a)), 'titulo': t.get('titulo', ''),
-                'aprobado': t.get('aprobado', ''), 'version': t.get('version', ''), 'ficha': 'no', 'guion': 'no', 'tema': 'no'}
+                'aprobado': t.get('aprobado', ''), 'version': t.get('version', ''), 'ficha': 'no', 'guion': 'no', 'tema': 'no', 'pizarra': 'no'}
         tex = os.path.join(FUENTES, a, 'repaso', f'{a}-repaso.tex')
         if t.get('repaso') and os.path.exists(tex):
             md, como = repaso_a_md(tex, os.path.join(WT, t['repaso']['ruta']))
@@ -917,6 +1044,7 @@ def construir(args):
         if os.path.exists(guion):
             escribir(os.path.join(carpeta, 'guion-cante.md'), guion_a_md(guion))
             fila['guion'] = 'sí'
+            fila['pizarra'] = 'sí (plan de pizarra en el guion)' if 'Plan de pizarra' in leer(guion) else 'no'
         else:
             aviso(f'{a}: sin guion del cante')
         html = os.path.join(WT, t['html']['ruta']) if t.get('html') else ''
@@ -932,13 +1060,14 @@ def construir(args):
 
     # 7. Índice de temas
     lineas = [cabecera_licencia(), '# Temas revisados incluidos en la skill\n',
-              '| Tema | Título | Ficha | Guion | Tema | Aprobado | Versión |', '|---|---|---|---|---|---|---|']
+              '| Tema | Título | Ficha | Guion | Pizarra | Tema | Aprobado | Versión |', '|---|---|---|---|---|---|---|---|']
     for f in filas:
-        lineas.append(f'| {f["codigo"]} ({f["archivo"]}) | {f["titulo"]} | {f["ficha"]} | {f["guion"]} | {f["tema"]} | {f["aprobado"]} | {f["version"]} |')
+        lineas.append(f'| {f["codigo"]} ({f["archivo"]}) | {f["titulo"]} | {f["ficha"]} | {f["guion"]} | {f["pizarra"]} | {f["tema"]} | {f["aprobado"]} | {f["version"]} |')
     if dictamen:
         lineas.append(f'| Dictamen (1D01) | {dictamen.get("titulo", "")} | {"sí (resumen)" if dictamen.get("repaso") else "no"} | '
-                      f'{"sí" if os.path.exists(os.path.join(FUENTES, "1D01", "guion-cante.md")) else "no"} | '
+                      f'{"sí" if os.path.exists(os.path.join(FUENTES, "1D01", "guion-cante.md")) else "no"} | no | '
                       f'{"sí (guía)" if dictamen.get("html") and not args.sin_temas else "no"} | {dictamen.get("aprobado", "")} | {dictamen.get("version", "")} |')
+    lineas.append('\n«Pizarra» dice si el guion del cante trae un «Plan de pizarra» (qué dibujar en cada apartado y en qué minuto): `references/pizarra.md`.')
     lineas.append(f'\nManifiesto de la rama {manifiesto.get("rama", "")}: commit {manifiesto.get("commit", "")[:10]} '
                   f'(generado el {manifiesto.get("generado", "")}); skill construida el {datetime.now().strftime("%Y-%m-%d %H:%M")}.')
     escribir(os.path.join(refs, 'temas', 'INDICE.md'), '\n'.join(lineas) + '\n')
@@ -1142,9 +1271,23 @@ def main():
     p.add_argument('--comprobar', action='store_true', help='no escribe: dice si el ZIP está al día con el manifiesto')
     p.add_argument('--solo', nargs='+', metavar='T', help='solo estos temas (3A08 3A09 1D01…)')
     p.add_argument('--salida', metavar='DIR', help='carpeta de construcción (por defecto, una temporal)')
+    p.add_argument('--solo-test', action='store_true',
+                   help='solo references/test/ (banco del test con explicaciones) en la copia desplegada de main '
+                        f'({SKILL_RUTA}/{NOMBRE}/references/test/); no toca el ZIP, version.json ni la rama')
     args = p.parse_args()
     if args.comprobar:
         sys.exit(comprobar())
+    if args.solo_test:
+        refs = os.path.join(RAIZ, SKILL_RUTA, NOMBRE, 'references')
+        if not os.path.isdir(refs):
+            refs = os.path.join(args.salida or os.path.join(os.path.expanduser('~'), '.cache', 'skill-opositor'), NOMBRE, 'references')
+            print(f'No hay copia desplegada en {SKILL_RUTA}; escribo en {refs}')
+        n_preg, n_expl, n_bytes = escribir_test(refs)
+        print(f'references/test/: {n_preg} preguntas, {n_expl} con explicación, {kb(n_bytes)} en {os.path.join(refs, "test")}')
+        for f in sorted(os.listdir(os.path.join(refs, 'test'))):
+            n = os.path.getsize(os.path.join(refs, 'test', f))
+            print(f'  {f}: {kb(n)}' + (f'  (> {UMBRAL_MD // 1024} KB)' if n > UMBRAL_MD else ''))
+        sys.exit(0)
     for ruta, que in ((REVISION, 'el manifiesto de la rama'), (FUENTE_SKILL, 'la fuente de la skill'), (MACROS, 'macros-repaso.tex')):
         if not os.path.exists(ruta):
             sys.exit(f'Falta {que}: {ruta}')
