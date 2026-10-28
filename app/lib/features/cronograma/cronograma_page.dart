@@ -13,6 +13,7 @@ import 'cronograma_manual_page.dart';
 import 'importar_cronograma.dart';
 import '../../widgets/selector_temas.dart';
 import 'cronograma_widgets.dart';
+import 'fases_widgets.dart';
 import 'planificador.dart';
 import '../mas/ayuda_videos.dart';
 
@@ -119,7 +120,11 @@ class CronogramaPage extends ConsumerWidget {
       body: ListaAdaptable(children: [
         const SizedBox(height: 10),
         const TarjetasCronogramasRecibidos(),
-        ResumenCronograma(c: c, estado: estado),
+        if (c.porFases) ...[
+          PanelFases(c: c),
+          const SizedBox(height: 10),
+        ],
+        if (c.temas.isNotEmpty) ResumenCronograma(c: c, estado: estado),
         if (c.autor != null && c.autorNombre.isNotEmpty)
           Padding(
             padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),

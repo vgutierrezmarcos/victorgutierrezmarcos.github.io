@@ -9,11 +9,21 @@ import 'constants.dart';
 /// Descarga JSON de la web con caché persistente (Hive) y revalidación
 /// por ETag / Last-Modified. Estrategia "stale-while-revalidate": devuelve
 /// la copia en caché al instante y actualiza en segundo plano.
+///
+/// En el navegador no se añaden If-None-Match ni If-Modified-Since a mano:
+/// pedidos a otro dominio (el contenido de DCE está en manuelcabadogarcia.es)
+/// obligan a una petición previa CORS (OPTIONS) que GitHub Pages rechaza con
+/// un 405, la descarga fallaba y la app se quedaba para siempre con la primera
+/// copia (temas publicados después que no aparecían en el ordenador). El
+/// navegador ya revalida por su cuenta con su caché HTTP.
 class CacheHttp {
-  CacheHttp(this._dio, this._caja);
+  CacheHttp(this._dio, this._caja, {bool? condicional}) : _condicional = condicional ?? !kIsWeb;
 
   final Dio _dio;
   final Box _caja;
+
+  /// Revalidar con ETag / Last-Modified propios (fuera del navegador).
+  final bool _condicional;
 
   static Future<CacheHttp> crear() async {
     final caja = await Hive.openBox(Cajas.cacheHttp);
@@ -44,7 +54,7 @@ class CacheHttp {
     final headers = <String, String>{};
     final etag = _caja.get('$url#etag') as String?;
     final lastMod = _caja.get('$url#lastmod') as String?;
-    if (!forzar && cacheado != null) {
+    if (_condicional && !forzar && cacheado != null) {
       if (etag != null) headers['If-None-Match'] = etag;
       if (lastMod != null) headers['If-Modified-Since'] = lastMod;
     }

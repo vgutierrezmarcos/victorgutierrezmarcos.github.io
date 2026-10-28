@@ -1,7 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/models/cronograma.dart';
+import '../data/models/fases.dart';
+import '../data/models/oposicion.dart';
 import '../data/models/preparador.dart';
+import '../data/models/temario.dart';
+import '../features/cronograma/fases.dart';
 import '../features/cronograma/planificador.dart';
 import 'providers.dart';
 
@@ -164,3 +168,21 @@ Future<void> responderCronogramaRecibido(WidgetRef ref, CronogramaRecibido r, {r
   }
   ref.invalidate(cronogramasRecibidosProvider);
 }
+
+/// Fases del ejercicio escrito del cronograma activo (null si no va por fases),
+/// con lo que cambie app-config.json.
+final fasesCronogramaProvider = Provider<FasesEscrito?>((ref) {
+  final c = ref.watch(cronogramaProvider);
+  if (c == null || !c.porFases) return null;
+  final config = ref.watch(configProvider).valueOrNull ?? AppConfig.porDefecto;
+  return Oposiciones.actual.fasesEscrito(c.ejercicio, config) ?? const FasesEscrito();
+});
+
+/// Temas flojos del ejercicio escrito del cronograma activo, de más a menos
+/// urgente (según el diario y lo estudiado en la primera vuelta).
+final flojosEscritoProvider = Provider<List<TemaFlojo>>((ref) {
+  final c = ref.watch(cronogramaProvider);
+  final cfg = ref.watch(fasesCronogramaProvider);
+  if (c == null || cfg == null) return const [];
+  return temasFlojos(cantes: ref.watch(cantesProvider), ejercicio: c.ejercicio, hoy: DateTime.now(), cfg: cfg, estudiados: c.hechos);
+});
