@@ -241,6 +241,10 @@ def main():
     if os.path.exists(destino):
         with open(destino, encoding='utf-8') as f:
             anterior = json.load(f)
+    # La entrada «skill» (el ZIP de la skill «Prepara con Claude») la escribe
+    # scripts/skill-opositor.py de main: se conserva tal cual al regenerar
+    if anterior and 'skill' in anterior:
+        datos['skill'] = anterior['skill']
     al_dia = anterior is not None and sin_commit(anterior) == sin_commit({**datos, 'generado': ''})
     if comprobar:
         print('El manifiesto está al día.' if al_dia else 'El manifiesto NO está al día: ejecuta scripts/temario/manifiesto-app.py.')
