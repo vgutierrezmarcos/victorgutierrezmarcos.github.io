@@ -15,6 +15,9 @@ De dónde sale cada cosa:
 - Los ficheros de la web: la lista WEB de abajo (añadir aquí lo nuevo); la fecha
   es la del último commit que los tocó.
 - Las explicaciones del test: fijas (solo en la app).
+- La skill «Prepara con Claude»: del mismo manifiesto (clave skill, que escribe
+  scripts/skill-opositor.py); exclusivos.js rellena con ella el botón de descarga
+  de oposicion/prepara-con-claude.html.
 
 Nada se marca a mano en las páginas: el campo «exclusivo» vive aquí.
 
@@ -84,6 +87,15 @@ def main():
         if d and (d.get('aprobado') or '') >= CORTE:
             formatos = [k for k in ('pdf', 'html', 'docx') if d.get(k)] + (['repaso'] if d.get('repaso') else [])
             materiales.append({'tipo': 'guia', 'codigo': d.get('archivo', '1D01'), 'titulo': d.get('titulo', 'Guía para el dictamen de coyuntura económica'), 'donde': 'app', 'fecha': d.get('aprobado'), 'revisado': d.get('fecha'), 'formatos': formatos})
+        s = m.get('skill')
+        if s and s.get('ruta'):
+            # La skill «Prepara con Claude» (scripts/skill-opositor.py la construye y la
+            # registra en el manifiesto): material exclusivo con su propia licencia,
+            # descargable desde la app o desde la web con sesión iniciada.
+            base = (m.get('cdn') or m.get('raw') or '').rstrip('/')
+            materiales.append({'tipo': 'skill', 'codigo': 'prepara-con-claude', 'titulo': 'Skill «Prepara con Claude» para Claude.ai: correctores de cantes y dictámenes, dudas, cronograma y simulacro de tribunal',
+                               'donde': 'app', 'fecha': (s.get('generado') or '')[:10], 'version': s.get('version'), 'formatos': ['zip'],
+                               'url': f"{base}/{s['ruta']}" if base else None, 'tamano': s.get('tamano'), 'temas': len(s.get('temas') or []), 'sellar': False})
     materiales.append({'tipo': 'test', 'codigo': 'explicaciones', 'titulo': 'Explicaciones de las 1004 preguntas oficiales del test («¿Por qué?»), con 232 gráficos', 'donde': 'app', 'fecha': '2026-10-24', 'formatos': ['app']})
     salida = {
         'generado': date.today().isoformat(),

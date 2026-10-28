@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepara con Claude: equipo de preparación con IA para TCEE y DCE | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Skill de Claude para preparar la oposición a TCEE y DCE: corrige tus cantes y dictámenes, resuelve dudas con el temario, organiza tu cronograma y te pregunta como el tribunal. Cómo instalarla y usarla paso a paso.">
+
+    <!-- SEO: Canonical URL -->
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/oposicion/prepara-con-claude.html">
+
+    <!-- SEO: Palabras clave adicionales -->
+    <meta name="keywords" content="Prepara con Claude, skill Claude oposiciones, corregir cante, corrector dictamen coyuntura, IA oposición TCEE, DCE, cronograma oposición, simulacro tribunal">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Prepara con Claude: equipo de preparación con IA para TCEE y DCE">
+    <meta property="og:description" content="Skill de Claude que corrige tus cantes y dictámenes, resuelve dudas con el temario, organiza tu cronograma y te pregunta como el tribunal.">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/oposicion/prepara-con-claude.html">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prepara con Claude: equipo de preparación con IA para TCEE y DCE">
+    <meta name="twitter:description" content="Skill de Claude que corrige tus cantes y dictámenes, resuelve dudas con el temario, organiza tu cronograma y te pregunta como el tribunal.">
+    <meta name="twitter:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#5F2987">
+
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="../styles.css" as="style">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog de Víctor Gutiérrez Marcos" href="https://www.victorgutierrezmarcos.es/blog/newsletter/rss.xml">
+
+    <!-- Preconnect -->
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+
+    <link rel="stylesheet" href="/cookie-consent.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../search-styles.css">
+    <link rel="stylesheet" href="../cookie-consent.css">
+
+    <!-- Títulos de sección y piezas propias de esta guía (styles.css solo da estilo a h3 dentro de .content-text) -->
+    <style>
+        .content-text h2 {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin: 2.5rem 0 1rem 0;
+        }
+        .section-title .etiqueta-exclusivo { font-size: 0.5em; vertical-align: 0.45em; margin-left: 0.3em; }
+        .guia-indice { font-family: var(--font-ui); font-size: 0.92rem; margin: 1.25rem 0 0.5rem; }
+        .guia-indice ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem; }
+        .guia-indice a { color: var(--color-primary); }
+        .content-text ol { margin: 1rem 0 1.5rem 1.5rem; }
+        .content-text ol li { margin-bottom: 0.6rem; }
+        .content-text ol li::marker { color: var(--color-primary); font-weight: 600; }
+        .agentes { list-style: none; margin: 1rem 0 1.5rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.6rem 1.4rem; font-family: var(--font-ui); }
+        .agentes li { margin: 0; padding: 0.5rem 0 0.4rem; border-top: 1px solid var(--color-border-light); line-height: 1.5; }
+        .agentes strong { display: block; font-family: var(--font-display); color: var(--color-primary); }
+        .botones { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; }
+        .capturas { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+        .capturas figure { margin: 0; }
+        .capturas img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-bg-cream); }
+        .capturas figcaption, .video-claude figcaption { font-family: var(--font-ui); font-size: 0.88rem; color: var(--color-text-muted); margin-top: 0.4rem; }
+        .video-claude { margin: 1rem 0 1.5rem; }
+        .video-claude video, .video-claude .video-yt { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 6px; border: 1px solid var(--color-border); background: #2e2235; }
+        .ejemplos { list-style: none; margin: 1rem 0 1.5rem; padding: 0; }
+        .ejemplos li { margin: 0 0 0.5rem; padding-left: 1rem; border-left: 2px solid var(--color-accent-gold); font-style: italic; color: var(--color-text-muted); }
+        @media (max-width: 480px) { .content-text h2 { font-size: 1.2rem; } }
+    </style>
+
+    <!-- SEO: Datos estructurados Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "copyrightHolder": {"@id": "https://www.victorgutierrezmarcos.es/#victor"},
+        "url": "https://www.victorgutierrezmarcos.es/oposicion/prepara-con-claude.html",
+        "inLanguage": "es",
+        "name": "Prepara con Claude: equipo de preparación con IA para la oposición a TCEE y DCE",
+        "description": "Skill de Claude que corrige cantes y dictámenes, resuelve dudas con el temario, organiza el cronograma y simula al tribunal. Cómo instalarla y usarla paso a paso.",
+        "author": {
+            "@type": "Person",
+            "@id": "https://www.victorgutierrezmarcos.es/#victor",
+            "name": "Víctor Gutiérrez Marcos"
+        }
+    }
+    </script>
+
+    <!-- SEO: Breadcrumbs Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.victorgutierrezmarcos.es/"},
+            {"@type": "ListItem", "position": 2, "name": "Oposición", "item": "https://www.victorgutierrezmarcos.es/oposicion/"},
+            {"@type": "ListItem", "position": 3, "name": "Prepara con Claude"}
+        ]
+    }
+    </script>
+
+    <!-- SEO: Preguntas frecuentes Schema.org (mismas preguntas y respuestas que en la página) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Sirve sin la app?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, para casi todo: puedes escribir tus dudas, pegar un cante que hayas transcrito por tu cuenta, subir la foto de un dictamen o pedir un simulacro. La app aporta dos cosas: la transcripción del cante con marcas de minuto y la exportación de tus datos (cronograma, cantes, tests), que es lo que permite a Claude hacer un cronograma a tu medida, un test de tus fallos o leer tus estadísticas."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Funciona con Claude gratis?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Subir skills a Claude.ai requiere un plan de pago (Pro, unos 20 € al mes; también Max o Team). La skill y el material son gratuitos: Víctor Gutiérrez Marcos no tiene relación con Anthropic ni cobra nada por ello."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Puede equivocarse?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí. Es una inteligencia artificial: corrige con el temario de la web y cita de dónde sale cada corrección, pero puede equivocarse, sobre todo en los temas que aún no están revisados. Por eso cada informe termina con el aviso de que no sustituye la preparación con un preparador que haya pasado por la oposición: contrasta con él lo que te sorprenda y, en caso de duda, manda su criterio."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Alguien ve mis datos?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "La app no envía nada a Claude por su cuenta: los ficheros los subes tú, a tu propia cuenta de Claude, y se rigen por las condiciones de Anthropic. Ni Víctor ni Manuel ven lo que subes ni lo que Claude te responde."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Sirve para la oposición a DCE?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí. La skill conoce el programa y las reglas de las dos oposiciones. Si dices que preparas DCE, o si el fichero de la app lleva «Oposición DCE», corrige y planifica con el programa de Diplomado Comercial del Estado."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Y en Claude Code o Claude Desktop?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí: la skill es la misma carpeta. Descomprime el ZIP en la carpeta de skills de Claude Code (por ejemplo, .claude/skills/ de tu proyecto o de tu usuario) o cárgala en Claude Desktop, y funciona igual que en claude.ai."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <p class="site-title"><a href="../index.html">Víctor Gutiérrez Marcos</a></p>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-app"><a href="../app/abrir/" title="Abrir la app" aria-label="Abrir la app Oposición TCEE y DCE"><img src="../app/assets/icon/icon.svg" alt="" width="30" height="30"></a></li>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="index.html" class="active">Oposición</a></li>
+                <li><a href="../blog/index.html">Blog</a></li>
+                <!-- <li><a href="../comunidad.html">Comunidad</a></li> -->
+                <li><a href="../sobre-mi.html">Sobre mí</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="sub-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="index.html">Introducción</a></li>
+                <li><a href="temario.html">Temario</a></li>
+                <li><a href="organizacion.html">Organización</a></li>
+                <li><a href="enlaces.html">Enlaces</a></li>
+                <li><a href="prepara-con-claude.html" class="active">Prepara con Claude</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-container">
+            <article class="page-content">
+                <h1 class="section-title">Prepara con Claude <span class="etiqueta-exclusivo" title="Material exclusivo de esta web y de la app, para tu estudio personal">Exclusivo</span></h1>
+
+                <div class="content-text">
+                    <p><strong>Prepara con Claude</strong> es un equipo de preparación con inteligencia artificial para la oposición a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE). Es una <em>skill</em> de Claude, la IA de Anthropic: un fichero ZIP que subes a tu propia cuenta de Claude.ai y que le da el temario de esta web, los criterios con los que se corrige un cante y un dictamen, y la forma de leer los datos que exporta la app. A partir de ahí, en cualquier chat con Claude puedes pedirle que te corrija un cante, que te explique una duda viendo el temario en conjunto, que te haga el cronograma o que te pregunte como el tribunal.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>No sustituye la preparación con un preparador que haya pasado por la oposición.</strong> Claude corrige con el temario y cita de dónde sale cada corrección, pero es una IA y puede equivocarse. Contrasta con tu preparador lo que te sorprenda y, en caso de duda, manda su criterio. Víctor Gutiérrez Marcos no tiene relación con Anthropic ni cobra nada por esta skill.</p>
+                    </div>
+
+                    <nav class="guia-indice" aria-label="Contenido de esta página">
+                        <ul>
+                            <li><a href="#que-hace">Qué hace</a></li>
+                            <li><a href="#necesitas">Qué necesitas</a></li>
+                            <li><a href="#instalar">Cómo instalarla</a></li>
+                            <li><a href="#cante">Corregir un cante</a></li>
+                            <li><a href="#dictamen">Corregir un dictamen</a></li>
+                            <li><a href="#cronograma">El cronograma</a></li>
+                            <li><a href="#mas">Dudas, tribunal, test y más</a></li>
+                            <li><a href="#privacidad">Privacidad</a></li>
+                            <li><a href="#licencia">Licencia</a></li>
+                            <li><a href="#video">Vídeo</a></li>
+                            <li><a href="#preguntas">Preguntas frecuentes</a></li>
+                        </ul>
+                    </nav>
+
+                    <h2 id="que-hace">Qué hace</h2>
+                    <p>La skill reúne a varios «agentes», cada uno con una tarea. No tienes que elegir ninguno: escribes lo que quieres y Claude abre el que toca.</p>
+                    <ul class="agentes">
+                        <li><strong>Corrector de cantes</strong>La app transcribe tu cante con marcas de minuto y lo manda a Claude con un toque; Claude lo corrige frente al tema y te dice qué arreglar primero.</li>
+                        <li><strong>Corrector de dictámenes</strong>Sube la foto o el PDF de tu dictamen de coyuntura, aunque esté a mano, y lo corrige frente a la guía del dictamen.</li>
+                        <li><strong>Corrector de temas escritos</strong>Para los ejercicios escritos (cuarto y quinto de TCEE; primero y cuarto de DCE): foto o texto del tema y el informe de lo que falta y lo que sobra.</li>
+                        <li><strong>Solucionador de dudas</strong>Responde viendo el temario en conjunto: el programa, los bloques, las conexiones entre temas, la notación común y los temas revisados, citando dónde se estudia cada cosa.</li>
+                        <li><strong>Organizador del cronograma</strong>Con tus datos de la app, reparte los temas por semanas hasta la fecha del examen y devuelve un bloque que la app importa con «Traer el tuyo».</li>
+                        <li><strong>Simulacro de tribunal</strong>Te pregunta como lo haría el tribunal al terminar el cante, por turnos, con preguntas del tema y del resto del temario.</li>
+                        <li><strong>Test personal</strong>Diez preguntas nuevas al estilo oficial sobre lo que fallas, con explicación, a partir de tus resultados en la app.</li>
+                        <li><strong>¿Qué me toca hoy?</strong>El plan del día con tu cronograma, los repasos que tocan y las dudas que dejaste pendientes.</li>
+                        <li><strong>Ficha de repaso de tus apuntes</strong>Manda tus propios apuntes y te devuelve una ficha de repaso con el formato del temario.</li>
+                        <li><strong>Lectura de estadísticas</strong>Cómo van tus tests y tus cantes, qué temas flojean y qué conviene hacer con ello.</li>
+                    </ul>
+
+                    <h2 id="necesitas">Qué necesitas</h2>
+                    <ol>
+                        <li><strong>Una cuenta de Claude.ai de pago.</strong> El plan Pro (unos 20 € al mes) basta; también vale Max o Team. Es lo que permite subir skills: con la cuenta gratuita no se puede.</li>
+                        <li><strong>La app «Oposición TCEE · DCE».</strong> Es la que transcribe los cantes y exporta tus datos para Claude. Es gratuita: <a href="../app/">cómo instalarla</a>.</li>
+                        <li><strong>La skill.</strong> Un fichero ZIP que se descarga desde la app (<em>Más → Prepara con Claude</em>, con la sesión iniciada) o desde esta página, también con la sesión iniciada con Google. Cada copia lleva el correo de quien la descarga.</li>
+                    </ol>
+                    <div class="botones">
+                        <a id="descargar-skill" class="boton" href="/app/" data-sin-sesion="Inicia sesión para descargar la skill o descárgala desde la app">Descargar la skill</a>
+                        <a class="boton boton--secundario" href="../app/">Ir a la app</a>
+                    </div>
+                    <p>La descarga requiere iniciar sesión (con el botón de la cabecera) o hacerse desde la app. Es material exclusivo, para tu uso personal: ver la <a href="#licencia">licencia</a>.</p>
+
+                    <h2 id="instalar">Cómo instalarla, paso a paso</h2>
+                    <ol>
+                        <li><strong>Descarga el ZIP</strong> con el botón de arriba o desde la app (<em>Más → Prepara con Claude</em>). No lo descomprimas: Claude lo quiere tal cual.</li>
+                        <li><strong>Activa la ejecución de código.</strong> En <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>, abre <em>Settings</em> (Configuración) → <em>Capabilities</em> (Capacidades) y activa «Code execution and file creation» si está apagado. Las skills lo necesitan.</li>
+                        <li><strong>Sube la skill.</strong> En la misma pantalla, en el apartado <em>Skills</em>, pulsa «Upload skill» y elige el ZIP. Aparecerá «Prepara con Claude» en la lista, activada.</li>
+                        <li><strong>Úsala.</strong> Abre cualquier chat, escribe lo que quieras («corrige este cante», «hazme el cronograma», «explícame la curva de Phillips») y adjunta tus ficheros. Claude reconoce la skill por lo que pides; no hace falta nombrarla.</li>
+                    </ol>
+                    <div class="capturas">
+                        <figure>
+                            <img src="img/claude/instalar-1.webp" alt="Botón «Descargar la skill» en la pantalla Prepara con Claude de la app" loading="lazy" width="800" height="500">
+                            <figcaption>1. Descarga el ZIP desde la app o desde esta página.</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="img/claude/instalar-2.webp" alt="Pantalla Settings → Capabilities de claude.ai con «Code execution and file creation» activado" loading="lazy" width="800" height="500">
+                            <figcaption>2. Settings → Capabilities: activa «Code execution and file creation».</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="img/claude/instalar-3.webp" alt="Apartado Skills de claude.ai con el botón «Upload skill» y la skill Prepara con Claude en la lista" loading="lazy" width="800" height="500">
+                            <figcaption>3. Skills → «Upload skill» y elige el ZIP.</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="img/claude/instalar-4.webp" alt="Chat de claude.ai con un cante adjunto y la petición «corrige este cante»" loading="lazy" width="800" height="500">
+                            <figcaption>4. En cualquier chat, escribe lo que quieras y adjunta tus ficheros.</figcaption>
+                        </figure>
+                    </div>
+
+                    <h2 id="cante">Cómo corregir un cante</h2>
+                    <ol>
+                        <li>En la app, ve a <em>Cantar</em> y activa <strong>«Transcribir»</strong> en lugar de «Grabar»: el micrófono solo hace una cosa, o graba o transcribe. La transcripción lleva marcas de minuto, para que Claude sepa cuánto has dedicado a cada apartado.</li>
+                        <li>Canta el tema como siempre. Al terminar, guárdalo en el diario y pulsa <strong>«Enviar a Claude»</strong>: la app prepara un fichero de texto con la transcripción y los datos del cante.</li>
+                        <li>En Claude, adjunta ese fichero (<code>.txt</code>) y escribe «corrige este cante». Si quieres, añade qué te preocupa («me he perdido en el segundo apartado», «no sé si el modelo está bien explicado»).</li>
+                    </ol>
+                    <p>Claude devuelve un informe con ocho secciones, siempre en el mismo orden, para que sepas dónde mirar:</p>
+                    <ol>
+                        <li><strong>En tres líneas:</strong> lo principal, para leer de un vistazo.</li>
+                        <li><strong>Estructura y tiempos:</strong> si el orden es el del tema y cuántos minutos has dedicado a cada apartado frente a los que tocan.</li>
+                        <li><strong>Errores de contenido:</strong> qué has dicho, qué es lo correcto y por qué, con el apartado del tema del que sale.</li>
+                        <li><strong>Omisiones y sobras:</strong> lo que faltaba y lo que no hacía falta.</li>
+                        <li><strong>Expresión y pizarra:</strong> muletillas, frases sin terminar y qué habría que dibujar en la pizarra.</li>
+                        <li><strong>Preguntas de comprobación:</strong> para que compruebes que ahora sí lo sabes.</li>
+                        <li><strong>Lo que te preguntaría el tribunal:</strong> preguntas del tema y del resto del temario, como las del examen.</li>
+                        <li><strong>Para la app:</strong> la valoración y los comentarios del cante, listos para copiarlos al diario.</li>
+                    </ol>
+
+                    <h2 id="dictamen">Cómo corregir un dictamen</h2>
+                    <p>Haz una foto a cada hoja del dictamen, o pásalo a PDF, aunque esté escrito a mano: Claude lo lee. Si tienes el cuadernillo de datos con el que lo hiciste, adjúntalo también; así comprueba las cifras que citas. Escribe «corrige este dictamen» y, si quieres, de qué país y de qué fecha es. Lo corrige frente a la <a href="temario/primer-ejercicio.html">guía del dictamen de coyuntura</a>: estructura, uso de los datos, diagnóstico, política económica recomendada y redacción, con lo que arreglarías primero.</p>
+
+                    <h2 id="cronograma">Cómo hacer el cronograma</h2>
+                    <ol>
+                        <li>En la app, ve a <em>Más → Prepara con Claude</em> y pulsa <strong>«Exportar mis datos para Claude»</strong>. Se crea un fichero JSON con tu oposición, tus temas, tus cantes, tus tests y tu cronograma actual (si lo tienes).</li>
+                        <li>En Claude, sube ese fichero y pide el cronograma: «hazme el cronograma hasta el examen», «replanifica: esta semana no he podido estudiar» o «reparte los temas que me faltan en seis semanas».</li>
+                        <li>Claude te explica el plan por semanas y termina con un bloque de líneas con fecha y códigos de tema. Cópialo entero.</li>
+                        <li>En la app, ve a <em>Cronograma</em> → <strong>«Traer el tuyo»</strong> y pégalo (o <em>Más → Prepara con Claude → «Traer cronograma de Claude»</em>). La app te lo enseña antes de crearlo, para que lo revises.</li>
+                    </ol>
+
+                    <h2 id="mas">Dudas, tribunal, test personal y más</h2>
+                    <p>El resto de agentes no necesitan nada especial: escribe lo que quieras en el chat, con o sin tus ficheros de la app. Algunos ejemplos de lo que puedes pedir:</p>
+                    <ul class="ejemplos">
+                        <li>«¿En qué tema se estudia el modelo de Mundell-Fleming y con qué otros temas se relaciona?»</li>
+                        <li>«¿Qué diferencia hay entre la notación del tema de crecimiento y la del de ciclos?»</li>
+                        <li>«Pregúntame como el tribunal sobre el tema que acabo de cantar.»</li>
+                        <li>«Hazme un test de diez preguntas sobre lo que más fallo» (con el JSON de la app).</li>
+                        <li>«¿Qué me toca hoy?» o «¿Qué me toca esta semana?»</li>
+                        <li>«Hazme una ficha de repaso con estos apuntes» (adjuntando tus propios apuntes).</li>
+                        <li>«¿Cómo voy? ¿Qué tal mis tests y mis cantes de este mes?»</li>
+                    </ul>
+                    <p>En todos los casos Claude cita de dónde sale lo que dice (tema, ficha, guía o notación común) y, si un tema aún no está revisado, lo avisa y corrige con el índice del temario y conocimiento general.</p>
+
+                    <h2 id="privacidad">Privacidad</h2>
+                    <p>Lo que subes a Claude lo decides tú, fichero a fichero, y se rige por las <a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noopener">condiciones de Anthropic</a>. La app no envía nada por su cuenta: «Enviar a Claude» y «Exportar mis datos para Claude» solo preparan un fichero que compartes o subes tú. La transcripción del cante la hace tu móvil (en algunos, el servicio de voz de Google); la grabación no sale del dispositivo. Ni Víctor ni Manuel ven lo que subes ni lo que Claude te responde. Más detalles en la <a href="../politica-cookies.html">política de privacidad</a>.</p>
+
+                    <h2 id="licencia">Licencia</h2>
+                    <div class="aviso-exclusivo">
+                        <p><span class="etiqueta-exclusivo">Exclusivo</span> La skill y el material que lleva dentro (temas revisados, fichas, guía del dictamen y notación común) son <strong>material exclusivo</strong>: puedes usarlos para tu preparación personal en tu propia cuenta de Claude. No se pueden subir a otras plataformas, bots ni servicios, ni usarse para entrenar modelos de IA. Ver las <a href="../condiciones-materiales.html#ia">condiciones de uso de los materiales</a>.</p>
+                    </div>
+
+                    <h2 id="video">Vídeo</h2>
+                    <p>Cómo instalar la skill y corregir tu primer cante, en pocos minutos.</p>
+                    <figure class="video-claude">
+                        <video data-video="claude-prepara" controls playsinline preload="none" poster="img/claude/video.webp" width="1920" height="1080" aria-label="Vídeo: Cómo usar Prepara con Claude"></video>
+                        <figcaption>Instalar la skill en claude.ai y corregir un cante transcrito con la app.</figcaption>
+                    </figure>
+
+                    <h2 id="preguntas">Preguntas frecuentes</h2>
+                    <h3>¿Sirve sin la app?</h3>
+                    <p>Sí, para casi todo: puedes escribir tus dudas, pegar un cante que hayas transcrito por tu cuenta, subir la foto de un dictamen o pedir un simulacro. La app aporta dos cosas: la transcripción del cante con marcas de minuto y la exportación de tus datos (cronograma, cantes, tests), que es lo que permite a Claude hacer un cronograma a tu medida, un test de tus fallos o leer tus estadísticas.</p>
+                    <h3>¿Funciona con Claude gratis?</h3>
+                    <p>No. Subir skills a Claude.ai requiere un plan de pago (Pro, unos 20 € al mes; también Max o Team). La skill y el material son gratuitos: Víctor Gutiérrez Marcos no tiene relación con Anthropic ni cobra nada por ello.</p>
+                    <h3>¿Puede equivocarse?</h3>
+                    <p>Sí. Es una inteligencia artificial: corrige con el temario de la web y cita de dónde sale cada corrección, pero puede equivocarse, sobre todo en los temas que aún no están revisados. Por eso cada informe termina con el aviso de que no sustituye la preparación con un preparador que haya pasado por la oposición: contrasta con él lo que te sorprenda y, en caso de duda, manda su criterio.</p>
+                    <h3>¿Alguien ve mis datos?</h3>
+                    <p>La app no envía nada a Claude por su cuenta: los ficheros los subes tú, a tu propia cuenta de Claude, y se rigen por las condiciones de Anthropic. Ni Víctor ni Manuel ven lo que subes ni lo que Claude te responde.</p>
+                    <h3>¿Sirve para la oposición a DCE?</h3>
+                    <p>Sí. La skill conoce el programa y las reglas de las dos oposiciones. Si dices que preparas DCE, o si el fichero de la app lleva «Oposición DCE», corrige y planifica con el programa de Diplomado Comercial del Estado.</p>
+                    <h3>¿Y en Claude Code o Claude Desktop?</h3>
+                    <p>Sí: la skill es la misma carpeta. Descomprime el ZIP en la carpeta de skills de Claude Code (por ejemplo, <code>.claude/skills/</code> de tu proyecto o de tu usuario) o cárgala en Claude Desktop, y funciona igual que en claude.ai.</p>
+
+                    <div class="botones">
+                        <a class="boton" href="../app/">La app Oposición TCEE · DCE</a>
+                        <a class="boton boton--secundario" href="../condiciones-materiales.html">Condiciones de uso de los materiales</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-columnas">
+            <nav class="footer-col" aria-label="Secciones">
+                <p class="footer-col-titulo">Secciones</p>
+                <ul>
+                    <li><a href="../oposicion/index.html">Oposición</a></li>
+                    <li><a href="../oposicion/temario.html">Temario</a></li>
+                    <li><a href="../oposicion/temario/primer-ejercicio/test/simulador.html">Simulador de test</a></li>
+                    <li><a href="../oposicion/por-que-tcee.html">¿Por qué TCEE?</a></li>
+                    <li><a href="../app/">App TCEE y DCE</a></li>
+                    <li><a href="../blog/index.html">Blog</a></li>
+                    <li><a href="../novedades.html">Novedades</a></li>
+                    <li><a href="../sobre-mi.html">Sobre mí</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Fuentes oficiales">
+                <p class="footer-col-titulo">Fuentes oficiales</p>
+                <ul>
+                    <li><a href="https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx" target="_blank" rel="noopener">Procesos selectivos del Ministerio</a></li>
+                    <li><a href="https://atcee.es/la-oposicion-tcee/" target="_blank" rel="noopener">Asociación de Técnicos Comerciales y Economistas del Estado</a></li>
+                    <li><a href="https://www.boe.es/" target="_blank" rel="noopener">Boletín Oficial del Estado</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-licencia">
+            <a class="footer-cc" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener" aria-label="Licencia Creative Commons BY-NC-ND 4.0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M10.4 9.7a2.7 2.7 0 1 0 0 4.6M16.4 9.7a2.7 2.7 0 1 0 0 4.6" transform="translate(-1.4 0)"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><circle cx="12" cy="6.9" r="1.45" fill="currentColor" stroke="none"/><path d="M9.6 9.6h4.8v4.3h-1.25v4h-2.3v-4H9.6z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M14.5 9.7c-.5-.8-1.4-1.2-2.5-1.2-1.3 0-2.3.7-2.3 1.6 0 2.3 4.9 1.3 4.9 3.8 0 1-1.1 1.7-2.6 1.7-1.2 0-2.2-.5-2.7-1.4M12 6.7v1.7M12 15.6v1.7M4.8 4.8l14.4 14.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M7.6 10h8.8M7.6 14h8.8" stroke-width="1.8"/></svg></a>
+            <p>El temario y los artículos se publican con licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener">Creative Commons BY-NC-ND 4.0</a>: puedes copiarlos y compartirlos citando al autor y enlazando el original, pero no venderlos ni publicar versiones modificadas. Los materiales <span class="etiqueta-exclusivo">Exclusivo</span>, publicados o revisados desde el 1 de octubre de 2026, son de uso personal: ver las <a href="../condiciones-materiales.html">condiciones</a>.</p>
+        </div>
+        <div class="footer-inf">
+            <span>© Víctor Gutiérrez Marcos</span>
+            <nav aria-label="Enlaces legales">
+                <a href="../politica-cookies.html">Política de cookies</a>
+                <a href="../condiciones-materiales.html">Condiciones de uso de los materiales</a>
+                <a href="../sobre-mi.html">Contacto</a>
+            </nav>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/victorgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://x.com/i/lists/2013750304991268900" target="_blank" rel="noopener noreferrer" aria-label="Lista de X (Twitter)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                </a>
+                <a href="https://github.com/vgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a href="mailto:contacto@victorgutierrezmarcos.es" aria-label="Correo electrónico">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="../exclusivos.js" defer></script>
+    <script src="../videos.js" defer></script>
+    <script src="../search-engine.js"></script>
+    <script src="../search-ui.js"></script>
+    <script src="../cookie-consent.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- Configuración y Lógica de Auth -->
+    <script src="../firebase-config.js"></script>
+    <script src="../auth.js"></script>
+</body>
+</html>
