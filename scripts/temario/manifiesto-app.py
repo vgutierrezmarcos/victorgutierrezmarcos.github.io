@@ -244,7 +244,11 @@ def main():
     # La entrada «skill» (el ZIP de la skill «Prepara con Claude») la escribe
     # scripts/skill-opositor.py de main: se conserva tal cual al regenerar
     if anterior and 'skill' in anterior:
-        datos['skill'] = anterior['skill']
+        datos['skill'] = dict(anterior['skill'])
+        # El commit en el que se confirmó el ZIP: cuando cambia, el manifiesto se
+        # regenera con un HEAD que ya lo contiene (si no, las bases raw y cdn
+        # apuntarían a un commit sin el ZIP)
+        datos['skill']['commit'] = git('log', '-1', '--format=%H', '--', datos['skill'].get('ruta', '')) or ''
     al_dia = anterior is not None and sin_commit(anterior) == sin_commit({**datos, 'generado': ''})
     if comprobar:
         print('El manifiesto está al día.' if al_dia else 'El manifiesto NO está al día: ejecuta scripts/temario/manifiesto-app.py.')
