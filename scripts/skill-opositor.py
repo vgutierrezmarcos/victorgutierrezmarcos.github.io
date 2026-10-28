@@ -1146,7 +1146,9 @@ def main():
             sys.exit(f'Falta {que}: {ruta}')
     if not os.path.exists(PANDOC):
         sys.exit(f'No encuentro pandoc en {PANDOC} (variable TCEE_PANDOC)')
-    args.salida = args.salida or os.path.join(tempfile.gettempdir(), 'skill-build')
+    # Carpeta de construcción fuera del repo (tempfile.gettempdir() cae en el
+    # directorio actual cuando /tmp no se puede usar, y dejaba la carpeta en la raíz)
+    args.salida = args.salida or os.path.join(os.path.expanduser('~'), '.cache', 'skill-opositor')
     os.makedirs(args.salida, exist_ok=True)
 
     destino, manifiesto, temas = construir(args)
