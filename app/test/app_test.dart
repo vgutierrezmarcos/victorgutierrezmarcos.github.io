@@ -19,6 +19,7 @@ import 'package:tcee_app/features/guia/guia.dart';
 import 'package:tcee_app/features/inicio/permisos_sheet.dart';
 import 'package:tcee_app/features/preparador/tema_anticipado.dart';
 import 'package:tcee_app/core/providers.dart';
+import 'package:tcee_app/data/models/esquema.dart';
 import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/pregunta.dart';
@@ -746,6 +747,43 @@ void main() {
     await tocar(tester, find.textContaining('Congelada hasta el'));
     await tocar(tester, find.text('Descongelar'));
     expect(find.text('1 día seguidos'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('esquema a ciegas: desde Cantar, se compara con el esquema del tema y va al diario como esquema', (tester) async {
+    // Un esquema para el PDF del 3.A.1 (como el de esquemas.json).
+    final url = temario.tema('3.A.1')!.url ?? '';
+    final fichero = Uri.parse(url).pathSegments.last;
+    overrides = [
+      ...overrides,
+      esquemasProvider.overrideWith((ref) => Esquemas({
+            fichero: const [EntradaEsquema(nivel: 0, titulo: '1. OBJETO', pagina: 1), EntradaEsquema(nivel: 1, titulo: '1.1. Definiciones', pagina: 2), EntradaEsquema(nivel: 0, titulo: '2. MÉTODO', pagina: 5), EntradaEsquema(nivel: 1, titulo: '2.1. Ciencia', pagina: 5)],
+          })),
+    ];
+    await usuario.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.1'}));
+    await arrancar(tester);
+    await subpestana(tester, 'Cantar');
+    await tocar(tester, find.text('Sacar un esquema de memoria'));
+    expect(find.textContaining('los que llevas más tiempo sin repasar'), findsOneWidget);
+    await tocar(tester, find.descendant(of: find.byType(ListTile), matching: find.textContaining('3.A.1')));
+    expect(find.text('Ya está: comparar'), findsOneWidget);
+    await tester.enterText(find.byType(TextField), '1. Objeto\n2. Método');
+    await tocar(tester, find.text('Ya está: comparar'));
+    expect(find.text('0 de 4 apartados'), findsOneWidget);
+    await tocar(tester, find.text('1. OBJETO'));
+    await tocar(tester, find.text('2. MÉTODO'));
+    expect(find.text('2 de 4 apartados'), findsOneWidget);
+    await tocar(tester, find.byIcon(Icons.star_border).at(2)); // tres estrellas
+    await tocar(tester, find.text('Guardar en el diario'));
+    final c = plan.cantes().single;
+    expect(c.esquema, isTrue);
+    expect(c.hecho, isTrue);
+    expect(c.resultado!.valoracion, 3);
+    expect(c.resultado!.cubiertos, {'3.A.1': ['1. OBJETO', '2. MÉTODO']});
+    expect(c.resultado!.apartados, {'3.A.1': 4});
+    expect(c.resultado!.comentarios, contains('1. Objeto'));
+    // En el diario, como esquema con su cobertura.
+    await subpestana(tester, 'Diario');
+    expect(find.textContaining('esquema a ciegas · 2/4 apartados'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }

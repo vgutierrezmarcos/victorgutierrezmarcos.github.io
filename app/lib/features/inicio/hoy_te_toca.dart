@@ -13,6 +13,8 @@ import '../plan/cante_page.dart';
 import '../plan/cantes_util.dart';
 import '../temario/abrir_tema.dart';
 import '../test/motor_test.dart';
+import '../cantar/esquema_ciegas_page.dart';
+import '../temario/esquema_tema.dart';
 import 'racha.dart';
 
 /// Una línea de «Hoy te toca»: qué hacer, con un toque que lo abre.
@@ -63,11 +65,15 @@ class TarjetaHoyTeToca extends ConsumerWidget {
       lineas.add(_Linea(Icons.replay, '${pendientes.length} ${pendientes.length == 1 ? 'pregunta' : 'preguntas'} de repaso', () => context.push('/examen', extra: ConfigTest(idsFijos: pendientes, minutos: 0, tipo: 'repaso')), detalle: 'Las que fallaste y ya toca volver a ver'));
     }
 
+    // Candidato para el esquema a ciegas: el tema más frío (si lo activa) o,
+    // si no, el primero que falta de la semana.
+    String? paraEsquema;
     // Los temas de esta semana del cronograma que faltan.
     final estado = opositor ? ref.watch(estadoCronogramaProvider) : null;
     final semana = estado?.semanaActual;
     if (estado != null && semana != null && !semana.descanso) {
       final faltan = semana.temas.where((t) => !estado.hechos.contains(t)).toList();
+      paraEsquema ??= faltan.firstOrNull;
       if (faltan.isNotEmpty) {
         lineas.add(_Linea(
           Icons.event_note,
@@ -106,6 +112,7 @@ class TarjetaHoyTeToca extends ConsumerWidget {
         }
       }
       if (frio != null) {
+        paraEsquema = frio;
         final dias = cuando == null ? null : ahora.difference(cuando).inDays;
         lineas.add(_Linea(
           Icons.ac_unit_outlined,
@@ -122,6 +129,13 @@ class TarjetaHoyTeToca extends ConsumerWidget {
       if (sugerido != null && temario.tema(sugerido) != null) {
         lineas.add(_Linea(Icons.auto_awesome_outlined, 'Siguiente tema sugerido: $sugerido', () => abrirTema(context, temario, sugerido), detalle: temario.tema(sugerido)!.titulo));
       }
+    }
+
+    // Esquema a ciegas del candidato, si tiene esquema.
+    final temaEsquema = paraEsquema == null ? null : temario?.tema(paraEsquema);
+    if (temaEsquema != null && listaControlDisponible(esquemaDelTema(ref, temaEsquema))) {
+      final t = temaEsquema.codigo;
+      lineas.add(_Linea(Icons.psychology_outlined, 'Esquema a ciegas de $t', () => abrirEsquemaCiegas(context, t), detalle: 'Sácalo de memoria con el tiempo del examen y compáralo'));
     }
 
     final racha = opositor ? ref.watch(rachaProvider) : null;

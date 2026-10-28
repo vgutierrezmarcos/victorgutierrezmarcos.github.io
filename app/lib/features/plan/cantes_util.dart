@@ -73,6 +73,13 @@ DateTime proximoDiaDeSemana(DateTime desde, int diaSemana, {int hora = 17, int m
   return DateTime(hoy.year, hoy.month, hoy.day + (salto == 0 ? 7 : salto), hora, minuto);
 }
 
+/// « · esquema a ciegas · 14/19 apartados» para las listas del diario y de la
+/// ficha del alumno (vacío si no hay nada que decir).
+String sufijoCobertura(Cante c) {
+  final cob = c.resultado?.textoCoberturaTotal;
+  return '${c.esquema ? ' · esquema a ciegas' : ''}${cob == null ? '' : ' · $cob'}';
+}
+
 /// Línea de un cante hecho en el diario: «3.A.1 · Objeto y métodos» o, con
 /// varios temas, «3.A.1 y 3.B.2» (todos, no solo el primero).
 String tituloCanteHecho(Cante c, String Function(String codigo) titulo) {

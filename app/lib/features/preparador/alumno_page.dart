@@ -382,7 +382,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                     child: ListTile(
                       title: Text(tituloCanteHecho(c, titulo), maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
                       subtitle: Text(
-                        '${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${idsMias.contains(c.id) ? '' : ' · ${conQuienCanto(c, yo: ref.read(usuarioActualProvider)?.uid, mia: false)}'}',
+                        '${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${idsMias.contains(c.id) ? '' : ' · ${conQuienCanto(c, yo: ref.read(usuarioActualProvider)?.uid, mia: false)}'}${sufijoCobertura(c)}',
                         style: context.textos.labelSmall,
                       ),
                       // De las clases con otros preparadores no se ve la valoración.
