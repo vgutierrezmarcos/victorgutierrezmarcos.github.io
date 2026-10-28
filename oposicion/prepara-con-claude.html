@@ -181,6 +181,14 @@
             },
             {
                 "@type": "Question",
+                "name": "¿Se actualiza sola?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Casi. Cada vez que la usas comprueba en la web si hay versión nueva: los contenidos (temas, fichas, guía) los lee actualizados de la web sin que hagas nada; solo cuando cambian las instrucciones de la skill te avisa para que vuelvas a descargar y subir el ZIP."
+                }
+            },
+            {
+                "@type": "Question",
                 "name": "¿Y en Claude Code o Claude Desktop?",
                 "acceptedAnswer": {
                     "@type": "Answer",
@@ -313,7 +321,7 @@
                     <h2 id="instalar">Cómo instalarla</h2>
                     <ol>
                         <li><strong>Descarga el ZIP</strong> con el botón de arriba o desde la app (<em>Más → Prepara con Claude</em>). No lo descomprimas: se sube tal cual.</li>
-                        <li><strong>Súbelo a Claude.</strong> En <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>, abre <em>Configuración → Capacidades</em> (en inglés, <em>Settings → Capabilities</em>). En el apartado «Skills», pulsa «Upload skill» y elige el ZIP. Si no ves «Skills», activa antes «Code execution and file creation» en esa misma pantalla y vuelve a mirar.</li>
+                        <li><strong>Súbelo a Claude.</strong> En <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>, abre <em>Ajustes</em> (en el menú de tu nombre, abajo a la izquierda) → <em>Skills</em> → botón <em>Añadir</em> → <em>Subir Skill</em>; elige el ZIP y pulsa <em>Subir</em>. Claude hace un análisis de seguridad del fichero y la skill aparece en la pestaña «Tuyos», ya activada. (Si la interfaz está en inglés: <em>Settings → Skills → Add → Upload skill</em>.)</li>
                         <li><strong>Úsala.</strong> Abre un chat y escribe lo que quieras: «corrige este cante», «hazme el cronograma», «explícame la curva de Phillips». Adjunta tus ficheros si hacen falta. No tienes que nombrar la skill: Claude la reconoce por lo que pides.</li>
                     </ol>
                     <!-- Las capturas aún no existen: cada figura se oculta sola mientras falte su imagen -->
@@ -323,12 +331,12 @@
                             <figcaption>1. Descarga el ZIP desde la app o desde esta página.</figcaption>
                         </figure>
                         <figure>
-                            <img src="img/claude/instalar-2.webp" alt="Pantalla Configuración → Capacidades de claude.ai con «Code execution and file creation» activado" loading="lazy" width="800" height="500" onerror="this.closest('figure').hidden=true">
-                            <figcaption>2. Configuración → Capacidades: si no ves «Skills», activa «Code execution and file creation».</figcaption>
+                            <img src="img/claude/instalar-2.webp" alt="Ajustes de claude.ai, apartado Skills, con el botón Añadir y la opción Subir Skill; «Code execution and file creation» activado" loading="lazy" width="800" height="500" onerror="this.closest('figure').hidden=true">
+                            <figcaption>2. Ajustes → Skills → Añadir → Subir Skill.</figcaption>
                         </figure>
                         <figure>
-                            <img src="img/claude/instalar-3.webp" alt="Apartado Skills de claude.ai con el botón «Upload skill» y la skill Prepara con Claude en la lista" loading="lazy" width="800" height="500" onerror="this.closest('figure').hidden=true">
-                            <figcaption>2. Skills → «Upload skill» y elige el ZIP.</figcaption>
+                            <img src="img/claude/instalar-3.webp" alt="Pantalla Subir una Skill de claude.ai con el ZIP prepara-con-claude.zip elegido y el botón Subir" loading="lazy" width="800" height="500" onerror="this.closest('figure').hidden=true">
+                            <figcaption>3. Elige el ZIP, pulsa Subir y espera el análisis de seguridad.</figcaption>
                         </figure>
                         <figure>
                             <img src="img/claude/instalar-4.webp" alt="Chat de claude.ai con un cante adjunto y la petición «corrige este cante»" loading="lazy" width="800" height="500" onerror="this.closest('figure').hidden=true">
@@ -443,6 +451,8 @@
                     <p>La app no envía nada a Claude por su cuenta: los ficheros los subes tú, a tu propia cuenta de Claude, y se rigen por las condiciones de Anthropic. Ni Víctor ni Manuel ven lo que subes ni lo que Claude te responde.</p>
                     <h3>¿Sirve para la oposición a DCE?</h3>
                     <p>Sí. La skill conoce el programa y las reglas de las dos oposiciones. Si dices que preparas DCE, o si el fichero de la app lleva «Oposición DCE», corrige y planifica con el programa de Diplomado Comercial del Estado.</p>
+                    <h3>¿Se actualiza sola?</h3>
+                    <p>Casi. Cada vez que la usas, la skill comprueba en esta web si hay una versión nueva. Si han cambiado los contenidos (un tema revisado nuevo, una ficha corregida, la guía del dictamen), los lee directamente de la web y trabaja con la versión al día sin que hagas nada. Solo cuando cambian las instrucciones de la propia skill te avisa al principio de la respuesta para que vuelvas a descargar el ZIP y subirlo (un minuto). Las skills subidas a Claude.ai no se actualizan solas por sí mismas; por eso está hecho así.</p>
                     <h3>¿Y en Claude Code o Claude Desktop?</h3>
                     <p>Sí: la skill es la misma carpeta. Dile a Claude «instala esta skill» con el ZIP adjunto y lo hace. En Claude Code, descomprime el ZIP en <code>.claude/skills/</code> de tu carpeta de la oposición (o en <code>~/.claude/skills/</code> para tenerla en todas). Funciona igual que en claude.ai y, si le das acceso a <a href="#carpeta">tu carpeta de la oposición</a>, guarda los informes junto a cada cante.</p>
 

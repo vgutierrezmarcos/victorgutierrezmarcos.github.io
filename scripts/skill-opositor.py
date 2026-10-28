@@ -60,7 +60,10 @@ CANON = os.path.join(WT, 'oposicion', 'temario', 'canon')
 FUENTE_SKILL = os.path.join(RAIZ, 'claude', 'prepara-con-claude')
 MACROS = os.path.join(RAIZ, 'scripts', 'skill-opositor', 'macros-repaso.tex')
 ZIP_RUTA = 'oposicion/temario/app/prepara-con-claude.zip'
-NOMBRE = 'prepara-con-claude'
+# Nombre técnico de la skill (carpeta dentro del ZIP y `name` de SKILL.md): Claude.ai
+# no admite la palabra «claude» en el nombre, así que el título «Prepara con Claude»
+# es solo el nombre comercial.
+NOMBRE = 'prepara-oposicion'
 _WIN = '/mnt/c/Users/vgutierrez/AppData/Local/Programs'
 PANDOC = os.environ.get('TCEE_PANDOC', f'{_WIN}/Quarto/bin/tools/pandoc.exe')
 SKILLS_USUARIO = os.path.expanduser('~/.claude/skills')
@@ -1013,8 +1016,58 @@ def kb(n):
     return f'{n / 1024:,.0f} KB'.replace(',', '.')
 
 
+# Carpeta de la rama donde se publica la skill también desplegada (fichero a
+# fichero, con URL estable) y su version.json: así la skill instalada puede
+# comprobar si hay versión nueva y leer de la web los ficheros más recientes
+# sin que el opositor tenga que volver a subir el ZIP (SKILL.md lo explica).
+SKILL_RUTA = 'oposicion/temario/app/skill'
+RAMA_RAW = 'https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/'
+# Lo que cuenta como «instrucciones» (si cambia, hay que volver a subir el ZIP;
+# el resto son contenidos que la skill puede leer de la web)
+INSTRUCCIONES = ('SKILL.md', 'LICENCIA.md', 'references/agentes', 'references/oposiciones', 'references/datos-app.md',
+                 'references/como-se-canta.md', 'references/carpeta-oposicion.md', 'assets', 'scripts')
+
+
+def sha_instrucciones(destino):
+    h = hashlib.sha256()
+    for rel in INSTRUCCIONES:
+        ruta = os.path.join(destino, rel)
+        if os.path.isfile(ruta):
+            h.update(rel.encode()); h.update(open(ruta, 'rb').read())
+        elif os.path.isdir(ruta):
+            for base, carpetas, ficheros in os.walk(ruta):
+                carpetas.sort()
+                for f in sorted(ficheros):
+                    r = os.path.join(base, f)
+                    h.update(os.path.relpath(r, destino).encode()); h.update(open(r, 'rb').read())
+    return h.hexdigest()[:16]
+
+
 def empaquetar(destino, manifiesto, temas, sin_temas):
-    """ZIP con la carpeta prepara-con-claude/ dentro y la entrada «skill» del manifiesto."""
+    """ZIP con la carpeta prepara-oposicion/ dentro, la skill desplegada en la rama
+    (SKILL_RUTA) con su version.json, y la entrada «skill» del manifiesto."""
+    ahora = datetime.now()
+    version = {
+        'version': f'{ahora.strftime("%Y.%m.%d")}-{len(temas)}',
+        'generado': ahora.strftime('%Y-%m-%dT%H:%M'),
+        'instrucciones': sha_instrucciones(destino),
+        'temas': temas,
+        'sinTemas': bool(sin_temas),
+        'zip': 'https://www.victorgutierrezmarcos.es/oposicion/prepara-con-claude.html',
+        'base': f'{RAMA_RAW}{SKILL_RUTA}/{NOMBRE}/',
+        'versionUrl': f'{RAMA_RAW}{SKILL_RUTA}/version.json',
+    }
+    with open(os.path.join(destino, 'VERSION.txt'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write(f"version: {version['version']}\ngenerado: {version['generado']}\ninstrucciones: {version['instrucciones']}\n"
+                f"versionUrl: {version['versionUrl']}\nbase: {version['base']}\n")
+    # Copia desplegada en la rama (se borra la anterior) y version.json al lado
+    desplegada = os.path.join(WT, SKILL_RUTA)
+    if os.path.exists(desplegada):
+        shutil.rmtree(desplegada)
+    shutil.copytree(destino, os.path.join(desplegada, NOMBRE))
+    with open(os.path.join(desplegada, 'version.json'), 'w', encoding='utf-8', newline='\n') as f:
+        json.dump(version, f, ensure_ascii=False, indent=1)
+        f.write('\n')
     zip_destino = os.path.join(WT, ZIP_RUTA)
     os.makedirs(os.path.dirname(zip_destino), exist_ok=True)
     with zipfile.ZipFile(zip_destino, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
@@ -1025,13 +1078,15 @@ def empaquetar(destino, manifiesto, temas, sin_temas):
                 z.write(ruta, os.path.join(NOMBRE, os.path.relpath(ruta, destino)))
     with open(zip_destino, 'rb') as f:
         contenido = f.read()
-    ahora = datetime.now()
     manifiesto['skill'] = {
         'ruta': ZIP_RUTA,
         'tamano': len(contenido),
         'sha': hashlib.sha256(contenido).hexdigest(),
-        'version': f'{ahora.strftime("%Y.%m.%d")}-{len(temas)}',
-        'generado': ahora.strftime('%Y-%m-%dT%H:%M'),
+        'version': version['version'],
+        'generado': version['generado'],
+        'instrucciones': version['instrucciones'],
+        'desplegada': f'{SKILL_RUTA}/{NOMBRE}/',
+        'versionUrl': version['versionUrl'],
         'temas': temas,
         'sinTemas': bool(sin_temas),
     }
@@ -1079,7 +1134,7 @@ def comprobar():
 def main():
     p = argparse.ArgumentParser(description='Construye el ZIP de la skill «Prepara con Claude».')
     p.add_argument('--sin-temas', action='store_true', help='sin temas/<T>/tema.md ni la guía del dictamen (solo fichas y guiones)')
-    p.add_argument('--instalar', action='store_true', help='copia la skill a ~/.claude/skills/prepara-con-claude/')
+    p.add_argument('--instalar', action='store_true', help='copia la skill a ~/.claude/skills/prepara-oposicion/')
     p.add_argument('--comprobar', action='store_true', help='no escribe: dice si el ZIP está al día con el manifiesto')
     p.add_argument('--solo', nargs='+', metavar='T', help='solo estos temas (3A08 3A09 1D01…)')
     p.add_argument('--salida', metavar='DIR', help='carpeta de construcción (por defecto, una temporal)')

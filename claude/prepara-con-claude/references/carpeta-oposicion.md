@@ -31,7 +31,7 @@ Oposición TCEE/                      (o «Oposición DCE»)
 
 - **Claude.ai en el navegador o en el móvil**: sube a cada chat lo que haga falta (la transcripción, el JSON, las fotos). Un **Proyecto** de Claude.ai con la skill activada y los ficheros de `00 Organización` como conocimiento evita subirlos cada vez: crea el proyecto «Oposición» y usa siempre ese.
 - **Claude Desktop (Windows y Mac)**: la app de escritorio puede trabajar sobre una carpeta de tu ordenador (modo de trabajo con ficheros): dale acceso a `Oposición TCEE` y pídele «corrige el cante de hoy» o «guarda el informe junto a la transcripción»; leerá y escribirá ahí. Instala la skill igual que en Claude.ai (misma cuenta).
-- **Claude Code (terminal)**: abre una terminal en la carpeta y escribe `claude`. Para que use la skill, descomprime el ZIP en `Oposición TCEE/.claude/skills/prepara-con-claude/` (o en `~/.claude/skills/`); después, en la terminal, pide lo mismo que en el chat. Es la forma más cómoda de que los informes queden guardados solos en `02 Cantes`.
+- **Claude Code (terminal)**: abre una terminal en la carpeta y escribe `claude`. Para que use la skill, descomprime el ZIP en `Oposición TCEE/.claude/skills/prepara-oposicion/` (o en `~/.claude/skills/`); después, en la terminal, pide lo mismo que en el chat. Es la forma más cómoda de que los informes queden guardados solos en `02 Cantes`.
 
 ## Qué le pides a Claude cuando trabaja en la carpeta
 
