@@ -13,6 +13,8 @@ import '../plan/cante_page.dart';
 import '../plan/cantes_util.dart';
 import '../temario/abrir_tema.dart';
 import '../test/motor_test.dart';
+import '../../data/models/reto.dart';
+import '../../data/repos/usuario_repo.dart' show Ajustes;
 import '../cantar/esquema_ciegas_page.dart';
 import '../preparador/deberes.dart';
 import '../temario/esquema_tema.dart';
@@ -51,12 +53,20 @@ class TarjetaHoyTeToca extends ConsumerWidget {
     if (enCurso != null) {
       lineas.add(_Linea(Icons.play_circle_outline, 'Continuar el test', () => context.push('/examen', extra: enCurso), detalle: '${enCurso.respondidas} de ${enCurso.ids.length} respondidas'));
     } else if (banco != null) {
+      // Hecho: la línea del reto (si aporta su nota y hay bastantes hoy).
+      String detalleDiario = diarioHecho ? 'Hecho' : '10 preguntas, 15 minutos';
+      if (diarioHecho && ajustes.aportarReto) {
+        final hoy = Ajustes.claveDia(ahora);
+        final mio = ref.watch(usuarioRepoProvider).resultadosLocales().where((r) => r.tipo == 'diario' && Ajustes.claveDia(r.timestamp) == hoy).firstOrNull;
+        final reto = ref.watch(retoDiarioProvider).valueOrNull;
+        if (mio != null && reto != null) detalleDiario = reto.texto(RetoDia.cubo(mio.notaSobre10));
+      }
       lineas.add(_Linea(
         Icons.today,
         'Test diario',
         diarioHecho ? null : () => context.push('/examen', extra: ConfigTest(idsFijos: MotorTest.testDiario(banco, ahora).map((p) => p.id).toList(), minutos: 15, tipo: 'diario')),
         hecho: diarioHecho,
-        detalle: diarioHecho ? 'Hecho' : '10 preguntas, 15 minutos',
+        detalle: detalleDiario,
       ));
     }
 

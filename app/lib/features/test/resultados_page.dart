@@ -8,11 +8,14 @@ import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/pregunta.dart';
 import '../../data/models/resultado.dart';
+import '../../data/models/reto.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/texto_formulas.dart';
+import 'compartir_resultado.dart';
 import 'explicacion_pregunta.dart';
 import 'motor_test.dart';
+import 'reto_widgets.dart';
 
 class DatosResultado {
   const DatosResultado({required this.resultado, required this.preguntas, required this.respuestas, this.porTiempo = false, this.antiguo = false});
@@ -89,9 +92,22 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
           title: const Text('Resultados'),
           leading: IconButton(icon: Icon(widget.datos.antiguo ? Icons.arrow_back : Icons.close), onPressed: _alTest),
           actions: [
-            IconButton(
+            PopupMenuButton<String>(
               icon: const Icon(Icons.share_outlined),
-              onPressed: () => compartirTexto(context, 'Test ${Oposiciones.actual.siglas}: ${formatoNota(r.notaSobre10)}/10 · ${r.correctas} aciertos, ${r.incorrectas} fallos, ${r.sinResponder} en blanco (${formatoTiempo(r.tiempoSeconds)}). victorgutierrezmarcos.es'),
+              tooltip: 'Compartir',
+              onSelected: (v) async {
+                if (v == 'texto') {
+                  await compartirTexto(context, '${r.tipo == 'diario' ? 'Test diario' : 'Test'} ${Oposiciones.actual.siglas}: ${formatoNota(r.notaSobre10)}/10 · ${r.correctas} aciertos, ${r.incorrectas} fallos, ${r.sinResponder} en blanco (${formatoTiempo(r.tiempoSeconds)}). victorgutierrezmarcos.es');
+                  return;
+                }
+                // Imagen con la marca de la app (y la línea del reto si la hay).
+                final reto = r.tipo == 'diario' && ref.read(ajustesProvider).aportarReto ? ref.read(retoDiarioProvider).valueOrNull : null;
+                await compartirImagenResultado(context, r, siglas: Oposiciones.actual.siglas, titulo: r.tipo == 'diario' ? 'Test diario' : 'Test', reto: reto != null && reto.suficiente ? reto.texto(RetoDia.cubo(r.notaSobre10)) : null);
+              },
+              itemBuilder: (_) => const [
+                PopupMenuItem(value: 'imagen', child: ListTile(dense: true, contentPadding: EdgeInsets.zero, leading: Icon(Icons.image_outlined), title: Text('Como imagen'))),
+                PopupMenuItem(value: 'texto', child: ListTile(dense: true, contentPadding: EdgeInsets.zero, leading: Icon(Icons.notes), title: Text('Como texto'))),
+              ],
             ),
           ],
         ),
@@ -129,6 +145,8 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
                 style: context.textos.labelSmall,
               ),
             ),
+            // Tras el test diario: cómo les ha ido hoy a los demás (agregado anónimo).
+            if (r.tipo == 'diario' && !widget.datos.antiguo) Padding(padding: const EdgeInsets.only(top: 12), child: TarjetaReto(miNota: RetoDia.cubo(r.notaSobre10))),
             if (aRepetir.isNotEmpty || aRepetirMarcadas.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(top: 10),

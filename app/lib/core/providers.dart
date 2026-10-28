@@ -18,6 +18,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import '../data/models/temas_clase.dart';
 import '../features/cronograma/planificador.dart' show compararCodigos;
 import '../features/inicio/racha.dart';
+import '../data/models/reto.dart';
 import '../features/test/motor_test.dart' show TestEnCurso;
 import '../data/models/esquema.dart';
 import '../data/models/estructura.dart';
@@ -497,6 +498,14 @@ final leitnerProvider = NotifierProvider<LeitnerNotifier, EstadoLeitner>(Leitner
 /// Test a medias guardado en este dispositivo (para «Continuar el test»).
 /// Se invalida al guardarlo, al terminarlo y al abandonarlo.
 final testEnCursoProvider = Provider<TestEnCurso?>((ref) => ref.watch(usuarioRepoProvider).testEnCurso());
+
+/// El agregado anónimo del test diario de hoy (null si no lo aporta, sin
+/// sesión o sin red). Se invalida al terminar el test diario.
+final retoDiarioProvider = FutureProvider<RetoDia?>((ref) async {
+  ref.watch(authStateProvider);
+  if (!ref.watch(ajustesProvider).aportarReto) return null;
+  return ref.watch(usuarioRepoProvider).leerReto();
+});
 
 /// Racha de días con actividad (null si el opositor no la tiene activada).
 final rachaProvider = Provider<Racha?>((ref) {

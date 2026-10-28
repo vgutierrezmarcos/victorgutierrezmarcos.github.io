@@ -49,6 +49,17 @@ service cloud.firestore {
       return path('/databases/' + database + '/documents/' + (op == 'tcee' ? '' : 'oposiciones/' + op + '/') + resto);
     }
 
+    // Reto diario: la marca de participación de quien escribe, creada en esta
+    // misma transacción (no existía antes y existe después), y su nota.
+    function participaAhora(op, dia) {
+      return !exists(enRed(op, 'retoDiario/' + dia + '/participantes/' + request.auth.uid))
+        && existsAfter(enRed(op, 'retoDiario/' + dia + '/participantes/' + request.auth.uid));
+    }
+
+    function notaReto(op, dia) {
+      return getAfter(enRed(op, 'retoDiario/' + dia + '/participantes/' + request.auth.uid)).data.nota;
+    }
+
     // Documento de los datos de un usuario en una oposición.
     function deUsuario(op, uid, resto) {
       return path('/databases/' + database + '/documents/users/' + uid + '/' + (op == 'tcee' ? '' : 'oposiciones/' + op + '/') + resto);
@@ -530,6 +541,34 @@ RED = """
             || (resource.data.alumno == request.auth.uid && request.resource.data.estado == 'cancelada' && soloCambia(['estado', 'updatedAt'])));
         allow delete: if conSesionEn(%OP%) && (resource.data.alumno == request.auth.uid || resource.data.preparador == request.auth.uid);
       }
+
+    // ------------------------------------------------ Reto diario (agregado anónimo)
+    // Un documento por día (retoDiario/{AAAA-MM-DD}): cuántos han hecho el
+    // test diario, la suma de sus notas y cuántos sacaron cada nota (c0…c10).
+    // Lo lee cualquiera con cuenta (nunca la lista de participantes: cada uno
+    // solo su marca); solo se suma uno mismo, una vez (marca en
+    // participantes/{uid} creada en la misma transacción) y de uno en uno,
+    // con una nota de 0 a 10. Nada identificable en el contador.
+    match /retoDiario/{dia} {
+      allow get: if conSesionEn(%OP%);
+      allow create: if conSesionEn(%OP%) && participaAhora(%OP%, dia)
+        && request.resource.data.keys().hasOnly(['hechos', 'sumaNotas', 'c0', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'])
+        && request.resource.data.hechos == 1
+        && request.resource.data.sumaNotas == notaReto(%OP%, dia)
+        && request.resource.data['c' + string(notaReto(%OP%, dia))] == 1;
+      allow update: if conSesionEn(%OP%) && participaAhora(%OP%, dia)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['hechos', 'sumaNotas', 'c' + string(notaReto(%OP%, dia))])
+        && request.resource.data.hechos == resource.data.hechos + 1
+        && request.resource.data.sumaNotas == resource.data.sumaNotas + notaReto(%OP%, dia)
+        && request.resource.data['c' + string(notaReto(%OP%, dia))] == resource.data.get('c' + string(notaReto(%OP%, dia)), 0) + 1;
+
+      match /participantes/{uid} {
+        allow get: if conSesionEn(%OP%) && uid == request.auth.uid;
+        allow create: if conSesionEn(%OP%) && uid == request.auth.uid
+          && request.resource.data.keys().hasOnly(['nota'])
+          && request.resource.data.nota is int && request.resource.data.nota >= 0 && request.resource.data.nota <= 10;
+      }
+    }
 """
 
 # Reportes del test, comunes a todas las oposiciones (el banco es el mismo).
