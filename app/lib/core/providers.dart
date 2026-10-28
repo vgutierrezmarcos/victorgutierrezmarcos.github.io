@@ -56,6 +56,10 @@ String? errorFirebase;
 /// sola con la cuenta de Google del móvil (ver [recuperarSesion]).
 bool sesionRecuperada = false;
 
+/// El usuario está cerrando la sesión o eliminando la cuenta a propósito:
+/// no hay que recuperarla.
+bool saliendoAProposito = false;
+
 /// Al arrancar en el móvil sin sesión de Firebase pero con la cuenta de Google
 /// todavía elegida en los servicios de Google Play: vuelve a entrar sin
 /// preguntar. «Cerrar sesión» cierra también la de Google, así que quien salió
@@ -64,7 +68,7 @@ bool sesionRecuperada = false;
 /// S24 con la 1.20.5, 28 oct. 2026). Cuenta las veces en la caja `app` para
 /// enseñarlo en Más → Cuenta. Devuelve si ha recuperado la sesión.
 Future<bool> recuperarSesion() async {
-  if (kIsWeb) return false;
+  if (kIsWeb || saliendoAProposito) return false;
   final auth = FirebaseAuth.instance;
   if (auth.currentUser != null) return false;
   try {
@@ -353,12 +357,17 @@ class SesionNotifier extends Notifier<bool> {
   }
 
   Future<void> cerrarSesion() async {
+    saliendoAProposito = true;
     try {
-      if (!kIsWeb) await GoogleSignIn().signOut();
-    } catch (_) {}
-    await FirebaseAuth.instance.signOut();
-    await programarAvisosEnSegundoPlano(activar: false);
-    ref.invalidate(historialProvider);
+      try {
+        if (!kIsWeb) await GoogleSignIn().signOut();
+      } catch (_) {}
+      await FirebaseAuth.instance.signOut();
+      await programarAvisosEnSegundoPlano(activar: false);
+      ref.invalidate(historialProvider);
+    } finally {
+      saliendoAProposito = false;
+    }
   }
 }
 
@@ -386,6 +395,7 @@ Future<void> borrarTodosMisDatos(WidgetRef ref) async {
 Future<String?> eliminarMiCuenta(WidgetRef ref) async {
   final auth = FirebaseAuth.instance;
   if (auth.currentUser == null) return 'No has iniciado sesión.';
+  saliendoAProposito = true;
   try {
     for (final o in Oposiciones.todas) {
       final db = FirebaseFirestore.instance;
@@ -413,6 +423,7 @@ Future<String?> eliminarMiCuenta(WidgetRef ref) async {
       await auth.currentUser!.delete();
     }
   } on FirebaseException catch (e) {
+    saliendoAProposito = false;
     return e.message ?? e.code;
   }
   await ref.read(sesionProvider.notifier).cerrarSesion();

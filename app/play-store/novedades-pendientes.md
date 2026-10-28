@@ -8,7 +8,7 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 ## Para la siguiente versión en Google Play (1.21.0 publicada el 29 oct.)
 
 - (28 oct., siguiente versión) Reto diario: si lo activas en Ajustes, al terminar el test diario ves cuántos lo han hecho hoy, la nota media y tu posición (solo cifras, nunca nombres); y cualquier resultado se puede compartir como imagen
-- (28 oct., siguiente versión) Si tu móvil pierde la sesión al cerrar la app del todo (le pasaba a Víctor en un Galaxy S24), la app vuelve a entrar sola con tu cuenta de Google al arrancar; «Cerrar sesión» sigue siendo la única forma de salir
+- (28 oct., siguiente versión) Si tu móvil pierde la sesión al cerrar la app del todo (le pasaba a Víctor en un Galaxy S24), o la cierra en pleno uso, la app vuelve a entrar sola con tu cuenta de Google; «Cerrar sesión» sigue siendo la única forma de salir
 - (28 oct., siguiente versión) DCE: la organización del temario de Manuel (bloques con colores y esquemas del 1.º y del 3.º) y el cronograma por fases del 1.er ejercicio. La primera vuelta, después simulacros escritos de 3 horas como en el examen y, al final, la revisión de los temas flojos. Cada tema escrito se apunta como bien, regular o mal
 
 ## Publicado el 29 oct. 2026 (1.21.0 en producción)

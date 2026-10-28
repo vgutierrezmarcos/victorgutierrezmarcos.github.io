@@ -436,6 +436,9 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       if (ahora == null) {
         ref.read(cantesProvider.notifier).dejarDeEscuchar();
         ref.read(sesionesProvider.notifier).dejarDeEscucharAlumnos();
+        // Firebase ha cerrado la sesión en pleno uso (token invalidado) sin
+        // que el usuario tocara «Cerrar sesión»: se recupera sin preguntar.
+        if (antes != null && !saliendoAProposito) unawaited(recuperarSesion());
       }
     });
     return MaterialApp.router(
