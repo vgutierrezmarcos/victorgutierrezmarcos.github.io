@@ -351,6 +351,20 @@ Los cuatro de instalación (`instalar-android`, `-iphone`, `-windows`, `-mac`, c
 
 `tool/capturas_ayuda_test.dart` recorre cada vídeo tocando los botones de verdad y guarda, con cada pantalla, dónde se toca (`pasos.json`). Los guiones están en `promo/ayuda/GUIONES.md` y, como datos, en `VIDEOS` del script. Si se añade o cambia un vídeo, hay que tocar los tres sitios a la vez: el script, `videosAyuda` en `ayuda_videos.dart` y la sección `#ayuda` de `index.html`. Con poca memoria, mejor montar los vídeos de uno en uno (`--solo`).
 
+## El test a partir de tus respuestas
+
+Cada test de la app guarda `respuestas` (id → letra) y, desde el 28 oct. 2026, `marcadas` (la bandera «para revisar»; la web lo ignora), y la app lo explota (`features/test/`):
+
+- **Repetir** desde los resultados: «Repetir las N falladas y en blanco» y «Repetir las marcadas» (`ConfigTest.idsFijos`, sin tiempo); filtro «Marcadas» en la revisión.
+- **Revisar tests antiguos**: en Estadísticas → Historial, cada test con detalle abre `ResultadosPage` (`DatosResultado.deHistorial`, `antiguo: true`: atrás en vez de «Nuevo test»); los de la web (`origen: web`) no traen respuestas y lo dicen («sin detalle»).
+- **Estadísticas**: «Acierto por tema» (`MotorTest.aciertoPorTema`: los 15 peores con al menos 3 respuestas, cada uno abre un test de ese tema) y «Las que más fallas» (`MotorTest.masFalladas`: en blanco no es fallo; «Hacer test con ellas» en modo estudio).
+- **«Mis puntos flojos»**, tercer modo de selección en `ConfigTestPage`: `MotorTest.pesosPuntosFlojos` da a cada candidata un peso = (0,15 + 1 − acierto del tema) × frecuencia del tema en los exámenes (normalizada a media 1, `FrecuenciaTest.frecuencias`) × 2 si ya se falló (Leitner); sin 3 respuestas en el tema, acierto medio. `MotorTest.componer` muestrea sin reposición por claves exponenciales (`-ln(u)/peso`). Los pesos van en `ConfigTest.pesos` y no se guardan.
+- **Modo estudio** (`ConfigTest.modoEstudio`, interruptor «Corregir cada pregunta al responder», sin tiempo): en `ExamenPage` la pregunta respondida queda corregida (verde la buena, roja la elegida), con la nota y el «¿Por qué?» (`ExplicacionPregunta`) antes de seguir.
+- **Test a medias** (`TestEnCurso`, `UsuarioRepo.testEnCurso`, caja `ajustes` → `test_en_curso`, solo en el dispositivo): `ExamenPage` lo guarda en cada respuesta y al salir con «Guardar y seguir luego» (o lo borra con «Abandonar» y al terminar); `TarjetaTestEnCurso` («Continuar el test», N de M respondidas) sale en Hoy y en Test, con «Descartar». La ruta `/examen` admite `ConfigTest` o `TestEnCurso` (`ExamenPage.reanudar`: respuestas, marcadas, pregunta y segundos).
+- **Leitner por días**: cada entrada lleva `lastDate` (ms; la web lo conserva porque cambia las entradas en el sitio) y vence por sesiones (1/2/4/8, como la web) **o** por días (1/3/7/15, `EstadoLeitner.intervalosDias`), así que vuelve aunque no se hagan tests. El recordatorio diario (`Notificaciones.programarRecordatorio`, `pendientesRepaso`) dice cuántas hay.
+
+Pruebas: `motor_test_test.dart` (acierto por tema, más falladas, pesos, composición ponderada, marcadas y test en curso), `leitner_test.dart` (vencimiento por días).
+
 ## Frecuencia de temas en el test y probabilidad de aprobar
 
 `oposicion/temario/primer-ejercicio/test/frecuencia_temas.json` dice cuántas preguntas tuvo cada tema en cada examen oficial del test. Se genera con `python3 ../scripts/frecuencia-test.py` a partir de `preguntas.json` y de `examenes_sin_texto.json` (exámenes clasificados de los que no está el texto); hay que repetirlo al añadir exámenes o cambiar temas. Lo usan la calculadora (`lib/features/organizacion/probabilidad_test*.dart`, igual que `oposicion/probabilidad-test.html` + `.js`), la ficha del tema, el mapa de calor («Lo que cae»), el simulador («N más preguntados») y el cronograma («Primero lo que más cae en el test»). Solo en TCEE.

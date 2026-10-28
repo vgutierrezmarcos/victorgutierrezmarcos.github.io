@@ -7,11 +7,48 @@ import '../../core/providers.dart';
 import '../../data/models/frecuencia_test.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/pregunta.dart';
+import '../../data/models/resultado.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../organizacion/probabilidad_test_page.dart';
 import 'motor_test.dart';
 import 'preguntas_por_tema_page.dart';
+
+/// Tarjeta «Continuar el test» (Hoy y Test): un test a medias guardado en el dispositivo.
+class TarjetaTestEnCurso extends ConsumerWidget {
+  const TarjetaTestEnCurso({super.key});
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final t = ref.watch(testEnCursoProvider);
+    if (t == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Tarjeta(
+        color: context.colores.primarioPalido,
+        onTap: () => context.push('/examen', extra: t),
+        padding: const EdgeInsets.fromLTRB(14, 10, 4, 10),
+        child: Row(children: [
+          Icon(Icons.play_circle_outline, color: context.esquema.primary),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text('Continuar el test', style: context.textos.titleMedium),
+              Text('${t.respondidas} de ${t.ids.length} respondidas${t.config.tipo == 'diario' ? ' · test diario' : ''}${t.config.modoEstudio ? ' · modo estudio' : ''}. Guardado en este dispositivo.', style: context.textos.bodySmall),
+            ]),
+          ),
+          PopupMenuButton<String>(
+            tooltip: 'Más',
+            onSelected: (_) async {
+              await ref.read(usuarioRepoProvider).guardarTestEnCurso(null);
+              ref.invalidate(testEnCursoProvider);
+            },
+            itemBuilder: (_) => const [PopupMenuItem(value: 'olvidar', child: Text('Descartar el test'))],
+          ),
+        ]),
+      ),
+    );
+  }
+}
 
 /// Fase de selección del simulador: temas, exámenes, nº de preguntas, tiempo y baremo.
 /// Es la subpestaña TEST de Estudiar; [pestanas] (los botones) va bajo la cabecera, en el cuerpo.
@@ -24,7 +61,27 @@ class ConfigTestPage extends ConsumerStatefulWidget {
 
 class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
   ConfigTest _cfg = const ConfigTest();
-  String _modo = 'temas'; // temas | examenes
+  String _modo = 'temas'; // temas | examenes | flojos
+  /// Tiempo que tenía antes de activar el modo estudio (sin tiempo), para devolverlo.
+  int _minutosAntes = DefaultsTest.minutos;
+
+  /// «Mis puntos flojos»: el peso de cada candidata según el acierto por tema
+  /// de los tests hechos, lo que cae en el examen y las ya falladas.
+  Map<int, double> _pesos(BancoPreguntas b) {
+    final tests = (ref.read(historialProvider).valueOrNull ?? const <ResultadoTest>[]).where((r) => r.tipo != 'repaso');
+    final leitner = ref.read(leitnerProvider);
+    return MotorTest.pesosPuntosFlojos(
+      MotorTest.filtrar(b, _cfg),
+      aciertoPorTema: MotorTest.aciertoPorTema(tests, b),
+      frecuencias: ref.read(frecuenciaTestProvider).valueOrNull?.frecuencias(PesoRecientes.mas),
+      falladas: {for (final e in leitner.questions.entries) if (e.value.box < 5) e.key},
+    );
+  }
+
+  /// Cuántas respuestas hay en el historial para explicar la ponderación.
+  int get _respuestasHistorial => (ref.watch(historialProvider).valueOrNull ?? const <ResultadoTest>[]).where((r) => r.tipo != 'repaso').fold(0, (n, r) => n + r.respuestas.length);
+
+  void _comenzar(BancoPreguntas b) => context.push('/examen', extra: _modo == 'flojos' ? _cfg.copyWith(pesos: _pesos(b)) : _cfg.copyWith(sinPesos: true));
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +121,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
           children: [
             // El camino a la otra subpestaña.
             if (widget.pestanas != null) Aviso(icono: Icons.menu_book_outlined, titulo: 'Ver el temario', texto: 'Los temas, con sus PDF y tu progreso', onTap: () => ref.read(subpestanaEstudiarProvider.notifier).state = 0),
+            const TarjetaTestEnCurso(),
             if (ref.watch(oposicionProvider).testVoluntario)
               Tarjeta(
                 color: context.colores.primarioPalido,
@@ -108,21 +166,48 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PreguntasPorTemaPage())),
                 ),
               ),
-            TituloSeccion('Selección',
-                accion: SegmentedButton<String>(
-                  showSelectedIcon: false,
-                  segments: const [
-                    ButtonSegment(value: 'temas', label: Text('Temas')),
-                    ButtonSegment(value: 'examenes', label: Text('Exámenes')),
-                  ],
-                  selected: {_modo},
-                  onSelectionChanged: (s) => setState(() {
-                    _modo = s.first;
-                    _cfg = _cfg.copyWith(temas: const {}, examenes: const {});
-                  }),
-                  style: const ButtonStyle(visualDensity: VisualDensity.compact),
-                )),
-            if (_modo == 'temas') _selectorTemas(b, bloques) else _selectorExamenes(b),
+            const TituloSeccion('Selección'),
+            // Tres modos: con «Puntos flojos» no cabe junto al título en el móvil.
+            SizedBox(
+              width: double.infinity,
+              child: SegmentedButton<String>(
+                showSelectedIcon: false,
+                segments: const [
+                  ButtonSegment(value: 'temas', label: Text('Temas')),
+                  ButtonSegment(value: 'examenes', label: Text('Exámenes')),
+                  ButtonSegment(value: 'flojos', label: Text('Puntos flojos')),
+                ],
+                selected: {_modo},
+                onSelectionChanged: (s) => setState(() {
+                  _modo = s.first;
+                  _cfg = _cfg.copyWith(temas: const {}, examenes: const {});
+                }),
+                style: const ButtonStyle(visualDensity: VisualDensity.compact),
+              ),
+            ),
+            const SizedBox(height: 10),
+            if (_modo == 'temas')
+              _selectorTemas(b, bloques)
+            else if (_modo == 'examenes')
+              _selectorExamenes(b)
+            else
+              Tarjeta(
+                color: context.colores.primarioPalido,
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Row(children: [
+                    Icon(Icons.track_changes_outlined, color: context.esquema.primary),
+                    const SizedBox(width: 10),
+                    Expanded(child: Text('Mis puntos flojos', style: context.textos.titleMedium)),
+                  ]),
+                  const SizedBox(height: 6),
+                  Text(
+                    _respuestasHistorial >= 30
+                        ? 'Salen con más probabilidad las preguntas de los temas que peor llevas (según tus tests hechos en la app: $_respuestasHistorial respuestas), las de los temas que más caen en el examen y las que ya has fallado. Un test de todo el temario, pero cargado hacia lo que te falta.'
+                        : 'Todavía tienes pocas respuestas en la app ($_respuestasHistorial; a partir de 30 cuenta el acierto por tema): mientras, salen con más probabilidad las preguntas de los temas que más caen en el examen y las que ya has fallado.',
+                    style: context.textos.bodySmall,
+                  ),
+                ]),
+              ),
             const SizedBox(height: 8),
             // .config-examen de la web: caja verde clara con el título subrayado en dorado.
             Container(
@@ -131,7 +216,23 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
               child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
                 const Subtitulo('Configuración del examen'),
                 _slider('Preguntas', _cfg.numPreguntas.toDouble(), 5, 100, 19, (v) => _cfg = _cfg.copyWith(numPreguntas: v.round()), '${_cfg.numPreguntas}'),
-                _slider('Tiempo', _cfg.minutos.toDouble(), 0, 180, 36, (v) => _cfg = _cfg.copyWith(minutos: v.round()), _cfg.minutos == 0 ? 'Sin límite' : '${_cfg.minutos} min'),
+                if (!_cfg.modoEstudio) _slider('Tiempo', _cfg.minutos.toDouble(), 0, 180, 36, (v) => _cfg = _cfg.copyWith(minutos: v.round()), _cfg.minutos == 0 ? 'Sin límite' : '${_cfg.minutos} min'),
+                // Modo estudio: cada pregunta se corrige al responder, con su explicación, y sin tiempo.
+                // (Material propio: la caja de fuera tiene color y taparía la tinta del interruptor.)
+                Material(
+                  type: MaterialType.transparency,
+                  child: SwitchListTile(
+                    contentPadding: EdgeInsets.zero,
+                    dense: true,
+                    title: Text('Corregir cada pregunta al responder', style: context.textos.titleSmall),
+                    subtitle: Text('Modo estudio: ves si has acertado y el «¿Por qué?» antes de pasar a la siguiente. Sin tiempo.', style: context.textos.labelSmall),
+                    value: _cfg.modoEstudio,
+                    onChanged: (v) => setState(() {
+                      if (v) _minutosAntes = _cfg.minutos;
+                      _cfg = _cfg.copyWith(modoEstudio: v, minutos: v ? 0 : _minutosAntes);
+                    }),
+                  ),
+                ),
                 const SizedBox(height: 8),
                 Row(children: [
                   Expanded(child: _numero('Acierto', _cfg.puntosAcierto, (v) => _cfg = _cfg.copyWith(puntosAcierto: v))),
@@ -166,7 +267,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
             Center(
               child: FilledButton.icon(
                 style: FilledButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16), textStyle: context.textos.labelLarge?.copyWith(fontSize: 16.5), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)), elevation: 3),
-                onPressed: disponibles == 0 ? null : () => context.push('/examen', extra: _cfg),
+                onPressed: disponibles == 0 ? null : () => _comenzar(b),
                 icon: const Icon(Icons.play_arrow),
                 label: Text(disponibles == 0 ? 'No hay preguntas con esos filtros' : 'Comenzar test'),
               ),

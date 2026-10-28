@@ -46,4 +46,25 @@ void main() {
     expect(f.questions[1]!.box, 3);
     expect(f.questions.containsKey(2), isTrue);
   });
+
+  test('vence también por días aunque no se hagan tests, y la fecha se guarda y se lee', () {
+    // Respondidas en la sesión actual (no vencen por sesiones): solo cuentan los días.
+    final d1 = DateTime(2026, 10, 1, 10);
+    final e = EstadoLeitner(sessionCount: 5, questions: {
+      1: EntradaLeitner(box: 1, lastSession: 5, lastDate: d1.millisecondsSinceEpoch), // 1 día
+      2: EntradaLeitner(box: 2, lastSession: 5, lastDate: d1.millisecondsSinceEpoch), // 3 días
+      3: EntradaLeitner(box: 4, lastSession: 5, lastDate: d1.millisecondsSinceEpoch), // 15 días
+      7: EntradaLeitner(box: 1, lastSession: 5), // de la web, sin fecha: solo por sesiones
+    });
+    expect(e.pendientes(ahora: DateTime(2026, 10, 1, 20)), isEmpty);
+    expect(e.pendientes(ahora: DateTime(2026, 10, 2, 11)), [1]);
+    expect(e.pendientes(ahora: DateTime(2026, 10, 4, 11)), [1, 2]);
+    expect(e.pendientes(ahora: DateTime(2026, 10, 20)), [1, 2, 3]);
+    // Al registrar se apunta la fecha, y va y vuelve del JSON.
+    e.registrar(1, true, ahora: DateTime(2026, 10, 2, 11));
+    final v = EstadoLeitner.fromJson(e.toJson());
+    expect(v.questions[1]!.lastDate, DateTime(2026, 10, 2, 11).millisecondsSinceEpoch);
+    expect(v.questions[7]!.lastDate, isNull);
+    expect(v.questions[1]!.box, 2);
+  });
 }

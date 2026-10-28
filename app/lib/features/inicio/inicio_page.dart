@@ -23,6 +23,7 @@ import '../plan/proceso_page.dart';
 import '../plan/cante_page.dart';
 import '../plan/cantes_util.dart';
 import '../preparador/panel_hoy.dart';
+import '../test/config_test_page.dart' show TarjetaTestEnCurso;
 import '../test/motor_test.dart';
 
 /// Hoy: lo que toca cada día. Al opositor, cuentas atrás (examen y próximo
@@ -179,6 +180,8 @@ class InicioPage extends ConsumerWidget {
               ),
               const SizedBox(height: 12),
             ],
+            // Un test a medias guardado en este dispositivo.
+            const TarjetaTestEnCurso(),
             Tarjeta(
               color: diarioHecho ? null : context.colores.primarioPalido,
               onTap: diarioHecho || banco.value == null

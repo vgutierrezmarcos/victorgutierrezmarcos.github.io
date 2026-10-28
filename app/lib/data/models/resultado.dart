@@ -15,6 +15,7 @@ class ResultadoTest {
     required this.tiempoSeconds,
     required this.temas,
     this.respuestas = const {},
+    this.marcadas = const [],
     this.origen = 'app',
     this.tipo = 'test',
     this.sincronizado = false,
@@ -32,12 +33,18 @@ class ResultadoTest {
   final int tiempoSeconds;
   final List<String> temas;
   final Map<int, String?> respuestas;
+  /// Preguntas marcadas «para revisar» durante el test (la bandera), para
+  /// poder repetirlas; la web lo ignora.
+  final List<int> marcadas;
   final String origen;
   /// test | diario | repaso
   final String tipo;
   final bool sincronizado;
 
   double get tasaAcierto => totalPreguntas == 0 ? 0 : correctas / totalPreguntas;
+
+  /// Con el detalle pregunta a pregunta (los tests de la app; los de la web no lo traen).
+  bool get conDetalle => respuestas.isNotEmpty;
 
   Map<String, dynamic> toFirestore() => {
         'puntosBrutos': puntosBrutos,
@@ -50,6 +57,7 @@ class ResultadoTest {
         'tiempoSeconds': tiempoSeconds,
         'temas': temas,
         'respuestas': respuestas.map((k, v) => MapEntry(k.toString(), v)),
+        if (marcadas.isNotEmpty) 'marcadas': marcadas,
         'origen': origen,
         'tipo': tipo,
       };
@@ -79,6 +87,7 @@ class ResultadoTest {
       tiempoSeconds: (m['tiempoSeconds'] as num?)?.toInt() ?? 0,
       temas: ((m['temas'] as List?) ?? []).map((e) => e.toString()).toList(),
       respuestas: rawResp.map((k, v) => MapEntry(int.tryParse(k.toString()) ?? 0, v as String?)),
+      marcadas: ((m['marcadas'] as List?) ?? []).map((e) => (e as num).toInt()).toList(),
       origen: m['origen'] as String? ?? 'web',
       tipo: m['tipo'] as String? ?? 'test',
       sincronizado: m['sincronizado'] as bool? ?? true,
@@ -98,6 +107,7 @@ class ResultadoTest {
         tiempoSeconds: tiempoSeconds,
         temas: temas,
         respuestas: respuestas,
+        marcadas: marcadas,
         origen: origen,
         tipo: tipo,
         sincronizado: sincronizado ?? this.sincronizado,

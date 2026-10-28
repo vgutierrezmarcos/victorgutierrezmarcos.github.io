@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
@@ -14,11 +15,21 @@ import 'explicacion_pregunta.dart';
 import 'motor_test.dart';
 
 class DatosResultado {
-  const DatosResultado({required this.resultado, required this.preguntas, required this.respuestas, this.porTiempo = false});
+  const DatosResultado({required this.resultado, required this.preguntas, required this.respuestas, this.porTiempo = false, this.antiguo = false});
   final ResultadoTest resultado;
   final List<Pregunta> preguntas;
   final Map<int, String?> respuestas;
   final bool porTiempo;
+  /// Un test del historial que se vuelve a revisar (no acaba de hacerse).
+  final bool antiguo;
+
+  /// Las preguntas de un resultado guardado, en el orden en que se respondieron.
+  static DatosResultado deHistorial(ResultadoTest r, BancoPreguntas banco) => DatosResultado(
+        resultado: r,
+        preguntas: r.respuestas.keys.map(banco.porId).whereType<Pregunta>().toList(),
+        respuestas: r.respuestas,
+        antiguo: true,
+      );
 }
 
 /// Fase de resultados: nota, desglose, puntuación por bloque y revisión pregunta a pregunta.
@@ -32,11 +43,19 @@ class ResultadosPage extends ConsumerStatefulWidget {
 class _ResultadosPageState extends ConsumerState<ResultadosPage> {
   String _filtro = 'todas';
 
-  /// De vuelta al simulador: Estudiar, subpestaña TEST.
+  /// De vuelta al simulador: Estudiar, subpestaña TEST (o atrás, si se
+  /// estaba revisando un test antiguo).
   void _alTest() {
+    if (widget.datos.antiguo) {
+      Navigator.of(context).maybePop();
+      return;
+    }
     ref.read(subpestanaEstudiarProvider.notifier).state = 1;
     context.go('/estudiar');
   }
+
+  /// Un test nuevo solo con esas preguntas, sin tiempo.
+  void _repetir(List<int> ids) => context.push('/examen', extra: ConfigTest(idsFijos: ids, minutos: 0, tipo: 'test'));
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +64,20 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
     final porBloque = MotorTest.porBloque(widget.datos.preguntas, widget.datos.respuestas, bloques);
     final aprobado = r.notaSobre10 >= 5;
 
+    final marcadas = r.marcadas.toSet();
+    bool fallada(Pregunta p) => widget.datos.respuestas[p.id] != null && !p.esCorrecta(widget.datos.respuestas[p.id]);
+    bool enBlanco(Pregunta p) => widget.datos.respuestas[p.id] == null;
     final preguntas = widget.datos.preguntas.where((p) {
-      final resp = widget.datos.respuestas[p.id];
       return switch (_filtro) {
-        'falladas' => resp != null && !p.esCorrecta(resp),
-        'blanco' => resp == null,
+        'falladas' => fallada(p),
+        'blanco' => enBlanco(p),
+        'marcadas' => marcadas.contains(p.id),
         _ => true,
       };
     }).toList();
+    // Para repetir: las falladas y en blanco, y las marcadas con la bandera.
+    final aRepetir = [for (final p in widget.datos.preguntas) if (fallada(p) || enBlanco(p)) p.id];
+    final aRepetirMarcadas = [for (final p in widget.datos.preguntas) if (marcadas.contains(p.id)) p.id];
 
     return PopScope(
       canPop: false,
@@ -62,7 +87,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
       child: Scaffold(
         appBar: BarraWeb(
           title: const Text('Resultados'),
-          leading: IconButton(icon: const Icon(Icons.close), onPressed: _alTest),
+          leading: IconButton(icon: Icon(widget.datos.antiguo ? Icons.arrow_back : Icons.close), onPressed: _alTest),
           actions: [
             IconButton(
               icon: const Icon(Icons.share_outlined),
@@ -96,10 +121,32 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
               child: Text(
-                ref.read(usuarioRepoProvider).conSesion ? 'Guardado en tu cuenta: también lo verás en la web.' : 'Guardado en este dispositivo. Inicia sesión para verlo también en la web.',
+                widget.datos.antiguo
+                    ? 'Test del ${DateFormat('d MMM y, HH:mm', 'es').format(r.timestamp)}.'
+                    : ref.read(usuarioRepoProvider).conSesion
+                        ? 'Guardado en tu cuenta: también lo verás en la web.'
+                        : 'Guardado en este dispositivo. Inicia sesión para verlo también en la web.',
                 style: context.textos.labelSmall,
               ),
             ),
+            if (aRepetir.isNotEmpty || aRepetirMarcadas.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Wrap(spacing: 8, runSpacing: 6, children: [
+                  if (aRepetir.isNotEmpty)
+                    FilledButton.tonalIcon(
+                      onPressed: () => _repetir(aRepetir),
+                      icon: const Icon(Icons.replay, size: 18),
+                      label: Text('Repetir las ${aRepetir.length} falladas${r.sinResponder > 0 ? ' y en blanco' : ''}'),
+                    ),
+                  if (aRepetirMarcadas.isNotEmpty)
+                    OutlinedButton.icon(
+                      onPressed: () => _repetir(aRepetirMarcadas),
+                      icon: const Icon(Icons.flag_outlined, size: 18),
+                      label: Text('Repetir las ${aRepetirMarcadas.length} marcadas'),
+                    ),
+                ]),
+              ),
             if (porBloque.length > 1) ...[
               const SizedBox(height: 12),
               // .grafico-bloques
@@ -117,17 +164,18 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
               value: _filtro,
               underline: const SizedBox(),
               style: context.textos.labelLarge,
-              items: const [
-                DropdownMenuItem(value: 'todas', child: Text('Todas')),
-                DropdownMenuItem(value: 'falladas', child: Text('Falladas')),
-                DropdownMenuItem(value: 'blanco', child: Text('En blanco')),
+              items: [
+                const DropdownMenuItem(value: 'todas', child: Text('Todas')),
+                const DropdownMenuItem(value: 'falladas', child: Text('Falladas')),
+                const DropdownMenuItem(value: 'blanco', child: Text('En blanco')),
+                if (marcadas.isNotEmpty) const DropdownMenuItem(value: 'marcadas', child: Text('Marcadas')),
               ],
               onChanged: (v) => setState(() => _filtro = v!),
             )),
             for (var i = 0; i < preguntas.length; i++) _revision(i, preguntas[i]),
             const SizedBox(height: 16),
             Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
-              FilledButton(onPressed: _alTest, child: const Text('Nuevo test')),
+              FilledButton(onPressed: _alTest, child: Text(widget.datos.antiguo ? 'Volver' : 'Nuevo test')),
               OutlinedButton(onPressed: () => context.go('/estudiar/test/estadisticas'), child: const Text('Ver estadísticas')),
             ]),
           ],
@@ -177,6 +225,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
               Icon(switch (estado) { 'ok' => Icons.check_circle, 'fallo' => Icons.cancel, 'anulada' => Icons.info, _ => Icons.remove_circle_outline }, color: color, size: 20),
               const SizedBox(width: 6),
               Etiqueta(p.tema),
+              if (widget.datos.resultado.marcadas.contains(p.id)) Padding(padding: const EdgeInsets.only(left: 6), child: Icon(Icons.flag, size: 16, color: context.colores.dorado)),
             ]),
             const SizedBox(height: 8),
             TextoConFormulas(p.enunciado, style: context.textos.bodyMedium),

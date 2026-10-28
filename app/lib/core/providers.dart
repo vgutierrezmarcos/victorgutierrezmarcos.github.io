@@ -17,6 +17,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../data/models/temas_clase.dart';
 import '../features/cronograma/planificador.dart' show compararCodigos;
+import '../features/test/motor_test.dart' show TestEnCurso;
 import '../data/models/esquema.dart';
 import '../data/models/estructura.dart';
 import '../data/models/explicacion.dart';
@@ -462,7 +463,7 @@ Future<void> reprogramarRecordatorio(Ref ref) async {
     final hora = ref.read(usuarioRepoProvider).ajustes().horaRecordatorio;
     final hoy = Ajustes.claveDia(DateTime.now());
     final hecho = ref.read(usuarioRepoProvider).resultadosLocales().any((r) => r.tipo == 'diario' && Ajustes.claveDia(r.timestamp) == hoy);
-    await Notificaciones.programarRecordatorio(hora, hechoHoy: hecho);
+    await Notificaciones.programarRecordatorio(hora, hechoHoy: hecho, pendientesRepaso: ref.read(usuarioRepoProvider).leitner().pendientes().length);
   } catch (_) {}
 }
 
@@ -490,6 +491,10 @@ class LeitnerNotifier extends Notifier<EstadoLeitner> {
 }
 
 final leitnerProvider = NotifierProvider<LeitnerNotifier, EstadoLeitner>(LeitnerNotifier.new);
+
+/// Test a medias guardado en este dispositivo (para «Continuar el test»).
+/// Se invalida al guardarlo, al terminarlo y al abandonarlo.
+final testEnCursoProvider = Provider<TestEnCurso?>((ref) => ref.watch(usuarioRepoProvider).testEnCurso());
 
 class AjustesNotifier extends Notifier<Ajustes> {
   @override
