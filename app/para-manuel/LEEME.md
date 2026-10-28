@@ -6,9 +6,15 @@ La app «Oposición TCEE · DCE» descarga el temario de DCE de tu web. Esta car
 oposicion/
 ├── temario/temario.json   los 99 temas del programa oficial (1.º, 3.º y 4.º ejercicio);
 │                          los que ya tienes publicados, con el enlace a su página
+├── organizacion/estructura_temario.json
+│                          la organización del temario de tu presentación
+│                          (organizacion_temario_DCE.pptx): bloques con sus colores,
+│                          esquemas y conexiones del 1.er y del 3.er ejercicio
 ├── app-config.json        tu correo de contacto, tu LinkedIn y, si quieres, avisos
 └── enlaces.json           enlaces útiles (vacío de momento)
 ```
+
+La presentación está en `fuentes/` (no se publica). Si la cambias, Víctor vuelve a generar el JSON con `python3 scripts/extraer-estructura-dce.py`. Para que el script la siga entendiendo, mantén la estructura: las diapositivas «Bloques» con un rótulo por sección y una caja por bloque (nombre y «A1 · A2…»), el «Esquema por temas» con una casilla por tema, y en cada ficha «BLOQUE» y «CONECTADO CON».
 
 ## Qué tienes que hacer
 
@@ -25,7 +31,7 @@ No hace falta nada más: tu web está en GitHub Pages, que deja que la app desca
 
 ## Opcional
 
-- **`oposicion/organizacion/estructura_temario.json`**: bloques de temas con colores, esquemas y conexiones, como en la organización del temario de TCEE. Sin él, la app funciona sin esa pantalla.
+- **`fasesEscrito` en `app-config.json`**: cambia, sin publicar la app, los números del cronograma por fases del 1.er ejercicio. Por ejemplo, `"fasesEscrito": {"1": {"diasSinEscribir": 42, "proporcionDescarte": 0.67, "minSalidasDescarte": 3, "maxFlojosSemana": 3, "simulacrosPorSemana": 2, "reparto": {"vuelta": 0.55, "simulacros": 0.30, "revision": 0.15}}}`.
 - **`oposicion/organizacion/como_cantar_un_tema.pdf`**: la ayuda del botón «?» de la pantalla de cantar.
 - **Avisos** en `app-config.json` → `"avisos": ["…"]`: salen en la pantalla Hoy de quien prepare DCE.
 

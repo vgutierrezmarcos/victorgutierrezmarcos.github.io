@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
+import 'fases.dart';
 import 'temario.dart';
 
 /// Qué se hace en un cante de un ejercicio.
@@ -34,6 +35,7 @@ class EjercicioDef {
     this.temasEsquema = 2,
     this.minutosExposicion = 30,
     bool? enCronograma,
+    this.fases,
   }) : _enCronograma = enCronograma;
 
   final int numero;
@@ -84,6 +86,10 @@ class EjercicioDef {
   /// Se estudia tema a tema con un cronograma de vueltas. Por defecto, los de
   /// temas cantados; los escritos de DCE, también.
   bool get enCronograma => _enCronograma ?? cante == TipoCante.temas;
+
+  /// Ejercicio escrito con cronograma por fases (primera vuelta, simulacros y
+  /// revisión de flojos) y temas escritos valorados bien, regular o mal.
+  final FasesEscrito? fases;
 
   /// Título y explicación de la opción de intercalar en el cronograma.
   final (String, String)? intercalar;
@@ -243,6 +249,10 @@ class Oposicion {
   /// y, si no, los del examen.
   int bolasPorParte(int n, AppConfig config) => config.bolasPorParte[n] ?? ejercicio(n)?.bolasPorParte ?? 1;
 
+  /// Fases del cronograma del ejercicio escrito [n] (null si no tiene), con
+  /// lo que cambie app-config.json.
+  FasesEscrito? fasesEscrito(int n, AppConfig config) => ejercicio(n)?.fases?.conCambios(config.fasesEscrito[n]);
+
   /// Partes que hay que desarrollar en [n] (null = todas).
   int? partesARedactar(int n, AppConfig config) => config.partesARedactar[n] ?? ejercicio(n)?.partesARedactar;
 
@@ -362,7 +372,7 @@ class Oposiciones {
     correo: 'contacto@manuelcabadogarcia.es',
     comoCantarUnTema: 'https://manuelcabadogarcia.es/como-cantar-un-tema.html',
     ejercicios: [
-      EjercicioDef(numero: 1, descripcion: 'Economía española, economía pública y UE (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
+      EjercicioDef(numero: 1, descripcion: 'Economía española, economía pública y UE (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true, fases: FasesEscrito()),
       EjercicioDef(numero: 2, descripcion: 'Idiomas'),
       EjercicioDef(numero: 3, descripcion: 'Micro, sector público, macro e internacional (oral)', cante: TipoCante.temas, sorteo: true, bolasPorParte: 2, minutosEsquema: 30, minutosExposicion: 20),
       EjercicioDef(numero: 4, descripcion: 'Técnicas comerciales y organización del Estado (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),

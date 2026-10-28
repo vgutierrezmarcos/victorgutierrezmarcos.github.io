@@ -1,7 +1,8 @@
 import 'dart:ui';
 
 /// Organización del temario (estructura_temario.json), extraída del
-/// PowerPoint de organización con scripts/extraer-estructura-temario.py:
+/// PowerPoint de organización con scripts/extraer-estructura-temario.py
+/// (TCEE) o scripts/extraer-estructura-dce.py (DCE):
 /// bloques con su color, idea clave de cada tema y los esquemas con las
 /// conexiones entre temas y bloques.
 
@@ -16,6 +17,7 @@ class BloqueTemario {
   final String nombre;
   final int ejercicio;
   /// Microeconomía, Macroeconomía o Mixto (3.º); nombre de la parte (4.º).
+  /// En DCE, la sección del PowerPoint de Manuel (p. ej. «Políticas comunitarias»).
   final String categoria;
   final Color color;
   final List<String> temas;
@@ -125,20 +127,18 @@ class Esquema {
 }
 
 class EstructuraTemario {
-  EstructuraTemario({required this.proporcion, required this.bloques, required this.ideas, required this.esquemas}) {
+  EstructuraTemario({required this.proporcion, required this.bloques, required this.ideas, required this.esquemas, List<Conexion> sinDibujar = const []}) {
     for (final b in bloques) {
       _porId[b.id] = b;
       for (final t in b.temas) {
         _bloqueDeTema[t] = b;
       }
     }
-    // Todas las conexiones de todos los esquemas, sin repetir.
+    // Todas las conexiones de todos los esquemas y las que no se dibujan, sin repetir.
     final vistas = <String>{};
-    for (final e in esquemas) {
-      for (final c in e.conexiones) {
-        final claves = [c.de.clave, c.a.clave]..sort();
-        if (vistas.add(claves.join('|'))) _conexiones.add(c);
-      }
+    for (final c in [for (final e in esquemas) ...e.conexiones, ...sinDibujar]) {
+      final claves = [c.de.clave, c.a.clave]..sort();
+      if (vistas.add(claves.join('|'))) _conexiones.add(c);
     }
   }
 
@@ -160,6 +160,8 @@ class EstructuraTemario {
         bloques: [for (final b in j['bloques'] as List) BloqueTemario.fromJson(b as Map<String, dynamic>)],
         ideas: ((j['ideas'] as Map?) ?? {}).map((k, v) => MapEntry(k.toString(), v.toString())),
         esquemas: [for (final e in j['esquemas'] as List) Esquema.fromJson(e as Map<String, dynamic>)],
+        // Conexiones que no están dibujadas en ningún esquema (DCE: «CONECTADO CON» de cada ficha).
+        sinDibujar: [for (final c in (j['conexiones'] as List?) ?? const []) Conexion.fromJson(c as Map<String, dynamic>)],
       );
 
   BloqueTemario? bloque(String id) => _porId[id];
