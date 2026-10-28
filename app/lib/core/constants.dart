@@ -20,6 +20,12 @@ class Urls {
   static final String videos = '$base/videos.json';
   /// La misma app, compilada para el navegador.
   static final String appWeb = '$base/app/abrir/';
+
+  /// Enlace de invitación de un preparador: en Android abre la app si está
+  /// instalada (App Links) y, si no, la página de la app lleva a Google Play
+  /// con el código como `referrer`; en iPhone y ordenador, a la app web. La
+  /// app lee `codigo` y `op` (core/invitacion.dart).
+  static String invitacion(String codigo, String oposicion) => '$paginaApp?codigo=$codigo&op=$oposicion';
 }
 
 /// Nombre de la app y quién la ha hecho (pie de Más).
@@ -51,6 +57,16 @@ const claveAbrirAlta = 'abrir_alta';
 /// En la caja [Cajas.app]: ya se ha mostrado la bienvenida con la entrada con
 /// Google (se muestra una vez, en la instalación nueva).
 const claveBienvenidaVista = 'bienvenida_vista';
+
+/// En la caja [Cajas.app]: invitación de un preparador pendiente de conectar
+/// (su código y la oposición), llegada por el enlace de invitación o por el
+/// `referrer` de Google Play (core/invitacion.dart).
+const claveInvitacionCodigo = 'invitacion_codigo';
+const claveInvitacionOposicion = 'invitacion_oposicion';
+
+/// En la caja [Cajas.app]: ya se ha leído el `referrer` de Google Play (se
+/// lee una sola vez, en el primer arranque).
+const claveReferrerLeido = 'referrer_leido';
 
 class Cajas {
   Cajas._();

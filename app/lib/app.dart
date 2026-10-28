@@ -14,6 +14,8 @@ import 'core/cronograma_providers.dart';
 import 'core/instalacion.dart';
 import 'data/models/temas_clase.dart';
 import 'core/constants.dart';
+import 'core/enlaces.dart';
+import 'core/invitacion.dart';
 import 'core/notificaciones.dart';
 import 'core/pantalla_error.dart';
 import 'core/red_providers.dart';
@@ -192,10 +194,15 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     // Widget de la pantalla de inicio: al abrir la app desde él o tocarlo con ella abierta.
     abiertoDesdeWidget().then(_desdeWidget);
     _clicsWidget = clicsEnWidget().listen(_desdeWidget);
+    // Enlace de invitación de un preparador tocado con la app ya abierta.
+    _enlaces = enlacesEntrantes().listen(_desdeEnlace);
     // Y se redibuja cuando cambia lo que muestra.
     ref.listenManual(datosWidgetProvider, (_, d) => actualizarWidget(d), fireImmediately: true);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (ref.read(serviciosProvider).firebaseDisponible) ref.read(sesionProvider.notifier).renovarFoto();
+      // Invitación pendiente (del enlace o del referrer de Play, leída al
+      // arrancar): directo a conectar con el preparador.
+      if (Invitacion.pendiente() != null) _router.go('/mas/mi-preparador');
       // La primera vez: para qué sirven los avisos y el permiso para
       // mostrarlos; después, la guía de la app (una vez por oposición y papel)
       // y, a quien acaba de elegir «Preparo a opositores», el alta.
@@ -243,6 +250,18 @@ class _TceeAppState extends ConsumerState<TceeApp> {
   }
 
   StreamSubscription<Uri?>? _clicsWidget;
+  StreamSubscription<Uri>? _enlaces;
+
+  /// Enlace `…/app/?codigo=…` con la app abierta: la invitación queda
+  /// pendiente y se abre Mi preparador con el código puesto.
+  Future<void> _desdeEnlace(Uri uri) async {
+    final inv = Invitacion.deUri(uri);
+    if (inv == null) return;
+    await inv.guardar();
+    if (!mounted) return;
+    ref.invalidate(invitacionPendienteProvider);
+    _router.go('/mas/mi-preparador');
+  }
 
   /// tcee://widget/{ruta}: cada zona del widget abre su pantalla.
   void _desdeWidget(Uri? uri) {
@@ -354,6 +373,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     Notificaciones.alTocar = null;
     _relojes.cerrar();
     _clicsWidget?.cancel();
+    _enlaces?.cancel();
     super.dispose();
   }
 

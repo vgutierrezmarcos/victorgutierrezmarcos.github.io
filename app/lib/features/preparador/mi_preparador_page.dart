@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/avisos_breves.dart';
+import '../../core/invitacion.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
@@ -36,6 +37,49 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
   bool _conectando = false;
   bool _otroPreparador = false;
 
+  /// Invitación de un preparador (enlace o referrer de Play) pendiente de
+  /// conectar: el código viene puesto y solo hay que tocar «Conectar».
+  Invitacion? _invitacion;
+  String? _nombreInvita;
+
+  @override
+  void initState() {
+    super.initState();
+    _invitacion = ref.read(invitacionPendienteProvider);
+    _aplicarInvitacion();
+    ref.listenManual(invitacionPendienteProvider, (_, inv) {
+      _invitacion = inv;
+      _aplicarInvitacion();
+      if (mounted) setState(() {});
+    });
+    // Con sesión se puede leer el nombre del preparador del código.
+    ref.listenManual(usuarioActualProvider, (_, u) {
+      if (u != null) _aplicarInvitacion();
+    });
+  }
+
+  void _aplicarInvitacion() {
+    final inv = _invitacion;
+    if (inv == null) return;
+    _codigo.text = inv.codigo;
+    _otroPreparador = true;
+    ref.read(preparadorRepoProvider).nombrePorCodigo(inv.codigo).then((n) {
+      if (mounted && n != null && n != _nombreInvita) setState(() => _nombreInvita = n);
+    });
+  }
+
+  Future<void> _descartarInvitacion() async {
+    await Invitacion.borrar();
+    if (!mounted) return;
+    setState(() {
+      _invitacion = null;
+      _nombreInvita = null;
+      _codigo.clear();
+      _otroPreparador = false;
+    });
+    ref.invalidate(invitacionPendienteProvider);
+  }
+
   @override
   void dispose() {
     _codigo.dispose();
@@ -47,6 +91,14 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
     setState(() => _conectando = true);
     final error = await ref.read(vinculosPreparadorProvider.notifier).enlazar(_codigo.text);
     if (!mounted) return;
+    if (error == null && _invitacion != null) {
+      // Conectado: la invitación deja de estar pendiente.
+      await Invitacion.borrar();
+      if (!mounted) return;
+      _invitacion = null;
+      _nombreInvita = null;
+      ref.invalidate(invitacionPendienteProvider);
+    }
     setState(() {
       _conectando = false;
       if (error == null) {
@@ -55,6 +107,13 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
       }
     });
     messenger.mostrar(SnackBar(content: Text(error ?? 'Petición enviada. Cuando tu preparador la acepte, verá tu progreso y te llegará un aviso.')));
+  }
+
+  /// La oposición de la invitación si no es la elegida (y está disponible).
+  Oposicion? get _invitacionDeOtraOposicion {
+    final op = _invitacion?.oposicion;
+    if (op == null || op == ref.read(oposicionProvider).id) return null;
+    return Oposiciones.disponibles.where((o) => o.id == op).firstOrNull;
   }
 
   /// Clases pendientes de un preparador en la agenda.
@@ -229,12 +288,32 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
             ..._sustitutos(context, vinculos),
             if (vinculos.isEmpty || _otroPreparador)
               Tarjeta(
+                color: _invitacion == null ? null : context.colores.primarioPalido,
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('Conecta con tu preparador', style: context.textos.titleMedium),
+                  Text(
+                    _invitacion == null ? 'Conecta con tu preparador' : '${_nombreInvita ?? 'Tu preparador'} te invita a conectar',
+                    style: context.textos.titleMedium,
+                  ),
                   const SizedBox(height: 4),
-                  Text('Pídele su código de seis caracteres. Cuando acepte la conexión, las clases que te programe aparecerán en tu agenda y sus valoraciones, en tu diario.', style: context.textos.bodySmall),
+                  Text(
+                    _invitacion == null
+                        ? 'Pídele su código de seis caracteres. Cuando acepte la conexión, las clases que te programe aparecerán en tu agenda y sus valoraciones, en tu diario.'
+                        : 'Su código ya está puesto: toca «Conectar» y le llegará tu petición. Cuando la acepte verá tus temas estudiados y tus cantes, las clases que te programe aparecerán en tu agenda y sus valoraciones, en tu diario. Nadie más ve nada tuyo.',
+                    style: context.textos.bodySmall,
+                  ),
                   const SizedBox(height: 12),
-                  if (!firebase)
+                  if (_invitacionDeOtraOposicion case final otra?)
+                    // El código es de otra oposición: hay que cambiar a ella.
+                    Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text('La invitación es de ${otra.siglas} y aquí tienes elegida ${ref.watch(oposicionProvider).siglas}. Cambia de oposición para conectar (tus datos de cada una se guardan aparte).', style: context.textos.bodySmall),
+                      const SizedBox(height: 8),
+                      FilledButton.icon(
+                        onPressed: () => ref.read(cambiarOposicionProvider)(otra),
+                        icon: const Icon(Icons.swap_horiz, size: 18),
+                        label: Text('Cambiar a ${otra.siglas}'),
+                      ),
+                    ])
+                  else if (!firebase)
                     Text('Esta versión no se conecta a la red de preparadores.', style: context.textos.labelSmall)
                   else if (usuario == null)
                     OutlinedButton.icon(onPressed: () => context.go('/mas/cuenta'), icon: const Icon(Icons.login, size: 18), label: const Text('Inicia sesión con Google para conectar'))
@@ -253,6 +332,11 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
                       const SizedBox(width: 10),
                       FilledButton(onPressed: _conectando ? null : _conectar, child: Text(_conectando ? 'Conectando…' : 'Conectar')),
                     ]),
+                  if (_invitacion != null)
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(onPressed: _descartarInvitacion, child: const Text('Descartar la invitación')),
+                    ),
                 ]),
               )
             else

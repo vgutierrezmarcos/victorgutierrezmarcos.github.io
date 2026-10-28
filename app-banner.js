@@ -16,11 +16,29 @@
  * en Google Play, basta con rellenar "urlPlayStore" (y, pasado un tiempo,
  * poner "urlApk" a null). Cómo instalarla, paso a paso: app/instalar.html.
  *
+ * Invitación de un preparador (solo en app/index.html): el enlace que manda
+ * a sus alumnos es /app/?codigo=ABC234&op=tcee. Con la app instalada,
+ * Android lo abre directamente en ella (App Links); si no, esta página
+ * enseña la invitación (#app-invitacion), pasa el código a Google Play como
+ * «referrer» (la app lo lee al primer arranque) y a la app web (abrir/).
+ *
  * Autor: Víctor Gutiérrez Marcos
  */
 (function () {
     var banner = document.getElementById('app-banner');
     if (!banner) return;
+    var invitacion = null;
+    try {
+        var q = new URLSearchParams(location.search);
+        var codigo = (q.get('codigo') || '').toUpperCase().replace(/[\s-]/g, '');
+        var op = (q.get('op') || '').toLowerCase();
+        if (/^[A-Z0-9]{6}$/.test(codigo)) invitacion = 'codigo=' + codigo + (op ? '&op=' + encodeURIComponent(op) : '');
+    } catch (e) { /* sin invitación */ }
+    if (invitacion) {
+        var aviso = document.getElementById('app-invitacion');
+        if (aviso) aviso.hidden = false;
+        document.querySelectorAll('a[href="abrir/"]').forEach(function (a) { a.href = 'abrir/?' + invitacion; });
+    }
     fetch('/oposicion/app-config.json', { cache: 'no-cache' })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (cfg) {
@@ -36,6 +54,8 @@
             // Play se cambian por su distintivo
             if (cfg.app.urlPlayStore && play) {
                 play.href = cfg.app.urlPlayStore; play.hidden = false; alguno = true;
+                // Con invitación, Play entrega el código a la app al instalarla.
+                if (invitacion) play.href += (play.href.indexOf('?') >= 0 ? '&' : '?') + 'referrer=' + encodeURIComponent(invitacion);
                 if (pronto) pronto.hidden = true;
                 if (apk) apk.hidden = true;
                 if (nota) nota.hidden = true;

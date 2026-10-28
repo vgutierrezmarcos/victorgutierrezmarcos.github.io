@@ -611,6 +611,20 @@ class PreparadorRepo {
 
   Future<void> _guardarVinculos(List<VinculoPreparador> v) => _perfil.put('vinculos', v.map((e) => e.toJson()).toList());
 
+  /// Nombre del preparador de ese código («X te invita a conectar»), o null si
+  /// no hay sesión, no existe o no se puede leer.
+  Future<String?> nombrePorCodigo(String texto) async {
+    final codigo = normalizarCodigo(texto);
+    if (codigo == null || !conSesion) return null;
+    try {
+      final doc = await oposicion.red(_db!, 'codigos').doc(codigo).get();
+      final nombre = doc.data()?['nombre'] as String?;
+      return nombre == null || nombre.trim().isEmpty ? null : nombre.trim();
+    } catch (_) {
+      return null;
+    }
+  }
+
   /// Pide conectar la app del alumno con el preparador que tiene ese código.
   /// El enlace queda pendiente hasta que el preparador lo acepta: hasta
   /// entonces no ve nada del alumno (las reglas de la base de datos lo exigen).

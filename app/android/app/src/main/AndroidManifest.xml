@@ -44,6 +44,18 @@
             <intent-filter>
                 <action android:name="es.antonborri.home_widget.action.LAUNCH"/>
             </intent-filter>
+            <!-- Enlace de invitación de un preparador (App Links): la página de la
+                 app (/app/?codigo=…) y la app web (/app/abrir/) abren la app si
+                 está instalada. Android lo verifica con
+                 https://www.victorgutierrezmarcos.es/.well-known/assetlinks.json
+                 (huella SHA-256 de la firma de Google Play). -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https" android:host="www.victorgutierrezmarcos.es" android:path="/app/"/>
+                <data android:scheme="https" android:host="www.victorgutierrezmarcos.es" android:pathPrefix="/app/abrir"/>
+            </intent-filter>
         </activity>
         <!-- Widget de la pantalla de inicio -->
         <receiver android:name=".WidgetTcee" android:exported="false" android:label="Oposición">
