@@ -27,6 +27,14 @@ Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de panta
 8. **Tu carpeta** (2:55-3:25). G8. Rótulos: «Una carpeta ordenada con toda la oposición» · «Claude trabaja desde ella: lee, corrige y guarda» · «Los informes, junto a cada cante».
 9. **Cierre** (3:25-3:40). «Hace falta Claude Pro (unos 20 € al mes)» · «Material exclusivo: para tu uso personal» · «No sustituye a un preparador: lo complementa» · victorgutierrezmarcos.es/oposicion/prepara-con-claude.html.
 
-## Montaje
+## Montaje (hecho el 28 oct. con HyperFrames)
 
-Copiar `scripts/video-app/` a esta carpeta (`guion.json`, `index.html` de HyperFrames, `preparar.py`, `musica.py`, `publicar.py`), cambiar las escenas por las de arriba y poner las grabaciones en `scripts/video-claude/tomas/G1.mp4 … G8.mp4`. Las tomas de la app (G3, G7) pueden salir de `app/tool/capturas_ayuda_test.dart` cuando existan las pantallas de transcripción y de Prepara con Claude. Después: `npx hyperframes render`, `publicar.py` y `python3 scripts/youtube.py subir claude-prepara …` (skill `/videos`); los pósteres `oposicion/img/claude/video.webp` y `app/promo/ayuda/claude-prepara.webp` salen del fotograma de la portada. Nunca usar `scripts/montar-video-app.py`.
+`index.html` es la composición (copiada del promocional `scripts/video-app/`: misma paleta, GSAP, rótulos de bloque y barrido dorado; la escena de DCE usa el granate, el azul y Latin Modern). `guion.json` fija el compás en que empieza cada escena; `preparar.py` lo lleva al HTML y prepara `assets/` (fuentes, logo de Claude, capturas de la app, páginas del informe en PDF, las tomas MP4 y la música del promocional en bucle). Las tomas se graban en un Edge aparte con `cdp.mjs` y se montan con `montar-toma.py` (carpeta `C:\Users\vgutierrez\AppData\Local\Temp\claude-video`); van en la raíz de `index.html`, fuera de las escenas, porque HyperFrames no admite un `<video data-start>` dentro de otro elemento con `data-start`. Rótulos sobre cada toma: qué está pasando y qué aporta.
+
+```bash
+python3 scripts/video-claude/preparar.py        # recursos y compases
+cd scripts/video-claude && npx hyperframes lint && npx hyperframes render
+python3 scripts/video-claude/publicar.py --subir  # MP4 para la web, pósteres y YouTube (clave claude-prepara)
+```
+
+Después, quitar `hidden` a los reproductores de `oposicion/prepara-con-claude.html` y `app/index.html#claude` y hacer commit de `videos.json`. Nunca usar `scripts/montar-video-app.py`.
