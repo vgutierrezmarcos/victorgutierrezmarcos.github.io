@@ -13,7 +13,11 @@
       de las escenas, porque HyperFrames no admite un <video> con data-start
       dentro de otro elemento con data-start. Los rótulos sobre cada toma
       dicen qué está pasando y qué aporta al opositor. La escena de DCE usa
-      los colores y la fuente (Latin Modern) de esa oposición.
+      los colores y la fuente (Latin Modern) de esa oposición. De Claude solo
+      se usa el asterisco (assets/logos/asterisco.svg): el nombre va siempre en
+      la letra del vídeo (Pagella), y el icono de la app aparece aparte, en la
+      portada y el cierre. Las tomas (1912 × 948) se ven enteras en la ventana
+      (object-fit: contain), sin recortar los lados.
       Autor: Víctor Gutiérrez Marcos.
     -->
     <script src="assets/gsap.min.js"></script>
@@ -80,24 +84,24 @@
       .dce .filete { background: var(--azul); }
 
       /* Marca arriba a la izquierda */
-      .marca { position: absolute; left: 60px; top: 42px; display: flex; align-items: center; gap: 14px; font-weight: 600; font-size: 26px; color: var(--tinta); }
-      .marca img { height: 40px; width: auto; }
+      .marca { position: absolute; left: 60px; top: 42px; display: flex; align-items: center; gap: 14px; font-family: "Pagella", serif; font-weight: 700; font-size: 30px; color: var(--tinta); }
+      .marca img { height: 34px; width: auto; }
       .oscura .marca { color: var(--sobre-oscuro); }
       .dce .marca { color: var(--granate); }
 
       /* Banda de título sobre una toma: rótulo y titular en una línea */
-      .banda { position: absolute; left: 160px; top: 34px; width: 1600px; }
+      .banda { position: absolute; left: 120px; top: 34px; width: 1680px; }
       .banda .rot { font-size: 26px; }
       .banda .tit { font-size: 54px; line-height: 1.1; margin-top: 4px; }
 
       /* Ventana donde se ve la toma (el <video> va en la raíz, con esta misma geometría) */
-      .ventana { position: absolute; left: 150px; top: 140px; width: 1620px; height: 920px; box-sizing: border-box; border-radius: 18px; background: #1d1a21; box-shadow: 0 30px 70px rgba(46, 34, 53, 0.28); }
-      .ventana::after { content: ""; position: absolute; left: 10px; top: 10px; width: 1600px; height: 900px; border-radius: 10px; background: #fff; }
-      video.toma { position: absolute; left: 160px; top: 150px; width: 1600px; height: 900px; border-radius: 10px; object-fit: cover; background: #fff; }
+      .ventana { position: absolute; left: 110px; top: 140px; width: 1700px; height: 853px; box-sizing: border-box; border-radius: 18px; background: #1d1a21; box-shadow: 0 30px 70px rgba(46, 34, 53, 0.28); }
+      .ventana::after { content: ""; position: absolute; left: 10px; top: 10px; width: 1680px; height: 833px; border-radius: 10px; background: #fff; }
+      video.toma { position: absolute; left: 120px; top: 150px; width: 1680px; height: 833px; border-radius: 10px; object-fit: contain; background: #fff; }
 
       /* Rótulo sobre la toma: qué pasa y qué aporta */
       .rotulo {
-        position: absolute; z-index: 5; left: 190px; top: 952px; max-width: 1200px; box-sizing: border-box;
+        position: absolute; z-index: 5; left: 150px; top: 952px; max-width: 1200px; box-sizing: border-box;
         padding: 16px 30px 16px 26px; border-radius: 14px; background: #fff; border-left: 7px solid var(--dorado);
         box-shadow: 0 14px 40px rgba(46, 34, 53, 0.3); font-weight: 600; font-size: 31px; color: var(--tinta); line-height: 1.25;
       }
@@ -142,7 +146,11 @@
       .centro .tit { color: #fff; }
       .centro > * { position: relative; }
       .icono-caja { position: relative; }
-      .logo-grande { position: relative; display: block; width: 560px; height: auto; }
+      .marcas { position: relative; display: flex; align-items: center; gap: 48px; }
+      .marcas img { display: block; height: 150px; width: auto; }
+      .marcas .icono { border-radius: 34px; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35); }
+      .marcas i { display: block; width: 2px; height: 120px; background: var(--dorado); opacity: 0.8; }
+      .marcas.chica img { height: 110px; } .marcas.chica .icono { border-radius: 25px; } .marcas.chica i { height: 90px; }
       .anillo { position: absolute; left: 50%; top: 50%; width: 900px; height: 900px; margin: -450px 0 0 -450px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--dorado); }
       .lema { margin: 0; font-family: "Pagella", serif; font-style: italic; font-size: 50px; color: var(--sobre-oscuro-suave); }
       .lema .w { display: inline-block; white-space: pre; }
@@ -165,8 +173,8 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="216.0">
-      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="216.0" data-track-index="9" data-volume="0.35"></audio>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="224.7273">
+      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="224.7273" data-track-index="9" data-volume="0.35"></audio>
 
       <!-- Portada -->
       <section id="portada" class="clip oscura" data-start="0.0000" data-duration="4.3636" data-track-index="0">
@@ -176,7 +184,7 @@
             <div class="anillo" id="portada-a1"></div>
             <div class="anillo" id="portada-a2"></div>
             <div class="anillo" id="portada-a3"></div>
-            <img id="portada-logo" class="logo-grande" src="assets/logos/claude-claro.svg" alt="" />
+            <div id="portada-logo" class="marcas"><img class="icono" src="assets/icono.png" alt="" /><i></i><img src="assets/logos/asterisco.svg" alt="" /></div>
           </div>
           <h1 id="portada-tit" class="tit" style="font-size: 104px"><span class="l">Prepara con Claude</span></h1>
           <span id="portada-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
@@ -203,7 +211,7 @@
       <!-- Qué hace -->
       <section id="quehace" class="clip" data-start="13.0909" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/claude.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
         <div class="texto" style="width: 700px"><div class="bloque">
           <p class="rot">qué hace</p>
           <h2 id="quehace-tit" class="tit"><span class="l">Un equipo de</span><span class="l">preparación</span><span class="l"><em>en tu cuenta de Claude.</em></span></h2>
@@ -222,7 +230,7 @@
       <!-- Por qué no es un chatbot genérico -->
       <section id="porque" class="clip salvia" data-start="21.8182" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/claude.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
         <div class="texto" style="width: 700px"><div class="bloque">
           <p class="rot">no es un chatbot genérico</p>
           <h2 id="porque-tit" class="tit"><span class="l">Sabe tu temario.</span><span class="l"><em>Y tú aprendes de ella.</em></span></h2>
@@ -253,7 +261,7 @@
       <!-- Un cante: la app -->
       <section id="cante_app" class="clip salvia" data-start="52.3636" data-duration="6.5455" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/claude.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
         <div class="texto"><div class="bloque">
           <p class="rot">un cante</p>
           <h2 id="cante_app-tit" class="tit"><span class="l">Canta como siempre.</span><span class="l"><em>La app lo transcribe.</em></span></h2>
@@ -322,7 +330,7 @@
       <!-- El cronograma: exportar (app, las dos oposiciones) -->
       <section id="cronograma" class="clip" data-start="120.0000" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/claude.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
         <div class="texto"><div class="bloque">
           <p class="rot">el cronograma</p>
           <h2 id="cronograma-tit" class="tit"><span class="l">Exporta tus datos</span><span class="l"><em>desde la app.</em></span></h2>
@@ -332,15 +340,15 @@
         <div id="cronograma-m2" class="movil" style="left: 1400px; top: 150px"><div class="pantalla"><img src="assets/capturas/dce-hoy.webp" alt="" /></div></div>
       </section>
 
-      <!-- El cronograma en claude.ai: Manuel, opositor a DCE (tomas G9ma y G9mb; colores y letra de DCE) -->
+      <!-- El cronograma en claude.ai: un opositor a DCE (tomas G9na y G9nb; colores y letra de DCE) -->
       <section id="cronograma_dce" class="clip dce" data-start="124.3636" data-duration="26.1818" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
-          <p class="rot">el cronograma · manuel, opositor a dce</p>
+          <p class="rot">el cronograma · en dce</p>
           <h2 id="cronograma_dce-tit" class="tit"><span class="l">Pide el cronograma hasta tu examen.</span></h2>
         </div>
         <div id="cronograma_dce-ventana" class="ventana"></div>
-        <div id="cronograma_dce-r1" class="rotulo">Manuel prepara DCE: pide cómo repartir un cante de 20 minutos y el cronograma del escrito</div>
+        <div id="cronograma_dce-r1" class="rotulo">En DCE: cómo repartir un cante de 20 minutos y el cronograma del escrito</div>
         <div id="cronograma_dce-r2" class="rotulo">Tiene en cuenta su día de cante, las semanas de simulacros y la revisión final</div>
         <div id="cronograma_dce-r3" class="rotulo">Con los códigos del programa de DCE y el bloque listo para importarlo</div>
       </section>
@@ -357,7 +365,7 @@
         </div>
         <div id="cronograma_app-r1" class="rotulo">El bloque de fechas y temas que la app entiende</div>
         <div id="cronograma_app-b">
-          <div class="marca"><img src="assets/logos/claude.svg" alt="" />Prepara con Claude</div>
+          <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
           <div class="texto"><div class="bloque">
             <p class="rot">el cronograma</p>
             <h2 class="tit"><span class="l">Tráelo a la app.</span></h2>
@@ -372,7 +380,7 @@
       <section id="carpeta" class="clip salvia" data-start="159.2727" data-duration="26.1818" data-track-index="0">
         <div class="fondo"></div>
         <div id="carpeta-a">
-          <div class="marca"><img src="assets/logos/claude.svg" alt="" />Prepara con Claude</div>
+          <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
           <div class="texto" style="width: 760px"><div class="bloque">
             <p class="rot">en el ordenador</p>
             <h2 class="tit"><span class="l">Toda la oposición,</span><span class="l"><em>en una carpeta.</em></span></h2>
@@ -397,10 +405,25 @@
         <div id="carpeta-r3" class="rotulo">El informe queda junto al cante, sin copiar ni pegar nada</div>
       </section>
 
-      <!-- Y además -->
-      <section id="ademas" class="clip" data-start="185.4545" data-duration="10.9091" data-track-index="0">
+      <!-- En el móvil: la app de Claude con la misma skill -->
+      <section id="movil" class="clip salvia" data-start="185.4545" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/claude.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+        <div class="texto" style="width: 640px"><div class="bloque">
+          <p class="rot">en el móvil</p>
+          <h2 id="movil-tit" class="tit"><span class="l">También desde</span><span class="l"><em>el móvil.</em></span></h2>
+          <p id="movil-par" class="par">La app de Claude lleva la misma skill: comparte el cante desde la app, hazle una foto al dictamen o a la pizarra y pregúntale por voz.</p>
+        </div></div>
+        <!-- Tres móviles más pequeños (zoom 0,82: las posiciones van divididas por 0,82) -->
+        <div id="movil-m1" class="movil" style="zoom: 0.82; left: 1055px; top: 200px"><div class="pantalla"><img src="assets/capturas/cantes-diario.webp" alt="" /></div></div>
+        <div id="movil-m2" class="movil" style="zoom: 0.82; left: 1480px; top: 140px"><div class="pantalla"><img src="assets/capturas/claude-movil-1.webp" alt="" /></div></div>
+        <div id="movil-m3" class="movil" style="zoom: 0.82; left: 1905px; top: 200px"><div class="pantalla"><img src="assets/capturas/claude-movil-2.webp" alt="" /></div></div>
+      </section>
+
+      <!-- Y además -->
+      <section id="ademas" class="clip" data-start="194.1818" data-duration="10.9091" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
         <div class="texto" style="width: 640px"><div class="bloque">
           <p class="rot">y además</p>
           <h2 id="ademas-tit" class="tit"><span class="l">Y mucho más.</span><span class="l"><em>Pide lo que se te ocurra.</em></span></h2>
@@ -417,9 +440,9 @@
       </section>
 
       <!-- Al día, privacidad y licencia -->
-      <section id="actualiza" class="clip salvia" data-start="196.3636" data-duration="10.9091" data-track-index="0">
+      <section id="actualiza" class="clip salvia" data-start="205.0909" data-duration="10.9091" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/claude.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
         <div class="texto" style="width: 700px"><div class="bloque">
           <p class="rot">al día y en tus manos</p>
           <h2 id="actualiza-tit" class="tit"><span class="l">Se mantiene</span><span class="l"><em>al día sola.</em></span></h2>
@@ -433,13 +456,13 @@
       </section>
 
       <!-- Cierre -->
-      <section id="cierre" class="clip oscura" data-start="207.2727" data-duration="8.7273" data-track-index="0">
+      <section id="cierre" class="clip oscura" data-start="216.0000" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="centro" style="gap: 26px">
           <div class="icono-caja">
             <div class="anillo" id="cierre-a1"></div>
             <div class="anillo" id="cierre-a2"></div>
-            <img id="cierre-logo" class="logo-grande" src="assets/logos/claude-claro.svg" alt="" style="width: 420px" />
+            <div id="cierre-logo" class="marcas chica"><img class="icono" src="assets/icono.png" alt="" /><i></i><img src="assets/logos/asterisco.svg" alt="" /></div>
           </div>
           <h2 id="cierre-tit" class="tit" style="font-size: 130px"><span class="l">Empieza hoy.</span></h2>
           <span id="cierre-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
@@ -458,21 +481,22 @@
       <video id="toma-g6a" class="toma" src="assets/tomas/G6a.mp4" muted playsinline data-start="101.1636" data-duration="10.8" data-track-index="1"></video>
       <video id="toma-g6b" class="toma" src="assets/tomas/G6b.mp4" muted playsinline data-start="112.1" data-duration="7.0" data-track-index="1"></video>
             <video id="toma-g7b" class="toma" src="assets/tomas/G7b.mp4" muted playsinline data-start="150.8455" data-duration="4.6" data-track-index="1"></video>
-      <video id="toma-g9a" class="toma" src="assets/tomas/G9ma.mp4" muted playsinline data-start="124.7636" data-duration="19.5" data-track-index="1"></video>
-      <video id="toma-g9b" class="toma" src="assets/tomas/G9mb.mp4" muted playsinline data-start="144.3636" data-duration="6.0" data-track-index="1"></video>
+      <video id="toma-g9a" class="toma" src="assets/tomas/G9na.mp4" muted playsinline data-start="124.7636" data-duration="18.7" data-track-index="1"></video>
+      <video id="toma-g9b" class="toma" src="assets/tomas/G9nb.mp4" muted playsinline data-start="143.5636" data-duration="6.0" data-track-index="1"></video>
       <video id="toma-g8" class="toma" src="assets/tomas/G8.mp4" muted playsinline data-start="163.2727" data-duration="20" data-track-index="1"></video>
 
       <!-- Capas comunes: rótulos de bloque y barrido -->
-      <div id="capa-capitulos" class="clip" data-start="0" data-duration="216.0000" data-track-index="7" style="pointer-events: none">
-        <div class="capitulo" data-bloque="instalar">Prepara con Claude · <span>Instalar</span></div>
-        <div class="capitulo" data-bloque="cante">Prepara con Claude · <span>Un cante</span></div>
-        <div class="capitulo" data-bloque="dictamen">Prepara con Claude · <span>Un dictamen</span></div>
-        <div class="capitulo" data-bloque="duda">Prepara con Claude · <span>Una duda</span></div>
-        <div class="capitulo" data-bloque="cronograma">Prepara con Claude · <span>El cronograma</span></div>
-        <div class="capitulo" data-bloque="carpeta">Prepara con Claude · <span>Tu carpeta</span></div>
-        <div class="capitulo" data-bloque="ademas">Prepara con Claude · <span>Y además</span></div>
+      <div id="capa-capitulos" class="clip" data-start="0" data-duration="224.7273" data-track-index="7" style="pointer-events: none">
+        <div class="capitulo" data-bloque="instalar"><span>Instalar</span></div>
+        <div class="capitulo" data-bloque="cante"><span>Un cante</span></div>
+        <div class="capitulo" data-bloque="dictamen"><span>Un dictamen</span></div>
+        <div class="capitulo" data-bloque="duda"><span>Una duda</span></div>
+        <div class="capitulo" data-bloque="cronograma"><span>El cronograma</span></div>
+        <div class="capitulo" data-bloque="carpeta"><span>Tu carpeta</span></div>
+        <div class="capitulo" data-bloque="movil"><span>En el móvil</span></div>
+        <div class="capitulo" data-bloque="ademas"><span>Y además</span></div>
       </div>
-      <div id="capa-barrido" class="clip" data-start="0" data-duration="216.0000" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
+      <div id="capa-barrido" class="clip" data-start="0" data-duration="224.7273" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
     </div>
 
     <script>
@@ -480,10 +504,10 @@
       const P = 60 / 110, C = 4 * P, M = P / 2;
       const B = (n) => n * C;
       // Compás en que empieza cada escena (lo escribe preparar.py desde guion.json).
-      const E = { portada: 0, gancho: 2, quehace: 6, porque: 10, instalar: 14, cante_app: 24, cante_chat: 27, cante_informe: 34, dictamen: 40, duda: 46, cronograma: 55, cronograma_dce: 57, cronograma_app: 69, carpeta: 73, ademas: 85, actualiza: 90, cierre: 95 }; // guion
+      const E = { portada: 0, gancho: 2, quehace: 6, porque: 10, instalar: 14, cante_app: 24, cante_chat: 27, cante_informe: 34, dictamen: 40, duda: 46, cronograma: 55, cronograma_dce: 57, cronograma_app: 69, carpeta: 73, movil: 85, ademas: 89, actualiza: 94, cierre: 99 }; // guion
       // Bloque de cada escena (también lo escribe preparar.py).
-      const BLOQUE = { portada: "empezar", gancho: "empezar", quehace: "empezar", porque: "empezar", instalar: "instalar", cante_app: "cante", cante_chat: "cante", cante_informe: "cante", dictamen: "dictamen", duda: "duda", cronograma: "cronograma", cronograma_dce: "cronograma", cronograma_app: "cronograma", carpeta: "carpeta", ademas: "ademas", actualiza: "ademas", cierre: "final" }; // guion
-      const DURACION = 216.0;
+      const BLOQUE = { portada: "empezar", gancho: "empezar", quehace: "empezar", porque: "empezar", instalar: "instalar", cante_app: "cante", cante_chat: "cante", cante_informe: "cante", dictamen: "dictamen", duda: "duda", cronograma: "cronograma", cronograma_dce: "cronograma", cronograma_app: "cronograma", carpeta: "carpeta", movil: "movil", ademas: "ademas", actualiza: "ademas", cierre: "final" }; // guion
+      const DURACION = 224.7273;
       const ORDEN = Object.keys(E).sort((a, b) => E[a] - E[b]);
       const fin = (id) => { const i = ORDEN.indexOf(id); return i + 1 < ORDEN.length ? B(E[ORDEN[i + 1]]) : DURACION; };
 
@@ -651,15 +675,15 @@
       movil("#cronograma-m2", B(E.cronograma) + 0.5);
       sale("cronograma");
 
-      // El cronograma en claude.ai: Manuel, DCE (G9ma 19,5 s desde +0,4; G9mb 6 s desde +20)
+      // El cronograma en claude.ai: en DCE (G9na 18,7 s desde +0,4; G9nb 6 s desde +19,2)
       const KD = B(E.cronograma_dce);
       banda("#cronograma_dce", KD);
       ventana("#cronograma_dce-ventana", KD + 0.2);
-      toma("#toma-g9a", KD + 0.4, 19.5);
-      toma("#toma-g9b", KD + 20.0, 6.0);
-      rotulo("#cronograma_dce-r1", KD + 1.0, 8.6);
-      rotulo("#cronograma_dce-r2", KD + 9.8, 9.6);
-      rotulo("#cronograma_dce-r3", KD + 19.6, 6.2);
+      toma("#toma-g9a", KD + 0.4, 18.7);
+      toma("#toma-g9b", KD + 19.2, 6.0);
+      rotulo("#cronograma_dce-r1", KD + 1.0, 8.4);
+      rotulo("#cronograma_dce-r2", KD + 9.6, 9.2);
+      rotulo("#cronograma_dce-r3", KD + 19.0, 6.4);
       sale("cronograma_dce");
 
       // En TCEE igual (G7b 4,6 s desde +0,3) y traerlo a la app (desde +5)
@@ -691,6 +715,13 @@
       rotulo("#carpeta-r3", R + 16.6, 7.2);
       sale("carpeta");
 
+      // En el móvil: la app, el chat con el cante adjunto y la respuesta
+      textos("#movil", B(E.movil));
+      movil("#movil-m1", B(E.movil) + 0.2);
+      movil("#movil-m2", B(E.movil) + 0.8);
+      movil("#movil-m3", B(E.movil) + 1.4);
+      sale("movil");
+
       // Y además
       textos("#ademas", B(E.ademas));
       tarjetas(["#ademas-c1", "#ademas-c2", "#ademas-c3", "#ademas-c4", "#ademas-c5", "#ademas-c6"], B(E.ademas) + 0.8, 1.1 * P);
@@ -712,7 +743,7 @@
       aparece("#cierre-n2", Z + 2.8);
       aparece("#cierre-n3", Z + 3.6);
 
-      window.__timelines["main"] = tl;
+      (window.__timelines = window.__timelines || {})["main"] = tl; // fuera de HyperFrames (vista previa), la tabla no existe
     </script>
   </body>
 </html>

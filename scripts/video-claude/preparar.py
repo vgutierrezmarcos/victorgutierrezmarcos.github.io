@@ -2,10 +2,11 @@
 """
 Prepara los recursos del vídeo «Prepara con Claude» (HyperFrames) en
 scripts/video-claude/assets/: fuentes (Pagella, Latin Modern para DCE y Source
-Sans 3), GSAP, el logo de Claude (y una versión clara para los fondos
-oscuros), el icono de la app, las capturas de la app reducidas a WebP, las
-páginas del informe en PDF, las tomas grabadas en claude.ai (MP4) y la banda
-sonora del promocional en bucle con fundido final.
+Sans 3), GSAP, el asterisco del logo de Claude (solo el símbolo: el nombre va
+en la letra del vídeo), el icono de la app, las capturas de la app y de
+claude.ai en el móvil reducidas a WebP, las páginas del informe en PDF, las
+tomas grabadas en claude.ai (MP4) y la banda sonora compuesta para este vídeo
+(musica.py: misma música que el promocional, de una pieza, sin bucle).
 
     python3 scripts/video-claude/preparar.py [--tomas CARPETA]
 
@@ -34,7 +35,9 @@ CAPTURAS = os.path.join(RAIZ, 'app', 'promo', 'capturas')
 FUENTES_APP = os.path.join(RAIZ, 'app', 'assets', 'fonts')
 FUENTES_SKILL = os.path.join(RAIZ, 'claude', 'prepara-con-claude', 'assets', 'fuentes')
 TOMAS_DEF = '/mnt/c/Users/vgutierrez/AppData/Local/Temp/claude-video/tomas'
-TOMAS = ['G2', 'G4a', 'G4b', 'G5a', 'G5b', 'G6a', 'G6b', 'G7a', 'G7b', 'G8', 'G9ma', 'G9mb']
+TOMAS = ['G2', 'G4a', 'G4b', 'G5a', 'G5b', 'G6a', 'G6b', 'G7b', 'G8', 'G9na', 'G9nb']
+# Capturas de claude.ai en el móvil (cdp.mjs con CDP_MOVIL=1, en la carpeta de grabación): chat con el cante adjunto y respuesta
+MOVIL = {'claude-movil-1': 'movil-2.png', 'claude-movil-2': 'movil-4.png'}
 # Capturas de la app que usa la composición
 PANTALLAS = ['cantes-cantar', 'cantes-diario', 'cronograma-traer', 'cronograma-semanas', 'hoy', 'mas',
              'dce-cantar', 'dce-hoy', 'dce-temario', 'tema-revisado', 'test', 'organizacion', 'esquema', 'temario']
@@ -67,26 +70,37 @@ def sincronizar_guion():
                   rf'\g<1>data-duration="{guion["duracion"]}"', html)
     html = re.sub(r'(<audio id="musica" src="assets/musica.wav" data-start="0" )data-duration="[\d.]+"',
                   rf'\g<1>data-duration="{guion["duracion"]}"', html)
+    html, n = re.subn(r'(id="capa-(?:capitulos|barrido)" class="clip" data-start="0" )data-duration="[\d.]+"',
+                      rf'\g<1>data-duration="{guion["duracion"]:.4f}"', html)
+    if n != 2:
+        sys.exit('No encuentro las capas de rótulos y barrido en index.html')
     with open(ruta, 'w', encoding='utf-8') as f:
         f.write(html)
     return guion['duracion']
 
 
-def musica(duracion):
-    """La banda sonora del promocional, en bucle hasta la duración del vídeo, con fundido final."""
-    origen = os.path.join(VIDEO_APP, 'musica.wav')
-    if not os.path.exists(origen):
-        subprocess.run([sys.executable, os.path.join(RAIZ, 'scripts', 'video-app', 'musica.py'), origen], check=True)
-    salida = os.path.join(ASSETS, 'musica.wav')
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-stream_loop', '-1', '-i', origen, '-t', str(duracion),
-                    '-af', f'afade=t=in:st=0:d=1.5,afade=t=out:st={duracion - 4}:d=4', salida], check=True)
+def musica():
+    """La banda sonora compuesta para este vídeo (musica.py, con el guion y la duración actuales)."""
+    subprocess.run([sys.executable, os.path.join(AQUI, 'musica.py'), os.path.join(ASSETS, 'musica.wav')], check=True)
+
+
+def asterisco():
+    """Solo el símbolo del logo de Claude (el trazado naranja), recortado a su caja: el nombre nunca va con la letra de la marca."""
+    with open(os.path.join(RAIZ, 'oposicion', 'img', 'claude', 'claude-logo.svg'), encoding='utf-8') as f:
+        svg = f.read()
+    d = re.search(r'<path[^>]*class="cls-2"[^>]*\sd="([^"]+)"', svg, re.S).group(1)
+    tx, ty = re.search(r'transform="translate\(([-\d.]+),([-\d.]+)\)"', svg).groups()
+    # Caja del trazado (calculada una vez sobre el SVG original, con medio punto de margen)
+    salida = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 149.09 149.18"><g transform="translate({tx},{ty})"><path fill="#d97757" d="{d}"/></g></svg>'
+    with open(os.path.join(ASSETS, 'logos', 'asterisco.svg'), 'w', encoding='utf-8') as f:
+        f.write(salida)
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__.split('\n\n')[0])
     p.add_argument('--tomas', default=TOMAS_DEF, help='carpeta con las tomas montadas (G2.mp4, G4a.mp4…)')
     args = p.parse_args()
-    duracion = sincronizar_guion()
+    sincronizar_guion()
     for carpeta in ('capturas', 'tomas', 'pdf', 'logos'):
         os.makedirs(os.path.join(ASSETS, carpeta), exist_ok=True)
 
@@ -101,13 +115,10 @@ def main():
         subprocess.run([sys.executable, os.path.join(RAIZ, 'scripts', 'video-app', 'preparar.py')], check=True)
     shutil.copy(gsap, ASSETS)
 
-    # Logo de Claude (wordmark oscuro) y versión clara para los fondos berenjena.
-    with open(os.path.join(RAIZ, 'oposicion', 'img', 'claude', 'claude-logo.svg'), encoding='utf-8') as f:
-        svg = f.read()
-    with open(os.path.join(ASSETS, 'logos', 'claude.svg'), 'w', encoding='utf-8') as f:
-        f.write(svg)
-    with open(os.path.join(ASSETS, 'logos', 'claude-claro.svg'), 'w', encoding='utf-8') as f:
-        f.write(svg.replace('#0f0f0d', '#f6f4ef'))
+    asterisco()
+    for viejo in ('claude.svg', 'claude-claro.svg'):
+        if os.path.exists(os.path.join(ASSETS, 'logos', viejo)):
+            os.remove(os.path.join(ASSETS, 'logos', viejo))
 
     n = 0
     for nombre in PANTALLAS:
@@ -120,6 +131,14 @@ def main():
         img.save(os.path.join(ASSETS, 'capturas', nombre + '.webp'), 'WEBP', quality=92, method=6)
         n += 1
     print(f'{n} capturas de la app')
+    for nombre, fichero in MOVIL.items():
+        origen = os.path.join(os.path.dirname(args.tomas), fichero)
+        if not os.path.exists(origen):
+            print('Falta la captura del móvil', fichero)
+            continue
+        img = Image.open(origen).convert('RGB')
+        img = img.resize((ANCHO_MOVIL, round(img.height * ANCHO_MOVIL / img.width)), Image.LANCZOS)
+        img.save(os.path.join(ASSETS, 'capturas', nombre + '.webp'), 'WEBP', quality=92, method=6)
 
     n = 0
     for t in TOMAS:
@@ -131,7 +150,7 @@ def main():
             print('Falta la toma', t)
     print(f'{n} tomas')
 
-    musica(duracion)
+    musica()
     print('Recursos listos en', ASSETS)
 
 
