@@ -1,6 +1,6 @@
 // Prueba de firestore.rules con el emulador: node prueba.mjs (dentro de emulators:exec)
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
-import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, writeBatch, runTransaction, Timestamp, arrayUnion } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, writeBatch, runTransaction, Timestamp, arrayUnion, increment } from 'firebase/firestore';
 import { readFileSync } from 'node:fs';
 
 const env = await initializeTestEnvironment({ projectId: 'demo-tcee', firestore: { rules: readFileSync(process.argv[2], 'utf8'), host: '127.0.0.1', port: 8080 } });
@@ -477,6 +477,34 @@ await caso('…pero sigue preparándole: ve su progreso', () => assertSucceeds(g
 await caso('Paula sí sigue viendo a los demás', () => assertSucceeds(getDocs(collection(db('paula'), 'users/alu/preparadores'))));
 await caso('el alumno lo vuelve a dejar ver', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/coordinacion/ajustes'), { aislados: [], verCantesPropios: true })));
 await caso('…y Olga vuelve a ver el tablón', () => assertSucceeds(getDocs(collection(db('olga'), 'users/alu/tablon'))));
+
+console.log('Reto diario (agregado anónimo)');
+const dia = '2026-10-28';
+function aportar(uid, nota, { marca = true, cuantos = 1, op = '' } = {}) {
+  const b = writeBatch(db(uid));
+  if (marca) b.set(doc(db(uid), `${op}retoDiario/${dia}/participantes/${uid}`), { nota });
+  b.set(doc(db(uid), `${op}retoDiario/${dia}`), { hechos: increment(cuantos), sumaNotas: increment(nota), ['c' + Math.min(Math.max(nota, 0), 10)]: increment(cuantos) }, { merge: true });
+  return b.commit();
+}
+await caso('el primero crea el contador con su marca en la misma transacción', () => assertSucceeds(aportar('alu', 7)));
+await caso('el segundo suma uno', () => assertSucceeds(aportar('pepe', 4)));
+await caso('nadie suma dos veces', () => assertFails(aportar('alu', 9)));
+await caso('sin la marca de participación no se suma', () => assertFails(aportar('olga', 6, { marca: false })));
+await caso('ni de dos en dos', () => assertFails(aportar('olga', 6, { cuantos: 2 })));
+await caso('ni con una nota fuera de 0-10', () => assertFails(aportar('olga', 11)));
+await caso('ni a nombre de otro', () => assertFails((async () => { const b = writeBatch(db('olga')); b.set(doc(db('olga'), `retoDiario/${dia}/participantes/paula`), { nota: 5 }); b.set(doc(db('olga'), `retoDiario/${dia}`), { hechos: increment(1), sumaNotas: increment(5), c5: increment(1) }, { merge: true }); await b.commit(); })()));
+await caso('cualquiera con cuenta lee el contador', () => assertSucceeds(getDoc(doc(db('olga'), `retoDiario/${dia}`))));
+await caso('sin sesión, no', () => assertFails(getDoc(doc(db(null), `retoDiario/${dia}`))));
+await caso('cada uno lee solo su marca', () => assertSucceeds(getDoc(doc(db('alu'), `retoDiario/${dia}/participantes/alu`))));
+await caso('…no la de otro', () => assertFails(getDoc(doc(db('pepe'), `retoDiario/${dia}/participantes/alu`))));
+await caso('…ni la lista', () => assertFails(getDocs(collection(db('alu'), `retoDiario/${dia}/participantes`))));
+await caso('en DCE, lo mismo bajo oposiciones/dce', () => assertSucceeds(aportar('alu', 8, { op: 'oposiciones/dce/' })));
+await caso('el contador es lo que se esperaba', async () => {
+  await env.withSecurityRulesDisabled(async (c) => {
+    const d = (await getDoc(doc(c.firestore(), `retoDiario/${dia}`))).data();
+    if (d.hechos !== 2 || d.sumaNotas !== 11 || d.c7 !== 1 || d.c4 !== 1) throw new Error(JSON.stringify(d));
+  });
+});
 
 console.log(`\n${ok} correctas, ${mal} fallidas`);
 await env.cleanup();

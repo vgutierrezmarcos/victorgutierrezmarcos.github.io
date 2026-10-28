@@ -26,6 +26,8 @@ Tiene que acabar con `0 fallidas`. Hay que repetirla cada vez que cambien las re
 
 ## Últimos cambios
 
+- **28 oct. 2026 (1.21.1, pendientes de publicar)**: `retoDiario/{dia}` y `retoDiario/{dia}/participantes/{uid}` (raíz y `oposiciones/{op}`): el agregado anónimo del test diario. Funciones `participaAhora` y `notaReto` en la cabecera (`existsAfter` y `getAfter` sobre la marca del propio usuario en la misma transacción). 14 casos nuevos en `prueba.mjs`. El emulador ya no se distribuye como jar: la URL del README baja un ejecutable (ELF) que se lanza directamente (`./cloud-firestore-emulator-v1.19.8.jar --host 127.0.0.1 --port 8080`).
+
 - **21 oct. 2026 (1.17.9, publicadas el mismo día)**: `match /sesiones/{id}/notas/{p}` dentro de los datos de cada usuario: las notas del preparador de una clase (su segunda pizarra). El alumno lee solo las páginas con `alumno == su uid` y `visible == true`; el preparador, dueño de su subárbol, escribe. La 1.17.11 añade `allow update` para el alumno en las páginas `editable` (sin tocar `alumno`, `visible` ni `editable`); publicadas el 21 oct. La prueba con el emulador quedó sin ejecutar al publicarlas (sin Java en la máquina).
 
 ## Índices

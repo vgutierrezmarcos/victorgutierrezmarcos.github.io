@@ -98,6 +98,11 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
       for (final p in preguntas) p.id: _respuestas[p.id] != null && p.esCorrecta(_respuestas[p.id]),
     });
     if (widget.config.tipo == 'diario') {
+      // Al agregado anónimo del día, si lo aporta (y luego se relee para enseñarlo).
+      if (repo.ajustes().aportarReto) {
+        await repo.aportarReto(resultado.notaSobre10);
+        ref.invalidate(retoDiarioProvider);
+      }
       try {
         await Notificaciones.programarRecordatorio(repo.ajustes().horaRecordatorio, hechoHoy: true, pendientesRepaso: ref.read(leitnerProvider).pendientes().length);
       } catch (_) {}

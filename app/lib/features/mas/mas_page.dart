@@ -160,6 +160,12 @@ class MasPage extends ConsumerWidget {
                   subtitle: Text('Te sugiere el tema estudiado que lleves más tiempo sin repasar ni cantar.', style: context.textos.labelSmall),
                   trailing: Switch(value: ajustes.temaFrio, onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temaFrio: v))),
                 ),
+                ListTile(
+                  leading: const Icon(Icons.groups_outlined),
+                  title: const Text('Aportar mi nota del test diario'),
+                  subtitle: Text('Al agregado anónimo del día: verás cuántos lo han hecho, la nota media y tu posición. Solo cifras; nunca nombres ni ranking.', style: context.textos.labelSmall),
+                  trailing: Switch(value: ajustes.aportarReto, onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(aportarReto: v))),
+                ),
                 // Rúbrica para los cantes por su cuenta (la del preparador va en sus ajustes).
                 FilaRubrica(
                   rubrica: ajustes.rubrica,

@@ -11,6 +11,7 @@ import '../models/oposicion.dart';
 import '../../features/test/leitner.dart';
 import '../../features/test/motor_test.dart' show TestEnCurso;
 import '../models/resultado.dart';
+import '../models/reto.dart';
 
 /// Ajustes del usuario (locales y, con sesión, en users/{uid}/progress/settings).
 class Ajustes {
@@ -32,6 +33,7 @@ class Ajustes {
     this.avisosPreparador = const {},
     this.ultimoUso,
     this.rubrica = const [],
+    this.aportarReto = false,
     this.updatedAt,
   });
 
@@ -76,6 +78,8 @@ class Ajustes {
   final String? ultimoUso;
   /// Criterios con los que valora sus propios cantes (vacío = solo estrellas).
   final List<String> rubrica;
+  /// Aportar la nota del test diario al agregado anónimo (y ver el de los demás).
+  final bool aportarReto;
   final DateTime? updatedAt;
 
   Ajustes copyWith({
@@ -98,6 +102,7 @@ class Ajustes {
     Set<String>? avisosPreparador,
     String? ultimoUso,
     List<String>? rubrica,
+    bool? aportarReto,
     DateTime? updatedAt,
   }) =>
       Ajustes(
@@ -118,6 +123,7 @@ class Ajustes {
         avisosPreparador: avisosPreparador ?? this.avisosPreparador,
         ultimoUso: ultimoUso ?? this.ultimoUso,
         rubrica: rubrica ?? this.rubrica,
+        aportarReto: aportarReto ?? this.aportarReto,
         updatedAt: updatedAt ?? DateTime.now(),
       );
 
@@ -141,6 +147,7 @@ class Ajustes {
         'avisosPreparador': avisosPreparador.toList()..sort(),
         if (ultimoUso != null) 'ultimoUso': ultimoUso,
         'rubrica': rubrica,
+        'aportarReto': aportarReto,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -181,6 +188,7 @@ class Ajustes {
       avisosPreparador: ((j['avisosPreparador'] as List?) ?? []).map((e) => e.toString()).toSet(),
       ultimoUso: j['ultimoUso'] as String?,
       rubrica: ((j['rubrica'] as List?) ?? []).map((e) => e.toString()).toList(),
+      aportarReto: j['aportarReto'] == true,
       updatedAt: f(j['updatedAt'] as String?),
     );
   }
@@ -255,6 +263,47 @@ class UsuarioRepo {
       'creado': FieldValue.serverTimestamp(),
       'enviado': false,
     });
+  }
+
+  // --------------------------------------------------------------- Reto diario
+
+  /// Suma la nota del test diario de [dia] al agregado anónimo (una vez por
+  /// persona y día: la marca `participantes/{uid}` y el contador van en la
+  /// misma transacción, como exigen las reglas). Sin sesión o ya aportada, no
+  /// hace nada. Devuelve si se ha aportado ahora.
+  Future<bool> aportarReto(double notaSobre10, {DateTime? dia}) async {
+    final uid = _auth?.currentUser?.uid;
+    if (uid == null || _db == null) return false;
+    final id = RetoDia.id(dia ?? DateTime.now());
+    final clave = 'reto_aportado_${oposicion.id}_$id';
+    if (_ajustes.get(clave) == true) return false;
+    final nota = RetoDia.cubo(notaSobre10);
+    final col = oposicion.red(_db, 'retoDiario');
+    try {
+      final lote = _db.batch()
+        ..set(col.doc(id).collection('participantes').doc(uid), {'nota': nota})
+        ..set(col.doc(id), {'hechos': FieldValue.increment(1), 'sumaNotas': FieldValue.increment(nota), 'c$nota': FieldValue.increment(1)}, SetOptions(merge: true));
+      await lote.commit();
+      await _ajustes.put(clave, true);
+      return true;
+    } on FirebaseException catch (e) {
+      // Ya aportada desde otro dispositivo: se recuerda para no insistir.
+      if (e.code == 'permission-denied') await _ajustes.put(clave, true);
+      return false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// El agregado de [dia] (null sin sesión o sin red).
+  Future<RetoDia?> leerReto({DateTime? dia}) async {
+    if (_auth?.currentUser == null || _db == null) return null;
+    try {
+      final d = await oposicion.red(_db, 'retoDiario').doc(RetoDia.id(dia ?? DateTime.now())).get();
+      return RetoDia.fromJson(d.data());
+    } catch (_) {
+      return null;
+    }
   }
 
   // ---------------------------------------------------------------- Resultados
