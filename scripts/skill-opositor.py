@@ -1016,12 +1016,16 @@ def kb(n):
     return f'{n / 1024:,.0f} KB'.replace(',', '.')
 
 
-# Carpeta de la rama donde se publica la skill también desplegada (fichero a
-# fichero, con URL estable) y su version.json: así la skill instalada puede
-# comprobar si hay versión nueva y leer de la web los ficheros más recientes
-# sin que el opositor tenga que volver a subir el ZIP (SKILL.md lo explica).
+# Carpeta de main (servida por GitHub Pages en victorgutierrezmarcos.es) donde se
+# publica la skill también desplegada (fichero a fichero, con URL estable) y su
+# version.json: así la skill instalada puede comprobar si hay versión nueva y
+# leer de la web los ficheros más recientes sin que el opositor tenga que volver
+# a subir el ZIP, y el botón «Empezar en Claude» de la página la lee sin instalar
+# (SKILL.md lo explica). Tiene que ser la propia web: claude.ai no puede leer
+# raw.githubusercontent.com, githack ni jsDelivr (comprobado el 28 oct. 2026).
+# El ZIP sigue en la rama de revisión y se descarga con sesión.
 SKILL_RUTA = 'oposicion/temario/app/skill'
-RAMA_RAW = 'https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/'
+SITIO = 'https://www.victorgutierrezmarcos.es/'
 # Lo que cuenta como «instrucciones» (si cambia, hay que volver a subir el ZIP;
 # el resto son contenidos que la skill puede leer de la web)
 INSTRUCCIONES = ('SKILL.md', 'LICENCIA.md', 'references/agentes', 'references/oposiciones', 'references/datos-app.md',
@@ -1044,8 +1048,8 @@ def sha_instrucciones(destino):
 
 
 def empaquetar(destino, manifiesto, temas, sin_temas):
-    """ZIP con la carpeta prepara-oposicion/ dentro, la skill desplegada en la rama
-    (SKILL_RUTA) con su version.json, y la entrada «skill» del manifiesto."""
+    """ZIP con la carpeta prepara-oposicion/ dentro (en la rama de revisión), la skill
+    desplegada en main (SKILL_RUTA) con su version.json, y la entrada «skill» del manifiesto."""
     ahora = datetime.now()
     version = {
         'version': f'{ahora.strftime("%Y.%m.%d")}-{len(temas)}',
@@ -1054,14 +1058,14 @@ def empaquetar(destino, manifiesto, temas, sin_temas):
         'temas': temas,
         'sinTemas': bool(sin_temas),
         'zip': 'https://www.victorgutierrezmarcos.es/oposicion/prepara-con-claude.html',
-        'base': f'{RAMA_RAW}{SKILL_RUTA}/{NOMBRE}/',
-        'versionUrl': f'{RAMA_RAW}{SKILL_RUTA}/version.json',
+        'base': f'{SITIO}{SKILL_RUTA}/{NOMBRE}/',
+        'versionUrl': f'{SITIO}{SKILL_RUTA}/version.json',
     }
     with open(os.path.join(destino, 'VERSION.txt'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(f"version: {version['version']}\ngenerado: {version['generado']}\ninstrucciones: {version['instrucciones']}\n"
                 f"versionUrl: {version['versionUrl']}\nbase: {version['base']}\n")
-    # Copia desplegada en la rama (se borra la anterior) y version.json al lado
-    desplegada = os.path.join(WT, SKILL_RUTA)
+    # Copia desplegada en main (se borra la anterior) y version.json al lado
+    desplegada = os.path.join(RAIZ, SKILL_RUTA)
     if os.path.exists(desplegada):
         shutil.rmtree(desplegada)
     shutil.copytree(destino, os.path.join(desplegada, NOMBRE))
