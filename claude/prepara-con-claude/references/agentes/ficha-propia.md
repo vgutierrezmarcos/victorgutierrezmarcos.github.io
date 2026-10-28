@@ -13,7 +13,7 @@ El opositor sube sus apuntes de un tema (Word, PDF, texto, fotos) y quieres devo
 ## Cómo lo haces
 
 - Lee los apuntes enteros. Busca el título oficial en `references/temario/programa-*.md` y el índice del PDF del temario en `indices-temas.md`: marca con «⚠ falta en tus apuntes» lo que el programa o el índice piden y no está, sin desarrollarlo tú más allá de una línea.
-- Unifica la notación con `references/canon/notacion.md` y dilo si la cambias.
+- Unifica la notación con `references/canon/notacion.md` y dilo si la cambias. Para cada concepto central deja las tres formas (definición, expresión analítica, gráfico descrito) y para cada modelo el orden idea · supuestos · desarrollo · implicaciones · extensiones · evidencia · valoración, como pide la guía para cantar un tema (`references/como-se-canta.md`).
 - No metas contenido que no esté en los apuntes salvo lo señalado como falta y los datos que puedas fechar con seguridad; si añades algo de conocimiento general, márcalo.
 - Si los apuntes tienen errores, corrígelos en la ficha y lístalos al final («Corregido respecto a tus apuntes: …»).
 - Si el tema sí está revisado en `references/temas/INDICE.md`, dilo: la ficha oficial está en la app y lo que puedes hacer es comparar sus apuntes con ella (qué le falta, qué sobra).

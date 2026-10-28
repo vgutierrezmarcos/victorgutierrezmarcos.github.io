@@ -21,10 +21,10 @@ Lo mejor del cante, lo peor y lo primero que debe arreglar. Tres frases, sin ado
 
 ### 2. Estructura y tiempos
 Tabla `Bloque | Previsto | Real | Desvío` con la introducción, cada apartado y la conclusión. «Previsto» sale de la ficha (si el tema está revisado) o de `como-se-canta.md`. Debajo, la lista de comprobación con ✔ o ✘ y el minuto cuando es ✘:
-- sin saludo; introducción con enganche, relevancia, contextualización, problemática y estructura;
+- sin saludo; introducción con enganche, relevancia, contextualización (con alguna definición básica), problemática y estructura justificada;
 - cada apartado anunciado al empezar y recapitulado al terminar, con conclusión anticipada;
 - tres apartados (o dos si la materia lo pide) equilibrados;
-- conclusión que empieza por «En conclusión,» y tiene recapitulación, relevancia, extensiones, opinión e idea final;
+- conclusión que empieza por «En conclusión,» y tiene recapitulación (sin repetir el cante), relevancia, extensiones que abren el tema al resto del temario («tirar la caña»), opinión e idea final; y que no se ha recortado por falta de tiempo;
 - sin números de tema en voz alta;
 - sin avisos de tiempo («termino ya») ni despedidas ni gracias;
 - duración total frente a los 30 minutos (20 en DCE).
@@ -34,10 +34,10 @@ Añade una frase sobre el ritmo (palabras por minuto) si se sale de 140-170.
 Uno por línea, ordenados de más a menos grave: `[07:12] «lo que dijiste» → lo correcto → por qué importa → [fuente]`. Grave es lo que el tribunal apuntaría: signo de un efecto, condición de un teorema, autor o fecha de una contribución central, confundir dos conceptos, un dato muy desviado. Si hay más de diez, los diez más graves y una línea con el resto. Si no hay ninguno de fondo, dilo con esas palabras y pasa a los matices.
 
 ### 4. Omisiones y sobras
-Lo que la ficha o el título oficial tienen y no se dijo, marcado como **alta** (parte del enunciado o idea central), **media** (un modelo o una extensión que el tribunal esperaría) o baja. Y lo que sobra: lo que pertenece a otro tema (di cuál) o lo que gastó tiempo sin aportar.
+Lo que la ficha o el título oficial tienen y no se dijo, marcado como **alta** (parte del enunciado o idea central), **media** (un modelo o una extensión que el tribunal esperaría) o baja. Y lo que sobra: lo que pertenece a otro tema (di cuál), lo que gastó tiempo sin aportar y las derivaciones «de clase» que no hacían falta (el cante no es una clase: se dan resultados e intuiciones, no todo el detalle). Recuerda que el temario es libre: una estructura distinta de la ficha, si cubre el título y es coherente, no es una omisión; dilo así cuando sea el caso. Para cada concepto central comprueba si lo dio de las tres formas (definición, analítica, gráfica) o solo de una.
 
 ### 5. Expresión y pizarra
-Muletillas contadas («vale» ×7, «¿no?» ×4), «el tema» en lugar de «la exposición», conectores que faltan en los cambios de apartado, frases que se quedaron a medias. Qué habría ido a la pizarra y en qué minuto (gráficos y fórmulas clave del tema: `ficha.md` lo dice), y si la transcripción sugiere que leyó el esquema.
+Muletillas contadas («vale» ×7, «¿no?» ×4), «el tema» en lugar de «la exposición», conectores que faltan en los cambios de apartado, frases que se quedaron a medias, pausas entre apartados (se notan en la transcripción como cortes limpios; si no las hay, dilo). Qué habría ido a la pizarra y en qué minuto (gráficos y fórmulas clave del tema: `ficha.md` lo dice), y si la transcripción sugiere que leyó el esquema. Postura, respiración y entonación no se ven en un texto: si el opositor cuenta algo de eso, coméntalo con los criterios de `como-se-canta.md` («Aspectos formales»); si no, no lo inventes.
 
 ### 6. Preguntas de comprobación
 Cinco preguntas cortas para asegurarte de que entiende lo que ha dicho (no de que lo ha memorizado): «¿Por qué el efecto sustitución es siempre no positivo?», «¿Qué cambia en tu apartado II si las preferencias no son convexas?». Debajo de cada una, la respuesta en una línea, para que se corrija él mismo.
