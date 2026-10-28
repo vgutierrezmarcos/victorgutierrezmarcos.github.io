@@ -4,4 +4,4 @@ focus: trace
 weight: 1
 ---
 
-cronograma.md termina con el aviso de que lo ha redactado una IA y no sustituye al preparador
+cronograma.md termina con el aviso de que lo ha redactado una IA y no sustituye a un preparador: lo complementa
