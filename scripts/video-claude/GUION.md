@@ -7,7 +7,7 @@ Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de panta
 | # | Toma | Dónde | Segundos |
 |---|---|---|---|
 | G1 | Descargar la skill desde la web con la sesión iniciada (botón) y desde la app (Más → Prepara con Claude → Descargar) | web + móvil (grabación del móvil o emulador) | 15 |
-| G2 | claude.ai: Settings → Capabilities → Skills → Upload skill → elegir el ZIP → aparece «Prepara con Claude» activada | claude.ai | 20 |
+| G2 | claude.ai: Ajustes → Skills → Añadir → Subir Skill → elegir el ZIP → Subir → aparece «prepara-oposicion» en «Tuyos» | claude.ai | 20 |
 | G3 | App: Cantar → «Transcribir» → reloj corriendo (acelerado) → guardar en el diario → «Enviar a Claude» | móvil | 20 |
 | G4 | claude.ai: chat nuevo, adjuntar el `.txt`, escribir «corrige este cante» → el informe aparece (scroll lento por las ocho secciones) → el PDF generado, abierto | claude.ai | 35 |
 | G5 | claude.ai: foto de un dictamen a mano + «corrige este dictamen» → informe | claude.ai | 20 |
@@ -19,7 +19,7 @@ Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de panta
 
 1. **Portada** (0:00-0:08). «Prepara con Claude» · «Tu equipo de preparación, con tu temario y tus datos» · rótulo pequeño: «No sustituye a un preparador: lo complementa».
 2. **Qué es** (0:08-0:25). Tres rótulos sobre la página web: corrige tus cantes y dictámenes · resuelve dudas viendo el temario entero · organiza tu cronograma y lo manda a la app. Logo de Claude.
-3. **Instalar** (0:25-0:50). G1 + G2 con tres rótulos: «1. Descarga el ZIP» · «2. Settings → Capabilities → Skills → Upload» · «3. Escribe lo que quieras».
+3. **Instalar** (0:25-0:50). G1 + G2 con tres rótulos: «1. Descarga el ZIP» · «2. Ajustes → Skills → Añadir → Subir Skill» · «3. Escribe lo que quieras».
 4. **Un cante** (0:50-1:45). G3 + G4. Rótulos: «La app transcribe con marcas de minuto» · «Errores con el minuto y la fuente» · «Lo que te preguntaría el tribunal» · «El informe, en PDF con la estética de tu oposición».
 5. **Un dictamen** (1:45-2:05). G5. Rótulo: «Aunque esté a mano».
 6. **Una duda** (2:05-2:20). G6. Rótulo: «Ve el temario en conjunto y cita dónde se estudia».

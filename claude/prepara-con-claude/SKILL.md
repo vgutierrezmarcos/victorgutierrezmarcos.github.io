@@ -1,5 +1,5 @@
 ---
-name: prepara-con-claude
+name: prepara-oposicion
 description: "Equipo de preparación para las oposiciones a TCEE y DCE: corrige cantes transcritos y dictámenes, resuelve dudas del temario, organiza el cronograma y simula al tribunal. Usa los datos de la app."
 ---
 
@@ -11,6 +11,7 @@ Antes de nada, lee `LICENCIA.md`: el material de `references/temas`, `references
 
 ## Cómo empezar
 
+0. **¿Hay versión nueva?** Una vez por conversación, si puedes leer páginas web, descarga `https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/oposicion/temario/app/skill/version.json` y compáralo con `VERSION.txt` de esta skill. Si `generado` es más reciente: (a) para todo lo que leas de `references/temario`, `references/temas`, `references/dictamen` y `references/canon`, usa la copia de la web (`base` de version.json + la misma ruta relativa, por ejemplo `…/prepara-oposicion/references/temas/3A08/ficha.md`) en lugar de la local, porque puede haber temas nuevos o corregidos; (b) si además `instrucciones` no coincide con el de `VERSION.txt`, di en una línea al principio de la respuesta que hay una versión nueva de la skill y que conviene volver a descargarla y subirla (enlace de `zip`), y sigue trabajando. Si no puedes leer la web o falla, usa lo local sin decir nada.
 1. **Oposición**: TCEE por defecto. Si el opositor dice DCE, o un fichero de la app lleva «Oposición DCE», trabaja con `references/oposiciones/dce.md`. Si no está claro y cambia la respuesta, pregúntalo en una línea.
 2. **Ficheros de la app**: si adjunta `oposicion_*_para_claude.json`, `oposicion_*_datos.json` o `cante_*.txt`, lee `references/datos-app.md` para interpretarlos. No pidas datos que ya vengan en el fichero.
 3. **Qué quiere**: usa la tabla de abajo. Si encaja en varios, haz primero lo que ha pedido y ofrece el resto en una línea al final. No preguntes lo que puedas deducir.
