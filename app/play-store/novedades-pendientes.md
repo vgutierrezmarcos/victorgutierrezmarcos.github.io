@@ -15,6 +15,7 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 - (27 oct., 1.20.5) La versión de Google Play vuelve a dejar iniciar sesión con Google (desde la 1.19.2 no conectaba con la cuenta)
 - (27 oct., 1.20.4) Estudiar → Temas, por ejercicios: una tarjeta por ejercicio con su progreso; el primero con el simulador de test, el test diario, los exámenes oficiales y la guía del dictamen de coyuntura revisada (con su resumen de repaso), que antes no estaba en la app
 - (27 oct., 1.20.4) Los temas revisados y la guía del dictamen son materiales exclusivos de uso personal: llevan su aviso, se leen dentro de la app y el temario tiene el filtro «Materiales exclusivos»
+- (28 oct., siguiente versión) Invitación de un toque: el preparador manda un enlace (o enseña un QR en clase) y el alumno instala la app y conecta con él sin teclear ningún código; al preparador, la petición le sale en Hoy para aceptarla
 - (26 oct., 1.20.4) Los temas de tus clases con el preparador se fijan solos desde tu cronograma, de modo que él ve la misma lista aunque no compartas el cronograma; y mientras no haya temas fijados, el preparador puede mandarte o sortear cualquiera de los que llevas
 
 ## Publicado el 26 oct. 2026 (salida en Google Play, 1.19.2)

@@ -16,6 +16,7 @@ import 'core/cache_http.dart';
 import 'core/constants.dart';
 import 'core/permiso_calendario.dart';
 import 'core/firebase_web.dart';
+import 'core/invitacion.dart';
 import 'core/notificaciones.dart';
 import 'core/pantalla_error.dart';
 import 'core/providers.dart';
@@ -70,8 +71,11 @@ Future<void> main() async {
   final cajaApp = await Hive.openBox(Cajas.app);
   Resenas.iniciar(cajaApp);
   await Notificaciones.iniciar();
+  // Invitación de un preparador (enlace de invitación o referrer de Play):
+  // la bienvenida la tiene en cuenta y la app lleva a conectar.
+  final invitacion = await leerInvitacionAlArrancar();
 
-  runApp(RaizApp(http: http, firebaseDisponible: firebaseDisponible, elegida: cajaApp.get('oposicion') as String?));
+  runApp(RaizApp(http: http, firebaseDisponible: firebaseDisponible, elegida: cajaApp.get('oposicion') as String?, invitacion: invitacion));
 }
 
 /// Crea los servicios de una oposición: su contenido, los datos del opositor
@@ -135,7 +139,10 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
 /// Raíz de la app: pregunta la oposición la primera vez (si hay varias) y
 /// vuelve a crear los servicios cuando se cambia (`cambiarOposicionProvider`).
 class RaizApp extends StatefulWidget {
-  const RaizApp({super.key, required this.http, required this.firebaseDisponible, this.elegida});
+  const RaizApp({super.key, required this.http, required this.firebaseDisponible, this.elegida, this.invitacion});
+
+  /// Invitación de un preparador pendiente de conectar (ver core/invitacion.dart).
+  final Invitacion? invitacion;
   final CacheHttp http;
   final bool firebaseDisponible;
   /// La guardada en la caja `app` (null = aún no ha elegido).
@@ -233,6 +240,7 @@ class _RaizAppState extends State<RaizApp> {
               conOposicion: Oposiciones.variasDisponibles,
               alElegir: (o, papel) => _arrancar(o, papel: papel),
               buscarEnCuenta: OposicionCuenta.buscar,
+              invitacion: widget.invitacion,
             )
           : const SizedBox.shrink();
     }

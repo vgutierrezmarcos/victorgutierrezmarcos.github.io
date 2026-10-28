@@ -11,6 +11,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
 import '../temario/abrir_tema.dart';
+import 'red_widgets.dart';
 import 'semana_page.dart';
 import 'sustituciones.dart';
 import 'verificacion_page.dart';
@@ -62,6 +63,9 @@ class PanelPreparadorHoy extends ConsumerWidget {
         );
 
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      // Opositores que han tocado tu invitación (o escrito tu código): a un
+      // toque de aceptarlos, sin ir a Más → Preparador.
+      for (final sol in ref.watch(solicitudesEnlaceProvider)) TarjetaSolicitudEnlace(sol),
       if (firebase && usuario != null && !estado.verificado)
         Padding(
           padding: const EdgeInsets.only(bottom: 10),

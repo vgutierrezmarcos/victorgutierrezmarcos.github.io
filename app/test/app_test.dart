@@ -13,6 +13,10 @@ import 'package:tcee_app/features/temario/temario_page.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/app.dart';
 import 'package:tcee_app/core/cache_http.dart';
+import 'package:tcee_app/core/constants.dart';
+import 'package:tcee_app/core/invitacion.dart';
+import 'package:tcee_app/features/guia/guia.dart';
+import 'package:tcee_app/features/inicio/permisos_sheet.dart';
 import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/plan.dart';
@@ -657,6 +661,39 @@ void main() {
     await tester.pumpAndSettle();
     await tocar(tester, find.textContaining('Mover al'));
     expect(plan.cronogramaActivo()!.semanas.map((s) => s.temas), [['3.A.1'], ['3.B.1', '3.A.2']]);
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('invitación de un preparador: la app abre Mi preparador con el código puesto', (tester) async {
+    // Como si la app se hubiera abierto desde el enlace de invitación (o
+    // instalado desde él): la invitación queda pendiente en la caja `app`.
+    final app = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app) : await Hive.openBox(Cajas.app, bytes: Uint8List(0));
+    await app.clear();
+    await app.putAll({clavePermisosPedidos: true, claveBateriaPedida: true, claveGuiaVista('tcee', Papel.opositor): true});
+    await const Invitacion(codigo: 'ABC234', oposicion: 'tcee').guardar();
+    expect(Invitacion.pendiente()?.codigo, 'ABC234');
+    await arrancar(tester);
+    expect(find.text('Mi preparador'), findsWidgets);
+    expect(find.text('Tu preparador te invita a conectar'), findsOneWidget);
+    expect(find.text('Descartar la invitación'), findsOneWidget);
+    // Sin Firebase no se puede conectar; descartarla la quita.
+    await tocar(tester, find.text('Descartar la invitación'));
+    expect(Invitacion.pendiente(), isNull);
+    expect(find.text('Conecta con tu preparador'), findsOneWidget);
+    await app.clear();
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('invitación de otra oposición: se ofrece cambiar a ella', (tester) async {
+    final app = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app) : await Hive.openBox(Cajas.app, bytes: Uint8List(0));
+    await app.clear();
+    await app.putAll({clavePermisosPedidos: true, claveBateriaPedida: true, claveGuiaVista('tcee', Papel.opositor): true});
+    await const Invitacion(codigo: 'XYZ789', oposicion: 'dce').guardar();
+    await arrancar(tester);
+    expect(find.text('Cambiar a DCE'), findsOneWidget);
+    // Sin Firebase ni invitación no hay nada más que hacer; el toque cambia de
+    // oposición (en las pruebas, nada) y deja pasar los temporizadores del arranque.
+    await tocar(tester, find.text('Cambiar a DCE'));
+    await app.clear();
     expect(tester.takeException(), isNull);
   });
 }

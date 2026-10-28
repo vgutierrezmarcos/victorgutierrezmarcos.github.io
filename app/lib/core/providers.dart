@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'analitica.dart';
 import 'instalacion.dart';
+import 'invitacion.dart';
 import 'resenas.dart';
 import 'avisos_navegador.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -75,6 +76,10 @@ class Servicios {
 final serviciosProvider = Provider<Servicios>((ref) => throw UnimplementedError('Se inyecta en main()'));
 
 final oposicionProvider = Provider<Oposicion>((ref) => ref.watch(serviciosProvider).oposicion);
+
+/// Invitación de un preparador pendiente de conectar (caja `app`); se
+/// invalida al conectar, al descartarla y cuando llega otro enlace.
+final invitacionPendienteProvider = Provider<Invitacion?>((ref) => Invitacion.pendiente());
 
 /// Cambia de oposición: se guarda y la app se vuelve a cargar con sus datos
 /// (lo pone RaizApp en main.dart).

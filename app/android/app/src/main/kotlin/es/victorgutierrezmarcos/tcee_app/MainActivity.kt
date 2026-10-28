@@ -6,17 +6,30 @@ import android.net.Uri
 import android.os.Build
 import android.os.PowerManager
 import android.provider.Settings
+import com.android.installreferrer.api.InstallReferrerClient
+import com.android.installreferrer.api.InstallReferrerStateListener
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
+    // Enlaces de invitación que llegan con la app ya abierta (core/enlaces_io.dart).
+    private var enlaces: EventChannel.EventSink? = null
+
     // Ajustes del sistema que la app no puede cambiar por sí misma: los abre
     // para que el usuario active los avisos o quite la optimización de batería.
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        EventChannel(flutterEngine.dartExecutor.binaryMessenger, "es.victorgutierrezmarcos.tcee_app/enlaces").setStreamHandler(object : EventChannel.StreamHandler {
+            override fun onListen(arguments: Any?, events: EventChannel.EventSink?) { enlaces = events }
+            override fun onCancel(arguments: Any?) { enlaces = null }
+        })
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "es.victorgutierrezmarcos.tcee_app/sistema").setMethodCallHandler { call, result ->
             when (call.method) {
+                // El enlace con el que se abrió la app (App Links), si fue así.
+                "enlaceInicial" -> result.success(if (intent?.action == Intent.ACTION_VIEW) intent?.dataString else null)
+                "referrerInstalacion" -> leerReferrer(result)
                 "ajustesNotificaciones" -> result.success(abrir(ajustesNotificaciones()))
                 "ajustesBateria" -> result.success(abrir(Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)))
                 "pedirSinRestriccionBateria" -> result.success(pedirSinRestriccionBateria())
@@ -28,6 +41,46 @@ class MainActivity : FlutterActivity() {
                 }
                 else -> result.notImplemented()
             }
+        }
+    }
+
+    // Enlace tocado con la app abierta (launchMode singleTop): a Flutter.
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        if (intent.action == Intent.ACTION_VIEW) intent.dataString?.let { enlaces?.success(it) }
+    }
+
+    // El «referrer» con el que Google Play instaló la app (API Install
+    // Referrer, sin permisos): lleva el código del preparador si la
+    // instalación salió de su enlace de invitación. Null si no hay o falla.
+    private fun leerReferrer(result: MethodChannel.Result) {
+        val cliente = try {
+            InstallReferrerClient.newBuilder(this).build()
+        } catch (e: Exception) {
+            result.success(null)
+            return
+        }
+        var contestado = false
+        fun contestar(valor: String?) {
+            if (contestado) return
+            contestado = true
+            runOnUiThread { result.success(valor) }
+            try { cliente.endConnection() } catch (e: Exception) {}
+        }
+        try {
+            cliente.startConnection(object : InstallReferrerStateListener {
+                override fun onInstallReferrerSetupFinished(codigo: Int) {
+                    contestar(
+                        if (codigo == InstallReferrerClient.InstallReferrerResponse.OK) {
+                            try { cliente.installReferrer.installReferrer } catch (e: Exception) { null }
+                        } else null
+                    )
+                }
+
+                override fun onInstallReferrerServiceDisconnected() = contestar(null)
+            })
+        } catch (e: Exception) {
+            contestar(null)
         }
     }
 

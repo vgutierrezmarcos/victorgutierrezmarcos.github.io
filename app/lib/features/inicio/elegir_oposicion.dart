@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/constants.dart';
+import '../../core/invitacion.dart';
 import '../../core/providers.dart' show entrarConGoogle;
 import '../../data/models/oposicion.dart';
 import '../../data/models/preparador.dart';
@@ -16,7 +17,7 @@ import '../../theme/app_theme.dart';
 /// oposición). Va antes de crear los servicios, así que no usa Riverpod.
 /// Estética neutra ([PaletaNeutra]); cada tarjeta, con la de su oposición.
 class ElegirOposicionApp extends StatelessWidget {
-  const ElegirOposicionApp({super.key, required this.alElegir, this.conBienvenida = false, this.conOposicion = true, this.buscarEnCuenta});
+  const ElegirOposicionApp({super.key, required this.alElegir, this.conBienvenida = false, this.conOposicion = true, this.buscarEnCuenta, this.invitacion});
   /// Con una sola oposición no se pregunta ni la oposición ni el papel: [Papel] es null.
   final Future<void> Function(Oposicion, Papel?) alElegir;
   final bool conBienvenida;
@@ -24,6 +25,10 @@ class ElegirOposicionApp extends StatelessWidget {
   /// Tras entrar con Google en la bienvenida: la oposición de la cuenta, si
   /// ya la tiene (entonces no se pregunta ni ella ni el papel).
   final Future<Oposicion?> Function()? buscarEnCuenta;
+  /// Invitación de un preparador con la que se ha abierto la app: la
+  /// bienvenida lo dice y, si trae la oposición, no se pregunta ni ella ni el
+  /// papel (es opositor); después, la app lleva a conectar.
+  final Invitacion? invitacion;
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -38,16 +43,17 @@ class ElegirOposicionApp extends StatelessWidget {
         locale: const Locale('es'),
         supportedLocales: const [Locale('es')],
         localizationsDelegates: GlobalMaterialLocalizations.delegates,
-        home: _ElegirOposicionPage(alElegir: alElegir, conBienvenida: conBienvenida, conOposicion: conOposicion, buscarEnCuenta: buscarEnCuenta),
+        home: _ElegirOposicionPage(alElegir: alElegir, conBienvenida: conBienvenida, conOposicion: conOposicion, buscarEnCuenta: buscarEnCuenta, invitacion: invitacion),
       );
 }
 
 class _ElegirOposicionPage extends StatefulWidget {
-  const _ElegirOposicionPage({required this.alElegir, required this.conBienvenida, required this.conOposicion, this.buscarEnCuenta});
+  const _ElegirOposicionPage({required this.alElegir, required this.conBienvenida, required this.conOposicion, this.buscarEnCuenta, this.invitacion});
   final Future<void> Function(Oposicion, Papel?) alElegir;
   final bool conBienvenida;
   final bool conOposicion;
   final Future<Oposicion?> Function()? buscarEnCuenta;
+  final Invitacion? invitacion;
 
   @override
   State<_ElegirOposicionPage> createState() => _ElegirOposicionPageState();
@@ -61,6 +67,9 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
   bool _entrando = false;
   String? _error;
 
+  /// La oposición de la invitación, si la trae y está disponible.
+  Oposicion? get _invitada => Oposiciones.disponibles.where((o) => o.id == widget.invitacion?.oposicion).firstOrNull;
+
   /// Bienvenida terminada (con sesión o sin ella): no se vuelve a mostrar.
   Future<void> _seguir() async {
     await Hive.box(Cajas.app).put(claveBienvenidaVista, true);
@@ -68,6 +77,14 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
     if (!widget.conOposicion) {
       setState(() => _cargando = true);
       await widget.alElegir(Oposiciones.disponibles.first, null);
+      return;
+    }
+    // Invitado por un preparador de esa oposición: es opositor en ella; no se
+    // pregunta nada más y la app lleva a conectar.
+    final invitada = _invitada;
+    if (invitada != null) {
+      setState(() => _cargando = true);
+      await widget.alElegir(invitada, Papel.opositor);
       return;
     }
     setState(() => _bienvenida = false);
@@ -119,11 +136,24 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
             ),
           ]),
         );
+    final invitado = widget.invitacion != null;
     return [
-      ..._cabeceraPaso(serif, 'Te damos la bienvenida', 'El temario, el test, tus cantes y tu preparador, en el móvil y en el ordenador. Entra con tu cuenta de Google y lo tendrás todo guardado desde el principio.'),
-      ventaja(Icons.devices_outlined, 'Tu progreso, en todas partes', 'Tests, temas, cantes y cronograma, en el móvil y en la web, y a salvo si cambias de móvil.'),
-      ventaja(Icons.groups_outlined, 'Preparadores', 'Busca preparador o conecta con el tuyo; si preparas, da clases y coge clases sueltas.'),
-      ventaja(Icons.notifications_active_outlined, 'Avisos', 'De tus clases, de los temas que te mandan y de lo que publica el Ministerio.'),
+      ..._cabeceraPaso(
+        serif,
+        'Te damos la bienvenida',
+        invitado
+            ? 'Tu preparador te ha invitado a conectar con él en la app${_invitada == null ? '' : ' (${_invitada!.siglas})'}. Entra con tu cuenta de Google y pedirás la conexión en un toque; él la acepta y, desde entonces, ve tus temas y tus cantes.'
+            : 'El temario, el test, tus cantes y tu preparador, en el móvil y en el ordenador. Entra con tu cuenta de Google y lo tendrás todo guardado desde el principio.',
+      ),
+      if (invitado) ...[
+        ventaja(Icons.event_available_outlined, 'Sus clases, en tu agenda', 'Las que te programe, con aviso la víspera y una hora antes, y los temas antes de cada clase.'),
+        ventaja(Icons.star_outline, 'Sus valoraciones, en tu diario', 'Cómo fue cada cante y qué temas llevas flojos. Nadie más ve nada tuyo.'),
+        ventaja(Icons.devices_outlined, 'Y todo lo demás', 'Temario, test con los exámenes oficiales, cronograma y cronómetro, en el móvil y en el ordenador.'),
+      ] else ...[
+        ventaja(Icons.devices_outlined, 'Tu progreso, en todas partes', 'Tests, temas, cantes y cronograma, en el móvil y en la web, y a salvo si cambias de móvil.'),
+        ventaja(Icons.groups_outlined, 'Preparadores', 'Busca preparador o conecta con el tuyo; si preparas, da clases y coge clases sueltas.'),
+        ventaja(Icons.notifications_active_outlined, 'Avisos', 'De tus clases, de los temas que te mandan y de lo que publica el Ministerio.'),
+      ],
       const SizedBox(height: 10),
       FilledButton.icon(
         onPressed: _entrando ? null : _entrar,
@@ -142,10 +172,12 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
         style: TextButton.styleFrom(minimumSize: const Size.fromHeight(46)),
         child: const Text('Ahora no', style: TextStyle(fontSize: 15.5, color: PaletaNeutra.tinta)),
       ),
-      const Text(
-        'La app funciona igual sin cuenta. Puedes entrar cuando quieras desde Más → Cuenta.',
+      Text(
+        invitado
+            ? 'Sin cuenta no se puede conectar con tu preparador. Puedes entrar más tarde desde Más → Cuenta: la invitación te espera.'
+            : 'La app funciona igual sin cuenta. Puedes entrar cuando quieras desde Más → Cuenta.',
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 13, height: 1.4, color: PaletaNeutra.textoSuave),
+        style: const TextStyle(fontSize: 13, height: 1.4, color: PaletaNeutra.textoSuave),
       ),
       const SizedBox(height: 18),
       Row(crossAxisAlignment: CrossAxisAlignment.start, children: [

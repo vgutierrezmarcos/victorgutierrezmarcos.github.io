@@ -209,7 +209,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: TextButton.icon(
-                  onPressed: () => abrirUrl(context, enlaceWhatsApp(a.telefono, mensajeInvitacion(ref.read(perfilPreparadorProvider).codigo!))!),
+                  onPressed: () => abrirUrl(context, enlaceWhatsApp(a.telefono, mensajeInvitacion(ref.read(perfilPreparadorProvider).codigo!, oposicion: ref.read(oposicionProvider).id))!),
                   icon: const Icon(Icons.person_add_alt, size: 18),
                   label: Text('Invitar a ${a.nombre} a la app'),
                 ),

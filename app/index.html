@@ -430,6 +430,7 @@
         .app-descarga-botones, .app-web-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
         .app-web { margin-top: 0.9rem; }
         .portada-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; align-items: center; margin: -0.8rem 0 2.2rem; }
+        .app-invitacion { max-width: 640px; margin: -0.4rem auto 1.6rem; }
         .app-gancho {
             font-family: var(--fuente-ui);
             font-size: 1rem;
@@ -852,6 +853,10 @@
             <div class="portada-interior">
                 <span class="app-etiqueta">Gratis · Android, iPhone y navegador</span>
                 <h1 id="portada-titulo"><span class="t-tcee">TCEE</span> <span class="t-y">y</span> <span class="t-dce">DCE</span> <span class="resto">en el bolsillo: la app de las oposiciones a Técnico Comercial y Economista del Estado y a Diplomado Comercial del Estado</span></h1>
+
+                <!-- Invitación de un preparador (?codigo=…&op=…): app-banner.js la enseña y
+                     pasa el código a Google Play (referrer) y a la app web -->
+                <p id="app-invitacion" class="app-gancho app-invitacion" hidden><strong>Tu preparador te invita a conectar con él en la app.</strong> Instálala desde Google Play y la conexión se pedirá sola al abrirla; si ya la tienes, vuelve a tocar el enlace de la invitación con la app instalada. En iPhone o en el ordenador, <a id="app-invitacion-web" href="abrir/">ábrela en el navegador</a> y toca «Conectar».</p>
 
                 <!-- Los botones, a la vista nada más entrar. El APK lleva su dirección fija
                      por si no llega app-config.json; con Google Play, app-banner.js lo cambia -->
