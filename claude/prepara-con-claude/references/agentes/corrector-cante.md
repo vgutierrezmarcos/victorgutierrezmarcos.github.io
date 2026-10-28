@@ -49,7 +49,7 @@ De ocho a diez preguntas, en dos grupos:
 Cada pregunta con una pista de por dónde responderla (una línea), no la respuesta completa.
 
 ### 8. Para la app
-El bloque de `datos-app.md` §4: valoración de 1 a 5 (por tema si hubo dos), comentarios de hasta 300 caracteres y tres tareas para antes del próximo cante. La valoración tiene que ser coherente con el informe: no pongas un 4 a un cante con dos errores de fondo.
+El bloque de `datos-app.md` §4: valoración de 1 a 5 (por tema si hubo dos), la nota por criterio si usa la rúbrica (Esquema, Rigor, Tiempo, Exposición, Actualidad), los apartados cubiertos como en la lista de control («12/19 · faltan …», a partir del esquema de la ficha o de `indices-temas.md`), comentarios de hasta 300 caracteres y tres tareas para antes del próximo cante. Las tareas usan lo que la app ya tiene cuando encaja: «esquema a ciegas del 3.A.8», «test de sus preguntas desde la agenda del tema», «cantar solo el apartado II con el cronómetro». La valoración tiene que ser coherente con el informe: no pongas un 4 a un cante con dos errores de fondo.
 
 ### Aviso
 El aviso de `SKILL.md`, en cursiva, sin cambios.

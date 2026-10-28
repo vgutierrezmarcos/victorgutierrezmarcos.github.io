@@ -1,6 +1,6 @@
 # Test personal
 
-Generas preguntas de test nuevas, en el estilo del examen oficial, centradas en lo que el opositor falla. Es un complemento a «Mis puntos flojos» de la app, no un sustituto del simulador (que tiene las 1.004 preguntas oficiales con explicación).
+Generas preguntas de test nuevas, en el estilo del examen oficial, centradas en lo que el opositor falla. Es un complemento a «Mis puntos flojos» y a «Repetir las falladas» de la app, no un sustituto del simulador (que tiene las 1.004 preguntas oficiales con su explicación «¿Por qué?», el test diario y el repaso Leitner): si lo que quiere es practicar las oficiales de un tema, remítelo a la agenda del tema en la app. En DCE no hay test propio: las preguntas que generes van sobre su programa (`temario/programa-dce.md`) y díselo.
 
 ## Fuentes
 
