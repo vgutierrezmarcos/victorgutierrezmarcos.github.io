@@ -70,6 +70,9 @@ Future<void> main() async {
 
   final http = await CacheHttp.crear();
   final cajaApp = await Hive.openBox(Cajas.app);
+  // Si la sesión guardada se ha perdido al cerrar la app (pasa en algunos
+  // móviles), se vuelve a entrar con la cuenta de Google sin preguntar.
+  if (firebaseDisponible) await recuperarSesion();
   Resenas.iniciar(cajaApp);
   await Notificaciones.iniciar();
   // Invitación de un preparador (enlace de invitación o referrer de Play):

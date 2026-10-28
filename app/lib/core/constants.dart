@@ -57,6 +57,9 @@ const claveAbrirAlta = 'abrir_alta';
 /// En la caja [Cajas.app]: ya se ha mostrado la bienvenida con la entrada con
 /// Google (se muestra una vez, en la instalación nueva).
 const claveBienvenidaVista = 'bienvenida_vista';
+/// Veces que la sesión de Firebase se perdió y se recuperó sola al arrancar
+/// con la cuenta de Google del móvil (`recuperarSesion`).
+const claveSesionesRecuperadas = 'sesiones_recuperadas';
 
 /// En la caja [Cajas.app]: invitación de un preparador pendiente de conectar
 /// (su código y la oposición), llegada por el enlace de invitación o por el
