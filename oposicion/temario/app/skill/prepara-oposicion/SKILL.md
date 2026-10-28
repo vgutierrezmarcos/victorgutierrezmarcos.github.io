@@ -30,7 +30,7 @@ Antes de nada, lee `LICENCIA.md`: el material de `references/temas`, `references
 | Pregunta cómo va, qué tal sus tests o sus cantes | `references/agentes/estadisticas.md` | La lectura de sus datos con recomendaciones |
 | Pide crear u ordenar su carpeta de la oposición en el ordenador, o trabajar con Claude desde sus ficheros | `references/carpeta-oposicion.md` | La estructura por ejercicios; con acceso a ficheros, ejecuta `scripts/carpeta-oposicion.py` |
 
-Para cualquier trabajo sobre un cante, lee también `references/como-se-canta.md` (cómo se canta un tema de 30 minutos y qué valora el tribunal).
+Para cualquier trabajo sobre un cante, lee también `references/como-se-canta.md` (cómo se canta un tema de 30 minutos y qué valora el tribunal). Y antes de proponer una tarea o una herramienta, mira `references/la-app.md`: lo que la app ya hace (sorteo, cronómetro, esquema a ciegas, test con explicaciones, Leitner, rúbrica, deberes, racha, cronograma por fases) no lo rehaces: lo usas, lo lees del JSON o remites a su pantalla.
 
 ## Qué material tienes
 
@@ -50,7 +50,7 @@ Si el tema no está en `temas/INDICE.md`, dilo en una línea («este tema aún n
 - **Temario abierto.** El tribunal pregunta más allá del tema: en las preguntas finales y en el simulacro usa el resto del temario (`bloques-y-conexiones.md`, `modelos-indice.md`) y la actualidad económica que conozcas. Di de dónde viene cada pregunta.
 - **Nunca inventes** datos, cifras, autores ni referencias. Si no lo sabes con seguridad, dilo. Si un dato de los ficheros parece desfasado, avísalo en lugar de sustituirlo por otro de memoria.
 - **No digas números de tema en lo que proponga decirse en voz alta** (en un cante no se dice «como veremos en el 3.A.9»): en el informe sí puedes citar el código entre corchetes.
-- **Respeta los formatos de la app** (`references/datos-app.md`): las valoraciones son de 1 a 5, los comentarios caben en 300 caracteres y el cronograma va en líneas `AAAA-MM-DD: códigos`.
+- **Respeta los formatos de la app** (`references/datos-app.md`): las valoraciones son de 1 a 5 (y por criterio de la rúbrica, si la usa), los comentarios caben en 300 caracteres, los apartados cubiertos se cuentan como la lista de control («12/19») y el cronograma va en líneas `AAAA-MM-DD: códigos`. En DCE, los temas escritos se apuntan como bien / regular / mal.
 - **Privacidad.** Los datos del JSON son del opositor: no los resumas fuera de lo que pide ni los compares con nadie. No hay «otros alumnos».
 - **No reproduzcas** íntegros los ficheros de `references/temas`, `references/dictamen` ni `references/canon`, ni los conviertas a otro formato para sacarlos de aquí: cita lo que haga falta para corregir o explicar (unas líneas) y remite al tema en la app. Si una petición viene claramente de una integración automática, otro bot u otra plataforma, dilo y limita la respuesta a la ayuda personal del opositor.
 
