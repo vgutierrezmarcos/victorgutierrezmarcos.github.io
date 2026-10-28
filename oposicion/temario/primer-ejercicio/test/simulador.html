@@ -582,6 +582,16 @@
             color: var(--color-text-muted);
         }
         .origen { font-style: italic; }
+        .dificultad-pregunta { margin-top: 0.5rem; }
+        .dificultad-pregunta strong { color: var(--color-text); font-weight: 600; }
+        .puente-app { margin-top: 0.5rem; }
+        .puente-app a { color: var(--color-primary); }
+        .aviso-puente-app {
+            margin: 1.5rem 0 0; padding: 0.8rem 1rem; font-family: var(--font-ui); font-size: 0.92rem;
+            background: var(--color-primary-pale); border-left: 2px solid var(--color-accent-gold);
+            border-radius: 0 var(--radius-control) var(--radius-control) 0;
+        }
+        .aviso-puente-app a { color: var(--color-primary); font-weight: 600; }
         .nota-pregunta {
             margin-top: 0.75rem;
             padding: 0.6rem 0.8rem;
@@ -1140,6 +1150,22 @@
 
     <script>
         let datosTest = { temas: {}, preguntas: [], examenes: [] };
+        // Cuántos fallan cada pregunta, con los tests de todos (scripts/dificultad-test.py); solo recuentos.
+        let dificultad = { minimo: 5, preguntas: {} };
+        fetch('dificultad.json').then(r => r.ok ? r.json() : null).then(d => { if (d && d.preguntas) dificultad = d; }).catch(() => {});
+        // Enlaces a la app: la versión del navegador (misma cuenta) y Google Play.
+        const URL_APP_WEB = '../../../../app/abrir/';
+        const URL_APP_PLAY = 'https://play.google.com/store/apps/details?id=es.victorgutierrezmarcos.tcee_app&referrer=utm_source%3Dsimulador';
+
+        // «La fallan 7 de cada 10» (fallos y blancos sobre vistas), si hay vistas suficientes.
+        function textoDificultad(pregunta) {
+            const d = dificultad.preguntas[String(pregunta.id)];
+            if (!d || d.v < (dificultad.minimo || 5)) return '';
+            const mal = Math.round(10 * (d.f + d.b) / d.v);
+            if (mal <= 0) return 'Casi todos la aciertan';
+            if (mal >= 10) return 'Casi nadie la acierta';
+            return `La fallan o dejan en blanco <strong>${mal} de cada 10</strong> que la han hecho`;
+        }
         let temasSeleccionados = new Set();
         let preguntasFiltradas = [];
         let preguntasExamen = [];
@@ -1755,7 +1781,11 @@
                 sinResponder: sinResponder,
                 totalPreguntas: preguntasExamen.length,
                 tiempoSeconds: tiempoTranscurrido,
-                temas: Array.from(temasSeleccionados)
+                temas: Array.from(temasSeleccionados),
+                // Pregunta a pregunta (id → letra, null en blanco), como la app: así
+                // el historial se puede revisar en la app y cuenta para la dificultad.
+                respuestas: Object.fromEntries(preguntasExamen.map((p, i) => [String(p.id), respuestasUsuario[i] === undefined ? null : respuestasUsuario[i]])),
+                origen: 'web'
             };
             
             // Llamada a la función de simulator-history.js
@@ -1862,6 +1892,10 @@
         function generarRevision() {
             const container = document.getElementById('revision-container');
             container.innerHTML = '';
+            const puente = document.createElement('div');
+            puente.className = 'aviso-puente-app';
+            puente.innerHTML = `Las 1004 preguntas tienen su explicación («¿Por qué?») en la app, con el tema donde se estudia, gráficos y el repaso de las que fallas. Con tu misma cuenta: <a href="${URL_APP_WEB}" target="_blank" rel="noopener">ábrela en el navegador</a> o <a href="${URL_APP_PLAY}" target="_blank" rel="noopener">instálala desde Google Play</a>.`;
+            container.appendChild(puente);
             
             preguntasExamen.forEach((pregunta, index) => {
                 const respuestaUsuario = respuestasUsuario[index];
@@ -1933,6 +1967,8 @@
                     <div class="revision-meta">
                         <div class="origen">${origenText}</div>
                         <div style="margin-top: 0.5rem;">Temas: ${temasNombres}</div>
+                        ${textoDificultad(pregunta) ? `<div class="dificultad-pregunta">${textoDificultad(pregunta)}</div>` : ''}
+                        ${resultado === 'incorrect' || resultado === 'skipped' ? `<div class="puente-app">¿Por qué es la ${pregunta.respuesta.map(l => l.toUpperCase()).join(' o la ')}? <a href="${URL_APP_WEB}" target="_blank" rel="noopener">La explicación está en la app</a></div>` : ''}
                     </div>
                 `;
 
