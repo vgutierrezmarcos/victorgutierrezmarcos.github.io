@@ -15,6 +15,7 @@ import '../../widgets/selector_temas.dart';
 import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
+import '../plan/rubrica.dart';
 import '../plan/resultado_sheet.dart';
 import '../cronograma/propuesta_page.dart';
 import 'materiales_page.dart';
@@ -369,6 +370,8 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                 ]),
               ),
             ],
+            // Cómo evoluciona en cada criterio de la rúbrica (si se valora con ella).
+            EvolucionCriterios(cantes: hechos.where((c) => idsMias.contains(c.id))),
             const TituloSeccion('Historial de cantes'),
             if (hechos.isEmpty)
               const VacioVista(icono: Icons.star_border, texto: 'Todavía no hay cantes valorados.')

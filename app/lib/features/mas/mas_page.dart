@@ -14,6 +14,8 @@ import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
 import '../plan/plan_page.dart';
+import '../plan/rubrica.dart';
+import '../../data/models/plan.dart';
 import '../preparador/calendario_google_tarjeta.dart';
 import '../preparador/red_widgets.dart';
 import '../../data/models/preparador.dart';
@@ -157,6 +159,13 @@ class MasPage extends ConsumerWidget {
                   title: const Text('El tema más frío, en Hoy'),
                   subtitle: Text('Te sugiere el tema estudiado que lleves más tiempo sin repasar ni cantar.', style: context.textos.labelSmall),
                   trailing: Switch(value: ajustes.temaFrio, onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temaFrio: v))),
+                ),
+                // Rúbrica para los cantes por su cuenta (la del preparador va en sus ajustes).
+                FilaRubrica(
+                  rubrica: ajustes.rubrica,
+                  porDefecto: (ref.watch(configProvider).valueOrNull?.rubrica ?? const []).isEmpty ? rubricaPorDefecto : ref.watch(configProvider).valueOrNull!.rubrica,
+                  onChanged: (r) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(rubrica: r)),
+                  texto: 'Para tus cantes por tu cuenta: además de las estrellas, esquema, rigor, tiempo, exposición y actualidad (o los tuyos). Opcional en cada cante.',
                 ),
               ],
               if ((ref.watch(oposicionesVisiblesProvider).valueOrNull ?? Oposiciones.disponibles).length > 1)

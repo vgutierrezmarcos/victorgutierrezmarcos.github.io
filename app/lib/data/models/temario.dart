@@ -162,12 +162,14 @@ class AppConfig {
     this.calendarioParaTodos = false,
     this.bolasPorParte = const {},
     this.partesARedactar = const {},
+    this.fasesEscrito = const {},
     this.urlBoe,
     this.email = 'contacto@victorgutierrezmarcos.es',
     this.linkedin,
     this.github,
     this.listaX,
     this.avisos = const [],
+    this.rubrica = const [],
   });
 
   final String versionMinima;
@@ -186,12 +188,18 @@ class AppConfig {
   /// Ejercicios en los que basta con desarrollar algunas partes (5.º: 2 de 3),
   /// si la web lo cambia (`Oposicion.partesARedactar`).
   final Map<int, int> partesARedactar;
+  /// Cambios a las fases del cronograma de un ejercicio escrito, por
+  /// ejercicio (`fasesEscrito` → `FasesEscrito.conCambios`).
+  final Map<int, Map<dynamic, dynamic>> fasesEscrito;
   final String? urlBoe;
   final String email;
   final String? linkedin;
   final String? github;
   final String? listaX;
   final List<String> avisos;
+  /// Criterios de valoración por defecto de la oposición (`rubrica` en
+  /// app-config.json); vacío = los de la app ([rubricaPorDefecto]).
+  final List<String> rubrica;
 
   factory AppConfig.fromJson(Map<String, dynamic> j) {
     final app = j['app'] as Map<String, dynamic>? ?? {};
@@ -205,6 +213,11 @@ class AppConfig {
       if (v['bolasPorParte'] is num) bolas[n] = (v['bolasPorParte'] as num).toInt();
       if (v['partesARedactar'] is num) redactar[n] = (v['partesARedactar'] as num).toInt();
     });
+    final fases = <int, Map<dynamic, dynamic>>{};
+    ((j['fasesEscrito'] as Map?) ?? {}).forEach((k, v) {
+      final n = int.tryParse(k.toString());
+      if (n != null && v is Map) fases[n] = v;
+    });
     return AppConfig(
       versionMinima: app['versionMinima'] as String? ?? '1.0.0',
       versionActual: app['versionActual'] as String?,
@@ -214,12 +227,14 @@ class AppConfig {
       calendarioParaTodos: app['calendarioParaTodos'] == true,
       bolasPorParte: bolas,
       partesARedactar: redactar,
+      fasesEscrito: fases,
       urlBoe: conv['urlBoe'] as String?,
       email: con['email'] as String? ?? 'contacto@victorgutierrezmarcos.es',
       linkedin: con['linkedin'] as String?,
       github: con['github'] as String?,
       listaX: con['listaX'] as String?,
       avisos: (j['avisos'] as List? ?? []).map((e) => e.toString()).toList(),
+      rubrica: (j['rubrica'] as List? ?? []).map((e) => e.toString().trim()).where((e) => e.isNotEmpty).toList(),
     );
   }
 

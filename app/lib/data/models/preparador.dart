@@ -180,6 +180,7 @@ class PerfilPreparador {
     this.avisoEstudiados = false,
     this.avisoInactividad = false,
     this.avisoExamen = true,
+    this.rubrica = const [],
     this.reservas = false,
     this.huecos = const [],
     this.linkedin = '',
@@ -265,6 +266,8 @@ class PerfilPreparador {
   final bool avisoEstudiados;
   final bool avisoInactividad;
   final bool avisoExamen;
+  /// Criterios con los que valora los cantes (vacío = solo las estrellas).
+  final List<String> rubrica;
   /// Sus alumnos pueden reservar en sus huecos libres (desactivado por defecto).
   final bool reservas;
   /// Huecos semanales en los que acepta reservas.
@@ -273,7 +276,7 @@ class PerfilPreparador {
   final String linkedin;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? avisoTemasClase, bool? avisoCantesPropios, bool? avisoEstudiados, bool? avisoInactividad, bool? avisoExamen, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, bool antelacionDelExamen = false, List<int>? avisosClase, String? modalidad, String? ciudad, bool? calendarioGoogle, int? minutosClase, int? temasPorClase, String? plataforma}) => PerfilPreparador(
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? avisoTemasClase, bool? avisoCantesPropios, bool? avisoEstudiados, bool? avisoInactividad, bool? avisoExamen, List<String>? rubrica, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, bool antelacionDelExamen = false, List<int>? avisosClase, String? modalidad, String? ciudad, bool? calendarioGoogle, int? minutosClase, int? temasPorClase, String? plataforma}) => PerfilPreparador(
         activo: activo ?? this.activo,
         codigo: codigo ?? this.codigo,
         nombre: nombre ?? this.nombre,
@@ -285,6 +288,7 @@ class PerfilPreparador {
         avisoEstudiados: avisoEstudiados ?? this.avisoEstudiados,
         avisoInactividad: avisoInactividad ?? this.avisoInactividad,
         avisoExamen: avisoExamen ?? this.avisoExamen,
+        rubrica: rubrica ?? this.rubrica,
         reservas: reservas ?? this.reservas,
         huecos: huecos ?? this.huecos,
         linkedin: linkedin ?? this.linkedin,
@@ -312,6 +316,7 @@ class PerfilPreparador {
         'avisoEstudiados': avisoEstudiados,
         'avisoInactividad': avisoInactividad,
         'avisoExamen': avisoExamen,
+        if (rubrica.isNotEmpty) 'rubrica': rubrica,
         'reservas': reservas,
         'huecos': huecos.map((h) => h.toJson()).toList(),
         'linkedin': linkedin,
@@ -341,6 +346,7 @@ class PerfilPreparador {
           avisoEstudiados: j['avisoEstudiados'] as bool? ?? false,
           avisoInactividad: j['avisoInactividad'] as bool? ?? false,
           avisoExamen: j['avisoExamen'] as bool? ?? true,
+          rubrica: ((j['rubrica'] as List?) ?? []).map((e) => e.toString()).toList(),
           reservas: j['reservas'] as bool? ?? false,
           huecos: [for (final h in (j['huecos'] as List?) ?? const []) if (h is Map) Hueco.fromJson(h)],
           linkedin: j['linkedin'] as String? ?? '',
@@ -474,6 +480,7 @@ String informeCante(Cante c, {String? alumno, String Function(String codigo)? ti
     if ((r?.valoracion ?? 0) > 0) '${r!.valoraciones.isEmpty ? 'Valoración' : 'Valoración del cante'}: ${'★' * r.valoracion}${'☆' * (5 - r.valoracion)}',
     if ((r?.segundos ?? 0) > 0) 'Tiempo: ${r!.segundos ~/ 60}:${dos(r.segundos % 60)} (previsto: ${c.minutos} min)',
     if (r?.textoCoberturaTotal case final cob?) 'Apartados tocados: $cob',
+    if (r != null && r.criterios.isNotEmpty) r.textoCriterios(separador: '\n'),
     if (r != null && r.sorteados.length > 1) 'Salieron en el sorteo: ${r.sorteados.join(', ')}',
     if (r != null && r.comentarios.isNotEmpty) ...['', r.comentarios],
   ];

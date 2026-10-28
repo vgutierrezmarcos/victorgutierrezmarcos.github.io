@@ -54,7 +54,7 @@ class CantePage extends ConsumerWidget {
     final temasRecibidos = c.dePreparador && c.temaA != null && !c.temaA!.isAfter(DateTime.now()) ? ref.watch(temaAnticipadoProvider(c.id)).valueOrNull : null;
 
     Future<void> anotar() async {
-      final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas, esquemas: esquemasDe(ref, [...temas, ...?r?.temasCantados.map((t) => temario?.tema(t))]));
+      final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas, esquemas: esquemasDe(ref, [...temas, ...?r?.temasCantados.map((t) => temario?.tema(t))]), criterios: ref.read(ajustesProvider).rubrica);
       if (res == null) return;
       Analitica.instancia.evento('cante_terminado', parametros: {'minutos': res.segundos ~/ 60, 'temas': (res.temaCantado == null ? 0 : 1) + res.otrosCantados.length});
       if (res.valoracion > 0) Resenas.momento();
@@ -350,6 +350,7 @@ class CantePage extends ConsumerWidget {
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 TemasValorados(resultado: r, titulo: (t) => temario?.tema(t)?.titulo ?? ''),
                 const SizedBox(height: 6),
+                if (r.criterios.isNotEmpty) Padding(padding: const EdgeInsets.only(bottom: 4), child: CriteriosValorados(resultado: r)),
                 Row(children: [
                   Estrellas(valor: r.valoracion, tamano: 20),
                   const SizedBox(width: 12),
