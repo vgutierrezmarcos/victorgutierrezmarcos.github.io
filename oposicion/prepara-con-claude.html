@@ -300,7 +300,10 @@
                         <li><strong>Solucionador de dudas</strong>Responde viendo el temario en conjunto: el programa, los bloques, las conexiones entre temas, la notación común y los temas revisados, citando dónde se estudia cada cosa.</li>
                         <li><strong>Organizador del cronograma</strong>Con tus datos de la app, reparte los temas por semanas hasta la fecha del examen y devuelve un bloque que la app importa con «Traer el tuyo».</li>
                         <li><strong>Simulacro de tribunal</strong>Te pregunta como lo haría el tribunal al terminar el cante, por turnos, con preguntas del tema y del resto del temario.</li>
-                        <li><strong>Test personal</strong>Diez preguntas nuevas al estilo oficial sobre lo que fallas, con explicación, a partir de tus resultados en la app.</li>
+                        <li><strong>Simulacro completo</strong>El examen oral entero en una sola petición: sortea las bolas como la app, eliges, te da la hora para los 45 minutos de esquema, corrige el cante y te pregunta como el tribunal.</li>
+                        <li><strong>Test personal</strong>Diez preguntas sobre lo que fallas: primero las oficiales de tus temas flojos, con la explicación de la web, y si faltan, nuevas al estilo oficial.</li>
+                        <li><strong>Tarjetas de repaso</strong>De 20 a 40 tarjetas de pregunta y respuesta de un tema, hechas con su ficha, en un fichero que la app importará al repaso espaciado.</li>
+                        <li><strong>Informe de la semana</strong>Qué ha mejorado respecto a la semana anterior, qué error se repite, tests por tema, ritmo y horas, y las tres tareas de la semana que viene.</li>
                         <li><strong>¿Qué me toca hoy?</strong>El plan del día con tu cronograma, los repasos que tocan y las dudas que dejaste pendientes.</li>
                         <li><strong>Ficha de repaso de tus apuntes</strong>Manda tus propios apuntes y te devuelve una ficha de repaso con el formato del temario.</li>
                         <li><strong>Lectura de estadísticas</strong>Cómo van tus tests y tus cantes, qué temas flojean y qué conviene hacer con ello.</li>
@@ -384,13 +387,19 @@
                     <ul class="ejemplos">
                         <li>«¿En qué tema se estudia el modelo de Mundell-Fleming y con qué otros temas se relaciona?»</li>
                         <li>«¿Qué diferencia hay entre la notación del tema de crecimiento y la del de ciclos?»</li>
-                        <li>«Pregúntame como el tribunal sobre el tema que acabo de cantar.»</li>
+                        <li>«Hazme un simulacro completo del tercer ejercicio.»</li>
+                        <li>«Pregúntame como el tribunal sobre el tema que acabo de cantar.» En el móvil, con el modo de voz de la app de Claude, puedes contestar hablando: te pregunta de una en una y espera tu respuesta.</li>
                         <li>«Hazme un test de diez preguntas sobre lo que más fallo» (con el JSON de la app).</li>
                         <li>«¿Qué me toca hoy?» o «¿Qué me toca esta semana?»</li>
                         <li>«Hazme una ficha de repaso con estos apuntes» (adjuntando tus propios apuntes).</li>
-                        <li>«¿Cómo voy? ¿Qué tal mis tests y mis cantes de este mes?»</li>
+                        <li>«¿Cómo voy? ¿Qué tal mis tests y mis cantes de este mes?» o «¿Cómo ha ido la semana?»</li>
+                        <li>«Hazme 25 tarjetas de repaso del 3.A.8.»</li>
+                        <li>«¿Qué llevo y qué hago el día del examen?» o «¿Qué dibujo en la pizarra en el tema de la demanda?»</li>
                     </ul>
                     <p>En todos los casos Claude cita de dónde sale lo que dice (tema, ficha, guía o notación común) y, si un tema aún no está revisado, lo avisa y corrige con el índice del temario y conocimiento general.</p>
+
+                    <h3 id="preparador">Si eres preparador</h3>
+                    <p>La skill también sirve para preparar la clase: dile que eres preparador y mándale los cantes, dictámenes o datos que tus alumnos te hayan pasado. Corrige igual, pero el informe se dirige a ti: qué trabajar en la próxima clase y qué preguntarle a cada alumno, con la fuente del temario. Cada alumno va en su informe, sin comparaciones entre ellos, y sus datos siguen siendo suyos: los exporta cada uno desde su app y decide qué te pasa.</p>
 
                     <h2 id="carpeta">Tu carpeta de la oposición</h2>
                     <p>Una carpeta ordenada en el ordenador, con todo lo de la oposición, hace que Claude trabaje mejor: encuentra el tema que toca, guarda cada informe junto al cante que corrige y no hay que subir los mismos ficheros cada vez. Esta es la estructura que recomendamos; adáptala, pero mantén los códigos de tema en los nombres (<code>3A08</code>), que es lo que la skill y la app usan para encontrar las cosas.</p>

@@ -73,6 +73,7 @@ Antes del próximo cante: 1) reescribir II.2 con la ecuación de Slutsky en la p
 - **Valoración** de 1 a 5, con este criterio: **5** lo cantaría así en el examen; **4** cantable con uno o dos retoques; **3** estructura bien y dos o tres errores o huecos que hay que arreglar; **2** errores de fondo o reparto del tiempo muy desviado; **1** sin estructura, sin tiempo o con errores graves de contenido. Si cantó dos temas, una por tema y la general.
 - **Comentarios**: hasta 300 caracteres, los que el opositor pegará en la app. Lo más importante primero.
 - **Tres tareas** concretas para antes del próximo cante.
+- **Simulacro** (`agentes/simulacro.md`): además, la primera línea del bloque es la del cante del diario: `Sorteados: 3.A.8, 3.A.11 · 3.B.4, 3.B.9 · Cantado: 3.A.8, 3.B.4 · Descartados: 3.A.11, 3.B.9` (en el JSON son `temas`, `temaCantado` y `descartados`), y, si hizo el esquema a ciegas, `Esquema a ciegas: 4/5` en una línea aparte.
 
 ## 5. Lo que devuelves: el cronograma para «Traer el tuyo»
 
@@ -92,3 +93,21 @@ La app importa un cronograma pegado o en un fichero `.txt` o `.csv` (Cronograma 
 - Para DCE 1.º por fases, el mismo formato: en las semanas de simulacro pon los temas que se escriben; la app no distingue fases al importar, así que indica las fases en la tabla explicativa que acompaña al bloque, no dentro de él.
 
 Al importarlo, el opositor revisa cada semana en la app antes de crearlo; dile que compruebe que el día del cante coincide.
+
+## 6. Lo que devuelves: tarjetas de repaso para «Traer tarjetas»
+
+Las tarjetas de `agentes/tarjetas.md` van en un fichero de texto `tarjetas_<tema sin puntos>.txt` (`tarjetas_3A08.txt`; si son de varios temas, `tarjetas_3A08-3A09.txt`), una tarjeta por línea con tres campos separados por ` ::: ` (espacio, tres dos puntos, espacio):
+
+```
+# Tarjetas · TCEE · 3.A.8 · hechas con Claude el 2026-11-01 con la ficha del tema
+¿Qué dice el axioma débil de la preferencia revelada? ::: Si x se elige cuando y es asequible, y nunca se elige cuando x es asequible. ::: 3.A.8
+Signo del efecto sustitución ante una subida del precio ::: No positivo (negativo o nulo): la demanda compensada no crece con el precio. ::: 3.A.8
+Ecuación de Slutsky (bien i, precio j) ::: $\partial x_i/\partial p_j = \partial h_i/\partial p_j - x_j\,\partial x_i/\partial m$ ::: 3.A.8
+```
+
+- De 20 a 40 por tema; pregunta y respuesta en una línea cada una (sin saltos de línea dentro de un campo), respuesta de dos líneas como mucho en pantalla (unos 200 caracteres).
+- El tercer campo es el código del tema con puntos (`3.A.8`), el mismo que usa la app; la app importa las tarjetas al repaso espaciado de ese tema, en la caja 1.
+- Fórmulas en LaTeX sencillo entre `$…$`; sin `:::` dentro de los campos.
+- La primera línea con `#` es la cabecera; la app la ignora. Nada más en el fichero (ni numeración, ni títulos).
+- Hasta que la app tenga la pantalla de importar (Estudiar → Repaso espaciado → Traer tarjetas), el opositor puede usar el fichero con cualquier aplicación de tarjetas que lea texto separado por un delimitador, indicando ` ::: ` como separador.
+
