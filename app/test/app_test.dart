@@ -17,6 +17,7 @@ import 'package:tcee_app/core/constants.dart';
 import 'package:tcee_app/core/invitacion.dart';
 import 'package:tcee_app/features/guia/guia.dart';
 import 'package:tcee_app/features/inicio/permisos_sheet.dart';
+import 'package:tcee_app/features/preparador/tema_anticipado.dart';
 import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/plan.dart';
@@ -679,7 +680,9 @@ void main() {
     await tocar(tester, find.text('Descartar la invitación'));
     expect(Invitacion.pendiente(), isNull);
     expect(find.text('Conecta con tu preparador'), findsOneWidget);
+    // La caja queda abierta para las pruebas siguientes: que no salga la hoja de permisos ni la guía.
     await app.clear();
+    await app.putAll({clavePermisosPedidos: true, claveBateriaPedida: true, claveGuiaVista('tcee', Papel.opositor): true, claveGuiaVista('tcee', Papel.preparador): true});
     expect(tester.takeException(), isNull);
   });
 
@@ -693,7 +696,30 @@ void main() {
     // Sin Firebase ni invitación no hay nada más que hacer; el toque cambia de
     // oposición (en las pruebas, nada) y deja pasar los temporizadores del arranque.
     await tocar(tester, find.text('Cambiar a DCE'));
+    // La caja queda abierta para las pruebas siguientes: que no salga la hoja de permisos ni la guía.
     await app.clear();
+    await app.putAll({clavePermisosPedidos: true, claveBateriaPedida: true, claveGuiaVista('tcee', Papel.opositor): true, claveGuiaVista('tcee', Papel.preparador): true});
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('alumno sin app: los temas de la clase se le mandan por WhatsApp a la hora programada', (tester) async {
+    await preparador.activar();
+    await preparador.guardarAlumno(Alumno(id: 'a1', nombre: 'Lucía', telefono: '600 000 000', temas: const ['3.A.1', '3.A.2'], updatedAt: DateTime.now()));
+    final clase = DateTime.now().add(const Duration(days: 2));
+    // Clase con un tema elegido que «se manda» una hora antes: como el alumno
+    // no tiene la app, se lo manda el preparador.
+    await preparador.guardarSesion(Cante(id: 's1', fecha: clase, alumno: 'a1', minutos: 120, temaA: clase.subtract(const Duration(hours: 1)), temasMandados: const ['3.A.1'], numTemas: 1, updatedAt: DateTime.now()));
+    await arrancar(tester);
+    await pestana(tester, 'Más');
+    await tocar(tester, find.widgetWithText(FilaEnlace, 'Preparador'));
+    await tocar(tester, find.textContaining('· Lucía'));
+    expect(find.text('Alumno sin app enlazada'), findsOneWidget);
+    expect(find.textContaining('Se lo mandas tú'), findsOneWidget);
+    expect(find.text('Enviar por WhatsApp'), findsOneWidget);
+    expect(find.text('Copiar'), findsOneWidget);
+    // El mensaje lleva el tema con su título y el tiempo de esquema del examen.
+    final msg = mensajeTemasClase(preparador.sesiones().single, titulo: (t) => temario.tema(t)?.titulo);
+    expect(msg, contains('· 3.A.1 '));
+    expect(msg, contains('Tienes 22 min 30 s de esquema'));
     expect(tester.takeException(), isNull);
   });
 }

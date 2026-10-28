@@ -119,8 +119,10 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
     // Y los de las clases, si en esta oposición es preparador.
     final perfil = preparador.perfil();
     if (perfil.activo) {
-      final nombres = {for (final a in preparador.alumnos()) a.id: a.nombre};
-      await Notificaciones.programarClases(preparador.sesiones(), alumno: (c) => nombres[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase);
+      final lista = preparador.alumnos();
+      final nombres = {for (final a in lista) a.id: a.nombre};
+      final sinApp = {for (final a in lista) if (!a.enlazado) a.id};
+      await Notificaciones.programarClases(preparador.sesiones(), alumno: (c) => nombres[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase, sinApp: (c) => sinApp.contains(c.alumno));
     }
   });
 
