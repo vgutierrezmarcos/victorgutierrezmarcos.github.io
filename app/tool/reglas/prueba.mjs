@@ -481,9 +481,9 @@ await caso('…y Olga vuelve a ver el tablón', () => assertSucceeds(getDocs(col
 console.log('Reto diario (agregado anónimo)');
 const dia = '2026-10-28';
 function aportar(uid, nota, { marca = true, cuantos = 1, op = '' } = {}) {
-  const b = writeBatch(db(uid));
-  if (marca) b.set(doc(db(uid), `${op}retoDiario/${dia}/participantes/${uid}`), { nota });
-  b.set(doc(db(uid), `${op}retoDiario/${dia}`), { hechos: increment(cuantos), sumaNotas: increment(nota), ['c' + Math.min(Math.max(nota, 0), 10)]: increment(cuantos) }, { merge: true });
+  const d = db(uid); const b = writeBatch(d);
+  if (marca) b.set(doc(d, `${op}retoDiario/${dia}/participantes/${uid}`), { nota });
+  b.set(doc(d, `${op}retoDiario/${dia}`), { hechos: increment(cuantos), sumaNotas: increment(nota), ['c' + Math.min(Math.max(nota, 0), 10)]: increment(cuantos) }, { merge: true });
   return b.commit();
 }
 await caso('el primero crea el contador con su marca en la misma transacción', () => assertSucceeds(aportar('alu', 7)));
@@ -492,7 +492,7 @@ await caso('nadie suma dos veces', () => assertFails(aportar('alu', 9)));
 await caso('sin la marca de participación no se suma', () => assertFails(aportar('olga', 6, { marca: false })));
 await caso('ni de dos en dos', () => assertFails(aportar('olga', 6, { cuantos: 2 })));
 await caso('ni con una nota fuera de 0-10', () => assertFails(aportar('olga', 11)));
-await caso('ni a nombre de otro', () => assertFails((async () => { const b = writeBatch(db('olga')); b.set(doc(db('olga'), `retoDiario/${dia}/participantes/paula`), { nota: 5 }); b.set(doc(db('olga'), `retoDiario/${dia}`), { hechos: increment(1), sumaNotas: increment(5), c5: increment(1) }, { merge: true }); await b.commit(); })()));
+await caso('ni a nombre de otro', () => assertFails((async () => { const d = db('olga'); const b = writeBatch(d); b.set(doc(d, `retoDiario/${dia}/participantes/paula`), { nota: 5 }); b.set(doc(d, `retoDiario/${dia}`), { hechos: increment(1), sumaNotas: increment(5), c5: increment(1) }, { merge: true }); await b.commit(); })()));
 await caso('cualquiera con cuenta lee el contador', () => assertSucceeds(getDoc(doc(db('olga'), `retoDiario/${dia}`))));
 await caso('sin sesión, no', () => assertFails(getDoc(doc(db(null), `retoDiario/${dia}`))));
 await caso('cada uno lee solo su marca', () => assertSucceeds(getDoc(doc(db('alu'), `retoDiario/${dia}/participantes/alu`))));
