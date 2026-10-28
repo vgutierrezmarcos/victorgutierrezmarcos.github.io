@@ -147,6 +147,7 @@ class SesionPage extends ConsumerWidget {
         titulo: '¿Cómo ha ido el cante${alumno == null ? '' : ' de ${alumno.nombre}'}?',
         textoGuardar: 'Guardar valoración',
         esquemas: esquemasDe(ref, [...temas, ...?r?.temasCantados.map((t) => temario?.tema(t))]),
+        criterios: ref.read(perfilPreparadorProvider).rubrica,
       );
       if (res != null) await notifier.guardar(s.copyWith(estado: EstadoCante.hecho, resultado: res));
     }

@@ -7,6 +7,7 @@ import '../../widgets/comunes.dart';
 import '../../widgets/sincronizar.dart';
 import 'cante_page.dart';
 import 'cantes_util.dart';
+import 'rubrica.dart';
 import '../cantes/nuevo_cante_sheet.dart';
 
 /// Diario de cantes (subpestaña de Cantes): cómo fue cada uno, estadísticas
@@ -62,6 +63,7 @@ class DiarioVista extends ConsumerWidget {
                   ),
                   Padding(padding: const EdgeInsets.only(top: 4), child: Text('Valorados por debajo de 3 de media. El sorteo de práctica puede darles prioridad.', style: context.textos.labelSmall)),
                 ],
+                EvolucionCriterios(cantes: diario),
                 const TituloSeccion('Por tema'),
                 Tarjeta(
                   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),

@@ -665,6 +665,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       ),
       opciones: opciones,
       esquemas: esquemasDe(ref, {...opciones, ..._aCantar, if (_elegido != null) _elegido!}),
+      criterios: sesion == null ? ref.read(ajustesProvider).rubrica : ref.read(perfilPreparadorProvider).rubrica,
     );
     if (res == null) return;
     Analitica.instancia.evento('cante_terminado', parametros: {'minutos': res.segundos ~/ 60, 'temas': (res.temaCantado == null ? 0 : 1) + res.otrosCantados.length});

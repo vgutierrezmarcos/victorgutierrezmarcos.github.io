@@ -31,6 +31,7 @@ class Ajustes {
     this.rachaCongelaciones = const [],
     this.avisosPreparador = const {},
     this.ultimoUso,
+    this.rubrica = const [],
     this.updatedAt,
   });
 
@@ -73,6 +74,8 @@ class Ajustes {
   final Set<String> avisosPreparador;
   /// Último día en que usó la app (clave de día), solo si comparte `uso`.
   final String? ultimoUso;
+  /// Criterios con los que valora sus propios cantes (vacío = solo estrellas).
+  final List<String> rubrica;
   final DateTime? updatedAt;
 
   Ajustes copyWith({
@@ -94,6 +97,7 @@ class Ajustes {
     List<String>? rachaCongelaciones,
     Set<String>? avisosPreparador,
     String? ultimoUso,
+    List<String>? rubrica,
     DateTime? updatedAt,
   }) =>
       Ajustes(
@@ -113,6 +117,7 @@ class Ajustes {
         rachaCongelaciones: rachaCongelaciones ?? this.rachaCongelaciones,
         avisosPreparador: avisosPreparador ?? this.avisosPreparador,
         ultimoUso: ultimoUso ?? this.ultimoUso,
+        rubrica: rubrica ?? this.rubrica,
         updatedAt: updatedAt ?? DateTime.now(),
       );
 
@@ -135,6 +140,7 @@ class Ajustes {
         'rachaCongelaciones': rachaCongelaciones,
         'avisosPreparador': avisosPreparador.toList()..sort(),
         if (ultimoUso != null) 'ultimoUso': ultimoUso,
+        'rubrica': rubrica,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -174,6 +180,7 @@ class Ajustes {
       rachaCongelaciones: ((j['rachaCongelaciones'] as List?) ?? []).map((e) => e.toString()).toList(),
       avisosPreparador: ((j['avisosPreparador'] as List?) ?? []).map((e) => e.toString()).toSet(),
       ultimoUso: j['ultimoUso'] as String?,
+      rubrica: ((j['rubrica'] as List?) ?? []).map((e) => e.toString()).toList(),
       updatedAt: f(j['updatedAt'] as String?),
     );
   }

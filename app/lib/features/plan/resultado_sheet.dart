@@ -17,13 +17,31 @@ Future<ResultadoCante?> pedirResultadoCante(
   String? titulo,
   String? textoGuardar,
   Map<String, List<EntradaEsquema>> esquemas = const {},
+  List<String> criterios = const [],
 }) =>
     showModalBottomSheet<ResultadoCante>(
       context: context,
       isScrollControlled: true,
       useRootNavigator: true,
-      builder: (_) => _ResultadoSheet(inicial: inicial, opciones: opciones, titulo: titulo ?? '¿Cómo ha ido el cante?', textoGuardar: textoGuardar ?? 'Guardar en el diario', esquemas: esquemas),
+      builder: (_) => _ResultadoSheet(inicial: inicial, opciones: opciones, titulo: titulo ?? '¿Cómo ha ido el cante?', textoGuardar: textoGuardar ?? 'Guardar en el diario', esquemas: esquemas, criterios: criterios),
     );
+
+/// «Esquema ★★★★ · Rigor ★★…», una fila por criterio.
+class CriteriosValorados extends StatelessWidget {
+  const CriteriosValorados({super.key, required this.resultado, this.tamano = 14});
+  final ResultadoCante resultado;
+  final double tamano;
+  @override
+  Widget build(BuildContext context) => Wrap(spacing: 14, runSpacing: 2, children: [
+        for (final e in resultado.criterios.entries)
+          if (e.value > 0)
+            Row(mainAxisSize: MainAxisSize.min, children: [
+              Text(e.key, style: context.textos.labelSmall),
+              const SizedBox(width: 4),
+              Estrellas(valor: e.value, tamano: tamano),
+            ]),
+      ]);
+}
 
 /// Solo la lista de control (los apartados que va tocando), para marcarla
 /// durante la clase sin pasar por la valoración. Devuelve el resultado con
@@ -135,20 +153,25 @@ class TemasValorados extends StatelessWidget {
 }
 
 class _ResultadoSheet extends StatefulWidget {
-  const _ResultadoSheet({required this.inicial, required this.opciones, required this.titulo, required this.textoGuardar, this.esquemas = const {}});
+  const _ResultadoSheet({required this.inicial, required this.opciones, required this.titulo, required this.textoGuardar, this.esquemas = const {}, this.criterios = const []});
   final ResultadoCante inicial;
   final List<Tema> opciones;
   final String titulo;
   final String textoGuardar;
   /// Esquemas (apartados) de los temas que pueden cantarse: la lista de control.
   final Map<String, List<EntradaEsquema>> esquemas;
+  /// Rúbrica de quien valora (vacía = solo las estrellas). Los criterios son
+  /// opcionales: se puede dar la nota agregada, los criterios o las dos cosas.
+  final List<String> criterios;
   @override
   State<_ResultadoSheet> createState() => _ResultadoSheetState();
 }
 
 class _ResultadoSheetState extends State<_ResultadoSheet> {
   late final _comentarios = TextEditingController(text: widget.inicial.comentarios);
-  late final _minutos = TextEditingController(text: widget.inicial.segundos == 0 ? '' : (widget.inicial.segundos / 60).round().toString());
+  late final _minutos = TextEditingController(text: widget.inicial.segundos == 0 ? '' : textoDuracionCante(widget.inicial.segundos));
+  /// Estrellas de cada criterio de la rúbrica (0 = sin valorar).
+  late final Map<String, int> _criterios = {for (final c in {...widget.criterios, ...widget.inicial.criterios.keys}) c: widget.inicial.criterios[c] ?? 0};
 
   /// Los temas cantados, por orden (vacío si aún no se ha dicho cuál).
   late final List<String> _temas = List.of(widget.inicial.temasCantados);
@@ -220,16 +243,20 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
   }
 
   ResultadoCante _resultado() {
-    final min = int.tryParse(_minutos.text.trim());
+    final seg = leerDuracionCante(_minutos.text);
     final porTema = _varios ? {for (final t in _temas) if ((_valoraciones[t] ?? 0) > 0) t: _valoraciones[t]!} : const <String, int>{};
+    final criterios = {for (final e in _criterios.entries) if (e.value > 0) e.key: e.value};
+    // Sin estrellas agregadas pero con criterios, la agregada es su media.
+    final agregada = _valoracion > 0 ? _valoracion : ResultadoCante.media(criterios.values);
     return ResultadoCante(
       sorteados: widget.inicial.sorteados,
       temaCantado: _temas.firstOrNull,
       otrosCantados: _temas.skip(1).toList(),
-      // Si no se tocan los minutos se conserva el tiempo exacto del cronómetro.
-      segundos: min == null ? 0 : (min == (widget.inicial.segundos / 60).round() ? widget.inicial.segundos : min * 60),
-      valoracion: _varios ? ResultadoCante.media(porTema.values) : _valoracion,
+      // Si no se toca el tiempo se conserva el exacto del cronómetro.
+      segundos: seg == null ? 0 : (_minutos.text.trim() == textoDuracionCante(widget.inicial.segundos) ? widget.inicial.segundos : seg),
+      valoracion: _varios ? ResultadoCante.media(porTema.values) : agregada,
       valoraciones: porTema,
+      criterios: criterios,
       comentarios: _comentarios.text.trim(),
       // La lista de control de cada tema cantado con esquema (si se tocó alguna casilla o ya venía).
       cubiertos: {for (final t in _temas) if (widget.esquemas.containsKey(t) && (_cubiertos[t]?.isNotEmpty ?? false)) t: (_cubiertos[t]!.toList()..sort())},
@@ -241,8 +268,12 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
   Widget build(BuildContext context) {
     final conBolsa = widget.opciones.isNotEmpty;
     final minutos = SizedBox(
-      width: 110,
-      child: TextField(controller: _minutos, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: 'Minutos', isDense: true)),
+      width: 120,
+      child: TextField(
+        controller: _minutos,
+        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+        decoration: const InputDecoration(labelText: 'Tiempo', hintText: 'mm:ss', isDense: true),
+      ),
     );
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 16, 16, 16 + MediaQuery.of(context).viewInsets.bottom),
@@ -282,6 +313,17 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
                 alignment: Alignment.centerLeft,
                 child: ActionChip(avatar: const Icon(Icons.add, size: 18), label: const Text('Añadir tema'), onPressed: _anadir),
               ),
+          ],
+          // Rúbrica (opcional): estrellas por criterio; la agregada, si no se
+          // toca, sale de su media.
+          if (_criterios.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Text(_varios ? 'Por criterios (del cante entero, opcional)' : 'Por criterios (opcional)', style: context.textos.labelMedium),
+            for (final c in _criterios.keys)
+              Row(children: [
+                Expanded(child: Text(c, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
+                Estrellas(valor: _criterios[c]!, tamano: 22, onChanged: (v) => setState(() => _criterios[c] = v)),
+              ]),
           ],
           // Lista de control: los apartados del esquema de cada tema cantado.
           for (final t in _temas)

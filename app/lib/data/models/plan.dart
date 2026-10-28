@@ -41,7 +41,15 @@ class ResultadoCante {
     this.descartados = const [],
     this.cubiertos = const {},
     this.apartados = const {},
+    this.criterios = const {},
   });
+
+  /// Rúbrica: valoración 1-5 de cada criterio (nombre → estrellas), si quien
+  /// valora la usa; la de siempre ([valoracion]) sigue siendo la agregada.
+  final Map<String, int> criterios;
+
+  /// «Esquema ★★★★ · Rigor ★★» (vacío si no hay criterios).
+  String textoCriterios({String separador = ' · '}) => [for (final e in criterios.entries) if (e.value > 0) '${e.key} ${'★' * e.value}${'☆' * (5 - e.value)}'].join(separador);
 
   /// Lista de control: por tema, los apartados del esquema que se tocaron
   /// (sus títulos) y cuántos tenía el esquema ([apartados]). Lo marca el
@@ -91,7 +99,7 @@ class ResultadoCante {
     return dadas.isEmpty ? 0 : (dadas.fold<int>(0, (s, v) => s + v) / dadas.length).round();
   }
 
-  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, Map<String, int>? valoraciones, String? comentarios, List<String>? descartados, Map<String, List<String>>? cubiertos, Map<String, int>? apartados}) =>
+  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, Map<String, int>? valoraciones, String? comentarios, List<String>? descartados, Map<String, List<String>>? cubiertos, Map<String, int>? apartados, Map<String, int>? criterios}) =>
       ResultadoCante(
         sorteados: sorteados ?? this.sorteados,
         temaCantado: temaCantado ?? this.temaCantado,
@@ -103,6 +111,7 @@ class ResultadoCante {
         descartados: descartados ?? this.descartados,
         cubiertos: cubiertos ?? this.cubiertos,
         apartados: apartados ?? this.apartados,
+        criterios: criterios ?? this.criterios,
       );
 
   Map<String, dynamic> toJson() => {
@@ -116,6 +125,7 @@ class ResultadoCante {
         if (descartados.isNotEmpty) 'descartados': descartados,
         if (cubiertos.isNotEmpty) 'cubiertos': cubiertos,
         if (apartados.isNotEmpty) 'apartados': apartados,
+        if (criterios.isNotEmpty) 'criterios': criterios,
       };
 
   factory ResultadoCante.fromJson(Map<dynamic, dynamic> j) => ResultadoCante(
@@ -129,8 +139,56 @@ class ResultadoCante {
         descartados: ((j['descartados'] as List?) ?? []).map((e) => e.toString()).toList(),
         cubiertos: j['cubiertos'] is Map ? {for (final e in (j['cubiertos'] as Map).entries) if (e.value is List) e.key.toString(): [for (final x in e.value as List) x.toString()]} : const {},
         apartados: j['apartados'] is Map ? {for (final e in (j['apartados'] as Map).entries) if (e.value is num) e.key.toString(): (e.value as num).toInt()} : const {},
+        criterios: j['criterios'] is Map ? {for (final e in (j['criterios'] as Map).entries) if (e.value is num && (e.value as num) > 0) e.key.toString(): (e.value as num).toInt().clamp(1, 5)} : const {},
       );
 }
+
+/// Criterios de valoración por defecto (la web puede dar otros en
+/// app-config.json → `rubrica`; cada preparador u opositor, los suyos).
+const rubricaPorDefecto = ['Esquema', 'Rigor', 'Tiempo', 'Exposición', 'Actualidad'];
+
+/// Evolución de cada criterio: media de los últimos [n] cantes valorados con
+/// él frente a los [n] anteriores (null si no hay anteriores). [cantes] van
+/// de más reciente a más antiguo.
+Map<String, ({double ultimos, double? anteriores, int veces})> evolucionCriterios(Iterable<Cante> cantes, {int n = 5}) {
+  final porCriterio = <String, List<int>>{};
+  for (final c in cantes) {
+    final r = c.resultado;
+    if (!c.hecho || c.borrado || r == null) continue;
+    for (final e in r.criterios.entries) {
+      if (e.value > 0) porCriterio.putIfAbsent(e.key, () => []).add(e.value);
+    }
+  }
+  double media(List<int> v) => v.fold<int>(0, (s, x) => s + x) / v.length;
+  return {
+    for (final e in porCriterio.entries)
+      e.key: (
+        ultimos: media(e.value.take(n).toList()),
+        anteriores: e.value.length > n ? media(e.value.skip(n).take(n).toList()) : null,
+        veces: e.value.length,
+      ),
+  };
+}
+
+/// Lee «28», «28:30» o «28,5» como segundos (minutos, minutos:segundos o
+/// minutos con decimales); null si no se entiende o es cero.
+int? leerDuracionCante(String texto) {
+  final t = texto.trim().replaceAll(',', '.');
+  if (t.isEmpty) return null;
+  final partes = t.split(':');
+  if (partes.length == 2) {
+    final m = int.tryParse(partes[0].trim()), s = int.tryParse(partes[1].trim());
+    if (m == null || s == null || s < 0 || s > 59) return null;
+    final total = m * 60 + s;
+    return total <= 0 ? null : total;
+  }
+  final m = double.tryParse(t);
+  if (m == null || m <= 0) return null;
+  return (m * 60).round();
+}
+
+/// «28:30» (o «28» si son minutos justos).
+String textoDuracionCante(int segundos) => segundos % 60 == 0 ? '${segundos ~/ 60}' : '${segundos ~/ 60}:${(segundos % 60).toString().padLeft(2, '0')}';
 
 /// Qué apartados de un tema se cuentan y cuáles no, a partir de las listas de
 /// control de sus cantes y esquemas a ciegas: título → (veces tocado, veces

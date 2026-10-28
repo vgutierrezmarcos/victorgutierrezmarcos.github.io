@@ -11,6 +11,7 @@ import '../../data/models/red.dart';
 import '../plan/cantes_util.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../plan/rubrica.dart';
 import 'busquedas_page.dart';
 import 'calendario_google_tarjeta.dart';
 import 'red_widgets.dart';
@@ -281,6 +282,15 @@ class AjustesPreparadorPage extends ConsumerWidget {
             ]),
           ),
           const TarjetaCalendarioGoogle(),
+          const TituloSeccion('Cómo valoras'),
+          Tarjeta(
+            padding: EdgeInsets.zero,
+            child: FilaRubrica(
+              rubrica: perfil.rubrica,
+              porDefecto: (ref.watch(configProvider).valueOrNull?.rubrica ?? const []).isEmpty ? rubricaPorDefecto : ref.watch(configProvider).valueOrNull!.rubrica,
+              onChanged: (r) => notifier.guardar(perfil.copyWith(rubrica: r)),
+            ),
+          ),
           const TituloSeccion('Avisos'),
           Tarjeta(
             padding: EdgeInsets.zero,
