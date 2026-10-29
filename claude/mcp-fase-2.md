@@ -60,4 +60,4 @@ Tres o cuatro días de trabajo: Worker con OAuth (un día), herramientas de lect
 5. Probar con la cuenta propia: Claude.ai → Configuración → Conectores → Añadir conector personalizado → URL `https://…/mcp` → Conectar (consentimiento → Google → vuelta a Claude) → «lee mi progreso». En Claude Code: `claude mcp add --transport http prepara-con-claude https://…/mcp`.
 6. Skill ligera (`scripts/skill-opositor.py --ligera`) y que `SKILL.md` apunte a `references/conector.md` cuando haya herramientas del conector (otro agente).
 7. App (`app/DCE.md`): pantalla de informes del cante, «Desconectar Claude», aviso en `TarjetaPrivacidad`.
-8. Página `oposicion/prepara-con-claude.html`: apartado «Conector» con los pasos de alta y la novedad en `novedades.json` cuando esté desplegado.
+8. Página `oposicion/prepara-con-claude.html`: el apartado «Conector» (`#conector`) ya está escrito con los pasos de alta y la URL prevista del Worker, pero lleva `hidden`: quitarlo cuando el conector esté desplegado y probado. La novedad del conector en `novedades.json` también va en ese momento (la de la skill ya está puesta).

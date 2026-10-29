@@ -315,6 +315,10 @@
                         <li><strong>La app «Oposición TCEE · DCE».</strong> Es la que transcribe los cantes y exporta tus datos para Claude. Es gratuita: <a href="../app/">cómo instalarla</a>.</li>
                         <li><strong>La skill.</strong> Dos formas de usarla: sin instalar nada, con el botón «Empezar en Claude» (abre un chat de claude.ai que la lee de esta web); o instalada en tu cuenta, con el ZIP que se descarga desde la app (<em>Más → Prepara con Claude</em>, con la sesión iniciada) o desde esta página, también con la sesión iniciada con Google. Cada copia lleva el correo de quien la descarga.</li>
                     </ol>
+                    <!-- Aviso temporal: quitar este bloque cuando la app lleve «Transcribir», «Enviar a Claude» y la pantalla Más → Prepara con Claude (tareas en app/DCE.md) -->
+                    <div class="aviso-exclusivo" id="aviso-app-pendiente">
+                        <p><strong>Hasta la próxima versión de la app.</strong> Lo que esta página cita de la app (<em>Transcribir</em>, <em>Enviar a Claude</em>, <em>Más → Prepara con Claude</em>) llega en la siguiente versión. Mientras tanto: descarga la skill desde esta página; exporta tus datos en <em>Más → Cuenta → «Exportar datos (JSON)»</em> (Claude lo entiende igual); y, para el cante, graba con la app y pega la transcripción que saques con el dictado del móvil o del ordenador. Sin marcas de minuto, Claude corrige el contenido y la estructura, pero no los tiempos.</p>
+                    </div>
                     <div class="botones">
                         <a id="empezar-claude" class="boton" href="https://claude.ai/new?q=Prepara%20conmigo%20la%20oposici%C3%B3n%20a%20TCEE%20o%20DCE%20con%20la%20skill%20%C2%ABPrepara%20con%20Claude%C2%BB%20de%20victorgutierrezmarcos.es.%20Lee%20https%3A%2F%2Fwww.victorgutierrezmarcos.es%2Foposicion%2Ftemario%2Fapp%2Fskill%2Fprepara-oposicion%2FSKILL.md%20y%20sigue%20sus%20instrucciones%20durante%20toda%20esta%20conversaci%C3%B3n.%20Los%20ficheros%20que%20cita%20%28LICENCIA.md%2C%20references%2F%E2%80%A6%2C%20assets%2F%E2%80%A6%2C%20scripts%2F%E2%80%A6%29%20est%C3%A1n%20en%20esa%20misma%20carpeta%20de%20la%20web%3A%20l%C3%A9elos%20cuando%20los%20necesites.%20Cuando%20lo%20tengas%2C%20dime%20en%20dos%20l%C3%ADneas%20qu%C3%A9%20puedes%20hacer%20y%20preg%C3%BAntame%20qu%C3%A9%20quiero%20hacer%20hoy." target="_blank" rel="noopener">Empezar en Claude (sin instalar)</a>
                         <a id="descargar-skill" class="boton boton--secundario" href="/app/" data-sin-sesion="Inicia sesión para descargar la skill o descárgala desde la app">Descargar la skill (ZIP)</a>
@@ -332,7 +336,7 @@
                     <!-- Las capturas aún no existen: cada figura se oculta sola mientras falte su imagen -->
                     <div class="capturas">
                         <figure>
-                            <img src="img/claude/instalar-1.webp" alt="Botón «Descargar la skill» en la pantalla Prepara con Claude de la app" loading="lazy" width="800" height="500" onerror="this.closest('figure').hidden=true">
+                            <img src="img/claude/instalar-1.webp" alt="Botones «Empezar en Claude» y «Descargar la skill» en esta página" loading="lazy" width="1190" height="540" onerror="this.closest('figure').hidden=true">
                             <figcaption>1. Descarga el ZIP desde la app o desde esta página.</figcaption>
                         </figure>
                         <figure>
@@ -424,6 +428,18 @@
                         <li>«Lee los tres últimos informes de <code>cantes/</code> de los temas que he cantado este mes y dime qué error se repite.»</li>
                     </ul>
                     <p>Los informes llegan en PDF con la estética de la oposición (morado y dorado en TCEE, granate y azul en DCE) y en Markdown, para que los guardes o los pegues donde quieras. Los documentos de la skill no se copian a la carpeta: lo que se guarda son tus informes, tus cronogramas y tus fichas.</p>
+
+                    <!-- Conector (fase 2): quitar «hidden» cuando el Worker esté desplegado y comprobado (claude/mcp-fase-2.md, «Estado»); la URL es la de mcp/login.html y wrangler.toml -->
+                    <div id="conector" hidden>
+                        <h2>El conector: sin exportar nada</h2>
+                        <p>El conector «Prepara con Claude» une tu cuenta de Claude con tu cuenta de la app. Con él Claude lee tus cantes, tus tests y tu cronograma directamente, y puede proponerte el cronograma o guardar el informe de un cante en la app sin que copies ni subas nada. Solo lee lo tuyo, con tu propia sesión de Google, y antes de escribir en la app siempre te lo pregunta.</p>
+                        <ol>
+                            <li>En <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>, abre <em>Ajustes → Conectores → Añadir conector personalizado</em>. Nombre: «Prepara con Claude». URL: <code>https://prepara-con-claude.vgutierrezmarcos.workers.dev/mcp</code>.</li>
+                            <li>Pulsa <em>Conectar</em>: se abre una página de esta web para entrar con la misma cuenta de Google que usas en la app, y vuelves a Claude ya conectado.</li>
+                            <li>Pide «lee mi progreso», «corrige mi último cante» o «hazme el cronograma y guárdalo en la app». La skill usa el conector sola cuando lo ve activo.</li>
+                        </ol>
+                        <p>Para desconectarlo, quita el conector en los ajustes de claude.ai o pulsa «Desconectar Claude» en <em>Más → Cuenta</em> de la app. Qué guarda el conector y durante cuánto tiempo: <a href="../politica-cookies.html">política de privacidad</a>, apartado 2.3. En Claude Code: <code>claude mcp add --transport http prepara-con-claude https://prepara-con-claude.vgutierrezmarcos.workers.dev/mcp</code>.</p>
+                    </div>
 
                     <h2 id="privacidad">Privacidad</h2>
                     <p>Lo que subes a Claude lo decides tú, fichero a fichero, y se rige por las <a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noopener">condiciones de Anthropic</a>. La app no envía nada por su cuenta: «Enviar a Claude» y «Exportar mis datos para Claude» solo preparan un fichero que compartes o subes tú. La transcripción del cante la hace tu móvil (en algunos, el servicio de voz de Google); la grabación no sale del dispositivo. Ni Víctor ni Manuel ven lo que subes ni lo que Claude te responde. Más detalles en la <a href="../politica-cookies.html">política de privacidad</a>.</p>

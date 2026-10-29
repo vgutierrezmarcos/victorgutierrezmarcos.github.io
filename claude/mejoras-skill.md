@@ -64,3 +64,13 @@ Víctor pidió hacerlo todo. Hecho y confirmado en `main`:
 - **Skill desplegada 2026.10.29-16** y ZIP completo y ligero (`--ligera`) en la rama de revisión.
 
 Queda en manos de Víctor: desplegar el Worker, publicar las reglas, crear el repo espejo (o no), probar la skill en el móvil y ejecutar los evals.
+
+## Listo para el push (29 oct. 2026, mañana)
+
+Víctor no quiere hacer el push todavía, pero sí que al hacerlo esté todo montado. Preparado y confirmado en `main`:
+
+- `oposicion/prepara-con-claude.html`: captura 1 de la instalación (`img/claude/instalar-1.webp`, los botones de esta página, tomada con Edge sin ventana sobre un servidor local); aviso temporal `#aviso-app-pendiente` que explica qué hacer mientras la app no tenga «Transcribir», «Enviar a Claude» ni la pantalla Más → Prepara con Claude (quitar el bloque cuando la app lo lleve: tareas en `app/DCE.md`); apartado `#conector` escrito y oculto con `hidden` hasta desplegar el Worker.
+- `exclusivos.js`: la nota «Inicia sesión para descargar…» va detrás de la fila de botones, no entre ellos.
+- `oposicion/exclusivos.json` regenerado con la versión 2026.10.29-16 de la skill; `sitemap.xml` con la fecha de la página.
+- `novedades.json`: entrada «Prepara con Claude» (portada, `novedades.html` y RSS regenerados). **Antes del push, cambiar su `fecha` al día del push y volver a ejecutar `python3 scripts/novedades.py`.**
+- Sigue pendiente lo que exige a Víctor: desplegar el Worker y quitar el `hidden`, publicar las reglas, el repo espejo, la prueba en el móvil, los evals y el vídeo (`npx hyperframes render` en `scripts/video-claude` y `/videos` con la clave `claude-prepara`; la figura del vídeo en la página también lleva `hidden` hasta entonces).
