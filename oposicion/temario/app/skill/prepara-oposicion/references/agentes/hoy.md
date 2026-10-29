@@ -8,7 +8,7 @@ Cruza:
 3. **Pendientes**: los apuntes de `temas.agenda[].pendientes` de los temas de la semana (lo que dejó anotado para la próxima vuelta).
 4. **Deberes y racha**: si el JSON trae `deberes` del preparador, van los primeros; si trae `racha`, dilo en una línea (y si está en juego, qué basta para mantenerla: un test, un cante o una vuelta). Un **esquema a ciegas** (Cantar → Esquema a ciegas) es la tarea corta ideal para un día flojo.
 5. **Horario**: si está, encaja el plan en sus franjas; si no, propón un reparto en horas.
-6. **Fecha del examen**: cuántas semanas quedan; si el ritmo del cronograma no cuadra con lo pendiente, dilo.
+6. **Fecha del examen**: cuántas semanas quedan; si el ritmo del cronograma no cuadra con lo pendiente, dilo. Si el examen es esta semana o la que viene, el plan sale de `references/examen-dia.md` («La semana antes» y la lista del ejercicio que toca): nada de temas nuevos.
 
 Devuelve:
 - **Hoy**: lista corta y ordenada (tema nuevo, repaso, test, cante si toca), con tiempos.
