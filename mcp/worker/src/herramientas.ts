@@ -16,6 +16,7 @@ import {
   resumenTest,
   type TemasPorPregunta,
 } from './datos';
+import { type Apuntes, ErrorApuntes, idDeDrive } from './drive';
 import { type AlmacenDatos, ErrorFirestore, type Json } from './firestore';
 
 export const OPOSICIONES = ['tcee', 'dce'] as const;
@@ -39,6 +40,8 @@ export interface Contexto {
   skill(ruta: string): Promise<string | null>;
   /** Índice de fuentes por tema (oposicion/temario/fuentes-temas.json, lo genera scripts/fuentes-temas.py). */
   fuentes(): Promise<IndiceFuentes>;
+  /** Descarga y lee unos apuntes públicos de Drive (solo los del índice de la ATCEE). */
+  apuntes(id: string): Promise<Apuntes>;
   /** Revoca las concesiones OAuth del opositor y borra su token de Firebase guardado. */
   desconectar(): Promise<void>;
 }
@@ -136,7 +139,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es: el equipo de preparación de las oposiciones a TCEE y DCE (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores), con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de responder a cualquier petición sobre la oposición, llama a leer_skill() sin argumentos: devuelve las instrucciones completas (SKILL.md) y síguelas durante toda la conversación; los ficheros que citen (references/…, assets/…) se leen con leer_skill(ruta). Si la skill «prepara-oposicion» ya está instalada en la cuenta, úsala igual: es la misma. Para recomendar fuentes de un tema usa fuentes_tema, y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es: el equipo de preparación de las oposiciones a TCEE y DCE (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores), con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de responder a cualquier petición sobre la oposición, llama a leer_skill() sin argumentos: devuelve las instrucciones completas (SKILL.md) y síguelas durante toda la conversación; los ficheros que citen (references/…, assets/…) se leen con leer_skill(ruta). Si la skill «prepara-oposicion» ya está instalada en la cuenta, úsala igual: es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_apuntes para valorar o comparar los apuntes de otros TCEE), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
     },
   );
 
@@ -186,9 +189,56 @@ export function crearServidor(ctx: Contexto): McpServer {
           manuales: manualesPara(indice, t),
           equivalentes: t.equivalentes_tcee?.map((c) => ({ codigo: c, titulo: indice.tcee[c]?.titulo })),
           comoRecomendar:
-            'Orden: 1) si está revisado, el tema revisado y su ficha (son la referencia de la skill); 2) si no, el PDF de la web si está disponible; 3) en teoría económica, el tema de Manuel; 4) los apuntes de la ATCEE de numeración actual y promoción más reciente (LXXV, LXXIV), y después los demás; 5) los manuales del bloque para profundizar. Di por qué recomiendas cada uno (actualidad, enfoque, extensión si la sabes) y que contraste con su preparador. Los apuntes de otros autores no se leen ni se copian aquí: se recomiendan con su enlace. ' +
+            'Orden: 1) si está revisado, el tema revisado y su ficha (son la referencia de la skill); 2) si no, el PDF de la web si está disponible; 3) en teoría económica, el tema de Manuel; 4) los apuntes de la ATCEE de numeración actual y promoción más reciente (LXXV, LXXIV), y después los demás; 5) los manuales del bloque para profundizar. Di por qué recomiendas cada uno (actualidad, enfoque, extensión si la sabes) y que contraste con su preparador. Para valorar unos apuntes (calidad, actualidad, enfoque, si cubren el título oficial) léelos con leer_apuntes; no reproduzcas su texto: resume, valora y cita al autor y la promoción. ' +
             indice.aviso,
         });
+      }),
+  );
+
+  server.registerTool(
+    'leer_apuntes',
+    {
+      title: 'Leer unos apuntes de otro TCEE',
+      description:
+        'Lee un fichero del repositorio de apuntes de la ATCEE (el enlace o el id que da fuentes_tema) para valorarlo: devuelve el autor, la promoción y la numeración, el esquema (los títulos), el número de palabras y el texto por tramos (desde/limite, en caracteres). Úsala para comparar o ordenar apuntes por calidad, para ver si cubren el título oficial y lo que el tema revisado considera esencial, o para explicar el enfoque de un autor. Solo .docx y Documentos de Google; los PDF y .doc se recomiendan con su enlace. No reproduzcas los apuntes: resume, valora y cita al autor.',
+      inputSchema: {
+        enlace: z.string().describe('Enlace de Drive del fichero (https://drive.google.com/file/d/…/view) o su id, tal como lo da fuentes_tema.'),
+        desde: z.number().int().min(0).default(0).describe('Carácter desde el que se devuelve el texto (para seguir leyendo).'),
+        limite: z.number().int().min(1000).max(40000).default(15000).describe('Caracteres de texto que se devuelven (por defecto 15.000; para comparar varios, con el esquema y 4.000 suele bastar).'),
+      },
+    },
+    async ({ enlace, desde, limite }) =>
+      protegido(async () => {
+        const id = idDeDrive(enlace);
+        if (!id) return error(`«${enlace}» no es un enlace de Drive.`);
+        const indice = await ctx.fuentes();
+        let ficha: Record<string, unknown> | null = null;
+        for (const [cod, t] of Object.entries(indice.tcee)) {
+          const a = t.atcee?.find((x) => x.url.includes(id));
+          if (a) {
+            ficha = { tema: cod, tituloOficial: t.titulo, autor: a.autor, promocion: a.promocion, anio: a.anio, numeracion: a.numeracion, fichero: a.fichero, enlace: a.url };
+            break;
+          }
+        }
+        if (!ficha) return error('Ese fichero no está en el índice de apuntes de la ATCEE: el conector solo lee los apuntes de ese repositorio (búscalos con fuentes_tema).');
+        try {
+          const ap = await ctx.apuntes(id);
+          const palabras = ap.texto.split(/\s+/).filter(Boolean).length;
+          const fin = Math.min(ap.texto.length, desde + limite);
+          return json({
+            ...ficha,
+            formato: ap.formato,
+            palabras,
+            caracteres: ap.texto.length,
+            esquema: ap.esquema.length ? ap.esquema : undefined,
+            texto: ap.texto.slice(desde, fin),
+            siguiente: fin < ap.texto.length ? fin : undefined,
+            aviso: `Apuntes de ${ficha.autor} (${ficha.promocion}), del repositorio de la ATCEE: son de su autor y no son condición necesaria ni suficiente para aprobar. Léelos para valorarlos y explicarlos; no copies su texto. ${ficha.numeracion === 'antigua' ? 'Numeración antigua: comprueba por el contenido que es este tema.' : ''}`.trim(),
+          });
+        } catch (e) {
+          if (e instanceof ErrorApuntes) return error(`No se puede leer «${ficha.fichero}»: ${e.message}. Enlace: ${ficha.enlace}`);
+          throw e;
+        }
       }),
   );
 
