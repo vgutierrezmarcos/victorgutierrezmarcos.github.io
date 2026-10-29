@@ -74,7 +74,7 @@ Después del primer despliegue:
 2. En la consola de Firebase, Authentication → Settings → **Dominios autorizados**: `www.victorgutierrezmarcos.es` ya está (el login se hace ahí, no en el Worker), así que no hay que añadir nada.
 3. Publicar las reglas de Firestore nuevas (`firestore.rules`, bloque `cantes/{id}/informes/{informe}`) en la consola.
 4. Subir el contenido exclusivo: `python3 scripts/skill-opositor.py && python3 mcp/publicar-contenido.py` (usa `wrangler kv bulk put --remote`). Repetirlo cada vez que se apruebe un tema o una ficha.
-5. Probar con la cuenta propia: Claude.ai → Configuración → Conectores → **Añadir conector personalizado** → nombre «Prepara con Claude», URL `https://…/mcp`, sin client id ni secreto (Claude se registra solo) → Conectar → consentimiento → Google → «Cuenta conectada» → de vuelta en Claude. En Claude Code: `claude mcp add --transport http prepara-con-claude https://…/mcp` y `/mcp` para entrar.
+5. Probar con la cuenta propia: Claude.ai → Personalizar → Conectores → **Añadir conector personalizado** → nombre «Prepara con Claude», URL `https://…/mcp`, sin client id ni secreto (Claude se registra solo) → Conectar → consentimiento → Google → «Cuenta conectada» → de vuelta en Claude. En Claude Code: `claude mcp add --transport http prepara-con-claude https://…/mcp` y `/mcp` para entrar.
 
 Los `vars` de `wrangler.toml` (`FIREBASE_API_KEY`, `URL_LOGIN`, `URL_PREGUNTAS`, `ORIGENES_LOGIN`…) son públicos; el único secreto es `CLAVE_CIFRADO`.
 
@@ -104,5 +104,5 @@ Las pruebas de `test/` cubren la conversión de valores de Firestore, el acierto
 
 - **Temas nuevos**: `python3 scripts/skill-opositor.py && python3 mcp/publicar-contenido.py`.
 - **Cambios en los modelos de la app** (`app/lib/data/models`): `src/datos.ts` replica `Cronograma.toJson()`, `ResultadoCante`, `Ajustes`, `Plan`, `AgendaTema` y `EstadoLeitner`; si cambian, cambiar aquí y en `test/datos.test.ts`.
-- **Desconectar desde la app**: la app no puede revocar las concesiones OAuth del Worker directamente; basta con que el opositor cierre sesión en Firebase o revoque la app en su cuenta de Google (el refresh token deja de valer y la siguiente renovación revoca la concesión). Para un botón «Desconectar Claude» inmediato, la app puede llamar a `desconectar` por la misma vía que Claude (ver `app/DCE.md`), o el opositor usa Claude → Configuración → Conectores → Eliminar.
+- **Desconectar desde la app**: la app no puede revocar las concesiones OAuth del Worker directamente; basta con que el opositor cierre sesión en Firebase o revoque la app en su cuenta de Google (el refresh token deja de valer y la siguiente renovación revoca la concesión). Para un botón «Desconectar Claude» inmediato, la app puede llamar a `desconectar` por la misma vía que Claude (ver `app/DCE.md`), o el opositor usa Claude → Personalizar → Conectores → Eliminar.
 - **Limpieza de KV**: la biblioteca pone TTL a todo; si se quiere, un Cron Trigger con `env.OAUTH_PROVIDER.purgeExpiredData()`.
