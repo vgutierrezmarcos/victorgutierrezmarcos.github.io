@@ -285,6 +285,17 @@ Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.googl
 - [x] Siguiente versión de la app (1.15.0): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador) y las mejoras de los testers.
 
 
+## Conector Claude (MCP)
+
+Lo que la app tiene que añadir para el conector «Prepara con Claude» (`mcp/README.md`; diseño en `claude/mcp-fase-2.md`; Worker en `mcp/worker/`). El conector escribe con la sesión del propio opositor, así que la app no necesita nada nuevo de Firebase salvo las reglas de `cantes/{id}/informes`.
+
+- [ ] **Pantalla de informes del cante**: `users/{uid}/cantes/{id}/informes/{fecha}` (`fecha` ISO, `origen: 'claude'`, `informe` en Markdown, y opcionalmente `valoracion`, `valoraciones`, `comentarios`, `criterios`, `tareas[]`). En la ficha del cante hecho, un apartado «Informes» con la lista (fecha y primera línea) y el informe entero renderizado (Markdown, `flutter_markdown` o el visor que ya use la ayuda); borrar un informe desde ahí. El preparador enlazado los ve en la ficha del cante de su alumno (solo lectura; las reglas ya se lo permiten). Cuando el conector guarda valoración o comentarios también cambia `resultado.*` y `updatedAt` del cante: la sincronización por `updatedAt` ya lo recoge.
+- [ ] **Más → Prepara con Claude → botón «Desconectar Claude»**: el Worker no se puede llamar desde la app sin un token suyo, así que el botón hace dos cosas: (1) `FirebaseAuth.instance.currentUser.getIdToken(true)` tras `signOut()` + `signInSilently()` **no** basta (no revoca los refresh tokens); lo que sí sirve es abrir `https://myaccount.google.com/permissions` (revocar «web-vgm» deja sin valor el refresh token guardado por el Worker, y en la siguiente renovación la concesión OAuth se revoca sola) o, más sencillo y lo que recomienda el README, explicar que se desconecta desde Claude (Configuración → Conectores) o diciéndoselo a Claude («desconéctate de la app»). Opción limpia pendiente de decidir: un documento `users/{uid}/progress/claude` con `desconectar: true` que el Worker consulte en cada petición (una lectura más por llamada) y, al verlo, revoque la concesión y lo borre.
+- [ ] **Aviso en `TarjetaPrivacidad`** (y en la pantalla de Prepara con Claude): una línea «Si conectas el conector de Claude, un servidor de la web lee y escribe tus datos en tu nombre con tu sesión; detalle en la política (2.3)» con enlace a `politica-cookies.html#…`.
+- [ ] **DCE**: el conector usa la raíz `users/{uid}/oposiciones/dce` cuando Claude llama con `oposicion: "dce"` (parámetro de cada herramienta); la app no tiene que hacer nada, pero `oposiciones/dce.md` de la skill debe decirle a Claude que pase `oposicion: "dce"`. Ya anotado en `references/conector.md`.
+- [ ] **Exportar para Claude**: cuando el conector esté en uso, el botón «Exportar mis datos para Claude» puede llevar un texto «Si tienes el conector, no hace falta».
+- [ ] Al publicar: entrada única en `app/play-store/novedades-pendientes.md` («Informes de Claude en el diario y Desconectar Claude») y, con la versión en Play, la novedad en `novedades.json` junto con la del conector.
+
 ## Peticiones de Manuel del 21 oct. 2026
 
 Hechas el 21 oct.: valoración por tema, temas y minutos corregibles a posteriori (1.17.8), tiempos del cronómetro de DCE (1.17.6) y, en la 1.17.9, las tres de la pizarra:

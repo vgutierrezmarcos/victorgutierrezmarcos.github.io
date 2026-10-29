@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Conectar Claude con la app · Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Página de inicio de sesión del conector «Prepara con Claude»: entra con tu cuenta de Google para que Claude lea y escriba tus datos de la app Oposición TCEE · DCE.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Página mínima: una tarjeta centrada con la estética de la web. */
+        .conector { max-width: 560px; margin: 6vh auto 4rem; padding: 0 16px; }
+        .conector h1 { font-variant-caps: all-small-caps; letter-spacing: .02em; font-weight: normal; font-size: 1.6rem; }
+        .conector .card { padding: 1.6rem 1.8rem; }
+        .conector ul { padding-left: 1.2rem; }
+        .conector .nota { font-size: .92rem; opacity: .85; }
+        .conector .estado { margin-top: 1rem; min-height: 1.5em; }
+        .conector .estado.error { color: #8A1C1C; }
+        .conector .acciones { margin-top: 1.2rem; display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; }
+    </style>
+</head>
+<body>
+    <main class="conector">
+        <div class="card">
+            <h1>Conectar Claude con tu app</h1>
+            <p>Estás a un paso de que Claude pueda leer tu preparación directamente de la app «Oposición TCEE · DCE». Entra con <strong>la misma cuenta de Google</strong> que usas en la app o en esta web.</p>
+            <p>Al entrar autorizas al conector «Prepara con Claude» (un servidor de esta web) a, en tu nombre:</p>
+            <ul>
+                <li>leer tu progreso, tus tests, tu diario de cantes y tu cronograma;</li>
+                <li>servirle a Claude los materiales exclusivos (temas revisados, fichas, guía del dictamen);</li>
+                <li>guardar en la app, solo cuando tú lo confirmes en la conversación, un cronograma nuevo y el informe de un cante.</li>
+            </ul>
+            <p class="nota">Nadie más ve tus datos: el conector usa tu propia sesión de Firebase, y las reglas de la base de datos solo dejan al dueño leer y escribir lo suyo. No accede a tu Google Calendar ni a las grabaciones o transcripciones del móvil. Guarda tu token de acceso cifrado y caducado a los 30 días sin uso; puedes revocarlo cuando quieras desde la app (Más → Prepara con Claude → Desconectar Claude), pidiéndoselo a Claude («desconéctate de la app») o en Claude, Configuración → Conectores. Más detalle en la <a href="/politica-cookies.html">política de privacidad</a> y en las <a href="/condiciones-materiales.html#ia">condiciones de los materiales</a>.</p>
+            <div class="acciones">
+                <button id="entrar" class="boton" type="button">Entrar con Google</button>
+                <a class="boton--texto" href="/oposicion/prepara-con-claude.html">¿Qué es esto?</a>
+            </div>
+            <p id="estado" class="estado" aria-live="polite"></p>
+        </div>
+    </main>
+
+    <!-- Firebase (misma versión y configuración que el resto de la web) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="/firebase-config.js"></script>
+    <script>
+    (function () {
+        // URL del Worker del conector (la misma que URL_WORKER en mcp/worker/wrangler.toml).
+        // Los tokens solo se mandan ahí. En local (wrangler dev) se acepta ?worker=http://localhost:8787.
+        var WORKER = 'https://prepara-con-claude.vgutierrezmarcos.workers.dev';
+
+        var params = new URLSearchParams(location.search);
+        var state = params.get('state') || '';
+        var worker = params.get('worker') || '';
+        if (/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(worker)) WORKER = worker;
+
+        var estado = document.getElementById('estado');
+        var boton = document.getElementById('entrar');
+        function mensaje(texto, error) {
+            estado.textContent = texto;
+            estado.className = 'estado' + (error ? ' error' : '');
+        }
+
+        if (!state) {
+            mensaje('Esta página solo se abre desde Claude al conectar el conector «Prepara con Claude»; falta el parámetro de la sesión. Empieza la conexión otra vez desde Claude.', true);
+            boton.disabled = true;
+            return;
+        }
+
+        firebase.initializeApp(firebaseConfig);
+        var auth = firebase.auth();
+
+        boton.addEventListener('click', function () {
+            boton.disabled = true;
+            mensaje('Abriendo la ventana de Google…');
+            var proveedor = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(proveedor).then(function (resultado) {
+                var usuario = resultado.user;
+                mensaje('Conectando con el servidor del conector…');
+                return usuario.getIdToken(true).then(function (idToken) {
+                    return fetch(WORKER + '/callback/sesion', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ state: state, idToken: idToken, refreshToken: usuario.refreshToken })
+                    });
+                }).then(function (r) {
+                    if (!r.ok) return r.json().catch(function () { return {}; }).then(function (j) { throw new Error(j.error || ('el servidor ha contestado ' + r.status)); });
+                    return r.json();
+                }).then(function (j) {
+                    mensaje('Cuenta ' + (j.email || usuario.email || '') + ' conectada. Volviendo a Claude…');
+                    // La vuelta al Worker es una navegación normal (GET): así viaja la cookie que
+                    // ata esta sesión al navegador, y de ahí a Claude con el código de autorización.
+                    location.href = WORKER + '/callback?state=' + encodeURIComponent(state);
+                });
+            }).catch(function (e) {
+                boton.disabled = false;
+                var texto = e && e.code === 'auth/popup-closed-by-user' ? 'Has cerrado la ventana de Google sin entrar.' : ('No se ha podido conectar: ' + (e && e.message ? e.message : e));
+                mensaje(texto + ' Puedes volver a intentarlo.', true);
+            });
+        });
+    })();
+    </script>
+</body>
+</html>

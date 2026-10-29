@@ -44,6 +44,8 @@ Tiene que acabar con `0 fallidas`. Hay que repetirla cada vez que cambien las re
 
 ## Últimos cambios
 
+- **29 oct. 2026 (conector Claude, pendiente de publicar)**: `users/{uid}/cantes/{id}/informes/{informe}` (raíz y `oposiciones/{op}`): los informes que guarda el conector MCP «Prepara con Claude» (`mcp/`). El dueño lee y escribe por la regla general; el preparador enlazado solo lee. 9 casos nuevos en `prueba.mjs`; probadas con el emulador el 29 oct. (344 correctas, 0 fallidas).
+
 - **28 oct. 2026 (1.21.1, pendientes de publicar)**: `retoDiario/{dia}` y `retoDiario/{dia}/participantes/{uid}` (raíz y `oposiciones/{op}`): el agregado anónimo del test diario. Funciones `participaAhora` y `notaReto` en la cabecera (`existsAfter` y `getAfter` sobre la marca del propio usuario en la misma transacción). 14 casos nuevos en `prueba.mjs`; probadas con el emulador el 28 oct. (335 correctas, 0 fallidas).
 
 - **21 oct. 2026 (1.17.9, publicadas el mismo día)**: `match /sesiones/{id}/notas/{p}` dentro de los datos de cada usuario: las notas del preparador de una clase (su segunda pizarra). El alumno lee solo las páginas con `alumno == su uid` y `visible == true`; el preparador, dueño de su subárbol, escribe. La 1.17.11 añade `allow update` para el alumno en las páginas `editable` (sin tocar `alumno`, `visible` ni `editable`); publicadas el 21 oct. La prueba con el emulador quedó sin ejecutar al publicarlas (sin Java en la máquina).

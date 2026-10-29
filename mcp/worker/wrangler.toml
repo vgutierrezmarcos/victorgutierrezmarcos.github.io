@@ -1,0 +1,46 @@
+# Conector remoto MCP «Prepara con Claude»: Cloudflare Worker (plan gratuito).
+# Desplegar: npx wrangler deploy (ver ../README.md). Antes, crear los tres KV y
+# poner sus id aquí, y el secreto CLAVE_CIFRADO con `npx wrangler secret put`.
+name = "prepara-con-claude"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[observability]
+# Registros de Cloudflare desactivados: el Worker no escribe nada con datos personales.
+enabled = false
+
+[vars]
+# Clave pública de la app web de Firebase (la misma de firebase-config.js): identifica el proyecto, no da acceso a nada.
+FIREBASE_API_KEY = "AIzaSyCcNHY3IkriyV1lUejtL3qDn8luklhRo3o"
+FIREBASE_PROJECT = "web-vgm"
+# URL pública del Worker (sin barra final). Es el «issuer» OAuth y la base del recurso MCP (URL_WORKER/mcp):
+# cambiarla cuando se despliegue con dominio propio (p. ej. https://mcp.victorgutierrezmarcos.es).
+URL_WORKER = "https://prepara-con-claude.vgutierrezmarcos.workers.dev"
+# Página de la web que hace el login con Google y devuelve los tokens al Worker.
+URL_LOGIN = "https://www.victorgutierrezmarcos.es/mcp/login.html"
+# Banco de preguntas del test (para el acierto por tema) y manifiesto de temas revisados.
+URL_PREGUNTAS = "https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/preguntas.json"
+URL_REVISADOS = "https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/oposicion/temario/app/revisados.json"
+# Orígenes que pueden llamar a /callback/sesion (la página de login).
+ORIGENES_LOGIN = "https://www.victorgutierrezmarcos.es,https://victorgutierrezmarcos.es"
+
+# Secretos (npx wrangler secret put NOMBRE):
+#   CLAVE_CIFRADO  32 bytes en base64 (openssl rand -base64 32): cifra el refresh token de Firebase
+#                  antes de guardarlo (además del cifrado propio de workers-oauth-provider).
+
+[[kv_namespaces]]
+# Clientes, concesiones y tokens OAuth (los maneja @cloudflare/workers-oauth-provider).
+binding = "OAUTH_KV"
+id = "PONER_ID_OAUTH_KV"
+
+[[kv_namespaces]]
+# Sesiones de login pendientes (10 min) y caché del ID token de Firebase (50 min), cifrados.
+binding = "SESIONES"
+id = "PONER_ID_SESIONES"
+
+[[kv_namespaces]]
+# Contenido exclusivo (.md de temas, fichas, dictamen y canon), subido con ../publicar-contenido.py.
+binding = "CONTENIDO"
+id = "PONER_ID_CONTENIDO"
