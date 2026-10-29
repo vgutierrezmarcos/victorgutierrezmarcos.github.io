@@ -11,5 +11,6 @@ export default defineConfig({
       miniflare: { bindings: { CLAVE_CIFRADO: 'MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=' } },
     }),
   ],
-  test: { include: ['test/**/*.test.ts'] },
+  // En serie: en /mnt/c (disco de Windows desde WSL) los seis ficheros en paralelo agotan el tiempo de arranque de workerd.
+  test: { include: ['test/**/*.test.ts'], fileParallelism: false },
 });
