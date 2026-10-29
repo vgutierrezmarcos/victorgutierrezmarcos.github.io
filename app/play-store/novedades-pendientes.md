@@ -5,12 +5,15 @@ publican **juntas, en una sola novedad**, cada vez que una versión llega a Goog
 Play (solo con lo que importe al opositor). La app está en producción en Google
 Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 
-## Para la siguiente versión en Google Play (1.21.0 publicada el 29 oct.)
+## Para la siguiente versión en Google Play (1.22.0 publicada el 29 oct.)
+
+## Publicado el 29 oct. 2026 (1.22.0 en producción)
+
+Novedad en `novedades.json`: «Versión 1.22.0 de la app en Google Play: autoevaluación de los 15 temas revisados, cuadro de coyuntura que se actualiza solo, cuántos fallan cada pregunta del test, buscador por epígrafes dentro de los temas, grabaciones unidas al diario, esquema con huecos, reto diario anónimo y, en DCE, el cronograma por fases del primer ejercicio». Resumía:
 
 - (28 oct., siguiente versión) Reto diario: si lo activas en Ajustes, al terminar el test diario ves cuántos lo han hecho hoy, la nota media y tu posición (solo cifras, nunca nombres); y cualquier resultado se puede compartir como imagen
 - (28 oct., siguiente versión) Si tu móvil pierde la sesión al cerrar la app del todo (le pasaba a Víctor en un Galaxy S24), o la cierra en pleno uso, la app vuelve a entrar sola con tu cuenta de Google; «Cerrar sesión» sigue siendo la única forma de salir
 - (28 oct., siguiente versión) DCE: la organización del temario de Manuel (bloques con colores y esquemas del 1.º y del 3.º) y el cronograma por fases del 1.er ejercicio. La primera vuelta, después simulacros escritos de 3 horas como en el examen y, al final, la revisión de los temas flojos. Cada tema escrito se apunta como bien, regular o mal
-
 - (29 oct., 1.22.0) Autoevalúate: en los 15 temas revisados con ficha de repaso, 24 preguntas cortas (conceptos, fórmulas, qué predice cada modelo y verdadero o falso) para responder de memoria, con repaso espaciado
 - (29 oct., 1.22.0) Cuadro de coyuntura de España para el dictamen (Organización y junto a la guía del dictamen): PIB, inflación, paro, déficit, deuda, cuenta corriente, bono, tipos del BCE, euríbor y dólar, con la zona del euro al lado, el siguiente dato y «Tápalo y adivina»; se actualiza solo cada día
 - (29 oct., 1.22.0) El test dice cuántos fallan cada pregunta (con los tests de todos, sin nombres), «Las que más falla todo el mundo» en Estadísticas, por tema, y el modo «Puntos flojos · los de todos»; el simulador de la web también lo enseña y guarda el detalle de cada test

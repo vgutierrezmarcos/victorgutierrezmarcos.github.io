@@ -88,7 +88,15 @@ def main():
         'tests': tests['con detalle'],
         'preguntas': {pid: {'v': c['v'], 'a': c['a'], 'f': c['f'], 'b': c['b']} for pid, c in sorted(por_pregunta.items(), key=lambda kv: int(kv[0]))},
     }
-    if '--no-escribir' not in sys.argv:
+    # Solo se reescribe si cambian los recuentos (no por la fecha): la acción diaria no hace commits vacíos.
+    try:
+        antes = json.loads(SALIDA.read_text(encoding='utf-8'))
+    except Exception:
+        antes = {}
+    igual = antes.get('tests') == salida['tests'] and antes.get('preguntas') == salida['preguntas']
+    if igual:
+        print('Sin cambios en los recuentos.')
+    elif '--no-escribir' not in sys.argv:
         SALIDA.write_text(json.dumps(salida, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
         print(f'Escrito {SALIDA.relative_to(RAIZ)}')
 
