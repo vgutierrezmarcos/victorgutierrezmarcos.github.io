@@ -358,12 +358,12 @@
         .app-principio h4 { font-family: var(--fuente-tcee); font-size: 1.15rem; color: var(--color-primary); margin: 0 0 0.4rem; }
         .app-principio p { font-size: 0.97rem; line-height: 1.6; color: var(--color-text-muted); margin: 0; }
 
-        /* Objeciones: «se dice» / «aquí» */
-        .objeciones { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.4rem 2rem; margin: 0; }
-        .objeciones div { padding: 0.9rem 0 0.7rem; border-top: 1px solid var(--color-border); }
-        .objeciones dt { font-style: italic; color: var(--color-text-muted); }
-        .objeciones dd { margin: 0.3rem 0 0; padding-left: 0.9rem; border-left: 2px solid var(--oro); line-height: 1.6; }
-        .objeciones .rotulo { font-family: var(--fuente-ui); font-style: normal; font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: 0.04em; color: var(--color-primary); margin-right: 0.35rem; }
+        /* Objeciones: lo que se dice (tachado en gris) y la respuesta, en tarjetas */
+        .objeciones { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin: 1.2rem 0 0; }
+        .objecion { background: var(--color-white); border: 1px solid var(--color-border); border-top: 2px solid var(--oro); border-radius: var(--radius-card); padding: 1.1rem 1.25rem 1.15rem; }
+        .objecion-dicho { margin: 0 0 0.65rem; font-style: italic; color: var(--color-text-muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--oro) 70%, transparent); text-decoration-thickness: 1px; }
+        .objecion-respuesta { margin: 0; line-height: 1.6; }
+        .objecion-respuesta strong { display: block; font-family: var(--fuente-tcee); font-size: 1.12rem; font-weight: normal; color: var(--color-primary); margin-bottom: 0.2rem; }
 
         /* ---------- RELATO: imagen y texto alternos ---------- */
         .relato { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem 0; }
@@ -430,6 +430,8 @@
         .hoja li { counter-increment: hoja; display: flex; gap: 0.7rem; padding: 0.42rem 0; border-bottom: 1px solid var(--color-border-light); font-size: 0.98rem; line-height: 1.35; }
         .hoja li:last-child { border-bottom: 0; }
         .hoja li::before { content: counter(hoja); min-width: 1.1rem; font-family: var(--fuente-ui); font-weight: 600; color: var(--oro); }
+        .hoja-texto { margin: 0; padding: 0.55rem 0; border-bottom: 1px solid var(--color-border-light); font-size: 1.02rem; line-height: 1.4; }
+        .hoja-texto:last-of-type { border-bottom: 0; }
         .hoja figcaption { font-family: var(--fuente-ui); font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.8rem; }
 
         .ejemplos { list-style: none; margin: 0.6rem 0 1rem !important; padding: 0; }
@@ -671,12 +673,6 @@
             </div>
         </section>
 
-        <!-- ===== Frase: el punto de partida (las palabras se encienden al bajar) ===== -->
-        <section class="frase" aria-label="La idea">
-            <p class="frase-texto" data-palabras>Cantas un tema, lo apuntas en la app y esperas a la próxima clase para saber qué ha fallado.</p>
-            <p class="frase-remate revelar">Con Claude lo sabes esa misma tarde: <strong>¿qué arreglo primero?</strong></p>
-        </section>
-
         <!-- ===== Por qué ===== -->
         <section class="bloque" id="por-que" aria-labelledby="por-que-titulo">
             <div class="bloque-cabecera revelar">
@@ -696,21 +692,33 @@
             </div>
 
             <h3 class="revelar">Lo que la distingue de una IA «a secas»</h3>
-            <p class="revelar">Las objeciones habituales a preparar una oposición con una IA genérica, y qué cambia aquí.</p>
-            <dl class="objeciones revelar">
-                <div><dt><span class="rotulo">Se dice</span>«Se inventa cosas y no cita fuentes.»</dt>
-                <dd><span class="rotulo">Aquí</span>corrige contra el temario revisado y la guía del dictamen, cita el apartado de cada corrección y, si un tema no está revisado, lo dice.</dd></div>
-                <div><dt><span class="rotulo">Se dice</span>«No conoce la oposición.»</dt>
-                <dd><span class="rotulo">Aquí</span>lleva el programa oficial, cómo se cantan los temas, qué valora el tribunal, el formato de cada ejercicio y los exámenes de test de los últimos veinte años.</dd></div>
-                <div><dt><span class="rotulo">Se dice</span>«Da respuestas genéricas.»</dt>
-                <dd><span class="rotulo">Aquí</span>trabaja con tu transcripción, tus fotos y tus datos de la app: el informe es de tu cante, no de «un cante».</dd></div>
-                <div><dt><span class="rotulo">Se dice</span>«No sabe cuánto tiempo he dedicado a cada parte.»</dt>
-                <dd><span class="rotulo">Aquí</span>la app transcribe con marcas de minuto y el informe compara con los tiempos de cada apartado.</dd></div>
-                <div><dt><span class="rotulo">Se dice</span>«Es complaciente.»</dt>
-                <dd><span class="rotulo">Aquí</span>sus instrucciones piden lo contrario: ordenar por gravedad, decir «error de fondo» cuando lo es y no dar un 4 a un cante con dos errores de fondo.</dd></div>
-                <div><dt><span class="rotulo">Se dice</span>«No sustituye a un preparador.»</dt>
-                <dd><span class="rotulo">Aquí</span>ni lo pretende: lo complementa, y el informe te manda contrastar con él lo que te sorprenda.</dd></div>
-            </dl>
+            <p class="revelar">Lo que suele decirse de preparar una oposición con una IA, y lo que cambia aquí.</p>
+            <div class="objeciones revelar">
+                <div class="objecion">
+                    <p class="objecion-dicho">«Se inventa cosas y no cita fuentes»</p>
+                    <p class="objecion-respuesta"><strong>Cita de dónde sale cada corrección.</strong> Corrige con el temario revisado y la guía del dictamen, y cita el apartado. Si un tema aún no está revisado, te lo dice.</p>
+                </div>
+                <div class="objecion">
+                    <p class="objecion-dicho">«No conoce la oposición»</p>
+                    <p class="objecion-respuesta"><strong>Conoce esta oposición.</strong> El programa oficial, cómo se canta un tema, qué valora el tribunal, el formato de cada ejercicio y veinte años de exámenes de test.</p>
+                </div>
+                <div class="objecion">
+                    <p class="objecion-dicho">«Da respuestas genéricas»</p>
+                    <p class="objecion-respuesta"><strong>Trabaja con lo tuyo.</strong> Tu transcripción, tus fotos y tus datos de la app: corrige tu cante, no «un cante».</p>
+                </div>
+                <div class="objecion">
+                    <p class="objecion-dicho">«No sabe cuánto tiempo he dedicado a cada parte»</p>
+                    <p class="objecion-respuesta"><strong>Mira el reloj.</strong> La app transcribe con marcas de minuto, y Claude compara con el tiempo que pide cada apartado.</p>
+                </div>
+                <div class="objecion">
+                    <p class="objecion-dicho">«Es complaciente»</p>
+                    <p class="objecion-respuesta"><strong>Va a lo que te costaría el examen.</strong> Ordena por gravedad y llama error de fondo a lo que lo es. No pone buena nota a un cante con errores de fondo.</p>
+                </div>
+                <div class="objecion">
+                    <p class="objecion-dicho">«No sustituye a un preparador»</p>
+                    <p class="objecion-respuesta"><strong>Ni lo pretende.</strong> Lo complementa. Cada informe te pide contrastar con tu preparador lo que te sorprenda.</p>
+                </div>
+            </div>
         </section>
 
         <!-- ===== Relato: cada uso, con imagen y texto alternos ===== -->
@@ -725,17 +733,10 @@
                 <div class="escena-imagen">
                     <figure class="hoja">
                         <p class="hoja-cabecera"><span>Informe del cante</span><span>3.A.8 · 31 min</span></p>
-                        <ol>
-                            <li>En tres líneas</li>
-                            <li>Estructura y tiempos</li>
-                            <li>Errores de contenido</li>
-                            <li>Omisiones y sobras</li>
-                            <li>Expresión y pizarra</li>
-                            <li>Preguntas de comprobación</li>
-                            <li>Lo que te preguntaría el tribunal</li>
-                            <li>Para la app</li>
-                        </ol>
-                        <figcaption>Las ocho secciones de cada informe, siempre en el mismo orden.</figcaption>
+                        <p class="hoja-texto">Qué dijiste, qué es lo correcto y de dónde sale.</p>
+                        <p class="hoja-texto">Lo que más te costaría en el examen, primero.</p>
+                        <p class="hoja-texto">Y lo que te preguntaría el tribunal.</p>
+                        <figcaption>Cada cante, su informe, esa misma tarde.</figcaption>
                     </figure>
                 </div>
                 <div class="escena-texto">
@@ -748,7 +749,7 @@
                         <li>Adjúntalo en Claude y escribe «corrige este cante». Si quieres, di qué te preocupa.</li>
                     </ol>
                     <p>La transcripción no está en la nube: ese fichero sí lo subes tú. Con el conector, Claude añade lo que ya sabe de ti (cómo te fue ese tema otras veces, tus temas flojos) y, si se lo confirmas, guarda el informe en el diario de la app.</p>
-                    <p>El informe sale en el chat y en <strong>PDF</strong>, con la estética de tu oposición: morado y dorado en TCEE, granate y azul en DCE. La última sección trae la valoración y los comentarios, listos para el diario.</p>
+                    <p>El informe sale en el chat y en <strong>PDF</strong>, para guardarlo junto al cante. Trae también la valoración y los comentarios, listos para el diario de la app.</p>
                 </div>
             </article>
 
@@ -756,14 +757,10 @@
                 <div class="escena-imagen">
                     <figure class="hoja">
                         <p class="hoja-cabecera"><span>Dictamen de coyuntura</span><span>4 hojas</span></p>
-                        <ol>
-                            <li>Estructura</li>
-                            <li>Uso de los datos</li>
-                            <li>Diagnóstico</li>
-                            <li>Política económica recomendada</li>
-                            <li>Redacción</li>
-                        </ol>
-                        <figcaption>Lo que mira, frente a la guía del dictamen, con lo que arreglarías primero.</figcaption>
+                        <p class="hoja-texto">Leído entero, aunque esté a mano.</p>
+                        <p class="hoja-texto">Frente a la guía del dictamen.</p>
+                        <p class="hoja-texto">Con lo que arreglarías primero.</p>
+                        <figcaption>Cada dictamen, su informe.</figcaption>
                     </figure>
                 </div>
                 <div class="escena-texto">
@@ -822,7 +819,7 @@
                     <span class="app-etiqueta">DCE</span>
                     <h3>También para Diplomado Comercial del Estado</h3>
                     <p class="lema">El programa y las reglas de las dos oposiciones.</p>
-                    <p>Si preparas DCE (lo ve en la app, o se lo dices), corrige y planifica con el programa de Diplomado Comercial del Estado y sus ejercicios, y los informes salen en granate y azul.</p>
+                    <p>Si preparas DCE (lo ve en la app, o se lo dices), corrige y planifica con el programa de Diplomado Comercial del Estado y sus ejercicios.</p>
                 </div>
             </article>
 

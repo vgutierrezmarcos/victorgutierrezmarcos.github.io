@@ -37,11 +37,53 @@ export interface Contexto {
   contenido: Contenido;
   /** Un fichero de la skill desplegada en la web (SKILL.md, references/…, assets/…), o null si no existe. */
   skill(ruta: string): Promise<string | null>;
+  /** Índice de fuentes por tema (oposicion/temario/fuentes-temas.json, lo genera scripts/fuentes-temas.py). */
+  fuentes(): Promise<IndiceFuentes>;
   /** Revoca las concesiones OAuth del opositor y borra su token de Firebase guardado. */
   desconectar(): Promise<void>;
 }
 
 export class ErrorSesion extends Error {}
+
+/** Lo que trae fuentes-temas.json (solo los campos que usan las herramientas). */
+export interface TemaFuentes {
+  oposicion: 'tcee' | 'dce';
+  titulo: string;
+  ejercicio: number;
+  parte: string;
+  bloque?: string | null;
+  categoria?: string | null;
+  idea?: string | null;
+  revisado?: boolean;
+  web?: { pdf: string | null; disponible: boolean; pagina?: string };
+  manuel?: Array<{ codigo: string; titulo: string; url: string }> | string | null;
+  atcee?: Array<{ autor: string; promocion: string; anio: number; numeracion: string; fichero: string; url: string }>;
+  equivalentes_tcee?: string[];
+}
+export interface IndiceFuentes {
+  aviso: string;
+  bloques: Array<{ nombre: string; categoria: string; ejercicio?: number; temas: string[] }>;
+  manuales?: Array<{ bloque: string; manuales: Array<{ cita: string; url?: string }> }>;
+  tcee: Record<string, TemaFuentes>;
+  dce: Record<string, TemaFuentes>;
+}
+
+const sinTildes = (t: string): string => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+/** «3B26», «3.b.26» o «3.B.26» → «3.B.26». */
+export function codigoTema(entrada: string): string | null {
+  const m = entrada.trim().toUpperCase().match(/^(\d)\s*\.?\s*([A-Z])\s*\.?\s*0*(\d{1,2})$/);
+  return m ? `${m[1]}.${m[2]}.${Number(m[3])}` : null;
+}
+
+/** Manuales de la ATCEE que encajan con la categoría o el bloque de un tema. */
+function manualesPara(indice: IndiceFuentes, tema: TemaFuentes) {
+  const claves = sinTildes(`${tema.categoria ?? ''} ${tema.bloque ?? ''} ${tema.titulo}`);
+  return (indice.manuales ?? []).filter((m) => {
+    const b = sinTildes(m.bloque);
+    return b.split(/[^a-zñ]+/).filter((p) => p.length > 4).some((p) => claves.includes(p.slice(0, 7)));
+  });
+}
 
 const AVISO_EXCLUSIVO =
   'Material exclusivo de victorgutierrezmarcos.es: solo para la preparación personal de este opositor en su cuenta de Claude (condiciones-materiales.html, apartado 1 bis). No lo copies fuera de esta conversación.';
@@ -94,7 +136,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es: el equipo de preparación de las oposiciones a TCEE y DCE (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores), con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de responder a cualquier petición sobre la oposición, llama a leer_skill() sin argumentos: devuelve las instrucciones completas (SKILL.md) y síguelas durante toda la conversación; los ficheros que citen (references/…, assets/…) se leen con leer_skill(ruta). Si la skill «prepara-oposicion» ya está instalada en la cuenta, úsala igual: es la misma. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es: el equipo de preparación de las oposiciones a TCEE y DCE (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores), con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de responder a cualquier petición sobre la oposición, llama a leer_skill() sin argumentos: devuelve las instrucciones completas (SKILL.md) y síguelas durante toda la conversación; los ficheros que citen (references/…, assets/…) se leen con leer_skill(ruta). Si la skill «prepara-oposicion» ya está instalada en la cuenta, úsala igual: es la misma. Para recomendar fuentes de un tema usa fuentes_tema, y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
     },
   );
 
@@ -118,6 +160,77 @@ export function crearServidor(ctx: Contexto): McpServer {
         if (texto === null) return error(`No existe «${limpia}» en la skill publicada. Comprueba la ruta en SKILL.md.`);
         if (limpia === 'SKILL.md') return textoMd(`${NOTA_CONECTOR}\n\n${texto}`);
         return textoMd(/^references\/(temas|dictamen|canon)\//.test(limpia) ? `${AVISO_EXCLUSIVO}\n\n${texto}` : texto);
+      }),
+  );
+
+  server.registerTool(
+    'fuentes_tema',
+    {
+      title: 'Fuentes para estudiar un tema',
+      description:
+        'Todas las fuentes que hay para un tema de TCEE o DCE, para recomendar con qué estudiarlo: si está revisado (material exclusivo: léelo con leer_tema y leer_ficha), el PDF del temario de victorgutierrezmarcos.es, el tema equivalente de manuelcabadogarcia.es (DCE), los apuntes de otros TCEE del repositorio de la ATCEE (autor, promoción, numeración y enlace) y los manuales que recomienda la ATCEE para su bloque. Úsala para «¿qué fuente me recomiendas para el 3.B.26?», «¿quién tiene apuntes de este tema?» o antes de explicar un tema no revisado.',
+      inputSchema: { tema: z.string().describe('Código del tema: «3.B.26», «3B26», «1.A.4» (DCE)…'), oposicion: oposicionParam },
+    },
+    async ({ tema, oposicion }) =>
+      protegido(async () => {
+        const cod = codigoTema(tema);
+        if (!cod) return error(`«${tema}» no parece un código de tema (por ejemplo, «3.B.26»).`);
+        const indice = await ctx.fuentes();
+        const t = (oposicion === 'dce' ? indice.dce : indice.tcee)[cod] ?? indice.tcee[cod] ?? indice.dce[cod];
+        if (!t) return error(`No encuentro el tema ${cod} en el programa de ${oposicion.toUpperCase()}. Usa buscar_temario para localizarlo.`);
+        const atcee = t.atcee ?? [];
+        return json({
+          tema: cod,
+          ...t,
+          atcee: atcee.map((a) => ({ ...a, ...(a.numeracion === 'antigua' ? { ojo: 'numeración antigua: comprueba por el nombre del fichero que es este tema' } : {}) })),
+          manuales: manualesPara(indice, t),
+          equivalentes: t.equivalentes_tcee?.map((c) => ({ codigo: c, titulo: indice.tcee[c]?.titulo })),
+          comoRecomendar:
+            'Orden: 1) si está revisado, el tema revisado y su ficha (son la referencia de la skill); 2) si no, el PDF de la web si está disponible; 3) en teoría económica, el tema de Manuel; 4) los apuntes de la ATCEE de numeración actual y promoción más reciente (LXXV, LXXIV), y después los demás; 5) los manuales del bloque para profundizar. Di por qué recomiendas cada uno (actualidad, enfoque, extensión si la sabes) y que contraste con su preparador. Los apuntes de otros autores no se leen ni se copian aquí: se recomiendan con su enlace. ' +
+            indice.aviso,
+        });
+      }),
+  );
+
+  server.registerTool(
+    'buscar_temario',
+    {
+      title: 'Buscar en el programa',
+      description:
+        'Busca en el programa de TCEE y DCE por materia, bloque o palabras del título y devuelve los temas que encajan, agrupados por bloque de la organización del temario, con su idea clave y qué fuentes tienen (revisado, PDF de la web, Manuel, número de apuntes de la ATCEE). Úsala para «¿qué temas forman la teoría microeconómica?», «¿dónde se estudia la curva de Phillips?», «¿qué temas de comercio internacional hay?». Sin consulta, devuelve los bloques con sus temas.',
+      inputSchema: {
+        consulta: z.string().max(120).default('').describe('Materia, bloque o palabras: «microeconomía», «crecimiento», «Phillips», «parte B»…'),
+        oposicion: oposicionParam,
+      },
+    },
+    async ({ consulta, oposicion }) =>
+      protegido(async () => {
+        const indice = await ctx.fuentes();
+        const temas = oposicion === 'dce' ? indice.dce : indice.tcee;
+        const resumen = (cod: string) => {
+          const t = temas[cod];
+          if (!t) return null;
+          return {
+            codigo: cod, titulo: t.titulo, idea: t.idea ?? undefined, revisado: t.revisado || undefined,
+            pdfWeb: t.web?.disponible ? t.web.pdf : undefined,
+            manuel: Array.isArray(t.manuel) ? t.manuel.map((m) => m.url) : t.manuel || undefined,
+            apuntesAtcee: t.atcee?.length || undefined,
+          };
+        };
+        const palabras = sinTildes(consulta).split(/[^a-z0-9ñ.]+/).filter((p) => p.length > 2 && !['los', 'las', 'del', 'que', 'tema', 'temas', 'parte', 'teoria'].includes(p));
+        const encaja = (texto: string) => palabras.length > 0 && palabras.every((p) => sinTildes(texto).includes(p.slice(0, Math.max(5, p.length - 2))));
+        const bloques = indice.bloques
+          .filter((b) => oposicion === 'tcee' && (!palabras.length || encaja(`${b.nombre} ${b.categoria}`)))
+          .map((b) => ({ bloque: b.nombre, categoria: b.categoria, temas: b.temas.map(resumen).filter(Boolean) }));
+        const enBloques = new Set(bloques.flatMap((b) => b.temas.map((t) => t!.codigo)));
+        const sueltos = palabras.length
+          ? Object.entries(temas).filter(([c, t]) => !enBloques.has(c) && encaja(`${c} ${t.titulo} ${t.bloque ?? ''} ${t.categoria ?? ''} ${t.idea ?? ''} ${t.parte}`)).map(([c]) => resumen(c))
+          : [];
+        if (!bloques.length && !sueltos.length) return error(`Nada en el programa de ${oposicion.toUpperCase()} encaja con «${consulta}». Prueba con otra palabra o sin consulta para ver los bloques.`);
+        return json({
+          consulta, oposicion, bloques, otrosTemas: sueltos.slice(0, 40),
+          nota: 'Los bloques y categorías son la organización del temario de victorgutierrezmarcos.es (oposicion/organizacion.html): agrupan temas que comparten modelos y conviene estudiar juntos. Para las fuentes de un tema concreto, fuentes_tema.',
+        });
       }),
   );
 

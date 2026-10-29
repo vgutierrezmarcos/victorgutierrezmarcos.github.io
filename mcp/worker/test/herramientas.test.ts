@@ -91,6 +91,17 @@ describe('herramientas', () => {
       almacen: async (op) => (op === 'dce' ? dbDce : db),
       banco: async () => banco,
       contenido: new Contenido({ get: async (k) => kv.get(k) ?? null }),
+      fuentes: async () => ({
+        aviso: 'aviso',
+        bloques: [{ nombre: 'Modelo neoclásico básico', categoria: 'Microeconomía', temas: ['3.A.8'] }],
+        manuales: [{ bloque: 'Microeconomía y organización industrial', manuales: [{ cita: 'Varian' }] }, { bloque: 'Macroeconomía', manuales: [{ cita: 'Romer' }] }],
+        tcee: {
+          '3.A.8': { oposicion: 'tcee', titulo: 'Teoría de la demanda del consumidor (I)', ejercicio: 3, parte: 'A', bloque: 'Modelo neoclásico básico', categoria: 'Microeconomía', revisado: true, manuel: [], atcee: [] },
+          '3.B.26': { oposicion: 'tcee', titulo: 'Crisis financieras y pánicos bancarios', ejercicio: 3, parte: 'B', bloque: 'Economía Corporativa y Financiera', categoria: 'Microeconomía', revisado: false,
+            web: { pdf: null, disponible: false }, manuel: [], atcee: [{ autor: 'Tebar', promocion: 'LXXV', anio: 2026, numeracion: 'actual', fichero: 'B.26.docx', url: 'u' }, { autor: 'Fuentes', promocion: 'LXXI', anio: 2022, numeracion: 'antigua', fichero: '26B.docx', url: 'v' }] },
+        },
+        dce: {},
+      }),
       skill: async (ruta) => ({ 'SKILL.md': '# Prepara con Claude', 'references/agentes/dudas.md': '# Dudas', 'references/temas/3A08/ficha.md': '# Ficha' } as Record<string, string>)[ruta] ?? null,
       desconectar: async () => {
         desconectado = true;
@@ -101,7 +112,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
+    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'fuentes_tema', 'buscar_temario', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -118,6 +129,18 @@ describe('herramientas', () => {
     expect(falta.isError).toBe(true);
     const info = c.getInstructions();
     expect(info).toContain('leer_skill()');
+  });
+
+  it('fuentes_tema reúne las fuentes y avisa de la numeración antigua; buscar_temario agrupa por bloque', async () => {
+    const c = await cliente(ctx);
+    const f = json(await c.callTool({ name: 'fuentes_tema', arguments: { tema: '3b26' } }));
+    expect(f.tema).toBe('3.B.26');
+    expect((f.atcee as Obj[])[1].ojo).toContain('numeración antigua');
+    expect((f.manuales as Obj[]).map((m) => m.bloque)).toEqual(['Microeconomía y organización industrial']);
+    const b = json(await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'teoría microeconómica' } }));
+    expect((b.bloques as Obj[])[0].bloque).toBe('Modelo neoclásico básico');
+    const nada = await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'astronomía' } });
+    expect(nada.isError).toBe(true);
   });
 
   it('leer_progreso devuelve el formato de la skill y respeta la oposición', async () => {

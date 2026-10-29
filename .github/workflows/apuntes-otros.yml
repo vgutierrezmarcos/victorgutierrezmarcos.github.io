@@ -13,6 +13,7 @@ on:
   push:
     paths:
       - 'scripts/apuntes-otros.py'
+      - 'scripts/fuentes-temas.py'
       - '.github/workflows/apuntes-otros.yml'
     branches:
       - main
@@ -43,13 +44,13 @@ jobs:
         run: pip install --quiet gdown==6.4.2
 
       - name: Reconstruir el índice
-        run: python3 scripts/apuntes-otros.py
+        run: python3 scripts/apuntes-otros.py && python3 scripts/fuentes-temas.py
 
       - name: Commit si ha cambiado algo
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add oposicion/temario/apuntes-otros.json \
+          git add oposicion/temario/apuntes-otros.json oposicion/temario/fuentes-temas.json \
                   claude/prepara-con-claude/references/apuntes-otros.md \
                   oposicion/temario/app/skill/prepara-oposicion/references/apuntes-otros.md
           if git diff --staged --quiet; then exit 0; fi
