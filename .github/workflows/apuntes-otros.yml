@@ -1,0 +1,61 @@
+name: Apuntes de otros TCEE
+
+# Cada lunes vuelve a leer el repositorio de apuntes de la ATCEE
+# (sites.google.com/view/apuntes-tcee) y su página de recursos, lista las
+# carpetas públicas de Drive y reescribe el índice (scripts/apuntes-otros.py):
+# oposicion/temario/apuntes-otros.json (lo lee oposicion/enlaces.html) y
+# references/apuntes-otros.md de la skill «Prepara con Claude» (fuente y copia
+# desplegada). Solo hace commit si cambia algo. Una carpeta privada no hace
+# fallar nada: el script la anota y sigue.
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  push:
+    paths:
+      - 'scripts/apuntes-otros.py'
+      - '.github/workflows/apuntes-otros.yml'
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: apuntes-otros
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # La punta de main de ahora, no el commit de cuando se encoló la
+          # ejecución: otras acciones hacen push entre medias.
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar gdown
+        # Versión fija: el script usa las funciones internas de gdown que leen la vista de la carpeta
+        run: pip install --quiet gdown==6.4.2
+
+      - name: Reconstruir el índice
+        run: python3 scripts/apuntes-otros.py
+
+      - name: Commit si ha cambiado algo
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add oposicion/temario/apuntes-otros.json \
+                  claude/prepara-con-claude/references/apuntes-otros.md \
+                  oposicion/temario/app/skill/prepara-oposicion/references/apuntes-otros.md
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -m "Apuntes de otros TCEE: índice actualizado [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 10
+          done
+          exit 1

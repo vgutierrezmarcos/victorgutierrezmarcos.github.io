@@ -33,6 +33,9 @@ from datetime import date
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SALIDA = os.path.join(RAIZ, 'oposicion', 'exclusivos.json')
 REVISION = os.path.join(os.path.dirname(RAIZ), 'victorgutierrezmarcos.github.io-revision', 'oposicion', 'temario', 'app', 'revisados.json')
+# Códigos que no se listan en la web (los pone y quita scripts/prepara-con-claude-visible.py); el fichero sigue
+# llevando el material, con su url, para que el botón de descarga de su página funcione
+OCULTOS = {'prepara-con-claude'}
 REVISION_RAW = 'https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/oposicion/temario/app/revisados.json'
 
 CORTE = '2026-10-01'
@@ -97,6 +100,9 @@ def main():
                                'donde': 'app', 'fecha': (s.get('generado') or '')[:10], 'version': s.get('version'), 'formatos': ['zip'],
                                'url': f"{base}/{s['ruta']}" if base else None, 'tamano': s.get('tamano'), 'temas': len(s.get('temas') or []), 'sellar': False})
     materiales.append({'tipo': 'test', 'codigo': 'explicaciones', 'titulo': 'Explicaciones de las 1004 preguntas oficiales del test («¿Por qué?»), con 232 gráficos', 'donde': 'app', 'fecha': '2026-10-24', 'formatos': ['app']})
+    for m_ in materiales:
+        if m_.get('codigo') in OCULTOS:
+            m_['oculto'] = True
     salida = {
         'generado': date.today().isoformat(),
         'corte': CORTE,

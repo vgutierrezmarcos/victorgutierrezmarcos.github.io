@@ -67,14 +67,6 @@ searchIndex.pages = [
     content: 'Estrategia, cronogramas, plantillas y recursos para organizar el estudio'
   },
   {
-    id: 'prepara-con-claude',
-    title: 'Prepara con Claude',
-    url: '/oposicion/prepara-con-claude.html',
-    description: 'Skill de Claude que corrige tus cantes y dictámenes, resuelve dudas con el temario, organiza tu cronograma y te pregunta como el tribunal',
-    keywords: ['claude', 'skill', 'inteligencia artificial', 'IA', 'corregir cante', 'corrector', 'dictamen', 'dudas', 'cronograma', 'tribunal', 'simulacro', 'test personal', 'anthropic', 'exportar datos'],
-    content: 'Qué hace cada agente, qué necesitas (cuenta de Claude.ai de pago, la app y la skill), cómo instalarla paso a paso, cómo corregir un cante y un dictamen, cómo hacer el cronograma, privacidad, licencia y preguntas frecuentes'
-  },
-  {
     id: 'enlaces',
     title: 'Enlaces',
     url: 'enlaces.html',

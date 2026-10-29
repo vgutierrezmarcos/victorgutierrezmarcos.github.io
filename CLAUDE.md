@@ -95,6 +95,14 @@ python3 scripts/esquemas-temario.py
 # (leer-proceso.yml runs it automatically; when a new convocatoria appears, add its plazas/tasas to CONVOCATORIAS in the script)
 python3 scripts/guia-convocatoria.py
 
+# Hide or show everything that leads to «Prepara con Claude» (links, novedad, sitemap, llms.txt, search index, exclusivos list, noindex),
+# reversibly: --ocultar while Víctor tests it, --mostrar the day it is launched (then push)
+python3 scripts/prepara-con-claude-visible.py --ocultar
+
+# Rebuild the index of other TCEE's notes from the ATCEE repository (apuntes-otros.json for oposicion/enlaces.html and references/apuntes-otros.md
+# of the skill, source and deployed copy); apuntes-otros.yml runs it every Monday. Needs gdown; --sin-drive skips listing the Drive folders
+python3 scripts/apuntes-otros.py
+
 # Recompute "La oposición a TCEE en cifras" (oposicion/cifras.html, cifras.json and the summary in por-que-tcee.html)
 # after each convocatoria ends. Needs the OCR venv (uv venv ~/.local/share/oposicion-web/venv-ocr && uv pip install pymupdf rapidocr-onnxruntime pypdf)
 # and the BOE announcements cache (scripts/boe-rastreo.py). Never publishes names: only counts and percentages.
