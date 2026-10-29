@@ -118,7 +118,9 @@
         var sinSesion = boton.getAttribute('data-sin-sesion') || 'Inicia sesión para descargar la skill o descárgala desde la app';
         var nota = document.createElement('p');
         nota.className = 'exclusivos-nota';
-        boton.parentNode.insertBefore(nota, boton.nextSibling);
+        // Detrás de la fila de botones (.botones) si el botón está en una; si no, justo detrás del botón.
+        var fila = boton.parentNode.classList && boton.parentNode.classList.contains('botones') ? boton.parentNode : boton;
+        fila.parentNode.insertBefore(nota, fila.nextSibling);
         function pinta(usuario) {
             if (usuario) {
                 boton.href = s.url;
