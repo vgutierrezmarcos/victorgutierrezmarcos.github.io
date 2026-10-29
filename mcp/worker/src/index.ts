@@ -14,8 +14,8 @@ import { Contenido } from './contenido';
 import { temasDePreguntas } from './datos';
 import { datosDelIdToken, renovarIdToken } from './firebase';
 import { Firestore } from './firestore';
-import { leerApuntesDrive } from './drive';
-import { type Banco, type Contexto, ErrorSesion, type IndiceFuentes, type Oposicion } from './herramientas';
+import { htmlATexto, leerApuntesDrive } from './drive';
+import { type Banco, type Contexto, ErrorSesion, type IndiceFuentes, type Oposicion, type PaqueteTextos } from './herramientas';
 import { responderMcp } from './mcp';
 import { paginaConsentimiento, paginaError, paginaPortada } from './paginas';
 
@@ -102,6 +102,13 @@ function contextoDe(env: Env, props: Props): Contexto {
     },
     banco: () => bancoDePreguntas(env),
     contenido: new Contenido(env.CONTENIDO),
+    async textos(tema: string) {
+      return (await env.CONTENIDO.get(`textos/${tema}`, 'json')) as PaqueteTextos | null;
+    },
+    async pagina(url: string) {
+      const r = await fetch(url, { cf: { cacheTtl: 86_400, cacheEverything: true } });
+      return r.ok ? htmlATexto(await r.text()) : null;
+    },
     apuntes: (id: string) => leerApuntesDrive(id, (url) => fetch(url, { cf: { cacheTtl: 86_400, cacheEverything: true } })),
     async fuentes() {
       if (fuentesEnMemoria?.url === env.URL_FUENTES) return fuentesEnMemoria.indice;

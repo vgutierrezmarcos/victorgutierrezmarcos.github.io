@@ -42,11 +42,20 @@ export interface Contexto {
   fuentes(): Promise<IndiceFuentes>;
   /** Descarga y lee unos apuntes públicos de Drive (solo los del índice de la ATCEE). */
   apuntes(id: string): Promise<Apuntes>;
+  /** Textos extraídos de un tema (PDF de la web y apuntes en PDF/.doc de la ATCEE), de mcp/extraer-textos.py. */
+  textos(tema: string): Promise<PaqueteTextos | null>;
+  /** Una página de manuelcabadogarcia.es convertida a texto. */
+  pagina(url: string): Promise<{ esquema: string[]; texto: string } | null>;
   /** Revoca las concesiones OAuth del opositor y borra su token de Firebase guardado. */
   desconectar(): Promise<void>;
 }
 
 export class ErrorSesion extends Error {}
+
+export interface PaqueteTextos {
+  web?: { url: string; texto: string };
+  atcee?: Record<string, { autor: string; fichero: string; texto: string; aviso?: string }>;
+}
 
 /** Lo que trae fuentes-temas.json (solo los campos que usan las herramientas). */
 export interface TemaFuentes {
@@ -139,7 +148,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es: el equipo de preparación de las oposiciones a TCEE y DCE (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores), con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de responder a cualquier petición sobre la oposición, llama a leer_skill() sin argumentos: devuelve las instrucciones completas (SKILL.md) y síguelas durante toda la conversación; los ficheros que citen (references/…, assets/…) se leen con leer_skill(ruta). Si la skill «prepara-oposicion» ya está instalada en la cuenta, úsala igual: es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_apuntes para valorar o comparar los apuntes de otros TCEE), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es: el equipo de preparación de las oposiciones a TCEE y DCE (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores), con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de responder a cualquier petición sobre la oposición, llama a leer_skill() sin argumentos: devuelve las instrucciones completas (SKILL.md) y síguelas durante toda la conversación; los ficheros que citen (references/…, assets/…) se leen con leer_skill(ruta). Si la skill «prepara-oposicion» ya está instalada en la cuenta, úsala igual: es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
     },
   );
 
@@ -189,54 +198,76 @@ export function crearServidor(ctx: Contexto): McpServer {
           manuales: manualesPara(indice, t),
           equivalentes: t.equivalentes_tcee?.map((c) => ({ codigo: c, titulo: indice.tcee[c]?.titulo })),
           comoRecomendar:
-            'Orden: 1) si está revisado, el tema revisado y su ficha (son la referencia de la skill); 2) si no, el PDF de la web si está disponible; 3) en teoría económica, el tema de Manuel; 4) los apuntes de la ATCEE de numeración actual y promoción más reciente (LXXV, LXXIV), y después los demás; 5) los manuales del bloque para profundizar. Di por qué recomiendas cada uno (actualidad, enfoque, extensión si la sabes) y que contraste con su preparador. Para valorar unos apuntes (calidad, actualidad, enfoque, si cubren el título oficial) léelos con leer_apuntes; no reproduzcas su texto: resume, valora y cita al autor y la promoción. ' +
+            'Orden: 1) si está revisado, el tema revisado y su ficha (son la referencia de la skill); 2) si no, el PDF de la web si está disponible; 3) en teoría económica, el tema de Manuel; 4) los apuntes de la ATCEE de numeración actual y promoción más reciente (LXXV, LXXIV), y después los demás; 5) los manuales del bloque para profundizar. Di por qué recomiendas cada uno (actualidad, enfoque, extensión si la sabes) y que contraste con su preparador. Para valorar unos apuntes (calidad, actualidad, enfoque, si cubren el título oficial) léelos con leer_fuente; no reproduzcas su texto: resume, valora y cita al autor y la promoción. ' +
             indice.aviso,
         });
       }),
   );
 
   server.registerTool(
-    'leer_apuntes',
+    'leer_fuente',
     {
-      title: 'Leer unos apuntes de otro TCEE',
+      title: 'Leer una fuente de un tema',
       description:
-        'Lee un fichero del repositorio de apuntes de la ATCEE (el enlace o el id que da fuentes_tema) para valorarlo: devuelve el autor, la promoción y la numeración, el esquema (los títulos), el número de palabras y el texto por tramos (desde/limite, en caracteres). Úsala para comparar o ordenar apuntes por calidad, para ver si cubren el título oficial y lo que el tema revisado considera esencial, o para explicar el enfoque de un autor. Solo .docx y Documentos de Google; los PDF y .doc se recomiendan con su enlace. No reproduzcas los apuntes: resume, valora y cita al autor.',
+        'Lee cualquier fuente de las que da fuentes_tema para valorarla, compararla o explicar su enfoque: los apuntes de otros TCEE del repositorio de la ATCEE (enlace de Drive: Word, Documento de Google, PDF, .doc antiguo o presentación), el PDF de un tema de victorgutierrezmarcos.es o la página de un tema de manuelcabadogarcia.es. Devuelve autor, promoción y numeración (si es de la ATCEE), el esquema (los títulos), el número de palabras y el texto por tramos (desde/limite, en caracteres). Úsala para ordenar apuntes por calidad, ver si cubren el título oficial, comparar autores o preparar una explicación. No reproduzcas su texto: resume, valora y cita al autor.',
       inputSchema: {
-        enlace: z.string().describe('Enlace de Drive del fichero (https://drive.google.com/file/d/…/view) o su id, tal como lo da fuentes_tema.'),
+        enlace: z.string().describe('El enlace tal como lo da fuentes_tema: Drive (https://drive.google.com/file/d/…/view), el PDF de la web (https://www.victorgutierrezmarcos.es/oposicion/temario/…pdf) o la página de Manuel (https://manuelcabadogarcia.es/…html).'),
         desde: z.number().int().min(0).default(0).describe('Carácter desde el que se devuelve el texto (para seguir leyendo).'),
-        limite: z.number().int().min(1000).max(40000).default(15000).describe('Caracteres de texto que se devuelven (por defecto 15.000; para comparar varios, con el esquema y 4.000 suele bastar).'),
+        limite: z.number().int().min(1000).max(40000).default(15000).describe('Caracteres de texto que se devuelven (por defecto 15.000; para comparar varios, el esquema y 4.000 suelen bastar).'),
       },
     },
     async ({ enlace, desde, limite }) =>
       protegido(async () => {
-        const id = idDeDrive(enlace);
-        if (!id) return error(`«${enlace}» no es un enlace de Drive.`);
         const indice = await ctx.fuentes();
+        const tramo = (ficha: Record<string, unknown>, formato: string, esquema: string[], texto: string, aviso: string) => {
+          if (!texto.trim()) return error(`«${ficha.fichero ?? enlace}» no tiene texto que se pueda leer (probablemente es un escaneado). Recomiéndalo con su enlace.`);
+          const fin = Math.min(texto.length, desde + limite);
+          return json({
+            ...ficha, formato, palabras: texto.split(/\s+/).filter(Boolean).length, caracteres: texto.length,
+            esquema: esquema.length ? esquema : undefined, texto: texto.slice(desde, fin), siguiente: fin < texto.length ? fin : undefined, aviso,
+          });
+        };
+        // 1. El PDF de un tema de esta web: su texto, extraído y guardado por tema
+        const web = enlace.match(/victorgutierrezmarcos\.es\/oposicion\/temario\/[^\s?#]+?\/(\d[A-Z]\d{2})\.pdf/i);
+        if (web) {
+          const cod = codigoTema(web[1])!;
+          const paquete = await ctx.textos(cod);
+          if (!paquete?.web?.texto) return error(`El texto del PDF del ${cod} no está en el conector todavía. Enlace: ${enlace}`);
+          const esquema = [...paquete.web.texto.matchAll(/^((?:[IVX]{1,5}|\d{1,2}(?:\.\d{1,2}){0,2})\.\s.{3,110})$/gm)].map((m) => m[1]).slice(0, 80);
+          return tramo({ tema: cod, tituloOficial: indice.tcee[cod]?.titulo, autor: 'Víctor Gutiérrez Marcos', fuente: 'temario de victorgutierrezmarcos.es (sin revisar: puede tener datos desfasados)', enlace }, 'pdf', esquema, paquete.web.texto,
+            'Tema del temario de la web, de Víctor Gutiérrez Marcos (licencia CC BY-NC-ND). Si el tema está revisado, manda la versión revisada (leer_tema).');
+        }
+        // 2. Una página de manuelcabadogarcia.es (con permiso de Manuel Cabado García)
+        if (/^https:\/\/(www\.)?manuelcabadogarcia\.es\/[\w\-/.]+\.html?$/i.test(enlace.trim())) {
+          const pagina = await ctx.pagina(enlace.trim());
+          if (!pagina) return error(`No se ha podido leer ${enlace}.`);
+          let tema: string | undefined;
+          for (const [cod, t] of Object.entries(indice.dce)) if (t.manuel === enlace.trim()) tema = cod;
+          return tramo({ temaDce: tema, tituloOficial: tema ? indice.dce[tema]?.titulo : undefined, equivalentesTcee: tema ? indice.dce[tema]?.equivalentes_tcee : undefined, autor: 'Manuel Cabado García', fuente: 'manuelcabadogarcia.es (DCE)', enlace }, 'html', pagina.esquema, pagina.texto,
+            'Tema de Manuel Cabado García (DCE): sirve para la teoría económica de TCEE, pero el título de TCEE puede pedir más. Cítalo como suyo.');
+        }
+        // 3. Unos apuntes del repositorio de la ATCEE
+        const id = idDeDrive(enlace);
+        if (!id) return error(`«${enlace}» no es una fuente que el conector sepa leer: usa los enlaces que da fuentes_tema.`);
         let ficha: Record<string, unknown> | null = null;
+        let tema = '';
         for (const [cod, t] of Object.entries(indice.tcee)) {
           const a = t.atcee?.find((x) => x.url.includes(id));
           if (a) {
+            tema = cod;
             ficha = { tema: cod, tituloOficial: t.titulo, autor: a.autor, promocion: a.promocion, anio: a.anio, numeracion: a.numeracion, fichero: a.fichero, enlace: a.url };
             break;
           }
         }
         if (!ficha) return error('Ese fichero no está en el índice de apuntes de la ATCEE: el conector solo lee los apuntes de ese repositorio (búscalos con fuentes_tema).');
+        const aviso = `Apuntes de ${ficha.autor} (${ficha.promocion}), del repositorio de la ATCEE: son de su autor y no son condición necesaria ni suficiente para aprobar. Léelos para valorarlos y explicarlos; no copies su texto. ${ficha.numeracion === 'antigua' ? 'Numeración antigua: comprueba por el contenido que es este tema.' : ''}`.trim();
+        const guardado = (await ctx.textos(tema))?.atcee?.[id];
+        if (guardado) return tramo(ficha, String(ficha.fichero).split('.').pop() ?? 'texto', [], guardado.texto, aviso);
         try {
           const ap = await ctx.apuntes(id);
-          const palabras = ap.texto.split(/\s+/).filter(Boolean).length;
-          const fin = Math.min(ap.texto.length, desde + limite);
-          return json({
-            ...ficha,
-            formato: ap.formato,
-            palabras,
-            caracteres: ap.texto.length,
-            esquema: ap.esquema.length ? ap.esquema : undefined,
-            texto: ap.texto.slice(desde, fin),
-            siguiente: fin < ap.texto.length ? fin : undefined,
-            aviso: `Apuntes de ${ficha.autor} (${ficha.promocion}), del repositorio de la ATCEE: son de su autor y no son condición necesaria ni suficiente para aprobar. Léelos para valorarlos y explicarlos; no copies su texto. ${ficha.numeracion === 'antigua' ? 'Numeración antigua: comprueba por el contenido que es este tema.' : ''}`.trim(),
-          });
+          return tramo(ficha, ap.formato, ap.esquema, ap.texto, aviso);
         } catch (e) {
-          if (e instanceof ErrorApuntes) return error(`No se puede leer «${ficha.fichero}»: ${e.message}. Enlace: ${ficha.enlace}`);
+          if (e instanceof ErrorApuntes) return error(`No se puede leer «${ficha.fichero}» todavía: ${e.message}. Enlace: ${ficha.enlace}`);
           throw e;
         }
       }),

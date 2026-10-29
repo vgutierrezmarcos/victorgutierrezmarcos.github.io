@@ -589,7 +589,7 @@ def escribir_md(datos, temas):
     L.append('')
     L.append('## Cómo usar este índice')
     L.append('')
-    L.append('- **Son materiales de otros autores: no copies ni reproduzcas su texto**, ni lo presentes como si fuera del temario. Puedes leerlos para valorarlos, compararlos y explicar su enfoque (con el conector, la herramienta `leer_apuntes`; sin él, si el opositor te los pasa o puedes abrir el enlace): resume con tus palabras y cita siempre al autor y la promoción.')
+    L.append('- **Son materiales de otros autores: no copies ni reproduzcas su texto**, ni lo presentes como si fuera del temario. Puedes leerlos para valorarlos, compararlos y explicar su enfoque (con el conector, la herramienta `leer_fuente`; sin él, si el opositor te los pasa o puedes abrir el enlace): resume con tus palabras y cita siempre al autor y la promoción.')
     L.append('- Sirve para **decirle al opositor qué apuntes existen para el tema que prepara**, de quién son y de qué promoción, con el enlace directo, '
              'para que los contraste él. Cuando un tema no está revisado en `references/temas/`, es la mejor pista de dónde mirar.')
     L.append(f'- **Numeración antigua.** Los apuntes anteriores a la promoción LXXIII ({PRIMERA_PROMOCION_NUEVA}) siguen el temario anterior: el número del fichero puede no '

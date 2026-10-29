@@ -1,6 +1,6 @@
 // Lectura de .docx sin dependencias: un ZIP «stored» hecho a mano con word/document.xml.
 import { describe, expect, it } from 'vitest';
-import { ficheroDeZip, idDeDrive, leerApuntesDrive, textoDeDocx } from '../src/drive';
+import { ficheroDeZip, htmlATexto, idDeDrive, leerApuntesDrive, textoDeDocx } from '../src/drive';
 
 function zipStored(nombre: string, contenido: string): Uint8Array {
   const n = new TextEncoder().encode(nombre);
@@ -38,5 +38,10 @@ describe('apuntes de Drive', () => {
     const docx = await leerApuntesDrive('x', async () => new Response(zip));
     expect(docx.formato).toBe('docx');
     await expect(leerApuntesDrive('x', async () => new Response('%PDF-1.4'))).rejects.toThrow('PDF');
+  });
+  it('convierte una página a texto con su esquema', () => {
+    const r = htmlATexto('<html><body><nav>menú</nav><main><h1>Tema A3</h1><p>Uno &amp; dos</p><script>x</script><h2>I. Preferencias</h2><p>Texto</p></main></body></html>');
+    expect(r.esquema).toEqual(['Tema A3', '  I. Preferencias']);
+    expect(r.texto).toBe('Tema A3\nUno & dos\nI. Preferencias\nTexto');
   });
 });

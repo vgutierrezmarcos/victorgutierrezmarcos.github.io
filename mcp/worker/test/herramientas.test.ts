@@ -98,11 +98,13 @@ describe('herramientas', () => {
         tcee: {
           '3.A.8': { oposicion: 'tcee', titulo: 'Teoría de la demanda del consumidor (I)', ejercicio: 3, parte: 'A', bloque: 'Modelo neoclásico básico', categoria: 'Microeconomía', revisado: true, manuel: [], atcee: [] },
           '3.B.26': { oposicion: 'tcee', titulo: 'Crisis financieras y pánicos bancarios', ejercicio: 3, parte: 'B', bloque: 'Economía Corporativa y Financiera', categoria: 'Microeconomía', revisado: false,
-            web: { pdf: null, disponible: false }, manuel: [], atcee: [{ autor: 'Tebar', promocion: 'LXXV', anio: 2026, numeracion: 'actual', fichero: 'B.26.docx', url: 'https://drive.google.com/file/d/1AAAAAAAAAAAAAAAAAAAAAAAA/view' }, { autor: 'Fuentes', promocion: 'LXXI', anio: 2022, numeracion: 'antigua', fichero: '26B.docx', url: 'v' }] },
+            web: { pdf: null, disponible: false }, manuel: [], atcee: [{ autor: 'Tebar', promocion: 'LXXV', anio: 2026, numeracion: 'actual', fichero: 'B.26.docx', url: 'https://drive.google.com/file/d/1AAAAAAAAAAAAAAAAAAAAAAAA/view' }, { autor: 'Fuentes', promocion: 'LXXI', anio: 2022, numeracion: 'antigua', fichero: '26B.docx', url: 'https://drive.google.com/file/d/1BBBBBBBBBBBBBBBBBBBBBBBB/view' }] },
         },
         dce: {},
       }),
       apuntes: async (id) => ({ formato: 'docx', esquema: ['I. Introducción'], texto: id === '1AAAAAAAAAAAAAAAAAAAAAAAA' ? 'uno dos tres cuatro' : '' }),
+      textos: async (tema) => (tema === '3.B.26' ? { web: { url: 'w', texto: 'I. Introducción a las crisis\nTexto del tema' }, atcee: { '1BBBBBBBBBBBBBBBBBBBBBBBB': { autor: 'Fuentes', fichero: '26B.pdf', texto: 'apuntes en pdf' } } } : null),
+      pagina: async () => ({ esquema: ['Tema 3'], texto: 'Texto de Manuel' }),
       skill: async (ruta) => ({ 'SKILL.md': '# Prepara con Claude', 'references/agentes/dudas.md': '# Dudas', 'references/temas/3A08/ficha.md': '# Ficha' } as Record<string, string>)[ruta] ?? null,
       desconectar: async () => {
         desconectado = true;
@@ -113,7 +115,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'fuentes_tema', 'buscar_temario', 'leer_apuntes', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
+    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -140,10 +142,16 @@ describe('herramientas', () => {
     expect((f.manuales as Obj[]).map((m) => m.bloque)).toEqual(['Microeconomía y organización industrial']);
     const b = json(await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'teoría microeconómica' } }));
     expect((b.bloques as Obj[])[0].bloque).toBe('Modelo neoclásico básico');
-    const a = json(await c.callTool({ name: 'leer_apuntes', arguments: { enlace: 'https://drive.google.com/file/d/1AAAAAAAAAAAAAAAAAAAAAAAA/view', limite: 1000 } }));
+    const a = json(await c.callTool({ name: 'leer_fuente', arguments: { enlace: 'https://drive.google.com/file/d/1AAAAAAAAAAAAAAAAAAAAAAAA/view', limite: 1000 } }));
     expect(a.autor).toBe('Tebar');
     expect(a.palabras).toBe(4);
-    const ajeno = await c.callTool({ name: 'leer_apuntes', arguments: { enlace: '1ZZZZZZZZZZZZZZZZZZZZZZZZ' } });
+    const pdf = json(await c.callTool({ name: 'leer_fuente', arguments: { enlace: 'https://drive.google.com/file/d/1BBBBBBBBBBBBBBBBBBBBBBBB/view' } }));
+    expect(pdf.texto).toBe('apuntes en pdf');
+    const web = json(await c.callTool({ name: 'leer_fuente', arguments: { enlace: 'https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3B26.pdf' } }));
+    expect(web.esquema).toEqual(['I. Introducción a las crisis']);
+    const manuel = json(await c.callTool({ name: 'leer_fuente', arguments: { enlace: 'https://manuelcabadogarcia.es/microeconomia/03-tema-a3.html' } }));
+    expect(manuel.autor).toBe('Manuel Cabado García');
+    const ajeno = await c.callTool({ name: 'leer_fuente', arguments: { enlace: '1ZZZZZZZZZZZZZZZZZZZZZZZZ' } });
     expect(ajeno.isError).toBe(true);
     const nada = await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'astronomía' } });
     expect(nada.isError).toBe(true);
