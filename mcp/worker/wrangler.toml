@@ -17,7 +17,7 @@ FIREBASE_API_KEY = "AIzaSyCcNHY3IkriyV1lUejtL3qDn8luklhRo3o"
 FIREBASE_PROJECT = "web-vgm"
 # URL pública del Worker (sin barra final). Es el «issuer» OAuth y la base del recurso MCP (URL_WORKER/mcp):
 # cambiarla cuando se despliegue con dominio propio (p. ej. https://mcp.victorgutierrezmarcos.es).
-URL_WORKER = "https://prepara-con-claude.vgutierrezmarcos.workers.dev"
+URL_WORKER = "https://prepara-con-claude.victorgutierrezmarcos.workers.dev"
 # Página de la web que hace el login con Google y devuelve los tokens al Worker.
 URL_LOGIN = "https://www.victorgutierrezmarcos.es/mcp/login.html"
 # Banco de preguntas del test (para el acierto por tema) y manifiesto de temas revisados.
@@ -33,14 +33,14 @@ ORIGENES_LOGIN = "https://www.victorgutierrezmarcos.es,https://victorgutierrezma
 [[kv_namespaces]]
 # Clientes, concesiones y tokens OAuth (los maneja @cloudflare/workers-oauth-provider).
 binding = "OAUTH_KV"
-id = "PONER_ID_OAUTH_KV"
+id = "f7bdb424ec584f8d91d088c0b5a037f1"
 
 [[kv_namespaces]]
 # Sesiones de login pendientes (10 min) y caché del ID token de Firebase (50 min), cifrados.
 binding = "SESIONES"
-id = "PONER_ID_SESIONES"
+id = "f316fc4ba43b40d89adb0d8c4a5f87b4"
 
 [[kv_namespaces]]
 # Contenido exclusivo (.md de temas, fichas, dictamen y canon), subido con ../publicar-contenido.py.
 binding = "CONTENIDO"
-id = "PONER_ID_CONTENIDO"
+id = "a3a18010289248f3b00115571ad287c2"
