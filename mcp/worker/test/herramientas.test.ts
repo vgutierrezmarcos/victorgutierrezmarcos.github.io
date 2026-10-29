@@ -91,6 +91,7 @@ describe('herramientas', () => {
       almacen: async (op) => (op === 'dce' ? dbDce : db),
       banco: async () => banco,
       contenido: new Contenido({ get: async (k) => kv.get(k) ?? null }),
+      skill: async (ruta) => ({ 'SKILL.md': '# Prepara con Claude', 'references/agentes/dudas.md': '# Dudas', 'references/temas/3A08/ficha.md': '# Ficha' } as Record<string, string>)[ruta] ?? null,
       desconectar: async () => {
         desconectado = true;
       },
@@ -100,7 +101,23 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
+    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
+  });
+
+  it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
+    const c = await cliente(ctx);
+    const texto = (r: unknown) => ((r as { content: Array<{ text: string }> }).content[0].text);
+    const s = texto(await c.callTool({ name: 'leer_skill', arguments: {} }));
+    expect(s).toContain('# Prepara con Claude');
+    expect(s).toContain('leer_skill(ruta)');
+    expect(texto(await c.callTool({ name: 'leer_skill', arguments: { ruta: './references/agentes/dudas.md' } }))).toBe('# Dudas');
+    expect(texto(await c.callTool({ name: 'leer_skill', arguments: { ruta: 'references/temas/3A08/ficha.md' } }))).toContain('Material exclusivo');
+    const malo = await c.callTool({ name: 'leer_skill', arguments: { ruta: '../../index.html' } });
+    expect(malo.isError).toBe(true);
+    const falta = await c.callTool({ name: 'leer_skill', arguments: { ruta: 'references/no-existe.md' } });
+    expect(falta.isError).toBe(true);
+    const info = c.getInstructions();
+    expect(info).toContain('leer_skill()');
   });
 
   it('leer_progreso devuelve el formato de la skill y respeta la oposición', async () => {

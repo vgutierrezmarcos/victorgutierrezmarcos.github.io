@@ -12,5 +12,5 @@ export default defineConfig({
     }),
   ],
   // En serie: en /mnt/c (disco de Windows desde WSL) los seis ficheros en paralelo agotan el tiempo de arranque de workerd.
-  test: { include: ['test/**/*.test.ts'], fileParallelism: false },
+  test: { include: ['test/**/*.test.ts'], fileParallelism: false, testTimeout: 30_000 },
 });

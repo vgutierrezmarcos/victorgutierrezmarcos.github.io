@@ -6,6 +6,10 @@ Si el opositor tiene conectado el conector oficial de la web (un servidor MCP re
 - Si no hay herramientas del conector en la conversación, sigue como siempre con los ficheros exportados. No menciones el conector salvo que el opositor pregunte cómo ahorrarse la exportación: entonces, `oposicion/prepara-con-claude.html` explica cómo añadirlo.
 - Las herramientas son del opositor conectado y solo de él. Nunca busques datos de otra persona ni le pidas a un preparador que las use para sus alumnos: no funcionarían (las reglas de Firestore solo dejan al dueño) y no es el uso autorizado.
 
+## La skill viene en el conector
+
+El conector lleva la skill dentro: `leer_skill()` devuelve `SKILL.md` y `leer_skill(ruta)` cualquier fichero que cite (`references/…`, `assets/…`, `scripts/…`), siempre en su última versión. Así, quien solo ha añadido el conector tiene el equipo completo sin subir ningún ZIP. Si además tiene la skill instalada, es la misma: usa cualquiera de las dos. Los scripts (`informe-pdf.py`, `grafico.py`) y la plantilla LaTeX se leen con `leer_skill` y se guardan en el entorno de código antes de ejecutarlos; las fuentes OTF no son texto: si hacen falta para el PDF y no se pueden bajar de la web, usa las del sistema (Pagella y Latin Modern suelen estar) o entrega el Markdown.
+
 ## Qué devuelve cada una
 
 | Herramienta | Cuándo | Qué trae |

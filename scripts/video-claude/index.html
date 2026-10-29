@@ -743,7 +743,8 @@
       aparece("#cierre-n2", Z + 2.8);
       aparece("#cierre-n3", Z + 3.6);
 
-      (window.__timelines = window.__timelines || {})["main"] = tl; // fuera de HyperFrames (vista previa), la tabla no existe
+      window.__timelines = window.__timelines || {}; // fuera de HyperFrames (vista previa), la tabla no existe
+      window.__timelines["main"] = tl;
     </script>
   </body>
 </html>
