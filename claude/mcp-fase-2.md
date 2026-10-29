@@ -51,11 +51,13 @@ Tres o cuatro días de trabajo: Worker con OAuth (un día), herramientas de lect
 - Skill: `claude/prepara-con-claude/references/conector.md` (usar las herramientas en vez del JSON, qué devuelve cada una, escribir solo con confirmación, skill ligera). `SKILL.md` y `skill-opositor.py --ligera` los tocan otros agentes.
 - App: tareas anotadas en `app/DCE.md`, epígrafe «Conector Claude (MCP)».
 
+**Fase 2 b (perfil preparador, pendiente de implementar en el Worker):** `leer_perfil` (papeles por oposición: hay alumnos → preparador; hay preparadores → opositor), `leer_alumnos`, `leer_cantes_alumno(alumno, n)` (los cantes del alumno enlazado que las reglas ya dejan leer al preparador, `esPreparadorDe`), `leer_sesiones(n)`, `guardar_nota_alumno(alumno, texto)` y `guardar_deberes(alumno, lineas)` (escriben en la ficha del alumno del preparador, como la app). Diseño en `claude/prepara-con-claude/references/perfiles.md` y `conector.md`; se hace con los tests cuando haya sitio en C: para `npm install`.
+
 **Falta (Víctor):**
 
 1. Cuenta de Cloudflare y despliegue, siguiendo `mcp/README.md`: `npm install`, `wrangler login`, crear los tres KV y poner sus id en `wrangler.toml`, `openssl rand -base64 32 | npx wrangler secret put CLAVE_CIFRADO`, `npx wrangler deploy`.
 2. Con la URL real del Worker: `URL_WORKER` en `wrangler.toml`, la constante `WORKER` en `mcp/login.html` y el enlace en `oposicion/prepara-con-claude.html`; volver a desplegar y publicar la web (login.html tiene que estar en `https://www.victorgutierrezmarcos.es/mcp/login.html`).
-3. Publicar `firestore.rules` en la consola de Firebase (bloque `informes`).
+3. ~~Publicar `firestore.rules` en la consola de Firebase (bloque `informes`).~~ Hecho por Víctor el 29 oct. 2026.
 4. `python3 scripts/skill-opositor.py && python3 mcp/publicar-contenido.py` (sube el contenido exclusivo a KV); repetirlo con cada tema aprobado.
 5. Probar con la cuenta propia: Claude.ai → Configuración → Conectores → Añadir conector personalizado → URL `https://…/mcp` → Conectar (consentimiento → Google → vuelta a Claude) → «lee mi progreso». En Claude Code: `claude mcp add --transport http prepara-con-claude https://…/mcp`.
 6. Skill ligera (`scripts/skill-opositor.py --ligera`) y que `SKILL.md` apunte a `references/conector.md` cuando haya herramientas del conector (otro agente).

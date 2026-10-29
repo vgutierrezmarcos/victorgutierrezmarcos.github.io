@@ -22,6 +22,10 @@ Si el opositor tiene conectado el conector oficial de la web (un servidor MCP re
 
 Todas aceptan `oposicion` (`tcee` por defecto, `dce` si el opositor prepara DCE: pregúntalo una vez y mantenlo en toda la conversación). Lee solo lo que necesitas: `leer_cantes` con `n` pequeño y `leer_resultados_test` con `desde` reciente bastan casi siempre.
 
+## Perfil preparador (herramientas previstas, fase 2 b)
+
+Cuando existan, `leer_perfil` (papeles por oposición: opositor, preparador o los dos), `leer_alumnos`, `leer_cantes_alumno(alumno, n)`, `leer_sesiones(n)`, `guardar_nota_alumno(alumno, texto)` y `guardar_deberes(alumno, lineas)` sirven al perfil de preparador (`perfiles.md`) con los mismos permisos que tiene en la app (solo lo que cada alumno ha decidido que vea). Si en la conversación no están, el perfil se decide como dice `perfiles.md` y los datos de cada alumno los exporta el alumno desde su app.
+
 ## Cuándo escribir en la app
 
 Dos herramientas escriben, y las dos **solo después de que el opositor haya visto el resultado entero y confirme expresamente** («sí, guárdalo en la app»). Nunca escribas «por si acaso», ni como paso intermedio, ni para corregir algo que acabas de guardar sin decírselo.

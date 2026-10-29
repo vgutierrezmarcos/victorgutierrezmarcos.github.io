@@ -71,8 +71,8 @@
     function lista(datos) {
         var cont = document.getElementById('exclusivos-lista');
         if (!cont) return;
-        var app = datos.materiales.filter(function (m) { return m.donde === 'app'; });
-        var web = datos.materiales.filter(function (m) { return m.donde === 'web'; });
+        var app = datos.materiales.filter(function (m) { return m.donde === 'app' && !m.oculto; });
+        var web = datos.materiales.filter(function (m) { return m.donde === 'web' && !m.oculto; });
         function grupo(titulo, items, nota) {
             if (!items.length) return;
             var h = document.createElement('h3');

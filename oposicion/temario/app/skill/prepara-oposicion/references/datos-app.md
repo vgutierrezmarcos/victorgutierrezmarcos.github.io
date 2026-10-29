@@ -51,7 +51,7 @@ Lo genera la app en Más → Prepara con Claude → «Exportar mis datos para Cl
 
 Claves: `esquema: true` marca un esquema a ciegas (no un cante completo); `criterios`, `cubiertos` y `apartados` solo aparecen si el opositor usa la rúbrica y la lista de control; `racha` y `deberes` solo si los tiene activados; `examen.fechas` va por número de ejercicio; `cronograma.diaCante` es 1 (lunes) a 7 (domingo); `cantes[].resultado.valoracion` y `valoraciones` van de 1 a 5 (5 = lo cantaría así en el examen; 3 = regular; 1 = mal); `tests[].tipo` es `test` (simulacro completo), `diario` (reto del día) o `repaso` (Leitner); `leitner.porCaja` cuenta preguntas por caja de repetición espaciada (la 1 son las que más falla). Todo lo que falte, pregúntalo solo si lo necesitas de verdad.
 
-Si el opositor sube en su lugar **`oposicion_<id>_datos.json`** (la exportación completa de Más → Cuenta, pensada para la portabilidad de datos), el contenido equivalente está en `resultados[]` (cada test, con `respuestas` por pregunta y `temas`), `leitner.questions` (por pregunta: `box`, `timesCorrect`, `timesFailed`), `ajustes` (`fechaConvocatoria`, `temasEstudiados`, `temasEnRepaso`), `notas` (por tema), `cantes[]` (cada uno con `resultado`), `plan` (`fechas`, `hitos`, `horario`), `agendaTemas` y `cronogramas[]` (el activo es el no `archivado` más reciente). Ignora `preparador`, `alumnos` y `sesiones`: son datos de la red de preparadores y no te hacen falta.
+Si el opositor sube en su lugar **`oposicion_<id>_datos.json`** (la exportación completa de Más → Cuenta, pensada para la portabilidad de datos), el contenido equivalente está en `resultados[]` (cada test, con `respuestas` por pregunta y `temas`), `leitner.questions` (por pregunta: `box`, `timesCorrect`, `timesFailed`), `ajustes` (`fechaConvocatoria`, `temasEstudiados`, `temasEnRepaso`), `notas` (por tema), `cantes[]` (cada uno con `resultado`), `plan` (`fechas`, `hitos`, `horario`), `agendaTemas` y `cronogramas[]` (el activo es el no `archivado` más reciente). La clave `preparador` es la parte de la red de preparadores, y es la que dice el **perfil** (`perfiles.md`): `preparador.misPreparadores[]` (sus preparadores: `nombre`, `desde`, `aceptado`) → es opositor con preparador; `preparador.alumnos[]` con alguno sin `borrado` → es preparador. Cada alumno trae `nombre`, `ejercicio` (3, 4 o 5; 0 = tercero y cuarto), `temas` (los que lleva preparados), `notas` (privadas del preparador), `clasesFijas` (día y hora que se repiten) y `uid` si ha enlazado su app; `preparador.sesiones[]` son sus clases (como los cantes: `fecha`, `temas`, `alumno`, `resultado` con valoración y comentarios, `deberes`); `preparador.perfil` lleva su `rubrica` y sus avisos. La exportación es de una oposición (`ajustes` dice cuál): quien da clase en las dos exporta desde cada una. En el perfil de opositor, ignora todo lo de `alumnos` y `sesiones`.
 
 ## 3. Fotos, PDF y textos del opositor
 
@@ -74,6 +74,20 @@ Antes del próximo cante: 1) reescribir II.2 con la ecuación de Slutsky en la p
 - **Comentarios**: hasta 300 caracteres, los que el opositor pegará en la app. Lo más importante primero.
 - **Tres tareas** concretas para antes del próximo cante.
 - **Simulacro** (`agentes/simulacro.md`): además, la primera línea del bloque es la del cante del diario: `Sorteados: 3.A.8, 3.A.11 · 3.B.4, 3.B.9 · Cantado: 3.A.8, 3.B.4 · Descartados: 3.A.11, 3.B.9` (en el JSON son `temas`, `temaCantado` y `descartados`), y, si hizo el esquema a ciegas, `Esquema a ciegas: 4/5` en una línea aparte.
+
+### 4 bis. En el perfil de preparador
+
+El bloque va a la ficha del alumno en la app del preparador (Mi preparador → alumno), no al diario del alumno, y lleva su nombre tal como él lo llama:
+
+```
+**Para la app · Ana**
+Notas del preparador: Intro bien; se pierde en Slutsky cruzado (II.2). En clase: solo II.2 en la pizarra y tres preguntas de preferencia revelada.
+Deberes para la próxima clase: 1) esquema a ciegas del 3.A.8; 2) Leitner del bloque A hasta vaciar la caja 1; 3) cantar II.2 en 4 minutos y mandarme el audio.
+Temas de la clase: 3.A.8, 3.A.11
+Criterios: Esquema 4 · Rigor 2 · Tiempo 3
+```
+
+`Criterios` solo si usa la rúbrica (`preparador.perfil.rubrica`). Nada de este bloque se escribe en nombre del alumno: la valoración del cante en el diario la pone el alumno.
 
 ## 5. Lo que devuelves: el cronograma para «Traer el tuyo»
 

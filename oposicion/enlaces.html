@@ -120,7 +120,7 @@
                 <li><a href="temario.html">Temario</a></li>
                 <li><a href="organizacion.html">Organización</a></li>
                 <li><a href="enlaces.html" class="active">Enlaces</a></li>
-                <li><a href="prepara-con-claude.html">Prepara con Claude</a></li>
+                <!-- pcc --><template data-oculto="prepara-con-claude"><li><a href="prepara-con-claude.html">Prepara con Claude</a></li></template><!-- /pcc -->
             </ul>
         </div>
     </nav>
@@ -128,6 +128,12 @@
         <div class="content-container">
             <article class="page-content">
                 <h1 class="section-title">Enlaces</h1>
+                <div class="links-section" id="apuntes-otros">
+                    <h3>Apuntes de otros TCEE</h3>
+                    <p>La <a href="https://atcee.es/la-oposicion-tcee/recursos_para_preparar_la_oposicion/" target="_blank" rel="noopener">Asociación de Técnicos Comerciales y Economistas del Estado</a> mantiene un <a href="https://sites.google.com/view/apuntes-tcee/" target="_blank" rel="noopener">repositorio de apuntes</a>, iniciado por Luis de Fuentes, con los temas que otros TCEE usaron para preparar el tercer y el cuarto ejercicio y comparten gratis una vez aprobada la oposición. Aquí va, por promoción, lo que hay en él; los apuntes anteriores a la promoción LXXIII (2024) siguen la numeración del temario anterior.<span id="apuntes-otros-fecha"></span></p>
+                    <div id="apuntes-otros-lista" aria-live="polite"></div>
+                    <p class="apuntes-aviso">Son apuntes personales de sus autores, publicados por la ATCEE, que advierte: «no son condición necesaria ni suficiente para aprobar la oposición a TCEE. Estos documentos son apuntes personales que pueden contener inexactitudes o datos desactualizados pero que, con todo, son recursos de gran utilidad para el opositor a TCEE». Esta página solo los enlaza. La ATCEE recomienda además, en esa misma página, el temario de ICEX-CECO y una lista de manuales por bloques.</p>
+                </div>
                 <div class="links-section">
                     <h3>Enlaces en español</h3>
                     <ul class="links-list">
@@ -233,6 +239,7 @@
     </div>
 </footer>
     <script src="../exclusivos.js" defer></script>
+    <script src="../apuntes-otros.js" defer></script>
     <script src="../search-engine.js"></script>
     <script src="../search-ui.js"></script>
     <script src="../cookie-consent.js"></script>
