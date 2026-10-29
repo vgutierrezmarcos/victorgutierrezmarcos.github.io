@@ -6,6 +6,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../core/constants.dart';
 import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
+import '../../data/models/coyuntura.dart';
+import 'coyuntura_page.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../widgets/comunes.dart';
@@ -73,6 +75,12 @@ class OrganizacionHubPage extends ConsumerWidget {
             titulo: 'Proceso selectivo',
             subtitulo: ultimo == null ? 'Lo que publica el Ministerio: listas, calendario, convocatorias…' : 'Lo último: ${ultimo.seccion.toLowerCase()} · ${ultimo.titulo}',
             onTap: () => context.go('/organizacion/proceso'),
+          ),
+          FilaEnlace(
+            icono: Icons.query_stats,
+            titulo: 'Cuadro de coyuntura',
+            subtitulo: resumenCoyuntura(ref.watch(coyunturaProvider).valueOrNull ?? Coyuntura.vacia),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CoyunturaPage())),
           ),
           FilaEnlace(
             icono: Icons.flag_outlined,

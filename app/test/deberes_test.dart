@@ -3,6 +3,7 @@ import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/pregunta.dart';
 import 'package:tcee_app/data/models/resultado.dart';
 import 'package:tcee_app/data/models/preparador.dart';
+import 'package:tcee_app/features/preparador/deberes.dart';
 
 /// Deberes para la próxima clase: el modelo, las etiquetas y el tachado automático.
 void main() {
@@ -51,5 +52,15 @@ void main() {
     final soloTest = conDeberes([t('d', 'test', tema: '3.B.5', preguntas: 30)]);
     expect(tacharDeberes([soloTest], estudiados: const {}, tests: [general], banco: banco, ahora: hoy).single.tareas.single.hecha, isTrue);
     expect(tacharDeberes([soloTest], estudiados: const {}, tests: [general], ahora: hoy), isEmpty, reason: 'sin banco no se sabe de qué temas era');
+  });
+
+  test('sin otra clase programada, los deberes de la última valen «para la próxima»', () {
+    final hecha = conDeberes([t('a', 'libre', texto: 'Repasa')]).copyWith(estado: EstadoCante.hecho);
+    expect(deberesParaLaProxima([hecha], clase.add(const Duration(days: 2)))?.id, 's1');
+    // En cuanto hay otra clase pendiente con preparador, ya no.
+    final otra = Cante(id: 's2', fecha: clase.add(const Duration(days: 7)), preparador: 'prep', updatedAt: ayer);
+    expect(deberesParaLaProxima([hecha, otra], clase.add(const Duration(days: 2))), isNull);
+    // Ni si son viejos.
+    expect(deberesParaLaProxima([hecha], clase.add(const Duration(days: 40))), isNull);
   });
 }

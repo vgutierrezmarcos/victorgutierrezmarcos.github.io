@@ -17,6 +17,7 @@ import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
+import 'grabaciones.dart';
 import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
 import '../preparador/sesion_page.dart' show temasDeSesion;
@@ -509,6 +510,8 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   Future<void> _alternarGrabacion() async {
     if (_grabando) {
       final ruta = await _grabadora.stop();
+      if (ruta != null) await Grabaciones.anotar(ruta, tema: _aCantar.firstOrNull?.codigo ?? _elegido?.codigo);
+      ref.read(versionGrabacionesProvider.notifier).state++;
       setState(() {
         _grabando = false;
         _ultimaGrabacion = ruta;
@@ -679,6 +682,13 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     }
     final base = cante ?? Cante(id: nuevoId(), fecha: DateTime.now(), titulo: 'Práctica', minutos: _minExposicion, exposicion: _minExposicion, ejercicio: _elegido?.ejercicio ?? _ejercicio, bolsa: TipoBolsa.lista);
     await ref.read(cantesProvider.notifier).guardar(base.copyWith(estado: EstadoCante.hecho, resultado: res));
+    // La grabación de este cante queda unida a él en el diario (solo en este móvil).
+    final grabacion = _ultimaGrabacion;
+    if (grabacion != null && !_grabando) {
+      await Grabaciones.unir(grabacion, base.id);
+      ref.read(versionGrabacionesProvider.notifier).state++;
+      _ultimaGrabacion = null;
+    }
     ref.read(canteEnCursoProvider.notifier).state = null;
     if (!mounted) return;
     setState(() {
@@ -1075,13 +1085,19 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                     TextButton.icon(
                       onPressed: () async {
                         await _reproductor.stop();
-                        borrarGrabacion(_ultimaGrabacion!);
+                        await Grabaciones.borrar(_ultimaGrabacion!);
                         setState(() { _ultimaGrabacion = null; _reproduciendo = false; });
                       },
                       icon: const Icon(Icons.delete_outline, size: 18),
                       label: const Text('Borrar grabación'),
                     ),
-                  Text(kIsWeb ? 'La grabación no sale de este navegador y se pierde al cerrar la pestaña.' : 'Las grabaciones se guardan solo en este dispositivo y no se envían a ningún sitio.', style: context.textos.labelSmall),
+                  Text(kIsWeb ? 'La grabación no sale de este navegador y se pierde al cerrar la pestaña.' : 'Las grabaciones se guardan solo en este dispositivo y no se envían a ningún sitio. Al guardar el cante en el diario, queda unida a él.', style: context.textos.labelSmall),
+                  if (!kIsWeb && Grabaciones.todas().isNotEmpty)
+                    TextButton.icon(
+                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MisGrabacionesPage())),
+                      icon: const Icon(Icons.library_music_outlined, size: 18),
+                      label: Text('Mis grabaciones (${Grabaciones.todas().length})'),
+                    ),
                 ]),
               ),
             ],

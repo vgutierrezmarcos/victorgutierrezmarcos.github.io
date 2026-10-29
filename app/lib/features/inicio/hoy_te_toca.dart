@@ -98,11 +98,12 @@ class TarjetaHoyTeToca extends ConsumerWidget {
     }
 
     // Deberes de la próxima clase con preparador que aún tiene alguno sin hacer.
-    final conDeberes = opositor ? ref.watch(proximosCantesProvider).where((c) => c.dePreparador && c.tareas.any((t) => !t.hecha)).firstOrNull : null;
+    // Si no hay próxima clase programada, los que dejó en la última «para la próxima».
+    final conDeberes = opositor ? (ref.watch(proximosCantesProvider).where((c) => c.dePreparador && c.tareas.any((t) => !t.hecha)).firstOrNull ?? deberesParaLaProxima(ref.watch(cantesProvider), ahora)) : null;
     if (conDeberes != null) {
       lineas.add(_Linea(
         Icons.checklist,
-        'Deberes para la clase de ${cuentaAtras(conDeberes.fecha, ahora)}: ${resumenDeberes(conDeberes)}',
+        conDeberes.pendiente ? 'Deberes para la clase de ${cuentaAtras(conDeberes.fecha, ahora)}: ${resumenDeberes(conDeberes)}' : 'Deberes para la próxima clase: ${resumenDeberes(conDeberes)}',
         () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: conDeberes.id))),
         detalle: conDeberes.tareas.where((t) => !t.hecha).take(2).map((t) => t.etiqueta(tituloDe: (c) => '')).join(' · '),
       ));

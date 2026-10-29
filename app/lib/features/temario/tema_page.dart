@@ -24,6 +24,7 @@ import '../cantar/pizarra_compartida.dart';
 import '../preparador/materiales_widgets.dart';
 import 'agenda_tema_page.dart';
 import 'anotaciones.dart';
+import 'autoevaluacion_page.dart';
 import 'esquema_tema.dart';
 import '../cantar/esquema_ciegas_page.dart';
 import 'html_revisado.dart';
@@ -40,8 +41,10 @@ import 'visor_tema.dart';
 /// con anotaciones propias, HTML, ficha de repaso y Word) y la anterior queda
 /// a un toque; sin sesión, la anterior con la invitación a entrar.
 class TemaPage extends ConsumerStatefulWidget {
-  const TemaPage({super.key, required this.tema, this.esRecurso = false, this.nombreDescarga, this.reemplazaDescarga});
+  const TemaPage({super.key, required this.tema, this.esRecurso = false, this.nombreDescarga, this.reemplazaDescarga, this.paginaInicial});
   final Tema tema;
+  /// Página del PDF en la que abrir (el buscador de epígrafes).
+  final int? paginaInicial;
   final bool esRecurso;
   /// Nombre del fichero descargado (y prefijo de sus versiones viejas), si no
   /// vale el de la URL: la ficha de repaso revisada.
@@ -62,6 +65,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
   Object? _error;
   int _pagina = 1, _paginas = 0;
   final _visor = ControladorVisor();
+  bool _paginaInicialHecha = false;
   bool _anotando = false;
 
   /// Lo que hay cargado (o cargándose) en el visor: URL|nombre.
@@ -364,6 +368,13 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               ),
               onPressed: _abrirAgenda,
             ),
+          // Autoevaluación del tema revisado (preguntas cortas con Leitner).
+          if (!widget.esRecurso && !_anotando && ref.watch(indiceAutoevaluacionProvider).valueOrNull?.archivoDe(widget.tema.codigo) != null)
+            IconButton(
+              tooltip: 'Autoevalúate: preguntas cortas del tema',
+              icon: const Icon(Icons.quiz_outlined),
+              onPressed: () => abrirAutoevaluacion(context, widget.tema.codigo, widget.tema.titulo),
+            ),
           if (rv?.html != null && !_anotando)
             IconButton(
               tooltip: verHtml ? 'Leer en PDF' : 'Leer como página web',
@@ -506,7 +517,14 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                         miUid: ref.read(usuarioActualProvider)?.uid ?? '',
                         controlador: _visor,
                         anotando: _anotando,
-                        alCargar: (n) => setState(() => _paginas = n),
+                        alCargar: (n) {
+                          setState(() => _paginas = n);
+                          final ir = widget.paginaInicial;
+                          if (ir != null && ir > 1 && ir <= n && !_paginaInicialHecha) {
+                            _paginaInicialHecha = true;
+                            WidgetsBinding.instance.addPostFrameCallback((_) => _visor.irAPagina(ir));
+                          }
+                        },
                         alCambiarPagina: (p) => setState(() => _pagina = p),
                         alAcabar: () => setState(() => _anotando = false),
                       ),

@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.19",
+ "archivo": "3A19",
+ "preguntas": [
+  {
+   "id": "3A19-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué es la interdependencia estratégica y en qué se diferencian la colusión tácita y el cártel?",
+   "respuesta": "El beneficio de cada empresa depende de las decisiones de todas, y cada una lo sabe y lo tiene en cuenta, lo que lleva a la teoría de juegos. La colusión tácita es un resultado cooperativo (cercano al de monopolio) alcanzado en un juego no cooperativo; el cártel es el caso cooperativo, con acuerdos explícitos."
+  },
+  {
+   "id": "3A19-02",
+   "tipo": "definicion",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (caracterización)",
+   "pregunta": "¿Qué son los sustitutos estratégicos y los complementos estratégicos (Bulow, Geanakoplos y Klemperer, 1985)?",
+   "respuesta": "Hay sustitutos estratégicos si $\\frac{\\partial^2B_i}{\\partial x_i\\partial x_j}<0$: la función de reacción es decreciente, como con cantidades (Cournot). Hay complementos estratégicos si es positiva: la reacción es creciente, como con precios (Bertrand)."
+  },
+  {
+   "id": "3A19-03",
+   "tipo": "formula",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Cournot)",
+   "pregunta": "Escriba la condición de primer orden de una empresa en el modelo de Cournot y el índice de Lerner que de ella se deduce.",
+   "respuesta": "$p(Q)+p'(Q)\\,q_i=\\mathrm{CMg}_i(q_i)$: el ingreso marginal solo recoge la bajada de precio sobre las unidades propias. De ahí $\\mathcal{L}_i=\\frac{p-\\mathrm{CMg}_i}{p}=\\frac{s_i}{|\\varepsilon_{Q,p}|}$, con $s_i=q_i/Q$: el poder de mercado es proporcional a la cuota."
+  },
+  {
+   "id": "3A19-04",
+   "tipo": "vf",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Cournot)",
+   "pregunta": "En el modelo de Cournot, el margen de cada empresa depende de la elasticidad de la demanda a la que se enfrenta esa empresa en particular.",
+   "verdadero": false,
+   "respuesta": "Falso: en $\\mathcal{L}_i=s_i/|\\varepsilon_{Q,p}|$ aparece la elasticidad de la demanda de mercado, ponderada por la cuota de la empresa; una empresa con menor CMg tiene más cuota y más margen."
+  },
+  {
+   "id": "3A19-05",
+   "tipo": "formula",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Cournot)",
+   "pregunta": "¿Cuál es el equilibrio de Cournot con $n$ empresas iguales, demanda $p=a-bQ$ y coste marginal $c$?",
+   "respuesta": "$q^C=\\frac{a-c}{(n+1)b}$, $Q^C=\\frac{n}{n+1}\\cdot\\frac{a-c}{b}$ y $p^C=\\frac{a+nc}{n+1}$. En duopolio, $q^C=(a-c)/3b$, $p^C=(a+2c)/3$ y $B_i=(a-c)^2/9b$."
+  },
+  {
+   "id": "3A19-06",
+   "tipo": "vf",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Cournot)",
+   "pregunta": "En el equilibrio de Cournot, la media de los índices de Lerner ponderada por las cuotas es proporcional al índice de Herfindahl-Hirschman.",
+   "verdadero": true,
+   "respuesta": "Verdadero: Cowling y Waterson (1976) muestran que $\\sum_i s_i\\mathcal{L}_i=\\frac{\\mathrm{IHH}}{10.000\\,|\\varepsilon_{Q,p}|}$, con $\\mathrm{IHH}=\\sum(100s_i)^2$. Justifica el uso de la concentración en la defensa de la competencia."
+  },
+  {
+   "id": "3A19-07",
+   "tipo": "prediccion",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Cournot)",
+   "pregunta": "¿Qué ocurre con el precio y el margen del equilibrio de Cournot cuando el número de empresas tiende a infinito?",
+   "respuesta": "El precio tiende al coste marginal y el índice de Lerner, $\\mathcal{L}=1/(n|\\varepsilon|)$, tiende a cero: la «concurrencia indefinida» de Cournot. El modelo une así los dos polos: monopolio con $n=1$ y competencia perfecta con $n\\to\\infty$."
+  },
+  {
+   "id": "3A19-08",
+   "tipo": "prediccion",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Stackelberg)",
+   "pregunta": "En el duopolio de Stackelberg con demanda lineal y costes iguales, ¿cuánto producen la líder y la seguidora y cómo se compara con Cournot?",
+   "respuesta": "La líder produce $q_1^S=(a-c)/2b$, la cantidad de monopolio, y la seguidora la mitad, $(a-c)/4b$; el precio es $(a+3c)/4$. La líder gana $(a-c)^2/8b$ y la seguidora $(a-c)^2/16b$, frente a $(a-c)^2/9b$ en Cournot; la producción total, $3(a-c)/4b$, es mayor: más competitivo."
+  },
+  {
+   "id": "3A19-09",
+   "tipo": "vf",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Stackelberg)",
+   "pregunta": "La ventaja de la empresa líder en el modelo de Stackelberg procede de que tiene más información que la seguidora.",
+   "verdadero": false,
+   "respuesta": "Falso: es una ventaja de compromiso, no de información. La líder elige una cantidad irreversible que la seguidora observa; la amenaza de esta de producir $q^C$ no es creíble. Con complementos estratégicos, la ventaja es del segundo (Gal-Or, 1985)."
+  },
+  {
+   "id": "3A19-10",
+   "tipo": "definicion",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Bertrand)",
+   "pregunta": "¿Qué es la paradoja de Bertrand y en qué supuestos descansa?",
+   "respuesta": "Con dos empresas que compiten en precios, el único equilibrio de Nash es $p=c$ y beneficio nulo, como con infinitas empresas, lo que contradice los datos. Descansa en cinco supuestos: costes marginales iguales, producto homogéneo, sin límite de capacidad, juego estático y sin cooperación."
+  },
+  {
+   "id": "3A19-11",
+   "tipo": "definicion",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Bertrand)",
+   "pregunta": "¿Qué son los ciclos de Edgeworth?",
+   "respuesta": "Con capacidad limitada ($k<x(c)\\leq2k$) y racionamiento eficiente, $p=c$ deja de ser equilibrio: la empresa más cara atiende la demanda residual $x(p)-k$ y le conviene subir a $\\overline{p}$. Siguen rebajas sucesivas hasta $\\underline{p}$ y vuelta a $\\overline{p}$, sin equilibrio en estrategias puras (Edgeworth, 1897); ejemplo: la gasolina en Perth."
+  },
+  {
+   "id": "3A19-12",
+   "tipo": "vf",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (Bertrand)",
+   "pregunta": "Si las empresas eligen primero su capacidad y después compiten en precios con racionamiento eficiente, el resultado coincide con el de Cournot.",
+   "verdadero": true,
+   "respuesta": "Verdadero: es el resultado de Kreps y Scheinkman (1983): elegir capacidad es elegir cantidad. Con racionamiento proporcional la competencia es más dura (Davidson y Deneckere, 1986). Cournot describe mercados de capacidad fija y Bertrand, de capacidad sobrante o por encargo."
+  },
+  {
+   "id": "3A19-13",
+   "tipo": "formula",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (liderazgo en precios)",
+   "pregunta": "¿De qué depende el índice de Lerner de una empresa dominante con franja competitiva (Landes y Posner, 1981)?",
+   "respuesta": "$\\mathcal{L}_L=\\frac{s_L}{|\\varepsilon_{Q,p}|+(1-s_L)\\,\\varepsilon_f}$, con $\\varepsilon_f$ la elasticidad de la oferta de la franja. El poder de la dominante depende no solo de su cuota, sino de lo que puede crecer la franja: cuanto más elástica es esta, más bajo es el precio."
+  },
+  {
+   "id": "3A19-14",
+   "tipo": "vf",
+   "apartado": "I. Soluciones no cooperativas: competencia en una sola vez (comparación)",
+   "pregunta": "Con demanda lineal y dos empresas iguales, el modelo de Stackelberg da más producción que Cournot y menos que Bertrand.",
+   "verdadero": true,
+   "respuesta": "Verdadero: en unidades de $(a-c)/b$, Bertrand produce 1, Stackelberg $3/4$, Cournot $2/3$ y el monopolio o cártel $1/2$. La pérdida de eficiencia va de 0 en Bertrand a $1/8$ de $(a-c)^2/b$ en monopolio."
+  },
+  {
+   "id": "3A19-15",
+   "tipo": "prediccion",
+   "apartado": "II. Competencia repetida: de la competencia a la colusión tácita (horizonte finito)",
+   "pregunta": "¿Qué predice el modelo de Bertrand repetido un número finito y conocido de periodos?",
+   "respuesta": "Por inducción hacia atrás, en el último periodo se juega el equilibrio de la etapa ($p=c$), y así en todos los anteriores: el único ENPS es $p=c$ siempre. La repetición finita no saca de la paradoja, salvo que el juego de etapa tenga varios equilibrios de Nash (Benoit y Krishna, 1985)."
+  },
+  {
+   "id": "3A19-16",
+   "tipo": "formula",
+   "apartado": "II. Competencia repetida: de la competencia a la colusión tácita (horizonte infinito)",
+   "pregunta": "¿Qué condición debe cumplir el factor de descuento para que la estrategia de gatillo sostenga la colusión? ¿Cuánto vale en Bertrand con $n$ empresas?",
+   "respuesta": "$\\beta\\geq\\frac{B^D-B^C}{B^D-B^N}$: lo que se gana hoy desviándose frente a lo que se pierde en cada periodo posterior. En Bertrand, $B^C=B^M/n$, $B^D\\approx B^M$ y $B^N=0$, así que $\\beta\\geq1-1/n$ ($1/2$ en duopolio); en Cournot lineal, $\\beta\\geq9/17$."
+  },
+  {
+   "id": "3A19-17",
+   "tipo": "vf",
+   "apartado": "II. Competencia repetida: de la competencia a la colusión tácita (horizonte infinito)",
+   "pregunta": "El teorema de tradición oral garantiza que, si las empresas son bastante pacientes, el resultado será la colusión al precio de monopolio.",
+   "verdadero": false,
+   "respuesta": "Falso: con $\\beta$ alto, cualquier precio entre $c$ y $p^M$ puede ser un ENPS, también $p=c$. La colusión es posible, pero no segura, y el modelo no dice qué precio se elegirá ni cómo se reparte."
+  },
+  {
+   "id": "3A19-18",
+   "tipo": "prediccion",
+   "apartado": "II. Competencia repetida: de la competencia a la colusión tácita (horizonte infinito)",
+   "pregunta": "¿Cuándo predicen guerras de precios los modelos de Green y Porter (1984) y de Rotemberg y Saloner (1986)?",
+   "respuesta": "En Green y Porter solo se observa el precio y la demanda es incierta: una caída de la demanda no se distingue de una rebaja secreta, y hay guerras de precios en equilibrio tras las caídas. En Rotemberg y Saloner la demanda fluctúa y se observa: la tentación de desviarse es mayor en los auges, de modo que los márgenes son anticíclicos."
+  },
+  {
+   "id": "3A19-19",
+   "tipo": "definicion",
+   "apartado": "II. Competencia repetida: de la competencia a la colusión tácita (horizonte infinito)",
+   "pregunta": "¿Qué factores facilitan y cuáles dificultan la colusión tácita (Ivaldi et al., 2003)?",
+   "respuesta": "La facilitan las barreras de entrada, la frecuencia de interacción, la transparencia, la demanda creciente, el contacto en varios mercados y las prácticas facilitadoras. La dificultan el número de empresas, las asimetrías, la innovación, los compradores grandes y la renegociación. La diferenciación y la capacidad excedente tienen efecto ambiguo."
+  },
+  {
+   "id": "3A19-20",
+   "tipo": "prediccion",
+   "apartado": "III. Soluciones cooperativas: el cártel y el reparto de sus ganancias (el cártel)",
+   "pregunta": "¿Por qué el acuerdo de cártel no es un equilibrio de Nash?",
+   "respuesta": "En la cuota pactada, $\\frac{\\partial B_1}{\\partial q_1}=-p'(Q)\\,q_2>0$: a cada empresa le conviene producir más, porque ya no internaliza la bajada de precio sobre las ventas de la otra. Es un dilema del prisionero; el acuerdo solo se sostiene con repetición o con un tercero que lo haga cumplir, pues el contrato es ilegal."
+  },
+  {
+   "id": "3A19-21",
+   "tipo": "definicion",
+   "apartado": "III. Soluciones cooperativas: el cártel y el reparto de sus ganancias (el cártel)",
+   "pregunta": "¿Qué es la paradoja de las fusiones (Salant, Switzer y Reynolds, 1983)?",
+   "respuesta": "Con Cournot y demanda lineal, una fusión o cártel parcial no compensa a sus miembros salvo que abarque en torno al 80 % del mercado, porque los de fuera responden produciendo más. Con tres empresas iguales, las dos que se unen ganan juntas $1/9$ de $(a-c)^2/b$, menos que por separado ($2/16$); y la que queda fuera gana $1/9$, más que cada miembro del cártel completo ($1/12$)."
+  },
+  {
+   "id": "3A19-22",
+   "tipo": "definicion",
+   "apartado": "III. Soluciones cooperativas: el cártel y el reparto de sus ganancias (reparto)",
+   "pregunta": "¿Qué son el núcleo y el valor de Shapley como reglas de reparto de las ganancias del cártel?",
+   "respuesta": "El núcleo (Gillies, 1959) es el conjunto de repartos que ninguna coalición puede mejorar por su cuenta. El valor de Shapley (1953) da a cada empresa su aportación marginal media a las coaliciones; con tres empresas iguales ($v(\\{i\\})=1$, $v(N)=4$) da $4/3$ a cada una, dentro del núcleo."
+  },
+  {
+   "id": "3A19-23",
+   "tipo": "prediccion",
+   "apartado": "III. Soluciones cooperativas: el cártel y el reparto de sus ganancias (límites de la cooperación)",
+   "pregunta": "¿Qué efecto tiene un programa de clemencia sobre la condición de estabilidad de la colusión?",
+   "respuesta": "La multa reduce el beneficio de cumplir ($B^C$) y la exención a la primera que confiesa eleva el de desviarse ($B^D$), con lo que sube el umbral $\\frac{B^D-B^C}{B^D-B^N}$ que debe superar $\\beta$. Se desata una carrera por confesar (Motta y Polo, 2003)."
+  },
+  {
+   "id": "3A19-24",
+   "tipo": "definicion",
+   "apartado": "Conclusión",
+   "pregunta": "Según la opinión que cierra el tema, ¿por qué la política de competencia no puede limitarse a contar empresas?",
+   "respuesta": "Porque no hay un modelo único de oligopolio: el resultado depende de la variable, del orden y de la repetición. La política tiene que preguntarse qué hace estable la colusión en cada mercado y diseñar instituciones, como la clemencia, que la hagan inestable."
+  }
+ ]
+}

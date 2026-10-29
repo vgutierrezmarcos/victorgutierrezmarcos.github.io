@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.14",
+ "archivo": "3A14",
+ "preguntas": [
+  {
+   "id": "3A14-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué estudia la teoría de juegos?",
+   "respuesta": "Las situaciones de interdependencia estratégica: lo que obtiene cada agente depende de sus decisiones y de las de los demás, y cada uno lo sabe. Un juego es la representación formal de esa situación."
+  },
+  {
+   "id": "3A14-02",
+   "tipo": "definicion",
+   "apartado": "I. Elementos, representación y clasificación",
+   "pregunta": "¿Qué es una estrategia y en qué se distingue de una acción?",
+   "respuesta": "Una estrategia es un plan completo de acción: dice qué hará el jugador en cada nodo en que puede mover, incluso en los que no se alcanzan. La acción es solo lo que hace en un nodo concreto."
+  },
+  {
+   "id": "3A14-03",
+   "tipo": "vf",
+   "apartado": "I. Elementos, representación y clasificación",
+   "pregunta": "Información incompleta e información imperfecta son lo mismo: en ambos casos el jugador no conoce las jugadas anteriores de los demás.",
+   "verdadero": false,
+   "respuesta": "Falso: la información perfecta o imperfecta se refiere a las jugadas; la completa o incompleta, a los pagos (el tipo). El dilema del prisionero es de información completa e imperfecta; Harsanyi convierte la incompleta en imperfecta."
+  },
+  {
+   "id": "3A14-04",
+   "tipo": "prediccion",
+   "apartado": "I. Juegos estáticos: dominancia y equilibrio de Nash",
+   "pregunta": "En la guerra de precios con pagos (Alto, Alto) $=(5,5)$, (Alto, Bajo) $=(0,6)$, (Bajo, Alto) $=(6,0)$ y (Bajo, Bajo) $=(1,1)$, ¿qué ocurre?",
+   "respuesta": "Bajar el precio es estrictamente dominante para ambos ($6>5$ y $1>0$), así que el resultado es (Bajo, Bajo) con $(1,1)$, ineficiente en el sentido de Pareto: es un dilema del prisionero (Tucker, 1950)."
+  },
+  {
+   "id": "3A14-05",
+   "tipo": "definicion",
+   "apartado": "I. Juegos estáticos: dominancia y equilibrio de Nash",
+   "pregunta": "¿Qué son los puntos focales y qué problema del equilibrio de Nash resuelven?",
+   "respuesta": "Son equilibrios que destacan por convención o por su saliencia (Schelling, 1960; el ejemplo de citarse en la Puerta del Sol). Sirven para elegir cuando hay varios equilibrios, como en los juegos de coordinación o la batalla de los sexos."
+  },
+  {
+   "id": "3A14-06",
+   "tipo": "formula",
+   "apartado": "I. Juegos estáticos: dominancia y equilibrio de Nash",
+   "pregunta": "Escribe la condición de equilibrio de Nash.",
+   "respuesta": "$u_i(s_i^*,s_{-i}^*)\\geq u_i(s_i,s_{-i}^*)$ para toda $s_i$ y todo jugador $i$, es decir, $s_i^*\\in R_i(s_{-i}^*)$: cada estrategia es mejor respuesta a las de los demás. La desigualdad es débil."
+  },
+  {
+   "id": "3A14-07",
+   "tipo": "prediccion",
+   "apartado": "I. Juegos estáticos: dominancia y equilibrio de Nash",
+   "pregunta": "En el juego de la inspección, ¿qué ocurre en el equilibrio en mixtas si vigilar se encarece?",
+   "respuesta": "No se vigila menos: el trabajador se escaquea más. En un equilibrio en mixtas cada jugador está indiferente entre las puras que mezcla, por lo que sus probabilidades dependen de los pagos del otro jugador."
+  },
+  {
+   "id": "3A14-08",
+   "tipo": "formula",
+   "apartado": "I. Juegos estáticos: dominancia y equilibrio de Nash",
+   "pregunta": "Enuncia el teorema minimax de von Neumann (1928).",
+   "respuesta": "En un juego de 2 jugadores y suma cero, $\\max_{\\pi_1}\\min_{\\pi_2}U_1(\\pi_1,\\pi_2)=\\min_{\\pi_2}\\max_{\\pi_1}U_1(\\pi_1,\\pi_2)$: ese es el valor del juego y la solución minimax coincide con el equilibrio de Nash."
+  },
+  {
+   "id": "3A14-09",
+   "tipo": "definicion",
+   "apartado": "I. Juegos dinámicos: secuenciales y repetidos",
+   "pregunta": "¿Qué es el equilibrio de Nash perfecto en subjuegos (ENPS)?",
+   "respuesta": "El refinamiento de Selten (1965): un perfil que induce un equilibrio de Nash en todo subjuego, también fuera de la senda de equilibrio (racionalidad secuencial). Con información perfecta coincide con la inducción hacia atrás."
+  },
+  {
+   "id": "3A14-10",
+   "tipo": "prediccion",
+   "apartado": "I. Juegos dinámicos: secuenciales y repetidos",
+   "pregunta": "En el juego de entrada, ¿qué ocurre si la instalada invierte antes en capacidad con un coste hundido de 2,5?",
+   "respuesta": "Si el entrante entra, acomodar le daría $-1{,}5$ y luchar $-1$, así que luchar pasa a ser creíble: el entrante no entra y la instalada gana $4-2{,}5=1{,}5>1$. Es el compromiso de Schelling (Spence, 1977; Dixit, 1980)."
+  },
+  {
+   "id": "3A14-11",
+   "tipo": "formula",
+   "apartado": "I. Juegos dinámicos: secuenciales y repetidos",
+   "pregunta": "¿Qué condición sobre el factor de descuento sostiene la cooperación con la estrategia de gatillo?",
+   "respuesta": "$\\beta\\geq\\frac{u^{D}-u^{C}}{u^{D}-u^{N}}$: la ganancia de desviarse hoy (numerador) no compensa la pérdida en cada etapa posterior (denominador). En el ejemplo, $(6-5)/(6-1)=1/5$."
+  },
+  {
+   "id": "3A14-12",
+   "tipo": "vf",
+   "apartado": "I. Juegos dinámicos: secuenciales y repetidos",
+   "pregunta": "Si el dilema del prisionero se repite un número finito y conocido de veces, la estrategia de gatillo sostiene la cooperación siempre que $\\beta$ sea alto.",
+   "verdadero": false,
+   "respuesta": "Falso: con horizonte finito y equilibrio de etapa único, por inducción hacia atrás el único ENPS es repetir el equilibrio de etapa en cada ronda (paradoja de la cadena de tiendas, Selten, 1978)."
+  },
+  {
+   "id": "3A14-13",
+   "tipo": "definicion",
+   "apartado": "I. Juegos dinámicos: secuenciales y repetidos",
+   "pregunta": "¿Qué dice el teorema de tradición oral (folk theorem)?",
+   "respuesta": "Con infinitas repeticiones, cualquier pago medio factible por encima del castigo puede sostenerse como ENPS si $\\beta$ se acerca a 1 (Friedman, 1971, con reversión al equilibrio de Nash; Fudenberg y Maskin, 1986, con el minimax). Su problema es que permite demasiados equilibrios."
+  },
+  {
+   "id": "3A14-14",
+   "tipo": "definicion",
+   "apartado": "II. Juegos bayesianos: el equilibrio bayesiano de Nash",
+   "pregunta": "¿En qué consiste el «truco» de Harsanyi (1967)?",
+   "respuesta": "La Naturaleza elige el tipo de cada jugador según una distribución a priori común y cada uno solo observa el suyo; así la información incompleta se convierte en imperfecta y la estrategia pasa a ser una regla $s_i(t_i)$."
+  },
+  {
+   "id": "3A14-15",
+   "tipo": "vf",
+   "apartado": "II. Equilibrio bayesiano perfecto y señalización",
+   "pregunta": "Del mismo modo que todo ENPS es equilibrio de Nash, todo equilibrio bayesiano perfecto es equilibrio bayesiano de Nash.",
+   "verdadero": true,
+   "respuesta": "Verdadero: cada concepto refina al anterior añadiendo exigencias (racionalidad secuencial, creencias coherentes con Bayes); lo contrario no se cumple."
+  },
+  {
+   "id": "3A14-16",
+   "tipo": "prediccion",
+   "apartado": "II. Equilibrio bayesiano perfecto y señalización",
+   "pregunta": "En el modelo de señalización de Spence como juego, ¿qué equilibrio queda tras aplicar el criterio intuitivo de Cho y Kreps (1987)?",
+   "respuesta": "Elimina los equilibrios agrupadores y deja solo el separador más barato, aquel en que el nivel de educación cumple $c_B(\\hat y^*)=w_A-w_B$: el tipo B queda justo indiferente entre imitar y no imitar."
+  },
+  {
+   "id": "3A14-17",
+   "tipo": "formula",
+   "apartado": "II. Negociación y juegos cooperativos",
+   "pregunta": "¿Qué problema resuelve la solución de negociación de Nash generalizada?",
+   "respuesta": "$\\max_{u_1,u_2}(u_1-u_1^0)^{\\gamma}(u_2-u_2^0)^{1-\\gamma}$ sujeto a $(u_1,u_2)\\in\\mathcal{U}$, con $\\gamma$ el poder de negociación; con los 4 axiomas de Nash (1950) y simetría, $\\gamma=1/2$."
+  },
+  {
+   "id": "3A14-18",
+   "tipo": "prediccion",
+   "apartado": "II. Negociación y juegos cooperativos",
+   "pregunta": "En la negociación de ofertas alternadas de Rubinstein (1982), ¿cuál es el resultado y quién se lleva más?",
+   "respuesta": "Hay un único ENPS con acuerdo inmediato: el primero en ofrecer obtiene $x^*=\\frac{1-\\beta_2}{1-\\beta_1\\beta_2}$. Gana el más paciente: el poder de negociación es la paciencia relativa."
+  },
+  {
+   "id": "3A14-19",
+   "tipo": "vf",
+   "apartado": "II. Negociación y juegos cooperativos",
+   "pregunta": "El valor de Shapley pertenece siempre al núcleo del juego.",
+   "verdadero": false,
+   "respuesta": "Falso: siempre existe y es único, pero solo está garantizado en el núcleo si el juego es convexo (Shapley, 1971). En el ejemplo de la venta de la red da algo a E y queda fuera del núcleo."
+  },
+  {
+   "id": "3A14-20",
+   "tipo": "definicion",
+   "apartado": "III. Diseño de mecanismos y principio de revelación",
+   "pregunta": "¿Qué establece el principio de revelación?",
+   "respuesta": "Que el resultado de cualquier equilibrio bayesiano de Nash de un mecanismo puede obtenerse con un mecanismo directo compatible con los incentivos en que todos dicen la verdad (Gibbard, 1973; Myerson, 1979). Basta buscar entre ellos con restricciones de participación e incentivos."
+  },
+  {
+   "id": "3A14-21",
+   "tipo": "formula",
+   "apartado": "III. Subastas",
+   "pregunta": "¿Cuál es la puja de equilibrio en una subasta de primer precio con valores privados independientes uniformes en $[0,1]$ y $n$ pujadores?",
+   "respuesta": "$b(v_i)=\\frac{n-1}{n}v_i=\\mathbb{E}[Y_1\\mid Y_1<v_i]$: cada uno puja lo que espera pagar en una de segundo precio si gana. Con más pujadores se sombrea menos la puja."
+  },
+  {
+   "id": "3A14-22",
+   "tipo": "vf",
+   "apartado": "III. Subastas",
+   "pregunta": "Con valores privados independientes y pujadores neutrales al riesgo y simétricos, la subasta de primer precio y la de segundo precio dan el mismo ingreso esperado.",
+   "verdadero": true,
+   "respuesta": "Verdadero: es el teorema de equivalencia de ingresos (Vickrey, 1961; Myerson, 1981; Riley y Samuelson, 1981); con valores uniformes, el ingreso esperado es $\\frac{n-1}{n+1}$ en ambas."
+  },
+  {
+   "id": "3A14-23",
+   "tipo": "prediccion",
+   "apartado": "III. Subastas",
+   "pregunta": "¿Qué ocurre en una subasta de valor común si los pujadores pujan su estimación?",
+   "respuesta": "Gana quien más ha sobrestimado el valor y pierde dinero: la maldición del ganador. Lo racional es pujar por debajo de la propia estimación, y más cuanto más rivales hay (Wilson, 1969, 1977)."
+  },
+  {
+   "id": "3A14-24",
+   "tipo": "vf",
+   "apartado": "III. Subastas",
+   "pregunta": "Según Klemperer (2002), en el diseño práctico de subastas importa más atraer pujadores y evitar la colusión que elegir uno u otro formato estándar.",
+   "verdadero": true,
+   "respuesta": "Verdadero: con valores privados el formato importa menos de lo que parece; las subastas del 3G de 2000 mostraron que lo decisivo es la entrada de pujadores y la ausencia de colusión."
+  }
+ ]
+}

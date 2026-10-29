@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.8",
+ "archivo": "3A08",
+ "preguntas": [
+  {
+   "id": "3A08-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué enuncian las dos leyes de Gossen?",
+   "respuesta": "La primera, la de saturación: la utilidad marginal de un bien decrece a medida que se consume más. La segunda: en el óptimo se igualan las utilidades marginales ponderadas por los precios, $U_i/p_i$ igual para todos los bienes."
+  },
+  {
+   "id": "3A08-02",
+   "tipo": "vf",
+   "apartado": "I.1. Ingredientes",
+   "pregunta": "Para que exista una función de utilidad continua que represente las preferencias hacen falta la monotonía y la convexidad.",
+   "verdadero": false,
+   "respuesta": "Falso: por el teorema de Debreu bastan los axiomas 1-4 (completitud, reflexividad, transitividad y continuidad). La monotonía y la convexidad solo dan propiedades a $U$ (creciente y cuasicóncava)."
+  },
+  {
+   "id": "3A08-03",
+   "tipo": "definicion",
+   "apartado": "I.1. Ingredientes",
+   "pregunta": "¿Qué diferencia hay entre una función de utilidad ordinal y una cardinal?",
+   "respuesta": "La ordinal solo numera los conjuntos de indiferencia y admite cualquier transformación creciente. La cardinal solo admite transformaciones afines positivas, como la utilidad esperada del tema 3.A.10."
+  },
+  {
+   "id": "3A08-04",
+   "tipo": "vf",
+   "apartado": "I.1. Ingredientes",
+   "pregunta": "Las utilidades marginales decrecientes de cada bien son necesarias para que las curvas de indiferencia sean convexas.",
+   "verdadero": false,
+   "respuesta": "Falso: la convexidad no exige utilidades marginales decrecientes ni estas la garantizan (depende de $U_{12}$). Además, la utilidad marginal decreciente no es una propiedad ordinal; lo relevante es la RMS decreciente."
+  },
+  {
+   "id": "3A08-05",
+   "tipo": "formula",
+   "apartado": "I.1. Ingredientes",
+   "pregunta": "Defina la relación marginal de sustitución y la elasticidad de sustitución.",
+   "respuesta": "$\\mathrm{RMS}_{12}\\equiv-\\left.\\frac{dx_2}{dx_1}\\right|_{\\overline{U}}=\\frac{U_1}{U_2}$: bien 2 que se cede por una unidad más del 1 sin cambiar la utilidad. $\\sigma\\equiv\\frac{d\\ln(x_2/x_1)}{d\\ln\\mathrm{RMS}_{12}}$, un número puro que mide la curvatura."
+  },
+  {
+   "id": "3A08-06",
+   "tipo": "formula",
+   "apartado": "I.1. Ingredientes",
+   "pregunta": "¿A qué funciones tiende la CES según el valor de la elasticidad de sustitución $\\sigma$?",
+   "respuesta": "Con $\\sigma\\to0$, a la de Leontief, $\\min\\{x_1/a;x_2/b\\}$ (complementarios perfectos); con $\\sigma\\to1$, a la Cobb-Douglas; con $\\sigma\\to\\infty$, a la lineal $ax_1+bx_2$ (sustitutivos perfectos)."
+  },
+  {
+   "id": "3A08-07",
+   "tipo": "formula",
+   "apartado": "I.2. Maximización de la utilidad: el equilibrio",
+   "pregunta": "¿Qué condición caracteriza una solución interior del problema de maximización de la utilidad?",
+   "respuesta": "La segunda ley de Gossen: $\\frac{U_1}{p_1}=\\dots=\\frac{U_n}{p_n}=\\lambda$, que con dos bienes equivale a la tangencia $\\mathrm{RMS}_{12}=\\frac{p_1}{p_2}$."
+  },
+  {
+   "id": "3A08-08",
+   "tipo": "prediccion",
+   "apartado": "I.2. Maximización de la utilidad: el equilibrio",
+   "pregunta": "¿Qué condición se cumple en una solución de esquina con $x_2^*=0$?",
+   "respuesta": "Por Kuhn-Tucker, $\\frac{U_1}{p_1}=\\lambda\\geq\\frac{U_2}{p_2}$, es decir, $\\mathrm{RMS}_{12}\\geq\\frac{p_1}{p_2}$: el último euro gastado en el bien 2 daría menos utilidad que en el 1."
+  },
+  {
+   "id": "3A08-09",
+   "tipo": "definicion",
+   "apartado": "I.2. Maximización de la utilidad: el equilibrio",
+   "pregunta": "¿Qué es el multiplicador $\\lambda$ del problema del consumidor y cuándo vale cero?",
+   "respuesta": "Es la utilidad marginal de la renta, el precio sombra de la restricción presupuestaria. Con insaciabilidad local, $\\lambda>0$ y se agota la renta; vale cero solo si hay saturación dentro del presupuesto."
+  },
+  {
+   "id": "3A08-10",
+   "tipo": "prediccion",
+   "apartado": "I.2. Maximización de la utilidad: el equilibrio",
+   "pregunta": "¿Qué ocurre con la solución si las preferencias no son convexas?",
+   "respuesta": "La tangencia deja de bastar (puede ser un mínimo): aparecen soluciones de esquina, soluciones múltiples y demandas que saltan. Con curvas de indiferencia cóncavas la solución es siempre de esquina."
+  },
+  {
+   "id": "3A08-11",
+   "tipo": "formula",
+   "apartado": "I.3. Solución: demanda, FIU y mercado",
+   "pregunta": "Escriba la identidad de Roy.",
+   "respuesta": "$x_i(\\mathbf{p},\\overline{W})=-\\frac{\\partial V/\\partial p_i}{\\partial V/\\partial\\overline{W}}$: la demanda marshalliana se obtiene de la función indirecta de utilidad por el teorema de la envolvente (Roy, 1947)."
+  },
+  {
+   "id": "3A08-12",
+   "tipo": "vf",
+   "apartado": "I.3. Solución: demanda, FIU y mercado",
+   "pregunta": "La función indirecta de utilidad es cuasicóncava en precios y renta.",
+   "verdadero": false,
+   "respuesta": "Falso: es cuasiconvexa. Además es homogénea de grado 0, creciente en la renta y no creciente en los precios."
+  },
+  {
+   "id": "3A08-13",
+   "tipo": "prediccion",
+   "apartado": "I.3. Solución: demanda, FIU y mercado",
+   "pregunta": "¿Cuándo depende la demanda de mercado solo de los precios y de la renta total, como la de un consumidor representativo?",
+   "respuesta": "Cuando las preferencias admiten la forma polar de Gorman, $V_h=a_h(\\mathbf{p})+b(\\mathbf{p})\\overline{W}_h$ con $b$ común: curvas de Engel rectas y paralelas, de modo que redistribuir la renta no altera la demanda agregada. Casos: homotéticas idénticas y cuasilineales."
+  },
+  {
+   "id": "3A08-14",
+   "tipo": "definicion",
+   "apartado": "I.3. Solución: demanda, FIU y mercado",
+   "pregunta": "¿Qué establece el teorema de Sonnenschein-Mantel-Debreu?",
+   "respuesta": "Que la demanda agregada solo hereda continuidad, homogeneidad y ley de Walras, pero no el axioma débil ni la simetría y negatividad de Slutsky. Por eso no garantiza ni la unicidad ni la estabilidad del equilibrio general."
+  },
+  {
+   "id": "3A08-15",
+   "tipo": "definicion",
+   "apartado": "II.1. Variaciones en la renta",
+   "pregunta": "¿Cómo se clasifican los bienes según la elasticidad-renta?",
+   "respuesta": "Inferior si $\\varepsilon_{x_i,\\overline{W}}<0$; independiente si es 0; normal necesario si está entre 0 y 1 (pierde peso en el gasto al crecer la renta); normal de lujo si es mayor que 1. La ley de Engel dice que los alimentos son necesarios."
+  },
+  {
+   "id": "3A08-16",
+   "tipo": "prediccion",
+   "apartado": "II.1. Variaciones en la renta",
+   "pregunta": "¿Qué implica la agregación de Engel sobre las elasticidades-renta de los bienes?",
+   "respuesta": "Como $\\sum_i s_i\\,\\varepsilon_{x_i,\\overline{W}}=1$, con $s_i=p_ix_i/\\overline{W}$, no pueden ser todos los bienes inferiores ni de elasticidad nula: al menos uno debe tener elasticidad-renta mayor o igual que 1."
+  },
+  {
+   "id": "3A08-17",
+   "tipo": "formula",
+   "apartado": "II.2. Variaciones en los precios",
+   "pregunta": "Escriba la ecuación de Slutsky e identifique sus componentes.",
+   "respuesta": "$\\frac{\\partial x_i(\\mathbf{p},\\overline{W})}{\\partial p_j}=\\frac{\\partial h_i(\\mathbf{p},\\overline{U})}{\\partial p_j}-x_j\\frac{\\partial x_i(\\mathbf{p},\\overline{W})}{\\partial\\overline{W}}$: efecto total = efecto sustitución (demanda hicksiana) + efecto renta, con $\\overline{U}=V(\\mathbf{p},\\overline{W})$."
+  },
+  {
+   "id": "3A08-18",
+   "tipo": "vf",
+   "apartado": "II.2. Variaciones en los precios",
+   "pregunta": "Todo bien Giffen es inferior, pero no todo bien inferior es Giffen.",
+   "verdadero": true,
+   "respuesta": "Verdadero: el efecto sustitución propio es siempre no positivo, así que solo un efecto renta positivo (bien inferior) que lo domine, porque el bien pesa mucho en el gasto, hace la demanda creciente. Un inferior con efecto sustitución dominante sigue siendo ordinario."
+  },
+  {
+   "id": "3A08-19",
+   "tipo": "vf",
+   "apartado": "II.2. Variaciones en los precios",
+   "pregunta": "Las relaciones de sustitución netas son simétricas, pero las brutas no tienen por qué serlo.",
+   "verdadero": true,
+   "respuesta": "Verdadero: el efecto sustitución cruzado es simétrico, $\\partial h_i/\\partial p_j=\\partial h_j/\\partial p_i$, mientras que las brutas incluyen el efecto renta cruzado $-x_j\\,\\partial x_i/\\partial\\overline{W}$, que en general difiere entre bienes."
+  },
+  {
+   "id": "3A08-20",
+   "tipo": "prediccion",
+   "apartado": "III.1. La teoría de la preferencia revelada",
+   "pregunta": "Según el axioma débil de la preferencia revelada, ¿qué ocurre con $x_1$ si baja $p_1$ y se compensa la renta para que pueda comprarse la cesta inicial?",
+   "respuesta": "La cantidad demandada no baja: se cumple la ley de la demanda compensada, $(\\mathbf{p}^1-\\mathbf{p}^0)\\cdot(\\mathbf{x}^1-\\mathbf{x}^0)\\leq0$, y con solo $p_1$ cambiando, $\\Delta p_1\\,\\Delta x_1\\leq0$. Se obtiene sin función de utilidad."
+  },
+  {
+   "id": "3A08-21",
+   "tipo": "definicion",
+   "apartado": "III.1. La teoría de la preferencia revelada",
+   "pregunta": "¿Qué establece el teorema de Houthakker?",
+   "respuesta": "Que el axioma fuerte de la preferencia revelada (transitividad de la preferencia revelada) equivale a que la demanda proceda de preferencias racionales. Así, preferencia revelada y teoría ordinal son equivalentes; el axioma débil solo basta con dos bienes (Rose, 1958)."
+  },
+  {
+   "id": "3A08-22",
+   "tipo": "prediccion",
+   "apartado": "III.2. La producción doméstica",
+   "pregunta": "En el modelo de producción doméstica de Becker, ¿qué ocurre cuando sube el salario?",
+   "respuesta": "Sube el precio sombra de las commodities intensivas en tiempo, $\\pi_i=p_ib_i+w\\,\\ell_i$, y el hogar sustituye tiempo por bienes (comida preparada, guarderías): explica la entrada de la mujer en el mercado de trabajo y la externalización de tareas."
+  },
+  {
+   "id": "3A08-23",
+   "tipo": "definicion",
+   "apartado": "III.3. Precios hedónicos",
+   "pregunta": "¿Qué es la función hedónica de Rosen (1974) y por qué no es una curva de demanda?",
+   "respuesta": "Es $p(\\mathbf{z})$, el precio de un bien diferenciado en función de sus características; su derivada $\\partial p/\\partial z_j$ es el precio implícito. Es la envolvente de las funciones de puja y de oferta, un lugar de equilibrios, no una demanda ni una oferta."
+  },
+  {
+   "id": "3A08-24",
+   "tipo": "vf",
+   "apartado": "Conclusión",
+   "pregunta": "Con datos agregados, la evidencia empírica ha rechazado a menudo las restricciones de homogeneidad y simetría de la teoría de la demanda.",
+   "verdadero": true,
+   "respuesta": "Verdadero: Deaton y Muellbauer (1980) las rechazan con datos agregados; la lógica de la teoría es más sólida que su evidencia, y la economía conductual la amplía más que sustituirla."
+  }
+ ]
+}

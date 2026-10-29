@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.9",
+ "archivo": "3A09",
+ "preguntas": [
+  {
+   "id": "3A09-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué se entiende por dualidad en sentido estricto y en sentido amplio?",
+   "respuesta": "En sentido estricto, intercambiar objetivo y restricción: maximizar la utilidad con una renta dada frente a minimizar el gasto con una utilidad dada. En sentido amplio, problemas con los papeles invertidos, como el de la empresa (3.A.12)."
+  },
+  {
+   "id": "3A09-02",
+   "tipo": "vf",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "La función indirecta de utilidad es cuasiconvexa aunque las preferencias no sean convexas.",
+   "verdadero": true,
+   "respuesta": "Verdadero: con el presupuesto promedio de dos presupuestos no se alcanza más utilidad que con el mejor de ellos, y el argumento no exige preferencias convexas."
+  },
+  {
+   "id": "3A09-03",
+   "tipo": "definicion",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "¿Qué es la demanda hicksiana y por qué no es observable?",
+   "respuesta": "Es la solución del problema de minimización del gasto, $\\mathbf{h}(\\mathbf{p},\\overline{U})$: la cesta más barata que alcanza un nivel de utilidad dado. No es observable porque depende de $\\overline{U}$, que no se ve."
+  },
+  {
+   "id": "3A09-04",
+   "tipo": "formula",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "Enuncie el lema de Shephard.",
+   "respuesta": "$h_i(\\mathbf{p},\\overline{U})=\\frac{\\partial E(\\mathbf{p},\\overline{U})}{\\partial p_i}$: si $p_i$ sube un euro, la cesta apenas cambia en primer orden (envolvente) y el gasto mínimo sube $h_i$ euros. Sin signo menos, a diferencia de Roy."
+  },
+  {
+   "id": "3A09-05",
+   "tipo": "vf",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "La función de gasto es homogénea de grado cero en los precios.",
+   "verdadero": false,
+   "respuesta": "Falso: la función de gasto es homogénea de grado 1 en los precios; la demanda hicksiana es la homogénea de grado 0 en precios, y $V$ y $\\mathbf{x}$, de grado 0 en $(\\mathbf{p},\\overline{W})$."
+  },
+  {
+   "id": "3A09-06",
+   "tipo": "prediccion",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "¿Qué ocurre con la demanda compensada de un bien cuando sube su precio?",
+   "respuesta": "No aumenta: $\\partial h_i/\\partial p_i\\leq0$ (ley de la demanda compensada), porque la función de gasto es cóncava en los precios y la hicksiana no tiene efecto renta. Por eso no hay bienes Giffen en la demanda hicksiana."
+  },
+  {
+   "id": "3A09-07",
+   "tipo": "formula",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "¿Qué relación hay entre el multiplicador del problema dual $\\mu^*$ y el del primal $\\lambda^*$?",
+   "respuesta": "$\\mu^*=\\partial E/\\partial\\overline{U}=1/\\lambda^*$: el coste marginal de la utilidad es la inversa de la utilidad marginal de la renta. Sale de derivar $E(\\mathbf{p},V(\\mathbf{p},\\overline{W}))=\\overline{W}$ respecto a $\\overline{W}$."
+  },
+  {
+   "id": "3A09-08",
+   "tipo": "definicion",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "¿Qué es la matriz de Slutsky y qué propiedades tiene?",
+   "respuesta": "Es la matriz de segundas derivadas de la función de gasto, $S_{ij}=\\partial^2E/\\partial p_i\\partial p_j=\\partial h_i/\\partial p_j$. Es simétrica (Young), semidefinida negativa por la concavidad de $E$ ($S_{ii}\\leq0$) y cumple $S\\mathbf{p}=\\mathbf{0}$ (Euler)."
+  },
+  {
+   "id": "3A09-09",
+   "tipo": "formula",
+   "apartado": "I.3. Relaciones de dualidad",
+   "pregunta": "Escriba las cuatro identidades de dualidad que relacionan demandas y funciones valor.",
+   "respuesta": "$\\mathbf{x}(\\mathbf{p},\\overline{W})\\equiv\\mathbf{h}(\\mathbf{p},V(\\mathbf{p},\\overline{W}))$; $\\mathbf{h}(\\mathbf{p},\\overline{U})\\equiv\\mathbf{x}(\\mathbf{p},E(\\mathbf{p},\\overline{U}))$; $E(\\mathbf{p},V(\\mathbf{p},\\overline{W}))\\equiv\\overline{W}$; $V(\\mathbf{p},E(\\mathbf{p},\\overline{U}))\\equiv\\overline{U}$. $V$ y $E$ son inversas en su segundo argumento."
+  },
+  {
+   "id": "3A09-10",
+   "tipo": "definicion",
+   "apartado": "II.1. Sistemas completos de demanda: idea",
+   "pregunta": "¿Qué requisitos debe cumplir un sistema completo de demanda?",
+   "respuesta": "Coherencia con la teoría, flexibilidad (no fijar de antemano las elasticidades), agregación (que la media tenga la forma individual) y sencillez (lineal en los parámetros). Tiran en sentidos opuestos."
+  },
+  {
+   "id": "3A09-11",
+   "tipo": "definicion",
+   "apartado": "II.2. Pasos que sigue la literatura",
+   "pregunta": "¿En qué consiste el sistema lineal de gasto de Stone-Geary?",
+   "respuesta": "Parte de $U=\\sum_i\\alpha_i\\ln(x_i-\\gamma_i)$: cada gasto es la subsistencia $p_i\\gamma_i$ más una proporción fija $\\alpha_i$ de la renta supernumeraria, $\\overline{W}-\\sum_jp_j\\gamma_j$. Da curvas de Engel rectas que no pasan por el origen; lo estimó Stone (1954) para el Reino Unido."
+  },
+  {
+   "id": "3A09-12",
+   "tipo": "vf",
+   "apartado": "II.2. Pasos que sigue la literatura",
+   "pregunta": "El sistema lineal de gasto admite bienes inferiores y complementarios netos.",
+   "verdadero": false,
+   "respuesta": "Falso: al ser aditivo y con $\\alpha_i>0$, no admite bienes inferiores ni complementarios netos, y sus elasticidades-precio quedan ligadas a las de renta."
+  },
+  {
+   "id": "3A09-13",
+   "tipo": "formula",
+   "apartado": "II.2. Pasos que sigue la literatura",
+   "pregunta": "Escriba la ecuación de participación en el gasto del AIDS y su elasticidad-renta.",
+   "respuesta": "$s_i=\\alpha_i+\\sum_j\\gamma_{ij}\\ln p_j+\\beta_i\\ln\\frac{\\overline{W}}{P}$, con $\\ln P=\\ln a(\\mathbf{p})$ (translog), y $\\varepsilon_{x_i,\\overline{W}}=1+\\frac{\\beta_i}{s_i}$. Parte de una función de gasto PIGLOG (Deaton-Muellbauer, 1980)."
+  },
+  {
+   "id": "3A09-14",
+   "tipo": "prediccion",
+   "apartado": "II.2. Pasos que sigue la literatura",
+   "pregunta": "En el AIDS, ¿qué tipo de bien es aquel con $\\beta_i>0$?",
+   "respuesta": "Un bien de lujo: su participación en el gasto crece con la renta real y su elasticidad-renta, $1+\\beta_i/s_i$, es mayor que 1. Con $\\beta_i<0$ es necesario (curva de Engel de Working-Leser)."
+  },
+  {
+   "id": "3A09-15",
+   "tipo": "definicion",
+   "apartado": "III.1. Integrabilidad de las preferencias",
+   "pregunta": "¿Qué dice el teorema de integrabilidad (Hurwicz-Uzawa, 1971)?",
+   "respuesta": "Una demanda continuamente diferenciable procede de una utilidad creciente y cuasicóncava si y solo si cumple la ley de Walras y su matriz de Slutsky es simétrica y semidefinida negativa (además de la homogeneidad)."
+  },
+  {
+   "id": "3A09-16",
+   "tipo": "vf",
+   "apartado": "III.1. Integrabilidad de las preferencias",
+   "pregunta": "Con solo dos bienes, la simetría de la matriz de Slutsky se cumple automáticamente.",
+   "verdadero": true,
+   "respuesta": "Verdadero: con dos bienes la simetría es automática, de modo que la integrabilidad solo exige la ley de Walras y la negatividad."
+  },
+  {
+   "id": "3A09-17",
+   "tipo": "prediccion",
+   "apartado": "III.2. Ecuación de Slutsky y clasificación de los bienes",
+   "pregunta": "Si dos bienes son sustitutivos netos y el bien $i$ es inferior, ¿qué relación bruta hay entre ellos?",
+   "respuesta": "Son sustitutivos brutos: $\\partial x_i/\\partial p_j=S_{ij}-x_j\\,\\partial x_i/\\partial\\overline{W}$ suma dos términos positivos. Con sustitutivos netos y $i$ normal, el signo bruto es ambiguo."
+  },
+  {
+   "id": "3A09-18",
+   "tipo": "prediccion",
+   "apartado": "III.2. Ecuación de Slutsky y clasificación de los bienes",
+   "pregunta": "Para un bien normal, ¿cómo es la pendiente de la demanda marshalliana frente a la hicksiana en el plano $(x_i,p_i)$?",
+   "respuesta": "La marshalliana es más plana (más elástica), porque al efecto sustitución se suma un efecto renta del mismo signo. Con un bien inferior es más inclinada, y sin efecto renta coinciden."
+  },
+  {
+   "id": "3A09-19",
+   "tipo": "definicion",
+   "apartado": "III.3. Bienestar del consumidor individual",
+   "pregunta": "Defina la variación compensatoria y la variación equivalente.",
+   "respuesta": "La VC es la renta que, a precios finales, devuelve al consumidor a la utilidad inicial (área bajo la hicksiana inicial). La VE es la renta que, a precios iniciales, le lleva a la utilidad final (área bajo la hicksiana final)."
+  },
+  {
+   "id": "3A09-20",
+   "tipo": "prediccion",
+   "apartado": "III.3. Bienestar del consumidor individual",
+   "pregunta": "Ante una bajada del precio de un bien normal, ¿cómo se ordenan las medidas de bienestar?",
+   "respuesta": "$L\\leq\\mathrm{VC}\\leq\\Delta\\mathrm{EC}\\leq\\mathrm{VE}\\leq P$. Con un bien inferior se invierte la ordenación; si sube el precio, se invierte en valor absoluto; y con efecto renta nulo, VC, $\\Delta$EC y VE coinciden."
+  },
+  {
+   "id": "3A09-21",
+   "tipo": "formula",
+   "apartado": "III.3. Bienestar del consumidor individual",
+   "pregunta": "Escriba la aproximación de Willig (1976) de la variación compensatoria.",
+   "respuesta": "$\\mathrm{VC}\\approx\\Delta\\mathrm{EC}-\\frac{\\varepsilon_{x_1,\\overline{W}}(\\Delta\\mathrm{EC})^2}{2\\overline{W}}$: el error relativo del excedente es del orden de $|\\varepsilon_{x_1,\\overline{W}}|\\,|\\Delta\\mathrm{EC}|/2\\overline{W}$ (con un 5 % de la renta y elasticidad 1, un 2,5 %)."
+  },
+  {
+   "id": "3A09-22",
+   "tipo": "vf",
+   "apartado": "III.3. Bienestar del consumidor individual",
+   "pregunta": "El índice de Laspeyres infravalora la subida del coste de la vida.",
+   "verdadero": false,
+   "respuesta": "Falso: la sobrestima. Fija la cesta inicial e ignora la sustitución, y por la concavidad de la función de gasto es cota superior del índice verdadero de Konüs $I_K(\\overline{U}^0)$: el sesgo de sustitución."
+  },
+  {
+   "id": "3A09-23",
+   "tipo": "vf",
+   "apartado": "III.3. Bienestar del consumidor individual",
+   "pregunta": "El deflactor del PIB, al ser un índice de tipo Paasche encadenado, tiende a infravalorar la subida de los precios.",
+   "verdadero": true,
+   "respuesta": "Verdadero: el índice de Paasche es cota inferior del índice verdadero $I_K(\\overline{U}^1)$, de modo que el deflactor infravalora, mientras que el IPC, de tipo Laspeyres, sobrevalora."
+  },
+  {
+   "id": "3A09-24",
+   "tipo": "prediccion",
+   "apartado": "Conclusión",
+   "pregunta": "Si se revalorizan las pensiones con el IPC, ¿qué le ocurre al bienestar de un pensionista?",
+   "respuesta": "Si su cesta se parece a la del IPC, la subida le sobrecompensa algo, porque Laspeyres sobrestima el coste de la vida; si su cesta es distinta, puede quedarse corta. La compensación exacta es la variación compensatoria."
+  }
+ ]
+}

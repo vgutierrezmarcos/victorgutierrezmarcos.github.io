@@ -272,6 +272,8 @@ class Oposicion {
   String get urlBloques => '$urlTest/bloques.json';
   /// Preguntas de cada tema en cada examen oficial del test (scripts/frecuencia-test.py).
   String get urlFrecuenciaTest => '$urlTest/frecuencia_temas.json';
+  /// Cuántos fallan cada pregunta (scripts/dificultad-test.py; solo TCEE).
+  String get urlDificultad => '$urlTest/dificultad.json';
   String get urlImagenesTest => '$urlTest/img';
   /// Explicaciones de las preguntas de un examen (solo las lee la app).
   String urlExplicaciones(String examen) => '$urlTest/explicaciones/$examen.json';
@@ -287,6 +289,13 @@ class Oposicion {
   /// Documentos del proceso selectivo de todas las oposiciones: un único
   /// fichero en la web de TCEE (ver scripts/leer-proceso.py).
   String get urlProceso => '${Oposiciones.tcee._base}/proceso.json';
+
+  /// Cuadro de coyuntura de España (scripts/coyuntura.py): uno para todas las oposiciones.
+  String get urlCoyuntura => '${Oposiciones.tcee._base}/coyuntura.json';
+
+  /// Autoevaluación de los temas revisados (scripts/autoevaluacion.py; solo TCEE).
+  String get urlIndiceAutoevaluacion => '$_base/temario/app/autoevaluacion/indice.json';
+  String urlAutoevaluacion(String archivo) => '$_base/temario/app/autoevaluacion/$archivo.json';
   String get urlComoCantarUnTema => comoCantarUnTema.startsWith('http') ? comoCantarUnTema : '$_base/$comoCantarUnTema';
   bool get comoCantarEsPdf => comoCantarUnTema.toLowerCase().endsWith('.pdf');
 

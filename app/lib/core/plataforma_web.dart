@@ -40,3 +40,6 @@ void borrarGrabacion(String ruta) {
   if (ruta.startsWith('blob:')) web.URL.revokeObjectURL(ruta);
 }
 
+
+/// En el navegador no hay ficheros propios: nunca existen.
+bool existeFichero(String ruta) => false;

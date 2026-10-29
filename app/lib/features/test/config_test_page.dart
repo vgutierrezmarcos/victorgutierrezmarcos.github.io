@@ -62,6 +62,8 @@ class ConfigTestPage extends ConsumerStatefulWidget {
 class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
   ConfigTest _cfg = const ConfigTest();
   String _modo = 'temas'; // temas | examenes | flojos
+  /// En «Puntos flojos»: las que más falla todo el mundo (dificultad.json) en vez de las mías.
+  bool _deTodos = false;
   /// Tiempo que tenía antes de activar el modo estudio (sin tiempo), para devolverlo.
   int _minutosAntes = DefaultsTest.minutos;
 
@@ -81,7 +83,13 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
   /// Cuántas respuestas hay en el historial para explicar la ponderación.
   int get _respuestasHistorial => (ref.watch(historialProvider).valueOrNull ?? const <ResultadoTest>[]).where((r) => r.tipo != 'repaso').fold(0, (n, r) => n + r.respuestas.length);
 
-  void _comenzar(BancoPreguntas b) => context.push('/examen', extra: _modo == 'flojos' ? _cfg.copyWith(pesos: _pesos(b)) : _cfg.copyWith(sinPesos: true));
+  void _comenzar(BancoPreguntas b) {
+    final dificultad = ref.read(dificultadProvider).valueOrNull;
+    final pesos = _modo != 'flojos'
+        ? null
+        : (_deTodos && dificultad != null && !dificultad.vacio ? dificultad.pesos(MotorTest.filtrar(b, _cfg).map((p) => p.id)) : _pesos(b));
+    context.push('/examen', extra: pesos == null ? _cfg.copyWith(sinPesos: true) : _cfg.copyWith(pesos: pesos));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -200,6 +208,25 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
                     Expanded(child: Text('Mis puntos flojos', style: context.textos.titleMedium)),
                   ]),
                   const SizedBox(height: 6),
+                  if (ref.watch(dificultadProvider).valueOrNull case final d? when !d.vacio) ...[
+                    SizedBox(
+                      width: double.infinity,
+                      child: SegmentedButton<bool>(
+                        showSelectedIcon: false,
+                        segments: const [
+                          ButtonSegment(value: false, label: Text('Los míos')),
+                          ButtonSegment(value: true, label: Text('Los de todos')),
+                        ],
+                        selected: {_deTodos},
+                        onSelectionChanged: (s) => setState(() => _deTodos = s.first),
+                        style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                  ],
+                  if (_deTodos)
+                    Text('Salen con más probabilidad las preguntas que más falla todo el mundo, según los tests de todos los usuarios de la app y del simulador (solo recuentos por pregunta, de nadie en concreto). Las que aún se han hecho poco salen menos.', style: context.textos.bodySmall)
+                  else
                   Text(
                     _respuestasHistorial >= 30
                         ? 'Salen con más probabilidad las preguntas de los temas que peor llevas (según tus tests hechos en la app: $_respuestasHistorial respuestas), las de los temas que más caen en el examen y las que ya has fallado. Un test de todo el temario, pero cargado hacia lo que te falta.'

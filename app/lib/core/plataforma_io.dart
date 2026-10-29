@@ -32,3 +32,12 @@ void borrarGrabacion(String ruta) {
   } catch (_) {}
 }
 
+
+/// Si existe el fichero [ruta] (las grabaciones guardadas en el móvil).
+bool existeFichero(String ruta) {
+  try {
+    return File(ruta).existsSync();
+  } catch (_) {
+    return false;
+  }
+}

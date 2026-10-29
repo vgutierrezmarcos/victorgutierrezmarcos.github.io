@@ -19,6 +19,9 @@ import '../data/models/temas_clase.dart';
 import '../features/cronograma/planificador.dart' show compararCodigos;
 import '../features/inicio/racha.dart';
 import '../data/models/reto.dart';
+import '../data/models/dificultad.dart';
+import '../data/models/coyuntura.dart';
+import '../data/models/autoevaluacion.dart';
 import '../features/test/motor_test.dart' show TestEnCurso;
 import '../data/models/esquema.dart';
 import '../data/models/estructura.dart';
@@ -152,6 +155,26 @@ final bloquesProvider = FutureProvider<Bloques>((ref) {
 final frecuenciaTestProvider = FutureProvider<FrecuenciaTest?>((ref) {
   ref.watch(versionContenidoProvider);
   return ref.watch(contenidoProvider).frecuenciaTest();
+});
+/// Qué temas revisados tienen autoevaluación.
+final indiceAutoevaluacionProvider = FutureProvider<IndiceAutoevaluacion>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).indiceAutoevaluacion();
+});
+/// Las preguntas de autoevaluación de un tema (por código), o null.
+final autoevaluacionProvider = FutureProvider.family<Autoevaluacion?, String>((ref, codigo) async {
+  final archivo = (await ref.watch(indiceAutoevaluacionProvider.future)).archivoDe(codigo);
+  return archivo == null ? null : ref.watch(contenidoProvider).autoevaluacion(archivo);
+});
+/// Cuadro de coyuntura de España (vacío sin datos).
+final coyunturaProvider = FutureProvider<Coyuntura>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).coyuntura();
+});
+/// Cuántos fallan cada pregunta, con los tests de todos (vacía sin datos).
+final dificultadProvider = FutureProvider<Dificultad>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).dificultad();
 });
 final temarioProvider = FutureProvider<Temario>((ref) {
   ref.watch(versionContenidoProvider);

@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../core/cache_http.dart';
+import '../models/autoevaluacion.dart';
+import '../models/coyuntura.dart';
+import '../models/dificultad.dart';
 import '../models/esquema.dart';
 import '../models/estructura.dart';
 import '../models/explicacion.dart';
@@ -40,6 +43,44 @@ class ContenidoRepo {
       return FrecuenciaTest.fromJson(Map<String, dynamic>.from(await _http.json(oposicion.urlFrecuenciaTest, preferirCache: !forzar, forzar: forzar) as Map));
     } catch (_) {
       return null;
+    }
+  }
+
+  /// Cuántos fallan cada pregunta, con los tests de todos (solo TCEE); vacía sin datos.
+  Future<Dificultad> dificultad({bool forzar = false}) async {
+    if (!oposicion.esPrincipal) return Dificultad.vacia;
+    try {
+      return Dificultad.fromJson(await _http.json(oposicion.urlDificultad, preferirCache: !forzar, forzar: forzar));
+    } catch (_) {
+      return Dificultad.vacia;
+    }
+  }
+
+  /// Qué temas revisados tienen autoevaluación (vacío fuera de TCEE o sin datos).
+  Future<IndiceAutoevaluacion> indiceAutoevaluacion({bool forzar = false}) async {
+    if (!oposicion.esPrincipal) return IndiceAutoevaluacion.vacio;
+    try {
+      return IndiceAutoevaluacion.fromJson(await _http.json(oposicion.urlIndiceAutoevaluacion, preferirCache: !forzar, forzar: forzar));
+    } catch (_) {
+      return IndiceAutoevaluacion.vacio;
+    }
+  }
+
+  /// Las preguntas de autoevaluación de un tema (null sin red ni copia).
+  Future<Autoevaluacion?> autoevaluacion(String archivo, {bool forzar = false}) async {
+    try {
+      return Autoevaluacion.fromJson(await _http.json(oposicion.urlAutoevaluacion(archivo), preferirCache: !forzar, forzar: forzar));
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Cuadro de coyuntura (vacío sin red ni copia).
+  Future<Coyuntura> coyuntura({bool forzar = false}) async {
+    try {
+      return Coyuntura.fromJson(await _http.json(oposicion.urlCoyuntura, preferirCache: !forzar, forzar: forzar));
+    } catch (_) {
+      return Coyuntura.vacia;
     }
   }
 
@@ -125,7 +166,7 @@ class ContenidoRepo {
   /// Refresco silencioso de todo el contenido (al arrancar con red).
   Future<void> refrescarTodo() async {
     var hayNuevo = false;
-    for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura, if (oposicion.esPrincipal) oposicion.urlFrecuenciaTest, if (oposicion.esPrincipal) urlManifiestoRevisados]) {
+    for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura, if (oposicion.esPrincipal) oposicion.urlFrecuenciaTest, if (oposicion.esPrincipal) oposicion.urlDificultad, oposicion.urlIndiceAutoevaluacion, oposicion.urlCoyuntura, if (oposicion.esPrincipal) urlManifiestoRevisados]) {
       if (await _http.refrescar(u)) hayNuevo = true;
     }
     if (hayNuevo) cambios.value++;

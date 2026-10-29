@@ -156,3 +156,17 @@ class ListaDeberes extends ConsumerWidget {
 
 /// «3 de 4 deberes» o «4 deberes» (vacío si no hay).
 String resumenDeberes(Cante c) => c.tareas.isEmpty ? '' : '${c.tareasHechas} de ${c.tareas.length} ${c.tareas.length == 1 ? 'deber' : 'deberes'}';
+
+/// Los deberes que el preparador dejó en una clase ya dada «para la próxima»
+/// cuando aún no había otra programada: la clase hecha más reciente (de las
+/// últimas cuatro semanas) con alguno sin hacer, si no hay después otra clase
+/// con preparador pendiente.
+Cante? deberesParaLaProxima(List<Cante> cantes, DateTime ahora) {
+  final hechas = cantes.where((c) => c.dePreparador && c.hecho && c.tareas.any((t) => !t.hecha) && ahora.difference(c.fecha).inDays <= 28).toList()
+    ..sort((a, b) => b.fecha.compareTo(a.fecha));
+  final ultima = hechas.firstOrNull;
+  if (ultima == null) return null;
+  final hayOtra = cantes.any((c) => c.dePreparador && c.pendiente && c.fecha.isAfter(ultima.fecha));
+  return hayOtra ? null : ultima;
+}
+

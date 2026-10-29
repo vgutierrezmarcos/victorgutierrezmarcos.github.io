@@ -147,3 +147,34 @@ Future<void> abrirEsquema(BuildContext context, {required List<EntradaEsquema> e
         ),
       ),
     );
+
+/// Un epígrafe encontrado por el buscador del temario.
+typedef EpigrafeEncontrado = ({Tema tema, EntradaEsquema entrada});
+
+/// Busca [consulta] en los epígrafes de los temas ([esquemas], por tema), sin
+/// tildes ni mayúsculas y con todas las palabras (en cualquier orden): «¿en
+/// qué tema está Feldstein-Horioka?». Como mucho [maximo] resultados, los
+/// apartados más generales primero dentro de cada tema.
+List<EpigrafeEncontrado> buscarEpigrafes(Map<Tema, List<EntradaEsquema>> esquemas, String consulta, {int maximo = 40}) {
+  final palabras = normalizarBusqueda(consulta).split(RegExp(r'\s+')).where((p) => p.length >= 2).toList();
+  if (palabras.isEmpty || palabras.join().length < 3) return const [];
+  final out = <EpigrafeEncontrado>[];
+  for (final e in esquemas.entries) {
+    for (final entrada in e.value) {
+      final t = normalizarBusqueda(entrada.titulo);
+      if (palabras.every(t.contains)) out.add((tema: e.key, entrada: entrada));
+      if (out.length >= maximo) return out;
+    }
+  }
+  return out;
+}
+
+/// Sin tildes, en minúsculas y con guiones como espacios (para buscar).
+String normalizarBusqueda(String s) => s
+    .toLowerCase()
+    .replaceAll(RegExp('[áàäâ]'), 'a')
+    .replaceAll(RegExp('[éèëê]'), 'e')
+    .replaceAll(RegExp('[íìïî]'), 'i')
+    .replaceAll(RegExp('[óòöô]'), 'o')
+    .replaceAll(RegExp('[úùüû]'), 'u')
+    .replaceAll(RegExp(r'[-–—/]'), ' ');
