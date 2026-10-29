@@ -53,3 +53,14 @@ La skill ya sigue lo que recomienda: **un solo bucle** (el chat de claude.ai) co
 ## 6. El móvil en el vídeo
 
 Escena nueva «En el móvil» (compás 85): la app (diario de cantes) → la app de Claude con el `.txt` adjunto → la respuesta. Capturas de claude.ai con viewport de móvil (412 × 893 × 2,6). Antes de renderizar, Víctor debe comprobar en su móvil que la skill se activa en la app de Claude (compartir un `.txt` desde la app y pedir la corrección); si no, el texto de la escena cambia a «desde el navegador del móvil».
+
+## Estado (29 oct. 2026, madrugada)
+
+Víctor pidió hacerlo todo. Hecho y confirmado en `main`:
+
+- **Plantilla LaTeX** (apartado 1): `assets/latex/informe.sty` (opción `tcee`/`dce`, XeLaTeX + fontspec con las OTF de la skill, cabecera y pie como los temas, banda de sección, cajas con el fondo de la app, aviso en caja pálida, tablas booktabs), `informe.tex` (plantilla de pandoc) e `informe.lua` (aviso final y anchos de tabla). `informe-pdf.py --motor latex|docx|auto`: LaTeX si hay xelatex, DOCX si no o si falla. Probado hasta el `.tex` en local (MiKTeX no compila con C: lleno) y compilado en el sandbox de claude.ai (ver el resultado de la prueba `latexsb2.json` en la carpeta de grabación).
+- **Conector MCP** (apartado 4): `mcp/` completo (Worker, OAuth, login, herramientas, contenido en KV, tests, README), reglas de informes del cante, privacidad; falta desplegar (pasos en `claude/mcp-fase-2.md`, «Estado»).
+- **Medidas** (apartado 3): simulacro, informe semanal, tarjetas, test con las 1004 preguntas oficiales y sus explicaciones (`references/test/`), tribunal por voz, modo preparador, checklist del examen, guía de la pizarra; evals nuevos escritos (no ejecutados). Espejo para `npx skills add`: `scripts/skill-espejo.py` listo, repo sin crear.
+- **Skill desplegada 2026.10.29-16** y ZIP completo y ligero (`--ligera`) en la rama de revisión.
+
+Queda en manos de Víctor: desplegar el Worker, publicar las reglas, crear el repo espejo (o no), probar la skill en el móvil y ejecutar los evals.
