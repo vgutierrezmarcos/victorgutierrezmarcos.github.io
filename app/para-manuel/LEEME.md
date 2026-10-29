@@ -14,7 +14,7 @@ oposicion/
 └── enlaces.json           enlaces útiles (vacío de momento)
 ```
 
-La presentación está en `fuentes/` (no se publica). Si la cambias, Víctor vuelve a generar el JSON con `python3 scripts/extraer-estructura-dce.py`. Para que el script la siga entendiendo, mantén la estructura: las diapositivas «Bloques» con un rótulo por sección y una caja por bloque (nombre y «A1 · A2…»), el «Esquema por temas» con una casilla por tema, y en cada ficha «BLOQUE» y «CONECTADO CON».
+Desde el 29 oct. 2026, tu programa (`scripts/crear_estructura_temario.py`, en tu lado) genera a la vez la presentación y `estructura_temario.json`, y lo publicas tú: es la única fuente. Si cambias una conexión o un bloque, regenera y publica los dos. La app necesita que los ids de bloque no se repitan en todo el fichero, que cada conexión a un bloque (`{"bloque": id}`) tenga su rótulo o su marco en ese esquema y que los temas sean los de `temario.json`. Opcionalmente, una lista `conexiones` en la raíz con los «CONECTADO CON» que no se dibujan: la app los usa en «Conectado con» y para ordenar el cronograma. La copia de `fuentes/` y `scripts/extraer-estructura-dce.py` de Víctor quedan solo para comparar.
 
 ## Qué tienes que hacer
 
