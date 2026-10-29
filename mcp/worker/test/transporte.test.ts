@@ -15,6 +15,8 @@ const ctx: Contexto = {
   skill: async () => null,
   fuentes: async () => ({ aviso: '', bloques: [], tcee: {}, dce: {} }),
   apuntes: async () => ({ formato: 'docx', esquema: [], texto: '' }),
+  textos: async () => null,
+  pagina: async () => null,
   desconectar: async () => undefined,
 };
 

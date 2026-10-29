@@ -110,3 +110,19 @@ export async function leerApuntesDrive(id: string, descargar: (url: string) => P
   }
   throw new ErrorApuntes('no se ha podido descargar (puede que la carpeta ya no sea pública)');
 }
+
+/** Una página HTML convertida a texto: sin scripts, estilos ni SVG; los títulos h1-h3 forman el esquema. */
+export function htmlATexto(html: string): { esquema: string[]; texto: string } {
+  const cuerpo = (html.match(/<main[\s\S]*?<\/main>/i)?.[0] ?? html.match(/<body[\s\S]*<\/body>/i)?.[0] ?? html)
+    .replace(/<(script|style|svg|nav|header|footer)[\s\S]*?<\/\1>/gi, '');
+  const limpiar = (t: string) => entidades(t.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ')).replace(/\s+/g, ' ').trim();
+  const esquema = [...cuerpo.matchAll(/<h([1-3])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((m) => `${'  '.repeat(Number(m[1]) - 1)}${limpiar(m[2])}`).filter((t) => t.trim()).slice(0, 80);
+  const texto = cuerpo
+    .replace(/<\/(p|h[1-6]|li|tr|div|blockquote)>/gi, '\n')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .split('\n')
+    .map(limpiar)
+    .filter(Boolean)
+    .join('\n');
+  return { esquema, texto };
+}

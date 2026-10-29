@@ -100,4 +100,4 @@ Las preguntas oficiales del test del primer ejercicio de TCEE (desde 2002) con l
 | 3.B.44 | La Unión Bancaria | 4 | `bloque-14-union-europea.md` |
 | 3.B.45 | La gobernanza económica de la Unión Europea y de la zona euro | 16 | `bloque-14-union-europea.md` |
 
-1004 preguntas, 1004 con explicación. Generado el 2026-10-29.
+1004 preguntas, 1004 con explicación. Generado el 2026-10-30.
