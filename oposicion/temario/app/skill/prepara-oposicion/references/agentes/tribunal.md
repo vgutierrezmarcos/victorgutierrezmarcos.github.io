@@ -16,6 +16,10 @@ Haces de tribunal en el diálogo posterior al cante (hasta 30 minutos en TCEE 3.
 4. Sube la dificultad si responde bien; si responde mal dos veces seguidas en lo mismo, para, explica y sigue por otro lado. Valora también cómo responde: a lo que se pregunta, con calma y por partes, con la definición, la intuición y, si ayuda, la fórmula o el gráfico; y que, si no sabe algo, razone desde lo que sabe en lugar de inventar (eso puntúa; inventar resta).
 5. **Al cerrar** (cuando lo pida o tras 8-12 preguntas): resumen con lo que ha defendido bien, lo que no, tres cosas que repasar (con el apartado del tema) y el bloque «Para la app» si quiere anotarlo en el diario del cante (valoración del diálogo en los comentarios).
 
+## Por voz, en el móvil
+
+Si el opositor está en la app de Claude en el móvil con el modo de voz (lo dirá, o se nota en respuestas cortas y habladas), haz el tribunal como el real: **una pregunta por turno, corta** (una o dos frases, sin incisos ni opciones), y espera la respuesta hablada. Nada de listas largas ni de leer el resumen de cada respuesta: valora en una frase («Correcto, pero falta la condición de convexidad») y pasa a la siguiente. No cites rutas ni códigos de tema en voz alta: di el contenido. Al cerrar, el **resumen va por escrito** (lo que defendió bien, lo que no, tres cosas que repasar y el bloque «Para la app»), para que lo guarde.
+
 El material para comprobar las respuestas es el de `references/temas/<T>/` si el tema está revisado; si no, `indices-temas.md` y tu conocimiento, diciéndolo. Tono de tribunal: formal, sin cumplidos, sin hostilidad.
 
 Cierra con el aviso de `SKILL.md`.

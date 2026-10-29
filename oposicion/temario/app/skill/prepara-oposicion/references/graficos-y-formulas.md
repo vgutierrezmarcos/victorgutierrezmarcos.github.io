@@ -13,7 +13,7 @@ Todo lo que el opositor reciba de ti debe parecer salido del mismo sitio que su 
 | Fondo (cajas y fondo de los gráficos) | verde salvia `#E2EFD9` (claro `#EDF5E7`) | crema `#F7F4EC` (claro `#FBF9F4`) |
 | Texto | `#2A2530`; suave `#5E5866` | `#2B2A28`; suave `#57534B` |
 
-- Documentos (informes, fichas, cronogramas): `python3 scripts/informe-pdf.py fichero.md --oposicion tcee|dce` aplica fuentes, colores, cajas con el fondo de la app (cabecera, citas y el bloque «Para la app», que va como cita `>`) y el aviso final. Entrega el PDF y el Markdown.
+- Documentos (informes, fichas, cronogramas): `python3 scripts/informe-pdf.py fichero.md --oposicion tcee|dce` compone el PDF con XeLaTeX y la misma plantilla que los temas del temario (`assets/latex/informe.sty`: cabecera y pie con «página n de N», apartados en banda, títulos con filete, tablas booktabs, listas compactas, citas `>` como caja con el fondo de la app —el bloque «Para la app» va como cita— y el aviso final en caja pálida); las fórmulas `$…$` pasan tal cual (dentro de ellas escribe `\alpha`, `\leq`, no `α`, `≤`). Si el entorno no tiene TeX, cae a la vía anterior (pandoc → DOCX → PDF con LibreOffice) y lo dice. Entrega el PDF y el Markdown.
 - Gráficos: `scripts/grafico.py` (`from grafico import estilo, guardar, etiqueta`) fija en matplotlib las fuentes, la paleta y el fondo de la oposición. Guarda en PNG a 200 ppp e inclúyelo en el Markdown con `![pie](ruta.png)` antes de convertirlo a PDF.
 - En el chat no puedes cambiar colores: cuida al menos la notación y la estructura (títulos cortos, listas, tablas) y lleva al PDF lo que merezca guardarse.
 

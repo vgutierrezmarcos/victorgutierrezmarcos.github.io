@@ -1341,9 +1341,6 @@ def main():
             if f.endswith('.md') and os.path.getsize(ruta) > UMBRAL_MD:
                 grandes.append((os.path.relpath(ruta, destino), os.path.getsize(ruta)))
     zip_destino, tamano_zip = empaquetar(destino, manifiesto, temas, args.sin_temas)
-    if args.ligera:
-        zip_ligera, tamano_ligera = aligerar(destino)
-        print(f'ZIP ligero (conector MCP): {os.path.relpath(zip_ligera, WT)} ({kb(tamano_ligera)})')
     if args.instalar:
         print('Instalada en', instalar(destino))
 
@@ -1365,6 +1362,9 @@ def main():
     print(f'SKILL.md: {lineas_skill} líneas; description: {long_desc} caracteres')
     print(f'ZIP: {os.path.relpath(zip_destino, WT)} ({kb(tamano_zip)}); manifiesto: {os.path.relpath(REVISION, WT)} '
           f'(skill {manifiesto["skill"]["version"]})')
+    if args.ligera:  # al final: vacía temas/, dictamen/ y canon/ de la carpeta de construcción
+        zip_ligera, tamano_ligera = aligerar(destino)
+        print(f'ZIP ligero (conector MCP): {os.path.relpath(zip_ligera, WT)} ({kb(tamano_ligera)})')
     if avisos:
         print(f'{len(avisos)} avisos (arriba).')
     for e in errores:
