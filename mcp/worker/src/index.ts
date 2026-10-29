@@ -146,10 +146,22 @@ function cors(env: Env, request: Request): Headers {
   return h;
 }
 
+const ICONO_PNG = 'https://www.victorgutierrezmarcos.es/app/abrir/icons/Icon-512.png';
+const ICONO_SVG = 'https://www.victorgutierrezmarcos.es/app/assets/icon/icon.svg';
+const RUTAS_ICONO = new Set(['/favicon.ico', '/favicon.png', '/favicon.svg', '/icon.png', '/icon.svg', '/apple-touch-icon.png', '/apple-touch-icon-precomposed.png']);
+
 /** Rutas públicas del Worker: portada, consentimiento, login y callback. */
 const defaultHandler = {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+    // Icono del conector: claude.ai (y los buscadores de favicons) piden el favicon del dominio del
+    // servidor MCP; se sirve el icono de la app (el PNG de la versión web) en todas las rutas habituales.
+    if (RUTAS_ICONO.has(url.pathname)) {
+      const svg = url.pathname.endsWith('.svg');
+      const r = await fetch(svg ? ICONO_SVG : ICONO_PNG, { cf: { cacheTtl: 86_400, cacheEverything: true } });
+      if (!r.ok) return new Response('Sin icono', { status: 404 });
+      return new Response(r.body, { headers: { 'Content-Type': svg ? 'image/svg+xml' : 'image/png', 'Cache-Control': 'public, max-age=86400' } });
+    }
     const oauth = env.OAUTH_PROVIDER;
     try {
       if (url.pathname === '/' || url.pathname === '') return html(paginaPortada(urlMcp(env)));

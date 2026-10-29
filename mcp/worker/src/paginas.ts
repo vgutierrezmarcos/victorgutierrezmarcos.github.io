@@ -56,7 +56,9 @@ function pagina(titulo: string, cuerpo: string, paso: 1 | 2 | 3): string {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>${escapar(titulo)} · Prepara con Claude</title>
-<link rel="icon" href="${WEB}/app/assets/icon/icon.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap">
 <link rel="stylesheet" href="${WEB}/styles.css">
 <style>${estilo}</style>
