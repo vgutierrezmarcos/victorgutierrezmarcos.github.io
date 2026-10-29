@@ -48,7 +48,7 @@
     (function () {
         // URL del Worker del conector (la misma que URL_WORKER en mcp/worker/wrangler.toml).
         // Los tokens solo se mandan ahí. En local (wrangler dev) se acepta ?worker=http://localhost:8787.
-        var WORKER = 'https://prepara-con-claude.vgutierrezmarcos.workers.dev';
+        var WORKER = 'https://prepara-con-claude.victorgutierrezmarcos.workers.dev';
 
         var params = new URLSearchParams(location.search);
         var state = params.get('state') || '';
