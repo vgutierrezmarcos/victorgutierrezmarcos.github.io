@@ -635,7 +635,7 @@
                     <h1 id="portada-titulo">Prepara con Claude <span class="resto">Un equipo de preparación que corrige tu cante esa misma tarde, con el temario revisado y tus datos de la app.</span></h1>
                     <p class="app-entradilla">Le pides lo que necesitas y Claude abre al especialista que toca: corrector de cantes y dictámenes, organizador del cronograma, tribunal de ensayo. Se añade en un paso y funciona en el ordenador y en el móvil.</p>
                     <div class="portada-botones">
-                        <a class="boton" data-conector href="https://claude.ai/settings/connectors" target="_blank" rel="noopener">Añadir el conector</a>
+                        <a class="boton" data-conector href="https://claude.ai/customize/connectors?modal=add-custom-connector&amp;connectorName=Prepara%20con%20Claude&amp;connectorUrl=https%3A%2F%2Fprepara-con-claude.victorgutierrezmarcos.workers.dev%2Fmcp" target="_blank" rel="noopener">Añadir el conector</a>
                         <a class="boton boton--secundario" href="#conector">Los tres pasos</a>
                     </div>
                     <p class="conector-estado" role="status" aria-live="polite"></p>
@@ -875,16 +875,16 @@
                 <ol class="pasos-conector">
                     <li>
                         <h3>Añade el conector</h3>
-                        <p>En claude.ai, abre <em>Configuración → Conectores → Añadir conector personalizado</em>. Nombre: «Prepara con Claude». URL:</p>
+                        <p>Pulsa el botón: se abre Claude con el conector ya rellenado (nombre «Prepara con Claude» y su URL) y solo tienes que pulsar <em>Añadir</em>. Si prefieres hacerlo a mano: <em>Personalizar → Conectores → Añadir conector personalizado</em>, con esta URL:</p>
                         <div class="conector-url">
                             <code id="conector-url">https://prepara-con-claude.victorgutierrezmarcos.workers.dev/mcp</code>
                             <button type="button" class="boton boton--secundario boton--peq" data-copiar>Copiar</button>
                         </div>
                         <div class="paso-botones">
-                            <a class="boton" data-conector href="https://claude.ai/settings/connectors" target="_blank" rel="noopener">Añadir el conector</a>
+                            <a class="boton" data-conector href="https://claude.ai/customize/connectors?modal=add-custom-connector&amp;connectorName=Prepara%20con%20Claude&amp;connectorUrl=https%3A%2F%2Fprepara-con-claude.victorgutierrezmarcos.workers.dev%2Fmcp" target="_blank" rel="noopener">Añadir el conector</a>
                         </div>
                         <p class="conector-estado" role="status" aria-live="polite"></p>
-                        <p class="app-nota">El botón copia la URL y abre los conectores de Claude en otra pestaña: allí, pégala.</p>
+                        <p class="app-nota">Si Claude abre la lista de conectores sin el formulario relleno, la URL ya está copiada: pulsa <em>Añadir conector personalizado</em> y pégala.</p>
                     </li>
                     <li>
                         <h3>Entra con Google</h3>
@@ -899,7 +899,7 @@
                     </li>
                 </ol>
             </div>
-            <p class="app-nota conector-pie revelar">Para desconectarlo: en Claude, <em>Configuración → Conectores</em>; en la app, <em>Más → Prepara con Claude → Desconectar Claude</em>. En Claude Code: <code>claude mcp add --transport http prepara-con-claude https://prepara-con-claude.victorgutierrezmarcos.workers.dev/mcp</code>.</p>
+            <p class="app-nota conector-pie revelar">Para desconectarlo: en Claude, <em>Personalizar → Conectores</em>; en la app, <em>Más → Prepara con Claude → Desconectar Claude</em>. En Claude Code: <code>claude mcp add --transport http prepara-con-claude https://prepara-con-claude.victorgutierrezmarcos.workers.dev/mcp</code>.</p>
         </section>
 
         <!-- ===== Resto: la tarjeta de lectura ===== -->
@@ -1005,7 +1005,7 @@
                         <ul>
                             <li>El conector lee con tu propia sesión de Google y solo lo tuyo: progreso, tests, diario de cantes y cronograma. No accede a las grabaciones ni a las transcripciones del móvil, ni a tu Google Calendar.</li>
                             <li>Escribe en la app solo cuando tú lo confirmas en la conversación: un cronograma nuevo o el informe de un cante.</li>
-                            <li>Lo desconectas cuando quieras: en Claude, <em>Configuración → Conectores</em>; en la app, <em>Más → Prepara con Claude → Desconectar Claude</em>; o pidiéndoselo a Claude.</li>
+                            <li>Lo desconectas cuando quieras: en Claude, <em>Personalizar → Conectores</em>; en la app, <em>Más → Prepara con Claude → Desconectar Claude</em>; o pidiéndoselo a Claude.</li>
                             <li>Lo que subes al chat (transcripciones, fotos) lo decides tú, fichero a fichero, y se rige por las <a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noopener">condiciones de Anthropic</a>. La transcripción la hace tu móvil (en algunos, el servicio de voz de Google); la grabación no sale del dispositivo.</li>
                             <li>Ni Víctor ni Manuel ven lo que subes ni lo que Claude te responde.</li>
                         </ul>
@@ -1073,7 +1073,7 @@
                 <h2>¿Qué arreglo primero?</h2>
                 <p>Pregúntaselo esta tarde. Para TCEE y DCE, en el ordenador y en el móvil.</p>
                 <div class="cierre-botones">
-                    <a class="boton" data-conector href="https://claude.ai/settings/connectors" target="_blank" rel="noopener">Añadir el conector</a>
+                    <a class="boton" data-conector href="https://claude.ai/customize/connectors?modal=add-custom-connector&amp;connectorName=Prepara%20con%20Claude&amp;connectorUrl=https%3A%2F%2Fprepara-con-claude.victorgutierrezmarcos.workers.dev%2Fmcp" target="_blank" rel="noopener">Añadir el conector</a>
                     <a class="boton boton--secundario" href="../app/">La app, gratis</a>
                     <a class="boton boton--secundario" href="../condiciones-materiales.html">Condiciones de uso</a>
                 </div>
@@ -1144,8 +1144,8 @@
         });
     </script>
     <script>
-    // El conector: «Añadir el conector» copia la URL y deja que el enlace abra
-    // los conectores de claude.ai en otra pestaña; «Copiar» solo copia. Si el
+    // El conector: «Añadir el conector» abre claude.ai con el diálogo «Añadir conector personalizado»
+    // ya relleno (modal=add-custom-connector, connectorName, connectorUrl) y, por si acaso, copia la URL; «Copiar» solo copia. Si el
     // navegador no deja copiar, se enseña la URL para copiarla a mano.
     (function () {
         var URL_CONECTOR = 'https://prepara-con-claude.victorgutierrezmarcos.workers.dev/mcp';
@@ -1161,7 +1161,7 @@
             if (!estado) return;
             estado.textContent = '';
             if (ok) {
-                estado.textContent = 'URL copiada: pégala en Claude.';
+                estado.textContent = 'URL copiada, por si Claude no la rellena sola.';
             } else {
                 estado.appendChild(document.createTextNode('No se ha podido copiar. Cópiala a mano: '));
                 var c = document.createElement('code');

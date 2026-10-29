@@ -71,7 +71,7 @@ async function protegido(f: () => Promise<CallToolResult>): Promise<CallToolResu
   try {
     return await f();
   } catch (e) {
-    if (e instanceof ErrorSesion) return error(`La sesión con la app ha caducado o se ha revocado: ${e.message}. Pide al opositor que vuelva a conectar el conector «Prepara con Claude» (en Claude, Configuración → Conectores).`);
+    if (e instanceof ErrorSesion) return error(`La sesión con la app ha caducado o se ha revocado: ${e.message}. Pide al opositor que vuelva a conectar el conector «Prepara con Claude» (en Claude, Personalizar → Conectores).`);
     if (e instanceof ErrorFirestore) {
       if (e.estado === 403) return error('Firestore ha denegado el acceso (las reglas solo dejan al dueño leer y escribir sus datos). Si el opositor acaba de cambiar de cuenta, que vuelva a conectar el conector.');
       return error(`Error de Firestore (${e.estado}): ${e.message}`);
