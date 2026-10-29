@@ -25,11 +25,11 @@ La probabilidad de aprobar se calcula como en el Excel de organización de TCEE:
 
 ## Organización del temario y cronograma por fases (28 oct. 2026)
 
-**Organización**: la presentación de Manuel (`para-manuel/fuentes/organizacion_temario_DCE.pptx`) sigue la de TCEE y usa sus colores. En el 1.º, la Parte A (economía española) va en rosa `FF6699`, con 8 bloques, como el 4.º de TCEE; la Parte B, en morado `5F2987` (sector público), azul `325EEA` (UE) y azul claro `5B9BD5` (instituciones internacionales). En el 3.º hay 11 bloques con los colores del 3.º de TCEE. `scripts/extraer-estructura-dce.py` la pasa a `estructura_temario.json` con este contenido:
+**Organización**: la presentación de Manuel (`para-manuel/fuentes/organizacion_temario_DCE.pptx`) sigue la de TCEE y usa sus colores. En el 1.º, la Parte A (economía española) va en rosa `FF6699`, con 8 bloques, como el 4.º de TCEE; la Parte B, en morado `5F2987` (sector público), azul `325EEA` (UE) y azul claro `5B9BD5` (instituciones internacionales). En el 3.º hay 11 bloques con los colores del 3.º de TCEE. Desde el 29 oct. 2026 la fuente única es el programa de Manuel (`scripts/crear_estructura_temario.py`, en su lado), que genera a la vez la presentación y `estructura_temario.json` y lo publica en su web (comprobado ese día: 22 bloques sin ids repetidos, esquemas `tercero` con 44 temas y 49 conexiones, 8 a bloques, y `primero` con 36 y 30). `scripts/extraer-estructura-dce.py` queda solo para comparar. El fichero lleva:
 - los bloques;
 - los títulos cortos del 3.º, como idea clave;
 - los dos esquemas con sus flechas;
-- en `conexiones`, las de «CONECTADO CON» de cada ficha que no están dibujadas. La app las usa para «Relacionados», «Por dónde seguir» y el orden del cronograma, pero no las dibuja.
+- opcionalmente, en `conexiones` (en la raíz), las de «CONECTADO CON» de cada ficha que no están dibujadas. La app las usa para «Relacionados», «Por dónde seguir» y el orden del cronograma, pero no las dibuja. El fichero publicado el 29 oct. no las trae: solo cuentan las de los esquemas.
 
 **Cronograma por fases del 1.º** (lo pidió Manuel): es un escrito de 3 horas, así que el cronograma no planifica cantes. Planifica estudio y práctica escrita en tres fases sugeridas hasta la fecha del examen:
 - **Primera vuelta (55 %)**: todo el temario, primero la parte A y luego la B.
@@ -55,7 +55,7 @@ Con el mismo formato que la web de TCEE, en la carpeta `/oposicion/` de su web (
 | Fichero | Para qué | Cómo se hace en TCEE |
 |---|---|---|
 | `oposicion/temario/temario.json` | Ejercicios, partes, temas y enlaces a los PDF | `node build-app-data.js` |
-| `oposicion/organizacion/estructura_temario.json` | Bloques con colores, esquemas y conexiones del 1.º y del 3.º | `python3 scripts/extraer-estructura-dce.py` a partir de la presentación de Manuel (`para-manuel/fuentes/organizacion_temario_DCE.pptx`) |
+| `oposicion/organizacion/estructura_temario.json` | Bloques con colores, esquemas y conexiones del 1.º y del 3.º | El programa de Manuel, que lo publica él (`scripts/extraer-estructura-dce.py`, solo para comparar) |
 | `oposicion/enlaces.json` | Enlaces útiles (opcional) | `node build-app-data.js` |
 | `oposicion/app-config.json` | Contacto, avisos y, si hiciera falta, otras reglas de sorteo (`sorteo`) sin publicar la app | A mano |
 | `oposicion/organizacion/como_cantar_un_tema.pdf` | Ayuda de la pantalla Cantar (opcional) | — |
