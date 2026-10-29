@@ -20,7 +20,9 @@ const estilo = `
   .conector-pasos li + li::before { content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 1em; margin-top: -.5em; background: #C9B37E; }
   .conector-pasos li[aria-current] { color: #5F2987; font-weight: 600; }
   .conector-pasos li[aria-current]::after { content: ""; display: block; height: 2px; background: #C9B37E; margin-top: .15em; }
-  .conector .card { padding: 1.7rem 1.9rem 1.5rem; }
+  .conector .card { padding: 1.7rem 1.9rem 1.5rem; background: #F6FAF2; border: 1px solid #C9B37E; border-radius: 6px; }
+  .conector a { color: #5F2987; }
+  .conector-marcas img + i + img { height: 44px; width: 44px; }
   .conector h1 { font-variant-caps: all-small-caps; letter-spacing: .02em; font-weight: normal; font-size: 1.7rem; margin: 0 0 .5em; color: #5F2987; }
   .conector p { margin: 0 0 .85em; }
   .conector ul { margin: 0 0 1em; padding-left: 1.2rem; }
@@ -41,7 +43,7 @@ export function cabeceraConector(paso: 1 | 2 | 3): string {
   return `<div class="conector-marcas" aria-hidden="true">
   <img src="${WEB}/app/assets/icon/icon.svg" alt="">
   <i></i>
-  <img src="${WEB}/oposicion/img/claude/claude-logo.svg" alt="">
+  <img src="${WEB}/oposicion/img/claude/claude-asterisco.svg" alt="">
 </div>
 <ol class="conector-pasos" aria-label="Pasos de la conexión">
 ${pasos.map((p, i) => `  <li${i + 1 === paso ? ' aria-current="step"' : ''}>${i + 1}. ${p}</li>`).join('\n')}
