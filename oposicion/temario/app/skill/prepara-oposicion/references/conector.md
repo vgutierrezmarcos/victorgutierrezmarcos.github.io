@@ -10,6 +10,10 @@ Si el opositor tiene conectado el conector oficial de la web (un servidor MCP re
 
 El conector lleva la skill dentro: `leer_skill()` devuelve `SKILL.md` y `leer_skill(ruta)` cualquier fichero que cite (`references/…`, `assets/…`, `scripts/…`), siempre en su última versión. Así, quien solo ha añadido el conector tiene el equipo completo sin subir ningún ZIP. Si además tiene la skill instalada, es la misma: usa cualquiera de las dos. Los scripts (`informe-pdf.py`, `grafico.py`) y la plantilla LaTeX se leen con `leer_skill` y se guardan en el entorno de código antes de ejecutarlos; las fuentes OTF no son texto: si hacen falta para el PDF y no se pueden bajar de la web, usa las del sistema (Pagella y Latin Modern suelen estar) o entrega el Markdown.
 
+## Fuentes y programa
+
+`fuentes_tema(tema)` reúne todo lo que hay para estudiar un tema (TCEE o DCE): si está revisado, el PDF de victorgutierrezmarcos.es, el tema equivalente de manuelcabadogarcia.es, los apuntes de otros TCEE del repositorio de la ATCEE (autor, promoción, numeración y enlace) y los manuales que la ATCEE recomienda para su bloque. `buscar_temario(consulta)` busca en el programa por materia, bloque o palabras y agrupa los temas por bloque de la organización del temario. Los apuntes de otros autores se recomiendan con su enlace: no se leen ni se copian aquí. Los de numeración antigua (anteriores a la promoción LXXIII) pueden no ser el mismo tema: comprueba el nombre del fichero.
+
 ## Qué devuelve cada una
 
 | Herramienta | Cuándo | Qué trae |
@@ -37,7 +41,7 @@ Dos herramientas escriben, y las dos **solo después de que el opositor haya vis
 - **`proponer_cronograma`** sustituye al bloque «Traer el tuyo» de `datos-app.md` §5: en vez de devolver el bloque de texto para que lo pegue, enséñale la tabla explicativa, pregúntale si lo guarda y, si dice que sí, llama a la herramienta con una entrada por semana de cante (`cante` en `AAAA-MM-DD`, siempre el día de cante de `leer_cronograma` o el que te diga; `temas` con los códigos con puntos), `diaCante`, `ejercicio` y, si procede, `temasPorSemana` y `examen` (ejercicio escrito). El anterior queda archivado, no borrado: díselo, y que lo verá en la app al sincronizar. Si la herramienta devuelve errores (fecha fuera del día de cante, tema repetido), corrige y vuelve a preguntar; no insistas sin enseñarle el cambio.
 - **`guardar_informe_cante`** sustituye a copiar el bloque «Para la app» (`datos-app.md` §4): al terminar el informe de un cante que está en su diario (`id` de `leer_cantes`; si el cante no está aún en la app, que lo cierre allí primero), ofrécele guardarlo y, con su sí, llama a la herramienta con `informe` (el informe completo en Markdown), `valoracion` (1-5 con el criterio de §4), `valoraciones` por tema si cantó varios, `comentarios` (≤ 300 caracteres, lo más importante primero), `criterios` solo si usa la rúbrica (`ajustes.rubrica` no vacía) y `tareas` (las tres de antes del próximo cante). La valoración y los comentarios pasan al diario como si los hubiera escrito él; el informe queda guardado junto al cante y lo ve también su preparador enlazado (como ve el cante): díselo antes de guardar. Si el opositor prefiere no tocar el diario, llama solo con `informe`.
 
-Si una herramienta responde que la sesión ha caducado o se ha revocado, no lo reintentes: dile que vuelva a conectar el conector en Claude (Configuración → Conectores) y sigue, mientras tanto, con lo que tengas en la conversación o con los ficheros exportados.
+Si una herramienta responde que la sesión ha caducado o se ha revocado, no lo reintentes: dile que vuelva a conectar el conector en Claude (Personalizar → Conectores) y sigue, mientras tanto, con lo que tengas en la conversación o con los ficheros exportados.
 
 ## `desconectar`
 
