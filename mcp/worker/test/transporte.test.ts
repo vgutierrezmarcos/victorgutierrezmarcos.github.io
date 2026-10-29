@@ -13,6 +13,7 @@ const ctx: Contexto = {
   banco: async () => ({ temas: new Map(), respuestas: new Map() }),
   contenido: new Contenido({ get: async () => null }),
   skill: async () => null,
+  fuentes: async () => ({ aviso: '', bloques: [], tcee: {}, dce: {} }),
   desconectar: async () => undefined,
 };
 
@@ -35,12 +36,12 @@ describe('Streamable HTTP sin estado', () => {
     expect(j.result.capabilities.tools).toBeDefined();
   });
 
-  it('tools/list devuelve las trece herramientas en una petición independiente (sin sesión)', async () => {
+  it('tools/list devuelve las quince herramientas en una petición independiente (sin sesión)', async () => {
     const r = await responderMcp(peticion({ jsonrpc: '2.0', id: 2, method: 'tools/list', params: {} }, { 'MCP-Protocol-Version': '2025-06-18' }), ctx);
     expect(r.status).toBe(200);
     const j = (await r.json()) as { result: { tools: Array<{ name: string; inputSchema: unknown }> } };
     expect(j.result.tools.map((t) => t.name)).toContain('leer_progreso');
-    expect(j.result.tools).toHaveLength(13);
+    expect(j.result.tools).toHaveLength(15);
   });
 
   it('GET no se admite y una petición mal formada da error JSON-RPC', async () => {

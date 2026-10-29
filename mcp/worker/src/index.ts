@@ -14,7 +14,7 @@ import { Contenido } from './contenido';
 import { temasDePreguntas } from './datos';
 import { datosDelIdToken, renovarIdToken } from './firebase';
 import { Firestore } from './firestore';
-import { type Banco, type Contexto, ErrorSesion, type Oposicion } from './herramientas';
+import { type Banco, type Contexto, ErrorSesion, type IndiceFuentes, type Oposicion } from './herramientas';
 import { responderMcp } from './mcp';
 import { paginaConsentimiento, paginaError, paginaPortada } from './paginas';
 
@@ -31,6 +31,8 @@ export interface Env {
   URL_REVISADOS: string;
   /** Carpeta de la skill desplegada en la web (con barra final): de ahí lee leer_skill. */
   URL_SKILL: string;
+  /** Índice de fuentes por tema (scripts/fuentes-temas.py). */
+  URL_FUENTES: string;
   ORIGENES_LOGIN: string;
   CLAVE_CIFRADO: string;
 }
@@ -77,6 +79,7 @@ async function idTokenDe(env: Env, props: Props): Promise<string> {
   return r.idToken;
 }
 
+let fuentesEnMemoria: { url: string; indice: IndiceFuentes } | null = null;
 let bancoEnMemoria: { url: string; banco: Banco } | null = null;
 
 /** El banco de preguntas de la web, en la caché de Cloudflare un día y en memoria mientras viva el aislado. */
@@ -98,6 +101,14 @@ function contextoDe(env: Env, props: Props): Contexto {
     },
     banco: () => bancoDePreguntas(env),
     contenido: new Contenido(env.CONTENIDO),
+    async fuentes() {
+      if (fuentesEnMemoria?.url === env.URL_FUENTES) return fuentesEnMemoria.indice;
+      const r = await fetch(env.URL_FUENTES, { cf: { cacheTtl: 3_600, cacheEverything: true } });
+      if (!r.ok) throw new Error(`no se ha podido leer el índice de fuentes (${r.status})`);
+      const indice = (await r.json()) as IndiceFuentes;
+      fuentesEnMemoria = { url: env.URL_FUENTES, indice };
+      return indice;
+    },
     async skill(ruta: string) {
       const r = await fetch(env.URL_SKILL + ruta, { cf: { cacheTtl: 600, cacheEverything: true } });
       return r.ok ? r.text() : null;

@@ -10,6 +10,10 @@ Si el opositor tiene conectado el conector oficial de la web (un servidor MCP re
 
 El conector lleva la skill dentro: `leer_skill()` devuelve `SKILL.md` y `leer_skill(ruta)` cualquier fichero que cite (`references/…`, `assets/…`, `scripts/…`), siempre en su última versión. Así, quien solo ha añadido el conector tiene el equipo completo sin subir ningún ZIP. Si además tiene la skill instalada, es la misma: usa cualquiera de las dos. Los scripts (`informe-pdf.py`, `grafico.py`) y la plantilla LaTeX se leen con `leer_skill` y se guardan en el entorno de código antes de ejecutarlos; las fuentes OTF no son texto: si hacen falta para el PDF y no se pueden bajar de la web, usa las del sistema (Pagella y Latin Modern suelen estar) o entrega el Markdown.
 
+## Fuentes y programa
+
+`fuentes_tema(tema)` reúne todo lo que hay para estudiar un tema (TCEE o DCE): si está revisado, el PDF de victorgutierrezmarcos.es, el tema equivalente de manuelcabadogarcia.es, los apuntes de otros TCEE del repositorio de la ATCEE (autor, promoción, numeración y enlace) y los manuales que la ATCEE recomienda para su bloque. `buscar_temario(consulta)` busca en el programa por materia, bloque o palabras y agrupa los temas por bloque de la organización del temario. Los apuntes de otros autores se recomiendan con su enlace: no se leen ni se copian aquí. Los de numeración antigua (anteriores a la promoción LXXIII) pueden no ser el mismo tema: comprueba el nombre del fichero.
+
 ## Qué devuelve cada una
 
 | Herramienta | Cuándo | Qué trae |
