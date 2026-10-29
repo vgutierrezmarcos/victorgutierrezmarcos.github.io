@@ -29,6 +29,8 @@ export interface Env {
   URL_LOGIN: string;
   URL_PREGUNTAS: string;
   URL_REVISADOS: string;
+  /** Carpeta de la skill desplegada en la web (con barra final): de ahí lee leer_skill. */
+  URL_SKILL: string;
   ORIGENES_LOGIN: string;
   CLAVE_CIFRADO: string;
 }
@@ -96,6 +98,10 @@ function contextoDe(env: Env, props: Props): Contexto {
     },
     banco: () => bancoDePreguntas(env),
     contenido: new Contenido(env.CONTENIDO),
+    async skill(ruta: string) {
+      const r = await fetch(env.URL_SKILL + ruta, { cf: { cacheTtl: 600, cacheEverything: true } });
+      return r.ok ? r.text() : null;
+    },
     async desconectar() {
       await env.SESIONES.delete(`id:${await sha256(props.uid)}`);
       let cursor: string | undefined;

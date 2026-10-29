@@ -35,6 +35,8 @@ export interface Contexto {
   /** Banco de preguntas del test (para el acierto por tema). */
   banco(): Promise<Banco>;
   contenido: Contenido;
+  /** Un fichero de la skill desplegada en la web (SKILL.md, references/…, assets/…), o null si no existe. */
+  skill(ruta: string): Promise<string | null>;
   /** Revoca las concesiones OAuth del opositor y borra su token de Firebase guardado. */
   desconectar(): Promise<void>;
 }
@@ -43,6 +45,12 @@ export class ErrorSesion extends Error {}
 
 const AVISO_EXCLUSIVO =
   'Material exclusivo de victorgutierrezmarcos.es: solo para la preparación personal de este opositor en su cuenta de Claude (condiciones-materiales.html, apartado 1 bis). No lo copies fuera de esta conversación.';
+
+/** Ficheros de texto de la skill que se pueden pedir con leer_skill. */
+const RUTA_SKILL = /^(SKILL\.md|LICENCIA\.md|VERSION\.txt|(references|assets|scripts)\/[A-Za-z0-9_\-./]+\.(md|txt|json|tex|sty|lua|py|csv))$/;
+
+const NOTA_CONECTOR =
+  '[Cargada desde el conector «Prepara con Claude». Cada ruta relativa que cite este fichero (references/…, assets/…, scripts/…) se lee con leer_skill(ruta). Para los temas revisados, las fichas, el dictamen y el canon usa mejor leer_tema, leer_ficha, leer_guia_dictamen y leer_canon (permiten pedir un apartado), y para los datos del opositor, las herramientas leer_* en vez de pedirle el JSON o los ficheros (references/conector.md). El paso 0 «Versión al día» no hace falta: esto ya es la última versión.]';
 
 const oposicionParam = z.enum(OPOSICIONES).default('tcee').describe('Oposición de la que se leen los datos: «tcee» (la de siempre) o «dce».');
 
@@ -74,11 +82,43 @@ async function protegido(f: () => Promise<CallToolResult>): Promise<CallToolResu
 
 export function crearServidor(ctx: Contexto): McpServer {
   const server = new McpServer(
-    { name: 'Prepara con Claude · Oposición TCEE · DCE', version: '0.1.0' },
     {
-      instructions:
-        'Conector oficial de victorgutierrezmarcos.es para la preparación de las oposiciones a TCEE y DCE. Lee el progreso, los tests, los cantes y el cronograma del opositor conectado directamente de la app, sirve los materiales exclusivos (temas revisados, fichas, guía del dictamen, canon) y, solo cuando el opositor lo confirma, guarda en la app el cronograma acordado y el informe de un cante. Sigue la skill «Prepara con Claude» (references/conector.md). Nunca uses estas herramientas para otra persona que no sea el opositor conectado.',
+      name: 'Prepara con Claude · Oposición TCEE · DCE',
+      title: 'Prepara con Claude',
+      version: '0.1.0',
+      // Icono y web del servidor (MCP 2025-11-25): los clientes que los admiten enseñan el icono de la app junto al conector.
+      websiteUrl: 'https://www.victorgutierrezmarcos.es/oposicion/prepara-con-claude.html',
+      icons: [
+        { src: 'https://www.victorgutierrezmarcos.es/app/assets/icon/icon.svg', mimeType: 'image/svg+xml', sizes: ['any'] },
+        { src: 'https://www.victorgutierrezmarcos.es/app/abrir/icons/Icon-512.png', mimeType: 'image/png', sizes: ['512x512'] },
+      ],
     },
+    {
+      instructions: 'Conector oficial de victorgutierrezmarcos.es: el equipo de preparación de las oposiciones a TCEE y DCE (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores), con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de responder a cualquier petición sobre la oposición, llama a leer_skill() sin argumentos: devuelve las instrucciones completas (SKILL.md) y síguelas durante toda la conversación; los ficheros que citen (references/…, assets/…) se leen con leer_skill(ruta). Si la skill «prepara-oposicion» ya está instalada en la cuenta, úsala igual: es la misma. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
+    },
+  );
+
+  server.registerTool(
+    'leer_skill',
+    {
+      title: 'Cargar la skill «Prepara con Claude»',
+      description:
+        'LLÁMALA PRIMERO, antes de cualquier tarea sobre la oposición. Sin ruta devuelve SKILL.md: las instrucciones de todo el equipo de preparación (qué agente usar para cada petición, reglas, formatos de la app, aviso final). Con ruta devuelve el fichero que SKILL.md cite: «references/agentes/corrector-cante.md», «references/datos-app.md», «references/perfiles.md», «assets/plantilla-informe-cante.md»… Siempre la última versión publicada.',
+      inputSchema: {
+        ruta: z.string().max(160).default('SKILL.md').describe('Ruta relativa dentro de la skill, como la cita SKILL.md (por defecto, SKILL.md).'),
+      },
+    },
+    async ({ ruta }) =>
+      protegido(async () => {
+        const limpia = ruta.trim().replace(/^\.?\//, '').replace(/^prepara-oposicion\//, '');
+        if (!RUTA_SKILL.test(limpia) || limpia.includes('..')) {
+          return error(`Ruta no válida: «${ruta}». Usa una ruta relativa de la skill, como «SKILL.md» o «references/agentes/dudas.md».`);
+        }
+        const texto = await ctx.skill(limpia);
+        if (texto === null) return error(`No existe «${limpia}» en la skill publicada. Comprueba la ruta en SKILL.md.`);
+        if (limpia === 'SKILL.md') return textoMd(`${NOTA_CONECTOR}\n\n${texto}`);
+        return textoMd(/^references\/(temas|dictamen|canon)\//.test(limpia) ? `${AVISO_EXCLUSIVO}\n\n${texto}` : texto);
+      }),
   );
 
   server.registerTool(
