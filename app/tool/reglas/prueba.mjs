@@ -80,6 +80,17 @@ await caso('un retirado tampoco', () => assertFails(getDoc(doc(db('retirado'), '
 await caso('el preparador no usa la pizarra de un cante propio del alumno', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/propio/pizarra/p1'), { n: 1, trazos: [] })));
 await caso('…ni otra subcolección de la clase', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/clase/otra/x'), { a: 1 })));
 
+console.log('Informes del cante (conector «Prepara con Claude»)');
+await caso('el alumno guarda el informe de un cante', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'), { fecha: '2026-11-01T10:12:00Z', origen: 'claude', informe: '# Informe', valoracion: 3 })));
+await caso('…y el de una clase', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/cantes/clase/informes/i1'), { origen: 'claude', informe: 'x' })));
+await caso('su preparador enlazado lee los informes', () => assertSucceeds(getDoc(doc(db('paula'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'))));
+await caso('…y los lista', () => assertSucceeds(getDocs(collection(db('paula'), 'users/alu/cantes/clase/informes'))));
+await caso('…pero no los escribe', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/clase/informes/i2'), { origen: 'paula', informe: 'x' })));
+await caso('…ni los cambia', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cantes/clase/informes/i1'), { informe: 'y' })));
+await caso('otro preparador verificado no los lee', () => assertFails(getDoc(doc(db('olga'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'))));
+await caso('otro opositor tampoco', () => assertFails(getDoc(doc(db('pepe'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'))));
+await caso('un retirado tampoco', () => assertFails(getDoc(doc(db('retirado'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'))));
+
 console.log('Notas del preparador (su segunda pizarra, en sus datos)');
 await caso('el preparador escribe sus notas de la clase', () => assertSucceeds(setDoc(doc(db('paula'), 'users/paula/sesiones/clase/notas/p1'), { n: 1, trazos: [], alumno: 'alu', visible: false })));
 await caso('…y otra página ya compartida', () => assertSucceeds(setDoc(doc(db('paula'), 'users/paula/sesiones/clase/notas/p2'), { n: 2, trazos: [], alumno: 'alu', visible: true })));

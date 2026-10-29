@@ -39,3 +39,25 @@ Decidido el 28 de octubre de 2026: la skill sale primero; el conector se hace cu
 ## Esfuerzo y riesgos
 
 Tres o cuatro días de trabajo: Worker con OAuth (un día), herramientas de lectura (medio día), escritura y reglas (medio día), publicación del contenido y skill ligera (medio día), privacidad y app (un día). Riesgos: el registro dinámico de clientes de Claude.ai cambia con el tiempo (seguir la documentación de conectores personalizados); el refresh token de Firebase caduca si el usuario cambia la contraseña de Google o revoca la app (el conector pide volver a entrar); el límite gratuito de Firestore (50.000 lecturas al día) comparte cuota con la app.
+
+## Estado (29 oct. 2026)
+
+**Hecho (sin desplegar; el agente principal hace el commit):**
+
+- `mcp/worker/`: el Worker entero en TypeScript, con `@cloudflare/workers-oauth-provider` 1.2.4 (OAuth 2.1: PKCE S256, registro dinámico RFC 7591, metadatos RFC 8414 y RFC 9728, `iss` RFC 9207, revocación, tokens por hash y `props` cifrados en `OAUTH_KV`) y `@modelcontextprotocol/sdk` 1.32.2 (protocolo 2025-11-25; Claude negocia 2025-06-18) con el transporte Streamable HTTP **sin estado** del SDK (`WebStandardStreamableHTTPServerTransport`, un servidor por petición): sin Durable Objects ni `McpAgent` (obsoleto según Cloudflare; los DO con SQLite entran en el plan gratuito desde abril de 2025, pero no hacen falta). Las doce herramientas de la tabla (más `leer_canon`), Firestore por REST con el ID token del opositor, refresh token cifrado con AES-GCM (`CLAVE_CIFRADO`) y caché cifrada del ID token en `SESIONES`, contenido exclusivo en `CONTENIDO`, comprobación del refresh token de Firebase en cada renovación (`invalid_grant` si la app lo revocó). Pruebas: 38 con vitest sobre workerd (conversión Firestore, acierto por tema, Leitner, `Cronograma.toJson()` exacto, informe, cifrado, las doce herramientas con un Firestore simulado, initialize y tools/list por HTTP), todas en verde; `wrangler dev --local` recorrido con curl: 401 con `resource_metadata`, los dos `.well-known`, registro de cliente, página de consentimiento y 302 a `login.html`.
+- `mcp/login.html` (entra con Google con Firebase 8.10.1 y devuelve los tokens al Worker), `mcp/publicar-contenido.py` (sube los `.md` de la skill a KV con `wrangler kv bulk put` e `indice.json`), `mcp/README.md` (despliegue, secretos, límites del plan gratuito, alta en Claude, mantenimiento).
+- Reglas: bloque `cantes/{id}/informes/{informe}` en `app/tool/reglas/generar.py` (el dueño lee y escribe por la regla general; el preparador enlazado lee), `firestore.rules` regenerado, 9 casos nuevos en `prueba.mjs`; emulador pasado: **344 correctas, 0 fallidas**. Pendiente de publicar en la consola.
+- Privacidad: `politica-cookies.html`, apartado 2.3 (punto «Conector “Prepara con Claude”»: qué hace, con qué sesión, qué guarda cifrado, caducidad, cómo revocar, base legal consentimiento), tabla de terceros (Cloudflare como encargado, región no fijable en el plan gratuito) y la lista de encargados.
+- Skill: `claude/prepara-con-claude/references/conector.md` (usar las herramientas en vez del JSON, qué devuelve cada una, escribir solo con confirmación, skill ligera). `SKILL.md` y `skill-opositor.py --ligera` los tocan otros agentes.
+- App: tareas anotadas en `app/DCE.md`, epígrafe «Conector Claude (MCP)».
+
+**Falta (Víctor):**
+
+1. Cuenta de Cloudflare y despliegue, siguiendo `mcp/README.md`: `npm install`, `wrangler login`, crear los tres KV y poner sus id en `wrangler.toml`, `openssl rand -base64 32 | npx wrangler secret put CLAVE_CIFRADO`, `npx wrangler deploy`.
+2. Con la URL real del Worker: `URL_WORKER` en `wrangler.toml`, la constante `WORKER` en `mcp/login.html` y el enlace en `oposicion/prepara-con-claude.html`; volver a desplegar y publicar la web (login.html tiene que estar en `https://www.victorgutierrezmarcos.es/mcp/login.html`).
+3. Publicar `firestore.rules` en la consola de Firebase (bloque `informes`).
+4. `python3 scripts/skill-opositor.py && python3 mcp/publicar-contenido.py` (sube el contenido exclusivo a KV); repetirlo con cada tema aprobado.
+5. Probar con la cuenta propia: Claude.ai → Configuración → Conectores → Añadir conector personalizado → URL `https://…/mcp` → Conectar (consentimiento → Google → vuelta a Claude) → «lee mi progreso». En Claude Code: `claude mcp add --transport http prepara-con-claude https://…/mcp`.
+6. Skill ligera (`scripts/skill-opositor.py --ligera`) y que `SKILL.md` apunte a `references/conector.md` cuando haya herramientas del conector (otro agente).
+7. App (`app/DCE.md`): pantalla de informes del cante, «Desconectar Claude», aviso en `TarjetaPrivacidad`.
+8. Página `oposicion/prepara-con-claude.html`: apartado «Conector» con los pasos de alta y la novedad en `novedades.json` cuando esté desplegado.

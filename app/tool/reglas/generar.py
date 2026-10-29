@@ -261,6 +261,13 @@ USUARIO = """
             && (esPreparadorDe(%OP%, uid) || esSustitutoDe(%OP%, id))
             && get(deUsuario(%OP%, uid, 'cantes/' + id)).data.get('preparador', '') == request.auth.uid;
         }
+
+        // Informes de corrección de un cante (los escribe el conector «Prepara con
+        // Claude» en nombre del alumno, dueño de su subárbol): el preparador
+        // enlazado los lee como lee el cante; no los escribe.
+        match /informes/{informe} {
+          allow read: if esPreparadorDe(%OP%, uid);
+        }
       }
       // Notas del preparador de una clase (su segunda pizarra, en sus datos:
       // sesiones/{id}/notas/{p}): solo las escribe él (dueño de su subárbol);

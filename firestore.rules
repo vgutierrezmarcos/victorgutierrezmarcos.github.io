@@ -246,6 +246,13 @@ service cloud.firestore {
             && (esPreparadorDe('tcee', uid) || esSustitutoDe('tcee', id))
             && get(deUsuario('tcee', uid, 'cantes/' + id)).data.get('preparador', '') == request.auth.uid;
         }
+
+        // Informes de corrección de un cante (los escribe el conector «Prepara con
+        // Claude» en nombre del alumno, dueño de su subárbol): el preparador
+        // enlazado los lee como lee el cante; no los escribe.
+        match /informes/{informe} {
+          allow read: if esPreparadorDe('tcee', uid);
+        }
       }
       // Notas del preparador de una clase (su segunda pizarra, en sus datos:
       // sesiones/{id}/notas/{p}): solo las escribe él (dueño de su subárbol);
@@ -578,6 +585,13 @@ service cloud.firestore {
           allow read, write: if compartido in ['reloj', 'pizarra']
             && (esPreparadorDe(op, uid) || esSustitutoDe(op, id))
             && get(deUsuario(op, uid, 'cantes/' + id)).data.get('preparador', '') == request.auth.uid;
+        }
+
+        // Informes de corrección de un cante (los escribe el conector «Prepara con
+        // Claude» en nombre del alumno, dueño de su subárbol): el preparador
+        // enlazado los lee como lee el cante; no los escribe.
+        match /informes/{informe} {
+          allow read: if esPreparadorDe(op, uid);
         }
       }
       // Notas del preparador de una clase (su segunda pizarra, en sus datos:
