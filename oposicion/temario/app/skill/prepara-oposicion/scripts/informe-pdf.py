@@ -254,7 +254,9 @@ def via_latex(texto, opo, salida, pandoc, xelatex, latexmk, base, guardar_tex=Fa
             base = [xelatex, '-interaction=nonstopmode', '-file-line-error']
             if 'miktex' in xelatex.lower():
                 base.append('--enable-installer')
-            base.append(ruta_para(xelatex, tex) if es_exe(xelatex) else 'informe-cuerpo.tex')
+            # Siempre el nombre relativo: el directorio de trabajo ya es el temporal (también para un .exe de
+            # Windows, que hereda el cwd de /mnt/c), y una ruta absoluta de Windows con «~» (nombres 8.3) rompe a TeX.
+            base.append('informe-cuerpo.tex')
             pasadas = 2
             for i in range(3):
                 try:
@@ -271,7 +273,7 @@ def via_latex(texto, opo, salida, pandoc, xelatex, latexmk, base, guardar_tex=Fa
                 if i + 1 >= pasadas:
                     break
         else:
-            r = subprocess.run([latexmk, '-xelatex', '-interaction=nonstopmode', ruta_para(latexmk, tex) if es_exe(latexmk) else 'informe-cuerpo.tex'],
+            r = subprocess.run([latexmk, '-xelatex', '-interaction=nonstopmode', 'informe-cuerpo.tex'],
                                capture_output=True, text=True, cwd=tmp, timeout=600, errors='replace')
             contenido = open(log, encoding='utf-8', errors='replace').read() if os.path.exists(log) else ''
             if r.returncode != 0:

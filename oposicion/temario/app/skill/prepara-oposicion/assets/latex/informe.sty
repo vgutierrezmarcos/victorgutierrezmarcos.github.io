@@ -185,7 +185,9 @@
 
 % --- Listas (compactas, viñetas en el color principal) ---------------------------------
 \setlist{itemsep=0.15em,topsep=0.3em,parsep=0.15em,beginpenalty=10000}
-\setlist[itemize,1]{label={\color{informeprimario}\scriptsize$\blacksquare$},leftmargin=1.4em}
+% Viñeta: un cuadrado dibujado con \rule (no depende de amssymb ni de unicode-math)
+\newcommand{\informecuadrado}[1][0.42em]{\raisebox{0.18ex}{\rule{#1}{#1}}}
+\setlist[itemize,1]{label={\color{informeprimario}\informecuadrado},leftmargin=1.4em}
 \setlist[itemize,2]{label={\color{informeprimario}--},leftmargin=1.4em}
 \setlist[itemize,3]{label={\color{informeprimario}\footnotesize$\circ$},leftmargin=1.4em}
 \setlist[enumerate,1]{label={\color{informeprimario}\arabic*.},leftmargin=1.6em}
@@ -311,7 +313,7 @@
   \informe@simbolo{"2202}{\ensuremath{\partial}}\informe@simbolo{"221E}{\ensuremath{\infty}}%
   \informe@simbolo{"2208}{\ensuremath{\in}}\informe@simbolo{"2209}{\ensuremath{\notin}}%
   \informe@simbolo{"2200}{\ensuremath{\forall}}\informe@simbolo{"2203}{\ensuremath{\exists}}%
-  \informe@simbolo{"2205}{\ensuremath{\emptyset}}\informe@simbolo{"220E}{\ensuremath{\blacksquare}}%
+  \informe@simbolo{"2205}{\ensuremath{\emptyset}}\informe@simbolo{"220E}{\informecuadrado}%
   \informe@simbolo{"221D}{\ensuremath{\propto}}\informe@simbolo{"221A}{\ensuremath{\surd}}%
   \informe@simbolo{"2206}{\ensuremath{\Delta}}\informe@simbolo{"2207}{\ensuremath{\nabla}}%
   \informe@simbolo{"2032}{\ensuremath{{}^{\prime}}}\informe@simbolo{"2033}{\ensuremath{{}^{\prime\prime}}}%
@@ -325,7 +327,7 @@
   \informe@simbolo{"00AC}{\ensuremath{\neg}}\informe@simbolo{"27E8}{\ensuremath{\langle}}%
   \informe@simbolo{"27E9}{\ensuremath{\rangle}}\informe@simbolo{"2502}{\textbar}%
   \informe@simbolo{"2500}{--}\informe@simbolo{"2022}{\textbullet}%
-  \informe@simbolo{"25AA}{\ensuremath{\scriptscriptstyle\blacksquare}}\informe@simbolo{"25A0}{\ensuremath{\blacksquare}}%
+  \informe@simbolo{"25AA}{\informecuadrado[0.3em]}\informe@simbolo{"25A0}{\informecuadrado[0.6em]}%
   \informe@simbolo{"25A1}{\ensuremath{\square}}\informe@simbolo{"25B6}{\ensuremath{\blacktriangleright}}%
   \informe@simbolo{"25B8}{\ensuremath{\blacktriangleright}}\informe@simbolo{"2026}{\ldots}%
 }
