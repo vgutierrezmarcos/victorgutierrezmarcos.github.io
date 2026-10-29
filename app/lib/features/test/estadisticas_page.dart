@@ -5,7 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/dificultad.dart';
 import '../../data/models/pregunta.dart';
+import '../cronograma/planificador.dart' show compararCodigos;
 import '../../data/models/resultado.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -77,6 +79,10 @@ class EstadisticasPage extends ConsumerWidget {
                   Tarjeta(child: _porTema(context, tests, banco)),
                   const TituloSeccion('Las que más fallas'),
                   Tarjeta(child: _masFalladas(context, tests, banco)),
+                  if (ref.watch(dificultadProvider).valueOrNull case final d? when !d.vacio) ...[
+                    const TituloSeccion('Las que más falla todo el mundo'),
+                    Tarjeta(child: FalladasPorTodos(dificultad: d, banco: banco)),
+                  ],
                 ],
                 const TituloSeccion('Repaso Leitner'),
                 Tarjeta(
@@ -268,3 +274,67 @@ class EstadisticasPage extends ConsumerWidget {
     ]);
   }
 }
+
+/// Las preguntas que más falla todo el mundo (dificultad.json), con filtro por
+/// tema: al opositor le dice qué cuesta a todos; al preparador, en qué insistir.
+class FalladasPorTodos extends StatefulWidget {
+  const FalladasPorTodos({super.key, required this.dificultad, required this.banco, this.cuantas = 10});
+  final Dificultad dificultad;
+  final BancoPreguntas banco;
+  final int cuantas;
+
+  @override
+  State<FalladasPorTodos> createState() => _FalladasPorTodosState();
+}
+
+class _FalladasPorTodosState extends State<FalladasPorTodos> {
+  String? _tema;
+
+  @override
+  Widget build(BuildContext context) {
+    final todas = widget.dificultad.masFalladas(ids: widget.banco.preguntas.map((p) => p.id)).where((e) => widget.banco.porId(e.id) != null).toList();
+    if (todas.isEmpty) return Text('Todavía hay pocas respuestas de todos para saberlo.', style: context.textos.bodySmall);
+    final temas = <String>{for (final e in todas) ...widget.banco.porId(e.id)!.temas}.toList()..sort(compararCodigos);
+    final lista = todas.where((e) => _tema == null || widget.banco.porId(e.id)!.temas.contains(_tema)).take(widget.cuantas).toList();
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      Text('Con los tests de todos los usuarios de la app y del simulador (${widget.dificultad.tests} con el detalle por pregunta); solo preguntas hechas al menos ${widget.dificultad.minimo} veces.', style: context.textos.labelSmall),
+      const SizedBox(height: 8),
+      DropdownButton<String?>(
+        isExpanded: true,
+        value: _tema,
+        items: [
+          const DropdownMenuItem<String?>(value: null, child: Text('Todos los temas')),
+          for (final t in temas) DropdownMenuItem<String?>(value: t, child: Text(t)),
+        ],
+        onChanged: (v) => setState(() => _tema = v),
+      ),
+      for (final e in lista)
+        Builder(builder: (context) {
+          final p = widget.banco.porId(e.id)!;
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              SizedBox(width: 44, child: Text('${(100 * e.dato.mal).round()} %', style: context.textos.labelMedium?.copyWith(color: Paleta.fallo))),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  TextoConFormulas(p.enunciado, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
+                  Text('${p.tema} · ${p.examen} · ${e.dato.vistas} veces', style: context.textos.labelSmall),
+                ]),
+              ),
+            ]),
+          );
+        }),
+      const SizedBox(height: 6),
+      if (lista.isNotEmpty)
+        Align(
+          alignment: Alignment.centerLeft,
+          child: FilledButton.tonalIcon(
+            onPressed: () => context.push('/examen', extra: ConfigTest(idsFijos: [for (final e in lista) e.id], minutos: 0, modoEstudio: true)),
+            icon: const Icon(Icons.replay, size: 18),
+            label: const Text('Hacer test con ellas (corrigiendo cada una)'),
+          ),
+        ),
+    ]);
+  }
+}
+

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'temas_clase_vista.dart';
 import '../../data/models/temas_clase.dart';
@@ -11,6 +12,7 @@ import '../../core/calendario.dart';
 import '../../core/cronograma_providers.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../cantar/grabaciones.dart';
 import '../../data/models/oposicion.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
@@ -362,9 +364,14 @@ class CantePage extends ConsumerWidget {
               ]),
             ),
           ],
+          // Las grabaciones de este cante (solo en este móvil).
+          if (!kIsWeb && Grabaciones.deCante(c.id).isNotEmpty) ...[
+            const TituloSeccion('Grabación'),
+            ListaGrabaciones(canteId: c.id),
+          ],
           // Deberes que deja el preparador para esta clase.
           if (c.dePreparador && c.tareas.isNotEmpty) ...[
-            TituloSeccion('Deberes para esta clase · ${resumenDeberes(c)}'),
+            TituloSeccion('${c.hecho ? 'Deberes para la próxima clase' : 'Deberes para esta clase'} · ${resumenDeberes(c)}'),
             Tarjeta(
               color: c.tareasHechas == c.tareas.length ? null : context.colores.primarioPalido,
               child: ListaDeberes(

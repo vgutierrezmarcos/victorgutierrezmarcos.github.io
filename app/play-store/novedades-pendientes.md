@@ -11,6 +11,13 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 - (28 oct., siguiente versión) Si tu móvil pierde la sesión al cerrar la app del todo (le pasaba a Víctor en un Galaxy S24), o la cierra en pleno uso, la app vuelve a entrar sola con tu cuenta de Google; «Cerrar sesión» sigue siendo la única forma de salir
 - (28 oct., siguiente versión) DCE: la organización del temario de Manuel (bloques con colores y esquemas del 1.º y del 3.º) y el cronograma por fases del 1.er ejercicio. La primera vuelta, después simulacros escritos de 3 horas como en el examen y, al final, la revisión de los temas flojos. Cada tema escrito se apunta como bien, regular o mal
 
+- (29 oct., 1.22.0) Autoevalúate: en los 15 temas revisados con ficha de repaso, 24 preguntas cortas (conceptos, fórmulas, qué predice cada modelo y verdadero o falso) para responder de memoria, con repaso espaciado
+- (29 oct., 1.22.0) Cuadro de coyuntura de España para el dictamen (Organización y junto a la guía del dictamen): PIB, inflación, paro, déficit, deuda, cuenta corriente, bono, tipos del BCE, euríbor y dólar, con la zona del euro al lado, el siguiente dato y «Tápalo y adivina»; se actualiza solo cada día
+- (29 oct., 1.22.0) El test dice cuántos fallan cada pregunta (con los tests de todos, sin nombres), «Las que más falla todo el mundo» en Estadísticas, por tema, y el modo «Puntos flojos · los de todos»; el simulador de la web también lo enseña y guarda el detalle de cada test
+- (29 oct., 1.22.0) El buscador del temario busca también dentro de los temas, en sus epígrafes, y abre el PDF en la página
+- (29 oct., 1.22.0) Mis grabaciones: cada grabación de Cantar queda unida a su cante del diario; se escucha, se manda al preparador por WhatsApp o se borra (solo en el móvil)
+- (29 oct., 1.22.0) Esquema con huecos (apartados tapados que hay que adivinar) y deberes aunque no haya otra clase programada («para la próxima clase»)
+
 ## Publicado el 29 oct. 2026 (1.21.0 en producción)
 
 Novedad en `novedades.json`: «Versión 1.21.0 de la app en Google Play: explicación de las 1004 preguntas del test, test que aprende de tus fallos, «Hoy te toca» con racha opcional, esquema a ciegas con lista de control, guía del dictamen y temas por ejercicios; para el preparador, invitación de un toque, deberes, valoración por criterios y temas por WhatsApp a los alumnos sin app». Resumía lo acumulado del 24 al 28 oct. (1.20.3 a 1.21.0):

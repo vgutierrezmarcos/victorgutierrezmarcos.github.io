@@ -60,6 +60,12 @@ const claveBienvenidaVista = 'bienvenida_vista';
 /// Veces que la sesión de Firebase se perdió y se recuperó sola al arrancar
 /// con la cuenta de Google del móvil (`recuperarSesion`).
 const claveSesionesRecuperadas = 'sesiones_recuperadas';
+/// Periodo de cada indicador del cuadro de coyuntura ya visto (id → periodo).
+const claveCoyunturaVista = 'coyuntura_vista';
+/// Índice local de las grabaciones de los cantes (ruta, fecha y cante).
+const claveGrabaciones = 'grabaciones';
+/// Leitner de la autoevaluación de cada tema revisado (prefijo + código).
+const prefijoAutoevaluacion = 'autoeval_';
 
 /// En la caja [Cajas.app]: invitación de un preparador pendiente de conectar
 /// (su código y la oposición), llegada por el enlace de invitación o por el

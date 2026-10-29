@@ -289,7 +289,12 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
               margin: const EdgeInsets.only(top: 4),
               padding: const EdgeInsets.only(top: 8),
               decoration: BoxDecoration(border: Border(top: BorderSide(color: context.colores.bordeClaro))),
-              child: Text('${p.anulada ? 'Pregunta anulada: se cuenta como acierto. ' : ''}${p.examen}', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, fontStyle: FontStyle.italic, color: context.colores.textoSuave)),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('${p.anulada ? 'Pregunta anulada: se cuenta como acierto. ' : ''}${p.examen}', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, fontStyle: FontStyle.italic, color: context.colores.textoSuave)),
+                // Cuántos la fallan, con los tests de todos (dificultad.json).
+                if (ref.watch(dificultadProvider).valueOrNull?.texto(p.id) case final t?)
+                  Padding(padding: const EdgeInsets.only(top: 2), child: Text(t, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, color: context.colores.textoSuave))),
+              ]),
             ),
           ]),
         ),

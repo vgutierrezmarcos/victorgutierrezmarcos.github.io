@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../cantar/grabaciones.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/sincronizar.dart';
@@ -64,6 +66,13 @@ class DiarioVista extends ConsumerWidget {
                   Padding(padding: const EdgeInsets.only(top: 4), child: Text('Valorados por debajo de 3 de media. El sorteo de práctica puede darles prioridad.', style: context.textos.labelSmall)),
                 ],
                 EvolucionCriterios(cantes: diario),
+                if (!kIsWeb && Grabaciones.todas().isNotEmpty)
+                  FilaEnlace(
+                    icono: Icons.library_music_outlined,
+                    titulo: 'Mis grabaciones',
+                    subtitulo: '${Grabaciones.todas().length} en este móvil: escúchalas, mándalas a tu preparador o bórralas',
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MisGrabacionesPage())),
+                  ),
                 const TituloSeccion('Por tema'),
                 Tarjeta(
                   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -108,6 +109,12 @@ class _EsquemaCiegasPageState extends ConsumerState<EsquemaCiegasPage> {
   int _valoracion = 0;
   bool _guardando = false;
 
+  /// «Con huecos»: el esquema con apartados tapados al azar, para rellenarlos
+  /// de memoria («¿qué va después de…?») en vez de sacarlo entero.
+  bool _huecos = false;
+  Set<String> _tapados = const {};
+  final _destapados = <String>{};
+
   @override
   void initState() {
     super.initState();
@@ -134,13 +141,14 @@ class _EsquemaCiegasPageState extends ConsumerState<EsquemaCiegasPage> {
       segundos: _segundosEsquema,
       valoracion: _valoracion,
       comentarios: _texto.text.trim().isEmpty ? '' : 'Esquema escrito:\n${_texto.text.trim()}',
-      cubiertos: {tema.codigo: _tenia.toList()..sort()},
+      // Con huecos, los apartados a la vista cuentan como tenidos: solo se juzgan los tapados.
+      cubiertos: {tema.codigo: (_huecos ? {..._tenia, ...esquema.map((e) => e.titulo).where((t) => !_tapados.contains(t))} : _tenia).toList()..sort()},
       apartados: {tema.codigo: esquema.length},
     );
     final c = Cante(
       id: nuevoId(),
       fecha: _inicio,
-      titulo: 'Esquema a ciegas',
+      titulo: _huecos ? 'Esquema con huecos' : 'Esquema a ciegas',
       minutos: (_segundosEsquema / 60).ceil().clamp(1, 120),
       exposicion: 0,
       ejercicio: tema.ejercicio,
@@ -152,8 +160,8 @@ class _EsquemaCiegasPageState extends ConsumerState<EsquemaCiegasPage> {
       updatedAt: DateTime.now(),
     );
     await ref.read(cantesProvider.notifier).guardar(c);
-    Analitica.instancia.evento('esquema_ciegas', parametros: {'apartados': esquema.length, 'tenia': _tenia.length});
-    messenger.mostrar(SnackBar(content: Text('Esquema guardado en el diario: ${_tenia.length} de ${esquema.length} apartados.')));
+    Analitica.instancia.evento('esquema_ciegas', parametros: {'apartados': esquema.length, 'tenia': _tenia.length, 'huecos': _huecos ? _tapados.length : 0});
+    messenger.mostrar(SnackBar(content: Text(_huecos ? 'Guardado en el diario: ${_tenia.length} de ${_tapados.length} huecos.' : 'Esquema guardado en el diario: ${_tenia.length} de ${esquema.length} apartados.')));
     nav.pop();
   }
 
@@ -208,7 +216,70 @@ class _EsquemaCiegasPageState extends ConsumerState<EsquemaCiegasPage> {
               Expanded(child: Text(tema.titulo, style: context.textos.titleMedium)),
             ]),
             const SizedBox(height: 10),
-            if (!_comparando) ...[
+            if (!_comparando && esquema.length >= 4) ...[
+              SizedBox(
+                width: double.infinity,
+                child: SegmentedButton<bool>(
+                  showSelectedIcon: false,
+                  segments: const [
+                    ButtonSegment(value: false, label: Text('Entero, de memoria')),
+                    ButtonSegment(value: true, label: Text('Con huecos')),
+                  ],
+                  selected: {_huecos},
+                  onSelectionChanged: (s) => setState(() {
+                    _huecos = s.first;
+                    _tapados = _huecos ? tapadosAlAzar(esquema) : const {};
+                    _destapados.clear();
+                    _tenia.clear();
+                  }),
+                  style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                ),
+              ),
+              const SizedBox(height: 10),
+            ],
+            if (!_comparando && _huecos) ...[
+              Text('Hay ${_tapados.length} apartados tapados. Di de memoria qué va en cada hueco, tócalo para comprobarlo y marca si lo sabías.', style: context.textos.bodySmall),
+              const SizedBox(height: 6),
+              Tarjeta(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  for (final e in esquema)
+                    Padding(
+                      padding: EdgeInsets.only(left: 14.0 * e.nivel.clamp(0, 3), top: 3, bottom: 3),
+                      child: !_tapados.contains(e.titulo)
+                          ? Text(e.titulo, style: e.nivel == 0 ? context.textos.titleSmall : context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))
+                          : !_destapados.contains(e.titulo)
+                              ? InkWell(
+                                  onTap: () => setState(() => _destapados.add(e.titulo)),
+                                  child: Container(
+                                    width: double.infinity,
+                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                    decoration: BoxDecoration(color: context.colores.primarioPalido, border: Border.all(color: context.colores.dorado), borderRadius: BorderRadius.circular(6)),
+                                    child: Text('¿Qué va aquí? Toca para verlo', style: context.textos.labelMedium?.copyWith(color: context.esquema.primary, fontStyle: FontStyle.italic)),
+                                  ),
+                                )
+                              : Row(children: [
+                                  Expanded(child: Text(e.titulo, style: context.textos.bodySmall?.copyWith(color: context.esquema.primary, fontWeight: FontWeight.w600))),
+                                  FilterChip(
+                                    label: Text(_tenia.contains(e.titulo) ? 'Lo sabía' : '¿Lo sabías?'),
+                                    selected: _tenia.contains(e.titulo),
+                                    onSelected: (v) => setState(() => v ? _tenia.add(e.titulo) : _tenia.remove(e.titulo)),
+                                    visualDensity: VisualDensity.compact,
+                                  ),
+                                ]),
+                    ),
+                ]),
+              ),
+              const SizedBox(height: 10),
+              FilledButton.icon(
+                onPressed: () => setState(() {
+                  _destapados.addAll(_tapados);
+                  _comparando = true;
+                  _segundosEsquema = _segundos;
+                }),
+                icon: const Icon(Icons.done_all),
+                label: const Text('Terminar'),
+              ),
+            ] else if (!_comparando) ...[
               Text(
                 limite > 0
                     ? 'Saca el esquema de memoria, como en el examen: tienes ${_reloj(limite)} (el tiempo de esquema de un tema). Escríbelo aquí o en la pizarra; cuando acabes, compáralo con el del tema.'
@@ -236,12 +307,15 @@ class _EsquemaCiegasPageState extends ConsumerState<EsquemaCiegasPage> {
                 ),
               ]),
             ] else ...[
-              Text('Tu esquema, ${_reloj(_segundosEsquema)}. Marca los apartados que tenías; los que falten son los que hay que repasar.', style: context.textos.bodySmall),
+              Text(
+                _huecos ? 'Has rellenado ${_tenia.length} de ${_tapados.length} huecos en ${_reloj(_segundosEsquema)}. Corrige si hace falta: los que no sabías son los que hay que repasar.' : 'Tu esquema, ${_reloj(_segundosEsquema)}. Marca los apartados que tenías; los que falten son los que hay que repasar.',
+                style: context.textos.bodySmall,
+              ),
               const SizedBox(height: 6),
               Tarjeta(
                 child: ListaControl(
-                  titulo: '${_tenia.length} de ${esquema.length} apartados',
-                  esquema: esquema,
+                  titulo: _huecos ? '${_tenia.length} de ${_tapados.length} huecos' : '${_tenia.length} de ${esquema.length} apartados',
+                  esquema: _huecos ? esquema.where((e) => _tapados.contains(e.titulo)).toList() : esquema,
                   marcados: _tenia,
                   onChanged: (a, v) => setState(() => v ? _tenia.add(a) : _tenia.remove(a)),
                 ),
@@ -265,3 +339,13 @@ class _EsquemaCiegasPageState extends ConsumerState<EsquemaCiegasPage> {
     );
   }
 }
+
+/// Los apartados que se tapan en «Con huecos»: un tercio al azar (al menos
+/// dos), nunca el primero para que haya por dónde empezar.
+Set<String> tapadosAlAzar(List<EntradaEsquema> esquema, {math.Random? azar}) {
+  final r = azar ?? math.Random();
+  final candidatos = esquema.skip(1).map((e) => e.titulo).toSet().toList()..shuffle(r);
+  final n = math.max(2, (esquema.length / 3).round()).clamp(0, candidatos.length);
+  return candidatos.take(n).toSet();
+}
+

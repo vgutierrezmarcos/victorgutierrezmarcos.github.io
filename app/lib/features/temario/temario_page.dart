@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/esquema.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
@@ -15,6 +16,9 @@ import '../../widgets/comunes.dart';
 import '../../widgets/sincronizar.dart';
 import '../test/config_test_page.dart';
 import '../test/motor_test.dart';
+import '../../data/models/coyuntura.dart';
+import '../organizacion/coyuntura_page.dart';
+import 'esquema_tema.dart';
 import 'tema_page.dart';
 
 /// Temario: ejercicios → partes → temas, con estado de estudio y descarga offline.
@@ -63,7 +67,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> with _FilasTemario {
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Buscar tema (p. ej. 3A7, Keynes, IVA)…',
+                hintText: 'Buscar tema o epígrafe (3A7, Keynes, Mundell)…',
                 prefixIcon: const Icon(Icons.search),
                 isDense: true,
                 suffixIcon: _busqueda.isEmpty ? null : IconButton(icon: const Icon(Icons.clear), onPressed: () => setState(() => _busqueda = '')),
@@ -100,10 +104,33 @@ class _TemarioPageState extends ConsumerState<TemarioPage> with _FilasTemario {
         if (_busqueda.trim().isNotEmpty) {
           final q = _normalizar(_busqueda);
           final res = t.todosLosTemas.where((x) => _normalizar('${x.codigo} ${x.titulo}').contains(q) || _normalizar(x.codigo.replaceAll('.', '')).contains(q.replaceAll('.', '').replaceAll(' ', ''))).toList();
+          // También dentro de los temas: los epígrafes de cada PDF, y se abre en su página.
+          final esquemas = <Tema, List<EntradaEsquema>>{
+            for (final x in t.todosLosTemas)
+              if (x.disponible)
+                if (esquemaDelTema(ref, x) case final e?) x: e,
+          };
+          final epigrafes = buscarEpigrafes(esquemas, _busqueda);
           return Refrescable(
               child: ListaAdaptable(padding: const EdgeInsets.all(16), children: [
-            Text('${res.length} resultados', style: context.textos.bodySmall),
+            Text('${res.length} ${res.length == 1 ? 'tema' : 'temas'}${epigrafes.isEmpty ? '' : ' · ${epigrafes.length}${epigrafes.length >= 40 ? ' o más' : ''} epígrafes'}', style: context.textos.bodySmall),
             for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
+            if (epigrafes.isNotEmpty) ...[
+              const TituloSeccion('Dentro de los temas'),
+              Tarjeta(
+                padding: EdgeInsets.zero,
+                child: Column(children: [
+                  for (final e in epigrafes)
+                    ListTile(
+                      dense: true,
+                      leading: Icon(Icons.subdirectory_arrow_right, size: 18, color: context.esquema.primary),
+                      title: Text(e.entrada.titulo, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
+                      subtitle: Text('${e.tema.codigo} · ${e.tema.titulo} · pág. ${e.entrada.pagina}', maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: e.tema, paginaInicial: e.entrada.pagina))),
+                    ),
+                ]),
+              ),
+            ],
           ]));
         }
         // En TCEE todos los temas tienen PDF; en una oposición que aún publica sus
@@ -355,6 +382,20 @@ class _EjercicioPageState extends ConsumerState<EjercicioPage> with _FilasTemari
               const SizedBox(height: 6),
               const TituloSeccion('Dictamen de coyuntura'),
               _filaGuiaDictamen(guiaAnterior, dictamen, descargas),
+              Tarjeta(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CoyunturaPage())),
+                child: Row(children: [
+                  Icon(Icons.query_stats, color: context.esquema.primary),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text('Cuadro de coyuntura', style: context.textos.titleSmall),
+                      Text(resumenCoyuntura(ref.watch(coyunturaProvider).valueOrNull ?? Coyuntura.vacia), style: context.textos.labelSmall),
+                    ]),
+                  ),
+                  const Icon(Icons.chevron_right),
+                ]),
+              ),
               for (final r in ej.recursos)
                 if (deDictamen(r) && r != guiaAnterior) _filaRecurso(r, descargas.descargado(r.url)),
             ] else ...[

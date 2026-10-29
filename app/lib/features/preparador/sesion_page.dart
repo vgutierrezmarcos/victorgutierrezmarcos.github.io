@@ -152,20 +152,24 @@ class SesionPage extends ConsumerWidget {
       );
       if (res == null) return;
       await notifier.guardar(s.copyWith(estado: EstadoCante.hecho, resultado: res));
-      // ¿Deberes para la siguiente clase con este alumno (si ya está programada)?
+      // ¿Deberes para la siguiente clase con este alumno? Si ya está programada
+      // van en ella; si no, en esta misma, como «para la próxima clase».
       final siguiente = ref.read(sesionesProvider).where((x) => x.alumno == s.alumno && x.id != s.id && x.pendiente && !x.borrado && x.fecha.isAfter(s.fecha)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
-      if (siguiente.isEmpty || !context.mounted) return;
+      if (!context.mounted) return;
+      final destino = siguiente.firstOrNull ?? ref.read(sesionesProvider).where((x) => x.id == s.id).firstOrNull ?? s;
       final dejar = await showDialog<bool>(
         context: context,
         builder: (d) => AlertDialog(
           title: const Text('¿Deberes para la siguiente clase?'),
-          content: Text('La del ${fechaCorta(siguiente.first.fecha)}${alumno == null ? '' : ' con ${alumno.nombre}'}. Los verá en su app y se tachan solos al hacerlos.'),
+          content: Text(siguiente.isEmpty
+              ? 'Aún no hay otra clase programada${alumno == null ? '' : ' con ${alumno.nombre}'}: los deberes quedan en esta, «para la próxima clase». Los verá en su app y se tachan solos al hacerlos.'
+              : 'La del ${fechaCorta(siguiente.first.fecha)}${alumno == null ? '' : ' con ${alumno.nombre}'}. Los verá en su app y se tachan solos al hacerlos.'),
           actions: [TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Ahora no')), FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Dejar deberes'))],
         ),
       );
       if (dejar != true || !context.mounted) return;
-      final tareas = await editarDeberes(context, clase: siguiente.first, bolsa: temas, temario: temario);
-      if (tareas != null) await notifier.guardar(siguiente.first.copyWith(tareas: tareas));
+      final tareas = await editarDeberes(context, clase: destino, bolsa: temas, temario: temario);
+      if (tareas != null) await notifier.guardar(destino.copyWith(tareas: tareas));
     }
 
     Future<void> deberes() async {
@@ -450,8 +454,8 @@ class SesionPage extends ConsumerWidget {
           // Deberes para esta clase (los pone el preparador; el alumno los tacha).
           if (s.pendiente || s.tareas.isNotEmpty) ...[
             TituloSeccion(
-              s.tareas.isEmpty ? 'Deberes para esta clase' : 'Deberes: ${resumenDeberes(s)}',
-              accion: s.pendiente ? TextButton.icon(onPressed: deberes, icon: Icon(s.tareas.isEmpty ? Icons.add : Icons.edit_outlined, size: 18), label: Text(s.tareas.isEmpty ? 'Dejar' : 'Cambiar')) : null,
+              s.tareas.isEmpty ? 'Deberes para esta clase' : (s.pendiente ? 'Deberes: ${resumenDeberes(s)}' : 'Deberes para la próxima clase: ${resumenDeberes(s)}'),
+              accion: s.pendiente || s.tareas.isNotEmpty ? TextButton.icon(onPressed: deberes, icon: Icon(s.tareas.isEmpty ? Icons.add : Icons.edit_outlined, size: 18), label: Text(s.tareas.isEmpty ? 'Dejar' : 'Cambiar')) : null,
             ),
             if (s.tareas.isEmpty)
               Text('Estudiar un tema, su esquema a ciegas, cantarlo por su cuenta, un test o lo que quieras. ${conUid ? 'Los ve en Hoy y en la clase, y se tachan solos al hacerlos.' : 'Sin la app, van en el mensaje de los temas y en el informe.'}', style: context.textos.labelSmall)
