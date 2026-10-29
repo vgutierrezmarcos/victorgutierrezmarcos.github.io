@@ -156,6 +156,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_skill',
     {
       title: 'Cargar la skill «Prepara con Claude»',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'LLÁMALA PRIMERO, antes de cualquier tarea sobre la oposición. Sin ruta devuelve SKILL.md: las instrucciones de todo el equipo de preparación (qué agente usar para cada petición, reglas, formatos de la app, aviso final). Con ruta devuelve el fichero que SKILL.md cite: «references/agentes/corrector-cante.md», «references/datos-app.md», «references/perfiles.md», «assets/plantilla-informe-cante.md»… Siempre la última versión publicada.',
       inputSchema: {
@@ -179,6 +180,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'fuentes_tema',
     {
       title: 'Fuentes para estudiar un tema',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'Todas las fuentes que hay para un tema de TCEE o DCE, para recomendar con qué estudiarlo: si está revisado (material exclusivo: léelo con leer_tema y leer_ficha), el PDF del temario de victorgutierrezmarcos.es, el tema equivalente de manuelcabadogarcia.es (DCE), los apuntes de otros TCEE del repositorio de la ATCEE (autor, promoción, numeración y enlace) y los manuales que recomienda la ATCEE para su bloque. Úsala para «¿qué fuente me recomiendas para el 3.B.26?», «¿quién tiene apuntes de este tema?» o antes de explicar un tema no revisado.',
       inputSchema: { tema: z.string().describe('Código del tema: «3.B.26», «3B26», «1.A.4» (DCE)…'), oposicion: oposicionParam },
@@ -208,6 +210,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_fuente',
     {
       title: 'Leer una fuente de un tema',
+      annotations: { readOnlyHint: true, openWorldHint: true },
       description:
         'Lee cualquier fuente de las que da fuentes_tema para valorarla, compararla o explicar su enfoque: los apuntes de otros TCEE del repositorio de la ATCEE (enlace de Drive: Word, Documento de Google, PDF, .doc antiguo o presentación), el PDF de un tema de victorgutierrezmarcos.es o la página de un tema de manuelcabadogarcia.es. Devuelve autor, promoción y numeración (si es de la ATCEE), el esquema (los títulos), el número de palabras y el texto por tramos (desde/limite, en caracteres). Úsala para ordenar apuntes por calidad, ver si cubren el título oficial, comparar autores o preparar una explicación. No reproduzcas su texto: resume, valora y cita al autor.',
       inputSchema: {
@@ -277,6 +280,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'buscar_temario',
     {
       title: 'Buscar en el programa',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'Busca en el programa de TCEE y DCE por materia, bloque o palabras del título y devuelve los temas que encajan, agrupados por bloque de la organización del temario, con su idea clave y qué fuentes tienen (revisado, PDF de la web, Manuel, número de apuntes de la ATCEE). Úsala para «¿qué temas forman la teoría microeconómica?», «¿dónde se estudia la curva de Phillips?», «¿qué temas de comercio internacional hay?». Sin consulta, devuelve los bloques con sus temas.',
       inputSchema: {
@@ -319,6 +323,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_progreso',
     {
       title: 'Leer el progreso del opositor',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'Resumen de la preparación tal como lo exporta la app en «Prepara con Claude»: fechas de los ejercicios e hitos, temas estudiados y en repaso, agenda por tema (vueltas y pendientes), notas propias, horario semanal, repaso Leitner por caja (vencidas y temas con más fallos) y ajustes (rúbrica, temas que no quiere cantar). Mismo formato que oposicion_<id>_para_claude.json sin «cantes», «cronograma» ni «tests»: para eso están las otras herramientas.',
       inputSchema: { oposicion: oposicionParam },
@@ -341,6 +346,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_resultados_test',
     {
       title: 'Leer los resultados de los tests',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'Los últimos tests del opositor (simulacros «test», reto «diario» y repaso «repaso»), del más reciente al más antiguo, con nota sobre 10, aciertos, fallos, sin responder, tiempo y el acierto por tema calculado a partir de sus respuestas (solo en los tests hechos en la app; los de la web no guardan respuestas).',
       inputSchema: {
@@ -364,6 +370,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_cantes',
     {
       title: 'Leer el diario de cantes',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'Los últimos cantes hechos (con su «resultado»: tema cantado, segundos, valoración 1-5 y por tema, comentarios, criterios de la rúbrica, apartados cubiertos) y los próximos programados. «esquema: true» es un esquema a ciegas, no un cante entero. La transcripción del cante no está en la nube (queda en el móvil): el opositor la sube si quiere. El «id» de cada cante sirve para guardar_informe_cante.',
       inputSchema: {
@@ -383,6 +390,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_cronograma',
     {
       title: 'Leer el cronograma activo',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'El cronograma de estudio en curso (semana a semana: primer día, día del cante y temas; las de descanso marcadas), con los temas ya hechos, los desmarcados, el ritmo (temasPorSemana), el día de cante (1 = lunes … 7 = domingo), las fases si es por fases y cuántas propuestas de preparadores tiene pendientes. Null si no tiene ninguno activo.',
       inputSchema: { oposicion: oposicionParam },
@@ -400,6 +408,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'proponer_cronograma',
     {
       title: 'Guardar en la app un cronograma nuevo',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
       description:
         'Crea en la app el cronograma acordado con el opositor (pasa a ser el activo; el anterior queda archivado, no se borra). Úsalo SOLO después de enseñárselo entero y de que confirme expresamente que lo quiere guardar. Una entrada por semana de cante, con la fecha del cante (AAAA-MM-DD, siempre en el día de cante) y los códigos de los temas («3.A.8»); las semanas sin cante entre la primera y la última quedan de descanso. La app lo muestra al sincronizar (al abrirla o cada pocos minutos).',
       inputSchema: {
@@ -440,6 +449,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'guardar_informe_cante',
     {
       title: 'Guardar en la app el informe de un cante',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
       description:
         'Guarda el informe de corrección de un cante en la app (cantes/{id}/informes) y, si se dan, pone en el diario la valoración (1-5, general y por tema), los comentarios (hasta 300 caracteres) y los criterios de la rúbrica, como haría el opositor en «¿Cómo ha ido el cante?». Úsalo SOLO con un cante que ya está en el diario (su «id» viene de leer_cantes) y después de que el opositor confirme el bloque «Para la app».',
       inputSchema: {
@@ -475,6 +485,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'listar_temas_revisados',
     {
       title: 'Listar los temas revisados disponibles',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description: 'Qué temas revisados (con tema completo, ficha de repaso y guion del cante), documentos de la guía del dictamen y del canon del temario sirve este conector, con su fecha de aprobación. Es el índice para leer_tema, leer_ficha, leer_guia_dictamen y leer_canon.',
       inputSchema: {},
     },
@@ -492,6 +503,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_tema',
     {
       title: 'Leer un tema revisado',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'El texto completo de un tema revisado (como se canta: introducción, apartados con sus minutos, conclusión y anexos) en Markdown, o solo un apartado («Introducción», «II», «B», o parte de su título). Sin «apartado» devuelve la lista de apartados y el tema entero si cabe. Material exclusivo: solo para el opositor conectado.',
       inputSchema: { tema: temaParam, apartado: z.string().optional().describe('Apartado concreto; si falta, el tema entero.'), guion: z.boolean().default(false).describe('true: el guion del cante de 30 minutos en vez del tema.') },
@@ -514,6 +526,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_ficha',
     {
       title: 'Leer la ficha de repaso de un tema',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description: 'La ficha de repaso de cuatro páginas de un tema revisado, en Markdown. Material exclusivo: solo para el opositor conectado.',
       inputSchema: { tema: temaParam },
     },
@@ -530,6 +543,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_guia_dictamen',
     {
       title: 'Leer la guía del dictamen de coyuntura',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'La guía del dictamen (1D01) y sus piezas: «guia-1D01» (la guía entera), «resumen-1D01» (resumen de 6-8 páginas), «guion-1D01» (guion del vídeo), «examen-espana» (examen de ejemplo) y «solucion-espana» (solución de máximos). Con «seccion» devuelve solo ese apartado de nivel 2. Material exclusivo.',
       inputSchema: {
@@ -553,6 +567,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'leer_canon',
     {
       title: 'Leer el canon del temario',
+      annotations: { readOnlyHint: true, openWorldHint: false },
       description: 'El canon común del temario revisado: «notacion» (convenciones de notación y símbolos) y «modelos-indice» (índice de los modelos y en qué tema vive cada uno). Material exclusivo.',
       inputSchema: { documento: z.enum(documentosCanon).default('notacion') },
     },
@@ -567,6 +582,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     'desconectar',
     {
       title: 'Desconectar Claude de la app',
+      annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: true, openWorldHint: false },
       description:
         'Revoca el acceso de este conector a los datos del opositor: borra del servidor su token de Firebase y las autorizaciones OAuth. Después, ninguna herramienta funciona hasta que vuelva a conectar. Úsalo solo si el opositor lo pide. También puede hacerlo desde la app (Más → Prepara con Claude → Desconectar Claude).',
       inputSchema: { confirmar: z.literal(true).describe('Tiene que ser true: el opositor ha pedido desconectar.') },
