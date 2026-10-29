@@ -35,7 +35,7 @@ CAPTURAS = os.path.join(RAIZ, 'app', 'promo', 'capturas')
 FUENTES_APP = os.path.join(RAIZ, 'app', 'assets', 'fonts')
 FUENTES_SKILL = os.path.join(RAIZ, 'claude', 'prepara-con-claude', 'assets', 'fuentes')
 TOMAS_DEF = '/mnt/c/Users/vgutierrez/AppData/Local/Temp/claude-video/tomas'
-TOMAS = ['G2', 'G4a', 'G4b', 'G5a', 'G5b', 'G6a', 'G6b', 'G7b', 'G8', 'G9na', 'G9nb']
+TOMAS = ['G2c', 'G4a', 'G4b', 'G5a', 'G5b', 'G6a', 'G6b', 'G7b', 'G8', 'G9na', 'G9nb']
 # Capturas de claude.ai en el móvil (cdp.mjs con CDP_MOVIL=1, en la carpeta de grabación): chat con el cante adjunto y respuesta
 MOVIL = {'claude-movil-1': 'movil-2.png', 'claude-movil-2': 'movil-4.png'}
 # Capturas de la app que usa la composición
