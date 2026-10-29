@@ -56,6 +56,7 @@ SUSTITUCIONES = {
     'condiciones-materiales.html': [('«Prepara con Claude»', '<a href="oposicion/prepara-con-claude.html">«Prepara con Claude»</a>')],
     'oposicion/prepara-con-claude.html': [('<meta name="robots" content="noindex, nofollow">', '<meta name="robots" content="index, follow">')],
     'scripts/exclusivos.py': [("OCULTOS = {'prepara-con-claude'}", 'OCULTOS = set()')],
+    'politica-cookies.html': [('Más detalle en Prepara con Claude.', 'Más detalle en <a href="/oposicion/prepara-con-claude.html">Prepara con Claude</a>.')],
 }
 
 FAQ_JSONLD = """                {
