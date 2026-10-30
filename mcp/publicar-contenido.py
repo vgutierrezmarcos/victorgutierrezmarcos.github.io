@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sube al KV CONTENIDO del Worker los materiales exclusivos de la skill «Prepara con Claude».
+"""Sube al KV CONTENIDO del Worker los materiales exclusivos de la skill «EconomIA».
 
 Lee la carpeta desplegada de la skill (la genera scripts/skill-opositor.py):
     oposicion/temario/app/skill/prepara-oposicion/references/{temas,dictamen,canon}

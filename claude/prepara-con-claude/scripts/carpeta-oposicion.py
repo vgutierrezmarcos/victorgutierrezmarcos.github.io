@@ -35,7 +35,7 @@ WEBS = {
 EJERCICIOS = {1: '1_primer_ejercicio', 2: '2_segundo_ejercicio', 3: '3_tercer_ejercicio', 4: '4_cuarto_ejercicio', 5: '5_quinto_ejercicio'}
 LEEME = """# {titulo}
 
-Carpeta creada por la skill «Prepara con Claude» el {fecha}. Los códigos de tema ({ejemplo}) van en los nombres de carpeta y de fichero: así la app y Claude encuentran cada cosa.
+Carpeta creada por la skill «EconomIA» el {fecha}. Los códigos de tema ({ejemplo}) van en los nombres de carpeta y de fichero: así la app y Claude encuentran cada cosa.
 
 - `0_organizacion/`: programa oficial, convocatoria, Excel de estrategia, la exportación de la app para Claude (`oposicion_{op}_para_claude.json`) y el cronograma acordado (`cronograma.txt`).
 - `1_primer_ejercicio/1_test/`: exámenes oficiales de test y plantillas; guarda aquí tus simulacros.
@@ -58,7 +58,7 @@ def descargar(url, destino, sin_word):
             import shutil
             shutil.copy(url[7:] if url.startswith('file://') else url, destino)
         else:
-            req = urllib.request.Request(url, headers={'User-Agent': 'prepara-oposicion (skill Prepara con Claude)'})
+            req = urllib.request.Request(url, headers={'User-Agent': 'prepara-oposicion (skill EconomIA)'})
             with urllib.request.urlopen(req, timeout=60) as r, open(destino, 'wb') as f:
                 f.write(r.read())
         return 'descargado'

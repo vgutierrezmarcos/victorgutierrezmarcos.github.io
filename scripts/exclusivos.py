@@ -15,7 +15,7 @@ De dónde sale cada cosa:
 - Los ficheros de la web: la lista WEB de abajo (añadir aquí lo nuevo); la fecha
   es la del último commit que los tocó.
 - Las explicaciones del test: fijas (solo en la app).
-- La skill «Prepara con Claude»: del mismo manifiesto (clave skill, que escribe
+- La skill «EconomIA»: del mismo manifiesto (clave skill, que escribe
   scripts/skill-opositor.py); exclusivos.js rellena con ella el botón de descarga
   de oposicion/prepara-con-claude.html.
 

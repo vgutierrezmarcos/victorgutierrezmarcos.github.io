@@ -102,7 +102,7 @@ ${local}
   <li>leer los materiales exclusivos (temas revisados, fichas, guía del dictamen);</li>
   <li>guardar en la app, solo cuando tú lo confirmes en la conversación, un cronograma nuevo y el informe de un cante.</li>
 </ul>
-<p class="nota">No verá los datos de nadie más, ni tu Google Calendar, ni las grabaciones o transcripciones del móvil. Puedes desconectarlo cuando quieras desde los conectores de ${nombre}, desde la app (Más → Cuenta → Desconectar la IA) o pidiéndoselo en la conversación («desconéctate de la app»).</p>
+<p class="nota">No verá los datos de nadie más, ni tu Google Calendar, ni las grabaciones o transcripciones del móvil. Puedes desconectarlo cuando quieras desde los conectores de ${nombre}, desde la app (Más → EconomIA → Desconectar la IA) o pidiéndoselo en la conversación («desconéctate de la app»).</p>
 <form method="post">
   <input type="hidden" name="handle" value="${escapar(handle)}">
   ${d.scope.map((s) => `<input type="hidden" name="scope" value="${escapar(s)}">`).join('')}

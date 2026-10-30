@@ -49,8 +49,10 @@ class _GoogleFalso implements HttpClientAdapter {
 void main() {
   var n = 0;
   Future<Box> caja() => Hive.openBox('cala${n++}', bytes: Uint8List(0));
-  final ahora = DateTime(2026, 10, 22, 12);
-  final futuro = DateTime(2026, 10, 29, 17);
+  // Relativas a hoy: el código compara con DateTime.now() y una fecha fija acaba quedando en el pasado.
+  final hoy = DateTime.now();
+  final ahora = DateTime(hoy.year, hoy.month, hoy.day, 12);
+  final futuro = DateTime(hoy.year, hoy.month, hoy.day + 7, 17);
 
   test('el evento del opositor va en su propio campo y en los ajustes se guarda si lo activa', () {
     final c = Cante(id: 'c', fecha: futuro, eventoGoogle: 'evp', eventoGoogleAlumno: 'eva');

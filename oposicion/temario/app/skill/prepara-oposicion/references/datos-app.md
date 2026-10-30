@@ -24,7 +24,7 @@ Transcripción automática del móvil: puede tener errores de reconocimiento (no
 
 ## 2. `oposicion_<id>_para_claude.json`: el resumen de su preparación
 
-Lo genera la app en Más → Prepara con Claude → «Exportar mis datos para Claude». Es un recorte pensado para ti:
+Lo genera la app en Más → EconomIA → «Exportar mis datos para Claude». Es un recorte pensado para ti:
 
 ```json
 {
@@ -91,7 +91,7 @@ Criterios: Esquema 4 · Rigor 2 · Tiempo 3
 
 ## 5. Lo que devuelves: el cronograma para «Traer el tuyo»
 
-La app importa un cronograma pegado o en un fichero `.txt` o `.csv` (Cronograma → Traer el tuyo; también desde Más → Prepara con Claude → «Traer cronograma de Claude»). Entiende una línea por semana de cante con la fecha del cante y los códigos de los temas. Devuélvelo exactamente así, en un bloque de código para que se copie limpio:
+La app importa un cronograma pegado o en un fichero `.txt` o `.csv` (Cronograma → Traer el tuyo; también desde Más → EconomIA → «Traer cronograma de Claude»). Entiende una línea por semana de cante con la fecha del cante y los códigos de los temas. Devuélvelo exactamente así, en un bloque de código para que se copie limpio:
 
 ```
 # Cronograma · TCEE · 3.er ejercicio · cante los sábados · hecho con Claude el 2026-11-01

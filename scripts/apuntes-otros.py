@@ -7,7 +7,7 @@ por Luis de Fuentes), saca las promociones, los autores, sus notas y sus
 enlaces (carpetas y ficheros de Google Drive, webs), lista cada carpeta de
 Drive sin bajar nada y asigna a cada fichero el tema que le corresponde por su
 nombre. Los materiales de otros autores no se copian nunca: solo se indexan y
-se enlazan, para que la skill «Prepara con Claude» y la web sepan qué apuntes
+se enlazan, para que la skill «EconomIA» y la web sepan qué apuntes
 hay para cada tema y de quién son. Escribe:
 
   oposicion/temario/apuntes-otros.json                       registro público (lo lee la web)

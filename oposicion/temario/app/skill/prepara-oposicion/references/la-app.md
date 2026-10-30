@@ -23,7 +23,7 @@ La skill no sustituye nada de la app: lo que la app hace, se hace en la app, y t
 - **Tú**: el organizador escribe el cronograma que la app importa, explica el porqué y detecta riesgos; nunca le digas que lo cree a mano si puede pegar tu bloque. Las fechas del examen y los hitos vienen del JSON.
 
 ## Más
-- **Mi preparador** (enlace por código o invitación, clases, temas mandados, notas, qué ve el preparador, avisos de actividad), **cuenta** (exportar datos, borrar), **ajustes** (oposición y papel, racha, rúbrica, reto, avisos, tema claro/oscuro), **ayuda en vídeo**, y **Prepara con Claude** (descargar la skill, exportar los datos para ti, traer el cronograma).
+- **Mi preparador** (enlace por código o invitación, clases, temas mandados, notas, qué ve el preparador, avisos de actividad), **cuenta** (exportar datos, borrar), **ajustes** (oposición y papel, racha, rúbrica, reto, avisos, tema claro/oscuro), **ayuda en vídeo**, y **EconomIA** (descargar la skill, exportar los datos para ti, traer el cronograma).
 - **Tú**: lo del preparador es suyo: no programes clases ni «sustituyas» sus notas; si el opositor te cuenta lo que le dijo su preparador, úsalo como criterio que manda.
 
 ## Preparadores

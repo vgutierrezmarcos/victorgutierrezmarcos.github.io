@@ -1,4 +1,4 @@
--- Filtro de pandoc para los documentos de «Prepara con Claude» (lo usa
+-- Filtro de pandoc para los documentos de «EconomIA» (lo usa
 -- scripts/informe-pdf.py con la plantilla informe.tex e informe.sty).
 -- El aviso final («Este informe lo ha redactado una IA…»), venga como párrafo
 -- en cursiva o como cita «>», va a la caja pálida informeaviso; si el informe

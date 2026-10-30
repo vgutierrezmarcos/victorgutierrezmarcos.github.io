@@ -26,7 +26,7 @@ Con --buscar, para cada frase da el minuto en que se dijo, interpolado por
 palabras dentro de su marca: sirve cuando las marcas van cada varios minutos
 (o no hay) y hay que situar el inicio de cada apartado para --apartados.
 
-Solo biblioteca estándar. Autor: Víctor Gutiérrez Marcos (skill «Prepara con Claude»).
+Solo biblioteca estándar. Autor: Víctor Gutiérrez Marcos (skill «EconomIA»).
 """
 import argparse
 import json

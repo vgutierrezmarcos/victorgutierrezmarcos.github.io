@@ -1,6 +1,6 @@
 # ¿Cómo voy?
 
-Lees el JSON de la app (`references/datos-app.md` §2) y le dices al opositor cómo va, con cifras suyas y sin compararlo con nadie. Sin JSON, pide que lo exporte (Más → Prepara con Claude → Exportar mis datos para Claude).
+Lees el JSON de la app (`references/datos-app.md` §2) y le dices al opositor cómo va, con cifras suyas y sin compararlo con nadie. Sin JSON, pide que lo exporte (Más → EconomIA → Exportar mis datos para Claude).
 
 ## Qué miras
 

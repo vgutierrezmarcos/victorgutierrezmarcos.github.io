@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Espejo público de la skill «Prepara con Claude» para `npx skills add`.
+Espejo público de la skill «EconomIA» para `npx skills add`.
 
 Copia la carpeta desplegada de la skill (oposicion/temario/app/skill/prepara-oposicion/,
 la misma que lee claude.ai de la web) a un repositorio público de GitHub con un
@@ -47,7 +47,7 @@ REPO = 'victorgutierrezmarcos/prepara-oposicion'
 PAGINA = 'https://www.victorgutierrezmarcos.es/oposicion/economia.html'
 CONDICIONES = 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html'
 
-README = '''# Prepara con Claude · skill «prepara-oposicion»
+README = '''# EconomIA · skill «prepara-oposicion»
 
 Equipo de preparación con IA para las oposiciones a **Técnico Comercial y Economista del Estado (TCEE)** y
 **Diplomado Comercial del Estado (DCE)**: corrige cantes transcritos y dictámenes de coyuntura, resuelve dudas
@@ -61,7 +61,7 @@ Este repositorio es un **espejo** de la copia desplegada en la web; se actualiza
 
 ## Cómo instalarla
 
-- **En claude.ai (navegador o móvil)**: sube el ZIP de la skill desde la app (Más → Prepara con Claude) o
+- **En claude.ai (navegador o móvil)**: sube el ZIP de la skill desde la app (Más → EconomIA) o
   desde la [página de la skill]({pagina}) (Customize → Skills → Subir), o usa el botón **«Empezar en Claude»**
   de esa página, que abre un chat que la lee de la web sin instalar nada. Hace falta una cuenta de pago
   (Pro, Max o Team); la skill y el material son gratuitos.

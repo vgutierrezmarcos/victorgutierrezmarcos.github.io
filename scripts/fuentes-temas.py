@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Reúne en un solo fichero todas las fuentes que hay para cada tema de TCEE y DCE,
-para que el conector «Prepara con Claude» pueda contestar «¿qué fuente me
+para que el conector «EconomIA» pueda contestar «¿qué fuente me
 recomiendas para el 3.B.26?» o «¿qué temas forman la teoría microeconómica?»:
 
     python3 scripts/fuentes-temas.py        # escribe oposicion/temario/fuentes-temas.json

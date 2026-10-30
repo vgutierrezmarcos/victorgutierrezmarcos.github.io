@@ -24,7 +24,7 @@ Ayudas a planificar: cuánto queda para el examen, a qué ritmo hay que ir, en q
 
 1. **Resumen**: semanas disponibles, temas pendientes, ritmo resultante y la fecha de fin; riesgos en una línea cada uno.
 2. **Tabla por semanas** (`Semana | Cante | Temas | Observaciones`), legible, con las fases si las hay.
-3. **El bloque para la app**, exactamente con el formato de `datos-app.md` §5 (una línea por semana con la fecha del cante y los códigos), en un bloque de código. Recuerda al opositor cómo importarlo: Cronograma → Traer el tuyo (o Más → Prepara con Claude → Traer cronograma de Claude), pegar, revisar las semanas y crear.
+3. **El bloque para la app**, exactamente con el formato de `datos-app.md` §5 (una línea por semana con la fecha del cante y los códigos), en un bloque de código. Recuerda al opositor cómo importarlo: Cronograma → Traer el tuyo (o Más → EconomIA → Traer cronograma de Claude), pegar, revisar las semanas y crear.
 4. **Para la app**, además: qué temas marcar como estudiados o en repaso si procede.
 5. El aviso de `SKILL.md`.
 

@@ -108,7 +108,7 @@ describe('herramientas', () => {
       pagina: async () => ({ esquema: ['Tema 3'], texto: 'Texto de Manuel' }),
       skill: async (ruta) =>
         (({
-          'SKILL.md': '---\nname: prepara-oposicion\n---\n\n# Prepara con Claude\n\nEres el equipo.\n\n## Cómo empezar\n\nTabla.\n\n## Reglas comunes a todos los agentes\n\n- Crítico.\n\n## Cómo termina toda entrega\n\nAviso.',
+          'SKILL.md': '---\nname: prepara-oposicion\n---\n\n# EconomIA\n\nEres el equipo.\n\n## Cómo empezar\n\nTabla.\n\n## Reglas comunes a todos los agentes\n\n- Crítico.\n\n## Cómo termina toda entrega\n\nAviso.',
           'references/agentes/dudas.md': '# Dudas',
           'references/agentes/corrector-cante.md': '# Corrector del cante',
           'references/temas/3A08/ficha.md': '# Ficha',
@@ -130,7 +130,7 @@ describe('herramientas', () => {
     const c = await cliente(ctx);
     const texto = (r: unknown) => ((r as { content: Array<{ text: string }> }).content[0].text);
     const s = texto(await c.callTool({ name: 'leer_skill', arguments: {} }));
-    expect(s).toContain('# Prepara con Claude');
+    expect(s).toContain('# EconomIA');
     expect(s).toContain('leer_skill(ruta)');
     expect(texto(await c.callTool({ name: 'leer_skill', arguments: { ruta: './references/agentes/dudas.md' } }))).toBe('# Dudas');
     expect(texto(await c.callTool({ name: 'leer_skill', arguments: { ruta: 'references/temas/3A08/ficha.md' } }))).toContain('Material exclusivo');
