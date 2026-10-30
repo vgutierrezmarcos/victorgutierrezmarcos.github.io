@@ -15,6 +15,7 @@ import '../../core/analitica.dart';
 import '../../core/resenas.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
+import '../../core/dictado.dart';
 import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
 import 'grabaciones.dart';
@@ -43,6 +44,7 @@ import 'reloj_compartido.dart';
 import 'pizarra_page.dart';
 import 'reloj_grande_page.dart';
 import 'sorteo.dart';
+import 'transcripcion.dart';
 
 /// Como en el examen (salen las bolas de cada parte y se elige una de todas),
 /// simulación de examen real (dos bolas de cada parte y se elige una de cada
@@ -151,6 +153,14 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   bool _grabando = false;
   String? _ultimaGrabacion;
   bool _reproduciendo = false;
+
+  // Transcripción (excluyente con la grabación: el micrófono hace una sola
+  // cosa). Se queda en el dispositivo y se guarda con el cante del diario.
+  final Dictado _dictado = crearDictado();
+  final _transcripcion = Transcripcion();
+  bool _transcribiendo = false;
+  String _parcial = '';
+  DateTime? _inicioTranscripcion;
 
   @override
   void initState() {
@@ -399,6 +409,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     _escucha?.cancel();
     _tic?.cancel();
     _pantallaEncendida(false);
+    if (_transcribiendo) _dictado.parar();
     _grabadoraPerezosa?.dispose();
     _reproductorPerezoso?.dispose();
     super.dispose();
@@ -447,12 +458,19 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     setState(() => _reloj.pausar(DateTime.now()));
     _pantallaEncendida(false);
     if (cancelarAvisos) Notificaciones.cancelarCronometro().catchError((_) {});
+    // La transcripción para con el reloj (lo dicho se queda; se sigue con «Transcribir»).
+    if (_transcribiendo) _pararTranscripcion();
     _publicar();
   }
 
   void _reiniciar() {
     _parar();
-    setState(_nuevoReloj);
+    setState(() {
+      _nuevoReloj();
+      // Con el reloj desde cero, las marcas de minuto ya no casarían.
+      _transcripcion.vaciar();
+      _inicioTranscripcion = null;
+    });
   }
 
   Future<void> _aviso(String texto, {bool largo = false}) async {
@@ -516,6 +534,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       });
       return;
     }
+    if (_transcribiendo) return;
     if (!await _grabadora.hasPermission()) {
       if (mounted) ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Sin permiso de micrófono')));
       return;
@@ -534,6 +553,92 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     await _grabadora.start(RecordConfig(encoder: formato, bitRate: 64000), path: await rutaNuevaGrabacion(nombre));
     setState(() => _grabando = true);
     if (!_reloj.corriendo) _iniciar();
+  }
+
+  // ------------------------------------------------------------ Transcripción
+
+  Future<void> _alternarTranscripcion() async {
+    if (_transcribiendo) return _pararTranscripcion();
+    if (_grabando) return;
+    final messenger = ScaffoldMessenger.of(context);
+    // En Android el permiso del micrófono se pide como para grabar; el navegador lo pide él.
+    if (!kIsWeb && !await _grabadora.hasPermission()) {
+      messenger.mostrar(const SnackBar(content: Text('Sin permiso de micrófono')));
+      return;
+    }
+    final error = await _dictado.empezar(_alDictado);
+    if (!mounted) return;
+    if (error != null) {
+      messenger.mostrar(SnackBar(content: Text(error)));
+      return;
+    }
+    setState(() {
+      _transcribiendo = true;
+      _parcial = '';
+      _inicioTranscripcion ??= DateTime.now();
+    });
+    if (!_reloj.corriendo) _iniciar();
+  }
+
+  void _alDictado(EventoDictado e) {
+    if (!mounted) return;
+    switch (e.tipo) {
+      case TipoDictado.parcial:
+        if (_transcribiendo) setState(() => _parcial = e.texto);
+      case TipoDictado.definitivo:
+        // La marca es el momento de la exposición en que se empezó a decir.
+        setState(() {
+          _transcripcion.anadir(e.texto, _reloj.expuesto(e.desde), tema: _elegido?.codigo);
+          _parcial = '';
+        });
+      case TipoDictado.error:
+        setState(() {
+          _transcribiendo = false;
+          _parcial = '';
+        });
+        if (e.texto.isNotEmpty) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('Transcripción parada: ${e.texto}')));
+      case TipoDictado.parado:
+        break;
+    }
+  }
+
+  Future<void> _pararTranscripcion() async {
+    final parcial = _parcial;
+    setState(() {
+      _transcribiendo = false;
+      _parcial = '';
+      // Lo último que iba entendiendo, para no perderlo.
+      if (parcial.isNotEmpty) _transcripcion.anadir(parcial, _reloj.expuesto(DateTime.now()), tema: _elegido?.codigo);
+    });
+    await _dictado.parar();
+  }
+
+  /// Guarda la transcripción con el cante [canteId] del diario (solo en este
+  /// dispositivo). Devuelve si había algo que guardar.
+  Future<bool> _guardarTranscripcion(String canteId, ResultadoCante res, int ejercicio) async {
+    if (_transcribiendo) await _pararTranscripcion();
+    if (_transcripcion.vacia) return false;
+    final op = Oposiciones.actual;
+    final tema = res.temaCantado ?? _elegido?.codigo;
+    final fecha = _inicioTranscripcion ?? DateTime.now();
+    final texto = _transcripcion.fichero(
+      oposicion: op.siglas,
+      ejercicio: op.nombreEjercicio(ejercicio),
+      tema: tema,
+      tituloTema: tema == null ? null : ref.read(temarioProvider).valueOrNull?.tema(tema)?.titulo,
+      fecha: fecha,
+      exposicion: Duration(seconds: res.segundos),
+      exposicionPrevista: _reloj.exposicion,
+      esquema: _segEsquema > 0 ? _reloj.preparacion : Duration.zero,
+      esquemaPrevisto: Duration(seconds: _segEsquema),
+      sorteados: res.sorteados,
+      cantados: res.temasCantados,
+    );
+    await Transcripciones.guardar(canteId, nombre: nombreFicheroTranscripcion(tema, fecha), texto: texto);
+    Analitica.instancia.evento('cante_transcrito', parametros: {'minutos': res.segundos ~/ 60});
+    _transcripcion.vaciar();
+    _inicioTranscripcion = null;
+    return true;
   }
 
   Future<void> _reproducir() async {
@@ -687,13 +792,21 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       ref.read(versionGrabacionesProvider.notifier).state++;
       _ultimaGrabacion = null;
     }
+    // La transcripción, también unida a él (solo en este dispositivo).
+    final transcrito = await _guardarTranscripcion(base.id, res, base.ejercicio == 0 ? _ejercicio : base.ejercicio);
     ref.read(canteEnCursoProvider.notifier).state = null;
     if (!mounted) return;
     setState(() {
       _limpiarSorteo();
       _nuevoReloj();
     });
-    messenger.mostrar(const SnackBar(content: Text('Cante guardado en el diario')));
+    messenger.mostrar(transcrito
+        ? SnackBar(
+            duration: const Duration(seconds: 8),
+            content: const Text('Cante guardado en el diario, con su transcripción'),
+            action: SnackBarAction(label: 'Enviar a la IA', onPressed: () => Transcripciones.enviarALaIa(base.id)),
+          )
+        : const SnackBar(content: Text('Cante guardado en el diario')));
   }
 
   // ------------------------------------------------------------ UI
@@ -1066,16 +1179,24 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                   ),
                 ),
               ),
-              if (sesion == null) const TituloSeccion('Grabación para autoescucha'),
+              if (sesion == null) TituloSeccion(_dictado.posible ? 'Grabar o transcribir' : 'Grabación para autoescucha'),
               if (sesion == null) Tarjeta(
                 child: Column(children: [
                   Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
                     FilledButton.icon(
                       style: _grabando ? FilledButton.styleFrom(backgroundColor: context.esquema.error) : null,
-                      onPressed: _alternarGrabacion,
+                      onPressed: _transcribiendo ? null : _alternarGrabacion,
                       icon: Icon(_grabando ? Icons.stop : Icons.mic),
-                      label: Text(_grabando ? 'Detener' : 'Grabar (y arrancar el cronómetro)'),
+                      label: Text(_grabando ? 'Detener' : (_dictado.posible ? 'Grabar' : 'Grabar (y arrancar el cronómetro)')),
                     ),
+                    // Transcribir en lugar de grabar: el texto, con marcas de minuto, para la IA.
+                    if (_dictado.posible)
+                      (_transcribiendo ? FilledButton.icon : FilledButton.tonalIcon)(
+                        style: _transcribiendo ? FilledButton.styleFrom(backgroundColor: context.esquema.error) : null,
+                        onPressed: _grabando ? null : _alternarTranscripcion,
+                        icon: Icon(_transcribiendo ? Icons.stop : Icons.subtitles_outlined),
+                        label: Text(_transcribiendo ? 'Detener la transcripción' : (_transcripcion.vacia ? 'Transcribir' : 'Seguir transcribiendo')),
+                      ),
                     if (_ultimaGrabacion != null && !_grabando)
                       OutlinedButton.icon(onPressed: _reproducir, icon: Icon(_reproduciendo ? Icons.stop : Icons.play_arrow), label: Text(_reproduciendo ? 'Parar' : 'Escuchar')),
                   ]),
@@ -1089,7 +1210,16 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                       icon: const Icon(Icons.delete_outline, size: 18),
                       label: const Text('Borrar grabación'),
                     ),
+                  if (_transcribiendo || !_transcripcion.vacia) _vistaTranscripcion(context),
                   Text(kIsWeb ? 'La grabación no sale de este navegador y se pierde al cerrar la pestaña.' : 'Las grabaciones se guardan solo en este dispositivo y no se envían a ningún sitio. Al guardar el cante en el diario, queda unida a él.', style: context.textos.labelSmall),
+                  if (_dictado.posible)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text(
+                        '«Transcribir» arranca el cronómetro y pasa a texto lo que dices, con una marca por minuto de exposición. Se queda en este dispositivo y se guarda con el cante en el diario; desde allí, «Enviar a la IA» saca un fichero de texto para adjuntarlo en el chat de tu IA (EconomIA). ${kIsWeb ? 'Usa el reconocimiento de voz del navegador (Chrome o Edge lo hacen en su servicio de voz).' : 'Usa el reconocimiento de voz del móvil: en el propio móvil si tiene el español descargado; si no, el servicio de voz de Google.'}',
+                        style: context.textos.labelSmall,
+                      ),
+                    ),
                   if (!kIsWeb && Grabaciones.todas().isNotEmpty)
                     TextButton.icon(
                       onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MisGrabacionesPage())),
@@ -1111,6 +1241,29 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
         actions: [IconButton(tooltip: 'Cómo cantar un tema', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, ref.read(oposicionProvider).urlComoCantarUnTema))],
       ),
       body: cuerpo,
+    );
+  }
+
+  /// Lo último transcrito (con su marca de minuto) y lo que va entendiendo.
+  Widget _vistaTranscripcion(BuildContext context) {
+    final lineas = _transcripcion.porMinutos().trimRight().split('\n').where((l) => l.trim().isNotEmpty).toList();
+    final ultimas = lineas.length > 4 ? lineas.sublist(lineas.length - 4) : lineas;
+    final palabras = _transcripcion.palabras;
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: 10, bottom: 8),
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(color: context.colores.fondoClaro, borderRadius: BorderRadius.circular(8)),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          Icon(_transcribiendo ? Icons.fiber_manual_record : Icons.subtitles_outlined, size: 14, color: _transcribiendo ? context.esquema.error : context.colores.textoClaro),
+          const SizedBox(width: 6),
+          Expanded(child: Text(_transcribiendo ? 'Transcribiendo · $palabras palabras' : 'Transcripción en pausa · $palabras palabras. Se guarda al guardar el cante.', style: context.textos.labelSmall)),
+        ]),
+        const SizedBox(height: 4),
+        for (final l in ultimas) Text(l, maxLines: 3, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall),
+        if (_parcial.isNotEmpty) Text(_parcial, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(fontStyle: FontStyle.italic, color: context.colores.textoClaro)),
+      ]),
     );
   }
 
