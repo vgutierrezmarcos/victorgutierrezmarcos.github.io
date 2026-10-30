@@ -8,6 +8,11 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 ## Para la siguiente versión en Google Play (1.22.0 publicada el 29 oct.)
 
 - (30 oct., siguiente versión) Las clases pedidas al preparador llevan presencial u online y los temas que quieres cantar (desde el conector de IA, EconomIA); al aceptarlas, la clase sale ya con ellos y el preparador los ve en la reserva
+- (30 oct., siguiente versión) También desde la app: al pedir clase (Reservar o «Con quién» en Nuevo cante) eliges presencial u online y los temas, que por defecto son los de tu cronograma para ese día
+- (30 oct., siguiente versión) El cronómetro de la clase con el preparador cuenta hacia delante desde 0 (o cuenta atrás, si lo prefieres), se pone a pantalla completa y tiene todo lo del de Cantar: más o menos minutos, pasar a exponer, reiniciar, pasar al tema siguiente, avisos y la pantalla encendida mientras corre
+- (30 oct., siguiente versión) Más → EconomIA: tu IA (Claude, Le Chat, ChatGPT o Gemini) como equipo de preparación, con el conector de la app: cómo se añade, «Exportar mis datos para la IA» si no usas el conector y «Desconectar la IA»
+- (30 oct., siguiente versión) Transcribir el cante: en Cantar, «Transcribir» pasa a texto lo que dices, con una marca por minuto; se queda en tu móvil, se guarda con el cante en el diario y «Enviar a la IA» saca el fichero para que tu IA lo corrija
+- (30 oct., siguiente versión) Los informes de corrección que guarda tu IA salen en el cante del diario (quién lo escribió, la valoración y el informe entero), y tu preparador los lee en la ficha de la clase
 
 ## Publicado el 29 oct. 2026 (1.22.0 en producción)
 
