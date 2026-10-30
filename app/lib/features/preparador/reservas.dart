@@ -3,18 +3,89 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/avisos_breves.dart';
+import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
+import '../../data/models/cronograma.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
-import '../../data/models/coordinacion.dart';
+import '../../widgets/selector_temas.dart';
 import '../plan/cantes_util.dart';
 import 'coordinacion.dart';
 import 'ajustes_preparador_page.dart';
 import '../mas/ayuda_videos.dart';
+
+/// Temas que el opositor propone por defecto al pedir una clase para [fecha]:
+/// los de la semana de su cronograma cuyo cante cae ese día, sin los que pide
+/// no cantar (como `temasDeLaClase`). Vacío si no hay cronograma para ese día.
+List<String> temasPorDefectoReserva(Cronograma? cronograma, DateTime fecha, {Map<String, DateTime> noCantar = const {}}) =>
+    [...?cronograma?.temasDelCante(fecha)?.where((t) => !noCantar.containsKey(t))];
+
+/// Id de la clase que sale de aceptar la reserva [reservaId]
+/// (`PreparadorRepo.sesionDeReserva`).
+String idClaseDeReserva(String reservaId) => 'res_$reservaId';
+
+/// Manda la petición de clase y, si lleva temas, los deja fijados para esa
+/// clase (`temasClases`, con el id que tendrá al aceptarse), como hace el
+/// conector de IA: así el preparador los ve igual que los de cualquier clase.
+Future<void> pedirClaseConTemas(WidgetRef ref, Reserva r) async {
+  await ref.read(redRepoProvider).pedirReserva(r);
+  if (r.temas.isNotEmpty) await ref.read(ajustesProvider.notifier).fijarTemasClase(idClaseDeReserva(r.id), r.temas);
+  ref.invalidate(misReservasProvider);
+}
+
+/// Presencial u online y los temas que se quieren cantar, al pedir una clase
+/// al preparador (en Reservar y en «Con quién» de Nuevo cante). El lugar y el
+/// enlace los pone el preparador al aceptarla.
+class CamposPeticionClase extends ConsumerWidget {
+  const CamposPeticionClase({super.key, required this.modalidad, required this.onModalidad, required this.temas, required this.onTemas, this.porDefecto = false});
+  final Modalidad modalidad;
+  final ValueChanged<Modalidad> onModalidad;
+  final List<String> temas;
+  final ValueChanged<List<String>> onTemas;
+
+  /// Los temas son los del cronograma para ese día (no los ha tocado).
+  final bool porDefecto;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    Future<void> elegir() async {
+      final temario = ref.read(temarioProvider).valueOrNull;
+      if (temario == null) return;
+      final r = await elegirTemas(context, temario: temario, seleccion: temas, titulo: 'Temas que quieres cantar');
+      if (r != null) onTemas(r);
+    }
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      Text('Presencial u online', style: context.textos.labelMedium),
+      const SizedBox(height: 4),
+      SegmentedButton<Modalidad>(
+        showSelectedIcon: false,
+        emptySelectionAllowed: true,
+        segments: const [
+          ButtonSegment(value: Modalidad.presencial, label: Text('Presencial'), icon: Icon(Icons.place_outlined, size: 18)),
+          ButtonSegment(value: Modalidad.online, label: Text('Online'), icon: Icon(Icons.videocam_outlined, size: 18)),
+        ],
+        selected: {if (modalidad != Modalidad.sinIndicar) modalidad},
+        onSelectionChanged: (s) => onModalidad(s.isEmpty ? Modalidad.sinIndicar : s.first),
+        style: const ButtonStyle(visualDensity: VisualDensity.compact),
+      ),
+      const SizedBox(height: 10),
+      Text('Temas que quieres cantar', style: context.textos.labelMedium),
+      Text(
+        temas.isEmpty ? 'Sin indicar: los verá en tu cronograma o se los dirás.' : '${temas.join(', ')}${porDefecto ? ' (los de tu cronograma para ese día)' : ''}',
+        style: context.textos.bodySmall,
+      ),
+      Wrap(spacing: 4, children: [
+        TextButton.icon(onPressed: elegir, icon: const Icon(Icons.checklist, size: 18), label: Text(temas.isEmpty ? 'Elegir temas' : 'Cambiar temas')),
+        if (temas.isNotEmpty) TextButton(onPressed: () => onTemas(const []), child: const Text('Quitar')),
+      ]),
+    ]);
+  }
+}
 
 /// Reserva pedida por un alumno, con Aceptar / Rechazar (lado del preparador).
 class FilaReservaPedida extends ConsumerStatefulWidget {
@@ -134,25 +205,40 @@ class ReservarPage extends ConsumerWidget {
 
     Future<void> pedir(DateTime f, int minutos, {bool propuesta = false}) async {
       final nota = TextEditingController();
+      // Por defecto, los temas de su cronograma para ese día.
+      final porDefecto = temasPorDefectoReserva(ref.read(cronogramaProvider), f, noCantar: ref.read(ajustesProvider).noCantar);
+      var modalidad = Modalidad.sinIndicar;
+      var temas = porDefecto;
       final ok = await showDialog<bool>(
         context: context,
-        builder: (d) => AlertDialog(
-          title: Text('¿Pedir clase el ${DateFormat("EEEE d 'a las' HH:mm", 'es').format(f)}?'),
-          content: Column(mainAxisSize: MainAxisSize.min, children: [
-            if (propuesta) Padding(padding: const EdgeInsets.only(bottom: 10), child: Text('${textoDuracion(minutos)}. $nombre la ve como una petición y la acepta o te propone otra hora.', style: context.textos.bodySmall)),
-            TextField(controller: nota, decoration: const InputDecoration(labelText: 'Nota (opcional)', hintText: 'Qué quieres cantar, si llegas tarde…')),
-          ]),
-          actions: [
-            TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
-            FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Pedir')),
-          ],
+        builder: (d) => StatefulBuilder(
+          builder: (d, cambiar) => AlertDialog(
+            title: Text('¿Pedir clase el ${DateFormat("EEEE d 'a las' HH:mm", 'es').format(f)}?'),
+            content: SingleChildScrollView(
+              child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                if (propuesta) Padding(padding: const EdgeInsets.only(bottom: 10), child: Text('${textoDuracion(minutos)}. $nombre la ve como una petición y la acepta o te propone otra hora.', style: context.textos.bodySmall)),
+                CamposPeticionClase(
+                  modalidad: modalidad,
+                  onModalidad: (m) => cambiar(() => modalidad = m),
+                  temas: temas,
+                  porDefecto: identical(temas, porDefecto) && temas.isNotEmpty,
+                  onTemas: (t) => cambiar(() => temas = t),
+                ),
+                const SizedBox(height: 6),
+                TextField(controller: nota, decoration: const InputDecoration(labelText: 'Nota (opcional)', hintText: 'Si llegas tarde, qué quieres repasar…')),
+              ]),
+            ),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
+              FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Pedir')),
+            ],
+          ),
         ),
       );
       if (ok != true) return;
       final yo = ref.read(usuarioActualProvider);
       final red = ref.read(redRepoProvider);
-      await red.pedirReserva(Reserva(id: nuevoId(), preparador: preparador.uid, alumno: red.uid!, alumnoNombre: yo?.displayName ?? '', fecha: f, minutos: minutos, nota: nota.text.trim(), creada: DateTime.now()));
-      ref.invalidate(misReservasProvider);
+      await pedirClaseConTemas(ref, Reserva(id: nuevoId(), preparador: preparador.uid, alumno: red.uid!, alumnoNombre: yo?.displayName ?? '', fecha: f, minutos: minutos, nota: nota.text.trim(), modalidad: modalidad, temas: temas, creada: DateTime.now()));
       if (context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('Pedida. Te avisaremos cuando $nombre la acepte.')));
     }
 
@@ -256,7 +342,11 @@ class FilaMiReserva extends ConsumerWidget {
         child: ListTile(
           dense: true,
           title: Text('${fechaCorta(r.fecha)} · ${franja(r.fecha, r.minutos)}', style: context.textos.titleSmall),
-          subtitle: Text(texto, style: context.textos.labelSmall?.copyWith(color: color)),
+          subtitle: Text.rich(TextSpan(children: [
+            TextSpan(text: texto, style: TextStyle(color: color)),
+            if (r.modalidad != Modalidad.sinIndicar || r.temas.isNotEmpty)
+              TextSpan(text: ' · ${[if (r.modalidad == Modalidad.presencial) 'presencial', if (r.modalidad == Modalidad.online) 'online', if (r.temas.isNotEmpty) 'temas: ${r.temas.join(', ')}'].join(' · ')}'),
+          ]), style: context.textos.labelSmall),
           trailing: r.pedida
               ? TextButton(
                   onPressed: () async {
