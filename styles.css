@@ -1867,12 +1867,16 @@ p + .exclusivo-cta { margin: 0.4rem 0 1rem; }
 .vgm-silenciado .vgm-silencio { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5L6 9H2v6h4l5 4z'/><path d='M23 9l-6 6M17 9l6 6'/></svg>"); }
 .vgm-pantalla { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5'/></svg>"); }
 .vgm-tiempo { font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 5.6em; }
-.vgm-barra { flex: 1; height: 4px; margin: 0; appearance: none; -webkit-appearance: none; background: rgba(255,255,255,0.3); border-radius: 2px; cursor: pointer; }
+.vgm-barra { flex: 1 1 0; min-width: 0; width: 0; height: 4px; margin: 0; appearance: none; -webkit-appearance: none; background: rgba(255,255,255,0.3); border-radius: 2px; cursor: pointer; }
 .vgm-barra::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--color-accent-gold); border: 0; }
 .vgm-barra::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--color-accent-gold); border: 0; }
 .vgm-barra::-moz-range-track { height: 4px; background: rgba(255,255,255,0.3); border-radius: 2px; }
 .video-yt:fullscreen, .video-yt:-webkit-full-screen { width: 100vw; height: 100vh; }
 .video-yt:fullscreen .vgm-escenario, .video-yt:-webkit-full-screen .vgm-escenario { inset: 0; }
+/* En visores estrechos (los vídeos verticales de ayuda) la barra se encoge y, si no
+   cabe todo, el contador de tiempo se oculta: el botón de pantalla completa siempre se ve */
+.video-yt { container-type: inline-size; }
+@container (max-width: 300px) { .vgm-tiempo { display: none; } .vgm-controles { gap: 0.3rem; padding: 0 0.4rem; } }
 .vgm-fijo { position: fixed !important; inset: 0 !important; z-index: 10000; width: auto !important; height: auto !important; aspect-ratio: auto !important; }
 body.vgm-con-fijo { overflow: hidden; }
 
