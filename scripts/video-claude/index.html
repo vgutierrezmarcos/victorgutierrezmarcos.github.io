@@ -87,6 +87,19 @@
       .marca { position: absolute; left: 60px; top: 42px; display: flex; align-items: center; gap: 14px; font-family: "Pagella", serif; font-weight: 700; font-size: 30px; color: var(--tinta); }
       .marca img { height: 34px; width: auto; }
       .marca .icono-marca { border-radius: 8px; }
+      /* Conversación con la IA (escena de la reserva): bocadillos con el estilo del vídeo, no la pantalla de ningún asistente */
+      .chat { position: absolute; left: 120px; top: 300px; width: 1000px; display: flex; flex-direction: column; gap: 20px; }
+      .burbuja { max-width: 800px; padding: 18px 26px; border-radius: 24px; font-size: 29px; line-height: 1.38; box-shadow: 0 10px 28px rgba(46, 34, 53, 0.10); }
+      .burbuja.yo { align-self: flex-end; background: var(--morado); color: #fff; border-bottom-right-radius: 6px; }
+      .burbuja.ia { align-self: flex-start; background: var(--papel); color: var(--texto); border: 1px solid var(--borde); border-bottom-left-radius: 6px; }
+      .burbuja.ia .quien { display: block; font-size: 20px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dorado); margin-bottom: 4px; }
+      /* Logos de las IA compatibles (en el orden de la web: Claude, Le Chat, ChatGPT y Gemini) */
+      .ias { display: flex; align-items: center; justify-content: center; gap: 34px; }
+      .ias img { height: 60px; width: auto; display: block; }
+      .oscura .ia-openai { filter: invert(1); }
+      .ia-mini { height: 34px; width: auto; vertical-align: -5px; margin-right: 12px; }
+      .texto .ias { justify-content: flex-start; gap: 26px; margin-top: 26px; }
+      .texto .ias img { height: 48px; }
       .oscura .marca { color: var(--sobre-oscuro); }
       .dce .marca { color: var(--granate); }
 
@@ -174,8 +187,8 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="233.4546">
-      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="233.4546" data-track-index="9" data-volume="0.35"></audio>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="279.2728">
+      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="279.2728" data-track-index="9" data-volume="0.35"></audio>
 
       <!-- Portada -->
       <section id="portada" class="clip oscura" data-start="0.0000" data-duration="4.3636" data-track-index="0">
@@ -190,6 +203,7 @@
           <h1 id="portada-tit" class="tit" style="font-size: 104px"><span class="l">EconomIA</span></h1>
           <span id="portada-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
           <p id="portada-lema" class="lema">Tu equipo de preparación, en tu IA</p>
+          <div class="ias"><img id="portada-claude" class="ia-claude" src="assets/logos/ia-claude.svg" alt="Claude" /><img id="portada-mistral" class="ia-mistral" src="assets/logos/ia-mistral.svg" alt="Le Chat" /><img id="portada-openai" class="ia-openai" src="assets/logos/ia-openai.svg" alt="ChatGPT" /><img id="portada-gemini" class="ia-gemini" src="assets/logos/ia-gemini.svg" alt="Gemini" /></div>
           <div id="portada-aviso" class="aviso-caja">No sustituye a un preparador para la oposición: lo complementa</div>
         </div>
       </section>
@@ -217,6 +231,7 @@
           <p class="rot">qué hace</p>
           <h2 id="quehace-tit" class="tit"><span class="l">Un equipo de</span><span class="l">preparación</span><span class="l"><em>en tu asistente de IA.</em></span></h2>
           <p id="quehace-par" class="par">Un conector gratuito con el temario de la web, para TCEE y para DCE, que lee lo que la app sabe de ti.</p>
+          <div class="ias"><img id="quehace-claude" class="ia-claude" src="assets/logos/ia-claude.svg" alt="Claude" /><img id="quehace-mistral" class="ia-mistral" src="assets/logos/ia-mistral.svg" alt="Le Chat" /><img id="quehace-openai" class="ia-openai" src="assets/logos/ia-openai.svg" alt="ChatGPT" /><img id="quehace-gemini" class="ia-gemini" src="assets/logos/ia-gemini.svg" alt="Gemini" /></div>
         </div></div>
         <div class="tarjetas" style="left: 900px; top: 190px; width: 900px; grid-template-columns: 1fr 1fr">
           <div id="quehace-c1" class="tarjeta"><b>Corrige tus cantes</b><span>Con el minuto, la fuente y lo que te preguntaría el tribunal</span></div>
@@ -255,10 +270,10 @@
           <p id="plataformas-par" class="par">El mismo conector en todas: tus datos de la app, los temas revisados y el método de cada tarea.</p>
         </div></div>
         <div class="tarjetas" style="left: 900px; top: 150px; width: 900px; grid-template-columns: 1fr">
-          <div id="plataformas-c1" class="tarjeta"><b>Claude · recomendada</b><span>Todo: el informe en PDF con la plantilla de los temas, gráficos como los del temario y la skill</span></div>
-          <div id="plataformas-c2" class="tarjeta"><b>Le Chat</b><span>De Mistral, europea; también con el plan gratuito</span></div>
-          <div id="plataformas-c3" class="tarjeta"><b>ChatGPT</b><span>Con el modo desarrollador de los planes de pago</span></div>
-          <div id="plataformas-c4" class="tarjeta"><b>Gemini</b><span>Con los planes de Google que admiten apps propias</span></div>
+          <div id="plataformas-c1" class="tarjeta"><b><img class="ia-mini ia-claude" src="assets/logos/ia-claude.svg" alt="" />Claude · recomendada</b><span>Todo: el informe en PDF con la plantilla de los temas, gráficos como los del temario y la skill</span></div>
+          <div id="plataformas-c2" class="tarjeta"><b><img class="ia-mini ia-mistral" src="assets/logos/ia-mistral.svg" alt="" />Le Chat</b><span>De Mistral, europea; también con el plan gratuito</span></div>
+          <div id="plataformas-c3" class="tarjeta"><b><img class="ia-mini ia-openai" src="assets/logos/ia-openai.svg" alt="" />ChatGPT</b><span>Con el modo desarrollador de los planes de pago</span></div>
+          <div id="plataformas-c4" class="tarjeta"><b><img class="ia-mini ia-gemini" src="assets/logos/ia-gemini.svg" alt="" />Gemini</b><span>Con los planes de Google que admiten apps propias</span></div>
         </div>
       </section>
 
@@ -320,7 +335,7 @@
       </section>
 
       <!-- Un dictamen (tomas G5a y G5b) -->
-      <section id="dictamen" class="clip" data-start="96.0000" data-duration="13.0909" data-track-index="0">
+      <section id="dictamen" class="clip" data-start="96.0000" data-duration="21.8182" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">un dictamen</p>
@@ -333,7 +348,7 @@
       </section>
 
       <!-- Una duda (tomas G6a y G6b) -->
-      <section id="duda" class="clip" data-start="109.0909" data-duration="19.6364" data-track-index="0">
+      <section id="duda" class="clip" data-start="117.8182" data-duration="19.6364" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">una duda</p>
@@ -345,8 +360,21 @@
         <div id="duda-r3" class="rotulo">Y con qué estudiar cada tema: la web, Manuel o los apuntes de otros TCEE</div>
       </section>
 
+      <!-- Una duda con gráfico (tomas G10a y G10b) -->
+      <section id="duda_grafico" class="clip" data-start="137.4545" data-duration="24.0000" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="banda">
+          <p class="rot">una duda · con gráfico</p>
+          <h2 id="duda_grafico-tit" class="tit"><span class="l">Te lo dibuja como en la pizarra.</span></h2>
+        </div>
+        <div id="duda_grafico-ventana" class="ventana"></div>
+        <div id="duda_grafico-r1" class="rotulo">Pregúntale lo que no acabas de entender</div>
+        <div id="duda_grafico-r2" class="rotulo">El gráfico, con el estilo de los temas revisados</div>
+        <div id="duda_grafico-r3" class="rotulo">Y cómo construirlo paso a paso, para cantarlo</div>
+      </section>
+
       <!-- El cronograma: Claude lee los datos de la app con el conector (las dos oposiciones) -->
-      <section id="cronograma" class="clip" data-start="128.7273" data-duration="4.3636" data-track-index="0">
+      <section id="cronograma" class="clip" data-start="161.4545" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
         <div class="texto"><div class="bloque">
@@ -359,7 +387,7 @@
       </section>
 
       <!-- El cronograma en claude.ai: un opositor a DCE (tomas G9na y G9nb; colores y letra de DCE) -->
-      <section id="cronograma_dce" class="clip dce" data-start="133.0909" data-duration="26.1818" data-track-index="0">
+      <section id="cronograma_dce" class="clip dce" data-start="165.8182" data-duration="26.1818" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">el cronograma · en dce</p>
@@ -372,7 +400,7 @@
       </section>
 
       <!-- El cronograma: en TCEE igual (toma G7b) y traerlo a la app -->
-      <section id="cronograma_app" class="clip" data-start="159.2727" data-duration="8.7273" data-track-index="0">
+      <section id="cronograma_app" class="clip" data-start="192.0000" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div id="cronograma_app-a">
           <div class="banda">
@@ -394,8 +422,26 @@
         </div>
       </section>
 
+      <!-- Una clase: la IA la pide al preparador y aparece en la app (simulada: conversación de ejemplo y captura real de la agenda) -->
+      <section id="reserva" class="clip salvia" data-start="200.7273" data-duration="13.0909" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
+        <div style="position: absolute; left: 120px; top: 120px; width: 1000px">
+          <p id="reserva-rot" class="rot">una clase · con tu preparador</p>
+          <h2 id="reserva-tit" class="tit" style="font-size: 64px"><span class="l">Pídele clase y <em>te sale en la app.</em></span></h2>
+        </div>
+        <div class="chat">
+          <div id="reserva-b1" class="burbuja yo">Pídeme clase con Paula el lunes por la tarde.</div>
+          <div id="reserva-b2" class="burbuja ia"><span class="quien">Tu IA</span>Paula tiene libre el lunes 2 de 17:00 a 19:00. Te propongo online y los temas de tu cronograma para esa semana: 3.A.8 y 3.A.9. ¿La pido?</div>
+          <div id="reserva-b3" class="burbuja yo">Sí, pídela.</div>
+          <div id="reserva-b4" class="burbuja ia"><span class="quien">Tu IA</span>Pedida: lunes 2 de noviembre, de 17:00 a 19:00, online, con el 3.A.8 y el 3.A.9. Ya la tienes en la agenda; cuando Paula la acepte, la tendréis los dos.</div>
+        </div>
+        <div id="reserva-m1" class="movil" style="left: 1330px; top: 99px"><div class="pantalla"><img src="assets/capturas/agenda-reserva-pedida.webp" alt="" /></div></div>
+        <div id="reserva-r1" class="rotulo">Tu preparador la ve en su app y la acepta con un toque</div>
+      </section>
+
       <!-- Tu carpeta (toma G8) -->
-      <section id="carpeta" class="clip salvia" data-start="168.0000" data-duration="26.1818" data-track-index="0">
+      <section id="carpeta" class="clip salvia" data-start="213.8182" data-duration="26.1818" data-track-index="0">
         <div class="fondo"></div>
         <div id="carpeta-a">
           <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
@@ -424,7 +470,7 @@
       </section>
 
       <!-- En el móvil: el mismo conector en la app de tu IA -->
-      <section id="movil" class="clip salvia" data-start="194.1818" data-duration="8.7273" data-track-index="0">
+      <section id="movil" class="clip salvia" data-start="240.0000" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
         <div class="texto" style="width: 640px"><div class="bloque">
@@ -439,7 +485,7 @@
       </section>
 
       <!-- Y además -->
-      <section id="ademas" class="clip" data-start="202.9091" data-duration="10.9091" data-track-index="0">
+      <section id="ademas" class="clip" data-start="248.7273" data-duration="10.9091" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
         <div class="texto" style="width: 640px"><div class="bloque">
@@ -458,7 +504,7 @@
       </section>
 
       <!-- Al día, privacidad y licencia -->
-      <section id="actualiza" class="clip salvia" data-start="213.8182" data-duration="10.9091" data-track-index="0">
+      <section id="actualiza" class="clip salvia" data-start="259.6364" data-duration="10.9091" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
         <div class="texto" style="width: 700px"><div class="bloque">
@@ -474,7 +520,7 @@
       </section>
 
       <!-- Cierre -->
-      <section id="cierre" class="clip oscura" data-start="224.7273" data-duration="8.7273" data-track-index="0">
+      <section id="cierre" class="clip oscura" data-start="270.5455" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="centro" style="gap: 26px">
           <div class="icono-caja">
@@ -484,6 +530,7 @@
           </div>
           <h2 id="cierre-tit" class="tit" style="font-size: 130px"><span class="l">Empieza hoy.</span></h2>
           <span id="cierre-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
+          <div class="ias"><img id="cierre-claude" class="ia-claude" src="assets/logos/ia-claude.svg" alt="Claude" /><img id="cierre-mistral" class="ia-mistral" src="assets/logos/ia-mistral.svg" alt="Le Chat" /><img id="cierre-openai" class="ia-openai" src="assets/logos/ia-openai.svg" alt="ChatGPT" /><img id="cierre-gemini" class="ia-gemini" src="assets/logos/ia-gemini.svg" alt="Gemini" /></div>
           <p id="cierre-n1" class="nota-cierre">En Claude, Le Chat, ChatGPT o Gemini; con Claude, completo  ·  El conector y el material son gratuitos</p>
           <p id="cierre-n2" class="nota-cierre suave">No sustituye a un preparador para la oposición: lo complementa</p>
           <p id="cierre-n3" class="nota-cierre">victorgutierrezmarcos.es/oposicion/economia.html</p>
@@ -492,29 +539,32 @@
 
       <!-- Tomas grabadas en claude.ai y en el ordenador (fuera de las escenas: ver la nota de arriba) -->
       <video id="toma-g2" class="toma" src="assets/tomas/G2c.mp4" muted playsinline data-start="42.2728" data-duration="17.3" data-track-index="1"></video>
-      <video id="toma-g4a" class="toma" src="assets/tomas/G4a.mp4" muted playsinline data-start="68.6364" data-duration="13.5" data-track-index="1"></video>
-      <video id="toma-g4b" class="toma" src="assets/tomas/G4b.mp4" muted playsinline data-start="83.5091" data-duration="9.4" data-track-index="1"></video>
-      <video id="toma-g5a" class="toma" src="assets/tomas/G5a.mp4" muted playsinline data-start="96.6000" data-duration="6.2" data-media-start="14.5" data-track-index="1"></video>
-      <video id="toma-g5b" class="toma" src="assets/tomas/G5b.mp4" muted playsinline data-start="103.0000" data-duration="6.0" data-track-index="1"></video>
-      <video id="toma-g6a" class="toma" src="assets/tomas/G6a.mp4" muted playsinline data-start="109.8909" data-duration="10.8" data-track-index="1"></video>
-      <video id="toma-g6b" class="toma" src="assets/tomas/G6b.mp4" muted playsinline data-start="120.8273" data-duration="7.0" data-track-index="1"></video>
-            <video id="toma-g7b" class="toma" src="assets/tomas/G7b.mp4" muted playsinline data-start="159.5728" data-duration="4.6" data-track-index="1"></video>
-      <video id="toma-g9a" class="toma" src="assets/tomas/G9na.mp4" muted playsinline data-start="133.4909" data-duration="18.7" data-track-index="1"></video>
-      <video id="toma-g9b" class="toma" src="assets/tomas/G9nb.mp4" muted playsinline data-start="152.2909" data-duration="6.0" data-track-index="1"></video>
-      <video id="toma-g8" class="toma" src="assets/tomas/G8.mp4" muted playsinline data-start="172.0000" data-duration="20" data-track-index="1"></video>
+      <video id="toma-g4a" class="toma" src="assets/tomas/G4a.mp4" muted playsinline data-start="68.6364" data-duration="13.2" data-track-index="1"></video>
+      <video id="toma-g4b" class="toma" src="assets/tomas/G4b.mp4" muted playsinline data-start="83.5091" data-duration="8.75" data-track-index="1"></video>
+      <video id="toma-g5a" class="toma" src="assets/tomas/G5a.mp4" muted playsinline data-start="96.6000" data-duration="9.0" data-track-index="1"></video>
+      <video id="toma-g5b" class="toma" src="assets/tomas/G5b.mp4" muted playsinline data-start="105.8000" data-duration="12.3" data-track-index="1"></video>
+      <video id="toma-g10a" class="toma" src="assets/tomas/G10a.mp4" muted playsinline data-start="138.2545" data-duration="11.9" data-track-index="1"></video>
+      <video id="toma-g10b" class="toma" src="assets/tomas/G10b.mp4" muted playsinline data-start="150.3545" data-duration="9.6" data-track-index="1"></video>
+      <video id="toma-g6a" class="toma" src="assets/tomas/G6a.mp4" muted playsinline data-start="118.6182" data-duration="10.8" data-track-index="1"></video>
+      <video id="toma-g6b" class="toma" src="assets/tomas/G6b.mp4" muted playsinline data-start="129.5546" data-duration="7.0" data-track-index="1"></video>
+            <video id="toma-g7b" class="toma" src="assets/tomas/G7b.mp4" muted playsinline data-start="192.3001" data-duration="4.6" data-track-index="1"></video>
+      <video id="toma-g9a" class="toma" src="assets/tomas/G9na.mp4" muted playsinline data-start="166.2182" data-duration="18.7" data-track-index="1"></video>
+      <video id="toma-g9b" class="toma" src="assets/tomas/G9nb.mp4" muted playsinline data-start="185.0182" data-duration="6.0" data-track-index="1"></video>
+      <video id="toma-g8" class="toma" src="assets/tomas/G8.mp4" muted playsinline data-start="217.8182" data-duration="20" data-track-index="1"></video>
 
       <!-- Capas comunes: rótulos de bloque y barrido -->
-      <div id="capa-capitulos" class="clip" data-start="0" data-duration="233.4546" data-track-index="7" style="pointer-events: none">
+      <div id="capa-capitulos" class="clip" data-start="0" data-duration="279.2728" data-track-index="7" style="pointer-events: none">
         <div class="capitulo" data-bloque="instalar"><span>Conectar</span></div>
         <div class="capitulo" data-bloque="cante"><span>Un cante</span></div>
         <div class="capitulo" data-bloque="dictamen"><span>Un dictamen</span></div>
         <div class="capitulo" data-bloque="duda"><span>Una duda</span></div>
         <div class="capitulo" data-bloque="cronograma"><span>El cronograma</span></div>
+        <div class="capitulo" data-bloque="clase"><span>Una clase</span></div>
         <div class="capitulo" data-bloque="carpeta"><span>Tu carpeta</span></div>
         <div class="capitulo" data-bloque="movil"><span>En el móvil</span></div>
         <div class="capitulo" data-bloque="ademas"><span>Y además</span></div>
       </div>
-      <div id="capa-barrido" class="clip" data-start="0" data-duration="233.4546" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
+      <div id="capa-barrido" class="clip" data-start="0" data-duration="279.2728" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
     </div>
 
     <script>
@@ -522,10 +572,10 @@
       const P = 60 / 110, C = 4 * P, M = P / 2;
       const B = (n) => n * C;
       // Compás en que empieza cada escena (lo escribe preparar.py desde guion.json).
-      const E = { portada: 0, gancho: 2, quehace: 6, porque: 10, plataformas: 14, instalar: 18, cante_app: 28, cante_chat: 31, cante_informe: 38, dictamen: 44, duda: 50, cronograma: 59, cronograma_dce: 61, cronograma_app: 73, carpeta: 77, movil: 89, ademas: 93, actualiza: 98, cierre: 103 }; // guion
+      const E = { portada: 0, gancho: 2, quehace: 6, porque: 10, plataformas: 14, instalar: 18, cante_app: 28, cante_chat: 31, cante_informe: 38, dictamen: 44, duda: 54, duda_grafico: 63, cronograma: 74, cronograma_dce: 76, cronograma_app: 88, reserva: 92, carpeta: 98, movil: 110, ademas: 114, actualiza: 119, cierre: 124 }; // guion
       // Bloque de cada escena (también lo escribe preparar.py).
-      const BLOQUE = { portada: "empezar", gancho: "empezar", quehace: "empezar", porque: "empezar", plataformas: "empezar", instalar: "instalar", cante_app: "cante", cante_chat: "cante", cante_informe: "cante", dictamen: "dictamen", duda: "duda", cronograma: "cronograma", cronograma_dce: "cronograma", cronograma_app: "cronograma", carpeta: "carpeta", movil: "movil", ademas: "ademas", actualiza: "ademas", cierre: "final" }; // guion
-      const DURACION = 233.4546;
+      const BLOQUE = { portada: "empezar", gancho: "empezar", quehace: "empezar", porque: "empezar", plataformas: "empezar", instalar: "instalar", cante_app: "cante", cante_chat: "cante", cante_informe: "cante", dictamen: "dictamen", duda: "duda", duda_grafico: "duda", cronograma: "cronograma", cronograma_dce: "cronograma", cronograma_app: "cronograma", reserva: "clase", carpeta: "carpeta", movil: "movil", ademas: "ademas", actualiza: "ademas", cierre: "final" }; // guion
+      const DURACION = 279.2728;
       const ORDEN = Object.keys(E).sort((a, b) => E[a] - E[b]);
       const fin = (id) => { const i = ORDEN.indexOf(id); return i + 1 < ORDEN.length ? B(E[ORDEN[i + 1]]) : DURACION; };
 
@@ -601,7 +651,8 @@
       palabras("#portada-tit", 1.1, 0.12);
       filete("#portada-filete", 1.7);
       palabras("#portada-lema", 2.0, 0.05);
-      aparece("#portada-aviso", 2.9);
+      tarjetas(["#portada-claude", "#portada-mistral", "#portada-openai", "#portada-gemini"], 2.35, 0.14);
+      aparece("#portada-aviso", 3.1);
       sale("portada");
 
       // Gancho
@@ -616,6 +667,7 @@
       // Qué hace
       textos("#quehace", B(E.quehace));
       tarjetas(["#quehace-c1", "#quehace-c2", "#quehace-c3", "#quehace-c4", "#quehace-c5", "#quehace-c6"], B(E.quehace) + 0.8, 0.9 * P);
+      tarjetas(["#quehace-claude", "#quehace-mistral", "#quehace-openai", "#quehace-gemini"], B(E.quehace) + 1.2, 0.12);
       sale("quehace");
 
       // Por qué
@@ -651,7 +703,7 @@
       const CC = B(E.cante_chat);
       banda("#cante_chat", CC);
       ventana("#cante_chat-ventana", CC + 0.4);
-      toma("#toma-g4a", CC + 1.0, 13.5);
+      toma("#toma-g4a", CC + 1.0, 13.2);
       rotulo("#cante_chat-r1", CC + 1.6, 7.0);
       rotulo("#cante_chat-r2", CC + 8.8, 3.2);
       rotulo("#cante_chat-r3", CC + 12.2, 2.8);
@@ -661,7 +713,7 @@
       const CI = B(E.cante_informe);
       banda("#cante_informe", CI);
       ventana("#cante_informe-ventana", CI + 0.2);
-      toma("#toma-g4b", CI + 0.6, 9.4);
+      toma("#toma-g4b", CI + 0.6, 8.75);
       rotulo("#cante_informe-r1", CI + 0.8, 2.6);
       rotulo("#cante_informe-r2", CI + 3.6, 2.8);
       rotulo("#cante_informe-r3", CI + 6.6, 2.4);
@@ -670,15 +722,15 @@
       tl.fromTo("#cante_informe-p2", { opacity: 0, y: 60, rotation: 0 }, { opacity: 1, y: 0, rotation: 2, duration: 0.6, ease: "power3.out" }, CI + 10.3);
       sale("cante_informe");
 
-      // Un dictamen (G5a: 6,2 s desde +0,6, saltando los 14,5 s iniciales de la toma; G5b: 6 s desde +7)
+      // Un dictamen (G5a: 9 s desde +0,6, acelerada; G5b: 12,3 s desde +9,8)
       const D = B(E.dictamen);
       banda("#dictamen", D);
       ventana("#dictamen-ventana", D + 0.2);
-      toma("#toma-g5a", D + 0.6, 6.2);
-      toma("#toma-g5b", D + 7.0, 6.0);
-      rotulo("#dictamen-r1", D + 1.0, 5.6);
-      rotulo("#dictamen-r2", D + 7.2, 3.0);
-      rotulo("#dictamen-r3", D + 10.4, 2.4);
+      toma("#toma-g5a", D + 0.6, 9.0);
+      toma("#toma-g5b", D + 9.8, 12.3);
+      rotulo("#dictamen-r1", D + 1.0, 8.4);
+      rotulo("#dictamen-r2", D + 10.0, 6.0);
+      rotulo("#dictamen-r3", D + 16.4, 4.8);
       sale("dictamen");
 
       // Una duda (G6a 10,8 s desde +0,8; G6b 7 s desde +11,7)
@@ -691,6 +743,17 @@
       rotulo("#duda-r2", U + 11.9, 4.0);
       rotulo("#duda-r3", U + 16.1, 2.6);
       sale("duda");
+
+      // Una duda con gráfico (G10a 11,9 s desde +0,8; G10b 9,6 s desde +12,9)
+      const UG = B(E.duda_grafico);
+      banda("#duda_grafico", UG);
+      ventana("#duda_grafico-ventana", UG + 0.3);
+      toma("#toma-g10a", UG + 0.8, 11.9);
+      toma("#toma-g10b", UG + 12.9, 9.6);
+      rotulo("#duda_grafico-r1", UG + 1.4, 10.6);
+      rotulo("#duda_grafico-r2", UG + 13.2, 4.4);
+      rotulo("#duda_grafico-r3", UG + 17.8, 4.4);
+      sale("duda_grafico");
 
       // El cronograma: exportar (las dos oposiciones)
       textos("#cronograma", B(E.cronograma));
@@ -722,6 +785,18 @@
       movil("#cronograma_app-m1", KA + 5.1);
       movil("#cronograma_app-m2", KA + 5.5);
       sale("cronograma_app");
+
+      // Una clase: la conversación y la agenda
+      const RS = B(E.reserva);
+      aparece("#reserva-rot", RS, 0.45);
+      palabras("#reserva-tit", RS + 0.1);
+      tarjetas(["#reserva-b1"], RS + 1.0);
+      tarjetas(["#reserva-b2"], RS + 2.4);
+      tarjetas(["#reserva-b3"], RS + 5.6);
+      tarjetas(["#reserva-b4"], RS + 6.6);
+      movil("#reserva-m1", RS + 8.0);
+      rotulo("#reserva-r1", RS + 9.4, 3.4);
+      sale("reserva");
 
       // Tu carpeta: la estructura (0-4), la toma G8 (20 s desde +4)
       const R = B(E.carpeta);
@@ -762,7 +837,8 @@
       tl.fromTo("#cierre-logo", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, Z + 0.35);
       palabras("#cierre-tit", Z + 0.9, P / 2);
       filete("#cierre-filete", Z + 1.6);
-      aparece("#cierre-n1", Z + 2.0);
+      tarjetas(["#cierre-claude", "#cierre-mistral", "#cierre-openai", "#cierre-gemini"], Z + 1.8, 0.12);
+      aparece("#cierre-n1", Z + 2.4);
       aparece("#cierre-n2", Z + 2.8);
       aparece("#cierre-n3", Z + 3.6);
 

@@ -2,7 +2,7 @@
 
 Cada semana, con el JSON exportado de la app y lo que haya de esa semana (los informes de los cantes que te adjunte, o lo que recuerdes de esta conversación o del Proyecto), dices qué ha cambiado respecto a la semana anterior y qué hacer la que viene. Es el complemento de `estadisticas.md` («¿cómo voy?» mira el conjunto; esto mira siete días frente a los siete anteriores). Lee `references/datos-app.md` §2.
 
-**Cuándo**: «¿cómo ha ido la semana?», «hazme el informe de la semana», «resumen semanal». Si no hay JSON, pide que lo exporte (Más → Prepara con Claude → Exportar mis datos para Claude); sin él puedes hacerlo solo con los informes de los cantes, y lo dices.
+**Cuándo**: «¿cómo ha ido la semana?», «hazme el informe de la semana», «resumen semanal». Si no hay JSON, pide que lo exporte (Más → EconomIA → Exportar mis datos para Claude); sin él puedes hacerlo solo con los informes de los cantes, y lo dices.
 
 **Qué lees**: `cantes[]` y `tests[]` de la semana y de la anterior (por `fecha`); `cronograma.semanas` y `hechos`; `leitner.porCaja` y `vencidas`; `racha`; `deberes`; `horario` (para estimar las horas si no las dice). Los informes de los cantes de la semana, si los adjunta: sus secciones 3 y 4 (errores y omisiones) son la materia del apartado 2.
 

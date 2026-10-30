@@ -32,7 +32,7 @@ En las fórmulas $…$ escribe \\alpha, \\leq, \\rightarrow (no α, ≤, →): e
 texto corriente los símbolos Unicode sí valen, informe.sty sustituye los que
 la fuente no tiene.
 
-Autor: Víctor Gutiérrez Marcos (skill «Prepara con Claude»).
+Autor: Víctor Gutiérrez Marcos (skill «EconomIA»).
 """
 import argparse
 import json
@@ -61,12 +61,12 @@ ESTILOS = {
     'tcee': {
         'texto': 'TeX Gyre Pagella', 'titulos': 'TeX Gyre Pagella',
         'primario': '5F2987', 'secundario': '4A1F6B', 'filete': 'B8860B', 'gris': '5E5866', 'fondo': 'E2EFD9', 'palido': 'F1EBF6',
-        'cabecera': 'Prepara con Claude · Oposición a Técnico Comercial y Economista del Estado · victorgutierrezmarcos.es',
+        'cabecera': 'EconomIA · Oposición a Técnico Comercial y Economista del Estado · victorgutierrezmarcos.es',
     },
     'dce': {
         'texto': 'Latin Modern Roman', 'titulos': 'Latin Modern Roman',
         'primario': '7A1F4B', 'secundario': '234A6B', 'filete': '234A6B', 'gris': '57534B', 'fondo': 'F7F4EC', 'palido': 'F4E9EE',
-        'cabecera': 'Prepara con Claude · Oposición a Diplomado Comercial del Estado · manuelcabadogarcia.es',
+        'cabecera': 'EconomIA · Oposición a Diplomado Comercial del Estado · manuelcabadogarcia.es',
     },
 }
 AVISO = ('Este informe lo ha redactado una IA con el temario de victorgutierrezmarcos.es y tus propios datos. '

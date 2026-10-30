@@ -1,5 +1,5 @@
 % ==========================================================================
-% informe.sty — Los documentos de «Prepara con Claude» (informes de cantes,
+% informe.sty — Los documentos de «EconomIA» (informes de cantes,
 % dictámenes, escritos, cronogramas, fichas) con la misma plantilla que los
 % temas del temario (oposicion/temario/latex/tcee.sty), en versión corta y
 % autocontenida: cabecera y pie, apartados en banda, cajas, listas, tablas.
@@ -20,7 +20,7 @@
 % app; informeaviso es la caja pálida del aviso final.
 % ==========================================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{informe}[2026/10/29 Documentos de Prepara con Claude]
+\ProvidesPackage{informe}[2026/10/29 Documentos de EconomIA]
 
 % --- Oposición ------------------------------------------------------------
 \newif\ifinforme@dce
@@ -40,7 +40,7 @@
   \newcommand{\informe@web}{victorgutierrezmarcos.es}
   \newcommand{\informe@weburl}{https://www.victorgutierrezmarcos.es/}
 \fi
-\newcommand{\informe@marca}{Prepara con Claude}
+\newcommand{\informe@marca}{EconomIA}
 \newcommand{\informe@pieuso}{Uso personal del opositor \textperiodcentered\ Redactado por una IA: no sustituye a un preparador, lo complementa}
 
 % --- Fecha (sin babel: los meses a mano) ---------------------------------------
@@ -132,7 +132,7 @@
 \RequirePackage{needspace}
 
 % --- Cabecera y pie ------------------------------------------------------------------
-% Cabecera: «Prepara con Claude · Oposición a … · web»; pie: fecha, nota de uso
+% Cabecera: «EconomIA · Oposición a … · web»; pie: fecha, nota de uso
 % personal y «página n de N».
 \fancypagestyle{informe}{%
   \fancyhf{}%
@@ -377,7 +377,7 @@
 % --- Hiperenlaces (al final) ------------------------------------------------------------
 \RequirePackage[unicode]{hyperref}
 \hypersetup{colorlinks=true,linkcolor=informeprimario,urlcolor=informesecundario,citecolor=informesecundario,
-  pdfauthor={Prepara con Claude · Víctor Gutiérrez Marcos},pdfcreator={informe-pdf.py (Prepara con Claude)}}
+  pdfauthor={EconomIA · Víctor Gutiérrez Marcos},pdfcreator={informe-pdf.py (EconomIA)}}
 \urlstyle{same}
 \IfFileExists{bookmark.sty}{\RequirePackage{bookmark}}{}
 % En los marcadores del PDF, los símbolos sustituidos salen como texto llano

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Estética de la oposición para los gráficos de matplotlib (skill «Prepara con Claude»).
+Estética de la oposición para los gráficos de matplotlib (skill «EconomIA»).
 
     import sys; sys.path.insert(0, 'scripts')
     from grafico import estilo, guardar, etiqueta

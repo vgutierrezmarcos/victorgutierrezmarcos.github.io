@@ -1,4 +1,4 @@
-# El conector «Prepara con Claude»: cuando los datos llegan solos
+# El conector «EconomIA»: cuando los datos llegan solos
 
 Si el opositor tiene conectado el conector oficial de la web (un servidor MCP remoto: `mcp/README.md` en el repositorio), tienes herramientas que empiezan por `leer_`, `proponer_cronograma`, `guardar_informe_cante`, `listar_temas_revisados` y `desconectar`. Entonces:
 

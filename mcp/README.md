@@ -1,4 +1,4 @@
-# Conector «Prepara con Claude» (MCP remoto)
+# Conector «EconomIA» (MCP remoto)
 
 Servidor MCP remoto de la app «Oposición TCEE · DCE», como Cloudflare Worker en el plan gratuito. Cada opositor lo añade como **conector personalizado** en Claude.ai, Claude Desktop o Claude Code, entra con su cuenta de Google (la de la app) y, desde entonces, Claude lee su progreso, sus tests, sus cantes y su cronograma directamente de la app, sirve los materiales exclusivos solo a quien tiene sesión y, cuando el opositor lo confirma, guarda en la app el cronograma acordado y el informe de un cante. Diseño en `claude/mcp-fase-2.md`; instrucciones para Claude en `claude/prepara-con-claude/references/conector.md`.
 
@@ -78,7 +78,7 @@ Después del primer despliegue:
 2. En la consola de Firebase, Authentication → Settings → **Dominios autorizados**: `www.victorgutierrezmarcos.es` ya está (el login se hace ahí, no en el Worker), así que no hay que añadir nada.
 3. Publicar las reglas de Firestore nuevas (`firestore.rules`, bloque `cantes/{id}/informes/{informe}`) en la consola.
 4. Subir el contenido exclusivo: `python3 scripts/skill-opositor.py && python3 mcp/publicar-contenido.py` (usa `wrangler kv bulk put --remote`). Repetirlo cada vez que se apruebe un tema o una ficha.
-5. Probar con la cuenta propia: Claude.ai → Personalizar → Conectores → **Añadir conector personalizado** → nombre «Prepara con Claude», URL `https://…/mcp`, sin client id ni secreto (Claude se registra solo) → Conectar → consentimiento → Google → «Cuenta conectada» → de vuelta en Claude. En Claude Code: `claude mcp add --transport http prepara-con-claude https://…/mcp` y `/mcp` para entrar.
+5. Probar con la cuenta propia: Claude.ai → Personalizar → Conectores → **Añadir conector personalizado** → nombre «EconomIA», URL `https://…/mcp`, sin client id ni secreto (Claude se registra solo) → Conectar → consentimiento → Google → «Cuenta conectada» → de vuelta en Claude. En Claude Code: `claude mcp add --transport http prepara-con-claude https://…/mcp` y `/mcp` para entrar.
 
 Los `vars` de `wrangler.toml` (`FIREBASE_API_KEY`, `URL_LOGIN`, `URL_PREGUNTAS`, `ORIGENES_LOGIN`…) son públicos; el único secreto es `CLAVE_CIFRADO`.
 

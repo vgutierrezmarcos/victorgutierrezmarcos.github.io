@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Construye el ZIP de la skill de Claude «Prepara con Claude» para opositores:
+Construye el ZIP de la skill de Claude «EconomIA» para opositores:
 el texto propio de la skill (claude/prepara-con-claude/, lo escribe otra
 sesión) más las referencias que salen del temario revisado (rama
 revision-temario, en el árbol hermano ../victorgutierrezmarcos.github.io-revision)
@@ -69,7 +69,7 @@ ZIP_RUTA = 'oposicion/temario/app/prepara-con-claude.zip'
 ZIP_LIGERA = 'oposicion/temario/app/prepara-con-claude-ligera.zip'  # sin material exclusivo: lo sirve el conector MCP
 TEST = os.path.join(RAIZ, 'oposicion', 'temario', 'primer-ejercicio', 'test')
 # Nombre técnico de la skill (carpeta dentro del ZIP y `name` de SKILL.md): Claude.ai
-# no admite la palabra «claude» en el nombre, así que el título «Prepara con Claude»
+# no admite la palabra «claude» en el nombre, así que el título «EconomIA»
 # es solo el nombre comercial.
 NOMBRE = 'prepara-oposicion'
 _WIN = '/mnt/c/Users/vgutierrez/AppData/Local/Programs'
@@ -77,7 +77,7 @@ PANDOC = os.environ.get('TCEE_PANDOC', f'{_WIN}/Quarto/bin/tools/pandoc.exe')
 SKILLS_USUARIO = os.path.expanduser('~/.claude/skills')
 
 AVISO = ('Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. '
-         'Forma parte de la skill «Prepara con Claude»: solo para la preparación personal del opositor '
+         'Forma parte de la skill «EconomIA»: solo para la preparación personal del opositor '
          'en su propia cuenta de Claude. No se autoriza copiarlo, redistribuirlo ni usarlo en otras '
          'plataformas o sistemas de IA (ver LICENCIA.md).')
 CONDICIONES = 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html'
@@ -1258,7 +1258,7 @@ def aligerar(destino):
                 shutil.rmtree(ruta)
     escribir(os.path.join(refs, 'LIGERA.md'),
              '# Skill ligera\n\nEsta copia de la skill no lleva el material exclusivo (temas revisados, fichas, guía del dictamen '
-             'ni canon): se lee con las herramientas del conector «Prepara con Claude» (`references/conector.md`: '
+             'ni canon): se lee con las herramientas del conector «EconomIA» (`references/conector.md`: '
              '`listar_temas_revisados`, `leer_tema`, `leer_ficha`, `leer_guia_dictamen`). Si el conector no está activo, '
              'dilo en una línea y trabaja con los índices de `references/temario/` y conocimiento general.\n')
     zip_destino = os.path.join(WT, ZIP_LIGERA)
@@ -1308,7 +1308,7 @@ def comprobar():
 
 
 def main():
-    p = argparse.ArgumentParser(description='Construye el ZIP de la skill «Prepara con Claude».')
+    p = argparse.ArgumentParser(description='Construye el ZIP de la skill «EconomIA».')
     p.add_argument('--sin-temas', action='store_true', help='sin temas/<T>/tema.md ni la guía del dictamen (solo fichas y guiones)')
     p.add_argument('--instalar', action='store_true', help='copia la skill a ~/.claude/skills/prepara-oposicion/')
     p.add_argument('--comprobar', action='store_true', help='no escribe: dice si el ZIP está al día con el manifiesto')
