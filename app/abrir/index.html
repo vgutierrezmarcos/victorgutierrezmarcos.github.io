@@ -69,7 +69,7 @@
 
   <script>
     // Avisos del navegador y versión nueva (los usa la app: core/avisos_navegador_web.dart).
-    window.huellaApp = '02e3020cc5';
+    window.huellaApp = '702f3492bd';
     window.avisosApp = (function () {
       var registro = null, alTocar = null, pendientes = [];
       var conSw = 'serviceWorker' in navigator;
@@ -120,12 +120,55 @@
       };
     })();
 
+    // Transcripción del cante con la Web Speech API (core/dictado_web.dart).
+    // Se reinicia sola al cortarse (el navegador para tras un silencio) hasta
+    // que se le dice parar. alEvento(tipo, texto, desde): 'parcial',
+    // 'definitivo', 'error' o 'parado'; desde = ms en que se empezó a decir.
+    window.dictadoApp = (function () {
+      var Clase = window.SpeechRecognition || window.webkitSpeechRecognition;
+      var rec = null, activo = false, desde = 0;
+      function crear(idioma, alEvento) {
+        var r = new Clase();
+        r.lang = idioma; r.continuous = true; r.interimResults = true; r.maxAlternatives = 1;
+        r.onresult = function (e) {
+          var parcial = '';
+          for (var i = e.resultIndex; i < e.results.length; i++) {
+            var t = e.results[i][0].transcript;
+            if (!desde) desde = Date.now();
+            if (e.results[i].isFinal) { alEvento('definitivo', t, desde); desde = 0; } else parcial += t;
+          }
+          if (parcial) alEvento('parcial', parcial, desde || Date.now());
+        };
+        r.onerror = function (e) {
+          // Sin voz o cortes de red: se sigue; sin permiso, se para.
+          if (e.error === 'not-allowed' || e.error === 'service-not-allowed' || e.error === 'audio-capture') {
+            activo = false; alEvento('error', e.error === 'audio-capture' ? 'No hay micrófono.' : 'Sin permiso de micrófono.', Date.now());
+          }
+        };
+        r.onend = function () {
+          if (activo) { try { r.start(); } catch (x) { setTimeout(function () { if (activo) try { r.start(); } catch (y) {} }, 300); } }
+          else alEvento('parado', '', Date.now());
+        };
+        return r;
+      }
+      return {
+        admite: function () { return !!Clase; },
+        empezar: function (idioma, alEvento) {
+          if (!Clase) throw new Error('sin SpeechRecognition');
+          activo = true; desde = 0;
+          rec = crear(idioma, alEvento);
+          rec.start();
+        },
+        parar: function () { activo = false; if (rec) try { rec.stop(); } catch (x) {} rec = null; }
+      };
+    })();
+
     window.addEventListener('flutter-first-frame', function () {
       var c = document.getElementById('carga');
       c.classList.add('fuera');
       setTimeout(function () { c.remove(); }, 400);
     });
   </script>
-  <script src="flutter_bootstrap.js?v=02e3020cc5" async></script>
+  <script src="flutter_bootstrap.js?v=702f3492bd" async></script>
 </body>
 </html>
