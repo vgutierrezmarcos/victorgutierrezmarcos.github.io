@@ -63,6 +63,8 @@ Víctor descartó «Prepara con IA» por genérico y eligió **EconomIA** (econo
 
 ## Pendiente
 
+- **Icono del conector:** Claude enseña el favicon del dominio principal (VGM), no el del subdominio `mcp` (el Worker ya sirve la diana en `/favicon.ico`, pero Google no conoce el subdominio). Decidido el 30 oct.: se resuelve al publicarlo en el **directorio de conectores de Anthropic**, que admite logo propio (paso 9 de `mcp-fase-2.md`), tras el lanzamiento. Ni dominio aparte ni cambiar el favicon de la web.
+
 - ~~**Textos legales**~~ hechos el 30 oct. (con el visto bueno de Víctor): `condiciones-materiales.html` (1 bis: «en su propia cuenta de Claude» → de su asistente de IA) y `politica-cookies.html` 2.3 y tablas (conector «Oposición TCEE · DCE», el proveedor de IA lo elige el opositor). Cuando cambien, ajustar las `SUSTITUCIONES` de `economia-visible.py`.
 - **App:** Más → «Prepara con IA», «Enviar a la IA», «Exportar mis datos para la IA», «Desconectar la IA» (la página ya los nombra así).
 - **Vídeo** con el nombre nuevo (`scripts/video-claude`, `publicar.py` y `videos.json` aún dicen «Prepara con Claude»).
