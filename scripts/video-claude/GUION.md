@@ -1,6 +1,6 @@
-# Vídeo «Prepara la oposición con Claude» (clave `claude-prepara`)
+# Vídeo «Prepara con IA» (clave `claude-prepara`)
 
-Apaisado 1920×1080, 3-4 minutos, sin voz (rótulos y pantallas grabadas), con la música y la estética del promocional de la app (`scripts/video-app/`). Se publica con `/videos` (clave `claude-prepara`) y lo enlazan `oposicion/prepara-con-claude.html`, `app/index.html#claude` y la app (Más → Prepara con Claude).
+Apaisado 1920×1080, 3-4 minutos, sin voz (rótulos y pantallas grabadas), con la música y la estética del promocional de la app (`scripts/video-app/`). Se publica con `/videos` (clave `claude-prepara`) y lo enlazan `oposicion/prepara-con-ia.html`, `app/index.html#claude` y la app (Más → Prepara con IA).
 
 Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de pantalla a 1920×1080, sin voz, despacio, con el ratón visible):
 
@@ -15,7 +15,11 @@ Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de panta
 | G7 | App: Más → Prepara con Claude → Exportar mis datos → claude.ai: «hazme el cronograma hasta el examen» → copiar el bloque → app: Cronograma → Traer el tuyo → pegar → el cronograma en Hoy | móvil + claude.ai | 35 |
 | G8 | El explorador de ficheros con la carpeta «Oposición TCEE» ordenada (0_organizacion, 1_primer_ejercicio, 3_tercer_ejercicio/A/3A08/cantes…) y Claude Desktop (o Claude Code) trabajando sobre ella: «corrige el cante de hoy y guarda el informe al lado» → el PDF aparece en `cantes/` del tema | escritorio | 30 |
 
-## Escenas (versión del 28 oct., unos 3:36)
+## Cambio a «Prepara con IA» (30 oct., sin renderizar)
+
+El conector se llama «Oposición TCEE · DCE» y funciona en Claude, ChatGPT, Le Chat y Gemini (con Claude, completo). En `index.html`: marca y portada con el icono de la app y «Prepara con IA» (sin el asterisco de Claude), escena nueva **plataformas** tras «porque» (4 compases: «En tu IA. Con Claude, completo.» y una tarjeta por IA), las tomas corridas 4 compases y el cierre con las cuatro IA y `prepara-con-ia.html`; el resto de escenas sigue enseñándolo en Claude. Antes de renderizar hay que **volver a grabar G2c** (la página de autorización y la de entrar con Google ya no llevan el asterisco ni el nombre antiguo) y revisar las capturas de `claude-movil-*` (el conector puede salir con el nombre antiguo).
+
+## Escenas (versión del 28 oct., unos 3:36; con la escena de plataformas, 3:53)
 
 1. **Portada**: «Prepara con Claude» · «Complementa tu preparación con la skill de Claude» · aviso «No sustituye a un preparador para la oposición: lo complementa».
 2. **Gancho**: «Tu preparador te corrige una vez a la semana. Entre clase y clase, las dudas esperan.» → «A la medida de cada opositor. Cada semana te conoce mejor.»
@@ -42,4 +46,4 @@ cd scripts/video-claude && npx hyperframes lint && npx hyperframes render
 python3 scripts/video-claude/publicar.py --subir  # MP4 para la web, pósteres y YouTube (clave claude-prepara)
 ```
 
-Después, quitar `hidden` a los reproductores de `oposicion/prepara-con-claude.html` y `app/index.html#claude` y hacer commit de `videos.json`. Nunca usar `scripts/montar-video-app.py`.
+Después, quitar `hidden` a los reproductores de `oposicion/prepara-con-ia.html` y `app/index.html#claude` y hacer commit de `videos.json`. Nunca usar `scripts/montar-video-app.py`.

@@ -6,7 +6,7 @@
  *     de la web y, debajo de su tarjeta, la llamada a la app;
  *   - rellena la sección «Materiales exclusivos» (#exclusivos-lista) del
  *     temario y la frase de la portada (#exclusivos-portada);
- *   - rellena el botón de descarga de la skill «Prepara con Claude»
+ *   - rellena el botón de descarga de la skill de Claude («Prepara con IA»)
  *     (#descargar-skill): con sesión iniciada apunta al ZIP; sin sesión, pide
  *     iniciarla o manda a la app.
  * Sin el JSON (sin red, fichero ausente), la página se queda como está.
@@ -84,7 +84,7 @@
                 var li = document.createElement('li');
                 var t = m.codigo && m.tipo === 'tema' ? '<strong>' + m.codigo + '</strong> · ' + m.titulo : m.titulo;
                 var det = [formatos(m.formatos), m.fecha ? (m.tipo === 'tema' || m.tipo === 'guia' ? 'revisado el ' : 'publicado el ') + fecha(m.revisado || m.fecha) : ''].filter(Boolean).join(' · ');
-                if (m.tipo === 'skill') t = '<a href="' + RAIZ + 'oposicion/prepara-con-claude.html">' + m.titulo + '</a>';
+                if (m.tipo === 'skill') t = '<a href="' + RAIZ + 'oposicion/prepara-con-ia.html">' + m.titulo + '</a>';
                 li.innerHTML = (m.ruta ? '<a href="' + RAIZ + m.ruta + '" target="_blank">' + t + '</a>' : t) + ' <span class="etiqueta-exclusivo">Exclusivo</span>' + (det ? '<span class="exclusivos-detalle">' + det + '</span>' : '');
                 ul.appendChild(li);
             });

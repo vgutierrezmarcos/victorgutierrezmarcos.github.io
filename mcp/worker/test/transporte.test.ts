@@ -17,6 +17,7 @@ const ctx: Contexto = {
   apuntes: async () => ({ formato: 'docx', esquema: [], texto: '' }),
   textos: async () => null,
   pagina: async () => null,
+  cliente: async () => 'IA',
   desconectar: async () => undefined,
 };
 
@@ -35,16 +36,16 @@ describe('Streamable HTTP sin estado', () => {
     expect(r.headers.get('content-type')).toContain('application/json');
     const j = (await r.json()) as { result: { protocolVersion: string; serverInfo: { name: string }; capabilities: { tools?: unknown } } };
     expect(j.result.protocolVersion).toBe('2025-06-18');
-    expect(j.result.serverInfo.name).toContain('Prepara con Claude');
+    expect(j.result.serverInfo.name).toBe('Oposición TCEE · DCE');
     expect(j.result.capabilities.tools).toBeDefined();
   });
 
-  it('tools/list devuelve las dieciséis herramientas en una petición independiente (sin sesión)', async () => {
+  it('tools/list devuelve las diecisiete herramientas en una petición independiente (sin sesión)', async () => {
     const r = await responderMcp(peticion({ jsonrpc: '2.0', id: 2, method: 'tools/list', params: {} }, { 'MCP-Protocol-Version': '2025-06-18' }), ctx);
     expect(r.status).toBe(200);
     const j = (await r.json()) as { result: { tools: Array<{ name: string; inputSchema: unknown }> } };
     expect(j.result.tools.map((t) => t.name)).toContain('leer_progreso');
-    expect(j.result.tools).toHaveLength(16);
+    expect(j.result.tools).toHaveLength(17);
   });
 
   it('GET no se admite y una petición mal formada da error JSON-RPC', async () => {

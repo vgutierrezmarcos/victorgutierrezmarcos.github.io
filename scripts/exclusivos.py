@@ -92,11 +92,11 @@ def main():
             materiales.append({'tipo': 'guia', 'codigo': d.get('archivo', '1D01'), 'titulo': d.get('titulo', 'Guía para el dictamen de coyuntura económica'), 'donde': 'app', 'fecha': d.get('aprobado'), 'revisado': d.get('fecha'), 'formatos': formatos})
         s = m.get('skill')
         if s and s.get('ruta'):
-            # La skill «Prepara con Claude» (scripts/skill-opositor.py la construye y la
+            # La skill de Claude de «Prepara con IA» (scripts/skill-opositor.py la construye y la
             # registra en el manifiesto): material exclusivo con su propia licencia,
             # descargable desde la app o desde la web con sesión iniciada.
             base = (m.get('cdn') or m.get('raw') or '').rstrip('/')
-            materiales.append({'tipo': 'skill', 'codigo': 'prepara-con-claude', 'titulo': 'Skill «Prepara con Claude» para Claude.ai: correctores de cantes y dictámenes, dudas, cronograma y simulacro de tribunal',
+            materiales.append({'tipo': 'skill', 'codigo': 'prepara-con-claude', 'titulo': 'Skill de Claude de «Prepara con IA»: correctores de cantes y dictámenes, dudas, cronograma y simulacro de tribunal',
                                'donde': 'app', 'fecha': (s.get('generado') or '')[:10], 'version': s.get('version'), 'formatos': ['zip'],
                                'url': f"{base}/{s['ruta']}" if base else None, 'tamano': s.get('tamano'), 'temas': len(s.get('temas') or []), 'sellar': False})
     materiales.append({'tipo': 'test', 'codigo': 'explicaciones', 'titulo': 'Explicaciones de las 1004 preguntas oficiales del test («¿Por qué?»), con 232 gráficos', 'donde': 'app', 'fecha': '2026-10-24', 'formatos': ['app']})

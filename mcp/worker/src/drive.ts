@@ -1,5 +1,5 @@
 // Lectura de los apuntes de otros TCEE (repositorio de la ATCEE en Google Drive) para que
-// Claude pueda valorarlos y explicarlos: descarga el fichero público, saca el texto de un
+// la IA pueda valorarlos y explicarlos: descarga el fichero público, saca el texto de un
 // .docx (ZIP con word/document.xml) o de un Documento de Google (exportado a texto) y
 // devuelve el esquema (los títulos), la extensión y el texto por tramos. Sin dependencias:
 // el ZIP se lee a mano y se descomprime con DecompressionStream('deflate-raw').

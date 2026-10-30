@@ -1,5 +1,5 @@
 // Transformaciones puras entre los documentos de Firestore (tal como los guarda la
-// app: ver app/lib/data/models) y el JSON que entiende la skill «Prepara con Claude»
+// app: ver app/lib/data/models) y el JSON que entiende la skill del equipo de preparación
 // (claude/prepara-con-claude/references/datos-app.md, oposicion_<id>_para_claude.json).
 // Sin red: todo lo que entra viene ya leído, y por eso se prueba sin Firestore.
 
@@ -426,11 +426,11 @@ const reTema = /^\d\.[A-Z]\.\d{1,2}$/;
 /**
  * Construye el documento `cronogramas/{id}` exactamente como `Cronograma.toJson()` de
  * la app (app/lib/data/models/cronograma.dart), a partir de las semanas de cante que
- * acordaron el opositor y Claude. Cada semana va del día siguiente a un cante hasta
+ * acordaron el opositor y su IA. Cada semana va del día siguiente a un cante hasta
  * el cante siguiente (`inicioSemana` con `diaCante`); las semanas sin cante entre la
  * primera y la última quedan de descanso. Devuelve los errores en vez de lanzar.
  */
-export function construirCronograma(p: PropuestaCronograma, ahora = new Date()): { documento: Obj; errores: string[] } {
+export function construirCronograma(p: PropuestaCronograma, ahora = new Date(), autor = 'IA'): { documento: Obj; errores: string[] } {
   const errores: string[] = [];
   if (!Number.isInteger(p.diaCante) || p.diaCante < 1 || p.diaCante > 7) errores.push('diaCante tiene que ser 1 (lunes) … 7 (domingo)');
   if (![1, 2, 3, 4, 5].includes(p.ejercicio)) errores.push('ejercicio tiene que ser 1-5');
@@ -496,7 +496,7 @@ export function construirCronograma(p: PropuestaCronograma, ahora = new Date()):
     compartir: false,
     propuesta: null,
     propuestaResuelta: null,
-    autorNombre: 'Claude',
+    autorNombre: autor,
     creado: marca,
     updatedAt: marca,
     diaCante: p.diaCante,
@@ -524,7 +524,7 @@ export interface InformeCante {
 const nota = (v: unknown): number | null => (typeof v === 'number' && Number.isInteger(v) && v >= 1 && v <= 5 ? v : null);
 
 /** Documento `cantes/{id}/informes/{fecha}` y los campos de `resultado` que cambian (vacío si ninguno). */
-export function construirInforme(i: InformeCante, ahora = new Date()): { id: string; documento: Obj; resultado: Obj; errores: string[] } {
+export function construirInforme(i: InformeCante, ahora = new Date(), cliente = 'IA'): { id: string; documento: Obj; resultado: Obj; errores: string[] } {
   const errores: string[] = [];
   if (!i.informe || !i.informe.trim()) errores.push('el informe está vacío');
   if (i.informe && i.informe.length > 60_000) errores.push('el informe es demasiado largo (máximo 60.000 caracteres)');
@@ -544,7 +544,8 @@ export function construirInforme(i: InformeCante, ahora = new Date()): { id: str
   const marca = ahora.toISOString();
   const documento: Obj = {
     fecha: marca,
-    origen: 'claude',
+    origen: 'ia',
+    cliente,
     informe: i.informe ?? '',
     ...(i.valoracion !== undefined ? { valoracion: i.valoracion } : {}),
     ...(Object.keys(valoraciones).length ? { valoraciones } : {}),

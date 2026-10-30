@@ -36,6 +36,8 @@ Claude ──POST /mcp (Bearer)──► herramientas: Firestore REST con el ID 
 
 | Herramienta | Lee / escribe |
 |---|---|
+| `leer_skill(ruta)` | La skill publicada en la web: `SKILL.md` sin ruta, o el fichero que cite |
+| `leer_metodo(tarea)` | El método de una tarea (`corregir_cante`, `simulacro`, `tribunal`, `cronograma`…): cabecera y reglas comunes de `SKILL.md` más el agente y lo que haga falta leer; sin tarea, la lista. Lo usan las IA sin skills (ChatGPT, Le Chat, Gemini). Cada tarea es también un *prompt* MCP (`TAREAS` en `herramientas.ts`) |
 | `leer_progreso(oposicion)` | `progress/settings`, `progress/plan`, `progress/spaced_repetition`, `notes/*` → el JSON de `datos-app.md` (sin cantes, cronograma ni tests) |
 | `leer_resultados_test(desde, limite)` | `exam_results` con acierto por tema (a partir de `respuestas` y `preguntas.json`) |
 | `leer_cantes(n)` | Los últimos `n` hechos (con `resultado`) y los próximos pendientes |
@@ -70,7 +72,7 @@ npx wrangler deploy
 
 Después del primer despliegue:
 
-1. Apuntar la URL real del Worker (la que imprime `wrangler deploy`, `https://prepara-con-claude.<subdominio>.workers.dev`) en **tres sitios**: `URL_WORKER` en `wrangler.toml`, la constante `WORKER` de `mcp/login.html` y la URL que se publica en `oposicion/prepara-con-claude.html`; volver a desplegar y publicar la web. Con dominio propio (`mcp.victorgutierrezmarcos.es`: Workers → Settings → Domains & Routes → Custom domain; el DNS tiene que estar en Cloudflare) es lo mismo con esa URL.
+1. Apuntar la URL real del Worker (la que imprime `wrangler deploy`, `https://prepara-con-claude.<subdominio>.workers.dev`) en **tres sitios**: `URL_WORKER` en `wrangler.toml`, la constante `WORKER` de `mcp/login.html` y la URL que se publica en `oposicion/prepara-con-ia.html`; volver a desplegar y publicar la web. Con dominio propio (`mcp.victorgutierrezmarcos.es`: Workers → Settings → Domains & Routes → Custom domain; el DNS tiene que estar en Cloudflare) es lo mismo con esa URL.
 2. En la consola de Firebase, Authentication → Settings → **Dominios autorizados**: `www.victorgutierrezmarcos.es` ya está (el login se hace ahí, no en el Worker), así que no hay que añadir nada.
 3. Publicar las reglas de Firestore nuevas (`firestore.rules`, bloque `cantes/{id}/informes/{informe}`) en la consola.
 4. Subir el contenido exclusivo: `python3 scripts/skill-opositor.py && python3 mcp/publicar-contenido.py` (usa `wrangler kv bulk put --remote`). Repetirlo cada vez que se apruebe un tema o una ficha.
