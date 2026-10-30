@@ -3,13 +3,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
 import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../preparador/tema_anticipado.dart' show leerAntelacion;
 import 'reloj_cante.dart';
+import 'reloj_clase.dart';
 import 'reloj_compartido.dart';
+import 'reloj_grande_page.dart';
 
 /// El cronómetro que está usando cada alumno en su clase de ahora (por id de
 /// la clase), para el preparador. Lo llena [VigilanteRelojes].
@@ -185,10 +189,13 @@ class _TarjetaRelojAlumnoState extends ConsumerState<TarjetaRelojAlumno> {
   }
 }
 
+
 /// El cronómetro compartido de una clase, en la ficha de la clase (del alumno
 /// y del preparador): los dos ven el mismo tiempo en todo momento y
-/// cualquiera lo empieza, lo pausa o pasa a exponer. Si aún no se ha usado,
-/// lo prepara con el esquema y la exposición de la clase.
+/// cualquiera lo maneja. Tiene lo mismo que el de Cantar ([ControlRelojClase]):
+/// por defecto cuenta hacia delante desde 0, avisa en los mismos momentos y
+/// se pone a pantalla completa. Si aún no se ha usado, lo prepara con el
+/// esquema y la exposición de la clase.
 class RelojDeClaseTarjeta extends ConsumerStatefulWidget {
   const RelojDeClaseTarjeta({super.key, required this.alumnoUid, required this.claseId, required this.otroNombre, required this.esquema, required this.exposicion, required this.onAbrir});
   final String alumnoUid;
@@ -204,8 +211,8 @@ class RelojDeClaseTarjeta extends ConsumerStatefulWidget {
 
 class _RelojDeClaseTarjetaState extends ConsumerState<RelojDeClaseTarjeta> {
   RelojCompartido? _reloj;
+  ControlRelojClase? _control;
   StreamSubscription<EstadoRelojCompartido?>? _escucha;
-  EstadoRelojCompartido? _estado;
   bool _cargado = false;
   String? _error;
   Timer? _tic;
@@ -217,17 +224,28 @@ class _RelojDeClaseTarjetaState extends ConsumerState<RelojDeClaseTarjeta> {
     if (yo == null || !ref.read(serviciosProvider).firebaseDisponible) return;
     final soyAlumno = yo.uid == widget.alumnoUid;
     final nombre = soyAlumno ? (yo.displayName ?? 'Tu alumno') : ref.read(perfilPreparadorProvider).nombre;
-    _reloj = RelojCompartido.deClase(ref.read(firestoreRelojProvider), ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.claseId, miUid: yo.uid, miNombre: nombre.isEmpty ? 'Preparador' : nombre);
-    _reloj!.medirDesfase();
-    _escucha = _reloj!.escucharConErrores().listen(
+    final reloj = _reloj = RelojCompartido.deClase(ref.read(firestoreRelojProvider), ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.claseId, miUid: yo.uid, miNombre: nombre.isEmpty ? 'Preparador' : nombre);
+    _control = ControlRelojClase(
+      esquemaPorDefecto: widget.esquema,
+      exposicionPorDefecto: widget.exposicion,
+      otroNombre: widget.otroNombre,
+      miUid: yo.uid,
+      publicador: (r, {temas = const [], elegido}) => reloj.publicar(r, temas: temas, elegido: elegido),
+      nombreTema: (c) {
+        final t = ref.read(temarioProvider).valueOrNull?.tema(c);
+        return t == null ? c : '${t.codigo} · ${t.titulo}';
+      },
+      alAvisar: (texto, {required fin}) {
+        if (mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text(texto)));
+      },
+    )..addListener(_redibujar);
+    reloj.medirDesfase();
+    _escucha = reloj.escucharConErrores().listen(
       (e) {
-        if (mounted) {
-          setState(() {
-            _estado = e;
-            _cargado = true;
-            _error = null;
-          });
-        }
+        if (!mounted) return;
+        _cargado = true;
+        _error = null;
+        _control!.recibir(e);
       },
       onError: (Object e) {
         if (mounted) {
@@ -238,74 +256,169 @@ class _RelojDeClaseTarjetaState extends ConsumerState<RelojDeClaseTarjeta> {
         }
       },
     );
-    _tic = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (mounted && (_estado?.reloj.corriendo ?? false)) setState(() {});
+    _tic = Timer.periodic(const Duration(milliseconds: 500), (_) {
+      final c = _control;
+      if (!mounted || c == null || !c.reloj.corriendo) return;
+      c.tic(DateTime.now());
+      setState(() {});
     });
+  }
+
+  void _redibujar() {
+    if (mounted) setState(() {});
   }
 
   @override
   void dispose() {
     _escucha?.cancel();
     _tic?.cancel();
+    _control?.dispose();
     super.dispose();
   }
 
-  /// Cambia el reloj compartido y lo publica (para los dos).
-  Future<void> _cambiar(void Function(RelojCante r, DateTime ahora) cambio) async {
-    final e = _estado;
-    final r = e?.reloj ?? RelojCante(preparacion: widget.esquema, exposicion: widget.exposicion);
-    final ahora = DateTime.now();
-    cambio(r, ahora);
-    await _reloj?.publicar(r, temas: e?.temas ?? const [], elegido: e?.elegido);
+  void _pantallaCompleta() {
+    final c = _control;
+    if (c == null) return;
+    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => RelojGrandePage(fuente: c)));
+  }
+
+  /// Otro tiempo de esquema o de exposición antes de empezar.
+  Future<void> _tiempos() async {
+    final c = _control;
+    if (c == null) return;
+    final r = c.reloj;
+    final s = r.preparacion.inSeconds;
+    final esquema = TextEditingController(text: '${s ~/ 60}${s % 60 == 0 ? '' : ':${(s % 60).toString().padLeft(2, '0')}'}');
+    final expo = TextEditingController(text: '${r.exposicion.inMinutes}');
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: const Text('Tiempos del cronómetro'),
+        content: Column(mainAxisSize: MainAxisSize.min, children: [
+          TextField(controller: esquema, decoration: const InputDecoration(labelText: 'Esquema', suffixText: 'min', helperText: 'Minutos, o minutos:segundos (22:30); 0, sin esquema')),
+          const SizedBox(height: 10),
+          TextField(controller: expo, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: 'Exposición', suffixText: 'min')),
+        ]),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
+          FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Aceptar')),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    final seg = esquema.text.trim() == '0' ? 0 : leerAntelacion(esquema.text);
+    final min = int.tryParse(expo.text.trim());
+    if (seg == null || seg > 180 * 60 || min == null || min <= 0 || min > 180) {
+      if (mounted) ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Tiempos no válidos')));
+      return;
+    }
+    await c.ponerTiempos(esquema: Duration(seconds: seg), exposicion: Duration(minutes: min));
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_reloj == null) return const SizedBox.shrink();
+    final c = _control;
+    if (_reloj == null || c == null) return const SizedBox.shrink();
     final ahora = DateTime.now();
-    final e = _estado;
-    final r = e?.reloj;
-    final f = r == null ? null : faseDeReloj(r, ahora);
-    final yo = _reloj!.miUid;
-    final quien = e == null || e.por.isEmpty ? '' : (e.por == yo ? 'tú' : e.porNombre);
+    final r = c.reloj;
+    final empezado = r.empezado;
+    final enEsquema = r.preparacion > Duration.zero && r.enPreparacion(ahora);
+    final esperando = r.esperandoExposicion(ahora);
+    final terminado = r.terminado(ahora);
+    final lectura = lecturaReloj(r, ahora, c.modo);
+    final ultimoMinuto = !enEsquema && !esperando && empezado && r.restanteFase(ahora).inSeconds <= 60;
+    final color = lectura.pasado || ultimoMinuto ? context.esquema.error : (enEsquema || esperando ? context.colores.dorado : context.esquema.primary);
+    final fase = terminado ? 'Tiempo cumplido' : (esperando ? 'Esquema terminado' : (enEsquema ? 'Esquema' : 'Exposición'));
+    final quien = c.quien;
+    final siguiente = c.siguienteTema;
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Tarjeta(
-        color: (r?.corriendo ?? false) ? context.colores.primarioPalido : null,
+        color: r.corriendo ? context.colores.primarioPalido : null,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(children: [
             Icon(Icons.timer_outlined, color: context.esquema.primary),
             const SizedBox(width: 8),
             Expanded(child: Text('Cronómetro compartido con ${widget.otroNombre}', style: context.textos.titleSmall)),
+            IconButton(tooltip: 'Pantalla completa', icon: const Icon(Icons.fullscreen), onPressed: _error == null && _cargado ? _pantallaCompleta : null),
             TextButton(onPressed: widget.onAbrir, child: const Text('Abrir')),
           ]),
           if (_error != null)
             Text('No se puede ver el cronómetro de esta clase ($_error). Si la clase no le ha llegado al alumno, vuelve a guardarla.', style: context.textos.bodySmall?.copyWith(color: context.esquema.error))
           else if (!_cargado)
             const LinearProgressIndicator()
-          else if (r == null || !r.empezado)
-            Text('Sin empezar. Lo que haga uno lo ve el otro al momento, cada uno en su móvil.', style: context.textos.bodySmall)
           else ...[
-            Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Text(f!.acabado || f.fase == 'Esquema terminado' ? '--:--' : formatoReloj(f.queda, haciaArriba: true), style: context.textos.headlineMedium?.copyWith(fontFeatures: const [FontFeature.tabularFigures()], color: f.queda.inSeconds <= 60 && !f.acabado ? context.esquema.error : context.esquema.primary)),
-              const SizedBox(width: 10),
-              Expanded(child: Text('${f.fase}${r.corriendo ? '' : ' · en pausa'}${quien.isEmpty ? '' : ' · lo lleva $quien'}${e!.elegido == null ? '' : ' · tema ${e.elegido}'}', style: context.textos.bodySmall)),
-            ]),
+            Center(
+              child: SegmentedButton<ModoReloj>(
+                showSelectedIcon: false,
+                style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                segments: const [
+                  ButtonSegment(value: ModoReloj.adelante, icon: Icon(Icons.timer_outlined, size: 18), label: Text('Cronómetro')),
+                  ButtonSegment(value: ModoReloj.atras, icon: Icon(Icons.hourglass_bottom, size: 18), label: Text('Cuenta atrás')),
+                ],
+                selected: {c.modo},
+                onSelectionChanged: (_) => c.alternarModo(),
+              ),
+            ),
+            const SizedBox(height: 6),
+            Center(
+              child: Text(
+                empezado ? fase : 'Sin empezar · ${r.preparacion > Duration.zero ? 'esquema ${textoMinutos(r.preparacion)}, ' : ''}exposición ${textoMinutos(r.exposicion)}',
+                textAlign: TextAlign.center,
+                style: context.textos.labelMedium,
+              ),
+            ),
+            Center(
+              child: Text(
+                lectura.texto,
+                style: context.textos.displaySmall?.copyWith(fontFeatures: const [FontFeature.tabularFigures()], color: empezado ? color : context.colores.textoClaro),
+              ),
+            ),
+            if (lectura.demas != null) Center(child: Text('${lectura.demas} de más', style: context.textos.titleSmall?.copyWith(color: context.esquema.error, fontFeatures: const [FontFeature.tabularFigures()]))),
+            ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: r.progresoFase(ahora).clamp(0.0, 1.0), minHeight: 6, color: color, backgroundColor: context.colores.fondoClaro)),
+            const SizedBox(height: 6),
+            if (empezado || c.elegido != null)
+              Center(
+                child: Text(
+                  [if (!r.corriendo && empezado) 'en pausa', if (quien.isNotEmpty) 'lo lleva $quien', if (c.elegido != null) 'tema ${c.elegido}'].join(' · '),
+                  style: context.textos.bodySmall,
+                ),
+              )
+            else
+              Text('Lo que haga uno lo ve el otro al momento, cada uno en su móvil.', style: context.textos.bodySmall),
+            const SizedBox(height: 8),
+            Center(
+              child: Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 4, children: [
+                if (esperando)
+                  FilledButton.icon(onPressed: c.empezarExposicion, icon: const Icon(Icons.record_voice_over_outlined, size: 18), label: const Text('Empezar la exposición'))
+                else if (!r.corriendo)
+                  FilledButton.icon(onPressed: c.alternar, icon: const Icon(Icons.play_arrow, size: 18), label: Text(empezado ? 'Continuar' : 'Empezar'))
+                else
+                  OutlinedButton.icon(onPressed: c.alternar, icon: const Icon(Icons.pause, size: 18), label: const Text('Pausar')),
+                if (enEsquema && empezado) OutlinedButton.icon(onPressed: c.pasarAExponer, icon: const Icon(Icons.record_voice_over_outlined, size: 18), label: const Text('Pasar a exponer')),
+                if (siguiente != null && empezado && !enEsquema && !esperando)
+                  FilledButton.tonalIcon(onPressed: c.pasarAlSiguienteTema, icon: const Icon(Icons.skip_next, size: 18), label: Text('Pasar al tema $siguiente')),
+              ]),
+            ),
+            const SizedBox(height: 4),
+            Center(
+              child: Wrap(alignment: WrapAlignment.center, spacing: 6, runSpacing: 4, children: [
+                if (empezado) ...[
+                  ActionChip(label: const Text('−1 min'), onPressed: () => c.ajustarMinutos(-1)),
+                  ActionChip(label: const Text('+1 min'), onPressed: () => c.ajustarMinutos(1)),
+                  ActionChip(avatar: const Icon(Icons.more_time, size: 18), label: const Text('+5 min'), onPressed: () => c.ajustarMinutos(5)),
+                  if (!enEsquema && !esperando && r.preparacion > Duration.zero)
+                    ActionChip(avatar: const Icon(Icons.replay, size: 18), label: const Text('Reiniciar la exposición'), onPressed: c.reiniciarExposicion),
+                  ActionChip(avatar: const Icon(Icons.restart_alt, size: 18), label: const Text('Reiniciar todo'), onPressed: c.reiniciarTodo),
+                ] else
+                  ActionChip(avatar: const Icon(Icons.tune, size: 18), label: const Text('Cambiar los tiempos'), onPressed: _tiempos),
+              ]),
+            ),
+            const SizedBox(height: 4),
+            Text('Avisa al acabar el esquema, a mitad de la exposición, a 1 minuto del final y al cumplirse, también con la pantalla apagada; mientras corre, la pantalla no se apaga. Si os pasáis, sigue contando.', style: context.textos.labelSmall),
           ],
-          if (_error == null && _cargado)
-            Wrap(spacing: 8, runSpacing: 4, children: [
-              if (r != null && r.esperandoExposicion(ahora))
-                FilledButton.icon(onPressed: () => _cambiar((r, a) => r.empezarExposicion(a)), icon: const Icon(Icons.record_voice_over_outlined, size: 18), label: const Text('Empezar la exposición'))
-              else if (r == null || !r.corriendo)
-                FilledButton.icon(onPressed: () => _cambiar((r, a) => r.iniciar(a)), icon: const Icon(Icons.play_arrow, size: 18), label: Text(r != null && r.empezado ? 'Continuar' : 'Empezar'))
-              else
-                OutlinedButton.icon(onPressed: () => _cambiar((r, a) => r.pausar(a)), icon: const Icon(Icons.pause, size: 18), label: const Text('Pausar')),
-              if (r != null && r.corriendo && r.enPreparacion(ahora))
-                OutlinedButton(onPressed: () => _cambiar((r, a) => r.saltarFase(a)), child: const Text('Pasar a exponer')),
-            ]),
         ]),
       ),
     );
   }
 }
-
