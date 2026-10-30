@@ -1156,6 +1156,7 @@ def kb(n):
 # raw.githubusercontent.com, githack ni jsDelivr (comprobado el 28 oct. 2026).
 # El ZIP sigue en la rama de revisión y se descarga con sesión.
 SKILL_RUTA = 'oposicion/temario/app/skill'
+KIT = 'kit-documentos.zip'  # en SKILL_RUTA: scripts/ y assets/ para el entorno de código de claude.ai
 SITIO = 'https://www.victorgutierrezmarcos.es/'
 # Lo que cuenta como «instrucciones» (si cambia, hay que volver a subir el ZIP;
 # el resto son contenidos que la skill puede leer de la web)
@@ -1203,6 +1204,16 @@ def empaquetar(destino, manifiesto, temas, sin_temas):
     with open(os.path.join(desplegada, 'version.json'), 'w', encoding='utf-8', newline='\n') as f:
         json.dump(version, f, ensure_ascii=False, indent=1)
         f.write('\n')
+    # Kit de documentos y gráficos (scripts, plantilla LaTeX, fuentes y plantillas; nada exclusivo):
+    # Claude lo descarga en su entorno de código cuando el opositor solo tiene el conector
+    # (references/documentos-y-graficos.md)
+    with zipfile.ZipFile(os.path.join(desplegada, KIT), 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+        for sub in ('scripts', 'assets'):
+            for base, carpetas, ficheros in os.walk(os.path.join(destino, sub)):
+                carpetas[:] = sorted(c for c in carpetas if c != '__pycache__')
+                for f in sorted(ficheros):
+                    ruta = os.path.join(base, f)
+                    z.write(ruta, os.path.join('kit', os.path.relpath(ruta, destino)))
     zip_destino = os.path.join(WT, ZIP_RUTA)
     os.makedirs(os.path.dirname(zip_destino), exist_ok=True)
     with zipfile.ZipFile(zip_destino, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:

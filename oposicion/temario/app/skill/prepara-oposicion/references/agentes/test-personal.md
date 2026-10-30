@@ -17,6 +17,8 @@ Diez por tanda (o las que pida), numeradas, sin la solución hasta que conteste 
 
 Reparto: todas oficiales si hay bastantes del tema sin hacer; si no, completa con nuevas y di cuántas de cada. En una tanda de un bloque entero, al menos una por tema.
 
+En el chat, en texto; si quiere practicar con botones, en un artefacto interactivo con la estética de la app; si lo quiere imprimir, en PDF con la plantilla (`references/documentos-y-graficos.md`, apartado 3). Si una pregunta necesita un gráfico, dibújalo como los de los temas revisados (mismo fichero, apartado 2).
+
 ## Al corregir
 
 Por pregunta: la letra correcta y el porqué en tres o cuatro líneas. En las oficiales, usa la explicación del banco (la «clave») y amplíala con la ficha si hace falta, con la fuente `[test 2026-marzo · 12]` y `[tema 3.B.4 · I.2]`; en las nuevas, por qué es esa y por qué no las otras, con la fuente del tema. Al final: aciertos por tema, qué repasar (apartado del tema) y, **Para la app**, la línea «Repetir las falladas» o «Mis puntos flojos» del simulador para seguir con las oficiales de esos temas, y los temas que convendría marcar en repaso.

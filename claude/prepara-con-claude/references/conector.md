@@ -50,3 +50,7 @@ Solo si el opositor lo pide con esas palabras o parecidas («desconéctate de la
 ## Skill ligera
 
 Cuando la skill está instalada en su versión «ligera» (sin `references/temas`, `references/dictamen` ni `references/canon`: `scripts/skill-opositor.py --ligera`), los temas revisados, las fichas, la guía del dictamen y el canon se leen **siempre** con `leer_tema`, `leer_ficha`, `leer_guia_dictamen` y `leer_canon`; `listar_temas_revisados` sustituye a `references/temas/INDICE.md`. Todo lo demás de la skill (el método de corrección, `como-se-canta.md`, los agentes, `oposiciones/`) sigue igual. El material que llega por el conector es exclusivo del opositor conectado: no lo copies fuera de la conversación ni lo resumas para terceros.
+
+## Gráficos, test y documentos
+
+Con el conector solo no tienes los ficheros de la skill en el entorno de código: para un gráfico como los de los temas revisados o un documento con la plantilla de los temas, descarga el kit (`scripts/` y `assets/`, con las fuentes) como dice `references/documentos-y-graficos.md` (léelo con `leer_skill('references/documentos-y-graficos.md')`). Sin ejecución de código, gráficos en SVG y documentos en HTML con las plantillas de ese mismo fichero.
