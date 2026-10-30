@@ -50,8 +50,22 @@ class PizarraLocal implements FuentePizarra {
 
   void _avisar() => Future.microtask(() => _cambios.add(_lista));
 
+  /// Si ya hay algo escrito (la pizarra de Cantar, que dura lo que el cante
+  /// aunque se cierre), quien empieza a escuchar lo recibe primero.
   @override
-  Stream<List<PaginaPizarra>> escuchar() => _cambios.stream;
+  Stream<List<PaginaPizarra>> escuchar() {
+    if (_paginas.isEmpty) return _cambios.stream;
+    StreamSubscription<List<PaginaPizarra>>? escucha;
+    late final StreamController<List<PaginaPizarra>> c;
+    c = StreamController(
+      onListen: () {
+        c.add(_lista);
+        escucha = _cambios.stream.listen(c.add);
+      },
+      onCancel: () => escucha?.cancel(),
+    );
+    return c.stream;
+  }
 
   @override
   void encolar(String pagina, int n, Trazo t) {

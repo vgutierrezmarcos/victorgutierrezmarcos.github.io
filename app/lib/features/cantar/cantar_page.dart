@@ -41,6 +41,8 @@ import 'probabilidades.dart';
 import 'reloj_cante.dart';
 import 'reloj_clase.dart' show modoRelojGuardado, guardarModoReloj;
 import 'reloj_compartido.dart';
+import 'pizarra_cante.dart';
+import 'pizarra_compartida.dart' show PizarraLocal;
 import 'pizarra_page.dart';
 import 'reloj_grande_page.dart';
 import 'sorteo.dart';
@@ -161,6 +163,18 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   bool _transcribiendo = false;
   String _parcial = '';
   DateTime? _inicioTranscripcion;
+
+  // Pizarra del cante: la de practicar dura lo que el cante (aunque se
+  // cierre) y, con el cronómetro en marcha, se anota el minuto de exposición
+  // de cada trazo (el mismo reloj que la transcripción) para mandarla a la IA.
+  PizarraLocal _pizarraLocal = PizarraLocal();
+  late CronologiaPizarra _cronologia = _nuevaCronologia();
+
+  CronologiaPizarra _nuevaCronologia() => CronologiaPizarra(
+        reloj: (ahora) => _reloj.expuesto(ahora),
+        tema: () => _elegido?.codigo,
+        grabando: () => _reloj.empezado,
+      );
 
   @override
   void initState() {
@@ -470,6 +484,8 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       // Con el reloj desde cero, las marcas de minuto ya no casarían.
       _transcripcion.vaciar();
       _inicioTranscripcion = null;
+      // La pizarra se queda; lo que hay pasa a ser el punto de partida.
+      _cronologia.reiniciar();
     });
   }
 
@@ -613,9 +629,26 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     await _dictado.parar();
   }
 
+  /// Guarda la pizarra del cante [canteId] del diario (solo en este
+  /// dispositivo), si se ha usado con el cronómetro en marcha. Devuelve el
+  /// nombre del PDF que saldrá de ella (o null si no había nada).
+  Future<String?> _guardarPizarra(String canteId, ResultadoCante res) async {
+    final cronologia = _cronologia;
+    _cronologia = _nuevaCronologia();
+    _pizarraLocal = PizarraLocal();
+    if (cronologia.vacia) return null;
+    final tema = res.temaCantado ?? _elegido?.codigo;
+    final fecha = _inicioTranscripcion ?? cronologia.inicio ?? DateTime.now();
+    final nombre = nombreFicheroPizarra(tema, fecha);
+    await PizarrasCante.guardar(canteId, nombre: nombre, fecha: fecha, cronologia: cronologia);
+    Analitica.instancia.evento('cante_pizarra', parametros: {'minutos': res.segundos ~/ 60});
+    return nombre;
+  }
+
   /// Guarda la transcripción con el cante [canteId] del diario (solo en este
-  /// dispositivo). Devuelve si había algo que guardar.
-  Future<bool> _guardarTranscripcion(String canteId, ResultadoCante res, int ejercicio) async {
+  /// dispositivo), con la línea del PDF de la [pizarra] si la hay. Devuelve
+  /// si había algo que guardar.
+  Future<bool> _guardarTranscripcion(String canteId, ResultadoCante res, int ejercicio, {String? pizarra}) async {
     if (_transcribiendo) await _pararTranscripcion();
     if (_transcripcion.vacia) return false;
     final op = Oposiciones.actual;
@@ -633,6 +666,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       esquemaPrevisto: Duration(seconds: _segEsquema),
       sorteados: res.sorteados,
       cantados: res.temasCantados,
+      pizarra: pizarra,
     );
     await Transcripciones.guardar(canteId, nombre: nombreFicheroTranscripcion(tema, fecha), texto: texto);
     Analitica.instancia.evento('cante_transcrito', parametros: {'minutos': res.segundos ~/ 60});
@@ -792,18 +826,20 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       ref.read(versionGrabacionesProvider.notifier).state++;
       _ultimaGrabacion = null;
     }
-    // La transcripción, también unida a él (solo en este dispositivo).
-    final transcrito = await _guardarTranscripcion(base.id, res, base.ejercicio == 0 ? _ejercicio : base.ejercicio);
+    // La pizarra y la transcripción, también unidas a él (solo en este dispositivo).
+    final pizarra = await _guardarPizarra(base.id, res);
+    final transcrito = await _guardarTranscripcion(base.id, res, base.ejercicio == 0 ? _ejercicio : base.ejercicio, pizarra: pizarra);
     ref.read(canteEnCursoProvider.notifier).state = null;
     if (!mounted) return;
     setState(() {
       _limpiarSorteo();
       _nuevoReloj();
     });
-    messenger.mostrar(transcrito
+    final con = [if (transcrito) 'su transcripción', if (pizarra != null) 'su pizarra'].join(' y ');
+    messenger.mostrar(con.isNotEmpty
         ? SnackBar(
             duration: const Duration(seconds: 8),
-            content: const Text('Cante guardado en el diario, con su transcripción'),
+            content: Text('Cante guardado en el diario, con $con'),
             action: SnackBarAction(label: 'Enviar a la IA', onPressed: () => Transcripciones.enviarALaIa(base.id)),
           )
         : const SnackBar(content: Text('Cante guardado en el diario')));
@@ -1171,14 +1207,23 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                 child: Center(
                   // En una clase, la compartida; si no, una para practicar sola.
                   child: FilledButton.icon(
+                    // Si canta el opositor (no el preparador en su clase), se anota cuándo dibuja.
                     onPressed: () => destino != null
-                        ? abrirPizarra(context, alumnoUid: destino.alumnoUid, canteId: destino.canteId, otroNombre: destino.otro)
-                        : abrirPizarraIndividual(context),
+                        ? abrirPizarra(context, alumnoUid: destino.alumnoUid, canteId: destino.canteId, otroNombre: destino.otro, cronologia: sesion == null ? _cronologia : null)
+                        : abrirPizarraIndividual(context, fuente: _pizarraLocal, cronologia: sesion == null ? _cronologia : null),
                     icon: const Icon(Icons.draw_outlined),
                     label: const Text('Pizarra'),
                   ),
                 ),
               ),
+              if (sesion == null && !soloPreparador)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(4, 4, 4, 0),
+                  child: Text(
+                    'Con el cronómetro en marcha, la pizarra apunta el minuto de exposición de cada trazo. Al guardar el cante se queda con él en el diario (solo en este dispositivo) y «Enviar a la IA» la manda en PDF, una página por minuto, junto a la transcripción.',
+                    style: context.textos.labelSmall,
+                  ),
+                ),
               if (sesion == null) TituloSeccion(_dictado.posible ? 'Grabar o transcribir' : 'Grabación para autoescucha'),
               if (sesion == null) Tarjeta(
                 child: Column(children: [

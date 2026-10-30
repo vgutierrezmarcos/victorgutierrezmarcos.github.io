@@ -20,6 +20,19 @@ Future<void> guardarBytes({required String nombre, required List<int> bytes, req
   await SharePlus.instance.share(ShareParams(files: [XFile(f.path, mimeType: mime)], subject: asunto));
 }
 
+/// Entrega varios ficheros juntos con el menú de compartir del móvil (la
+/// transcripción y la pizarra de un cante, para adjuntarlos a la vez).
+Future<void> guardarVarios(List<({String nombre, List<int> bytes, String mime})> ficheros, {String? asunto}) async {
+  final dir = await getTemporaryDirectory();
+  final xs = <XFile>[];
+  for (final f in ficheros) {
+    final fichero = File('${dir.path}/${f.nombre}');
+    await fichero.writeAsBytes(f.bytes);
+    xs.add(XFile(fichero.path, mimeType: f.mime));
+  }
+  await SharePlus.instance.share(ShareParams(files: xs, subject: asunto));
+}
+
 /// Ruta donde guardar una grabación nueva (en el móvil, en sus documentos).
 Future<String> rutaNuevaGrabacion(String nombre) async {
   final dir = await getApplicationDocumentsDirectory();

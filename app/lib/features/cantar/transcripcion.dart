@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/analitica.dart';
 import '../../core/constants.dart';
 import '../../core/plataforma.dart';
+import 'pizarra_cante.dart';
+import 'pizarra_pdf.dart';
 import 'reloj_cante.dart';
 
 /// Un trozo reconocido: lo dicho y en qué momento de la exposición empezó
@@ -70,6 +74,7 @@ class Transcripcion {
     Duration esquemaPrevisto = Duration.zero,
     List<String> sorteados = const [],
     List<String> cantados = const [],
+    String? pizarra,
   }) {
     final titulo = [
       'Cante',
@@ -91,6 +96,7 @@ class Transcripcion {
       '# $titulo',
       tiempos,
       if (bolas.isNotEmpty) bolas,
+      if (pizarra != null) lineaPizarra(pizarra),
       'Transcripción automática del móvil: puede tener errores de reconocimiento (nombres propios, fórmulas, números).',
       '',
       porMinutos(),
@@ -124,13 +130,62 @@ class Transcripciones {
 
   static Future<void> borrar(String canteId) async => _caja?.delete(_clave(canteId));
 
-  /// «Enviar a la IA»: entrega el `.txt` con el menú de compartir del móvil
-  /// (o lo descarga en el navegador) para adjuntarlo en el chat de la IA.
+  /// «Enviar a la IA»: entrega juntos el `.txt` y el PDF de la pizarra del
+  /// cante (los que haya) con el menú de compartir del móvil (o los descarga
+  /// en el navegador) para adjuntarlos en el chat de la IA.
   static Future<bool> enviarALaIa(String canteId) async {
     final t = de(canteId);
-    if (t == null) return false;
-    await guardarFichero(nombre: t.nombre, contenido: t.texto, mime: 'text/plain', asunto: 'Transcripción del cante');
-    Analitica.instancia.evento('ia_enviar_cante');
+    final p = PizarrasCante.de(canteId);
+    if (t == null && p == null) return false;
+    final ficheros = <({String nombre, List<int> bytes, String mime})>[
+      if (t != null) (nombre: t.nombre, bytes: utf8.encode(conLineaPizarra(t.texto, p?.nombre)), mime: 'text/plain'),
+      if (p != null) (nombre: p.nombre, bytes: await PizarrasCante.pdf(canteId) ?? const <int>[], mime: 'application/pdf'),
+    ];
+    final asunto = t != null && p != null ? 'Transcripción y pizarra del cante' : (t != null ? 'Transcripción del cante' : 'Pizarra del cante');
+    await guardarVarios(ficheros, asunto: asunto);
+    Analitica.instancia.evento('ia_enviar_cante', parametros: {'texto': t == null ? 0 : 1, 'pizarra': p == null ? 0 : 1});
     return true;
+  }
+}
+
+/// La pizarra de los cantes del diario (Cantar → Pizarra mientras corre el
+/// cronómetro): solo en este dispositivo (Hive `pizarra_<id>`), nunca se
+/// sincroniza. Se guarda la cronología ([CronologiaPizarra]) y el PDF se
+/// saca de ella al enviarlo o verlo.
+class PizarrasCante {
+  static Box? get _caja => Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app) : null;
+  static String _clave(String canteId) => 'pizarra_$canteId';
+
+  static ({String nombre, DateTime fecha, CronologiaPizarra cronologia})? de(String canteId) {
+    final v = _caja?.get(_clave(canteId));
+    if (v is! Map || v['cronologia'] is! Map) return null;
+    return (
+      nombre: (v['nombre'] as String?) ?? 'pizarra.pdf',
+      fecha: DateTime.fromMillisecondsSinceEpoch((v['fecha'] as num?)?.toInt() ?? 0),
+      cronologia: CronologiaPizarra.fromJson(v['cronologia'] as Map),
+    );
+  }
+
+  static Future<void> guardar(String canteId, {required String nombre, required DateTime fecha, required CronologiaPizarra cronologia}) async =>
+      _caja?.put(_clave(canteId), {'nombre': nombre, 'fecha': fecha.millisecondsSinceEpoch, 'cronologia': cronologia.toJson()});
+
+  /// La borra y quita su línea de la transcripción del mismo cante.
+  static Future<void> borrar(String canteId) async {
+    await _caja?.delete(_clave(canteId));
+    final t = Transcripciones.de(canteId);
+    if (t != null) await Transcripciones.guardar(canteId, nombre: t.nombre, texto: conLineaPizarra(t.texto, null));
+  }
+
+  /// El PDF (una página por minuto en que cambió la pizarra), o null si no hay.
+  static Future<List<int>?> pdf(String canteId) async {
+    final p = de(canteId);
+    if (p == null) return null;
+    return pdfPizarraCante(p.cronologia.paginas(fecha: p.fecha), fecha: p.fecha, letra: await letraParaPdf(), titulo: p.nombre.replaceAll('.pdf', ''));
+  }
+
+  /// Cuántas páginas tendría el PDF.
+  static int paginas(String canteId) {
+    final p = de(canteId);
+    return p == null ? 0 : p.cronologia.paginas(fecha: p.fecha).length;
   }
 }

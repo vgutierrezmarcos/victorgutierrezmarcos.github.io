@@ -193,7 +193,7 @@ class TarjetaPrivacidad extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         punto(Icons.lock_outline, 'Nadie más los ve.', 'Tus tests, temas, notas, cantes y planificación quedan guardados a nombre de tu cuenta, y las reglas de la base de datos impiden que nadie más los lea: ni otros opositores ni ningún otro usuario de la app o de la web.'),
         punto(Icons.person_pin_outlined, 'Tu preparador, solo si tú quieres.', 'Si enlazas con su código, verá los temas que marcas y tus cantes. Nunca tus tests, tus notas ni tus grabaciones. Puedes quitarle el acceso cuando quieras.'),
-        punto(Icons.mic_off_outlined, 'Las grabaciones y las transcripciones no salen de tu dispositivo.', 'No se suben a ningún sitio: una transcripción solo llega a tu IA si la envías tú.'),
+        punto(Icons.mic_off_outlined, 'Las grabaciones, las transcripciones y la pizarra grabada con tus cantes no salen de tu dispositivo.', 'No se suben a ningún sitio: una transcripción o una pizarra solo llega a tu IA si la envías tú.'),
         punto(Icons.auto_awesome_outlined, 'Tu IA, solo si la conectas.', textoPrivacidadConector),
         punto(Icons.block, 'Sin publicidad. Estadísticas solo si tú quieres.', 'Tus datos no se venden ni se ceden. Si lo activas en Ajustes, la app envía a Google estadísticas de uso anónimas e informes de errores, sin tu nombre ni tus datos de estudio. Tampoco yo, que hago la app, consulto tus datos.'),
         punto(Icons.delete_outline, 'Son tuyos.', 'Puedes descargarlos o borrarlos todos desde aquí.'),
