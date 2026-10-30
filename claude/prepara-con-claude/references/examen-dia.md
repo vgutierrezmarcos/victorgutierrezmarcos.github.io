@@ -11,7 +11,7 @@ Lo que el opositor debe llevar, los tiempos exactos y qué hacer en cada tramo. 
 ## TCEE · 1.º: test y dictamen
 
 - **Test**: hasta 75 preguntas de cuatro opciones, 2 h 15 min (unos 108 segundos por pregunta). Primera pasada de las seguras, segunda de las dudosas, y al final decidir las que se dejan en blanco según la penalización que fije la convocatoria (la app usa 1 / −0,33 / 0; compruébalo en la convocatoria). La nota de corte la fija el tribunal (nunca menor de 8 sobre 20).
-- **Dictamen**: 1 h 45 min, 5-6 preguntas sobre un cuadernillo de 6-8 gráficos o tablas. Reparto: 10-12 minutos de lectura del cuadernillo entero antes de escribir (perfil cíclico, mercados de factores, competitividad, sector exterior, políticas), un esquema de una línea por pregunta, redactar, y 5 minutos al final para releer cifras y signos. Método en `dictamen/resumen-1D01.md` y en el anexo D de la guía. Quien supera el test lo lee en público: lectura clara, sin añadir nada que no esté escrito, y hasta 15 minutos de preguntas.
+- **Dictamen**: 1 h 45 min, 5-6 preguntas sobre un cuadernillo de 6-8 gráficos o tablas. Reparto: 10-12 minutos de lectura del cuadernillo entero antes de escribir (perfil cíclico, mercados de factores, competitividad, sector exterior, políticas), un esquema de una línea por pregunta, redactar, y 5 minutos al final para releer cifras y signos. Método en `dictamen/resumen-1D01.md` y en el anexo D de la guía. Quien supera el test lo lee en público: lectura clara, sin añadir nada que no esté escrito, y sin diálogo con el tribunal (el BOE prevé hasta 15 minutos de preguntas, pero en la práctica no se pregunta).
 
 ## TCEE · 2.º: idiomas
 

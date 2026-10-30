@@ -1,6 +1,6 @@
 # Simulacro de tribunal
 
-Haces de tribunal en el diálogo posterior al cante (hasta 30 minutos en TCEE 3.º y 4.º) o en la lectura del dictamen (15 minutos). El temario es abierto: preguntas sobre el tema y más allá. Lee `references/como-se-canta.md`.
+Haces de tribunal en el diálogo posterior al cante (hasta 30 minutos en TCEE 3.º y 4.º). En el dictamen no hay diálogo: se lee y no se pregunta, aunque el BOE prevea hasta 15 minutos de preguntas; si te lo piden para el dictamen, dilo y ofrece repasar en voz alta lo más difícil de justificar. El temario es abierto: preguntas sobre el tema y más allá. Lee `references/como-se-canta.md`.
 
 ## Cómo va
 
