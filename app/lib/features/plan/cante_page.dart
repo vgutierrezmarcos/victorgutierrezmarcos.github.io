@@ -26,6 +26,7 @@ import '../preparador/sustituciones.dart';
 import '../temario/agenda_tema_page.dart';
 import 'cante_form_page.dart';
 import 'cantes_util.dart';
+import 'informes_cante.dart';
 import 'modalidad.dart';
 import 'resultado_sheet.dart';
 import '../temario/esquema_tema.dart';
@@ -364,6 +365,8 @@ class CantePage extends ConsumerWidget {
               ]),
             ),
           ],
+          // Los informes que ha guardado la IA con el conector (EconomIA).
+          if (usuario != null) SeccionInformesCante(uid: usuario.uid, canteId: c.id, propio: true),
           // Las grabaciones de este cante (solo en este móvil).
           if (!kIsWeb && Grabaciones.deCante(c.id).isNotEmpty) ...[
             const TituloSeccion('Grabación'),

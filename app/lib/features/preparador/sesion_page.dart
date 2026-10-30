@@ -22,6 +22,7 @@ import '../cantar/pizarra_page.dart';
 import '../cantar/relojes_alumnos.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
+import '../plan/informes_cante.dart';
 import '../plan/modalidad.dart';
 import '../plan/resultado_sheet.dart';
 import '../temario/esquema_tema.dart';
@@ -546,6 +547,8 @@ class SesionPage extends ConsumerWidget {
             OutlinedButton.icon(onPressed: () => enviarInforme(context, s, alumno, temario), icon: const Icon(Icons.ios_share, size: 18), label: const Text('Enviar informe al alumno')),
             if (conUid) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Además, la valoración ya está en su diario de cantes.', textAlign: TextAlign.center, style: context.textos.labelSmall)),
           ],
+          // Los informes que el alumno ha guardado con su IA (EconomIA), solo lectura.
+          if (conUid && usuario != null) SeccionInformesCante(uid: alumno!.uid!, canteId: s.id),
           // Alumno con la app y bolsa «los que lleva»: los temas de ESTA clase,
           // los mismos que ve él; el preparador solo propone cambios.
           if (!dictamen && s.bolsa == TipoBolsa.estudiados && alumno != null && alumno.enlazado)
