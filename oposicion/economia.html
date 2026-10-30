@@ -953,7 +953,7 @@
                         <tr><th scope="row">Informe en PDF y gráficos como los del temario</th><td>Sí</td><td>En el chat</td><td>En el chat</td><td>En el chat</td></tr>
                         <tr><th scope="row">Skill para usarlo sin conector</th><td>Sí</td><td>No</td><td>No</td><td>No</td></tr>
                         <tr><th scope="row">Plan que pide</th><td>Pro, Max o Team</td><td>De pago, con el modo desarrollador</td><td>También el gratuito</td><td>Google AI Ultra, de momento</td></tr>
-                        <tr><th scope="row">Estado</th><td><strong>Recomendada</strong></td><td>En pruebas</td><td>En pruebas</td><td>En pruebas</td></tr>
+                        <tr><th scope="row">Estado</th><td><strong>Recomendada</strong></td><td>En pruebas</td><td>Probado</td><td>En pruebas</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -971,9 +971,9 @@
                 <details>
                     <summary>Le Chat (Mistral)</summary>
                     <ol>
-                        <li>En <a href="https://chat.mistral.ai" target="_blank" rel="noopener">chat.mistral.ai</a>, abre <em>Inteligencia → Conectores → Añadir conector</em> y elige <em>Conector MCP personalizado</em>.</li>
-                        <li>Nombre «Oposición TCEE · DCE» y URL <code>https://mcp.victorgutierrezmarcos.es/mcp</code>; si pregunta la autenticación, <em>OAuth</em>.</li>
-                        <li>Conecta, entra con la cuenta de Google de la app y actívalo en el chat.</li>
+                        <li>Copia la dirección del conector y abre Le Chat: <span class="paso-botones"><button type="button" class="boton boton--secundario boton--peq" data-copiar>Copiar la URL</button> <a class="boton boton--peq" href="https://chat.mistral.ai" target="_blank" rel="noopener">Abrir Le Chat</a></span></li>
+                        <li>En <em>Inteligencia → Conectores → Añadir conector</em>, pestaña <em>Conector MCP personalizado</em>: nombre <strong>EconomIA</strong> (sin espacios) y pega la URL. Le Chat detecta solo que se entra con OAuth.</li>
+                        <li>Pulsa <em>Conectar</em>, entra con la cuenta de Google de la app y actívalo en el chat.</li>
                     </ol>
                     <p class="app-nota">Es europea y admite conectores también en el plan gratuito.</p>
                 </details>
@@ -1278,11 +1278,12 @@
         });
 
         document.querySelectorAll('[data-copiar]').forEach(function (b) {
+            var texto = b.textContent;
             b.addEventListener('click', function () {
                 copiar().then(function () {
                     b.textContent = 'Copiada';
                     avisar(b, true);
-                    setTimeout(function () { b.textContent = 'Copiar'; }, 2500);
+                    setTimeout(function () { b.textContent = texto; }, 2500);
                 }, function () {
                     // Sin portapapeles: se selecciona la URL para copiarla con el teclado
                     var code = document.getElementById('conector-url');
