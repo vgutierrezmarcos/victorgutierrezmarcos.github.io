@@ -24,7 +24,7 @@
    - `serverInfo.name` y `title`, página de consentimiento (`paginas.ts`), `login.html`, `wrangler.toml` (Worker `oposicion-mcp` o similar) y la URL nueva en todos los sitios donde estaba la anterior (README, `login.html`, la página).
    - La dirección de vuelta del OAuth no depende de Claude. Comprobar que funciona el registro de ChatGPT (`chatgpt.com/connector_platform_oauth_redirect`), Le Chat y Gemini.
 3. **Nombre en la web.**
-   - Página nueva `oposicion/prepara-con-ia.html`; `prepara-con-claude.html` pasa a página puente (`scripts/paginas-puente.py`).
+   - Página nueva `oposicion/economia.html`; `prepara-con-claude.html` pasa a página puente (`scripts/paginas-puente.py`).
    - Pasos de alta por plataforma, tabla de qué incluye cada una y Claude recomendada.
    - Actualizar `prepara-con-claude-visible.py` (marca, ficheros), `generate-sitemap.js`, `llms.txt`, el índice de búsqueda, `exclusivos.py`, la portada, `/oposicion` y `/app/`.
 4. **Nombre en la app.** Más → «Prepara con IA», «Desconectar la IA» en vez de «Desconectar Claude» y textos de privacidad. Requiere compilar: anotarlo en `app/play-store/novedades-pendientes.md`.
@@ -39,7 +39,7 @@
 
 ## Nombre: «EconomIA» (30 oct., tarde)
 
-Víctor descartó «Prepara con IA» por genérico y eligió **EconomIA** (economía + IA: guiño a una oposición de economistas) para la página, el botón, la entrada de la app y el vídeo. El conector técnico sigue siendo «Oposición TCEE · DCE» y la dirección de la página, `oposicion/prepara-con-ia.html`. En la portada y el cierre, el icono de la app y los logos de Claude, ChatGPT, Le Chat y Gemini (`oposicion/img/ia/`; uso nominativo, el de OpenAI invertido sobre fondo oscuro).
+Víctor descartó «Prepara con IA» por genérico y eligió **EconomIA** (economía + IA: guiño a una oposición de economistas) para la página, el botón, la entrada de la app y el vídeo. El conector técnico sigue siendo «Oposición TCEE · DCE» y la dirección de la página, `oposicion/economia.html`. En la portada y el cierre, el icono de la app y los logos de Claude, ChatGPT, Le Chat y Gemini (`oposicion/img/ia/`; uso nominativo, el de OpenAI invertido sobre fondo oscuro).
 
 **Dominio:** el conector está en `https://mcp.victorgutierrezmarcos.es/mcp` desde el 30 oct. (zona activa en Cloudflare a las 12:16; dominio puesto con la API, `routes` en `wrangler.toml`). La dirección `workers.dev` sigue respondiendo.
 
@@ -54,16 +54,16 @@ Víctor descartó «Prepara con IA» por genérico y eligió **EconomIA** (econo
   - Siguen sin cambiar: el nombre del Worker y su URL (cambian con el dominio propio) y los enlaces a `oposicion/prepara-con-claude.html` (cambian con la web, paso 3).
 - **DNS a Cloudflare** (30 oct.): zona creada en la cuenta de Cloudflare con los 30 registros de DonDominio (`dnszone.csv`), todos en «DNS only». Entre ellos, `dmb7afvgijyc` (verificación de Google) y `firebase1/2._domainkey.www` (DKIM de los correos de Firebase), que no salían en la consulta pública. Comprobado contra `chloe.ns.cloudflare.com`: 30 de 30. Servidores cambiados en DonDominio a `chloe` y `johnny.ns.cloudflare.com`; pendiente de que se propague.
 
-- **Página nueva** (30 oct., sin push): `oposicion/prepara-con-ia.html` (`git mv` de la anterior) con «En qué IA funciona» (`#plataformas`: tabla y pasos de ChatGPT, Le Chat, Gemini y otros programas) y textos neutros. Claude, recomendada; las otras tres, «En pruebas».
+- **Página nueva** (30 oct., sin push): `oposicion/economia.html` (`git mv` de la anterior) con «En qué IA funciona» (`#plataformas`: tabla y pasos de ChatGPT, Le Chat, Gemini y otros programas) y textos neutros. Claude, recomendada; las otras tres, «En pruebas».
   - `prepara-con-claude.html` pasa a ser página puente (`scripts/paginas-puente.py`).
-  - Actualizados la sub-nav de `/oposicion/`, la portada, `comunidad.html`, `app/index.html`, `exclusivos.js/.py/.json`, `sitemap.xml` (sin la dirección antigua), la URL de la página en `skill-opositor.py` y `skill-espejo.py`, y `scripts/prepara-con-ia-visible.py` (antes `prepara-con-claude-visible.py`; marca `data-oculto="prepara-con-ia"`). Sigue oculta.
+  - Actualizados la sub-nav de `/oposicion/`, la portada, `comunidad.html`, `app/index.html`, `exclusivos.js/.py/.json`, `sitemap.xml` (sin la dirección antigua), la URL de la página en `skill-opositor.py` y `skill-espejo.py`, y `scripts/economia-visible.py` (antes `prepara-con-claude-visible.py`; marca `data-oculto="economia"`). Sigue oculta.
 
 - **Textos legales** (30 oct., aprobados por Víctor): `condiciones-materiales.html` 1 bis (conector en cualquier asistente, skill en Claude, nada fuera de lo oficial, pedir que se desactive el entrenamiento), `politica-cookies.html` 2.3 y tablas, `LICENCIA.md` y la cabecera de `SKILL.md` (fuente y copia publicada).
 - **Vídeo** (30 oct., sin renderizar): nombre nuevo y escena «plataformas» (ver `scripts/video-claude/GUION.md`); falta volver a grabar G2c.
 
 ## Pendiente
 
-- ~~**Textos legales**~~ hechos el 30 oct. (con el visto bueno de Víctor): `condiciones-materiales.html` (1 bis: «en su propia cuenta de Claude» → de su asistente de IA) y `politica-cookies.html` 2.3 y tablas (conector «Oposición TCEE · DCE», el proveedor de IA lo elige el opositor). Cuando cambien, ajustar las `SUSTITUCIONES` de `prepara-con-ia-visible.py`.
+- ~~**Textos legales**~~ hechos el 30 oct. (con el visto bueno de Víctor): `condiciones-materiales.html` (1 bis: «en su propia cuenta de Claude» → de su asistente de IA) y `politica-cookies.html` 2.3 y tablas (conector «Oposición TCEE · DCE», el proveedor de IA lo elige el opositor). Cuando cambien, ajustar las `SUSTITUCIONES` de `economia-visible.py`.
 - **App:** Más → «Prepara con IA», «Enviar a la IA», «Exportar mis datos para la IA», «Desconectar la IA» (la página ya los nombra así).
 - **Vídeo** con el nombre nuevo (`scripts/video-claude`, `publicar.py` y `videos.json` aún dicen «Prepara con Claude»).
 

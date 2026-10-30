@@ -84,7 +84,7 @@
                 var li = document.createElement('li');
                 var t = m.codigo && m.tipo === 'tema' ? '<strong>' + m.codigo + '</strong> · ' + m.titulo : m.titulo;
                 var det = [formatos(m.formatos), m.fecha ? (m.tipo === 'tema' || m.tipo === 'guia' ? 'revisado el ' : 'publicado el ') + fecha(m.revisado || m.fecha) : ''].filter(Boolean).join(' · ');
-                if (m.tipo === 'skill') t = '<a href="' + RAIZ + 'oposicion/prepara-con-ia.html">' + m.titulo + '</a>';
+                if (m.tipo === 'skill') t = '<a href="' + RAIZ + 'oposicion/economia.html">' + m.titulo + '</a>';
                 li.innerHTML = (m.ruta ? '<a href="' + RAIZ + m.ruta + '" target="_blank">' + t + '</a>' : t) + ' <span class="etiqueta-exclusivo">Exclusivo</span>' + (det ? '<span class="exclusivos-detalle">' + det + '</span>' : '');
                 ul.appendChild(li);
             });

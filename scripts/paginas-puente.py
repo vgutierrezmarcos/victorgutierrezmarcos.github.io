@@ -24,8 +24,9 @@ PUENTES = {
     'organizacion.html': 'oposicion/organizacion.html',
     # La guía «Qué es TCEE» pasó a llamarse «¿Por qué TCEE?» el 18 oct. 2026.
     'oposicion/que-es-tcee.html': 'oposicion/por-que-tcee.html',
-    # «Prepara con Claude» pasó a «EconomIA» (Claude, ChatGPT, Le Chat y Gemini) el 30 oct. 2026.
-    'oposicion/prepara-con-claude.html': 'oposicion/prepara-con-ia.html',
+    # «Prepara con Claude» pasó a «Prepara con IA» y luego a «EconomIA» (Claude, ChatGPT, Le Chat y Gemini) el 30 oct. 2026.
+    'oposicion/prepara-con-claude.html': 'oposicion/economia.html',
+    'oposicion/prepara-con-ia.html': 'oposicion/economia.html',
     **{f'temario/{e}-ejercicio.html': f'oposicion/temario/{e}-ejercicio.html'
        for e in ['primer', 'segundo', 'tercer', 'cuarto', 'quinto']},
     'temario/primer-ejercicio/test.html': 'oposicion/temario/primer-ejercicio/test.html',
