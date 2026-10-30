@@ -32,7 +32,7 @@ SALIDA = os.path.expanduser('~/.local/share/oposicion-web/videos')
 POSTER = 3.2  # segundo del póster: la portada ya entera
 CLAVE = 'claude-prepara'
 TITULO = 'Prepara la oposición a TCEE y DCE con Claude'
-DESCRIPCION = ('Cómo usar el conector «Prepara con IA» (Claude, ChatGPT, Le Chat y Gemini; con Claude, completo) de victorgutierrezmarcos.es: Claude conoce tu temario y tus datos de la app, corrige cantes y dictámenes, '
+DESCRIPCION = ('Cómo usar el conector «EconomIA» (Claude, ChatGPT, Le Chat y Gemini; con Claude, completo) de victorgutierrezmarcos.es: Claude conoce tu temario y tus datos de la app, corrige cantes y dictámenes, '
                'resuelve dudas viendo el temario entero, organiza el cronograma y lo lleva a la app; también para DCE. '
                'No sustituye a un preparador para la oposición: lo complementa.\n\n'
                'https://victorgutierrezmarcos.es/oposicion/prepara-con-ia.html')

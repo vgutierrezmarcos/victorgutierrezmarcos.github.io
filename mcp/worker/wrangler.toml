@@ -1,4 +1,4 @@
-# Conector remoto MCP «Prepara con Claude»: Cloudflare Worker (plan gratuito).
+# Conector remoto MCP «Oposición TCEE · DCE» (EconomIA): Cloudflare Worker (plan gratuito).
 # Desplegar: npx wrangler deploy (ver ../README.md). Antes, crear los tres KV y
 # poner sus id aquí, y el secreto CLAVE_CIFRADO con `npx wrangler secret put`.
 name = "prepara-con-claude"
@@ -6,6 +6,8 @@ main = "src/index.ts"
 compatibility_date = "2026-08-01"
 compatibility_flags = ["nodejs_compat"]
 workers_dev = true
+# Dominio propio (la zona victorgutierrezmarcos.es está en Cloudflare desde el 30 oct. 2026).
+routes = [{ pattern = "mcp.victorgutierrezmarcos.es", custom_domain = true }]
 
 [observability]
 # Registros de Cloudflare desactivados: el Worker no escribe nada con datos personales.
@@ -16,8 +18,8 @@ enabled = false
 FIREBASE_API_KEY = "AIzaSyCcNHY3IkriyV1lUejtL3qDn8luklhRo3o"
 FIREBASE_PROJECT = "web-vgm"
 # URL pública del Worker (sin barra final). Es el «issuer» OAuth y la base del recurso MCP (URL_WORKER/mcp):
-# cambiarla cuando se despliegue con dominio propio (p. ej. https://mcp.victorgutierrezmarcos.es).
-URL_WORKER = "https://prepara-con-claude.victorgutierrezmarcos.workers.dev"
+# con dominio propio desde el 30 oct. 2026 (antes, https://prepara-con-claude.victorgutierrezmarcos.workers.dev, que sigue respondiendo).
+URL_WORKER = "https://mcp.victorgutierrezmarcos.es"
 # Página de la web que hace el login con Google y devuelve los tokens al Worker.
 URL_LOGIN = "https://www.victorgutierrezmarcos.es/mcp/login.html"
 # Banco de preguntas del test (para el acierto por tema) y manifiesto de temas revisados.

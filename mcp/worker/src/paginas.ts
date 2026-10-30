@@ -129,7 +129,7 @@ export function paginaPortada(urlMcp: string): string {
     `<h1>Conector «Oposición TCEE · DCE»</h1>
 <p>Es el servidor que une tu asistente de IA (Claude, ChatGPT, Le Chat o Gemini) con tu cuenta de la app «Oposición TCEE · DCE»: lee tus cantes, tus tests y tu cronograma, y guarda en la app lo que tú le confirmes. No es una página para navegar: se añade como conector personalizado en tu asistente. Funciona en todos; con Claude, completo.</p>
 <p>URL del conector: <code>${escapar(urlMcp)}</code></p>
-<p class="nota">Cómo conectarlo y qué puede hacer: <a href="${WEB}/oposicion/prepara-con-ia.html#conector">Prepara con IA</a>.</p>`,
+<p class="nota">Cómo conectarlo y qué puede hacer: <a href="${WEB}/oposicion/prepara-con-ia.html#conector">EconomIA</a>.</p>`,
     1,
   );
 }

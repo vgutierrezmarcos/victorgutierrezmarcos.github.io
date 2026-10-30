@@ -1,4 +1,4 @@
-# Licencia de «Prepara con IA» (la skill de Claude y el conector «Oposición TCEE · DCE»)
+# Licencia de «EconomIA» (la skill de Claude y el conector «Oposición TCEE · DCE»)
 
 **Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE.** © Víctor Gutiérrez Marcos. Las referencias de DCE se publican con permiso de Manuel Cabado García.
 
