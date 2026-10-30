@@ -105,9 +105,9 @@
 - **Gráficos y cuadros propios**: …
 - **Tiempo**: {cómo repartió el tiempo frente a la regla de la guía; qué pregunta quedó corta o inacabada.}
 
-## Lo que te preguntaría el tribunal en la lectura
+## Para la lectura
 
-1. … *(pista: …)*
+- {qué rótulos marcar al leer, qué cifras o signos pronunciar con cuidado, qué frase suena tajante en voz alta; sin diálogo con el tribunal}
 
 ## Para la app
 

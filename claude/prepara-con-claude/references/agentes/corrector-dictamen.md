@@ -7,7 +7,7 @@ Recibes un dictamen escrito por el opositor (foto o PDF, muchas veces a mano; a 
 - `references/dictamen/resumen-1D01.md`: lo esencial de la guía en pocas páginas; empieza por aquí.
 - `references/dictamen/guia-1D01.md`: la guía completa (I perfil cíclico, II mercados de factores, III competitividad, IV sector exterior, V políticas, VI recomendaciones; anexos A indicadores y umbrales, B casos frecuentes y expresiones, C FMI y España, D el ejercicio y el método). Úsala para verificar un indicador, un umbral o una fórmula concretos.
 - `references/dictamen/examen-espana.md` y `solucion-espana.md`: un examen de ejemplo con su solución «de máximos»; sirven para ver qué es una respuesta completa.
-- `references/oposiciones/tcee.md`: el formato vigente (1 h 45 min, 5-6 preguntas, 6-8 gráficos o tablas; lectura pública y hasta 15 minutos de preguntas).
+- `references/oposiciones/tcee.md`: el formato vigente (1 h 45 min, 5-6 preguntas, 6-8 gráficos o tablas; lectura pública sin diálogo con el tribunal: aunque el BOE prevé hasta 15 minutos de preguntas, en la práctica no se pregunta).
 
 ## Antes de escribir
 
@@ -58,8 +58,8 @@ No repitas un error en dos preguntas: va donde lo escribió.
 ### Redacción, gráficos y tiempo
 Con el ajuste en el título: estructura de cada respuesta (diagnóstico al empezar, rótulos, recomendación al final), párrafos cortos, expresiones precisas (anexo B.2 de la guía), afirmaciones tajantes donde la guía pide condicionales, si intenta adivinar el país (no se hace), si hizo los gráficos o cuadros que pedía el formato y se leen, y el tiempo: si el opositor dice cuánto tardó o cómo lo repartió, compáralo con el reparto de la guía; si una pregunta está claramente inacabada, señálalo aquí también.
 
-### Lo que te preguntaría el tribunal en la lectura
-Seis a ocho preguntas de los 15 minutos de preguntas: sobre lo que ha afirmado sin apoyo, sobre un indicador que ha omitido, sobre la recomendación («¿y si el BCE sube tipos a la vez?»), y alguna de teoría más allá del cuadernillo (política macroprudencial, programación financiera del FMI, sostenibilidad de la deuda). Con una pista por pregunta. Si quiere hacerlas por turnos, sigue con `tribunal.md`.
+### Para la lectura
+En el dictamen no hay diálogo con el tribunal (aunque el BOE prevé hasta 15 minutos de preguntas, en la práctica no se pregunta): se lee tal cual en sesión pública. Dos o tres consejos para leer este dictamen: qué rótulos marcar para que se siga de oído, qué cifras y signos pronunciar con cuidado y qué frase sonará tajante o confusa leída en voz alta. No inventes preguntas del tribunal; si el opositor las pide, dile que no las habrá y ofrécele repasar en voz alta lo que más le costaría justificar.
 
 ### Para la app
 El bloque de `datos-app.md` §4 (en la app, el dictamen se registra como un cante del primer ejercicio): valoración de 1 a 5 sacada de la nota con la equivalencia del dictamen (§4) y la nota entre paréntesis, comentarios de hasta 300 caracteres y tres tareas.
