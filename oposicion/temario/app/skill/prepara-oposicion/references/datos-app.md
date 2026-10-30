@@ -22,7 +22,18 @@ Transcripción automática del móvil: puede tener errores de reconocimiento (no
 - Si la cabecera dice DCE, el cante es de 20 minutos (`oposiciones/dce.md`).
 - Si el opositor pega una transcripción sin este formato (de la grabadora del móvil, de un vídeo), trabaja igual: pide la duración total si no se ve y reparte los tiempos por el número de palabras si no hay marcas.
 
-## 2. `oposicion_<id>_para_claude.json`: el resumen de su preparación
+## 1 bis. `pizarra_<tema>_<fecha>.pdf`: la pizarra del cante
+
+Si el opositor dibujó en la pizarra de la app mientras cantaba, «Enviar a la IA» manda este PDF junto a la transcripción, y la cabecera del `.txt` lo anuncia con una línea `Pizarra: pizarra_3A08_2026-11-03.pdf (una página por minuto con su marca [mm:ss])`.
+
+- Una página apaisada por cada minuto de exposición en que cambió la pizarra, en orden de tiempo, con todo lo dibujado desde el último borrado: **con su color, lo dibujado en ese tramo; más claro, lo de antes**.
+- Cabecera de cada página: `[03:00]–[04:00] · Tema 3.A.8 · Cante del 3 nov. 2026`, y al final, si toca, `· página N de la pizarra` (usó varias), `· antes de borrar` (el tramo acaba al borrar, p. ej. `[03:00]–[03:37]`) o `· se borra en [mm:ss]`.
+- Los minutos son los de la exposición, los mismos que las marcas de la transcripción (sin el esquema ni las pausas). Con dos temas, cada uno empieza en 00:00.
+- Lo que había antes de arrancar el cronómetro sale más claro en la primera página. En una clase con el preparador, sus trazos también están.
+
+Para corregir, cruza cada página con la transcripción de ese tramo: qué decía mientras dibujaba, si el gráfico llega cuando lo nombra, qué dibujó tarde o no dibujó (criterios en `graficos-y-formulas.md` y `pizarra.md`).
+
+## 2. `oposicion_<id>_para_ia.json` (antes `_para_claude.json`): el resumen de su preparación
 
 Lo genera la app en Más → EconomIA → «Exportar mis datos para Claude». Es un recorte pensado para ti:
 
