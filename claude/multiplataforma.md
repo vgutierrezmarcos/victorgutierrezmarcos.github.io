@@ -37,6 +37,12 @@
 9. **Lanzamiento:** `--mostrar`, la novedad en `novedades.json` y `novedades.py`, y push.
 10. **Directorios:** primero el de Anthropic (ver `mcp-fase-2.md`, punto 9) y después el de OpenAI, con nombre neutro.
 
+## Nombre: «EconomIA» (30 oct., tarde)
+
+Víctor descartó «Prepara con IA» por genérico y eligió **EconomIA** (economía + IA: guiño a una oposición de economistas) para la página, el botón, la entrada de la app y el vídeo. El conector técnico sigue siendo «Oposición TCEE · DCE» y la dirección de la página, `oposicion/prepara-con-ia.html`. En la portada y el cierre, el icono de la app y los logos de Claude, ChatGPT, Le Chat y Gemini (`oposicion/img/ia/`; uso nominativo, el de OpenAI invertido sobre fondo oscuro).
+
+**Dominio:** el conector está en `https://mcp.victorgutierrezmarcos.es/mcp` desde el 30 oct. (zona activa en Cloudflare a las 12:16; dominio puesto con la API, `routes` en `wrangler.toml`). La dirección `workers.dev` sigue respondiendo.
+
 ## Hecho
 
 - **`leer_metodo(tarea)` y un *prompt* MCP por tarea** (30 oct.): `TAREAS` en `mcp/worker/src/herramientas.ts`, con sus pruebas; las instrucciones del servidor mandan usarla. Desplegado el 30 oct.

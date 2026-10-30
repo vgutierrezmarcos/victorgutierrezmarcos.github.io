@@ -6,7 +6,7 @@
  *     de la web y, debajo de su tarjeta, la llamada a la app;
  *   - rellena la sección «Materiales exclusivos» (#exclusivos-lista) del
  *     temario y la frase de la portada (#exclusivos-portada);
- *   - rellena el botón de descarga de la skill de Claude («Prepara con IA»)
+ *   - rellena el botón de descarga de la skill de Claude («EconomIA»)
  *     (#descargar-skill): con sesión iniciada apunta al ZIP; sin sesión, pide
  *     iniciarla o manda a la app.
  * Sin el JSON (sin red, fichero ausente), la página se queda como está.

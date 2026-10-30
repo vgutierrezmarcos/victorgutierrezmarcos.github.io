@@ -643,7 +643,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Desconectar la IA de la app',
       annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: true, openWorldHint: false },
       description:
-        'Revoca el acceso de este conector a los datos del opositor: borra del servidor su token de Firebase y las autorizaciones OAuth. Después, ninguna herramienta funciona hasta que vuelva a conectar. Úsalo solo si el opositor lo pide. También puede hacerlo desde la app (Más → Prepara con IA → Desconectar la IA).',
+        'Revoca el acceso de este conector a los datos del opositor: borra del servidor su token de Firebase y las autorizaciones OAuth. Después, ninguna herramienta funciona hasta que vuelva a conectar. Úsalo solo si el opositor lo pide. También puede hacerlo desde la app (Más → EconomIA → Desconectar la IA).',
       inputSchema: { confirmar: z.literal(true).describe('Tiene que ser true: el opositor ha pedido desconectar.') },
     },
     async () =>

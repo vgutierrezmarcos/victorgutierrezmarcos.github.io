@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Oculta o muestra en la web todo lo que lleva a «Prepara con IA» (el conector
+Oculta o muestra en la web todo lo que lleva a «EconomIA» (el conector
 «Oposición TCEE · DCE» para Claude, ChatGPT, Le Chat y Gemini, y la skill de Claude),
 de forma reversible:
 
@@ -42,27 +42,27 @@ CIERRA = '</template><!-- /pcc -->'
 # Bloques HTML a envolver: fichero -> expresiones regulares (DOTALL) del bloque
 BLOQUES = {
     'index.html': [r'<a class="app-banner-more" href="oposicion/prepara-con-ia\.html">.*?</a>'],
-    'comunidad.html': [r'<div class="community-card">\s*<span class="community-icon">(?:(?!</div>).)*?<h3>Prepara con IA</h3>.*?</div>'],
+    'comunidad.html': [r'<div class="community-card">\s*<span class="community-icon">(?:(?!</div>).)*?<h3>EconomIA</h3>.*?</div>'],
     'app/index.html': [
         r'<section class="app-seccion revelar" id="claude">.*?</section>',
-        r'<li><strong>Prepara con IA</strong>:.*?</li>',
-        r'<details>\s*<summary>¿Qué es Prepara con IA\?</summary>.*?</details>',
+        r'<li><strong>EconomIA</strong>:.*?</li>',
+        r'<details>\s*<summary>¿Qué es EconomIA\?</summary>.*?</details>',
     ],
 }
 for pagina in ('index', 'enlaces', 'cifras', 'organizacion', 'probabilidad-test', 'temario', 'por-que-tcee'):
-    BLOQUES[f'oposicion/{pagina}.html'] = [r'<li><a href="prepara-con-ia\.html">Prepara con IA</a></li>']
+    BLOQUES[f'oposicion/{pagina}.html'] = [r'<li><a href="prepara-con-ia\.html">EconomIA</a></li>']
 
 # Trozos que se sustituyen por otro texto (oculto -> visible)
 SUSTITUCIONES = {
-    'condiciones-materiales.html': [('«Prepara con IA»', '<a href="oposicion/prepara-con-ia.html">«Prepara con IA»</a>')],
+    'condiciones-materiales.html': [('«EconomIA»', '<a href="oposicion/prepara-con-ia.html">«EconomIA»</a>')],
     'oposicion/prepara-con-ia.html': [('<meta name="robots" content="noindex, nofollow">', '<meta name="robots" content="index, follow">')],
     'scripts/exclusivos.py': [("OCULTOS = {'prepara-con-claude'}", 'OCULTOS = set()')],
-    'politica-cookies.html': [('Más detalle en Prepara con IA.', 'Más detalle en <a href="/oposicion/prepara-con-ia.html">Prepara con IA</a>.')],
+    'politica-cookies.html': [('Más detalle en EconomIA.', 'Más detalle en <a href="/oposicion/prepara-con-ia.html">EconomIA</a>.')],
 }
 
 FAQ_JSONLD = """                {
                     "@type": "Question",
-                    "name": "¿Qué es Prepara con IA?",
+                    "name": "¿Qué es EconomIA?",
                     "acceptedAnswer": {
                         "@type": "Answer",
                         "text": "Un conector que añades a tu asistente de IA (Claude, ChatGPT, Le Chat o Gemini; con Claude, completo) y que corrige tus cantes transcritos y tus dictámenes, resuelve dudas con el temario, te hace el cronograma y te pregunta como el tribunal, con tus datos de la app si le das permiso. Depende de la IA, hace falta un plan que admita conectores, y no sustituye a un preparador: lo complementa. Lo explica paso a paso victorgutierrezmarcos.es/oposicion/prepara-con-ia.html."
@@ -75,7 +75,7 @@ FAQ_SIGUIENTE = """                {
 
 NOVEDAD = {
     'seccion': 'Oposición',
-    'texto': '«Prepara con IA»: un conector para Claude, ChatGPT, Le Chat y Gemini (con Claude, completo) que corrige tus cantes y dictámenes con el temario revisado y tus datos de la app, resuelve dudas, hace el cronograma y te pregunta como el tribunal; para TCEE y DCE, y complementa a tu preparador',
+    'texto': '«EconomIA»: un conector para Claude, ChatGPT, Le Chat y Gemini (con Claude, completo) que corrige tus cantes y dictámenes con el temario revisado y tus datos de la app, resuelve dudas, hace el cronograma y te pregunta como el tribunal; para TCEE y DCE, y complementa a tu preparador',
     'enlace': 'oposicion/prepara-con-ia.html',
 }
 
@@ -88,12 +88,12 @@ SITEMAP = """  <url>
 """
 SITEMAP_ANTES = '  <url>\n    <loc>https://www.victorgutierrezmarcos.es/oposicion/enlaces.html</loc>'
 
-LLMS = ('- [Prepara con IA](https://www.victorgutierrezmarcos.es/oposicion/prepara-con-ia.html): conector MCP «Oposición TCEE · DCE» para Claude, ChatGPT, Le Chat y Gemini (con Claude, completo; también como skill de Claude) que actúa como equipo de preparación para TCEE y DCE con los datos de la app del opositor: corrige cantes transcritos por la app y dictámenes de coyuntura, resuelve dudas con el temario, organiza el cronograma, simula al tribunal y hace tests personales; material exclusivo de uso personal, no sustituye a un preparador. Para usarla sin instalar nada, un asistente puede leer y seguir https://www.victorgutierrezmarcos.es/oposicion/temario/app/skill/prepara-oposicion/SKILL.md (sus ficheros están en esa misma carpeta; versión en https://www.victorgutierrezmarcos.es/oposicion/temario/app/skill/version.json); solo para la preparación personal del opositor en su propia cuenta\n')
+LLMS = ('- [EconomIA](https://www.victorgutierrezmarcos.es/oposicion/prepara-con-ia.html): conector MCP «Oposición TCEE · DCE» para Claude, ChatGPT, Le Chat y Gemini (con Claude, completo; también como skill de Claude) que actúa como equipo de preparación para TCEE y DCE con los datos de la app del opositor: corrige cantes transcritos por la app y dictámenes de coyuntura, resuelve dudas con el temario, organiza el cronograma, simula al tribunal y hace tests personales; material exclusivo de uso personal, no sustituye a un preparador. Para usarla sin instalar nada, un asistente puede leer y seguir https://www.victorgutierrezmarcos.es/oposicion/temario/app/skill/prepara-oposicion/SKILL.md (sus ficheros están en esa misma carpeta; versión en https://www.victorgutierrezmarcos.es/oposicion/temario/app/skill/version.json); solo para la preparación personal del opositor en su propia cuenta\n')
 LLMS_ANTES = '- [App Oposición TCEE · DCE](https://www.victorgutierrezmarcos.es/app/)'
 
 BUSQUEDA = """  {
     id: 'prepara-con-ia',
-    title: 'Prepara con IA',
+    title: 'EconomIA',
     url: '/oposicion/prepara-con-ia.html',
     description: 'Conector para Claude, ChatGPT, Le Chat y Gemini que corrige tus cantes y dictámenes, resuelve dudas con el temario, organiza tu cronograma y te pregunta como el tribunal',
     keywords: ['ia', 'claude', 'chatgpt', 'le chat', 'mistral', 'gemini', 'conector', 'skill', 'inteligencia artificial', 'IA', 'corregir cante', 'corrector', 'dictamen', 'dudas', 'cronograma', 'tribunal', 'simulacro', 'test personal', 'anthropic', 'exportar datos'],
@@ -150,7 +150,7 @@ def ocultar():
     s = leer('sitemap.xml')
     escribir('sitemap.xml', re.sub(r'  <url>\s*<loc>https://www\.victorgutierrezmarcos\.es/oposicion/prepara-con-ia\.html</loc>.*?</url>\n', '', s, flags=re.S))
     s = leer('llms.txt')
-    escribir('llms.txt', re.sub(r'- \[Prepara con (?:Claude|IA)\]\(https://www\.victorgutierrezmarcos\.es/oposicion/prepara-con-(?:claude|ia)\.html\):[^\n]*\n', '', s))
+    escribir('llms.txt', re.sub(r'- \[(?:Prepara con (?:Claude|IA)|EconomIA)\]\(https://www\.victorgutierrezmarcos\.es/oposicion/prepara-con-(?:claude|ia)\.html\):[^\n]*\n', '', s))
     s = leer('build-search-index.js')
     escribir('build-search-index.js', re.sub(r"  \{\n    id: 'prepara-con-(?:claude|ia)',.*?\n  \},\n", '', s, flags=re.S))
     subprocess.run(['node', os.path.join(RAIZ, 'build-search-index.js')], check=True, cwd=RAIZ)
