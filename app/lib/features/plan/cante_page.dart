@@ -21,6 +21,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/pizarra_page.dart';
 import '../cantar/relojes_alumnos.dart';
+import '../cantar/transcripcion.dart';
 import '../preparador/red_widgets.dart';
 import '../preparador/sustituciones.dart';
 import '../temario/agenda_tema_page.dart';
@@ -365,6 +366,8 @@ class CantePage extends ConsumerWidget {
               ]),
             ),
           ],
+          // La transcripción del cante (solo en este dispositivo), para la IA.
+          if (c.hecho) _TranscripcionDelCante(canteId: c.id),
           // Los informes que ha guardado la IA con el conector (EconomIA).
           if (usuario != null) SeccionInformesCante(uid: usuario.uid, canteId: c.id, propio: true),
           // Las grabaciones de este cante (solo en este móvil).
@@ -443,6 +446,63 @@ class CantePage extends ConsumerWidget {
         ],
       ),
     );
+  }
+}
+
+/// La transcripción guardada con el cante (Cantar → «Transcribir»): verla,
+/// mandarla a la IA o borrarla. Solo está en este dispositivo.
+class _TranscripcionDelCante extends StatefulWidget {
+  const _TranscripcionDelCante({required this.canteId});
+  final String canteId;
+  @override
+  State<_TranscripcionDelCante> createState() => _TranscripcionDelCanteState();
+}
+
+class _TranscripcionDelCanteState extends State<_TranscripcionDelCante> {
+  @override
+  Widget build(BuildContext context) {
+    final t = Transcripciones.de(widget.canteId);
+    if (t == null) return const SizedBox.shrink();
+    final minutos = RegExp(r'^\[\d\d:\d\d\]', multiLine: true).allMatches(t.texto).length;
+    Future<void> ver() => Navigator.of(context).push(MaterialPageRoute(
+          builder: (_) => Scaffold(
+            appBar: BarraWeb(title: const Text('Transcripción'), subtitulo: t.nombre),
+            body: ListaAdaptable(padding: const EdgeInsets.all(16), children: [SelectableText(t.texto, style: context.textos.bodyMedium)]),
+          ),
+        ));
+    Future<void> borrar() async {
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: const Text('¿Borrar la transcripción?'),
+          content: const Text('Se borra de este dispositivo. El cante y su valoración se quedan.'),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
+            FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Borrar')),
+          ],
+        ),
+      );
+      if (ok != true) return;
+      await Transcripciones.borrar(widget.canteId);
+      if (mounted) setState(() {});
+    }
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      const TituloSeccion('Transcripción'),
+      Tarjeta(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text('$minutos ${minutos == 1 ? 'minuto' : 'minutos'} con marca · solo en este dispositivo', style: context.textos.labelSmall),
+          const SizedBox(height: 8),
+          Wrap(spacing: 8, runSpacing: 6, children: [
+            FilledButton.icon(onPressed: () => Transcripciones.enviarALaIa(widget.canteId), icon: const Icon(Icons.auto_awesome_outlined, size: 18), label: const Text('Enviar a la IA')),
+            OutlinedButton(onPressed: ver, child: const Text('Ver')),
+            TextButton.icon(onPressed: borrar, icon: const Icon(Icons.delete_outline, size: 18), label: const Text('Borrar')),
+          ]),
+          const SizedBox(height: 6),
+          Text('«Enviar a la IA» saca el fichero ${t.nombre}: adjúntalo en el chat de tu IA y escribe «corrige este cante».', style: context.textos.labelSmall),
+        ]),
+      ),
+    ]);
   }
 }
 

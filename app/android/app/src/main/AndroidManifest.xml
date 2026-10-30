@@ -99,6 +99,10 @@
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
         </intent>
+        <!-- Transcripción del cante: ver el servicio de reconocimiento de voz (Android 11+) -->
+        <intent>
+            <action android:name="android.speech.RecognitionService"/>
+        </intent>
         <!-- url_launcher: abrir enlaces web y correo -->
         <intent>
             <action android:name="android.intent.action.VIEW"/>

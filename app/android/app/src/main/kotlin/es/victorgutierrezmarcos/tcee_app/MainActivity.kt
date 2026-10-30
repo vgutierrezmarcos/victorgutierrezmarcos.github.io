@@ -1,11 +1,19 @@
 package es.victorgutierrezmarcos.tcee_app
 
+import android.Manifest
 import android.content.ComponentName
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.PowerManager
 import android.provider.Settings
+import android.speech.RecognitionListener
+import android.speech.RecognizerIntent
+import android.speech.SpeechRecognizer
 import com.android.installreferrer.api.InstallReferrerClient
 import com.android.installreferrer.api.InstallReferrerStateListener
 import io.flutter.embedding.android.FlutterActivity
@@ -42,6 +50,164 @@ class MainActivity : FlutterActivity() {
                 else -> result.notImplemented()
             }
         }
+        configurarDictado(flutterEngine)
+    }
+
+    // ------------------------------------------------------------------
+    // Transcripción del cante (core/dictado_io.dart): SpeechRecognizer en
+    // es-ES con resultados parciales y preferencia por el reconocimiento en
+    // el dispositivo. Android corta la escucha en cada silencio, así que se
+    // vuelve a lanzar sola hasta que Flutter dice «parar»: aguanta los 30
+    // minutos (o más) del cante. Cada resultado va con el instante en que se
+    // empezó a decir, para la marca de minuto. Nada se guarda aquí.
+
+    private var dictadoEventos: EventChannel.EventSink? = null
+    private var reconocedor: SpeechRecognizer? = null
+    private var dictando = false
+    private var idiomaDictado = "es-ES"
+    private var soloDispositivo = true
+    private var inicioFrase = 0L
+    private val principal = Handler(Looper.getMainLooper())
+
+    private fun configurarDictado(flutterEngine: FlutterEngine) {
+        EventChannel(flutterEngine.dartExecutor.binaryMessenger, "es.victorgutierrezmarcos.tcee_app/dictado/eventos").setStreamHandler(object : EventChannel.StreamHandler {
+            override fun onListen(arguments: Any?, events: EventChannel.EventSink?) { dictadoEventos = events }
+            override fun onCancel(arguments: Any?) { dictadoEventos = null }
+        })
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "es.victorgutierrezmarcos.tcee_app/dictado").setMethodCallHandler { call, result ->
+            when (call.method) {
+                "disponible" -> result.success(SpeechRecognizer.isRecognitionAvailable(this))
+                "empezar" -> {
+                    if (!SpeechRecognizer.isRecognitionAvailable(this)) {
+                        result.error("sin_reconocimiento", "Este móvil no tiene reconocimiento de voz.", null)
+                    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                        result.error("sin_permiso", "Sin permiso de micrófono.", null)
+                    } else {
+                        idiomaDictado = call.argument<String>("idioma") ?: "es-ES"
+                        soloDispositivo = true
+                        dictando = true
+                        escuchar()
+                        result.success(null)
+                    }
+                }
+                "parar" -> {
+                    pararDictado()
+                    result.success(null)
+                }
+                else -> result.notImplemented()
+            }
+        }
+    }
+
+    private fun enviarDictado(tipo: String, texto: String = "", desde: Long = System.currentTimeMillis()) {
+        principal.post { dictadoEventos?.success(mapOf("tipo" to tipo, "texto" to texto, "desde" to desde)) }
+    }
+
+    private fun intencionDictado(): Intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+        putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        putExtra(RecognizerIntent.EXTRA_LANGUAGE, idiomaDictado)
+        putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
+        putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1)
+        // En el dispositivo si se puede (sin enviar la voz a ningún servidor);
+        // si no tiene el idioma descargado, Android usa su servicio de voz.
+        putExtra(RecognizerIntent.EXTRA_PREFER_OFFLINE, soloDispositivo)
+        // Pausas largas sin cortar (algunos reconocedores lo ignoran).
+        putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 4000L)
+        putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 4000L)
+        putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, packageName)
+    }
+
+    private fun escuchar() {
+        if (!dictando) return
+        try {
+            if (reconocedor == null) {
+                reconocedor = SpeechRecognizer.createSpeechRecognizer(this).apply { setRecognitionListener(oyente) }
+            }
+            inicioFrase = 0L
+            reconocedor?.startListening(intencionDictado())
+        } catch (e: Exception) {
+            reintentarDictado(500)
+        }
+    }
+
+    private fun reintentarDictado(ms: Long) {
+        if (!dictando) return
+        principal.postDelayed({ escuchar() }, ms)
+    }
+
+    /// Se rehace el reconocedor (tras un error del cliente o del servicio).
+    private fun rehacerReconocedor() {
+        try { reconocedor?.destroy() } catch (e: Exception) {}
+        reconocedor = null
+    }
+
+    private fun pararDictado() {
+        dictando = false
+        principal.removeCallbacksAndMessages(null)
+        try { reconocedor?.stopListening() } catch (e: Exception) {}
+        rehacerReconocedor()
+        enviarDictado("parado")
+    }
+
+    private val oyente = object : RecognitionListener {
+        override fun onReadyForSpeech(params: Bundle?) {}
+        override fun onBeginningOfSpeech() {
+            if (inicioFrase == 0L) inicioFrase = System.currentTimeMillis()
+        }
+        override fun onRmsChanged(rmsdB: Float) {}
+        override fun onBufferReceived(buffer: ByteArray?) {}
+        override fun onEndOfSpeech() {}
+        override fun onEvent(eventType: Int, params: Bundle?) {}
+
+        override fun onPartialResults(partialResults: Bundle?) {
+            val texto = partialResults?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)?.firstOrNull() ?: return
+            if (texto.isBlank()) return
+            if (inicioFrase == 0L) inicioFrase = System.currentTimeMillis()
+            enviarDictado("parcial", texto, inicioFrase)
+        }
+
+        override fun onResults(results: Bundle?) {
+            val texto = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)?.firstOrNull() ?: ""
+            if (texto.isNotBlank()) enviarDictado("definitivo", texto, if (inicioFrase == 0L) System.currentTimeMillis() else inicioFrase)
+            // Silencio: se vuelve a escuchar enseguida.
+            reintentarDictado(50)
+        }
+
+        override fun onError(error: Int) {
+            if (!dictando) return
+            when (error) {
+                SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS -> {
+                    dictando = false
+                    rehacerReconocedor()
+                    enviarDictado("error", "Sin permiso de micrófono.")
+                }
+                // Sin el idioma en el dispositivo (Android 12+): con el servicio de voz.
+                12, 13 -> {
+                    if (soloDispositivo) {
+                        soloDispositivo = false
+                        reintentarDictado(100)
+                    } else {
+                        dictando = false
+                        rehacerReconocedor()
+                        enviarDictado("error", "El reconocimiento de voz no tiene el español.")
+                    }
+                }
+                // Nada reconocido o silencio largo: se sigue escuchando.
+                SpeechRecognizer.ERROR_NO_MATCH, SpeechRecognizer.ERROR_SPEECH_TIMEOUT -> reintentarDictado(50)
+                // Ocupado, cliente o servicio caídos, red: se rehace y se reintenta.
+                else -> {
+                    rehacerReconocedor()
+                    reintentarDictado(if (error == SpeechRecognizer.ERROR_RECOGNIZER_BUSY) 600 else 300)
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        dictando = false
+        principal.removeCallbacksAndMessages(null)
+        rehacerReconocedor()
+        super.onDestroy()
     }
 
     // Enlace tocado con la app abierta (launchMode singleTop): a Flutter.
