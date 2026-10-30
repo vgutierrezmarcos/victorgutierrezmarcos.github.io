@@ -17,6 +17,7 @@ import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../theme/app_theme.dart';
 import 'pizarra_barra.dart';
+import 'pizarra_cante.dart';
 import 'pizarra_compartida.dart';
 import 'pizarra_formas.dart';
 import 'pizarra_pdf.dart';
@@ -28,12 +29,17 @@ import 'pizarra_trazos.dart';
 
 /// Abre la pizarra de la clase [canteId] del alumno [alumnoUid] a pantalla
 /// completa, con [otroNombre] (el otro: el alumno o el preparador).
-Future<void> abrirPizarra(BuildContext context, {required String alumnoUid, required String canteId, required String otroNombre, String etiqueta = '', FirebaseFirestore? db}) =>
-    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => PizarraPage(alumnoUid: alumnoUid, canteId: canteId, otroNombre: otroNombre, etiqueta: etiqueta, db: db)));
+/// Con [cronologia] (el opositor cantando en Cantar), se anota cuándo
+/// aparece cada trazo para mandar la pizarra a la IA con el cante.
+Future<void> abrirPizarra(BuildContext context, {required String alumnoUid, required String canteId, required String otroNombre, String etiqueta = '', FirebaseFirestore? db, CronologiaPizarra? cronologia}) =>
+    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => PizarraPage(alumnoUid: alumnoUid, canteId: canteId, otroNombre: otroNombre, etiqueta: etiqueta, db: db, cronologia: cronologia)));
 
-/// Abre la pizarra para practicar sola (sin clase): no se comparte ni se guarda.
-Future<void> abrirPizarraIndividual(BuildContext context) =>
-    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => const PizarraPage.individual()));
+/// Abre la pizarra para practicar sola (sin clase): no se comparte ni se
+/// guarda en la nube. Sin [fuente], lo escrito se pierde al cerrarla; Cantar
+/// le pasa la suya para que dure lo que el cante, y [cronologia] para anotar
+/// cuándo aparece cada trazo.
+Future<void> abrirPizarraIndividual(BuildContext context, {FuentePizarra? fuente, CronologiaPizarra? cronologia}) =>
+    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => PizarraPage.individual(fuente: fuente, cronologia: cronologia)));
 
 /// Abre las notas del preparador de la clase [canteId]: la escribe el
 /// preparador [preparadorUid] y el alumno [alumnoUid] la ve, sin poder tocarla
@@ -56,7 +62,7 @@ Future<void> abrirNotas(BuildContext context, {required String alumnoUid, requir
 /// del examen (bolígrafo, borrador, colores, deshacer); el rotulador, el
 /// fosforito, el lazo, la regla, el papel y las formas, en el menú ···.
 class PizarraPage extends ConsumerStatefulWidget {
-  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre, this.db, this.etiqueta = ''})
+  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre, this.db, this.etiqueta = '', this.cronologia})
       : individual = false,
         notas = false,
         preparadorUid = '',
@@ -66,8 +72,8 @@ class PizarraPage extends ConsumerStatefulWidget {
         eventosDom = null;
 
   /// Para practicar el cante sola: los trazos se quedan en el móvil, en
-  /// memoria, y se pierden al cerrarla.
-  const PizarraPage.individual({super.key, @visibleForTesting this.fuente, @visibleForTesting this.eventosDom})
+  /// memoria (en [fuente], si se pasa; si no, se pierden al cerrarla).
+  const PizarraPage.individual({super.key, this.fuente, @visibleForTesting this.eventosDom, this.cronologia})
       : alumnoUid = '',
         canteId = '',
         otroNombre = '',
@@ -85,7 +91,8 @@ class PizarraPage extends ConsumerStatefulWidget {
   const PizarraPage.notas({super.key, required this.alumnoUid, required this.canteId, required this.preparadorUid, required this.otroNombre, required this.soloLectura, this.alCompartir, this.etiqueta = '', this.db, @visibleForTesting this.fuente})
       : individual = false,
         notas = true,
-        eventosDom = null;
+        eventosDom = null,
+        cronologia = null;
 
   final String alumnoUid;
   final String canteId;
@@ -108,10 +115,14 @@ class PizarraPage extends ConsumerStatefulWidget {
   /// Base de datos (por defecto, la de Firebase; en las capturas, una simulada).
   final FirebaseFirestore? db;
 
-  /// Para las pruebas: dónde van los trazos de la pizarra individual y los
-  /// eventos del navegador que simula la prueba.
+  /// Dónde van los trazos de la pizarra individual (la de Cantar, o la de
+  /// las pruebas) y los eventos del navegador que simula la prueba.
   final FuentePizarra? fuente;
   final Stream<EventoDom>? eventosDom;
+
+  /// Si se canta con ella: lo que va anotando cuándo aparece cada trazo y
+  /// cuándo se borra o se cambia de página (ver [CronologiaPizarra]).
+  final CronologiaPizarra? cronologia;
 
   @override
   ConsumerState<PizarraPage> createState() => _PizarraPageState();
@@ -364,6 +375,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       // cuesta reconstruir con las páginas nuevas).
       WidgetsBinding.instance.addPostFrameCallback((_) => _registro.anotar('MED', 'llegan ${paginas.length} páginas y ${paginas.fold(0, (n, p) => n + p.trazos.length)} trazos: ms=${(cron.elapsedMicroseconds / 1000).toStringAsFixed(1)}'));
     }
+    widget.cronologia?.observar(paginas, ahora: DateTime.now(), colorDe: (t) => _colorDe(t).toARGB32());
     _cambiaTrazos(() {
       _paginas = paginas;
       if (widget.notas && paginas.isNotEmpty) {
@@ -1492,6 +1504,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       _seleccion = {};
       _lazo = null;
     });
+    widget.cronologia?.verHoja(_idPaginaActual, ahora: DateTime.now());
   }
 
   Future<void> _cambiarFondo(String fondo) async {

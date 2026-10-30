@@ -32,6 +32,15 @@ Future<void> guardarBytes({required String nombre, required List<int> bytes, req
   Future.delayed(const Duration(seconds: 30), () => web.URL.revokeObjectURL(url));
 }
 
+/// Descarga varios ficheros desde el navegador, uno tras otro.
+Future<void> guardarVarios(List<({String nombre, List<int> bytes, String mime})> ficheros, {String? asunto}) async {
+  for (final f in ficheros) {
+    await guardarBytes(nombre: f.nombre, bytes: f.bytes, mime: f.mime.startsWith('text/') ? '${f.mime};charset=utf-8' : f.mime, asunto: asunto);
+    // Algunos navegadores ignoran la segunda descarga si va pegada a la primera.
+    await Future.delayed(const Duration(milliseconds: 400));
+  }
+}
+
 /// En el navegador la grabación vive en memoria: la grabadora devuelve una URL
 /// blob: al parar, y no hace falta ruta.
 Future<String> rutaNuevaGrabacion(String nombre) async => '';
