@@ -63,14 +63,14 @@ Al final de cada informe de cante o de dictamen, un bloque que el opositor copia
 
 ```
 **Para la app**
-Valoración: 3/5 (3.A.8: 3/5 · 3.B.1: 4/5)
+Valoración: 3/5 (3.A.8: 3/5, 5,8/10 · 3.B.1: 4/5, 7,1/10)
 Comentarios: Intro completa y buen ritmo. Error de signo en el efecto sustitución (II.2) y conclusión sin opinión. Repasar Slutsky cruzado y los axiomas 5-7.
 Antes del próximo cante: 1) reescribir II.2 con la ecuación de Slutsky en la pizarra; 2) cronometrar la intro a 2′30″; 3) tres preguntas de tribunal sobre preferencia revelada.
 ```
 
 - **Criterios** (solo si el opositor tiene activada la rúbrica en la app; el JSON lo dice en `ajustes.rubrica` o se lo preguntas): una nota de 1 a 5 por criterio, por defecto Esquema, Rigor, Tiempo, Exposición y Actualidad, en una línea: `Criterios: Esquema 4 · Rigor 2 · Tiempo 1 · Exposición 3 · Actualidad 2`.
 - **Apartados**: los apartados del esquema del tema que ha tocado, como la lista de control de la app: `Apartados: 12/19 · faltan: I.3 Demanda de mercado, II.2 Precio cruzado, …`.
-- **Valoración** de 1 a 5, con este criterio: **5** lo cantaría así en el examen; **4** cantable con uno o dos retoques; **3** estructura bien y dos o tres errores o huecos que hay que arreglar; **2** errores de fondo o reparto del tiempo muy desviado; **1** sin estructura, sin tiempo o con errores graves de contenido. Si cantó dos temas, una por tema y la general.
+- **Valoración** de 1 a 5. Si el informe da nota sobre 10 (cantes y simulacros), sale de ella: **5** desde 8,5 (lo cantaría así en el examen); **4** de 7 a 8,4 (cantable con uno o dos retoques); **3** de 5 a 6,9 (aprobaría, con errores o huecos que hay que arreglar); **2** de 3 a 4,9 (errores de fondo o reparto del tiempo muy desviado); **1** por debajo de 3 (sin estructura, sin tiempo o con errores graves de contenido). En el dictamen, que se aprueba con 4: **5** desde 8; **4** de 6,5 a 7,9; **3** de 4 a 6,4; **2** de 2,5 a 3,9; **1** por debajo de 2,5. Escribe la nota entre paréntesis detrás. Si cantó dos temas, una por tema y la general.
 - **Comentarios**: hasta 300 caracteres, los que el opositor pegará en la app. Lo más importante primero.
 - **Tres tareas** concretas para antes del próximo cante.
 - **Simulacro** (`agentes/simulacro.md`): además, la primera línea del bloque es la del cante del diario: `Sorteados: 3.A.8, 3.A.11 · 3.B.4, 3.B.9 · Cantado: 3.A.8, 3.B.4 · Descartados: 3.A.11, 3.B.9` (en el JSON son `temas`, `temaCantado` y `descartados`), y, si hizo el esquema a ciegas, `Esquema a ciegas: 4/5` en una línea aparte.

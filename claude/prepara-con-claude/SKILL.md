@@ -18,8 +18,8 @@ Antes de nada, lee `LICENCIA.md`: el material de `references/temas`, `references
 
 | Si el opositor… | Abre | Y haz |
 |---|---|---|
-| Manda un cante transcrito (texto con marcas `[mm:ss]`, un `cante_*.txt` o «corrige este cante») | `references/agentes/corrector-cante.md` | El informe del cante, con sus ocho secciones |
-| Manda un dictamen de coyuntura (foto, PDF o texto, aunque esté a mano) | `references/agentes/corrector-dictamen.md` | El informe del dictamen frente a la guía |
+| Manda un cante transcrito (texto con marcas `[mm:ss]`, un `cante_*.txt` o «corrige este cante») | `references/agentes/corrector-cante.md` | El informe del cante: nota sobre 10 desglosada por apartados, corrección de cada apartado y preguntas del tribunal |
+| Manda un dictamen de coyuntura (foto, PDF o texto, aunque esté a mano) | `references/agentes/corrector-dictamen.md` | El informe del dictamen: nota sobre 10 por preguntas, coherencia del diagnóstico, cálculos y gráficos con los datos del cuadernillo y respuesta modelo con la extensión del examen |
 | Manda un tema escrito (TCEE 4.º o 5.º; DCE 1.º o 4.º) en foto o texto | `references/agentes/corrector-escrito.md` | El informe del escrito |
 | Pregunta qué significa algo, dónde se estudia, cómo se relaciona con otros temas o cómo organizar el temario | `references/agentes/dudas.md` | La respuesta con sus fuentes, viendo el temario en conjunto |
 | Pide un cronograma, saber cuánto queda, replanificar o repartir los temas | `references/agentes/organizador.md` | El plan por semanas y el bloque listo para la app |
@@ -49,7 +49,7 @@ Si en la conversación está activo el conector «Prepara con Claude» (herramie
 - `references/examen-dia.md`: la lista de comprobación del día del examen por ejercicio (qué llevar, tiempos, los 45 minutos de esquema, qué no decir, cómo cerrar) y `references/pizarra.md`: qué se dibuja en un cante, cuándo y cómo, y dónde está el plan de pizarra de cada tema revisado.
 - `references/dictamen/`: la guía del dictamen de coyuntura (1D01), su resumen, un examen de ejemplo de España y su solución.
 - `references/canon/`: la notación común del temario y qué modelo se estudia en qué tema (`modelos-indice.md`).
-- `assets/`: las plantillas del informe del cante y del informe semanal, un cronograma de ejemplo en el formato que lee la app y las fuentes de los PDF. `scripts/informe-pdf.py` convierte un informe en PDF con la estética de la oposición. `references/carpeta-oposicion.md` explica cómo ordenar los ficheros de la oposición en el ordenador y trabajar con Claude desde ahí.
+- `assets/`: las plantillas del informe del cante, del dictamen y del informe semanal, un cronograma de ejemplo en el formato que lee la app y las fuentes de los PDF. `scripts/informe-pdf.py` convierte un informe en PDF con la plantilla de los temas de su oposición; `scripts/transcripcion-cante.py` mide los tiempos y el ritmo de un cante y escribe el anexo con la transcripción. `references/carpeta-oposicion.md` explica cómo ordenar los ficheros de la oposición en el ordenador y trabajar con Claude desde ahí.
 
 Si el tema no está en `temas/INDICE.md`, dilo en una línea («este tema aún no está revisado; corrijo con el índice del temario y conocimiento general») y sigue: el índice de `indices-temas.md`, las conexiones y tu propio conocimiento bastan para un informe útil. Nunca te niegues a corregir por falta de material.
 
