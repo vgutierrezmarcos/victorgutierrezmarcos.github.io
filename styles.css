@@ -1858,6 +1858,11 @@ p + .exclusivo-cta { margin: 0.4rem 0 1rem; }
 .video-yt[data-estado="inicio"] .vgm-captura, .video-yt[data-estado="inicio"] .vgm-controles { display: none; }
 .vgm-controles { position: absolute; left: 0; right: 0; bottom: 0; height: 2.6rem; display: flex; align-items: center; gap: 0.5rem; padding: 0 0.6rem; background: linear-gradient(transparent, rgba(28, 22, 34, 0.85)); color: #fff; font-family: var(--font-ui); font-size: 0.8rem; opacity: 0; transition: opacity 0.2s; }
 .video-yt:hover .vgm-controles, .video-yt:focus-within .vgm-controles, .video-yt:not([data-estado="reproduciendo"]) .vgm-controles { opacity: 1; }
+/* En el móvil no hay «hover»: la barra se queda a la vista, para que siempre se vea cómo poner la pantalla completa */
+@media (hover: none) { .video-yt .vgm-controles { opacity: 1; } }
+/* El botón de pantalla completa con su nombre, si cabe */
+.vgm-pantalla-texto { display: none; font-size: 0.82rem; white-space: nowrap; color: #fff; cursor: pointer; padding-right: 0.2rem; }
+@container (min-width: 520px) { .vgm-pantalla-texto { display: inline; } }
 .vgm-controles button { width: 2rem; height: 2rem; padding: 0; border: 0; border-radius: 50%; background: transparent center / 55% no-repeat; cursor: pointer; flex: none; }
 .vgm-controles button:hover { background-color: rgba(255,255,255,0.15); }
 .vgm-controles button:focus-visible { outline: 2px solid var(--color-accent-gold); }

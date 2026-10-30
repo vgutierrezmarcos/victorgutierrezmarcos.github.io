@@ -106,7 +106,8 @@
             '<span class="vgm-tiempo">0:00 / 0:00</span>' +
             '<input type="range" class="vgm-barra" min="0" max="1000" value="0" step="1" aria-label="Posición del vídeo">' +
             '<button type="button" class="vgm-silencio" aria-label="Silenciar"></button>' +
-            '<button type="button" class="vgm-pantalla" aria-label="Pantalla completa"></button>';
+            '<button type="button" class="vgm-pantalla" aria-label="Pantalla completa" title="Pantalla completa (tecla F o doble clic)"></button>' +
+            '<span class="vgm-pantalla-texto" aria-hidden="true">Pantalla completa</span>';
 
         caja.replaceChild(escenario, boton);
         caja.appendChild(velo);
@@ -155,6 +156,9 @@
             caja.classList.toggle('vgm-silenciado', silencio);
         });
         bPant.addEventListener('click', pantallaCompleta);
+        controles.querySelector('.vgm-pantalla-texto').addEventListener('click', pantallaCompleta);
+        // Doble clic (o doble toque) sobre el vídeo: pantalla completa, como en los reproductores habituales
+        captura.addEventListener('dblclick', function (ev) { ev.preventDefault(); pantallaCompleta(); });
         barra.addEventListener('input', function () {
             arrastrando = true;
             if (player && player.getDuration) texto.textContent = tiempo(barra.value / 1000 * player.getDuration()) + ' / ' + tiempo(player.getDuration());
