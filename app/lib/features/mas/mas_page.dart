@@ -94,6 +94,10 @@ class MasPage extends ConsumerWidget {
           if (!ref.read(oposicionProvider).esPrincipal) _fila(context, Icons.public, 'Apuntes en la web', ref.read(oposicionProvider).dominio, () => abrirUrl(context, ref.read(oposicionProvider).web)),
           if (config.listaX != null) _fila(context, Icons.tag, 'Lista de X', 'Cuentas de referencia', () => abrirUrl(context, config.listaX)),
           ]),
+          const TituloSeccion('Con IA'),
+          GrupoFilas(children: [
+            _fila(context, Icons.auto_awesome_outlined, 'EconomIA', 'Tu IA corrige tus cantes, te organiza el cronograma y te pregunta como el tribunal. En Claude, Le Chat, ChatGPT y Gemini', () => context.go('/mas/economia')),
+          ]),
           if (enlaces.isNotEmpty) ...[
             const TituloSeccion('Enlaces útiles'),
             for (final c in enlaces)

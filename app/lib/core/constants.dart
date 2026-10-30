@@ -21,6 +21,11 @@ class Urls {
   /// La misma app, compilada para el navegador.
   static final String appWeb = '$base/app/abrir/';
 
+  /// EconomIA: la página del equipo de preparación con IA y la dirección del
+  /// conector «Oposición TCEE · DCE» (Claude, Le Chat, ChatGPT y Gemini).
+  static final String economia = '$base/oposicion/economia.html';
+  static const String conectorIa = 'https://mcp.victorgutierrezmarcos.es/mcp';
+
   /// Enlace de invitación de un preparador: en Android abre la app si está
   /// instalada (App Links) y, si no, la página de la app lleva a Google Play
   /// con el código como `referrer`; en iPhone y ordenador, a la app web. La
