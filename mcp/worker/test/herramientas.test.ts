@@ -10,7 +10,7 @@ import { type Contexto, crearServidor, ErrorSesion } from '../src/herramientas';
 type Obj = { [k: string]: Json };
 
 /** Firestore en memoria: documentos por ruta relativa a la raíz del opositor. */
-class FirestoreSimulado implements AlmacenDatos {
+export class FirestoreSimulado implements AlmacenDatos {
   docs = new Map<string, Obj>();
   escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[] }> = [];
 
@@ -25,7 +25,7 @@ class FirestoreSimulado implements AlmacenDatos {
   }
   async consultar(coleccion: string, c: Consulta) {
     let out = await this.listar(coleccion);
-    if (c.where) out = out.filter((d) => String(d.datos[c.where!.campo]) >= String(c.where!.valor));
+    if (c.where) out = out.filter((d) => (c.where!.op === 'EQUAL' ? d.datos[c.where!.campo] === c.where!.valor : String(d.datos[c.where!.campo]) >= String(c.where!.valor)));
     if (c.orderBy) out.sort((a, b) => String(a.datos[c.orderBy!]).localeCompare(String(b.datos[c.orderBy!])) * (c.descendente ? -1 : 1));
     return out.slice(0, c.limite);
   }
@@ -54,7 +54,7 @@ const kv = new Map<string, string>([
 
 const banco = temasDePreguntas({ preguntas: [{ id: 1, temas: ['3.A.8'], respuesta: ['a'] }] });
 
-async function cliente(ctx: Contexto) {
+export async function cliente(ctx: Contexto) {
   const servidor = crearServidor(ctx);
   const [a, b] = InMemoryTransport.createLinkedPair();
   await servidor.connect(a);
@@ -89,6 +89,7 @@ describe('herramientas', () => {
       uid: 'u1',
       email: 'u1@example.org',
       almacen: async (op) => (op === 'dce' ? dbDce : db),
+      almacenEn: async () => new FirestoreSimulado(),
       banco: async () => banco,
       contenido: new Contenido({ get: async (k) => kv.get(k) ?? null }),
       fuentes: async () => ({
@@ -122,7 +123,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
+    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {

@@ -38,6 +38,8 @@ Claude ──POST /mcp (Bearer)──► herramientas: Firestore REST con el ID 
 |---|---|
 | `leer_skill(ruta)` | La skill publicada en la web: `SKILL.md` sin ruta, o el fichero que cite |
 | `leer_metodo(tarea)` | El método de una tarea (`corregir_cante`, `simulacro`, `tribunal`, `cronograma`…): cabecera y reglas comunes de `SKILL.md` más el agente y lo que haga falta leer; sin tarea, la lista. Lo usan las IA sin skills (ChatGPT, Le Chat, Gemini). Cada tarea es también un *prompt* MCP (`TAREAS` en `herramientas.ts`) |
+| `preparar_clase(oposicion, con, dia)` | Para agendar una clase: como opositor, sus preparadores aceptados (`users/{uid}/preparadores` + `preparadores/{p}/alumnos/{uid}`), sus huecos libres (`huecos/{p}`), sus reservas y sus próximas clases; como preparador, sus alumnos, sus sesiones y el cronograma compartido y la agenda del alumno; y los temas del cronograma para ese día |
+| `agendar_clase(oposicion, como, con, dia, hora, modalidad, temas, …)` | Escribe con confirmación. Opositor: `reservas/{id}` (`pedida`, con `modalidad` y `temas`) y los temas en `progress/settings.temasClases` (`res_{id}`). Preparador: `sesiones/{id}` y su copia en `cantes/{id}` del alumno (si las reglas lo dejan: preparador verificado y alumno enlazado). Horas de Madrid sin zona, como la app (`src/clases.ts`) |
 | `leer_progreso(oposicion)` | `progress/settings`, `progress/plan`, `progress/spaced_repetition`, `notes/*` → el JSON de `datos-app.md` (sin cantes, cronograma ni tests) |
 | `leer_resultados_test(desde, limite)` | `exam_results` con acierto por tema (a partir de `respuestas` y `preguntas.json`) |
 | `leer_cantes(n)` | Los últimos `n` hechos (con `resultado`) y los próximos pendientes |

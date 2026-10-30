@@ -1345,7 +1345,8 @@ class PreparadorRepo {
       a = Alumno(id: r.alumno, uid: r.alumno, nombre: r.alumnoNombre.isEmpty ? 'Alumno' : r.alumnoNombre, creado: DateTime.now(), updatedAt: DateTime.now());
       await guardarAlumno(a);
     }
-    final s = Cante(id: 'res_${r.id}', fecha: r.fecha, minutos: r.minutos, exposicion: Oposiciones.actual.minutosExposicion(a.ejercicio), ejercicio: a.ejercicio, bolsa: TipoBolsa.estudiados, alumno: a.id, notas: r.nota, updatedAt: DateTime.now());
+    // La modalidad y los temas que pidió el alumno pasan a la clase (los temas, como propuesta: él ya los tiene fijados)
+    final s = Cante(id: 'res_${r.id}', fecha: r.fecha, minutos: r.minutos, exposicion: Oposiciones.actual.minutosExposicion(a.ejercicio), ejercicio: a.ejercicio, bolsa: TipoBolsa.estudiados, alumno: a.id, notas: r.nota, modalidad: r.modalidad, plataforma: r.modalidad == Modalidad.online ? perfil().plataforma : '', temasPropuestos: r.temas, updatedAt: DateTime.now());
     await guardarSesion(s);
     return s;
   }

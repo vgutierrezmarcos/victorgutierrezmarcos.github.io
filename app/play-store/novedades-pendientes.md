@@ -7,6 +7,8 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 
 ## Para la siguiente versión en Google Play (1.22.0 publicada el 29 oct.)
 
+- (30 oct., siguiente versión) Las clases pedidas al preparador llevan presencial u online y los temas que quieres cantar (desde el conector de IA, EconomIA); al aceptarlas, la clase sale ya con ellos y el preparador los ve en la reserva
+
 ## Publicado el 29 oct. 2026 (1.22.0 en producción)
 
 Novedad en `novedades.json`: «Versión 1.22.0 de la app en Google Play: autoevaluación de los 15 temas revisados, cuadro de coyuntura que se actualiza solo, cuántos fallan cada pregunta del test, buscador por epígrafes dentro de los temas, grabaciones unidas al diario, esquema con huecos, reto diario anónimo y, en DCE, el cronograma por fases del primer ejercicio». Resumía:

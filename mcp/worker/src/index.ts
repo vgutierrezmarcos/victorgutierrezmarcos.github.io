@@ -103,6 +103,9 @@ function contextoDe(env: Env, props: Props, clientId = ''): Contexto {
       const nombre = (info?.clientName ?? '').replace(/[^\p{L}\p{N} .·()-]/gu, '').trim().slice(0, 40);
       return nombre || 'IA';
     },
+    async almacenEn(raiz: string) {
+      return new Firestore(env.FIREBASE_PROJECT, await idTokenDe(env, props), raiz);
+    },
     async almacen(oposicion: Oposicion) {
       return new Firestore(env.FIREBASE_PROJECT, await idTokenDe(env, props), Firestore.raizDe(props.uid, oposicion));
     },
