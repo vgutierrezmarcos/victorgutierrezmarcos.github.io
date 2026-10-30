@@ -173,7 +173,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Oposición TCEE · DCE',
       version: '0.1.0',
       // Icono y web del servidor (MCP 2025-11-25): los clientes que los admiten enseñan el icono de la app junto al conector.
-      websiteUrl: 'https://www.victorgutierrezmarcos.es/oposicion/prepara-con-ia.html',
+      websiteUrl: 'https://www.victorgutierrezmarcos.es/oposicion/economia.html',
       icons: [
         { src: 'https://www.victorgutierrezmarcos.es/app/assets/icon/icon.svg', mimeType: 'image/svg+xml', sizes: ['any'] },
         { src: 'https://www.victorgutierrezmarcos.es/app/abrir/icons/Icon-512.png', mimeType: 'image/png', sizes: ['512x512'] },

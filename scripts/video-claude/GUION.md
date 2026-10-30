@@ -1,6 +1,6 @@
 # Vídeo «EconomIA» (clave `claude-prepara`)
 
-Apaisado 1920×1080, 3-4 minutos, sin voz (rótulos y pantallas grabadas), con la música y la estética del promocional de la app (`scripts/video-app/`). Se publica con `/videos` (clave `claude-prepara`) y lo enlazan `oposicion/prepara-con-ia.html`, `app/index.html#claude` y la app (Más → EconomIA).
+Apaisado 1920×1080, 3-4 minutos, sin voz (rótulos y pantallas grabadas), con la música y la estética del promocional de la app (`scripts/video-app/`). Se publica con `/videos` (clave `claude-prepara`) y lo enlazan `oposicion/economia.html`, `app/index.html#claude` y la app (Más → EconomIA).
 
 Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de pantalla a 1920×1080, sin voz, despacio, con el ratón visible):
 
@@ -17,7 +17,7 @@ Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de panta
 
 ## Cambio a «EconomIA» (30 oct., sin renderizar)
 
-El conector se llama «Oposición TCEE · DCE» y funciona en Claude, ChatGPT, Le Chat y Gemini (con Claude, completo). En `index.html`: marca y portada con el icono de la app y «EconomIA» (sin el asterisco de Claude), escena nueva **plataformas** tras «porque» (4 compases: «En tu IA. Con Claude, completo.» y una tarjeta por IA), las tomas corridas 4 compases y el cierre con las cuatro IA y `prepara-con-ia.html`; el resto de escenas sigue enseñándolo en Claude. Antes de renderizar hay que **volver a grabar G2c** (la página de autorización y la de entrar con Google ya no llevan el asterisco ni el nombre antiguo) y revisar las capturas de `claude-movil-*` (el conector puede salir con el nombre antiguo).
+El conector se llama «Oposición TCEE · DCE» y funciona en Claude, ChatGPT, Le Chat y Gemini (con Claude, completo). En `index.html`: marca y portada con el icono de la app y «EconomIA» (sin el asterisco de Claude), escena nueva **plataformas** tras «porque» (4 compases: «En tu IA. Con Claude, completo.» y una tarjeta por IA), las tomas corridas 4 compases y el cierre con las cuatro IA y `economia.html`; el resto de escenas sigue enseñándolo en Claude. Antes de renderizar hay que **volver a grabar G2c** (la página de autorización y la de entrar con Google ya no llevan el asterisco ni el nombre antiguo) y revisar las capturas de `claude-movil-*` (el conector puede salir con el nombre antiguo).
 
 ## Escenas (versión del 28 oct., unos 3:36; con la escena de plataformas, 3:53)
 
@@ -46,4 +46,4 @@ cd scripts/video-claude && npx hyperframes lint && npx hyperframes render
 python3 scripts/video-claude/publicar.py --subir  # MP4 para la web, pósteres y YouTube (clave claude-prepara)
 ```
 
-Después, quitar `hidden` a los reproductores de `oposicion/prepara-con-ia.html` y `app/index.html#claude` y hacer commit de `videos.json`. Nunca usar `scripts/montar-video-app.py`.
+Después, quitar `hidden` a los reproductores de `oposicion/economia.html` y `app/index.html#claude` y hacer commit de `videos.json`. Nunca usar `scripts/montar-video-app.py`.

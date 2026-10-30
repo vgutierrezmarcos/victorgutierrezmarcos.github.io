@@ -1189,7 +1189,7 @@ def empaquetar(destino, manifiesto, temas, sin_temas):
         'instrucciones': sha_instrucciones(destino),
         'temas': temas,
         'sinTemas': bool(sin_temas),
-        'zip': 'https://www.victorgutierrezmarcos.es/oposicion/prepara-con-ia.html',
+        'zip': 'https://www.victorgutierrezmarcos.es/oposicion/economia.html',
         'base': f'{SITIO}{SKILL_RUTA}/{NOMBRE}/',
         'versionUrl': f'{SITIO}{SKILL_RUTA}/version.json',
     }

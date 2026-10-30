@@ -72,7 +72,7 @@ npx wrangler deploy
 
 Después del primer despliegue:
 
-1. Apuntar la URL real del Worker (la que imprime `wrangler deploy`, `https://prepara-con-claude.<subdominio>.workers.dev`) en **tres sitios**: `URL_WORKER` en `wrangler.toml`, la constante `WORKER` de `mcp/login.html` y la URL que se publica en `oposicion/prepara-con-ia.html`; volver a desplegar y publicar la web. Con dominio propio (`mcp.victorgutierrezmarcos.es`: Workers → Settings → Domains & Routes → Custom domain; el DNS tiene que estar en Cloudflare) es lo mismo con esa URL.
+1. Apuntar la URL real del Worker (la que imprime `wrangler deploy`, `https://prepara-con-claude.<subdominio>.workers.dev`) en **tres sitios**: `URL_WORKER` en `wrangler.toml`, la constante `WORKER` de `mcp/login.html` y la URL que se publica en `oposicion/economia.html`; volver a desplegar y publicar la web. Con dominio propio (`mcp.victorgutierrezmarcos.es`: Workers → Settings → Domains & Routes → Custom domain; el DNS tiene que estar en Cloudflare) es lo mismo con esa URL.
 2. En la consola de Firebase, Authentication → Settings → **Dominios autorizados**: `www.victorgutierrezmarcos.es` ya está (el login se hace ahí, no en el Worker), así que no hay que añadir nada.
 3. Publicar las reglas de Firestore nuevas (`firestore.rules`, bloque `cantes/{id}/informes/{informe}`) en la consola.
 4. Subir el contenido exclusivo: `python3 scripts/skill-opositor.py && python3 mcp/publicar-contenido.py` (usa `wrangler kv bulk put --remote`). Repetirlo cada vez que se apruebe un tema o una ficha.

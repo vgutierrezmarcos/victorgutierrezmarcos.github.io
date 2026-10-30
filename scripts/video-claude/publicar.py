@@ -35,7 +35,7 @@ TITULO = 'Prepara la oposición a TCEE y DCE con Claude'
 DESCRIPCION = ('Cómo usar el conector «EconomIA» (Claude, ChatGPT, Le Chat y Gemini; con Claude, completo) de victorgutierrezmarcos.es: Claude conoce tu temario y tus datos de la app, corrige cantes y dictámenes, '
                'resuelve dudas viendo el temario entero, organiza el cronograma y lo lleva a la app; también para DCE. '
                'No sustituye a un preparador para la oposición: lo complementa.\n\n'
-               'https://victorgutierrezmarcos.es/oposicion/prepara-con-ia.html')
+               'https://victorgutierrezmarcos.es/oposicion/economia.html')
 
 
 def main():
@@ -75,7 +75,7 @@ def main():
     if args.subir:
         subprocess.run([sys.executable, os.path.join(RAIZ, 'scripts', 'youtube.py'), 'subir', CLAVE, salida,
                         '--titulo', TITULO, '--descripcion', DESCRIPCION], check=True)
-        print('Haz commit de videos.json y quita «hidden» a los reproductores de oposicion/prepara-con-ia.html y app/index.html.')
+        print('Haz commit de videos.json y quita «hidden» a los reproductores de oposicion/economia.html y app/index.html.')
 
 
 if __name__ == '__main__':
