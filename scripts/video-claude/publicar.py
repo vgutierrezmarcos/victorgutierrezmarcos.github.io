@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Publica el último render del vídeo «Prepara con Claude» (renders/): lo recodifica
+Publica el último render del vídeo de EconomIA (renders/): lo recodifica
 para la web (H.264 + AAC) en ~/.local/share/oposicion-web/videos/claude-prepara.mp4
 (no se guarda en el repositorio: se sube a YouTube con la clave `claude-prepara`,
 skill /videos), y saca los pósteres que enlazan la página y la app:
@@ -31,10 +31,10 @@ RAIZ = os.path.dirname(os.path.dirname(AQUI))
 SALIDA = os.path.expanduser('~/.local/share/oposicion-web/videos')
 POSTER = 3.2  # segundo del póster: la portada ya entera
 CLAVE = 'claude-prepara'
-TITULO = 'Prepara la oposición a TCEE y DCE con Claude'
-DESCRIPCION = ('Cómo usar el conector «EconomIA» (Claude, ChatGPT, Le Chat y Gemini; con Claude, completo) de victorgutierrezmarcos.es: Claude conoce tu temario y tus datos de la app, corrige cantes y dictámenes, '
-               'resuelve dudas viendo el temario entero, organiza el cronograma y lo lleva a la app; también para DCE. '
-               'No sustituye a un preparador para la oposición: lo complementa.\n\n'
+TITULO = 'EconomIA: prepara la oposición a TCEE y DCE con tu IA'
+DESCRIPCION = ('Cómo usar EconomIA, el conector de victorgutierrezmarcos.es para Claude, Le Chat, ChatGPT y Gemini (con Claude, completo): '
+               'tu IA conoce el temario y tus datos de la app, corrige cantes y dictámenes, resuelve dudas con gráficos como los del temario, '
+               'organiza el cronograma y te pide clase con tu preparador; también para DCE. No sustituye a un preparador para la oposición: lo complementa.\n\n'
                'https://victorgutierrezmarcos.es/oposicion/economia.html')
 
 
