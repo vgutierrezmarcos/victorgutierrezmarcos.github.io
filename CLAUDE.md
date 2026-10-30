@@ -95,9 +95,9 @@ python3 scripts/esquemas-temario.py
 # (leer-proceso.yml runs it automatically; when a new convocatoria appears, add its plazas/tasas to CONVOCATORIAS in the script)
 python3 scripts/guia-convocatoria.py
 
-# Hide or show everything that leads to «Prepara con Claude» (links, novedad, sitemap, llms.txt, search index, exclusivos list, noindex),
+# Hide or show everything that leads to «Prepara con IA» (oposicion/prepara-con-ia.html; the connector «Oposición TCEE · DCE» for Claude, ChatGPT, Le Chat and Gemini) (links, novedad, sitemap, llms.txt, search index, exclusivos list, noindex),
 # reversibly: --ocultar while Víctor tests it, --mostrar the day it is launched (then push)
-python3 scripts/prepara-con-claude-visible.py --ocultar
+python3 scripts/prepara-con-ia-visible.py --ocultar
 
 # Rebuild the index of other TCEE's notes from the ATCEE repository (apuntes-otros.json for oposicion/enlaces.html and references/apuntes-otros.md
 # of the skill, source and deployed copy); apuntes-otros.yml runs it every Monday. Needs gdown; --sin-drive skips listing the Drive folders

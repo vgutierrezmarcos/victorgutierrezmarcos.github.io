@@ -1,5 +1,5 @@
-// Las herramientas del conector: lo que Claude puede leer y escribir de la app en
-// nombre del opositor. Cada petición MCP crea un servidor nuevo (sin estado) con un
+// Las herramientas del conector: lo que el asistente de IA del opositor (Claude, ChatGPT,
+// Le Chat, Gemini…) puede leer y escribir de la app en su nombre. Cada petición MCP crea un servidor nuevo (sin estado) con un
 // Contexto que sabe abrir Firestore con el ID token del opositor y leer el contenido.
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
@@ -46,6 +46,8 @@ export interface Contexto {
   textos(tema: string): Promise<PaqueteTextos | null>;
   /** Una página de manuelcabadogarcia.es convertida a texto. */
   pagina(url: string): Promise<{ esquema: string[]; texto: string } | null>;
+  /** Nombre del asistente de IA conectado (el que dio al registrarse: «Claude», «ChatGPT»…), para firmar lo que guarda. */
+  cliente(): Promise<string>;
   /** Revoca las concesiones OAuth del opositor y borra su token de Firebase guardado. */
   desconectar(): Promise<void>;
 }
@@ -98,13 +100,43 @@ function manualesPara(indice: IndiceFuentes, tema: TemaFuentes) {
 }
 
 const AVISO_EXCLUSIVO =
-  'Material exclusivo de victorgutierrezmarcos.es: solo para la preparación personal de este opositor en su cuenta de Claude (condiciones-materiales.html, apartado 1 bis). No lo copies fuera de esta conversación.';
+  'Material exclusivo de victorgutierrezmarcos.es: solo para la preparación personal de este opositor en su propia cuenta de su asistente de IA (condiciones-materiales.html, apartado 1 bis). No lo copies fuera de esta conversación.';
 
 /** Ficheros de texto de la skill que se pueden pedir con leer_skill. */
 const RUTA_SKILL = /^(SKILL\.md|LICENCIA\.md|VERSION\.txt|(references|assets|scripts)\/[A-Za-z0-9_\-./]+\.(md|txt|json|tex|sty|lua|py|csv))$/;
 
 const NOTA_CONECTOR =
-  '[Cargada desde el conector «Prepara con Claude». Cada ruta relativa que cite este fichero (references/…, assets/…, scripts/…) se lee con leer_skill(ruta). Para los temas revisados, las fichas, el dictamen y el canon usa mejor leer_tema, leer_ficha, leer_guia_dictamen y leer_canon (permiten pedir un apartado), y para los datos del opositor, las herramientas leer_* en vez de pedirle el JSON o los ficheros (references/conector.md). El paso 0 «Versión al día» no hace falta: esto ya es la última versión.]';
+  '[Cargada desde el conector «Oposición TCEE · DCE». Cada ruta relativa que cite este fichero (references/…, assets/…, scripts/…) se lee con leer_skill(ruta). Para los temas revisados, las fichas, el dictamen y el canon usa mejor leer_tema, leer_ficha, leer_guia_dictamen y leer_canon (permiten pedir un apartado), y para los datos del opositor, las herramientas leer_* en vez de pedirle el JSON o los ficheros (references/conector.md). El paso 0 «Versión al día» no hace falta: esto ya es la última versión.]';
+
+/**
+ * Las tareas del equipo de preparación, con el agente de la skill que las hace y lo que
+ * hay que leer además. Es la tabla de SKILL.md en forma de datos, para leer_metodo y los prompts.
+ */
+export const TAREAS = {
+  corregir_cante: { titulo: 'Corregir un cante', cuando: 'manda un cante transcrito (texto con marcas [mm:ss]) o pide corregirlo', ficheros: ['references/agentes/corrector-cante.md', 'references/como-se-canta.md'] },
+  corregir_dictamen: { titulo: 'Corregir un dictamen', cuando: 'manda un dictamen de coyuntura (foto, PDF o texto)', ficheros: ['references/agentes/corrector-dictamen.md'] },
+  corregir_escrito: { titulo: 'Corregir un tema escrito', cuando: 'manda un tema escrito (TCEE 4.º o 5.º; DCE 1.º o 4.º)', ficheros: ['references/agentes/corrector-escrito.md'] },
+  dudas: { titulo: 'Resolver una duda del temario', cuando: 'pregunta qué significa algo, dónde se estudia o cómo se relaciona con otros temas', ficheros: ['references/agentes/dudas.md'] },
+  cronograma: { titulo: 'Hacer o rehacer el cronograma', cuando: 'pide un cronograma, saber cuánto queda o replanificar', ficheros: ['references/agentes/organizador.md'] },
+  simulacro: { titulo: 'Simulacro completo', cuando: 'pide un simulacro o el examen entero', ficheros: ['references/agentes/simulacro.md', 'references/como-se-canta.md'] },
+  tribunal: { titulo: 'Preguntas del tribunal', cuando: 'pide que le preguntes como el tribunal o «ponme a prueba»', ficheros: ['references/agentes/tribunal.md'] },
+  test: { titulo: 'Test a medida', cuando: 'pide un test o preguntas sobre lo que falla', ficheros: ['references/agentes/test-personal.md'] },
+  tarjetas: { titulo: 'Tarjetas de repaso', cuando: 'pide tarjetas, flashcards o repaso espaciado de un tema', ficheros: ['references/agentes/tarjetas.md'] },
+  hoy: { titulo: 'Qué toca hoy', cuando: 'pregunta qué le toca hoy o esta semana', ficheros: ['references/agentes/hoy.md'] },
+  ficha_propia: { titulo: 'Ficha de sus apuntes', cuando: 'manda sus apuntes para resumirlos o hacer una ficha', ficheros: ['references/agentes/ficha-propia.md'] },
+  como_voy: { titulo: 'Cómo voy', cuando: 'pregunta cómo va, qué tal sus tests o sus cantes', ficheros: ['references/agentes/estadisticas.md'] },
+  informe_semanal: { titulo: 'Informe de la semana', cuando: 'pide el informe de la semana', ficheros: ['references/agentes/informe-semanal.md'] },
+  preparador: { titulo: 'Preparar la clase (preparadores)', cuando: 'es preparador y manda cantes o datos de sus alumnos o pide preparar la clase', ficheros: ['references/perfiles.md', 'references/agentes/preparador.md'] },
+  documentos: { titulo: 'Gráficos y documentos', cuando: 'pide un gráfico, preguntas tipo test o cualquier documento (resumen, esquema, comparativa, PDF)', ficheros: ['references/documentos-y-graficos.md'] },
+} as const;
+export type Tarea = keyof typeof TAREAS;
+const NOMBRES_TAREAS = Object.keys(TAREAS) as [Tarea, ...Tarea[]];
+
+/** Apartados de SKILL.md que valen para todas las tareas (se añaden al método de cada una). */
+const APARTADOS_COMUNES = ['Reglas comunes', 'Cómo termina'];
+
+const NOTA_METODO =
+  '[Método cargado desde el conector «Oposición TCEE · DCE». Síguelo durante toda la tarea. Cada ruta relativa que cite (references/…, assets/…, scripts/…) se lee con leer_skill(ruta); para los temas revisados usa leer_tema y leer_ficha, y para los datos del opositor, las herramientas leer_* (no le pidas el JSON). Si tu entorno no puede ejecutar código, entrega en Markdown lo que aquí sale en PDF y dilo en una línea.]';
 
 const oposicionParam = z.enum(OPOSICIONES).default('tcee').describe('Oposición de la que se leen los datos: «tcee» (la de siempre) o «dce».');
 
@@ -120,12 +152,12 @@ function error(mensaje: string): CallToolResult {
   return { content: [{ type: 'text', text: mensaje }], isError: true };
 }
 
-/** Convierte los fallos previsibles en un mensaje útil para Claude y el opositor. */
+/** Convierte los fallos previsibles en un mensaje útil para la IA y el opositor. */
 async function protegido(f: () => Promise<CallToolResult>): Promise<CallToolResult> {
   try {
     return await f();
   } catch (e) {
-    if (e instanceof ErrorSesion) return error(`La sesión con la app ha caducado o se ha revocado: ${e.message}. Pide al opositor que vuelva a conectar el conector «Prepara con Claude» (en Claude, Personalizar → Conectores).`);
+    if (e instanceof ErrorSesion) return error(`La sesión con la app ha caducado o se ha revocado: ${e.message}. Pide al opositor que vuelva a conectar el conector «Oposición TCEE · DCE» (en los conectores de su asistente de IA).`);
     if (e instanceof ErrorFirestore) {
       if (e.estado === 403) return error('Firestore ha denegado el acceso (las reglas solo dejan al dueño leer y escribir sus datos). Si el opositor acaba de cambiar de cuenta, que vuelva a conectar el conector.');
       return error(`Error de Firestore (${e.estado}): ${e.message}`);
@@ -137,25 +169,25 @@ async function protegido(f: () => Promise<CallToolResult>): Promise<CallToolResu
 export function crearServidor(ctx: Contexto): McpServer {
   const server = new McpServer(
     {
-      name: 'Prepara con Claude · Oposición TCEE · DCE',
-      title: 'Prepara con Claude',
+      name: 'Oposición TCEE · DCE',
+      title: 'Oposición TCEE · DCE',
       version: '0.1.0',
       // Icono y web del servidor (MCP 2025-11-25): los clientes que los admiten enseñan el icono de la app junto al conector.
-      websiteUrl: 'https://www.victorgutierrezmarcos.es/oposicion/prepara-con-claude.html',
+      websiteUrl: 'https://www.victorgutierrezmarcos.es/oposicion/prepara-con-ia.html',
       icons: [
         { src: 'https://www.victorgutierrezmarcos.es/app/assets/icon/icon.svg', mimeType: 'image/svg+xml', sizes: ['any'] },
         { src: 'https://www.victorgutierrezmarcos.es/app/abrir/icons/Icon-512.png', mimeType: 'image/png', sizes: ['512x512'] },
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es: el equipo de preparación de las oposiciones a TCEE y DCE (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores), con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de responder a cualquier petición sobre la oposición, llama a leer_skill() sin argumentos: devuelve las instrucciones completas (SKILL.md) y síguelas durante toda la conversación; los ficheros que citen (references/…, assets/…) se leen con leer_skill(ruta). Si la skill «prepara-oposicion» ya está instalada en la cuenta, úsala igual: es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Para gráficos (como los de los temas revisados), preguntas tipo test y cualquier documento (siempre con la plantilla de los temas de su oposición), sigue leer_skill(\'references/documentos-y-graficos.md\'). Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de cualquier tarea sobre la oposición, llama a leer_metodo(tarea) (sin tarea, la lista) y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
     },
   );
 
   server.registerTool(
     'leer_skill',
     {
-      title: 'Cargar la skill «Prepara con Claude»',
+      title: 'Cargar las instrucciones del equipo de preparación',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
         'LLÁMALA PRIMERO, antes de cualquier tarea sobre la oposición. Sin ruta devuelve SKILL.md: las instrucciones de todo el equipo de preparación (qué agente usar para cada petición, reglas, formatos de la app, aviso final). Con ruta devuelve el fichero que SKILL.md cite: «references/agentes/corrector-cante.md», «references/datos-app.md», «references/perfiles.md», «assets/plantilla-informe-cante.md»… Siempre la última versión publicada.',
@@ -173,6 +205,33 @@ export function crearServidor(ctx: Contexto): McpServer {
         if (texto === null) return error(`No existe «${limpia}» en la skill publicada. Comprueba la ruta en SKILL.md.`);
         if (limpia === 'SKILL.md') return textoMd(`${NOTA_CONECTOR}\n\n${texto}`);
         return textoMd(/^references\/(temas|dictamen|canon)\//.test(limpia) ? `${AVISO_EXCLUSIVO}\n\n${texto}` : texto);
+      }),
+  );
+
+  server.registerTool(
+    'leer_metodo',
+    {
+      title: 'Cargar el método de una tarea',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Las instrucciones del equipo de preparación para una tarea concreta (corregir un cante, simular al tribunal, hacer el cronograma…) con las reglas comunes y cómo se entrega. LLÁMALA ANTES de hacer cualquiera de estas tareas y síguela. Sin «tarea» devuelve la lista de tareas y cuándo usar cada una.',
+      inputSchema: { tarea: z.enum(NOMBRES_TAREAS).optional().describe('La tarea; si falta, la lista de tareas.') },
+    },
+    async ({ tarea }) =>
+      protegido(async () => {
+        if (!tarea) {
+          const filas = NOMBRES_TAREAS.map((t) => `- \`${t}\` (${TAREAS[t].titulo}): cuando el opositor ${TAREAS[t].cuando}.`);
+          return textoMd(`Tareas del equipo de preparación. Elige la que encaje con lo que pide el opositor y llama a leer_metodo(tarea). Si encaja en varias, haz primero lo que ha pedido y ofrece el resto en una línea al final.\n\n${filas.join('\n')}`);
+        }
+        const skill = await ctx.skill('SKILL.md');
+        const textos = await Promise.all(TAREAS[tarea].ficheros.map(async (ruta) => [ruta, await ctx.skill(ruta)] as const));
+        const faltan = textos.filter(([, t]) => t === null).map(([r]) => r);
+        if (faltan.length === textos.length) return error(`El método de «${tarea}» no está publicado (${faltan.join(', ')}).`);
+        // La cabecera de SKILL.md (quién eres y para quién trabajas) y las reglas comunes a todas las tareas.
+        const cabecera = skill ? skill.replace(/^---[\s\S]*?---\s*/, '').split(/\n## /)[0].trim() : '';
+        const comunes = skill ? APARTADOS_COMUNES.map((a) => extraerApartado(skill, a)).filter(Boolean) : [];
+        const partes = [NOTA_METODO, cabecera, ...comunes, ...textos.filter(([, t]) => t !== null).map(([ruta, t]) => `<!-- ${ruta} -->\n${t}`)];
+        return textoMd(partes.filter(Boolean).join('\n\n---\n\n'));
       }),
   );
 
@@ -325,7 +384,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Leer el progreso del opositor',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'Resumen de la preparación tal como lo exporta la app en «Prepara con Claude»: fechas de los ejercicios e hitos, temas estudiados y en repaso, agenda por tema (vueltas y pendientes), notas propias, horario semanal, repaso Leitner por caja (vencidas y temas con más fallos) y ajustes (rúbrica, temas que no quiere cantar). Mismo formato que oposicion_<id>_para_claude.json sin «cantes», «cronograma» ni «tests»: para eso están las otras herramientas.',
+        'Resumen de la preparación tal como lo exporta la app para la IA: fechas de los ejercicios e hitos, temas estudiados y en repaso, agenda por tema (vueltas y pendientes), notas propias, horario semanal, repaso Leitner por caja (vencidas y temas con más fallos) y ajustes (rúbrica, temas que no quiere cantar). Mismo formato que oposicion_<id>_para_claude.json sin «cantes», «cronograma» ni «tests»: para eso están las otras herramientas.',
       inputSchema: { oposicion: oposicionParam },
     },
     async ({ oposicion }) =>
@@ -425,7 +484,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     },
     async ({ oposicion, ejercicio, diaCante, semanas, temasPorSemana, examen }) =>
       protegido(async () => {
-        const { documento, errores } = construirCronograma({ semanas, diaCante, ejercicio, temasPorSemana, examen });
+        const { documento, errores } = construirCronograma({ semanas, diaCante, ejercicio, temasPorSemana, examen }, new Date(), await ctx.cliente());
         if (errores.length) return error(`No se ha guardado el cronograma:\n- ${errores.join('\n- ')}`);
         const db = await ctx.almacen(oposicion);
         const anteriores = await db.listar('cronogramas');
@@ -465,7 +524,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     },
     async ({ oposicion, canteId, informe, valoracion, valoraciones, comentarios, criterios, tareas }) =>
       protegido(async () => {
-        const { id, documento, resultado, errores } = construirInforme({ informe, valoracion, valoraciones, comentarios, criterios, tareas });
+        const { id, documento, resultado, errores } = construirInforme({ informe, valoracion, valoraciones, comentarios, criterios, tareas }, new Date(), await ctx.cliente());
         if (errores.length) return error(`No se ha guardado el informe:\n- ${errores.join('\n- ')}`);
         const db = await ctx.almacen(oposicion);
         const cante = await db.leer(`cantes/${canteId}`);
@@ -581,18 +640,42 @@ export function crearServidor(ctx: Contexto): McpServer {
   server.registerTool(
     'desconectar',
     {
-      title: 'Desconectar Claude de la app',
+      title: 'Desconectar la IA de la app',
       annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: true, openWorldHint: false },
       description:
-        'Revoca el acceso de este conector a los datos del opositor: borra del servidor su token de Firebase y las autorizaciones OAuth. Después, ninguna herramienta funciona hasta que vuelva a conectar. Úsalo solo si el opositor lo pide. También puede hacerlo desde la app (Más → Prepara con Claude → Desconectar Claude).',
+        'Revoca el acceso de este conector a los datos del opositor: borra del servidor su token de Firebase y las autorizaciones OAuth. Después, ninguna herramienta funciona hasta que vuelva a conectar. Úsalo solo si el opositor lo pide. También puede hacerlo desde la app (Más → Prepara con IA → Desconectar la IA).',
       inputSchema: { confirmar: z.literal(true).describe('Tiene que ser true: el opositor ha pedido desconectar.') },
     },
     async () =>
       protegido(async () => {
         await ctx.desconectar();
-        return json({ desconectado: true, aviso: 'Acceso revocado. Para volver a usar el conector, el opositor tiene que conectarlo de nuevo en Claude.' });
+        return json({ desconectado: true, aviso: 'Acceso revocado. Para volver a usar el conector, el opositor tiene que conectarlo de nuevo en su asistente de IA.' });
       }),
   );
+
+  // Un prompt por tarea: los clientes que los admiten (Claude los enseña en el menú «+»)
+  // ofrecen «Corregir un cante», «Simulacro completo»… y arrancan con el método cargado.
+  for (const tarea of NOMBRES_TAREAS) {
+    server.registerPrompt(
+      tarea,
+      {
+        title: TAREAS[tarea].titulo,
+        description: `Para cuando el opositor ${TAREAS[tarea].cuando}.`,
+        argsSchema: { detalle: z.string().optional().describe('Lo que quiera añadir: el tema, la transcripción, la fecha del examen…') },
+      },
+      ({ detalle }) => ({
+        messages: [
+          {
+            role: 'user',
+            content: {
+              type: 'text',
+              text: `${TAREAS[tarea].titulo}.${detalle ? `\n\n${detalle}` : ''}\n\nAntes de empezar, llama a leer_metodo con tarea «${tarea}» y sigue ese método; mis datos de la app los lees con las herramientas del conector.`,
+            },
+          },
+        ],
+      }),
+    );
+  }
 
   return server;
 }

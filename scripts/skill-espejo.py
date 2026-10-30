@@ -44,7 +44,7 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DESPLEGADA = os.path.join(RAIZ, 'oposicion', 'temario', 'app', 'skill')
 NOMBRE = 'prepara-oposicion'
 REPO = 'victorgutierrezmarcos/prepara-oposicion'
-PAGINA = 'https://www.victorgutierrezmarcos.es/oposicion/prepara-con-claude.html'
+PAGINA = 'https://www.victorgutierrezmarcos.es/oposicion/prepara-con-ia.html'
 CONDICIONES = 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html'
 
 README = '''# Prepara con Claude · skill «prepara-oposicion»

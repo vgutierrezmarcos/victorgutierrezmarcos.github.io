@@ -105,7 +105,14 @@ describe('herramientas', () => {
       apuntes: async (id) => ({ formato: 'docx', esquema: ['I. Introducción'], texto: id === '1AAAAAAAAAAAAAAAAAAAAAAAA' ? 'uno dos tres cuatro' : '' }),
       textos: async (tema) => (tema === '3.B.26' ? { web: { url: 'w', texto: 'I. Introducción a las crisis\nTexto del tema' }, atcee: { '1BBBBBBBBBBBBBBBBBBBBBBBB': { autor: 'Fuentes', fichero: '26B.pdf', texto: 'apuntes en pdf' } } } : null),
       pagina: async () => ({ esquema: ['Tema 3'], texto: 'Texto de Manuel' }),
-      skill: async (ruta) => ({ 'SKILL.md': '# Prepara con Claude', 'references/agentes/dudas.md': '# Dudas', 'references/temas/3A08/ficha.md': '# Ficha' } as Record<string, string>)[ruta] ?? null,
+      skill: async (ruta) =>
+        (({
+          'SKILL.md': '---\nname: prepara-oposicion\n---\n\n# Prepara con Claude\n\nEres el equipo.\n\n## Cómo empezar\n\nTabla.\n\n## Reglas comunes a todos los agentes\n\n- Crítico.\n\n## Cómo termina toda entrega\n\nAviso.',
+          'references/agentes/dudas.md': '# Dudas',
+          'references/agentes/corrector-cante.md': '# Corrector del cante',
+          'references/temas/3A08/ficha.md': '# Ficha',
+        }) as Record<string, string>)[ruta] ?? null,
+      cliente: async () => 'Le Chat',
       desconectar: async () => {
         desconectado = true;
       },
@@ -115,7 +122,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
+    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -132,6 +139,37 @@ describe('herramientas', () => {
     expect(falta.isError).toBe(true);
     const info = c.getInstructions();
     expect(info).toContain('leer_skill()');
+    expect(info).toContain('leer_metodo(tarea)');
+  });
+
+  it('leer_metodo da la lista de tareas y, para cada una, el agente con las reglas comunes', async () => {
+    const c = await cliente(ctx);
+    const texto = (r: unknown) => ((r as { content: Array<{ text: string }> }).content[0].text);
+    const lista = texto(await c.callTool({ name: 'leer_metodo', arguments: {} }));
+    expect(lista).toContain('`corregir_cante`');
+    expect(lista).toContain('`tribunal`');
+    const m = texto(await c.callTool({ name: 'leer_metodo', arguments: { tarea: 'corregir_cante' } }));
+    expect(m).toContain('Eres el equipo.');
+    expect(m).toContain('## Reglas comunes a todos los agentes');
+    expect(m).toContain('## Cómo termina toda entrega');
+    expect(m).not.toContain('## Cómo empezar');
+    expect(m).toContain('# Corrector del cante');
+    expect(m).not.toContain('name: prepara-oposicion');
+    const falta = await c.callTool({ name: 'leer_metodo', arguments: { tarea: 'tarjetas' } });
+    expect(falta.isError).toBe(true);
+    const malo = await c.callTool({ name: 'leer_metodo', arguments: { tarea: 'otra' } });
+    expect(malo.isError).toBe(true);
+  });
+
+  it('ofrece un prompt por tarea que manda cargar su método', async () => {
+    const c = await cliente(ctx);
+    const prompts = (await c.listPrompts()).prompts.map((p) => p.name);
+    expect(prompts).toContain('corregir_cante');
+    expect(prompts).toContain('simulacro');
+    const p = await c.getPrompt({ name: 'tribunal', arguments: { detalle: 'Tema 3.A.8' } });
+    const t = (p.messages[0].content as { text: string }).text;
+    expect(t).toContain('Tema 3.A.8');
+    expect(t).toContain('leer_metodo con tarea «tribunal»');
   });
 
   it('fuentes_tema reúne las fuentes y avisa de la numeración antigua; buscar_temario agrupa por bloque', async () => {
@@ -198,6 +236,7 @@ describe('herramientas', () => {
     const nuevo = db.docs.get(`cronogramas/${salida.id as string}`)!;
     expect(nuevo).toMatchObject({ manual: true, archivado: false, diaCante: 6, temas: ['3.A.8'], semanas: [{ lunes: '2026-11-01T00:00:00.000', temas: ['3.A.8'] }] });
     expect(db.docs.get('cronogramas/viejo')!.archivado).toBe(true);
+    expect(nuevo.autorNombre).toBe('Le Chat');
   });
 
   it('proponer_cronograma no escribe nada si hay errores', async () => {
@@ -214,7 +253,7 @@ describe('herramientas', () => {
     expect(r.guardado).toBe(true);
     expect(r.diarioActualizado).toBe(true);
     const informe = db.escrituras.find((e) => e.ruta.startsWith('cantes/c1/informes/'))!;
-    expect(informe.datos).toMatchObject({ origen: 'claude', informe: '# Informe', valoracion: 3, comentarios: 'Mejor' });
+    expect(informe.datos).toMatchObject({ origen: 'ia', cliente: 'Le Chat', informe: '# Informe', valoracion: 3, comentarios: 'Mejor' });
     const cante = db.docs.get('cantes/c1')!;
     expect(cante.resultado).toEqual({ temaCantado: '3.A.8', valoracion: 3, comentarios: 'Mejor' });
     expect(cante.updatedAt).not.toBe('2026-10-10T19:00:00.000');

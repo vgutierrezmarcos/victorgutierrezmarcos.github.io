@@ -1,12 +1,12 @@
-// Conector remoto MCP «Prepara con Claude»: Cloudflare Worker que es a la vez
+// Conector remoto MCP «Oposición TCEE · DCE»: Cloudflare Worker que es a la vez
 // servidor de autorización OAuth 2.1 (PKCE, registro dinámico de clientes, metadatos
 // RFC 8414 y RFC 9728; lo hace @cloudflare/workers-oauth-provider sobre OAUTH_KV) y
 // servidor MCP (Streamable HTTP sin estado, con el SDK oficial) que lee y escribe los
 // datos del opositor en Firestore con su propio ID token de Firebase.
 //
 // Flujo de conexión (ver ../README.md):
-//   Claude → GET /authorize (consentimiento) → POST /authorize (acepta) → login.html de la
-//   web (Google) → POST /callback/sesion (tokens de Firebase) → GET /callback → de vuelta a Claude.
+//   IA → GET /authorize (consentimiento) → POST /authorize (acepta) → login.html de la
+//   web (Google) → POST /callback/sesion (tokens de Firebase) → GET /callback → de vuelta a la IA.
 
 import { OAuthProvider, AuthorizationError, CimdFetchError, OAuthError, type OAuthHelpers, type OAuthProviderOptions, type OAuthResourceContext } from '@cloudflare/workers-oauth-provider';
 import { cifrar, descifrar, sha256 } from './cifrado';
@@ -93,10 +93,16 @@ async function bancoDePreguntas(env: Env): Promise<Banco> {
   return banco;
 }
 
-function contextoDe(env: Env, props: Props): Contexto {
+function contextoDe(env: Env, props: Props, clientId = ''): Contexto {
   return {
     uid: props.uid,
     email: props.email,
+    async cliente() {
+      // El nombre lo pone el propio cliente al registrarse: se limpia y se acorta.
+      const info = clientId ? await env.OAUTH_PROVIDER.lookupClient(clientId).catch(() => null) : null;
+      const nombre = (info?.clientName ?? '').replace(/[^\p{L}\p{N} .·()-]/gu, '').trim().slice(0, 40);
+      return nombre || 'IA';
+    },
     async almacen(oposicion: Oposicion) {
       return new Firestore(env.FIREBASE_PROJECT, await idTokenDe(env, props), Firestore.raizDe(props.uid, oposicion));
     },
@@ -141,7 +147,7 @@ const mcpHandler = {
     const ctx = contexto as OAuthResourceContext<Props>;
     const props = ctx.props;
     if (!props?.uid || !props.refresh) return new Response('Unauthorized', { status: 401 });
-    return responderMcp(request, contextoDe(env, props), {
+    return responderMcp(request, contextoDe(env, props, ctx.auth.clientId ?? ''), {
       token: ctx.auth.token,
       clientId: ctx.auth.clientId ?? '',
       scopes: ctx.auth.scope ?? [],
@@ -253,10 +259,10 @@ const defaultHandler = {
 };
 
 /**
- * En cada renovación del token de Claude comprobamos que Firebase sigue aceptando el
+ * En cada renovación del token de la IA comprobamos que Firebase sigue aceptando el
  * refresh token del opositor: si lo ha revocado (contraseña cambiada, cuenta borrada,
  * «Desconectar» desde la app), la concesión OAuth se revoca también (invalid_grant) y
- * Claude pide volver a conectar.
+ * la IA pide volver a conectar.
  */
 const renovarEnFirebase: NonNullable<OAuthProviderOptions<Env>['tokenExchangeCallback']> = async ({ grantType, props, env }) => {
   if (grantType !== 'refresh_token') return;
@@ -264,7 +270,7 @@ const renovarEnFirebase: NonNullable<OAuthProviderOptions<Env>['tokenExchangeCal
   const refresh = await descifrar(p.refresh, env.CLAVE_CIFRADO);
   const r = await renovarIdToken(env.FIREBASE_API_KEY, refresh);
   if (!r.ok) {
-    if (r.motivo === 'invalido') throw new OAuthError('invalid_grant', { description: 'La app ha revocado el acceso de Claude; vuelve a conectar el conector.' });
+    if (r.motivo === 'invalido') throw new OAuthError('invalid_grant', { description: 'La app ha revocado el acceso de la IA; vuelve a conectar el conector.' });
     throw new OAuthError('temporarily_unavailable', { description: 'Firebase no responde ahora mismo', statusCode: 503 });
   }
   await env.SESIONES.put(`id:${await sha256(p.uid)}`, await cifrar(r.idToken, env.CLAVE_CIFRADO), { expirationTtl: TTL_ID_TOKEN });
@@ -287,7 +293,7 @@ function proveedorDe(env: Env): OAuthProvider<Env> {
     // Tokens de acceso de 12 horas: menos renovaciones (cada una escribe en KV, y el plan
     // gratuito da 1.000 escrituras al día); los de refresco, 30 días (por defecto).
     accessTokenTTL: 12 * 3600,
-    resourceMetadata: { resource: urlMcp(env), resource_name: 'Prepara con Claude · Oposición TCEE · DCE' },
+    resourceMetadata: { resource: urlMcp(env), resource_name: 'Oposición TCEE · DCE' },
     tokenExchangeCallback: renovarEnFirebase,
   });
   proveedor = { url: env.URL_WORKER, instancia };

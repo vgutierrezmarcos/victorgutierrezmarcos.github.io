@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Conectar Claude con la app · Víctor Gutiérrez Marcos</title>
-    <meta name="description" content="Página de inicio de sesión del conector «Prepara con Claude»: entra con tu cuenta de Google para que Claude lea y escriba tus datos de la app Oposición TCEE · DCE.">
+    <title>Conectar tu IA con la app · Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Página de inicio de sesión del conector «Oposición TCEE · DCE»: entra con tu cuenta de Google para que tu asistente de IA lea y escriba tus datos de la app Oposición TCEE · DCE.">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap">
     <link rel="icon" href="/app/assets/icon/icon.svg">
     <link rel="stylesheet" href="/styles.css">
@@ -14,7 +14,6 @@
         .conector { max-width: 600px; margin: 5vh auto 3rem; padding: 0 16px; }
         .conector-marcas { display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 1.4rem; }
         .conector-marcas img { height: 56px; width: 56px; }
-        .conector-marcas i { display: block; width: 1px; height: 40px; background: #C9B37E; }
         .conector-pasos { display: flex; justify-content: center; margin: 0 0 1.4rem; padding: 0; list-style: none; font-variant-caps: all-small-caps; letter-spacing: .04em; font-size: 1.05rem; color: #4A4452; }
         .conector-pasos li { position: relative; padding: 0 1.1em; }
         .conector-pasos li + li::before { content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 1em; margin-top: -.5em; background: #C9B37E; }
@@ -23,7 +22,6 @@
         .conector h1 { font-variant-caps: all-small-caps; letter-spacing: .02em; font-weight: normal; font-size: 1.7rem; margin: 0 0 .5em; }
         .conector .card { padding: 1.7rem 1.9rem 1.5rem; background: #F6FAF2; border: 1px solid #C9B37E; border-radius: 6px; }
         .conector a { color: #5F2987; }
-        .conector-marcas img + i + img { height: 44px; width: 44px; }
         .conector ul { padding-left: 1.2rem; }
         .conector li { margin-bottom: .25em; }
         .conector .nota { font-size: .92rem; opacity: .85; }
@@ -38,8 +36,6 @@
     <main class="conector">
         <div class="conector-marcas" aria-hidden="true">
             <img src="/app/assets/icon/icon.svg" alt="">
-            <i></i>
-            <img src="/oposicion/img/claude/claude-asterisco.svg" alt="">
         </div>
         <ol class="conector-pasos" aria-label="Pasos de la conexión">
             <li>1. Autorizar</li>
@@ -48,21 +44,21 @@
         </ol>
         <div class="card">
             <h1>Entra con tu cuenta de Google</h1>
-            <p>Estás a un paso de que Claude pueda leer tu preparación directamente de la app «Oposición TCEE · DCE». Entra con <strong>la misma cuenta de Google</strong> que usas en la app o en esta web.</p>
-            <p>Al entrar autorizas al conector «Prepara con Claude» (un servidor de esta web) a, en tu nombre:</p>
+            <p>Estás a un paso de que tu asistente de IA (Claude, ChatGPT, Le Chat o Gemini) pueda leer tu preparación directamente de la app «Oposición TCEE · DCE». Entra con <strong>la misma cuenta de Google</strong> que usas en la app o en esta web.</p>
+            <p>Al entrar autorizas al conector «Oposición TCEE · DCE» (un servidor de esta web) a, en tu nombre:</p>
             <ul>
                 <li>leer tu progreso, tus tests, tu diario de cantes y tu cronograma;</li>
-                <li>servirle a Claude los materiales exclusivos (temas revisados, fichas, guía del dictamen);</li>
+                <li>servir a tu IA los materiales exclusivos (temas revisados, fichas, guía del dictamen);</li>
                 <li>guardar en la app, solo cuando tú lo confirmes en la conversación, un cronograma nuevo y el informe de un cante.</li>
             </ul>
-            <p class="nota">Nadie más ve tus datos: el conector usa tu propia sesión de Firebase, y las reglas de la base de datos solo dejan al dueño leer y escribir lo suyo. No accede a tu Google Calendar ni a las grabaciones o transcripciones del móvil. Guarda tu token de acceso cifrado y caducado a los 30 días sin uso; puedes revocarlo cuando quieras desde la app (Más → Prepara con Claude → Desconectar Claude), pidiéndoselo a Claude («desconéctate de la app») o en Claude, Personalizar → Conectores. Más detalle en la <a href="/politica-cookies.html">política de privacidad</a> y en las <a href="/condiciones-materiales.html#ia">condiciones de los materiales</a>.</p>
+            <p class="nota">Nadie más ve tus datos: el conector usa tu propia sesión de Firebase, y las reglas de la base de datos solo dejan al dueño leer y escribir lo suyo. No accede a tu Google Calendar ni a las grabaciones o transcripciones del móvil. Guarda tu token de acceso cifrado y caducado a los 30 días sin uso; puedes revocarlo cuando quieras desde la app (Más → Prepara con IA → Desconectar la IA), pidiéndoselo en la conversación («desconéctate de la app») o en los conectores de tu asistente. Más detalle en la <a href="/politica-cookies.html">política de privacidad</a> y en las <a href="/condiciones-materiales.html#ia">condiciones de los materiales</a>.</p>
             <div class="acciones">
                 <button id="entrar" class="boton" type="button">Entrar con Google</button>
-                <a class="boton--texto" href="/oposicion/prepara-con-claude.html">¿Qué es esto?</a>
+                <a class="boton--texto" href="/oposicion/prepara-con-ia.html">¿Qué es esto?</a>
             </div>
             <p id="estado" class="estado" aria-live="polite"></p>
         </div>
-        <p class="conector-pie">Conector «Prepara con Claude» de <a href="/oposicion/prepara-con-claude.html">victorgutierrezmarcos.es</a> · <a href="/politica-cookies.html">política de privacidad</a> · <a href="/condiciones-materiales.html#ia">condiciones</a></p>
+        <p class="conector-pie">Conector «Oposición TCEE · DCE» de <a href="/oposicion/prepara-con-ia.html">victorgutierrezmarcos.es</a> · <a href="/politica-cookies.html">política de privacidad</a> · <a href="/condiciones-materiales.html#ia">condiciones</a></p>
     </main>
 
     <!-- Firebase (misma versión y configuración que el resto de la web) -->
@@ -88,7 +84,7 @@
         }
 
         if (!state) {
-            mensaje('Esta página solo se abre desde Claude al conectar el conector «Prepara con Claude»; falta el parámetro de la sesión. Empieza la conexión otra vez desde Claude.', true);
+            mensaje('Esta página solo se abre desde tu asistente de IA al conectar el conector «Oposición TCEE · DCE»; falta el parámetro de la sesión. Empieza la conexión otra vez desde tu asistente.', true);
             boton.disabled = true;
             return;
         }
@@ -113,9 +109,9 @@
                     if (!r.ok) return r.json().catch(function () { return {}; }).then(function (j) { throw new Error(j.error || ('el servidor ha contestado ' + r.status)); });
                     return r.json();
                 }).then(function (j) {
-                    mensaje('Cuenta ' + (j.email || usuario.email || '') + ' conectada. Volviendo a Claude…');
+                    mensaje('Cuenta ' + (j.email || usuario.email || '') + ' conectada. Volviendo a tu asistente…');
                     // La vuelta al Worker es una navegación normal (GET): así viaja la cookie que
-                    // ata esta sesión al navegador, y de ahí a Claude con el código de autorización.
+                    // ata esta sesión al navegador, y de ahí a la IA con el código de autorización.
                     location.href = WORKER + '/callback?state=' + encodeURIComponent(state);
                 });
             }).catch(function (e) {

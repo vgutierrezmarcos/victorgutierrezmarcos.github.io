@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1920, height=1080" />
-    <title>Prepara con Claude: cómo preparar la oposición con Claude</title>
+    <title>Prepara con IA: cómo preparar la oposición con tu IA</title>
     <!--
-      Vídeo explicativo de «Prepara con Claude» (unos 4 minutos, 1920 × 1080,
+      Vídeo explicativo de «Prepara con IA», mostrado en Claude (unos 4 minutos, 1920 × 1080,
       110 pulsaciones por minuto), con el estilo del promocional de la app
       (scripts/video-app/): crema, salvia y berenjena lisos, filete dorado,
       versalitas. Cada escena empieza en el compás que fija guion.json; las
@@ -86,6 +86,7 @@
       /* Marca arriba a la izquierda */
       .marca { position: absolute; left: 60px; top: 42px; display: flex; align-items: center; gap: 14px; font-family: "Pagella", serif; font-weight: 700; font-size: 30px; color: var(--tinta); }
       .marca img { height: 34px; width: auto; }
+      .marca .icono-marca { border-radius: 8px; }
       .oscura .marca { color: var(--sobre-oscuro); }
       .dce .marca { color: var(--granate); }
 
@@ -173,8 +174,8 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="224.7273">
-      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="224.7273" data-track-index="9" data-volume="0.35"></audio>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="233.4546">
+      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="233.4546" data-track-index="9" data-volume="0.35"></audio>
 
       <!-- Portada -->
       <section id="portada" class="clip oscura" data-start="0.0000" data-duration="4.3636" data-track-index="0">
@@ -184,11 +185,11 @@
             <div class="anillo" id="portada-a1"></div>
             <div class="anillo" id="portada-a2"></div>
             <div class="anillo" id="portada-a3"></div>
-            <div id="portada-logo" class="marcas"><img class="icono" src="assets/icono.png" alt="" /><i></i><img src="assets/logos/asterisco.svg" alt="" /></div>
+            <div id="portada-logo" class="marcas"><img class="icono" src="assets/icono.png" alt="" /></div>
           </div>
-          <h1 id="portada-tit" class="tit" style="font-size: 104px"><span class="l">Prepara con Claude</span></h1>
+          <h1 id="portada-tit" class="tit" style="font-size: 104px"><span class="l">Prepara con IA</span></h1>
           <span id="portada-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
-          <p id="portada-lema" class="lema">Complementa tu preparación con Claude</p>
+          <p id="portada-lema" class="lema">Tu equipo de preparación, en tu IA</p>
           <div id="portada-aviso" class="aviso-caja">No sustituye a un preparador para la oposición: lo complementa</div>
         </div>
       </section>
@@ -211,10 +212,10 @@
       <!-- Qué hace -->
       <section id="quehace" class="clip" data-start="13.0909" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
         <div class="texto" style="width: 700px"><div class="bloque">
           <p class="rot">qué hace</p>
-          <h2 id="quehace-tit" class="tit"><span class="l">Un equipo de</span><span class="l">preparación</span><span class="l"><em>en tu cuenta de Claude.</em></span></h2>
+          <h2 id="quehace-tit" class="tit"><span class="l">Un equipo de</span><span class="l">preparación</span><span class="l"><em>en tu asistente de IA.</em></span></h2>
           <p id="quehace-par" class="par">Un conector gratuito con el temario de la web, para TCEE y para DCE, que lee lo que la app sabe de ti.</p>
         </div></div>
         <div class="tarjetas" style="left: 900px; top: 190px; width: 900px; grid-template-columns: 1fr 1fr">
@@ -230,7 +231,7 @@
       <!-- Por qué no es un chatbot genérico -->
       <section id="porque" class="clip salvia" data-start="21.8182" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
         <div class="texto" style="width: 700px"><div class="bloque">
           <p class="rot">no es un chatbot genérico</p>
           <h2 id="porque-tit" class="tit"><span class="l">Sabe tu temario.</span><span class="l"><em>Y tú aprendes de ella.</em></span></h2>
@@ -244,28 +245,45 @@
         </div>
       </section>
 
+      <!-- En qué IA funciona -->
+      <section id="plataformas" class="clip" data-start="30.5455" data-duration="8.7273" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
+        <div class="texto" style="width: 700px"><div class="bloque">
+          <p class="rot">en qué ia funciona</p>
+          <h2 id="plataformas-tit" class="tit"><span class="l">En tu IA.</span><span class="l"><em>Con Claude, completo.</em></span></h2>
+          <p id="plataformas-par" class="par">El mismo conector en todas: tus datos de la app, los temas revisados y el método de cada tarea.</p>
+        </div></div>
+        <div class="tarjetas" style="left: 900px; top: 150px; width: 900px; grid-template-columns: 1fr">
+          <div id="plataformas-c1" class="tarjeta"><b>Claude · recomendada</b><span>Todo: el informe en PDF con la plantilla de los temas, gráficos como los del temario y la skill</span></div>
+          <div id="plataformas-c2" class="tarjeta"><b>ChatGPT</b><span>Con el modo desarrollador de los planes de pago</span></div>
+          <div id="plataformas-c3" class="tarjeta"><b>Le Chat</b><span>De Mistral, europea; también con el plan gratuito</span></div>
+          <div id="plataformas-c4" class="tarjeta"><b>Gemini</b><span>Con los planes de Google que admiten apps propias</span></div>
+        </div>
+      </section>
+
       <!-- Conectar (toma G2c: la web, la autorización y la entrada con Google) -->
-      <section id="instalar" class="clip" data-start="30.5455" data-duration="21.8182" data-track-index="0">
+      <section id="instalar" class="clip" data-start="39.2727" data-duration="21.8182" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
-          <p class="rot">conectar · una sola vez</p>
+          <p class="rot">en claude · una sola vez</p>
           <h2 id="instalar-tit" class="tit"><span class="l">Un botón y entras con tu cuenta de Google.</span></h2>
         </div>
         <div id="instalar-ventana" class="ventana"></div>
         <div id="instalar-r1" class="rotulo"><b>1</b>En la web, «Añadir el conector»: Claude lo abre ya relleno</div>
         <div id="instalar-r2" class="rotulo"><b>2</b>Autorizas: ves qué podrá leer y guardar Claude</div>
         <div id="instalar-r3" class="rotulo"><b>3</b>Entras con la cuenta de Google de la app</div>
-        <div id="instalar-r4" class="rotulo"><b>✓</b>Listo: la skill viene dentro, siempre al día</div>
+        <div id="instalar-r4" class="rotulo"><b>✓</b>Listo: el método viene dentro, siempre al día</div>
       </section>
 
       <!-- Un cante: la app -->
-      <section id="cante_app" class="clip salvia" data-start="52.3636" data-duration="6.5455" data-track-index="0">
+      <section id="cante_app" class="clip salvia" data-start="61.0909" data-duration="6.5455" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
         <div class="texto"><div class="bloque">
           <p class="rot">un cante</p>
           <h2 id="cante_app-tit" class="tit"><span class="l">Canta como siempre.</span><span class="l"><em>La app lo transcribe.</em></span></h2>
-          <p id="cante_app-par" class="par">Con marcas de minuto, en TCEE y en DCE. Al guardarlo en el diario, un toque: «Enviar a Claude».</p>
+          <p id="cante_app-par" class="par">Con marcas de minuto, en TCEE y en DCE. Al guardarlo en el diario, un toque: «Enviar a la IA».</p>
         </div></div>
         <div id="cante_app-m1" class="movil" style="left: 1040px; top: 99px"><div class="pantalla"><img src="assets/capturas/cantes-cantar.webp" alt="" /></div></div>
         <div id="cante_app-m2" class="movil" style="left: 1400px; top: 150px"><div class="pantalla"><img src="assets/capturas/dce-cantar.webp" alt="" /></div></div>
@@ -273,7 +291,7 @@
       </section>
 
       <!-- Un cante: el chat (toma G4a) -->
-      <section id="cante_chat" class="clip" data-start="58.9091" data-duration="15.2727" data-track-index="0">
+      <section id="cante_chat" class="clip" data-start="67.6364" data-duration="15.2727" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">un cante · en claude.ai</p>
@@ -286,7 +304,7 @@
       </section>
 
       <!-- Un cante: el informe (toma G4b) -->
-      <section id="cante_informe" class="clip" data-start="74.1818" data-duration="13.0909" data-track-index="0">
+      <section id="cante_informe" class="clip" data-start="82.9091" data-duration="13.0909" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">un cante · el informe</p>
@@ -302,7 +320,7 @@
       </section>
 
       <!-- Un dictamen (tomas G5a y G5b) -->
-      <section id="dictamen" class="clip" data-start="87.2727" data-duration="13.0909" data-track-index="0">
+      <section id="dictamen" class="clip" data-start="96.0000" data-duration="13.0909" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">un dictamen</p>
@@ -315,7 +333,7 @@
       </section>
 
       <!-- Una duda (tomas G6a y G6b) -->
-      <section id="duda" class="clip" data-start="100.3636" data-duration="19.6364" data-track-index="0">
+      <section id="duda" class="clip" data-start="109.0909" data-duration="19.6364" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">una duda</p>
@@ -328,9 +346,9 @@
       </section>
 
       <!-- El cronograma: Claude lee los datos de la app con el conector (las dos oposiciones) -->
-      <section id="cronograma" class="clip" data-start="120.0000" data-duration="4.3636" data-track-index="0">
+      <section id="cronograma" class="clip" data-start="128.7273" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
         <div class="texto"><div class="bloque">
           <p class="rot">el cronograma</p>
           <h2 id="cronograma-tit" class="tit"><span class="l">Claude ya conoce</span><span class="l"><em>tus datos.</em></span></h2>
@@ -341,7 +359,7 @@
       </section>
 
       <!-- El cronograma en claude.ai: un opositor a DCE (tomas G9na y G9nb; colores y letra de DCE) -->
-      <section id="cronograma_dce" class="clip dce" data-start="124.3636" data-duration="26.1818" data-track-index="0">
+      <section id="cronograma_dce" class="clip dce" data-start="133.0909" data-duration="26.1818" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">el cronograma · en dce</p>
@@ -354,7 +372,7 @@
       </section>
 
       <!-- El cronograma: en TCEE igual (toma G7b) y traerlo a la app -->
-      <section id="cronograma_app" class="clip" data-start="150.5455" data-duration="8.7273" data-track-index="0">
+      <section id="cronograma_app" class="clip" data-start="159.2727" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div id="cronograma_app-a">
           <div class="banda">
@@ -365,7 +383,7 @@
         </div>
         <div id="cronograma_app-r1" class="rotulo">Te lo enseña semana a semana antes de guardarlo</div>
         <div id="cronograma_app-b">
-          <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+          <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
           <div class="texto"><div class="bloque">
             <p class="rot">el cronograma</p>
             <h2 class="tit"><span class="l">Y lo guarda en la app.</span></h2>
@@ -377,10 +395,10 @@
       </section>
 
       <!-- Tu carpeta (toma G8) -->
-      <section id="carpeta" class="clip salvia" data-start="159.2727" data-duration="26.1818" data-track-index="0">
+      <section id="carpeta" class="clip salvia" data-start="168.0000" data-duration="26.1818" data-track-index="0">
         <div class="fondo"></div>
         <div id="carpeta-a">
-          <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+          <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
           <div class="texto" style="width: 760px"><div class="bloque">
             <p class="rot">en el ordenador</p>
             <h2 class="tit"><span class="l">Toda la oposición,</span><span class="l"><em>en una carpeta.</em></span></h2>
@@ -405,14 +423,14 @@
         <div id="carpeta-r3" class="rotulo">El informe queda junto al cante, sin copiar ni pegar nada</div>
       </section>
 
-      <!-- En el móvil: el mismo conector en la app de Claude -->
-      <section id="movil" class="clip salvia" data-start="185.4545" data-duration="8.7273" data-track-index="0">
+      <!-- En el móvil: el mismo conector en la app de tu IA -->
+      <section id="movil" class="clip salvia" data-start="194.1818" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
         <div class="texto" style="width: 640px"><div class="bloque">
           <p class="rot">en el móvil</p>
           <h2 id="movil-tit" class="tit"><span class="l">También desde</span><span class="l"><em>el móvil.</em></span></h2>
-          <p id="movil-par" class="par">El conector también está en la app de Claude: comparte el cante, hazle una foto al dictamen o a la pizarra y pregúntale por voz.</p>
+          <p id="movil-par" class="par">El conector también está en la app de tu IA: comparte el cante, hazle una foto al dictamen o a la pizarra y pregúntale por voz.</p>
         </div></div>
         <!-- Tres móviles más pequeños (zoom 0,82: las posiciones van divididas por 0,82) -->
         <div id="movil-m1" class="movil" style="zoom: 0.82; left: 1055px; top: 200px"><div class="pantalla"><img src="assets/capturas/cantes-diario.webp" alt="" /></div></div>
@@ -421,9 +439,9 @@
       </section>
 
       <!-- Y además -->
-      <section id="ademas" class="clip" data-start="194.1818" data-duration="10.9091" data-track-index="0">
+      <section id="ademas" class="clip" data-start="202.9091" data-duration="10.9091" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
         <div class="texto" style="width: 640px"><div class="bloque">
           <p class="rot">y además</p>
           <h2 id="ademas-tit" class="tit"><span class="l">Y mucho más.</span><span class="l"><em>Pide lo que se te ocurra.</em></span></h2>
@@ -440,53 +458,53 @@
       </section>
 
       <!-- Al día, privacidad y licencia -->
-      <section id="actualiza" class="clip salvia" data-start="205.0909" data-duration="10.9091" data-track-index="0">
+      <section id="actualiza" class="clip salvia" data-start="213.8182" data-duration="10.9091" data-track-index="0">
         <div class="fondo"></div>
-        <div class="marca"><img src="assets/logos/asterisco.svg" alt="" />Prepara con Claude</div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />Prepara con IA</div>
         <div class="texto" style="width: 700px"><div class="bloque">
           <p class="rot">al día y en tus manos</p>
           <h2 id="actualiza-tit" class="tit"><span class="l">Siempre</span><span class="l"><em>al día.</em></span></h2>
           <p id="actualiza-par" class="par">Lo añades una vez. Las mejoras y los temas nuevos le llegan solos.</p>
         </div></div>
         <div class="tarjetas" style="left: 900px; top: 190px; width: 900px; grid-template-columns: 1fr">
-          <div id="actualiza-c1" class="tarjeta"><b>La última versión, siempre</b><span>El conector le da la skill y los temas revisados al día: no hay que reinstalar nada</span></div>
+          <div id="actualiza-c1" class="tarjeta"><b>La última versión, siempre</b><span>El conector le da el método y los temas revisados al día: no hay que reinstalar nada</span></div>
           <div id="actualiza-c2" class="tarjeta"><b>Tus datos, tuyos</b><span>Lee solo lo tuyo, con tu sesión de Google, y guarda en la app solo lo que tú confirmas</span></div>
-          <div id="actualiza-c3" class="tarjeta"><b>Material exclusivo</b><span>Para tu preparación personal, en tu cuenta de Claude; no se puede llevar a otras plataformas</span></div>
+          <div id="actualiza-c3" class="tarjeta"><b>Material exclusivo</b><span>Para tu preparación personal, en tu propia cuenta; no se puede copiar a otras plataformas</span></div>
         </div>
       </section>
 
       <!-- Cierre -->
-      <section id="cierre" class="clip oscura" data-start="216.0000" data-duration="8.7273" data-track-index="0">
+      <section id="cierre" class="clip oscura" data-start="224.7273" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="centro" style="gap: 26px">
           <div class="icono-caja">
             <div class="anillo" id="cierre-a1"></div>
             <div class="anillo" id="cierre-a2"></div>
-            <div id="cierre-logo" class="marcas chica"><img class="icono" src="assets/icono.png" alt="" /><i></i><img src="assets/logos/asterisco.svg" alt="" /></div>
+            <div id="cierre-logo" class="marcas chica"><img class="icono" src="assets/icono.png" alt="" /></div>
           </div>
           <h2 id="cierre-tit" class="tit" style="font-size: 130px"><span class="l">Empieza hoy.</span></h2>
           <span id="cierre-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
-          <p id="cierre-n1" class="nota-cierre">Hace falta Claude Pro (unos 20 € al mes)  ·  El conector y el material son gratuitos</p>
+          <p id="cierre-n1" class="nota-cierre">En Claude, ChatGPT, Le Chat o Gemini; con Claude, completo  ·  El conector y el material son gratuitos</p>
           <p id="cierre-n2" class="nota-cierre suave">No sustituye a un preparador para la oposición: lo complementa</p>
-          <p id="cierre-n3" class="nota-cierre">victorgutierrezmarcos.es/oposicion/prepara-con-claude.html</p>
+          <p id="cierre-n3" class="nota-cierre">victorgutierrezmarcos.es/oposicion/prepara-con-ia.html</p>
         </div>
       </section>
 
       <!-- Tomas grabadas en claude.ai y en el ordenador (fuera de las escenas: ver la nota de arriba) -->
-      <video id="toma-g2" class="toma" src="assets/tomas/G2c.mp4" muted playsinline data-start="33.5455" data-duration="17.3" data-track-index="1"></video>
-      <video id="toma-g4a" class="toma" src="assets/tomas/G4a.mp4" muted playsinline data-start="59.9091" data-duration="13.5" data-track-index="1"></video>
-      <video id="toma-g4b" class="toma" src="assets/tomas/G4b.mp4" muted playsinline data-start="74.7818" data-duration="9.4" data-track-index="1"></video>
-      <video id="toma-g5a" class="toma" src="assets/tomas/G5a.mp4" muted playsinline data-start="87.8727" data-duration="6.2" data-media-start="14.5" data-track-index="1"></video>
-      <video id="toma-g5b" class="toma" src="assets/tomas/G5b.mp4" muted playsinline data-start="94.2727" data-duration="6.0" data-track-index="1"></video>
-      <video id="toma-g6a" class="toma" src="assets/tomas/G6a.mp4" muted playsinline data-start="101.1636" data-duration="10.8" data-track-index="1"></video>
-      <video id="toma-g6b" class="toma" src="assets/tomas/G6b.mp4" muted playsinline data-start="112.1" data-duration="7.0" data-track-index="1"></video>
-            <video id="toma-g7b" class="toma" src="assets/tomas/G7b.mp4" muted playsinline data-start="150.8455" data-duration="4.6" data-track-index="1"></video>
-      <video id="toma-g9a" class="toma" src="assets/tomas/G9na.mp4" muted playsinline data-start="124.7636" data-duration="18.7" data-track-index="1"></video>
-      <video id="toma-g9b" class="toma" src="assets/tomas/G9nb.mp4" muted playsinline data-start="143.5636" data-duration="6.0" data-track-index="1"></video>
-      <video id="toma-g8" class="toma" src="assets/tomas/G8.mp4" muted playsinline data-start="163.2727" data-duration="20" data-track-index="1"></video>
+      <video id="toma-g2" class="toma" src="assets/tomas/G2c.mp4" muted playsinline data-start="42.2728" data-duration="17.3" data-track-index="1"></video>
+      <video id="toma-g4a" class="toma" src="assets/tomas/G4a.mp4" muted playsinline data-start="68.6364" data-duration="13.5" data-track-index="1"></video>
+      <video id="toma-g4b" class="toma" src="assets/tomas/G4b.mp4" muted playsinline data-start="83.5091" data-duration="9.4" data-track-index="1"></video>
+      <video id="toma-g5a" class="toma" src="assets/tomas/G5a.mp4" muted playsinline data-start="96.6000" data-duration="6.2" data-media-start="14.5" data-track-index="1"></video>
+      <video id="toma-g5b" class="toma" src="assets/tomas/G5b.mp4" muted playsinline data-start="103.0000" data-duration="6.0" data-track-index="1"></video>
+      <video id="toma-g6a" class="toma" src="assets/tomas/G6a.mp4" muted playsinline data-start="109.8909" data-duration="10.8" data-track-index="1"></video>
+      <video id="toma-g6b" class="toma" src="assets/tomas/G6b.mp4" muted playsinline data-start="120.8273" data-duration="7.0" data-track-index="1"></video>
+            <video id="toma-g7b" class="toma" src="assets/tomas/G7b.mp4" muted playsinline data-start="159.5728" data-duration="4.6" data-track-index="1"></video>
+      <video id="toma-g9a" class="toma" src="assets/tomas/G9na.mp4" muted playsinline data-start="133.4909" data-duration="18.7" data-track-index="1"></video>
+      <video id="toma-g9b" class="toma" src="assets/tomas/G9nb.mp4" muted playsinline data-start="152.2909" data-duration="6.0" data-track-index="1"></video>
+      <video id="toma-g8" class="toma" src="assets/tomas/G8.mp4" muted playsinline data-start="172.0000" data-duration="20" data-track-index="1"></video>
 
       <!-- Capas comunes: rótulos de bloque y barrido -->
-      <div id="capa-capitulos" class="clip" data-start="0" data-duration="224.7273" data-track-index="7" style="pointer-events: none">
+      <div id="capa-capitulos" class="clip" data-start="0" data-duration="233.4546" data-track-index="7" style="pointer-events: none">
         <div class="capitulo" data-bloque="instalar"><span>Conectar</span></div>
         <div class="capitulo" data-bloque="cante"><span>Un cante</span></div>
         <div class="capitulo" data-bloque="dictamen"><span>Un dictamen</span></div>
@@ -496,7 +514,7 @@
         <div class="capitulo" data-bloque="movil"><span>En el móvil</span></div>
         <div class="capitulo" data-bloque="ademas"><span>Y además</span></div>
       </div>
-      <div id="capa-barrido" class="clip" data-start="0" data-duration="224.7273" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
+      <div id="capa-barrido" class="clip" data-start="0" data-duration="233.4546" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
     </div>
 
     <script>
@@ -504,10 +522,10 @@
       const P = 60 / 110, C = 4 * P, M = P / 2;
       const B = (n) => n * C;
       // Compás en que empieza cada escena (lo escribe preparar.py desde guion.json).
-      const E = { portada: 0, gancho: 2, quehace: 6, porque: 10, instalar: 14, cante_app: 24, cante_chat: 27, cante_informe: 34, dictamen: 40, duda: 46, cronograma: 55, cronograma_dce: 57, cronograma_app: 69, carpeta: 73, movil: 85, ademas: 89, actualiza: 94, cierre: 99 }; // guion
+      const E = { portada: 0, gancho: 2, quehace: 6, porque: 10, plataformas: 14, instalar: 18, cante_app: 28, cante_chat: 31, cante_informe: 38, dictamen: 44, duda: 50, cronograma: 59, cronograma_dce: 61, cronograma_app: 73, carpeta: 77, movil: 89, ademas: 93, actualiza: 98, cierre: 103 }; // guion
       // Bloque de cada escena (también lo escribe preparar.py).
-      const BLOQUE = { portada: "empezar", gancho: "empezar", quehace: "empezar", porque: "empezar", instalar: "instalar", cante_app: "cante", cante_chat: "cante", cante_informe: "cante", dictamen: "dictamen", duda: "duda", cronograma: "cronograma", cronograma_dce: "cronograma", cronograma_app: "cronograma", carpeta: "carpeta", movil: "movil", ademas: "ademas", actualiza: "ademas", cierre: "final" }; // guion
-      const DURACION = 224.7273;
+      const BLOQUE = { portada: "empezar", gancho: "empezar", quehace: "empezar", porque: "empezar", plataformas: "empezar", instalar: "instalar", cante_app: "cante", cante_chat: "cante", cante_informe: "cante", dictamen: "dictamen", duda: "duda", cronograma: "cronograma", cronograma_dce: "cronograma", cronograma_app: "cronograma", carpeta: "carpeta", movil: "movil", ademas: "ademas", actualiza: "ademas", cierre: "final" }; // guion
+      const DURACION = 233.4546;
       const ORDEN = Object.keys(E).sort((a, b) => E[a] - E[b]);
       const fin = (id) => { const i = ORDEN.indexOf(id); return i + 1 < ORDEN.length ? B(E[ORDEN[i + 1]]) : DURACION; };
 
@@ -604,6 +622,11 @@
       textos("#porque", B(E.porque));
       tarjetas(["#porque-c1", "#porque-c2", "#porque-c3", "#porque-c4"], B(E.porque) + 0.9, 1.3 * P);
       sale("porque");
+
+      // En qué IA funciona
+      textos("#plataformas", B(E.plataformas));
+      tarjetas(["#plataformas-c1", "#plataformas-c2", "#plataformas-c3", "#plataformas-c4"], B(E.plataformas) + 0.9, 1.3 * P);
+      sale("plataformas");
 
       // Conectar (G2c: 17,3 s desde +3)
       const I = B(E.instalar);

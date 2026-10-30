@@ -71,6 +71,10 @@ function getHtmlFiles(dir, base) {
         } else if (shouldExclude(relativePath)) {
             continue;
         } else if (entry.name.endsWith('.html')) {
+            // Las páginas con <meta name="robots" content="noindex…"> no van al sitemap
+            // (p. ej. una página publicada pero todavía oculta, como prepara-con-ia.html
+            // mientras se prueba: scripts/prepara-con-ia-visible.py)
+            if (/<meta\s+name="robots"\s+content="noindex/i.test(fs.readFileSync(fullPath, 'utf8'))) continue;
             results.push(relativePath);
         } else if (DOC_EXTENSIONS.includes(path.extname(entry.name).toLowerCase()) && DOC_DIRS.some(d => relativePath.startsWith(d))) {
             results.push(relativePath);
