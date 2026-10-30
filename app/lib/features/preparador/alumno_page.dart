@@ -15,6 +15,7 @@ import '../../widgets/selector_temas.dart';
 import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
+import '../plan/informes_cante.dart';
 import '../plan/rubrica.dart';
 import '../plan/resultado_sheet.dart';
 import '../cronograma/propuesta_page.dart';
@@ -381,7 +382,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Tarjeta(
                     padding: EdgeInsets.zero,
-                    onTap: idsMias.contains(c.id) ? () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: c.id))) : () => _verCanteDelAlumno(c, titulo),
+                    onTap: idsMias.contains(c.id) ? () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: c.id))) : () => _verCanteDelAlumno(c, titulo, uid: a.uid),
                     child: ListTile(
                       title: Text(tituloCanteHecho(c, titulo), maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
                       subtitle: Text(
@@ -410,12 +411,13 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
   }
 
   /// Cante que el alumno hizo por su cuenta: se puede leer, no cambiar.
-  void _verCanteDelAlumno(Cante c, String Function(String) titulo) {
+  void _verCanteDelAlumno(Cante c, String Function(String) titulo, {String? uid}) {
     final r = c.resultado;
     showModalBottomSheet<void>(
       context: context,
       useRootNavigator: true,
-      builder: (_) => Padding(
+      isScrollControlled: true,
+      builder: (_) => SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text('${c.preparador == null ? 'Cante por su cuenta' : 'Clase ${conQuienCanto(c, yo: null, mia: false)}'} · ${fechaLarga(c.fecha)}', style: context.textos.titleMedium),
@@ -428,6 +430,8 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
             if ((r?.segundos ?? 0) > 0) Text(formatoTiempo(r!.segundos), style: context.textos.labelMedium),
           ]),
           if ((r?.comentarios ?? '').isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(r!.comentarios, style: context.textos.bodyMedium)),
+          // Los informes que ha guardado con su IA (solo lectura).
+          if (uid != null) SeccionInformesCante(uid: uid, canteId: c.id, titulo: false),
           const SizedBox(height: 8),
         ]),
       ),
