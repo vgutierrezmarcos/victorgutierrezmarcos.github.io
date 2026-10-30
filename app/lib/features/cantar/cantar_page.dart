@@ -38,6 +38,7 @@ import 'esquema_ciegas_page.dart';
 import '../preparador/tema_anticipado.dart' show leerAntelacion, textoAntelacion;
 import 'probabilidades.dart';
 import 'reloj_cante.dart';
+import 'reloj_clase.dart' show modoRelojGuardado, guardarModoReloj;
 import 'reloj_compartido.dart';
 import 'pizarra_page.dart';
 import 'reloj_grande_page.dart';
@@ -227,14 +228,11 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     if (Hive.isBoxOpen(Cajas.app)) Hive.box(Cajas.app).put(_claveEsquema(ejercicio), segundos);
   }
 
-  static ModoReloj _modoGuardado() {
-    final v = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app).get('reloj_modo') : null;
-    return v == 'atras' ? ModoReloj.atras : ModoReloj.adelante;
-  }
+  static ModoReloj _modoGuardado() => modoRelojGuardado();
 
   void _alternarModo() {
     setState(() => _modoReloj = _modoReloj == ModoReloj.adelante ? ModoReloj.atras : ModoReloj.adelante);
-    if (Hive.isBoxOpen(Cajas.app)) Hive.box(Cajas.app).put('reloj_modo', _modoReloj.name);
+    guardarModoReloj(_modoReloj);
   }
 
   /// Cambia el reloj en marcha (más o menos tiempo, pasar a exponer, empezar
