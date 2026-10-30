@@ -104,6 +104,8 @@
   {\RequirePackage[spanish,es-noshorthands,es-nolists,es-noindentfirst,es-nolayout,es-tabla]{babel}%
    \ifcsname unaccentedoperators\endcsname\unaccentedoperators\fi}% \min, \max sin tilde, como en los temas
   {\IfFileExists{polyglossia.sty}{\RequirePackage{polyglossia}\setdefaultlanguage{spanish}}{}}
+% El % se escribe tal cual (el texto ya lleva «8 %»): el espacio automático de babel rompe «\,\%» en las fórmulas
+\AtBeginDocument{\ifcsname spanishplainpercent\endcsname\spanishplainpercent\fi}
 
 % --- Página (como tcee.sty) -----------------------------------------------------
 \RequirePackage[a4paper,top=2.6cm,bottom=2.4cm,left=2.2cm,right=2.2cm,headheight=26pt,footskip=1.2cm]{geometry}
@@ -111,7 +113,9 @@
 \setstretch{1.08}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.45em}
+% Sin líneas huérfanas ni viudas (tampoco en listas, notas y cajas)
 \clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\AtBeginDocument{\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000}
 \predisplaypenalty=10000 \brokenpenalty=10000
 
 % --- Paquetes -------------------------------------------------------------------
@@ -178,10 +182,14 @@
 \titlespacing*{\subparagraph}{0pt}{0.6em}{0.15em}
 % Ningún título queda solo al pie de una página
 \newcommand{\informe@sitio}[1]{\if@nobreak\else\Needspace{#1\baselineskip}\fi}
-\preto\section{\informe@sitio{7}}
-\preto\subsection{\informe@sitio{5}}
-\preto\subsubsection{\informe@sitio{4}}
-\preto\paragraph{\informe@sitio{3}}
+% Ningún título se queda solo al pie de la página: antes de cada uno se reserva sitio para el
+% título y las primeras líneas de lo que sigue (si no cabe, título y texto pasan juntos a la
+% siguiente); titlesec pone \nobreak detrás, y las etiquetas de lista (\informeetiqueta) igual.
+\preto\section{\informe@sitio{9}}
+\preto\subsection{\informe@sitio{13}}% título, línea de tiempo, primera etiqueta y su contenido
+\preto\subsubsection{\informe@sitio{6}}
+\preto\paragraph{\informe@sitio{5}}
+\preto\subparagraph{\informe@sitio{5}}
 
 % --- Listas (compactas, viñetas en el color principal) ---------------------------------
 \setlist{itemsep=0.15em,topsep=0.3em,parsep=0.15em,beginpenalty=10000}
@@ -198,12 +206,12 @@
 % --- Cajas ------------------------------------------------------------------------------
 % Las citas «>» de pandoc (quote), con el bloque «Para la app»: fondo de la app
 % (salvia o crema) y una raya del color del filete a la izquierda.
-\tcolorboxenvironment{quote}{enhanced,breakable,
+\tcolorboxenvironment{quote}{enhanced,breakable,lines before break=4,
   colback=informefondo,colframe=informefilete,boxrule=0pt,leftrule=3pt,arc=1pt,
   fontupper=\small,colupper=informesecundario,left=8pt,right=8pt,top=5pt,bottom=5pt,
   before skip=0.6em,after skip=0.6em}
 % Aviso final («Este informe lo ha redactado una IA…»): caja pálida en cursiva
-\newtcolorbox{informeaviso}{enhanced,breakable,
+\newtcolorbox{informeaviso}{enhanced,breakable,lines before break=4,
   colback=informepalido,colframe=informepalido,boxrule=0pt,arc=2pt,
   fontupper=\footnotesize\itshape,colupper=informegris,left=8pt,right=8pt,top=5pt,bottom=5pt,
   before skip=1.6em,after skip=0.4em}
@@ -212,10 +220,12 @@
 \arrayrulecolor{informeprimario}
 \renewcommand{\arraystretch}{1.15}
 \AtBeginEnvironment{longtable}{\small}
+\@ifundefined{c@none}{\newcounter{none}}{}% pandoc 3 escribe \def\LTcaptype{none} en las tablas sin título
 \setlength{\LTpre}{0.6em}\setlength{\LTpost}{0.6em}
 \captionsetup{font=small,labelfont={bf,color=informeprimario},labelsep=endash,justification=centering,skip=4pt}
 \AtBeginDocument{\captionsetup[figure]{name=Gráfico}\captionsetup[table]{name=Tabla}}
 \floatplacement{figure}{H}
+\AtBeginEnvironment{figure}{\if@nobreak\nobreak\fi}
 \floatplacement{table}{H}
 % Imágenes: nunca más anchas que el texto (pandoc antiguo: \maxwidth; nuevo: \pandocbounded)
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -247,13 +257,19 @@
     \begingroup\lccode`\~=#1 \lowercase{\endgroup\gdef~}{#2}%
     \global\catcode#1=\active
   \fi}
+\newcommand{\informe@simbolofijo}[2]{%
+  \begingroup\lccode`\~=#1 \lowercase{\endgroup\gdef~}{#2}%
+  \global\catcode#1=\active}
 \newcommand{\informe@aspa}{\ifmmode\times\else\textbf{\char"D7}\fi}
 \AtBeginDocument{\normalfont\normalsize
-  \informe@simbolo{"2718}{\textcolor{informeprimario}{\informe@aspa}}% ✘
-  \informe@simbolo{"2717}{\textcolor{informeprimario}{\informe@aspa}}% ✗
+  \informe@simbolofijo{"2718}{\informemal}% ✘
+  \informe@simbolofijo{"2717}{\informemal}% ✗
+  \informe@simbolofijo{"2715}{\informemal}% ✕
+  \informe@simbolofijo{"2716}{\informemal}% ✖
+  \informe@simbolofijo{"25B2}{\informefalta}% ▲
   \informe@simbolo{"274C}{\textcolor{informeprimario}{\informe@aspa}}% ❌
-  \informe@simbolo{"2714}{\ensuremath{\checkmark}}% ✔
-  \informe@simbolo{"2713}{\ensuremath{\checkmark}}% ✓
+  \informe@simbolofijo{"2714}{\informeok}% ✔
+  \informe@simbolofijo{"2713}{\informeok}% ✓
   \informe@simbolo{"2705}{\ensuremath{\checkmark}}% ✅
   \informe@simbolo{"2611}{\ensuremath{\checkmark}}% ☑
   \informe@simbolo{"2610}{\ensuremath{\square}}% ☐
@@ -265,7 +281,7 @@
   \informe@simbolo{"1F7E2}{\textcolor{green!60!black}{\textbullet}}% 🟢
   \informe@simbolo{"1F7E1}{\textcolor{yellow!70!orange}{\textbullet}}% 🟡
   \informe@simbolo{"2B50}{\ensuremath{\bigstar}}% ⭐
-  \informe@simbolo{"2605}{\ensuremath{\bigstar}}% ★
+  \informe@simbolofijo{"2605}{\informeextra}% ★
   \informe@simbolo{"2606}{\ensuremath{\star}}% ☆
   % superíndices y subíndices
   \informe@simbolo{"2070}{\textsuperscript{0}}\informe@simbolo{"2074}{\textsuperscript{4}}%
@@ -332,6 +348,32 @@
   \informe@simbolo{"25B8}{\ensuremath{\blacktriangleright}}\informe@simbolo{"2026}{\ldots}%
 }
 
+% --- Informe del cante y del simulacro (marcas que pone informe.lua) ---------------------
+% ✓ acierto (verde), ✕ error (rojo), ▲ falta (dorado), ★ extra (color de la oposición); las
+% insignias «grave», «leve», «alta», «media»; las etiquetas de cada lista; la ficha de cabecera
+% con la nota; la nota de cada apartado a la derecha de su título; los minutos «[07:12]» en gris
+% y las llamadas «[E1]» del anexo, enlazadas con su error.
+\usetikzlibrary{shapes.geometric}
+\definecolor{informeverde}{HTML}{3C7D3A}
+\definecolor{informerojo}{HTML}{B22222}
+\definecolor{informeambar}{HTML}{B8860B}
+\newcommand{\informeok}{\tikz[baseline=0]\draw[informeverde,line width=1.2pt,line cap=round,line join=round](0,0.5ex)--(0.38ex,0.08ex)--(1.05ex,1.05ex);}
+\newcommand{\informemal}{\tikz[baseline=0]\draw[informerojo,line width=1.2pt,line cap=round](0.08ex,0.08ex)--(0.92ex,0.92ex)(0.08ex,0.92ex)--(0.92ex,0.08ex);}
+\newcommand{\informefalta}{\tikz[baseline=0]\fill[informeambar](0,0)--(1.05ex,0)--(0.525ex,0.95ex)--cycle;}
+\newcommand{\informeextra}{\tikz[baseline=-0.05ex]\node[star,star points=5,star point ratio=2.3,fill=informeprimario,inner sep=0pt,minimum size=1.35ex]{};}
+\newcommand{\informeinsignia}[2]{{\setlength{\fboxsep}{1.4pt}\colorbox{#1!13}{\footnotesize\bfseries\color{#1}\strut #2}}}
+\newcommand{\informeminuto}[1]{{\small\color{informegris}[#1]}}
+% Tras la línea en cursiva que sigue a un título (tramo, tiempo, peso): sin corte hasta lo siguiente
+\newcommand{\informeseguido}{\par\nobreak\@nobreaktrue}
+\newcommand{\informeetiqueta}[2]{\par\informe@sitio{6}\vspace{0.35em}{\footnotesize\bfseries\color{#1}\addfontfeatures{LetterSpace=9}\MakeUppercase{#2}}\par\nobreak\vspace{0.1em}}
+\newcommand{\informenotaapartado}[1]{{\normalsize\color{informeprimario}\textbf{#1}\,{\footnotesize\color{informegris}/\,10}}}
+\newcommand{\informellamada}[1]{\textsuperscript{\hyperlink{#1}{\bfseries\color{informerojo}#1}}}
+\newcommand{\informerotulo}[1]{{\scriptsize\bfseries\color{informegris}\addfontfeatures{LetterSpace=9}\MakeUppercase{#1}}}
+\newcommand{\informenota}[1]{{\fontsize{22}{24}\selectfont\bfseries\color{informeprimario}#1}{\small\color{informegris}\,/\,10}}
+\newtcolorbox{informeficha}{enhanced,colback=informefondo,colframe=informefondo,boxrule=0pt,
+  borderline north={1.2pt}{0pt}{informefilete},arc=0pt,left=8pt,right=8pt,top=7pt,bottom=6pt,
+  before skip=0.2em,after skip=1em}
+
 % --- Hiperenlaces (al final) ------------------------------------------------------------
 \RequirePackage[unicode]{hyperref}
 \hypersetup{colorlinks=true,linkcolor=informeprimario,urlcolor=informesecundario,citecolor=informesecundario,
@@ -339,6 +381,6 @@
 \urlstyle{same}
 \IfFileExists{bookmark.sty}{\RequirePackage{bookmark}}{}
 % En los marcadores del PDF, los símbolos sustituidos salen como texto llano
-\pdfstringdefDisableCommands{\def\ensuremath#1{#1}\def\textsuperscript#1{#1}\def\textsubscript#1{#1}\def\textcolor#1#2{#2}}
+\pdfstringdefDisableCommands{\def\hfill{ }\def\informenotaapartado#1{· #1/10}\def\ensuremath#1{#1}\def\textsuperscript#1{#1}\def\textsubscript#1{#1}\def\textcolor#1#2{#2}}
 
 \endinput

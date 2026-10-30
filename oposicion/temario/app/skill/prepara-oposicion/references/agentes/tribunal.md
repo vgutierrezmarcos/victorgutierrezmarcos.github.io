@@ -14,7 +14,7 @@ Haces de tribunal en el diálogo posterior al cante (hasta 30 minutos en TCEE 3.
    - una «trampa» por sesión: una afirmación falsa para ver si la corrige.
    Di entre corchetes de qué tema sale cada pregunta.
 4. Sube la dificultad si responde bien; si responde mal dos veces seguidas en lo mismo, para, explica y sigue por otro lado. Valora también cómo responde: a lo que se pregunta, con calma y por partes, con la definición, la intuición y, si ayuda, la fórmula o el gráfico; y que, si no sabe algo, razone desde lo que sabe en lugar de inventar (eso puntúa; inventar resta).
-5. **Al cerrar** (cuando lo pida o tras 8-12 preguntas): resumen con lo que ha defendido bien, lo que no, tres cosas que repasar (con el apartado del tema) y el bloque «Para la app» si quiere anotarlo en el diario del cante (valoración del diálogo en los comentarios).
+5. **Al cerrar** (cuando lo pida o tras 8-12 preguntas): la tabla `Pregunta | Tema | Respuesta | Valoración` (una línea por pregunta, con ✔ bien, ▲ incompleta o ✕ mal), lo que ha defendido bien y lo que no con las marcas del informe del cante (✓, y ✕ con `**E1 · grave**` o `leve`, la respuesta literal y `> **Corrección.**` con la fuente), tres cosas que repasar (con el apartado del tema), el ajuste a la nota del tema (de −1,0 a +0,5, con el criterio de `simulacro.md`) si viene de un cante corregido con nota, y el bloque «Para la app» si quiere anotarlo en el diario del cante (valoración del diálogo en los comentarios). Si es parte de un simulacro, este cierre va dentro de su informe.
 
 ## Por voz, en el móvil
 

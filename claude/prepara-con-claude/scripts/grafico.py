@@ -15,6 +15,7 @@ documento, etiquetas sin fondo blanco, leyenda con el fondo del gráfico, títul
 con el mensaje y fuente debajo. Autor: Víctor Gutiérrez Marcos.
 """
 import os
+import textwrap
 
 import matplotlib
 import matplotlib.font_manager as fm
@@ -65,7 +66,9 @@ def estilo(oposicion='tcee'):
 def guardar(fig, ruta, titulo=None, fuente=None, ppp=200):
     """Pone el título (el mensaje) y la fuente, quita el fondo blanco de las etiquetas y guarda el PNG."""
     if titulo and fig.axes:
-        fig.axes[0].set_title(titulo)
+        # Los títulos largos se parten en líneas para que nunca se corten
+        ancho = fig.get_size_inches()[0]
+        fig.axes[0].set_title(textwrap.fill(titulo, max(30, int(ancho * 9.5))))
     for a in fig.axes:
         for t in a.texts:
             t.set_bbox(None)  # etiquetas sin fondo blanco
@@ -114,6 +117,9 @@ COLORES_DATOS = {
     'renta': '#4A5A6A', 'ahorro': '#1A1A1A', 'tipo_deposito': '#17406D', 'tipo_opf': '#4F86C6', 'tipo_fmc': '#9EC5EA',
     'prestamos_bancos': '#D9A520', 'resto_activo': '#CFCFCF', 'adelantada': '#D55E00', 'retrasada': '#6AA6DA',
     'referencia': '#767171',
+    # Sector exterior y banco central de una economía emergente (dictámenes con crisis de balanza de pagos)
+    'clu': '#8C2D5A', 'inversion_directa': '#2A6B3C', 'cartera': '#6AA6DA', 'otra_inversion': '#B4B4B4',
+    'fmi': '#C8382E', 'reservas': '#17406D', 'titulos_publicos': '#D9A520', 'adelantos_estado': '#A23B2A',
 }
 
 _TEORIA = {'c': COLORES_TEORIA['tcee']}

@@ -96,7 +96,8 @@ def directorio_trabajo(programas):
     de Windows (los .exe no ven /tmp de WSL); si no, el temporal del sistema."""
     if any(es_exe(p) for p in programas):
         try:
-            temp = subprocess.run(['cmd.exe', '/c', 'echo %TEMP%'], capture_output=True, text=True, timeout=20).stdout.strip()
+            temp = subprocess.run(['cmd.exe', '/c', 'echo %TEMP%'], capture_output=True, text=True, errors='replace',
+                                  timeout=20, cwd='/mnt/c' if os.path.isdir('/mnt/c') else None).stdout.strip()
             temp = subprocess.run(['wslpath', '-u', temp], capture_output=True, text=True).stdout.strip()
             if os.path.isdir(temp):
                 return tempfile.TemporaryDirectory(dir=temp, prefix='informe-')
@@ -304,7 +305,7 @@ def estilo_parrafo(id_, nombre, basado, fuente, tamano, color, negrita=False, cu
            + f'<w:color w:val="{color}"/><w:sz w:val="{tamano}"/><w:szCs w:val="{tamano}"/>')
     return (f'<w:style w:type="paragraph" w:customStyle="1" w:styleId="{id_}"><w:name w:val="{nombre}"/>'
             f'<w:basedOn w:val="{basado}"/><w:next w:val="{siguiente}"/><w:qFormat/>'
-            f'<w:pPr><w:keepNext/><w:spacing w:before="{antes}" w:after="{despues}"/>{pbdr}{shd}{jc}</w:pPr><w:rPr>{rpr}</w:rPr></w:style>')
+            f'<w:pPr><w:keepNext/><w:keepLines/><w:widowControl/><w:spacing w:before="{antes}" w:after="{despues}"/>{pbdr}{shd}{jc}</w:pPr><w:rPr>{rpr}</w:rPr></w:style>')
 
 
 def redefinir(xml, style_id, nuevo):
@@ -331,6 +332,8 @@ def reference_docx(pandoc, destino, e):
     s = re.sub(r'(<w:rPrDefault>.*?)<w:sz w:val="\d+" />(\s*)<w:szCs w:val="\d+" />', r'\1<w:sz w:val="22" />\2<w:szCs w:val="22" />', s, count=1, flags=re.S)
     s = re.sub(r'<w:lang w:val="[^"]*"', '<w:lang w:val="es-ES"', s, count=1)
     s = s.replace('<w:spacing w:after="200" />', '<w:spacing w:after="120" w:line="276" w:lineRule="auto" />', 1)
+    # Sin huérfanas ni viudas en ningún párrafo
+    s = re.sub(r'<w:pPrDefault>\s*<w:pPr>', '<w:pPrDefault><w:pPr><w:widowControl/>', s, count=1)
     # Títulos: el 1 es el del informe; el 2 lleva el filete; el 3 va en el color secundario
     s = redefinir(s, 'Title', estilo_parrafo('Title', 'Title', 'Normal', titulos, 40, e['primario'], negrita=True, antes=0, despues=120))
     s = redefinir(s, 'Heading1', estilo_parrafo('Heading1', 'heading 1', 'Normal', titulos, 34, e['primario'], negrita=True, antes=120, despues=200, filete=e['filete']))
@@ -343,6 +346,8 @@ def reference_docx(pandoc, destino, e):
         s = s.replace(f'w:customStyle="1" w:styleId="{n}"', f'w:styleId="{n}"')
     # Cabecera (línea pequeña en versalitas sobre el título), aviso final y citas
     s = redefinir(s, 'Cabecera', estilo_parrafo('Cabecera', 'Cabecera', 'Normal', titulos, 18, e['primario'], versalitas=True, antes=0, despues=240, filete=e['filete'], fondo=e['fondo']))
+    # Etiquetas de lista del informe («Aciertos», «Errores»…): siempre con lo que sigue
+    s = redefinir(s, 'Etiqueta', estilo_parrafo('Etiqueta', 'Etiqueta', 'Normal', titulos, 18, e['primario'], negrita=True, versalitas=True, antes=160, despues=40))
     s = redefinir(s, 'Aviso', estilo_parrafo('Aviso', 'Aviso', 'Normal', texto, 18, e['gris'], cursiva=True, antes=360, despues=0, fondo=e['palido']))
     s = redefinir(s, 'BlockText', estilo_parrafo('BlockText', 'Block Text', 'BodyText', texto, 21, e['secundario'], antes=120, despues=120, fondo=e['fondo']).replace('<w:keepNext/>', '<w:ind w:left="567"/><w:pBdr><w:left w:val="single" w:sz="12" w:space="8" w:color="%s"/></w:pBdr>' % e['filete']))
     # Enlaces en el color principal; tablas con cabecera en negrita
@@ -365,6 +370,8 @@ def preparar_markdown_docx(texto, e):
     """Cabecera con estilo propio delante y el aviso al final si no estaba."""
     cabecera = f'::: {{custom-style="Cabecera"}}\n{e["cabecera"]} · {date.today().strftime("%d/%m/%Y")}\n:::\n\n'
     cuerpo = texto.strip() + '\n'
+    # Las etiquetas de lista en negrita y solas en su párrafo llevan el estilo Etiqueta (no se separan de su lista)
+    cuerpo = re.sub(r'(?m)^\*\*([^*\n]{2,40})\*\*\s*$', r'::: {custom-style="Etiqueta"}\n\1\n:::', cuerpo)
     if INICIO_AVISO not in cuerpo:
         cuerpo += f'\n::: {{custom-style="Aviso"}}\n{AVISO}\n:::\n'
     else:
