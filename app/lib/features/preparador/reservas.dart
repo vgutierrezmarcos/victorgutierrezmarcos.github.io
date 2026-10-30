@@ -60,6 +60,8 @@ class _FilaReservaPedidaState extends ConsumerState<FilaReservaPedida> {
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Reserva por confirmar', style: context.textos.labelSmall?.copyWith(color: context.colores.dorado, fontWeight: FontWeight.w700)),
               Text('${fechaCorta(r.fecha)} · ${describirReserva(r)}', style: context.textos.titleSmall),
+              if (r.modalidad != Modalidad.sinIndicar || r.temas.isNotEmpty)
+                Text([if (r.modalidad == Modalidad.presencial) 'Presencial', if (r.modalidad == Modalidad.online) 'Online', if (r.temas.isNotEmpty) 'Temas: ${r.temas.join(', ')}'].join(' · '), style: context.textos.labelSmall),
               if (r.nota.isNotEmpty) Text(r.nota, style: context.textos.labelSmall),
             ]),
           ),

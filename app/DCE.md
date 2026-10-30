@@ -287,6 +287,9 @@ Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.googl
 
 ## Conector Claude (MCP)
 
+- [x] **Agendar clases desde la IA (30 oct.)**: el conector tiene `preparar_clase` y `agendar_clase` (`mcp/worker/src/clases.ts`). Como opositor escribe una reserva `pedida` con `modalidad` y `temas` (campos nuevos de `Reserva`, `red.dart`) y fija los temas en `settings.temasClases` (`res_{id}`); al aceptarla, `sesionDeReserva` pasa la modalidad, la plataforma y los temas (como `temasPropuestos`) a la sesión, y `FilaReservaPedida` los enseña. Como preparador escribe `sesiones/{id}` y la copia en `cantes/{id}` del alumno.
+- [ ] Que la app también deje elegir modalidad y temas al pedir clase (`ReservarPage` y «Con quién» de Nuevo cante), con los mismos campos.
+
 Lo que la app tiene que añadir para el conector «Prepara con Claude» (`mcp/README.md`; diseño en `claude/mcp-fase-2.md`; Worker en `mcp/worker/`). El conector escribe con la sesión del propio opositor, así que la app no necesita nada nuevo de Firebase salvo las reglas de `cantes/{id}/informes`.
 
 - [ ] **Pantalla de informes del cante**: `users/{uid}/cantes/{id}/informes/{fecha}` (`fecha` ISO, `origen: 'claude'`, `informe` en Markdown, y opcionalmente `valoracion`, `valoraciones`, `comentarios`, `criterios`, `tareas[]`). En la ficha del cante hecho, un apartado «Informes» con la lista (fecha y primera línea) y el informe entero renderizado (Markdown, `flutter_markdown` o el visor que ya use la ayuda); borrar un informe desde ahí. El preparador enlazado los ve en la ficha del cante de su alumno (solo lectura; las reglas ya se lo permiten). Cuando el conector guarda valoración o comentarios también cambia `resultado.*` y `updatedAt` del cante: la sincronización por `updatedAt` ya lo recoge.

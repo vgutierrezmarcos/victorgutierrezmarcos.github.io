@@ -10,6 +10,7 @@ import {
   construirCronograma,
   construirInforme,
   cronogramaActivo,
+  nuevoId,
   resumenCantes,
   resumenCronograma,
   resumenProgreso,
@@ -17,7 +18,8 @@ import {
   type TemasPorPregunta,
 } from './datos';
 import { type Apuntes, ErrorApuntes, idDeDrive } from './drive';
-import { type AlmacenDatos, ErrorFirestore, type Json } from './firestore';
+import { MINUTOS_CLASE, MODALIDADES, ahoraMadrid, construirReserva, construirSesion, copiaParaAlumno, erroresPeticion, fechaClase, fijarTemasClase, huecosLibres, proximas, seSolapan, temasDelCante, type PeticionClase } from './clases';
+import { type AlmacenDatos, ErrorFirestore, Firestore, type Json } from './firestore';
 
 export const OPOSICIONES = ['tcee', 'dce'] as const;
 export type Oposicion = (typeof OPOSICIONES)[number];
@@ -33,6 +35,11 @@ export interface Contexto {
   email: string;
   /** Firestore sobre la raíz del opositor en esa oposición, con un ID token vigente. */
   almacen(oposicion: Oposicion): Promise<AlmacenDatos>;
+  /**
+   * Firestore con la sesión del usuario sobre una raíz cualquiera ('' = la de la base de datos):
+   * la red (reservas, huecos, enlaces) y la agenda de un alumno. Las reglas deciden.
+   */
+  almacenEn(raiz: string): Promise<AlmacenDatos>;
   /** Banco de preguntas del test (para el acierto por tema). */
   banco(): Promise<Banco>;
   contenido: Contenido;
@@ -126,6 +133,7 @@ export const TAREAS = {
   ficha_propia: { titulo: 'Ficha de sus apuntes', cuando: 'manda sus apuntes para resumirlos o hacer una ficha', ficheros: ['references/agentes/ficha-propia.md'] },
   como_voy: { titulo: 'Cómo voy', cuando: 'pregunta cómo va, qué tal sus tests o sus cantes', ficheros: ['references/agentes/estadisticas.md'] },
   informe_semanal: { titulo: 'Informe de la semana', cuando: 'pide el informe de la semana', ficheros: ['references/agentes/informe-semanal.md'] },
+  agendar_clase: { titulo: 'Agendar una clase', cuando: 'pide agendar o reservar una clase con su preparador (o, si es preparador, con un alumno)', ficheros: ['references/agentes/agendar-clase.md'] },
   preparador: { titulo: 'Preparar la clase (preparadores)', cuando: 'es preparador y manda cantes o datos de sus alumnos o pide preparar la clase', ficheros: ['references/perfiles.md', 'references/agentes/preparador.md'] },
   documentos: { titulo: 'Gráficos y documentos', cuando: 'pide un gráfico, preguntas tipo test o cualquier documento (resumen, esquema, comparativa, PDF)', ficheros: ['references/documentos-y-graficos.md'] },
 } as const;
@@ -650,6 +658,241 @@ export function crearServidor(ctx: Contexto): McpServer {
       protegido(async () => {
         await ctx.desconectar();
         return json({ desconectado: true, aviso: 'Acceso revocado. Para volver a usar el conector, el opositor tiene que conectarlo de nuevo en su asistente de IA.' });
+      }),
+  );
+
+  // ------------------------------------------------------------ Clases
+
+  /** Raíz de las colecciones de la red (reservas, huecos, enlaces): la de la base en TCEE, oposiciones/{id} en las demás. */
+  const raizRed = (op: Oposicion) => (op === 'tcee' ? '' : `oposiciones/${op}`);
+  type Doc = { [k: string]: Json };
+  const txt = (v: Json | undefined) => (typeof v === 'string' ? v : '');
+  const num = (v: Json | undefined, d: number) => (typeof v === 'number' ? v : d);
+  const leerSeguro = async (a: AlmacenDatos, ruta: string): Promise<Doc | null> => {
+    try {
+      return await a.leer(ruta);
+    } catch (e) {
+      if (e instanceof ErrorFirestore && e.estado === 403) return null;
+      throw e;
+    }
+  };
+  /** Cronograma activo de un árbol (el del opositor; el del alumno, solo si lo comparte con su preparador). */
+  const cronogramaDe = async (a: AlmacenDatos, compartido: boolean): Promise<Doc | null> => {
+    const docs = compartido ? await a.consultar('cronogramas', { where: { campo: 'compartir', op: 'EQUAL', valor: true } }) : await a.listar('cronogramas');
+    return cronogramaActivo(docs)?.datos ?? null;
+  };
+  /** Los temas de los próximos cantes del cronograma (para proponer los de la clase). */
+  const proximasSemanas = (crono: Doc | null, ahora: string, n = 4) =>
+    ((Array.isArray(crono?.semanas) ? crono!.semanas : []) as Doc[])
+      .map((s) => ({ cante: new Date(Date.parse(`${txt(s.lunes).slice(0, 10)}T00:00:00Z`) + 6 * 86_400_000).toISOString().slice(0, 10), temas: Array.isArray(s.temas) ? s.temas.map(String) : [], descanso: s.descanso === true }))
+      .filter((s) => s.cante >= ahora.slice(0, 10))
+      .slice(0, n);
+
+  server.registerTool(
+    'preparar_clase',
+    {
+      title: 'Preparar una clase con el preparador o con un alumno',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Todo lo que hace falta para agendar una clase, leído de la app: si el usuario es opositor (sus preparadores aceptados, sus huecos libres de las próximas 4 semanas, la duración habitual y sus reservas pendientes) y/o preparador (sus alumnos, si están enlazados, su duración y plataforma por defecto), sus próximas clases (para ver choques) y los temas que tocan según el cronograma (el suyo como opositor; el del alumno, si lo comparte, como preparador). Llámala ANTES de agendar_clase y pregunta solo lo que falte: día y hora, presencial u online, temas (propón los del cronograma) y con quién. Fechas y horas en hora de Madrid.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        con: z.string().optional().describe('Como preparador: id del alumno (de la lista de alumnos) para ver su agenda y su cronograma compartido.'),
+        dia: z.string().optional().describe('Día de la clase, «AAAA-MM-DD», para dar los temas del cronograma de ese día.'),
+      },
+    },
+    async ({ oposicion, con, dia }) =>
+      protegido(async () => {
+        const yo = await ctx.almacen(oposicion);
+        const red = await ctx.almacenEn(raizRed(oposicion));
+        const ahora = ahoraMadrid();
+        const salida: Record<string, unknown> = { ahora_en_madrid: ahora.slice(0, 16), oposicion };
+
+        // Como opositor
+        const vinculos = await yo.listar('preparadores');
+        if (vinculos.length) {
+          const misReservas = await red.consultar('reservas', { where: { campo: 'alumno', op: 'EQUAL', valor: ctx.uid } });
+          const vivas = misReservas.filter((r) => ['pedida', 'aceptada'].includes(txt(r.datos.estado)) && txt(r.datos.fecha) > ahora);
+          const preparadores = [];
+          for (const v of vinculos) {
+            const enlace = await leerSeguro(red, `preparadores/${v.id}/alumnos/${ctx.uid}`);
+            const aceptado = !!enlace && enlace.aceptado !== false;
+            const huecos = aceptado ? await leerSeguro(red, `huecos/${v.id}`) : null;
+            const pedidas = vivas.filter((r) => txt(r.datos.preparador) === v.id).map((r) => txt(r.datos.fecha));
+            const libres = huecosLibres(huecos, pedidas, ahora);
+            preparadores.push({
+              uid: v.id,
+              nombre: txt(v.datos.nombre) || txt(huecos?.nombre) || 'Tu preparador',
+              aceptado,
+              reservas_abiertas: !!huecos && huecos.activo !== false,
+              minutos_por_defecto: libres[0]?.minutos ?? MINUTOS_CLASE,
+              huecos_libres: libres.slice(0, 24).map((h) => ({ inicio: h.inicio.slice(0, 16), minutos: h.minutos })),
+            });
+          }
+          const crono = await cronogramaDe(yo, false);
+          salida.como_opositor = {
+            preparadores,
+            reservas_pendientes: vivas.map((r) => ({ id: r.id, preparador: txt(r.datos.preparador), fecha: txt(r.datos.fecha).slice(0, 16), minutos: num(r.datos.minutos, MINUTOS_CLASE), estado: txt(r.datos.estado) })),
+            mis_proximas_clases: proximas(await yo.listar('cantes'), ahora).map((c) => ({ ...c, fecha: c.fecha.slice(0, 16) })),
+            temas_del_cronograma: { ...(dia ? { [dia]: temasDelCante(crono, dia) } : {}), proximos_cantes: proximasSemanas(crono, ahora) },
+          };
+        }
+
+        // Como preparador
+        const perfil = await yo.leer('progress/preparador');
+        if (perfil?.activo === true) {
+          const verificado = (await leerSeguro(red, `preparadoresVerificados/${ctx.uid}`))?.activo === true;
+          const alumnos = (await yo.listar('alumnos')).filter((a) => a.datos.borrado !== true);
+          const datos: Record<string, unknown> = {
+            nombre: txt(perfil.nombre),
+            verificado,
+            minutos_por_defecto: num(perfil.minutosClase, MINUTOS_CLASE),
+            plataforma_online: txt(perfil.plataforma) || 'meet',
+            alumnos: alumnos.map((a) => ({ id: a.id, nombre: txt(a.datos.nombre), enlazado: !!txt(a.datos.uid) && a.datos.suelto !== true, ejercicio: num(a.datos.ejercicio, 3) })),
+            mis_proximas_clases: proximas(await yo.listar('sesiones'), ahora).map((c) => ({ ...c, fecha: c.fecha.slice(0, 16) })),
+          };
+          const alumno = con ? alumnos.find((a) => a.id === con) : undefined;
+          if (con && !alumno) return error(`No tienes ningún alumno con id «${con}». Alumnos: ${alumnos.map((a) => `${txt(a.datos.nombre)} (${a.id})`).join(', ') || 'ninguno'}.`);
+          const uidAlumno = alumno ? txt(alumno.datos.uid) : '';
+          if (alumno && uidAlumno) {
+            const suyo = await ctx.almacenEn(Firestore.raizDe(uidAlumno, oposicion));
+            let crono: Doc | null = null;
+            let agenda: ReturnType<typeof proximas> = [];
+            try {
+              crono = await cronogramaDe(suyo, true);
+              agenda = proximas(await suyo.listar('cantes'), ahora);
+            } catch (e) {
+              if (!(e instanceof ErrorFirestore && e.estado === 403)) throw e;
+            }
+            datos.alumno = {
+              id: alumno.id,
+              nombre: txt(alumno.datos.nombre),
+              cronograma_compartido: !!crono,
+              temas_del_cronograma: { ...(dia ? { [dia]: temasDelCante(crono, dia) } : {}), proximos_cantes: proximasSemanas(crono, ahora) },
+              sus_proximas_clases: agenda.map((c) => ({ fecha: c.fecha.slice(0, 16), minutos: c.minutos, con: c.con })),
+            };
+          }
+          salida.como_preparador = datos;
+        }
+        if (!salida.como_opositor && !salida.como_preparador)
+          return error('En esta oposición no tienes preparadores enlazados ni eres preparador en la app. Para tener clase con un preparador, enlázalo antes desde la app (Más → Mi preparador).');
+        return json(salida);
+      }),
+  );
+
+  server.registerTool(
+    'agendar_clase',
+    {
+      title: 'Agendar una clase en la app',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+      description:
+        'Agenda una clase en la app. Como OPOSITOR («como»: «opositor», «con»: uid del preparador): pide la clase a su preparador (una reserva que él acepta en su app; al aceptarla, aparece en las dos agendas con la modalidad y los temas) y fija esos temas para la clase en la agenda del opositor. Como PREPARADOR («como»: «preparador», «con»: id del alumno): crea la clase en su agenda y en la del alumno (si está enlazado), con los temas como propuesta que el alumno acepta o cambia. Antes, preparar_clase y la confirmación explícita del usuario con el resumen (día, hora, duración, modalidad, temas, con quién). Hora de Madrid.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        como: z.enum(['opositor', 'preparador']),
+        con: z.string().describe('Opositor: uid del preparador. Preparador: id del alumno. Los dos salen de preparar_clase.'),
+        dia: z.string().describe('«AAAA-MM-DD».'),
+        hora: z.string().describe('«HH:MM», hora de Madrid.'),
+        minutos: z.number().int().optional().describe('Duración; si falta, la habitual (la del hueco o la del preparador; 120 por defecto).'),
+        modalidad: z.enum(MODALIDADES),
+        temas: z.array(z.string()).max(6).default([]).describe('Códigos «3.A.8». Por defecto, los del cronograma para ese día.'),
+        lugar: z.string().max(200).optional().describe('Presencial: dónde.'),
+        enlace: z.string().max(300).optional().describe('Online: enlace de la videollamada, si ya lo hay (si no, la app del preparador crea el de Meet).'),
+        nota: z.string().max(500).optional().describe('Lo que el usuario quiera decir (qué le preocupa, qué quiere trabajar).'),
+        aunque_choque: z.boolean().default(false).describe('true solo si el usuario ya sabe que pisa otra clase suya y quiere seguir.'),
+      },
+    },
+    async ({ oposicion, como, con, dia, hora, minutos, modalidad, temas, lugar, enlace, nota, aunque_choque }) =>
+      protegido(async () => {
+        const fecha = fechaClase(dia, hora);
+        if (!fecha) return error(`Fecha u hora no válidas: «${dia}» «${hora}» (formato AAAA-MM-DD y HH:MM).`);
+        const yo = await ctx.almacen(oposicion);
+        const red = await ctx.almacenEn(raizRed(oposicion));
+        const ahora = ahoraMadrid();
+
+        if (como === 'opositor') {
+          const vinculo = await yo.leer(`preparadores/${con}`);
+          const enlaceRed = await leerSeguro(red, `preparadores/${con}/alumnos/${ctx.uid}`);
+          if (!vinculo || !enlaceRed || enlaceRed.aceptado === false)
+            return error('Ese preparador no está enlazado contigo (o aún no ha aceptado el enlace). Mira preparar_clase.');
+          const huecos = await leerSeguro(red, `huecos/${con}`);
+          const p: PeticionClase = { fecha, minutos: minutos ?? num(((huecos?.huecos as Doc[] | undefined) ?? [])[0]?.minutos, MINUTOS_CLASE), modalidad, temas, nota, lugar, enlace };
+          const errores = erroresPeticion(p, ahora);
+          if (errores.length) return error(`No se ha pedido la clase: ${errores.join('; ')}.`);
+          const choques = proximas(await yo.listar('cantes'), ahora, 800).filter((c) => seSolapan(fecha, p.minutos, c.fecha, c.minutos));
+          if (choques.length && !aunque_choque)
+            return error(`Pisa otra clase tuya: ${choques.map((c) => `${c.fecha.slice(0, 16)}${c.con ? ` con ${c.con}` : ''}`).join(', ')}. Pregunta al usuario y, si quiere seguir, repite con aunque_choque: true.`);
+          const id = nuevoId();
+          const ahoraIso = new Date().toISOString();
+          await red.escribir(`reservas/${id}`, construirReserva(id, p, con, ctx.uid, txt(enlaceRed.nombre) || ctx.email.split('@')[0], ahoraIso));
+          if (temas.length) {
+            const ajustes = (await yo.leer('progress/settings')) ?? {};
+            const actuales = Array.isArray(ajustes.temasClases) ? ajustes.temasClases.map(String) : [];
+            await yo.escribir('progress/settings', { temasClases: fijarTemasClase(actuales, `res_${id}`, ahora, temas), updatedAt: ahora }, ['temasClases', 'updatedAt']);
+          }
+          return json({
+            pedida: true,
+            reserva: id,
+            fecha: fecha.slice(0, 16),
+            minutos: p.minutos,
+            modalidad,
+            temas,
+            preparador: txt(vinculo.nombre) || 'tu preparador',
+            aviso: 'Es una petición: tu preparador la verá en su app y tiene que aceptarla. Cuando la acepte, la clase aparecerá en tu agenda con estos temas. Puedes anularla desde la app mientras esté pendiente.',
+          });
+        }
+
+        // Como preparador
+        const perfil = await yo.leer('progress/preparador');
+        if (perfil?.activo !== true) return error('En esta oposición no eres preparador en la app (Más → Soy preparador).');
+        const alumno = await yo.leer(`alumnos/${con}`);
+        if (!alumno || alumno.borrado === true) return error(`No tienes ningún alumno con id «${con}». Mira preparar_clase.`);
+        const p: PeticionClase = { fecha, minutos: minutos ?? num(perfil.minutosClase, MINUTOS_CLASE), modalidad, temas, nota, lugar, enlace };
+        const errores = erroresPeticion(p, ahora);
+        if (errores.length) return error(`No se ha creado la clase: ${errores.join('; ')}.`);
+        const uidAlumno = alumno.suelto === true ? '' : txt(alumno.uid);
+        const suyo = uidAlumno ? await ctx.almacenEn(Firestore.raizDe(uidAlumno, oposicion)) : null;
+        let agendaAlumno: ReturnType<typeof proximas> = [];
+        if (suyo) {
+          try {
+            agendaAlumno = proximas(await suyo.listar('cantes'), ahora, 800);
+          } catch (e) {
+            if (!(e instanceof ErrorFirestore && e.estado === 403)) throw e;
+          }
+        }
+        const choques = [...proximas(await yo.listar('sesiones'), ahora, 800), ...agendaAlumno].filter((c) => seSolapan(fecha, p.minutos, c.fecha, c.minutos));
+        if (choques.length && !aunque_choque)
+          return error(`Pisa otra clase (tuya o del alumno): ${choques.map((c) => c.fecha.slice(0, 16)).join(', ')}. Pregunta al usuario y, si quiere seguir, repite con aunque_choque: true.`);
+        const id = nuevoId();
+        const ahoraIso = new Date().toISOString();
+        const nombre = txt(perfil.nombre);
+        const numTemas = num(perfil.temasPorClase, oposicion === 'tcee' ? 1 : 2);
+        const sesion = construirSesion(id, p, con, num(alumno.ejercicio, 3), oposicion === 'tcee' ? 30 : 20, { nombre, minutosClase: p.minutos, plataforma: txt(perfil.plataforma), numTemas }, ahoraIso);
+        await yo.escribir(`sesiones/${id}`, sesion);
+        let enSuAgenda = false;
+        if (suyo) {
+          try {
+            await suyo.escribir(`cantes/${id}`, copiaParaAlumno(sesion, ctx.uid, nombre));
+            enSuAgenda = true;
+          } catch (e) {
+            if (!(e instanceof ErrorFirestore && e.estado === 403)) throw e;
+          }
+        }
+        return json({
+          creada: true,
+          sesion: id,
+          fecha: fecha.slice(0, 16),
+          minutos: p.minutos,
+          modalidad,
+          temas_propuestos: temas,
+          alumno: txt(alumno.nombre),
+          en_la_agenda_del_alumno: enSuAgenda,
+          aviso: enSuAgenda
+            ? 'La clase ya está en tu agenda y en la del alumno, con los temas como propuesta. Al abrir tu app se crea el evento de Google Calendar (y el enlace de Meet si es online y lo tienes activado).'
+            : uidAlumno
+              ? 'La clase está en tu agenda; la app la copiará a la del alumno la próxima vez que la abras (hace falta que tu perfil de preparador esté verificado).'
+              : 'La clase está en tu agenda. Este alumno no usa la app, así que no le llega: avísale tú.',
+        });
       }),
   );
 

@@ -27,6 +27,7 @@ Antes de nada, lee `LICENCIA.md`: el material de `references/temas`, `references
 | Pide que le preguntes como el tribunal o «ponme a prueba» | `references/agentes/tribunal.md` | Las preguntas del tribunal, por turnos (por voz si está en el móvil) |
 | Pide un test o preguntas sobre lo que falla (con o sin el JSON de la app) | `references/agentes/test-personal.md` | Diez preguntas: oficiales del banco del test con su explicación y, si faltan, nuevas marcadas como tales |
 | Pide tarjetas, flashcards o repaso espaciado de un tema | `references/agentes/tarjetas.md` | De 20 a 40 tarjetas hechas con la ficha, en el fichero que importa la app |
+| Pide agendar o reservar una clase con su preparador («pídeme clase el jueves»), o, si es preparador, con un alumno | `references/agentes/agendar-clase.md` | Con el conector: lee sus datos (`preparar_clase`), propone día, hora, modalidad y temas del cronograma, confirma y la agenda (`agendar_clase`) |
 | Pregunta qué le toca hoy o esta semana | `references/agentes/hoy.md` | El plan del día con el cronograma, los repasos y las dudas pendientes |
 | Manda sus propios apuntes para resumirlos o hacer una ficha | `references/agentes/ficha-propia.md` | La ficha de repaso con el formato del temario |
 | Pregunta cómo va, qué tal sus tests o sus cantes | `references/agentes/estadisticas.md` | La lectura de sus datos con recomendaciones |

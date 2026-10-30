@@ -106,6 +106,11 @@ export class Firestore implements AlmacenDatos {
     this.base = `https://firestore.googleapis.com/v1/${this.documentos}`;
   }
 
+  /** URL de un documento o colección bajo la raíz (la raíz vacía es la de la base de datos). */
+  private url(ruta: string): string {
+    return [this.base, this.raiz, ruta].filter(Boolean).join('/');
+  }
+
   static raizDe(uid: string, oposicion: string): string {
     return oposicion === 'tcee' ? `users/${uid}` : `users/${uid}/oposiciones/${oposicion}`;
   }
@@ -131,7 +136,7 @@ export class Firestore implements AlmacenDatos {
   }
 
   async leer(ruta: string): Promise<{ [k: string]: Json } | null> {
-    const doc = (await this.peticion('GET', `${this.base}/${this.raiz}/${ruta}`)) as Documento | null;
+    const doc = (await this.peticion('GET', this.url(ruta))) as Documento | null;
     return doc ? deCampos(doc.fields) : null;
   }
 
@@ -139,7 +144,7 @@ export class Firestore implements AlmacenDatos {
     const out: Array<{ id: string; datos: { [k: string]: Json } }> = [];
     let token: string | undefined;
     do {
-      const url = new URL(`${this.base}/${this.raiz}/${coleccion}`);
+      const url = new URL(this.url(coleccion));
       url.searchParams.set('pageSize', '300');
       if (token) url.searchParams.set('pageToken', token);
       const r = (await this.peticion('GET', url.toString())) as { documents?: Documento[]; nextPageToken?: string } | null;
@@ -154,13 +159,14 @@ export class Firestore implements AlmacenDatos {
     if (c.where) structuredQuery.where = { fieldFilter: { field: { fieldPath: c.where.campo }, op: c.where.op, value: aValor(c.where.valor) } };
     if (c.orderBy) structuredQuery.orderBy = [{ field: { fieldPath: c.orderBy }, direction: c.descendente ? 'DESCENDING' : 'ASCENDING' }];
     if (c.limite) structuredQuery.limit = c.limite;
-    const r = (await this.peticion('POST', `${this.base}/${this.raiz}:runQuery`, { structuredQuery })) as Array<{ document?: Documento }> | null;
+    const padre = this.raiz ? `${this.base}/${this.raiz}` : this.base;
+    const r = (await this.peticion('POST', `${padre}:runQuery`, { structuredQuery })) as Array<{ document?: Documento }> | null;
     return (r ?? []).filter((x) => x.document).map((x) => ({ id: idDe(x.document!), datos: deCampos(x.document!.fields), creado: x.document!.createTime }));
   }
 
   /** PATCH: sin `soloCampos` sustituye el documento entero (o lo crea); con ellos, solo cambia esos campos. */
   async escribir(ruta: string, datos: { [k: string]: Json }, soloCampos?: string[]): Promise<void> {
-    const url = new URL(`${this.base}/${this.raiz}/${ruta}`);
+    const url = new URL(this.url(ruta));
     for (const campo of soloCampos ?? []) url.searchParams.append('updateMask.fieldPaths', campo);
     await this.peticion('PATCH', url.toString(), { fields: aCampos(datos) });
   }
