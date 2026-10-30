@@ -36,6 +36,7 @@ import 'features/inicio/estadisticas_dialogo.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/inicio/permisos_sheet.dart';
 import 'features/mas/cuenta_page.dart';
+import 'features/mas/economia_page.dart';
 import 'features/mas/mas_page.dart';
 import 'features/organizacion/mapa_calor_page.dart';
 import 'features/organizacion/organizacion_hub_page.dart';
@@ -104,6 +105,7 @@ final _router = GoRouter(
         StatefulShellBranch(navigatorKey: clavesRamas[4], routes: [
           GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
             GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
+            GoRoute(path: 'economia', builder: (c, s) => const EconomiaPage()),
             GoRoute(path: 'preparador', builder: (c, s) => const PreparadorPage(), routes: [
               GoRoute(path: 'alta', builder: (c, s) => const AltaPreparadorPage()),
             ]),
