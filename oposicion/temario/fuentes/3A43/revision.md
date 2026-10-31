@@ -163,6 +163,7 @@ Víctor está fuera hasta el 9/11: se aplica la opción recomendada.
 - **A43-18 — Kaldor.** Aplicada: gráfico de EE. UU. y España como contraste.
 - **A43-19 — «En torno al 2 %».** Aplicada: «cerca del 2 % desde la posguerra y algo menos desde 1870».
 - **A43-20 — Convergencia reciente.** Aplicada: PWT con la OCDE resaltada, «lenta y sensible a la base de datos».
+- **A43-21 — Residuo de Solow y g** (coherencia del 3.A.45, 1/11/2026). Decía «PTF, $g\equiv\gamma_A$»; con $A$ aumentador del trabajo y Cobb-Douglas, la PTF (neutral de Hicks) crece a $(1-\alpha)g$. Corregido en I.3; el 3.A.45 explica Hicks frente a Harrod en una caja.
 - Coordinador (1/11/2026): tercera autorremisión del anexo D («Para profundizar», \vertema{3.A.43}) cambiada por «como el del apartado III» (opción b del canon: se adaptan las frases que nombran el propio tema).
 - Coordinador (1/11/2026): el gráfico de tasas de Solow (gráfico 7, imprescindible en el cante) vuelve a 0,7 del ancho; a 0,52 los rótulos eran ilegibles. Se acepta el hueco que vuelva a quedar.
 - Control de calidad (31/10/2026): `verificar-tema.py` sin errores; PDF, HTML (claro y oscuro) y Word revisados. Quedan correcciones menores de bibliografía, de 4 gráficos y de este informe, devueltas al coordinador.
