@@ -1,7 +1,7 @@
 # Histéresis del desempleo (Blanchard y Summers, 1986-1987)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.28 (La tasa natural de paro y la NAIRU. La persistencia del desempleo) — la persistencia está en el título.
-- **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.7 (resumen: persistencia en la NEK), 4.A.16 (mención: paro de larga duración y desplazamiento de la curva de Beveridge en España), 1D01 (mención: III.1 y VII.2).
+- **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.7 (resumen: persistencia en la NEK), 4.A.16 (mención: paro de larga duración y desplazamiento de la curva de Beveridge en España), 1D01 (mención: III.1 y VII.2), 3.A.27 (mención; hecho, 31/10/2026: el mecanismo de *insiders* y *outsiders* desarrollado allí, III.3 y anexo E, con Blanchard y Summers, 1986, y remisión aquí; en el caso B el empleo depende de la historia; ficha `insiders-outsiders`).
 - **Manuales de referencia:** Blanchard y Summers (1986), *NBER Macroeconomics Annual*; Lindbeck y Snower (1988), *The Insider-Outsider Theory*; Layard, Nickell y Jackman (1991); Ball (2009); Cahuc, Carcillo y Zylberberg (2014), cap. 9.
 - **Decisión D020 (13/10/2026):** ¿Se reserva λ para multiplicadores y precios sombra? Sí: factor de escala t (3.A.11), tasas de búsqueda f(θ) y q(θ) (DMP), persistencia de la histéresis λ_h con subíndice; se admite λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky
 
@@ -9,7 +9,7 @@
 
 **Pregunta:** ¿por qué el paro no vuelve a su nivel previo tras una recesión?
 
-**Mecanismos:** (1) *insiders-outsiders* (Lindbeck-Snower): los salarios se negocian para los empleados y los parados no presionan; (2) pérdida de capital humano y estigma de los parados de larga duración; (3) menor capital físico tras la recesión.
+**Mecanismos:** (1) *insiders-outsiders* (Lindbeck-Snower; modelo en el 3.A.27, ficha `insiders-outsiders`): los salarios se negocian para los empleados y los parados no presionan; (2) pérdida de capital humano y estigma de los parados de larga duración; (3) menor capital físico tras la recesión.
 
 **Ecuación:** la tasa natural depende del paro pasado,
 
@@ -25,6 +25,7 @@ con λ_h = 1 histéresis pura (el paro sigue un paseo aleatorio) y λ_h < 1 pers
 |---|---|---|---|---|
 | 3.A.28 | Persistencia del desempleo | Desarrollo | Mecanismos, ecuación, evidencia (Europa en los ochenta, Ball 2009), implicaciones (coste de las desinflaciones, políticas activas) | — |
 | 3.A.7 | NEK | Resumen | Como aportación de la NEK a la persistencia | La ecuación |
+| 3.A.27 | Determinación de salarios: *insiders* | mención (hecho, 31/10/2026) | El modelo de *insiders* y *outsiders* como mecanismo, desarrollado allí (ficha `insiders-outsiders`); `\vertema{3.A.28}` | La ecuación de λ_h |
 | 4.A.16 | Mercado de trabajo español | Mención | Paro de larga duración y curva de Beveridge (Dolado) | — |
 | 1D01 | Dictamen de coyuntura | Mención | Paro de larga duración, *insiders-outsiders* y pérdida de capital humano: el paro cíclico se vuelve estructural; recomendaciones de políticas activas | El modelo |
 

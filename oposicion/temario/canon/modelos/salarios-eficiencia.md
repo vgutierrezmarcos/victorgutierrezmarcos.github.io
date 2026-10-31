@@ -1,30 +1,39 @@
-# Salarios de eficiencia (Solow 1979; Shapiro y Stiglitz 1984)
+# Salarios de eficiencia (Solow, 1979; Shapiro y Stiglitz, 1984)
 
-- **Área:** macro cerrada · **Tema de referencia:** 3.A.27 (determinación de salarios) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.27 (desarrollo), 3.A.7 (desarrollo → resumen), 3.A.13 (mención; hecho, 19/10/2026: aplicación macro del riesgo moral, con la IC llamada allí condición de no escaqueo; ficha `principal-agente`)
-- **Manuales de referencia:** Romer (2019), cap. 11; Cahuc, Carcillo y Zylberberg (2014), cap. 6; Shapiro y Stiglitz (1984).
+- **Área:** macro cerrada · **Tema de referencia:** **3.A.27** (determinación de salarios; revisado el 31/10/2026, bloque II `sec:eficiencia`: idea, Solow y Shapiro y Stiglitz con a)-e), y anexo C `anexo:shapiro-stiglitz`) — lo tiene en el título.
+- **Temas que lo usan:** 3.A.27 (desarrollo; hecho, 31/10/2026), 3.A.7 (resumen: rigidez real de la NEK; hoy desarrollo con el texto antiguo del 3.A.27 y sus errores), 3.A.13 (mención; hecho, 19/10/2026: aplicación macro del riesgo moral, con la IC llamada allí condición de no escaqueo, sin sigla; ficha `principal-agente`), 3.A.28 (mención: la CNE como otra curva WS, decreciente en el paro; ficha `nairu-layard-nickell`).
+- **Manuales de referencia:** Solow (1979), *Journal of Macroeconomics*; Shapiro y Stiglitz (1984), *AER*; Akerlof y Yellen (1986), *Efficiency Wage Models of the Labor Market*; Romer (2019), cap. 11; Cahuc, Carcillo y Zylberberg (2014), cap. 6.
 - **Decisión D008 (13/10/2026):** ¿Se reserva δ para la tasa de depreciación y se cambian sus otros usos? Sí: pendiente de la NKPC κ, tasa de separación s (DMP y Shapiro-Stiglitz) y tasa social de descuento r_s (4.B.6); δ solo depreciación (y el factor exponencial del modelo β-δ de Laibson)
+- **Sigla (A27-07, DK5 del 3.A.27; [decidir]):** **CNE**, condición de no escaqueo, en castellano (§ 0 de `notacion.md`), con *no-shirking condition* la primera vez; se retira NSC. El 3.A.13 la nombra sin sigla y no tiene que cambiar.
 
-## Presentación de referencia
-Pregunta: ¿por qué las empresas pagan por encima del salario que vacía el mercado? Supuestos (Solow): el esfuerzo e depende del salario real, e = e(w), con e' > 0 y tramo inicial convexo; producción Y = F(e(w)L).
+## Presentación de referencia (3.A.27, II)
 
-$$\max_{w,L}\; F(e(w)L) - wL \;\Rightarrow\; F'(e(w)L)\,e(w) = w,\qquad \frac{w\,e'(w)}{e(w)} = 1\quad(\text{condición de Solow})$$
-Resultado: el salario óptimo w* (elasticidad del esfuerzo igual a 1) no depende de la productividad ni del paro → rigidez del salario real y paro involuntario.
-Shapiro-Stiglitz: el esfuerzo es inobservable y se detecta el escaqueo con probabilidad q; la condición de no escaqueo V_E ≥ V_S implica
-$$w \ge \bar{e} + \left(\rho + \frac{s}{U}\right)\frac{\bar{e}}{q}\quad(s \text{ tasa de separación, } q \text{ probabilidad de detección})$$
-que es decreciente en el paro: el paro actúa como mecanismo disciplinario.
-Gráfico de referencia: plano (L, w): demanda de trabajo y curva de no escaqueo (NSC), asintótica a la oferta total L̄; el equilibrio deja paro involuntario.
+Pregunta: ¿por qué las empresas pagan por encima del salario que vacía el mercado y no lo bajan aunque haya parados que se ofrezcan por menos? Conclusión: si lo que rinde un trabajador depende de lo que cobra, la rigidez del salario real la elige la propia empresa y aparece paro involuntario **sin que nadie tenga poder de mercado**. Se levanta el supuesto 2 (información perfecta) de `tab:supuestos-trabajo` (3.A.25). Pegatina: «Lo barato sale caro».
+
+- **Idea** (`sec:eficiencia-idea`), 5 motivos con su autor: **nutrición** (Leibenstein, 1957), **rotación** (Stiglitz, 1974; Salop, 1979), **selección adversa** (Weiss, 1980), **escaqueo** (Shapiro y Stiglitz, 1984), **equidad e intercambio de regalos** (Akerlof, 1982; Akerlof y Yellen, 1990). Nunca «teorías sociológicas (Akerlof)» para el escaqueo ni «Milgram» para la rotación.
+- **Solow (1979), información perfecta.** Supuestos: $J$ empresas idénticas competitivas, $B=A\,F(e\,L)-w\,L$ (`eq:beneficio-solow`), esfuerzo $e=e(w)$ con $e'>0$ en forma de S, $\overline L$ trabajadores con oferta inelástica. $\max_{L,w}A\,F(e(w)L)-wL$; CPO (`eq:cpo-solow`) y **condición de Solow** (`eq:condicion-solow`, `\funcionclave`):
+  $$\varepsilon_{e,w}\equiv\frac{w^*\,e'(w^*)}{e(w^*)}=1$$
+  El salario de eficiencia **minimiza el coste por unidad de trabajo efectivo $w/e(w)$** (nunca $e(w)/w$): tangencia del rayo desde el origen con la función de esfuerzo. Empleo: $A\,F'(e^*L)=w^*/e^*$; si $J\,L^*<\overline L$, paro $\overline L-J\,L^*$. Implicaciones: paro involuntario; rigidez real ($w^*$ no depende de $A$); rigidez real que amplifica las nominales (Ball y Romer, 1990; 3.A.7). Extensión de **Summers (1988)**: $e=((w-x)/x)^{\eta}$, $x=(1-b\,U)\,w_a$, paro de equilibrio $U=\eta/b$ (`eq:paro-summers`; η y $b$ locales, avisados). Limitación: rigidez demasiado fuerte a largo plazo; no dice por qué el esfuerzo depende del salario.
+- **Shapiro y Stiglitz (1984), información asimétrica.** Supuestos: tiempo continuo, $\overline L$ trabajadores neutrales que descuentan a ρ, $J$ empresas; esfuerzo $\overline e$ (que cuesta $\overline e$) o 0; 3 estados E, S, U (en redonda); transiciones de Poisson: **separación $s$**, **detección $q$**, **tasa de encontrar empleo $f$** (sin argumento; como la $f(\theta)$ del DMP); $B=A\,F(\overline e L)-wL$; sin información asimétrica, pleno empleo, $A\,\overline e\,F'(\overline e\,\overline L/J)>\overline e$. Ecuaciones de valor (`eq:valores-ss`):
+  $$\rho V_{\mathrm E}=(w-\overline e)-s(V_{\mathrm E}-V_{\mathrm U}),\quad \rho V_{\mathrm S}=w-(s+q)(V_{\mathrm S}-V_{\mathrm U}),\quad \rho V_{\mathrm U}=f(V_{\mathrm E}-V_{\mathrm U})$$
+  $V_{\mathrm E}\ge V_{\mathrm S}$ es la **IC** del principal-agente (3.A.13): $V_{\mathrm E}-V_{\mathrm U}=\overline e/q$. Flujos $s\,J\,L=f(\overline L-J\,L)$ con la **tasa de paro $U\equiv(\overline L-J\,L)/\overline L$** (no $u$), $f+s=s/U$. **CNE** (`eq:no-escaqueo`, `\funcionclave`):
+  $$w\ \geq\ \overline e+\Big(\rho+\frac{s}{U}\Big)\frac{\overline e}{q}$$
+  decreciente en el paro (el paro disciplina), infinita con $U\to0$. Equilibrio $E$ = demanda $A\,\overline e\,F'(\overline e L)=w$ (con la **prima**) ∩ CNE, frente al walrasiano $E^W$; estática comparativa: la caída de la demanda mueve a lo largo de la CNE (más ajuste por cantidades); $q\uparrow$ baja la CNE; con $s=0$ (y $f=0$) es horizontal, $w=\overline e+\rho\overline e/q$ (anexo C). Implicaciones: paro involuntario de equilibrio (cita de la p. 438), ineficiencia (un subsidio salarial financiado con un impuesto sobre los beneficios mejora; un subsidio de paro más generoso aumenta el paro). Extensiones: mercados duales (Bulow y Summers, 1986), otros costes del despido.
+- **Evidencia**: Ford, 1914 (rotación 370 % → 54 %, absentismo 10 % → 2,5 %, productividad +40-70 %; Raff y Summers, 1986, 1987); diferencias salariales entre industrias (Krueger y Summers, 1988); Cappelli y Chauvin (1991); Fehr, Kirchsteiger y Riedl (1993); Bewley (1999). **Críticas**: fianzas (Carmichael, 1985) y salarios crecientes con la antigüedad (Lazear, 1979); selección adversa en vez de riesgo moral; CNE demasiado empinada al calibrarla; crecimiento y paro a largo plazo; Gneezy y List (2006).
+
+**Gráficos de referencia** (`oposicion/temario/fuentes/3A27/graficos/`): `solow-esfuerzo.tex` (2 paneles: a, función de esfuerzo en S y rayo tangente, el que se dibuja en la pizarra; b, sin salario de eficiencia, como apoyo) y `shapiro-stiglitz.tex` (**imprescindible**, por capas: demanda, oferta horizontal en $\overline e$ hasta $\overline L$, $E^W$, CNE, $E$ con $w^*$ y el paro, caída de la demanda con $E'$); de apoyo, `estados-ss.tex` (los 3 estados y las tasas), y en el anexo C, `shapiro-stiglitz-variantes.tex` (más vigilancia y $s=0$; no se canta).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.27 | Determinación de salarios | desarrollo | Solow y Shapiro-Stiglitz con el gráfico NSC; otras variantes (rotación, selección adversa, equidad de Akerlof) | — |
-| 3.A.7 | Rigidez real del salario en la NEK | resumen | Condición de Solow y la idea del paro disciplinario | Derivación de la NSC [ver tema 3.A.27] |
-| 3.A.13 | Riesgo moral | mención (hecho, 19/10/2026) | Aplicación del riesgo moral (empresa y trabajador), solución de la teoría de la agencia (pagos diferidos y salarios de eficiencia) y valoración (microfundamenta el paro involuntario de la NEK); dice que la condición de no escaqueo es la **restricción de compatibilidad de incentivos (IC)** del principal-agente; remite a 3.A.27 y 3.A.7 | La NSC |
+| 3.A.27 | Determinación de salarios | desarrollo (hecho, 31/10/2026) | Idea con los 5 motivos; Solow con la condición recuadrada y Summers en una frase; Shapiro y Stiglitz con los 3 estados, las 3 ecuaciones de valor, la CNE como IC y el gráfico por capas; evidencia y críticas; derivaciones en el anexo C | — |
+| 3.A.7 | Rigidez real del salario en la NEK | resumen | Condición de Solow (con $w/e(w)$) y el paro como disciplina (CNE en una frase, como IC), como rigidez real que amplifica las nominales (Ball y Romer, 1990); `\vertema{3.A.27}` | La derivación de la CNE y los 4 gráficos que tiene hoy |
+| 3.A.13 | Riesgo moral | mención (hecho, 19/10/2026) | Aplicación macro del riesgo moral, solución de la agencia (pagos diferidos y salarios de eficiencia); la condición de no escaqueo es la **IC** del principal-agente; remite a 3.A.27 y 3.A.7 | La CNE |
+| 3.A.28 | Tasa natural y NAIRU | mención | La CNE como una curva de fijación de salarios decreciente en el paro (otra WS); `\vertema{3.A.27}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
-- En el inventario 3.A.27 lo trata en dos bloques (Solow; Shapiro-Stiglitz) y 3.A.7 vuelve a desarrollar ambos: duplicación.
-- En Shapiro-Stiglitz la notación de la tasa de separación debe ser la misma que en DMP (**s**); el artículo original la llama b.
-- 3.A.27 y 3.A.7 (sin revisar) llaman a la restricción de Shapiro-Stiglitz «condición de incentivos» y remiten al 3.A.13 el esfuerzo endógeno (correcto): al revisarlos, decir que es la IC del principal-agente y usar e para el esfuerzo (ficha `principal-agente`; 3.A.13, 19/10/2026).
+- 3.A.27 original: «teorías sociológicas (Akerlof)» para el escaqueo, rotación de «Milgram», $e(w)/w$ y $\varepsilon_{w,e}$, la demanda sin la prima ($\overline e F(\overline e L)=w$), $b$ para la separación, $a$ para la tasa de encontrar empleo, $N$ para las empresas, «condición de incentivos». **Resuelto** en la revisión (31/10/2026) con $s$, $f$, $J$, $w/e(w)$, $\varepsilon_{e,w}$, IC y CNE.
+- 3.A.7 (sin revisar): desarrolla Solow y Shapiro y Stiglitz (con $b$, $N$ y 4 gráficos) con el texto antiguo del 3.A.27 y sus errores ($e(w)/w$, «teorías sociológicas»): al revisarlo, resumen con esta notación y remisión al 3.A.27 (`mapa.yaml`, contradicciones del 3.A.27).
+- 3.A.28 (sin revisar): «menciona de pasada» los modelos del 3.A.27 con SRN; al revisarlo, la CNE como WS con remisión.
 
 Autor: Víctor Gutiérrez Marcos

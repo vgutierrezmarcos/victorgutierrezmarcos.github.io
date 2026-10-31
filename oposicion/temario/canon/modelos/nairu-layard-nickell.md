@@ -1,7 +1,7 @@
 # NAIRU: fijación de salarios y precios (Layard, Nickell y Jackman, 1991)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.28 (La tasa natural de paro y la NAIRU) — está en el título.
-- **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.7 (resumen: modelo agregado de la NEK de 1.ª generación; hoy desarrollo con ecuaciones mientras 3.A.28 solo tiene el gráfico), 1D01 (mención: III.1 y II.2).
+- **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.7 (resumen: modelo agregado de la NEK de 1.ª generación; hoy desarrollo con ecuaciones mientras 3.A.28 solo tiene el gráfico), 1D01 (mención: III.1 y II.2), 3.A.27 (mención; hecho, 31/10/2026: I.3, la negociación con derecho a gestionar da la WS, `eq:ws`, $W/P^e=F(U,Z)\cdot\mathrm{PAT}^e$ con $F_U<0$, como en esta ficha, y la CNE de Shapiro y Stiglitz como otra WS decreciente en el paro; evidencia de Blanchflower y Oswald, 1994; remisión al 3.A.28).
 - **Manuales de referencia:** Layard, Nickell y Jackman (1991), *Unemployment*; Blanchard, *Macroeconomics*, cap. 7; Carlin y Soskice (2015), cap. 2; Cahuc, Carcillo y Zylberberg (2014), cap. 9.
 
 ## Presentación de referencia
@@ -26,11 +26,13 @@ con Z factores institucionales (prestaciones, poder sindical) y PAT productivida
 |---|---|---|---|---|
 | 3.A.28 | Tasa natural y NAIRU | Desarrollo | Ecuaciones, gráfico, determinantes de U^n, diferencia entre tasa natural (Friedman) y NAIRU, estimaciones para España | — |
 | 3.A.7 | NEK de 1.ª generación | Resumen | El modelo como síntesis de las rigideces reales (negociación, eficiencia) de la NEK | El gráfico y los determinantes |
+| 3.A.27 | Determinación de salarios | mención (hecho, 31/10/2026) | Microfundamentos de la WS: negociación (derecho a gestionar) y salarios de eficiencia; `eq:ws` con esta notación | La PS y la NAIRU |
 | 1D01 | Dictamen de coyuntura | Mención | NAIRU (y NAWRU de la Comisión) como referencia del paro estructural; paro con brecha ≈ 0 | El modelo WS-PS |
 
 ## Divergencias encontradas en el temario actual
 
 - **Desarrollo invertido:** 3.A.7 tiene las ecuaciones y 3.A.28 solo el gráfico. Llevar las ecuaciones a 3.A.28 y resumir en 3.A.7.
+- 3.A.28 (sin revisar): llama SRN y SRP a la WS y la PS, $U_n$ a la NAIRU (canon $U^n$) y usa la forma lineal $1-\alpha U+Z$: al revisarlo, la notación de esta ficha, que el 3.A.27 ya usa.
 - Notación: W nominal, w = W/P real; μ margen (el canon reserva μ para el margen; DMP pasa a q(θ)).
 
 Autor: Víctor Gutiérrez Marcos

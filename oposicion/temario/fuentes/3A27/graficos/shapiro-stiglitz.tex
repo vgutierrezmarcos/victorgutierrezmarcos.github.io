@@ -1,0 +1,65 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Shapiro y Stiglitz (1984): plano (JL, w). Unidades: Lbar = 6, ebar = 1.
+% Demanda de trabajo  w = 0,4 + 6 e^{-0,25 JL}  (tras el shock, ×0,75).
+% CNE  w = ebar + (rho + s/U) ebar/q,  U = (Lbar - JL)/Lbar, con rho/q = 1
+% y s/q = 0,25:  w = 2 + 1,5/(6 - JL); en JL = 0 vale ebar + (rho+s) ebar/q = 2,25.
+% Los equilibrios E y E' son cortes calculados (intersections).
+% Código base común con shapiro-stiglitz-variantes.tex (mismos parámetros).
+\begin{tikzpicture}[tcee, y=1.3cm,
+    demanda/.style={very thick,tceerojo},
+    declare function={LD(\x)=0.4+6*exp(-0.25*\x); CNE(\x)=2+1.5/(6-\x);}]
+  % 1: ejes
+  \capa{1}{\ejes{$J\,L$}{$w$}{7.2}{6.6}}
+  % 2: demanda de trabajo
+  \capa{2}{
+    \draw[demanda, name path=LD, domain=0.25:6, samples=60] plot (\x,{LD(\x)});
+    \node[etiqueta, text=tceerojo, anchor=west] at (0.55,5.85) {$L^D\!:\ A\,\overline{e}\,F'(\overline{e}\,L)=w$};
+  }
+  % 3: oferta de trabajo, horizontal en ebar hasta Lbar y vertical en Lbar
+  \capa{3}{
+    \draw[curva2] (0,1) -- (6,1) -- (6,6.4) node[etiqueta, above] {$L^S$};
+    \node[left] at (0,1) {$\overline{e}$};
+    \node[below] at (6,0) {$\overline{L}$};
+    \draw[guia] (6,0) -- (6,1);
+  }
+  % 4: equilibrio walrasiano
+  \capa{4}{
+    \node[punto] (EW) at (6,{LD(6)}) {};
+    \node[etiqueta, right] at (EW) {$E^W$};
+  }
+  % 5: condición de no escaqueo, asintótica a Lbar
+  \capa{5}{
+    \draw[curva1, name path=CNE, domain=0:5.64, samples=80] plot (\x,{CNE(\x)});
+    \node[etiqueta, text=tceemorado, anchor=east] at (5.5,5.6) {CNE};
+    % valor en JL = 0, rotulado bajo el arranque de la curva (en el eje se
+    % amontonaría con w* y w*')
+    \draw[thick] (-0.08,{CNE(0)}) -- (0.08,{CNE(0)});
+    \node[etiqueta, text=tceemorado, anchor=north west] at (0.05,{CNE(0)-0.08}) {$\overline{e}+(\rho+s)\,\dfrac{\overline{e}}{q}$};
+  }
+  % 6: equilibrio con paro E y sus proyecciones
+  \capa{6}{
+    \path[name intersections={of=LD and CNE, by=E}];
+    \node[punto] at (E) {};
+    \node[etiqueta, above right] at (E) {$E$};
+    \proyeccion{(E)}{$J\,L^*$}{$w^*$}
+  }
+  % 7: el paro, de JL* a Lbar
+  \capa{7}{
+    \draw[decorate, decoration={brace, amplitude=5pt}, thick, tceegris]
+      let \p1=(E) in (\x1,0.3) -- (6,0.3)
+      node[midway, above=5pt, etiqueta, text=black] {paro};
+  }
+  % 8: caída de la demanda y nuevo equilibrio E' sobre la CNE
+  \capa{8}{
+    \draw[curvanueva, desplazada, name path=LD2, domain=0.25:6, samples=60]
+      plot (\x,{0.75*LD(\x)}) node[etiqueta, right] {$L^{D\prime}$};
+    \draw[flecha] (1.6,{LD(1.6)-0.15}) -- (1.25,{0.75*LD(1.25)+0.2});
+    \path[name intersections={of=LD2 and CNE, by=E2}];
+    \node[punto] at (E2) {};
+    \node[etiqueta, below right] at (E2) {$E'$};
+    \proyeccion{(E2)}{$J\,L^{*\prime}$}{$w^{*\prime}$}
+  }
+\end{tikzpicture}
+\end{document}

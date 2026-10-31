@@ -1,0 +1,91 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\rotgrande}{\fontsize{11.5}{14}\selectfont}
+% Variantes de Shapiro y Stiglitz, con el código base de shapiro-stiglitz.tex
+% (mismas unidades: Lbar = 6, ebar = 1; demanda w = 0,4 + 6 e^{-0,25 JL};
+% CNE w = 2 + 1,5/(6 - JL), es decir, rho/q = 1 y s/q = 0,25).
+% (a) Más vigilancia: q × 1,5, así que rho/q = 2/3 y s/q = 1/6:
+%     CNE' w = 5/3 + 1/(6 - JL).
+% (b) Sin rotación (s = 0): CNE horizontal en ebar + rho ebar/q = 2, por encima
+%     de E^W; la demanda cae a ×0,75 y E' queda a la misma altura.
+\begin{tikzpicture}[tcee, y=1.3cm, font=\rotgrande,
+    etiqueta/.style={font=\rotgrande,inner sep=2pt},
+    demanda/.style={very thick,tceerojo},
+    titulo/.style={font=\large\bfseries, anchor=south west},
+    declare function={LD(\x)=0.4+6*exp(-0.25*\x); CNE(\x)=2+1.5/(6-\x);
+                      CNEq(\x)=5/3+1/(6-\x);}]
+  % Demanda y oferta comunes a los 2 paneles
+  \newcommand{\demandaoferta}{%
+    \draw[demanda, domain=0.25:6, samples=60] plot (\x,{LD(\x)});
+    \node[etiqueta, text=tceerojo, anchor=west] at (0.55,5.85) {$L^D$};
+    \draw[curva2] (0,1) -- (6,1) -- (6,6.4) node[etiqueta, above] {$L^S$};
+    \node[left] at (0,1) {$\overline{e}$};
+    \node[below] at (6,0) {$\overline{L}$};
+    \draw[guia] (6,0) -- (6,1);
+    \node[punto] at (6,{LD(6)}) {};
+    \node[etiqueta, right] at (6,{LD(6)}) {$E^W$};}
+  % 1: ejes y títulos de los 2 paneles
+  \capa{1}{
+    \ejes{$J\,L$}{$w$}{7.2}{6.6}
+    \node[titulo] at (-0.6,6.75) {(a) Más vigilancia ($q\uparrow$)};
+    \begin{scope}[xshift=9cm]
+      \ejes{$J\,L$}{$w$}{7.2}{6.6}
+      \node[titulo] at (-0.6,6.75) {(b) Sin rotación ($s=0$)};
+    \end{scope}
+  }
+  % 2: panel a, demanda, oferta, CNE y equilibrio E con el paro
+  \capa{2}{
+    \demandaoferta
+    \draw[curva1, domain=0:5.64, samples=80] plot (\x,{CNE(\x)});
+    \node[etiqueta, text=tceemorado, anchor=east] at (5.5,5.6) {CNE};
+    \coordinate (E) at (3.8433,{CNE(3.8433)});
+    \node[punto] at (E) {};
+    \node[etiqueta, above right] at (E) {$E$};
+    \draw[guia] (E) -- (3.8433,0) node[below,xshift=-5pt] {$J\,L^*$};
+    \draw[guia] (E) -- (0,{CNE(3.8433)}) node[left] {$w^*$};
+    \draw[decorate, decoration={brace, amplitude=4pt}, thick, tceegris]
+      (3.8433,0.55) -- (6,0.55);
+    \node[etiqueta, anchor=west] at (6.05,0.62) {paro};
+  }
+  % 3: panel a, CNE' más baja y nuevo equilibrio E' (corte con la demanda:
+  %    JL = 4,5156, calculado)
+  \capa{3}{
+    \draw[curva1, desplazada, domain=0:5.78, samples=80] plot (\x,{CNEq(\x)});
+    \node[etiqueta, text=tceemorado, anchor=north west] at (0.1,{CNEq(0)-0.05}) {CNE$'$};
+    \draw[flecha, tceemorado] (4.95,{CNE(4.95)}) -- (5.25,{CNEq(5.25)-0.05});
+    \coordinate (E2) at (4.5156,{CNEq(4.5156)});
+    \node[punto] at (E2) {};
+    \node[etiqueta, below left] at (E2) {$E'$};
+    \draw[guia] (E2) -- (4.5156,0) node[below,xshift=6pt] {$J\,L^{*\prime}$};
+    \draw[guia] (E2) -- (0,{CNEq(4.5156)}) node[left] {$w^{*\prime}$};
+    \draw[decorate, decoration={brace, amplitude=4pt}, thick, tceerojo]
+      (4.5156,0.2) -- (6,0.2);
+    \node[etiqueta, text=tceerojo, anchor=west] at (6.05,0.17) {paro$'$};
+  }
+  % 4: panel b, demanda, oferta y CNE horizontal en ebar + rho ebar/q
+  \capa{4}{
+    \begin{scope}[xshift=9cm]
+      \demandaoferta
+      \draw[curva1] (0,2) -- (6,2);
+      \node[etiqueta, text=tceemorado, anchor=north west] at (0.1,1.96) {CNE$\colon\ w=\overline{e}+\rho\,\dfrac{\overline{e}}{q}$};
+    \end{scope}
+  }
+  % 5: panel b, equilibrio E, caída de la demanda y E' a la misma altura
+  %    (cortes: LD = 2 en JL = 5,2865; 0,75 LD = 2 en JL = 3,8933)
+  \capa{5}{
+    \begin{scope}[xshift=9cm]
+      \node[punto] (Eb) at (5.2865,2) {};
+      \node[etiqueta, above right] at (Eb) {$E$};
+      \draw[guia] (5.2865,0) node[below] {$J\,L^*$} -- (Eb);
+      \node[left, tceegris] at (0,2) {$w^*$};
+      \draw[curvanueva, desplazada, domain=0.25:6, samples=60]
+        plot (\x,{0.75*LD(\x)}) node[etiqueta, right] {$L^{D\prime}$};
+      \draw[flecha] (1.6,{LD(1.6)-0.15}) -- (1.25,{0.75*LD(1.25)+0.2});
+      \node[punto] (Eb2) at (3.8933,2) {};
+      \node[etiqueta, above right] at (Eb2) {$E'$};
+      \draw[guia] (3.8933,0) node[below] {$J\,L^{*\prime}$} -- (Eb2);
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}

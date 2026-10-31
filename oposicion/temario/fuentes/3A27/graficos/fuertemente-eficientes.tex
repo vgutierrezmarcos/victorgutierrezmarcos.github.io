@@ -1,0 +1,53 @@
+% Contratos fuertemente eficientes: principio de indiferencia (rehace la
+% imagen 6 del original). Elaboración propia a partir de Booth (1995b) y
+% Cahuc, Carcillo y Zylberberg (2014), cap. 7.
+% Mismo código base y escala que los 5 gráficos del bloque I (aparato-grafico.tex):
+%   F(L) = L^0,4; w^R = z = 2,2; L^c = 4,4; Lbar = 6,6; x = 0,85 cm, y = 1 cm
+%   demanda de trabajo  A F'(L) = 2,2 (L/4,4)^{-0,6}                  dem(L)
+%   producción          A F(L)  = 5,5 L (L/4,4)^{-0,6}                af(L)
+%   indiferencias del sindicato: U_S = u(w), horizontales
+%   isobeneficio: B = A F(L) - w^R L - (w - w^R) Lbar
+%     -> w = w^R + (A F(L) - w^R L - B)/Lbar, máximo en L^c = 4,4 sea cual sea B
+%   C: (4,4; 2,2), B_C = 24,2 - 9,68 = 14,52;  F': B = 0, w = 2,2 + 14,52/6,6 = 4,4
+%   isobeneficio con B = B_C (1, 2/3, 1/3, 0) (máximos en 2,2; 2,933; 3,667; 4,4),
+%   tangentes en su máximo a las indiferencias, y una más con B = (4/3) B_C
+%   (máximo en 1,467), por debajo de w^R
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=1cm,
+    declare function={
+      dem(\x)=2.2*exp(-0.6*ln(\x/4.4));
+      af(\x)=5.5*\x*exp(-0.6*ln(\x/4.4));
+      iso(\x,\b)=2.2+(af(\x)-2.2*\x-\b)/6.6;
+    },
+    demanda/.style={very thick,tceerojo},
+    isobeneficio/.style={thick,tceenaranja},
+    indiferencia/.style={thick,tceeazul},
+    contratos/.style={tceeverde,line width=2.2pt}]
+  \def\BC{14.52}
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{9.8}{6.3}}
+  % 2: demanda de trabajo (referencia), salario de reserva, afiliados y L^c
+  \capa{2}{\draw[demanda] plot[domain=6.0:1.45,samples=50] (\x,{dem(\x)}) node[etiqueta,left,text=tceerojo] {$L^D$};}
+  \capa{2}{\draw[indiferencia] (0,2.2) -- (9.0,2.2);}
+  \capa{2}{\node[etiqueta,left] at (0,2.2) {$w^R$};}
+  \capa{2}{\draw[guia] (6.6,0) node[below,text=black] {$\overline{L}$} -- (6.6,6.0);}
+  \capa{2}{\draw[guia] (4.4,0) node[below,text=black] {$L^c\!:\ A\,F'(L)=w^R$} -- (4.4,2.2);}
+  % 3: indiferencias del sindicato horizontales (principio de indiferencia)
+  \capa{3}{\foreach \k in {1,2,3} \draw[indiferencia] (0,{2.2+\k*2.2/3}) -- (9.0,{2.2+\k*2.2/3});}
+  \capa{3}{\node[etiqueta,right,text=tceeazul] at (9.0,{2.2+2*2.2/3}) {$U_S=u(w)$};}
+  % 4: isobeneficio, todas con su máximo en L^c; más beneficio cuanto más bajas
+  \capa{4}{\foreach \b in {0,1/3,2/3,1,4/3} \draw[isobeneficio] plot[domain=1.2:7.8,samples=60] (\x,{iso(\x,\b*\BC)});}
+  \capa{4}{\draw[->,thick,tceenaranja] (8.3,1.75) -- (8.3,0.6) node[etiqueta,right,align=left,font=\footnotesize] {más\\ beneficio};}
+  % 5: curva de contratos vertical en L^c, de C a F'
+  \capa{5}{\draw[contratos] (4.4,2.2) -- (4.4,4.4);}
+  \capa{5}{\node[punto] (C) at (4.4,2.2) {};}
+  \capa{5}{\node[etiqueta] (Ct) at (5.75,0.95) {$C$; $\gamma=0$};}
+  \capa{5}{\draw[thin,tceegris] (Ct.north west) -- (C);}
+  \capa{5}{\node[punto] (F) at (4.4,4.4) {};}
+  \capa{5}{\node[etiqueta,above right] at (F) {$F'$; $\gamma=1$, $B=0$};}
+  \capa{5}{\node[punto,fill=tceegris] at (4.4,{2.2+2*2.2/3}) {};}
+\end{tikzpicture}
+\end{document}

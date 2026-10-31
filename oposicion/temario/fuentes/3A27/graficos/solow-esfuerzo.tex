@@ -1,0 +1,68 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Solow (1979): plano (w, e), 2 paneles con los mismos ejes y escala.
+% (a) e(w) = 0 hasta w = 0,8 y luego 3,6 u^2/(u^2 + 2), u = w - 0,8 (en S:
+%     convexa y luego cóncava). Tangencia del rayo desde el origen, calculada
+%     con w e'(w) = e(w): T = (2,7158; 2,3302), pendiente e*/w* = 0,8580.
+% (b) e(w) = 1,2 + 2,4 (1 - e^{-0,3 w}): cóncava con e(0) > 0, de modo que
+%     e/w decrece siempre y la empresa paga el salario más bajo posible.
+\begin{tikzpicture}[tcee,
+    esfuerzo/.style={very thick,tceerojo},
+    rayo/.style={thin,dashed,tceegris},
+    titulo/.style={font=\small\bfseries, anchor=south west},
+    declare function={ea(\x)=3.6*(\x-0.8)^2/((\x-0.8)^2+2);
+                      eb(\x)=1.2+2.4*(1-exp(-0.3*\x));}]
+  % 1: ejes de los 2 paneles
+  \capa{1}{
+    \ejes{$w$}{$e$}{6.2}{4.8}
+    \node[titulo] at (-0.5,4.95) {(a) Hay salario de eficiencia};
+    \begin{scope}[xshift=8.4cm]
+      \ejes{$w$}{$e$}{6.2}{4.8}
+      \node[titulo] at (-0.5,4.95) {(b) No hay salario de eficiencia};
+    \end{scope}
+  }
+  % 2: panel a, función de esfuerzo en S
+  \capa{2}{
+    \draw[esfuerzo] (0,0) -- (0.8,0);
+    \draw[esfuerzo, domain=0.8:5.7, samples=80] plot (\x,{ea(\x)})
+      node[etiqueta, right, text=tceerojo] {$e(w)$};
+  }
+  % 3: panel a, rayos desde el origen (pendiente e/w): uno demasiado empinado,
+  %    que no toca e(w), y dos menos empinados, que la cortan dos veces
+  \capa{3}{
+    \draw[rayo] (0,0) -- (2.9,4.35);
+    \draw[rayo] (0,0) -- (5.8,3.48);
+    \draw[rayo] (0,0) -- (5.8,2.32);
+  }
+  % 4: panel a, rayo tangente, punto T y proyecciones w* y e*
+  \capa{4}{
+    \draw[curva1] (0,0) -- (5.1,4.376) node[etiqueta, right, text=tceemorado] {pendiente $e^*/w^*$};
+    \node[punto] (T) at (2.7158,2.3302) {};
+    \node[etiqueta, above left] at (T) {$T$};
+    \proyeccion{(T)}{$w^*$}{$e^*$}
+  }
+  % 5: panel a, condición de Solow
+  \capa{5}{
+    \node[etiqueta, anchor=west] (eps) at (3.7,0.7) {$\varepsilon_{e,w}=1$};
+    \draw[guia, solid, ->] (eps.north west) -- (2.82,2.2);
+  }
+  % 6: panel b, función de esfuerzo cóncava con e(0) > 0 y rayos que la cortan
+  \capa{6}{
+    \begin{scope}[xshift=8.4cm]
+      \draw[esfuerzo, domain=0:5.7, samples=60] plot (\x,{eb(\x)})
+        node[etiqueta, right, text=tceerojo] {$e(w)$};
+      \draw[rayo] (0,0) -- (2.9,4.35);
+      \draw[rayo] (0,0) -- (5.8,3.6);
+    \end{scope}
+  }
+  % 7: panel b, solución de esquina
+  \capa{7}{
+    \begin{scope}[xshift=8.4cm]
+      \draw[flecha] (4.6,-0.3) -- (0.3,-0.3);
+      \node[etiqueta, anchor=north, align=center, font=\footnotesize] at (2.45,-0.35)
+        {$e/w$ decrece: el salario más bajo posible};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}

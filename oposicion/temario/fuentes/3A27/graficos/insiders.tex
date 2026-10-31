@@ -1,0 +1,44 @@
+% Insiders y outsiders: salario máximo de los insiders según cuántos sean
+% (rehace la imagen 7 del original). Elaboración propia a partir de Lindbeck y
+% Snower (1988).
+%   producto marginal     A F'(L) = 6 e^{-L/3}
+%   w_O = w^R = 2, c_D = 1, c_C = 0,8 -> techo w_O + c_D + c_C = 3,8
+%   L_1: A F'(L_1) = w_O + c_C = 2,8   -> L_1 = 3 ln(6/2,8) = 2,286
+%        (equivale a A F'(L_1) + c_D = techo)
+%   L_2: A F'(L_2) + c_D = w^R = 2     -> L_2 = 3 ln 6 = 5,375
+%   salario máximo: techo si L̄_I < L_1 (A); A F'(L̄_I) + c_D entre L_1 y L_2 (B);
+%   w^R si L̄_I > L_2 (C)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.8cm,
+    declare function={pmg(\l)=6*exp(-\l/3);},
+    demanda/.style={very thick,tceerojo},
+    maximo/.style={tceemorado,line width=2.6pt}]
+  \def\Lu{2.286}\def\Ld{5.375}
+  % 1: ejes
+  \capa{1}{\ejes{$L,\ \overline{L}_I$}{$w$}{8.2}{7}}
+  % 2: producto marginal del trabajo
+  \capa{2}{\draw[demanda] plot[domain=0.35:7.2,samples=60] (\x,{pmg(\x)}) node[etiqueta,right] {$A\,F'(L)$};}
+  % 3: salario de reserva de los outsiders
+  \capa{3}{\draw[curva2] (0,2) -- (7.6,2) node[etiqueta,right] {$w^R$};}
+  \capa{3}{\node[etiqueta,left] at (0,2) {$w_O=w^R$};}
+  % 4: techo: lo que cuesta sustituir a un insider
+  \capa{4}{\draw[tceemorado,thick] (0,3.8) -- (7.6,3.8);}
+  \capa{4}{\node[etiqueta,left] at (0,3.8) {$w_O+c_D+c_C$};}
+  % 5: producto marginal más el despido que se ahorra
+  \capa{5}{\draw[demanda,dashed] plot[domain=0.62:7.2,samples=60] (\x,{pmg(\x)+1}) node[etiqueta,right] {$A\,F'(L)+c_D$};}
+  % 6: umbrales L_1 y L_2
+  \capa{6}{\draw[guia] (\Lu,3.8) -- (\Lu,0) node[below,text=black] {$L_1$};}
+  \capa{6}{\draw[guia] (\Ld,2) -- (\Ld,0) node[below,text=black] {$L_2$};}
+  % 7: salario máximo de los insiders según su número, con los 3 casos
+  \capa{7}{\draw[maximo] (0,3.8) -- (\Lu,3.8) -- plot[domain=\Lu:\Ld,samples=40] (\x,{pmg(\x)+1}) -- (7.2,2);}
+  \capa{7}{\node[etiqueta,below,text=tceemorado] at (0.6,3.8) {$A$};}
+  \capa{7}{\node[etiqueta,above right,text=tceemorado] at (3.9,{pmg(3.9)+1}) {$B$};}
+  \capa{7}{\node[etiqueta,above,text=tceemorado] at ({(\Ld+7.2)/2},2) {$C$};}
+  \capa{7}{\draw[<->,thin] (0.05,-1.05) -- (\Lu-0.05,-1.05) node[midway,below,font=\footnotesize] {caso $A$};}
+  \capa{7}{\draw[<->,thin] (\Lu+0.05,-1.05) -- (\Ld-0.05,-1.05) node[midway,below,font=\footnotesize] {caso $B$};}
+  \capa{7}{\draw[<->,thin] (\Ld+0.05,-1.05) -- (7.6,-1.05) node[midway,below,font=\footnotesize] {caso $C$};}
+\end{tikzpicture}
+\end{document}

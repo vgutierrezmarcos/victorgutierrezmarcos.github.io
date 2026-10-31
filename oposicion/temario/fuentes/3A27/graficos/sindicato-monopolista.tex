@@ -1,0 +1,87 @@
+% El sindicato monopolista (Dunlop, 1944): tangencia de la demanda de trabajo
+% con la indiferencia más alta del sindicato en M, lente de mejoras paretianas,
+% paro involuntario y rigidez del salario con demanda isoelástica. Elaboración
+% propia a partir de Dunlop (1944) y Heijdra (2017), pp. 244-253. Rehace la
+% imagen 3 y los esquemas manuscritos (image8, image9) del original (p. 13).
+% Lente: entre la isobeneficio y la indiferencia por M, de M a (8,5883; 2,5488).
+% Capa 8: shock de productividad que multiplica por 1,5 el empleo demandado a
+% cada salario, dem'(L) = dem(L/1,5); como w^S no depende de A, M' = (2,4280; w^S).
+% Indiferencias: la de M, una más baja por (3,5; 2,5238) de L^D (corta la demanda
+% 2 veces) y una más alta (la de P) que no la toca.
+%
+% CÓDIGO BASE COMÚN de los 5 gráficos del bloque I del 3.A.27 (aparato-grafico,
+% sindicato-monopolista, derecho-gestionar, contratos-eficientes y
+% negociacion-colectiva): mismas funciones, escala y puntos.
+%   Empresa: F(L) = L^a con a = 0,4 (Cobb-Douglas: demanda isoelástica).
+%     Unidades: w^R = z = 2,2 y L^c = 4,4 (A elegido para ello).
+%     demanda   L^D:  w = A a L^{a-1} = 2,2 (L/4,4)^{-0,6}          dem(L)
+%     producto medio  w = A L^{a-1}   = 5,5 (L/4,4)^{-0,6}          ap(L)
+%     isobeneficio por (p,q): w = ap(L) - (ap(p) - q) p / L        iso(L,p,q)
+%       (B = p (ap(p) - q); si (p,q) está sobre L^D, su máximo está en p; la
+%        de B = 0 es el producto medio).
+%   Sindicato: u(w) = ln w (aversión al riesgo), Lbar = 6,6 = 1,5 L^c.
+%     indiferencia por (p,q): (L/Lbar) ln(w/z) = (p/Lbar) ln(q/z), es decir,
+%     w = z (q/z)^{p/min(L,Lbar)}                                  ind(L,p,q)
+%     (decreciente y convexa; horizontal desde Lbar). Las curvas se cortan arriba
+%     en w = 5,6: los dominios de cada plot empiezan donde la curva vale 5,6.
+%   C = (4,4; 2,2): A F'(L^c) = w^R.
+%   M (sindicato monopolista, gamma = 1): ln(w^S/z) = 1 - a  =>  w^S = z e^{0,6}
+%     = 4,0087; L^S = L^c e^{-1} = 1,6187 (tangencia con la indiferencia).
+%   R (derecho a gestionar, gamma = 0,5, Nash sobre L^D): (2,1540; 3,3771).
+%   Curva de contratos: A F'(L) = w - (u(w) - u(z))/u'(w) = w (1 - ln(w/z));
+%     con t = w/z: L = 4,4 (t (1 - ln t))^{-5/3}, w = 2,2 t.
+%     P (tangencia intermedia): t = 1,36289 -> (4,8700; 2,9984).
+%     D (llega a Lbar): t = 1,72579 -> (6,6; 3,7967).
+%     F (sobre B = 0 en Lbar): (6,6; ap(6,6) = 4,3123).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=1cm,
+    declare function={
+      dem(\x)=2.2*exp(-0.6*ln(\x/4.4));
+      ap(\x)=5.5*exp(-0.6*ln(\x/4.4));
+      iso(\x,\p,\q)=ap(\x)-(ap(\p)-\q)*\p/\x;
+      ind(\x,\p,\q)=2.2*exp(\p*ln(\q/2.2)/min(\x,6.6));
+    },
+    demanda/.style={very thick,tceerojo},
+    isob/.style={thick,tceenaranja},
+    indif/.style={thick,tceeazul},
+    rotulo/.style={etiqueta,font=\footnotesize},
+    lente/.style={fill=tceegris,fill opacity=0.25,draw=none}]
+  \def\xM{1.6187}\def\yM{4.0087}
+  \def\xR{2.1540}\def\yR{3.3771}
+  \def\xP{4.8700}\def\yP{2.9984}
+  \def\yD{3.7967}
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{9.8}{6.3}}
+  % 2: demanda de trabajo
+  \capa{2}{\draw[demanda] plot[domain=0.92:8.6,samples=60] (\x,{dem(\x)}) node[etiqueta,right,text=tceerojo] {$L^D$};}
+  % 3: salario de reserva, afiliados y equilibrio competitivo C
+  \capa{3}{\draw[indif] (0,2.2) node[left,text=black] {$w^R$} -- (9.4,2.2);}
+  \capa{3}{\draw[guia] (6.6,0) node[below,text=black] {$\overline{L}$} -- (6.6,6.0);}
+  \capa{3}{\node[punto] (C) at (4.4,2.2) {};}
+  \capa{3}{\node[etiqueta,below left] at (C) {$C$};}
+  \capa{3}{\draw[guia] (C) -- (4.4,0) node[below,text=black] {$L^c$};}
+  % 4: curvas de indiferencia del sindicato
+  \capa{4}{\draw[indif] plot[domain=0.514:6.6,samples=80] (\x,{ind(\x,3.5,2.5238)}) -- (9.4,{ind(9,3.5,2.5238)});}
+  \capa{4}{\draw[indif] plot[domain=1.0395:6.6,samples=80] (\x,{ind(\x,\xM,\yM)}) -- (9.4,{ind(9,\xM,\yM)});}
+  \capa{4}{\draw[indif] plot[domain=1.614:6.6,samples=80] (\x,{ind(\x,\xP,\yP)}) -- (9.4,{ind(9,\xP,\yP)}) node[rotulo,right,text=tceeazul] {$U_S$};}
+  % 5: tangencia en M y proyecciones a w^S y L^S
+  \capa{5}{\node[punto] (M) at (\xM,\yM) {};}
+  \capa{5}{\node[etiqueta,above right] at (M) {$M$};}
+  \capa{5}{\draw[guia] (0,\yM) node[left,text=black] {$w^S$} -| (\xM,0) node[below,text=black] {$L^S$};}
+  % 6: isobeneficio por M (máximo en M) y lente de mejoras paretianas
+  \capa{6}{\fill[lente] plot[domain=\xM:8.5883,samples=80] (\x,{iso(\x,\xM,\yM)}) -- plot[domain=8.5883:\xM,samples=80] (\x,{ind(\x,\xM,\yM)}) -- cycle;}
+  \capa{6}{\draw[isob] plot[domain=0.794:9.4,samples=80] (\x,{iso(\x,\xM,\yM)}) node[rotulo,right,text=tceenaranja] {$B_M$};}
+  \capa{6}{\draw[thin,tceegris] (5.6,2.85) -- (6.9,4.15) node[rotulo,above,align=center,text=black] {lente de mejoras\\ paretianas};}
+  % 7: paro involuntario entre L^S y Lbar
+  \capa{7}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thick,tceerojo] (\xM,-0.62) -- (6.6,-0.62)
+    node[midway,below=6pt,rotulo,text=tceerojo] {paro involuntario};}
+  % 8: shock de productividad: la demanda se desplaza y el salario no cambia
+  \capa{8}{\draw[curvanueva,desplazada] plot[domain=1.38:9.0,samples=60] (\x,{dem(\x/1.5)}) node[etiqueta,above right,text=tceerojo] {$L^{D\prime}$};}
+  \capa{8}{\node[punto] (M2) at (2.4280,\yM) {};}
+  \capa{8}{\node[etiqueta,above right] at (M2) {$M'$};}
+  \capa{8}{\draw[guia] (M) -- (M2) -- (2.4280,0) node[below,text=black] {$L^{S\prime}$};}
+\end{tikzpicture}
+\end{document}

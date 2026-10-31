@@ -1,0 +1,37 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Shapiro y Stiglitz (1984): los 3 estados del trabajador y las tasas de
+% transición (procesos de Poisson). Bajo cada estado, su utilidad instantánea.
+\begin{tikzpicture}[tcee,
+    estado/.style={circle, draw=tceemorado, fill=tceemorado!12, very thick,
+      minimum size=1.15cm, font=\large},
+    util/.style={font=\small, text=black},
+    transicion/.style={->, thick, black!75},
+    tasa/.style={font=\normalsize, text=black, fill=none, inner sep=3pt}]
+  % 1: los 3 estados y sus utilidades instantáneas
+  \capa{1}{
+    \node[estado] (E) at (0,2.2) {$\mathrm{E}$};
+    \node[estado] (S) at (0,-0.4) {$\mathrm{S}$};
+    \node[estado] (U) at (5,0.9) {$\mathrm{U}$};
+    \node[util, left=4pt of E, align=right] {empleado que\\se esfuerza};
+    \node[util, left=4pt of S, align=right] {empleado que\\se escaquea};
+    \node[util, right=4pt of U, align=left] {parado};
+    \node[util, below=3pt of E] {$w-\overline{e}$};
+    \node[util, below=3pt of S] {$w$};
+    \node[util, below=3pt of U] {$0$};
+  }
+  % 2: de E a U, a la tasa de separación s
+  \capa{2}{
+    \draw[transicion] (E.east) -- (U.north west) node[tasa, midway, above right] {$s$};
+  }
+  % 3: de S a U, a la tasa s + q (separación más detección)
+  \capa{3}{
+    \draw[transicion] (S.east) -- (U.south west) node[tasa, midway, above left] {$s+q$};
+  }
+  % 4: de U a E, a la tasa f de encontrar empleo (por arriba)
+  \capa{4}{
+    \draw[transicion] (U.north) to[out=95, in=40] node[tasa, midway, above] {$f$} (E.north east);
+  }
+\end{tikzpicture}
+\end{document}

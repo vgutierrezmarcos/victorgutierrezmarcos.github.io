@@ -1,0 +1,41 @@
+% La negociación de Hicks (1932, cap. VII): curva de concesión de la empresa y
+% curva de resistencia del sindicato (rehace la imagen 1 del original).
+% Elaboración propia a partir de Hicks (1932), pp. 141-145.
+%   concesión   c(d) = Z + (6 - Z)(1 - e^{-d/2,2}), Z = 1,5; techo 6
+%   resistencia r(d) = 5,4 + 1,6 e^{-d/0,7} - 0,25 d - 0,5 e^{(d-7,5)/0,6}
+%               (alta al principio, tramo largo casi horizontal, cae al final)
+%   P: c = r (d ~ 2,8; w* ~ 4,74). Tras empezar la huelga, r(d + 2,5):
+%   P' (d ~ 2,1; w*' ~ 4,25 < w*)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm,
+    declare function={conc(\d)=1.5+4.5*(1-exp(-\d/2.2));
+      resi(\d)=5.4+1.6*exp(-\d/0.7)-0.25*\d-0.5*exp((\d-7.5)/0.6);},
+    concesion/.style={very thick,tceerojo}]
+  % 1: ejes
+  \capa{1}{\ejes{duración esperada de la huelga}{$w$}{9.6}{7.8}}
+  % 2: curva de concesión de la empresa, desde Z, y su techo
+  \capa{2}{\draw[concesion,name path=conc] plot[domain=0:9,samples=60] (\x,{conc(\x)});}
+  \capa{2}{\node[etiqueta,left] at (0,1.5) {$w_0$};}
+  \capa{2}{\node[etiqueta,below right,align=left,text=tceerojo] at (5.2,{conc(5.2)}) {curva de concesión\\ de la empresa};}
+  \capa{2}{\draw[guia] (0,6) -- (9.3,6);}
+  \capa{2}{\node[etiqueta,above left,font=\footnotesize] at (9.3,6) {techo: la empresa cerraría};}
+  % 3: curva de resistencia del sindicato
+  \capa{3}{\draw[curva2,name path=resi] plot[domain=0:8.4,samples=80] (\x,{resi(\x)});}
+  \capa{3}{\node[etiqueta,above right,align=left,text=tceeazul] at (0.25,{resi(0.25)}) {curva de resistencia\\ del sindicato};}
+  % 4: corte P y salario w*
+  \capa{4}{\path[name intersections={of=conc and resi,by=P}];}
+  \capa{4}{\node[punto] at (P) {};}
+  \capa{4}{\node[etiqueta,above right] at (P) {$P$};}
+  \capa{4}{\draw[guia] (P) -- (P -| 0,0) node[left,text=black] {$w^*$};}
+  % 5: empezada la huelga, la resistencia se desplaza a la izquierda
+  \capa{5}{\draw[curvanueva,tceeazul,desplazada,name path=resi2] plot[domain=0:5.9,samples=80] (\x,{resi(\x+2.5)});}
+  \capa{5}{\path[name intersections={of=conc and resi2,by=Q}];}
+  \capa{5}{\node[punto] at (Q) {};}
+  \capa{5}{\node[etiqueta,above left] at (Q) {$P'$};}
+  \capa{5}{\draw[guia] (Q) -- (Q -| 0,0) node[left,text=black] {$w^{*\prime}$};}
+  \capa{5}{\node[etiqueta,left=3pt,align=right,font=\footnotesize,text=tceeazul] at (5.9,{resi(8.4)}) {resistencia, ya\\ empezada la huelga};}
+\end{tikzpicture}
+\end{document}

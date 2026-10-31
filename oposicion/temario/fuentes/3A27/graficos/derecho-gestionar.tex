@@ -1,0 +1,79 @@
+% El derecho a gestionar (Nickell y Andrews, 1983): el acuerdo R sobre la
+% demanda de trabajo, entre C (gamma = 0) y M (gamma = 1), y la lente de
+% mejoras paretianas en R. Elaboración propia a partir de Nickell y Andrews
+% (1983) y Heijdra (2017), pp. 244-253. Rehace la imagen 4 del original (p. 15);
+% la «zona de Malinvaud» del original se llama aquí lente de mejoras paretianas.
+% R: solución de Nash generalizada con gamma = 0,5 sobre la demanda (base común).
+% Lente: entre la isobeneficio y la indiferencia por R, de R a (7,5702; 2,5303).
+%
+% CÓDIGO BASE COMÚN de los 5 gráficos del bloque I del 3.A.27 (aparato-grafico,
+% sindicato-monopolista, derecho-gestionar, contratos-eficientes y
+% negociacion-colectiva): mismas funciones, escala y puntos.
+%   Empresa: F(L) = L^a con a = 0,4 (Cobb-Douglas: demanda isoelástica).
+%     Unidades: w^R = z = 2,2 y L^c = 4,4 (A elegido para ello).
+%     demanda   L^D:  w = A a L^{a-1} = 2,2 (L/4,4)^{-0,6}          dem(L)
+%     producto medio  w = A L^{a-1}   = 5,5 (L/4,4)^{-0,6}          ap(L)
+%     isobeneficio por (p,q): w = ap(L) - (ap(p) - q) p / L        iso(L,p,q)
+%       (B = p (ap(p) - q); si (p,q) está sobre L^D, su máximo está en p; la
+%        de B = 0 es el producto medio).
+%   Sindicato: u(w) = ln w (aversión al riesgo), Lbar = 6,6 = 1,5 L^c.
+%     indiferencia por (p,q): (L/Lbar) ln(w/z) = (p/Lbar) ln(q/z), es decir,
+%     w = z (q/z)^{p/min(L,Lbar)}                                  ind(L,p,q)
+%     (decreciente y convexa; horizontal desde Lbar). Las curvas se cortan arriba
+%     en w = 5,6: los dominios de cada plot empiezan donde la curva vale 5,6.
+%   C = (4,4; 2,2): A F'(L^c) = w^R.
+%   M (sindicato monopolista, gamma = 1): ln(w^S/z) = 1 - a  =>  w^S = z e^{0,6}
+%     = 4,0087; L^S = L^c e^{-1} = 1,6187 (tangencia con la indiferencia).
+%   R (derecho a gestionar, gamma = 0,5, Nash sobre L^D): (2,1540; 3,3771).
+%   Curva de contratos: A F'(L) = w - (u(w) - u(z))/u'(w) = w (1 - ln(w/z));
+%     con t = w/z: L = 4,4 (t (1 - ln t))^{-5/3}, w = 2,2 t.
+%     P (tangencia intermedia): t = 1,36289 -> (4,8700; 2,9984).
+%     D (llega a Lbar): t = 1,72579 -> (6,6; 3,7967).
+%     F (sobre B = 0 en Lbar): (6,6; ap(6,6) = 4,3123).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=1cm,
+    declare function={
+      dem(\x)=2.2*exp(-0.6*ln(\x/4.4));
+      ap(\x)=5.5*exp(-0.6*ln(\x/4.4));
+      iso(\x,\p,\q)=ap(\x)-(ap(\p)-\q)*\p/\x;
+      ind(\x,\p,\q)=2.2*exp(\p*ln(\q/2.2)/min(\x,6.6));
+    },
+    demanda/.style={very thick,tceerojo},
+    isob/.style={thick,tceenaranja},
+    indif/.style={thick,tceeazul},
+    rotulo/.style={etiqueta,font=\footnotesize},
+    lente/.style={fill=tceegris,fill opacity=0.25,draw=none}]
+  \def\xM{1.6187}\def\yM{4.0087}
+  \def\xR{2.1540}\def\yR{3.3771}
+  \def\xP{4.8700}\def\yP{2.9984}
+  \def\yD{3.7967}
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{9.8}{6.3}}
+  % 2: demanda de trabajo
+  \capa{2}{\draw[demanda] plot[domain=0.92:8.6,samples=60] (\x,{dem(\x)}) node[etiqueta,right,text=tceerojo] {$L^D$};}
+  % 3: salario de reserva, afiliados y C (gamma = 0)
+  \capa{3}{\draw[indif] (0,2.2) node[left,text=black] {$w^R$} -- (9.4,2.2);}
+  \capa{3}{\draw[guia] (6.6,0) node[below,text=black] {$\overline{L}$} -- (6.6,6.0);}
+  \capa{3}{\node[punto] (C) at (4.4,2.2) {};}
+  \capa{3}{\node[etiqueta,above right] at (C) {$C;\ \gamma=0$};}
+  \capa{3}{\draw[guia] (C) -- (4.4,0) node[below,text=black] {$L^c$};}
+  % 4: M (gamma = 1)
+  \capa{4}{\node[punto] (M) at (\xM,\yM) {};}
+  \capa{4}{\node[etiqueta,right=2pt] at (M) {$M;\ \gamma=1$};}
+  % 5: R entre ambos, sus proyecciones y la flecha «más gamma»
+  \capa{5}{\node[punto] (R) at (\xR,\yR) {};}
+  \capa{5}{\node[etiqueta,above right] at (R) {$R;\ 0<\gamma<1$};}
+  \capa{5}{\draw[guia] (0,\yR) node[left,text=black] {$w(\gamma)$} -| (\xR,0) node[below,text=black] {$L^D\big(w(\gamma)\big)$};}
+  \capa{5}{\draw[flecha] plot[domain=3.7:1.75,samples=40] ({\x-0.6},{dem(\x)});}
+  \capa{5}{\node[rotulo,text=tceerojo] at (2.05,2.45) {más $\gamma$};}
+  % 6: isobeneficio (máximo en R) e indiferencia por R
+  \capa{6}{\draw[isob] plot[domain=1.13:9.4,samples=80] (\x,{iso(\x,\xR,\yR)}) node[rotulo,right,text=tceenaranja] {$B_R$};}
+  \capa{6}{\draw[indif] (9.4,{ind(9,\xR,\yR)}) -- plot[domain=6.6:0.988,samples=80] (\x,{ind(\x,\xR,\yR)}) node[rotulo,above,text=tceeazul] {$U_S^R$};}
+  % 7: lente de mejoras paretianas en R
+  \capa{7}{\fill[lente] plot[domain=\xR:7.5702,samples=80] (\x,{iso(\x,\xR,\yR)}) -- plot[domain=7.5702:\xR,samples=80] (\x,{ind(\x,\xR,\yR)}) -- cycle;}
+  \capa{7}{\draw[thin,tceegris] (4.2,2.92) -- (6.9,4.15) node[rotulo,above,align=center,text=black] {lente de mejoras\\ paretianas};}
+\end{tikzpicture}
+\end{document}

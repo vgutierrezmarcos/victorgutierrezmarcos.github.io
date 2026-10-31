@@ -1,7 +1,7 @@
 # Modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides (DMP)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.26 (desempleo friccional, curva de Beveridge, DMP) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.26 (desarrollo), 3.A.28 (resumen), 3.A.7 (mención), 1D01 (mención: III.1, curva de Beveridge)
+- **Temas que lo usan:** 3.A.26 (desarrollo), 3.A.28 (resumen), 3.A.7 (mención), 1D01 (mención: III.1, curva de Beveridge), 3.A.27 (mención; hecho, 31/10/2026: I.3, la curva salarial $w=(1-\gamma)z+\gamma(y+c\,\theta)$, `eq:curva-salarial-dmp`, con la **misma γ** (poder del trabajador) y el **mismo $z$** (valor del desempleo, $w^R=z$) que su negociación colectiva; con γ = 0, el salario de reserva; Nobel de 2010 en nota; Hall, 2005, en la conclusión)
 - **Manuales de referencia:** Pissarides, *Equilibrium Unemployment Theory* (2.ª ed., 2000), cap. 1; Cahuc, Carcillo y Zylberberg (2014), cap. 9; Romer (2019), cap. 11.
 - **Decisión D008 (13/10/2026):** ¿Se reserva δ para la tasa de depreciación y se cambian sus otros usos? Sí: pendiente de la NKPC κ, tasa de separación s (DMP y Shapiro-Stiglitz) y tasa social de descuento r_s (4.B.6); δ solo depreciación (y el factor exponencial del modelo β-δ de Laibson)
 - **Decisión D020 (13/10/2026):** ¿Se reserva λ para multiplicadores y precios sombra? Sí: factor de escala t (3.A.11), tasas de búsqueda f(θ) y q(θ) (DMP), persistencia de la histéresis λ_h con subíndice; se admite λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky
@@ -25,6 +25,7 @@ Gráficos de referencia: (1) plano (θ, w): curva de creación de empleo decreci
 | 3.A.26 | Paro friccional; curva de Beveridge | desarrollo | Modelo completo, estática comparativa, Hosios, evidencia (Shimer puzzle) | — |
 | 3.A.28 | Tasa natural de paro y su persistencia | resumen | La tasa natural como resultado de flujos U = s/(s+f(θ)); desplazamientos de la curva de Beveridge | Derivación de la curva salarial [ver tema 3.A.26] |
 | 3.A.7 | Fricciones en el mercado de trabajo en la NEK | mención | Citar como fuente de rigidez real en los EGDE con fricciones | Ecuaciones |
+| 3.A.27 | Negociación salarial en la macro | mención (hecho, 31/10/2026) | La curva salarial de Nash con la misma γ y $z$ que la negociación colectiva (ficha `sindicato-monopolista`); remisión al 3.A.26 | La creación de empleo y la Beveridge |
 | 1D01 | Dictamen de coyuntura | Mención | Movimientos a lo largo = ciclo; desplazamiento hacia fuera = peor emparejamiento; en datos, tasa de vacantes frente a tasa de paro (decirlo) | El modelo |
 
 ## Divergencias encontradas en el temario actual

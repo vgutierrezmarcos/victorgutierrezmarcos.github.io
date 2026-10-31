@@ -1,0 +1,79 @@
+% El aparato gráfico de la negociación colectiva: (a) demanda de trabajo e
+% isobeneficio de la empresa; (b) indiferencias del sindicato. Elaboración
+% propia a partir de Booth (1995) y Cahuc, Carcillo y Zylberberg (2014), cap. 7.
+% Rehace la tabla con image5.jpg e image6.jpg del original (p. 12).
+%
+% CÓDIGO BASE COMÚN de los 5 gráficos del bloque I del 3.A.27 (aparato-grafico,
+% sindicato-monopolista, derecho-gestionar, contratos-eficientes y
+% negociacion-colectiva): mismas funciones, escala y puntos.
+%   Empresa: F(L) = L^a con a = 0,4 (Cobb-Douglas: demanda isoelástica).
+%     Unidades: w^R = z = 2,2 y L^c = 4,4 (A elegido para ello).
+%     demanda   L^D:  w = A a L^{a-1} = 2,2 (L/4,4)^{-0,6}          dem(L)
+%     producto medio  w = A L^{a-1}   = 5,5 (L/4,4)^{-0,6}          ap(L)
+%     isobeneficio por (p,q): w = ap(L) - (ap(p) - q) p / L        iso(L,p,q)
+%       (B = p (ap(p) - q); si (p,q) está sobre L^D, su máximo está en p; la
+%        de B = 0 es el producto medio).
+%   Sindicato: u(w) = ln w (aversión al riesgo), Lbar = 6,6 = 1,5 L^c.
+%     indiferencia por (p,q): (L/Lbar) ln(w/z) = (p/Lbar) ln(q/z), es decir,
+%     w = z (q/z)^{p/min(L,Lbar)}                                  ind(L,p,q)
+%     (decreciente y convexa; horizontal desde Lbar). Las curvas se cortan arriba
+%     en w = 5,6: los dominios de cada plot empiezan donde la curva vale 5,6.
+%   C = (4,4; 2,2): A F'(L^c) = w^R.
+%   M (sindicato monopolista, gamma = 1): ln(w^S/z) = 1 - a  =>  w^S = z e^{0,6}
+%     = 4,0087; L^S = L^c e^{-1} = 1,6187 (tangencia con la indiferencia).
+%   R (derecho a gestionar, gamma = 0,5, Nash sobre L^D): (2,1540; 3,3771).
+%   Curva de contratos: A F'(L) = w - (u(w) - u(z))/u'(w) = w (1 - ln(w/z));
+%     con t = w/z: L = 4,4 (t (1 - ln t))^{-5/3}, w = 2,2 t.
+%     P (tangencia intermedia): t = 1,36289 -> (4,8700; 2,9984).
+%     D (llega a Lbar): t = 1,72579 -> (6,6; 3,7967).
+%     F (sobre B = 0 en Lbar): (6,6; ap(6,6) = 4,3123).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=1cm,font=\large,
+    etiqueta/.style={font=\large,inner sep=2pt},
+    declare function={
+      dem(\x)=2.2*exp(-0.6*ln(\x/4.4));
+      ap(\x)=5.5*exp(-0.6*ln(\x/4.4));
+      iso(\x,\p,\q)=ap(\x)-(ap(\p)-\q)*\p/\x;
+      ind(\x,\p,\q)=2.2*exp(\p*ln(\q/2.2)/min(\x,6.6));
+    },
+    demanda/.style={very thick,tceerojo},
+    isob/.style={thick,tceenaranja},
+    indif/.style={thick,tceeazul},
+    rotulo/.style={etiqueta}]
+  \def\xM{1.6187}\def\yM{4.0087}
+  \def\xR{2.1540}\def\yR{3.3771}
+  \def\xP{4.8700}\def\yP{2.9984}
+  \def\yD{3.7967}
+  % 1: ejes de los 2 paneles
+  \capa{1}{\ejes{$L$}{$w$}{9.6}{6.3}}
+  \capa{1}{\node[font=\large\itshape] at (4.8,6.75) {(a) La empresa};}
+  \begin{scope}[xshift=9.6cm]
+    \capa{1}{\ejes{$L$}{$w$}{9.6}{6.3}}
+    \capa{1}{\node[font=\large\itshape] at (4.8,6.75) {(b) El sindicato};}
+  \end{scope}
+  % 2: panel a, demanda de trabajo
+  \capa{2}{\draw[demanda] plot[domain=0.92:8.2,samples=60] (\x,{dem(\x)}) node[etiqueta,right,text=tceerojo] {$L^D$};}
+  \capa{2}{\node[rotulo,text=tceerojo,anchor=west] at (1.2,5.75) {$A\,F'(L)=w$};}
+  % 3: panel a, isobeneficio con su máximo sobre L^D, y más beneficio abajo
+  \capa{3}{\draw[isob] plot[domain=9.2:0.794,samples=80] (\x,{iso(\x,\xM,\yM)}) node[rotulo,below left,text=tceenaranja] {$B_0$};}
+  \capa{3}{\draw[isob] plot[domain=9.2:1.003,samples=80] (\x,{iso(\x,\xR,\yR)}) node[rotulo,below,text=tceenaranja] {$B_1$};}
+  \capa{3}{\draw[isob] plot[domain=9.2:1.774,samples=80] (\x,{iso(\x,4.4,2.2)}) node[rotulo,below,text=tceenaranja] {$B_2$};}
+  \capa{3}{\node[rotulo,text=tceenaranja,anchor=west] at (4.3,5.2) {$B_0<B_1<B_2$};}
+  \capa{3}{\draw[flecha] (7.0,3.6) node[rotulo,above,text=tceerojo] {más beneficio} -- (7.0,2.0);}
+  \begin{scope}[xshift=9.6cm]
+    % 4: panel b, salario de reserva y afiliados
+    \capa{4}{\draw[indif] (0,2.2) node[left,text=black] {$w^R$} -- (9.2,2.2);}
+    \capa{4}{\draw[guia] (6.6,0) node[below,text=black] {$\overline{L}$} -- (6.6,6.0);}
+    % 5: panel b, indiferencias del sindicato y más utilidad
+    \capa{5}{\draw[indif] (9.2,{ind(9,\xM,\yM)}) -- plot[domain=6.6:1.0395,samples=80] (\x,{ind(\x,\xM,\yM)}) node[rotulo,above left,text=tceeazul] {$U_S^0$};}
+    \capa{5}{\draw[indif] (9.2,{ind(9,\xP,\yP)}) -- plot[domain=6.6:1.614,samples=80] (\x,{ind(\x,\xP,\yP)}) node[rotulo,above right,text=tceeazul] {$U_S^1$};}
+    \capa{5}{\draw[indif] (9.2,\yD) -- plot[domain=6.6:3.855,samples=60] (\x,{ind(\x,6.6,\yD)}) node[rotulo,above,text=tceeazul] {$U_S^2$};}
+    \capa{5}{\node[rotulo,text=tceeazul,anchor=west] at (6.75,5.6) {$U_S^0<U_S^1<U_S^2$};}
+    \capa{5}{\draw[flecha] (4.4,2.45) -- (6.4,4.4);}
+    \capa{5}{\node[rotulo,anchor=west,text=tceerojo] at (6.75,4.55) {más utilidad};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
