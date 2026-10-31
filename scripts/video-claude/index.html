@@ -344,7 +344,7 @@
         <div id="dictamen-ventana" class="ventana"></div>
         <div id="dictamen-r1" class="rotulo">Foto o PDF de lo que escribiste en 1 h 45 min</div>
         <div id="dictamen-r2" class="rotulo">Frente a la guía del dictamen, con lo que arreglarías primero</div>
-        <div id="dictamen-r3" class="rotulo">Y las preguntas de los 15 minutos de defensa</div>
+        <div id="dictamen-r3" class="rotulo">Y una respuesta modelo, con la extensión del examen</div>
       </section>
 
       <!-- Una duda (tomas G6a y G6b) -->
@@ -541,8 +541,8 @@
       <video id="toma-g2" class="toma" src="assets/tomas/G2c.mp4" muted playsinline data-start="42.2728" data-duration="17.3" data-track-index="1"></video>
       <video id="toma-g4a" class="toma" src="assets/tomas/G4a.mp4" muted playsinline data-start="68.6364" data-duration="13.2" data-track-index="1"></video>
       <video id="toma-g4b" class="toma" src="assets/tomas/G4b.mp4" muted playsinline data-start="83.5091" data-duration="8.75" data-track-index="1"></video>
-      <video id="toma-g5a" class="toma" src="assets/tomas/G5a.mp4" muted playsinline data-start="96.6000" data-duration="9.0" data-track-index="1"></video>
-      <video id="toma-g5b" class="toma" src="assets/tomas/G5b.mp4" muted playsinline data-start="105.8000" data-duration="12.3" data-track-index="1"></video>
+      <video id="toma-g5a" class="toma" src="assets/tomas/G5a.mp4" muted playsinline data-start="96.6000" data-duration="6.4" data-track-index="1"></video>
+      <video id="toma-g5b" class="toma" src="assets/tomas/G5b.mp4" muted playsinline data-start="103.0000" data-duration="14.6" data-track-index="1"></video>
       <video id="toma-g10a" class="toma" src="assets/tomas/G10a.mp4" muted playsinline data-start="138.2545" data-duration="11.9" data-track-index="1"></video>
       <video id="toma-g10b" class="toma" src="assets/tomas/G10b.mp4" muted playsinline data-start="150.3545" data-duration="9.6" data-track-index="1"></video>
       <video id="toma-g6a" class="toma" src="assets/tomas/G6a.mp4" muted playsinline data-start="118.6182" data-duration="10.8" data-track-index="1"></video>
@@ -722,15 +722,15 @@
       tl.fromTo("#cante_informe-p2", { opacity: 0, y: 60, rotation: 0 }, { opacity: 1, y: 0, rotation: 2, duration: 0.6, ease: "power3.out" }, CI + 10.3);
       sale("cante_informe");
 
-      // Un dictamen (G5a: 9 s desde +0,6, acelerada; G5b: 12,3 s desde +9,8)
+      // Un dictamen (G5a: 6,1 s desde +0,6, acelerada; G5b: 13 s desde +7)
       const D = B(E.dictamen);
       banda("#dictamen", D);
       ventana("#dictamen-ventana", D + 0.2);
-      toma("#toma-g5a", D + 0.6, 9.0);
-      toma("#toma-g5b", D + 9.8, 12.3);
-      rotulo("#dictamen-r1", D + 1.0, 8.4);
-      rotulo("#dictamen-r2", D + 10.0, 6.0);
-      rotulo("#dictamen-r3", D + 16.4, 4.8);
+      toma("#toma-g5a", D + 0.6, 6.4);
+      toma("#toma-g5b", D + 7.0, 14.6);
+      rotulo("#dictamen-r1", D + 1.0, 5.6);
+      rotulo("#dictamen-r2", D + 7.2, 6.6);
+      rotulo("#dictamen-r3", D + 14.2, 5.8);
       sale("dictamen");
 
       // Una duda (G6a 10,8 s desde +0,8; G6b 7 s desde +11,7)
