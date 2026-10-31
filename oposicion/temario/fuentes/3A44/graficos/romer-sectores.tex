@@ -1,0 +1,44 @@
+% Los 3 sectores del modelo de Romer (1990): I+D -> (patente, valor V) ->
+% bienes intermedios -> (x_j) -> bien final; el trabajo se reparte entre la
+% I+D y el bien final, L = L_Y + L_I; el conocimiento N vuelve a la I+D
+% («a hombros de gigantes»). Se dibuja de derecha a izquierda, como en la
+% pizarra: primero el bien final, después los intermedios y la I+D.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\titulo}{\bfseries\color{tceemorado}}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    sector/.style={draw=tceemorado,very thick,rounded corners=3pt,fill=tceemorado!6,
+      align=center,text width=3.6cm,minimum height=2.3cm,inner sep=4pt},
+    flujo/.style={->,very thick,black},
+    trabajo/.style={->,thick,tceeverde}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.1,-3.6) rectangle (13.7,2.2);
+  % 1: el bien final, en competencia perfecta
+  \capa{1}{\node[sector] (F) at (11.5,0)
+    {{\titulo Bien final}\\[2pt] competencia perfecta\\[3pt]
+     \mbox{$Y=L_Y^{1-\alpha}\sum_{j=1}^{N}x_j^{\alpha}$}};}
+  % 2: los bienes intermedios y la flecha x_j
+  \capa{2}{\node[sector] (B) at (5.75,0)
+    {{\titulo Bienes intermedios}\\[2pt] $N$ monopolistas\\[3pt]
+     \mbox{precio $=1/\alpha$}\\{\footnotesize\mbox{(coste marginal $=1$)}}};
+    \draw[flujo] (B) -- (F) node[etiqueta,midway,above] {$x_j$};}
+  % 3: la I+D y la flecha de la patente
+  \capa{3}{\node[sector] (I) at (0,0)
+    {{\titulo I+D}\\[2pt] libre entrada\\[3pt]
+     \mbox{$\dot N=\eta_I\,L_I\,N$}};
+    \draw[flujo] (I) -- (B) node[etiqueta,midway,above] {patente}
+      node[etiqueta,midway,below] {valor $V$};}
+  % 4: la restricción de trabajo y su reparto
+  \capa{4}{\node[draw=tceeverde,very thick,rounded corners=3pt,fill=tceeverde!6,
+      inner sep=5pt] (L) at (5.75,-3.0) {Trabajo: $L=L_Y+L_I$ (mismo salario $w$)};
+    \draw[trabajo] (L.west) -| (I.south) node[etiqueta,pos=0.75,left,text=tceeverde] {$L_I$};
+    \draw[trabajo] (L.east) -| (F.south) node[etiqueta,pos=0.75,right,text=tceeverde] {$L_Y$};}
+  % 5: el conocimiento N vuelve a la I+D: a hombros de gigantes
+  \capa{5}{\draw[->,very thick,tceerojo] ([xshift=0.9cm]I.north)
+      to[out=60,in=120,looseness=2.2] ([xshift=-0.9cm]I.north);
+    \node[etiqueta,text=tceerojo,anchor=west] at (1.1,1.75)
+      {$N$: «a hombros de gigantes»};}
+\end{tikzpicture}
+\end{document}

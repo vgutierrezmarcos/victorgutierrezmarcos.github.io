@@ -1,0 +1,1190 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A44.bib}
+\tcetema[Crecimiento económico (II)]{3.A.44}{Crecimiento económico (II). Modelos de crecimiento endógeno: rendimientos crecientes, capital humano e innovación tecnológica.}
+\tcefecha{31/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Más vale maña que fuerza», dice el refrán. En el crecimiento económico, la fuerza es acumular más máquinas; la maña, aprender a hacer más con ellas. Esta exposición trata de la maña.
+  \item En 1813, Thomas \autor{Jefferson}, que había formado parte de la junta que concedía las patentes en Estados Unidos, explicó en una carta por qué una idea no es una propiedad como las demás: quien recibe de mí una idea «recibe instrucción sin mermar la mía, igual que quien enciende su vela en la mía recibe luz sin dejarme a oscuras» \parencite[traducción propia]{Jefferson1813McPherson}.
+  \item Una máquina solo la puede usar un trabajador a la vez; una idea, todos a la vez y sin que se gaste. Esa propiedad, que los economistas llaman \emph{no rivalidad}, es la que permite que la renta por habitante crezca sin límite, y plantea un problema: si cualquiera puede usar una idea, ¿quién paga por inventarla?
+  \item Detrás está la pregunta de esta exposición: ¿puede una economía crecer para siempre sin un progreso técnico «caído del cielo»? Y, si puede, ¿de qué depende su ritmo?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Académica}: la teoría de esta exposición ha recibido 2 premios Nobel en 7 años. En 2018, Paul \autor{Romer}, «por integrar las innovaciones tecnológicas en el análisis macroeconómico de largo plazo», y en 2025, Philippe \autor{Aghion} y Peter \autor{Howitt}, «por la teoría del crecimiento sostenido mediante la destrucción creativa», junto con el historiador Joel \autor{Mokyr}, «por haber identificado los requisitos previos del crecimiento sostenido mediante el progreso tecnológico» \parencite[traducción propia]{NobelPrize2018Romer,NobelPrize2025}.
+  \item \emph{El interés compuesto}: si la política puede cambiar la \emph{tasa} de crecimiento, y no solo el nivel de la renta, sus efectos se acumulan. Una economía que crece al 3~\% anual multiplica su renta por 4,4 en 50 años; otra que crece al 2~\%, por 2,7. Al cabo de una vida laboral, la primera es un 63~\% más rica.
+  \item \emph{Para España}: en 2000, China y España dedicaban a la investigación y el desarrollo (I+D) la misma fracción del producto interior bruto (PIB), el 0,88~\%. En 2024, China dedicaba el 2,69~\% (el 2,80~\% en 2025) y España el 1,50~\%, lejos de la media de la Unión Europea (UE, 2,26~\%), de Estados Unidos (3,44~\%) y de Corea del Sur (5,13~\%) (gráfico~\ref{fig:gasto-id-pib}) \parencite{OCDE2026MSTI,Eurostat2026GERD,INE2025IMASD,ONEChina2026ID}. Los modelos de esta exposición son el marco con que se discuten la política de I+D, las patentes, la educación y la defensa de la competencia \vertema{4.A.7}.
+  \end{itemize}
+  \begin{figure}[H]
+  \centering
+  \caption{Gasto en I+D en porcentaje del PIB, 2000-2024}\label{fig:gasto-id-pib}
+  \grafico[0.75\textwidth]{gasto-id-pib}
+  \fuente{elaboración propia con datos de la OCDE (MSTI) y, para la UE-27, de Eurostat \parencite{OCDE2026MSTI,Eurostat2026GERD}. China 2025: \textcite{ONEChina2026ID}.}
+  \end{figure}
+
+\item \textbf{\emph{Contextualización}}. Desde un punto de vista conceptual:
+  \begin{itemize}
+  \item Llamamos \concepto{modelos de crecimiento endógeno} a los que explican la tasa de crecimiento a largo plazo de la renta por habitante \emph{dentro} del modelo, como resultado de decisiones económicas (ahorrar, estudiar, investigar) y de la política económica, sin recurrir a una variable que crece a un ritmo dado.
+  \item En los modelos neoclásicos \vertema{3.A.43}, la renta por habitante deja de crecer a largo plazo si no hay progreso técnico exógeno. La razón son los \concepto{rendimientos decrecientes} del capital: cada máquina añadida rinde menos que la anterior, y el ahorro solo cambia el \emph{nivel} de la renta, no su tasa de crecimiento.
+  \item Para escapar de ellos hay que romper algún supuesto del modelo neoclásico, y hay 2 caminos, que dan las 2 generaciones de modelos de esta exposición:
+    \begin{itemize}
+    \item cambiar la \emph{función de producción} para que el rendimiento de lo que se acumula (capital físico, humano o conocimiento) no caiga a cero: \concepto{modelos de 1.ª generación}, desde mediados de los 80;
+    \item modelizar la \emph{invención} como una actividad deliberada y costosa, la I+D, que se paga con rentas de monopolio, lo que exige \emph{competencia imperfecta}: \concepto{modelos de 2.ª generación}, desde 1990.
+    \end{itemize}
+  \item Un bien es \concepto{no rival} si su uso por uno no impide que otros lo usen a la vez (una receta, un programa informático) y \concepto{excluible} si se puede impedir que otros lo usen (con una patente o un secreto industrial) \vertema{3.A.23}. Las ideas son no rivales y parcialmente excluibles, y de ahí nacen los \concepto{rendimientos crecientes} del título: con las mismas ideas, duplicar las máquinas y los trabajadores duplica la producción, y además se pueden mejorar las ideas \parencite{Romer1990}.
+  \end{itemize}
+  Desde un punto de vista histórico:
+  \begin{itemize}
+  \item La pregunta es tan antigua como la economía. Los clásicos vieron ya las 2 fuerzas en juego: la división del trabajo, limitada por la extensión del mercado, frente a los rendimientos decrecientes de la tierra\footnote{\autor{Smith} (1776) vio en la \emph{división del trabajo} la fuente de las ganancias de productividad; \autor{Ricardo} (1817), en el \emph{comercio internacional} la forma de escapar de los rendimientos decrecientes de la tierra, y \autor{Malthus} (1798), en la presión de la población sobre los recursos el freno de la renta por habitante.}. \textcite{Young1928Increasing} recuperó los rendimientos crecientes de la especialización; \textcite{Knight1944Diminishing} sostuvo que la inversión no tiene por qué rendir cada vez menos si el capital incluye el conocimiento, y \textcite[p.~83]{Schumpeter1942} describió la innovación como un proceso que revoluciona la estructura económica «desde dentro», la \concepto{destrucción creativa}.
+  \item Los modelos de \textcite{Solow1956} y de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} explican el crecimiento a largo plazo con un progreso técnico exógeno \vertema{3.A.43}. \textcite[p.~155]{Arrow1962} señaló el problema: «una visión del crecimiento económico que depende tanto de una variable exógena, y además de una tan difícil de medir como la cantidad de conocimiento, difícilmente resulta satisfactoria desde el punto de vista intelectual. [\ldots] Las proyecciones de tendencia, por necesarias que sean en la práctica, son en el fondo una confesión de ignorancia y, lo que es peor desde un punto de vista práctico, no son variables de política económica» (traducción propia). Su respuesta fue el \emph{aprendizaje por la práctica}; la de \textcite{Uzawa1965}, un sector que produce conocimiento.
+  \item En los 70, con las crisis del petróleo, la atención se desplazó a los ciclos económicos, y dentro del crecimiento, a las teorías del desarrollo \vertema{3.B.28}. La teoría renace a mediados de los 80 con \textcite{Romer1986Increasing} y \textcite{Lucas1988}; siguen \textcite{Barro1990}, \textcite{JonesManuelli1990} y \textcite{Rebelo1991Long}, y el salto a la innovación llega con \textcite{Romer1990}, \textcite{GrossmanHelpman1991} y \textcite{AghionHowitt1992} \parencite{Romer1994}. \textcite{Jones1995} abrió el debate de los efectos escala, que sigue vivo.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Se puede crecer para siempre sin un progreso técnico exógeno? ¿Basta con acumular capital físico o humano si sus rendimientos no decrecen?
+  \item ¿Por qué se innova, si las ideas, una vez creadas, las puede usar cualquiera? ¿Innova y crece el mercado lo que conviene a la sociedad?
+  \item ¿Qué determina la tasa de crecimiento a largo plazo: el ahorro, la educación, la investigación? ¿Y el tamaño del país? ¿Puede la política económica cambiarla, o solo el nivel de la renta?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue los 2 caminos para escapar de los rendimientos decrecientes, en el orden en que aparecieron, y termina con lo que ambos tienen en común, los rendimientos crecientes de las ideas.
+  \begin{itemize}
+  \item \concepto{I. Modelos de 1.ª generación} (\ref{sec:primera-generacion}): basta con que el rendimiento de lo que se acumula, capital físico o humano, no caiga a cero para que el ahorro y la educación sostengan el crecimiento. Lo veremos con el modelo $AK$ y sus variantes y con el capital humano de \autor{Uzawa} y \autor{Lucas}. Pero el progreso técnico sigue sin explicarse.
+  \item \concepto{II. Modelos de 2.ª generación} (\ref{sec:segunda-generacion}): el progreso técnico sale de una actividad buscada, la investigación, que se paga con rentas de monopolio. Las innovaciones pueden ampliar el número de bienes (\autor{Romer}) o mejorar su calidad (\autor{Aghion} y \autor{Howitt}), y el mercado no innova lo que conviene.
+  \item \concepto{III. Rendimientos crecientes y efecto escala} (\ref{sec:semiendogeno}): como las ideas no se gastan al usarlas, en estos modelos los países más poblados crecen más deprisa. Los datos no lo confirman, y el modelo semiendógeno de \autor{Jones} lo corrige. Cerramos con la evidencia y la política económica.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.44. Crecimiento económico (II)}\\[2pt]
+Introducción\\
+I. Modelos de 1.ª generación: función de producción no neoclásica\\
+\hspace*{1.5em}1. Idea: $\gamma_c=(r-\rho)/\theta$ con una $r$ que no cae \quad 2. Modelos: $AK$, Sobelow, \autor{Barro}, externalidades, \autor{Uzawa}-\autor{Lucas} \quad 3. Valoración\\
+II. Modelos de 2.ª generación: competencia imperfecta y progreso técnico endógeno\\
+\hspace*{1.5em}1. Idea: ideas no rivales \quad 2. Modelos: variedades (\autor{Romer}), calidades (\autor{Aghion}-\autor{Howitt}) \quad 3. Valoración\\
+III. Rendimientos crecientes y efecto escala: el crecimiento semiendógeno\\
+\hspace*{1.5em}1. No rivalidad y efecto escala \quad 2. \autor{Jones} (1995): $\gamma_N=\lambda n/(1-\phi)$ \quad 3. Evidencia y política\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11,5} (I.1, \tiempo{1}; I.2, \tiempo{9}; I.3, \tiempo{1,5}); II, \tiempo{9} (II.1, \tiempo{1,5}; II.2, \tiempo{6,5}; II.3, \tiempo{1}); III, \tiempo{6} (III.1, \tiempo{1}; III.2, \tiempo{2,5}; III.3, \tiempo{2,5}), y conclusión, \tiempo{1}. La introducción y la conclusión se cantan sin pizarra. La pizarra se organiza en 3 zonas. A la izquierda, la ecuación de \autor{Euler} recuadrada (\ref{sec:pg-idea}) y, debajo, una línea por modelo con el rendimiento $r$ que no cae y su tasa de crecimiento: es la tabla resumen del tema, que se va llenando y se completa en el apartado~\ref{sec:sg-valoracion}. En el centro, el gráfico en tasas de crecimiento (gráfico~\ref{fig:tasas-endogeno}), por capas: \autor{Solow}, $AK$, Sobelow y las externalidades; se borra al empezar el bloque~\ref{sec:segunda-generacion}. A la derecha, el esquema de los 3 sectores de \autor{Romer}, el plano del arbitraje de \autor{Aghion} y \autor{Howitt} y, en el bloque~\ref{sec:semiendogeno}, el gráfico de \autor{Jones}, con $\gamma_N=\lambda n/(1-\phi)$ recuadrada (con $\lambda=1$, $n/(1-\phi)$). Los refranes se apuntan en una esquina al decirlos: el del enganche, «más vale maña que fuerza», y las pegatinas «quien guarda, halla» ($AK$), «quien a buen árbol se arrima, buena sombra le cobija» (externalidades), «a hombros de gigantes» (\autor{Romer}: $\dot N=\eta_IL_IN$) y «rey muerto, rey puesto» (destrucción creativa). Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+\end{notaopositor}
+
+\begin{anotaciones}
+\textbf{Para saber más}
+\begin{itemize}
+\item Paul \autor{Romer}, «Economic Growth», en \emph{The Concise Encyclopedia of Economics} (Liberty Fund): el crecimiento como mejores recetas, no solo más cocina: \url{https://www.econlib.org/library/Enc/EconomicGrowth.html} \parencite{Romer2008Econlib}.
+\item Philippe \autor{Aghion} y Peter \autor{Howitt}, «A Model of Growth Through Creative Destruction», versión abierta del artículo de 1992 en el National Bureau of Economic Research (NBER): \url{https://www.nber.org/papers/w3223} \parencite{AghionHowitt1990}.
+\item Comité del Premio Nobel de Economía de 2025, \emph{Sustained Economic Growth through Technological Progress}, documento científico sobre las aportaciones de \autor{Mokyr}, \autor{Aghion} y \autor{Howitt}: \url{https://www.nobelprize.org/uploads/2025/10/advanced-economicsciencesprize2025.pdf} \parencite{Nobel2025Advanced}.
+\item «Schumpeter te explica\ldots{} la destrucción creadora», canal de Óscar \autor{Vara} (vídeo): \url{https://www.youtube.com/watch?v=OtSndWOvWik} \parencite{VaraSchumpeter}.
+\end{itemize}
+\end{anotaciones}
+
+% ==========================================================================
+\section{Modelos de acumulación de capital físico y humano\newline (1.ª generación): función de producción no neoclásica}\label{sec:primera-generacion}
+\minutos{11,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{11,5}): la idea (\tiempo{1}), con la ecuación de \autor{Euler} recuadrada a la izquierda y la tabla~\ref{tab:supuestos-neoclasicos} dicha de palabra (todos los modelos levantan su última fila); el $AK$ (\tiempo{2,5}), con el gráfico~\ref{fig:tasas-endogeno} por capas (primero la horizontal $n+\delta$ y la curva de \autor{Solow}, discontinua; después la horizontal $sA$ y su subida), la línea «$AK$: $r=A-\delta$» bajo la de \autor{Euler}, la pegatina «quien guarda, halla» y 3 de las diferencias con \autor{Solow} (el ahorro cambia la tasa, no hay convergencia, los choques son permanentes); el Sobelow (\tiempo{0,5}), como una capa más del mismo gráfico; \autor{Barro} (\tiempo{1}), con la U invertida a mano alzada en una esquina; las externalidades (\tiempo{1,5}), con los 3 casos como capas y «privado $<$ social» a la izquierda; \autor{Uzawa} y \autor{Lucas} (\tiempo{3,5}), con las 2 ecuaciones de acumulación y «U-L: $r=B-\delta_H$», y la valoración (\tiempo{1,5}), de palabra. La tabla~\ref{tab:ak-solow}, el planificador de \autor{Barro}, la CES, las tasas con la externalidad de \autor{Lucas} y los anexos son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: basta con cambiar la función de producción para que la acumulación de capital sostenga el crecimiento por habitante sin progreso técnico exógeno. Todos los modelos de este bloque comparten un rasgo: el capital, entendido en sentido amplio, no tiene rendimientos decrecientes a largo plazo, y la economía se comporta como si su producción fuera lineal en él. Pero el progreso técnico sigue sin explicarse.
+\item \emph{Nexo}: partimos del modelo de \autor{Solow} y de la condición que lo condena a no crecer sin progreso técnico, para levantarla de 5 maneras distintas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Idea}\label{sec:pg-idea}
+
+\begin{itemize}
+\item \emph{La primera salida}: abandonar la función de producción neoclásica. Un cambio en ella basta para que la renta por habitante crezca a largo plazo, y con él cambian las predicciones y las recomendaciones de política económica.
+\item \emph{Por qué el modelo de \autor{Solow} deja de crecer}: sin progreso técnico, el capital por trabajador crece a $\gamma_k=s\,f(k)/k-(n+\delta)$ \vertema{3.A.43}. Por los rendimientos decrecientes y las condiciones de \autor{Inada}, el producto medio del capital, $f(k)/k$, cae hacia cero a medida que se acumula, y el crecimiento se apaga en el estado estacionario.
+\item \emph{La clave de todo el tema}: con hogares que eligen cuánto ahorrar, el consumo por habitante crece según la ecuación de \autor{Euler} del modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} \vertema{3.A.43}:
+  \funcionclave[eq:euler-endogeno]{\gamma_c=\frac{r-\rho}{\theta}}
+  donde $r$ es el rendimiento neto del ahorro, $\rho$ la tasa de descuento y $1/\theta$ la elasticidad de sustitución intertemporal.
+  \begin{itemize}
+  \item En el modelo neoclásico, $r=f'(k)-\delta$ cae a medida que se acumula capital, hasta igualar a $\rho$, y entonces el consumo deja de crecer.
+  \item Los modelos de este bloque son otras tantas formas de conseguir que $r$ \emph{no caiga}: en cada uno basta con averiguar qué $r$ queda en la senda de crecimiento equilibrado para saber a qué tasa crece la economía. Es la línea que se añade en la pizarra con cada modelo.
+  \end{itemize}
+\item \emph{Qué supuesto se levanta}: la función de producción neoclásica cumple 3 propiedades, rendimientos constantes a escala, productos marginales positivos y decrecientes y las condiciones de \autor{Inada}. Cada modelo de este bloque levanta alguna (tabla~\ref{tab:supuestos-neoclasicos}); el resto de supuestos del modelo de \autor{Solow} (economía cerrada, un solo bien, competencia perfecta, población igual al empleo que crece a $n$, depreciación $\delta$) se mantiene.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Qué supuesto de la función de producción neoclásica levanta cada modelo de 1.ª generación}\label{tab:supuestos-neoclasicos}
+\footnotesize
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.1cm}*{6}{>{\centering\arraybackslash}m{1.66cm}}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{\autor{Solow}} & \textbf{$AK$} & \textbf{Sobelow} & \textbf{\autor{Barro}} & \textbf{Externali\-dades} & \textbf{\autor{Uzawa}-\autor{Lucas}}\\
+\midrule
+\rowcolor{tceesalvia} Producción por trabajador & $f(k)$ neoclásica & $Ak$ & $Ak+Bk^{\alpha}$ & $AK^{\alpha}G^{1-\alpha}$ & $Ak^{\alpha+\eta}$ & $Ak^{\alpha}(uh)^{1-\alpha}$\\
+Rendimientos constantes a escala & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\newline{\scriptsize en $K$ y $G$} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize crecientes si $\eta>0$} & \textcolor{tceeverde}{$\checkmark$}\\
+Producto marginal del capital decreciente & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize constante, $A$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize social, con $G=\tau Y$} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize social, si $\alpha+\eta\geq1$} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize de $k$ y $h$ juntos}\\
+\autor{Inada} en 0: $f'(0)=\infty$ & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize social} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize si $\alpha+\eta\geq1$} & \textcolor{tceeverde}{$\checkmark$}\newline{\scriptsize en $k$}\\
+\autor{Inada} en $\infty$: $f'(\infty)=0$ & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize tiende a $A$} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize social} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize si $\alpha+\eta\geq1$} & \textcolor{tceerojo}{$\times$}\newline{\scriptsize educación lineal en $h$}\\
+\rowcolor{tceesalmon} Crecimiento sostenido de $y$ & No (sin progreso técnico) & Sí & Sí, si $sA>n+\delta$ & Sí & Sí, si $\alpha+\eta=1$ & Sí, si $B>\delta_H+\rho$\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+{\footnotesize Con \textcolor{tceeverde}{$\checkmark$}, el supuesto se cumple; con \textcolor{tceerojo}{$\times$}, se levanta. «Social»: teniendo en cuenta que el gasto público o el conocimiento crecen con el capital de toda la economía, lo que cada empresa no internaliza. La CES con elasticidad de sustitución mayor que 1, una variante del Sobelow (apartado~\ref{sec:sobelow}), levanta además $F(0,L)=0$: ningún factor es imprescindible.}
+\fuente{elaboración propia a partir de \textcite[caps.~1, 4 y~5]{BarroSalaiMartin2004}, \textcite[cap.~11]{Acemoglu2009} y \textcite{JonesManuelli1990}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{La lección de la tabla}: todos los modelos levantan la última condición de \autor{Inada}. Para crecer sin progreso técnico exógeno no hace falta que los rendimientos del capital sean constantes en todo el recorrido: basta con que su producto marginal \emph{no tienda a cero} cuando el capital crece. Los rendimientos no decrecientes son una condición suficiente, no necesaria \parencite{JonesManuelli1990}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Notación del tema}
+\begin{itemize}
+\item Las mayúsculas son agregados ($Y_t$, $K_t$, $L_t$, $C_t$, $H_t$). En esta exposición no hay progreso técnico exógeno: con la tecnología aumentadora del trabajo del modelo de \autor{Solow} normalizada a 1, las variables por unidad de trabajo eficiente \vertema{3.A.43} son las de por trabajador, y se escriben en minúscula y sin marca: $k\equiv K/L$, $y\equiv Y/L$, $c\equiv C/L$ y $h\equiv H/L$. La población, igual al empleo, crece a la tasa $n$.
+\item Un punto encima es la derivada respecto al tiempo, $\dot k_t\equiv dk_t/dt$, y $\gamma_X\equiv\dot X/X$ es la tasa de crecimiento de $X$. Como $k=K/L$, $\gamma_k=\gamma_K-n$. En una senda de crecimiento equilibrado, $\gamma$ sin subíndice es la tasa común de $c$, $k$ e $y$.
+\item Los hogares tienen utilidad isoelástica, $u(c)=(c^{1-\theta}-1)/(1-\theta)$ con $\theta>0$, y descuentan a la tasa $\rho$; como la familia crece a $n$, el descuento efectivo es $\rho-n$, y la utilidad está acotada si $\rho-n>(1-\theta)\,\gamma$ \vertema{3.A.43}.
+\item $A$ es una constante, la productividad del capital en sentido amplio o del sector de bienes: no es progreso técnico. $B$ es la productividad del sector educativo de \autor{Uzawa} y \autor{Lucas} y, en el Sobelow, el peso de la parte neoclásica (letras locales de apartados distintos); con subíndice, $B_j$, será el beneficio del monopolista en el bloque~\ref{sec:segunda-generacion}.
+\end{itemize}
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{Modelos}\label{sec:pg-modelos}
+
+\begin{itemize}
+\item \emph{El orden}: empezamos por el modelo más sencillo, el $AK$, y seguimos con su versión asintótica, el Sobelow. Después vienen 2 formas de «fabricar» un $AK$ con supuestos más realistas, el gasto público productivo y las externalidades del capital, y cerramos con el capital humano, que es el segundo epígrafe del título.
+\item Los 4 primeros se leen en el mismo gráfico en tasas de crecimiento que el modelo de \autor{Solow} (gráfico~\ref{fig:tasas-endogeno}), al que se van añadiendo capas.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{El modelo $AK$ (\autor{Rebelo}, 1991)}\label{sec:ak}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿qué pasa si el capital no tiene rendimientos decrecientes? Es el cambio más pequeño posible respecto al modelo de \autor{Solow}: todo igual, salvo la función de producción, que pasa a ser lineal en el capital, la \concepto{tecnología $AK$}:
+  \begin{equation}
+  Y_t=A\,K_t,\qquad A>0\ \text{constante}.\label{eq:ak}
+  \end{equation}
+  Su introducción en la literatura moderna se atribuye a \textcite{Rebelo1991Long}, aunque la idea de que el capital, si incluye el conocimiento, no tiene por qué rendir cada vez menos es de \textcite{Knight1944Diminishing}\footnote{\label{nota:ak-salario}En $Y=AK$ el trabajo no produce y el salario es nulo. Se evita sin perder la linealidad con el \emph{aprendizaje por la práctica}: si cada empresa produce con $Y_j=K_j^{\alpha}(Q\,L_j)^{1-\alpha}$, donde $Q$ es el conocimiento disponible para todas, y el conocimiento crece con la experiencia, medida por el capital por trabajador de la economía, $Q=K/L$, la producción agregada es $Y=K^{\alpha}(QL)^{1-\alpha}=K$: un modelo $AK$ con $A=1$. Cada empresa toma $Q$ como dado y paga a los factores su producto marginal privado, $r+\delta=\alpha$ y $w=(1-\alpha)\,K/L$, positivo. La diferencia entre el rendimiento privado del capital, $\alpha$, y el social, 1, es una externalidad: es el modelo del apartado~\ref{sec:externalidades} \parencite[sec.~4.3]{BarroSalaiMartin2004}.}.
+\item \emph{¿Y el trabajo?} Que no aparezca es menos extraño de lo que parece si $K$ se entiende en \concepto{sentido amplio}: capital físico, capital humano y conocimiento. Para que una persona sea productiva hay que invertir en ella (alimentación, salud, educación), renunciando a consumo presente, igual que para construir una máquina. Si todos los factores se acumulan así y hay rendimientos constantes a escala en todos ellos, la producción es proporcional al capital amplio \parencite{SalaiMartin2000}.
+\item \emph{$A$ no es progreso técnico}: es una constante, la productividad del capital amplio. La economía no aprende nada nuevo: crece solo acumulando.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Lo que se mantiene}: los supuestos del modelo de \autor{Solow} \vertema{3.A.43}: economía cerrada y sin sector público, un solo bien que se consume o se invierte, competencia perfecta en bienes y factores, población igual al empleo, que crece a la tasa $n$, y depreciación $\delta$.
+\item \emph{Lo que cambia}: la función de producción \eqref{eq:ak}, que levanta los productos marginales decrecientes y las condiciones de \autor{Inada} sobre el producto marginal (tabla~\ref{tab:supuestos-neoclasicos}). Con competencia perfecta, el capital cobra su producto marginal, $r+\delta=A$, y por el teorema de \autor{Euler} se lleva toda la renta.
+\item \emph{2 versiones del ahorro}: una tasa de ahorro constante, $s$, como en el modelo de \autor{Solow}, que da la lectura gráfica, y hogares que eligen cuánto ahorrar, como en el de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}, que es la versión de referencia.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Con ahorro constante}, la ley de movimiento del capital por trabajador es la de \autor{Solow} con $f(k)=Ak$:
+  \begin{equation}
+  \dot k_t=s\,A\,k_t-(n+\delta)\,k_t\quad\Longrightarrow\quad \gamma_k=\gamma_y=s\,A-(n+\delta).\label{eq:ak-solow}
+  \end{equation}
+  \begin{itemize}
+  \item En el gráfico en tasas (gráfico~\ref{fig:tasas-endogeno}, derecha), la \concepto{curva de ahorro}, $s\,f(k)/k=sA$, es una horizontal, como la \concepto{curva de depreciación}, $n+\delta$. Si $sA>n+\delta$, la distancia entre ambas es la tasa de crecimiento, y es la misma para cualquier $k$.
+  \item La intuición: con poco capital, se ahorra la fracción $s$ de la producción y cada unidad invertida rinde $A$, así que el capital aumenta en $sAk$, un $sA$ por unidad; con mucho capital ocurre lo mismo, porque el producto medio no cae. Restando la depreciación y la dilución por el crecimiento de la población, $n+\delta$, la tasa neta no cambia nunca.
+  \end{itemize}
+\item \emph{Con hogares que optimizan}, las empresas igualan el producto marginal del capital a su coste de uso, de modo que el tipo de interés es constante, $r=A-\delta$. Con la ecuación de \autor{Euler} \eqref{eq:euler-endogeno}:
+  \begin{equation}
+  \gamma_c=\gamma_k=\gamma_y=\frac{A-\delta-\rho}{\theta}.\label{eq:ak-ramsey}
+  \end{equation}
+  \begin{itemize}
+  \item Hay crecimiento si el rendimiento neto del capital supera la impaciencia, $A-\delta>\rho$, y la utilidad está acotada si $\rho-n>(1-\theta)\,\gamma$.
+  \item El consumo es una fracción constante del capital desde el primer momento, $c/k=A-\delta-n-\gamma$: la economía salta a la senda de crecimiento equilibrado y la tasa de ahorro, que ahora sale del modelo, es constante, $s=(\gamma+n+\delta)/A$ (anexo~\ref{anexo:ak-barro}).
+  \item Sin externalidades ni poder de mercado, el equilibrio competitivo coincide con el óptimo del planificador: se cumple el primer teorema fundamental de la economía del bienestar (1TFEB) \vertema{3.A.22}.
+  \item En la pizarra, bajo la ecuación de \autor{Euler}: «$AK$: $r=A-\delta$».
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo $AK$ en niveles (izquierda) y en tasas de crecimiento frente al de \autor{Solow} (derecha), con una subida de la tasa de ahorro}\label{fig:tasas-endogeno}
+\grafico[0.9\textwidth]{tasas-endogeno}
+\fuente{elaboración propia a partir de \textcite{SalaiMartin2000} y \textcite[cap.~4]{BarroSalaiMartin2004}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones: el $AK$ frente al modelo de \autor{Solow}}
+
+\begin{itemize}
+\item \emph{Crecimiento endógeno}: la renta por habitante crece a una tasa positiva sin que ninguna variable crezca por sí sola. Es la propiedad que da nombre a estos modelos.
+\item \emph{La política importa para el crecimiento}: lo que sube el ahorro (o reduce la impaciencia), aumenta $A$ o reduce $n$ o $\delta$ eleva la tasa de crecimiento, y para siempre: en el gráfico, la curva de ahorro salta de $sA$ a $s'A$ y la distancia con la de depreciación aumenta. «Quien guarda, halla»: ahorrar más no da solo más renta, sino más crecimiento. Es la tesis de \textcite{Rebelo1991Long}: un impuesto sobre las rentas del capital, $\tau_K$, reduce el rendimiento neto y con él el crecimiento, $\gamma=[(1-\tau_K)A-\delta-\rho]/\theta$, y las diferencias de política fiscal pueden explicar diferencias persistentes de crecimiento entre países.
+\item \emph{Sin dinámica de transición}: como el producto medio del capital no cae, la economía crece al mismo ritmo con poco o con mucho capital.
+\item \emph{Sin convergencia}: la tasa de crecimiento no depende del nivel de renta, así que los países pobres no crecen más deprisa que los ricos, ni en términos absolutos ni condicionales. Por eso la convergencia se convirtió en la prueba empírica entre los 2 enfoques \vertema{3.A.45}.
+\item \emph{Los choques son permanentes}: si una guerra o un terremoto destruyen parte del capital, la economía no crece después más deprisa para volver a su senda: sigue al mismo ritmo desde un nivel más bajo, y la pérdida es permanente.
+\item \emph{No hay ineficiencia dinámica} \parencite{SaintPaul1992}: la economía sería dinámicamente ineficiente si el tipo de interés fuera menor que el crecimiento de la producción agregada, $\gamma_Y=\gamma+n$ \vertema{3.A.43}. Con hogares, $r-\gamma_Y=A-\delta-\gamma-n=c/k>0$; con ahorro constante, $\gamma_Y=sA-\delta<A-\delta=r$, porque $s<1$. Ahorrar más nunca es «demasiado»: sube el crecimiento.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El modelo $AK$ frente al de \autor{Solow}}\label{tab:ak-solow}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.8cm}>{\raggedright\arraybackslash}m{5cm}>{\raggedright\arraybackslash}m{5.6cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{\autor{Solow}} & \textbf{$AK$}\\
+\midrule
+Crecimiento de $y$ a largo plazo & El del progreso técnico, exógeno & $sA-(n+\delta)$, o $(A-\delta-\rho)/\theta$: positivo sin variable exógena\\
+Efecto de $s$ (o $\rho$ y $\theta$), $A$, $n$ y $\delta$ & Solo en el nivel de la renta & En la tasa de crecimiento, para siempre\\
+Dinámica de transición & Sí, hacia el estado estacionario & No: crece siempre a la misma tasa\\
+Convergencia & Condicional & Ninguna\\
+Destrucción temporal de capital & Se recupera la senda anterior & Pérdida permanente de nivel\\
+Ineficiencia dinámica & Posible, si $s>s_{\mathrm{oro}}$ & Imposible: $r>\gamma_Y$\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{SalaiMartin2000}, \textcite[cap.~4]{BarroSalaiMartin2004} y \textcite{SaintPaul1992}.}
+\end{table}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \textcite{Rebelo1991Long} no necesita que todo sea capital: basta con un núcleo de bienes de capital que se produzca solo con bienes de capital, sin factores no reproducibles como la tierra o el trabajo no cualificado. Ese núcleo crece con una tecnología $AK$ y arrastra al resto de la economía.
+\item El gasto público productivo, las externalidades del capital y el capital humano son formas de llegar a una tecnología $AK$ desde supuestos más realistas: se ven a continuación.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{Jones1995QJE}: en Estados Unidos y en los demás grandes países de la Organización para la Cooperación y el Desarrollo Económicos (OCDE), las tasas de inversión subieron durante la posguerra sin que la tasa de crecimiento mostrara una tendencia al alza, contra lo que predice el $AK$.
+\item \textcite{EasterlyEtAl1993Good}: las tasas de crecimiento de los países cambian mucho de una década a otra, mientras que sus características (ahorro, educación, instituciones) son persistentes. Un modelo en el que la tasa de crecimiento depende solo de parámetros persistentes casa mal con ello.
+\item Los datos muestran convergencia condicional, a un ritmo de en torno al 2~\% anual \parencite{BarroSalaiMartin1992}, que el $AK$ no tiene \vertema{3.A.45}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: es la forma más sencilla de obtener crecimiento endógeno, y la forma reducida de casi todos los modelos de 1.ª generación, que acaban escondiendo, en algún supuesto, una tecnología lineal en algún tipo de capital.
+\item \emph{En contra}:
+  \begin{itemize}
+  \item es un caso de \emph{filo de la navaja}: exige que el exponente del capital sea exactamente 1; con algo menos vuelve el modelo de \autor{Solow} y, con algo más, el crecimiento explosivo \parencite{Solow1994Perspectives};
+  \item el capital se lleva toda la renta y el salario es nulo (nota~\ref{nota:ak-salario}). En las variantes con trabajo en las que el producto marginal del capital tiende a una constante, como el Sobelow, la participación del capital tiende a 1 a medida que se acumula, contra la estabilidad de las participaciones de los hechos de \autor{Kaldor} \vertema{3.A.43};
+  \item no explica el progreso técnico, que la contabilidad del crecimiento señala como fuente principal del crecimiento \vertema{3.A.45}, ni predice la convergencia condicional que se observa.
+  \end{itemize}
+\item \emph{Nexo}: la falta de convergencia lleva al Sobelow, que la recupera; el filo de la navaja, a los modelos que explican por qué el capital amplio podría tener rendimientos constantes.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{El modelo Sobelow (\autor{Jones} y \autor{Manuelli}, 1990)}\label{sec:sobelow}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿se puede tener a la vez crecimiento endógeno y convergencia condicional? Basta con que el producto marginal del capital caiga, como en \autor{Solow}, pero sin llegar a cero, como en el $AK$. El nombre une los 2 extremos: \autor{Solow} y \autor{Rebelo}\footnote{La función la propuso por primera vez \textcite{Kurz1968} y la recuperaron \textcite{JonesManuelli1990}, que muestran que un modelo convexo, sin rendimientos crecientes ni externalidades, puede crecer sin límite.}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los del modelo de \autor{Solow} con ahorro constante y una función de producción que suma una parte $AK$ y una parte neoclásica:
+  \[Y_t=A\,K_t+B\,K_t^{\alpha}L_t^{1-\alpha}\quad\Longrightarrow\quad y_t=f(k_t)=A\,k_t+B\,k_t^{\alpha},\qquad A,B>0,\ \ 0<\alpha<1.\]
+\item Tiene rendimientos constantes a escala y productos marginales positivos y decrecientes, y cumple todas las condiciones de \autor{Inada} salvo una: $f'(k)=A+\alpha Bk^{\alpha-1}\to A>0$ cuando $k\to\infty$ (tabla~\ref{tab:supuestos-neoclasicos}).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item En tasas de crecimiento,
+  \begin{equation}
+  \gamma_k=s\,\frac{f(k_t)}{k_t}-(n+\delta)=s\left(A+B\,k_t^{\alpha-1}\right)-(n+\delta).\label{eq:sobelow}
+  \end{equation}
+  La curva de ahorro decrece con $k$, como en \autor{Solow}, pero tiende a la asíntota $sA$, la horizontal del $AK$ (gráfico~\ref{fig:sobelow}):
+  \begin{itemize}
+  \item si $sA>n+\delta$, la curva de ahorro queda siempre por encima de la de depreciación: la economía crece siempre, cada vez más despacio, y a largo plazo a la tasa $sA-(n+\delta)$, como en el $AK$;
+  \item si $sA<n+\delta$, las curvas se cortan: hay un estado estacionario estable, como en \autor{Solow}, y la renta por habitante deja de crecer.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo Sobelow en tasas de crecimiento: con $sA>n+\delta$ (izquierda), crecimiento sostenido; con $sA<n+\delta$ (derecha), estado estacionario}\label{fig:sobelow}
+\grafico[0.9\textwidth]{sobelow}
+\fuente{elaboración propia a partir de \textcite{SalaiMartin2000} y \textcite{JonesManuelli1990}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Crecimiento endógeno y convergencia condicional a la vez}: entre economías con los mismos parámetros, la que tiene menos capital crece más deprisa, porque su producto medio del capital es mayor; pero ninguna deja de crecer. La convergencia es en tasas de crecimiento, no hacia un nivel de renta.
+\item \emph{La condición clave} es que se incumpla la condición de \autor{Inada} en el infinito: los rendimientos no decrecientes del $AK$ son suficientes, pero no necesarios.
+\item Como en el $AK$, la política que sube $s$ o $A$ sube el crecimiento a largo plazo.
+\end{itemize}
+
+\paragraph{c) Extensiones: la función CES con elasticidad de sustitución mayor que 1}
+
+\begin{itemize}
+\item La función de producción con elasticidad de sustitución constante (CES) \vertema{3.A.11}, por trabajador y con rendimientos constantes,
+  \[y=f(k)=A\left[a_K\,k^{\frac{\sigma-1}{\sigma}}+a_L\right]^{\frac{\sigma}{\sigma-1}},\qquad a_K+a_L=1,\]
+  donde $\sigma$ es la elasticidad de sustitución entre capital y trabajo, se comporta como el Sobelow si $\sigma>1$. Entonces el producto medio del capital tiende a una constante positiva:
+  \[\lim_{k\to\infty}\frac{f(k)}{k}=\lim_{k\to\infty}A\left[a_K+a_L\,k^{-\frac{\sigma-1}{\sigma}}\right]^{\frac{\sigma}{\sigma-1}}=A\,a_K^{\frac{\sigma}{\sigma-1}}>0.\]
+\item Si $s\,A\,a_K^{\sigma/(\sigma-1)}>n+\delta$, la economía crece sin límite: con mucha sustitución, el capital puede hacer el trabajo de los trabajadores que faltan y su rendimiento no se hunde \parencite[cap.~1, fig.~1.14]{BarroSalaiMartin2004}\footnote{\textcite[p.~77]{Solow1956} ya usa una función con elasticidad de sustitución constante como ejemplo, y \textcite{ArrowCheneryMinhasSolow1961} la generalizan y la estiman \parencite{KlumpPreissler2000} \vertema{3.A.11}.}.
+\item \emph{Evidencia}: la mayoría de las estimaciones sitúan la elasticidad de sustitución entre capital y trabajo por debajo de 1 \vertema{3.A.11}, lo que resta realismo a esta vía.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Reconcilia el crecimiento endógeno con la convergencia condicional, pero con un supuesto difícil de contrastar, el comportamiento del producto marginal cuando el capital tiende a infinito, y, como el $AK$, con una participación del capital que tiende a 1. Sigue sin decir \emph{por qué} el capital no tendría rendimientos decrecientes: los 2 modelos siguientes dan 2 razones.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Un modelo $AK$ con gasto público productivo (\autor{Barro}, 1990)}\label{sec:barro}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿puede el gasto público generar crecimiento sostenido, y qué tamaño del Estado lo maximiza? Hay un dilema: el gasto productivo (infraestructuras, justicia, seguridad, investigación\footnote{En la literatura se ha considerado productivo el gasto en seguridad, justicia, defensa, sanidad, transporte y comunicaciones, infraestructuras y las subvenciones a la I+D.}) hace más productivo el capital privado, pero hay que financiarlo con impuestos, que reducen el rendimiento de invertir. Si el gasto no fuera productivo, solo quedaría el segundo efecto y su tamaño óptimo sería nulo.
+\item Es un modelo $AK$ con una justificación: el gasto público hace que el capital privado no tenga rendimientos decrecientes\footnote{En puridad, también puede leerse como un modelo de desbordamientos, porque la inversión pública eleva la productividad del capital de todas las empresas, como el conocimiento en el apartado~\ref{sec:externalidades}.}. Su tema de referencia es el de la política fiscal y el crecimiento \vertema{3.A.38}; aquí interesa como vía de crecimiento endógeno.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Producción}: con capital privado y un flujo de servicios públicos, $G_t$, que todas las empresas usan a la vez, con rendimientos constantes en los 2 y decrecientes en cada uno:
+  \[Y_t=A\,K_t^{\alpha}\,G_t^{1-\alpha},\qquad 0<\alpha<1.\]
+  La población es constante y se normaliza a 1, así que los agregados son también por trabajador.
+\item \emph{Sector público}: financia el gasto con un impuesto proporcional sobre la renta, de tipo $\tau$ constante, con el presupuesto equilibrado: $G_t=\tau Y_t$. A largo plazo el Estado no puede gastar más de lo que ingresa \vertema{3.A.39}, y el déficit se deja fuera.
+\item \emph{Hogares de \autor{Ramsey}} con utilidad isoelástica; las empresas toman $G$ como dado.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con $G=\tau Y$, la producción es lineal en el capital: un modelo $AK$ cuya productividad depende del tamaño del Estado,
+  \[Y=A\,K^{\alpha}(\tau Y)^{1-\alpha}\quad\Longrightarrow\quad Y=A^{1/\alpha}\,\tau^{(1-\alpha)/\alpha}\,K.\]
+\item Cada empresa toma $G$ como dado: el producto marginal privado del capital es $\alpha Y/K$ y, tras impuestos, el hogar recibe $r=(1-\tau)\,\alpha\,A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-\delta$. Con la ecuación de \autor{Euler} \eqref{eq:euler-endogeno}:
+  \begin{equation}
+  \gamma=\frac{1}{\theta}\left[(1-\tau)\,\alpha\,A^{1/\alpha}\,\tau^{(1-\alpha)/\alpha}-\delta-\rho\right].\label{eq:barro}
+  \end{equation}
+\item \emph{2 efectos del impuesto}: el factor $\tau^{(1-\alpha)/\alpha}$, positivo (más gasto, capital más productivo), y $(1-\tau)$, negativo (menos rendimiento neto). Maximizando $(1-\tau)\tau^{(1-\alpha)/\alpha}$ (anexo~\ref{anexo:ak-barro}):
+  \begin{equation}
+  \tau^*=\frac{G}{Y}=1-\alpha.\label{eq:barro-tau}
+  \end{equation}
+  \begin{itemize}
+  \item El crecimiento sube con el tipo mientras $\tau<1-\alpha$ y baja después: tiene forma de U invertida (gráfico~\ref{fig:barro}).
+  \item En $\tau^*$ se cumple la \concepto{regla de \autor{Barro}}: $\partial Y/\partial G=(1-\alpha)Y/G=1$, el gasto productivo se lleva hasta que su producto marginal iguala su coste.
+  \item El tipo óptimo coincide con la elasticidad de la producción al gasto público.
+  \end{itemize}
+\item Con una tasa de ahorro constante, como en \autor{Solow}, se obtiene $\gamma=s(1-\tau)A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-\delta$ y el mismo $\tau^*$; se desarrolla en el anexo~\ref{anexo:ak-barro}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Tasa de crecimiento y tipo impositivo en el modelo de \autor{Barro} (1990)}\label{fig:barro}
+\grafico[0.55\textwidth]{barro}
+\fuente{elaboración propia a partir de \textcite{Barro1990} y \textcite{SalaiMartin2000}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El tamaño del Estado afecta al crecimiento a largo plazo}: hay un tamaño óptimo del gasto productivo, $G/Y=1-\alpha$. Por debajo, más gasto acelera el crecimiento; por encima, lo frena \vertema{3.A.38}.
+\item \emph{La composición del gasto importa}: el gasto improductivo solo tiene el efecto negativo de su financiación; y no todos los impuestos frenan igual el crecimiento.
+\item \emph{El equilibrio no es óptimo}: el hogar recibe por su capital solo la fracción $\alpha$ de lo que rinde a la sociedad. El planificador, que elige $G/Y=1-\alpha$ y no grava el margen de la inversión, crece a $\gamma^{\mathrm P}=\left[\alpha A^{1/\alpha}(1-\alpha)^{(1-\alpha)/\alpha}-\delta-\rho\right]/\theta$, más que el equilibrio con impuesto sobre la renta. Con un impuesto de suma fija que financiara el mismo gasto, el equilibrio alcanzaría el óptimo \parencite[sec.~4.4]{BarroSalaiMartin2004}.
+\item \emph{Matices}: el gasto productivo rinde más si va acompañado de reformas de oferta que permitan aprovecharlo (invertir en educación rinde menos con un mercado de trabajo muy rígido), y, en un modelo de equilibrio general, sus efectos sobre la producción son mayores a largo plazo que a corto \parencite{BaxterKing1993}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Con servicios públicos sujetos a congestión, lo que importa es el gasto en relación con el tamaño de la economía, y un impuesto proporcional actúa como un precio por su uso \parencite{BarroSalaiMartin1992Public}. Con un \emph{stock} de capital público acumulable, en lugar de un flujo, el modelo tiene dinámica de transición.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{Aschauer1989Public} estimó una elasticidad de la producción de Estados Unidos al capital público cercana a 0,4, que implicaría rendimientos enormes. Los estudios posteriores dan valores mucho menores: el metaanálisis de \textcite{BomLigthart2014What}, con 578 estimaciones de 68 estudios, la sitúa en 0,083 a corto plazo y 0,122 a largo para el capital público de la Administración central, y en casi el doble para las infraestructuras básicas de las Administraciones regionales y locales. El gasto en infraestructuras es productivo, pero no tanto como para sostener por sí solo el crecimiento.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: da una base al tamaño óptimo del sector público productivo y a la idea de que la composición del gasto y la forma de financiarlo importan para el crecimiento.
+\item \emph{En contra}: hereda el filo de la navaja del $AK$ (rendimientos constantes en $K$ y $G$ a la vez); trata el gasto como un flujo productivo sin distinguir partidas, sin deuda ni congestión, y su regla depende de una elasticidad mal medida.
+\item \emph{Nexo}: el motor aquí es el Estado. ¿Puede serlo la propia inversión privada? Es lo que proponen los modelos de externalidades.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Externalidades del capital: aprendizaje por la práctica (\autor{Arrow}, 1962; \autor{Romer}, 1986)}\label{sec:externalidades}
+
+\begin{notaopositor}
+En el test, la variante de este modelo con el capital por trabajador aparece como «modelo de \autor{Lucas} (1988) de externalidades» (junio de 2024, pregunta 25: «el modelo $AK$ es considerado en ocasiones como un caso particular del modelo de \autor{Lucas} de externalidades», respuesta correcta). Conviene saber ambos nombres, pero la atribución que siguen los manuales es la de este apartado \parencite[sec.~4.3]{BarroSalaiMartin2004} \parencite[cap.~11]{Acemoglu2009}: en el artículo de \textcite{Lucas1988}, la externalidad es la del capital humano medio (apartado~\ref{sec:uzawa-lucas}).
+\end{notaopositor}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{La regularidad}: en la industria aeronáutica, las horas de trabajo necesarias para fabricar un fuselaje bajaban con el número de fuselajes ya fabricados \parencite{Wright1936}. Es la curva de aprendizaje de la empresa \vertema{3.A.12}. \textcite{Arrow1962} la generaliza: el conocimiento es un subproducto de producir e invertir, el \concepto{aprendizaje por la práctica} (\emph{learning by doing}).
+\item \emph{El desbordamiento}: como el conocimiento es no rival y difícil de proteger, lo que aprende una empresa se \concepto{desborda} a las demás. \textcite{Romer1986Increasing}\footnote{El artículo desarrolla la tesis doctoral que \autor{Romer} presentó en 1983 en la Universidad de Chicago \parencite{Romer1983}.} lleva la idea a un modelo de crecimiento: la inversión de cada empresa aumenta el conocimiento de toda la economía. «Quien a buen árbol se arrima, buena sombra le cobija»: cada empresa se beneficia del conocimiento que acumulan las demás.
+\item \emph{La consecuencia}: el rendimiento \emph{social} del capital es mayor que el \emph{privado}. Cada empresa tiene rendimientos decrecientes, pero la economía en conjunto puede no tenerlos; y como nadie cobra por el conocimiento que regala, se invierte menos de lo que conviene: es una externalidad positiva \vertema{3.A.23}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los del modelo de \autor{Solow} (o de \autor{Ramsey}) con empresas competitivas que producen con
+  \begin{equation}
+  Y_{j}=A\,K_{j}^{\alpha}\,L_{j}^{1-\alpha}\,E^{\eta},\qquad 0<\alpha<1,\ \ \eta\geq0,\label{eq:externalidad}
+  \end{equation}
+  donde $E$ es el conocimiento de la economía, que cada empresa $j$ toma como dado, y $\eta$, la elasticidad de la producción a la externalidad (con $\eta=0$, una Cobb-Douglas). Cada empresa tiene rendimientos constantes en sus factores; la economía, crecientes si $\eta>0$.
+\item El conocimiento depende de la experiencia acumulada, medida por el capital: $E=K$, el capital agregado, en \textcite{Romer1986Increasing}, o $E=k=K/L$, el capital por trabajador, en la variante sin efecto escala.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con $E=k$ y todas las empresas iguales, la producción por trabajador es $y=A\,k^{\alpha+\eta}$, y en tasas, con ahorro constante,
+  \[\gamma_k=s\,A\,k^{\alpha+\eta-1}-(n+\delta).\]
+  El resultado depende de los rendimientos del capital en sentido amplio, el efecto directo más el de la externalidad (gráfico~\ref{fig:externalidades}):
+  \begin{itemize}
+  \item $\alpha+\eta<1$: la externalidad es pequeña y quedan rendimientos decrecientes; el modelo es el de \autor{Solow}, con estado estacionario estable y convergencia condicional;
+  \item $\alpha+\eta=1$: rendimientos constantes; es el $AK$, con $\gamma=sA-(n+\delta)$ y sin estado estacionario;
+  \item $\alpha+\eta>1$: rendimientos crecientes; el estado estacionario es inestable, y la economía o se hunde o crece cada vez más deprisa.
+  \end{itemize}
+\item \emph{Con hogares de \autor{Ramsey}} y $\alpha+\eta=1$, la producción por trabajador es $y=Ak$, pero cada empresa remunera el capital con su producto marginal \emph{privado}, $\partial Y_j/\partial K_j=\alpha A$, mientras que el \emph{social} es $A$:
+  \[\gamma^{\mathrm E}=\frac{\alpha A-\delta-\rho}{\theta}\quad<\quad\gamma^{\mathrm P}=\frac{A-\delta-\rho}{\theta},\]
+  con $\gamma^{\mathrm E}$ la tasa de equilibrio y $\gamma^{\mathrm P}$ la del planificador. En la pizarra: «externalidades: $r=\alpha A-\delta$ (privado) $<A-\delta$ (social)».
+\item \emph{Con el capital agregado}, $E=K$, $\eta=1-\alpha$ y población constante, la producción agregada es $Y=A\,L^{1-\alpha}K$: la productividad del capital, $AL^{1-\alpha}$, y con ella la tasa de crecimiento, aumentan con el tamaño de la población \parencite[sec.~4.3]{BarroSalaiMartin2004}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Externalidades del capital en tasas de crecimiento: $\alpha+\eta<1$ (izquierda), $\alpha+\eta=1$ (centro) y $\alpha+\eta>1$ (derecha)}\label{fig:externalidades}
+\grafico[0.95\textwidth]{externalidades}
+\fuente{elaboración propia a partir de \textcite{SalaiMartin2000} y \textcite[sec.~4.3]{BarroSalaiMartin2004}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Rendimientos crecientes compatibles con la competencia}: como son externos a cada empresa, cada una sigue siendo precio-aceptante. Es la primera forma de introducir los rendimientos crecientes del título sin abandonar la competencia perfecta.
+\item \emph{El equilibrio no es eficiente}: los agentes no internalizan la externalidad y falla el primer teorema fundamental de la economía del bienestar \vertema{3.A.22}. Se invierte y se crece menos de lo óptimo, y, a diferencia de lo que ocurre en el modelo de \autor{Solow}, la política puede subir la tasa de crecimiento a largo plazo: con subvenciones a la inversión o desgravaciones del capital (una corrección pigouviana) o con inversión pública.
+\item \emph{Efecto escala}: con $E=K$, la tasa de crecimiento aumenta con la población y, si la población crece, el crecimiento se acelera sin límite. Con $E=k$ desaparece. El efecto escala es la cara macroeconómica de la no rivalidad del conocimiento, y vuelve en el bloque~\ref{sec:semiendogeno}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{DeLongSummers1991Equipment}: la inversión en bienes de equipo se asocia con un crecimiento mucho mayor del que explicaría su rendimiento privado, lo que sugiere desbordamientos.
+\item Las curvas de aprendizaje están bien documentadas en industrias concretas (aviones, barcos, semiconductores, paneles solares) \vertema{3.A.12}; que tengan el tamaño necesario para dar rendimientos constantes a toda la economía, no.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: explica por qué el capital podría no tener rendimientos decrecientes a escala agregada sin abandonar la competencia, y da un fundamento a la intervención.
+\item \emph{En contra}: el crecimiento sostenido exige de nuevo un filo de la navaja ($\alpha+\eta=1$ exactamente); con $E=K$ aparece un efecto escala que la evidencia no apoya, y el progreso técnico sigue siendo un subproducto no buscado. Tampoco distingue el capital humano, que se acumula de forma distinta del físico.
+\item \emph{Nexo}: esto último lo resuelve el modelo de \autor{Uzawa} y \autor{Lucas}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{El modelo de \autor{Uzawa} (1965) y \autor{Lucas} (1988): la acumulación de capital humano}\label{sec:uzawa-lucas}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿puede la acumulación de capital humano sostener el crecimiento? El $AK$ trata el capital humano como si fuera físico, y \autor{Mankiw}, \autor{Romer} y \autor{Weil} lo acumulan igual que el físico, con rendimientos decrecientes, de modo que solo explica diferencias de nivel \vertema{3.A.43}. Pero los 2 capitales se producen de forma distinta: una máquina se fabrica con producción; el capital humano se forma dedicando \emph{tiempo} de las personas, que es a su vez capital humano, a aprender \vertema{3.A.25}. En los países desarrollados, la inversión más importante en capital humano es la educación.
+\item \emph{Los autores}: \textcite{Uzawa1965} plantea un sector que produce conocimiento con trabajo, y \textcite{Lucas1988} lo reinterpreta como capital humano y le añade una externalidad: la productividad de cada persona depende también del capital humano medio de las demás.
+\item \emph{La clave}: si la educación usa sobre todo capital humano y no tiene rendimientos decrecientes en él, el sector educativo es un $AK$ en $h$ que arrastra a toda la economía.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{2 sectores con tecnologías distintas}. El sector de bienes, cuya producción se consume o se convierte en capital físico, usa capital físico y la fracción $u$ del capital humano; el \concepto{sector educativo} usa la fracción $1-u$ y solo capital humano\footnote{En la versión general, el sector educativo usa también capital físico, $\dot H=B\,(K^H)^{\alpha_H}(H^H)^{1-\alpha_H}$, y la evidencia indica que es más intensivo en capital humano que el de bienes, $\alpha_H<\alpha$. \textcite{Lucas1988} lleva el supuesto al extremo, $\alpha_H=0$: el sector educativo es un $AK$ camuflado en $h$, y por eso la productividad del sector de bienes, $A$, no afecta al crecimiento a largo plazo. Con $\alpha_H>0$, sí lo haría \parencite[cap.~5]{BarroSalaiMartin2004}.}. Por trabajador:
+  \begin{align}
+  \dot k_t&=A\,k_t^{\alpha}\,(u_th_t)^{1-\alpha}\,h_{a,t}^{\eta}-c_t-(\delta_K+n)\,k_t,\label{eq:ul-k}\\
+  \dot h_t&=B\,(1-u_t)\,h_t-(\delta_H+n)\,h_t,\label{eq:ul-h}
+  \end{align}
+  con $A,B>0$ las productividades de cada sector, $\delta_K$ y $\delta_H$ las depreciaciones (la del capital humano es el olvido y lo que no se transmite entre generaciones), $h_a$ el capital humano medio de la economía y $\eta\geq0$ la \concepto{externalidad de \autor{Lucas}}.
+\item \emph{El capital humano es rival}: la hora que se dedica a estudiar no se dedica a producir, $H=H^Y+H^H$ con $H^Y=uH$ y $H^H=(1-u)H$. Es la diferencia con las ideas del bloque~\ref{sec:segunda-generacion}.
+\item \emph{Hogares de \autor{Ramsey}}: idénticos, racionales y de horizonte infinito (un hogar como dinastía de generaciones unidas por el altruismo \parencite{Barro1974}), con utilidad isoelástica y descuento $\rho$; la población crece a $n$. Eligen la senda del consumo, $c_t$, y el reparto de su tiempo, $u_t\in[0,1]$. La tasa de ahorro ya no es exógena: el capital físico se acumula con lo que no se consume.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Sin externalidad} ($\eta=0$) no hay fallos de mercado y basta con resolver el problema del planificador, que coincide con el equilibrio competitivo:
+  \[\optim{\max}{\{c_t,\,u_t\}}{\int_0^{\infty}e^{-(\rho-n)t}\,\frac{c_t^{1-\theta}-1}{1-\theta}\,dt}{\dot k_t=A\,k_t^{\alpha}(u_th_t)^{1-\alpha}-c_t-(\delta_K+n)\,k_t\\ \dot h_t=B\,(1-u_t)\,h_t-(\delta_H+n)\,h_t\\ k_0,\ h_0\ \text{dados}}\]
+  Los controles son $c_t$ y $u_t$, y los estados, $k_t$ y $h_t$. Se resuelve por control óptimo (caja siguiente), con un precio sombra para cada capital, $\lambda_{K,t}$ para el físico y $\lambda_{H,t}$ para el humano, y el hamiltoniano en valor corriente
+  \[\mathcal H_t=\frac{c_t^{1-\theta}-1}{1-\theta}+\lambda_{K,t}\left[A\,k_t^{\alpha}(u_th_t)^{1-\alpha}-c_t-(\delta_K+n)\,k_t\right]+\lambda_{H,t}\left[B\,(1-u_t)\,h_t-(\delta_H+n)\,h_t\right].\]
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{El hamiltoniano en valor corriente} \vertema{3.A.34}
+\begin{itemize}
+\item \emph{El problema}: maximizar $\int_0^{\infty}e^{-\rho t}G(x_t,z_t)\,dt$ sujeto a $\dot x_t=f(x_t,z_t)$ y $x_0$ dado, con $x_t$ las variables de estado y $z_t$ las de control (aquí, $\rho-n$ hace de $\rho$; las letras $x$ y $z$ son locales de esta caja, para no confundirlas con la $u$ del modelo).
+\item \emph{El hamiltoniano en valor corriente}: $\mathcal H_t=G(x_t,z_t)+\lambda_tf(x_t,z_t)$, con un coestado $\lambda_t$ por cada variable de estado: el valor, en utilidad del momento $t$, de una unidad más de ese estado (su precio sombra).
+\item \emph{Condiciones necesarias} (principio del máximo de \autor{Pontryagin}):
+  \begin{enumerate}
+  \item para cada control, $\partial\mathcal H_t/\partial z_t=0$;
+  \item para cada estado, $\dot\lambda_t=\rho\lambda_t-\partial\mathcal H_t/\partial x_t$, y su ecuación de movimiento, $\dot x_t=\partial\mathcal H_t/\partial\lambda_t$;
+  \item la condición de transversalidad, $\lim_{t\to\infty}e^{-\rho t}\lambda_tx_t=0$: en el límite, el valor actual de lo que se deja sin usar es nulo.
+  \end{enumerate}
+\item La versión en valor presente y las condiciones de suficiencia se estudian en \vertema{3.A.34}.
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Condiciones de primer orden} (anexo~\ref{anexo:uzawa-lucas}):
+  \begin{itemize}
+  \item consumo, $c_t^{-\theta}=\lambda_{K,t}$: la utilidad marginal de consumir iguala el valor de una unidad más de capital físico;
+  \item reparto del tiempo, $\lambda_{K,t}(1-\alpha)\,y_t/u_t=\lambda_{H,t}\,B\,h_t$: una hora más en la fábrica vale lo mismo que una hora más en el aula;
+  \item coestados, $\dot\lambda_{K,t}/\lambda_{K,t}=\rho+\delta_K-\alpha\,y_t/k_t$ y $\dot\lambda_{H,t}/\lambda_{H,t}=\rho+\delta_H-B$, y las 2 condiciones de transversalidad.
+  \end{itemize}
+\item \emph{Senda de crecimiento equilibrado}: $u$ es constante y $c$, $k$, $h$ e $y$ crecen a la misma tasa. De la condición del tiempo, los 2 precios sombra crecen igual, y como $\gamma_{\lambda_K}=-\theta\gamma_c$:
+  \begin{equation}
+  \gamma=\gamma_c=\gamma_k=\gamma_h=\gamma_y=\frac{B-\delta_H-\rho}{\theta}.\label{eq:ul-gamma}
+  \end{equation}
+  \begin{itemize}
+  \item Es la ecuación de \autor{Euler} \eqref{eq:euler-endogeno} con $r=B-\delta_H$: en la senda equilibrada, el capital físico rinde lo mismo que el humano, $\alpha\,y/k-\delta_K=B-\delta_H$, y ninguno de los 2 rendimientos cae. En la pizarra: «U-L: $r=B-\delta_H$».
+  \item La fracción del tiempo dedicada a producir es $u^*=1-(\gamma+n+\delta_H)/B$, que está entre 0 y 1 si hay crecimiento, $B>\delta_H+\rho$, y la utilidad está acotada, $\rho-n>(1-\theta)\,\gamma$.
+  \end{itemize}
+\item \emph{Dinámica de transición}: a diferencia del $AK$, hay transición, no en el nivel de la renta, sino en la ratio $k/h$, que en la senda equilibrada es constante \parencite[cap.~5]{BarroSalaiMartin2004}:
+  \begin{itemize}
+  \item si una guerra o un terremoto destruyen capital físico, $k/h$ queda por debajo de su valor de equilibrio: el capital físico es escaso y rinde mucho, se invierte en él y la economía crece durante un tiempo \emph{más} deprisa que $\gamma$. Es la rápida reconstrucción de Alemania y Japón tras la Segunda Guerra Mundial, que habían perdido máquinas, no conocimientos;
+  \item si una epidemia o una fuga de cerebros destruyen capital humano, $k/h$ queda por encima: rehacer el capital humano exige sacar tiempo de la producción (baja $u$), y la recuperación es más lenta.
+  \end{itemize}
+\item \emph{Con la externalidad de \autor{Lucas}} ($\eta>0$), cada hogar no tiene en cuenta que su capital humano hace más productivos a los demás: estudia menos de lo que conviene y el equilibrio crece menos que el óptimo. Sin depreciación ni crecimiento de la población \parencite{Lucas1988}:
+  \[\gamma_h^{\mathrm E}=\frac{(1-\alpha)(B-\rho)}{\theta(1-\alpha+\eta)-\eta}\quad<\quad\gamma_h^{\mathrm P}=\frac{1}{\theta}\left[B-\frac{1-\alpha}{1-\alpha+\eta}\,\rho\right],\]
+  y la renta crece más deprisa que el capital humano, $\gamma_y=\frac{1-\alpha+\eta}{1-\alpha}\,\gamma_h$ (anexo~\ref{anexo:uzawa-lucas}).
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Crecimiento endógeno con capital humano}: todas las variables por trabajador crecen a una tasa positiva y constante si el sistema educativo es lo bastante productivo, $B>\delta_H+\rho$, sin suponer que el capital físico y el humano se acumulan igual.
+\item \emph{Determinantes}: el crecimiento sube con la productividad del sistema educativo, $B$, y con la paciencia, y baja con $\theta$ y con el olvido, $\delta_H$. No depende de la productividad del sector de bienes, $A$, ni de la propensión a ahorrar en capital físico: lo que tira a largo plazo es el capital humano.
+\item \emph{Sin convergencia en niveles}: 2 economías con los mismos parámetros y distinta riqueza inicial crecen igual a largo plazo y mantienen su distancia. La dotación inicial importa, y su composición también: la que pierde capital físico se recupera antes que la que pierde capital humano.
+\item \emph{Política}: lo que mejora la eficiencia del sistema educativo sube el crecimiento para siempre. Con la externalidad, además, se justifica subvencionar la educación; y los mercados de crédito imperfectos, que impiden endeudarse para estudiar, dan otra razón para intervenir \vertema{3.A.25}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Capital humano en tasa o en nivel}: aquí la renta crece porque crece el capital humano; en \textcite{NelsonPhelps1966Investment}, lo que importa es su \emph{nivel}, porque facilita adoptar las tecnologías de la frontera, un puente hacia los modelos de innovación. En el modelo de \autor{Mankiw}, \autor{Romer} y \autor{Weil}, el capital humano tiene rendimientos decrecientes y solo explica niveles \vertema{3.A.43}.
+\item \emph{La decisión individual}: la ecuación \eqref{eq:ul-h} es la misma que la de acumulación de capital humano de \autor{Ben-Porath}, que el estudio del mercado de trabajo escribe con otra letra para la productividad \vertema{3.A.25}.
+\item \emph{Economía abierta}: con la externalidad, la apertura y los flujos de capital humano cambian el crecimiento de cada país \vertema{3.B.9}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{BenhabibSpiegel1994Role}: en una muestra amplia de países, lo que se relaciona con el crecimiento de la productividad es el \emph{nivel} de capital humano, no su aumento, lo que da la razón a \autor{Nelson} y \autor{Phelps} frente a \autor{Lucas}. \textcite{HanushekWoessmann2008Role}: lo que cuenta son las competencias cognitivas medidas en las pruebas internacionales de matemáticas y ciencias, más que los años de escolarización.
+\item Las externalidades del capital humano estimadas son pequeñas o moderadas: \textcite{AcemogluAngrist2000How}, con las leyes de escolarización obligatoria de Estados Unidos, no encuentran externalidades significativas de la educación secundaria, y \textcite{Moretti2004Estimating} sí las halla para los titulados universitarios \vertema{3.A.25}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: da al capital humano un papel propio en el crecimiento, con dinámica de transición y predicciones contrastables (recuperaciones tras guerras y epidemias), y la externalidad de \autor{Lucas} justifica la política educativa.
+\item \emph{En contra}:
+  \begin{itemize}
+  \item el crecimiento descansa en que la acumulación de capital humano sea lineal en el capital humano, otro filo de la navaja: con rendimientos decrecientes en $h$, el crecimiento se agotaría;
+  \item el capital humano de cada persona está limitado por las horas de su vida y muere con ella: no puede crecer sin límite \parencite{Acemoglu2009};
+  \item sigue sin explicar el progreso técnico: lo que se acumula es rival.
+  \end{itemize}
+\item \emph{Nexo}: para que el crecimiento sea sostenido hace falta algo que no se agote con quien lo usa ni muera con quien lo tiene: las ideas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración de los modelos de primera generación}\label{sec:pg-valoracion}
+
+\begin{itemize}
+\item \emph{Lo que comparten}: todos tienen alguna forma de capital amplio cuyo producto marginal no cae a cero (en el Sobelow, los rendimientos decrecientes existen, pero se agotan). Esconden una tecnología $AK$, y con ella un rendimiento $r$ que no cae en la ecuación de \autor{Euler}.
+\item \emph{Lo que consiguen}: crecimiento sostenido sin progreso técnico exógeno y un papel permanente para la política económica: el ahorro, los impuestos, el gasto público productivo, la subvención de la inversión y la educación cambian la tasa de crecimiento, no solo el nivel de la renta.
+\item \emph{Lo que no consiguen}:
+  \begin{itemize}
+  \item explicar el progreso técnico: o no existe ($AK$, Sobelow, \autor{Uzawa} y \autor{Lucas}), o es un subproducto no buscado de invertir (externalidades). Salvo, quizá, en la educación, nadie busca mejorar la tecnología;
+  \item evitar el filo de la navaja: el crecimiento exige rendimientos \emph{exactamente} constantes en algún factor acumulable;
+  \item ajustarse a la evidencia: no predicen la convergencia condicional que se observa (salvo el Sobelow, y las externalidades con $\alpha+\eta<1$, que son el modelo de \autor{Solow}), y las tasas de inversión han subido sin que suba el crecimiento \parencite{Jones1995QJE}.
+  \end{itemize}
+\item \emph{La pregunta que dejan}: ¿pueden durar para siempre unos impulsos que nacen solo de acumular capital? Probablemente no: externalidades, gasto público o educación acabarían chocando, tarde o temprano, con los rendimientos decrecientes.
+\item \emph{Recapitulación y nexo}: la pieza que falta es la actividad deliberada con la que se crean las ideas, la I+D de las empresas. Para incorporarla hay que abandonar la competencia perfecta: es el segundo bloque.
+\end{itemize}
+
+% ==========================================================================
+\section{Modelos de innovación tecnológica (2.ª generación):\newline competencia imperfecta y progreso técnico endógeno}\label{sec:segunda-generacion}
+\minutos{9}
+
+\begin{notaopositor}
+En el cante (\tiempo{9}): la idea (\tiempo{1,5}), con «no rival + excluible $\Rightarrow$ rendimientos crecientes $\Rightarrow$ competencia imperfecta» escrito a la derecha; \autor{Romer} (\tiempo{3,5}), con el esquema de los 3 sectores (gráfico~\ref{fig:romer-sectores}), las ecuaciones \eqref{eq:romer-y} y \eqref{eq:romer-ideas}, la pegatina «a hombros de gigantes», $\gamma^{\mathrm E}$ frente a $\gamma^{\mathrm P}$ y las 2 distorsiones, y la línea «\autor{Romer}: $r=\alpha\eta_IL_Y$» bajo la de \autor{Euler}; la caja de \autor{Grossman} y \autor{Helpman}, en una frase; \autor{Aghion} y \autor{Howitt} (\tiempo{3}), con el gráfico del arbitraje (gráfico~\ref{fig:aghion-howitt}), $\gamma=\lambda_IL_I^*\ln\gamma_q$, la pegatina «rey muerto, rey puesto», los efectos de signo contrario sobre la eficiencia, la U invertida y la distancia a la frontera dichas; la valoración (\tiempo{1}), con la tabla~\ref{tab:resumen-modelos} dicha en 2 frases mientras se completa la columna de la izquierda. Las derivaciones están en los anexos~\ref{anexo:romer} y~\ref{anexo:aghion-howitt}.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: cuando el crecimiento se debe a ideas creadas a propósito, hace falta competencia imperfecta para pagarlas, y el mercado no crea las ideas que convienen a la sociedad: la política de innovación puede cambiar la tasa de crecimiento.
+\item \emph{Nexo}: una vez visto que la acumulación de capital no explica el progreso técnico, pasamos a los modelos en que el progreso técnico es el resultado de una inversión deliberada, la I+D.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Idea}\label{sec:sg-idea}
+
+\begin{itemize}
+\item \emph{La segunda salida}: asumir competencia imperfecta. Como explicábamos en la introducción, es el otro camino para que la renta por habitante crezca sin factores exógenos.
+\item \emph{3 premisas} \parencite{Romer1990}:
+  \begin{itemize}
+  \item el progreso técnico es el motor del crecimiento;
+  \item es el resultado de decisiones deliberadas de empresas que buscan beneficios, la I+D;
+  \item las ideas son distintas de los demás bienes: una vez creadas, pueden usarse una y otra vez sin coste adicional. Son \emph{no rivales} y, gracias a las patentes o al secreto, \emph{parcialmente excluibles}.
+  \end{itemize}
+\item \emph{Por qué no basta la competencia perfecta}: si la producción depende de factores rivales ($K$, $L$) y de las ideas ($N$), duplicar fábricas y trabajadores con las mismas ideas duplica la producción, por el principio de réplica \vertema{3.A.11}. Hay entonces rendimientos \emph{crecientes} en todos los factores juntos:
+  \[F(\kappa K,\kappa L,\kappa N)>\kappa\,F(K,L,N)\qquad\text{para }\kappa>1.\]
+  \begin{itemize}
+  \item Por el teorema de \autor{Euler}, pagar al capital y al trabajo su producto marginal agota toda la producción: no queda nada para pagar a quien crea las ideas.
+  \item Dicho de otro modo, inventar tiene un coste fijo y reproducir el invento, un coste marginal casi nulo: con el precio igual al coste marginal, nadie recuperaría el coste del invento.
+  \item Hace falta poder de mercado, el que dan las patentes, o una subvención. Es el precio que se paga por la innovación: un monopolio temporal que sacrifica eficiencia estática \parencite{Arrow1962Economic} \vertema{3.A.15}.
+  \end{itemize}
+\item \emph{2 familias de modelos}, según lo que hace una innovación:
+  \begin{itemize}
+  \item el \concepto{aumento del número de variedades} (innovación horizontal): un invento añade un bien intermedio nuevo que no desplaza a los anteriores \parencite{Romer1990} \parencite[cap.~3]{GrossmanHelpman1991};
+  \item las \concepto{mejoras de calidad} (innovación vertical): un invento mejora un bien que ya existe y deja obsoleto el anterior, la destrucción creativa de \autor{Schumpeter}\footnote{\autor{Schumpeter} describió la innovación como un proceso que nace dentro del sistema económico, del empresario que busca beneficios, pero no la formalizó en un modelo de crecimiento ni explicó su cuantía con decisiones de inversión \parencite[p.~83]{Schumpeter1942}. Los modelos de esta familia le ponen ecuaciones.} \parencite{AghionHowitt1992,GrossmanHelpman1991Quality}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelos}\label{sec:sg-modelos}
+
+% ..........................................................................
+\subsubsection{Aumento del número de variedades (\autor{Romer}, 1990)}\label{sec:romer}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿cómo genera crecimiento sostenido la invención de nuevos bienes intermedios? En \textcite{Romer1990}, el progreso técnico es un aumento del número de variedades de bienes intermedios: lo que distingue la agricultura de un país rico no es que use más azadas, sino que, además, usa tractores, fertilizantes y semillas mejoradas.
+\item \emph{La preferencia por la variedad, aplicada a la producción}: el agregador de los bienes intermedios es la función CES de \autor{Dixit} y \autor{Stiglitz} \vertema{3.A.18}. Con más variedades, cada una se usa en menor cantidad y rinde más, y la producción no tiene rendimientos decrecientes en el número de variedades: con variedades de bienes intermedios, la preferencia por la variedad se convierte en rendimientos crecientes.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{3 sectores} (gráfico~\ref{fig:romer-sectores}):
+  \begin{itemize}
+  \item \emph{bien final}, en competencia perfecta, con trabajo $L_Y$ y $N_t$ variedades de bienes intermedios $x_j$:
+    \begin{equation}
+    Y_t=L_Y^{1-\alpha}\sum_{j=1}^{N_t}x_{j}^{\alpha},\qquad 0<\alpha<1;\label{eq:romer-y}
+    \end{equation}
+  \item \emph{bienes intermedios}: cada variedad la produce, en monopolio, la empresa que tiene su patente, perpetua, con un coste marginal de 1 unidad de bien final por unidad;
+  \item \emph{I+D}, con libre entrada: con $L_I$ investigadores se crean nuevas variedades al ritmo
+    \begin{equation}
+    \dot N_t=\eta_I\,L_I\,N_t,\label{eq:romer-ideas}
+    \end{equation}
+    donde $\eta_I$ es la productividad de la investigación. Las ideas ya inventadas, $N_t$, hacen más productivos a los investigadores, porque son no rivales y se desbordan: es el motor del crecimiento. «A hombros de gigantes», como escribió \autor{Newton}: cada investigador ve más lejos porque se apoya en todo lo ya inventado.
+  \end{itemize}
+\item \emph{Trabajo}: población constante, que se reparte entre la producción y la investigación, $L=L_Y+L_I$, con el mismo salario, $w$.
+\item \emph{Hogares de \autor{Ramsey}} con utilidad isoelástica, que ahorran comprando las patentes de las empresas de bienes intermedios.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Los 3 sectores del modelo de \autor{Romer} (1990)}\label{fig:romer-sectores}
+\grafico[0.8\textwidth]{romer-sectores}
+\fuente{elaboración propia a partir de \textcite{Romer1990} y \textcite[cap.~6]{BarroSalaiMartin2004}.}
+\end{figure}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Se resuelve hacia atrás} \vertema{3.A.14}: primero, cuánto se produce de cada variedad y a qué precio, con las variedades que existen; después, si conviene inventar una nueva (anexo~\ref{anexo:romer}).
+\item \emph{Bien final}: la empresa compra cada variedad hasta que su producto marginal iguala su precio, $p_j=\alpha L_Y^{1-\alpha}x_j^{\alpha-1}$, una demanda con elasticidad constante, $1/(1-\alpha)$: la elasticidad de sustitución de \autor{Dixit} y \autor{Stiglitz}, $\sigma=1/(1-\alpha)$.
+\item \emph{Bienes intermedios}: el monopolista fija el precio con el margen de la competencia monopolística, $\sigma/(\sigma-1)=1/\alpha$, sobre su coste marginal: $p=1/\alpha$, igual para todas las variedades \vertema{3.A.18}. Vende $x=\alpha^{2/(1-\alpha)}L_Y$ y gana en cada periodo $B_j=\frac{1-\alpha}{\alpha}\,\alpha^{2/(1-\alpha)}\,L_Y$.
+\item \emph{I+D}: una patente vale el valor actual de sus beneficios, $V=B_j/r$. Con libre entrada, un investigador, que crea $\eta_IN$ patentes por periodo, cobra lo mismo que en la producción: $\eta_INV=w$. De ahí sale el tipo de interés, $r=\alpha\,\eta_I\,L_Y$. En la pizarra: «\autor{Romer}: $r=\alpha\eta_IL_Y$».
+\item \emph{Equilibrio}: la producción y el consumo crecen como las variedades, $\gamma=\eta_IL_I=\eta_I(L-L_Y)$, y los hogares siguen la ecuación de \autor{Euler} \eqref{eq:euler-endogeno}. Despejando:
+  \begin{equation}
+  \gamma^{\mathrm E}=\frac{\alpha\,\eta_I\,L-\rho}{\alpha+\theta}.\label{eq:romer-gamma}
+  \end{equation}
+\item \emph{El planificador} elige la cantidad de cada intermedio sin margen ($x=\alpha^{1/(1-\alpha)}L_Y$, más que el monopolista) y tiene en cuenta que cada idea hace más productiva la investigación futura:
+  \[\gamma^{\mathrm P}=\frac{\eta_I\,L-\rho}{\theta}\quad>\quad\gamma^{\mathrm E}.\]
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Crecimiento endógeno por la innovación}: la tasa de crecimiento es positiva y constante; sube con la productividad de la investigación, $\eta_I$, y con la paciencia, y baja con $\theta$. No hay dinámica de transición ni convergencia.
+\item \emph{Efecto escala}: sube con el tamaño de la población, $L$. Un país (o un mundo) con más personas tiene más investigadores y, como las ideas son no rivales, cada una sirve a todos. Si la población creciera, el crecimiento se aceleraría sin límite; por eso el modelo supone $L$ constante, y por eso la evidencia lo cuestiona (bloque~\ref{sec:semiendogeno}).
+\item \emph{El mercado crece menos de lo que conviene}, por 2 distorsiones:
+  \begin{itemize}
+  \item \emph{estática}: el margen de monopolio hace que se usen pocos bienes intermedios;
+  \item \emph{dinámica}: el inventor solo cobra los beneficios de su patente, no todo el excedente que crea, y no tiene en cuenta que su idea hace más productiva la investigación futura.
+  \end{itemize}
+\item \emph{Política}: con 2 distorsiones hacen falta 2 instrumentos. Una subvención a la compra de bienes intermedios igual al margen, de tipo $1-\alpha$, corrige la estática; para la dinámica hacen falta, además, subvenciones a la I+D \parencite[cap.~6]{BarroSalaiMartin2004}. Con un solo instrumento se llega, como mucho, a un segundo óptimo, y si se financian con impuestos distorsionantes hay que restar su coste.
+\item \emph{Patentes}: sin ellas no habría I+D, porque no se podrían cobrar los beneficios; pero el monopolio que crean es la distorsión estática. Es el dilema entre eficiencia estática y dinámica (apartado~\ref{sec:evidencia-politica}).
+\item \emph{Apertura e instituciones}: integrar 2 economías iguales que intercambian bienes \emph{e ideas} equivale a duplicar $L$ y evita inventar 2 veces lo mismo: sube la tasa de crecimiento de las 2 \parencite{RiveraBatizRomer1991}. Las instituciones que protegen la propiedad, también la intelectual, favorecen la innovación\footnote{Para \textcite{NorthThomas1973}, Inglaterra despegó antes porque protegió los derechos de propiedad de los innovadores: su ley de patentes, el Estatuto de Monopolios, es de 1624, más de un siglo antes de la Revolución Industrial. Douglass \autor{North} recibió en 1993, con Robert \autor{Fogel}, el Premio Nobel de Economía \parencite{NobelPrize1993North}.}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Versión de laboratorio}: si la I+D usa bien final en lugar de investigadores, el modelo es un $AK$ en las ideas, sin el efecto escala del trabajo, y la única distorsión es el margen \parencite[cap.~6]{BarroSalaiMartin2004}.
+\item \emph{Economía abierta} (caja siguiente): \textcite{GrossmanHelpman1991} estudian cómo el comercio y la política comercial afectan al crecimiento a través del coste de la I+D.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Comercio, política comercial e innovación} \parencite{GrossmanHelpman1991}. Si la I+D usa sobre todo un factor (el trabajo cualificado o el capital humano), todo lo que encarezca ese factor encarece la investigación y frena el crecimiento. La política comercial lo hace a través de los precios de los factores, por el teorema de \autor{Stolper}-\autor{Samuelson}: el aumento del precio de un bien sube la remuneración del factor que usa intensivamente \vertema{3.B.5}.
+\begin{itemize}
+\item En un país que exporta bienes intensivos en trabajo cualificado e importa bienes intensivos en trabajo no cualificado, un arancel sube el precio relativo de lo que importa y, con él, el salario del trabajo no cualificado, y baja el del cualificado: la I+D se abarata y el crecimiento aumenta.
+\item En un país que importa bienes intensivos en trabajo cualificado, el mismo arancel encarece el factor que usa la I+D, y el crecimiento cae: le conviene la apertura.
+\end{itemize}
+Además, la apertura afecta a la difusión de las ideas, al tamaño del mercado y a la competencia. El modelo da efectos sobre el crecimiento, no sobre el bienestar. El tema de referencia de estos canales es \vertema{3.B.9}.
+\end{anotaciones}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item El rendimiento social de la I+D es muy superior al privado: según \textcite{JonesWilliams1998Measuring}, la inversión óptima en I+D de Estados Unidos sería de 2 a 4 veces la observada, lo que confirma que el mercado investiga de menos.
+\item Las nuevas variedades importadas aumentan el bienestar de forma medible \parencite{BrodaWeinstein2006Globalization}.
+\item El efecto escala choca con los datos (apartado~\ref{sec:escala}).
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: es el primer modelo en el que el progreso técnico es una inversión deliberada, con su forma de financiarse (el monopolio) y sus fallos de mercado; une la competencia monopolística y el crecimiento y da el marco de la política de innovación.
+\item \emph{En contra}: el efecto escala; la producción de ideas lineal en las ideas ya inventadas, otro filo de la navaja (con un exponente menor que 1 el crecimiento se agota); y los inventos no dejan obsoletos a los anteriores: no hay competencia entre innovadores ni empresas que pierdan.
+\item \emph{Nexo}: la destrucción de lo viejo por lo nuevo es lo que añaden \autor{Aghion} y \autor{Howitt}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Mejoras de calidad: el modelo schumpeteriano (\autor{Aghion} y \autor{Howitt}, 1992)}\label{sec:aghion-howitt}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿cómo genera crecimiento la destrucción creativa? Aquí, progresar es \emph{mejorar la calidad} de lo que ya existe (del carruaje al automóvil, del teléfono fijo al móvil), y cada mejora deja obsoleta la anterior. El innovador obtiene un monopolio temporal, hasta que otro lo desbanca: «rey muerto, rey puesto».
+\item \textcite{AghionHowitt1992} ponen ecuaciones a la idea de \autor{Schumpeter}. Lo nuevo frente a \autor{Romer}: el crecimiento tiene ganadores y perdedores, y la innovación de hoy destruye las rentas de la de ayer.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Bien final}, en competencia, producido con un único bien intermedio de calidad $A_t$: $y_t=A_t\,x_t^{\alpha}$, con $0<\alpha<1$.
+\item \emph{Bien intermedio}: lo produce en monopolio el último innovador, con una unidad de trabajo por unidad.
+\item \emph{Investigación}: con $L_I$ investigadores, las innovaciones llegan según un proceso de \autor{Poisson} de tasa $\lambda_IL_I$; cada una multiplica la calidad por $\gamma_q>1$ (una \concepto{escalera de calidades}) y da al innovador el monopolio hasta la siguiente\footnote{$\lambda_I$, con subíndice, es la productividad de la investigación de este modelo; $\lambda_{K,t}$ y $\lambda_{H,t}$ son los coestados de \autor{Uzawa} y \autor{Lucas}, y $\lambda$, sin subíndice, el exponente de \autor{Jones} (apartado~\ref{sec:jones}).}. El monopolista en ejercicio no investiga: ganaría menos que un recién llegado, porque destruiría su propia renta (el \concepto{efecto reemplazo} de \textcite{Arrow1962Economic}) \vertema{3.A.17}.
+\item \emph{Trabajo}: $L=x+L_I$, con el mismo salario en la producción y en la investigación. \emph{Hogares} neutrales al riesgo, con utilidad lineal: $r=\rho$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Beneficio del monopolista}: igualando el ingreso marginal al salario, produce una cantidad que solo depende del salario relativo a la calidad, $\omega\equiv w/A$ (local), y gana $B_{t}=A_t\,\frac{1-\alpha}{\alpha}\,\omega\,x$ (anexo~\ref{anexo:aghion-howitt}).
+\item \emph{Valor de una innovación}: el beneficio dura hasta que llega la siguiente, a la tasa $\lambda_IL_I$, que hace las veces de una depreciación (la \concepto{obsolescencia}):
+  \[V_{t+1}=\frac{B_{t+1}}{r+\lambda_I\,L_I}.\]
+\item \emph{Arbitraje}: una hora de trabajo rinde lo mismo en la fábrica que en el laboratorio, $w_t=\lambda_IV_{t+1}$. En el estado estacionario, con $B_{t+1}$ proporcional a $\gamma_qA_t$:
+  \begin{equation}
+  1=\lambda_I\,\gamma_q\,\frac{1-\alpha}{\alpha}\;\frac{L-L_I}{\rho+\lambda_I\,L_I}.\label{eq:ah-arbitraje}
+  \end{equation}
+  El lado derecho, el rendimiento esperado de investigar en relación con su coste, decrece con $L_I$ por 2 vías: quedan menos trabajadores en la producción (menos beneficio) y hay más destrucción creativa (monopolios más cortos). Su corte con el 1 da la investigación de equilibrio, $L_I^*$ (gráfico~\ref{fig:aghion-howitt}).
+\item \emph{Crecimiento}: el logaritmo de la producción sube $\ln\gamma_q$ con cada innovación, y las innovaciones llegan, en media, $\lambda_IL_I^*$ veces por periodo:
+  \begin{equation}
+  \gamma=\lambda_I\,L_I^*\,\ln\gamma_q,\qquad L_I^*=\frac{\gamma_q\frac{1-\alpha}{\alpha}L-\frac{\rho}{\lambda_I}}{1+\gamma_q\frac{1-\alpha}{\alpha}}.\label{eq:ah-gamma}
+  \end{equation}
+  El crecimiento es aleatorio, a saltos, y su media a largo plazo resulta de multiplicar cuántas innovaciones llegan por lo que mejora cada una. En la pizarra: «A-H: $\gamma=\lambda_IL_I^*\ln\gamma_q$».
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de \autor{Aghion} y \autor{Howitt}: arbitraje de la investigación (izquierda) y escalera de calidades (derecha)}\label{fig:aghion-howitt}
+\grafico[0.9\textwidth]{aghion-howitt}
+\fuente{elaboración propia a partir de \textcite[fig.~1]{AghionHowitt1992} y \textcite[cap.~4]{AghionHowitt2009}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Determinantes}: el crecimiento sube con la productividad de la investigación ($\lambda_I$), con el tamaño de las innovaciones ($\gamma_q$), con la población ($L$: también hay efecto escala) y con la paciencia. Y \emph{baja con la competencia}: un $\alpha$ mayor (bienes más sustituibles, menos poder de mercado) reduce el margen, el premio de innovar y el crecimiento. Es el \emph{efecto schumpeteriano}: las rentas de monopolio son el premio de la innovación.
+\item \emph{El mercado puede innovar de menos o de más}, porque hay efectos de signo contrario:
+  \begin{itemize}
+  \item de menos: el innovador no cobra lo que su idea aporta a las innovaciones futuras, que se construyen sobre ella (efecto intertemporal), ni todo el excedente que crea, por el margen (efecto apropiabilidad);
+  \item de más: le quita la renta al monopolista anterior, una transferencia que para él es ganancia y para la sociedad no (\concepto{efecto robo de negocio}).
+  \end{itemize}
+  Por eso la recomendación de subvencionar la I+D no es inmediata, como en \autor{Romer}: depende de qué efecto domine.
+\item \emph{Economía política}: el crecimiento destruye rentas, y quienes las pierden (empresas establecidas, sus trabajadores) tienen incentivos para frenarlo con barreras a la entrada y presión sobre los Gobiernos. La defensa de la competencia y la regulación de los grupos de presión forman parte de la política de crecimiento \vertema{3.A.20} \vertema{4.A.15}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Competencia e innovación en U invertida} \parencite{AghionEtAl2005}: si las empresas compiten paso a paso y las rezagadas pueden alcanzar a las líderes, la competencia tiene 2 efectos: el schumpeteriano, que desanima a las rezagadas, y el de \emph{escapar de la competencia}, que anima a innovar a las que van igualadas para despegarse. Con poca competencia domina el segundo; con mucha, el primero. La relación entre competencia e innovación tiene forma de U invertida \vertema{3.A.17}.
+\item \emph{Distancia a la frontera} \parencite{AcemogluAghionZilibotti2006}: lejos de la frontera tecnológica, crecer imitando es eficaz y convienen unas instituciones (grandes empresas, crédito bancario, relaciones a largo plazo); cerca de ella hay que innovar, y convienen otras (competencia, entrada, mercados de capitales, universidades). Un país que no cambia de instituciones a tiempo deja de converger \vertema{3.B.28}.
+\item \emph{Escalera de calidades con variedades}: \textcite{GrossmanHelpman1991Quality} dan la versión de calidades con muchos sectores, la base de los modelos de comercio y crecimiento \vertema{3.B.9}.
+\item \emph{La dirección del cambio técnico}: con 2 tipos de tecnologías, la innovación se dirige a la más rentable, y la política puede orientarla, por ejemplo hacia las tecnologías limpias \parencite{Acemoglu2012Environment} \vertema{3.B.31}.
+\item \emph{Las condiciones del crecimiento sostenido} \parencite{Mokyr2002}: el otro premiado de 2025 explica con la historia de la Revolución Industrial por qué la innovación se volvió continua: hizo falta que el conocimiento \emph{proposicional} (saber por qué funcionan las cosas, la ciencia) y el \emph{prescriptivo} (saber cómo hacerlas, las técnicas) se alimentaran el uno al otro, y una sociedad abierta al cambio, que no dejara bloquearlo a los perdedores de la destrucción creativa.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{AghionEtAl2005} encuentran la U invertida entre la competencia y las patentes en las industrias del Reino Unido.
+\item La destrucción creativa existe, pero no es la fuente principal del crecimiento: con datos de todas las empresas no agrarias de Estados Unidos, \textcite{GarciaMaciaHsiehKlenow2019How} concluyen que la mayor parte viene de empresas establecidas que mejoran sus propios productos.
+\item La \concepto{trampa de la renta media} \parencite{GillKharas2007East}, en la que muchos países se estancan tras agotar el crecimiento por imitación, es coherente con la distancia a la frontera \vertema{3.B.28}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: incorpora la obsolescencia, une la organización industrial y el crecimiento (competencia, entrada, patentes), explica la economía política del crecimiento y da predicciones contrastables con datos de empresas.
+\item \emph{En contra}: mantiene el efecto escala, y sus conclusiones de bienestar son ambiguas, lo que dificulta convertirlo en recomendaciones; la evidencia matiza, además, el peso de la destrucción creativa frente a la mejora de los propios productos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración de los modelos de segunda generación}\label{sec:sg-valoracion}
+
+\begin{itemize}
+\item \emph{Lo que consiguen}: hacen del progreso técnico el resultado de decisiones de empresas, explican cómo se financia (las rentas de monopolio) y por qué el mercado no innova lo que conviene, y dan el marco de la política de innovación: patentes, I+D, competencia y apertura.
+\item \emph{Variedades y calidades no son rivales entre sí}: en la realidad conviven la innovación horizontal y la vertical (tabla~\ref{tab:variedades-calidades}).
+\item \emph{Lo que comparten con los de 1.ª generación}: un filo de la navaja, ahora en la producción de ideas, lineal en las ideas ya inventadas, y su consecuencia: el \emph{efecto escala}, más población, más crecimiento.
+\item La tabla~\ref{tab:resumen-modelos} resume todos los modelos de la exposición: es la columna que se ha ido llenando en la pizarra.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Variedades frente a calidades}\label{tab:variedades-calidades}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\raggedright\arraybackslash}m{5.2cm}>{\raggedright\arraybackslash}m{5.2cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{\autor{Romer} (1990)} & \textbf{\autor{Aghion} y \autor{Howitt} (1992)}\\
+\midrule
+Qué es una innovación & Un bien intermedio nuevo & Un bien mejor que sustituye al anterior\\
+Quién pierde & Nadie: las variedades se suman & El monopolista anterior (destrucción creativa)\\
+¿Demasiada o poca I+D? & Poca: 2 distorsiones & Ambiguo: robo de negocio frente a apropiabilidad\\
+Efecto de la competencia & Menos margen, menos I+D & U invertida (con competencia paso a paso)\\
+Efecto escala & Sí & Sí\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{AghionHowitt2009} y \textcite{Acemoglu2009}.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Los modelos de crecimiento endógeno en una tabla}\label{tab:resumen-modelos}
+\scriptsize
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.4cm}>{\raggedright\arraybackslash}m{2.4cm}>{\centering\arraybackslash}m{2.4cm}>{\centering\arraybackslash}m{2.7cm}>{\raggedright\arraybackslash}m{2cm}>{\raggedright\arraybackslash}m{2.2cm}}
+\toprule
+\rowcolor{tceeazulpalido} \textbf{Modelo} & \textbf{Motor} & \textbf{$r$ que no cae} & \textbf{$\gamma$ a largo plazo} & \textbf{Convergencia} & \textbf{¿Equilibrio óptimo?}\\
+\midrule
+\rowcolor{tceesalvia} \autor{Solow} \vertema{3.A.43} & Progreso técnico exógeno & Cae hasta $\rho+\theta g$ & $g$ & Condicional & Sí (RCK)\\
+$AK$ (\autor{Rebelo}, 1991) & Capital amplio, $Y=AK$ & $A-\delta$ & $(A-\delta-\rho)/\theta$; $sA-(n+\delta)$ & No & Sí\\
+Sobelow (\autor{Jones} y \autor{Manuelli}, 1990) & $f'(k)\to A>0$ & Tiende a $A-\delta$ & $sA-(n+\delta)$ & Condicional, en tasas & ---\\
+\autor{Barro} (1990) & Gasto público productivo & $(1-\tau)\alpha A^{\frac1\alpha}\tau^{\frac{1-\alpha}{\alpha}}-\delta$ & \eqref{eq:barro}; máximo en $\tau^*=1-\alpha$ & No & No (impuesto sobre la renta)\\
+Externalidades (\autor{Arrow}, 1962; \autor{Romer}, 1986) & Aprendizaje y desbordamientos & $\alpha A-\delta$ ($<A-\delta$ social) & $(\alpha A-\delta-\rho)/\theta$ & No, con $\alpha+\eta=1$ & No: subinversión\\
+\autor{Uzawa}-\autor{Lucas} & Capital humano & $B-\delta_H$ & $(B-\delta_H-\rho)/\theta$ & No en niveles; transición en $k/h$ & Sí; no con $\eta>0$\\
+\autor{Romer} (1990) & Nuevas variedades (I+D) & $\alpha\eta_IL_Y$ & $(\alpha\eta_IL-\rho)/(\alpha+\theta)$ & No & No: crece de menos\\
+\autor{Aghion}-\autor{Howitt} (1992) & Mejoras de calidad (I+D) & $\rho$ (hogares neutrales) & $\lambda_IL_I^*\ln\gamma_q$ & No & Ambiguo\\
+\rowcolor{tceesalmon} \autor{Jones} (1995) (\ref{sec:jones}) & Ideas con rendimientos decrecientes & --- & $\lambda n/(1-\phi)$ & Condicional & No\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de los bloques~\ref{sec:primera-generacion} a~\ref{sec:semiendogeno}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Recapitulación y nexo}: los datos no muestran el efecto escala. El último bloque estudia qué queda de los rendimientos crecientes de las ideas cuando se corrige.
+\end{itemize}
+
+% ==========================================================================
+\section{Rendimientos crecientes y efecto escala:\newline el crecimiento semiendógeno}\label{sec:semiendogeno}
+\minutos{6}
+
+\begin{notaopositor}
+En el cante (\tiempo{6}): la idea (\tiempo{1}), de palabra, con el gráfico~\ref{fig:efecto-escala} como apoyo; \autor{Jones} (\tiempo{2,5}), con la ecuación \eqref{eq:jones-ideas}, la función clave \eqref{eq:jones} recuadrada a la izquierda y el gráfico~\ref{fig:jones} por capas (primero la horizontal de \autor{Romer}, después la curva de \autor{Jones} y su desplazamiento); la evidencia y la política (\tiempo{2,5}), de palabra.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: los rendimientos crecientes que importan para el crecimiento son los de las ideas, por su no rivalidad. Implican que más investigadores dan más crecimiento, pero los datos dicen que las ideas son cada vez más difíciles de encontrar: el crecimiento a largo plazo depende entonces de cuántas personas se dedican a buscarlas, y la política cambia sobre todo el nivel de la renta, lo que no la hace menos importante.
+\item \emph{Nexo}: tras ver cómo los modelos de innovación explican el crecimiento, pasamos a lo que tienen en común, la no rivalidad, a su prueba empírica y a lo que implica para la política.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Idea: la no rivalidad de las ideas y el efecto escala}\label{sec:escala}
+
+\begin{itemize}
+\item \emph{De dónde salen los rendimientos crecientes}: un objeto (una máquina, una hora de trabajo) solo lo puede usar uno a la vez; una idea (un diseño, una fórmula, un programa) la pueden usar a la vez todas las empresas y todos los países. Si la producción tiene rendimientos constantes en los factores rivales, los tiene crecientes en los factores rivales y las ideas juntos (apartado~\ref{sec:sg-idea}) \parencite{Romer1990,Jones2005Growth}.
+\item \emph{El efecto escala}: la renta por habitante depende de las ideas \emph{totales}, no de las ideas por persona, porque cada idea sirve a todos. Más personas son más investigadores, más ideas y más renta para cada uno. En los modelos de \autor{Romer} y de \autor{Aghion} y \autor{Howitt}, y en el de externalidades con el capital agregado (apartado~\ref{sec:externalidades}), el tamaño de la población sube la \emph{tasa} de crecimiento.
+\item \emph{A muy largo plazo, los datos lo apoyan} \parencite{Kremer1993}: hasta la transición demográfica, la tasa de crecimiento de la población mundial aumentó con su tamaño, como si más personas generaran más ideas que permitían alimentar a más personas\footnote{Es la «teoría de los genios»: cuanto mayor es la población, más probable es que surja la mente que da con una innovación decisiva. \textcite{Kremer1993} añade un experimento natural: de las regiones que quedaron aisladas al subir el nivel del mar al final de la última glaciación, las más pobladas eran, en 1500, las más avanzadas técnicamente.}.
+\item \emph{En la posguerra, no}: en Estados Unidos, el número de investigadores se ha duplicado desde 1991 y el gasto real en I+D se ha multiplicado casi por 5 desde 1981, pero el crecimiento de la productividad total de los factores (PTF) no se ha acelerado: rondaba el 2~\% anual en los 50 y los 60 y desde 1970 ha crecido, de media, un 0,9~\% (gráfico~\ref{fig:efecto-escala}) \parencite{FRBSF2026PTF,OCDE2026MSTI}. Es la evidencia con la que \textcite{Jones1995} rechaza el efecto escala de los modelos de I+D.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Esfuerzo investigador y crecimiento de la PTF en Estados Unidos, 1950-2025}\label{fig:efecto-escala}
+\grafico[0.8\textwidth]{efecto-escala}
+\fuente{elaboración propia a partir de \textcite{FRBSF2026PTF} (PTF del sector empresarial, \textcite{Fernald2012}) y \textcite{OCDE2026MSTI} (investigadores y gasto en I+D en dólares constantes).}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{El modelo de \autor{Jones} (1995)}\label{sec:jones}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Si el esfuerzo investigador crece y el crecimiento no, la producción de ideas no puede ser lineal en las ideas ya descubiertas, como en \autor{Romer}. \textcite{Jones1995} propone que tenga rendimientos decrecientes: las ideas más fáciles se encuentran primero.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los de \autor{Romer} salvo uno: la producción de ideas
+  \begin{equation}
+  \dot N_t=\eta_I\,L_{I,t}^{\lambda}\,N_t^{\phi},\qquad 0<\lambda\leq1,\ \ \phi<1,\label{eq:jones-ideas}
+  \end{equation}
+  con $\lambda$ y $\phi$ locales\footnote{Son las letras del artículo. $\lambda$ sin subíndice no es el coestado ($\lambda_{K,t}$, $\lambda_{H,t}$) ni la tasa de llegada de las innovaciones ($\lambda_I$).}:
+  \begin{itemize}
+  \item $\lambda<1$ recoge la duplicación de esfuerzos: si se duplican los investigadores, muchos buscan lo mismo y las ideas no se duplican;
+  \item $\phi$ mide cómo influyen las ideas pasadas en las nuevas: si $\phi>0$, ayudan («a hombros de gigantes»); si $\phi<0$, las fáciles ya se han encontrado. \autor{Romer} es el caso límite $\lambda=\phi=1$.
+  \end{itemize}
+\item La población, y con ella el número de investigadores, crece a la tasa $n$, con una fracción constante de la población dedicada a la I+D.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Dividiendo por $N_t$, $\gamma_N=\eta_I\,L_I^{\lambda}\,N^{\phi-1}$. Para que sea constante, el numerador y el denominador tienen que crecer igual: $\lambda\,\gamma_{L_I}=(1-\phi)\,\gamma_N$. Con $\gamma_{L_I}=n$:
+  \funcionclave[eq:jones]{\gamma_N=\frac{\lambda\,n}{1-\phi}}
+  y la renta por habitante crece en la misma proporción que las ideas. Con $\lambda=1$, sin duplicación de esfuerzos, queda $\gamma_N=n/(1-\phi)$.
+\item \emph{Gráficamente} (gráfico~\ref{fig:jones}): $\gamma_N$ decrece con $N$ si $\phi<1$, porque cada idea nueva cuesta más; la economía converge a la senda en que $\gamma_N=\lambda n/(1-\phi)$. Si sube el número de investigadores, la curva se desplaza: el crecimiento sube durante un tiempo y vuelve a la misma tasa, con más ideas. En \autor{Romer}, $\gamma_N=\eta_IL_I$ es una horizontal, que sube para siempre (anexo~\ref{anexo:jones}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Crecimiento semiendógeno: la tasa de crecimiento de las ideas en \autor{Romer} ($\phi=1$) y en \autor{Jones} ($\phi<1$)}\label{fig:jones}
+\grafico[0.6\textwidth]{jones}
+\fuente{elaboración propia a partir de \textcite{Jones1995} y \textcite{Jones2005Growth}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Sin efecto escala en la tasa}: el tamaño de la población eleva el \emph{nivel} de la renta (hay más ideas), no su tasa de crecimiento, que depende del crecimiento de la población y de los rendimientos de la producción de ideas.
+\item \emph{Por qué «semiendógeno»}: la tecnología es endógena, la crean investigadores que buscan beneficios, pero la tasa de crecimiento a largo plazo depende de una variable exógena, $n$. Sin crecimiento de la población, el crecimiento por habitante se agota.
+\item \emph{La política cambia el nivel, no la tasa}: subvencionar la I+D aumenta el crecimiento durante mucho tiempo y el nivel de la renta para siempre, pero no la tasa de largo plazo, como el ahorro en el modelo de \autor{Solow}. Los efectos de nivel pueden ser enormes y la transición, de décadas: no restan importancia a la política.
+\item \emph{Convergencia}: vuelve la dinámica de transición y, con ella, la convergencia condicional.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Los modelos «totalmente endógenos» sin efecto escala} \parencite{Young1998Growth,Peretto1998Technological}: al crecer la economía, la I+D se reparte entre más variedades de productos, y cada una avanza al mismo ritmo. Desaparece el efecto escala y la política vuelve a cambiar la tasa de crecimiento, pero a cambio de otro filo de la navaja: la proliferación de productos tiene que compensar exactamente el aumento de la población.
+\item \emph{La inteligencia artificial}: si automatiza parte de la producción de ideas, el esfuerzo investigador podría crecer sin que crezca la población \parencite{AghionJonesJones2019Artificial}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Concilia los modelos de innovación con los datos sin perder su mecanismo, y es hoy la referencia para hablar de las ideas y el crecimiento \parencite{Jones2005Growth,Jones2022}. Su punto débil es que traslada el motor último del crecimiento a la demografía, que el modelo no explica. La evidencia no ha zanjado el debate con los totalmente endógenos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Evidencia empírica e implicaciones de política}\label{sec:evidencia-politica}
+
+\paragraph{Evidencia empírica}
+
+\begin{itemize}
+\item \emph{Las ideas son cada vez más difíciles de encontrar}: desde los años 30, el esfuerzo investigador efectivo de Estados Unidos se ha multiplicado por 23, mientras que la productividad de la investigación ha caído por un factor de 41, un 5~\% al año; para mantener la ley de \autor{Moore} hacen falta hoy más de 18 veces más investigadores que a principios de los 70 \parencite[p.~1110]{BloomEtAl2020}. Es lo que predice $\phi<1$.
+\item \emph{El freno de la población}: si la población mundial deja de crecer y empieza a caer, como apuntan las tasas de fecundidad, el número de investigadores acabará cayendo y, con $\phi<1$, el conocimiento y la renta por habitante se estancarían \parencite{Jones2022End}. Según \textcite{Jones2023}, el crecimiento del último siglo se ha apoyado en aumentos que tienen un límite, como los de la escolarización y la proporción de la población que investiga.
+\item \emph{Educación y externalidades}: lo que importa es la calidad de la educación, más que los años, y las externalidades del capital humano estimadas son moderadas (apartado~\ref{sec:uzawa-lucas}).
+\item \emph{Convergencia}: los datos muestran convergencia condicional, lenta, que encaja con los modelos neoclásicos y semiendógenos, y no con el $AK$ ni con \autor{Romer}; la contrastación entre unos y otros y la contabilidad del crecimiento se estudian en \vertema{3.A.45}.
+\end{itemize}
+
+\paragraph{Implicaciones de política económica}
+
+\begin{itemize}
+\item \emph{La idea común}: en los modelos neoclásicos la política solo cambia el nivel de la renta; en los endógenos puede cambiar su tasa de crecimiento, y en los semiendógenos, su nivel durante décadas. Y como casi todos tienen fallos de mercado (externalidades, poder de mercado, desbordamientos del conocimiento), el equilibrio no es óptimo y hay margen para intervenir:
+  \begin{itemize}
+  \item \emph{I+D}: su rendimiento social supera al privado \parencite{JonesWilliams1998Measuring}, lo que justifica apoyarla con subvenciones, incentivos fiscales e investigación básica pública; los incentivos fiscales a la I+D funcionan, al menos a medio plazo \parencite{BloomVanReenenWilliams2019Toolkit}. Con destrucción creativa, la recomendación depende del peso del robo de negocio. En España, con un gasto del 1,50~\% del PIB (gráfico~\ref{fig:gasto-id-pib}), la Ley 17/2022 fija como objetivo que la financiación pública de la I+D alcance el 1,25~\% del PIB en 2030 \parencite{BOE2022Ley17} \vertema{4.A.7};
+  \item \emph{patentes}: sin ellas no se cobraría la innovación; con demasiada protección, se encarece el uso de las ideas y se frena la innovación que se construye sobre otras. La duración y el alcance óptimos equilibran la eficiencia dinámica y la estática \parencite{Nordhaus1969Invention} \vertema{3.A.15};
+  \item \emph{educación}: con \autor{Uzawa} y \autor{Lucas}, la eficiencia del sistema educativo sube el crecimiento; con \autor{Nelson} y \autor{Phelps}, el capital humano acelera la adopción de tecnologías; la evidencia apunta a la calidad más que a los años \vertema{3.A.25};
+  \item \emph{competencia}: en el modelo básico de \autor{Aghion} y \autor{Howitt} reduce la innovación; con la U invertida, la aumenta allí donde las empresas compiten de cerca, y cerca de la frontera tecnológica la entrada empuja a innovar a las establecidas. La defensa de la competencia es política de crecimiento \vertema{4.A.15};
+  \item \emph{apertura}: más mercado y más difusión de las ideas, con el matiz de \autor{Grossman} y \autor{Helpman} sobre el coste de la I+D \vertema{3.B.9};
+  \item \emph{gasto público e impuestos}: el tamaño y la composición del gasto y la forma de financiarlo afectan al crecimiento (\autor{Barro}, \autor{Rebelo}) \vertema{3.A.38};
+  \item \emph{instituciones}: la protección de la propiedad, la seguridad jurídica y la apertura al cambio son las condiciones de \autor{Mokyr} para que la innovación sea continua \vertema{3.A.45}.
+  \end{itemize}
+\item \emph{Política industrial}: el debate no es solo cuánto apoyar la innovación, sino cómo: con instrumentos \emph{horizontales}, iguales para todos los sectores (incentivos fiscales, educación, competencia), o \emph{sectoriales}, que eligen ganadores con el riesgo de que los capturen los grupos de presión.
+\item \emph{Recapitulación}: las ideas no rivales son la fuente de los rendimientos crecientes y del crecimiento sostenido; su efecto escala no se ve en los datos de la posguerra, y la versión semiendógena traslada el peso de la política de la tasa al nivel, sin quitárselo.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: En conclusión,
+  \begin{itemize}
+  \item los modelos de crecimiento endógeno nacen para explicar lo que los neoclásicos dejaban fuera, el progreso técnico. Los de 1.ª generación lo consiguen con una función de producción en la que el capital amplio (físico, público, con externalidades o humano) no tiene rendimientos decrecientes: el rendimiento del ahorro no cae;
+  \item los de 2.ª generación, con ideas creadas por empresas que buscan rentas de monopolio, en forma de nuevas variedades (\autor{Romer}) o de mejores calidades (\autor{Aghion} y \autor{Howitt}); en todos, el equilibrio de mercado crece menos de lo que conviene, o no lo que conviene;
+  \item las ideas, no rivales, son la fuente de los rendimientos crecientes; su efecto escala no está en los datos, y el crecimiento semiendógeno de \autor{Jones} lo corrige: la política cambia sobre todo el nivel de la renta, durante décadas.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: estos modelos son el marco de la política de crecimiento: la de I+D e innovación \vertema{4.A.7}, la defensa de la competencia \vertema{4.A.15}, la política educativa y la discusión europea sobre la brecha de innovación con Estados Unidos. Y explican por qué una recesión puede tener efectos permanentes sobre el nivel de la renta.
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item Estos modelos estudian las causas \emph{próximas} del crecimiento: la acumulación de capital físico y humano y la innovación. ¿Por qué Corea del Sur y Singapur acumularon e innovaron tras la Segunda Guerra Mundial, mientras Nigeria creció muy poco? Lo explican las causas \emph{últimas}, las instituciones, la geografía y la cultura, que hacen rentable o no invertir, estudiar e innovar \parencite[cap.~1]{Acemoglu2009} \parencite{AcemogluJohnsonRobinson2001Colonial} \vertema{3.A.45}.
+  \item La contrastación empírica, la contabilidad del crecimiento y la convergencia \vertema{3.A.45}; el comercio y el crecimiento \vertema{3.B.9}; las teorías del desarrollo y la trampa de la renta media \vertema{3.B.28}; el cambio técnico dirigido y el clima \vertema{3.B.31}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}: la evidencia favorece una visión intermedia. Las ideas son el motor del crecimiento a largo plazo, pero cada vez cuesta más encontrarlas, y el crecimiento futuro depende de que haya cada vez más personas, o máquinas, buscándolas. Para una economía como la española, por debajo de la media europea en I+D y lejos de la frontera en muchos sectores, la lección es doble: invertir en capital humano y en innovación, y dejar que la competencia y la entrada de empresas hagan su trabajo.
+\item \textbf{\emph{Idea final}}: a la pregunta del principio, si una economía puede crecer para siempre sin un progreso técnico caído del cielo, estos modelos responden que sí, pero no acumulando más de lo mismo, sino encendiendo unas ideas en otras, como la vela de \autor{Jefferson}. Como escribió \textcite{Romer2008Econlib}, cada generación ha visto los límites que unos recursos finitos impondrían al crecimiento si no se encontraran nuevas recetas e ideas, y cada generación ha subestimado cuántas quedaban por descubrir. «Más vale maña que fuerza».
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: el modelo $AK$ con hogares de \autor{Ramsey} y el modelo de \autor{Barro} (1990)}\label{anexo:ak-barro}
+
+\paragraph{El $AK$ con hogares de \autor{Ramsey}}
+
+\begin{itemize}
+\item \emph{El problema}: con $y=Ak$ y la población creciendo a $n$, la restricción de recursos por trabajador es $\dot k_t=(A-\delta-n)\,k_t-c_t$, y los hogares maximizan $\int_0^{\infty}e^{-(\rho-n)t}(c_t^{1-\theta}-1)/(1-\theta)\,dt$. Las empresas pagan $r=A-\delta$.
+\item \emph{Ecuación de \autor{Euler}}: $\gamma_c=(A-\delta-\rho)/\theta\equiv\gamma$, constante desde el principio.
+\item \emph{El consumo, proporción constante del capital}: dividiendo la restricción por $k$, $\gamma_k=A-\delta-n-c/k$. Si $\gamma_k$ fuera distinta de $\gamma_c$, la ratio $c/k$ crecería o caería sin límite: si crece, $k$ acabaría siendo negativo; si cae, el valor del capital no se agotaría y se violaría la transversalidad. Por eso la economía salta desde el principio a la senda equilibrada, con $\gamma_k=\gamma_c=\gamma$ y
+  \[\frac{c}{k}=A-\delta-n-\gamma=\frac{(\theta-1)(A-\delta)+\rho}{\theta}-n,\qquad s=1-\frac{c}{Ak}=\frac{\gamma+n+\delta}{A}.\]
+\item \emph{Utilidad acotada}: $c/k>0$ equivale a $A-\delta-n>\gamma$, es decir, a $\rho-n>(1-\theta)\gamma$, la condición de que la utilidad sea finita. Y, como $r-\gamma_Y=A-\delta-\gamma-n=c/k>0$, la economía es dinámicamente eficiente. \findemo
+\end{itemize}
+
+\paragraph{\autor{Barro} (1990) con una tasa de ahorro constante}
+
+\begin{itemize}
+\item \emph{Supuestos}: producción por trabajador $y_t=A\,k_t^{\alpha}\,(G_t/L_t)^{1-\alpha}$, con el gasto público por trabajador, $G/L$, como argumento (sin letra propia: $g$ es el progreso técnico); impuesto proporcional sobre la renta de tipo $\tau$, renta disponible $(1-\tau)\,y$, y hogares que ahorran la fracción $s$ de su renta disponible.
+\item \emph{Acumulación}: $\dot k_t=s(1-\tau)\,y_t-(n+\delta)\,k_t$, y en tasas,
+  \[\gamma_k=s(1-\tau)\,A\left(\frac{G/L}{k}\right)^{1-\alpha}-(n+\delta).\]
+\item \emph{Restricción del Estado}: con el presupuesto equilibrado, $G/L=\tau y=\tau A\,k^{\alpha}(G/L)^{1-\alpha}$; despejando, $(G/L)^{\alpha}=\tau A\,k^{\alpha}$, es decir,
+  \[\frac{G}{L}=(\tau A)^{1/\alpha}\,k.\]
+  El gasto por trabajador es proporcional al capital por trabajador y crece a su misma tasa.
+\item \emph{Un $AK$}: sustituyendo en la función de producción, $y=A^{1/\alpha}\tau^{(1-\alpha)/\alpha}\,k\equiv\bar A\,k$, con $\bar A$ constante. Todas las tasas son iguales y constantes, sin transición:
+  \[\gamma_c=\gamma_y=\gamma_k=\gamma_{G/L}=s(1-\tau)\,A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-(n+\delta),\]
+  y las agregadas crecen a esa tasa más $n$.
+\item \emph{El tipo que maximiza el crecimiento}: el crecimiento depende del tipo a través de $(1-\tau)\,\tau^{(1-\alpha)/\alpha}$. Derivando respecto a $\tau$:
+  \[\frac{d}{d\tau}\left[(1-\tau)\,\tau^{\frac{1-\alpha}{\alpha}}\right]=\tau^{\frac{1-\alpha}{\alpha}-1}\left[\frac{1-\alpha}{\alpha}(1-\tau)-\tau\right]=0\ \Longrightarrow\ \tau^*=1-\alpha.\]
+  El corchete es positivo para $\tau<1-\alpha$ y negativo para $\tau>1-\alpha$: es un máximo. El mismo $\tau^*$ maximiza el crecimiento con hogares que optimizan, \eqref{eq:barro}, porque el tipo entra de la misma forma. \findemo
+\item \emph{La regla de \autor{Barro}}: en $\tau^*$, $G/Y=1-\alpha$ y $\partial Y/\partial G=(1-\alpha)\,Y/G=1$: el gasto productivo se lleva hasta que su producto marginal iguala su coste.
+\item \emph{Planificador}: con $G/Y=1-\alpha$, la producción neta del gasto es $(1-\tau^*)\,y=\alpha A^{1/\alpha}(1-\alpha)^{(1-\alpha)/\alpha}k$, y el rendimiento social del capital, $\alpha A^{1/\alpha}(1-\alpha)^{(1-\alpha)/\alpha}$. El hogar, con el impuesto sobre la renta, recibe $(1-\tau^*)\,\alpha\,y/k$, la fracción $\alpha$ del social: crece menos que el óptimo. Con un impuesto de suma fija que financiara el mismo gasto, recibiría $\alpha\,y/k$, el rendimiento social, y el equilibrio sería óptimo \parencite[sec.~4.4]{BarroSalaiMartin2004}. \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo de \autor{Uzawa} y \autor{Lucas} paso a paso}\label{anexo:uzawa-lucas}
+
+\paragraph{Sin externalidad ($\eta=0$)}
+
+\begin{itemize}
+\item \emph{El problema} es el del apartado~\ref{sec:uzawa-lucas}, con descuento $\rho-n$ porque la utilidad es por persona y la población crece a $n$, y se resuelve con las condiciones de la caja del hamiltoniano en valor corriente. Con $y_t\equiv A\,k_t^{\alpha}(u_th_t)^{1-\alpha}$:
+  \[\mathcal H_t=\frac{c_t^{1-\theta}-1}{1-\theta}+\lambda_{K,t}\left[y_t-c_t-(\delta_K+n)\,k_t\right]+\lambda_{H,t}\left[B(1-u_t)\,h_t-(\delta_H+n)\,h_t\right].\]
+  Los coestados son el valor, en utilidad del momento $t$, de una unidad más de capital físico ($\lambda_{K,t}$) y humano ($\lambda_{H,t}$).
+\item \emph{Condiciones de primer orden}:
+  \begin{align*}
+  \frac{\partial\mathcal H_t}{\partial c_t}=0:&\quad c_t^{-\theta}=\lambda_{K,t},\\
+  \frac{\partial\mathcal H_t}{\partial u_t}=0:&\quad \lambda_{K,t}(1-\alpha)\frac{y_t}{u_t}=\lambda_{H,t}\,B\,h_t,\\
+  \dot\lambda_{K,t}=(\rho-n)\lambda_{K,t}-\frac{\partial\mathcal H_t}{\partial k_t}:&\quad \frac{\dot\lambda_{K,t}}{\lambda_{K,t}}=\rho+\delta_K-\alpha\frac{y_t}{k_t},\\
+  \dot\lambda_{H,t}=(\rho-n)\lambda_{H,t}-\frac{\partial\mathcal H_t}{\partial h_t}:&\quad \frac{\dot\lambda_{H,t}}{\lambda_{H,t}}=\rho+\delta_H-B.
+  \end{align*}
+  La última usa la segunda:
+  \begin{align*}
+  \frac{\partial\mathcal H_t}{\partial h_t}&=\lambda_{K,t}(1-\alpha)\frac{y_t}{h_t}+\lambda_{H,t}\left[B(1-u_t)-\delta_H-n\right]\\
+  &=\lambda_{H,t}Bu_t+\lambda_{H,t}\left[B(1-u_t)-\delta_H-n\right]=\lambda_{H,t}(B-\delta_H-n).
+  \end{align*}
+  Transversalidad: $\lim_{t\to\infty}e^{-(\rho-n)t}\lambda_{K,t}k_t=\lim_{t\to\infty}e^{-(\rho-n)t}\lambda_{H,t}h_t=0$.
+\item \emph{Ecuación de \autor{Euler}}: de la primera, $\gamma_c=-\frac{1}{\theta}\frac{\dot\lambda_{K,t}}{\lambda_{K,t}}=\frac{1}{\theta}\left(\alpha\frac{y_t}{k_t}-\delta_K-\rho\right)$: el rendimiento del capital físico es $r=\alpha\,y/k-\delta_K$.
+\item \emph{Senda de crecimiento equilibrado} ($u$ constante y tasas constantes):
+  \begin{enumerate}
+  \item como $\gamma_c$ es constante, $y/k$ también: $\gamma_y=\gamma_k$; y como $\gamma_y=\alpha\gamma_k+(1-\alpha)\gamma_h$, también $\gamma_h=\gamma_k$;
+  \item de la acumulación de $k$, $c/k=y/k-\delta_K-n-\gamma_k$ es constante: $\gamma_c=\gamma_k$;
+  \item de la condición de $u$, con $u$ constante, $\gamma_{\lambda_K}+\gamma_y=\gamma_{\lambda_H}+\gamma_h$, luego $\gamma_{\lambda_K}=\gamma_{\lambda_H}$;
+  \item como $\gamma_{\lambda_K}=-\theta\gamma_c$: $-\theta\gamma=\rho+\delta_H-B$, es decir,
+  \[\gamma=\frac{B-\delta_H-\rho}{\theta}.\]
+  \end{enumerate}
+\item \emph{Consecuencias}:
+  \begin{itemize}
+  \item los 2 capitales rinden lo mismo: $\alpha\,y/k-\delta_K=\theta\gamma+\rho=B-\delta_H$, de donde $y/k=(B-\delta_H+\delta_K)/\alpha$;
+  \item de $\dot h/h=B(1-u)-\delta_H-n=\gamma$, $u^*=1-(\gamma+n+\delta_H)/B$;
+  \item $e^{-(\rho-n)t}\lambda_{H,t}h_t$ crece a la tasa $-(\rho-n)-\theta\gamma+\gamma$, y la transversalidad exige $\rho-n>(1-\theta)\gamma$, que equivale a $u^*>0$. \findemo
+  \end{itemize}
+\item \emph{Dinámica de transición}: el sistema se reduce a 2 ratios, $\omega\equiv k/h$ y $\chi\equiv c/k$ (locales), y a $u$. Con $\omega$ por debajo de su valor de equilibrio, el capital físico rinde más que el humano y la economía crece más deprisa que $\gamma$ mientras repone capital físico; con $\omega$ por encima, dedica más tiempo a formarse (baja $u$) y la producción crece despacio al principio \parencite[cap.~5]{BarroSalaiMartin2004}.
+\end{itemize}
+
+\paragraph{Con la externalidad de \autor{Lucas} ($\eta>0$; sin depreciación ni crecimiento de la población)}
+
+\begin{itemize}
+\item La producción es $y=A\,k^{\alpha}(uh)^{1-\alpha}h_a^{\eta}$, con $h_a=h$ en el equilibrio. Llamemos $\xi\equiv(1-\alpha+\eta)/(1-\alpha)$ (local): en la senda equilibrada, $\gamma_y=\gamma_k=\gamma_c=\xi\gamma_h$.
+\item \emph{Equilibrio}: cada hogar toma $h_a$ como dado, y sus condiciones son las de antes: $\gamma_{\lambda_H}=\rho-B$ y, de la condición de $u$, $\gamma_{\lambda_K}+\gamma_y=\gamma_{\lambda_H}+\gamma_h$. Con $\gamma_{\lambda_K}=-\theta\xi\gamma_h$: $(1-\theta)\xi\gamma_h-\gamma_h=\rho-B$, y
+  \[\gamma_h^{\mathrm E}=\frac{B-\rho}{1-(1-\theta)\xi}=\frac{(1-\alpha)(B-\rho)}{\theta(1-\alpha+\eta)-\eta}.\]
+\item \emph{Planificador}: tiene en cuenta que $h$ entra también por $h_a$: $\partial\mathcal H/\partial h=\lambda_K(1-\alpha+\eta)\,y/h+\lambda_HB(1-u)=\lambda_H[\xi Bu+B(1-u)]$, de donde $\gamma_{\lambda_H}=\rho-\xi Bu-B(1-u)$. Con $Bu=B-\gamma_h$ (de $\dot h/h=B(1-u)$) y la misma condición de $u$: $-\theta\xi\gamma_h=\rho-\xi B$, y
+  \[\gamma_h^{\mathrm P}=\frac{1}{\theta}\left[B-\frac{\rho}{\xi}\right]=\frac{1}{\theta}\left[B-\frac{1-\alpha}{1-\alpha+\eta}\,\rho\right].\]
+\item Con $\eta=0$ ($\xi=1$) las 2 coinciden con $(B-\rho)/\theta$; con $\eta>0$, $\gamma_h^{\mathrm E}<\gamma_h^{\mathrm P}$ \parencite{Lucas1988}. \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo de \autor{Romer} (1990) paso a paso}\label{anexo:romer}
+
+\begin{itemize}
+\item \emph{Bien final}. Con \eqref{eq:romer-y} y su precio igual a 1, la empresa maximiza $L_Y^{1-\alpha}\sum_jx_j^{\alpha}-wL_Y-\sum_jp_jx_j$ en cada momento (sin costes de ajuste, el problema es estático \vertema{3.A.34}):
+  \[p_j=\alpha L_Y^{1-\alpha}x_j^{\alpha-1}\ \Longrightarrow\ x_j=\left(\frac{\alpha}{p_j}\right)^{\frac{1}{1-\alpha}}L_Y,\qquad w=(1-\alpha)\frac{Y}{L_Y}.\]
+\item \emph{Bienes intermedios}. Con coste marginal 1, el monopolista maximiza $(p_j-1)\,x_j(p_j)$. La elasticidad de la demanda es $1/(1-\alpha)$, así que el ingreso marginal es $\alpha p_j$ y $p_j=p=1/\alpha$. Entonces
+  \[x=\alpha^{\frac{2}{1-\alpha}}L_Y,\qquad B_j=(p-1)\,x=\frac{1-\alpha}{\alpha}\,\alpha^{\frac{2}{1-\alpha}}L_Y,\qquad Y=N\,\alpha^{\frac{2\alpha}{1-\alpha}}L_Y,\qquad w=(1-\alpha)\,N\,\alpha^{\frac{2\alpha}{1-\alpha}}.\]
+\item \emph{I+D}. En la senda equilibrada, $L_Y$, $B_j$ y $r$ son constantes, y una patente vale $V=\int_t^{\infty}e^{-r(s-t)}B_j\,ds=B_j/r$. Libre entrada, con un investigador que crea $\eta_IN$ patentes por periodo: $\eta_INV=w$. Sustituyendo,
+  \[\eta_I N\,\frac{1-\alpha}{\alpha}\,\alpha^{\frac{2}{1-\alpha}}\,\frac{L_Y}{r}=(1-\alpha)\,N\,\alpha^{\frac{2\alpha}{1-\alpha}}\ \Longrightarrow\ r=\eta_IL_Y\,\alpha^{\frac{2}{1-\alpha}-\frac{2\alpha}{1-\alpha}-1}=\alpha\,\eta_I\,L_Y.\]
+\item \emph{Equilibrio}. $Y$ y $C=Y-Nx$ son proporcionales a $N$, que crece a $\gamma=\eta_IL_I=\eta_I(L-L_Y)$. Con la ecuación de \autor{Euler}, $\theta\gamma+\rho=r=\alpha\eta_I(L-\gamma/\eta_I)$:
+  \[\gamma^{\mathrm E}=\frac{\alpha\,\eta_I\,L-\rho}{\alpha+\theta}.\]
+\item \emph{Planificador}. Elige $x$ para maximizar $Y-Nx=NL_Y(\tilde x^{\alpha}-\tilde x)$, con $\tilde x\equiv x/L_Y$ (local): $\tilde x=\alpha^{1/(1-\alpha)}$ (más que el monopolista, $\alpha^{2/(1-\alpha)}$), y $C=\Psi NL_Y$, con $\Psi\equiv(1-\alpha)\alpha^{\alpha/(1-\alpha)}$ (local). Con el hamiltoniano $\mathcal H=u(C)+\mu\,\eta_I(L-L_Y)N$, donde $\mu$ es el precio sombra de una idea: de $\partial\mathcal H/\partial L_Y=0$, $u'(C)\,\Psi N=\mu\,\eta_IN$; del coestado, $\rho\mu-\dot\mu=u'(C)\,\Psi L_Y+\mu\,\eta_I(L-L_Y)=\mu\,\eta_IL$. Como $\dot\mu/\mu=-\theta\gamma$:
+  \[\gamma^{\mathrm P}=\frac{\eta_I\,L-\rho}{\theta}.\]
+\item \emph{Comparación}: $\gamma^{\mathrm P}-\gamma^{\mathrm E}$ tiene el signo de $\eta_IL[\alpha+\theta(1-\alpha)]-\alpha\rho$, positivo siempre que $\gamma^{\mathrm E}>0$ ($\alpha\eta_IL>\rho$). \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo de \autor{Aghion} y \autor{Howitt} paso a paso}\label{anexo:aghion-howitt}
+
+\begin{itemize}
+\item \emph{Monopolista}: con $y=A_tx^{\alpha}$, la demanda inversa del intermedio es $p=\alpha A_tx^{\alpha-1}$ y su coste marginal, el salario $w_t$. Maximizando $(p-w_t)\,x$: $\alpha^2A_tx^{\alpha-1}=w_t$, es decir, $x=(\alpha^2/\omega_t)^{1/(1-\alpha)}$ con $\omega_t\equiv w_t/A_t$. Beneficio: $B_t=\alpha A_tx^{\alpha}-w_tx=\alpha(1-\alpha)A_tx^{\alpha}=A_t\,\frac{1-\alpha}{\alpha}\,\omega_t\,x$.
+\item \emph{Valor de una innovación}: el innovador cobra $B_{t+1}$ hasta que llega la siguiente innovación, a la tasa $\lambda_IL_I$; con utilidad lineal, $r=\rho$, y $V_{t+1}=B_{t+1}/(\rho+\lambda_IL_I)$.
+\item \emph{Arbitraje}: el trabajo es indiferente entre producir y buscar la próxima innovación, $w_t=\lambda_IV_{t+1}$. En el estado estacionario, $\omega$ y $L_I$ son constantes y $A_{t+1}=\gamma_qA_t$; dividiendo por $A_t$ y con $x=L-L_I$:
+  \[\omega=\lambda_I\,\gamma_q\,\frac{\frac{1-\alpha}{\alpha}\,\omega\,(L-L_I)}{\rho+\lambda_IL_I}\ \Longrightarrow\ 1=\lambda_I\,\gamma_q\,\frac{1-\alpha}{\alpha}\,\frac{L-L_I}{\rho+\lambda_IL_I}\ \Longrightarrow\ L_I^*=\frac{\gamma_q\frac{1-\alpha}{\alpha}L-\frac{\rho}{\lambda_I}}{1+\gamma_q\frac{1-\alpha}{\alpha}}.\]
+\item \emph{Crecimiento}: entre $t$ y $t+\Delta$, el número de innovaciones es una variable de \autor{Poisson} de media $\lambda_IL_I^*\Delta$, y cada una suma $\ln\gamma_q$ a $\ln y$. La tasa media de crecimiento es $\lambda_IL_I^*\ln\gamma_q$. \findemo
+\item \emph{Estática comparativa}: $L_I^*$ sube con $\lambda_I$, $\gamma_q$ y $L$, y baja con $\rho$ y con $\alpha$ (más competencia, menos margen). En la versión en tiempo discreto de \textcite[cap.~4]{AghionHowitt2009}, con probabilidad de innovar $\mu$ por periodo, la tasa media es $\mu(\gamma_q-1)$: la misma idea: cuántas innovaciones llegan por lo que mejora cada una.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo de \autor{Jones} (1995) paso a paso}\label{anexo:jones}
+
+\begin{itemize}
+\item \emph{La tasa de crecimiento de las ideas}: de \eqref{eq:jones-ideas}, $\gamma_N=\eta_I\,L_I^{\lambda}\,N^{\phi-1}$. Tomando logaritmos y derivando respecto al tiempo,
+  \[\frac{\dot\gamma_N}{\gamma_N}=\lambda\,\gamma_{L_I}-(1-\phi)\,\gamma_N=\lambda n-(1-\phi)\,\gamma_N.\]
+\item \emph{Estabilidad}: si $\gamma_N>\lambda n/(1-\phi)$, $\gamma_N$ cae; si es menor, sube. La economía converge a $\gamma_N^*=\lambda n/(1-\phi)$ desde cualquier punto de partida: hay dinámica de transición. \findemo
+\item \emph{El nivel de las ideas}: en la senda equilibrada, $N^{1-\phi}=\eta_IL_I^{\lambda}/\gamma_N^*$, es decir,
+  \[N_t=\left(\frac{(1-\phi)\,\eta_I}{\lambda n}\right)^{\frac{1}{1-\phi}}L_{I,t}^{\frac{\lambda}{1-\phi}}.\]
+  Con $L_I=s_IL$ ($s_I$, local, la fracción de la población que investiga), las ideas, y con ellas la renta por habitante, son proporcionales a $(s_IL)^{\lambda/(1-\phi)}$: el efecto escala se traslada al \emph{nivel}. Una subvención que sube $s_I$ eleva el nivel de la senda, no su pendiente.
+\item \emph{Romer como caso límite}: con $\lambda=\phi=1$, $\dot\gamma_N=\eta_I\dot L_I$: si la población crece, $\gamma_N$ crece sin límite; si no, $\gamma_N=\eta_IL_I$ depende del nivel de la población (efecto escala en la tasa).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio sobre el modelo $AK$, el Sobelow, las externalidades, \autor{Uzawa} y \autor{Lucas}, \autor{Romer}, \autor{Aghion} y \autor{Howitt} y \autor{Grossman} y \autor{Helpman}: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test} \parencite{GutierrezMarcos2026Simulador}.
+\end{anotaciones}
+
+\bibliografia
+\end{document}

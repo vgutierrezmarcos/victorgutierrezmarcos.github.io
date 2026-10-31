@@ -1,0 +1,53 @@
+% El modelo AK en niveles (a) y en tasas de crecimiento frente al de Solow (b),
+% con una subida de la tasa de ahorro. El panel (b) usa la escala del gráfico
+% solow-tasas del 3.A.43 (y = 1,4 cm; n+delta = 1,3; Solow con alfa = 1/2,
+% s f(k)/k = 2,3255 k^(-1/2), k* = 3,2) para que se lean igual.
+% (a) rectas desde el origen: Ak = 0,85 k; sAk = 0,55 k; (n+delta)k = 0,32 k
+%     (sA > n+delta: la distancia crece con k y nunca se cortan).
+% (b) sA = 2,2 y s'A = 3,0 (horizontales); gamma = 2,2 - 1,3 = 0,9;
+%     gamma' = 3,0 - 1,3 = 1,7.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={gs(\k)=2.3255/sqrt(\k);},
+    titulo/.style={font=\small\bfseries,anchor=south west},
+    tasa/.style={<->,thick,tceegris},
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thick,black}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-0.8) rectangle (19.6,6.1);
+  % 1: panel (a), niveles: ejes y rectas Ak, sAk y (n+delta)k
+  \capa{1}{\begin{scope}
+    \node[titulo,text depth=0.25ex] at (-0.9,5.6) {(a) Niveles};
+    \ejes{$k$}{$y$}{6.6}{5.4}
+    \draw[curva2] (0,0) -- (5.8,4.93) node[etiqueta,right,text=tceeazul] {$f(k)=Ak$};
+    \draw[curva1] (0,0) -- (5.8,3.19) node[etiqueta,right,text=tceemorado] {$sAk$};
+    \draw[curva3] (0,0) -- (5.8,1.856) node[etiqueta,right,text=tceeverde] {$(n+\delta)k$};
+    \draw[tasa] (2.2,0.704) -- (2.2,1.21);
+    \draw[tasa] (4.8,1.536) -- (4.8,2.64);
+  \end{scope}}
+  \begin{scope}[xshift=9.6cm,y=1.4cm]
+    % 2: panel (b), tasas: ejes
+    \capa{2}{\node[titulo,text depth=0.25ex] at (-0.9,4.0) {(b) Tasas de crecimiento};
+      \ejes{$k$}{$\gamma_k$}{8.2}{3.9}}
+    % 3: curva de depreciación, n+delta
+    \capa{3}{\draw[curva3] (0,1.3) node[left,text=black] {$n+\delta$} -- (7.9,1.3)
+      node[etiqueta,right,text=tceeverde,align=left] {curva de\\depreciación};}
+    % 4: la curva de ahorro de Solow, s f(k)/k, y su estado estacionario k*
+    \capa{4}{\draw[desplazada,tceegris] plot[domain=0.4173:7.6,samples=100] (\x,{gs(\x)})
+        node[etiqueta,right,text=tceegris] {Solow: $s\,f(k)/k$};
+      \node[punto,fill=tceegris] (ES) at (3.2,1.3) {};
+      \draw[guia] (ES) -- (3.2,0) node[below,text=black] {$k^*$};}
+    % 5: curva de ahorro del AK, sA, y la tasa de crecimiento gamma
+    \capa{5}{\draw[curva1] (0,2.2) node[left,text=black] {$sA$} -- (7.9,2.2)
+        node[etiqueta,right,text=tceemorado,align=left] {curva de\\ahorro ($AK$)};
+      \draw[llave] (3.9,2.2) -- (3.9,1.3)
+        node[etiqueta,midway,right=5pt] {$\gamma=sA-(n+\delta)$};}
+    % 6: subida del ahorro a s'A y nueva tasa gamma'
+    \capa{6}{\draw[curvanueva] (0,3.0) node[left,text=black] {$s'A$} -- (7.9,3.0);
+      \draw[llave,tceerojo] (7.3,1.3) -- (7.3,3.0)
+        node[etiqueta,pos=0.76,left=5pt,text=tceerojo] {$\gamma'=s'A-(n+\delta)$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

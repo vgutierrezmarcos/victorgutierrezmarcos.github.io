@@ -1,0 +1,76 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Esfuerzo investigador y crecimiento de la PTF en EE. UU., 1950-2025.
+% PTF: Fernald (FRBSF), versión del 01/10/2026, crecimiento anual del sector
+% empresarial (barras) y media móvil de 10 años (línea morada); eje izquierdo, %.
+% Investigadores (EJC, 1991-2023) y gasto real en I+D (dólares PPA de 2020,
+% 1981-2024): OCDE (MSTI); eje derecho, índice 1991 = 100 (investigadores
+% 1991 = 822 350; gasto 1991 = 277 393 M$). Consulta 31/10/2026 (cabecera de
+% ../datos/investigadores-ptf-eeuu.csv).
+% Comprobaciones: gasto 2024/1981 = 847 935/177 883 = 4,77; investigadores
+% 2023/1991 = 1 733 124/822 350 = 2,11; PTF media 1950-1969 = 2,19 %,
+% 1970-2025 = 0,87 %.
+% Capas «dic» (tikz-tcee.tex): barras → ejes y cero → líneas → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/investigadores-ptf-eeuu.csv}\esc
+\colorlet{escbarra}{tceegris!45}
+\pgfplotsset{
+  esc ejes/.style={width=13cm, height=7.5cm, xmin=1948.5, xmax=2026.5,
+    scale only axis=false, clip=false, unbounded coords=discard,
+    xtick={1950,1960,...,2020}, xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+    yticklabel style={font=\footnotesize, /pgf/number format/use comma},
+    ylabel style={font=\footnotesize}, tick align=outside},
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+}
+\begin{tikzpicture}[tcee]
+  % Eje izquierdo: crecimiento de la PTF, %
+  \begin{axis}[esc ejes, ymin=-4, ymax=8, ytick={-4,-2,...,8},
+      axis x line*=bottom, axis y line*=left,
+      ylabel={PTF: crecimiento anual, \%},
+      ymajorgrids, grid style={tceegris!25}, dicapas]
+    % 1: barras de la PTF anual
+    \capa{1}{
+      \addplot[on layer=dicbarras, ybar, bar width=0.62, fill=escbarra, draw=escbarra!70!black,
+        line width=0.2pt, forget plot, restrict x to domain=1950:2025]
+        table[x=anio, y=ptf_fernald] {\esc};
+    }
+    % 2: ejes (los dibuja el entorno axis) y la línea del 0
+    \capa{2}{\dicraya{(1948.5,0) (2026.5,0)}}
+    % 3: media móvil de 10 años
+    \capa{3}{
+      \addplot[ultra thick, tceemorado, mark=none, forget plot]
+        table[x=anio, y=ptf_fernald_media10] {\esc};
+    }
+    % 5: rótulos de la PTF
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, anchor=south west, text=tceemorado, align=left]{(1958,4.9)}{PTF, media de 10 años: $\approx$2\,\% en los 50 y 60;\\0,9\,\% de media anual de 1970 a 2025}
+    }
+  \end{axis}
+  % Eje derecho: índices del esfuerzo investigador, 1991 = 100
+  \begin{axis}[esc ejes, ymin=0, ymax=360, ytick={0,50,...,350},
+      axis x line=none, axis y line*=right,
+      ylabel={esfuerzo investigador, índice 1991 $=100$},
+      legend style={at={(0.5,-0.13)}, anchor=north, legend columns=4,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left, dicapas]
+    % 4: investigadores (dorado) y gasto real en I+D (azul)
+    \capa{4}{
+      \addplot[diclinea=tceedorado, mark=none, forget plot, restrict x to domain=1991:2023]
+        table[x=anio, y expr={\thisrow{investigadores_epc}/8223.50}] {\esc};
+      \addplot[diclinea=tceeazul, mark=none, forget plot, restrict x to domain=1981:2024]
+        table[x=anio, y expr={\thisrow{gerd_real_musd2020}/2773.93}] {\esc};
+    }
+    % 5: rótulos de los índices y leyenda
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, anchor=east, text=tceeazul, align=right]{(2019.5,312)}{gasto real en I+D:\\$\times$4,8 desde 1981}
+      \dicrotulo[font=\footnotesize, anchor=north east, text=tceedorado, align=right]{(2024.4,85)}{investigadores:\\$\times$2,1 desde 1991}
+      \addlegendimage{area legend, fill=escbarra, draw=escbarra!70!black}\addlegendentry{PTF anual}
+      \addlegendimage{ultra thick, tceemorado, leyenda linea corta}\addlegendentry{PTF, media de 10 años}
+      \addlegendimage{diclinea=tceedorado, leyenda linea corta}\addlegendentry{investigadores (EJC)}
+      \addlegendimage{diclinea=tceeazul, leyenda linea corta}\addlegendentry{gasto real en I+D}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

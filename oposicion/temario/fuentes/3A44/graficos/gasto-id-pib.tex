@@ -1,0 +1,83 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Gasto interno bruto en I+D (GERD) en % del PIB, 2000-2024: OCDE (MSTI) y, para
+% la UE-27, Eurostat (rd_e_gerdtot); China 2025: ONE de China (16/10/2026).
+% Consulta 31/10/2026 (cabecera de ../datos/gasto-id-pib.csv).
+% España en morado y más gruesa (el país del tema); UE-27 dorado; EE. UU. azul;
+% Alemania verde; Corea rojo; China gris oscuro discontinua.
+% Capas «dic» (tikz-tcee.tex): rejilla y ejes → líneas → puntos → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/gasto-id-pib.csv}\gid
+\colorlet{gidchina}{tceegris!65!black}
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=7.5cm,
+      xmin=1999.5, xmax=2025.5, ymin=0, ymax=5.5,
+      xtick={2000,2005,...,2025}, ytick={0,1,...,5},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% del PIB}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false,
+      unbounded coords=jump,
+      legend style={at={(0.5,-0.12)}, anchor=north, legend columns=6,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left, dicapas,
+    ]
+    % 1: ejes y rejilla (los dibuja el entorno axis)
+    % 2: UE-27, EE. UU., Alemania y Corea
+    \capa{2}{
+      \addplot[diclinea=tceedorado, mark=none, forget plot, restrict x to domain=2000:2024]
+        table[x=anio, y=ue27, empty cells with={nan}] {\gid};
+      \addplot[diclinea=tceeazul, mark=none, forget plot, restrict x to domain=2000:2024]
+        table[x=anio, y=eeuu, empty cells with={nan}] {\gid};
+      \addplot[diclinea=tceeverde, mark=none, forget plot, restrict x to domain=2000:2024]
+        table[x=anio, y=alemania, empty cells with={nan}] {\gid};
+      \addplot[diclinea=tceerojo, mark=none, forget plot, restrict x to domain=2000:2024]
+        table[x=anio, y=corea, empty cells with={nan}] {\gid};
+    }
+    % 3: China, discontinua, y su dato de 2025 (ONE) con un círculo hueco
+    \capa{3}{
+      \addplot[very thick, dashed, gidchina, mark=none, forget plot, restrict x to domain=2000:2024]
+        table[x=anio, y=china, empty cells with={nan}] {\gid};
+      \addplot[thin, densely dotted, gidchina, forget plot] coordinates {(2024,2.69) (2025,2.80)};
+      \addplot[on layer=dicpuntos, only marks, mark=o, mark size=2.4pt,
+        mark options={draw=gidchina, line width=0.9pt, solid}, forget plot]
+        coordinates {(2025,2.80)};
+    }
+    % 4: España, más gruesa
+    \capa{4}{
+      \addplot[ultra thick, tceemorado, mark=none, forget plot, restrict x to domain=2000:2024]
+        table[x=anio, y=espana, empty cells with={nan}] {\gid};
+    }
+    % 5: el punto común de 2000 y las etiquetas de 2024
+    \capa{5}{
+      \addplot[on layer=dicpuntos, only marks, mark=*, mark size=2pt,
+        mark options={fill=white, draw=black, line width=0.8pt}, forget plot]
+        coordinates {(2000,0.88)};
+      \dicrotulo[font=\footnotesize, anchor=north west, inner sep=1pt]{(2000.3,0.72)}{2000: España $=$ China $=$ 0,88}
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceerojo]{(2024.3,5.13)}{5,13}
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceeazul]{(2024.3,3.48)}{3,44}
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceeverde]{(2024.3,3.13)}{3,13}
+      \dicrotulo[font=\footnotesize, anchor=west, text=gidchina]{(2025.25,2.80)}{2,80 (2025, ONE)}
+      \dicrotulo[font=\footnotesize, anchor=west, text=gidchina]{(2024.3,2.51)}{2,69}
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceedorado]{(2024.3,2.26)}{2,26}
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceemorado]{(2024.3,1.50)}{1,50}
+    }
+    % 6: leyenda, con el fondo del gráfico
+    \capa{6}{
+      \addlegendimage{ultra thick, tceemorado, leyenda linea corta}\addlegendentry{España}
+      \addlegendimage{diclinea=tceedorado, leyenda linea corta}\addlegendentry{UE-27}
+      \addlegendimage{diclinea=tceeazul, leyenda linea corta}\addlegendentry{EE.\,UU.}
+      \addlegendimage{diclinea=tceeverde, leyenda linea corta}\addlegendentry{Alemania}
+      \addlegendimage{diclinea=tceerojo, leyenda linea corta}\addlegendentry{Corea del Sur}
+      \addlegendimage{very thick, dashed, gidchina, leyenda linea corta}\addlegendentry{China}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

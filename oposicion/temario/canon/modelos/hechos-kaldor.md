@@ -1,7 +1,7 @@
 # Hechos estilizados del crecimiento (Kaldor 1961; nuevos hechos de Jones y Romer 2010)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.45** (evidencia empírica sobre el crecimiento y la distribución de la renta entre los factores; sin revisar) — es evidencia empírica y su título incluye el reparto de la renta entre los factores, uno de los 6 hechos; su Word los desarrolla (apartado «0» y «¿Es el modelo neoclásico una buena representación?»), y allí van los «nuevos hechos» de Jones y Romer (2010). Ficha creada en la fase canon del 3.A.43 (CC8, DK11; **[decidir]**: alternativa, el 3.A.43 de referencia, porque es el que los usa para validar el modelo; o no crear ficha). Presentación provisional: la del 3.A.43, que el 3.A.45 debe completar.
-- **Temas que lo usan:** 3.A.45 (desarrollo previsto), 3.A.43 (resumen; hecho, 31/10/2026: caja gris en la contextualización de la introducción, con datos de Estados Unidos y gráfico, y en I.2 e I.3 c) cuáles reproduce Solow, 5 de 6), 3.A.44 (mención prevista: el sexto hecho y los nuevos hechos como motivación del crecimiento endógeno; su borrador no los cita)
+- **Temas que lo usan:** 3.A.45 (desarrollo previsto), 3.A.43 (resumen; hecho, 31/10/2026: caja gris en la contextualización de la introducción, con datos de Estados Unidos y gráfico, y en I.2 e I.3 c) cuáles reproduce Solow, 5 de 6), 3.A.44 (mención; hecho, 1/11/2026: solo en la valoración del $AK$: en las variantes con trabajo la participación del capital tiende a 1, contra la estabilidad de las participaciones de Kaldor, `\vertema{3.A.43}`; no usa los nuevos hechos)
 - **Manuales de referencia:** Kaldor (1961), en Lutz y Hague (eds.), *The Theory of Capital*; Jones y Romer (2010), *AEJ: Macroeconomics*; Barro y Sala i Martín (2004), introducción; Acemoglu (2009), cap. 2; Piketty y Zucman (2014).
 
 ## Presentación de referencia (provisional: caja del 3.A.43)
@@ -27,7 +27,7 @@
 |---|---|---|---|---|
 | 3.A.45 | Evidencia empírica y reparto de la renta | desarrollo previsto | La lista de arriba, su contraste con los datos (incluida la caída de la participación del trabajo), los nuevos hechos de Jones y Romer (2010) | El modelo de Solow `\vertema{3.A.43}` |
 | 3.A.43 | Solow | resumen (hecho, 31/10/2026) | Caja con los 6 hechos y los datos de EE. UU.; 5 de 6 en la senda equilibrada | El contraste detallado `\vertema{3.A.45}` |
-| 3.A.44 | Crecimiento endógeno | mención | El 6.º hecho y los nuevos hechos como motivación | La lista |
+| 3.A.44 | Crecimiento endógeno | mención (hecho, 1/11/2026) | La estabilidad de las participaciones, contra el $AK$ y el Sobelow | La lista |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.45 (sin revisar): misma lista y mismo veredicto (5 de 6) que la caja del 3.A.43; al revisarse, desarrollarlos con las mismas palabras y los nuevos hechos.

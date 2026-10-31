@@ -1,7 +1,7 @@
 # Modelo de Solow aumentado con capital humano (Mankiw, Romer y Weil 1992)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.43** (crecimiento I): el modelo está en su título. **Revisado el 31/10/2026**: II.1 «El modelo de Mankiw, Romer y Weil (1992)» (4′, a)-e) completos) y anexo C, b) (velocidad de convergencia). Reparto (D090): el modelo teórico en el 3.A.43 y la estimación, sus muestras y la evidencia en el 3.A.45.
-- **Temas que lo usan:** 3.A.43 (desarrollo; hecho, 31/10/2026), 3.A.45 (uso empírico: estimación y evidencia, con la ecuación y la notación del 3.A.43), 3.A.44 (mención: con α + β = 1 sería crecimiento endógeno; Uzawa-Lucas como salida a sus críticas), 3.B.28 (mención), 3.B.42 (mención)
+- **Temas que lo usan:** 3.A.43 (desarrollo; hecho, 31/10/2026), 3.A.45 (uso empírico: estimación y evidencia, con la ecuación y la notación del 3.A.43), 3.A.44 (mención; hecho, 1/11/2026: MRW acumula el capital humano como el físico y solo explica niveles; Uzawa-Lucas en tasa, `sec:uzawa-lucas` a) y c)), 3.B.28 (mención), 3.B.42 (mención)
 - **Manuales de referencia:** Mankiw, Romer y Weil (1992), *QJE*, tablas I, II y V; Romer (2019), caps. 1 y 4; Barro y Sala i Martín (2004), cap. 1; Acemoglu (2009), cap. 3; Hall y Jones (1999); Klenow y Rodríguez-Clare (1997); Caselli (2005).
 - **Decisión D090 (13/10/2026):** ¿Cómo se reparte Mankiw-Romer-Weil entre 3.A.43 y 3.A.45? Modelo teórico en 3.A.43 (con Harrod-Domar como antecedente breve) y estimación y evidencia en 3.A.45
 - **Decisión D107 (13/10/2026):** ¿Qué letra lleva la elasticidad del capital humano en Mankiw-Romer-Weil? β, como el artículo (no convive con el factor de descuento en 3.A.43-3.A.45)
@@ -37,7 +37,7 @@ $$\boxed{\ln\frac{Y_t}{L_t}=\ln A_0+g\,t+\frac{\alpha}{1-\alpha-\beta}\ln s_K+\f
 |---|---|---|---|---|
 | 3.A.43 | Solow aumentado (título) | desarrollo (hecho, 31/10/2026) | a)-e) completos; `eq:mrw-renta` función clave; λ ≈ 2 %; Hall y Jones; cifras de MRW y con datos actuales | La estimación detallada `\vertema{3.A.45}` |
 | 3.A.45 | Evidencia empírica y convergencia | uso empírico | Estimación, resultados por muestras (amplia, intermedia, OCDE), convergencia condicional, críticas, contabilidad del desarrollo; con `eq:mrw-renta` y la notación del 3.A.43 (β, $s_K$, $s_H$) | El modelo teórico `\vertema{3.A.43}` |
-| 3.A.44 | Crecimiento endógeno | mención | Con α + β = 1, crecimiento endógeno; Uzawa-Lucas como respuesta a las críticas | El modelo |
+| 3.A.44 | Crecimiento endógeno | mención (hecho, 1/11/2026) | Con α + β = 1, crecimiento endógeno; Uzawa-Lucas como respuesta a las críticas | El modelo |
 | 3.B.28 | Desarrollo | mención | Por qué persisten las diferencias de renta | — |
 | 3.B.42 | Cooperación al desarrollo de la UE | mención | Por qué persisten las diferencias | — |
 

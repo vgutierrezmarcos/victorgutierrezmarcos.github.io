@@ -1,0 +1,61 @@
+% El modelo Sobelow en tasas de crecimiento: curva de ahorro
+% s f(k)/k = s(A + B k^(alfa-1)), con alfa = 0,3 (exponente -0,7), frente a la
+% curva de depreciación n+delta = 1,3 (escala del gráfico tasas-endogeno y del
+% solow-tasas del 3.A.43: y = 1,4 cm).
+% (a) sA = 2,0 > n+delta; sB = 1,2: la curva empieza en 3,8 (k = 0,5600) y
+%     tiende a 2,0; en k = 1,0 vale 3,2 y en k = 6,4 vale 2,0+1,2*6,4^(-0,7) = 2,3277.
+% (b) sA = 0,7 < n+delta; sB = 1,2: corta a n+delta en
+%     k* = (1,2/0,6)^(1/0,7) = 2,6918; empieza en 3,8 (k = 0,2577).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=1.4cm,
+    declare function={ga(\k)=2.0+1.2*\k^(-0.7); gb(\k)=0.7+1.2*\k^(-0.7);},
+    titulo/.style={font=\small\bfseries,anchor=south west},
+    tasa/.style={<->,thick,tceegris},
+    asintota/.style={thick,dashed,tceemorado}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-0.55) rectangle (19.4,4.3);
+  % 1: ejes de los 2 paneles
+  \capa{1}{\node[titulo,text depth=0.25ex] at (-0.9,4.0) {(a) $sA>n+\delta$: crecimiento sostenido};
+    \ejes{$k$}{$\gamma_k$}{7.4}{3.9}
+    \begin{scope}[xshift=10.6cm]
+      \node[titulo,text depth=0.25ex] at (-0.9,4.0) {(b) $sA<n+\delta$: estado estacionario};
+      \ejes{$k$}{$\gamma_k$}{7.4}{3.9}
+    \end{scope}}
+  % 2: curvas de depreciación, n+delta
+  \capa{2}{\draw[curva3] (0,1.3) node[left,text=black] {$n+\delta$} -- (6.9,1.3)
+      node[etiqueta,right,text=tceeverde,align=left] {curva de\\depreciación};
+    \begin{scope}[xshift=10.6cm]
+      \draw[curva3] (0,1.3) node[left,text=black] {$n+\delta$} -- (6.9,1.3)
+        node[etiqueta,right,text=tceeverde,align=left] {curva de\\depreciación};
+    \end{scope}}
+  % 3: asíntotas sA (la horizontal del AK)
+  \capa{3}{\draw[asintota] (0,2.0) node[left,text=black] {$sA$} -- (6.9,2.0);
+    \begin{scope}[xshift=10.6cm]
+      \draw[asintota] (0,0.7) node[left,text=black] {$sA$} -- (6.9,0.7);
+    \end{scope}}
+  % 4: curvas de ahorro, s(A + B k^(alfa-1))
+  \capa{4}{\draw[curva1] plot[domain=0.56:6.9,samples=120] (\x,{ga(\x)})
+      node[etiqueta,right,text=tceemorado,align=left] {curva de\\ahorro};
+    \begin{scope}[xshift=10.6cm]
+      \draw[curva1] plot[domain=0.2577:6.9,samples=120] (\x,{gb(\x)});
+      \node[etiqueta,right,text=tceemorado] at (0.6,3.2) {curva de ahorro};
+    \end{scope}}
+  % 5: (a) la distancia a corto y a largo plazo; (b) k* estable y su dinámica
+  \capa{5}{\draw[tasa] (1.0,1.3) -- (1.0,3.2);
+    \node[etiqueta,right,text=black] at (1.05,1.65) {corto plazo: $\gamma_k$ alta};
+    \draw[tasa] (6.4,1.3) -- (6.4,2.3277);
+    \node[etiqueta,anchor=south east,align=right,text=black] at (6.3,2.6) {largo plazo:\\$\gamma_k\to sA-(n+\delta)$};
+    \draw[flecha] (1.2,0) -- (2.4,0);
+    \draw[flecha] (2.8,0) -- (4.0,0);
+    \draw[flecha] (4.4,0) -- (5.6,0);
+    \begin{scope}[xshift=10.6cm]
+      \node[punto] (E) at (2.6918,1.3) {};
+      \draw[guia] (E) -- (2.6918,0) node[below,text=black] {$k^*$};
+      \draw[flecha] (0.6,0) -- (2.4,0);
+      \draw[flecha] (5.8,0) -- (3.0,0);
+    \end{scope}}
+\end{tikzpicture}
+\end{document}
