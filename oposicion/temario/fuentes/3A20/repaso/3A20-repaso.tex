@@ -1,0 +1,297 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Poder de mercado y regulación óptima]{3.A.20}{Poder de mercado y regulación óptima. Definición del mercado relevante. Desarrollos en presencia de información asimétrica. Aplicaciones prácticas.}
+\tcefecha{31/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «tener la sartén por el mango»}{2,5}
+\apartadocante{I. Poder, mercado relevante, info. completa}{8}
+\subcante{1. \autor{Lerner}, IHH, 3 ineficiencias; algoritmo}{2,5}
+\subcante{2. Mercado relevante: SSNIP, celofán}{2,5}
+\subcante{3. $p=\mathrm{CMg}$, $p=\mathrm{CMe}$, 2 partes, \autor{Ramsey}-\autor{Boiteux}}{3}
+\apartadocante{II. Información asimétrica}{11}
+\subcante{1. Tasa de rentabilidad: \autor{Averch}-\autor{Johnson}}{2}
+\subcante{2. \autor{Loeb}-\autor{Magat}, \autor{Baron}-\autor{Myerson}}{2}
+\subcante{3. Menú de \autor{Laffont}-\autor{Tirole}}{3,5}
+\subcante{4. \emph{Price cap} ($\mathrm{IPC}-X$) y esquemas intermedios}{2}
+\subcante{5. Compromiso y captura}{1,5}
+\apartadocante{III. Varias empresas y aplicaciones}{7,5}
+\subcante{1. Competencia por comparación}{2}
+\subcante{2. Competencia por el mercado; impugnabilidad}{1,5}
+\subcante{3. Liberalización: ECPR, separación vertical}{2,5}
+\subcante{4. Aplicaciones prácticas}{1,5}
+\apartadocante{Conclusión}{1}}
+\emph{Ejemplo}: Redes del Valle, distribuidora eléctrica ficticia de una comarca. \emph{Pizarra}: \autor{Lerner}, \autor{Laffont}-\autor{Tirole} y \emph{price cap} recuadrados en una esquina; abajo, la escala de la potencia, que se completa instrumento a instrumento.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{Tener la sartén por el mango}»: quien tiene poder de mercado fija el precio; si solo él sabe su coste, el regulador cocina a ciegas. CNMC (dic. 2025): tasa de retribución de las redes eléctricas del 5,58 al 6,58\,\%: ¿mucho (rentas) o poco (sin inversión)? Lo sabe la empresa.
+\item \textbf{Relevancia}: \emph{teórica}: economía de la información y diseño de mecanismos; Nobel a \autor{Tirole} (2014) «por su análisis del poder de mercado y la regulación». \emph{Empírica}: margen sobre CMg en EE.\,UU. 21\,\% (1980) $\to$ 61\,\% (2016). \emph{Política}: redes y, desde 2023, plataformas (DMA) reguladas \emph{ex ante} \vertema{3.B.39} \vertema{4.A.15}.
+\item \textbf{Contextualización}: \concepto{poder de mercado}: cobrar de forma duradera $p>\mathrm{CMg}$ sin perder a todos los clientes. \concepto{Regulación económica}: intervención \emph{ex ante} sobre precios, entrada, calidad o acceso. \concepto{Regulación óptima}: máx. bienestar s.a. viabilidad de la empresa e información del regulador. Rompe el supuesto precio-aceptante del 1TFEB \vertema{3.A.22}. Teoría tradicional (\autor{Dupuit} $\to$ \autor{Boiteux}); captura (\autor{Stigler}, 1971); \concepto{nueva economía de la regulación} (información asimétrica, años 80); SSNIP (EE.\,UU., 1982).
+\item \textbf{Problemática}: ¿qué es, cómo se mide y en qué mercado? ¿Regulación óptima con información completa? ¿Y si la empresa sabe más? ¿Varias empresas, liberalización, práctica?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, se levanta el supuesto 3 del 1TFEB; \hyperref[rep:II]{II}, centro del título, también el 5; \hyperref[rep:III]{III}, varias empresas y aplicaciones.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{I. Poder de mercado, mercado relevante, info. completa\label{rep:I}}
+\begin{ideaclave}
+El poder de mercado aleja al mercado del óptimo; se mide en un mercado que hay que definir antes; y un regulador que lo supiera todo sabría qué precios poner.
+\end{ideaclave}
+
+\sub{I.1. Poder de mercado: concepto, medida y coste social\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Poder de mercado} (CE, 2004): subir precios con beneficio o recortar producción, calidad o innovación. Supuesto 3 roto + \concepto{barreras de entrada}: legales, estratégicas, tecnológicas (monopolio natural) \vertema{3.A.15}. \concepto{Posición dominante}: abusar de ella es ilegal (art.~102 TFUE).
+\item \emph{Índice de \autor{Lerner}} (1934), en el óptimo del monopolista \vertema{3.A.17}:
+\funcionclave{\mathcal{L}\equiv\frac{p-\mathrm{CMg}}{p}=\frac{1}{|\varepsilon_{q,p}|}}
+\item[] \autor{Cournot}: $\mathcal{L}_i=s_i/|\varepsilon|$ \vertema{3.A.19}. \emph{Problemas}: CMg no observable; margen alto para cubrir fijos; bajo con ineficiencia X.
+\item \emph{Estructura}: cuotas, $\mathrm{CR}_m$ e \concepto{IHH} $\equiv\sum_i(100\,s_i)^2\in(0;10.000]$; en \autor{Cournot}, $\sum_is_i\mathcal{L}_i=\mathrm{IHH}/(10.000|\varepsilon|)$. \emph{Umbrales}: cuota $\geq50$\,\% presume dominancia; $<40$\,\% improbable; concentraciones: IHH $<1.000$; 1.000-2.000 y $\Delta<250$; $>2.000$ y $\Delta<150$.
+\item \textbf{3 ineficiencias}: \emph{asignativa} (\autor{Harberger}, 1954: $\tfrac12\mathcal{L}p^Mq^M$, $<0{,}1$\,\% de la renta; + \concepto{búsqueda de rentas}, \autor{Tullock}, 1967); \emph{productiva} (\concepto{ineficiencia X}, \autor{Leibenstein}, 1966); \emph{dinámica}, ambigua (\autor{Schumpeter}, 1942, vs \autor{Arrow}, 1962; U invertida, \autor{Aghion} et al., 2005). + efecto \emph{distributivo} (bienes esenciales).
+\item \concepto{Algoritmo de la regulación} (\autor{Braeutigam}, 1989): \emph{conductas} $\to$ \concepto{defensa de la competencia}, \emph{ex post} (arts.~101-102); \emph{recurso exclusivo} $\to$ competencia + control de precios; \emph{subaditividad} $\to$ \concepto{regulación económica} \emph{ex ante}. Pueden chocar: Telefónica, 151,9 M€ (CE 2007; TJUE 2014). CNMC, ambas desde 2013.
+\item \concepto{Regulación}: normas de conducta del sector público (actividad no financiera); completa el mercado. Motivos (\autor{Musgrave}, 1959): eficiencia, equidad (tarifas uniformes, servicio universal), estabilización; frente a los fallos de mercado, los del sector público \vertema{3.A.23}.
+\end{itemize}
+\graficorepaso[0.86\linewidth]{algoritmo-regulacion}{Algoritmo de la regulación: del origen del poder al primer, segundo o tercer óptimo}
+
+\sub{I.2. Definición del mercado relevante\label{rep:I.2}}
+\begin{itemize}
+\item \concepto{Mercado relevante}: productos y zonas que se disciplinan mutuamente (CE, 2024); de \emph{producto} y \emph{geográfico}; sobre todo, sustitución por la demanda.
+\item \concepto{SSNIP} (monopolista hipotético; EE.\,UU., 1982): ¿ganaría un monopolista del candidato subiendo un 5-10\,\%? Si no, se añade el sustitutivo más próximo; mercado = \emph{menor} conjunto rentable. \concepto{Pérdida crítica} (\autor{Harris}-\autor{Simons}, 1989):
+\begin{formula}
+\centering $\ell^{c}=\dfrac{\tau}{\tau+\mathcal{L}}$\quad ($\tau=5$\,\%, $\mathcal{L}=20$\,\% $\Rightarrow$ 20\,\%)
+\end{formula}
+\end{itemize}
+\graficorepaso[0.9\linewidth]{ssnip}{SSNIP: el mercado candidato se amplía hasta que la subida es rentable}
+\begin{itemize}
+\item Redes del Valle: casi nadie se desconecta $\Rightarrow$ mercado = \emph{distribución en la comarca}; la \emph{comercialización}, otro (nacional): se regula la red.
+\item \concepto{Falacia del celofán} (du Pont, 1956): a precio de monopolio $|\varepsilon|>1$, ninguna subida es rentable $\Rightarrow$ mercado demasiado amplio. Abusos: referencia, el precio competitivo.
+\item \emph{Herramientas}: elasticidades y \emph{ratios de desvío}; correlación de precios (solo necesaria); flujos de comercio. \emph{Precio cero}: \concepto{SSNDQ} (calidad; Google Android). \emph{2 lados}: un mercado o uno por lado. \emph{Valoración}: binaria; medidas directas de presión al alza (\autor{Farrell}-\autor{Shapiro}, 2010). Primer paso, no diagnóstico.
+\end{itemize}
+
+\sub{I.3. Regulación óptima con información completa\label{rep:I.3}}
+\begin{itemize}
+\item \concepto{Monopolio natural}: costes \concepto{subaditivos}, $C(\sum_jq_j)<\sum_jC(q_j)$ (\autor{Baumol}, 1977); escala suficiente, no necesaria; \emph{sostenible} (\autor{Panzar}-\autor{Willig}, 1977). Dilema: ni desmantelar, ni dejar libre, ni pasarse: eficiencia asignativa vs \emph{viabilidad}.
+\item \concepto{Primer óptimo}: $p=\mathrm{CMg}$ (\autor{Hotelling}, 1938); si $\mathrm{CMg}<\mathrm{CMe}$, pérdida $\Rightarrow$ subvención a coste $1+\lambda$ (\concepto{coste sombra de los fondos públicos}).
+\end{itemize}
+\pareja{subaditividad-sostenibilidad}{Subaditividad entre $q^0$ y $q^1$}{regulacion-monopolio-natural}{$p=\mathrm{CMg}$: pérdidas; $p=\mathrm{CMe}$: beneficio nulo}
+\begin{itemize}
+\item \concepto{Segundos óptimos}: $p=\mathrm{CMe}$; \emph{dos partes} $T=A+p\,q$, $p=\mathrm{CMg}$ (\autor{Coase}, 1946; \autor{Oi}, 1971); \emph{punta y valle}; \autor{Ramsey}-\autor{Boiteux} (1927, 1956):
+\begin{formula}
+\centering $\dfrac{p_i-\mathrm{CMg}_i}{p_i}=\dfrac{\lambda}{1+\lambda}\cdot\dfrac{1}{|\varepsilon_{q_i,p_i}|}$
+\end{formula}
+\item[] \autor{Lerner} \emph{amortiguado}: $\lambda=0$ $\Rightarrow$ $p=\mathrm{CMg}$; $\lambda\to\infty$ $\Rightarrow$ monopolio. Redes del Valle: 90 M€ casi fijos, CMg $\approx0$ $\Rightarrow$ con $p=\mathrm{CMg}$ pierde 90 M€. Factura: término de potencia + de energía (\autor{Coase}), peajes de punta; cánones de ADIF (\autor{Ramsey}).
+\item \emph{Valoración}: exige conocer costes y elasticidades, y benevolencia; la empresa declara costes altos. Con otras distorsiones, \emph{second best} (\autor{Lipsey}-\autor{Lancaster}, 1956).
+\end{itemize}
+
+% ==========================================================================
+\bloque[11]{II. Desarrollos en presencia de información asimétrica\label{rep:II}}
+\begin{ideaclave}
+Sin información no hay primer óptimo: para que la eficiente no se haga pasar por ineficiente hay que dejarle una renta informativa; la regulación óptima equilibra incentivos y extracción de rentas.
+\end{ideaclave}
+
+\sub{II.1. Problema de información y tasa de rentabilidad\label{rep:II.1}}
+\begin{itemize}
+\item Agencia: regulador principal, empresa agente \vertema{3.A.13}. \concepto{Selección adversa} (tipo de coste) y \concepto{riesgo moral} (esfuerzo). \concepto{Renta informativa}; principio de revelación, $\mathrm{PC}_i$ e $\mathrm{IC}_i$ \vertema{3.A.14}; \emph{terceros óptimos}.
+\item \concepto{Tasa de rentabilidad}: costes + rentabilidad «justa» sobre la base de activos. \autor{Averch}-\autor{Johnson} (1962): con $s>w_K$, $B\leq(s-w_K)\,z_K$: \emph{el beneficio permitido crece con el capital}; con $0<\mu<1$:
+\begin{formula}
+\centering $\mathrm{RMST}_{LK}=\dfrac{w_L}{w_K-\frac{\mu}{1-\mu}(s-w_K)}>\dfrac{w_L}{w_K}$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.42\linewidth]{averch-johnson}{\autor{Averch}-\autor{Johnson}: $z_K'>z_K^*$}
+\begin{itemize}
+\item Sobrecapitaliza: \emph{ineficiencia productiva}, baja potencia. Redes del Valle: cambiar el transformador (activo) antes que mantenerlo. \emph{Desfase regulatorio}: algo de incentivo (\autor{Baumol}-\autor{Klevorick}, 1970). Evidencia: sobrecapitalización (\autor{Spann}, 1974), luego mixta.
+\item \emph{Valoración}: + poca información (datos contables), seguridad para invertir; $-$ sobrecapitaliza, beneficio contable $\neq$ económico, sin incentivo a abaratar, exagera costes en cada revisión. Corrección: TOTEX (CNMC 8/2025).
+\end{itemize}
+
+\sub{II.2. \autor{Loeb}-\autor{Magat} y \autor{Baron}-\autor{Myerson}\label{rep:II.2}}
+\begin{itemize}
+\item \autor{Loeb}-\autor{Magat} (1979): subvención = excedente del consumidor $\Rightarrow$ beneficio $=S(q)-C(q)$ $\Rightarrow$ $p=\mathrm{CMg}$ sin revelar costes (\autor{Groves}, estrategia dominante) \vertema{3.A.14}; pero conoce la demanda y la empresa se queda todo el excedente (salvo subastar el esquema): el problema son las rentas.
+\item \autor{Baron}-\autor{Myerson} (1982): coste $\underline{\beta}$ (prob. $\nu$) u $\overline{\beta}$; peso del beneficio $\alpha<1$. Activas $\mathrm{IC}_1$ y $\mathrm{PC}_2$:
+\begin{formula}
+\centering $\underline{U}=\Delta\beta\,\overline{q};\ p(\underline{q})=\underline{\beta},\ p(\overline{q})=\overline{\beta}+(1-\alpha)\dfrac{\nu}{1-\nu}\Delta\beta$
+\end{formula}
+\item[] \emph{No hay distorsión arriba}; la ineficiente produce menos. ↑ con $\nu$, $\Delta\beta$; $\alpha=1$ la elimina: eficiencia asignativa por rentas \vertema{3.A.17}. Redes del Valle ($\beta=20/40$, $\nu=\tfrac12$, $p=100-q$, $\alpha=0$): 80 y 40 (no 60); renta 800 (no 1.200). Cierre de la ineficiente si $\nu\geq3/4$; continuo: \emph{coste virtual}.
+\end{itemize}
+\graficorepaso[0.45\linewidth]{baron-myerson}{\autor{Baron}-\autor{Myerson}: sin distorsión arriba}
+
+\sub{II.3. Menú de \autor{Laffont}-\autor{Tirole}\label{rep:II.3}}
+\begin{itemize}
+\item \autor{Laffont}-\autor{Tirole} (1986, 1993): $C=\beta-e$; $\beta$ oculto, $e$ oculto con desutilidad $\psi(e)$; observa $C$; fondos a $1+\lambda$. Info. completa: $\psi'(e^*)=1$. La eficiente imita esforzándose $\Delta\beta$ menos $\Rightarrow$ renta $\Phi(\overline{e})=\psi(\overline{e})-\psi(\overline{e}-\Delta\beta)$:
+\funcionclave{\psi'(\underline{e})=1,\quad \psi'(\overline{e})=1-\frac{\lambda}{1+\lambda}\cdot\frac{\nu}{1-\nu}\cdot\Phi'(\overline{e})<1}
+\item[] Menos esfuerzo a la ineficiente: \concepto{incentivos vs extracción de rentas}. «\emph{El que algo quiere, algo le cuesta}». Con $\lambda=0$ desaparece.
+\item \concepto{Menú lineal} $t(C)=a-b\,(C-C^a)$ $\Rightarrow$ $\psi'(e)=b$: $b=1$ \concepto{precio fijo} (eficiente); $b\to0$ \concepto{coste incrementado}.
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Redes del Valle (M€)} & \multicolumn{2}{c}{\textbf{Completa}} & \multicolumn{2}{c}{\textbf{Asimétrica}}\\
+\rowcolor{tceeazulpalido} & Efic. & Inef. & Efic. & Inef.\\
+\midrule
+Esfuerzo $e$ & 20 & 20 & 20 & \textcolor{tceerojo}{18}\\
+Coste $C=\beta-e$ & 80 & 90 & 80 & \textcolor{tceerojo}{92}\\
+Transferencia $t$ & 10 & 10 & 16,5 & 8,1\\
+Renta $U$ & 0 & 0 & \textcolor{tceerojo}{6,5} & 0\\
+\bottomrule
+\end{tabular}\par}
+{\centering\scriptsize\color{tceegris}\itshape $\beta=100/110$, $\nu=\tfrac12$, $\psi=e^2/40$, $\lambda=0{,}25$ $\Rightarrow$ $\psi'(\overline{e})=0{,}9$\par}
+\pareja{menu-contratos}{Menú: precio fijo para la eficiente, baja potencia para la ineficiente}{price-cap}{\emph{Price cap}: senda $\mathrm{IPC}-X$ y revisión}
+\begin{itemize}
+\item \emph{Dicotomía precios-incentivos}: precios \autor{Ramsey}, transferencias para las rentas. Evidencia: menús de reparto del ahorro de Ofgem (\autor{Joskow}, 2014). \emph{Valoración}: teoría normativa más completa; supone benevolencia, compromiso y conocer $\psi$ y la distribución.
+\end{itemize}
+
+\sub{II.4. Precios máximos y esquemas intermedios\label{rep:II.4}}
+\begin{itemize}
+\item \concepto{Price cap} (\autor{Littlechild}, 1983, privatización de BT; RPI$-$3 en 1984): desliga precio y costes declarados; alta potencia ($b=1$); $X$ = mejora de productividad exigida en el periodo:
+\funcionclave{p_{t+1}\leq p_t\,(1+\mathrm{IPC}_t-X)}
+\item[] Lo ahorrado se lo queda hasta la revisión; periodo más largo: más incentivo, menos traslado. Cesta $\Rightarrow$ tipo \autor{Ramsey} (\autor{Vogelsang}-\autor{Finsinger}, 1979); no distorsiona factores. Redes del Valle: 40 €/MWh, IPC 2,5\,\%, $X=1{,}5$ $\Rightarrow$ $\leq40{,}40$.
+\item \emph{Extensiones}: \concepto{revenue cap} (RIIO de Ofgem); \concepto{reparto de beneficios} o escala móvil: $p=b\,F+(1-b)\,C$; incentivos de calidad. España: cuota de abono de Telefónica ($\mathrm{IPC}-X$ hasta 2012); Aena, DORA ($X$ se \emph{suma}).
+\item \emph{Valoración}: + incentivos, traslado \emph{a priori} y \emph{a posteriori}, sencillo; $-$ información para $p_0$ y $X$, retrasar mejoras, calidad e inversión, más riesgo. Recalibrado a costes = coste del servicio con desfase: depende del compromiso.
+\end{itemize}
+
+\sub{II.5. Compromiso y captura\label{rep:II.5}}
+\begin{itemize}
+\item \concepto{Efecto trinquete} (\autor{Weitzman}, 1980): coste bajo hoy = exigencia mayor mañana. \concepto{Desfase regulatorio}: tiempo entre revisiones. \emph{Inconsistencia temporal} (\autor{Kydland}-\autor{Prescott}, 1977): red hundida $\Rightarrow$ ↓inversión; antídoto: reglas previas, independencia.
+\item \concepto{Teoría positiva} y \concepto{captura}: \autor{Bernstein} (1955, ciclo de vida), \autor{Stigler} (1971, Nobel 1982): la industria adquiere la regulación; \autor{Olson} (1965): grupos pequeños se organizan \vertema{4.B.2}. «\emph{Poner al zorro a cuidar de las gallinas}». \autor{Peltzman} (1976): máx. apoyo $\mathcal{A}(p,B(p))$:
+\begin{formula}
+\centering $\dfrac{\partial\mathcal{A}}{\partial p}+\dfrac{\partial\mathcal{A}}{\partial B}B'(p)=0\Rightarrow B'(p)>0\Rightarrow p^c<p^*<p^M$
+\end{formula}
+\item[] \autor{Becker} (1983): grupos de presión. \autor{Laffont}-\autor{Tirole} (1991): captura = colusión; con riesgo alto, \emph{baja potencia}. Puertas giratorias (\autor{Dal Bó}, 2006). \emph{Valoración}: comparar fallos de mercado y de regulación \vertema{3.A.23}; justifica independencia y transparencia; difícil de contrastar.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{escala-potencia}{Escala de la potencia: de $b=0$ a $b=1$, más incentivos y más rentas}
+
+% ==========================================================================
+\bloque[7,5]{III. Varias empresas y aplicaciones prácticas\label{rep:III}}
+\begin{ideaclave}
+Las demás empresas son una fuente de información: compararlas o hacerlas competir por la concesión rebaja la renta que hay que ceder; al liberalizar, la cuestión es en qué condiciones usan los rivales la red.
+\end{ideaclave}
+
+\sub{III.1. Competencia por comparación\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Yardstick competition} (\autor{Shleifer}, 1985): precio según los costes de las \emph{demás}; «\emph{Las comparaciones son odiosas}». $N$ idénticas, inversión $R(c_i)$, $R'<0$:
+\begin{formula}
+\centering $p_i=\bar{c}_{-i}=\dfrac{1}{N-1}\sum_{j\neq i}c_j,\ T_i=\bar{R}_{-i}\Rightarrow -R'(c_i)=q(\bar{c}_{-i})$
+\end{formula}
+\item[] Equilibrio simétrico: coste eficiente, $p=c$, sin rentas: $b=1$ sin rentas. Costes 20, 22, 24 $\Rightarrow$ precios 23, 22, 21. DEA, SFA \vertema{3.A.12}; Alemania. Heterogeneidad observable: regresión o fronteras; filtra choques comunes. Requisitos: comparables; riesgo de \emph{colusión} \vertema{3.A.19}.
+\end{itemize}
+
+\sub{III.2. Competencia por el mercado e impugnabilidad\label{rep:III.2}}
+\begin{itemize}
+\item \autor{Demsetz} (1968): subastar el derecho exclusivo al menor precio $\Rightarrow$ $p=\mathrm{CMe}$ sin conocer costes; la subasta revela la información \vertema{3.A.14}. Subasta + incentivos (\autor{Laffont}-\autor{Tirole}, 1987).
+\item Límites (\autor{Williamson}, 1976): colusión; activos específicos y contratos incompletos; ventaja del titular al renovar; duración (corta: no invierte; larga: sin competencia). Renegociación frecuente (\autor{Guasch} et al., 2008).
+\item \concepto{Mercados perfectamente impugnables} (\autor{Baumol}-\autor{Panzar}-\autor{Willig}, 1982) \vertema{3.A.15}: misma tecnología, sin \emph{costes hundidos}, reacción lenta $\Rightarrow$ \emph{hit and run} $\Rightarrow$ $p=\mathrm{CMe}$. Las redes tienen costes hundidos: no son impugnables.
+\end{itemize}
+
+\sub{III.3. Liberalización e industrias de red\label{rep:III.3}}
+\begin{itemize}
+\item \concepto{Liberalizar} (quitar barreras legales) $\neq$ \concepto{desregular}: \emph{re-regulación}. \concepto{Industria de red}: activo esencial no competitivo + actividades competitivas. 4 problemas: \concepto{costes de transición a la competencia} (España: Ley 54/1997, $\approx$11.951 M€; suprimidos en 2006), \emph{precio de acceso} (cuello de botella), inversión en la red, \emph{servicio universal} (de subsidios cruzados a coste explícito \vertema{4.A.12}).
+\item \concepto{ECPR} (\autor{Willig}, 1979; \autor{Baumol}-\autor{Sidak}, 1994): peaje = coste del acceso + margen perdido:
+\begin{formula}
+\centering $A=c_a+\big[p-(c_a+c_I)\big]=p-c_I\ \Rightarrow\ \text{entra si } c_E\leq c_I$
+\end{formula}
+\item[] Como techo: \emph{estrechamiento de márgenes} (Telefónica). Perpetúa un $p$ de monopolio (\autor{Armstrong}-\autor{Doyle}-\autor{Vickers}, 1996).
+\item 6 opciones (OCDE, 2001): \concepto{acceso regulado} (Telefónica, MARCo); \concepto{separación de la propiedad} (ADIF/Renfe, Aena); \concepto{propiedad compartida} del activo \emph{no} competitivo (CLH, hoy Exolum); \concepto{separación operativa} (EE.\,UU.); \concepto{partes recíprocas} (móviles); \concepto{partes más pequeñas} (distribuidoras).
+\end{itemize}
+\graficorepaso[0.78\linewidth]{separacion-vertical}{Acceso regulado y formas de separación vertical (ANC: activo no competitivo; AC: actividad competitiva)}
+\begin{itemize}
+\item \concepto{Plataforma de 2 lados} (\autor{Rochet}-\autor{Tirole}, 2003): precio nulo en un lado sin depredación; \autor{Lerner} de un lado dice poco.
+\end{itemize}
+
+\sub{III.4. Aplicaciones prácticas\label{rep:III.4}}
+\begin{itemize}
+\item \emph{Redes eléctricas y gasistas}: tasa de retribución + incentivos TOTEX: la tasa asegura la inversión; los incentivos corrigen \autor{Averch}-\autor{Johnson}. \emph{Excepción ibérica} (14/6/2022-fin 2023): tope al gas de las centrales marginales (40 €/MWh al inicio); no contra el poder de mercado, sino contra el contagio del coste marginal; temporal para no dañar la credibilidad.
+\item \emph{Telecos}: Código Europeo (2018): definir mercados, 3 criterios, \emph{peso significativo}; NEBA suprimida (2025): se regula mientras hay cuello de botella.
+\item \emph{Digitales}: \concepto{DMA} (2022, aplicable desde 2023): \emph{guardianes de acceso} por umbrales; no autopreferencia, portabilidad, interoperabilidad; multas hasta 10\,\% (20\,\% si reincide). Regular sin conocer costes; la plataforma sigue sabiendo más.
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.23\linewidth}>{\centering\arraybackslash}p{0.13\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.38\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Instrumento} & $b$ & \textbf{Renta} & \textbf{Qué puede salir mal}\\
+\midrule
+Tasa de rentab. & $\approx0$ & baja & exceso de capital\\
+Menú \autor{L}-\autor{T} & baja a 1 & solo la efic. & falta de compromiso; captura\\
+\emph{Price cap} & 1 & alta si holgado & calidad; trinquete; renegociar\\
+\emph{Yardstick} & 1 & casi nula & pacto; entornos distintos\\
+Subasta & la del contrato & ↓ con las pujas & contratos incompletos; titular\\
+\bottomrule
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: \autor{Lerner}/IHH en un mercado relevante (SSNIP); info. completa: $p=\mathrm{CMg}$ con subvención o segundos óptimos; asimétrica: renta informativa, incentivos vs rentas (tasa de rentabilidad y \emph{price cap}, extremos del menú; compromiso y captura deciden); varias empresas: comparación, subasta y acceso.
+\item \textbf{Relevancia}: descarbonizar exige ampliar las redes: reglas estables y creíbles; en lo digital, cuellos de botella de datos y plataformas.
+\item \textbf{Extensiones}: empresa pública \vertema{4.B.15}; competencia \vertema{3.B.39} \vertema{4.A.15}; sectores \vertema{4.A.5} \vertema{4.A.12}; mecanismos \vertema{3.A.13} \vertema{3.A.14}; grupos de interés \vertema{4.B.2}.
+\item \textbf{Opinión}: no hay instrumento óptimo general; más potencia cuanto más compromiso e independencia. \autor{Kahn}: «la mejor combinación posible de una regulación inevitablemente imperfecta y una competencia inevitablemente imperfecta».
+\item \textbf{Idea final}: la regulación óptima no le quita la sartén al monopolista natural: le paga lo justo para que nos deje ver lo que hay dentro, la renta informativa.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1927}{\autor{Ramsey} (\autor{Boiteux}, 1956): precios con restricción presupuestaria}
+\hito{1934}{\autor{Lerner}: índice de poder de mercado}
+\hito{1938}{\autor{Hotelling}: $p=\mathrm{CMg}$ y subvención}
+\hito{1946}{\autor{Coase}: tarifa en dos partes}
+\hito{1954}{\autor{Harberger}: coste del monopolio}
+\hito{1956}{du Pont: falacia del celofán}
+\hito{1959}{\autor{Musgrave}: 3 funciones del sector público}
+\hito{1962}{\autor{Averch}-\autor{Johnson}: sobrecapitalización}
+\hito{1965}{\autor{Olson}: lógica de la acción colectiva}
+\hito{1968}{\autor{Demsetz}: competencia por el mercado}
+\hito{1971}{\autor{Stigler}: captura (Nobel 1982)}
+\hito{1976}{\autor{Peltzman}; \autor{Williamson}}
+\hito{1979}{\autor{Loeb}-\autor{Magat}; \autor{Willig}: ECPR}
+\hito{1980}{\autor{Weitzman}: trinquete}
+\hito{1982}{\autor{Baron}-\autor{Myerson}; impugnables; SSNIP}
+\hito{1983}{\autor{Littlechild}: \emph{price cap}}
+\hito{1985}{\autor{Shleifer}: \emph{yardstick}}
+\hito{1986}{\autor{Laffont}-\autor{Tirole}: menú (libro, 1993)}
+\hito{1989}{\autor{Braeutigam}: algoritmo (\emph{policy roadmap})}
+\hito{2003}{\autor{Rochet}-\autor{Tirole}: plataformas de 2 lados}
+\hito{2014}{Nobel a \autor{Tirole}}
+\hito{2024}{Comunicación CE sobre el mercado de referencia}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Retribución de las redes eléctricas: \dato{6,58\,\% (2026-2031), antes 5,58\,\%}{CNMC, 2025}; gas: \dato{6,46\,\%}{CNMC, 2026}.
+\item Margen sobre CMg en EE.\,UU.: \dato{21\,\% $\to$ 61\,\% (1980-2016)}{\autor{De Loecker} et al., 2020}.
+\item DORA de Aena: \dato{10,52 $\to$ 10,69 €/pasajero, $X=+0{,}33$\,\%}{BOE, 2026}.
+\item Aena: CNMC proponía \dato{$-0{,}59$\,\%/año}{CNMC, 2026} y Aena \dato{$+3{,}82$\,\%}{CNMC, 2026}. RIIO-3: \dato{5,70\,\% real (electr.), 6,12\,\% (gas)}{Ofgem, 2025}.
+\item Ferrocarril: \dato{Renfe 50-67\,\% de viajeros; precios reales $\approx-40$\,\% desde 2019}{CNMC, 2026}.
+\item DMA: \dato{7 guardianes, 23 servicios}{CE, 2026}; multas \dato{Apple 500 M€, Meta 200 M€}{CE, 2025}; \dato{Google 890 M€}{CE, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué no basta \autor{Lerner}?} CMg no observable; márgenes que cubren fijos o esconden ineficiencia X.
+\item \textbf{¿Falacia del celofán?} SSNIP a precios de monopolio: mercado demasiado amplio; usar el competitivo.
+\item \textbf{¿\autor{Averch}-\autor{Johnson} en España?} Retribución sobre activos $\Rightarrow$ sesgo al capital; TOTEX lo corrige.
+\item \textbf{¿Por qué distorsionar a la ineficiente?} Su esfuerzo sube la renta de la eficiente.
+\item \textbf{¿Es el DORA un \emph{price cap}?} Sí, ingreso máximo por pasajero; su $X$ se suma.
+\item \textbf{¿Baja potencia con captura?} Los incentivos potentes elevan las rentas en juego (\autor{Laffont}-\autor{Tirole}, 1991).
+\item \textbf{¿Defensa de la competencia o regulación?} Conductas: competencia, \emph{ex post}; subaditividad: regulación \emph{ex ante}.
+\item \textbf{¿Por qué la DMA designa por umbrales?} Para regular sin conocer costes ni demandas.
+\item \textbf{¿Liberalizar es desregular?} No: re-regulación; separar actividades y regular el acceso al tramo no competitivo.
+\item \textbf{¿Por qué discrimina el dueño integrado de la red?} Compite aguas abajo: negar o encarecer el acceso; separación vertical o ECPR.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item \autor{Lerner} $=1/|\varepsilon|$ en el óptimo del monopolista: tramo \emph{elástico}. IHH con $n$ iguales: $10.000/n$.
+\item SSNIP: mercado = \emph{menor} conjunto rentable; celofán: demasiado \emph{amplio}.
+\item \autor{Ramsey}-\autor{Boiteux}: más margen donde la demanda es \emph{menos} elástica; $\lambda=0$ $\Rightarrow$ $p=\mathrm{CMg}$.
+\item \autor{Averch}-\autor{Johnson}: \emph{sobre}capitaliza; $\mathrm{RMST}_{LK}>w_L/w_K$.
+\item \emph{No hay distorsión arriba}; la eficiente se queda la renta; la ineficiente, sin renta (menos $q$ en \autor{Baron}-\autor{Myerson}, menos $e$ en \autor{Laffont}-\autor{Tirole}).
+\item \autor{Loeb}-\autor{Magat}: eficiente pero con todo el excedente para la empresa; supone conocer la demanda.
+\item $b=1$ precio fijo; $b\to0$ coste incrementado. \emph{Yardstick}: $b=1$ sin rentas.
+\item Liberalizar $\neq$ desregular. ECPR: $A=p-c_I$. \autor{Peltzman}: $p^c<p^*<p^M$. DORA: $X$ se \emph{suma}.
+\item \autor{Weitzman} 1974 $\neq$ 1980. Impugnabilidad: organización industrial, no nueva economía de la regulación. Propiedad compartida: del activo \emph{no} competitivo.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

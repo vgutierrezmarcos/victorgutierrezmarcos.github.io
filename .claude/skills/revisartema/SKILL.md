@@ -157,6 +157,14 @@ aprobada, regenera también el manifiesto de la app con `manifiesto-app.py`).
 **Parada**. Cuando Víctor la apruebe, `aprobado.repaso` en `estado.json` y
 `manifiesto-app.py` (paso 5 del principio).
 
+**Autoevaluación de la app** (con la ficha aprobada, sin parada propia): un
+agente `general-purpose` con el encargo de
+`oposicion/temario/app/autoevaluacion/ENCARGO.md` (en `main`) escribe
+`oposicion/temario/app/autoevaluacion/<T>.json` (24 preguntas cortas desde la
+ficha y el tema). En `main`, `python3 scripts/autoevaluacion.py` las comprueba
+y rehace `indice.json`; commit de los dos ficheros y push. Si el tema cambia
+después, rehazla.
+
 ## Entrega 3: el vídeo (`--fase video`, con tema y ficha aprobados)
 
 1. `tema-guionista` → `D/guion-cante.md` y `D/video/escenas.yaml`, con todas
@@ -229,6 +237,13 @@ cuántas dudas nuevas hay.
 cuenta personal): las dudas se le preguntan **en la conversación** con
 AskUserQuestion (opciones, la recomendada primero) y se anotan igualmente en
 «Dudas abiertas» de `revision.md` con la respuesta.
+
+**Del 31/10 al 9/11/2026** (Víctor fuera; revisión sin paradas, tema + ficha,
+sin vídeos): las dudas van a la página de esta cuenta «Dudas de la revisión
+del temario» (https://claude.ai/artifact/3gXSKmxb49mAYuAQVAJWm7), colecciones
+`temas/<T>` ({codigo, titulo, orden, estado, fecha, resumen}), `preguntas/<id>`
+(mismos campos que arriba) y `respuestas/<id>`. Se aplica la recomendada y,
+a la vuelta, se leen sus respuestas y se cambia lo que elija.
 
 Breve, en castellano:
 - qué se ha hecho (cinco líneas como máximo) y las cifras clave;
