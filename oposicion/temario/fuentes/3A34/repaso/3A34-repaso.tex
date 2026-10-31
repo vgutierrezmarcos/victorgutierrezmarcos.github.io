@@ -1,0 +1,310 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Inversión en bienes de equipo]{3.A.34}{Teorías de la inversión en bienes de equipo. Incertidumbre e irreversibilidad de la inversión. Implicaciones de política económica.}
+\tcefecha{31/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «antes de que te cases…»}{2,5}
+\apartadocante{I. Antecedentes: de \autor{Keynes} al neoclásico}{7}
+\subcante{1. \autor{Keynes}: $\mathrm{EMgK}=i$}{1,5}
+\subcante{2. Acelerador: $I_t=v\,\Delta Y_t$}{1,5}
+\subcante{3. Síntesis: la inversión en la IS-LM}{0,5}
+\subcante{4. \autor{Jorgenson}: $P\,F_K=c_K$}{3,5}
+\apartadocante{II. Costes de ajuste: el modelo de la q}{9,5}
+\subcante{1. Modelo: $q=1+\Phi'({I})$, $r\,q=B(K)+\dot q$}{4,5}
+\subcante{2. Implicaciones de política}{3}
+\subcante{3. Evidencia y valoración}{2}
+\apartadocante{III. Incertidumbre, irreversibilidad, financiación}{10}
+\subcante{1. Costes asimétricos y fijos}{2}
+\subcante{2. Incertidumbre (costes simétricos)}{2}
+\subcante{3. Irreversibilidad: la opción de esperar}{3,5}
+\subcante{4. Mercados financieros}{1,5}
+\subcante{5. Síntesis de política económica}{1}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra} en 3 zonas: izquierda, los refranes (enganche; «no por mucho madrugar amanece más temprano»; «dinero llama a dinero»); centro, gráficos por capas: \autor{Jorgenson}, diagrama de fases de la q (se queda para las implicaciones) y valor de la opción; derecha, recuadrados: $c_K$, las 2 condiciones de la q, la banda de inacción y la regla de la opción de esperar. Antecedentes deprisa: lo que el tribunal quiere oír es $c_K$, la q y, sobre todo, la opción de esperar.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{Antes de que te cases, mira lo que haces}»: comprar una máquina es como una boda, entrar es fácil y salir caro. Abril de 2025, aranceles de EE.\,UU.: índice de incertidumbre de política (\autor{Baker}-\autor{Bloom}-\autor{Davis}) de España en máximo histórico; el del BdE cerró 2025 \dato{77\,\% sobre su media}{BdE}. ¿Por qué invierten las empresas y por qué dejan de hacerlo con dinero barato y proyectos rentables?
+\item \textbf{Relevancia}: \emph{LP}: acumula capital $\to$ crecimiento \vertema{3.A.43}; FBCF \dato{21,0\,\% del PIB (2025)}{INE}, ZE 21,3\,\%; 30,0\,\% en 2006, 17,6\,\% en 2013. \emph{CP}: el componente más volátil; desv. típica de la tasa interanual 6,6 vs. 2,3 puntos del PIB (1996-2019); 2T 2009, $-$20,3\,\% con PIB $-$4,3\,\% \vertema{3.A.42}. \emph{Política}: canal de la monetaria \vertema{3.A.37}, blanco de incentivos fiscales \vertema{3.A.38}.
+\item \textbf{Contextualización}: \concepto{inversión}: flujo que lleva el stock de capital al deseado; bruta = neta + reposición, $I_t=\dot K_t+\delta K_t$. SEC 2010: \concepto{formación bruta de capital} = FBCF + variación de existencias + objetos valiosos \vertema{3.A.30}; FBCF por activos: construcción, \concepto{maquinaria y bienes de equipo} (con material de transporte), propiedad intelectual, recursos biológicos. Historia: clásicos (ley de \autor{Say}; \autor{Ricardo}, estado estacionario; \autor{Marx}) $\to$ \autor{Keynes} (1936), \emph{animal spirits}; acelerador $\to$ \autor{Jorgenson} (1963) $\to$ costes de ajuste y q (\autor{Tobin}, 1969; \autor{Abel}, \autor{Hayashi}, 1982) $\to$ desde los 80, incertidumbre, irreversibilidad e imperfecciones financieras.
+\item \textbf{Problemática}: ¿cuánto capital y a qué ritmo? ¿Demanda, tipo, impuestos o expectativas? ¿Por qué se ajusta poco a poco y aun así es tan volátil? ¿Qué cambia con incertidumbre e irreversibilidad? ¿Importa la financiación? ¿Abaratar el capital o reducir la incertidumbre?
+\item \textbf{Estructura}: se van levantando supuestos: \hyperref[rep:I]{I}, cuánto capital se desea; \hyperref[rep:II]{II}, cómo se llega si ajustar cuesta; \hyperref[rep:III]{III}, futuro incierto, inversión irreversible y financiación, con la síntesis de política.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{fbcf-activos}{FBCF de España por activo, 1995-2025 (\% del PIB): maquinaria y equipo 26,8\,\% de la FBCF; productos de la propiedad intelectual 19,7\,\% (7,0\,\% en 1995); no residencial 71,9\,\%; vivienda 28,1\,\% \vertema{3.A.33}}
+
+% ==========================================================================
+\bloque[7]{I. Antecedentes: de \autor{Keynes} al modelo neoclásico\label{rep:I}}
+\begin{ideaclave}
+Las primeras teorías son funciones \emph{ad hoc} (\autor{Keynes}: expectativas y tipo; acelerador: $\Delta Y$). \autor{Jorgenson} la deriva de la maximización del beneficio: producto marginal del capital = coste de uso. Pero todas explican el capital \emph{deseado}, no el ritmo de la inversión.
+\end{ideaclave}
+
+\sub{I.1. \autor{Keynes} (1936): la eficiencia marginal del capital\label{rep:I.1}}
+\begin{itemize}
+\item Separa invertir de ahorrar: depende de lo que se espera ganar y del tipo. Supuestos: economía cerrada, precios rígidos, $i$ por la preferencia por la liquidez \vertema{3.A.35}, expectativas a largo exógenas.
+\item \concepto{Eficiencia marginal del capital} (EMgK): tasa de descuento que iguala el valor actual de los rendimientos esperados con el precio de oferta del bien de capital (= TIR \vertema{3.B.2}; idéntica a la «tasa de rendimiento sobre el coste» de \autor{Fisher}, 1930):
+\begin{formula}
+\centering $P^K=\displaystyle\sum_{t=1}^{T}\frac{R^e_t}{(1+\mathrm{EMgK})^t};\quad \text{se invierte hasta } \mathrm{EMgK}=i$
+\end{formula}
+\item Decreciente: ↓rendimiento con más capital y, a CP, la inversión encarece los bienes de capital (\autor{Lerner}, 1953: eficiencia marginal de la \emph{inversión}). Síntesis neoclásica:
+\begin{formula}
+\centering $I=\overline I-b\,i,\quad b>0$
+\end{formula}
+\item[] $\overline I$: \concepto{\emph{animal spirits}}, «impulso espontáneo a la acción», el componente más pesado y volátil (desplaza la curva); $-b\,i$: movimiento a lo largo, $b$ pequeño. Lo central es la incertidumbre (\autor{Keynes}, 1937; \autor{Knight}, 1921 \vertema{3.A.10}).
+\item \emph{Política}: monetaria poco eficaz (2 eslabones débiles: $b$ pequeño e $i$ que baja poco); fiscal eficaz, inversión pública; «socialización bastante completa de la inversión» (cap. 24); sostener la confianza. $-$ demanda de capital, no de inversión; \emph{ad hoc}.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{emgk}{EMgK: movimiento a lo largo ($i$) y desplazamiento (\emph{animal spirits})}
+
+\sub{I.2. El acelerador\label{rep:I.2}}
+\begin{itemize}
+\item \concepto{Principio de aceleración} (\autor{Clark}, 1917): se invierte según la \emph{variación} de la producción; con el multiplicador explica el ciclo (\autor{Samuelson}, 1939; \autor{Hicks}, 1950). Precios rígidos, coeficientes fijos (\autor{Leontief}), \concepto{relación capital-producto} $v$ constante, $K^*_t=v\,Y^e_t$, expectativas estáticas:
+\begin{formula}
+\centering $I_t=\Delta K^*_t=v\,\Delta Y_t;\qquad \dfrac{\partial Y_t}{\partial G_t}=\dfrac{1}{1-c-v}$
+\end{formula}
+\item[] $v>1$ (2-3, la de \autor{Harrod}-\autor{Domar} \vertema{3.A.43}): ↑pequeño de $Y$ $\Rightarrow$ ↑grande de $I$. Multiplicador solo \emph{de impacto} y si $c+v<1$; a LP vuelve a $1/(1-c)$. \autor{Samuelson}: ciclos si $c(1+v)^2<4v$, estable si $cv<1$.
+\item \emph{Flexible}: $I_t=v\sum_j\beta_j\Delta Y_{t-j}$, $\sum\beta_j=1$; geométricos (\autor{Koyck}, 1954) = \concepto{ajuste parcial} (\autor{Chenery}, 1952): $K_t-K_{t-1}=\beta_0(K^*_t-K_{t-1})$; impacto $1/(1-c-\beta_0v)$.
+\item \emph{Política}: monetaria nula, fiscal eficaz. $-$ sin sustitución, expectativas estáticas, sin $r$, sin capacidad ociosa; asimétrico a la baja ($I$ bruta $\ge0$); correlación $\neq$ causalidad.
+\end{itemize}
+
+\sub{I.3. La síntesis neoclásica: IS-LM\label{rep:I.3}}
+\begin{itemize}
+\item Sin teoría propia: $I=\overline I-b\,i$ en la IS (pendiente negativa) \vertema{3.A.5}; monetaria vía $i$, fiscal con \emph{crowding-out}. Falta el porqué de $b$ y el ritmo.
+\end{itemize}
+
+\sub{I.4. Teoría neoclásica: \autor{Jorgenson} (1963)\label{rep:I.4}}
+\begin{itemize}
+\item Microfundamentos (como \autor{Friedman} en consumo \vertema{3.A.33}); top-20 de la AER. Supuestos: empresa representativa, competencia perfecta ($P$, $W$, $P^K$), $F(K,L)$ neoclásica con \autor{Inada}, $r$ y precios constantes, \emph{sin costes de ajuste}, depreciación $\delta$:
+\begin{formula}
+\centering $\displaystyle\max_{\{L_t,I_t\}}\int_0^\infty e^{-rt}\big[P F(K,L)-WL-P^KI\big]dt$\ s.\,a.\ $\dot K=I-\delta K$
+\end{formula}
+\item Hamiltoniano en valor corriente; $\lambda_t$, \concepto{precio sombra del capital} \vertema{3.A.29}. CPO: $PF_L=W$; $\lambda_t=P^K_t$; capital hasta su coste de uso:
+\funcionclave{P\,F_K(K^*,L)=c_K\equiv P^K\Big(r+\delta-\frac{\dot P^K}{P^K}\Big)}
+\item[] \concepto{Coste de uso}: coste por unidad de tiempo de tener una unidad de capital: oportunidad ($P^Kr$) + depreciación ($P^K\delta$) $-$ ganancia de capital ($\dot P^K$); alquiler implícito (\autor{Hall}-\autor{Jorgenson}, 1967). Cobb-Douglas: $K^*=\alpha PY/c_K$; $I_t=K^*_t-K_{t-1}+\delta K_{t-1}$, con retardos distribuidos.
+\item \emph{Política}: monetaria eficaz (↓$r$ $\Rightarrow$ ↓$c_K$ $\Rightarrow$ ↑$K^*$); fiscal ambigua: gasto con deuda ↑$r$; incentivos (\autor{Hall}-\autor{Jorgenson}, 1967):
+\begin{formula}
+\centering $c_K=P^K(r+\delta)\dfrac{(1-\theta)(1-tz)}{1-t}$
+\end{formula}
+\item[] $z=1$ (amortización inmediata) y $\theta=0$ $\Rightarrow$ impuesto \emph{neutral} \vertema{4.B.10}; solo depreciación económica: $c_K=P^K[r/(1-t)+\delta]$.
+\item $-$ teoría del capital \emph{deseado}, no de la inversión (\autor{Haavelmo}, 1960): si $c_K$ baja de golpe, $I=\infty$ en ese instante; retardos \emph{ad hoc}; solo cuentan las variables de hoy.
+\end{itemize}
+\pareja{jorgenson}{\autor{Jorgenson}: $K^*$ donde $P\,F_K=c_K$}{acelerador-flexible}{Acelerador flexible: $I$ salta y vuelve a 0}
+
+% ==========================================================================
+\bloque[9,5]{II. Costes de ajuste: el modelo de la q\label{rep:II}}
+\begin{ideaclave}
+Con costes de ajuste convexos, la empresa invierte poco a poco y mira al futuro; todo se resume en la \emph{q}, valor de una unidad más de capital instalado: se invierte si $q>1$. Lo duradero mueve más que lo transitorio y una desgravación temporal \emph{adelanta} la inversión.
+\end{ideaclave}
+
+\sub{II.1. El modelo\label{rep:II.1}}
+\begin{itemize}
+\item \concepto{Costes de ajuste internos} (instalar, parar, formar; \autor{Eisner}-\autor{Strotz}, 1963; \autor{Lucas}, 1967; \autor{Gould}, 1968; \autor{Treadway}, 1969), crecientes en el ritmo; \concepto{externos}: la inversión de todos encarece el capital (\autor{Lerner}). \autor{Tobin} (1969): $q$ = valor de mercado / coste de reposición; \autor{Abel} (1982) y \autor{Hayashi} (1982), con \autor{Summers} (1981): $q$ = precio sombra con costes de ajuste. Presentación de \autor{Romer} (cap. 9).
+\item Supuestos: $N$ empresas idénticas, $K=N\kappa$; beneficio $B(K)\kappa$, $B'<0$; $\Phi(0)=\Phi'(0)=0$, $\Phi''>0$ (p.\,ej., $\frac\phi2I^2$: duplicar el ritmo cuadruplica el coste); precio del capital 1, sin depreciación, $r$ constante:
+\begin{formula}
+\centering $\displaystyle\max_{\{I_t\}}\int_0^\infty e^{-rt}\big[B(K)\kappa-I-\Phi({I})\big]dt$\ s.\,a.\ $\dot\kappa=I$
+\end{formula}
+\item Coestado $q_t$ = \concepto{precio sombra del capital} (el $\lambda$ de \autor{Jorgenson}). CPO + transversalidad:
+\funcionclave{q_t=1+\Phi'(I_t),\qquad r\,q_t=B(K_t)+\dot q_t}
+\item[] \emph{1.ª, cuánto se invierte}: $q$ = coste de comprar e instalar; $\dot K=N\Phi'^{-1}(q-1)\equiv f(q)$, $f(1)=0$, $f'>0$; cuadrático: $I=(q-1)/\phi$. $\dot K=0$: horizontal en $q=1$.
+\item[] \emph{2.ª, cuánto vale el capital}: arbitraje, beneficio + revalorización = interés; hacia delante, $q_t=\int_t^\infty e^{-r(s-t)}B(K_s)ds$: valor actual de los beneficios futuros $\Rightarrow$ mira al futuro. $\dot q=0$: $q=B(K)/r$, decreciente.
+\item \emph{Fases}: $E$ con $q=1$, $B(K^*)=r$ (\autor{Jorgenson} con $c_K=r$). \concepto{Punto de silla}: $K$ predeterminada, $q$ salta con las noticias; transversalidad descarta burbujas $\Rightarrow$ \concepto{senda de silla}. Con depreciación: $(r+\delta)q=B+\dot q$. Misma lógica que la «q del trabajo» \vertema{3.A.26}.
+\end{itemize}
+\pareja{coste-ajuste}{Coste de ajuste convexo $\Phi({I})$}{q-fases}{Diagrama de fases: $\dot K=0$, $\dot q=0$, senda de silla}
+
+\sub{II.2. Implicaciones de política\label{rep:II.2}}
+\begin{itemize}
+\item $\dot K=0$ ($q=1$) lo mueven las ayudas a la compra; $\dot q=0$ ($B/r$), la demanda y el tipo. $K$ lento, $q$ salta: permanente, a la nueva senda; temporal, salta menos, lo justo para llegar a la antigua al terminar.
+\item \textbf{↑Demanda} (↑$B$, $\dot q=0$ sube): \emph{permanente}, $q$ salta a $A$, $I$↑ de golpe y vuelve a 0, $E'$ con más $K$: aumento permanente $\Rightarrow$ inversión \emph{temporal}. \emph{Temporal} (hasta $T$): $q$ salta menos, $K$ cae ya antes de $T$, vuelta a $E$.
+\item \textbf{↓$r$}: $\dot q=0$ sube y gira (más inclinado); permanente, como ↑demanda; temporal, menos. Importa toda la senda de tipos (largos, anuncios): \concepto{canal de la q} \vertema{3.A.37}.
+\item \textbf{Desgravación $\theta$}: $q=1-\theta+\Phi'({I})$, $\dot K=0$ baja a $1-\theta$; $\dot q=0$ no cambia. \emph{Permanente}: $q$ \emph{cae} (el capital instalado no se beneficia), pero menos que el umbral $\Rightarrow$ ↑$I$; $E'$ con $B=r(1-\theta)$. \emph{Temporal}: $q$ cae menos $\Rightarrow$ $I$ \emph{mayor} que con la permanente; $q$ sube al acercarse $T$ (se adelanta); al retirarse, $I<0$.
+\item \emph{Lección} (\autor{Abel}, 1982): temporal anima más a CP (adelanta); permanente, más capital a LP; anticíclica si su final es creíble.
+\end{itemize}
+\pareja{q-permanente}{↑Demanda permanente: $q$ salta a $A$, va a $E'$}{q-desgravacion-temporal}{Desgravación temporal hasta $T$}
+
+\sub{II.3. Evidencia y valoración\label{rep:II.3}}
+\begin{itemize}
+\item \concepto{q marginal} (decide, no se observa) vs. \concepto{q media} (\autor{Tobin}): $q^{\mathrm{media}}\equiv V/(P^K\kappa)$. \autor{Hayashi} (1982): coinciden con precio-aceptante y producción y coste de ajuste homogéneos de grado 1, $\Phi=\kappa\varphi(I/\kappa)$:
+\begin{formula}
+\centering $\dfrac{I_t}{\kappa_t}=\dfrac1\phi\,(q_t-1)$
+\end{formula}
+\item \autor{Summers} (1981, EE.\,UU. 1931-78): coeficiente 0,03 $\Rightarrow$ costes de ajuste enormes (65\,\% del capital con $I/K=20$\,\%; >10 años a mitad de camino); sesgo a la baja por \emph{error de medida} y \emph{simultaneidad}. \autor{Cummins}-\autor{Hassett}-\autor{Hubbard} (1994): reformas fiscales como experimento natural, 0,5 y 4\,\%. Mejor la q de bonos (\autor{Philippon}, 2009) o con intangibles (\autor{Peters}-\autor{Taylor}, 2017). \emph{Brecha de inversión} en EE.\,UU. desde 2000 (\autor{Gutiérrez}-\autor{Philippon}, 2017): menos competencia, intangibles, cortoplacismo. El flujo de caja añade poder explicativo.
+\item \emph{+} primera teoría completa: optimización, ajuste gradual, mira al futuro; une bolsa y economía real; distingue permanente y temporal. \emph{$-$} la q de bolsa explica poco (\autor{Blanchard}-\autor{Rhee}-\autor{Summers}, 1993); costes simétricos y convexos (las plantas invierten a saltos); previsión perfecta; financiación sin fricciones $\to$ \hyperref[rep:III]{III}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[10]{III. Incertidumbre, irreversibilidad y financiación\label{rep:III}}
+\begin{ideaclave}
+Buena parte del capital es específico: la inversión es \concepto{irreversible}. Invertir hoy mata la opción de invertir mañana con más información: la incertidumbre retrasa la inversión aunque el VAN sea positivo. Con fricciones financieras, depende de la riqueza de la empresa. La mejor política: menos incertidumbre y fricciones, más que retocar el coste.
+\end{ideaclave}
+
+\sub{III.1. Costes de ajuste asimétricos y fijos\label{rep:III.1}}
+\begin{itemize}
+\item Reventa con descuento (específico; «limones» de \autor{Akerlof} \vertema{3.A.13}) y costes fijos. \concepto{Costes quebrados}: se compra a $1+\phi_c$ y se revende a $1-\phi_d$; $\phi_d=1$, \concepto{totalmente irreversible}. Segunda condición igual; la primera da la \concepto{banda de inacción}:
+\funcionclave{1-\phi_d\ \le\ q\ \le\ 1+\phi_c}
+\item[] Cualquier $K$ con $r(1-\phi_d)\le B(K)\le r(1+\phi_c)$ es equilibrio: depende de la historia. Misma banda que el empleo, en valores \vertema{3.A.26}.
+\item \emph{Fijos} $\Phi_0$: regla $(S,s)$, inversión \emph{a saltos} (\emph{lumpy}), como los duraderos \vertema{3.A.33}.
+\item Cambios pequeños de $r$ o impuestos no mueven a quien está en la banda; respuesta agregada no lineal y dependiente de la historia (\autor{Caballero}-\autor{Engel}, 1999). Evidencia: picos de inversión por planta (\autor{Doms}-\autor{Dunne}, 1998); convexos + fijos + descuento de reventa (\autor{Cooper}-\autor{Haltiwanger}, 2006); unificado (\autor{Abel}-\autor{Eberly}, 1994).
+\end{itemize}
+\graficorepaso[0.62\linewidth]{inversion-banda}{Costes quebrados: $I(q)=0$ en la banda $[1-\phi_d,\,1+\phi_c]$}
+{\centering\scriptsize\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.25\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Costes} & \textbf{Regla} & \textbf{Perturb. permanente} & \textbf{Perturb. transitoria}\\
+\midrule
+Sin costes & $PF_K=c_K$ siempre & salto inmediato y completo & sigue a la perturbación\\
+Fijos $\Phi_0$ & $(S,s)$: si la ganancia supera $\Phi_0$ & salto completo o nada & casi siempre nada\\
+Lineales & banda de inacción & salto hasta el borde & quieto en picos y valles\\
+Asimétricos ($\phi_d>\phi_c$) & banda más ancha al vender & desinvierte menos & invierte y desinvierte menos\\
+Cuadráticos (q) & $q_t=1+\phi I_t$ & gradual; anticipa & amortiguado\\
+\bottomrule
+\end{tabular}\par}
+
+\sub{III.2. Inversión bajo incertidumbre\label{rep:III.2}}
+\begin{itemize}
+\item Costes convexos y \emph{simétricos}, neutral al riesgo, $p$ aleatorio, $K$ antes de conocerlo, $L$ después: $q_t=\mathbb{E}_t[\int e^{-r(s-t)}B_s\,ds]$; $B(p)\propto p^{1/\alpha}$, \emph{convexo} $\Rightarrow$ por \autor{Jensen}, ↑dispersión ↑$\mathbb{E}[B]$, ↑$q$, ↑$I$ (\autor{Hartman}, 1972; \autor{Abel}, 1983): cada máquina, una opción de compra sobre los estados buenos.
+\item \autor{Caballero} (1991): signo según asimetría y competencia; con poder de mercado o rendimientos decrecientes y costes asimétricos, ↓$I$. Si no se puede revender $\to$ opción de esperar.
+\end{itemize}
+
+\sub{III.3. Irreversibilidad: la opción de esperar\label{rep:III.3}}
+\begin{itemize}
+\item \concepto{Opción real}: derecho, no obligación, de pagar un coste hundido $I$ por un proyecto que vale $V$; invertir la extingue, coste de oportunidad que el VAN no ve. \autor{Arrow} (1968), \autor{Henry} (1974), \autor{Bernanke} (1983), \autor{McDonald}-\autor{Siegel} (1986), \autor{Pindyck} (1991), \autor{Dixit}-\autor{Pindyck} (1994).
+\item 2 periodos: $p_0$ hoy; desde el año 1, $p^{\mathrm A}$ ($\pi$) o $p^{\mathrm B}$; $V^{\mathrm A}=p^{\mathrm A}(1+r)/r$; $V_0=p_0+[\pi V^{\mathrm A}+(1-\pi)V^{\mathrm B}]/(1+r)$. Con $V^{\mathrm B}<I<V^{\mathrm A}$, se invierte hoy solo si:
+\funcionclave{V_0-I\ \ge\ \frac{\pi\,(V^{\mathrm A}-I)}{1+r}}
+\item[] No basta $V_0\ge I$: hay que cubrir la opción. «No por mucho madrugar amanece más temprano».
+\item \concepto{Principio de las malas noticias} (\autor{Bernanke}, 1983):
+\begin{formula}
+\centering $\mathrm{VAN}_0-\mathrm{VAN}_{\mathrm{esp}}=\Big[p_0-\dfrac{rI}{1+r}\Big]-\dfrac{(1-\pi)(I-V^{\mathrm B})}{1+r}$
+\end{formula}
+\item[] coste de esperar menos pérdida evitada; $V^{\mathrm A}$ no aparece.
+\item \emph{Ejemplo} (\autor{Pindyck}): $I=1.600$, $p_0=200$, 300 o 100 ($\pi=0{,}5$), $r=10$\,\%: $V_0=2.200$, $\mathrm{VAN}_0=600$; esperar $\approx773$ (+173): esperar cuesta $\approx55$ y evita $\approx227$; invertir hoy solo si $I\le1.283$. Con 350 o 50: esperar $\approx1.023$.
+\item \emph{Continuo} (browniano geométrico, $\sigma$): $O(V)$ convexa, tangente a $V-I$ en
+\begin{formula}
+\centering $V^*=\dfrac{\beta_1}{\beta_1-1}\,I>I$,\quad $\beta_1>1$, ↓ con $\sigma$
+\end{formula}
+\item[] Con $\alpha_V=0$, $r=4$\,\%, $\sigma=0{,}2$: $\beta_1=2$, $V^*=2I$ (\autor{McDonald}-\autor{Siegel}).
+\item \emph{Implicaciones}: fallan VAN y \autor{Jorgenson}; ↑incertidumbre, ↑espera; con incertidumbre alta, ↓$r$ mueve poco. \emph{Extensiones}: ampliar, abandonar, por fases (opción americana \vertema{3.B.25}); competencia acelera; duraderos \vertema{3.A.33}; \concepto{histéresis} de entrada y salida (\autor{Dixit}, 1989; dólar, \autor{Baldwin}-\autor{Krugman}, 1989).
+\end{itemize}
+\pareja{opcion-esperar}{Opción de invertir $O(V)$ y umbral $V^*>I$}{epu-espana}{Incertidumbre de política, España (BdE)}
+\begin{itemize}
+\item \emph{Evidencia}: \autor{Guiso}-\autor{Parigi} (1999); \emph{esperar y ver}, caída, rebote y exceso (\autor{Bloom}, 2009); \emph{efecto cautela} (\autor{Bloom}-\autor{Bond}-\autor{Van Reenen}, 2007); índice EPU de prensa (\autor{Baker}-\autor{Bloom}-\autor{Davis}, 2016); años electorales, $-$4,8\,\% (\autor{Julio}-\autor{Yook}, 2012). España: ↑EPU ↓PIB, consumo e inversión (\autor{Ghirelli}-\autor{Pérez}-\autor{Urtasun}, 2019); máximos mayo 2020 y junio 2012; abril 2025, 212.
+\item $-$ equilibrio parcial; riesgo, no incertidumbre de \autor{Knight}; efecto ambiguo a LP (\autor{Abel}-\autor{Eberly}, 1999); causalidad difícil.
+\end{itemize}
+
+\sub{III.4. Mercados financieros e inversión\label{rep:III.4}}
+\begin{itemize}
+\item \autor{Modigliani}-\autor{Miller} (1958): con mercados perfectos, financiación irrelevante \vertema{3.B.3}. Con información asimétrica: \concepto{jerarquía financiera} (\autor{Myers}-\autor{Majluf}, 1984; \autor{Myers}, 1984): beneficios retenidos $\to$ deuda $\to$ acciones; racionamiento del crédito \vertema{3.A.13}.
+\item \concepto{Prima de financiación externa}: hasta la riqueza neta RN al coste $r$; después, prima creciente: \emph{más RN, más inversión} con $q$ dada. «Dinero llama a dinero».
+\end{itemize}
+\graficorepaso[0.6\linewidth]{coste-fondos}{Riqueza neta, coste de los fondos e inversión}
+\begin{itemize}
+\item Evidencia: \autor{Fazzari}-\autor{Hubbard}-\autor{Petersen} (1988), sensibilidad al flujo de caja 0,46 vs. 0,23; críticas \autor{Kaplan}-\autor{Zingales} (1997), \autor{Erickson}-\autor{Whited} (2000); petroleras (\autor{Lamont}, 1997).
+\item \concepto{Acelerador financiero} (\autor{Bernanke}-\autor{Gertler}, 1989; BGG, 1999): ↓$q$ $\Rightarrow$ ↓RN $\Rightarrow$ ↑prima $\Rightarrow$ ↓$I$ $\Rightarrow$ ↓$q$:
+\begin{formula}
+\centering $\mathbb{E}_t[R^K_{t+1}]=s\Big(\dfrac{\mathrm{RN}_{t+1}}{q_tK_{t+1}}\Big)R_{t+1},\quad s'<0$
+\end{formula}
+\item[] Garantías (\autor{Kiyotaki}-\autor{Moore}, 1997); pymes y canal del crédito (\autor{Gertler}-\autor{Gilchrist}, 1994) \vertema{3.A.37}, ciclo financiero \vertema{3.A.42}.
+\end{itemize}
+
+\sub{III.5. Síntesis de política económica\label{rep:III.5}}
+\begin{itemize}
+\item \emph{Estabilidad y credibilidad antes que incentivos}: la incertidumbre sobre impuestos, tipos o regulación pesa más que su nivel (\autor{Pindyck}, 1991); reforma que se cree reversible = impuesto a la inversión (\autor{Rodrik}, 1991).
+\item \emph{Temporales y permanentes}: amortización acelerada de EE.\,UU. 2001-04 y 2008-10 (\autor{House}-\autor{Shapiro}, 2008; \autor{Zwick}-\autor{Mahon}, 2017), sobre todo pymes; solo con final creíble.
+\item \emph{Monetaria}: coste de uso, q y crédito; débil con incertidumbre alta $\Rightarrow$ guiar expectativas. \emph{Fiscal}: sociedades neutral con deducción inmediata \vertema{4.B.10}; inversión pública \vertema{3.A.38}. \emph{Financiera}: avales y liquidez (pandemia) para que lo pasajero no destruya capital; macroprudencial.
+\end{itemize}
+{\centering\scriptsize\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.19\linewidth}>{\raggedright\arraybackslash}p{0.19\linewidth}>{\raggedright\arraybackslash}p{0.19\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Teoría} & \textbf{Depende de} & \textbf{Monetaria} & \textbf{Fiscal} & \textbf{Mensaje}\\
+\midrule
+\autor{Keynes} & \emph{animal spirits} & poco eficaz & eficaz (inv. pública) & confianza\\
+Acelerador & $\Delta Y$ & nula & eficaz & demanda\\
+\autor{Jorgenson} & $c_K$ & eficaz & ambigua & neutralidad\\
+q & $q$ esperada & eficaz si dura & temporales adelantan & anuncios creíbles\\
+Irreversibilidad & valor de esperar & débil & solo si creíble & estabilidad\\
+Financieras & RN & amplificada & liquidez, avales & estab. financiera\\
+\bottomrule
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: de funciones \emph{ad hoc} (\autor{Keynes}, acelerador) a $c_K$ de \autor{Jorgenson} y a la q (costes de ajuste, mira al futuro); con irreversibilidad e incertidumbre, esperar tiene valor; con fricciones, cuenta la riqueza.
+\item \textbf{Relevancia}: demanda hoy, capacidad mañana; el componente más volátil y PIB potencial \vertema{3.A.43}.
+\item \textbf{Extensiones}: DSGE con coste sobre $I_t/I_{t-1}$, joroba (\autor{Christiano}-\autor{Eichenbaum}-\autor{Evans}, 2005; \autor{Smets}-\autor{Wouters}, 2007) \vertema{3.A.7}; empleo \vertema{3.A.26}, duraderos \vertema{3.A.33}, capital humano \vertema{3.A.25}; intangibles (\autor{Haskel}-\autor{Westlake}, 2017); \vertema{3.B.2} \vertema{3.B.3}.
+\item \textbf{Opinión}: transición energética y digital: inversiones grandes e irreversibles; más que subvenciones, senda estable y creíble de precios del carbono y regulación.
+\item \textbf{Idea final}: «antes de que te cases, mira lo que haces»: sin marcha atrás, esperar es racional y el dinero barato no basta; la política no elimina la incertidumbre, pero puede dejar de añadirla.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1917}{\autor{Clark}: principio de aceleración}
+\hito{1921}{\autor{Knight}: riesgo e incertidumbre}
+\hito{1936}{\autor{Keynes}: EMgK, \emph{animal spirits}; 1937, la incertidumbre}
+\hito{1939}{\autor{Samuelson}: multiplicador-acelerador}
+\hito{1952}{\autor{Chenery}: ajuste parcial; 1954, \autor{Koyck}}
+\hito{1953}{\autor{Lerner}: eficiencia marginal de la inversión}
+\hito{1958}{\autor{Modigliani}-\autor{Miller}: irrelevancia}
+\hito{1960}{\autor{Haavelmo}: capital deseado $\neq$ inversión}
+\hito{1963}{\autor{Jorgenson}: coste de uso; \autor{Eisner}-\autor{Strotz}}
+\hito{1967}{\autor{Hall}-\autor{Jorgenson}: impuestos; \autor{Lucas}: costes de ajuste}
+\hito{1969}{\autor{Tobin}: la q}
+\hito{1972}{\autor{Hartman} (y \autor{Abel}, 1983): incertidumbre ↑$I$}
+\hito{1981}{\autor{Summers}: q y fiscalidad}
+\hito{1982}{\autor{Abel}; \autor{Hayashi}: q media = marginal}
+\hito{1983}{\autor{Bernanke}: irreversibilidad, malas noticias}
+\hito{1984}{\autor{Myers}-\autor{Majluf}: jerarquía financiera}
+\hito{1986}{\autor{McDonald}-\autor{Siegel}: $V^*=2I$}
+\hito{1988}{\autor{Fazzari}-\autor{Hubbard}-\autor{Petersen}: flujo de caja}
+\hito{1989}{\autor{Bernanke}-\autor{Gertler}: acelerador financiero; \autor{Dixit}: histéresis}
+\hito{1991}{\autor{Pindyck}; \autor{Caballero}: signo; \autor{Rodrik}}
+\hito{1994}{\autor{Dixit}-\autor{Pindyck}; \autor{Abel}-\autor{Eberly}; \autor{Cummins} et al.}
+\hito{1997}{\autor{Kaplan}-\autor{Zingales}; \autor{Kiyotaki}-\autor{Moore}}
+\hito{1999}{BGG; \autor{Caballero}-\autor{Engel}}
+\hito{2006}{\autor{Cooper}-\autor{Haltiwanger}: convexos + fijos + reventa}
+\hito{2009}{\autor{Bloom}: esperar y ver}
+\hito{2016}{\autor{Baker}-\autor{Bloom}-\autor{Davis}: índice EPU}
+\hito{2017}{\autor{Gutiérrez}-\autor{Philippon}: brecha; \autor{Zwick}-\autor{Mahon}}
+\hito{2019}{\autor{Ghirelli}-\autor{Pérez}-\autor{Urtasun}: EPU de España}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item FBCF: \dato{21,0\,\% del PIB}{INE, 2025}; ZE \dato{21,3\,\%}{Eurostat}; máx. 30,0\,\% (2006), mín. 17,6\,\% (2013).
+\item Volatilidad: desv. típica \dato{6,6 vs. 2,3 puntos del PIB}{INE, 1996-2019}; 2T 2009 \dato{$-$20,3\,\%}{INE}.
+\item Composición: maquinaria y equipo \dato{26,8\,\% de la FBCF}{INE, 2025}; propiedad intelectual \dato{19,7\,\%}{INE}; no residencial \dato{71,9\,\%}{INE}.
+\item Incertidumbre de política, España: \dato{+77\,\% sobre su media en 2025}{BdE}; abril 2025, 212.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué \autor{Jorgenson} no es una teoría de la inversión?} Da $K^*$, no la senda: sin costes de ajuste, un salto de $c_K$ exige $I=\infty$ (\autor{Haavelmo}); retardos \emph{ad hoc}.
+\item \textbf{¿Qué es la q y cuándo coincide la media con la marginal?} Valor actual de los beneficios de una unidad más de capital; con precio-aceptante y homogeneidad de grado 1 (\autor{Hayashi}, 1982).
+\item \textbf{¿Por qué una desgravación temporal estimula más que una permanente?} La $q$ cae menos y las empresas adelantan la inversión antes de $T$; la permanente da más capital a LP.
+\item \textbf{¿La incertidumbre aumenta o reduce la inversión?} Con costes simétricos y $B$ convexo, la aumenta (\autor{Hartman}-\autor{Abel}); con irreversibilidad, la retrasa (opción de esperar).
+\item \textbf{¿Por qué no basta un VAN positivo?} Hay que cubrir el valor de la opción de esperar: $V^*=\frac{\beta_1}{\beta_1-1}I>I$.
+\item \textbf{¿Por qué la incertidumbre debilita la política monetaria?} Con irreversibilidad, el obstáculo es el valor de esperar, no el coste del capital; empresas dentro de la banda no responden: mejor guiar expectativas.
+\item \textbf{¿Qué es el acelerador financiero?} ↓RN $\Rightarrow$ ↑prima externa $\Rightarrow$ ↓$I$ $\Rightarrow$ ↓$q$ y RN (BGG, 1999); canal del crédito.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item FBCF: sin existencias ni objetos valiosos (son formación bruta de capital); la vivienda es FBCF pero no inversión productiva.
+\item Acelerador flexible: $\sum\beta_j=1$, no 0; $1/(1-c-v)$ solo de impacto y si $c+v<1$.
+\item $c_K$: la revalorización del capital lo \emph{baja} (signo $-$); impuesto neutral con amortización inmediata ($z=1$).
+\item $\dot K=0$ en $q=1$ (horizontal); $\dot q=0$ en $q=B(K)/r$; la desgravación mueve $\dot K=0$, no $\dot q=0$.
+\item Desgravación permanente: $q$ \emph{cae}, pero la inversión sube.
+\item Incertidumbre con costes simétricos: puede \emph{aumentar} $I$; con irreversibilidad, la frena; $V^*$ crece con $\sigma$.
+\item q media (bolsa, $V/P^K\kappa$) $\neq$ q marginal (decide) salvo \autor{Hayashi}; \autor{Summers}: coeficiente 0,03, sesgado a la baja.
+\item Opción de esperar: lo que frena es la posibilidad de \emph{malas} noticias ($V^{\mathrm A}$ no entra).
+\item $\Phi'^{-1}$ es la inversa del coste marginal, no $1/\Phi'$.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
