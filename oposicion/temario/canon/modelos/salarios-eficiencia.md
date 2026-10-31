@@ -1,7 +1,7 @@
 # Salarios de eficiencia (Solow, 1979; Shapiro y Stiglitz, 1984)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.27** (determinación de salarios; revisado el 31/10/2026, bloque II `sec:eficiencia`: idea, Solow y Shapiro y Stiglitz con a)-e), y anexo C `anexo:shapiro-stiglitz`) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.27 (desarrollo; hecho, 31/10/2026), 3.A.7 (resumen: rigidez real de la NEK; hoy desarrollo con el texto antiguo del 3.A.27 y sus errores), 3.A.13 (mención; hecho, 19/10/2026: aplicación macro del riesgo moral, con la IC llamada allí condición de no escaqueo, sin sigla; ficha `principal-agente`), 3.A.28 (mención: la CNE como otra curva WS, decreciente en el paro; ficha `nairu-layard-nickell`).
+- **Temas que lo usan:** 3.A.27 (desarrollo; hecho, 31/10/2026), 3.A.7 (resumen: rigidez real de la NEK; hoy desarrollo con el texto antiguo del 3.A.27 y sus errores), 3.A.13 (mención; hecho, 19/10/2026: aplicación macro del riesgo moral, con la IC llamada allí condición de no escaqueo, sin sigla; ficha `principal-agente`), 3.A.28 (mención; hecho, 31/10/2026: III.2, la CNE de Shapiro y Stiglitz como otra curva WS, decreciente en el paro, «el paro es lo que disciplina a los trabajadores»; ficha `nairu-layard-nickell`).
 - **Manuales de referencia:** Solow (1979), *Journal of Macroeconomics*; Shapiro y Stiglitz (1984), *AER*; Akerlof y Yellen (1986), *Efficiency Wage Models of the Labor Market*; Romer (2019), cap. 11; Cahuc, Carcillo y Zylberberg (2014), cap. 6.
 - **Decisión D008 (13/10/2026):** ¿Se reserva δ para la tasa de depreciación y se cambian sus otros usos? Sí: pendiente de la NKPC κ, tasa de separación s (DMP y Shapiro-Stiglitz) y tasa social de descuento r_s (4.B.6); δ solo depreciación (y el factor exponencial del modelo β-δ de Laibson)
 - **Sigla (A27-07, DK5 del 3.A.27; [decidir]):** **CNE**, condición de no escaqueo, en castellano (§ 0 de `notacion.md`), con *no-shirking condition* la primera vez; se retira NSC. El 3.A.13 la nombra sin sigla y no tiene que cambiar.
@@ -29,11 +29,11 @@ Pregunta: ¿por qué las empresas pagan por encima del salario que vacía el mer
 | 3.A.27 | Determinación de salarios | desarrollo (hecho, 31/10/2026) | Idea con los 5 motivos; Solow con la condición recuadrada y Summers en una frase; Shapiro y Stiglitz con los 3 estados, las 3 ecuaciones de valor, la CNE como IC y el gráfico por capas; evidencia y críticas; derivaciones en el anexo C | — |
 | 3.A.7 | Rigidez real del salario en la NEK | resumen | Condición de Solow (con $w/e(w)$) y el paro como disciplina (CNE en una frase, como IC), como rigidez real que amplifica las nominales (Ball y Romer, 1990); `\vertema{3.A.27}` | La derivación de la CNE y los 4 gráficos que tiene hoy |
 | 3.A.13 | Riesgo moral | mención (hecho, 19/10/2026) | Aplicación macro del riesgo moral, solución de la agencia (pagos diferidos y salarios de eficiencia); la condición de no escaqueo es la **IC** del principal-agente; remite a 3.A.27 y 3.A.7 | La CNE |
-| 3.A.28 | Tasa natural y NAIRU | mención | La CNE como una curva de fijación de salarios decreciente en el paro (otra WS); `\vertema{3.A.27}` | El modelo |
+| 3.A.28 | Tasa natural y NAIRU | mención (hecho, 31/10/2026) | La CNE como una curva de fijación de salarios decreciente en el paro (otra WS); `\vertema{3.A.27}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.27 original: «teorías sociológicas (Akerlof)» para el escaqueo, rotación de «Milgram», $e(w)/w$ y $\varepsilon_{w,e}$, la demanda sin la prima ($\overline e F(\overline e L)=w$), $b$ para la separación, $a$ para la tasa de encontrar empleo, $N$ para las empresas, «condición de incentivos». **Resuelto** en la revisión (31/10/2026) con $s$, $f$, $J$, $w/e(w)$, $\varepsilon_{e,w}$, IC y CNE.
 - 3.A.7 (sin revisar): desarrolla Solow y Shapiro y Stiglitz (con $b$, $N$ y 4 gráficos) con el texto antiguo del 3.A.27 y sus errores ($e(w)/w$, «teorías sociológicas»): al revisarlo, resumen con esta notación y remisión al 3.A.27 (`mapa.yaml`, contradicciones del 3.A.27).
-- 3.A.28 (sin revisar): «menciona de pasada» los modelos del 3.A.27 con SRN; al revisarlo, la CNE como WS con remisión.
+- 3.A.28: «mencionaba de pasada» los modelos del 3.A.27 con SRN. **Resuelto** (31/10/2026): la CNE como WS con remisión.
 
 Autor: Víctor Gutiérrez Marcos

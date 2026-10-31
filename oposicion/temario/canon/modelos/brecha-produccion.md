@@ -1,7 +1,7 @@
 # Brecha de producción y PIB potencial (*output gap*)
 
 - **Área:** macro-cerrada · **Tema de referencia:** doble, **3.A.42** (3.er ejercicio: medición del ciclo, tendencia y filtro de Hodrick-Prescott) y **4.B.4** (4.º ejercicio: PIB potencial por función de producción de la Comisión, NAWRU y saldo cíclico) — cada uno completo para su examen. Recoge el id `pib-potencial-ce` (alias).
-- **Temas que lo usan:** 3.A.42 (desarrollo, previsto), 4.B.4 (desarrollo), 3.A.28 (mención: producto no aceleracionista asociado a la NAIRU), 3.A.36 (resumen: la brecha en la regla de Taylor), 3.A.7 y 3.A.37 (uso, en logaritmos: $x_t$), 4.B.21 y 4.A.29 (mención), 1D01 (uso: definición operativa, signo, variación y potencial implícito; II.2, anexos A y E)
+- **Temas que lo usan:** 3.A.42 (desarrollo, previsto), 4.B.4 (desarrollo), 3.A.28 (mención; hecho, 31/10/2026: II.1.3, $\mathrm{OG}_t$ en % del potencial $Y^p$ en la ley de Okun en brechas, `eq:okun`, y la Phillips en producción $\pi_t=\pi^e_t+a\vartheta'\mathrm{OG}_t+\varepsilon_t$; III.3 d), la NAIRU como referencia de la Comisión, `\vertema{3.A.42}`), 3.A.36 (resumen: la brecha en la regla de Taylor), 3.A.7 y 3.A.37 (uso, en logaritmos: $x_t$), 4.B.21 y 4.A.29 (mención), 1D01 (uso: definición operativa, signo, variación y potencial implícito; II.2, anexos A y E)
 - **Manuales de referencia:** Havik et al. (2014), *The Production Function Methodology for Calculating Potential Growth Rates and Output Gaps*, European Economy EP 535; Hodrick y Prescott (1997); Blanchard, *Macroeconomics*, caps. 9 y 22; FMI, glosario del *World Economic Outlook*; Galí (2015), cap. 3 (brecha frente al producto natural).
 - **Decisión D-05 de la 1D01 (Víctor, 23/10/2026):** el PIB potencial es $Y^p$; $Y^*$ queda para el resto del mundo (§ 0).
 
@@ -23,7 +23,7 @@ $$\mathrm{OG}_t\equiv\frac{Y_t-Y^p_t}{Y^p_t}\times100,\qquad \Delta\mathrm{OG}_t
 | 3.A.42 | Medición del ciclo | Desarrollo | Tendencia y ciclo, filtro HP (λ = 1600 trimestral), problemas de final de muestra; brecha como medida del ciclo | La función de producción de la Comisión (4.B.4) |
 | 4.B.4 | Saldo cíclico y estructural | Desarrollo | Función de producción, NAWRU, PTF tendencial, revisiones; $b^c=\varepsilon\cdot\mathrm{OG}$ | El filtro en detalle (remitir a 3.A.42) |
 | 3.A.36 | Diseño de la política monetaria | Resumen | La brecha en la regla de Taylor ($x_t$ o OG) | La estimación |
-| 3.A.28 | NAIRU | Mención | Potencial = producto con paro en la NAIRU | — |
+| 3.A.28 | NAIRU y Okun | mención (hecho, 31/10/2026) | Potencial = producto con paro en la NAIRU; $\mathrm{OG}_t$ en la ley de Okun en brechas (ficha `okun`) | La estimación del potencial |
 | 1D01 | Dictamen de coyuntura | Uso | Definición, signo, ΔOG, potencial implícito, cautelas; tabla de indicadores | Los métodos en detalle |
 
 ## Divergencias encontradas en el temario actual

@@ -1,0 +1,59 @@
+% El mercado de trabajo keynesiano ante un shock contractivo de demanda
+% (Keynes, 1936, cap. 2). Panel a, mercado de trabajo con el salario NOMINAL
+% en el eje vertical (las mismas curvas que equilibrio-trabajo.tex):
+%   demanda  W = P_0 PMg_L = 8 - L/2;  con P_1 = 0,85 P_0:  W = 6,8 - 0,425 L
+%   oferta   W = 1 + L
+%   E_0 = (14/3, 17/3); con W_0 rígido: L_1 = (6,8 - 17/3)/0,425 = 8/3
+% Panel b, mercado de bienes:
+%   OA = 0,5 + 0,9 Y hasta Y_F = 7 (recursos ociosos) y vertical en Y_F
+%   DA_0: P = 9,5 - 0,9 Y -> (Y_0, P_0) = (5; 5)
+%   DA_1: P = 7,7 - 0,9 Y -> (Y_1, P_1) = (4; 4,1)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.5cm,
+    declare function={dem(\l)=8-0.5*\l; demb(\l)=6.8-0.425*\l; of(\l)=1+\l;
+      oa(\y)=0.5+0.9*\y; da(\y)=9.5-0.9*\y; dab(\y)=7.7-0.9*\y;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-3.6) rectangle (22.4,11.2);
+  % 1: ejes de los 2 paneles
+  \capa{1}{\ejes{$L$}{$W$}{8.4}{9.8}}
+  \capa{1}{\node[etiqueta, font=\small\itshape, anchor=south] at (4.2,10.4) {a) Mercado de trabajo};}
+  \begin{scope}[xshift=10.2cm]
+    \capa{1}{\ejes{$Y$}{$P$}{8.6}{9.8}}
+    \capa{1}{\node[etiqueta, font=\small\itshape, anchor=south] at (4.3,10.4) {b) Mercado de bienes};}
+    % 2: panel b, oferta agregada keynesiana, DA_0 y el equilibrio (Y_0, P_0)
+    \capa{2}{\draw[curva2] plot[domain=0.3:7] (\x,{oa(\x)}) -- (7,9.4) node[etiqueta, above, text=tceeazul] {$\mathit{OA}$};}
+    \capa{2}{\node[etiqueta, text=tceeazul, anchor=north west] at (2.6,{oa(2.6)-0.3}) {recursos ociosos};}
+    \capa{2}{\node[etiqueta, text=tceeazul, anchor=west] at (7.1,8.2) {pleno empleo};}
+    \capa{2}{\draw[guia] (7,{oa(7)}) -- (7,0) node[below, text=black] {$Y_F$};}
+    \capa{2}{\draw[curva1] plot[domain=0.6:8.2] (\x,{da(\x)}) node[etiqueta, right, text=tceemorado] {$\mathit{DA}_0$};}
+    \capa{2}{\node[punto] (F0) at (5,5) {};}
+    \capa{2}{\draw[guia] (0,5) node[left, text=black] {$P_0$} -| (5,0) node[below, text=black] {$Y_0$};}
+  \end{scope}
+  % 3: panel a, demanda y oferta de trabajo y el equilibrio E_0 con W_0
+  \capa{3}{\draw[curva1] plot[domain=0:7.6] (\x,{dem(\x)}) node[etiqueta, right, text=tceemorado] {$P_0\cdot\mathrm{PMg}_L$};}
+  \capa{3}{\draw[curva2] plot[domain=0:7.2] (\x,{of(\x)}) node[etiqueta, right, text=tceeazul] {$L^S$};}
+  \capa{3}{\node[punto] (E0) at ({14/3},{17/3}) {};}
+  \capa{3}{\node[etiqueta, above right=0pt and 1pt] at (E0) {$E_0$};}
+  \capa{3}{\draw[guia] (0,{17/3}) node[left, text=black] {$W_0$} -| ({14/3},0) node[below, text=black] {$L_0$};}
+  \begin{scope}[xshift=10.2cm]
+    % 4: panel b, la demanda agregada cae a DA_1: Y_1 y P_1
+    \capa{4}{\draw[curvanueva, desplazada] plot[domain=0:7.8] (\x,{dab(\x)}) node[etiqueta, right, text=tceerojo] {$\mathit{DA}_1$};}
+    \capa{4}{\draw[flecha] (6.2,{da(6.2)-0.25}) -- (5.5,{dab(5.5)+0.35});}
+    \capa{4}{\node[punto] (F1) at (4,4.1) {};}
+    \capa{4}{\draw[guia] (0,4.1) node[left, text=black] {$P_1$} -| (4,0) node[below, text=black] {$Y_1$};}
+  \end{scope}
+  % 5: panel a, la demanda de trabajo baja con P_1 y W_0 no baja
+  \capa{5}{\draw[curvanueva, desplazada] plot[domain=0:7.6] (\x,{demb(\x)}) node[etiqueta, right, text=tceerojo] {$P_1\cdot\mathrm{PMg}_L$};}
+  \capa{5}{\draw[flecha] (1.2,{dem(1.2)-0.25}) -- (1.2,{demb(1.2)+0.25});}
+  \capa{5}{\draw[curva4, dashed] (0,{17/3}) -- (7.6,{17/3}) node[etiqueta, right, text=tceedorado, align=left] {$W_0$ rígido\\a la baja};}
+  % 6: panel a, el empleo cae a L_1 (E_1) y la diferencia con L_0 es paro involuntario
+  \capa{6}{\node[punto] (E1) at ({8/3},{17/3}) {};}
+  \capa{6}{\node[etiqueta, above left=0pt and 1pt] at (E1) {$E_1$};}
+  \capa{6}{\draw[guia] (E1) -- ({8/3},0) node[below, text=black] {$L_1$};}
+  \capa{6}{\draw[decorate, decoration={brace, amplitude=4pt, mirror}, thick, tceerojo] ({8/3},-1.5) -- ({14/3},-1.5)
+      node[midway, below=4pt, etiqueta, font=\footnotesize, text=tceerojo] {paro involuntario};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,49 @@
+% Tasa natural y NAIRU en el plano (L, W/P) (Carlin y Soskice, 2015): población
+% activa Lbar, oferta competitiva L^S, WS creciente en el empleo y por encima de
+% L^S, y PS horizontal. Rehace el gráfico del anexo 1 del original (image16)
+% sin el rótulo «paro keynesiano» (el paro involuntario de equilibrio no se
+% debe a la falta de demanda).
+%   Lbar = 8,4;  WS:  w = 1 + 0,3 L + 0,5 L/(8,4 - L)  (vertical en Lbar)
+%   L^S: w = -0,2 + 0,508 L;  PS: w = 3
+%   E: L^n = 4,6249 (WS = 3);  PS con L^S: L^S_0 = 6,3
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm,y=0.85cm,
+    declare function={ws(\l)=1+0.3*\l+0.5*\l/(8.4-\l); ls(\l)=-0.2+0.508*\l;}]
+  \def\Ln{4.6249}\def\Ls{6.3}\def\Lb{8.4}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.6,-3.3) rectangle (10.4,7.4);
+  % 1: ejes (L, W/P)
+  \capa{1}{\ejes{$L$}{$W/P$}{9.6}{7.2}}
+  % 2: la población activa
+  \capa{2}{\draw[thick, dashed] (\Lb,0) -- (\Lb,7);}
+  \capa{2}{\node[etiqueta, below] at (\Lb,0) {$\overline L$};}
+  % 3: la oferta competitiva de trabajo
+  \capa{3}{\draw[curva3] plot[domain=1:7.9, samples=2] (\x,{ls(\x)})
+      node[etiqueta, above left=0pt and 0pt, text=tceeverde] {$L^S$};}
+  % 4: la WS, por encima de L^S y vertical al acercarse a Lbar
+  \capa{4}{\draw[curva1] plot[domain=0.3:7.38, samples=80, smooth] (\x,{ws(\x)})
+      node[etiqueta, left, text=tceemorado] {WS};}
+  % 5: la PS y su cota
+  \capa{5}{\draw[curva2] (0,3) node[left, text=black] {$\dfrac{\mathrm{PAT}}{1+\mu}$} -- (9.2,3)
+      node[etiqueta, above, text=tceeazul] {PS};}
+  % 6: el equilibrio E con L^n, y lo que se ofrecería a ese salario, L^S_0
+  \capa{6}{\node[punto] (E) at (\Ln,3) {};}
+  \capa{6}{\node[etiqueta, above left=0pt and 0pt] at (E) {$E$};}
+  \capa{6}{\draw[guia] (E) -- (\Ln,0) node[below, text=black] {$L^n$};}
+  \capa{6}{\node[punto] (S) at (\Ls,3) {};}
+  \capa{6}{\draw[guia] (S) -- (\Ls,0) node[below, text=black] {$L^S_0$};}
+  % 7: llaves y rótulos
+  \capa{7}{\draw[decorate, decoration={brace, mirror, amplitude=4pt}, thick]
+      (\Ln,-0.75) -- (\Ls,-0.75) node[midway, below=5pt, align=center, font=\footnotesize]
+      {paro\\involuntario\\de equilibrio};}
+  \capa{7}{\draw[decorate, decoration={brace, mirror, amplitude=4pt}, thick]
+      (\Ls,-0.75) -- (\Lb,-0.75) node[midway, below=5pt, align=center, font=\footnotesize]
+      {paro\\voluntario};}
+  \capa{7}{\draw[decorate, decoration={brace, mirror, amplitude=5pt}, thick]
+      (\Ln,-2.45) -- (\Lb,-2.45) node[midway, below=6pt, font=\footnotesize]
+      {$U^n\,\overline L$ parados (número, no tasa)};}
+\end{tikzpicture}
+\end{document}

@@ -1,43 +1,50 @@
 # Curva de Phillips: original, Lipsey, Samuelson-Solow y aumentada con expectativas (Friedman-Phelps)
 
-- **Área:** macro cerrada · **Tema de referencia:** 3.A.28 (La tasa natural de paro y la NAIRU) — la curva aumentada y la tasa natural son el título.
-- **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.5 (resumen: la Phillips como pieza de la síntesis y la crítica monetarista; hoy mención con epígrafe vacío), 3.A.4 (hoy desarrollo de la historia de la curva, que pasa a 3.A.5), 3.A.37 (resumen), 3.A.41 (resumen: inflación de demanda y de costes). La NKPC está en `nek-3-ecuaciones`, 1D01 (uso: III.1 (2021-P2: Okun y Phillips)).
-- **Manuales de referencia:** Phillips (1958), *Economica*; Lipsey (1960); Samuelson y Solow (1960), *AER*; Friedman (1968), *AER*; Phelps (1967, 1968); Romer (2019), cap. 6; Blanchard, *Macroeconomics*, cap. 8; Gordon (1997) para el triángulo.
+- **Área:** macro cerrada · **Tema de referencia:** **3.A.28** (La tasa natural de paro y la NAIRU; revisado el 31/10/2026: II.1.2 `sec:phillips-original` con a)-d), II.2 `sec:monetarista` y la versión con histéresis en III.4) — la curva aumentada y la tasa natural son el título.
+- **Temas que lo usan:** 3.A.28 (desarrollo; hecho, 31/10/2026), 3.A.5 (resumen: la Phillips como pieza de la síntesis y la crítica monetarista; hoy mención con epígrafe vacío), 3.A.4 (hoy desarrollo de la historia de la curva con el texto viejo del 3.A.28, que pasa a 3.A.5: como mucho, mención), 3.A.37 (mención), 3.A.41 (resumen: inflación de demanda y de costes), 3.A.36 (mención: la Phillips de Kydland-Prescott y Barro-Gordon, ya con α = 1/a), 1D01 (uso: III.1, 2021-P2: Okun y Phillips). La NKPC está en `nek-3-ecuaciones`.
+- **Manuales de referencia:** Phillips (1958), *Economica*, pp. 290 y 299 (`Phillips1958`); Fisher (1926, reeditado en 1973 como «I Discovered the Phillips Curve»); Lipsey (1960); Samuelson y Solow (1960), *AER*, p. 192, fig. 2; Phelps (1967, 1968); Friedman (1968), *AER*, p. 8; Romer (2019), cap. 6; Blanchard, *Macroeconomics*, cap. 8; Carlin y Soskice (2015); De Vroey (2016), pp. 42-43; Gordon (1997) para el triángulo.
 - **Decisión D031 (13/10/2026):** ¿Se deshace el cruce de contenidos entre los Word de 3.A.4 y 3.A.5? Sí: IS-LM y la curva de Phillips (síntesis) a 3.A.5 (Phillips en resumen; desarrollo en 3.A.28); el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud) a 3.A.4
 - **Decisión D060 (13/10/2026):** ¿Qué letra lleva la pendiente de la curva de Phillips ampliada π_t = π^e_t − a(U_t − U^n)? a (y α = 1/a en Barro-Gordon)
 
-## Presentación de referencia
+## Presentación de referencia (3.A.28, II.1.2, II.2 y III.4)
 
 **Pregunta:** ¿existe una relación estable entre inflación y paro que la política pueda explotar?
 
 **Secuencia y ecuaciones:**
 
-1. Phillips (1958): relación empírica entre crecimiento de los salarios nominales y paro (Reino Unido 1861-1957), ln(ΔW/W + 0,9) = 0,984 − 1,394 ln U.
-2. Lipsey (1960): fundamento de exceso de demanda, ΔW/W = f[(L^D − L^S)/L^S] y, con el paro como aproximación, ΔW/W = f(U), f' < 0.
-3. Samuelson y Solow (1960): versión en precios con margen constante, π_t = π̄ − a U_t: «menú» de política estable entre inflación y paro.
-4. Friedman (1968) y Phelps (1967): curva **aumentada con expectativas**
+1. **Phillips (1958)**: regularidad empírica entre el crecimiento del salario nominal y el paro en el Reino Unido (1861-1957). Con los datos de 1861-1913, y con **logaritmos decimales** (`eq:phillips-original`):
+$$\log_{10}(\gamma_W+0{,}900)=0{,}984-1{,}394\,\log_{10}U\qquad\Longleftrightarrow\qquad \gamma_W=9{,}638\,U^{-1{,}394}-0{,}900,$$
+   con **γ_W ≡ Ẇ/W** el ritmo anual de variación del salario nominal y U la tasa de paro, ambos en %. Nunca «ln» ni Δπ^w (no es la variación de una inflación). Inversa y convexa: con un paro de alrededor del 5,5 %, los salarios no crecen; con algo menos del 2,5 % (el 2,4 % según la ecuación), crecen un 2 % (la productividad) y los precios quedan estables (p. 299). Sus 3 explicaciones: exceso de demanda, **ritmo al que cambia el paro («límite de velocidad»)** y coste de la vida. Fisher (1926) como precursor, en nota.
+2. **Lipsey (1960)**: fundamento de exceso de demanda, sin letras para las pendientes: γ_W = g[(L^D − L^S)/L^S], g′ > 0; (L^D − L^S)/L^S = h(U), h′ < 0; juntos (`eq:lipsey`) **γ_W = g[h(U)] ≡ f(U), f′ < 0**. Con exceso de demanda nulo queda el paro friccional, dicho en palabras (sin U*). Lipsey añadió la variación del paro y la de los precios al consumo (no el precio de importación).
+3. **Samuelson y Solow (1960)**: con P = (1 + μ)CLU = (1 + μ)W/PAT (productividad **media**; μ margen neto, 1 + μ = σ/(σ − 1) en nota), π = γ_W − γ_PAT y π_t = f(U_t) − γ_PAT ≈ π̄ − a U_t: «menú» (estabilidad de precios con ≈ 5,5 % de paro; 3 % de paro con ≈ 4,5 % de inflación).
+4. **Friedman (1968) y Phelps (1967)**: con γ_W = π^e_t + f(U_t), la curva **aumentada con expectativas** (`\funcionclave` `eq:phillips-aumentada`)
+$$\pi_t = \pi^e_t - a\,(U_t - U^n) + \varepsilon_t,\qquad a > 0,$$
+   con π^e_t ≡ 𝔼_{t−1}[π_t] y ε_t las perturbaciones de oferta (inflación de costes, 3.A.41). Tasa natural con la definición de Friedman (p. 8: «el nivel que resultaría del sistema walrasiano… que incorpore las características estructurales reales»; «defecto básico», no «fundamental»). Con expectativas adaptativas (π^e_t = π_{t−1}) es la curva **aceleracionista** (`eq:aceleracionista`): Δπ_t ≡ π_t − π_{t−1} = −a(U_t − U^n). A largo plazo (π = π^e) es vertical en U^n.
+5. **Con histéresis** (III.4, ficha `histeresis`; `eq:phillips-histeresis`): π_t − π_{t−1} = −a(U_t − U^n_t) = −a[(U_t − U_{t−1}) + (1 − λ_h)(U_{t−1} − Ū^n)]: con λ_h = 1 importa la **variación** del paro, no su nivel, el «límite de velocidad» que ya intuía Phillips.
 
-$$\pi_t = \pi^e_t - a\,(U_t - U^n) + \varepsilon_t,\qquad a > 0$$
+**Enlaces:** con la WS lineal F(U,Z) = 1 − aU + Z, la WS y la PS dan π_t ≈ π^e_t − a(U_t − U^n): **la misma pendiente a** (ficha `nairu-layard-nickell`, anexo C del 3.A.28). Con Okun en brechas, π_t = π^e_t + aϑ′·OG_t + ε_t (oferta agregada de corto plazo; ficha `okun`).
 
-con π^e_t ≡ E_{t−1}[π_t]. Con expectativas adaptativas (π^e_t = π_{t−1}) es la curva **aceleracionista** (NAIRU): Δπ_t = −a(U_t − U^n). A largo plazo (π = π^e) es vertical en U^n.
-
-**Gráfico de referencia:** plano (U, π): curvas de Phillips de corto plazo decrecientes, una por nivel de π^e, y curva de largo plazo vertical en U^n; trayectoria de un intento de mantener U < U^n (aceleración). Hoy en 3.A.28 («curvas de Phillips a corto y largo plazo»).
+**Gráficos de referencia** (`oposicion/temario/fuentes/3A28/graficos/`):
+- `phillips-aumentada.tex` (**imprescindible**, la de la pizarra): plano (U, π), una curva de corto plazo por π^e, π = π^e + f(U) con f(U) = k(e^{−0,6(U − U^n)} − 1), U^n = 5,5, y la vertical de largo plazo en U^n; puntos A (U^n, π estable), B (U_1, π_1), C (U^n, π_1) y D (U_1, π_2) del intento de mantener U < U^n.
+- `samuelson-solow.tex`: el menú en precios, que es **la capa 1** de `phillips-aumentada` (misma escala y curva: la de π^e = 0; pasa por (5,5; 0) y (3; 4,5)). En el vídeo no se dibuja aparte.
+- `phillips-original.tex`: la curva de Phillips (1958) con los datos de 1861-1913 y los 2 puntos de la p. 299, **sin la nube** (A28-06, [decidir]: el CSV de una nube reconstruida con Feinstein está en `fuentes/3A28/datos/`).
 
 ## Cómo se adapta en cada tema
 
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.28 | Tasa natural y NAIRU | Desarrollo | Secuencia 1-4, gráfico, NAIRU frente a tasa natural, enlace con WS-PS (`nairu-layard-nickell`) y con la histéresis | — |
-| 3.A.5 | Síntesis y monetarismo | Resumen | Samuelson-Solow como pieza de la síntesis; Friedman-Phelps como crítica monetarista y estanflación de los setenta | La ecuación original de Phillips y Lipsey |
-| 3.A.4 | Keynes | Mención o nada | Solo si se cita la evolución posterior de la síntesis | Todo (pasa a 3.A.5) |
+| 3.A.28 | Tasa natural y NAIRU | desarrollo (hecho, 31/10/2026) | Secuencia 1-5 en II.1.2 y II.2 (≈ 7′), con a)-d) en la original; valoración (Akerlof, 2002: «probablemente la relación macroeconómica más importante»); NMC en una viñeta (II.3, Lucas, 1972, y Sargent-Wallace con remisión al 3.A.6); enlace con WS-PS y con la histéresis | — |
+| 3.A.5 | Síntesis y monetarismo | Resumen | Samuelson-Solow como pieza de la síntesis; Friedman-Phelps como crítica monetarista y estanflación de los setenta, con `\vertema{3.A.28}` | La ecuación original de Phillips y Lipsey |
+| 3.A.4 | Keynes | Mención o nada | Solo si se cita la evolución posterior de la síntesis, con `\vertema{3.A.5}` y `\vertema{3.A.28}`; su nota de Fisher (1926) ya está en el 3.A.28 | Todo (pasa a 3.A.5) |
+| 3.A.36 | Política monetaria | Mención | La Phillips de Kydland-Prescott y Barro-Gordon, U_t = U^n − α(π_t − π^e_t), α = 1/a, con `\vertema{3.A.28}` | La historia de la curva |
 | 3.A.37 | Transmisión monetaria | Mención | La curva aumentada como razón de la neutralidad a largo plazo | — |
-| 3.A.41 | Inflación | Resumen | Inflación de demanda (U < U^n), de costes (ε_t) e inercial (π^e); triángulo de Gordon | La historia de la curva |
+| 3.A.41 | Inflación | Resumen | Inflación de demanda (U < U^n), de costes (ε_t) e inercial (π^e); triángulo de Gordon con la histéresis remitida a `eq:phillips-histeresis` del 3.A.28 | La historia de la curva (ni la ecuación de 1958 ni Lipsey) |
 | 1D01 | Dictamen de coyuntura | Uso | $\pi_t=\pi^e_t-a(U_t-U^n)+\varepsilon_t$ con la nota de la tasa de paro ($U_t$ tasa; en la EPA $U$ parados y $u=U/A$); cuándo es razonable usarla | La historia de la curva |
 
 ## Divergencias encontradas en el temario actual
 
-- **Pendiente h en 3.A.41** (π_t = π^e_t − h(U_t − U^n) + ε_t): h es la sensibilidad de la demanda de dinero al tipo en la LM. Canon **a**. En Barro-Gordon la misma relación se escribe despejando U, U_t = U^n − α(π_t − π^e_t), con α = 1/a (ficha `barro-gordon`).
-- **Cruce 3.A.4/3.A.5:** 3.A.4 desarrolla la curva (epígrafe «IV.3. Curva de Phillips Tema 3.A.28») y 3.A.5 tiene vacío el epígrafe de Friedman-Phelps. Reparto: resumen en 3.A.5 (desarrollo en 3.A.28) y, como mucho, mención en 3.A.4.
-- **Desarrollo duplicado** en 3.A.4 y 3.A.28: con la propuesta, solo 3.A.28.
+- **Resuelto en el 3.A.28 (31/10/2026)**: la ecuación de Phillips con «log» sin base y Δπ^w_t (es log₁₀ y γ_W); Lipsey con α, β y U = U*; «con un 2,5 % los salarios crecen un 2 %»; Lipsey «añadió el precio de importación»; CLU con la productividad marginal; U_n y Ū para la tasa natural; la gráfica de Policonomics (sustituida por `phillips-aumentada.tex`). **Esta ficha decía «ln» en la ecuación de 1958: corregido** (log₁₀).
+- **Pendiente h en 3.A.41** (π_t = π^e_t − h(U_t − U^n) + ε_t, y la NAIRU como Ū): h es la sensibilidad de la demanda de dinero al tipo en la LM. Canon **a** y U^n. En Barro-Gordon la misma relación se escribe despejando U, U_t = U^n − α(π_t − π^e_t), con α = 1/a (ficha `barro-gordon`).
+- **Cruce 3.A.4/3.A.5:** 3.A.4 desarrolla la curva (epígrafe «IV.3. Curva de Phillips Tema 3.A.28») con el texto viejo del 3.A.28 y 3.A.5 tiene vacío el epígrafe de Friedman-Phelps. Reparto: resumen en 3.A.5 (desarrollo en 3.A.28) y, como mucho, mención en 3.A.4.
 
 Autor: Víctor Gutiérrez Marcos

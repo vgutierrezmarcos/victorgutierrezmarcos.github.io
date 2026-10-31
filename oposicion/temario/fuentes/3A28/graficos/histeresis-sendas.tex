@@ -1,0 +1,41 @@
+% Sendas del paro tras una recesión según el grado de histéresis (Blanchard y
+% Summers, 1986), con U^n_t = lambda_h U_{t-1} + (1 - lambda_h) Ubar^n y el paro
+% en su tasa natural cuando pasa la perturbación (U_t = U^n_t):
+%   U_t = Ubar^n + lambda_h^{t - t_1} (U_1 - Ubar^n)  desde t_1
+%   Ubar^n = 1,5; U_1 = 4; recesión entre t_0 = 2 y t_1 = 4 (2 periodos)
+%   lambda_h = 0: vuelve a Ubar^n en un periodo; lambda_h = 0,75: persistencia
+%   (en t = 11, U = 1,5 + 2,5 · 0,75^7 = 1,83); lambda_h = 1: se queda en U_1
+% Gráfico de referencia de la ficha «histeresis» del canon.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.9cm,
+    declare function={p(\t)=1.5+2.5*0.75^(\t-4);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-0.8) rectangle (17.4,5.4);
+  % 1: ejes (t, U_t)
+  \capa{1}{\ejes{$t$}{$U_t$}{12}{5.1}}
+  % 2: la tasa natural y el paro en ella hasta t_0
+  \capa{2}{\draw[guia] (0,1.5) node[left, text=black] {$\overline U^n$} -- (11.3,1.5);}
+  \capa{2}{\draw[very thick, black] (0,1.5) -- (2,1.5);}
+  % 3: la recesión entre t_0 y t_1 sube el paro hasta U_1
+  \capa{3}{\fill[tceegris, fill opacity=0.15] (2,0) rectangle (4,4.8);}
+  \capa{3}{\node[etiqueta, anchor=north, font=\footnotesize] at (3,4.8) {recesión};}
+  \capa{3}{\draw[very thick, black] (2,1.5) .. controls (3,1.6) and (3.4,3.9) .. (4,4);}
+  \capa{3}{\node[punto] (R) at (4,4) {};}
+  \capa{3}{\draw[guia] (2,1.5) -- (2,0) node[below, text=black] {$t_0$};}
+  \capa{3}{\draw[guia] (R) -- (4,0) node[below, text=black] {$t_1$};}
+  \capa{3}{\draw[guia] (R) -- (0,4) node[left, text=black] {$U_1$};}
+  % 4: sin histéresis, vuelve enseguida a la tasa natural
+  \capa{4}{\draw[curva1] (R) .. controls (4.5,4) and (4.6,1.5) .. (5.2,1.5) -- (11.3,1.5);}
+  % 5: persistencia, vuelve despacio
+  \capa{5}{\draw[curva2] plot[domain=4:11.3, samples=60, smooth] (\x,{p(\x)});}
+  % 6: histéresis pura, se queda en U_1
+  \capa{6}{\draw[curva3] (R) -- (11.3,4);}
+  % 7: rótulos de las sendas
+  \capa{7}{\node[etiqueta, right, text=tceeverde] at (11.3,4) {$\lambda_h=1$ (histéresis pura)};}
+  \capa{7}{\node[etiqueta, right, text=tceeazul] at (11.3,{p(11.3)+0.08}) {$0<\lambda_h<1$ (persistencia)};}
+  \capa{7}{\node[etiqueta, right, text=tceemorado] at (11.3,1.32) {$\lambda_h=0$};}
+\end{tikzpicture}
+\end{document}

@@ -1,7 +1,7 @@
 # *Insiders* y *outsiders* (Lindbeck y Snower, 1986, 1988)
 
 - **Área:** macro cerrada (mercado de trabajo) · **Tema de referencia:** **3.A.27** (revisado el 31/10/2026: III.3 `sec:contratos-implicitos-extensiones`, como extensión de los contratos implícitos, y anexo E `anexo:insiders` con el programa y los 3 casos) — es el único tema que lo desarrolla con su modelo; el 3.A.28 lo usa como mecanismo de la histéresis (ficha `histeresis`, referencia 3.A.28). Ficha creada en la fase canon del 3.A.27 (propuestas de coherencia § 5.4.6; **[decidir]**). En `_inventario/areas.json` estaba en economía española (por el 4.A.16): pasa a macro cerrada, como su tema de referencia.
-- **Temas que lo usan:** 3.A.27 (desarrollo; hecho, 31/10/2026), 3.A.28 (resumen: mecanismo de la histéresis, Blanchard y Summers, 1986; hoy «con otras palabras»), 4.A.16 (resumen aplicado: dualidad indefinidos-temporales, costes de despido y reformas en España; hoy mención como «primer problema estructural de la negociación colectiva»), 3.A.25 (mención; hecho, 31/10/2026: la formación específica, III.2 c, «una de las raíces del poder de los *insiders*», y la fila 7 de `tab:supuestos-trabajo`), 1D01 (mención; hecho, 24/10/2026: histéresis con *insiders-outsiders* y pérdida de capital humano).
+- **Temas que lo usan:** 3.A.27 (desarrollo; hecho, 31/10/2026), 3.A.28 (resumen; hecho, 31/10/2026: III.4, 3.er mecanismo de la histéresis, el principal para Blanchard y Summers, 1986, con «quien se fue a Sevilla perdió su silla», Lindbeck y Snower, 1988, y `\vertema{3.A.27}`), 4.A.16 (resumen aplicado: dualidad indefinidos-temporales, costes de despido y reformas en España; hoy mención como «primer problema estructural de la negociación colectiva»), 3.A.25 (mención; hecho, 31/10/2026: la formación específica, III.2 c, «una de las raíces del poder de los *insiders*», y la fila 7 de `tab:supuestos-trabajo`), 1D01 (mención; hecho, 24/10/2026: histéresis con *insiders-outsiders* y pérdida de capital humano).
 - **Manuales de referencia:** Lindbeck y Snower (1986), *AER P&P*; Lindbeck y Snower (1988), *The Insider-Outsider Theory of Employment and Unemployment*, MIT Press; Blanchard y Summers (1986), *NBER Macroeconomics Annual*; Cahuc, Carcillo y Zylberberg (2014), cap. 7; Bentolila, Dolado y Jimeno (2012) para España.
 
 ## Presentación de referencia (3.A.27, III.3 y anexo E)
@@ -23,14 +23,14 @@ Pregunta: ¿quién soporta el ajuste por el empleo y por qué los parados no pue
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.27 | Determinación de salarios: contratos implícitos y sus extensiones | desarrollo (hecho, 31/10/2026) | a)-b) con `eq:insiders` en el cuerpo (III.3, comodín que se acorta si falta tiempo); programa, CPO, 3 casos y gráfico en el anexo E | — |
-| 3.A.28 | Persistencia del desempleo | resumen | Mecanismo de la histéresis (ficha `histeresis`): tras un *shock*, los despedidos salen de la mesa y los *insiders* que quedan no fijan salarios para que vuelvan; `\vertema{3.A.27}` | El programa y los 3 casos |
+| 3.A.28 | Persistencia del desempleo | resumen (hecho, 31/10/2026) | Mecanismo de la histéresis (ficha `histeresis`): tras un *shock*, los despedidos salen de la mesa y los *insiders* que quedan no fijan salarios para que vuelvan; `\vertema{3.A.27}` | El programa y los 3 casos |
 | 4.A.16 | Mercado de trabajo en España | resumen (aplicado) | Dualidad indefinidos-temporales, costes de despido, convenios y descuelgue, reformas de 2012 y 2021, con datos; completo para el 4.º sin depender del 3.º | El modelo formal |
 | 3.A.25 | Mercado de trabajo neoclásico, capital humano | mención (hecho, 31/10/2026) | La formación específica como raíz del poder de los *insiders*; fila 7 de `tab:supuestos-trabajo` | El modelo |
 | 1D01 | Dictamen de coyuntura | mención (hecho) | Paro de larga duración e histéresis | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.27 original: al final de I.2 (sindicatos), con $N_I$, $d$, $c$ y la idea central «un modelo en el que el salario real es contracíclico». **Resuelto** (31/10/2026): en III.3 como extensión de los contratos implícitos (A27-04, **[decidir]**), con $\overline L_I$, $c_D$, $c_C$ ($c$ es el coste de la vacante en la curva salarial del DMP) y lo central en el paro de los *outsiders* y su persistencia.
-- 3.A.28 (sin revisar): resume a los *insiders* con otras palabras: al revisarlo, la frase de la histéresis con esta ficha y remisión al 3.A.27.
+- 3.A.28: resumía a los *insiders* con otras palabras. **Resuelto** (31/10/2026): la frase de la histéresis con esta ficha y remisión al 3.A.27.
 - 4.A.16 (sin revisar): usa el modelo sin remitir: al revisarlo, `\vertema{3.A.27}` solo para ampliar.
 
 Autor: Víctor Gutiérrez Marcos

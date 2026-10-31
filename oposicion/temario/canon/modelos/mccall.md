@@ -1,7 +1,7 @@
 # Búsqueda de empleo: Stigler (1961-1962) y McCall (1970), el salario de reserva
 
 - **Área:** macro cerrada (mercado de trabajo) · **Tema de referencia:** **3.A.26** (desempleo friccional; revisado el 31/10/2026, I.2 `sec:stigler`, I.3 `sec:mccall` y anexo `anexo:busqueda-extensiones`) — es el único tema que desarrolla la búsqueda de primera generación, como puerta de entrada al DMP («Modelos de búsqueda» es el bloque I del tema). Ficha creada en la fase canon del 3.A.26 (C3 de sus propuestas de coherencia; **[decidir]**).
-- **Temas que lo usan:** 3.A.26 (desarrollo breve; hecho, 31/10/2026: 5′ con Stigler en 0′30″ y McCall en 4′; el resto, anexo A), 4.A.16 (mención: prestaciones y duración del paro en España, remitiendo aquí), 3.A.28 (mención: el paro de búsqueda como componente de la tasa natural; Phelps y Friedman). Relación de concepto (sin usar el modelo): el $w^R$ del 3.A.25 (umbral de participación) y el $w^R=z$ del 3.A.27 (negociación) son el mismo salario de reserva, sin el valor de opción de buscar (ver «Presentación», iii).
+- **Temas que lo usan:** 3.A.26 (desarrollo breve; hecho, 31/10/2026: 5′ con Stigler en 0′30″ y McCall en 4′; el resto, anexo A), 4.A.16 (mención: prestaciones y duración del paro en España, remitiendo aquí), 3.A.28 (mención; hecho, 31/10/2026: II.4 a), el paro de búsqueda como fundamento de la tasa natural con Phelps, 1968 y 1970, «buscar empleo lleva tiempo», sin nombrar a McCall; el modelo de flujos es el DMP). Relación de concepto (sin usar el modelo): el $w^R$ del 3.A.25 (umbral de participación) y el $w^R=z$ del 3.A.27 (negociación) son el mismo salario de reserva, sin el valor de opción de buscar (ver «Presentación», iii).
 - **Manuales de referencia:** Stigler (1961), «The Economics of Information», *JPE*, y (1962), «Information in the Labor Market», *JPE*; McCall (1970), «Economics of Information and Job Search», *QJE*; Mortensen (1977), *ILRR*; Diamond (1971), *JET*; Rothschild (1973), *JPE*; Cahuc, Carcillo y Zylberberg (2014), cap. 5; Ljungqvist y Sargent (2018), cap. 6.
 
 ## Presentación de referencia (3.A.26, I.2-I.3)
@@ -27,7 +27,7 @@ $$w^R-z=\frac{\beta}{1-\beta}\int_{w^R}^{\infty}(w-w^R)\,dF(w).$$
 |---|---|---|---|---|
 | 3.A.26 | Desempleo friccional | desarrollo breve (hecho, 31/10/2026) | Stigler y McCall con `eq:salario-reserva` y `mccall.tex`; paradoja de Diamond como puente; extensiones en el anexo A | — |
 | 4.A.16 | Mercado de trabajo en España | mención | Prestaciones, salario de reserva y duración del paro (sube con $z$; con la prestación que se agota, $w^R$ baja con la duración), con `\vertema{3.A.26}` solo para ampliar | La ecuación y el gráfico |
-| 3.A.28 | Tasa natural de paro | mención | El paro de búsqueda (Phelps, 1970; McCall) como parte friccional de la tasa natural, de palabra, con remisión | El modelo |
+| 3.A.28 | Tasa natural de paro | mención (hecho, 31/10/2026) | El paro de búsqueda (Phelps, 1970; McCall) como parte friccional de la tasa natural, de palabra, con remisión | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.26 original: $U$ para el valor del paro, $W=w/(1-\beta)$, $w_R$, unas 2.550 palabras en el bloque I y la elegibilidad con el signo equivocado («un aumento de la prestación disminuirá la tasa de desempleo»); Blau con α y β. **Resuelto** en la revisión (31/10/2026): $V_{\mathrm U}$, $V_{\mathrm E}(w)$, $w^R$, bloque I en 5′, Mortensen (1977) con efecto ambiguo, letras locales $a$, $b$.

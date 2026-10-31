@@ -1,0 +1,935 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A28.bib}
+\tcetema[La tasa natural de paro y la NAIRU. La persistencia del desempleo]{3.A.28}{La tasa natural de paro y la NAIRU. La persistencia del desempleo.}
+\tcefecha{31/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «De aquellos polvos vienen estos lodos», dice el refrán. En 2007, antes de la crisis financiera, la tasa de paro de España era del 8,2~\%; en 2013 llegó al 26,1~\% \parencite{CE2026AMECOParo}. Hoy, tras más de una década de recuperación, está en el 10,2~\% \parencite{INE2026EPA3T}: la más baja desde 2008, pero todavía por encima de la de antes de la crisis y muy lejos del 6,4~\% de la zona del euro \parencite{CE2026AMECOParo}.
+  \item No solo cambió el paro efectivo. La tasa de paro que la Comisión Europea considera compatible con salarios estables en España subió del 13,6~\% en 2007 al 16,9~\% en 2013, y desde entonces baja despacio, detrás del paro \parencite{CE2026AMECO}.
+  \item Detrás está la pregunta de esta exposición: \emph{¿hay un paro «natural» al que la economía vuelve sola, o el paro de hoy fija el de mañana?}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Social}: el paro recorta la renta de los hogares y, cuando se alarga, deprecia las cualificaciones y aleja del empleo a quien lo sufre.
+  \item \emph{Para la teoría}: la macroeconomía nació para explicar el paro, y en particular el involuntario, que fue su elemento definitorio \parencite[26]{DeVroey2016History}. ¿Es el paro un fenómeno de equilibrio o de desequilibrio? De la respuesta depende qué puede hacer la política económica.
+  \item \emph{Para la política económica}: la tasa natural separa lo que puede hacer la política de demanda (acercar el paro a su nivel de equilibrio) de lo que solo pueden hacer las reformas (bajar ese nivel). Los bancos centrales la usan para saber si la economía se recalienta \vertema{3.A.36}, y la Comisión Europea estima su versión empírica, la NAWRU, para calcular el PIB potencial, la brecha de producción y el saldo estructural de las cuentas públicas \parencite{Havik2014Potencial} \vertema{3.A.42}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item Está \concepto{parado} quien no tiene empleo, lo busca activamente y está disponible para trabajar; la \concepto{tasa de paro}, $U_t$, es su proporción en la población activa \parencite{INE2026EPA3T}.\footnote{En la exposición, $U_t$ es la \emph{tasa} de paro y $U^n$ la tasa natural; en el bloque~\ref{sec:neokeynesiano}, $U^n$ es también la NAIRU, porque en el modelo de fijación de salarios y precios las 2 coinciden (las diferencias, en el anexo~\ref{anexo:tnp-nairu}). En las fórmulas de la EPA, $U$ son los parados y $u=U/A$ la tasa \vertema{4.A.16}.}
+  \item Esta exposición cierra el bloque del mercado de trabajo. El modelo neoclásico no deja paro involuntario, salvo con un salario mínimo \vertema{3.A.25}; la búsqueda explica el paro friccional \vertema{3.A.26}, y la negociación y los salarios de eficiencia, por qué el salario real no baja aunque haya parados \vertema{3.A.27}. Aquí se juntan esas piezas para responder a una pregunta macroeconómica: ¿cuánto paro hay cuando la economía está en equilibrio?
+  \item \concepto{Tipos de paro}:
+    \begin{itemize}
+    \item \emph{friccional}: el de quien está entre 2 empleos o acaba de entrar en el mercado, porque encontrar el puesto adecuado lleva tiempo;
+    \item \emph{estructural}: el desajuste duradero entre lo que ofrecen los trabajadores y lo que piden las empresas (cualificación, sector, región) y el que causan los salarios fijados por encima del que vaciaría el mercado (negociación colectiva, salarios de eficiencia, salario mínimo);
+    \item \emph{cíclico}: el que nace de una demanda agregada insuficiente, sube en las recesiones y baja en las expansiones;
+    \item \emph{estacional}: el que se repite cada año con el calendario (turismo, campañas agrícolas, curso escolar); no es un problema macroeconómico, y las series se desestacionalizan para no confundirlo con el ciclo.
+    \end{itemize}
+  \item El friccional y el estructural forman la \concepto{tasa natural de paro}, $U^n$: la que hay cuando no hay paro cíclico. El concepto es de \textcite{Phelps1967Phillips} y \textcite{Friedman1968Role}.
+  \item La \concepto{NAIRU} (\emph{non-accelerating inflation rate of unemployment}) es la tasa de paro con la que la inflación no se acelera. La idea la propusieron \textcite{ModiglianiPapademos1975Targets} con el nombre de NIRU; el acrónimo NAIRU se generalizó a partir de \textcite[24-25]{Tobin1980Stabilization}, y su modelo de referencia, el de fijación de salarios y precios, es el de \textcite{LayardNickellJackman1991Unemployment}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Hay un paro de equilibrio? ¿Por qué no es cero?
+  \item ¿Puede la política de demanda bajarlo de forma duradera, a cambio de algo más de inflación?
+  \item ¿Qué lo determina y qué políticas lo reducen?
+  \item ¿Por qué no vuelve a su nivel tras una recesión?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue la historia de la idea de un paro de equilibrio, porque cada etapa responde a lo que deja abierto la anterior:
+  \begin{itemize}
+  \item \concepto{I. El debate previo a la curva de \autor{Phillips}} (\ref{sec:debate}): el punto de partida, el modelo neoclásico, sin paro involuntario, y la respuesta de \autor{Keynes};
+  \item \concepto{II. La síntesis neoclásica y la curva de \autor{Phillips}} (\ref{sec:tasa-natural}): de la curva original a la \emph{tasa natural de paro} de \autor{Friedman} y \autor{Phelps}, su relación con la producción (la ley de \autor{Okun}) y su fundamento en los flujos del mercado de trabajo;
+  \item \concepto{III. El análisis neokeynesiano} (\ref{sec:neokeynesiano}): la \emph{NAIRU}, que nace de la fijación de salarios y precios con poder de mercado; la \emph{persistencia del desempleo}, y el modelo nuevo keynesiano con paro.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}[unbreakable]
+\textbf{3.A.28. La tasa natural de paro y la NAIRU. La persistencia del desempleo}\\[2pt]
+Introducción\\
+I. El debate previo a la curva de \autor{Phillips}\\
+\hspace*{1.5em}1. Enfoque neoclásico\\
+\hspace*{1.5em}2. Enfoque keynesiano\\
+II. La síntesis neoclásica y la curva de \autor{Phillips}: la tasa natural de paro\\
+\hspace*{1.5em}1. Síntesis: IS-LM, curva de \autor{Phillips} (1958) y ley de \autor{Okun}\\
+\hspace*{1.5em}2. Enfoque monetarista\\
+\hspace*{1.5em}3. Nueva macroeconomía clásica\\
+\hspace*{1.5em}4. Búsqueda y emparejamiento\\
+III. Análisis neokeynesiano del desempleo de equilibrio\\
+\hspace*{1.5em}1. Nueva economía keynesiana\\
+\hspace*{1.5em}2. Modelos neokeynesianos de equilibrio parcial\\
+\hspace*{1.5em}3. La NAIRU\\
+\hspace*{1.5em}4. La persistencia del desempleo\\
+\hspace*{1.5em}5. El modelo nuevo keynesiano con desempleo\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{3} (I.1, \tiempo{1}; I.2, \tiempo{1,5}; recapitulación, \tiempo{0,5}); II, \tiempo{11} (II.1, \tiempo{4,5}: IS-LM, \tiempo{0,5}, curva de \autor{Phillips}, \tiempo{3}, y ley de \autor{Okun}, \tiempo{1}; II.2, \tiempo{3,5}; II.3, \tiempo{1}; II.4, \tiempo{1,5}; recapitulación, \tiempo{0,5}); III, \tiempo{12,5} (III.1, \tiempo{1}; III.2, \tiempo{1}; III.3, \tiempo{6}; III.4, \tiempo{4}; III.5, \tiempo{0,5}), y conclusión, \tiempo{1}. El bloque~\ref{sec:debate} es un resumen: su desarrollo está en el anexo~\ref{anexo:debate}. La pizarra se organiza en 3 zonas fijas, como en los demás temas del mercado de trabajo \vertema{3.A.25} \vertema{3.A.26} \vertema{3.A.27}. A la izquierda, los supuestos que se levantan (4, atomicidad; 6, salarios y precios flexibles) y los refranes pegatina: «no se puede estar en misa y repicando» junto a la curva aumentada (no se tiene a la vez menos paro y la misma inflación), «agua pasada no mueve molino» junto a la NAIRU sin histéresis, «quien se fue a Sevilla perdió su silla» junto a los \emph{insiders} y «de aquellos polvos vienen estos lodos», el del enganche, junto a la histéresis. En el centro, los 3 gráficos que se construyen por capas: la curva de \autor{Phillips}, del menú a la vertical en $U^n$, que se queda hasta la NAIRU; el modelo WS-PS en $(U,W/P)$, y las sendas del paro con histéresis. A la derecha, las funciones clave, que se conservan: la curva aumentada \eqref{eq:phillips-aumentada}, la NAIRU \eqref{eq:nairu} y la histéresis \eqref{eq:histeresis}.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{El debate previo a la curva de \autor{Phillips}}\label{sec:debate}
+\minutos{3}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: los neoclásicos explican el paro como voluntario o como fruto de salarios que no pueden bajar; \autor{Keynes}, como involuntario, causado por una demanda insuficiente. Ninguno de los 2 tiene una teoría de la inflación, y sin ella no se puede decidir si el paro es de equilibrio o de desequilibrio.
+\item El análisis del mercado de trabajo enfrentó a las escuelas de pensamiento, y sus conclusiones dependen sobre todo de lo que suponen sobre el comportamiento de los agentes y la flexibilidad de los salarios. Aquí basta con lo que se necesita para seguir la exposición; el desarrollo, con sus gráficos, está en el anexo~\ref{anexo:debate}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Enfoque neoclásico}\label{sec:neoclasico}
+
+\begin{itemize}
+\item \emph{Idea}: el trabajo es un mercado como cualquier otro. La demanda sale de la productividad marginal del trabajo, $W/P=\mathrm{PMg}_L$, y la oferta, de la elección entre consumo y ocio de los trabajadores; el salario real se ajusta hasta vaciar el mercado \vertema{3.A.25}.
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item Con información perfecta y salarios flexibles no hay paro involuntario, salvo con un salario mínimo, ni siquiera friccional: quien no trabaja es porque el salario de mercado no supera su salario de reserva, $w^R$ \vertema{3.A.25}. El paro friccional aparece al levantar la información perfecta \vertema{3.A.26}.
+  \item El paro voluntario puede fluctuar: si los trabajadores sustituyen trabajo de hoy por trabajo de mañana cuando el salario real de hoy es bajo, el empleo cae en las recesiones sin que nadie esté racionado \parencite{LucasRapping1969Real} \vertema{3.A.25}.
+  \item El empleo y la producción se determinan en el lado de la oferta y no dependen del dinero ni de los precios (\emph{dicotomía clásica}): la oferta agregada es vertical, la política de demanda no mueve el empleo y la recomendación es eliminar lo que impide que el salario baje.
+  \end{itemize}
+\item \emph{Valoración}: el paro masivo de la Gran Depresión no encajaba con un mercado que se vacía. Los neoclásicos lo atribuían a rigideces que paraban el ajuste: la de los salarios, por los sindicatos, que ya estudiaba \textcite{Hicks1932Theory} \vertema{3.A.27}, y el poder de mercado de las grandes empresas, que la competencia monopolística de \textcite{Chamberlin1933Theory} ayudaba a entender \vertema{3.A.18}.
+\item Con el lenguaje de la tabla de supuestos del modelo neoclásico \vertema{3.A.25}, esta exposición levanta 2 (tabla~\ref{tab:supuestos-trabajo}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Supuestos del modelo neoclásico del mercado de trabajo que levanta esta exposición}\label{tab:supuestos-trabajo}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{0.6cm}>{\raggedright\arraybackslash}m{3.6cm}>{\raggedright\arraybackslash}m{4.6cm}>{\raggedright\arraybackslash}m{5.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{N.º} & \textbf{Supuesto} & \textbf{En el mercado de trabajo} & \textbf{Se levanta en esta exposición}\\
+\midrule
+\textcolor{tceemorado}{\textbf{4}} & \textbf{Mercado atomizado: muchos compradores y vendedores (precio-aceptantes)} & muchas empresas y muchos trabajadores, y todos toman el salario como dado & sindicatos y empresas con poder de mercado fijan salarios y precios: la NAIRU (\ref{sec:nairu})\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{6}} & \textbf{Salarios y precios flexibles} & el salario se ajusta hasta vaciar el mercado & salarios nominales fijados con expectativas: la tasa natural (\ref{sec:monetarista}); salarios reales que no vacían el mercado (\ref{sec:nairu}) y que dependen de la historia del paro (\ref{sec:persistencia})\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia; numeración y redacción de la tabla de supuestos del modelo neoclásico del mercado de trabajo \vertema{3.A.25}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Enfoque keynesiano}\label{sec:keynesiano}
+
+\begin{itemize}
+\item \emph{Idea}: \textcite{Keynes1936} levanta 2 supuestos del modelo neoclásico. Los trabajadores negocian el salario \emph{nominal}, no el real, y ese salario nominal es rígido a la baja.
+\item \emph{Desarrollo}:
+  \begin{itemize}
+  \item La demanda de trabajo sigue siendo la neoclásica, pero no la oferta: \emph{la demanda agregada fija la producción}, y la función de producción, el empleo. El salario real es el que corresponde a ese empleo.
+  \item Si cae la demanda, bajan los precios; con el salario nominal fijo, sube el salario real y las empresas contratan menos. El ajuste se hace por cantidades y aparece el \concepto{paro involuntario}: el de quienes trabajarían al salario vigente, o a uno algo menor, y no encuentran empleo. Para \autor{Keynes} lo hay cuando, ante una pequeña subida de los precios respecto del salario nominal, tanto la oferta como la demanda de trabajo a ese salario superarían el empleo existente \parencite[cap.~2]{Keynes1936} \vertema{3.A.4}.\footnote{\autor{Keynes} no veía en la rigidez del salario la causa última del paro. En el capítulo~19 de la \emph{Teoría general} critica a \autor{Pigou} por proponer bajar los salarios: una rebaja del salario solo crea empleo si aumenta la inversión, y para eso tiene que bajar el tipo de interés (más saldos reales al caer los precios) o subir la eficiencia marginal del capital, y nada garantiza ninguna de las 2 cosas. Con trampa de la liquidez, el primer canal no funciona, y la deflación salarial puede acabar en una espiral deflacionista. Prefería subir los precios con más demanda: los trabajadores se resisten mucho menos a una bajada del salario real por esa vía que a un recorte de su salario nominal, que en una negociación descentralizada solo llega tras conflictos costosos.}
+  \item Mientras haya \emph{recursos ociosos}, la oferta agregada tiene pendiente positiva: más demanda sube algo los precios, baja el salario real y aumenta el empleo. Cuando se agotan, se vuelve vertical, como en el caso neoclásico.
+  \end{itemize}
+\item \emph{Implicaciones}: el paro involuntario se combate con políticas de demanda, fiscal sobre todo; bajar los salarios no es la solución.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación}: para los neoclásicos, el mercado de trabajo lo dominan las variables reales y la oferta agregada es vertical; para \autor{Keynes}, el salario nominal negociado y la demanda fijan el empleo, y la oferta agregada tiene pendiente positiva. Las 2 visiones dejan 2 preguntas abiertas:
+  \begin{itemize}
+  \item una expansión de demanda puntual sube el nivel de precios una sola vez; para mantener más empleo habría que repetirla cada año, y eso es inflación: falta una \emph{teoría de la inflación};
+  \item ¿por qué iban a negociar los trabajadores sin tener en cuenta la inflación que esperan? Es la crítica que harán \autor{Friedman} y \autor{Phelps}.
+  \end{itemize}
+  La primera pregunta la responde la curva de \autor{Phillips}; la segunda, su ampliación con expectativas. Es lo que vemos a continuación.
+\end{itemize}
+
+
+% ==========================================================================
+\section{La síntesis neoclásica y la curva de \autor{Phillips}\newline con sus ampliaciones: la tasa natural de paro}\label{sec:tasa-natural}
+\minutos{11}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la curva de \autor{Phillips} parecía ofrecer a los gobiernos un menú entre inflación y paro. Al introducir las expectativas, \autor{Friedman} y \autor{Phelps} muestran que esa disyuntiva solo existe a corto plazo: a largo plazo el paro vuelve a su \emph{tasa natural}, que fijan factores reales, y la política de demanda no puede mantenerlo por debajo sin acelerar la inflación.
+\item Una vez visto el debate de partida, pasamos a la síntesis neoclásica y a la curva de \autor{Phillips}, la pieza que le faltaba para explicar los precios.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Síntesis neoclásica}\label{sec:sintesis}
+
+\subsubsection{Modelo IS-LM}\label{sec:islm}
+
+\begin{itemize}
+\item La síntesis neoclásica integra a \autor{Keynes} en el marco del equilibrio general con el modelo IS-LM \vertema{3.A.5}. En ese marco, el paro se debe a la \emph{rigidez del salario nominal}: puede haber equilibrio en los mercados de bienes y de dinero a un nivel de precios dado y, al salario vigente, paro.
+\item Con salarios flexibles, la bajada de salarios y precios aumenta los saldos reales, baja el tipo de interés y estimula la inversión (\emph{efecto \autor{Keynes}}) hasta el pleno empleo. Solo lo impiden 2 casos particulares: la \emph{trampa de la liquidez} y una \emph{inversión insensible al tipo de interés}. En ellos, solo la política fiscal saca a la economía del paro (anexo~\ref{anexo:debate}).
+\item Al modelo le falta una pieza: trabaja con un nivel de precios dado y no explica la inflación. Esa pieza será la curva de \autor{Phillips}.
+\end{itemize}
+
+\subsubsection{Curva de \autor{Phillips} original (1958)}\label{sec:phillips-original}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La curva de \autor{Phillips} nace como una regularidad empírica: cuando hay poco paro, los salarios crecen deprisa. Recibió en 2 años un fundamento teórico y una lectura de política económica, el \emph{menú} entre inflación y paro, que es la que discutirán \autor{Friedman} y \autor{Phelps}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) La regularidad empírica: \autor{Phillips} (1958)}
+
+\begin{itemize}
+\item El economista neozelandés A. W. \autor{Phillips} estudió la relación entre el paro y el ritmo de variación de los salarios nominales en el Reino Unido entre 1861 y 1957.\footnote{No fue el primero: Irving \autor{Fisher} ya había relacionado la inflación de precios con el paro en Estados Unidos \parencite{Fisher1926Statistical}. Su artículo pasó inadvertido hasta que se reeditó en 1973 con el título «I Discovered the Phillips Curve» \parencite{Fisher1973Discovered}. La literatura sobre la curva de \autor{Phillips}, la tasa natural y la NAIRU parte del artículo de \autor{Phillips}, no del de \autor{Fisher}.} Con los datos de 1861-1913 estimó \parencite[290]{Phillips1958}:
+  \begin{equation}
+  \log_{10}\big(\gamma_W+0{,}900\big)=0{,}984-1{,}394\,\log_{10}U \label{eq:phillips-original}
+  \end{equation}
+  con $\gamma_W\equiv\dot W/W$ el ritmo anual de variación del salario nominal y $U$ la tasa de paro, ambos en~\%. Es lo mismo que $\gamma_W=9{,}638\,U^{-1{,}394}-0{,}900$.
+  \begin{itemize}
+  \item La relación es \emph{inversa} y \emph{no lineal} (convexa): con un paro de alrededor del 5,5~\%, los salarios nominales no crecen; con algo menos del 2,5~\% (el 2,4~\% según la ecuación), crecen un 2~\% al año, el ritmo de la productividad, de modo que los precios quedarían estables \parencite[299]{Phillips1958} (gráfico~\ref{fig:phillips-original}).
+  \item Los datos de 1948-1957 caían cerca de la curva estimada con los de 1861-1913: parecía una relación estable durante casi un siglo.
+  \end{itemize}
+\item Aunque su análisis es empírico, \autor{Phillips} apuntó 3 explicaciones:
+  \begin{itemize}
+  \item \emph{el exceso de demanda de trabajo}: con poco paro, las empresas compiten por los trabajadores y suben los salarios;
+  \item \emph{el ritmo al que cambia el paro} (el «límite de velocidad»): los salarios suben más cuando el paro está bajando que cuando, al mismo nivel, está subiendo, y por eso los datos dan vueltas alrededor de la curva;
+  \item \emph{el coste de la vida}: cuando los precios de importación suben mucho, los trabajadores piden más salario.
+  \end{itemize}
+  La convexidad recogería que los trabajadores se resisten a aceptar bajadas del salario nominal aunque el paro sea alto.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La curva de \autor{Phillips} original: Reino Unido, 1861-1913}\label{fig:phillips-original}
+\grafico[0.62\textwidth]{phillips-original}
+\fuente{elaboración propia a partir de \textcite[290 y 299]{Phillips1958}.}
+\end{figure}
+
+\subparagraph{ii) El fundamento teórico: \autor{Lipsey} (1960)}
+
+\begin{itemize}
+\item \textcite{Lipsey1960Relation} le dio a la curva una explicación de exceso de demanda, con 2 supuestos:
+  \begin{itemize}
+  \item el salario nominal sube más deprisa cuanto mayor es el exceso de demanda de trabajo: $\gamma_W=g\big[(L^D-L^S)/L^S\big]$, con $g'>0$;
+  \item el exceso de demanda baja con el paro, de forma no lineal: $(L^D-L^S)/L^S=h(U)$, con $h'<0$. Cuando el exceso de demanda es nulo, el paro no es cero: queda el friccional.
+  \end{itemize}
+\item Juntos dan la curva:
+  \begin{equation}
+  \gamma_W=g\big[h(U)\big]\equiv f(U),\qquad f'<0 \label{eq:lipsey}
+  \end{equation}
+  \autor{Lipsey} amplió además la ecuación de \autor{Phillips} con la variación de la tasa de paro y la de los precios al consumo.
+\item Es la reconstrucción que permitió a los keynesianos integrar la curva sin renunciar al paro involuntario \parencite[42-43]{DeVroey2016History}.\footnote{\autor{Phillips} probablemente no la leía como una relación estable entre inflación y paro: esa lectura vino del ambiente de la época, que explicaba la inflación por el empuje de los costes \parencite[42]{DeVroey2016History}.}
+\end{itemize}
+
+\subparagraph{iii) El menú de política económica: \autor{Samuelson} y \autor{Solow} (1960)}
+
+\begin{itemize}
+\item Para pasar de salarios a precios basta con que las empresas fijen el precio con un margen constante sobre el coste laboral unitario (CLU), que es el salario dividido por la productividad media del trabajo, $\mathrm{PAT}$:\footnote{Aquí $\mu$ es el margen \emph{neto} sobre el coste. Con la demanda de \autor{Dixit} y \autor{Stiglitz}, en la que cada empresa fija su precio con un margen que depende de la elasticidad de sustitución $\sigma$ entre variedades, $1+\mu=\sigma/(\sigma-1)$ \vertema{3.A.18}.}
+  \begin{equation*}
+  P=(1+\mu)\,\mathrm{CLU}=(1+\mu)\,\frac{W}{\mathrm{PAT}}\quad\Longrightarrow\quad\pi=\gamma_W-\gamma_{\mathrm{PAT}}
+  \end{equation*}
+  y la curva queda en términos de inflación de precios: $\pi_t=f(U_t)-\gamma_{\mathrm{PAT}}$, que en el tramo relevante se aproxima por una recta, $\pi_t\approx\bar\pi-a\,U_t$, con $a>0$.
+\item \textcite{SamuelsonSolow1960Analytical} la estimaron para Estados Unidos y la presentaron como un «menú» de combinaciones de inflación y paro entre las que elegir (gráfico~\ref{fig:samuelson-solow}): la estabilidad de precios exigía en torno a un 5,5~\% de paro, y bajarlo al 3~\% costaba una inflación del 4,5~\% anual.
+  \begin{itemize}
+  \item Avisaron de que el menú podía cambiar a largo plazo, pero la lectura que se impuso en los años 60 fue la de una disyuntiva permanente: con políticas de demanda se podía tener menos paro a cambio de más inflación.
+  \item La curva cerraba el modelo IS-LM: la demanda fijaba la producción y el empleo, y la curva de \autor{Phillips}, la inflación de salarios y precios.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El menú de \autor{Samuelson} y \autor{Solow}: la curva de \autor{Phillips} en precios}\label{fig:samuelson-solow}
+\grafico[0.5\textwidth]{samuelson-solow}
+\fuente{elaboración propia a partir de \textcite[192, fig.~2]{SamuelsonSolow1960Analytical}.}
+\end{figure}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item La curva encajaba bien en los datos de los años 50 y 60, en el Reino Unido y en Estados Unidos: por eso se convirtió en una pieza de los modelos macroeconométricos de la época. En los años 70 dejó de hacerlo (\ref{sec:monetarista}).
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{Aportación}: desde entonces, todos los modelos macroeconómicos han tenido que explicar la relación entre inflación y actividad. Como dijo \textcite{Akerlof2002Behavioral} en su conferencia Nobel, la curva de \autor{Phillips} es «probablemente la relación macroeconómica más importante».
+\item \emph{Limitaciones}:
+  \begin{itemize}
+  \item no explica la inflación de costes, en la que más inflación va con más paro;
+  \item su fundamento teórico es débil: \autor{Lipsey} explica el exceso de demanda, pero no por qué no se vacía el mercado;
+  \item sobre todo, no tiene en cuenta las \emph{expectativas}, y esa es la crítica de \autor{Friedman} y \autor{Phelps}.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Paro y producción: la ley de \autor{Okun} (1962)}\label{sec:okun}
+
+\begin{itemize}
+\item \emph{Idea}: la curva de \autor{Phillips} habla de paro; la política de demanda mueve la producción. \textcite{Okun1962}, asesor económico del presidente \autor{Kennedy}, midió cuánta producción se perdía por cada punto de paro por encima del objetivo de la época, el 4~\%: unos 3 puntos de PNB. Es el puente entre las 2 variables, y entre la tasa natural de paro y la producción potencial.
+\item \emph{Formulación}: en diferencias y en brechas,
+  \begin{equation}
+  U_t-U_{t-1}\approx-\vartheta\,\big(\gamma_{Y,t}-\bar\gamma_Y\big)\qquad\text{y}\qquad U_t-U^n\approx-\vartheta'\,\mathrm{OG}_t \label{eq:okun}
+  \end{equation}
+  con $\gamma_{Y,t}$ el crecimiento del PIB, $\bar\gamma_Y$ el que mantiene estable el paro, cercano al potencial, y $\mathrm{OG}_t$ la brecha de producción en porcentaje del potencial, $Y^p$ \vertema{3.A.42}.
+  \begin{itemize}
+  \item La cifra de \autor{Okun}, 3 puntos de producción por punto de paro, equivale a un coeficiente $\vartheta\approx1/3$. Las estimaciones actuales para Estados Unidos rondan 0,45: medio punto menos de paro por cada punto de crecimiento por encima de $\bar\gamma_Y$ \parencite{Ball2017Okun}.
+  \item El coeficiente es menor que 1 porque, cuando cae la producción, no todo es despido: bajan también las horas por trabajador, la participación y la productividad, porque las empresas retienen plantilla.
+  \end{itemize}
+\item \emph{Implicaciones}: para que baje el paro, la economía tiene que crecer por encima de $\bar\gamma_Y$. Y llevando la forma en brechas de \eqref{eq:okun} a la curva de \autor{Phillips} aumentada que veremos enseguida, la curva se escribe en producción, $\pi_t=\pi^e_t+a\,\vartheta'\,\mathrm{OG}_t+\varepsilon_t$: es la oferta agregada de corto plazo.
+\item \emph{Evidencia}: la relación se cumple bien y es bastante estable en casi todas las economías avanzadas, pero el coeficiente varía mucho entre países: 0,15 en Japón, donde el empleo es casi de por vida; 0,45 en Estados Unidos, y 0,85 en España, el más alto, por el peso de los contratos temporales \parencite{Ball2017Okun}. Con datos de 1996-2025 (sin 2020-2021), en España cada punto de crecimiento por encima del 1,8~\% ha bajado el paro en 0,8 puntos \parencite{Eurostat2026nama,CE2026AMECOParo} (gráfico~\ref{fig:okun-espana}).
+\item \emph{Valoración}: es una regularidad empírica, no un modelo. Falla cuando hay mucha economía sumergida y cuando se protege el empleo, como con los expedientes de regulación temporal de empleo (ERTE) de 2020, en los que la producción cayó un 10,9~\% y el paro solo subió 1,4 puntos \parencite{Eurostat2026nama,CE2026AMECOParo} \vertema{4.A.16}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La ley de \autor{Okun} en España, 1996-2025}\label{fig:okun-espana}
+\grafico[0.62\textwidth]{okun-espana}
+\fuente{elaboración propia a partir de \textcite{Eurostat2026nama} (PIB en volumen) y \textcite{CE2026AMECOParo} (tasa de paro). Recta de mínimos cuadrados ordinarios sin 2020-2021.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Enfoque monetarista (\autor{Friedman} y \autor{Phelps})}\label{sec:monetarista}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Edmund \autor{Phelps} y Milton \autor{Friedman} critican la lectura de la curva de \autor{Phillips} como un menú permanente.\footnote{Milton \autor{Friedman} recibió el Premio Nobel de Economía en 1976 «por sus logros en los campos del análisis del consumo, la historia y la teoría monetarias, y por su demostración de la complejidad de la política de estabilización» \parencite{Nobel1976Friedman}, y Edmund \autor{Phelps}, en 2006, «por su análisis de las disyuntivas intertemporales en la política macroeconómica» \parencite{Nobel2006Phelps}.} Según \textcite[8]{Friedman1968Role}, la curva «contiene un defecto básico: no distinguir entre salarios nominales y salarios reales». Un paro bajo indica exceso de demanda de trabajo, y eso presiona al alza el salario \emph{real}, no el nominal.
+\item Lo dijeron \textcite{Phelps1967Phillips,Phelps1968Money} y \textcite{Friedman1968Role} a finales de los años 60, antes de que los datos les dieran la razón.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Trabajadores y empresas negocian el salario nominal, pero lo que les importa es el salario real: no hay ilusión monetaria.
+\item Al negociar, prevén la inflación del periodo, $\pi^e_t\equiv\mathbb{E}_{t-1}[\pi_t]$. En la versión monetarista, las expectativas son \emph{adaptativas}: en su forma más simple, $\pi^e_t=\pi_{t-1}$.
+\item Hay una tasa de paro de equilibrio que fijan factores reales: la tasa natural.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Si los trabajadores prevén inflación, el salario nominal sube con ella, $\gamma_W=\pi^e_t+f(U_t)$, y la curva de precios queda:
+  \funcionclave[eq:phillips-aumentada]{\pi_t=\pi^e_t-a\,\big(U_t-U^n\big)+\varepsilon_t,\qquad a>0}
+  con $\varepsilon_t$ las perturbaciones de oferta (el precio de las materias primas, por ejemplo): la inflación de costes \vertema{3.A.41}.
+\item La \concepto{tasa natural de paro}, $U^n$, es la que hay cuando la inflación es la esperada (y sin perturbaciones de oferta). Para \autor{Friedman}, es «el nivel que resultaría del sistema walrasiano de ecuaciones de equilibrio general, siempre que incorpore las características estructurales reales de los mercados de trabajo y de bienes» \parencite[8]{Friedman1968Role}: las imperfecciones del mercado, la variabilidad de la oferta y la demanda, el coste de buscar información sobre vacantes y trabajadores, los costes de movilidad.\footnote{La tasa natural no es constante: cambia con la composición de la población activa, la tecnología, las instituciones y las políticas. Tampoco es un mínimo irreductible ni un objetivo, sino una referencia para saber cuánto paro es cíclico. Su versión empírica más usada en Europa es la NAWRU (\emph{non-accelerating wage rate of unemployment}), la tasa de paro que no acelera los salarios, que estima la Comisión Europea: en 2025, el 12,1~\% en España y el 6,6~\% en la zona del euro \parencite{CE2026AMECO}.}
+  \begin{itemize}
+  \item «Natural» no quiere decir inmutable ni deseable: el salario mínimo o el poder de los sindicatos la elevan y unas mejores oficinas de empleo la bajan. \autor{Friedman} usa el adjetivo, como \autor{Wicksell} con el tipo de interés natural, para separar las fuerzas reales de las monetarias.
+  \end{itemize}
+\item \emph{Hay una curva de corto plazo para cada inflación esperada} (gráfico~\ref{fig:phillips-aumentada}):
+  \begin{itemize}
+  \item partimos de $A$, con $U=U^n$ e inflación estable y esperada;
+  \item una expansión monetaria sube los precios; con $\pi^e$ dada, el salario real cae, las empresas contratan más y los trabajadores, que confunden la subida del salario nominal con una del real, aceptan: el paro baja a $U_1$ y la inflación sube a $\pi_1$ (punto $B$);
+  \item al ver que su salario real no ha subido, los trabajadores revisan sus expectativas, $\pi^e=\pi_1$, y piden más salario nominal: el salario real vuelve a su nivel y el paro, a $U^n$, con más inflación que al principio (punto $C$).
+  \end{itemize}
+  La curva de largo plazo, en la que $\pi=\pi^e$, es \emph{vertical} en $U^n$.
+\item Con expectativas adaptativas, $\pi^e_t=\pi_{t-1}$, y sin perturbaciones de oferta, \eqref{eq:phillips-aumentada} es la \concepto{curva aceleracionista}:
+  \begin{equation}
+  \Delta\pi_t\equiv\pi_t-\pi_{t-1}=-a\,\big(U_t-U^n\big) \label{eq:aceleracionista}
+  \end{equation}
+  Mantener el paro en $U_1<U^n$ exige que la inflación suba cada periodo: de $C$ hay que pasar a $D$, con $\pi_2>\pi_1$, y así sucesivamente. Es la \emph{hipótesis aceleracionista}, y de ahí el nombre de NAIRU: la tasa de paro que no acelera la inflación.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La curva de \autor{Phillips} aumentada con expectativas: corto y largo plazo}\label{fig:phillips-aumentada}
+\grafico[0.6\textwidth]{phillips-aumentada}
+\fuente{elaboración propia a partir de \textcite{Friedman1968Role} y \textcite{Phelps1967Phillips}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item «Siempre hay una disyuntiva temporal entre inflación y paro; no hay una disyuntiva permanente», y la temporal no viene de la inflación en sí, sino de la inflación no anticipada \parencite[11]{Friedman1968Role}.
+\item La política de demanda solo reduce el paro por debajo de $U^n$ mientras la inflación no esté anticipada. Con expectativas adaptativas, los errores de previsión se van incorporando y el paro vuelve a su tasa natural, con más inflación.
+\item La política monetaria no puede fijar el paro: debe ocuparse de la inflación y, como mucho, ayudar a estabilizar la economía en torno a $U^n$. Para bajar $U^n$ hacen falta \emph{políticas de oferta}, que actúen sobre esas «características estructurales».
+\item Bajar la inflación cuesta paro mientras las expectativas se ajustan: es el coste de las desinflaciones \vertema{3.A.41}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item A comienzos de los 70 la inflación dejó de responder al paro como predecía la curva original. En el Reino Unido, el paro subió del 3,5~\% al 4,1~\% entre 1969 y 1971 y la inflación, en vez de bajar, pasó del 5,2~\% al 9,4~\% \parencite{BoE2017Millennium}. En Estados Unidos el paro subió del 3,5~\% al 6~\% \parencite{BLS2026UNRATE} y la inflación, que aún subió en 1970, solo bajó en 1971, del 5,4~\% de 1969 al 4,2~\% \parencite{BLS2026CPI}: poco para tanto paro.
+\item Tras el choque del petróleo de 1973 llegó la \emph{estanflación}: en 1975, Estados Unidos tenía un paro del 8,5~\% y una inflación del 9,1~\% \parencite{BLS2026UNRATE,BLS2026CPI}. Las curvas de corto plazo se habían desplazado hacia arriba con la inflación esperada, como habían anunciado \autor{Friedman} y \autor{Phelps}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{Aportación}: separa el corto del largo plazo y pone las expectativas en el centro de la macroeconomía. La curva aumentada \eqref{eq:phillips-aumentada} sigue siendo la base de las curvas de \autor{Phillips} actuales.
+\item \emph{Críticas}:
+  \begin{itemize}
+  \item \emph{con expectativas adaptativas, los agentes se equivocan siempre en la misma dirección}: mientras dura la aceleración, prevén menos inflación de la que hay, año tras año, lo que no casa con la racionalidad que se les supone. Es la crítica de la nueva macroeconomía clásica;
+  \item \emph{a inflación muy baja, la curva de largo plazo puede no ser vertical}: si el salario nominal no baja, algo de inflación facilita el ajuste de los salarios reales y reduce el paro de forma permanente \parencite{AkerlofDickensPerry1996};
+  \item \emph{se ha aplanado}: el efecto del paro sobre la inflación, dadas las expectativas, cayó hasta principios de los 90 y desde entonces es pequeño \parencite{BlanchardCeruttiSummers2015Inflation}; con las expectativas ancladas, la inflación vuelve a depender del \emph{nivel} del paro, como en los años 60 \parencite{Blanchard2016Phillips};
+  \item \emph{no es lineal}: la subida de la inflación de 2021-2023, con mercados de trabajo muy tensos, recuperó la convexidad de la curva original: plana con mucho paro y empinada con muchas vacantes por parado \parencite{BenignoEggertsson2023}.
+  \end{itemize}
+\item Queda abierto, sobre todo, \emph{de qué depende} $U^n$. Antes de responderlo, veamos qué cambia al tomarse en serio la racionalidad de las expectativas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Nueva macroeconomía clásica}\label{sec:nmc}
+
+\begin{itemize}
+\item Con \emph{expectativas racionales} \parencite{Muth1961Rational}, los agentes usan toda la información disponible y no cometen errores sistemáticos. Despejando el paro de \eqref{eq:phillips-aumentada},
+  \begin{equation*}
+  U_t=U^n-\tfrac{1}{a}\big(\pi_t-\pi^e_t\big)+\tfrac{1}{a}\,\varepsilon_t
+  \end{equation*}
+  el paro solo se separa de su tasa natural por las \emph{sorpresas}. Es la curva de oferta de \textcite{Lucas1972Expectations}, que la deriva con su modelo de islas: los productores confunden una subida general de los precios con una de su precio relativo.
+\item \emph{Implicaciones}: la curva de \autor{Phillips} es vertical también a corto plazo salvo sorpresas, y la política monetaria sistemática, la que el público puede prever, no mueve el paro (\emph{proposición de ineficacia}, \textcite{SargentWallace1975Rational}). La crítica de \autor{Lucas} añade que las relaciones estimadas cambian cuando cambia la política, porque cambian las expectativas: la curva de \autor{Phillips} de los años 60 no era un menú estable \vertema{3.A.6}.
+\item \emph{Valoración}: deja la tasa natural intacta y la hace aún más central, pero en un mundo de mercados que se vacían el paro sigue siendo voluntario o fruto de errores. Explicar qué fija $U^n$ con agentes que optimizan es lo que hacen los modelos de búsqueda.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Microfundamentación de la tasa natural de paro: búsqueda y emparejamiento}\label{sec:busqueda-natural}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \autor{Friedman} definió la tasa natural de palabra; faltaba un modelo de por qué hay paro cuando la economía está en equilibrio. \textcite{Phelps1968Money} y los trabajos que reunió en \textcite{Phelps1970Microeconomic} lo buscaron en la información imperfecta: buscar empleo lleva tiempo. Los modelos de búsqueda y emparejamiento de \autor{Diamond}, \autor{Mortensen} y \autor{Pissarides} dan a la tasa natural un fundamento en los \emph{flujos} del mercado de trabajo \parencite{Pissarides2000Equilibrium} \vertema{3.A.26}.
+\item El propio \autor{Friedman} advertía que su tasa natural no tiene por qué ser la de paro igual a vacantes \parencite[8]{Friedman1968Role}: en equilibrio conviven parados y vacantes.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Cada periodo se rompe una fracción $s$ de los empleos (la \emph{tasa de separación}).
+\item Cada parado encuentra empleo con probabilidad $f(\theta)$, que crece con la \emph{tensión del mercado}, $\theta\equiv V/U$: las vacantes por parado ($\theta$ no es aquí la aversión al riesgo, y $f(\theta)$ no es la $f(U)$ de \autor{Lipsey}).
+\item El salario se negocia en cada emparejamiento, y las empresas abren vacantes mientras les compense.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item El paro cambia con las entradas menos las salidas, $\dot U=s\,(1-U)-f(\theta)\,U$. En el estado estacionario, las entradas en el paro igualan a las salidas, $s\,(1-U)=f(\theta)\,U$, y la tasa natural es
+  \begin{equation}
+  U^n=\frac{s}{s+f(\theta^*)} \label{eq:tasa-natural-flujos}
+  \end{equation}
+  con $\theta^*$ la tensión de equilibrio, que fijan juntas la creación de empleo y la negociación salarial: es el paro de equilibrio $U^*$ del modelo de búsqueda \vertema{3.A.26}.
+  \begin{itemize}
+  \item Por ejemplo, con una tasa de separación mensual del 2~\% y una probabilidad mensual de encontrar empleo del 30~\%, $U^n=0{,}02/0{,}32\approx6{,}3~\%$.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{De qué depende}: la tasa natural sube con las separaciones y con todo lo que frena las salidas del paro: un emparejamiento menos eficiente (servicios de empleo, movilidad geográfica, cualificaciones que no encajan) o menos vacantes por parado. Prestaciones más generosas o más poder negociador suben el salario negociado, se abren menos vacantes y sube $U^n$.
+\item \emph{La curva de \autor{Beveridge}}, que relaciona paro y vacantes: los movimientos \emph{a lo largo} de la curva son ciclo; sus \emph{desplazamientos}, cambios de la tasa natural (gráfico~\ref{fig:beveridge-lectura}). En España, la curva se desplazó hacia fuera en 2008-2009 porque empeoró el emparejamiento: los parados que venían de la construcción no tenían las cualificaciones de las vacantes de otros sectores \parencite{BoscaEtAl2017Beveridge}.
+\item \emph{¿Es óptima?} No tiene por qué. Solo lo es si el poder negociador de los trabajadores, $\gamma$, coincide con la elasticidad del emparejamiento respecto al paro, $\alpha$: es la \concepto{condición de \autor{Hosios}}, $\gamma=\alpha$ \parencite{Hosios1990Efficiency} \vertema{3.A.26}. «Natural» no quiere decir deseable.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La curva de \autor{Beveridge}: movimientos a lo largo y desplazamientos}\label{fig:beveridge-lectura}
+\grafico[0.55\textwidth]{beveridge-lectura}
+\fuente{elaboración propia a partir de \textcite{BlanchardDiamond1989} y \textcite[cap.~9]{Cahuc2014Labor}.}
+\end{figure}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item \emph{Aportación}: explica el paro friccional y la coexistencia de paro y vacantes con agentes que optimizan, y dice qué políticas bajan la tasa natural.
+\item \emph{Limitación}: con salarios que se renegocian cada periodo, el paro y las vacantes responden muy poco a los cambios de productividad \parencite{Shimer2005Cyclical}. Y el paro que explica es friccional, no involuntario. Hacen falta salarios que no vacíen el mercado: es lo que aporta el análisis neokeynesiano.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque}: la curva de \autor{Phillips} parecía un menú; con expectativas, la disyuntiva es solo de corto plazo y el paro gravita en torno a una tasa natural que fijan la estructura del mercado y sus flujos, y que la ley de \autor{Okun} une con la producción potencial. Pero en Europa el paro subió en los 70 y en los 80 y no volvió: ¿por qué hay paro involuntario en equilibrio y por qué no baja? La respuesta exige salarios y precios fijados por agentes con poder de mercado: es la NAIRU.
+\end{itemize}
+
+% ==========================================================================
+\section{Análisis neokeynesiano del desempleo de equilibrio}\label{sec:neokeynesiano}
+\minutos{12,5}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: cuando salarios y precios los fijan agentes con poder de mercado, el paro de equilibrio, la NAIRU, incluye paro involuntario, y solo lo bajan las políticas que moderan lo que piden trabajadores y empresas. Pero si ese equilibrio depende del paro pasado, las recesiones dejan huella y la política de demanda vuelve a importar a largo plazo.
+\item Una vez vista la tasa natural, pasamos a la explicación del paro de equilibrio que se impone en Europa desde los años 80, la de la nueva economía keynesiana.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Nueva economía keynesiana}\label{sec:nek}
+
+\begin{itemize}
+\item \emph{Idea}: la nueva economía keynesiana acepta lo que habían traído monetaristas y nuevos clásicos (expectativas racionales, agentes que optimizan, modelos con microfundamentos), pero añade \emph{competencia imperfecta} y \emph{rigideces} nominales y reales \vertema{3.A.7}. Con ellas, el paro puede ser a la vez \emph{involuntario} y \emph{de equilibrio}: no es un error de previsión ni un desajuste pasajero, sino el resultado de decisiones óptimas de empresas y trabajadores.
+\item \emph{Advertencia}: no hay un marco único. Hay varios modelos de equilibrio parcial que explican por qué el salario real no baja aunque haya parados, y un modelo agregado que los junta, el de fijación de salarios y precios. A diferencia de los de búsqueda, no tratan de explicar el paro friccional, sino el involuntario.
+\item \emph{Tasa natural y NAIRU}: en lugar de la tasa natural, los neokeynesianos hablan de la NAIRU, la tasa de paro con la que la inflación no se acelera. Para \textcite{BallMankiw2002NAIRU}, la NAIRU es «aproximadamente un sinónimo» de la tasa natural: las 2 son paro de equilibrio con la inflación estable, y lo que cambia es el modelo con que se explican (anexo~\ref{anexo:tnp-nairu}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelos neokeynesianos de equilibrio parcial}\label{sec:equilibrio-parcial}
+
+\begin{itemize}
+\item Antes del modelo agregado, veamos de dónde sale su pieza central: una \emph{curva de fijación de salarios} en la que el salario real sube cuando baja el paro. Sus microfundamentos son los modelos de determinación de salarios \vertema{3.A.27}:
+  \begin{itemize}
+  \item \emph{negociación colectiva}: un sindicato y una empresa negocian el salario, y la empresa elige después el empleo (\emph{derecho a gestionar}); con menos paro, el sindicato tiene mejores alternativas y pide más;
+  \item \emph{salarios de eficiencia}: la empresa paga más que el salario que vaciaría el mercado para que sus trabajadores no se escaqueen; en el modelo de \textcite{ShapiroStiglitz1984Equilibrium}, el salario que lo consigue (la \emph{condición de no escaqueo}) es mayor cuanto menor es el paro, porque al despedido le cuesta menos encontrar otro empleo: el paro es lo que disciplina a los trabajadores;
+  \item \emph{contratos implícitos}: la empresa asegura a trabajadores con aversión al riesgo un salario estable a lo largo del ciclo; explican la rigidez del salario real, pero no el paro involuntario.
+  \end{itemize}
+\item \emph{Evidencia}: en muchos países, el salario de una región baja cuando sube su tasa de paro, con una elasticidad en torno a $-0{,}1$. Es la \emph{curva salarial} de \textcite{BlanchflowerOswald1994Wage}, la pendiente negativa que predicen la negociación y los salarios de eficiencia.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La NAIRU}\label{sec:nairu}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La idea es de \textcite{ModiglianiPapademos1975Targets}, que la llamaron NIRU (\emph{non-inflationary rate of unemployment}): la tasa de paro por encima de la cual cabe esperar que la inflación baje. La presentaron como un concepto empírico, que existe sea cual sea la forma de la curva de \autor{Phillips} a largo plazo: vertical, con pendiente negativa o, como pensaban ellos, plana con mucho paro y casi vertical con poco.
+\item Su modelo de referencia es el de fijación de salarios y precios de \textcite{LayardNickell1985Causes}, desarrollado en \textcite{LayardNickellJackman1991Unemployment} y recogido en los manuales actuales \parencite[cap.~2]{CarlinSoskice2015Macroeconomics}. Nació para explicar el paro europeo de los 70 y los 80, con sindicatos fuertes y empresas con poder de mercado.
+\item \emph{La pregunta}: ¿qué tasa de paro hace compatibles el salario real que piden los trabajadores y el que dejan las empresas, sin que se acelere la inflación?
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Población activa}: dada, $\overline L$; con $L$ ocupados, la tasa de paro es $U=(\overline L-L)/\overline L$.
+\item \emph{Salarios}: los fijan sindicatos y empresas negociando (o la empresa, para motivar) antes de conocer los precios. Se fija el salario nominal, $W$, con los precios esperados, $P^e$, y la productividad esperada, $\mathrm{PAT}^e$.
+\item \emph{Precios}: las empresas tienen poder de mercado (competencia monopolística) y fijan el precio con un margen $\mu$ sobre el coste laboral unitario, tanto mayor cuanto menos elástica es su demanda \vertema{3.A.18}.
+\item \emph{Productividad}: la productividad aparente del trabajo, $\mathrm{PAT}=Y/L$, no depende del empleo.
+\item \emph{Plazos}: a corto plazo, la demanda agregada fija la producción y el empleo; a medio plazo, cuando las expectativas se cumplen, los fijan las 2 curvas.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Curva de fijación de salarios} (WS, \emph{wage setting}): el salario real que se negocia sube cuando baja el paro, porque mejoran las alternativas de los trabajadores fuera de la empresa y una huelga le cuesta más a la empresa. Es la curva que dan la negociación con derecho a gestionar y los salarios de eficiencia \vertema{3.A.27}:
+  \begin{equation}
+  \frac{W}{P^e}=F(U,Z)\cdot\mathrm{PAT}^e,\qquad F_U<0 \label{eq:ws}
+  \end{equation}
+  y $F_Z>0$, con $Z$ los factores institucionales que suben el salario a cualquier nivel de paro (prestaciones por desempleo, poder sindical, protección del empleo, impuestos sobre el trabajo). Como el salario se negocia con la productividad esperada, lo que se reclama es una parte, $F(U,Z)$, de lo que se espera producir.
+\item \emph{Curva de fijación de precios} (PS, \emph{price setting}): con el coste laboral unitario, $\mathrm{CLU}=WL/Y=W/\mathrm{PAT}$, el precio y el salario real que implica son
+  \begin{equation}
+  P=(1+\mu)\,\frac{W}{\mathrm{PAT}}\quad\Longrightarrow\quad\frac{W}{P}=\frac{\mathrm{PAT}}{1+\mu} \label{eq:ps}
+  \end{equation}
+  Es el salario real que dejan las empresas: de lo que produce cada trabajador, $\mathrm{PAT}$, se quedan $\mu\,\mathrm{PAT}/(1+\mu)$ como beneficio. Con $\mu$ y $\mathrm{PAT}$ constantes, la PS es horizontal.\footnote{La PS puede tener pendiente. Con rendimientos decrecientes, al subir el paro sube la productividad del trabajo y la PS crece con $U$. Y el margen puede ser contracíclico: cuando las ventas son altas, a las empresas les tienta más romper la colusión tácita bajando el precio, de modo que el margen sube con el paro \parencite{RotembergWoodford1991Markups}. En los datos, sin embargo, la productividad del trabajo es procíclica, porque las empresas retienen plantilla en las recesiones. Si los efectos se compensan, la PS es horizontal, que es el supuesto habitual.}
+\item \emph{Equilibrio}: a medio plazo las expectativas se cumplen, $P^e=P$ y $\mathrm{PAT}^e=\mathrm{PAT}$, y el salario real que se negocia tiene que coincidir con el que dejan las empresas. Igualando \eqref{eq:ws} y \eqref{eq:ps}, la tasa de paro que lo consigue es la \concepto{NAIRU}:
+  \funcionclave[eq:nairu]{F(U^n,Z)=\frac{1}{1+\mu}}
+  Es el corte de las 2 curvas (gráfico~\ref{fig:ws-ps}). Con una forma lineal de $F$, la NAIRU sale en forma cerrada (anexo~\ref{anexo:nairu-lineal}).
+\item \emph{Interpretación}: es un \emph{conflicto distributivo}. Los trabajadores reclaman una parte $F(U,Z)$ de lo que se produce y las empresas, una parte $\mu/(1+\mu)$. Si las 2 suman más que la unidad, salarios y precios se persiguen. El paro es lo que modera las pretensiones de los trabajadores hasta que encajan: $U^n$ es el paro que hace falta para que lo que reclaman unos y otros sea compatible.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La NAIRU: curvas de fijación de salarios (WS) y de precios (PS)}\label{fig:ws-ps}
+\grafico[0.55\textwidth]{ws-ps}
+\fuente{elaboración propia a partir de \textcite{LayardNickellJackman1991Unemployment} y \textcite[cap.~2]{CarlinSoskice2015Macroeconomics}.}
+\end{figure}
+
+\begin{notaopositor}
+Muchos manuales dibujan la WS creciente en el plano (empleo, salario real), $(L,W/P)$. No es un error, pero lo que se lee entonces en el eje horizontal no es la NAIRU, sino el \emph{número} de parados que le corresponde, $\overline L-L^n=U^n\,\overline L$. Aquí se dibuja en el plano $(U,W/P)$, con los mismos ejes que las fórmulas: la WS decreciente y la PS horizontal. El plano $(L,W/P)$ se usa en el anexo~\ref{anexo:tnp-nairu} para comparar con la oferta competitiva de trabajo.
+\end{notaopositor}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Paro involuntario de equilibrio}: en $U^n$ hay personas que trabajarían al salario real vigente y no encuentran empleo, porque el salario no lo fija un mercado competitivo, sino la negociación (o la empresa, para motivar). La NAIRU no es un concepto de vaciado del mercado, sino el paro que hace falta para que las imperfecciones de los mercados de bienes y de trabajo no generen inflación.
+\item \emph{Políticas de oferta}: bajan la NAIRU las que desplazan las curvas (gráfico~\ref{fig:ws-ps-desplazamientos}):
+  \begin{itemize}
+  \item \emph{prestaciones y poder sindical} ($Z$): si suben, la WS se desplaza hacia arriba y $U^n$ sube; reducir la cuantía o la duración de las prestaciones la baja;
+  \item \emph{competencia en los mercados de bienes} ($\mu$): un margen menor sube la PS y baja $U^n$; la defensa de la competencia y la liberalización de los mercados de productos son también política de empleo;
+  \item \emph{cuña fiscal}: los impuestos sobre la renta y las cotizaciones de los trabajadores reducen el salario neto, y los sindicatos piden más salario bruto (sube la WS); las cotizaciones de las empresas encarecen el trabajo y bajan el salario que dejan (baja la PS); a largo plazo, su efecto depende de que los trabajadores acaben aceptando un salario neto menor;
+  \item \emph{productividad y formación}: como el salario se negocia con la productividad esperada, un \emph{nivel} de productividad más alto, una vez esperado, no cambia $U^n$: suben a la vez lo que piden los trabajadores y lo que dejan las empresas; solo la mueven las sorpresas (anexo~\ref{anexo:nairu-lineal}). La formación baja el paro de equilibrio por otra vía: reduce el desajuste de cualificaciones y mejora el emparejamiento (\ref{sec:busqueda-natural}).
+  \end{itemize}
+\item \emph{Política de demanda}: mueve el paro a corto plazo, pero no la NAIRU:
+  \begin{itemize}
+  \item si una expansión lleva el paro por debajo de la NAIRU, $U_t<U^n$, los sindicatos piden un salario real mayor que el que permite el margen: la WS queda por encima de la PS;
+  \item salarios y precios se persiguen: con $\pi^e_t=\pi_{t-1}$, cada ronda de negociación incorpora la inflación pasada y la inflación se acelera, como en la curva aceleracionista \eqref{eq:aceleracionista} (gráfico~\ref{fig:phillips-aumentada});
+  \item la economía vuelve a $U^n$ cuando la demanda se contrae, sola (al subir los precios caen los saldos reales y sube el tipo de interés) o por la respuesta del banco central \parencite{CarlinSoskice2015Macroeconomics}, con más inflación que al principio;
+  \item sin histéresis, la NAIRU no guarda memoria de la expansión: «agua pasada no mueve molino». El paso a paso está en el anexo~\ref{anexo:demanda-pasos}.
+  \end{itemize}
+\item \emph{Perturbaciones de oferta}: una subida del precio del petróleo actúa como un margen mayor sobre el coste laboral (baja la PS); si los salarios no se moderan, sube el paro de equilibrio. Es la explicación de \textcite{BrunoSachs1985Economics} del paro europeo de los 70.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Determinantes de la NAIRU: desplazamientos de la WS y de la PS}\label{fig:ws-ps-desplazamientos}
+\grafico[0.85\textwidth]{ws-ps-desplazamientos}
+\fuente{elaboración propia a partir de \textcite{LayardNickellJackman1991Unemployment}.}
+\end{figure}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{Europa frente a Estados Unidos}: el paro europeo subió en los 70 y los 80 y no volvió a bajar; el estadounidense, sí \parencite{Blanchard2006European}. La explicación ha ido cambiando:
+  \begin{itemize}
+  \item en los 70, \emph{perturbaciones con salarios rígidos}: el petróleo y la desaceleración de la productividad exigían moderar los salarios reales, y no se moderaron \parencite{BrunoSachs1985Economics};
+  \item en los 90, \emph{instituciones}: el paro es mayor con prestaciones más generosas y largas y con negociación colectiva de mucha cobertura y poca coordinación, y menor con más políticas activas \parencite{Nickell1997Unemployment}; los países con negociación muy centralizada o muy descentralizada lo hacen mejor que los intermedios \parencite{CalmforsDriffill1988} \vertema{3.A.27};
+  \item la síntesis, \emph{perturbaciones e instituciones juntas}: las mismas perturbaciones suben más el paro donde las instituciones del mercado de trabajo son más rígidas \parencite{BlanchardWolfers2000Role}.
+  \end{itemize}
+\item \emph{Estados Unidos en los 90}: la NAIRU bajó cuando se aceleró la productividad, porque las pretensiones salariales tardaron en ajustarse \parencite{BallMankiw2002NAIRU}.
+\item \emph{Medida}: la NAIRU no se observa y se estima con mucha incertidumbre. En Estados Unidos, el intervalo de confianza al 95~\% iba del 4,3~\% al 7,3~\% \parencite{StaigerStockWatson1997NAIRU}, y \textcite{EstrellaMishkin1999NAIRU} la tratan como un concepto de corto plazo, útil para prever la inflación, distinto de la tasa natural de largo plazo.
+\item \emph{España}: la NAWRU que estima la Comisión Europea pasó del 13,4~\% en 2005 al 16,9~\% en 2013 y ha bajado al 12,1~\% en 2025, casi el doble que la de la zona del euro, del 6,6~\% \parencite{CE2026AMECO}. Desde 2023, el paro efectivo está por debajo de ella (gráfico~\ref{fig:paro-nawru-espana}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Tasa de paro y NAWRU: España y zona del euro, 1980-2027}\label{fig:paro-nawru-espana}
+\grafico[0.75\textwidth]{paro-nawru-espana}
+\fuente{elaboración propia a partir de \textcite{CE2026AMECO} (NAWRU) y \textcite{CE2026AMECOParo} (tasa de paro), actualización del 3/6/2026; 2026 y 2027, previsiones; método de estimación de la NAWRU en \textcite{Havik2014Potencial}.}
+\end{figure}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{Aportación}: explica un paro de equilibrio que incluye paro involuntario, ordena las políticas de oferta y da a los bancos centrales y a la Comisión Europea una referencia con la que trabajar \vertema{3.A.36} \vertema{3.A.42}. Además, une la NAIRU con la curva de \autor{Phillips}: con la forma lineal de la WS, su pendiente es la de la curva aumentada (anexo~\ref{anexo:nairu-lineal}).
+\item \emph{Críticas}:
+  \begin{itemize}
+  \item \emph{se estima mal}, y guiar la política por ella es arriesgado; por eso se la ha dado por muerta muchas veces, y siempre vuelve: «¡La NAIRU ha muerto! ¡Larga vida a la NAIRU!», tituló \textcite{Jimeno2018NAIRU};
+  \item \emph{sus expectativas y su dinámica son muy simples}: la nueva economía keynesiana de segunda generación la reconstruye con expectativas racionales y salarios rígidos (\ref{sec:nek-desempleo});
+  \item \emph{se mueve con el paro}: la NAWRU de España ha seguido al paro con retraso (gráfico~\ref{fig:paro-nawru-espana}); si la NAIRU depende del paro efectivo, deja de ser un ancla independiente de la demanda;
+  \item \emph{puede no ser única}: para \textcite{Farmer2010Expectations}, no hay una tasa natural. En los modelos de búsqueda, la negociación de \autor{Nash} es una forma arbitraria de cerrar el modelo; si se sustituye por una \emph{función de creencias} (\emph{belief function}), hay infinitos equilibrios y el paro lo fijan las expectativas, sin volver a un nivel natural \parencite{Farmer2013Natural} \vertema{3.A.26}.
+  \end{itemize}
+\item Y si hay muchos equilibrios, ¿por qué iba a volver el paro al mismo tras una recesión? Es la pregunta de la persistencia.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La persistencia del desempleo}\label{sec:persistencia}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La NAIRU supone un paro de equilibrio que fija la estructura del mercado. Su principal problema es que, tras una recesión, el paro tarda mucho en volver, o no vuelve:
+  \begin{itemize}
+  \item en el Reino Unido no pasó del 3,3~\% entre 1945 y 1970, y a mediados de los 80 superaba el 12~\%; en la Comunidad Europea se dobló entre 1970 y 1980 y volvió a doblarse después \parencite{BlanchardSummers1986Hysteresis};
+  \item en España, cada crisis ha dejado un máximo más alto: el 19,7~\% en 1987, el 24,1~\% en 1994 y el 26,1~\% en 2013, frente a mínimos del 15,5~\% en 1990-1991 y del 8,2~\% en 2007 \parencite{CE2026AMECOParo}.
+  \end{itemize}
+\item \concepto{Persistencia}: el paro vuelve a su nivel de equilibrio, pero despacio. \concepto{Histéresis}: no vuelve, porque el propio equilibrio cambia con el paro pasado. El término viene de la física (un metal que sigue imantado cuando desaparece el campo magnético), y lo trajeron a la macroeconomía \textcite{BlanchardSummers1986Hysteresis}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Inflación}: la curva aceleracionista \eqref{eq:aceleracionista}, con expectativas adaptativas.
+\item \emph{Tasa natural}: ya no es constante; depende del paro pasado y de un nivel, $\overline U^n$, que fija la estructura del mercado (los $Z$ y el $\mu$ de la NAIRU).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Ecuación}: una forma sencilla de escribir que la tasa natural depende del paro del periodo anterior es
+  \funcionclave[eq:histeresis]{U^n_t=\lambda_h\,U_{t-1}+(1-\lambda_h)\,\overline U^n,\qquad 0\le\lambda_h\le 1}
+  con $\lambda_h$ el grado de histéresis (gráfico~\ref{fig:histeresis-sendas}):
+  \begin{itemize}
+  \item $\lambda_h=0$, \emph{sin histéresis}: es la NAIRU de antes; pasada la perturbación, el paro vuelve a $\overline U^n$;
+  \item $0<\lambda_h<1$, \emph{persistencia}: vuelve, pero despacio, pasando por NAIRU intermedias;
+  \item $\lambda_h=1$, \emph{histéresis pura}: no hay un paro de equilibrio único; el de ayer es el de equilibrio hoy, y el paro sigue un paseo aleatorio.
+  \end{itemize}
+\item \emph{En la curva de \autor{Phillips}}: llevando \eqref{eq:histeresis} a la curva aceleracionista,
+  \begin{equation}
+  \pi_t-\pi_{t-1}=-a\,\big(U_t-U^n_t\big)=-a\,\big[(U_t-U_{t-1})+(1-\lambda_h)\,(U_{t-1}-\overline U^n)\big] \label{eq:phillips-histeresis}
+  \end{equation}
+  Con histéresis pura, la inflación depende de la \emph{variación} del paro y no de su nivel: solo baja mientras el paro sube, y cualquier paro estable es compatible con una inflación estable. Es el «límite de velocidad» que ya intuía \autor{Phillips} (\ref{sec:phillips-original}).
+\item \emph{¿Por qué el paro de hoy sube el de mañana?} \textcite{BlanchardSummers1986Hysteresis} proponen 3 vías, y la tercera es para ellos la principal:
+  \begin{itemize}
+  \item \emph{capital físico}: en una recesión cae la inversión y se desguaza capacidad; con menos capital por trabajador baja el salario que pueden pagar las empresas (la PS cae) y el paro de equilibrio sube hasta que el capital se reconstruye \vertema{3.A.34};
+  \item \emph{capital humano}: el parado pierde cualificación y contactos, y se desanima; las empresas, que no ven su productividad, contratan antes a quien lleva menos tiempo parado \parencite{BlanchardDiamond1994Ranking}. Los parados de larga duración apenas compiten por los empleos ni moderan los salarios, y la curva de \autor{Beveridge} se aleja del origen \vertema{3.A.26};
+  \item \emph{insiders y outsiders}: «quien se fue a Sevilla perdió su silla». Los salarios los negocian los empleados (\emph{insiders}), que quieren asegurar su puesto, no que vuelvan los despedidos (\emph{outsiders}). Tras una recesión, los que quedan, que son menos, fijan salarios que solo garantizan su propio empleo, y el empleo no se recupera cuando pasa la perturbación. Los costes de rotación que dan poder a los \emph{insiders} son el centro del modelo de \textcite{LindbeckSnower1988Insider} \vertema{3.A.27}.
+  \end{itemize}
+  En el lenguaje de la NAIRU, los 2 últimos suben la WS para cada tasa de paro y el primero baja la PS.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Sendas del paro tras una recesión según el grado de histéresis}\label{fig:histeresis-sendas}
+\grafico[0.6\textwidth]{histeresis-sendas}
+\fuente{elaboración propia a partir de \textcite{BlanchardSummers1986Hysteresis}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{La política de demanda vuelve a importar a largo plazo}: una recesión larga sube el paro de equilibrio, y una expansión prolongada, con la economía a alta presión, puede bajarlo. De aquellos polvos vienen estos lodos.
+\item \emph{Las desinflaciones salen más caras}: el paro que causan no se va del todo \vertema{3.A.41}.
+\item \emph{La política monetaria debe mirar más al empleo}: con \emph{insiders} y \emph{outsiders}, la política óptima da mucho peso a estabilizar el empleo, y tanto más cuanto mayor es la histéresis \parencite{Gali2022Insider} \vertema{3.A.36}.
+\item \emph{Las políticas activas y las instituciones}, centradas en los parados de larga duración (formación, orientación, incentivos a la contratación), que son los que dejan de presionar sobre los salarios; y una negociación colectiva que tenga en cuenta a los \emph{outsiders} \vertema{3.A.27}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{BlanchardSummers1986Hysteresis}: el paro europeo de los 80 se comporta como si dependiera mucho de su propia historia; el estadounidense, mucho menos.
+\item \textcite{Ball2009Hysteresis}: en 20 economías avanzadas, las grandes subidas de la NAIRU coinciden con desinflaciones, y las bajadas, con repuntes de la inflación, como predice la histéresis. En España estima que la NAIRU pasó del 6,5~\% en 1980 al 14,4~\% en 1995, tras la desinflación de finales de los 80 y principios de los 90.
+\item \textcite{Gali2015Hysteresis}: el paro de la zona del euro tiene un componente no estacionario importante; algunas perturbaciones lo desplazan para siempre.
+\item En la producción: de 122 recesiones en 23 economías avanzadas, unas 2 terceras partes dejaron el PIB por debajo de su tendencia previa incluso tras la recuperación \parencite{BlanchardCeruttiSummers2015Inflation}.
+\item En España, la NAWRU estimada siguió al paro con retraso: subió 3,5 puntos entre 2005 y 2013, mientras el paro subía 17, y ha bajado con él (gráfico~\ref{fig:paro-nawru-espana}). Es lo que predice la histéresis, aunque parte del parecido viene de cómo se estima: con un filtro sobre una curva de \autor{Phillips} de salarios, que tiende a seguir al paro observado \parencite{Havik2014Potencial}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{Aportación}: explica por qué el paro europeo y el español no vuelven a su nivel tras las crisis y da a la política de demanda un papel duradero.
+\item \emph{Limitaciones}:
+  \begin{itemize}
+  \item \emph{es difícil de distinguir}: una tasa natural que cambia despacio por razones estructurales y una que sigue al paro por histéresis dejan datos parecidos;
+  \item \emph{la evidencia no es concluyente}: tras revisarla, \textcite{Blanchard2018Natural} la considera sugerente, pero no concluyente, y propone mantener la tasa natural como hipótesis de partida sin descartar que la demanda tenga efectos duraderos;
+  \item \emph{el paro depende también de reglas y relaciones de poder} (legislación laboral, negociación colectiva), como subraya la economía institucional; \textcite{BlanchardWolfers2000Role} son su versión cuantitativa. Y el enfoque del desequilibrio de \autor{Malinvaud} distingue el paro keynesiano, por falta de demanda, del clásico, por salarios reales altos \vertema{3.A.4}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El modelo nuevo keynesiano con desempleo}\label{sec:nek-desempleo}
+
+\begin{itemize}
+\item La nueva economía keynesiana de segunda generación lleva estas ideas a modelos de equilibrio general dinámicos con expectativas racionales:
+  \begin{itemize}
+  \item \textcite{BlanchardGali2010Labor} introducen en el modelo nuevo keynesiano canónico fricciones de búsqueda y un salario real rígido. Estabilizar la inflación ya no basta para estabilizar el paro (se rompe la \emph{divina coincidencia}), y en los mercados de trabajo \emph{escleróticos}, con pocas entradas y salidas del paro, este es más persistente \vertema{3.A.7};
+  \item \textcite{Gali2011Return} define el paro como la diferencia entre quienes querrían trabajar al salario vigente y quienes trabajan, y obtiene una curva de \autor{Phillips} \emph{salarial} parecida a la original de 1958. Su tasa natural, el paro que habría con salarios flexibles, existe por el poder de mercado de los trabajadores: une la tasa natural y la NAIRU.\footnote{Con la notación del temario, $\gamma_{W,t}=\beta\,\mathbb{E}_t[\gamma_{W,t+1}]-\kappa_W\,(U_t-U^n)$ y $U^n=\mu^W/\varphi$, con $\mu^W$ el margen salarial deseado, $\varphi$ la inversa de la elasticidad de \autor{Frisch} y $\kappa_W$ la pendiente de la curva \parencite{Gali2011Return}.}
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque}: la NAIRU es el paro que concilia lo que piden trabajadores y empresas; incluye paro involuntario y solo la bajan las políticas que desplazan la WS y la PS. La histéresis añade que ese equilibrio guarda memoria: las recesiones largas lo suben y la política de demanda vuelve a importar a largo plazo. Los modelos nuevos keynesianos con desempleo recogen las 2 ideas con expectativas racionales.
+\end{itemize}
+
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: En conclusión, la curva de \autor{Phillips} parecía un menú entre inflación y paro; con expectativas, la disyuntiva es solo de corto plazo y el paro gravita en torno a una tasa natural que fijan la estructura del mercado y sus flujos. La NAIRU la explica con poder de mercado: es el paro que concilia salarios y márgenes, e incluye paro involuntario. Y la histéresis muestra que ese equilibrio puede depender de la historia.
+\item \textbf{\emph{Relevancia}}: de esa distinción depende qué paro se combate con demanda y cuál con reformas, cuánto cuesta bajar la inflación y cómo se estiman el PIB potencial y el saldo estructural con los que se juzgan las cuentas públicas.
+\item \textbf{\emph{Extensiones}}: la búsqueda y la curva de \autor{Beveridge} \vertema{3.A.26}; la negociación, los salarios de eficiencia y los \emph{insiders} \vertema{3.A.27}; la curva de \autor{Phillips} en la síntesis y el monetarismo \vertema{3.A.5} y con expectativas racionales \vertema{3.A.6}; la nueva economía keynesiana con desempleo y la divina coincidencia \vertema{3.A.7}; la NAIRU como guía de la política monetaria \vertema{3.A.36} y la inflación \vertema{3.A.41}; la brecha de producción \vertema{3.A.42}, y, para ampliar, el mercado de trabajo español \vertema{4.A.16} y el saldo estructural \vertema{4.B.4}.
+\item \textbf{\emph{Opinión}}: la tasa natural sigue siendo una referencia útil, pero no un destino. En España, con un paro de equilibrio alto y muy sensible al ciclo, conviene tratarla como algo que la política puede mover: para bien, con reformas, y para mal, con recesiones largas.
+\item \textbf{\emph{Idea final}}: volviendo a la pregunta del principio, hay un paro de equilibrio, pero no es ajeno a la historia: de aquellos polvos vienen estos lodos. Por eso no basta con esperar a que el paro vuelva solo; hay que impedir que el de hoy se convierta en el de mañana, protegiendo a las personas más que a los puestos de trabajo, como propone la \emph{flexiseguridad}, y devolviendo pronto a los parados al empleo.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: el mercado de trabajo antes de la curva de \autor{Phillips}}\label{anexo:debate}
+
+\begin{itemize}
+\item Desarrollo del bloque~\ref{sec:debate}, que en el cante se resume. El modelo neoclásico del mercado de trabajo tiene su tema de referencia en \vertema{3.A.25} y el pensamiento de \autor{Keynes}, en \vertema{3.A.4}; aquí se cuenta lo necesario para seguir el debate sobre el paro.\nocite{Gali2013Keynes}
+\end{itemize}
+
+\subsection{Enfoque neoclásico}\label{anexo:debate-neoclasico}
+
+\paragraph{a) Supuestos}
+
+\begin{itemize}
+\item \emph{Agentes racionales}: los trabajadores maximizan su utilidad y las empresas, su beneficio.
+\item \emph{Información perfecta}: ni incompleta ni asimétrica.
+\item \emph{Trabajo homogéneo}, sin sustitutivos cercanos.
+\item \emph{Mercado atomizado y salarios y precios flexibles}: muchos oferentes y demandantes, que toman el salario y los precios como dados (supuestos 4 y 6 de la tabla~\ref{tab:supuestos-trabajo}).
+\end{itemize}
+
+\paragraph{b) Desarrollo}
+
+\begin{itemize}
+\item \emph{Demanda de trabajo}: la empresa elige el empleo que maximiza su beneficio, dado el capital $\overline K$,
+  \[
+  \optim{\max}{L}{P\,F(L,\overline K)-W\,L}{L\geq 0}
+  \]
+  y contrata hasta que el salario nominal iguala el valor de la productividad marginal, $W=P\cdot\mathrm{PMg}_L$, es decir, $W/P=\mathrm{PMg}_L$. Con productividad marginal decreciente, la demanda de trabajo baja con el salario real. La causalidad va del salario al empleo, y la demanda de producto de la empresa no interviene: la empresa vende lo que quiera al precio dado.
+\item \emph{Oferta de trabajo}: sale de la elección entre consumo y ocio de cada trabajador; en el óptimo, la desutilidad marginal del trabajo (el ocio al que se renuncia) iguala lo que vale el salario real \vertema{3.A.25}. La oferta agregada de trabajo es la suma de las individuales.
+\item \emph{Equilibrio}: el salario real se ajusta hasta que la oferta iguala a la demanda (gráfico~\ref{fig:equilibrio-trabajo}). Si el salario está por debajo del de equilibrio, las empresas compiten por los trabajadores y lo suben; si está por encima, sobran trabajadores y baja. El salario y el empleo los fijan la tecnología y las preferencias.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El equilibrio neoclásico del mercado de trabajo}\label{fig:equilibrio-trabajo}
+\grafico[0.55\textwidth]{equilibrio-trabajo}
+\fuente{elaboración propia; gráfico de referencia del modelo neoclásico del mercado de trabajo \vertema{3.A.25}.}
+\end{figure}
+
+\paragraph{c) Implicaciones}
+
+\begin{itemize}
+\item \emph{Sin paro involuntario}: quien quiere trabajar al salario de equilibrio encuentra empleo; solo hay paro involuntario si algo impide que el salario baje (un salario mínimo, la negociación colectiva), y la recomendación es eliminar esas trabas.
+\item \emph{La oferta manda}: el empleo de equilibrio fija la producción, la oferta agregada es vertical y la política de demanda no mueve el empleo.
+\item \emph{Dicotomía clásica}: el empleo y la producción se determinan sin intervención del dinero ni del nivel de precios.
+\end{itemize}
+
+\subsection{Enfoque keynesiano}\label{anexo:debate-keynesiano}
+
+\paragraph{a) Supuestos}
+
+\begin{itemize}
+\item \emph{Salario nominal}: trabajadores y empresas negocian el salario nominal, no el real; el salario que se pide no depende del nivel de precios.
+\item \emph{Rigidez a la baja}: ante una perturbación negativa de demanda, el salario nominal no baja y el ajuste se hace por cantidades.
+\item El resto, como en el modelo neoclásico.
+\end{itemize}
+
+\paragraph{b) Desarrollo}
+
+\begin{itemize}
+\item \emph{Demanda de trabajo}: la neoclásica, $W=P\cdot\mathrm{PMg}_L$.
+\item \emph{Oferta de trabajo}: \autor{Keynes} no la usa para fijar el empleo. La demanda agregada fija la producción y, con la función de producción, el empleo; el salario real es el que corresponde a ese empleo.
+\item \emph{Una caída de la demanda} (gráfico~\ref{fig:keynesiano-shock}): en el mercado de bienes (panel b), la demanda agregada pasa de $\mathrm{DA}_0$ a $\mathrm{DA}_1$, y la producción y los precios bajan de $Y_0$ y $P_0$ a $Y_1$ y $P_1$, por debajo de $Y_F$, la producción de pleno empleo. En el mercado de trabajo (panel a, con el salario nominal $W$ en el eje vertical), la demanda de trabajo, el valor de la productividad marginal, pasa de $P_0\cdot\mathrm{PMg}_L$ a $P_1\cdot\mathrm{PMg}_L$. Con el salario nominal fijo en $W_0$, el empleo cae de $L_0$ ($E_0$) a $L_1$ ($E_1$) y aparece \emph{paro involuntario}: la distancia entre $L_1$ y lo que ofrecen los trabajadores a $W_0$ según $L^S$, personas que trabajarían al salario vigente y no encuentran empleo.
+\item \emph{Una subida de la demanda}: suben los precios, baja el salario real y aumentan el empleo y la producción. Por eso la oferta agregada tiene pendiente positiva mientras haya \emph{recursos ociosos}; cuando se agotan, cada subida de precios se traslada a los salarios y la oferta agregada se vuelve vertical, como en el caso neoclásico.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El mercado de trabajo keynesiano ante una caída de la demanda agregada}\label{fig:keynesiano-shock}
+\grafico[\textwidth]{keynesiano-shock}
+\fuente{elaboración propia a partir de \textcite[cap.~2]{Keynes1936}; OA, oferta agregada.}
+\end{figure}
+
+\paragraph{c) Implicaciones}
+
+\begin{itemize}
+\item El paro involuntario nace de una demanda insuficiente y se combate con políticas de demanda. Bajar los salarios no lo resuelve: solo crearía empleo si aumentara la inversión, y nada lo garantiza (capítulo~19 de la \emph{Teoría general}).
+\end{itemize}
+
+\subsection{La síntesis neoclásica: los casos del modelo IS-LM}\label{anexo:debate-islm}
+
+\begin{itemize}
+\item En el modelo IS-LM \vertema{3.A.5}, el paro se debe a rigideces del salario nominal: puede haber equilibrio en los mercados de bienes y de dinero, a un nivel de precios dado, y paro al salario vigente.
+\item Con salarios flexibles, la bajada de salarios y precios aumenta los saldos reales, desplaza la LM hacia la derecha, baja el tipo de interés y estimula la inversión hasta eliminar el paro: es el \emph{efecto \autor{Keynes}}. Hay 2 casos en los que no funciona:
+  \begin{itemize}
+  \item \emph{trampa de la liquidez}: la demanda de dinero es perfectamente elástica al tipo de interés; los saldos reales de más no van al mercado de bonos y el tipo de interés no baja;
+  \item \emph{inversión insensible al tipo de interés}: el tipo baja, pero la inversión no responde.
+  \end{itemize}
+  En los 2, bajar salarios no crea empleo y solo una política fiscal expansiva reduce el paro.
+\item Para la síntesis, por tanto, el paro con salarios flexibles es un caso particular, no una «teoría general».
+\item \emph{Lo que queda abierto}: para mantener más empleo no basta con una expansión puntual, que sube los precios una sola vez; habría que repetirla cada año, y eso es inflación. Y los monetaristas criticarán que los trabajadores negocien sin tener en cuenta la inflación que esperan. Son las 2 preguntas con las que empieza el bloque~\ref{sec:tasa-natural}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: tasa natural y NAIRU, ¿lo mismo?}\label{anexo:tnp-nairu}
+
+\begin{itemize}
+\item Se usan a menudo como sinónimos \parencite{BallMankiw2002NAIRU}, y tienen 2 rasgos en común:
+  \begin{itemize}
+  \item \emph{carácter estructural, pero no son un mínimo irreductible}: la tasa natural baja con un emparejamiento más eficiente (movilidad geográfica, servicios públicos de empleo, cualificaciones que encajen con lo que piden las empresas), y la NAIRU, además, con menos poder de mercado de empresas y sindicatos;
+  \item \emph{sin tensiones}: las 2 son la tasa de paro con la que no hay presiones inflacionistas ni deflacionistas.
+  \end{itemize}
+\item Pero \textcite{EstrellaMishkin1999NAIRU} prefieren distinguirlas: la tasa natural es un concepto de largo plazo, el paro que habría sin factores cíclicos, que cambia despacio; la NAIRU, tal como se usa para prever la inflación, uno de corto plazo, a un año vista, que se mueve con las perturbaciones de oferta (una mala cosecha que sube los precios sube la tasa de paro compatible con una inflación estable) y fluctúa mucho más (tabla~\ref{tab:tnp-nairu}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Tasa natural de paro y NAIRU}\label{tab:tnp-nairu}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.6cm}>{\raggedright\arraybackslash}m{5.6cm}>{\raggedright\arraybackslash}m{5.8cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Tasa natural} & \textbf{NAIRU}\\
+\midrule
+\textbf{Origen} & \textcite{Friedman1968Role} y \textcite{Phelps1967Phillips} & \textcite{ModiglianiPapademos1975Targets} (NIRU); modelo de \textcite{LayardNickellJackman1991Unemployment}\\
+\addlinespace[0.3em]
+\textbf{Definición} & el paro con la inflación igual a la esperada; el del «sistema walrasiano», con sus fricciones e imperfecciones & el paro con el que la inflación no se acelera\\
+\addlinespace[0.3em]
+\textbf{Modelo que la explica} & búsqueda y flujos: $U^n=s/[s+f(\theta^*)]$ \eqref{eq:tasa-natural-flujos} & fijación de salarios y precios con poder de mercado: $F(U^n,Z)=1/(1+\mu)$ \eqref{eq:nairu}\\
+\addlinespace[0.3em]
+\textbf{Paro que incluye} & sobre todo friccional & también involuntario de equilibrio\\
+\addlinespace[0.3em]
+\textbf{Horizonte} & largo plazo: sin factores cíclicos; cambia despacio & para \textcite{EstrellaMishkin1999NAIRU}, corto plazo: fluctúa con las perturbaciones de oferta\\
+\addlinespace[0.3em]
+\textbf{¿Es óptima?} & no necesariamente: solo con la condición de \autor{Hosios} & no: el poder de mercado la eleva\\
+\addlinespace[0.3em]
+\textbf{Cómo se reduce} & mejor emparejamiento (servicios de empleo, movilidad, cualificación) & además, menos poder de mercado de empresas y sindicatos, prestaciones y cuña fiscal\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Friedman1968Role}, \textcite{EstrellaMishkin1999NAIRU} y \textcite{BallMankiw2002NAIRU}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{La diferencia no está en la estructura de mercado del concepto}: a menudo se dice que la tasa natural es la de la competencia perfecta y la NAIRU la de la competencia imperfecta, y que por eso la NAIRU es mayor. No es así: \autor{Friedman} incluye en su tasa natural «las imperfecciones del mercado» \parencite[8]{Friedman1968Role} y dice que el salario mínimo y los sindicatos la elevan (\ref{sec:monetarista}). Lo que cambia es el modelo con que se explica: en los de búsqueda, el paro es sobre todo friccional; en el de fijación de salarios y precios, hay paro involuntario.
+\item \emph{Gráficamente} (gráfico~\ref{fig:tn-nairu}), en el plano $(L,W/P)$, con la población activa, $\overline L$, y la oferta competitiva de trabajo, $L^S$, la que darían los trabajadores si cada uno negociara por su cuenta \vertema{3.A.25}:
+  \begin{itemize}
+  \item la WS, ahora creciente en el empleo, queda por encima de $L^S$: con negociación, para cada nivel de empleo el salario real es mayor que el competitivo;
+  \item en el equilibrio, $E$, la WS corta a la PS: el empleo es $L^n$ y el salario real, $\mathrm{PAT}/(1+\mu)$; a ese salario real, los trabajadores ofrecerían $L^S_0$, sobre $L^S$;
+  \item entre $L^n$ y $L^S_0$ está el \emph{paro involuntario de equilibrio}: personas que trabajarían a ese salario y no encuentran empleo. No es «paro keynesiano»: no se debe a la falta de demanda, y una expansión solo lo reduce mientras acelera la inflación (\ref{sec:nairu});
+  \item entre $L^S_0$ y $\overline L$ están quienes no quieren trabajar a ese salario: en el lenguaje de los modelos, paro voluntario;
+  \item la distancia total, $\overline L-L^n$, es el \emph{número} de parados que corresponde a la NAIRU, $U^n\,\overline L$, no la NAIRU, que es una tasa.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Tasa natural y NAIRU en el plano (empleo, salario real)}\label{fig:tn-nairu}
+\grafico[0.6\textwidth]{tn-nairu}
+\fuente{elaboración propia a partir de \textcite{CarlinSoskice2015Macroeconomics}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: la NAIRU con la forma lineal}\label{anexo:nairu-lineal}
+
+\begin{itemize}
+\item \emph{Forma lineal}: con $F(U,Z)=1-a\,U+Z$, $a>0$, la WS y la PS son
+  \begin{equation*}
+  \frac{W}{P^e}=(1-a\,U+Z)\cdot\mathrm{PAT}^e,\qquad \frac{W}{P}=\frac{\mathrm{PAT}}{1+\mu}
+  \end{equation*}
+  La letra es la misma que la pendiente de la curva de \autor{Phillips} aumentada \eqref{eq:phillips-aumentada}, porque, como se ve en el paso 2, es la misma pendiente.
+\item \emph{Paso 1, la NAIRU}. Con $P^e=P$ y $\mathrm{PAT}^e=\mathrm{PAT}$, igualando las 2 curvas,
+  \begin{equation*}
+  1-a\,U^n+Z=\frac{1}{1+\mu}\quad\Longrightarrow\quad a\,U^n=1-\frac{1}{1+\mu}+Z=\frac{\mu}{1+\mu}+Z\quad\Longrightarrow\quad U^n=\frac{1}{a}\left(\frac{\mu}{1+\mu}+Z\right)
+  \end{equation*}
+  Sube con el margen y con $Z$, baja con $a$ (cuanto más modera el paro las pretensiones salariales, menos paro hace falta) y no depende del nivel de la productividad. \findemo
+\item \emph{Paso 2, de la WS y la PS a la curva de \autor{Phillips}}. Despejando $W$ en la WS y llevándolo a la PS,
+  \begin{equation*}
+  \frac{P}{P^e}=(1+\mu)\,(1-a\,U+Z)\,\frac{\mathrm{PAT}^e}{\mathrm{PAT}}
+  \end{equation*}
+  Dividiendo los 2 precios por el del periodo anterior y tomando logaritmos, con $\ln(1+x)\approx x$ para $x$ pequeño,
+  \begin{equation*}
+  \pi_t\approx\pi^e_t+\mu+Z-a\,U_t-\varepsilon^{\mathrm{PAT}}_t,\qquad \varepsilon^{\mathrm{PAT}}_t\equiv\ln\frac{\mathrm{PAT}_t}{\mathrm{PAT}^e_t}
+  \end{equation*}
+  \begin{itemize}
+  \item sin sorpresas de productividad, $\pi_t\approx\pi^e_t-a\,(U_t-U^n)$, con $U^n\approx(\mu+Z)/a$, la NAIRU del paso 1 con $\mu/(1+\mu)\approx\mu$: es la curva aumentada \eqref{eq:phillips-aumentada}, y su pendiente es el $a$ de la WS;
+  \item con expectativas adaptativas, $\pi^e_t=\pi_{t-1}$, es la curva aceleracionista \eqref{eq:aceleracionista};
+  \item una productividad mayor que la esperada ($\varepsilon^{\mathrm{PAT}}_t>0$) baja la inflación con el mismo paro: es como si la NAIRU bajara a $(\mu+Z-\varepsilon^{\mathrm{PAT}}_t)/a$ mientras las expectativas se ajustan. Es la explicación de \textcite{BallMankiw2002NAIRU} para Estados Unidos en los 90. \findemo
+  \end{itemize}
+\item \emph{Paso 3, sorpresas de productividad en el medio plazo}. Si $P^e=P$ pero $\mathrm{PAT}^e\neq\mathrm{PAT}$, igualando las 2 curvas,
+  \begin{equation*}
+  F(U^n,Z)=\frac{\mathrm{PAT}}{(1+\mu)\,\mathrm{PAT}^e}\quad\Longrightarrow\quad U^n=\frac{1}{a}\left(1+Z-\frac{\mathrm{PAT}}{(1+\mu)\,\mathrm{PAT}^e}\right)
+  \end{equation*}
+  con la forma lineal: una productividad mayor que la esperada baja la NAIRU y una menor la sube, mientras las expectativas no se corrigen. Con $\mathrm{PAT}^e=\mathrm{PAT}$ se vuelve al paso 1. \findemo
+\item \emph{Paso 4, sin productividad esperada en la WS}. Si el salario real que se negocia no tiene en cuenta la productividad, $W/P^e=1-a\,U+Z$ (el «1» es ahora un nivel de salario real), la condición de equilibrio se escribe con la WS así modificada y la PS de siempre:
+  \begin{equation*}
+  \frac{\mathrm{PAT}}{1+\mu}=1-a\,U^n+Z\quad\Longrightarrow\quad U^n=\frac{1}{a}\left(1+Z-\frac{\mathrm{PAT}}{1+\mu}\right)=\frac{1}{a}\left(\frac{1+\mu-\mathrm{PAT}}{1+\mu}+Z\right)
+  \end{equation*}
+  y la NAIRU baja con el nivel de la productividad. Por eso los manuales ponen $\mathrm{PAT}^e$ en la WS: sin ella, el crecimiento de la productividad acabaría con el paro, y no es lo que se observa a largo plazo. \findemo
+\end{itemize}
+
+\begin{notaopositor}
+En el test, leer bien qué WS da el enunciado. Si la WS no lleva la productividad esperada, la NAIRU depende de $Z$ y de $\mu$ (con signo positivo) y del nivel de la productividad (con signo negativo): $U^n=f(Z,\mu,\mathrm{PAT})$. Si la lleva y a medio plazo $\mathrm{PAT}^e=\mathrm{PAT}$, solo de $Z$ y de $\mu$: $U^n=f(Z,\mu)$.
+\end{notaopositor}
+
+% ==========================================================================
+\section{Anexo: la política de demanda en el modelo de la NAIRU, paso a paso}\label{anexo:demanda-pasos}
+
+\begin{itemize}
+\item Partimos del punto 0: la WS y la PS se cortan en $U^n$ y la inflación es estable y la esperada (gráfico~\ref{fig:nairu-demanda-pasos}). Los pasos son:
+  \begin{enumerate}
+  \item el Gobierno aplica una política fiscal expansiva: sube la demanda agregada y, con ella, el empleo; el paro baja a $U_1<U^n$ (punto 1);
+  \item con menos paro, los sindicatos tienen más poder y piden más: el salario real que se negocia, sobre la WS en $U_1$, supera el que dejan las empresas, sobre la PS;
+  \item las empresas aceptan la subida del salario nominal, pero, firmado el convenio, la trasladan a los precios para mantener su margen: el salario real que pagan se queda en la PS, y los trabajadores no cobran el salario real que creían haber pactado hasta la siguiente negociación;
+  \item al subir los precios, con la misma cantidad de dinero, baja la oferta monetaria real, sube el tipo de interés y cae la inversión (el efecto \autor{Keynes} al revés); hoy lo hace el banco central, que sube el tipo de interés al ver subir la inflación \vertema{3.A.36}. El empleo cae y el paro sube a $U_2$, entre $U_1$ y $U^n$;
+  \item en la siguiente negociación, los sindicatos vuelven a pedir más, aunque menos que antes, porque el paro es mayor que $U_1$; las empresas lo trasladan de nuevo a los precios, y la demanda vuelve a contraerse;
+  \item el proceso se repite hasta que el paro vuelve a $U^n$ (punto 3), donde la inflación deja de subir y se queda en $\pi_3=\pi_2$.
+  \end{enumerate}
+\item \emph{Resultado}: la inflación sube mientras dura la incompatibilidad entre el salario que se pide y el que se paga, es decir, mientras $U<U^n$, y el proceso acaba con el paro en su nivel inicial y una inflación más alta, $\pi_2$. Es la curva aceleracionista \eqref{eq:aceleracionista}: la política de demanda no reduce la NAIRU a largo plazo. Con una política monetaria expansiva, el razonamiento es el mismo.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Una expansión de demanda en el modelo de la NAIRU}\label{fig:nairu-demanda-pasos}
+\grafico[0.85\textwidth]{nairu-demanda-pasos}
+\fuente{elaboración propia.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: aspectos para el test}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test}.
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Curva de \autor{Phillips} original}: \textcite{Phillips1958}, Reino Unido, datos de 1861-1913 (y comparación con 1913-1948 y 1948-1957), con salarios nominales, no precios; logaritmos decimales; salarios estables con un paro de alrededor del 5,5~\%.
+\item \emph{Menú de \autor{Samuelson} y \autor{Solow}} (1960): la curva en precios, para Estados Unidos; estabilidad de precios con un 5,5~\% de paro, y un 3~\% de paro con una inflación del 4,5~\%.
+\item \emph{Tasa natural}: \textcite{Phelps1967Phillips} y \textcite{Friedman1968Role} (discurso presidencial ante la American Economic Association); la curva de largo plazo es vertical; con expectativas adaptativas, mantener el paro por debajo de $U^n$ acelera la inflación.
+\item \emph{NIRU y NAIRU}: NIRU de \textcite{ModiglianiPapademos1975Targets}; el acrónimo NAIRU ya lo usa \textcite{Tobin1980Stabilization}; NAWRU, la versión salarial que estima la Comisión Europea.
+\item \emph{Determinantes de la NAIRU}: sube con $Z$ (prestaciones, poder sindical, cuña fiscal) y con $\mu$; con $\mathrm{PAT}^e$ en la WS no depende del nivel de la productividad, y sin ella, baja con él (anexo~\ref{anexo:nairu-lineal}).
+\item \emph{Histéresis}: \textcite{BlanchardSummers1986Hysteresis}; $\lambda_h=1$, histéresis pura (paseo aleatorio, importa la variación del paro); $0<\lambda_h<1$, persistencia; mecanismos: capital físico, capital humano e \emph{insiders} y \emph{outsiders}.
+\item \emph{Ley de \autor{Okun}}: \textcite{Okun1962}, unos 3 puntos de producción por punto de paro ($\vartheta\approx1/3$); hoy, unos 0,45 puntos de paro por punto de crecimiento en Estados Unidos y 0,85 en España \parencite{Ball2017Okun}.
+\end{itemize}
+
+\bibliografia
+\end{document}

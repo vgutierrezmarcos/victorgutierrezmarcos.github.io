@@ -1,0 +1,45 @@
+% La curva de Phillips original: la estimada por Phillips (1958, p. 290) con
+% los datos del Reino Unido de 1861-1913,
+%   log10(gamma_W + 0,900) = 0,984 - 1,394 log10 U
+%   gamma_W = 9,638 U^(-1,394) - 0,900
+% con los 2 puntos que comenta (p. 299): salarios estables con un paro de
+% 5,48 % (gamma_W = 0) y precios estables con 2,37 % (gamma_W = 2 %, el
+% ritmo de la productividad; «algo menos del 2,5 %»). Sin la nube de puntos:
+% el índice de salarios de Phelps Brown y Hopkins que usó Phillips no está
+% publicado (la reconstrucción con los datos del Banco de Inglaterra está en
+% _trabajo/datos/phillips-reino-unido-1861-1913.csv y no se dibuja).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=9cm, height=7cm,
+      xmin=0, xmax=11.3, ymin=-1.2, ymax=11,
+      xtick={0,1,...,11}, ytick={-1,0,2,...,10},
+      axis lines=left, tick align=outside, clip=false,
+      xlabel={Tasa de paro, $U$ (\%)},
+      ylabel={$\gamma_W$ (\% anual)},
+      ticklabel style={font=\footnotesize},
+      /pgf/number format/use comma,
+      dicapas,
+    ]
+    % 1: ejes y recta de gamma_W = 0
+    \capa{1}{\dicraya[dicumbral]{(0,0) (11.3,0)}}
+    % 2: la curva estimada por Phillips
+    \capa{2}{\addplot[diclinea=tceemorado, domain=0.9:11, samples=120, smooth]
+      {9.638*x^(-1.394)-0.9};}
+    \capa{2}{\dicrotulo[anchor=west, text=tceemorado, font=\footnotesize]{(2.1,8.6)}
+      {$\log_{10}(\gamma_W+0{,}900)=0{,}984-1{,}394\,\log_{10}U$}}
+    % 3: salarios estables: gamma_W = 0 con U = 5,5 %
+    \capa{3}{\dicraya[dicumbral]{(5.48,0) (5.48,-1.2)}}
+    \capa{3}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=2pt, black] coordinates {(5.48,0)};}
+    \capa{3}{\dicrotulo[anchor=south west, font=\footnotesize]{(5.6,0.15)}{salarios estables ($U\approx5{,}5$~\%)}}
+    % 4: precios estables: gamma_W = 2 % (el ritmo de la productividad) con U = 2,4 %
+    \capa{4}{\dicraya[dicumbral]{(0,2) (2.37,2) (2.37,-1.2)}}
+    \capa{4}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=2pt, black] coordinates {(2.37,2)};}
+    \capa{4}{\dicrotulo[anchor=south west, font=\footnotesize, align=left]{(2.55,2.15)}
+      {precios estables ($U\approx2{,}4$~\%;\\ $\gamma_W=\gamma_{\mathrm{PAT}}=2$~\%)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

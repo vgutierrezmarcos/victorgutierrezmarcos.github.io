@@ -1,7 +1,7 @@
 # Modelo IS-LM (Hicks, 1937; Modigliani, 1944; Hansen)
 
 - **Área:** pensamiento · **Tema de referencia:** 3.A.5 (La síntesis neoclásica. El monetarismo) — es el modelo de la síntesis. Hoy lo desarrolla el Word de 3.A.4, que sigue el reparto anterior al temario vigente.
-- **Temas que lo usan:** 3.A.5 (desarrollo; hoy mención con epígrafe vacío), 3.A.4 (resumen: la interpretación de Hicks de la *Teoría general*; hoy desarrollo), 3.A.28 (resumen), 3.A.37 (resumen: transmisión keynesiana), 3.A.38 (resumen: efectividad de la política fiscal), 3.A.39 (resumen: financiación del déficit, Blinder-Solow), 4.B.4 (resumen). En economía abierta, Mundell-Fleming (ref. 3.B.15) y OA-DA (3.A.32).
+- **Temas que lo usan:** 3.A.5 (desarrollo; hoy mención con epígrafe vacío), 3.A.4 (resumen: la interpretación de Hicks de la *Teoría general*; hoy desarrollo), 3.A.28 (mención; hecho, 31/10/2026: II.1.1, una viñeta: en la síntesis el paro existe porque el salario nominal es rígido; con salarios flexibles, solo la trampa de la liquidez o una inversión insensible al tipo lo impiden, `\vertema{3.A.5}`; los casos, en el anexo A), 3.A.37 (resumen: transmisión keynesiana), 3.A.38 (resumen: efectividad de la política fiscal), 3.A.39 (resumen: financiación del déficit, Blinder-Solow), 4.B.4 (resumen). En economía abierta, Mundell-Fleming (ref. 3.B.15) y OA-DA (3.A.32).
 - **Manuales de referencia:** Hicks (1937), *Econometrica*; Modigliani (1944); Dornbusch, Fischer y Startz, *Macroeconomía*, caps. 10-12; Blanchard, *Macroeconomics*, cap. 6; Heijdra (2017), cap. 1; De Vroey (2016), caps. 1-3.
 - **Decisión D009 (13/10/2026):** ¿Cómo se escribe la sensibilidad de la inversión al tipo de interés en IS-LM y Mundell-Fleming? b (I = Ī − b·i), como Dornbusch-Fischer-Startz; v queda solo para la relación capital-producto (acelerador, Harrod-Domar)
 - **Decisión D031 (13/10/2026):** ¿Se deshace el cruce de contenidos entre los Word de 3.A.4 y 3.A.5? Sí: IS-LM y la curva de Phillips (síntesis) a 3.A.5 (Phillips en resumen; desarrollo en 3.A.28); el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud) a 3.A.4
@@ -30,7 +30,7 @@ Multiplicador fiscal en IS-LM: ∂Y/∂Ḡ = 1/[1 − c(1−t) + bk/h], menor qu
 |---|---|---|---|---|
 | 3.A.5 | La síntesis neoclásica | Desarrollo | Ecuaciones y gráfico; Hicks y Modigliani (salarios rígidos como fuente del paro); casos extremos; IS-LM + Phillips como modelo de la síntesis; crítica monetarista de las pendientes | — |
 | 3.A.4 | Keynes y su pensamiento | Resumen | «Mr. Keynes and the Classics»: IS-LM como lectura (discutida) de la *Teoría general*; crítica postkeynesiana («keynesianismo bastardo», Joan Robinson) y de Leijonhufvud | Las ecuaciones y los casos extremos |
-| 3.A.28 | Tasa natural y NAIRU | Mención | Solo como marco de demanda | Todo lo demás |
+| 3.A.28 | Tasa natural y NAIRU | mención (hecho, 31/10/2026) | Solo como marco de demanda (II.1.1) y la curva de Phillips que lo cierra; los casos de la trampa de la liquidez y la inversión inelástica, en el anexo A | Todo lo demás |
 | 3.A.37 | Transmisión monetaria | Resumen | Canal del tipo de interés en la síntesis: M ↑ → i ↓ → I ↑ → Y ↑ | La política fiscal |
 | 3.A.38 | Efectos de la política fiscal | Resumen | Multiplicador con expulsión; debate de las pendientes | La política monetaria |
 | 3.A.39 | Financiación del déficit | Resumen | Blinder-Solow: financiación con deuda frente a dinero y efecto riqueza | Las ecuaciones básicas |

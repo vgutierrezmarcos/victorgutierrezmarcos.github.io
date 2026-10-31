@@ -1,0 +1,57 @@
+% Tasa de paro y NAWRU de España y de la zona del euro (EA20), 1980-2027
+% (2026-2027, previsiones). Comisión Europea, AMECO (ZUTN y ZNAWRU),
+% actualización del 3/6/2026; datos en ../datos/paro-nawru-espana.csv.
+% Colores: España en morado (como en okun-espana), zona del euro en azul
+% marino (dicze); paro continuo y NAWRU discontinua.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11.5cm, height=7.5cm,
+      xmin=1979, xmax=2028.5, ymin=0, ymax=28,
+      xtick={1980,1985,...,2025}, ytick={0,4,...,28},
+      axis lines=left, tick align=outside, clip=false,
+      ylabel={\% de la población activa},
+      ticklabel style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      unbounded coords=jump,
+      legend style={at={(0.02,0.02)}, anchor=south west, draw=none,
+        font=\footnotesize},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: previsión 2026-2027 sombreada
+    \capa{1}{\dicsombra[fill=dicreferencia, fill opacity=0.15]{2025.5}{0}{2027.5}{28}}
+    \capa{1}{\dicrotulo[anchor=south, font=\footnotesize, text=dicreferencia]{(2026.5,28)}{previsión}}
+    % 2: ejes (los dibuja pgfplots) y el cero
+    \capa{2}{\dicraya{(1979,0) (2028.5,0)}}
+    % 3: paro y NAWRU de la zona del euro
+    \capa{3}{\addplot[diclinea=dicze] table[col sep=comma, comment chars={\#},
+        x=anio, y=paro_ea20] {../datos/paro-nawru-espana.csv};
+      \addlegendentry{paro, zona del euro}}
+    \capa{3}{\addplot[diclinea=dicze, dashed] table[col sep=comma, comment chars={\#},
+        x=anio, y=nawru_ea20] {../datos/paro-nawru-espana.csv};
+      \addlegendentry{NAWRU, zona del euro}}
+    % 4: paro de España
+    \capa{4}{\addplot[diclinea=tceemorado, line width=1.6pt] table[col sep=comma, comment chars={\#},
+        x=anio, y=paro_es] {../datos/paro-nawru-espana.csv};
+      \addlegendentry{paro, España}}
+    % 5: NAWRU de España
+    \capa{5}{\addplot[diclinea=tceemorado, dashed] table[col sep=comma, comment chars={\#},
+        x=anio, y=nawru_es] {../datos/paro-nawru-espana.csv};
+      \addlegendentry{NAWRU, España}}
+    % 6: puntos y etiquetas (la leyenda se va formando con cada serie)
+    \capa{6}{\addplot[dicpuntos=tceemorado, forget plot] coordinates {(1994,24.1) (2013,26.1) (1993,18.03) (2013,16.86) (2025,12.11)};}
+    \capa{6}{\addplot[dicpuntos=dicze, forget plot] coordinates {(2025,6.6)};}
+    \capa{6}{\dicrotulo[anchor=south, font=\footnotesize]{(1994,24.4)}{24,1}}
+    \capa{6}{\dicrotulo[anchor=south, font=\footnotesize]{(2013,26.4)}{26,1}}
+    \capa{6}{\dicrotulo[anchor=south east, font=\footnotesize]{(1992.8,18.3)}{18,0}}
+    \capa{6}{\dicrotulo[anchor=north, font=\footnotesize]{(2013,16.3)}{16,9}}
+    \capa{6}{\dicrotulo[anchor=south west, font=\footnotesize]{(2025,12.3)}{12,1}}
+    \capa{6}{\dicrotulo[anchor=north, font=\footnotesize]{(2025,6.2)}{6,6}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

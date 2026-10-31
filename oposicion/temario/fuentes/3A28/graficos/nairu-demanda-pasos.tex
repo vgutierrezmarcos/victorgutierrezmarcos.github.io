@@ -1,0 +1,86 @@
+% Una expansión de demanda en el modelo de la NAIRU, paso a paso (anexo D).
+% Panel a: misma función y escala que ws-ps.tex,
+%   WS: g(U) = 1 + 5,2 e^{-0,3 U};  PS = g(4) = 2,5662;  U^n = 4
+%   U_1 = 1,5 (WS = 4,3156), U_2 = 2,8 (WS = 3,2449): la brecha se estrecha.
+% Panel b: curva aceleracionista pi_t = pi_{t-1} - a (U_t - U^n) con a = 0,8:
+%   pi_0 = 1;  pi_1 = 1 + 0,8·2,5 = 3;  pi_2 = 3 + 0,8·1,2 = 3,96;
+%   de vuelta en U^n, pi_3 = pi_2 = 3,96 > pi_0: la inflación deja de
+%   acelerarse, pero se queda más alta que al principio.
+% Rehace la imagen 12 del original (image15, foto de pizarra en (L, W/P)).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.9cm,
+    declare function={g(\u)=1+5.2*exp(-0.3*\u);},
+    num/.style={etiqueta, font=\footnotesize}]
+  \def\h{2.5662}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.9,-0.8) rectangle (21.2,7.0);
+  % 1: ejes de los 2 paneles
+  \capa{1}{\ejes{$U$}{$W/P$}{8.6}{6.1}}
+  \capa{1}{\node[etiqueta, anchor=south] at (4.3,6.4) {a) Fijación de salarios y precios};}
+  \begin{scope}[shift={(11.6,0)}]
+    \capa{1}{\ejes{$U$}{$\pi$}{8.6}{6.1}}
+    \capa{1}{\node[etiqueta, anchor=south] at (4.3,6.4) {b) Inflación};}
+  \end{scope}
+  % 2: panel a, WS, PS y punto 0 en U^n
+  \capa{2}{\draw[curva1] plot[domain=0.55:8.2, samples=80, smooth] (\x,{g(\x)})
+      node[etiqueta, right, text=tceemorado] {WS};}
+  \capa{2}{\draw[curva2] (0,\h) node[left, text=black] {$\frac{\mathrm{PAT}}{1+\mu}$} -- (8.2,\h)
+      node[etiqueta, right, text=tceeazul] {PS};}
+  \capa{2}{\node[punto] (P0) at (4,\h) {};}
+  \capa{2}{\node[num, above right=0pt and 0pt] at (P0) {$0$};}
+  \capa{2}{\draw[guia] (P0) -- (4,0) node[below, text=black] {$U^n$};}
+  % 3: panel b, la vertical en U^n y pi_0
+  \begin{scope}[shift={(11.6,0)}]
+    \capa{3}{\draw[curva3, line width=1.8pt] (4,0) -- (4,5.6)
+        node[etiqueta, above, text=tceeverde] {CPLP};}
+    \capa{3}{\node[etiqueta, below] at (4,0) {$U^n$};}
+    \capa{3}{\node[punto] (Q0) at (4,1) {};}
+    \capa{3}{\node[num, right=1pt] at (Q0) {$0$};}
+    \capa{3}{\draw[guia] (Q0) -- (0,1) node[left, text=black] {$\pi_0$};}
+  \end{scope}
+  % 4: panel a, la expansión lleva a U_1 (punto 1) y abre la brecha
+  \capa{4}{\draw[flecha] (3.9,1.1) -- (1.6,1.1);}
+  \capa{4}{\node[num, text=tceerojo, anchor=south] at (2.75,1.1) {expansión};}
+  \capa{4}{\node[punto] (P1) at (1.5,{g(1.5)}) {};}
+  \capa{4}{\node[num, above right=0pt and 0pt] at (P1) {$1$};}
+  \capa{4}{\node[punto] (P1b) at (1.5,\h) {};}
+  \capa{4}{\draw[guia] (P1b) -- (1.5,0) node[below, text=black] {$U_1$};}
+  \capa{4}{\draw[flecha, <->, shorten <=2pt, shorten >=2pt] (P1b) -- (P1);}
+  \capa{4}{\node[num, text=tceerojo, align=right, anchor=east, inner sep=0.5pt] at (1.4,{(\h+g(1.5))/2})
+      {preten-\\siones\\incom-\\patibles};}
+  % 5: panel b, pi_1 en U_1
+  \begin{scope}[shift={(11.6,0)}]
+    \capa{5}{\node[punto] (Q1) at (1.5,3) {};}
+    \capa{5}{\node[num, above=1pt] at (Q1) {$1$};}
+    \capa{5}{\draw[guia] (0,3) node[left, text=black] {$\pi_1$} -| (1.5,0) node[below, text=black] {$U_1$};}
+    \capa{5}{\draw[flecha, shorten <=3pt, shorten >=3pt] (Q0) -- (Q1);}
+  \end{scope}
+  % 6: panel a, la demanda se contrae hasta U_2: la brecha se estrecha
+  \capa{6}{\draw[flecha] (1.6,0.45) -- (2.7,0.45);}
+  \capa{6}{\node[punto] (P2) at (2.8,{g(2.8)}) {};}
+  \capa{6}{\node[num, above right=0pt and 0pt] at (P2) {$2$};}
+  \capa{6}{\node[punto] (P2b) at (2.8,\h) {};}
+  \capa{6}{\draw[guia] (P2b) -- (2.8,0) node[below, text=black] {$U_2$};}
+  \capa{6}{\draw[flecha, <->, shorten <=2pt, shorten >=2pt] (P2b) -- (P2);}
+  % 7: panel b, pi_2 en U_2
+  \begin{scope}[shift={(11.6,0)}]
+    \capa{7}{\node[punto] (Q2) at (2.8,3.96) {};}
+    \capa{7}{\node[num, above=1pt] at (Q2) {$2$};}
+    \capa{7}{\draw[guia] (0,3.96) node[left, text=black] {$\pi_2=\pi_3$} -| (2.8,0) node[below, text=black] {$U_2$};}
+    \capa{7}{\draw[flecha, shorten <=3pt, shorten >=3pt] (Q1) -- (Q2);}
+  \end{scope}
+  % 8: vuelta a U^n en los 2 paneles, con más inflación
+  \capa{8}{\draw[flecha] (2.9,0.45) -- (3.9,0.45);}
+  \capa{8}{\node[num, text=tceerojo, anchor=west] at (4.1,0.45) {la demanda se contrae};}
+  \begin{scope}[shift={(11.6,0)}]
+    \capa{8}{\node[punto] (Q3) at (4,3.96) {};}
+    \capa{8}{\node[num, right=1pt] at (Q3) {$3$};}
+    \capa{8}{\draw[flecha, shorten <=3pt, shorten >=3pt] (Q2) -- (Q3);}
+    \capa{8}{\node[num, text=tceerojo, align=left, anchor=west] at (4.3,2.2)
+        {$U<U^n$: la inflación\\se acelera; en $U^n$,\\estable pero más alta};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,164 @@
+# Revisión del tema 3.A.28 — La tasa natural de paro y la NAIRU. La persistencia del desempleo.
+
+Fecha: 31/10/2026. Integración en 2 partes: la 1 escribió el preámbulo, la introducción y los bloques I y II; la 2, el bloque III, la conclusión, los anexos A-E, `seo.json`, los 6 gráficos que faltaban en `_trabajo/graficos-pedidos.json` y este informe.
+
+Fuentes de la integración: `_trabajo/original.md` (Word de Víctor del 10/08/2024), `pendientes.md` (P1-P86 y P-E), `propuestas-contenido.md` (C1-C32), `propuestas-datos.md` (V1-V43 y E1-E8) con `bib-datos.bib`, y `propuestas-coherencia.md` (K1-K29, estructura final, cambios al canon y § 6 de contradicciones). Criterio ante discrepancias: la estructura y la notación las decide coherencia; la teoría, contenido; las cifras, datos. Víctor está fuera hasta el 9/11: en cada **[decidir]** se ha aplicado la opción recomendada (abajo, «Dudas abiertas», A28-01 a A28-16).
+
+## Resumen
+
+- Nueva fuente `3A28.tex` (**35 páginas con los 13 gráficos hechos: 23 de tema, 8 de anexos y 4 de bibliografía**) con la **estructura histórica del original** (K1, CRITERIOS § 2): I. El debate previo a la curva de Phillips (resumen de 3′; el desarrollo, en el anexo A), II. La síntesis neoclásica y la curva de Phillips con sus ampliaciones: la tasa natural de paro (IS-LM, Phillips-Lipsey-Samuelson y Solow, ley de Okun, Friedman y Phelps, nueva macroeconomía clásica, búsqueda) y III. Análisis neokeynesiano del desempleo de equilibrio (nueva economía keynesiana, microfundamentos de la WS, la NAIRU con el modelo WS-PS, **la persistencia del desempleo como subapartado nuevo** y el modelo nuevo keynesiano con desempleo). Minutos: 2'30" + 3' + 11' + 12'30" + 1' = 30'.
+- Enganche: «De aquellos polvos vienen estos lodos», con el paro de España (8,2 % en 2007, 26,1 % en 2013, 10,2 % en el tercer trimestre de 2026) y la NAWRU de la Comisión, y la pregunta «¿hay un paro natural al que la economía vuelve sola, o el paro de hoy fija el de mañana?», que la idea final responde volviendo al refrán.
+- Corregidos los errores de teoría, notación y atribución del original (los más graves: la NAIRU mayor que la tasa natural «por competencia perfecta», el «paro keynesiano» del anexo, la formación que baja la NAIRU con $\mathrm{PAT}^e$ en la WS, la nota 22 con la PS por la WS, Blanchard y Summers 1987 por 1986, la evidencia de histéresis atribuida a Blanchard y Galí, CLU con la productividad marginal). Resueltas las 30 marcas amarillas y quitados los comentarios, las notas de clase y los nombres de preparadores.
+- Lo que no se canta pasa a 5 anexos (no se borra nada): A el mercado de trabajo antes de Phillips (neoclásico, keynesiano y los casos del IS-LM), B tasa natural y NAIRU (tabla y gráfico en $(L,W/P)$), C la NAIRU con la forma lineal (4 pasos, con la nota 22 corregida), D la política de demanda paso a paso y E test.
+- `3A28.bib` con 81 entradas (79 de la parte 1 más `StaigerStockWatson1997NAIRU` y `BlanchardDiamond1994Ranking`); 13 gráficos pedidos (6 en esta parte: `ws-ps`, `ws-ps-desplazamientos`, `paro-nawru-espana`, `histeresis-sendas`, `tn-nairu` y `nairu-demanda-pasos`); `seo.json` nuevo.
+
+## Errores corregidos
+
+| Dónde | Decía | Dice ahora |
+|---|---|---|
+| Neoclásico, implicaciones (P1, K12) | «En el marco neoclásico sólo existirá paro friccional» (amarillo) | Sin paro involuntario, salvo con salario mínimo, ni siquiera friccional (supuesto de información perfecta); el friccional aparece al levantarla (3.A.26). Coincide con 3.A.25 y 3.A.26 |
+| Neoclásico (canon 3.A.25) | Equilibrio «estable» y «consistente con el pleno empleo» | «Sin paro involuntario» (regla del canon para el bloque); el ajuste del salario, de palabra (anexo A) |
+| Phillips (K13, V3) | $\log(\Delta\pi^w_t+0{,}9)$ con logaritmos sin base | $\log_{10}(\gamma_W+0{,}900)=0{,}984-1{,}394\log_{10}U$, con $\gamma_W$ el crecimiento del salario nominal (no la variación de una inflación) |
+| Phillips, ejemplo (V2) | «con un 2,5 %, los salarios crecen un 2 %» | «algo menos del 2,5 % (el 2,4 % según la ecuación)», como Phillips (1958, p. 299) |
+| Nota 12, Lipsey (V14) | Lipsey añadió «el precio de importación» | La variación del paro y la de los precios al consumo |
+| Nota 16 (C24) | $P=\bar m\cdot W/\mathrm{PMg}_L$ | $P=(1+\mu)\,W/\mathrm{PAT}$: el CLU usa la productividad **media** |
+| Nota 15, Nobel (V19) | Motivación de Phelps inventada; la de Friedman mal traducida | Las de nobelprize.org, como el 3.A.26 |
+| Friedman (V17) | «defecto fundamental» | «defecto básico» (p. 8) |
+| Estanflación (V20) | EE. UU. 1970-1971 sin bajada de la inflación | Matizado: en EE. UU. bajó algo en 1971; el caso del Reino Unido es el claro |
+| Introducción (K16, V22) | «la NAIRU la introdujeron autores de la NEJ desde los 80» | NIRU de Modigliani y Papademos (1975); el acrónimo NAIRU en Tobin (1980, pp. 24-25); modelo de Layard, Nickell y Jackman (1991) |
+| NEK, «Idea» y anexo 1 (P4, C22) | 3 versiones casi iguales de «TNP frente a NAIRU» | Una sola, en el anexo B |
+| Anexo 1 (P22-P30, C22) | «La TNP en competencia perfecta y la NAIRU en imperfecta: la NAIRU es mayor» | Friedman incluye «las imperfecciones del mercado» en la tasa natural (p. 8): la diferencia está en el modelo que la explica, no en el concepto |
+| Anexo 1 (C22) | «paro keynesiano» entre $L_0$ y $L'_0$, reducible con demanda | Paro involuntario **de equilibrio**: no se debe a falta de demanda y una expansión solo lo reduce acelerando la inflación |
+| Anexo 1 (C22) | Paro voluntario = «paro estructural/friccional (TNP)» | Paro voluntario: quienes no quieren trabajar a ese salario |
+| Anexo 1 y comentarios (P43) | Distancias en $(L,W/P)$ leídas como la NAIRU | Son el **número** de parados, $U^n\overline L$; en el cuerpo, el plano $(U,W/P)$ |
+| WS-PS (K13, C12) | SRN, SRP, $U_n$, α, $L^T$, «desempleo $=L^T-L$» | WS (`eq:ws`, igual que el 3.A.27), PS (`eq:ps`), $U^n$, $\overline L$ y $U=(\overline L-L)/\overline L$ |
+| PS (C12) | «el *mark-up* depende inversamente de la demanda» | Del grado de elasticidad de la demanda (3.A.18) |
+| Equilibrio (C12) | «el crecimiento de los salarios reales es nulo» | En $U^n$ se cumplen las expectativas ($P^e=P$, $\mathrm{PAT}^e=\mathrm{PAT}$) y la inflación no se acelera |
+| Nota 21 (C12, V27) | PAT anticíclica sin matiz | Se mantiene el razonamiento (Rotemberg y Woodford, 1991, margen contracíclico, signo correcto) y se añade que en los datos la productividad es procíclica |
+| Políticas de oferta (C13) | «Mayor gasto en formación: mejora la productividad, sube la SRP y baja la NAIRU» | Con $\mathrm{PAT}^e$ en la WS, el nivel de productividad, una vez esperado, no cambia $U^n$ (lo decía la nota 19 del propio original); la formación la baja por el emparejamiento |
+| Política de demanda (P11-P21) | Secuencia en $(L,W/P)$ en amarillo, con «$L_N$» y una foto de pizarra | Lectura aceleracionista en el cuerpo y la secuencia, corregida y en $(U,W/P)$, en el anexo D, con el mecanismo de vuelta (saldos reales o banco central) |
+| Nota 22 (P66, C23) | «sin productividad esperada en la ecuación del salario real **precio**»; «¡Error! Marcador no definido» | Es la del salario **negociado** (WS); el resultado algebraico era correcto y se mantiene (paso 4 del anexo C); referencia rota quitada |
+| Histéresis (V38) | Blanchard y Summers (1987) | (1986), *NBER Macroeconomics Annual* (el de 1987 es la versión corta) |
+| Mecanismos (C18, V39) | Capital físico «de Carlin y Soskice», humano «de Layard y Nickell», *insiders* «de Lindbeck y Snower» | Los 3 los ordenan Blanchard y Summers (1986), que consideran principal el de *insiders*; Lindbeck y Snower, como el modelo de los *insiders* (3.A.27) |
+| Capital humano (C18) | «Esto abre la posibilidad a jubilaciones anticipadas» | Quitado (sin fuente y fuera de lugar) |
+| Conclusión (K16, C19) | «Blanchard y Galí encuentran evidencia de histéresis en Europa y EE. UU.» | Blanchard y Galí (2010) es el modelo nuevo keynesiano con fricciones (III.5); la evidencia es de Galí (2015), Ball (2009) y Blanchard, Cerutti y Summers (2015) |
+| Conclusión (K16) | «La evidencia confirma el prejuicio de la rigidez…» | Opinión con apoyo (Blanchard y Wolfers, 2000; Blanchard, 2018) |
+| Nota 23 (C20) | Protección de rentas en EE. UU. como modelo | Quitada (sin fuente; la flexiseguridad es danesa); la flexiseguridad del original se queda en la idea final |
+| Propuesta de coherencia K21 (detectado al integrar) | Con $\mathrm{PAT}^e\neq\mathrm{PAT}$: $F(U^n,Z)=\mathrm{PAT}^e/[(1+\mu)\mathrm{PAT}]$ | $F(U^n,Z)=\mathrm{PAT}/[(1+\mu)\,\mathrm{PAT}^e]$ (anexo C, paso 3): una productividad mayor que la esperada baja la NAIRU, coherente con el paso 2 |
+| Erratas (C26) | Chamberlain, NEJ, veneficio, empelo, «relativamente para», «es la tasa de desempleo es la tasa» | Corregidas o fuera con su párrafo |
+
+## Marcas resueltas
+
+| Marca | Texto original | Qué se hizo |
+|---|---|---|
+| P1 (amarillo) | «sólo existirá paro friccional» | Corregido (ver errores); I.1 |
+| P2, P5-P8 (amarillo) | Título «Nueva Economía Keynesiana» y 4 epígrafes vacíos | III.1 corto (1′) sin epígrafes vacíos (K7) |
+| P3 (amarillo) | NAIRU afectada por «el ajuste gradual a perturbaciones pasadas» | Reescrito: la NAIRU en III.3 y su dependencia de la historia en III.4 |
+| P4 (amarillo) | Ball y Mankiw, «aproximadamente sinónimo» | Cita comprobada (V24) en III.1 y anexo B |
+| P9-P10 (amarillo) | Imagen 12 (foto de pizarra) y su fuente | Gráfico nuevo `nairu-demanda-pasos` (anexo D), «elaboración propia» |
+| P11-P21 (amarillo) | Secuencia de la política de demanda | K9 (a): lectura aceleracionista en III.3 b) iii) y pasos corregidos en el anexo D |
+| P22-P30 (amarillo) | Anexo 1: diferencias y similitudes, gráfico, «paro keynesiano» | Anexo B único (tabla `tab:tnp-nairu` y gráfico `tn-nairu`), corregido |
+| P31 (nota al opositor) | Avisos del cambio de temario y tabla | Quitados |
+| P32 (nota al opositor) | «Hasta aquí… se puede decir de palabra» | Sustituido por el reparto de minutos de la `notaopositor` |
+| P33 (nota al opositor) | Cita de De Vroey (2016, p. 26) | Traducida y resumida en la relevancia de la introducción (parte 1); página sin comprobar |
+| P34-P35 (comentarios) | «Me gustaría reestructurar el tema…»; esquema de un compañero | No se publican; estructura: K1 (duda A28-01) |
+| P36-P39, P42 (comentarios) | Coordinar con 3.A.4, 3.A.25, 3.A.7, 3.A.41; «Ver Juan Luis» | Resuelto con el canon y las remisiones; no se publican |
+| P40 (comentario) | «Superado… cantar rápido» | 6′ para la NAIRU (duda A28-02) |
+| P41 (comentarios) | Expectativas de productividad, «relevante para el test» | Supuestos de III.3, anexo C (pasos 3 y 4) y `notaopositor` del test |
+| P43 (comentarios) | «ESTO ESTÁ MAL… NO ES UNA TASA» | `notaopositor` tras `fig:ws-ps` y anexo B |
+| P44 (comentarios) | «Ver tema de Zapico»; ICEX-CECO sobre Blanchard y Galí; «no lo cantaría» | III.5 en una viñeta de 30″ (Blanchard y Galí, 2010; Galí, 2011) con `\vertema{3.A.7}`; el tema de Zapico no estaba disponible |
+| P45 (advertencias) | *Disclaimer* «no hay marco homogéneo» | Reescrito en III.1 («Advertencia»), con la salvedad de los contratos implícitos (III.2) |
+| P46 (caja de anotaciones) | WS lineal $1-\alpha U+Z$ | Anexo C con la letra $a$ (duda A28-04) |
+| P47-P51 (imágenes 1-4 y esquema a mano) | Neoclásico, Pigou en 4 cuadrantes, keynesiano, *shock* | Imagen 1 → `equilibrio-trabajo` (copia del 3.A.25) e imagen 4 → `keynesiano-shock`, en el anexo A; imágenes 2 y 3 y el esquema a mano, quitados (duda A28-15) |
+| P52-P54, P65 | Phillips (gif de Wiley), Samuelson-Solow, Policonomics, Okun | Parte 1: `phillips-original` (sin nube, duda A28-06), `samuelson-solow`, `phillips-aumentada`, `okun-espana` |
+| P55-P58 | Imágenes 8-11 | `ws-ps` (una por capas) y `ws-ps-desplazamientos` (2 paneles) |
+| P63, P64 | Gráficos nuevos propuestos | `paro-nawru-espana` (III.3 c) y `histeresis-sendas` (III.4) |
+| P66-P71 (notas) | Notas 17-23 | Ver «Errores corregidos» y C24; nota 17 con la NAWRU de España (duda A28-08); nota 18 en esa misma nota |
+| P83-P84 | Comentarios y «Tema ICEX-CECO», «Tema Juan Luis Cordero» en la bibliografía | No se publican; bibliografía de obras |
+| P85 | Enlace a quia.com y «Preguntas de otros exámenes» vacío | Enlace genérico al simulador en el anexo E; epígrafe vacío quitado |
+| P86 | Enlace suelto a *Nada es Gratis* en el enganche | Citado con autor y fecha en la valoración de la NAIRU (`Jimeno2018NAIRU`) |
+
+## Datos actualizados
+
+| Dato | Valor anterior | Valor nuevo | Fuente | URL | Consulta | Segunda comprobación |
+|---|---|---|---|---|---|---|
+| Paro de España (enganche) | — | 8,2 % (2007), 26,1 % (2013), 10,2 % (3T 2026) | AMECO ZUTN; INE, EPA 3T2026 | https://www.ine.es/dyngs/Prensa/EPA3T26.htm | 31/10/2026 | Serie EPA452434 del INE: 10,18 |
+| NAWRU de España y zona del euro | Nota 18 sin cifra | 13,4 % (2005), 16,9 % (2013), 12,1 % (2025); zona del euro, 6,6 % | AMECO ZNAWRU (3/6/2026) | https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=1.0.0.0.ZNAWRU&countries=ESP | 31/10/2026 | 1D01 (misma cifra); Banco de España, DO 2604, en orden de magnitud |
+| Paro frente a NAWRU 2023-2025 | — | 12,2/11,4/10,5 frente a 13,1/12,6/12,1 | AMECO | ídem | 31/10/2026 | EPA |
+| Máximos y mínimos del paro de España | — | 19,7 (1987), 24,1 (1994), 26,1 (2013); 15,5 (1990-1991), 8,2 (2007) | AMECO ZUTN (`paro-nawru-espana.csv`) | ídem | 31/10/2026 | EPA en 2002-2025 |
+| NAIRU de España según Ball (2009) | — | 6,5 % (1980) → 14,4 % (1995) | Ball (2009), NBER w14818 | https://www.nber.org/papers/w14818 | 31/10/2026 | No cuadra con AMECO (método y añada distintos): no se mezclan |
+| Recesiones con pérdida permanente | — | 2/3 de 122 recesiones en 23 países | Blanchard, Cerutti y Summers (2015) | https://www.nber.org/papers/w21726 | 31/10/2026 | IMF WP 15/230 |
+| Intervalo de la NAIRU de EE. UU. | — | 4,3 %-7,3 % (95 %) | Staiger, Stock y Watson (1997), *JEP* | https://doi.org/10.1257/jep.11.1.33 | 31/10/2026 | Texto (C15) |
+| Reino Unido y Comunidad Europea | — | ≤3,3 % (1945-1970), >12 % (1986); CE: se dobla 1970-1980 y otra vez | Blanchard y Summers (1986) | https://www.nber.org/papers/w1950 | 31/10/2026 | AMECO (Alemania) |
+| Okun (parte 1) | — | España: 0,8 puntos por punto de crecimiento por encima del 1,8 % (1996-2025, sin 2020-2021) | Eurostat `nama_10_gdp`, AMECO | V8 | 31/10/2026 | Ball *et al.* (2017): −0,85 |
+| Tasa natural de EE. UU. (nota 17) | 4-5 % en 2023, sin fuente | Sustituida por la NAWRU de España y de la zona del euro | AMECO | — | 31/10/2026 | (CBO 4,4 % y FOMC 4,2 % disponibles, V10, no usados) |
+| Resto de la parte 1 | | Phillips, Samuelson-Solow, estanflación, Nobel, Fisher, Okun (1962) | V1-V4, V9, V12-V21 | | 31/10/2026 | ver `propuestas-datos.md` |
+
+**Sin comprobar en la fuente original** (se mantienen con la cifra o la frase de fuentes secundarias concordantes): la relación 3 a 1 de Okun (1962) (V9); los puntos del menú de Samuelson y Solow (V15, una sola fuente secundaria, Hoover, 2014); las páginas de De Vroey (2016) (V32); la cita de Modigliani y Papademos, que se parafrasea (V23); lo que dicen Estrella y Mishkin (V25: se usa solo el resumen del NBER, «concepto de corto plazo distinto de la tasa natural de largo»); la paráfrasis de Blanchard y Summers (1986) en la evidencia («el paro europeo se comporta como si dependiera mucho de su historia; el de EE. UU., mucho menos»), que resume su sección empírica sin la cifra; la persistencia «mayor» en los mercados escleróticos de Blanchard y Galí (2010) (de su resumen, sin el texto); Blanchard y Diamond (1994) y Nickell (1997), metadatos sin ver el texto.
+
+## Contenido añadido
+
+- **III.1 y III.2** (K7): la NEK en 3 viñetas (idea, advertencia, tasa natural frente a NAIRU) y los microfundamentos de la WS (negociación, CNE de Shapiro y Stiglitz, contratos implícitos sin paro involuntario) con la curva salarial de Blanchflower y Oswald (1994), todo remitido al 3.A.27.
+- **III.3 NAIRU** con la estructura de modelo (K8): idea (NIRU, Layard y Nickell), supuestos, WS `eq:ws` (idéntica al 3.A.27), PS `eq:ps`, NAIRU `eq:nairu` como `\funcionclave`, conflicto distributivo, políticas de oferta (Z, μ, cuña fiscal, productividad y formación), demanda con la aceleracionista (K9) y perturbaciones de oferta (Bruno y Sachs); **evidencia nueva** (Blanchard, 2006; Bruno y Sachs, 1985; Nickell, 1997; Calmfors y Driffill, 1988; Blanchard y Wolfers, 2000; Ball y Mankiw, 2002; Staiger, Stock y Watson, 1997; Estrella y Mishkin, 1999; NAWRU de España con gráfico); valoración con Jimeno (2018) y Farmer como puente (K26).
+- **III.4 La persistencia del desempleo** (nuevo, K1, K25; antes una «extensión» de 460 palabras): hechos (Reino Unido, CE, España), persistencia frente a histéresis, `eq:histeresis` (`\funcionclave`) y `eq:phillips-histeresis` con el «límite de velocidad» de Phillips, 3 mecanismos con refrán, implicaciones (demanda, desinflaciones, política monetaria con Galí, 2022, políticas activas), evidencia (Blanchard y Summers, 1986; Ball, 2009; Galí, 2015; Blanchard, Cerutti y Summers, 2015; NAWRU de España) y valoración (Blanchard, 2018; economía institucional y Malinvaud en una viñeta, P75).
+- **III.5** (C20, P44): Blanchard y Galí (2010) y Galí (2011), con la curva salarial en nota al pie.
+- **Conclusión** completa (K17, C21) y **anexos** A-E (K10).
+
+### Estado de cada propuesta
+
+- **Contenido (C)**: C1 rechazada en la estructura (K1 manda: CRITERIOS § 2 obliga a mantener los bloques y títulos del original; ver A28-01), aplicada en los minutos y en el contenido de cada bloque; C2-C8 aplicadas (parte 1), con el enganche de K15 en vez de «Agua pasada no mueve molino», que pasa a pegatina de la NAIRU sin histéresis; C9 aplicada en el contenido (Okun en II.1.3 con ϑ) y rechazada en la numeración (I.3 de C1); C10 repartida (nota 17 con la NAWRU en II.2; evidencia de la NAWRU en III.3 c); C11 aplicada en III.1 y III.3 a) (la frase «no se atribuye la acuñación a Tobin» se sustituye por V22, que lo comprobó en el texto de Tobin); C12 aplicada (la PS con etiqueta normal `eq:ps`, no `\funcionclave`, por K22); C13 aplicada con el texto de K9 (los 4 pasos numerados de C13 van en el anexo D; la nota con Tebar se quita: no hace falta citar a otro preparador para una idea de manual, ya en Carlin y Soskice); C14 aplicada; C15 aplicada (la crítica «se estima mal» con Staiger, Stock y Watson pasa a la evidencia, «Medida»); C16-C19 aplicadas en III.4 (Blanchard, 2006, como «matiz» de C19 **no** se usa: sin comprobar); C20 aplicada en parte: Galí (2011) en III.5 con la ecuación en nota (no numerada), Galí (2022) en las implicaciones de III.4, Farmer en III.3 d) (K26), economía institucional en la valoración de III.4; C21 aplicada con la idea final del refrán del enganche; C22 aplicada (anexo B, con la clave `EstrellaMishkin1999NAIRU`, no la de la 1D01); C23 aplicada (anexo C) con un paso nuevo (3, sorpresas de productividad) y la corrección de K21; C24-C26 aplicadas; C27 aplicada (con `nairu-demanda-pasos` en lugar de `nairu-demanda`); C28 aplicada (refranes de K15 y C18); C29 aplicada salvo lo que es del canon; C30-C32 aplicadas.
+- **Datos (V)**: todas aplicadas salvo V1 (nube de Phillips, A28-06), V10 (EE. UU. en la nota 17, A28-08) y E8 (quia, quitado).
+- **Coherencia (K)**: todas aplicadas con la opción recomendada; K3 (no rehacer P48 y P49); K11 (tabla corta con las filas 4 y 6, parte 1).
+
+## Coherencia
+
+- **Canon aplicado**: $U_t$ y $U^n$ (también para la NAIRU), nota estándar de la tasa de paro (parte 1); WS y PS con `eq:ws` idéntica a la del 3.A.27 ($F_U<0$; $F_Z>0$ dicho en el texto); $\overline L$; μ margen neto con $1+\mu=\sigma/(\sigma-1)$ en nota (parte 1); λ_h (D020) y $\overline U^n$; ϑ y ϑ′ en Okun; *insiders* con la ficha `insiders-outsiders` y `\vertema{3.A.27}`; Farmer con las claves del 3.A.26; Hosios y Beveridge del 3.A.26; tabla `tab:supuestos-trabajo` con los supuestos 4 y 6.
+- **Contradicciones con otros temas** (no se tocan; para cuando se revisen):
+  1. **1D01** (revisada): atribuye a `Okun1962` el «medio punto menos de paro por cada punto de crecimiento» (`eq:okun`): es la estimación moderna de `Ball2017Okun` (0,45 para EE. UU.); Okun (1962) da la relación 3 a 1 (ϑ ≈ 1/3). Además, su `EstrellaMishkin1998` es otro artículo (recesiones, *REStat*).
+  2. **3.A.7** (sin revisar): copia el texto viejo de la NAIRU (SRN/SRP, $U_n$, α, «Layard y Nickell, 1985», «Blanchard y Summers, 1987») y cita «Blanchard y Galí (2005)» (es 2010); debe resumir la NAIRU sin ecuaciones ni gráfico, con `\vertema{3.A.28}`.
+  3. **3.A.41** (sin revisar): NAIRU $\overline U$ y pendiente $h$ (canon $U^n$ y $a$); el triángulo de Gordon con histéresis debe remitir a `eq:phillips-histeresis`.
+  4. **3.A.36** (sin revisar): añadir `\vertema{3.A.28}` para la curva aumentada y la histéresis como argumento para dar peso al empleo.
+  5. **3.A.34** (sin revisar): el canal del capital físico de la histéresis en una mención; avisar de que la «histéresis» de la inversión irreversible es otra idea.
+  6. **3.A.4** (sin revisar): desarrolla la Phillips con el texto viejo de este tema y remite aquí el mercado de trabajo (es el 3.A.25).
+  7. **3.A.26** (revisado): escribe la tasa natural como $U^*$; aquí es $U^n$ (A28-11).
+- **Cambios al canon** (para `tema-canon`, `propuestas-coherencia.md` § 4):
+  - ficha `phillips`: logaritmos **decimales** ($\log_{10}$, no ln); Lipsey con $g$, $h$, $f$; gráfico de referencia `phillips-aumentada`; versión con histéresis;
+  - ficha `okun`: tema de referencia **3.A.28** (II.1.3, `eq:okun`, ϑ, ϑ′; claves de la 1D01);
+  - ficha `nairu-layard-nickell`: forma lineal con la pendiente $a$; `eq:nairu` como función clave; gráficos `ws-ps` y `ws-ps-desplazamientos`; resuelta la divergencia «desarrollo invertido» en el lado del 3.A.28; con $\mathrm{PAT}^e\neq\mathrm{PAT}$, $F(U^n,Z)=\mathrm{PAT}/[(1+\mu)\mathrm{PAT}^e]$;
+  - ficha `histeresis`: año 1986; gráfico `histeresis-sendas`; 3.A.34 en «temas que lo usan»;
+  - `notacion.md` § 6: $a$ de la WS lineal; $\overline U^n$; $Z$, $P^e$, $\mathrm{PAT}^e$; confirmar ϑ; § 0, asterisco como equilibrio del modelo (A28-11);
+  - `mapa.yaml`: remisiones de K18 y modelos de K28; `is-lm` como mención.
+
+## Dudas abiertas
+
+Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
+
+| Id | Duda | Contexto | Opciones | Aplicada |
+|---|---|---|---|---|
+| A28-01 | Estructura: histórica (K1) o la del título (P75, C1) | En 2024 Víctor escribió «me gustaría reestructurar el tema… yo sigo un enfoque histórico»; CRITERIOS § 2 (2026) manda mantener los bloques y títulos del original | (a) 3 bloques del original con sus títulos y un III.4 nuevo, «La persistencia del desempleo»; (b) 3 bloques por el título (I tasa natural, II NAIRU, III persistencia), con lo de otros temas en viñetas | **(a)**. Si Víctor prefiere (b), el contenido ya está escrito por piezas y se reordena sin redactar de nuevo |
+| A28-02 | Peso de la NAIRU | El original decía «superado, cantar rápido»; es tema de referencia de la ficha | (a) 6′ con ecuaciones y evidencia; (b) unos 3-4′ | **(a)** |
+| A28-03 | Política de demanda en la NAIRU (P11-P21) | 11 viñetas en amarillo en $(L,W/P)$ | (a) lectura aceleracionista en el cuerpo y pasos corregidos en el anexo D; (b) las 11 viñetas en el cuerpo; (c) solo la aceleracionista | **(a)** |
+| A28-04 | Letra de la WS lineal | El original usa α, que choca con el emparejamiento (Hosios) y Barro-Gordon | (a) $a$, la pendiente de la Phillips, porque es la misma; (b) α local con nota; (c) sin forma lineal | **(a)** (anexo C) |
+| A28-05 | Okun en el 3.A.28 y su letra | El canon lo dejaba pendiente; la 1D01 lo usa sin letra | (a) 3.A.28 tema de referencia, II.1.3, ϑ y ϑ′; (b) 4.B.4 de referencia y aquí una mención; sin letra | **(a)** |
+| A28-06 | Nube de Phillips | Con los datos del Banco de Inglaterra se puede reconstruir, pero con ingresos medios (Feinstein), no con el índice de salarios por hora que usó Phillips | (a) solo la curva y los 2 puntos; (b) curva con la nube reconstruida, avisada en la fuente | **(a)** (el CSV está en `datos/` por si Víctor elige b) |
+| A28-07 | Okun (1962) «3 a 1» | No se ha visto el original de Okun; fuentes secundarias concordantes | (a) mantener «unos 3 puntos» con `Okun1962`; (b) citar solo la forma moderna | **(a)**; comprobar en el original si es posible |
+| A28-08 | Nota 17: tasa natural de EE. UU. o NAWRU de España | El dato del original (4-5 % en 2023) no tenía fuente | (a) NAWRU de España y zona del euro (AMECO); (b) CBO (4,4 %) y FOMC (4,2 %) | **(a)** |
+| A28-09 | Refranes | Enganche e idea final, y pegatinas | (a) «De aquellos polvos vienen estos lodos» (enganche, idea final e histéresis), «No se puede estar en misa y repicando» (curva aumentada), «Agua pasada no mueve molino» (NAIRU sin histéresis), «Quien se fue a Sevilla perdió su silla» (*insiders*); (b) «Agua pasada no mueve molino» en el enganche (C2) | **(a)**; los 4 libres en el temario |
+| A28-10 | *Nada es Gratis* (Jimeno, 2018) | En el original era un enlace suelto en el enganche | (a) cita del título en la valoración de la NAIRU; (b) en el enganche | **(a)**; la entrada no se ha releído entera: solo se cita el título |
+| A28-11 | $U^n$ aquí frente a $U^*$ del 3.A.26 | El 3.A.26 escribe $U^*=s/[s+f(\theta^*)]$ | (a) $U^n$ aquí, decir una vez que el $U^*$ del DMP es $U^n$; el asterisco, equilibrio del modelo; frase opcional en el 3.A.26; (b) cambiar a $U^n$ todo el 3.A.26 | **(a)** (II.4 lo dice) |
+| A28-12 | Farmer: dónde | El 3.A.26 remite aquí los equilibrios múltiples | (a) valoración de la NAIRU, como puente a la persistencia; (b) al final de III.4 | **(a)** |
+| A28-13 | Blanchard y Galí (2010) | «No lo cantaría», según un comentario | (a) una viñeta de 30″ en III.5 con `\vertema{3.A.7}`; (b) desarrollo | **(a)** |
+| A28-14 | Economía institucional y desequilibrio (P75) | La guía de 2023 tiene un apartado | (a) una viñeta en la valoración de III.4; (b) apartado propio | **(a)** |
+| A28-15 | Imágenes 1-4 del bloque I | Neoclásico, Pigou en 4 cuadrantes, keynesiano sin y con *shock* | (a) imagen 1 → `equilibrio-trabajo` del 3.A.25 y 4 → `keynesiano-shock` en el anexo A; 2 y 3 fuera; (b) rehacer las 4 en TikZ | **(a)** |
+| A28-16 | Carlin y Soskice: capítulos | Edición de 2015 no vista; el cap. 2 lo cita también el 3.A.27 | (a) cap. 2 donde ya lo usa el 3.A.27 y sin capítulo en el resto; (b) comprobar capítulos en el ejemplar | **(a)** |
+
+## Instrucciones para el vídeo
+
+- **Pizarra en 3 zonas fijas**, como en 3.A.25, 3.A.26 y 3.A.27: a la izquierda, los supuestos que se levantan (4, atomicidad, en III; 6, salarios y precios flexibles, en II y III) y las pegatinas, que se quedan todo el tema: «No se puede estar en misa y repicando» junto a la curva aumentada, «Agua pasada no mueve molino» junto a la NAIRU sin histéresis ($\lambda_h=0$), «Quien se fue a Sevilla perdió su silla» junto a los *insiders* y «De aquellos polvos vienen estos lodos» (el del enganche) junto a la histéresis ($\lambda_h=1$). En el centro, los gráficos por capas; a la derecha, las funciones clave.
+- **Funciones clave que se conservan** (`conservar:`): la curva aumentada \eqref{eq:phillips-aumentada}, la NAIRU \eqref{eq:nairu} (con la WS \eqref{eq:ws} y la PS \eqref{eq:ps} escritas debajo, sin recuadro) y la histéresis \eqref{eq:histeresis}. La aceleracionista \eqref{eq:aceleracionista}, $U^n=s/[s+f(\theta^*)]$ y Okun \eqref{eq:okun}, una línea cada una sin recuadro.
+- **Bloque I** (3′): sin gráficos; tabla de supuestos abreviada (filas 4 y 6) arriba a la izquierda. El anexo A no se canta.
+- **Bloque II, gráfico conjunto por partes** (11′): `samuelson-solow` es la capa 1 de `phillips-aumentada` (no se dibuja aparte): menú → curvas de corto plazo por $\pi^e$ → vertical en $U^n$ → puntos A, B, C, D; se queda en la pizarra hasta III.3, donde se le añade la flecha de la política de demanda. `phillips-original`, `okun-espana` y `beveridge-lectura`, como apoyo en pantalla (la Beveridge, como mucho, un esbozo).
+- **Bloque III** (12′30″): `ws-ps` es el gráfico central y crece por capas (ejes → WS → PS → E y $U^n$ → brecha con $U<U^n$); `ws-ps-desplazamientos` son 2 capas más sobre el mismo gráfico (WS′ por ↑Z; PS′ por ↑μ), no se dibuja aparte. `histeresis-sendas`, abajo, por capas según $\lambda_h$ (0, intermedio, 1), con la ecuación recuadrada al lado y los 3 mecanismos en lista. `paro-nawru-espana`, como apoyo en pantalla (III.3 c y III.4 c). `tn-nairu` y `nairu-demanda-pasos` son de los anexos: no se cantan.
+- **Introducción y conclusión**, en modo guion, sin pizarra. Enganche: «De aquellos polvos vienen estos lodos», el paro de España (8,2 % en 2007, 26,1 % en 2013, 10,2 % hoy) y la NAWRU que sube y baja detrás, con la pregunta «¿hay un paro natural al que la economía vuelve sola, o el paro de hoy fija el de mañana?». Idea final: hay un paro de equilibrio, pero no es ajeno a la historia; por eso hay que impedir que el paro de hoy sea el de mañana (flexiseguridad, políticas activas), y se cierra con el refrán.
+- **Reparto del guion** (unas 4.700 palabras): introducción ≈ 400, I ≈ 470, II ≈ 1.740, III ≈ 1.970 (III.1 y III.2 ≈ 160 cada uno, III.3 ≈ 950, III.4 ≈ 630, III.5 ≈ 80), conclusión ≈ 160. Si falta tiempo, el comodín es la evidencia de la NAIRU (se queda en Europa frente a EE. UU. y España) y la NMC (II.3).
+- Las notas al pie, las tablas y los anexos no van al cante. No se dice «hilo» ni números de temas en voz alta.
