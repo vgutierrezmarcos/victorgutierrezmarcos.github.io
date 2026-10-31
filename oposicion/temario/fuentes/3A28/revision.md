@@ -151,6 +151,7 @@ Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
 | A28-14 | Economía institucional y desequilibrio (P75) | La guía de 2023 tiene un apartado | (a) una viñeta en la valoración de III.4; (b) apartado propio | **(a)** |
 | A28-15 | Imágenes 1-4 del bloque I | Neoclásico, Pigou en 4 cuadrantes, keynesiano sin y con *shock* | (a) imagen 1 → `equilibrio-trabajo` del 3.A.25 y 4 → `keynesiano-shock` en el anexo A; 2 y 3 fuera; (b) rehacer las 4 en TikZ | **(a)** |
 | A28-16 | Carlin y Soskice: capítulos | Edición de 2015 no vista; el cap. 2 lo cita también el 3.A.27 | (a) cap. 2 donde ya lo usa el 3.A.27 y sin capítulo en el resto; (b) comprobar capítulos en el ejemplar | **(a)** |
+| R28-01 | Título corto de la ficha de repaso (pie) | Con «Tasa natural, NAIRU y persistencia del paro» el pie de la izquierda se monta sobre el de la derecha (licencia de material exclusivo) | (a) «Tasa natural de paro y NAIRU» (sin la persistencia); (b) «Tasa natural, NAIRU e histéresis» (cabe justo); (c) acortar el texto del pie de la derecha en `tcee-repaso.sty` | **(a)** |
 
 ## Instrucciones para el vídeo
 
