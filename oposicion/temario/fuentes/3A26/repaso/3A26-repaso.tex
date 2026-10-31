@@ -1,0 +1,322 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Búsqueda, DMP y costes de ajuste]{3.A.26}{Desempleo friccional. La curva de Beveridge, el modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides. Costes de ajuste y dinámica de la demanda de trabajo.}
+\tcefecha{31/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «cada oveja con su pareja»}{2,5}
+\apartadocante{I. Modelos de búsqueda}{5}
+\subcante{1. Orígenes: \autor{Beveridge}, \autor{Hicks}, tasa natural}{0,5}
+\subcante{2. \autor{Stigler}: muestra de tamaño fijo}{0,5}
+\subcante{3. \autor{McCall}: $w^R$ y paradoja de \autor{Diamond}}{4}
+\apartadocante{II. \autor{Diamond}, \autor{Mortensen} y \autor{Pissarides}}{13,5}
+\subcante{1. Idea: paro y vacantes a la vez}{1}
+\subcante{2. Modelo: 3 ecuaciones, estática, \autor{Hosios}}{7}
+\subcante{3. Curva de \autor{Beveridge}; España y zona del euro}{2,5}
+\subcante{4. Evidencia: $\alpha$, flujos, \autor{Shimer}}{1}
+\subcante{5. Extensiones}{0,5}
+\subcante{6. Valoración: ¿voluntario?}{1,5}
+\apartadocante{III. Costes de ajuste y demanda de trabajo}{8}
+\subcante{1. Idea: factor cuasifijo}{1}
+\subcante{2. Modelo: fijos, lineales, cuadráticos}{5}
+\subcante{3. Evidencia}{0,75}
+\subcante{4. Extensiones}{0,25}
+\subcante{5. Valoración}{1}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra} en 3 zonas: izquierda, supuestos que se levantan (2 información perfecta; 7 movilidad sin costes) y refranes («quien busca, halla», «cada oveja con su pareja», «ni tanto ni tan calvo», «vísteme despacio, que tengo prisa», «más vale malo conocido que bueno por conocer»); centro, gráficos por capas (densidad con $w^R$; paneles $(\theta,w)$ y $(U,V)$ hasta el final de \hyperref[rep:II]{II}; sendas y banda); derecha, recuadradas: $w^R$, $m(U,V)$, curva salarial, creación de empleo, $U=s/(s+f)$, $\gamma=\alpha$, banda y $\lambda_t$.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{Cada oveja con su pareja}»: cada parado busca su puesto y cada empresa su trabajador, y no se encuentran a la primera. España: \dato{2.591.200 parados, 10,18\,\%}{INE, EPA 3T 2026} y \dato{150.765 vacantes}{Eurostat, 2T 2026}: $\approx16{,}5$ parados por vacante. ¿\emph{Cómo puede haber a la vez gente que busca trabajo y trabajo que busca gente?}
+\item \textbf{Relevancia}: \emph{teórica}: paro que existe aunque la economía vaya bien, base de la tasa natural \vertema{3.A.28}; Nobel 2010 a \autor{Diamond}, \autor{Mortensen} y \autor{Pissarides} («mercados con fricciones de búsqueda»). \emph{Macro}: mercado de trabajo de los EGDE \vertema{3.A.7}; la curva de \autor{Beveridge}, indicador que siguen los bancos centrales. \emph{Política}: prestaciones, servicios de empleo, costes de despido, dualidad.
+\item \textbf{Contextualización}: neoclásico: $w$ real vacía el mercado, sin paro involuntario salvo salario mínimo \vertema{3.A.25}. Se levantan 2 supuestos: \textbf{2} información perfecta y \textbf{7} movilidad sin costes de ajuste (los demás, \vertema{3.A.27}). \concepto{Paro friccional}: el de quien está entre 2 empleos o acaba de entrar y aún no ha encontrado puesto; \emph{estructural}: cualificaciones o lugar no encajan de forma duradera; \emph{cíclico}: demanda insuficiente. Friccional + estructural = tasa natural; frontera borrosa (en los modelos, ambos en la eficiencia del emparejamiento). \autor{Beveridge} (1909), \autor{Hicks} (1932) $\to$ teoría de la búsqueda (\autor{Stigler}, 1962; \autor{McCall}, 1970; \autor{Phelps}, 1970): nueva forma de describir el intercambio. Costes de ajuste: \autor{Oi} (1962), \autor{Hamermesh} (1993).
+\item \textbf{Problemática}: ¿por qué parados y vacantes a la vez, con salarios flexibles? ¿Por qué un parado que optimiza rechaza ofertas, es voluntario? ¿Qué determina el paro de equilibrio, es eficiente? ¿Qué dice la curva de \autor{Beveridge}? ¿Cómo ajustan las empresas la plantilla si contratar y despedir cuesta?
+\item \textbf{Estructura}: del parado que busca solo al mercado entero y luego a la empresa: \hyperref[rep:I]{I}, búsqueda (\autor{McCall}); \hyperref[rep:II]{II}, DMP, \autor{Beveridge} y \autor{Hosios}; \hyperref[rep:III]{III}, costes de ajuste.
+\end{itemize}
+
+% ==========================================================================
+\bloque[5]{I. Modelos de búsqueda\label{rep:I}}
+\begin{ideaclave}
+Si encontrar empleo lleva tiempo y la información cuesta, el parado racional no acepta la primera oferta: fija un salario de reserva y el paro es el tiempo hasta que llega una oferta que lo supere. Pero toma los salarios como dados, y si las empresas los eligen, se cae (\autor{Diamond}).
+\end{ideaclave}
+
+\sub{I.1. Orígenes\label{rep:I.1}}
+\begin{itemize}
+\item Neoclásico: con información perfecta y movilidad sin costes, no hay paro friccional \vertema{3.A.25}.
+\item \autor{Beveridge} (1909): no hay un mercado de trabajo, sino muchos; receta: oficinas de empleo. \autor{Hicks} (1932): poco empleables, sindicatos y paro friccional, que existe incluso en estado estacionario.
+\item \autor{Lipsey} (1960): con exceso de demanda nulo, paro positivo. \autor{Phelps} (1967), \autor{Friedman} (1968): \concepto{tasa natural de paro} \vertema{3.A.5} \vertema{3.A.28}. Faltaba \emph{cuánto} y de qué depende.
+\end{itemize}
+
+\sub{I.2. \autor{Stigler} (1961, 1962)\label{rep:I.2}}
+\begin{itemize}
+\item Puestos idénticos, salarios distintos; se conoce $F(w)$, no qué paga cada empresa; cada consulta cuesta. Elige de una vez el \emph{tamaño de la muestra} $n$: coste marginal de una consulta = mejora esperada del mejor salario. Se aceptan salarios $<$ máximo; la dispersión persiste.
+\item \emph{Valoración}: nadie busca así $\Rightarrow$ búsqueda \emph{secuencial}.
+\end{itemize}
+
+\sub{I.3. \autor{McCall} (1970): el salario de reserva\label{rep:I.3}}
+\begin{itemize}
+\item Cada periodo una oferta; se acepta o se sigue buscando. \concepto{Salario de reserva} $w^R$: deja indiferente entre aceptar y seguir buscando. «Quien busca, halla», pero buscar cuesta.
+\item \emph{Supuestos}: neutral al riesgo, factor $\beta\in(0,1)$, tiempo discreto; $z$ = prestación + ocio $-$ costes de buscar; ofertas i.i.d. de $F(w)$ conocida; empleo \emph{ad infinitum}.
+\item \emph{\autor{Bellman}}: $V_{\mathrm E}(w)=w/(1-\beta)$; $V_{\mathrm U}=z+\beta\int\max\{V_{\mathrm U},\tfrac{w}{1-\beta}\}dF(w)$. Regla de umbral: acepta si $w\geq w^R$, con $w^R/(1-\beta)=V_{\mathrm U}$:
+\funcionclave{\underbrace{w^R-z}_{\text{coste de rechazar}}=\underbrace{\frac{\beta}{1-\beta}\int_{w^R}^{\infty}(w-w^R)\,dF(w)}_{\text{ganancia de buscar una vez más}}}
+\item CMg de buscar ($w^R-z$) creciente, BMg decreciente; se cortan en $w^R$; se acepta con probabilidad $1-F(w^R)$.
+\end{itemize}
+\graficorepaso[0.98\linewidth]{mccall}{\autor{McCall}: coste y beneficio de seguir buscando; ofertas aceptadas a la derecha de $w^R$}
+\begin{itemize}
+\item \emph{Duración esperada del paro}: $1/[1-F(w^R)]$.
+\item \emph{Estática}: $w^R$ (y la duración) ↑ con ↑$z$ (buscar cuesta menos), ↑$\beta$ (más paciente) y ↑dispersión de ofertas (opción de esperar vale más); ↓ si buscar cuesta más o más impaciencia. $\partial w^R/\partial z\in(0,1)$; $w^R$ único.
+\item \emph{Frente al neoclásico}: mismo concepto que el $w^R$ estático \vertema{3.A.25} + \concepto{valor de opción} de seguir buscando $\Rightarrow$ $w^R>z$; sin nuevas ofertas, $w^R=z$, el de la negociación \vertema{3.A.27}.
+\item \emph{Naturaleza}: paro \emph{friccional} y \emph{elegido} $\Rightarrow$ \emph{voluntario}. Islas de \autor{Lucas}-\autor{Prescott} (1974).
+\item \emph{Extensiones}: heterogeneidad; no estacionario, $w^R$ ↓ con la duración (\autor{Mortensen}, 1977); búsqueda desde el empleo (\autor{Burdett}, 1978; \autor{Burdett}-\autor{Mortensen}, 1998: dispersión de equilibrio). Anexo: \autor{Blau} (1991, \concepto{utilidad de reserva} salario-horas), impaciencia (\autor{DellaVigna}-\autor{Paserman}, 2005: busca menos, sale más despacio), \emph{efecto de elegibilidad} (\autor{Mortensen}, 1977: efecto de la prestación ambiguo), participación (desanimados), esfuerzo $e$.
+\item \concepto{Paradoja de \autor{Diamond}} (1971): buscadores idénticos y búsqueda costosa, por poco que sea $\Rightarrow$ ninguna empresa paga más que el $w^R$ común ni menos: sin dispersión, sin motivo para buscar; salario de monopsonio. \autor{Rothschild} (1973): ¿de dónde sale $F(w)$?
+\item \emph{Valoración}: paro friccional microfundamentado y medible; solo un lado del mercado. Salidas: heterogeneidad o búsqueda en los 2 lados $\Rightarrow$ \hyperref[rep:II]{II}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[13,5]{II. Modelo de \autor{Diamond}, \autor{Mortensen} y \autor{Pissarides}\label{rep:II}}
+\begin{ideaclave}
+Cuando buscan los 2 lados, el paro friccional es de equilibrio: depende de cuántas vacantes compensa abrir, y eso del salario negociado. Paro y vacantes conviven siempre (curva de \autor{Beveridge}); el paro de equilibrio solo es eficiente si $\gamma=\alpha$.
+\end{ideaclave}
+
+\sub{II.1. Idea\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Hecho estilizado}: siempre hay parados y vacantes, que se mueven en sentido contrario en el ciclo (\autor{Elsby}-\autor{Michaels}-\autor{Ratner}, 2015). 2 piezas: \emph{búsqueda} en los 2 lados y \emph{emparejamiento} imperfecto; el salario reparte la renta del emparejamiento. Modelo macro: da la tasa de paro; mercado de trabajo de la NEK \vertema{3.A.7}.
+\item \autor{Diamond} (1982), \autor{Mortensen} (1982), \autor{Pissarides} (1985); síntesis \autor{Pissarides} (2000).
+\end{itemize}
+
+\sub{II.2. Modelo\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Supuestos}: activos $=1$, sin inactivos; $U$ \concepto{tasa de paro}, $V$ \concepto{tasa de vacantes}. \concepto{Función de emparejamiento}, Cobb-Douglas, cóncava, rendimientos constantes:
+\funcionclave{m(U,V)=A\,U^{\alpha}V^{1-\alpha},\quad 0<\alpha<1}
+\item[] $A$ = \emph{eficiencia del emparejamiento} (servicios de empleo, formación y ajuste de cualificaciones, motivación, movilidad geográfica); $\alpha$ = elasticidad respecto a $U$. «Caja negra»: resume todas las fricciones sin decir de dónde vienen.
+\item \concepto{Tensión} $\theta\equiv V/U$ (no es aversión al riesgo); \concepto{tasa de encontrar empleo} $f$ y \concepto{de cubrir una vacante} $q$ (tasas de \autor{Poisson}; inversas = duraciones medias); $f$ ↑ y $q$ ↓ con $\theta$:
+\begin{formula}
+\centering $f(\theta)\equiv\dfrac{m}{U}=A\theta^{1-\alpha},\quad q(\theta)\equiv\dfrac{m}{V}=A\theta^{-\alpha},\quad f=\theta\,q$
+\end{formula}
+\item \concepto{Externalidades de congestión}: una vacante más ayuda a los parados y estorba a las otras vacantes; un parado más, al revés. Nadie las internaliza.
+\item \concepto{Tasa de separación} $s$ exógena; un puesto = una empresa: ocupado produce $y$, vacante cuesta $c$, \emph{libre entrada}; trabajadores neutrales al riesgo, descuentan a $r$; \concepto{valor del desempleo} $z<y$; salario de \autor{Nash} generalizado, poder $\gamma$.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{flujos-dmp}{Flujos: entradas $s(1-U)$ y salidas $f(\theta)U$ del paro}
+\begin{itemize}
+\item \emph{Dinámica}: $\dot U=s(1-U)-f(\theta)U$. \emph{\autor{Bellman}} (rendimiento de un activo):
+\begin{formula}
+\centering $rV_{\mathrm E}=w-s(V_{\mathrm E}-V_{\mathrm U}),\quad rV_{\mathrm U}=z+f(\theta)(V_{\mathrm E}-V_{\mathrm U})$\\
+$rJ_{\mathrm O}=y-w-s(J_{\mathrm O}-J_{\mathrm V}),\quad rJ_{\mathrm V}=-c+q(\theta)(J_{\mathrm O}-J_{\mathrm V})$
+\end{formula}
+\item \emph{Negociación} \vertema{3.A.14}: excedente $S=(V_{\mathrm E}-V_{\mathrm U})+(J_{\mathrm O}-J_{\mathrm V})$; $\max(V_{\mathrm E}-V_{\mathrm U})^{\gamma}(J_{\mathrm O}-J_{\mathrm V})^{1-\gamma}$ $\Rightarrow$ $V_{\mathrm E}-V_{\mathrm U}=\gamma S$, $J_{\mathrm O}-J_{\mathrm V}=(1-\gamma)S$.
+\item \textbf{1. Curva salarial} (creciente en $(\theta,w)$; misma $\gamma$ y $z$ que \vertema{3.A.27}): media de $z$ y de lo que vale para la empresa, $y$ + coste de búsqueda ahorrado $c\theta$; más $\theta$, mejor amenaza:
+\funcionclave{w=(1-\gamma)\,z+\gamma\,(y+c\,\theta)}
+\item \textbf{2. Creación de empleo} (decreciente): libre entrada, $J_{\mathrm V}=0$; coste esperado de cubrir la vacante = valor del puesto ocupado, descontado con $r+s$:
+\funcionclave{\frac{c}{q(\theta)}=\frac{y-w}{r+s}}
+\item \emph{Equilibrio} $(\theta^*,w^*)$, único si $y>z$:
+\begin{formula}
+\centering $(1-\gamma)(y-z)=c\Big[\dfrac{r+s}{q(\theta^*)}+\gamma\,\theta^*\Big]$
+\end{formula}
+\item \textbf{3. Curva de \autor{Beveridge}} ($\dot U=0$: entradas = salidas), decreciente y convexa en $(U,V)$:
+\funcionclave{U=\frac{s}{s+f(\theta)}\ \Leftrightarrow\ V=\Big[\frac{s(1-U)}{A\,U^{\alpha}}\Big]^{\frac{1}{1-\alpha}}}
+\item \emph{En cascada}: curvas 1 y 2 fijan $\theta^*$, $w^*$; rayo $V=\theta^*U$ corta $B_0$ en $(U^*,V^*)$.
+\end{itemize}
+\graficorepaso[0.98\linewidth]{dmp-equilibrio}{Equilibrio DMP: $(\theta^*,w^*)$ a la izquierda; $(U^*,V^*)$ con el rayo y $B_0$ a la derecha}
+\begin{itemize}
+\item \emph{Estática comparativa}: la curva salarial depende de $y$, $z$, $c$, $\gamma$; \emph{no} de $r$, $s$, $A$ (solo creación de empleo).
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Perturbación} & $V$ & $U$ & $\theta$ & $w$ & $m$\\
+\midrule
+\multicolumn{6}{@{}l}{\emph{A lo largo de la curva de \autor{Beveridge}}}\\
+↑$y$ productividad & \textcolor{tceeverde}{↑} & \textcolor{tceerojo}{↓} & \textcolor{tceeverde}{↑} & \textcolor{tceeverde}{↑} & \textcolor{tceeverde}{↑}\\
+↑$z$, ↑$\gamma$ & \textcolor{tceerojo}{↓} & \textcolor{tceeverde}{↑} & \textcolor{tceerojo}{↓} & \textcolor{tceeverde}{↑} & \textcolor{tceerojo}{↓}\\
+↑$c$, ↑$r$ & \textcolor{tceerojo}{↓} & \textcolor{tceeverde}{↑} & \textcolor{tceerojo}{↓} & \textcolor{tceerojo}{↓} & \textcolor{tceerojo}{↓}\\
+\multicolumn{6}{@{}l}{\emph{Desplazan la curva}}\\
+↑$A$ eficiencia & \textcolor{tceedorado}{?} & \textcolor{tceerojo}{↓} & \textcolor{tceeverde}{↑} & \textcolor{tceeverde}{↑} & \textcolor{tceeverde}{↑}\\
+↑$s$ separación & \textcolor{tceedorado}{?} & \textcolor{tceeverde}{↑} & \textcolor{tceerojo}{↓} & \textcolor{tceerojo}{↓} & \textcolor{tceedorado}{?}\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item ↑$y$: suben las 2 curvas, más la de creación (el trabajador solo se lleva $\gamma$). ↑$z$, ↑$\gamma$: el parado no busca menos, \emph{negocia mejor}. ↑$c$: se mueven las 2 curvas, $w^*$ ↓. ↓$A$ (desajuste, paro de larga duración, menos intensidad de búsqueda): curva de $B_0$ a $B_1$. ↑$s$: $m$ ↑ si $\alpha\geq\tfrac12$ y $U<\tfrac12$.
+\end{itemize}
+\begin{itemize}
+\item \emph{Política}: activas (intermediación, recualificación) ↑$A$; prestación y poder negociador ↑$w$ y ↑paro vía negociación.
+\item \emph{Eficiencia}: $\theta^*$ es \emph{de equilibrio}, no óptima: congestión no internalizada $\Rightarrow$ demasiado paro o demasiado poco. \concepto{Condición de \autor{Hosios}} (1990): eficiente solo si el poder negociador = elasticidad del emparejamiento respecto al paro:
+\funcionclave{\gamma=\alpha}
+\item[] $\gamma>\alpha$: demasiada renta al trabajador, pocas vacantes, demasiado paro; $\gamma<\alpha$: demasiadas vacantes, congestión. «\emph{Ni tanto ni tan calvo}». Exige $z$ = solo ocio (con prestación, paro excesivo aunque $\gamma=\alpha$). Coincidencia de parámetros; con búsqueda dirigida, se cumple sola (\autor{Moen}, 1997). Planificador con hamiltoniano y $\lambda^U<0$: misma ecuación con $\alpha$ en vez de $\gamma$.
+\end{itemize}
+
+\sub{II.3. La curva de \autor{Beveridge}\label{rep:II.3}}
+\begin{itemize}
+\item Separa lo cíclico de lo que no lo es. \autor{Beveridge} (1944): pleno empleo = más vacantes que parados; no la dibujó. Primera estimación: \autor{Dow}-\autor{Dicks-Mireaux} (1958, R.\,U. 1946-1956); a los modelos de flujos, \autor{Blanchard}-\autor{Diamond} (1989).
+\item \concepto{Curva de \autor{Beveridge}}: $U$ y $V$ que mantienen constante el paro; \emph{decreciente} (más vacantes, salida más rápida) y \emph{convexa} (rendimientos decrecientes de cada factor en $m$).
+\item \emph{A lo largo}: el ciclo ($y$, $r$, $c$, $z$, $\gamma$ giran el rayo); recesión de $X$ a $Y$. \emph{Desplazamientos}: $A$ o $s$ (reasignación, desajuste, larga duración); hacia fuera, más paro con las mismas vacantes. \emph{Bisectriz} $U=V$: a la izquierda, más vacantes que parados; a la derecha, \emph{más parados}; el corte $U_0$, aproximación al paro friccional. \emph{Bucles} en sentido \emph{contrario a las agujas del reloj}: las vacantes se recuperan antes que el paro; quedar encima no prueba un desplazamiento.
+\end{itemize}
+\pareja{beveridge-lectura}{Lectura: a lo largo, desplazamiento, bisectriz y bucle}{beveridge-espana-zona-euro}{España y zona del euro, 2008-2026 (Eurostat)}
+\begin{itemize}
+\item \emph{España, crisis 2008-2013}: las 2 vías; salida trimestral del paro 35\,\% (2007) $\to$ 15\,\% (2013), entrada 2,7\,\% $\to$ 5,2\,\%; paro 7,9\,\% $\to$ 26,9\,\%. \emph{Desplazamiento} 2008-2009: con vacantes 0,65\,\%, paro 11,3\,\% $\to$ 17,9\,\%; pérdida de eficiencia, hasta el 31\,\% de la caída del empleo (\autor{Boscá} et al., 2017): construcción, larga duración, histéresis \vertema{3.A.28}; \autor{Villaverde}-\autor{Maza}-\autor{Hierro} (2015).
+\item \emph{2014-2019}: vuelta por la curva, que se acerca (2019: paro 14,1\,\%, vacantes 0,70\,\%). \emph{2021-2026}: vacantes 0,9\,\% desde 2022, paro 10,2\,\%; vacantes/parado 0,03 $\to$ 0,06. \emph{Zona del euro}: más arriba y a la izquierda (6,3\,\% y 2,2\,\%; máximo 3,2\,\% en 2022).
+\item \emph{Valoración}: si suben las vacantes y el paro no baja, no es demanda. Pero desplazamientos frecuentes en recuperaciones de EE.\,UU. sin más paro después (\autor{Diamond}-\autor{Şahin}, 2015); vacantes mal medidas (España, pocas).
+\end{itemize}
+
+\sub{II.4. Evidencia\label{rep:II.4}}
+\begin{itemize}
+\item Cobb-Douglas con rendimientos constantes, $\alpha\in[0{,}5;0{,}7]$ (\autor{Petrongolo}-\autor{Pissarides}, 2001). El paro sigue a $s/(s+f)$ (\autor{Rogerson}-\autor{Shimer}-\autor{Wright}, 2005); EPA 2025: $f=26{,}8$\,\%, $s=2{,}6$\,\% trimestrales $\Rightarrow$ 8,8\,\% frente a 10,5\,\% (inactividad).
+\item \concepto{Puzle de \autor{Shimer}} (2005): $V/U$ $\approx20$ veces más volátil que la productividad; con \autor{Nash}, $w$ absorbe ↑$y$, $y-w$ apenas cambia. Ajuste por precios en el modelo, por cantidades en los datos.
+\item \emph{Efecto macro} de las prestaciones (\autor{Hagedorn} et al., 2013, condados fronterizos): $w$ más altos y menos vacantes; magnitud discutida.
+\end{itemize}
+
+\sub{II.5. Extensiones\label{rep:II.5}}
+\begin{itemize}
+\item \emph{Destrucción endógena} (\autor{Mortensen}-\autor{Pissarides}, 1994): reacciona antes que la creación (\autor{Davis}-\autor{Haltiwanger}, 1992).
+\item \emph{Respuestas a \autor{Shimer}} (menos ↑$y$ al salario): salarios rígidos (\autor{Hall}, 2005; \autor{Hall}-\autor{Milgrom}, 2008); excedente pequeño, $z$ cerca de $y$ (\autor{Hagedorn}-\autor{Manovskii}, 2008); «excedente fundamental» (\autor{Ljungqvist}-\autor{Sargent}, 2017); racionamiento (\autor{Michaillat}, 2012).
+\item NEK: \autor{Blanchard}-\autor{Galí} (2010), curva de \autor{Phillips} con paro \vertema{3.A.7} \vertema{3.A.42}. Paro eficiente $U^{\mathrm{ef}}=\sqrt{UV}$ (\autor{Michaillat}-\autor{Saez}, 2021): EE.\,UU. 4,1\,\% (1930-2024); no aplicable a España.
+\end{itemize}
+
+\sub{II.6. Valoración\label{rep:II.6}}
+\begin{itemize}
+\item + paro y vacantes a la vez y paro de equilibrio con determinantes; tasa natural como flujos $U^*=s/[s+f(\theta^*)]$ \vertema{3.A.28}; rigidez real en los EGDE nuevos keynesianos.
+\item \emph{¿Voluntario?} \autor{McCall}: \emph{voluntario} (rechaza ofertas). DMP: acepta la primera; \emph{friccional y de equilibrio}: ni elegido ni racionado a un $w$ dado (eso es eficiencia y sindicatos \vertema{3.A.27}); hay vacantes sin cubrir (\autor{De Vroey}, 2016).
+\item $-$ puzle de \autor{Shimer}; $m$ caja negra; \autor{Nash} cierre arbitrario (\autor{Farmer}, 2010, 2013: faltan mercados de emparejamientos; con creencias, paro indeterminado, histéresis \vertema{3.A.28}); larga duración; separaciones exógenas (la destrucción es más volátil).
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{III. Costes de ajuste y dinámica de la demanda de trabajo\label{rep:III}}
+\begin{ideaclave}
+Si contratar y despedir cuesta, la demanda de trabajo es una decisión de inversión: el empleo de hoy depende del de ayer y de lo que se espera. Según la forma de los costes: a saltos, banda de inacción o poco a poco. Estabilizan el empleo; efecto sobre el nivel medio, ambiguo.
+\end{ideaclave}
+
+\sub{III.1. Idea\label{rep:III.1}}
+\begin{itemize}
+\item Neoclásico: $F_L=w$ en cada momento; la plantilla salta \vertema{3.A.25}. Con tiempo: oferta (\autor{Lucas}-\autor{Rapping}, 1969) y \emph{demanda} (aquí).
+\item \concepto{Costes de ajuste}: buscar, seleccionar, formar, indemnizar, reorganizar $\Rightarrow$ \concepto{factor cuasifijo} (\autor{Oi}, 1962). \emph{Internos} (pérdida de eficiencia, no contabilizados) / \emph{externos} (anuncios, agencias, indemnizaciones); \emph{brutos} (cada entrada y salida) / \emph{netos} (variación neta); \emph{contratación} / \emph{despido}.
+\item Mismo problema que la q de \autor{Tobin} con trabajadores \vertema{3.A.34}. \autor{Holt} et al. (1960), \autor{Oi} (1962); \autor{Nickell} (1986), \autor{Hamermesh} (1993); \autor{Bentolila}-\autor{Bertola} (1990).
+\end{itemize}
+
+\sub{III.2. Modelo\label{rep:III.2}}
+\begin{itemize}
+\item Precio-aceptante, solo trabajo, $F$ creciente y cóncava, $p=1$; coste de ajuste $\Phi(\dot L)$, $\Phi(0)=0$:
+\begin{formula}
+\centering $\optim{\max}{\{L_t\}}{\int_0^{\infty}e^{-rt}\big[F(L_t)-w_tL_t-\Phi(\dot L_t)\big]dt}{L_0\ \text{dado}}$
+\end{formula}
+\item \emph{Sin costes}: $F_L(L_t)=w_t$; salto a $L^*$.
+\item \emph{Fijos} $\Phi_0$ si $\dot L\neq0$: no derivable, se compara; ante perturbación permanente:
+\begin{formula}
+\centering ajusta si $\tfrac1r\big\{[F(L^*)-wL^*]-[F(L_0)-wL_0]\big\}>\Phi_0$
+\end{formula}
+\item[] \emph{De golpe y del todo} o nada; pequeña o transitoria: no ajusta.
+\item \emph{Lineales} $\phi_c\dot L$ ($\dot L>0$), $-\phi_d\dot L$ ($\dot L<0$): da igual de golpe o poco a poco; trabajador a trabajador: contrata si $[F_L-w]/r>\phi_c$, despide si $[w-F_L]/r>\phi_d$. \concepto{Banda de inacción}:
+\funcionclave{w-r\,\phi_d\ \leq\ F_L(L)\ \leq\ w+r\,\phi_c}
+\item[] Entre $\underline{L}$ y $\overline{L}$, alrededor de $L^*$. Fuera: ajuste \emph{inmediato, solo hasta el borde}. «\emph{Más vale malo conocido que bueno por conocer}».
+\item \emph{Asimétricos} $\phi_d>\phi_c$: banda más ancha por el lado del despido; con incertidumbre, el despido caro \emph{frena también la contratación}.
+\end{itemize}
+\graficorepaso[0.8\linewidth]{banda-inaccion}{Banda de inacción sobre la demanda de trabajo a corto plazo}
+\begin{itemize}
+\item \emph{Cuadráticos} $\tfrac{\phi}{2}\dot L^2$ (\autor{Holt} et al., 1960): CMg $\phi\dot L$ crece con la velocidad: «\emph{vísteme despacio, que tengo prisa}». Hamiltoniano en valor corriente; $\lambda_t$ = \concepto{valor sombra de un trabajador más} \vertema{3.A.29}:
+\funcionclave{\phi\,\dot L_t=\lambda_t,\qquad r\,\lambda_t=F_L(L_t)-w_t+\dot\lambda_t}
+\item[] Contrata si $\lambda_t>0$, despide si $<0$; el trabajador como activo; $\lambda_t$ = \emph{q de \autor{Tobin} del trabajo} \vertema{3.A.34}. \concepto{Ecuación de \autor{Euler}}: $F_L(L_t)=w_t+r\phi\dot L_t-\phi\ddot L_t$; en estacionario, $F_L(L^*)=w$. Punto de silla; converge más despacio cuanto mayor $\phi$ y menos cóncava $F$.
+\item \emph{Sendas}: \emph{permanente}: sin costes salto; fijos, todo o nada; lineales, hasta el borde; cuadráticos, \emph{gradual} y anticipa desde el anuncio $t_a$. \emph{Transitoria}: sin costes sigue; lineales, quieto en picos y valles; cuadráticos, amortiguado y con retraso.
+\end{itemize}
+\graficorepaso[0.98\linewidth]{sendas-ajuste}{Sendas del empleo: perturbación permanente (izquierda) y transitoria (derecha)}
+\begin{itemize}
+\item \emph{Productividad procíclica}: el empleo va detrás de $Y$ $\Rightarrow$ \concepto{atesoramiento de trabajo} (\autor{Oi}, 1962): ↓PAT $=$ ↓↓$Y$/↓$L$.
+\item \emph{Política}: costes de despido estabilizan y reducen la rotación, frenan despidos \emph{y} contrataciones; nivel ambiguo (\autor{Bentolila}-\autor{Bertola}, 1990: sube ligeramente; \autor{Bertola}, 1990: afecta a la volatilidad, no al nivel); coste en eficiencia. Bajar costes de contratación impulsa al salir de la recesión. \emph{Dualidad}: el ajuste recae sobre los contratos baratos de rescindir \vertema{4.A.16}.
+\end{itemize}
+
+\sub{III.3. Evidencia\label{rep:III.3}}
+\begin{itemize}
+\item Cuadrático simétrico por comodidad, rechazado (\autor{Hamermesh}-\autor{Pfann}, 1996): ajuste a saltos, componente fijo (\autor{Hamermesh}, 1989); asimétricos y no convexos (\autor{Cooper}-\autor{Haltiwanger}-\autor{Willis}, 2015). Flujos brutos $\gg$ netos; destrucción más volátil (\autor{Davis}-\autor{Haltiwanger}, 1992).
+\item \emph{España}: ajuste sobre temporales; con la protección de Francia, $\approx45$\,\% menos de aumento del paro en la Gran Recesión (\autor{Bentolila} et al., 2012). Reforma de 2021 (RDL 32/2021): temporalidad 25,6\,\% (4T 2021) $\to$ 15,4\,\% (3T 2026).
+\end{itemize}
+
+\sub{III.4. Extensiones\label{rep:III.4}}
+\begin{itemize}
+\item \emph{Horas} (margen intensivo, ERTE); \emph{grupos con costes distintos}: el ajuste recae sobre los más baratos de despedir (\autor{Bentolila}-\autor{Dolado}-\autor{Jimeno}, 2012); \emph{incertidumbre}: lo permanente mueve más; banda con \emph{valor de opción} (\autor{Cooper}-\autor{Haltiwanger}, 2006) \vertema{3.A.34}.
+\end{itemize}
+
+\sub{III.5. Valoración\label{rep:III.5}}
+\begin{itemize}
+\item + persistencia del empleo, retraso respecto a $Y$, productividad procíclica, protección del empleo y dualidad. $-$ no explican el paro de equilibrio (falta la búsqueda); la forma es empírica y cambia con la ley; ignoran renuncias y búsqueda desde el empleo.
+\item La persistencia del paro (\emph{histéresis}) necesita que el paro de hoy cambie el de equilibrio de mañana \vertema{3.A.28}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: levantados los supuestos 2 y 7 \vertema{3.A.25}: paro que no desaparece con salarios flexibles. Búsqueda: $w^R$ con valor de opción, pero paradoja de \autor{Diamond}; DMP: curva salarial + creación de empleo fijan $\theta^*$, \autor{Beveridge} da $U^*$, $V^*$; friccional, eficiente solo con \autor{Hosios}; costes de ajuste: la empresa suaviza el empleo; proteger el empleo reduce su volatilidad, nivel ambiguo.
+\item \textbf{Relevancia}: el paro friccional no se va con más demanda; la curva de \autor{Beveridge} separa paro cíclico y de emparejamiento; lenguaje de prestaciones, políticas activas y despido.
+\item \textbf{Extensiones}: \autor{Nash} y eficiencia \vertema{3.A.27}; tasa natural e histéresis \vertema{3.A.28}; NEK con paro \vertema{3.A.7} y ciclos \vertema{3.A.42}; q de \autor{Tobin} \vertema{3.A.34}; mercado de trabajo español \vertema{4.A.16}.
+\item \textbf{Opinión}: explica bien que exista el paro friccional y peor cómo oscila (el salario no se renegocia cada momento); España: parte del paro es de emparejamiento, y la \emph{forma} del despido importa tanto como su cuantía.
+\item \textbf{Idea final}: «cada oveja con su pareja», pero encontrarla lleva tiempo y cuesta ($\approx16{,}5$ parados por vacante): el paro friccional es el precio de que cada trabajador acabe en su puesto; la política no puede eliminarlo, pero sí abaratarlo.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1909}{\autor{Beveridge}: \emph{Unemployment}; muchos mercados}
+\hito{1932}{\autor{Hicks}: paro friccional en estado estacionario}
+\hito{1944}{\autor{Beveridge}: \emph{Full Employment}; más vacantes que parados}
+\hito{1958}{\autor{Dow}-\autor{Dicks-Mireaux}: primera curva de \autor{Beveridge}}
+\hito{1960}{\autor{Lipsey}: paro con exceso de demanda nulo; \autor{Holt} et al.: costes cuadráticos}
+\hito{1962}{\autor{Stigler} (1961 bienes): búsqueda; \autor{Oi}: factor cuasifijo}
+\hito{1968}{\autor{Friedman} (y \autor{Phelps}, 1967): tasa natural}
+\hito{1970}{\autor{McCall}: búsqueda secuencial, $w^R$}
+\hito{1971}{\autor{Diamond}: paradoja}
+\hito{1974}{\autor{Lucas}-\autor{Prescott}: islas}
+\hito{1982}{\autor{Diamond}; \autor{Mortensen}; \autor{Pissarides} (1985)}
+\hito{1989}{\autor{Blanchard}-\autor{Diamond}: curva y flujos}
+\hito{1990}{\autor{Hosios}: $\gamma=\alpha$; \autor{Bentolila}-\autor{Bertola}: despido}
+\hito{1992}{\autor{Davis}-\autor{Haltiwanger}: creación y destrucción}
+\hito{1994}{\autor{Mortensen}-\autor{Pissarides}: destrucción endógena}
+\hito{2000}{\autor{Pissarides}: \emph{Equilibrium Unemployment Theory}}
+\hito{2001}{\autor{Petrongolo}-\autor{Pissarides}: $\alpha\in[0{,}5;0{,}7]$}
+\hito{2005}{\autor{Shimer}: puzle; \autor{Hall}: salarios rígidos}
+\hito{2010}{Nobel a \autor{Diamond}, \autor{Mortensen} y \autor{Pissarides}; \autor{Blanchard}-\autor{Galí}}
+\hito{2017}{\autor{Boscá} et al.: desplazamiento español}
+\hito{2021}{\autor{Michaillat}-\autor{Saez}: $U^{\mathrm{ef}}=\sqrt{UV}$; reforma laboral}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Paro: \dato{2.591.200, 10,18\,\%}{INE, EPA 3T 2026}; tasa de actividad \dato{59,5\,\%}{INE, EPA 3T 2026}.
+\item Vacantes: \dato{150.765}{Eurostat, 2T 2026}; tasa \dato{0,9\,\% frente a 2,1\,\% zona del euro}{Eurostat, 2T 2026}; $\approx$\dato{16,5 parados por vacante}{INE y Eurostat}.
+\item Vacantes por parado: \dato{0,03 (2019) $\to$ 0,06 (2026)}{Eurostat e INE}, la más alta desde 2006-2007.
+\item Flujos trimestrales: \dato{$f=26{,}8$\,\%, $s=2{,}6$\,\%}{INE, EPA flujos 2025} $\Rightarrow$ paro estacionario 8,8\,\%.
+\item Desplazamiento de 2008-2009: \dato{hasta el 31\,\% de la caída del empleo}{\autor{Boscá} et al., 2017}.
+\item Protección francesa: \dato{$\approx45$\,\% menos de aumento del paro}{\autor{Bentolila} et al., 2012}.
+\item Temporalidad: \dato{25,6\,\% $\to$ 15,4\,\%}{INE, EPA 4T 2021-3T 2026}.
+\item $U^{\mathrm{ef}}$ de EE.\,UU.: \dato{4,1\,\%, 1930-2024}{\autor{Michaillat}-\autor{Saez}, 2024}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Es voluntario el paro friccional?} \autor{McCall}: sí, rechaza ofertas. DMP: acepta la primera; friccional y de equilibrio, ni elegido ni racionado.
+\item \textbf{¿Por qué $w^R>z$?} Valor de opción de seguir buscando; sin nuevas ofertas, $w^R=z$.
+\item \textbf{¿Más prestación, más paro por qué?} \autor{McCall}: ↑$w^R$. DMP: sube $w$ por la negociación y se abren menos vacantes, sin que el parado busque menos.
+\item \textbf{¿A lo largo o desplazamiento?} $y$, $z$, $\gamma$, $c$, $r$: a lo largo (ciclo); $A$ y $s$: desplazan. Ojo con los bucles.
+\item \textbf{¿Es eficiente el paro de equilibrio?} Solo con $\gamma=\alpha$ y $z$ = ocio (\autor{Hosios}); congestión no internalizada.
+\item \textbf{¿Qué es el puzle de \autor{Shimer}?} $V/U$ $\approx20$ veces más volátil que $y$; con \autor{Nash} $w$ lo absorbe. Salidas: salarios rígidos, excedente pequeño.
+\item \textbf{¿Suben el paro los costes de despido?} Estabilizan; frenan despidos y contrataciones: nivel ambiguo. Dualidad: ajuste sobre temporales.
+\item \textbf{¿Por qué es convexa la curva de \autor{Beveridge}?} Rendimientos decrecientes de cada factor en $m(U,V)$: cada vacante más reduce el paro cada vez menos.
+\item \textbf{¿Qué hace cada ecuación del DMP?} Curva salarial (reparto, $\gamma$) y creación de empleo (libre entrada) fijan $\theta^*$, $w^*$; \autor{Beveridge} (flujos) da $U^*$, $V^*$.
+\item \textbf{¿Por qué es procíclica la productividad?} Atesoramiento de trabajo: el empleo va detrás de la producción.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $f(\theta)=\theta q(\theta)$: $f$ \emph{creciente}, $q$ \emph{decreciente} en $\theta$; inversas = duraciones medias. $\theta$ aquí no es aversión al riesgo.
+\item Curva salarial \emph{creciente} (recta) en $(\theta,w)$; creación de empleo \emph{decreciente}; no dependen de lo mismo: $r$, $s$, $A$ solo en la creación.
+\item ↑$c$: bajan $\theta^*$ \emph{y} $w^*$. ↑$z$, ↑$\gamma$: ↑$w^*$, ↓$\theta^*$. ↑$A$: vacantes ambiguas.
+\item Bisectriz: a la \emph{derecha} \emph{más parados} que vacantes. Bucles \emph{antihorarios}. Primera estimación: \autor{Dow}-\autor{Dicks-Mireaux} (1958), no \autor{Beveridge}.
+\item \autor{Hosios}: $\gamma>\alpha$ $\Rightarrow$ \emph{demasiado} paro. $\theta^*$ de equilibrio, no óptima.
+\item \autor{Stigler}: muestra \emph{fija}; \autor{McCall}: \emph{secuencial}. $w^R$ ↑ con $z$, $\beta$ y dispersión; $\partial w^R/\partial z\in(0,1)$: sube menos que la prestación.
+\item Lineales: banda, salto \emph{hasta el borde} (no al óptimo); fijos: todo o nada; cuadráticos: gradual y anticipa. Despido caro frena también la contratación. El cuadrático simétrico es cómodo, pero los datos lo rechazan (saltos, asimetría).
+\item Paro de \autor{McCall} \emph{voluntario}; del DMP, friccional y de equilibrio, no \emph{involuntario} (eso, \vertema{3.A.27}).
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
