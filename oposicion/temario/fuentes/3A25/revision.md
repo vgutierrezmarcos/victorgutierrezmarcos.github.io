@@ -169,6 +169,7 @@ Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
 - **A25-10. $L^S$ para el empleo del sindicato**. En el anexo D se usa, como en el 3.A.17, $L^S$ para el empleo que fija el sindicato, y el texto lo aclara; pero en este tema $L^S(w)$ es también la oferta. Opciones: (a) mantenerlo (aplicado; la oferta se escribe $w_L(L)$ en el anexo); (b) cambiarlo en los 2 temas (p. ej., $L^{\mathrm{sind}}$) y en `monopolio-bilateral.tex`.
 - **A25-11. González-Páramo (nota 14)**. No se ha encontrado el trabajo que dice que los perceptores secundarios comparan el salario con el coste de contratar empleados del hogar; se ha sustituido por Keane (2011) y Blundell, Duncan y Meghir (1998). Si tienes la referencia, se puede recuperar.
 - **A25-12. Materia en `seo.json`**: «Economía laboral» (la asignatura en la que se estudia el tema) en lugar de «Microeconomía». ¿De acuerdo?
+- **R25-01. Título corto en la ficha de repaso** (entrega 2). Con el título corto del tema, «Mercado de trabajo neoclásico y capital humano», el pie izquierdo de la ficha se montaba sobre el derecho (el pie de los materiales exclusivos es largo). Opciones: (a) en la ficha, «Mercado de trabajo y capital humano»; (b) acortar también el del tema (`\tcetema[…]` de `3A25.tex`) para que coincidan; (c) dejar el largo y acortar el pie en `tcee-repaso.sty` (afecta a todas las fichas). **Recomendada y aplicada: (a)**; el tema no se toca.
 
 **No verificado** (se dice en el texto lo justo y se cita la obra):
 

@@ -1,0 +1,314 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Mercado de trabajo y capital humano]{3.A.25}{La teoría neoclásica del mercado de trabajo. Análisis intertemporal de la oferta de trabajo. Teoría del capital humano. Función de ingresos de capital humano y evidencia empírica.}
+\tcefecha{31/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «el tiempo es oro»}{2,5}
+\apartadocante{I. Oferta y demanda de trabajo neoclásicas}{10}
+\subcante{1. Oferta: $\mathrm{RMS}_{OC}=w$, $w^R$, 3 efectos}{5}
+\subcante{2. Demanda: $\mathrm{VPMg}_L=w_L$}{1,5}
+\subcante{3. Equilibrio y salario mínimo}{1,5}
+\subcante{4. Valoración: monopsonio y paro}{2}
+\apartadocante{II. Oferta intertemporal: \autor{Lucas}-\autor{Rapping}}{6,5}
+\subcante{1. Idea: «hacer el agosto»}{0,75}
+\subcante{2. Modelo: salario relativo intertemporal}{3}
+\subcante{3. \autor{Frisch}, ciclo vital, ciclos reales}{1,25}
+\subcante{4. Evidencia}{0,75}
+\subcante{5. Valoración}{0,75}
+\apartadocante{III. Capital humano y función de ingresos}{10}
+\subcante{1. Usos: \autor{Becker} vs \autor{Spence}}{1,5}
+\subcante{2. \autor{Becker} (1964): «el saber no ocupa lugar»}{4}
+\subcante{3. \autor{Mincer}, \autor{Oaxaca}-\autor{Blinder}, Nobel 2021}{4,5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra} en 3 zonas fijas: izquierda, los 8 supuestos (se marca el que se levanta); centro, los gráficos; derecha, las funciones clave (tangencia y $w^R$, $\mathrm{VPMg}_L=w_L$, \autor{Lucas}-\autor{Rapping}, \autor{Mincer}) y las pegatinas.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{El tiempo es oro}»: 24 horas al día; ¿cuántas se venden, a qué edad, tras cuántos años de estudio? ¿Cuánto vale una hora? En el margen, el salario; pero cambia con la persona, el momento y lo invertido en sí mismo. Nobel 2023 a \autor{Goldin}: 2 siglos de mujeres en el mercado laboral.
+\item \textbf{Relevancia}: \emph{micro}: el salario, principal renta de los hogares; \emph{macro}: principal factor, distribución y paro (\dato{10,18\,\%}{INE, EPA 3T 2026}); \emph{política}: impuestos sobre el trabajo \vertema{4.B.10}, salario mínimo \vertema{4.A.16}, educación \vertema{4.A.2}.
+\item \textbf{Contextualización}: \concepto{economía laboral}: mercado de trabajo, servicios de trabajo por salarios; enfoque micro y \emph{neoclásico} (competencia, salarios flexibles) $\Rightarrow$ $w=\mathrm{PMg}_L$ y sin paro involuntario. \autor{Marshall} (1890), \autor{Hicks} (1932), eclipsado por \autor{Keynes} (1936) \vertema{3.A.4}; años 60, vuelta a la oferta: capital humano (\autor{Mincer}, 1958; \autor{Schultz}, 1961; \autor{Becker}, 1962-1964) y oferta intertemporal (\autor{Lucas}-\autor{Rapping}, 1969 $\to$ \autor{Kydland}-\autor{Prescott}, 1982); revolución de la credibilidad (Nobel 2021 y 2023).
+\item \textbf{Problemática}: ¿cuánto se trabaja, a cuántos se contrata, qué salario? ¿Más horas si sube $w$? ¿Transitorio o permanente? ¿Por qué no todos cobran igual? ¿Rinde estudiar y cómo se mide?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, modelo estático; \hyperref[rep:II]{II}, la oferta en el tiempo; \hyperref[rep:III]{III}, se levanta la homogeneidad del trabajo (\autor{Becker}, \autor{Mincer}). Evidencia al final de cada modelo.
+\end{itemize}
+
+% ==========================================================================
+\bloque[10]{I. Oferta y demanda de trabajo neoclásicas\label{rep:I}}
+\begin{ideaclave}
+Con competencia y salarios flexibles, el mercado se vacía: el salario real iguala la valoración marginal del ocio y la productividad marginal del trabajo; no hay paro involuntario salvo con salario mínimo.
+\end{ideaclave}
+\begin{itemize}
+\item \textbf{8 supuestos} (y dónde se levantan): 1 racionalidad; 2 información perfecta (\autor{Spence}; búsqueda \vertema{3.A.26}; eficiencia \vertema{3.A.27}); 3 trabajo homogéneo (capital humano, \hyperref[rep:III]{III}); 4 precio-aceptación (monopsonio; sindicatos); 5 libre participación; 6 salarios flexibles (salario mínimo; rigideces \vertema{3.A.28}); 7 movilidad sin costes (formación específica, \emph{insiders}); 8 sin externalidades (\vertema{3.A.44}).
+\end{itemize}
+
+\sub{I.1. Oferta de trabajo\label{rep:I.1}}
+\begin{itemize}
+\item Oferta = \emph{demanda de ocio} del revés \vertema{3.A.8}: quién participa ($w^R$), cuántas horas (tangencia), por qué no siempre crece (efectos renta).
+\item \emph{Supuestos}: $U(C,O)$ de buen comportamiento; \concepto{$\mathrm{RMS}_{OC}$} $=U_O/U_C$, decreciente; dotación $O_0$, $L=O_0-O$; \concepto{renta no laboral} $\overline{W}\geq0$; $p=1$. \concepto{Renta completa}: $wO_0+\overline{W}$; $w$ a los 2 lados: precio del ocio y valor de la dotación.
+\item \emph{Problema} (\autor{Kuhn}-\autor{Tucker}; $\lambda$ = utilidad marginal de la renta):
+\begin{formula}
+\centering $\optim{\max}{C,O}{U(C,O)}{C+w\,O\leq w\,O_0+\overline{W},\ 0\leq O\leq O_0}$
+\end{formula}
+\item \emph{Solución interior}: valoración del ocio = su coste de oportunidad:
+\funcionclave{\mathrm{RMS}_{OC}=\frac{U_O}{U_C}=w,\qquad C^*+w\,O^*=w\,O_0+\overline{W}}
+\item \concepto{Salario de reserva}: pendiente de la curva de indiferencia en la dotación $A=(O_0,\overline{W})$; si $w\leq w^R$, $L=0$ (esquina):
+\begin{formula}
+\centering $w^R=\dfrac{U_O(\overline{W},O_0)}{U_C(\overline{W},O_0)}$;\ ocio normal $\Rightarrow$ $\partial w^R/\partial\overline{W}>0$
+\end{formula}
+\item ↑$\overline{W}$: solo efecto renta $\Rightarrow$ $\partial L/\partial\overline{W}<0$ (ocio normal); desincentiva la participación.
+\item ↑$w$, 3 efectos (gira sobre $A$): \concepto{sustitución} $E\to E'$ (↑$L$ siempre; oferta hicksiana); \concepto{renta ordinario} $E'\to E''$ (misma renta completa, menos poder adquisitivo: ↑$L$ si ocio normal); \concepto{renta dotación} $E''\to E_1$ (revaloriza $O_0$: ↓$L$). Total \emph{ambiguo}.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{efectos-salario}{↑$w$: sustitución, renta ordinario y renta dotación}
+\begin{itemize}
+\item \autor{Slutsky} con renta-dotación: renta global $\propto L$ (lo que se \emph{vende}):
+\begin{formula}
+\centering $\dfrac{\partial L}{\partial w}=\underbrace{-\dfrac{\partial h_O}{\partial w}}_{(+)}+\underbrace{L\,\dfrac{\partial L}{\partial\overline{W}}}_{(-)\text{ ocio normal}}$
+\end{formula}
+\item \emph{Prima por horas extra} (solo sobre $L>L_n$): casi solo sustitución $\Rightarrow$ ↑$L$ sin ambigüedad.
+\item \emph{Oferta individual}: $L=0$ bajo $w^R$; creciente con $w$ moderado (renta global pequeña); \emph{hacia atrás} con $w$ alto (\autor{Robbins}, 1930). S invertida cerca de la subsistencia (\autor{Sharif}, 2000; \autor{Dessing}, 2002).
+\item \emph{Agregada}: sin agente representativo salvo preferencias restrictivas (\autor{Gorman}, 1953); \concepto{margen intensivo} (horas) + \concepto{margen extensivo} (participación; positivo con indivisibilidades).
+\item \emph{Extensiones}: \emph{producción doméstica} (\autor{Becker}, 1965; \autor{Gronau}, 1977): $f'(L_{\mathrm{dom}})=w$ y $U_O/U_C=w$; \emph{familia}: \concepto{trabajador añadido}; modelo \emph{unitario} (renta común) vs \emph{colectivo} (\autor{Chiappori}, 1992: negociación eficiente; importa quién cobra).
+\item \emph{Evidencia}: 3 elasticidades, ocio normal $\Rightarrow$ $\varepsilon^F\geq\varepsilon^h\geq\varepsilon$ (\autor{Keane}, 2011). Varones: pequeñas (hicksiana $\approx0{,}3$); mujeres casadas y rentas bajas, mayores (participación). \autor{Chetty} (2011): hicksianas 0,30 intensivo y 0,26 extensivo.
+\item \concepto{U de \autor{Goldin}} (1995): participación de las casadas cae con la industrialización (efecto renta del marido, estigma), sube con educación y servicios (sustitución) y se acelera desde los 70 con la píldora (\autor{Goldin}-\autor{Katz}, 2002).
+\item \emph{Valoración}: explica participación y respuesta pequeña de horas; base de la fiscalidad \vertema{4.B.10}; estático, horas libres, sin tiempo.
+\end{itemize}
+
+\sub{I.2. Demanda de trabajo\label{rep:I.2}}
+\begin{itemize}
+\item \concepto{Demanda derivada} (\autor{Hicks}, 1932): $z_L(p,\vect{w})$ de la teoría de la empresa \vertema{3.A.12}. Precio-aceptante; $F$ con $F_L>0$, $F_{LL}<0$; corto plazo, $\overline{K}$ fijo.
+\item $\max_L\ B=p\,F(L,\overline{K})-w_LL-w_K\overline{K}$; CSO $pF_{LL}<0$ (sin condición de rendimientos):
+\funcionclave{\mathrm{VPMg}_L\equiv p\,F_L(L,\overline{K})=w_L\ \Longleftrightarrow\ F_L=\frac{w_L}{p}\equiv w}
+\item $L^D(w)$: tramo decreciente del $\mathrm{VPMg}_L$; se desplaza con $\overline{K}$, tecnología y $p$. Sin efectos renta: \emph{no hay factores \autor{Giffen}}.
+\item \emph{Largo plazo} más elástica (\autor{Le Chatelier}, \autor{Samuelson}): sustitución + escala. \emph{Mercado}: suma de \concepto{cuasidemandas}, menos elástica ($p$ del bien cae). \autor{Marshall}-\autor{Hicks}: $\varepsilon_{L^D,w_L}=-(1-s_L)\sigma-s_L|\varepsilon_{q,p}|$.
+\item \emph{Evidencia}: elasticidad a $q$ constante 0,15-0,75, central 0,3 (\autor{Hamermesh}, 1993); mayor en poco cualificados. \autor{Card} (1990), Mariel: +7\,\% de activos en Miami sin efectos apreciables; \autor{Borjas} (2017): caídas para varones sin secundaria.
+\end{itemize}
+
+\sub{I.3. Equilibrio\label{rep:I.3}}
+\begin{itemize}
+\item $L^S(w^c)=L^D(w^c)$ $\Rightarrow$ $U_O/U_C=w^c=F_L(L^c,\overline{K})$. Existencia con continuidad; unicidad y estabilidad no garantizadas (oferta hacia atrás; \autor{Walras}: demanda corta desde arriba) \vertema{3.A.21}.
+\item Sin \concepto{paro involuntario}; sí \emph{voluntario} ($w^R>w^c$). Eficiente en sentido de \autor{Pareto} (1TFEB) \vertema{3.A.22}. \autor{Marshall}: equilibrio temporal (oferta fija, sube solo $w$) y normal (entra oferta).
+\item \concepto{Salario mínimo} $\underline{w}>w^c$: manda el lado corto, $L^D(\underline{w})<L^c$; paro involuntario $=L^S(\underline{w})-L^D(\underline{w})$, el único del modelo.
+\end{itemize}
+\pareja{oferta-individual}{Oferta individual: $w^R$ y tramo hacia atrás}{equilibrio-trabajo}{Equilibrio y salario mínimo: paro involuntario}
+
+\sub{I.4. Valoración: monopsonio y paro\label{rep:I.4}}
+\begin{itemize}
+\item Referencia de eficiencia. Supuesto más frágil, el 4: \concepto{poder de monopsonio} (único empleador o fricciones): oferta creciente $w_L(L)$ y contrata hasta $\mathrm{VPMg}_L=$ \concepto{gasto marginal} \vertema{3.A.17}:
+\begin{formula}
+\centering $\mathrm{VPMg}_L=\mathrm{GMg}_L=w_L(L)\big(1+\tfrac{1}{\varepsilon_{L,w_L}}\big)\Leftrightarrow\tfrac{\mathrm{VPMg}_L-w_L}{w_L}=\tfrac{1}{\varepsilon_{L,w_L}}$
+\end{formula}
+\item $L^M<L^c$, $w^M<w^c$, \emph{sin paro involuntario} (sobre la oferta). Salario mínimo en $(w^M,w^c]$: ↑$w$ y ↑$L$ (máximo en $w^c$); por encima de $w^c$ ↓$L$ y paro.
+\item \autor{Card}-\autor{Krueger} (1994): 410 locales de comida rápida, Nueva Jersey (4,25 $\to$ 5,05 \$/h, abril 1992) vs Pensilvania: sin caída del empleo. Monopsonio dinámico (\autor{Manning}, 2003).
+\end{itemize}
+\pareja{monopsonio}{Monopsonio: menos $L$ y menos $w$}{salario-minimo}{Salario mínimo con monopsonio: ↑$L$ hasta $w^c$}
+\begin{itemize}
+\item \emph{Anexo}: monopolio en el bien $\Rightarrow$ $\mathrm{IPMg}_L=w_L$; 4 casos, ninguno con paro involuntario (\emph{explotación}, \autor{Robinson}, 1933). \concepto{Sindicato monopolista} (\autor{Dunlop}, 1944): $L^S<L^c$, $w^S>w^c$, \emph{sí} paro involuntario. Monopolio bilateral: $w$ indeterminado (\autor{Bowley}, 1928).
+\item \emph{El paro existe} y persiste (España $>$10\,\%): levantar 2 y 7 (búsqueda \vertema{3.A.26}), 6 y 4 (negociación, eficiencia, contratos implícitos \vertema{3.A.27}; tasa natural, histéresis \vertema{3.A.28}).
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{II. Oferta intertemporal: \autor{Lucas} y \autor{Rapping} (1969)\label{rep:II}}
+\begin{ideaclave}
+Se trabaja más cuando trabajar compensa más: los cambios transitorios del salario mueven las horas mucho más que los permanentes; el mercado de trabajo, pieza central del ciclo.
+\end{ideaclave}
+
+\sub{II.1. Idea\label{rep:II.1}}
+\begin{itemize}
+\item ¿Por qué las horas fluctúan tanto si $w$ real varía poco? El individuo \emph{elige cuándo trabajar}: ocio de hoy y de mañana, sustitutivos. Microfundamentar la oferta como \autor{Friedman}-\autor{Modigliani} el consumo \vertema{3.A.33} y \autor{Eisner}-\autor{Jorgenson} la inversión; foco en la \emph{oferta}; mercado que \emph{se vacía siempre} (paro = sustitución voluntaria) $\Rightarrow$ nueva macro clásica \vertema{3.A.6}, ciclos reales \vertema{3.A.42}. «\emph{Hacer el agosto}».
+\end{itemize}
+
+\sub{II.2. Modelo\label{rep:II.2}}
+\begin{itemize}
+\item 2 periodos, sin incertidumbre ni dinero; tiempo 1 por periodo; $\beta=1/(1+\rho)$; utilidad separable $\ln C_t+b\ln(1-L_t)$; mercado de capitales perfecto a $r$; $w_1$, $w_2$ conocidos:
+\begin{formula}
+\centering $\optim{\max}{C_t,L_t}{\textstyle\sum_t\beta^{t-1}\big[\ln C_t+b\ln(1-L_t)\big]}{C_1+\dfrac{C_2}{1+r}=w_1L_1+\dfrac{w_2L_2}{1+r}}$
+\end{formula}
+\item CPO: intratemporal $bC_t/(1-L_t)=w_t$ ($\mathrm{RMS}_{OC}=w_t$); \autor{Euler} $C_2/C_1=\beta(1+r)$ \vertema{3.A.29}; dividiendo, la condición intertemporal del ocio:
+\funcionclave{\frac{1-L_1}{1-L_2}=\frac{w_2}{\beta(1+r)\,w_1}}
+\item Oferta relativa según el \concepto{salario relativo intertemporal} $w_1(1+r)/w_2$: $L_1/L_2=f\big(\overset{+}{w_1/w_2},\overset{+}{r},\overset{-}{\rho}\big)$.
+\item \emph{Solución cerrada}: $L_1=1-\frac{b}{(1+b)(1+\beta)}\big[1+\frac{w_2}{(1+r)w_1}\big]$; con $w_2=(1+r)w_1$ y $\beta=1$, $L_1=1/(1+b)$ (estático).
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{@{}lccl@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Cambio} & $L_1$ & $L_2$ & \textbf{Por qué}\\
+\midrule
+$w_1$↑ transitorio & \textcolor{tceeverde}{↑} & \textcolor{tceerojo}{↓} & \concepto{sustitución intertemporal}\\
+$w_1,w_2$↑ permanente & $=$ & $=$ & sustitución y renta se compensan\\
+$r$↑ & \textcolor{tceeverde}{↑} & \textcolor{tceerojo}{↓} & trabajar y ahorrar hoy rinde más\\
+$\rho$↑ (impaciencia) & \textcolor{tceerojo}{↓} & \textcolor{tceeverde}{↑} & el ocio de hoy vale más\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item \emph{Política}: rebajas \emph{temporales} de cotizaciones o impuestos mueven más las horas que las permanentes. Horizonte infinito (original): mismas 3 condiciones, con no-\autor{Ponzi}.
+\end{itemize}
+
+\sub{II.3. Extensiones\label{rep:II.3}}
+\begin{itemize}
+\item \concepto{Elasticidad de \autor{Frisch}}: respuesta de las horas con $\lambda$ (utilidad marginal de la riqueza) constante: sustitución intertemporal pura, cambios previstos o transitorios. Con $u=\ln C_t-\chi L_t^{1+\varphi}/(1+\varphi)$, $\chi L_t^{\varphi}=\lambda_tw_t$:
+\begin{formula}
+\centering $\varepsilon^F_{L,w}\equiv\left.\dfrac{\partial\ln L_t}{\partial\ln w_t}\right|_{\lambda}=\dfrac{1}{\varphi}$\quad (con log: $(1-L)/L$; $L=\tfrac13\Rightarrow2$)
+\end{formula}
+\item \emph{Ciclo vital}: perfil de $w$ en U invertida, previsto $\Rightarrow$ horas con elasticidad de \autor{Frisch}. \emph{Jubilación}: valor de opción (\autor{Stock}-\autor{Wise}, 1990); impuesto implícito $\Rightarrow$ antes (\autor{Gruber}-\autor{Wise}, 1999).
+\item \emph{Ciclos reales} (\autor{Kydland}-\autor{Prescott}, 1982): ↑productividad $\Rightarrow$ efecto riqueza (↓$L$) vs sustitución intertemporal (↑$L$); choque \emph{transitorio}: domina sustitución $\Rightarrow$ ciclo; \emph{permanente}: riqueza, vía inversión. Si fluctuar es óptimo, estabilizar no mejora el bienestar.
+\item \emph{Trabajo indivisible} (\autor{Hansen}, 1985; \autor{Rogerson}, 1988): ajuste extensivo $\Rightarrow$ elasticidad agregada alta con individual baja. \emph{Demanda}: costes de ajuste suavizan el empleo \vertema{3.A.26}.
+\end{itemize}
+
+\sub{II.4. Evidencia\label{rep:II.4}}
+\begin{itemize}
+\item \autor{Frisch} micro pequeña: \autor{MaCurdy} (1981) 0,15; \autor{Altonji} (1986). \autor{Chetty} (2011): 0,54 horas, 0,28 participación, 0,82 agregada. Mayor en mujeres y crece con la edad (\autor{Imai}-\autor{Keane}, 2004; \autor{French}, 2005).
+\item Experimentos: mensajeros de Zúrich (\autor{Fehr}-\autor{Goette}, 2007), taxistas de Nueva York (\autor{Farber}, 2015) frente a \autor{Camerer} et al. (1997, objetivo diario): la sustitución existe.
+\item \emph{Problema de escala}: ciclos reales necesitan $\approx2{,}8$ agregada vs 0,8 micro; participación 0,28 vs 2,3.
+\end{itemize}
+
+\sub{II.5. Valoración\label{rep:II.5}}
+\begin{itemize}
+\item + mecanismo de propagación, elasticidad clave de la macro, impuestos temporales, jubilación. $-$ exige elasticidades altas; paro involuntario como ocio «elegido» \vertema{3.A.27} \vertema{3.A.28}; trabajadores iguales. El salario futuro depende de la formación de hoy $\Rightarrow$ \hyperref[rep:III]{III}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[10]{III. Capital humano y función de ingresos\label{rep:III}}
+\begin{ideaclave}
+La educación es una inversión que se paga con salarios más altos toda la vida laboral; \autor{Mincer} mide su rendimiento ($\approx9$\,\% por año) y los experimentos naturales muestran que la mayor parte la causa lo aprendido, no solo quién estudia.
+\end{ideaclave}
+
+\sub{III.1. Usos del capital humano\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Capital humano}: conocimientos, habilidades y rasgos que hacen más productiva a una persona; se acumula invirtiendo, pero es \emph{inseparable} de quien lo posee (ni se vende ni sirve de garantía). Se levanta el supuesto 3.
+\item 5 enfoques (\autor{Acemoglu}-\autor{Autor}, 2011): \autor{Becker} ($h$ en la función de producción); \autor{Gardner} (multidimensional); \autor{Schultz}, \autor{Nelson}-\autor{Phelps} (adaptarse, adoptar tecnología) \vertema{3.A.44}; \autor{Bowles}-\autor{Gintis} (obedecer en jerarquías); \autor{Spence} (1973, \emph{señal}) \vertema{3.A.13}: levanta también el 2.
+\item \autor{Becker}: educación $\to$ productividad $\to$ salario; \autor{Spence}: productividad $\to$ educación $\to$ salario. Ambas: quien estudia más cobra más $\Rightarrow$ las distingue la evidencia.
+\end{itemize}
+
+\sub{III.2. Teoría del capital humano de \autor{Becker} (1964)\label{rep:III.2}}
+\begin{itemize}
+\item Educación como inversión: costes directos + \emph{coste de oportunidad} (salario perdido) + esfuerzo; rendimientos: salario más alto. «\emph{El saber no ocupa lugar}»… pero sí tiempo.
+\item \emph{2 periodos}: se invierte hasta $\mathrm{IMg}_h=\mathrm{CMg}_h$:
+\begin{formula}
+\centering $\max_h\ -c(h)+\dfrac{w(h)}{1+r}\Rightarrow\dfrac{w'(h)}{1+r}=c'(h)$
+\end{formula}
+\item \emph{Años de estudio}: $S$ años sin cobrar y con coste $c$; $w(S)$, $w'>0$, $w''<0$; mercado de capitales perfecto $\Rightarrow$ maximizar el VP de la renta (\concepto{separación de \autor{Fisher}}, 1930). $V(S)=\int_S^Tw(S)e^{-rt}dt-\int_0^Sce^{-rt}dt$; con $T\to\infty$, \concepto{tasa marginal de rendimiento} = tipo de interés:
+\begin{formula}
+\centering $w'(S^*)\dfrac{1-e^{-r(T-S^*)}}{r}=w(S^*)+c\ \xrightarrow{T\to\infty}\ \rho(S^*)\equiv\dfrac{w'(S^*)}{w(S^*)+c}=r$
+\end{formula}
+\item Gráfico (\autor{Becker}, 1967): demanda = $\rho(S)$ decreciente; oferta de fondos creciente y escalonada (familia, becas $\to$ préstamos de mercado).
+\end{itemize}
+\pareja{becker-inversion}{Demanda y oferta de fondos para estudiar}{fisher-capital-humano}{\autor{Fisher}: la formación no depende de la paciencia}
+\begin{itemize}
+\item \emph{Quién estudia más}: los más hábiles (demanda más arriba) y los de más recursos o crédito (oferta más abajo); menos con $r$, $c$ altos o vida laboral corta. Con restricciones de liquidez se rompe la separación.
+\item \emph{Cuándo}: al principio de la vida (con $T$ finito, menos años para cobrar). Con $c=0$: $w'/w=r$ $\Rightarrow$ idea de \autor{Mincer}.
+\item \emph{Perfiles edad-ingresos} (\autor{McConnell}-\autor{Brue}): costes directos, coste de oportunidad y rendimiento bruto; curvas cóncavas. Estudiar si VAN $>0$ (TIR $>r$).
+\end{itemize}
+\graficorepaso[0.8\linewidth]{perfiles-edad}{Perfiles edad-ingresos: costes directos, coste de oportunidad y rendimiento bruto}
+\begin{itemize}
+\item \concepto{Formación general} (vale en toda empresa; va con el trabajador) y \concepto{específica} (solo en la que la da; va con el puesto). 2 periodos, coste $c$, $\mathrm{VPMg}^0<\mathrm{VPMg}^1$.
+\item \emph{General}: fuera pagan $\mathrm{VPMg}^1$ $\Rightarrow$ \emph{la paga el trabajador}: $w_1=\mathrm{VPMg}^0-c$; conviene si $(\mathrm{VPMg}^1-\mathrm{VPMg}^0)/(1+r)\geq c$ (aprendices, MIR).
+\item \emph{Específica}: ninguno la paga solo (el otro se quedaría la inversión) $\Rightarrow$ se reparte, $\gamma\in(0,1)$ poder de negociación \vertema{3.A.27}:
+\begin{formula}
+\centering $w_2=\mathrm{VPMg}^0+\gamma\big(\mathrm{VPMg}^1-\mathrm{VPMg}^0\big)$
+\end{formula}
+\item[] Menos rotación con antigüedad, salario crece con ella, «último en entrar, primero en salir», poder de los \emph{insiders} (supuesto 7). Menos formación general si hay restricciones de liquidez o salario mínimo. \autor{Acemoglu}-\autor{Pischke} (1998, 1999): con mercados imperfectos la empresa paga también la general (aprendizaje alemán).
+\item \emph{Valoración}: + por qué se estudia joven, salario y antigüedad, quién paga, desigualdad por habilidad y recursos. $-$ hay más determinantes (sexo, discriminación, poder de mercado); información perfecta; liquidez $\Rightarrow$ inversión insuficiente.
+\end{itemize}
+
+\sub{III.3. Función de ingresos: \autor{Mincer}\label{rep:III.3}}
+\begin{itemize}
+\item \autor{Mincer} (1974): la ecuación más estimada de la economía laboral. \emph{Escolarización} (1958): solo coste de oportunidad, vida laboral igual y larga, mismo $r$; en equilibrio, mismo VP para todo $S$: $w(S)e^{-rS}/r=w(0)/r$ $\Rightarrow$ $\ln w(S)=\ln w(0)+rS$.
+\item \emph{Experiencia}: \autor{Ben-Porath} (1967), $\dot h=a(1-u)h$; la fracción para formarse cae linealmente $\Rightarrow$ $\ln w$ cuadrático y cóncavo en $X$:
+\funcionclave{\ln w_i=\beta_0+\beta_1S_i+\beta_2X_i+\beta_3X_i^2+\varepsilon_i,\quad \beta_1\approx r,\ \beta_2>0,\ \beta_3<0}
+\item[] $\beta_1$: \emph{rendimiento privado} (semielasticidad); máximo en $X=-\beta_2/(2\beta_3)$; en logs, la distancia en euros crece con la edad.
+\item \concepto{\autor{Oaxaca}-\autor{Blinder}} (1973): brecha entre grupos A y B:
+\begin{formula}
+\centering $\overline{\ln w}_{\mathrm A}-\overline{\ln w}_{\mathrm B}=\underbrace{(\bar{\vect{x}}_{\mathrm A}-\bar{\vect{x}}_{\mathrm B})\cdot\hat{\vect{\beta}}_{\mathrm A}}_{\text{explicada}}+\underbrace{\bar{\vect{x}}_{\mathrm B}\cdot(\hat{\vect{\beta}}_{\mathrm A}-\hat{\vect{\beta}}_{\mathrm B})}_{\text{no explicada}}$
+\end{formula}
+\item[] No explicada: se asocia a discriminación, pero recoge lo no observado. \autor{Blau}-\autor{Kahn} (1992); España, EES 2010: 20 puntos log., 12 explicados y casi 8 no (\autor{Murillo} et al., 2017).
+\item \autor{Goldin}: la brecha ya no es educativa, sino dentro de cada ocupación: se pagan más que proporcionalmente las jornadas largas y rígidas (2014). \concepto{Penalización por hijos} (\autor{Kleven} et al., Dinamarca): madres $\approx-20$\,\% a largo plazo; explica $\approx40$\,\% de la brecha en 1980 y $\approx80$\,\% en 2013. Habilidades no cognitivas (\autor{Heckman} et al., 2006).
+\item \emph{MCO}: $\approx9$\,\% por año (8\,\% renta alta), 1.120 estimaciones de 139 países (\autor{Psacharopoulos}-\autor{Patrinos}, 2018); superiores $\approx15$\,\%.
+\item \emph{¿Causal?} \concepto{Sesgo de habilidad}: \emph{sobreestima} $\beta_1$; error de medida: \emph{subestima}; controlar por CI apenas cambia (\autor{Griliches}, 1977).
+\item \emph{Experimentos naturales} (Nobel 2021: \autor{Card}; \autor{Angrist}-\autor{Imbens}), variable instrumental: trimestre de nacimiento, 7-10\,\% (\autor{Angrist}-\autor{Krueger}, 1991); distancia a la universidad, 25-60\,\% más que MCO (\autor{Card}, 1995); gemelos, 12-16\,\% (\autor{Ashenfelter}-\autor{Krueger}, 1994); \concepto{LATE} (\autor{Imbens}-\autor{Angrist}, 1994): efecto de quienes cambian por el instrumento.
+\item VI $\geq$ MCO (\autor{Card}, 1999, 2001): los instrumentos mueven a quienes tenían más difícil estudiar, con mayor rendimiento $\Rightarrow$ la educación causa buena parte de la prima: \autor{Spence} no lo explica todo. Instrumentos débiles $\to$ sesgo hacia MCO (\autor{Bound} et al., 1995).
+\item \emph{España}: perfiles cóncavos, más pendientes cuanto más estudio; universitarios largos +86\,\% sobre secundaria 2.ª etapa a partir de 55 años (EES 2022).
+\end{itemize}
+\begin{itemize}
+\item \emph{Valoración}: describe bien los salarios; $\beta_1$, de las cifras mejor medidas. $-$ solo es tasa de rendimiento con supuestos fuertes; no lineal: pesan los títulos (\autor{Heckman}-\autor{Lochner}-\autor{Todd}, 2006); rendimiento privado, el \emph{social} puede ser mayor \vertema{3.A.43} \vertema{3.A.44}; separar productividad y señal, solo en parte.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: oferta ($w^R$, renta y sustitución) + demanda ($\mathrm{VPMg}_L$) + $w$ flexible $\Rightarrow$ mercado vaciado, sin paro involuntario salvo salario mínimo; \autor{Lucas}-\autor{Rapping}: lo transitorio mueve más que lo permanente; capital humano: por qué difieren los salarios; \autor{Mincer} mide el rendimiento de estudiar.
+\item \textbf{Relevancia}: elasticidades y rendimientos evalúan impuestos \vertema{4.B.10}, salario mínimo \vertema{4.A.16} y política educativa \vertema{4.A.2}.
+\item \textbf{Extensiones}: búsqueda \vertema{3.A.26}; negociación, eficiencia, contratos implícitos \vertema{3.A.27}; tasa natural, histéresis \vertema{3.A.28}; ciclos reales \vertema{3.A.42}; crecimiento \vertema{3.A.43} \vertema{3.A.44}.
+\item \textbf{Opinión}: falla como descripción del paro, pero es más útil como mapa de incentivos que como fotografía; la revolución de la credibilidad (2021, 2023): de debatir supuestos a medir efectos.
+\item \textbf{Idea final}: el tiempo es oro: una hora vale lo que se paga por ella en el margen, el salario; no es el mismo hoy que mañana y depende de lo invertido antes en uno mismo.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1890}{\autor{Marshall}: \emph{Principios}; equilibrio temporal y normal}
+\hito{1930}{\autor{Robbins}: oferta ambigua; \autor{Fisher}: separación}
+\hito{1932}{\autor{Hicks}: \emph{The Theory of Wages}; demanda derivada}
+\hito{1933}{\autor{Robinson}: monopsonio, explotación}
+\hito{1936}{\autor{Keynes}: paro involuntario}
+\hito{1944}{\autor{Dunlop}: sindicato monopolista}
+\hito{1958}{\autor{Mincer}: escolarización (función de ingresos, 1974)}
+\hito{1961}{\autor{Schultz}: inversión en capital humano}
+\hito{1964}{\autor{Becker}: \emph{Human Capital} (1962; tiempo, 1965; Nobel 1992)}
+\hito{1967}{\autor{Ben-Porath}: capital humano en el ciclo vital}
+\hito{1969}{\autor{Lucas}-\autor{Rapping}; Nobel a \autor{Frisch} y \autor{Tinbergen}}
+\hito{1973}{\autor{Oaxaca}; \autor{Blinder}; \autor{Spence}: señal}
+\hito{1981}{\autor{MaCurdy}: elasticidad de \autor{Frisch}}
+\hito{1982}{\autor{Kydland}-\autor{Prescott}: ciclos reales}
+\hito{1985}{\autor{Hansen} (y \autor{Rogerson}, 1988): trabajo indivisible}
+\hito{1990}{\autor{Card}: éxodo del Mariel}
+\hito{1991}{\autor{Angrist}-\autor{Krueger}: trimestre de nacimiento}
+\hito{1992}{\autor{Chiappori}: modelo colectivo}
+\hito{1994}{\autor{Card}-\autor{Krueger}: salario mínimo; LATE; gemelos}
+\hito{1995}{\autor{Goldin}: U de la participación}
+\hito{2021}{Nobel a \autor{Card}, \autor{Angrist} e \autor{Imbens}}
+\hito{2023}{Nobel a \autor{Goldin}}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Tasa de paro: \dato{10,18\,\%, 3T 2026}{INE, EPA}.
+\item Rendimiento de un año de estudios: \dato{9\,\% de media (8\,\% renta alta)}{\autor{Psacharopoulos}-\autor{Patrinos}, 2018}; superiores, en torno al \dato{15\,\%}{\autor{Montenegro}-\autor{Patrinos}, 2014}.
+\item Brecha salarial de género: \dato{16,1\,\% anual}{INE, EAES 2024}; por hora, \dato{7,3\,\% (UE 11,1\,\%)}{Eurostat, 2024}.
+\item Universitarios largos frente a secundaria, 55 años o más: \dato{+86\,\%}{INE, EES 2022}.
+\item Elasticidades: demanda \dato{0,15-0,75 (0,3)}{\autor{Hamermesh}, 1993}; \autor{Frisch} \dato{0,54 horas, 0,28 participación}{\autor{Chetty}, 2011}; hicksiana mujeres \dato{0,14 sin hijos, 0,37 con hijos de 3-4 años}{\autor{Blundell} et al., 1998}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Hay paro involuntario?} Competencia: no (salvo salario mínimo); monopsonio: no (sobre la oferta); sindicato: sí ($w$ sobre la oferta).
+\item \textbf{¿Por qué la oferta se vuelve hacia atrás?} El efecto renta global $\propto L$: con $w$ y horas altos domina. La agregada suele ser creciente (margen extensivo).
+\item \textbf{¿\autor{Frisch} frente a hicksiana?} \autor{Frisch}: $\lambda$ constante (transitorios); hicksiana: $U$ constante. La de los ciclos reales, \autor{Frisch}.
+\item \textbf{¿Por qué lo transitorio mueve más?} Apenas cambia la riqueza de toda la vida: domina la sustitución intertemporal.
+\item \textbf{¿Quién paga la formación?} General: el trabajador; específica: se reparte. Alemania: mercados imperfectos (\autor{Acemoglu}-\autor{Pischke}).
+\item \textbf{¿Es $\beta_1$ una tasa de rendimiento?} Solo sin costes directos ni impuestos y con igual vida laboral; \autor{Becker} vs \autor{Spence}, con experimentos naturales.
+\item \textbf{¿Por qué VI $\geq$ MCO?} LATE de quienes tenían más difícil estudiar, con mayor rendimiento.
+\item \textbf{¿Curvas con trabajo en vez de ocio?} En $(L,C)$, trabajo es un «mal»: crecientes y convexas; recta $C=wL+\overline{W}$.
+\item \textbf{¿Monopolio en el bien?} $\mathrm{IPMg}_L<\mathrm{VPMg}_L$: menos $L$ y menos $w$; sin paro involuntario.
+\item \textbf{¿Inmigración y salarios?} Sustitutivos cercanos pierden; complementarios ganan; \autor{Card} (1990) vs \autor{Borjas} (2017).
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Ocio normal: sustitución ↑$L$, renta ordinario ↑$L$, renta dotación ↓$L$; total ambiguo. Prima por horas extra: ↑$L$ sin ambigüedad.
+\item $w^R$ = $\mathrm{RMS}_{OC}$ en la \emph{dotación}; ↑ con $\overline{W}$ si ocio normal. $U=C^{\alpha}O^{1-\alpha}$ sin $\overline{W}$: $L=\alpha O_0$, no depende de $w$.
+\item $\varepsilon^F\geq\varepsilon^h\geq\varepsilon$ (ocio normal); \autor{Frisch} $=1/\varphi$; no tiene que ver con el riesgo.
+\item Demanda a c/p: CSO $F_{LL}<0$, sin condición de rendimientos. L/p \emph{más} elástica; mercado \emph{menos} elástica. No hay factores \autor{Giffen}.
+\item Oferta lineal $w_L=c_0+c_1L$ $\Rightarrow$ $\mathrm{GMg}_L=c_0+2c_1L$. Monopsonio: salario mínimo en $(w^M,w^c]$ \emph{sube} el empleo.
+\item \autor{Lucas}-\autor{Rapping}: $r$↑ $\Rightarrow$ ↑$L_1$; $\rho$↑ $\Rightarrow$ ↓$L_1$; permanente: no cambia la oferta \emph{relativa}.
+\item General: la paga el trabajador; específica: se reparte. \autor{Spence}: productividad $\to$ educación (no al revés).
+\item $\beta_1$ semielasticidad (exacto $e^{\beta_1}-1$); $\beta_1\approx r$; sesgo de habilidad \emph{sobre}estima, error de medida \emph{sub}estima. \autor{Oaxaca}-\autor{Blinder}: depende del grupo de referencia.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
