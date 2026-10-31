@@ -1,28 +1,41 @@
 # Oferta de trabajo neoclásica (elección consumo-ocio)
 
-- **Área:** macro cerrada · **Tema de referencia:** 3.A.25 (teoría neoclásica del mercado de trabajo) — lo tiene en el título; 4.B.10 lo reutiliza para analizar impuestos.
-- **Temas que lo usan:** 3.A.25 (desarrollo), 4.B.10 (desarrollo)
-- **Manuales de referencia:** Cahuc, Carcillo y Zylberberg, *Labor Economics* (2.ª ed., 2014), caps. 1-2; Borjas, *Labor Economics*, cap. 2; Mas-Colell, Whinston y Green (1995), cap. 3 (dotación de tiempo).
-- **Decisión D002 (13/10/2026):** ¿Qué símbolo lleva la renta o riqueza exógena del consumidor, incluida la renta no laboral y la riqueza inicial en los modelos de riesgo y seguros? W̄ siempre (renta del consumidor, riqueza inicial en riesgo y seguros, renta no laboral en Becker y en la oferta de trabajo); M solo dinero (e importaciones)
+- **Área:** macro cerrada (mercado de trabajo) · **Tema de referencia:** 3.A.25 (teoría neoclásica del mercado de trabajo; **revisado el 31/10/2026**, I.1 `sec:oferta` con a)-e) y anexo `anexo:slutsky-dotacion`) — lo tiene en el título; 4.B.10 lo reutiliza para analizar impuestos.
+- **Temas que lo usan:** 3.A.25 (desarrollo; hecho, 31/10/2026), 4.B.10 (desarrollo, aplicación a los impuestos), 3.A.8 (mención; hecho, 13/10/2026: la asignación del tiempo de Becker, 1965, remite aquí: «se estudia desde la oferta de trabajo»), 3.A.26 (mención: el salario de reserva dinámico de la búsqueda parte del estático), 1D01 (mención; hecha, 24/10/2026: oferta de trabajo y tasa de actividad, margen extensivo).
+- **Manuales de referencia:** Cahuc, Carcillo y Zylberberg, *Labor Economics* (2.ª ed., 2014), caps. 1-2; Borjas (2020), *Labor Economics*, cap. 2; Mas-Colell, Whinston y Green (1995), cap. 3 (dotación de tiempo); Keane (2011), *JEL*; Blundell y MaCurdy (1999).
+- **Decisión D002 (13/10/2026):** ¿Qué símbolo lleva la renta o riqueza exógena del consumidor, incluida la renta no laboral y la riqueza inicial en los modelos de riesgo y seguros? W̄ siempre (renta del consumidor, riqueza inicial en riesgo y seguros, renta no laboral en Becker y en la oferta de trabajo); M solo dinero (e importaciones).
 
-## Presentación de referencia
-Pregunta: ¿cuántas horas ofrece un individuo y cómo responde al salario? Supuestos: preferencias regulares sobre consumo C y ocio O (ambos normales); dotación de tiempo O₀; salario real w; renta no laboral W̄ (no M, que es el dinero; coherente con 3.A.8); precio del consumo normalizado a 1.
+## Presentación de referencia (3.A.25, I.1)
 
-$$\max_{C,O} U(C,O)\quad\text{s.a.}\quad C + wO \le wO_0 + \overline{W},\qquad L = O_0 - O$$
-$$\frac{U_O}{U_C} = w \quad(\text{solución interior}),\qquad w^R = \left.\frac{U_O}{U_C}\right|_{O=O_0,\;C=\overline{W}}$$
+Pregunta: ¿cuántas horas ofrece un individuo y cómo responde al salario? Conclusión: participa si el salario supera su salario de reserva; la respuesta de las horas al salario es ambigua (la sustitución frente al efecto renta global, proporcional a las horas), de ahí la curva que se vuelve hacia atrás.
 
-Resultado: si w < w^R (salario de reserva) no participa; si w > w^R, la respuesta de las horas al salario combina un efecto sustitución (+) y un efecto renta (−, ampliado por el efecto dotación), de ahí la curva de oferta que puede volverse hacia atrás. Agregación: margen extensivo (participación) e intensivo (horas).
-Gráfico de referencia: plano (O, C); recta de balance con pendiente −w que arranca en (O₀, W̄) con tramo vertical W̄; curvas de indiferencia; tangencia; salario de reserva como pendiente de la curva de indiferencia en el punto de dotación. Un aumento de w gira la recta sobre el punto de dotación.
+- **a) Idea**: cada persona reparte un tiempo limitado entre trabajo (renta para consumir) y ocio.
+- **b) Modelo**. i) Supuestos: preferencias $U(C,O)$ de buen comportamiento sobre consumo y ocio, ambos normales (3.A.8); dotación de tiempo $O_0$, $L=O_0-O$ (nota: $O_0$ es la $T$ de Becker, 1965, del 3.A.8); salario real $w$ con $P_C=1$; renta no laboral $\overline{W}$ (**nunca M**, que es el dinero). ii) Desarrollo, problema (`eq:oferta-problema`):
+$$\max_{C,O}\ U(C,O)\quad\text{s.a.}\quad C+wO\le wO_0+\overline{W},\quad C\ge0,\ 0\le O\le O_0$$
+lagrangiana con λ = utilidad marginal de la renta (las condiciones de Kuhn-Tucker completas, con $C(U_C-\lambda)=0$ y las de holgura con igualdad, en el anexo A). `\funcionclave` (`eq:oferta-tangencia`), solución interior:
+$$\mathrm{RMS}_{OC}=\frac{U_O(C^*,O^*)}{U_C(C^*,O^*)}=w,\qquad C^*+wO^*=wO_0+\overline{W}$$
+**Salario de reserva** (`eq:salario-reserva`): $w^R=U_O(\overline{W},O_0)/U_C(\overline{W},O_0)$, la pendiente de la curva de indiferencia en el punto de dotación $A=(O_0,\overline{W})$; si $w\le w^R$, $L=0$; $\partial w^R/\partial\overline{W}>0$ si el ocio es normal (la renta no laboral desincentiva la participación). Estática comparativa: aumento de $\overline{W}$ (traslación paralela; solo efecto renta); aumento del salario de $w$ a $w_1$ (giro sobre $A$) con **3 efectos**: sustitución $E\to E'$ (hicksiana, $O_0-h_O(w,\overline U)$), renta ordinario $E'\to E''$ (renta no laboral compensada $\overline{W}^c=\overline{W}-(w_1-w)O_0$, punto $A_1$) y renta dotación $E''\to E_1$; los 2 de renta forman el **efecto renta global**, proporcional a $L$: ecuación de Slutsky con dotación (`eq:slutsky-dotacion`, anexo A; ficha `slutsky`)
+$$\frac{\partial L(w,\overline W)}{\partial w}=-\frac{\partial h_O(w,\overline U)}{\partial w}+L\,\frac{\partial L(w,\overline W)}{\partial\overline W}$$
+Nota: prima por horas extraordinarias (casi solo efecto sustitución; $L_n$ jornada normal, local). iii) Implicaciones: oferta individual nula por debajo de $w^R$, creciente con salarios moderados (domina la sustitución, porque el efecto renta global es pequeño con pocas horas) y que puede volverse hacia atrás con salarios altos (Robbins, 1930); la S invertida (Sharif, 2000; Dessing, 2002) como hipótesis, sin atribuirla a Frisch. **Agregación** (caja): $\overline{W}$ distribuida según $F(\overline W)$ con densidad $f$; renta no laboral de reserva $\overline{W}^R(w)$ con $L(w,\overline{W}^R(w))=0$; $L^S(w)=\int_0^{\overline W^R(w)}L(w,\overline W)\,dF(\overline W)$ y su derivada por Leibniz = **margen intensivo** + **margen extensivo** (nulo con horas libres, positivo con indivisibilidades $L_{\min}$).
+- **c) Extensiones**: producción doméstica (Becker, 1965; Gronau, 1977) con $C=C_{\mathrm{mer}}+f(L_{\mathrm{dom}})$ y $f'(L^*_{\mathrm{dom}})=w$; decisiones familiares: trabajador añadido, modelo unitario $U(C,O_1,O_2)$ y colectivo (Chiappori, 1992) con $\overline U_2$.
+- **d) Evidencia**: 3 elasticidades, marshalliana $\varepsilon_{L,w}$, hicksiana $\varepsilon^h_{L,w}$ y de Frisch $\varepsilon^F_{L,w}$, con $\varepsilon^F\ge\varepsilon^h\ge\varepsilon$ si el ocio es normal (Keane, 2011); varones de edad central poco elásticos (hicksiana media ≈ 0,3), mujeres casadas y rentas bajas más, sobre todo en participación; Chetty et al. (2011): 0,30 intensiva y 0,26 extensiva (hicksianas); Blundell, Duncan y Meghir (1998): 0,14-0,37 según la edad del hijo menor; la **U de Goldin** (1995; Goldin y Katz, 2002; Nobel 2023).
+- **e) Valoración**: explica la participación y la respuesta pequeña de las horas; es la base del análisis de los impuestos (4.B.10, mismo gráfico); estático y con horas libres; deja fuera el tiempo: puente a Lucas-Rapping.
+
+**Gráficos de referencia** (`oposicion/temario/fuentes/3A25/graficos/`): `oferta-trabajo.tex` (**referencia**, imprescindible: plano $(O,C)$, recta de balance de pendiente $-w$ que arranca en $A=(O_0,\overline W)$ con tramo vertical de altura $\overline W$, tangencia $E$, salario de reserva como pendiente de la curva de indiferencia en $A$) y, **sobre el mismo gráfico por capas**, `efectos-salario.tex` ($E\to E'\to E''\to E_1$, con $A_1$ y $\overline W^c$; nunca 2 gráficos en el cante); `oferta-individual.tex` (imprescindible, pequeño: $w^R$ y tramo hacia atrás); de apoyo, `renta-no-laboral.tex` y `prima-horas.tex` (nota).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.25 | Oferta de trabajo individual y agregada; base del análisis intertemporal (Lucas-Rapping) | desarrollo | Modelo completo, salario de reserva, efectos renta y sustitución, oferta agregada, elasticidades empíricas (Frisch, marshalliana, hicksiana) | — |
-| 4.B.10 | Efectos de los impuestos sobre la oferta de trabajo | desarrollo (aplicación) | Mismo gráfico con impuestos: suma fija (traslación paralela), proporcional sobre el salario (giro, pendiente −w(1−τ)), sobre la renta total, sobre el consumo, progresivo (recta cóncava) | La derivación básica: remitir [ver tema 3.A.25] |
+| 3.A.25 | Oferta de trabajo individual y agregada; base del análisis intertemporal (Lucas-Rapping) | desarrollo (hecho, 31/10/2026) | Todo lo anterior; Kuhn-Tucker completas y Slutsky con dotación en el anexo A; evidencia en I.1 d) | — |
+| 4.B.10 | Efectos de los impuestos sobre la oferta de trabajo | desarrollo (aplicación) | Mismo gráfico (`oferta-trabajo.tex`) con impuestos: suma fija (traslación paralela), proporcional sobre el salario (giro, pendiente −w(1−τ)), sobre la renta total, sobre el consumo, progresivo (recta cóncava); prestaciones condicionadas a la renta (la nota del 3.A.25 remite aquí). Con $\overline W$ y $U_O/U_C=w$ ($P_C=1$) | La derivación básica: remitir al 3.A.25, resumiendo lo imprescindible para el 4.º |
+| 3.A.8 | Teoría del consumidor | mención (hecho) | Asignación del tiempo de Becker (1965) con $T$, $t_w$: «se estudia desde la oferta de trabajo» (letras locales de Becker; el 3.A.25 avisa en nota de que $O_0$ es su $T$) | — |
+| 3.A.26 | Búsqueda y paro friccional | mención | El salario de reserva $w^R$ (superíndice, no $w_R$) del modelo de búsqueda como extensión dinámica del estático | El modelo consumo-ocio |
+| 1D01 | Dictamen de coyuntura | mención (hecho) | Tasa de actividad y margen extensivo | — |
 
 ## Divergencias encontradas en el temario actual
-- Renta no laboral M en 3.A.25 y 4.B.10: choca con M = dinero (3.A.35-3.A.41) y con emparejamientos (3.A.26). Canon **W̄**.
+- Renta no laboral M en 3.A.25 y 4.B.10: choca con M = dinero (3.A.35-3.A.41) y con emparejamientos (3.A.26). Canon **W̄**. **Resuelto** en el 3.A.25 (31/10/2026); queda el 4.B.10 (sin revisar), que además remite a «[ver tema 3.A.18]» (→ 3.A.25).
 - 4.B.10 escribe la condición U_O/U_C = w/P_C; con P_C = 1 se simplifica a w: usar w real en ambos.
-- 3.A.25 tiene numeración repetida («2.2.1. Supuestos» y «2.2.1. Desarrollo») y referencias a temas con numeración antigua.
+- 3.A.25 original: efectos al revés (con salarios bajos «prevalece el efecto renta»), restricción «$=wO_0+O$», holgura «≥ 0», tramo inicial decreciente atribuido a Frisch, «el margen extensivo es mayor que el intensivo» sin fuente, $\check M$, $\phi(M)$, $\Lambda(\cdot)$, $O^h$, $w_A$, numeración repetida. **Resuelto** en la revisión (31/10/2026).
+- 3.A.26 y 3.A.27 (sin revisar): salario de reserva $w_R$ → $w^R$.
 
 Autor: Víctor Gutiérrez Marcos

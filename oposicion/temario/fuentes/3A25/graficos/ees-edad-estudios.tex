@@ -1,0 +1,72 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Ganancia media anual por trabajador según la edad y el nivel de estudios,
+% España, 2022 (miles de euros). INE, Encuesta de Estructura Salarial 2022,
+% tabla 36870 (consulta 31/10/2026). Eje x: punto medio aproximado del tramo
+% de edad (columna x del CSV). La 1.ª etapa de secundaria (eso) se omite por
+% cercana a primaria. Paleta secuencial de una sola familia (morados, de claro
+% a oscuro según el nivel de estudios) y el total en gris discontinuo.
+% El punto <25 de «master» es de baja fiabilidad (100-500 observaciones):
+% marcador hueco. Capas «dic» (tikz-tcee.tex): ejes → líneas → puntos → rótulos.
+\definecolor{eesprimaria}{HTML}{C3A5DB}
+\definecolor{eesbachiller}{HTML}{A27BC4}
+\definecolor{eesfpsup}{HTML}{8152AA}
+\definecolor{eesgrado}{HTML}{5F2987}
+\definecolor{eesmaster}{HTML}{351249}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/ganancia-edad-estudios.csv}\ees
+\pgfplotsset{
+  eeslinea/.style={very thick, #1, mark=none},
+  eespuntos/.style={on layer=dicpuntos, only marks, mark=*, mark size=2pt,
+    mark options={fill=#1, draw=#1, solid}, forget plot},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=10cm, height=7.5cm,
+      xmin=17, xmax=64,
+      xtick={21,30,40,50,60}, xticklabels={$<$25,25-34,35-44,45-54,55 y más},
+      ymin=0, ymax=55, ytick={0,10,...,50},
+      ticklabel style={font=\footnotesize},
+      xlabel={Edad (años)}, ylabel={Miles de euros al año},
+      label style={font=\footnotesize},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: ejes (los dibuja el entorno axis)
+    % 2: total, gris discontinuo
+    \capa{2}{\addplot[very thick, dashed, tceegris, mark=none] table[x=x, y expr=\thisrow{total}/1000] {\ees};}
+    % 3: líneas de los 5 niveles de estudios, de menos a más
+    \capa{3}{
+      \addplot[eeslinea=eesprimaria]  table[x=x, y expr=\thisrow{primaria}/1000] {\ees};
+      \addplot[eeslinea=eesbachiller] table[x=x, y expr=\thisrow{bachiller}/1000] {\ees};
+      \addplot[eeslinea=eesfpsup]     table[x=x, y expr=\thisrow{fpsup}/1000] {\ees};
+      \addplot[eeslinea=eesgrado]     table[x=x, y expr=\thisrow{grado240}/1000] {\ees};
+      \addplot[eeslinea=eesmaster]    table[x=x, y expr=\thisrow{master}/1000] {\ees};
+    }
+    % 4: puntos (el <25 de master, hueco: baja fiabilidad)
+    \capa{4}{
+      \addplot[eespuntos=tceegris]     table[x=x, y expr=\thisrow{total}/1000] {\ees};
+      \addplot[eespuntos=eesprimaria]  table[x=x, y expr=\thisrow{primaria}/1000] {\ees};
+      \addplot[eespuntos=eesbachiller] table[x=x, y expr=\thisrow{bachiller}/1000] {\ees};
+      \addplot[eespuntos=eesfpsup]     table[x=x, y expr=\thisrow{fpsup}/1000] {\ees};
+      \addplot[eespuntos=eesgrado]     table[x=x, y expr=\thisrow{grado240}/1000] {\ees};
+      \addplot[eespuntos=eesmaster, skip coords between index={0}{1}] table[x=x, y expr=\thisrow{master}/1000] {\ees};
+      \addplot[on layer=dicpuntos, only marks, mark=*, mark size=2pt, forget plot,
+        mark options={fill=white, draw=eesmaster, line width=0.9pt}]
+        table[x=x, y expr=\thisrow{master}/1000, restrict expr to domain={\coordindex}{0:0}] {\ees};
+    }
+    % 5: rótulos directos al final de cada línea y nota de baja fiabilidad
+    \capa{5}{
+      \dicrotulo[anchor=west, font=\footnotesize, text=eesmaster]{(61.6,51.49)}{Licenciatura, máster o doctorado}
+      \dicrotulo[anchor=west, font=\footnotesize, text=eesgrado]{(61.6,41.30)}{Grado (240 ECTS)}
+      \dicrotulo[anchor=west, font=\footnotesize, text=eesfpsup]{(61.6,33.8)}{FP de grado superior}
+      \dicrotulo[anchor=west, font=\footnotesize, text=tceegris]{(61.6,30.4)}{Total}
+      \dicrotulo[anchor=west, font=\footnotesize, text=eesbachiller]{(61.6,27.0)}{2.ª etapa de secundaria}
+      \dicrotulo[anchor=west, font=\footnotesize, text=eesprimaria!75!black]{(61.6,19.78)}{Primaria}
+      \dicrotulo[anchor=north west, font=\scriptsize, align=left]{(18,54)}{$\circ$ baja fiabilidad\\(100-500 observaciones)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

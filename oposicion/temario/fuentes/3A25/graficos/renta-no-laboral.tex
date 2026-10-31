@@ -1,0 +1,50 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Aumento de la renta no laboral. Misma base que oferta-trabajo.tex (ejes,
+% escala, dotación O_0 = 7, W = 1,8, w = 0,4, U = C^{0,6} O^{0,4} y curva
+% tangente en E = (4,6; 2,76)). W sube a W_1 = 2,8: la recta se desplaza en
+% paralelo y la nueva tangencia es E' = (5,6; 3,36): más ocio, menos horas.
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.25cm]
+  \pgfmathsetmacro{\Ocero}{7}
+  \pgfmathsetmacro{\Wb}{1.8}
+  \pgfmathsetmacro{\Wbu}{2.8}
+  \pgfmathsetmacro{\w}{0.4}
+  \pgfmathsetmacro{\KE}{2.76*4.6^(2/3)}     % curva tangente en E
+  \pgfmathsetmacro{\Ku}{3.36*5.6^(2/3)}     % curva tangente en E'
+  % 1: ejes
+  \capa{1}{\ejes{$O$}{$C$}{8.6}{6.0}}
+  % 2: dotación, recta inicial y curva tangente en E
+  \capa{2}{\draw[guia] (\Ocero,\Wbu) -- (\Ocero,5.7);}
+  \capa{2}{\draw[curva1] (\Ocero,0) node[below,black] {$O_0$} -- (\Ocero,\Wb);}
+  \capa{2}{\draw[curva1] (0,\w*\Ocero+\Wb) node[left,black] {$w\,O_0+\overline{W}$} -- (\Ocero,\Wb);}
+  \capa{2}{\node[punto] (A) at (\Ocero,\Wb) {};
+    \node[etiqueta,below left] at (A) {$A$};}
+  \capa{2}{\draw[decorate,decoration={brace,amplitude=4pt}]
+    (\Ocero+0.12,\Wb) -- (\Ocero+0.12,0) node[midway,right=4pt] {$\overline{W}$};}
+  \capa{2}{\draw[curva2] plot[domain=3.0:7.9,samples=60] (\x,{\KE*\x^(-2/3)})
+    node[etiqueta,right] {$U_0$};}
+  \capa{2}{\node[punto] (E) at (4.6,2.76) {};
+    \node[etiqueta,below left] at (E) {$E$};}
+  \capa{2}{\draw[guia] (E) -- (4.6,0) node[below] {$O^*$};}
+  \capa{2}{\draw[decorate,decoration={brace,amplitude=5pt}]
+    (\Ocero,-0.45) -- (4.6,-0.45) node[midway,below=5pt] {$L$};}
+  % 3: sube la renta no laboral: recta paralela más alta
+  \capa{3}{\draw[curvanueva] (\Ocero,\Wb) -- (\Ocero,\Wbu);}
+  \capa{3}{\draw[curvanueva] (0,\w*\Ocero+\Wbu) node[left,black] {$w\,O_0+\overline{W}_1$} -- (\Ocero,\Wbu);}
+  \capa{3}{\node[punto] (A1) at (\Ocero,\Wbu) {};
+    \node[etiqueta,below left] at (A1) {$A'$};}
+  \capa{3}{\draw[decorate,decoration={brace,amplitude=4pt}]
+    (\Ocero+0.12,\Wbu) -- (\Ocero+0.12,\Wb) node[midway,right=4pt] {$\overline{W}_1-\overline{W}$};}
+  % 4: nueva curva tangente y E' a la derecha de E
+  \capa{4}{\draw[curva2] plot[domain=3.9:7.9,samples=60] (\x,{\Ku*\x^(-2/3)})
+    node[etiqueta,right] {$U_1$};}
+  \capa{4}{\node[punto] (E1) at (5.6,3.36) {};
+    \node[etiqueta,above right] at (E1) {$E'$};}
+  \capa{4}{\draw[guia] (E1) -- (5.6,0) node[below] {$O'$};}
+  % 5: más ocio, menos horas
+  \capa{5}{\draw[flecha,shorten <=3pt,shorten >=3pt] (E) -- (E1);}
+  \capa{5}{\draw[decorate,decoration={brace,amplitude=5pt}]
+    (\Ocero,-1.05) -- (5.6,-1.05) node[midway,below=5pt] {$L'<L$};}
+\end{tikzpicture}
+\end{document}

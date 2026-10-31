@@ -1,0 +1,42 @@
+% Monopsonio en el mercado de trabajo. Elaboración propia a partir de
+% Robinson (1933) y Manning (2003).
+% Base común con salario-minimo.tex y monopolio-bilateral.tex (mismas curvas y escalas):
+%   oferta inversa   w_L(L)  = 1 + L
+%   gasto marginal   GMg_L   = 1 + 2L   (misma ordenada, doble pendiente)
+%   VPMg_L           = 8 - L/2
+%   Monopsonio: GMg = VPMg -> L^M = 2,8; w^M = w_L(L^M) = 3,8; VPMg(L^M) = 6,6
+%   Competencia: VPMg = w_L -> L^c = 14/3; w^c = 17/3
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm,
+    declare function={of(\l)=1+\l; gmg(\l)=1+2*\l; vpmg(\l)=8-0.5*\l;},
+    perdida/.style={fill=tceerojo,fill opacity=0.3,draw=none}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{8.2}{9.6}}
+  % 2: valor del producto marginal (lo que aporta el trabajo)
+  \capa{2}{\draw[curva1] plot[domain=0:7.6] (\x,{vpmg(\x)}) node[etiqueta,right] {$\mathrm{VPMg}_L$};}
+  % 3: oferta de trabajo
+  \capa{3}{\draw[curva2] plot[domain=0:7.2] (\x,{of(\x)}) node[etiqueta,right] {$w_L(L)$};}
+  % 4: gasto marginal
+  \capa{4}{\draw[curva4] plot[domain=0:3.95] (\x,{gmg(\x)}) node[etiqueta,above] {$\mathrm{GMg}_L$};}
+  % 5: equilibrio de monopsonio, GMg = VPMg, y empleo L^M
+  \capa{5}{\node[punto] (G) at (2.8,6.6) {};}
+  \capa{5}{\draw[guia] (G) -- (2.8,0) node[below,text=black] {$L^M$};}
+  % 6: salario sobre la oferta, w^M
+  \capa{6}{\node[punto] (M) at (2.8,3.8) {};}
+  \capa{6}{\node[etiqueta,below right] at (M) {$M$};}
+  \capa{6}{\draw[guia] (M) -- (0,3.8) node[left,text=black] {$w^M$};}
+  % 7: equilibrio competitivo, VPMg = oferta
+  \capa{7}{\node[punto] (C) at ({14/3},{17/3}) {};}
+  \capa{7}{\node[etiqueta,below right] at (C) {$C$};}
+  \capa{7}{\draw[guia] (0,{17/3}) node[left,text=black] {$w^c$} -| ({14/3},0) node[below,text=black] {$L^c$};}
+  % 8: pérdida de bienestar
+  \capa{8}{\fill[perdida] (2.8,6.6) -- (2.8,3.8) -- ({14/3},{17/3}) -- cycle;}
+  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceerojo] at (3.45,5.35) {pérdida};}
+  % 9: rectángulo que pasa de los trabajadores a la empresa
+  \capa{9}{\fill[area2] (0,3.8) rectangle (2.8,{17/3});}
+  \capa{9}{\node[etiqueta,font=\footnotesize,text=tceedorado!80!black] at (0.85,{(3.8+17/3)/2}) {transferencia};}
+\end{tikzpicture}
+\end{document}

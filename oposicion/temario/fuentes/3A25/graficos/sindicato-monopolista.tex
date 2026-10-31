@@ -1,0 +1,46 @@
+% Sindicato monopolista (Dunlop, 1944), sin monopsonio (rehace la imagen 18
+% del original). Elaboración propia a partir de Dunlop (1944) y Cahuc,
+% Carcillo y Zylberberg (2014), cap. 7. Mismas curvas y escala que
+% 3A17/graficos/monopolio-bilateral.tex (lo reutiliza el 3.A.27):
+%   demanda de trabajo  w^D(L) = VPMg_L = 8 - L/2   (L^D)
+%   oferta              w_L(L) = v'(L) = 1 + L      (salario de reserva w^R
+%                       del último trabajador; U_S = wL - v(L))
+%   ingreso marginal del sindicato IMg_S = 8 - L
+%   Competencia: VPMg = w_L -> L^c = 14/3; w^c = 17/3
+%   Sindicato: IMg_S = v'(L) -> L^S = 3,5; w^S = w^D(L^S) = 6,25 > w^c
+%   Al salario w^S quieren trabajar w_L^{-1}(w^S) = 5,25 > L^S: paro involuntario.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm,
+    declare function={imgs(\l)=8-\l; of(\l)=1+\l; vpmg(\l)=8-0.5*\l;}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{8.2}{9.6}}
+  % 2: demanda de trabajo de las empresas precio-aceptantes
+  \capa{2}{\draw[curva1] plot[domain=0:7.6] (\x,{vpmg(\x)}) node[etiqueta,right,align=left] {$L^D$:\\ $w^D(L)=\mathrm{VPMg}_L$};}
+  % 3: oferta de trabajo = desutilidad marginal (salario de reserva del último)
+  \capa{3}{\draw[curva2] plot[domain=0:7.2] (\x,{of(\x)}) node[etiqueta,right,align=left] {$w_L(L)=v'(L)$\\ \footnotesize(salario de reserva, $w^R$)};}
+  % 4: equilibrio competitivo
+  \capa{4}{\node[punto] (C) at ({14/3},{17/3}) {};}
+  \capa{4}{\node[etiqueta,below right] at (C) {$C$};}
+  \capa{4}{\draw[guia] (0,{17/3}) node[left,text=black] {$w^c$} -| ({14/3},0) node[below left=2pt and -4pt,text=black] {$L^c$};}
+  % 5: el sindicato maximiza U_S = wL - v(L) sobre la demanda: su ingreso marginal
+  \capa{5}{\node[etiqueta,anchor=west,font=\footnotesize] at (3.9,9.35) {sindicato: $\max_L\ U_S=w^D(L)\,L-v(L)$};}
+  \capa{5}{\draw[curva3] plot[domain=0:6.2] (\x,{imgs(\x)}) node[etiqueta,right] {$\mathrm{IMg}_S$};}
+  % 6: IMg_S = v'(L): empleo L^S
+  \capa{6}{\node[punto,fill=tceegris] (S0) at (3.5,4.5) {};}
+  \capa{6}{\draw[guia] (S0) -- (3.5,0) node[below,text=black] {$L^S$};}
+  % 7: salario sobre la demanda, w^S
+  \capa{7}{\draw[guia] (S0) -- (3.5,6.25);}
+  \capa{7}{\node[punto] (S) at (3.5,6.25) {};}
+  \capa{7}{\node[etiqueta,above left] at (S) {$S$};}
+  \capa{7}{\draw[guia] (S) -- (0,6.25) node[left,text=black] {$w^S$};}
+  % 8: a ese salario quieren trabajar w_L^{-1}(w^S) > L^S: paro involuntario
+  \capa{8}{\draw[guia] (S) -- (5.25,6.25);}
+  \capa{8}{\node[punto,fill=white,draw=tceeazul,thick] (O) at (5.25,6.25) {};}
+  \capa{8}{\draw[guia] (O) -- (5.25,0) node[below right=2pt and -6pt,text=black] {$w_L^{-1}(w^S)$};}
+  \capa{8}{\draw[decorate,decoration={brace,amplitude=5pt},thick,tceerojo] (3.55,6.55) -- (5.2,6.55)
+    node[midway,above=6pt,etiqueta,font=\footnotesize,text=tceerojo] {paro involuntario};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,40 @@
+% La decisión de estudiar de Becker (1967): demanda (tasa marginal de
+% rendimiento) y oferta (coste marginal de los fondos) de inversión en
+% capital humano. Elaboración propia a partir de Becker (1967).
+%   demanda   rho(S)  = 0,3 + 7/(S + 1,3)        (decreciente y convexa)
+%   más hábil rho'(S) = 0,3 + 9,5/(S + 1,3)
+%   oferta escalonada r(S): 1,1 en [0; 2), 2 en [2; 4,8), 3,2 en [4,8; 7,6]
+%   menos recursos r'(S) = r(S) + 0,7
+%   E: rho = 2 -> S* = 7/1,7 - 1,3 = 2,82;  S_1 = 9,5/1,7 - 1,3 = 4,29;
+%   S_2: rho = 2,7 -> S_2 = 7/2,4 - 1,3 = 1,62 (en el segundo escalón de O')
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={rho(\s)=0.3+7/(\s+1.3); rhoh(\s)=0.3+9.5/(\s+1.3);},
+    rotulo/.style={etiqueta,font=\scriptsize,align=center,text=tceeazul!85!black}]
+  % 1: ejes
+  \capa{1}{\ejes{$S$ (años de estudio)}{$\rho,\ r$ (\%)}{8.6}{5.6}}
+  % 2: demanda: tasa marginal de rendimiento, decreciente
+  \capa{2}{\draw[curva1] plot[domain=0.15:7.6,samples=60] (\x,{rho(\x)}) node[etiqueta,right] {$D$: $\rho(S)$};}
+  % 3: oferta escalonada: coste marginal de los fondos
+  \capa{3}{\draw[curva2] (0,1.1) -- (2,1.1) -- (2,2) -- (4.8,2) -- (4.8,3.2) -- (7.6,3.2) node[etiqueta,right] {$O$: $r(S)$};}
+  \capa{3}{\node[rotulo,anchor=north west,align=left] at (0.05,1.05) {recursos de\\la familia};}
+  \capa{3}{\node[rotulo,anchor=north west,align=left] (becas) at (5.0,1.0) {becas y préstamos\\subvencionados};}
+  \capa{3}{\draw[->,thin,tceeazul] (becas.north west) ++(0.1,0) -- (3.95,1.92);}
+  \capa{3}{\node[rotulo,anchor=north] at (6.2,3.15) {préstamos\\de mercado};}
+  % 4: corte E, años de estudio S* y tasa r*
+  \capa{4}{\node[punto] (E) at ({7/1.7-1.3},2) {};}
+  \capa{4}{\node[etiqueta,above right] at (E) {$E$};}
+  \capa{4}{\draw[guia] (0,2) node[left,text=black] {$r^*$} -| ({7/1.7-1.3},0) node[below,text=black] {$S^*$};}
+  % 5: el más hábil: demanda más arriba, estudia más
+  \capa{5}{\draw[curvanueva] plot[domain=0.6:7.6,samples=60] (\x,{rhoh(\x)}) node[etiqueta,right] {$D'$};}
+  \capa{5}{\node[punto] (E1) at ({9.5/1.7-1.3},2) {};}
+  \capa{5}{\draw[guia] (E1) -- ({9.5/1.7-1.3},0) node[below,text=black] {$S_1$};}
+  % 6: el que tiene menos recursos: oferta más arriba, estudia menos
+  \capa{6}{\draw[curvanueva,desplazada] (0,1.8) -- (2,1.8) -- (2,2.7) -- (4.8,2.7) -- (4.8,3.9) -- (7.6,3.9) node[etiqueta,right] {$O'$};}
+  \capa{6}{\node[punto] (E2) at ({7/2.4-1.3},2.7) {};}
+  \capa{6}{\draw[guia] (E2) -- ({7/2.4-1.3},0) node[below,text=black] {$S_2$};}
+\end{tikzpicture}
+\end{document}

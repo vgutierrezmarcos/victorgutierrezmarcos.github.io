@@ -1,7 +1,7 @@
 # Monopsonio (Robinson, 1933): el espejo del monopolio en el mercado de factores
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.17** («Monopsonio» en el título; revisado el 17/10/2026, III.1) — lo desarrolla con a)-e), su `\funcionclave` y la tabla de los 4 casos. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 3.A.25 (resumen previsto: monopsonio en el mercado de trabajo, salario mínimo y evidencia; hoy su anexo copia el anexo 1 del 3.A.17 original con sus errores), 3.A.12 (mención: con poder de monopsonio las isocostes dejan de ser rectas; opinión; hecho), 3.A.27 (mención prevista: punto de partida del monopolio bilateral y del sindicato; ficha `monopolio-bilateral`), 4.A.14 y 3.B.39 (mención: poder de compra de la distribución en la cadena alimentaria, prácticas comerciales desleales).
+- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 3.A.25 (resumen; hecho, 31/10/2026: en I.4 `sec:valoracion-neoclasica`, la fórmula `eq:monopsonio` con la misma etiqueta, sin paro involuntario, el salario mínimo «al revés que en competencia» y Card y Krueger; los gráficos `monopsonio.tex` y `salario-minimo.tex` copiados sin cambios; en el anexo D `anexo:poder-mercado-trabajo`, el caso general con $\mathrm{IPMg}_L=\mathrm{GMg}_L$, los 4 casos en una frase y el salario mínimo por tramos), 3.A.12 (mención: con poder de monopsonio las isocostes dejan de ser rectas; opinión; hecho), 3.A.27 (mención prevista: punto de partida del monopolio bilateral y del sindicato; ficha `monopolio-bilateral`), 4.A.14 y 3.B.39 (mención: poder de compra de la distribución en la cadena alimentaria, prácticas comerciales desleales).
 - **Manuales de referencia:** Robinson (1933), *The Economics of Imperfect Competition*; Manning (2003), *Monopsony in Motion*; Varian (1992), cap. 14; Card y Krueger (1994), *AER*; Yeh, Macaluso y Hershbein (2022), *AER*; Deb et al. (2022), *JEEA*.
 
 ## Presentación de referencia (3.A.17, III.1)
@@ -26,13 +26,13 @@ con VPMg_L = p·PMg_L y GMg_L = w_L(L) + w_L'(L)L (siglas de `notacion.md` § 0,
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.17 | Monopsonio | desarrollo (hecho, 17/10/2026) | Todo lo anterior | — |
-| 3.A.25 | Mercado de trabajo neoclásico | resumen (previsto) | La `\funcionclave` del monopsonio con w_L(L) y ε_{L,w_L}, el gráfico `monopsonio.tex` (copiado), sin paro involuntario, el salario mínimo por tramos y la evidencia (Card y Krueger, Manning), remitiendo a 3.A.17 | La tabla de los 4 casos y las isocostes |
+| 3.A.25 | Mercado de trabajo neoclásico | resumen (hecho, 31/10/2026) | En I.4 (45″ de cante, el supuesto 4 que se levanta): `eq:monopsonio` sin recuadro, $L^M<L^c$ y $w^M<w^c$ sin paro involuntario, el salario mínimo entre $w^M$ y $w^c$ que sube salario y empleo, Card y Krueger (1994) y Manning (2003); `monopsonio.tex` y `salario-minimo.tex` copiados (apoyo). Anexo D: problema general $\max_L p(q)q-w_L(L)L-w_K\overline K$ con $\mathrm{IPMg}_L=\mathrm{GMg}_L$ y $\lvert\varepsilon_{q,p}\rvert$, los 4 casos en una frase (DK4), `monopsonio-monopolio.tex` (local del 3.A.25) y el salario mínimo por tramos; remite a 3.A.17 | La tabla de los 4 casos y las isocostes |
 | 3.A.12 | Costes | mención (hecho) | Con poder de monopsonio las isocostes dejan de ser rectas (opinión), remite a 3.A.17 | — |
 | 3.A.27 | Negociación salarial | mención (prevista) | La empresa monopsonista como uno de los extremos del monopolio bilateral | El modelo |
 | 4.A.14, 3.B.39 | Distribución comercial; mercado único | mención | Poder de compra de la gran distribución y prácticas comerciales desleales | La teoría |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.17 original: monopsonio vacío en el cuerpo; anexo 1 con «el GMg, i.e. la curva de oferta de trabajo» y «paro involuntario» con monopsonio; W, R, Π, IMgF, GMgF. **Resuelto** en la revisión (17/10/2026): GMg_L por encima de la oferta, sin paro, w_L(L), w_K, B, VPMg_L, IPMg_L, GMg_L.
-- 3.A.25 (sin revisar): su anexo copia el anexo 1 del 3.A.17 original con los mismos errores (GMg = oferta, paro involuntario, nota 36) y usa W y Π: al revisarlo, resumir III.1 del 3.A.17 con esta notación y remitir (`mapa.yaml`, contradicciones del 3.A.17).
+- 3.A.25 original: su anexo copiaba el anexo 1 del 3.A.17 original con los mismos errores (GMg = oferta, «IMgF, i.e. la curva de demanda», paro involuntario, nota 36) y usaba W, Π, IMgF, GMgF. **Resuelto** en la revisión del 3.A.25 (31/10/2026): resumen en I.4 y anexo D con esta notación, sin la tabla de los 4 casos.
 
 Autor: Víctor Gutiérrez Marcos

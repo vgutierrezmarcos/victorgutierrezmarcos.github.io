@@ -1,0 +1,50 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Oferta de trabajo neoclásica (ficha oferta-trabajo del canon): gráfico de
+% referencia y BASE COMÚN de renta-no-laboral, efectos-salario y prima-horas
+% (mismos ejes, escala, dotación y curva de indiferencia inicial).
+% Preferencias U = C^{0,6} O^{0,4}: curvas de indiferencia C = K O^{-2/3}.
+% Dotación O_0 = 7, renta no laboral W = 1,8, salario w = 0,4:
+% renta completa w O_0 + W = 4,6; óptimo E = (4,6; 2,76), L = 2,4;
+% salario de reserva w^R = (0,4/0,6) W/O_0 = 0,171.
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.25cm]
+  \pgfmathsetmacro{\Ocero}{7}
+  \pgfmathsetmacro{\Wb}{1.8}
+  \pgfmathsetmacro{\w}{0.4}
+  \pgfmathsetmacro{\wR}{0.4/0.6*\Wb/\Ocero}
+  \pgfmathsetmacro{\KA}{\Wb*\Ocero^(2/3)}   % curva por A
+  \pgfmathsetmacro{\KE}{2.76*4.6^(2/3)}     % curva tangente en E
+  \pgfmathsetmacro{\KD}{3.5*4.6^(2/3)}      % curva más alta
+  % 1: ejes
+  \capa{1}{\ejes{$O$}{$C$}{8.6}{5.2}}
+  % 2: dotación de tiempo, punto A y tramo vertical de altura W
+  \capa{2}{\draw[guia] (\Ocero,\Wb) -- (\Ocero,4.9);}
+  \capa{2}{\draw[curva1] (\Ocero,0) node[below,black] {$O_0$} -- (\Ocero,\Wb);}
+  \capa{2}{\node[punto] (A) at (\Ocero,\Wb) {};
+    \node[etiqueta,above right] at (A) {$A$};}
+  \capa{2}{\draw[decorate,decoration={brace,amplitude=4pt}]
+    (\Ocero+0.12,\Wb) -- (\Ocero+0.12,0) node[midway,right=4pt] {$\overline{W}$};}
+  % 3: recta de balance de pendiente -w y renta completa
+  \capa{3}{\draw[curva1] (0,\w*\Ocero+\Wb) node[left,black] {$w\,O_0+\overline{W}$} -- (A);}
+  \capa{3}{\node[etiqueta,above right] at (1.0,{\Wb+\w*(\Ocero-1.0)}) {pendiente $-w$};}
+  % 4: mapa de curvas de indiferencia U_0 < U_1 < U_2
+  \capa{4}{\draw[curva2] plot[domain=4.3:7.9,samples=60] (\x,{\KA*\x^(-2/3)})
+    node[etiqueta,right] {$U_0$};}
+  \capa{4}{\draw[curva2] plot[domain=2.9:7.9,samples=60] (\x,{\KE*\x^(-2/3)})
+    node[etiqueta,right] {$U_1$};}
+  \capa{4}{\draw[curva2] plot[domain=3.3:7.9,samples=60] (\x,{\KD*\x^(-2/3)})
+    node[etiqueta,right] {$U_2$};}
+  % 5: tangencia E y proyecciones
+  \capa{5}{\node[punto] (E) at (4.6,2.76) {};
+    \node[etiqueta,above right] at (E) {$E$};}
+  \capa{5}{\proyeccion{(E)}{$O^*$}{$C^*$}}
+  % 6: horas trabajadas
+  \capa{6}{\draw[decorate,decoration={brace,amplitude=5pt}]
+    (\Ocero,-0.55) -- (4.6,-0.55) node[midway,below=5pt] {$L=O_0-O^*$};}
+  % 7: salario de reserva, pendiente de la curva de indiferencia en A
+  \capa{7}{\draw[thick,dashed] ({\Ocero-2.6},{\Wb+\wR*2.6}) -- ({\Ocero+0.5},{\Wb-\wR*0.5});}
+  \capa{7}{\draw[thin,->] (5.85,1.1) node[below,etiqueta] {pendiente $-w^R$}
+    -- (5.85,{\Wb+\wR*(\Ocero-5.85)-0.05});}
+\end{tikzpicture}
+\end{document}

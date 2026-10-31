@@ -1,0 +1,37 @@
+% Equilibrio del mercado de trabajo y salario mínimo en competencia.
+% Elaboración propia a partir de Cahuc, Carcillo y Zylberberg (2014, cap. 3).
+% Misma escala y mismas curvas que demanda-corto.tex, monopsonio.tex y
+% salario-minimo.tex:
+%   demanda  L^D:  w = 8 - L/2   (VPMg_L)
+%   oferta   L^S:  w = 1 + L
+%   equilibrio: L^c = 14/3, w^c = 17/3
+%   salario mínimo \underline w = 6,5 > w^c: L^D = 3, L^S = 5,5; paro = 2,5
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm,
+    declare function={dem(\l)=8-0.5*\l; of(\l)=1+\l;}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{8.2}{9.6}}
+  % 2: demanda de trabajo
+  \capa{2}{\draw[curva1] plot[domain=0:7.6] (\x,{dem(\x)}) node[etiqueta,right] {$L^D(w)$};}
+  % 3: oferta de trabajo
+  \capa{3}{\draw[curva2] plot[domain=0:7.2] (\x,{of(\x)}) node[etiqueta,right] {$L^S(w)$};}
+  % 4: equilibrio competitivo
+  \capa{4}{\node[punto] (C) at ({14/3},{17/3}) {};}
+  \capa{4}{\node[etiqueta,above=1pt] at (C) {$C$};}
+  \capa{4}{\draw[guia] (0,{17/3}) node[left,text=black] {$w^c$} -| ({14/3},0) node[below,text=black] {$L^c$};}
+  % 5: salario mínimo por encima del de equilibrio
+  \capa{5}{\draw[curvanueva] (0,6.5) -- (7.2,6.5);}
+  \capa{5}{\node[etiqueta,left] at (0,6.5) {$\underline{w}$};}
+  % 6: empleo que se demanda y que se ofrece a ese salario
+  \capa{6}{\node[punto] (D) at (3,6.5) {};}
+  \capa{6}{\draw[guia] (D) -- (3,0) node[below=0.42cm,text=black] {$L^D(\underline{w})$};}
+  \capa{6}{\node[punto] (S) at (5.5,6.5) {};}
+  \capa{6}{\draw[guia] (S) -- (5.5,0) node[below=0.42cm,text=black] {$L^S(\underline{w})$};}
+  % 7: la diferencia es paro involuntario
+  \capa{7}{\draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (3,6.7) -- (5.5,6.7)
+    node[midway,above=4pt,etiqueta,font=\footnotesize,text=tceerojo] {paro involuntario};}
+\end{tikzpicture}
+\end{document}

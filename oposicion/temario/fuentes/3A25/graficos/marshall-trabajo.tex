@@ -1,0 +1,50 @@
+% Equilibrio temporal y normal de Marshall en el mercado de trabajo.
+% Elaboración propia a partir de De Vroey (2016, fig. 1.1) y Marshall (1890, libro V).
+% Las mismas curvas que fuentes/3A16/graficos/marshall-periodos.tex (pescado),
+% con los ejes del trabajo:
+% Demanda inicial D: w = 0,6 + 4/(L + 0,3); demanda nueva D': w = 1 + 6/(L + 0,3).
+% Oferta de mercado MS: vertical en el empleo disponible, L_A = 2,6.
+% Oferta normal NS: w = a + b L^2, creciente, que pasa por A y por C:
+%   b = (D'(3,4) - D(2,6))/(3,4^2 - 2,6^2) = 0,133815; a = 1,074722.
+% A = (2,6; 1,979): D corta a MS y a NS (equilibrio inicial).
+% B = (2,6; 3,069): D' corta a MS (equilibrio temporal: mismo empleo, más salario).
+% C = (3,4; 2,622): D' corta a NS (equilibrio normal), w_A < w_C < w_B.
+% El original dibujaba la oferta normal creciente pero la describía como
+% decreciente; aquí es creciente, como en Marshall.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={dcero(\q)=0.6+4/(\q+0.3); duno(\q)=1+6/(\q+0.3);
+      ns(\q)=1.074722+0.133815*\q^2;}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{6.2}{5.2}}
+  % 2: oferta normal (con tiempo para que entren trabajadores en el oficio)
+  \capa{2}{\draw[curva3] plot[domain=0.9:4.55,samples=80,smooth] (\x,{ns(\x)})
+    node[etiqueta,above right=0pt and -2pt] {$NS$};}
+  % 3: demanda inicial y equilibrio inicial A
+  \capa{3}{\draw[curva1] plot[domain=0.9:5.5,samples=80,smooth] (\x,{dcero(\x)})
+    node[etiqueta,right] {$D$};}
+  \capa{3}{\node[punto] (A) at (2.6,1.9793) {};}
+  \capa{3}{\node[etiqueta,below right] at (A) {$A$};}
+  \capa{3}{\draw[guia] (0,1.9793) node[left,text=black] {$w_A$} -| (2.6,0);}
+  % 4: oferta de mercado: los trabajadores disponibles hoy
+  \capa{4}{\draw[curva2] (2.6,0) -- (2.6,4.85) node[etiqueta,above] {$MS$};}
+  \capa{4}{\node[below,text=black] at (2.6,0) {$L_A$};}
+  % 5: sube la productividad marginal: la demanda se desplaza hacia arriba
+  \capa{5}{\draw[curvanueva,desplazada] plot[domain=1.4:5.6,samples=80,smooth] (\x,{duno(\x)})
+    node[etiqueta,right] {$D'$};}
+  \capa{5}{\draw[flecha] (1.6,{dcero(1.6)+0.12}) -- (2.1,{duno(2.1)-0.12});}
+  % 6: equilibrio temporal B: el mismo empleo y más salario
+  \capa{6}{\node[punto] (B) at (2.6,3.0690) {};}
+  \capa{6}{\node[etiqueta,above right] at (B) {$B$};}
+  \capa{6}{\draw[guia] (B) -- (0,3.0690) node[left,text=black] {$w_B$};}
+  \capa{6}{\draw[flecha] (2.45,2.1) -- (2.45,2.95);}
+  % 7: equilibrio normal C: entra gente en el oficio, más empleo y salario intermedio
+  \capa{7}{\node[punto] (C) at (3.4,2.6216) {};}
+  \capa{7}{\node[etiqueta,below right] at (C) {$C$};}
+  \capa{7}{\draw[guia] (0,2.6216) node[left,text=black] {$w_C$} -| (3.4,0) node[below,text=black] {$L_C$};}
+  \capa{7}{\draw[flecha] (3.0,3.2) to[bend left=25] (3.5,2.85);}
+\end{tikzpicture}
+\end{document}

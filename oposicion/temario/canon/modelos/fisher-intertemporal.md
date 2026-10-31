@@ -1,7 +1,7 @@
 # Elección intertemporal de Fisher (dos periodos)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.33 (teorías del consumo) — es la base microeconómica de ciclo vital y renta permanente.
-- **Temas que lo usan:** 3.A.33 (desarrollo), 3.A.29 (desarrollo → resumen), 4.B.9 (desarrollo: impuestos y ahorro), 4.B.10 (desarrollo: impuestos)
+- **Temas que lo usan:** 3.A.33 (desarrollo), 3.A.29 (desarrollo → resumen), 4.B.9 (desarrollo: impuestos y ahorro), 4.B.10 (desarrollo: impuestos), 3.A.25 (mención; hecho, 31/10/2026: la restricción intertemporal de Lucas-Rapping y la separación de Fisher en la decisión de educarse, caja de III.2 con `fisher-capital-humano.tex`)
 - **Manuales de referencia:** Fisher, *The Theory of Interest* (1930); Romer (2019), cap. 8; Heijdra (2017); Mas-Colell, Whinston y Green (1995), cap. 20; Rosen y Gayer (imposición del ahorro).
 - **Decisión D001 (13/10/2026):** ¿Qué letra lleva el coeficiente de aversión relativa al riesgo (CRRA) de u(c)=c^{1−θ}/(1−θ), y cómo se escribe la elasticidad de sustitución intertemporal? θ para la CRRA en todo el temario y la ESI como 1/θ, sin símbolo propio; σ queda para la elasticidad de sustitución intratemporal (CES, Dixit-Stiglitz) y la desviación típica
 - **Decisión D099 (13/10/2026):** ¿Dónde se desarrolla el modelo de Fisher con impuestos (consumo-ahorro)? En 4.B.10 (efectos incentivo sobre el ahorro); 4.B.9 lo resume
@@ -21,11 +21,13 @@ Gráfico de referencia: plano (C_1, C_2); restricción presupuestaria con pendie
 | 3.A.33 | Microfundamentos del consumo | desarrollo | Modelo completo, Euler, efectos del tipo de interés, restricciones de liquidez; puente a ciclo vital y renta permanente | — |
 | 3.A.29 | Modelización dinámica | resumen | Euler como piedra angular; generalización a T periodos y a horizonte infinito | La derivación gráfica [ver tema 3.A.33] |
 | 4.B.9 | Imposición y ahorro | desarrollo (aplicación) | Mismo gráfico con impuestos de suma fija (traslación), sobre el consumo y sobre los intereses (giro: r(1−t_r)) | La derivación básica |
+| 3.A.25 | Capital humano y oferta intertemporal | mención (hecho, 31/10/2026) | La restricción $C_1+C_2/(1+r)=w_1L_1+w_2L_2/(1+r)$ y la Euler $C_2/C_1=\beta(1+r)$ en Lucas-Rapping; en la caja de Becker, frontera cóncava de rentas $(y_1,y_2)$ y curvas de indiferencia $(C_1,C_2)$: con mercado de capitales perfecto, **teorema de separación de Fisher** (Fisher, 1930; Hirshleifer, 1958), que Acemoglu y Autor (2011) aplican al capital humano; gráfico `fuentes/3A25/graficos/fisher-capital-humano.tex` con los mismos ejes y letras; remite a 3.A.33 | El modelo de consumo |
 | 4.B.10 | Efectos de los impuestos | desarrollo (aplicación) | Igual que 4.B.9 con ahorro privado, público y nacional; giro en el punto de ahorro nulo | Idem; coordinar con 4.B.9 para no duplicar |
 
 ## Divergencias encontradas en el temario actual
 - Desarrollado en cuatro temas con notaciones distintas: c_t, r_t (3.A.29); C_1, C_2, r (4.B.9, 4.B.10). Propuesta: **C_1, C_2, r** en el modelo de dos periodos; C_t en la generalización.
 - 3.A.29 llama σ a la ESI («ESI ≡ σ = 1/θ»): canon **1/θ** sin símbolo propio (σ queda para la elasticidad de sustitución intratemporal).
+- 3.A.29 (sin revisar): llama «teorema de la separación de Acemoğlu y Autor» a la separación de Fisher en la decisión de capital humano (epígrafe «… (Becker, 1962)»): es Fisher (1930); remitir al 3.A.25 para Becker (`mapa.yaml`, contradicciones del 3.A.25). El 3.A.25 lo corrigió en su original (31/10/2026).
 - 4.B.9 y 4.B.10 desarrollan el mismo bloque casi igual: el desarrollo (efectos incentivo sobre el ahorro) va en 4.B.10 y 4.B.9 lo resume.
 
 Autor: Víctor Gutiérrez Marcos

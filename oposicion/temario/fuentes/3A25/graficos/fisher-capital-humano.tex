@@ -1,0 +1,48 @@
+% La decisión de formarse en 2 periodos, sin y con mercado de capitales:
+% la separación de Fisher aplicada al capital humano. Elaboración propia a
+% partir de Fisher (1930) y Borjas (2020), cap. 6.
+%   frontera de posibilidades de renta: (5 cos t, 4 sen t), cóncava
+%     pendiente -(4 cos t)/(5 sen t)
+%   sin mercado: A en t = 55°: (2,868; 3,277), pendiente -0,560; curva de
+%     indiferencia Cobb-Douglas C1^0,329 C2^0,671 tangente en A:
+%     C2 = 3,277 (2,868/C1)^0,490
+%   con mercado, 1 + r = 1,15: P en tan t = 4/(5·1,15): t = 34,82°,
+%     P = (4,104; 2,284); recta C2 = 2,284 - 1,15 (C1 - 4,104), cortes 6,090 y 7,004
+%   consumo con las mismas preferencias sobre la recta: C1 = 0,329·6,090 = 2,004,
+%     C2 = 0,671·7,004 = 4,700; curva C2 = 4,700 (2,004/C1)^0,490 (utilidad
+%     3,55 > 3,14 en A): presta y_1^P - C_1 hoy y consume más mañana
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.85,
+    declare function={ia(\x)=3.277*(2.868/\x)^0.490; ic(\x)=4.700*(2.004/\x)^0.490;
+      recta(\x)=2.284-1.15*(\x-4.104);}]
+  % 1: ejes: renta y consumo de cada periodo
+  \capa{1}{\ejes{$y_1,\ C_1$}{$y_2,\ C_2$}{7.4}{7.6}}
+  % 2: frontera de posibilidades de renta, cóncava
+  \capa{2}{\draw[curva1] plot[domain=0:90,samples=60] ({5*cos(\x)},{4*sin(\x)});}
+  \capa{2}{\node[etiqueta,left] at (0,4) {$y_2^{\max}$};}
+  \capa{2}{\node[etiqueta,below right=0pt and -2pt] at (5,0) {$y_1^{\max}$};}
+  \capa{2}{\node[etiqueta,font=\scriptsize,align=center,text=tceemorado] at (3.05,0.95) {frontera de\\posibilidades\\de renta};}
+  % 3: sin mercado de capitales: se consume lo que se gana; tangencia en A
+  \capa{3}{\draw[curva4] plot[domain=1.35:6.4,samples=60] (\x,{ia(\x)}) node[etiqueta,right] {$U_0$};}
+  \capa{3}{\node[punto] (A) at (2.868,3.277) {};}
+  \capa{3}{\node[etiqueta,below left] at (A) {$A$};}
+  % 4: con mercado: recta de pendiente -(1+r) tangente en P (máxima riqueza)
+  \capa{4}{\draw[curva2] (0,{recta(0)}) -- (6.090,0);}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (0.15,{recta(0)}) {pendiente $-(1+r)$};}
+  \capa{4}{\node[punto] (P) at (4.104,2.284) {};}
+  \capa{4}{\node[etiqueta,above right] at (P) {$P$};}
+  \capa{4}{\draw[guia] (0,2.284) node[left,text=black] {$y_2^P$} -| (4.104,0) node[below,text=black] {$y_1^P$};}
+  % 5: el consumo, sobre la recta, según las preferencias: tangencia en C
+  \capa{5}{\draw[curva3] plot[domain=1.05:6.4,samples=60] (\x,{ic(\x)}) node[etiqueta,right] {$U_1$};}
+  \capa{5}{\node[punto] (C) at (2.004,4.700) {};}
+  \capa{5}{\node[etiqueta,above right] at (C) {$C$};}
+  \capa{5}{\draw[guia] (0,4.700) node[left,text=black] {$C_2$} -| (2.004,0) node[below,text=black] {$C_1$};}
+  % 6: de P a C se presta la diferencia: separación de Fisher
+  \capa{6}{\draw[flecha] (P) ++(-0.12,0.14) -- ($(C)+(0.12,-0.14)$);}
+  \capa{6}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (2.004,-0.75) -- (4.104,-0.75) node[midway,below=4pt,etiqueta,text=tceerojo,font=\footnotesize] {presta $y_1^P-C_1$};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,align=left,anchor=west] at (3.4,6.2) {separación de \textsc{Fisher}:\\$P$ no depende de las preferencias};}
+\end{tikzpicture}
+\end{document}

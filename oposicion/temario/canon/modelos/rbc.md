@@ -1,7 +1,7 @@
 # Modelo de ciclo real (RBC; Kydland y Prescott 1982; versión de McCallum 1989)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.42 (teorías de los ciclos: nominales y reales) — los ciclos reales están en su título.
-- **Temas que lo usan:** 3.A.42 (desarrollo), 3.A.6 (desarrollo → resumen), 4.A.29 (mención)
+- **Temas que lo usan:** 3.A.42 (desarrollo), 3.A.6 (desarrollo → resumen), 4.A.29 (mención), 3.A.25 (mención; hecho, 31/10/2026: II.3, el mecanismo de Lucas-Rapping en Kydland y Prescott, efecto riqueza frente a sustitución intertemporal según la persistencia, trabajo indivisible de Hansen y Rogerson, y la Frisch de 2,8 que piden frente a la micro; ficha `lucas-rapping`)
 - **Manuales de referencia:** Romer (2019), cap. 5; McCallum (1989); King y Rebelo (1999); Bénassy (2011); Galí (2015), cap. 2.
 - **Decisión D001 (13/10/2026):** ¿Qué letra lleva el coeficiente de aversión relativa al riesgo (CRRA) de u(c)=c^{1−θ}/(1−θ), y cómo se escribe la elasticidad de sustitución intertemporal? θ para la CRRA en todo el temario y la ESI como 1/θ, sin símbolo propio; σ queda para la elasticidad de sustitución intratemporal (CES, Dixit-Stiglitz) y la desviación típica
 - **Decisión D004 (13/10/2026):** ¿Cómo se escriben los parámetros de la oferta de trabajo en las preferencias macro (inversa de la elasticidad de Frisch y peso de la desutilidad del trabajo)? φ para la inversa de la elasticidad de Frisch y χ para el peso de la desutilidad del trabajo (Galí, Walsh)
@@ -22,6 +22,7 @@ Gráficos de referencia: funciones impulso-respuesta a un shock tecnológico des
 |---|---|---|---|---|
 | 3.A.42 | Ciclos reales | desarrollo | Modelo, McCallum, calibración, impulso-respuesta, críticas y evidencia | — |
 | 3.A.6 | Surgimiento de los EGDE en la NMC | resumen | Características del RBC como primer EGDE y su método (calibración); transición a Smets-Wouters | Derivación [ver tema 3.A.42] |
+| 3.A.25 | Oferta de trabajo intertemporal | mención (hecho, 31/10/2026) | La sustitución intertemporal como mecanismo de propagación: un choque transitorio genera ciclo; uno permanente apenas cambia la oferta relativa y se transmite por la inversión (nunca «no hay ciclo»); trabajo indivisible (Hansen, 1985; Rogerson, 1988); la elasticidad de Frisch agregada que piden (≈ 2,8) frente a la micro (Chetty et al., 2011); remite a 3.A.42 | El modelo |
 | 4.A.29 | Política de estabilización en España | mención | No todas las fluctuaciones deben eliminarse | — |
 
 ## Divergencias encontradas en el temario actual

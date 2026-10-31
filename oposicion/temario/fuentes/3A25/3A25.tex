@@ -1,0 +1,1373 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A25.bib}
+\tcetema[Mercado de trabajo neoclásico y capital humano]{3.A.25}{La teoría neoclásica del mercado de trabajo. Análisis intertemporal de la oferta de trabajo. Teoría del capital humano. Función de ingresos de capital humano y evidencia empírica.}
+\tcefecha{31/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «El tiempo es oro», dice el refrán. Cada uno de nosotros dispone de 24 horas al día y decide cuántas vende en el mercado de trabajo, a qué edad empieza a venderlas y cuántos años estudia antes de hacerlo.
+  \item Detrás está la pregunta de esta exposición: ¿cuánto vale una hora de nuestro tiempo? La teoría neoclásica responde que, en el margen, lo que se paga por ella: el salario. Pero ese precio cambia con la persona, con el momento y con lo que cada uno ha invertido en sí mismo. En 2023, Claudia \autor{Goldin} recibió el Premio Nobel de Economía por explicar cómo les ha ido a las mujeres en el mercado laboral a lo largo de 2 siglos \parencite{Nobel2023Goldin}: cuánto y quién trabaja depende a la vez de los salarios, de la educación y de la familia.
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Microeconómica}: el salario es la principal fuente de renta de la mayoría de los hogares, y las decisiones de trabajar y de formarse marcan la renta de toda una vida, los bienes a los que se tiene acceso e incluso con quién se relaciona uno.
+  \item \emph{Macroeconómica}: el trabajo es el principal factor de producción; el mercado de trabajo determina la producción, la distribución de la renta y el paro, uno de los problemas sociales de más peso en España: la tasa de paro era del 10{,}18~\% en el tercer trimestre de 2026 \parencite{INE2026EPA3T,INE2026EPATabla65334}.
+  \item \emph{De política económica}: la elasticidad de la oferta de trabajo decide cuánto cuestan los impuestos sobre el trabajo \vertema{4.B.10}; la demanda, qué efecto tiene el salario mínimo \vertema{4.A.16}, y los rendimientos de la educación, cuánto conviene invertir en ella \vertema{4.A.2}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}. Desde un punto de vista conceptual:
+  \begin{itemize}
+  \item La \concepto{economía laboral} estudia el \concepto{mercado de trabajo}, en el que se intercambian servicios de trabajo por salarios: los \emph{trabajadores} ofrecen su tiempo y las \emph{empresas} lo demandan para producir.
+  \item Puede abordarse desde la micro (las decisiones de trabajadores y empresas) o desde la macro (el paro, los salarios agregados, el ciclo). Esta exposición se centra en los \emph{fundamentos microeconómicos} y lo hace desde la \emph{perspectiva neoclásica}: mercados competitivos y salarios flexibles.
+  \item De esos supuestos se deriva un equilibrio en el que el salario real iguala la productividad marginal del trabajo y no hay paro involuntario: quien no trabaja es porque el salario de mercado no supera su salario de reserva. Los datos de paro muestran que el mercado no se vacía; aun así, el modelo es la referencia de eficiencia y la base sobre la que se levantan los demás supuestos.
+  \end{itemize}
+  Desde un punto de vista histórico:
+  \begin{itemize}
+  \item Los \emph{neoclásicos} aplican al trabajo la teoría de la productividad marginal.
+    \begin{itemize}
+    \item \textcite{Marshall1890Principles} trata el mercado de trabajo como cualquier otro, en equilibrio parcial, aunque no lo estudia de forma sistemática; el paro no era para él la preocupación central.
+    \item \textcite{Hicks1932Theory}, en \emph{The Theory of Wages}, formaliza la demanda de trabajo con la productividad marginal y reconoce que la teoría no explica bien el paro, en el que ve el papel de los sindicatos y de las fricciones. Su obra queda eclipsada por la \emph{Teoría general} de \textcite{Keynes1936}, que pone en el centro el paro involuntario \vertema{3.A.4}.
+    \end{itemize}
+  \item Desde los años 60, la teoría vuelve a la oferta con 2 líneas que son el objeto de esta exposición:
+    \begin{itemize}
+    \item la decisión de formarse, la \concepto{teoría del capital humano} de \textcite{Mincer1958Investment}, \textcite{Schultz1961Investment} y Gary \autor{Becker}, con su artículo de 1962 y su libro de 1964 \parencite{Becker1962Investment,Becker1964Human};
+    \item la decisión de cuándo trabajar: 33 años después de la \emph{Teoría general}, \textcite{LucasRapping1969Real} microfundamentan la oferta de trabajo como \autor{Friedman} y \autor{Modigliani} habían hecho con el consumo y \autor{Eisner} y \autor{Jorgenson} con la inversión. Es la base de la nueva macroeconomía clásica y, después, de los ciclos reales de \textcite{KydlandPrescott1982Time}.
+    \end{itemize}
+  \item En las últimas décadas, la \emph{revolución de la credibilidad} ha puesto a prueba estas teorías con experimentos naturales: el Premio Nobel de 2021 fue para \autor{Card}, \autor{Angrist} e \autor{Imbens} \parencite{Nobel2021}, y el de 2023, para \autor{Goldin}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Cómo deciden los hogares cuánto trabajar y las empresas a cuántos contratar, y qué salario sale de ahí?
+  \item Si el salario sube, ¿se trabaja más? ¿Depende de que la subida sea transitoria o permanente?
+  \item ¿Por qué no todos los trabajadores cobran lo mismo? ¿Es rentable estudiar, y cómo se mide?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición se divide en 3 bloques.
+  \begin{itemize}
+  \item \concepto{I. Teoría neoclásica de la oferta y la demanda de trabajo} (\ref{sec:neoclasica}): el modelo estático. La oferta, desde la elección entre consumo y ocio; la demanda, desde la maximización del beneficio, y el equilibrio, con su valoración y el poder de monopsonio.
+  \item \concepto{II. Análisis intertemporal de la oferta de trabajo} (\ref{sec:intertemporal}): la oferta se lleva al tiempo con \autor{Lucas} y \autor{Rapping} (1969).
+  \item \concepto{III. Teoría del capital humano y función de ingresos} (\ref{sec:capital-humano}): se levanta la homogeneidad del trabajo con la teoría de \autor{Becker} y la función de ingresos de \autor{Mincer}, la herramienta de la evidencia empírica.
+  \end{itemize}
+  El orden va de lo más sencillo a lo más rico: primero cuánto se trabaja hoy, luego cuándo se trabaja y, por último, cuánto se invierte en ser más productivo. La evidencia empírica de cada modelo se presenta al final de cada uno.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.25. Mercado de trabajo neoclásico, oferta intertemporal y capital humano}\\[2pt]
+Introducción\\
+I. Teoría neoclásica de la oferta y la demanda de trabajo\\
+\hspace*{1.5em}1. Oferta: $\mathrm{RMS}_{OC}=w$, salario de reserva $w^R$, 3 efectos\\
+\hspace*{1.5em}2. Demanda: $\mathrm{VPMg}_L=w_L$ $\Leftrightarrow$ $F_L=w$\\
+\hspace*{1.5em}3. Equilibrio: sin paro involuntario (salvo salario mínimo)\\
+\hspace*{1.5em}4. Valoración: monopsonio y paro\\
+II. Análisis intertemporal de la oferta: \autor{Lucas} y \autor{Rapping} (1969)\\
+\hspace*{1.5em}1. Idea \quad 2. Modelo: salario relativo intertemporal \quad 3. Extensiones: \autor{Frisch}, ciclo vital, ciclos reales\\
+\hspace*{1.5em}4. Evidencia \quad 5. Valoración\\
+III. Teoría del capital humano y función de ingresos\\
+\hspace*{1.5em}1. Usos del capital humano \quad 2. \autor{Becker} (1964) \quad 3. Función de ingresos: \autor{Mincer}\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10} (I.1, \tiempo{5}; I.2, \tiempo{1,5}; I.3, \tiempo{1,5}; I.4, \tiempo{2}); II, \tiempo{6,5} (II.1, \tiempo{0,75}; II.2, \tiempo{3}; II.3, \tiempo{1,25}; II.4, \tiempo{0,75}; II.5, \tiempo{0,75}); III, \tiempo{10} (III.1, \tiempo{1,5}; III.2, \tiempo{4}; III.3, \tiempo{4,5}), y conclusión, \tiempo{1}. La pizarra se organiza en 3 zonas fijas: a la izquierda, los 8 supuestos del modelo neoclásico (número y una palabra), que se escriben al empezar I y se quedan; en cada bloque se marca el que se levanta. En el centro, los gráficos, que se borran al acabar cada bloque. A la derecha, las funciones clave (la tangencia y el salario de reserva, la condición de la demanda, la condición de \autor{Lucas} y \autor{Rapping} y la ecuación de \autor{Mincer}) y los refranes pegatina. La demanda a largo plazo y la agregada, la ecuación de \autor{Slutsky} con dotación, el modelo de \autor{Lucas} y \autor{Rapping} con horizonte infinito, el caso general con poder de mercado y el modelo de \autor{Ben-Porath} están en los anexos, para las preguntas del tribunal.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Teoría neoclásica de la oferta\newline y la demanda de trabajo}\label{sec:neoclasica}
+\minutos{10}
+
+\begin{notaopositor}
+En el cante: la tabla de supuestos en la pizarra, en versión corta (número y una palabra), al empezar el bloque. La oferta (\tiempo{5}): problema, tangencia y salario de reserva como funciones clave, los 3 efectos de una subida del salario sobre un solo gráfico por capas, la curva individual que se vuelve hacia atrás y los 2 márgenes, las extensiones en una línea cada una, la evidencia (elasticidades y \autor{Goldin}) y la valoración. La demanda (\tiempo{1,5}): solo el corto plazo, con su función clave; el largo plazo y la agregación, en una frase cada uno. El equilibrio (\tiempo{1,5}): el gráfico por capas con el salario mínimo. La valoración (\tiempo{2}): el monopsonio con su fórmula y \autor{Card} y \autor{Krueger}, y el paro que el modelo no explica. Las condiciones de \autor{Kuhn}-\autor{Tucker}, la caja de la agregación, la de \autor{Marshall} y los gráficos del monopsonio son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: con competencia perfecta y salarios flexibles, el mercado de trabajo se vacía; el salario real iguala a la vez la valoración marginal del ocio de cada trabajador y la productividad marginal del trabajo, y no hay paro involuntario salvo que un salario mínimo lo impida.
+\item La teoría neoclásica analiza el trabajo como cualquier otro mercado: la oferta sale de la elección de los hogares entre consumo y ocio; la demanda, de la maximización del beneficio de las empresas, y el salario vacía el mercado. Parte de los supuestos de la competencia perfecta \vertema{3.A.16}, aplicados al trabajo, y de 3 propios del mercado de trabajo (tabla~\ref{tab:supuestos-trabajo}). Cada bloque posterior levanta alguno, y eso ordena el resto de la exposición y de los temas del mercado de trabajo.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Supuestos del modelo neoclásico del mercado de trabajo y dónde se levanta cada uno}\label{tab:supuestos-trabajo}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{0.6cm}>{\raggedright\arraybackslash}m{3.9cm}>{\raggedright\arraybackslash}m{6.2cm}>{\raggedright\arraybackslash}m{3.9cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{N.º} & \textbf{Supuesto} & \textbf{En el mercado de trabajo} & \textbf{Se levanta en}\\
+\midrule
+\textcolor{tceemorado}{\textbf{1}} & \textbf{Agentes racionales} & los hogares maximizan su utilidad (consumo y ocio) y las empresas, su beneficio & —\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{2}} & \textbf{Información perfecta y simétrica} & el trabajador conoce los salarios que se pagan y la empresa, la productividad del trabajador & señalización (\ref{sec:usos-capital-humano}); búsqueda \vertema{3.A.26}; salarios de eficiencia \vertema{3.A.27}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{3}} & \textbf{Producto homogéneo (sin sustitutivos cercanos)} & \emph{trabajo homogéneo}: todas las horas de todos los trabajadores son iguales & capital humano (\ref{sec:capital-humano})\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{4}} & \textbf{Mercado atomizado: muchos compradores y vendedores (precio-aceptantes)} & muchas empresas y muchos trabajadores, y todos toman el salario como dado & monopsonio (\ref{sec:valoracion-neoclasica}); sindicatos \vertema{3.A.27}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{5}} & \textbf{Libre entrada y salida (a largo plazo)} & libre participación: cada uno decide si trabaja o no (margen extensivo) & —\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{6}} & \textbf{Salarios y precios flexibles} & el salario se ajusta hasta vaciar el mercado & salario mínimo (\ref{sec:equilibrio}); rigideces \vertema{3.A.27} \vertema{3.A.28}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{7}} & \textbf{Movilidad perfecta, sin costes de ajuste} & los trabajadores cambian de empleo y las empresas de plantilla sin coste & costes de ajuste y fricciones \vertema{3.A.26}; capital humano específico (\ref{sec:formacion-especifica}) e \emph{insiders} \vertema{3.A.27}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{8}} & \textbf{Sin externalidades ni bienes públicos} & el salario recoge todo el valor social del trabajo & externalidades del capital humano \vertema{3.A.44}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia; las filas 1-5 son la lista común de las estructuras de mercado del \vertema{3.A.16}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Oferta de trabajo}\label{sec:oferta}
+
+\paragraph{a) Idea}\label{sec:oferta-idea}
+
+\begin{itemize}
+\item Para tener un empleo remunerado hay que haberlo decidido antes: ese es el punto de partida de la teoría de la oferta de trabajo. Cada persona reparte un tiempo limitado entre el trabajo, que le da renta para consumir, y el ocio. La oferta de trabajo es, por tanto, una \emph{demanda de ocio} vista del revés, y se estudia con las herramientas de la teoría del consumidor \vertema{3.A.8}.
+\item El modelo básico de elección entre consumo y ocio enseña 3 cosas:
+  \begin{itemize}
+  \item \emph{quién participa} en el mercado de trabajo: el salario de reserva;
+  \item \emph{cuántas horas} trabaja quien participa: la tangencia;
+  \item \emph{por qué la oferta no es necesariamente creciente} en el salario: crece cuando el salario es bajo y puede volverse hacia atrás cuando es alto, por los efectos renta.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}\label{sec:oferta-modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Preferencias}: una función de utilidad $U(C,O)$ sobre el consumo $C$ y el ocio $O$, los 2 bienes (se desea más de cada uno). Cumplen los axiomas que garantizan que la función es de buen comportamiento (completitud, reflexividad, transitividad, continuidad, no saciedad local, convexidad estricta y diferenciabilidad) \vertema{3.A.8}. Así, las curvas de indiferencia:
+  \begin{itemize}
+  \item indican un nivel de utilidad mayor cuanto más lejos quedan del origen;
+  \item no se cortan, porque el punto de corte tendría 2 niveles de utilidad, algo que excluye la transitividad;
+  \item tienen pendiente negativa: su pendiente en valor absoluto es la \concepto{relación marginal de sustitución entre ocio y consumo}, $\mathrm{RMS}_{OC}=U_O/U_C$, el consumo al que se está dispuesto a renunciar a cambio de una hora más de ocio sin cambiar de utilidad;
+  \item son convexas: la convexidad estricta hace la función cuasicóncava, y la $\mathrm{RMS}_{OC}$ decrece con el ocio (cuanto más ocio se tiene, menos consumo se sacrifica por una hora más).
+  \end{itemize}
+\item \emph{Tiempo}: una dotación de tiempo $O_0$ que se reparte entre ocio y trabajo, de modo que las horas trabajadas son $L=O_0-O$.\footnote{$O_0$ es la dotación de tiempo $T$ del modelo de asignación del tiempo de \textcite{Becker1965Allocation} \vertema{3.A.8}, y $L$, su tiempo de trabajo.}
+\item \emph{Rentas}: un salario real $w$ por hora (el precio del consumo se normaliza a 1, así que $w$ está en unidades de consumo) y una \concepto{renta no laboral} $\overline{W}\geq 0$, exógena (rentas del ahorro, transferencias).
+\item \emph{Restricción presupuestaria}: el consumo no supera la renta, $C\leq wL+\overline{W}$. Escrita con el ocio en el lado del gasto, $C+w\,O\leq w\,O_0+\overline{W}$. El lado derecho es la \concepto{renta completa}: lo que se tendría si se trabajara todo el tiempo. El salario aparece a los 2 lados: hace de precio del ocio y también da valor a la dotación de tiempo. De ahí sale un efecto que no existe en la teoría del consumidor con renta fija, el efecto renta dotación.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Problema del individuo}:
+  \begin{equation}
+  \optim{\max}{C,O}{U(C,O)}{C+w\,O\leq w\,O_0+\overline{W}\\ C\geq 0,\ 0\leq O\leq O_0}\label{eq:oferta-problema}
+  \end{equation}
+  Es un problema con restricciones de desigualdad, que se resuelve con las condiciones de \autor{Kuhn}-\autor{Tucker} y la lagrangiana $\mathcal{L}=U(C,O)+\lambda\big[w\,O_0+\overline{W}-C-w\,O\big]$ (las condiciones completas, en el anexo~\ref{anexo:slutsky-dotacion}). El multiplicador $\lambda>0$ es la \concepto{utilidad marginal de la renta}: lo que sube la utilidad con un euro más de renta no laboral.
+\item \emph{Solución interior} ($C>0$, $0<O<O_0$): la valoración subjetiva de la última hora de ocio iguala su coste de oportunidad, el salario,
+  \funcionclave[eq:oferta-tangencia]{\mathrm{RMS}_{OC}=\frac{U_O(C^*,O^*)}{U_C(C^*,O^*)}=w,\qquad C^*+w\,O^*=w\,O_0+\overline{W}}
+  \emph{Interpretación gráfica} (gráfico~\ref{fig:oferta-trabajo}): en el plano $(O,C)$, la recta de balance arranca en el punto de dotación $A=(O_0,\overline{W})$, con un tramo vertical de altura $\overline{W}$ (la renta no laboral se cobra aunque no se trabaje), y tiene pendiente $-w$; el óptimo $E$ es la tangencia con la curva de indiferencia más alta.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de oferta de trabajo: tangencia y salario de reserva}\label{fig:oferta-trabajo}
+\grafico[0.7\textwidth]{oferta-trabajo}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{Cahuc2014Labor}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Solución de esquina y salario de reserva}. Como la $\mathrm{RMS}_{OC}$ decrece hacia la derecha a lo largo de una curva de indiferencia, el individuo trabaja si y solo si, en el punto de dotación, valora el ocio en menos de lo que paga el mercado. El \concepto{salario de reserva} es
+  \begin{equation}
+  w^R=\frac{U_O(\overline{W},O_0)}{U_C(\overline{W},O_0)}\label{eq:salario-reserva}
+  \end{equation}
+  la pendiente de la curva de indiferencia que pasa por $A$: si $w\leq w^R$, $L=0$ (solución de esquina, $O^*=O_0$); si $w>w^R$, $L>0$. Depende de las preferencias, de $O_0$ y de $\overline{W}$. Con la misma dotación de tiempo y los mismos gustos, solo la renta no laboral lo mueve: si el ocio es normal, $w^R$ crece con $\overline{W}$, y la renta no laboral \emph{desincentiva la participación}.\footnote{Derivando \eqref{eq:salario-reserva} respecto a $\overline{W}$, $\partial w^R/\partial\overline{W}=(U_{OC}U_C-U_OU_{CC})/U_C^2$, que es positiva si y solo si el ocio es normal en el punto de dotación \parencite[cap.~1]{Cahuc2014Labor}.}
+\item \emph{Resultado}: la \concepto{demanda de ocio} $O(w,\overline{W})$ y la \concepto{oferta de trabajo marshalliana} (no compensada) $L(w,\overline{W})=O_0-O(w,\overline{W})$.
+\item \emph{Estática comparativa: renta no laboral} (gráfico~\ref{fig:renta-no-laboral}). Un aumento de $\overline{W}$ desplaza la recta de balance en paralelo hacia arriba, sin cambiar su pendiente: solo hay efecto renta. Si el ocio es normal, el individuo consume más ocio y trabaja menos, $\partial L/\partial\overline{W}<0$: el nuevo óptimo $E'$ queda a la derecha de $E$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Efecto de un aumento de la renta no laboral}\label{fig:renta-no-laboral}
+\grafico[0.55\textwidth]{renta-no-laboral}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{Cahuc2014Labor}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Estática comparativa: salario} (gráfico~\ref{fig:efectos-salario}). Un aumento del salario de $w$ a $w_1$ hace girar la recta de balance sobre el punto de dotación $A$: el ocio se encarece, pero el individuo, que vende tiempo, es más rico. La respuesta se descompone en 3 efectos:
+  \begin{enumerate}
+  \item \concepto{Efecto sustitución} ($E\to E'$): con la utilidad inicial y el nuevo salario, el ocio, más caro, se sustituye por consumo. Siempre \emph{reduce} el ocio y aumenta las horas. Es el cambio de la oferta compensada (hicksiana), $O_0-h_O(w,\overline{U})$.\footnote{$h_O(w,\overline{U})$ es la demanda compensada (hicksiana) de ocio, con la notación $h$ de la teoría de la dualidad \vertema{3.A.9}; la $h$ sin subíndice del bloque~\ref{sec:capital-humano} es el capital humano.}
+  \item \concepto{Efecto renta ordinario} o indirecto ($E'\to E''$): el de la teoría del consumidor con renta fija, el que habría si la renta completa no cambiara al subir $w$. Como el ocio se ha encarecido, el poder adquisitivo de esa renta baja; si el ocio es normal, se consume menos ocio y \emph{refuerza} al efecto sustitución. En el gráfico, es el paso a la recta de pendiente $-w_1$ con la misma renta completa $w\,O_0+\overline{W}$, que gira sobre su corte con el eje $C$ y equivale a una renta no laboral compensada $\overline{W}^c=\overline{W}-(w_1-w)\,O_0$ (punto $A_1$).
+  \item \concepto{Efecto renta dotación} o directo ($E''\to E_1$): la subida del salario revaloriza la dotación de tiempo, y la renta completa pasa de $w\,O_0+\overline{W}$ a $w_1O_0+\overline{W}$. Si el ocio es normal, se consume más ocio y se trabaja menos: va \emph{en contra} de los otros 2.
+  \end{enumerate}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Efecto de un aumento del salario: sustitución, renta ordinario y renta dotación}\label{fig:efectos-salario}
+\grafico[0.75\textwidth]{efectos-salario}
+\fuente{elaboración propia a partir de \textcite[cap.~1, fig.~1.12]{Cahuc2014Labor}.}
+\end{figure}
+
+\begin{itemize}
+\item Los 2 efectos renta juntos forman el \concepto{efecto renta global}, que es proporcional a las horas trabajadas (la parte de la dotación que se \emph{vende}): el individuo se enriquece con la subida en proporción a lo que trabaja. Es la ecuación de \autor{Slutsky} con renta-dotación \eqref{eq:slutsky-dotacion}, que se deriva en el anexo~\ref{anexo:slutsky-dotacion}:
+  \[
+  \frac{\partial L(w,\overline{W})}{\partial w}=\underbrace{-\frac{\partial h_O(w,\overline{U})}{\partial w}}_{\text{sustitución }(+)}+\underbrace{L\,\frac{\partial L(w,\overline{W})}{\partial\overline{W}}}_{\text{renta global }(-\text{ si el ocio es normal})}
+  \]
+\item \emph{Conclusión}: el efecto de un aumento del salario sobre las horas es \emph{ambiguo}. En el gráfico, $E_1$ puede quedar a la izquierda o a la derecha de $E$, según el efecto renta dotación compense o no a los otros 2.\footnote{Con una \emph{prima por horas extraordinarias}, en cambio, la oferta aumenta sin ambigüedad. La prima solo paga más las horas que superan la jornada normal, así que apenas enriquece al individuo por las horas que ya trabajaba: queda casi solo el efecto sustitución. Una subida del salario, en cambio, paga más todas las horas. La recta de balance se quiebra en la jornada normal, $L_n$ (las horas que ya se trabajaban), y a su izquierda paga el salario con prima, $w_e>w$: es más inclinada.\graficonota[0.35]{prima-horas}}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Oferta de trabajo individual} (gráfico~\ref{fig:oferta-individual}), que se obtiene variando el salario:
+  \begin{itemize}
+  \item por debajo del salario de reserva, $L=0$;
+  \item por encima, con salarios moderados y pocas horas, el efecto renta global es pequeño (es proporcional a $L$) y domina el efecto sustitución: la oferta es creciente;
+  \item con salarios altos y muchas horas, el efecto renta pesa cada vez más y puede dominar: la oferta \emph{se vuelve hacia atrás}. Ya \textcite{Robbins1930Elasticity} mostró que la respuesta es teóricamente ambigua: depende de cuánto valore el trabajador una renta adicional frente al esfuerzo de ganarla.
+  \end{itemize}
+\item En el extremo contrario, algunos autores sostienen que, con salarios cercanos a la subsistencia, también domina el efecto renta y la oferta tiene un primer tramo de pendiente negativa: si el salario baja, hay que trabajar más horas para llegar al mínimo vital, y la curva toma forma de S invertida \parencite{Sharif2000Inverted,Dessing2002Labor}.\footnote{Hay otra explicación posible para un tramo bajo poco sensible o decreciente: las prestaciones condicionadas a la renta. Si una subida del salario hace perder un subsidio, a quien está cerca del umbral le conviene no superarlo trabajando más \vertema{4.B.10}.}
+\item La forma de la oferta individual es, por tanto, una cuestión empírica (\ref{sec:oferta-evidencia}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Oferta de trabajo individual: salario de reserva y tramo que se vuelve hacia atrás}\label{fig:oferta-individual}
+\grafico[0.45\textwidth]{oferta-individual}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{Cahuc2014Labor}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Oferta de trabajo agregada}. Al sumar las ofertas individuales hay que tener cuidado con 2 cosas:
+  \begin{itemize}
+  \item los efectos renta: la oferta agregada solo se comporta como la de un individuo representativo con condiciones muy restrictivas sobre las preferencias \parencite{Gorman1953Community,Kirman1992Whom};
+  \item el salario influye en 2 decisiones distintas: cuántas horas trabaja quien ya trabaja, el \concepto{margen intensivo}, y cuántas personas trabajan, el \concepto{margen extensivo}. La respuesta de la oferta agregada suma las 2.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Agregación de la oferta de trabajo: margen intensivo y margen extensivo}
+
+\begin{itemize}
+\item Supongamos individuos que solo se diferencian en su renta no laboral, $\overline{W}\in[0,+\infty)$, distribuida según la función de distribución $F(\overline{W})$, con densidad $f(\overline{W})$, y una población normalizada a 1. Si el ocio es normal, $L(w,\overline{W})$ decrece con $\overline{W}$, y para cada salario hay una \emph{renta no laboral de reserva} $\overline{W}^R(w)$ tal que $L\big(w,\overline{W}^R(w)\big)=0$: trabajan quienes tienen $\overline{W}<\overline{W}^R(w)$, cuyo salario de reserva es menor que $w$.
+\item La oferta agregada y su derivada (regla de \autor{Leibniz}) son:
+  \begin{gather*}
+  L^S(w)=\int_{0}^{\overline{W}^R(w)}L(w,\overline{W})\,dF(\overline{W})\\
+  \frac{dL^S(w)}{dw}=\underbrace{\int_{0}^{\overline{W}^R(w)}\frac{\partial L(w,\overline{W})}{\partial w}\,dF(\overline{W})}_{\text{margen intensivo}}+\underbrace{L\big(w,\overline{W}^R\big)\,f\big(\overline{W}^R\big)\,\frac{d\overline{W}^R}{dw}}_{\text{margen extensivo}}
+  \end{gather*}
+\item El margen intensivo depende de los efectos sustitución y renta, y puede ser positivo o negativo.
+\item Si las horas se eligen libremente, el margen extensivo es nulo, porque quien está en el umbral ofrece 0 horas: una subida pequeña del salario incorpora a gente que trabaja muy poco.
+\item Con \emph{indivisibilidades} (jornadas fijas por razones técnicas o institucionales: o se trabajan al menos $L_{\min}$ horas o ninguna), quien entra lo hace con $L_{\min}>0$, y el margen extensivo pasa a ser positivo: $d\overline{W}^R/dw$ es la inversa de $\partial w^R/\partial\overline{W}$, positiva si el ocio es normal \parencite[cap.~1]{Cahuc2014Labor}.
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item En conclusión, con efectos sustitución dominantes o con un margen extensivo importante, la oferta agregada es creciente. Cuánto lo es, su \emph{elasticidad}, es una de las cifras más buscadas de la economía empírica, porque decide, por ejemplo, el coste de los impuestos sobre el trabajo.
+\end{itemize}
+
+\paragraph{c) Extensiones}\label{sec:oferta-extensiones}
+
+\begin{itemize}
+\item El modelo básico deja fuera muchas cosas que influyen en la oferta de trabajo. Dos extensiones lo enriquecen sin cambiar su lógica:
+\item \emph{Producción doméstica} \parencites{Becker1965Allocation}{Gronau1977Leisure}. La alternativa al trabajo remunerado no es solo el ocio: las tareas del hogar producen bienes que sustituyen a los que se compran (se puede cocinar en casa o ir a un restaurante). Con $L_{\mathrm{dom}}$ horas de trabajo doméstico que producen $f(L_{\mathrm{dom}})$ unidades de consumo, con $f'>0$ y $f''<0$, el consumo es $C=C_{\mathrm{mer}}+f(L_{\mathrm{dom}})$:
+  \[
+  \optim{\max}{C_{\mathrm{mer}},O,L_{\mathrm{dom}}}{U\big(C_{\mathrm{mer}}+f(L_{\mathrm{dom}}),\,O\big)}{C_{\mathrm{mer}}+w\,O\leq w\,(O_0-L_{\mathrm{dom}})+\overline{W}}
+  \]
+  Si se trabaja en el mercado, $f'(L_{\mathrm{dom}}^*)=w$ y $U_O/U_C=w$: se produce en casa hasta que la última hora rinde lo que paga el mercado (si rindiera más o menos, convendría pasar horas de un lado al otro). Quien es más productivo en casa o tiene un salario bajo trabaja menos fuera; abaratar la producción doméstica (electrodomésticos, guarderías) libera tiempo para el mercado.
+\item \emph{Decisiones familiares}. Las decisiones de los miembros de un hogar están conectadas: si cae el salario de uno, otro puede entrar en el mercado (\concepto{efecto del trabajador añadido}), algo que los datos confirman, aunque con efectos limitados.\footnote{La oferta de los segundos perceptores del hogar es más elástica que la del perceptor principal \parencite{Keane2011Labor}. Con las reformas fiscales británicas, la elasticidad salarial de las mujeres pasa de 0{,}14 sin hijos a 0{,}21 con el menor de 0-2 años y a 0{,}37 con el menor de 3-4 años \parencite{BlundellDuncanMeghir1998}: es mayor cuando hay hijos en edad preescolar, que es cuando más pesa el coste de cuidarlos.} Hay 2 enfoques:
+  \begin{itemize}
+  \item el \emph{modelo unitario} trata al hogar como un solo decisor, con una utilidad común $U(C,O_1,O_2)$ y la renta completa del hogar, $(w_1+w_2)O_0+\overline{W}_1+\overline{W}_2$: no importa quién recibe cada renta;
+    \[
+    \optim{\max}{C,O_1,O_2}{U(C,O_1,O_2)}{C+w_1O_1+w_2O_2\leq(w_1+w_2)O_0+\overline{W}_1+\overline{W}_2}
+    \]
+  \item el \emph{modelo colectivo} de \textcite{Chiappori1992Collective}: los datos rechazan que no importe quién cobra (las transferencias pagadas a uno u otro miembro cambian el gasto del hogar), y el hogar se modeliza como una negociación que alcanza asignaciones eficientes en el sentido de \autor{Pareto},
+    \[
+    \optim{\max}{C_1,C_2,O_1,O_2}{U_1(C_1,O_1)}{U_2(C_2,O_2)\geq\overline{U}_2\\ C_1+C_2+w_1O_1+w_2O_2\leq(w_1+w_2)O_0+\overline{W}_1+\overline{W}_2}
+    \]
+    donde $\overline{U}_2$ refleja el poder de negociación del segundo miembro, que depende de sus opciones fuera del hogar.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}\label{sec:oferta-evidencia}
+
+\begin{itemize}
+\item \emph{Tres elasticidades}. La \emph{marshalliana} $\varepsilon_{L,w}$ (no compensada), la \emph{hicksiana} $\varepsilon^h_{L,w}$ (compensada: un cambio del salario con la utilidad constante) y la \emph{de \autor{Frisch}} $\varepsilon^F_{L,w}$ (con la utilidad marginal de la riqueza constante, la que mide la respuesta a cambios transitorios: bloque~\ref{sec:intertemporal}). Si el ocio es normal, $\varepsilon^F_{L,w}\geq\varepsilon^h_{L,w}\geq\varepsilon_{L,w}$ \parencite{Keane2011Labor}.
+\item \emph{Varones en edad central}: sus horas apenas responden al salario; las elasticidades son pequeñas (la media de las hicksianas estimadas ronda 0{,}3) y las marshallianas, menores aún por el efecto renta \parencites{BlundellMaCurdy1999Labor}{Keane2011Labor}.
+\item \emph{Mujeres casadas y trabajadores de rentas bajas}: responden bastante más, sobre todo en la decisión de participar \parencite{Keane2011Labor}.
+\item \emph{Los 2 márgenes}: las estimaciones cuasiexperimentales dan elasticidades hicksianas de 0{,}30 en el margen intensivo y 0{,}26 en el extensivo \parencite{Chetty2011Micro}. En media pesan parecido; el margen extensivo domina en algunos grupos, como las mujeres casadas.
+\item \emph{La U de \autor{Goldin}} (Nobel 2023). La participación de las mujeres casadas dibuja una U a lo largo del desarrollo económico, entre países y en la historia de Estados Unidos \parencite{Goldin1995UShaped}:
+  \begin{itemize}
+  \item cae con la industrialización, cuando el trabajo sale del hogar y de la granja hacia la fábrica: dominan el efecto renta de los ingresos del marido y el estigma social del trabajo fabril de las mujeres casadas;
+  \item sube con la educación y los servicios, cuando aparecen empleos de oficina compatibles con la familia: domina el efecto sustitución;
+  \item y se acelera desde los años 70 con la píldora anticonceptiva, que permite retrasar el matrimonio y planificar una carrera profesional \parencite{GoldinKatz2002Power}.
+  \end{itemize}
+  Es el margen extensivo, la producción doméstica y la familia del modelo, vistos en la historia.
+\end{itemize}
+
+\paragraph{e) Valoración}\label{sec:oferta-valoracion}
+
+\begin{itemize}
+\item El modelo explica bien la participación (el salario de reserva) y por qué la respuesta de las horas al salario es pequeña: los efectos renta y sustitución se compensan. Con el mismo gráfico se analiza cómo afectan los impuestos a las horas y a la participación \vertema{4.B.10}.
+\item Es estático y supone que cada uno elige sus horas; con contratos de jornada fija, el ajuste se hace sobre todo en el margen extensivo.
+\item Deja fuera el tiempo: si el salario sube solo hoy, ¿se trabaja más hoy y menos mañana? Es la pregunta del análisis intertemporal (\ref{sec:intertemporal}). Antes, completamos el mercado con la demanda.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Demanda de trabajo}\label{sec:demanda}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Una vez estudiada la oferta, pasamos a la otra mitad del mercado: el empleo no depende solo de los trabajadores, sino también de los planes de las empresas que los contratan.
+\item La de trabajo es una \concepto{demanda derivada}: se quiere trabajo para producir bienes \parencite{Hicks1932Theory}. Es la demanda de un factor de la teoría de la empresa, $z_L(p,\vect{w})$, que da el lema de \autor{Hotelling} \vertema{3.A.12}: la empresa, vista como una caja negra que combina factores, contrata mientras el último trabajador aporte más de lo que cuesta.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Empresa \emph{precio-aceptante} en el bien (precio $p$) y en los factores (salario nominal $w_L$ y coste de uso del capital $w_K$), que maximiza su beneficio $B$. El caso con poder de mercado en el bien o en el trabajo, en \ref{sec:valoracion-neoclasica} y en el anexo~\ref{anexo:poder-mercado-trabajo}.
+\item Función de producción $q=F(L,K)$ continua, 2 veces diferenciable, con productividades marginales positivas y decrecientes.
+\item \emph{Corto plazo}: el capital está fijo en $\overline{K}$ (instalarlo y ponerlo a punto lleva tiempo); solo el trabajo es variable.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Problema a corto plazo}, sin restricciones (la tecnología va dentro del objetivo):
+  \[
+  \max_{L}\ B(L)=p\,F(L,\overline{K})-w_L\,L-w_K\,\overline{K}
+  \]
+\item \emph{Condición de primer orden} (solución interior): la empresa contrata hasta que el \concepto{valor del producto marginal} del trabajo, lo que aporta a los ingresos el último trabajador, iguala el salario nominal, es decir, hasta que la productividad marginal iguala el \emph{salario real},
+  \funcionclave[eq:demanda-corto]{\mathrm{VPMg}_L\equiv p\cdot F_L(L,\overline{K})=w_L\ \Longleftrightarrow\ F_L(L,\overline{K})=\frac{w_L}{p}\equiv w}
+\item \emph{Condición de segundo orden}: $p\,F_{LL}<0$, que se cumple con productividad marginal decreciente. Con un solo factor variable no hace falta ninguna condición sobre los rendimientos a escala.
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:demanda-corto}): con $F_{LL}<0$, la demanda de trabajo a corto plazo, $L^D(w)$, es el tramo decreciente de la curva del $\mathrm{VPMg}_L$ (en términos reales, de la productividad marginal): si sube el salario real, se contrata menos.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Demanda de trabajo a corto plazo: el valor del producto marginal}\label{fig:demanda-corto}
+\grafico[0.45\textwidth]{demanda-corto}
+\fuente{elaboración propia a partir de \textcite[cap.~3]{Cahuc2014Labor}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La demanda de trabajo depende negativamente del salario real y positivamente de la productividad del trabajo (el capital instalado y la tecnología) y del precio del bien, que desplazan la curva. Como en la teoría de la producción no hay efectos renta, \emph{la demanda de trabajo nunca crece con el salario}: no hay factores \autor{Giffen} \vertema{3.A.12}.
+\item \emph{A largo plazo es más elástica}: con el capital variable, la empresa sustituye trabajo por capital y cambia la escala, así que responde más a un mismo cambio del salario (principio de \autor{Le Chatelier}, de \autor{Samuelson}).
+\item \emph{La demanda de mercado es menos elástica que la suma de las individuales}: si baja el salario, todas las empresas contratan y producen más, y el precio del bien baja; hay que sumar las \emph{cuasidemandas}, que tienen en cuenta esa caída del precio.
+\item El desarrollo del largo plazo, la agregación y las reglas de \autor{Marshall} y \autor{Hicks} sobre la elasticidad de la demanda derivada están en el anexo~\ref{anexo:demanda-largo-plazo}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item Según la revisión de \textcite{Hamermesh1993Labor}, la elasticidad de la demanda de trabajo, con la producción constante, se mueve entre 0{,}15 y 0{,}75 en valor absoluto, con un valor central de 0{,}3. Es mayor para los trabajadores poco cualificados, más fáciles de sustituir por capital.\footnote{La función de producción con elasticidad de sustitución constante (CES) es la más usada para estimarla \vertema{3.A.11}.}
+\item \emph{Inmigración} (Nobel 2021). \textcite{Card1990Impact} usa como experimento natural el éxodo del Mariel (1980), que llevó a Estados Unidos a unos 125.000 cubanos y aumentó en torno a un 7~\% la población activa de Miami. Comparando Miami con ciudades parecidas, no encuentra efectos apreciables sobre los salarios ni el paro de los trabajadores poco cualificados: o la demanda se desplazó a la vez, o es muy elástica. \textcite{Borjas2017Wage}, con otra muestra, sí encuentra caídas para los varones sin estudios secundarios: el debate sigue abierto.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Equilibrio}\label{sec:equilibrio}
+
+\begin{itemize}
+\item Con la oferta y la demanda ya construidas, el \concepto{equilibrio} del mercado de trabajo es el salario real $w^c$ y el empleo $L^c$ en que se cortan (gráfico~\ref{fig:equilibrio-trabajo}): $L^S(w^c)=L^D(w^c)$. En él,
+  \[
+  \frac{U_O}{U_C}=w^c=F_L(L^c,\overline{K})
+  \]
+  la valoración marginal del ocio de cada trabajador que participa iguala la productividad marginal del trabajo.
+\item \emph{Propiedades positivas}:
+  \begin{itemize}
+  \item \emph{Existencia}: con oferta y demanda continuas, si a un salario muy bajo se demanda más trabajo del que se ofrece y a uno muy alto, menos, hay al menos un salario que vacía el mercado.
+  \item \emph{Unicidad y estabilidad}: no las garantiza la competencia \vertema{3.A.21}. Si la oferta se vuelve hacia atrás (gráfico~\ref{fig:oferta-individual}), puede cortar a la demanda más de una vez. Un equilibrio es estable en el sentido de \autor{Walras} si en él la demanda corta a la oferta desde arriba, es decir, si a un salario algo mayor sobra trabajo y el salario baja.
+  \item El salario flexible es el mecanismo que vacía el mercado: no hay \concepto{paro involuntario}.\footnote{Según la OIT, «las personas en desocupación, o personas desocupadas, se definen como todas aquellas personas en edad de trabajar que no estaban ocupadas, que habían llevado a cabo actividades de búsqueda de un puesto de trabajo durante un período reciente especificado, y que estaban actualmente disponibles para ocupar un puesto de trabajo en caso de que existiera la oportunidad de hacerlo» \parencite[párr.~47]{OIT2013Resolucion}.} Puede haber paro \emph{voluntario}: quien tiene un salario de reserva mayor que el de mercado no trabaja porque no quiere.
+  \end{itemize}
+\item \emph{Propiedad normativa}: el equilibrio competitivo es eficiente en el sentido de \autor{Pareto} (primer teorema fundamental de la economía del bienestar, 1TFEB) \vertema{3.A.22}. En equilibrio parcial, maximiza el excedente conjunto de trabajadores y empresas: ninguna hora más de trabajo vale para la empresa más de lo que cuesta en ocio al trabajador.
+\item \emph{Estática comparativa}: una mejora de la productividad desplaza la demanda hacia la derecha y sube el salario y, si la oferta es creciente, el empleo. \autor{Marshall} distingue un equilibrio temporal y otro normal (caja de abajo).
+\item \emph{Salario mínimo}. Si se fija $\underline{w}>w^c$, el empleo lo decide el lado corto del mercado, la demanda: $L^D(\underline{w})<L^c$, y $L^S(\underline{w})-L^D(\underline{w})$ personas querrían trabajar a ese salario y no encuentran empleo. Es paro involuntario, el único que admite el modelo (gráfico~\ref{fig:equilibrio-trabajo}). Con poder de monopsonio, un salario mínimo moderado tiene el efecto contrario (\ref{sec:valoracion-neoclasica}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Equilibrio del mercado de trabajo y salario mínimo en competencia}\label{fig:equilibrio-trabajo}
+\grafico[0.6\textwidth]{equilibrio-trabajo}
+\fuente{elaboración propia a partir de \textcite[cap.~3]{Cahuc2014Labor}.}
+\end{figure}
+
+\begin{anotaciones}
+\textbf{Equilibrio temporal y normal de \autor{Marshall} en el mercado de trabajo}
+
+\begin{itemize}
+\item \textcite{Marshall1890Principles} cuenta el ajuste de un mercado con el ejemplo del pescado \vertema{3.A.16}, y su análisis se aplica al trabajo \parencite[fig.~1.1]{DeVroey2016History}. Se distinguen 3 curvas (gráfico~\ref{fig:marshall-trabajo}):
+  \begin{itemize}
+  \item la \emph{oferta de mercado}, vertical: en el periodo de mercado, el número de trabajadores disponibles está dado;
+  \item la \emph{oferta normal}, creciente: con tiempo para ajustarse, entran trabajadores en el oficio (formación, migración, participación) si el salario sube;
+  \item la \emph{demanda}, la misma en los 2 periodos.
+  \end{itemize}
+\item Partimos del equilibrio $A$. Una perturbación que eleva la productividad marginal desplaza la demanda hacia arriba:
+  \begin{itemize}
+  \item en el \emph{equilibrio temporal} $B$, con la oferta fija, sube solo el salario, con el mismo empleo;
+  \item en el \emph{equilibrio normal} $C$, la oferta responde: el empleo sube y el salario baja respecto a $B$, aunque queda por encima del de $A$.
+  \end{itemize}
+\item El mercado se vacía en todo momento, también durante el ajuste: en ningún periodo hay paro, porque la oferta de mercado coincide siempre con la demanda.
+\item Para \textcite{Matthews1990Marshall}, el paro no era una preocupación central en \autor{Marshall}: el problema social que le inquietaba era la pobreza, y el paro solo era una de sus causas.
+\end{itemize}
+
+\begin{figuracaja}
+\caption{Equilibrio temporal y normal de \autor{Marshall} en el mercado de trabajo}\label{fig:marshall-trabajo}
+\grafico[0.6\textwidth]{marshall-trabajo}
+\fuente{elaboración propia a partir de \textcite[fig.~1.1]{DeVroey2016History} y \textcite[libro~V]{Marshall1890Principles}.}
+\end{figuracaja}
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración}\label{sec:valoracion-neoclasica}
+
+\begin{itemize}
+\item El modelo neoclásico es la referencia de eficiencia: explica la participación, el salario como precio de la productividad y el ajuste vía salarios. Pero tiene 2 puntos débiles.
+\item \emph{El supuesto más frágil es la precio-aceptación} (supuesto 4). Si la empresa es la única que contrata en su mercado, o si las fricciones hacen que no pierda a todos sus trabajadores al bajar el salario, tiene \concepto{poder de monopsonio}: se enfrenta a una oferta creciente $w_L(L)$ y, para contratar más, tiene que subir el salario de todos. Contrata hasta que el valor del producto marginal iguala el \concepto{gasto marginal} del trabajo, $\mathrm{GMg}_L$ \vertema{3.A.17}:
+  \begin{equation}
+  \mathrm{VPMg}_L=\mathrm{GMg}_L=w_L(L)\Big(1+\frac{1}{\varepsilon_{L,w_L}}\Big)\ \Longleftrightarrow\ \frac{\mathrm{VPMg}_L-w_L}{w_L}=\frac{1}{\varepsilon_{L,w_L}}\label{eq:monopsonio}
+  \end{equation}
+  \begin{itemize}
+  \item Contrata menos y paga menos que en competencia, $L^M<L^c$ y $w^M<w^c$, pero \emph{no hay paro involuntario}: los trabajadores están sobre su curva de oferta (gráfico~\ref{fig:monopsonio}).
+  \item Por eso un salario mínimo entre $w^M$ y $w^c$ \emph{eleva} tanto el salario como el empleo, al revés que en competencia (gráfico~\ref{fig:salario-minimo}).
+  \item Es la lectura habitual del estudio de \textcite{CardKrueger1994} (Nobel 2021): compararon el empleo en 410 establecimientos de comida rápida de Nueva Jersey, donde el salario mínimo pasó de 4{,}25 a 5{,}05 dólares por hora en abril de 1992, con los de la vecina Pensilvania, donde no cambió, y no encontraron caída del empleo. También la del monopsonio dinámico, en el que las fricciones dan a cada empresa algo de poder sobre el salario \parencite{Manning2003Monopsony}.
+  \item El caso general, con poder de mercado en el bien y en el trabajo y con sindicatos, está en el anexo~\ref{anexo:poder-mercado-trabajo}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Monopsonio en el mercado de trabajo: menos empleo y menos salario que en competencia}\label{fig:monopsonio}
+\grafico[0.55\textwidth]{monopsonio}
+\fuente{elaboración propia a partir de \textcite{Robinson1933Economics} y \textcite{Manning2003Monopsony}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{Salario mínimo con monopsonio: el empleo sube hasta $w^c$ y baja por encima}\label{fig:salario-minimo}
+\grafico[0.55\textwidth]{salario-minimo}
+\fuente{elaboración propia a partir de \textcite{Manning2003Monopsony}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{La evidencia contradice el vaciado del mercado}: hay paro, y es persistente; en España, la tasa de paro sigue por encima del 10~\% \parencite{INE2026EPA3T}. El modelo no lo explica salvo como paro voluntario o como efecto de un salario mínimo. Ya lo advertía \autor{Hicks} y lo puso en el centro \autor{Keynes} \vertema{3.A.4}. Para explicarlo hay que levantar los supuestos de la tabla~\ref{tab:supuestos-trabajo}:
+  \begin{itemize}
+  \item la información perfecta y la movilidad sin costes (supuestos 2 y 7): la búsqueda y el paro friccional \vertema{3.A.26};
+  \item la flexibilidad salarial y la precio-aceptación (supuestos 6 y 4): la negociación colectiva, los salarios de eficiencia y los contratos implícitos \vertema{3.A.27}, y la tasa natural y la histéresis \vertema{3.A.28}.
+  \end{itemize}
+\item Antes de levantarlos, 2 preguntas que el propio enfoque neoclásico responde: ¿cómo distribuye cada persona sus horas en el tiempo? (\ref{sec:intertemporal}) y ¿por qué no todos los trabajadores cobran lo mismo? (\ref{sec:capital-humano}).
+\end{itemize}
+
+
+% ==========================================================================
+\section{Análisis intertemporal de la oferta\newline de trabajo: \autor{Lucas} y \autor{Rapping} (1969)}\label{sec:intertemporal}
+\minutos{6,5}
+
+\begin{notaopositor}
+En el cante: la idea con la pregunta de las horas que fluctúan mucho con salarios que varían poco y la pegatina «hacer el agosto» (\tiempo{0,75}); el modelo de 2 periodos de la referencia, con el problema en la pizarra, las 3 condiciones y la condición del ocio relativo como función clave, y las 4 implicaciones en un cuadro de flechas (\tiempo{3}); la elasticidad de \autor{Frisch}, el ciclo vital, los ciclos reales y el trabajo indivisible (\tiempo{1,25}); la evidencia (\tiempo{0,75}) y la valoración (\tiempo{0,75}). La solución cerrada, el gráfico de la oferta de hoy y el modelo con horizonte infinito (anexo~\ref{anexo:lr-infinito}) son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: a lo largo del tiempo, se trabaja más cuando trabajar compensa más; los cambios transitorios del salario mueven mucho más las horas que los permanentes, y eso hace del mercado de trabajo una pieza central de los ciclos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Idea}\label{sec:lr-idea}
+
+\begin{itemize}
+\item Hasta ahora, el análisis ha sido estático: un solo periodo. Pasamos ahora a las decisiones a lo largo del tiempo, con una pregunta empírica: ¿por qué las horas trabajadas fluctúan tanto a lo largo del ciclo si los salarios reales varían poco? Con una oferta estática poco elástica, mover el empleo exigiría grandes cambios del salario.
+\item \textcite{LucasRapping1969Real} proponen que el individuo \emph{elige cuándo trabajar}: el ocio de hoy y el de mañana son sustitutivos, y un cambio transitorio del salario basta para mover mucho las horas. Buscaban microfundamentar el mercado de trabajo, como \autor{Friedman} y \autor{Modigliani} habían hecho con el consumo \vertema{3.A.33} y \autor{Eisner} y \autor{Jorgenson} con la inversión, y su artículo fue original en 2 cosas:
+  \begin{itemize}
+  \item el foco en la \emph{oferta} de trabajo, de agentes que optimizan a lo largo del tiempo, y no en la demanda, como sus predecesores;
+  \item un mercado de trabajo que \emph{se vacía siempre}: abandona el paro involuntario, central en la macroeconomía keynesiana de la época. Lo que se mide como paro sería, en parte, sustitución intertemporal voluntaria. Es la base de la nueva macroeconomía clásica \vertema{3.A.6} y de los ciclos reales \vertema{3.A.42}.
+  \end{itemize}
+\item El marco sirve también para la oferta a lo largo de la vida y para la decisión de jubilarse, el fin definitivo de la participación.
+\item Es el refrán de \emph{hacer el agosto}: trabajar a destajo cuando la temporada paga bien y descansar cuando paga poco.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelo}\label{sec:lr-modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Un hogar vive 2 periodos, $t=1,2$, sin incertidumbre ni dinero: todas las variables son reales.
+\item En cada periodo dispone de una unidad de tiempo, que reparte entre trabajo $L_t$ y ocio $1-L_t$ (la dotación $O_0$ se normaliza a 1).
+\item Preferencias separables en el tiempo y entre consumo y ocio, con factor de descuento $\beta\equiv 1/(1+\rho)$, con $\rho$ la tasa de descuento: en la versión de referencia, $\ln C_t+b\ln(1-L_t)$, con $b>0$ el peso del ocio.\footnote{En general, las preferencias serían $U(C_1,\dots,C_T,L_1,\dots,L_T)$, pero esa forma no da resultados sencillos de interpretar. La separabilidad en el tiempo es restrictiva: no admite hábitos de consumo (el consumo pasado entraría en la utilidad de hoy) ni decisiones de formación, que crearían una disyuntiva entre ocio, trabajo y estudio (bloque~\ref{sec:capital-humano}).}
+\item Mercado de capitales perfecto: el hogar ahorra o se endeuda al tipo de interés real $r$. Salarios reales $w_1$ y $w_2$ conocidos y sin renta no laboral.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Problema}: se elige el consumo y las horas de cada periodo sujetos a la restricción presupuestaria intertemporal, que iguala el valor actual del consumo y el de la renta del trabajo \vertema{3.A.33}:
+  \begin{equation}
+  \optim{\max}{C_1,C_2,L_1,L_2}{\ln C_1+b\ln(1-L_1)+\beta\big[\ln C_2+b\ln(1-L_2)\big]}{C_1+\dfrac{C_2}{1+r}=w_1L_1+\dfrac{w_2L_2}{1+r}}\label{eq:lr-problema}
+  \end{equation}
+\item \emph{Condiciones de primer orden}, con $\lambda$ la utilidad marginal de la riqueza:
+  \begin{align*}
+  \frac{b\,C_t}{1-L_t}&=w_t &&\text{(intratemporal, como en el modelo estático)}\\
+  \frac{C_2}{C_1}&=\beta(1+r) &&\text{(ecuación de \autor{Euler} del consumo)}
+  \end{align*}
+  La primera es la tangencia del modelo estático, $\mathrm{RMS}_{OC}=w_t$, en cada periodo, y la segunda, la regla del consumo intertemporal \vertema{3.A.29}. Dividiendo las condiciones del ocio de los 2 periodos, la condición intertemporal del ocio:\footnote{La condición intratemporal se cumple en cada periodo porque la utilidad es separable; con hábitos o con una utilidad no separable entre periodos deja de cumplirse \parencite[cap.~1]{Cahuc2014Labor}.}
+  \funcionclave[eq:lr-condicion]{\frac{1-L_1}{1-L_2}=\frac{w_2}{\beta(1+r)\,w_1}}
+\item \emph{Interpretación}: la oferta relativa de trabajo depende del \concepto{salario relativo intertemporal}, $w_1(1+r)/w_2$: lo que vale una hora de trabajo de hoy, invertida al tipo $r$, frente a una hora de mañana. En forma general,
+  \[
+  \frac{L_1}{L_2}=f\Big(\underset{+}{\frac{w_1}{w_2}},\ \underset{+}{r},\ \underset{-}{\rho}\Big)
+  \]
+\item \emph{Solución cerrada}: con esta utilidad,\footnote{De las condiciones intratemporales, $C_t=w_t(1-L_t)/b$, y de las del ocio, $1-L_1=b/(\lambda w_1)$ y $1-L_2=b\beta(1+r)/(\lambda w_2)$. Llevándolas a la restricción, $(1+\beta)(1+b)/\lambda=w_1+w_2/(1+r)$, de donde sale la expresión.}
+  \[
+  L_1=1-\frac{b}{(1+b)(1+\beta)}\left[1+\frac{w_2}{(1+r)\,w_1}\right]
+  \]
+  que crece con $w_1$ y con $r$ y decrece con $w_2$ (gráfico~\ref{fig:lr-oferta}). Si $w_2=(1+r)w_1$ y $\beta=1$, $L_1=1/(1+b)$: la oferta del modelo estático con esta utilidad.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Oferta de trabajo de hoy en el modelo de \autor{Lucas} y \autor{Rapping}: más horas cuanto mayor es el salario de hoy frente al de mañana}\label{fig:lr-oferta}
+\grafico[0.5\textwidth]{lr-oferta}
+\fuente{elaboración propia a partir de \textcite{LucasRapping1969Real}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La condición \eqref{eq:lr-condicion} y la solución cerrada dan 4 resultados (tabla~\ref{tab:lr-implicaciones}):
+  \begin{enumerate}
+  \item \emph{Aumento transitorio del salario} ($w_1$ sube y $w_2$ no): se trabaja más hoy y menos mañana. La riqueza de toda la vida apenas cambia, así que domina la sustitución: es la \concepto{sustitución intertemporal del trabajo}.
+  \item \emph{Aumento permanente} ($w_1$ y $w_2$ suben en la misma proporción): no cambia la oferta \emph{relativa} entre periodos. Sobre el nivel de horas, el efecto es el del modelo estático, ambiguo; con estas preferencias y sin renta no laboral, el efecto renta compensa exactamente al de sustitución y las horas de cada periodo no cambian.
+  \item \emph{Aumento del tipo de interés}: trabajar y ahorrar hoy rinde más, así que se trabaja más hoy y menos mañana.
+  \item \emph{Más impaciencia} ($\rho$ sube y $\beta$ baja): el mañana vale menos, así que hay más ocio hoy y más trabajo mañana.
+  \end{enumerate}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Implicaciones del modelo de \autor{Lucas} y \autor{Rapping}}\label{tab:lr-implicaciones}
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.6cm}>{\centering\arraybackslash}m{1.9cm}>{\centering\arraybackslash}m{1.9cm}>{\raggedright\arraybackslash}m{5.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Cambio} & \textbf{Horas hoy, $L_1$} & \textbf{Horas mañana, $L_2$} & \textbf{Por qué}\\
+\midrule
+Salario transitorio, $w_1\uparrow$ & \textcolor{tceeverde}{$\uparrow$} & \textcolor{tceerojo}{$\downarrow$} & sustitución intertemporal; casi sin efecto riqueza\\
+\addlinespace[0.3em]
+Salario permanente, $w_1,w_2\uparrow$ & $=$ & $=$ & la sustitución y la renta se compensan\\
+\addlinespace[0.3em]
+Tipo de interés, $r\uparrow$ & \textcolor{tceeverde}{$\uparrow$} & \textcolor{tceerojo}{$\downarrow$} & trabajar y ahorrar hoy rinde más\\
+\addlinespace[0.3em]
+Impaciencia, $\rho\uparrow$ & \textcolor{tceerojo}{$\downarrow$} & \textcolor{tceeverde}{$\uparrow$} & el ocio de hoy vale más\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de la solución del modelo \eqref{eq:lr-problema}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Implicación de política}: las medidas transitorias (una rebaja temporal de las cotizaciones o de los impuestos sobre el trabajo) mueven las horas mucho más que las permanentes.
+\item El modelo con horizonte infinito, el del artículo original, con activos y la condición de no-\autor{Ponzi}, da las mismas 3 condiciones (anexo~\ref{anexo:lr-infinito}) \vertema{3.A.29}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Extensiones}\label{sec:lr-extensiones}
+
+\begin{itemize}
+\item \emph{Elasticidad de \autor{Frisch}}.\footnote{Ragnar \autor{Frisch} recibió en 1969, con Jan \autor{Tinbergen}, el primer Premio Nobel de Economía, «por desarrollar y aplicar modelos dinámicos para el análisis de los procesos económicos» \parencite{Nobel1969}.} Mide cómo responden las horas ante una variación del salario cuando la utilidad marginal de la riqueza, $\lambda$, no cambia. Mide la sustitución intertemporal pura: la respuesta a los cambios previstos o transitorios del salario, que apenas alteran la riqueza de toda la vida. Con la utilidad de cada periodo que usan los modelos de ciclo, $u(C_t,L_t)=\ln C_t-\chi\,L_t^{1+\varphi}/(1+\varphi)$, con $\chi$ el peso de la desutilidad del trabajo, la condición de las horas es $\chi L_t^{\varphi}=\lambda_t w_t$ y
+  \begin{equation}
+  \varepsilon^{F}_{L,w}\equiv\left.\frac{\partial\ln L_t}{\partial\ln w_t}\right|_{\lambda}=\frac{1}{\varphi}\label{eq:frisch}
+  \end{equation}
+  Con la utilidad de \eqref{eq:lr-problema} es $(1-L_t)/L_t$: si se trabaja un tercio del tiempo, 2. Es la mayor de las 3 elasticidades (\ref{sec:oferta-evidencia}) y la que necesita la macroeconomía dinámica \vertema{3.A.42}.\footnote{El nombre viene de \textcite{Frisch1959Complete}, que define las demandas con la utilidad marginal de la renta constante; \textcite{MaCurdy1981Empirical} la lleva a la oferta de trabajo del ciclo vital. No tiene que ver con la actitud ante el riesgo: el modelo es sin incertidumbre.}
+\item \emph{Ciclo vital y jubilación}. El salario sigue a lo largo de la vida un perfil en U invertida (bloque~\ref{sec:capital-humano}); como esos cambios son previstos, las horas siguen al salario con la elasticidad de \autor{Frisch}: se trabaja más en las edades de salario alto. La \emph{jubilación} es la salida definitiva del mercado, y la deciden la riqueza acumulada, las prestaciones y las restricciones legales:
+  \begin{itemize}
+  \item retrasarla tiene un \emph{valor de opción}: quien sigue trabajando conserva la posibilidad de jubilarse más tarde con una pensión mayor, y se jubila cuando ese valor deja de compensar \parencite{StockWise1990Pensions};
+  \item entre países, cuanto más penaliza la pensión seguir trabajando (el impuesto implícito sobre el trabajo de los mayores), antes se jubila la gente \parencite{GruberWise1999Social}.
+  \end{itemize}
+\item \emph{Ciclos reales}. \textcite{KydlandPrescott1982Time} trasladan el mecanismo de \autor{Lucas} y \autor{Rapping} a un modelo de equilibrio general sometido a perturbaciones reales, como un aumento de la productividad del trabajo, que sube el salario real. Hay 2 efectos contrapuestos:
+  \begin{itemize}
+  \item un \emph{efecto riqueza}: los agentes son más ricos, consumen más y trabajan menos;
+  \item un \emph{efecto de sustitución intertemporal}: trabajar hoy rinde más, y se trabaja más hoy.
+  \end{itemize}
+  Cuál domina depende de la persistencia del choque:
+  \begin{itemize}
+  \item un \emph{choque transitorio} sube el salario de hoy frente al de mañana: domina la sustitución intertemporal, se trabaja y se produce más hoy y menos mañana, y se genera un ciclo;
+  \item un \emph{choque permanente} apenas cambia la oferta relativa entre periodos, porque su efecto riqueza compensa buena parte del de sustitución; su efecto se transmite sobre todo por la inversión y la acumulación de capital, que también generan dinámica;
+  \item cuanto más persistente es el choque, menos sustitución intertemporal y más efecto riqueza. Si las fluctuaciones son respuestas óptimas, la política de estabilización no mejora el bienestar \vertema{3.A.42}.
+  \end{itemize}
+\item \emph{Trabajo indivisible}. Si cada persona solo puede trabajar la jornada completa o nada, el ajuste del empleo se hace en el margen extensivo, y la economía responde como si la elasticidad de las horas fuera muy alta aunque la de cada persona sea baja \parencites{Hansen1985Indivisible}{Rogerson1988Indivisible}.
+\item \emph{Demanda de trabajo}: lo intertemporal en la demanda son los costes de ajuste (contratar, formar, despedir). Sin ellos, la empresa ajusta su plantilla cada periodo como en el modelo estático; con ellos, suaviza el empleo a lo largo del ciclo \vertema{3.A.26}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Evidencia empírica}\label{sec:lr-evidencia}
+
+\begin{itemize}
+\item \emph{Elasticidades micro pequeñas}. \textcite{MaCurdy1981Empirical} estima la elasticidad de \autor{Frisch} con datos de panel de varones casados de Estados Unidos, aprovechando que el crecimiento previsto del salario no cambia la riqueza, y obtiene 0{,}15; \textcite{Altonji1986Intertemporal} lo repite con otras medidas del salario. El metaanálisis de \textcite{Chetty2011Micro} da 0{,}54 en las horas, 0{,}28 en la participación y 0{,}82 en las horas agregadas.
+\item \emph{Diferencias por grupos}: las elasticidades de los varones son pequeñas y las de las mujeres, mayores, sobre todo en la decisión de participar \parencite{Keane2011Labor}. La sustitución intertemporal crece con la edad: una subida transitoria del salario mueve poco las horas de los jóvenes, cuya inversión en capital humano pesa más, y mucho las de quienes se acercan a la jubilación \parencites{ImaiKeane2004Intertemporal}{French2005Effects}.
+\item \emph{Experimentos naturales}: los mensajeros en bicicleta de Zúrich trabajan más turnos cuando se les sube temporalmente la comisión \parencite{FehrGoette2007Do}, y los taxistas de Nueva York, más horas cuando cada hora rinde más \parencite{Farber2015Why}, frente a los primeros resultados, que apuntaban a un objetivo diario de ingresos \parencite{CamererEtAl1997Labor}: la sustitución intertemporal existe.
+\item \emph{El problema de la escala}: para reproducir las fluctuaciones del empleo, los modelos de ciclo real necesitan que la elasticidad de \autor{Frisch} agregada de las horas ronde 2{,}8, muy por encima del 0{,}8 de la evidencia micro \parencite{Chetty2011Micro}. El trabajo indivisible (\ref{sec:lr-extensiones}) lleva la diferencia al margen extensivo, pero la elasticidad de participación estimada (0{,}28) está muy lejos de la que suponen esos modelos (2{,}3) \parencite{Chetty2011Micro}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración}\label{sec:lr-valoracion}
+
+\begin{itemize}
+\item El modelo da un mecanismo de propagación de los ciclos y la elasticidad clave de la macroeconomía moderna, y es el marco para pensar en los impuestos temporales y en la jubilación.
+\item Sus límites:
+  \begin{itemize}
+  \item el mecanismo exige elasticidades mayores que las que se estiman con datos individuales, la crítica principal a los ciclos reales;
+  \item no explica el paro involuntario: en una recesión, los parados estarían «eligiendo» ocio porque el salario es transitoriamente bajo, cuando en los datos buscan empleo y no lo encuentran. Eso lleva a las fricciones y a las rigideces \vertema{3.A.26} \vertema{3.A.27} \vertema{3.A.28};
+  \item sigue suponiendo trabajadores iguales y salarios dados.
+  \end{itemize}
+\item Pero el salario futuro no cae del cielo: depende de lo que se invierte hoy en formación. Es el objeto del último bloque.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Teoría del capital humano\newline y función de ingresos}\label{sec:capital-humano}
+\minutos{10}
+
+\begin{notaopositor}
+En el cante. Usos del capital humano (\tiempo{1,5}): la definición, los fundadores y los 5 enfoques en una línea cada uno; en el centro de la pizarra, las 2 cadenas de \autor{Becker} y \autor{Spence}, y a la izquierda se marca el supuesto 3 (y el 2 con \autor{Spence}). \autor{Becker} (\tiempo{4}): la idea con la pegatina «el saber no ocupa lugar» (\tiempo{0,5}); la condición de inversión en 2 periodos y la de los años de estudio (\tiempo{1}); los perfiles edad-ingresos por capas, imprescindibles (\tiempo{1}); la formación general y la específica (\tiempo{1,25}), y la valoración (\tiempo{0,25}). \autor{Mincer} (\tiempo{4,5}): la derivación de la escolarización (\tiempo{0,75}); la ecuación completa como función clave, con \autor{Ben-Porath} en una frase (\tiempo{0,75}); \autor{Oaxaca}-\autor{Blinder} y la brecha de género, con \autor{Goldin} (\tiempo{0,75}); el sesgo de habilidad y los experimentos naturales del Nobel de 2021 (\tiempo{1,25}); los rendimientos actuales y España (\tiempo{0,75}), y la valoración (\tiempo{0,25}). Son de profundización el gráfico de la oferta y la demanda de fondos para estudiar, la caja de la separación de \autor{Fisher}, el gráfico de la Encuesta de Estructura Salarial (en el cante basta la cifra) y el anexo~\ref{anexo:ben-porath}.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la educación es una inversión que se paga con salarios más altos durante toda la vida laboral; la ecuación de \autor{Mincer} mide su rendimiento, en torno a un 9~\% por año de estudios en la media mundial, y los experimentos naturales indican que la mayor parte de esa prima la causa lo que se aprende, no solo quién estudia.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Usos del capital humano}\label{sec:usos-capital-humano}
+
+\begin{itemize}
+\item Una vez visto cuánto y cuándo se trabaja, pasamos a preguntarnos por qué no todas las horas se pagan igual. Hasta aquí, el trabajo era homogéneo (supuesto 3 de la tabla~\ref{tab:supuestos-trabajo}); en los datos, el salario de una hora cambia mucho de una persona a otra, y buena parte de esas diferencias se explica por lo que cada uno ha aprendido.
+\item Se llama \concepto{capital humano} a los conocimientos, habilidades y rasgos que hacen más productiva a una persona. Se parece al capital físico en que se acumula con una inversión que cuesta hoy y rinde mañana, y se diferencia en que no se puede separar de quien lo posee: no se vende ni sirve de garantía de un préstamo.
+\item La idea es antigua,\footnote{\textcite{Marshall1890Principles} ya afirmó que «el capital más valioso de todos es el que se ha invertido en seres humanos».} pero la teoría nace en los años 60, con \textcite{Mincer1958Investment}, \textcite{Schultz1961Investment} y \textcite{Becker1962Investment,Becker1964Human}.\footnote{Según \autor{Becker}, «la motivación fundamental ha sido probablemente el reconocimiento de que el crecimiento del capital físico, al menos tal como se mide convencionalmente, explica solo una parte relativamente pequeña del crecimiento de la renta de la mayoría de los países» \parencite{Becker1964Human}. \autor{Becker} recibió el Premio Nobel de Economía en 1992 por extender el análisis microeconómico a una amplia gama de comportamientos humanos, también fuera del mercado \parencite{Nobel1992Becker}.}
+\item ¿Cómo aumenta la productividad? \textcite[cap.~1]{AcemogluAutor2011Lectures} distinguen 5 maneras de ver el capital humano:
+  \begin{enumerate}
+  \item \emph{\autor{Becker}}: un stock de habilidades, $h$, que entra directamente en la \emph{función de producción} y hace al trabajador más productivo en todas sus tareas, aunque no en todas por igual.
+  \item \emph{\autor{Gardner}}: el capital humano tiene muchas dimensiones (habilidades físicas, cognitivas, sociales), como las inteligencias múltiples del psicólogo Howard \autor{Gardner} \parencite{Gardner1983Frames}; quien destaca en una puede no hacerlo en otra.
+  \item \emph{\autor{Schultz} y \autor{Nelson}-\autor{Phelps}}: es la capacidad de adaptarse a un entorno cambiante y de adoptar tecnologías nuevas \parencite{NelsonPhelps1966Investment,Schultz1975Value} \vertema{3.A.44}.
+  \item \emph{\autor{Bowles}-\autor{Gintis}}: la escuela enseña sobre todo a trabajar en organizaciones jerárquicas, a seguir instrucciones y a aceptar las normas sociales \parencite{BowlesGintis1976Schooling}.
+  \item \emph{\autor{Spence}}: los títulos son una \emph{señal} de una habilidad que ya se tenía, no la causa de la productividad \parencite{Spence1973Job} \vertema{3.A.13}.\footnote{\textcite{Spence1973Job} estudia la selección adversa en el mercado de trabajo; supone que la educación no aumenta la productividad para aislar el papel de la señal.}
+  \end{enumerate}
+\item En los 4 primeros enfoques, la educación \emph{aumenta} la productividad y por eso se paga (también en el de \autor{Bowles} y \autor{Gintis}, porque obedecer es útil a la empresa). En el de \autor{Spence}, solo la \emph{revela}: se levanta además el supuesto 2, la información perfecta. Las 2 cadenas causales son:
+  \begin{itemize}
+  \item \autor{Becker}: educación $\to$ productividad $\to$ salario;
+  \item \autor{Spence}: productividad $\to$ educación $\to$ salario.
+  \end{itemize}
+\item Las 2 predicen que quien estudia más cobra más, y por eso distinguirlas es una tarea de la evidencia empírica (\ref{sec:mincer}). La economía laboral parte del enfoque de \autor{Becker}, y esta exposición también.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Teoría del capital humano de \autor{Becker} (1964)}\label{sec:becker}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Becker1964Human} trata la educación como cualquier otra inversión:
+  \begin{itemize}
+  \item tiene \emph{costes}: los directos (matrícula, libros, desplazamientos), el \emph{coste de oportunidad}, que es el salario al que se renuncia mientras se estudia, y el esfuerzo;
+  \item da \emph{rendimientos}: si lo aprendido eleva la productividad, el mercado lo paga con un salario más alto el resto de la vida laboral.
+  \end{itemize}
+\item Se estudia mientras lo que se gana, en valor presente, supere lo que cuesta. Las diferencias de salario reflejan así diferencias de productividad, y estas, lo que cada uno ha invertido en sí mismo.
+\item Lo resume la pegatina \emph{el saber no ocupa lugar}\ldots\ pero sí tiempo: el coste principal de estudiar no es la matrícula, sino el salario que se deja de ganar.
+\end{itemize}
+
+\paragraph{b) Modelo: la decisión de cuánto estudiar}\label{sec:becker-modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Un individuo decide cuántos años $S$ estudia a tiempo completo al principio de su vida; después trabaja a tiempo completo hasta la jubilación, en $T$.
+\item Mientras estudia no cobra y paga un coste directo $c$ por año. Después cobra cada año un salario real $w(S)$, creciente en los años de estudio y con rendimientos decrecientes: $w'(S)>0$ y $w''(S)<0$ (aprender a leer rinde más que el décimo máster).
+\item Mercado de capitales perfecto, al tipo de interés real $r$, y la educación no da utilidad por sí misma. Entonces la decisión de cuánto estudiar se separa de la de cuánto consumir: basta con elegir la que hace máximo el valor presente de la renta (caja de abajo).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{La versión más sencilla, en 2 periodos}: en el primero se acumula capital humano $h$ con un coste $c(h)$, que incluye el salario perdido; en el segundo se cobra $w(h)$. Se invierte hasta que el ingreso marginal descontado de una unidad más de capital humano iguala su coste marginal:
+  \begin{equation}
+  \max_{h}\ -c(h)+\frac{w(h)}{1+r}\ \Longrightarrow\ \underbrace{\frac{w'(h)}{1+r}}_{\mathrm{IMg}_h}=\underbrace{c'(h)}_{\mathrm{CMg}_h}\label{eq:becker-inversion}
+  \end{equation}
+\item \emph{Con años de estudio}: el valor presente de la renta de quien estudia $S$ años es lo que cobra desde $S$ hasta $T$ menos lo que paga mientras estudia,
+  \[
+  \max_{S}\ V(S)=\int_{S}^{T}w(S)\,e^{-rt}\,dt-\int_{0}^{S}c\,e^{-rt}\,dt
+  \]
+  Un año más de estudio tiene 3 efectos: sube el salario de todos los años que quedan, retrasa un año el primer sueldo y añade un año de costes directos. La condición de primer orden, $V'(S^*)=0$, iguala el primero con los otros 2:
+  \[
+  w'(S^*)\,\frac{1-e^{-r(T-S^*)}}{r}=w(S^*)+c
+  \]
+\item Con una vida laboral larga ($T\to\infty$), el primer miembro es el valor presente de una renta perpetua de $w'(S^*)$, y la condición se lee como una regla de inversión: la \concepto{tasa marginal de rendimiento} de estudiar, $\rho(S)$, iguala al tipo de interés,
+  \[
+  \rho(S^*)\equiv\frac{w'(S^*)}{w(S^*)+c}=r
+  \]
+  Cada año de estudio rinde $w'(S)$ al año para siempre y cuesta $w(S)+c$: se estudia mientras rinda más que prestar ese dinero en el mercado.
+\item \emph{Interpretación gráfica} \parencite{Becker1967Human} (gráfico~\ref{fig:becker-inversion}). La tasa marginal de rendimiento es la \emph{demanda} de inversión en educación, decreciente por los rendimientos decrecientes. El coste marginal de los fondos con que se financia es la \emph{oferta}, creciente y escalonada: se acude primero a la financiación más barata (los recursos de la familia, las becas, los préstamos subvencionados) y después a la más cara (los préstamos de mercado). Se estudia hasta que se cortan.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La decisión de estudiar: demanda y oferta de fondos para invertir en capital humano}\label{fig:becker-inversion}
+\grafico[0.6\textwidth]{becker-inversion}
+\fuente{elaboración propia a partir de \textcite{Becker1967Human}.}
+\end{figure}
+
+\begin{anotaciones}
+\textbf{La decisión de estudiar con preferencias de consumo: la separación de \autor{Fisher}}
+
+\begin{itemize}
+\item La decisión puede verse en 2 periodos con las herramientas del consumo intertemporal (gráfico~\ref{fig:fisher-capital-humano}). El individuo reparte su tiempo del primer periodo entre trabajar y formarse:
+  \begin{itemize}
+  \item la \emph{frontera de posibilidades de renta}, $(y_1,y_2)$, tiene pendiente negativa, porque para ganar más mañana hay que formarse más y ganar menos hoy, y es cóncava, porque cada hora de formación añade menos renta futura que la anterior;
+  \item las \emph{curvas de indiferencia} entre el consumo de hoy y el de mañana, $(C_1,C_2)$, son decrecientes y convexas: se prefiere repartir el consumo.
+  \end{itemize}
+\item \emph{Sin mercado de capitales}, se consume lo que se gana, y la formación la decide la tangencia de una curva de indiferencia con la frontera: el impaciente se forma menos.
+\item \emph{Con un mercado de capitales perfecto}, se puede prestar y pedir prestado al tipo $r$, y la decisión se hace en 2 pasos. Primero se elige la formación que hace máxima la riqueza, donde la frontera es tangente a una recta de pendiente $-(1+r)$, y después se reparte el consumo a lo largo de esa recta según las preferencias. La formación ya no depende de la paciencia: es el \concepto{teorema de separación} de \autor{Fisher} \parencite{Fisher1930Theory}, que \textcite[cap.~1]{AcemogluAutor2011Lectures} aplican al capital humano \vertema{3.A.33}.
+\item Por eso el modelo puede maximizar el valor presente de la renta, igual que una empresa decide una inversión por su valor actual neto \vertema{3.A.34}. Con restricciones de liquidez, la separación se rompe y quien tiene menos recursos estudia menos.
+\end{itemize}
+
+\begin{figuracaja}
+\caption{La decisión de formarse en 2 periodos, sin y con mercado de capitales}\label{fig:fisher-capital-humano}
+\grafico[0.6\textwidth]{fisher-capital-humano}
+\fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite[cap.~6]{Borjas2020Labor}.}
+\end{figuracaja}
+\end{anotaciones}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Quién estudia más}: la condición de primer orden da los determinantes de $S^*$.
+  \begin{itemize}
+  \item Los más hábiles: aprenden más deprisa, su curva de demanda está más arriba y estudian más.
+  \item Los que tienen más recursos o mejor acceso al crédito: su curva de oferta está más abajo y también estudian más. Habilidad y financiación explican, juntas, la desigualdad en la educación y en los salarios \parencite{Becker1967Human}.
+  \item Estudian menos quienes afrontan un tipo de interés más alto, un coste directo mayor o una vida laboral más corta.
+  \end{itemize}
+\item \emph{Cuándo se estudia}: al principio de la vida. Con $T$ finito, el factor $1-e^{-r(T-S)}$ cae cuanto más tarde se estudia, porque quedan menos años para cobrar el rendimiento. Por eso conviene acumular conocimientos al empezar la vida laboral y, después, trabajar sin apenas seguir formándose.
+\item \emph{El vínculo con la función de ingresos}: sin costes directos ($c=0$), la condición dice que $w'(S^*)/w(S^*)=r$: en el margen, un año más de estudio sube el salario en un porcentaje igual al tipo de interés. Es la idea de la ecuación de \autor{Mincer} (\ref{sec:mincer}).
+\item \emph{Perfiles edad-ingresos} (gráfico~\ref{fig:perfiles-edad}). La decisión se ve comparando 2 trayectorias a lo largo de la vida, la de quien empieza a trabajar al acabar la secundaria y la de quien estudia una carrera \parencite{McConnellBrue1997Economia}:
+  \begin{itemize}
+  \item mientras estudia, el universitario tiene ingresos negativos, los \emph{costes directos}, y deja de ganar el salario del otro, el \emph{coste de oportunidad};
+  \item después gana más, y la distancia entre las 2 curvas es el \emph{rendimiento bruto} de la carrera;
+  \item las 2 curvas son cóncavas: crecen deprisa al principio, cada vez más despacio, y pueden caer algo al final de la vida laboral; se sigue aprendiendo en el trabajo, pero cada vez menos;
+  \item conviene estudiar si el valor actual neto es positivo, es decir, si el rendimiento bruto descontado supera la suma de los 2 costes; o, lo que es lo mismo, si la tasa interna de rendimiento de la carrera supera a $r$.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Perfiles edad-ingresos con y sin estudios universitarios: costes directos, coste de oportunidad y rendimiento bruto}\label{fig:perfiles-edad}
+\grafico[0.75\textwidth]{perfiles-edad}
+\fuente{elaboración propia a partir de \textcite{McConnellBrue1997Economia} y \textcite[cap.~6]{Borjas2020Labor}.}
+\end{figure}
+
+\paragraph{c) Extensiones: formación general y formación específica}\label{sec:formacion-especifica}
+
+\begin{itemize}
+\item Hasta aquí, quien invertía era el trabajador. Pero buena parte de la formación se recibe en la empresa, y una mejora de la productividad solo se convierte en salario si hay otras empresas dispuestas a pagarla: con un solo empleador posible, la empresa no tendría por qué subir el sueldo. Por eso \textcite{Becker1964Human} distingue 2 tipos de formación:
+  \begin{itemize}
+  \item la \concepto{formación general} aumenta la productividad del trabajador en cualquier empresa (un idioma, la contabilidad, el manejo de una hoja de cálculo): va con el trabajador;
+  \item la \concepto{formación específica} solo la aumenta en la empresa que la da (sus procesos, sus clientes, sus programas): va con el puesto.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item La relación dura 2 periodos y el precio del bien se normaliza a 1, de modo que el valor del producto marginal y el salario se miden en las mismas unidades.
+\item En el primer periodo, la empresa forma al trabajador con un coste $c$.
+\item Sin formación, el trabajador produce $\mathrm{VPMg}^0$ en cualquier empresa, y en un mercado competitivo ese es también lo que le pagarían fuera. Con formación, en el segundo periodo produce $\mathrm{VPMg}^1>\mathrm{VPMg}^0$: en todas las empresas si es general, y solo en la suya si es específica.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Formación general}. En el segundo periodo, otras empresas ofrecerán $w_2=\mathrm{VPMg}^1$, así que la empresa que forma tiene que pagar eso o perder al trabajador, y no recupera nada de lo invertido. Solo ofrece la formación si el trabajador la paga con un salario menor mientras se forma, $w_1=\mathrm{VPMg}^0-c$. Al trabajador le conviene si
+  \[
+  \frac{\mathrm{VPMg}^1-\mathrm{VPMg}^0}{1+r}\geq c
+  \]
+  La inversión se hace cuando es eficiente y \emph{la paga el trabajador}: es el caso de los aprendices, los becarios o los médicos residentes, que cobran poco mientras aprenden.
+\item \emph{Formación específica}. Fuera, el trabajador sigue valiendo $\mathrm{VPMg}^0$, y ninguna de las 2 partes quiere pagarla sola:
+  \begin{itemize}
+  \item si la pagara la empresa y le siguiera pagando $\mathrm{VPMg}^0$, el trabajador podría irse sin perder nada, y la empresa perdería su inversión;
+  \item si la pagara el trabajador y cobrara $\mathrm{VPMg}^1$, la empresa podría despedirlo, y sería él quien la perdiera.
+  \end{itemize}
+  La solución es \emph{repartir} el coste y la renta: el trabajador paga una parte $\gamma\in(0,1)$ del coste y en el segundo periodo cobra
+  \[
+  w_2=\mathrm{VPMg}^0+\gamma\big(\mathrm{VPMg}^1-\mathrm{VPMg}^0\big)
+  \]
+  más que fuera y menos de lo que produce dentro, con $\gamma$ su poder de negociación \vertema{3.A.27}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Con formación específica, las 2 partes ganan con la relación y pierden si se rompe:
+  \begin{itemize}
+  \item las bajas voluntarias y los despidos caen con la antigüedad, y los salarios crecen con ella;
+  \item en una recesión se despide antes a los recién llegados, que tienen menos capital específico: «el último en entrar, el primero en salir»;
+  \item los trabajadores con capital específico son difíciles de sustituir por los de fuera: es una de las raíces del poder de los \emph{insiders} en la negociación salarial \vertema{3.A.27}. Se levanta el supuesto 7 de la tabla~\ref{tab:supuestos-trabajo}: cambiar de empleo o de plantilla tiene un coste.
+  \end{itemize}
+\item Hay menos formación general de la eficiente si el trabajador no puede pagarla: por restricciones de liquidez o porque un salario mínimo impide cobrar menos mientras aprende.
+\item \textcite{AcemogluPischke1998Why,AcemogluPischke1999Beyond} matizan el resultado: con mercados imperfectos (fricciones, información asimétrica sobre lo aprendido) el salario sube menos que la productividad, y las empresas pagan también formación general, como en el sistema alemán de aprendizaje.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item La teoría explica por qué se estudia al principio de la vida, por qué el salario crece con la experiencia y con la antigüedad, quién paga cada tipo de formación y cómo la habilidad y los recursos de la familia generan desigualdad.
+\item Sus límites:
+  \begin{itemize}
+  \item el capital humano no es el único determinante del salario: la edad, el sexo, la discriminación o el poder de mercado también cuentan;
+  \item supone información perfecta sobre los costes y los rendimientos de estudiar, algo poco realista;
+  \item con fallos de mercado, como las restricciones de liquidez en el crédito, quien desearía formarse puede no poder hacerlo, y la inversión queda por debajo de la eficiente.
+  \end{itemize}
+\item Y deja una pregunta abierta: ¿cuánto del salario de quien estudia más se debe a lo que aprende y cuánto a quién es? Para contestarla hace falta una función de ingresos que se pueda estimar: la de \autor{Mincer}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Función de ingresos de capital humano:\newline la ecuación de \autor{Mincer}}\label{sec:mincer}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Una vez vista la decisión de invertir, pasamos a medir su rendimiento. ¿Qué determina el salario de un trabajador: la educación, la experiencia, sus características personales?
+\item \textcite{Mincer1974Schooling} convierte la teoría en una ecuación que se estima con datos de salarios, años de estudio y años de experiencia: la \concepto{función de ingresos de capital humano}, probablemente la ecuación más estimada de la economía laboral. Su coeficiente de la escolaridad dice cuánto sube el salario con un año más de estudios, una cifra clave para decidir el gasto en educación o las becas.
+\end{itemize}
+
+\paragraph{b) Modelo}\label{sec:mincer-modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Escolarización} \parencite{Mincer1958Investment}: estudiar solo cuesta el salario que se deja de cobrar; la vida laboral es igual de larga para todos y muy larga; el tipo de descuento $r$ es el mismo para todos, y los individuos solo se diferencian en los años que estudian.
+\item \emph{Experiencia}: tras dejar la escuela se sigue invirtiendo en formación en el trabajo, pero cada vez menos.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Los años de estudio}. Si todos pueden elegir cualquier número de años y unos estudios se pagaran mejor que otros en valor presente, nadie elegiría los demás. En equilibrio, el valor presente de la renta tiene que ser el mismo para cualquier $S$: los salarios compensan el tiempo de estudio. Con una vida laboral muy larga, $w(S)\,e^{-rS}/r=w(0)/r$, y tomando logaritmos,
+  \begin{equation}
+  \ln w(S)=\ln w(0)+r\,S\label{eq:mincer-escolarizacion}
+  \end{equation}
+  Cada año de estudios sube el salario en un $r\cdot 100$~\%: el coeficiente de la escolaridad es la \emph{tasa de rendimiento} de la educación, y en equilibrio iguala al tipo de interés, como en la condición de \autor{Becker} sin costes directos.
+\item \emph{La experiencia}. Según \textcite{BenPorath1967Production}, el capital humano sigue creciendo con la parte del tiempo que se dedica a formarse, $\dot h=a\,[1-u]\,h$, con $a>0$ la aptitud para aprender y $1-u$ esa fracción del tiempo; como cada vez quedan menos años para amortizarla, esa fracción cae con la edad. Si cae de forma lineal con la experiencia, el logaritmo del salario es una función cuadrática y cóncava de la experiencia (anexo~\ref{anexo:ben-porath}).
+\item Juntando las 2 partes, para cada individuo $i$:
+  \funcionclave[eq:mincer]{\ln w_i=\beta_0+\beta_1S_i+\beta_2X_i+\beta_3X_i^2+\varepsilon_i,\qquad \beta_1\approx r,\ \beta_2>0,\ \beta_3<0}
+  donde $w_i$ es el salario real, $S_i$ los años de estudios, $X_i$ los años de experiencia y $\varepsilon_i$ la perturbación.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item $\beta_1$ es el aumento porcentual del salario por un año más de estudios: el \emph{rendimiento privado} de la educación.
+\item $\beta_2$ y $\beta_3$ dan un perfil cóncavo en la experiencia: el salario crece deprisa al empezar a trabajar, después más despacio y alcanza su máximo con $X=-\beta_2/(2\beta_3)$ años de experiencia. Son los perfiles edad-ingresos del gráfico~\ref{fig:perfiles-edad}.
+\item Al estar en logaritmos, los perfiles de quienes más han estudiado están por encima en todas las edades, y la diferencia en euros crece con la edad (gráfico~\ref{fig:ees-edad-estudios}).
+\end{itemize}
+
+\paragraph{c) Extensiones}\label{sec:mincer-extensiones}
+
+\begin{itemize}
+\item \emph{Brechas salariales: la descomposición de \autor{Oaxaca}-\autor{Blinder}}. \textcite{Oaxaca1973Male} y \textcite{Blinder1973Wage}, por separado, usan la ecuación de \autor{Mincer} para estudiar por qué cobran distinto 2 grupos, como hombres (A) y mujeres (B) o 2 grupos étnicos. Con una ecuación para cada grupo, con su vector de características $\vect{x}$ (estudios, experiencia, ocupación…) y sus coeficientes estimados $\hat{\vect{\beta}}$, la diferencia entre las medias de los logaritmos del salario se parte en 2:\footnote{Con una constante en la regresión, la media del logaritmo del salario de cada grupo es $\overline{\ln w}=\bar{\vect{x}}\cdot\hat{\vect{\beta}}$. Basta restar las 2 medias y sumar y restar $\bar{\vect{x}}_{\mathrm{B}}\cdot\hat{\vect{\beta}}_{\mathrm{A}}$.}
+  \begin{equation}
+  \overline{\ln w}_{\mathrm{A}}-\overline{\ln w}_{\mathrm{B}}=\underbrace{(\bar{\vect{x}}_{\mathrm{A}}-\bar{\vect{x}}_{\mathrm{B}})\cdot\hat{\vect{\beta}}_{\mathrm{A}}}_{\text{explicada: características}}+\underbrace{\bar{\vect{x}}_{\mathrm{B}}\cdot(\hat{\vect{\beta}}_{\mathrm{A}}-\hat{\vect{\beta}}_{\mathrm{B}})}_{\text{no explicada: rendimientos}}\label{eq:oaxaca}
+  \end{equation}
+  \begin{itemize}
+  \item la parte \emph{explicada} se debe a que los grupos tienen distintas características;
+  \item la \emph{no explicada}, a que el mercado paga de forma distinta las mismas características. Se asocia a la discriminación, aunque recoge también todo lo que no se observa.
+  \end{itemize}
+\item \emph{Aplicaciones}. \textcite{BlauKahn1992Gender} la usan para comparar la brecha de género entre países. En España, con los microdatos de la Encuesta de Estructura Salarial de 2010 y una variante de la descomposición, \textcite{MurilloRamosSimon2017Regional} parten una brecha bruta de 20 puntos logarítmicos: unos 12 se deben a las características de los trabajadores y de sus centros de trabajo, y casi 8 quedan sin explicar.
+\item \emph{La brecha hoy}. En España, el salario medio anual de las mujeres fue en 2024 el 83{,}9~\% del de los hombres, una brecha del 16{,}1~\% \parencite{INE2026EAES2024}. Por hora trabajada, la brecha sin ajustar es del 7{,}3~\%, por debajo del 11{,}1~\% de la UE \parencite{Eurostat2026BrechaSalarial}. Las 2 cifras no se comparan: la anual recoge también que las mujeres trabajan más a tiempo parcial.
+\item \emph{\autor{Goldin} y la penalización por hijos} (Nobel 2023).
+  \begin{itemize}
+  \item Hoy la brecha apenas se debe a la educación (las mujeres estudian más que los hombres en casi todos los países ricos), sino a lo que pasa dentro de cada ocupación. Muchos empleos pagan de forma más que proporcional las jornadas largas y poco flexibles, que son las que menos encajan con el cuidado de los hijos \parencite{Goldin2014Grand}.
+  \item \textcite{KlevenLandaisSogaard2019Children} comparan, con datos administrativos de Dinamarca, los ingresos de hombres y mujeres antes y después del primer hijo. Los de las madres caen y no se recuperan, con una \emph{penalización} a largo plazo de en torno al 20~\%, y los de los padres no cambian. La penalización por hijos explica una parte creciente de la desigualdad de ingresos entre hombres y mujeres: en torno al 40~\% en 1980 y al 80~\% en 2013 \parencite{KlevenLandaisSogaard2018NBER}.
+  \end{itemize}
+\item \emph{La habilidad tiene muchas dimensiones}, como decía \autor{Gardner}: las habilidades no cognitivas (la constancia, el autocontrol) influyen en los salarios tanto como las cognitivas \parencite{HeckmanStixrudUrzua2006}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}\label{sec:mincer-evidencia}
+
+\begin{itemize}
+\item \emph{Rendimientos estimados por mínimos cuadrados ordinarios (MCO)}. En una revisión de 1.120 estimaciones de 139 países, cada año adicional de estudios se traduce de media en un salario alrededor de un 9~\% mayor, algo menos en los países de renta alta (8~\%), con una cifra muy estable en el tiempo \parencite{PsacharopoulosPatrinos2018Returns}: es difícil encontrar una inversión más rentable. Por niveles, el rendimiento más alto es hoy el de los estudios superiores, en torno al 15~\% \parencite{MontenegroPatrinos2014Comparable}, y ha crecido en las últimas décadas.
+\item \emph{El problema: ¿es causal?} $\beta_1$ solo mide el efecto de estudiar si los años de estudios no están correlacionados con lo que no se observa:
+  \begin{itemize}
+  \item si los más hábiles estudian más y ganarían más de todos modos, $\beta_1$ \emph{sobreestima} el rendimiento: es el \concepto{sesgo de habilidad} (\emph{ability bias}), que ya había señalado \autor{Becker};
+  \item si los años de estudio se miden con error, $\beta_1$ lo \emph{subestima}. Además, controlar por el cociente intelectual apenas reduce el rendimiento estimado \parencite{Griliches1977Estimating}.
+  \end{itemize}
+\item \emph{La respuesta: los experimentos naturales} (Nobel 2021). \autor{Card} recibió la mitad del premio por sus contribuciones empíricas a la economía laboral, y \autor{Angrist} e \autor{Imbens}, la otra mitad, por sus aportaciones de método al estudio de la causalidad \parencite{Nobel2021}. La idea es buscar algo que cambie los años de estudio por azar, sin relación con la habilidad, y usarlo como \emph{variable instrumental}:
+  \begin{itemize}
+  \item \emph{trimestre de nacimiento}: en Estados Unidos, la escolarización es obligatoria hasta una edad, y como se entra en la escuela por años naturales, quien nace a principios de año puede dejarla con menos cursos hechos. Con este instrumento, \textcite{AngristKrueger1991Does} obtienen rendimientos del 7-10~\% por cada curso adicional, muy cercanos a los de MCO;
+  \item \emph{distancia a la universidad}: crecer cerca de una abarata estudiar. \textcite{Card1995Using} obtiene así un rendimiento entre un 25 y un 60~\% mayor que el de MCO, concentrado en los hijos de padres con pocos estudios;
+  \item \emph{gemelos idénticos}: comparten genes y familia, así que la diferencia de salario entre el que estudia más y el que estudia menos no se debe a la habilidad heredada. \textcite{AshenfelterKrueger1994Estimates} estiman un rendimiento del 12-16~\% por año;\footnote{El método de los gemelos tiene su propio problema: si son idénticos, ¿por qué estudian distinto? Si la diferencia se debe a algo que también influye en sus ingresos (preguntados, algunos responden que uno era «mejor con los libros»), el rendimiento estimado sigue sesgado \parencite[cap.~6]{Borjas2020Labor}.}
+  \item \emph{efecto medio local}: \textcite{ImbensAngrist1994Identification} muestran que, si el rendimiento cambia de una persona a otra, la variable instrumental mide el de quienes cambian su decisión por el instrumento (\emph{local average treatment effect}, LATE), no el de toda la población.
+  \end{itemize}
+\item \emph{Conclusión}: las estimaciones con instrumentos son iguales o mayores que las de MCO \parencite{Card1999Causal,Card2001Estimating}. Una explicación es que los instrumentos mueven a quienes tenían más difícil estudiar, a menudo por falta de recursos, y para ellos el rendimiento es mayor. La educación causa buena parte de la prima salarial: la señal de \autor{Spence} no lo explica todo.\footnote{Con instrumentos que apenas mueven los años de estudio, como el trimestre de nacimiento, la estimación tiende hacia la de MCO y puede estar tan sesgada como ella \parencite{BoundJaegerBaker1995Problems}.}
+\item \emph{España}. Los datos reproducen los perfiles de la teoría (gráfico~\ref{fig:ees-edad-estudios}): el salario crece con la edad a un ritmo decreciente, y la pendiente es mayor cuanto más se ha estudiado. Con estudios universitarios largos, el salario medio a partir de los 55 años supera en un 86~\% al de quien tiene la segunda etapa de secundaria \parencite{INE2024EES2022}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Ganancia media anual por trabajador según la edad y el nivel de estudios en España, 2022}\label{fig:ees-edad-estudios}
+\grafico[0.75\textwidth]{ees-edad-estudios}
+\fuente{INE, Encuesta de Estructura Salarial 2022, tabla 36870 \parencite{INE2024EES2022}.}
+\end{figure}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item La función de ingresos de \autor{Mincer} describe bien los salarios observados, y su coeficiente de la escolaridad es, con los experimentos naturales, una de las cifras mejor medidas de la economía.
+\item Sus límites:
+  \begin{itemize}
+  \item el coeficiente solo es una tasa de rendimiento con supuestos fuertes (sin costes directos ni impuestos, todos con la misma vida laboral); \textcite{HeckmanLochnerTodd2006Earnings} muestran que ya no se cumplen y que la relación entre los años de estudio y el salario ha dejado de ser lineal, porque los títulos pesan más que los años;
+  \item mide el rendimiento \emph{privado}; el \emph{social} puede ser mayor, si el capital humano de cada uno hace más productivos a los demás, y es la pieza central de los modelos de crecimiento con capital humano \vertema{3.A.43} \vertema{3.A.44};
+  \item con datos de salarios y estudios es difícil separar la productividad de la señal: los experimentos naturales lo consiguen solo en parte.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: En conclusión, el modelo neoclásico explica el empleo y el salario con las mismas herramientas que cualquier otro mercado:
+  \begin{itemize}
+  \item la oferta sale del salario de reserva y de los efectos renta y sustitución; la demanda, del valor del producto marginal, y el salario flexible vacía el mercado, sin paro involuntario salvo que un salario mínimo lo impida;
+  \item llevado al tiempo con \autor{Lucas} y \autor{Rapping}, explica por qué las horas responden más a los cambios transitorios del salario que a los permanentes;
+  \item con capital humano, explica por qué los salarios difieren, y la ecuación de \autor{Mincer} mide cuánto rinde estudiar.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: estas elasticidades y rendimientos son los números con que se evalúan los impuestos sobre el trabajo \vertema{4.B.10}, el salario mínimo y la política educativa \vertema{4.A.16} \vertema{4.A.2}.
+\item \textbf{\emph{Extensiones}}: al levantar la información perfecta y la movilidad llegan la búsqueda y el paro friccional \vertema{3.A.26}; al levantar la flexibilidad salarial, la negociación, los salarios de eficiencia y los contratos implícitos \vertema{3.A.27}, y la tasa natural y la histéresis \vertema{3.A.28}. La oferta intertemporal es una pieza de los ciclos reales \vertema{3.A.42}, y el capital humano, del crecimiento \vertema{3.A.43} \vertema{3.A.44}.
+\item \textbf{\emph{Opinión}}: el modelo neoclásico falla como descripción del paro, pero es más útil como mapa de incentivos que como fotografía del mercado. Y la revolución de la credibilidad, premiada en 2021 y 2023, ha cambiado la manera de discutirlo: se ha pasado de debatir supuestos a medir efectos.
+\item \textbf{\emph{Idea final}}: decíamos al empezar que el tiempo es oro. Ahora sabemos cuánto vale una hora: lo que se paga por ella en el margen, el salario; pero ese precio no es el mismo hoy que mañana, y depende sobre todo de lo que cada uno haya invertido antes en sí mismo.
+\end{itemize}
+
+\clearpage
+\appendix
+% ==========================================================================
+\section{Anexo: condiciones de \autor{Kuhn}-\autor{Tucker} de la oferta\newline y ecuación de \autor{Slutsky} con dotación}\label{anexo:slutsky-dotacion}
+
+\subsection{Condiciones de \autor{Kuhn}-\autor{Tucker} del problema de la oferta}\label{anexo:kt-oferta}
+
+\begin{itemize}
+\item El problema \eqref{eq:oferta-problema} tiene 2 restricciones que pueden saturarse: la presupuestaria y la de tiempo, $O\leq O_0$ (no se puede tener más ocio que horas). Con un multiplicador para cada una, $\lambda$ y $\mu$, la lagrangiana es
+  \[
+  \mathcal{L}=U(C,O)+\lambda\big[w\,O_0+\overline{W}-C-w\,O\big]+\mu\big[O_0-O\big]
+  \]
+\item Las condiciones de \autor{Kuhn}-\autor{Tucker} son 4 grupos:
+  \begin{enumerate}
+  \item \emph{Estacionariedad} (segunda ley de \autor{Gossen}): la utilidad marginal de cada bien no supera su coste en utilidad, el precio por la utilidad marginal de la renta,
+    \[
+    \frac{\partial\mathcal{L}}{\partial C}=U_C-\lambda\leq 0,\qquad \frac{\partial\mathcal{L}}{\partial O}=U_O-\lambda\,w-\mu\leq 0
+    \]
+  \item \emph{Restricciones}: $C+w\,O\leq w\,O_0+\overline{W}$ y $O\leq O_0$, con la renta no laboral $\overline{W}$ en el lado derecho.
+  \item \emph{No negatividad}: $C\geq 0$, $O\geq 0$, $\lambda\geq 0$, $\mu\geq 0$.
+  \item \emph{Holgura complementaria}: cada producto de una condición por su variable es \emph{nulo},
+    \[
+    C\,(U_C-\lambda)=0,\qquad O\,(U_O-\lambda\,w-\mu)=0,\qquad \lambda\big[w\,O_0+\overline{W}-C-w\,O\big]=0,\qquad \mu\,(O_0-O)=0
+    \]
+    Es una igualdad por construcción: de los 2 factores de cada producto, al menos uno se anula, porque o la variable es 0 (esquina) o la condición se cumple con igualdad (interior).
+  \end{enumerate}
+\item \emph{Lectura}:
+  \begin{itemize}
+  \item con no saciedad local, $\lambda>0$ y la restricción presupuestaria se satura: $C+w\,O=w\,O_0+\overline{W}$;
+  \item si la utilidad marginal del consumo se hace infinita cuando $C\to 0$, $C>0$ y $U_C=\lambda$, la utilidad marginal de la renta;
+  \item \emph{solución interior} ($0<O<O_0$): $\mu=0$ y $U_O=\lambda\,w$, de donde $U_O/U_C=w$, la tangencia \eqref{eq:oferta-tangencia};
+  \item \emph{esquina sin trabajo} ($O=O_0$, $C=\overline{W}$): $\mu\geq 0$ y $U_O=\lambda\,w+\mu\geq\lambda\,w$. Dividiendo por $U_C=\lambda$, la relación marginal de sustitución en el punto de dotación es mayor o igual que $w$: no se trabaja si el salario no supera el salario de reserva \eqref{eq:salario-reserva}.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Ecuación de \autor{Slutsky} con renta-dotación}\label{anexo:slutsky-ecuacion}
+
+\begin{itemize}
+\item Sean $O(w,\overline{W})$ la demanda marshalliana de ocio, $h_O(w,\overline{U})$ la hicksiana y $E(w,\overline{U})$ la función de gasto: lo mínimo que hay que gastar en consumo y ocio, $C+w\,O$, para alcanzar la utilidad $\overline{U}$ \vertema{3.A.9}. Con una renta completa igual a $E(w,\overline{U})$, la renta no laboral que permite alcanzar $\overline{U}$ es $E(w,\overline{U})-w\,O_0$, y las 2 demandas coinciden:
+  \[
+  h_O(w,\overline{U})\equiv O\big(w,\,E(w,\overline{U})-w\,O_0\big)
+  \]
+\item Derivando la identidad respecto a $w$ y usando el lema de \autor{Shephard}, $\partial E/\partial w=h_O=O$:
+  \[
+  \frac{\partial h_O}{\partial w}=\frac{\partial O}{\partial w}+\frac{\partial O}{\partial\overline{W}}\Big(\frac{\partial E}{\partial w}-O_0\Big)=\frac{\partial O}{\partial w}+\frac{\partial O}{\partial\overline{W}}\,(O-O_0)
+  \]
+  y despejando se separan los 3 efectos del cuerpo (gráfico~\ref{fig:efectos-salario}):
+  \begin{equation*}
+  \underbrace{\frac{\partial O(w,\overline{W})}{\partial w}}_{\text{efecto total}}=\underbrace{\frac{\partial h_O(w,\overline{U})}{\partial w}}_{\text{sustitución}\ (\leq 0)}\ \underbrace{-\,O\,\frac{\partial O(w,\overline{W})}{\partial\overline{W}}}_{\text{renta ordinario}}\ \underbrace{+\,O_0\,\frac{\partial O(w,\overline{W})}{\partial\overline{W}}}_{\text{renta dotación}}=\frac{\partial h_O}{\partial w}+\underbrace{(O_0-O)}_{L}\,\frac{\partial O}{\partial\overline{W}}
+  \end{equation*}
+\item Como $L=O_0-O$, $\partial L/\partial w=-\partial O/\partial w$ y $\partial L/\partial\overline{W}=-\partial O/\partial\overline{W}$. En horas de trabajo, la ecuación de \autor{Slutsky} con renta-dotación es
+  \begin{equation}
+  \frac{\partial L(w,\overline{W})}{\partial w}=-\frac{\partial h_O(w,\overline{U})}{\partial w}+L\,\frac{\partial L(w,\overline{W})}{\partial\overline{W}}\label{eq:slutsky-dotacion}
+  \end{equation}
+  El primer término es positivo (la sustitución siempre aumenta las horas) y el segundo, el efecto renta global, es negativo si el ocio es normal y proporcional a las horas que se venden.\findemo
+\item Sin dotación ($O_0=0$) desaparece el efecto renta dotación y queda la ecuación de \autor{Slutsky} de la teoría del consumidor \vertema{3.A.8}. La tabla~\ref{tab:slutsky-dotacion} combina los signos.
+\end{itemize}
+
+\begin{table}[H]
+\centering\small
+\caption{Ecuación de \autor{Slutsky} con renta-dotación: signos de los efectos de una subida del salario sobre el ocio}\label{tab:slutsky-dotacion}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.0cm}|>{\centering\arraybackslash}m{2.3cm}|>{\centering\arraybackslash}m{2.0cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{3.1cm}|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{tceesalvia}Ecuación} & \cellcolor{tceesalvia}$\displaystyle\frac{\partial h_O}{\partial w}$ & \cellcolor{tceesalvia}$\displaystyle-\,O\,\frac{\partial O}{\partial\overline{W}}$ & \cellcolor{tceesalvia}$\displaystyle+\,O_0\,\frac{\partial O}{\partial\overline{W}}$ & \cellcolor{tceesalvia}$\displaystyle=\ \frac{\partial O}{\partial w}=-\frac{\partial L}{\partial w}$\\
+\hline
+\rowcolor{tceeazulpalido}\textit{Ocio} & \textit{Situación} & \textit{Sustitución} & \textit{Renta ordinario} & \textit{Renta dotación} & \textit{Efecto total}\\
+\hline
+\multirow{2}{=}[-0.6\baselineskip]{\centering\textcolor{tceeverde}{Normal\newline $\partial O/\partial\overline{W}>0$}} & Trabaja\newline ($O<O_0$, $L>0$) & $\leq 0$ & \textcolor{tceeverde}{$<0$} & \textcolor{tceeverde}{$>0$} & \textcolor{tceerojo}{ambiguo: la oferta puede volverse hacia atrás}\\
+\hhline{|~|-|-|-|-|-|}
+ & En el umbral\newline ($O=O_0$, $w=w^R$) & $\leq 0$ & \textcolor{tceeverde}{$<0$} & \textcolor{tceeverde}{$>0$} & \textcolor{tceeazul}{$\leq 0$: las 2 rentas se anulan y $L$ sube}\\
+\hline
+Frontera\newline $\partial O/\partial\overline{W}=0$ & Cualquiera & $\leq 0$ & $=0$ & $=0$ & \textcolor{tceeazul}{$\leq 0$: solo sustitución; $L$ sube}\\
+\hline
+\textcolor{tceedorado}{Inferior\newline $\partial O/\partial\overline{W}<0$} & Trabaja\newline ($O<O_0$, $L>0$) & $\leq 0$ & \textcolor{tceedorado}{$>0$} & \textcolor{tceedorado}{$<0$} & \textcolor{tceeazul}{$\leq 0$: la renta global refuerza la sustitución; $L$ sube}\\
+\hline
+\end{tabular}
+\par\vspace{2pt}{\footnotesize Con una dotación de tiempo, $O\leq O_0$ siempre: no hay «demandante neto» de ocio, a diferencia de un bien del que se puede comprar más de lo que se tiene. El caso habitual es el de la primera fila.}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{Cahuc2014Labor} y \textcite[cap.~3]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: la demanda de trabajo a largo plazo\newline y la demanda de mercado}\label{anexo:demanda-largo-plazo}
+
+\subsection{La demanda de trabajo a largo plazo}\label{anexo:demanda-lp}
+
+\begin{itemize}
+\item Cuando el capital también puede variar, la empresa sustituirá trabajadores por máquinas, o al revés, según lo que cueste cada uno y lo fácil que sea sustituirlos. El problema, con la tecnología dentro del objetivo, es
+  \[
+  \max_{L,K}\ B(L,K)=p\,F(L,K)-w_L\,L-w_K\,K
+  \]
+\item \emph{Condiciones de primer orden}: cada factor se contrata hasta que su valor del producto marginal iguala su precio, y su cociente da la tangencia entre la isocuanta y la isocoste:
+  \begin{align}
+  p\,F_L(L,K)&=w_L\ \Longleftrightarrow\ F_L=\frac{w_L}{p}, & p\,F_K(L,K)&=w_K\ \Longleftrightarrow\ F_K=\frac{w_K}{p}\label{eq:demanda-lp-cpo}\\
+  \mathrm{RMST}_{LK}&=\frac{F_L}{F_K}=\frac{w_L}{w_K} & & \label{eq:demanda-lp-tangencia}
+  \end{align}
+  Las primeras no son todavía las demandas de factores:\footnote{A diferencia del corto plazo, en el que la condición de primer orden ya es la demanda de trabajo, a largo plazo cada condición depende de la cantidad del otro factor, que también se elige: la demanda de trabajo depende además de la productividad y del precio del capital.} hay que resolverlas a la vez.
+\item \emph{En 2 etapas} \vertema{3.A.12}:
+  \begin{itemize}
+  \item primero, cómo producir $q$ al menor coste posible, de donde salen la tangencia \eqref{eq:demanda-lp-tangencia}, las \emph{demandas condicionadas} $z_L(\vect{w},q)$ y la función de costes $C(\vect{w},q)$ (gráfico~\ref{fig:minimizacion-coste});
+  \item después, la producción que maximiza el beneficio, $p=\partial C(\vect{w},q)/\partial q$, que da $q(p,\vect{w})$ y las \emph{demandas no condicionadas} $z_L(p,\vect{w})=z_L\big(\vect{w},q(p,\vect{w})\big)$, que dependen del salario, del coste de uso del capital y del precio del bien.
+  \end{itemize}
+\item \emph{Condición de segundo orden}: la hessiana de $F$ tiene que ser definida negativa, es decir, $F$ estrictamente cóncava; con $F(\vect{0})=0$, eso implica rendimientos a escala decrecientes. Con rendimientos constantes, la escala de la empresa competitiva queda indeterminada.\footnote{En la maximización del beneficio la tecnología entra en la función objetivo, que tiene que ser cóncava; en la minimización del coste basta con que $F$ sea cuasicóncava, porque allí la tecnología es una restricción y lo que importa es la forma de las isocuantas \vertema{3.A.12}.}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Minimización del coste a largo plazo: tangencia de la isocuanta y la isocoste}\label{fig:minimizacion-coste}
+\grafico[0.5\textwidth]{minimizacion-coste}
+\fuente{elaboración propia a partir de \textcite[cap.~3]{Cahuc2014Labor}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Por qué la demanda a largo plazo es más elástica}. Supongamos que baja el salario:
+  \begin{itemize}
+  \item con el capital fijo, la empresa se mueve a lo largo de su demanda a corto plazo, la curva del $\mathrm{VPMg}_L$ para $\overline{K}$, y contrata más;
+  \item con más trabajadores, cada máquina rinde más ($F_{KL}>0$), y la empresa compra más capital hasta que $p\,F_K=w_K$ vuelve a cumplirse;
+  \item con más capital, sube la productividad marginal del trabajo y la curva del $\mathrm{VPMg}_L$ se desplaza a la derecha: se contrata todavía más.
+  \end{itemize}
+  La demanda a largo plazo pasa por los puntos de demandas a corto plazo con capitales distintos, y es más plana: responde más a un mismo cambio del salario (gráfico~\ref{fig:demanda-lp-cp}). Es el principio de \autor{Le Chatelier} que \textcite{Samuelson1947Foundations} aplica a la economía: cuantas menos restricciones, mayor la respuesta.
+\item \emph{Efecto sustitución y efecto escala}. Derivando $z_L(p,\vect{w})=z_L\big(\vect{w},q(p,\vect{w})\big)$ respecto a $w_L$:
+  \[
+  \frac{\partial z_L(p,\vect{w})}{\partial w_L}=\underbrace{\frac{\partial z_L(\vect{w},q)}{\partial w_L}}_{\text{sustitución}\ (\leq 0)}+\underbrace{\frac{\partial z_L(\vect{w},q)}{\partial q}\cdot\frac{\partial q}{\partial w_L}}_{\text{escala}\ (\leq 0)}
+  \]
+  Por el lema de \autor{Shephard}, $\partial z_L(\vect{w},q)/\partial q=\partial\mathrm{CMg}/\partial w_L$, y derivando $p=\mathrm{CMg}(\vect{w},q)$ respecto a $w_L$ se obtiene $\partial q/\partial w_L$. El efecto escala es, por tanto,
+  \[
+  \frac{\partial\mathrm{CMg}}{\partial w_L}\cdot\frac{\partial q}{\partial w_L}=-\frac{\big(\partial\mathrm{CMg}/\partial w_L\big)^2}{\partial\mathrm{CMg}/\partial q}\leq 0
+  \]
+  si el coste marginal es creciente: los 2 efectos tienen el mismo signo, aunque el trabajo sea un factor inferior. Por eso no hay factores \autor{Giffen}.\findemo
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Demanda de trabajo a corto y a largo plazo: la de largo plazo es más elástica}\label{fig:demanda-lp-cp}
+\grafico[0.5\textwidth]{demanda-lp-cp}
+\fuente{elaboración propia a partir de \textcite[cap.~3]{Cahuc2014Labor}.}
+\end{figure}
+
+\subsection{La demanda de trabajo de mercado: las cuasidemandas}\label{anexo:demanda-mercado}
+
+\begin{itemize}
+\item Como en la producción no hay efectos renta, agregar las demandas de trabajo no tiene los problemas de la oferta (\ref{sec:oferta-modelo}). Pero la demanda de mercado \emph{no} es la suma horizontal de las individuales.
+\item Si baja el salario, la industria pasaría de $A$ a $B$ sobre la suma de las curvas del $\mathrm{VPMg}_L$ si cada empresa reaccionara por separado. Pero lo hacen todas a la vez:
+  \begin{itemize}
+  \item todas contratan y producen más, y la oferta de la industria se desplaza a la derecha;
+  \item el precio del bien baja, y con él el valor del producto marginal, $p\cdot F_L$: las curvas del $\mathrm{VPMg}_L$ se desplazan a la izquierda;
+  \item la industria acaba en $C$, y no en $B$ (gráfico~\ref{fig:demanda-agregada}).
+  \end{itemize}
+  Es una \emph{externalidad pecuniaria}: lo que hace cada empresa cambia el precio al que venden todas.
+\item La demanda de mercado se obtiene sumando las \concepto{cuasidemandas}, las de cada empresa teniendo en cuenta que el precio del bien cambia con el salario. Es \emph{menos elástica} que la suma de las individuales: al bajar el salario, baja también el precio del bien, y las empresas tienen menos incentivo a contratar. Se suele analizar a corto plazo, porque a largo plazo intervienen además el precio y la productividad del capital.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Demanda de trabajo de mercado: suma de las cuasidemandas, de $A$ a $C$ y no a $B$}\label{fig:demanda-agregada}
+\grafico[0.5\textwidth]{demanda-agregada}
+\fuente{elaboración propia a partir de \textcite[cap.~3]{Cahuc2014Labor}.}
+\end{figure}
+
+\subsection{Las reglas de \autor{Marshall} y \autor{Hicks} de la demanda derivada}\label{anexo:marshall-hicks}
+
+\begin{itemize}
+\item \textcite[libro~V, cap.~VI]{Marshall1890Principles} y \textcite[apéndice]{Hicks1932Theory} explican de qué depende la elasticidad de una demanda derivada. La demanda de trabajo responde más al salario:
+  \begin{enumerate}
+  \item si el trabajo se sustituye con facilidad por capital u otros factores, es decir, si la elasticidad de sustitución, $\sigma$, es alta \vertema{3.A.11};
+  \item si los compradores del producto final reaccionan mucho a su precio;
+  \item si los salarios suponen una parte grande del coste total, aunque solo cuando los compradores del producto reaccionan más de lo que se sustituyen los factores entre sí (la matización de \autor{Hicks} a «la importancia de no ser importante» de \autor{Marshall});
+  \item si los demás factores se pueden conseguir en mayor cantidad sin que suba mucho su precio.
+  \end{enumerate}
+\item Con 2 factores, rendimientos constantes a escala, competencia y una oferta del capital perfectamente elástica, las 3 primeras se resumen en una fórmula \parencite[cap.~2]{Hamermesh1993Labor}:
+  \[
+  \varepsilon_{L^D,w_L}=-(1-s_L)\,\sigma-s_L\,|\varepsilon_{q,p}|
+  \]
+  con $s_L$ la participación del trabajo en los costes y $|\varepsilon_{q,p}|$ la elasticidad de la demanda del bien. El primer término es el efecto sustitución (con la producción constante) y el segundo, el efecto escala. Un aumento de $s_L$ hace más elástica la demanda si y solo si $|\varepsilon_{q,p}|>\sigma$. Con la producción constante queda solo $-(1-s_L)\,\sigma$, la elasticidad que revisa \textcite{Hamermesh1993Labor} (\ref{sec:demanda}).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo de \autor{Lucas} y \autor{Rapping}\newline con horizonte infinito}\label{anexo:lr-infinito}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El individuo vive infinitos periodos, $t=0,1,2,\dots$
+\item La utilidad de toda la vida es la suma descontada de las de cada periodo, y en cada periodo consumo y ocio entran por separado: $\sum_t\beta^t u(C_t,O_t)$, con $\beta\equiv 1/(1+\rho)$ y $\rho$ la tasa de descuento.
+\item Cada periodo dura una unidad de tiempo, $O_t+L_t=1$.
+\item Recibe en cada periodo una renta no laboral $\overline{W}_t$ y un salario real $w_t$, conocidos.
+\item Mercado de capitales perfecto: al empezar cada periodo tiene unos activos netos $b_t$, que rinden el tipo de interés real $r$, y puede ahorrar o endeudarse sin límite, salvo el de la condición de no-\autor{Ponzi}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Problema}:
+  \begin{equation}
+  \optim{\max}{\{C_t,O_t,b_{t+1}\}_{t=0}^{\infty}}{\sum_{t=0}^{\infty}\beta^{t}\,u(C_t,O_t)}{C_t+w_t\,O_t+b_{t+1}\leq w_t+(1+r)\,b_t+\overline{W}_t\quad\forall t\\ \lim_{T\to\infty}\dfrac{b_{T}}{(1+r)^{T}}\geq 0\\ b_0\ \text{dado}}\label{eq:lr-infinito}
+  \end{equation}
+  La primera restricción dice que el ahorro de cada periodo, $b_{t+1}-b_t=r\,b_t+\overline{W}_t+w_t\,L_t-C_t$, es lo que queda de las rentas del capital, la no laboral y la del trabajo después de consumir. La renta no laboral del modelo estático, $\overline{W}$, es aquí $r\,b_t+\overline{W}_t$.
+\item La segunda es la \concepto{condición de no-\autor{Ponzi}}: no se puede acabar endeudado en valor presente, es decir, financiar indefinidamente el pago de las deudas con deudas nuevas \vertema{3.A.29}. En el óptimo se cumple con igualdad (no conviene morir con riqueza sin gastar) y, sumando las restricciones de todos los periodos, se obtiene la restricción presupuestaria intertemporal:
+  \[
+  \sum_{t=0}^{\infty}\frac{C_t+w_t\,O_t}{(1+r)^{t}}=(1+r)\,b_0+\sum_{t=0}^{\infty}\frac{w_t+\overline{W}_t}{(1+r)^{t}}
+  \]
+  el valor presente del gasto en consumo y en ocio iguala la riqueza de toda la vida.
+\item \emph{Condiciones de primer orden}, con $\lambda_t$ el multiplicador de la restricción del periodo $t$ y $u_C(t)$, $u_O(t)$ las utilidades marginales del periodo $t$:
+  \[
+  \beta^{t}u_C(t)=\lambda_t,\qquad \beta^{t}u_O(t)=\lambda_t\,w_t,\qquad \lambda_t=(1+r)\,\lambda_{t+1}
+  \]
+  La última iguala lo que cuesta ahorrar un euro hoy con lo que rinde mañana. Combinándolas se obtienen las 3 condiciones del cuerpo:
+  \begin{align*}
+  \frac{u_O(t)}{u_C(t)}&=w_t &&\text{(intratemporal entre ocio y consumo)}\\
+  \frac{u_C(t)}{u_C(t+1)}&=\beta\,(1+r) &&\text{(ecuación de \autor{Euler} del consumo)}\\
+  \frac{u_O(t)}{u_O(t+1)}&=\beta\,(1+r)\,\frac{w_t}{w_{t+1}} &&\text{(intertemporal del ocio)}
+  \end{align*}
+  Con la utilidad logarítmica de \eqref{eq:lr-problema}, la tercera es \eqref{eq:lr-condicion} para $t=1,2$.\findemo
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item De la condición intertemporal del ocio, la oferta relativa de trabajo depende del salario relativo, del tipo de interés y de la impaciencia,
+  \[
+  \frac{L_t}{L_{t+1}}=f\Big(\underset{+}{\frac{w_t}{w_{t+1}}},\ \underset{+}{r},\ \underset{-}{\rho}\Big)
+  \]
+  con las mismas 4 implicaciones de la tabla~\ref{tab:lr-implicaciones}. Un aumento \emph{permanente} del salario o de la renta no laboral deja igual el reparto de las horas entre periodos; cuánto cambian las horas de cada uno depende de cuánto aumente la riqueza, como en el modelo estático.
+\item \emph{El vínculo con la elasticidad de \autor{Frisch}}: de $\lambda_t=(1+r)\lambda_{t+1}$, $\lambda_t=\lambda_0/(1+r)^t$. Toda la información sobre la vida entera (salarios futuros, riqueza) entra en las horas de cada periodo a través de un solo número, $\lambda_0$, la utilidad marginal de la riqueza. Un cambio transitorio y pequeño de $w_t$ apenas mueve $\lambda_0$, y las horas responden con la elasticidad de \autor{Frisch} \eqref{eq:frisch}, la que mantiene $\lambda$ constante.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el mercado de trabajo con poder de mercado}\label{anexo:poder-mercado-trabajo}
+
+\begin{itemize}
+\item El modelo neoclásico supone que trabajadores y empresas son precio-aceptantes (supuesto 4 de la tabla~\ref{tab:supuestos-trabajo}). Este anexo resume qué pasa cuando el poder de mercado está del lado de la empresa (monopsonio en el trabajo, monopolio en el bien) o del de los trabajadores (sindicato). El desarrollo completo, con la tabla de los 4 casos y el monopolio bilateral, está en el \vertema{3.A.17}; la negociación salarial, en el \vertema{3.A.27}.
+\end{itemize}
+
+\subsection{Empresa con poder en el bien y en el trabajo}\label{anexo:poder-empresa}
+
+\begin{itemize}
+\item \emph{Cuándo}: la empresa tiene \concepto{poder de monopsonio} si es la única que contrata en su zona, si está muy especializada o si las empresas negocian juntas a través de una patronal; también, con fricciones, si al bajar el salario no pierde a todos sus trabajadores \parencite{Manning2003Monopsony}. Y puede tener a la vez \emph{poder de monopolio} en el bien que vende: como la demanda de trabajo es derivada, lo que pasa en el mercado del bien se traslada al de trabajo.
+\item \emph{Problema} a corto plazo, con demanda inversa del bien $p(q)$ y oferta inversa de trabajo $w_L(L)$:
+  \begin{equation}
+  \optim{\max}{L}{B(L)=p(q)\,q-w_L(L)\,L-w_K\,\overline{K}}{q=F(L,\overline{K})\\ L\geq 0}
+  \end{equation}
+\item \emph{Condición de primer orden}: el \concepto{ingreso del producto marginal} iguala el \concepto{gasto marginal} del trabajo,
+  \begin{equation}
+  \underbrace{\big[p+p'(q)\,q\big]\,F_L}_{\mathrm{IPMg}_L}=\underbrace{w_L(L)+w_L'(L)\,L}_{\mathrm{GMg}_L}\ \Longleftrightarrow\ p\,F_L\Big(1-\frac{1}{|\varepsilon_{q,p}|}\Big)=w_L(L)\Big(1+\frac{1}{\varepsilon_{L,w_L}}\Big)\label{eq:poder-mercado-trabajo}
+  \end{equation}
+  \begin{itemize}
+  \item el $\mathrm{IPMg}_L$ queda \emph{por debajo} del $\mathrm{VPMg}_L$, porque vender más baja el precio de todas las unidades;
+  \item el $\mathrm{GMg}_L$ queda \emph{por encima} de la oferta, porque contratar un trabajador más obliga a subir el salario de todos: su coste es su salario más esa subida. El $\mathrm{GMg}_L$ \emph{no} es la curva de oferta;
+  \item el salario lo da siempre la \emph{oferta} para la cantidad contratada, $w=w_L(L)$. Con monopsonio no hay curva de demanda de trabajo: la empresa no toma el salario como dado, sino que elige un punto de la oferta.
+  \end{itemize}
+\item \emph{Los 4 casos} (desarrollados en el \vertema{3.A.17}): con competencia en los 2 mercados, $\mathrm{VPMg}_L=w_L$ ($|\varepsilon_{q,p}|\to\infty$ y $\varepsilon_{L,w_L}\to\infty$); con monopolio solo en el bien, $\mathrm{IPMg}_L=w_L$; con monopsonio solo en el trabajo, $\mathrm{VPMg}_L=\mathrm{GMg}_L$ \eqref{eq:monopsonio}, y con los 2, $\mathrm{IPMg}_L=\mathrm{GMg}_L$. El empleo y el salario son máximos en el primero y mínimos en el último, con los otros 2 en medio (gráfico~\ref{fig:monopsonio-monopolio}).
+\item \emph{En ninguno de los 4 hay paro involuntario}: la empresa contrata sobre la curva de oferta, y al salario que paga trabajan todos los que quieren hacerlo a ese salario. Lo que hay es \emph{explotación} en el sentido de \textcite{Robinson1933Economics}: el trabajador cobra menos de lo que aporta en el margen.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Empresa con monopsonio en el trabajo y monopolio en el bien: menos empleo y menos salario, sin paro involuntario}\label{fig:monopsonio-monopolio}
+\grafico[0.55\textwidth]{monopsonio-monopolio}
+\fuente{elaboración propia a partir de \textcite{Robinson1933Economics}.}
+\end{figure}
+
+\subsection{Salario mínimo con monopsonio}\label{anexo:salario-minimo}
+
+\begin{itemize}
+\item Un salario mínimo $\underline{w}$ hace horizontales la oferta y el gasto marginal hasta $w_L^{-1}(\underline{w})$, el número de trabajadores dispuestos a trabajar a ese salario: hasta ahí, la empresa paga $\underline{w}$ a todos y contratar uno más ya no sube el salario de los demás. Por tramos (gráfico~\ref{fig:salario-minimo}):
+  \begin{itemize}
+  \item si $\underline{w}\leq w^M$, no afecta: la empresa ya pagaba más;
+  \item si $w^M<\underline{w}\leq w^c$, la empresa se comporta como precio-aceptante hasta la oferta, y el empleo \emph{sube} con el salario mínimo, hasta su máximo en $\underline{w}=w^c$, el empleo competitivo;
+  \item si $\underline{w}>w^c$, el empleo lo decide el $\mathrm{VPMg}_L$ y baja, y hay paro involuntario: al salario mínimo quieren trabajar más personas de las que se contratan. Aun así, el empleo supera el de monopsonio mientras $\underline{w}$ no pase de $\mathrm{VPMg}_L(L^M)$.
+  \end{itemize}
+\item Es el resultado que permite leer el estudio de \textcite{CardKrueger1994} (\ref{sec:valoracion-neoclasica}).
+\end{itemize}
+
+\subsection{Sindicato monopolista}\label{anexo:sindicato}
+
+\begin{itemize}
+\item \emph{Cuándo}: el poder está del lado de los trabajadores si están muy especializados o si se agrupan en un \emph{sindicato} que negocia por todos. Es el \concepto{sindicato monopolista} de \textcite{Dunlop1944Wage}.
+\item \emph{Supuestos}: frente a empresas precio-aceptantes, cuya demanda de trabajo es $w^D(L)=\mathrm{VPMg}_L$, el sindicato fija el salario y las empresas eligen el empleo sobre su demanda. Maximiza la renta de sus miembros neta de lo que les cuesta trabajar,
+  \[
+  U_S=w\,L-v(L)
+  \]
+  con $v(L)$ la desutilidad agregada del trabajo y $v'(L)=w_L(L)$: la oferta mide el salario de reserva del último trabajador.
+\item \emph{Desarrollo}: eligiendo el punto de la demanda,
+  \[
+  \max_{L}\ U_S=w^D(L)\,L-v(L)\ \Longrightarrow\ \underbrace{w^D(L)+w^{D\prime}(L)\,L}_{\mathrm{IMg}_S}=v'(L)\ \Longleftrightarrow\ w^D(L)\Big(1-\frac{1}{|\varepsilon_{L^D,w}|}\Big)=w_L(L)
+  \]
+  con $\varepsilon_{L^D,w}<0$ la elasticidad de la demanda de trabajo. El ingreso marginal del sindicato, $\mathrm{IMg}_S$, queda por debajo de la demanda, porque ofrecer más trabajo baja el salario de todos.
+\item \emph{Implicaciones} (gráfico~\ref{fig:sindicato-monopolista}): el empleo $L^S$ (aquí, el que fija el sindicato) es menor que el competitivo, y el salario $w^S=w^D(L^S)$, mayor que $w^c$. Al salario $w^S$ hay más gente dispuesta a trabajar, $w_L^{-1}(w^S)$, que puestos: \emph{aquí sí hay paro involuntario}, porque el salario está por encima de la oferta.
+\item \emph{Monopolio bilateral}: si el sindicato se enfrenta a un empleador monopsonista, el salario queda indeterminado entre $w^M$ y $w^S$ \parencite{Bowley1928Bilateral}. Un salario negociado entre $w^M$ y $w^c$ aumenta el empleo respecto al monopsonio, como el salario mínimo, y si se negocian juntos salario y empleo, se llega al empleo competitivo y el poder de negociación solo reparte el excedente \vertema{3.A.17} \vertema{3.A.27}.
+\item En resumen, el poder de mercado de un solo lado reduce el empleo; solo el de los trabajadores, al fijar el salario por encima de la oferta, crea paro involuntario.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Sindicato monopolista: menos empleo y más salario que en competencia, con paro involuntario}\label{fig:sindicato-monopolista}
+\grafico[0.55\textwidth]{sindicato-monopolista}
+\fuente{elaboración propia a partir de \textcite{Dunlop1944Wage} y \textcite[cap.~7]{Cahuc2014Labor}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: la acumulación de capital humano a lo largo de la vida\newline (\autor{Ben-Porath}, 1967) y la función de ingresos}\label{anexo:ben-porath}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La ecuación de \autor{Mincer} \eqref{eq:mincer} tiene 2 partes: los años de estudio, que se derivan en \ref{sec:mincer-modelo}, y la experiencia, que entra con un término cuadrático. Este anexo deriva las 2 de un mismo modelo, el de \textcite{BenPorath1967Production}: cómo reparte una persona su tiempo entre formarse y trabajar a lo largo de la vida.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El individuo vive y puede trabajar hasta $T$. Hay un mercado de capitales perfecto al tipo $r$, así que, por la separación de \autor{Fisher}, le basta con maximizar el valor presente de su renta (\ref{sec:becker-modelo}).
+\item Empieza con un capital humano $h_0$. En cada momento dedica a formarse una fracción $1-u(t)$ de su tiempo, y a trabajar el resto, $u(t)$. El capital humano crece con ese tiempo y con lo que ya se sabe:
+  \begin{equation}
+  \dot h(t)=a\,\big[1-u(t)\big]\,h(t),\qquad a>0\label{eq:ben-porath}
+  \end{equation}
+  con $a$ la \emph{aptitud} para aprender: la tasa de crecimiento del capital humano, $\dot h/h=a\,(1-u)$, es proporcional a ella. Es la misma ecuación que el sector educativo del modelo de \autor{Uzawa} y \autor{Lucas} \vertema{3.A.44}.
+\item Gana un salario $\omega$ por unidad de capital humano y de tiempo trabajado, $\omega\,u(t)\,h(t)$. Formarse no tiene coste directo: su coste es el salario al que se renuncia.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Problema}:
+  \[
+  \optim{\max}{u(t)}{\int_{0}^{T}e^{-rt}\,\omega\,u(t)\,h(t)\,dt}{\dot h(t)=a\,\big[1-u(t)\big]\,h(t)\\ h(0)=h_0,\ 0\leq u(t)\leq 1}
+  \]
+\item Con el hamiltoniano en valor presente y $\mu(t)$ el valor (descontado) de una unidad más de capital humano,
+  \[
+  H=e^{-rt}\,\omega\,u\,h+\mu\,a\,(1-u)\,h,\qquad \frac{\partial H}{\partial u}=h\,\big[e^{-rt}\,\omega-a\,\mu\big]
+  \]
+  $H$ es lineal en $u$, así que la solución es de esquina: se trabaja a tiempo completo ($u=1$) si una hora de trabajo, que paga $\omega h$, vale más que una de estudio, que añade $a\,h$ unidades de capital humano de valor $\mu$ cada una; y se estudia a tiempo completo ($u=0$) en caso contrario.
+\item \emph{El valor del capital humano cae con la edad}. En la fase de trabajo, $\dot\mu=-\partial H/\partial h=-e^{-rt}\,\omega$, y con $\mu(T)=0$ (al final de la vida, saber más no vale nada):
+  \[
+  \mu(t)=\frac{\omega}{r}\big(e^{-rt}-e^{-rT}\big)
+  \]
+  el valor presente del salario de una unidad de capital humano durante los años que quedan. Cuanto más tarde, menos años para cobrar lo aprendido.
+\item \emph{Especialización}: como $\mu(t)\,e^{rt}$ decrece, el individuo estudia a tiempo completo primero ($u=0$ hasta $S$) y después trabaja a tiempo completo hasta $T$, sin volver a estudiar. El momento de dejar de estudiar iguala el valor de una hora de estudio con el salario que se deja de ganar, $a\,\mu(S)=e^{-rS}\omega$:
+  \begin{equation}
+  a\big(e^{-rS^*}-e^{-rT}\big)=r\,e^{-rS^*}\ \Longrightarrow\ S^*=T+\frac{1}{r}\ln\Big(1-\frac{r}{a}\Big),\qquad a>r\label{eq:ben-porath-s}
+  \end{equation}
+  \findemo
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Se estudia más cuanto mayor es la aptitud, $a$, y cuanto más larga es la vida laboral, $T$, y menos cuanto mayor es el tipo de interés, $r$. Solo se estudia si estudiar rinde más que el mercado de capitales, $a>r$. Es la intuición de \autor{Becker} (\ref{sec:becker-modelo}): se invierte en formarse al principio de la vida, porque quedan más años para cobrar el rendimiento y el salario al que se renuncia es menor.
+\item \emph{Los años de estudio en la ecuación de \autor{Mincer}}. Al acabar de estudiar, $h(S)=h_0\,e^{aS}$, y el salario es $\omega\,h_0\,e^{aS}$:
+  \[
+  \ln w(S)=\ln(\omega\,h_0)+a\,S
+  \]
+  El coeficiente de los años de estudio, $\beta_1$, es $a$, el rendimiento de un año de estudio. Con una vida laboral muy larga ($T\to\infty$), la condición \eqref{eq:ben-porath-s} se reduce a $a=r$: si estudiar rindiera más que el tipo de interés, convendría seguir estudiando, y si rindiera menos, no estudiar. Por eso, en el margen, $\beta_1\approx r$, como en \eqref{eq:mincer-escolarizacion}.
+\end{itemize}
+
+\paragraph{c) Extensiones: la experiencia y el término cuadrático}
+
+\begin{itemize}
+\item Con rendimientos decrecientes en la producción de capital humano, como en el modelo original de \textcite{BenPorath1967Production}, la solución deja de ser «todo o nada»: tras la fase de especialización, se sigue dedicando a formarse en el empleo una fracción del tiempo que cae poco a poco hasta anularse al final de la vida laboral (gráfico~\ref{fig:ben-porath}).
+\item \textcite{Mincer1974Schooling} aproxima esa caída con una recta. Llamamos $X$ a los años de experiencia, contados desde que se deja de estudiar, y, en esta parte, $T$ a los años de vida laboral. La fracción del tiempo que se dedica a formarse es
+  \[
+  k(X)=k_0\Big(1-\frac{X}{T}\Big),\qquad 0<k_0<1
+  \]
+\item \emph{Ingresos potenciales}: lo que se ganaría trabajando todo el tiempo, $E(X)=\omega\,h(X)$. Como $\dot h/h=a\,k(X)$,
+  \[
+  \ln E(X)=\ln E(0)+a\int_{0}^{X}k(\tau)\,d\tau=\ln E(0)+a\,k_0\,X-\frac{a\,k_0}{2T}\,X^2
+  \]
+  con $\ln E(0)=\ln(\omega\,h_0)+a\,S$.
+\item \emph{Ingresos observados}: se cobra solo por el tiempo que se trabaja, $w(X)=E(X)\,\big[1-k(X)\big]$. Como $\ln(1-k)\approx -k$ si $k$ es pequeño,
+  \[
+  \ln w(X)\approx\ln E(X)-k(X)=\underbrace{\ln(\omega\,h_0)-k_0}_{\beta_0}+\underbrace{a}_{\beta_1}\,S+\underbrace{k_0\Big(a+\frac{1}{T}\Big)}_{\beta_2>0}\,X\ \underbrace{-\ \frac{a\,k_0}{2T}}_{\beta_3<0}\,X^2
+  \]
+  que es la ecuación de \autor{Mincer} \eqref{eq:mincer}, con $\beta_1=a\approx r$, $\beta_2>0$ y $\beta_3<0$.\findemo
+\item \emph{Lectura}: el salario observado crece con la experiencia por 2 razones, porque el capital humano sigue aumentando y porque cada vez se dedica menos tiempo a formarse y más a cobrar, y crece cada vez más despacio, porque se invierte cada vez menos.
+\item \emph{Depreciación}: sin ella, el máximo del perfil, $X=-\beta_2/(2\beta_3)=T+1/a$, queda más allá del final de la vida laboral. Si el capital humano se deprecia a una tasa $\delta$ ($\dot h/h=a\,k-\delta$), $\beta_2=k_0(a+1/T)-\delta$, $\beta_3$ no cambia y el máximo se adelanta a $T+1/a-\delta\,T/(a\,k_0)$, antes de la jubilación si $\delta>k_0/T$: el salario puede llegar a caer al final de la carrera.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de \autor{Ben-Porath}: tiempo dedicado a formarse e ingresos potenciales y observados a lo largo de la vida}\label{fig:ben-porath}
+\grafico[0.85\textwidth]{ben-porath}
+\fuente{elaboración propia a partir de \textcite{BenPorath1967Production}, \textcite[caps.~1-2]{Mincer1974Schooling} y \textcite[cap.~4]{Cahuc2014Labor}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: aspectos para el test y preguntas del tribunal}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test}.
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Salario de reserva}: $w^R=U_O/U_C$ en el punto de dotación $(\overline{W},O_0)$; si el ocio es normal, sube con la renta no laboral. Con $U=C^{\alpha}O^{1-\alpha}$, $L=\alpha\,O_0-(1-\alpha)\,\overline{W}/w$ y $w^R=(1-\alpha)\,\overline{W}/(\alpha\,O_0)$; sin renta no laboral, $L=\alpha\,O_0$ no depende del salario: los efectos sustitución y renta se compensan.
+\item \emph{Efectos de una subida del salario}: sustitución (más horas), renta ordinario (más horas si el ocio es normal) y renta dotación (menos horas); el efecto total es ambiguo. Una prima por horas extraordinarias, en cambio, aumenta las horas sin ambigüedad.
+\item \emph{Elasticidades de la oferta}: si el ocio es normal, la de \autor{Frisch} es mayor o igual que la hicksiana y esta, mayor o igual que la marshalliana. Con $u=\ln C-\chi\,L^{1+\varphi}/(1+\varphi)$, la de \autor{Frisch} es $1/\varphi$.
+\item \emph{Demanda de trabajo}: a corto plazo, $\mathrm{VPMg}_L=w_L$ y la condición de segundo orden es $F_{LL}<0$, sin condición sobre los rendimientos a escala; a largo plazo es más elástica (\autor{Le Chatelier}); la de mercado es menos elástica que la suma de las individuales (cuasidemandas); no hay factores \autor{Giffen}.
+\item \emph{Monopsonio con oferta lineal} $w_L=c_0+c_1L$: $\mathrm{GMg}_L=c_0+2c_1L$ (misma ordenada en el origen y doble pendiente). Sin paro involuntario; un salario mínimo entre $w^M$ y $w^c$ aumenta el empleo. Con sindicato monopolista sí hay paro involuntario.
+\item \emph{\autor{Lucas} y \autor{Rapping}}: un aumento transitorio del salario sube las horas de hoy y baja las de mañana; uno permanente no cambia la oferta relativa; un aumento del tipo de interés sube las horas de hoy; más impaciencia las baja.
+\item \emph{\autor{Becker}}: la formación general la paga el trabajador (salario menor mientras se forma); la específica se reparte entre trabajador y empresa.
+\item \emph{\autor{Mincer}}: $\beta_1$ es una semielasticidad (el aumento exacto es $e^{\beta_1}-1$, casi $\beta_1$ si es pequeño); $\beta_1\approx r$ sin costes directos; el perfil es cóncavo, con máximo en $X=-\beta_2/(2\beta_3)$. El sesgo de habilidad sobreestima $\beta_1$ y el error de medida lo subestima.
+\item \emph{\autor{Oaxaca}-\autor{Blinder}}: la parte explicada valora las diferencias de características con los coeficientes de un grupo; la no explicada, las diferencias de coeficientes, y su tamaño depende del grupo que se tome de referencia.
+\item \emph{Fechas}: \autor{Marshall} (1890), \autor{Robbins} (1930), \autor{Hicks} (1932), \autor{Robinson} (1933), \autor{Keynes} (1936), \autor{Mincer} (1958 y 1974), \autor{Schultz} (1961), \autor{Becker} (1962, 1964 y 1965), \autor{Ben-Porath} (1967), \autor{Lucas} y \autor{Rapping} (1969), \autor{Oaxaca} (1973), \autor{Blinder} (1973), \autor{Spence} (1973), \autor{Gronau} (1977), \autor{MaCurdy} (1981), \autor{Kydland} y \autor{Prescott} (1982), \autor{Angrist} y \autor{Krueger} (1991), \autor{Chiappori} (1992), \autor{Card} y \autor{Krueger} (1994), \autor{Goldin} (1995). Premios Nobel: \autor{Frisch} y \autor{Tinbergen} (1969), \autor{Becker} (1992), \autor{Card}, \autor{Angrist} e \autor{Imbens} (2021), \autor{Goldin} (2023).
+\end{itemize}
+
+\paragraph{Preguntas de otros exámenes}
+
+\begin{itemize}
+\item \emph{La literatura usa a menudo consumo y trabajo como argumentos de la utilidad, en lugar del ocio. ¿Podría dibujar las curvas de indiferencia en ese caso?} En el plano $(L,C)$, el trabajo es un «mal»: las curvas de indiferencia son crecientes, con pendiente $U_O/U_C$, y convexas (se hacen más empinadas a medida que se trabaja más, porque cada hora de ocio que se pierde vale más). La utilidad aumenta hacia arriba y a la izquierda, y la recta de balance, $C=w\,L+\overline{W}$, es creciente, con pendiente $w$.
+\item \emph{¿Qué relación tiene el modelo intertemporal de \autor{Lucas} con la elasticidad de sustitución del trabajo (no del consumo)?} Lo que decide cuánto se mueven las horas en el modelo es la elasticidad de sustitución intertemporal del trabajo, que es la elasticidad de \autor{Frisch} ($1/\varphi$ en \eqref{eq:frisch}); es distinta de la elasticidad de sustitución intertemporal del consumo, que decide la pendiente de la senda de consumo en la ecuación de \autor{Euler} \vertema{3.A.29}.
+\item \emph{¿Qué efectos tiene en $w^*$ y en $L^*$ la existencia de un monopolio en el mercado de bienes?} El ingreso del producto marginal queda por debajo del valor del producto marginal: la empresa contrata menos y, si la oferta de trabajo es creciente, paga menos. No hay paro involuntario (anexo~\ref{anexo:poder-mercado-trabajo}).
+\item \emph{En el marco del tema, ¿por qué los inmigrantes mexicanos legales votaron a Trump?} Es la pregunta de cómo afecta la inmigración a los salarios de los ya residentes. Si los nuevos inmigrantes son sustitutivos cercanos de los que ya están (mismas cualificaciones), aumenta la oferta en su segmento del mercado y su salario baja; los trabajadores con cualificaciones complementarias, en cambio, ganan. \textcite{Card1990Impact} apenas encuentra efectos en Miami tras el éxodo del Mariel; \textcite{Borjas2017Wage} sí los encuentra para los menos cualificados (\ref{sec:demanda}).
+\end{itemize}
+
+\paragraph{Preguntas probables del tribunal}
+
+\begin{itemize}
+\item ¿Hay paro involuntario en el modelo neoclásico? ¿Y con monopsonio? ¿Y con un sindicato?
+\item ¿Por qué la oferta de trabajo individual puede volverse hacia atrás? ¿Puede hacerlo la agregada?
+\item ¿Qué diferencia la elasticidad de \autor{Frisch} de la hicksiana? ¿Cuál necesitan los modelos de ciclo real?
+\item ¿Por qué un aumento transitorio del salario mueve más las horas que uno permanente?
+\item ¿Quién paga la formación general y quién la específica? ¿Por qué las empresas alemanas pagan formación general?
+\item ¿Es $\beta_1$ una tasa de rendimiento? ¿Cómo se distingue en los datos la teoría de \autor{Becker} de la señal de \autor{Spence}?
+\item ¿Por qué las estimaciones con variables instrumentales salen iguales o mayores que las de MCO?
+\end{itemize}
+
+\nocite{Cahuc2014Labor,ICEXCECO3A25,Becker1964Human}
+
+\bibliografia
+\end{document}

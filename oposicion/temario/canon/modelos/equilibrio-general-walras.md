@@ -70,7 +70,7 @@ cuyo punto fijo es un EGC (demostración en el anexo B). Kakutani con correspond
 - Precios de factores: w_K, w_L (3.A.21 original) frente a w, r (3.A.23) y W, R (3.A.11 original): canon w_L, w_K.
 - Siglas: «EGC» también para los computables y «EG» para el equilibrio general en algunos temas: canon EGC (competitivo), MEGC (computables); EG es el exceso de gravamen.
 - 3.A.22 habla de «modelo 2×2×2» con 10 incógnitas y da los supuestos del 1TFEB en su versión de equilibrio parcial (MWG, «bien no numerario»): unificar en 2×2×2×2 y en la versión de equilibrio general (anexo C del 3.A.21).
-- 3.A.25 (sin revisar): «se cumplen las propiedades de existencia, unicidad y estabilidad por trabajar con supuestos competitivos [ver tema 3.A.14]»: la competencia no garantiza unicidad ni estabilidad (SMD) y la remisión es a 3.A.21 (ya `corregir -> 3.A.21` en `mapa.yaml`).
+- 3.A.25 original: «se cumplen las propiedades de existencia, unicidad y estabilidad por trabajar con supuestos competitivos [ver tema 3.A.14]». **Resuelto** en la revisión (31/10/2026): existencia sí; unicidad y estabilidad no las garantiza la competencia, `\vertema{3.A.21}`; estabilidad walrasiana si la demanda corta a la oferta desde arriba. Queda el 3.A.26 (sin revisar): «equilibrio único, estable y de pleno empleo» (`mapa.yaml`, contradicciones del 3.A.25).
 - 3.A.3 (sin revisar): «Walras caracterizó las condiciones de existencia y estabilidad»: decirlo como 3.A.21 (Walras planteó el problema contando ecuaciones; la primera demostración es de Wald).
 
 Autor: Víctor Gutiérrez Marcos

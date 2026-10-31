@@ -1,7 +1,7 @@
 # Crecimiento con capital humano (Uzawa 1965; Lucas 1988)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.44 (crecimiento endógeno: capital humano) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.44 (desarrollo), 3.B.9 (desarrollo: versión con externalidades y apertura), 4.A.29 (mención), 4.A.2 (previsto)
+- **Temas que lo usan:** 3.A.44 (desarrollo), 3.B.9 (desarrollo: versión con externalidades y apertura), 4.A.29 (mención), 4.A.2 (previsto), 3.A.25 (mención; hecho, 31/10/2026: la acumulación de Ben-Porath del anexo E es la ecuación del sector educativo, y el rendimiento social del capital humano en III.3 e) y la conclusión)
 - **Manuales de referencia:** Uzawa (1965); Lucas (1988), *JME*; Barro y Sala i Martín (2004), cap. 5; Sala i Martín (2000), cap. 5; Acemoglu (2009), cap. 10.
 - **Decisión D131 (13/10/2026):** ¿Cómo se distinguen en Uzawa-Lucas la externalidad del capital humano y la participación del capital en Ḣ? η para la externalidad y α_H para la participación del capital físico en la producción de capital humano
 
@@ -19,6 +19,7 @@ Gráfico de referencia: no imprescindible.
 |---|---|---|---|---|
 | 3.A.44 | Crecimiento con capital humano | desarrollo | Modelo de dos sectores, γ, externalidad, comparación con MRW (capital humano en nivel, no en tasa) | — |
 | 3.B.9 | Comercio como canal de spillovers | desarrollo (variante) | Versión con externalidad y apertura (Y = A K^α L^{1−α} E^η) | La versión de dos sectores [ver tema 3.A.44] |
+| 3.A.25 | Capital humano y función de ingresos | mención (hecho, 31/10/2026) | Anexo E: $\dot h(t)=a[1-u(t)]h(t)$ (Ben-Porath), «la misma ecuación que el sector educativo de Uzawa-Lucas», con $u$ la fracción del tiempo en producción como aquí y **$a$ local** en lugar de $B$ (en el 3.A.25, $B$ es el beneficio de la empresa) y sin depreciación ni $n$ (con depreciación, δ local); III.3 e): el rendimiento social puede superar al privado de Mincer | El modelo de crecimiento |
 | 4.A.29, 4.A.2 | Política macro y crecimiento en España | mención / previsto | Relevancia del crecimiento a largo plazo | — |
 
 ## Divergencias encontradas en el temario actual

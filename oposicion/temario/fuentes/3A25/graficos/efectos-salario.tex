@@ -1,0 +1,79 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Aumento del salario de w = 0,4 a w_1 = 0,6: sustitución, renta ordinario y
+% renta dotación (Cahuc, Carcillo y Zylberberg, 2014, fig. 1.12). Misma base
+% que oferta-trabajo.tex: O_0 = 7, W = 1,8, U = C^{0,6} O^{0,4}
+% (C = K O^{-2/3}), E = (4,6; 2,76).
+%  - Recta girada sobre A: C = W + w_1 (O_0 - O), corte 6,0; E_1 = (4; 3,6).
+%  - Sustitución: recta de pendiente -w_1 tangente a U_0 en E' (C/O = 0,9).
+%  - Renta ordinario: renta completa fija (w O_0 + W = 4,6) con el nuevo
+%    salario: C = 4,6 - w_1 O, que gira sobre el corte con el eje C y llega a
+%    O_0 en W^c = W - (w_1 - w) O_0 = 0,4 (punto A_1); E'' = (3,07; 2,76).
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.25cm]
+  \pgfmathsetmacro{\Ocero}{7}
+  \pgfmathsetmacro{\Wb}{1.8}
+  \pgfmathsetmacro{\w}{0.4}
+  \pgfmathsetmacro{\wu}{0.6}
+  \pgfmathsetmacro{\Wc}{\Wb-(\wu-\w)*\Ocero}
+  \pgfmathsetmacro{\KE}{2.76*4.6^(2/3)}            % U_0, tangente en E
+  \pgfmathsetmacro{\Os}{(\KE/0.9)^0.6}             % E' sobre U_0
+  \pgfmathsetmacro{\Cs}{0.9*\Os}
+  \pgfmathsetmacro{\Rs}{\Cs+\wu*\Os}               % corte de la recta de E'
+  \pgfmathsetmacro{\Oo}{0.4*(\w*\Ocero+\Wb)/\wu}   % E''
+  \pgfmathsetmacro{\Co}{0.6*(\w*\Ocero+\Wb)}
+  \pgfmathsetmacro{\Ko}{\Co*\Oo^(2/3)}
+  \pgfmathsetmacro{\Ou}{0.4*(\wu*\Ocero+\Wb)/\wu}  % E_1
+  \pgfmathsetmacro{\Cu}{0.6*(\wu*\Ocero+\Wb)}
+  \pgfmathsetmacro{\Ku}{\Cu*\Ou^(2/3)}
+  % 1: ejes, dotación A, recta inicial, U_0 y E
+  \capa{1}{\ejes{$O$}{$C$}{8.6}{6.6}}
+  \capa{1}{\draw[guia] (\Ocero,\Wb) -- (\Ocero,6.2);}
+  \capa{1}{\draw[curva1] (\Ocero,0) node[below,black] {$O_0$} -- (\Ocero,\Wb);}
+  \capa{1}{\draw[curva1] (0,\w*\Ocero+\Wb) node[left,black] {$w\,O_0+\overline{W}$}
+    -- node[pos=0.1,above,sloped,black,etiqueta] {$-w$} (\Ocero,\Wb);}
+  \capa{1}{\node[punto] (A) at (\Ocero,\Wb) {};
+    \node[etiqueta,above right] at (A) {$A$};}
+  \capa{1}{\draw[decorate,decoration={brace,amplitude=4pt}]
+    (\Ocero+0.75,\Wb) -- (\Ocero+0.75,0) node[midway,right=4pt] {$\overline{W}$};}
+  \capa{1}{\draw[curva2] plot[domain=2.7:5.7,samples=60] (\x,{\KE*\x^(-2/3)})
+    node[etiqueta,above right=-1pt] {$U_0$};}
+  \capa{1}{\node[punto] (E) at (4.6,2.76) {};
+    \node[etiqueta,above right=-1pt] at (E) {$E$};}
+  \capa{1}{\draw[guia] (E) -- (4.6,-0.55);}
+  % 2: la subida del salario gira la recta sobre A
+  \capa{2}{\draw[curvanueva] (0,\wu*\Ocero+\Wb) node[left,black] {$w_1O_0+\overline{W}$}
+    -- node[pos=0.1,above,sloped,black,etiqueta] {$-w_1$} (A);}
+  % 3: efecto sustitución: pendiente -w_1 tangente a U_0 en E'
+  \capa{3}{\draw[desplazada] (0,\Rs) -- (\Ocero,\Rs-\wu*\Ocero);}
+  \capa{3}{\node[punto] (Es) at (\Os,\Cs) {};
+    \node[etiqueta,above=1pt] at (Es) {$E'$};}
+  \capa{3}{\draw[guia] (Es) -- (\Os,-0.55);}
+  % 4: efecto renta ordinario: renta completa fija, renta compensada W^c
+  \capa{4}{\draw[desplazada] (0,\w*\Ocero+\Wb) -- (\Ocero,\Wc);}
+  \capa{4}{\node[punto] (A1) at (\Ocero,\Wc) {};
+    \node[etiqueta,above right] at (A1) {$A_1$};}
+  \capa{4}{\draw[decorate,decoration={brace,amplitude=3pt}]
+    (\Ocero+0.12,\Wc) -- (\Ocero+0.12,0) node[midway,right=3pt] {$\overline{W}^c$};}
+  \capa{4}{\draw[curva2] plot[domain=2.1:4.4,samples=60] (\x,{\Ko*\x^(-2/3)})
+    node[etiqueta,right] {$U''$};}
+  \capa{4}{\node[punto] (Eo) at (\Oo,\Co) {};
+    \node[etiqueta,below left] at (Eo) {$E''$};}
+  \capa{4}{\draw[guia] (Eo) -- (\Oo,-0.55);}
+  % 5: efecto renta dotación: tangencia final sobre la recta girada
+  \capa{5}{\draw[curva2] plot[domain=2.9:5.6,samples=60] (\x,{\Ku*\x^(-2/3)})
+    node[etiqueta,right] {$U_1$};}
+  \capa{5}{\node[punto] (E1) at (\Ou,\Cu) {};
+    \node[etiqueta,above right] at (E1) {$E_1$};}
+  \capa{5}{\draw[guia] (E1) -- (\Ou,-0.55);}
+  % 6: los efectos sobre el ocio, debajo del eje
+  \capa{6}{\draw[flecha] (4.6,-0.55) -- (\Os,-0.55);
+    \node[etiqueta,right] at (4.75,-0.55) {sustitución};}
+  \capa{6}{\draw[flecha] (\Os,-0.95) -- (\Oo,-0.95);
+    \node[etiqueta,right] at (4.75,-0.95) {renta ordinario};}
+  \capa{6}{\draw[flecha] (\Oo,-1.35) -- (\Ou,-1.35);
+    \node[etiqueta,right] at (4.75,-1.35) {renta dotación};}
+  \capa{6}{\draw[->,thick] (4.6,-1.75) -- (\Ou,-1.75);
+    \node[etiqueta,right] at (4.75,-1.75) {efecto total};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,47 @@
+% Perfiles edad-ingresos con y sin estudios universitarios: costes directos,
+% coste de oportunidad y rendimiento bruto. Elaboración propia a partir de
+% McConnell y Brue (1997) y Borjas (2020), cap. 6.
+% Escala: x = 0,22 (edad - 18) cm; y en cm.
+%   sin carrera (desde los 18): y = 1,4 + 0,1125 (e-18) - 0,001758 (e-18)^2,
+%     máximo a los 50 (y = 3,2); a los 22, 1,82; a los 65, 2,81
+%   con carrera: -1 entre 18 y 22 (costes directos); desde los 22,
+%     y = 2,3 + 0,1742 (e-22) - 0,00281 (e-22)^2, máximo a los 53 (y = 5,0);
+%     a los 65, 4,59
+% Las áreas van en la capa de fondo para que las curvas queden encima.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.22cm,y=1cm,
+    declare function={sinc(\e)=1.4+0.1125*(\e-18)-0.001758*(\e-18)^2;
+      con(\e)=2.3+0.1742*(\e-22)-0.00281*(\e-22)^2;},
+    costes/.style={fill=tceerojo,fill opacity=0.22,draw=none},
+    oportunidad/.style={fill=tceedorado,fill opacity=0.3,draw=none},
+    rendimiento/.style={fill=tceeazul,fill opacity=0.15,draw=none},
+    rotulo/.style={etiqueta,font=\footnotesize,align=center}]
+  % 1: ejes: edad e ingresos anuales, con la parte negativa
+  \capa{1}{\draw[eje] (18,0) -- (70,0) node[right] {edad};}
+  \capa{1}{\draw[eje] (18,-1.6) -- (18,5.9) node[above] {ingresos anuales};}
+  \capa{1}{\foreach \e in {18,22,65} \draw (\e,0.06) -- (\e,-0.06);}
+  \capa{1}{\node[etiqueta,below left] at (18,0) {$18$};}
+  \capa{1}{\node[etiqueta,above right=0pt and 0pt] at (22,0) {$22$};}
+  \capa{1}{\node[etiqueta,below] at (65,0) {$65$};}
+  \capa{1}{\draw[guia] (65,0) -- (65,5.4) node[above,text=black,font=\footnotesize] {jubilación};}
+  % 2: perfil sin carrera: empieza a trabajar a los 18
+  \capa{2}{\draw[curva1] plot[domain=18:65,samples=60] (\x,{sinc(\x)}) node[etiqueta,right] {sin carrera};}
+  % 3: mientras estudia, el universitario tiene ingresos negativos: costes directos
+  \capa{3}{\begin{pgfonlayer}{background}\fill[costes] (18,0) rectangle (22,-1);\end{pgfonlayer}}
+  \capa{3}{\draw[curva2] (18,-1) -- (22,-1);}
+  \capa{3}{\node[rotulo,text=tceerojo,anchor=west] (cd) at (25,-1.05) {costes directos};}
+  \capa{3}{\draw[->,thin,tceerojo] (cd.west) -- (21.2,-0.65);}
+  % 4: y deja de ganar el salario del otro: coste de oportunidad
+  \capa{4}{\begin{pgfonlayer}{background}\fill[oportunidad] (18,0) -- plot[domain=18:22,samples=10] (\x,{sinc(\x)}) -- (22,0) -- cycle;\end{pgfonlayer}}
+  \capa{4}{\node[rotulo,text=tceedorado!80!black,anchor=south west] (co) at (19.5,3.6) {coste de oportunidad\\(salario al que se renuncia)};}
+  \capa{4}{\draw[->,thin,tceedorado!80!black] (co.west) -- (19.8,1.0);}
+  % 5: perfil con carrera desde los 22: por encima y más empinado
+  \capa{5}{\draw[curva2] (22,-1) -- (22,{con(22)}) -- plot[domain=22:65,samples=60] (\x,{con(\x)}) node[etiqueta,right] {con carrera};}
+  % 6: distancia entre las 2 curvas: rendimiento bruto
+  \capa{6}{\begin{pgfonlayer}{background}\fill[rendimiento] plot[domain=22:65,samples=60] (\x,{con(\x)}) -- plot[domain=65:22,samples=60] (\x,{sinc(\x)}) -- cycle;\end{pgfonlayer}}
+  \capa{6}{\node[rotulo,text=tceeazul] at (50,3.75) {rendimiento bruto};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Prima por horas extraordinarias (nota al pie). Misma base que
+% oferta-trabajo.tex (O_0 = 7, W = 1,8, w = 0,4, U = C^{0,6} O^{0,4},
+% E = (4,6; 2,76)), a escala menor. La jornada normal L_n son las horas que
+% ya se trabajaban (O_0 - L_n = 4,6); a partir de ahí se paga w_e = 0,8 > w:
+% la recta se quiebra en E y la nueva tangencia es E_1 = (3,22; 3,86).
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.8cm]
+  \pgfmathsetmacro{\Ocero}{7}
+  \pgfmathsetmacro{\Wb}{1.8}
+  \pgfmathsetmacro{\w}{0.4}
+  \pgfmathsetmacro{\we}{0.8}
+  \pgfmathsetmacro{\KE}{2.76*4.6^(2/3)}
+  \pgfmathsetmacro{\Rv}{2.76+\we*4.6}          % corte del tramo con prima
+  \pgfmathsetmacro{\Ou}{0.4*\Rv/\we}           % E_1
+  \pgfmathsetmacro{\Cu}{0.6*\Rv}
+  \pgfmathsetmacro{\Ku}{\Cu*\Ou^(2/3)}
+  % 1: ejes
+  \capa{1}{\ejes{$O$}{$C$}{8.4}{7.2}}
+  % 2: recta inicial con salario w y tangencia E
+  \capa{2}{\draw[curva1] (\Ocero,0) node[below,black] {$O_0$} -- (\Ocero,\Wb);}
+  \capa{2}{\draw[curva1] (0,\w*\Ocero+\Wb) -- (\Ocero,\Wb)
+    node[pos=0.3,below,sloped,black,etiqueta] {$-w$};}
+  \capa{2}{\node[punto] (A) at (\Ocero,\Wb) {};
+    \node[etiqueta,right] at (A) {$A$};}
+  \capa{2}{\draw[curva2] plot[domain=3.2:6.3,samples=50] (\x,{\KE*\x^(-2/3)})
+    node[etiqueta,right] {$U_0$};}
+  \capa{2}{\node[punto] (E) at (4.6,2.76) {};
+    \node[etiqueta,below left] at (E) {$E$};}
+  % 3: quiebro en la jornada normal: a su izquierda, salario con prima w_e
+  \capa{3}{\draw[guia] (E) -- (4.6,0) node[below] {$O_0-L_n$};}
+  \capa{3}{\draw[decorate,decoration={brace,amplitude=4pt}]
+    (\Ocero,-0.75) -- (4.6,-0.75) node[midway,below=4pt,etiqueta] {jornada normal};}
+  \capa{3}{\draw[curvanueva] (E) -- (0,\Rv)
+    node[pos=0.75,above,sloped,black,etiqueta] {$-w_e$};}
+  % 4: nueva tangencia E_1: más horas
+  \capa{4}{\draw[curva3] plot[domain=2.2:5.2,samples=50] (\x,{\Ku*\x^(-2/3)})
+    node[etiqueta,right] {$U_1$};}
+  \capa{4}{\node[punto] (E1) at (\Ou,\Cu) {};
+    \node[etiqueta,above right] at (E1) {$E_1$};}
+  \capa{4}{\draw[guia] (E1) -- (\Ou,0) node[below] {$O_1$};}
+  \capa{4}{\draw[decorate,decoration={brace,amplitude=4pt}]
+    (4.6,-1.55) -- (\Ou,-1.55) node[midway,below=4pt,etiqueta] {horas extra};}
+\end{tikzpicture}
+\end{document}

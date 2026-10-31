@@ -1,0 +1,58 @@
+% Los 4 casos de poder de mercado de la empresa en el bien y en el trabajo
+% (rehace la imagen 16 del original). Elaboración propia a partir de
+% Robinson (1933). Construido sobre 3A17/graficos/monopsonio.tex (mismas
+% curvas y escala):
+%   oferta inversa   w_L(L)  = 1 + L
+%   gasto marginal   GMg_L   = 1 + 2L
+%   VPMg_L           = 8 - L/2
+%   IPMg_L           = 8 - L   (monopolio en el bien: por debajo del VPMg_L)
+%   1 competencia:  VPMg = w_L  -> L = 14/3; w = 17/3
+%   2 monopolio:    IPMg = w_L  -> L = 3,5;  w = 4,5
+%   3 monopsonio:   VPMg = GMg  -> L = 2,8;  w = w_L(2,8) = 3,8  (GMg = 6,6)
+%   4 los 2:        IPMg = GMg  -> L = 7/3;  w = w_L(7/3) = 10/3 (GMg = 17/3)
+% El salario se lee siempre en la oferta. Sin paro involuntario.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm,
+    declare function={of(\l)=1+\l; gmg(\l)=1+2*\l; vpmg(\l)=8-0.5*\l; ipmg(\l)=8-\l;},
+    num/.style={etiqueta,font=\footnotesize\bfseries,text=tceerojo},
+    rot/.style={font=\footnotesize,text=black}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{8.2}{9.6}}
+  % 2: valor del producto marginal
+  \capa{2}{\draw[curva1] plot[domain=0:7.6] (\x,{vpmg(\x)}) node[etiqueta,right] {$\mathrm{VPMg}_L$};}
+  % 3: oferta de trabajo
+  \capa{3}{\draw[curva2] plot[domain=0:7.2] (\x,{of(\x)}) node[etiqueta,right] {$w_L(L)$};}
+  % 4: gasto marginal
+  \capa{4}{\draw[curva4] plot[domain=0:3.95] (\x,{gmg(\x)}) node[etiqueta,above] {$\mathrm{GMg}_L$};}
+  % 5: competencia en los 2 mercados: VPMg = w_L
+  \capa{5}{\node[punto] (P1) at ({14/3},{17/3}) {};}
+  \capa{5}{\node[num,above=1pt] at (P1) {1};}
+  \capa{5}{\draw[guia] (0,{17/3}) node[left,rot] {$w_1$} -| ({14/3},0) node[below,rot] {$L_1$};}
+  % 6: monopsonio: VPMg = GMg y salario sobre la oferta
+  \capa{6}{\node[punto,fill=tceegris] (G3) at (2.8,6.6) {};}
+  \capa{6}{\draw[guia] (G3) -- (2.8,0) node[below,rot] {$L_3$};}
+  \capa{6}{\node[punto] (P3) at (2.8,3.8) {};}
+  \capa{6}{\node[num,below right] at (P3) {3};}
+  \capa{6}{\draw[guia] (P3) -- (0,3.8) node[left,rot] {$w_3$};}
+  % 7: ingreso del producto marginal (monopolio en el bien)
+  \capa{7}{\draw[curva3] plot[domain=0:5.0] (\x,{ipmg(\x)}) node[etiqueta,right] {$\mathrm{IPMg}_L$};}
+  % 8: monopolio en el bien: IPMg = w_L
+  \capa{8}{\node[punto] (P2) at (3.5,4.5) {};}
+  \capa{8}{\node[num,below right] at (P2) {2};}
+  \capa{8}{\draw[guia] (0,4.5) node[left,rot] {$w_2$} -| (3.5,0) node[below,rot] {$L_2$};}
+  % 9: monopolio y monopsonio: IPMg = GMg, salario sobre la oferta
+  \capa{9}{\node[punto,fill=tceegris] (G4) at ({7/3},{17/3}) {};}
+  \capa{9}{\draw[guia] (G4) -- ({7/3},0) node[below,rot] {$L_4$};}
+  \capa{9}{\node[punto] (P4) at ({7/3},{10/3}) {};}
+  \capa{9}{\node[num,below right] at (P4) {4};}
+  \capa{9}{\draw[guia] (P4) -- (0,{10/3}) node[left,rot] {$w_4$};}
+  % leyenda de los 4 casos (sin fondo), cada línea con su caso
+  \capa{5}{\node[rot,anchor=west] at (5.6,2.15) {\textcolor{tceerojo}{\textbf{1}}\ competencia};}
+  \capa{6}{\node[rot,anchor=west] at (5.6,0.95) {\textcolor{tceerojo}{\textbf{3}}\ monopsonio};}
+  \capa{8}{\node[rot,anchor=west] at (5.6,1.55) {\textcolor{tceerojo}{\textbf{2}}\ monopolio en el bien};}
+  \capa{9}{\node[rot,anchor=west] at (5.6,0.35) {\textcolor{tceerojo}{\textbf{4}}\ monopolio y monopsonio};}
+\end{tikzpicture}
+\end{document}

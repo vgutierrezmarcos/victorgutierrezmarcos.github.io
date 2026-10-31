@@ -1,0 +1,32 @@
+% Demanda de trabajo a corto plazo: el valor del producto marginal.
+% Elaboración propia a partir de Cahuc, Carcillo y Zylberberg (2014, cap. 3).
+% Misma escala y misma curva que equilibrio-trabajo.tex, monopsonio.tex y
+% salario-minimo.tex:
+%   VPMg_L = 8 - L/2  (= L^D)
+%   w_L^0 = 5   -> L^0 = 6
+%   w_L^1 = 6,5 -> L^1 = 3  (más salario, menos empleo)
+%   más capital, tecnología o precio del bien: VPMg_L' = 9,5 - L/2
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm,
+    declare function={vpmg(\l)=8-0.5*\l; vpmgn(\l)=9.5-0.5*\l;}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w_L$}{8.2}{9.6}}
+  % 2: valor del producto marginal = demanda de trabajo
+  \capa{2}{\draw[curva1] plot[domain=0:7.6] (\x,{vpmg(\x)})
+    node[etiqueta,below right=0pt and -6pt,align=left] {$\mathrm{VPMg}_L=L^D$};}
+  % 3: un salario w_L^0 y el empleo que se contrata
+  \capa{3}{\node[punto] (A) at (6,5) {};}
+  \capa{3}{\draw[guia] (0,5) node[left,text=black] {$w_L^0$} -| (6,0) node[below,text=black] {$L^0$};}
+  % 4: un salario mayor: menos empleo
+  \capa{4}{\node[punto] (B) at (3,6.5) {};}
+  \capa{4}{\draw[guia] (0,6.5) node[left,text=black] {$w_L^1$} -| (3,0) node[below,text=black] {$L^1$};}
+  \capa{4}{\draw[flecha] (5.6,5.65) -- (3.4,6.75);}
+  % 5: más capital, mejor tecnología o un precio mayor del bien desplazan la curva
+  \capa{5}{\draw[curvanueva,desplazada] plot[domain=0:7.6] (\x,{vpmgn(\x)})
+    node[etiqueta,above right=0pt and -6pt] {$\mathrm{VPMg}_L'$};}
+  \capa{5}{\draw[flecha] (1.2,{vpmg(1.2)+0.25}) -- (1.2,{vpmgn(1.2)-0.25});}
+\end{tikzpicture}
+\end{document}

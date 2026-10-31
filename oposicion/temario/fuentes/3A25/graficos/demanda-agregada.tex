@@ -1,0 +1,37 @@
+% Demanda de trabajo de mercado: suma de las cuasidemandas (rehace la imagen
+% 10 del original). Elaboración propia a partir de Cahuc, Carcillo y
+% Zylberberg (2014, cap. 3). Misma escala que demanda-corto.tex:
+%   suma de los VPMg_L al precio p_0:  8 - L/2   A: w_L^0 = 7   -> L = 2
+%   baja el salario a w_L^1 = 5,5: B sobre la misma curva, L = 5
+%   el precio del bien baja a p_1 < p_0: suma a p_1 = 7,25 - L/2; C: L = 3,5
+%   demanda de mercado por A y C: w = 7 - (L - 2) (pendiente -1, más inclinada)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm,
+    declare function={s0(\l)=8-0.5*\l; s1(\l)=7.25-0.5*\l; dm(\l)=7-(\l-2);}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w_L$}{8.2}{9.6}}
+  % 2: suma horizontal de las demandas individuales al precio p_0 y punto A
+  \capa{2}{\draw[curva1] plot[domain=0:7.6] (\x,{s0(\x)}) node[etiqueta,right] {$\Sigma\,\mathrm{VPMg}_L(p_0)$};}
+  \capa{2}{\node[punto] (A) at (2,7) {};}
+  \capa{2}{\node[etiqueta,above right] at (A) {$A$};}
+  \capa{2}{\draw[guia] (0,7) node[left,text=black] {$w_L^0$} -| (2,0) node[below,text=black] {$L_A$};}
+  % 3: baja el salario: si el precio no cambiara, de A a B
+  \capa{3}{\node[punto,fill=tceegris] (B) at (5,5.5) {};}
+  \capa{3}{\node[etiqueta,above right] at (B) {$B$};}
+  \capa{3}{\draw[guia] (0,5.5) node[left,text=black] {$w_L^1$} -- (B) -- (5,0) node[below,text=black] {$L_B$};}
+  % 4: todas producen más, baja el precio del bien y los VPMg_L se desplazan a la izquierda
+  \capa{4}{\draw[curvanueva,desplazada] plot[domain=0:7.6] (\x,{s1(\x)}) node[etiqueta,right] {$\Sigma\,\mathrm{VPMg}_L(p_1)$};}
+  \capa{4}{\draw[flecha] (6.6,{s0(6.6)-0.15}) -- (6.6,{s1(6.6)+0.15});}
+  % 5: punto C al salario w_L^1
+  \capa{5}{\node[punto] (C) at (3.5,5.5) {};}
+  \capa{5}{\node[etiqueta,below left] at (C) {$C$};}
+  \capa{5}{\draw[guia] (C) -- (3.5,0) node[below,text=black] {$L_C$};}
+  \capa{5}{\draw[flecha] (4.75,5.5) -- (3.75,5.5);}
+  % 6: demanda de mercado por A y C, más inclinada
+  \capa{6}{\draw[curva2] plot[domain=1.3:4.6] (\x,{dm(\x)});}
+  \capa{6}{\node[etiqueta,anchor=south west,text=tceeazul] at (1.25,{dm(1.3)}) {$L^D$ de mercado};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Oferta de trabajo individual: L = 0 hasta el salario de reserva w^R = 1;
+% por encima, L(w) = 3,2 s e^{1-s}, s = (w - w^R)/1,6: crece hasta w = 2,6
+% (domina la sustitución) y después se vuelve hacia atrás (domina la renta).
+\begin{tikzpicture}[tcee,x=1cm,y=0.8cm]
+  \pgfmathsetmacro{\wR}{1}
+  \pgfmathsetmacro{\wt}{2.6}   % salario en que la curva se vuelve hacia atrás
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{4.4}{6}}
+  % 2: salario de reserva: por debajo, L = 0
+  \capa{2}{\draw[curva1] (0,0) -- (0,\wR);}
+  \capa{2}{\node[punto] (R) at (0,\wR) {};
+    \node[etiqueta,left] at (R) {$w^R$};}
+  % 3: tramo creciente
+  \capa{3}{\draw[curva1] plot[domain=\wR:\wt,samples=50]
+    ({3.2*((\x-\wR)/1.6)*exp(1-(\x-\wR)/1.6)},\x);}
+  % 4: tramo que se vuelve hacia atrás
+  \capa{4}{\draw[curva1] plot[domain=\wt:5.5,samples=50]
+    ({3.2*((\x-\wR)/1.6)*exp(1-(\x-\wR)/1.6)},\x) node[etiqueta,above] {$L(w)$};}
+  % 5: efectos dominantes
+  \capa{5}{\draw[guia] (0,\wt) -- (3.2,\wt);}
+  \capa{5}{\node[etiqueta,align=center] at (3.45,1.45) {domina la\\sustitución};}
+  \capa{5}{\node[etiqueta,align=center] at (3.25,4.4) {domina\\la renta};}
+\end{tikzpicture}
+\end{document}

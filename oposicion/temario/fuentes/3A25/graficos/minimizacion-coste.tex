@@ -1,0 +1,32 @@
+% Minimización del coste a largo plazo (rehace la imagen 8 del original,
+% adaptada de Cahuc, Carcillo y Zylberberg, 2014, cap. 3). Mismo dibujo y
+% mismas funciones que 3A12/graficos/mc.tex (ficha dualidad-produccion):
+% isocuanta K = 3/L; w_L/w_K = 0,75. Isocostes 0,75 L + K = C/w_K con
+% C/w_K = 2 (no alcanza q: el mínimo de 0,75 L + 3/L es 3), 3 (tangente en
+% (2; 1,5)) y 4 (la corta dos veces: más cara).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$K$}{6.2}{4.4}}
+  % 2: isocuanta q
+  \capa{2}{\draw[curva2] plot[domain=0.8:5.6,samples=80,smooth] (\x,{3/\x}) node[etiqueta,right] {$q$};}
+  % 3: isocostes paralelas de pendiente -w_L/w_K
+  \capa{3}{\draw[curva3,desplazada] (0,2) -- (2.67,0);}
+  \capa{3}{\draw[curva3,desplazada] (0,4) -- (5.33,0);}
+  \capa{3}{\draw[curva3] (0,3) -- (4,0);}
+  \capa{3}{\node[etiqueta,left,font=\footnotesize,text=tceeverde] at (0,3) {$\overline{C}/w_K$};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceeverde,anchor=west] (P) at (4.5,1.45) {pendiente $-w_L/w_K$};}
+  \capa{3}{\draw[guia,solid] (P.west) -- (3.55,0.36);}
+  % 4: tangencia y demandas condicionadas
+  \capa{4}{\node[punto,fill=tceeverde] (E) at (2,1.5) {};}
+  \capa{4}{\node[etiqueta,below left] at (E) {$E$};}
+  \capa{4}{\draw[guia] (E) -- (2,0) node[below,text=black] {$z_L(\vect{w},q)$};}
+  \capa{4}{\draw[guia] (E) -- (0,1.5) node[left,text=black] {$z_K(\vect{w},q)$};}
+  % 5: condición de tangencia
+  \capa{5}{\node[etiqueta,anchor=west] (R) at (3.0,2.3) {$\mathrm{RMST}_{LK}=\dfrac{w_L}{w_K}$};}
+  \capa{5}{\draw[guia,solid] (R.west) -- (2.08,1.58);}
+\end{tikzpicture}
+\end{document}

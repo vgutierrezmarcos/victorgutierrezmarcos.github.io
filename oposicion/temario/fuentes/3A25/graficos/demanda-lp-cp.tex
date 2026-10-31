@@ -1,0 +1,39 @@
+% Demanda de trabajo a corto y a largo plazo (rehace la imagen 9 del
+% original). Elaboración propia a partir de Cahuc, Carcillo y Zylberberg
+% (2014, cap. 3). Misma escala y misma curva inicial que demanda-corto.tex:
+%   VPMg_L(K_0) = 8 - L/2       A: w_L^0 = 7   -> L^0 = 2
+%   baja el salario a w_L^1 = 5,5: B sobre la misma curva, L = 5 (corto plazo)
+%   más capital: VPMg_L(K_1) = 9 - L/2; C: w_L^1 = 5,5 -> L = 7
+%   demanda a largo plazo por A y C: w = 7 - 0,3 (L - 2) (pendiente -0,3,
+%   más plana que la de corto, -1/2: más elástica)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm,
+    declare function={vpmg(\l)=8-0.5*\l; vpmgk(\l)=9-0.5*\l; dlp(\l)=7-0.3*(\l-2);}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w_L$}{8.2}{9.6}}
+  % 2: demanda a corto plazo con el capital K_0 y punto A
+  \capa{2}{\draw[curva1] plot[domain=0:7.6] (\x,{vpmg(\x)}) node[etiqueta,right] {$\mathrm{VPMg}_L(\overline{K}_0)$};}
+  \capa{2}{\node[punto] (A) at (2,7) {};}
+  \capa{2}{\node[etiqueta,above right] at (A) {$A$};}
+  \capa{2}{\draw[guia] (0,7) node[left,text=black] {$w_L^0$} -| (2,0) node[below,text=black] {$L^0$};}
+  % 3: baja el salario: con el capital fijo, de A a B
+  \capa{3}{\node[punto] (B) at (5,5.5) {};}
+  \capa{3}{\node[etiqueta,below left] at (B) {$B$};}
+  \capa{3}{\draw[guia] (0,5.5) node[left,text=black] {$w_L^1$} -| (5,0) node[below,text=black] {$L_{\mathrm{cp}}^1$};}
+  \capa{3}{\draw[flecha] (2.5,6.2) -- (4.4,5.25);}
+  % 4: más capital: el VPMg_L se desplaza a la derecha
+  \capa{4}{\draw[curvanueva,desplazada] plot[domain=0:7.6] (\x,{vpmgk(\x)}) node[etiqueta,right] {$\mathrm{VPMg}_L(\overline{K}_1)$};}
+  % 5: punto C al salario w_L^1
+  \capa{5}{\node[punto] (C) at (7,5.5) {};}
+  \capa{5}{\node[etiqueta,above right] at (C) {$C$};}
+  \capa{5}{\draw[guia] (C) -- (7,0) node[below,text=black] {$L_{\mathrm{lp}}^1$};}
+  \capa{5}{\draw[flecha] (5.3,5.5) -- (6.7,5.5);}
+  % 6: demanda a largo plazo por A y C, más plana
+  \capa{6}{\draw[curva2] plot[domain=1.2:7.45] (\x,{dlp(\x)});}
+  \capa{6}{\node[etiqueta,anchor=south west,text=tceeazul] (LP) at (4.9,7.9) {$L^D$ a largo plazo};}
+  \capa{6}{\draw[guia,solid] (LP.south west) ++(0.3,0.05) -- (4.4,{dlp(4.4)});}
+\end{tikzpicture}
+\end{document}

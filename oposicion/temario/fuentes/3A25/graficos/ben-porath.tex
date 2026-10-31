@@ -1,0 +1,61 @@
+% El modelo de Ben-Porath: tiempo dedicado a formarse e ingresos potenciales
+% y observados a lo largo de la vida. Elaboración propia a partir de
+% Ben-Porath (1967), Mincer (1974) y Cahuc, Carcillo y Zylberberg (2014), cap. 4.
+% Eje horizontal (los 2 paneles): edad t de 0 a S + T = 8, fin de los estudios S = 2;
+% experiencia X = t - S, vida laboral T = 6 (como en el texto); k se anula en S + T.
+%   izquierda: 1 - u = 1 en [0, S); caso lineal: 0 desde S («todo o nada»);
+%     Ben-Porath con la aproximación de Mincer: k(X) = k_0 (1 - X/6), k_0 = 0,6
+%   derecha: E(X) = 1,6 exp(a k_0 X - a k_0 X^2/12), a = 0,35 (a k_0 = 0,21):
+%     E(0) = 1,6 y E(6) = 3,0; w(X) = E(X) [1 - k(X)]: w(0) = 0,64, w(6) = E(6)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.7cm,
+    declare function={k(\t)=0.6*(1-(\t-2)/6);
+      E(\t)=1.6*exp(0.21*(\t-2)-0.0175*(\t-2)^2); w(\t)=E(\t)*(1-k(\t));},
+    lineal/.style={very thick,dashed,tceegris},
+    rotulo/.style={etiqueta,font=\footnotesize,align=center}]
+  % ---------------- Panel izquierdo: tiempo dedicado a formarse ----------------
+  \begin{scope}[y=3cm]
+    % 1: ejes
+    \capa{1}{\draw[eje] (0,0) -- (9,0) node[right] {edad};}
+    \capa{1}{\draw[eje] (0,0) -- (0,1.22) node[left] {$1-u$};}
+    \capa{1}{\node[below left] at (0,0) {$0$};}
+    \capa{1}{\node[etiqueta,left] at (0,1) {$1$};}
+    \capa{1}{\node[etiqueta,below=2pt] at (2,0) {$S$};}
+    \capa{1}{\node[etiqueta,below=2pt] at (8,0) {$S+T$};}
+    \capa{1}{\draw (2,0.025) -- (2,0) (8,0.025) -- (8,0);}
+    % 2: especialización: se estudia a tiempo completo hasta S
+    \capa{2}{\draw[curva1] (0,1) -- (2,1);}
+    \capa{2}{\node[rotulo,above] at (1,1) {estudia};}
+    % 3: caso lineal: cae a 0 en S, «todo o nada»
+    \capa{3}{\draw[lineal] (2,1) -- (2,0) -- (8,0);}
+    \capa{3}{\node[rotulo,text=tceegris,anchor=west] at (2.1,0.12) {caso lineal: todo o nada};}
+    % 4: Ben-Porath: k(X) decreciente hasta anularse en S + T
+    \capa{4}{\draw[curva1] (2,1) -- (2,0.6) -- plot[domain=2:8,samples=2] (\x,{k(\x)});}
+    \capa{4}{\draw[guia] (0,0.6) node[left,text=black] {$k_0$} -- (2,0.6);}
+    \capa{4}{\node[rotulo,text=tceemorado,anchor=south west] at (4.2,{k(4.2)}) {$k(X)$, rendimientos decrecientes};}
+  \end{scope}
+  % ---------------- Panel derecho: ingresos ----------------
+  \begin{scope}[xshift=8.6cm,y=1cm]
+    % 5: ejes
+    \capa{5}{\draw[eje] (0,0) -- (9,0) node[right] {edad};}
+    \capa{5}{\draw[eje] (0,0) -- (0,3.66) node[left] {ingresos};}
+    \capa{5}{\node[below left] at (0,0) {$0$};}
+    \capa{5}{\node[etiqueta,below=2pt] at (2,0) {$S$};}
+    \capa{5}{\node[etiqueta,below=2pt] at (8,0) {$S+T$};}
+    \capa{5}{\draw (2,0.075) -- (2,0) (8,0.075) -- (8,0);}
+    % 6: ingresos potenciales E(X) = omega h(X)
+    \capa{6}{\draw[curva2] plot[domain=2:8,samples=50] (\x,{E(\x)});}
+    \capa{6}{\node[etiqueta,text=tceeazul,above left] at (4.6,{E(4.6)}) {$E(X)$};}
+    % 7: ingresos observados w(X) = E(X)[1 - k(X)]
+    \capa{7}{\draw[curva1] plot[domain=2:8,samples=50] (\x,{w(\x)});}
+    \capa{7}{\node[etiqueta,text=tceemorado,below right] at (5.2,{w(5.2)}) {$w(X)$};}
+    % 8: la distancia entre las 2: inversión en formación en el empleo
+    \capa{8}{\begin{pgfonlayer}{background}\fill[area2] plot[domain=2:8,samples=50] (\x,{E(\x)}) -- plot[domain=8:2,samples=50] (\x,{w(\x)}) -- cycle;\end{pgfonlayer}}
+    \capa{8}{\node[rotulo,text=tceedorado!80!black,anchor=north west] (inv) at (2.4,0.55) {inversión en formación};}
+    \capa{8}{\draw[->,thin,tceedorado!80!black] (inv.north) ++(-0.6,-0.05) -- (3.3,1.45);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
