@@ -1,7 +1,7 @@
 # q de Tobin con costes de ajuste (Tobin 1969; Summers 1981; Abel 1982; Hayashi 1982)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.34 (teorías de la inversión) — único tema que lo desarrolla.
-- **Temas que lo usan:** 3.A.34 (desarrollo), 3.A.29 (resumen: optimización dinámica), 3.A.37 (resumen: canal de transmisión)
+- **Temas que lo usan:** 3.A.34 (desarrollo), 3.A.29 (resumen: optimización dinámica), 3.A.37 (resumen: canal de transmisión), 3.A.26 (mención; hecho, 31/10/2026: analogía en III, el coste de ajuste del empleo $\Phi(\dot L_t)$ con la misma letra y el valor sombra $\lambda_t$ de un trabajador como «la q de Tobin del trabajo», `eq:valor-sombra-empleo`; diagrama de fases en $(L,\lambda)$ en su anexo D, «el mismo que el de la q de Tobin»; ficha `costes-ajuste-empleo`)
 - **Manuales de referencia:** Romer (2019), cap. 9; Blanchard y Fischer (1989), cap. 2; Hayashi (1982).
 - **Decisión D130 (13/10/2026):** ¿Cómo se escribe el coste de ajuste de la inversión (q de Tobin)? Φ(I_t, K_t)
 
@@ -18,10 +18,12 @@ Gráfico de referencia: diagrama de fases en (K, q): locus K̇ = 0 horizontal en
 |---|---|---|---|---|
 | 3.A.34 | Teorías de la inversión | desarrollo | Modelo, diagrama de fases, q marginal y media, evidencia (débil poder explicativo de q) | — |
 | 3.A.29 | Modelización dinámica | resumen | Ejemplo de hamiltoniano con precio sombra | El diagrama completo; el propio autor dice que «está mucho mejor en el tema 3.A.34» |
+| 3.A.26 | Costes de ajuste del empleo | mención (hecho, 31/10/2026) | Analogía: $\Phi(\dot L)$ y $\lambda_t$, la q de Tobin del trabajo; la banda de inacción como los costes asimétricos e irreversibles de la inversión | El modelo de la inversión |
 | 3.A.37 | Transmisión de la política monetaria | resumen | Canal de q: tipo ↓ → precio de las acciones ↑ → q ↑ → inversión ↑ | Derivación |
 
 ## Divergencias encontradas en el temario actual
 - El coste de ajuste se escribe C(I) en 3.A.34: C es consumo en el resto del bloque; canon **Φ(I_t, K_t)**.
+- 3.A.34 (sin revisar): su 3.4 «costes de ajuste asimétricos (quebrados o fijos)» es la lógica de la banda de inacción del empleo (ficha `costes-ajuste-empleo`, 3.A.26): al revisarlo, remisión recíproca y la misma tabla de tipos de costes; el diagrama de fases puede compartir estilo con `fuentes/3A26/graficos/fases-empleo.tex`.
 - 3.A.29 repite el bloque (hamiltoniano y precio sombra) de forma menos completa; 3.A.29 tiene además un anexo de optimización dinámica que el autor quiere común con 3.A.33, 3.A.34 y 3.A.43.
 
 Autor: Víctor Gutiérrez Marcos

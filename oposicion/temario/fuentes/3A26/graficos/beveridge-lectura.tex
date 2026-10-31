@@ -1,0 +1,41 @@
+% Lectura de la curva de Beveridge en el plano (U, V): a lo largo (el ciclo),
+% desplazamientos (A, s), bisectriz U = V y bucle de la recuperación.
+% Mismas curvas que dmp-equilibrio y dmp-estatica (tasas por 15):
+%   B0: s/A = 0,15 -> V = 5,0625 (1 - U/15)^2 / U; corta la bisectriz en
+%       theta = 1: U = 0,15/1,15 -> (1,9565; 1,9565)
+%   B1: s/A' = 0,2308 -> V = 11,9822 (1 - U/15)^2 / U
+% (En el original, «U > V» y «V > U» estaban al revés.)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.8,-0.8) rectangle (8.6,5.2);
+  % 1: ejes
+  \capa{1}{\ejes{$U$}{$V$}{6.2}{4.8}}
+  % 2: la curva de Beveridge B0
+  \capa{2}{\draw[curva1] plot[domain=1.12:5.6, samples=80, smooth] (\x,{5.0625*(1-\x/15)^2/\x})
+      node[etiqueta, right, text=tceemorado] {$B_0$};}
+  % 3: la bisectriz U = V
+  \capa{3}{\draw[guia, thick] (0,0) -- (4.5,4.5) node[etiqueta, above right, text=tceegris] {$U=V$};
+    \node[etiqueta, text=tceegris] at (0.55,4.4) {$V>U$};
+    \node[etiqueta, text=tceegris] at (5.0,2.35) {$U>V$};}
+  % 4: puntos X e Y y el ciclo a lo largo de la curva
+  \capa{4}{\node[punto] (X) at (1.9565,1.9565) {};
+    \node[etiqueta, above right] at (X) {$X$};
+    \draw[guia] (X) -- (1.9565,0) node[below, text=black] {$U_0$};
+    \node[punto] (Y) at (3.3,0.9333) {};
+    \node[etiqueta, above right] at (Y) {$Y$};
+    \draw[flecha, tceegris] plot[domain=2.1:3.15, samples=30, smooth] (\x,{5.0625*(1-\x/15)^2/\x-0.28});
+    \node[etiqueta, text=tceegris, anchor=west] at (2.1,0.42) {ciclo: recesión};}
+  % 5: la curva se desplaza hacia fuera: peor emparejamiento o más separaciones
+  \capa{5}{\draw[curvanueva, desplazada] plot[domain=2.5:5.6, samples=80, smooth] (\x,{11.9822*(1-\x/15)^2/\x})
+      node[etiqueta, right, text=tceerojo] {$B_1$};
+    \draw[flecha] (4.4,0.62) -- (4.85,1.15);
+    \node[etiqueta, text=tceerojo, align=left, anchor=west] at (4.0,3.5) {peor emparejamiento ($\downarrow A$)\\o más separaciones ($\uparrow s$)};}
+  % 6: el bucle de la recuperación, en sentido contrario a las agujas del reloj
+  \capa{6}{\draw[flecha, tceeazul] (1.45,2.835) ++(-60:0.32 and 0.36) arc[start angle=-60, end angle=245, x radius=0.32, y radius=0.36];
+    \node[etiqueta, text=tceeazul, anchor=south, align=center] at (2.35,3.35) {bucle de la\\recuperación};}
+\end{tikzpicture}
+\end{document}

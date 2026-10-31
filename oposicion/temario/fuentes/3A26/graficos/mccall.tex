@@ -1,0 +1,48 @@
+% McCall (1970): el salario de reserva. Panel a, coste y beneficio de seguir
+% buscando; panel b, la densidad de las ofertas y las que se aceptan.
+% Densidad F'(w) = (3/64)(w-1)(5-w)^2 en [w_min, w_max] = [1, 5] (media 2,6).
+% Ganancia esperada de buscar, para a = 5 - w^R:
+%   (beta/(1-beta)) * int_{w^R}^{5} (w - w^R) dF(w) = (beta/(1-beta)) (3/64) a^4 (1/3 - a/20),
+% con z = 1,2 y beta/(1-beta) = 1,8/0,175 (beta = 0,911), se corta con w^R - z
+% en w^R = 3. Escala vertical del panel a: 0,8 cm por euro.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.7,-0.8) rectangle (16.2,5.2);
+  % ---------------- Panel a: coste y beneficio de seguir buscando ----------
+  % 1: ejes
+  \capa{1}{\ejes{$w^R$}{€}{6.4}{4.6}
+    \node[etiqueta, font=\small\itshape, anchor=south] at (3.2,4.75) {a) Coste y beneficio de seguir buscando};}
+  % 2: el coste de rechazar w^R, recta desde z
+  \capa{2}{\draw[curva2] (1.2,0) node[below, text=black] {$z$} -- (5,3.04)
+      node[etiqueta, right, align=left, text=tceeazul] {coste de rechazar $w^R$:\\$w^R-z$};}
+  % 3: la ganancia esperada de buscar una vez más, decreciente y convexa
+  \capa{3}{\draw[curva1] plot[domain=2.3:5, samples=60, smooth]
+      (\x,{0.385714*(5-\x)^4*(1/3-(5-\x)/20)});
+    \node[etiqueta, right, align=left, text=tceemorado] at (2.4,4.1) {ganancia esperada\\de buscar una vez más};
+    \node[below] at (5,0) {$w_{\max}$};}
+  % 4: el corte da el salario de reserva óptimo
+  \capa{4}{\node[punto] (Ea) at (3,1.44) {};
+    \draw[guia] (Ea) -- (3,0) node[below, text=black] {$w^R$};}
+  % ---------------- Panel b: distribución de las ofertas -------------------
+  \begin{scope}[xshift=9.6cm]
+    % 5: ejes
+    \capa{5}{\ejes{$w$}{$F'(w)$}{6.2}{3.4}
+      \node[etiqueta, font=\small\itshape, anchor=south] at (3.1,4.75) {b) Distribución de las ofertas};}
+    % 6: la densidad de las ofertas, entre w_min y w_max (escala vertical 6)
+    \capa{6}{\draw[curva1] plot[domain=1:5, samples=80, smooth] (\x,{6*3/64*(\x-1)*(5-\x)^2});
+      \node[below] at (1,0) {$w_{\min}$};
+      \node[below] at (5,0) {$w_{\max}$};}
+    % 7: la vertical en el mismo w^R del panel a
+    \capa{7}{\draw[guia, thick, black] (3,0) node[below] {$w^R$} -- (3,2.9);}
+    % 8: se aceptan las ofertas a la derecha de w^R y se rechazan las demás
+    \capa{8}{\fill[area] (3,0) -- plot[domain=3:5, samples=40, smooth] (\x,{6*3/64*(\x-1)*(5-\x)^2}) -- cycle;
+      \draw[->, thin, tceemorado] (4.6,2.35) -- (3.75,0.6);
+      \node[etiqueta, align=left, text=tceemorado, anchor=south west] at (3.9,2.3) {se aceptan:\\probabilidad $1-F(w^R)$};
+      \node[etiqueta, align=center, text=tceegris] at (1.95,3.15) {se rechazan};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

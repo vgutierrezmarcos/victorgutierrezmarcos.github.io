@@ -1,0 +1,903 @@
+% 3A26.bib — Tema 3.A.26 (desempleo friccional, curva de Beveridge, DMP y costes de ajuste)
+% Bibliografía del original (en biblatex), del verificador de datos (31/10/2026) y de las
+% propuestas de contenido. Fecha de consulta de las entradas en línea: 2026-10-31 salvo que
+% se indique otra.
+
+% =====================================================================
+% 1. Estadísticas oficiales
+% =====================================================================
+
+@online{Eurostat2026jvs, % REUTILIZADA 1D01 (misma serie del gráfico de la curva de Beveridge; consultada de nuevo el 31/10/2026, sin cambios)
+  author  = {{Eurostat}},
+  title   = {Job vacancy statistics by NACE Rev. 2.1 activity – quarterly data [jvs\_q\_r21]},
+  note    = {Actualizada el 15 de septiembre de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/jvs_q_r21/default/table},
+  urldate = {2026-10-23}
+}
+
+@online{Eurostat2026une, % REUTILIZADA 1D01 (une_rt_q actualizada el 26/10/2026 y une_rt_m el 30/10/2026; consultadas el 31/10/2026)
+  author  = {{Eurostat}},
+  title   = {Unemployment by sex and age – monthly and quarterly data [une\_rt\_m, une\_rt\_q]},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/une_rt_q/default/table},
+  urldate = {2026-10-23}
+}
+
+@online{Eurostat2026Transiciones, % NUEVA
+  author  = {{Eurostat}},
+  title   = {Labour market transitions -- quarterly data [lfsi\_long\_q]},
+  note    = {Actualizada el 15 de septiembre de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/lfsi_long_q/default/table},
+  urldate = {2026-10-31}
+}
+
+@online{Eurostat2026Temporalidad, % NUEVA
+  author  = {{Eurostat}},
+  title   = {Temporary employees as percentage of the total number of employees, by sex and age -- quarterly data [lfsq\_etpga]},
+  note    = {Actualizada el 11 de septiembre de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/lfsq_etpga/default/table},
+  urldate = {2026-10-31}
+}
+
+@online{Eurostat2025CalidadVacantesES, % NUEVA (informe de calidad de la estadística de vacantes de España: ruptura de 2013T1)
+  author  = {{Eurostat}},
+  title   = {Job vacancy statistics (jvs). National quality report: Spain},
+  year    = {2025},
+  url     = {https://ec.europa.eu/eurostat/cache/metadata/en/jvs_esqrs_es.htm},
+  urldate = {2026-10-31}
+}
+
+@online{INE2026EPA3T, % REUTILIZADA 3A25
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Encuesta de Población Activa (EPA). Tercer trimestre de 2026},
+  note    = {Nota de prensa de 27 de octubre de 2026},
+  year    = {2026},
+  url     = {https://www.ine.es/dyngs/Prensa/EPA3T26.htm},
+  urldate = {2026-10-31}
+}
+
+@online{INE2026EPATabla65334, % REUTILIZADA 3A25
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Encuesta de Población Activa. Tasas de paro por distintos grupos de edad, sexo y comunidad autónoma (tabla 65334)},
+  year    = {2026},
+  url     = {https://www.ine.es/jaxiT3/Tabla.htm?t=65334},
+  urldate = {2026-10-31}
+}
+
+@online{INE2026EPAParados, % NUEVA (serie EPA424411)
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Encuesta de Población Activa. Parados por nivel de formación alcanzado, sexo y grupo de edad (tabla 65337)},
+  year    = {2026},
+  url     = {https://www.ine.es/jaxiT3/Tabla.htm?t=65337},
+  urldate = {2026-10-31}
+}
+
+@online{INE2026EPAFlujos, % NUEVA (series EFPA1025, EFPA1026, EFPA1031, EFPA1035, EFPA1037, EFPA1041)
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Flujos de la Población Activa (EPA). Población de 16 o más años por sexo y relación con la actividad económica en el trimestre actual según relación con la actividad económica en el trimestre anterior (tabla 66257)},
+  year    = {2026},
+  url     = {https://www.ine.es/jaxiT3/Tabla.htm?t=66257},
+  urldate = {2026-10-31}
+}
+
+@online{INE2026EPAContrato, % NUEVA (series EPA400155 y EPA400159: asalariados con contrato indefinido y temporal)
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Encuesta de Población Activa. Ocupados por tipo de contrato o relación laboral de los asalariados, sexo y tipo de jornada (tabla 65132)},
+  year    = {2026},
+  url     = {https://www.ine.es/jaxiT3/Tabla.htm?t=65132},
+  urldate = {2026-10-31}
+}
+
+@online{INE2026ETCLVacantes, % NUEVA (serie ETCL2925; segunda comprobación de las vacantes de Eurostat)
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Encuesta Trimestral de Coste Laboral. Número de vacantes por sectores de actividad (tabla 6047)},
+  year    = {2026},
+  url     = {https://www.ine.es/jaxiT3/Tabla.htm?t=6047},
+  urldate = {2026-10-31}
+}
+
+@online{BOE2021RDL32, % NUEVA (BOE-A-2021-21788; comprobado con la API del BOE)
+  author  = {{Jefatura del Estado}},
+  title   = {Real Decreto-ley 32/2021, de 28 de diciembre, de medidas urgentes para la reforma laboral, la garantía de la estabilidad en el empleo y la transformación del mercado de trabajo},
+  note    = {BOE núm. 313, de 30 de diciembre de 2021},
+  year    = {2021},
+  url     = {https://www.boe.es/eli/es/rdl/2021/12/28/32},
+  urldate = {2026-10-31}
+}
+
+% =====================================================================
+% 2. Premios Nobel (api.nobelprize.org, 31/10/2026)
+% =====================================================================
+
+@online{Nobel2010DiamondMortensenPissarides, % REUTILIZADA 3A27
+  author  = {{The Nobel Prize}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 2010: Peter A. Diamond, Dale T. Mortensen and Christopher A. Pissarides},
+  year    = {2010},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/2010/summary/},
+  urldate = {2026-10-31}
+}
+
+@online{Nobel1972HicksArrow, % REUTILIZADA 3A21
+  author  = {{The Nobel Prize}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1972: John R. Hicks and Kenneth J. Arrow},
+  year    = {1972},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1972/summary/},
+  urldate = {2026-10-14}
+}
+
+@online{Nobel1982Stigler, % REUTILIZADA 3A15
+  author  = {{The Nobel Prize}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1982: George J. Stigler},
+  year    = {1982},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1982/summary/},
+  urldate = {2026-10-20}
+}
+
+@online{Nobel1976Friedman, % NUEVA
+  author  = {{The Nobel Prize}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1976: Milton Friedman},
+  year    = {1976},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1976/summary/},
+  urldate = {2026-10-31}
+}
+
+@online{Nobel2006Phelps, % NUEVA
+  author  = {{The Nobel Prize}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 2006: Edmund S. Phelps},
+  year    = {2006},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/2006/summary/},
+  urldate = {2026-10-31}
+}
+
+% =====================================================================
+% 3. Informes y publicaciones institucionales
+% =====================================================================
+
+@report{FMI2023Spain, % NUEVA (sustituye a «Dept, I. M. F. E.»; la DOI da 403 a peticiones automáticas)
+  author      = {{International Monetary Fund. European Dept.}},
+  title       = {Spain: 2022 Article IV Consultation---Press Release; Staff Report; and Statement by the Executive Director for Spain},
+  type        = {IMF Staff Country Report},
+  number      = {23/33},
+  institution = {International Monetary Fund},
+  address     = {Washington, D. C.},
+  year        = {2023},
+  doi         = {10.5089/9798400230622.002},
+  url         = {https://www.imf.org/en/Publications/CR/Issues/2023/01/19/Spain-2022-Article-IV-Consultation-Press-Release-Staff-Report-and-Statement-by-the-528338},
+  urldate     = {2026-10-31}
+}
+
+@online{BoscaEtAl2023Ucrania, % NUEVA (página comprobada: autores y fecha)
+  author  = {Boscá, José E. and Doménech, Rafael and Ferri, Javier and Ulloa, Camilo},
+  title   = {La economía española en el primer año de la guerra de Ucrania},
+  organization = {BBVA Research},
+  date    = {2023-04-27},
+  url     = {https://www.bbvaresearch.com/publicaciones/espana-la-economia-espanola-en-el-primer-ano-de-la-guerra-de-ucrania/},
+  urldate = {2026-10-31}
+}
+
+@online{BoscaEtAl2017Beveridge, % NUEVA (sustituye al «informe de BBVA Research de 2015» sin título; versión del 16/07/2017 leída)
+  author  = {Boscá, José E. and Doménech, Rafael and Ferri, Javier and García, José R.},
+  title   = {Los desplazamientos de la curva de Beveridge en España y sus efectos macroeconómicos},
+  organization = {BBVA Research},
+  year    = {2017},
+  url     = {https://www.bbvaresearch.com/wp-content/uploads/2017/07/BDFG_Vacantes_v20.pdf},
+  urldate = {2026-10-31}
+}
+
+@report{NunezUsabiaga2007, % NUEVA (enlace vivo, 200)
+  author      = {Núñez, Felipe and Usabiaga, Carlos},
+  title       = {La curva de Beveridge y la función de emparejamiento: revisión de sus fundamentos teóricos y de la literatura empírica, con especial énfasis en el caso español},
+  type        = {Factoría de Ideas},
+  institution = {Centro de Estudios Andaluces},
+  address     = {Sevilla},
+  year        = {2007},
+  url         = {https://centrodeestudiosandaluces.es/datos/paginas/factoria/ideas/informe_curva_beveridge.pdf},
+  urldate     = {2026-10-31}
+}
+
+% =====================================================================
+% 4. Libros
+% =====================================================================
+
+@book{Beveridge1909Unemployment, % NUEVA (1.ª ed. 1909, Longmans, Green; no 1908)
+  author    = {Beveridge, William H.},
+  title     = {Unemployment: A Problem of Industry},
+  publisher = {Longmans, Green and Co.},
+  address   = {Londres},
+  year      = {1909}
+}
+
+@book{Beveridge1944Full, % NUEVA (metadatos de catálogo, sin comprobar en línea)
+  author    = {Beveridge, William H.},
+  title     = {Full Employment in a Free Society},
+  publisher = {George Allen \& Unwin},
+  address   = {Londres},
+  year      = {1944}
+}
+
+@book{Hicks1932Theory, % REUTILIZADA 3A11
+  author    = {Hicks, John R.},
+  title     = {The Theory of Wages},
+  publisher = {Macmillan},
+  address   = {Londres},
+  year      = {1932},
+}
+
+@book{Pissarides2000Equilibrium, % NUEVA (metadatos de catálogo)
+  author    = {Pissarides, Christopher A.},
+  title     = {Equilibrium Unemployment Theory},
+  edition   = {2},
+  publisher = {MIT Press},
+  address   = {Cambridge (Massachusetts)},
+  year      = {2000}
+}
+
+@book{Cahuc2014Labor, % REUTILIZADA 3A25
+  author    = {Cahuc, Pierre and Carcillo, Stéphane and Zylberberg, André},
+  title     = {Labor Economics},
+  edition   = {2},
+  publisher = {MIT Press},
+  address   = {Cambridge (Massachusetts)},
+  year      = {2014}
+}
+
+@book{Romer2019Advanced, % REUTILIZADA 3A25 (el original cita «Romer (2001)», 2.ª ed.)
+  author = {Romer, David},
+  title = {Advanced Macroeconomics},
+  edition = {5},
+  publisher = {McGraw-Hill},
+  address = {Nueva York},
+  year = {2019}}
+
+@book{DeVroey2016History, % REUTILIZADA 3A16
+  author    = {De Vroey, Michel},
+  title     = {A History of Macroeconomics from Keynes to Lucas and Beyond},
+  publisher = {Cambridge University Press},
+  address   = {Cambridge},
+  year      = {2016},
+  doi       = {10.1017/cbo9780511843617}
+}
+
+@book{Hamermesh1993Labor, % REUTILIZADA 3A25 (catálogo de Princeton UP comprobado)
+  author    = {Hamermesh, Daniel S.},
+  title     = {Labor Demand},
+  publisher = {Princeton University Press},
+  address   = {Princeton},
+  year      = {1993}
+}
+
+@book{HoltEtAl1960Planning, % NUEVA (catálogo: Prentice-Hall, 1960, 419 págs.)
+  author    = {Holt, Charles C. and Modigliani, Franco and Muth, John F. and Simon, Herbert A.},
+  title     = {Planning Production, Inventories, and Work Force},
+  publisher = {Prentice-Hall},
+  address   = {Englewood Cliffs (Nueva Jersey)},
+  year      = {1960}
+}
+
+@book{FallonVerry1988Economics, % NUEVA (catálogo: P. Allan, 1988; el original escribe «Fallen»)
+  author    = {Fallon, Peter and Verry, Donald},
+  title     = {The Economics of Labour Markets},
+  publisher = {Philip Allan},
+  address   = {Oxford},
+  year      = {1988}
+}
+
+@book{Smith2003Labour, % NUEVA (la del pie de la imagen 3; metadatos sin comprobar en línea)
+  author    = {Smith, Stephen W.},
+  title     = {Labour Economics},
+  edition   = {2},
+  publisher = {Routledge},
+  address   = {Londres},
+  year      = {2003}
+}
+
+@book{Farmer2010Expectations, % NUEVA (metadatos de catálogo, sin comprobar en línea)
+  author    = {Farmer, Roger E. A.},
+  title     = {Expectations, Employment and Prices},
+  publisher = {Oxford University Press},
+  address   = {Nueva York},
+  year      = {2010}
+}
+
+@incollection{Mortensen1982Matching, % NUEVA (NBER, cap. c4437; págs. 233-258)
+  author    = {Mortensen, Dale T.},
+  title     = {The Matching Process as a Noncooperative Bargaining Game},
+  booktitle = {The Economics of Information and Uncertainty},
+  editor    = {McCall, John J.},
+  publisher = {University of Chicago Press},
+  address   = {Chicago},
+  year      = {1982},
+  pages     = {233--258},
+  url       = {https://www.nber.org/chapters/c4437},
+  urldate   = {2026-10-31}
+}
+
+% =====================================================================
+% 5. Artículos: búsqueda de primera generación
+% =====================================================================
+
+@article{Stigler1961Information, % REUTILIZADA 3A08
+  author       = {Stigler, George J.},
+  title        = {The Economics of Information},
+  journaltitle = {Journal of Political Economy},
+  volume       = {69},
+  number       = {3},
+  year         = {1961},
+  pages        = {213--225},
+  doi          = {10.1086/258464}
+}
+
+@article{Stigler1962Labor,
+  author       = {Stigler, George J.},
+  title        = {Information in the Labor Market},
+  journaltitle = {Journal of Political Economy},
+  volume       = {70},
+  number       = {5, parte 2},
+  year         = {1962},
+  pages        = {94--105},
+  doi          = {10.1086/258727}
+}
+
+@article{McCall1970Economics,
+  author       = {McCall, John J.},
+  title        = {Economics of Information and Job Search},
+  journaltitle = {Quarterly Journal of Economics},
+  volume       = {84},
+  number       = {1},
+  year         = {1970},
+  pages        = {113--126},
+  doi          = {10.2307/1879403}
+}
+
+@article{Diamond1971Model,
+  author       = {Diamond, Peter A.},
+  title        = {A Model of Price Adjustment},
+  journaltitle = {Journal of Economic Theory},
+  volume       = {3},
+  number       = {2},
+  year         = {1971},
+  pages        = {156--168},
+  doi          = {10.1016/0022-0531(71)90013-5}
+}
+
+@article{Rothschild1973Models,
+  author       = {Rothschild, Michael},
+  title        = {Models of Market Organization with Imperfect Information: A Survey},
+  journaltitle = {Journal of Political Economy},
+  volume       = {81},
+  number       = {6},
+  year         = {1973},
+  pages        = {1283--1308},
+  doi          = {10.1086/260128}
+}
+
+@article{LucasPrescott1974Equilibrium,
+  author       = {Lucas, Robert E., Jr. and Prescott, Edward C.},
+  title        = {Equilibrium Search and Unemployment},
+  journaltitle = {Journal of Economic Theory},
+  volume       = {7},
+  number       = {2},
+  year         = {1974},
+  pages        = {188--209},
+  doi          = {10.1016/0022-0531(74)90106-9}
+}
+
+@article{Mortensen1977Unemployment,
+  author       = {Mortensen, Dale T.},
+  title        = {Unemployment Insurance and Job Search Decisions},
+  journaltitle = {Industrial and Labor Relations Review},
+  volume       = {30},
+  number       = {4},
+  year         = {1977},
+  pages        = {505--517},
+  doi          = {10.2307/2523111}
+}
+
+@article{Burdett1978Theory, % Crossref no lo encontró; metadatos de la AER (JSTOR) sin comprobar en línea
+  author       = {Burdett, Kenneth},
+  title        = {A Theory of Employee Job Search and Quit Rates},
+  journaltitle = {American Economic Review},
+  volume       = {68},
+  number       = {1},
+  year         = {1978},
+  pages        = {212--220}
+}
+
+@article{Blau1991Search,
+  author       = {Blau, David M.},
+  title        = {Search for Nonwage Job Characteristics: A Test of the Reservation Wage Hypothesis},
+  journaltitle = {Journal of Labor Economics},
+  volume       = {9},
+  number       = {2},
+  year         = {1991},
+  pages        = {186--205},
+  doi          = {10.1086/298265}
+}
+
+@article{DellaVignaPaserman2005Job,
+  author       = {DellaVigna, Stefano and Paserman, M. Daniele},
+  title        = {Job Search and Impatience},
+  journaltitle = {Journal of Labor Economics},
+  volume       = {23},
+  number       = {3},
+  year         = {2005},
+  pages        = {527--588},
+  doi          = {10.1086/430286}
+}
+
+@article{BurdettMortensen1998Wage,
+  author       = {Burdett, Kenneth and Mortensen, Dale T.},
+  title        = {Wage Differentials, Employer Size, and Unemployment},
+  journaltitle = {International Economic Review},
+  volume       = {39},
+  number       = {2},
+  year         = {1998},
+  pages        = {257--273},
+  doi          = {10.2307/2527292}
+}
+
+@article{Lipsey1960Relation,
+  author       = {Lipsey, Richard G.},
+  title        = {The Relation between Unemployment and the Rate of Change of Money Wage Rates in the United Kingdom, 1862--1957: A Further Analysis},
+  journaltitle = {Economica},
+  volume       = {27},
+  number       = {105},
+  year         = {1960},
+  pages        = {1--31},
+  doi          = {10.2307/2551424}
+}
+
+@article{Friedman1968Role, % metadatos conocidos; Crossref solo da la reimpresión de 1997
+  author       = {Friedman, Milton},
+  title        = {The Role of Monetary Policy},
+  journaltitle = {American Economic Review},
+  volume       = {58},
+  number       = {1},
+  year         = {1968},
+  pages        = {1--17}
+}
+
+% =====================================================================
+% 6. Artículos: DMP, curva de Beveridge y evidencia
+% =====================================================================
+
+@article{Diamond1982Wage,
+  author       = {Diamond, Peter A.},
+  title        = {Wage Determination and Efficiency in Search Equilibrium},
+  journaltitle = {Review of Economic Studies},
+  volume       = {49},
+  number       = {2},
+  year         = {1982},
+  pages        = {217--227},
+  doi          = {10.2307/2297271}
+}
+
+@article{Diamond1982Aggregate,
+  author       = {Diamond, Peter A.},
+  title        = {Aggregate Demand Management in Search Equilibrium},
+  journaltitle = {Journal of Political Economy},
+  volume       = {90},
+  number       = {5},
+  year         = {1982},
+  pages        = {881--894},
+  doi          = {10.1086/261099}
+}
+
+@article{Pissarides1985Short, % LSE Research Online (eprint 1413) y JSTOR 1821347; sin DOI
+  author       = {Pissarides, Christopher A.},
+  title        = {Short-Run Equilibrium Dynamics of Unemployment, Vacancies, and Real Wages},
+  journaltitle = {American Economic Review},
+  volume       = {75},
+  number       = {4},
+  year         = {1985},
+  pages        = {676--690}
+}
+
+@article{MortensenPissarides1994Job,
+  author       = {Mortensen, Dale T. and Pissarides, Christopher A.},
+  title        = {Job Creation and Job Destruction in the Theory of Unemployment},
+  journaltitle = {Review of Economic Studies},
+  volume       = {61},
+  number       = {3},
+  year         = {1994},
+  pages        = {397--415},
+  doi          = {10.2307/2297896}
+}
+
+@article{Hosios1990Efficiency,
+  author       = {Hosios, Arthur J.},
+  title        = {On the Efficiency of Matching and Related Models of Search and Unemployment},
+  journaltitle = {Review of Economic Studies},
+  volume       = {57},
+  number       = {2},
+  year         = {1990},
+  pages        = {279--298},
+  doi          = {10.2307/2297382}
+}
+
+@article{DowDicksMireaux1958Excess,
+  author       = {Dow, J. C. R. and Dicks-Mireaux, L. A.},
+  title        = {The Excess Demand for Labour: A Study of Conditions in Great Britain, 1946--56},
+  journaltitle = {Oxford Economic Papers},
+  volume       = {10},
+  number       = {1},
+  year         = {1958},
+  pages        = {1--33},
+  doi          = {10.1093/oxfordjournals.oep.a040791}
+}
+
+@article{BlanchardDiamond1989, % REUTILIZADA 1D01
+  author       = {Blanchard, Olivier J. and Diamond, Peter A.},
+  title        = {The Beveridge Curve},
+  journaltitle = {Brookings Papers on Economic Activity},
+  volume       = {1989},
+  number       = {1},
+  year         = {1989},
+  pages        = {1--76},
+  doi          = {10.2307/2534495}
+}
+
+@article{PetrongoloPissarides2001Black, % texto leído (personal.lse.ac.uk/petrongo/jel-final.pdf)
+  author       = {Petrongolo, Barbara and Pissarides, Christopher A.},
+  title        = {Looking into the Black Box: A Survey of the Matching Function},
+  journaltitle = {Journal of Economic Literature},
+  volume       = {39},
+  number       = {2},
+  year         = {2001},
+  pages        = {390--431},
+  doi          = {10.1257/jel.39.2.390}
+}
+
+@article{Shimer2005Cyclical, % resumen leído en aeaweb.org
+  author       = {Shimer, Robert},
+  title        = {The Cyclical Behavior of Equilibrium Unemployment and Vacancies},
+  journaltitle = {American Economic Review},
+  volume       = {95},
+  number       = {1},
+  year         = {2005},
+  pages        = {25--49},
+  doi          = {10.1257/0002828053828572}
+}
+
+@article{Hall2005Employment, % REUTILIZADA 3A27
+  author = {Hall, Robert E.}, title = {Employment Fluctuations with Equilibrium Wage Stickiness},
+  journaltitle = {American Economic Review}, volume = {95}, number = {1}, year = {2005}, pages = {50--65}, doi = {10.1257/0002828053828482}}
+
+@article{HagedornManovskii2008Cyclical, % resumen leído en aeaweb.org
+  author       = {Hagedorn, Marcus and Manovskii, Iourii},
+  title        = {The Cyclical Behavior of Equilibrium Unemployment and Vacancies Revisited},
+  journaltitle = {American Economic Review},
+  volume       = {98},
+  number       = {4},
+  year         = {2008},
+  pages        = {1692--1706},
+  doi          = {10.1257/aer.98.4.1692}
+}
+
+@article{HallMilgrom2008Limited,
+  author       = {Hall, Robert E. and Milgrom, Paul R.},
+  title        = {The Limited Influence of Unemployment on the Wage Bargain},
+  journaltitle = {American Economic Review},
+  volume       = {98},
+  number       = {4},
+  year         = {2008},
+  pages        = {1653--1674},
+  doi          = {10.1257/aer.98.4.1653}
+}
+
+@article{BlanchardGali2010Labor, % REUTILIZADA 3A27
+  author       = {Blanchard, Olivier J. and Galí, Jordi},
+  title        = {Labor Markets and Monetary Policy: A New Keynesian Model with Unemployment},
+  journaltitle = {American Economic Journal: Macroeconomics},
+  volume       = {2},
+  number       = {2},
+  year         = {2010},
+  pages        = {1--30},
+  doi          = {10.1257/mac.2.2.1}
+}
+
+@article{ElsbyMichaelsRatner2015Beveridge,
+  author       = {Elsby, Michael W. L. and Michaels, Ryan and Ratner, David},
+  title        = {The Beveridge Curve: A Survey},
+  journaltitle = {Journal of Economic Literature},
+  volume       = {53},
+  number       = {3},
+  year         = {2015},
+  pages        = {571--630},
+  doi          = {10.1257/jel.53.3.571}
+}
+
+@article{DiamondSahin2015Shifts, % IDEAS: Research in Economics, no Applied Economics Letters
+  author       = {Diamond, Peter A. and Şahin, Ayşegül},
+  title        = {Shifts in the Beveridge Curve},
+  journaltitle = {Research in Economics},
+  volume       = {69},
+  number       = {1},
+  year         = {2015},
+  pages        = {18--25},
+  doi          = {10.1016/j.rie.2014.10.004}
+}
+
+@article{MichaillatSaez2021Beveridgean,
+  author       = {Michaillat, Pascal and Saez, Emmanuel},
+  title        = {Beveridgean Unemployment Gap},
+  journaltitle = {Journal of Public Economics Plus},
+  volume       = {2},
+  year         = {2021},
+  eid          = {100009},
+  doi          = {10.1016/j.pubecp.2021.100009}
+}
+
+@article{MichaillatSaez2024FERU, % texto leído (brookings.edu/wp-content/uploads/2024/09/5_MichaillatSaez.pdf)
+  author       = {Michaillat, Pascal and Saez, Emmanuel},
+  title        = {The Full-Employment Rate of Unemployment in the United States},
+  journaltitle = {Brookings Papers on Economic Activity},
+  volume       = {2024},
+  number       = {2},
+  year         = {2024},
+  pages        = {323--390},
+  doi          = {10.1353/eca.2024.a964373}
+}
+
+@report{HagedornEtAl2013Unemployment, % el original dice «Hagedorn et al. (2016)»: es el NBER WP 19499 (2013, revisado)
+  author      = {Hagedorn, Marcus and Karahan, Fatih and Manovskii, Iourii and Mitman, Kurt},
+  title       = {Unemployment Benefits and Unemployment in the Great Recession: The Role of Macro Effects},
+  type        = {NBER Working Paper},
+  number      = {19499},
+  institution = {National Bureau of Economic Research},
+  year        = {2013},
+  doi         = {10.3386/w19499}
+}
+
+@article{Farmer2013Natural, % Senior Houblon-Norman essay
+  author       = {Farmer, Roger E. A.},
+  title        = {The Natural Rate Hypothesis: An Idea Past Its Sell-By Date},
+  journaltitle = {Bank of England Quarterly Bulletin},
+  volume       = {53},
+  number       = {3},
+  year         = {2013},
+  pages        = {244--256},
+  url          = {https://www.bankofengland.co.uk/quarterly-bulletin/2013/q3/the-natural-rate-hypothesis-an-idea-past-its-sell-by-date},
+  urldate      = {2026-10-31}
+}
+
+@article{BurdaWyplosz1994Gross,
+  author       = {Burda, Michael and Wyplosz, Charles},
+  title        = {Gross Worker and Job Flows in Europe},
+  journaltitle = {European Economic Review},
+  volume       = {38},
+  number       = {6},
+  year         = {1994},
+  pages        = {1287--1315},
+  doi          = {10.1016/0014-2921(94)90076-0}
+}
+
+@article{VillaverdeMazaHierro2015, % texto leído (revistas.unal.edu.co)
+  author       = {Villaverde, José and Maza, Adolfo and Hierro, María},
+  title        = {La curva de Beveridge en España: nueva evidencia para el período 2000-2011},
+  journaltitle = {Cuadernos de Economía},
+  volume       = {34},
+  number       = {64},
+  year         = {2015},
+  pages        = {199--228},
+  doi          = {10.15446/cuad.econ.v34n64.45937}
+}
+
+@article{BentolilaEtAl2012Two, % REUTILIZADA 3A27
+  author = {Bentolila, Samuel and Cahuc, Pierre and Dolado, Juan J. and Le Barbanchon, Thomas},
+  title = {Two-Tier Labour Markets in the Great Recession: France Versus Spain},
+  journaltitle = {Economic Journal}, volume = {122}, number = {562}, year = {2012}, pages = {F155--F187}, doi = {10.1111/j.1468-0297.2012.02534.x}}
+
+@article{BentolilaDoladoJimeno2012Reforming, % REUTILIZADA 3A27
+  author       = {Bentolila, Samuel and Dolado, Juan J. and Jimeno, Juan F.},
+  title        = {Reforming an Insider-Outsider Labor Market: The Spanish Experience},
+  journaltitle = {IZA Journal of European Labor Studies},
+  volume       = {1},
+  number       = {1},
+  year         = {2012},
+  eid          = {4},
+  doi          = {10.1186/2193-9012-1-4}
+}
+
+% =====================================================================
+% 7. Artículos: costes de ajuste y dinámica de la demanda de trabajo
+% =====================================================================
+
+@article{Oi1962Labor,
+  author       = {Oi, Walter Y.},
+  title        = {Labor as a Quasi-Fixed Factor},
+  journaltitle = {Journal of Political Economy},
+  volume       = {70},
+  number       = {6},
+  year         = {1962},
+  pages        = {538--555},
+  doi          = {10.1086/258715}
+}
+
+@article{Hamermesh1989Labor, % IDEAS: AER 79(4), 674-689
+  author       = {Hamermesh, Daniel S.},
+  title        = {Labor Demand and the Structure of Adjustment Costs},
+  journaltitle = {American Economic Review},
+  volume       = {79},
+  number       = {4},
+  year         = {1989},
+  pages        = {674--689}
+}
+
+@article{HamermeshPfann1996Adjustment, % IDEAS (resumen leído)
+  author       = {Hamermesh, Daniel S. and Pfann, Gerard A.},
+  title        = {Adjustment Costs in Factor Demand},
+  journaltitle = {Journal of Economic Literature},
+  volume       = {34},
+  number       = {3},
+  year         = {1996},
+  pages        = {1264--1292}
+}
+
+@article{BentolilaBertola1990Firing, % IDEAS (resumen leído)
+  author       = {Bentolila, Samuel and Bertola, Giuseppe},
+  title        = {Firing Costs and Labour Demand: How Bad Is Eurosclerosis?},
+  journaltitle = {Review of Economic Studies},
+  volume       = {57},
+  number       = {3},
+  year         = {1990},
+  pages        = {381--402},
+  doi          = {10.2307/2298020}
+}
+
+@article{Bertola1990Job,
+  author       = {Bertola, Giuseppe},
+  title        = {Job Security, Employment and Wages},
+  journaltitle = {European Economic Review},
+  volume       = {34},
+  number       = {4},
+  year         = {1990},
+  pages        = {851--879},
+  doi          = {10.1016/0014-2921(90)90066-8}
+}
+
+@article{DavisHaltiwanger1992Gross,
+  author       = {Davis, Steven J. and Haltiwanger, John},
+  title        = {Gross Job Creation, Gross Job Destruction, and Employment Reallocation},
+  journaltitle = {Quarterly Journal of Economics},
+  volume       = {107},
+  number       = {3},
+  year         = {1992},
+  pages        = {819--863},
+  doi          = {10.2307/2118365}
+}
+
+@article{CooperHaltiwanger2006Capital, % es de capital, no de trabajo: solo para la analogía con la q de Tobin
+  author       = {Cooper, Russell W. and Haltiwanger, John},
+  title        = {On the Nature of Capital Adjustment Costs},
+  journaltitle = {Review of Economic Studies},
+  volume       = {73},
+  number       = {3},
+  year         = {2006},
+  pages        = {611--633},
+  doi          = {10.1111/j.1467-937x.2006.00389.x}
+}
+
+@article{CooperHaltiwangerWillis2015Dynamics, % IDEAS (resumen leído)
+  author       = {Cooper, Russell W. and Haltiwanger, John and Willis, Jonathan L.},
+  title        = {Dynamics of Labor Demand: Evidence from Plant-Level Observations and Aggregate Implications},
+  journaltitle = {Research in Economics},
+  volume       = {69},
+  number       = {1},
+  year         = {2015},
+  pages        = {37--50},
+  doi          = {10.1016/j.rie.2015.01.002}
+}
+
+@article{CooperWillis2009Cost,
+  author       = {Cooper, Russell W. and Willis, Jonathan L.},
+  title        = {The Cost of Labor Adjustment: Inferences from the Gap},
+  journaltitle = {Review of Economic Dynamics},
+  volume       = {12},
+  number       = {4},
+  year         = {2009},
+  pages        = {632--647},
+  doi          = {10.1016/j.red.2008.12.001}
+}
+
+% =====================================================================
+% 8. Propuestas de contenido y entradas reutilizadas de otros temas
+% =====================================================================
+
+@article{RogersonShimerWright2005Search,
+  author       = {Rogerson, Richard and Shimer, Robert and Wright, Randall},
+  title        = {Search-Theoretic Models of the Labor Market: A Survey},
+  journaltitle = {Journal of Economic Literature},
+  volume       = {43},
+  number       = {4},
+  year         = {2005},
+  pages        = {959--988},
+  doi          = {10.1257/002205105775362014}
+}
+
+@article{LjungqvistSargent2017Fundamental,
+  author       = {Ljungqvist, Lars and Sargent, Thomas J.},
+  title        = {The Fundamental Surplus},
+  journaltitle = {American Economic Review},
+  volume       = {107},
+  number       = {9},
+  year         = {2017},
+  pages        = {2630--2665},
+  doi          = {10.1257/aer.20150233}
+}
+
+@article{Michaillat2012Matching,
+  author       = {Michaillat, Pascal},
+  title        = {Do Matching Frictions Explain Unemployment? Not in Bad Times},
+  journaltitle = {American Economic Review},
+  volume       = {102},
+  number       = {4},
+  year         = {2012},
+  pages        = {1721--1750},
+  doi          = {10.1257/aer.102.4.1721}
+}
+
+@article{Moen1997Competitive,
+  author       = {Moen, Espen R.},
+  title        = {Competitive Search Equilibrium},
+  journaltitle = {Journal of Political Economy},
+  volume       = {105},
+  number       = {2},
+  year         = {1997},
+  pages        = {385--411},
+  doi          = {10.1086/262077}
+}
+
+@incollection{Nickell1986Dynamic,
+  author       = {Nickell, Stephen J.},
+  title        = {Dynamic Models of Labour Demand},
+  booktitle    = {Handbook of Labor Economics},
+  volume       = {1},
+  editor       = {Ashenfelter, Orley and Layard, Richard},
+  publisher    = {North-Holland},
+  location     = {Ámsterdam},
+  year         = {1986},
+  pages        = {473--522}
+}
+
+@article{Phelps1967Phillips,
+  author       = {Phelps, Edmund S.},
+  title        = {Phillips Curves, Expectations of Inflation and Optimal Unemployment over Time},
+  journaltitle = {Economica},
+  volume       = {34},
+  number       = {135},
+  year         = {1967},
+  pages        = {254--281},
+  doi          = {10.2307/2552025}
+}
+
+@book{Phelps1970Microeconomic,
+  editor       = {Phelps, Edmund S.},
+  title        = {Microeconomic Foundations of Employment and Inflation Theory},
+  publisher    = {Norton},
+  location     = {Nueva York},
+  year         = {1970}
+}
+
+@article{LucasRapping1969Real, % REUTILIZADA 3A25
+  author       = {Lucas, Robert E., Jr. and Rapping, Leonard A.},
+  title        = {Real Wages, Employment, and Inflation},
+  journaltitle = {Journal of Political Economy},
+  volume       = {77},
+  number       = {5},
+  year         = {1969},
+  pages        = {721--754},
+  doi          = {10.1086/259559}
+}
+
+@online{OIT2013Resolucion, % REUTILIZADA 3A25
+  author  = {{Organización Internacional del Trabajo}},
+  title   = {Resolución sobre las estadísticas del trabajo, la ocupación y la subutilización de la fuerza de trabajo},
+  note    = {Resolución I de la 19.ª Conferencia Internacional de Estadísticos del Trabajo (2013), modificada por la Resolución II de la 21.ª CIET (2023)},
+  year    = {2013},
+  url     = {https://www.ilo.org/sites/default/files/wcmsp5/groups/public/@dgreports/@stat/documents/normativeinstrument/wcms_234036.pdf},
+  urldate = {2026-10-31}
+}

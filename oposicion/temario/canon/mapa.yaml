@@ -424,6 +424,7 @@ modelos:
       3.A.22: mencion
       3.A.23: mencion
       3.A.24: mencion
+      3.A.26: mencion (aplicada; hecho, 31/10/2026; renta del emparejamiento, sin axiomas)
       3.A.27: resumen (aplicado; hecho, 31/10/2026; axiomas y Rubinstein en el anexo A con remisión)
   nucleo-shapley:
     nombre: 'Juegos cooperativos con utilidad transferible: núcleo y valor de Shapley'
@@ -1043,6 +1044,7 @@ modelos:
     temas:
       3.A.6: resumen
       3.A.25: desarrollo (hecho, 31/10/2026)
+      3.A.26: mencion (hecho, 31/10/2026; una línea en III.1)
       3.A.29: mencion (horizonte infinito, anexo C del 3.A.25)
       3.A.42: mencion
     decision: D068 (13/10/2026)
@@ -1204,9 +1206,11 @@ modelos:
     temas:
       1D01: 'mencion (III.1: curva de Beveridge)'
       3.A.7: mencion
-      3.A.26: desarrollo
+      3.A.26: desarrollo (hecho, 31/10/2026)
       3.A.27: mencion (hecho, 31/10/2026; curva salarial con la misma γ y z)
       3.A.28: resumen
+      3.A.42: mencion (Blanchard y Galí, 2010; puzle de Shimer)
+      4.A.16: mencion (aplicada; curva de Beveridge española)
   equivalencia-ricardiana:
     nombre: Equivalencia ricardiana (Barro 1974)
     area: macro-cerrada
@@ -1279,6 +1283,7 @@ modelos:
     temas:
       1D01: mencion (III.1, VII.2)
       3.A.7: resumen
+      3.A.26: mencion (hecho, 31/10/2026; el paro de larga duración desplaza la curva de Beveridge)
       3.A.27: mencion (hecho, 31/10/2026; mecanismo de insiders y outsiders)
       3.A.28: desarrollo
       4.A.16: mencion
@@ -1360,6 +1365,7 @@ modelos:
     tema_referencia: 3.A.34
     motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
     temas:
+      3.A.26: mencion (hecho, 31/10/2026; Φ(L̇) y λ_t, la q de Tobin del trabajo)
       3.A.29: resumen
       3.A.34: desarrollo
       3.A.37: resumen
@@ -3034,7 +3040,7 @@ modelos:
       3.A.12: mencion (hecho, 14/10/2026)
       3.A.17: mencion (hecho, 17/10/2026)
       3.A.25: desarrollo
-      3.A.26: desarrollo (variante dinámica con costes de ajuste)
+      3.A.26: desarrollo (hecho, 31/10/2026; variante dinámica con costes de ajuste, ficha costes-ajuste-empleo)
       3.A.27: mencion (hecho, 31/10/2026)
       3.A.28: mencion
       4.A.16: resumen
@@ -3095,6 +3101,55 @@ modelos:
       3.A.27: desarrollo (hecho, 31/10/2026; anexo D)
       3.B.16: resumen (hoy copia el anexo 1 antiguo del 3.A.27)
       4.A.16: resumen (aplicado; hoy copia el anexo 1 antiguo del 3.A.27)
+  mccall:
+    nombre: 'Búsqueda de empleo: Stigler (1961-1962) y McCall (1970), el salario de reserva'
+    area: macro-cerrada
+    tema_referencia: 3.A.26
+    motivo: 'Único tema que desarrolla la búsqueda de primera generación (bloque I del 3.A.26, revisado el 31/10/2026: eq:salario-reserva,
+      gráfico mccall.tex, paradoja de Diamond; extensiones en el anexo A). Ficha creada en la fase canon del 3.A.26 ([decidir]).'
+    temas:
+      3.A.26: desarrollo (breve; hecho, 31/10/2026)
+      3.A.28: mencion (paro de búsqueda en la tasa natural)
+      4.A.16: mencion (prestaciones y duración del paro)
+  hosios:
+    nombre: 'Condición de Hosios (1990): eficiencia del equilibrio de búsqueda y emparejamiento'
+    area: macro-cerrada
+    tema_referencia: 3.A.26
+    motivo: 'Pregunta de eficiencia del DMP: resumen en el cuerpo del 3.A.26 (eq:hosios, γ = α) y planificador con λ^U en su anexo C
+      (revisado el 31/10/2026). Ficha creada en la fase canon del 3.A.26 (DK6/A26-06, [decidir]).'
+    temas:
+      3.A.26: resumen en el cuerpo y desarrollo en el anexo C (hecho, 31/10/2026)
+      3.A.27: mencion (opcional)
+      3.A.28: mencion (la tasa natural no tiene por qué ser óptima)
+  curva-beveridge:
+    nombre: 'Curva de Beveridge: relación entre vacantes y paro (Beveridge, 1944; Dow y Dicks-Mireaux, 1958; Blanchard y Diamond, 1989)'
+    area: macro-cerrada
+    tema_referencia: 3.A.26
+    motivo: 'La tiene en el título y la deriva del DMP: eq:beveridge en II.2 y epígrafe propio II.3 con la lectura del plano y el ejemplo
+      de España y la zona del euro 2008-2026 (revisado el 31/10/2026). Gráficos de referencia: fuentes/3A26/graficos/beveridge-lectura.tex
+      y beveridge-espana-zona-euro.tex (mismas series que la 1D01). Recoge el id beveridge del 4.A.16 (economía española → macro cerrada).
+      Ficha creada en la fase canon del 3.A.26 (DK1, DK2, [decidir]).'
+    temas:
+      1D01: mencion (aplicada; hecho, 24/10/2026; III.1, fig:beveridge)
+      3.A.7: mencion
+      3.A.26: desarrollo (hecho, 31/10/2026)
+      3.A.28: resumen (desplazamientos = cambios de la tasa natural)
+      4.A.16: resumen (aplicado; hoy copia la evidencia antigua del 3.A.26)
+  costes-ajuste-empleo:
+    nombre: 'Costes de ajuste del empleo y dinámica de la demanda de trabajo (Oi, 1962; Nickell, 1986; Bentolila y Bertola, 1990; Hamermesh, 1993)'
+    area: macro-cerrada
+    tema_referencia: 3.A.26
+    motivo: '«Costes de ajuste y dinámica de la demanda de trabajo» en el título; bloque III del 3.A.26 (revisado el 31/10/2026) con
+      eq:problema-ajuste, eq:ajuste-fijo, eq:banda-inaccion, eq:valor-sombra-empleo, eq:euler-empleo, tab:costes-ajuste y el anexo D.
+      Gráficos de referencia: fuentes/3A26/graficos/sendas-ajuste.tex, banda-inaccion.tex (sobre demanda-corto.tex del 3.A.25) y
+      fases-empleo.tex. Ficha creada en la fase canon del 3.A.26 (DK4, DK7, [decidir]).'
+    temas:
+      3.A.25: mencion (hecho, 31/10/2026; supuesto 7 y demanda intertemporal)
+      3.A.26: desarrollo (hecho, 31/10/2026)
+      3.A.27: mencion (hecho, 31/10/2026; costes de despido y contratación de los insiders)
+      3.A.29: mencion (hamiltoniano; ya remite)
+      3.A.34: mencion (el mismo problema con el capital; remisión recíproca)
+      4.A.16: resumen (aplicado; costes de despido, dualidad, reforma de 2021)
 temas:
   3.A.1:
     titulo: Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía
@@ -3639,6 +3694,7 @@ temas:
     - calvo
     - contratos-implicitos
     - costes-de-menu
+    - curva-beveridge
     - dixit-stiglitz
     - dmp
     - fischer-taylor-contratos
@@ -6268,12 +6324,12 @@ temas:
       que: 'Sin revisar. Salario de reserva w_R → w^R (notacion.md § 6). El 3.A.27 escribe el sindicato con c(L) y W(L): con U_S = wL
         − v(L), w^D(L) = VPMg_L, IMg_S y w^S, como el anexo D del 3.A.25 y el 3.A.17 (ficha monopolio-bilateral), y remitir a III.2 c
         del 3.A.25 para el capital humano específico de los insiders. Ojo: el doble uso de L^S (oferta y empleo del sindicato) está
-        pendiente de Víctor (A25-10). El 3.A.27 lo cumple (revisado el 31/10/2026): queda el 3.A.26.'
+        pendiente de Víctor (A25-10). El 3.A.27 lo cumple (revisado el 31/10/2026): queda el 3.A.26. Resuelto en el 3.A.26 (revisado el 31/10/2026): w^R, sin repetir la contextualización, supuestos 2 y 7.'
     - tema: 3.A.26, 3.A.27, 3.A.28
       que: 'Sin revisar. Repiten la contextualización del 3.A.25 (Marshall, Hicks, 1932, Keynes): cada uno con la suya. El 3.A.26
         dice que el equilibrio neoclásico es «único, estable y de pleno empleo»: solo «sin paro involuntario» (la competencia no da
         unicidad ni estabilidad, 3.A.21). El 3.A.28 debe resumir el enfoque neoclásico con la tabla de supuestos del 3.A.25 en una
-        línea y el mismo resultado (paro voluntario o por salario mínimo); los 3 marcan qué supuesto de tab:supuestos-trabajo levantan.'
+        línea y el mismo resultado (paro voluntario o por salario mínimo); los 3 marcan qué supuesto de tab:supuestos-trabajo levantan. El 3.A.26 lo cumple (revisado el 31/10/2026); queda el 3.A.28.'
     - tema: 3.A.6, 3.A.42
       que: 'Sin revisar. Desarrollan Lucas-Rapping («2 razones para aumentar la oferta de trabajo…») con ε_(L^S,w): la ficha les asigna
         resumen (3.A.6) y mención (3.A.42), con ε_{L,w}, φ para la inversa de la Frisch y remisión al 3.A.25. El 3.A.42 (Kydland y
@@ -6294,6 +6350,7 @@ temas:
     modelos:
     - becker-capital-humano
     - competencia-perfecta-equilibrio-parcial
+    - costes-ajuste-empleo
     - demanda-trabajo
     - dualidad-produccion
     - equilibrio-general-walras
@@ -6317,39 +6374,101 @@ temas:
       Costes de ajuste y dinámica de la demanda de trabajo.
     bloque: demanda-agregada-y-oferta-agregada
     fuente_disponible: si
+    nota: 'Revisado el 31/10/2026, el 3.º del bloque de demanda y oferta agregadas. Estructura del título y del original con un único
+      epígrafe insertado (II.3, la curva de Beveridge): I modelos de búsqueda (5′: orígenes, Stigler, McCall con eq:salario-reserva y la
+      paradoja de Diamond), II DMP (13′30″: idea, modelo con las 3 ecuaciones, estática comparativa verificada y Hosios γ = α, curva de
+      Beveridge con España y la zona del euro 2008-2026, evidencia, extensiones, valoración), III costes de ajuste (8′: problema con Φ(L̇),
+      fijos, lineales con la banda de inacción y los asimétricos, cuadráticos con λ_t como q de Tobin del trabajo, tab:costes-ajuste).
+      6 anexos (A búsqueda paso a paso y extensiones, B derivación del DMP, C Hosios, D costes de ajuste paso a paso, E indicadores, F test).
+      10 gráficos. Levanta los supuestos 2 y 7 de tab:supuestos-trabajo del 3.A.25. Dudas A26-01 a A26-20 con la opción recomendada
+      aplicada, [decidir]; A26-21 (conversor de \rowcolor+\multicolumn a HTML y Word) no es del canon.'
     referencias:
     - a: 3.A.25
       estado: ok
-      contexto: (i.e. no existe desempleo involuntario, es decir, los individuos solo pueden estar empleados o no participar
-        en el mercado de trabajo) [ver tema 3.A.25]
-    - a: 3.A.22
-      estado: ok
-      contexto: se puede alcanzar dejando trabajar a los mercados competitivos por el 1^(er) Teorema Fundamental de la Economía
-        del Bienestar [ver te [ver tema 3.A.22]
-    - a: 3.A.25
-      estado: ok
-      contexto: que tendrá una gran importancia para los modelos de la Nueva Macroeconomía Clásica y los modelos de los Real
-        Business Cycles[41] [ver tema 3.A.25]
+      contexto: 'Introducción (tab:supuestos-trabajo, supuestos 2 y 7; equilibrio neoclásico sin paro involuntario); I.1; McCall (mismo
+        w^R más el valor de opción); III.1-III.2 (eq:demanda-corto como punto de partida, w real; Lucas-Rapping en una línea); conclusión'
     - a: 3.A.27
       estado: ok
-      contexto: y emparejamiento trata de explicar el desempleo friccional, es decir, el desempleo como consecuencia de fricciones
-        en el mercado de trabajo [ver tema 3.A.27]
-    faltan:
+      contexto: 'Introducción (paro involuntario allí, friccional aquí); McCall (w^R = z); II.2 (V_E, V_U, s, z y la curva salarial
+        eq:curva-salarial-dmp con la misma γ y z; Nash); II.6; conclusión. La remisión de la nota 40 del original, movida tras «salarios de eficiencia»'
     - a: 3.A.28
-      por_que: Los modelos de búsqueda microfundamentan la tasa natural de paro (3.A.28, 2.4); el autor anota «Coordinar en
-        tema 3.A.26 y tema 3.A.28».
-    - a: 3.A.42
-      por_que: DMP en los modelos de ciclo.
+      estado: ok
+      contexto: 'Introducción (tasa natural, tipos de paro); I.1 (Phelps y Friedman); II.1; II.3 (paro de larga duración e histéresis);
+        II.6 (U* = s/[s + f(θ*)] como microfundamento de la tasa natural; Farmer y los equilibrios múltiples); III.5 (histéresis); conclusión'
+    - a: 3.A.14
+      estado: ok
+      contexto: 'II.2: solución de Nash generalizada (los axiomas, allí; la nota 32 del original se quita)'
+    - a: 3.A.22
+      estado: ok
+      contexto: 'II.6, nota de Farmer: sin mercados de emparejamiento no se cumple el 1TFEB'
     - a: 3.A.29
-      por_que: Costes de ajuste de la demanda de trabajo como problema intertemporal.
+      estado: ok
+      contexto: 'II.2 (ecuación de Bellman como rendimiento de un activo, en nota, sin Wikipedia); III (hamiltoniano del caso cuadrático); anexo D'
+    - a: 3.A.34
+      estado: ok
+      contexto: 'II.2 (analogía); III.1-III.2 (Φ con la misma letra que la q de Tobin; λ_t, la q de Tobin del trabajo); III.4 (valor de
+        opción, inversión irreversible); anexo D (mismo diagrama de fases); conclusión'
+    - a: 3.A.7
+      estado: ok
+      contexto: 'Introducción; II.1; II.5-II.6 (el DMP en la NEK: Blanchard y Galí, 2010); conclusión'
+    - a: 3.A.42
+      estado: ok
+      contexto: 'II.5-II.6 (ciclo, puzle de Shimer, Blanchard y Galí, 2010); conclusión'
+    - a: 3.A.5
+      estado: ok
+      contexto: 'I.1: Phelps y Friedman, tasa natural'
+    - a: 4.A.16
+      estado: ok
+      uso: ampliar
+      contexto: 'III.2 (dualidad); III.3 (España: Bentolila et al., 2012, y la reforma de 2021); conclusión; anexo E (indicadores, para
+        ampliar). Nada de lo que se canta depende de él'
+    faltan: []
+    contradicciones:
+    - tema: 3.A.7, 3.A.42
+      que: 'Sin revisar. Citan «Blanchard y Galí (2005)» para un modelo nuevo keynesiano con fricciones de búsqueda à la DMP: es Blanchard
+        y Galí (2010), «Labor Markets and Monetary Policy: A New Keynesian Model with Unemployment», AEJ: Macroeconomics 2(2) (BlanchardGali2010Labor,
+        la que citan el 3.A.26 y el 3.A.27); el de 2005 (JMCB, 2007) trata de la rigidez del salario real sin búsqueda. Fichas dmp (3.A.7 y
+        3.A.42 en mención) y curva-beveridge (3.A.7 en mención).'
+    - tema: 4.A.16
+      que: 'Sin revisar. (1) Su tasa de actividad es «activos / población de 16 a 64», que no es la de la EPA (16 y más años; notacion.md
+        § 13, D049): debe decir cuál usa. (2) Copia casi literalmente la evidencia española antigua del 3.A.26 (BBVA Research 2015, no
+        encontrado; «Bentolila, Dolado y Cahuc, 2012» sobre vivienda, atribución falsa: es Bentolila, Cahuc, Dolado y Le Barbanchon, 2012,
+        sobre la dualidad; Villaverde, Maza y Hierro con Madrid y el País Vasco, que el artículo no dice) y la curva de Beveridge hasta 2022
+        con la figura del FMI: resumir con la ficha curva-beveridge, las series de Eurostat jvs_q_r21 y une_rt_q (claves Eurostat2026jvs y
+        Eurostat2026une, como el 3.A.26 y la 1D01) y remitir al 3.A.26 solo para ampliar. Id beveridge → curva-beveridge.'
+    - tema: 3.A.28
+      que: 'Sin revisar (en revisión el 31/10/2026). Su 2.4 «Microfundamentación de la tasa natural de paro: modelos de búsqueda» está
+        vacío y no remite al 3.A.26: debe resumir el DMP con las fichas dmp y curva-beveridge, con U^n = s/[s + f(θ*)], los desplazamientos
+        de la curva de Beveridge leídos como cambios de la tasa natural y Hosios (la tasa natural no tiene por qué ser óptima), y remitir al
+        3.A.26 sin repetir la curva salarial. Repite la crítica de Farmer con las mismas frases que el 3.A.26 original: allí se quedan los
+        equilibrios múltiples y la histéresis; en el 3.A.26 son 2 líneas. Su lista de modelos debe añadir curva-beveridge y hosios.'
+    - tema: 3.A.34
+      que: 'Sin revisar. Escribe el coste de ajuste C(I) (canon Φ, D130; el 3.A.26 usa Φ(L̇) para el empleo) y tiene un 3.4 «costes de
+        ajuste asimétricos (quebrados o fijos)» con la misma lógica que la banda de inacción del empleo: remisión recíproca \vertema{3.A.26}
+        y la misma tabla de tipos de costes (ficha costes-ajuste-empleo; λ_t como q del trabajo, ficha q-tobin).'
+    - tema: 3.A.29
+      que: 'Sin revisar. Remite bien al 3.A.26 (costes de ajuste del empleo) y al 3.A.34, pero escribe P_t y W_t nominales: w real, como
+        el 3.A.25 y el 3.A.26.'
+    - tema: 3.A.27
+      que: 'Revisado: sin contradicción de fondo. Solo notación local: Shapiro y Stiglitz descuentan con ρ y llaman q (sin argumento) a la
+        tasa de detección; el DMP usa r y q(θ). No conviven en ninguna ecuación (notacion.md § 6; el 3.A.26 lo avisa en nota). Lo que el
+        3.A.27 esperaba del 3.A.26 (notación del DMP, curva salarial con la misma γ y z, axiomas de Nash al 3.A.14) se cumple.'
+    - tema: 3.A.25, 1D01
+      que: 'Revisados: sin contradicción. Las filas 2 y 7 de tab:supuestos-trabajo del 3.A.25 cuadran (el 3.A.26 deja de decir «3 supuestos»);
+        la 1D01 usa las mismas series, claves y lectura de la curva de Beveridge (su gráfico empieza España en 2010; el del 3.A.26 dibuja
+        2008-2009 en trazo discontinuo, A26-09).'
     modelos:
     - costes-ajuste-empleo
+    - curva-beveridge
     - demanda-trabajo
     - dmp
+    - histeresis
     - hosios
+    - lucas-rapping
     - mccall
-    - oferta-trabajo
-    revisado: null
+    - nash-negociacion
+    - q-tobin
+    revisado: 2026-10-31
   3.A.27:
     titulo: 'Determinación de salarios: modelos de negociación, salarios de eficiencia y contratos implícitos.'
     bloque: demanda-agregada-y-oferta-agregada
@@ -6416,7 +6535,7 @@ temas:
     - tema: 3.A.26
       que: 'Sin revisar (se integra en paralelo). DMP con E, D, O, I, δ, λ(θ), μ(θ), M y w_R (canon s, f(θ), q(θ), m(U,V), w^R); su
         nota 32 desarrolla los axiomas de Nash con f(N,d) y u^N: remitir al 3.A.14 y usar la curva salarial de la ficha dmp, w = (1 − γ)z
-        + γ(y + cθ), con la misma γ y el mismo z que el 3.A.27 (con γ = 0, el salario de reserva en los 2 temas).'
+        + γ(y + cθ), con la misma γ y el mismo z que el 3.A.27 (con γ = 0, el salario de reserva en los 2 temas). Resuelto en la revisión del 3.A.26 (31/10/2026): notación del canon, curva salarial común y Nash con remisión al 3.A.14.'
     - tema: 3.A.7
       que: 'Sin revisar. Desarrolla Solow, Shapiro y Stiglitz (con b, N y 4 gráficos) y los contratos implícitos con el texto antiguo
         del 3.A.27 y sus errores: los contratos implícitos «generan paro involuntario» (es al revés: explican la rigidez, no el paro;
@@ -6447,6 +6566,7 @@ temas:
     - becker-capital-humano
     - calmfors-driffill
     - contratos-implicitos
+    - costes-ajuste-empleo
     - demanda-trabajo
     - dmp
     - histeresis
@@ -6604,6 +6724,7 @@ temas:
     - arrow-debreu-incertidumbre
     - aversion-riesgo-arrow-pratt
     - becker-capital-humano
+    - costes-ajuste-empleo
     - dice
     - fisher-intertemporal
     - hamiltoniano
@@ -6754,6 +6875,7 @@ temas:
     modelos:
     - acelerador
     - becker-capital-humano
+    - costes-ajuste-empleo
     - eficiencia-marginal-capital
     - hechos-estilizados-ciclo
     - jorgenson
@@ -7198,6 +7320,7 @@ temas:
     modelos:
     - brecha-credito-pib
     - brecha-produccion
+    - dmp
     - hechos-estilizados-ciclo
     - lucas-islas
     - lucas-rapping
@@ -10688,12 +10811,15 @@ temas:
     - a: 3.B.40
       por_que: Política social y de empleo de la UE, Pilar Europeo de Derechos Sociales, FSE+.
     modelos:
-    - beveridge
     - calmfors-driffill
+    - costes-ajuste-empleo
+    - curva-beveridge
     - demanda-trabajo
+    - dmp
     - dualidad-mercado-trabajo
     - histeresis
     - insiders-outsiders
+    - mccall
     - mincer
     - oaxaca-blinder
     - okun
@@ -13007,6 +13133,7 @@ temas:
     - calmfors-driffill
     - contabilidad-crecimiento
     - contribuciones-crecimiento
+    - curva-beveridge
     - descomposicion-pib-per-capita
     - dmp
     - efectos-no-keynesianos

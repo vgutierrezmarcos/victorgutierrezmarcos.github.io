@@ -1,0 +1,109 @@
+% Estática comparativa del modelo DMP, sobre el código base de dmp-equilibrio.tex
+% (mismos ejes, escalas y curvas; ver allí las fórmulas).
+%  Fila de arriba, sube y de 3,6 a 4,2: curva salarial 1,7 + 0,35 theta (sube
+%   gamma * dy = 0,3) y creación de empleo 4,2 - 0,838 sqrt(theta) (sube dy = 0,6);
+%   theta1* = 2,9975, w1* = 2,7491; en (U, V), misma curva y rayo
+%   V = 0,9592 U: (1,9922; 1,9110).
+%  Fila de abajo, A baja un 35 % (A' = 0,65 A): la curva salarial no se mueve;
+%   creación de empleo 3,6 - 1,2892 sqrt(theta); theta1* = 1,6108, w1* = 1,9638;
+%   curva de Beveridge con s/A' = 0,2308: V = 11,9822 (1 - U/15)^2 / U;
+%   rayo V = 0,5155 U: (3,6487; 1,8807).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.7,-7.7) rectangle (16.6,5.4);
+  % ======================= Fila de arriba: sube y ==========================
+  % 1: ejes y curvas iniciales en (theta, w) y en (U, V)
+  \capa{1}{
+    \node[etiqueta, font=\small\itshape, anchor=west] at (-0.5,5.15) {a) Más productividad ($\uparrow y$): movimiento a lo largo de la curva de Beveridge};
+    \ejes{$\theta$}{$w$}{5.8}{4.8}
+    \draw[curva2] (0,1.4) -- (5.2,3.22) node[etiqueta, right, text=tceeazul] {salarial};
+    \draw[curva3] plot[domain=0:2.2804, samples=60, smooth] ({(\x)^2},{3.6-0.838*\x})
+      node[etiqueta, right, text=tceeverde] {creación de empleo};
+    \node[punto] (E) at (2.5,2.275) {};
+    \proyeccion{(E)}{$\theta^*$}{$w^*$}
+    \begin{scope}[xshift=9.6cm]
+      \ejes{$U$}{$V$}{5.8}{4.8}
+      \draw[curva1] plot[domain=1.12:5.3, samples=80, smooth] (\x,{5.0625*(1-\x/15)^2/\x})
+        node[etiqueta, above right, text=tceemorado] {$B_0$};
+      \draw[curva4] (0,0) -- (4.4,3.52) node[etiqueta, right, text=tceedorado] {$V=\theta^*U$};
+      \node[punto] (B) at (2.1543,1.7234) {};
+      \proyeccion{(B)}{$U^*$}{$V^*$}
+    \end{scope}
+  }
+  % 2: suben las 2 curvas, más la de creación de empleo
+  \capa{2}{
+    \draw[curvanueva, desplazada] (0,1.7) -- (5.2,3.52) node[etiqueta, right, text=tceerojo] {salarial$'$};
+    \draw[curvanueva, desplazada] plot[domain=0:2.2804, samples=60, smooth] ({(\x)^2},{4.2-0.838*\x})
+      node[etiqueta, right, text=tceerojo] {creación de empleo$'$};
+    \draw[flecha] (4.3,1.95) -- (4.3,2.5);
+    \draw[flecha] (0.5,1.62) -- (0.5,1.93);
+  }
+  % 3: nuevo equilibrio (theta1*, w1*)
+  \capa{3}{
+    \node[punto, fill=tceerojo] (E1) at (2.9975,2.7491) {};
+    \draw[guia] (E1) -- (2.9975,0) node[below] {$\theta_1^*$};
+    \draw[guia] (E1) -- (0,2.7491) node[left] {$w_1^*$};
+  }
+  % 4: el rayo gira hacia arriba y el punto recorre la curva de Beveridge
+  \capa{4}{
+    \begin{scope}[xshift=9.6cm]
+      \draw[curvanueva, desplazada] (0,0) -- (3.9,3.741) node[etiqueta, above, text=tceerojo] {$V=\theta_1^*U$};
+      \node[punto, fill=tceerojo] (B1) at (1.9922,1.911) {};
+      \draw[flecha] plot[domain=2.35:1.85, samples=20, smooth] (\x,{5.0625*(1-\x/15)^2/\x+0.25});
+      \draw[guia] (B1) -- (1.9922,0);
+      \node[etiqueta, text=tceerojo, anchor=west] at (0.2,4.45) {menos paro, más vacantes};
+    \end{scope}
+  }
+  % ======================= Fila de abajo: baja A ===========================
+  \begin{scope}[yshift=-7cm]
+    % 5: ejes y curvas iniciales
+    \capa{5}{
+      \node[etiqueta, font=\small\itshape, anchor=west] at (-0.5,5.15) {b) Peor emparejamiento ($\downarrow A$): la curva de Beveridge se desplaza};
+      \ejes{$\theta$}{$w$}{5.8}{4.8}
+      \draw[curva2] (0,1.4) -- (5.2,3.22) node[etiqueta, right, text=tceeazul] {salarial};
+      \draw[curva3] plot[domain=0:2.2804, samples=60, smooth] ({(\x)^2},{3.6-0.838*\x})
+        node[etiqueta, right, align=left, text=tceeverde] {creación\\de empleo};
+      \node[punto] (F) at (2.5,2.275) {};
+      \proyeccion{(F)}{$\theta^*$}{$w^*$}
+      \begin{scope}[xshift=9.6cm]
+        \ejes{$U$}{$V$}{5.8}{4.8}
+        \draw[curva1] plot[domain=1.12:5.3, samples=80, smooth] (\x,{5.0625*(1-\x/15)^2/\x})
+          node[etiqueta, below, text=tceemorado] {$B_0$};
+        \draw[curva4] (0,0) -- (4.4,3.52) node[etiqueta, above, text=tceedorado] {$V=\theta^*U$};
+        \node[punto] (C) at (2.1543,1.7234) {};
+        \proyeccion{(C)}{$U^*$}{$V^*$}
+      \end{scope}
+    }
+    % 6: la creación de empleo baja; theta* y w* bajan
+    \capa{6}{
+      \draw[curvanueva, desplazada] plot[domain=0:2.2804, samples=60, smooth] ({(\x)^2},{3.6-1.2892*\x})
+        node[etiqueta, right, align=left, text=tceerojo] {creación\\de empleo$'$};
+      \draw[flecha] (4.3,1.85) -- (4.3,1.08);
+      \node[punto, fill=tceerojo] (F1) at (1.6108,1.9638) {};
+      \draw[guia] (F1) -- (1.6108,0) node[below] {$\theta_1^*$};
+      \draw[guia] (F1) -- (0,1.9638) node[below left] {$w_1^*$};
+    }
+    % 7: la curva de Beveridge se aleja del origen y el rayo gira hacia abajo
+    \capa{7}{
+      \begin{scope}[xshift=9.6cm]
+        \draw[curvanueva, desplazada] plot[domain=2.5:5.4, samples=80, smooth] (\x,{11.9822*(1-\x/15)^2/\x})
+          node[etiqueta, above right, text=tceerojo] {$B_1$};
+        \draw[flecha] (4.35,0.75) -- (4.8,1.2);
+        \draw[curvanueva, desplazada] (0,0) -- (5.4,2.784) node[etiqueta, right, text=tceerojo] {$V=\theta_1^*U$};
+      \end{scope}
+    }
+    % 8: nuevo punto: más paro, vacantes en un nivel parecido
+    \capa{8}{
+      \begin{scope}[xshift=9.6cm]
+        \node[punto, fill=tceerojo] (C1) at (3.6487,1.8807) {};
+        \draw[guia] (C1) -- (3.6487,0) node[below] {$U_1^*$};
+        \node[etiqueta, text=tceerojo, anchor=north] at (3.65,1.72) {$V$ ?};
+      \end{scope}
+    }
+  \end{scope}
+\end{tikzpicture}
+\end{document}

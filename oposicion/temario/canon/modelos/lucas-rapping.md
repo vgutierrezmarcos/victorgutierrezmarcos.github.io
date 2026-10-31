@@ -1,7 +1,7 @@
 # Oferta de trabajo intertemporal (Lucas y Rapping, 1969)
 
 - **Área:** macro cerrada (`areas.json` la ponía en pensamiento por el nombre de Lucas; corregido el 31/10/2026) · **Tema de referencia:** 3.A.25 (Teoría neoclásica del mercado de trabajo. Análisis intertemporal de la oferta de trabajo; **revisado el 31/10/2026**, bloque II `sec:intertemporal`, con II.1-II.5 y el anexo `anexo:lr-infinito`): su título pide el análisis intertemporal y es el único tema que lo desarrolla.
-- **Temas que lo usan:** 3.A.25 (desarrollo; hecho, 31/10/2026), 3.A.6 (resumen: microfundamentos del mercado de trabajo en la NMC), 3.A.42 (mención: mecanismo de propagación del RBC), 3.A.29 (mención: el horizonte infinito como aplicación de la optimización dinámica; el anexo C del 3.A.25 remite a él).
+- **Temas que lo usan:** 3.A.25 (desarrollo; hecho, 31/10/2026), 3.A.6 (resumen: microfundamentos del mercado de trabajo en la NMC), 3.A.42 (mención: mecanismo de propagación del RBC), 3.A.29 (mención: el horizonte infinito como aplicación de la optimización dinámica; el anexo C del 3.A.25 remite a él), 3.A.26 (mención; hecho, 31/10/2026: una línea en III.1, el lado de la oferta de lo intertemporal, con `\vertema{3.A.25}`; la nota 41 del original, que lo desarrollaba, se quita).
 - **Manuales de referencia:** Lucas y Rapping (1969), *JPE* 77; MaCurdy (1981), *JPE*; Romer (2019), cap. 5.4; Cahuc, Carcillo y Zylberberg (2014), cap. 1; Blanchard y Fischer (1989), cap. 7; Keane (2011), *JEL*; Chetty, Guren, Manoli y Weber (2011), *AER P&P*.
 - **Decisión D068 (13/10/2026):** ¿Cuál es el tema de referencia de Lucas-Rapping (oferta de trabajo intertemporal)? 3.A.25 (lo pide su título y es el único que lo desarrolla). **A25-02** (31/10/2026, aplicada la recomendada, **[decidir]**): 2 periodos en el cuerpo y el horizonte infinito en el anexo C.
 
@@ -31,6 +31,7 @@ con la utilidad de referencia es $(1-L_t)/L_t$ (2 si se trabaja un tercio del ti
 | 3.A.25 | Oferta de trabajo intertemporal | desarrollo (hecho, 31/10/2026) | Todo lo anterior | — |
 | 3.A.6 | La NMC | resumen | Como microfundamento del mercado de trabajo en el equilibrio continuo: la condición `eq:lr-condicion` en una línea, la sustitución intertemporal y la crítica de las elasticidades; $\varepsilon_{L,w}$ y φ (no $\varepsilon_{(L^S,w)}$), remitiendo al 3.A.25 | La derivación y las «2 razones para aumentar la oferta de trabajo» desarrolladas |
 | 3.A.42 | Ciclos reales | mención | Mecanismo de propagación (efecto riqueza frente a sustitución según la persistencia); la Frisch 1/φ que piden los modelos (≈ 2,8) frente a la micro (≈ 0,5-0,8); remitir | El modelo |
+| 3.A.26 | Dinámica de la demanda de trabajo | mención (hecho, 31/10/2026) | Una línea: por el lado de la oferta, la sustitución intertemporal de Lucas y Rapping (3.A.25); el 3.A.26 estudia el de la demanda (costes de ajuste) | El modelo |
 | 3.A.29 | Modelización dinámica | mención | El horizonte infinito con $b_t$ y no-Ponzi como aplicación de la optimización dinámica | El modelo de 2 periodos |
 
 ## Divergencias encontradas en el temario actual

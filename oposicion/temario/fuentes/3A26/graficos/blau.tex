@@ -1,0 +1,34 @@
+% Blau (1991): utilidad de reserva con 2 características de la oferta.
+% u = w^a h^{-b}, a, b > 0  ->  frontera de aceptación en (ln h, ln w):
+%   ln w = (ln u^R + b ln h)/a, recta creciente de pendiente b/a.
+% En el dibujo: ln w = 1,2 + 0,55 ln h; salario de reserva fijo ln w^R = 2,6;
+% se cortan en ln h_0 = 1,4/0,55 = 2,545.
+% Rehace la Imagen 3 del original (Smith, 2003, a partir de Blau, 1991).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-0.8) rectangle (10.4,5.4);
+  % 1: ejes
+  \capa{1}{\ejes{$\ln h$}{$\ln w$}{7.6}{5}}
+  % 2: la frontera de la utilidad de reserva y la zona de aceptación
+  \capa{2}{\draw[curva1] (0,1.2) -- (6.2,4.61)
+      node[etiqueta,right,align=left,text=tceemorado] {utilidad de reserva $u^R$:\\pendiente $b/a$};}
+  \capa{2}{\fill[area] (0,1.2) -- (6.2,4.61) -- (0,4.61) -- cycle;
+    \node[etiqueta,text=tceemorado] at (1.3,4.0) {se aceptan};}
+  % 3: el salario de reserva fijo, horizontal, y el punto h_0
+  \capa{3}{\draw[curva2,dashed] (0,2.6) node[left,text=black] {$\ln w^R$} -- (7,2.6)
+      node[etiqueta,right,align=left,text=tceeazul] {salario de\\reserva fijo};}
+  \capa{3}{\node[punto] (H) at (2.545,2.6) {};
+    \draw[guia] (H) -- (2.545,0) node[below,text=black] {$\ln h_0$};}
+  % 4: las áreas A y B
+  \capa{4}{\fill[pattern=north west lines,pattern color=tceedorado] (0,1.2) -- (2.545,2.6) -- (0,2.6) -- cycle;
+    \draw[->,thin,tceedorado] (0.6,1.05) -- (0.6,1.9);
+    \node[etiqueta,text=tceedorado,anchor=north west,align=left] at (0.15,1.0) {$A$: se aceptan\\aunque $w<w^R$};}
+  \capa{4}{\fill[pattern=north west lines,pattern color=tceedorado] (2.545,2.6) -- (6.2,4.61) -- (6.2,2.6) -- cycle;
+    \draw[->,thin,tceedorado] (5.3,1.85) -- (5.3,3.0);
+    \node[etiqueta,text=tceedorado,anchor=north,align=left] at (5.3,1.8) {$B$: se rechazan\\aunque $w>w^R$};}
+\end{tikzpicture}
+\end{document}

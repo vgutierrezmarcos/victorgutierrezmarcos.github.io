@@ -1,0 +1,45 @@
+% Equilibrio del modelo DMP (gráfico de referencia de la ficha dmp).
+% Código base común con dmp-estatica.tex (mismos números):
+%  Panel (theta, w), en unidades del dibujo:
+%   curva salarial  w = (1-gamma) z + gamma (y + c theta) = 1,4 + 0,35 theta
+%                    (y = 3,6, gamma = 0,5; ordenada (1-gamma) z + gamma y = 1,4)
+%   creación de empleo  w = y - (r+s) c theta^alpha / A = 3,6 - 0,838 sqrt(theta)
+%                    (alpha = 0,5); se cortan en theta* = 2,5, w* = 2,275.
+%  Panel (U, V): tasas multiplicadas por 15; theta real = 0,32 theta del dibujo
+%   (theta* = 0,8); curva de Beveridge V = [s(1-U)/(A U^alpha)]^(1/(1-alpha))
+%   con s/A = 0,15: V = 5,0625 (1 - U/15)^2 / U en el dibujo; rayo V = 0,8 U;
+%   U* = s/(s+f(theta*)) -> (2,1543; 1,7234).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.7,-0.8) rectangle (16.6,5.2);
+  % ---------------- Panel izquierdo: (theta, w) ----------------------------
+  % 1: ejes
+  \capa{1}{\ejes{$\theta$}{$w$}{5.8}{4.6}}
+  % 2: curva salarial, recta creciente
+  \capa{2}{\draw[curva2] (0,1.4) -- (5.2,3.22) node[etiqueta, right, text=tceeazul] {curva salarial};}
+  % 3: creación de empleo, decreciente desde w = y
+  \capa{3}{\draw[curva3] plot[domain=0:2.2804, samples=60, smooth] ({(\x)^2},{3.6-0.838*\x})
+      node[etiqueta, right, align=left, text=tceeverde] {creación\\de empleo};
+    \node[left] at (0,3.6) {$y$};}
+  % 4: equilibrio (theta*, w*)
+  \capa{4}{\node[punto] (E) at (2.5,2.275) {};
+    \proyeccion{(E)}{$\theta^*$}{$w^*$}}
+  % ---------------- Panel derecho: (U, V) ----------------------------------
+  \begin{scope}[xshift=9.6cm]
+    % 5: ejes
+    \capa{5}{\ejes{$U$}{$V$}{5.8}{4.6}}
+    % 6: curva de Beveridge, decreciente y convexa
+    \capa{6}{\draw[curva1] plot[domain=1.12:5.3, samples=80, smooth] (\x,{5.0625*(1-\x/15)^2/\x})
+        node[etiqueta, above right, align=left, text=tceemorado] {curva de\\Beveridge, $B_0$};}
+    % 7: rayo de la tensión de equilibrio, V = theta* U
+    \capa{7}{\draw[curva4] (0,0) -- (5.2,4.16) node[etiqueta, right, text=tceedorado] {$V=\theta^*U$};}
+    % 8: equilibrio (U*, V*)
+    \capa{8}{\node[punto] (B) at (2.1543,1.7234) {};
+      \proyeccion{(B)}{$U^*$}{$V^*$}}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
