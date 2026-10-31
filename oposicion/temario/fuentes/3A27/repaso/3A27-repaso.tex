@@ -1,0 +1,303 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Determinación de salarios]{3.A.27}{Determinación de salarios: modelos de negociación, salarios de eficiencia y contratos implícitos.}
+\tcefecha{31/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «lo barato sale caro»}{2,5}
+\apartadocante{I. Modelos de negociación}{11}
+\subcante{1. Teoría de la negociación: \autor{Nash}, $\gamma$}{2}
+\subcante{2. Negociación colectiva: $M$, $R$, contratos}{8}
+\subcante{3. Modelos macro: curva salarial y WS}{1}
+\apartadocante{II. Salarios de eficiencia}{9,5}
+\subcante{1. Idea: 5 motivos}{1}
+\subcante{2. \autor{Solow} (1979)}{3}
+\subcante{3. \autor{Shapiro}-\autor{Stiglitz} (1984)}{5,5}
+\apartadocante{III. Contratos implícitos}{6}
+\subcante{1. Idea: el salario como seguro}{0,5}
+\subcante{2. Modelo}{2,5}
+\subcante{3. Extensiones e \emph{insiders}}{2,25}
+\subcante{4. Valoración}{0,75}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra} en 3 zonas: izquierda, supuestos que se levantan (4 atomicidad, 2 información, 6 flexibilidad, 7 movilidad) y refranes («hablando se entiende la gente», «lo barato sale caro», «a las duras y a las maduras»); centro, gráficos (se borran por bloque); derecha, funciones clave que se quedan: \autor{Nash} con $\gamma$, $U_S$, \autor{Solow}, CNE, contrato implícito, $w_I$ máximo.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{Lo barato sale caro}». \autor{Ford}, enero 1914: 5 \$/día (antes $\approx2{,}34$); rotación 370\,\% $\to$ 54\,\%, absentismo 10\,\% $\to$ 2,5\,\%. Colas en la puerta y no bajó el salario. ¿\emph{Por qué no bajan los salarios si sobra gente dispuesta a trabajar?}
+\item \concepto{Rigidez salarial}: el salario real no se ajusta para vaciar el mercado. \concepto{Paro involuntario}: quien no encuentra empleo aunque aceptaría el salario vigente o uno menor.
+\item \textbf{Relevancia}: salario = principal renta de los hogares y coste de las empresas; macro: paro, persistencia, respuesta a \emph{shocks}; microfundamentos de la \concepto{curva WS} \vertema{3.A.28} y de las rigideces reales de la NEK \vertema{3.A.7}; política: \dato{92\,\% de cobertura}{OCDE, 2024} \vertema{4.A.16}.
+\item \textbf{Contextualización}: neoclásico: $w$ real vacía el mercado, solo paro voluntario \vertema{3.A.25}. Antecedentes: \autor{Hicks} (1932), \autor{Dunlop} (1944), \autor{Keynes} (1936, rigidez \emph{nominal}) \vertema{3.A.4}. Años 70-90: rigidez del salario \emph{real} con agentes que optimizan; cada teoría levanta un supuesto: atomicidad (negociación), información perfecta (eficiencia), flexibilidad período a período (contratos implícitos; con costes de rotación, \emph{insiders}). Búsqueda \vertema{3.A.26} y tasa natural \vertema{3.A.28} usan estas piezas.
+\item \textbf{Problemática}: hechos estilizados (\autor{Romer}, 2019): ajuste por cantidades; salarios nominales casi nunca bajan (\autor{Dickens} et al., 2007); primas entre industrias (\autor{Krueger}-\autor{Summers}, 1988); curva salarial, elasticidad $\approx-0{,}1$ (\autor{Blanchflower}-\autor{Oswald}, 1994). ¿Cómo se fija $w$ con negociación? ¿Es eficiente? ¿Por qué pagar más de lo necesario? ¿Rigidez, paro o ambos?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, negociación (rigidez que imponen los trabajadores organizados); \hyperref[rep:II]{II}, eficiencia (la elige la empresa); \hyperref[rep:III]{III}, contratos implícitos (seguro) e \emph{insiders}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[11]{I. Modelos de negociación\label{rep:I}}
+\begin{ideaclave}
+El resultado depende de \emph{qué se negocia} y del \emph{poder de cada parte}: si solo se negocia $w$, el sindicato lo sube a costa del empleo (paro involuntario, ineficiente); si entra también $L$, el poder solo reparte la renta. Se levanta la \emph{atomicidad}.
+\end{ideaclave}
+
+\sub{I.1. Teoría de la negociación\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Teoría de la negociación}: cómo 2 partes que ganan con un acuerdo se reparten la ganancia; aquí, la renta conjunta empresa-trabajadores; $w$ la reparte.
+\item \concepto{Monopolio bilateral}: resultado \emph{indeterminado} (\autor{Bowley}, 1928) \vertema{3.A.17}; la misma indeterminación que la curva de contrato de \autor{Edgeworth} (1881) \vertema{3.A.21}. Decide el \emph{poder de negociación}.
+\item \autor{Hicks} (1932): curva de concesión de la empresa y de resistencia del sindicato (duración de la huelga); con información completa, huelgas solo \emph{potenciales}.
+\item \concepto{Solución de \autor{Nash} generalizada} (\autor{Nash}, 1950; sin simetría, \autor{Kalai}, 1977) \vertema{3.A.14}; axiomas: eficiencia, simetría, invariancia a transformaciones \emph{afines}, independencia de alternativas irrelevantes; $(U_S^0,B^0)$ = \concepto{punto de desacuerdo}, $\gamma$ = \concepto{poder de negociación}:
+\funcionclave{\max\ \big(U_S-U_S^0\big)^{\gamma}\big(B-B^0\big)^{1-\gamma}}
+\item Utilidad transferible: desacuerdo + cuota del excedente ($\gamma$ y $1-\gamma$). Simetría $\Rightarrow$ $\gamma=\tfrac12$ (resultado, no supuesto).
+\item \autor{Rubinstein} (1982): ofertas alternadas, \emph{sin fecha final}, único ENPS, acuerdo inmediato. Límite (\autor{Binmore}-\autor{Rubinstein}-\autor{Wolinsky}, 1986):
+\begin{formula}
+\centering $\gamma=\dfrac{\rho_B}{\rho_S+\rho_B}$:\ gana poder el que puede esperar más
+\end{formula}
+\item \emph{Valoración}: herramienta de todos los modelos salariales; huelgas reales: información privada (\autor{Kennan}-\autor{Wilson}, 1993); no dice nada del empleo $\Rightarrow$ \emph{qué} se negocia.
+\end{itemize}
+
+\sub{I.2. Modelos de negociación colectiva\label{rep:I.2}}
+\begin{itemize}
+\item Qué entra en la mesa: \emph{sindicato monopolista} (\autor{Dunlop}, 1944: fija $w$); \emph{derecho a gestionar} (\autor{Leontief}, 1946; \autor{Nickell}-\autor{Andrews}, 1983: se negocia $w$, la empresa elige $L$); \emph{contratos eficientes} (\autor{McDonald}-\autor{Solow}, 1981: $w$ y $L$ juntos).
+\item \emph{Empresa}: $B=AF(L)-wL$; demanda $AF'(L)=w$; \concepto{isobeneficio} con máximo sobre $L^D$ (más baja, más beneficio):
+\begin{formula}
+\centering $\left.\dfrac{dw}{dL}\right|_{dB=0}=\dfrac{AF'(L)-w}{L}$
+\end{formula}
+\item \emph{Sindicato} (\autor{Booth}, 1995): $\overline{L}$ afiliados idénticos, empleo al azar, $z$ = valor del desempleo; utilidad esperada de un afiliado:
+\funcionclave{U_S=\frac{L}{\overline{L}}\,u(w)+\Big(1-\frac{L}{\overline{L}}\Big)u(z),\quad u'>0,\ u''\le0}
+\item[] \concepto{Salario de reserva} $u(w^R)=u(z)$ $\Rightarrow$ $w^R=z$. Indiferencias decrecientes y convexas para $w>w^R$, horizontales en $w^R$ y desde $\overline{L}$. Con $u$ lineal = $U_S=wL-v(L)$ del monopolio bilateral (transformación afín) \vertema{3.A.17}; lo nuevo, la \emph{aversión al riesgo}. Competencia: $C$, $AF'(L^c)=w^R$.
+\item \textbf{Sindicato monopolista} ($\gamma=1$): 2 etapas, \autor{Stackelberg} con líder el sindicato $\Rightarrow$ ENPS \vertema{3.A.14}. $\max_w U_S(w,L^D(w))$ s.a. $L^D\leq\overline{L}$:
+\begin{formula}
+\centering $\dfrac{u(w)-u(w^R)}{w\,u'(w)}=\dfrac{1}{|\varepsilon_{L^D,w}|}$;\ neutral: $w^S\big(1-\tfrac{1}{|\varepsilon|}\big)=w^R$
+\end{formula}
+\item[] Margen sobre $w^R$ (regla del monopolio). Cobb-Douglas $F=L^\alpha$: $w^S=w^R/\alpha$, \emph{sin $A$} $\Rightarrow$ el \emph{shock} lo absorbe el empleo (salvo $L=\overline{L}$). $M$: tangencia con $L^D$; $w^S>w^R$, $L^S<L^c$; \emph{paro involuntario}; ENPS pero no \autor{Pareto}: \concepto{lente de mejoras paretianas}. Seminal, pero la empresa sin poder no es realista.
+\item \textbf{Derecho a gestionar} (\emph{right to manage}): 1.ª etapa \autor{Nash} sobre $w$ (desacuerdo: cierre, $B^0=0$, $U_S^0=u(z)$); 2.ª, $L$ sobre $L^D$; \emph{no es ENPS} (negociación = concepto cooperativo). $\gamma=1\to M$, $\gamma=0\to C$; $R$ entre ambos. Cobb-Douglas y neutral:
+\begin{formula}
+\centering $w=(1-\gamma)\,w^R+\gamma\,w^S=w^R\Big[1+\gamma\dfrac{1-\alpha}{\alpha}\Big]$\ (sin $A$)
+\end{formula}
+\item[] ↑$\gamma$ $\Rightarrow$ ↑$w$, ↓$L$: \emph{moderación salarial crea empleo}. Ineficiente (lente) salvo $\gamma=0$. Describe mejor los convenios; base de la WS \vertema{3.A.28}.
+\item \textbf{Contratos eficientes}: una etapa, \autor{Nash} sobre $(w,L)$. \concepto{Curva de contratos}: tangencias isobeneficio-indiferencia:
+\begin{formula}
+\centering $AF'(L)=w-\dfrac{u(w)-u(w^R)}{u'(w)}$;\ $\gamma=0\to C$, $\gamma=1\to F$ ($B=0$, $w=AF/L$)
+\end{formula}
+\item[] \emph{Neutral}: vertical en $L^c$: el poder solo reparte. \emph{Averso}: $AF'(L)<w^R$, pendiente $>0$, de $C$ a $D$ ($\overline{L}$) y vertical hasta $F$: \emph{sobreempleo} (el sindicato asegura a los afiliados). Fuera de $L^D$ (la empresa querría despedir). ↑$\gamma$ $\Rightarrow$ ↑$w$ y $L$ igual o mayor: moderación \emph{no} crea empleo (recetas opuestas al derecho a gestionar).
+\end{itemize}
+\graficorepaso[0.78\linewidth]{negociacion-colectiva}{Los 3 modelos en un plano: $M$ ($\gamma=1$), $R$ y $C$ ($\gamma=0$) sobre $L^D$; curva de contratos $C$-$D$-$F$}
+\begin{itemize}
+\item \concepto{Contratos fuertemente eficientes} (\autor{Booth}, 1995a): se negocia también un seguro de paro $b$ $\Rightarrow$ \concepto{principio de indiferencia} ($w=w^R+b$: a cada afiliado le da igual trabajar o no); indiferencias horizontales y curva vertical en $L^c$ \emph{también con aversión}. Con indemnizaciones, igual con derecho a gestionar. No se observa: seguros públicos e incompletos; riesgo moral \vertema{3.A.13}.
+\item \emph{Valoración}: contratos eficientes \emph{débilmente} eficientes con aversión ($AF'<w^R$); credibilidad: la empresa quiere volver a $L^D$ $\Rightarrow$ verificación o juego repetido (\autor{Espinosa}-\autor{Rhee}, 1989).
+\item \emph{¿Cuál describe la realidad?} Convenios: salario y condiciones, casi nunca plantilla; plurianuales; $w$ en el sector, $L$ en la empresa y después $\Rightarrow$ derecho a gestionar (\autor{Cahuc} et al., 2014). Contrastes mixtos (\autor{MaCurdy}-\autor{Pencavel}; \autor{Brown}-\autor{Ashenfelter}, 1986, imprenta de EE.\,UU.); en bolsa, la subida inesperada reparte renta (\autor{Abowd}, 1989). Coinciden: \emph{prima sindical}, menos dispersión, efecto ambiguo en el empleo.
+\item \emph{España}: cobertura \dato{92,1\,\%}{OCDE, 2024} (media OCDE 33,6\,\%) con afiliación \dato{12,5\,\%}{OCDE, 2023}: eficacia general de los convenios (art. 82.3 ET). Subida pactada \dato{3,05\,\% en 2026}{MITES, sept. 2026} (empresa 2,60\,\%, sector 3,09\,\%; 2025: 3,51\,\%).
+\item \emph{Nivel de negociación} (anexo): \autor{Bruno}-\autor{Sachs} (1985): centralizada $\Rightarrow$ se interioriza la inflación y se modera ante \emph{shocks} de oferta. \concepto{Hipótesis de la joroba} (\autor{Calmfors}-\autor{Driffill}, 1988): $w$ real y paro en U invertida frente a la centralización; la empresa interioriza la pérdida de empleo, el país la inflación, el \emph{sector} ninguna.
+\end{itemize}
+\graficorepaso[0.5\linewidth]{joroba}{\autor{Calmfors}-\autor{Driffill}: peor el nivel sectorial}
+\begin{itemize}
+\item \emph{Evidencia}: la joroba no resiste (\autor{Flanagan}, 1999); OCDE (2017-2019): importa la \emph{coordinación}. España: sectorial $\Rightarrow$ paro $\approx5$ puntos mayor; el descuelgue elimina la diferencia (\autor{Jimeno}-\autor{Thomas}, 2011, 2013); FEDEA (2009). Ley 3/2012: prioridad del convenio de empresa en salarios, ultraactividad de 1 año, descuelgue; RDL 32/2021: vuelve el sectorial en salarios, ultraactividad indefinida, se mantiene el descuelgue \vertema{4.A.16}.
+\end{itemize}
+
+\sub{I.3. La negociación en los modelos macroeconómicos\label{rep:I.3}}
+\begin{itemize}
+\item \autor{Diamond}-\autor{Mortensen}-\autor{Pissarides} (Nobel 2010): la renta de cada emparejamiento se reparte con \autor{Nash}; mismo $\gamma$ y $z$ \vertema{3.A.26}:
+\begin{formula}
+\centering $w=(1-\gamma)\,z+\gamma\,(y+c\,\theta)$,\quad $\theta=V/U$
+\end{formula}
+\item \autor{Layard}-\autor{Nickell}-\autor{Jackman} (1991), \autor{Carlin}-\autor{Soskice} (2015): derecho a gestionar $\Rightarrow$ curva WS; con la de precios, la NAIRU \vertema{3.A.28}:
+\begin{formula}
+\centering $\dfrac{W}{P^e}=F(U,Z)\cdot\mathrm{PAT}^e$,\quad $F_U<0$
+\end{formula}
+\item \emph{Evidencia}: \concepto{curva salarial} (\autor{Blanchflower}-\autor{Oswald}, 1994): elasticidad del salario regional al paro $\approx-0{,}1$.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9,5]{II. Salarios de eficiencia\label{rep:II}}
+\begin{ideaclave}
+Si el rendimiento depende del salario, a la empresa le conviene pagar más que el salario que vacía el mercado y no bajarlo aunque haya parados: rigidez real y paro involuntario \emph{sin poder de mercado}. Se levanta la \emph{información perfecta}. Lo barato sale caro.
+\end{ideaclave}
+
+\sub{II.1. Idea\label{rep:II.1}}
+\begin{itemize}
+\item \concepto{Salario de eficiencia}: el que la empresa paga, por decisión propia, por encima del walrasiano porque la plantilla le devuelve en rendimiento más de lo que cuesta (\autor{Akerlof}-\autor{Yellen}, 1986).
+\item 5 motivos: \emph{nutrición} (\autor{Leibenstein}, 1957); \emph{rotación} (\autor{Stiglitz}, 1974; \autor{Salop}, 1979); \emph{selección adversa} (\autor{Weiss}, 1980) \vertema{3.A.13}; \emph{escaqueo}, riesgo moral (\autor{Shapiro}-\autor{Stiglitz}, 1984); \emph{equidad}, intercambio de regalos (\autor{Akerlof}, 1982; \autor{Akerlof}-\autor{Yellen}, 1990).
+\end{itemize}
+
+\sub{II.2. \autor{Solow} (1979): información perfecta\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Supuestos}: $J$ empresas competitivas; \concepto{trabajo efectivo} $eL$; $B=AF(eL)-wL$; esfuerzo $e(w)$, $e'>0$, en forma de S; $\overline{L}$ trabajadores con oferta inelástica; esfuerzo observable.
+\item \emph{Programa}: con paro, la empresa elige $L$ y $w$: $\max_{L,w}\ AF(e(w)L)-wL$. CPO: $AF'e=w$ y $AF'e'L=L$; dividiendo, la \concepto{condición de \autor{Solow}}:
+\funcionclave{\varepsilon_{e,w}\equiv\frac{w^*\,e'(w^*)}{e(w^*)}=1}
+\item[] $w^*$ \emph{minimiza el coste por unidad de trabajo efectivo} $w/e(w)$ (no $e/w$); gráficamente, rayo desde el origen tangente a $e(w)$. CSO: $e''(w^*)<0$; si $e$ cóncava desde $e(0)>0$, no hay salario de eficiencia.
+\item \emph{Empleo}: $AF'(e^*L)=w^*/e^*$ $\Rightarrow$ $L^*$; si $JL^*<\overline{L}$, paro $\overline{L}-JL^*$; si no, $w$ sube y no hay paro.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{solow-esfuerzo}{\autor{Solow}: (a) rayo tangente a $e(w)$ en $T$, $\varepsilon_{e,w}=1$; (b) $e(w)$ cóncava: sin salario de eficiencia}
+\begin{itemize}
+\item \emph{Implicaciones}: \emph{paro involuntario} (bajar $w$ cuesta más en esfuerzo); \emph{rigidez real}: $w^*$ solo depende de $e(\cdot)$, no de $A$ ni de $L^D$ $\Rightarrow$ ajuste por empleo; amplifica las rigideces nominales (\autor{Ball}-\autor{Romer}, 1990) \vertema{3.A.7}.
+\item \emph{Extensión} (\autor{Summers}, 1988): $e=\big(\frac{w-x}{x}\big)^{\eta}$, $x=(1-bU)\,w_a$ $\Rightarrow$ $w=x/(1-\eta)$; en equilibrio $w=w_a$:
+\begin{formula}
+\centering $U=\eta/b$;\quad $\eta=0{,}06$, $b=1$ $\Rightarrow$ 6\,\% de paro (\autor{Romer})
+\end{formula}
+\item[] Paro de equilibrio por los parámetros del esfuerzo, no por $A$: el crecimiento acaba en salarios; otra WS \vertema{3.A.28}.
+\item \emph{Valoración}: + paro involuntario sencillo, sin poder de mercado. $-$ rigidez \emph{demasiado} fuerte (dura a largo plazo: el paro iría a 0 con el crecimiento); no dice \emph{por qué} $e$ depende de $w$ $\Rightarrow$ \autor{Shapiro}-\autor{Stiglitz}.
+\end{itemize}
+
+\sub{II.3. \autor{Shapiro}-\autor{Stiglitz} (1984): información asimétrica\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Idea}: la empresa no ve el esfuerzo; su única sanción es despedir. Sin paro el despido no duele $\Rightarrow$ tiene que haber paro: \emph{mecanismo de disciplina}.
+\item \emph{Supuestos}: tiempo continuo, estado estacionario; $\overline{L}$ trabajadores neutrales al riesgo, descuento $\rho$; $J$ empresas. Esfuerzo $\overline{e}$ (cuesta $\overline{e}$) o $0$; utilidad $w-\overline{e}$ (E), $w$ (S, \emph{shirking}), 0 (U). Transiciones de \autor{Poisson}: \concepto{tasa de separación} $s$, \concepto{tasa de detección} $q$ (exógenas); hallar empleo $f$ (endógena). Sin información asimétrica, pleno empleo: $A\overline{e}F'(\overline{e}\,\overline{L}/J)>\overline{e}$.
+\item \emph{Valores} (como rendimiento de un activo):
+\begin{formula}
+\centering $\rho V_{\mathrm E}=(w-\overline{e})-s(V_{\mathrm E}-V_{\mathrm U})$,\ \ $\rho V_{\mathrm S}=w-(s+q)(V_{\mathrm S}-V_{\mathrm U})$,\ \ $\rho V_{\mathrm U}=f(V_{\mathrm E}-V_{\mathrm U})$
+\end{formula}
+\item \concepto{Restricción de compatibilidad de incentivos} $V_{\mathrm E}\geq V_{\mathrm S}$ (principal-agente \vertema{3.A.13}) $\Rightarrow$ $V_{\mathrm E}-V_{\mathrm U}=\overline{e}/q$: \emph{renta} del empleo. Estado estacionario $sJL=f(\overline{L}-JL)$ $\Rightarrow$ $f+s=s/U$; \concepto{condición de no escaqueo} (CNE, \emph{no-shirking condition}):
+\funcionclave{w\geq\overline{e}+\Big(\rho+\frac{s}{U}\Big)\frac{\overline{e}}{q}}
+\item[] ↑ con $\overline{e}$, $\rho$, $s$; ↓ con $q$ y con el paro; $U\to0$ $\Rightarrow$ $w\to\infty$: con pleno empleo no hay salario que disuada.
+\item \emph{Equilibrio} en $(JL,w)$: demanda $A\overline{e}F'(\overline{e}L)=w$; oferta horizontal en $\overline{e}$ hasta $\overline{L}$, luego vertical; CNE creciente, vertical en $\overline{L}$. Walrasiano $E^W$ (pleno empleo); con información asimétrica $E$: $w^*$ y \emph{paro}.
+\item \emph{Estática comparativa}: ↓$A$ $\Rightarrow$ $E\to E'$ a lo largo de la CNE: ↓$L$ y algo ↓$w$. ↑$q$ baja la CNE; $s=0$ $\Rightarrow$ CNE horizontal, $w=\overline{e}+\rho\overline{e}/q$.
+\end{itemize}
+\pareja{shapiro-stiglitz}{CNE, demanda y paro; ↓$A$: $E\to E'$}{estados-ss}{Estados E, S, U y tasas $s$, $q$, $f$}
+\begin{itemize}
+\item \emph{Implicaciones}: paro involuntario de equilibrio: los parados «no pueden prometer de forma creíble que no se escaquearán» (\autor{Shapiro}-\autor{Stiglitz}, 1984, p.\,438). Ajuste por cantidades. \emph{Ineficiencia}: imponer pleno empleo no sirve (nadie se esforzaría); sí \emph{subsidio salarial} financiado con impuesto sobre beneficios; subsidio de paro más generoso \emph{aumenta} el paro (hay que pagar más para disciplinar). Paro no keynesiano, pero la demanda mueve el empleo a corto plazo.
+\item \emph{Extensiones}: \emph{mercados duales} (\autor{Bulow}-\autor{Summers}, 1986): sector primario con rentas y colas; otros costes del despido (capital específico) $\Rightarrow$ menos paro necesario.
+\item \emph{Evidencia}: \autor{Ford}: productividad +40-70\,\% (\autor{Raff}-\autor{Summers}, 1986, 1987); primas entre industrias, menos abandonos (\autor{Krueger}-\autor{Summers}, 1988); menos despidos disciplinarios con más prima y más paro (\autor{Cappelli}-\autor{Chauvin}, 1991); laboratorio (\autor{Fehr}-\autor{Kirchsteiger}-\autor{Riedl}, 1993); directivos temen la moral (\autor{Bewley}, 1999).
+\item \emph{Valoración}: + fundamento con información asimétrica; pieza de la NEK \vertema{3.A.7}. $-$ \emph{fianzas} (\autor{Carmichael}, 1985) y salarios crecientes con antigüedad (\autor{Lazear}, 1979) lo evitarían: respuesta, sin liquidez y la empresa acusaría en falso; ¿selección adversa y no riesgo moral?; CNE calibrada demasiado empinada; paro $\downarrow$ a largo plazo salvo que $\overline{e}$ crezca con la productividad; efecto del regalo se diluye (\autor{Gneezy}-\autor{List}, 2006).
+\end{itemize}
+
+% ==========================================================================
+\bloque[6]{III. Contratos implícitos\label{rep:III}}
+\begin{ideaclave}
+Con relaciones largas e incertidumbre, la empresa (neutral al riesgo) asegura a sus trabajadores (aversos) con una renta estable: el salario no sigue a la productividad, pero el empleo pactado es el eficiente. Explican la \emph{rigidez}, no el paro; el paro, los \emph{insiders}. A las duras y a las maduras.
+\end{ideaclave}
+
+\sub{III.1. Idea\label{rep:III.1}}
+\begin{itemize}
+\item ¿Por qué el salario real apenas responde a los \emph{shocks} y se ajusta el empleo? Relaciones de décadas (\autor{Hall}, 1982): \autor{Baily} (1974), \autor{Gordon} (1974), \autor{Azariadis} (1975) ven un \emph{seguro}: trabajador averso sin mercado de seguros de su renta laboral; dueños diversificados, neutrales. Contrato \concepto{implícito}: no escrito ni exigible ante un juez; lo sostiene la reputación.
+\end{itemize}
+
+\sub{III.2. Modelo\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Supuestos}: estados $j=1,\dots,n$ con productividad $A_j$ y probabilidad $\pi_j$, observables por ambos; empresa neutral: produce $A_jF(L_j)$, paga renta $C_j$ y pide $L_j$ horas; trabajador $u(C_j)-v(L_j)$, $u$ cóncava, $v$ convexa; \concepto{utilidad de reserva} $U^R$; contrato \emph{antes} de conocer el estado.
+\funcionclave{\optim{\max}{\{C_j,L_j\}}{\textstyle\sum_j\pi_j\big[A_jF(L_j)-C_j\big]}{\textstyle\sum_j\pi_j\big[u(C_j)-v(L_j)\big]\geq U^R}}
+\item CPO ($\lambda$): $u'(C_j)=1/\lambda$ $\Rightarrow$ $C_j=\overline{C}$: \concepto{seguro completo} (quien es neutral carga el riesgo \vertema{3.A.10}); y empleo \emph{eficiente} en cada estado:
+\begin{formula}
+\centering $A_jF'(L_j)=\dfrac{v'(L_j)}{u'(\overline{C})}$\quad (más horas en los estados buenos)
+\end{formula}
+\item \emph{Horas fijas}: $w_j=\overline{w}$; salario medio menor que al contado: \emph{prima de riesgo} del seguro \vertema{3.A.10}. Principal neutral y agente averso con información simétrica: pago fijo \vertema{3.A.13}.
+\item \emph{Implicaciones}: rigidez del salario real; salario \emph{por hora} $\overline{C}/L_j$ incluso contracíclico; ganan los 2; \emph{no hay paro involuntario}: el salario observado deja de ser el precio que decide el empleo (\autor{Barro}, 1977).
+\end{itemize}
+
+\sub{III.3. Extensiones e \emph{insiders}\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Despidos} (\autor{Azariadis}, 1975): trabajo indivisible, despidos al azar en estados malos; sin indemnización, paro involuntario \emph{a posteriori} (\autor{Rosen}, 1985).
+\item \emph{Información asimétrica} (solo la empresa ve el estado): no se sostiene el seguro completo; \emph{subempleo} si la empresa también es aversa (\autor{Grossman}-\autor{Hart}, 1981; \autor{Azariadis}, 1983); \emph{sobreempleo} si neutral y ocio normal (\autor{Green}-\autor{Kahn}, 1983); \autor{Azariadis}-\autor{Stiglitz} (1983). Esfuerzo no observable: parte del riesgo al trabajador.
+\item \emph{Autoexigibilidad}: reputación, juego repetido (\autor{Bull}, 1987) \vertema{3.A.14}; el trabajador puede irse $\Rightarrow$ $w$ sube si el mercado se tensa, no baja si se relaja.
+\item \concepto{\emph{Insiders} y \emph{outsiders}} (\autor{Lindbeck}-\autor{Snower}, 1988): \emph{insiders} empleados que negocian; \emph{outsiders} parados o precarios, fuera de la mesa. Poder de los \emph{insiders}: \concepto{costes de rotación} (despido $c_D$, contratación $c_C$; formación específica \vertema{3.A.25}). \emph{Outsiders} cobran $w_O$ (reserva); salario máximo de los \emph{insiders}:
+\funcionclave{w_I=w_O+c_D+c_C}
+\item[] Casos (anexo): A pocos \emph{insiders}, cobran el máximo y se contratan \emph{outsiders}; B intermedio, ni contrata ni despide, $w_I=AF'(\overline{L}_I)+c_D$ (empleo = historia); C muchos, despide, $w^R$.
+\item \emph{Implicaciones}: paro involuntario de \emph{outsiders}; \emph{histéresis} (\autor{Blanchard}-\autor{Summers}, 1986) \vertema{3.A.28}; \emph{dualidad}: en la Gran Recesión el ajuste recayó en los temporales (\autor{Bentolila} et al., 2012) \vertema{4.A.16}. Política: ↓costes de rotación, descuelgue, formación y subvenciones a la contratación de parados.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{insiders}{\emph{Insiders} y \emph{outsiders}: salario máximo según cuántos sean (casos A, B, C)}
+
+\sub{III.4. Valoración\label{rep:III.4}}
+\begin{itemize}
+\item + estabilidad del salario real con ajuste por empleo, sin poder de mercado; rigidez $\neq$ ineficiencia.
+\item \emph{Evidencia}: el salario depende del \emph{paro más bajo} desde la entrada en la empresa (\autor{Beaudry}-\autor{DiNardo}, 1991). ERTE: \dato{3.386.785 trabajadores el 30/4/2020}{MISSM}: seguro explícito que completa al implícito.
+\item $-$ sin extensiones no hay paro involuntario; estabilizan el salario \emph{real}, la rigidez nominal tiene otras causas (costes de menú, contratos escalonados) \vertema{3.A.7}; reputación más débil con relaciones cortas.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: el salario no solo vacía el mercado: negociación (poder; paro si solo se negocia $w$), eficiencia (la empresa paga más; el paro disciplina), contratos implícitos (seguro: rigidez sin paro; el paro, con \emph{insiders}). Todos, microfundamentos de la WS \vertema{3.A.28}.
+\item \textbf{Relevancia}: paro sobre todo \emph{de equilibrio}: instituciones (nivel de negociación, subsidios, protección del empleo); pero con $w$ real rígido la demanda mueve mucho el empleo (\autor{Ball}-\autor{Romer}, 1990).
+\item \textbf{Extensiones}: \autor{Nash} en búsqueda (\autor{Hall}, 2005; \autor{Blanchard}-\autor{Galí}, 2010) \vertema{3.A.26} \vertema{3.A.7}; WS, NAIRU, histéresis \vertema{3.A.28}; nivel de negociación \vertema{4.A.16}; unión monetaria \vertema{3.B.16}.
+\item \textbf{Opinión}: ninguna basta sola; cada una encaja con un hecho (cobertura, primas por industria, salarios que no bajan); \autor{Ford}, leído con varias. España: negociación sectorial y dualidad (\autor{Jimeno}-\autor{Thomas}, 2013; \autor{Bentolila} et al., 2012).
+\item \textbf{Idea final}: \autor{Ford} no pagaba de más: pagaba lo más barato. Bajar el salario sale caro (esfuerzo, rotación, paz social); la tarea de la política es que no lo paguen siempre los de fuera.
+\end{itemize}
+
+{\centering\scriptsize\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}cc@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Modelo} & \textbf{Levanta} & \textbf{Por qué no baja $w$} & \textbf{Paro} & \textbf{Efic.}\\
+\midrule
+Monopolista, d. a gestionar & atomicidad & poder sindical & \textcolor{tceerojo}{sí} & \textcolor{tceerojo}{no}\\
+Contratos eficientes & atomicidad & solo reparte & \textcolor{tceeverde}{no} & \textcolor{tceeverde}{reparto}\\
+Eficiencia & información & esfuerzo & \textcolor{tceerojo}{sí} & \textcolor{tceerojo}{no}\\
+Contratos implícitos & flexibilidad & seguro & \textcolor{tceeverde}{no} & \textcolor{tceeverde}{sí}\\
+\emph{Insiders} & movilidad & rotación & \textcolor{tceerojo}{sí} & \textcolor{tceerojo}{no}\\
+\bottomrule
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1881}{\autor{Edgeworth}: curva de contrato}
+\hito{1914}{\autor{Ford}: día de 5 dólares}
+\hito{1928}{\autor{Bowley}: monopolio bilateral indeterminado}
+\hito{1932}{\autor{Hicks}: \emph{The Theory of Wages} (Nobel 1972)}
+\hito{1944}{\autor{Dunlop}: sindicato monopolista}
+\hito{1946}{\autor{Leontief}: derecho a gestionar y eficiencia}
+\hito{1950}{\autor{Nash}: negociación axiomática (Nobel 1994)}
+\hito{1957}{\autor{Leibenstein}: nutrición}
+\hito{1974}{\autor{Baily}, \autor{Gordon}; 1975, \autor{Azariadis}: contratos implícitos}
+\hito{1977}{\autor{Barro}: rigidez sin paro; \autor{Kalai}: \autor{Nash} asimétrica}
+\hito{1979}{\autor{Solow}: salario de eficiencia; \autor{Salop}: rotación}
+\hito{1981}{\autor{McDonald}-\autor{Solow}: contratos eficientes}
+\hito{1982}{\autor{Rubinstein}: ofertas alternadas; \autor{Akerlof}: regalos}
+\hito{1983}{\autor{Nickell}-\autor{Andrews}: derecho a gestionar}
+\hito{1984}{\autor{Shapiro}-\autor{Stiglitz}: escaqueo (Nobel 2001)}
+\hito{1985}{\autor{Bruno}-\autor{Sachs}: centralización}
+\hito{1986}{\autor{Blanchard}-\autor{Summers}: histéresis; BRW}
+\hito{1988}{\autor{Lindbeck}-\autor{Snower}; \autor{Summers}; \autor{Calmfors}-\autor{Driffill}}
+\hito{1991}{\autor{Layard}-\autor{Nickell}-\autor{Jackman}: WS; \autor{Beaudry}-\autor{DiNardo}}
+\hito{1994}{\autor{Blanchflower}-\autor{Oswald}: curva salarial}
+\hito{1995}{\autor{Booth}: sindicato; fuertemente eficientes}
+\hito{1999}{\autor{Bewley}: \emph{Why Wages Don't Fall}}
+\hito{2010}{Nobel a \autor{Diamond}, \autor{Mortensen} y \autor{Pissarides}}
+\hito{2012}{Ley 3/2012: prioridad del convenio de empresa}
+\hito{2021}{RDL 32/2021: vuelve el sectorial en salarios}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Cobertura de la negociación colectiva: \dato{92,1\,\% (media OCDE 33,6\,\%)}{OCDE/AIAS ICTWSS, 2024}; OIT \dato{80,1\,\%}{2018}; cociente propio \dato{69\,\%}{MITES y Eurostat, 2024}.
+\item Afiliación sindical: \dato{12,5\,\% (OCDE 15,2\,\%)}{OCDE, 2023}.
+\item Subida salarial pactada: \dato{3,05\,\% en 2026}{MITES, sept. 2026}; \dato{3,51\,\% en 2025}{MITES}.
+\item Convenios de empresa: \dato{7,4\,\% de los trabajadores con convenio}{MITES, 2025} (10,7\,\% en 2013).
+\item Descuelgues: \dato{295 y 13.723 trabajadores}{MITES, ene.-sep. 2026} frente a 2.512 y 159.550 en 2013.
+\item Negociación sectorial: paro \dato{$\approx$5 puntos}{\autor{Jimeno}-\autor{Thomas}, 2013} mayor que la de empresa.
+\item ERTE: \dato{3.386.785}{MISSM, 30/4/2020}.
+\item \autor{Ford}: \dato{2,34 $\to$ 5 \$/día; rotación 370\,\% $\to$ 54\,\%}{\autor{Raff}-\autor{Summers}, 1986}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Qué modelos generan paro involuntario?} Monopolista y derecho a gestionar, eficiencia, \emph{insiders}: sí. Contratos eficientes e implícitos: no.
+\item \textbf{¿Por qué el derecho a gestionar no es eficiente?} \autor{Nash} es eficiente en lo que se negocia ($w$); $L$ lo decide luego la empresa sobre $L^D$: lente de mejoras.
+\item \textbf{¿Moderación salarial crea empleo?} Con derecho a gestionar sí (se baja por $L^D$); a lo largo de la curva de contratos, no (lo reduce o no cambia).
+\item \textbf{¿Por qué $\varepsilon_{e,w}=1$?} $w^*$ minimiza $w/e(w)$: se sube $w$ mientras un 1\,\% más dé más de un 1\,\% de esfuerzo.
+\item \textbf{¿Por qué el pleno empleo es incompatible con la CNE?} $U\to0$ $\Rightarrow$ despedido recolocado al instante: ningún $w$ disuade.
+\item \textbf{¿Qué hace un subsidio de paro mayor en \autor{Shapiro}-\autor{Stiglitz}?} Abarata el despido: sube la CNE y el paro.
+\item \textbf{¿Explican los contratos implícitos el paro?} No: rigidez con empleo eficiente (\autor{Barro}, 1977); paro con información asimétrica, despidos sin indemnización o \emph{insiders}.
+\item \textbf{¿Cómo cubren los convenios al 92\,\% con un 12,5\,\% de afiliación?} Eficacia general: obligan a todo su ámbito (art. 82.3 ET); el 92\,\% es sobre asalariados con derecho a negociar.
+\item \textbf{¿Por qué no se usan fianzas contra el escaqueo?} Falta de liquidez y la empresa acusaría en falso para quedársela (\autor{Shapiro}-\autor{Stiglitz}, 1985).
+\item \textbf{¿De dónde sale el poder de los \emph{insiders}?} De los costes de rotación ($c_D$, $c_C$; formación específica): se apropian como mucho de ellos.
+\item \textbf{¿Hipótesis de la joroba?} \autor{Calmfors}-\autor{Driffill} (1988): peor el nivel sectorial; la OCDE no la encuentra: importa la \emph{coordinación}.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Axiomas de \autor{Nash}: invariancia a transformaciones \emph{afines} positivas (no «lineales»); simetría $\Rightarrow$ $\gamma=\tfrac12$ como resultado.
+\item \autor{Rubinstein}: horizonte \emph{infinito} (el finito es de \autor{Ståhl}, 1972); $x^*=(1-\beta_B)/(1-\beta_S\beta_B)$; gana el más paciente; no cooperativo = sin acuerdos vinculantes.
+\item Sindicato monopolista: ENPS pero no \autor{Pareto}. Derecho a gestionar: \emph{no} es ENPS. Ambos sobre $L^D$; contratos eficientes \emph{fuera}.
+\item Curva de contratos: vertical con neutralidad, creciente con aversión (sobreempleo); fuertemente eficientes: vertical también con aversión.
+\item \autor{Solow}: minimiza $w/e(w)$ (no $e/w$); $\varepsilon_{e,w}=1$ (no $\varepsilon_{w,e}$); no depende de $A$.
+\item CNE con $s/U$, no $s$; la demanda es $A\overline{e}F'(\overline{e}L)=w$ (con la prima); $s=0$ $\Rightarrow$ CNE horizontal.
+\item Rotación: \autor{Salop} (1979) y \autor{Stiglitz} (1974); escaqueo: \autor{Shapiro}-\autor{Stiglitz}, no \autor{Akerlof}.
+\item Derecho a gestionar con Cobb-Douglas: $w$ es la media de $w^R$ y $w^S$ ponderada por $\gamma$; ni $w^S$ ni $w$ dependen de $A$.
+\item Contratos implícitos: \emph{sin} paro involuntario. \emph{Insiders}: $w_I\leq w_O+c_D+c_C$; salario contracíclico solo en el caso B.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

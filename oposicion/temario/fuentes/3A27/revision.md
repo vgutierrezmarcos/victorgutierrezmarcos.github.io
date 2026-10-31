@@ -137,6 +137,7 @@ Todas con la opción recomendada **ya aplicada** (Víctor fuera hasta el 9/11).
 - **A27-14 · Variantes de Shapiro y Stiglitz.** Opciones: (a) gráfico aparte de 2 paneles (`shapiro-stiglitz-variantes`) en el anexo C; (b) capas opcionales del gráfico central. **Aplicada: (a)**, para que el gráfico del cante quede limpio.
 - **A27-15 · Refranes pegatina.** Contenido proponía «Al mal tiempo, buena cara» para los contratos implícitos y «Quien se fue a Sevilla perdió su silla» para los *insiders* (histéresis). Opciones: (a) los de coherencia («Hablando se entiende la gente», «Lo barato sale caro», «A las duras y a las maduras»), sin pegatina propia para los *insiders*; (b) añadir «Quien se fue a Sevilla…» a los *insiders*. **Aplicada: (a)**; (b) es fácil de añadir en el guion.
 - **A27-16 · Páginas sin comprobar.** Cahuc, Carcillo y Zylberberg (2014), pp. 426 y 437-439, y las de Romer (2019) del original no se han podido ver: se cita el capítulo (7 y 11). Si tienes los libros, se pueden poner las páginas.
+- **R27-01 · Título corto de la ficha de repaso.** Contexto: el título corto del tema («Determinación de salarios: negociación, eficiencia y contratos implícitos») no cabe en el pie de la ficha: se montaba sobre el texto de la derecha (licencia de material exclusivo). Opciones: (a) en la ficha, «Determinación de salarios»; (b) «Negociación, eficiencia y contratos implícitos»; (c) acortar también el título corto del tema. **Recomendada y aplicada: (a)**, solo en `repaso/3A27-repaso.tex`; el tema no se toca.
 
 ## Instrucciones para el vídeo
 
