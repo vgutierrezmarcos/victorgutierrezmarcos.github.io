@@ -28,7 +28,7 @@ $$u(x)=\begin{cases}\dfrac{x^{1-\theta}-1}{1-\theta} & \theta\ge 0,\ \theta\ne 1
 | 3.A.10 | Elección con riesgo | desarrollo (hecho, 19/10/2026) | Todo lo anterior | — |
 | 3.A.8 | Formas funcionales de la utilidad | resumen (hecho) | La CRRA con la misma ecuación (θ, el −1, ln con θ = 1), caso particular de las HARA, ESI = 1/θ; remite a 3.A.10 y 3.A.29 | Los coeficientes y Pratt |
 | 3.A.29 | Elección intertemporal | resumen | θ = r_R y ESI = 1/θ (un mismo parámetro para el riesgo y el tiempo; Epstein-Zin los separa); nunca «σ = 1/θ» | ξ, ρ, Pratt |
-| 3.A.33 | Teorías del consumo | resumen | Prudencia u‴ > 0, ahorro precautorio (Leland, Sandmo, **Kimball**), Hall con cuadrática sin precaución, DARA ⇒ prudencia | La definición de r_A |
+| 3.A.33 | Teorías del consumo | resumen (hecho, 31/10/2026: II.3 `sec:precautorio`) | Prudencia u‴ > 0 necesaria y suficiente sea cual sea el signo de u″, Kimball, Jensen y `tab:prudencia` copiada con su `\fuente` (θ y b); DARA ⇒ prudencia; la parte macro en la ficha `ahorro-precaucion` | La definición de r_A |
 | 3.A.35 | Demanda de dinero | mención | El averso reparte entre dinero seguro y bonos con riesgo (Tobin, 1958; ficha `tobin-cartera`) | — |
 | 3.B.23 | Elección de cartera | resumen | Aversión y curvas de indiferencia en (σ, 𝔼(r_p)); cuándo vale media-varianza | Pratt, prudencia |
 | 3.A.13 | Información asimétrica | mención (hecho) | Agente averso; contrato lineal con r_A constante (CARA) y equivalente cierto ξ = a + be − (r_A/2)b²σ² − e²/2 | Las definiciones |
@@ -37,7 +37,7 @@ $$u(x)=\begin{cases}\dfrac{x^{1-\theta}-1}{1-\theta} & \theta\ge 0,\ \theta\ne 1
 ## Divergencias encontradas en el temario actual
 - 3.A.10 original: r_α, r_r; «ESI ≡ σ = 1/θ»; θ «elasticidad de la utilidad marginal»; aversión como «condición necesaria» del ahorro precautorio; tabla de prudencia con σ; media-varianza por el teorema central del límite; «transformaciones lineales crecientes». **Resuelto** (19/10/2026).
 - 3.A.29: escribía (como el 3.A.10 original) «σ = 1/θ» para la ESI: canon ESI = 1/θ sin símbolo propio (D001; `mapa.yaml`).
-- 3.A.33: Leland (1968) y Sandmo (1970) en su tabla sin Kimball (1990) ni la condición u‴ > 0 con la redacción del 3.A.10 (`mapa.yaml`).
+- 3.A.33: Leland (1968) y Sandmo (1970) en su tabla sin Kimball (1990) ni la condición u‴ > 0 con la redacción del 3.A.10 (`mapa.yaml`). **Resuelto** (31/10/2026).
 - 3.A.13 (revisado): escribe la CARA con r_A en el contrato lineal porque a es el fijo del contrato; es coherente (r_A = a para la CARA) y no hay que cambiarlo.
 - Id `crra` del inventario (solo 3.A.8): fusionado aquí (`_inventario/alias.json`, 19/10/2026).
 

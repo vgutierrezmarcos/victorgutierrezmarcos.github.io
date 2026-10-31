@@ -1,0 +1,38 @@
+% La renta permanente de Friedman y la solución del enigma de Kuznets.
+% Elaboración propia a partir de Friedman (1957).
+% CÓDIGO BASE COMÚN con consumo-renta.tex (mismos ejes, escala, rectas y E):
+%   largo plazo   C^P = k Y^P con k = 0,8
+%   E en Y_0 = 4: C = 3,2
+%   corto plazo y corte transversal: C = 1,6 + 0,4 Y (pendiente b̂ = 0,4 < k)
+%   subida de la renta a Y_1 = 5,3: F^T sobre el corto plazo, C = 3,72;
+%   F^P sobre el largo plazo, C = 4,24
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.9,
+    declare function={lp(\x)=0.8*\x; cp(\x)=1.6+0.4*\x;}]
+  % 1: ejes: renta y consumo
+  \capa{1}{\ejes{$Y$}{$C$}{6.8}{5.6}}
+  % 2: largo plazo: consumo permanente proporcional a la renta permanente
+  \capa{2}{\draw[curva1] (0,0) -- (6.2,{lp(6.2)});}
+  \capa{2}{\node[etiqueta,font=\footnotesize,text=tceemorado,anchor=east] at (5.9,{lp(6.2)+0.2}) {$C^P=kY^P$ (largo plazo)};}
+  % 3: punto inicial E en Y_0
+  \capa{3}{\node[punto] (E) at (4,{lp(4)}) {};}
+  \capa{3}{\node[etiqueta,below right=1pt and 0pt] at (E) {$E$};}
+  \capa{3}{\draw[guia] (0,{lp(4)}) node[left,text=black] {$C_0$} -| (4,0) node[below,text=black] {$Y_0$};}
+  % 4: corto plazo y corte transversal: más plana, ordenada positiva
+  \capa{4}{\draw[curva2] (0.4,{cp(0.4)}) -- (6.0,{cp(6.0)});}
+  \capa{4}{\node[etiqueta,font=\scriptsize,align=left,text=tceeazul,anchor=south west] at (0.15,3.4) {corto plazo y corte\\transversal: pendiente $\hat b<k$};}
+  % 5: sube la renta de Y_0 a Y_1: se trata como transitoria, de E a F^T
+  \capa{5}{\draw[guia] (5.3,0) node[below,text=black] {$Y_1$} -- (5.3,{lp(5.3)+0.3});}
+  \capa{5}{\node[punto] (FT) at (5.3,{cp(5.3)}) {};}
+  \capa{5}{\node[etiqueta,below right] at (FT) {$F^T$};}
+  \capa{5}{\draw[flecha] ($(E)+(0.3,-0.52)$) -- ($(FT)+(-0.16,-0.36)$);}
+  % 6: si persiste, de F^T a F^P sobre C^P; si desaparece, vuelta a E
+  \capa{6}{\node[punto] (FP) at (5.3,{lp(5.3)}) {};}
+  \capa{6}{\node[etiqueta,left=2pt] at (FP) {$F^P$};}
+  \capa{6}{\draw[flecha] ($(FT)+(0.12,0.1)$) -- ($(FP)+(0.12,-0.1)$);}
+  \capa{6}{\draw[->,thick,dashed,tceegris] ($(FT)+(-0.12,0.22)$) -- ($(E)+(0.14,0.26)$);}
+\end{tikzpicture}
+\end{document}

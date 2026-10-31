@@ -1,0 +1,58 @@
+% La hipótesis del ciclo vital: consumo constante, ahorro en la edad activa y
+% desahorro en la jubilación. Elaboración propia a partir de Modigliani y
+% Brumberg (1954). Corrige la imagen 3 del original, que dibujaba el consumo
+% creciente: con r = rho el consumo es plano.
+%   edad en el eje horizontal: t = 1 en x = 0,3; jubilación R en x = 5,2;
+%     muerte T en x = 7
+%   renta laboral en joroba, s = (x - 0,3)/4,9 en [0, 1]:
+%     Y^L = 0,7 + 4,4 s - 2,64 s^2 (máximo 2,53 en s = 0,83; 2,46 en R), 0 tras R
+%   consumo constante: C = (renta de toda la vida)/(T - 1) = 9,898/6,7 = 1,477
+%   corte Y^L = C en s = 0,2008 (x = 1,284)
+%   activos b(x) = 4,9 (-0,777 s + 2,2 s^2 - 0,88 s^3) hasta R: mínimo -0,365
+%     en x = 1,284, máximo 2,661 en R; después b = 1,477 (7 - x), 0 en T
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.85,
+    declare function={sx(\x)=(\x-0.3)/4.9; yl(\x)=0.7+4.4*sx(\x)-2.64*sx(\x)^2;
+      bb(\x)=4.9*(-0.777*sx(\x)+2.2*sx(\x)^2-0.88*sx(\x)^3);},
+    deuda/.style={fill=tceerojo,fill opacity=0.16,draw=none},
+    ahorro/.style={fill=tceeverde,fill opacity=0.2,draw=none}]
+  % 1: ejes: edad y renta/consumo; edad de jubilación R y final de la vida T
+  \capa{1}{\draw[eje] (0,0) -- (7.8,0) node[right] {edad, $t$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,3.6) node[left] {$Y^L_t,\ C_t$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw (0.3,0.06) -- (0.3,-0.06) node[below] {$1$};}
+  \capa{1}{\draw (5.2,0.06) -- (5.2,-0.06) node[below] {$R$};}
+  \capa{1}{\draw (7,0.06) -- (7,-0.06) node[below] {$T$};}
+  % 2: renta laboral en joroba, que cae a 0 al jubilarse
+  \capa{2}{\draw[curva3] plot[domain=0.3:5.2,samples=60] (\x,{yl(\x)}) -- (5.2,0) -- (7,0);}
+  \capa{2}{\node[etiqueta,text=tceeverde,above] at (3.6,{yl(3.6)}) {$Y^L_t$};}
+  % 3: consumo constante
+  \capa{3}{\draw[curva1] (0.3,1.477) -- (7,1.477) node[etiqueta,right] {$C$};}
+  % 4: endeudamiento al principio, ahorro en la edad activa y desahorro en la
+  %    jubilación (debajo de las curvas)
+  \capa{4}{\begin{pgfonlayer}{background}
+    \fill[deuda] (0.3,1.477) -- plot[domain=0.3:1.284,samples=20] (\x,{yl(\x)}) -- cycle;
+    \fill[ahorro] plot[domain=1.284:5.2,samples=50] (\x,{yl(\x)}) -- (5.2,1.477) -- cycle;
+    \fill[deuda] (5.2,0) rectangle (7,1.477);
+  \end{pgfonlayer}}
+  \capa{4}{\draw[guia] (0.75,0.74) -- (0.75,1.05);}
+  \capa{4}{\node[etiqueta,font=\scriptsize,text=tceerojo,below] at (0.75,0.62) {endeudamiento};}
+  \capa{4}{\node[etiqueta,font=\scriptsize,text=tceeverde] at (3.2,1.95) {ahorro};}
+  \capa{4}{\node[etiqueta,font=\scriptsize,text=tceerojo] at (6.1,0.75) {desahorro};}
+  % 5: panel inferior: activos netos b_t, negativos al principio, máximos en
+  %    R y nulos en T
+  \begin{scope}[yshift=-3.9cm,yscale=0.7]
+    \capa{5}{\draw[eje] (0,0) -- (7.8,0) node[right] {edad, $t$};}
+    \capa{5}{\draw[eje] (0,-0.9) -- (0,3.4) node[left] {$b_t$};}
+    \capa{5}{\node[below left] at (0,0) {$0$};}
+    \capa{5}{\draw (5.2,0.06) -- (5.2,-0.06) node[below] {$R$};}
+    \capa{5}{\draw (7,0.06) -- (7,-0.06) node[below] {$T$};}
+    \capa{5}{\draw[curva2] plot[domain=0.3:5.2,samples=60] (\x,{bb(\x)}) -- (7,0);}
+    \capa{5}{\node[etiqueta,text=tceeazul,above left] at (3.9,{bb(3.9)}) {$b_t$};}
+    \capa{5}{\draw[guia] (5.2,{bb(5.2)}) -- (5.2,{(3.9-0.5)/0.7});}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

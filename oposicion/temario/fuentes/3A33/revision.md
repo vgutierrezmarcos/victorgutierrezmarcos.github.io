@@ -1,0 +1,168 @@
+# Revisión del tema 3.A.33 — Teorías de la demanda de consumo corriente: ciclo vital y renta permanente. La demanda de bienes de consumo duradero. Evidencia empírica e implicaciones de política económica.
+
+Fecha: 31/10/2026. Integración en 3 partes: la 1 escribió el preámbulo, la introducción y el bloque I; la 2, el bloque II; la 3, el bloque III, la conclusión, los anexos A-E, `seo.json`, los 2 gráficos que faltaban en `_trabajo/graficos-pedidos.json` y este informe.
+
+Fuentes de la integración: `_trabajo/original.md` (Word de Víctor del antiguo 3.A.32, basado en el tema de Juan Luis Cordero Tarifa y sin adaptar al título nuevo), `pendientes.md` (P1-P58), `propuestas-contenido.md` (C1-C44, D1-D15), `propuestas-datos.md` (V1-V31) con `bib-datos.bib`, y `propuestas-coherencia.md` (K1-K44, DC1-DC12, estructura final). Criterio ante discrepancias: la estructura y la notación las decide coherencia; la teoría, contenido; las cifras, datos. Víctor está fuera hasta el 9/11: en cada **[decidir]** se ha aplicado la opción recomendada (abajo, «Dudas abiertas», A33-01 a A33-22).
+
+## Resumen
+
+- Nueva fuente `3A33.tex` (**52 páginas: 38 de tema, 8 de anexos y 6 de bibliografía**) con la estructura que Víctor dejó escrita en las notas al opositor para el título nuevo: I. El consumo de bienes no duraderos con certidumbre (Keynes, Kuznets y Duesenberry como antecedente; Fisher, renta permanente y ciclo vital), II. El consumo de bienes no duraderos con incertidumbre (Hall, contrastación empírica y salidas, con el plan de pizarra de Víctor) y III. **La demanda de bienes de consumo duradero, entera y nueva** (coste de uso, Mankiw, (S,s), irreversibilidad, evidencia de España e implicaciones de todo el tema). Minutos: 2'30" + 8'30" + 11' + 7' + 1' = 30'.
+- Enganche: «En tiempo de vacas gordas, guarda para las flacas» (José y el faraón, Génesis 41), con la tasa de ahorro de los hogares (25,6 % en 2020-T2, 11 % en 2026-T2) y el rebote del 69 % de los duraderos; la idea final vuelve al refrán: no todos los hogares tienen granero.
+- Corregidos los errores del original (los más graves: la ecuación de Hall al revés y con el horizonte mezclado, la prudencia como «condición suficiente», la paradoja de Deaton con cambios «no inesperados», el consumo «creciente» del ciclo vital, la renta permanente estimada con la renta permanente, la nota 14 que confundía renta permanente y equivalencia ricardiana, las condiciones de primer orden de los duraderos con los índices mal, la cita de Sargent de 1979, la de Taylor sobre la curva de Phillips). Resueltas todas las marcas amarillas; fuera los comentarios, las notas de clase, el texto oculto y los nombres de preparadores.
+- Lo que no se canta pasa a 5 anexos (nada se borra): A teoría neoclásica y fondos prestables, B optimización con T periodos y Slutsky con dotación, C derivaciones de Hall y del C-CAPM, D problema completo de los duraderos y Mankiw (1982), E enlace al simulador de test.
+- `3A33.bib` con 109 entradas; 12 gráficos pedidos (2 en esta parte: `duraderos-ss` y `duraderos-datos`); `seo.json` nuevo.
+
+## Errores corregidos
+
+| Dónde | Decía | Dice ahora |
+|---|---|---|
+| Kuznets (P43, V4) | Series cortas «que analizan la evolución del consumo de un hogar» | Series **agregadas** de pocos años; Kuznets (1942, 1946) |
+| Década de Friedman y Modigliani | «1950s» y Modigliani y Ando (1960) | Años 50; Modigliani y Brumberg (1954) y Ando y Modigliani (1963); se retira `ModiglianiAndo1960` (no comprobada) |
+| Friedman (P44, K7) | «estima su renta permanente observando su renta permanente en el pasado» (circular) | Con la renta **observada** pasada, expectativas adaptativas con γ (`eq:expectativas-adaptativas`) |
+| Friedman, k | k = f(r, W_L/W), con signo dudoso | k de palabra: crece con el peso de la riqueza no humana (Friedman, 1957, pp. 16-17) |
+| Nota 12 (V23) | «habría de persistir 3 años» | Horizonte de unos 3 años, estimado «con cautela» (p. 226), poco sensible a su longitud |
+| Nota 14 (C11, K7) | La política fiscal no afecta porque «el individuo conoce la restricción del Gobierno» | Renta permanente: lo transitorio apenas mueve el consumo; la equivalencia ricardiana, en nota aparte con sus supuestos (`\vertema{3.A.39}`) |
+| Ciclo vital (P41, K7) | «El consumo es creciente a lo largo de la vida» y gráfico con el consumo inclinado | Plano con β(1+r) = 1; creciente solo si r > ρ o por precaución; gráfico rehecho |
+| Ciclo vital, valoración (P42) | «Toda la renta actual es permanente» | Críticas estándar: liquidez, desahorro escaso de los mayores (herencias, Kotlikoff y Summers, 1981), información perfecta |
+| Duesenberry (P54) | «Supuestos» vacío | C_t/Y_t = a_0 − a_1·Y_t/Y^máx_t; gráfico con E, E′, E″ y C^CP′ |
+| Keynes (P23, V22) | Advertencia sin fuente | Comprobada en la *Teoría general*, **cap. 10, apdo. III** (V22 decía § IV; comprobado en el texto de marxists.org el 31/10/2026: el pasaje está en la sección III) |
+| Crítica dudosa y motivaciones de los Nobel (V5-V10) | Friedman: «estabilización política»; Deaton: «sistemas de demanda» | Textos de nobelprize.org traducidos |
+| Demócrito (V27) | «una mercancía en mano es superior…» entre comillas; siglo IV a. C. | Versión fiel del fragmento DK 68 B 295 (traducción propia a partir de Freeman); siglos V-IV |
+| Euler (V28) | «matemático de la corte de Catalina la Grande» | Miembro de la Academia de San Petersburgo (1727-1741 y 1766-1783); braquistócrona de Johann Bernoulli (1696) |
+| Hansen (V26) | «discípulo de Keynes»; cita entre comillas de la Galton Lecture | Profesor en Harvard convertido al keynesianismo; la idea de Keynes en estilo indirecto (no es literal) |
+| Hall (P45, K15) | C_t = C_{t+1} + ε′ con un signo cambiado; objetivo infinito y restricción con T | `eq:problema-hall` con no-Ponzi; `eq:hall`: C_{t+1} = C_t + ε_{t+1} |
+| Prudencia (P38, K16) | u‴ > 0 «condición suficiente»; aversión «condición necesaria» | u‴ > 0 **necesaria y suficiente** para que cualquier riesgo de media cero aumente el ahorro, sea cual sea el signo de u″ (como el 3.A.10) |
+| Paradoja de Deaton (P48, V15) | Cambios «**no** inesperados» | Cambios **inesperados**; la renta permanente varía casi el doble que la corriente |
+| Shea (V14) | «colectivos de hogares»; 0,89 «poco significativo» | Hogares del PSID con convenio plurianual, solo alimentación; correlación significativa y asimetría; el 0,89 no se da (no comprobado) |
+| Campbell y Mankiw (V11) | «Mankiw y Campbell»; devoluciones del IRPF | Orden correcto; λ ≈ 0,5 (0,35-0,7); las devoluciones son de Souleles (1999) |
+| ESI (P47) | σ | 1/θ, como el canon |
+| Descuento hiperbólico (V30) | «Thaler propone un factor de descuento hiperbólico» | Strotz (1955), inconsistencia; Thaler (1981), evidencia; Laibson (1997), modelo β-δ en nota |
+| Liquidez y precaución | «r > ρ ⇒ oferente de ahorro»; Zeldes sin año | Que el consumo crezca no dice si el hogar presta; Zeldes (1989) son 2 artículos (*JPE*, liquidez; *QJE*, precaución) |
+| Ejemplo de la lotería y frase «la liquidez es más volátil que el PIB» | En el original | Quitados (sin fuente) |
+| Neoclásicos (C37) | *Crowding-out* «tanto de la inversión como del ahorro del consumo» | El tipo sube: el ahorro aumenta (el consumo baja) y la inversión cae; cambia la composición de la demanda, no su nivel |
+| Nota 2 (C30, V25) | Sargent (1979), sin página; «Serletis, pág. 11»; frase final atribuida a Sargent | Sargent (1987, 2.ª ed., p. 47); Serletis sin página; la frase «la distinción no es tan clara» (de Giraldo Palomino, no de Sargent) se quita |
+| Nota 8 (anexo B) | Con activos redundantes «no se puede obtener la restricción intertemporal» | La restricción se sigue cumpliendo; lo indeterminado es la cartera. Con incertidumbre y mercados incompletos no hay una sola restricción intertemporal |
+| Nota 9 (anexo B) | El agente querría una «tasa de ahorro negativa en T» | Lo que se descarta es morir endeudado (b_{T+1} < 0); en el óptimo, b_{T+1} = 0 |
+| Notas 9 y 25 (K9) | Duplicadas con letras distintas (s_T, a_T) | Una sola, en el anexo B, con b_t |
+| Anexo de duraderos (P49, C39) | ∂u(c_t,d_t)/∂c_{t+1}; r_t y r_{t+1} mezclados; s_t; δ_d | Lagrangiana con λ_t; u_C(C_t,d_t) = β(1+r)u_C(C_{t+1},d_{t+1}); p^d_t u_C = u_d + β(1−δ)p^d_{t+1}u_C(t+1); coste de uso c^d_t (anexo D) |
+| Conclusión (P53) | «la literatura que la literatura pivota»; «Ciertos factores que implica que impiden…»; Relevancia y Extensiones vacías | Conclusión completa con sus 5 bloques |
+| Conclusión (P8) | Cita de Taylor (1996) sobre inflación y paro | Quitada: es de otro tema (3.A.37/3.A.38) |
+| Bibliografía (`Lucas1978Asset`, `LucasRapping1969Real`) | `Lucas, Robert E., Jr.` (biber lo leía mal) | `Lucas, Jr., Robert E.`; además, `\allowbreak` en las páginas de `Lucas1978Asset` para quitar el aviso de línea ancha (10,8 pt) de la bibliografía (pandoc lo ignora: comprobado) |
+
+## Marcas resueltas
+
+| Marca | Texto original | Qué se hizo |
+|---|---|---|
+| P1-P3 (amarillo, oculto) | Imagen 1 (GIF de la web HET), «Igual es mejor ver… Sahuquillo», fuente de Fonseca | Gráfico `fondos-prestables` en TikZ en el anexo A con la explicación paso a paso (E_0, E_1, r^n, r^n_1, S_0, S_1); fuente «elaboración propia» (Fonseca no se cita: es secundaria; nota del graficador). La nota oculta no se publica |
+| P4 (amarillo) | «Modelo de ahorro precautorio» vacío | II.3, prudencia en 2 periodos con Jensen, `fig:precautorio` y `tab:prudencia` (la del 3.A.10) |
+| P5 (amarillo) | Desacuerdo de Víctor con la no separabilidad | Resuelto en teoría: con hábitos, X_t = C_t − hC_{t−1} es la martingala y ΔC_{t+1} = hΔC_t + ε_{t+1}; nota al pie (DC9) |
+| P6 (amarillo) | «Endogeneización de la renta» | Viñeta de extensiones en la liquidez, con `\vertema{3.A.25}` (D11) |
+| P7 (amarillo) | «C-CAPM [Buscar modelo]» | II.3 con `eq:ccapm`, prima y Mehra-Prescott; derivación en el anexo C (DC3) |
+| P8 (amarillo) | Cita de Taylor | Quitada; opinión propia |
+| P9 | Salto de línea vacío | Desaparece con la estructura escrita |
+| P10, P13 | 13 notas al opositor del preámbulo; «Faltaría por incorporar» | Desaparecen; su mandato (duraderos, más evidencia, estáticos de pasada, C-CAPM) está cumplido |
+| P11 | ¿Los duraderos como salida a Hall? | Respondido en III.1 c)-d): Mankiw (1982) muestra que no lo salvan (lo rechaza otra vez); sirve de puente al final de II |
+| P12, P14, P16, P18, P58 | Comentarios internos (Cordero, clases, YouTube, coordinar) | No se publican; la coordinación con 3.A.29 y 3.A.10 la hace coherencia (K17, K16) |
+| P15 | «Todo este bloque ha de ser mencionado rápido» | I.1 de \tiempo 1'30"; neoclásicos al anexo A |
+| P17 | «Cambié el orden… comodín… Slutsky» | Desdoble de Fisher (DC2): I.2 con β(1+r)=1; r ≠ ρ en II.3; Slutsky con dotación en el anexo B |
+| P19 | Notas sobre el manual de Fernández-Villaverde | Quitadas; se cita el artículo publicado en `tab:prudencia` (D10) |
+| P20 | Plan de pizarra en 5 notas | `notaopositor` al principio de II.3 (K10) y sección «Instrucciones para el vídeo» |
+| P21 | Copiar el descuento hiperbólico del «3.A.12» | Laibson en nota con el aviso de letras (DC7); `\vertema{3.A.1}` |
+| P22 | «Modelo sacado tal cual» de ICEX-CECO | Redactado de nuevo (III.1 y anexo D) |
+| P23 | Advertencia de Keynes | Comprobada; caja `anotaciones` en I.1 |
+| P24-P29 | Imágenes 1-4 y de las notas 16 y 26 | TikZ: `fondos-prestables`, `consumo-renta`, `kuznets-duesenberry-friedman` (sube al cuerpo, DC11), `ciclo-vital`, `tab:prudencia` en LaTeX, `braquistocrona` como `\graficonota` |
+| P30, P30a-e | Duraderos ausentes y gráficos que faltan | Bloque III; `fisher`, `fisher-tipo-interes`, `fisher-liquidez`, `precautorio`, `duraderos-ss`, `tasa-ahorro-hogares`, `duraderos-datos` |
+| P27, P53 | Estructura y conclusión vacías | Introducción con sus 5 bloques y esquema; conclusión completa |
+| P50-P52 | Notas con citas y Núñez Carrasco | Ver «Errores corregidos» y «Datos actualizados» |
+| P56, P57 | Bibliografía «Tema Juan Luis Cordero Tarifa»; enlace a quia.com | 109 entradas; anexo E con el enlace genérico al simulador (C44) |
+
+## Datos actualizados
+
+| Dato | Valor anterior | Valor nuevo | Fuente | URL | Consulta | Segunda comprobación |
+|---|---|---|---|---|---|---|
+| Consumo de los hogares / PIB (V1) | «en torno al 60 %» | España 54,1 % (2025); zona del euro 51,5 % | INE, CNA avance 2025; Eurostat `nama_10_gdp` | https://www.ine.es/dyngs/Prensa/CNA2025.htm | 31/10/2026 | Suma de la CNTR (tabla 67823) y Eurostat: mismos valores |
+| Tasa de ahorro de los hogares (V2) | — | 25,6 % (2020-T2), 11,0 % (2026-T2), media 2000-2019 8,6 % | INE, CTNFSI (CTNFSI11270, CVEC) | https://www.ine.es/jaxiT3/Tabla.htm?t=62275 | 31/10/2026 | Nota de prensa CTNFSI 2T26 y Eurostat `nasq_10_ki`: cuadran |
+| Duraderos (V3) | — (Tebar: 10 % y 20 %, sin fuente; no se usa) | 6,9 % del consumo (2025); desviación típica de la tasa interanual 10,6 frente a 2,0 (no duraderos), 4,5 (consumo) y 3,9 (PIB), 1996-2026; −17,9 % (2009-T1), −12,6 % (2012-T4), −43,4 % (2020-T2), +68,6 % (2021-T2) | INE, CNTR, tablas 67823 y 67824 | https://www.ine.es/jaxiT3/Tabla.htm?t=67824 | 31/10/2026 | Eurostat `namq_10_fcs`: cuadran; recalculado desde `datos/consumo-duraderos.csv` en la parte 3 (10,64; 2,04; 4,47; 3,87) |
+| Campbell y Mankiw (V11) | sin cifra | λ ≈ 0,5 (0,35-0,7) | NBER Macro Annual 1989 | nber.org (c10965) | 31/10/2026 | — |
+| Cheques fiscales (V12) | — | 20-40 % (2001, no duraderos, trimestre); 50-90 % (2008, con duraderos) | Johnson, Parker y Souleles (2006); Parker *et al.* (2013) | DOI en el .bib | 31/10/2026 | Resúmenes AEA |
+| Kaplan, Violante y Weidner (V13) | — | ≈ 1/3 de los hogares de EE. UU. *hand-to-mouth*, 2/3 de ellos «ricos»; ≈ 20 % en España, Francia e Italia | Kaplan, Violante y Weidner (2014) | DOI 10.1353/eca.2014.0002 | 31/10/2026 | **No comprobado** en el artículo (notas de prensa); ver A33-15 |
+| Núñez Carrasco (V18-V20) | 2010 «misma proporción»; «2007» | 2010: sentido débil; 2006 (tesis) y 2008 (artículo) jóvenes; 2013 incertidumbre | Revistas citadas | revistaestudiosregionales.com; dialnet | 31/10/2026 | La frase «muy dependiente de la renta del período» se quita: no está en lo leído |
+| PMC declarada (V21) | — | 41,3 % → 40,1 % (EFF 2017-2022); +4,7 pp en hogares con pocos activos; ≈ 2 pp de la tasa de ahorro | Basso y Gómez-García (2025) | https://doi.org/10.53479/40005 | 31/10/2026 | — |
+| *Cash for Clunkers* (V17) | — | 370.000 coches más en julio-agosto de 2009, compensados en 10 meses | Mian y Sufi (2012) | DOI 10.1093/qje/qjs024 | 31/10/2026 | Resumen |
+| PIVE | — | Resolución del IDAE de 24/9/2012 (BOE 29/9/2012), turismos de más de 12 años | BOE-A-2012-12216 | https://boe.gob.es/boe/dias/2012/09/29/pdfs/BOE-A-2012-12216.pdf | 31/10/2026 | Nota de prensa del Ministerio (en propuestas) |
+
+## Contenido añadido
+
+- **Introducción** completa (C2, K4): 5 bloques, esquema del cante y reparto de minutos (K35).
+- **I** (C3-C11): Keynes con la advertencia de la PMgC y la nota de Hansen entera y corregida; Kuznets con sus 3 hechos; Duesenberry con `eq:duesenberry` y los efectos demostración y trinquete; Fisher en 2 periodos con `\optim`, la Euler como `\funcionclave` y el gráfico `fisher` (A y C); separación de Fisher en nota (K17); renta permanente con γ, `eq:sesgo-friedman` y el gráfico conjunto del enigma de Kuznets (DC11); ciclo vital con la función individual y la agregada (α_L, α_b), ahorro y crecimiento, demografía, evidencia (Kotlikoff y Summers; Carroll y Summers; Gourinchas y Parker).
+- **II** (C12-C25): Hall con `eq:euler-estocastica` (`\funcionclave`) en 3 pasos; II.2 nueva (Flavin, Campbell y Mankiw con `eq:campbell-mankiw`, paradoja de Deaton, cheques fiscales, Alaska, *hand-to-mouth*, España con Núñez Carrasco, Basso y Gómez-García, Bover, la deducción de 400 euros de 2008, la tasa de ahorro con gráfico); II.3 con el plan de pizarra de Víctor: prudencia, hábitos, r ≠ ρ con el giro de la recta de Fisher, C-CAPM, liquidez con la recta quebrada, heterogeneidad (HANK) y economía conductual.
+- **III** (C26-C28, nuevo entero): III.1 particularidades, problema con `eq:problema-duraderos`, coste de uso `eq:coste-uso` (`\funcionclave`, paralelo a c_K del 3.A.34), implicaciones (amplificación 1/δ), Mankiw (1982) como extensión con `eq:mankiw` y su rechazo como evidencia; III.2 regla (S,s) con estructura de modelo (Grossman y Laroque; Bertola y Caballero; Caballero, 1993; Berger y Vavra), irreversibilidad y valor de opción (Bernanke, 1983; Dixit y Pindyck), Eberly (1994); III.3 evidencia de España con el gráfico `duraderos-datos`, Fernández-Villaverde y Krueger, implicaciones (monetaria, *Cash for Clunkers*, planes franceses, PIVE, estabilización, vivienda) y la tabla `tab:implicaciones` de todo el tema (C24, DC4).
+- **Conclusión** (C29, K6): recapitulación de los 3 bloques, relevancia, extensiones con 8 remisiones, opinión e idea final con el refrán.
+- **Anexos**: A (C37) teoría neoclásica con identidades, fondos prestables y nota 2 corregida; B (K34, notas 8 y 9) optimización con T periodos por sustitución y por Lagrange, condiciones terminales, horizonte infinito y la ecuación de Slutsky con dotación (`eq:slutsky-dotacion`, nota de Víctor de P17); C (C38) solución cerrada de Hall, deriva con CRRA lognormal, prima del C-CAPM y enigma de la prima de riesgo; D (C39) lagrangiana de los duraderos y derivación de Mankiw con la autocorrelación; E (C44) enlace al simulador.
+
+### Estado de cada propuesta
+
+- **Contenido (C)**: C1 aplicada con las subsecciones de segundo nivel del original (I.1 «Modelos estáticos», I.2 «Modelos dinámicos y microfundamentados»), no con las 4 de C1, y con los minutos de K35 (8'30"/11'/7'), no con los de C1 (9'/11'/6'30"); C2-C23 aplicadas (parte 1 y 2); C24 aplicada con la tabla en III.3 (DC4) y no en II.3, con otras columnas (depende de, rebaja transitoria, medida anunciada, tipo de interés) y una fila de duraderos; C25 aplicada; C26 aplicada con la notación de K13 (d_t, I^d_t, c^d_t en vez de K^d_t, X_t) y la nota del *leasing* integrada en el texto; C27 repartida: Mankiw en III.1 c)-d) (como pide la estructura final) y (S,s) e irreversibilidad en III.2 con estructura de modelo a)-e); `Bernanke1985Adjustment` sí, Caballero (1993) en implicaciones y evidencia; C28 aplicada con los datos de V3 y estas diferencias: se quita «financiada con el ahorro forzoso» (choca con Alves y Martínez-Carrascal, 2023, que ve el ahorro quieto en depósitos), las ediciones del PIVE sin año final («hasta 2016» no comprobado) y sin `\vertema{4.A.11}` (no comprobado que sea el tema de vivienda); C29 aplicada con la idea final reescrita y las extensiones de K6; C30 aplicada (Sargent p. 47; el ejemplo artificial de Sargent se conserva del original); C31-C36 aplicadas (partes 1 y 2); C37 aplicada sin citar a Fonseca (nota del graficador); C38-C39 aplicadas (en un anexo C común con el C-CAPM y un anexo D, con la etiqueta `anexo:duraderos`); C40-C42 aplicadas; C43 aplicada; C44 aplicada sin la cifra «19 preguntas» (cambia con el banco).
+- **Datos (V)**: todas aplicadas salvo V14 (el 0,89 de Shea no se da), V19 (la frase «muy dependiente de la renta del período» se quita) y V22 en la sección (apdo. III, no IV); V24 de palabra; V31, quitada la cita.
+- **Coherencia (K)**: todas aplicadas con la recomendada; K14 con los 3 avisos de notación; K34 (anexo B como pieza común) escrito, pendiente de que `tema-canon` lo registre.
+
+## Coherencia
+
+- **Canon aplicado**: C_t mayúscula en todo el tema; C_1, C_2, Y_1, Y_2, r, β ≡ 1/(1+ρ); b_t activos netos (una sola letra, también en los anexos); 𝔼_t; u minúscula; U_0 la intertemporal; b de la cuadrática (DC5, con nota); θ y ESI = 1/θ; C̄ y c (PMgC); C^LP, C^CP; γ de las expectativas adaptativas (DC6); λ de Campbell y Mankiw avisada; m_{t+1}, r_f, r_i; h de los hábitos; en III, d_t, p^d_t, I^d_t, δ y c^d_t (avisada frente a c); β-δ de Laibson solo en nota con aviso (DC7); 𝓛 lagrangiana solo en el anexo D (el tema no usa el índice de Lerner).
+- **Remisiones** (K11-K12): 3.A.1, 3.A.4, 3.A.5, 3.A.6, 3.A.8, 3.A.9, 3.A.10, 3.A.13, 3.A.25, 3.A.29, 3.A.30, 3.A.34, 3.A.35, 3.A.37, 3.A.39, 3.A.40, 3.A.42, 3.B.23 y 4.B.24, todas con `\vertema`. No se añadió 4.B.10 (solo «ampliar») ni 4.A.11.
+- **Contradicciones con otros temas** (no se tocan; para cuando se revisen; detalle en `propuestas-coherencia.md` § 8):
+  1. **3.A.29**: Fisher con c_t, r_t y σ como ESI; «teorema de la separación de Acemoğlu y Autor»; su anexo de optimización debe coincidir con el anexo B de este tema (K34).
+  2. **3.A.42**: ESI con σ (→ 1/θ).
+  3. **3.B.23**: «descuento parabólico» por exponencial; remite el hiperbólico al 3.A.29 (es 3.A.1); no tiene C-CAPM: debe recibir el resumen.
+  4. **3.A.38 y 3.A.39**: la equivalencia ricardiana casi con el mismo texto; Campbell-Mankiw sin λ ni remisión aquí.
+  5. **3.A.35**: demanda de dinero de Friedman con W_L/W (W es salario nominal en el canon) y sin `\vertema{3.A.33}`.
+  6. **3.A.4**: repite la advertencia de la PMgC; debe citarla igual (cap. 10, apdo. III).
+  7. **3.A.34**: el coste de uso del capital c_K y la (S,s) de la inversión deben reconocerse en los de los duraderos (`eq:coste-uso`).
+- **Cambios al canon** (para `tema-canon`): fichas nuevas `keynes-renta-absoluta` (DC8), `ccapm` (DC3), `bienes-duraderos` (K27, con `duraderos-ss` como gráfico de referencia), `ciclo-vital`, `ahorro-precaucion`; cambios en `hall` (b en la cuadrática) y `renta-permanente` (γ); `notacion.md`: d_t, p^d_t, I^d_t, c^d_t, h, m_{t+1}, α_L, α_b, a_0, a_1, Y^máx; `canon/modelos/optimizacion-dinamica.md` con el anexo B (K34); `mapa.yaml` según K23.
+
+## Dudas abiertas
+
+Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
+
+| Id | Duda | Contexto | Opciones | Aplicada |
+|---|---|---|---|---|
+| A33-01 | Estructura de primer nivel (DC1) | CRITERIOS § 2 manda mantener los bloques del original (estáticos / dinámicos / Hall y reacciones); Víctor dejó escrita en las notas otra para el título nuevo | (a) original con los duraderos como 4.º bloque o anexo; (b) la de las notas de Víctor (no duraderos con certidumbre, con incertidumbre, duraderos), conservando los títulos de segundo nivel del original; (c) ICEX-CECO en 4 bloques | **(b)**. Si prefiere (a), el contenido está por piezas |
+| A33-02 | Fisher desdoblado (DC2) | Víctor cambió el orden para no dar «demasiados resultados demasiado pronto» | (a) I.2 con β(1+r)=1 y r ≠ ρ en II.3, sobre el mismo gráfico; (b) Fisher completo en I.2 | **(a)**; Slutsky con dotación en el anexo B |
+| A33-03 | C-CAPM (DC3) | Víctor lo pidió para este tema (Word del 3.A.29) | (a) 3.A.33 tema de referencia, desarrollo en II.3 y anexo C; (b) 3.B.23 de referencia y aquí mención | **(a)** |
+| A33-04 | Dónde va la evidencia (DC4) | Título: «Evidencia empírica e implicaciones» detrás de los duraderos | (a) en cada modelo, II.2 propia y III.3 con la tabla de todo el tema; (b) solo en cada modelo; (c) bloque propio | **(a)** |
+| A33-05 | Letra de la cuadrática (DC5) | La ficha `hall` usa a; el canon, b | (a) b con nota frente a b_t; (b) a | **(a)** |
+| A33-06 | Letra de las expectativas adaptativas (DC6) | λ choca con Campbell y Mankiw | (a) γ (Nerlove, canon); (b) λ | **(a)** |
+| A33-07 | Laibson (DC7) | β y δ chocan con Fisher y los duraderos | (a) de palabra y fórmula en nota con aviso; (b) en el cuerpo | **(a)** |
+| A33-08 | Ficha `keynes-renta-absoluta` (DC8) | 3.A.4 la cuenta como pieza de Keynes | (a) referencia 3.A.33; (b) 3.A.4 | **(a)** |
+| A33-09 | Hábitos (DC9) | Víctor dudaba de atribuirles el fallo del paseo aleatorio | (a) salida breve en II.3 con la teoría corregida (X_t martingala, ΔC autocorrelado); (b) subapartado | **(a)** |
+| A33-10 | Fondos prestables (DC10) | Bloque estático en 1'30" | (a) anexo A; (b) cuerpo | **(a)** |
+| A33-11 | Gráfico de Friedman (DC11) | Estaba en la nota 16 | (a) al cuerpo, fundido con Kuznets y Duesenberry en un plano (Y, C); (b) en la nota | **(a)** (`kuznets-duesenberry-friedman`) |
+| A33-12 | Gráficos de datos (DC12) | Tasa de ahorro y duraderos | (a) duraderos en III.3 y ahorro en II.2, los 2 en el cuerpo sin dibujarse en el cante; (b) solo uno | **(a)** |
+| A33-13 | Refranes | «Pan para hoy» (3.B.31) y «más vale pájaro en mano» (3.A.10) ya usados; coherencia proponía la cigarra y la hormiga | (a) «En tiempo de vacas gordas, guarda para las flacas» (enganche e idea final), pegatinas «Hombre prevenido vale por dos» (precaución) y «Lo comido por lo servido» (*hand-to-mouth*); (b) la fábula de Esopo en el enganche | **(a)**; «Quien guarda, halla» queda libre |
+| A33-14 | Nota de Hansen (D15) | 4 párrafos sobre el estancamiento secular | (a) entera, corregida; (b) recortada con `\vertema{3.A.40}` | **(a)** |
+| A33-15 | Kaplan, Violante y Weidner: «≈ 20 % en España, Francia e Italia» y «un tercio en EE. UU.» | Cifras de notas de prensa (V13), no vistas en el artículo | (a) mantenerlas con la cita; (b) decir solo que son una fracción importante | **(a)**; comprobar en el artículo (*Brookings Papers*, 2014) |
+| A33-16 | Serletis: obra y página | El original dice «Serletis, pág. 11»; no se ha identificado la obra | (a) `Serletis2007Demand` sin página; (b) quitar la cita | **(a)**; Víctor sabrá qué libro era |
+| A33-17 | Ejemplo artificial de Sargent | El original dice que Sargent da un ejemplo con dicotomía sin neutralidad; no se ha visto el libro | (a) mantener la frase del original; (b) quitarla | **(a)**, comprobar en Sargent (1987), cap. 1-2 |
+| A33-18 | Mankiw (1982): qué encuentra | Comprobado a través de Bernanke (1984/1985: «durables expenditure is AR(1)»), no en el artículo | (a) «se comporta como un AR(1), sin la autocorrelación negativa»; (b) añadir que la depreciación implícita es casi del 100 % trimestral (lectura habitual, no comprobada) | **(a)** |
+| A33-19 | Planes franceses (Adda y Cooper, 2000) y Eberly (1994) | Perfil de adelanto y comportamiento de banda: lo conocido de los artículos; no se han leído enteros | (a) frase cualitativa sin cifras; (b) quitarlos | **(a)** |
+| A33-20 | Anexo E solo con el enlace al simulador | CRITERIOS § 2: un único enlace genérico; el 3.A.28 lo pone en un anexo de test con viñetas | (a) anexo E corto con la caja; (b) añadir viñetas de test (fechas y autores) | **(a)**; las viñetas se pueden añadir con el banco de preguntas |
+| A33-21 | Anexo B como pieza común (K34) | Víctor pidió coordinar el anexo de optimización con 3.A.29, 3.A.34 y 3.A.43 | (a) este anexo B como texto de referencia en el canon; (b) esperar al 3.A.29 | **(a)**, pendiente de `tema-canon` |
+| A33-22 | Tabla `tab:implicaciones` sale en la página siguiente a su presentación | Deja media página en blanco en III.3 c) (prueba con recuadros; con los gráficos reales puede cambiar) | (a) aceptar el hueco (CRITERIOS § 2); (b) mover la tabla al final de III.3 | Resuelta por A33-24 |
+| A33-23 | Extensión: 38 páginas de tema para 30 minutos (control de calidad, 31/10/2026) | Otros temas revisados: 3.A.28, 23; 3.A.26, 27; 3.B.31, 32; 3.A.24 y 3.A.25, 34; 3.A.10, 40; 3.A.20, 43. Este está en la parte alta por el bloque III nuevo, 11 gráficos y 29 notas (la de Hansen ocupa media página), pero los minutos cuadran (30') y lo que no se canta está marcado en las notas al opositor | (a) dejarlo así; (b) pasar a un anexo lo que no se canta del cuerpo (nota 1 de Hansen, II.2 d) «El caso de España», el desarrollo de II.3.6) para bajar a unas 34 | **(a)**: es razonable para un tema con 3 bloques y un bloque III entero nuevo; decidir con el cante |
+| A33-24 | Hueco de A33-22 en el PDF final | Con los gráficos reales queda un cuarto de página en blanco al final de la p. 36 (la tabla 2 pasa a la 37); hay huecos parecidos en las pp. 12, 15, 25 y A-1 por figuras `[H]` que no caben | (a) aceptarlos (CRITERIOS § 2: «si una página queda corta, se acepta el hueco»); (b) reordenar el texto alrededor | **(a)** |
+
+| A33-25 | Utilidad del gráfico `fisher-tipo-interes` | Con u = ln C los efectos sustitución y renta casi no se veían (control de calidad) | (a) CRRA con θ = 1/2 (u = 2√C) solo en ese gráfico: domina la sustitución y las flechas se ven; (b) ln C como `fisher`, con flechas minúsculas | **(a)**; el texto no da cifras ni la forma de la utilidad |
+| A33-26 | Color de la serie de la tasa de ahorro | La descripción pedía el color del consumo privado | (a) `dicahorro`, el de la tasa de ahorro en la paleta y en la 1D01 (un concepto, un color); (b) `dicconspriv` | **(a)** |
+
+Control de calidad (31/10/2026): las 15 correcciones aplicadas (7 de gráficos, 4 de fuente y bibliografía, 4 de maquetación); reconstruido con 0 errores y sin cajas anchas.
+
+## Instrucciones para el vídeo
+
+- **Plan de pizarra de Víctor (P20, K10)**, en 3 zonas fijas: a la izquierda, el plano (Y, C) (Keynes → Kuznets → Duesenberry → Friedman) y, debajo, el ciclo vital; en el centro, el gráfico de Fisher, que se queda hasta el final de II; a la derecha, la ecuación de Euler. En II, la de Fisher pasa a ser la Euler estocástica (se escribe encima, añadiendo 𝔼_t) y en II.3 **se va modificando pieza a pieza con un número sobre cada pieza**: 1) la utilidad (prudencia, u‴ > 0; hábitos, u(C_t − hC_{t−1})); 2) el tipo de interés (r ≠ ρ: giro de la recta de Fisher; r incierto: C-CAPM, `eq:ccapm`); 3) la restricción (liquidez: recta quebrada en A, Euler con ≥); 4) el agente representativo (heterogeneidad); 5) la plena optimización (conducta). Las pegatinas, al lado: «Hombre prevenido vale por dos» junto a la prudencia y «Lo comido por lo servido» junto a los *hand-to-mouth*.
+- **Funciones clave que se conservan** (`conservar:`): la Euler `eq:euler` (bloque I) y la Euler estocástica `eq:euler-estocastica` (bloque II, hasta el final de II.3); en III, el coste de uso `eq:coste-uso`. `eq:hall`, `eq:renta-permanente`, `eq:sesgo-friedman` y `eq:campbell-mankiw`, una línea sin recuadro.
+- **Gráfico conjunto por partes**: el plano (Y, C) se construye en I.1 con `consumo-renta` (C^LP, C^CP, E, E′, E″) y se completa en I.2 con las capas de `kuznets-duesenberry-friedman` (E → F^T → F^P): no se dibuja 2 veces. El de Fisher (`fisher`) se dibuja en I.2 y en II.3 recibe sus 2 capas nuevas (`fisher-tipo-interes`, giro sobre A; `fisher-liquidez`, recta quebrada): al final de II la pizarra queda con el Fisher completo y la Euler numerada.
+- **Bloque III** (7'): se borra todo salvo la Euler; a la derecha, el coste de uso recuadrado (III.1) y, en el centro, `duraderos-ss` por capas (banda → caída por la depreciación → salto y pico de gasto → más ciclos) en III.2. `duraderos-datos` y `tasa-ahorro-hogares` van como **apoyo** en pantalla (no se dibujan); `tab:implicaciones` se dice de palabra con la tabla como apoyo. `precautorio` puede ir a la pizarra en 1 capa (u′ convexa y la cuerda) si sobra tiempo; si no, apoyo.
+- **No se cantan**: los anexos A-E (fondos prestables, T periodos, Slutsky con dotación, derivaciones de Hall y del C-CAPM, lagrangiana de los duraderos y Mankiw), las notas al pie (Hansen, Euler, Demócrito, Nobel) ni la evidencia de España en detalle (una frase).
+- **Introducción y conclusión**, en modo guion, sin pizarra. Enganche: «En tiempo de vacas gordas, guarda para las flacas» (José y el faraón), la tasa de ahorro del 25,6 % en el confinamiento y el rebote del 69 % de los duraderos, y la pregunta «¿de qué depende lo que consumimos hoy?». Idea final: guardar para las vacas flacas es lo que hace el consumidor de la renta permanente, pero no todos tienen granero; lo que gastamos hoy depende de la vida entera y de lo que entra este mes, y ahí está el margen de la política económica.
+- **Reparto del guion** (unas 4.700 palabras): introducción ≈ 400, I ≈ 1.340 (I.1 ≈ 240, Fisher ≈ 400, renta permanente ≈ 400, ciclo vital ≈ 300), II ≈ 1.740 (II.1 ≈ 470, II.2 ≈ 400, II.3 ≈ 870), III ≈ 1.100 (III.1 ≈ 400, III.2 ≈ 310, III.3 ≈ 390), conclusión ≈ 160. Comodines si falta tiempo: el C-CAPM (una frase) y la evidencia de España.
+- No se dice «hilo» ni números de temas en voz alta.

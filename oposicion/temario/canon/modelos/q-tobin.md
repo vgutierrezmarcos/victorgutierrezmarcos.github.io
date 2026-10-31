@@ -25,5 +25,7 @@ Gráfico de referencia: diagrama de fases en (K, q): locus K̇ = 0 horizontal en
 - El coste de ajuste se escribe C(I) en 3.A.34: C es consumo en el resto del bloque; canon **Φ(I_t, K_t)**.
 - 3.A.34 (sin revisar): su 3.4 «costes de ajuste asimétricos (quebrados o fijos)» es la lógica de la banda de inacción del empleo (ficha `costes-ajuste-empleo`, 3.A.26): al revisarlo, remisión recíproca y la misma tabla de tipos de costes; el diagrama de fases puede compartir estilo con `fuentes/3A26/graficos/fases-empleo.tex`.
 - 3.A.29 repite el bloque (hamiltoniano y precio sombra) de forma menos completa; 3.A.29 tiene además un anexo de optimización dinámica que el autor quiere común con 3.A.33, 3.A.34 y 3.A.43.
+- 3.A.29 (sin revisar): **duplica la q** (hamiltoniano, precio sombra y diagrama) de forma menos completa que el 3.A.34: resumirla con `\vertema{3.A.34}` (su propia nota lo pide) y copiar el anexo común (ficha `optimizacion-dinamica`) (agente de coherencia del 3.A.34, en curso).
+- 3.A.37 (sin revisar): el canal de la q usa la **q media** (valor de las acciones / coste de reposición) sin distinguirla de la **marginal**: una frase de que la inversión responde a la marginal y de que coinciden con las condiciones de Hayashi (1982) (agente de coherencia del 3.A.34, en curso).
 
 Autor: Víctor Gutiérrez Marcos

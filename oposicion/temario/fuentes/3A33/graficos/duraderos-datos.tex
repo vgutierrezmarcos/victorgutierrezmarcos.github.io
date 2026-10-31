@@ -1,0 +1,80 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Gasto en consumo final interior de los hogares en bienes duraderos
+% (CNTR7171) y no duraderos (CNTR8283), con el PIB (CNTR6652) de referencia:
+% tasa de variación interanual (%) de los índices de volumen encadenados,
+% corregidos de estacionalidad y calendario, España, 1996-T1 a 2026-T3.
+% INE, CNTR, tabla 67824 (consulta 31/10/2026).
+% Bandas: trimestres con el PIB en tasa interanual negativa (2008-T4 a
+% 2009-T4, 2010-T3 (-0,1 %), 2011-T2 a 2013-T4 y 2020-T1 a 2021-T1).
+% En x, cada trimestre empieza en año + (T-1)/4: la banda cubre hasta el final
+% del último trimestre.
+% Paleta «dictamen»: duraderos = dicconspriv (tono fuerte del consumo
+% privado), no duraderos = dicconspub (claro), PIB = dicreferencia (gris).
+% Capas (CRITERIOS §7): bandas → ejes y 0 → PIB → no duraderos → duraderos →
+% puntos → etiquetas y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/consumo-duraderos.csv}\durad
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=7.5cm,
+      xmin=1995.5, xmax=2027.5, ymin=-50, ymax=75,
+      xtick={1996,2000,2005,...,2025}, ytick={-50,-25,0,25,50,75},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={tasa de variación interanual (\%)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false,
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none,
+        font=\footnotesize, cells={anchor=west}},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: trimestres con el PIB en tasa interanual negativa
+    \capa{1}{
+      \dicsombra[fill=dicreferencia, opacity=0.16]{2008.75}{-50}{2010}{75}
+      \dicsombra[fill=dicreferencia, opacity=0.16]{2010.5}{-50}{2010.75}{75}
+      \dicsombra[fill=dicreferencia, opacity=0.16]{2011.25}{-50}{2014}{75}
+      \dicsombra[fill=dicreferencia, opacity=0.16]{2020}{-50}{2021.25}{75}
+    }
+    % 2: línea del 0
+    \capa{2}{
+      \dicraya{(1995.5,0) (2027.5,0)}
+    }
+    % 3: PIB, gris y fino
+    \capa{3}{
+      \addplot[thin, dicreferencia, mark=none, forget plot] table[x=x, y=pib] {\durad};
+    }
+    % 4: no duraderos (tono claro)
+    \capa{4}{
+      \addplot[diclinea=dicconspub, line width=1.4pt, mark=none, forget plot] table[x=x, y=no_duraderos] {\durad};
+    }
+    % 5: duraderos (tono fuerte)
+    \capa{5}{
+      \addplot[diclinea=dicconspriv, mark=none, forget plot] table[x=x, y=duraderos] {\durad};
+    }
+    % 6: puntos: 2009-T1, 2012-T4, 2020-T2, 2021-T2 y último dato (2026-T3)
+    \capa{6}{
+      \addplot[on layer=dicpuntos, dicpuntos=dicconspriv, forget plot] coordinates
+        {(2009,-17.9) (2012.75,-12.6) (2020.25,-43.4) (2021.25,68.6) (2026.5,1.7)};
+    }
+    % 7: etiquetas y leyenda
+    \capa{7}{
+      \dicrotulo[font=\footnotesize,anchor=north east,inner sep=2pt]{(2009,-17.9)}{$-17{,}9$~\% (2009-T1)}
+      \dicrotulo[font=\footnotesize,anchor=north west,align=left,inner sep=2pt]{(2014.05,-8.5)}{$-12{,}6$~\%\\(2012-T4)}
+      \dicrotulo[font=\footnotesize,anchor=east,inner sep=4pt]{(2020.25,-43.4)}{$-43{,}4$~\% (2020-T2)}
+      \dicrotulo[font=\footnotesize,anchor=east,inner sep=4pt]{(2021.25,68.6)}{$+68{,}6$~\% (2021-T2)}
+      \dicrotulo[font=\footnotesize,anchor=south west,align=left,inner sep=3pt]{(2026.5,1.7)}{1,7~\%\\2026-T3}
+      \addlegendimage{area legend, fill=dicreferencia!16, draw=dicreferencia!16}
+      \addlegendentry{PIB en tasa negativa}
+      \addlegendimage{thin, dicreferencia}
+      \addlegendentry{PIB}
+      \addlegendimage{diclinea=dicconspub, line width=1.4pt}
+      \addlegendentry{no duraderos}
+      \addlegendimage{diclinea=dicconspriv}
+      \addlegendentry{duraderos}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

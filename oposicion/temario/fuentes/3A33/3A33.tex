@@ -1,0 +1,1469 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A33.bib}
+\tcetema[Teorías del consumo: renta permanente, ciclo vital y duraderos]{3.A.33}{Teorías de la demanda de consumo corriente: ciclo vital y renta permanente. La demanda de bienes de consumo duradero. Evidencia empírica e implicaciones de política económica.}
+\tcefecha{31/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «En tiempo de vacas gordas, guarda para las flacas», dice el refranero. La idea viene del sueño del faraón que interpretó José en el Génesis: 7 años de abundancia, 7 de escasez y unos graneros que se llenan en los primeros para poder comer en los segundos.
+  \item En el segundo trimestre de 2020, con los hogares confinados, la tasa de ahorro de las familias españolas llegó al 25,6~\% de su renta disponible, el triple de su media de 2000-2019; en el segundo trimestre de 2026 había vuelto al 11~\% \parencite{INE2026CTNFSI}. Cuando reabrieron las tiendas, el gasto en coches, muebles y electrodomésticos que se había aplazado creció un 69~\% en un año \parencite{INE2026CNTRDemanda}.
+  \item Detrás está la pregunta de esta exposición: ¿de qué depende lo que consumimos hoy? ¿De lo que ganamos hoy, de lo que esperamos ganar a lo largo de la vida, del miedo a lo que pueda pasar o de lo que nos preste el banco?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Cuantitativa}: el gasto en consumo final de los hogares fue el 54,1~\% del PIB de España en 2025 \parencite{INE2026CNA2025} y el 51,5~\% en la zona del euro \parencite{Eurostat2026Nama10gdp}: es, con diferencia, el mayor componente de la demanda.
+  \item \emph{A corto plazo}: su evolución explica buena parte del ciclo, y la eficacia de las políticas fiscal y monetaria depende de cómo responda el consumo a la renta, a la riqueza y al tipo de interés. El consumo de bienes no duraderos es menos volátil que el PIB; el de duraderos, mucho más \vertema{3.A.42}.
+  \item \emph{A largo plazo}: lo que no se consume se ahorra, y el ahorro financia la acumulación de capital y el crecimiento \vertema{3.A.43}, determina el saldo exterior y la sostenibilidad de la deuda externa, y su reparto por edades pesa en los sistemas de pensiones.
+  \item Por eso el consumo es una pieza central de las teorías del ciclo y de la política económica, del crecimiento y de la economía internacional, y ha sido un campo de batalla entre escuelas de pensamiento.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}. Desde un punto de vista conceptual:
+  \begin{itemize}
+  \item El \concepto{consumo} es el gasto de los hogares en bienes y servicios para satisfacer sus necesidades corrientes. En la contabilidad nacional es el \emph{gasto en consumo final de los hogares} \vertema{3.A.30}.
+  \item Se distinguen 2 tipos de bienes:
+    \begin{itemize}
+    \item los \concepto{bienes no duraderos} y los servicios, que se agotan al usarse (alimentos, energía, transporte);
+    \item los \concepto{bienes duraderos}, que se usan repetidamente durante más de un año (automóviles, muebles, electrodomésticos) y prestan un flujo de servicios. La vivienda, el duradero por excelencia, se contabiliza como inversión \vertema{3.A.30}.
+    \end{itemize}
+  \item Decidir cuánto se consume es decidir, a la vez, cuánto se ahorra: la teoría del consumo es una teoría del reparto de la renta en el tiempo.
+  \end{itemize}
+  Desde un punto de vista histórico:
+  \begin{itemize}
+  \item \textcite{Keynes1936} formula la primera función de consumo agregada, una pieza central de la \emph{Teoría general}: el consumo depende de la renta corriente \vertema{3.A.4}. Los datos de \autor{Kuznets} muestran pronto que eso solo se cumple a corto plazo.
+  \item En los años 50, \textcite{ModiglianiBrumberg1954} y \textcite{Friedman1957} microfundamentan el consumo con la elección intertemporal de \textcite{Fisher1930Theory}: el consumo depende de los recursos de toda la vida (\emph{ciclo vital} y \emph{renta permanente}).
+  \item Con las expectativas racionales \vertema{3.A.6}, \textcite{Hall1978} deduce que el consumo sigue un paseo aleatorio. La evidencia no lo confirma del todo, y eso abre la agenda actual: ahorro precautorio, restricciones de liquidez, hogares heterogéneos y economía conductual, con datos de hogares. \autor{Deaton} recibió el Premio Nobel de 2015 por su análisis del consumo \parencite{Nobel2015Deaton}, y los modelos macroeconómicos con agentes heterogéneos han llevado esa agenda a la política monetaria y fiscal \parencite{KaplanMollViolante2018Monetary}.
+  \item Los bienes duraderos se estudian aparte porque su compra se parece más a una inversión que a un consumo \vertema{3.A.34}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Depende el consumo de la renta de hoy o de la de toda la vida? ¿Por qué la proporción de la renta que se consume cae con la renta entre familias y es constante a largo plazo?
+  \item ¿Se puede predecir el consumo de mañana? ¿Por qué responde a la renta corriente más de lo que dice la teoría?
+  \item ¿Por qué el gasto en duraderos es tan volátil?
+  \item ¿Qué política económica mueve el consumo: la transitoria o la permanente, la anunciada o la que sorprende?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue el orden en que la teoría ha ido añadiendo realismo al consumidor.
+  \begin{itemize}
+  \item \concepto{I. El consumo de bienes no duraderos con certidumbre} (\ref{sec:certidumbre}): primero las funciones de consumo estáticas de \autor{Keynes} y \autor{Duesenberry}, como antecedente, y después los modelos intertemporales de \autor{Fisher}, \autor{Friedman} y \autor{Modigliani}.
+  \item \concepto{II. El consumo de bienes no duraderos con incertidumbre} (\ref{sec:incertidumbre}): el paseo aleatorio de \autor{Hall}, su contrastación empírica y las salidas que la literatura ha dado a sus fallos.
+  \item \concepto{III. La demanda de bienes de consumo duradero} (\ref{sec:duraderos}): por qué su compra se parece a una inversión y su gasto amplifica el ciclo; cerramos con la evidencia empírica y las implicaciones de política económica del conjunto.
+  \end{itemize}
+  El orden va de lo más sencillo a lo más realista: primero un consumidor que sabe lo que ganará, después uno que no lo sabe y, por último, bienes que duran. La evidencia y las implicaciones de política se presentan con cada modelo.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.33. Teorías del consumo: renta permanente, ciclo vital y bienes duraderos}\\[2pt]
+Introducción\\
+I. El consumo de bienes no duraderos con certidumbre\\
+\hspace*{1.5em}1. Modelos estáticos: \autor{Keynes} (1936), \autor{Kuznets} y \autor{Duesenberry} (1949)\\
+\hspace*{1.5em}2. Modelos dinámicos: \autor{Fisher} (1930), $u'(C_1)=\beta(1+r)\,u'(C_2)$\\
+\hspace*{3em}renta permanente, $C^P_t=k\,Y^P_t$, y ciclo vital\\
+II. El consumo de bienes no duraderos con incertidumbre\\
+\hspace*{1.5em}1. \autor{Hall} (1978): $C_{t+1}=C_t+\varepsilon_{t+1}$\\
+\hspace*{1.5em}2. Contrastación empírica\\
+\hspace*{1.5em}3. Salidas: utilidad, tipo de interés, liquidez, heterogeneidad, conducta\\
+III. La demanda de bienes de consumo duradero\\
+\hspace*{1.5em}1. Particularidades y coste de uso\\
+\hspace*{1.5em}2. Costes de ajuste, irreversibilidad e incertidumbre\\
+\hspace*{1.5em}3. Evidencia empírica e implicaciones de política económica\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{1,5}; I.2, \tiempo{7}: \autor{Fisher}, \tiempo{2,5}, renta permanente, \tiempo{2,5}, y ciclo vital, \tiempo{2}); II, \tiempo{11} (II.1, \tiempo{3}; II.2, \tiempo{2,5}; II.3, \tiempo{5,5}); III, \tiempo{7} (III.1, \tiempo{2,5}; III.2, \tiempo{2}; III.3, \tiempo{2,5}), y conclusión, \tiempo{1}. Pizarra: a la izquierda, el plano $(Y,C)$ (\autor{Keynes}, \autor{Kuznets}, \autor{Duesenberry} y \autor{Friedman}) y, debajo, el ciclo vital; en el centro, el gráfico de \autor{Fisher}, que se reutiliza en las salidas a \autor{Hall} (\ref{sec:salidas}); a la derecha, la ecuación de \autor{Euler}, que pasa a ser estocástica en el bloque~\ref{sec:incertidumbre} y se va modificando pieza a pieza en \ref{sec:salidas}; en el bloque~\ref{sec:duraderos}, el coste de uso y las bandas $(S,s)$. La teoría neoclásica, la optimización con $T$ periodos, las derivaciones de \autor{Hall} y del C-CAPM y el problema completo de los duraderos están en los anexos, para las preguntas del tribunal.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{El consumo de bienes no duraderos\newline con certidumbre}\label{sec:certidumbre}
+\minutos{8,5}
+
+\begin{notaopositor}
+En el cante: los modelos estáticos, de pasada (\tiempo{1,5}), con el plano $(Y,C)$ y sus 2 rectas, la de largo plazo desde el origen y la de corto plazo más plana; la teoría neoclásica, en una frase. \autor{Fisher} (\tiempo{2,5}), con el problema de 2 periodos, la ecuación de \autor{Euler} recuadrada y el gráfico en $(C_1,C_2)$, que se queda en la pizarra. La renta permanente (\tiempo{2,5}), completando el plano $(Y,C)$ con los puntos $E$, $F^T$ y $F^P$ y la fórmula del sesgo. El ciclo vital (\tiempo{2}), con su gráfico. Las implicaciones de \autor{Keynes} y de \autor{Duesenberry}, las notas históricas y la optimización con $T$ periodos son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: con certidumbre y mercados de capitales perfectos, el consumo depende de la riqueza, es decir, de los recursos de toda la vida, y no de la renta corriente, y se \emph{suaviza} en el tiempo. Así se resuelve el enigma de \autor{Kuznets}, que las funciones de consumo estáticas no podían explicar.
+\item Empezamos por el caso más sencillo: un consumidor que conoce con certeza la renta que obtendrá. En este bloque y en el siguiente, el consumo es el de bienes no duraderos y servicios; los duraderos se estudian en el bloque~\ref{sec:duraderos}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelos estáticos: las teorías de la renta corriente}\label{sec:estaticos}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: las primeras funciones de consumo hacen depender el consumo de la renta del periodo. Encajan con los datos a corto plazo, pero no con los de largo plazo, y ese desajuste empuja a buscar una teoría intertemporal.
+\item \emph{El antecedente neoclásico}: los neoclásicos no tenían una función de consumo agregada. Trataban el consumo como el residuo del ahorro, que dependía del tipo de interés y se igualaba con la inversión en el mercado de fondos prestables: no es una teoría del consumo propiamente dicha (anexo~\ref{anexo:neoclasica}).
+\end{itemize}
+
+\subsubsection{La renta absoluta (\autor{Keynes}, 1936)}\label{sec:keynes}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Frente a los neoclásicos, \textcite{Keynes1936} sostiene que el consumo apenas depende del tipo de interés y sí, sobre todo, de la renta disponible del periodo. Es una pieza de la \emph{Teoría general}: la demanda agregada depende de la renta, y la renta, de la demanda \vertema{3.A.4}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Una función de consumo agregada con un componente autónomo y otro que depende de la renta disponible del periodo, $Y^d_t$:
+  \begin{equation}
+  C_t=\overline{C}+c\,Y^d_t,\qquad 0<c<1,\label{eq:keynes}
+  \end{equation}
+  donde $\overline{C}>0$ es el \concepto{consumo autónomo} (el de subsistencia y el que depende de factores distintos de la renta) y $c$ la \concepto{propensión marginal a consumir}: la parte de cada euro adicional de renta disponible que se destina a consumir.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{La ley psicológica fundamental}: cuando la renta aumenta, el consumo aumenta ($c>0$), pero menos que la renta ($c<1$).
+\item \emph{La propensión media a consumir} es mayor que la marginal y decrece con la renta:
+  \begin{equation*}
+  \frac{C_t}{Y^d_t}=\frac{\overline{C}}{Y^d_t}+c.
+  \end{equation*}
+  Para \autor{Keynes}, el ahorro es casi un lujo: ahorran sobre todo los hogares de más renta.
+\end{itemize}
+
+\begin{anotaciones}
+\autor{Keynes} no supuso que la propensión marginal a consumir fuera constante: «la propensión marginal a consumir no es constante para todos los niveles de empleo, y es probable que, por regla general, tienda a disminuir a medida que el empleo aumenta» \parencite[cap.~10, apdo.~III; traducción propia]{Keynes1936}. La recta \eqref{eq:keynes}, con $c$ constante, es una simplificación posterior de la síntesis neoclásica.
+\end{anotaciones}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \autor{Keynes} es partidario de las políticas de demanda: con recursos ociosos mueven la renta, y la ley psicológica fundamental es un obstáculo al pleno empleo que otro componente de la demanda, el gasto público, tiene que compensar.
+\item Sobre el consumo:
+  \begin{itemize}
+  \item \emph{Política fiscal}: eficaz, a través del multiplicador; más si sube el gasto público, que es demanda directa, que si bajan los impuestos, porque una parte de la renta disponible que liberan se ahorra.
+  \item \emph{Política monetaria}: poco eficaz, porque el consumo no depende del tipo de interés y su efecto sobre la renta pasa por 2 eslabones débiles: el tipo de interés puede no bajar al aumentar la cantidad de dinero (\emph{trampa de la liquidez}) \vertema{3.A.35}, y la inversión, movida por los \emph{animal spirits}, es poco sensible al tipo de interés \vertema{3.A.34}.
+  \item \emph{Política redistributiva}: eficaz, porque los hogares de menos renta tienen una propensión a consumir mayor.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \autor{Hansen}, el principal divulgador de \autor{Keynes} en Estados Unidos, dedujo de una propensión media decreciente la tesis del \concepto{estancamiento secular}: si los hogares consumen una parte cada vez menor de su renta al enriquecerse, llegará un momento en que no habrá inversión suficiente para absorber el ahorro, salvo que el gasto público tape el hueco.\footnote{La tesis del estancamiento secular la formuló Alvin \autor{Hansen}, profesor en Harvard que se convirtió al keynesianismo tras la \emph{Teoría general}, en \emph{Full Recovery or Stagnation?} \parencite{Hansen1938Full} y, sobre todo, en su discurso como presidente de la American Economic Association, pronunciado en Detroit el 28 de diciembre de 1938 y publicado en 1939 con el título «Economic Progress and Declining Population Growth» \parencite{Hansen1939Economic}. Su argumento central era que la demanda sería insuficiente para asegurar el crecimiento necesario, y auguraba una época de débil progreso o incluso de estancamiento.
+
+Para \autor{Hansen}, las fuerzas que según la corriente principal del pensamiento clásico impulsaban el crecimiento eran 3: \emph{i}) las innovaciones tecnológicas; \emph{ii}) la apertura de nuevos territorios y el descubrimiento de nuevos recursos, y \emph{iii}) el aumento de la población. Habían generado un crecimiento robusto en el siglo~XIX, a pesar de los altibajos del ciclo, pero los años de entreguerras, y en particular la Gran Depresión de los años 30, sugerían que se habían desgastado. \autor{Hansen} interpretó los problemas de la época no solo como una desaceleración cíclica particularmente aguda, sino como prueba de un estancamiento secular provocado por el cierre de las fronteras económicas, la lentitud de la innovación y, no menos importante, la fuerte caída del crecimiento de la población.
+
+El argumento se hace eco del que \autor{Keynes} había expuesto en su Galton Lecture ante la Eugenics Society, el 16 de febrero de 1937 \parencite{Keynes1937Declining}: una población que deja de crecer reduce las oportunidades de inversión rentable sin reducir el ahorro, y empuja a la economía hacia un equilibrio con recursos ociosos y paro, salvo que aumente el consumo o baje el tipo de interés. \autor{Hansen} insistía en los cambios demográficos: además de su efecto directo sobre la inversión y la producción, el crecimiento de la población facilitaría el progreso técnico, una visión muy alejada de la del reverendo Thomas Robert \autor{Malthus}. Una desaceleración de la población y del progreso técnico reduciría las oportunidades de inversión, el ahorro se acumularía sin gastarse y el crecimiento se desplomaría salvo que los gobiernos estimularan la demanda agregada.
+
+Las necesidades de la economía de guerra resolvieron el problema del empleo, y las décadas de posguerra trajeron la demanda acumulada de los consumidores, un resurgir de la innovación, la apertura comercial y un fuerte aumento de la población: crecimiento rápido y rentas crecientes. El debate ha vuelto tras la Gran Recesión \vertema{3.A.40}.} Tras la Segunda Guerra Mundial, sin embargo, la renta creció, el gasto público bajó y el consumo creció con la renta: la propensión media no caía. En parte, porque los hogares, racionados durante la guerra, habían acumulado bonos públicos y los gastaron después (un \emph{efecto riqueza}).
+\item \textcite{Kuznets1942Uses,Kuznets1946National} reconstruyó la renta y el consumo de Estados Unidos y encontró 3 regularidades:\footnote{Simon \autor{Kuznets} recibió el Premio Nobel de Economía en 1971 «por su interpretación, fundada empíricamente, del crecimiento económico, que ha llevado a una comprensión nueva y más profunda de la estructura económica y social y del proceso de desarrollo» \parencite{Nobel1971Kuznets}.}
+  \begin{enumerate}
+  \item en los datos de \emph{corte transversal} (hogares distintos en un mismo año), los hogares más ricos consumen una proporción menor de su renta;
+  \item en las \emph{series agregadas cortas} (pocos años), también decrece con la renta;
+  \item en las \emph{series agregadas largas}, desde 1869, es casi constante.
+  \end{enumerate}
+  Es el \concepto{enigma del consumo}: la función keynesiana se cumple a corto plazo, pero no a largo plazo (gráfico~\ref{fig:consumo-renta}).
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item La función keynesiana es sencilla y se ajusta bien a los datos de corto plazo, pero no explica la propensión media constante a largo plazo, y no se deriva de un problema de optimización. El primer intento de reconciliarla con los datos es el de \autor{Duesenberry}.
+\end{itemize}
+
+\subsubsection{La renta relativa (\autor{Duesenberry}, 1949)}\label{sec:duesenberry}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Duesenberry1949Income} busca una teoría que encaje a la vez con la evidencia de corto plazo (propensión media decreciente) y con la de largo plazo (propensión media constante), y para ello añade fundamentos psicológicos.
+\item La satisfacción que da el consumo no depende solo de su nivel absoluto, sino del consumo del entorno social y del nivel alcanzado en el pasado: el consumo depende de la \concepto{renta relativa}, a la de los demás y a la propia renta pasada.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item La propensión media a consumir depende de la renta de hoy en relación con la renta más alta alcanzada antes, $Y^{\text{máx}}_t$:
+  \begin{equation}
+  \frac{C_t}{Y_t}=a_0-a_1\,\frac{Y_t}{Y^{\text{máx}}_t},\qquad a_0,\,a_1>0.\label{eq:duesenberry}
+  \end{equation}
+\item Las preferencias son interdependientes: cada hogar compara su consumo con el de los hogares de su entorno.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{A largo plazo}, cuando la renta crece a lo largo de su tendencia a un ritmo constante, el cociente $Y_t/Y^{\text{máx}}_t$ es constante y la propensión media también: consumo y renta crecen juntos a lo largo de una recta que parte del origen, $C^{\mathrm{LP}}$, como en las series largas de \autor{Kuznets}.
+\item \emph{A corto plazo}, en una recesión, la renta cae por debajo de su máximo, $Y^{\text{máx}}$, y los hogares tratan de mantener el consumo al que estaban acostumbrados desahorrando: el consumo no baja por $C^{\mathrm{LP}}$ sino por una recta más plana, $C^{\mathrm{CP}}$, que pasa por el máximo anterior, $E$. El consumo baja de $E$ a $E'$ y la propensión media sube (gráfico~\ref{fig:consumo-renta}).
+\item \emph{La recuperación}: cuando la renta vuelve a crecer, el consumo sube por $C^{\mathrm{CP}}$ hasta $E$ y, una vez superado el máximo anterior, sigue por $C^{\mathrm{LP}}$ hasta un nuevo máximo, $E''$, por el que pasa una nueva recta de corto plazo, $C^{\mathrm{CP}\prime}$.
+\item Detrás hay 2 efectos:
+  \begin{itemize}
+  \item el \concepto{efecto demostración}: los hogares de renta relativamente baja emulan el consumo de su entorno y consumen una proporción mayor de su renta. Explica el corte transversal y es compatible con una propensión media constante a largo plazo si la distribución de la renta no cambia;
+  \item el \concepto{efecto trinquete}: cuesta mucho más reducir el consumo una vez alcanzado que aumentarlo, porque hay \emph{hábitos de consumo}. Explica las series cortas.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El enigma del consumo: la recta de largo plazo y la de corto plazo}\label{fig:consumo-renta}
+\grafico[0.55\textwidth]{consumo-renta}
+\fuente{elaboración propia a partir de \textcite{Kuznets1946National} y \textcite{Duesenberry1949Income}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item A corto plazo es más fácil estimular el consumo que frenarlo: las políticas fiscales expansivas son eficaces y las contractivas, poco, porque los hogares defienden el consumo alcanzado reduciendo su ahorro.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item Explica los 3 hechos de \autor{Kuznets}, incluida la propensión media constante a largo plazo que la función keynesiana no lograba explicar.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{Aportaciones}: el consumo se fija a partir de un concepto de renta distinto del de la renta del periodo, y las ideas de \emph{suavizar el consumo} con el ahorro y de los \emph{hábitos} influyen en las teorías posteriores (los hábitos vuelven en \ref{sec:salidas}).
+\item \emph{Limitaciones}: explica bien el comportamiento en la recesión, pero no con el mismo rigor cómo vuelve el consumidor a la recta de largo plazo; y es un enfoque estático, que no sale de un problema de optimización. Para eso hace falta la elección intertemporal.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelos dinámicos y microfundamentados}\label{sec:dinamicos}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: un consumidor que mira hacia delante y puede prestar y pedir prestado consume según sus recursos de toda la vida. \autor{Fisher} da el marco; \autor{Friedman} y \autor{Modigliani} lo llevan a los datos y resuelven el enigma de \autor{Kuznets}.
+\item Los hogares no deciden su consumo solo con su renta de hoy, sino también con lo que esperan ganar (perspectiva \emph{forward-looking}). Desde los años 50, la teoría del consumo añade fundamentos microeconómicos:\footnote{Se podría decir que \autor{Keynes} fundamenta su función de consumo en la ley psicológica fundamental y \autor{Duesenberry} en los efectos demostración y trinquete. Lo estrictamente correcto es que los modelos que siguen, a diferencia de los anteriores, se derivan de un \emph{problema de optimización} de los agentes.} el consumidor maximiza una utilidad intertemporal sujeto a una restricción presupuestaria intertemporal.
+\end{itemize}
+
+\subsubsection{La elección intertemporal (\autor{Fisher}, 1930)}\label{sec:fisher}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Fisher1930Theory} plantea el consumo como una elección entre bienes de distintas fechas: el consumo de mañana tiene un precio en términos del de hoy, $1/(1+r)$. Es el pistoletazo de salida de todas las teorías modernas del consumo.
+\item Todo problema intertemporal se caracteriza con 3 piezas: la hipótesis de comportamiento, las preferencias y las restricciones presupuestarias.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Comportamiento}: un consumidor racional, que maximiza su utilidad, mira hacia delante y vive 2 periodos con certeza (previsión perfecta).
+\item \emph{Preferencias}: aditivas en el tiempo, con descuento exponencial \parencite{Samuelson1937Note} \vertema{3.A.29}:
+  \begin{equation*}
+  U(C_1,C_2)=u(C_1)+\beta\,u(C_2),\qquad u'>0,\quad u''<0,\qquad \beta\equiv\frac{1}{1+\rho},
+  \end{equation*}
+  donde $\rho$ es la \concepto{tasa de descuento} (la impaciencia)\footnote{La impaciencia es una idea antigua. \autor{Demócrito} (siglos V-IV a.~C.) contraponía ya el bien presente al futuro: «el viejo ha sido joven, pero el joven no sabe si llegará a viejo; por eso el bien ya alcanzado vale más que el futuro incierto» (fragmento 68 B 295 de Diels-Kranz; traducción propia a partir de \textcite{Freeman1948Ancilla}).} y $u''<0$ recoge que la utilidad marginal decrece: el consumidor prefiere repartir su consumo entre periodos.\footnote{Con 2 periodos, $u''<0$ implica que las curvas de indiferencia en $(C_1,C_2)$ son convexas. La implicación no va en sentido contrario: unas curvas de indiferencia convexas no exigen una utilidad marginal decreciente.}
+\item \emph{Restricción presupuestaria}: rentas $Y_1$ e $Y_2$ conocidas y un mercado de capitales perfecto, en el que se presta y se pide prestado sin límite al mismo tipo de interés real $r$. Lo que no se consume hoy se ahorra y se consume mañana con sus intereses: el ahorro es el vehículo para repartir el consumo en el tiempo.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Problema}: el valor actual del consumo no puede superar la \emph{riqueza} $\overline{W}$, el valor actual de las rentas:
+  \begin{equation}
+  \optim{\max}{C_1,\,C_2}{u(C_1)+\beta\,u(C_2)}{C_1+\dfrac{C_2}{1+r}=Y_1+\dfrac{Y_2}{1+r}\equiv\overline{W}}\label{eq:fisher}
+  \end{equation}
+\item \emph{Condición de primer orden}: la \concepto{ecuación de \autor{Euler}}:\footnote{Leonhard \autor{Euler} (1707-1783) trabajó en la Academia de Ciencias de San Petersburgo entre 1727 y 1741 y, tras 25 años en Berlín, volvió a ella en 1766, en tiempos de Catalina la Grande, hasta su muerte. Su ecuación nace del cálculo de variaciones, cuyo primer problema fue el de la \emph{braquistócrona}, la curva por la que un cuerpo que parte del reposo baja más deprisa entre 2 puntos solo por la gravedad, que planteó Johann \autor{Bernoulli} en 1696. \autor{Euler} dio en 1744 un método general para esa clase de problemas, del que sale la ecuación que hoy se llama de \autor{Euler}-\autor{Lagrange} \parencite{MacTutorEuler,MacTutorBrachistochrone}. La condición de óptimo intertemporal de la economía es su versión en tiempo discreto.\graficonota{braquistocrona}}
+  \funcionclave[eq:euler]{u'(C_1)=\beta\,(1+r)\,u'(C_2)}
+\item \emph{Interpretación analítica}: renunciar a una unidad de consumo hoy cuesta $u'(C_1)$; ahorrada, da $1+r$ unidades mañana, que valen $(1+r)\,u'(C_2)$ y, descontadas, $\beta(1+r)\,u'(C_2)$. En el óptimo, al consumidor le da igual trasladar una unidad más de consumo de un periodo a otro.
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:fisher}): en el plano $(C_1,C_2)$, la recta presupuestaria pasa por la dotación $A=(Y_1,Y_2)$ con pendiente $-(1+r)$, y el óptimo $C$ está donde una curva de indiferencia es tangente a ella. Si $C_1<Y_1$, el consumidor presta; si $C_1>Y_1$, pide prestado.
+\item \emph{El caso de referencia}: si el tipo de interés es igual a la tasa de descuento, $r=\rho$, es decir, $\beta(1+r)=1$, la ecuación de \autor{Euler} da $u'(C_1)=u'(C_2)$ y
+  \begin{equation*}
+  C_1=C_2=\frac{1+r}{2+r}\,\overline{W}:
+  \end{equation*}
+  el consumo se iguala en el tiempo aunque la renta no lo haga, y su nivel depende de la riqueza $\overline{W}$, no de la renta de cada periodo.\footnote{Es el \emph{alisamiento del consumo} (\emph{consumption smoothing}). Con $r\neq\rho$ la senda deja de ser plana, pero se mantienen sus rasgos: \emph{i}) la tasa de crecimiento del consumo solo cambia si cambian el tipo de interés o la tasa de descuento (\ref{sec:salidas}); \emph{ii}) con un mercado de capitales perfecto no depende de cómo se reparta la renta en el tiempo, y \emph{iii}) el nivel del consumo depende de la riqueza total del agente, sus activos más el valor actual de sus rentas futuras, y no de la renta del periodo.}
+\item Con $T$ periodos y activos netos $b_t$ el resultado es el mismo: el consumo de cada periodo depende de $b_0$ más el valor actual de todas las rentas, y con $\beta(1+r)=1$ es constante (anexo~\ref{anexo:optimizacion}).\footnote{Con un mercado de capitales perfecto, la decisión se separa en 2 pasos: primero se elige lo que hace máxima la riqueza $\overline{W}$ y después se reparte el consumo según las preferencias (\emph{teorema de separación de} \autor{Fisher}) \parencite{Fisher1930Theory,Hirshleifer1958Optimal}. Es la base de la decisión de invertir de la empresa \vertema{3.A.34} y de la de formarse, donde la renta deja de ser una dotación dada y se elige sobre una frontera de posibilidades de renta \vertema{3.A.25}. Con restricciones de liquidez, la separación se rompe.}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La elección intertemporal de \autor{Fisher} con $r=\rho$: consumo igual en los 2 periodos}\label{fig:fisher}
+\grafico[0.55\textwidth]{fisher}
+\fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite[cap.~8]{Romer2019Advanced}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Lo que cuenta para consumir es la riqueza de toda la vida, no la renta del periodo}: de aquí parte la teoría de la renta permanente.
+\item \emph{El consumo se suaviza}: el ahorro absorbe las diferencias entre renta y consumo. De aquí parte la teoría del ciclo vital.
+\item \emph{La senda de la renta no importa para el consumo, pero sí para el ahorro}, que es lo que queda de la renta del periodo tras consumir: se ahorra cuando la renta es alta y se desahorra cuando es baja.
+\item \emph{Una política anunciada hoy que cambie la renta futura cambia el consumo de hoy}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Un tipo de interés distinto de la tasa de descuento}: el consumo crece o decrece en el tiempo, tanto más cuanto mayor es la elasticidad de sustitución intertemporal, y una subida del tipo de interés tiene efectos sustitución, renta y riqueza. Se estudia en las salidas al modelo de \autor{Hall} (\ref{sec:salidas}), sobre este mismo gráfico.
+\item \emph{Restricciones de liquidez}: si el hogar no puede pedir prestado, la recta presupuestaria se quiebra en $A$ y la separación de \autor{Fisher} se rompe (\ref{sec:salidas}).
+\item \emph{Horizonte infinito y generaciones solapadas} \vertema{3.A.29}; \emph{renta endógena}, si el hogar decide también cuánto trabaja \vertema{3.A.25}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item El modelo da el armazón de todas las teorías posteriores, pero supone certeza sobre las rentas y mercados de capitales perfectos. \autor{Friedman} y \autor{Modigliani} lo llevan a los datos con 2 preguntas distintas: qué renta cuenta para consumir (la permanente) y cómo cambia la renta con la edad (el ciclo vital).
+\end{itemize}
+
+\subsubsection{La hipótesis de la renta permanente (\autor{Friedman}, 1957)}\label{sec:renta-permanente}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Friedman1957}, en \emph{A Theory of the Consumption Function}, critica la función de consumo keynesiana con la que trabajaba la síntesis neoclásica \vertema{3.A.5}.\footnote{Milton \autor{Friedman} recibió el Premio Nobel de Economía en 1976 «por sus logros en el análisis del consumo, la historia y la teoría monetarias, y por su demostración de la complejidad de la política de estabilización» \parencite{Nobel1976Friedman}.}
+\item Aplica la idea de \autor{Fisher}: la renta que se observa mezcla un componente duradero y otro accidental, y solo el primero guía el consumo. Así resuelve el enigma de \autor{Kuznets}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item La renta y el consumo observados tienen un componente permanente y otro transitorio:
+  \begin{equation*}
+  Y_t=Y^P_t+Y^T_t,\qquad C_t=C^P_t+C^T_t.
+  \end{equation*}
+\item La \concepto{renta permanente} es el flujo que se puede mantener en el tiempo consumiéndolo entero sin mermar la fuente de la que procede: el rendimiento de la riqueza total, humana y no humana (bonos, dinero, capital y valor actual de los salarios esperados), $Y^P_t=r\,\overline{W}_t$.
+\item La \concepto{renta transitoria} recoge lo accidental (una prima, un año malo) y el \emph{consumo transitorio}, los gastos imprevistos (una enfermedad). Los 2 tienen media cero y no están correlacionados entre sí ni con los componentes permanentes.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Consumo}: el consumo permanente es proporcional a la renta permanente, lo que refleja el deseo de suavizar el consumo:
+  \begin{equation}
+  C^P_t=k\,Y^P_t.\label{eq:renta-permanente}
+  \end{equation}
+  La proporción $k$ no depende del nivel de la renta (las preferencias son homotéticas), sino del tipo de interés, de la composición de la riqueza y de los gustos (entre ellos, la edad y la incertidumbre de la renta). Cuanto mayor es el peso de la riqueza no humana, mayor es $k$: hace menos falta una reserva para imprevistos y es más fácil pedir prestado con un activo como garantía que con el salario futuro \parencite[pp.~16-17]{Friedman1957}. El efecto del tipo de interés es, en teoría, ambiguo.
+\item \emph{Renta}: la renta permanente no se observa. El hogar la estima con \concepto{expectativas adaptativas} a partir de la renta \emph{observada} en el pasado, corrigiendo cada periodo una parte $\gamma$ de su error:
+  \begin{equation}
+  Y^P_t=Y^P_{t-1}+\gamma\,(Y_t-Y^P_{t-1})=\gamma\sum_{j=0}^{\infty}(1-\gamma)^j\,Y_{t-j},\qquad \gamma\in(0,1].\label{eq:expectativas-adaptativas}
+  \end{equation}
+  Si un aumento de la renta persiste, se va incorporando a la renta permanente; si no, se trata como transitorio y se ahorra.\footnote{Con los datos de Estados Unidos, \textcite[p.~226]{Friedman1957} estima, con cautela, que el horizonte de los hogares es de unos 3 años: la renta permanente pondera sobre todo la renta observada de los 3 últimos años. Advierte de que los resultados son poco sensibles a la longitud de ese horizonte.}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Un cambio transitorio de la renta apenas mueve el consumo: se ahorra. Un cambio permanente lo mueve en la proporción $k$.
+\item \emph{Política fiscal}: una rebaja de impuestos transitoria eleva poco la renta permanente y apenas mueve el consumo; el multiplicador es menor que el keynesiano, y solo las medidas que los hogares perciben como permanentes mueven el consumo.\footnote{El argumento de \autor{Friedman} es que una medida transitoria cambia sobre todo la renta transitoria. La \concepto{equivalencia ricardiana} va más allá: si el gasto público no cambia, una rebaja de impuestos financiada con deuda no altera la riqueza de los hogares, porque anuncia impuestos futuros del mismo valor actual, y se ahorra entera aunque sea permanente \parencite{Barro1974}. Exige horizonte infinito (o herencias altruistas), impuestos de suma fija y ausencia de restricciones de liquidez \vertema{3.A.39}.}
+\item \emph{Política monetaria}: puede mover el consumo a corto plazo, porque el tipo de interés cambia la riqueza y con ella la renta permanente (\emph{efecto riqueza}), y también $k$; a largo plazo es neutral.\footnote{Es una aportación de \autor{Friedman}: los cambios en los tipos de interés y en la cantidad de dinero alteran la riqueza y, con ella, la renta permanente y el consumo.}
+\item \emph{Estabilidad}: el consumo privado es más estable que la renta y su peso en la demanda no cae al crecer la renta, así que no hay estancamiento secular y la política de estabilización no necesita ser tan activa. Es una de las bases de la crítica monetarista a la economía keynesiana \vertema{3.A.5}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica: la solución del enigma de \autor{Kuznets}}
+
+\begin{itemize}
+\item \emph{Corte transversal}: los hogares de renta alta lo son en parte por suerte ($Y^T>0$) y los de renta baja, por mala suerte ($Y^T<0$), y su consumo no sigue esa parte de la renta. La recta de regresión del consumo sobre la renta observada es más plana que $k$ y corta el eje en positivo, como la función keynesiana:
+  \begin{equation}
+  \hat{b}=\frac{\operatorname{cov}(C,Y)}{\operatorname{var}(Y)}=k\,\frac{\operatorname{var}(Y^P)}{\operatorname{var}(Y^P)+\operatorname{var}(Y^T)}<k.\label{eq:sesgo-friedman}
+  \end{equation}
+\item \emph{Series cortas}: cuando la renta sube, al principio se trata como transitoria y el consumo sube poco: la propensión media cae. En el gráfico~\ref{fig:kuznets-duesenberry-friedman}, el consumo pasa de $E$ a $F^T$, sobre la recta de corto plazo. Si la subida persiste, se incorpora a la renta permanente y el consumo pasa a $F^P$, sobre $C^P=kY^P$; si desaparece, vuelve a $E$. \autor{Friedman} acepta, por tanto, la función keynesiana a corto plazo.
+\item \emph{Series largas}: casi toda la varianza de la renta es permanente, $\hat{b}\to k$, y la propensión media es constante.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La renta permanente y la solución del enigma de \autor{Kuznets}}\label{fig:kuznets-duesenberry-friedman}
+\grafico[0.55\textwidth]{kuznets-duesenberry-friedman}
+\fuente{elaboración propia a partir de \textcite{Friedman1957}.}
+\end{figure}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item La renta permanente no se observa, y las expectativas adaptativas suponen que los hogares cometen errores sistemáticos al estimarla.
+\item Hay una contradicción interna: el consumidor mira hacia delante para suavizar su consumo, pero hacia atrás para estimar su renta. La literatura ha pasado a las expectativas racionales, con las que \autor{Hall} llevará la hipótesis hasta sus últimas consecuencias (\ref{sec:hall}).
+\end{itemize}
+
+\subsubsection{La hipótesis del ciclo vital (\autor{Modigliani}, \autor{Brumberg} y \autor{Ando})}\label{sec:ciclo-vital}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{ModiglianiBrumberg1954} y \textcite{AndoModigliani1963Life} ponen el acento en lo que \autor{Friedman} deja en segundo plano: la renta cambia de forma previsible con la edad, baja al principio, alta en la madurez y casi nula en la jubilación, y el \emph{ahorro} es el instrumento para suavizar el consumo a lo largo de la vida.\footnote{Franco \autor{Modigliani} recibió el Premio Nobel de Economía en 1985 «por sus análisis pioneros del ahorro y de los mercados financieros» \parencite{Nobel1985Modigliani}.}
+\item Es compatible con la renta permanente: las 2 aplican el modelo de \autor{Fisher}. Es el refrán del enganche llevado a la vida: se guarda en los años de vacas gordas, la edad activa, para los de vacas flacas, la jubilación.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El consumidor vive $T$ periodos, $t=1,\dots,T$, y trabaja los $R$ primeros con una renta laboral $Y^L_t$ que sigue una \emph{joroba}: baja al principio, alta en la madurez y nula desde la jubilación.
+\item Certidumbre, mercado de capitales perfecto y sin herencias: nace y muere sin activos, \mbox{$b_1=b_{T+1}=0$}.
+\item El tipo de interés es igual a la tasa de descuento, $\beta(1+r)=1$, y, para simplificar, $r=\rho=0$: por la ecuación de \autor{Euler}~\eqref{eq:euler}, el consumo es el mismo en todos los periodos: es \emph{plano}.\footnote{Sería creciente si $r>\rho$ y decreciente si $r<\rho$; con incertidumbre, el ahorro precautorio también lo inclina hacia arriba (\ref{sec:salidas}).}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Consumo individual}: en cada periodo, el consumidor reparte por igual entre los años que le quedan sus activos y las rentas laborales que le faltan por cobrar:
+  \begin{equation}
+  C_t=\frac{1}{T-t+1}\Big[\,b_t+\sum_{s=t}^{T}Y^L_s\Big];\qquad\text{al nacer, }C=\frac{1}{T}\sum_{s=1}^{T}Y^L_s.\label{eq:ciclo-vital-individual}
+  \end{equation}
+\item \emph{Ahorro y riqueza} (gráfico~\ref{fig:ciclo-vital}): el consumidor se endeuda (o recibe ayuda de su familia) al principio, cuando la renta es menor que el consumo; ahorra en la madurez, y desahorra en la jubilación, cuando la renta laboral es nula. Sus activos $b_t$ (panel inferior del gráfico) son negativos al principio, crecen hasta la jubilación, en $R$, y se agotan al final de la vida, en $T$.
+\item \emph{Consumo agregado}: si la estructura por edades de la población, la distribución de la renta por edades y las preferencias son estables, al sumar los consumos individuales sale la función de \textcite{AndoModigliani1963Life}:
+  \begin{equation}
+  C_t=\alpha_L\,Y^L_t+\alpha_b\,b_t,\label{eq:ciclo-vital}
+  \end{equation}
+  donde $\alpha_L$ es la propensión a consumir la renta laboral y $\alpha_b$ la de la riqueza, $b_t$, que ahora son los activos netos agregados de los hogares.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La hipótesis del ciclo vital: consumo constante, ahorro en la edad activa y desahorro en la jubilación}\label{fig:ciclo-vital}
+\grafico[0.6\textwidth]{ciclo-vital}
+\fuente{elaboración propia a partir de \textcite{ModiglianiBrumberg1954}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El enigma de \autor{Kuznets}}: dividiendo \eqref{eq:ciclo-vital} por la renta, la propensión media depende de $b_t/Y_t$. A corto plazo la riqueza se mueve menos que la renta, $b_t/Y_t$ cae cuando la renta sube y la propensión media también; a largo plazo, $b_t/Y_t$ es estable y la propensión media es constante.
+\item \emph{Ahorro y crecimiento}: sin crecimiento, el ahorro de los activos compensa el desahorro de los jubilados y el ahorro agregado es nulo. Si la población o la productividad crecen, los que ahorran son más o tienen más renta que los que desahorran. La tasa de ahorro depende del ritmo de crecimiento, no del nivel de la renta \parencite{Modigliani1986Life}.
+\item \emph{Demografía}: el envejecimiento de la población reduce el ahorro agregado y presiona sobre los sistemas de pensiones \vertema{4.B.24}. El modelo de generaciones solapadas es la versión de equilibrio general de esta idea \vertema{3.A.29}.
+\item \emph{Política fiscal}: un cambio transitorio de la renta se reparte entre los años que quedan de vida, así que su efecto sobre el consumo es mayor cuanto mayor es el hogar. Las pensiones públicas sustituyen ahorro privado.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item Explica el enigma de \autor{Kuznets} y la relación positiva entre crecimiento y tasa de ahorro entre países.
+\item Pero los mayores desahorran mucho menos de lo que predice, y una parte grande de la riqueza se transmite por herencias: \textcite{KotlikoffSummers1981Role} atribuyen a las transferencias entre generaciones la mayor parte del capital de Estados Unidos.
+\item El consumo no es plano a lo largo de la vida: tiene forma de joroba y sigue de cerca a la renta, sobre todo en los hogares jóvenes \parencite{CarrollSummers1991,GourinchasParker2002}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{Ventaja}: introduce la demografía en la teoría del consumo y del ahorro.
+\item \emph{Críticas}:
+  \begin{itemize}
+  \item no tiene en cuenta las \emph{restricciones de liquidez}, que impiden endeudarse al principio de la vida;
+  \item no explica que los mayores desahorren tan poco: el \emph{motivo herencia} y el miedo a vivir más de lo previsto (precaución) lo explican mejor;
+  \item supone \emph{información perfecta} sobre las rentas de toda la vida.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación}: con certidumbre y mercados perfectos, el consumo depende de los recursos de toda la vida y se suaviza; la renta permanente y el ciclo vital son 2 caras de la misma idea, y las 2 resuelven el enigma de \autor{Kuznets}. Pero las 2 suponen que el consumidor sabe lo que ganará, y la realidad es que decide con \emph{incertidumbre}. Una vez estudiado el consumo con certidumbre, pasamos a analizar qué ocurre cuando la renta futura es incierta y las expectativas son racionales.
+\end{itemize}
+
+% ==========================================================================
+\section{El consumo de bienes no duraderos\newline con incertidumbre}\label{sec:incertidumbre}
+\minutos{11}
+
+\begin{notaopositor}
+En el cante: \autor{Hall} (\tiempo{3}), con el problema, la ecuación de \autor{Euler} estocástica recuadrada, que ocupa en la pizarra el sitio de la de \autor{Fisher} y se queda hasta el final del bloque, y los 3 pasos hasta $C_{t+1}=C_t+\varepsilon_{t+1}$; las implicaciones, de palabra. La contrastación (\tiempo{2,5}), con la ecuación de \autor{Campbell} y \autor{Mankiw} y la idea de la paradoja de \autor{Deaton}; los cheques fiscales, los hogares \emph{hand-to-mouth} y el caso de España, en una frase cada uno. Las salidas (\tiempo{5,5}), cambiando una a una las piezas del problema de la pizarra (nota al principio de \ref{sec:salidas}), con la tabla de la prudencia de palabra y el gráfico de \autor{Fisher} con la recta quebrada de la liquidez. La forma cerrada de \autor{Hall}, la deriva del consumo con incertidumbre, la derivación del C-CAPM y las notas son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: si el consumidor optimiza y forma expectativas racionales, solo las noticias cambian su consumo, que sigue un paseo aleatorio. Los datos no lo confirman del todo: el consumo responde a la renta corriente más de lo que permite la teoría. Las salidas a ese fallo (la prudencia, los hábitos, el crédito, la heterogeneidad de los hogares y los sesgos de conducta) devuelven a la renta corriente parte del papel que le daba \autor{Keynes}.
+\item El bloque~\ref{sec:certidumbre} suponía que el consumidor conoce su renta futura. Levantamos ahora ese supuesto: la renta de mañana es incierta y las expectativas, racionales. Seguimos con los bienes no duraderos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La hipótesis del paseo aleatorio (\autor{Hall}, 1978)}\label{sec:hall}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: con expectativas racionales, nada de lo que el consumidor sabe hoy ayuda a predecir cómo cambiará su consumo mañana: el mejor predictor del consumo de mañana es el de hoy.
+\item \textcite{Hall1978} plantea el problema de \autor{Fisher} y \autor{Friedman} con 2 cambios:
+  \begin{itemize}
+  \item la renta futura es incierta y el consumidor maximiza su \concepto{utilidad esperada} \vertema{3.A.10};
+  \item forma sus expectativas de manera \concepto{racional} \vertema{3.A.6}: usa de forma eficiente toda la información de que dispone y no comete errores sistemáticos.
+  \end{itemize}
+\item Así desaparece la contradicción de \autor{Friedman}: el consumidor ya no mira hacia atrás para estimar su renta permanente, sino hacia delante.
+\item \emph{La intuición}: en $t$, el consumidor fija su consumo con toda la información disponible. Si en $t+1$ lo cambia, es porque ha llegado información nueva, que por definición no se podía prever en $t$: si se hubiera podido prever, ya estaría en el consumo de $t$.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Comportamiento}: el consumidor vive un número indefinido de periodos y maximiza la utilidad esperada de su consumo con expectativas racionales; $\mathbb{E}_t[\cdot]$ es la esperanza condicionada a la información de $t$.
+\item \emph{Preferencias}: aditivas en el tiempo, con el factor de descuento $\beta\equiv 1/(1+\rho)$, y una utilidad instantánea \emph{cuadrática},
+  \begin{equation*}
+  u(C_t)=C_t-\frac{b}{2}\,C_t^2,\qquad b>0,
+  \end{equation*}
+  en el tramo en que la utilidad marginal, $u'(C_t)=1-b\,C_t$, es positiva.\footnote{Escribimos $b$ para el parámetro de la utilidad cuadrática, como en la tabla~\ref{tab:prudencia}; no debe confundirse con $b_t$, los activos netos del hogar al principio de $t$.}
+\item \emph{Restricción presupuestaria}: la renta laboral $Y_t$ es incierta; el hogar ahorra o se endeuda en un solo activo sin riesgo que rinde $r$, sin más límite que no endeudarse sin fin (\emph{condición de no-Ponzi}), y el tipo de interés es igual a la tasa de descuento, $\beta(1+r)=1$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Problema}: el de \autor{Fisher} con muchos periodos y con esperanzas; la restricción se cumple en cada periodo y en cada estado de la naturaleza:
+  \begin{equation}
+  \optim{\max}{\{C_t\}}{\mathbb{E}_0\Big[\sum_{t=0}^{\infty}\beta^t\,u(C_t)\Big]}{b_{t+1}=(1+r)\,b_t+Y_t-C_t\\ \lim_{T\to\infty}\dfrac{b_T}{(1+r)^T}\geq 0\\ b_0\ \text{dado}}\label{eq:problema-hall}
+  \end{equation}
+\item \emph{Condición de primer orden}: renunciar a una unidad de consumo en $t$ cuesta $u'(C_t)$; ahorrada, rinde $1+r$ unidades en $t+1$, que valen $(1+r)\,u'(C_{t+1})$, pero el consumidor no sabe cuánto valdrán, porque no conoce $C_{t+1}$. En el óptimo, el coste es igual al beneficio \emph{esperado} y descontado. Es la \concepto{ecuación de \autor{Euler} estocástica}, la~\eqref{eq:euler} con esperanzas:
+  \funcionclave[eq:euler-estocastica]{u'(C_t)=\beta\,(1+r)\,\mathbb{E}_t\big[u'(C_{t+1})\big]}
+\item \emph{Paso 1}: con $\beta(1+r)=1$, la utilidad marginal es una \concepto{martingala}: su valor esperado mañana es el de hoy, $u'(C_t)=\mathbb{E}_t[u'(C_{t+1})]$.
+\item \emph{Paso 2}: con la utilidad cuadrática, la utilidad marginal es lineal y la esperanza la atraviesa: $1-b\,C_t=1-b\,\mathbb{E}_t[C_{t+1}]$, es decir, $\mathbb{E}_t[C_{t+1}]=C_t$.
+\item \emph{Paso 3}: llamando $\varepsilon_{t+1}\equiv C_{t+1}-\mathbb{E}_t[C_{t+1}]$ al error de predicción, que con expectativas racionales tiene media cero y no está correlacionado con nada de lo que se sabe en $t$,
+  \begin{equation}
+  C_{t+1}=C_t+\varepsilon_{t+1},\qquad \mathbb{E}_t[\varepsilon_{t+1}]=0.\label{eq:hall}
+  \end{equation}
+  El consumo sigue un \concepto{paseo aleatorio}: el mejor predictor del consumo de mañana es el de hoy, y $\varepsilon_{t+1}$ recoge las noticias sobre la renta permanente que llegan en $t+1$.\footnote{En sentido estricto, el consumo sigue una \emph{martingala}, una serie cuyo valor esperado mañana es el de hoy, de modo que sus cambios son impredecibles. Un \emph{paseo aleatorio} es una martingala cuyos cambios son, además, independientes e idénticamente distribuidos; en la práctica, los 2 términos se usan como sinónimos. Cuidado: un proceso autorregresivo de primer orden, $X_{t+1}=c+\phi\,X_t+\varepsilon_{t+1}$, no es en general una martingala, porque $\mathbb{E}_t[X_{t+1}]=c+\phi\,X_t$; solo lo es si $c=0$ y $\phi=1$.}
+\item \emph{Cuánto cambia el consumo con una noticia}: con un horizonte finito y $r=\rho=0$, el consumidor consume en cada periodo la parte proporcional de sus activos y de la renta que espera ganar, y el cambio de su consumo es la revisión de esas expectativas repartida entre los periodos que le quedan (anexo~\ref{anexo:hall-ccapm}). Es la renta permanente de \autor{Friedman} con expectativas racionales.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El cambio del consumo no se puede predecir}: ni la renta pasada, ni la riqueza, ni el consumo anterior al último ayudan a predecir $C_{t+1}-C_t$. Es una predicción que se contrasta \emph{sin modelizar la renta}, y esa es la gran aportación metodológica de \autor{Hall}: basta con la ecuación de \autor{Euler}.
+\item \emph{Solo importan las sorpresas}: una medida de política mueve el consumo cuando se anuncia, no cuando se aplica; una vez anunciada, ya está en $C_t$.
+\item \emph{Las sorpresas permanentes pesan más que las transitorias}: el consumo se mueve en lo que cambia la renta permanente, así que una rebaja de impuestos transitoria apenas lo mueve y su multiplicador es pequeño.
+\item \emph{Crítica de \autor{Lucas}}: el consumo depende de lo que se espera de la política, de modo que una función de consumo estimada con una política no sirve para predecir los efectos de otra \vertema{3.A.6}. La ecuación de \autor{Euler}, en cambio, no depende de la política y se estima directamente.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item La utilidad cuadrática es una forma muy particular: la utilidad marginal puede hacerse negativa, la aversión absoluta al riesgo crece con la riqueza, lo contrario de lo que se observa, y su tercera derivada es nula, así que excluye el motivo precaución \vertema{3.A.10}.
+\item Supone, además, un mercado de capitales perfecto, un consumidor representativo y plena optimización. Si los datos rechazan el paseo aleatorio, el fallo puede estar en cualquiera de esas piezas. Antes de cambiarlas, veamos qué dicen los datos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La contrastación empírica: exceso de sensibilidad y exceso de suavidad}\label{sec:contrastacion}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: el consumo responde a los cambios \emph{previsibles} de la renta más de lo que dice \autor{Hall} (exceso de sensibilidad) y a los \emph{imprevistos}, menos (exceso de suavidad). La renta permanente explica buena parte del consumo, pero no todo, y lo que falta depende sobre todo de la liquidez de los hogares.
+\item Una vez planteado el modelo, pasamos a ver cómo se ha contrastado: primero con datos agregados y después con datos de hogares.
+\end{itemize}
+
+\paragraph{a) Exceso de sensibilidad}
+
+\begin{itemize}
+\item El primer contraste es del propio \textcite{Hall1978}: regresa el cambio del consumo de Estados Unidos sobre variables conocidas en $t$. La renta y el consumo pasados apenas lo predicen, pero los precios de las acciones sí.
+\item \textcite{Flavin1981Adjustment} estima a la vez el proceso de la renta y el del consumo, y encuentra que el consumo responde a los cambios de la renta que se podían prever: es el \concepto{exceso de sensibilidad}.
+\item \textcite{CampbellMankiw1989Consumption} lo miden con 2 tipos de hogares: una fracción $\lambda$ de la renta va a hogares que consumen su renta corriente y el resto, a hogares que siguen a \autor{Hall}.\footnote{Aquí $\lambda$ es la fracción de la renta que va a hogares que consumen su renta corriente, como en \textcite{CampbellMankiw1989Consumption}; no es un multiplicador de Lagrange.} El cambio del consumo agregado es entonces
+  \begin{equation}
+  \Delta C_t=\mu+\lambda\,\Delta Y_t+\varepsilon_t,\label{eq:campbell-mankiw}
+  \end{equation}
+  y con \autor{Hall} debería ser $\lambda=0$. Con datos de Estados Unidos de 1953-1986, estimando con variables instrumentales (retardos, que solo recogen la parte previsible de $\Delta Y_t$), $\lambda$ sale en torno a 0,5: alrededor de la mitad de la renta va a hogares que no suavizan su consumo.\footnote{Las estimaciones van de 0,35 a 0,7 según los instrumentos. Para los autores, decidir cuánto consumir y ahorrar optimizando en el tiempo exige muchos cálculos, y muchos hogares prefieren reglas sencillas basadas en la renta corriente (\ref{sec:heterogeneidad}). Encuentran también que el crecimiento del consumo de los hogares que siguen a \autor{Hall} apenas responde al tipo de interés real (\ref{sec:r-rho}).}
+\end{itemize}
+
+\paragraph{b) Exceso de suavidad: la paradoja de \autor{Deaton}}
+
+\begin{itemize}
+\item La renta agregada crece de forma persistente: una subida \emph{inesperada} anuncia más subidas en el futuro. Si el consumo sigue a la renta permanente, esta debería subir más que la corriente, y el consumo tendría que oscilar \emph{más} que la renta: con los datos trimestrales de Estados Unidos, la renta permanente varía casi el doble que la corriente \parencite{CampbellDeaton1989Why,Nobel2015Scientific}.
+\item En los datos ocurre lo contrario: el consumo oscila menos que la renta. Es el \concepto{exceso de suavidad} o \concepto{paradoja de \autor{Deaton}} \parencite{Deaton1987Life}.
+\item \autor{Deaton} encuentra la salida en los datos de hogares: la renta de cada hogar es mucho menos persistente que la agregada, porque la dominan sorpresas individuales que no se mueven con el ciclo, y el hogar que no puede endeudarse usa sus activos como colchón \parencite{Deaton1991Saving,Deaton1992Understanding}.\footnote{El Comité del Premio Nobel destaca este artículo de \textcite{Deaton1991Saving} como una de las claves para resolver la paradoja \parencite{Nobel2015Scientific}.} El agente representativo de los modelos agregados, viene a decir \autor{Deaton}, sabe demasiado y vive demasiado tiempo.
+\end{itemize}
+
+\paragraph{c) Evidencia con datos de hogares}
+
+\begin{itemize}
+\item \emph{Cambios de renta conocidos de antemano}:
+  \begin{itemize}
+  \item \textcite{Shea1995Union} usa hogares cuyo salario fija un convenio colectivo plurianual, de modo que su subida se conoce de antemano: los cambios previsibles del salario están correlacionados de forma significativa con los del gasto en alimentación, y el gasto reacciona con más fuerza a las bajadas previstas del salario que a las subidas, una asimetría que las restricciones de liquidez no explican.
+  \item El gasto responde también a la retención de las cotizaciones a la Seguridad Social, que deja de aplicarse cuando el salario del año supera el tope de cotización \parencite{Parker1999Reaction}, y a las devoluciones del impuesto sobre la renta \parencite{Souleles1999Response}.
+  \item En cambio, los hogares de Alaska no cambian su consumo cuando cobran el dividendo anual del fondo del petróleo del Estado, grande y conocido de antemano \parencite{Hsieh2003Alaska}: la renta permanente funciona mejor con cambios grandes y visibles.
+  \end{itemize}
+\item \emph{Experimentos naturales}: Estados Unidos envió cheques fiscales en 2001 y en 2008, con fechas de cobro que dependían de las últimas cifras del número de la seguridad social, es decir, prácticamente al azar.
+  \begin{itemize}
+  \item Los hogares gastaron en bienes no duraderos entre el 20 y el 40~\% del cheque de 2001 en el trimestre en que lo recibieron \parencite{JohnsonParkerSouleles2006Household}.
+  \item Con los de 2008, el gasto total, contando los duraderos y sobre todo los coches, llegó a entre el 50 y el 90~\% \parencite{ParkerEtAl2013Consumer}.
+  \item La respuesta es mayor en los hogares con poca liquidez \parencite{JappelliPistaferri2010Consumption}.
+  \end{itemize}
+\item \emph{Hogares que viven al día}: \textcite{KaplanViolanteWeidner2014Wealthy} llaman \concepto{\emph{hand-to-mouth}} a los hogares con muy pocos activos líquidos, que consumen casi toda su renta: «lo comido por lo servido».
+  \begin{itemize}
+  \item En Estados Unidos son en torno a un tercio de los hogares, y 2 de cada 3 no son pobres: tienen vivienda o planes de pensiones, pero no liquidez (\emph{wealthy hand-to-mouth}).
+  \item En España, Francia e Italia son en torno al 20~\%.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{d) El caso de España}
+
+\begin{itemize}
+\item \emph{Renta permanente}: con datos de las comunidades autónomas de 1980-2003, \textcite{NunezCarrasco2010Contraste} encuentra que, ante una sorpresa de renta, el consumo se revisa en el mismo sentido que la renta permanente, pero menos que ella: la hipótesis se cumple solo «en un sentido débil».
+\item \emph{Hogares jóvenes}: en los hogares de 25 a 34 años, los más jóvenes no anticipan su renta futura al decidir cuánto consumen, y los que se acercan a la madurez sí \parencite{NunezCarrasco2006Consumo,NunezCarrasco2008Consumo}.
+\item \emph{Propensión a consumir y liquidez}: en la Encuesta Financiera de las Familias, la parte que los hogares dicen que gastarían de un premio igual a un mes de renta bajó del 41,3~\% en 2017 al 40,1~\% en 2022, sobre todo en los hogares de renta alta, y subió 4,7 puntos en los que tenían menos activos financieros; ese cambio explicaría unos 2 puntos de la subida de la tasa de ahorro \parencite{BassoGomezGarcia2025Propension}. La sensibilidad a la renta se concentra donde hay poca liquidez, como en los hogares \emph{hand-to-mouth}.
+\item \emph{Riqueza}: la riqueza inmobiliaria pesa en el consumo de los hogares españoles más que la financiera \parencite{Bover2005Wealth}.
+\item \emph{Política fiscal}: la deducción de hasta 400 euros en el impuesto sobre la renta de 2008, que se cobró a través de las retenciones \parencite{BOE2008RDL2}, es el equivalente español de los cheques de Estados Unidos.
+\item \emph{Ahorro y pandemia}: la tasa de ahorro de los hogares saltó al 25,6~\% de su renta disponible en el segundo trimestre de 2020 \parencite{INE2026CTNFSI} (gráfico~\ref{fig:tasa-ahorro-hogares}), sobre todo por ahorro forzoso, con los comercios cerrados, y en parte por precaución. El ahorro extraordinario acumulado se gastó poco: se quedó sobre todo en depósitos y fondos de inversión y se concentró en los hogares de más renta \parencite{AlvesMartinezCarrascal2023}, como predice la renta permanente para un ingreso que se percibe como transitorio.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La tasa de ahorro de los hogares en España (\% de la renta disponible bruta, datos trimestrales corregidos de estacionalidad y calendario)}\label{fig:tasa-ahorro-hogares}
+\grafico[0.8\textwidth]{tasa-ahorro-hogares}
+\fuente{INE, Cuentas trimestrales no financieras de los sectores institucionales \parencite{INE2026CTNFSI}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Recapitulación}: la renta permanente no es falsa, pero es incompleta. El consumo depende también de la renta corriente, tanto más cuanto menos liquidez tiene el hogar, y responde poco a las sorpresas. Para explicarlo hay que cambiar alguna pieza del problema de \autor{Hall}, y eso es lo que ha hecho la literatura desde los años 80.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Las salidas al modelo de \autor{Hall}}\label{sec:salidas}
+
+\begin{notaopositor}
+El problema~\eqref{eq:problema-hall} y la ecuación de \autor{Euler} estocástica~\eqref{eq:euler-estocastica} se quedan en la pizarra desde \ref{sec:hall}, y este apartado se canta cambiando sus piezas una a una; cada cambio se marca sobre la ecuación con un número:
+\begin{enumerate}
+\item la función de utilidad: si no es cuadrática, ahorro precautorio; si no es separable en el tiempo, hábitos;
+\item el tipo de interés y el de descuento: $r\neq\rho$ y, si el rendimiento es incierto, el C-CAPM;
+\item la restricción presupuestaria: restricciones de liquidez, sobre el gráfico de \autor{Fisher} de \ref{sec:fisher}, cuya recta se quiebra en la dotación; y la renta endógena;
+\item el agente representativo: hogares heterogéneos;
+\item la plena optimización: economía conductual.
+\end{enumerate}
+Cada pieza, en 1 o 2 frases y con el hecho que explica (exceso de sensibilidad o de suavidad); el detalle formal es para las preguntas del tribunal. Al final, una frase anuncia el bloque~\ref{sec:duraderos}: lo que queda por cambiar es el bien.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: cada pieza del problema de \autor{Hall} que se cambia explica una parte de la evidencia, y casi todas apuntan en la misma dirección: el consumo depende de la renta corriente más de lo que dice la teoría, y la política fiscal es más eficaz.
+\item Los datos rechazan el paseo aleatorio, pero el modelo de \autor{Hall} es un conjunto de supuestos y el fallo puede estar en cualquiera de ellos. Pasamos a levantarlos uno a uno, empezando por la función de utilidad.
+\end{itemize}
+
+\subsubsection{La utilidad (1): prudencia y ahorro precautorio}\label{sec:precautorio}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La utilidad cuadrática tiene una propiedad muy particular: su tercera derivada es nula. Con ella, el riesgo no cambia el consumo: el hogar actúa como si la renta futura fuera igual a su valor esperado (\concepto{equivalencia cierta}).
+\item Si la tercera derivada es positiva, el riesgo lleva a ahorrar más: es el \concepto{ahorro precautorio} \parencite{Leland1968Saving,Sandmo1970Effect}. «Hombre prevenido vale por dos».
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Un hogar vive 2 periodos, gana $Y_1$ hoy y una renta incierta $\tilde{Y}_2$ mañana, y ahorra $S\equiv Y_1-C_1$ al tipo $r$. Las preferencias son las de \autor{Fisher}, con esperanzas.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Problema}:
+  \begin{equation*}
+  \optim{\max}{C_1}{u(C_1)+\beta\,\mathbb{E}\big[u(\tilde{C}_2)\big]}{\tilde{C}_2=(1+r)\,S+\tilde{Y}_2\\ S\equiv Y_1-C_1}
+  \end{equation*}
+  con la condición de primer orden $u'(C_1)=\beta(1+r)\,\mathbb{E}\big[u'(\tilde{C}_2)\big]$: la ecuación~\eqref{eq:euler-estocastica} con 2 periodos.
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:precautorio}): si $u'$ es convexa ($u'''>0$), por la desigualdad de \autor{Jensen}, $\mathbb{E}[u'(\tilde{C}_2)]>u'(\mathbb{E}[\tilde{C}_2])$. El riesgo eleva la utilidad marginal esperada de mañana y, para restablecer la igualdad, el hogar consume menos hoy y ahorra más que si recibiera $\mathbb{E}[\tilde{Y}_2]$ con certeza.
+\item \emph{La condición}: no es la aversión al riesgo ($u''<0$), sino la \concepto{prudencia}, $u'''>0$, que es \emph{necesaria y suficiente} para que cualquier riesgo de media cero sobre la renta futura aumente el ahorro, sea cual sea el signo de $u''$. \textcite{Kimball1990Precautionary} la mide con el coeficiente de prudencia absoluta, $-u'''/u''$, por analogía con la aversión absoluta de \autor{Arrow} y \autor{Pratt} \vertema{3.A.10}.
+\item \emph{La cuadrática frente a la CRRA} (tabla~\ref{tab:prudencia}): la cuadrática es aversa, pero no prudente; la CRRA es aversa y prudente, con una prudencia absoluta de $(\theta+1)/C$. Y como la aversión absoluta decreciente (DARA), la hipótesis más aceptada, implica prudencia, el ahorro precautorio es la regla y no la excepción.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La prudencia: con $u'$ convexa, el riesgo eleva la utilidad marginal esperada}\label{fig:precautorio}
+\grafico[0.55\textwidth]{precautorio}
+\fuente{elaboración propia a partir de \textcite{Leland1968Saving} y \textcite{Kimball1990Precautionary}.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Aversión al riesgo y prudencia: utilidad cuadrática frente a CRRA}\label{tab:prudencia}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{4.4cm}>{\centering\arraybackslash}m{4.8cm}}
+\toprule
+\rowcolor{tceeazulpalido}
+ & \textbf{Cuadrática} & \textbf{CRRA}\\
+\midrule
+$u(C)$ & $C-\tfrac{b}{2}C^2$ & $\dfrac{C^{1-\theta}-1}{1-\theta}$\\[6pt]
+$u'(C)$ & $1-bC$ & $C^{-\theta}$\\[3pt]
+$u''(C)$ & $-b<0$ (averso) & $-\theta C^{-\theta-1}<0$ (averso)\\[3pt]
+\rowcolor{tceesalvia}
+$u'''(C)$ & $0$ (sin prudencia) & $\theta(\theta+1)C^{-\theta-2}>0$ (prudente)\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[tabla~1]{FernandezVillaverdeGuerronQuintana2020Uncertainty}, con la notación del temario ($\theta$ en lugar de $\sigma$); es la misma tabla que en la elección con riesgo \vertema{3.A.10}.}
+\end{table}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El consumo crece aunque $r=\rho$}: con la CRRA, la ecuación de \autor{Euler} da una senda de consumo creciente, tanto más cuanto mayor es la incertidumbre (anexo~\ref{anexo:hall-ccapm}):
+  \begin{equation*}
+  \mathbb{E}_t\big[\Delta\ln C_{t+1}\big]\simeq\frac{1}{\theta}\,(r-\rho)+\frac{\theta}{2}\,\operatorname{var}_t\big(\Delta\ln C_{t+1}\big).
+  \end{equation*}
+  Un aumento del riesgo reduce el consumo de hoy.
+\item \emph{Exceso de sensibilidad}: el hogar con pocos activos tiene más que perder si la renta cae y consume una parte mayor de cada euro adicional: la propensión a consumir de la renta transitoria es mayor que en \autor{Hall} \parencite{Zeldes1989Optimal}.
+\item \emph{Exceso de suavidad}: ante una sorpresa de renta, el hogar guarda una parte como colchón.
+\item \emph{En el agregado}: más incertidumbre eleva el ahorro deseado y baja el tipo de interés real de equilibrio, lo que empuja el consumo en sentido contrario; el efecto final sobre la actividad es ambiguo \parencite{FernandezVillaverdeGuerronQuintana2020Uncertainty}. El ahorro precautorio es una de las piezas del debate sobre el estancamiento secular y los tipos de interés naturales bajos \vertema{3.A.40}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{El ahorro de colchón} (\emph{buffer stock}): si el hogar es impaciente ($\rho>r$) y prudente, no acumula sin límite. Se fija un objetivo de riqueza en relación con su renta permanente, ahorra si está por debajo y desahorra si está por encima, y durante buena parte de la vida su consumo sigue de cerca a su renta \parencite{Carroll1997Buffer}.
+\item \emph{Liquidez}: las restricciones de liquidez y la prudencia se refuerzan entre sí (\ref{sec:liquidez}).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Con datos de Estados Unidos, los hogares se comportan como en el ahorro de colchón hasta los 40 años, aproximadamente, y después ahorran para la jubilación como en el ciclo vital \parencite{GourinchasParker2002}.
+\item En España, más incertidumbre macroeconómica en una comunidad autónoma reduce el consumo de sus familias \parencite{NunezCarrasco2013Consumo}, y el ahorro de los hogares se disparó en 2020 (gráfico~\ref{fig:tasa-ahorro-hogares}).
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Es la salida más aceptada: solo exige una utilidad con aversión absoluta decreciente, y explica a la vez el exceso de sensibilidad y el de suavidad. A cambio, la ecuación de \autor{Euler} deja de tener una solución sencilla y el modelo se resuelve con métodos numéricos.
+\end{itemize}
+
+\subsubsection{La utilidad (2): preferencias no separables y hábitos}\label{sec:habitos}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Si la utilidad de hoy depende del consumo de ayer, la utilidad deja de ser aditivamente separable en el tiempo. Con \concepto{hábitos}, lo que da utilidad es el consumo en relación con lo que uno está acostumbrado a consumir. Es la formalización del efecto trinquete de \autor{Duesenberry} (\ref{sec:duesenberry}).
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los de \autor{Hall}, con una utilidad instantánea que depende del consumo sobre el hábito, $u(C_t-hC_{t-1})$, con $0\leq h<1$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con la utilidad cuadrática y $\beta(1+r)=1$, la variable que sigue una martingala ya no es el consumo, sino el consumo sobre el hábito, $C_t-hC_{t-1}$:\footnote{Con hábitos, la utilidad marginal de $C_t$ incluye su efecto sobre la utilidad de mañana, $u'(X_t)-\beta h\,\mathbb{E}_t[u'(X_{t+1})]$, con $X_t\equiv C_t-hC_{t-1}$. Si $X_t$ es una martingala y $u'$ es lineal, esa utilidad marginal también lo es, y se cumple la ecuación de \autor{Euler} con $\beta(1+r)=1$. Hace falta incertidumbre para que haya noticias, pero, dentro del marco de \autor{Hall}, basta con la no separabilidad para romper el paseo aleatorio del consumo.}
+  \begin{equation*}
+  C_{t+1}-h\,C_t=C_t-h\,C_{t-1}+\varepsilon_{t+1}\quad\Longrightarrow\quad \Delta C_{t+1}=h\,\Delta C_t+\varepsilon_{t+1}.
+  \end{equation*}
+\item Las variaciones del consumo están positivamente autocorrelacionadas y son, en parte, predecibles: los hábitos \emph{rompen el paseo aleatorio}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item El consumo responde a las noticias de forma gradual (exceso de suavidad) y con forma de joroba, como en los datos agregados. Por eso los modelos neokeynesianos de equilibrio general dinámico y estocástico incluyen hábitos \parencite{ChristianoEichenbaumEvans2005} \vertema{3.A.42}.
+\item Cerca del hábito, el hogar es muy averso al riesgo, lo que ayuda a explicar el enigma de la prima de riesgo (\ref{sec:ccapm}) \parencite{CampbellCochrane1999Force}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item Los modelos agregados necesitan hábitos fuertes para reproducir la inercia del consumo \parencite{Fuhrer2000Habit}, pero con datos de hogares apenas se encuentran \parencite{Dynan2000Habit}.
+\item Un metaanálisis de 567 estimaciones da un $h$ medio en torno a 0,6 con datos agregados y en torno a 0,1 con datos de hogares \parencite{HavranekEtAl2017Habit}: parte de la persistencia agregada puede venir de la agregación o de la información imperfecta, y no de los hábitos de cada hogar.
+\end{itemize}
+
+\subsubsection{El tipo de interés (1): distinto de la tasa de descuento}\label{sec:r-rho}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \autor{Hall} supone $\beta(1+r)=1$. Si el tipo de interés es distinto de la tasa de descuento, el consumo tiene una tendencia: lo que se puede predecir del consumo sale del tipo de interés, no de la renta. Es la extensión de \autor{Fisher} que dejamos pendiente en \ref{sec:fisher}, sobre el mismo gráfico.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los de \autor{Fisher} en 2 periodos, con certidumbre, y una utilidad con aversión relativa al riesgo constante (CRRA):
+  \begin{equation*}
+  u(C)=\frac{C^{1-\theta}-1}{1-\theta}\quad(\ln C\ \text{si}\ \theta=1),\qquad \theta>0,
+  \end{equation*}
+  donde $\theta$ es el coeficiente de aversión relativa al riesgo y $1/\theta$ la \concepto{elasticidad de sustitución intertemporal} (ESI).\footnote{La ESI mide cuánto cambia el cociente $C_2/C_1$, en porcentaje, cuando cambia un 1~\% su precio relativo, $1+r$. Con la CRRA, una sola letra recoge 2 cosas distintas: la aversión al riesgo entre estados de la naturaleza ($\theta$) y la disposición a sustituir consumo entre periodos ($1/\theta$).}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con $u'(C)=C^{-\theta}$, la ecuación de \autor{Euler}~\eqref{eq:euler} se escribe
+  \begin{equation*}
+  \frac{C_2}{C_1}=\big[\beta(1+r)\big]^{1/\theta}=\left(\frac{1+r}{1+\rho}\right)^{1/\theta},\qquad \ln\frac{C_2}{C_1}\simeq\frac{1}{\theta}\,(r-\rho),
+  \end{equation*}
+  y como $C_2/C_1$ es 1 más la tasa de crecimiento del consumo, la ecuación da la forma de la senda de consumo.
+\item \emph{El signo}: el consumo crece si $r>\rho$, es constante si $r=\rho$ y decrece si $r<\rho$. Que el consumo crezca no dice si el hogar presta o pide prestado: eso depende de cómo crezca su renta.
+\item \emph{La intensidad}: cuanto mayor es la ESI, más responde el crecimiento del consumo a la diferencia entre $r$ y $\rho$. Un hogar con una ESI alta \emph{tolera} mejor un consumo desigual entre periodos: no es que le guste la variabilidad, sino que le disgusta menos.
+\item \emph{Una subida del tipo de interés} (gráfico~\ref{fig:fisher-tipo-interes}): la recta presupuestaria gira sobre la dotación $A$ y se hace más inclinada. Sobre $C_1$ actúan 3 efectos:
+  \begin{itemize}
+  \item un \emph{efecto sustitución}, negativo: el consumo de hoy se encarece en términos del de mañana;
+  \item un \emph{efecto renta}, positivo: el consumo de mañana se abarata;
+  \item un \emph{efecto riqueza}, negativo: el valor actual de la renta futura, $Y_2/(1+r)$, cae.
+  \end{itemize}
+  Los efectos renta y riqueza juntos tienen el signo del ahorro, $Y_1-C_1$. El que pide prestado consume menos hoy; en el que presta, el efecto es ambiguo. Es la ecuación de \autor{Slutsky} con dotación \vertema{3.A.9}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Una subida del tipo de interés en el modelo de \autor{Fisher}: la recta gira sobre la dotación}\label{fig:fisher-tipo-interes}
+\grafico[0.55\textwidth]{fisher-tipo-interes}
+\fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite[cap.~8]{Romer2019Advanced}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Con incertidumbre, la ecuación de \autor{Euler} estocástica con la CRRA da la misma tendencia, $\mathbb{E}_t[\Delta\ln C_{t+1}]\simeq(r-\rho)/\theta$, más el término precautorio de \ref{sec:precautorio}: lo que se puede predecir del consumo sale del tipo de interés y del riesgo, no de la renta.
+\item \emph{Política fiscal}: un trato fiscal más favorable a los intereses del ahorro solo eleva mucho el ahorro si la ESI es alta.
+\item \emph{Política monetaria}: una bajada del tipo de interés adelanta consumo por la vía de la sustitución intertemporal, tanto más cuanto mayor es la ESI. Es el canal del tipo de interés de los modelos neokeynesianos \vertema{3.A.37}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item El crecimiento del consumo apenas responde al tipo de interés real: la ESI estimada es pequeña, próxima a cero \parencite{Hall1988Intertemporal,CampbellMankiw1989Consumption}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Con una ESI baja, el tipo de interés mueve poco el consumo por esta vía, y la política monetaria actúa sobre todo por otras: la renta y el empleo, la riqueza y el crédito \vertema{3.A.37}.
+\item El modelo supone, además, que el rendimiento del ahorro es seguro.
+\end{itemize}
+
+\subsubsection{El tipo de interés (2): rendimiento incierto y C-CAPM}\label{sec:ccapm}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Si el hogar puede ahorrar en varios activos con rendimiento incierto, la ecuación de \autor{Euler} se cumple para cada uno, y las decisiones de consumo y de cartera se toman a la vez. Es el \concepto{modelo de valoración de activos basado en el consumo} (C-CAPM) \parencite{Lucas1978Asset,Breeden1979Intertemporal}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los de \autor{Hall}, con varios activos $i$ de rendimiento real incierto $r_{i,t+1}$ y un activo sin riesgo que rinde $r_f$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Para cada activo, la ecuación~\eqref{eq:euler-estocastica} se escribe con su rendimiento dentro de la esperanza, porque ya no es seguro:
+  \begin{equation}
+  1=\mathbb{E}_t\big[m_{t+1}\,(1+r_{i,t+1})\big],\qquad m_{t+1}\equiv\beta\,\frac{u'(C_{t+1})}{u'(C_t)},\label{eq:ccapm}
+  \end{equation}
+  donde $m_{t+1}$ es el \concepto{factor de descuento estocástico}: alto cuando el consumo de mañana es bajo.
+\item De ahí sale la prima de cada activo sobre el activo sin riesgo (anexo~\ref{anexo:hall-ccapm}); con la CRRA y rendimientos lognormales,
+  \begin{equation*}
+  \mathbb{E}_t[r_{i,t+1}]-r_f=-(1+r_f)\operatorname{Cov}_t\big(m_{t+1},r_{i,t+1}\big)\simeq\theta\operatorname{Cov}_t\big(r_{i,t+1},\Delta\ln C_{t+1}\big).
+  \end{equation*}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Se paga por el riesgo de rendir poco cuando el consumo es bajo. Un activo que rinde mucho cuando el consumo ya es alto no asegura y exige una prima; uno que rinde cuando el consumo cae es un seguro y se acepta con menos rendimiento.
+\item Lo que cuenta es la covarianza con el consumo, no la varianza del activo. El CAPM es el caso particular en que el consumo se mueve con la cartera de mercado \vertema{3.B.23}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{HansenSingleton1983Stochastic} estiman la ecuación~\eqref{eq:ccapm} con datos agregados de Estados Unidos y rechazan sus restricciones.
+\item \textcite{MehraPrescott1985Equity} plantean el \concepto{enigma de la prima de riesgo}: entre 1889 y 1978, las acciones rindieron en Estados Unidos unos 6 puntos al año más que los activos seguros, pero el consumo varía tan poco que el modelo, con aversiones razonables ($\theta\leq 10$), no da una prima mayor de 0,4 puntos. Los hábitos son una de las respuestas \parencite{CampbellCochrane1999Force}.
+\end{itemize}
+
+\subsubsection{La restricción presupuestaria: restricciones de liquidez}\label{sec:liquidez}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \autor{Hall} supone que el hogar puede pedir prestado al mismo tipo al que presta. En la práctica, el tipo de los préstamos es mayor que el de los depósitos, y muchos hogares no pueden endeudarse contra su renta futura: el banco no acepta el salario de mañana como garantía o el hogar ya ha llegado a su límite de endeudamiento.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los de \autor{Hall}, con una restricción más: el hogar no puede tener activos negativos, $b_{t+1}\geq 0$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:fisher-liquidez}): en el plano de \autor{Fisher}, la recta presupuestaria se quiebra en la dotación $A$, porque desaparece el tramo de pedir prestado. El hogar que querría endeudarse, porque espera mucha más renta mañana, se queda en la esquina, $C_1=Y_1$: consume su renta corriente.
+\item \emph{Interpretación analítica}: la ecuación de \autor{Euler} pasa a ser una desigualdad,
+  \begin{equation*}
+  u'(C_t)\geq\beta(1+r)\,\mathbb{E}_t\big[u'(C_{t+1})\big],
+  \end{equation*}
+  que se cumple con desigualdad estricta cuando la restricción aprieta; entonces $C_t=Y_t+(1+r)\,b_t$: el hogar querría consumir más hoy y no puede.
+\item Los cambios previsibles de la renta pasan al consumo cuando llegan, no cuando se anuncian, y la separación de \autor{Fisher} entre la decisión de riqueza y la de consumo se rompe.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La restricción de liquidez en el modelo de \autor{Fisher}: la recta presupuestaria se quiebra en la dotación}\label{fig:fisher-liquidez}
+\grafico[0.55\textwidth]{fisher-liquidez}
+\fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite[cap.~8]{Romer2019Advanced}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Exceso de sensibilidad}: el consumo de los hogares restringidos sigue a su renta corriente.
+\item \emph{Ahorro precautorio, aun con utilidad cuadrática}: como señala \textcite{Zeldes1989Optimal}, aunque la restricción no apriete hoy, la mera posibilidad de que apriete mañana lleva a ahorrar para no tener que recortar el consumo si la renta cae. Las restricciones de liquidez y la prudencia se refuerzan \parencite{Deaton1991Saving,Carroll1997Buffer}.
+\item \emph{Política fiscal}: cuantos más hogares restringidos, mayor es el efecto de las transferencias y de las rebajas de impuestos, aunque sean transitorias, y mayor es el multiplicador del gasto público \parencite{GaliLopezSalidoValles2007} \vertema{3.A.40}. Una rebaja anunciada mueve el consumo de estos hogares al aplicarse, no al anunciarse. Y la deuda pública se aleja de la equivalencia ricardiana, porque equivale a darles el crédito que no conseguían \vertema{3.A.39}.
+\item \emph{Política monetaria}: llega a estos hogares sobre todo a través de su renta y su empleo, y poco por la sustitución intertemporal \parencite{KaplanMollViolante2018Monetary} \vertema{3.A.37}.
+\item \emph{Desarrollo financiero}: un sistema financiero más profundo relaja las restricciones y hace que el consumo dependa menos de la renta corriente.
+\end{itemize}
+
+\paragraph{c) Extensiones: la renta endógena}
+
+\begin{itemize}
+\item Hasta aquí la renta era exógena, pero el hogar decide a la vez cuánto consume y cuánto trabaja: la renta es \emph{endógena}.
+  \begin{itemize}
+  \item Si el consumo y el ocio no son separables en la utilidad, el consumo se mueve con las horas de forma previsible, sin que haya restricciones de liquidez.
+  \item El hogar puede trabajar más para amortiguar una caída de su renta, lo que reduce la necesidad de ahorrar por precaución.
+  \end{itemize}
+\item El modelo de \autor{Lucas} y \autor{Rapping} lleva esta decisión conjunta al tiempo \parencite{LucasRapping1969Real} \vertema{3.A.25}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{Zeldes1989Consumption}, con datos de hogares de Estados Unidos, encuentra que la ecuación de \autor{Euler} se incumple en los hogares con poca riqueza y se cumple en los demás: no poder endeudarse contra la renta laboral futura afecta al consumo de una parte significativa de la población.
+\item La respuesta a los cheques fiscales y el peso de los hogares \emph{hand-to-mouth} (\ref{sec:contrastacion}) apuntan en la misma dirección \parencite{KaplanViolante2014Model}.
+\end{itemize}
+
+\subsubsection{El agente y la optimización: hogares heterogéneos y economía conductual}\label{sec:heterogeneidad}
+
+\paragraph{Hogares heterogéneos y datos de hogares}
+
+\begin{itemize}
+\item Hasta aquí, un consumidor representativo y regresiones con el consumo agregado. Desde los años 90, el camino más fructífero ha sido abandonarlo: modelos con hogares que difieren en renta, riqueza y liquidez y que sufren riesgos individuales que no pueden asegurar, estimados con datos de hogares y \emph{pseudopaneles}, cohortes que se siguen en encuestas sucesivas \parencite{Deaton1992Understanding,AttanasioWeber2010Consumption}.
+\item En ellos, el agregado depende de la distribución: no es lo mismo dar un euro a un hogar \emph{hand-to-mouth} que a uno con ahorros. Es la base de los modelos macroeconómicos con agentes heterogéneos (HANK) con los que hoy se analizan las políticas monetaria y fiscal \parencite{KaplanMollViolante2018Monetary} \vertema{3.A.37}.
+\end{itemize}
+
+\paragraph{Economía conductual}
+
+\begin{itemize}
+\item \emph{Desviaciones sistemáticas}: hay casos bien documentados en los que las personas se apartan de forma sistemática de la utilidad esperada \parencite{KahnemanTversky1979Prospect} \vertema{3.A.10}, y la elección entre consumir y ahorrar, con horizontes largos y mucha incertidumbre, no es una excepción.
+\item \emph{Reglas prácticas}: el problema~\eqref{eq:problema-hall} es difícil, y muchos hogares siguen reglas sencillas, como gastar lo que entra, que pueden ser una respuesta racional al coste de calcular. Es la interpretación que dan \textcite{CampbellMankiw1989Consumption} a su fracción $\lambda$.
+\item \emph{Descuento cuasihiperbólico}:
+  \begin{itemize}
+  \item los experimentos muestran que se descuenta mucho más entre hoy y mañana que entre 2 días del futuro lejano \parencite{Thaler1981Some}: los hogares son pacientes a largo plazo e impacientes a corto;
+  \item sus preferencias son \emph{inconsistentes en el tiempo} \parencite{Strotz1955Myopia}: el plan de ahorro de hoy no se cumple mañana;
+  \item \textcite{Laibson1997Golden} lo lleva al consumo:\footnote{Con el descuento cuasihiperbólico, la utilidad del hogar en $t$ es $U_t=u(C_t)+\beta\sum_{s=1}^{\infty}\delta^s\,u(C_{t+s})$, con $0<\beta<1$ y $0<\delta<1$: entre hoy y mañana descuenta con $\beta\delta$ y entre 2 periodos futuros, solo con $\delta$. Con $\beta=1$ es el descuento exponencial de \textcite{Samuelson1937Note}. Cuidado con las letras: en esta nota, $\delta$ es el factor de descuento exponencial y $\beta$ el sesgo hacia el presente; en el resto del tema, $\beta\equiv 1/(1+\rho)$ es el factor de descuento y $\delta$, la tasa de depreciación de los duraderos.} el hogar consume de más cuando tiene liquidez y busca compromisos que le aten las manos, como los planes de pensiones o la vivienda, que no se pueden gastar de golpe. Explica el exceso de sensibilidad y el poco ahorro para la jubilación \vertema{3.A.1}.
+  \end{itemize}
+\item \emph{Contabilidad mental}: los hogares reparten el dinero en «cuentas» (vacaciones, colegio, hipoteca) que no son intercambiables, así que la propensión a consumir depende del origen de cada euro \parencite{Thaler1985Mental,ShefrinThaler1988}.\footnote{Richard \autor{Thaler} recibió el Premio Nobel de Economía en 2017 «por sus contribuciones a la economía conductual» \parencite{Nobel2017Thaler}.}
+\item \emph{Implicación de política}: los empujones (\emph{nudges}), como la afiliación automática a un plan de ahorro con libertad para salir, elevan el ahorro sin restringir la elección.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Valoración de las salidas}: ninguna pieza basta por sí sola, y casi todas apuntan en la misma dirección. Cuanto más imperfecto es el entorno del hogar (riesgos que no puede asegurar, crédito al que no accede, autocontrol limitado), más depende el consumo de la renta corriente y más eficaz es la política fiscal, anunciada o no. Lo que importa ya no es solo si una medida se anuncia o sorprende, sino a qué hogares llega (tabla~\ref{tab:implicaciones}).
+\item \emph{Recapitulación}: con incertidumbre y expectativas racionales, \autor{Hall} lleva la renta permanente a su conclusión lógica: el consumo solo cambia por noticias. Los datos muestran exceso de sensibilidad y de suavidad, y las salidas (prudencia, hábitos, liquidez, heterogeneidad y sesgos de conducta) devuelven a la renta corriente parte del papel que le daba \autor{Keynes}, ahora con fundamentos microeconómicos.
+\item Queda una pieza por cambiar: el bien. \textcite{Mankiw1982Hall} muestra que, si el bien dura, lo que sigue un paseo aleatorio es el stock, no el gasto, que se vuelve mucho más volátil: lo que se suaviza es el servicio, no la compra. Una vez estudiado el consumo de bienes que se agotan al usarse, pasamos a los que prestan servicios durante varios años.
+\end{itemize}
+
+% ==========================================================================
+\section{La demanda de bienes de consumo duradero}\label{sec:duraderos}
+\minutos{7}
+
+\begin{notaopositor}
+En el cante: las particularidades y el coste de uso (\tiempo{2,5}), con el problema de palabra, la ecuación del coste de uso recuadrada y el resultado de \autor{Mankiw}: se suaviza el servicio, no el gasto. Los costes de ajuste y la irreversibilidad (\tiempo{2}), con el gráfico de las bandas $(S,s)$ por capas. La evidencia y las implicaciones (\tiempo{2,5}), con las cifras del INE, el \emph{Cash for Clunkers} y el PIVE en una frase cada uno y la tabla de implicaciones de todo el tema dicha de palabra; el gráfico de datos se cita sin dibujarlo. La lagrangiana, las condiciones de primer orden y la derivación del resultado de \autor{Mankiw} están en el anexo~\ref{anexo:duraderos}.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: lo que el hogar suaviza no es el gasto en duraderos, sino el servicio que le prestan. Por eso su compra se comporta como una inversión: es irregular, se puede aplazar, depende del tipo de interés y del crédito y amplifica el ciclo.
+\item Una vez estudiado el consumo de bienes que se agotan al usarse, pasamos a los que prestan servicios durante varios años: automóviles, muebles, electrodomésticos. Pesan poco en el consumo, pero mucho en sus oscilaciones.\footnote{En este bloque, $C_t$ es el consumo de bienes no duraderos y servicios, $d_t$ el stock de duraderos y $\delta$ su tasa de depreciación.}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Particularidades de los bienes duraderos y coste de uso}\label{sec:duraderos-modelo}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Un bien duradero da utilidad por el \emph{stock} que se posee, no por lo que se gasta en el periodo: el coche comprado hace 5 años sigue llevando al trabajo. Hay que distinguir 2 magnitudes:
+  \begin{itemize}
+  \item el \concepto{stock de duraderos}, $d_t$, que presta un flujo de servicios proporcional a él;
+  \item el \concepto{gasto en duraderos}, $I^d_t$, lo que se compra en el periodo, que repone lo que se ha depreciado y, si acaso, aumenta el stock.
+  \end{itemize}
+\item Si cada duradero tuviera un mercado de alquiler perfecto, al hogar le daría igual comprarlo que alquilarlo, y el modelo de los no duraderos se aplicaría a su servicio, pagado con el alquiler. Pero esos mercados apenas existen para los hogares, salvo en la vivienda y en el \emph{renting} de coches, y para disfrutar del servicio hay que comprar el bien.
+\item Por eso la compra de un duradero se parece a la inversión de una empresa \vertema{3.A.34}: el stock se acumula como el capital, $d_t=(1-\delta)\,d_{t-1}+I^d_t$, y su precio relevante no es el de compra, sino un alquiler implícito.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El hogar disfruta del consumo no duradero, $C_t$, y de los servicios del stock de duraderos, $d_t$, con una utilidad $u(C_t,d_t)$ creciente y cóncava en los 2 argumentos.
+\item El duradero cuesta $p^d_t$ unidades del no duradero (su precio relativo) y se deprecia a la tasa $\delta$.
+\item Certidumbre, mercado de capitales perfecto al tipo de interés real $r$ y un horizonte de $T$ periodos.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Problema}: el de \autor{Fisher} con $T$ periodos y un bien más, que se compra para varios años:
+  \begin{equation}
+  \optim{\max}{\{C_t,\,d_t\}}{\sum_{t=0}^{T}\beta^t\,u(C_t,d_t)}{b_{t+1}=(1+r)\,b_t+Y_t-C_t-p^d_t\,I^d_t\\ I^d_t=d_t-(1-\delta)\,d_{t-1}\\ b_0,\ d_{-1}\ \text{dados};\quad b_{T+1}\geq 0}\label{eq:problema-duraderos}
+  \end{equation}
+\item \emph{Condiciones de primer orden}: 2 ecuaciones de \autor{Euler} (anexo~\ref{anexo:duraderos}), donde $u_C$ y $u_d$ son las utilidades marginales del no duradero y del servicio del duradero:
+  \begin{itemize}
+  \item la del no duradero, la de siempre: $u_C(C_t,d_t)=\beta(1+r)\,u_C(C_{t+1},d_{t+1})$;
+  \item la del duradero:
+    \begin{equation*}
+    p^d_t\,u_C(C_t,d_t)=u_d(C_t,d_t)+\beta\,(1-\delta)\,p^d_{t+1}\,u_C(C_{t+1},d_{t+1}).
+    \end{equation*}
+    Comprar una unidad más cuesta hoy $p^d_t$ unidades de no duradero (a la izquierda) y da 2 cosas (a la derecha): el servicio de este periodo y lo que queda de ella mañana, que se puede vender, valorado en utilidad y descontado.
+  \end{itemize}
+\item \emph{El coste de uso}: combinando las 2 ecuaciones, la relación marginal de sustitución entre el servicio del duradero y el no duradero es igual al \concepto{coste de uso} del duradero, $c^d_t$, su alquiler implícito: lo que cuesta comprar una unidad hoy, usarla un periodo y venderla mañana, ya depreciada, en valor de hoy.\footnote{No debe confundirse $c^d_t$ con $c$, la propensión marginal a consumir de \autor{Keynes}.} Es:
+  \funcionclave[eq:coste-uso]{\frac{u_d(C_t,d_t)}{u_C(C_t,d_t)}=c^d_t\equiv p^d_t-\frac{1-\delta}{1+r}\,p^d_{t+1}\simeq p^d_t\,\big(r+\delta-\pi^d_{t+1}\big)}
+  donde $\pi^d_{t+1}$ es la tasa de variación del precio relativo del duradero. Tiene los 3 componentes del coste de uso del capital de la empresa \vertema{3.A.34}: el coste de oportunidad de los fondos ($r$), la depreciación ($\delta$) y la pérdida o la ganancia de valor del bien ($-\pi^d_{t+1}$).
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Se suaviza el servicio, no el gasto}: el hogar reparte en el tiempo el servicio del duradero como reparte el no duradero, pero la compra se concentra en unos pocos periodos. En el no duradero, alisar el consumo y alisar el gasto son lo mismo; en el duradero, no, y el gasto total de un hogar es mucho más irregular que su consumo.
+\item \emph{El gasto amplifica los cambios del stock deseado}: como el stock es grande frente a lo que se compra cada año, un cambio pequeño del stock deseado exige un cambio grande del gasto. Si el stock deseado sube un 1~\%, el gasto del año, que antes solo reponía la depreciación, $\delta\,d_{t-1}$, sube un $1/\delta$~\%: con una depreciación del 20~\% anual, un 5~\%, 5 veces más que el stock.
+\item \emph{El tipo de interés y el crédito pesan más}: el tipo de interés entra directamente en el coste de uso, y la compra se suele financiar con un préstamo en el que el propio bien sirve de garantía.
+\item \emph{La compra se puede aplazar}: el hogar que la retrasa sigue disfrutando del stock que tiene, algo más viejo. Cuando empeoran las expectativas o aumenta la incertidumbre, lo primero que se recorta es la compra de duraderos.
+\end{itemize}
+
+\paragraph{c) Extensiones: los duraderos en el modelo de \autor{Hall}}
+
+\begin{itemize}
+\item \textcite{Mankiw1982Hall} lleva los duraderos al marco de \autor{Hall}: renta incierta, expectativas racionales, $\beta(1+r)=1$, precio relativo constante y una utilidad separable en los 2 bienes y cuadrática en el servicio del duradero (anexo~\ref{anexo:duraderos}).
+\item Con esos supuestos, lo que sigue un paseo aleatorio es el \emph{stock}, $d_{t+1}=d_t+e_{t+1}$, y no el gasto. Como $I^d_t=d_t-(1-\delta)\,d_{t-1}$, el cambio del gasto es
+  \begin{equation}
+  I^d_{t+1}-I^d_t=e_{t+1}-(1-\delta)\,e_t,\label{eq:mankiw}
+  \end{equation}
+  que depende de la noticia de hoy y de la de ayer, con signo contrario: tras una compra grande por una buena noticia viene otra menor. Los cambios del gasto deberían tener una autocorrelación negativa, de $-(1-\delta)/[1+(1-\delta)^2]$, cercana a $-0{,}5$ con una depreciación trimestral pequeña.
+\item Es la conclusión del bloque~\ref{sec:incertidumbre} llevada al duradero: lo impredecible es el servicio, no el gasto.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Con datos de Estados Unidos de posguerra, el gasto en duraderos no muestra esa autocorrelación negativa: se comporta como un proceso autorregresivo de primer orden, igual que el de no duraderos. \autor{Mankiw} lo interpreta como otro rechazo del modelo de \autor{Hall} \parencite{Mankiw1982Hall,Bernanke1985Adjustment}.
+\item Los duraderos, por tanto, no salvan el paseo aleatorio: añaden otro enigma. El gasto es más persistente de lo que dice la teoría, como si los hogares ajustaran su stock poco a poco y no de golpe.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item El modelo da el concepto clave, el coste de uso, y explica por qué el gasto en duraderos es más volátil y más sensible al tipo de interés que el resto del consumo.
+\item Pero supone que el hogar ajusta su stock sin coste en cada periodo, y cambiar de coche o de cocina no es gratis: hay que buscar, tramitar y vender el usado por menos de lo que vale, porque el comprador desconfía de su calidad \vertema{3.A.13}. Esos costes de ajuste son la pieza que falta.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Costes de ajuste, irreversibilidad e incertidumbre}\label{sec:duraderos-ajuste}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: si ajustar el stock cuesta, el hogar no compra cada vez que cambia su stock deseado, sino de tarde en tarde y de golpe. El gasto de cada hogar es esporádico, y el agregado depende de cuántos hogares deciden comprar a la vez.
+\item Los costes de ajuste pueden ser de 2 tipos:
+  \begin{itemize}
+  \item \emph{convexos}, que crecen más que proporcionalmente con el tamaño del ajuste: el hogar se acerca a su stock deseado poco a poco, y el gasto tiene la inercia que muestran los datos \parencite{Bernanke1985Adjustment};
+  \item \emph{fijos} o proporcionales al valor del bien, por cada operación (buscar, tramitar, vender el usado con descuento): llevan a una regla de inacción y ajuste a saltos, la \concepto{regla $(S,s)$}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los de \ref{sec:duraderos-modelo}, con incertidumbre sobre la riqueza y un coste de transacción en cada compra, proporcional al valor del stock que se vende \parencite{GrossmanLaroque1990Asset}.
+\item Entre compra y compra, el cociente entre el stock y el que el hogar desearía tener sin costes, $d_t/d^*_t$, se mueve con la depreciación y con las noticias sobre la riqueza.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{La regla óptima} (gráfico~\ref{fig:duraderos-ss}): mientras el cociente $d_t/d^*_t$ esté dentro de una banda $(s,S)$, el hogar no compra. Cuando toca uno de los límites (el inferior, porque el coche ha envejecido o la riqueza ha crecido), ajusta de golpe hasta un objetivo dentro de la banda.
+\item \emph{La anchura de la banda} crece con el coste de transacción y con la incertidumbre: cuanto más cuesta ajustar y más incierto es el futuro, más tiempo pasa entre compra y compra.
+\item \emph{El agregado}: el gasto de cada hogar es nulo casi siempre y grande de vez en cuando. El gasto agregado depende de cómo se reparten los hogares dentro de la banda, de cuántos están cerca del límite, y un mismo choque lo mueve mucho o poco según esa distribución \parencite{BertolaCaballero1990Kinked}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La regla $(S,s)$: el stock se ajusta a saltos y el gasto es esporádico}\label{fig:duraderos-ss}
+\grafico[0.6\textwidth]{duraderos-ss}
+\fuente{elaboración propia a partir de \textcite{GrossmanLaroque1990Asset} y \textcite{Eberly1994Adjustment}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Inercia del gasto agregado}: los hogares no ajustan todos a la vez, y el gasto agregado responde poco a poco a los choques, como en los datos de \autor{Mankiw} \parencite{Caballero1993Durable}.
+\item \emph{Una respuesta que depende del ciclo}: en una recesión hay menos hogares cerca del límite y la incertidumbre ensancha la banda, así que un mismo estímulo mueve menos el gasto en duraderos que en una expansión \parencite{BergerVavra2015}.
+\end{itemize}
+
+\paragraph{c) Extensiones: irreversibilidad e incertidumbre}
+
+\begin{itemize}
+\item Comprar un duradero es, en parte, irreversible: un coche nuevo pierde buena parte de su valor de reventa en cuanto sale del concesionario. Con incertidumbre, esperar tiene un \concepto{valor de opción}: quien aplaza la compra decide mejor cuando sabe más, y solo compra cuando el beneficio de hacerlo supera el coste más ese valor de esperar.
+\item Más incertidumbre significa más valor de la opción y más espera. \textcite{Bernanke1983Irreversibility} lo formula para la inversión: son los malos resultados posibles los que frenan la decisión (el \emph{principio de las malas noticias}); \textcite{DixitPindyck1994} lo desarrollan con la teoría de las opciones reales \vertema{3.A.34}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Con datos de compras de automóviles de los hogares de Estados Unidos, \textcite{Eberly1994Adjustment} encuentra un comportamiento de banda: los hogares compran cuando su stock se aleja lo bastante del deseado.
+\item La lentitud con que se ajusta el gasto agregado se explica por la suma de muchos hogares que ajustan a saltos y en momentos distintos \parencite{Caballero1993Durable}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Los costes de ajuste y la irreversibilidad explican lo que el modelo sin fricciones no explicaba: la inercia del gasto agregado, su sensibilidad a la incertidumbre y que su respuesta dependa del momento del ciclo.
+\item A cambio, el agregado deja de depender de un consumidor representativo: hay que seguir la distribución de los hogares, como en los modelos de hogares heterogéneos (\ref{sec:heterogeneidad}). Veamos qué dicen los datos y qué implica para la política económica.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Evidencia empírica e implicaciones de política económica}\label{sec:duraderos-evidencia}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: los datos confirman que el gasto en duraderos es el componente más volátil del consumo y el que más se presta a adelantarse o aplazarse. De ahí su papel en la transmisión de la política económica, que cerramos con las implicaciones de todo el tema.
+\end{itemize}
+
+\paragraph{a) Evidencia empírica de los bienes duraderos}
+
+\begin{itemize}
+\item \emph{Volatilidad}: en España, el gasto de los hogares en duraderos fue el 6,9~\% de su consumo en 2025, pero es su componente más volátil: entre 1996 y 2026, la desviación típica de su tasa de variación interanual en volumen fue de 10,6 puntos, frente a 2,0 en los no duraderos, 4,5 en el consumo de los hogares y 3,9 en el PIB \parencite{INE2026CNTRDemanda}.\footnote{Son datos del consumo \emph{interior} de los hogares, que incluye el gasto de los no residentes en España: el INE no publica el desglose por durabilidad del consumo nacional. Sin los años de la pandemia (1996-2019), las desviaciones típicas son de 8,1 puntos en los duraderos, 2,0 en los no duraderos, 2,7 en el consumo de los hogares y 2,3 en el PIB.}
+\item \emph{Recesiones}: es el primer gasto que se recorta. Cayó un 17,9~\% interanual a comienzos de 2009 y un 12,6~\% a finales de 2012, frente a caídas del 1,8 y del 4,3~\% en los no duraderos \parencite{INE2026CNTRDemanda}.
+\item \emph{Demanda embalsada}: en el segundo trimestre de 2020, con las tiendas cerradas, el gasto en duraderos cayó un 43,4~\% interanual; un año después creció un 68,6~\%, mientras que el de no duraderos se movió un $-2{,}7$ y un 1,5~\% \parencite{INE2026CNTRDemanda,Eurostat2026namq10fcs}. Es la compra aplazada que vuelve en cuanto se puede (gráfico~\ref{fig:duraderos-datos}). Por eso el consumo de duraderos es mucho más procíclico que el resto \vertema{3.A.42}.
+\item \emph{A lo largo de la vida}: los hogares jóvenes acumulan primero duraderos, que además les sirven de garantía para pedir prestado, y después activos financieros; los duraderos explican una parte de la joroba del consumo a lo largo de la vida \parencite{FernandezVillaverdeKrueger2011Consumption}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El gasto de los hogares en bienes duraderos y no duraderos en España (tasa de variación interanual del volumen, \%, datos trimestrales corregidos de estacionalidad y calendario)}\label{fig:duraderos-datos}
+\grafico[0.85\textwidth]{duraderos-datos}
+\fuente{INE, Contabilidad Nacional Trimestral de España \parencite{INE2026CNTRDemanda}.}
+\end{figure}
+
+\paragraph{b) Implicaciones de política económica de los bienes duraderos}
+
+\begin{itemize}
+\item \emph{Política monetaria}: el gasto en duraderos es el componente del consumo más sensible al tipo de interés, que entra en su coste de uso y en el del crédito con que se paga. Es una de las vías por las que la política monetaria llega antes a la demanda \vertema{3.A.37}.
+\item \emph{Política fiscal}: los incentivos temporales a la compra mueven mucho el gasto en duraderos, pero sobre todo lo \emph{adelantan}:
+  \begin{itemize}
+  \item el programa estadounidense de achatarramiento de 2009 (\emph{Cash for Clunkers}) llevó a comprar unos 370.000 coches más en julio y agosto, que se compensaron casi por completo con menos compras en los 10 meses siguientes \parencite{MianSufi2012Effects};
+  \item los planes franceses de 1994 y 1995 dejaron el mismo perfil: más ventas mientras duraron y menos después \parencite{AddaCooper2000};
+  \item en España, el Programa de Incentivos al Vehículo Eficiente (PIVE), aprobado en septiembre de 2012 para sustituir turismos de más de 12 años, tuvo varias ediciones en los años siguientes \parencite{IDAE2012PIVE}.
+  \end{itemize}
+\item \emph{Estabilización}: estos incentivos sirven para mover la demanda en el tiempo, por ejemplo hacia una recesión, más que para crearla. Y funcionan peor justo cuando más falta hacen, en las recesiones, porque hay menos hogares cerca de renovar su stock \parencite{BergerVavra2015}; lo que se adelanta se devuelve después.
+\item \emph{La vivienda}: el duradero más importante se contabiliza como inversión \vertema{3.A.30}, pero transmite el ciclo inmobiliario al consumo por el efecto riqueza \parencite{Bover2005Wealth} y por su papel como garantía del crédito.
+\end{itemize}
+
+\paragraph{c) Implicaciones de política económica de las teorías del consumo}
+
+\begin{itemize}
+\item Con los duraderos se completa el recorrido. La tabla~\ref{tab:implicaciones} resume, teoría a teoría, qué política mueve el consumo, cuándo y por qué:
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Implicaciones de política económica de las teorías del consumo}\label{tab:implicaciones}
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.8cm}>{\centering\arraybackslash}m{2.7cm}>{\centering\arraybackslash}m{3.0cm}>{\centering\arraybackslash}m{2.9cm}>{\centering\arraybackslash}m{2.8cm}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Teoría} & \textbf{El consumo depende de} & \textbf{Rebaja de impuestos transitoria} & \textbf{Medida anunciada} & \textbf{Tipo de interés}\\
+\midrule
+\autor{Keynes} (1936) & la renta corriente & efecto grande (multiplicador) & actúa al aplicarse & poco efecto\\
+Renta permanente y ciclo vital & la renta permanente o la riqueza & efecto pequeño: se ahorra & actúa cuando cambia la renta permanente & efecto riqueza\\
+\autor{Hall} (1978) & las noticias sobre la renta permanente & efecto pequeño & actúa al anunciarse & poco efecto (ESI baja)\\
+Equivalencia ricardiana & la senda del gasto público & ninguno, si se financia con deuda & ninguno & ---\\
+\rowcolor{tceesalvia}
+Liquidez, prudencia y hogares \emph{hand-to-mouth} & la renta corriente y la liquidez & efecto grande en los hogares sin liquidez & actúa al aplicarse & por la renta, el empleo y el crédito\\
+Bienes duraderos & el stock deseado y el coste de uso & un incentivo temporal adelanta compras & se aplaza la compra hasta que se aplica & efecto grande (coste de uso)\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~8]{Romer2019Advanced} y \textcite{JappelliPistaferri2017Economics}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Lectura de la tabla}: de arriba abajo, la política fiscal pierde eficacia al pasar de \autor{Keynes} a \autor{Hall} y a la equivalencia ricardiana, y la recupera al reconocer las imperfecciones del entorno del hogar: riesgos que no puede asegurar, crédito al que no llega, costes de ajustar sus compras. La respuesta a la pregunta «¿qué política mueve el consumo?» depende de a qué hogares llega la medida y de qué bienes compran.
+\item \emph{Recapitulación}: el gasto en duraderos es una decisión sobre un stock, con un coste de uso, costes de ajuste e irreversibilidad. Se parece más a una inversión que a un consumo, y eso lo hace volátil, sensible al tipo de interés y fácil de adelantar o aplazar con la política económica.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: En conclusión, la teoría del consumo ha recorrido 3 etapas.
+  \begin{itemize}
+  \item Con certidumbre, el consumo pasa de depender de la renta corriente, en \autor{Keynes}, a depender de los recursos de toda la vida, en \autor{Fisher}, \autor{Friedman} y \autor{Modigliani}, y así se resuelve el enigma de \autor{Kuznets}.
+  \item Con incertidumbre y expectativas racionales, solo las noticias lo mueven (\autor{Hall}); pero los datos muestran que la renta corriente sigue importando, sobre todo en los hogares sin liquidez, por prudencia, por restricciones al crédito y por límites al autocontrol.
+  \item En los duraderos se suaviza el servicio y no el gasto, que se comporta como una inversión y amplifica el ciclo.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: de estas teorías depende cuánto rinde un cheque fiscal, cómo llega al gasto una subida de tipos, qué hará el ahorro con el envejecimiento y si un plan de achatarramiento crea demanda o solo la adelanta.
+\item \textbf{\emph{Extensiones}}: la elección intertemporal en horizonte infinito y en generaciones solapadas \vertema{3.A.29}; la inversión con costes de ajuste e irreversibilidad, pariente cercana de los duraderos \vertema{3.A.34}; la equivalencia ricardiana \vertema{3.A.39}; el estancamiento secular que \autor{Hansen} dedujo de la función keynesiana y los multiplicadores con hogares que viven al día \vertema{3.A.40}; los modelos con agentes heterogéneos en la política monetaria \vertema{3.A.37}; el consumo en el ciclo \vertema{3.A.42}; la valoración de activos basada en el consumo \vertema{3.B.23}, y la economía conductual \vertema{3.A.1}.
+\item \textbf{\emph{Opinión}}: el consumidor de \autor{Fisher} y de \autor{Hall} sigue siendo la referencia, pero no es el hogar medio, sino el que tiene ahorros. Para la política económica, la pregunta útil ya no es cuál es «la» propensión a consumir, sino cómo se reparte entre los hogares: la misma medida tiene efectos muy distintos según a quién llegue.
+\item \textbf{\emph{Idea final}}: volviendo al refrán del principio, guardar en tiempo de vacas gordas para las flacas es justo lo que hace el consumidor de la renta permanente. El problema es que no todos los hogares tienen granero: muchos viven al día o no pueden pedir prestado, y para ellos las vacas flacas se notan enseguida en el plato. Lo que gastamos hoy responde a lo que esperamos ganar en la vida, pero también a lo que entra este mes, y en esa doble dependencia está el margen de la política económica.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: la teoría neoclásica y el mercado de fondos prestables}\label{anexo:neoclasica}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Los neoclásicos (\autor{Jevons}, \autor{Menger}, \autor{Walras} y \autor{Marshall}) no elaboran una función de consumo agregada: estudian la demanda de cada bien dentro de la teoría del consumidor \vertema{3.A.8}.
+\item En el agregado, el consumo es lo que queda tras decidir el ahorro, y sus determinantes son los del ahorro: la renta, el tipo de interés y la preferencia temporal. Por eso no es una teoría del consumo propiamente dicha, sino un antecedente.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Economía cerrada en la que la producción la fija la oferta (pleno empleo) y los precios son flexibles.
+\item La producción iguala al gasto, y la renta se reparte entre consumo, ahorro e impuestos:
+  \begin{equation*}
+  Y=C+I+G,\qquad Y=C+S+T\qquad\Longrightarrow\qquad S=I+(G-T).
+  \end{equation*}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La igualdad anterior es la condición de equilibrio del mercado de bienes, y se lee como un mercado de \concepto{fondos prestables} (gráfico~\ref{fig:fondos-prestables}):
+  \begin{itemize}
+  \item la \emph{oferta} de fondos es el ahorro, $S(r)$, creciente en el tipo de interés real: un tipo más alto premia más el ahorro y, con la renta dada, reduce el consumo;
+  \item la \emph{demanda} de fondos es la inversión más el déficit público, $I(r)+G-T$, decreciente en el tipo de interés.
+  \end{itemize}
+\item El tipo de interés que vacía el mercado, $r^n$, es el \concepto{tipo de interés natural} de \autor{Wicksell}: el que iguala el ahorro y la inversión con la producción de pleno empleo. En el gráfico, el equilibrio inicial es $E_0$, con un ahorro $S_0$.
+\item \emph{Una subida del gasto público}, de $G_0$ a $G_1$, desplaza la demanda de fondos a la derecha. Como la producción no cambia, para hacer sitio al gasto público el tipo de interés sube de $r^n$ a $r^n_1$, y el nuevo equilibrio es $E_1$:
+  \begin{itemize}
+  \item el ahorro sube de $S_0$ a $S_1$: con la renta dada, el consumo baja;
+  \item la inversión privada baja, al moverse a lo largo de la demanda inicial.
+  \end{itemize}
+  El gasto público desplaza a la vez al consumo y a la inversión privada (\emph{crowding-out}): cambia la composición de la demanda, no su nivel.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El mercado de fondos prestables neoclásico}\label{fig:fondos-prestables}
+\grafico[0.55\textwidth]{fondos-prestables}
+\fuente{elaboración propia.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Política monetaria}: no afecta al consumo, porque solo mueve el nivel de precios y no el tipo de interés real: se cumple la teoría cuantitativa del dinero, con neutralidad del dinero y dicotomía clásica.\footnote{Conviene distinguir neutralidad y dicotomía \parencite{Serletis2007Demand}. El dinero es \emph{neutral} si un cambio en su cantidad no altera las variables reales (empleo y producción), y \emph{superneutral} si tampoco lo hace un cambio en su tasa de crecimiento, algo que aquí no tiene sentido porque el modelo es estático. Hay \emph{dicotomía clásica} si las variables reales se determinan en un subsistema de ecuaciones en el que no intervienen ni la cantidad de dinero ni el nivel de precios: el dinero es un velo. Como advierte \textcite[p.~47]{Sargent1987Macroeconomic}: «Obviamente, neutralidad y dicotomía son conceptos distintos. Un sistema neutral no necesariamente dicotomiza, mientras que un sistema en el que el “dinero es un velo” no tiene por qué satisfacer nuestra definición de sistema neutral». \autor{Sargent} construye un ejemplo en el que se cumple la dicotomía, pero no la neutralidad.}
+\item \emph{Política fiscal}: un aumento del gasto público reduce el consumo y la inversión privada a través del tipo de interés, pero no cambia la renta, que fija la oferta.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la optimización intertemporal con $T$ periodos}\label{anexo:optimizacion}
+
+\paragraph{a) El problema}
+
+\begin{itemize}
+\item \emph{Comportamiento, preferencias y restricción}: el consumidor de \autor{Fisher} vive $T+1$ periodos, $t=0,\dots,T$, con certidumbre, y tiene una utilidad aditiva con descuento exponencial \vertema{3.A.29}:
+  \begin{equation*}
+  U_0\equiv\sum_{t=0}^{T}\beta^t\,u(C_t),\qquad u'>0,\quad u''<0,\qquad\beta\equiv\frac{1}{1+\rho}.
+  \end{equation*}
+\item En cada periodo, lo que gasta más lo que ahorra para el siguiente es igual a lo que gana más lo que le rinden los activos acumulados, $b_t$, al tipo $r$:
+  \begin{equation*}
+  \underbrace{C_t}_{\text{consumo}}+\underbrace{b_{t+1}}_{\text{activos para }t+1}=\underbrace{Y_t}_{\text{renta}}+\underbrace{(1+r)\,b_t}_{\text{activos con sus intereses}}\quad\Longleftrightarrow\quad b_{t+1}-b_t=Y_t+r\,b_t-C_t:
+  \end{equation*}
+  el ahorro del periodo es la renta, laboral y financiera, menos el consumo. Es el \emph{vehículo} para trasladar el consumo en el tiempo.
+\item El problema, en tiempo discreto y con horizonte finito, es
+  \begin{equation}
+  \optim{\max}{\{C_t\}}{\sum_{t=0}^{T}\beta^t\,u(C_t)}{b_{t+1}=(1+r)\,b_t+Y_t-C_t,\quad t=0,\dots,T\\ b_0\ \text{dado}\\ b_{T+1}\geq 0}\label{eq:problema-t-periodos}
+  \end{equation}
+\item \emph{La condición terminal}, $b_{T+1}\geq 0$, hace falta:\footnote{Corrige la nota del original, que hablaba de una «tasa de ahorro negativa en $T$»: lo que se descarta es morir endeudado, $b_{T+1}<0$.}
+  \begin{itemize}
+  \item sin ella, la solución sería endeudarse sin límite y consumir con cargo a esa deuda, que nadie devolvería: hay que impedir morir endeudado, $b_{T+1}<0$;
+  \item tampoco interesa morir con activos, $b_{T+1}>0$, que podrían haberse consumido antes y dado utilidad.
+  \end{itemize}
+  En el óptimo, $b_{T+1}=0$.
+\item \emph{De las restricciones de cada periodo a la intertemporal}: sustituyendo hacia delante $b_1,b_2,\dots$ y con $b_{T+1}=0$,
+  \begin{equation}
+  \sum_{t=0}^{T}\frac{C_t}{(1+r)^t}=(1+r)\,b_0+\sum_{t=0}^{T}\frac{Y_t}{(1+r)^t}:\label{eq:restriccion-intertemporal}
+  \end{equation}
+  el valor actual del consumo es igual a la riqueza, los activos iniciales más el valor actual de las rentas.\footnote{Con certidumbre y un activo sin riesgo, las restricciones de cada periodo siempre se pueden resumir en la intertemporal. Con incertidumbre, hacen falta mercados \emph{completos} (un activo para cada estado de la naturaleza); si son incompletos, no hay una sola restricción intertemporal y el problema se resuelve con las restricciones de cada periodo y cada estado, como en el de \autor{Hall}~\eqref{eq:problema-hall}. Si hay activos \emph{redundantes} (unos replican a otros), la restricción intertemporal se sigue cumpliendo; lo que no se puede determinar es cuánto se tiene de cada activo, aunque el consumo sí quede determinado. La macroeconomía moderna trata estas situaciones con modelos macrofinancieros.}
+\end{itemize}
+
+\paragraph{b) La solución por sustitución}
+
+\begin{itemize}
+\item Despejando el consumo de cada restricción, $C_t=(1+r)\,b_t+Y_t-b_{t+1}$, y sustituyéndolo en el objetivo, el problema pasa a ser de optimización sin restricciones en los activos $b_1,\dots,b_{T}$:
+  \begin{equation*}
+  \max_{\{b_{t+1}\}}\ \sum_{t=0}^{T}\beta^t\,u\big((1+r)\,b_t+Y_t-b_{t+1}\big).
+  \end{equation*}
+\item $b_{t+1}$ aparece en el consumo de $t$, con signo menos, y en el de $t+1$, multiplicado por $1+r$. La condición de primer orden es
+  \begin{equation*}
+  -\beta^t\,u'(C_t)+\beta^{t+1}(1+r)\,u'(C_{t+1})=0\quad\Longrightarrow\quad u'(C_t)=\beta(1+r)\,u'(C_{t+1}),
+  \end{equation*}
+  la ecuación de \autor{Euler}~\eqref{eq:euler} entre 2 periodos cualesquiera.
+\item Con el método de \autor{Lagrange} sobre la restricción intertemporal~\eqref{eq:restriccion-intertemporal}, con un multiplicador $\lambda$, las condiciones son $\beta^t\,u'(C_t)=\lambda/(1+r)^t$ en cada $t$, y dividiendo 2 consecutivas sale la misma ecuación. En problemas con incertidumbre o más complejos se usa la programación dinámica (la ecuación de \autor{Bellman}), con condiciones de óptimo equivalentes \vertema{3.A.29}.
+\item \emph{El caso de referencia}: con $\beta(1+r)=1$, $u'(C_t)=u'(C_{t+1})$ y, como $u'$ es decreciente, $C_t=C_{t+1}$: el consumo es constante. Con la restricción intertemporal,
+  \begin{equation*}
+  C=\frac{(1+r)\,b_0+\sum_{t=0}^{T}Y_t/(1+r)^t}{\sum_{t=0}^{T}(1+r)^{-t}},\qquad\text{y con }r=\rho=0,\quad C=\frac{b_0+\sum_{t=0}^{T}Y_t}{T+1}.
+  \end{equation*}
+  \findemo
+\end{itemize}
+
+\paragraph{c) Implicaciones}
+
+\begin{itemize}
+\item \emph{Lo que se consume en un periodo no depende de lo que se gana en él}, sino de la riqueza: de esta idea parte \autor{Friedman}.
+\item \emph{La senda del consumo es estable} (plana si $r=\rho$) y el ahorro hace de amortiguador: es alto en los periodos de renta alta y negativo en los de renta baja. De esta idea parten \autor{Modigliani} y \autor{Brumberg}.
+\item \emph{La forma de la senda de la renta no importa para el consumo, pero sí para el ahorro}, que es la diferencia entre ambos.
+\item \emph{Una medida anunciada hoy que cambie la renta futura cambia ya el consumo de hoy}, porque cambia la riqueza.
+\item \emph{Horizonte infinito}: con $T\to\infty$, la condición terminal pasa a ser la de no-Ponzi, $\lim_{T\to\infty}b_{T+1}/(1+r)^T\geq 0$, que se cumple con igualdad en el óptimo (condición de transversalidad) \vertema{3.A.29}.
+\end{itemize}
+
+\paragraph{d) Los efectos de un cambio del tipo de interés: la ecuación de \autor{Slutsky} con dotación}
+
+\begin{itemize}
+\item Con 2 periodos, el precio del consumo de mañana en términos del de hoy es $p\equiv 1/(1+r)$, y la riqueza es $\overline{W}=Y_1+p\,Y_2$, que depende de $p$ porque el consumidor tiene una dotación, $(Y_1,Y_2)$. La ecuación de \autor{Slutsky} con dotación \vertema{3.A.9} descompone el efecto de un cambio de $p$ sobre $C_1$:
+  \begin{equation}
+  \frac{dC_1}{dp}=\underbrace{\frac{\partial C_1^h}{\partial p}}_{\text{sustitución}\ (>0)}\ \underbrace{-\,C_2\,\frac{\partial C_1}{\partial\overline{W}}}_{\text{renta}\ (<0)}\ \underbrace{+\,Y_2\,\frac{\partial C_1}{\partial\overline{W}}}_{\text{riqueza o dotación}\ (>0)}=\frac{\partial C_1^h}{\partial p}+(Y_2-C_2)\,\frac{\partial C_1}{\partial\overline{W}},\label{eq:slutsky-dotacion}
+  \end{equation}
+  donde $C_1^h$ es la demanda compensada (hicksiana) y $C_1$ es un bien normal.
+\item Una subida de $r$ baja $p$. Entonces:
+  \begin{itemize}
+  \item el \emph{efecto sustitución} reduce $C_1$: el consumo de hoy se encarece frente al de mañana;
+  \item el \emph{efecto renta} lo aumenta: el consumo de mañana se abarata y el consumidor es, en ese sentido, más rico;
+  \item el \emph{efecto riqueza} lo reduce: la renta de mañana vale menos hoy.
+  \end{itemize}
+\item Los 2 últimos juntos tienen el signo de $C_2-Y_2=(1+r)(Y_1-C_1)$, es decir, del ahorro. En quien pide prestado ($Y_1<C_1$), el efecto riqueza pesa más que el de renta, los 2 juntos refuerzan el de sustitución y $C_1$ baja; en quien presta ($Y_1>C_1$), pesa más el de renta, los 2 juntos se oponen al de sustitución y el resultado es ambiguo, como se ve en el gráfico~\ref{fig:fisher-tipo-interes}.\findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: derivaciones del modelo de \autor{Hall} y del C-CAPM}\label{anexo:hall-ccapm}
+
+\paragraph{a) La solución cerrada de \autor{Hall} con horizonte finito y $r=\rho=0$}
+
+\begin{itemize}
+\item Con $r=\rho=0$, la restricción de cada periodo es $b_{s+1}=b_s+Y_s-C_s$ y, con $b_{T+1}=0$, la restricción intertemporal desde $t$ es $\sum_{s=t}^{T}C_s=b_t+\sum_{s=t}^{T}Y_s$, que se cumple en cada estado de la naturaleza. Tomando esperanzas en $t$:
+  \begin{equation*}
+  \sum_{s=t}^{T}\mathbb{E}_t[C_s]=b_t+\sum_{s=t}^{T}\mathbb{E}_t[Y_s].
+  \end{equation*}
+\item Por la ecuación~\eqref{eq:hall} y la ley de las esperanzas iteradas, $\mathbb{E}_t[C_s]=C_t$ para todo $s\geq t$. Sustituyendo:
+  \begin{equation*}
+  C_t=\frac{1}{T-t+1}\Big[\,b_t+\sum_{s=t}^{T}\mathbb{E}_t[Y_s]\Big]:
+  \end{equation*}
+  el consumidor consume la parte proporcional de sus activos y de la renta que espera ganar. Es la ecuación~\eqref{eq:ciclo-vital-individual} del ciclo vital, con esperanzas.
+\item Escribiendo lo mismo para $t-1$ y usando $b_t=b_{t-1}+Y_{t-1}-C_{t-1}$, sale $(T-t+1)\,C_{t-1}=b_t+\sum_{s=t}^{T}\mathbb{E}_{t-1}[Y_s]$. Restando:
+  \begin{equation*}
+  C_t-C_{t-1}=\frac{1}{T-t+1}\sum_{s=t}^{T}\big(\mathbb{E}_t[Y_s]-\mathbb{E}_{t-1}[Y_s]\big):
+  \end{equation*}
+  el cambio del consumo es la revisión de la renta esperada, repartida entre los periodos que quedan. Solo cambia con las noticias, y una noticia que solo afecta a un periodo mueve poco el consumo; una que afecta a todos los que quedan lo mueve tanto como a la renta.\findemo
+\end{itemize}
+
+\paragraph{b) La deriva del consumo con la CRRA: ahorro precautorio}
+
+\begin{itemize}
+\item Con la CRRA, $u'(C)=C^{-\theta}$, la ecuación de \autor{Euler} estocástica~\eqref{eq:euler-estocastica} se escribe
+  \begin{equation*}
+  1=\beta(1+r)\,\mathbb{E}_t\Big[\Big(\frac{C_{t+1}}{C_t}\Big)^{-\theta}\Big]=\beta(1+r)\,\mathbb{E}_t\big[e^{-\theta\,\Delta\ln C_{t+1}}\big].
+  \end{equation*}
+\item Si $\Delta\ln C_{t+1}$ sigue, condicionada a la información de $t$, una normal, $e^{-\theta\Delta\ln C_{t+1}}$ es lognormal y $\mathbb{E}_t\big[e^{-\theta\Delta\ln C_{t+1}}\big]=\exp\big\{-\theta\,\mathbb{E}_t[\Delta\ln C_{t+1}]+\tfrac{\theta^2}{2}\operatorname{var}_t(\Delta\ln C_{t+1})\big\}$.
+\item Tomando logaritmos, con $\ln\beta=-\ln(1+\rho)\simeq-\rho$ y $\ln(1+r)\simeq r$:
+  \begin{equation*}
+  0\simeq r-\rho-\theta\,\mathbb{E}_t[\Delta\ln C_{t+1}]+\frac{\theta^2}{2}\operatorname{var}_t(\Delta\ln C_{t+1})\quad\Longrightarrow\quad\mathbb{E}_t[\Delta\ln C_{t+1}]\simeq\frac{1}{\theta}\,(r-\rho)+\frac{\theta}{2}\operatorname{var}_t(\Delta\ln C_{t+1}).
+  \end{equation*}
+\item El primer término es la tendencia por la diferencia entre el tipo de interés y la tasa de descuento (\ref{sec:r-rho}); el segundo, el \emph{ahorro precautorio} (\ref{sec:precautorio}): cuanto más incierto es el consumo futuro, más se ahorra hoy y más empinada es la senda, aunque $r=\rho$. Con la utilidad cuadrática ($u'''=0$) ese término no existe.\findemo
+\end{itemize}
+
+\paragraph{c) La prima de riesgo en el C-CAPM}
+
+\begin{itemize}
+\item Para cualquier activo $i$, la ecuación~\eqref{eq:ccapm} es $1=\mathbb{E}_t\big[m_{t+1}\,(1+r_{i,t+1})\big]$. Para el activo sin riesgo, que rinde $r_f$ con certeza,
+  \begin{equation*}
+  1=(1+r_f)\,\mathbb{E}_t[m_{t+1}]\quad\Longrightarrow\quad 1+r_f=\frac{1}{\mathbb{E}_t[m_{t+1}]}.
+  \end{equation*}
+\item Para el activo con riesgo, usando que la esperanza de un producto es el producto de las esperanzas más la covarianza,
+  \begin{equation*}
+  1=\mathbb{E}_t[m_{t+1}]\,\mathbb{E}_t[1+r_{i,t+1}]+\operatorname{Cov}_t(m_{t+1},r_{i,t+1})\quad\Longrightarrow\quad\mathbb{E}_t[r_{i,t+1}]-r_f=-(1+r_f)\operatorname{Cov}_t(m_{t+1},r_{i,t+1}).
+  \end{equation*}
+\item Con la CRRA, $m_{t+1}=\beta\,(C_{t+1}/C_t)^{-\theta}\simeq\beta\,(1-\theta\,\Delta\ln C_{t+1})$ en primera aproximación, así que la covarianza es $\operatorname{Cov}_t(m_{t+1},r_{i,t+1})\simeq-\beta\theta\operatorname{Cov}_t(r_{i,t+1},\Delta\ln C_{t+1})$. Con $\beta(1+r_f)\simeq 1$,
+  \begin{equation*}
+  \mathbb{E}_t[r_{i,t+1}]-r_f\simeq\theta\operatorname{Cov}_t\big(r_{i,t+1},\Delta\ln C_{t+1}\big).
+  \end{equation*}
+  Con rendimientos y consumo lognormales, la relación se cumple con exactitud en logaritmos, con una corrección de media varianza del rendimiento.\findemo
+\item \emph{Lectura}: un activo exige una prima si rinde mucho cuando el consumo ya es alto, porque no asegura; uno que rinde cuando el consumo cae es un seguro y se acepta con menos rendimiento. La prima depende de la covarianza con el consumo y de la aversión al riesgo.
+\end{itemize}
+
+\paragraph{d) El enigma de la prima de riesgo}
+
+\begin{itemize}
+\item Aplicada a la bolsa, la fórmula dice que la prima es $\theta$ por la covarianza entre el rendimiento de las acciones y el crecimiento del consumo. En Estados Unidos, entre 1889 y 1978, las acciones rindieron unos 6 puntos al año más que los activos seguros, pero el consumo varía tan poco, y su covarianza con la bolsa es tan pequeña, que con aversiones razonables ($\theta\leq 10$) el modelo no da una prima mayor de 0,4 puntos \parencite{MehraPrescott1985Equity}.
+\item Para reproducir la prima observada haría falta una aversión al riesgo muy superior a la que se considera razonable. Entre las respuestas están los hábitos, que hacen al hogar muy averso al riesgo cuando su consumo se acerca a lo que está acostumbrado \parencite{CampbellCochrane1999Force} (\ref{sec:habitos}), y los modelos con hogares heterogéneos y riesgos que no se pueden asegurar.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el problema completo de los bienes duraderos}\label{anexo:duraderos}
+
+\paragraph{a) Las condiciones de primer orden y el coste de uso}
+
+\begin{itemize}
+\item La lagrangiana del problema~\eqref{eq:problema-duraderos}, con un multiplicador $\lambda_t$ para la restricción de cada periodo, es
+  \begin{equation*}
+  \mathcal{L}=\sum_{t=0}^{T}\beta^t\Big\{u(C_t,d_t)+\lambda_t\Big[(1+r)\,b_t+Y_t-C_t-p^d_t\big(d_t-(1-\delta)\,d_{t-1}\big)-b_{t+1}\Big]\Big\}.
+  \end{equation*}
+\item Condiciones de primer orden:
+  \begin{itemize}
+  \item respecto a $C_t$: $u_C(C_t,d_t)=\lambda_t$;
+  \item respecto a $b_{t+1}$, que aparece en la restricción de $t$ y en la de $t+1$: $-\beta^t\lambda_t+\beta^{t+1}(1+r)\,\lambda_{t+1}=0$, es decir, $\lambda_t=\beta(1+r)\,\lambda_{t+1}$, que con la anterior es la ecuación de \autor{Euler} del no duradero, $u_C(C_t,d_t)=\beta(1+r)\,u_C(C_{t+1},d_{t+1})$;
+  \item respecto a $d_t$, que aparece en la restricción de $t$ y, por la depreciación, en la de $t+1$: $u_d(C_t,d_t)-\lambda_t\,p^d_t+\beta\,\lambda_{t+1}\,(1-\delta)\,p^d_{t+1}=0$, que con la primera es la ecuación de \autor{Euler} del duradero:
+    \begin{equation*}
+    p^d_t\,u_C(C_t,d_t)=u_d(C_t,d_t)+\beta\,(1-\delta)\,p^d_{t+1}\,u_C(C_{t+1},d_{t+1}).
+    \end{equation*}
+  \end{itemize}
+\item Sustituyendo $\lambda_{t+1}=\lambda_t/[\beta(1+r)]$ en la tercera y dividiendo por $\lambda_t=u_C(C_t,d_t)$:
+  \begin{equation*}
+  \frac{u_d(C_t,d_t)}{u_C(C_t,d_t)}=p^d_t-\frac{1-\delta}{1+r}\,p^d_{t+1}\equiv c^d_t.
+  \end{equation*}
+\item Con $p^d_{t+1}=p^d_t\,(1+\pi^d_{t+1})$:
+  \begin{equation*}
+  c^d_t=p^d_t\,\frac{(1+r)-(1-\delta)(1+\pi^d_{t+1})}{1+r}=p^d_t\,\frac{r+\delta-\pi^d_{t+1}+\delta\,\pi^d_{t+1}}{1+r}\simeq p^d_t\,\big(r+\delta-\pi^d_{t+1}\big),
+  \end{equation*}
+  la ecuación~\eqref{eq:coste-uso}, paralela al coste de uso del capital, $c_K=P^K(r+\delta-\dot{P}^K/P^K)$ \vertema{3.A.34}.\findemo
+\end{itemize}
+
+\paragraph{b) Los duraderos en el modelo de \autor{Hall} \parencite{Mankiw1982Hall}}
+
+\begin{itemize}
+\item \emph{Supuestos}: renta incierta, expectativas racionales, $\beta(1+r)=1$, precio relativo constante, $p^d_t=p^d$ (y por tanto un coste de uso constante, $c^d=p^d(r+\delta)/(1+r)$), y una utilidad separable, $u(C_t)+v(d_t)$, con $v$ cuadrática.
+\item Con incertidumbre, las 2 ecuaciones de \autor{Euler} llevan esperanzas: $u'(C_t)=\mathbb{E}_t[u'(C_{t+1})]$ y $p^d\,u'(C_t)=v'(d_t)+\beta(1-\delta)\,p^d\,\mathbb{E}_t[u'(C_{t+1})]$. Sustituyendo la primera en la segunda:
+  \begin{equation*}
+  v'(d_t)=p^d\,u'(C_t)\Big[1-\frac{1-\delta}{1+r}\Big]=c^d\,u'(C_t).
+  \end{equation*}
+\item Como $u'(C_t)$ es una martingala y $c^d$ es constante, $v'(d_t)$ también lo es; y como $v'$ es lineal, el stock sigue un paseo aleatorio: $d_{t+1}=d_t+e_{t+1}$, con $\mathbb{E}_t[e_{t+1}]=0$.
+\item \emph{El gasto}: $I^d_t=d_t-(1-\delta)\,d_{t-1}=\delta\,d_{t-1}+e_t$, de modo que
+  \begin{equation*}
+  I^d_{t+1}-I^d_t=\delta\,(d_t-d_{t-1})+e_{t+1}-e_t=e_{t+1}-(1-\delta)\,e_t,
+  \end{equation*}
+  la ecuación~\eqref{eq:mankiw}: el gasto sigue un proceso ARMA(1,1) con raíz unitaria, y sus cambios, una media móvil de primer orden con coeficiente $-(1-\delta)$.
+\item \emph{La autocorrelación}: la covarianza entre 2 cambios consecutivos es $-(1-\delta)\operatorname{var}(e)$ y la varianza de cada uno, $[1+(1-\delta)^2]\operatorname{var}(e)$, así que la autocorrelación es $-(1-\delta)/[1+(1-\delta)^2]$; con una depreciación trimestral del 5~\%, $-0{,}95/1{,}9025\simeq-0{,}50$.
+\item Si los bienes no duraran ($\delta=1$), el gasto sería el stock y seguiría un paseo aleatorio, como el consumo de \autor{Hall}. Que los datos se parezcan más a esto que a la autocorrelación negativa es el rechazo que encuentra \autor{Mankiw}.\findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio sobre la renta permanente, el paseo aleatorio de \autor{Hall}, la elección intertemporal en 2 periodos y las restricciones de liquidez: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test} \parencite{GutierrezMarcos2026Simulador}.
+\end{anotaciones}
+
+
+\bibliografia
+\end{document}

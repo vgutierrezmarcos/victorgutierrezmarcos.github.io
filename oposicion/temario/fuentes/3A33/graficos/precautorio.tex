@@ -1,0 +1,42 @@
+% La prudencia y el ahorro precautorio: desigualdad de Jensen sobre la utilidad
+% marginal. Elaboración propia a partir de Leland (1968) y Kimball (1990).
+%   u'(C) = 6/C (CRRA con theta = 1, escalada): decreciente y convexa (u''' > 0)
+%   consumo de mañana C_2^B = 1,2 o C_2^A = 6,8, con probabilidad 1/2; media 4
+%   u'(C_2^B) = 5; u'(C_2^A) = 0,8824; E[u'(C_2)] = 2,9412 > u'(E[C_2]) = 1,5
+%   u' lineal (cuadrática) por los 2 puntos: 5 - 0,7353 (C - 1,2); en ella
+%   E[u'] = u'(E[C]) = 2,9412: sin prudencia, sin ahorro precautorio
+%   (se dibuja solo fuera de la cuerda, con la que coincide)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.8,
+    declare function={up(\x)=6/\x; lineal(\x)=5-0.73529*(\x-1.2);}]
+  % 1: ejes: consumo de mañana y su utilidad marginal
+  \capa{1}{\ejes{$C_2$}{$u'(C_2)$}{8.6}{6.8}}
+  % 2: utilidad marginal decreciente y convexa
+  \capa{2}{\draw[curva1] plot[domain=0.95:7.3,samples=80] (\x,{up(\x)});}
+  \capa{2}{\node[etiqueta,anchor=west,text=tceemorado,align=left] at (1.15,6.1) {$u'(C_2)$, convexa: $u'''>0$};}
+  % 3: los 2 consumos posibles de mañana y su media
+  \capa{3}{\node[punto] (B) at (1.2,5) {};}
+  \capa{3}{\node[punto] (Al) at (6.8,0.88235) {};}
+  \capa{3}{\draw[guia] (B) -- (1.2,0) node[below,text=black] {$C_2^B$};}
+  \capa{3}{\draw[guia] (Al) -- (6.8,0) node[below,text=black] {$C_2^A$};}
+  \capa{3}{\draw[guia] (4,0) node[below,text=black] {$\mathbb{E}[\tilde{C}_2]$} -- (4,2.94118);}
+  % 4: la cuerda entre los 2 puntos; su punto medio es la utilidad marginal esperada
+  \capa{4}{\draw[curva2] (B) -- (Al);}
+  \capa{4}{\node[punto,fill=tceeazul] (EU) at (4,2.94118) {};}
+  \capa{4}{\draw[guia] (EU) -- (0,2.94118) node[left,text=tceeazul] {$\mathbb{E}[u'(\tilde{C}_2)]$};}
+  % 5: la utilidad marginal del consumo medio, sobre la curva, más baja
+  \capa{5}{\node[punto,fill=tceemorado] (UE) at (4,1.5) {};}
+  \capa{5}{\draw[guia] (UE) -- (0,1.5) node[left,text=tceemorado] {$u'(\mathbb{E}[\tilde{C}_2])$};}
+  % 6: la diferencia: ahorro precautorio
+  \capa{6}{\draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (4.12,2.88) -- (4.12,1.56);}
+  \capa{6}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=south west] (txt) at (5.0,3.3) {$\mathbb{E}[u'(\tilde{C}_2)]>u'(\mathbb{E}[\tilde{C}_2])$:\\ahorro precautorio};}
+  \capa{6}{\draw[->,thin,tceerojo,>={Stealth[length=1.5mm]}] (txt.south west) ++(0.2,0.05) -- (4.32,2.3);}
+  % 7: con u' lineal (utilidad cuadrática), los 2 coinciden
+  \capa{7}{\draw[guia,thick] (0.75,{lineal(0.75)}) -- (B);}
+  \capa{7}{\draw[guia,thick] (Al) -- (7.5,{lineal(7.5)});}
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceegris,align=left,anchor=south west] at (7.55,0.42) {$u'$ lineal\\(cuadrática)};}
+\end{tikzpicture}
+\end{document}

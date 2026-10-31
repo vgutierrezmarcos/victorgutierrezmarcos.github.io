@@ -1,0 +1,44 @@
+% El enigma del consumo y la renta relativa de Duesenberry: la recta de largo
+% plazo desde el origen y la de corto plazo, más plana, por el máximo de renta.
+% Elaboración propia a partir de Kuznets (1946) y Duesenberry (1949).
+% CÓDIGO BASE COMÚN con kuznets-duesenberry-friedman.tex (mismos ejes, escala,
+% rectas y punto E):
+%   largo plazo   C = 0,8 Y (propensión media constante)
+%   E en Y = 4:   C = 3,2
+%   corto plazo   C = 1,6 + 0,4 Y (pendiente c = 0,4 < 0,8, ordenada positiva)
+%   recesión:     E' en Y = 2,6: C = 2,64; rayo desde el origen de pendiente
+%                 2,64/2,6 = 1,015 > 0,8 (la propensión media sube)
+%   recuperación: E'' en Y = 5,3 sobre el largo plazo: C = 4,24; nueva recta
+%                 de corto plazo C = 2,12 + 0,4 Y
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.9,
+    declare function={lp(\x)=0.8*\x; cp(\x)=1.6+0.4*\x; cpn(\x)=2.12+0.4*\x;}]
+  % 1: ejes: renta y consumo
+  \capa{1}{\ejes{$Y$}{$C$}{6.8}{5.6}}
+  % 2: recta de largo plazo desde el origen (series largas de Kuznets)
+  \capa{2}{\draw[curva1] (0,0) -- (6.2,{lp(6.2)}) node[etiqueta,above] {$C^{\mathrm{LP}}$};}
+  % 3: punto E en la renta máxima alcanzada
+  \capa{3}{\node[punto] (E) at (4,{lp(4)}) {};}
+  \capa{3}{\node[etiqueta,below right] at (E) {$E$};}
+  \capa{3}{\draw[guia] (0,{lp(4)}) node[left,text=black] {$C^{\text{máx}}$} -| (4,0) node[below,text=black] {$Y^{\text{máx}}$};}
+  % 4: recta de corto plazo, más plana, por E
+  \capa{4}{\draw[curva2] (0.4,{cp(0.4)}) -- (5.0,{cp(5.0)});}
+  \capa{4}{\node[etiqueta,text=tceeazul,anchor=south] at (0.9,{cp(0.9)+0.05}) {$C^{\mathrm{CP}}$};}
+  \capa{4}{\node[etiqueta,font=\scriptsize,align=left,text=tceeazul,anchor=south west] at (0.15,3.4) {pendiente $c$, como la\\función keynesiana $\overline{C}+cY$};}
+  % 5: recesión: de E a E' por la recta de corto plazo; la propensión media sube
+  \capa{5}{\node[punto] (E1) at (2.6,{cp(2.6)}) {};}
+  \capa{5}{\node[etiqueta,above left] at (E1) {$E'$};}
+  \capa{5}{\draw[flecha] ($(E)+(-0.08,0.26)$) -- ($(E1)+(0.12,0.26)$);}
+  \capa{5}{\draw[guia] (0,0) -- (3.05,{3.05*2.64/2.6});}
+  % 6: recuperación: vuelta a E y avance por el largo plazo hasta E''; nueva
+  %    recta de corto plazo, paralela, por E''
+  \capa{6}{\node[punto] (E2) at (5.3,{lp(5.3)}) {};}
+  \capa{6}{\node[etiqueta,above left] at (E2) {$E''$};}
+  \capa{6}{\draw[flecha] ($(E1)+(0.1,-0.24)$) -- ($(E)+(-0.06,-0.26)$);}
+  \capa{6}{\draw[flecha] ($(E)+(0.4,0.04)$) -- ($(E2)+(0.06,-0.22)$);}
+  \capa{6}{\draw[curvanueva,desplazada] (3.9,{cpn(3.9)}) -- (6.4,{cpn(6.4)}) node[etiqueta,right] {$C^{\mathrm{CP}\prime}$};}
+\end{tikzpicture}
+\end{document}

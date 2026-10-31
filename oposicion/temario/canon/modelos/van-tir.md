@@ -26,5 +26,7 @@ TIR modificada: $\big(\sum_t FC_t(1+k)^{n-t}\big)/I_0 = (1+TIRM)^n$; *payback* $
 ## Divergencias encontradas en el temario actual
 - Desembolso $A$ y flujos $Q_t$ en 3.B.2 frente a $B_t - C_t$ en 4.B.6 y $FC_t$/$FCL_t$ en 3.B.4. Canon: $I_0$ y $FC_t$ en finanzas; $B_t$, $C_t$ y $\delta$ en ACB público.
 - Tasa de descuento $k$, $WACC$ o $r$ usados indistintamente en 3.B.2: canon $k$ (genérica) y $WACC$ cuando se use el coste medio ponderado.
+- 3.B.2 (sin revisar): «el método del VAN asume irreversibilidad»: mejor «**supone que la inversión es reversible o que es de ahora o nunca**» (Dixit y Pindyck, 1994, cap. 1); con irreversibilidad e incertidumbre la regla del VAN falla (ficha `opciones-reales`).
+- 3.A.25 (revisado), l. 724: «igual que una empresa decide una inversión por su valor actual neto `\vertema{3.A.34}`»: el VAN se desarrolla en el 3.B.2 (tema de referencia de esta ficha); mejor `\vertema{3.B.2}` (o los 2) (`pendientes-coherencia.md`; menor; agente de coherencia del 3.A.34, en curso).
 
 Autor: Víctor Gutiérrez Marcos

@@ -1,0 +1,51 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Tasa de ahorro de los hogares e ISFLSH de España (% de la renta disponible
+% bruta), trimestral, corregida de estacionalidad y calendario (CTNFSI11270),
+% 1999-T1 a 2026-T2. INE, CTNFSI (consulta 31/10/2026).
+% Media 2000-T1 a 2019-T4 (80 trimestres): 8,62 %. Máximo 25,6 % (2020-T2),
+% mínimo 3,9 % (2007-T3), último dato 11,0 % (2026-T2).
+% Paleta «dictamen»: tasa de ahorro = dicahorro (la de 1D01). Capas (CRITERIOS
+% §7): banda de la pandemia → ejes y media → serie → puntos → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/tasa-ahorro-hogares.csv}\ahorro
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=6.5cm,
+      xmin=1998.5, xmax=2027.5, ymin=0, ymax=30,
+      xtick={2000,2005,...,2025}, ytick={0,5,...,30},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% de la renta disponible bruta},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false,
+      dicapas,
+    ]
+    % 1: pandemia (2020-T1 a 2021-T2), sombreada detrás de todo
+    \capa{1}{
+      \dicsombra[fill=tceedorado, opacity=0.14]{2020}{0}{2021.5}{30}
+      \dicrotulo[font=\footnotesize,text=tceedorado!80!black,anchor=south]{(2020.75,30)}{pandemia}
+    }
+    % 2: media de 2000-2019
+    \capa{2}{
+      \dicraya[dicumbral]{(1998.5,8.62) (2027.5,8.62)}
+      \dicrotulo[font=\footnotesize,text=dicreferencia,anchor=north west,align=left,inner sep=1pt]{(1999.1,8.3)}{media 2000-2019:\\8,6~\%}
+    }
+    % 3: la serie
+    \capa{3}{
+      \addplot[diclinea=dicahorro, mark=none] table[x=x, y=tasa_ahorro_cvec] {\ahorro};
+    }
+    % 4: máximo, mínimo y último dato
+    \capa{4}{
+      \addplot[on layer=dicpuntos, dicpuntos=dicahorro] coordinates {(2020.25,25.6) (2007.5,3.9) (2026.25,11.0)};
+    }
+    % 5: rótulos
+    \capa{5}{
+      \dicrotulo[font=\footnotesize,anchor=east,inner sep=3pt]{(2020.25,25.6)}{25,6~\% (2020-T2): confinamiento}
+      \dicrotulo[font=\footnotesize,anchor=east,inner sep=4pt]{(2007.5,3.9)}{3,9~\% (2007-T3)}
+      \dicrotulo[font=\footnotesize,anchor=west,align=left,inner sep=4pt]{(2026.25,11.0)}{11,0~\%\\2026-T2}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

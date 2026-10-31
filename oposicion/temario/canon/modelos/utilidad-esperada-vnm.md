@@ -27,7 +27,7 @@ $$U(\tilde x)=\mathbb{E}\big[u(\tilde x)\big]=\sum_{s=1}^{S}\pi_s\,u(x_s)\qquad(
 | 3.A.14 | Teoría de juegos | mención (hecho, 19/10/2026) | Pagos esperados de vNM, $U_i=\mathbb E[u_i]$, en las estrategias mixtas, los juegos bayesianos y las subastas (*Theory of Games*, 1944, con la teoría de la utilidad en el apéndice de la 2.ª edición, 1947); decisión frente a la naturaleza (maximin de Wald, Laplace) frente a interdependencia estratégica; aversión al riesgo en la subasta de primer precio | El teorema |
 | 3.A.24 | Elección social | mención (hecho, 22/10/2026) | Harsanyi: utilitarismo como utilidad esperada tras el velo (neutral respecto a la **utilidad**, no a la renta) frente al maximin de Rawls | El teorema |
 | 3.A.27 | Negociación y contratos implícitos | mención (hecho, 31/10/2026) | Sindicato de Booth como utilidad esperada de los afiliados; trabajador averso con utilidad de vNM y empresa neutral en los contratos implícitos | — |
-| 3.A.33 | Consumo con incertidumbre | mención | 𝔼_t[u(C_{t+1})] como utilidad esperada; prudencia en la ficha `aversion-riesgo-arrow-pratt` | Axiomas |
+| 3.A.33 | Consumo con incertidumbre | mención (hecho, 31/10/2026: II.1, con `\vertema{3.A.10}`; Kahneman y Tversky en la economía conductual de II.3) | 𝔼_0[Σβ^t u(C_t)] como utilidad esperada; prudencia en las fichas `aversion-riesgo-arrow-pratt` y `ahorro-precaucion` | Axiomas |
 | 3.B.23 | Elección de cartera | resumen | La utilidad esperada como fundamento; cuándo se reduce a media-varianza (cuadrática o normales) | Axiomas |
 | 3.A.1 | Economía conductual y metodología | mención | San Petersburgo; Allais y Ellsberg como anomalías | El teorema |
 

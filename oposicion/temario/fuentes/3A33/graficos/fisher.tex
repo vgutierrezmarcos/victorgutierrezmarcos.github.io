@@ -1,0 +1,44 @@
+% La elección intertemporal de Fisher con r = rho: consumo igual en los 2
+% periodos. Elaboración propia a partir de Fisher (1930) y Romer (2019), cap. 8.
+% GRÁFICO DE REFERENCIA de la ficha fisher-intertemporal y CÓDIGO BASE COMÚN de
+% los paneles de II.3 (mismos ejes, estilos y letras que
+% fuentes/3A25/graficos/fisher-capital-humano.tex):
+%   1 + r = 1,2; dotación A = (Y_1, Y_2) = (5; 1,5)
+%   riqueza W = Y_1 + Y_2/(1+r) = 6,25; corte vertical (1+r) W = 7,5
+%   recta C_2 = 1,5 - 1,2 (C_1 - 5)
+%   u = ln C, beta = 1/1,2 (r = rho): U = ln C_1 + beta ln C_2
+%     curva de indiferencia de nivel fijo: C_2 = C_2^0 (C_1^0/C_1)^(1/beta) = ...^1,2
+%   óptimo C_1 = C_2 = (1+r)/(2+r) W = 3,409: RMS = C_2/(beta C_1) = 1,2 = 1+r
+%     U_1: C_2 = 3,409 (3,409/C_1)^1,2 (utilidad 2,249)
+%     U_0 por A: C_2 = 1,5 (5/C_1)^1,2 (utilidad 1,947 < 2,249)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.75,
+    declare function={recta(\x)=1.5-1.2*(\x-5); u0(\x)=1.5*(5/\x)^1.2;
+      u1(\x)=3.409*(3.409/\x)^1.2;}]
+  % 1: ejes: renta y consumo de cada periodo
+  \capa{1}{\ejes{$Y_1,\ C_1$}{$Y_2,\ C_2$}{8.6}{8.2}}
+  % 2: la dotación A = (Y_1, Y_2), con más renta hoy
+  \capa{2}{\node[punto] (A) at (5,1.5) {};}
+  \capa{2}{\node[etiqueta,above right] at (A) {$A$};}
+  \capa{2}{\draw[guia] (0,1.5) node[left,text=black] {$Y_2$} -| (5,0) node[below,text=black] {$Y_1$};}
+  % 3: recta presupuestaria por A, pendiente -(1+r); cortes W y (1+r) W
+  \capa{3}{\draw[curva2] (0,{recta(0)}) -- (6.25,0);}
+  \capa{3}{\node[etiqueta,left] at (0,{recta(0)}) {$(1+r)\overline{W}$};}
+  \capa{3}{\node[etiqueta,below] at (6.25,0) {$\overline{W}$};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (0.2,{recta(0)+0.1}) {pendiente $-(1+r)$};}
+  % 4: bisectriz C_1 = C_2
+  \capa{4}{\draw[guia] (0,0) -- (6.8,6.8) node[etiqueta,above right,text=tceegris] {$C_1=C_2$};}
+  % 5: curva de indiferencia U_0, que pasa por A
+  \capa{5}{\draw[curva4] plot[domain=1.4:7.2,samples=60] (\x,{u0(\x)}) node[etiqueta,right] {$U_0$};}
+  % 6: U_1 tangente en C, sobre la bisectriz: C_1 = C_2
+  \capa{6}{\draw[curva3] plot[domain=1.9:7.2,samples=60] (\x,{u1(\x)}) node[etiqueta,right] {$U_1$};}
+  \capa{6}{\node[punto] (C) at (3.409,3.409) {};}
+  \capa{6}{\node[etiqueta,above right] at (C) {$C$};}
+  \capa{6}{\draw[guia] (0,3.409) node[left,text=black] {$C_2$} -| (3.409,0) node[below,text=black] {$C_1$};}
+  % 7: ahorra la diferencia entre la renta y el consumo de hoy
+  \capa{7}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (3.409,-0.7) -- (5,-0.7) node[midway,below=4pt,etiqueta,text=tceerojo,font=\footnotesize] {ahorra $Y_1-C_1$};}
+\end{tikzpicture}
+\end{document}

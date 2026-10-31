@@ -1,0 +1,52 @@
+% La regla (S,s) de los bienes duraderos: el cociente entre el stock y el
+% deseado, d_t/d*_t, baja dentro de la banda (s,S) por la depreciación y las
+% noticias sobre la riqueza; al tocar s el hogar compra y lo devuelve de golpe
+% al objetivo. El gasto I^d_t es nulo salvo en esos instantes.
+% Elaboración propia a partir de Grossman y Laroque (1990) y Eberly (1994).
+%   panel superior: s = 1, objetivo = 2,4, S = 3,4
+%   compras (saltos de s al objetivo) en t = 2,6; 4,3 y 7,9: ciclos de 2,3,
+%     1,7 y 3,6 (longitudes distintas)
+%   panel inferior (desplazado 3,6 cm abajo): picos de altura 1,5
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.78,
+    banda/.style={fill=tceemorado,fill opacity=0.09,draw=none},
+    limite/.style={thick,dashed,tceegris},
+    objetivo/.style={thick,dotted,tceegris},
+    salto/.style={curvanueva,->}]
+  % 1: ejes del panel superior (stock frente al deseado) y del inferior (gasto)
+  \capa{1}{\ejes{$t$}{$d_t/d^*_t$}{9.2}{4.1}}
+  \begin{scope}[yshift=-3.6cm]
+    \capa{1}{\ejes{$t$}{$I^d_t$}{9.2}{2.2}}
+  \end{scope}
+  % 2: banda de inacción (s,S) y objetivo de reajuste
+  \capa{2}{\fill[banda] (0,1) rectangle (8.9,3.4);}
+  \capa{2}{\draw[limite] (0,3.4) node[left,text=black] {$S$} -- (8.9,3.4);}
+  \capa{2}{\draw[limite] (0,1) node[left,text=black] {$s$} -- (8.9,1);}
+  \capa{2}{\draw[objetivo] (0,2.4) -- (8.9,2.4) node[etiqueta,right,text=tceegris] {objetivo};}
+  % 3: primer ciclo: el cociente baja por la depreciación (con pequeños saltos
+  %    por las noticias sobre la riqueza) hasta tocar s
+  \capa{3}{\draw[curva1] (0.3,2.4) -- (1.0,2.0) -- (1.0,2.15) -- (1.8,1.6)
+    -- (1.8,1.45) -- (2.6,1);}
+  % 4: compra: salto al objetivo y pico de gasto en el mismo instante
+  \capa{4}{\draw[salto] (2.6,1) -- (2.6,2.4);}
+  \capa{4}{\draw[curva2] (2.6,-3.6) -- (2.6,-2.1);}
+  \capa{4}{\draw[guia] (2.6,1) -- (2.6,-2.1);}
+  % 5: segundo y tercer ciclo, más corto y más largo, con sus compras
+  \capa{5}{\draw[curva1] (2.6,2.4) -- (3.4,1.85) -- (3.4,1.7) -- (4.3,1);}
+  \capa{5}{\draw[salto] (4.3,1) -- (4.3,2.4);}
+  \capa{5}{\draw[curva2] (4.3,-3.6) -- (4.3,-2.1);}
+  \capa{5}{\draw[guia] (4.3,1) -- (4.3,-2.1);}
+  \capa{5}{\draw[curva1] (4.3,2.4) -- (5.3,2.0) -- (5.3,2.25) -- (6.6,1.55)
+    -- (6.6,1.42) -- (7.9,1);}
+  \capa{5}{\draw[salto] (7.9,1) -- (7.9,2.4);}
+  \capa{5}{\draw[curva2] (7.9,-3.6) -- (7.9,-2.1);}
+  \capa{5}{\draw[guia] (7.9,1) -- (7.9,-2.1);}
+  \capa{5}{\draw[curva1] (7.9,2.4) -- (8.7,1.95);}
+  % 6: rótulos
+  \capa{6}{\node[etiqueta,text=tceemorado] at (6.2,2.95) {inacción};}
+  \capa{6}{\node[etiqueta,text=tceeazul,right] at (2.6,-2.45) {compra};}
+\end{tikzpicture}
+\end{document}

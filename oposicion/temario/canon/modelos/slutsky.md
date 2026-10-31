@@ -1,7 +1,7 @@
 # Ecuación y matriz de Slutsky
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.9** (Demanda II: dualidad; revisado el 13/10/2026) — la ecuación se deriva por dualidad (III.2) y la matriz se presenta como hessiana de la función de gasto (I.2.2); 3.A.8 (revisado) la enuncia, dibuja la descomposición y clasifica los bienes, con la derivación en su anexo `der:matriz-slutsky`.
-- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 3.A.8 (resumen; hecho), 3.A.12 (resumen: demanda de factores; hecho), 3.A.25 (resumen con dotación de tiempo; hecho, 31/10/2026: anexo A `anexo:slutsky-ecuacion`), 4.B.9 (resumen: con dotación), 4.B.10 y 4.B.11 (resumen; hoy mención)
+- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 3.A.8 (resumen; hecho), 3.A.12 (resumen: demanda de factores; hecho), 3.A.25 (resumen con dotación de tiempo; hecho, 31/10/2026: anexo A `anexo:slutsky-ecuacion`), 4.B.9 (resumen: con dotación), 4.B.10 y 4.B.11 (resumen; hoy mención), 3.A.33 (resumen con dotación intertemporal; hecho, 31/10/2026: anexo B, `eq:slutsky-dotacion` con p ≡ 1/(1+r), efectos sustitución, renta y riqueza)
 - **Manuales de referencia:** Slutsky (1915); Hicks y Allen (1934); Mas-Colell, Whinston y Green, §2.F, §3.G y §3.H; Jehle y Reny (2011), cap. 1-2; Varian, cap. 8 y 9 (con dotaciones).
 
 ## Presentación de referencia
@@ -29,6 +29,7 @@ Gráficos de referencia: descomposición sustitución (A→B) y renta (B→C) en
 | 3.A.25 | Oferta de trabajo | resumen (hecho, 31/10/2026) | Versión con **renta-dotación de tiempo** (`eq:slutsky-dotacion`): $\partial L(w,\overline W)/\partial w=-\partial h_O(w,\overline U)/\partial w+L\,\partial L(w,\overline W)/\partial\overline W$, derivada con la función de gasto $E(w,\overline U)$ (mínimo de $C+wO$); efecto sustitución, renta ordinario y renta dotación (el «efecto renta global», proporcional a las horas) con el gráfico por capas `efectos-salario.tex`; tabla de signos `tab:slutsky-dotacion` sin las filas de «demandante neto» de ocio ($O\le O_0$ siempre). $h_O$ con nota: la $h$ sin subíndice del tema es el capital humano (DK9, **[decidir]**). Remite a 3.A.9 y 3.A.8 | La derivación por dualidad general |
 | 4.B.9 | Efecto renta y sustitución de los impuestos | resumen | Versión con dotación: efecto renta ordinario y efecto renta dotación (ocio, ahorro); el EG nace del efecto sustitución | Demostración |
 | 4.B.10, 4.B.11 | Incentivos, imposición óptima | resumen (hoy mención; D139 (13/10/2026)) | La ecuación en una línea; exceso de gravamen ligado al efecto sustitución (demanda compensada, $S_{ij}$ en la fórmula de varios bienes) | — |
+| 3.A.33 | Consumo intertemporal | resumen (hecho, 31/10/2026) | Slutsky con dotación (Y_1, Y_2) y p ≡ 1/(1+r): renta y riqueza con el signo del ahorro; `\vertema{3.A.9}` | La derivación general |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.8 (revisado), anexo `der:matriz-slutsky`: escribe $s_{ij}$ → $S_{ij}$ (anotado en `pendientes-coherencia.md`, a raíz del 3.A.9).
@@ -36,3 +37,6 @@ Gráficos de referencia: descomposición sustitución (A→B) y renta (B→C) en
 - 4.B.9 y 4.B.10 deben remitir a 3.A.9 (hoy no lo hacen); para la versión con dotación de tiempo, al 3.A.25 (anexo A).
 - 3.A.25 original: tabla del anexo A.1 con filas de «demandante neto» de ocio ($O^*>O_0$, imposibles) y celdas con 2 signos, $O^h$. **Resuelto** en la revisión (31/10/2026).
 - 3.A.9 original: «ecuación de Slusky», $s_{ij}$ y $\varepsilon^c_{ij}$; resuelto en la revisión.
+- 3.A.33 (revisado): escribe la compensada C_1^h y ∂C_1/∂W̄ sin argumentos; con § 0, h_{C_1}(p,Ū) y C_1(p,W̄), como el 3.A.25 (h_O(w,Ū)) (`pendientes-coherencia.md`; menor).
+
+Autor: Víctor Gutiérrez Marcos

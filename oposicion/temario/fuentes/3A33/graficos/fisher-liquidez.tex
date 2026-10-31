@@ -1,0 +1,46 @@
+% La restricción de liquidez en el modelo de Fisher: la recta presupuestaria se
+% quiebra en la dotación. Elaboración propia a partir de Fisher (1930) y Romer
+% (2019), cap. 8. MISMO CÓDIGO BASE que fisher.tex (ejes, escala, estilos,
+% letras), con una dotación de renta baja hoy y alta mañana:
+%   1 + r = 1,2; dotación A = (Y_1, Y_2) = (2; 5)
+%   riqueza W = 2 + 5/1,2 = 6,1667; corte vertical (1+r) W = 7,4
+%   recta C_2 = 5 - 1,2 (C_1 - 2); sin endeudamiento, C_1 <= Y_1 = 2
+%   u = ln C, beta = 1/1,2 (r = rho): óptimo sin restricción
+%     C* = (W/(1+beta), W/(1+beta)) = (3,3636; 3,3636), con C*_1 > Y_1: inalcanzable
+%     U_1: C_2 = 3,3636 (3,3636/C_1)^1,2 (utilidad 2,224)
+%   óptimo restringido: la esquina A; U_0 por A: C_2 = 5 (2/C_1)^1,2
+%     (utilidad 2,034); en A, RMS = C_2/(beta C_1) = 3 > 1 + r = 1,2:
+%     querría consumir más hoy y no puede
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.75,
+    declare function={recta(\x)=5-1.2*(\x-2); u0(\x)=5*(2/\x)^1.2;
+      u1(\x)=3.3636*(3.3636/\x)^1.2;}]
+  % 1: ejes: renta y consumo de cada periodo
+  \capa{1}{\ejes{$Y_1,\ C_1$}{$Y_2,\ C_2$}{8.6}{8.2}}
+  % 2: la dotación A = (Y_1, Y_2), con menos renta hoy que mañana
+  \capa{2}{\node[punto] (A) at (2,5) {};}
+  \capa{2}{\node[etiqueta,below left] at (A) {$A$};}
+  \capa{2}{\draw[guia] (0,5) node[left,text=black] {$Y_2$} -| (2,0) node[below,text=black] {$Y_1$};}
+  % 3: recta presupuestaria por A, pendiente -(1+r): el tramo de prestar
+  \capa{3}{\draw[curva2] (0,{recta(0)}) -- (A);}
+  \capa{3}{\node[etiqueta,left] at (0,{recta(0)}) {$(1+r)\overline{W}$};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (0.2,{recta(0)+0.1}) {pendiente $-(1+r)$};}
+  % 4: el tramo de pedir prestado desaparece: la recta se quiebra en A
+  \capa{4}{\draw[very thick,tceegris,dashed] (A) -- (6.1667,0);}
+  \capa{4}{\node[etiqueta,below] at (6.1667,0) {$\overline{W}$};}
+  \capa{4}{\draw[curva2] (A) -- (2,0);}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris,align=left,anchor=south west] (np) at (4.9,4.3) {no puede\\pedir prestado};}
+  \capa{4}{\draw[->,thin,tceegris,>={Stealth[length=1.5mm]}] (np.south west) ++(0.15,0.05) -- (4.3,2.32);}
+  % 5: el óptimo sin restricción C*, inalcanzable
+  \capa{5}{\draw[thick,tceegris,dash pattern=on 6pt off 3pt] plot[domain=1.9:7.2,samples=60] (\x,{u1(\x)}) node[etiqueta,right,text=tceegris] {$U_1$};}
+  \capa{5}{\node[punto,fill=white,draw=tceegris,thick] (Cs) at (3.3636,3.3636) {};}
+  \capa{5}{\node[etiqueta,above right,text=tceegris] at (Cs) {$C^*$};}
+  \capa{5}{\draw[guia] (Cs) -- (3.3636,0) node[below,text=tceegris] {$C_1^*$};}
+  % 6: U_0 pasa por la esquina A: el óptimo restringido es A, con C_1 = Y_1
+  \capa{6}{\draw[curva4] plot[domain=1.55:7.2,samples=60] (\x,{u0(\x)}) node[etiqueta,below right=0pt and -2pt] {$U_0$};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,anchor=north west] at (0.1,-0.75) {$C_1=Y_1$: consume su renta corriente};}
+\end{tikzpicture}
+\end{document}

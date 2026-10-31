@@ -30,7 +30,7 @@ $$d^{ee} = \frac{(1+\gamma_Y)\,(g-\tau-s)}{\gamma_Y - r} \quad (r < \gamma_Y)$$
 |---|---|---|---|---|
 | 3.A.40 | Políticas desde la Gran Recesión | Desarrollo | Hansen → Summers; causas de la caída de r^n (Rachel y Summers; Holston-Laubach-Williams); ELB; r < g de Blanchard y el debate con Summers y Cochrane; giro desde 2022 | — |
 | 3.A.39 | Sostenibilidad de la deuda | Resumen | La dinámica de la deuda con r < γ_Y y sus límites | Las causas de la caída de r^n |
-| 3.A.33 | Consumo | Mención | Tesis de Hansen y Kuznets (1946): la evidencia de largo plazo la refutó | — |
+| 3.A.33 | Consumo | Mención (hecho, 31/10/2026: nota de Hansen en I.1 con `\vertema{3.A.40}`, entera y corregida, A33-14; ahorro precautorio y tipo natural en II.3) | Tesis de Hansen (1938, 1939) y Kuznets (1946): la evidencia de largo plazo la refutó; Keynes (1937), Galton Lecture, en estilo indirecto | — |
 | 4.B.1, 4.B.4, 4.B.5 | Gasto público y política fiscal | Resumen (comodín) | Dos o tres frases con remisión a 3.A.40 | El gráfico completo (solo en 3.A.40 y, si se quiere, 4.B.1) |
 | 4.A.11 | Vivienda en España | Mención | Caída de r natural como factor de demanda de vivienda | — |
 

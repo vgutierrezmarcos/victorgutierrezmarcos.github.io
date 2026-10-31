@@ -29,6 +29,6 @@ Gráfico de referencia: diagrama de fases en (k, c): locus ċ = 0 vertical en k*
 - 3.A.43 usa W_t para el salario (real) y 3.A.29 w_t: canon **w** real (W nominal).
 - 3.A.43 escribe la tasa de progreso técnico g en el cuerpo y m en el anexo: canon **g** (se elimina m).
 - **Tiempo discreto en el 3.B.31** (DICE): $W=\sum_t\beta^tL_t\,c_t^{1-\theta}/(1-\theta)$ con $\beta\equiv1/(1+\rho)$, la misma $\theta$ y la misma $\rho$ que aquí; el 3.A.43, al revisarse, puede citar el DICE como extensión (ficha `dice`).
-- El anexo de optimización dinámica de 3.A.29 debe coincidir con los de 3.A.33, 3.A.34 y 3.A.43 (nota del autor).
+- El anexo de optimización dinámica de 3.A.29 debe coincidir con los de 3.A.33, 3.A.34 y 3.A.43 (nota del autor). Desde el 31/10/2026, pieza común en la ficha `optimizacion-dinamica` (discreto: anexo B del 3.A.33; continuo: anexo A del 3.A.34, en curso); el 3.A.43 copia la parte continua.
 
 Autor: Víctor Gutiérrez Marcos

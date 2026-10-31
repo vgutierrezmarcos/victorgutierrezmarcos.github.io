@@ -33,7 +33,7 @@ Cada variable se caracteriza por su **dirección** (procíclica, contracíclica,
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.42 | Teorías del ciclo | Desarrollo | La tabla con persistencia; lo que cada teoría (RBC, NEK) debe explicar | — |
-| 3.A.33, 3.A.34 | Consumo, inversión | Mención | Consumo menos volátil que el PIB; inversión varias veces más | La tabla |
+| 3.A.33, 3.A.34 | Consumo, inversión | Mención (3.A.33 hecho, 31/10/2026: III.3 a) con datos de España, 1996-2026, y `\vertema{3.A.42}`) | Consumo menos volátil que el PIB; duraderos mucho más (desviación típica de la tasa interanual 10,6 frente a 3,9 del PIB); inversión varias veces más | La tabla |
 | 1D01 | Dictamen de coyuntura | Resumen | Tabla sin persistencia, con existencias, vivienda, paro, curva de tipos y bolsa; lectura del cuadernillo | La teoría |
 
 ## Divergencias encontradas en el temario actual
