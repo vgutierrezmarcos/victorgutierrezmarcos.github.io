@@ -1,0 +1,48 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Índice de incertidumbre de política económica de España del Banco de España
+% (Ghirelli, Pérez y Urtasun, 2019; siete periódicos), mensual, 1997-01 a
+% 2026-09, media 1997-01 a 2018-06 = 100. Columna epu_gpu de
+% ../datos/epu-espana.csv (consulta 31/10/2026); la serie de Baker, Bloom y
+% Davis (epu_bbd) no se dibuja. El eje x sale del número de fila
+% (1997 + (\coordindex + 0,5)/12): las filas son meses consecutivos; la última
+% (2026-10) no tiene dato y se descarta.
+% Capas (CRITERIOS §7): ejes y línea de 100 → serie → rótulos de los picos.
+% Ejes desde la capa 1 (no hay barras debajo).
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=7cm,
+      xmin=1997, xmax=2027, ymin=0, ymax=300,
+      xtick={2000,2005,...,2025}, ytick={0,50,...,250},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={índice (media 1997-2018 = 100)},
+      ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      unbounded coords=discard,
+      dicapas,
+    ]
+    % 1: línea de referencia: la media histórica (100)
+    \capa{1}{
+      \dicraya[dicumbral]{(1997,100) (2027,100)}
+      \dicrotulo[font=\footnotesize, text=dicreferencia, anchor=north east, inner sep=2pt]{(2027,100)}{media histórica}
+    }
+    % 2: serie mensual del Banco de España
+    \capa{2}{
+      \addplot[diclinea=tceemorado, thick, mark=none]
+        table[col sep=comma, comment chars={\#}, x expr=1997+(\coordindex+0.5)/12,
+          y=epu_gpu, empty cells with={nan}] {../datos/epu-espana.csv};
+    }
+    % 3: rótulos de los picos (sin fondo, desplazados de la línea)
+    \capa{3}{
+      \dicrotulo[font=\footnotesize, anchor=south east, align=right, inner sep=2pt]{(2020.5,262)}{mayo de 2020: 262\\COVID}
+      \dicrotulo[font=\footnotesize, anchor=south, align=center, inner sep=2pt]{(2012.458,235)}{junio de 2012: 234\\crisis de la deuda}
+      \dicrotulo[font=\footnotesize, anchor=south east, align=right, inner sep=2pt]{(2025.2,214)}{abril de\\2025: 212\\aranceles\\de EE.\,UU.}
+      \dicrotulo[font=\footnotesize, anchor=west, align=left, inner sep=2pt]{(2026.3,209)}{marzo de\\2026: 208}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

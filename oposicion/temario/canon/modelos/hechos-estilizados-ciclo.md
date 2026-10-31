@@ -1,7 +1,7 @@
 # Hechos estilizados del ciclo económico
 
 - **Área:** macro-cerrada · **Tema de referencia:** **3.A.42** («0.2.2. Hechos estilizados de los ciclos económicos» del Word vigente) — es el único que los trata.
-- **Temas que lo usan:** 3.A.42 (desarrollo), 3.A.33 y 3.A.34 (mención: consumo e inversión procíclicos), 1D01 (resumen: tabla del anexo D, `tab:hechos-ciclo`, y lectura del cuadro en II.3)
+- **Temas que lo usan:** 3.A.42 (desarrollo), 3.A.33 y 3.A.34 (mención: consumo e inversión procíclicos; los 2 hechos, 31/10/2026: el 3.A.34 en la introducción con la desviación típica 1996-2019, FBCF 6,6 frente a PIB 2,3, y 2009-T2, FBCF −20,3 % frente a PIB −4,3 %, INE tabla 67824), 1D01 (resumen: tabla del anexo D, `tab:hechos-ciclo`, y lectura del cuadro en II.3)
 - **Manuales de referencia:** Burns y Mitchell (1946); Kydland y Prescott (1990); Cooley y Prescott (1995); Stock y Watson (1999), «Business Cycle Fluctuations in US Macroeconomic Time Series», *Handbook of Macroeconomics*; Blinder y Maccini (1991) (existencias); Kaminsky, Reinhart y Végh (2004) (política fiscal procíclica en emergentes); Estrella y Mishkin (1998) (curva de tipos).
 
 ## Presentación de referencia
@@ -33,7 +33,7 @@ Cada variable se caracteriza por su **dirección** (procíclica, contracíclica,
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.42 | Teorías del ciclo | Desarrollo | La tabla con persistencia; lo que cada teoría (RBC, NEK) debe explicar | — |
-| 3.A.33, 3.A.34 | Consumo, inversión | Mención (3.A.33 hecho, 31/10/2026: III.3 a) con datos de España, 1996-2026, y `\vertema{3.A.42}`) | Consumo menos volátil que el PIB; duraderos mucho más (desviación típica de la tasa interanual 10,6 frente a 3,9 del PIB); inversión varias veces más | La tabla |
+| 3.A.33, 3.A.34 | Consumo, inversión | Mención (los 2 hechos, 31/10/2026; el 3.A.33 en III.3 a) con datos de España, 1996-2026, y `\vertema{3.A.42}`; el 3.A.34 en la introducción, con los datos de la CNTR) | Consumo menos volátil que el PIB; duraderos mucho más (desviación típica de la tasa interanual 10,6 frente a 3,9 del PIB); inversión varias veces más | La tabla |
 | 1D01 | Dictamen de coyuntura | Resumen | Tabla sin persistencia, con existencias, vivienda, paro, curva de tipos y bolsa; lectura del cuadernillo | La teoría |
 
 ## Divergencias encontradas en el temario actual

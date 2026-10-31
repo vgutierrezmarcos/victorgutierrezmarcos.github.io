@@ -1,0 +1,70 @@
+% Acelerador flexible (ajuste parcial de Chenery, 1952; retardos de Koyck,
+% 1954): K_t - K_{t-1} = beta_0 (K*_t - K_{t-1}), K*_t = v Y_t.
+% Valores ilustrativos: v = 2, beta_0 = 0,4; Y = 1 hasta t = 0 y 1,1 desde
+% t = 1 (aumento permanente), luego K* pasa de 2 a 2,2 en t = 1.
+%   K_t: 2; 2,08; 2,128; 2,1568; 2,17408; 2,184448; 2,190669; 2,194401; 2,196641
+%   I_t = K_t - K_{t-1}: 0,08; 0,048; 0,0288; 0,01728; 0,010368; 0,006221;
+%   0,003732; 0,002239 (cada una es el 60 % de la anterior)
+% Capas (CRITERIOS §7): barras de I_t → ejes de los 2 paneles → K* → K_t →
+% rótulos. Inversión en verde (dicfbcf), como en los gráficos de datos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Ejes desde la capa 2: antes, transparentes (no cambia la caja)
+\ifnum\tceepaso<2
+  \pgfplotsset{acejes/.style={axis line style={draw=none}, major tick style={draw=none},
+    ticklabel style={opacity=0}, label style={opacity=0}}}
+\else
+  \pgfplotsset{acejes/.style={}}
+\fi
+\pgfplotsset{acpanel/.style={
+    width=9cm, xmin=-0.6, xmax=8.6, xtick={0,...,8},
+    axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+    ticklabel style={font=\footnotesize},
+    yticklabel style={/pgf/number format/use comma, /pgf/number format/fixed, /pgf/number format/fixed zerofill, /pgf/number format/precision=2},
+    dicapas, acejes}}
+\begin{tikzpicture}[tcee]
+  % ---------------- Panel inferior: inversión neta ----------------
+  \begin{axis}[acpanel, name=inferior, height=4.2cm,
+      ymin=0, ymax=0.09, ytick={0,0.02,...,0.08},
+      xlabel={$t$}, ylabel={inversión neta},
+      ybar, bar width=0.45, bar shift=0pt, scaled y ticks=false]
+    % 1: barras de la inversión neta I_t
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=dicfbcf, forget plot] coordinates
+        {(1,0.08) (2,0.048) (3,0.0288) (4,0.01728) (5,0.010368) (6,0.006221) (7,0.003732) (8,0.002239)};
+    }
+    % 2: eje del cero (los ejes, con acejes)
+    \capa{2}{\dicraya{(-0.6,0) (8.6,0)}}
+    % 5: rótulo
+    \capa{5}{\dicrotulo[anchor=west, inner sep=3pt, text=dicfbcf]{(1.3,0.08)}{$I_t=K_t-K_{t-1}$}}
+  \end{axis}
+  % ---------------- Panel superior: capital deseado y efectivo ---------------
+  \begin{axis}[acpanel, at={($(inferior.north west)+(0,0.5cm)$)}, anchor=south west,
+      height=5cm, ymin=1.96, ymax=2.24, ytick={2,2.1,2.2},
+      ylabel={capital}, xticklabels={}]
+    % 2: (ejes, con acejes)
+    \capa{2}{\dicraya[draw=none]{(-0.6,1.96) (8.6,1.96)}}
+    % 3: capital deseado K*_t = v Y_t: salta de 2 a 2,2 en t = 1
+    \capa{3}{
+      \addplot[const plot mark left, diclinea=tceeazul, dashed, mark=none, forget plot]
+        coordinates {(-0.6,2) (1,2.2) (8.6,2.2)};
+    }
+    % 4: capital efectivo K_t: cierra cada periodo el 40 % de la distancia
+    \capa{4}{
+      \addplot[const plot mark left, diclinea=tceemorado, mark=none, forget plot]
+        coordinates {(-0.6,2) (1,2.08) (2,2.128) (3,2.1568) (4,2.17408) (5,2.184448)
+          (6,2.190669) (7,2.194401) (8,2.196641) (8.6,2.196641)};
+      \addplot[on layer=dicpuntos, dicpuntos=tceemorado, forget plot]
+        coordinates {(0,2) (1,2.08) (2,2.128) (3,2.1568) (4,2.17408) (5,2.184448)
+          (6,2.190669) (7,2.194401) (8,2.196641)};
+    }
+    % 5: rótulos
+    \capa{5}{
+      \dicrotulo[anchor=south, inner sep=3pt, text=tceeazul]{(4.5,2.2)}{$K^*_t=v\,Y_t$}
+      \dicrotulo[anchor=north east, inner sep=4pt, text=tceemorado]{(8.6,2.1966)}{$K_t$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

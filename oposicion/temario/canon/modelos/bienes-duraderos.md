@@ -1,7 +1,7 @@
 # Demanda de bienes de consumo duradero: coste de uso, Mankiw (1982) y la regla (S,s) (Grossman y Laroque, 1990; Bertola y Caballero, 1990; Caballero, 1993; Eberly, 1994)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.33** (revisado el 31/10/2026: bloque III `sec:duraderos`, entero nuevo, con III.1 `sec:duraderos-modelo`, III.2 `sec:duraderos-ajuste`, III.3 `sec:duraderos-evidencia` y el anexo D `anexo:duraderos`) — «La demanda de bienes de consumo duradero» está en su título. Ficha creada en la fase canon del 3.A.33 (K27, DC1/A33-01, **[decidir]**).
-- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.A.34 (mención: la compra de duraderos como inversión del hogar; el coste de uso c^d_t es el paralelo de c_K y la opción de esperar retrasa también la compra de duraderos; en curso, ya remite en III y en la conclusión), 3.A.42 (mención: el gasto en duraderos, mucho más volátil y procíclico que el PIB; ficha `hechos-estilizados-ciclo`), 3.A.37 (mención: el componente del consumo más sensible al tipo de interés), 3.A.8 y 3.A.9 (mención; hecho: el marco estático deja fuera los duraderos, con `\vertema{3.A.33}`), 1D01 (mención aplicada; hecho: «duraderos, mayor» volatilidad en `tab:hechos-ciclo`).
+- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.A.34 (mención; hecho, 31/10/2026: la compra de duraderos como inversión del hogar; la regla (S,s) de los costes fijos en III.1, la opción de esperar en III.3 c) y la conclusión, con `\vertema{3.A.33}`), 3.A.42 (mención: el gasto en duraderos, mucho más volátil y procíclico que el PIB; ficha `hechos-estilizados-ciclo`), 3.A.37 (mención: el componente del consumo más sensible al tipo de interés), 3.A.8 y 3.A.9 (mención; hecho: el marco estático deja fuera los duraderos, con `\vertema{3.A.33}`), 1D01 (mención aplicada; hecho: «duraderos, mayor» volatilidad en `tab:hechos-ciclo`).
 - **Manuales de referencia:** Mankiw (1982), *JME*; Bernanke (1983), *QJE*, y (1985), *JME*; Grossman y Laroque (1990), *Econometrica*; Bertola y Caballero (1990), *NBER Macro Annual*; Caballero (1993), *Econometrica*; Eberly (1994), *JPE*; Dixit y Pindyck (1994); Romer (2019), cap. 8; Attanasio y Weber (2010), *JEL*.
 
 ## Presentación de referencia (3.A.33, III)
@@ -26,7 +26,7 @@ $$I^d_{t+1}-I^d_t=e_{t+1}-(1-\delta)\,e_t\qquad(\texttt{eq:mankiw})$$
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.33 | Demanda de duraderos | desarrollo (hecho, 31/10/2026) | Todo lo anterior en 7′: coste de uso recuadrado, Mankiw de palabra, (S,s) por capas, datos e implicaciones | — |
-| 3.A.34 | Inversión | mención (en curso; ya remite) | «Con los hogares, la compra de duraderos»: misma δ, c^d frente a c_K, la opción de esperar también la retrasa; `\vertema{3.A.33}` | El modelo |
+| 3.A.34 | Inversión | mención (hecho, 31/10/2026) | «Con los hogares, la compra de duraderos»: misma δ, c^d frente a c_K, la opción de esperar también la retrasa; `\vertema{3.A.33}` | El modelo |
 | 3.A.42 | Ciclos | mención | Duraderos más volátiles y procíclicos que el PIB; no duraderos, menos | El modelo |
 | 3.A.37 | Transmisión monetaria | mención | Canal del coste de uso y del crédito sobre los duraderos | El modelo |
 | 3.A.8, 3.A.9 | Consumidor estático | mención (hecho) | El marco estático los deja fuera, con `\vertema{3.A.33}` | — |
@@ -34,6 +34,6 @@ $$I^d_{t+1}-I^d_t=e_{t+1}-(1-\delta)\,e_t\qquad(\texttt{eq:mankiw})$$
 
 ## Divergencias encontradas en el temario actual
 - 3.A.33 original: duraderos solo en un anexo copiado de ICEX-CECO, con ∂u(c_t,d_t)/∂c_{t+1}, r_t y r_{t+1} mezclados, s_t y δ_d. **Resuelto** (31/10/2026): bloque III nuevo y anexo D redactado de nuevo.
-- 3.A.34 (en curso): sin contradicción (usa c_K con la misma δ y r y remite al 3.A.33).
+- 3.A.34 (revisado, 31/10/2026): sin contradicción (usa c_K con la misma δ y r y remite al 3.A.33 en III.1, III.3 y la conclusión).
 
 Autor: Víctor Gutiérrez Marcos

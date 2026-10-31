@@ -1,7 +1,7 @@
 # El mercado de «limones» (Akerlof, 1970): selección adversa y desenredo del mercado
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.13** («selección adversa» en el título; revisado el 19/10/2026, I.2) — es el ejemplo con el que el tema muestra por qué la asignación competitiva se aparta de la óptima, con a)-e), el caso continuo y la evidencia. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.13 (desarrollo; hecho, 19/10/2026), 3.A.23 (mención; hecho, 21/10/2026: la información asimétrica como fallo de mercado, una frase y remisión), 3.A.21 (mención; hecho: la información asimétrica explica los mercados que faltan, Arrow, 1963), 3.A.1 (mención: la economía de la información desde los años 70), 3.B.27 y 4.A.20 (mención: la selección adversa en el crédito antes de Stiglitz-Weiss), 4.B.3 (mención: seguros sanitarios).
+- **Temas que lo usan:** 3.A.13 (desarrollo; hecho, 19/10/2026), 3.A.23 (mención; hecho, 21/10/2026: la información asimétrica como fallo de mercado, una frase y remisión), 3.A.21 (mención; hecho: la información asimétrica explica los mercados que faltan, Arrow, 1963), 3.A.1 (mención: la economía de la información desde los años 70), 3.B.27 y 4.A.20 (mención: la selección adversa en el crédito antes de Stiglitz-Weiss), 4.B.3 (mención: seguros sanitarios), 3.A.34 (mención; hecho, 31/10/2026: III.1, la máquina específica se revende con descuento porque el comprador desconfía de su calidad, «como en el mercado de los limones», `\vertema{3.A.13}`), 3.A.33 (mención; hecho, 31/10/2026: venta del duradero usado con descuento).
 - **Manuales de referencia:** Akerlof (1970), *QJE*; Akerlof (2001), ensayo Nobel «Writing *The Market for 'Lemons'*»; Mas-Colell, Whinston y Green (1995), cap. 13.B; Wilson (1980), *Bell Journal*; Macho-Stadler y Pérez-Castrillo (2001), cap. 1; Einav y Finkelstein (2011), *JEP*.
 
 ## Presentación de referencia (3.A.13, I.2)
@@ -28,6 +28,7 @@ $$p^*=\frac{\alpha\,\underline s}{2-\alpha}\qquad(\alpha<2,\ p^*<\overline s)$$
 | 3.A.21 | Valoración del EGC: mercados que faltan | mención (hecho) | La información asimétrica (selección adversa y riesgo moral) explica por qué faltan mercados (Arrow, 1963) | El modelo |
 | 3.A.1 | Historia del pensamiento | mención | La economía de la información desde los años 70 con Akerlof (Nobel de 2001) | El modelo |
 | 3.B.27, 4.A.20 | Regulación financiera; financiación de las empresas | mención | La selección adversa como base del racionamiento (ficha `stiglitz-weiss`) | El modelo |
+| 3.A.33, 3.A.34 | Duraderos; inversión | mención (hechos, 31/10/2026) | El bien usado (coche, máquina) se revende con descuento: base de la irreversibilidad | El modelo |
 | 4.B.3 | Sanidad y seguros públicos | mención | Selección adversa en los seguros sanitarios como argumento del aseguramiento público | El modelo |
 
 ## Divergencias encontradas en el temario actual

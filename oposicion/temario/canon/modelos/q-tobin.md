@@ -1,31 +1,54 @@
-# q de Tobin con costes de ajuste (Tobin 1969; Summers 1981; Abel 1982; Hayashi 1982)
+# q de Tobin con costes de ajuste (Tobin 1969; Summers 1981; Abel 1982; Hayashi 1982) y costes de ajuste de la inversión
 
-- **Área:** macro cerrada · **Tema de referencia:** 3.A.34 (teorías de la inversión) — único tema que lo desarrolla.
-- **Temas que lo usan:** 3.A.34 (desarrollo), 3.A.29 (resumen: optimización dinámica), 3.A.37 (resumen: canal de transmisión), 3.A.26 (mención; hecho, 31/10/2026: analogía en III, el coste de ajuste del empleo $\Phi(\dot L_t)$ con la misma letra y el valor sombra $\lambda_t$ de un trabajador como «la q de Tobin del trabajo», `eq:valor-sombra-empleo`; diagrama de fases en $(L,\lambda)$ en su anexo D, «el mismo que el de la q de Tobin»; ficha `costes-ajuste-empleo`)
-- **Manuales de referencia:** Romer (2019), cap. 9; Blanchard y Fischer (1989), cap. 2; Hayashi (1982).
-- **Decisión D130 (13/10/2026):** ¿Cómo se escribe el coste de ajuste de la inversión (q de Tobin)? Φ(I_t, K_t)
+- **Área:** macro cerrada · **Tema de referencia:** 3.A.34 (teorías de la inversión) — único tema que lo desarrolla. **Revisado el 31/10/2026**: II «Costes de ajuste: el modelo de la q» (9′30″: II.1 el modelo, II.2 implicaciones de política, II.3 evidencia y valoración, con la q media y la marginal), anexo C (derivación, depreciación y Hayashi) y III.1 (costes quebrados y fijos: banda de inacción y regla (S,s)). Presentación fijada en la fase canon del 3.A.34 (DK3, DK4, DK5, DK8, **[decidir]**).
+- **Temas que lo usan:** 3.A.34 (desarrollo; hecho, 31/10/2026), 3.A.29 (resumen: optimización dinámica), 3.A.37 (resumen: canal de transmisión), 3.A.26 (mención; hecho, 31/10/2026: analogía en III, el coste de ajuste del empleo $\Phi(\dot L_t)$ con la misma letra y el valor sombra $\lambda_t$ de un trabajador como «la q de Tobin del trabajo», `eq:valor-sombra-empleo`; diagrama de fases en $(L,\lambda)$ en su anexo D, «el mismo que el de la q de Tobin»; ficha `costes-ajuste-empleo`), 1D01 (mención; hecho: la bolsa se cruza con la inversión, «la $q$ de Tobin», `\vertema{3.A.34}`)
+- **Manuales de referencia:** Romer (2019), *Advanced Macroeconomics*, 5.ª ed., cap. 9 (9.2-9.5 el modelo y sus implicaciones, 441-444 la evidencia, 449-453 los costes quebrados y fijos); Blanchard y Fischer (1989), cap. 2; Tobin (1969); Abel (1982); Hayashi (1982); Summers (1981); Abel y Eberly (1994).
+- **Decisión D130 (13/10/2026):** ¿Cómo se escribe el coste de ajuste de la inversión (q de Tobin)? Φ(I_t, K_t). **Aplicación del 3.A.34:** Φ(I) en la presentación de Romer (el coste no depende del capital de la empresa) y **Φ(I, κ) = κφ(I/κ)** solo para Hayashi (con `\varphi`, para no confundirla con el coeficiente φ, `\phi`; A34-02, **[decidir]**).
 
-## Presentación de referencia
-Pregunta: ¿cómo invierte una empresa que mira al futuro si ajustar el capital es costoso? Supuestos: empresa competitiva, beneficio π(K) con π' > 0 > π''; coste de ajuste convexo Φ(I) con Φ(0) = Φ'(0) = 0, Φ'' > 0 (Φ, no C(I): C es el consumo); sin depreciación en la versión de Romer; precio del bien de capital = 1.
+## Presentación de referencia (3.A.34, II; sigue a Romer, 2019, cap. 9)
 
-$$\max \int_0^\infty e^{-rt}\,[\pi(K_t) - I_t - \Phi(I_t)]\,dt\quad\text{s.a.}\quad \dot K_t = I_t$$
-$$q_t = 1 + \Phi'(I_t),\qquad r\,q_t = \pi'(K_t) + \dot q_t$$
-Resultado: la inversión es creciente en q (valor sombra de una unidad de capital); se invierte si q > 1. Con rendimientos constantes y coste de ajuste homogéneo (Hayashi), la q marginal es igual a la q media (valor de mercado / coste de reposición), observable en bolsa.
-Gráfico de referencia: diagrama de fases en (K, q): locus K̇ = 0 horizontal en q = 1; locus q̇ = 0 decreciente; senda de silla. Una subida permanente de la demanda desplaza q̇ = 0 hacia arriba: q salta y converge.
+**Pregunta:** ¿cómo invierte una empresa que mira al futuro si ajustar el capital es costoso?
+
+**a) Idea.** Costes de ajuste internos, crecientes en el ritmo de inversión (Eisner y Strotz, 1963; Lucas, 1967; Gould, 1968; Treadway, 1969); externos como la eficiencia marginal de la inversión de Lerner (ficha `eficiencia-marginal-capital`). Tobin (1969) define la q **sin** costes de ajuste (valor de mercado / coste de reposición); Abel (1982) y Hayashi (1982), con la aplicación fiscal de Summers (1981), hacen de la q el precio sombra del capital en un modelo con costes de ajuste. Nunca «el modelo lo usó por primera vez Tobin (1969)».
+
+**b) Supuestos** (4, numerados): (1) **N empresas idénticas y competitivas**; $K$ capital de la industria y **κ el de cada empresa** (local, como Romer, con nota: en el resto del temario κ es el factor de homogeneidad o la pendiente de la NKPC; DK5, **[decidir]**), $K=N\kappa$; (2) beneficio de cada empresa antes de los costes de inversión **$B(K)\,\kappa$**, con $B'(K)<0$: **B(K) beneficio por unidad de capital** (D003; Romer escribe π(K), avisado en nota; π es la probabilidad del III.3; DK4/A34-14, **[decidir]**), que para la empresa es también su beneficio marginal; (3) **coste de ajuste convexo** $\Phi(I)$, $\Phi(0)=\Phi'(0)=0$, $\Phi''>0$, ejemplo **$\Phi(I)=\tfrac{\phi}{2}I^2$** (φ como el 3.A.26); (4) precio del capital = 1, **sin depreciación** ($\dot\kappa=I$) y $r$ constante.
+
+**c) Desarrollo.**
+$$\max_{\{I_t\}}\int_0^{\infty}e^{-rt}\big[B(K_t)\kappa_t-I_t-\Phi(I_t)\big]dt\quad\text{s.a.}\quad\dot\kappa_t=I_t,\ \kappa_0\ \text{dado}\qquad(\texttt{eq:problema-q},\ \texttt{\textbackslash optim})$$
+Hamiltoniano **en valor corriente** con **q_t como coestado** (DK8/A34-16, **[decidir]**): $\mathcal H_t=B(K_t)\kappa_t-I_t-\Phi(I_t)+q_tI_t$.
+$$\boxed{q_t=1+\Phi'(I_t),\qquad r\,q_t=B(K_t)+\dot q_t}\qquad(\texttt{eq:q-condiciones},\ \text{función clave})$$
+más la transversalidad $\lim_{t\to\infty}e^{-rt}q_t\kappa_t=0$. Sin depreciación no hay término $-q\delta$ en el coestado (error del original). Primera condición: $\dot K_t=N\Phi'^{-1}(q_t-1)\equiv f(q_t)$, $f(1)=0$, $f'>0$; con el cuadrático, $I_t=(q_t-1)/\phi$. Segunda condición: **arbitraje** (no «la empresa invierte hasta que…»), con su solución hacia delante $q_t=\int_t^\infty e^{-r(s-t)}B(K_s)\,ds$. Lugares: $\dot K=0$ en $q=1$ (horizontal); $\dot q=0$ en $q=B(K)/r$ (decreciente). Equilibrio $E$: $q=1$, $B(K^*)=r$ (la regla de Jorgenson con coste de uso $r$). Punto de silla: $K$ predeterminada, $q$ salta. **Con depreciación** (nota y anexo C): $(r+\delta)q=B(K)+\dot q$ y el lugar $\dot K=0$ crece con $K$.
+
+**d) Implicaciones de política** (II.2; `\dot K=0` lo mueven las ayudas a la compra de capital, `\dot q=0` la demanda y el tipo): aumento permanente de la demanda (q salta a la nueva senda, punto $A$, y converge a $E'$); temporal hasta $T$ (salta menos; llega a la senda antigua en $T$); bajada permanente y temporal del tipo de interés; **desgravación** de una fracción **θ** del precio del capital (θ local, como Romer, con nota; A34, **[decidir]** frente a τ): $q_t=1-\theta+\Phi'(I_t)$, el lugar $\dot K=0$ baja a $q=1-\theta$, $B(K)=r(1-\theta)$ en $E'$; $q$ cae, pero menos que el umbral, y la inversión sube; la **temporal anima más que la permanente** y adelanta la inversión (Abel, 1982).
+
+**e) Evidencia y valoración** (II.3). **q marginal** (la del modelo, no se observa) frente a **q media** $q^{\mathrm{media}}\equiv V/(P^K\kappa)$ ($V$ valor de mercado de la empresa); **Hayashi (1982)**: coinciden si la empresa es precio-aceptante y producción y coste de ajuste son homogéneos de grado 1, $\Phi(I,\kappa)=\kappa\varphi(I/\kappa)$ (con el Φ(I) de Romer no coinciden exactamente); medirla en bolsa exige además mercados eficientes y que la financiación no altere el valor (Modigliani y Miller). Ecuación estimable $I_t/\kappa_t=(q_t-1)/\phi$. Summers (1981): coeficiente 0,03 (e. t. 0,005), datos 1931-1978, costes del 65 %, semivida > 10 años; Cummins, Hassett y Hubbard (1994): reformas de 1962, 1971, 1981 y 1986, coeficiente ≈ 0,5, costes ≈ 4 %; Philippon (2009, q de bonos), Peters y Taylor (2017, intangibles), Gutiérrez y Philippon (2017, brecha de inversión y competencia). Valoración: primera teoría completa (optimización, ajuste gradual, mira al futuro, une bolsa y economía real, distingue permanente y temporal); límites: la q de bolsa explica poco (Blanchard, Rhee y Summers, 1993), costes simétricos y convexos, previsión perfecta, financiación sin fricciones → abre el III.
+
+**Gráficos de referencia** (`oposicion/temario/fuentes/3A34/graficos/`): `coste-ajuste.tex` (Φ(I) convexo); **`q-fases.tex`** (imprescindible, por capas: ejes → $\dot K=0$ → flechas de K → $\dot q=0$ → flechas de q → $E$ → senda de silla); **`q-permanente.tex`** (sobre el mismo diagrama: $\dot q=0'$, $E'$, nueva senda y salto en $A$); `q-temporal.tex`, `q-tipo-permanente.tex`, `q-tipo-temporal.tex`, `q-desgravacion-permanente.tex` y `q-desgravacion-temporal.tex` (apoyo, de palabra en el cante). Diagrama del mismo estilo que `fuentes/3A26/graficos/fases-empleo.tex`.
+
+## Costes de ajuste no convexos de la inversión (3.A.34, III.1; coherente con `costes-ajuste-empleo`)
+
+- **Costes quebrados**: $\Phi(I)=\phi_cI+\tfrac{\phi}{2}I^2$ si $I\ge0$ y $-\phi_dI+\tfrac{\phi}{2}I^2$ si $I<0$; el capital se compra a $1+\phi_c$ y se revende a $1-\phi_d$; **φ_c, φ_d las mismas letras que contratar y despedir** del 3.A.26; $\phi_d=1$, irreversibilidad total. Función de inversión $I(q)$ por tramos: $(q-1-\phi_c)/\phi$, 0, $(q-1+\phi_d)/\phi$.
+- **Banda de inacción** (`eq:banda-inaccion-q`, función clave):
+$$\boxed{1-\phi_d\ \le\ q\ \le\ 1+\phi_c}$$
+  Es la banda del empleo ($w-r\phi_d\le F_L\le w+r\phi_c$, `eq:banda-inaccion` del 3.A.26) **dividida por r**: aquí se comparan valores y allí flujos. En el estado estacionario, cualquier $K$ con $r(1-\phi_d)\le B(K)\le r(1+\phi_c)$ es un equilibrio: dependencia de la historia.
+- **Costes fijos** $\Phi_0$: regla **(S,s)** e inversión a saltos (*lumpy*), como la compra de duraderos (ficha `bienes-duraderos`).
+- **`tab:costes-ajuste-inversion`**: misma familia y mismas columnas (perturbación permanente / transitoria) que `tab:costes-ajuste` del 3.A.26: sin costes (Jorgenson), fijos, lineales, lineales asimétricos (irreversibilidad, $\phi_d>\phi_c$; $\phi_d=1$), cuadráticos (q).
+- Evidencia y valoración: Caballero y Engel (1999), Doms y Dunne (1998), Cooper y Haltiwanger (2006), Abel y Eberly (1994, modelo unificado).
+- **Gráfico de referencia:** `fuentes/3A34/graficos/inversion-banda.tex` (I(q) con la banda; por capas: ejes, marcas $1-\phi_d$ y $1+\phi_c$, banda, rectas, recta sin quiebro en discontinuo). El de Romer con E′, A y B del original no es el de los costes asimétricos: no se usa.
+- **Extensión en los DSGE** (conclusión del 3.A.34): coste sobre la variación de la inversión, $K_{t+1}=(1-\delta)K_t+[1-S(I_t/I_{t-1})]I_t$ (Christiano, Eichenbaum y Evans, 2005; Smets y Wouters, 2007), con $S(\cdot)$ local y siempre con argumento; respuesta en joroba.
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.34 | Teorías de la inversión | desarrollo | Modelo, diagrama de fases, q marginal y media, evidencia (débil poder explicativo de q) | — |
-| 3.A.29 | Modelización dinámica | resumen | Ejemplo de hamiltoniano con precio sombra | El diagrama completo; el propio autor dice que «está mucho mejor en el tema 3.A.34» |
-| 3.A.26 | Costes de ajuste del empleo | mención (hecho, 31/10/2026) | Analogía: $\Phi(\dot L)$ y $\lambda_t$, la q de Tobin del trabajo; la banda de inacción como los costes asimétricos e irreversibles de la inversión | El modelo de la inversión |
-| 3.A.37 | Transmisión de la política monetaria | resumen | Canal de q: tipo ↓ → precio de las acciones ↑ → q ↑ → inversión ↑ | Derivación |
+| 3.A.34 | Teorías de la inversión | desarrollo (hecho, 31/10/2026) | Todo lo anterior: II.1-II.3, III.1 y anexo C | — |
+| 3.A.29 | Modelización dinámica | resumen | La q como ejemplo de hamiltoniano en valor corriente: problema, 2 condiciones y lectura de q como precio sombra, con `\vertema{3.A.34}`; anexo común (ficha `optimizacion-dinamica`) | El diagrama completo, las políticas y la evidencia; el propio autor dice que «está mucho mejor en el tema 3.A.34» |
+| 3.A.26 | Costes de ajuste del empleo | mención (hecho, 31/10/2026) | Analogía: $\Phi(\dot L)$ y $\lambda_t$, la q de Tobin del trabajo; la banda de inacción como los costes asimétricos e irreversibles de la inversión (remisión recíproca hecha en los 2 temas) | El modelo de la inversión |
+| 3.A.37 | Transmisión de la política monetaria | resumen | Canal de q: tipo ↓ → precio de las acciones ↑ → q ↑ → inversión ↑; una frase: la inversión responde a la q **marginal** y la de bolsa es la **media**, que coinciden con las condiciones de Hayashi | Derivación |
+| 1D01 | Dictamen de coyuntura | mención (hecho) | La bolsa se cruza con la inversión: valor de mercado frente a coste de reposición | El modelo |
 
 ## Divergencias encontradas en el temario actual
-- El coste de ajuste se escribe C(I) en 3.A.34: C es consumo en el resto del bloque; canon **Φ(I_t, K_t)**.
-- 3.A.34 (sin revisar): su 3.4 «costes de ajuste asimétricos (quebrados o fijos)» es la lógica de la banda de inacción del empleo (ficha `costes-ajuste-empleo`, 3.A.26): al revisarlo, remisión recíproca y la misma tabla de tipos de costes; el diagrama de fases puede compartir estilo con `fuentes/3A26/graficos/fases-empleo.tex`.
-- 3.A.29 repite el bloque (hamiltoniano y precio sombra) de forma menos completa; 3.A.29 tiene además un anexo de optimización dinámica que el autor quiere común con 3.A.33, 3.A.34 y 3.A.43.
-- 3.A.29 (sin revisar): **duplica la q** (hamiltoniano, precio sombra y diagrama) de forma menos completa que el 3.A.34: resumirla con `\vertema{3.A.34}` (su propia nota lo pide) y copiar el anexo común (ficha `optimizacion-dinamica`) (agente de coherencia del 3.A.34, en curso).
-- 3.A.37 (sin revisar): el canal de la q usa la **q media** (valor de las acciones / coste de reposición) sin distinguirla de la **marginal**: una frase de que la inversión responde a la marginal y de que coinciden con las condiciones de Hayashi (1982) (agente de coherencia del 3.A.34, en curso).
+- 3.A.34: C(I) (consumo), π(K) y −qδ sin depreciación, Hayashi con condiciones mal enunciadas, evidencia y valoración vacías, imágenes 8 y 9 iguales, «Tobin (1969) usó el modelo por primera vez». **Resuelto** (31/10/2026).
+- 3.A.29 (sin revisar): **duplica la q** (hamiltoniano, precio sombra y diagrama) de forma menos completa que el 3.A.34: resumirla con `\vertema{3.A.34}` (su propia nota lo pide) y copiar el anexo común (ficha `optimizacion-dinamica`); w real, no $P_t$, $W_t$ nominales.
+- 3.A.37 (sin revisar): el canal de la q usa la **q media** sin distinguirla de la **marginal**: una frase con Hayashi (1982).
 
 Autor: Víctor Gutiérrez Marcos

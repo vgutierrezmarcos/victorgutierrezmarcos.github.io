@@ -614,6 +614,8 @@ modelos:
       3.B.27: mencion
       4.A.20: mencion
       4.B.3: mencion
+      3.A.34: 'mencion (hecho, 31/10/2026; reventa de la máquina con descuento)'
+      3.A.33: 'mencion (hecho, 31/10/2026; venta del duradero usado)'
   spence-senalizacion:
     nombre: Señalización en el mercado de trabajo (Spence, 1973)
     area: mercados-informacion-juegos
@@ -691,6 +693,7 @@ modelos:
       4.A.20: resumen aplicado (hoy desarrollo)
       4.A.24: mencion
       4.A.25: mencion
+      3.A.34: 'mencion (hecho, 31/10/2026; racionamiento en III.4)'
     decision: D070 (13/10/2026)
   subastas:
     nombre: Subastas (primer y segundo precio, holandesa, inglesa, valores comunes; equivalencia de ingresos)
@@ -1029,6 +1032,7 @@ modelos:
       3.A.38: resumen
       3.A.39: resumen
       4.B.4: resumen
+      3.A.34: 'mencion (hecho, 31/10/2026; I.3 en 3 viñetas)'
     decision: D031 (13/10/2026)
   lucas-islas:
     nombre: Modelo de información imperfecta de Lucas (1972), islas de Phelps
@@ -1304,7 +1308,7 @@ modelos:
       3.A.27: mencion (hecho, 31/10/2026; mecanismo de insiders y outsiders)
       3.A.28: 'desarrollo (hecho, 31/10/2026)'
       4.A.16: mencion
-      3.A.34: 'mencion (canal del capital físico; la histéresis de la inversión irreversible es otra idea)'
+      3.A.34: 'mencion (hecho, 31/10/2026; histéresis de Dixit en III.3 con la nota del canal del capital físico)'
       3.A.36: 'mencion (peso del empleo en la política monetaria; Galí, 2022)'
       3.A.41: 'mencion (triángulo de Gordon con histéresis: remitir a eq:phillips-histeresis)'
   input-output:
@@ -1321,10 +1325,9 @@ modelos:
     nombre: Modelo neoclásico (Jorgenson, 1963)
     area: macro-cerrada
     tema_referencia: 3.A.34
-    motivo: Es la teoría neoclásica de la inversión (título de 3.A.34); 4.B.10 añade el impuesto de sociedades al coste de
-      uso.
+    motivo: 'Es la teoría neoclásica de la inversión (título de 3.A.34); revisado el 31/10/2026: I.4 con eq:problema-jorgenson, 𝓗 en valor corriente con λ_t = P^K, eq:coste-uso P F_K = c_K (función clave), cierre K* = αPY/c_K, Hall y Jorgenson con t, θ, z y anexo B. Gráfico de referencia: fuentes/3A34/graficos/jorgenson.tex. 4.B.10 añade el impuesto de sociedades al coste de uso.'
     temas:
-      3.A.34: desarrollo
+      3.A.34: 'desarrollo (hecho, 31/10/2026)'
       4.B.10: desarrollo
       3.A.33: mencion (hecho, 31/10/2026; coste de uso del duradero c^d_t paralelo a c_K)
   nairu-layard-nickell:
@@ -1366,11 +1369,14 @@ modelos:
     nombre: Inversión bajo incertidumbre e irreversibilidad
     area: macro-cerrada
     tema_referencia: 3.A.34
-    motivo: Lo tiene en el título (incertidumbre, inversion, irreversibilidad) y lo trata como desarrollo.
+    motivo: 'Lo tiene en el título (incertidumbre, irreversibilidad) y lo desarrolla (revisado el 31/10/2026: III.2 Hartman-Abel, III.3 a)-e) con eq:opcion-esperar, el ejemplo de Pindyck (1991) en tab:opcion-dos-periodos, V* = β₁/(β₁ − 1)·I y anexo D). Gráficos de referencia: fuentes/3A34/graficos/opcion-esperar.tex con O(V) y epu-espana.tex (datos).'
     temas:
-      3.A.34: desarrollo
+      3.A.34: 'desarrollo (hecho, 31/10/2026)'
       3.B.2: resumen
       3.A.33: mencion (hecho, 31/10/2026; aplazar la compra de duraderos)
+      3.A.26: 'mencion (hecho, 31/10/2026; opción de esperar con costes lineales)'
+      3.A.10: 'mencion (hecho, 19/10/2026; la irreversibilidad con incertidumbre retrasa la inversión)'
+      3.B.25: 'mencion (call americana sobre el proyecto)'
   phillips:
     nombre: Curva de Phillips original, Lipsey, Samuelson-Solow, ampliada (Phelps-Friedman)
     area: macro-cerrada
@@ -1389,12 +1395,13 @@ modelos:
     nombre: q de Tobin con costes de ajuste (Summers, Abel, Hayashi)
     area: macro-cerrada
     tema_referencia: 3.A.34
-    motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
+    motivo: 'Es el único tema que lo desarrolla (revisado el 31/10/2026: II.1-II.3 con eq:problema-q y eq:q-condiciones, B(K), Φ(I) y (φ/2)I², 𝓗 en valor corriente con q_t, q media y marginal de Hayashi, evidencia; III.1 con la banda eq:banda-inaccion-q y tab:costes-ajuste-inversion; anexo C). Gráficos de referencia: fuentes/3A34/graficos/q-fases.tex y q-permanente.tex (y los de las demás políticas, coste-ajuste.tex e inversion-banda.tex).'
     temas:
       3.A.26: mencion (hecho, 31/10/2026; Φ(L̇) y λ_t, la q de Tobin del trabajo)
       3.A.29: resumen
-      3.A.34: desarrollo
+      3.A.34: 'desarrollo (hecho, 31/10/2026)'
       3.A.37: resumen
+      1D01: 'mencion (hecho; la bolsa y la inversión)'
   ramsey-cass-koopmans:
     nombre: Modelo de Ramsey-Cass-Koopmans
     area: macro-cerrada
@@ -1406,6 +1413,7 @@ modelos:
       3.A.42: resumen
       3.A.43: desarrollo
       3.B.31: resumen (base del DICE; fórmula de Ramsey del descuento)
+      3.A.34: 'mencion (hecho, 31/10/2026; anexo A)'
   rbc:
     nombre: Modelo RBC (McCallum, 1989)
     area: macro-cerrada
@@ -1885,6 +1893,7 @@ modelos:
       3.B.3: desarrollo
       4.B.10: desarrollo
       4.B.12: mencion
+      3.A.34: 'mencion (hecho, 31/10/2026; separación de inversión y financiación en III.4)'
   tobin-cartera:
     nombre: Carteras mixtas (Tobin) y CML
     area: finanzas-empresa
@@ -1902,6 +1911,8 @@ modelos:
     temas:
       3.B.2: desarrollo
       4.B.6: desarrollo
+      3.A.34: 'mencion (hecho, 31/10/2026; EMgK ≈ TIR; el VAN falla con irreversibilidad)'
+      3.A.25: 'mencion (hecho, 31/10/2026; la decisión de formarse como un VAN)'
   wacc:
     nombre: Coste medio ponderado del capital
     area: finanzas-empresa
@@ -2949,7 +2960,7 @@ modelos:
     temas:
       1D01: resumen (anexo D, tab:hechos-ciclo)
       3.A.33: mencion (hecho, 31/10/2026; III.3 con datos de España)
-      3.A.34: mencion
+      3.A.34: 'mencion (hecho, 31/10/2026; volatilidad de la FBCF en la introducción)'
       3.A.42: desarrollo
   policy-mix:
     nombre: Combinación de políticas monetaria y fiscal (policy mix)
@@ -3054,7 +3065,7 @@ modelos:
       3.A.25: desarrollo
       3.A.27: mencion (hecho, 31/10/2026; formación específica e insiders)
       3.A.29: mencion (separación de Fisher, remitir)
-      3.A.34: mencion
+      3.A.34: 'mencion (hecho, 31/10/2026; conclusión)'
       3.A.43: mencion
       3.A.44: mencion
       3.B.2: mencion (formación pagada por la empresa, remitir)
@@ -3179,7 +3190,7 @@ modelos:
       3.A.26: desarrollo (hecho, 31/10/2026)
       3.A.27: mencion (hecho, 31/10/2026; costes de despido y contratación de los insiders)
       3.A.29: mencion (hamiltoniano; ya remite)
-      3.A.34: mencion (el mismo problema con el capital; remisión recíproca)
+      3.A.34: 'mencion (hecho, 31/10/2026; Φ, φ_c, φ_d, banda en q y la misma tabla; remisión recíproca)'
       4.A.16: resumen (aplicado; costes de despido, dualidad, reforma de 2021)
   keynes-renta-absoluta:
     nombre: 'Renta absoluta y renta relativa: función de consumo keynesiana, enigma de Kuznets y Duesenberry'
@@ -3222,7 +3233,7 @@ modelos:
     motivo: 'Lo tiene en el título; bloque III del 3.A.33 (revisado el 31/10/2026), entero nuevo, con eq:problema-duraderos, eq:coste-uso (c^d_t, paralelo a c_K del 3.A.34), eq:mankiw, la regla (S,s) (duraderos-ss.tex) y los datos de España (duraderos-datos.tex). Ficha creada en la fase canon del 3.A.33 ([decidir]).'
     temas:
       3.A.33: desarrollo (hecho, 31/10/2026)
-      3.A.34: mencion (la compra de duraderos como inversión del hogar; en curso, ya remite)
+      3.A.34: 'mencion (hecho, 31/10/2026; (S,s), opción de esperar y conclusión)'
       3.A.42: mencion (más volátiles que el PIB)
       3.A.37: mencion (sensibles al tipo de interés)
       3.A.8: mencion (hecho; fuera del marco estático)
@@ -3264,16 +3275,55 @@ modelos:
     nombre: 'Optimización dinámica: tiempo discreto y control óptimo (pieza común)'
     area: macro-cerrada
     tema_referencia: 3.A.29
-    motivo: 'La modelización dinámica está en el título del 3.A.29; pieza común en 2 partes que copian los temas que la usan (nota de Víctor en el Word del 3.A.29): discreto = anexo B del 3.A.33 (anexo:optimizacion, revisado el 31/10/2026); continuo = anexo A del 3.A.34 (anexo:control-optimo, en curso). Ficha creada en la fase canon del 3.A.33 (K34 y DK9 del 3.A.34, [decidir]).'
+    motivo: 'La modelización dinámica está en el título del 3.A.29; pieza común en 2 partes que copian los temas que la usan (nota de Víctor en el Word del 3.A.29): discreto = anexo B del 3.A.33 (anexo:optimizacion, revisado el 31/10/2026); continuo = anexo A del 3.A.34 (anexo:control-optimo, revisado el 31/10/2026: 𝓗⁰ y 𝓗, transversalidad, Mangasarian y Arrow, tab:hamiltonianos). Ficha creada en la fase canon del 3.A.33 y completada en la del 3.A.34 (K34, DK9, [decidir]).'
     temas:
       3.A.29: desarrollo (copia las 2 partes y añade Bellman)
       3.A.33: anexo (hecho, 31/10/2026; tiempo discreto, texto de referencia)
-      3.A.34: anexo (tiempo continuo, texto de referencia; en curso)
+      3.A.34: 'anexo (hecho, 31/10/2026; tiempo continuo, texto de referencia)'
       3.A.43: anexo (copia la parte continua)
       3.A.26: mencion (hecho, 31/10/2026; hamiltoniano del anexo D)
       3.A.25: mencion (hecho, 31/10/2026; no-Ponzi en el anexo C)
       3.B.31: mencion (hecho, 31/10/2026; Euler en discreto)
       3.A.42: mencion (RBC)
+  acelerador:
+    nombre: 'Principio de aceleración: acelerador simple y flexible y multiplicador-acelerador (Clark 1917; Koyck 1954; Chenery 1952; Samuelson 1939; Hicks 1950)'
+    area: macro-cerrada
+    tema_referencia: 3.A.34
+    motivo: 'I.2 del 3.A.34 (revisado el 31/10/2026): acelerador simple con v (D009), multiplicador de impacto 1/(1 − c − v) con c + v < 1, acelerador flexible con Σβ_j = 1 y ajuste parcial con β₀, Samuelson en nota. Recoge el id multiplicador-acelerador del 3.A.42 (alias). Gráfico: fuentes/3A34/graficos/acelerador-flexible.tex. Ficha creada en la fase canon del 3.A.34 (C6, [decidir]).'
+    temas:
+      3.A.34: 'desarrollo (hecho, 31/10/2026)'
+      3.A.42: 'desarrollo (aplicación al ciclo: multiplicador-acelerador de Samuelson y Hicks)'
+      3.A.43: 'mencion (la misma v de Harrod-Domar)'
+      1D01: 'mencion (hecho; brecha de producción y utilización de la capacidad)'
+  eficiencia-marginal-capital:
+    nombre: 'Eficiencia marginal del capital y función de inversión keynesiana (Keynes 1936; Lerner 1953)'
+    area: macro-cerrada
+    tema_referencia: 3.A.34
+    motivo: 'I.1 del 3.A.34 (revisado el 31/10/2026): EMgK en redonda, EMgK = i, I = Ī − b·i (eq:keynes, D009), animal spirits, implicaciones y valoración; el 3.A.4 la resume como pieza de la Teoría general. Gráfico: fuentes/3A34/graficos/emgk.tex. Ficha creada en la fase canon del 3.A.34 (C6, DK6, [decidir]).'
+    temas:
+      3.A.34: 'desarrollo (hecho, 31/10/2026)'
+      3.A.4: 'resumen (hoy I = Ī − v·r)'
+      3.A.5: 'mencion (la inversión en la IS)'
+      3.B.2: 'mencion (EMgK ≈ TIR)'
+    decision: D009 (13/10/2026)
+  bernanke-gertler:
+    nombre: 'Acelerador financiero y canal del balance (Bernanke y Gertler 1989, 1995; Bernanke, Gertler y Gilchrist 1999; Kiyotaki y Moore 1997)'
+    area: macro-cerrada
+    tema_referencia: 3.A.37
+    motivo: 'El 3.A.37 lo desarrolla como canal del balance y fricciones financieras (sin revisar); mientras tanto, la presentación de referencia es la del 3.A.34 (III.4, revisado el 31/10/2026: riqueza neta RN, prima s(·) de BGG, fig:coste-fondos). [decidir]: alternativas 3.A.34 o 3.A.42. Ficha creada en la fase canon del 3.A.34.'
+    temas:
+      3.A.37: 'desarrollo (sin revisar)'
+      3.A.34: 'resumen (hecho, 31/10/2026)'
+      3.A.42: 'resumen (enlace ciclo financiero y ciclo real)'
+  pecking-order:
+    nombre: 'Jerarquía financiera u orden jerárquico (pecking order: Myers y Majluf 1984; Myers 1984)'
+    area: finanzas-empresa
+    tema_referencia: 3.B.3
+    motivo: 'Las decisiones de financiación son el título del 3.B.3 (sin revisar), que la desarrolla frente al trade-off. Ficha creada en la fase canon del 3.A.34.'
+    temas:
+      3.B.3: desarrollo
+      3.A.13: 'mencion (hecho, 19/10/2026; la emisión de acciones como mala señal)'
+      3.A.34: 'mencion (hecho, 31/10/2026; III.4)'
 temas:
   3.A.1:
     titulo: Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía
@@ -3565,6 +3615,7 @@ temas:
       por_que: modelo del mercado de pescado de Marshall (equilibrio temporal y normal)
     modelos:
     - chamberlin
+    - eficiencia-marginal-capital
     - is-lm
     - keynes-renta-absoluta
     - keynes-teoria-general
@@ -3620,6 +3671,7 @@ temas:
       por_que: regla de crecimiento constante de la oferta monetaria (regla k%)
     modelos:
     - clower-decision-dual
+    - eficiencia-marginal-capital
     - historia-monetaria-friedman-schwartz
     - is-lm
     - keynes-renta-absoluta
@@ -4339,6 +4391,7 @@ temas:
     - friedman-savage
     - hall
     - markowitz
+    - opciones-reales
     - preferencia-por-el-estado
     - prospect-theory
     - rothschild-stiglitz
@@ -4734,6 +4787,7 @@ temas:
     - disuasion-entrada
     - equilibrio-nash
     - laffont-tirole
+    - pecking-order
     - principal-agente
     - rothschild-stiglitz
     - salarios-eficiencia
@@ -6501,6 +6555,7 @@ temas:
     - slutsky
     - spence-senalizacion
     - uzawa-lucas
+    - van-tir
     revisado: 2026-10-31
   3.A.26:
     titulo: Desempleo friccional. La curva de Beveridge, el modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides.
@@ -6576,7 +6631,7 @@ temas:
         3.A.26 sin repetir la curva salarial. Repite la crítica de Farmer con las mismas frases que el 3.A.26 original: allí se quedan los
         equilibrios múltiples y la histéresis; en el 3.A.26 son 2 líneas. Su lista de modelos debe añadir curva-beveridge y hosios. Resuelto en la revisión del 3.A.28 (31/10/2026): II.4 con las fichas, Hosios y Farmer en III.3 d); escribe U^n y dice una vez que el U* del DMP es U^n.'
     - tema: 3.A.34
-      que: 'Sin revisar. Escribe el coste de ajuste C(I) (canon Φ, D130; el 3.A.26 usa Φ(L̇) para el empleo) y tiene un 3.4 «costes de
+      que: 'Resuelto al revisar el 3.A.34 (31/10/2026): Φ(I), φ_c, φ_d, banda en q y la misma tabla de tipos de costes, con remisión recíproca. Antes: Sin revisar. Escribe el coste de ajuste C(I) (canon Φ, D130; el 3.A.26 usa Φ(L̇) para el empleo) y tiene un 3.4 «costes de
         ajuste asimétricos (quebrados o fijos)» con la misma lógica que la banda de inacción del empleo: remisión recíproca \vertema{3.A.26}
         y la misma tabla de tipos de costes (ficha costes-ajuste-empleo; λ_t como q del trabajo, ficha q-tobin).'
     - tema: 3.A.29
@@ -6600,6 +6655,7 @@ temas:
     - lucas-rapping
     - mccall
     - nash-negociacion
+    - opciones-reales
     - optimizacion-dinamica
     - q-tobin
     revisado: 2026-10-31
@@ -6799,7 +6855,7 @@ temas:
         y la tasa natural, y la histéresis como argumento para dar peso al empleo (Galí, 2022; estrategias de la Fed de 2020 y del BCE
         de 2021, a comprobar al revisarlo).'
     - tema: 3.A.34
-      que: 'Sin revisar. Una mención del canal del capital físico de la histéresis con \vertema{3.A.28}, avisando de que la «histéresis»
+      que: 'Resuelto al revisar el 3.A.34 (31/10/2026, nota de III.3). Antes: Sin revisar. Una mención del canal del capital físico de la histéresis con \vertema{3.A.28}, avisando de que la «histéresis»
         de la inversión irreversible (Dixit, 1989; banda de inacción) es otra idea con el mismo nombre.'
     - tema: 3.A.4
       que: 'Sin revisar. Desarrolla la curva de Phillips con el texto viejo del 3.A.28 (D031: resumen en 3.A.5, desarrollo en 3.A.28; en
@@ -7114,13 +7170,14 @@ temas:
     - tema: 3.A.40
       que: 'Sin fuente. Debe recoger los multiplicadores con hogares hand-to-mouth (Galí, López-Salido y Vallés, 2007; HANK, Kaplan, Moll y Violante, 2018), el ahorro precautorio y el tipo natural, y el estancamiento secular de Hansen (el 3.A.33 los menciona con remisión).'
     - tema: 3.A.34
-      que: 'En curso. Sin contradicción: c_K con la misma δ y r, remite al 3.A.33 por los duraderos (opción de esperar, conclusión) y escribe la parte continua de la pieza común optimizacion-dinamica (DK9); el 3.A.33 escribe c^d_t por analogía con c_K (anexo D: c_K = P^K(r + δ − Ṗ^K/P^K)).'
+      que: 'Revisado (31/10/2026): sin contradicción; c_K con la misma δ y r, remite al 3.A.33 por los duraderos ((S,s) en III.1, opción de esperar en III.3, conclusión) y escribe la parte continua de la pieza común optimizacion-dinamica (anexo A, DK9); el 3.A.33 escribe c^d_t por analogía con c_K (anexo D: c_K = P^K(r + δ − Ṗ^K/P^K)).'
     - tema: 1D01
       que: 'Revisada. «Incertidumbre, volatilidad y paro esperado (−): por la aversión al riesgo, ahorro precautorio» (l. 423): lo que da el ahorro precautorio es la prudencia (u‴ > 0), no la aversión (pendientes-coherencia.md, menor). Lo demás (renta permanente, paseo aleatorio, ciclo vital, duraderos más volátiles, ahorro de 2020) es coherente con el 3.A.33.'
     - tema: 3.A.8, 3.A.9, 3.A.10, 3.A.25
       que: 'Revisados: sin contradicciones; lo que prometen del 3.A.33 se cumple (duraderos, hábitos y liquidez fuera del marco estático; Hall con cuadrática sin precaución y tab:prudencia; restricción intertemporal y separación de Fisher en la decisión de formarse). La contradicción del 3.A.10 (Leland y Sandmo sin Kimball) queda resuelta. El 3.A.33 escribe en su anexo B la compensada C_1^h: con § 0, h_{C_1}(p,Ū) (pendientes-coherencia.md, menor, del propio 3.A.33).'
     modelos:
     - ahorro-precaucion
+    - akerlof-lemons
     - aversion-riesgo-arrow-pratt
     - bienes-duraderos
     - ccapm
@@ -7149,55 +7206,120 @@ temas:
       política económica.
     bloque: demanda-agregada-y-oferta-agregada
     fuente_disponible: si
+    nota: 'Revisado el 31/10/2026, el 6.º del bloque de demanda y oferta agregadas. Estructura del original con el III ampliado (DK1/A34-13, DK11): I. Antecedentes: de Keynes al modelo neoclásico (7′; I.1 Keynes con EMgK e I = Ī − b·i, I.2 acelerador, I.3 IS-LM en 3 viñetas, I.4 Jorgenson con c_K); II. Costes de ajuste: el modelo de la q (9′30″; II.1 modelo con B(K), Φ, 𝓗 en valor corriente; II.2 implicaciones; II.3 q media y marginal, evidencia y valoración); III. Extensiones: incertidumbre, irreversibilidad y financiación de la inversión (10′; III.1 costes asimétricos y fijos con la banda 1 − φ_d ≤ q ≤ 1 + φ_c; III.2 Hartman-Abel; III.3 opción de esperar con el ejemplo de Pindyck y V*; III.4 mercados financieros y acelerador financiero; III.5 síntesis con tab:implicaciones-inversion); 5 anexos (A control óptimo, pieza común en tiempo continuo; B Jorgenson; C q y Hayashi; D V* en tiempo continuo; E test). Referencia de jorgenson, q-tobin, opciones-reales, acelerador, eficiencia-marginal-capital y de la parte continua de optimizacion-dinamica. Dudas A34-01 a A34-22 con la opción recomendada (informe-repaso.md § 28).'
     referencias:
+    - a: 3.A.2
+      estado: ok
+      contexto: 'Clásicos y Marx: la acumulación de capital como motor (introducción, contextualización)'
+    - a: 3.A.4
+      estado: ok
+      contexto: 'Keynes: la inversión como parte más inestable de la demanda, animal spirits (introducción, I.1)'
+    - a: 3.A.5
+      estado: ok
+      contexto: 'IS-LM: la inversión keynesiana en la síntesis (I.1, nota de las pendientes; I.3)'
+    - a: 3.A.7
+      estado: ok
+      contexto: 'DSGE con costes de ajuste sobre la variación de la inversión (conclusión)'
+    - a: 3.A.10
+      estado: ok
+      contexto: 'Incertidumbre knightiana (valoración de Keynes, I.1); desigualdad de Jensen en Hartman-Abel (III.2)'
+    - a: 3.A.13
+      estado: ok
+      contexto: 'Reventa con descuento como los limones de Akerlof (III.1); racionamiento del crédito (III.4)'
+    - a: 3.A.25
+      estado: ok
+      contexto: 'El capital humano como inversión con la misma regla del valor actual (conclusión)'
+    - a: 3.A.26
+      estado: ok
+      contexto: 'Costes de ajuste del empleo: q como «el λ_t del capital» (II.1); mismas letras φ_c, φ_d, banda dividida por r y misma tabla de costes (III.1); conclusión; anexo A común'
+    - a: 3.A.28
+      estado: ok
+      contexto: 'La histéresis de Dixit no es la del paro; canal del capital físico (nota de III.3)'
+    - a: 3.A.29
+      estado: ok
+      contexto: 'Precio sombra del capital (I.4); anexo A, pieza común de control óptimo'
+    - a: 3.A.30
+      estado: ok
+      contexto: 'FBCF y sus componentes según el SEC 2010 (introducción)'
+    - a: 3.A.33
+      estado: ok
+      contexto: 'Friedman y los microfundamentos (I.4); duraderos: coste de uso, (S,s) y opción de esperar (introducción, III.1, III.3); conclusión; anexo A (parte discreta)'
     - a: 3.A.35
       estado: ok
-      contexto: '- El tipo de interés se determina en el mercado monetario y representa el coste de oportunidad de mantener
-        dinero [ve [ver tema 3.A.35]'
+      contexto: 'Preferencia por la liquidez y trampa de la liquidez (I.1)'
+    - a: 3.A.37
+      estado: ok
+      contexto: 'Canal de la q (II.2, II.3), canal del crédito (III.4) y política monetaria (introducción, III.5)'
+    - a: 3.A.38
+      estado: ok
+      contexto: 'Incentivos fiscales a la inversión (introducción, III.5)'
+    - a: 3.A.42
+      estado: ok
+      contexto: 'Volatilidad de la inversión (introducción); multiplicador-acelerador de Samuelson (nota de I.2); ciclo financiero (III.4)'
+    - a: 3.A.43
+      estado: ok
+      contexto: 'Harrod-Domar con la misma v (I.2); Inada (nota de I.4); potencial (introducción, conclusión); crecimiento óptimo (anexo A)'
     - a: 3.B.2
       estado: ok
-      contexto: a la eficiencia marginal del capital. Este concepto se puede entender como análogo a la Tasa Interna de Retorno
-        (TIR) [ [ver tema 3.B.2]
-    faltan:
-    - a: 3.A.28
-      por_que: 'Canal del capital físico de la histéresis (el 3.A.28, revisado el 31/10/2026, remite aquí); avisar de que la histéresis de la inversión irreversible es otra idea.'
-    - a: 3.A.29
-      por_que: Hamiltoniano y q de Tobin (el autor anota «Coordinar en temas 3.A.29 y 3.A.34»).
-    - a: 3.A.37
-      por_que: Canal de la q de Tobin en la transmisión monetaria.
-    - a: 3.A.10
-      por_que: Incertidumbre.
+      contexto: 'EMgK ≈ TIR y orden TIR frente a VAN (I.1); valoración de opciones reales (III.3, conclusión)'
+    - a: 3.B.3
+      estado: ok
+      contexto: 'Modigliani-Miller y jerarquía financiera (III.4, conclusión)'
     - a: 3.B.25
-      por_que: 'Valor de opción e irreversibilidad: opciones reales.'
-    - a: 3.A.42
-      por_que: Multiplicador-acelerador en las teorías del ciclo.
+      estado: ok
+      uso: ampliar
+      contexto: 'La opción de esperar como call americana (III.3)'
+    - a: 4.B.10
+      estado: ok
+      uso: ampliar
+      contexto: 'Coste de uso con impuesto de sociedades, Hall y Jorgenson (nota de I.4); incentivos fiscales (III.5)'
+    faltan: []
     contradicciones:
     - tema: 3.A.4
-      que: 'Registrado en la fase canon del 3.A.33 a partir del agente de coherencia del 3.A.34 (en curso, 31/10/2026). Sin revisar. Escribe la inversión keynesiana I = Ī − v·r: con D009, I = Ī − b·i (v es la relación capital-producto del acelerador); la eficiencia marginal del capital con sigla, EMgK (fichas is-lm y jorgenson).'
+      que: 'Sin revisar. Escribe la inversión keynesiana I = Ī − v·r: con D009, I = Ī − b·i (v es la relación capital-producto del acelerador), i monetario y la EMgK con sigla (fichas eficiencia-marginal-capital y jorgenson); «ni la política fiscal ni la monetaria afectan a la inversión», como el original del 3.A.34: la fiscal es eficaz sobre la renta y Keynes pide la socialización de la inversión (cap. 24).'
     - tema: 3.A.25
-      que: 'Registrado en la fase canon del 3.A.33 a partir del agente de coherencia del 3.A.34 (en curso, 31/10/2026). Revisado. L. 724: «igual que una empresa decide una inversión por su valor actual neto \vertema{3.A.34}»: el VAN se desarrolla en el 3.B.2 (ficha van-tir); mejor \vertema{3.B.2} (o los 2). Menor (pendientes-coherencia.md, sección «Adelantado del 3.A.34»).'
-    - tema: 3.B.2
-      que: 'Registrado en la fase canon del 3.A.33 a partir del agente de coherencia del 3.A.34 (en curso, 31/10/2026). Sin revisar. «El método del VAN asume irreversibilidad»: mejor «supone que la inversión es reversible o que es de ahora o nunca» (Dixit y Pindyck, 1994, cap. 1); sus opciones reales, en resumen con \vertema{3.A.34} (fichas van-tir y opciones-reales).'
-    - tema: 3.A.29
-      que: 'Registrado en la fase canon del 3.A.33 a partir del agente de coherencia del 3.A.34 (en curso, 31/10/2026). Sin revisar. Duplica la q de Tobin (hamiltoniano, precio sombra, diagrama) de forma menos completa: resumirla con \vertema{3.A.34} (su propia nota lo pide); copiar el anexo común (ficha optimizacion-dinamica); w real, no P_t y W_t nominales (ficha costes-ajuste-empleo).'
-    - tema: 3.A.37
-      que: 'Registrado en la fase canon del 3.A.33 a partir del agente de coherencia del 3.A.34 (en curso, 31/10/2026). Sin revisar. El canal de la q usa la q media (valor de las acciones / coste de reposición) sin distinguirla de la marginal: una frase de que la inversión responde a la marginal y de que coinciden con las condiciones de Hayashi (1982) (ficha q-tobin). El acelerador financiero lo desarrolla allí; el 3.A.34 lo menciona.'
+      que: 'Revisado. L. 724: «igual que una empresa decide una inversión por su valor actual neto \vertema{3.A.34}»: el VAN se desarrolla en el 3.B.2 (ficha van-tir); mejor \vertema{3.B.2} (o los 2). Menor (pendientes-coherencia.md, «Pendiente del 3.A.34»).'
     - tema: 3.A.26
-      que: 'Registrado en la fase canon del 3.A.33 a partir del agente de coherencia del 3.A.34 (en curso, 31/10/2026). Revisado. Escribe el hamiltoniano en valor corriente con H en el anexo D: si se aprueba 𝓗 (DK8 del 3.A.34, [decidir]), cambio cosmético (pendientes-coherencia.md).'
+      que: 'Revisado. Escribe el hamiltoniano en valor corriente con H en el anexo D (l. 946, 973, 1016): si se aprueba 𝓗 (DK8/A34-16, [decidir]), cambio cosmético (pendientes-coherencia.md). Lo demás coincide: Φ, φ_c, φ_d, la banda (la del 3.A.34 es la suya dividida por r), la misma tabla de tipos de costes y la remisión recíproca; su III.4 remite al 3.A.34 por la opción de esperar, que ahora está en III.3.'
     - tema: 3.A.33
-      que: 'Registrado en la fase canon del 3.A.33 a partir del agente de coherencia del 3.A.34 (en curso, 31/10/2026). Revisado (31/10/2026): sin contradicción; usa c^d_t por analogía con c_K, la misma δ y r, y remite al 3.A.34 por Dixit y Pindyck; su anexo B es la parte discreta de la pieza común optimizacion-dinamica (DK9).'
+      que: 'Revisado (31/10/2026): sin contradicción; c^d_t por analogía con c_K (misma δ y r), (S,s) y opción de esperar coinciden. Su anexo B (parte discreta de la pieza común) no dice que es común ni remite al anexo A del 3.A.34 (parte continua): nota opcional (pendientes-coherencia.md).'
+    - tema: 3.B.2
+      que: 'Sin revisar. «El método del VAN asume irreversibilidad»: mejor «supone que la inversión es reversible o que es de ahora o nunca» (Dixit y Pindyck, 1994, cap. 1); sus opciones reales, en resumen con \vertema{3.A.34} (fichas van-tir y opciones-reales).'
+    - tema: 3.A.29
+      que: 'Sin revisar. Duplica la q de Tobin (hamiltoniano, precio sombra, diagrama) de forma menos completa: resumirla con \vertema{3.A.34} (su propia nota lo pide); copiar las 2 partes del anexo común (ficha optimizacion-dinamica: continua = anexo A del 3.A.34, con 𝓗, 𝓗⁰, λ_t, λ⁰_t y la transversalidad lim e^{−ρt}λ_ty_t = 0); w real, no P_t y W_t nominales (ficha costes-ajuste-empleo).'
+    - tema: 3.A.37
+      que: 'Sin revisar. El canal de la q usa la q media (valor de las acciones / coste de reposición) sin distinguirla de la marginal: una frase con Hayashi (1982) (ficha q-tobin). Desarrolla el acelerador financiero (ficha bernanke-gertler, tema de referencia, [decidir]): riqueza neta RN y prima s(·) como el 3.A.34.'
+    - tema: 3.A.42
+      que: 'Sin revisar. El multiplicador-acelerador con la v de capital-producto y la ecuación de Samuelson del 3.A.34 (nota de I.2), Σβ_j = 1 si da el acelerador flexible (ficha acelerador, que recoge el id multiplicador-acelerador); fricciones financieras con la notación de BGG del 3.A.34; volatilidad de la inversión con los datos de la CNTR.'
+    - tema: 4.B.10
+      que: 'Sin revisar. Coste de uso con P^K = 1: unificar con c_K y la fórmula de Hall y Jorgenson del 3.A.34, c_K = P^K(r + δ)(1 − θ)(1 − tz)/(1 − t) (ficha jorgenson); si usa otra letra para la desgravación, avisarlo.'
+    - tema: 3.A.43
+      que: 'Sin revisar. Remite al 3.A.34 por el acelerador simple (bien) con la misma v; anexo de optimización: copiar la parte continua del 3.A.34 (ficha optimizacion-dinamica).'
+    - tema: 3.B.3
+      que: 'Sin revisar. La jerarquía financiera (ficha pecking-order) debe remitir al 3.A.13 (selección adversa; el 3.A.13 la llama «teoría del orden jerárquico») y al 3.A.34 (la inversión depende de los fondos propios).'
+    - tema: 1D01, 3.A.10, 3.A.13, 3.A.28
+      que: 'Revisados: sin contradicciones. 1D01: FBCF en la UE (21,5 %, 2025) frente a la zona del euro del 3.A.34 (21,3 %), agregados distintos; la q de la bolsa (l. 1565) es la media, sin necesidad de distinguir en un dictamen; la inversión «el componente más volátil» cuadra con los datos del 3.A.34. 3.A.10 (l. 1159): «la incertidumbre y la irreversibilidad retrasan la inversión», coherente con III.3 (sin irreversibilidad puede aumentarla, III.2). 3.A.13: limones y orden jerárquico, como III.1 y III.4. 3.A.28: el canal del capital físico de la histéresis, con la nota de III.3 (pendiente del 3.A.28 cumplido).'
     modelos:
     - acelerador
+    - akerlof-lemons
     - becker-capital-humano
+    - bernanke-gertler
     - bienes-duraderos
     - costes-ajuste-empleo
     - eficiencia-marginal-capital
     - hechos-estilizados-ciclo
+    - histeresis
+    - is-lm
     - jorgenson
+    - modigliani-miller
     - opciones-reales
     - optimizacion-dinamica
+    - pecking-order
     - q-tobin
-    revisado: null
+    - ramsey-cass-koopmans
+    - stiglitz-weiss
+    - van-tir
+    revisado: 2026-10-31
   3.A.35:
     titulo: Teorías de la demanda de dinero. Implicaciones de política económica.
     bloque: ciclo-economico-y-politicas-de-demanda
@@ -7646,7 +7768,9 @@ temas:
     - a: 3.A.37
       por_que: Acelerador financiero de Bernanke-Gertler como enlace ciclo financiero–ciclo real.
     modelos:
+    - acelerador
     - ahorro-precaucion
+    - bernanke-gertler
     - bienes-duraderos
     - brecha-credito-pib
     - brecha-produccion
@@ -7655,7 +7779,6 @@ temas:
     - hechos-estilizados-ciclo
     - lucas-islas
     - lucas-rapping
-    - multiplicador-acelerador
     - nek-3-ecuaciones
     - optimizacion-dinamica
     - ramsey-cass-koopmans
@@ -7762,6 +7885,7 @@ temas:
     - a: 3.A.4
       por_que: La controversia del capital de Cambridge, que el autor sugiere añadir, está en 3.A.4.
     modelos:
+    - acelerador
     - becker-capital-humano
     - dice
     - harrod-domar
@@ -8089,6 +8213,7 @@ temas:
     - baumol-tobin
     - becker-capital-humano
     - capm
+    - eficiencia-marginal-capital
     - gordon-shapiro
     - mapi
     - opciones-reales
@@ -9816,6 +9941,7 @@ temas:
     - black-scholes
     - estrategias-opciones
     - expectativas-contango
+    - opciones-reales
     - put-call
     - spot-futuros
     revisado: null
@@ -13464,6 +13590,7 @@ temas:
     - tema: 4.A.1
       que: 'Subyacente «sin productos energéticos y alimentos»: son los alimentos no elaborados (ya en la ficha ipc).'
     modelos:
+    - acelerador
     - adecuacion-reservas
     - ahorro-precaucion
     - basilea-capital
@@ -13496,6 +13623,7 @@ temas:
     - pec
     - phillips
     - policy-mix
+    - q-tobin
     - renta-permanente
     - restriccion-gobierno
     - restricciones-liquidez

@@ -1,0 +1,31 @@
+% El capital deseado de Jorgenson (1963): se demanda capital hasta que el
+% valor de su producto marginal iguala el coste de uso,
+% P F_K(K*, L) = c_K = P^K (r + delta - \dot P^K / P^K).
+%   valor del producto marginal (ilustrativo): P F_K = 3,2 K^{-0,8}
+%   coste de uso c_K = 2   -> K*  = 1,6^{1,25}    = 1,799
+%   baja r: c_K' = 1,4     -> K*' = (3,2/1,4)^{1,25} = 2,811
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes: capital y valor por unidad de capital
+  \capa{1}{\ejes{$K$}{$P\,F_K,\ c_K$}{6.2}{5}}
+  % 2: valor del producto marginal del capital, decreciente
+  \capa{2}{\draw[curva1] plot[domain=0.62:5.6,samples=80,smooth] (\x,{3.2*\x^(-0.8)})
+      node[etiqueta,right] {$P\,F_K(K,L)$};}
+  % 3: coste de uso del capital, horizontal
+  \capa{3}{\draw[curva2] (0,2) -- (5.6,2) node[etiqueta,right] {$c_K$};}
+  % 4: equilibrio y capital deseado
+  \capa{4}{\node[punto] (E) at (1.799,2) {};}
+  \capa{4}{\node[etiqueta,above right=1pt] at (E) {$E$};}
+  \capa{4}{\draw[guia] (E) -- (1.799,0) node[below,text=black] {$K^*$};}
+  % 5: baja el tipo de interés: baja el coste de uso y sube el capital deseado
+  \capa{5}{\draw[curvanueva,desplazada] (0,1.4) -- (5.6,1.4) node[etiqueta,right,text=tceerojo] {$c_K'$};}
+  \capa{5}{\draw[flecha] (4.9,1.93) -- (4.9,1.47) node[midway,left,etiqueta,font=\footnotesize,text=tceerojo] {baja $r$};}
+  \capa{5}{\node[punto] (E1) at (2.811,1.4) {};}
+  \capa{5}{\node[etiqueta,above right=1pt] at (E1) {$E'$};}
+  \capa{5}{\draw[guia] (E1) -- (2.811,0) node[below,text=black] {$K^{*\prime}$};}
+  \capa{5}{\draw[flecha] (1.95,-0.75) -- (2.66,-0.75);}
+\end{tikzpicture}
+\end{document}

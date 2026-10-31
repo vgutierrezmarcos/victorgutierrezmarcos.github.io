@@ -1,7 +1,7 @@
 # Racionamiento del crédito (Stiglitz y Weiss, 1981)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.13** (Economía de la información; revisado el 19/10/2026, bloque III y anexo C) — desarrollo de referencia con a)-e), los 3 efectos de subir el tipo, la función del rendimiento del banco y los 2 paneles: es la aplicación canónica de selección adversa *y* riesgo moral a la vez, que es justo el título del 3.A.13 (deja de ser «comodín»). 3.B.27 y 4.A.20 pasan a resumen aplicado (regulación bancaria; financiación de pymes); 4.A.20 con lo imprescindible para cantarse sin el 3.A.13.
-- **Temas que lo usan:** 3.A.13 (desarrollo; hecho, 19/10/2026), 3.B.27 (desarrollo → resumen), 4.A.20 (desarrollo → resumen), 3.A.7 (mención: base de la NEK), 3.B.26 (mención: crisis financieras), 3.B.28 (mención: microcréditos), 4.A.24, 4.A.25 (mención: avales y líneas públicas).
+- **Temas que lo usan:** 3.A.13 (desarrollo; hecho, 19/10/2026), 3.B.27 (desarrollo → resumen), 4.A.20 (desarrollo → resumen), 3.A.7 (mención: base de la NEK), 3.B.26 (mención: crisis financieras), 3.B.28 (mención: microcréditos), 4.A.24, 4.A.25 (mención: avales y líneas públicas), 3.A.34 (mención; hecho, 31/10/2026: III.4 b), «los bancos racionan el crédito en vez de subir el tipo» `\vertema{3.A.13}`).
 - **Manuales de referencia:** Stiglitz y Weiss (1981), *AER*; Freixas y Rochet (2008), *Microeconomics of Banking*, cap. 5; Mas-Colell, Whinston y Green, cap. 13; Jaffee y Russell (1976); Bester (1985), *AER*; de Meza y Webb (1987), *QJE*; Rothschild y Stiglitz (1970), *JET* (dispersión que conserva la media).
 - **Decisión D070 (13/10/2026):** ¿Cuál es el tema de referencia de Stiglitz-Weiss (racionamiento del crédito)? 3.A.13, ampliándolo con supuestos, ecuaciones y los dos gráficos; 3.B.27 y 4.A.20 pasan a resumen aplicado. **Cumplido** en la revisión del 3.A.13 (19/10/2026).
 
@@ -30,6 +30,7 @@ Gráficos de referencia (`oposicion/temario/fuentes/3A13/graficos/stiglitz-weiss
 | 4.A.20 | Financiación no bancaria | resumen | Lo imprescindible para cantarse sin el 3.A.13 (supuestos, función, racionamiento de las pymes) ⇒ diversificar fuentes (mercados, capital riesgo) | Derivación |
 | 3.A.7 | Nueva economía keynesiana | mención | Imperfecciones del crédito como fuente de rigidez y amplificación | — |
 | 3.B.26 | Crisis financieras | mención | Racionamiento y canal del crédito en las crisis | — |
+| 3.A.34 | Teorías de la inversión | mención (hecho, 31/10/2026) | El racionamiento como fricción financiera de la inversión | El modelo |
 | 3.B.28 | Desarrollo | mención | Microcréditos y responsabilidad conjunta como respuesta | — |
 | 4.A.24, 4.A.25 | Apoyo financiero a la internacionalización | mención | Fallo de mercado que justifica CESCE, FIEM, COFIDES | — |
 

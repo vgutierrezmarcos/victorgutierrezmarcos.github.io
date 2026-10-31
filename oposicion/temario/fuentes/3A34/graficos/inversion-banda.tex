@@ -1,0 +1,42 @@
+% La función de inversión con costes de ajuste quebrados (Abel y Eberly, 1994;
+% Romer, 2019, cap. 9): banda de inacción en q, coherente con la banda del
+% empleo del 3.A.26 (banda-inaccion.tex).
+%   Phi(I) = phi_c I + (phi/2) I^2 si I >= 0; -phi_d I + (phi/2) I^2 si I < 0
+%   phi_c = 0,25; phi_d = 0,4 (revender cuesta más que comprar); phi = 0,5
+%   I(q) = (q - 1 - phi_c)/phi  si q > 1,25
+%        = 0                    si 0,6 <= q <= 1,25
+%        = (q - 1 + phi_d)/phi  si q < 0,6
+%   sin quiebro (phi_c = phi_d = 0): I = (q - 1)/phi
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=3.2cm,y=1.3cm,
+    declare function={ic(\q)=(\q-1.25)/0.5; id(\q)=(\q-0.6)/0.5; iq(\q)=(\q-1)/0.5;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.25,-2.1) rectangle (2.75,2.35);
+  % 1: ejes q (horizontal) e I (vertical, con desinversión por debajo de cero)
+  \capa{1}{\draw[eje] (0,0) -- (2.2,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,-1.9) -- (0,2.2) node[left] {$I$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: marcas en el eje: los 2 umbrales y q = 1
+  \capa{2}{\draw[thin] (0.6,-0.07) -- (0.6,0.07) node[above left=0pt and -6pt] {$1-\phi_d$};}
+  \capa{2}{\draw[thin] (1,-0.07) node[below right=-1pt and -4pt] {$1$} -- (1,0.07);}
+  \capa{2}{\draw[thin] (1.25,-0.07) node[below] {$1+\phi_c$} -- (1.25,0.07);}
+  % 3: la banda de inacción: la inversión es nula entre los 2 umbrales
+  \capa{3}{\begin{pgfonlayer}{background}
+      \fill[tceesalvia] (0.6,-0.95) rectangle (1.25,1.75);
+    \end{pgfonlayer}
+    \draw[curva1,line width=2.5pt] (0.6,0) -- (1.25,0);
+    \node[etiqueta,align=center,text=tceeverde,anchor=south] at (0.925,1.0) {banda de\\inacción};}
+  % 4: por encima de 1 + phi_c, la empresa invierte (pendiente 1/phi)
+  \capa{4}{\draw[curva1] plot[domain=1.25:2.1] (\x,{ic(\x)})
+      node[etiqueta,right,text=tceemorado] {$I=\dfrac{q-1-\phi_c}{\phi}$};}
+  % 5: por debajo de 1 - phi_d, la empresa desinvierte
+  \capa{5}{\draw[curva1] plot[domain=0.6:0.08] (\x,{id(\x)})
+      node[etiqueta,below right=2pt and -2pt,text=tceemorado] {$I=\dfrac{q-1+\phi_d}{\phi}$};}
+  % 6: sin quiebro, la recta del modelo de la q que pasa por q = 1
+  \capa{6}{\draw[curva2,dashed] plot[domain=0.68:1.8] (\x,{iq(\x)})
+      node[etiqueta,above left=0pt and -2pt,text=tceeazul] {sin quiebro: $I=\dfrac{q-1}{\phi}$};}
+\end{tikzpicture}
+\end{document}

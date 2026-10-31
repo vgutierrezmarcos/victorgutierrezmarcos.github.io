@@ -1,7 +1,7 @@
 # Criterios VAN y TIR
 
 - **Área:** finanzas-empresa · **Tema de referencia:** 3.B.2 (La empresa y las decisiones de inversión: criterios de valoración de proyectos) — lo tiene en el título; 4.B.6 lo aplica al análisis coste-beneficio público.
-- **Temas que lo usan:** 3.B.2 (desarrollo), 4.B.6 (desarrollo → resumen con la tasa social de descuento)
+- **Temas que lo usan:** 3.B.2 (desarrollo), 4.B.6 (desarrollo → resumen con la tasa social de descuento), 3.A.34 (mención; hecho, 31/10/2026: la EMgK de Keynes es la TIR, con la nota de que el orden por TIR puede no coincidir con el del VAN; con irreversibilidad e incertidumbre la regla $V\ge I$ falla, ficha `opciones-reales`; `\vertema{3.B.2}` en I.1, III.3 y la conclusión), 3.A.25 (mención; hecho: la decisión de formarse como un VAN)
 - **Manuales de referencia:** Brealey, Myers y Allen, *Principles of Corporate Finance*, caps. 2, 5-6; Berk y DeMarzo, *Corporate Finance*, caps. 4 y 7; Suárez Suárez, *Decisiones óptimas de inversión y financiación en la empresa*; Boardman et al., *Cost-Benefit Analysis* (para 4.B.6).
 
 ## Presentación de referencia
@@ -21,12 +21,13 @@ TIR modificada: $\big(\sum_t FC_t(1+k)^{n-t}\big)/I_0 = (1+TIRM)^n$; *payback* $
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.B.2 | Criterios de valoración de proyectos | desarrollo | VAN, TIR, TIRM, *payback*, índice de rentabilidad; riesgo (tasa ajustada, equivalente cierto) | — |
+| 3.A.34 | Teorías de la inversión | mención (hecho, 31/10/2026) | EMgK ≈ TIR; el VAN falla con irreversibilidad e incertidumbre | Los criterios |
 | 4.B.6 | Análisis coste-beneficio | resumen aplicado | $VAN = \sum_t (B_t - C_t)/(1+\delta)^t$ con tasa social de descuento $\delta$; TIR y sus problemas en una línea [ver tema 3.B.2] | Punto de Fisher y TIRM completos |
 
 ## Divergencias encontradas en el temario actual
 - Desembolso $A$ y flujos $Q_t$ en 3.B.2 frente a $B_t - C_t$ en 4.B.6 y $FC_t$/$FCL_t$ en 3.B.4. Canon: $I_0$ y $FC_t$ en finanzas; $B_t$, $C_t$ y $\delta$ en ACB público.
 - Tasa de descuento $k$, $WACC$ o $r$ usados indistintamente en 3.B.2: canon $k$ (genérica) y $WACC$ cuando se use el coste medio ponderado.
 - 3.B.2 (sin revisar): «el método del VAN asume irreversibilidad»: mejor «**supone que la inversión es reversible o que es de ahora o nunca**» (Dixit y Pindyck, 1994, cap. 1); con irreversibilidad e incertidumbre la regla del VAN falla (ficha `opciones-reales`).
-- 3.A.25 (revisado), l. 724: «igual que una empresa decide una inversión por su valor actual neto `\vertema{3.A.34}`»: el VAN se desarrolla en el 3.B.2 (tema de referencia de esta ficha); mejor `\vertema{3.B.2}` (o los 2) (`pendientes-coherencia.md`; menor; agente de coherencia del 3.A.34, en curso).
+- 3.A.25 (revisado), l. 724: «igual que una empresa decide una inversión por su valor actual neto `\vertema{3.A.34}`»: el VAN se desarrolla en el 3.B.2 (tema de referencia de esta ficha); mejor `\vertema{3.B.2}` (o los 2) (`pendientes-coherencia.md`, «Pendiente del 3.A.34»; menor).
 
 Autor: Víctor Gutiérrez Marcos

@@ -1,7 +1,7 @@
 # Modigliani-Miller y extensiones (impuestos, quiebra, Miller 1977)
 
 - **Área:** finanzas-empresa · **Tema de referencia:** 3.B.3 (Decisiones de financiación: estructura del capital) — lo tiene en el título; 4.B.10 lo usa para el efecto de los impuestos.
-- **Temas que lo usan:** 3.B.3 (desarrollo), 4.B.10 (desarrollo → resumen centrado en IS e IRPF), 4.B.12 (mención)
+- **Temas que lo usan:** 3.B.3 (desarrollo), 4.B.10 (desarrollo → resumen centrado en IS e IRPF), 4.B.12 (mención), 3.A.34 (mención; hecho, 31/10/2026: III.4 a), con mercados perfectos la decisión de invertir se separa de la de financiarse, `\vertema{3.B.3}`; y en la nota de Hayashi, para medir la q media en bolsa)
 - **Manuales de referencia:** Modigliani y Miller (1958, 1961, 1963); Miller (1977); Kim (1978); Myers (1984); Brealey, Myers y Allen, caps. 17-18; Berk y DeMarzo, caps. 14-16; Tirole, *The Theory of Corporate Finance*.
 
 ## Presentación de referencia
@@ -25,6 +25,7 @@
 | 3.B.3 | Estructura del capital | desarrollo | Tesis tradicional, MM I y II, IS, Miller, quiebra, *pecking order* | — |
 | 4.B.10 | Impuesto sobre sociedades | resumen | Escudo fiscal y Miller (1977); sesgo deuda-fondos propios (ACE/CBIT) | MM sin impuestos y su arbitraje |
 | 4.B.12 | Imposición y dividendos | mención | El IS rompe la irrelevancia | — |
+| 3.A.34 | Teorías de la inversión | mención (hecho, 31/10/2026) | Separación de inversión y financiación como punto de partida de las fricciones financieras; jerarquía financiera (ficha `pecking-order`) | Las proposiciones y los impuestos |
 
 ## Divergencias encontradas en el temario actual
 - **Error en 3.B.3**: «Si $1-t_D < 1-t_E$, el escudo fiscal es mayor que en MM (1963)» y su simétrico están **invertidos**: si $t_D > t_E$, el cociente $(1-t_E)/(1-t_D) > 1$ y la ventaja de la deuda es **menor** que $t_{IS}$.
