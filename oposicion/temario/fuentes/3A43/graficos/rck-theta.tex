@@ -1,0 +1,46 @@
+% La senda de silla según theta (gráfico fig:rck-theta).
+% Diagrama de fases del modelo de Ramsey-Cass-Koopmans en (k, c), por unidad de
+% trabajo eficiente. Código base común de rck-fases, rck-theta, rck-rho, rck-gasto y
+% rck-impuesto: mismos ejes, escala, colores y estilo (como los diagramas de la q
+% del 3.A.34 y fuentes/3A26/graficos/fases-empleo.tex).
+% Curvas calculadas (_trabajo/graficos-rck/gen.py y tex.py) con valores ilustrativos:
+%   f(k) = k/(1+k) (neoclásica con elasticidad de sustitución 1/2: el máximo de
+%   dk/dt = 0 queda hacia el centro del dibujo), n+g+delta = 4/9
+%   dk/dt = f(k) - c - (n+g+delta) k ;  dc/dt = c [f'(k) - (rho+delta+theta g)]/theta
+%   k_oro = 0,5 (f' = n+g+delta), k_bar = 1,25, k* = 0,3125 (f' = rho+delta+theta g)
+%   La senda de silla es la variedad estable del sistema, integrada numéricamente.
+% Dibujo: x = 6,4 k, y = 36 c: k* en x = 2, k_oro en 3,2, k_bar en 8; c* = 3,571.
+% Con g = 0 (como dice el pie), k* no depende de theta: theta = 0,5 (bajo) y 5 (alto).
+%   Con theta alto la senda es más plana (más cerca de dk/dt = 0) y la convergencia, más lenta.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,dir/.style={->,thick,tceegris},
+    divergente/.style={->,thick,densely dotted,tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-0.75) rectangle (10.0,6.9);
+  % 1: ejes: capital y consumo por unidad de trabajo eficiente
+  \capa{1}{\begin{scope}[xshift=0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$k$};
+    \draw[eje] (0,0) -- (0,6.6) node[left] {$c$};
+    \node[below left] at (0,0) {$0$};\end{scope}}
+  % 1: lugar dk/dt = 0: c = f(k) - (n+g+delta) k, máximo en k_oro y corte en k_bar
+  \capa{1}{\begin{scope}[xshift=0cm]\draw[curva2] plot[domain=0:8.0,samples=80,smooth] (\x,{36*\x/(6.4+\x)-2.5*\x});
+    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot k=0$};
+    \node[below] at (8.0,0) {$\bar k$};\end{scope}}
+  % 1: lugar dc/dt = 0: vertical en k* (f'(k*) = rho+delta+theta g)
+  \capa{1}{\begin{scope}[xshift=0cm]\draw[curva1] (2.000,0) node[below,text=black] {$k^*$} -- (2.000,6.3)
+      node[etiqueta,anchor=south,text=tceemorado] {$\dot c=0$};\end{scope}}
+  % 2: estado estacionario E
+  \capa{2}{\begin{scope}[xshift=0cm]\node[punto] (E) at (2.000,3.571) {};
+    \node[etiqueta,below right=1pt] at (2.000,3.571) {$E$};\end{scope}}
+  % 3: senda de silla con theta alto (deseo de suavizar grande): más plana, convergencia lenta
+  \capa{3}{\draw[curva4] plot[smooth] coordinates {(0.001,0.002) (0.054,0.142) (0.109,0.282) (0.165,0.421) (0.222,0.560) (0.281,0.698) (0.341,0.836) (0.403,0.973) (0.466,1.109) (0.530,1.245) (0.596,1.380) (0.664,1.515) (0.733,1.649) (0.804,1.782) (0.876,1.914) (0.951,2.045) (1.026,2.175) (1.103,2.303) (1.182,2.431) (1.263,2.558) (1.345,2.684) (1.429,2.809) (1.514,2.932) (1.601,3.054) (1.690,3.175) (1.781,3.295) (1.873,3.414) (1.967,3.531) (2.062,3.647) (2.159,3.761) (2.258,3.874) (2.358,3.986) (2.460,4.097) (2.563,4.206) (2.667,4.314) (2.774,4.421) (2.882,4.527) (2.991,4.631) (3.101,4.733) (3.212,4.834) (3.326,4.934) (3.440,5.033) (3.556,5.130) (3.673,5.226) (3.792,5.322) (3.913,5.416) (4.033,5.508) (4.156,5.600)};
+    \node[etiqueta,text=tceedorado,anchor=west] at (4.21,5.60) {$\theta$ alto (lenta)};
+    \draw[->,thick,tceedorado] (0.940,1.614) -- (1.452,2.484); \draw[->,thick,tceedorado] (3.829,5.629) -- (3.189,5.106);}
+  % 4: senda de silla con theta bajo: más empinada, convergencia rápida
+  \capa{4}{\draw[curva3] plot[smooth] coordinates {(0.006,0.000) (0.146,0.053) (0.269,0.142) (0.378,0.247) (0.479,0.362) (0.571,0.482) (0.659,0.607) (0.741,0.735) (0.819,0.865) (0.895,0.997) (0.968,1.132) (1.039,1.267) (1.106,1.402) (1.172,1.538) (1.238,1.677) (1.301,1.815) (1.362,1.953) (1.423,2.094) (1.483,2.235) (1.541,2.374) (1.598,2.516) (1.654,2.656) (1.710,2.797) (1.765,2.939) (1.819,3.080) (1.872,3.222) (1.924,3.363) (1.975,3.504) (2.026,3.645) (2.077,3.787) (2.127,3.929) (2.177,4.072) (2.227,4.216) (2.276,4.361) (2.325,4.504) (2.373,4.649) (2.421,4.794) (2.469,4.938) (2.516,5.082) (2.564,5.229) (2.611,5.377) (2.657,5.522) (2.705,5.672) (2.753,5.826) (2.798,5.970) (2.846,6.125) (2.900,6.300)};
+    \node[etiqueta,text=tceeverde,anchor=west] at (2.95,6.30) {$\theta$ bajo (rápida)};
+    \draw[->,thick,tceeverde] (1.288,1.273) -- (1.608,1.967);}
+\end{tikzpicture}
+\end{document}

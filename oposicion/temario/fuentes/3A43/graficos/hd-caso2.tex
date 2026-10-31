@@ -1,0 +1,27 @@
+% Harrod-Domar con Leontief en tasas (Barro y Sala-i-Martín, 2004, cap. 1.3), caso 2:
+% s/v < n+delta. Misma escala y estilo que solow-tasas.
+%   Unidades del dibujo: s/v = 0,8; codo en k = 2,4; s/(a_L k) = 1,92/k; n+delta = 1,3
+%   -> gamma_k < 0 para todo k: k cae hacia 0 y el paro crece sin límite.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=1.4cm,tasa/.style={<->,thick,tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-0.55) rectangle (9.9,4.0);
+  % 1: ejes
+  \capa{1}{\ejes{$k$}{$\gamma_k$}{8.2}{3.9}}
+  % 2: s f(k)/k: horizontal en s/v hasta el codo y decreciente después
+  \capa{2}{\draw[curva1] (0,0.8) node[left,text=black] {$s/v$} -- (2.4,0.8)
+      plot[domain=2.4:7.6,samples=80] (\x,{1.92/\x})
+      node[etiqueta,right,text=tceemorado] {$s\,f(k)/k$};
+    \draw[guia] (2.4,0.8) -- (2.4,0) node[below,text=black] {$v/a_L$};}
+  % 3: n+delta, siempre por encima
+  \capa{3}{\draw[curva3] (0,1.3) node[left,text=black] {$n+\delta$} -- (7.9,1.3);}
+  % 4: dinámica: gamma_k < 0 en todo k; el capital por trabajador cae hacia 0
+  \capa{4}{\draw[tasa] (4.5,1.3) -- node[etiqueta,right,text=black] {$\gamma_k<0$} (4.5,0.4267);
+    \draw[flecha] (2.2,0) -- (1.3,0); \draw[flecha] (1.1,0) -- (0.2,0);
+    \draw[flecha] (4.3,0) -- (2.6,0); \draw[flecha] (7.2,0) -- (5.5,0);
+    \node[etiqueta,text=tceeazul] at (3.4,1.75) {$k\to0$: el paro crece sin límite};}
+\end{tikzpicture}
+\end{document}

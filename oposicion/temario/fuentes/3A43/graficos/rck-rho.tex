@@ -1,0 +1,48 @@
+% Una caída de la tasa de descuento (gráfico fig:rck-rho).
+% Diagrama de fases del modelo de Ramsey-Cass-Koopmans en (k, c), por unidad de
+% trabajo eficiente. Código base común de rck-fases, rck-theta, rck-rho, rck-gasto y
+% rck-impuesto: mismos ejes, escala, colores y estilo (como los diagramas de la q
+% del 3.A.34 y fuentes/3A26/graficos/fases-empleo.tex).
+% Curvas calculadas (_trabajo/graficos-rck/gen.py y tex.py) con valores ilustrativos:
+%   f(k) = k/(1+k) (neoclásica con elasticidad de sustitución 1/2: el máximo de
+%   dk/dt = 0 queda hacia el centro del dibujo), n+g+delta = 4/9
+%   dk/dt = f(k) - c - (n+g+delta) k ;  dc/dt = c [f'(k) - (rho+delta+theta g)]/theta
+%   k_oro = 0,5 (f' = n+g+delta), k_bar = 1,25, k* = 0,3125 (f' = rho+delta+theta g)
+%   La senda de silla es la variedad estable del sistema, integrada numéricamente.
+% Dibujo: x = 6,4 k, y = 36 c: k* en x = 2, k_oro en 3,2, k_bar en 8; c* = 3,571.
+% rho baja: k* pasa de 0,3125 a 0,40 (x = 2,56), aún a la izquierda de k_oro;
+%   c cae en t_0 hasta la nueva senda de silla (calculada) y k y c suben juntos hasta E_1.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,dir/.style={->,thick,tceegris},
+    divergente/.style={->,thick,densely dotted,tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-0.75) rectangle (10.0,6.9);
+  % 1: ejes: capital y consumo por unidad de trabajo eficiente
+  \capa{1}{\begin{scope}[xshift=0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$k$};
+    \draw[eje] (0,0) -- (0,6.6) node[left] {$c$};
+    \node[below left] at (0,0) {$0$};\end{scope}}
+  % 1: lugar dk/dt = 0: c = f(k) - (n+g+delta) k, máximo en k_oro y corte en k_bar
+  \capa{1}{\begin{scope}[xshift=0cm]\draw[curva2] plot[domain=0:8.0,samples=80,smooth] (\x,{36*\x/(6.4+\x)-2.5*\x});
+    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot k=0$};
+    \node[below] at (8.0,0) {$\bar k$};\end{scope}}
+  % 2: lugar dc/dt = 0: vertical en k* (f'(k*) = rho+delta+theta g)
+  \capa{2}{\begin{scope}[xshift=0cm]\draw[curva1] (2.000,0) node[below,text=black] {$k^*_0$} -- (2.000,6.3)
+      node[etiqueta,anchor=south east,text=tceemorado] {$\dot c=0$};\end{scope}}
+  \capa{2}{\node[punto] (E0) at (2.000,3.571) {}; \node[etiqueta,above left=1pt] at (E0) {$E_0$};}
+  % 3: lugar dc/dt = 0: vertical en k* (f'(k*) = rho+delta+theta g)
+  \capa{3}{\begin{scope}[xshift=0cm]\draw[curvanueva,desplazada] (2.560,0) node[below,text=black] {$k^*_1$} -- (2.560,6.3)
+      node[etiqueta,anchor=south west,text=tceerojo] {$\dot c=0'$};\end{scope}}
+  \capa{3}{\node[punto,fill=tceerojo] (E1) at (2.560,3.886) {}; \node[etiqueta,text=tceerojo,above left=1pt and 4pt] at (E1) {$E_1$};}
+  % 4: nueva senda de silla (calculada)
+  \capa{4}{\draw[curvanueva] plot[smooth] coordinates {(0.001,0.001) (0.075,0.131) (0.151,0.262) (0.227,0.392) (0.303,0.522) (0.380,0.651) (0.457,0.781) (0.535,0.910) (0.614,1.039) (0.694,1.169) (0.774,1.298) (0.854,1.426) (0.935,1.553) (1.017,1.681) (1.098,1.807) (1.180,1.933) (1.264,2.059) (1.347,2.185) (1.432,2.311) (1.516,2.436) (1.602,2.560) (1.687,2.684) (1.773,2.807) (1.860,2.931) (1.947,3.053) (2.035,3.176) (2.123,3.298) (2.212,3.420) (2.301,3.540) (2.391,3.661) (2.481,3.781) (2.571,3.900) (2.662,4.020) (2.754,4.139) (2.847,4.258) (2.940,4.376) (3.033,4.495) (3.127,4.612) (3.222,4.730) (3.318,4.848) (3.414,4.964) (3.510,5.080) (3.607,5.198) (3.705,5.314) (3.802,5.429) (3.901,5.544) (4.000,5.659) (4.101,5.775) (4.203,5.891) (4.305,6.006) (4.406,6.120) (4.510,6.236) (4.568,6.300)};
+    \node[etiqueta,text=tceerojo,anchor=west] at (4.62,6.30) {senda de silla$'$};}
+  % 5: en t_0, c cae hasta la nueva senda; después k y c suben juntos hasta E_1
+  \capa{5}{\draw[flecha,line width=1.2pt] (2.000,3.491) -- (2.000,3.208);
+    \node[punto,fill=tceerojo] at (2.000,3.128) {};
+    \node[etiqueta,text=tceerojo,anchor=north west] at (2.050,3.078) {$t_0$};
+    \draw[flecha] (2.238,3.115) -- (2.625,3.640);}
+\end{tikzpicture}
+\end{document}

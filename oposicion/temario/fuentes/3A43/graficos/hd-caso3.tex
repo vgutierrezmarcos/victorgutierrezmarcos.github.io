@@ -1,0 +1,30 @@
+% Harrod-Domar con Leontief en tasas (Barro y Sala-i-Martín, 2004, cap. 1.3; Sala-i-Martín,
+% 2000, gráfico 2.7C), caso 3: s/v = n+delta, el filo de la navaja. Misma escala y estilo
+% que solow-tasas.
+%   Unidades del dibujo: s/v = n+delta = 1,3; codo en k = 2,4; s/(a_L k) = 3,12/k.
+%   Todo k <= v/a_L es estacionario; desde k_0 > v/a_L, k cae hasta el codo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=1.4cm,tasa/.style={<->,thick,tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-0.55) rectangle (9.9,4.0);
+  % 1: ejes
+  \capa{1}{\ejes{$k$}{$\gamma_k$}{8.2}{3.9}}
+  % 2: s f(k)/k: horizontal en s/v hasta el codo y decreciente después
+  \capa{2}{\draw[curva1] (0,1.3) node[left,text=black] {$s/v=n+\delta$} -- (2.4,1.3)
+      plot[domain=2.4:7.6,samples=80] (\x,{3.12/\x})
+      node[etiqueta,right,text=tceemorado] {$s\,f(k)/k$};
+    \draw[guia] (2.4,1.3) -- (2.4,0) node[below,text=black] {$v/a_L$};}
+  % 3: n+delta, que coincide con s/v en todo el tramo izquierdo
+  \capa{3}{\draw[curva3] (0,1.3) -- (7.9,1.3) node[etiqueta,right,text=tceeverde] {$n+\delta$};
+    \draw[curva1,dash pattern=on 5pt off 5pt] (0,1.3) -- (2.4,1.3);}
+  % 4: dinámica: a la izquierda del codo, gamma_k = 0; a la derecha, k cae hasta v/a_L
+  \capa{4}{\draw[guia] (5.2,0.6) -- (5.2,0) node[below,text=black] {$k_0$};
+    \draw[tasa] (5.2,1.3) -- node[etiqueta,right,text=black] {$\gamma_k<0$} (5.2,0.6);
+    \draw[flecha] (5.0,0) -- (2.6,0);
+    \node[etiqueta,text=tceeazul,align=center] at (1.2,0.65) {todo $k\leq v/a_L$\\es estacionario};
+    \node[etiqueta,text=tceeazul] at (1.2,2.2) {filo de la navaja};}
+\end{tikzpicture}
+\end{document}

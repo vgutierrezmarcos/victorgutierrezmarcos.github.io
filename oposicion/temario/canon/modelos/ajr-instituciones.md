@@ -1,7 +1,7 @@
 # Instituciones y desarrollo: «Colonial Origins» (Acemoglu, Johnson y Robinson 2001)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.45 (evidencia empírica sobre el crecimiento) — es evidencia empírica sobre los determinantes profundos del crecimiento.
-- **Temas que lo usan:** 3.A.45 (desarrollo), 3.B.28 (desarrollo: instituciones y desarrollo)
+- **Temas que lo usan:** 3.A.45 (desarrollo), 3.B.28 (desarrollo: instituciones y desarrollo), 3.A.43 (mención; hecho, 31/10/2026: anexo F, de las causas próximas a las últimas —suerte, geografía, cultura, instituciones; Acemoglu, 2009, cap. 1—, Acemoglu, Johnson y Robinson, 2001, y Acemoglu y Robinson, 2012; crítica de MRW: $A_0$ correlacionado con la inversión; `\vertema{3.A.45}` `\vertema{3.B.28}`; Nogales se reserva al 3.A.45)
 - **Manuales de referencia:** Acemoglu, Johnson y Robinson (2001), *AER*; Acemoglu (2009), cap. 4; Acemoglu y Robinson, *Why Nations Fail* (2012); Rodrik, Subramanian y Trebbi (2004).
 - **Decisión D125 (13/10/2026):** ¿Cómo se reparte el enfoque institucional (Acemoglu-Johnson-Robinson) entre 3.A.45 y 3.B.28? La estimación en 3.A.45 y el enfoque de política del desarrollo en 3.B.28
 
@@ -19,6 +19,7 @@ Gráfico de referencia: dispersión del logaritmo de la renta per cápita frente
 |---|---|---|---|---|
 | 3.A.45 | Evidencia empírica sobre el crecimiento | desarrollo | Determinantes profundos (geografía, instituciones, cultura); estrategia de identificación y resultados | — |
 | 3.B.28 | Instituciones y desarrollo | resumen | Enfoque institucional del desarrollo (instituciones inclusivas frente a extractivas) y papel de los organismos | La estimación [ver tema 3.A.45] |
+| 3.A.43 | Causas próximas del crecimiento | mención en anexo (hecho, 31/10/2026) | Las 4 causas últimas y AJR (2001) en un anexo corto; la conclusión «lanza la caña» | El desarrollo empírico `\vertema{3.A.45}` |
 
 ## Divergencias encontradas en el temario actual
 - El bloque de instituciones se repetía casi igual en 3.A.45 y 3.B.28 (los dos «desarrollo»): la estimación va en 3.A.45 y el enfoque de política del desarrollo en 3.B.28, que resume lo imprescindible de la estimación.

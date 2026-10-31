@@ -1,0 +1,56 @@
+% Sin las condiciones de Inada, el estado estacionario interior puede no
+% existir o no ser único (como la figura 2.5 de Acemoglu, 2009, en el plano
+% de la ecuación fundamental). Recta de reposición (n+g+delta) k = 0,6 k.
+%   A: s f(k) = 0,72 k + 0,35 k^(1/2): s f'(k) -> 0,72 > 0,6, siempre por
+%      encima: no hay estado estacionario, k crece sin límite.
+%   B: s f(k) = 0,45 k / (1 + 0,12 k): s f'(0) = 0,45 < 0,6, siempre por
+%      debajo: solo k = 0.
+%   C: s f(k) = 0,8 (1 - e^(-3k)) + 1,4 / (1 + e^(-5 (k - 2,2))) (rendimientos
+%      no siempre decrecientes): corta a la recta en k = 1,3408 (estable),
+%      2,0307 (inestable) y 3,6651 (estable).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={fa(\k)=0.72*\k+0.35*sqrt(\k); fb(\k)=0.45*\k/(1+0.12*\k);
+      fc(\k)=0.8*(1-exp(-3*\k))+1.4*exp(5*(\k-2.2))/(1+exp(5*(\k-2.2)));},
+    panel/.style={font=\small\bfseries},
+    nota/.style={font=\footnotesize,align=center,anchor=north}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-1.9) rectangle (19.4,4.0);
+  % 1: panel A
+  \capa{1}{
+    \ejes{$k$}{inversión}{4.6}{3.8}
+    \draw[curva3] (0,0) -- (4.0,2.4) node[etiqueta,right,text=tceeverde] {$(n+g+\delta)k$};
+    \draw[curva2] plot[domain=0:3.9,samples=80] (\x,{fa(\x)}) node[etiqueta,right,text=tceeazul] {$s\,f(k)$};
+    \draw[flecha] (0.4,0) -- (1.6,0); \draw[flecha] (2.0,0) -- (3.4,0);
+    \node[panel] at (2.0,-1.0) {A};
+    \node[nota] at (2.0,-1.3) {no hay estado estacionario:\\ $k$ crece sin límite};
+  }
+  % 2: panel B
+  \capa{2}{\begin{scope}[xshift=6.7cm]
+    \ejes{$k$}{inversión}{4.6}{3.8}
+    \draw[curva3] (0,0) -- (4.0,2.4) node[etiqueta,right,text=tceeverde] {$(n+g+\delta)k$};
+    \draw[curva2] plot[domain=0:4.0,samples=80] (\x,{fb(\x)}) node[etiqueta,right,text=tceeazul] {$s\,f(k)$};
+    \node[punto] at (0,0) {};
+    \draw[flecha] (3.4,0) -- (2.0,0); \draw[flecha] (1.6,0) -- (0.3,0);
+    \node[panel] at (2.0,-1.0) {B};
+    \node[nota] at (2.0,-1.3) {solo el estado estacionario $k=0$};
+  \end{scope}}
+  % 3: panel C
+  \capa{3}{\begin{scope}[xshift=13.4cm]
+    \ejes{$k$}{inversión}{4.6}{3.8}
+    \draw[curva3] (0,0) -- (4.0,2.4) node[etiqueta,above right,text=tceeverde] {$(n+g+\delta)k$};
+    \draw[curva2] plot[domain=0:4.0,samples=120] (\x,{fc(\x)}) node[etiqueta,below right,text=tceeazul] {$s\,f(k)$};
+    \node[punto] (C1) at (1.3408,0.8045) {};
+    \node[punto,fill=white,draw=black] (C2) at (2.0307,1.2184) {};
+    \node[punto] (C3) at (3.6651,2.1991) {};
+    \draw[guia] (C1) -- (1.3408,0); \draw[guia] (C2) -- (2.0307,0); \draw[guia] (C3) -- (3.6651,0);
+    \draw[flecha] (0.2,0) -- (1.1,0); \draw[flecha] (1.9,0) -- (1.5,0);
+    \draw[flecha] (2.2,0) -- (3.45,0); \draw[flecha] (4.3,0) -- (3.9,0);
+    \node[panel] at (2.0,-1.0) {C};
+    \node[nota] at (2.0,-1.3) {varios estados estacionarios};
+  \end{scope}}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,26 @@
+% Harrod-Domar en la versión de Barro y Sala-i-Martín (2004, cap. 1.3): producción por
+% trabajador con la función de Leontief, y = min{k/v, 1/a_L}.
+% Unidades del dibujo: codo en k = v/a_L = 3,5 y y = 1/a_L = 3,2 (pendiente 1/v = 0,914).
+% A la izquierda del codo el capital es el factor escaso y sobra trabajo (paro); a la
+% derecha, sobra capital (corrige el original, que lo decía al revés).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-0.75) rectangle (9.9,4.8);
+  % 1: ejes
+  \capa{1}{\ejes{$k$}{$y$}{8.2}{4.6}}
+  % 2: tramo k/v: el capital limita la producción
+  \capa{2}{\draw[curva1] (0,0) -- node[etiqueta,sloped,above=2pt,pos=0.45,text=tceegris] {pendiente $1/v$} (3.5,3.2);}
+  % 3: tramo horizontal 1/a_L y codo en v/a_L
+  \capa{3}{\draw[curva1] (3.5,3.2) -- (7.6,3.2)
+      node[etiqueta,right,text=tceemorado] {$y=\min\{k/v,\,1/a_L\}$};
+    \node[punto] (C) at (3.5,3.2) {};
+    \proyeccion{(3.5,3.2)}{$v/a_L$}{$1/a_L$}}
+  % 4: rótulos de los tramos
+  \capa{4}{\node[etiqueta,align=center,text=tceeazul] at (1.75,3.9) {sobra trabajo\\(paro)};
+    \node[etiqueta,align=center,text=tceeazul] at (5.6,2.2) {sobra capital\\(capital ocioso)};}
+\end{tikzpicture}
+\end{document}

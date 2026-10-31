@@ -1,0 +1,80 @@
+% Ineficiencia y eficiencia dinámica: sendas de k y c tras llevar s hasta
+% s_oro = alfa = 1/3 en t_0 (Cobb-Douglas, alfa = 1/3, n+g+delta = 0,1).
+% Solución exacta del modelo: psi = k^(2/3) cumple
+%   psi(tau) = s/m + (psi_0 - s/m) e^(-(2/3) m tau),  k = psi^(3/2),  c = (1-s) psi^(1/2).
+% Fila superior, s baja de 0,5 a 1/3: psi = 3,333 + 1,667 e^(-tau/15):
+%   k*_0 = 11,18 -> k_oro = 6,086; c*_0 = 1,118, salta a 1,491 y baja a c_oro = 1,217.
+% Fila inferior, s sube de 0,2 a 1/3: psi = 3,333 - 1,333 e^(-tau/15):
+%   k*_0 = 2,828 -> k_oro = 6,086; c*_0 = 1,131, cae a 0,943 y sube a c_oro = 1,217;
+%   vuelve a c*_0 en tau = 16,12.
+% Dibujo: x = 1,2 + 0,095 tau (t_0 en x = 1,2); cada panel reescala su variable
+% entre y = 0,5 y y = 2,3 (los ejes no empiezan en 0: no se rotula el origen).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={
+      psia(\t)=10/3+5/3*exp(-\t/15);  psib(\t)=10/3-4/3*exp(-\t/15);
+      yka(\t)=0.5+1.8*(psia(\t)^1.5-6.086)/5.094;
+      yca(\t)=0.5+1.8*((2/3)*sqrt(psia(\t))-1.118)/0.373;
+      ykb(\t)=0.5+1.8*(psib(\t)^1.5-2.828)/3.258;
+      ycb(\t)=0.5+1.8*((2/3)*sqrt(psib(\t))-0.943)/0.274;},
+    nivel/.style={guia},
+    salto/.style={thin,densely dotted,tceerojo},
+    titulo/.style={font=\small\bfseries,anchor=south west},
+    ejet/.style={eje}]
+  % 1: ejes de los 4 paneles y t_0
+  \capa{1}{
+    \foreach \dx/\v in {0/k_t,6.8/c_t}{
+      \foreach \dy in {0,-4.2}{
+        \begin{scope}[shift={(\dx,\dy)}]
+          \draw[eje] (0,0) -- (5.4,0) node[below left=2pt and 0pt] {$t$};
+          \draw[eje] (0,0) -- (0,2.9) node[left] {$\v$};
+          \draw[guia] (1.2,0) -- (1.2,2.7);
+          \node[below] at (1.2,0) {$t_0$};
+        \end{scope}}}
+    \node[titulo] at (-0.6,3.25) {$s$ baja de $s_0>s_{\mathrm{oro}}$ a $s_{\mathrm{oro}}$: ineficiencia dinámica};
+    \node[titulo] at (-0.6,-0.95) {$s$ sube de $s_0<s_{\mathrm{oro}}$ a $s_{\mathrm{oro}}$: eficiencia dinámica};
+  }
+  % 2: fila superior, k_t: baja suavemente de k*_0 a k_oro
+  \capa{2}{\draw[curva1] (0,2.3) -- (1.2,2.3) -- plot[domain=0:42,samples=60] ({1.2+0.095*\x},{yka(\x)});}
+  % 3: fila superior, c_t: salta hacia arriba y baja hasta c_oro, siempre por encima de c*_0
+  \capa{3}{\begin{scope}[xshift=6.8cm]
+      \draw[curva4] (0,0.5) -- (1.2,0.5);
+      \draw[salto] (1.2,0.5) -- (1.2,2.3);
+      \draw[curva4] plot[domain=0:42,samples=60] ({1.2+0.095*\x},{yca(\x)});
+    \end{scope}}
+  % 4: fila inferior, k_t: sube de k*_0 a k_oro
+  \capa{4}{\begin{scope}[yshift=-4.2cm]
+      \draw[curva1] (0,0.5) -- (1.2,0.5) -- plot[domain=0:42,samples=60] ({1.2+0.095*\x},{ykb(\x)});
+    \end{scope}}
+  % 5: fila inferior, c_t: cae en t_0 y sube hasta c_oro > c*_0
+  \capa{5}{\begin{scope}[shift={(6.8,-4.2)}]
+      \draw[curva4] (0,1.735) -- (1.2,1.735);
+      \draw[salto] (1.2,1.735) -- (1.2,0.5);
+      \draw[curva4] plot[domain=0:42,samples=60] ({1.2+0.095*\x},{ycb(\x)});
+      \node[punto,fill=tceerojo] at (2.731,1.735) {};
+    \end{scope}}
+  % 6: niveles inicial y final y sus rótulos
+  \capa{6}{
+    % fila superior
+    \draw[nivel] (0,2.3) -- (5.2,2.3);  \node[left] at (0,2.3) {$k^*_0$};
+    \draw[nivel] (0,0.5) -- (5.2,0.5);  \node[left] at (0,0.5) {$k_{\mathrm{oro}}$};
+    \begin{scope}[xshift=6.8cm]
+      \draw[nivel] (0,0.5) -- (5.2,0.5);    \node[left] at (0,0.5) {$c^*_0$};
+      \draw[nivel] (0,0.978) -- (5.2,0.978); \node[left] at (0,0.978) {$c_{\mathrm{oro}}$};
+    \end{scope}
+    % fila inferior
+    \begin{scope}[yshift=-4.2cm]
+      \draw[nivel] (0,0.5) -- (5.2,0.5);  \node[left] at (0,0.5) {$k^*_0$};
+      \draw[nivel] (0,2.3) -- (5.2,2.3);  \node[left] at (0,2.3) {$k_{\mathrm{oro}}$};
+    \end{scope}
+    \begin{scope}[shift={(6.8,-4.2)}]
+      \draw[nivel] (0,1.735) -- (5.2,1.735); \node[left] at (0,1.735) {$c^*_0$};
+      \draw[nivel] (0,2.3) -- (5.2,2.3);     \node[left] at (0,2.3) {$c_{\mathrm{oro}}$};
+      \node[etiqueta,below right,text=tceerojo,font=\footnotesize] at (2.731,1.735) {vuelve a $c^*_0$};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,31 @@
+% Harrod-Domar con Leontief en tasas (Barro y Sala-i-Martín, 2004, cap. 1.3), caso 1:
+% s/v > n+delta. Misma escala y estilo que solow-tasas.
+%   s f(k)/k = s/v hasta el codo k = v/a_L y s/(a_L k) después.
+%   Unidades del dibujo: s/v = 2,6; codo en k = 2,4; s/(a_L k) = 6,24/k; n+delta = 1,3
+%   -> k* = 6,24/1,3 = 4,8 > v/a_L: en el estado estacionario sobra capital.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=1.4cm,tasa/.style={<->,thick,tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-0.55) rectangle (9.9,4.0);
+  % 1: ejes
+  \capa{1}{\ejes{$k$}{$\gamma_k$}{8.2}{3.9}}
+  % 2: s f(k)/k: horizontal en s/v hasta el codo y decreciente después
+  \capa{2}{\draw[curva1] (0,2.6) node[left,text=black] {$s/v$} -- (2.4,2.6)
+      plot[domain=2.4:7.6,samples=80] (\x,{6.24/\x})
+      node[etiqueta,right,text=tceemorado] {$s\,f(k)/k$};
+    \draw[guia] (2.4,2.6) -- (2.4,0) node[below,text=black] {$v/a_L$};}
+  % 3: n+delta
+  \capa{3}{\draw[curva3] (0,1.3) node[left,text=black] {$n+\delta$} -- (7.9,1.3);}
+  % 4: dinámica: k converge a k* a la derecha del codo, con capital ocioso
+  \capa{4}{\node[punto] (E) at (4.8,1.3) {};
+    \draw[guia] (E) -- (4.8,0) node[below,text=black] {$k^*$};
+    \draw[tasa] (1.2,1.3) -- node[etiqueta,right,text=black] {$\gamma_k>0$} (1.2,2.6);
+    \draw[flecha] (0.3,0) -- (1.1,0); \draw[flecha] (2.9,0) -- (4.3,0);
+    \draw[flecha] (7.2,0) -- (5.3,0);
+    \node[etiqueta,text=tceeazul] at (1.2,0.35) {sobra trabajo};
+    \node[etiqueta,text=tceeazul] at (6.3,0.35) {sobra capital};}
+\end{tikzpicture}
+\end{document}

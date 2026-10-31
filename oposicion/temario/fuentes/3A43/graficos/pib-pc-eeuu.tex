@@ -1,0 +1,69 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% PIB por habitante de Estados Unidos, 1870-2025, en escala logarítmica.
+% Maddison Project Database 2023 (Bolt y van Zanden), dólares internacionales
+% de 2011, 1870-2022 (pib_pc_maddison_2011usd); BEA (FRED A939RX0Q048SBEA),
+% dólares encadenados de 2017, 1947-2025 (pib_pc_bea_fred_2017usd),
+% reescalada para que coincida con Maddison en 1947: x 14.312/15.158 = 0,9442.
+% Crecimiento medio: (58.487/4.803)^(1/152) - 1 = 1,66 % (Maddison 1870-2022);
+% (70.020/15.158)^(1/78) - 1 = 1,98 % (BEA 1947-2025). Tendencia: 14.312 x
+% 1,02^(año - 1947). Consulta 31/10/2026.
+% Capas (CRITERIOS §7): sombreados → ejes → Maddison → BEA → tendencia →
+% rótulos y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/pib-pc-eeuu-1870-2025.csv}\pibpc
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=7cm,
+      xmin=1865, xmax=2030, ymin=3000, ymax=100000, ymode=log,
+      xtick={1870,1890,...,2010,2025}, ytick={5000,10000,20000,40000,80000},
+      yticklabels={5.000,10.000,20.000,40.000,80.000},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={dólares por habitante (escala log.)},
+      ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false,
+      unbounded coords=discard,
+      legend style={at={(0.98,0.03)}, anchor=south east, draw=none,
+        font=\footnotesize, cells={anchor=west}},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: Gran Depresión (1929-1933) y Segunda Guerra Mundial (1941-1945)
+    \capa{1}{
+      \dicsombra[fill=dicreferencia, opacity=0.16]{1929}{3000}{1933}{100000}
+      \dicsombra[fill=dicreferencia, opacity=0.16]{1941}{3000}{1945}{100000}
+      \dicrotulo[font=\scriptsize,text=dicreferencia,anchor=south east,align=right]{(1933.5,100000)}{Gran Depresión}
+      \dicrotulo[font=\scriptsize,text=dicreferencia,anchor=south west,align=left]{(1940.5,100000)}{II Guerra Mundial}
+    }
+    % 2: ejes y rejilla (la del axis); sin líneas de referencia propias
+    % 3: Maddison, 1870-2022
+    \capa{3}{
+      \addplot[diclinea=dicpib, mark=none, forget plot]
+        table[x=anio, y=pib_pc_maddison_2011usd, empty cells with={nan}] {\pibpc};
+    }
+    % 4: BEA, 1947-2025, reescalada a Maddison en 1947
+    \capa{4}{
+      \addplot[thick, tceemorado!50, mark=none, forget plot, restrict x to domain=1947:2025]
+        table[x=anio, y expr=\thisrow{pib_pc_bea_fred_2017usd}*0.9442, empty cells with={nan}] {\pibpc};
+    }
+    % 5: tendencia del 2 % anual desde 1947
+    \capa{5}{
+      \addplot[dicumbral, thick, domain=1925:2030, samples=2, forget plot] {14312*1.02^(x-1947)};
+    }
+    % 6: rótulos de las tasas medias y leyenda
+    \capa{6}{
+      \dicrotulo[font=\footnotesize,anchor=north west,align=left,text=dicpib]{(1893,6200)}{$\approx1{,}6$~\% anual\\1870-2022}
+      \dicrotulo[font=\footnotesize,anchor=south east,align=right,text=dicreferencia]{(1985,52000)}{$\approx2{,}0$~\% anual\\1947-2025}
+      \addlegendimage{diclinea=dicpib}
+      \addlegendentry{Maddison (dólares de 2011)}
+      \addlegendimage{thick, tceemorado!50}
+      \addlegendentry{BEA (reescalada a Maddison en 1947)}
+      \addlegendimage{dicumbral, thick}
+      \addlegendentry{tendencia del 2~\% anual}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

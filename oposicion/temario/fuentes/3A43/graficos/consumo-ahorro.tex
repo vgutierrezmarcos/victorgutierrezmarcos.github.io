@@ -1,0 +1,27 @@
+% Consumo de estado estacionario según la tasa de ahorro (Cobb-Douglas,
+% alfa = 1/3): c*(s) = (1 - s) (s/(n+g+delta))^(alfa/(1-alfa)), proporcional a
+% (1 - s) s^(1/2). Dibujo: x = 6 s; y = 9 (1 - s) s^(1/2).
+% Máximo en s_oro = alfa = 1/3: x = 2, y = 9 (2/3) (1/3)^(1/2) = 3,4641.
+% Nulo en s = 0 y en s = 1.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-0.75) rectangle (7.4,4.6);
+  % 1: ejes
+  \capa{1}{\ejes{$s$}{$c^*$}{7.0}{4.4}
+    \draw (6,0.08) -- (6,-0.08) node[below] {$1$};}
+  % 2: consumo de estado estacionario
+  \capa{2}{\draw[curva1] plot[domain=0:1,samples=100] ({6*\x},{9*(1-\x)*sqrt(\x)});
+    \node[etiqueta,text=tceemorado,anchor=south west] at (4.85,1.7) {$c^*(s)$};}
+  % 3: máximo en s_oro = alfa
+  \capa{3}{\node[punto] (M) at (2,3.4641) {};
+    \proyeccion{(M)}{$s_{\mathrm{oro}}=\alpha$}{$c^*_{\mathrm{oro}}$}}
+  % 4: zonas de eficiencia y de ineficiencia dinámica
+  \capa{4}{\fill[tceerojo,opacity=0.08] (2,0) rectangle (6,4.1);
+    \node[etiqueta,align=center,font=\footnotesize] at (1.0,4.0) {eficiente\\ dinámicamente};
+    \node[etiqueta,align=center,font=\footnotesize,text=tceerojo] at (4.4,3.7) {ineficiencia\\ dinámica};}
+\end{tikzpicture}
+\end{document}

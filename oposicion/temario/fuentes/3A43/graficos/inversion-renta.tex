@@ -1,0 +1,79 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% El gráfico de Mankiw, Romer y Weil (1992) con datos actuales: tasa de
+% inversión media 1960-2023 (csh_i, %) frente al PIB por ocupado en 2023 (PPA,
+% dólares de 2021), ambos en logaritmos. PWT 11.0, ../datos/inversion-renta-mrw.csv:
+% filas 0-89 (periodo 1960-2023), sin petroleros y con al menos un millón de
+% habitantes: 78 países. Color según el índice de capital humano de 2023 (hc),
+% en terciles: bajo (< 2,7; 27 países), medio (2,7-3,25; 27) y alto (>= 3,25; 24).
+% Recta de MCO de ln(y) sobre ln(s_K): ln y = 4,824 + 1,924 ln s_K
+% (y = 124,5 s_K^1,924; alfa implícita 0,66, R2 ajustado 0,45). La alfa implícita (0,64), el R2 ajustado (0,54) y el
+% de la regresión con capital humano (0,76) son los del texto, con el
+% crecimiento del empleo (g + delta = 0,05).
+% Capas (CRITERIOS §7): ejes → puntos por tramos → recta → rótulos → leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/inversion-renta-mrw.csv}\mrw
+% Selección de filas con un solo índice: 1000·(petrolero o menos de un millón
+% de habitantes) + 200·(hc >= 2,7) + 200·(hc >= 3,25) + fila:
+% 0-89 = capital humano bajo, 200-289 = medio, 400-489 = alto.
+\pgfplotsset{
+  tramo/.style 2 args={only marks, mark=*, mark size=2.1pt, forget plot,
+    mark options={fill=#1, draw=tceeverde!60!black, line width=0.35pt},
+    restrict expr to domain={1000*\thisrow{petrolero}+1000*less(\thisrow{poblacion_final_mill},1)+200*notless(\thisrow{indice_capital_humano_final},2.7)+200*notless(\thisrow{indice_capital_humano_final},3.25)+\coordindex}{#2}},
+}
+\colorlet{hcbajo}{tceesalvia!60!tceeverde!45}
+\colorlet{hcmedio}{tceeverde!60}
+\colorlet{hcalto}{tceeverde!75!black}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=7.5cm, xmode=log, ymode=log,
+      xmin=5, xmax=50, ymin=2500, ymax=300000,
+      xtick={5,10,20,40}, xticklabels={5,10,20,40},
+      ytick={3000,10000,30000,100000,300000}, yticklabels={3.000,10.000,30.000,100.000,300.000},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={tasa de inversión media, 1960-2023 (\% del PIB, escala log.)},
+      ylabel={PIB por ocupado en 2023 (dólares de 2021 en PPA, escala log.)},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false,
+      legend style={at={(0.98,0.03)}, anchor=south east, draw=none,
+        font=\footnotesize, cells={anchor=west}},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 2: puntos coloreados por tramos de capital humano
+    \capa{2}{
+      \addplot[on layer=dicpuntos, tramo={hcbajo}{0:89}] table[x=tasa_inversion_media_pct, y=pib_por_ocupado_final_ppa_2021usd] {\mrw};
+      \addplot[on layer=dicpuntos, tramo={hcmedio}{200:289}] table[x=tasa_inversion_media_pct, y=pib_por_ocupado_final_ppa_2021usd] {\mrw};
+      \addplot[on layer=dicpuntos, tramo={hcalto}{400:489}] table[x=tasa_inversion_media_pct, y=pib_por_ocupado_final_ppa_2021usd] {\mrw};
+    }
+    % 3: recta de regresión
+    \capa{3}{
+      \addplot[very thick, tceemorado, domain=7:44, samples=2, forget plot] {124.5*x^1.924};
+    }
+    % 4: códigos de algunos países y etiqueta del ajuste
+    \capa{4}{
+      \dicrotulo[font=\scriptsize,anchor=south,inner sep=3pt]{(24.2,149427)}{USA}
+      \addplot[on layer=axis descriptions, dicsuelto, thin, tceegris] coordinates {(20.3,150000) (25.4,106500)};
+      \dicrotulo[font=\scriptsize,anchor=south east,inner sep=1pt]{(20.3,150000)}{ESP}
+      \dicrotulo[font=\scriptsize,anchor=west,inner sep=3pt]{(32.5,102405)}{KOR}
+      \dicrotulo[font=\scriptsize,anchor=west,inner sep=3pt]{(34.2,41185)}{CHN}
+      \dicrotulo[font=\scriptsize,anchor=north,inner sep=3pt]{(20.3,19206)}{IND}
+      \dicrotulo[font=\scriptsize,anchor=west,inner sep=3pt]{(16.3,4866)}{NER}
+      \dicrotulo[font=\scriptsize,anchor=north,inner sep=3pt]{(10.5,7131)}{ETH}
+      \dicrotulo[font=\footnotesize,text=tceemorado,anchor=north west,align=left,inner sep=0pt]{(5.3,280000)}{recta: MCO simple (pendiente $1{,}92$)}
+      \dicrotulo[font=\footnotesize,anchor=north west,align=left,inner sep=0pt]{(5.3,175000)}{MRW restringida: $\alpha\approx0{,}64$, $R^2\approx0{,}54$\\(con capital humano, $0{,}76$)}
+    }
+    % 5: leyenda de los tramos de capital humano
+    \capa{5}{
+      \addlegendimage{only marks, mark=*, mark size=2.1pt, mark options={fill=hcalto, draw=tceeverde!60!black}}
+      \addlegendentry{capital humano alto}
+      \addlegendimage{only marks, mark=*, mark size=2.1pt, mark options={fill=hcmedio, draw=tceeverde!60!black}}
+      \addlegendentry{capital humano medio}
+      \addlegendimage{only marks, mark=*, mark size=2.1pt, mark options={fill=hcbajo, draw=tceeverde!60!black}}
+      \addlegendentry{capital humano bajo}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

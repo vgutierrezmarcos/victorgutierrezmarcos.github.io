@@ -1,0 +1,41 @@
+% Trampa de pobreza en la representación en tasas (como solow-tasas).
+% Función de producción en S (sigmoide) y s f(k)/k en forma de N, calculada:
+%   s f(k) = 2,1 k^0,3 + 8 / (1 + e^(-2,5 (k - 4)))   (creciente en todo k)
+%   s f(k)/k: decrece hasta un mínimo (k = 2,77; 1,157), sube hasta un máximo
+%   (k = 4,84; 2,169) y vuelve a decrecer.
+%   n+g+delta = 1,8: cortes en k_B = 1,2529 (estable), k_U = 4,0049 (inestable)
+%   y k_A = 6,4790 (estable). La curva empieza donde vale 4,6 (k = 0,3265).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=1.1cm,
+    declare function={g(\k)=(2.1*\k^0.3+8/(1+exp(-2.5*(\k-4))))/\k;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-1.0) rectangle (10.4,5.2);
+  % 1: ejes
+  \capa{1}{\ejes{$k$}{$\gamma_k$}{8.8}{5.0}}
+  % 2: s f(k)/k en forma de N
+  \capa{2}{\draw[curva1] plot[domain=0.3265:8.2,samples=150,smooth] (\x,{g(\x)})
+      node[etiqueta,right,text=tceemorado] {$s\,f(k)/k$};}
+  % 3: n+g+delta
+  \capa{3}{\draw[curva3] (0,1.8) node[left,text=black] {$n+g+\delta$} -- (8.2,1.8);}
+  % 4: los 3 estados estacionarios y sus proyecciones
+  \capa{4}{\node[punto] (B) at (1.2529,1.8) {};
+    \node[punto,fill=white,draw=black] (U) at (4.0049,1.8) {};
+    \node[punto] (A) at (6.4790,1.8) {};
+    \draw[guia] (B) -- (1.2529,0) node[below,text=black] {$k_B$};
+    \draw[guia] (U) -- (4.0049,0) node[below,text=black] {$k_U$};
+    \draw[guia] (A) -- (6.4790,0) node[below,text=black] {$k_A$};
+    \node[etiqueta,font=\footnotesize,text=tceegris,anchor=base] at (1.2529,-0.85) {trampa};
+    \node[etiqueta,font=\footnotesize,text=tceegris,anchor=base] at (4.0049,-0.85) {umbral};}
+  % 5: dinámica en el eje: hacia k_B y k_A, lejos de k_U
+  \capa{5}{\draw[flecha] (0.2,0) -- (0.95,0);
+    \draw[flecha] (3.7,0) -- (1.6,0);
+    \draw[flecha] (4.3,0) -- (6.15,0);
+    \draw[flecha] (8.2,0) -- (6.8,0);}
+  % 6: gran empujón: llevar k más allá del umbral
+  \capa{6}{\draw[-{Stealth[length=3.2mm]},line width=2.2pt,tceedorado] (1.2529,0.55) -- (4.9,0.55)
+      node[etiqueta,midway,above,text=tceedorado] {gran empujón};}
+\end{tikzpicture}
+\end{document}

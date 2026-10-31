@@ -1,7 +1,7 @@
 # Función de coeficientes fijos (Leontief)
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.11 (Teoría de la producción) — caso σ→0 de la CES.
-- **Temas que lo usan:** 3.A.11 (resumen; revisado el 13/10/2026), 3.A.31 (mención: tecnología de las tablas *input-output*, que tienen su id `input-output`), 3.A.8 (resumen, como límite de la CES; sin id propio), 3.A.12 (mención: su función de costes; hecho, 14/10/2026); **3.B.5 no**: allí es la *paradoja* de Leontief (1953), que es otro contenido. Canon: id propio `paradoja-leontief` (área comercio) en `alias.json`; este id queda en 3.A.11 y 3.A.8, y la tabla input-output (Leontief, 1941) va con su id (`input-output`).
+- **Temas que lo usan:** 3.A.11 (resumen; revisado el 13/10/2026), 3.A.31 (mención: tecnología de las tablas *input-output*, que tienen su id `input-output`), 3.A.8 (resumen, como límite de la CES; sin id propio), 3.A.12 (mención: su función de costes; hecho, 14/10/2026); **3.B.5 no**: allí es la *paradoja* de Leontief (1953), que es otro contenido. Canon: id propio `paradoja-leontief` (área comercio) en `alias.json`; este id queda en 3.A.11 y 3.A.8, y la tabla input-output (Leontief, 1941) va con su id (`input-output`), 3.A.43 (mención; hecho, 31/10/2026: anexo A, Harrod-Domar con $\min\{K/v,\ L/a_L\}$, límite de la CES con σ → 0 con `\vertema{3.A.11}`, tabla `tab:leontief-inada`).
 - **Manuales de referencia:** Mas-Colell, Whinston y Green, cap. 5; Varian, cap. 1.
 - **Decisión D087 (13/10/2026):** ¿Se separa la paradoja de Leontief de la función de coeficientes fijos? Sí: id propio `paradoja-leontief` (comercio) en `alias.json`; la tabla input-output con otro id
 
@@ -18,6 +18,7 @@ Gráfico de referencia: isocuantas en L (el mismo que el caso σ=0 de `oposicion
 | 3.A.8 | Elasticidad de sustitución | mención | Complementarios perfectos; preferencias solo débilmente convexas | — |
 | 3.A.12 | Función de costes | mención (hecho, 14/10/2026) | $C(\vec w,q)=(a\,w_K+b\,w_L)\,q$ (ejemplo de I.2.2 y `tab:formas-costes`); la Leontief **generalizada** de Diewert (1971), $C=q\sum_i\sum_jb_{ij}(w_iw_j)^{1/2}$, es otra forma (flexible) | — |
 | 3.B.5 | H-O | — | No es este modelo (paradoja de Leontief) | — |
+| 3.A.43 | Harrod-Domar | mención (hecho, 31/10/2026) | Coeficientes fijos con $v$ y $a_L$ (local); por qué no es neoclásica (`tab:leontief-inada`) | La forma general `\vertema{3.A.11}` |
 
 ## Divergencias encontradas en el temario actual
 - Falso emparejamiento en el inventario: 3.B.5 (paradoja de Leontief).

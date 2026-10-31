@@ -1,7 +1,7 @@
 # Gasto público productivo y crecimiento endógeno (Barro 1990)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.38 (política fiscal: efectos sobre el crecimiento y el ahorro), escrito con ecuaciones: los efectos de la política fiscal sobre el crecimiento son su título. 3.A.44 lo resume como caso de crecimiento endógeno con rendimientos constantes del capital ampliado.
-- **Temas que lo usan:** 3.A.38 (desarrollo, sin ecuaciones), 3.A.44 (desarrollo), 4.B.1 (desarrollo), 4.B.5 (desarrollo), 4.A.11 (mención)
+- **Temas que lo usan:** 3.A.38 (desarrollo, sin ecuaciones), 3.A.44 (desarrollo), 4.B.1 (desarrollo), 4.B.5 (desarrollo), 4.A.11 (mención), 3.A.43 (mención; hecho, 31/10/2026: II.2 «Hacia el crecimiento endógeno», el gasto público productivo hace que el capital privado no tenga rendimientos decrecientes, `\vertema{3.A.38}`)
 - **Manuales de referencia:** Barro (1990), *JPE*; Barro y Sala i Martín, *Economic Growth* (2.ª ed., 2004), cap. 4; Sala i Martín, *Apuntes de crecimiento económico* (2000), cap. 3.
 - **Decisión D050 (13/10/2026):** ¿Qué versión de Barro (1990) es la de referencia? La de optimización (θ, ρ), como AK y Uzawa-Lucas; la de ahorro exógeno solo como simplificación
 - **Decisión D053 (13/10/2026):** ¿Cuál es el tema de referencia de Barro (1990)? 3.A.38 (efectos de la política fiscal sobre el crecimiento), escribiéndolo con ecuaciones
@@ -24,6 +24,7 @@ Gráfico de referencia: γ frente a τ, en U invertida con máximo en τ* = 1−
 | 4.B.1 | Tamaño óptimo del gasto público | desarrollo (aplicación) | τ* = 1−α y la regla ∂Y/∂G = 1 | Derivación completa; remitir |
 | 4.B.5 | Tamaño óptimo del sector público | desarrollo (aplicación) | Igual que 4.B.1: coordinar para no duplicar | Idem |
 | 4.A.11 | Obra civil | mención | Efecto de oferta del gasto en infraestructuras | — |
+| 3.A.43 | Puente al crecimiento endógeno | mención (hecho, 31/10/2026) | Una viñeta junto al AK y Sobelow | El modelo `\vertema{3.A.38}` |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.44, 4.B.1 y 4.B.5 lo presentan con **ahorro exógeno s** (Solow), mientras AK y Uzawa-Lucas en 3.A.44 usan optimización (θ, ρ): canon: la versión con optimización es la de referencia y la de ahorro exógeno solo se usa como simplificación, diciéndolo.

@@ -1,7 +1,7 @@
 # Generaciones solapadas (Samuelson 1958, Diamond 1965)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.29 (modelos de horizonte infinito y de generaciones solapadas) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.29 (desarrollo), 3.A.38 (desarrollo: pensiones), 4.B.3 (desarrollo: pensiones), 3.A.35 (resumen: dinero), 3.A.6 (mención), 3.A.33 (mención; hecho, 31/10/2026: en el ciclo vital, I.2.3, las OLG como su versión de equilibrio general, `\vertema{3.A.29}`)
+- **Temas que lo usan:** 3.A.29 (desarrollo), 3.A.38 (desarrollo: pensiones), 4.B.3 (desarrollo: pensiones), 3.A.35 (resumen: dinero), 3.A.6 (mención), 3.A.33 (mención; hecho, 31/10/2026: en el ciclo vital, I.2.3, las OLG como su versión de equilibrio general, `\vertema{3.A.29}`), 3.A.43 (mención; hecho, 31/10/2026: III.2 y la valoración del RCK, con OLG, Diamond, 1965, el equilibrio competitivo puede ser dinámicamente ineficiente, `\vertema{3.A.29}`)
 - **Manuales de referencia:** Romer (2019), cap. 2B; Blanchard y Fischer (1989), cap. 3; Heijdra (2017); Acemoglu (2009), cap. 9.
 
 ## Presentación de referencia
@@ -21,6 +21,7 @@ Gráfico de referencia: plano (k_t, k_{t+1}) con la ley de movimiento cóncava y
 | 3.A.35 | Valor del dinero fiduciario | resumen | Versión de Samuelson (1958) con dinero como depósito de valor | — |
 | 3.A.6 | Extensiones de la NMC | mención | — | — |
 | 3.A.33 | Consumo | mención (hecho, 31/10/2026) | Las OLG como el ciclo vital en equilibrio general (ficha `ciclo-vital`) | El modelo |
+| 3.A.43 | RCK | mención (hecho, 31/10/2026) | El contraste: el RCK nunca acumula de más; con OLG sí puede | El modelo `\vertema{3.A.29}` |
 
 ## Divergencias encontradas en el temario actual
 - Consumo en minúscula con J/V (c_t^J, 3.A.29) y en mayúscula (C_t^J, 3.A.38, 4.B.3): propuesta **C^J_t, C^V_{t+1}**.

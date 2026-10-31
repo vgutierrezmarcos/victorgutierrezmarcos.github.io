@@ -1,0 +1,81 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Hechos de Kaldor en Estados Unidos, 1950-2025, en 3 paneles (pequeños
+% múltiplos). Filas pais=USA de ../datos/kaldor-eeuu-espana.csv:
+% (a) relación capital-producto: ky_pwt (PWT 11.0, rnna/rgdpna, hasta 2023) y
+%     ky_ameco (AMECO, OKND/OVGD, 1960-2025); los niveles no son comparables
+%     entre fuentes (deflactor y año base): se comparan tendencias.
+% (b) participación del trabajo en la renta (%): particip_trabajo_pwt (labsh)
+%     y particip_salarial_ajust_ameco (ALCD0).
+% (c) rentabilidad real del capital (%): rentab_real_capital_pwt (irr);
+%     media 1950-2023: 8,2 %.
+% Paleta: PWT = tceemorado (continua), AMECO = tceedorado (discontinua), igual
+% en los 3 paneles. Va en una figuracaja: la leyenda sin fondo (toma el gris).
+% Capas (CRITERIOS §7): ejes → referencias → PWT → AMECO → etiquetas → títulos
+% y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/kaldor-eeuu-espana.csv}\kaldor
+\pgfplotsset{
+  % las filas de EE. UU. son las 76 primeras del CSV (1950-2025; después, España)
+  soloeeuu/.style={restrict expr to domain={\coordindex}{0:75}},
+  panelk/.style={
+    width=5.4cm, height=5cm, xmin=1948, xmax=2027,
+    xtick={1950,1975,2000,2025},
+    xticklabel style={/pgf/number format/1000 sep=, font=\scriptsize},
+    yticklabel style={font=\scriptsize},
+    axis x line*=bottom, axis y line*=left, tick align=outside,
+    ymajorgrids, grid style={tceegris!25}, clip=false,
+    unbounded coords=discard, dicapas},
+  pwt/.style={diclinea=tceemorado, thick, mark=none, forget plot, soloeeuu},
+  ameco/.style={diclinea=tceedorado, thick, dashed, mark=none, forget plot, soloeeuu},
+}
+\begin{tikzpicture}[tcee]
+  % ---------- (a) relación capital-producto
+  \begin{axis}[panelk, name=pa, ymin=0, ymax=5, ytick={0,1,...,5}]
+    \capa{3}{\addplot[pwt] table[x=anio, y=ky_pwt] {\kaldor};}
+    \capa{4}{\addplot[ameco] table[x=anio, y=ky_ameco] {\kaldor};}
+    \capa{5}{
+      \addplot[on layer=dicpuntos, dicpuntos=tceemorado, forget plot] coordinates {(1960,3.81) (2023,3.236)};
+      \dicrotulo[font=\scriptsize,anchor=south,inner sep=1pt]{(1961,4.0)}{3,8}
+      \dicrotulo[font=\scriptsize,anchor=north,inner sep=4pt]{(2023,3.236)}{3,2}
+    }
+    \capa{6}{\dicrotulo[font=\footnotesize,anchor=south west,align=left,inner sep=0pt]{(1948,5.35)}{(a) Capital-producto, $K/Y$}}
+  \end{axis}
+  % ---------- (b) participación del trabajo
+  \begin{axis}[panelk, name=pb, at={($(pa.east)+(1.3cm,0)$)}, anchor=west,
+      ymin=50, ymax=70, ytick={50,55,...,70},
+      legend style={at={(0.5,-0.2)}, anchor=north, draw=none, fill=none,
+        font=\footnotesize, legend columns=2, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left]
+    \capa{2}{
+      \dicraya[dicumbral]{(2000,50) (2000,70)}
+      \dicrotulo[font=\scriptsize,text=dicreferencia,anchor=south west,inner sep=1pt]{(2000,50.3)}{2000}
+    }
+    \capa{3}{\addplot[pwt] table[x=anio, y=particip_trabajo_pwt] {\kaldor};}
+    \capa{4}{\addplot[ameco] table[x=anio, y=particip_salarial_ajust_ameco] {\kaldor};}
+    \capa{5}{
+      \addplot[on layer=dicpuntos, dicpuntos=tceemorado, forget plot] coordinates {(1960,63.7) (2023,56.8)};
+      \dicrotulo[font=\scriptsize,anchor=south,inner sep=4pt]{(1960,64.4)}{63,7}
+      \dicrotulo[font=\scriptsize,anchor=south west,inner sep=3pt]{(2023,56.8)}{56,8}
+    }
+    \capa{6}{
+      \dicrotulo[font=\footnotesize,anchor=south west,align=left,inner sep=0pt]{(1948,71.4)}{(b) Participación del trabajo (\%)}
+      \addlegendimage{diclinea=tceemorado, thick}
+      \addlegendentry{Penn World Table 11.0}
+      \addlegendimage{diclinea=tceedorado, thick, dashed}
+      \addlegendentry{AMECO}
+    }
+  \end{axis}
+  % ---------- (c) rentabilidad real del capital
+  \begin{axis}[panelk, name=pc, at={($(pb.east)+(1.3cm,0)$)}, anchor=west,
+      ymin=0, ymax=12, ytick={0,3,...,12}]
+    \capa{2}{
+      \dicraya[dicumbral]{(1948,8.18) (2027,8.18)}
+      \dicrotulo[font=\scriptsize,text=dicreferencia,anchor=west,align=left,inner sep=2pt]{(2027,8.18)}{media\\8,2}
+    }
+    \capa{3}{\addplot[pwt] table[x=anio, y=rentab_real_capital_pwt] {\kaldor};}
+    \capa{6}{\dicrotulo[font=\footnotesize,anchor=south west,align=left,inner sep=0pt]{(1948,12.85)}{(c) Rentabilidad real del capital (\%)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

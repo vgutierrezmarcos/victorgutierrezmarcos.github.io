@@ -1,7 +1,7 @@
 # Convergencia β y σ (Barro y Sala i Martín)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.45 (convergencia económica internacional) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.45 (desarrollo), 3.B.40 (desarrollo: regiones europeas), 4.A.17 (desarrollo: comunidades autónomas)
+- **Temas que lo usan:** 3.A.45 (desarrollo), 3.B.40 (desarrollo: regiones europeas), 4.A.17 (desarrollo: comunidades autónomas), 3.A.43 (mención; hecho, 31/10/2026: implicaciones teóricas de Solow —convergencia absoluta, condicional y en tasas— y λ = (1 − α)(n + g + δ) ≈ 4 %, (1 − α − β)(n + g + δ) ≈ 2 % en MRW y 7-10 % en el RCK; evidencia 1960-2023 con el gráfico `convergencia` (PWT 11.0) y Kremer, Willis y You, 2022; `\vertema{3.A.45}`)
 - **Manuales de referencia:** Barro y Sala i Martín (1992), *JPE*; Barro y Sala i Martín (2004), caps. 11-12; Sala i Martín (1996), *EER*; Quah (1996).
 
 ## Presentación de referencia
@@ -19,6 +19,7 @@ Gráficos de referencia: (1) dispersión de γ frente a ln y inicial (pendiente 
 | 3.A.45 | Convergencia internacional | desarrollo | Conceptos, relación con Solow/MRW, evidencia internacional, críticas | — |
 | 3.B.40 | Política regional / cohesión en la UE | desarrollo (aplicación) | Conceptos en forma breve y evidencia para regiones europeas | Derivación y críticas [ver tema 3.A.45] |
 | 4.A.17 | Convergencia entre CCAA | desarrollo (aplicación) | Conceptos en forma breve y evidencia para España desde 1955 | Idem |
+| 3.A.43 | Solow, MRW y RCK | mención (hecho, 31/10/2026) | Las predicciones (absoluta, condicional, en tasas) y la velocidad λ de cada modelo (anexo C); la evidencia en una viñeta | La estimación de β y σ `\vertema{3.A.45}` |
 
 ## Divergencias encontradas en el temario actual
 - Cronología de la σ: 3.A.45 y 4.A.17 escriben σ²_{t−1} > σ²_t y 3.B.40 σ²_t > σ²_{t+k}; son equivalentes, pero conviene una sola forma.

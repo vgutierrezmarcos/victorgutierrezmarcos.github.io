@@ -1,7 +1,7 @@
 # Progreso técnico neutral (Hicks, Harrod, Solow)
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.11 (Teoría de la producción, II.3) — único que lo desarrolla, como caracterización de la tecnología a muy largo plazo. Revisado el 13/10/2026: la presentación de referencia es la del 3.A.11.
-- **Temas que lo usan:** 3.A.11 (desarrollo), 3.B.9 (resumen), 3.A.43 (mención: Solow supone neutralidad de Harrod), 3.A.45 (mención: PTF de Solow, 1957, con neutralidad de Hicks); 3.B.5 (sesgo del crecimiento en H-O, sin id).
+- **Temas que lo usan:** 3.A.11 (desarrollo), 3.B.9 (resumen), 3.A.43 (mención; hecho, 31/10/2026: caja de Uzawa en los supuestos de Solow, con las 3 neutralidades que coinciden con una Cobb-Douglas, `\vertema{3.A.11}`; anexo B con las 3 definiciones, el teorema de Uzawa, 1961, como condición necesaria y la demostración de Jones y Scrimgeour, 2008), 3.A.45 (mención: PTF de Solow, 1957, con neutralidad de Hicks); 3.B.5 (sesgo del crecimiento en H-O, sin id).
 - **Manuales de referencia:** Hicks (1932); Harrod (1948); Uzawa (1961); Acemoglu (2009), *Introduction to Modern Economic Growth*, cap. 2 y 15; Romer, cap. 1; Barro y Sala-i-Martin, cap. 1.
 
 ## Presentación de referencia
@@ -28,7 +28,7 @@ Gráficos de referencia (3.A.11): `oposicion/temario/fuentes/3A11/graficos/progr
 |---|---|---|---|---|
 | 3.A.11 | Tecnología a muy largo plazo | desarrollo (hecho, 13/10/2026) | Tres definiciones con su criterio, sesgo de Hicks, aumentador frente a sesgado, coincidencia en Cobb-Douglas, Uzawa, dos gráficos | — |
 | 3.B.9 | Comercio y crecimiento | resumen | Sesgo del progreso técnico por sectores y efecto sobre la RRI, con las definiciones de 3.A.11 en una línea cada una | Las definiciones formales (remitir a 3.A.11); no confundir aumentador con sesgado |
-| 3.A.43 | Solow | mención | Supuesto de neutralidad de Harrod ($AL$ trabajo efectivo) justificado por Uzawa; remitir a 3.A.11 | Las tres neutralidades |
+| 3.A.43 | Solow | mención (hecho, 31/10/2026) | Neutralidad de Harrod ($AL$ trabajo eficiente) justificada por Uzawa (condición necesaria, no «necesaria y suficiente», y no de Phelps); las 3 neutralidades en la caja y en el anexo B, con `\vertema{3.A.11}` (CC12: CRITERIOS § 2 manda conservar las notas bien desarrolladas) | El análisis gráfico y la RMST de cada neutralidad (3.A.11) |
 | 3.A.45 | Contabilidad del crecimiento | mención | La PTF (residuo de Solow, 1957) se mide con neutralidad de Hicks, $Y=A_tF(K,L)$; remitir a 3.A.11 | Las definiciones (nota 13 actual) |
 
 ## Divergencias encontradas en el temario actual

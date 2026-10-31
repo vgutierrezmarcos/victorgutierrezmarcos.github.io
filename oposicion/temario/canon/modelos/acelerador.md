@@ -1,7 +1,7 @@
 # Principio de aceleración: acelerador simple y flexible (Aftalion 1913; Clark 1917; Koyck 1954; Chenery 1952) y multiplicador-acelerador (Samuelson 1939; Hicks 1950)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.34 (teorías de la inversión) — I.2 «Teorías poskeynesianas: el acelerador» (a)-d)), revisado el 31/10/2026. Ficha creada en la fase canon del 3.A.34 (C6 de sus propuestas de coherencia, **[decidir]**). Recoge el id `multiplicador-acelerador` del 3.A.42 (alias; **[decidir]**: alternativa, ficha propia con el 3.A.42 de referencia, porque allí se desarrolla la dinámica del ciclo).
-- **Temas que lo usan:** 3.A.34 (desarrollo; hecho, 31/10/2026), 3.A.42 (desarrollo de la aplicación al ciclo: multiplicador-acelerador de Samuelson y Hicks), 3.A.43 (mención: la misma v de Harrod-Domar; hoy remite al 3.A.34 por el acelerador simple), 1D01 (mención; hecho: la brecha de producción y la utilización de la capacidad como determinante de la inversión, «acelerador»)
+- **Temas que lo usan:** 3.A.34 (desarrollo; hecho, 31/10/2026), 3.A.42 (desarrollo de la aplicación al ciclo: multiplicador-acelerador de Samuelson y Hicks), 3.A.43 (mención; hecho, 31/10/2026: I.1 a) y anexo A, $I_t=v\,\Delta Y_t$ con la misma $v$ y `\vertema{3.A.34}`; ficha `harrod-domar`), 1D01 (mención; hecho: la brecha de producción y la utilización de la capacidad como determinante de la inversión, «acelerador»)
 - **Manuales de referencia:** Clark (1917); Koyck (1954); Chenery (1952); Samuelson (1939); Hicks (1950); Blanchard y Fischer (1989); Dornbusch, Fischer y Startz.
 
 ## Presentación de referencia (3.A.34, I.2)
@@ -28,7 +28,7 @@ $$I_t=v\sum_{j=0}^{\infty}\beta_j\,\Delta Y_{t-j},\qquad\sum_{j}\beta_j=1$$
 |---|---|---|---|---|
 | 3.A.34 | Teorías de la inversión | desarrollo (hecho, 31/10/2026) | Simple, multiplicador de impacto, flexible con Koyck y Chenery, valoración | La dinámica del ciclo (nota con `\vertema{3.A.42}`) |
 | 3.A.42 | Teorías del ciclo | desarrollo (aplicación) | Multiplicador-acelerador de Samuelson (ecuación en diferencias, estabilidad y oscilación) y Hicks (techos y suelos), con la misma $v$ y `\vertema{3.A.34}` para el principio | El acelerador flexible |
-| 3.A.43 | Crecimiento | mención | Harrod-Domar: la inversión que pide el crecimiento, con la misma $v$ | El acelerador flexible |
+| 3.A.43 | Crecimiento | mención (hecho, 31/10/2026) | Harrod-Domar: la inversión que pide el crecimiento, con la misma $v$ y expectativas estáticas | El acelerador flexible |
 | 1D01 | Dictamen de coyuntura | mención (hecho) | Brecha de producción y utilización de la capacidad como determinantes de la inversión | El modelo |
 
 ## Divergencias encontradas en el temario actual

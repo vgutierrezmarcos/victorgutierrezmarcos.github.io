@@ -1,0 +1,60 @@
+% Modelo de Solow en el plano (k, y): estado estacionario y regla de oro.
+% Curvas calculadas (Cobb-Douglas con alfa = 1/2, en unidades del dibujo):
+%   f(k) = 1,8 k^(1/2);  s = 0,35: s f(k) = 0,63 k^(1/2)
+%   (n+delta) k = 0,20 k (con g = 0);  (n+g+delta) k = 0,38 k
+%   k* = (0,63/0,38)^2 = 2,7487;  f(k*) = 2,9842;  s f(k*) = 1,0445
+%   regla de oro: f'(k) = 0,9 k^(-1/2) = 0,38  ->  k_oro = (0,9/0,38)^2 = 5,6094;
+%     f(k_oro) = 4,2632; (n+g+delta) k_oro = 2,1316; c_oro = 2,1316
+%     tangente: y = 4,2632 + 0,38 (k - 5,6094)
+%     s_oro f(k) = 0,9 k^(1/2) (s_oro = alfa = 1/2) pasa por (k_oro; 2,1316)
+%   k_0 = 1,1: s f(k_0) = 0,6607; (n+g+delta) k_0 = 0,418
+% Caso s < s_oro: k* a la izquierda de k_oro (eficiencia dinámica).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=1.1cm,
+    declare function={f(\k)=1.8*sqrt(\k); sf(\k)=0.63*sqrt(\k);},
+    llave/.style={decorate,decoration={brace,amplitude=4pt},thick}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-0.7) rectangle (9.6,5.6);
+  % 1: ejes
+  \capa{1}{\ejes{$k$}{$y$, inversión}{7.8}{5.4}}
+  % 2: función de producción en forma intensiva
+  \capa{2}{\draw[curva1] plot[domain=0:7.2,samples=80] (\x,{f(\x)})
+      node[etiqueta,right,text=tceemorado] {$f(k)$};}
+  % 3: inversión efectiva
+  \capa{3}{\draw[curva2] plot[domain=0:7.2,samples=80] (\x,{sf(\x)})
+      node[etiqueta,right,text=tceeazul] {$s\,f(k)$};}
+  % 4: recta de reposición sin progreso técnico
+  \capa{4}{\draw[thick,dashed,tceegris] (0,0) -- (7.0,1.40)
+      node[etiqueta,right,text=tceegris] {$(n+\delta)\,k$};}
+  % 5: con progreso técnico la recta gira hacia arriba
+  \capa{5}{\draw[curva3] (0,0) -- (7.2,2.736)
+      node[etiqueta,right,text=tceeverde] {$(n+g+\delta)\,k$};
+    \draw[->,thick,tceeverde] (6.2,1.24) to[bend right=35] node[etiqueta,right,pos=0.55] {$+g$} (6.2,2.356);}
+  % 6: estado estacionario k*
+  \capa{6}{\node[punto] (E) at (2.7487,1.0445) {};
+    \draw[guia] (E) -- (2.7487,0) node[below,text=black] {$k^*$};}
+  % 7: dinámica: k crece a la izquierda de k* y decrece a la derecha
+  \capa{7}{\draw[guia] (1.1,0.418) -- (1.1,0) node[below,text=black] {$k_0$};
+    \draw[->,thick,tceerojo] (1.1,0.418) -- (1.1,0.6607);
+    \draw[thin,tceerojo] (1.13,0.55) -- (1.45,1.6);
+    \node[etiqueta,anchor=south west,text=tceerojo,inner sep=1pt] at (1.4,1.6) {$\dot k>0$};
+    \draw[flecha] (0.25,0) -- (0.85,0);
+    \draw[flecha] (1.45,0) -- (2.35,0);
+    \draw[flecha] (4.4,0) -- (3.2,0);}
+  % 8: consumo de estado estacionario c*
+  \capa{8}{\draw[guia] (E) -- (2.7487,2.9842);
+    \draw[llave] (2.7487,1.0445) -- node[etiqueta,left=4pt] {$c^*$} (2.7487,2.9842);}
+  % 9: regla de oro: tangente paralela a (n+g+delta)k, k_oro y c_oro
+  \capa{9}{\draw[thick,tceedorado] (3.6,3.4996) -- (6.9,4.7536);
+    \node[punto,fill=tceedorado] (O) at (5.6094,4.2632) {};
+    \draw[guia] (O) -- (5.6094,0) node[below,text=black] {$k_{\mathrm{oro}}$};
+    \draw[llave,tceedorado] (5.6094,2.1316) -- node[etiqueta,left=4pt,text=tceedorado] {$c_{\mathrm{oro}}$} (5.6094,4.2632);}
+  % 10: tasa de ahorro de la regla de oro
+  \capa{10}{\draw[desplazada,tceedorado] plot[domain=0:7.2,samples=80] (\x,{0.9*sqrt(\x)})
+      node[etiqueta,right,text=tceedorado] {$s_{\mathrm{oro}}\,f(k)$};
+    \node[punto,fill=tceedorado] at (5.6094,2.1316) {};}
+\end{tikzpicture}
+\end{document}
