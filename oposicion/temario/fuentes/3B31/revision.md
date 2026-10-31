@@ -2,7 +2,7 @@
 
 Revisión del 31/10/2026 (`/revisartema`, fase integrar, en 3 partes). Víctor está fuera hasta el
 9/11: en cada decisión se ha aplicado la opción recomendada, y las que necesitan su visto bueno
-están en «Dudas abiertas» (B31-01 a B31-12).
+están en «Dudas abiertas» (B31-01 a B31-12 y, de la ficha de repaso, R31-01).
 
 ## Resumen
 
@@ -333,6 +333,13 @@ Todas tienen aplicada la opción recomendada (★); basta con confirmarla o eleg
 - **B31-12. Importe del Fondo Social para el Clima.** Las fuentes discrepan tras el retraso del
   RCDE 2 (65.000 M€ del Reglamento; máximo de 54.600 M€ según la Comisión). (a) ★ 65.000 M€ y
   «su retraso los reduce», sin cifra cerrada. (b) Dar el máximo revisado.
+- **R31-01. Ficha de repaso: letra o contenido.** El tema es largo y la ficha solo cabe en cuatro
+  páginas con 8,75 pt; para llegar a 9 pt habría que quitar unas 13 líneas más. Ya se han dejado
+  fuera los gráficos de apoyo (`temperatura-co2`, `emisiones-paises`, `precio-rcde`) y las tablas
+  de canales e instrumentos (su contenido va en viñetas). (a) ★ 8,75 pt con los 4 gráficos de la
+  pizarra, la tabla del descuento y las matrices del dilema y del club. (b) 9 pt quitando la tabla
+  del descuento y achicando los gráficos. Si se aplica B31-11 (a), el resultado de la COP31 se
+  añade también a la ficha (III.3 y «Autores y fechas»).
 
 Otras cosas que no se han podido comprobar (sin decisión): el texto de las decisiones de la COP28 y
 la COP29 (cifras cotejadas en fuentes secundarias), la financiación climática de 2023, las

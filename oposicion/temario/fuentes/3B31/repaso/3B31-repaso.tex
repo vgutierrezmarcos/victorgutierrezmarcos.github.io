@@ -1,0 +1,305 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Cambio climático y economía]{3.B.31}{El cambio climático y su impacto en la economía. Evidencia y modelos integrados de evaluación. Acuerdos internacionales y principales medidas adoptadas para hacer frente al cambio climático.}
+\tcefecha{31/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. El cambio climático y su impacto en la economía}{7,5}
+\subcante{1. Fenómeno físico: $+1{,}4$~°C, stock de CO\textsubscript{2}, presupuesto}{1,5}
+\subcante{2. Problema económico: $\mathrm{DMg}=\sum_i\mathrm{DMg}_i$; $E^c>E^{\mathrm N}>E^*$}{2}
+\subcante{3. Canales: riesgos físicos y de transición}{4}
+\apartadocante{II. Evidencia y modelos integrados de evaluación}{9}
+\subcante{1. Evidencia: corte transversal y panel}{2,5}
+\subcante{2. MIE y coste social del carbono}{1,5}
+\subcante{3. DICE; $r_s=\rho+\theta\gamma_c$; \autor{Stern}-\autor{Nordhaus}}{5}
+\apartadocante{III. Acuerdos internacionales y principales medidas}{9,5}
+\subcante{1. Instrumentos: precio, cantidad, adaptación}{1,5}
+\subcante{2. Cooperación: dilema del prisionero y clubes}{1,5}
+\subcante{3. Acuerdos: CMNUCC, Kioto, París}{2,5}
+\subcante{4. Medidas: UE, RCDE y MAFC}{4}
+\apartadocante{Conclusión}{1,5}}
+\emph{Ejemplo}: 1~t de CO\textsubscript{2} de una acería (qué hace, cuánto daña, cuánto vale, quién paga). \emph{Pizarra}: emisiones óptimas todo el cante; DICE y $r_s$ en una esquina.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{Quien siembra vientos recoge tempestades}»: con el clima, siembra una generación (un país) y recoge otra (todos). 2024: 1.\textsuperscript{er} año $>1{,}5$~°C sobre 1850-1900; 2023-2025, 1.\textsuperscript{er} trienio por encima (Copernicus). Pero EE.~UU., 2.º emisor, sale de París el 27/1/2026. Seguiremos una tonelada de CO\textsubscript{2} de una acería.
+\item \textbf{Relevancia}: \emph{teórica} (externalidad global, intergeneracional, acumulativa e incierta; \autor{Stern}: «el mayor fallo de mercado que el mundo ha visto»; Nobel a \autor{Nordhaus}, 2018); \emph{práctica} (87 precios del carbono, $\approx$30\,\% de las emisiones; derecho UE $\approx$85~€/t; MAFC desde 2026); \emph{para el TCEE} (fiscalidad \vertema{4.B.13}, comercio \vertema{3.B.41}, presupuesto UE \vertema{3.B.37}, energía \vertema{4.A.6}, COP).
+\item \textbf{Contextualización}: \autor{Malthus} (1798), Club de Roma (1972) frente a \autor{Solow}, \autor{Stiglitz} (1974) \vertema{3.A.43}. \autor{Arrhenius} (1896): física del invernadero; \autor{Brundtland} (1987): \concepto{desarrollo sostenible}; IPCC (1988); CMNUCC (Río, 1992), COP desde 1995. Economía del clima: DICE (\autor{Nordhaus}, 1992), \autor{Stern} (2007), econometría del clima (\autor{Dell}-\autor{Jones}-\autor{Olken}, 2014).
+\item \textbf{Problemática}: ¿por qué el mercado emite demasiado, qué tiene de especial el clima y por qué canales daña? ¿Cuánto daña y cuánto vale evitar 1~t de CO\textsubscript{2}? ¿Por qué depende tanto del descuento y la incertidumbre? ¿Por qué los acuerdos logran tan poco y qué medidas funcionan?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, por qué es un problema económico (diagnóstico); \hyperref[rep:II]{II}, cuánto daña (la cifra); \hyperref[rep:III]{III}, qué hacer (la cura).
+\end{itemize}
+
+% ==========================================================================
+\bloque[7,5]{I. El cambio climático y su impacto en la economía\label{rep:I}}
+\begin{ideaclave}
+El CO\textsubscript{2} se acumula: el cambio climático es una externalidad global, entre generaciones y acumulativa que llega a la economía por la oferta, los precios, el sistema financiero y la distribución; pagan sobre todo los países pobres y cálidos.
+\end{ideaclave}
+
+\sub{I.1. El fenómeno físico y su evidencia\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Cambio climático} (CMNUCC, art.~1): cambio del clima atribuido directa o indirectamente a la actividad humana, que altera la composición de la atmósfera y se suma a la variabilidad natural.
+\item \concepto{GEI}: retienen la radiación infrarroja; el problema es el efecto invernadero \emph{añadido}. CO\textsubscript{2}, metano, óxido nitroso, fluorados; se suman en \concepto{t CO\textsubscript{2}e}. 2025: 54.100 Mt CO\textsubscript{2}e ($+0{,}7$\,\%); CO\textsubscript{2} fósil $\approx$38.000 Mt, 7 de cada 10.
+\item Causas: fósiles, cemento, agricultura, deforestación; IPCC (AR6): $+1{,}1$~°C en 2011-2020, origen humano \emph{inequívoco}.
+\item Quién emite: China $\approx$30\,\%, EE.~UU. 11\,\%, India 8\,\%, UE $<$6\,\%; por habitante: EE.~UU. 17,5~t, UE 7,1, India 3,1.
+\item Hechos: CO\textsubscript{2} 426,8~ppm en 2025 ($+53$\,\% sobre la era preindustrial); 2025, 3.\textsuperscript{er} más cálido ($+1{,}47$~°C) tras 2024 ($+1{,}60$); calentamiento humano 1,37~°C, $+0{,}27$~°C por década (\autor{Forster} et al.).
+\item \textbf{El CO\textsubscript{2} es un \concepto{stock}}: parte sale en décadas, parte queda siglos $\Rightarrow$ calentamiento $\propto$ emisiones \emph{acumuladas} ($\approx$0,45~°C por cada billón de t). Estabilizar exige \concepto{emisiones netas nulas}.
+\item \concepto{Presupuesto de carbono}: lo que se puede emitir sin pasar un umbral. 1,5~°C (50\,\%): $\approx$130.000~Mt a inicios de 2026, $\approx$3 años al ritmo actual (IPCC: 500.000 desde 2020).
+\item Efectos: extremos más frecuentes, mar más alto y ácido, biodiversidad, salud; agricultura, pesca, turismo, energía.
+\item \concepto{Puntos de inflexión}: cambios bruscos e irreversibles (Groenlandia, Antártida occidental, permafrost, corales, circulación atlántica), varios entre 1,5 y 2~°C (\autor{Armstrong McKay} et al., 2022); los corales ya lo han cruzado ($\approx$1,2~°C) $\Rightarrow$ incertidumbre de cola.
+\item Proyecciones: políticas en vigor $\approx$2,8~°C en 2100; con todas las contribuciones, 2,3-2,5~°C (PNUMA, 2025).
+\end{itemize}
+
+\sub{I.2. El cambio climático como problema económico\label{rep:I.2}}
+\begin{itemize}
+\item \concepto{Externalidad negativa} \vertema{3.A.23}: $\mathrm{CMgS}=\mathrm{CMgP}+\mathrm{CMgE}$; falla el supuesto de mercados completos del 1TFEB \vertema{3.A.22}. El $\mathrm{CMgE}$ de 1~t de CO\textsubscript{2} = \concepto{coste social del carbono} (CSC).
+\item Gráfico en emisiones $E$: $\mathrm{CMgR}(E)$ decreciente = \concepto{coste marginal de reducción} = beneficio marginal de emitir (se anula en $E^c$); $\mathrm{DMg}_i$ = daño marginal de un país; daño mundial, suma \emph{vertical} (como \autor{Samuelson}-\autor{Bowen}):
+\funcionclave{\mathrm{DMg}(E)=\sum_i\mathrm{DMg}_i(E)}
+\item 3 niveles: $E^c$ (nadie paga); $E^{\mathrm N}$ (\autor{Nash}: $\mathrm{CMgR}=\mathrm{DMg}_i$); $E^*$ ($\mathrm{CMgR}=\mathrm{DMg}$) $\Rightarrow$ $E^c>E^{\mathrm N}>E^*$. Distancia $E^{\mathrm N}$-$E^*$: \concepto{polizón entre Estados}. Precio óptimo $t^*=\mathrm{DMg}(E^*)$ = CSC; tope $\overline{E}=E^*$ equivalente sin incertidumbre.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{emisiones-optimas}{Emisiones sin política ($E^c$), de \autor{Nash} ($E^{\mathrm N}$) y óptimas ($E^*$): el daño mundial suma los de los países}
+\begin{itemize}
+\item \textbf{5 rasgos} que rara vez van juntos:
+\begin{enumerate}
+\item \emph{Global}: reducir es un \concepto{bien público global} de suma de esfuerzos (\autor{Hirshleifer}, 1983); polizón; sin gobierno mundial (\autor{Kindleberger}, 1986); atmósfera = común global.
+\item \emph{Entre generaciones}: quien paga no es quien disfruta $\Rightarrow$ tasa de descuento (\hyperref[rep:II.3]{II.3}).
+\item \emph{Acumulativa e irreversible}: \concepto{valor de opción} de esperar (\autor{Arrow}-\autor{Fisher}, 1974) $\Rightarrow$ más prudencia.
+\item \emph{Incierta}: sensibilidad, daños por grado, puntos de inflexión: colas.
+\item \emph{Desigual}: emiten los ricos, sufren los pobres y cálidos $\Rightarrow$ \concepto{responsabilidades comunes pero diferenciadas} (CMNUCC, art.~3.1).
+\end{enumerate}
+\item \autor{Pigou} exige un Estado que imponga; \autor{Coase}, pocos afectados: con $\approx$200 Estados y generaciones no nacidas, ninguno: \concepto{dilema de Westfalia} (\autor{Nordhaus}, 2015).
+\end{itemize}
+
+\sub{I.3. Canales de impacto en la economía\label{rep:I.3}}
+\begin{itemize}
+\item 2 riesgos (\autor{Carney}, 2015; NGFS, 2019): \concepto{físicos} (\emph{agudos}: dana, huracán; \emph{crónicos}: temperatura, agua, mar) y \concepto{de transición} (política, tecnología, preferencias; mayores cuanto más tarde y brusca). 5 canales:
+\item \textbf{Crecimiento} ($Y=AK^\alpha L^{1-\alpha}$ \vertema{3.A.45}): \emph{trabajo} (calor: horas, productividad, salud; desplazados); \emph{capital} (desastres; \concepto{activos varados}: para 2~°C (50\,\%), sin usar 1/3 del petróleo, 1/2 del gas, $>$80\,\% del carbón, \autor{McGlade}-\autor{Ekins}, 2015); \emph{PTF} (agricultura, suministros, reparar en vez de innovar).
+\item \concepto{Efecto nivel o crecimiento}: nivel $\Rightarrow$ daño acotado; tasa $\Rightarrow$ se acumula. Panel: crecimiento en países pobres (\autor{Dell}-\autor{Jones}-\autor{Olken}, 2012).
+\item \textbf{Precios}: choques de oferta ($\downarrow Y$, $\uparrow P$) \vertema{3.A.36}. \autor{Schnabel} (2022): \concepto{\emph{climateflation}} (clima encarece comida y energía), \concepto{\emph{fossilflation}} (dependencia fósil, 2022), \concepto{\emph{greenflation}} (metales y precio del carbono).
+\item \textbf{Financiero}: \concepto{tragedia del horizonte} (\autor{Carney}, 2015): los daños llegan tras el horizonte de inversores, supervisores y políticos. Aseguradoras, impagos, activos intensivos en carbono; si de golpe, sistémico. NGFS (2017); prueba de resistencia del BCE (2022).
+\item \textbf{Política}: \emph{fiscal}: emergencia, inversión, subvenciones (carrera tras la IRA de EE.~UU., 2022), recauda el carbono \vertema{4.B.13}; \emph{monetaria}: disyuntiva inflación-actividad, tipo natural \vertema{3.A.40}, mandato; BCE: clima en su estrategia (2021).
+\item \textbf{Desigualdad}: entre países, pierden los pobres y cálidos (\autor{Burke}-\autor{Hsiang}-\autor{Miguel}, 2015) \vertema{3.B.28}; el 10\,\% que más emite, casi la mitad (\autor{Chancel}, 2022). Dentro: precio regresivo si no se compensa (chalecos amarillos, 2018). España: sur de Europa, el más expuesto (AEMA, 2024); PNACC 2021-2030 \vertema{4.A.6}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{II. Evidencia y modelos integrados de evaluación\label{rep:II}}
+\begin{ideaclave}
+La evidencia reciente apunta a daños mayores y no lineales; los modelos dan un coste social del carbono positivo y creciente, pero muy sensible a 2 juicios: el descuento y el trato de las catástrofes.
+\end{ideaclave}
+
+\sub{II.1. Evidencia empírica del impacto económico\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Corte transversal}: renta $-8{,}5$\,\% por grado entre países (\autor{Dell}-\autor{Jones}-\autor{Olken}, 2009); la geografía explica $\approx$20\,\% de la brecha África tropical-regiones industriales (\autor{Nordhaus}, 2006). Problema: correlación $\neq$ causalidad (instituciones, colonias, enfermedades).
+\item \concepto{Econometría del clima} (panel): cada país frente a sí mismo en años más cálidos o fríos, efectos fijos de país y año; el tiempo es aleatorio $\Rightarrow$ causal (\autor{Dell}-\autor{Jones}-\autor{Olken}, 2014; \autor{Hsiang}, 2016).
+\item \autor{Dell}-\autor{Jones}-\autor{Olken} (2012): pobres, $+1$~°C $\Rightarrow$ crecimiento $-1{,}3$~pp; ricos, sin efecto claro; efecto sobre el \emph{crecimiento}.
+\item \autor{Burke}-\autor{Hsiang}-\autor{Miguel} (2015): \emph{no lineal}, igual para todos: máximo $\approx$13~°C; los ricos están en zonas frías; sin mitigar, renta mundial $-23$\,\% en 2100 y $\uparrow$ desigualdad.
+\end{itemize}
+\graficorepaso[0.82\linewidth]{temperatura-productividad}{U invertida: productividad máxima en torno a 13~°C (\autor{Burke}-\autor{Hsiang}-\autor{Miguel}, 2015)}
+\begin{itemize}
+\item \autor{Bilal}-\autor{Känzig} (2026), temperatura \emph{global}: $+1$~°C $\Rightarrow$ PIB mundial $>-20$\,\% a largo plazo; CSC $>$1.200~\$/t (el documento de trabajo de 2024 daba $\approx$12\,\%).
+\item Desastres: daño de huracanes $\propto$ viento$^9$; $\approx$0,08\,\% del PIB de EE.~UU. (\autor{Nordhaus}, 2010).
+\item \emph{Límites}: el tiempo no es el clima (adaptación $\downarrow$, acumulación $\uparrow$); extrapolación; canales que faltan (mar, biodiversidad, migraciones); fragilidad: \emph{Nature} retiró en dic. 2025 el artículo de \autor{Kotz} et al. ($-19$\,\% en 2050) por los datos de un país.
+\end{itemize}
+
+\sub{II.2. Los MIE y el coste social del carbono\label{rep:II.2}}
+\begin{itemize}
+\item \concepto{Modelos integrados de evaluación} (MIE, IAM): módulo económico + climático; cierran el círculo economía $\to$ emisiones $\to$ calentamiento $\to$ daños. 3 tipos: 1) \emph{optimización} con daños, dan el CSC (DICE/RICE, FUND de \autor{Tol}-\autor{Anthoff}, PAGE de \autor{Hope}); 2) \emph{simulación} tecnológica (IMAGE, GCAM\ldots: mínimo coste de un objetivo; IPCC); 3) \emph{MEGC} (políticas concretas). DICE no es un MEGC, sino crecimiento óptimo \vertema{3.A.21}.
+\item \concepto{Coste social del carbono}: valor actual, en consumo de hoy, de los daños de 1~t más emitida en $t$:
+\begin{formula}
+\centering $\mathrm{CSC}_t\equiv-\dfrac{\partial W/\partial E_t}{\partial W/\partial C_t}\simeq\displaystyle\sum_{j=0}^{\infty}\frac{1}{(1+r_s)^{j}}\frac{\partial[\Omega(T_{t+j})Y_{t+j}]}{\partial E_t}$
+\end{formula}
+\item[] Es el $\mathrm{DMg}$ mundial; en el óptimo, $t^*_t=\mathrm{CSC}_t$; sirve para el análisis coste-beneficio \vertema{4.B.6}. Cifras: DICE-2023, 66~\$ (políticas actuales) y 50~\$ (óptima), \$ de 2019; EPA (2023), 190~\$ con descuento del 2\,\%; EE.~UU. (2025) deja de usar cifra oficial: también decisión política.
+\item \textbf{Informe \autor{Stern}} (2006-2007, con PAGE): no actuar $\geq$5\,\% del PIB mundial cada año, hasta 20\,\% o más; actuar $\approx$1\,\% $\Rightarrow$ actuar fuerte y pronto.
+\end{itemize}
+
+\sub{II.3. El modelo DICE de \autor{Nordhaus}\label{rep:II.3}}
+\begin{itemize}
+\item \textbf{a) Idea} (\autor{Nordhaus}, 1992): \autor{Ramsey}-\autor{Cass}-\autor{Koopmans} + daños + reducción \vertema{3.A.43}; renunciar a consumo hoy invirtiendo en capital \emph{físico} o \emph{natural} (reducir emisiones). Versión DICE-2023 (\autor{Barrage}-\autor{Nordhaus}, 2024).
+\item \textbf{b) Supuestos}: planificador mundial, 1 bien, periodos de 5 años; $L_t$, $A_t$ exógenas; $Y_t=A_tK_t^{\alpha}L_t^{1-\alpha}$, $\alpha=0{,}3$; \emph{daños} $\Omega(T)\simeq0{,}0035\,T^2$ (3,1\,\% con 3~°C; 7\,\% con 4,5); \concepto{tasa de control} $\mu_t\in[0,1]$, coste $\Lambda(\mu)=\vartheta_1\mu^{\vartheta_2}$, $\vartheta_2=2{,}6$; $E_t=\sigma_t(1-\mu_t)Y_t$; módulo climático $T_t=\Phi(E_0,\dots,E_t)$; utilidad isoelástica ($\theta$), $\beta=1/(1+\rho)$, $\rho$ = \concepto{preferencia temporal pura}.
+\end{itemize}
+\graficorepaso[0.88\linewidth]{dice-esquema}{DICE: producción $\to$ emisiones $\to$ clima $\to$ daños}
+\begin{itemize}
+\item \textbf{Problema}:
+\funcionclave{\optim{\max}{\{I_t,\mu_t\}}{\textstyle\sum_{t}\beta^{t}L_t\frac{c_t^{1-\theta}}{1-\theta}}{Q_t\equiv[1-\Lambda(\mu_t)][1-\Omega(T_t)]Y_t=C_t+I_t\\ K_{t+1}=(1-\delta)K_t+I_t\\ E_t=\sigma_t(1-\mu_t)Y_t,\ T_t=\Phi(E_0,\dots,E_t)}}
+\item \emph{Dilema}: reducir ($\Lambda$) baja $Q_t$ hoy; emitir sube $T$ y $\Omega$ en todos los periodos siguientes.
+\item \emph{Óptimo}: coste marginal de reducir = CSC = precio del carbono:
+\begin{formula}
+\centering $\dfrac{\vartheta_{1,t}\vartheta_2\mu_t^{\vartheta_2-1}}{\sigma_t}=\mathrm{CSC}_t=t^*_t$\quad(\autor{Pigou}; $\mathrm{CMgR}_j=p_E$)
+\end{formula}
+\item \emph{Descuento}: de la ecuación de \autor{Euler} con utilidad isoelástica, \concepto{fórmula de \autor{Ramsey} del descuento} (1928):
+\funcionclave{r_s=\rho+\theta\,\gamma_c}
+\item[] 2 motivos: impaciencia ($\rho$) y generaciones futuras más ricas ($\gamma_c>0$), con aversión a la desigualdad entre generaciones $\theta$.
+\item \textbf{c) Resultados DICE-2023}: sin políticas, $+3{,}6$~°C en 2100, daños 4,4\,\%. Óptimo: \concepto{rampa}, 50~\$/t (2020) $\to$ 115~\$ (2050); $\mu$ 39\,\% (2050), 84\,\% (2100); $+2{,}6$~°C, daños 2,3\,\%; ganancia $\approx$120 billones de \$ ($<$ PIB mundial de 1 año). El impuesto óptimo es el CSC \emph{de la senda óptima} (50, no 66). 2~°C: solo con descuento bajo o daños más severos (CSC 76~\$); 1,5~°C ya no alcanzable. Descuento 5\,\% $\to$ 32~\$; 3\,\% $\to$ 87; 2\,\% $\to$ 176; 1\,\% $\to$ 485.
+\item \textbf{d) Extensiones}: RICE por regiones; innovación endógena (R\&DICE, ENTICE); \concepto{cambio técnico dirigido} (\autor{Acemoglu} et al., 2012): la innovación va a la sucia $\Rightarrow$ impuesto + subvención a la I+D limpia, temprano y temporal \vertema{3.A.44}; \autor{Golosov}-\autor{Hassler}-\autor{Krusell}-\autor{Tsyvinski} (2014): impuesto $\propto$ PIB (solo importan descuento, daños y física del carbono); C-DICE para clubes.
+\item \textbf{e) Evidencia}: daños de 3,1\,\% con 3~°C = 1,6 literatura + 1 puntos de inflexión + 0,5 omitidos ($\approx$2× DICE-2016); CSC parecido entre modelos \emph{para un mismo descuento}.
+\item \textbf{f) Valoración}. \emph{Descuento}: «\emph{Pan para hoy, hambre para mañana}». \autor{Stern}, \emph{prescriptivo} (ética: $\rho\approx0$, solo riesgo de extinción); \autor{Nordhaus}, \emph{descriptivo} ($\rho$, $\theta$ que reproduzcan los tipos reales). $\theta$ = aversión a la desigualdad entre generaciones (como \autor{Atkinson} \vertema{3.A.24}). Expertos: mediana 2\,\%, mayoría 1-3\,\% (\autor{Drupp} et al., 2018); así el DICE se acerca a París (\autor{Hänsel} et al., 2020); guías oficiales: tasas decrecientes \vertema{4.B.6}.
+\end{itemize}
+{\centering\footnotesize\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\rowcolor{tceeazulpalido} & $\rho$ & $\theta$ & $\gamma_c$ & $r_s$ & 100~\$ a 100 años\\
+\midrule
+\autor{Stern} (2007) & 0,1\,\% & 1 & 1,3\,\% & \cellcolor{tceesalvia}1,4\,\% & 24,9~\$\\
+Expertos (2018) & — & — & — & \cellcolor{tceesalvia}2\,\% & 13,8~\$\\
+DICE-2023 (2020) & — & — & — & \cellcolor{tceesalvia}4,5\,\% & 1,2~\$\\
+\autor{Nordhaus} (2007) & 1,5\,\% & 2 & $\approx$2\,\% & \cellcolor{tceesalvia}5,5\,\% & 0,5~\$\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item \emph{Incertidumbre}: \concepto{teorema lúgubre} (\autor{Weitzman}, 2009): colas gruesas + aversión al riesgo \vertema{3.A.10} $\Rightarrow$ disposición a pagar sin límite; el ACB con valores esperados deja de servir $\Rightarrow$ política climática = \emph{seguro}. \autor{Nordhaus} (2011): supuestos extremos (utilidad sin cota, no aprender), pero acepta las colas.
+\item \autor{Pindyck} (2013): MIE «casi inútiles»: daños y descuento arbitrarios, falsa precisión; preguntar a expertos por las catástrofes. Otros límites: daños al nivel y no al crecimiento; 1 bien (no encarece los ambientales); planificador mundial inexistente.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9,5]{III. Acuerdos internacionales y principales medidas\label{rep:III}}
+\begin{ideaclave}
+Los instrumentos se conocen y funcionan donde se aplican; lo difícil es la cooperación, porque reducir es un bien público global: de Kioto (obligatorio para pocos) a París (voluntario para casi todos), y la UE cobra ya su precio del carbono en la frontera.
+\end{ideaclave}
+
+\sub{III.1. Instrumentos: mitigación y adaptación\label{rep:III.1}}
+\begin{itemize}
+\item «\emph{Más vale prevenir que curar}». \concepto{Mitigación}: reducir emisiones o retirar CO\textsubscript{2}; ataca la causa; bien público \emph{global}. \concepto{Adaptación}: limitar daños (diques, regadíos, cultivos, normas, alertas, seguros); beneficios \emph{locales} o privados, apenas polizones; no sustituye a la mitigación.
+\item \textbf{Precio del carbono} \vertema{3.A.23}: \emph{impuesto} $t^*=\mathrm{DMg}(E^*)$ = CSC (\autor{Pigou}, 1920: fija precio) o \emph{derechos} con tope $\overline{E}=E^*$ (\autor{Dales}, 1968; \autor{Montgomery}, 1972: fija cantidad). En ambos, $\mathrm{CMgR}_j=p_E$ (o $t^*$) $\Rightarrow$ reducción al mínimo coste sin conocer los costes de cada empresa + incentivo a innovar.
+\item \concepto{Precios frente a cantidades} (\autor{Weitzman}, 1974): con incertidumbre en costes, cantidad si el daño marginal crece más deprisa que el $\mathrm{CMgR}$. Clima: daño de un año casi plano (stock) $\Rightarrow$ impuesto (\autor{Pizer}, 2002); en contra, puntos de inflexión y presupuesto. Práctica: suelos, techos, reserva de estabilidad del RCDE.
+\item \emph{Credibilidad}: inversiones de décadas; compromisos que blinden el precio (\autor{Helm}-\autor{Hepburn}-\autor{Mash}, 2003).
+\item \emph{Otros}: I+D limpia (externalidad del conocimiento; \autor{Acemoglu} et al.); normas técnicas; información y finanzas sostenibles; fiscalidad verde: \concepto{doble dividendo} \vertema{4.B.13}.
+\item \concepto{Paradoja verde} (\autor{Sinn}, 2008): regla de \autor{Hotelling} (1931), precio neto crece al tipo de interés; impuestos crecientes esperados $\Rightarrow$ adelantar la extracción $\Rightarrow$ $\uparrow$ emisiones hoy. \concepto{Efecto rebote}: eficiencia abarata la energía $\Rightarrow$ $\uparrow$ consumo (\autor{Jevons}, 1865).
+\end{itemize}
+
+\sub{III.2. El problema de la cooperación internacional\label{rep:III.2}}
+\begin{itemize}
+\item 2 países, reducir o emitir (pagos de la guerra de precios \vertema{3.A.14}): emitir es \concepto{estrategia dominante} ($6>5$, $1>0$); único EN (Emitir, Emitir) $=(1,1)$ frente a $(5,5)$: \concepto{dilema del prisionero} (= $E^{\mathrm N}$).
+\end{itemize}
+{\centering\footnotesize\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{@{}c|c|c|@{}}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{\textbf{Reducir}} & \multicolumn{1}{c}{\textbf{Emitir}}\\
+\cline{2-3}
+\textbf{Reducir} & $(5,5)$ & $(0,\underline{6})$\\
+\cline{2-3}
+\textbf{Emitir} & $(\underline{6},0)$ & \cellcolor{tceesalvia}$(\underline{1},\underline{1})$\\
+\cline{2-3}
+\end{tabular}\hspace{1em}%
+\begin{tabular}{@{}c|c|c|@{}}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{\textbf{Reducir}} & \multicolumn{1}{c}{\textbf{Emitir}}\\
+\cline{2-3}
+\textbf{Reducir} & \cellcolor{tceesalvia}$(\underline{5},\underline{5})$ & $(0,3)$\\
+\cline{2-3}
+\textbf{Emitir} & $(3,0)$ & \cellcolor{tceesalvia}$(\underline{1},\underline{1})$\\
+\cline{2-3}
+\end{tabular}\par
+{\color{tceegris}\scriptsize\itshape Dilema entre países (izq.) y con club: arancel de 3 al que emite (der.)}\par}
+\begin{itemize}
+\item \emph{Repetido}: \concepto{gatillo} sostiene la cooperación si
+\begin{formula}
+\centering $\beta\geq\dfrac{u^{\mathrm D}-u^{\mathrm C}}{u^{\mathrm D}-u^{\mathrm N}}=\dfrac{6-5}{6-1}=\dfrac15$
+\end{formula}
+\item[] Pero poco creíble: $\approx$200 países, cuesta ver quién incumple; castigar (dejar de reducir) daña al que castiga $\Rightarrow$ renegociar; gobiernos que no verán los beneficios.
+\item \concepto{Acuerdo autoaplicable}: a ningún firmante le compensa salir ni a ningún país de fuera entrar. \concepto{Paradoja de \autor{Barrett}} (1994; \autor{Carraro}-\autor{Siniscalco}, 1993): acuerdos estables amplios solo si la ganancia de cooperar es pequeña. Contraejemplo: \emph{Montreal} (1987, ozono; 198 partes): pocos productores, sustitutos baratos, fondo y \emph{restricciones comerciales}.
+\item \concepto{Club climático} (\autor{Nordhaus}, 2015; clubes de \autor{Buchanan}, 1965): el clima no es excluible, el comercio sí. Precio mínimo común + \emph{arancel de castigo uniforme} a los de fuera; con arancel de 3, emitir frente a quien reduce da 3 $\Rightarrow$ 2 EN, (R,R) mejor: \concepto{juego de coordinación}; castigo creíble porque no pasa por el clima.
+\item C-DICE: sin sanciones, nada; con precios moderados (12,5-50~\$/t) bastan aranceles del 2-5\,\%; con 100~\$, no. Club del Clima del G-7 (2022): foro sin aranceles \vertema{3.B.19}. Límites: nación más favorecida de la OMC \vertema{3.B.33}, represalias.
+\end{itemize}
+
+\sub{III.3. Los acuerdos internacionales\label{rep:III.3}}
+\begin{itemize}
+\item \textbf{CMNUCC} (Nueva York-Río, 1992; en vigor 1994; 198 partes): art.~2, estabilizar concentraciones «a un nivel que impida interferencias antropógenas peligrosas»; art.~3, responsabilidades comunes pero diferenciadas (anexo~I \vertema{3.B.28}). COP anual desde Berlín (COP1, 1995).
+\item \textbf{Kioto} (COP3, 1997): desarrollados y economías en transición, «al menos un 5\,\%» bajo 1990 en 2008-2012 (5,2\,\% sumado); CE $-8$\,\% conjunto; en desarrollo, sin objetivos. 3 mecanismos: comercio de emisiones, MDL, aplicación conjunta. En vigor 16/2/2005 (Rusia); EE.~UU. no ratificó; Canadá sale (2012). Balance: cumplido (hundimiento del Este) pero emisiones mundiales $\uparrow$: \emph{profundo pero estrecho}, de arriba abajo (\autor{Barrett}).
+\item \textbf{Copenhague} (COP15, 2009): fracaso, la COP «toma nota»; 2~°C y 100.000~M\$/año en 2020. \textbf{Cancún} (COP16, 2010): formaliza 2~°C y crea el Fondo Verde para el Clima \vertema{3.B.30}.
+\item \concepto{Acuerdo de París} (COP21, 2015; en vigor 4/11/2016; 194 partes): \emph{objetivos} «muy por debajo de 2~°C» y esfuerzos por 1,5~°C, adaptación, flujos financieros; neutralidad en la 2.ª mitad del siglo. \emph{De abajo arriba}: \concepto{CDN} cada 5 años, contenido no vinculante (sí presentarlas e informar). \concepto{Balance mundial} cada 5 años: COP28 (Dubái, 2023), $-43$\,\% en 2030 y $-60$\,\% en 2035 frente a 2019, abandonar fósiles, $\times3$ renovables, $\times2$ eficiencia. Art.~6: mercados.
+\item \emph{Financiación}: 100.000~M\$ alcanzados en 2022 (115.900); COP27 (2022): fondo de \concepto{pérdidas y daños}; COP29 (Bakú, 2024): $\geq$300.000~M\$/año en 2035; COP30 (Belém, 2025): $\times3$ adaptación, diálogo comercio-clima, sin EE.~UU.; COP31 (Antalya, 9-20/11/2026).
+\item \emph{Valoración}: París cambia profundidad por amplitud (respuesta a \autor{Barrett}); pero contribuciones $\Rightarrow$ 2,3-2,5~°C, sin sanciones; EE.~UU. sale (2020), vuelve (2021), sale (27/1/2026) y deja la CMNUCC (efectiva 27/2/2027): polizón en estado puro.
+\end{itemize}
+
+\sub{III.4. Las medidas: la UE y el resto del mundo\label{rep:III.4}}
+\begin{itemize}
+\item \textbf{UE}: Pacto Verde (2019); \concepto{Ley Europea del Clima} (2021): neutralidad en 2050, $-55$\,\% netas en 2030, $-90$\,\% en 2040 (reforma de 2026; hasta 5 puntos con créditos internacionales desde 2036); en 2024, $-37$\,\%. \concepto{Objetivo 55}: RCDE, RCDE~2, Fondo Social, reparto del esfuerzo, renovables, eficiencia, coches, MAFC. MRR: $\geq$37\,\% verde \vertema{3.B.45}.
+\item \textbf{RCDE} (Directiva 2003/87/CE, desde 2005): mayor mercado por valor; electricidad, industria pesada, aviación intraeuropea, marítimo (2024). Tope $-4{,}3$\,\%/año (2024-2027), $-4{,}4$\,\% desde 2028 $\to$ $-62$\,\% en 2030 frente a 2005 (ya a la mitad). Evidencia: $-14$/16\,\% de emisiones sin menos actividad ni traslado (\autor{Colmer} et al., 2025); apenas resta competitividad (\autor{Dechezleprêtre}-\autor{Sato}, 2017).
+\item \textbf{RCDE~2} (desde 2028): edificios y transporte por carretera, aguas arriba. \concepto{Fondo Social para el Clima}: 65.000~M€ (2026-2032), de sus ingresos. Acería UE: 85~€/t, mismo coste de oportunidad compre o le sobren.
+\item \textbf{MAFC} (CBAM): «\emph{Allá donde fueres, haz lo que vieres}». Contra la \concepto{fuga de carbono}; sustituye a los derechos gratuitos; medida de \emph{segundo óptimo} \vertema{3.A.22}. \emph{Diseño} (Reglamento 2023/956): cemento, hierro y acero, aluminio, fertilizantes, electricidad, hidrógeno; certificados al precio medio de subasta del RCDE menos el precio pagado en origen; al ritmo de la retirada de gratuitos (97,5\,\% en 2026 $\to$ 0 en 2034). Transitorio 1/10/2023-31/12/2025; definitivo 1/1/2026; certificados a la venta desde feb. 2027. Ómnibus (2025/2083): exentos $<$50~t/año ($\approx$90\,\% de importadores, 1\,\% de emisiones). Ajuste por tonelada importada:
+\funcionclave{a=(p_E-p_E^*)\,\sigma^M}
+\end{itemize}
+\graficorepaso[0.72\linewidth]{mafc}{Acero en la UE: sin política (produce 3, importa 3); RCDE sin ajuste (1,5 e importa 4,5: fuga); con ajuste, $p^*+a$ (produce 3, consume 4,5, importa 1,5; recauda $a\cdot M$)}
+\begin{itemize}
+\item \emph{Implicaciones}: incentivo europeo sin fuga; incentivo a descarbonizar fuera y a poner precio propio (recaudan ellos); recurso propio: 75\,\% al presupuesto UE desde 2028, $\approx$1.400~M€/año \vertema{3.B.37}.
+\item \emph{Extensiones}: aguas abajo, $\approx$180 productos de acero y aluminio desde 2028 (propuesta 17/12/2025, en negociación); reforma del RCDE (jul. 2026): fin de gratuitos de 2034 a 2038; Reino Unido, desde 1/1/2027.
+\item \emph{Evidencia}: MEGC: fugas moderadas que el ajuste reduce, poco efecto mundial, coste a exportadores en desarrollo (\autor{Böhringer} et al.).
+\item \emph{Valoración}: OMC: trato nacional (art.~III del GATT) y excepciones del art.~XX \vertema{3.B.33}; terceros (India, China\ldots): unilateral, contra las responsabilidades diferenciadas; medir es caro; reorientación; \emph{no es un club}: no castiga la no participación como tal.
+\item \textbf{Resto del mundo}: 87 precios del carbono, $\approx$30\,\% de emisiones, $>$107.000~M\$ recaudados en 2025 (BM); China amplía en 2025 su mercado a acero, cemento y aluminio (tope por unidad producida); EE.~UU., sin precio federal, IRA recortada (2025); España: Ley 7/2021 y PNIEC 2023-2030, $-32$\,\% frente a 1990 y 81\,\% renovable eléctrica en 2030 \vertema{4.A.6}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1,5]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: el CO\textsubscript{2} se acumula y su daño es planetario e intergeneracional: la externalidad más difícil (producción, precios, finanzas, distribución); evidencia de daños mayores y no lineales $\Rightarrow$ CSC positivo y creciente, según descuento y catástrofes; instrumentos conocidos, pero bien público global: de Kioto a París, y la UE con el MAFC.
+\item \textbf{Relevancia}: \autor{Nordhaus} (2019), conferencia Nobel: «\emph{The Ultimate Challenge for Economics}»: externalidades, bienes públicos, incertidumbre, descuento y cooperación; el precio del carbono ya es política fiscal, comercial y financiera.
+\item \textbf{Extensiones}: \vertema{3.A.23}, \vertema{3.A.14}; \vertema{3.A.43}, \vertema{3.A.44}; \vertema{3.B.28}, \vertema{3.B.30}, \vertema{3.B.41}, \vertema{3.B.37}; \vertema{4.B.13}, \vertema{4.A.6}; adaptación, transición justa, finanzas sostenibles.
+\item \textbf{Opinión}: precio del carbono creíble y creciente, extendido con incentivos excluibles (club, ajuste); apoyo a la innovación limpia; ayuda a los que más sufren. El obstáculo no es técnico, sino político: repartir costes entre países y generaciones.
+\item \textbf{Idea final}: la tonelada ya tiene precio en parte del mundo; el reto es que lo tenga en todo él. La economía no para el viento sembrado, pero sí puede lograr que se siembre menos: «\emph{quien siembra vientos recoge tempestades}».
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1896}{\autor{Arrhenius}: calentamiento al duplicar el CO\textsubscript{2}}
+\hito{1920}{\autor{Pigou}: impuesto}
+\hito{1928}{\autor{Ramsey}: fórmula del descuento}
+\hito{1965}{\autor{Buchanan}: teoría de los clubes}
+\hito{1968}{\autor{Dales}: derechos de emisión}
+\hito{1972}{Club de Roma; \autor{Montgomery}}
+\hito{1974}{\autor{Weitzman}: precios frente a cantidades; \autor{Arrow}-\autor{Fisher}}
+\hito{1987}{\autor{Brundtland}: desarrollo sostenible; Protocolo de Montreal}
+\hito{1992}{\autor{Nordhaus}: DICE; CMNUCC (Río)}
+\hito{1994}{\autor{Barrett}: acuerdos autoaplicables}
+\hito{1997}{Kioto (en vigor en 2005)}
+\hito{2007}{\autor{Stern}; \autor{Nordhaus}: crítica del descuento}
+\hito{2008}{\autor{Sinn}: paradoja verde}
+\hito{2009}{\autor{Weitzman}: teorema lúgubre; Copenhague}
+\hito{2012}{\autor{Dell}-\autor{Jones}-\autor{Olken}; \autor{Acemoglu} et al.}
+\hito{2014}{\autor{Golosov} et al.: impuesto $\propto$ PIB}
+\hito{2015}{París; \autor{Burke}-\autor{Hsiang}-\autor{Miguel}; \autor{Nordhaus}: clubes; \autor{Carney}}
+\hito{2018}{Nobel a \autor{Nordhaus}}
+\hito{2023}{COP28: 1.\textsuperscript{er} balance mundial; MAFC transitorio}
+\hito{2024}{\autor{Barrage}-\autor{Nordhaus}: DICE-2023; COP29}
+\hito{2026}{MAFC definitivo; EE.~UU. sale de París; UE $-90$\,\% en 2040; \autor{Bilal}-\autor{Känzig}}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Temperatura: \dato{2024, $+1{,}60$~°C; 2025, $+1{,}47$~°C sobre 1850-1900}{Copernicus, 2026}; calentamiento humano \dato{1,37~°C, $+0{,}27$~°C/década}{Forster et al., 2026}.
+\item CO\textsubscript{2}: \dato{426,8~ppm en 2025, $+53$\,\%}{OMM, 2026}.
+\item Emisiones: \dato{54.100~Mt CO\textsubscript{2}e en 2025}{EDGAR, 2026}.
+\item Presupuesto 1,5~°C: \dato{$\approx$130.000~Mt, $\approx$3 años}{Forster et al., 2026}.
+\item Precios del carbono: \dato{87, $\approx$30\,\% de las emisiones}{BM, 2026}; derecho UE \dato{$\approx$85~€/t (oct. 2026)}{EEX, 2026}; MAFC \dato{82,32~€/t (3.\textsuperscript{er} trim. 2026)}{CE, 2026}.
+\item UE: \dato{$-37$\,\% netas en 2024 frente a 1990}{AEMA, 2025}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué depende tanto el CSC del descuento?} Los daños llegan durante siglos: 100~\$ a 100 años valen 24,9~\$ al 1,4\,\% y 0,5~\$ al 5,5\,\%. $\rho$ es juicio ético (\autor{Stern}); $\theta\gamma_c$ y el $r_s$ total se contrastan con los tipos reales (\autor{Nordhaus}).
+\item \textbf{¿Nivel o crecimiento?} Al nivel, daño acotado; a la tasa, se acumula: el panel apunta a crecimiento en pobres $\Rightarrow$ daños y CSC mucho mayores.
+\item \textbf{¿Es el MAFC compatible con la OMC? ¿Es un club?} Replica el precio interno (trato nacional, art.~III) y podría ampararse en el art.~XX; no es un club: no castiga la no participación, solo grava el carbono de 6 sectores.
+\item \textbf{¿Impuesto o mercado para el CO\textsubscript{2}?} \autor{Weitzman} (1974): contaminante de stock, daño marginal anual casi plano $\Rightarrow$ precio (\autor{Pizer}); puntos de inflexión y presupuesto empujan a cantidad; en la práctica, híbridos (reserva de estabilidad).
+\item \textbf{¿Paradoja verde? ¿Fuga?} Impuestos crecientes anunciados adelantan la extracción (\autor{Sinn}); fuga: la producción se va fuera; en el RCDE, escasa (\autor{Colmer} et al., 2025), por los gratuitos.
+\item \textbf{¿Por qué fracasó Kioto y qué cambia París?} Kioto, profundo pero estrecho (sin emergentes, EE.~UU. fuera); París, amplio y de abajo arriba (CDN, balance), pero sin sanciones.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Impuesto óptimo = CSC \emph{de la senda óptima} (50~\$), no el de la senda sin política (66~\$).
+\item $\rho$ = preferencia temporal pura (utilidad); descuento de bienes $r_s=\rho+\theta\gamma_c$. \autor{Stern}: $\rho=0{,}1$\,\%, $\theta=1$; \autor{Nordhaus} (2007): $\rho=1{,}5$\,\%, $\theta=2$.
+\item Calentamiento $\propto$ emisiones \emph{acumuladas}: estabilizar exige netas nulas. Mitigación: bien público global; adaptación: privado o local.
+\item Kioto: «al menos un 5\,\%» bajo 1990 en 2008-2012 (5,2\,\% sumado), solo anexo; EE.~UU. firmó, no ratificó; en vigor en 2005.
+\item París: 2015, en vigor 2016; «muy por debajo de 2~°C», esfuerzos por 1,5; CDN cada 5 años, no vinculantes en contenido; balance cada 5 años (1.º, 2023).
+\item MAFC $\neq$ arancel de castigo: iguala el precio del RCDE y descuenta el de origen; transitorio oct. 2023-dic. 2025; definitivo 2026; gratuitos hasta 2034.
+\item \autor{Weitzman} (1974) = precios frente a cantidades; (2009) = teorema lúgubre. \autor{Barrett} (1994): acuerdo amplio solo si se gana poco.
+\item Club de \autor{Nordhaus}: el arancel no hace dominante reducir: crea 2 equilibrios (coordinación).
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
