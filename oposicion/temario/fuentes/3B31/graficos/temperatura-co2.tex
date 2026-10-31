@@ -1,0 +1,94 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Anomalía anual de la temperatura media mundial respecto a 1850-1900 (°C,
+% ERA5 de Copernicus, 1940-2026; 2026 provisional, hasta el 29/10/2026) en
+% barras (eje izquierdo) y concentración de CO2 en Mauna Loa (ppm, NOAA GML,
+% 1959-2025) en línea (eje derecho). Consulta: 31/10/2026 (fuentes en la
+% cabecera de los CSV). Último dato: 2025, 1,47 °C y 427,4 ppm.
+% Paleta del tema (3.B.31): temperatura en la gama cálida (naranja), CO2 en
+% gris oscuro, umbral de 1,5 °C en rojo discontinuo.
+% Capas (CRITERIOS §7; capas «dic» de tikz-tcee.tex): barras → ejes y umbral
+% → línea del CO2 → último punto → rótulos.
+\definecolor{clitemp}{HTML}{E07B28}
+\definecolor{clico2}{HTML}{333333}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/temperatura-global.csv}\temperatura
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/co2-concentracion.csv}\cotwo
+\pgfplotsset{
+  clima/.style={
+    width=15cm, height=7.5cm,
+    xmin=1938, xmax=2047, xtick={1940,1950,...,2020},
+    xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+    yticklabel style={/pgf/number format/use comma, font=\footnotesize},
+    tick align=outside, clip=false,
+  },
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+}
+% Capas «dic» fuera de los axis, porque hay 2 en el dibujo
+\pgfplotsset{dicapas}
+\begin{tikzpicture}[tcee]
+  % Eje izquierdo: anomalía de temperatura (ERA5)
+  \begin{axis}[clima,
+      ybar, bar width=0.1cm, bar shift=0pt,
+      ymin=0, ymax=1.8, ytick={0,0.3,...,1.5},
+      yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=1,
+        /pgf/number format/fixed zerofill},
+      ylabel={Anomalía de temperatura (°C)},
+      axis x line*=bottom, axis y line*=left,
+      ymajorgrids, grid style={tceegris!25},
+    ]
+    % 1: barras de la anomalía (1940-2025) y 2026 provisional, más clara y con
+    % borde discontinuo
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=clitemp, restrict x to domain=1940:2025]
+        table[x=anio, y=era5] {\temperatura};
+      \addplot[on layer=dicbarras, fill=clitemp!35, draw=clitemp!80!black,
+        densely dashed, line width=0.4pt, restrict x to domain=2026:2026]
+        table[x=anio, y=era5] {\temperatura};
+    }
+    % 2: umbral de 1,5 °C (Acuerdo de París)
+    \capa{2}{
+      \dicraya[thick, dashed, tceerojo]{(1938,1.5) (2026.6,1.5)}
+    }
+  \end{axis}
+  % Eje derecho: CO2 en Mauna Loa (se dibuja después: encima de las barras)
+  \begin{axis}[clima,
+      ymin=300, ymax=435, ytick={300,320,...,420},
+      ylabel={Concentración de CO\textsubscript{2} (ppm)},
+      axis x line=none, axis y line*=right,
+      legend style={at={(0.5,-0.12)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left,
+    ]
+    % 3: línea del CO2 y leyenda
+    \capa{3}{
+      \addlegendimage{area legend, dicbarra=clitemp}
+      \addlegendentry{Anomalía de temperatura, ERA5 (°C)}
+      \addplot[diclineahalo=clico2, leyenda linea corta] table[x=anio, y=mauna_loa] {\cotwo};
+      \addlegendentry{CO\textsubscript{2} en Mauna Loa (ppm, eje derecho)}
+      \addlegendimage{leyenda linea corta, thick, dashed, tceerojo}
+      \addlegendentry{1,5\,°C}
+    }
+    % 4: último punto (2025) de las 2 series; la barra de 2025 mide 1,472 °C,
+    % que en el eje derecho es 300 + 1,472·135/1,8 = 410,4
+    \capa{4}{
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=clico2] coordinates {(2025,427.35)};
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=clitemp] coordinates {(2025,410.4)};
+    }
+    % 5: rótulos, a la derecha de la serie (en coordenadas del eje derecho:
+    % y = 300 + y_izq·75)
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, text=tceerojo, anchor=south west, inner sep=1pt]
+        {(1939,412.5)}{1,5\,°C (Acuerdo de París)}
+      \dicrotulo[font=\footnotesize, text=clico2, anchor=west, inner sep=2pt]
+        {(2025.6,428.5)}{427,4\,ppm (2025)}
+      \dicrotulo[font=\footnotesize, text=clitemp!80!black, anchor=west, inner sep=2pt]
+        {(2026.6,417)}{2026 (provisional)}
+      \dicrotulo[font=\footnotesize, text=clitemp!80!black, anchor=west, inner sep=2pt]
+        {(2026.6,405.5)}{1,47\,°C (2025)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

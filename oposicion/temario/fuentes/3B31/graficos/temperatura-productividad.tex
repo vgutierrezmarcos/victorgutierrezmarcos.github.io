@@ -1,0 +1,41 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Curva estilizada de Burke, Hsiang y Miguel (2015): U invertida con el máximo en 13 °C,
+% más empinada a la derecha. Escala: x = 0,3 T (T en °C).
+% f(T) = 3,6 - [(T-13)^2 + 0,025 (T-13)^3]/100 (cóncava en todo el tramo de 0 a 29 °C).
+% España, 15 -> 16 °C: f baja 0,05; país tropical, 26 -> 27 °C: f baja 0,41 (8 veces más).
+\begin{tikzpicture}[tcee,
+    declare function={u(\t)=\t-13; f(\t)=3.6-(u(\t)*u(\t)+0.025*u(\t)*u(\t)*u(\t))/100;},
+    paso/.style={thick,-{Stealth[length=1.6mm]}}
+    ]
+  % Capa 1: ejes
+  \capa{1}{
+    \ejes{}{productividad}{9.6}{4.3}
+    \node[etiqueta,anchor=north east] at (9.6,-0.45) {temperatura media anual ($^{\circ}$C)};
+    \draw (0.3*25,0.08) -- (0.3*25,-0.08) node[below,etiqueta] {$25$};
+    \draw (0.3*30,0.08) -- (0.3*30,-0.08) node[below,etiqueta] {$30$};
+  }
+  % Capa 2: la U invertida
+  \capa{2}{\draw[curva1] plot[domain=0:29,samples=80,smooth] ({0.3*\x},{f(\x)});}
+  % Capa 3: el máximo en 13 °C
+  \capa{3}{
+    \node[punto] at ({0.3*13},{f(13)}) {};
+    \draw[guia] ({0.3*13},{f(13)}) -- ({0.3*13},0) node[below,etiqueta] {$13$~$^{\circ}$C};
+  }
+  % Capa 4: España, cerca de la cima: +1 °C apenas cuesta
+  \capa{4}{
+    \node[punto,fill=tceeazul] at ({0.3*15},{f(15)}) {};
+    \node[etiqueta,above,text=tceeazul] at ({0.3*15.4},{f(15)+0.12}) {España};
+    \draw[paso,tceeazul] plot[domain=15.15:16.6,samples=10,smooth] ({0.3*\x},{f(\x)-0.13});
+    \node[etiqueta,anchor=south west,font=\footnotesize,text=tceeazul,align=left] at ({0.3*17.6},{f(17.6)+0.08}) {$+1$~$^{\circ}$C:\\pérdida pequeña};
+  }
+  % Capa 5: país tropical, en la parte que cae: +1 °C cuesta mucho
+  \capa{5}{
+    \node[punto,fill=tceerojo] at ({0.3*26},{f(26)}) {};
+    \node[etiqueta,left,text=tceerojo] at ({0.3*26-0.1},{f(26)}) {país tropical};
+    \draw[paso,tceerojo] plot[domain=26.15:27.6,samples=10,smooth] ({0.3*\x+0.12},{f(\x)+0.07});
+    \node[etiqueta,right,font=\footnotesize,text=tceerojo,align=left] at ({0.3*27.6+0.2},{f(26.6)+0.05}) {$+1$~$^{\circ}$C:\\pérdida grande};
+  }
+\end{tikzpicture}
+\end{document}

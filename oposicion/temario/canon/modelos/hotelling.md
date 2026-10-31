@@ -31,6 +31,7 @@ Implicaciones: **principio de diferenciación máxima** ($a=0$, $b=1$, $p^*=c+t$
 | 3.A.14 | Juegos dinámicos | mención (hecho, 19/10/2026) | Juegos en 2 etapas (localización y precio) resueltos por inducción hacia atrás, con remisión | El modelo |
 
 ## Divergencias encontradas en el temario actual
+- **No confundir con la regla de Hotelling (1931) de los recursos agotables** (el precio neto crece al tipo de interés), que el 3.B.31 usa en una línea para la paradoja verde (Sinn, 2008), sin remisión: «regla de Hotelling de los recursos agotables» (31/10/2026). No es esta ficha.
 - 3.A.18 original: demanda de B con localizaciones generales que no era $1-\tilde x$; «con costes **cuadráticos** puede no haber equilibrio» (es con lineales); «= 0» en un término que no se anula; empresas A y B y $D_A$, $D_B$; φ para la función de reacción. **Resuelto** (19/10/2026).
 - 3.A.19 (Word de partida): su Imagen 5 («Situación de Bertrand con producto diferenciado») era la Imagen 10 del 3.A.18 original. **Resuelto** (20/10/2026): fuera; una viñeta con remisión al 3.A.18.
 - 4.B.2 (sin revisar): «Downs-Hotelling (1947)»: Hotelling (1929), Downs (1957) (ficha `downs-hotelling`).

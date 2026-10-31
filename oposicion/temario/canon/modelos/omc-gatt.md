@@ -1,7 +1,7 @@
 # GATT y Organización Mundial del Comercio (OMC)
 
 - **Área:** historia-organismos · **Tema de referencia:** 3.B.33 (OMC: antecedentes, organización, GATT y acuerdos de mercancías); 3.B.34 para GATS, ADPIC y demás acuerdos
-- **Temas que lo usan:** 3.B.33 (desarrollo), 3.B.34 (desarrollo de los acuerdos distintos de mercancías), 3.B.20 y 3.B.21 (resumen: sistema comercial), 3.B.35 (mención: art. XXIV), 3.B.41 (mención: la UE en la OMC), 4.A.27 (mención: adhesión de España al GATT en 1963)
+- **Temas que lo usan:** 3.B.33 (desarrollo), 3.B.34 (desarrollo de los acuerdos distintos de mercancías), 3.B.20 y 3.B.21 (resumen: sistema comercial), 3.B.35 (mención: art. XXIV), 3.B.41 (mención: la UE en la OMC), 4.A.27 (mención: adhesión de España al GATT en 1963), 3.B.31 (mención; hecho, 31/10/2026: el MAFC replica el precio interno del carbono, trato nacional del art. III del GATT, y podría ampararse en el art. XX; el arancel uniforme de los clubes climáticos choca con la nación más favorecida; `\vertema{3.B.33}`; fichas `cbam` y `clubes-climaticos`)
 - **Manuales de referencia:** textos jurídicos de la OMC; Hoekman y Kostecki, *The Political Economy of the World Trading System*; Bagwell y Staiger (2002)
 
 ## Presentación de referencia

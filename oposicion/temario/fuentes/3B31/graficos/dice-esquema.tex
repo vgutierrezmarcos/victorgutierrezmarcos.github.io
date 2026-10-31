@@ -1,0 +1,39 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Esquema del DICE (Barrage y Nordhaus, 2024), con la notación de eq:dice del tema:
+% daños Omega(T_t), coste de reducir Lambda(mu_t), producción neta multiplicativa
+% Q_t=[1-Lambda(mu_t)][1-Omega(T_t)]Y_t y bienestar descontado con beta^t.
+\begin{tikzpicture}[tcee,
+  caja/.style={draw=tceemorado,thick,rounded corners=2pt,align=center,minimum width=2.6cm,minimum height=1.1cm,font=\small},
+  flechadice/.style={-{Stealth[length=2.2mm]},thick,tceemorado}]
+  % Capa 1: producción bruta
+  \capa{1}{\node[caja] (Y) at (0,0) {Producción bruta\\$Y_t=A_tK_t^{\alpha}L_t^{1-\alpha}$};}
+  % Capa 2: emisiones
+  \capa{2}{\node[caja] (E) at (4.4,0) {Emisiones\\$E_t=\sigma_t(1-\mu_t)Y_t$};
+           \draw[flechadice] (Y) -- (E);}
+  % Capa 3: concentración
+  \capa{3}{\node[caja] (M) at (8.6,0) {Concentración\\de CO\textsubscript{2}, $M_t$};
+           \draw[flechadice] (E) -- (M);}
+  % Capa 4: forzamiento y temperatura
+  \capa{4}{\node[caja] (F) at (8.6,-2.2) {Forzamiento\\radiativo, $F_t$};
+           \draw[flechadice] (M) -- (F);
+           \node[caja] (T) at (4.4,-2.2) {Temperatura\\$T_t$};
+           \draw[flechadice] (F) -- (T);}
+  % Capa 5: daños
+  \capa{5}{\node[caja] (D) at (0,-2.2) {Daños\\$\Omega(T_t)$};
+           \draw[flechadice] (T) -- (D);}
+  % Capa 6: producción neta y bienestar
+  \capa{6}{\node[caja,anchor=north west] (Q) at (-1.3,-3.6) {Producción neta\\$Q_t=\bigl[1-\Lambda(\mu_t)\bigr]\bigl[1-\Omega(T_t)\bigr]Y_t=C_t+I_t$};
+           \draw[flechadice] (D) -- (D|-Q.north);
+           \draw[flechadice] (Y.west) -- ++(-0.5,0) |- ($(Q.west)+(0,0.22)$);
+           \node[caja,anchor=west] (W) at ($(Q.east)+(1.1,0)$) {Bienestar\\$W=\sum_t\beta^t L_t\,\frac{c_t^{1-\theta}}{1-\theta}$};
+           \draw[flechadice] (Q) -- (W);}
+  % Capa 7: la política (tasa de control y su coste)
+  \capa{7}{\node[caja,draw=tceeverde,text=tceeverde] (mu) at (4.4,1.9) {Política: tasa de control $\mu_t$\\coste $\Lambda(\mu_t)$};
+           \draw[flechadice,tceeverde] (mu) -- (E);
+           \draw[flechadice,tceeverde,dashed] (mu.west) -- (-2.3,1.9) |- ($(Q.west)+(0,-0.22)$);}
+  % Capa 8: la inversión vuelve al capital
+  \capa{8}{\draw[flechadice,dashed] (Q.south) -- ++(0,-0.6) node[below,font=\footnotesize] {$I_t\to K_{t+1}$};}
+\end{tikzpicture}
+\end{document}

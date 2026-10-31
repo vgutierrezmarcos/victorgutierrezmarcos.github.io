@@ -1,0 +1,88 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Emisiones de GEI en 2025 (sin LULUCF): total (MtCO2e, con el % del total
+% mundial) y por habitante (tCO2e), con la media mundial (6,6 t). EDGAR 2026
+% (JRC), consulta 31/10/2026; el total mundial incluye la aviación y el
+% transporte marítimo internacionales. Filas del CSV 0-10 (países, de mayor a
+% menor salvo España, al final); la 11 es el mundo (solo para la media).
+% Paleta del tema: países en gris, la UE en rojo claro y España en el rojo de
+% España (dicespana), de la misma familia. Capas (CRITERIOS §7): barras →
+% ejes y media mundial → rótulos.
+\colorlet{gesotro}{dicotro}
+\colorlet{gesue}{dicespana!45}
+\colorlet{gesespana}{dicespana}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/emisiones-gei-paises.csv}\gei
+\pgfplotsset{
+  gei/.style={
+    height=7.2cm, scale only axis=false,
+    xbar, bar width=0.38cm, bar shift=0pt,
+    ymin=-10.6, ymax=0.6, ytick={0,-1,...,-10},
+    y dir=normal, axis lines*=left, tick align=outside, clip=false,
+    xmin=0, xmajorgrids, grid style={tceegris!25},
+    xticklabel style={/pgf/number format/1000 sep={.}, /pgf/number format/use comma, font=\footnotesize},
+    yticklabel style={font=\footnotesize},
+    major y tick style={draw=none},
+    title style={font=\small, yshift=5pt},
+  },
+  % filtros por fila del CSV: la UE (3), España (10) y el resto de países
+  % (sin el mundo, 11)
+  soloue/.style={skip coords between index={0}{3}, skip coords between index={4}{12}},
+  soloespana/.style={skip coords between index={0}{10}, skip coords between index={11}{12}},
+  otros/.style={skip coords between index={3}{4}, skip coords between index={10}{12}},
+}
+\pgfplotsset{dicapas}
+\begin{tikzpicture}[tcee]
+  % Panel izquierdo: emisiones totales
+  \begin{axis}[gei, name=total, width=8.6cm,
+      xmax=23500, xtick={0,4000,...,20000}, scaled x ticks=false,
+      yticklabels={China, Estados Unidos, India, UE-27, Rusia, Indonesia, Brasil,
+        Irán, Japón, Arabia Saudí, España},
+      title={Total (MtCO\textsubscript{2}e)},
+    ]
+    % 1: barras de las emisiones totales
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=gesotro, otros] table[x=mtco2e_2025, y expr=-\coordindex] {\gei};
+      \addplot[on layer=dicbarras, dicbarra=gesue, soloue] table[x=mtco2e_2025, y expr=-\coordindex] {\gei};
+      \addplot[on layer=dicbarras, dicbarra=gesespana, soloespana] table[x=mtco2e_2025, y expr=-\coordindex] {\gei};
+    }
+    % 4: valores y % del total mundial
+    \capa{4}{
+      \addplot[on layer=axis descriptions, dicsuelto, draw=none, skip coords between index={11}{12},
+        visualization depends on={\thisrow{peso_mundial_pct} \as \peso},
+        nodes near coords={\pgfmathprintnumber[1000 sep={.}]{\pgfplotspointmeta}\
+          \textcolor{tceegris}{(\pgfmathprintnumber[use comma, fixed, precision=1, fixed zerofill]{\peso}\,\%)}},
+        point meta=x, nodes near coords align={horizontal},
+        every node near coord/.append style={font=\footnotesize, inner sep=2pt, anchor=west}]
+        table[x=mtco2e_2025, y expr=-\coordindex] {\gei};
+    }
+  \end{axis}
+  % Panel derecho: emisiones por habitante (mismos países, mismo orden)
+  \begin{axis}[gei, at={($(total.east)+(0.5cm,0)$)}, anchor=west, width=6cm,
+      xmax=25, xtick={0,5,...,20},
+      yticklabels={}, title={Por habitante (tCO\textsubscript{2}e)},
+    ]
+    % 2: barras de las emisiones por habitante
+    \capa{2}{
+      \addplot[on layer=dicbarras, dicbarra=gesotro, otros] table[x=tco2e_por_habitante_2025, y expr=-\coordindex] {\gei};
+      \addplot[on layer=dicbarras, dicbarra=gesue, soloue] table[x=tco2e_por_habitante_2025, y expr=-\coordindex] {\gei};
+      \addplot[on layer=dicbarras, dicbarra=gesespana, soloespana] table[x=tco2e_por_habitante_2025, y expr=-\coordindex] {\gei};
+    }
+    % 3: media mundial (6,6 t)
+    \capa{3}{
+      \dicraya[thick, dashed, black]{(6.6,-10.6) (6.6,0.6)}
+      \dicrotulo[font=\footnotesize, anchor=south, inner sep=1pt]{(6.6,0.6)}{media mundial: 6,6}
+    }
+    % 4: valores (los de las barras que acaban cerca de la media, a la derecha
+    % de la línea para que no la crucen)
+    \capa{4}{
+      \addplot[on layer=axis descriptions, dicsuelto, draw=none, skip coords between index={11}{12},
+        nodes near coords={\pgfmathprintnumber[use comma, fixed, precision=1, fixed zerofill]{\pgfplotspointmeta}},
+        point meta=\thisrow{tco2e_por_habitante_2025}, nodes near coords align={horizontal},
+        every node near coord/.append style={font=\footnotesize, inner sep=2pt, anchor=west}]
+        table[x expr={\thisrow{tco2e_por_habitante_2025}<4 ? \thisrow{tco2e_por_habitante_2025} : max(\thisrow{tco2e_por_habitante_2025},6.7)}, y expr=-\coordindex] {\gei};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

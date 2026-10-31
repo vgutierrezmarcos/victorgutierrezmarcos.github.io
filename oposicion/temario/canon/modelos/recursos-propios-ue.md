@@ -1,7 +1,7 @@
 # Sistema de recursos propios de la UE (Decisión de Recursos Propios)
 
 - **Área:** union-europea · **Tema de referencia:** 3.B.37 (finanzas de la UE) — lo desarrolla y lo tiene en el título
-- **Temas que lo usan:** 3.B.37 (desarrollo), 4.B.18 (resumen: armonización fiscal, IVA y aduanas), 4.A.30 (resumen previsto: aportación de España), 3.B.41 (mención: derechos de aduana), 3.B.31 (mención: RCDE y MAFC como nuevos recursos; sin fuente)
+- **Temas que lo usan:** 3.B.37 (desarrollo), 4.B.18 (resumen: armonización fiscal, IVA y aduanas), 4.A.30 (resumen previsto: aportación de España), 3.B.41 (mención: derechos de aduana), 3.B.31 (mención; hecho, 31/10/2026: la Comisión propone que el 75 % de los ingresos del MAFC vaya al presupuesto de la UE como nuevo recurso propio desde 2028, unos 1.400 M€ al año, `EY2025RecursosPropios`, con `\vertema{3.B.37}`)
 - **Manuales de referencia:** Decisión (UE, Euratom) 2020/2053; Comisión Europea, *EU budget financial report*; Tribunal de Cuentas Europeo; Baldwin y Wyplosz
 
 ## Presentación de referencia

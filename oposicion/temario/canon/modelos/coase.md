@@ -1,7 +1,7 @@
 # Teorema de Coase (1960)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.23** (Bienestar II: externalidades; revisado el 21/10/2026, II.1.3 «Negociación: el teorema de Coase», con a)-e), y la tabla de pagos `tab:coase-pagos`).
-- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.A.6 (mención prevista: por qué no basta la negociación privada y base de los mercados de derechos), 4.B.7 (mención: el ejemplo de la acería y la piscifactoría); lo citan 3.A.15 (mención; hecho, 20/10/2026: Coase, 1960, usa los costes de transacción para otra pregunta, con `\vertema{3.A.23}`; distinguir Coase, 1937, ficha `costes-transaccion`, de Coase, 1960) y 3.A.4/3.A.5 si hablan de neoinstitucionalismo.
+- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.A.6 (mención prevista: por qué no basta la negociación privada y base de los mercados de derechos), 4.B.7 (mención: el ejemplo de la acería y la piscifactoría), 3.B.31 (mención; hecho, 31/10/2026: el gráfico $\mathrm{BMg}/\mathrm{DMg}$ pasado a emisiones, `fig:emisiones-optimas`, y por qué no basta la negociación entre casi 200 Estados, el «dilema de Westfalia»); lo citan 3.A.15 (mención; hecho, 20/10/2026: Coase, 1960, usa los costes de transacción para otra pregunta, con `\vertema{3.A.23}`; distinguir Coase, 1937, ficha `costes-transaccion`, de Coase, 1960) y 3.A.4/3.A.5 si hablan de neoinstitucionalismo.
 - **Manuales de referencia:** Coase (1960), *JLE*; Mas-Colell, Whinston y Green, cap. 11.D; Varian, cap. 34; Myerson y Satterthwaite (1983) para la información asimétrica.
 
 ## Presentación de referencia
@@ -20,6 +20,7 @@
 |---|---|---|---|---|
 | 3.A.23 | Soluciones privadas a las externalidades | desarrollo (hecho, 21/10/2026) | Idea (daño recíproco), supuestos, los 2 repartos de derechos, tabla de pagos, gráfico, límites; distinto de Coase (1937) | — |
 | 3.A.15 | Costes de transacción | mención (hecho, 20/10/2026) | Coase (1960) como otro artículo, 23 años después: sin costes de transacción, la asignación no depende de los derechos; con ellos, sí (ficha `contratos-incompletos`) | El ejemplo y el gráfico |
+| 3.B.31 | Cambio climático | mención (hecho, 31/10/2026) | El gráfico de Coase pasado a emisiones: $\mathrm{CMgR}(E)\equiv$ beneficio marginal de emitir (como $\mathrm{BMg}(q)$), se anula en $E^c$; el daño que cuenta es la suma de los de todos los países (`fig:emisiones-optimas`, `graficos/emisiones-optimas.tex` del 3.B.31, mismo estilo que `coase.tex`); con casi 200 Estados y generaciones futuras no se dan los supuestos de Coase | El teorema y sus 2 repartos |
 | 4.A.6 | Política climática | mención | Por qué no basta la negociación privada (muchos afectados) y base de los mercados de derechos (sin llamar «sistema de Coase» al RCDE: es el *cap and trade* de Dales y Montgomery) | Gráfico |
 | 4.B.7 | Principios impositivos | mención | El ejemplo de la acería y la piscifactoría con $q$, $\mathrm{BMg}$, $\mathrm{DMg}\equiv\mathrm{CMgE}$ | El teorema |
 

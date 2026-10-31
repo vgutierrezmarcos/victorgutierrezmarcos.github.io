@@ -1,0 +1,62 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{fillbetween}
+\begin{document}
+% Precio medio mensual de adjudicación del derecho de emisión (EUA) en las
+% subastas del RCDE (EEX), €/t, enero de 2017 a octubre de 2026, con la banda
+% entre el mínimo y el máximo de cada mes. Consulta: 21/10/2026 y 31/10/2026
+% (fuente en la cabecera del CSV). Último dato: octubre de 2026, 85,96 €.
+% Eje x: n.º de mes desde enero de 2017 (fila del CSV); marcas en enero.
+% Paleta del 3.A.23 (colores base de tikz-tcee): el precio del derecho, en el
+% morado de la primera curva (curva1). Hitos sin texto largo: reserva de
+% estabilidad del mercado (ene. 2019, mes 24), Objetivo 55 (jul. 2021, mes
+% 54) e invasión de Ucrania (feb. 2022, mes 61).
+% Capas (CRITERIOS §7; capas «dic» de tikz-tcee.tex): banda → ejes e hitos →
+% línea → último punto → rótulo.
+\colorlet{rcdeprecio}{tceemorado}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/precio-eua-subastas.csv}\eua
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=9.5cm, height=6cm,
+      xmin=-2, xmax=119,
+      xtick={0,12,...,108}, xticklabels={2017,2018,2019,2020,2021,2022,2023,2024,2025,2026},
+      ymin=0, ymax=110, ytick={0,20,...,100},
+      ticklabel style={font=\footnotesize},
+      ylabel={€ por tonelada de CO\textsubscript{2}},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: banda entre el mínimo y el máximo de cada mes
+    \capa{1}{
+      \addplot[dicsuelto, draw=none, name path=minimo] table[x expr=\coordindex, y=precio_min_eur_t] {\eua};
+      \addplot[dicsuelto, draw=none, name path=maximo] table[x expr=\coordindex, y=precio_max_eur_t] {\eua};
+      \addplot[on layer=dicfondo, forget plot, fill=rcdeprecio, fill opacity=0.2, draw=none]
+        fill between[of=minimo and maximo];
+    }
+    % 2: ejes (los dibuja el entorno axis) e hitos
+    \capa{2}{
+      \dicraya[dicumbral]{(24,0) (24,104)}
+      \dicraya[dicumbral]{(54,0) (54,104)}
+      \dicraya[dicumbral]{(61,0) (61,104)}
+      \dicrotulo[font=\scriptsize, text=tceegris, anchor=south east, align=right, inner sep=1pt]{(24.5,104)}{reserva de\\estabilidad}
+      \dicrotulo[font=\scriptsize, text=tceegris, anchor=south east, inner sep=1pt]{(54.5,104)}{Objetivo 55}
+      \dicrotulo[font=\scriptsize, text=tceegris, anchor=south west, inner sep=1pt]{(60.5,104)}{Ucrania}
+    }
+    % 3: línea del precio medio mensual
+    \capa{3}{
+      \addplot[diclinea=rcdeprecio, sharp plot] table[x expr=\coordindex, y=precio_medio_eur_t] {\eua};
+    }
+    % 4: último punto (octubre de 2026)
+    \capa{4}{
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=rcdeprecio] coordinates {(117,85.96)};
+    }
+    % 5: rótulo del último dato
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, text=rcdeprecio, anchor=west, align=left, inner sep=2pt]
+        {(118.5,85.96)}{oct.\ 2026:\\85,96\,€}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

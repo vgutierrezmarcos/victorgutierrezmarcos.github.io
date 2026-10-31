@@ -30,6 +30,7 @@ Caso de demandas independientes (**regla de la elasticidad inversa**, ficha `ela
 
 ## Divergencias encontradas en el temario actual
 - **Nombre:** «Ramsey» designa en el temario tres cosas: la regla impositiva (4.B.11, 4.B.13), el modelo de crecimiento Ramsey-Cass-Koopmans (3.A.6, 3.A.29, 3.A.42-3.A.43) y la tarificación Ramsey-Boiteux (3.A.17, 4.B.15). **Propuesta:** escribir siempre «regla de Ramsey (1927)», «modelo de Ramsey-Cass-Koopmans» y «precios de Ramsey-Boiteux». `_inventario/alias.json` lista «ramsey» como alias de `ramsey-cass-koopmans`: hay que quitarlo (ya hay excepción para 3.A.6) para que el mapa no cuente mal.
+- **Fórmula de Ramsey del descuento** (3.B.31, 31/10/2026): $r_s=\rho+\theta\gamma_c$ (Ramsey, 1928) se llama siempre «fórmula de Ramsey (1928) del descuento», nunca «regla de Ramsey», que es la de la imposición óptima (1927) de esta ficha (`notacion.md` § 14; ficha `dice`).
 - 4.B.11: la lista inicial de «6 reglas» está corrupta (punto 5 vacío, el 6 con el texto de Corlett-Hague, luego 7) Diamond y 8) Corlett-Hague otra vez); $\tau$ con tres significados; falta el 3.1. Mirrlees y la fórmula de Saez están vacíos aunque el título pide el «tipo impositivo óptimo».
 - 4.B.13: las fórmulas de elasticidad inversa y de Ramsey son imágenes vacías.
 - 4.B.15 escribe «Ramsey-Boiteaux»: es **Boiteux**.

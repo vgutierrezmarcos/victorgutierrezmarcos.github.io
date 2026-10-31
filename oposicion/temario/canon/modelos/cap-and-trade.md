@@ -1,7 +1,7 @@
 # Mercado de derechos de emisión (cap and trade)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.23** (Bienestar II: externalidades; revisado el 21/10/2026, II.1.3 «Mercados de derechos de emisión (*cap and trade*)», apartado propio con a)-e) y el RCDE UE como evidencia, con datos de octubre de 2026) para la teoría; la aplicación europea (RCDE UE, MSR, RCDE 2, MAFC) es de 4.A.6 y 3.B.37.
-- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.A.6 (resumen: RCDE UE, MSR, RCDE 2 y MAFC), 3.B.37 (mención: ingresos del RCDE como recurso propio), 3.B.31 (mención prevista: precio del carbono y fuga de carbono; ficha `cbam`).
+- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.A.6 (resumen: RCDE UE, MSR, RCDE 2 y MAFC), 3.B.37 (mención: ingresos del RCDE como recurso propio), 3.B.31 (resumen; hecho, 31/10/2026: III.1, impuesto y tope sobre el gráfico de las emisiones óptimas, Weitzman aplicado al clima y la tabla `tab:instrumentos-clima` con las columnas de `tab:instrumentos` del 3.A.23; III.4, el RCDE con los mismos datos y claves que el 3.A.23 y el gráfico de su precio `fig:precio-rcde`; decisión P23/D2 del 3.B.31, de mención a resumen).
 - **Manuales de referencia:** Dales (1968); Montgomery (1972); Weitzman (1974) («Prices vs. Quantities»); Roberts y Spence (1976) (híbridos); Baumol y Oates (1988); Perman *et al.*, *Natural Resource and Environmental Economics*.
 
 ## Presentación de referencia
@@ -27,7 +27,7 @@ la misma condición que minimiza el coste de la reducción total: se reduce dond
 | 3.A.23 | Instrumentos frente a externalidades | desarrollo (hecho, 21/10/2026) | Dales, `eq:cap-and-trade`, Montgomery, Weitzman e híbridos; el RCDE como evidencia (más Dales y Montgomery que Coase); fila en la tabla de los 5 mecanismos | — |
 | 4.A.6 | Política climática | resumen | RCDE UE (fases, tope, MSR, RCDE 2), MAFC, con datos actualizados; `\vertema{3.A.23}` para la teoría | La derivación |
 | 3.B.37 | Recursos propios | mención | Ingresos del RCDE (y del MAFC) como nuevo recurso propio | — |
-| 3.B.31 | Cambio climático | mención | Precio del carbono y fuga de carbono (ficha `cbam`) | La teoría |
+| 3.B.31 | Cambio climático | resumen (hecho, 31/10/2026) | Impuesto $t^*$ frente a tope $\overline E=E^*$ sobre el gráfico de las emisiones óptimas (`fig:emisiones-optimas`), $\mathrm{CMgR}_j=p_E$; Weitzman aplicado al clima: el daño marginal de un flujo anual es casi plano (depende del stock), lo que favorece el precio (Pizer, 2002), y en contra pesan los puntos de inflexión y el presupuesto de carbono; credibilidad (Helm, Hepburn y Mash, 2003); RCDE en III.4 con los mismos datos y claves que el 3.A.23 (≈ 85 €/t en octubre de 2026, `EEX2026Subastas`; tope −4,3 %/−4,4 %, `CE2025TopeETS`; emisiones a la mitad desde 2005 y −62 % en 2030, `CE2026EmisionesETS2025`; RCDE 2 en 2028 y objetivo de 2040, `UE2026Reglamento667`), evidencia de Colmer *et al.* (2025) y gráfico de su precio; fuga de carbono y MAFC (ficha `cbam`) | La derivación de Montgomery y el gráfico de las 2 empresas |
 
 ## Divergencias encontradas en el temario actual
 - El id agrupa la teoría (3.A.23) y el RCDE UE (3.B.37, id original `rcde-ue`): mantener juntos y remitir.
