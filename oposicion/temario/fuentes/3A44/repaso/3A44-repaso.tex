@@ -1,0 +1,311 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Crecimiento económico (II)]{3.A.44}{Crecimiento económico (II). Modelos de crecimiento endógeno: rendimientos crecientes, capital humano e innovación tecnológica.}
+\tcefecha{01/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «más vale maña que fuerza»}{2,5}
+\apartadocante{I. 1.ª generación: función de producción no neoclásica}{11,5}
+\subcante{1. Idea: $\gamma_c=(r-\rho)/\theta$ con una $r$ que no cae}{1}
+\subcante{2. $AK$, Sobelow, \autor{Barro}, externalidades, \autor{Uzawa}-\autor{Lucas}}{9}
+\subcante{3. Valoración}{1,5}
+\apartadocante{II. 2.ª generación: competencia imperfecta e I+D}{9}
+\subcante{1. Idea: ideas no rivales}{1,5}
+\subcante{2. Variedades (\autor{Romer}) y calidades (\autor{Aghion}-\autor{Howitt})}{6,5}
+\subcante{3. Valoración}{1}
+\apartadocante{III. Rendimientos crecientes y efecto escala}{6}
+\subcante{1. No rivalidad y efecto escala}{1}
+\subcante{2. \autor{Jones} (1995): $\gamma_N=\lambda n/(1-\phi)$}{2,5}
+\subcante{3. Evidencia y política}{2,5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra} en 3 zonas: izquierda, \autor{Euler} recuadrada y debajo una línea por modelo con su $r$ que no cae (tabla resumen que se completa en \hyperref[rep:II.3]{II.3}); centro, gráfico en tasas por capas (\autor{Solow}, $AK$, Sobelow, externalidades), se borra al empezar \hyperref[rep:II]{II}; derecha, 3 sectores de \autor{Romer}, arbitraje de A-H y, en \hyperref[rep:III]{III}, gráfico de \autor{Jones} con $\gamma_N$ recuadrada. Pegatinas en una esquina: «quien guarda, halla» ($AK$), «quien a buen árbol se arrima\ldots» (externalidades), «a hombros de gigantes» (\autor{Romer}) y «rey muerto, rey puesto» (destrucción creativa). Intro y conclusión sin pizarra.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Más vale maña que fuerza»: fuerza = acumular máquinas; maña = aprender a hacer más con ellas. \autor{Jefferson} (1813): quien recibe mi idea «enciende su vela en la mía» sin dejarme a oscuras. Una máquina, un usuario; una idea, todos a la vez: \concepto{no rivalidad} $\Rightarrow$ renta pc puede crecer sin límite, pero ¿quién paga por inventarla? ¿Se crece siempre sin progreso técnico «caído del cielo»?
+\item \textbf{Relevancia}: 2 Nobel en 7 años: \autor{Romer} (2018) y \autor{Aghion}-\autor{Howitt} (2025, con \autor{Mokyr}). Interés compuesto: al 3\,\% renta ×4,4 en 50 años, al 2\,\% ×2,7 (+63\,\%). I+D/PIB: China y España 0,88\,\% en 2000; en 2024 China 2,69\,\%, España 1,50\,\% (UE 2,26; EE.\,UU. 3,44; Corea 5,13) \vertema{4.A.7}.
+\item \textbf{Contextualización}: \concepto{crecimiento endógeno}: la tasa de LP de la renta pc sale \emph{dentro} del modelo (ahorrar, estudiar, investigar, política). Neoclásicos \vertema{3.A.43}: \concepto{rendimientos decrecientes} $\Rightarrow$ el ahorro solo cambia el nivel. 2 salidas: cambiar la función de producción (\concepto{1.ª generación}, mediados de los 80) o I+D pagada con rentas de monopolio, competencia imperfecta (\concepto{2.ª generación}, desde 1990). \concepto{No rival}: uso de uno no impide el de otros; \concepto{excluible}: se puede impedir el uso (patente, secreto) \vertema{3.A.23}; ideas no rivales y parcialmente excluibles $\Rightarrow$ \concepto{rendimientos crecientes}. Historia: \autor{Smith}, \autor{Ricardo}, \autor{Malthus}; \autor{Young} (1928); \autor{Knight} (1944); \autor{Schumpeter} (1942), \concepto{destrucción creativa}; \autor{Arrow} (1962): lo exógeno, «confesión de ignorancia»; \autor{Uzawa} (1965); años 70 ciclos; renace con \autor{Romer} (1986), \autor{Lucas} (1988); \autor{Barro}, \autor{Jones}-\autor{Manuelli} (1990), \autor{Rebelo} (1991); innovación: \autor{Romer} (1990), \autor{Grossman}-\autor{Helpman} (1991), \autor{Aghion}-\autor{Howitt} (1992); \autor{Jones} (1995), efecto escala.
+\item \textbf{Problemática}: ¿se crece siempre sin progreso técnico exógeno? ¿Por qué se innova si las ideas las usa cualquiera? ¿Innova el mercado lo que conviene? ¿Qué determina la tasa de LP (ahorro, educación, I+D, tamaño)? ¿Cambia la política la tasa o solo el nivel?
+\item \textbf{Estructura}: los 2 caminos en orden de aparición y lo común: \hyperref[rep:I]{I}, 1.ª generación ($AK$ y variantes, \autor{Uzawa}-\autor{Lucas}); \hyperref[rep:II]{II}, 2.ª generación (variedades y calidades); \hyperref[rep:III]{III}, efecto escala y semiendógeno de \autor{Jones}; evidencia y política.
+\end{itemize}
+
+\graficorepaso[0.8\linewidth]{gasto-id-pib}{Gasto en I+D (\% del PIB), 2000-2024: España 1,50\,\% frente a UE 2,26\,\% y China 2,69\,\%}
+
+% ==========================================================================
+\bloque[11,5]{I. 1.ª generación: función de producción no neoclásica\label{rep:I}}
+\begin{ideaclave}
+Basta cambiar la función de producción para que la acumulación sostenga el crecimiento pc sin progreso técnico exógeno: el capital amplio no tiene rendimientos decrecientes a LP (la economía se comporta como un $AK$) y $r$ no cae. Pero el progreso técnico sigue sin explicarse.
+\end{ideaclave}
+
+\sub{I.1. Idea\label{rep:I.1}}
+\begin{itemize}
+\item \autor{Solow}: $\gamma_k=sf(k)/k-(n+\delta)$; rendimientos decrecientes + \autor{Inada} $\Rightarrow$ $f(k)/k\to0$ y el crecimiento se apaga \vertema{3.A.43}.
+\item Clave del tema, \concepto{ecuación de \autor{Euler}} de RCK ($r$ neto del ahorro, $\rho$ descuento, $1/\theta$ ESI):
+\funcionclave{\gamma_c=\frac{r-\rho}{\theta}}
+\item[] Neoclásico: $r=f'(k)-\delta$ cae hasta $\rho$. Cada modelo = una forma de que $r$ \emph{no caiga}: basta ver qué $r$ queda en la senda equilibrada.
+\item Cada modelo levanta alguna propiedad neoclásica (RCE, PMg $>0$ decrecientes, \autor{Inada}); todos levantan la última, $f'(\infty)=0$: basta que el PMg \emph{no tienda a cero}; rendimientos no decrecientes = condición suficiente, no necesaria (\autor{Jones}-\autor{Manuelli}, 1990).
+\end{itemize}
+
+\sub{I.2. Modelos\label{rep:I.2}}
+\begin{itemize}
+\item \textbf{$AK$} (\autor{Rebelo}, 1991; idea de \autor{Knight}, 1944): $Y=AK$, $K$ en \concepto{sentido amplio} (físico, humano, conocimiento); $A$ constante, \emph{no} progreso técnico. Competencia: $r+\delta=A$; el capital se lleva toda la renta.
+\item[] Ahorro constante: $\gamma_k=\gamma_y=sA-(n+\delta)$: \concepto{curva de ahorro} $sA$ y \concepto{de depreciación} $n+\delta$, 2 horizontales. Con hogares ($r=A-\delta$):
+\begin{formula}
+\centering $\gamma_c=\gamma_k=\gamma_y=\dfrac{A-\delta-\rho}{\theta},\quad s=\dfrac{\gamma+n+\delta}{A}$
+\end{formula}
+\item[] Salta a la senda equilibrada ($c/k=A-\delta-n-\gamma$); sin fallos $\Rightarrow$ 1TFEB \vertema{3.A.22}.
+\end{itemize}
+\graficorepaso[\linewidth]{tasas-endogeno}{$AK$ en niveles y en tasas frente a \autor{Solow}: ↑$s$ sube $\gamma$ para siempre}
+\begin{itemize}
+\item \emph{$AK$ vs. \autor{Solow}}: crecimiento endógeno; la política (↑$s$, ↓$\rho$, ↑$A$, ↓$n$, ↓$\delta$) sube la \emph{tasa}, para siempre: «quien guarda, halla»; $\gamma=[(1-\tau_K)A-\delta-\rho]/\theta$ (\autor{Rebelo}: política fiscal explica diferencias persistentes); sin transición; \emph{sin convergencia} (ni absoluta ni condicional); choques \emph{permanentes}; sin ineficiencia dinámica (\autor{Saint-Paul}, 1992): $r-\gamma_Y=c/k>0$.
+\item[] Evidencia en contra: inversión ↑ en la posguerra sin ↑$\gamma$ (\autor{Jones}, 1995); tasas muy variables con características persistentes (\autor{Easterly} et al., 1993); convergencia condicional $\approx$2\,\% (\autor{Barro}-\autor{Sala-i-Martin}, 1992). Valoración: forma reducida de toda la 1.ª generación; \concepto{filo de la navaja} (exponente exactamente 1; \autor{Solow}, 1994); salario nulo; no explica progreso técnico.
+\item \textbf{Sobelow} (\autor{Jones}-\autor{Manuelli}, 1990; \autor{Kurz}, 1968): $f(k)=Ak+Bk^\alpha$; RCE, PMg decreciente, todas \autor{Inada} salvo $f'(k)\to A>0$.
+\begin{formula}
+\centering $\gamma_k=s\big(A+Bk^{\alpha-1}\big)-(n+\delta)$
+\end{formula}
+\item[] $sA>n+\delta$: crece siempre, cada vez más despacio, a LP $sA-(n+\delta)$; $sA<n+\delta$: EE como \autor{Solow}. Crecimiento endógeno \emph{y} convergencia condicional (en tasas). CES con $\sigma>1$: $f(k)/k\to Aa_K^{\sigma/(\sigma-1)}>0$ (pero $\sigma<1$ en los datos \vertema{3.A.11}). Participación del capital $\to1$ (contra \autor{Kaldor}).
+\end{itemize}
+\begin{itemize}
+\item \textbf{\autor{Barro}} (1990), gasto público productivo \vertema{3.A.38}: $Y=AK^\alpha G^{1-\alpha}$, $G=\tau Y$ (presupuesto equilibrado), $L=1$ $\Rightarrow$ $Y=A^{1/\alpha}\tau^{(1-\alpha)/\alpha}K$, un $AK$:
+\begin{formula}
+\centering $\gamma=\dfrac{1}{\theta}\Big[(1-\tau)\alpha A^{\frac1\alpha}\tau^{\frac{1-\alpha}{\alpha}}-\delta-\rho\Big],\quad \tau^*=\dfrac GY=1-\alpha$
+\end{formula}
+\item[] 2 efectos: $\tau^{(1-\alpha)/\alpha}$ (+) y $(1-\tau)$ ($-$): U invertida. \concepto{Regla de \autor{Barro}}: $\partial Y/\partial G=1$; $\tau^*$ = elasticidad de $Y$ a $G$. Tamaño y composición del gasto importan. Equilibrio no óptimo (el hogar recibe solo $\alpha$ del rendimiento social); con suma fija, óptimo. Congestión (\autor{Barro}-\autor{Sala-i-Martin}, 1992). Evidencia: \autor{Aschauer} (1989), 0,4; \autor{Bom}-\autor{Ligthart} (2014), 0,083 CP y 0,122 LP. Hereda el filo de la navaja.
+\end{itemize}
+\graficorepaso[0.5\linewidth]{barro}{\autor{Barro}: $\gamma$ máxima en $\tau^*=1-\alpha$}
+\begin{itemize}
+\item \textbf{Externalidades} (\autor{Arrow}, 1962; \autor{Romer}, 1986): \autor{Wright} (1936), fuselajes; \concepto{aprendizaje por la práctica}; el conocimiento se \concepto{desborda}: «quien a buen árbol se arrima\ldots». $Y_j=AK_j^\alpha L_j^{1-\alpha}E^\eta$, $E=K$ (\autor{Romer}) o $E=k$ (sin efecto escala) $\Rightarrow$ $y=Ak^{\alpha+\eta}$, $\gamma_k=sAk^{\alpha+\eta-1}-(n+\delta)$:
+\item[] $\alpha+\eta<1$: \autor{Solow}; $=1$: $AK$; $>1$: explosivo (EE inestable). Con hogares y $\alpha+\eta=1$, privado $\alpha A$ $<$ social $A$:
+\begin{formula}
+\centering $\gamma^{\mathrm E}=\dfrac{\alpha A-\delta-\rho}{\theta}<\gamma^{\mathrm P}=\dfrac{A-\delta-\rho}{\theta}$
+\end{formula}
+\item[] Rendimientos crecientes \emph{externos} compatibles con competencia; falla 1TFEB, subinversión: subvención pigouviana a la inversión. $E=K$: $Y=AL^{1-\alpha}K$, \concepto{efecto escala}. Evidencia: \autor{De Long}-\autor{Summers} (1991), equipo. Filo de la navaja ($\alpha+\eta=1$).
+\end{itemize}
+\begin{itemize}
+\item \textbf{\autor{Uzawa}} (1965)-\textbf{\autor{Lucas}} (1988): el capital humano se forma con \emph{tiempo} (capital humano), no con producción \vertema{3.A.25}. 2 sectores; $u$ a bienes, $1-u$ al \concepto{sector educativo}; $H$ \emph{rival}:
+\begin{formula}
+\centering $\dot k=Ak^\alpha(uh)^{1-\alpha}h_a^\eta-c-(\delta_K+n)k$\\[2pt]
+$\dot h=B(1-u)h-(\delta_H+n)h$
+\end{formula}
+\item[] Planificador ($\eta=0$ = equilibrio), hamiltoniano con 2 coestados; CPO: $c^{-\theta}=\lambda_K$; $u$: hora en la fábrica = hora en el aula. Senda equilibrada ($r=B-\delta_H$, ambos capitales rinden igual):
+\funcionclave{\gamma=\frac{B-\delta_H-\rho}{\theta},\quad u^*=1-\frac{\gamma+n+\delta_H}{B}}
+\item[] Crece si $B>\delta_H+\rho$; no depende de $A$ ni del ahorro físico. Transición en $k/h$: pierde capital físico $\Rightarrow$ crece más deprisa (Alemania, Japón); pierde humano $\Rightarrow$ más lenta (↓$u$). Sin convergencia en niveles. \concepto{Externalidad de \autor{Lucas}} ($\eta>0$): se estudia de menos, $\gamma^{\mathrm E}_h<\gamma^{\mathrm P}_h$, $\gamma_y=\frac{1-\alpha+\eta}{1-\alpha}\gamma_h$ $\Rightarrow$ subvencionar educación; crédito imperfecto.
+\item[] \autor{Nelson}-\autor{Phelps} (1966): importa el \emph{nivel} de $h$ (adoptar tecnología). Evidencia: \autor{Benhabib}-\autor{Spiegel} (1994), nivel; \autor{Hanushek}-\autor{Woessmann} (2008), competencias; externalidades: no (\autor{Acemoglu}-\autor{Angrist}, 2000), sí universitarios (\autor{Moretti}, 2004). Contra: lineal en $h$ (filo), $h$ limitado por la vida, rival.
+\end{itemize}
+
+\sub{I.3. Valoración\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Comparten}: capital amplio con PMg que no cae a 0; $AK$ escondido; $r$ que no cae.
+\item \emph{Consiguen}: crecimiento sin progreso exógeno; la política (ahorro, impuestos, gasto productivo, inversión, educación) cambia la \emph{tasa}.
+\item \emph{No consiguen}: explicar el progreso técnico (o no existe o es subproducto); evitar el filo de la navaja; ajustarse a la evidencia (sin convergencia salvo Sobelow; inversión ↑ sin ↑$\gamma$). Falta la I+D deliberada $\Rightarrow$ abandonar la competencia perfecta.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{II. 2.ª generación: competencia imperfecta e I+D\label{rep:II}}
+\begin{ideaclave}
+Si el crecimiento se debe a ideas creadas a propósito, hace falta competencia imperfecta para pagarlas, y el mercado no crea las ideas que convienen: la política de innovación puede cambiar la tasa de crecimiento.
+\end{ideaclave}
+
+\sub{II.1. Idea\label{rep:II.1}}
+\begin{itemize}
+\item 3 premisas (\autor{Romer}, 1990): progreso técnico = motor; resulta de I+D deliberada que busca beneficios; ideas no rivales y parcialmente excluibles.
+\item Réplica con $K,L$ \vertema{3.A.11} $\Rightarrow$ $F(\kappa K,\kappa L,\kappa N)>\kappa F(K,L,N)$. Por \autor{Euler}, pagar PMg a $K$ y $L$ agota $Y$: nada para el inventor; coste fijo + coste marginal $\approx0$ $\Rightarrow$ hace falta poder de mercado (patentes) o subvención: monopolio temporal, sacrifica eficiencia estática (\autor{Arrow}, 1962) \vertema{3.A.15}.
+\item 2 familias: \concepto{variedades} (horizontal: \autor{Romer}, 1990; \autor{Grossman}-\autor{Helpman}, 1991) y \concepto{calidades} (vertical, destrucción creativa: \autor{Aghion}-\autor{Howitt}, 1992).
+\end{itemize}
+
+\sub{II.2. Modelos\label{rep:II.2}}
+\begin{itemize}
+\item \textbf{\autor{Romer}} (1990): tractores, fertilizantes, semillas además de azadas; CES de \autor{Dixit}-\autor{Stiglitz} \vertema{3.A.18}: preferencia por la variedad $\Rightarrow$ rendimientos crecientes. 3 sectores: bien final competitivo; intermedios en monopolio (patente perpetua, coste marginal 1); I+D con libre entrada; $L=L_Y+L_I$ (población constante); hogares de \autor{Ramsey}:
+\begin{formula}
+\centering $Y=L_Y^{1-\alpha}\sum_{j=1}^{N}x_j^\alpha,\qquad \dot N=\eta_IL_IN$
+\end{formula}
+\item[] «A hombros de gigantes» (\autor{Newton}): $N$ hace más productivos a los investigadores.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{romer-sectores}{Los 3 sectores de \autor{Romer} (1990)}
+\begin{itemize}
+\item Hacia atrás \vertema{3.A.14}: demanda $p_j=\alpha L_Y^{1-\alpha}x_j^{\alpha-1}$, $\sigma=1/(1-\alpha)$; precio $p=1/\alpha$; $x=\alpha^{2/(1-\alpha)}L_Y$; patente $V=B_j/r$; libre entrada $\eta_INV=w$ $\Rightarrow$ $r=\alpha\eta_IL_Y$. Con \autor{Euler}:
+\funcionclave{\gamma^{\mathrm E}=\frac{\alpha\eta_IL-\rho}{\alpha+\theta}<\gamma^{\mathrm P}=\frac{\eta_IL-\rho}{\theta}}
+\item[] ↑ con $\eta_I$ y paciencia, ↓ con $\theta$; sin transición ni convergencia; \emph{efecto escala} (↑$L$). 2 distorsiones: \emph{estática} (margen: pocos intermedios) y \emph{dinámica} (no cobra el excedente ni el desbordamiento futuro) $\Rightarrow$ 2 instrumentos: subvención a intermedios de tipo $1-\alpha$ + subvención a la I+D. Integración = duplicar $L$ (\autor{Rivera-Batiz}-\autor{Romer}, 1991); instituciones (\autor{North}-\autor{Thomas}, 1973; Estatuto de Monopolios, 1624). Laboratorio (bien final): $AK$ en ideas.
+\item[] \autor{Grossman}-\autor{Helpman} (1991): la política comercial, vía \autor{Stolper}-\autor{Samuelson}, cambia el coste del factor de la I+D: arancel que abarata el trabajo cualificado ↑$\gamma$ \vertema{3.B.5} \vertema{3.B.9}.
+\item[] Evidencia: rendimiento social $\gg$ privado, I+D óptima 2-4 veces la observada (\autor{Jones}-\autor{Williams}, 1998); \autor{Broda}-\autor{Weinstein} (2006). Contra: efecto escala, $\dot N$ lineal en $N$ (filo), sin obsolescencia.
+\item \textbf{\autor{Aghion}-\autor{Howitt}} (1992): mejorar la calidad deja obsoleta la anterior (carruaje$\to$automóvil): «rey muerto, rey puesto». $y=A_tx^\alpha$; intermedio en monopolio del último innovador; innovaciones \autor{Poisson} de tasa $\lambda_IL_I$, cada una ×$\gamma_q$ (\concepto{escalera de calidades}); el titular no investiga (\concepto{efecto reemplazo}, \autor{Arrow}) \vertema{3.A.17}; $L=x+L_I$; hogares neutrales, $r=\rho$.
+\item[] Valor con \concepto{obsolescencia}: $V=B/(r+\lambda_IL_I)$; arbitraje $w=\lambda_IV$:
+\begin{formula}
+\centering $1=\lambda_I\gamma_q\dfrac{1-\alpha}{\alpha}\,\dfrac{L-L_I}{\rho+\lambda_IL_I}$
+\end{formula}
+\item[] Derecha decreciente en $L_I$ (menos producción, monopolios más cortos):
+\funcionclave{\gamma=\lambda_I\,L_I^*\ln\gamma_q}
+\end{itemize}
+\graficorepaso[\linewidth]{aghion-howitt}{\autor{Aghion}-\autor{Howitt}: arbitraje de la investigación y escalera de calidades}
+\begin{itemize}
+\item[] Crecimiento a saltos; ↑ con $\lambda_I$, $\gamma_q$, $L$ (efecto escala), paciencia; \emph{↓ con la competencia} (↑$\alpha$): \concepto{efecto schumpeteriano}. Innova de menos (intertemporal, apropiabilidad) o de más (\concepto{robo de negocio}): subvención ambigua. Economía política: perdedores frenan la entrada \vertema{3.A.20} \vertema{4.A.15}.
+\item[] Extensiones: \concepto{U invertida} competencia-innovación, escapar de la competencia (\autor{Aghion} et al., 2005); \concepto{distancia a la frontera} (\autor{Acemoglu}-\autor{Aghion}-\autor{Zilibotti}, 2006): imitar lejos, innovar cerca \vertema{3.B.28}; \autor{Grossman}-\autor{Helpman} (1991), calidades; cambio técnico dirigido, tecnologías limpias (\autor{Acemoglu} et al., 2012) \vertema{3.B.31}; \autor{Mokyr} (2002): conocimiento proposicional + prescriptivo y sociedad abierta.
+\item[] Evidencia: U invertida en patentes del R.\,U.; mayor parte del crecimiento por mejora de productos propios de establecidas (\autor{Garcia-Macia}-\autor{Hsieh}-\autor{Klenow}, 2019); \concepto{trampa de la renta media} (\autor{Gill}-\autor{Kharas}, 2007).
+\end{itemize}
+
+\sub{II.3. Valoración\label{rep:II.3}}
+\begin{itemize}
+\item Progreso técnico = decisiones de empresas; financiación (monopolio); el mercado no innova lo que conviene; marco de patentes, I+D, competencia, apertura. Variedades y calidades conviven. Comparten con la 1.ª: filo de la navaja (ideas lineales en $N$) $\Rightarrow$ efecto escala.
+\end{itemize}
+{\centering\scriptsize\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{1.5pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.33\linewidth}>{\raggedright\arraybackslash}p{0.37\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{\autor{Romer} (1990)} & \textbf{\autor{Aghion}-\autor{Howitt} (1992)}\\
+\midrule
+Innovación & bien intermedio nuevo & bien mejor que sustituye al anterior\\
+Quién pierde & nadie: se suman & el monopolista anterior\\
+¿Poca o mucha I+D? & poca: 2 distorsiones & ambiguo: robo de negocio vs. apropiabilidad\\
+Competencia & menos margen, menos I+D & U invertida (paso a paso)\\
+Efecto escala & sí & sí\\
+\bottomrule
+\end{tabular}\par}
+\smallskip
+{\centering\scriptsize\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{1.5pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.33\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido} \textbf{Modelo} & \textbf{$r$ que no cae} & \textbf{$\gamma$ a LP} & \textbf{¿Óptimo?}\\
+\midrule
+$AK$ & $A-\delta$ & $(A-\delta-\rho)/\theta$ & Sí\\
+Sobelow & $\to A-\delta$ & $sA-(n+\delta)$ & ---\\
+\autor{Barro} & $(1-\tau)\alpha A^{\frac1\alpha}\tau^{\frac{1-\alpha}\alpha}-\delta$ & máx. en $\tau^*=1-\alpha$ & No\\
+Externalid. & $\alpha A-\delta$ & $(\alpha A-\delta-\rho)/\theta$ & No: subinv.\\
+U-L & $B-\delta_H$ & $(B-\delta_H-\rho)/\theta$ & Sí; no si $\eta>0$\\
+\autor{Romer} & $\alpha\eta_IL_Y$ & $(\alpha\eta_IL-\rho)/(\alpha+\theta)$ & No: de menos\\
+A-H & $\rho$ & $\lambda_IL_I^*\ln\gamma_q$ & Ambiguo\\
+\autor{Jones} & --- & $\lambda n/(1-\phi)$ & No\\
+\bottomrule
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque[6]{III. Rendimientos crecientes y efecto escala\label{rep:III}}
+\begin{ideaclave}
+Los rendimientos crecientes que importan son los de las ideas (no rivalidad). Pero las ideas son cada vez más difíciles de encontrar: el crecimiento de LP depende de cuántas personas las buscan, y la política cambia sobre todo el \emph{nivel}, durante décadas, lo que no la hace menos importante.
+\end{ideaclave}
+
+\sub{III.1. No rivalidad y efecto escala\label{rep:III.1}}
+\begin{itemize}
+\item RCE en rivales $\Rightarrow$ crecientes con las ideas. Renta pc depende de ideas \emph{totales}: más personas, más investigadores, más ideas. En \autor{Romer}, A-H y externalidades con $E=K$, $L$ sube la \emph{tasa}.
+\item Muy LP sí (\autor{Kremer}, 1993): crecimiento de la población mundial ↑ con su tamaño; regiones aisladas al final de la glaciación.
+\item Posguerra, no: EE.\,UU., investigadores ×2 desde 1991, I+D real ×$\approx$5 desde 1981; PTF $\approx$2\,\% en los 50-60 y 0,9\,\% desde 1970 $\Rightarrow$ \autor{Jones} (1995) rechaza el efecto escala.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{efecto-escala}{EE.\,UU., 1950-2025: el esfuerzo investigador crece, la PTF no se acelera}
+
+\sub{III.2. \autor{Jones} (1995)\label{rep:III.2}}
+\begin{itemize}
+\item \autor{Romer} salvo la producción de ideas, con rendimientos decrecientes:
+\begin{formula}
+\centering $\dot N=\eta_IL_I^{\lambda}N^{\phi},\quad 0<\lambda\le1,\ \phi<1$
+\end{formula}
+\item[] $\lambda<1$: duplicación de esfuerzos; $\phi>0$, a hombros de gigantes; $\phi<0$, las fáciles ya se encontraron. \autor{Romer}: $\lambda=\phi=1$. $L_I$ crece a $n$. $\gamma_N$ constante exige $\lambda n=(1-\phi)\gamma_N$:
+\funcionclave{\gamma_N=\frac{\lambda\,n}{1-\phi}}
+\item[] ($\lambda=1$: $n/(1-\phi)$). $\gamma_N$ decrece con $N$ y converge a esa senda; ↑$L_I$: más crecimiento un tiempo y vuelta a la misma tasa con más ideas; en \autor{Romer}, horizontal $\eta_IL_I$ que sube para siempre.
+\item \concepto{Semiendógeno}: tecnología endógena, tasa de LP según $n$ exógena; sin $n$ se agota. Sin efecto escala en la tasa, sí en el \emph{nivel}: $N\propto(s_IL)^{\lambda/(1-\phi)}$. Política: nivel, no tasa (como el ahorro en \autor{Solow}), con efectos enormes y transición de décadas. Vuelve la convergencia condicional.
+\item Totalmente endógenos sin efecto escala (\autor{Young}, 1998; \autor{Peretto}, 1998): proliferación de productos, otro filo. IA: el esfuerzo puede crecer sin población (\autor{Aghion}-\autor{Jones}-\autor{Jones}, 2019). Débil: motor último = demografía.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{jones}{$\gamma_N$ en \autor{Romer} ($\phi=1$) y \autor{Jones} ($\phi<1$)}
+
+\sub{III.3. Evidencia y política\label{rep:III.3}}
+\begin{itemize}
+\item \autor{Bloom} et al. (2020): desde los 30, esfuerzo investigador ×23, productividad de la investigación ÷41 ($-5$\,\%/año); ley de \autor{Moore}: 18 veces más investigadores que a inicios de los 70 $\Rightarrow$ $\phi<1$. Freno de la población (\autor{Jones}, 2022 y 2023). Calidad de la educación $>$ años. Convergencia condicional lenta: neoclásicos y semiendógenos, no $AK$ ni \autor{Romer} \vertema{3.A.45}.
+\item Política: neoclásicos, nivel; endógenos, tasa; semiendógenos, nivel durante décadas; fallos de mercado $\Rightarrow$ intervenir:
+\begin{itemize}
+\item \emph{I+D}: subvenciones, incentivos fiscales (funcionan: \autor{Bloom}-\autor{Van Reenen}-\autor{Williams}, 2019), investigación básica; Ley 17/2022: financiación pública 1,25\,\% del PIB en 2030 \vertema{4.A.7};
+\item \emph{patentes}: duración y alcance óptimos (\autor{Nordhaus}, 1969) \vertema{3.A.15};
+\item \emph{educación} (U-L; \autor{Nelson}-\autor{Phelps}) \vertema{3.A.25}; \emph{competencia}: U invertida, entrada cerca de la frontera \vertema{4.A.15}; \emph{apertura} \vertema{3.B.9}; \emph{gasto e impuestos} (\autor{Barro}, \autor{Rebelo}) \vertema{3.A.38}; \emph{instituciones} (\autor{Mokyr});
+\item \emph{política industrial}: horizontal vs. sectorial (captura).
+\end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» 1.ª generación: capital amplio sin rendimientos decrecientes, $r$ no cae; 2.ª: ideas con rentas de monopolio, variedades o calidades; el mercado no crece lo que conviene; efecto escala ausente $\Rightarrow$ \autor{Jones}: política, sobre todo nivel.
+\item \textbf{Relevancia}: marco de la política de I+D \vertema{4.A.7}, competencia \vertema{4.A.15}, educación, brecha de innovación UE-EE.\,UU.; recesiones con efectos permanentes.
+\item \textbf{Extensiones}: causas próximas vs. últimas (instituciones, geografía, cultura: Corea y Singapur frente a Nigeria; \autor{Acemoglu}-\autor{Johnson}-\autor{Robinson}, 2001) \vertema{3.A.45}; comercio \vertema{3.B.9}; desarrollo \vertema{3.B.28}; clima \vertema{3.B.31}.
+\item \textbf{Opinión}: visión intermedia: ideas = motor, pero cada vez más caras; depende de más personas, o máquinas, buscándolas. España: capital humano, innovación y competencia.
+\item \textbf{Idea final}: sí se crece sin progreso caído del cielo, no acumulando más de lo mismo, sino encendiendo ideas en otras, como la vela de \autor{Jefferson}; cada generación ha subestimado las recetas por descubrir (\autor{Romer}). «Más vale maña que fuerza».
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1813}{\autor{Jefferson}: la vela (no rivalidad)}
+\hito{1928}{\autor{Young}: rendimientos crecientes de la especialización}
+\hito{1936}{\autor{Wright}: curva de aprendizaje (fuselajes)}
+\hito{1942}{\autor{Schumpeter}: destrucción creativa}
+\hito{1944}{\autor{Knight}: el capital no tiene por qué rendir menos}
+\hito{1962}{\autor{Arrow}: aprendizaje por la práctica; efecto reemplazo}
+\hito{1965}{\autor{Uzawa}: sector que produce conocimiento}
+\hito{1966}{\autor{Nelson}-\autor{Phelps}: nivel de capital humano}
+\hito{1968}{\autor{Kurz}: función del Sobelow}
+\hito{1969}{\autor{Nordhaus}: patente óptima}
+\hito{1986}{\autor{Romer}: externalidades del capital}
+\hito{1988}{\autor{Lucas}: capital humano con externalidad}
+\hito{1989}{\autor{Aschauer}: capital público}
+\hito{1990}{\autor{Romer}: variedades; \autor{Barro}: gasto productivo; \autor{Jones}-\autor{Manuelli}: Sobelow}
+\hito{1991}{\autor{Rebelo}: $AK$; \autor{Grossman}-\autor{Helpman}; \autor{De Long}-\autor{Summers}}
+\hito{1992}{\autor{Aghion}-\autor{Howitt}: calidades; \autor{Saint-Paul}}
+\hito{1993}{\autor{Kremer}: población y tecnología; Nobel a \autor{North}}
+\hito{1995}{\autor{Jones}: semiendógeno}
+\hito{1998}{\autor{Jones}-\autor{Williams}; \autor{Young}; \autor{Peretto}}
+\hito{2002}{\autor{Mokyr}: conocimiento proposicional y prescriptivo}
+\hito{2005}{\autor{Aghion} et al.: U invertida}
+\hito{2006}{\autor{Acemoglu}-\autor{Aghion}-\autor{Zilibotti}: frontera}
+\hito{2018}{Nobel a \autor{Romer}}
+\hito{2020}{\autor{Bloom} et al.: ideas más difíciles}
+\hito{2025}{Nobel a \autor{Mokyr}, \autor{Aghion} y \autor{Howitt}}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item I+D/PIB 2024: España \dato{1,50\,\%}{INE, OCDE}; UE \dato{2,26\,\%}{Eurostat}; China \dato{2,69\,\%}{OCDE; 2,80\,\% en 2025}; EE.\,UU. \dato{3,44\,\%}{OCDE}; Corea \dato{5,13\,\%}{OCDE}; 2000: China = España \dato{0,88\,\%}{OCDE}.
+\item PTF EE.\,UU.: \dato{$\approx$2\,\% (años 50-60), 0,9\,\% desde 1970}{FRBSF, \autor{Fernald}}.
+\item Esfuerzo investigador \dato{×23}{\autor{Bloom} et al., 2020}; productividad de la investigación \dato{÷41, $-5$\,\%/año}{ídem}.
+\item Elasticidad al capital público \dato{0,083 CP, 0,122 LP}{\autor{Bom}-\autor{Ligthart}, 2014}.
+\item I+D óptima \dato{2-4 veces la observada}{\autor{Jones}-\autor{Williams}, 1998}.
+\item Objetivo de financiación pública de I+D: \dato{1,25\,\% del PIB en 2030}{Ley 17/2022}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Qué condición basta para crecer sin progreso exógeno?} Que el PMg del capital amplio no tienda a 0 (falla \autor{Inada} en $\infty$); los rendimientos constantes son suficientes, no necesarios (Sobelow).
+\item \textbf{¿Por qué el $AK$ no tiene convergencia?} El producto medio no cae: misma tasa con poco o mucho capital; choques permanentes.
+\item \textbf{¿Por qué $\tau^*=1-\alpha$ en \autor{Barro}?} Equilibra el efecto productivo del gasto y el impuesto: $\partial Y/\partial G=1$.
+\item \textbf{¿Por qué hace falta competencia imperfecta?} Con ideas no rivales hay rendimientos crecientes; por \autor{Euler}, pagar PMg a $K$ y $L$ agota $Y$: el inventor se paga con rentas de monopolio.
+\item \textbf{¿Innova el mercado de menos?} En \autor{Romer}, sí (2 distorsiones); en A-H, ambiguo: robo de negocio frente a apropiabilidad e intertemporal.
+\item \textbf{¿Por qué «semiendógeno»?} Tecnología endógena, tasa $\lambda n/(1-\phi)$ con $n$ exógena; la política cambia el nivel.
+\item \textbf{¿Qué es el efecto escala y por qué se rechaza?} Más población, más investigadores, más \emph{tasa}; en EE.\,UU. investigadores ×2 desde 1991 y PTF sin acelerarse (0,9\,\% desde 1970): \autor{Jones} (1995).
+\item \textbf{¿Qué recomienda \autor{Romer} y por qué 2 instrumentos?} 2 distorsiones (margen y desbordamiento): subvención a intermedios de tipo $1-\alpha$ y a la I+D; con uno, segundo óptimo.
+\item \textbf{¿Relación entre competencia e innovación?} Básico: ↓ (efecto schumpeteriano); con competencia paso a paso, U invertida por escapar de la competencia (\autor{Aghion} et al., 2005).
+\item \textbf{¿Qué ocurre si una guerra destruye capital físico en U-L?} $k/h$ bajo, el capital físico rinde mucho: crece más deprisa que $\gamma$ (Alemania, Japón); si es humano, recuperación más lenta.
+\item \textbf{¿Qué distingue el capital humano de las ideas?} $H$ es rival (la hora de estudio no produce) y muere con quien lo tiene: no crece sin límite; las ideas, no rivales, no se agotan.
+\item \textbf{¿Qué dice la evidencia entre modelos?} Convergencia condicional lenta ($\approx$2\,\%), inversión e I+D ↑ sin ↑$\gamma$, ideas más difíciles (\autor{Bloom} et al.): favorece neoclásicos y semiendógenos frente a $AK$ y \autor{Romer} \vertema{3.A.45}.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $A$ en el $AK$ es constante: \emph{no} es progreso técnico.
+\item $AK$: sin convergencia ni absoluta ni condicional; Sobelow: condicional \emph{en tasas}; \autor{Jones}: vuelve la condicional.
+\item Sobelow cumple RCE y PMg decreciente; solo incumple \autor{Inada} en $\infty$.
+\item Test (junio 2024, preg.\,25): «el $AK$ es un caso particular del modelo de \autor{Lucas} de externalidades»: correcta; los manuales lo atribuyen a \autor{Arrow}-\autor{Romer} (1986).
+\item Externalidades: $\alpha+\eta<1$ = \autor{Solow}; $=1$ = $AK$; $>1$ explosivo. Privado $\alpha A$ $<$ social $A$.
+\item U-L: $\gamma$ no depende de $A$ (sector de bienes) porque la educación no usa capital físico ($\alpha_H=0$); $H$ es \emph{rival}, las ideas no.
+\item \autor{Romer}: $\gamma^{\mathrm E}=(\alpha\eta_IL-\rho)/(\alpha+\theta)$, denominador $\alpha+\theta$; planificador, $\theta$.
+\item A-H: más competencia (↑$\alpha$) ↓ crecimiento en el básico; U invertida solo con competencia paso a paso.
+\item Efecto escala: \autor{Romer}, A-H y externalidades con $E=K$; no con $E=k$ ni en \autor{Jones} (en \autor{Jones}, en el nivel).
+\item \autor{Jones}: $\phi<1$ (no $\phi<0$); \autor{Romer} = $\lambda=\phi=1$.
+\item $AK$ sin ineficiencia dinámica: $r>\gamma_Y$ siempre.
+\item \autor{Barro}: $\tau^*=1-\alpha$ maximiza el crecimiento, pero con impuesto sobre la renta el equilibrio no es óptimo (sí con suma fija).
+\item Sobelow (\autor{Jones}-\autor{Manuelli}, 1990) $\neq$ \autor{Jones} (1995, semiendógeno).
+\item Externalidad de \autor{Lucas}: $\gamma_y>\gamma_h$; sin ella ($\eta=0$) equilibrio = planificador.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
