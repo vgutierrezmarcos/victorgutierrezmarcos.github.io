@@ -1,0 +1,100 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Pobreza extrema por regiones del Banco Mundial, 1990-2026: millones de
+% personas con menos de 3,00 $ diarios de PPA de 2021 (áreas apiladas) y tasa
+% mundial (% de la población, eje derecho). Banco Mundial, Poverty and
+% Inequality Platform (versión del 22/09/2026), ../datos/pobreza-extrema-regiones.csv
+% (consulta 03/11/2026). 2025 y 2026, estimaciones adelantadas (nowcast).
+% Cifras: tasa mundial 43,4 % (1990) → 10,1 % (2024) → 9,8 % (2026);
+% pobres 2.301 millones (1990) → 824 (2024); África subsahariana 321 → 581
+% (70 % de los pobres en 2024); Asia oriental y Pacífico 1.218 → 47.
+% Paleta del gráfico: África subsahariana en dorado; Asia en una familia azul
+% (oriental, marino; meridional, azul medio); el resto de regiones (Oriente
+% Medio, Norte de África, Afganistán y Pakistán; América Latina y Caribe;
+% Europa y Asia central; Norteamérica), agrupado en gris claro.
+% Capas (CRITERIOS §7): áreas → ejes y sombreado de la previsión → total →
+% tasa → rótulos y leyenda.
+\colorlet{pobafrica}{dicprestamos}
+\colorlet{pobmeridional}{dicopf}
+\colorlet{poboriental}{dicze}
+\colorlet{pobresto}{dicotromasclaro}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/pobreza-extrema-regiones.csv}\pob
+\pgfplotsset{
+  pobejes/.style={width=12cm, height=7.4cm, scale only axis=false,
+    xmin=1990, xmax=2026, enlarge x limits=false,
+    xtick={1990,1995,...,2025}, minor xtick={1990,...,2026},
+    xticklabel style={/pgf/number format/set thousands separator={}, font=\footnotesize},
+    yticklabel style={/pgf/number format/1000 sep={.}, font=\footnotesize},
+    tick align=outside, clip=false},
+  pobarea/.style={on layer=dicbarras, fill=#1, draw=#1!70!black, line width=0.3pt},
+}
+\begin{tikzpicture}[tcee]
+  % ---------- eje izquierdo: millones de personas
+  \begin{axis}[pobejes, name=izq, ymin=0, ymax=2500, ytick={0,500,...,2500},
+      axis x line*=bottom, axis y line*=left,
+      ylabel={millones de personas}, ylabel style={font=\footnotesize},
+      ymajorgrids, grid style={tceegris!25},
+      stack plots=y, area style, dicapas]
+    % 1: áreas apiladas (de abajo arriba)
+    \capa{1}{
+      \addplot[pobarea=pobafrica] table[x=anio, y=pobres_africa_subsahariana_mill] {\pob} \closedcycle;
+      \addplot[pobarea=pobmeridional] table[x=anio, y=pobres_asia_meridional_mill] {\pob} \closedcycle;
+      \addplot[pobarea=poboriental] table[x=anio, y=pobres_asia_oriental_pacifico_mill] {\pob} \closedcycle;
+      \addplot[pobarea=pobresto] table[x=anio, y expr={\thisrow{pobres_oriente_medio_norte_africa_afg_pak_mill}
+        +\thisrow{pobres_america_latina_caribe_mill}+\thisrow{pobres_europa_asia_central_mill}
+        +\thisrow{pobres_america_norte_mill}}] {\pob} \closedcycle;
+    }
+    % 2: previsión (2025-2026), rayada en blanco sobre las áreas (filas 34-36 del CSV; en la capa pre main, porque las áreas apiladas se dibujan al final de dicbarras)
+    \capa{2}{
+      \addplot[on layer=pre main, dicsuelto, draw=none, pattern=north east lines, pattern color=white]
+        table[x=anio, y=pobres_mundo_mill, skip coords between index={0}{34}] {\pob} \closedcycle;
+      \dicraya[dicumbral]{(2024,0) (2024,2500)}
+      \dicrotulo[font=\scriptsize, text=tceegris, anchor=west, inner sep=1pt, rotate=90]{(2025.1,880)}{previsión}
+    }
+    % 3: total mundial
+    \capa{3}{
+      \addplot[dicsuelto, thin, black] table[x=anio, y=pobres_mundo_mill] {\pob};
+    }
+    % 5: rótulos
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, anchor=west, inner sep=0pt]{(2004.5,215)}{África subsahariana: 321 $\to$ 581 millones}
+      \dicrotulo[font=\footnotesize, anchor=west, inner sep=0pt, text=white, align=left]{(1990.6,1500)}{Asia oriental:\\1.218 $\to$ 47}
+      \dicrotulo[font=\footnotesize, anchor=south west, inner sep=1pt]{(2014.6,1080)}{total}
+    }
+  \end{axis}
+  % ---------- eje derecho: tasa mundial (%)
+  \begin{axis}[pobejes, at={(izq.south west)}, anchor=south west,
+      ymin=0, ymax=50, ytick={0,10,...,50},
+      axis x line=none, axis y line*=right,
+      ylabel={tasa mundial (\% de la población)}, ylabel style={font=\footnotesize},
+      dicapas,
+      legend style={at={(0.5,-0.13)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=3, /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left]
+    % 4: tasa mundial (eje derecho)
+    \capa{4}{
+      \addplot[dicsuelto, very thick, dashed, black, preaction={draw=white, line width=3.2pt, solid}]
+        table[x=anio, y=tasa_mundo_pct] {\pob};
+    }
+    % 5: valores de la tasa y leyenda
+    \capa{5}{
+      \dicrotulo[font=\footnotesize\bfseries, anchor=south west, inner sep=2pt]{(1990,43.41)}{43,4\,\%}
+      \dicrotulo[font=\footnotesize\bfseries, anchor=north, inner sep=3pt]{(2021.6,9.6)}{10,1\,\% (2024)}
+      \addlegendimage{area legend, fill=pobafrica, draw=pobafrica!70!black}
+      \addlegendentry{África subsahariana}
+      \addlegendimage{area legend, fill=pobmeridional, draw=pobmeridional!70!black}
+      \addlegendentry{Asia meridional}
+      \addlegendimage{area legend, fill=poboriental, draw=poboriental!70!black}
+      \addlegendentry{Asia oriental y Pacífico}
+      \addlegendimage{area legend, fill=pobresto, draw=pobresto!70!black}
+      \addlegendentry{resto del mundo}
+      \addlegendimage{thin, black}
+      \addlegendentry{total (millones)}
+      \addlegendimage{very thick, dashed, black}
+      \addlegendentry{tasa mundial (eje dcho.)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

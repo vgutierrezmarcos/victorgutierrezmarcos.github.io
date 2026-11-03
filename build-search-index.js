@@ -174,7 +174,7 @@ const tercerEjercicioParteB = [
   { num: 25, titulo: 'Análisis de los instrumentos y de los mercados de derivados.', disponible: true, file: '3B25.pdf' },
   { num: 26, titulo: 'Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras.', disponible: false },
   { num: 27, titulo: 'Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica.', disponible: true, file: '3B27.pdf' },
-  { num: 28, titulo: 'Economía de los países en desarrollo. Teorías recientes del desarrollo económico. Evidencia empírica, con especial referencia a la aproximación experimental, e implicaciones para el diseño de políticas.', disponible: true, file: '3B28.pdf' },
+  { num: 28, titulo: 'Economía de los países en desarrollo. Teorías recientes del desarrollo económico. Evidencia empírica, con especial referencia a la aproximación experimental, e implicaciones para el diseño de políticas.', disponible: true, file: '3B28.html' },
   { num: 29, titulo: 'La financiación exterior del desarrollo económico. El problema de la deuda externa. La ayuda al desarrollo.', disponible: false },
   { num: 30, titulo: 'El Grupo del Banco Mundial, los Bancos Regionales de Desarrollo y otras instituciones financieras multilaterales de desarrollo.', disponible: false },
   { num: 31, titulo: 'El cambio climático y su impacto en la economía. Evidencia y modelos integrados de evaluación. Acuerdos internacionales y principales medidas adoptadas para hacer frente al cambio climático.', disponible: false },

@@ -1,0 +1,33 @@
+% Las 5 etapas del crecimiento de Rostow (1960) como una escalera.
+% Autor: Víctor Gutiérrez Marcos
+% Peldaños de 2 de ancho; alturas 0,8 / 1,4 / 3,2 (despegue: el salto más
+% alto, en morado) / 3,9 / 4,6. Ejes sin escala: tiempo y renta por habitante.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{peldano/.style={very thick,black},
+  nombre/.style={etiqueta,font=\footnotesize,align=center,anchor=south}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.8,-0.6) rectangle (10.8,6.2);
+  % 1: ejes sin escala
+  \capa{1}{\draw[->,thin,tceegris] (0,0) -- (10.6,0) node[below left,text=black] {tiempo};
+    \draw[->,thin,tceegris] (0,0) -- (0,6.0) node[above right,text=black] {renta por habitante};}
+  % 2: peldaños 1 y 2
+  \capa{2}{\draw[peldano] (0.2,0.8) -- (2.2,0.8);
+    \node[nombre] at (1.2,0.85) {1\\sociedad\\tradicional};
+    \draw[peldano] (2.2,0.8) -- (2.2,1.4) -- (4.2,1.4);
+    \node[nombre] at (3.2,1.45) {2\\condiciones\\previas para\\el despegue};}
+  % 3: despegue y la inversión
+  \capa{3}{\draw[curva1,line width=2.4pt] (4.2,1.4) -- (4.2,3.2) -- (6.2,3.2);
+    \node[nombre,text=tceemorado,font=\footnotesize\bfseries] at (5.2,3.25) {3\\despegue};
+    \draw[->,thick,tceemorado] (4.45,1.55) -- (4.45,3.0);
+    \node[etiqueta,font=\scriptsize,align=left,anchor=west,text=tceemorado] at (4.5,2.3)
+      {inversión:\\$<5\,\%\to{}>10\,\%$\\de la renta};}
+  % 4: peldaños 4 y 5
+  \capa{4}{\draw[peldano] (6.2,3.2) -- (6.2,3.9) -- (8.2,3.9);
+    \node[nombre] at (7.2,3.95) {4\\camino hacia\\la madurez};
+    \draw[peldano] (8.2,3.9) -- (8.2,4.6) -- (10.2,4.6);
+    \node[nombre] at (9.2,4.65) {5\\era del alto\\consumo\\de masas};}
+\end{tikzpicture}
+\end{document}

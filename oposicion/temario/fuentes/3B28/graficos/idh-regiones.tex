@@ -1,0 +1,99 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Índice de desarrollo humano (IDH) en 1990 y 2023 por grupos de desarrollo
+% humano, por regiones del PNUD y del mundo. PNUD, Informe sobre Desarrollo
+% Humano 2025 (datos de 2023), ../datos/idh-grupos-regiones.csv, filas 1990
+% (índice 0) y 2023 (índice 33); consulta 03/11/2026.
+% Cifras: muy alto 0,797 → 0,914; alto 0,569 → 0,777; medio 0,439 → 0,656;
+% bajo 0,346 → 0,515; Europa y Asia central 0,674 → 0,818; América Latina y
+% Caribe 0,648 → 0,783; Asia oriental y Pacífico 0,514 → 0,775; Estados árabes
+% 0,550 → 0,719; Asia meridional 0,454 → 0,672; África subsahariana 0,405 →
+% 0,568; mundo 0,608 → 0,756. Regiones ordenadas por su IDH de 2023.
+% Umbrales de los grupos (PNUD): bajo < 0,550 ≤ medio < 0,700 ≤ alto < 0,800 ≤ muy alto.
+% Paleta: grupos en morados, regiones en verdes, mundo en dorado; 1990 claro,
+% 2023 oscuro. Capas (CRITERIOS §7): barras de 1990 → barras de 2023 → ejes y
+% umbrales → valores, rótulos de los umbrales y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/idh-grupos-regiones.csv}\idh
+% \idhde{fila}{columna}{macro}: guarda (global) en \macro el valor de la tabla
+\newcommand{\idhde}[3]{\pgfplotstablegetelem{#1}{idh_#2}\of\idh\expandafter\global\expandafter\let\csname#3\endcsname\pgfplotsretval}
+\foreach \c/\m in {muy_alto/muyalto, alto/alto, medio/medio, bajo/bajo,
+    europa_asia_central/eac, america_latina_caribe/alc, asia_oriental_pacifico/aop,
+    estados_arabes/ea, asia_meridional/am, africa_subsahariana/ass, mundo/mundo}{%
+  \idhde{0}{\c}{a\m}\idhde{33}{\c}{b\m}}
+\colorlet{idhgrupo}{tceemorado}
+\colorlet{idhregion}{tceeverde}
+\colorlet{idhmundo}{tceedorado}
+\colorlet{idhgrupoclaro}{tceemorado!35}
+\colorlet{idhregionclaro}{tceeverde!35}
+\colorlet{idhmundoclaro}{tceedorado!35}
+\colorlet{idhleyendaclaro}{tceegris!35}
+% posiciones verticales de las 11 filas (con un hueco entre bloques)
+\def\ymuyalto{0}\def\yalto{-1}\def\ymedio{-2}\def\ybajo{-3}
+\def\yeac{-4.6}\def\yalc{-5.6}\def\yaop{-6.6}\def\yea{-7.6}\def\yam{-8.6}\def\yass{-9.6}
+\def\ymundo{-11.2}
+\pgfplotsset{
+  idhbarra/.style={on layer=dicbarras, xbar, bar width=0.34, bar shift=0pt, forget plot,
+    fill=#1, draw=#1!65!black, line width=0.3pt},
+  idhvalor/.style={on layer=axis descriptions, dicsuelto, draw=none,
+    nodes near coords={\pgfmathprintnumber[use comma, fixed, precision=3, fixed zerofill]{\pgfplotspointmeta}},
+    point meta=explicit, every node near coord/.append style={font=\footnotesize, inner sep=2pt,
+      anchor=west, text=#1}},
+}
+% 1990 arriba (+0,18) y 2023 debajo (-0,18) de cada fila
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=11cm, height=10.4cm, scale only axis=false,
+      xmin=0, xmax=1.0, xtick={0,0.2,...,1.0},
+      xticklabel style={/pgf/number format/use comma, /pgf/number format/fixed, font=\footnotesize},
+      ymin=-11.8, ymax=0.75, xtick pos=bottom,
+      ytick={\ymuyalto,\yalto,\ymedio,\ybajo,\yeac,\yalc,\yaop,\yea,\yam,\yass,\ymundo},
+      yticklabels={desarrollo humano muy alto, desarrollo humano alto, desarrollo humano medio,
+        desarrollo humano bajo, Europa y Asia central, América Latina y Caribe,
+        Asia oriental y Pacífico, Estados árabes, Asia meridional, África subsahariana,
+        \textbf{mundo}},
+      yticklabel style={font=\footnotesize}, major y tick style={draw=none},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      dicapas,
+      legend style={at={(0.5,-0.07)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=2, /tikz/every even column/.append style={column sep=12pt}},
+      legend cell align=left]
+    % 1: barras de 1990 (claras)
+    \capa{1}{
+      \addplot[idhbarra=idhgrupoclaro] coordinates {(\amuyalto,0.18) (\aalto,-0.82) (\amedio,-1.82) (\abajo,-2.82)};
+      \addplot[idhbarra=idhregionclaro] coordinates {(\aeac,-4.42) (\aalc,-5.42) (\aaop,-6.42) (\aea,-7.42) (\aam,-8.42) (\aass,-9.42)};
+      \addplot[idhbarra=idhmundoclaro] coordinates {(\amundo,-11.02)};
+    }
+    % 2: barras de 2023 (oscuras)
+    \capa{2}{
+      \addplot[idhbarra=idhgrupo] coordinates {(\bmuyalto,-0.18) (\balto,-1.18) (\bmedio,-2.18) (\bbajo,-3.18)};
+      \addplot[idhbarra=idhregion] coordinates {(\beac,-4.78) (\balc,-5.78) (\baop,-6.78) (\bea,-7.78) (\bam,-8.78) (\bass,-9.78)};
+      \addplot[idhbarra=idhmundo] coordinates {(\bmundo,-11.38)};
+    }
+    % 3: umbrales de los grupos de desarrollo humano
+    \capa{3}{
+      \dicraya[dicumbral]{(0.55,-11.8) (0.55,0.75)}
+      \dicraya[dicumbral]{(0.70,-11.8) (0.70,0.75)}
+      \dicraya[dicumbral]{(0.80,-11.8) (0.80,0.75)}
+    }
+    % 4: valores de 1990 (gris) y 2023 (en una columna a la derecha, para que no crucen los umbrales), rótulos de los umbrales y leyenda
+    \capa{4}{
+      \addplot[idhvalor=tceegris] coordinates {(1.0,0.18) [\amuyalto] (1.0,-0.82) [\aalto] (1.0,-1.82) [\amedio] (1.0,-2.82) [\abajo]};
+      \addplot[idhvalor=tceegris] coordinates {(1.0,-4.42) [\aeac] (1.0,-5.42) [\aalc] (1.0,-6.42) [\aaop] (1.0,-7.42) [\aea] (1.0,-8.42) [\aam] (1.0,-9.42) [\aass]};
+      \addplot[idhvalor=tceegris] coordinates {(1.0,-11.02) [\amundo]};
+      \addplot[idhvalor=idhgrupo] coordinates {(1.0,-0.18) [\bmuyalto] (1.0,-1.18) [\balto] (1.0,-2.18) [\bmedio] (1.0,-3.18) [\bbajo]};
+      \addplot[idhvalor=idhregion] coordinates {(1.0,-4.78) [\beac] (1.0,-5.78) [\balc] (1.0,-6.78) [\baop] (1.0,-7.78) [\bea] (1.0,-8.78) [\bam] (1.0,-9.78) [\bass]};
+      \addplot[idhvalor=idhmundo] coordinates {(1.0,-11.38) [\bmundo]};
+      \dicrotulo[font=\footnotesize, anchor=base west, inner sep=2pt]{(1.0,1.0)}{IDH}
+      \dicrotulo[font=\footnotesize, text=tceegris, anchor=base]{(0.45,1.0)}{bajo}
+      \dicrotulo[font=\footnotesize, text=tceegris, anchor=base]{(0.625,1.0)}{medio}
+      \dicrotulo[font=\footnotesize, text=tceegris, anchor=base]{(0.75,1.0)}{alto}
+      \dicrotulo[font=\footnotesize, text=tceegris, anchor=base]{(0.90,1.0)}{muy alto}
+      \addlegendimage{area legend, fill=idhleyendaclaro, draw=idhleyendaclaro!65!black}
+      \addlegendentry{1990 (barra clara)}
+      \addlegendimage{area legend, fill=tceegris, draw=tceegris!65!black}
+      \addlegendentry{2023 (barra oscura)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

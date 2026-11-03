@@ -1,0 +1,103 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% La curva de Kuznets en corte transversal: índice de Gini (último año
+% disponible entre 2015 y 2024) frente al PIB por habitante del mismo año
+% (dólares de PPA de 2021, escala logarítmica), 150 países. Banco Mundial, WDI
+% (actualización del 08/10/2026), ../datos/kuznets-gini-renta.csv (consulta
+% 03/11/2026; copia sin comas dentro de los campos de texto y con la columna
+% reg de la región).
+% Ajuste cuadrático (cabecera del CSV): Gini = -19,0 + 13,65 ln y - 0,815 (ln y)^2,
+% R^2 = 0,10, máximo en 4.323 $ (Gini 38,2).
+% Rótulos: Kenia (5.492 $; 38,5), Sudáfrica (13.767; 54,1), Brasil (19.652;
+% 50,3), China (21.499; 36,0), India (8.871; 23,0) y España (47.323; 33,4).
+% Paleta: regiones del Banco Mundial con los colores del gráfico de la pobreza
+% (África subsahariana, dorado; Asia oriental, marino; Asia meridional, azul
+% medio), América Latina en rojo y destacadas las 2 que empujan la U;
+% Oriente Medio y Norte de África en verde; Europa, Asia central y
+% Norteamérica (2 países) en gris.
+% Capas (CRITERIOS §7): ejes y rejilla → puntos → ajuste → rótulos, R²,
+% leyenda y la U teórica de Kuznets (1955).
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/kuznets-gini-renta.csv}\kuz
+\colorlet{kzafrica}{dicprestamos}
+\colorlet{kzlatina}{tceerojo}
+\colorlet{kzoriental}{dicze}
+\colorlet{kzmeridional}{dicopf}
+\colorlet{kzoriente}{tceeverde}
+\colorlet{kzeuropa}{dicotro}
+\pgfplotsset{
+  % puntos de la región #1 con el color #2 (y tamaño #3)
+  kzpuntos/.style n args={3}{on layer=dicpuntos, only marks, mark=*, mark size=#3,
+    mark options={fill=#2, fill opacity=0.85, draw=#2!70!black, line width=0.3pt},
+    restrict expr to domain={\thisrow{reg}}{#1:#1}},
+}
+\tikzset{pais/.style={font=\footnotesize, inner sep=1pt}}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[name=kz, xmode=log, width=11.5cm, height=7.6cm, scale only axis=false,
+      xmin=800, xmax=160000, ymin=20, ymax=65,
+      xtick={1000,3000,10000,30000,100000}, xticklabels={1.000,3.000,10.000,30.000,100.000},
+      ytick={20,30,...,60},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={PIB por habitante (dólares de PPA de 2021, escala log.)},
+      ylabel={índice de \textsc{Gini}},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas,
+      legend style={at={(0.5,-0.2)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=3, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left]
+    % 1: ejes y rejilla (fuera de toda capa: se ven desde el principio)
+    \coordinate (ku) at (axis cs:42000,53);
+    % 2: nube de puntos por región (las destacadas, más grandes y al final)
+    \capa{2}{
+      \addplot[kzpuntos={6}{kzeuropa}{1.7pt}, forget plot] table[x=pib_pc_ppa2021, y=gini] {\kuz};
+      \addplot[kzpuntos={5}{kzoriente}{1.7pt}, forget plot] table[x=pib_pc_ppa2021, y=gini] {\kuz};
+      \addplot[kzpuntos={3}{kzoriental}{1.7pt}, forget plot] table[x=pib_pc_ppa2021, y=gini] {\kuz};
+      \addplot[kzpuntos={4}{kzmeridional}{1.7pt}, forget plot] table[x=pib_pc_ppa2021, y=gini] {\kuz};
+      \addplot[kzpuntos={1}{kzafrica}{2.1pt}, forget plot] table[x=pib_pc_ppa2021, y=gini] {\kuz};
+      \addplot[kzpuntos={2}{kzlatina}{2.1pt}, forget plot] table[x=pib_pc_ppa2021, y=gini] {\kuz};
+    }
+    % 3: ajuste cuadrático en ln y
+    \capa{3}{
+      \addplot[dicsuelto, line width=2pt, tceemorado, domain=1000:130000, samples=80]
+        {-19.0+13.65*ln(x)-0.815*ln(x)^2};
+    }
+    % 4: rótulos de los países, R² y leyenda
+    \capa{4}{
+      \dicrotulo[text=tceemorado, font=\footnotesize, anchor=west, align=left, inner sep=2pt]{(132000,28.7)}{ajuste\\cuadrático,\\$R^2=0{,}10$}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, black] coordinates {(5492,38.5) (3600,48.5)};
+      \dicrotulo[pais, anchor=south]{(3600,48.5)}{Kenia}
+      \dicrotulo[pais, anchor=south]{(13767,55.5)}{Sudáfrica}
+      \dicrotulo[pais, anchor=west, inner sep=3pt]{(19652,50.3)}{Brasil}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, black] coordinates {(21499,36) (14000,47.6)};
+      \dicrotulo[pais, anchor=south]{(14000,47.6)}{China}
+      \dicrotulo[pais, anchor=west, inner sep=3pt]{(8871,23)}{India}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, black] coordinates {(47323,33.4) (90000,42)};
+      \dicrotulo[pais, anchor=south]{(90000,42)}{España}
+      \addlegendimage{only marks, mark=*, mark size=2.1pt, mark options={fill=kzafrica, draw=kzafrica!70!black}}
+      \addlegendentry{África subsahariana}
+      \addlegendimage{only marks, mark=*, mark size=2.1pt, mark options={fill=kzlatina, draw=kzlatina!70!black}}
+      \addlegendentry{América Latina y Caribe}
+      \addlegendimage{only marks, mark=*, mark size=1.7pt, mark options={fill=kzoriental, draw=kzoriental!70!black}}
+      \addlegendentry{Asia oriental y Pacífico}
+      \addlegendimage{only marks, mark=*, mark size=1.7pt, mark options={fill=kzmeridional, draw=kzmeridional!70!black}}
+      \addlegendentry{Asia meridional}
+      \addlegendimage{only marks, mark=*, mark size=1.7pt, mark options={fill=kzoriente, draw=kzoriente!70!black}}
+      \addlegendentry{Oriente Medio y Norte de África}
+      \addlegendimage{only marks, mark=*, mark size=1.7pt, mark options={fill=kzeuropa, draw=kzeuropa!70!black}}
+      \addlegendentry{Europa, Asia central y Norteamérica}
+    }
+  \end{axis}
+  % 4: la U invertida teórica de Kuznets (1955), pequeña, en la esquina vacía
+  % (renta alta y Gini alto); origen en (42.000 $; 53); sin rótulo en el eje vertical, que es el Gini del gráfico
+  \capa{4}{
+    \begin{scope}[shift={(ku)}, tceegris]
+      \draw[->,thin] (0,0) -- (1.85,0) node[right,font=\scriptsize,inner sep=1pt] {renta};
+      \draw[->,thin] (0,0) -- (0,0.95);
+      \draw[thick] plot[domain=0.12:1.7,samples=40,smooth] (\x,{0.12+0.72*(1-((\x-0.85)/0.85)^2)});
+      \node[font=\scriptsize,anchor=north west,inner sep=1pt] at (0,-0.05) {\textsc{Kuznets} (1955)};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,49 @@
+% El gran empujón de Murphy, Shleifer y Vishny (1989), en el plano
+% empleo-producción de un sector, como Krugman (1995, cap. 2).
+% Autor: Víctor Gutiérrez Marcos
+% Letras locales del anexo: N sectores, L trabajo total, F coste fijo (en
+% trabajo), c trabajo por unidad con la técnica moderna, q producción (= ingreso,
+% con precio 1), w salario del sector moderno (prima sobre el tradicional, 1).
+% Coordenadas calculadas con F = 2, c = 0,4 y L/N = 5:
+%   técnica tradicional:  q = L_j                         (pendiente 1)
+%   técnica moderna:      q = (L_j - F)/c = 2,5 (L_j - 2)  (corta el eje en F)
+%   A (se moderniza una sola empresa): vende q^A = L/N = 5, emplea
+%     F + c q^A = 4; ingreso por trabajador q/L_j = 1,25
+%   B (se modernizan todas): emplea L/N = 5 y vende q^B = (L/N - F)/c = 7,5;
+%     q/L_j = 1,5
+%   rectas de coste q = w L_j (beneficio nulo; la empresa gana si su punto
+%   queda por encima): w_1 = 1,1 < 1,25 (gana sola), 1,25 < w_2 = 1,38 < 1,5
+%   (pierde sola en A y gana si se modernizan todas, en B: gran empujón) y
+%   w_3 = 1,7 > 1,5 (no gana nunca). Zona del gran empujón: el cono entre las
+%   rectas de pendiente 1,25 y 1,5.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=0.62cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-1.0) rectangle (9.4,9.8);
+  % 1: ejes
+  \capa{1}{\ejes{$L_j$}{$q$}{7.6}{9.6}}
+  % 2: técnica tradicional
+  \capa{2}{\draw[curva1] (0,0) -- (7.2,7.2)
+      node[etiqueta,right,text=tceemorado,align=left] {técnica\\tradicional};}
+  % 3: técnica moderna, con el coste fijo F
+  \capa{3}{\draw[curva2] (2,0) node[below,text=black] {$F$} -- (5.68,9.2);
+    \node[etiqueta,anchor=west,text=tceeazul,align=left] at (2.75,0.75) {técnica\\moderna};}
+  % 4: puntos A (una empresa sola) y B (todas), con q^A y q^B
+  \capa{4}{\node[punto] (A) at (4,5) {};
+    \node[etiqueta,right] at (A) {$A$};
+    \draw[guia] (A) -- (0,5) node[left,text=black] {$q^A=L/N$};
+    \node[punto] (B) at (5,7.5) {};
+    \node[etiqueta,right] at (B) {$B$};
+    \draw[guia] (B) -- (0,7.5) node[left,text=black] {$q^B$};
+    \draw[guia] (B) -- (5,0) node[below,text=black] {$L/N$};}
+  % 5: rectas de coste w_1 < w_2 < w_3 y zona del gran empujón
+  \capa{5}{\begin{pgfonlayer}{background}\fill[area2] (0,0) -- (7.2,9.0) -- (6.0,9.0) -- cycle;\end{pgfonlayer}
+    \draw[thick,tceegris] (0,0) -- (7.4,8.14) node[etiqueta,right,text=tceegris] {$w_1$};
+    \draw[curva4] (0,0) -- (6.5,8.97) node[etiqueta,right,text=tceedorado] {$w_2$};
+    \draw[thick,tceegris] (0,0) -- (4.95,8.42) node[etiqueta,left,text=tceegris] {$w_3$};
+    \draw[thin,tceedorado] (6.5,8.3) -- (7.6,8.9)
+      node[etiqueta,right,text=tceedorado,font=\footnotesize,align=left] {zona del\\gran empujón};}
+\end{tikzpicture}
+\end{document}

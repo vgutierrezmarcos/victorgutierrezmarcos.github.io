@@ -1,7 +1,7 @@
 # Modelo schumpeteriano de mejoras de calidad (Aghion y Howitt 1992)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.44** (crecimiento endógeno: innovación tecnológica) — único tema que lo desarrolla: II.2.2 (`sec:aghion-howitt`, 3′ en el cante) con a)-e) y el anexo D paso a paso (`anexo:aghion-howitt`); revisado el 1/11/2026. Premio Nobel de Economía de 2025 (Aghion y Howitt, con Mokyr).
-- **Temas que lo usan:** 3.A.44 (desarrollo; hecho, 1/11/2026), 3.A.17 (mención; hecho, 17/10/2026: U invertida competencia-innovación y efecto reemplazo de Arrow), 3.A.15 (mención; hecho, 20/10/2026: patentes y efecto reemplazo), 3.B.28 (mención: distancia a la frontera y trampa de la renta media), 3.B.31 (mención; hecho, 31/10/2026: cambio técnico dirigido, Acemoglu et al., 2012), 3.B.42 (mención), 4.A.15 (mención prevista: la competencia como política de crecimiento)
+- **Temas que lo usan:** 3.A.44 (desarrollo; hecho, 1/11/2026), 3.A.17 (mención; hecho, 17/10/2026: U invertida competencia-innovación y efecto reemplazo de Arrow), 3.A.15 (mención; hecho, 20/10/2026: patentes y efecto reemplazo), 3.B.28 (mención; hecho, 3/11/2026: III.1, distancia a la frontera de Acemoglu, Aghion y Zilibotti, 2006, imitar o innovar, y trampa de la renta media, Gill y Kharas, 2007, con el WDR 2024 y sus 3 «íes», `\vertema{3.A.44}`), 3.B.31 (mención; hecho, 31/10/2026: cambio técnico dirigido, Acemoglu et al., 2012), 3.B.42 (mención), 4.A.15 (mención prevista: la competencia como política de crecimiento)
 - **Manuales de referencia:** Aghion y Howitt (1992), *Econometrica*; Aghion y Howitt, *The Economics of Growth* (2009), cap. 4; Acemoglu (2009), cap. 14; Barro y Sala-i-Martin (2004), cap. 7; Grossman y Helpman (1991), cap. 4.
 
 ## Presentación de referencia (3.A.44, II.2.2 y anexo D)
@@ -41,7 +41,7 @@ $$\gamma=\lambda_I\,L_I^*\,\ln\gamma_q,\qquad L_I^*=\frac{\gamma_q\frac{1-\alpha
 | 3.A.44 | Innovación tecnológica como motor | desarrollo (hecho, 1/11/2026) | Lo de arriba; comparación con Romer (variedades frente a calidades) | — |
 | 3.A.17 | Monopolio y eficiencia dinámica | mención (hecho, 17/10/2026) | Efecto reemplazo de Arrow y U invertida (Aghion et al., 2005) | El modelo `\vertema{3.A.44}` |
 | 3.A.15 | Barreras y patentes | mención (hecho, 20/10/2026) | El monopolista innova menos (Arrow, 1962) | El modelo |
-| 3.B.28 | Desarrollo | mención | Distancia a la frontera y trampa de la renta media | Derivación |
+| 3.B.28 | Desarrollo | mención (hecho, 3/11/2026) | Distancia a la frontera (lejos: imitar, con grandes grupos y crédito bancario; cerca: innovar, con competencia y mercados de capitales) y trampa de la renta media (34 economías a renta alta desde 1990; 108 en renta media con unos 6.000 millones; invertir, incorporar, innovar; BM, 2024) | Derivación |
 | 3.B.31 | Cambio climático | mención (hecho, 31/10/2026) | Cambio técnico dirigido, subvención a la investigación limpia | El modelo |
 | 3.B.42 | Desarrollo | mención | Instituciones y distancia a la frontera | Derivación |
 | 4.A.15 | Liberalización y competencia | mención (prevista) | La defensa de la competencia como política de crecimiento | El modelo |

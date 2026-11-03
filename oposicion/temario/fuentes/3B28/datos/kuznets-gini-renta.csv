@@ -1,0 +1,153 @@
+# Curva de Kuznets en corte transversal: índice de Gini (0-100, de la renta o del consumo según la encuesta) del último año disponible entre 2015 y 2024 frente al PIB per cápita en PPA (dólares constantes de 2021) del mismo año, 150 países. Ajuste cuadrático Gini = a + b·ln y + c·(ln y)^2: a = -19.0, b = 13.65, c = -0.815, R2 = 0.10, máximo en 4,323 $ (la forma de U invertida es débil en el corte transversal y la empuja América Latina; las encuestas de consumo de los países pobres dan Gini más bajos que las de renta). Fuente: Banco Mundial, WDI (actualización 08/10/2026), SI.POV.GINI, NY.GDP.PCAP.PP.KD y SP.POP.TOTL, https://api.worldbank.org/v2/country/all/indicator/SI.POV.GINI ; regiones y grupos de renta: https://api.worldbank.org/v2/country . Segunda comprobación: gini_pip = Gini de la Poverty and Inequality Platform (versión 20260922, encuesta nacional del mismo año), https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=3&fill_gaps=false&format=csv : 150 países, diferencia máxima 7.5 puntos (149 coinciden al décimo). Fecha de consulta: 03/11/2026
+# Copia para pgfplots: sin comas dentro de los campos de texto (", " pasa a " - ") y con la columna reg (1 Africa subsahariana, 2 America Latina y Caribe, 3 Asia oriental y Pacifico, 4 Asia meridional, 5 Oriente Medio y Norte de Africa con Afganistan y Pakistan, 6 Europa y Asia central y America del Norte).
+codigo,pais,region,grupo_renta,anio,gini,pib_pc_ppa2021,ln_pib_pc,poblacion_mill,gini_pip,reg
+BDI,Burundi,Sub-Saharan Africa,Low income,2020,37.5,1028,6.935,12.62,37.5,1
+CAF,Central African Republic,Sub-Saharan Africa,Low income,2021,43,1129,7.029,5.11,43.0,1
+COD,Congo - Dem. Rep.,Sub-Saharan Africa,Low income,2020,44.7,1361,7.216,95.99,44.7,1
+MOZ,Mozambique,Sub-Saharan Africa,Low income,2022,49.6,1477,7.298,32.66,49.6,1
+MDG,Madagascar,Sub-Saharan Africa,Low income,2021,36.8,1577,7.364,29.69,36.8,1
+NER,Niger,Sub-Saharan Africa,Low income,2021,32.9,1588,7.37,24.5,32.9,1
+LBR,Liberia,Sub-Saharan Africa,Low income,2016,35.3,1653,7.411,4.76,35.3,1
+MWI,Malawi,Sub-Saharan Africa,Low income,2019,38.5,1687,7.431,19.03,38.5,1
+TCD,Chad,Sub-Saharan Africa,Low income,2022,37.4,2449,7.804,18.46,37.4,1
+BFA,Burkina Faso,Sub-Saharan Africa,Low income,2021,37.4,2486,7.819,22.0,37.4,1
+GNB,Guinea-Bissau,Sub-Saharan Africa,Low income,2021,33.4,2522,7.833,2.06,33.4,1
+ETH,Ethiopia,Sub-Saharan Africa,Low income,2021,31.1,2588,7.859,122.14,31.1,1
+GMB,Gambia - The,Sub-Saharan Africa,Low income,2020,38.8,2702,7.902,2.52,38.8,1
+SLE,Sierra Leone,Sub-Saharan Africa,Low income,2018,35.7,2767,7.926,7.55,35.7,1
+UGA,Uganda,Sub-Saharan Africa,Low income,2023,38.2,2791,7.934,48.66,38.2,1
+MLI,Mali,Sub-Saharan Africa,Low income,2021,35.7,2796,7.936,22.39,35.7,1
+LSO,Lesotho,Sub-Saharan Africa,Lower middle income,2017,44.9,2925,7.981,2.16,44.9,1
+TGO,Togo,Sub-Saharan Africa,Lower middle income,2021,37.9,2952,7.99,7.94,37.9,1
+RWA,Rwanda,Sub-Saharan Africa,Low income,2023,39.4,3168,8.061,13.95,39.4,1
+KIR,Kiribati,East Asia & Pacific,Lower middle income,2023,24.7,3175,8.063,0.13,24.7,3
+TZA,Tanzania,Sub-Saharan Africa,Lower middle income,2018,40.5,3393,8.129,57.44,40.5,1
+GIN,Guinea,Sub-Saharan Africa,Lower middle income,2018,29.6,3456,8.148,12.7,29.6,1
+BEN,Benin,Sub-Saharan Africa,Lower middle income,2021,34.4,3464,8.15,13.41,34.4,1
+COM,Comoros,Sub-Saharan Africa,Lower middle income,2024,30.3,3556,8.176,0.87,30.3,1
+ZMB,Zambia,Sub-Saharan Africa,Lower middle income,2022,51.5,3585,8.185,20.15,51.5,1
+VUT,Vanuatu,East Asia & Pacific,Lower middle income,2019,32.3,3987,8.291,0.29,32.3,3
+SEN,Senegal,Sub-Saharan Africa,Lower middle income,2021,36.2,4174,8.337,17.22,36.2,1
+SYR,Syrian Arab Republic,Middle East - North Africa - Afghanistan & Pakistan,Low income,2022,26.4,4579,8.429,22.46,26.4,5
+TJK,Tajikistan,Europe & Central Asia,Lower middle income,2024,36.1,4756,8.467,10.59,36.1,6
+NPL,Nepal,South Asia,Lower middle income,2022,30,4763,8.469,29.72,30.0,4
+CMR,Cameroon,Sub-Saharan Africa,Lower middle income,2021,42.2,4794,8.475,26.92,42.2,1
+ZWE,Zimbabwe,Sub-Saharan Africa,Lower middle income,2019,50.3,4994,8.516,15.27,50.3,1
+DJI,Djibouti,Middle East - North Africa - Afghanistan & Pakistan,Lower middle income,2017,41.6,5422,8.598,1.05,41.6,5
+KEN,Kenya,Sub-Saharan Africa,Lower middle income,2022,38.5,5492,8.611,54.25,38.5,1
+PAK,Pakistan,Middle East - North Africa - Afghanistan & Pakistan,Lower middle income,2024,33.5,5502,8.613,251.27,33.5,5
+STP,Sao Tome and Principe,Sub-Saharan Africa,Lower middle income,2017,40.7,5521,8.616,0.21,40.7,1
+PSE,West Bank and Gaza,Middle East - North Africa - Afghanistan & Pakistan,Lower middle income,2023,36.4,5562,8.624,5.17,36.4,5
+GHA,Ghana,Sub-Saharan Africa,Lower middle income,2016,43.5,5666,8.642,29.36,43.5,1
+MMR,Myanmar,East Asia & Pacific,Lower middle income,2017,30.7,5878,8.679,51.89,30.7,3
+CIV,Cote d'Ivoire,Sub-Saharan Africa,Lower middle income,2021,35.3,6045,8.707,29.64,35.3,1
+MRT,Mauritania,Sub-Saharan Africa,Lower middle income,2019,32,6162,8.726,4.47,32.0,1
+MHL,Marshall Islands,East Asia & Pacific,Upper middle income,2019,35.5,6406,8.765,0.04,35.5,3
+HND,Honduras,Latin America & Caribbean,Lower middle income,2024,45.7,6591,8.793,10.83,45.7,2
+TON,Tonga,East Asia & Pacific,Upper middle income,2021,27.1,6930,8.844,0.11,27.1,3
+KGZ,Kyrgyz Republic,Europe & Central Asia,Lower middle income,2024,27.5,7211,8.883,7.22,27.5,6
+CPV,Cabo Verde,Sub-Saharan Africa,Upper middle income,2015,42.4,7560,8.931,0.51,42.4,1
+NGA,Nigeria,Sub-Saharan Africa,Lower middle income,2022,33.9,7752,8.956,223.15,33.9,1
+BGD,Bangladesh,South Asia,Lower middle income,2022,30.9,7888,8.973,169.38,30.9,4
+LAO,Lao PDR,East Asia & Pacific,Lower middle income,2024,34.7,8600,9.06,7.77,34.7,3
+IND,India,South Asia,Lower middle income,2023,23,8871,9.09,1438.07,23.0,4
+SWZ,Eswatini,Sub-Saharan Africa,Lower middle income,2016,54.6,9403,9.149,1.15,54.6,1
+PHL,Philippines,East Asia & Pacific,Upper middle income,2023,39.3,9899,9.2,114.89,39.3,3
+AGO,Angola,Sub-Saharan Africa,Lower middle income,2018,51.3,10155,9.226,31.3,51.3,1
+JAM,Jamaica,Latin America & Caribbean,Upper middle income,2021,39.9,10431,9.253,2.84,39.9,2
+BOL,Bolivia,Latin America & Caribbean,Lower middle income,2024,40.9,11329,9.335,12.41,40.9,2
+SLV,El Salvador,Latin America & Caribbean,Upper middle income,2023,39.8,11404,9.342,6.31,39.8,2
+BLZ,Belize,Latin America & Caribbean,Upper middle income,2018,39.9,11452,9.346,0.38,39.9,2
+LBN,Lebanon,Middle East - North Africa - Afghanistan & Pakistan,Lower middle income,2022,35.5,11475,9.348,5.74,35.5,5
+UZB,Uzbekistan,Europe & Central Asia,Lower middle income,2025,32.7,11623,9.361,37.05,32.7,6
+NAM,Namibia,Sub-Saharan Africa,Lower middle income,2015,59.1,12167,9.406,2.37,59.1,1
+GTM,Guatemala,Latin America & Caribbean,Upper middle income,2023,45.2,12380,9.424,18.12,45.2,2
+TUN,Tunisia,Middle East - North Africa - Afghanistan & Pakistan,Lower middle income,2021,33.7,12444,9.429,12.05,33.7,5
+VNM,Viet Nam,East Asia & Pacific,Upper middle income,2022,36.1,12980,9.471,99.68,36.1,3
+XKX,Kosovo,Europe & Central Asia,Upper middle income,2022,38.3,13022,9.474,1.77,38.3,6
+FJI,Fiji,East Asia & Pacific,Upper middle income,2019,30.7,13056,9.477,0.91,30.7,3
+IRQ,Iraq,Middle East - North Africa - Afghanistan & Pakistan,Upper middle income,2023,29.8,13202,9.488,45.07,29.8,5
+ZAF,South Africa,Sub-Saharan Africa,Upper middle income,2022,54.1,13767,9.53,62.38,54.1,1
+BTN,Bhutan,South Asia,Lower middle income,2022,28.5,14061,9.551,0.78,28.5,4
+ECU,Ecuador,Latin America & Caribbean,Upper middle income,2025,45.9,14319,9.569,18.29,45.9,2
+LKA,Sri Lanka,South Asia,Upper middle income,2019,37.7,14637,9.591,21.8,37.7,4
+IDN,Indonesia,East Asia & Pacific,Upper middle income,2025,34.4,15091,9.622,285.72,34.4,3
+MNG,Mongolia,East Asia & Pacific,Upper middle income,2022,31.4,15310,9.636,3.43,31.4,3
+EGY,Egypt - Arab Rep.,Middle East - North Africa - Afghanistan & Pakistan,Lower middle income,2021,28.5,15579,9.654,110.96,28.5,5
+PER,Peru,Latin America & Caribbean,Upper middle income,2024,40.1,15709,9.662,34.22,40.1,2
+BWA,Botswana,Sub-Saharan Africa,Upper middle income,2015,54.9,15995,9.68,2.2,54.9,1
+PRY,Paraguay,Latin America & Caribbean,Upper middle income,2024,44.2,16367,9.703,6.93,44.2,2
+MDA,Moldova,Europe & Central Asia,Upper middle income,2024,26.8,16394,9.705,2.4,26.8,6
+ALB,Albania,Europe & Central Asia,Upper middle income,2020,29.4,16458,9.709,2.53,29.4,6
+GNQ,Equatorial Guinea,Sub-Saharan Africa,Upper middle income,2022,38.5,16933,9.737,1.8,38.5,1
+GRD,Grenada,Latin America & Caribbean,Upper middle income,2018,43.8,16965,9.739,0.12,43.8,2
+IRN,Iran - Islamic Rep.,Middle East - North Africa - Afghanistan & Pakistan,Upper middle income,2023,35.9,17045,9.744,90.61,35.9,5
+UKR,Ukraine,Europe & Central Asia,Upper middle income,2020,25.6,17093,9.746,44.68,25.6,6
+BIH,Bosnia and Herzegovina,Europe & Central Asia,Upper middle income,2021,30.3,18287,9.814,3.24,30.3,6
+COL,Colombia,Latin America & Caribbean,Upper middle income,2024,54.4,18482,9.825,52.89,54.4,2
+SUR,Suriname,Latin America & Caribbean,Upper middle income,2022,39.2,18743,9.839,0.62,39.2,2
+GAB,Gabon,Sub-Saharan Africa,Upper middle income,2017,38,19556,9.881,2.16,38.0,1
+BRA,Brazil,Latin America & Caribbean,Upper middle income,2024,50.3,19652,9.886,212.0,50.3,2
+BRB,Barbados,Latin America & Caribbean,High income,2016,34.1,19877,9.897,0.28,34.1,2
+ARM,Armenia,Europe & Central Asia,Upper middle income,2024,27.4,20079,9.907,3.03,27.4,6
+LCA,St. Lucia,Latin America & Caribbean,Upper middle income,2015,43.7,20940,9.949,0.17,51.2,2
+CHN,China,East Asia & Pacific,Upper middle income,2022,36,21499,9.976,1412.17,36.0,3
+MKD,North Macedonia,Europe & Central Asia,Upper middle income,2019,33.5,21767,9.988,1.88,33.5,6
+MDV,Maldives,South Asia,Upper middle income,2019,29.3,21856,9.992,0.49,29.3,4
+THA,Thailand,East Asia & Pacific,Upper middle income,2024,33.3,21882,9.993,71.67,33.3,3
+MEX,Mexico,Latin America & Caribbean,Upper middle income,2024,42.6,21970,9.997,130.86,42.6,2
+MNE,Montenegro,Europe & Central Asia,Upper middle income,2021,34.3,23690,10.073,0.63,34.3,6
+GEO,Georgia,Europe & Central Asia,Upper middle income,2024,33.9,24147,10.092,3.81,33.9,6
+DOM,Dominican Republic,Latin America & Caribbean,Upper middle income,2024,39,24230,10.095,11.43,39.0,2
+MUS,Mauritius,Sub-Saharan Africa,Upper middle income,2017,36.8,24259,10.097,1.26,36.8,1
+SRB,Serbia,Europe & Central Asia,Upper middle income,2023,32.8,25735,10.156,6.62,32.8,6
+BLR,Belarus,Europe & Central Asia,Upper middle income,2020,24.4,26731,10.194,9.38,24.4,6
+ARG,Argentina,Latin America & Caribbean,Upper middle income,2024,42.4,26772,10.195,45.7,42.4,2
+CRI,Costa Rica,Latin America & Caribbean,High income,2025,45.5,28443,10.256,5.15,45.5,2
+MYS,Malaysia,East Asia & Pacific,Upper middle income,2021,40.7,29823,10.303,34.28,40.7,3
+CHL,Chile,Latin America & Caribbean,High income,2024,43,30268,10.318,19.76,43.0,2
+URY,Uruguay,Latin America & Caribbean,High income,2024,40,32149,10.378,3.39,40.0,2
+SYC,Seychelles,Sub-Saharan Africa,High income,2018,32.1,32841,10.399,0.1,32.1,1
+KAZ,Kazakhstan,Europe & Central Asia,Upper middle income,2021,29.2,32946,10.403,19.74,29.2,6
+BGR,Bulgaria,Europe & Central Asia,High income,2023,39.5,33074,10.406,6.45,39.5,6
+HUN,Hungary,Europe & Central Asia,High income,2017,30.6,33829,10.429,9.73,30.6,6
+TUR,Turkiye,Europe & Central Asia,Upper middle income,2023,43.7,35069,10.465,85.33,43.7,6
+PAN,Panama,Latin America & Caribbean,High income,2024,49.7,36395,10.502,4.52,49.7,2
+GRC,Greece,Europe & Central Asia,High income,2023,33.4,36701,10.511,10.41,33.4,6
+LVA,Latvia,Europe & Central Asia,High income,2023,34,37278,10.526,1.88,34.0,6
+SVK,Slovak Republic,Europe & Central Asia,High income,2023,23.8,39502,10.584,5.43,23.8,6
+RUS,Russian Federation,Europe & Central Asia,High income,2023,33,39881,10.594,143.83,33.0,6
+ROU,Romania,Europe & Central Asia,High income,2023,29.8,40117,10.6,19.06,29.8,6
+EST,Estonia,Europe & Central Asia,High income,2023,30.7,41285,10.628,1.37,30.7,6
+HRV,Croatia,Europe & Central Asia,High income,2023,30.1,41320,10.629,3.86,30.1,6
+PRT,Portugal,Europe & Central Asia,High income,2023,33.9,41768,10.64,10.58,33.9,6
+POL,Poland,Europe & Central Asia,High income,2023,28.5,43673,10.684,36.69,28.5,6
+JPN,Japan,East Asia & Pacific,High income,2020,32.3,44213,10.697,126.26,32.3,3
+LTU,Lithuania,Europe & Central Asia,High income,2023,36,46334,10.744,2.87,36.0,6
+ESP,Spain,Europe & Central Asia,High income,2023,33.4,47323,10.765,48.35,33.4,6
+CZE,Czechia,Europe & Central Asia,High income,2023,25.7,47558,10.77,10.86,25.7,6
+SVN,Slovenia,Europe & Central Asia,High income,2023,24.7,47986,10.779,2.12,24.7,6
+ISR,Israel,Middle East - North Africa - Afghanistan & Pakistan,High income,2022,38.3,48132,10.782,9.56,38.3,5
+CYP,Cyprus,Europe & Central Asia,High income,2023,31.8,51675,10.853,1.34,31.8,6
+KOR,Korea - Rep.,East Asia & Pacific,High income,2021,32.9,51718,10.854,51.77,32.9,3
+GBR,United Kingdom,Europe & Central Asia,High income,2021,32.4,51840,10.856,66.98,32.4,6
+ITA,Italy,Europe & Central Asia,High income,2023,34.3,52843,10.875,58.98,34.3,6
+FRA,France,Europe & Central Asia,High income,2023,31.8,54297,10.902,68.37,31.8,6
+FIN,Finland,Europe & Central Asia,High income,2023,27.4,56052,10.934,5.58,27.4,6
+AUS,Australia,East Asia & Pacific,High income,2020,33.8,57260,10.955,25.65,33.8,3
+CAN,Canada,North America,High income,2022,31.5,58583,10.978,38.95,31.5,6
+MLT,Malta,Middle East - North Africa - Afghanistan & Pakistan,High income,2023,31.8,60460,11.01,0.55,31.8,5
+SWE,Sweden,Europe & Central Asia,High income,2023,29.3,62123,11.037,10.54,29.3,6
+BEL,Belgium,Europe & Central Asia,High income,2023,26.8,63042,11.052,11.78,26.8,6
+DEU,Germany,Europe & Central Asia,High income,2022,33.7,63778,11.063,83.18,33.7,6
+AUT,Austria,Europe & Central Asia,High income,2023,31.2,64536,11.075,9.13,31.2,6
+ISL,Iceland,Europe & Central Asia,High income,2019,26.8,65995,11.097,0.36,26.8,6
+NLD,Netherlands,Europe & Central Asia,High income,2021,25.7,68574,11.136,17.53,25.7,6
+DNK,Denmark,Europe & Central Asia,High income,2023,29.9,68994,11.142,5.95,29.9,6
+ARE,United Arab Emirates,Middle East - North Africa - Afghanistan & Pakistan,High income,2018,26.4,72671,11.194,9.35,26.4,5
+USA,United States,North America,High income,2024,41.8,75698,11.235,340.0,41.8,6
+CHE,Switzerland,Europe & Central Asia,High income,2023,33.5,85383,11.355,8.89,33.5,6
+NOR,Norway,Europe & Central Asia,High income,2023,26.5,94365,11.455,5.52,26.5,6
+QAT,Qatar,Middle East - North Africa - Afghanistan & Pakistan,High income,2017,35.1,115065,11.653,2.55,35.1,5
+IRL,Ireland,Europe & Central Asia,High income,2023,29,117660,11.676,5.31,29.0,6
+LUX,Luxembourg,Europe & Central Asia,High income,2023,33.6,130049,11.776,0.67,33.6,6
