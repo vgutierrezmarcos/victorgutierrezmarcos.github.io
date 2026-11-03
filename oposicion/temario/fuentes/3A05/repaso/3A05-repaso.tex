@@ -1,0 +1,290 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Síntesis neoclásica y monetarismo]{3.A.5}{La síntesis neoclásica. El monetarismo.}
+\tcefecha{03/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «cada maestrillo tiene su librillo»}{2,5}
+\apartadocante{I. La síntesis neoclásica}{9,5}
+\subcante{1. Caracterización según \autor{Schumpeter}}{1,5}
+\subcante{2. El modelo IS-LM (\autor{Hicks}, 1937; \autor{Modigliani}, 1944)}{6}
+\subcante{3. La curva de \autor{Phillips}}{2}
+\apartadocante{II. Monetarismo: caracterización y formalización}{8,5}
+\subcante{1. Caracterización según \autor{Schumpeter}}{2,5}
+\subcante{2. Formalización: demanda y oferta}{6}
+\apartadocante{III. Monetarismo: política y valoración}{8,5}
+\subcante{1. Implicaciones de política económica}{5,5}
+\subcante{2. Valoración y contracrítica}{3}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra} (intro y conclusión sin pizarra), 3 zonas. \emph{Izda.}: refrán y 4 pegatinas junto a su concepto: «una de cal y otra de arena» (síntesis), «el hombre es el único animal que tropieza dos veces en la misma piedra» (expectativas adaptativas), «no se puede engañar a todo el mundo todo el tiempo» (curva aumentada), «más vale paso que dure que trote que canse» (regla del $k$\,\%). \emph{Centro}, por capas: plano $(Y,i)$ del IS-LM, que vuelve en el debate de las pendientes; plano $(U,\pi)$, del menú de \autor{Samuelson}-\autor{Solow} a la curva aumentada. \emph{Dcha.}, recuadradas hasta el final: IS, LM, DA y, después, \autor{Phillips} aumentada. La síntesis no baja de 8 min: el tribunal espera las fórmulas y gráficos de IS, LM y DA.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Cada maestrillo tiene su librillo». EE.\,UU.: M2 +27\,\% (feb. 2020-feb. 2021); inflación 9,1\,\% en jun. 2022, máx. desde nov. 1981. Unos miraban el dinero; otros, la brecha y el paro. \emph{Time} (dic. 1965): «ahora todos somos keynesianos»; \autor{Friedman} (1966): «en un sentido\ldots; en otro, nadie es ya keynesiano». ¿Qué los separaba: el modelo o la forma de leerlo?
+\item \textbf{Relevancia}: \emph{teoría}: IS-LM y \autor{Phillips} aumentada, esqueleto de los manuales; \emph{política}: bancos centrales independientes con objetivo de inflación y reglas, herencia monetarista \vertema{3.A.36}; \emph{actualidad}: 2021-23 reabre cuánto importa el dinero; 2 de los 4 motivos de \autor{Schumpeter} (1954) para la historia del pensamiento.
+\item \textbf{Contextualización}: revoluciones y paradigmas (\autor{Kuhn}, 1962) \vertema{3.A.1}. Neoclásicos: mercados se vacían, paro voluntario, dinero solo fija $P$ \vertema{3.A.3}. Gran Depresión = anomalía $\to$ \autor{Keynes} (1936) \vertema{3.A.4}: demanda efectiva, paro involuntario, política fiscal. Libro en prosa y difícil («estimulante y frustrante», \autor{Mankiw}, 2006) $\Rightarrow$ \autor{Hicks}, \autor{Hansen}, \autor{Harrod}, \autor{Meade}, \autor{Modigliani}, \autor{Samuelson} lo traducen: \concepto{síntesis neoclásica}, ortodoxia de los 40 a finales de los 60 (90\,\% de los economistas de EE.\,UU., \autor{Samuelson}, 1955). Inflación 1,6\,\% (1965) $\to$ $>$5\,\% (1969); 70, \emph{estanflación}. 3 críticas: postkeynesianos (J.\,\autor{Robinson}), neokeynesianos del desequilibrio (\autor{Clower}, \autor{Leijonhufvud}, \autor{Malinvaud}) y \emph{monetarista} (\autor{Friedman}), la más influyente en la política: la de esta exposición.
+\item \textbf{Problemática}: ¿cómo se hizo de la \emph{Teoría general} un modelo para la política? ¿Qué cambia si el dinero importa y los agentes aprenden? ¿Puede la demanda bajar el paro para siempre? ¿Reglas o discrecionalidad? ¿Qué queda?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, la síntesis (escuela, IS-LM y DA, \autor{Phillips}); \hyperref[rep:II]{II}, el monetarismo, escuela y formalización (demanda y oferta); \hyperref[rep:III]{III}, política (reglas, Gran Depresión, experimento 1979-82) y valoración.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9,5]{I. La síntesis neoclásica\label{rep:I}}
+\begin{ideaclave}
+Reconcilia a \autor{Keynes} con los neoclásicos: IS-LM keynesiano a corto plazo (salario nominal rígido) y clásico a largo. Con la curva de \autor{Phillips} queda completo: la política de demanda elige en un menú cuánta inflación y cuánto paro.
+\end{ideaclave}
+
+\sub{I.1. Caracterización según \autor{Schumpeter}\label{rep:I.1}}
+\begin{itemize}
+\item 3 rasgos de escuela: líder, seguidores, cuerpo doctrinal.
+\item \emph{Líderes}: \autor{Hicks} (IS-LM, 1937); \autor{Samuelson} (lo lleva a los manuales; nombre «síntesis neoclásica», 3.ª ed. de \emph{Economics}, 1955).
+\item \emph{Seguidores}: \autor{Hansen} (Harvard), \autor{Modigliani}, \autor{Solow}, \autor{Samuelson} (MIT), \autor{Tobin} (Yale), \autor{Klein} (Cowles), \autor{Tinbergen}, \autor{Meade}. Casi todos Nobel (\autor{Tinbergen} 1969 … \autor{Solow} 1987).
+\item \emph{Objeto}: renta y empleo a CP y estabilización; perturbaciones de demanda (sobre todo inversión) que la política puede y debe corregir. \emph{Método}: modelos de equilibrio pequeños + \emph{econometría} (\autor{Tinbergen}, 1936, Países Bajos; \autor{Klein}-\autor{Goldberger}, 1955, EE.\,UU.); expectativas \emph{estáticas} o exógenas.
+\item \emph{2 objetivos}: \emph{formalizar} a \autor{Keynes} y \emph{reconciliarlo}: \autor{Keynes} a CP (rigideces), neoclásicos a LP. «Una de cal y otra de arena».
+\item \emph{Programa}: perfeccionar cada pieza: consumo $C=\overline C+cY^d$ \vertema{3.A.33}; inversión $I=\overline I-bi$ \vertema{3.A.34}; dinero (inventario, cartera) \vertema{3.A.35}.
+\item \emph{Política}: \concepto{sintonía fina} (\emph{fine tuning}); fiscal preferida; monetaria poco eficaz (Informe \autor{Radcliffe}, 1959; excepción, \autor{Modigliani}).
+\end{itemize}
+
+\sub{I.2. El modelo IS-LM\label{rep:I.2}}
+\begin{itemize}
+\item \textbf{Idea}: \autor{Hicks} (1937), «Mr.\ Keynes and the ``Classics''»: \autor{Keynes} y clásicos en un mismo sistema; llamó \emph{LL} a la 2.ª curva. \autor{Modigliani} (1944): submodelo clásico (salarios flexibles) vs. keynesiano (salario nominal rígido a la baja). Nombre IS-LM: \autor{Hansen} (1949, 1953). Precedentes en Oxford 1936 (\autor{Harrod}, \autor{Meade}); \autor{Hicks} (1980) se distanció. Une bienes y dinero vía el tipo de interés: ¿cómo se fijan a la vez $Y$ e $i$ a CP y qué eficacia tienen las políticas?
+\item \textbf{Supuestos}: economía cerrada, CP, $P=\overline P$ (recursos ociosos); $\pi^e=0\Rightarrow i=r$; 3 mercados (bienes, dinero, bonos): por \autor{Walras} bastan 2. $C=\overline C+c(1-t)Y$, $I=\overline I-bi$, $\overline G$; demanda de saldos reales $kY-hi$; $M$ exógena.
+\item \concepto{Curva IS} (\emph{investment = saving}): pares $(Y,i)$ con $Y=C+I+\overline G$:
+\funcionclave{\text{IS: } Y=\frac{\overline A-b\,i}{1-c(1-t)},\quad \overline A\equiv\overline C+\overline I+\overline G}
+\item[] Pendiente $-[1-c(1-t)]/b<0$: más plana con $b$ grande y multiplicador alto. $\overline G$↑, $t$↓, $\overline I$↑ $\Rightarrow$ dcha.
+\item \concepto{Curva LM} (\emph{liquidity preference = money supply}):
+\funcionclave{\text{LM: } \frac{M}{P}=kY-h\,i\iff i=\frac{1}{h}\Big(kY-\frac{M}{P}\Big)}
+\item[] Pendiente $k/h>0$: más plana con $h$ grande. $M/P$↑ $\Rightarrow$ dcha.
+\item \textbf{Equilibrio}, con $D\equiv h[1-c(1-t)]+bk$:
+\begin{formula}
+\centering $Y^*=\dfrac{h\overline A+b\,M/P}{D},\qquad i^*=\dfrac{k\overline A-[1-c(1-t)]\,M/P}{D}$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.82\linewidth]{is-lm}{IS-LM: $E$; expansión fiscal $E\to E'$ (sin expulsión llegaría a $F$); monetaria $E\to E''$}
+\begin{itemize}
+\item \textbf{Política fiscal}: IS dcha.; $Y$↑ $\Rightarrow$ demanda de dinero ↑, $i$↑, $I$↓: \concepto{efecto expulsión} (\emph{crowding out}):
+\begin{formula}
+\centering $\dfrac{\partial Y^*}{\partial\overline G}=\dfrac{1}{1-c(1-t)+bk/h}<\dfrac{1}{1-c(1-t)}$
+\end{formula}
+\item \textbf{Política monetaria}: LM dcha.; $i$↓, $I$↑, $Y$↑ (canal del tipo de interés \vertema{3.A.37}):
+\begin{formula}
+\centering $\dfrac{\partial Y^*}{\partial(M/P)}=\dfrac{b}{h[1-c(1-t)]+bk}$
+\end{formula}
+\item \textbf{Casos extremos} (dependen de $b$ y $h$):
+\begin{itemize}
+\item \concepto{Trampa de la liquidez} ($h\to\infty$, LM \emph{horizontal}): el dinero se atesora; monetaria inútil, fiscal con multiplicador simple. Caso de \autor{Keynes} en la depresión.
+\item \emph{Clásico} ($h=0$, LM \emph{vertical}): $Y=(1/k)M/P$, teoría cuantitativa ($V=1/k$); fiscal 0, monetaria $1/k$.
+\item \emph{Inversión insensible} ($b=0$, IS vertical): monetaria 0, fiscal simple. \emph{Muy sensible} ($b\to\infty$, IS horizontal): fiscal 0, monetaria $1/k$.
+\end{itemize}
+\item[] Entre extremos: \emph{debate de las pendientes} (\hyperref[rep:II.2]{II.2}).
+\item \textbf{¿Paro de equilibrio con precios flexibles?} (1) Paro $\Rightarrow$ $W$, $P$↓ $\Rightarrow$ $M/P$↑, LM dcha., $i$↓, $I$↑: \concepto{efecto \autor{Keynes}}. (2) Falla en trampa de la liquidez y $b=0$. (3) \autor{Pigou} (1943), \autor{Patinkin} (1956): saldos reales = riqueza, $\overline C$↑ con $M/P$, IS dcha.: \concepto{efecto saldos reales} o \concepto{\autor{Pigou}-\autor{Patinkin}} \vertema{3.A.21}: siempre vuelve al pleno empleo, aunque lento.
+\item[] \emph{Conclusión de la síntesis}: paro involuntario por \emph{salario nominal rígido} (\autor{Modigliani}, 1944): \autor{Keynes}, caso particular, no «teoría general»; pero el CP es keynesiano y hay que estabilizarlo.
+\item \textbf{De IS-LM a DA-OA}: para cada $P$, el equilibrio da la \concepto{demanda agregada}:
+\funcionclave{\text{DA: } Y=\frac{h\overline A+b\,M/P}{h[1-c(1-t)]+bk}}
+\item[] Pendiente negativa en $(Y,P)$ (efecto \autor{Keynes}); se desplaza con $\overline A$ y $M$. Vertical si trampa o $b=0$; \autor{Pigou}-\autor{Patinkin} la vuelve a inclinar. \emph{OA}: CP creciente ($W_0$ rígido: $P$↑ $\Rightarrow$ $W_0/P$↓, más empleo); horizontal si $P$ fijo; LP vertical en $Y^n$.
+\item[] \emph{Ajuste}: $Y>Y^n$ $\Rightarrow$ $W$, $P$↑, $M/P$↓, LM izda., vuelta a $Y^n$. Monetaria: solo precios (\emph{neutralidad} a LP); fiscal: $i$↑ y expulsión total a LP.
+\item \textbf{Extensiones}: IS-LM-BP (\autor{Mundell}-\autor{Fleming}) \vertema{3.A.32}; restricción presupuestaria, dinero o deuda (\autor{Blinder}-\autor{Solow}, 1973) \vertema{3.A.39}.
+\item \textbf{Evidencia}: esqueleto de los modelos macroeconométricos (\autor{Klein}-\autor{Goldberger}, 1955; en los 60, cientos de ecuaciones); domina $\approx$25 años de posguerra; sintonía fina parece funcionar.
+\item \textbf{Valoración}. \emph{Virtudes}: sencillez (2 curvas); versatilidad («responsable de su supervivencia», \autor{Fischer}, 1986). \emph{Críticas}: precios dados, no explica la inflación ($\to$ \autor{Phillips}); un solo canal y activo; estático, sin microfundamentos (\autor{Lucas}, 1976) \vertema{3.A.6}; salario rígido sin justificar; se aleja de \autor{Keynes} (desequilibrio) \vertema{3.A.4}.
+\end{itemize}
+
+\sub{I.3. La curva de \autor{Phillips}\label{rep:I.3}}
+\begin{itemize}
+\item \textbf{Idea}: la pieza que faltaba al IS-LM para la inflación \vertema{3.A.28}.
+\item \autor{Phillips} (1958): R.\,Unido 1861-1957, relación inversa y convexa entre crecimiento de \emph{salarios nominales} y paro.
+\item \autor{Samuelson}-\autor{Solow} (1960): la pasan a \emph{precios} (margen fijo sobre el coste laboral unitario: $\pi$ = salarios $-$ productividad); tramo relevante casi recto:
+\begin{formula}
+\centering $\pi_t\approx\bar\pi-a\,U_t,\qquad a>0$
+\end{formula}
+\item[] \concepto{Menú} para EE.\,UU.: precios estables con $\approx$5,5\,\% de paro; paro del 3\,\% $\Rightarrow$ inflación 4,5\,\%.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{samuelson-solow}{El menú de \autor{Samuelson} y \autor{Solow}: más inflación a cambio de menos paro}
+\begin{itemize}
+\item \textbf{Implicaciones}: IS-LM (demanda) + \autor{Phillips} (precios) = modelo completo; la política elige en el menú, de forma \emph{permanente}. «Probablemente la relación macroeconómica más importante» (\autor{Akerlof}, 2002).
+\item \textbf{Valoración}: los propios autores avisaron de que podía cambiar a LP, pero se impuso la lectura permanente; no contempla inflación de oferta; poca teoría, sin expectativas. Estanflación $\to$ \autor{Friedman}-\autor{Phelps} (\hyperref[rep:II.2]{II.2}).
+\end{itemize}
+
+% ==========================================================================
+\bloque[8,5]{II. Crítica monetarista: caracterización y formalización\label{rep:II}}
+\begin{ideaclave}
+El monetarismo no tira el modelo, cambia sus piezas: consumo y demanda de dinero más estables, dinero más potente y, sobre todo, ningún menú permanente entre inflación y paro.
+\end{ideaclave}
+
+\sub{II.1. Caracterización según \autor{Schumpeter}\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Líder}: M.\,\autor{Friedman} (Chicago desde 1946; taller de dinero y banca; \emph{Studies}, 1956). Nobel 1976 (consumo, historia y teoría monetarias, complejidad de la estabilización).
+\item \emph{Seguidores}: A.\,\autor{Schwartz}, \autor{Cagan}, \autor{Brunner}, \autor{Meltzer}, \autor{Laidler}, \autor{Parkin}, H.\,\autor{Johnson} (economía abierta). Nombre «monetarismo»: \autor{Brunner} (1968).
+\item \emph{Objeto}, 3 conclusiones: (1) \concepto{el dinero importa} (\emph{money matters}): causa principal de la renta nominal; CP producción, LP precios; «la inflación es siempre y en todas partes un fenómeno monetario» (\autor{Friedman}, 1963) \vertema{3.A.41}; (2) la economía de mercado es \emph{estable}: las perturbaciones vienen de una política monetaria errática; (3) la discrecionalidad \emph{desestabiliza}: reglas. Libre mercado y Estado pequeño (\emph{Capitalism and Freedom}, 1962).
+\item \emph{Método} (\autor{Friedman}, 1953, «The Methodology of Positive Economics»), 5 rasgos: (1) \emph{predicción} como criterio (afín a \autor{Popper}, pero instrumentalista) \vertema{3.A.1}; (2) \emph{positiva vs. normativa} (frente a \autor{Myrdal}: valores implícitos); (3) \emph{irrelevancia del realismo de los supuestos}: \emph{como si} (billar; empresas que maximizan), «giro F» de \autor{Samuelson} (1963); (4) \emph{sencillez}; (5) \emph{enfoque marshalliano} (equilibrio parcial y datos) vs. walrasiano (\autor{Friedman}, 1949).
+\item \concepto{Expectativas adaptativas}: se corrige una fracción $\gamma$ del último error (\autor{Cagan}, 1956, hiperinflaciones; \autor{Friedman}, 1957, renta permanente \vertema{3.A.33}; \autor{Nerlove}, 1958, telaraña \vertema{3.A.16}):
+\begin{formula}
+\centering $\pi^e_t=\pi^e_{t-1}+\gamma(\pi_{t-1}-\pi^e_{t-1})=\gamma\sum_{j\geq0}(1-\gamma)^j\pi_{t-1-j}$
+\end{formula}
+\item[] Media de las pasadas con pesos geométricos; $\gamma=1$: $\pi^e_t=\pi_{t-1}$. \emph{Ventaja}: aprenden de sus errores. \emph{Límite}: con inflación creciente, \emph{errores sistemáticos}: «el hombre es el único animal que tropieza dos veces en la misma piedra» $\to$ racionales (\autor{Muth}, 1961) \vertema{3.A.6}.
+\end{itemize}
+
+\sub{II.2. Formalización de \autor{Friedman} vs. \autor{Keynes} y la síntesis\label{rep:II.2}}
+\begin{itemize}
+\item 2 etapas: hasta 1968, \emph{demanda} (consumo, inversión, dinero); desde \autor{Friedman} (1968), \emph{oferta} (tasa natural).
+\item \textbf{Consumo}. \emph{Síntesis}: renta corriente, $C_t=\overline C+cY^d_t$, PMeC ↓ con la renta; de ahí el multiplicador y el \emph{estancamiento secular} (\autor{Hansen}, 1939) \vertema{3.A.40}. \emph{\autor{Friedman}} (1957): \concepto{renta permanente}:
+\begin{formula}
+\centering $C^P_t\propto Y^P_t,\qquad Y^P_t=r\,\overline W_t$
+\end{formula}
+\item[] Riqueza humana y no humana, estimada con expectativas adaptativas. Lo transitorio apenas mueve el consumo (rebaja temporal de impuestos poco eficaz; multiplicador menor); consumo más estable que la renta, PMeC no cae a LP (no hay estancamiento secular); la riqueza abre otro canal monetario.
+\item \textbf{Inversión}. \emph{Síntesis}: inestable (\emph{animal spirits}), poco sensible al tipo: $b$ pequeño, IS inclinada. \emph{Monetaristas}: gasto sensible mucho más amplio (vivienda, duraderos, existencias) y a toda la gama de rendimientos: $b$ grande, \emph{IS plana}.
+\item \textbf{Demanda de dinero}. \emph{Síntesis}: transacción, precaución y especulación; inestable, $h$ grande, LM plana, velocidad poco fiable \vertema{3.A.35}. \emph{\autor{Friedman}} (1956): \concepto{teoría cuantitativa reformulada}, el dinero como activo de cartera:
+\begin{formula}
+\centering $\dfrac{M^D}{P}=f\big(\underset{+}{Y^P},\underset{-}{r_b-r_m},\underset{-}{r_e-r_m},\underset{-}{\pi^e-r_m},\underset{+}{\overline W_H/\overline W}\big)$
+\end{formula}
+\item[] \emph{Estable}: depende de $Y^P$, y los diferenciales se mueven poco ($r_m$ sube con los demás); $h$ pequeño, \emph{LM inclinada}, trampa de la liquidez = curiosidad teórica. $V$ predecible en $MV=PY$ $\Rightarrow$ $M$ fija la renta nominal.
+\item \textbf{Transmisión}. \emph{Síntesis}: un canal, $M$↑ $\Rightarrow$ $i$↓ $\Rightarrow$ $I$↑ $\Rightarrow$ $Y$↑, con 2 eslabones débiles. \emph{Monetaristas}: \concepto{reajuste de carteras}: bonos, acciones, capital instalado, duraderos; \autor{Brunner}-\autor{Meltzer} (1972): 3 activos y mercado de crédito \vertema{3.A.37}.
+\item \textbf{Evidencia}: \autor{Friedman}-\autor{Meiselman} (1963, EE.\,UU. 1897-1958): el dinero explica mejor el consumo que el gasto autónomo; \autor{Ando}-\autor{Modigliani} (1965): lo contrario con otra definición. Debate abierto.
+\item \textbf{Debate de las pendientes}: \emph{keynesianos}, IS inclinada y LM plana (fiscal eficaz, monetaria débil); \emph{monetaristas}, IS plana y LM inclinada (monetaria potente, fiscal se expulsa a sí misma).
+\end{itemize}
+\graficorepaso[\linewidth]{pendientes}{Pendientes: misma expansión fiscal y monetaria según keynesianos (a) y monetaristas (b)}
+\begin{itemize}
+\item[] \emph{Matiz}: \autor{Friedman} no aceptó depender de una LM vertical; usó el IS-LM solo en 1970 para hablar el lenguaje de sus críticos. Lo que le separaba: estabilidad de la demanda de dinero y amplitud de la transmisión; él marshalliano, ellos walrasianos (\autor{Bordo}-\autor{Schwartz}, 2003).
+\item \textbf{Oferta}. \autor{Friedman} (1968, discurso AEA) y \autor{Phelps} (1967, 1968): importa el salario \emph{real}; al negociar el nominal se prevé la inflación \vertema{3.A.28}. Curva \concepto{aumentada con expectativas}:
+\funcionclave{\pi_t=\pi^e_t-a\,(U_t-U^n)+\varepsilon_t,\quad a>0}
+\item[] \concepto{Tasa natural de paro} $U^n$: la que hay con $\pi=\pi^e$; la del «sistema walrasiano de ecuaciones de equilibrio general» con las características estructurales de los mercados (\autor{Friedman}, 1968); factores reales, no demanda \vertema{3.A.26}.
+\item[] Una curva de CP por cada $\pi^e$: expansión, $W/P$↓, paro ↓ ($A\to B$); al revisar expectativas, vuelta a $U^n$ con más inflación ($C$); LP \emph{vertical} en $U^n$. «No se puede engañar a todo el mundo todo el tiempo».
+\end{itemize}
+\graficorepaso[0.72\linewidth]{phillips-aumentada}{\autor{Phillips} aumentada: $A\to B$ a CP; $C$ al revisar $\pi^e$; $D$ si se insiste: LP vertical en $U^n$}
+\begin{itemize}
+\item[] Con $\pi^e_t=\pi_{t-1}$ y sin perturbaciones, \concepto{curva aceleracionista}:
+\begin{formula}
+\centering $\Delta\pi_t\equiv\pi_t-\pi_{t-1}=-a\,(U_t-U^n)$
+\end{formula}
+\item[] $U<U^n$ exige inflación creciente ($C\to D$): \concepto{NAIRU} \vertema{3.A.28}.
+\item[] \emph{Implicaciones}: «siempre hay una disyuntiva temporal entre inflación y paro; no hay una disyuntiva permanente» (\autor{Friedman}, 1968); bajar $U^n$, políticas de oferta. \emph{Evidencia}: la predicción antes que los datos: 1969-71, paro 3,5 $\to$ 6\,\% e inflación solo 5,4 $\to$ 4,2\,\%; 1975, paro 8,5\,\% e inflación 9,1\,\%: estanflación. \emph{Valoración}: separa CP y LP, expectativas al centro; con adaptativas, errores en la misma dirección $\to$ nueva macroeconomía clásica (\autor{Lucas}, 1972) \vertema{3.A.6}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8,5]{III. Crítica monetarista: política y valoración\label{rep:III}}
+\begin{ideaclave}
+Si la demanda privada es estable, el dinero potente y el paro vuelve solo a su tasa natural, la mejor política es la que no estorba: regla monetaria sencilla, tipos flexibles, Estado que no afina. La Gran Depresión, prueba del dinero mal gestionado; 1979-82, de los límites de la receta.
+\end{ideaclave}
+
+\sub{III.1. Implicaciones de política económica\label{rep:III.1}}
+\begin{itemize}
+\item \textbf{Demanda}. \emph{Monetaria}: potente a CP, con «retardos largos y variables» (\autor{Friedman}, 1961): la sintonía fina amplifica el ciclo. \emph{Fiscal} con deuda: expulsa gasto privado, poco efecto salvo que la acompañe el dinero (debate \autor{Friedman}-\autor{Heller}, 1969) \vertema{3.A.38}; gasto pequeño: impuesto negativo sobre la renta, cheques escolares (1962).
+\item \emph{Qué puede y qué no} (\autor{Friedman}, 1968): \emph{no} fijar $i$ ni $U$ más que un tiempo (inflación o deflación creciente); \emph{sí} evitar que el dinero perturbe, dar un marco estable (precios predecibles) y compensar perturbaciones grandes y claras.
+\item \concepto{Regla del $k$\,\%} (\autor{Friedman}, 1960). Ecuación cuantitativa en tasas:
+\begin{formula}
+\centering $\gamma_M+\gamma_V=\pi+\gamma_Y\quad\Rightarrow\quad \gamma_M=\overline\gamma_M\ \ \text{(3-5\,\%)}$
+\end{formula}
+\item[] $V$ estable: $\gamma_M$ = crecimiento de LP de $Y$ (+ margen por la caída tendencial de $V$) $\Rightarrow$ precios estables. 3 ventajas: no depende de previsiones, sin presión política, ancla expectativas \vertema{3.A.36}. «Más vale paso que dure que trote que canse». $\neq$ \emph{regla de \autor{Friedman}} (1969): $i=0$, deflación = tipo real \vertema{3.A.41}.
+\item \textbf{Experimento monetarista}. 6 oct. 1979, Fed de \autor{Volcker}: controla reservas y deja libre el tipo; fondos federales 19,10\,\% (jun. 1981); inflación 14,8\,\% (mar. 1980) $\to$ 3,8\,\% (dic. 1982), paro 10,8\,\% (nov. 1982); oct. 1982, deja el objetivo de M1. R.\,Unido: \emph{Medium-Term Financial Strategy} (26 mar. 1980), £M3 7-11\,\% decreciente.
+\item[] Pero la \emph{velocidad} dejó de ser estable (desregulación, depósitos remunerados): M1 rompe en 1981; M2 estable hasta 1990, 2,19 (1997) $\to$ 1,13 (2020) $\to$ 1,42. Canadá deja M1 (nov. 1982); Fed: M2 ya no fiable (\autor{Greenspan}, jul. 1993); fin de bandas (2000).
+\end{itemize}
+\graficorepaso[0.92\linewidth]{velocidad-dinero}{Velocidad de M2 y M1 en EE.\,UU., 1959-2026: estable hasta 1990, luego se rompe}
+\begin{itemize}
+\item \textbf{Oferta}: $U^n$ solo baja con reformas: menos trabas a contratación y movilidad, información sobre vacantes, menos monopolio de empresas y sindicatos \vertema{3.A.28}. Desinflación con coste (paro $>U^n$ un tiempo) \vertema{3.A.41}: gradual y anunciada.
+\item \textbf{Economía abierta}: \emph{tipos flexibles} (\autor{Friedman}, 1953, en pleno Bretton Woods) \vertema{3.B.15}; flotación tras 1971-73 \vertema{3.B.20}. H.\,\autor{Johnson}: \concepto{enfoque monetario de la balanza de pagos} (\autor{Frenkel}-\autor{Johnson}, 1976): con tipo fijo, desequilibrio = exceso de oferta o demanda de dinero, corregido por reservas \vertema{3.B.12}.
+\item \textbf{Gran Depresión}. \emph{Síntesis}: demanda hundida, trampa de la liquidez, salida fiscal. \emph{\autor{Friedman}-\autor{Schwartz}} (1963, \emph{A Monetary History}, cap.~7): prueba del \emph{poder} del dinero, «trágico testimonio de la importancia de las fuerzas monetarias».
+\item[] \emph{Hechos} (ago. 1929-mar. 1933): dinero $-$35\,\% (46.280 $\to$ 29.970 M\$); $>$1/5 de los bancos suspende; bancos 24.504 $\to$ 13.949; 1929-33, PIB real $-$26\,\% e IPC $-$25\,\% (F-S daban $-$36\,\% de renta real).
+\item[] \emph{Mecanismo}: la \emph{base no cayó} (sola habría subido $M$ un 17,5\,\%); cayó el \emph{multiplicador}: depósitos/efectivo 10,8 $\to$ 4,4; depósitos/reservas 13,1 $\to$ 9,1 \vertema{3.A.36}. \emph{Culpa}: la Fed no compró títulos ni prestó liquidez; actuando en 1930-31, habría acabado «mucho antes». No hubo expansión previa (Fed dura en 1928-29); la burbuja por dinero laxo es austriaca (\autor{Rothbard}, 1963).
+\item[] \emph{Lección}: \autor{Bernanke} (1983) añade el canal del crédito \vertema{3.A.37}; 2002, en el 90.º cumpleaños de \autor{Friedman}: «tenéis razón, lo hicimos nosotros\ldots\ no lo volveremos a hacer»; 2008, liquidez: $M$ no cayó. Nobel 2022 (con \autor{Diamond}, \autor{Dybvig}).
+\item[] \concepto{\emph{Plucking model}} (\autor{Friedman}, 1964, 1993): producción = cuerda pegada al techo (potencial) de la que se tira; la caída predice la recuperación, no al revés \vertema{3.A.42}. \emph{A Monetary History} rehabilitó el ciclo monetario (reseña de \autor{Lucas}, 1994).
+\end{itemize}
+
+\sub{III.2. Valoración y contracrítica\label{rep:III.2}}
+\begin{itemize}
+\item \textbf{Virtudes}: tasa natural y \autor{Phillips} vertical a LP \vertema{3.A.28}; política monetaria centrada en la inflación, responsabilidad del banco central; expectativas al centro; reglas vs. discrecionalidad (más lejos, \autor{Lucas}).
+\item \textbf{Contracrítica práctica}: desinflación cara: paro 10,8\,\% en 1982, máx. de posguerra (también 2.º choque del petróleo). \autor{Kaldor} (1970, 1982): recesión británica 1980-81; \emph{dinero endógeno}: lo crea el crédito, el banco central no lo controla.
+\item \textbf{Contracrítica teórica}: (1) \emph{causación inversa} (\autor{Tobin}, 1970): un modelo keynesiano con $M$ que responde a la renta esperada da los mismos adelantos; (2) \concepto{ley de \autor{Goodhart}} (1975): toda regularidad estadística se rompe al usarla para el control; con perturbaciones de demanda de dinero, mejor fijar el tipo (\autor{Poole}, 1970) $\to$ reglas de tipo de interés (\autor{Taylor}) \vertema{3.A.36}; (3) renta permanente inobservable; (4) adaptativas $\Rightarrow$ errores sistemáticos $\to$ racionales (\autor{Muth}, 1961; \autor{Lucas}, 1972) \vertema{3.A.6}.
+\item \textbf{Legado}: nueva síntesis neoclásica de los 90 (\autor{Goodfriend}-\autor{King}, 1997) \vertema{3.A.7}: tasa natural, expectativas, reglas, objetivo de inflación + rigideces de la síntesis; la usan hoy los bancos centrales (\autor{Mankiw}, 2006).
+\item \textbf{Paradoja final}: \autor{Friedman} puso a los keynesianos a la defensiva, pero vino la nueva macro clásica (walrasiana, racionales); los monetaristas, marshallianos, se vieron más cerca de los keynesianos (\autor{De Vroey}, 2016).
+\end{itemize}
+\begin{itemize}
+\item \textbf{Pieza a pieza} (síntesis vs. monetarismo): consumo, renta corriente vs. permanente; inversión, IS inclinada vs. plana; dinero, inestable ($h$ grande, LM plana) vs. estable ($h$ pequeño, LM inclinada); transmisión, bonos vs. cartera; expectativas, estáticas vs. adaptativas; \autor{Phillips}, menú vs. vertical a LP; economía privada, inestable vs. estable; política, fiscal discrecional vs. monetaria con reglas; tipo de cambio, fijo vs. flexible; Gran Depresión, demanda insuficiente vs. contracción monetaria.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» la síntesis hizo de \autor{Keynes} el IS-LM cerrado con \autor{Phillips}: \autor{Keynes} a CP, neoclásicos a LP, menú de inflación y paro. El monetarismo mantuvo el modelo y cambió las piezas: consumo y dinero estables, dinero potente, \autor{Phillips} vertical a LP. «Contrarrevolución» (\autor{Johnson}, 1971; \autor{Friedman}, 1970).
+\item \textbf{Relevancia}: la estanflación dio la razón a la crítica; la desinflación 1979-82 y la velocidad, a la contracrítica. Lo que sobrevivió es el suelo de los bancos centrales.
+\item \textbf{Extensiones}: desequilibrio \vertema{3.A.4}; racionales y crítica de \autor{Lucas} \vertema{3.A.6}; nueva economía keynesiana \vertema{3.A.7}; demanda de dinero \vertema{3.A.35}; de $k$\,\% a \autor{Taylor} \vertema{3.A.36}; tasa natural y NAIRU \vertema{3.A.28}.
+\item \textbf{Opinión}: las 2 tenían parte de razón: la síntesis, demanda a CP y estabilización; el monetarismo, sin atajos permanentes contra el paro y dinero mal gestionado = peores crisis. Error: la cantidad de dinero, mal objetivo.
+\item \textbf{Idea final}: «cada maestrillo tiene su librillo», pero el libro era el mismo (IS-LM y \autor{Phillips}); separaban pendientes, estabilidad del dinero y expectativas. Todos keynesianos y nadie: los bancos centrales leen el mismo libro con páginas de los 2 librillos.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1936}{\autor{Keynes}: \emph{Teoría general}; \autor{Tinbergen}: 1.\textsuperscript{er} modelo macroeconométrico}
+\hito{1937}{\autor{Hicks}: «Mr.\ Keynes and the ``Classics''» (IS-LL)}
+\hito{1943}{\autor{Pigou}: efecto saldos reales}
+\hito{1944}{\autor{Modigliani}: salario nominal rígido}
+\hito{1949}{\autor{Hansen}: \emph{Monetary Theory and Fiscal Policy} (1953, \emph{Guide})}
+\hito{1953}{\autor{Friedman}: metodología positiva; tipos flexibles}
+\hito{1955}{\autor{Samuelson}: «síntesis neoclásica» (3.ª ed.); \autor{Klein}-\autor{Goldberger}}
+\hito{1956}{\autor{Friedman}: teoría cuantitativa reformulada; \autor{Cagan}; \autor{Patinkin}}
+\hito{1957}{\autor{Friedman}: renta permanente}
+\hito{1958}{\autor{Phillips}: salarios y paro; \autor{Nerlove}}
+\hito{1960}{\autor{Samuelson}-\autor{Solow}: el menú; \autor{Friedman}: regla del $k$\,\%}
+\hito{1961}{\autor{Friedman}: retardos largos y variables; \autor{Muth}: racionales}
+\hito{1962}{\autor{Friedman}: \emph{Capitalism and Freedom}}
+\hito{1963}{\autor{Friedman}-\autor{Schwartz}: \emph{A Monetary History}; \autor{Friedman}-\autor{Meiselman}}
+\hito{1965}{\autor{Ando}-\autor{Modigliani}; \emph{Time}: «todos keynesianos»}
+\hito{1967}{\autor{Phelps}: \autor{Phillips} con expectativas}
+\hito{1968}{\autor{Friedman}: «The Role of Monetary Policy»; \autor{Brunner}: «monetarismo»}
+\hito{1970}{\autor{Tobin}: causación inversa; \autor{Poole}; \autor{Kaldor}}
+\hito{1971}{\autor{Johnson}: «contrarrevolución»}
+\hito{1972}{\autor{Brunner}-\autor{Meltzer}: 3 activos; \autor{Lucas}: expectativas}
+\hito{1975}{\autor{Goodhart}: su ley}
+\hito{1976}{Nobel a \autor{Friedman}; \autor{Lucas}: crítica}
+\hito{1979}{6 oct.: Fed de \autor{Volcker}, control de reservas}
+\hito{1980}{R.\,Unido: \emph{Medium-Term Financial Strategy}}
+\hito{1982}{Fed y Banco de Canadá dejan M1}
+\hito{1983}{\autor{Bernanke}: canal del crédito}
+\hito{1993}{\autor{Greenspan}: M2 ya no fiable; \autor{Friedman}: \emph{plucking}}
+\hito{1997}{\autor{Goodfriend}-\autor{King}: nueva síntesis}
+\hito{2002}{\autor{Bernanke}: «lo hicimos nosotros»}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item M2 de EE.\,UU. \dato{+27\,\% (feb. 2020-feb. 2021)}{FRED}; inflación \dato{9,1\,\% (jun. 2022)}{BLS}.
+\item Inflación EE.\,UU. \dato{1,6\,\% (1965) $\to$ $>$5\,\% (1969)}{BLS}.
+\item 1969-71: paro \dato{3,5 $\to$ 6\,\%}{BLS}, inflación \dato{5,4 $\to$ 4,2\,\%}{BLS}; 1975: \dato{8,5\,\% paro y 9,1\,\% inflación}{BLS}.
+\item Fondos federales \dato{19,10\,\% (jun. 1981)}{FRED}; inflación \dato{14,8\,\% $\to$ 3,8\,\% (1980-82)}{BLS}; paro \dato{10,8\,\% (nov. 1982)}{BLS}.
+\item Velocidad M2: \dato{2,19 (1997) $\to$ 1,13 (2020) $\to$ 1,42}{FRED, 3T 2026}.
+\item Gran Contracción: dinero \dato{$-$35\,\%}{F-S, 1963}; bancos \dato{24.504 $\to$ 13.949}{F-S; FRED}; PIB real \dato{$-$26\,\%}{BEA}; IPC \dato{$-$25\,\%}{BLS}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué «síntesis»?} 2 marcos tenidos por incompatibles en uno: \autor{Keynes} a CP (salario rígido), neoclásicos a LP.
+\item \textbf{¿Qué es el efecto expulsión y de qué depende?} $\overline G$↑ $\Rightarrow$ $i$↑ $\Rightarrow$ $I$↓; mayor con $b$ grande y $h$ pequeño; total con LM vertical.
+\item \textbf{¿Efecto \autor{Keynes} vs. \autor{Pigou}-\autor{Patinkin}?} El 1.º, por el tipo (LM); falla en trampa y $b=0$. El 2.º, por la riqueza (IS): siempre vuelve al pleno empleo.
+\item \textbf{¿\autor{Friedman} defendía una LM vertical?} No: lo clave era una demanda de dinero estable y una transmisión amplia; método marshalliano.
+\item \textbf{¿Qué es la tasa natural de paro?} La de $\pi=\pi^e$; la fijan factores reales; solo la bajan políticas de oferta.
+\item \textbf{¿Por qué fracasó la regla del $k$\,\%?} La velocidad dejó de ser estable (desregulación); ley de \autor{Goodhart}; \autor{Poole}: con perturbaciones monetarias, mejor fijar el tipo.
+\item \textbf{¿Qué causó la Gran Contracción según F-S?} Caída del multiplicador (no de la base) por pánicos bancarios; la Fed no actuó.
+\item \textbf{¿Qué queda del monetarismo?} Tasa natural, expectativas, reglas, objetivo de inflación: en la nueva síntesis neoclásica.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item \autor{Hicks} llamó \emph{LL} a la curva monetaria; IS-LM se generalizó con \autor{Hansen}.
+\item Trampa de la liquidez: LM \emph{horizontal} ($h\to\infty$); clásico: LM \emph{vertical} ($h=0$).
+\item Monetaristas: IS \emph{plana} y LM \emph{inclinada}; keynesianos, al revés.
+\item Regla del $k$\,\% (1960) $\neq$ «regla de \autor{Friedman}» de la cantidad óptima (1969).
+\item \autor{Keynes} no supuso constante la PMgC: fue la síntesis.
+\item Efecto \autor{Keynes}: tipo de interés (desplaza LM); \autor{Pigou}-\autor{Patinkin}: riqueza (desplaza IS).
+\item \autor{Phillips} (1958): \emph{salarios} nominales; \autor{Samuelson}-\autor{Solow} (1960): \emph{precios}.
+\item Gran Contracción: la base \emph{subió}; cayó el multiplicador.
+\item «Síntesis neoclásica»: \autor{Samuelson}, 3.ª ed. (1955), no 1.ª (1948). «Monetarismo»: \autor{Brunner} (1968).
+\item Nobel: \autor{Friedman} 1976; \autor{Myrdal}-\autor{Hayek} 1974; \autor{Bernanke} 2022.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
