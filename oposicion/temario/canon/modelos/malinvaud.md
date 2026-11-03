@@ -1,7 +1,7 @@
 # Teoría del desequilibrio: Clower, Leijonhufvud, Barro-Grossman y Malinvaud
 
 - **Área:** pensamiento · **Tema de referencia:** 3.A.4 (Keynes. Referencia a la economía postkeynesiana y el **desequilibrio**) — está en el título vigente. Hoy lo desarrolla el Word de 3.A.5 (título anterior).
-- **Temas que lo usan:** 3.A.4 (desarrollo; hoy mención), 3.A.5 (hoy resumen; con el título vigente, mención o nada). Relacionado con `patinkin` (antecedente) y con la NEK (3.A.7: rigideces como fundamento).
+- **Temas que lo usan:** 3.A.4 (desarrollo; hoy mención), 3.A.5 (mención; hecho, 3/11/2026: una viñeta en la contextualización, «los neokeynesianos del desequilibrio (Clower, Leijonhufvud, Malinvaud)» como tercera crítica a la síntesis, la última crítica del IS-LM en I.2 e) y una línea en las extensiones de la conclusión, con `\vertema{3.A.4}`). Relacionado con `patinkin` (antecedente) y con la NEK (3.A.7: rigideces como fundamento).
 - **Manuales de referencia:** Clower (1965); Leijonhufvud (1968); Barro y Grossman (1971), *AER*; Malinvaud (1977), *The Theory of Unemployment Reconsidered*; Bénassy (1975); Heijdra (2017), cap. 1; De Vroey (2016), caps. 5-6; Escartín (2008).
 - **Decisión D031 (13/10/2026):** ¿Se deshace el cruce de contenidos entre los Word de 3.A.4 y 3.A.5? Sí: IS-LM y la curva de Phillips (síntesis) a 3.A.5 (Phillips en resumen; desarrollo en 3.A.28); el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud) a 3.A.4
 
@@ -24,11 +24,11 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.4 | Keynes, postkeynesianos y desequilibrio | Desarrollo | Patinkin como antecedente, Clower, Leijonhufvud («Keynes frente a la economía keynesiana»), Barro-Grossman, Malinvaud con su gráfico, valoración y legado en la NEK | — |
-| 3.A.5 | Síntesis y monetarismo | Mención o nada | Solo como reacción a la síntesis | Todo el bloque (pasa a 3.A.4) |
+| 3.A.5 | Síntesis y monetarismo | mención (hecho, 3/11/2026) | Solo como reacción a la síntesis («para quienes la síntesis olvida que Keynes es una teoría del desequilibrio»), con `\vertema{3.A.4}` | Todo el bloque (pasa a 3.A.4, con la cita de Barro de título corregido, *Second Thoughts on Keynesian Economics*) |
 
 ## Divergencias encontradas en el temario actual
 
-- **Cruce 3.A.4/3.A.5:** el desequilibrio está desarrollado en el Word de 3.A.5 (epígrafe IV, con Patinkin, Leijonhufvud, Clower y Malinvaud) y solo mencionado en 3.A.4. Reparto: el bloque pasa a 3.A.4 (ver `is-lm`).
+- **Cruce 3.A.4/3.A.5:** el desequilibrio está desarrollado en el Word de 3.A.5 (epígrafe IV, con Patinkin, Leijonhufvud, Clower y Malinvaud, ≈ 3.500 palabras, imágenes 1-4, notas 12-21) y solo mencionado en 3.A.4. Reparto: el bloque pasa a 3.A.4 (ver `is-lm`); el 3.A.5 revisado (3/11/2026) ya no lo tiene. La cita de Clower («reduce al corto plazo una teoría que resulta revolucionaria…») no se ha encontrado: al 3.A.4 sin comillas (V58 del 3.A.5).
 - El inventario no registra ecuaciones ni gráficos: falta el diagrama de regímenes de Malinvaud.
 
 Autor: Víctor Gutiérrez Marcos

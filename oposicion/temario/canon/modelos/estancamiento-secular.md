@@ -1,7 +1,7 @@
 # Estancamiento secular (Hansen, 1939; Summers, 2014; Rachel y Summers, 2019) y el debate r < g (Blanchard, 2019)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.40 (Efectividad e interrelación de las políticas monetaria y fiscal desde la Gran Recesión): el tipo natural negativo, el ELB y el papel de la política fiscal con $r<\gamma_Y$ son el núcleo de ese título. 3.A.40 **no tiene fuente**; se escribe trasladando allí el epígrafe de 3.A.39 («Summers: Estancamiento secular», Rachel-Summers 2019 y el criterio de Blanchard) y el resumen de 4.B.1. 3.A.39 lo resume (deuda con $r<\gamma_Y$) y 3.A.33 cita la tesis original de Hansen.
-- **Temas que lo usan:** 3.A.40 (previsto: desarrollo), 3.A.39 (hoy desarrollo; pasaría a resumen: sostenibilidad con r < g), 3.A.33 (mención: Hansen y el consumo), 4.B.1 (resumen), 4.B.4 (resumen), 4.B.5 (resumen), 4.A.11 (mención: caída de r natural y vivienda).
+- **Temas que lo usan:** 3.A.40 (previsto: desarrollo), 3.A.39 (hoy desarrollo; pasaría a resumen: sostenibilidad con r < g), 3.A.33 (mención: Hansen y el consumo), 4.B.1 (resumen), 4.B.4 (resumen), 4.B.5 (resumen), 4.A.11 (mención: caída de r natural y vivienda). También 3.A.5 (mención; hecho, 3/11/2026: II.2.1 a), una línea: el estancamiento secular de Hansen (1939) como razón de la política fiscal con propensión media decreciente, `\vertema{3.A.40}`).
 - **Manuales de referencia:** Hansen (1939), *AER*; Summers (2014), *Business Economics*; Teulings y Baldwin (eds., 2014), VoxEU; Eggertsson, Mehrotra y Robbins (2019), *AEJ: Macro*; Rachel y Summers (2019), *BPEA*; Holston, Laubach y Williams (2017); Blanchard (2019), *AER* 109(4); Blanchard (2023), *Fiscal Policy under Low Interest Rates*.
 - **Decisión D010 (13/10/2026):** ¿Qué letras llevan la tasa de progreso técnico, el crecimiento del PIB y el gasto público en ratio? g = progreso técnico (regla de oro n+g+δ); γ_Y = crecimiento del PIB (también en las ecuaciones de deuda: r − γ_Y, y «r − g» solo como nombre del debate de Blanchard); g = G/Y en sector público
 - **Decisión D051 (13/10/2026):** ¿Cuál es el tema de referencia del estancamiento secular? 3.A.40 (políticas desde la Gran Recesión), trasladando allí el epígrafe de 3.A.39
@@ -33,6 +33,7 @@ $$d^{ee} = \frac{(1+\gamma_Y)\,(g-\tau-s)}{\gamma_Y - r} \quad (r < \gamma_Y)$$
 | 3.A.33 | Consumo | Mención (hecho, 31/10/2026: nota de Hansen en I.1 con `\vertema{3.A.40}`, entera y corregida, A33-14; ahorro precautorio y tipo natural en II.3) | Tesis de Hansen (1938, 1939) y Kuznets (1946): la evidencia de largo plazo la refutó; Keynes (1937), Galton Lecture, en estilo indirecto | — |
 | 4.B.1, 4.B.4, 4.B.5 | Gasto público y política fiscal | Resumen (comodín) | Dos o tres frases con remisión a 3.A.40 | El gráfico completo (solo en 3.A.40 y, si se quiere, 4.B.1) |
 | 4.A.11 | Vivienda en España | Mención | Caída de r natural como factor de demanda de vivienda | — |
+| 3.A.5 | Monetarismo (consumo) | mención (hecho, 3/11/2026) | Hansen (1939): si la propensión media cae con la renta, la demanda se queda corta; la renta permanente lo desmiente | El debate actual (tipo natural) |
 
 ## Divergencias encontradas en el temario actual
 

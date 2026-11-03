@@ -1,0 +1,115 @@
+% La Gran Contracción en EE. UU., datos mensuales de enero de 1929 a diciembre
+% de 1933 (../datos/gran-contraccion-1929-1933-mensual.csv; fuentes en su
+% cabecera: NBER Macrohistory con las series de Friedman y Schwartz, BLS, Fed
+% G.17 y NBER 09036, vía FRED; consulta del 3/11/2026).
+% Izquierda: índices agosto de 1929 = 100 de M2 y M1 (F-S), IPC y producción
+%   industrial. De agosto de 1929 a marzo de 1933: M2 -35,2 % (46.280 -> 29.970
+%   millones), M1 -28,0 %, IPC -27,2 %, producción industrial -51,7 % (mínimo
+%   en julio de 1932, -53,1 %). Sin la base monetaria aproximada (cálculo
+%   propio que no cuadra con el +17,5 % de F-S; esa cifra va en el texto).
+% Derecha: cocientes del multiplicador, depósitos/efectivo (10,8 -> 4,4) y
+%   depósitos/reservas (13,1 -> 9,1), y, en barras grises (eje derecho), los
+%   bancos suspendidos cada mes (la serie acaba en febrero de 1933).
+% Pico (agosto de 1929) y fondo (marzo de 1933) del NBER, líneas verticales.
+% Eje x: 1929 + (mes - 1)/12, con \coordindex (la tabla empieza en enero de 1929).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\pgfplotsset{
+  gcmes/.style={
+    width=6cm, height=5.2cm, scale only axis,
+    xmin=1929, xmax=1934, xtick={1929,...,1934},
+    axis lines=left, tick align=outside, clip=false,
+    ticklabel style={font=\footnotesize},
+    x tick label style={/pgf/number format/1000 sep={}},
+    /pgf/number format/use comma,
+    title style={font=\small, align=center},
+    legend style={draw=none, font=\footnotesize},
+    legend cell align=left,
+  },
+}
+\newcommand{\gcdatos}{../datos/gran-contraccion-1929-1933-mensual.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ------------- Izquierda: dinero, precios y producción -------------
+  \begin{axis}[gcmes, name=izq,
+      ymin=40, ymax=110, ytick={40,50,...,110},
+      title={Dinero, precios y producción\\(agosto de 1929 = 100)},
+      legend style={at={(0.03,0.03)}, anchor=south west},
+      dicapas,
+    ]
+    % 2: ejes, el 100 y las líneas del pico y del fondo
+    \capa{2}{\dicraya[dicumbral]{(1929,100) (1934,100)}}
+    \capa{2}{\dicraya[thin, dicreferencia]{(1929.583,40) (1929.583,110)}}
+    \capa{2}{\dicraya[thin, dicreferencia]{(1933.167,40) (1933.167,110)}}
+    % 3: M2 y M1 de Friedman y Schwartz
+    \capa{3}{\addplot[diclinea=tceemorado, line width=1.6pt] table[col sep=comma, comment chars={\#},
+        x expr=1929+\coordindex/12, y=m2_i] {\gcdatos};
+      \addlegendentry{M2}}
+    \capa{3}{\addplot[diclinea=tceemorado, dashed] table[col sep=comma, comment chars={\#},
+        x expr=1929+\coordindex/12, y expr=\thisrow{m1}/264.71] {\gcdatos};
+      \addlegendentry{M1}}
+    % 4: IPC y producción industrial
+    \capa{4}{\addplot[diclinea=tceedorado] table[col sep=comma, comment chars={\#},
+        x expr=1929+\coordindex/12, y=ipc_i] {\gcdatos};
+      \addlegendentry{IPC}}
+    \capa{4}{\addplot[diclinea=tceeverde] table[col sep=comma, comment chars={\#},
+        x expr=1929+\coordindex/12, y=prod_industrial_i] {\gcdatos};
+      \addlegendentry{producción industrial}}
+    % 6: rótulos
+    \capa{6}{\dicrotulo[anchor=base, yshift=4pt, font=\footnotesize, text=dicreferencia]{(1929.583,110)}{pico}}
+    \capa{6}{\dicrotulo[anchor=base, yshift=4pt, font=\footnotesize, text=dicreferencia]{(1933.167,110)}{fondo}}
+    \capa{6}{\addplot[dicpuntos=tceemorado, forget plot] coordinates {(1933.167,64.8)};}
+    \capa{6}{\dicrotulo[anchor=north east, font=\footnotesize, text=tceemorado]{(1933.1,64.3)}{$-35$~\%}}
+    \capa{6}{\addplot[dicpuntos=tceeverde, forget plot] coordinates {(1933.167,48.3)};}
+    \capa{6}{\dicrotulo[anchor=north west, font=\footnotesize, text=tceeverde]{(1933.2,47.8)}{$-52$~\%}}
+    \capa{6}{\addplot[dicpuntos=tceedorado, forget plot] coordinates {(1933.167,72.8)};}
+    \capa{6}{\dicrotulo[anchor=south west, font=\footnotesize, text=tceedorado]{(1933.25,77)}{$-27$~\%}}
+  \end{axis}
+  % ------------- Derecha: cocientes del multiplicador y quiebras -------------
+  % Las barras se dibujan en este mismo eje, reescaladas (1.200 bancos = 18), para
+  % que queden debajo de las líneas; el eje derecho de abajo da su escala.
+  \begin{axis}[gcmes, name=dcha, at={($(izq.east)+(1.5cm,0)$)}, anchor=west,
+      ymin=0, ymax=18, ytick={0,3,...,18},
+      title={Cocientes del multiplicador\\y bancos suspendidos},
+      legend style={at={(0.13,0.99)}, anchor=north west},
+      dicapas,
+    ]
+    % 1: barras de bancos suspendidos (enero de 1929 - febrero de 1933)
+    \capa{1}{\addplot[on layer=dicbarras, ybar, bar width=0.062, dicbarra=dicotromasclaro, forget plot,
+        restrict x to domain=1929:1933.1, % (la casilla vacía desde marzo de 1933 se deja vacía)
+        y filter/.code={\ifx\pgfmathresult\empty\else\pgfmathparse{\pgfmathresult*0.015}\fi}]
+        table[col sep=comma, comment chars={\#},
+        x expr=1929+\coordindex/12, y=bancos_suspendidos] {\gcdatos};}
+    % 2: ejes y líneas del pico y del fondo
+    \capa{2}{\dicraya[thin, dicreferencia]{(1929.583,0) (1929.583,18)}}
+    \capa{2}{\dicraya[thin, dicreferencia]{(1933.167,0) (1933.167,18)}}
+    % 5: cocientes
+    \capa{5}{\addplot[diclinea=tceeazul] table[col sep=comma, comment chars={\#},
+        x expr=1929+\coordindex/12, y=ratio_dep_efectivo] {\gcdatos};
+      \addlegendentry{depósitos / efectivo}}
+    \capa{5}{\addplot[diclinea=dicexterna, dashed] table[col sep=comma, comment chars={\#},
+        x expr=1929+\coordindex/12, y=ratio_dep_reservas] {\gcdatos};
+      \addlegendentry{depósitos / reservas}}
+    \capa{6}{\addlegendimage{area legend, dicbarra=dicotromasclaro}
+      \addlegendentry{bancos suspendidos (eje dcho.)}}
+    % 6: rótulos
+    \capa{6}{\dicrotulo[anchor=base, yshift=4pt, font=\footnotesize, text=dicreferencia]{(1929.583,18)}{pico}}
+    \capa{6}{\dicrotulo[anchor=base, yshift=4pt, font=\footnotesize, text=dicreferencia]{(1933.167,18)}{fondo}}
+    \capa{6}{\addplot[dicpuntos=tceeazul, forget plot] coordinates {(1929.583,10.81) (1933.167,4.44)};}
+    \capa{6}{\addplot[dicpuntos=dicexterna, forget plot] coordinates {(1929.583,13.12) (1933.167,9.06)};}
+    \capa{6}{\dicrotulo[anchor=north, font=\footnotesize, text=tceeazul]{(1929.583,10.4)}{10,8}}
+    \capa{6}{\dicrotulo[anchor=south east, font=\footnotesize, text=dicexterna]{(1929.52,13.3)}{13,1}}
+    \capa{6}{\dicrotulo[anchor=north west, font=\footnotesize, text=tceeazul]{(1933.2,4.3)}{4,4}}
+    \capa{6}{\dicrotulo[anchor=south west, font=\footnotesize, text=dicexterna]{(1933.2,9.2)}{9,1}}
+  \end{axis}
+  % 2: eje derecho de las barras (bancos suspendidos al mes)
+  \capa{2}{\begin{axis}[gcmes, at={(dcha.south east)}, anchor=south east,
+      ymin=0, ymax=1200, ytick={0,200,...,1200},
+      axis x line=none, axis y line*=right,
+      ylabel={bancos suspendidos al mes}, ylabel style={font=\footnotesize},
+    ]
+    \addplot[draw=none, forget plot] coordinates {(1929,0)};
+  \end{axis}}
+\end{tikzpicture}
+\end{document}

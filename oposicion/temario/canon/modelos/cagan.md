@@ -1,7 +1,7 @@
 # Modelo de Cagan (1956): demanda de dinero en hiperinflación y señoreaje
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.41 (La inflación… Hiperinflación y deflación) — la hiperinflación está en el título.
-- **Temas que lo usan:** 3.A.41 (desarrollo), 3.A.35 (resumen: demanda de dinero con inflación esperada; hoy desarrollo), 3.A.39 (resumen: señoreaje como financiación; hoy desarrollo). Bloque copiado casi literal en los tres.
+- **Temas que lo usan:** 3.A.41 (desarrollo), 3.A.35 (resumen: demanda de dinero con inflación esperada; hoy desarrollo), 3.A.39 (resumen: señoreaje como financiación; hoy desarrollo). Bloque copiado casi literal en los tres. También 3.A.5 (mención; hecho, 3/11/2026: II.1: Cagan (1956) como uno de los autores de las expectativas adaptativas (la inflación esperada en las hiperinflaciones); ficha `expectativas-adaptativas`).
 - **Manuales de referencia:** Cagan (1956), en Friedman (ed.), *Studies in the Quantity Theory of Money*; Sargent (1982), «The Ends of Four Big Inflations»; Romer (2019), cap. 11.8; Walsh (2017), cap. 4; Blanchard y Fischer (1989), cap. 4.
 - **Decisión D061 (13/10/2026):** ¿Cómo se escriben los parámetros de la demanda de dinero de Cagan? α semielasticidad respecto a la inflación esperada y ζ constante de escala
 
@@ -30,6 +30,7 @@ $$S = \frac{\Delta M}{P} = \pi\,\frac{M}{P} = \pi\,\zeta\,e^{-\alpha\pi},\qquad 
 | 3.A.41 | Hiperinflación | Desarrollo | Demanda de Cagan, señoreaje, curva de Laffer, estabilidad con expectativas adaptativas, fin de las hiperinflaciones | — |
 | 3.A.35 | Demanda de dinero | Resumen | La demanda de Cagan como demanda dependiente de la inflación esperada (semielasticidad α) | Señoreaje y estabilidad |
 | 3.A.39 | Financiación del déficit | Resumen | Señoreaje máximo como límite a la financiación monetaria; enlace con la aritmética monetarista | La derivación |
+| 3.A.5 | Monetarismo (expectativas adaptativas) | mención (hecho, 3/11/2026) | Cagan (1956) como seguidor de Friedman y usuario de las adaptativas para la inflación esperada en las hiperinflaciones | La demanda de Cagan y el señoreaje |
 
 ## Divergencias encontradas en el temario actual
 

@@ -1,0 +1,41 @@
+% Modelo IS-LM (Hicks, 1937): equilibrio, expansión fiscal con efecto
+% expulsión y expansión monetaria. Gráfico de referencia de la ficha «is-lm».
+%   IS:  i = 9 - 0,75 Y      IS':  i = 11 - 0,75 Y   (más gasto autónomo)
+%   LM:  i = 0,75 Y - 1,5    LM':  i = 0,75 Y - 3    (más saldos reales)
+%   E = (7; 3,75)  F = (9,667; 3,75) multiplicador simple al tipo inicial
+%   E' = (8,333; 4,75) con expulsión   E'' = (8; 3) expansión monetaria
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.55cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.4,-1.4) rectangle (14.6,10.2);
+  % 1: ejes (Y, i)
+  \capa{1}{\ejes{$Y$}{$i$}{13.4}{9.6}}
+  % 2: la IS, decreciente
+  \capa{2}{\draw[curva1] (1.2,8.1) -- (10.8,0.9) node[etiqueta, below right=0pt and -2pt, text=tceemorado] {IS};}
+  % 3: la LM, creciente
+  \capa{3}{\draw[curva2] (2.4,0.3) -- (12,7.5) node[etiqueta, above right=0pt and -2pt, text=tceeazul] {LM};}
+  % 4: el equilibrio E y sus proyecciones
+  \capa{4}{\proyeccion{(7,3.75)}{$Y^*$}{$i^*$}}
+  \capa{4}{\node[punto] (E) at (7,3.75) {};}
+  \capa{4}{\node[etiqueta, left=3pt] at (E) {$E$};}
+  % 5: expansión fiscal, la IS se desplaza a la derecha
+  \capa{5}{\draw[curvanueva, desplazada] (3.2,8.6) -- (13.2,1.1) node[etiqueta, below right=0pt and -2pt, text=tceerojo] {IS$'$};}
+  % 6: al tipo inicial, el multiplicador simple llevaría a F
+  \capa{6}{\draw[guia] (7,3.75) -- (9.667,3.75);}
+  \capa{6}{\node[punto] (F) at (9.667,3.75) {};}
+  \capa{6}{\node[etiqueta, right=3pt] at (F) {$F$};}
+  % 7: el tipo sube y expulsa inversión: E'
+  \capa{7}{\node[punto] (E1) at (8.333,4.75) {};}
+  \capa{7}{\node[etiqueta, left=3pt] at (E1) {$E'$};}
+  % (la flecha va paralela a la IS', un poco por encima, para no taparla)
+  \capa{7}{\draw[flecha, shorten <=2pt, shorten >=2pt] (9.877,4.03) -- (8.543,5.03);}
+  \capa{7}{\node[etiqueta, text=tceerojo, font=\footnotesize, rotate=36.87, anchor=south west, inner sep=1pt] at (9.85,4.45) {expulsión};}
+  % 8: expansión monetaria, la LM se desplaza a la derecha: E''
+  \capa{8}{\draw[curva3, desplazada] (4.4,0.3) -- (12.8,6.6) node[etiqueta, right, text=tceeverde] {LM$'$};}
+  \capa{8}{\node[punto] (E2) at (8,3) {};}
+  \capa{8}{\node[etiqueta, below=3pt] at (E2) {$E''$};}
+\end{tikzpicture}
+\end{document}

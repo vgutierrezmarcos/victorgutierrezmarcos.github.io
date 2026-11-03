@@ -1,7 +1,7 @@
 # Regla de Friedman (1969) e inflación óptima
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.41 (La inflación: efectos sobre la eficiencia y el bienestar) — la inflación óptima es parte del título.
-- **Temas que lo usan:** 3.A.41 (desarrollo), 4.B.11 (resumen: la inflación como impuesto en la imposición óptima, Schmitt-Grohé y Uribe). Relacionada con los modelos de dinero en la utilidad (Sidrauski) y cash-in-advance (3.A.35).
+- **Temas que lo usan:** 3.A.41 (desarrollo), 4.B.11 (resumen: la inflación como impuesto en la imposición óptima, Schmitt-Grohé y Uribe). Relacionada con los modelos de dinero en la utilidad (Sidrauski) y cash-in-advance (3.A.35). También 3.A.5 (mención; hecho, 3/11/2026: III.1.1, en nota: la regla de Friedman (1969) de la cantidad óptima de dinero **no es** la regla del k % ($\gamma_M=\overline\gamma_M$), `\vertema{3.A.41}`).
 - **Manuales de referencia:** Friedman (1969), «The Optimum Quantity of Money»; Phelps (1973); Chari, Christiano y Kehoe (1996); Schmitt-Grohé y Uribe (2010), *Handbook of Monetary Economics*; Walsh (2017), caps. 2 y 4.
 
 ## Presentación de referencia
@@ -24,6 +24,7 @@ $$i = r + \pi = 0 \ \Longrightarrow\ \pi^* = -r \approx -\rho$$
 |---|---|---|---|---|
 | 3.A.41 | Efectos de la inflación y su nivel óptimo | Desarrollo | Regla, matices, pérdida de Bailey, por qué el 2 % | — |
 | 4.B.11 | Imposición óptima | Resumen | La inflación como impuesto: Phelps y Chari-Christiano-Kehoe | La pérdida de Bailey y el ELB |
+| 3.A.5 | Monetarismo (política monetaria) | mención (hecho, 3/11/2026) | Nota para distinguirla de la regla del k %: i = 0 exige una deflación igual al tipo real (Friedman, 1969) | La pérdida de Bailey |
 
 ## Divergencias encontradas en el temario actual
 

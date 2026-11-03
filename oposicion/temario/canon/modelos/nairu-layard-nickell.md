@@ -1,7 +1,7 @@
 # NAIRU: fijación de salarios y precios (Layard, Nickell y Jackman, 1991)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.28** (La tasa natural de paro y la NAIRU; revisado el 31/10/2026: III.3 `sec:nairu` con a)-d) en 6′, anexo B `anexo:tnp-nairu`, anexo C `anexo:nairu-lineal` y anexo D `anexo:demanda-pasos`) — está en el título.
-- **Temas que lo usan:** 3.A.28 (desarrollo; hecho, 31/10/2026), 3.A.7 (resumen: modelo agregado de la NEK de 1.ª generación; hoy desarrollo con el texto viejo del 3.A.28), 1D01 (mención: III.1 y II.2), 3.A.27 (mención; hecho, 31/10/2026: I.3, la negociación con derecho a gestionar da la WS, `eq:ws`, $W/P^e=F(U,Z)\cdot\mathrm{PAT}^e$ con $F_U<0$, como en esta ficha, y la CNE de Shapiro y Stiglitz como otra WS decreciente en el paro; evidencia de Blanchflower y Oswald, 1994; remisión al 3.A.28), 3.A.36 (mención: la NAIRU como guía de la política monetaria), 4.B.4 (mención: la NAWRU en el saldo estructural).
+- **Temas que lo usan:** 3.A.28 (desarrollo; hecho, 31/10/2026), 3.A.7 (resumen: modelo agregado de la NEK de 1.ª generación; hoy desarrollo con el texto viejo del 3.A.28), 1D01 (mención: III.1 y II.2), 3.A.27 (mención; hecho, 31/10/2026: I.3, la negociación con derecho a gestionar da la WS, `eq:ws`, $W/P^e=F(U,Z)\cdot\mathrm{PAT}^e$ con $F_U<0$, como en esta ficha, y la CNE de Shapiro y Stiglitz como otra WS decreciente en el paro; evidencia de Blanchflower y Oswald, 1994; remisión al 3.A.28), 3.A.36 (mención: la NAIRU como guía de la política monetaria), 4.B.4 (mención: la NAWRU en el saldo estructural). También 3.A.5 (mención; hecho, 3/11/2026: II.2.2, una línea: «de ahí el nombre de NAIRU…; su versión con fijación de salarios y precios es posterior», con `\vertema{3.A.28}`).
 - **Manuales de referencia:** Modigliani y Papademos (1975), la NIRU; Tobin (1980), pp. 24-25, el acrónimo NAIRU; Layard y Nickell (1985); Layard, Nickell y Jackman (1991), *Unemployment* (`LayardNickellJackman1991Unemployment`); Blanchard, *Macroeconomics*, cap. 7-8; Carlin y Soskice (2015), cap. 2; Cahuc, Carcillo y Zylberberg (2014), cap. 9; Ball y Mankiw (2002); Estrella y Mishkin (1999), en Taylor (ed.), *Monetary Policy Rules* (`EstrellaMishkin1999NAIRU`; **no** `EstrellaMishkin1998`, que es el de las recesiones y la curva de tipos de la 1D01).
 
 ## Presentación de referencia (3.A.28, III.3)
@@ -50,6 +50,7 @@ Interpretación: **conflicto distributivo** (los trabajadores reclaman $F(U,Z)$ 
 | 3.A.36 | Política monetaria | Mención | La NAIRU como guía (y su incertidumbre: Staiger, Stock y Watson), con `\vertema{3.A.28}` | El modelo |
 | 4.B.4 | Saldo estructural | Mención | La NAWRU de la Comisión en el empleo potencial (Havik *et al.*, 2014) | El modelo WS-PS |
 | 1D01 | Dictamen de coyuntura | Mención | NAIRU (y NAWRU de la Comisión) como referencia del paro estructural; paro con brecha ≈ 0 | El modelo WS-PS |
+| 3.A.5 | Síntesis y monetarismo | mención (hecho, 3/11/2026) | Una línea en II.2.2: la NAIRU como nombre de la tasa que no acelera la inflación; el WS-PS es posterior, `\vertema{3.A.28}` | El modelo WS-PS |
 
 ## Divergencias encontradas en el temario actual
 

@@ -1,7 +1,7 @@
 # Modelo de la telaraña (cobweb)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.16** (Mercados I: «dinámicas de ajuste y estabilidad del equilibrio»; revisado el 17/10/2026) — el título pide las dinámicas de ajuste y la ficha del tribunal, «especial referencia a dinámicas de ajuste convergentes o divergentes a través del modelo de la telaraña». Lo desarrolla en el cuerpo (II.1.3 c-e, tercera dinámica tras la walrasiana y la marshalliana) y en el anexo E (lineal, adaptativas, racionales, ciclo límite). Ficha creada a raíz de esa revisión (CN4).
-- **Temas que lo usan:** 3.A.16 (desarrollo; hecho, 17/10/2026), 3.A.6 (mención: Muth, 1961, parte de la telaraña para proponer las expectativas racionales; previsto, hoy no la cita), 3.A.5 (mención: expectativas adaptativas, Nerlove, 1958; previsto, hoy no la cita). Pueden citarla 3.B.38 (estabilización de precios agrarios) y 3.A.4 (desequilibrio), sin desarrollarla.
+- **Temas que lo usan:** 3.A.16 (desarrollo; hecho, 17/10/2026), 3.A.6 (mención: Muth, 1961, parte de la telaraña para proponer las expectativas racionales; previsto, hoy no la cita), 3.A.5 (mención; hecho, 3/11/2026: II.1, Nerlove, 1958, con γ y `\vertema{3.A.16}`; ficha `expectativas-adaptativas`, de la que el 3.A.5 es la referencia). Pueden citarla 3.B.38 (estabilización de precios agrarios) y 3.A.4 (desequilibrio), sin desarrollarla.
 - **Manuales de referencia:** Ezekiel (1938), «The cobweb theorem», *QJE*; Kaldor (1934); Nerlove (1958); Muth (1961); Gandolfo, *Economic Dynamics*; Hommes, Sonnemans, Tuinstra y van de Velden (2007) para la evidencia experimental; Campante, Sturzenegger y Velasco (2021).
 
 ## Presentación de referencia (3.A.16, II.1.3 c)
@@ -31,7 +31,7 @@ El signo menos hace oscilar el precio. **Converge si q'(p*) < |x'(p*)|**, de 3 f
 |---|---|---|---|---|
 | 3.A.16 | Dinámicas de ajuste y estabilidad | desarrollo (hecho, 17/10/2026) | Estructura a)-e) dentro de II.1.3: supuestos, `eq:telarana`, condición en 3 formas, gráfico, ciclos ganaderos, Muth; anexo E con las tres expectativas y el ciclo límite | — |
 | 3.A.6 | Expectativas racionales | mención (prevista) | Muth (1961) parte del mercado de la telaraña: con expectativas racionales p^e_t = p* y el precio solo se desvía por la perturbación; una frase y \vertema{3.A.16} | La telaraña y su condición de convergencia |
-| 3.A.5 | Monetarismo (expectativas adaptativas) | mención (prevista) | Nerlove (1958) introduce las adaptativas en la telaraña; misma forma, x^e_t = x^e_{t−1} + γ(x_{t−1} − x^e_{t−1}), con γ como en el anexo E del 3.A.16 (o, si el tema usa otra letra, avisar) | El modelo de la telaraña |
+| 3.A.5 | Monetarismo (expectativas adaptativas) | mención (hecho, 3/11/2026) | Nerlove (1958) las aplicó a los precios agrícolas de la telaraña, «donde amortiguan el ciclo», con `\vertema{3.A.16}`; misma forma, $\pi^e_t=\pi^e_{t-1}+\gamma(\pi_{t-1}-\pi^e_{t-1})$, con γ como en el anexo E del 3.A.16 (ficha `expectativas-adaptativas`) | El modelo de la telaraña |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.16 original: telaraña en el anexo 2 con capturas en inglés, «partimos de un equilibrio como P_t» y la condición en «elasticidades relativas» sin decir dónde se evalúan; $P_t$, $Q_t$ en mayúscula. Resuelto en la revisión (17/10/2026): en el cuerpo, con $p_t$, $q_t$, $p^e_t$ y la condición en el equilibrio.

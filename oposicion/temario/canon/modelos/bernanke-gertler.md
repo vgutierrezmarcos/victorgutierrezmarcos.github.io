@@ -1,7 +1,7 @@
 # Acelerador financiero y canal del balance (Bernanke y Gertler 1989, 1995; Bernanke, Gertler y Gilchrist 1999; Kiyotaki y Moore 1997)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.37** (transmisión de la política monetaria; sin revisar), que lo desarrolla como canal del balance (1.10) y fricciones financieras (2.4.1). **[decidir]**: alternativas, el 3.A.34 (que ya da la presentación de equilibrio parcial y la ecuación de BGG) o el 3.A.42 (ciclo financiero). Mientras el 3.A.37 no se revise, la presentación de referencia es la del 3.A.34 (III.4 d). Ficha creada en la fase canon del 3.A.34.
-- **Temas que lo usan:** 3.A.37 (desarrollo; sin revisar), 3.A.34 (resumen; hecho, 31/10/2026: III.4, prima de financiación externa con riqueza neta RN, `fig:coste-fondos`, y el acelerador financiero con la ecuación de BGG), 3.A.42 (resumen: enlace entre ciclo financiero y ciclo real)
+- **Temas que lo usan:** 3.A.37 (desarrollo; sin revisar), 3.A.34 (resumen; hecho, 31/10/2026: III.4, prima de financiación externa con riqueza neta RN, `fig:coste-fondos`, y el acelerador financiero con la ecuación de BGG), 3.A.42 (resumen: enlace entre ciclo financiero y ciclo real). También 3.A.5 (mención; hecho, 3/11/2026: III.1.4: Bernanke (1983) y el canal del crédito como complemento de Friedman y Schwartz en la Gran Depresión, `\vertema{3.A.37}`; ficha `historia-monetaria-friedman-schwartz`).
 - **Manuales de referencia:** Bernanke y Gertler (1989, 1995); Bernanke, Gertler y Gilchrist (1999), *Handbook of Macroeconomics*; Kiyotaki y Moore (1997); Gertler y Gilchrist (1994); Romer (2019), cap. 9 (9.8, imperfecciones financieras).
 
 ## Presentación de referencia (provisional: 3.A.34, III.4)
@@ -24,6 +24,7 @@ $$\mathbb E_t\big[R^K_{t+1}\big]=s\Big(\frac{\mathrm{RN}_{t+1}}{q_tK_{t+1}}\Big)
 | 3.A.37 | Transmisión de la política monetaria | desarrollo | Canal del balance y del crédito bancario; acelerador financiero con la ecuación de BGG y la misma notación (RN, s(·), $R^K$); evidencia de Gertler y Gilchrist | Modigliani-Miller y la jerarquía financiera (3.B.3, 3.A.34) |
 | 3.A.34 | Teorías de la inversión | resumen (hecho, 31/10/2026) | Prima de financiación externa, gráfico de los fondos, BGG en una ecuación, Kiyotaki-Moore en una frase | La transmisión monetaria |
 | 3.A.42 | Teorías del ciclo | resumen | Fricciones financieras como amplificador del ciclo; enlace con el ciclo financiero | El canal monetario |
+| 3.A.5 | Monetarismo (la Gran Depresión) | mención (hecho, 3/11/2026) | Bernanke (1983): la quiebra de los bancos destruyó información y préstamos, no solo dinero; Nobel de 2022 | La prima de financiación externa y BGG |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.37 (sin revisar): al revisarlo, la riqueza neta con **RN** y la prima con **s(·)**, como el 3.A.34 (o, si se elige N, cambiar también el 3.A.34).

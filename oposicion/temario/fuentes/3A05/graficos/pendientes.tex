@@ -1,0 +1,72 @@
+% El debate de las pendientes (II.2.1): la misma expansión fiscal (IS' a la
+% derecha) y la misma monetaria (LM' a la derecha), 3 unidades de Y cada una,
+% con las pendientes de los keynesianos y las de los monetaristas.
+% Mismo estilo y colores que is-lm.tex (IS morada, LM azul, IS' roja, LM' verde).
+%   a) Keynesianos: IS i = 12 - 1,6 Y, LM i = 0,25 Y + 2
+%      IS' i = 16,8 - 1,6 Y, LM' i = 0,25 Y + 1,25
+%      E = (5,405; 3,351), E' = (8; 4), E'' = (5,811; 2,703)
+%      dY fiscal = 2,59; dY monetario = 0,41
+%   b) Monetaristas: IS i = 6 - 0,3 Y, LM i = 1,5 Y - 6
+%      IS' i = 6,9 - 0,3 Y, LM' i = 1,5 Y - 10,5
+%      E = (6,667; 4), E' = (7,167; 4,75), E'' = (9,167; 3,25)
+%      dY fiscal = 0,5; dY monetario = 2,5
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{dy/.style={-{Stealth[length=1.4mm]},thick}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=0.5cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.4,-3.0) rectangle (31.2,11.6);
+  % ---------------- a) Keynesianos ----------------
+  % 1: ejes y título
+  \capa{1}{\ejes{$Y$}{$i$}{13.4}{10.4}}
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=south] at (6.7,10.7) {a) Keynesianos};}
+  % 2: IS inclinada, LM plana y equilibrio E
+  \capa{2}{\draw[curva1] (1.25,10) -- (7.1875,0.5) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{2}{\draw[curva2] (0.5,2.125) -- (12.5,5.125) node[etiqueta, right, text=tceeazul] {LM};}
+  \capa{2}{\draw[guia] (5.405,3.351) -- (5.405,0);}
+  \capa{2}{\node[punto] at (5.405,3.351) {};}
+  \capa{2}{\node[etiqueta, above right=1pt and 0pt] at (5.405,3.351) {$E$};}
+  % 3: expansión fiscal: IS' y E', mucha renta y poco tipo
+  \capa{3}{\draw[curvanueva, desplazada] (4.25,10) -- (10.1875,0.5) node[etiqueta, right, text=tceerojo] {IS$'$};}
+  \capa{3}{\draw[guia] (8,4) -- (8,0);}
+  \capa{3}{\node[punto] at (8,4) {};}
+  \capa{3}{\node[etiqueta, above right=1pt and 0pt] at (8,4) {$E'$};}
+  \capa{3}{\draw[dy, tceerojo] (5.405,-1.2) -- (8,-1.2);}
+  \capa{3}{\node[etiqueta, right, text=tceerojo, font=\footnotesize] at (8,-1.2) {$\Delta Y$ fiscal};}
+  % 4: expansión monetaria: LM' y E'', poca renta
+  \capa{4}{\draw[curva3, desplazada] (0.5,1.375) -- (12.5,4.375) node[etiqueta, right, text=tceeverde] {LM$'$};}
+  \capa{4}{\draw[guia] (5.811,2.703) -- (5.811,0);}
+  \capa{4}{\node[punto] at (5.811,2.703) {};}
+  \capa{4}{\node[etiqueta, anchor=north east, inner sep=1pt] at (5.7,2.3) {$E''$};}
+  \capa{4}{\draw[dy, tceeverde] (5.405,-2.2) -- (5.811,-2.2);}
+  \capa{4}{\node[etiqueta, right, text=tceeverde, font=\footnotesize] at (5.9,-2.2) {$\Delta Y$ monetario};}
+  % ---------------- b) Monetaristas ----------------
+  \begin{scope}[xshift=8.6cm]
+  % 5: ejes y título
+  \capa{5}{\ejes{$Y$}{$i$}{13.4}{10.4}}
+  \capa{5}{\node[font=\normalsize\bfseries, anchor=south] at (6.7,10.7) {b) Monetaristas};}
+  % 6: IS plana, LM inclinada y equilibrio E
+  \capa{6}{\draw[curva1] (0.5,5.85) -- (12.5,2.25) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{6}{\draw[curva2] (4.333,0.5) -- (10.333,9.5) node[etiqueta, right, text=tceeazul] {LM};}
+  \capa{6}{\draw[guia] (6.667,4) -- (6.667,0);}
+  \capa{6}{\node[punto] at (6.667,4) {};}
+  \capa{6}{\node[etiqueta, anchor=south east, inner sep=1pt] at (6.55,4.25) {$E$};}
+  % 7: expansión fiscal: IS' y E', mucho tipo y poca renta
+  \capa{7}{\draw[curvanueva, desplazada] (3.5,5.85) -- (12.5,3.15) node[etiqueta, right, text=tceerojo] {IS$'$};}
+  \capa{7}{\draw[guia] (7.167,4.75) -- (7.167,0);}
+  \capa{7}{\node[punto] at (7.167,4.75) {};}
+  \capa{7}{\node[etiqueta, right=3pt] at (7.167,4.75) {$E'$};}
+  \capa{7}{\draw[dy, tceerojo] (6.667,-1.2) -- (7.167,-1.2);}
+  \capa{7}{\node[etiqueta, right, text=tceerojo, font=\footnotesize] at (7.25,-1.2) {$\Delta Y$ fiscal};}
+  % 8: expansión monetaria: LM' y E'', mucha renta
+  \capa{8}{\draw[curva3, desplazada] (7.333,0.5) -- (12.333,8) node[etiqueta, right, text=tceeverde] {LM$'$};}
+  \capa{8}{\draw[guia] (9.167,3.25) -- (9.167,0);}
+  \capa{8}{\node[punto] at (9.167,3.25) {};}
+  \capa{8}{\node[etiqueta, below right=1pt and 0pt] at (9.167,3.25) {$E''$};}
+  \capa{8}{\draw[dy, tceeverde] (6.667,-2.2) -- (9.167,-2.2);}
+  \capa{8}{\node[etiqueta, right, text=tceeverde, font=\footnotesize] at (9.167,-2.2) {$\Delta Y$ monetario};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

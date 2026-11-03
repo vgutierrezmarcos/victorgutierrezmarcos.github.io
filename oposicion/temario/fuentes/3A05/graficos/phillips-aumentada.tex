@@ -1,0 +1,51 @@
+% La curva de Phillips aumentada con expectativas (Friedman, 1968; Phelps,
+% 1967): una curva de corto plazo por cada inflación esperada y la de largo
+% plazo, vertical en U^n. Gráfico de referencia de la ficha «phillips» del
+% canon. Misma escala y misma curva que samuelson-solow.tex (su capa 1):
+%   CPCP(pi^e):  pi = pi^e + f(U),  f(U) = k (e^{-0,6 (U - U^n)} - 1),
+%                k = 4,5 / (e^{1,5} - 1), U^n = 5,5
+%   A = (U^n, 0); B = (U_1, pi_1) con U_1 = 3,5, pi_1 = f(3,5) = 2,9987;
+%   C = (U^n, pi_1); D = (U_1, pi_2) con pi_2 = 2 pi_1 = 5,9974
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,y=0.42cm,
+    declare function={f(\u)=4.5/(exp(1.5)-1)*(exp(-0.6*(\u-5.5))-1);
+      pa=2.9987; pb=5.9974;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.6,-2.6) rectangle (15.4,12.2);
+  % 1: ejes (U, pi)
+  \capa{1}{\ejes{$U$}{$\pi$}{10.6}{10.8}}
+  \capa{1}{\draw[thick] (0,-1.6) -- (0,0);}
+  % 2: la curva de largo plazo, vertical en la tasa natural
+  \capa{2}{\draw[curva3, line width=1.8pt] (5.5,-1.6) -- (5.5,10.4)
+      node[etiqueta, above, text=tceeverde] {CPLP ($\pi=\pi^e$)};}
+  \capa{2}{\node[etiqueta, below left=1pt and 0pt] at (5.5,0) {$U^n$};}
+  % 3: la curva de corto plazo con pi^e = 0 y el punto de partida A
+  \capa{3}{\draw[curva1] plot[domain=1.95:9.6, samples=80, smooth] (\x,{f(\x)})
+      node[etiqueta, anchor=north west, text=tceemorado] {CPCP ($\pi^e=0$)};}
+  \capa{3}{\node[punto] (A) at (5.5,0) {};}
+  \capa{3}{\node[etiqueta, above right=0pt and 1pt] at (A) {$A$};}
+  % 4: una sorpresa de demanda lleva a B: menos paro y más inflación
+  \capa{4}{\node[punto] (B) at (3.5,{pa}) {};}
+  \capa{4}{\node[etiqueta, below left=0pt and 0pt] at (B) {$B$};}
+  \capa{4}{\draw[guia] (0,{pa}) node[left, text=black] {$\pi_1$} -| (3.5,0) node[below, text=black] {$U_1$};}
+  \capa{4}{\draw[flecha] plot[domain=5.25:3.8, samples=20, smooth] ({\x+0.28},{f(\x)+0.36});}
+  % 5: se revisan las expectativas: la curva sube con pi^e = pi_1 y se vuelve a U^n (C)
+  \capa{5}{\draw[curvanueva, desplazada] plot[domain=2.5:9.6, samples=80, smooth] (\x,{pa+f(\x)})
+      node[etiqueta, right, text=tceerojo] {CPCP ($\pi^e=\pi_1$)};}
+  \capa{5}{\node[punto] (C) at (5.5,{pa}) {};}
+  \capa{5}{\node[etiqueta, above right=0pt and 1pt] at (C) {$C$};}
+  \capa{5}{\draw[flecha, dashed, shorten <=3pt, shorten >=3pt] (B) -- (C);}
+  % 6: mantener U_1 exige más inflación: D, sobre la misma curva
+  \capa{6}{\node[punto] (D) at (3.5,{pb}) {};}
+  \capa{6}{\node[etiqueta, below left=0pt and 0pt] at (D) {$D$};}
+  \capa{6}{\draw[guia] (D) -- (0,{pb}) node[left, text=black] {$\pi_2$};}
+  \capa{6}{\draw[guia] (D) -- (B);}
+  \capa{6}{\draw[flecha] plot[domain=5.25:3.8, samples=20, smooth] ({\x+0.28},{pa+f(\x)+0.36});}
+  % 7: la siguiente ronda: la curva con pi^e = pi_2
+  \capa{7}{\draw[curvanueva, desplazada] plot[domain=3.12:9.6, samples=80, smooth] (\x,{pb+f(\x)})
+      node[etiqueta, right, text=tceerojo] {CPCP ($\pi^e=\pi_2$)};}
+\end{tikzpicture}
+\end{document}

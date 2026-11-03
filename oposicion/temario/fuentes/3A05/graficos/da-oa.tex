@@ -1,0 +1,83 @@
+% De la IS-LM a la demanda y la oferta agregadas (Modigliani, 1944).
+% Arriba, el plano (Y, i) de is-lm.tex (misma IS, misma LM y misma IS'); abajo,
+% el plano (Y, P) con la misma escala horizontal: cada equilibrio IS-LM de
+% arriba es un punto de la DA de abajo, en la misma vertical.
+%   IS: i = 9 - 0,75 Y; IS': i = 11 - 0,75 Y (expansión de demanda)
+%   LM(P_0): i = 0,75 Y - 1,5; LM(P_1): i = 0,75 Y - 0,7; LM(P_2): i = 0,75 Y + 0,5
+%   (P más alto, menos saldos reales M/P: la LM sube)
+%   A = (7; 3,75) en Y^n = 7; B = (7,8; 5,15); C = (7; 5,75), tipo más alto
+%   DA: Y = 11/3 + 14/(P + 2), pasa por A = (7; 2,2), (6,467; 3) y (5,667; 5)
+%   DA' = DA + 4/3 (el desplazamiento de la renta IS-LM a P dado):
+%       pasa por B = (7,8; 3) y C = (7; 5); a P_0, 8,333 = E' de is-lm.tex
+%   OA_CP(W_0): P = Y - 4,8 (pasa por A y B); OA_CP(W_1): P = Y - 2 (por C)
+%   P_0 = 2,2 (= P barra), P_1 = 3, P_2 = 5 (unidades del dibujo)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.5cm,
+    declare function={da(\p)=11/3+14/(\p+2);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-3.2,-11.6) rectangle (16.2,10.6);
+  % 1: ejes de los 2 paneles, (Y, i) arriba y (Y, P) abajo
+  \capa{1}{\ejes{$Y$}{$i$}{13.6}{10}}
+  \begin{scope}[yshift=-5.1cm]
+  \capa{1}{\ejes{$Y$}{$P$}{13.6}{7.4}}
+  \end{scope}
+  % 2: arriba, la IS y la LM con P_0; equilibrio A en Y^n
+  \capa{2}{\draw[curva1] (1.2,8.1) -- (10.8,0.9) node[etiqueta, below right=0pt and -2pt, text=tceemorado] {IS};}
+  \capa{2}{\draw[curva2] (2.4,0.3) -- (11.6,7.2) node[etiqueta, right, text=tceeazul] {LM$(P_0)$};}
+  \capa{2}{\draw[guia] (7,3.75) -- (0,3.75) node[left, text=black] {$i_0$};}
+  \capa{2}{\node[punto] (A1) at (7,3.75) {};}
+  \capa{2}{\node[etiqueta, left=3pt] at (A1) {$A$};}
+  % 3: abajo, la DA (cada P da un equilibrio IS-LM) y el punto A
+  \begin{scope}[yshift=-5.1cm]
+  \capa{3}{\draw[guia] (7,2.2) -- (0,2.2) node[left, text=black] {$P_0=\overline{P}$};}
+  \capa{3}{\draw[curva1] plot[domain=6.2:1.2, samples=60, smooth] ({da(\x)},\x)
+      node[etiqueta, right, text=tceemorado] {DA};}
+  \capa{3}{\node[punto] (A2) at (7,2.2) {};}
+  \capa{3}{\node[etiqueta] at (6.62,1.3) {$A$};}
+  \end{scope}
+  \capa{3}{\draw[guia] (A1) -- (A2);}
+  % 4: la OA de largo plazo, vertical en Y^n
+  \begin{scope}[yshift=-5.1cm]
+  \capa{4}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,6.6) node[etiqueta, above, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  % 5: la OA de corto plazo con W_0, y la horizontal de precios fijos
+  \capa{5}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{5}{\draw[thin, dashed, tceeazul] (7,2.2) -- (12.4,2.2) node[etiqueta, right, text=tceeazul, font=\footnotesize] {precios fijos};}
+  % (el punto A se vuelve a poner encima de las 2 OA que pasan por él)
+  \capa{5}{\node[punto] at (7,2.2) {};}
+  \end{scope}
+  % 6: expansión de demanda: IS' arriba y DA' abajo
+  \capa{6}{\draw[curvanueva, desplazada] (3.2,8.6) -- (13.2,1.1) node[etiqueta, below right=0pt and -2pt, text=tceerojo] {IS$'$};}
+  \begin{scope}[yshift=-5.1cm]
+  \capa{6}{\draw[curvanueva, desplazada] plot[domain=6.3:1.0, samples=60, smooth] ({da(\x)+4/3},\x)
+      node[etiqueta, right, text=tceerojo] {DA$'$};}
+  \end{scope}
+  % 7: corto plazo: P sube a P_1, la LM sube un poco y la renta pasa a Y_1 > Y^n (B)
+  \capa{7}{\draw[curva2, desplazada] (1.6,0.5) -- (11.733,8.1) node[etiqueta, right, text=tceeazul] {LM$(P_1)$};}
+  \capa{7}{\node[punto] (B1) at (7.8,5.15) {};}
+  \capa{7}{\node[etiqueta, right=3pt] at (B1) {$B$};}
+  \begin{scope}[yshift=-5.1cm]
+  \capa{7}{\draw[guia] (7.8,3) -- (0,3) node[left, text=black] {$P_1$};}
+  \capa{7}{\draw[guia] (7.8,0) node[below, text=black] {$Y_1$} -- (7.8,3);}
+  \capa{7}{\node[punto] (B2) at (7.8,3) {};}
+  \capa{7}{\node[etiqueta, right=3pt] at (B2) {$B$};}
+  \end{scope}
+  \capa{7}{\draw[guia] (B1) -- (B2);}
+  % 8: largo plazo: sube el salario (W_1), la OA de corto sube y la economía
+  %    vuelve a Y^n con P_2 > P_1 (C); arriba, la LM con P_2 y un tipo más alto
+  \begin{scope}[yshift=-5.1cm]
+  \capa{8}{\draw[curva2, desplazada] (2.5,0.5) -- (8.4,6.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_1)$};}
+  \capa{8}{\draw[guia] (7,5) -- (0,5) node[left, text=black] {$P_2$};}
+  \capa{8}{\node[punto] (C2) at (7,5) {};}
+  \capa{8}{\node[etiqueta, above left=1pt and 1pt] at (C2) {$C$};}
+  \end{scope}
+  \capa{8}{\draw[flecha, shorten <=3pt, shorten >=3pt] (B2) to[bend right=25] (C2);}
+  \capa{8}{\draw[curva2, desplazada] (0.4,0.8) -- (11.333,9) node[etiqueta, right, text=tceeazul] {LM$(P_2)$};}
+  \capa{8}{\draw[guia] (7,5.75) -- (0,5.75) node[left, text=black] {$i_2$};}
+  \capa{8}{\draw[guia] (7,5.75) -- (A1);}
+  \capa{8}{\node[punto] (C1) at (7,5.75) {};}
+  \capa{8}{\node[etiqueta, above=3pt] at (C1) {$C$};}
+\end{tikzpicture}
+\end{document}
