@@ -1,0 +1,1272 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A29.bib}
+\tcetema[Modelización dinámica de las decisiones]{3.A.29}{Modelización dinámica de las tomas de decisiones. Modelos de horizonte infinito y modelos de generaciones solapadas.}
+\tcefecha{01/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «No dejes para mañana lo que puedas hacer hoy», dice el refrán. La economía responde con un «depende»: si lo que se aparta hoy rinde mañana más de lo que nos cuesta esperar, conviene dejar para mañana parte del consumo de hoy. Y, aunque lo planeemos, no siempre lo cumplimos: el lunes en que íbamos a empezar a ahorrar se convierte en el lunes siguiente.
+  \item En 1928, un matemático de Cambridge de 25 años, Frank \autor{Ramsey}, abrió su artículo sobre el ahorro con una pregunta: ¿cuánto de su renta debe ahorrar una nación? \parencite[p.~543]{Ramsey1928}. Responderla obliga a mirar a la vez el presente y el futuro, a las generaciones de hoy y a las que vendrán.
+  \item Detrás está la pregunta de esta exposición: ¿cómo se modelizan las decisiones cuando lo que hacemos hoy cambia lo que podremos hacer mañana? ¿Y cambia la respuesta a \autor{Ramsey} según cómo modelicemos el tiempo?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Casi todas las decisiones económicas importantes son dinámicas}: ahorrar, invertir, educarse, endeudarse, extraer un recurso que se agota o cotizar para la pensión. En todas, lo que se hace hoy cambia lo que se podrá hacer mañana.
+  \item \emph{Es el lenguaje de la macroeconomía actual}: desde la crítica de \autor{Lucas}, los modelos con los que trabajan los bancos centrales y los ministerios de economía son modelos de agentes que optimizan en el tiempo, casi siempre con un horizonte infinito.
+  \item \emph{Para la política económica}, muchas decisiones son, en el fondo, un reparto entre generaciones. Desde 2023, toda cotización por jubilación en España incluye el \concepto{mecanismo de equidad intergeneracional}: una cotización finalista de 0,90 puntos porcentuales en 2026, que llegará a 1,2 puntos en 2029 y se mantendrá hasta 2050, que no da derecho a prestaciones y nutre el Fondo de Reserva de la Seguridad Social «con el fin de preservar el equilibrio entre generaciones» \parencite{BOE2015LGSS}. Los que hoy trabajan apartan recursos para las pensiones de los que se jubilarán mañana: una decisión dinámica de manual.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}. Desde un punto de vista conceptual:
+  \begin{itemize}
+  \item ¿Qué es estático y qué es dinámico en economía? Según \autor{Hicks}, basta con definir uno de los 2 términos para que quede definido el otro; en la primera mitad del siglo XX lo intentaron \autor{Schumpeter}, \autor{Frisch}, \autor{Hicks} y \autor{Samuelson}, con definiciones a veces incompatibles.
+  \item El \concepto{análisis estático} estudia las relaciones entre variables referidas a un mismo momento o periodo. El \concepto{análisis dinámico} estudia relaciones entre variables referidas a momentos distintos: el pasado o el futuro esperado condicionan el presente. La clave formal está en los subíndices temporales.
+  \item Entre ambos está la \concepto{estática comparativa}, que compara 2 equilibrios cuando cambia un dato, sin decir cómo se pasa de uno a otro. \textcite{Samuelson1947Foundations} mostró que sus resultados solo tienen sentido si el equilibrio es estable, y la estabilidad es una propiedad dinámica: es el \concepto{principio de correspondencia}\footnote{En palabras de \textcite[p.~5]{Samuelson1947Foundations}: «\emph{By means of what I have called the Correspondence Principle between comparative statics and dynamics, definite operationally meaningful theorems can be derived from so simple a hypothesis. One interested only in fruitful statics must study dynamics}»; y, más adelante, «\emph{we find ourselves confronted with this paradox: in order for the comparative-statics analysis to yield fruitful results, we must first develop a theory of dynamics}» (pp.~262-263). \autor{Samuelson} le puso ese nombre a falta de uno mejor (p.~258) y compara el paso de la estática a la dinámica en economía con el de la mecánica clásica a la cuántica en la física (p.~284).}. Por eso el análisis dinámico no es estática comparativa, ni tampoco el estudio de cómo se llega a un equilibrio desde un desequilibrio.
+  \item Como señalaba \autor{Tinbergen}, la distinción entre estática y dinámica no separa 2 tipos de fenómenos, sino 2 formas de estudiarlos: un mismo fenómeno puede analizarse con herramientas estáticas, más sencillas, o dinámicas, cuando aportan algo. El análisis dinámico aporta cuando, para explicar una decisión de hoy, importan otros momentos del tiempo: cuando la decisión es \concepto{genuinamente intertemporal}\footnote{Un problema estático puede «dinamizarse» sin dificultad, poniendo un subíndice temporal a cada variable. Pero si el equilibrio dinámico es solo una sucesión de equilibrios estáticos, en la que ni el pasado ni el futuro esperado condicionan el presente, la dinamización no aporta nada: el problema no es genuinamente intertemporal.}.
+  \end{itemize}
+  Desde un punto de vista histórico:
+  \begin{itemize}
+  \item Los \emph{clásicos} mezclaban relaciones estáticas y dinámicas a conveniencia; como señala \autor{Baumol}, la economía era entonces economía política, más atenta a los argumentos de política que al rigor analítico. La \emph{revolución marginalista} separó ambas y se quedó con la estática, con excepciones como el tanteo de \autor{Walras} o la recontratación de \autor{Edgeworth}.
+  \item A principios del siglo XX, el análisis del capital y del interés obliga a mirar el tiempo. \textcite{Fisher1930Theory} explica el tipo de interés por la impaciencia de los consumidores y las oportunidades de inversión, y \textcite{Ramsey1928} resuelve el primer problema de ahorro óptimo de un agente de vida infinita\footnote{Frank \autor{Ramsey} (1903-1930), filósofo y matemático de Cambridge y amigo de \autor{Keynes}, murió en enero de 1930, con 26 años \parencite{MacTutorRamseyDeath}. En economía dejó 2 artículos: el de la imposición óptima de los bienes, cuya regla aplicó luego \autor{Boiteux} a las tarifas de un monopolio público con restricción presupuestaria \vertema{3.A.17}, y el del ahorro óptimo, el primer modelo de un agente que optimiza en un horizonte infinito, que pasó casi inadvertido hasta que \autor{Cass} y \autor{Koopmans} lo recuperaron en 1965 \vertema{3.A.43}.}. Entre los primeros modelos dinámicos de la macroeconomía están los del ciclo, como el de impulso y propagación de \textcite{Frisch1933Propagation} \vertema{3.A.42}.
+  \item A mediados de siglo se microfundamentan los agregados: el consumo (\autor{Friedman}, \autor{Modigliani}) \vertema{3.A.33}, la inversión (\autor{Jorgenson}; \autor{Eisner} y \autor{Strotz}) \vertema{3.A.34}, la demanda de dinero (\autor{Baumol}, \autor{Tobin}) \vertema{3.A.35} y la oferta de trabajo (\autor{Lucas} y \autor{Rapping}) \vertema{3.A.25}. Llegan también las herramientas, la programación dinámica de \textcite{Bellman1957Dynamic} y el principio del máximo de \textcite{PontryaginEtAl1962}, y los 2 grandes marcos: el agente de vida infinita (\autor{Cass}, 1965; \autor{Koopmans}, 1965) y las generaciones solapadas (\autor{Samuelson}, 1958; \autor{Diamond}, 1965).
+  \item Desde la crítica de \textcite{Lucas1976Econometric} \vertema{3.A.6}, la optimización dinámica ocupa casi toda la macroeconomía: primero con agentes representativos y, en los últimos años, con agentes heterogéneos.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Cómo deciden los agentes cuando lo que hacen hoy cambia lo que podrán hacer mañana? ¿Con qué herramientas se modeliza esa decisión, y cuándo conviene cada una?
+  \item ¿Cómo se lleva a la macroeconomía? ¿Qué se gana suponiendo un agente que vive para siempre, y qué cambia cuando las generaciones se suceden?
+  \item Y, detrás de todo, la pregunta de \autor{Ramsey}: ¿ahorra el mercado lo que conviene?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue el orden del título y va de lo individual a lo agregado. Cada bloque responde a una pregunta que deja abierta el anterior.
+  \begin{itemize}
+  \item \concepto{I. La modelización dinámica de las decisiones} (\ref{sec:micro}): construimos la herramienta, la \concepto{optimización dinámica}, con las decisiones de un hogar y de una empresa, y vemos los 3 métodos con que se resuelve. Los 3 llevan a la misma condición, la ecuación de \autor{Euler}.
+  \item \concepto{II. El agente representativo de vida infinita} (\ref{sec:macro-mhi}): llevamos la herramienta a la macroeconomía con un agente representativo que vive para siempre, en los \concepto{modelos de horizonte infinito}. Su ejemplo es el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}, cuyo equilibrio es eficiente: el mercado nunca ahorra de más.
+  \item \concepto{III. Generaciones solapadas y heterogeneidad} (\ref{sec:macro-olg}): con agentes que viven un tiempo finito y se suceden, en los \concepto{modelos de generaciones solapadas}, el equilibrio puede acumular demasiado capital. Cerramos con los límites del agente representativo.
+  \end{itemize}
+  Usaremos como sinónimos análisis \emph{dinámico} e \emph{intertemporal}, siempre que el tiempo importe de verdad. Queda fuera la interdependencia estratégica: cuando lo que decide un agente depende de lo que decidirán otros en el futuro, la herramienta es la teoría de juegos dinámicos \vertema{3.A.14}.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.29. Modelización dinámica de las tomas de decisiones}\\[2pt]
+Introducción\\
+I. La modelización dinámica de las decisiones: enfoque microeconómico\\
+\hspace*{1.5em}1. Consumidores: componentes ($U_0=\sum\beta^tu(C_t)$, $b_{t+1}=(1+r)b_t+Y_t-C_t$); \autor{Lagrange}, control óptimo y programación dinámica: $u'(C_t)=\beta(1+r)u'(C_{t+1})$; \autor{Fisher}\\
+\hspace*{1.5em}2. Empresas: separación de \autor{Fisher}, costes de ajuste (q de \autor{Tobin}) y recursos agotables (\autor{Hotelling})\\
+II. El agente representativo de vida infinita\\
+\hspace*{1.5em}1. El agente representativo \quad 2. Horizonte infinito: transversalidad, consistencia temporal y el modelo de \autor{Ramsey}-\autor{Cass}-\autor{Koopmans}\\
+III. Generaciones solapadas y heterogeneidad\\
+\hspace*{1.5em}1. \autor{Samuelson} (1958) y \autor{Diamond} (1965): $k_{t+1}=\frac{\beta(1-\alpha)}{(1+\beta)(1+n)(1+g)}k_t^{\alpha}$; ineficiencia dinámica, deuda, pensiones y burbujas\\
+\hspace*{1.5em}2. Limitaciones del agente representativo y nuevos enfoques\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{6}; I.2, \tiempo{2,5}); II, \tiempo{8} (II.1, \tiempo{2}; II.2, \tiempo{6}); III, \tiempo{10} (III.1, \tiempo{8}; III.2, \tiempo{2}), y conclusión, \tiempo{1}. La introducción y la conclusión se cantan sin pizarra. La pizarra se organiza en 3 columnas. A la izquierda, lo que se queda hasta el final, recuadrado: el problema del consumidor en una línea, la ecuación de \autor{Euler} (\ref{sec:metodos}), la de \autor{Bellman} y, en el bloque~\ref{sec:macro-olg}, la ley de movimiento de \autor{Diamond}. En el centro, la tabla de los 3 métodos (\ref{sec:metodos}), que se borra al acabar el bloque~\ref{sec:micro}, y después las 3 ecuaciones del modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} (\ref{sec:horizonte-infinito}). A la derecha, en el bloque~\ref{sec:macro-olg}, el gráfico de \autor{Diamond} en $(k_t,k_{t+1})$ con la bisectriz y el cuadro de horizonte infinito frente a generaciones solapadas (\ref{sec:olg}). Los refranes se apuntan en una esquina al decirlos: el del enganche y las pegatinas «cada cosa a su tiempo» (\autor{Bellman}), «de tal palo, tal astilla» (la dinastía), «cuando seas padre, comerás huevos» (generaciones solapadas) y «la avaricia rompe el saco» (ineficiencia dinámica). Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+\end{notaopositor}
+
+\begin{anotaciones}
+\textbf{Para saber más}
+\begin{itemize}
+\item \emph{TIME. Blindspots in Economic Thinking}, conferencia de Gonçalo \autor{Fonseca} sobre el tiempo como punto ciego del pensamiento económico (vídeo): \url{https://youtu.be/W6DVUehdczM} \parencite{YSI2026Fonseca}.
+\item «Intertemporal choice», Wikipedia: \url{https://en.wikipedia.org/wiki/Intertemporal_choice} \parencite{Wikipedia2026Intertemporal}.
+\end{itemize}
+\end{anotaciones}
+
+% ==========================================================================
+\section{La modelización dinámica de las decisiones:\newline enfoque microeconómico}\label{sec:micro}
+\minutos{8,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{8,5}): los consumidores (\tiempo{6}), con los componentes en \tiempo{1,5} (estado y control, $U_0$ con el descuento exponencial, la CRRA y la restricción de cada periodo, de palabra la mayor parte), los 3 métodos en \tiempo{3} (el problema escrito una vez; \autor{Lagrange} lleva a la ecuación de \autor{Euler}, que se recuadra y se queda; el hamiltoniano, a su versión continua; la ecuación de \autor{Bellman}, recuadrada, con el ejemplo logarítmico en una línea; la tabla~\ref{tab:metodos} se rellena columna a columna) y las aplicaciones en \tiempo{1,5} (\autor{Fisher} con la ESI; el capital humano y la incertidumbre en una frase). Las empresas (\tiempo{2,5}): el capital como estado; la separación de \autor{Fisher} y la regla de \autor{Hotelling}, de palabra; la q con sus 2 condiciones escritas bajo la ecuación de \autor{Euler} («la misma lógica de arbitraje»). Las propiedades de la utilidad, la estática comparativa y los modelos de las empresas paso a paso son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: un problema es genuinamente dinámico cuando una \emph{variable de estado} une los periodos. Se resuelva con el método que se resuelva, su solución se resume en una condición de arbitraje intertemporal, la ecuación de \autor{Euler}, y en un \emph{precio sombra} del estado.
+\item \emph{Nexo}: empezamos por los agentes individuales, primero el consumidor, en el que se ven todas las piezas de un problema dinámico, y después la empresa.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Decisiones intertemporales de los consumidores}\label{sec:consumidores}
+
+\begin{itemize}
+\item La conclusión anticipada del subapartado: con preferencias aditivas y descuento exponencial, lo que hace intertemporal el problema del consumidor es la restricción, y su solución es la ecuación de \autor{Euler}, que reaparecerá en todo el tema.
+\end{itemize}
+
+\subsubsection{Componentes del problema dinámico}\label{sec:componentes}
+
+\begin{itemize}
+\item En un problema dinámico las variables son de 2 tipos:
+  \begin{itemize}
+  \item \concepto{variables flujo}, referidas a un intervalo de tiempo y elegidas directamente: en optimización dinámica, las \concepto{variables de control} (el consumo, $C_t$; la inversión, $I_t$);
+  \item \concepto{variables stock}, referidas a un instante y determinadas por las decisiones de flujo pasadas: las \concepto{variables de estado} (los activos, $b_t$; el capital, $K_t$; las reservas de un recurso).
+  \end{itemize}
+\item El tiempo puede ser discreto ($t=0,1,2,\dots$) o continuo, y el horizonte, finito o infinito. El consumidor elige una \emph{senda} de consumo, $(C_0,C_1,\dots,C_T)$, y el problema tiene 4 piezas: unas preferencias sobre sendas, unas restricciones (la ecuación de estado y las condiciones inicial y final), un método de resolución y, como resultado, la senda óptima.
+\end{itemize}
+
+\paragraph{a) Las preferencias intertemporales}
+
+\begin{itemize}
+\item \emph{La forma general}: las preferencias sobre sendas se representan con una función de utilidad intertemporal valorada desde el periodo inicial, $U_0=U(C_0,C_1,C_2,\dots)$.\footnote{El modelo de utilidad descontada se usa tanto que su fundamento axiomático suele omitirse; lo dan \textcite{Koopmans1960Stationary} y \textcite{FishburnRubinstein1982Time}.}
+\item \emph{\autor{Ramsey} (1928)} la separa en una función de descuento, $D(t)$, y una utilidad instantánea: $U_0=\sum_tD(t)\,u(C_t)$.
+\item \emph{\autor{Samuelson} (1937)} propone el \concepto{descuento exponencial}, el modelo estándar que usaremos en toda la exposición \parencite{Samuelson1937}:
+  \begin{equation}
+  U_0\equiv\sum_{t=0}^{T}\beta^t\,u(C_t),\qquad\beta\equiv\frac{1}{1+\rho},\quad\rho>0,\label{eq:utilidad-intertemporal}
+  \end{equation}
+  con 2 componentes:
+  \begin{itemize}
+  \item el \concepto{factor de descuento} $\beta$, con $0<\beta<1$, y la \concepto{tasa de preferencia temporal} $\rho$: la mayoría de los agentes prefiere una recompensa hoy a la misma mañana, por impaciencia o por el riesgo de no llegar a disfrutarla\footnote{La preferencia por el presente es una idea antigua: se atribuye a \autor{Demócrito} (siglos V-IV a.~C.) la observación de que el viejo fue joven, pero nadie sabe si el joven llegará a viejo, y de que por eso un bien que se tiene vale más que uno que está por llegar. La historia de la idea, de \autor{Rae} y \autor{Böhm-Bawerk} a la economía del comportamiento, está en \textcite{FrederickEtAl2002Time}. En matemática financiera no deben confundirse los factores de descuento y de capitalización, que responden a leyes distintas; en la economía intertemporal se usan a menudo como equivalentes.};
+  \item la \concepto{utilidad instantánea} $u(C_t)$, creciente y estrictamente cóncava ($u'>0$, $u''<0$), definida sobre el consumo de bienes no duraderos\footnote{La concavidad da la preferencia por alisar el consumo y, con 2 periodos, curvas de indiferencia convexas; la implicación no es recíproca: hay curvas convexas con utilidad marginal no decreciente. Que el bien no sea duradero se justifica si solo hay bienes no duraderos o si hay mercados perfectos de alquiler de los duraderos \vertema{3.A.33}.}.
+  \end{itemize}
+\item \emph{La elasticidad de sustitución intertemporal} (ESI) mide cuánto cambia la proporción del consumo entre 2 periodos cuando cambia su precio relativo, que es el tipo de interés:
+  \begin{equation*}
+  \mathrm{ESI}\equiv\frac{d\ln(C_{t+1}/C_t)}{d\ln\lvert\mathrm{RMS}_{t,t+1}\rvert}.
+  \end{equation*}
+  Cuanto mayor es, más fácil es sustituir consumo entre periodos: hace falta un cambio menor de la relación marginal de sustitución para acomodar un cambio dado en la proporción consumida en cada periodo.
+\item La forma habitual de $u$ es la \concepto{CRRA} o isoelástica \vertema{3.A.8}:
+  \begin{equation}
+  u(C)=\frac{C^{1-\theta}-1}{1-\theta}\quad(\theta>0,\ \theta\neq1),\qquad u(C)=\ln C\quad(\theta=1),\label{eq:crra}
+  \end{equation}
+  con $\mathrm{ESI}=1/\theta$, constante para todo nivel de consumo\footnote{Con 2 periodos, $\lvert\mathrm{RMS}_{t,t+1}\rvert=u'(C_t)/[\beta u'(C_{t+1})]=(C_{t+1}/C_t)^{\theta}/\beta$, así que $\ln\lvert\mathrm{RMS}\rvert=\theta\ln(C_{t+1}/C_t)-\ln\beta$ y $\mathrm{ESI}=1/\theta$.}: la reacción del consumo al tipo de interés queda resumida en un único parámetro, que no cambia con el nivel de consumo. El parámetro $\theta$ es también el coeficiente de aversión relativa al riesgo, $r_R=-u''(C)\,C/u'(C)=\theta$ \vertema{3.A.10}: con utilidad aditiva, la aversión a la variabilidad del consumo entre estados de la naturaleza y entre periodos es la misma\footnote{Cuanto mayor es $\theta$, más cóncava es $u$ y menos responde el consumo al tipo de interés; con $\theta\to0$, $u$ tiende a ser lineal, y con $\theta\to1$, a $\ln C$, como se comprueba con la regla de l'Hôpital: $\lim_{\theta\to1}(C^{1-\theta}-1)/(1-\theta)=\lim_{\theta\to1}C^{1-\theta}\ln C=\ln C$. El $-1$ del numerador es el que hace que el límite exista; no cambia el óptimo. Las preferencias de \autor{Epstein} y \autor{Zin} separan la aversión al riesgo de la ESI.}.
+\item \emph{Propiedades} de \eqref{eq:utilidad-intertemporal} \parencite[sec.~20.B]{MasColellWhinstonGreen1995}:
+  \begin{enumerate}
+  \item \emph{impaciencia}: con $\beta<1$, retrasar un periodo una senda no nula la empeora; una senda acotada tiene utilidad finita aunque el horizonte sea infinito, lo que permite comparar cualquier par de sendas y aplicar el cálculo;
+  \item \emph{estacionariedad}: si 2 sendas coinciden hasta $T$, la preferencia entre ellas no cambia si se adelantan $T$ periodos: las preferencias sobre el futuro no dependen de la edad;
+  \item \emph{separabilidad aditiva}\footnote{Se dice «aditivamente separable», no «aditiva y separable»: la aditividad es un caso particular de la separabilidad.}: la ordenación de lo que se consume a partir de $T+1$ no depende de lo consumido hasta $T$, y al revés; no hay hábitos \vertema{3.A.33};
+  \item \emph{duración del periodo}: la separabilidad es más creíble cuanto más largo es el periodo (incluso los bienes perecederos dan servicios durante un tiempo), y $\beta$ está más cerca de 1 cuanto más corto es;
+  \item \emph{recursividad}: la utilidad de hoy es la del consumo de hoy más la de la senda futura valorada desde mañana, $U_0=u(C_0)+\beta\,U_1$; es la propiedad en la que se apoya la programación dinámica (\ref{sec:metodos});
+  \item \emph{altruismo}: con horizonte infinito, el agente puede leerse como una dinastía que valora el bienestar de sus descendientes como el propio (\ref{sec:horizonte-infinito}).
+  \end{enumerate}
+  Impaciencia y estacionariedad son las que llevan al descuento exponencial, el único que hace las preferencias consistentes en el tiempo (\ref{sec:horizonte-infinito}).
+\item \emph{Lo que hace intertemporal el problema}: con estas preferencias, la utilidad de un periodo no depende de lo consumido en otro. El carácter intertemporal tiene que venir de la restricción: las decisiones de un periodo deben cambiar lo que se puede hacer en otro.
+\end{itemize}
+
+\paragraph{b) Las restricciones}
+
+\begin{itemize}
+\item \emph{La ecuación de estado}. En cada periodo, lo que se consume más lo que se guarda para el siguiente es igual a lo que se gana más los activos con sus intereses:
+  \begin{equation}
+  C_t+b_{t+1}=Y_t+(1+r)\,b_t\quad\Longleftrightarrow\quad b_{t+1}-b_t=Y_t+r\,b_t-C_t,\label{eq:restriccion-periodo}
+  \end{equation}
+  con $Y_t$ la renta no financiera (del trabajo o de una dotación) y $r\,b_t$ la financiera.
+  \begin{itemize}
+  \item Los activos $b_t$ son la variable que une un periodo con el siguiente: el ahorro es el vehículo que traslada consumo en el tiempo\footnote{En tiempo continuo, el vínculo entre periodos es la derivada respecto al tiempo: $\dot b_t=Y_t+r\,b_t-C_t$. En discreto, $b_{t+1}-b_t$ es una diferencia, no una derivada.}.
+  \item Hay una restricción por periodo, todas con la misma forma. Si $b_t$ no tiene límite inferior (salvo al final), el consumidor presta y pide prestado al mismo tipo: no hay restricciones de liquidez.
+  \end{itemize}
+\item \emph{Las condiciones inicial y terminal}: $b_0$ está dado y, al final, $b_{T+1}\geq0$: no se puede morir endeudado, y en el óptimo tampoco interesa morir con activos, así que $b_{T+1}=0$. Con horizonte infinito, la condición terminal pasa a ser la de \emph{no-Ponzi} (\ref{sec:horizonte-infinito}).
+\item \emph{La restricción intertemporal}: sustituyendo hacia delante, todas las restricciones de cada periodo se resumen en una,
+  \begin{equation*}
+  \sum_{t=0}^{T}\frac{C_t}{(1+r)^t}=(1+r)\,b_0+\sum_{t=0}^{T}\frac{Y_t}{(1+r)^t}:
+  \end{equation*}
+  el valor actual del consumo es igual a la riqueza.\footnote{Con certidumbre y un activo sin riesgo, las restricciones de cada periodo siempre se resumen así. Con incertidumbre hacen falta mercados \emph{completos}; si no lo son, se trabaja con las restricciones de cada periodo y cada estado (\ref{sec:metodos}). Con activos \emph{redundantes} (unos replican a otros), la restricción intertemporal se sigue cumpliendo: lo que queda indeterminado es la composición de la cartera, no el consumo.}
+\end{itemize}
+
+\subsubsection{Métodos de resolución: sustitución, control óptimo\newline y programación dinámica}\label{sec:metodos}
+
+\begin{itemize}
+\item Hemos planteado el problema; ahora, cómo se resuelve. La conclusión anticipada: hay 3 métodos y los 3 llevan a la misma ecuación de \autor{Euler}. Se elige uno u otro por comodidad, según el tiempo sea discreto o continuo, el horizonte finito o infinito y haya o no incertidumbre.
+\item Los 3 parten del mismo esquema: un objetivo aditivo y descontado, una variable de control (el consumo, $C_t$), una de estado (los activos, $b_t$), una ecuación de estado que las une y unas condiciones inicial y final.
+\end{itemize}
+
+\paragraph{a) Sustitución y multiplicadores de \autor{Lagrange} (tiempo discreto)}
+
+\begin{itemize}
+\item Con horizonte finito y sin incertidumbre, el problema del consumidor es
+  \begin{equation*}
+  \optim{\max}{\{C_t\}_{t=0}^{T}}{\sum_{t=0}^{T}\beta^t\,u(C_t)}{b_{t+1}=(1+r)\,b_t+Y_t-C_t,\quad t=0,\dots,T\\ b_0\ \text{dado}\\ b_{T+1}\geq 0}
+  \end{equation*}
+  un problema estático con muchas variables. Se resuelve sustituyendo el consumo de cada restricción en el objetivo o con un multiplicador $\lambda$ sobre la restricción intertemporal (anexo~\ref{anexo:optimizacion}). La condición de primer orden para $C_t$, $\beta^tu'(C_t)=\lambda/(1+r)^t$, dividida entre la de $C_{t+1}$, es la \concepto{ecuación de \autor{Euler}}\footnote{Leonhard \autor{Euler} (1707-1783) trabajó en la Academia de Ciencias de San Petersburgo entre 1727 y 1741 y, tras 25 años en Berlín, volvió a ella en 1766, en tiempos de Catalina la Grande, hasta su muerte. Su ecuación nace del cálculo de variaciones, cuyo primer problema fue el de la \emph{braquistócrona}, la curva por la que un cuerpo que parte del reposo baja más deprisa entre 2 puntos solo por la gravedad, que planteó Johann \autor{Bernoulli} en 1696. \autor{Euler} dio en 1744 un método general para esa clase de problemas, del que sale la ecuación que hoy se llama de \autor{Euler}-\autor{Lagrange} \parencite{MacTutorEuler,MacTutorBrachistochrone}. La condición de óptimo intertemporal de la economía es su versión en tiempo discreto.\graficonota{braquistocrona}}:
+  \funcionclave[eq:euler]{u'(C_t)=\beta\,(1+r)\,u'(C_{t+1})}
+  En el óptimo, la utilidad que se pierde al consumir un euro menos hoy es igual a la que dan mañana ese euro y sus intereses, descontada. Si no fuera así, trasladar consumo entre periodos aumentaría la utilidad.
+\item El multiplicador $\lambda$ es la utilidad marginal de la riqueza: en $t=0$, $\lambda=u'(C_0)$.
+\item \emph{Ventaja}: es el método del cálculo elemental. \emph{Límite}: con horizonte largo o infinito hay muchas condiciones, y con incertidumbre la restricción intertemporal única desaparece.
+\end{itemize}
+
+\paragraph{b) El control óptimo (tiempo continuo)}
+
+\begin{itemize}
+\item Es la versión moderna del cálculo de variaciones, el método con el que \autor{Ramsey} resolvió su problema. Su resultado central es el \concepto{principio del máximo}, que anunciaron \autor{Boltianski}, \autor{Gamkrelidze} y \autor{Pontriaguin} en 1956 y publicaron completo \textcite{PontryaginEtAl1962} (anexo~\ref{anexo:control-optimo}).
+\item El consumidor en tiempo continuo y con horizonte infinito resuelve
+  \begin{equation*}
+  \optim{\max}{\{C_t\}}{\int_0^{\infty}e^{-\rho t}\,u(C_t)\,dt}{\dot b_t=Y_t+r\,b_t-C_t\\ b_0\ \text{dado}\\ \lim_{t\to\infty}e^{-rt}\,b_t\geq0}
+  \end{equation*}
+  con el \concepto{hamiltoniano} en valor corriente, $\mathcal{H}_t=u(C_t)+\lambda_t\,(Y_t+r\,b_t-C_t)$, donde el coestado $\lambda_t$ es el valor, en utilidad de $t$, de un euro más de activos. Las condiciones son:
+  \begin{enumerate}
+  \item control: $\partial\mathcal{H}_t/\partial C_t=0$, es decir, $u'(C_t)=\lambda_t$;
+  \item coestado: $\dot\lambda_t=\rho\,\lambda_t-\partial\mathcal{H}_t/\partial b_t=(\rho-r)\,\lambda_t$;
+  \item transversalidad: $\lim_{t\to\infty}e^{-\rho t}\lambda_t\,b_t=0$.
+  \end{enumerate}
+\item Con la CRRA, $u'(C)=C^{-\theta}$, las 2 primeras dan la ecuación de \autor{Euler} en tiempo continuo,
+  \begin{equation}
+  \frac{\dot C_t}{C_t}=\frac{r-\rho}{\theta},\label{eq:euler-continua}
+  \end{equation}
+  la misma que en discreto, $\ln(C_{t+1}/C_t)\simeq(r-\rho)/\theta$ (\ref{sec:aplicaciones-consumo})\footnote{Tomando logaritmos en $C_t^{-\theta}=\lambda_t$ y derivando respecto al tiempo, $-\theta\,\dot C_t/C_t=\dot\lambda_t/\lambda_t=\rho-r$. En general, $\dot C_t=-[u'(C_t)/u''(C_t)]\,(r-\rho)$, y con la CRRA $-u'/u''=C/\theta$.}.
+\item \emph{Ventaja}: el coestado tiene una lectura económica directa, el \concepto{precio sombra} del estado (la $q$ de \autor{Tobin} en la empresa, la regalía en un recurso agotable), y las condiciones son ecuaciones diferenciales que se analizan con diagramas de fases. Es el método del crecimiento óptimo \vertema{3.A.43}, la inversión \vertema{3.A.34} y los costes de ajuste del empleo \vertema{3.A.26}.
+\end{itemize}
+
+\paragraph{c) La programación dinámica (\autor{Bellman})}
+
+\begin{itemize}
+\item \textcite{Bellman1957Dynamic} parte de una idea sencilla, el \concepto{principio de optimalidad}: sean cuales sean el estado y la decisión iniciales, el resto de un plan óptimo tiene que ser óptimo desde el estado al que lleva la primera decisión\footnote{El principio está ya en \textcite{Bellman1952Theory}.}. En vez de elegir toda la senda de una vez, se resuelve un problema de 2 periodos: hoy y «el resto de la vida». Es el refrán \concepto{«cada cosa a su tiempo»}: hoy se decide solo lo de hoy, sabiendo que mañana se decidirá bien.
+\item La herramienta es la \concepto{función de valor}, $V(b_t)$: la utilidad máxima que se puede obtener desde $t$ con unos activos $b_t$; es una función indirecta de utilidad, como la $V(\vect{p},\overline W)$ del consumidor estático \vertema{3.A.9}. Por la recursividad de las preferencias, cumple la \concepto{ecuación de \autor{Bellman}}:
+  \funcionclave[eq:bellman]{V(b_t)=\max_{C_t}\left\{u(C_t)+\beta\,V(b_{t+1})\right\},\qquad b_{t+1}=(1+r)\,b_t+Y_t-C_t}
+  Todo el futuro queda resumido en un número, $V(b_{t+1})$.
+\item De ella sale la ecuación de \autor{Euler} en 2 pasos (anexo~\ref{anexo:bellman}):
+  \begin{itemize}
+  \item condición de primer orden, $u'(C_t)=\beta\,V'(b_{t+1})$: un euro consumido hoy vale lo mismo que un euro más de activos mañana;
+  \item condición de la envolvente, $V'(b_t)=(1+r)\,u'(C_t)$: un euro más de activos hoy vale lo que se puede consumir con él y sus intereses.
+  \end{itemize}
+  Juntas, $u'(C_t)=\beta(1+r)\,u'(C_{t+1})$, que es \eqref{eq:euler}. La derivada de la función de valor, $V'(b_t)$, hace el papel del multiplicador de \autor{Lagrange} y del coestado: es el mismo precio sombra visto desde otro método.
+\item \emph{Un ejemplo resuelto}. Un consumidor sin renta laboral ($Y_t=0$), con $u(C)=\ln C$ y horizonte infinito, vive de sus activos: $b_{t+1}=(1+r)\,b_t-C_t$. Se prueba una función de valor de la forma $V(b)=A+B\ln b$:
+  \begin{itemize}
+  \item condición de primer orden: $1/C_t=\beta B/[(1+r)\,b_t-C_t]$, de donde $C_t=(1+r)\,b_t/(1+\beta B)$;
+  \item sustituyendo en la ecuación de \autor{Bellman} e igualando los coeficientes de $\ln b_t$ a los 2 lados, $B=1+\beta B$, es decir, $B=1/(1-\beta)$;
+  \item luego
+    \begin{equation*}
+    C_t=(1-\beta)(1+r)\,b_t,\qquad b_{t+1}=\beta(1+r)\,b_t:
+    \end{equation*}
+    cada periodo se consume una fracción fija, $1-\beta$, de la riqueza, y la riqueza y el consumo crecen a la tasa $\beta(1+r)$, que es lo que dice la ecuación de \autor{Euler} con utilidad logarítmica. Con $r=\rho$, $\beta(1+r)=1$ y el consumo es constante. La fracción no depende de $r$: con utilidad logarítmica, los efectos renta y sustitución de un cambio del tipo de interés se compensan exactamente.
+  \end{itemize}
+\item \emph{Ventajas}: trata con naturalidad la incertidumbre (basta con poner una esperanza delante de $V(b_{t+1})$, como se ve enseguida), se resuelve numéricamente iterando la ecuación, que converge porque $\beta<1$ \parencite{StokeyLucas1989Recursive,LjungqvistSargent2018Recursive}, y da directamente la \emph{regla de decisión}, $C_t=C(b_t)$, que es lo que se simula en los modelos de ciclo real y en los de equilibrio general dinámico y estocástico (EGDE) \vertema{3.A.42}. Es también el método de la búsqueda de empleo \vertema{3.A.26} y de los salarios de eficiencia de \autor{Shapiro} y \autor{Stiglitz} \vertema{3.A.27}.
+\end{itemize}
+
+\paragraph{d) La incertidumbre: la ecuación de \autor{Euler} estocástica}
+
+\begin{itemize}
+\item Si la renta futura es aleatoria, la ecuación de \autor{Bellman} lleva una esperanza condicionada a lo que se sabe en $t$,
+  \begin{equation*}
+  V(b_t,Y_t)=\max_{C_t}\left\{u(C_t)+\beta\,\mathbb{E}_t\!\left[V(b_{t+1},Y_{t+1})\right]\right\},
+  \end{equation*}
+  y la ecuación de \autor{Euler} se cumple en esperanza:
+  \begin{equation}
+  u'(C_t)=\beta\,(1+r)\,\mathbb{E}_t\!\left[u'(C_{t+1})\right].\label{eq:euler-estocastica}
+  \end{equation}
+\item Las restricciones ya no se resumen en una sola: hay una por periodo y por estado de la naturaleza. Las expectativas son \emph{racionales}: los agentes usan el modelo y toda la información disponible \vertema{3.A.6}. Es la razón principal para usar la programación dinámica (anexo~\ref{anexo:bellman}).
+\end{itemize}
+
+\paragraph{e) Comparación de los 3 métodos}
+
+\begin{itemize}
+\item Los 3 métodos son equivalentes cuando se pueden aplicar los 3: cambian la presentación y la comodidad, no el resultado (tabla~\ref{tab:metodos}).
+  \begin{table}[H]
+  \centering
+  \caption{Los 3 métodos de la optimización dinámica}\label{tab:metodos}
+  \small
+  \begin{tabular}{>{\raggedright\arraybackslash}m{2.5cm}>{\raggedright\arraybackslash}m{3.7cm}>{\raggedright\arraybackslash}m{3.7cm}>{\raggedright\arraybackslash}m{3.7cm}}
+  \toprule
+  \rowcolor{tceeazulpalido} & \textbf{Sustitución y \autor{Lagrange}} & \textbf{Control óptimo} & \textbf{Programación dinámica}\\
+  \midrule
+  Tiempo y horizonte & discreto, finito & continuo (o discreto), finito o infinito & discreto (o continuo), finito o infinito\\
+  \addlinespace[0.3em]
+  Qué se busca & la senda entera & la senda del control & la regla de decisión $C(b)$\\
+  \addlinespace[0.3em]
+  Herramienta & lagrangiana, multiplicador $\lambda$ & hamiltoniano $\mathcal{H}$, coestado $\lambda_t$ & función de valor $V(b)$\\
+  \addlinespace[0.3em]
+  Precio sombra & $\lambda$, utilidad marginal de la riqueza & $\lambda_t$, valor de un euro más de activos & $V'(b_t)$, valor marginal de los activos\\
+  \addlinespace[0.3em]
+  Condición clave & \multicolumn{3}{>{\centering\arraybackslash}m{11.9cm}}{\cellcolor{tceesalvia}ecuación de \autor{Euler}: $u'(C_t)=\beta(1+r)\,u'(C_{t+1})$ \quad o \quad $\dot C_t/C_t=(r-\rho)/\theta$}\\
+  \addlinespace[0.3em]
+  Ventaja & sencillez & lectura económica, diagramas de fases & incertidumbre, cálculo numérico\\
+  \addlinespace[0.3em]
+  Dónde se usa & \autor{Fisher}, ciclo vital, \autor{Diamond} & q de \autor{Tobin}, \autor{Ramsey}-\autor{Cass}-\autor{Koopmans}, costes de ajuste del empleo & \autor{Hall}, ciclo real, búsqueda de empleo\\
+  \addlinespace[0.3em]
+  Referencia & \textcite{Fisher1930Theory} & \textcite{PontryaginEtAl1962} & \textcite{Bellman1957Dynamic}\\
+  \bottomrule
+  \end{tabular}
+  \fuente{elaboración propia a partir de \textcite[caps.~6 y 7]{Acemoglu2009} y \textcite{Cerda2001Optimizacion}.}
+  \end{table}
+\end{itemize}
+
+\subsubsection{Aplicaciones: la decisión de consumo y ahorro}\label{sec:aplicaciones-consumo}
+
+\paragraph{a) La piedra angular: la decisión de consumo y ahorro de \autor{Fisher}}
+
+\begin{itemize}
+\item \textcite{Fisher1930Theory} mostró que en el centro de todo problema intertemporal hay 3 piezas: una hipótesis de comportamiento (un agente racional que mira al futuro, con previsión perfecta), unas preferencias y una restricción \vertema{3.A.33}. Con 2 periodos, sin activos iniciales y la riqueza $\overline W\equiv Y_1+Y_2/(1+r)$, el consumidor elige $C_1$ y $C_2$ con $C_1+C_2/(1+r)=\overline W$, y la ecuación de \autor{Euler} \eqref{eq:euler} es $u'(C_1)=\beta(1+r)\,u'(C_2)$.
+\item Con la CRRA \eqref{eq:crra}, da el perfil del consumo:
+  \begin{equation*}
+  \frac{C_{t+1}}{C_t}=\left[\beta(1+r)\right]^{1/\theta}\qquad\Longrightarrow\qquad\ln\frac{C_{t+1}}{C_t}\simeq\frac{r-\rho}{\theta}.
+  \end{equation*}
+  \begin{itemize}
+  \item el consumo crece si $r>\rho$, es constante si $r=\rho$ y decrece si $r<\rho$. El signo del crecimiento no dice si el consumidor presta o pide prestado, que depende también de la senda de su renta\footnote{Si el tipo de interés cambia de un periodo a otro, el perfil puede cambiar de signo; solo con $r$ constante se mantiene en toda la senda. Y el tipo real no es una constante: en Estados Unidos, el rendimiento del bono del Tesoro a 10 años, descontada la inflación del IPC, fue del 2,0~\% de media entre 1962 y 2025, pero del 4,2~\% en 1980-1999, del 0,5~\% en 2008-2021 y del $-0{,}5$~\% en 2022-2025 \parencite{FRED2026GS10}. El de los bonos indexados a la inflación, que es un tipo real esperado, era del 2,60~\% el 30 de octubre de 2026 \parencite{UST2026RealYield}. Las estimaciones del tipo natural muestran una caída en las economías avanzadas desde los años 90 \parencite{HolstonLaubachWilliams2017Measuring}: en la ecuación de \autor{Euler}, un tipo real más bajo es un consumo que crece más despacio.};
+  \item cuanto mayor es la ESI, $1/\theta$, más responde el crecimiento del consumo a la diferencia entre $r$ y $\rho$. La evidencia apunta a una ESI baja: el crecimiento del consumo apenas responde al tipo de interés real \parencite{Hall1988Intertemporal,CampbellMankiw1989Consumption}.
+  \end{itemize}
+\item \emph{El alisamiento del consumo}: con mercados de capitales perfectos, la \emph{tasa} de crecimiento del consumo solo depende de $r$, $\rho$ y $\theta$, no de la senda de la renta, y su \emph{nivel} depende de la riqueza total, no de la renta del periodo. El consumidor alisa su consumo cualesquiera que sean $r$ y $\rho$: con $r=\rho$ lo mantiene constante y, si no, lo hace crecer o decrecer a una tasa constante\footnote{Es la respuesta correcta, la a), de la pregunta 7 del examen de julio de 2021 (anexo~\ref{anexo:test}).}. De aquí parten la renta permanente de \textcite{Friedman1957} y el ciclo vital de \textcite{ModiglianiBrumberg1954} \vertema{3.A.33}.
+\item \emph{Un cambio del tipo de interés} tiene 3 efectos sobre el consumo de hoy: \emph{sustitución} (lo reduce: el consumo de hoy se encarece), \emph{renta} (si el consumidor presta, lo aumenta: es más rico) y \emph{riqueza} (lo reduce: la renta futura vale menos hoy) \parencite{ObstfeldRogoff1996Foundations}. El efecto total es ambiguo en quien presta y negativo en quien pide prestado. La ecuación de \autor{Slutsky} con dotación está en el anexo~\ref{anexo:optimizacion}, la estática comparativa completa en el anexo~\ref{anexo:estatica-comparativa} y el gráfico en \vertema{3.A.33}.
+\item \emph{Implicaciones de política}: si la ESI es baja, gravar menos los intereses apenas aumenta el ahorro, y bajar los tipos apenas adelanta el consumo por esta vía \vertema{3.A.37}. La misma ecuación explica la \emph{cota cero} de los tipos nominales (anexo~\ref{anexo:cota-cero}).
+\end{itemize}
+
+\paragraph{b) La inversión en capital humano}
+
+\begin{itemize}
+\item \textcite{Becker1962Investment} trata la educación como una inversión: hoy cuesta (la matrícula y, sobre todo, el salario al que se renuncia) y mañana rinde un salario más alto \vertema{3.A.25}.
+\item Con mercado de capitales perfecto y sin que el tiempo de estudio dé utilidad, la decisión de formarse se separa de la de consumir: primero se elige la formación que maximiza el valor actual de las rentas y después se reparte esa riqueza entre periodos. Es el \concepto{teorema de separación} de \textcite{Fisher1930Theory} y \textcite{Hirshleifer1958Optimal}, que \textcite{AcemogluAutor2011Lectures} aplican al capital humano y que vuelve a aparecer en la empresa (\ref{sec:aplicaciones-empresa}).
+\end{itemize}
+
+\paragraph{c) La incertidumbre: el paseo aleatorio y la valoración de activos}
+
+\begin{itemize}
+\item Con utilidad cuadrática y $\beta(1+r)=1$, la ecuación de \autor{Euler} estocástica \eqref{eq:euler-estocastica} dice que el consumo sigue un \concepto{paseo aleatorio}: solo cambia con la información nueva \parencite{Hall1978}. Con varios activos, la misma condición para cada uno da el modelo de valoración de activos basado en el consumo (C-CAPM) \parencite{Lucas1978Asset,Breeden1979Intertemporal}. Los 2 se desarrollan en \vertema{3.A.33}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Decisiones intertemporales de las empresas}\label{sec:empresas}
+
+\begin{itemize}
+\item Una vez visto el consumidor, pasamos a la empresa. La conclusión anticipada: su problema solo es intertemporal si algo une los periodos (el capital que se acumula, los costes de ajustarlo o un recurso que se agota), y en los 3 casos aparece un precio sombra que cumple una condición de arbitraje, la ecuación de \autor{Euler} de un activo.
+\end{itemize}
+
+\subsubsection{Componentes: producción intertemporal y acumulación de capital}\label{sec:componentes-empresa}
+
+\begin{itemize}
+\item La empresa competitiva maximiza el valor actual de sus beneficios,
+  \begin{equation*}
+  \sum_{t=0}^{T}\frac{B_t}{(1+r)^t}\qquad\text{o}\qquad\int_0^{T}e^{-rt}B_t\,dt,
+  \end{equation*}
+  que es lo que quieren sus propietarios cuando hay mercado de capitales perfecto (la separación de \autor{Fisher}, en \ref{sec:aplicaciones-empresa})\footnote{En una economía de propiedad privada, las empresas son de los consumidores, y un consumidor que maximiza su utilidad quiere antes que nada maximizar su riqueza, es decir, el valor de sus empresas.}.
+\item Si el beneficio de cada periodo, $B_t=p_tF(\vect{z}_t)-\vect{w}_t\cdot\vect{z}_t$, solo depende de lo que se hace en $t$, el problema no es intertemporal: basta con maximizar periodo a periodo, de forma «miope»\footnote{Ocurre porque la empresa neoclásica no tiene restricción presupuestaria: paga a los factores con lo que produce. Si tuviera que ahorrar para pagarlos, su problema se parecería al del consumidor.}.
+\item Lo vuelve intertemporal una ecuación de estado. La más habitual es la acumulación del capital, con la inversión como control y el capital como estado:
+  \begin{equation*}
+  K_{t+1}=(1-\delta)\,K_t+I_t.
+  \end{equation*}
+  La empresa ya no alquila el capital, sino que lo compra, se le deprecia y renuncia al interés que obtendría con ese dinero. Aun así, sin más fricciones, el resultado se parece al estático: el valor del producto marginal del capital se iguala a su coste de uso, $P\,F_K=P^K(r+\delta)$ con un precio del capital constante (la regla de \autor{Jorgenson}), y la decisión es una sucesión de problemas estáticos \vertema{3.A.34}. Para que sea genuinamente intertemporal hacen falta costes de ajuste o recursos que se agotan.
+\end{itemize}
+
+\subsubsection{Aplicaciones: separación de \autor{Fisher}, costes de ajuste\newline y recursos agotables}\label{sec:aplicaciones-empresa}
+
+\paragraph{a) La separación de \autor{Fisher}: el modelo de Robinson Crusoe}
+
+\begin{itemize}
+\item \emph{Idea}: un único agente, a la vez productor y consumidor, que puede consumir o invertir un solo bien. ¿Decide su inversión según sus gustos?
+\item \emph{Resultado}: depende de que haya mercado de capitales.
+  \begin{itemize}
+  \item \emph{Sin mercado}, solo puede llevar recursos al futuro invirtiendo: iguala la relación marginal de transformación intertemporal, $1+F'(K_{t+1})-\delta$, a su relación marginal de sustitución, $u'(C_t)/[\beta u'(C_{t+1})]$, y cuánto invierte depende de lo impaciente que sea.
+  \item \emph{Con mercado} al tipo $r$, salen 2 condiciones independientes: la ecuación de \autor{Euler} \eqref{eq:euler} para el consumo y $F'(K_{t+1})-\delta=r$ para la inversión. Primero se invierte hasta que el rendimiento neto del capital iguala al tipo de interés, sin mirar las preferencias, y después se reparte la riqueza entre periodos prestando o pidiendo prestado. Es el \concepto{teorema de separación} de \textcite{Fisher1930Theory}, formalizado por \textcite{Hirshleifer1958Optimal}: la empresa maximiza su valor y todos sus propietarios están de acuerdo, sean pacientes o impacientes; es la base de la regla del valor actual neto\footnote{La separación tiene una segunda parte: la decisión de inversión tampoco depende de cómo se financie, que es el resultado de \textcite{ModiglianiMiller1958Cost} y descansa en el mismo supuesto de mercado de capitales perfecto.}.
+  \end{itemize}
+\item \emph{Extensiones}: con \emph{restricciones de liquidez} (se puede prestar, pero no pedir prestado) o con tipos distintos para prestar y para endeudarse, la separación falla para los que querrían endeudarse: invierten menos de lo que maximizaría su riqueza. La misma geometría explica las ganancias del comercio internacional (\autor{Haberler}) \vertema{3.B.5} y el enfoque intertemporal de la balanza de pagos \vertema{3.B.12}. El modelo, con su gráfico y la desinversión, está en el anexo~\ref{anexo:robinson}.
+\end{itemize}
+
+\paragraph{b) Los costes de ajuste: la q de \autor{Tobin}}
+
+\begin{itemize}
+\item \emph{Idea}: si instalar capital cuesta más cuanto más deprisa se hace (\concepto{costes de ajuste} internos y convexos), la empresa no salta al capital deseado: reparte la inversión en el tiempo, y su decisión de hoy depende de lo que espera mañana \parencite{Tobin1969General}.
+\item \emph{Modelo} \parencite[cap.~9]{Romer2019Advanced}: cada una de las $N$ empresas tiene un capital $\kappa_t$ y gana $B(K_t)$ por unidad, decreciente en el capital de la industria, $K_t$; el capital nuevo cuesta 1 y su instalación, $\Phi(I_t)$, con $\Phi(0)=\Phi'(0)=0$ y $\Phi''>0$, y no hay depreciación:
+  \begin{equation*}
+  \optim{\max}{\{I_t\}}{\int_0^{\infty}e^{-rt}\left[B(K_t)\,\kappa_t-I_t-\Phi(I_t)\right]dt}{\dot\kappa_t=I_t\\ \kappa_0\ \text{dado}}
+  \end{equation*}
+  Con el hamiltoniano en valor corriente, cuyo coestado es la propia $q_t$, $\mathcal{H}_t=B(K_t)\,\kappa_t-I_t-\Phi(I_t)+q_tI_t$, las condiciones son
+  \begin{equation}
+  q_t=1+\Phi'(I_t),\qquad r\,q_t=B(K_t)+\dot q_t,\qquad\lim_{t\to\infty}e^{-rt}q_t\,\kappa_t=0.\label{eq:q-condiciones}
+  \end{equation}
+\item \emph{Lectura}: $q_t$ es el \concepto{precio sombra} del capital instalado, el valor actual de los beneficios que dará una unidad más, $q_t=\int_t^{\infty}e^{-r(s-t)}B(K_s)\,ds$.
+  \begin{itemize}
+  \item La primera condición dice que se invierte hasta que el coste de comprar e instalar la última unidad, con el coste \emph{marginal} de ajuste, $\Phi'(I_t)$, iguala a ese valor: se invierte si $q_t>1$.
+  \item La segunda, que resulta de derivar el hamiltoniano respecto al \emph{estado}, el capital, es una condición de arbitraje: tener una unidad de capital rinde su beneficio más su revalorización, y eso tiene que igualar al interés. Es la ecuación de \autor{Euler} de un activo\footnote{Con depreciación a la tasa $\delta$, $(r+\delta)\,q_t=B(K_t)+\dot q_t$. Si se usara el hamiltoniano en valor presente, su coestado sería $\lambda^0_t=e^{-rt}q_t$, el mismo valor descontado al momento 0 (anexo~\ref{anexo:control-optimo}).}.
+  \end{itemize}
+\item El diagrama de fases, las políticas y la q media frente a la marginal \parencite{Hayashi1982Tobin} se estudian en \vertema{3.A.34}; los costes de ajuste del empleo, con el salario real y la misma lógica, en \vertema{3.A.26}.
+\end{itemize}
+
+\paragraph{c) Los recursos agotables: la regla de \autor{Hotelling}}
+
+\begin{itemize}
+\item \emph{Idea}: en los recursos que se agotan (los minerales, los combustibles fósiles), lo que se extrae hoy no se podrá extraer mañana. Su gestión es genuinamente intertemporal, y el recurso bajo tierra se trata como un activo.
+\item \emph{Resultado} \parencite{Hotelling1931Economics}: el propietario competitivo de un yacimiento solo lo deja bajo tierra si su \emph{precio neto} del coste marginal de extracción, la \concepto{regalía}, se revaloriza tanto como rendiría venderlo hoy y prestar el dinero. En equilibrio, la regalía crece a la tasa del tipo de interés: es la \concepto{regla de \autor{Hotelling}}, otra ecuación de \autor{Euler} de un activo, cuyo precio sombra es la regalía.
+\item \emph{Implicaciones}: el precio supera al coste marginal y, sin embargo, no hay beneficio extraordinario: la regalía paga el coste de oportunidad del recurso, una renta de escasez, que el análisis estático confundiría con un beneficio. Y si se esperan impuestos crecientes sobre el carbono, adelantar la extracción es racional: la \emph{paradoja verde} \vertema{3.B.31}. El desarrollo, en el anexo~\ref{anexo:hotelling}.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación}: un hogar o una empresa resuelven un problema dinámico cuando una variable de estado une los periodos; con \autor{Lagrange}, con el control óptimo o con la programación dinámica, la solución es una condición de arbitraje (la ecuación de \autor{Euler} del consumo, la de la q, la de \autor{Hotelling}) con un precio sombra del estado. En la pregunta de \autor{Ramsey}, el hogar ahorra hasta que el rendimiento del ahorro, $r$, compensa su impaciencia, $\rho$, y la empresa invierte hasta que el capital rinde $r$.
+\item \emph{Puente}: falta saber qué pasa cuando estas decisiones se agregan y el tipo de interés deja de ser un dato. Para eso, la macroeconomía necesita un agente representativo.
+\end{itemize}
+
+% ==========================================================================
+\section{El agente representativo de vida infinita}\label{sec:macro-mhi}
+\minutos{8}
+
+\begin{notaopositor}
+En el cante (\tiempo{8}): el agente representativo (\tiempo{2}), de palabra (la crítica de \autor{Lucas} obliga a microfundamentar; qué es; \autor{Gorman} y \autor{Sonnenschein}-\autor{Mantel}-\autor{Debreu} en una frase; horizonte infinito frente a generaciones solapadas, que se escriben como cabecera del cuadro que se llenará en el bloque~\ref{sec:macro-olg}). El horizonte infinito (\tiempo{6}): por qué infinito, con la pegatina «de tal palo, tal astilla» (\tiempo{0,5}); las 3 condiciones del horizonte infinito y la consistencia temporal (\tiempo{2}), con el gráfico~\ref{fig:descuento} como apoyo; el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} en 3 ecuaciones en la columna central: el hogar, la ecuación de \autor{Euler} y la de acumulación, y la regla de oro modificada frente a la de \autor{Solow} (\tiempo{2,5}), sin diagrama de fases; las aplicaciones, de palabra (\tiempo{1}). La historia del agente representativo, la empresa y el sector público y cómo se resuelven los modelos son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: para llevar las decisiones dinámicas a la economía entera hace falta un agente representativo, y el más usado vive para siempre. Con él, el equilibrio competitivo es eficiente y nunca acumula demasiado capital, y la política se puede evaluar con el bienestar de ese agente.
+\item \emph{Nexo}: una vez construida la herramienta con un hogar y una empresa, pasamos a llevarla a toda la economía.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Los modelos de agente representativo en macroeconomía}\label{sec:agente-representativo}
+
+\begin{itemize}
+\item \emph{Por qué}: desde la crítica de \textcite{Lucas1976Econometric}, las relaciones macroeconómicas se buscan en sus fundamentos (preferencias, tecnología y dotaciones), que no cambian con la política\footnote{\autor{Lucas} mostró que las relaciones estimadas con datos pasados no sirven para evaluar una política nueva si cambian con ella, porque los agentes cambian su conducta. La oferta intertemporal de trabajo de \textcite{LucasRapping1969Real} es uno de los primeros usos modernos del agente representativo \vertema{3.A.25}.}. Un equilibrio general walrasiano con agentes distintos es intratable; el \concepto{agente representativo} lo hace manejable a costa de la heterogeneidad. Es la base de los modelos EGDE \vertema{3.A.6}.
+\item \emph{Su historia} es antigua \parencite{Hartley1996Origins}: los \emph{trading bodies} de la teoría del intercambio de \textcite{Jevons1871Theory}, defendidos por \autor{Edgeworth}, y la «empresa representativa» de \autor{Marshall}, que \textcite{Robbins1928Representative} criticó con dureza y dejó en el olvido hasta la macroeconomía de los 70.
+\item \emph{Qué es}: el término se usa en 3 sentidos:
+  \begin{enumerate}
+  \item un agente cualquiera, si todos son idénticos;
+  \item el agente «medio» de la colectividad;
+  \item un agente, quizá ficticio, cuyas decisiones coinciden con las agregadas de la colectividad a la que representa.
+  \end{enumerate}
+  El tercero es el útil, y obliga a preguntarse cuándo existe.
+\item \emph{El hogar representativo}. La racionalidad individual apenas restringe la demanda agregada, porque los cambios de precios redistribuyen la renta y los efectos renta difieren entre hogares (teorema de \autor{Sonnenschein}, \autor{Mantel} y \autor{Debreu}) \vertema{3.A.21}. Por eso hacen falta condiciones:
+  \begin{itemize}
+  \item existe un hogar representativo en sentido \emph{positivo} (la demanda agregada solo depende de la riqueza agregada) si y solo si las funciones indirectas de utilidad tienen la \concepto{forma polar de \autor{Gorman}} con la \emph{misma pendiente} para todos,
+    \begin{equation*}
+    V_i(\vect{p},\overline W_i)=a_i(\vect{p})+b(\vect{p})\,\overline W_i,
+    \end{equation*}
+    es decir, curvas de \autor{Engel} lineales y paralelas, de modo que redistribuir la riqueza no cambia la demanda \parencite{Gorman1953Community} \vertema{3.A.9}. No hace falta que los efectos renta sean nulos, sino que sean iguales para todos: lo cumplen las preferencias homotéticas \emph{idénticas} (una misma CES, por ejemplo) o las cuasilineales en el mismo bien\footnote{Sin incertidumbre, una transformación monótona de la utilidad no cambia la conducta: basta con que alguna transformación de la función indirecta tenga la forma de \autor{Gorman}. Con riqueza $\overline W=\sum_i\overline W_i$, el hogar representativo tiene $V(\vect{p},\overline W)=\sum_ia_i(\vect{p})+b(\vect{p})\,\overline W$.};
+  \item que ese hogar sirva además para medir el bienestar, en sentido \emph{normativo}, exige más condiciones \parencite[cap.~5]{Acemoglu2009}.
+  \end{itemize}
+\item \emph{La empresa representativa} es más fácil, porque no hay efectos renta: basta con que no haya externalidades en la producción y con que los factores se intercambien en mercados competitivos para que la producción agregada sea la de una empresa que maximiza el beneficio con la tecnología agregada \parencite[cap.~5]{Acemoglu2009}. Su función de producción toma el relevo de la función de producción agregada de la macroeconomía anterior.
+\item \emph{El sector público} se incorpora peor: la autoridad monetaria tiene una regla de conducta más fácil de escribir (un objetivo y un instrumento); la fiscal, no, y su gasto se suele suponer improductivo.
+\item \emph{Tipos}: hay 2 familias, que tienen implicaciones positivas y normativas distintas y responden a preguntas distintas:
+  \begin{itemize}
+  \item los \concepto{modelos de horizonte infinito} (MHI), con un agente que vive infinitos periodos (\ref{sec:horizonte-infinito});
+  \item los \concepto{modelos de generaciones solapadas} (MGS), con agentes de vida finita que conviven con los que les suceden, en una sucesión infinita (\ref{sec:olg})\footnote{\textcite{Weil1989Overlapping} combina las 2: familias de vida infinita que se solapan porque aparecen familias nuevas.}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Los modelos de horizonte infinito}\label{sec:horizonte-infinito}
+
+\paragraph{a) Definición}
+
+\begin{itemize}
+\item En los \concepto{modelos de horizonte infinito} el agente representativo vive infinitos periodos, y el horizonte de su optimización no está acotado.
+\item Es natural para la empresa, que se valora como una empresa en funcionamiento. Para los hogares no se entiende de forma literal, sino de 2 maneras:
+  \begin{itemize}
+  \item el final está tan lejos, o es tan incierto, que da igual tratarlo como infinito: con una probabilidad constante de morir, el hogar se comporta como uno inmortal más impaciente;
+  \item el hogar es una \concepto{dinastía}: cada generación se preocupa por la siguiente y le deja herencias, y entonces la familia decide como un solo agente de vida infinita \parencite{Barro1974}. Es el refrán \concepto{«de tal palo, tal astilla»}: hijos que valoran el futuro como sus padres. Por eso, en estos modelos, la deuda pública no cambia nada: es la equivalencia ricardiana \vertema{3.A.39}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Rasgos}
+
+\begin{enumerate}
+\item \emph{Están microfundamentados}: sus parámetros son los de las preferencias y la tecnología, y por eso están, en principio, menos expuestos a la crítica de \autor{Lucas}. No son inmunes a ella: es la microfundamentación, y no el horizonte infinito, lo que la responde, y los parámetros pueden estar mal especificados.
+\item \emph{El horizonte infinito exige 3 condiciones}:
+  \begin{itemize}
+  \item que la utilidad sea finita, lo que pide suficiente impaciencia (la impaciencia de \ref{sec:componentes});
+  \item la condición de \concepto{no-Ponzi}: la deuda no puede crecer para siempre al tipo de interés o más deprisa, pagando los intereses con deuda nueva, como en el esquema de \autor{Ponzi}: $\lim_{T\to\infty}b_{T+1}/(1+r)^T\geq0$;
+  \item la \concepto{condición de transversalidad}: tampoco se deja nada de valor al final:
+    \begin{equation*}
+    \lim_{T\to\infty}\beta^T\,u'(C_T)\,b_{T+1}=0\ \ \text{(discreto)},\qquad\lim_{t\to\infty}e^{-\rho t}\lambda_t\,b_t=0\ \ \text{(continuo)}.
+    \end{equation*}
+    Es la que elige, entre todas las sendas que cumplen las demás condiciones, la que lleva al estado estacionario; en condiciones generales es necesaria para el óptimo \parencite{Michel1982Transversality}.
+  \end{itemize}
+\item \emph{La consistencia temporal}. Con un horizonte largo importa que el plan que se hace hoy se siga cumpliendo mañana.
+  \begin{itemize}
+  \item Con descuento exponencial y preferencias recursivas se cumple el principio de optimalidad de \autor{Bellman}, y el plan óptimo de hoy sigue siéndolo mañana: las preferencias son \concepto{dinámicamente consistentes}. Si el descuento solo depende de la distancia al presente, el exponencial es el único que lo consigue \parencite{Strotz1955Myopia}.
+  \item La evidencia muestra, sin embargo, que se descuenta mucho entre hoy y mañana y poco entre 2 días lejanos del futuro \parencite{Thaler1981Some}: un descuento \concepto{hiperbólico}, como el generalizado de \textcite{LoewensteinPrelec1992}, o el \concepto{cuasihiperbólico} de \textcite{Laibson1997Golden}, el más usado (gráfico~\ref{fig:descuento})\footnote{La economía del comportamiento, a la que \autor{Thaler} debe el Premio Nobel de 2017 por sus contribuciones a la economía conductual \parencite{Nobel2017Thaler}, escribe el descuento cuasihiperbólico como $U_t=u(C_t)+\beta\sum_{s=1}^{\infty}\delta^s\,u(C_{t+s})$, con $0<\beta,\delta<1$: entre hoy y mañana se descuenta con $\beta\delta$, y entre 2 periodos futuros, con $\delta$. Ojo con las letras: en este modelo $\beta$ es el sesgo por el presente y $\delta$ el factor exponencial, no $1/(1+\rho)$ ni la depreciación del resto del tema. El hiperbólico generalizado es $D(t)=(1+at)^{-\gamma/a}$, con $a,\gamma>0$.}. Con él, lo que hoy se planea para mañana deja de parecer óptimo cuando llega mañana: hay \emph{inconsistencia temporal}, infraahorro y demanda de mecanismos de compromiso, como el ahorro para la jubilación que no se puede sacar antes de tiempo. Es el lunes que se convierte en el lunes siguiente del enganche \vertema{3.A.1}.
+    \begin{figure}[H]
+    \centering
+    \caption{Funciones de descuento exponencial, hiperbólica y cuasihiperbólica}\label{fig:descuento}
+    \grafico[0.7\textwidth]{descuento}
+    \fuente{elaboración propia con las funciones y los parámetros de \textcite{AngeletosEtAl2001Hyperbolic}: exponencial, $0{,}939^t$; hiperbólica, $(1+4t)^{-1/4}$; cuasihiperbólica, 1 en $t=0$ y $0{,}7\cdot0{,}957^t$ después ($t$ en años).}
+    \end{figure}
+  \item Aunque los hogares descuenten de forma exponencial, un gobierno que se enfrenta a agentes que miran al futuro puede tener planes óptimos inconsistentes, porque sus anuncios de hoy cambian las expectativas: es la inconsistencia temporal de la política económica \parencite{KydlandPrescott1977Rules} \vertema{3.A.36}.
+  \end{itemize}
+\item \emph{Cómo se resuelven}:
+  \begin{itemize}
+  \item por la inspección de las condiciones de primer orden y, con mercados completos y sin fricciones, resolviendo el problema de un planificador, que da la misma asignación porque se cumplen los teoremas fundamentales de la economía del bienestar \vertema{3.A.22}: el óptimo de \autor{Pareto} no tiene precios y es más fácil de hallar, y después se buscan los precios que lo sostienen;
+  \item en el \concepto{estado estacionario}, donde las variables, medidas en unidades adecuadas, dejan de cambiar, y con diagramas de fases;
+  \item lejos de él, linealizando el sistema. Suele tener una \concepto{senda de silla}: el estado (el capital) está dado por el pasado y el control (el consumo) salta para situarse en la única senda que lleva al estado estacionario; las demás violan la transversalidad o la ecuación de estado. Con expectativas racionales hay una única solución estable si el número de raíces inestables es igual al de variables que pueden saltar \parencite{BlanchardKahn1980Solution};
+  \item si no hay solución analítica, calibrando los parámetros y calculando \emph{funciones impulso-respuesta}. Las series que generan estos modelos son estacionarias alrededor de una senda de crecimiento equilibrado y persistentes, porque el estado se ajusta poco a poco; así se contrastan con los datos \vertema{3.A.42}. El coste: los resultados valen para esos parámetros y a veces ocultan el mecanismo.
+  \end{itemize}
+\item \emph{Permiten el análisis de bienestar}: la utilidad del agente representativo es el criterio para comparar políticas.
+\end{enumerate}
+
+\paragraph{c) Un ejemplo: el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}}
+
+\begin{itemize}
+\item Es el modelo de \autor{Solow} con hogares que deciden cuánto ahorrar \parencite{Ramsey1928,Cass1965,Koopmans1965}, y su hogar es el consumidor de \ref{sec:metodos} con población: un hogar de $L_t=e^{nt}$ miembros maximiza la utilidad del consumo por persona, con la CRRA \eqref{eq:crra},
+  \begin{equation}
+  \optim{\max}{\{C_t/L_t\}}{U_0=\int_0^{\infty}e^{-(\rho-n)t}\,u\!\left(\frac{C_t}{L_t}\right)dt}{\dot b_t=w_t+(r_t-n)\,b_t-C_t/L_t\\ b_0\ \text{dado}\\ \lim_{t\to\infty}b_t\,e^{-\int_0^t(r_\tau-n)\,d\tau}\geq0}\label{eq:hogar-rck}
+  \end{equation}
+  con $b_t$ los activos por persona, $w_t$ el salario real y la condición de utilidad acotada $\rho-n>(1-\theta)\,g$.
+\item Con el hamiltoniano en valor corriente, $(C_t/L_t)^{-\theta}=\lambda_t$, $\dot\lambda_t/\lambda_t=\rho-r_t$ y la transversalidad $\lim_{t\to\infty}e^{-(\rho-n)t}\lambda_t\,b_t=0$. Las empresas pagan $r_t=f'(k_t)-\delta$, y en equilibrio los activos son el capital, $b_t=A_tk_t$. Salen las 2 ecuaciones del modelo, con $k$ y $c$ por unidad de trabajo eficiente:
+  \begin{equation}
+  \gamma_{C/L}=\frac{r_t-\rho}{\theta}\quad\Longleftrightarrow\quad\frac{\dot c_t}{c_t}=\frac{f'(k_t)-\delta-\rho-\theta g}{\theta},\label{eq:euler-rck}
+  \end{equation}
+  \begin{equation}
+  \dot k_t=f(k_t)-c_t-(n+g+\delta)\,k_t.\label{eq:acumulacion-rck}
+  \end{equation}
+  La primera es la ecuación de \autor{Euler} \eqref{eq:euler-continua} con población y progreso técnico; la segunda, la de \autor{Solow} con el consumo elegido.
+\item \emph{Resultados}: un estado estacionario único con punto de silla, y la \concepto{regla de oro modificada}, $f'(k^*)=\rho+\delta+\theta g$. Como $\rho-n>(1-\theta)g$ equivale a $\rho+\theta g>n+g$, el capital de estado estacionario es menor que el de la regla de oro de \autor{Solow}, $f'(k_{\mathrm{oro}})=n+g+\delta$: \emph{el modelo nunca acumula de más}. El equilibrio competitivo es eficiente, y el mercado ahorra lo que conviene: es la respuesta a \autor{Ramsey} con un agente de vida infinita. El diagrama de fases, la estática comparativa y la política fiscal se estudian en \vertema{3.A.43}.
+\end{itemize}
+
+\paragraph{d) Aplicaciones}
+
+\begin{itemize}
+\item \emph{En equilibrio parcial}, para un colectivo aislado:
+  \begin{itemize}
+  \item el consumo (renta permanente y paseo aleatorio de \autor{Hall}) \vertema{3.A.33};
+  \item la inversión (la q de \autor{Tobin}) \vertema{3.A.34};
+  \item la demanda de dinero (el dinero en la utilidad de \autor{Sidrauski}, la restricción de liquidez por adelantado de \autor{Clower} y \autor{Lucas}, el tiempo de compra de \autor{McCallum}) \vertema{3.A.35};
+  \item el mercado de trabajo: la oferta intertemporal de \autor{Lucas} y \autor{Rapping} \vertema{3.A.25} y los costes de ajuste del empleo \parencite{BentolilaBertola1990Firing,Hamermesh1993Labor} \vertema{3.A.26}.
+  \end{itemize}
+\item \emph{En equilibrio general}, con consumidores y empresas a la vez:
+  \begin{itemize}
+  \item el crecimiento: el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} \vertema{3.A.43} y los modelos de crecimiento endógeno con hogares que optimizan, como el $AK$ o el de \autor{Uzawa} y \autor{Lucas} \vertema{3.A.44};
+  \item los ciclos: los modelos de ciclo real, que añaden perturbaciones y oferta de trabajo al modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} \vertema{3.A.42}, y los EGDE nuevokeynesianos, con rigideces nominales \vertema{3.A.7};
+  \item la deuda pública y la equivalencia ricardiana \vertema{3.A.39}, y el enfoque intertemporal de la balanza de pagos \vertema{3.B.12};
+  \item el cambio climático: los modelos integrados de evaluación, como el DICE de \textcite{Nordhaus1992Optimal} \vertema{3.B.31}.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación}: el agente representativo de vida infinita lleva la optimización dinámica a la macroeconomía con 3 condiciones (utilidad finita, no-Ponzi y transversalidad) y con preferencias consistentes en el tiempo. Su modelo de referencia, el de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}, responde a \autor{Ramsey} que el mercado ahorra lo que conviene: nunca acumula de más.
+\item \emph{Puente}: ¿se mantiene esa respuesta si los hogares viven un tiempo finito y conviven con otras generaciones? Es la pregunta de los modelos de generaciones solapadas.
+\end{itemize}
+
+% ==========================================================================
+\section{Generaciones solapadas y heterogeneidad}\label{sec:macro-olg}
+\minutos{10}
+
+\begin{notaopositor}
+En el cante (\tiempo{10}): las generaciones solapadas (\tiempo{8}), con la definición y los rasgos en \tiempo{1} (de palabra, salvo la «doble infinitud»); \autor{Samuelson} en \tiempo{1,5}, con la pegatina «cuando seas padre, comerás huevos» y el gráfico~\ref{fig:samuelson} como apoyo; \autor{Diamond} en \tiempo{3,5}: el problema del joven, $S_t=\frac{\beta}{1+\beta}w_t$, la ley de movimiento \eqref{eq:diamond}, recuadrada en la columna izquierda junto a la ecuación de \autor{Euler}, y el gráfico~\ref{fig:diamond} por capas en la columna derecha; la ineficiencia dinámica ($r^*<n+g$) con la pegatina «la avaricia rompe el saco» y el aviso de \autor{Abel} \emph{et al.} en \tiempo{1}; las salidas (dinero, deuda, pensiones con la condición de \autor{Aaron}, burbujas), de palabra, y el cuadro~\ref{tab:mhi-mgs} en la columna central, en \tiempo{1}. Las limitaciones (\tiempo{2}), de palabra. Los gráficos de datos son de apoyo; la derivación general de \autor{Diamond}, en el anexo~\ref{anexo:diamond}.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: basta con que los hogares vivan un tiempo finito y convivan con otras generaciones para que el equilibrio competitivo, sin ningún fallo de mercado, pueda acumular demasiado capital. Entonces el dinero, la deuda pública y las pensiones de reparto pueden mejorar a todas las generaciones.
+\item \emph{Nexo}: una vez visto el agente que vive para siempre, cuyo equilibrio es eficiente, pasamos a la alternativa en que los agentes viven un tiempo finito y se suceden.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Los modelos de generaciones solapadas}\label{sec:olg}
+
+\subsubsection{Definición y rasgos fundamentales}\label{sec:olg-rasgos}
+
+\begin{itemize}
+\item En los \concepto{modelos de generaciones solapadas} cada hogar vive un número finito de periodos y, antes de morir, convive con las generaciones que le suceden: el horizonte de cada uno está acotado, pero la economía no se acaba nunca. Su origen está en \textcite{Allais1947Economie}, \textcite{Samuelson1958Exact} y \textcite{Diamond1965National}.
+\item Sus rasgos, frente al horizonte infinito:
+  \begin{enumerate}
+  \item \emph{se solapan los hogares, no las empresas}, que siguen siendo de vida infinita;
+  \item \emph{son de equilibrio general}, aunque pueden ser economías de intercambio puro, sin producción;
+  \item \emph{su razón de ser es la heterogeneidad por edad}: las decisiones de los viejos cambian los precios a los que se enfrentan los jóvenes, algo que un agente de vida infinita no puede recoger; por eso dan respuestas propias sobre la deuda pública, los impuestos, las pensiones o el dinero;
+  \item \emph{la existencia, la unicidad y la estabilidad del equilibrio no están garantizadas}: con utilidad logarítmica y producción Cobb-Douglas sí, pero en general puede no haber equilibrio con capital positivo o haber varios \parencite{GalorRyder1989Existence};
+  \item \emph{el primer teorema fundamental de la economía del bienestar (1TFEB) puede fallar} aunque no haya ningún fallo de mercado: hay infinitos bienes (uno por periodo) e infinitos agentes, la «doble infinitud» de \textcite{Shell1971Notes}, y el valor de la dotación agregada a los precios de equilibrio puede ser infinito, que es lo que la demostración del teorema necesita que no ocurra \vertema{3.A.22}\footnote{La ineficiencia de las sendas de acumulación de capital la caracterizan \textcite{Malinvaud1953Capital} y \textcite{Cass1972Capital} (el «criterio de \autor{Cass}»). Además, con agentes que nacen en fechas distintas no hay una forma neutral de ponderarlos: el óptimo de un planificador que suma las utilidades de las generaciones con pesos y el óptimo de \autor{Pareto} dejan de coincidir \vertema{3.A.24}.};
+  \item \emph{pueden ser dinámicamente ineficientes}, como se verá en el modelo de \autor{Diamond}.
+  \end{enumerate}
+\item \emph{La restricción de recursos} es intergeneracional: con $L_t$ jóvenes y $L_{t-1}$ viejos, $L_tC^J_t+L_{t-1}C^V_t$ no puede superar lo que se produce y se tiene en $t$; dividida por $L_t$, se parece a la restricción intertemporal del consumidor, pero entre generaciones que viven a la vez, con $1+n$ en lugar de $1+r$.
+\end{itemize}
+
+\subsubsection{El modelo de \autor{Samuelson} (1958): el dinero como contrato social}\label{sec:samuelson}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Samuelson1958Exact} se pregunta cómo se determina el tipo de interés en una economía en la que la gente vive 2 periodos y solo produce de joven. Su respuesta: el mercado, por sí solo, no permite ahorrar para la vejez; un \emph{contrato social}, como el dinero, sí. Es la economía del refrán \concepto{«cuando seas padre, comerás huevos»}: cada uno recibe cuando le llega el turno, si la generación siguiente cumple.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item En cada periodo nacen $L_t$ jóvenes, con $L_{t+1}=(1+n)\,L_t$; cada uno vive 2 periodos.
+\item De joven recibe $e$ unidades de un bien perecedero, que no se puede guardar, y de viejo, nada. Su utilidad es $u(C^J_t)+\beta\,u(C^V_{t+1})$, con $C^J_t$ el consumo de joven y $C^V_{t+1}$ el de viejo.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Sin dinero}, nadie puede ahorrar: el bien no se guarda, los viejos no pueden devolver un préstamo y los acreedores futuros aún no han nacido. El único equilibrio es la \emph{autarquía}: $C^J=e$, $C^V=0$.
+\item \emph{Lo factible}: en cada periodo, $L_tC^J_t+L_{t-1}C^V_t=L_t\,e$; en un estado estacionario, dividiendo por $L_t$,
+  \begin{equation*}
+  C^J+\frac{C^V}{1+n}=e:
+  \end{equation*}
+  la economía puede dar a cada viejo $1+n$ unidades por cada una a la que renuncie un joven; ese es su «tipo de interés biológico», $n$.
+\item \emph{Con dinero}: los primeros viejos tienen $M$ unidades de dinero sin valor intrínseco; cada joven vende parte de su dotación a cambio de dinero y de viejo lo gasta. Con $M$ constante, en un equilibrio estacionario los saldos reales por joven, $M/(L_tP_t)$, son constantes, así que los precios caen al ritmo de la población, $P_{t+1}/P_t=1/(1+n)$, y el dinero rinde $1+n$ en términos reales. La restricción de cada joven es la misma que la de factibilidad, y la ecuación de \autor{Euler} es $u'(C^J)=\beta(1+n)\,u'(C^V)$; con utilidad logarítmica, $C^J=e/(1+\beta)$ y $C^V=\beta(1+n)\,e/(1+\beta)$ (gráfico~\ref{fig:samuelson}).
+  \begin{figure}[H]
+  \centering
+  \caption{El modelo de \autor{Samuelson}: autarquía y equilibrio monetario}\label{fig:samuelson}
+  \grafico[0.55\textwidth]{samuelson}
+  \fuente{elaboración propia a partir de \textcite{Samuelson1958Exact} y \textcite[sec.~20.H]{MasColellWhinstonGreen1995}.}
+  \end{figure}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La autarquía es un equilibrio competitivo y, sin embargo, no es un óptimo de \autor{Pareto}: el equilibrio monetario mejora a todas las generaciones, empezando por la primera generación de viejos, y es el mejor de los estacionarios. Es el fallo del 1TFEB por la doble infinitud.
+\item El dinero solo vale porque se espera que la generación siguiente lo acepte: si nadie lo espera, no vale nada y se vuelve a la autarquía. Su valor es una \emph{burbuja} que descansa en la confianza. Una pensión de reparto hace lo mismo: cada generación paga a la anterior a cambio de que la siguiente le pague a ella.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item Es la explicación más sencilla del valor del dinero fiduciario como depósito de valor \vertema{3.A.35} \vertema{3.A.21}, pero no recoge su papel como medio de cambio, tiene equilibrios múltiples (el no monetario siempre existe) y, sin capital, no dice nada sobre la acumulación. Lo resuelve \autor{Diamond}.
+\end{itemize}
+
+\subsubsection{El modelo de \autor{Diamond} (1965): la acumulación de capital}\label{sec:diamond}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Diamond1965National} añade al modelo de \autor{Samuelson} la producción de \autor{Solow}: lo que ahorran los jóvenes es el capital de mañana. Es la versión de equilibrio general del ciclo vital \vertema{3.A.33} y el contraste directo con el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}: mismas empresas, distintos hogares. Responde de otra forma a la pregunta de \autor{Ramsey}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Hogares}: viven 2 periodos (de unos 30 años); de jóvenes ofrecen una unidad de trabajo, cobran el salario real $w_t$, consumen $C^J_t$ y ahorran $S_t$; de viejos consumen su ahorro con sus rendimientos, $C^V_{t+1}=(1+r_{t+1})\,S_t$. Su número crece a la tasa $n$. Utilidad de referencia: $\ln C^J_t+\beta\ln C^V_{t+1}$, con $\beta\equiv1/(1+\rho)$.
+\item \emph{Empresas}: las de \autor{Solow} \vertema{3.A.43}, con $Y_t=F(K_t,A_tL_t)$, rendimientos constantes, $A_{t+1}=(1+g)A_t$ y competencia: $r_t=f'(k_t)-\delta$ y $w_t=A_t\left[f(k_t)-k_tf'(k_t)\right]$, con $k$ por unidad de trabajo eficiente.
+\item \emph{Para la solución cerrada}, $f(k)=k^{\alpha}$ y $\delta=1$: con periodos de 30 años, el capital se agota en uno. La ley de movimiento no depende de $\delta$ (los viejos venden a los jóvenes el capital que no se ha depreciado); $\delta$ solo cambia el tipo de interés y la regla de oro.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{El hogar} resuelve
+  \begin{equation*}
+  \optim{\max}{C^J_t,\,C^V_{t+1}}{\ln C^J_t+\beta\ln C^V_{t+1}}{C^J_t+S_t=w_t\\ C^V_{t+1}=(1+r_{t+1})\,S_t}
+  \end{equation*}
+  La ecuación de \autor{Euler}, $C^V_{t+1}/C^J_t=\beta(1+r_{t+1})$, y la restricción dan
+  \begin{equation}
+  S_t=\frac{\beta}{1+\beta}\,w_t:\label{eq:ahorro-diamond}
+  \end{equation}
+  con utilidad logarítmica, el ahorro no depende del tipo de interés, porque los efectos renta y sustitución se compensan (anexo~\ref{anexo:diamond}, con una utilidad general).
+\item \emph{El equilibrio}: el capital de mañana es el ahorro de los jóvenes de hoy, $K_{t+1}=L_tS_t$, porque los viejos consumen todo lo que tienen. Dividiendo por $A_{t+1}L_{t+1}=(1+g)(1+n)A_tL_t$ y con $w_t=A_t(1-\alpha)k_t^{\alpha}$, sale la \concepto{ley de movimiento del capital}:
+  \funcionclave[eq:diamond]{k_{t+1}=\frac{\beta\,(1-\alpha)}{(1+\beta)(1+n)(1+g)}\,k_t^{\alpha}}
+\item \emph{Gráficamente} (gráfico~\ref{fig:diamond}), la ley de movimiento es cóncava, empieza en el origen con pendiente infinita y corta una sola vez a la bisectriz: hay un único \concepto{estado estacionario} con capital positivo, y es estable, porque en él la pendiente es $\alpha<1$:
+  \begin{equation*}
+  k^*=\left[\frac{\beta\,(1-\alpha)}{(1+\beta)(1+n)(1+g)}\right]^{1/(1-\alpha)}.
+  \end{equation*}
+  \begin{figure}[H]
+  \centering
+  \caption{El modelo de \autor{Diamond}: ley de movimiento del capital y estado estacionario}\label{fig:diamond}
+  \grafico[0.55\textwidth]{diamond}
+  \fuente{elaboración propia a partir de \textcite[cap.~2]{Romer2019Advanced} y \textcite[cap.~9]{Acemoglu2009}. Parámetros ilustrativos: $\alpha=0{,}3$ y $\beta=0{,}9$ (con $\alpha=1/3$, $k_{\mathrm{oro}}$ quedaría a la derecha de $k^*$).}
+  \end{figure}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Crecimiento}: en el estado estacionario, $k$ es constante y la renta por persona crece a la tasa $g$, como en \autor{Solow}. Con $\delta=1$, la tasa de ahorro es $K_{t+1}/Y_t=\beta(1-\alpha)/(1+\beta)$: el modelo de \autor{Solow} con una tasa de ahorro que sale de las preferencias y de quién cobra la renta (solo ahorran los jóvenes, y de su salario).
+\item \emph{Estática comparativa}: más paciencia ($\beta$ mayor) da más capital; más crecimiento de la población o de la tecnología, menos capital por unidad de trabajo eficiente.
+\item \emph{La regla de oro}. En el estado estacionario, los recursos de cada periodo cumplen $f(k)+(1-\delta)k=c+(1+n)(1+g)k$, con $c$ el consumo de las 2 generaciones por unidad de trabajo eficiente. El consumo máximo se alcanza con
+  \begin{equation*}
+  f'(k_{\mathrm{oro}})-\delta=(1+n)(1+g)-1\simeq n+g,
+  \end{equation*}
+  la \concepto{regla de oro} de \textcite{Phelps1961} en tiempo discreto \vertema{3.A.43}.
+\item \emph{La ineficiencia dinámica}. Si $k^*>k_{\mathrm{oro}}$, es decir, si
+  \begin{equation*}
+  r^*<(1+n)(1+g)-1\simeq n+g,
+  \end{equation*}
+  la economía es \concepto{dinámicamente ineficiente}: tiene tanto capital que reducirlo aumentaría el consumo de todas las generaciones, la de la transición, que consume el capital sobrante, y todas las siguientes, con más consumo en el estado estacionario. Es el refrán \concepto{«la avaricia rompe el saco»}: ahorrar de más empeora a todos. Con un agente de vida infinita no pasaba; aquí sí.
+\item \emph{¿Es plausible?} Con $\delta=1$, $1+r^*=f'(k^*)=\alpha(1+\beta)(1+n)(1+g)/[\beta(1-\alpha)]$, y la condición se reduce a
+  \begin{equation*}
+  \alpha\,(1+\beta)<\beta\,(1-\alpha)\quad\Longleftrightarrow\quad\beta>\frac{\alpha}{1-2\alpha}.
+  \end{equation*}
+  Con $\alpha=1/3$ no ocurre nunca, pero con $\alpha=0{,}3$ basta $\beta>0{,}75$, es decir, una tasa de preferencia temporal algo inferior al 1~\% anual en periodos de 30 años ($0{,}99^{30}\simeq0{,}74$). No es una rareza: está al lado de valores razonables.
+\item \emph{¿Por qué puede ocurrir, si no hay ningún fallo de mercado?} Porque cada generación tiene que ahorrar para la vejez y la única forma de hacerlo es acumular capital, aunque rinda poco: no puede prestar a generaciones que aún no han nacido. Y porque, con infinitas generaciones, siempre se puede pasar «la cuenta» a la siguiente, como en el modelo de \autor{Samuelson}.
+\item \emph{El contraste con el horizonte infinito}: en el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}, $f'(k^*)=\rho+\delta+\theta g>n+g+\delta$ y nunca hay ineficiencia dinámica; en el de \autor{Diamond}, el ahorro depende de cómo se reparte la renta entre generaciones y puede haberla. A la pregunta de \autor{Ramsey}, el mercado puede responder ahorrando de más.
+\end{itemize}
+
+\paragraph{c) Extensiones: la política económica entre generaciones}
+
+\begin{itemize}
+\item \emph{La deuda pública}: los jóvenes compran bonos en lugar de capital, y la deuda desplaza capital \parencite{Diamond1965National}. Si la economía es eficiente, eso reduce el bienestar a largo plazo; si es ineficiente, lo aumenta. Con tipos sin riesgo inferiores al crecimiento, el coste fiscal de la deuda puede ser bajo, aunque su coste en bienestar depende de lo que rinda el capital desplazado \parencite{Blanchard2019Deuda} \vertema{3.A.39}.
+\item \emph{La equivalencia ricardiana falla}: bajar hoy los impuestos con deuda transfiere renta a las generaciones vivas a costa de las que aún no han nacido. Solo se recupera si cada generación deja herencias a la siguiente por altruismo, porque entonces la dinastía se comporta como un agente de vida infinita (\ref{sec:horizonte-infinito}) \parencite{Barro1974} \vertema{3.A.39}.
+\item \emph{Las pensiones}: con una cotización sobre el salario,
+  \begin{itemize}
+  \item en un sistema de \concepto{capitalización}, lo cotizado se invierte y rinde $1+r$: el hogar reduce su ahorro en la misma cuantía y el capital no cambia;
+  \item en uno de \concepto{reparto}, lo cotizado por los jóvenes paga a los viejos, y cada generación recibe de la siguiente $(1+n)(1+g)$ por cada euro cotizado: reduce el ahorro y el capital (anexo~\ref{anexo:diamond}). Rinde más que la capitalización si $n+g>r$, la \concepto{condición de \autor{Aaron}} \parencite{Aaron1966Social}, que es justo la de ineficiencia dinámica: entonces introducirlo mejora a todas las generaciones. Si la economía es eficiente, la primera generación de viejos gana a costa de las siguientes, y volver a la capitalización exige que alguna generación pague 2 veces \vertema{3.A.38} \vertema{4.B.24}.
+  \end{itemize}
+  El envejecimiento baja $n$ y, con él, el rendimiento del reparto. En España había 31 mayores de 65 años por cada 100 personas en edad de trabajar en 2025; Eurostat proyecta 55 en 2050 \parencite{Eurostat2026Dependencia,Eurostat2026EUROPOP2025} y el INE, con otras hipótesis de migración y con la población de 16 a 64 años en el denominador, 52 \parencite{INE2026Proyecciones}. El gasto público en pensiones pasaría del 13,1~\% del PIB en 2022 a un máximo del 17,3~\% en 2050, frente al 12,6~\% de la zona del euro \parencite{CE2024AgeingReport} (gráfico~\ref{fig:demografia-pensiones}).
+  \begin{figure}[H]
+  \centering
+  \caption{Envejecimiento y pensiones: tasa de dependencia de mayores (España y UE-27, 1960-2100) y gasto público en pensiones (2022-2070)}\label{fig:demografia-pensiones}
+  \grafico[0.95\textwidth]{demografia-pensiones}
+  \fuente{elaboración propia a partir de \textcite{Eurostat2026Dependencia} (observado), \textcite{Eurostat2026EUROPOP2025} (proyección, escenario base) y \textcite{CE2024AgeingReport}.}
+  \end{figure}
+\item \emph{Las burbujas racionales}: un activo sin valor fundamental, como el dinero de \autor{Samuelson}, puede tener precio positivo si se espera revenderlo. En el modelo de \textcite{Tirole1985Asset}, solo puede haber una burbuja si la economía sin ella es dinámicamente ineficiente: la burbuja crece al tipo de interés, absorbe ahorro, reduce el capital y lleva el tipo de interés hasta la tasa de crecimiento, con lo que elimina la ineficiencia.
+\item \emph{En tiempo continuo}: el modelo de \textcite{Blanchard1985Debt}, sobre \textcite{Yaari1965Uncertain}. Cada hogar tiene una probabilidad constante de morir, la misma a cualquier edad («juventud perpetua»), y se asegura con rentas vitalicias. Los hogares descuentan el futuro con su tasa de preferencia temporal más esa probabilidad, la deuda deja de ser neutral y, con probabilidad nula, se vuelve al modelo de horizonte infinito.
+\item \emph{Otras}: la jubilación endógena \parencite{Feldstein1974Social}, el envejecimiento \parencite{Weil1997Economics}, la fecundidad endógena \parencite{LapanEnders1990Endogenous} y los modelos con decenas de generaciones con que se evalúan las reformas fiscales y de pensiones \parencite{AuerbachKotlikoff1987Dynamic}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{La comparación ingenua}: con el tipo real de la deuda pública, $r-g$ ha sido negativo casi siempre desde 2000: $-0{,}8$ puntos de media en España entre 2000 y 2025, $-0{,}5$ en la zona del euro entre 2002 y 2025 y $-0{,}8$ en Estados Unidos desde 1962. Fue positivo en los años 80 y 90 (+1,8 puntos en Estados Unidos y +1,7 en España, en 1980-1999) y en España durante la crisis de la deuda; en 2025, $-2{,}5$ en España, $-0{,}8$ en la zona del euro y $-0{,}7$ en Estados Unidos (datos anuales; el gráfico, en medias de 5 años) \parencite{CE2026AMECO} (gráfico~\ref{fig:r-menos-g}).
+  \begin{figure}[H]
+  \centering
+  \caption{Tipo de interés real a largo plazo menos crecimiento del PIB real: España, zona del euro y Estados Unidos (medias móviles de 5 años)}\label{fig:r-menos-g}
+  \grafico[0.8\textwidth]{r-menos-g}
+  \fuente{elaboración propia a partir de \textcite{CE2026AMECO} (series ILRV y OVGD). Medias móviles de 5 años hacia atrás (cada año, la media de ese año y los 4 anteriores). Zona del euro: EA12 hasta 2001 y EA20 desde 2002.}
+  \end{figure}
+\item \emph{Ojo con la lectura}: $r<g$ en la deuda pública no prueba que haya ineficiencia dinámica. El modelo habla de la rentabilidad del capital, $f'(k)-\delta$, que es mucho mayor que el tipo sin riesgo; con incertidumbre hay muchos tipos de interés y compararlos con $g$ no basta \parencite{AbelEtAl1989Assessing,Blanchard2019Deuda}.
+\item \emph{El criterio de \textcite{AbelEtAl1989Assessing}}: mirar los flujos. Si las rentas del capital superan a la inversión año tras año, el capital da a sus dueños más de lo que les cuesta mantenerlo y la economía es dinámicamente eficiente. Lo cumplían Estados Unidos y las otras grandes economías avanzadas, y lo siguen cumpliendo: en 2025, las rentas brutas del capital rondan el 43-46~\% del PIB en España, la zona del euro y Estados Unidos, y la inversión, el 21-22~\% \parencite{CE2026AMECO} (gráfico~\ref{fig:criterio-abel}).
+  \begin{figure}[H]
+  \centering
+  \caption{El criterio de \autor{Abel}, \autor{Mankiw}, \autor{Summers} y \autor{Zeckhauser}: rentas brutas del capital e inversión bruta, en \% del PIB}\label{fig:criterio-abel}
+  \grafico[0.95\textwidth]{criterio-abel}
+  \fuente{elaboración propia a partir de \textcite{CE2026AMECO} (series ALCD0, UITT y UVGD). Las rentas del capital se aproximan como el PIB menos la remuneración ajustada del trabajo, e incluyen los impuestos netos sobre la producción.}
+  \end{figure}
+\item \textcite{Geerolf2018Reassessing} lo revisa corrigiendo las rentas mixtas y las de la tierra y concluye que ninguna economía avanzada cumple con claridad el criterio y que Japón y Corea del Sur probablemente han acumulado de más. Con tipos sin riesgo inferiores al crecimiento durante largos periodos \parencite{Blanchard2019Deuda}, la cuestión sigue abierta.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item El modelo muestra que el horizonte de los hogares no es un detalle técnico: cambia la eficiencia del equilibrio, la neutralidad de la deuda y la utilidad de las pensiones de reparto (tabla~\ref{tab:mhi-mgs}).
+\item Sus límites: 2 periodos de 30 años, sin incertidumbre ni herencias, y una solución cerrada que necesita supuestos muy particulares; solo se solapan los hogares, y con dinero aparecen equilibrios múltiples o indeterminados. Las versiones cuantitativas, con muchas generaciones, se resuelven numéricamente \parencite{AuerbachKotlikoff1987Dynamic}.
+  \begin{table}[H]
+  \centering
+  \caption{Horizonte infinito frente a generaciones solapadas}\label{tab:mhi-mgs}
+  \small
+  \begin{tabular}{>{\raggedright\arraybackslash}m{3.3cm}>{\raggedright\arraybackslash}m{5.4cm}>{\raggedright\arraybackslash}m{5.4cm}}
+  \toprule
+  \rowcolor{tceeazulpalido} & \textbf{Horizonte infinito (\autor{Ramsey}, \autor{Cass} y \autor{Koopmans})} & \textbf{Generaciones solapadas (\autor{Diamond})}\\
+  \midrule
+  Hogares & uno, de vida infinita (o una dinastía altruista) & infinitos, de vida finita (2 periodos), que se solapan\\
+  \addlinespace[0.3em]
+  Ahorro & ecuación de \autor{Euler}: $\gamma_{C/L}=(r-\rho)/\theta$ & de los jóvenes, para la vejez: $S_t=\beta w_t/(1+\beta)$\\
+  \addlinespace[0.3em]
+  Estado estacionario & $f'(k^*)=\rho+\delta+\theta g$ & $k^*$ de la ley de movimiento \eqref{eq:diamond}\\
+  \addlinespace[0.3em]
+  \rowcolor{tceesalvia} Eficiencia dinámica & siempre: $k^*<k_{\mathrm{oro}}$ & no siempre: ineficiente si $r^*<n+g$\\
+  \addlinespace[0.3em]
+  1TFEB & se cumple & puede fallar (doble infinitud)\\
+  \addlinespace[0.3em]
+  Equivalencia ricardiana & se cumple & falla (salvo herencias altruistas)\\
+  \addlinespace[0.3em]
+  Dinero, deuda y reparto & neutrales o no mejoran el bienestar & pueden mejorar a todos si hay ineficiencia\\
+  \addlinespace[0.3em]
+  Para qué sirve & ciclo, crecimiento, política monetaria & demografía, pensiones, deuda, dinero\\
+  \bottomrule
+  \end{tabular}
+  \fuente{elaboración propia a partir de \textcite[cap.~2]{Romer2019Advanced} y \textcite[caps.~8 y 9]{Acemoglu2009}.}
+  \end{table}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Limitaciones de los modelos de agente representativo y nuevos enfoques}\label{sec:limitaciones}
+
+\begin{itemize}
+\item Hemos usado un agente representativo, de vida infinita o por generaciones. Cerramos con sus límites. La conclusión anticipada: la heterogeneidad no es un detalle, y la macroeconomía de los últimos 15 años la ha incorporado sin renunciar a la optimización dinámica.
+\item \emph{Las críticas}:
+  \begin{itemize}
+  \item \emph{su validez teórica es limitada}: el agente representativo solo existe con supuestos muy restrictivos (\autor{Gorman}, \ref{sec:agente-representativo}); en general, la racionalidad individual no se traslada al agregado (\autor{Sonnenschein}, \autor{Mantel} y \autor{Debreu}), igual que ninguna regla de agregación de las preferencias de los votantes cumple a la vez los axiomas de \autor{Arrow} \vertema{3.A.24};
+  \item \emph{aunque exista, puede engañar}: \textcite{Kirman1992Whom} muestra que el agente representativo puede reaccionar a un cambio de política al revés que todos los individuos a los que representa, o preferir una situación que todos ellos rechazan, y que sus preferencias pueden cambiar con la propia política. La pregunta no es si se simplifica, sino qué heterogeneidad importa para cada cuestión.
+  \end{itemize}
+\item \emph{Los nuevos enfoques}, que aprovechan una capacidad de cálculo que no existía en los años 70 y 80:
+  \begin{itemize}
+  \item \emph{agentes heterogéneos con mercados incompletos}: hogares que sufren perturbaciones individuales que no pueden asegurar y ahorran por precaución \parencite{Aiyagari1994Uninsured}; la dinámica agregada a menudo solo depende de unos pocos momentos de la distribución \parencite{KrusellSmith1998Income}. Los modelos nuevokeynesianos con agentes heterogéneos (HANK) muestran que la política monetaria actúa sobre todo a través de la renta de los hogares con poca liquidez, y menos a través de la sustitución intertemporal de la ecuación de \autor{Euler} \parencite{KaplanMollViolante2018Monetary}; su versión más simple, con 2 tipos de hogares, da efectos mayores a la política fiscal \parencite{GaliLopezSalidoValles2007} \vertema{3.A.37};
+  \item \emph{modelos basados en agentes}: simulaciones de muchos agentes que siguen reglas observadas, sin suponer equilibrio ni racionalidad plena; generan crisis endógenas, pero cuesta entender el mecanismo;
+  \item \emph{conocimiento imperfecto} \parencite{FrydmanGoldberg2007Imperfect} y \emph{macroeconomía del comportamiento} \parencite{DeGrauwe2012Lectures}: agentes que no conocen el modelo verdadero y forman expectativas con reglas sencillas, de abajo arriba.
+  \end{itemize}
+\item El debate sigue abierto: \textcite{WrenLewis2018Ending} defiende que los modelos microfundamentados convivan con otros más pragmáticos, en lugar de exigir microfundamentos a todo modelo.
+\item \emph{Recapitulación}: de un agente de vida infinita, eficiente, pasamos a generaciones que se solapan, que pueden ahorrar de más, y de ahí a la heterogeneidad completa, la frontera actual.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}. En conclusión:
+  \begin{itemize}
+  \item una decisión es dinámica cuando una variable de estado (los activos, el capital, las reservas de un recurso) une los periodos. Se resuelva con \autor{Lagrange}, con el control óptimo o con la programación dinámica, su solución es la misma ecuación de \autor{Euler} y un precio sombra del estado;
+  \item la macroeconomía lleva estas decisiones a un agente representativo. Con horizonte infinito, el equilibrio competitivo es eficiente y nunca acumula de más; con generaciones solapadas puede acumular de más, y el dinero, la deuda y las pensiones de reparto pueden mejorar a todos.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: son los cimientos de la macroeconomía actual (los modelos de los bancos centrales, el análisis de la sostenibilidad de la deuda y de las pensiones, la evaluación del cambio climático) y de cualquier evaluación de una política que se anuncia hoy y actúa mañana.
+\item \textbf{\emph{Extensiones}}: la incertidumbre y la valoración de activos \vertema{3.A.33}; la inversión con costes de ajuste e irreversibilidad \vertema{3.A.34}; el crecimiento óptimo y el endógeno \vertema{3.A.43} \vertema{3.A.44}; los ciclos reales \vertema{3.A.42}; la deuda y la equivalencia ricardiana \vertema{3.A.39}; la inconsistencia temporal de la política \vertema{3.A.36} y los juegos dinámicos \vertema{3.A.14}; el descuento hiperbólico \vertema{3.A.1}; y la economía abierta, con el enfoque intertemporal de la balanza de pagos \vertema{3.B.12}.
+\item \textbf{\emph{Opinión}}: por su método, la macroeconomía actual debe más a \autor{Fisher} y a \autor{Ramsey} que a \autor{Keynes}, aunque las rigideces de la nueva economía keynesiana obligan a matizarlo. El agente de vida infinita es una herramienta potente para pensar el largo plazo, pero las preguntas más urgentes de hoy (las pensiones, la deuda, el clima) son conflictos entre generaciones, y para ellas hace falta un modelo en el que las generaciones existan.
+\item \textbf{\emph{Idea final}}: «No dejes para mañana lo que puedas hacer hoy». La modelización dinámica lo matiza: conviene dejar para mañana lo que mañana valga más, y eso es la ecuación de \autor{Euler}. Y a la pregunta de \autor{Ramsey}, ¿cuánto debe ahorrar una nación?, responde que depende de cómo modelicemos el tiempo: un agente que vive para siempre nunca ahorra de más, pero generaciones que se suceden sí pueden hacerlo, y entonces dejar algo para mañana no es prudencia, sino avaricia que rompe el saco.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: la optimización intertemporal con $T$ periodos}\label{anexo:optimizacion}
+
+\begin{notaopositor}
+Este anexo es la parte en tiempo discreto de la pieza común de optimización dinámica, que comparten los temas que resuelven problemas dinámicos en tiempo discreto (el consumo \vertema{3.A.33} y la oferta intertemporal de trabajo \vertema{3.A.25}); la versión en tiempo continuo está en el anexo~\ref{anexo:control-optimo} y la programación dinámica, en el anexo~\ref{anexo:bellman}.
+\end{notaopositor}
+
+\paragraph{a) El problema}
+
+\begin{itemize}
+\item \emph{Comportamiento, preferencias y restricción}: el consumidor de \autor{Fisher} vive $T+1$ periodos, $t=0,\dots,T$, con certidumbre, y tiene una utilidad aditiva con descuento exponencial (apartado~\ref{sec:componentes}):
+  \begin{equation*}
+  U_0\equiv\sum_{t=0}^{T}\beta^t\,u(C_t),\qquad u'>0,\quad u''<0,\qquad\beta\equiv\frac{1}{1+\rho}.
+  \end{equation*}
+\item En cada periodo, lo que gasta más lo que ahorra para el siguiente es igual a lo que gana más lo que le rinden los activos acumulados, $b_t$, al tipo $r$:
+  \begin{equation*}
+  \underbrace{C_t}_{\text{consumo}}+\underbrace{b_{t+1}}_{\text{activos para }t+1}=\underbrace{Y_t}_{\text{renta}}+\underbrace{(1+r)\,b_t}_{\text{activos con sus intereses}}\quad\Longleftrightarrow\quad b_{t+1}-b_t=Y_t+r\,b_t-C_t:
+  \end{equation*}
+  el ahorro del periodo es la renta, laboral y financiera, menos el consumo. Es el \emph{vehículo} para trasladar el consumo en el tiempo.
+\item El problema, en tiempo discreto y con horizonte finito, es
+  \begin{equation}
+  \optim{\max}{\{C_t\}}{\sum_{t=0}^{T}\beta^t\,u(C_t)}{b_{t+1}=(1+r)\,b_t+Y_t-C_t,\quad t=0,\dots,T\\ b_0\ \text{dado}\\ b_{T+1}\geq 0}\label{eq:problema-t-periodos}
+  \end{equation}
+\item \emph{La condición terminal}, $b_{T+1}\geq 0$, hace falta:\footnote{Corrige la nota del original, que hablaba de una «tasa de ahorro negativa en $T$»: lo que se descarta es morir endeudado, $b_{T+1}<0$.}
+  \begin{itemize}
+  \item sin ella, la solución sería endeudarse sin límite y consumir con cargo a esa deuda, que nadie devolvería: hay que impedir morir endeudado, $b_{T+1}<0$;
+  \item tampoco interesa morir con activos, $b_{T+1}>0$, que podrían haberse consumido antes y dado utilidad.
+  \end{itemize}
+  En el óptimo, $b_{T+1}=0$.
+\item \emph{De las restricciones de cada periodo a la intertemporal}: sustituyendo hacia delante $b_1,b_2,\dots$ y con $b_{T+1}=0$,
+  \begin{equation}
+  \sum_{t=0}^{T}\frac{C_t}{(1+r)^t}=(1+r)\,b_0+\sum_{t=0}^{T}\frac{Y_t}{(1+r)^t}:\label{eq:restriccion-intertemporal}
+  \end{equation}
+  el valor actual del consumo es igual a la riqueza, los activos iniciales más el valor actual de las rentas.\footnote{Con certidumbre y un activo sin riesgo, las restricciones de cada periodo siempre se pueden resumir en la intertemporal. Con incertidumbre, hacen falta mercados \emph{completos} (un activo para cada estado de la naturaleza); si son incompletos, no hay una sola restricción intertemporal y el problema se resuelve con las restricciones de cada periodo y cada estado, como en el de \autor{Hall} \vertema{3.A.33}. Si hay activos \emph{redundantes} (unos replican a otros), la restricción intertemporal se sigue cumpliendo; lo que no se puede determinar es cuánto se tiene de cada activo, aunque el consumo sí quede determinado. La macroeconomía moderna trata estas situaciones con modelos macrofinancieros.}
+\end{itemize}
+
+\paragraph{b) La solución por sustitución}
+
+\begin{itemize}
+\item Despejando el consumo de cada restricción, $C_t=(1+r)\,b_t+Y_t-b_{t+1}$, y sustituyéndolo en el objetivo, el problema pasa a ser de optimización sin restricciones en los activos $b_1,\dots,b_{T}$:
+  \begin{equation*}
+  \max_{\{b_{t+1}\}}\ \sum_{t=0}^{T}\beta^t\,u\big((1+r)\,b_t+Y_t-b_{t+1}\big).
+  \end{equation*}
+\item $b_{t+1}$ aparece en el consumo de $t$, con signo menos, y en el de $t+1$, multiplicado por $1+r$. La condición de primer orden es
+  \begin{equation*}
+  -\beta^t\,u'(C_t)+\beta^{t+1}(1+r)\,u'(C_{t+1})=0\quad\Longrightarrow\quad u'(C_t)=\beta(1+r)\,u'(C_{t+1}),
+  \end{equation*}
+  la ecuación de \autor{Euler}~\eqref{eq:euler} entre 2 periodos cualesquiera.
+\item Con el método de \autor{Lagrange} sobre la restricción intertemporal~\eqref{eq:restriccion-intertemporal}, con un multiplicador $\lambda$, las condiciones son $\beta^t\,u'(C_t)=\lambda/(1+r)^t$ en cada $t$, y dividiendo 2 consecutivas sale la misma ecuación. En problemas con incertidumbre o más complejos se usa la programación dinámica (la ecuación de \autor{Bellman}), con condiciones de óptimo equivalentes (anexo~\ref{anexo:bellman}).
+\item \emph{El caso de referencia}: con $\beta(1+r)=1$, $u'(C_t)=u'(C_{t+1})$ y, como $u'$ es decreciente, $C_t=C_{t+1}$: el consumo es constante. Con la restricción intertemporal,
+  \begin{equation*}
+  C=\frac{(1+r)\,b_0+\sum_{t=0}^{T}Y_t/(1+r)^t}{\sum_{t=0}^{T}(1+r)^{-t}},\qquad\text{y con }r=\rho=0,\quad C=\frac{b_0+\sum_{t=0}^{T}Y_t}{T+1}.
+  \end{equation*}
+  \findemo
+\end{itemize}
+
+\paragraph{c) Implicaciones}
+
+\begin{itemize}
+\item \emph{Lo que se consume en un periodo no depende de lo que se gana en él}, sino de la riqueza: de esta idea parte \autor{Friedman}.
+\item \emph{La senda del consumo es estable} (plana si $r=\rho$) y el ahorro hace de amortiguador: es alto en los periodos de renta alta y negativo en los de renta baja. De esta idea parten \autor{Modigliani} y \autor{Brumberg}.
+\item \emph{La forma de la senda de la renta no importa para el consumo, pero sí para el ahorro}, que es la diferencia entre ambos.
+\item \emph{Una medida anunciada hoy que cambie la renta futura cambia ya el consumo de hoy}, porque cambia la riqueza.
+\item \emph{Horizonte infinito}: con $T\to\infty$, la condición terminal pasa a ser la de no-Ponzi, $\lim_{T\to\infty}b_{T+1}/(1+r)^T\geq 0$, que se cumple con igualdad en el óptimo (condición de transversalidad), la de los modelos de horizonte infinito (apartado~\ref{sec:horizonte-infinito}).
+\end{itemize}
+
+\paragraph{d) Los efectos de un cambio del tipo de interés: la ecuación de \autor{Slutsky} con dotación}
+
+\begin{itemize}
+\item Con 2 periodos, el precio del consumo de mañana en términos del de hoy es $p\equiv 1/(1+r)$, y la riqueza es $\overline{W}=Y_1+p\,Y_2$, que depende de $p$ porque el consumidor tiene una dotación, $(Y_1,Y_2)$. La ecuación de \autor{Slutsky} con dotación \vertema{3.A.9} descompone el efecto de un cambio de $p$ sobre $C_1$:
+  \begin{equation}
+  \frac{dC_1}{dp}=\underbrace{\frac{\partial h_{C_1}(p,\overline{U})}{\partial p}}_{\text{sustitución}\ (>0)}\ \underbrace{-\,C_2\,\frac{\partial C_1(p,\overline{W})}{\partial\overline{W}}}_{\text{renta}\ (<0)}\ \underbrace{+\,Y_2\,\frac{\partial C_1(p,\overline{W})}{\partial\overline{W}}}_{\text{riqueza o dotación}\ (>0)}=\frac{\partial h_{C_1}(p,\overline{U})}{\partial p}+(Y_2-C_2)\,\frac{\partial C_1(p,\overline{W})}{\partial\overline{W}},\label{eq:slutsky-dotacion}
+  \end{equation}
+  donde $h_{C_1}(p,\overline{U})$ es la demanda compensada (hicksiana), $C_1(p,\overline{W})$ la ordinaria y $C_1$ es un bien normal.
+\item Una subida de $r$ baja $p$. Entonces:
+  \begin{itemize}
+  \item el \emph{efecto sustitución} reduce $C_1$: el consumo de hoy se encarece frente al de mañana;
+  \item el \emph{efecto renta} lo aumenta: el consumo de mañana se abarata y el consumidor es, en ese sentido, más rico;
+  \item el \emph{efecto riqueza} lo reduce: la renta de mañana vale menos hoy.
+  \end{itemize}
+\item Los 2 últimos juntos tienen el signo de $C_2-Y_2=(1+r)(Y_1-C_1)$, es decir, del ahorro. En quien pide prestado ($Y_1<C_1$), el efecto riqueza pesa más que el de renta, los 2 juntos refuerzan el de sustitución y $C_1$ baja; en quien presta ($Y_1>C_1$), pesa más el de renta, los 2 juntos se oponen al de sustitución y el resultado es ambiguo, como se ve en el gráfico del tipo de interés de \vertema{3.A.33}; la estática comparativa completa, con la tabla de signos, está en el anexo~\ref{anexo:estatica-comparativa}.\findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: optimización dinámica en tiempo continuo: el control óptimo}\label{anexo:control-optimo}
+
+\begin{notaopositor}
+Este anexo es común a los temas que resuelven problemas dinámicos en tiempo continuo (la inversión \vertema{3.A.34}, el crecimiento óptimo \vertema{3.A.43} y los costes de ajuste del empleo \vertema{3.A.26}); la versión en tiempo discreto está en el anexo~\ref{anexo:optimizacion} y la programación dinámica, en el anexo~\ref{anexo:bellman}.
+\end{notaopositor}
+
+\begin{anotaciones}
+En este anexo, $y_t$ (variable de estado) y $u_t$ (variable de control) son genéricos, las letras de \textcite{Cerda2001Optimizacion} y de los manuales de control óptimo. En el cuerpo del tema, $u(\cdot)$ es la utilidad instantánea y $y$ la producción por unidad de trabajo eficiente; en el problema del consumidor del apartado~\ref{sec:metodos}, el estado son los activos, $b_t$, y el control, el consumo, $C_t$. Otros temas escriben las mismas condiciones con $x_t$ para el estado y $z_t$ para el control \vertema{3.A.44}.
+\end{anotaciones}
+
+\paragraph{Idea}
+
+\begin{itemize}
+\item La \concepto{optimización estática} busca el valor óptimo de unas variables en un momento dado; el tiempo no entra en el problema. Cuando las decisiones de hoy cambian las posibilidades de mañana, hace falta la \concepto{optimización dinámica}, que da una trayectoria óptima completa de cada variable a lo largo del tiempo.
+\item Hay 3 métodos: el cálculo de variaciones, la teoría del control óptimo y la programación dinámica; la exposición los compara (\ref{sec:metodos}, tabla~\ref{tab:metodos}) y el anexo~\ref{anexo:bellman} desarrolla la programación dinámica. Este anexo desarrolla la \emph{teoría del control óptimo}, la de los modelos en tiempo continuo del temario (la q, el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}, los costes de ajuste del empleo), que trata con naturalidad las restricciones sobre los controles y cuyas condiciones tienen una lectura económica directa: el multiplicador es el precio sombra del \emph{stock}.
+\end{itemize}
+
+\paragraph{El problema}
+
+\begin{itemize}
+\item El problema tipo es
+  \begin{equation*}
+  \optim{\max}{\{u_t\in U\}}{\int_0^{T}F(t,y_t,u_t)\,dt}{\dot y_t=f(t,y_t,u_t)\\ y_0=A\ \text{dado}\\ y_T=Z\ \ (\text{o } y_T \text{ libre})}
+  \end{equation*}
+  con 3 tipos de variables:
+  \begin{itemize}
+  \item el \emph{tiempo}, $t$;
+  \item la \emph{variable de estado}, $y_t$, que describe la situación en cada momento (el capital);
+  \item la \emph{variable de control}, $u_t$, la que se decide (la inversión).
+  \end{itemize}
+\item La \emph{ecuación de estado} $\dot y_t=f(t,y_t,u_t)$ hace que, dada la condición inicial, cada senda del control determine la del estado: basta con buscar la senda óptima del control. Se supone que las funciones son continuas y diferenciables y que la integral converge.
+\end{itemize}
+
+\paragraph{El principio del máximo}
+
+\begin{itemize}
+\item Lo anunciaron \autor{Boltianski}, \autor{Gamkrelidze} y \autor{Pontriaguin} en 1956 y lo publicaron completo \textcite{PontryaginEtAl1962}. Se basa en el \concepto{hamiltoniano} en valor presente,
+  \begin{equation*}
+  \mathcal{H}^0(t,y_t,u_t,\lambda^0_t)\equiv F(t,y_t,u_t)+\lambda^0_t\,f(t,y_t,u_t),
+  \end{equation*}
+  donde $\lambda^0_t$, la \emph{variable de coestado}, es un multiplicador de \autor{Lagrange} dinámico: el valor, en el momento 0, de una unidad más de la variable de estado en $t$.
+\item Condiciones necesarias:\footnote{Con varias variables de estado y de control, hay una ecuación de coestado por cada variable de estado y una condición de primer orden por cada control.}
+  \begin{enumerate}
+  \item el control maximiza el hamiltoniano en cada momento; con solución interior, $\partial\mathcal{H}^0/\partial u=0$;
+  \item ecuación de estado: $\dot y_t=\partial\mathcal{H}^0/\partial\lambda^0=f(t,y_t,u_t)$;
+  \item ecuación de coestado: $\dot\lambda^0_t=-\partial\mathcal{H}^0/\partial y$;
+  \item condición en el momento final: si $y_T=Z$ está fijado, es una \emph{condición terminal} y no hace falta nada más; si $y_T$ es libre, la \concepto{condición de transversalidad} es $\lambda^0_T=0$ (y si solo se exige $y_T\geq 0$, $\lambda^0_T\geq 0$ y $\lambda^0_T\,y_T=0$).
+  \end{enumerate}
+\item \emph{Suficiencia}. Las condiciones anteriores son necesarias, no suficientes. Son también suficientes si el hamiltoniano es cóncavo en el estado y el control a la vez (\autor{Mangasarian}) o, de forma más general, si el hamiltoniano maximizado, el que resulta de sustituir el control óptimo, $\mathcal{H}^{0*}=F(t,y_t,u^*_t)+\lambda^0_t f(t,y_t,u^*_t)$, es cóncavo en el estado (\autor{Arrow}).
+\end{itemize}
+
+\paragraph{Horizonte infinito}
+
+\begin{itemize}
+\item Los modelos de crecimiento óptimo \vertema{3.A.43} y de inversión \vertema{3.A.34} tienen horizonte infinito. Aparecen 2 problemas:
+  \begin{itemize}
+  \item la integral tiene que converger, lo que suele exigir un factor de descuento;
+  \item no hay momento final, así que la condición de transversalidad se escribe como un límite. La habitual es
+    \begin{equation*}
+    \lim_{t\to\infty}\lambda^0_t\,y_t=0:
+    \end{equation*}
+    en el límite, el valor actual del \emph{stock} que se deja tiene que ser nulo. Si no, se podría aumentar el objetivo consumiéndolo (en el modelo de la q, vendiendo capital). Si el estado converge a un valor dado, $\lim y_t=y_{\infty}$, no hace falta más.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{El hamiltoniano en valor corriente}
+
+\begin{itemize}
+\item Si el objetivo lleva un factor de descuento, $F(t,y_t,u_t)=e^{-\rho t}G(y_t,u_t)$, es más cómodo trabajar con el hamiltoniano en \concepto{valor corriente}, el que se usa en el cuerpo del tema:
+  \begin{equation*}
+  \mathcal{H}_t\equiv e^{\rho t}\mathcal{H}^0_t=G(y_t,u_t)+\lambda_t\,f(t,y_t,u_t),\qquad \lambda_t\equiv e^{\rho t}\lambda^0_t.
+  \end{equation*}
+\item Como $\dot\lambda_t=\rho\lambda_t+e^{\rho t}\dot\lambda^0_t$, las condiciones pasan a ser:
+  \begin{enumerate}
+  \item $\partial\mathcal{H}/\partial u=0$;
+  \item $\dot y_t=f(t,y_t,u_t)$;
+  \item $\dot\lambda_t=\rho\,\lambda_t-\partial\mathcal{H}/\partial y$;
+  \item transversalidad: $\lim_{t\to\infty}e^{-\rho t}\lambda_t\,y_t=0$.\footnote{La condición $\lim_{t\to\infty}e^{-\rho t}\mathcal{H}_t=0$ que a veces se añade es la del problema en el que el momento final se elige libremente; aquí no hace falta.}
+  \end{enumerate}
+\item En el consumidor del apartado~\ref{sec:metodos}, $y=b$, $u=C$ y $\lambda_t$ es el valor de un euro más de activos; en la q (\ref{sec:aplicaciones-empresa}), $\rho=r$, $y=\kappa$, $u=I$ y el coestado en valor corriente es la propia $q_t$; en la regla de \autor{Hotelling} (anexo~\ref{anexo:hotelling}), la regalía.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El hamiltoniano en valor presente y en valor corriente}\label{tab:hamiltonianos}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.4cm}>{\raggedright\arraybackslash}m{6cm}>{\raggedright\arraybackslash}m{6cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Valor presente ($\mathcal{H}^0$)} & \textbf{Valor corriente ($\mathcal{H}$)}\\
+\midrule
+Construcción & $\mathcal{H}^0=e^{-\rho t}G+\lambda^0_t f$ & $\mathcal{H}=e^{\rho t}\mathcal{H}^0=G+\lambda_t f$, con $\lambda_t=e^{\rho t}\lambda^0_t$\\
+\addlinespace[0.3em]
+Significado del coestado & valor de una unidad más del estado en $t$, \emph{descontado} al momento 0 & valor de una unidad más del estado en $t$, \emph{medido en} $t$\\
+\addlinespace[0.3em]
+Control & $\partial\mathcal{H}^0/\partial u=0$ & $\partial\mathcal{H}/\partial u=0$\\
+\addlinespace[0.3em]
+Coestado & $\dot\lambda^0_t=-\partial\mathcal{H}^0/\partial y$ & $\dot\lambda_t=\rho\lambda_t-\partial\mathcal{H}/\partial y$\\
+\addlinespace[0.3em]
+Transversalidad & $\lim_{t\to\infty}\lambda^0_t\,y_t=0$ & $\lim_{t\to\infty}e^{-\rho t}\lambda_t\,y_t=0$\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\begin{anotaciones}
+\textbf{Para profundizar.} En castellano, el manual de \textcite{Cerda2001Optimizacion}. Con orientación económica, \textcite{Acemoglu2009}, \textcite{Heijdra2009Foundations} y \textcite{ObstfeldRogoff1996Foundations}. El apéndice 14.1 de \textcite{PermanEtAl2011Natural} resume la solución con el principio del máximo, en valor presente y en valor corriente. Los modelos de crecimiento resueltos así se llaman de \emph{crecimiento óptimo} (\autor{Ramsey}, \autor{Cass} y \autor{Koopmans}) \vertema{3.A.43}.
+\end{anotaciones}
+
+% ==========================================================================
+\section{Anexo: la programación dinámica}\label{anexo:bellman}
+
+\begin{notaopositor}
+Este anexo completa la pieza común de optimización dinámica (anexos~\ref{anexo:optimizacion} y~\ref{anexo:control-optimo}) con su tercer método, que solo se desarrolla en este tema. Usa las mismas letras genéricas que el anexo~\ref{anexo:control-optimo}.
+\end{notaopositor}
+
+\paragraph{a) El problema y el principio de optimalidad}
+
+\begin{itemize}
+\item Con las letras genéricas del anexo~\ref{anexo:control-optimo}, el problema en tiempo discreto y horizonte infinito es
+  \begin{equation*}
+  \optim{\max}{\{u_t\in U\}}{\sum_{t=0}^{\infty}\beta^t\,G(y_t,u_t)}{y_{t+1}=f(y_t,u_t)\\ y_0\ \text{dado}}
+  \end{equation*}
+  con $y_t$ el estado, $u_t$ el control, $G$ el rendimiento de cada periodo y $0<\beta<1$.
+\item La \emph{función de valor}, $V(y_0)$, es el máximo de ese objetivo. Por el principio de optimalidad de \textcite{Bellman1957Dynamic}, si una senda es óptima desde $y_0$, su resto lo es desde $y_1$; separando el primer periodo,
+  \begin{equation*}
+  V(y_t)=\max_{u_t\in U}\left\{G(y_t,u_t)+\beta\,V\big(f(y_t,u_t)\big)\right\}.
+  \end{equation*}
+  Es una ecuación funcional: la incógnita es la función $V$. Su solución da la \emph{función de política}, $u_t=h(y_t)$: la regla de decisión.
+\end{itemize}
+
+\paragraph{b) Las condiciones de óptimo}
+
+\begin{itemize}
+\item \emph{Condición de primer orden} en $u_t$: $G_u(y_t,u_t)+\beta\,V'(y_{t+1})\,f_u(y_t,u_t)=0$.
+\item \emph{Condición de la envolvente} (teorema de \autor{Benveniste} y \autor{Scheinkman}): al derivar $V$ respecto al estado, el efecto a través del control óptimo se anula por la condición anterior, y queda $V'(y_t)=G_y(y_t,u_t)+\beta\,V'(y_{t+1})\,f_y(y_t,u_t)$.
+\item En el consumidor, $y_t=b_t$, $u_t=C_t$, $G=u(C_t)$ y $f=(1+r)b_t+Y_t-C_t$, así que $G_u=u'(C_t)$, $f_u=-1$, $G_y=0$ y $f_y=1+r$:
+  \begin{equation*}
+  u'(C_t)=\beta\,V'(b_{t+1}),\qquad V'(b_t)=\beta(1+r)\,V'(b_{t+1})=(1+r)\,u'(C_t).
+  \end{equation*}
+  Adelantando la segunda un periodo y sustituyendo en la primera, $u'(C_t)=\beta(1+r)\,u'(C_{t+1})$, la ecuación de \autor{Euler} \eqref{eq:euler}. \findemo
+\item \emph{Transversalidad}: $\lim_{t\to\infty}\beta^t\,V'(y_t)\,y_t=0$; en el consumidor, $\lim_{t\to\infty}\beta^tu'(C_t)\,b_{t+1}=0$, que con la ecuación de \autor{Euler} equivale a que la condición de no-Ponzi se cumpla con igualdad.
+\end{itemize}
+
+\paragraph{c) Cómo se resuelve}
+
+\begin{itemize}
+\item \emph{Conjeturar y comprobar}: se prueba una forma para $V$ (como $A+B\ln b$ en el ejemplo de \ref{sec:metodos}), se sustituye y se identifican los coeficientes. En el ejemplo, una vez sustituido $C_t=(1-\beta)(1+r)\,b_t$, los términos constantes dan $A=\ln(1-\beta)+\ln(1+r)/(1-\beta)+\beta\ln\beta/(1-\beta)+\beta A$; $A$ no afecta a la regla de decisión. La transversalidad se cumple: $\beta^tV'(b_t)\,b_t=\beta^tB\to0$.
+\item \emph{Iterar la función de valor}: se parte de cualquier $V_0$ y se calcula $V_{j+1}(y)=\max_u\{G(y,u)+\beta V_j(f(y,u))\}$. Con $\beta<1$ y $G$ acotada, el operador es una \emph{contracción} y la sucesión converge a la única solución \parencite{StokeyLucas1989Recursive}. Es la base del cálculo numérico de los modelos dinámicos \parencite{LjungqvistSargent2018Recursive}.
+\item \emph{Con incertidumbre}, basta con poner la esperanza condicionada delante de $V(y_{t+1})$: sale la ecuación de \autor{Euler} estocástica \eqref{eq:euler-estocastica}, de la que parten el paseo aleatorio de \autor{Hall} y el C-CAPM \vertema{3.A.33}.
+\end{itemize}
+
+\paragraph{d) El enlace con el control óptimo}
+
+\begin{itemize}
+\item En tiempo continuo, con $\int_0^{\infty}e^{-\rho t}G(y_t,u_t)\,dt$ y $\dot y_t=f(y_t,u_t)$, la ecuación de \autor{Bellman} pasa a ser la de \autor{Hamilton}, \autor{Jacobi} y \autor{Bellman}:
+  \begin{equation*}
+  \rho\,V(y)=\max_u\left\{G(y,u)+V'(y)\,f(y,u)\right\}.
+  \end{equation*}
+\item El término entre llaves es el hamiltoniano en valor corriente con $\lambda=V'(y)$: \emph{el coestado es la derivada de la función de valor}, el valor marginal del estado. Por eso los 2 métodos dan las mismas condiciones. \findemo
+\item \emph{Aplicaciones en el temario}: la búsqueda de empleo de \autor{McCall} y los valores del modelo de búsqueda y emparejamiento \vertema{3.A.26}, los salarios de eficiencia de \autor{Shapiro} y \autor{Stiglitz} \vertema{3.A.27} y los modelos de ciclo real \vertema{3.A.42}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo de Robinson Crusoe y la separación de \autor{Fisher}}\label{anexo:robinson}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item ¿Decide una empresa su inversión según los gustos de sus dueños? El modelo de Robinson Crusoe, un agente que es a la vez productor y consumidor, responde que no, si hay mercado de capitales: es el \concepto{teorema de separación} de \textcite{Fisher1930Theory}, formalizado por \textcite{Hirshleifer1958Optimal}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Un solo agente, a la vez productor y consumidor, y un solo bien, que se consume o se invierte.
+\item Produce con capital, $Y_t=F(K_t)$, con $F'>0$ y $F''<0$, y el capital se acumula según $K_{t+1}=(1-\delta)K_t+I_t$.
+\item Preferencias de \autor{Samuelson}, \eqref{eq:utilidad-intertemporal}. Puede haber o no un mercado de capitales al tipo $r$, con activos $b_t$: $C_t+I_t+b_{t+1}=F(K_t)+(1+r)\,b_t$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Sin mercado de capitales} ($b_t=0$ para todo $t$), Robinson solo puede llevar recursos al futuro invirtiendo. Sustituyendo $C_t=F(K_t)+(1-\delta)K_t-K_{t+1}$ y derivando respecto a $K_{t+1}$:
+  \begin{equation*}
+  u'(C_t)=\beta\,\left[1+F'(K_{t+1})-\delta\right]\,u'(C_{t+1}):
+  \end{equation*}
+  la relación marginal de transformación intertemporal, $1+F'(K_{t+1})-\delta$, se iguala a la de sustitución, $u'(C_t)/[\beta u'(C_{t+1})]$. Cuánto invierte depende de lo impaciente que sea: inversión y consumo se deciden juntos (punto $A$ del gráfico~\ref{fig:robinson}).
+\item \emph{Con mercado de capitales}, salen 2 condiciones independientes:
+  \begin{equation*}
+  u'(C_t)=\beta(1+r)\,u'(C_{t+1})\qquad\text{y}\qquad F'(K_{t+1})-\delta=r.
+  \end{equation*}
+  La primera es la ecuación de \autor{Euler} \eqref{eq:euler}; la segunda dice que se invierte hasta que el rendimiento neto del capital iguala al tipo de interés, sin mirar las preferencias. Robinson decide en 2 etapas: primero, la inversión que maximiza el valor actual de su producción (punto $P$, tangencia de la frontera con la recta de pendiente $-(1+r)$); después, cuánto consume y cuánto presta o pide prestado sobre esa recta (punto $C$).
+  \begin{figure}[H]
+  \centering
+  \caption{El modelo de Robinson Crusoe: la separación de \autor{Fisher}}\label{fig:robinson}
+  \grafico[0.95\textwidth]{robinson-crusoe}
+  \fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite{Hirshleifer1958Optimal}.}
+  \end{figure}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El mercado de capitales mejora el bienestar}: la tecnología solo lleva recursos del presente al futuro, mientras que el mercado permite también traerlos del futuro al presente; la frontera de posibilidades de consumo, la recta, contiene a la de producción\footnote{Con rendimientos decrecientes del capital, la frontera de posibilidades de producción entre $C_t$ y $C_{t+1}$ es estrictamente cóncava; con rendimientos constantes ($F(K)=AK$) sería una recta. Robinson no gana nada con el mercado solo si su curva de indiferencia es tangente a la recta en el mismo punto en que lo es la frontera.}.
+\item \emph{La empresa maximiza su valor} y todos sus propietarios están de acuerdo, sean pacientes o impacientes: es la base de la regla del valor actual neto. La decisión de inversión tampoco depende de cómo se financie, que es el resultado de \textcite{ModiglianiMiller1958Cost} y descansa en el mismo supuesto.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Restricciones de liquidez}. Si Robinson puede prestar al tipo $r$ pero no pedir prestado ($b_{t+1}\geq0$) y querría consumir hoy más de lo que le deja la inversión de $P$, la restricción se cumple con igualdad: ni presta ni pide prestado y vuelve a consumir e invertir como sin mercado. Entonces
+  \begin{equation*}
+  \frac{u'(C_t)}{\beta\,u'(C_{t+1})}=1+F'(K_{t+1})-\delta>1+r:
+  \end{equation*}
+  invierte menos de lo que maximizaría su riqueza, y la separación falla para los que querrían endeudarse. Lo mismo ocurre si el tipo al que se pide prestado es mayor que el que se cobra al prestar: los que prestan invierten según el tipo de prestar, los que se endeudan según el de pedir prestado, y los que no hacen ni una cosa ni otra, según sus preferencias \parencite{Hirshleifer1958Optimal}. Es la recta quebrada del consumidor con restricciones de liquidez \vertema{3.A.33}.
+\item \emph{Desinversión}. Si Robinson es muy impaciente y el capital se puede consumir ($I_t<0$), la frontera se prolonga más allá del punto de inversión nula y el óptimo sin mercado puede estar en ese tramo: consume hoy parte de su capital y produce menos mañana.
+\item \emph{En otros campos}: la misma geometría (frontera de posibilidades y recta de precios) explica las ganancias del comercio internacional \parencite{Haberler1936Theory} \vertema{3.B.5} y, en el tiempo, el enfoque intertemporal de la balanza de pagos \parencite{ObstfeldRogoff1995Intertemporal} \vertema{3.B.12}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la regla de \autor{Hotelling}}\label{anexo:hotelling}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item En los recursos que se agotan, lo que se extrae hoy no se podrá extraer mañana: su gestión es genuinamente intertemporal, y el recurso se trata como un activo\footnote{Los recursos \emph{flujo} (la radiación solar, el viento) no se agotan por usarlos hoy. Los recursos \emph{stock} sí: son \emph{renovables} si se regeneran (los bancos de peces, los bosques), y su uso debe respetar esa regeneración, y \emph{no renovables} si no se reproducen salvo a escala geológica (los combustibles fósiles y los demás minerales).}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El propietario competitivo de un yacimiento de tamaño $\overline S$ extrae $R_t$ y lo vende al precio $p_t$, que toma como dado, con un coste marginal de extracción constante, $\mathrm{CMg}$; descuenta al tipo $r$ \parencite{Hotelling1931Economics,PermanEtAl2011Natural}.
+\item Las reservas, $S_t$, disminuyen con la extracción\footnote{$S_t$ son aquí las reservas del recurso, como en \textcite{PermanEtAl2011Natural}; en el modelo de \autor{Diamond} (\ref{sec:diamond}), $S_t$ es el ahorro de los jóvenes.}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item El problema es
+  \begin{equation*}
+  \optim{\max}{\{R_t\}}{\int_0^{T}e^{-rt}\left(p_t-\mathrm{CMg}\right)R_t\,dt}{\dot S_t=-R_t\\ S_0=\overline S\\ S_T\geq0}
+  \end{equation*}
+\item Con el hamiltoniano en valor corriente, $\mathcal{H}_t=(p_t-\mathrm{CMg})R_t-\lambda_tR_t$ (anexo~\ref{anexo:control-optimo}):
+  \begin{itemize}
+  \item si se extrae algo, $\partial\mathcal{H}_t/\partial R_t=0$: $p_t-\mathrm{CMg}=\lambda_t$: el precio neto o \emph{regalía} es el precio sombra del recurso;
+  \item como el hamiltoniano no depende de $S_t$, $\dot\lambda_t=r\,\lambda_t$, y de ahí la \concepto{regla de \autor{Hotelling}}:
+    \begin{equation}
+    \frac{d(p_t-\mathrm{CMg})/dt}{p_t-\mathrm{CMg}}=r.\label{eq:hotelling}
+    \end{equation}
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Es una condición de arbitraje}: el propietario extrae si el interés de vender hoy y prestar el dinero supera la revalorización de dejar el recurso bajo tierra, y lo deja en caso contrario; en equilibrio, ambos rinden lo mismo\footnote{En valor presente, $\lambda^0_t=e^{-rt}\lambda_t$ es constante: el beneficio marginal descontado de extraer es el mismo en cualquier momento.}.
+\item \emph{No hay beneficio extraordinario}: el precio supera al coste marginal y, sin embargo, la regalía solo paga el coste de oportunidad del recurso, una renta de escasez, que el análisis estático confundiría con un beneficio\footnote{\textcite{Perloff2012Microeconomics} la presenta como una renta: un pago por encima del coste marginal de un factor de oferta limitada, no una renta de monopolio. Con libre entrada, la escasez sola no sostiene beneficios extraordinarios.}. La lección vale para cualquier empresa: los costes económicos incluyen el de oportunidad de los recursos propios, que la contabilidad no recoge.
+\item \emph{La paradoja verde}: si se esperan impuestos crecientes sobre el carbono, adelantar la extracción es racional \vertema{3.B.31}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la estática comparativa de la decisión de consumo y ahorro}\label{anexo:estatica-comparativa}
+
+\begin{itemize}
+\item Con 2 periodos, el consumidor de \autor{Fisher} maximiza $u(C_1)+\beta u(C_2)$ con $C_1+C_2/(1+r)=Y_1+Y_2/(1+r)\equiv\overline W$; con la CRRA, $C_2/C_1=[\beta(1+r)]^{1/\theta}$ (\ref{sec:aplicaciones-consumo}). El gráfico de referencia, con los 3 efectos de una subida del tipo de interés, está en \vertema{3.A.33}.
+\end{itemize}
+
+\paragraph{a) Cambios en la ESI}
+
+\begin{itemize}
+\item La ESI, $1/\theta$, resume la actitud del consumidor ante la sustitución intertemporal. Con 2 periodos se ve en la curvatura de las curvas de indiferencia: cuanto mayor es la ESI, menos curvadas son.
+\item Una ESI más alta hace que el consumo responda más al tipo de interés: los agentes con más ESI ofrecen o demandan más fondos en el mercado de capitales.
+\end{itemize}
+
+\paragraph{b) Cambios en la renta o en la riqueza}
+
+\begin{itemize}
+\item El consumo de cada periodo depende de la riqueza total, los activos acumulados más el valor actual de las rentas futuras. Por el alisamiento, un aumento de la renta de un periodo se reparte entre todos:
+  \begin{itemize}
+  \item si es \emph{transitorio}, su efecto sobre el consumo de cada periodo es pequeño;
+  \item si es \emph{permanente}, el efecto es grande (la renta permanente, \vertema{3.A.33}).
+  \end{itemize}
+\item El signo depende de que el consumo sea un bien normal o inferior. Como es el mismo bien en todos los periodos y es la cesta de todos los bienes, lo razonable es que sea normal en todos: más riqueza, más consumo en cada periodo.
+\end{itemize}
+
+\paragraph{c) Cambios en el tipo de interés}
+
+\begin{itemize}
+\item El tipo de interés es el precio del modelo, y su efecto sobre el consumo de hoy es en general ambiguo, porque hay 3 efectos \parencite{ObstfeldRogoff1996Foundations}:
+  \begin{enumerate}
+  \item \emph{sustitución}: una subida de $r$ encarece el consumo de hoy, cuyo coste de oportunidad es el rendimiento del ahorro; a utilidad constante, lo reduce;
+  \item \emph{renta ordinario}: con la riqueza dada, el mismo ahorro da más consumo mañana, y por el alisamiento también se consume más hoy;
+  \item \emph{riqueza o renta-dotación}: las rentas futuras valen menos hoy; la riqueza cae y el consumo de hoy, también.
+  \end{enumerate}
+\item La ecuación de \autor{Slutsky} con dotación \eqref{eq:slutsky-dotacion} los separa con $p\equiv1/(1+r)$: una subida de $r$ es una bajada de $p$, así que los signos de la ecuación respecto a $p$ se invierten respecto a $r$\footnote{Por eso el original daba el efecto renta como positivo en el texto (respecto a $r$) y como negativo en la tabla (respecto al precio del consumo de hoy): son el mismo efecto medido con precios inversos.}. Los efectos renta y riqueza juntos tienen el signo del ahorro, $Y_1-C_1$ (tabla~\ref{tab:signos-tipo}).
+  \begin{table}[H]
+  \centering
+  \caption{Efectos de una subida del tipo de interés sobre el consumo de hoy, $C_1$}\label{tab:signos-tipo}
+  \small
+  \begin{tabular}{>{\centering\arraybackslash}m{2.4cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{2cm}}
+  \toprule
+  \rowcolor{tceeazulpalido} \textbf{Consumo de hoy} & \textbf{Agente} & \textbf{Sustitución} & \textbf{Renta} & \textbf{Riqueza} & \textbf{Total}\\
+  \midrule
+  \multirow{3}{=}[-0.6em]{\centering\textcolor{tceeverde}{bien normal}\newline $\partial C_1/\partial\overline W>0$} & ahorrador ($C_1<Y_1$) & $-$ & $+$ & $-$ & \textcolor{tceeazul}{ambiguo}\\
+  & neutral ($C_1=Y_1$) & $-$ & $+$ & $-$ (se compensan) & $-$\\
+  & prestatario ($C_1>Y_1$) & $-$ & $+$ & $-$ (domina) & $-$\\
+  \addlinespace[0.3em]
+  \textcolor{tceedorado}{bien frontera}\newline $\partial C_1/\partial\overline W=0$ & cualquiera & $-$ & 0 & 0 & $-$\\
+  \addlinespace[0.3em]
+  \multirow{2}{=}[-0.3em]{\centering\textcolor{tceerojo}{bien inferior}\newline $\partial C_1/\partial\overline W<0$} & ahorrador ($C_1<Y_1$) & $-$ & $-$ & $+$ & $-$\\
+  & prestatario ($C_1>Y_1$) & $-$ & $-$ & $+$ (domina) & \textcolor{tceeazul}{ambiguo}\\
+  \bottomrule
+  \end{tabular}
+  \fuente{elaboración propia a partir de \textcite{ObstfeldRogoff1996Foundations} y \textcite[p.~46]{Busch2004Intertemporal}, con la ecuación \eqref{eq:slutsky-dotacion}.}
+  \end{table}
+\item \emph{Gráficamente} \parencite{Heijdra2009Foundations}: la recta de balance gira alrededor de la dotación $(Y_1,Y_2)$. Desde el óptimo inicial, el efecto sustitución lleva a lo largo de la curva de indiferencia inicial; el efecto renta, al punto en que estaría el consumidor si la recta girase sobre su corte con el eje horizontal (sin renta futura); y el efecto riqueza, de ahí al óptimo final. Un prestatario pierde bienestar con la subida: pedir prestado se encarece.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el dinero en efectivo y la cota cero de los tipos de interés}\label{anexo:cota-cero}
+
+\begin{itemize}
+\item La ecuación de \autor{Euler} explica por qué el tipo de interés real que equilibra el ahorro y la inversión puede ser negativo, aunque los agentes sean impacientes. Escrita como
+  \begin{equation*}
+  \frac{u'(C_t)}{u'(C_{t+1})}=\frac{1+r}{1+\rho},
+  \end{equation*}
+  si el consumo de mañana es muy valioso frente al de hoy (mucha renta hoy, malas perspectivas), el cociente de la izquierda es menor que 1, y con $\rho$ pequeño el tipo real que vacía el mercado es negativo.
+\item Si los activos son nominales y existe el efectivo, la ecuación pasa a ser
+  \begin{equation*}
+  \frac{u'(C_t)}{u'(C_{t+1})}=\frac{1+i_t}{(1+\rho)(1+\pi_{t+1})},
+  \end{equation*}
+  con $i_t$ el tipo nominal y $\pi_{t+1}$ la inflación esperada. El efectivo rinde un 0~\% nominal, así que nadie compra un bono que rinda menos: $i_t\geq0$.
+\item Si el cociente es menor que 1 y $\rho$ y $\pi_{t+1}$ son casi nulos, equilibrar el mercado exigiría $1+i_t<1$, es decir, $i_t<0$, incompatible con la cota cero. El mercado se ajusta entonces por cantidades: cae la inversión y la producción \parencite{Krugman1998Baaack}.
+\item \emph{Implicaciones}: con la cota cero operativa, varias intuiciones se invierten: un recorte del gasto público, al aumentar el ahorro, agrava la recesión, y más inflación esperada, al bajar el tipo real, ayuda a salir. Es el fundamento de las políticas de tipos muy bajos o negativos y de los compromisos de inflación futura \vertema{3.A.36} \vertema{3.A.40}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo de \autor{Diamond} paso a paso}\label{anexo:diamond}
+
+\paragraph{a) El hogar con una utilidad general}
+
+\begin{itemize}
+\item El joven de $t$ resuelve
+  \begin{equation*}
+  \optim{\max}{C^J_t,\,C^V_{t+1}}{u(C^J_t)+\beta\,u(C^V_{t+1})}{C^J_t+S_t=w_t\\ C^V_{t+1}=(1+r_{t+1})\,S_t}
+  \end{equation*}
+  Sustituyendo, la condición de primer orden en $S_t$ es $u'(w_t-S_t)=\beta(1+r_{t+1})\,u'\big((1+r_{t+1})S_t\big)$, que define la función de ahorro $S_t=s(w_t,r_{t+1})$, con $0<\partial s/\partial w<1$ si el consumo de las 2 edades es normal, y $\partial s/\partial r$ de signo ambiguo (sustitución frente a renta).
+\item Con la CRRA, $S_t=w_t/\left[1+\beta^{-1/\theta}(1+r_{t+1})^{(\theta-1)/\theta}\right]$: el ahorro sube con $r$ si $\theta<1$ y baja si $\theta>1$; con $\theta=1$ (logarítmica), $S_t=\beta w_t/(1+\beta)$, \eqref{eq:ahorro-diamond}.
+\end{itemize}
+
+\paragraph{b) El equilibrio}
+
+\begin{itemize}
+\item Mercado de capitales: $K_{t+1}=L_t\,S_t$. Con $k_{t+1}\equiv K_{t+1}/(A_{t+1}L_{t+1})$ y $w_t=A_t\left[f(k_t)-k_tf'(k_t)\right]$:
+  \begin{equation*}
+  k_{t+1}=\frac{s\big(w_t,\ f'(k_{t+1})-\delta\big)}{(1+n)(1+g)\,A_t}.
+  \end{equation*}
+  En general es una ecuación implícita en $k_{t+1}$, y puede tener varias soluciones o ninguna \parencite{GalorRyder1989Existence}. Con utilidad logarítmica, el ahorro no depende de $r_{t+1}$ y, con $f(k)=k^{\alpha}$, $w_t=A_t(1-\alpha)k_t^{\alpha}$, de donde sale \eqref{eq:diamond}.
+\item \emph{Estabilidad}: la pendiente de la ley de movimiento en $k^*$ es $\alpha<1$, y la ley es cóncava con pendiente infinita en el origen: desde cualquier $k_0>0$, $k_t\to k^*$ de forma monótona. \findemo
+\end{itemize}
+
+\paragraph{c) La regla de oro y la ineficiencia dinámica}
+
+\begin{itemize}
+\item Recursos de la economía en $t$: $Y_t+(1-\delta)K_t=L_tC^J_t+L_{t-1}C^V_t+K_{t+1}$. Por unidad de trabajo eficiente y en el estado estacionario, con $c$ el consumo total por unidad de trabajo eficiente:
+  \begin{equation*}
+  c=f(k)+(1-\delta)\,k-(1+n)(1+g)\,k,\qquad\frac{dc}{dk}=0\ \Longleftrightarrow\ f'(k_{\mathrm{oro}})-\delta=(1+n)(1+g)-1.
+  \end{equation*}
+\item Si $k^*>k_{\mathrm{oro}}$, una reducción permanente del capital hasta $k_{\mathrm{oro}}$ en el periodo $t_0$ libera recursos en ese periodo y deja después un consumo de estado estacionario mayor: todas las generaciones pueden ganar. Si $k^*<k_{\mathrm{oro}}$, subir el capital exige que alguna generación consuma menos: no es una mejora de \autor{Pareto}.
+\item Con $\delta=1$, $f'(k^*)=\alpha k^{*\,\alpha-1}=\alpha(1+\beta)(1+n)(1+g)/[\beta(1-\alpha)]$, y la condición $f'(k^*)<(1+n)(1+g)$ equivale a $\alpha(1+\beta)<\beta(1-\alpha)$. \findemo
+\end{itemize}
+
+\paragraph{d) Las pensiones de reparto}
+
+\begin{itemize}
+\item Con una cotización $\tau$ sobre el salario de los jóvenes y una pensión que la reparte entre los viejos, $C^J_t=(1-\tau)w_t-S_t$ y $C^V_{t+1}=(1+r_{t+1})S_t+(1+n)\,\tau\,w_{t+1}$. En el estado estacionario, $w_{t+1}=(1+g)w_t$ por persona, y la cotización rinde $(1+n)(1+g)$ frente a $1+r$ del ahorro \parencite{Aaron1966Social}.
+\item Con utilidad logarítmica,
+  \begin{equation*}
+  S_t=\frac{\beta}{1+\beta}(1-\tau)\,w_t-\frac{1}{1+\beta}\,\frac{(1+n)\,\tau\,w_{t+1}}{1+r_{t+1}}:
+  \end{equation*}
+  el ahorro privado cae por 2 vías, porque la cotización reduce la renta de hoy y la pensión aumenta la de mañana, y con él cae el capital. \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+\begin{itemize}
+\item En la pregunta 7 del examen de julio de 2021 se preguntó cuándo alisa el consumo un consumidor con utilidad de \autor{Samuelson}, tasa de descuento y tipo de interés constantes y mercado de capitales perfecto. La respuesta correcta es la a): el alisamiento del consumo no depende de los valores que tomen $\rho$ y $r$ (\ref{sec:aplicaciones-consumo}).
+\item Más preguntas de este tema en el simulador de test: \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html} \parencite{GutierrezMarcos2026Simulador}.
+\end{itemize}
+
+
+\bibliografia
+\end{document}

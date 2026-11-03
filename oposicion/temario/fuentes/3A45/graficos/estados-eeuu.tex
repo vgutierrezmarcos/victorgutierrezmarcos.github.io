@@ -1,0 +1,56 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Convergencia beta entre los 48 estados contiguos de EE. UU.: renta personal
+% por habitante en 1929 (dólares corrientes, escala log.) frente al
+% crecimiento medio anual 1929-2025 (%, nominal; el deflactor común no cambia
+% la pendiente). BEA, SAINC1, ../datos/convergencia-estados-eeuu.csv
+% (consulta 1/11/2026). Sustituye a image21.png (Barro y Sala-i-Martín, 1992).
+% Recta de MCO (cálculo propio): g = 9,975 - 0,7749 ln y1929 (g en %), es decir,
+% -0,0077 por punto de ln; lambda = -ln(1 - 0,0077·96)/96 = 1,42 % anual;
+% R2 = 0,879.
+% Va en una figuracaja (anotaciones): rótulos sin fondo, sobre el gris.
+% Capas (CRITERIOS §7): ejes → puntos de los estados → recta → códigos y
+% rótulo de la pendiente.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/convergencia-estados-eeuu.csv}\estados
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=9cm, height=6.5cm, xmode=log,
+      xmin=240, xmax=1300, ymin=4.2, ymax=5.85,
+      xtick={250,300,400,500,700,1000}, xticklabels={250,300,400,500,700,1.000},
+      ytick={4.2,4.4,...,5.8},
+      yticklabels={4{,}2,4{,}4,4{,}6,4{,}8,5{,}0,5{,}2,5{,}4,5{,}6,5{,}8},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={renta personal por habitante en 1929 (dólares, escala log.)},
+      ylabel={crecimiento medio anual, 1929-2025 (\%)},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!30}, clip=false,
+      dicapas,
+    ]
+    % 1: ejes (los del axis)
+    % 2: los 48 estados
+    \capa{2}{
+      \addplot[on layer=dicpuntos, only marks, mark=*, mark size=1.9pt, forget plot,
+        mark options={fill=tceemorado!75, draw=tceemorado, line width=0.35pt}]
+        table[x=renta_pc_1929_usd, y=crec_medio_1929_2025_pct] {\estados};
+    }
+    % 3: recta de regresión
+    \capa{3}{
+      \addplot[very thick, tceegris!70!black, domain=262:1180, samples=2, forget plot] {9.975-0.7749*ln(x)};
+    }
+    % 4: códigos de algunos estados y rótulo de la pendiente
+    \capa{4}{
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south east, inner sep=2pt]{(277,5.501)}{MS}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=north, inner sep=3pt]{(319,5.451)}{AL}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south west, inner sep=2pt]{(474,5.249)}{TX}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(994,4.705) (860,4.42)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=north east, inner sep=1pt]{(860,4.42)}{CA}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south, inner sep=3pt]{(1029,4.791)}{CT}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=west, inner sep=3pt]{(1156,4.554)}{NY}
+      \dicrotulo[font=\footnotesize, anchor=north east, align=right, inner sep=0pt]{(1280,5.8)}{pendiente: $-0{,}0077$ por punto de $\ln$\\$\lambda\approx1{,}4$~\% anual; $R^2=0{,}88$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,67 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Convergencia sigma: desviación típica del ln del PIB por habitante
+% (rgdpe/pop, PWT 11.0), paneles equilibrados, 1960-2023.
+% ../datos/sigma-convergencia.csv (consulta 1/11/2026):
+%   mundo (pwt_mundo, 96 países sin petroleros): 0,96 (1960), 1,34 (2000),
+%     1,35 (2005), 1,27 (2023);
+%   OCDE (pwt_ocde, 30 países con datos desde 1960): 0,61 → 0,44;
+%   UE-27 (pwt_ue27, desde 1995): 0,51 (1995), 0,55 (2000) → 0,33;
+%   UE-14 sin Irlanda ni Luxemburgo (pwt_ue12_sin_irl_lux): 0,38 (1960),
+%     0,15 (2005-2007), 0,20 (2023).
+% La UE-14 completa (pwt_ue14) sube desde 2010 solo por Irlanda y
+% Luxemburgo: no se dibuja. Maddison y WDI (en el CSV) son la segunda
+% comprobación.
+% Paleta: mundo gris oscuro; OCDE morado; UE-27 azul; UE-14 sin IRL ni LUX
+% azul claro (misma familia).
+% Capas (CRITERIOS §7): ejes y rejilla → mundo → OCDE → UE-27 y UE-14 →
+% etiquetas.
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/sigma-convergencia.csv}\sigmac
+\colorlet{sigmundo}{tceegris!70!black}
+\colorlet{sigue14}{tceeazul!55}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=9cm, height=7cm,
+      xmin=1958, xmax=2025, ymin=0, ymax=1.5,
+      xtick={1960,1970,...,2020}, ytick={0,0.25,...,1.5},
+      yticklabels={0,\phantom{0}0{,}25,0{,}50,0{,}75,1{,}00,1{,}25,1{,}50},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={desviación típica de $\ln(Y/L)$}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false,
+      dicapas,
+    ]
+    % 1: ejes y rejilla (los del axis)
+    % 2: mundo
+    \capa{2}{
+      \addplot[diclinea=sigmundo, mark=none, forget plot] table[x=anio, y=pwt_mundo] {\sigmac};
+    }
+    % 3: OCDE
+    \capa{3}{
+      \addplot[diclinea=tceemorado, mark=none, forget plot] table[x=anio, y=pwt_ocde] {\sigmac};
+    }
+    % 4: UE-27 (desde 1995) y UE-14 sin Irlanda ni Luxemburgo
+    \capa{4}{
+      \addplot[diclinea=tceeazul, mark=none, forget plot, restrict x to domain=1995:2023]
+        table[x=anio, y=pwt_ue27] {\sigmac};
+      \addplot[diclinea=sigue14, mark=none, forget plot] table[x=anio, y=pwt_ue12_sin_irl_lux] {\sigmac};
+    }
+    % 5: etiquetas al final de cada línea y valores iniciales
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, text=sigmundo, anchor=west, align=left, inner sep=2pt]{(2023.5,1.269)}{mundo (96): 1,27}
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=west, inner sep=2pt]{(2023.5,0.46)}{OCDE (30): 0,44}
+      \dicrotulo[font=\footnotesize, text=tceeazul, anchor=west, inner sep=2pt]{(2023.5,0.32)}{UE-27: 0,33}
+      \dicrotulo[font=\footnotesize, text=sigue14!80!black, anchor=west, align=left, inner sep=2pt]{(2023.5,0.18)}{UE-14 sin IRL\\[-2pt]ni LUX: 0,20}
+      \dicrotulo[font=\scriptsize, text=sigmundo, anchor=south, inner sep=3pt]{(1960,0.955)}{0,96}
+      \dicrotulo[font=\scriptsize, text=sigmundo, anchor=south, inner sep=3pt]{(2000,1.337)}{1,34}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south, inner sep=3pt]{(1960,0.608)}{0,61}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=south, inner sep=3pt]{(2000,0.546)}{0,55}
+      \dicrotulo[font=\scriptsize, text=sigue14!80!black, anchor=north, inner sep=3pt]{(1960,0.383)}{0,38}
+      \dicrotulo[font=\scriptsize, text=sigue14!80!black, anchor=north, inner sep=3pt]{(2006,0.15)}{0,15}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

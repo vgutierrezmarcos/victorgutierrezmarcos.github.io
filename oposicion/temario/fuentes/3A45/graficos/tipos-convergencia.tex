@@ -1,0 +1,58 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Tipos de convergencia: el árbol de la Imagen 1 del Word (del Río Casasola,
+% 2018), rehecho en TikZ: convergencia institucional y económica; dentro de la
+% económica, nominal y real; dentro de la real, beta (absoluta y condicional),
+% sigma y en series temporales. Se añade una caja, «clubes de convergencia»,
+% que el tema trata junto a las series temporales (apartado III.1).
+% La rama real (la del tema) va con fondo morado muy claro; sin colores fuertes.
+% Capas: raíz y ramas → beta, absoluta y condicional → sigma → series
+% temporales y clubes.
+\tikzset{
+  caja/.style={draw=tceemorado, line width=0.6pt, rounded corners=2pt,
+    align=center, font=\footnotesize, inner sep=3pt, minimum height=0.85cm,
+    text width=#1, fill=white},
+  caja/.default=2.1cm,
+  cajareal/.style={caja=#1, fill=tceemorado!8},
+  cajareal/.default=2.1cm,
+  rama/.style={thick, tceemorado!70},
+}
+% \rama{padre}{hijo}: codo en ángulo recto, a media altura entre las 2 cajas
+\newcommand{\rama}[2]{\draw[rama] (#1.south) -- ($(#1.south)!0.5!(#1.south|-#2.north)$) -| (#2.north);}
+\begin{tikzpicture}[tcee]
+  % 1: raíz, institucional y económica, nominal y real
+  \capa{1}{
+    \node[caja] (conv) at (0,0) {\textbf{Convergencia}};
+    \node[caja] (inst) at (-2.2,-1.4) {institucional};
+    \node[caja] (econ) at (2.5,-1.4) {económica};
+    \rama{conv}{inst}
+    \rama{conv}{econ}
+    \node[caja=3.2cm, minimum height=1.25cm] (nom) at (0.6,-2.9) {nominal\\[-1pt]{\scriptsize precios, tipos, déficit y deuda (Maastricht)}};
+    \node[cajareal=3.2cm, minimum height=1.25cm] (real) at (4.4,-2.9) {\textbf{real}\\[-1pt]{\scriptsize renta por habitante,\\[-1pt] productividad}};
+    \rama{econ}{nom}
+    \rama{econ}{real}
+  }
+  % 2: convergencia beta, absoluta y condicional
+  \capa{2}{
+    \node[cajareal] (beta) at (0.7,-4.5) {$\beta$};
+    \rama{real}{beta}
+    \node[cajareal=2.0cm] (abs) at (-0.6,-6.0) {absoluta\\[-1pt]{\scriptsize sin controles}};
+    \node[cajareal=2.0cm] (cond) at (2.0,-6.0) {condicional\\[-1pt]{\scriptsize dados los $\vect{x}_i$}};
+    \rama{beta}{abs}
+    \rama{beta}{cond}
+  }
+  % 3: convergencia sigma
+  \capa{3}{
+    \node[cajareal] (sigma) at (3.3,-4.5) {$\sigma$};
+    \rama{real}{sigma}
+  }
+  % 4: series temporales y clubes de convergencia
+  \capa{4}{
+    \node[cajareal] (series) at (5.9,-4.5) {en series temporales};
+    \rama{real}{series}
+    \node[cajareal] (clubes) at (8.5,-4.5) {clubes de convergencia};
+    \rama{real}{clubes}
+  }
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,66 @@
+# Acemoglu, Johnson y Robinson (2001): muestra base de 64 antiguas colonias. ln_mortalidad_colonos = logem4 (log de la mortalidad de los colonos europeos, muertes anuales por 1000); proteccion_expropiacion_1985_95 = avexpr (índice 0-10, PRS); ln_pib_pc_ppa_1995_ajr = logpgp95. Fuente: ficheros de réplica de los autores (maketable4.dta), página de datos de Daron Acemoglu (MIT), https://economics.mit.edu/people/faculty/daron-acemoglu/data-archive (enlace https://www.dropbox.com/s/mntre4yhzothfgq/maketable4.zip?dl=0). Réplica: MCO de ln PIB pc 1995 sobre ln mortalidad, pendiente -0,57 (R2 0,48); primera etapa -0,61; VI 0,94 (tabla 4, col. 1 del artículo). Actualización y segunda comprobación: ln_pib_pc_pwt_2023 y ln_pib_pc_pwt_1995 = ln(rgdpe/pop), Penn World Table 11.0, https://dataverse.nl/api/access/datafile/554105 . Fecha de consulta: 01/11/2026
+codigo,pais,ln_mortalidad_colonos,proteccion_expropiacion_1985_95,ln_pib_pc_ppa_1995_ajr,ln_pib_pc_pwt_2023,ln_pib_pc_pwt_1995
+AGO,Angola,5.635,5.364,7.771,8.814,7.988
+ARG,Argentina,4.233,6.386,9.133,10.22,9.505
+AUS,Australia,2.146,9.318,9.898,11.049,10.495
+BFA,Burkina Faso,5.635,4.455,6.846,7.765,7.033
+BGD,Bangladesh,4.268,5.136,6.877,8.973,7.409
+BHS,Bahamas,4.443,7.5,9.285,10.509,10.205
+BOL,Bolivia (Plurinational State of),4.263,5.636,7.927,9.169,8.088
+BRA,Brazil,4.263,7.909,8.727,9.842,9.224
+CAN,Canada,2.779,9.727,9.986,10.917,10.558
+CHL,Chile,4.233,7.818,9.336,10.217,9.473
+CIV,Côte d'Ivoire,6.504,7.0,7.444,8.698,7.921
+CMR,Cameroon,5.635,6.455,7.501,8.466,8.057
+COG,Congo,5.481,4.682,7.421,8.7,7.394
+COL,Colombia,4.263,7.318,8.81,9.758,9.158
+CRI,Costa Rica,4.358,7.045,8.795,10.144,9.276
+DOM,Dominican Republic,4.868,6.182,8.364,10.039,8.841
+DZA,Algeria,4.359,6.5,8.389,9.601,9.12
+ECU,Ecuador,4.263,6.545,8.47,9.543,8.699
+EGY,Egypt,4.217,6.773,7.952,9.676,8.359
+ETH,Ethiopia,3.258,5.727,6.109,8.007,6.489
+GAB,Gabon,5.635,7.818,8.908,9.88,9.23
+GHA,Ghana,6.504,6.273,7.365,8.805,8.008
+GIN,Guinea,6.18,6.545,7.49,8.199,8.18
+GMB,Gambia,7.293,8.273,7.272,7.864,7.878
+GTM,Guatemala,4.263,5.136,8.294,9.388,8.509
+GUY,Guyana,3.471,5.886,7.905,10.746,8.411
+HKG,China (Hong Kong SAR),2.701,8.136,10.05,11.02,10.515
+HND,Honduras,4.358,5.318,7.687,8.726,8.196
+HTI,Haiti,4.868,3.727,7.147,8.009,7.633
+IDN,Indonesia,5.136,7.591,8.071,9.541,8.532
+IND,India,3.884,8.273,7.326,9.074,7.531
+JAM,Jamaica,4.868,7.091,8.189,9.224,8.776
+KEN,Kenya,4.977,6.045,7.056,8.627,7.915
+LKA,Sri Lanka,4.246,6.045,7.732,9.422,8.454
+MAR,Morocco,4.359,7.091,8.042,9.073,8.64
+MDG,Madagascar,6.284,4.455,6.835,7.343,7.098
+MEX,Mexico,4.263,7.5,8.944,9.959,9.57
+MLI,Mali,7.986,4.0,6.565,7.847,6.899
+MLT,Malta,2.791,7.227,9.427,11.035,9.989
+MYS,Malaysia,2.874,7.955,8.894,10.39,9.554
+NER,Niger,5.991,5.0,6.733,7.527,7.097
+NGA,Nigeria,7.603,5.545,6.813,8.429,6.122
+NIC,Nicaragua,5.096,5.227,7.544,8.882,8.236
+NZL,New Zealand,2.146,9.727,9.756,10.772,10.267
+PAK,Pakistan,3.611,6.045,7.352,8.625,7.955
+PAN,Panama,5.096,5.909,8.836,10.508,9.069
+PER,Peru,4.263,5.773,8.396,9.601,8.622
+PRY,Paraguay,4.358,6.955,8.208,9.619,8.733
+SDN,Sudan,4.48,4.0,7.307,7.789,7.621
+SEN,Senegal,5.104,6.0,7.402,8.271,7.876
+SGP,Singapore,2.874,9.318,10.146,11.633,10.393
+SLE,Sierra Leone,6.18,5.818,6.254,7.917,7.588
+SLV,El Salvador,4.358,5.0,7.948,9.307,8.307
+TGO,Togo,6.504,6.909,7.223,7.873,7.296
+TTO,Trinidad and Tobago,4.443,7.455,8.769,10.224,9.375
+TUN,Tunisia,4.143,6.455,8.483,9.389,9.069
+TZA,U.R. of Tanzania: Mainland,5.635,6.636,6.254,8.152,6.816
+UGA,Uganda,5.635,4.455,6.966,7.95,7.104
+URY,Uruguay,4.263,7.0,9.031,10.237,9.54
+USA,United States,2.708,10.0,10.216,11.221,10.742
+VEN,Venezuela (Bolivarian Republic of),4.358,7.136,9.071,4.492,9.082
+VNM,Viet Nam,4.942,6.409,7.279,9.499,7.624
+ZAF,South Africa,2.741,6.864,8.886,9.463,9.231
+ZAR,,5.481,3.5,6.867,,

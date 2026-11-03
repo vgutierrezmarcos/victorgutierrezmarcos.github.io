@@ -1,0 +1,83 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% PIB por habitante, 1870-2022, dólares internacionales de 2011, escala
+% logarítmica: EE. UU., Reino Unido, Japón, España, Corea del Sur e India.
+% Maddison Project Database 2023 (Bolt y van Zanden), ../datos/pib-pc-largo-plazo-maddison.csv
+% (consulta 1/11/2026). Alemania, China y Argentina están en el CSV pero no se
+% dibujan (6 líneas se leen mejor).
+% Huecos: cada serie empieza donde tiene datos seguidos, sin interpolar
+% (tramos con restrict x to domain: Japón desde 1885, India desde 1884,
+% Corea del Sur 1911-1943 y 1946-2022; no se dibujan los años sueltos de 1870
+% y 1874 ni se une el hueco de 1944-1945).
+% EE. UU. de 4.803 (1870) a 58.487 (2022): (58.487/4.803)^(1/152) - 1 = 1,66 %.
+% Paleta del tema: EE. UU. (la frontera) morado y más gruesa; España rojo
+% (dicespana, el de España en todos los gráficos del tema); Corea del Sur
+% dorado; Reino Unido azul; Japón verde; India gris oscuro.
+% Capas (CRITERIOS §7): ejes y rejilla → EE. UU. → Reino Unido y Japón →
+% España → Corea del Sur e India → nombres de los países.
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/pib-pc-largo-plazo-maddison.csv}\maddison
+\colorlet{pibind}{tceegris!70!black}
+\pgfplotsset{
+  serie/.style={thick, mark=none, forget plot},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11.5cm, height=7.5cm,
+      xmin=1866, xmax=2024, ymin=500, ymax=80000, ymode=log,
+      xtick={1870,1890,...,2010}, ytick={500,1000,2000,5000,10000,20000,50000},
+      yticklabels={500,1.000,2.000,5.000,10.000,20.000,50.000},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={dólares de 2011 por habitante (escala log.)},
+      ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false,
+      unbounded coords=jump,
+      dicapas,
+    ]
+    % 1: ejes y rejilla (los del axis)
+    % 2: Estados Unidos, la frontera
+    \capa{2}{
+      \addplot[serie, very thick, tceemorado]
+        table[x=anio, y=pib_pc_usa] {\maddison};
+    }
+    % 3: Reino Unido y Japón
+    \capa{3}{
+      \addplot[serie, tceeazul]
+        table[x=anio, y=pib_pc_gbr] {\maddison};
+      \addplot[serie, tceeverde, restrict x to domain=1885:2022]
+        table[x=anio, y=pib_pc_jpn] {\maddison};
+    }
+    % 4: España
+    \capa{4}{
+      \addplot[serie, dicespana]
+        table[x=anio, y=pib_pc_esp] {\maddison};
+    }
+    % 5: Corea del Sur e India
+    \capa{5}{
+      \addplot[serie, tceedorado, restrict x to domain=1911:1943]
+        table[x=anio, y=pib_pc_kor] {\maddison};
+      \addplot[serie, tceedorado, restrict x to domain=1946:2022]
+        table[x=anio, y=pib_pc_kor] {\maddison};
+      \addplot[serie, pibind, restrict x to domain=1884:2022]
+        table[x=anio, y=pib_pc_ind] {\maddison};
+    }
+    % 6: nombres de los países al final de cada línea (los 4 que acaban
+    % entre 34.000 y 41.000 dólares, separados con una línea guía fina)
+    \capa{6}{
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceemorado, inner sep=2pt]{(2022.5,58487)}{EE.\,UU.}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceedorado] coordinates {(2022.5,41321) (2025,47500)};
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceedorado, inner sep=2pt]{(2025,47500)}{Corea del Sur}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceeazul] coordinates {(2022.5,38407) (2025,39000)};
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceeazul, inner sep=2pt]{(2025,39000)}{Reino Unido}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceeverde] coordinates {(2022.5,38269) (2025,32000)};
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceeverde, inner sep=2pt]{(2025,32000)}{Japón}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, dicespana] coordinates {(2022.5,34123) (2025,26200)};
+      \dicrotulo[font=\footnotesize, anchor=west, text=dicespana, inner sep=2pt]{(2025,26200)}{España}
+      \dicrotulo[font=\footnotesize, anchor=west, text=pibind, inner sep=2pt]{(2022.5,7766)}{India}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

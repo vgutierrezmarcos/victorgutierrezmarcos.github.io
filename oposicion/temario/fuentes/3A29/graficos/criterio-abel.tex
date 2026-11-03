@@ -1,0 +1,80 @@
+% Criterio de Abel, Mankiw, Summers y Zeckhauser (1989): si las rentas brutas
+% del capital superan a la inversión bruta todos los años, la economía es
+% dinámicamente eficiente. Pequeños múltiplos: España (1960-2025), zona del
+% euro (EA20, 1995-2025) y EE. UU. (1960-2025), en % del PIB.
+% Datos: ../datos/abel-rentas-capital-inversion.csv (AMECO, primavera de 2026):
+%   rentas del capital = 100 - ALCD0 (participación salarial ajustada); es una
+%   aproximación: incluye los impuestos netos sobre la producción;
+%   inversión = formación bruta de capital UITT/UVGD (con existencias).
+% Cifras de control: 2025, España 43,4 frente a 21,4; zona del euro 43,1
+%   frente a 21,9; EE. UU. 45,6 frente a 21,4. Hueco mínimo: España 3,6 puntos
+%   (1974: 35,2 frente a 31,6); EE. UU. 13,9 (1979); zona del euro 19,2 (1995).
+% Paleta del tema: España dicespana, zona del euro dicze, EE. UU. tceedorado
+% (los mismos que r-menos-g).
+% Capas (CRITERIOS §7): sombreado del hueco → ejes → rentas → inversión →
+% etiquetas de 2025 y leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{fillbetween}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/abel-rentas-capital-inversion.csv}\abel
+\pgfplotsset{
+  panelabel/.style={width=5.6cm,height=6cm,xmin=1958,xmax=2027,ymin=10,ymax=52,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={1960,1980,2000,2020},ytick={10,20,...,50},
+    x tick label style={font=\footnotesize,/pgf/number format/.cd,set thousands separator={}},
+    y tick label style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,unbounded coords=jump,
+    fill between/on layer=dicfondo,dicapas},
+  rentas/.style={diclinea=#1,forget plot},
+  inversion/.style={very thick,#1,densely dashed,forget plot},
+  hueco/.style={fill=#1,fill opacity=0.15,draw=none,forget plot},
+}
+\begin{tikzpicture}[tcee]
+  % ------------------------------------------------------------ España
+  \begin{axis}[panelabel,name=pe,ylabel={\% del PIB},ylabel style={font=\footnotesize}]
+    \addplot[draw=none,forget plot,name path=re] table[x=anio,y=ESP_rentas_capital] {\abel};
+    \addplot[draw=none,forget plot,name path=ie] table[x=anio,y=ESP_inversion_bruta] {\abel};
+    % 1: el hueco entre rentas e inversión
+    \capa{1}{\addplot[hueco=dicespana] fill between[of=re and ie];}
+    % 2: ejes y título del panel
+    \capa{2}{\dicrotulo[font=\footnotesize,anchor=base west,inner sep=0pt]{(1958,54.5)}{España}}
+    % 3: rentas del capital
+    \capa{3}{\addplot[rentas=dicespana] table[x=anio,y=ESP_rentas_capital] {\abel};}
+    % 4: inversión bruta
+    \capa{4}{\addplot[inversion=dicespana] table[x=anio,y=ESP_inversion_bruta] {\abel};}
+    % 5: etiquetas de 2025
+    \capa{5}{\dicrotulo[font=\scriptsize,text=dicespana,anchor=west]{(2025,43.4)}{43,4}
+      \dicrotulo[font=\scriptsize,text=dicespana,anchor=west]{(2025,21.4)}{21,4}}
+  \end{axis}
+  % ------------------------------------------------------------ zona del euro
+  \begin{axis}[panelabel,name=pz,at={($(pe.east)+(1.5cm,0)$)},anchor=west]
+    \addplot[draw=none,forget plot,name path=rz] table[x=anio,y=EA20_rentas_capital] {\abel};
+    \addplot[draw=none,forget plot,name path=iz] table[x=anio,y=EA20_inversion_bruta] {\abel};
+    \capa{1}{\addplot[hueco=dicze] fill between[of=rz and iz];}
+    \capa{2}{\dicrotulo[font=\footnotesize,anchor=base west,inner sep=0pt]{(1958,54.5)}{zona del euro}}
+    \capa{3}{\addplot[rentas=dicze] table[x=anio,y=EA20_rentas_capital] {\abel};}
+    \capa{4}{\addplot[inversion=dicze] table[x=anio,y=EA20_inversion_bruta] {\abel};}
+    \capa{5}{\dicrotulo[font=\scriptsize,text=dicze,anchor=west]{(2025,43.1)}{43,1}
+      \dicrotulo[font=\scriptsize,text=dicze,anchor=west]{(2025,21.9)}{21,9}}
+  \end{axis}
+  % ------------------------------------------------------------ EE. UU.
+  \begin{axis}[panelabel,name=pu,at={($(pz.east)+(1.5cm,0)$)},anchor=west,
+      legend style={at={(-0.95,-0.2)},anchor=north,draw=none,font=\footnotesize,
+        legend columns=2,/tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left]
+    \addplot[draw=none,forget plot,name path=ru] table[x=anio,y=USA_rentas_capital] {\abel};
+    \addplot[draw=none,forget plot,name path=iu] table[x=anio,y=USA_inversion_bruta] {\abel};
+    \capa{1}{\addplot[hueco=tceedorado] fill between[of=ru and iu];}
+    \capa{2}{\dicrotulo[font=\footnotesize,anchor=base west,inner sep=0pt]{(1958,54.5)}{EE. UU.}}
+    \capa{3}{\addplot[rentas=tceedorado] table[x=anio,y=USA_rentas_capital] {\abel};}
+    \capa{4}{\addplot[inversion=tceedorado] table[x=anio,y=USA_inversion_bruta] {\abel};}
+    \capa{5}{\dicrotulo[font=\scriptsize,text=tceedorado!80!black,anchor=west]{(2025,45.6)}{45,6}
+      \dicrotulo[font=\scriptsize,text=tceedorado!80!black,anchor=west]{(2025,21.4)}{21,4}
+      \addlegendimage{very thick,tceegris}\addlegendentry{rentas brutas del capital (100 menos la participación salarial)}
+      \addlegendimage{very thick,tceegris,densely dashed}\addlegendentry{formación bruta de capital}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

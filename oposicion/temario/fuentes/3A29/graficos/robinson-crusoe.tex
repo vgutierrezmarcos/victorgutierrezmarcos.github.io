@@ -1,0 +1,80 @@
+% Robinson Crusoe y la separación de Fisher (Fisher, 1930; Hirshleifer, 1958).
+% Código base: fuentes/3A25/graficos/fisher-capital-humano.tex (mismos ejes,
+% escala, letras, estilos y orden de capas). Elaboración propia.
+%   Un agente que produce y consume un solo bien: C_t + K_{t+1} = F(K_t) + (1-d)K_t,
+%   C_{t+1} = F(K_{t+1}) + (1-d)K_{t+1}. Frontera de posibilidades de producción
+%   intertemporal, estrictamente cóncava (cualitativa): C_{t+1} = 6 - 0,14201 C_t^2,
+%   que corta el eje horizontal en F(K_t) + (1-d)K_t = 6,5 (K_{t+1} = 0).
+%   Inversión bruta i_t = F(K_t) - C_t: nula en C_t = F(K_t) = 5,9 (frontera
+%   en 1,057); a la derecha, desinversión (i_t < 0).
+%   Sin mercado (autarquía): A = (5,2; 2,160), pendiente -1,477; curva de
+%   indiferencia Cobb-Douglas C_t^0,7805 C_{t+1}^0,2195 (impaciente)
+%   tangente en A: C_{t+1} = 2,160 (5,2/C_t)^3,556.
+%   Con mercado, 1 + r = 1,05: P en 2·0,14201·C_t = 1,05: P = (3,697; 4,059);
+%   recta C_{t+1} = 4,059 - 1,05 (C_t - 3,697), cortes 7,563 (W) y 7,941.
+%   Consumo con las mismas preferencias: C_t = 0,7805·7,563 = 5,903,
+%   C_{t+1} = 0,2195·7,563·1,05 = 1,743; U_1: C_{t+1} = 1,743 (5,903/C_t)^3,556
+%   (utilidad 1,508 > 1,456 en A). Pide prestado C_t - C_t^P = 2,206.
+%   Sin endeudamiento (restricción de liquidez), la recta a la derecha de P
+%   no está disponible y el agente impaciente vuelve a A.
+%   Panel (b), el anexo 3 del original (dibujo a mano): la misma frontera; a la
+%   izquierda de F(K_t), i_t > 0; a la derecha, desinversión hasta i_t = -(1-d)K_t.
+%   Coordenadas de C rotuladas C_t^C y C_{t+1}^C (paralelo a C_t^P).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.85,
+    declare function={fpp(\x)=6-0.14201*\x*\x; ia(\x)=2.160*(5.2/\x)^3.556;
+      ic(\x)=1.743*(5.903/\x)^3.556; recta(\x)=4.059-1.05*(\x-3.697);}]
+  % 1: ejes: consumo de hoy y de mañana
+  \capa{1}{\ejes{$C_t$}{$C_{t+1}$}{8.6}{8.6}}
+  \capa{1}{\node[etiqueta,font=\small,anchor=south west] at (-0.6,9.0) {(a) la separación de \textsc{Fisher}};}
+  % 2: frontera de posibilidades de producción, cóncava
+  \capa{2}{\draw[curva1] plot[domain=0:6.5,samples=80] (\x,{fpp(\x)});}
+  \capa{2}{\node[etiqueta,font=\scriptsize,align=center,text=tceemorado] at (2.3,3.0) {frontera de\\posibilidades\\de producción};}
+  \capa{2}{\draw[thin] (6.5,0) -- (6.9,-1.2) node[etiqueta,anchor=north west,inner sep=1pt] {$F(K_t)+(1-\delta)K_t$};}
+  % 3: autarquía: se consume lo que se produce; tangencia en A
+  \capa{3}{\draw[curva4] plot[domain=7.4:3.75,samples=80] (\x,{ia(\x)}) node[etiqueta,above] {$U_0$};}
+  \capa{3}{\node[punto] (A) at (5.2,2.160) {};}
+  \capa{3}{\node[etiqueta,left=2pt] at (A) {$A$};}
+  % 4: con mercado: recta de pendiente -(1+r) tangente en P (máximo valor actual)
+  \capa{4}{\draw[curva2] (0,{recta(0)}) -- (3.697,4.059);}
+  \ifnum\tceepaso<7
+    \capa{4}{\draw[curva2] (3.697,4.059) -- (7.563,0);}
+  \else
+    \draw[very thick,tceegris,dashed] (3.697,4.059) -- (7.563,0);
+  \fi
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (0.15,{recta(0)}) {pendiente $-(1+r)$};}
+  \capa{4}{\node[punto] (P) at (3.697,4.059) {};}
+  \capa{4}{\node[etiqueta,above right] at (P) {$P$};}
+  \capa{4}{\draw[guia] (0,4.059) node[left,text=black] {$C_{t+1}^P$} -| (3.697,0) node[below,text=black] {$C_t^P$};}
+  % 5: el consumo, sobre la recta, según las preferencias: tangencia en C
+  \capa{5}{\draw[curva3] plot[domain=4.05:8.2,samples=80] (\x,{ic(\x)}) node[etiqueta,right] {$U_1$};}
+  \capa{5}{\node[punto] (C) at (5.903,1.743) {};}
+  \capa{5}{\node[etiqueta,above right] at (C) {$C$};}
+  \capa{5}{\draw[guia] (0,1.743) node[left,text=black] {$C_{t+1}^C$} -| (5.903,0) node[below,text=black] {$C_t^C$};}
+  % 6: de P a C pide prestado la diferencia (agente impaciente)
+  \capa{6}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (3.697,-0.75) -- (5.903,-0.75) node[midway,below=4pt,etiqueta,text=tceerojo,font=\footnotesize] {pide prestado $C_t^C-C_t^P$};}
+  % 7: sin endeudamiento: el tramo a la derecha de P desaparece y vuelve a A
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceegris,anchor=west,align=left] at (6.1,2.9) {sin endeudamiento:\\vuelve a $A$};}
+  \capa{7}{\draw[flecha,tceegris] (C) to[bend left=35] (A);}
+  % 8: panel (b), la desinversión: la misma frontera, con la inversión en el eje
+  \capa{8}{\begin{scope}[xshift=10.6cm]
+    \ejes{$C_t$}{$C_{t+1}$}{8.0}{8.6}
+    \draw[curva1] plot[domain=0:6.5,samples=80] (\x,{fpp(\x)});
+    \node[etiqueta,font=\scriptsize,align=center,text=tceemorado] at (2.3,3.0) {frontera de\\posibilidades\\de producción};
+    \draw[very thick,tceerojo] plot[domain=5.9:6.5,samples=20] (\x,{fpp(\x)});
+    \node[punto] at (3.697,4.059) {};
+    \node[etiqueta,above right] at (3.697,4.059) {$P$};
+    \draw[guia] (3.697,4.059) -- (3.697,0) node[below,text=black] {$C_t^P$};
+    \node[punto,fill=tceerojo] at (5.9,1.057) {};
+    \node[etiqueta,font=\footnotesize,text=tceerojo,anchor=south west] at (5.95,1.1) {$i_t=0$};
+    \draw[guia] (5.9,1.057) -- (5.9,0) node[below,text=black] {$F(K_t)$};
+    \draw[decorate,decoration={brace,amplitude=4pt},thick,tceeazul] (3.697,0.12) -- (5.9,0.12) node[midway,above=4pt,etiqueta,text=tceeazul,font=\footnotesize] {$i_t>0$};
+    \draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (5.9,-0.75) -- (6.5,-0.75) node[midway,below=4pt,etiqueta,text=tceerojo,font=\footnotesize,align=center] {desinversión:\\$i_t<0$};
+    \node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (0.1,-0.75) {$C_t+i_t=F(K_t)$};
+    \node[etiqueta,font=\small,anchor=south west] at (-0.6,9.0) {(b) inversión y desinversión};
+  \end{scope}}
+\end{tikzpicture}
+\end{document}

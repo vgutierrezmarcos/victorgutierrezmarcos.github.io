@@ -1,0 +1,127 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Convergencia beta en 2 periodos: PIB por habitante inicial (PPA, dólares de
+% 2021, escala log.) frente al crecimiento medio anual del PIB por habitante
+% (%). PWT 11.0, ../datos/convergencia-pwt.csv (consulta 31/10/2026 y
+% 1/11/2026): filas 111-292 (2000-2023, 182 países) y 293-403 (1960-2000, los
+% 111 países del 1960-2023 del 3.A.43). No repite el gráfico convergencia del
+% 3.A.43 (1960-2023): compara los 2 periodos.
+% Rectas de MCO de crecimiento sobre ln(PIB por habitante inicial), sin los
+% exportadores de petróleo (cálculo propio, 1/11/2026):
+%   1960-2000, todos (103):  g = -0,052 + 0,251 ln y0 (t = 1,35: divergencia)
+%   1960-2000, OCDE (30):    g = 12,334 - 1,033 ln y0 (t = -4,3; lambda 1,3 %)
+%   2000-2023, todos (165):  g = 6,480 - 0,466 ln y0  (t = -4,1; lambda 0,5 %)
+%   2000-2023, OCDE (38):    g = 17,031 - 1,487 ln y0 (t = -5,7; lambda 1,8 %)
+% (2000-2023 con los petroleros, 182 países: -0,515; sin petroleros ni países
+% de menos de un millón de habitantes, 134: -0,343).
+% Los exportadores de petróleo se dibujan con un círculo hueco, fuera de las
+% rectas, para que se vea Nigeria (el ejemplo conductor del tema).
+% Capas (CRITERIOS §7): ejes de los 2 paneles y línea del 0 → puntos no OCDE
+% (y petroleros) → recta de todos → puntos OCDE → recta de la OCDE → códigos
+% y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/convergencia-pwt.csv}\conv
+% Selección con un solo índice: 1000·petrolero + 500·ocde + fila (los
+% petroleros, OCDE o no, con 1000·petrolero + fila)
+\newcommand{\sel}{1000*\thisrow{petrolero}+500*\thisrow{ocde}+\coordindex}
+\pgfplotsset{
+  panelv/.style={
+    width=6.6cm, height=6.6cm, scale only axis=false,
+    xmin=400, xmax=120000, ymin=-6, ymax=10.5,
+    xtick={1000,3000,10000,30000,100000}, xticklabels={1.000,3.000,10.000,30.000,100.000},
+    ytick={-6,-4,...,10},
+    xticklabel style={font=\scriptsize}, yticklabel style={font=\footnotesize},
+    xlabel={PIB por habitante inicial\\(dólares de 2021 en PPA, escala log.)},
+    xlabel style={font=\footnotesize, align=center},
+    axis x line*=bottom, axis y line*=left, tick align=outside,
+    ymajorgrids, grid style={tceegris!25}, clip=false, dicapas},
+  resto/.style={on layer=dicpuntos, only marks, mark=*, mark size=1.4pt, forget plot,
+    mark options={fill=dicotroclaro, draw=dicotro, line width=0.3pt},
+    restrict expr to domain={\sel}{#1}},
+  petrol/.style={on layer=dicpuntos, only marks, mark=o, mark size=1.6pt, forget plot,
+    mark options={draw=dicotro, line width=0.6pt},
+    restrict expr to domain={1000*\thisrow{petrolero}+\coordindex}{#1}},
+  ocde/.style={on layer=dicpuntos, only marks, mark=*, mark size=2pt, forget plot,
+    mark options={fill=tceemorado!70, draw=tceemorado, line width=0.4pt},
+    restrict expr to domain={\sel}{#1}},
+}
+\tikzset{cod/.style={font=\scriptsize, inner sep=2pt}}
+\begin{tikzpicture}[tcee]
+  % ---------- (a) 1960-2000
+  \begin{axis}[xmode=log, panelv, name=pa, ylabel={crecimiento medio anual (\%)},
+      ylabel style={font=\footnotesize}]
+    \capa{1}{
+      \dicraya{(400,0) (120000,0)}
+      \dicrotulo[font=\footnotesize, anchor=south west, inner sep=0pt]{(400,11.2)}{(a) 1960-2000}
+    }
+    \capa{2}{
+      \addplot[resto=293:403] table[x=pib_pc_inicial_ppa_2021usd, y=crec_pib_pc_medio_pct] {\conv};
+      \addplot[petrol=1293:1403] table[x=pib_pc_inicial_ppa_2021usd, y=crec_pib_pc_medio_pct] {\conv};
+    }
+    \capa{3}{
+      \addplot[very thick, dicotro, domain=578:24231, samples=2, forget plot] {-0.052+0.251*ln(x)};
+      \dicrotulo[font=\footnotesize, text=dicotro, anchor=west, inner sep=2pt]{(29000,2.6)}{todos: $+0{,}25$}
+    }
+    \capa{4}{\addplot[ocde=793:903] table[x=pib_pc_inicial_ppa_2021usd, y=crec_pib_pc_medio_pct] {\conv};}
+    \capa{5}{
+      \addplot[very thick, tceemorado, domain=1363:24231, samples=2, forget plot] {12.334-1.033*ln(x)};
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=west, inner sep=2pt]{(29000,1.3)}{OCDE: $-1{,}03$}
+    }
+    \capa{6}{
+      \dicrotulo[cod, text=tceemorado, anchor=south]{(1363,6.7)}{KOR}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, dicotro] coordinates {(2182,-0.47) (1300,-3.0)};
+      \dicrotulo[cod, text=dicotro, anchor=north, inner sep=1pt]{(1300,-3.0)}{NGA}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(6965,3.42) (9000,6.0)};
+      \dicrotulo[cod, text=tceemorado, anchor=south west, inner sep=1pt]{(9000,6.0)}{ESP}
+      \dicrotulo[cod, text=dicotro, anchor=north]{(579,5.36)}{CHN}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(21010,2.41) (40000,4.2)};
+      \dicrotulo[cod, text=tceemorado, anchor=south west, inner sep=1pt]{(40000,4.2)}{USA}
+    }
+  \end{axis}
+  % ---------- (b) 2000-2023
+  \begin{axis}[xmode=log, panelv, name=pb, at={($(pa.east)+(0.9cm,0)$)}, anchor=west,
+      legend style={at={(-0.08,-0.33)}, anchor=north, draw=none,
+        font=\footnotesize, legend columns=5, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left]
+    \capa{1}{
+      \dicraya{(400,0) (120000,0)}
+      \dicrotulo[font=\footnotesize, anchor=south west, inner sep=0pt]{(400,11.2)}{(b) 2000-2023}
+    }
+    \capa{2}{
+      \addplot[resto=111:292] table[x=pib_pc_inicial_ppa_2021usd, y=crec_pib_pc_medio_pct] {\conv};
+      \addplot[petrol=1111:1292] table[x=pib_pc_inicial_ppa_2021usd, y=crec_pib_pc_medio_pct] {\conv};
+    }
+    \capa{3}{
+      \addplot[very thick, dicotro, domain=553:96154, samples=2, forget plot] {6.480-0.466*ln(x)};
+      \dicrotulo[font=\footnotesize, text=dicotro, anchor=west, inner sep=2pt]{(125000,1.4)}{todos: $-0{,}47$}
+    }
+    \capa{4}{\addplot[ocde=611:792] table[x=pib_pc_inicial_ppa_2021usd, y=crec_pib_pc_medio_pct] {\conv};}
+    \capa{5}{
+      \addplot[very thick, tceemorado, domain=8694:84406, samples=2, forget plot] {17.031-1.487*ln(x)};
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=west, inner sep=2pt]{(125000,0.1)}{OCDE: $-1{,}49$}
+    }
+    \capa{6}{
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(27932,3.08) (25000,6.0)};
+      \dicrotulo[cod, text=tceemorado, anchor=south, inner sep=1pt]{(25000,6.0)}{KOR}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, dicotro] coordinates {(784,2.31) (650,-2.6)};
+      \dicrotulo[cod, text=dicotro, anchor=north, inner sep=1pt]{(650,-2.6)}{NGA}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(32326,0.83) (22000,-3.0)};
+      \dicrotulo[cod, text=tceemorado, anchor=north, inner sep=1pt]{(22000,-3.0)}{ESP}
+      \dicrotulo[cod, text=dicotro, anchor=south]{(4714,7.44)}{CHN}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(55175,1.2) (75000,3.0)};
+      \dicrotulo[cod, text=tceemorado, anchor=south, inner sep=1pt]{(75000,3.0)}{USA}
+      \addlegendimage{only marks, mark=*, mark size=2pt, mark options={fill=tceemorado!70, draw=tceemorado}}
+      \addlegendentry{OCDE}
+      \addlegendimage{only marks, mark=*, mark size=1.4pt, mark options={fill=dicotroclaro, draw=dicotro}}
+      \addlegendentry{resto}
+      \addlegendimage{only marks, mark=o, mark size=1.6pt, mark options={draw=dicotro, line width=0.6pt}}
+      \addlegendentry{petroleros (fuera de las rectas)}
+      \addlegendimage{very thick, dicotro}
+      \addlegendentry{recta de todos}
+      \addlegendimage{very thick, tceemorado}
+      \addlegendentry{recta de la OCDE}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

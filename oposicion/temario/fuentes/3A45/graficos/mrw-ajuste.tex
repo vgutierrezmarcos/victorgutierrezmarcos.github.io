@@ -1,0 +1,85 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Renta por ocupado observada en 2023 frente a la predicha por la regresión de
+% Mankiw, Romer y Weil (1992), con datos actuales. PWT 11.0,
+% ../datos/inversion-renta-mrw.csv (consulta 31/10/2026): filas 0-89 (periodo
+% 1960-2023), sin petroleros y con al menos un millón de habitantes: 78 países.
+% Regresiones por MCO, restringidas como en MRW (cálculo propio, 1/11/2026),
+% con s_K = tasa_inversion_media_pct/100, n = crec_empleo_medio_pct/100,
+% g + delta = 0,05 y h = indice_capital_humano_final:
+%  (a) Solow:    ln y = 8,7144 + 1,7649 [ln s_K - ln(n+0,05)]
+%                R2 ajustado 0,544; alfa implícita 1,7649/2,7649 = 0,64
+%  (b) ampliado: ln y = 7,3550 + 0,7332 [ln s_K - ln(n+0,05)] + 2,4370 ln h
+%                R2 ajustado 0,763
+% (sin restringir: 0,551 y 0,766). Coinciden con el 3.A.43 y con el texto.
+% La renta predicha se calcula aquí con esas fórmulas (x expr).
+% (a) en gris claro y pequeños; (b) en morado. Recta de 45° discontinua: sobre
+% ella, el modelo acierta. Nigeria no está en la muestra (petrolera): se
+% rotulan ESP, USA, KOR, CHN, IND y NER.
+% Capas (CRITERIOS §7): ejes y recta de 45° → Solow → ampliado → códigos y
+% leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/inversion-renta-mrw.csv}\mrw
+\pgfplotsset{
+  muestra/.style={restrict expr to domain={1000*\thisrow{petrolero}+1000*less(\thisrow{poblacion_final_mill},1)+\coordindex}{0:89}},
+}
+\newcommand{\lnsn}{(ln(\thisrow{tasa_inversion_media_pct}/100)-ln(\thisrow{crec_empleo_medio_pct}/100+0.05))}
+\colorlet{mrwsolow}{tceegris!55}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=8.6cm, height=8.6cm, scale only axis, xmode=log, ymode=log,
+      xmin=2000, xmax=300000, ymin=2000, ymax=300000,
+      xtick={3000,10000,30000,100000,300000}, xticklabels={3.000,10.000,30.000,100.000,300.000},
+      ytick={3000,10000,30000,100000,300000}, yticklabels={3.000,10.000,30.000,100.000,300.000},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={renta por ocupado predicha (dólares de 2021 en PPA, escala log.)},
+      ylabel={renta por ocupado observada en 2023 (escala log.)},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      grid=major, grid style={tceegris!20}, clip=false,
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none,
+        font=\footnotesize, cells={anchor=west}},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: ejes y recta de 45°
+    \capa{1}{
+      \dicraya[dicumbral, thick]{(2000,2000) (300000,300000)}
+      \dicrotulo[font=\scriptsize, text=dicreferencia, anchor=south west, inner sep=1pt]{(300000,300000)}{$45^\circ$}
+    }
+    % 2: predicción del modelo de Solow
+    \capa{2}{
+      \addplot[only marks, mark=*, mark size=1.5pt, muestra, forget plot,
+        mark options={fill=mrwsolow, draw=tceegris!80, line width=0.3pt}]
+        table[x expr={exp(8.71442441+1.76490987*\lnsn)}, y=pib_por_ocupado_final_ppa_2021usd] {\mrw};
+    }
+    % 3: predicción del modelo ampliado con capital humano
+    \capa{3}{
+      \addplot[only marks, mark=*, mark size=2.1pt, muestra, forget plot,
+        mark options={fill=tceemorado!80, draw=tceemorado, line width=0.35pt}]
+        table[x expr={exp(7.35495493+0.733188*\lnsn+2.43697893*ln(\thisrow{indice_capital_humano_final}))},
+              y=pib_por_ocupado_final_ppa_2021usd] {\mrw};
+    }
+    % 4: códigos (sobre los puntos del modelo ampliado) y leyenda
+    \capa{4}{
+      % (en la nube de los países ricos, con una línea guía hasta el punto)
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(109767,149427) (64000,203000)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=east, inner sep=1.5pt]{(64000,205000)}{USA}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(71519,104827) (47000,147000)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=east, inner sep=1.5pt]{(47000,149000)}{ESP}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(127491,102405) (178000,82000)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=west, inner sep=1.5pt]{(178000,81000)}{KOR}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=west, inner sep=3pt]{(62239,41185)}{CHN}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=north west, inner sep=2pt]{(25151,19206)}{IND}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=east, inner sep=3pt]{(4720,4866)}{NER}
+      \addlegendimage{only marks, mark=*, mark size=1.5pt, mark options={fill=mrwsolow, draw=tceegris!80}}
+      \addlegendentry{Solow ($\bar R^2=0{,}54$)}
+      \addlegendimage{only marks, mark=*, mark size=2.1pt, mark options={fill=tceemorado!80, draw=tceemorado}}
+      \addlegendentry{con capital humano ($\bar R^2=0{,}76$)}
+      \addlegendimage{dicumbral, thick}
+      \addlegendentry{$45^\circ$: predicha $=$ observada}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,93 @@
+% Envejecimiento y pensiones, España y la UE, en 2 paneles.
+% (a) Tasa de dependencia de mayores (65+/15-64, %): observada 1960-2025
+%   (Eurostat demo_pjanind; la UE-27 desde 2001) y proyección EUROPOP2025,
+%   escenario base, 2025-2100 (Eurostat proj_25ndbi). No se mezcla con la
+%   proyección del INE (otras hipótesis de migración; 51,8 % en 2050 con
+%   65+/16-64): va en el texto.
+%   España: 12,7 (1960), 31,2 (2025), 54,7 (2050), 67,4 (2100);
+%   UE-27: 34,5 (2025), 50,2 (2050), 61,9 (2100).
+% (b) Gasto público bruto en pensiones (% del PIB), escenario base del 2024
+%   Ageing Report, 2022-2070: España 13,1 (2022), máximo 17,3 (2050-2052),
+%   16,7 (2070); zona del euro 11,9 (2022) y 12,5 (2070); UE 11,4 y 11,8.
+% Datos: ../datos/dependencia-pensiones-espana-ue.csv.
+% Paleta del tema: España dicespana; zona del euro dicze; UE-27 dicopf (azul
+% medio, de la familia de la zona del euro). Observado continuo, proyección
+% discontinua.
+% Capas (CRITERIOS §7): ejes de los 2 paneles → línea de 2025 → series
+% observadas → proyecciones EUROPOP2025 → pensiones (b) → etiquetas y leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/dependencia-pensiones-espana-ue.csv}\dem
+\pgfplotsset{
+  paneldem/.style={width=7.4cm,height=6.4cm,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    x tick label style={font=\footnotesize,/pgf/number format/.cd,set thousands separator={}},
+    y tick label style={font=\footnotesize},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,unbounded coords=jump,dicapas},
+  proy/.style={diclinea=#1,densely dashed,forget plot},
+  obs/.style={diclinea=#1,forget plot},
+}
+\tikzset{cifra/.style={font=\scriptsize,text=#1,inner sep=2pt}}
+\begin{tikzpicture}[tcee]
+  % ---------------------------------------------- (a) tasa de dependencia
+  \begin{axis}[paneldem,name=pa,xmin=1960,xmax=2100,ymin=0,ymax=75,
+      xtick={1960,1980,...,2100},ytick={0,10,...,70},
+      ylabel={65 años o más / 15-64 años (\%)}]
+    % 1: ejes y título
+    \capa{1}{\dicrotulo[font=\footnotesize,anchor=base west,inner sep=0pt]{(1960,79)}{(a) Tasa de dependencia de mayores}}
+    % 2: desde 2025, proyección
+    \capa{2}{\dicraya[dicumbral]{(2025,0) (2025,75)}
+      \dicrotulo[font=\scriptsize,text=dicreferencia,anchor=north west,inner sep=2pt]{(2025,75)}{proyección}}
+    % 3: observado
+    \capa{3}{\addplot[obs=dicespana] table[x=anio,y=dep_es_eurostat] {\dem};
+      \addplot[obs=dicopf] table[x=anio,y=dep_ue27_eurostat] {\dem};}
+    % 4: proyección EUROPOP2025
+    \capa{4}{\addplot[proy=dicespana] table[x=anio,y=dep_es_europop2025] {\dem};
+      \addplot[proy=dicopf] table[x=anio,y=dep_ue27_europop2025] {\dem};}
+    % 6: cifras
+    \capa{6}{
+      \addplot[on layer=dicpuntos,only marks,mark=*,mark size=1.5pt,dicespana,forget plot]
+        coordinates {(1960,12.7) (2025,31.2) (2050,54.7) (2100,67.4)};
+      \dicrotulo[cifra=dicespana,anchor=south]{(1960,12.7)}{12,7}
+      \dicrotulo[cifra=dicespana,anchor=north west]{(2025,31.2)}{31,2}
+      \dicrotulo[cifra=dicespana,anchor=south east]{(2050,54.7)}{54,7}
+      \dicrotulo[cifra=dicespana,anchor=west]{(2100,67.4)}{67,4}
+      \dicrotulo[cifra=dicopf,anchor=south east]{(2025,34.5)}{34,5}
+      \dicrotulo[cifra=dicopf,anchor=north west]{(2050,50.2)}{50,2}
+      \dicrotulo[cifra=dicopf,anchor=west]{(2100,61.9)}{61,9}
+    }
+  \end{axis}
+  % ---------------------------------------------- (b) gasto en pensiones
+  \begin{axis}[paneldem,name=pb,at={($(pa.east)+(1.3cm,0)$)},anchor=west,
+      xmin=2022,xmax=2070,ymin=10,ymax=18.5,
+      xtick={2022,2030,2040,2050,2060,2070},ytick={10,11,...,18},
+      ylabel={\% del PIB},
+      legend style={at={(-0.43,-0.2)},anchor=north,draw=none,font=\footnotesize,
+        legend columns=5,/tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left]
+    \capa{1}{\dicrotulo[font=\footnotesize,anchor=base west,inner sep=0pt]{(2022,18.95)}{(b) Gasto público en pensiones, \emph{Ageing Report} 2024}}
+    % 5: gasto en pensiones proyectado
+    \capa{5}{\addplot[obs=dicespana] table[x=anio,y=pens_es_ar2024] {\dem};
+      \addplot[obs=dicze] table[x=anio,y=pens_ea_ar2024] {\dem};
+      \addplot[obs=dicopf] table[x=anio,y=pens_ue_ar2024] {\dem};}
+    % 6: cifras y leyenda común
+    \capa{6}{
+      \addplot[on layer=dicpuntos,only marks,mark=*,mark size=1.5pt,dicespana,forget plot]
+        coordinates {(2022,13.09) (2051,17.29) (2070,16.70)};
+      \dicrotulo[cifra=dicespana,anchor=north west]{(2022,13.09)}{13,1}
+      \dicrotulo[cifra=dicespana,anchor=south]{(2051,17.29)}{17,3}
+      \dicrotulo[cifra=dicespana,anchor=west]{(2070,16.70)}{16,7}
+      \dicrotulo[cifra=dicze,anchor=south west]{(2070,12.53)}{12,5}
+      \dicrotulo[cifra=dicopf,anchor=north west]{(2070,11.84)}{11,8}
+      \addlegendimage{diclinea=dicespana}\addlegendentry{España}
+      \addlegendimage{diclinea=dicze}\addlegendentry{zona del euro}
+      \addlegendimage{diclinea=dicopf}\addlegendentry{UE-27}
+      \addlegendimage{very thick,tceegris}\addlegendentry{(a) observado}
+      \addlegendimage{very thick,tceegris,densely dashed}\addlegendentry{(a) proyección EUROPOP2025}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,68 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Convergencia beta y sigma con 2 economías, una rica (morado) y una pobre
+% (dorado): ln(Y/L) frente al tiempo. Sustituye a las imágenes 15-17 del Word.
+% (a) beta y sigma: la pobre crece más deprisa y se acerca hasta ir en
+%     paralelo: rica 1,6 + 0,35 t; pobre = rica - 0,4 - 0,8 e^(-0,9 t)
+%     (distancia de 1,20 en t = 0 a 0,44 en T = 3,3).
+% (b) ni beta ni sigma: la rica crece más y las sendas se separan:
+%     rica 1,6 + 0,4 t; pobre 0,6 + 0,15 t (distancia de 1,00 a 1,83).
+% (c) beta sin sigma: la pobre crece tanto que adelanta a la rica (se cruzan en
+%     t = 1,45) y la distancia final es mayor que la inicial: rica 1,7 + 0,15 t;
+%     pobre 0,9 + 0,7 t (distancia de 0,80 en t = 0 a 1,02 en T = 3,3).
+% Las flechas grises dobles marcan la distancia en 0 y en T (la sigma).
+% Capas: ejes de los 3 paneles → panel (a) → panel (b) → panel (c) → rótulos.
+\tikzset{
+  rica/.style={curva1},
+  pobre/.style={curva4},
+  distancia/.style={<->, >={Stealth[length=1.4mm]}, thin, tceegris!80!black},
+}
+\newcommand{\ejespanel}{%
+  \draw[eje] (0,0) -- (4,0) node[below left=2pt and 0pt] {$t$};
+  \draw[eje] (0,0) -- (0,3.6) node[left] {$\ln(Y/L)$};
+  \draw[guia] (3.3,0) node[below] {$T$} -- (3.3,3.5);
+  \node[below] at (0,0) {$0$};}
+\begin{tikzpicture}[tcee]
+  % 1: ejes de los 3 paneles
+  \capa{1}{
+    \begin{scope}[xshift=0cm]\ejespanel\end{scope}
+    \begin{scope}[xshift=5.3cm]\ejespanel\end{scope}
+    \begin{scope}[xshift=10.6cm]\ejespanel\end{scope}
+  }
+  % 2: panel (a): la pobre se acerca hasta ir en paralelo
+  \capa{2}{
+    \begin{scope}[xshift=0cm]
+      \draw[rica] plot[domain=0:3.6, samples=2] (\x,{1.6+0.35*\x}) node[etiqueta, right, text=tceemorado] {rica};
+      \draw[pobre] plot[domain=0:3.6, samples=40] (\x,{1.6+0.35*\x-0.4-0.8*exp(-0.9*\x)}) node[etiqueta, right, text=tceedorado, yshift=-3pt] {pobre};
+      \draw[distancia] (0.12,0.52) -- (0.12,1.64);
+      \draw[distancia] (3.3,2.32) -- (3.3,2.75);
+    \end{scope}
+  }
+  % 3: panel (b): la rica crece más; las sendas se separan
+  \capa{3}{
+    \begin{scope}[xshift=5.3cm]
+      \draw[rica] plot[domain=0:3.6, samples=2] (\x,{1.6+0.4*\x}) node[etiqueta, right, text=tceemorado] {rica};
+      \draw[pobre] plot[domain=0:3.6, samples=2] (\x,{0.6+0.15*\x}) node[etiqueta, right, text=tceedorado] {pobre};
+      \draw[distancia] (0.12,0.62) -- (0.12,1.58);
+      \draw[distancia] (3.3,1.12) -- (3.3,2.9);
+    \end{scope}
+  }
+  % 4: panel (c): la pobre adelanta a la rica y acaban más lejos
+  \capa{4}{
+    \begin{scope}[xshift=10.6cm]
+      \draw[rica] plot[domain=0:3.6, samples=2] (\x,{1.7+0.15*\x}) node[etiqueta, right, text=tceemorado] {rica};
+      \draw[pobre] plot[domain=0:3.6, samples=2] (\x,{0.9+0.7*\x}) node[etiqueta, right, text=tceedorado] {pobre};
+      \node[punto, inner sep=1pt] at (1.4545,1.918) {};
+      \draw[distancia] (0.12,0.984) -- (0.12,1.718);
+      \draw[distancia] (3.3,2.195) -- (3.3,3.21);
+    \end{scope}
+  }
+  % 5: rótulos de los paneles
+  \capa{5}{
+    \node[font=\small, anchor=north] at (1.9,-0.6) {(a) $\beta$ y $\sigma$};
+    \node[font=\small, anchor=north] at (7.2,-0.6) {(b) ni $\beta$ ni $\sigma$};
+    \node[font=\small, anchor=north] at (12.5,-0.6) {(c) $\beta$ sin $\sigma$};
+  }
+\end{tikzpicture}
+\end{document}

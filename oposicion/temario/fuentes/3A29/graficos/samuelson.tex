@@ -1,0 +1,37 @@
+% Modelo de Samuelson (1958): economía de intercambio con generaciones
+% solapadas y dinero. Elaboración propia a partir de Samuelson (1958) y
+% Mas-Colell, Whinston y Green (1995, sec. 20.H); sustituye a sus figuras
+% 20.H.1-20.H.3.
+% Dotación e = 1 de joven y 0 de viejo; población que crece a 1 + n = 1,25.
+%   Factibilidad estacionaria: C^J + C^V/(1+n) = e: recta de (1; 0) a (0; 1,25),
+%   pendiente -(1+n).
+%   Autarquía A = (e; 0) = (1; 0): sin dinero no hay con quién intercambiar.
+%   Con u = ln y beta = 0,9: equilibrio monetario (estacionario, el dinero rinde n)
+%   M = (1/(1+beta); beta(1+n)/(1+beta)) = (0,526; 0,592);
+%   curva de indiferencia por M: C^V = 0,592 (0,526/C^J)^(1/0,9), tangente a la
+%   recta en M (pendiente -C^V/(beta C^J) = -1,25).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=4.5,declare function={ci(\x)=0.5921*(0.5263/\x)^(1/0.9);}]
+  % 1: ejes: consumo de joven y de viejo
+  \capa{1}{\ejes{$C^J$}{$C^V$}{1.3}{1.4}}
+  % 2: la dotación: todo de joven (autarquía)
+  \capa{2}{\node[punto] (A) at (1,0) {};}
+  \capa{2}{\node[etiqueta,above right] at (A) {$A$ (autarquía)};}
+  \capa{2}{\node[etiqueta,below=2pt] at (1,0) {$e$};}
+  % 3: lo factible en un estado estacionario: pendiente -(1+n)
+  \capa{3}{\draw[curva2] (0,1.25) -- (1,0);}
+  \capa{3}{\node[etiqueta,left] at (0,1.25) {$(1+n)\,e$};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (0.68,0.56) {pendiente $-(1+n)$};}
+  % 4: el equilibrio monetario: tangencia con la curva de indiferencia
+  \capa{4}{\draw[curva4] plot[domain=0.27:1.1,samples=80] (\x,{ci(\x)}) node[etiqueta,right] {$U_1$};}
+  \capa{4}{\node[punto] (M) at (0.5263,0.5921) {};}
+  \capa{4}{\node[etiqueta,above right] at (M) {$M$};}
+  \capa{4}{\draw[guia] (0,0.5921) node[left,text=black] {$C^V$} -| (0.5263,0) node[below,text=black] {$C^J$};}
+  % 5: el dinero lleva de A a M: los jóvenes venden e - C^J a los viejos
+  \capa{5}{\draw[flecha] (0.96,0.03) to[bend left=28] (0.51,0.56);}
+  \capa{5}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (0.5263,-0.13) -- (1,-0.13) node[midway,below=4pt,etiqueta,text=tceerojo,font=\footnotesize,align=center] {los jóvenes venden $e-C^J$\\a los viejos por dinero};}
+\end{tikzpicture}
+\end{document}

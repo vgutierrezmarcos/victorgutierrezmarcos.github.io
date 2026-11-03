@@ -1,0 +1,51 @@
+% r - g en España, la zona del euro y EE. UU., 1965-2025: tipo de interés real a
+% largo plazo (AMECO ILRV) menos crecimiento del PIB real (variación de OVGD),
+% en medias móviles de 5 años hacia atrás (el dato de 2025 es la media de
+% 2021-2025). Datos: ../datos/r-menos-g-espana-ea-eeuu.csv, columnas ESP_mm5,
+% ZE_mm5 (EA12 hasta 2001 enlazada con EA20 desde 2002) y USA_mm5 (cálculo
+% propio, 01/11/2026). AMECO, previsión de primavera de 2026.
+% Cifras de control (media móvil): España 2,4 (1985), -3,5 (2007), 6,4 (2013),
+%   -5,7 (2025); zona del euro 3,8 (1996), 2,9 (2012), -4,1 (2025); EE. UU.
+%   -3,5 (1981), 3,2 (1986), -1,4 (2006), -4,0 (2025).
+% Paleta del tema: España dicespana, zona del euro dicze, EE. UU. tceedorado
+% (los mismos que criterio-abel).
+% Capas (CRITERIOS §7): ejes y rejilla → r = g → España → zona del euro →
+% EE. UU. → etiquetas de las etapas y leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/r-menos-g-espana-ea-eeuu.csv}\rg
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=13cm,height=7.4cm,xmin=1963,xmax=2027,ymin=-7,ymax=8,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={1965,1975,...,2025},ytick={-6,-4,...,8},
+    x tick label style={/pgf/number format/.cd,set thousands separator={}},
+    ylabel={$r-g$ (puntos porcentuales, media móvil de 5 años)},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    legend style={at={(0.02,0.98)},anchor=north west,draw=none,font=\footnotesize},
+    legend cell align=left,unbounded coords=jump,dicapas]
+  % 1: ejes y rejilla (los dibuja el axis)
+  % 2: la línea r = g: por debajo, la economía crece más deprisa que el tipo de interés
+  \capa{2}{\dicraya[thick]{(1963,0) (2027,0)}
+    \dicrotulo[font=\footnotesize,anchor=south east,inner sep=2pt]{(2027,0)}{$r=g$}}
+  % 3: España
+  \capa{3}{\addplot[diclinea=dicespana,forget plot] table[x=anio,y=ESP_mm5] {\rg};}
+  % 4: zona del euro
+  \capa{4}{\addplot[diclinea=dicze,forget plot] table[x=anio,y=ZE_mm5] {\rg};}
+  % 5: Estados Unidos
+  \capa{5}{\addplot[diclinea=tceedorado,forget plot] table[x=anio,y=USA_mm5] {\rg};}
+  % 6: etapas y leyenda
+  \capa{6}{
+    \dicrotulo[font=\footnotesize,align=center]{(1990,5.4)}{años 80-90:\\$r>g$}
+    \dicrotulo[font=\footnotesize,align=center]{(2003.5,-5.2)}{2000-2007:\\$r<g$}
+    \dicrotulo[font=\footnotesize,align=center,text=dicespana]{(2008.5,7.1)}{crisis de la deuda:\\$r>g$ en España}
+    \dicrotulo[font=\footnotesize,align=center]{(2019.6,-5.2)}{2022-2025:\\$r<g$}
+    \addlegendimage{diclinea=dicespana}\addlegendentry{España}
+    \addlegendimage{diclinea=dicze}\addlegendentry{zona del euro}
+    \addlegendimage{diclinea=tceedorado}\addlegendentry{EE. UU.}
+  }
+\end{axis}
+\end{tikzpicture}
+\end{document}

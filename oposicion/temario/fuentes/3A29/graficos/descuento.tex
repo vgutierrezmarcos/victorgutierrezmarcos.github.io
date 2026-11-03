@@ -1,0 +1,37 @@
+% Funciones de descuento de Angeletos, Laibson, Repetto, Tobacman y Weinberg
+% (2001, JEP 15(3), fig. 1), con sus parámetros (t en años):
+%   exponencial 0,939^t;
+%   hiperbólica generalizada (Loewenstein y Prelec, 1992) (1 + 4t)^(-1/4);
+%   cuasihiperbólica 1 en t = 0 y 0,7 · 0,957^t desde t = 1 (salto en t = 0).
+% Valores de control: t = 1: 0,939; 0,669; 0,670. t = 10: 0,533; 0,395; 0,451.
+%   t = 30: 0,151; 0,302; 0,187. La exponencial corta a las otras 2 hacia t = 15-16.
+% Original: imagen 1 del tema (fig. 1 de Angeletos et al., vía MIT OCW 14.13).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=10cm,height=6.2cm,xmin=0,xmax=50,ymin=0,ymax=1.05,
+    axis lines=left,xlabel={años de retraso, $t$},ylabel={factor de descuento},
+    xtick={0,10,...,50},ytick={0,0.2,...,1},
+    yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=1,use comma},
+    ymajorgrids,grid style={tceegris!25},
+    legend style={fill=none,draw=none,font=\footnotesize,at={(0.98,0.98)},anchor=north east},
+    legend cell align=left,dicapas]
+  % 1: ejes y rótulos (los dibuja el axis; siempre visibles)
+  % 2: exponencial (Samuelson): descuenta lo mismo cada año
+  \capa{2}{\addplot[curva1,domain=0:50,samples=101,forget plot] {0.939^x};}
+  % 3: hiperbólica generalizada: cae deprisa al principio y despacio después
+  \capa{3}{\addplot[curva3,domain=0:50,samples=201,forget plot] {(1+4*x)^(-0.25)};}
+  % 4: cuasihiperbólica (Laibson): salto entre t = 0 y t = 1, luego exponencial
+  \capa{4}{\addplot[curva4,domain=1:50,samples=50,forget plot] {0.7*0.957^x};}
+  \capa{4}{\addplot[only marks,mark=*,mark size=1.8pt,tceedorado,forget plot] coordinates {(0,1) (1,0.670)};}
+  % 5: leyenda
+  \capa{5}{
+    \addlegendimage{curva1}\addlegendentry{exponencial, $0{,}939^t$}
+    \addlegendimage{curva3}\addlegendentry{hiperbólica, $(1+4t)^{-1/4}$}
+    \addlegendimage{curva4}\addlegendentry{cuasihiperbólica, $0{,}7\cdot0{,}957^t$ ($t\geq1$)}
+  }
+\end{axis}
+\end{tikzpicture}
+\end{document}

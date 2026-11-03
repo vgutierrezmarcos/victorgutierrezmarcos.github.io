@@ -1,0 +1,98 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Acemoglu, Johnson y Robinson (2001): mortalidad de los colonos europeos
+% (muertes anuales por 1.000, escala log.) frente al PIB por habitante (escala
+% log.) en 64 antiguas colonias. ../datos/ajr-mortalidad-renta.csv (consulta
+% 1/11/2026):
+%   1995: logpgp95 de los ficheros de réplica (dólares de 1995 en PPA);
+%         MCO: ln y = 10,731 - 0,573 ln M (R2 0,48; correlación -0,69).
+%   2023: ln(rgdpe/pop) de la PWT 11.0 (dólares de 2021 en PPA); los niveles
+%         no son comparables con los de 1995 (otra base): se comparan las
+%         pendientes. Sin Venezuela (fila 60: se dibujan las filas 0-59 y 61-62; la 63, el Congo, no tiene dato): la PWT le da 89 dólares por
+%         habitante en 2023 (ln 4,49, frente a 9,08 en 1995), un dato que no
+%         es creíble; sin ella, 62 países, ln y = 12,132 - 0,607 ln M
+%         (correlación -0,73). Con ella: -0,593 y -0,62. Sin dato en 2023: la
+%         R. D. del Congo (ZAR).
+% Paleta: 1995 en morado (puntos llenos); 2023 en morado claro (huecos);
+% rectas: 1995 gris oscuro, 2023 gris oscuro discontinua.
+% Capas (CRITERIOS §7): ejes → puntos de 1995 → recta de 1995 → puntos y recta
+% de 2023 → códigos y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/ajr-mortalidad-renta.csv}\ajr
+\colorlet{ajr23}{tceemorado!45}
+\colorlet{ajrrecta}{tceegris!70!black}
+\pgfplotsset{ajr2023/.style={only marks, mark=o, mark size=1.9pt, forget plot,
+  mark options={draw=ajr23, line width=0.8pt}}}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      xmode=log, ymode=log,
+      width=9cm, height=8cm,
+      xmin=4, xmax=4000, ymin=300, ymax=700000,
+      xtick={10,30,100,300,1000,3000}, xticklabels={10,30,100,300,1.000,3.000},
+      ytick={300,1000,3000,10000,30000,100000}, yticklabels={300,1.000,3.000,10.000,30.000,100.000},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={mortalidad de los colonos (muertes anuales por 1.000, escala log.)},
+      ylabel={PIB por habitante (dólares en PPA, escala log.)},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      grid=major, grid style={tceegris!20}, clip=false,
+      unbounded coords=discard,
+      legend style={at={(0.98,0.98)}, anchor=north east, draw=none,
+        font=\footnotesize, cells={anchor=west}},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: ejes (los del axis)
+    % 2: puntos de 1995 (AJR)
+    \capa{2}{
+      \addplot[on layer=dicpuntos, only marks, mark=*, mark size=1.9pt, forget plot,
+        mark options={fill=tceemorado!80, draw=tceemorado, line width=0.35pt}]
+        table[x expr={exp(\thisrow{ln_mortalidad_colonos})}, y expr={exp(\thisrow{ln_pib_pc_ppa_1995_ajr})}] {\ajr};
+    }
+    % 3: recta de 1995
+    \capa{3}{
+      \addplot[very thick, ajrrecta, domain=8.5:2950, samples=2, forget plot] {exp(10.731)*x^(-0.573)};
+    }
+    % 4: puntos y recta de 2023 (PWT), sin Venezuela
+    \capa{4}{
+      \addplot[on layer=dicpuntos, ajr2023, restrict expr to domain={\coordindex}{0:59}]
+        table[x expr={exp(\thisrow{ln_mortalidad_colonos})}, y expr={exp(\thisrow{ln_pib_pc_pwt_2023})}] {\ajr};
+      \addplot[on layer=dicpuntos, ajr2023, restrict expr to domain={\coordindex}{61:62}]
+        table[x expr={exp(\thisrow{ln_mortalidad_colonos})}, y expr={exp(\thisrow{ln_pib_pc_pwt_2023})}] {\ajr};
+      \addplot[very thick, dashed, ajrrecta, domain=8.5:2950, samples=2, forget plot] {exp(12.132)*x^(-0.607)};
+    }
+    % 5: códigos (en los puntos de 1995) y leyenda
+    \capa{5}{
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(8.55,19900) (6.6,26500)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south, inner sep=1.5pt]{(6.6,26500)}{AUS}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=east, inner sep=1.5pt]{(8.1,17250)}{NZL}
+      % (los ricos: columna de rótulos a la derecha, por encima de 30.000)
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(15.0,27300) (40,165000)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=west, inner sep=1.5pt]{(40,165000)}{USA}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(17.7,25500) (40,118000)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=west, inner sep=1.5pt]{(40,118000)}{SGP}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(14.9,23170) (40,84000)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=west, inner sep=1.5pt]{(40,84000)}{HKG}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(16.1,21750) (40,60000)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=west, inner sep=1.5pt]{(40,60000)}{CAN}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(68.9,11330) (40,11500)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=east, inner sep=1.5pt]{(40,11500)}{CHL}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(71.0,7660) (40,8000)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=east, inner sep=1.5pt]{(40,8000)}{MEX}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(71.0,6170) (40,4800)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=east, inner sep=1.5pt]{(40,4800)}{BRA}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=north, inner sep=3pt]{(2005,909)}{NGA}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=north, inner sep=3pt]{(2940,709)}{MLI}
+      \addlegendimage{legend image code/.code={%
+          \draw[very thick, ajrrecta] (0cm,0cm) -- (0.7cm,0cm);
+          \draw[fill=tceemorado!80, draw=tceemorado, line width=0.35pt] (0.35cm,0cm) circle (1.9pt);}}
+      \addlegendentry{1995 (AJR): pendiente $-0{,}57$; $R^2=0{,}48$}
+      \addlegendimage{legend image code/.code={%
+          \draw[very thick, dashed, ajrrecta] (0cm,0cm) -- (0.7cm,0cm);
+          \draw[fill=white, draw=ajr23, line width=0.8pt] (0.35cm,0cm) circle (1.9pt);}}
+      \addlegendentry{2023 (PWT): pendiente $-0{,}61$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,135 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Contabilidad del crecimiento por periodos (medias anuales, puntos
+% porcentuales) en 3 paneles con el mismo eje vertical: España (filas 0-5 del
+% CSV), zona del euro de 20 (filas 6-9, desde 1996) y EE. UU. (filas 10-15).
+% ../datos/contabilidad-crecimiento-esp-ea-eeuu.csv: AMECO (capital neto,
+% horas, participación salarial ajustada; pesos de Törnqvist) y PWT 11.0
+% (capital humano); la PTF es el residuo (consulta 1/11/2026).
+% crec_pib = capital + horas + capital humano + PTF.
+% Paleta: los factores en 2 familias (capital, dorado; capital humano, dorado
+% claro, emparentado; horas, verde azulado) y la PTF en morado, para que se vea
+% de un vistazo. El crecimiento del PIB, en negro (línea fina y puntos
+% blancos), para no confundirlo con la PTF.
+% Eje vertical de -3 a 4,5 (no de -2 a 4): en España, 2008-2013, las horas y la
+% PTF restan 2,5 puntos, y en 1996-2007 los factores suman 4,1.
+% Los valores del crecimiento del PIB van en una fila en lo alto de cada panel,
+% rotulada «PIB:» a la izquierda del panel (a)
+% (junto a los puntos chocarían con la línea o caerían sobre las barras).
+% Capas (CRITERIOS §7): barras de los factores → barras de la PTF → ejes, cero
+% y títulos → línea del PIB → puntos → rótulos y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/contabilidad-crecimiento-esp-ea-eeuu.csv}\conta
+\colorlet{ccapital}{tceedorado}
+\colorlet{ccaphum}{tceedorado!40}
+\colorlet{choras}{dicempleo}
+\colorlet{cptf}{tceemorado}
+\pgfplotsset{
+  % panel: #3 = número de periodos; las filas de cada panel, en \filas, y
+  % el desplazamiento de x (primera fila), en \desp
+  panelc/.style n args={3}{
+    x=0.75cm, height=7cm, scale only axis=false,
+    ybar stacked, stack negative=separate, bar width=0.42cm,
+    xmin=-0.6, xmax=#3-0.4, ymin=-3, ymax=4.6, ytick={-3,-2,...,4},
+    xtick={0,...,5}, xtick style={draw=none},
+    xticklabel style={font=\scriptsize, align=center},
+    yticklabel style={font=\footnotesize},
+    axis x line*=bottom, axis y line*=left, tick align=outside,
+    ymajorgrids, grid style={tceegris!25}, clip=false,
+    dicapas},
+  barra/.style={on layer=dicbarras, dicbarra=#1, forget plot, filas},
+  pib/.style={stack plots=false, sharp plot, thin, black, forget plot, filas,
+    preaction={draw=white, line width=1.6pt}},
+  pibpuntos/.style={on layer=dicpuntos, stack plots=false, forget plot, filas,
+    only marks, mark=*, mark size=1.8pt,
+    mark options={fill=white, draw=black, line width=0.8pt, solid}},
+  filas/.style={restrict expr to domain={\coordindex}{\filas}},
+}
+\tikzset{rotc/.style={font=\scriptsize, inner sep=1.5pt}}
+\newcommand{\barras}{%
+  \capa{1}{
+    \addplot[barra=ccapital] table[x expr=\coordindex-\desp, y=contrib_capital_pp] {\conta};
+    \addplot[barra=choras] table[x expr=\coordindex-\desp, y=contrib_horas_pp] {\conta};
+    \addplot[barra=ccaphum] table[x expr=\coordindex-\desp, y=contrib_capital_humano_pp] {\conta};
+  }
+  \capa{2}{
+    \addplot[barra=cptf] table[x expr=\coordindex-\desp, y=contrib_ptf_pp] {\conta};
+  }}
+\newcommand{\pibpanel}{%
+  \capa{4}{\addplot[pib] table[x expr=\coordindex-\desp, y=crec_pib_pct] {\conta};}
+  \capa{5}{\addplot[pibpuntos] table[x expr=\coordindex-\desp, y=crec_pib_pct] {\conta};}}
+\begin{tikzpicture}[tcee]
+  % ---------- (a) España
+  \def\filas{0:5}\def\desp{0}
+  \begin{axis}[panelc={0}{5}{6}, name=pa,
+      xticklabels={1971-\\1985,1986-\\1995,1996-\\2007,2008-\\2013,2014-\\2019,2020-\\2025},
+      ylabel={puntos porcentuales}, ylabel style={font=\footnotesize}]
+    \barras
+    \capa{3}{
+      \dicraya{(-0.6,0) (5.6,0)}
+      \dicrotulo[font=\footnotesize, anchor=south west, inner sep=0pt]{(-0.6,4.9)}{(a) España}
+    }
+    \pibpanel
+    \capa{6}{
+      \dicrotulo[rotc, anchor=base east, inner sep=3pt]{(-0.6,4.3)}{PIB:}
+      \dicrotulo[rotc, anchor=base]{(0,4.3)}{2,8}
+      \dicrotulo[rotc, anchor=base]{(1,4.3)}{3,0}
+      \dicrotulo[rotc, anchor=base]{(2,4.3)}{3,6}
+      \dicrotulo[rotc, anchor=base]{(3,4.3)}{$-1{,}3$}
+      \dicrotulo[rotc, anchor=base]{(4,4.3)}{2,6}
+      \dicrotulo[rotc, anchor=base]{(5,4.3)}{1,6}
+      \dicrotulo[rotc, anchor=north, text=cptf, align=center]{(2,-0.51)}{PTF\\$-0{,}5$}
+    }
+  \end{axis}
+  % ---------- (b) zona del euro (desde 1996)
+  \def\filas{6:9}\def\desp{6}
+  \begin{axis}[panelc={6}{9}{4}, name=pb, at={($(pa.south east)+(0.45cm,0)$)}, anchor=south west,
+      xticklabels={1996-\\2007,2008-\\2013,2014-\\2019,2020-\\2024},
+      yticklabels={},
+      legend style={at={(0.5,-0.2)}, anchor=north, draw=none,
+        font=\footnotesize, legend columns=5, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left]
+    \barras
+    \capa{3}{
+      \dicraya{(-0.6,0) (3.6,0)}
+      \dicrotulo[font=\footnotesize, anchor=south west, inner sep=0pt]{(-0.6,4.9)}{(b) Zona del euro}
+    }
+    \pibpanel
+    \capa{6}{
+      \dicrotulo[rotc, anchor=base]{(0,4.3)}{2,3}
+      \dicrotulo[rotc, anchor=base]{(1,4.3)}{$-0{,}3$}
+      \dicrotulo[rotc, anchor=base]{(2,4.3)}{1,9}
+      \dicrotulo[rotc, anchor=base]{(3,4.3)}{1,1}
+      \addlegendimage{area legend, dicbarra=ccapital}\addlegendentry{capital}
+      \addlegendimage{area legend, dicbarra=choras}\addlegendentry{horas trabajadas}
+      \addlegendimage{area legend, dicbarra=ccaphum}\addlegendentry{capital humano}
+      \addlegendimage{area legend, dicbarra=cptf}\addlegendentry{PTF}
+      \addlegendimage{legend image code/.code={%
+          \draw[thin, black] (0cm,0cm) -- (0.6cm,0cm);
+          \draw[fill=white, draw=black, line width=0.8pt] (0.3cm,0cm) circle (1.8pt);}}
+      \addlegendentry{crecimiento del PIB (\%)}
+    }
+  \end{axis}
+  % ---------- (c) Estados Unidos
+  \def\filas{10:15}\def\desp{10}
+  \begin{axis}[panelc={10}{15}{6}, name=pc, at={($(pb.south east)+(0.45cm,0)$)}, anchor=south west,
+      xticklabels={1971-\\1985,1986-\\1995,1996-\\2007,2008-\\2013,2014-\\2019,2020-\\2025},
+      yticklabels={}]
+    \barras
+    \capa{3}{
+      \dicraya{(-0.6,0) (5.6,0)}
+      \dicrotulo[font=\footnotesize, anchor=south west, inner sep=0pt]{(-0.6,4.9)}{(c) Estados Unidos}
+    }
+    \pibpanel
+    \capa{6}{
+      \dicrotulo[rotc, anchor=base]{(0,4.3)}{3,2}
+      \dicrotulo[rotc, anchor=base]{(1,4.3)}{2,9}
+      \dicrotulo[rotc, anchor=base]{(2,4.3)}{3,2}
+      \dicrotulo[rotc, anchor=base]{(3,4.3)}{1,0}
+      \dicrotulo[rotc, anchor=base]{(4,4.3)}{2,4}
+      \dicrotulo[rotc, anchor=base]{(5,4.3)}{2,4}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

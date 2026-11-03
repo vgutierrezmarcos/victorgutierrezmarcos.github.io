@@ -1,0 +1,89 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% PTF y producción por trabajador en 2023, relativas a EE. UU. (escala
+% logarítmica), 143 países: el equivalente actual de la figura I de Hall y
+% Jones (1999). Descomposición y = (K/Y)^(a/(1-a)) · h · A con a = 1/3.
+% PWT 11.0, ../datos/contabilidad-desarrollo-pwt.csv (consulta 1/11/2026).
+% Correlación de ln(ptf_rel_eeuu) y ln(y_rel_eeuu): 0,929 (cálculo propio;
+% Hall y Jones, 1988: 0,89).
+% OCDE (ocde=1, 38 países) en morado; el resto en gris; exportadores de
+% petróleo (petrolero=1, 14) con símbolo hueco. Corea del Sur y Nigeria (el
+% ejemplo conductor del tema) más grandes. Recta de 45°: si toda la diferencia
+% de renta fuera de PTF, los puntos estarían sobre ella.
+% Selección de filas con un solo índice: 1000·ocde + 2000·petrolero + fila
+% (0-142 resto, 1000-1142 OCDE, 2000-2142 resto petrolero, 3000-3142 OCDE petrolero).
+% Capas (CRITERIOS §7): ejes y recta de 45° → resto → OCDE → Corea del Sur y
+% Nigeria → códigos, correlación y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/contabilidad-desarrollo-pwt.csv}\hj
+\colorlet{hjresto}{tceegris!55}
+\pgfplotsset{
+  grupo/.style={restrict expr to domain={1000*\thisrow{ocde}+2000*\thisrow{petrolero}+\coordindex}{#1}},
+  lleno/.style 2 args={only marks, mark=*, mark size=1.9pt, forget plot,
+    mark options={fill=#1, draw=#2, line width=0.35pt}},
+  hueco/.style={only marks, mark=o, mark size=2.1pt, forget plot,
+    mark options={draw=#1, line width=0.8pt}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=8.6cm, height=8.6cm, scale only axis, xmode=log, ymode=log,
+      xmin=0.01, xmax=3, ymin=0.01, ymax=3,
+      xtick={0.01,0.03,0.1,0.3,1,3}, xticklabels={0{,}01,0{,}03,0{,}1,0{,}3,1,3},
+      ytick={0.01,0.03,0.1,0.3,1,3}, yticklabels={0{,}01,0{,}03,0{,}1,0{,}3,1,3},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={producción por trabajador, $y/y_{\mathrm{EE.UU.}}$ (escala log.)},
+      ylabel={PTF, $A/A_{\mathrm{EE.UU.}}$ (escala log.)},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      grid=major, grid style={tceegris!20}, clip=false,
+      legend style={at={(0.98,0.03)}, anchor=south east, draw=none,
+        font=\footnotesize, cells={anchor=west}},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: ejes y recta de 45°
+    \capa{1}{
+      \dicraya[dicumbral, thick]{(0.01,0.01) (3,3)}
+      \dicrotulo[font=\scriptsize, text=dicreferencia, anchor=south west, inner sep=1pt]{(3,3)}{$45^\circ$}
+    }
+    % 2: países fuera de la OCDE (huecos, los exportadores de petróleo)
+    \capa{2}{
+      \addplot[lleno={hjresto}{tceegris!80}, grupo=0:142] table[x=y_rel_eeuu, y=ptf_rel_eeuu] {\hj};
+      \addplot[hueco=tceegris, grupo=2000:2142] table[x=y_rel_eeuu, y=ptf_rel_eeuu] {\hj};
+    }
+    % 3: países de la OCDE
+    \capa{3}{
+      \addplot[lleno={tceemorado!80}{tceemorado}, grupo=1000:1142] table[x=y_rel_eeuu, y=ptf_rel_eeuu] {\hj};
+      \addplot[hueco=tceemorado, grupo=3000:3142] table[x=y_rel_eeuu, y=ptf_rel_eeuu] {\hj};
+    }
+    % 4: Corea del Sur y Nigeria, el ejemplo conductor, más grandes
+    \capa{4}{
+      \addplot[on layer=dicpuntos, only marks, mark=*, mark size=3.2pt, forget plot,
+        mark options={fill=tceemorado!80, draw=black, line width=0.6pt}] coordinates {(0.685,0.538)};
+      \addplot[on layer=dicpuntos, only marks, mark=o, mark size=3.4pt, forget plot,
+        mark options={draw=black, line width=1pt}] coordinates {(0.085,0.087)};
+    }
+    % 5: códigos, correlación y leyenda
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, anchor=north west, inner sep=3pt]{(0.685,0.538)}{\textbf{KOR}}
+      \dicrotulo[font=\footnotesize, anchor=north west, inner sep=3pt]{(0.085,0.087)}{\textbf{NGA}}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceemorado] coordinates {(0.702,0.632) (0.43,1.2)};
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south east, inner sep=1pt]{(0.43,1.2)}{ESP}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south east, inner sep=2pt]{(1,1)}{USA}
+      \dicrotulo[font=\scriptsize, text=tceegris!60!black, anchor=north west, inner sep=2pt]{(0.276,0.293)}{CHN}
+      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceegris!60!black] coordinates {(0.129,0.193) (0.33,0.19)};
+      \dicrotulo[font=\scriptsize, text=tceegris!60!black, anchor=west, inner sep=1.5pt]{(0.33,0.19)}{IND}
+      \dicrotulo[font=\footnotesize, anchor=north west, align=left, inner sep=0pt]{(0.012,2.6)}{correlación de los\\logaritmos: $0{,}93$}
+      \addlegendimage{only marks, mark=*, mark size=1.9pt, mark options={fill=tceemorado!80, draw=tceemorado}}
+      \addlegendentry{OCDE}
+      \addlegendimage{only marks, mark=*, mark size=1.9pt, mark options={fill=hjresto, draw=tceegris!80}}
+      \addlegendentry{resto}
+      \addlegendimage{only marks, mark=o, mark size=2.1pt, mark options={draw=tceegris, line width=0.8pt}}
+      \addlegendentry{exportadores de petróleo}
+      \addlegendimage{dicumbral, thick}
+      \addlegendentry{$45^\circ$: toda la diferencia es PTF}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

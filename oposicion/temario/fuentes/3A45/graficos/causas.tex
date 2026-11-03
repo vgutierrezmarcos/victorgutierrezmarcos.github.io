@@ -1,0 +1,52 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{fit}
+\begin{document}
+% De las causas últimas a las próximas y a la renta por habitante (Acemoglu,
+% 2009, caps. 1 y 4; las palabras del anexo F del 3.A.43): suerte (equilibrios
+% múltiples), geografía, cultura e instituciones (resaltada) → capital físico,
+% capital humano y tecnología (PTF) → Y/L. La flecha discontinua de vuelta,
+% de Y/L a las instituciones, es la causalidad inversa que resuelven
+% Acemoglu, Johnson y Robinson con la mortalidad de los colonos.
+% Capas: causas últimas → causas próximas y flecha → Y/L y flecha →
+% causalidad inversa.
+\tikzset{
+  caja/.style={draw=tceemorado, line width=0.6pt, rounded corners=2pt,
+    align=center, font=\small, inner sep=3pt, text width=3.1cm,
+    minimum height=0.8cm, fill=white},
+  cajainst/.style={caja, fill=tceemorado, text=white, font=\small\bfseries},
+  grupo/.style={draw=tceegris!60, dashed, rounded corners=4pt, inner sep=6pt},
+  titulo/.style={font=\footnotesize\itshape, text=tceegris!70!black},
+  paso/.style={->, very thick, tceemorado, >={Stealth[length=3mm]}},
+}
+\begin{tikzpicture}[tcee]
+  % 1: las 4 causas últimas (instituciones, resaltada)
+  \capa{1}{
+    \node[caja] (suerte) at (0,1.65) {suerte\\[-1pt]{\footnotesize (equilibrios múltiples)}};
+    \node[caja] (geo) at (0,0.55) {geografía};
+    \node[caja] (cult) at (0,-0.45) {cultura};
+    \node[cajainst] (inst) at (0,-1.45) {instituciones};
+    \node[grupo, fit=(suerte) (inst)] (ultimas) {};
+    \node[titulo, anchor=south] at (ultimas.north) {causas últimas};
+  }
+  % 2: las causas próximas y la flecha que llega a ellas
+  \capa{2}{
+    \node[caja, text width=2.9cm] (kf) at (5.0,0.9) {capital físico};
+    \node[caja, text width=2.9cm] (kh) at (5.0,0.0) {capital humano};
+    \node[caja, text width=2.9cm] (ptf) at (5.0,-0.9) {tecnología (PTF)};
+    \node[grupo, fit=(kf) (ptf)] (proximas) {};
+    \node[titulo, anchor=south] at (proximas.north) {causas próximas};
+    \draw[paso] (ultimas.east|-proximas.west) -- (proximas.west);
+  }
+  % 3: la renta por habitante
+  \capa{3}{
+    \node[caja, text width=1.3cm, minimum height=1.1cm, font=\normalsize] (y) at (8.9,0) {$Y/L$};
+    \draw[paso] (proximas.east) -- (y.west);
+  }
+  % 4: la causalidad inversa (de la renta a las instituciones)
+  \capa{4}{
+    \draw[->, thick, dashed, tceerojo, >={Stealth[length=2.5mm]}]
+      (y.south) |- ([yshift=-0.75cm]inst.south) node[pos=0.75, below, font=\footnotesize] {causalidad inversa} -- (inst.south);
+  }
+\end{tikzpicture}
+\end{document}

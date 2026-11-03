@@ -1,0 +1,85 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Participación salarial ajustada (AMECO ALCD0, % del PIB), 1960-2025:
+% España (ameco_esp), Estados Unidos (ameco_eeuu) y zona del euro de 20
+% (ameco_zona_euro20, desde 1995). 2025, estimación de la previsión de
+% primavera de 2026: el tramo 2024-2025 va discontinuo.
+% ../datos/participacion-trabajo-esp-ea-eeuu.csv (consulta 1/11/2026). Las
+% series pwt_* (labsh de la PWT 11.0) son la segunda comprobación y no se
+% dibujan (recargarían el gráfico).
+% Valores rotulados: España 61,3 (1960), máximo 67,5 (1976), 56,6 (2025);
+% EE. UU. 62,9 y 54,4; zona del euro 58,4 (1995) y 56,9 (2025).
+% Paleta del tema: España rojo (dicespana, como en pib-pc-largo), EE. UU.
+% morado, zona del euro azul marino (dicze, el de la zona del euro en la
+% paleta común).
+% Capas (CRITERIOS §7): ejes y línea de 1980 → EE. UU. → zona del euro →
+% España → puntos → rótulos y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/participacion-trabajo-esp-ea-eeuu.csv}\partic
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+  % serie observada (hasta 2024) y estimada (2024-2025, discontinua)
+  observada/.style={diclinea=#1, mark=none, forget plot, unbounded coords=discard,
+    restrict x to domain=1960:2024},
+  estimada/.style={thick, dash pattern=on 1.6pt off 1.2pt, #1, mark=none, forget plot,
+    restrict x to domain=2024:2025},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=7.5cm,
+      xmin=1955, xmax=2030, ymin=50, ymax=70,
+      xtick={1960,1970,...,2020}, ytick={50,55,...,70},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% del PIB}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false,
+      legend style={at={(0.5,-0.12)}, anchor=north, legend columns=4,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left, dicapas,
+    ]
+    % 1: ejes (los del axis) y línea vertical de 1980
+    \capa{1}{
+      \dicraya[dicumbral]{(1980,50) (1980,70)}
+      \dicrotulo[font=\scriptsize, text=dicreferencia, anchor=south west, inner sep=2pt]{(1980,50)}{1980}
+    }
+    % 2: Estados Unidos
+    \capa{2}{
+      \addplot[observada=tceemorado] table[x=anio, y=ameco_eeuu] {\partic};
+      \addplot[estimada=tceemorado] table[x=anio, y=ameco_eeuu] {\partic};
+    }
+    % 3: zona del euro (desde 1995)
+    \capa{3}{
+      \addplot[observada=dicze] table[x=anio, y=ameco_zona_euro20] {\partic};
+      \addplot[estimada=dicze] table[x=anio, y=ameco_zona_euro20] {\partic};
+    }
+    % 4: España
+    \capa{4}{
+      \addplot[observada=dicespana] table[x=anio, y=ameco_esp] {\partic};
+      \addplot[estimada=dicespana] table[x=anio, y=ameco_esp] {\partic};
+    }
+    % 5: puntos: máximo de España (1976) y valores inicial y final
+    \capa{5}{
+      \addplot[on layer=dicpuntos, dicpuntos=dicespana, forget plot] coordinates {(1960,61.3) (1976,67.5) (2025,56.6)};
+      \addplot[on layer=dicpuntos, dicpuntos=tceemorado, forget plot] coordinates {(1960,62.9) (2025,54.4)};
+      \addplot[on layer=dicpuntos, dicpuntos=dicze, forget plot] coordinates {(1995,58.4) (2025,56.9)};
+    }
+    % 6: valores rotulados (sin fondo) y leyenda
+    \capa{6}{
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=east, inner sep=3pt]{(1960,63.2)}{62,9}
+      \dicrotulo[font=\footnotesize, text=dicespana, anchor=east, inner sep=3pt]{(1960,61.0)}{61,3}
+      \dicrotulo[font=\footnotesize, text=dicespana, anchor=south, inner sep=4pt]{(1976,67.5)}{67,5 (1976)}
+      \dicrotulo[font=\footnotesize, text=dicze, anchor=north, inner sep=4pt]{(1995,58.4)}{58,4}
+      \dicrotulo[font=\footnotesize, text=dicze, anchor=west, inner sep=3pt]{(2025,57.4)}{56,9}
+      \dicrotulo[font=\footnotesize, text=dicespana, anchor=west, inner sep=3pt]{(2025,56.2)}{56,6}
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=west, inner sep=3pt]{(2025,54.4)}{54,4}
+      \addlegendimage{diclinea=dicespana, leyenda linea corta}\addlegendentry{España}
+      \addlegendimage{diclinea=dicze, leyenda linea corta}\addlegendentry{zona del euro (20, desde 1995)}
+      \addlegendimage{diclinea=tceemorado, leyenda linea corta}\addlegendentry{EE.\,UU.}
+      \addlegendimage{thick, dash pattern=on 1.6pt off 1.2pt, tceegris, leyenda linea corta}\addlegendentry{2025: estimación}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}
