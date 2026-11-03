@@ -1,7 +1,7 @@
 # Modelo neoclásico de inversión y coste de uso del capital (Jorgenson 1963; Hall y Jorgenson 1967)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.34 (teorías de la inversión) — es la teoría neoclásica de la inversión. **Revisado el 31/10/2026**: I.4 (dentro de I «Antecedentes: de Keynes al modelo neoclásico») y anexo B (derivación en valor corriente y presente, inversión infinita).
-- **Temas que lo usan:** 3.A.34 (desarrollo; hecho, 31/10/2026), 4.B.10 (desarrollo: impuesto de sociedades), 3.A.33 (mención; hecho, 31/10/2026: el coste de uso del duradero, c^d_t ≃ p^d_t(r + δ − π^d_{t+1}), `eq:coste-uso`, con los 3 componentes de c_K y `\vertema{3.A.34}`; ficha `bienes-duraderos`)
+- **Temas que lo usan:** 3.A.34 (desarrollo; hecho, 31/10/2026), 4.B.10 (desarrollo: impuesto de sociedades), 3.A.45 (mención; hecho, 1/11/2026: $c_K$ en el reparto y en el dual), 3.A.33 (mención; hecho, 31/10/2026: el coste de uso del duradero, c^d_t ≃ p^d_t(r + δ − π^d_{t+1}), `eq:coste-uso`, con los 3 componentes de c_K y `\vertema{3.A.34}`; ficha `bienes-duraderos`)
 - **Manuales de referencia:** Jorgenson (1963); Hall y Jorgenson (1967); Haavelmo (1960); Romer (2019), cap. 9; Blanchard y Fischer (1989).
 - **Decisión D009 (13/10/2026):** ¿Cómo se escribe la sensibilidad de la inversión al tipo de interés en IS-LM y Mundell-Fleming? b (I = Ī − b·i), como Dornbusch-Fischer-Startz; v queda solo para la relación capital-producto (acelerador, Harrod-Domar)
 
@@ -32,6 +32,7 @@ con $z=1$ y $\theta=0$, el impuesto es neutral; si solo se deduce la depreciaci�
 |---|---|---|---|---|
 | 3.A.34 | Teorías de la inversión | desarrollo (hecho, 31/10/2026) | Coste de uso, capital deseado, cierre, impuestos en nota, limitaciones y paso a la q; anexo B | — |
 | 4.B.10 | Efecto del impuesto de sociedades sobre la inversión | desarrollo (aplicación) | Coste de uso con impuestos según la deducibilidad de amortizaciones e intereses; neutralidad; la fórmula de arriba con θ, $t$, $z$ (o la letra que fije el 4.B.10 para la desgravación, con nota) | La derivación básica [ver tema 3.A.34] |
+| 3.A.45 | Contabilidad del crecimiento y reparto | mención (hecho, 1/11/2026) | $c_K$ en el reparto (`eq:euler-reparto`, $\alpha=c_KK/Y$) y en el dual de Hsieh, $\gamma_A=\alpha\gamma_{c_K}+(1-\alpha)\gamma_w$, con `\vertema{3.A.34}` | La derivación del coste de uso |
 | 3.A.33 | Demanda de duraderos | mención (hecho, 31/10/2026) | El paralelo: c^d_t del hogar frente a c_K de la empresa, misma δ y r; la compra de duraderos como inversión del hogar | El stock deseado de la empresa |
 
 ## Divergencias encontradas en el temario actual

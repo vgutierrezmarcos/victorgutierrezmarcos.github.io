@@ -29,7 +29,7 @@ Gráficos de referencia (3.A.11): `oposicion/temario/fuentes/3A11/graficos/progr
 | 3.A.11 | Tecnología a muy largo plazo | desarrollo (hecho, 13/10/2026) | Tres definiciones con su criterio, sesgo de Hicks, aumentador frente a sesgado, coincidencia en Cobb-Douglas, Uzawa, dos gráficos | — |
 | 3.B.9 | Comercio y crecimiento | resumen | Sesgo del progreso técnico por sectores y efecto sobre la RRI, con las definiciones de 3.A.11 en una línea cada una | Las definiciones formales (remitir a 3.A.11); no confundir aumentador con sesgado |
 | 3.A.43 | Solow | mención (hecho, 31/10/2026) | Neutralidad de Harrod ($AL$ trabajo eficiente) justificada por Uzawa (condición necesaria, no «necesaria y suficiente», y no de Phelps); las 3 neutralidades en la caja y en el anexo B, con `\vertema{3.A.11}` (CC12: CRITERIOS § 2 manda conservar las notas bien desarrolladas) | El análisis gráfico y la RMST de cada neutralidad (3.A.11) |
-| 3.A.45 | Contabilidad del crecimiento | mención | La PTF (residuo de Solow, 1957) se mide con neutralidad de Hicks, $Y=A_tF(K,L)$; remitir a 3.A.11 | Las definiciones (nota 13 actual) |
+| 3.A.45 | Contabilidad del crecimiento | mención (hecho, 1/11/2026: nota de los supuestos del primal y caja «Dos formas de escribir la tecnología», con Cobb-Douglas la PTF de Hicks es $A^{1-\alpha}$ y crece a $(1-\alpha)g$) | La PTF (residuo de Solow, 1957) se mide con neutralidad de Hicks, $Y=A_tF(K,L)$; remitir a 3.A.11 | Las definiciones (nota 13 actual) |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.11: resueltas en la revisión del 13/10/2026 ($\breve F$, definiciones imprecisas, sin Uzawa ni coincidencia en la Cobb-Douglas).

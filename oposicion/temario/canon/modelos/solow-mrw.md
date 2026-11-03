@@ -1,7 +1,7 @@
 # Modelo de Solow aumentado con capital humano (Mankiw, Romer y Weil 1992)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.43** (crecimiento I): el modelo está en su título. **Revisado el 31/10/2026**: II.1 «El modelo de Mankiw, Romer y Weil (1992)» (4′, a)-e) completos) y anexo C, b) (velocidad de convergencia). Reparto (D090): el modelo teórico en el 3.A.43 y la estimación, sus muestras y la evidencia en el 3.A.45.
-- **Temas que lo usan:** 3.A.43 (desarrollo; hecho, 31/10/2026), 3.A.45 (uso empírico: estimación y evidencia, con la ecuación y la notación del 3.A.43), 3.A.44 (mención; hecho, 1/11/2026: MRW acumula el capital humano como el físico y solo explica niveles; Uzawa-Lucas en tasa, `sec:uzawa-lucas` a) y c)), 3.B.28 (mención), 3.B.42 (mención)
+- **Temas que lo usan:** 3.A.43 (desarrollo; hecho, 31/10/2026), 3.A.45 (uso empírico; hecho, 1/11/2026: II.3, `eq:mrw-regresion`, que es `eq:mrw-renta` en forma de regresión con la misma notación, tabla `tab:mrw` de las 3 muestras, réplica con PWT 11.0 y gráfico `mrw-ajuste`; la convergencia condicional, −0,14 y −0,29, en III.2), 3.A.44 (mención; hecho, 1/11/2026: MRW acumula el capital humano como el físico y solo explica niveles; Uzawa-Lucas en tasa, `sec:uzawa-lucas` a) y c)), 3.B.28 (mención), 3.B.42 (mención)
 - **Manuales de referencia:** Mankiw, Romer y Weil (1992), *QJE*, tablas I, II y V; Romer (2019), caps. 1 y 4; Barro y Sala i Martín (2004), cap. 1; Acemoglu (2009), cap. 3; Hall y Jones (1999); Klenow y Rodríguez-Clare (1997); Caselli (2005).
 - **Decisión D090 (13/10/2026):** ¿Cómo se reparte Mankiw-Romer-Weil entre 3.A.43 y 3.A.45? Modelo teórico en 3.A.43 (con Harrod-Domar como antecedente breve) y estimación y evidencia en 3.A.45
 - **Decisión D107 (13/10/2026):** ¿Qué letra lleva la elasticidad del capital humano en Mankiw-Romer-Weil? β, como el artículo (no convive con el factor de descuento en 3.A.43-3.A.45)
@@ -36,13 +36,14 @@ $$\boxed{\ln\frac{Y_t}{L_t}=\ln A_0+g\,t+\frac{\alpha}{1-\alpha-\beta}\ln s_K+\f
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.43 | Solow aumentado (título) | desarrollo (hecho, 31/10/2026) | a)-e) completos; `eq:mrw-renta` función clave; λ ≈ 2 %; Hall y Jones; cifras de MRW y con datos actuales | La estimación detallada `\vertema{3.A.45}` |
-| 3.A.45 | Evidencia empírica y convergencia | uso empírico | Estimación, resultados por muestras (amplia, intermedia, OCDE), convergencia condicional, críticas, contabilidad del desarrollo; con `eq:mrw-renta` y la notación del 3.A.43 (β, $s_K$, $s_H$) | El modelo teórico `\vertema{3.A.43}` |
+| 3.A.45 | Evidencia empírica y convergencia | uso empírico (hecho, 1/11/2026) | Estimación, resultados por muestras (amplia, intermedia, OCDE), convergencia condicional, críticas, contabilidad del desarrollo; con `eq:mrw-renta` y la notación del 3.A.43 (β, $s_K$, $s_H$) | El modelo teórico `\vertema{3.A.43}` |
 | 3.A.44 | Crecimiento endógeno | mención (hecho, 1/11/2026) | Con α + β = 1, crecimiento endógeno; Uzawa-Lucas como respuesta a las críticas | El modelo |
 | 3.B.28 | Desarrollo | mención | Por qué persisten las diferencias de renta | — |
 | 3.B.42 | Cooperación al desarrollo de la UE | mención | Por qué persisten las diferencias | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.43: MRW en una línea con el título nuevo, y el Word del 3.A.45 lo desarrollaba (1.3.1). **Resuelto en el 3.A.43** (31/10/2026); el 3.A.45 debe pasar a la estimación con la ecuación del 3.A.43 (`mapa.yaml`, contradicciones del 3.A.43).
+- 3.A.45 (1/11/2026): solo la estimación, sin derivación (D090); $\ln(Y_i/L_i)=a+\dots+\varepsilon_i$ (`eq:mrw-regresion`), con $\ln A_0+gt$ repartido entre $a$ y $\varepsilon_i$; R² 0,59/0,59/0,01 y 0,78/0,77/0,24; α 0,60 y 0,31, β 0,28 (el anexo del Word decía α = 2/3, $\gamma_A=0{,}02$, δ = 0,06 y R² 0,8: corregido a $g+\delta=0{,}05$). Gráfico de referencia `oposicion/temario/fuentes/3A45/graficos/mrw-ajuste.tex` (renta observada frente a predicha).
 - β es aquí la elasticidad del capital humano y en el resto de macro el factor de descuento: en el 3.A.43 no conviven (el RCK se escribe con ρ). En el mismo II.2, las participaciones del recurso y de la tierra se escriben $\alpha_R$, $\alpha_T$ (no las β, γ de Romer) para no chocar con esta β.
 
 Autor: Víctor Gutiérrez Marcos

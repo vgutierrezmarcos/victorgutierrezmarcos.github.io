@@ -1,7 +1,7 @@
 # Trampas de pobreza en el modelo de Solow (equilibrios múltiples)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.43 (crecimiento I: extensiones de Solow) — es una extensión del modelo de su título. **Revisado el 31/10/2026**: II.2 «Otras extensiones del modelo de Solow», párrafo «Trampas de pobreza» con a)-d) (45″ en el cante, como capa del gráfico de tasas).
-- **Temas que lo usan:** 3.A.43 (resumen; hecho, 31/10/2026), 3.B.28 (resumen: teorías del desarrollo, Nurkse y el gran empujón de Rosenstein-Rodan, con el gráfico del 3.A.43; el 3.A.43 le remite «las trampas y su papel en la política de desarrollo»), 3.B.42 (mención: su Word cita las trampas de Nurkse en la cooperación al desarrollo)
+- **Temas que lo usan:** 3.A.43 (resumen; hecho, 31/10/2026), 3.A.45 (mención; hecho, 1/11/2026: la suerte y los clubes), 3.B.28 (resumen: teorías del desarrollo, Nurkse y el gran empujón de Rosenstein-Rodan, con el gráfico del 3.A.43; el 3.A.43 le remite «las trampas y su papel en la política de desarrollo»), 3.B.42 (mención: su Word cita las trampas de Nurkse en la cooperación al desarrollo)
 - **Manuales de referencia:** Azariadis y Drazen (1990); Sala i Martín (2000), cap. 1; Barro y Sala i Martín (2004), cap. 1; Azariadis y Stachurski (2005), *Handbook of Economic Growth*; Rosenstein-Rodan (1943); Nurkse (1953); Murphy, Shleifer y Vishny (1989); Kraay y McKenzie (2014).
 - **Decisión D110 (13/10/2026):** ¿Se sustituye el ejemplo formal de trampa de pobreza de 3.A.43? Sí, por un ejemplo con un tramo de rendimientos crecientes que genere dos estados estacionarios
 
@@ -24,6 +24,7 @@ s f(k)/k decrece, crece y vuelve a decrecer, y corta 3 veces a la horizontal n +
 |---|---|---|---|---|
 | 3.A.43 | Extensiones del modelo de Solow | resumen (hecho, 31/10/2026) | a)-d): función en S, gráfico en tasas, 3 cortes, gran empujón, evidencia escasa, atribución a la literatura posterior | — |
 | 3.B.28 | Desarrollo y teorías del desarrollo | resumen | Nurkse (círculo vicioso), gran empujón (Rosenstein-Rodan; Murphy, Shleifer y Vishny) y su papel en la ayuda, con el gráfico del 3.A.43 (mismos rótulos) | La derivación `\vertema{3.A.43}` |
+| 3.A.45 | Causas últimas: la suerte; clubes de convergencia | mención (hecho, 1/11/2026) | Equilibrios múltiples (Murphy, Shleifer y Vishny, 1989; Azariadis y Drazen, 1990) como 1.ª causa última y los clubes («Dios los cría y ellos se juntan»), con `\vertema{3.A.43}` `\vertema{3.B.28}`; Benhabib y Rustichini (1996) como trampa por conflicto | El gráfico y la derivación |
 | 3.B.42 | Cooperación al desarrollo de la UE | mención | Trampa de pobreza de Nurkse como justificación de la ayuda | El gráfico |
 
 ## Divergencias encontradas en el temario actual

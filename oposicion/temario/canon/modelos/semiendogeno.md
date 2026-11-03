@@ -30,7 +30,7 @@ y la renta por habitante crece igual (con λ = 1, $\gamma_N=n/(1-\phi)$). Gráfi
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.44 | Rendimientos crecientes y efecto escala | desarrollo (hecho, 1/11/2026) | Lo de arriba; `eq:jones` recuadrada como 2.ª función clave | — |
-| 3.A.45 | Evidencia del crecimiento y convergencia | mención | Ideas cada vez más caras (Bloom et al., 2020) en una línea; la convergencia condicional encaja con los semiendógenos; el residuo de Solow cae pese al esfuerzo en I+D | El modelo `\vertema{3.A.44}` |
+| 3.A.45 | Evidencia del crecimiento y convergencia | mención (hecho, 1/11/2026: Bloom et al., 2020, ×23, ÷41, 5 %, en la desaceleración de la PTF, II.5; nota de la tabla de teorías de la convergencia) | Ideas cada vez más caras (Bloom et al., 2020) en una línea; la convergencia condicional encaja con los semiendógenos; el residuo de Solow cae pese al esfuerzo en I+D | El modelo `\vertema{3.A.44}` |
 | 3.A.43 | Crecimiento exógeno | mención (hecho, 31/10/2026) | Jones (2023): el crecimiento del 2 % de EE. UU. no puede durar siempre | El modelo |
 | 4.A.7 | Política de ciencia y tecnología | previsto | No rivalidad, efecto de nivel de las subvenciones a la I+D, objetivo del 1,25 % (Ley 17/2022) | El modelo |
 | 4.A.2 | Población y mercado de trabajo | previsto | Población e investigadores como motor de las ideas (Jones, 2022) | El modelo |

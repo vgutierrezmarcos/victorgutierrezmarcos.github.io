@@ -140,7 +140,7 @@ const tercerEjercicioParteA = [
   { num: 42, titulo: 'Teorías de los ciclos económicos: ciclos nominales y reales. Referencia al ciclo financiero y sus interrelaciones con el ciclo real.', disponible: true, file: '3A42.pdf' },
   { num: 43, titulo: 'Crecimiento económico (I). Acumulación de capital y progreso técnico exógeno. El modelo de Solow. El modelo de Solow aumentado con acumulación de capital humano. El modelo de Ramsey-Cass-Koopmans.', disponible: true, file: '3A43.html' },
   { num: 44, titulo: 'Crecimiento económico (II). Modelos de crecimiento endógeno: rendimientos crecientes, capital humano e innovación tecnológica.', disponible: true, file: '3A44.html' },
-  { num: 45, titulo: 'Evidencia empírica sobre el crecimiento económico y la distribución de la renta entre los factores de producción. Contabilidad del crecimiento, con especial referencia a la productividad total de los factores. Convergencia económica internacional.', disponible: true, file: '3A45.pdf' }
+  { num: 45, titulo: 'Evidencia empírica sobre el crecimiento económico y la distribución de la renta entre los factores de producción. Contabilidad del crecimiento, con especial referencia a la productividad total de los factores. Convergencia económica internacional.', disponible: true, file: '3A45.html' }
 ];
 
 // ============================================

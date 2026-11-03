@@ -28,6 +28,7 @@ Gráfico de referencia: superficie de producción en $\mathbb{R}^3$ con isocuant
 | 3.A.9 | Sistemas de demanda | resumen (hecho, 13/10/2026) | Primera forma funcional empírica (II.2, `eq:cobb-douglas`): $U(x)=\sum_i\alpha_i\ln x_i$ con $\sum_i\alpha_i=1$ (normalización), participaciones constantes $s_i=\alpha_i$, $\ln x_i=\ln\alpha_i+\ln\overline W-\ln p_i$; ejemplo de inversión de $V$ en $E$ (I.3); nota con el origen (estimación de 1928, 3/4 y 1/4; Douglas senador de 1949 a 1967) y remisión a 3.A.11 | Volver a derivar las demandas (remitir a 3.A.8) |
 | 3.A.12 | Función de costes y estimación | mención (hecho, 14/10/2026) | Función de costes dual $C=k(q/A)^{1/k}(w_K/\alpha)^{\alpha/k}(w_L/\beta)^{\beta/k}$, $k=\alpha+\beta$; en logaritmos, la forma de Nerlove (1963); caso anidado de la translog | La función de producción (3.A.11) |
 | 3.A.6 | RBC | mención | Tecnología del RBC; remitir a 3.A.11 | — |
+| 3.A.45 | Reparto de la renta y contabilidad | mención (hecho, 1/11/2026) | α constante con σ = 1 (I.3) y anécdota de Cobb y Douglas en nota (Cobb y Douglas, 1928; Douglas, 1976); las 2 formas de escribir la tecnología ($A^{1-\alpha}$) | Las propiedades `\vertema{3.A.11}` |
 | 3.A.43 | Solow, MRW, RCK | resumen (hecho, 31/10/2026) | $f(k)=k^{\alpha}$; $k^*$, $s_{\mathrm{oro}}=\alpha$, λ = (1 − α)(n + g + δ); coincidencia de las 3 neutralidades | Rendimientos y σ `\vertema{3.A.11}` |
 
 ## Divergencias encontradas en el temario actual

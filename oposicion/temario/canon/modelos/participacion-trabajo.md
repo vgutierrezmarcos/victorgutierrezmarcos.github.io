@@ -1,0 +1,42 @@
+# Distribución funcional de la renta: la participación del trabajo y su caída
+
+- **Área:** macro cerrada · **Tema de referencia:** **3.A.45** (I.3 «La distribución de la renta entre los factores de producción», 2′30″, con a)-e); **revisado el 1/11/2026**) — el epígrafe «distribución de la renta entre los factores de producción» está en su título, y el reparto es el quinto hecho de Kaldor (ficha `hechos-kaldor`) y la ponderación de la contabilidad del crecimiento (ficha `contabilidad-crecimiento`). Ficha creada en la fase canon del 3.A.45 (CC5, **[decidir]**; alternativa: dejarla dentro de `hechos-kaldor`).
+- **Temas que lo usan:** 3.A.45 (desarrollo; hecho, 1/11/2026), 3.A.11 (mención; hecho, 13/10/2026: Euler y participaciones con Cobb-Douglas y CES; si σ < 1 sube la participación del trabajo (l. 383); la caída desde los 80 con Karabarbounis y Neiman, 2014, difícil con σ = 1, `\vertema{3.A.45}` (l. 1169); España 48,4 % y 56,6 % ajustada en 2025), 3.A.43 (mención; hecho, 31/10/2026: caja de Kaldor, participación del trabajo de EE. UU. 64 % → 57 %), 3.A.15 (mención; hecho, 20/10/2026: superestrellas, Autor et al., 2020, y márgenes crecientes, De Loecker, Eeckhout y Unger, 2020; Philippon, 2019), 3.A.30 (mención, prevista: remuneración de asalariados y renta mixta), 3.A.4 (mención, prevista: teorías de la distribución de Kaldor y Pasinetti), 4.A.3 (aplicación a España, prevista: distribución funcional y personal), 3.A.24 y 3.B.28 (enlace con la distribución personal, Piketty)
+- **Manuales de referencia:** Cobb y Douglas (1928); Douglas (1976); Gollin (2002); Elsby, Hobijn y Şahin (2013); Karabarbounis y Neiman (2014); Piketty (2014); Piketty y Zucman (2014); Rognlie (2015); Krusell y Smith (2015); Acemoglu y Robinson (2015); Mankiw (2015); Autor, Dorn, Katz, Patterson y Van Reenen (2020); De Loecker, Eeckhout y Unger (2020); Barkai (2020); Philippon (2019); Gutiérrez y Piton (2020); Comisión Europea, AMECO (ALCD0).
+
+## Presentación de referencia (3.A.45, I.3)
+
+**a) Idea.** ¿Qué parte de la renta va al trabajo y qué parte al capital, y por qué cambia? La vieja pregunta de Ricardo, hoy central por la caída de la participación del trabajo; las participaciones son el 5.º hecho de Kaldor y las ponderaciones de la contabilidad.
+
+**b) Modelo (teoría neoclásica del reparto).** *Supuestos*: $Y=F(K,AL)$ con rendimientos constantes; factores competitivos, $c_K=F_K$, $w=F_L$, $P=1$. *Desarrollo*: teorema de Euler (`\vertema{3.A.11}`),
+$$Y=c_K\,K+w\,L\;\Rightarrow\;\alpha\equiv\frac{c_K\,K}{Y},\quad 1-\alpha\equiv\frac{w\,L}{Y}\qquad(\texttt{eq:euler-reparto})$$
+con **$c_K$ coste de uso** ($=r+\delta$ con el precio del capital constante). Con Cobb-Douglas, α constante (σ = 1; anécdota de Cobb y Douglas en nota). Con CES, $Y=[a_KK^{\rho}+a_L(AL)^{\rho}]^{1/\rho}$, $\rho\equiv(\sigma-1)/\sigma$:
+$$\alpha_t=\frac{F_KK_t}{Y_t}=a_K\left(\frac{K_t}{Y_t}\right)^{\rho}\qquad(\texttt{eq:ces-participacion})$$
+sube con $K/Y$ si σ > 1 y baja si σ < 1 (σ elasticidad de sustitución; $\sigma_t$, dispersión, solo en el bloque de convergencia). *Implicaciones*: participaciones estables con Cobb-Douglas o $K/Y$ constante; una caída duradera exige σ ≠ 1 con capital que se abarata o acumula, progreso técnico sesgado (automatización) o márgenes (renta de monopolio).
+
+**c) Extensión: Piketty** (caja), con **$v\equiv K/Y$** (él la llama β; aquí β es la de MRW y $\beta_0$, $\beta_1$ los coeficientes):
+$$\alpha=r\,v,\qquad v\;\to\;\frac{s}{\gamma_Y}\qquad(\texttt{eq:piketty})$$
+1.ª ley, identidad con $r$ el rendimiento **neto** y α neta de amortizaciones; 2.ª, senda equilibrada con ahorro neto (12 % y 2 % → $v=6$); **$r>g$**, con el «$g$» de Piketty igual a nuestro $\gamma_Y$ (no el progreso técnico). Críticas: hace falta σ > 1 y casi todas las estimaciones son < 1, y la subida es sobre todo vivienda (Rognlie, 2015); ahorro bruto (Krusell y Smith, 2015); instituciones (Acemoglu y Robinson, 2015); $r>g$ casi siempre (Mankiw, 2015). Enlace con la distribución personal: `\vertema{3.A.24}` (Lorenz, Gini), `\vertema{3.B.28}`, `\vertema{4.A.3}`.
+
+**d) Evidencia.** *Medida*: remuneración de asalariados sobre el PIB (`\vertema{3.A.30}`); autónomos (participación salarial **ajustada** de la Comisión Europea; España 48,4 % del PIB en 2025 sin ajustar, 56,6 % ajustada, Eurostat y AMECO); Gollin (2002): 65-80 % con datos de los 90, sin relación con la renta (α ≈ 1/3); vivienda y depreciación (Rognlie, 2015). *Estabilidad hasta los 80*: α entre 0,3 y 0,5 en 23 países de la OCDE desde 1960, mediana 0,38 (PWT). *Caída*: ≈ 5 puntos en el mundo desde principios de los 80, sobre todo dentro de cada sector (Karabarbounis y Neiman, 2014). *Datos (AMECO ALCD0, `participacion-trabajo`)*: EE. UU. 63 % (1960-1970), 61 % (2000), 54 % (2025), y capital del sector empresarial 0,32 (1948-1973) → 0,41 (2020-2025, Fernald); España 67,5 % (1976), 55 % (2007), entre el 53 y el 58 % desde entonces (56,6 % en 2025); zona del euro 58,4 % (1995), 54,2 % (2007), 56,9 % (2025). ¿Global o de EE. UU.?: con series homogéneas, estable o creciente salvo EE. UU. y Canadá (Gutiérrez y Piton, 2020). *Explicaciones*: precio del capital con σ ≈ 1,25 (la mitad de la caída; Karabarbounis y Neiman, 2014; punto débil, σ < 1, `\vertema{3.A.11}`); globalización (`\vertema{3.B.9}`) y un tercio de la caída de EE. UU. es imputación de autónomos (Elsby, Hobijn y Şahin, 2013); **superestrellas**, reasignación entre empresas (Autor et al., 2020); **poder de mercado**, margen de las cotizadas de EE. UU. del 21 % (1980) al 61 % (2016) (De Loecker, Eeckhout y Unger, 2020), caen las 2 participaciones (Barkai, 2020; `\vertema{3.A.15}`), menos competencia en EE. UU. que en Europa (Philippon, 2019); instituciones laborales.
+
+**e) Valoración.** Ninguna lo explica todo: superestrellas y márgenes encajan con EE. UU. y beneficios crecientes; el precio del capital, con la generalidad, pero exige σ > 1. El 5.º hecho ya no se da por supuesto: fuera la Cobb-Douglas o la competencia perfecta; en la contabilidad, participaciones variables ($\alpha_t$, $\bar\alpha_t$ de Törnqvist).
+
+**Gráfico de referencia:** `oposicion/temario/fuentes/3A45/graficos/participacion-trabajo.tex` (España, zona del euro y EE. UU., 1960-2025, AMECO ALCD0); en el cante, a mano alzada con 3 líneas y la pegatina «σ > 1: capital más barato ⇒ ↑α».
+
+## Cómo se adapta en cada tema
+| Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
+|---|---|---|---|---|
+| 3.A.45 | Distribución de la renta entre los factores | desarrollo (hecho, 1/11/2026) | Lo de arriba, a)-e), con la caja de Piketty | — |
+| 3.A.11 | Producción: σ y participaciones | mención (hecho, 13/10/2026) | Euler, Cobb-Douglas y CES con σ; la caída como problema para σ = 1 | La evidencia y sus explicaciones `\vertema{3.A.45}` |
+| 3.A.43 | Solow | mención (hecho, 31/10/2026) | La participación del trabajo de EE. UU. en la caja de Kaldor | Las explicaciones |
+| 3.A.15 | Teoría de la empresa y concentración | mención (hecho, 20/10/2026) | Superestrellas y márgenes crecientes como debate de la concentración | El reparto |
+| 3.A.30 | Contabilidad nacional | mención (prevista) | Remuneración de asalariados, renta mixta y EBE; la participación ajustada | La teoría |
+| 3.A.4 | Pensamiento (Kaldor, Pasinetti) | mención (prevista) | Teorías poskeynesianas de la distribución como alternativa a la neoclásica | La evidencia |
+| 4.A.3 | Distribución de la renta en España | resumen aplicado (previsto) | Participación salarial de España (ajustada y sin ajustar) y enlace con la personal | La teoría `\vertema{3.A.45}` |
+
+## Divergencias encontradas en el temario actual
+- Claves bibliográficas distintas para las mismas obras: `KarabarbounisNeiman2014Global` y `AMECO2026WageShare` (3.A.11) frente a `KarabarbounisNeiman2014` y `CE2026AMECO` (3.A.43, 3.A.45); `AutorEtAl2020Fall`, `DeLoeckerEeckhoutUnger2020Rise`, `Philippon2019Great` (3.A.15 y otros de micro) frente a `AutorEtAl2020Superstar`, `DeLoeckerEeckhoutUnger2020`, `Philippon2019` (3.A.45). Sin efecto en el texto: unificar cuando haya `.bib` común.
+- 3.A.11 (anexo de Cambridge, l. 1309) escribe $r=\partial Y/\partial K$ como alquiler; en el canon macro el alquiler es $c_K$ (o $r+\delta$) y $r$ el tipo neto. Nota opcional si se toca.
+
+Autor: Víctor Gutiérrez Marcos

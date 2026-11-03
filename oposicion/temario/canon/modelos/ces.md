@@ -1,7 +1,7 @@
 # Función CES (elasticidad de sustitución constante)
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.11 (Teoría de la producción) — el título incluye «elasticidad de sustitución» y es donde se desarrolla la forma funcional con sus casos límite; 3.A.8 la presenta como utilidad (ya revisado, sirve de modelo de redacción).
-- **Temas que lo usan:** 3.A.11 (desarrollo; revisado el 13/10/2026), 3.A.8 (resumen), 3.A.18 (resumen; hecho, 19/10/2026), 3.A.44 (mención; hecho, 1/11/2026: extensión del Sobelow, límite del producto medio $A\,a_K^{\sigma/(\sigma-1)}$, fig. 1.14 de Barro y Sala-i-Martin, 2004; ficha `sobelow`), 3.A.12 (mención: su función de costes en el anexo `anexo:formas-costes`; hecho, 14/10/2026)
+- **Temas que lo usan:** 3.A.11 (desarrollo; revisado el 13/10/2026), 3.A.8 (resumen), 3.A.18 (resumen; hecho, 19/10/2026), 3.A.45 (mención; hecho, 1/11/2026: participación con CES), 3.A.44 (mención; hecho, 1/11/2026: extensión del Sobelow, límite del producto medio $A\,a_K^{\sigma/(\sigma-1)}$, fig. 1.14 de Barro y Sala-i-Martin, 2004; ficha `sobelow`), 3.A.12 (mención: su función de costes en el anexo `anexo:formas-costes`; hecho, 14/10/2026)
 - **Manuales de referencia:** Arrow, Chenery, Minhas y Solow (1961); Mas-Colell, Whinston y Green (1995), cap. 3 y 5; Varian, *Análisis microeconómico*, cap. 1; Dixit y Stiglitz (1977) para el agregador de variedades.
 
 ## Presentación de referencia
@@ -21,6 +21,7 @@ Gráfico de referencia: isocuantas (curvas de indiferencia en 3.A.8) para σ=0, 
 | 3.A.8 | Elasticidad de sustitución en el consumo | resumen | Versión de utilidad $U(x)$ con pesos $a_i$; tres casos y gráfico; derivación en anexo | La discusión de rendimientos a escala |
 | 3.A.18 | Preferencia por la variedad (Dixit-Stiglitz) | resumen (hecho, 19/10/2026) | Agregador simétrico sin pesos $y=[\sum_i x_i^{\rho}]^{1/\rho}$, σ > 1 entre variedades (la convexidad solo exige σ > 0; σ > 1 hace elástica la demanda de cada variedad, nota con remisión a 3.A.8), su **índice de precios** $P\equiv[\sum_ip_i^{1-\sigma}]^{1/(1-\sigma)}$, preferencia por la variedad $y=n^{1/(\sigma-1)}X$ y margen μ = σ/(σ−1); una línea para σ → ∞ (sustitutivos perfectos) y σ cerca de 1; gráfico `3A18/graficos/ces-variedad.tex` (a partir del del 3.A.8, σ = 1, 2, 4, ∞). Ficha `dixit-stiglitz` | Los casos límite con su derivación |
 | 3.A.12 | Función de costes | mención (hecho, 14/10/2026) | Función de costes dual en `tab:formas-costes`: $C=(q/A)^{1/\nu}[a_K^{\sigma}w_K^{1-\sigma}+a_L^{\sigma}w_L^{1-\sigma}]^{1/(1-\sigma)}$ | La forma de producción (3.A.11) |
+| 3.A.45 | Distribución de la renta entre los factores | mención (hecho, 1/11/2026) | Participación del capital `eq:ces-participacion` $\alpha_t=a_K(K_t/Y_t)^{\rho}$, sube con $K/Y$ si σ > 1 (Karabarbounis y Neiman, σ ≈ 1,25; Piketty); ficha `participacion-trabajo` | La forma general `\vertema{3.A.11}` |
 | 3.A.44 | Crecimiento endógeno (Jones-Manuelli) | mención (hecho, 1/11/2026; el Word invertía el exponente del límite) | σ>1 permite crecimiento sostenido sin progreso técnico; remitir a 3.A.11 | La forma funcional completa |
 
 ## Divergencias encontradas en el temario actual
