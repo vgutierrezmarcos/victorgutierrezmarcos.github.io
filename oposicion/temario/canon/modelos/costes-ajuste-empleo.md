@@ -38,13 +38,13 @@ $$F_L(L_t)=w_t+r\phi\dot L_t-\phi\ddot L_t;$$
 | 3.A.26 | Dinámica de la demanda de trabajo | desarrollo (hecho, 31/10/2026) | Todo lo anterior, 8′ en el cante | — |
 | 3.A.25 | Mercado de trabajo neoclásico | mención (hecho, 31/10/2026) | Supuesto 7 de `tab:supuestos-trabajo` y la demanda intertemporal en una frase con `\vertema{3.A.26}` | El modelo |
 | 3.A.34 | Teorías de la inversión | mención (hecho, 31/10/2026) | El mismo problema con el capital: Φ (no $C(I)$), λ_t/q_t, costes asimétricos e irreversibilidad = banda de inacción; remisión recíproca y la misma tabla de tipos de costes | La banda del empleo |
-| 3.A.29 | Modelización dinámica | mención | Ejemplo de hamiltoniano (ya remite); con $w$ real como el 3.A.25 (no $P_t$, $W_t$ nominales) | El modelo |
+| 3.A.29 | Modelización dinámica | mención (hecho, 1/11/2026; método del control óptimo en I.1.2 b) y aplicación en II.2 d), con Bentolila y Bertola, 1990, y Hamermesh, 1993; «con el salario real y la misma lógica», I.2.2 b)) | Ejemplo de hamiltoniano (ya remite); con $w$ real como el 3.A.25 (no $P_t$, $W_t$ nominales) | El modelo |
 | 3.A.27 | Determinación de salarios | mención (hecho, 31/10/2026) | Costes de rotación $c_D$, $c_C$ como raíz del poder de los *insiders* | La dinámica |
 | 4.A.16 | Mercado de trabajo en España | resumen aplicado | Costes de despido y dualidad (Bentolila *et al.*, 2012), reforma de 2021 y temporalidad, ERTE como margen de horas; `\vertema{3.A.26}` solo para ampliar | La derivación |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.26 original: $P_tF(L_t)-W_tL_t-c(\dot L_t)$ con $F$ también para el coste fijo; CPO «igual que sin costes» con costes fijos; caso lineal «ajusta de manera inmediata hasta que la productividad marginal iguale al coste marginal»; cuadrático con valores absolutos e implicaciones copiadas del lineal; asimétricos solo con el título. **Resuelto** en la revisión (31/10/2026).
 - 3.A.34: coste de ajuste $C(I)$ y 3.4 «costes de ajuste asimétricos» sin modelo. **Resuelto** (31/10/2026): Φ, φ_c, φ_d, banda en q, misma tabla y remisión recíproca (ficha `q-tobin`, sección de los costes no convexos).
-- 3.A.29 (sin revisar): $P_t$ y $W_t$ nominales: $w$ real al revisarlo.
+- 3.A.29 original: $P_t$ y $W_t$ nominales. **Resuelto** (1/11/2026): $w$ real.
 
 Autor: Víctor Gutiérrez Marcos

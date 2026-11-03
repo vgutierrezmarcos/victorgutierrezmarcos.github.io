@@ -124,7 +124,7 @@ const tercerEjercicioParteA = [
   { num: 26, titulo: 'Desempleo friccional. La curva de Beveridge, el modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides. Costes de ajuste y dinámica de la demanda de trabajo.', disponible: true, file: '3A26.html' },
   { num: 27, titulo: 'Determinación de salarios: modelos de negociación, salarios de eficiencia y contratos implícitos.', disponible: true, file: '3A27.html' },
   { num: 28, titulo: 'La tasa natural de paro y la NAIRU. La persistencia del desempleo.', disponible: true, file: '3A28.html' },
-  { num: 29, titulo: 'Modelización dinámica de las tomas de decisiones. Modelos de horizonte infinito y modelos de generaciones solapadas.', disponible: true, file: '3A29.pdf' },
+  { num: 29, titulo: 'Modelización dinámica de las tomas de decisiones. Modelos de horizonte infinito y modelos de generaciones solapadas.', disponible: true, file: '3A29.html' },
   { num: 30, titulo: 'Magnitudes macroeconómicas y contabilidad nacional.', disponible: true, file: '3A30.pdf' },
   { num: 31, titulo: 'Análisis de las tablas «input-output».', disponible: false },
   { num: 32, titulo: 'El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis de las políticas monetaria y fiscal, y de los shocks y políticas de oferta.', disponible: false },

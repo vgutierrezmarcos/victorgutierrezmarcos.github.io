@@ -38,7 +38,7 @@ $$\max_{\{I_t,\mu_t\}}W=\sum_{t=0}^{\infty}\beta^tL_t\frac{c_t^{1-\theta}}{1-\th
 | 3.B.31 | Modelos integrados de evaluación | desarrollo (hecho, 31/10/2026) | Todo lo anterior, con a)-e); ecuaciones del módulo climático en `anexo:dice` | — |
 | 3.A.21 | Aplicaciones del equilibrio general | mención (hecho, 14/10/2026) | DICE-2023 no es un MEGC multisectorial, sino un modelo integrado de crecimiento óptimo; sirve para evaluar un impuesto sobre el carbono | El modelo |
 | 3.A.43 | Crecimiento (RCK) | mención (hecho, 31/10/2026) | El RCK con daños del clima y reducción de emisiones; la fórmula de Ramsey del descuento es su ecuación de Euler; `\vertema{3.B.31}` | El modelo |
-| 3.A.29 | Modelos de horizonte infinito | mención | Los MIE como aplicación de la optimización dinámica de horizonte infinito; `\vertema{3.B.31}` (y no para «recursos naturales como inputs», que el 3.B.31 no trata) | El modelo |
+| 3.A.29 | Modelos de horizonte infinito | mención (hecho, 1/11/2026; II.2 d), Nordhaus, 1992, clave `Nordhaus1992Optimal`) | Los MIE como aplicación de la optimización dinámica de horizonte infinito; `\vertema{3.B.31}` (y no para «recursos naturales como inputs», que el 3.B.31 no trata) | El modelo |
 | 4.B.6 | Análisis coste-beneficio y descuento | mención | $r_s=\rho+\theta\gamma_c$ y el debate Stern-Nordhaus resumidos, con cifras (el 4.º no depende del 3.º); remisión al 3.B.31 solo para ampliar | El DICE |
 | 4.A.6 | Política de energía y clima | mención | CSC y precio del carbono en rampa como referencia de la política; `\vertema{3.B.31}` | El modelo |
 

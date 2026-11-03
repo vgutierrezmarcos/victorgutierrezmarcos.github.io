@@ -24,7 +24,7 @@ con $h$ el capital humano, $c(h)$ su coste (incluido el salario perdido; como $c
 | 3.A.25 | Teoría del capital humano | desarrollo (hecho, 31/10/2026) | Todo lo anterior | — |
 | 3.A.13 | Información asimétrica | mención (hecho, 19/10/2026) | Becker frente a Spence: la educación eleva la productividad o la señala; «los datos de salario por años de estudio no distinguen las 2 explicaciones» | El modelo |
 | 3.A.27 | Negociación salarial, *insiders* | mención (hecho, 31/10/2026) | La formación específica como fuente de rentas compartidas y del poder de los *insiders*; remitir a III.2 del 3.A.25 | El modelo de 2 periodos |
-| 3.A.29 | Modelización dinámica | mención (prevista) | La separación de Fisher aplicada a la decisión de educarse (Fisher, 1930), remitiendo al 3.A.25 | La teoría de Becker; nunca «teorema de Acemoğlu y Autor» |
+| 3.A.29 | Modelización dinámica | mención (hecho, 1/11/2026; I.1.3 b) | La separación de Fisher aplicada a la decisión de educarse (Fisher, 1930), remitiendo al 3.A.25 | La teoría de Becker; nunca «teorema de Acemoğlu y Autor» |
 | 3.A.34 | Inversión | mención (hecho, 31/10/2026) | El capital humano como inversión con la misma regla del VAN | — |
 | 3.A.44 | Crecimiento con capital humano | no sale (1/11/2026) | Capital humano individual $h$ y agregado $H$ (D131); rendimiento privado frente a social | El modelo micro |
 | 3.B.2 | Decisiones de inversión de la empresa | mención (prevista) | La formación general la paga el trabajador; la específica se reparte (Acemoglu y Pischke para la general pagada por la empresa), remitiendo al 3.A.25 | El modelo |
@@ -33,7 +33,7 @@ con $h$ el capital humano, $c(h)$ su coste (incluido el salario perdido; como $c
 
 ## Divergencias encontradas en el temario actual
 - 3.A.25 original: Becker «1962» y «1964» mezclados; $K_H$, $C(K_H)$, $W(K_H)$, $\pi$; «Desarrollo» de la formación específica que era la decisión de formación general con separación de Fisher; «teorema de la separación de Acemoğlu y Autor»; «función de utilidad» por función de producción en el enfoque de Becker; «Gardener». **Resuelto** en la revisión (31/10/2026).
-- 3.A.29 (sin revisar): epígrafe «Decisión de inversión en capital humano: el teorema de la separación en consumidores (Becker, 1962)» con la atribución a Acemoğlu y Autor: es la separación de Fisher (1930); remitir al 3.A.25 (`mapa.yaml`, contradicciones del 3.A.25).
+- 3.A.29 original: «teorema de la separación de Acemoğlu y Autor». **Resuelto** (1/11/2026): separación de Fisher (1930) e Hirshleifer (1958), que Acemoglu y Autor (2011) aplican al capital humano, con `\vertema{3.A.25}`.
 - 3.B.2 (sin revisar): pide coordinar con el 3.A.25 la formación general financiada por la empresa: está en III.2 c) del 3.A.25; debe remitir.
 
 Autor: Víctor Gutiérrez Marcos

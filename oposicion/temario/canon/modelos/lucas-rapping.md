@@ -32,7 +32,7 @@ con la utilidad de referencia es $(1-L_t)/L_t$ (2 si se trabaja un tercio del ti
 | 3.A.6 | La NMC | resumen | Como microfundamento del mercado de trabajo en el equilibrio continuo: la condición `eq:lr-condicion` en una línea, la sustitución intertemporal y la crítica de las elasticidades; $\varepsilon_{L,w}$ y φ (no $\varepsilon_{(L^S,w)}$), remitiendo al 3.A.25 | La derivación y las «2 razones para aumentar la oferta de trabajo» desarrolladas |
 | 3.A.42 | Ciclos reales | mención | Mecanismo de propagación (efecto riqueza frente a sustitución según la persistencia); la Frisch 1/φ que piden los modelos (≈ 2,8) frente a la micro (≈ 0,5-0,8); remitir | El modelo |
 | 3.A.26 | Dinámica de la demanda de trabajo | mención (hecho, 31/10/2026) | Una línea: por el lado de la oferta, la sustitución intertemporal de Lucas y Rapping (3.A.25); el 3.A.26 estudia el de la demanda (costes de ajuste) | El modelo |
-| 3.A.29 | Modelización dinámica | mención | El horizonte infinito con $b_t$ y no-Ponzi como aplicación de la optimización dinámica | El modelo de 2 periodos |
+| 3.A.29 | Modelización dinámica | mención (hecho, 1/11/2026; II.1 como uno de los primeros usos del agente representativo y II.2 d) como aplicación, con `\vertema{3.A.25}`) | El horizonte infinito con $b_t$ y no-Ponzi como aplicación de la optimización dinámica | El modelo de 2 periodos |
 | 3.A.33 | Consumo | mención (hecho, 31/10/2026) | La renta endógena como extensión de la liquidez: consumo y horas a la vez | El modelo |
 
 ## Divergencias encontradas en el temario actual
