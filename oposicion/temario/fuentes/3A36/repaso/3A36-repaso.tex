@@ -1,0 +1,258 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Política monetaria (I)]{3.A.36}{Política monetaria (I). El diseño y la instrumentación de la política monetaria.}
+\tcefecha{04/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «lo prometido es deuda»}{2,5}
+\apartadocante{I. Diseño de la política monetaria}{15}
+\subcante{1. Justificación, objetivos y discrecionalidad}{6,5}
+\subcante{2. Diseño de reglas (ancla, \autor{Taylor})}{3}
+\subcante{3. Política monetaria óptima: modelo de la NEK}{3,5}
+\subcante{4. Nuevas problemáticas (ZLB, oferta…)}{2}
+\apartadocante{II. Instrumentación de la política monetaria}{11,5}
+\subcante{1. La creación del dinero hoy}{1,5}
+\subcante{2. Balances y multiplicador}{1}
+\subcante{3. Esquema operativo e instrumento (\autor{Poole})}{4,5}
+\subcante{4. Instrumentos convencionales y no conv.}{4,5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: \emph{izda.}, refrán y pegatinas: «el camino del infierno está empedrado de buenas intenciones» (sesgo inflacionista), «entre dos males, el menor» (dilema ante shock de costes), «perturbación real, fija la cantidad; monetaria, fija el tipo» (\autor{Poole}), «a grandes males, grandes remedios» (no convencionales), «quien avisa no es traidor» (orientación). \emph{Centro}, 3 gráficos: \autor{Barro}-\autor{Gordon} (R, T, D), panel b de la NEK, \autor{Poole}. \emph{Dcha.}, recuadradas: sesgo, regla de \autor{Taylor}, condición de la discreción. En \hyperref[rep:I.1]{I.1}, \tiempo{4,5} para \autor{Kydland}-\autor{Prescott} y \autor{Barro}-\autor{Gordon}; en \hyperref[rep:II.3]{II.3}, \tiempo{2,5} para \autor{Poole}.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Lo prometido es deuda». BCE: 2\,\% simétrico a medio plazo (jul.\ 2021; renovado jun.\ 2025). En 2022, inflación media 8,4\,\%; facilidad de depósito de $-0{,}50$\,\% a 4\,\% (jul.\ 2022-sep.\ 2023). Oct.\ 2026: inflación 4\,\% por la energía (+20\,\% en un año); BCE sube en junio y septiembre y mantiene el 29/10 (FD 2,50\,\%). ¿Por qué creer a un banco central que promete el 2\,\% si en cada momento podría convenirle otra cosa, y con qué instrumentos cumple?
+\item \textbf{Relevancia}: \emph{estabilización}, 1.ª línea de defensa frente al ciclo; única para los 21 del euro (España sin política propia) \vertema{3.B.43}; \emph{teoría}: donde la macro moderna (racionales, inconsistencia temporal, NEK) se hizo instituciones; \emph{actualidad}: más cambios en 15 años que en 50 (tipos negativos, compras, orientación, marco de 2024, euro digital).
+\item \textbf{Contextualización}: \concepto{política monetaria}: actuación del banco central sobre el precio (tipo a muy corto) o la cantidad de dinero para sus objetivos (estabilidad de precios y, según mandato, empleo). 2 caras = 2 epígrafes: \concepto{diseño} (objetivos, estrategia) e \concepto{instrumentación} (qué controla y con qué). Tensión: LP, dinero casi neutral (\autor{McCandless}-\autor{Weber}, 1995: 110 países, corr.\ dinero-inflación 0,93-0,96 \vertema{3.A.35}; causación inversa, \autor{Tobin}, 1970); CP, mueve $Y$ y empleo («desde \autor{Hume}», \autor{Lucas}, Nobel 1996). Historia: activismo 60 $\to$ estanflación 70 \vertema{3.A.5} $\to$ racionales \vertema{3.A.6} $\to$ objetivos de inflación desde 1990 \vertema{3.A.7} $\to$ ZLB y no convencionales desde 2008 $\to$ inflación 2021-23. Fuera: transmisión \vertema{3.A.37}, fiscal \vertema{3.A.39}, inflación \vertema{3.A.41}, Eurosistema \vertema{3.B.43}.
+\item \textbf{Problemática}: ¿solo inflación o también empleo? ¿Regla o discreción, con qué ancla y qué regla? ¿Cómo responder a shocks de demanda y de oferta, y qué cambia en el límite inferior? ¿Qué variable controla de verdad y con qué instrumentos?
+\item \textbf{Estructura}, del qué al cómo: \hyperref[rep:I]{I}, diseño (justificación y objetivos, compromiso, ancla y regla, NEK, nuevas problemáticas); \hyperref[rep:II]{II}, instrumentación (creación del dinero, variable operativa, instrumentos hasta el euro digital).
+\end{itemize}
+
+% ==========================================================================
+\bloque[15]{I. Diseño de la política monetaria\label{rep:I}}
+\begin{ideaclave}
+Estabiliza a CP, pero no aleja el paro de su tasa natural a LP $\Rightarrow$ objetivo central, estabilidad de precios; mejor forma de lograrla: \emph{comprometerse} (banco central independiente, objetivo de inflación explícito, respuesta sistemática y conocida).
+\end{ideaclave}
+
+\sub{I.1. Justificación, objetivos y discrecionalidad\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Efectiva}: con precios flexibles, \concepto{dicotomía clásica}, neutral \vertema{3.A.3}; con precios rígidos, mueve el tipo real, $r_t\equiv i_t-\mathbb{E}_t[\pi_{t+1}]$ (\autor{Fisher}) $\Rightarrow$ $C$, $I$, $Y$ \vertema{3.A.7}. \emph{Deseable}: con rigideces nominales y reales (\autor{Ball}-\autor{Romer}, 1990) la respuesta a shocks no es eficiente ($Y$ se aleja de la natural, la de precios flexibles); la inflación cuesta \vertema{3.A.41}.
+\item \concepto{Regla de \autor{Tinbergen}} (1952): 1 instrumento no alcanza 2 objetivos independientes. \emph{Mandato jerárquico}: SEBC, estabilidad de precios y, sin perjuicio de ella, apoyo a las políticas de la UE (art.\ 127.1 TFUE); \emph{dual}: Fed, máximo empleo, estabilidad de precios y tipos largos moderados. Convergen: 2\,\% a medio plazo.
+\item \emph{Objetivos reales}: años 60, \autor{Phillips} como menú (\autor{Samuelson}-\autor{Solow}, 1960); \autor{Friedman} (AEA, dic.\ 1967; 1968): con adaptativas, sin dilema a LP \vertema{3.A.28}; \autor{Lucas} (1972), sobre las islas de \autor{Phelps} (1970): solo mueve $Y$ lo no anticipado; \autor{Sargent}-\autor{Wallace} (1975): \emph{inefectividad} \vertema{3.A.6}. $\Rightarrow$ reduce fluctuaciones, no mueve la tasa natural (histéresis: \hyperref[rep:I.4]{I.4}).
+\item \emph{Objetivos nominales}: con precios rígidos y racionales, la inflación dispersa precios relativos; inflación baja y creíble ancla expectativas (\autor{Woodford}, 2003). Costes: \emph{anticipada}, saldos reales, menú, dispersión; \emph{no anticipada}, además redistribuye y da incertidumbre.
+\item \textbf{Reglas vs.\ discrecionalidad}. \autor{Kydland}-\autor{Prescott} (1977), «Rules Rather than Discretion»: plan óptimo hoy deja de serlo mañana, cuando el público ya ha actuado: \concepto{inconsistencia temporal} (inflación, impuestos al capital, patentes, regulación \vertema{3.A.20}); a la monetaria, \autor{Barro}-\autor{Gordon} (1983). \concepto{Discrecionalidad}: optimiza periodo a periodo con lo pasado como dado; \concepto{regla} (compromiso): forma de actuar fijada de antemano.
+\item[] \emph{Supuestos}: primero el público fija $\pi^e_t$ (convenios), luego el banco central $\pi_t$; información completa (falta \emph{compromiso}); $U^*<U^n$ (sin ello no hay problema):
+\begin{formula}
+\centering $\min_{\pi_t}\ (U_t-U^*)^2+\gamma(\pi_t-\pi^*)^2\ \ \text{s.a.}\ \ U_t=U^n-\alpha(\pi_t-\pi^e_t)$
+\end{formula}
+\item[] Pérdidas: elipses centradas en $(U^*,\pi^*)$. CPO: $\gamma(\pi_t-\pi^*)=\alpha(U_t-U^*)$. Con $\pi^e_t=\pi_t$, $U=U^n$ y \concepto{sesgo inflacionista}:
+\funcionclave{\pi^D=\pi^*+\frac{\alpha}{\gamma}\,(U^n-U^*)>\pi^*}
+\end{itemize}
+\graficorepaso[0.95\linewidth]{barro-gordon}{R, regla $(U^n,\pi^*)$; T, tentación ($U^T<U^n$); D, discreción $(U^n,\pi^D)$: mismo paro, más inflación}
+\begin{itemize}
+\item[] Tentación: $\pi^T=\pi^*+\alpha(U^n-U^*)/(\gamma+\alpha^2)$. Pérdidas, $\Delta\equiv U^n-U^*$: $L^T=\gamma\Delta^2/(\gamma+\alpha^2)<L^R=\Delta^2<L^D=\Delta^2(1+\alpha^2/\gamma)$. Regla no creíble; discreción = eq.\ de \autor{Nash} (perfecto en subjuegos) \vertema{3.A.14}. Sesgo ↑ si $U^n-U^*$↑, $\alpha$↑, $\gamma$↓. \emph{Credibilidad = activo}.
+\item \emph{Cómo llegar a la regla}: \emph{reputación} en juego repetido (\autor{Barro}-\autor{Gordon}, 1983; \autor{Volcker}, Fed 1979-87) \vertema{3.A.14}; \emph{atarse las manos}, cambio fijo o unión monetaria (\autor{Giavazzi}-\autor{Pagano}, 1988) \vertema{3.B.16}; \emph{banquero conservador} (\autor{Rogoff}, 1985), $\gamma'>\gamma$, sesgo $(\alpha/\gamma')(U^n-U^*)$; con shock de oferta $u_t$:
+\begin{formula}
+\centering $\pi_t=\pi^D+\dfrac{\alpha}{\gamma+\alpha^2}u_t,\qquad U_t=U^n+\dfrac{\gamma}{\gamma+\alpha^2}u_t$
+\end{formula}
+\item[] \emph{credibilidad vs.\ flexibilidad}: $\gamma'$ óptimo $>\gamma$, finito. \emph{Contrato} (\autor{Walsh}, 1995): pérdida $L_t+c\pi_t$, $c=2\alpha(U^n-U^*)$: sin sesgo y sin ese coste (Nueva Zelanda). \emph{Independencia}: no basta sola (\autor{Sargent}-\autor{Wallace}, 1981) \vertema{3.A.39}: \concepto{dominación monetaria} (la fiscal ajusta superávits) vs.\ \concepto{fiscal} (la monetaria se ajusta: aritmética desagradable). UE: art.\ 123 (no financiación) y 130 (independencia) TFUE.
+\item \emph{Evidencia}: independencia legal (\autor{Cukierman}-\autor{Webb}-\autor{Neyapti}, 1992) $\Rightarrow$ menos inflación en industriales, no en desarrollo; más independencia, menos inflación sin menos crecimiento (\autor{Alesina}-\autor{Summers}, 1993). Correlación $\neq$ causalidad.
+\item \emph{Críticas}: pérdida \emph{ad hoc}, exige $U^*<U^n$ (\autor{McCallum}, 1995: basta no intentarlo); problema de los 2010, el contrario (inflación baja en el ZLB); explica el \emph{nivel}, no la respuesta a shocks ($\to$ NEK). Crítica de \autor{Lucas}: evaluar \emph{reglas} \vertema{3.A.6}.
+\end{itemize}
+
+\sub{I.2. Diseño de reglas de política monetaria\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Instrumento}: cantidad o tipo, lo resuelve \autor{Poole} (\hyperref[rep:II.3]{II.3}); hoy todos fijan un tipo a muy corto.
+\item \concepto{Ancla nominal}: restricción sobre el valor del dinero nacional; en sentido amplio, sobre la discrecionalidad, que atenúa la inconsistencia temporal (\autor{Mishkin}, 1999). \emph{Tipo de cambio}: importa credibilidad, sin política propia, crisis especulativas (SME 1979-98; Bulgaria 1997-2025) \vertema{3.B.15}; \emph{agregado}: exige velocidad estable (Bundesbank 1975-98; Fed 1975-82); \emph{inflación}: dominante desde 1990; \emph{nivel de precios} (Suecia 1931-37) y \emph{PIB nominal} (propuesta: \autor{Meade}, 1978).
+\item \concepto{Objetivo de inflación}, 5 elementos (\autor{Mishkin}, 1999): objetivo numérico a medio plazo; compromiso institucional; toda la información; transparencia; rendición de cuentas. \autor{Svensson} (1997): objetivo sobre la \emph{previsión} a 1-2 años (objetivo intermedio); \emph{flexible} si pesa la brecha (1999). 1.º Nueva Zelanda (1990); BCE: 2\,\% simétrico (jul.\ 2021), confirmado el 30/06/2025, próxima evaluación 2030.
+\item \concepto{Nivel de precios}: tras un shock vuelve a la senda (inflación alta $\to$ baja), no «lo pasado, pasado». + ancla mejor el LP, ayuda en el ZLB, = lo del compromiso NEK (\autor{Svensson}, 1999); $-$ exige deflacionar y mucha credibilidad; ningún gran banco central.
+\item \emph{Inflación media}: Fed, ago.\ 2020 (compensa dentro de una ventana; \autor{Bernanke}, 2017, solo tras ZLB); abandonada el 22/08/2025: vuelve al objetivo flexible del 2\,\%. \emph{PIB nominal}, $\gamma^N_t\simeq\pi_t+\gamma_{Y,t}$ (\autor{Meade}, 1978; \autor{Bean}, 1983): reparte shocks de oferta, sin PIB potencial; datos tardíos y revisados.
+\item \textbf{Regla de \autor{Taylor}} (Carnegie-Rochester, nov.\ 1992; 1993): antecedente \autor{Wicksell} (1898) \vertema{3.A.3}; describe la Fed 1987-92 y prescribe. Original, $r^*=\pi^*=2$:
+\begin{formula}
+\centering $i_t=r^*+\pi_t+0{,}5(\pi_t-\pi^*)+0{,}5\,\mathrm{OG}_t\ \Rightarrow\ i_t=1+1{,}5\pi_t+0{,}5\,\mathrm{OG}_t$
+\end{formula}
+\item[] Tipo \emph{neutral} $r^*+\pi^*=4$\,\%. Canónica, $\phi_\pi=1{,}5$, $\phi_x=0{,}5$:
+\funcionclave{i_t=r^*+\pi^*+\phi_\pi(\pi_t-\pi^*)+\phi_x x_t+\varepsilon_t}
+\item[] \concepto{Principio de \autor{Taylor}}: $\phi_\pi>1$: el tipo \emph{real} sube con la inflación; si no, se alimenta. \emph{Tono}: vigente por debajo de la regla = expansivo.
+\item \emph{Extensiones}: \emph{suavización}, $i_t=\nu i_{t-1}+(1-\nu)[\dots]$ (incertidumbre: \autor{Brainard}, 1967; óptima con compromiso: \autor{Woodford}, 2003); \emph{prospectiva} (\autor{Clarida}-\autor{Galí}-\autor{Gertler}, 2000); \concepto{regla instrumental} (cómo mover el instrumento) vs.\ \concepto{regla objetivo} (relación entre variables objetivo) (\autor{Svensson}, 2003).
+\item \emph{Evidencia}: Fed antes de 1979, coef.\ $<1$; con \autor{Volcker} y \autor{Greenspan}, $>1$ (CGG, 2000). Zona del euro, coeficientes originales e inflación general: 2020, $-1{,}6$\,\% (imposible, ZLB); 2022, 14,2\,\% (FD media 0,08\,\%); 2026, 5,1\,\% (FD media 2,16\,\%); con $r^*\approx0$ (BCE: $-0{,}5$ a 1\,\%), 3,1\,\%. Exagera: energía, de la que se puede «mirar a través».
+\end{itemize}
+\graficorepaso[0.92\linewidth]{regla-taylor-zona-euro}{Regla de \autor{Taylor} (1993) y facilidad de depósito del BCE, 1999-2026 (2026 provisional)}
+\begin{itemize}
+\item \emph{Valoración}: sencilla, transparente, \emph{robusta}; pero $r^*$ cae y no se observa (\autor{Laubach}-\autor{Williams}, 2003; \autor{Holston}-\autor{Laubach}-\autor{Williams}, 2017) \vertema{3.A.42}; brecha y NAIRU inciertas (\autor{Staiger}-\autor{Stock}-\autor{Watson}, 1997); datos en tiempo real (\autor{Orphanides}, 2001: Fed de los 70); mira al presente; sin ZLB ni estabilidad financiera $\Rightarrow$ \emph{referencia}, no mandato.
+\end{itemize}
+
+\sub{I.3. Política monetaria óptima: modelo de la NEK\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Idea}: pérdida derivada del bienestar y dinámica: cómo responder a cada shock y qué gana el compromiso. \emph{Supuestos} (\autor{Clarida}-\autor{Galí}-\autor{Gertler}, 1999; \autor{Woodford}, 2003; \autor{Galí}, 2015) \vertema{3.A.7}: racionales, competencia monopolística, \autor{Calvo} (1983) (revisa con prob.\ $1-\eta$), cerrada; \concepto{brecha} $x_t\equiv y_t-y^n_t$. 3 ecuaciones:
+\begin{formula}
+\centering $\begin{aligned}
+&x_t=\mathbb{E}_t[x_{t+1}]-\tfrac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big)\\
+&\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t\\
+&i_t=\rho+\phi_\pi\pi_t+\phi_x x_t+\varepsilon_t
+\end{aligned}$
+\end{formula}
+\item[] IS dinámica (shocks de demanda mueven $r^n_t$), NKPC ($\kappa$↓ con más rigidez; $u_t$, \emph{costes}), \autor{Taylor}. Pérdida (\autor{Rotemberg}-\autor{Woodford}, 1997), no \emph{ad hoc}:
+\begin{formula}
+\centering $L=\mathbb{E}_0\sum_{t=0}^{\infty}\beta^t\big(\pi_t^2+\lambda_x x_t^2\big),\qquad \lambda_x=\kappa/\sigma$
+\end{formula}
+\item \emph{Discreción}: $\min\pi_t^2+\lambda_x x_t^2$ s.a.\ $\pi_t=\kappa x_t+v_t$ $\Rightarrow$ regla objetivo:
+\funcionclave{x_t=-\frac{\kappa}{\lambda_x}\,\pi_t}
+\item[] Con $u_t$ AR(1): $\pi_t=\lambda_x u_t/[\kappa^2+\lambda_x(1-\beta\rho_u)]$, $x_t=-\kappa u_t/[\cdot]$. \emph{Compromiso}: $x_t=x_{t-1}-(\kappa/\lambda_x)\pi_t$ $\Leftrightarrow$ $x_t=-(\kappa/\lambda_x)(p_t-p_{-1})$: responde al \emph{nivel} de precios.
+\item \emph{Determinación}: único si $\kappa(\phi_\pi-1)+(1-\beta)\phi_x>0$ (basta $\phi_\pi>1$, $\phi_x\geq0$).
+\item \concepto{Divina coincidencia} (sin $u_t$): seguir a $r^n_t$ $\Rightarrow$ $\pi=x=0$ (\autor{Goodfriend}-\autor{King}, 1997; \autor{Rotemberg}-\autor{Woodford}, 1997; nombre: \autor{Blanchard}-\autor{Galí}, 2007). Lectura \emph{neowickselliana}: expansiva si $i_t-\mathbb{E}_t\pi_{t+1}<r^n_t$. Con $u_t>0$, \emph{dilema}: se reparte, «entre dos males, el menor».
+\end{itemize}
+\graficorepaso[0.94\linewidth]{nek-xpi}{a) Demanda: siguiendo a $r^n_t$ vuelve a $E_0$; b) costes: dilema, más inflación y $x_t<0$}
+\begin{itemize}
+\item \emph{Ganancia del compromiso} (CGG, 1999): promete política restrictiva también \emph{después}: $\pi^e$↓, menos inflación y recesión hoy; la discreción no puede: \emph{sesgo de estabilización}. Compromiso = nivel de precios implícito. \emph{Objetivo de inflación flexible} (\autor{Svensson}, 1997, 2003). Sin subsidio, reaparece el sesgo inflacionista.
+\item \emph{Extensiones}: salarios reales rígidos (\autor{Blanchard}-\autor{Galí}, 2007), búsqueda (2010) \vertema{3.A.28}, salarios nominales rígidos (\autor{Erceg}-\autor{Henderson}-\autor{Levin}, 2000), histéresis; HANK (\autor{Kaplan}-\autor{Moll}-\autor{Violante}, 2018) \vertema{3.A.37}. \emph{Evidencia}: \autor{Smets}-\autor{Wouters} (2003, 2007). \emph{Valoración}: base de bienestar del objetivo de inflación; pero $r^n$ y $x$ no se observan, sin ZLB, sin finanzas, sin heterogeneidad.
+\end{itemize}
+
+\sub{I.4. Nuevas problemáticas\label{rep:I.4}}
+\begin{itemize}
+\item \concepto{Límite inferior de los tipos} (ZLB; ELB si algo negativo): el efectivo rinde 0 nominal; si $r^n_t\ll0$, el tipo real no baja lo bastante: brecha ↑, $\pi$↓, tipo real ↑ (\autor{Eggertsson}-\autor{Woodford}, 2003) \vertema{3.A.37}. $r^*$ cae + objetivo 2\,\% $\Rightarrow$ poco margen. FD: 0 desde jul.\ 2012, negativa jun.\ 2014-jul.\ 2022, mín.\ $-0{,}50$\,\% (sep.\ 2019-jul.\ 2022). \emph{Respuestas}: objetivo positivo (4\,\%: \autor{Blanchard}-\autor{Dell'Ariccia}-\autor{Mauro}, 2010); compensar (nivel de precios, inflación media); simetría (BCE 2021); no convencionales \vertema{3.A.40}. Expectativas: amortiguan si la política es creíble y activa; amplifican si pasiva (Japón).
+\item \concepto{Perturbación de oferta}: sube $\pi$ y baja $Y$ (la $u_t$). Si transitoria y expectativas ancladas, «mirar a través»; si grande, persistente o con segunda ronda, responder. 2021-23: energía, alimentos, cuellos de botella + mercado de trabajo (\autor{Bernanke}-\autor{Blanchard}, 2025); tarde, luego +450 pb en 14 meses; ~2\,\% en 2025 sin recesión profunda. Evaluación 2025: «adecuadamente enérgica o persistente». 2026: no espera (subyacente 2,5\,\%). Clima \vertema{3.B.31}.
+\item \emph{Estabilidad financiera}: \emph{ir contra el viento} (\autor{Stein}, 2013: tipos llegan a todos los rincones) vs.\ \emph{limpiar después} (\autor{Blanchard}-\autor{Summers}, 2017: burbujas difíciles de ver, retrasos, mal instrumento); \autor{Svensson} (2017): costes $>$ beneficios. Consenso: macroprudencial 1.ª línea \vertema{3.B.27}; prestamista de última instancia.
+\item \emph{Histéresis} (\autor{Blanchard}-\autor{Summers}, 1986) \vertema{3.A.28}: más peso al empleo (\autor{Galí}, 2022). Fed 2020, déficits de empleo (asimetría); 2025, enfoque equilibrado.
+\end{itemize}
+
+% ==========================================================================
+\bloque[11,5]{II. Instrumentación de la política monetaria\label{rep:II}}
+\begin{ideaclave}
+El banco central no controla la cantidad de dinero (la crean sobre todo los bancos al prestar), sino el precio de sus reservas: fija un tipo a muy corto, con un marco operativo (hoy, suelo) y pocos instrumentos; en el límite inferior, su balance y su palabra.
+\end{ideaclave}
+
+\sub{II.1. La creación del dinero hoy\label{rep:II.1}}
+\begin{itemize}
+\item Controla su balance: \concepto{base monetaria} (efectivo + reservas) y el tipo al que presta y remunera reservas. \emph{Manual}: fija la base y los bancos la «multiplican».
+\item \emph{En realidad} (\autor{McLeay}-\autor{Radia}-\autor{Thomas}, 2014, Banco de Inglaterra): los bancos crean depósitos al prestar (préstamo +100 activo, depósito +100 pasivo; balance del banco central igual); se destruye al devolver; reservas se adaptan a los préstamos. Depósitos: 97\,\% del dinero amplio en el R.\,U.; efectivo, 9\,\% de M3 en la zona del euro.
+\item \emph{Límites}: rentabilidad y riesgo (capital, liquidez \vertema{3.B.27}); hogares y empresas (devolver deudas lo destruye); política monetaria, límite último. \emph{Dinero endógeno}.
+\end{itemize}
+
+\sub{II.2. Balances y multiplicador\label{rep:II.2}}
+\begin{itemize}
+\item Banco central crea base prestando a bancos, comprando valores o divisas; la controla mal con cambio fijo o dominación fiscal \vertema{3.A.39}. $\mathrm{BM}=\mathrm{Ef}+\mathrm{Res}$, $M=\mathrm{Ef}+\mathrm{Dep}$, $c_E\equiv\mathrm{Ef}/\mathrm{Dep}$, $c_R\equiv\mathrm{Res}/\mathrm{Dep}$:
+\begin{formula}
+\centering $M=\dfrac{1+c_E}{c_E+c_R}\,\mathrm{BM}$
+\end{formula}
+\item[] Identidad: ↓ si $c_E$↑ o $c_R$↑. $\neq$ multiplicador de IS-LM \vertema{3.A.5}. \emph{Gran Contracción} (\autor{Friedman}-\autor{Schwartz}, 1963): 1929-33, base ↑, dinero ↓ $\approx$1/3, multiplicador 6,5 $\to$ 3,6. Con reservas abundantes, identidad, no mecanismo.
+\end{itemize}
+
+\sub{II.3. Esquema operativo y elección del instrumento\label{rep:II.3}}
+\begin{itemize}
+\item \concepto{Esquema operativo}: \emph{instrumentos} (tipos de facilidades y operaciones, coeficiente, balance) $\to$ \emph{objetivo operativo} (tipo a un día, €STR, o reservas) $\to$ \emph{intermedio} (agregado, cambio; hoy, \emph{previsión} de inflación) $\to$ \emph{final} (precios, empleo). En 2 niveles, de los 70-80; hoy, más corta.
+\item \textbf{\autor{Poole} (1970)}: ¿fijar la cantidad o el tipo? Decide \emph{antes} de ver los shocks (ve $i$ enseguida, $y$ con retraso); $\min\mathbb{E}[y_t^2]$; IS-LM con precios fijos, shocks independientes:
+\begin{formula}
+\centering $y_t=-b\,i_t+\varepsilon^{\mathrm{IS}}_t,\qquad m_t=k\,y_t-h\,i_t+\varepsilon^{\mathrm{LM}}_t$
+\end{formula}
+\item[] \emph{Tipo fijo}: $\mathbb{E}[y_t^2]_i=\sigma^2_{\mathrm{IS}}$. \emph{Cantidad fija}: $\mathbb{E}[y_t^2]_M=(h^2\sigma^2_{\mathrm{IS}}+b^2\sigma^2_{\mathrm{LM}})/(h+bk)^2$. Fijar el tipo es mejor si y solo si
+\begin{formula}
+\centering $\dfrac{\sigma^2_{\mathrm{LM}}}{\sigma^2_{\mathrm{IS}}}>k^2+\dfrac{2hk}{b}$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.8\linewidth]{poole}{Real: varía menos $y$ con la cantidad fija (a) que con el tipo fijo (b); monetaria: con el tipo fijo, $y$ no varía (d)}
+\begin{itemize}
+\item[] Tipo, mejor cuanto más pesan los shocks de demanda de dinero, $h$ pequeño, $b$ grande. Varianzas iguales y $k\geq1$: la cantidad nunca peor. «Perturbación real, fija la cantidad; monetaria, fija el tipo». \emph{Regla mixta}: LM óptima $H^*=b\sigma^2_{\mathrm{LM}}/(k\sigma^2_{\mathrm{IS}})$.
+\item[] \emph{Evidencia}: objetivos monetarios desde 1975 (Fed, Canadá; BoE 1976; Bundesbank); innovación financiera $\Rightarrow$ $\varepsilon^{\mathrm{LM}}$↑; Fed y Canadá los dejan en 1982: «no abandonamos los agregados: ellos nos abandonaron» (\autor{Bouey}). \emph{Valoración}: estático; tipo fijo sin responder a $\pi$ deja indeterminado el nivel de precios (\autor{Sargent}-\autor{Wallace}, 1975) $\Rightarrow$ principio de \autor{Taylor}.
+\item \emph{Cantidad como objetivo intermedio} \vertema{3.A.5}: $\gamma_M+\gamma_V=\pi+\gamma_Y$; velocidad estable (\autor{Friedman}, 1956); retardos largos y variables (1961) $\Rightarrow$ \concepto{regla del $k$\,\%} (1960). Problemas: control imperfecto; \concepto{ley de \autor{Goodhart}} (1975): toda regularidad se rompe al usarla para el control; la «ecuación que falta» (1970). BCE: pilar monetario hasta 2021; M3 +3,5\,\% (sep.\ 2026).
+\item \emph{Tipos como objetivo}: desde los 90, tipo a un día + regla; llega a los demás por expectativas y primas \vertema{3.A.37}; límite, el ZLB.
+\end{itemize}
+
+\sub{II.4. Instrumentos\label{rep:II.4}}
+\begin{itemize}
+\item \textbf{Convencionales} (Eurosistema, 3) \vertema{3.B.43}: \emph{operaciones de mercado abierto} (a iniciativa del banco central; temporales o en firme; OPF semanales a 1 semana, «tipo oficial»; OFPML a 3 meses; desde oct.\ 2008, tipo fijo y adjudicación plena); \emph{facilidades permanentes} (a iniciativa de las entidades, a un día: marginal de crédito = \emph{techo}, depósito = \emph{suelo}; corredor desde 1999, ±100 pb); \emph{reservas mínimas}: 1\,\% desde 18/01/2012 (antes 2\,\%), sin remunerar desde 20/09/2023 ($\approx$175.000 M€); estabilizan el tipo a un día, crean déficit de liquidez; Fed, 0 en 2020.
+\item \emph{Corredor $\to$ suelo}: reservas escasas, tipo en el centro (BCE 1999-2008); abundantes, tipo al suelo. Exceso de liquidez: 4,7 bill.\ (nov.\ 2022) $\to$ $\approx$2,1 bill.; €STR $\approx$6 pb bajo la FD. \emph{Marco de 2024}: tono con la FD; liquidez \emph{a demanda}; OPF-FD de 50 a 15 pb desde 18/09/2024; FMC +25 pb: \emph{suelo con demanda}. Hoy: FD 2,50\,\%, OPF 2,65\,\%, FMC 2,90\,\% (desde 16/09/2026). Fed: \emph{reservas amplias} desde 2019; 3,75-4,00\,\% desde 17/09/2026.
+\end{itemize}
+\graficorepaso[\linewidth]{pasillo-suelo}{Corredor (oferta escasa, tipo cerca de las OPF) y suelo (oferta abundante, tipo en la FD)}
+\begin{itemize}
+\item \textbf{No convencionales}, «a grandes males, grandes remedios» \vertema{3.A.37} \vertema{3.A.40}: \emph{crédito a largo} (3 años, dic.\ 2011-feb.\ 2012; TLTRO condicionadas); \emph{compras de activos} (APP 2014, deuda pública 2015; PEPP 2020): bajan la prima por plazo, señalan, deprecian; crean reservas, no préstamos; fin de reinversiones APP jul.\ 2023, PEPP fin 2024; balance 8,8 bill.\ (jun.\ 2022) $\to$ 5,9 (oct.\ 2026); \emph{tipos negativos} (riesgo: márgenes bancarios); \concepto{orientación} (\emph{forward guidance}): ligada a fechas o al estado; informativa o comprometida (\autor{Campbell} et al., 2012); BCE, 4/07/2013; «quien avisa no es traidor»; \emph{control de la curva} (Fed 1942-51; BoJ sep.\ 2016-mar.\ 2024; $\neq$ \emph{Twist}, 2011-12) \vertema{3.B.24}; \emph{protección de la transmisión}: \autor{Draghi}, «lo que sea necesario» (26/07/2012), OMT (nunca usadas), TPI (jul.\ 2022); \emph{dinero helicóptero} (\autor{Friedman}, 1969; QE para la gente, \autor{Muellbauer}, 2014; \autor{Galí}, 2020): directo, pero borra la frontera fiscal, art.\ 123 \vertema{3.A.39}.
+\item \concepto{Euro digital} (CBDC minorista): propuesta jun.\ 2023; Consejo dic.\ 2025, PE jul.\ 2026; piloto 2027 y emisión 2029 si se aprueba en 2026. Curso legal, sin intereses, límite de tenencia, sin conexión. Remunerado, reforzaría la transmisión; riesgo de \emph{desintermediación} y huidas; mantiene el ancla del dinero del banco central.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» tensión neutralidad a LP / efectos a CP $\Rightarrow$ estabilidad de precios + compromiso (independencia, objetivo explícito, respuesta sistemática, la política óptima en la NEK); instrumentación: fija el precio de las reservas; en el ZLB, balance y comunicación.
+\item \textbf{Relevancia}: inflación de 2021-23 y 2026: los creíbles la bajan sin recesión profunda, con expectativas a LP ancladas.
+\item \textbf{Extensiones}: \vertema{3.A.35} \vertema{3.A.37} \vertema{3.A.39} \vertema{3.A.40} \vertema{3.A.41} \vertema{3.A.7} \vertema{3.A.28} \vertema{3.A.5} \vertema{3.A.14} \vertema{3.B.15} \vertema{3.B.16} \vertema{3.B.43}.
+\item \textbf{Opinión}: acierto institucional más que técnico (independencia, transparencia: 2\,\% creíble); riesgos fuera del modelo canónico: ZLB, finanzas, dominación fiscal, shocks de oferta.
+\item \textbf{Idea final}: el diseño hace que nunca le convenga incumplir; la instrumentación, que pueda cumplir. «Lo prometido es deuda, y un banco central creíble es el que la paga».
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1898}{\autor{Wicksell}: tipo natural, regla de tipos}
+\hito{1952}{\autor{Tinbergen}: tantos instrumentos como objetivos}
+\hito{1960}{\autor{Friedman}: regla del $k$\,\%; \autor{Samuelson}-\autor{Solow}: \autor{Phillips} como menú}
+\hito{1968}{\autor{Friedman}: tasa natural (discurso AEA, dic.\ 1967)}
+\hito{1970}{\autor{Poole}: cantidad o tipo; \autor{Phelps}: islas}
+\hito{1972}{\autor{Lucas}: solo lo no anticipado}
+\hito{1975}{\autor{Sargent}-\autor{Wallace}: inefectividad; \autor{Goodhart}: su ley}
+\hito{1977}{\autor{Kydland}-\autor{Prescott}: inconsistencia temporal}
+\hito{1981}{\autor{Sargent}-\autor{Wallace}: aritmética desagradable}
+\hito{1983}{\autor{Barro}-\autor{Gordon} (2 artículos); \autor{Calvo}}
+\hito{1985}{\autor{Rogoff}: banquero conservador}
+\hito{1990}{Nueva Zelanda: 1.er objetivo de inflación}
+\hito{1993}{\autor{Taylor}; \autor{Alesina}-\autor{Summers}}
+\hito{1995}{\autor{Walsh}: contrato óptimo}
+\hito{1997}{\autor{Svensson}: objetivo sobre la previsión; \autor{Rotemberg}-\autor{Woodford}}
+\hito{1999}{\autor{Clarida}-\autor{Galí}-\autor{Gertler}; BCE con corredor}
+\hito{2003}{\autor{Woodford}, \emph{Interest and Prices}; \autor{Eggertsson}-\autor{Woodford}}
+\hito{2007}{\autor{Blanchard}-\autor{Galí}: «divina coincidencia»}
+\hito{2012}{\autor{Draghi}: «lo que sea necesario»; OMT}
+\hito{2014}{\autor{McLeay}-\autor{Radia}-\autor{Thomas}; FD negativa}
+\hito{2021}{Estrategia del BCE: 2\,\% simétrico}
+\hito{2024}{Nuevo marco operativo del BCE}
+\hito{2025}{Evaluación del BCE; Fed abandona la inflación media}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Inflación de la zona del euro: \dato{8,4\,\% media 2022}{Eurostat}; \dato{4\,\% oct.\ 2026, subyacente 2,5\,\%}{Eurostat}.
+\item Facilidad de depósito: \dato{$-0{,}50$\,\% $\to$ 4\,\% (jul.\ 2022-sep.\ 2023)}{BCE}; hoy \dato{2,50\,\%; OPF 2,65; FMC 2,90}{BCE, 16/09/2026}.
+\item Regla de \autor{Taylor} en la zona del euro: \dato{14,2\,\% en 2022; 5,1\,\% en 2026}{BCE, Eurostat, AMECO}.
+\item Exceso de liquidez: \dato{4,7 bill.\ € (nov.\ 2022) $\to$ $\approx$2,1}{BCE}; balance: \dato{8,8 $\to$ 5,9 bill.\ €}{BCE, oct.\ 2026}.
+\item Reservas mínimas: \dato{1\,\%, sin remunerar, $\approx$175.000 M€}{BCE}; M3: \dato{+3,5\,\%}{BCE, sep.\ 2026}; efectivo: \dato{9\,\% de M3}{BCE}.
+\item Fed: \dato{3,75-4,00\,\%}{FRED, 17/09/2026}. Corr.\ dinero-inflación: \dato{0,93-0,96}{\autor{McCandless}-\autor{Weber}, 1995}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿De dónde sale el sesgo inflacionista?} Discreción con $U^*<U^n$: el público anticipa la tentación; $U=U^n$ y $\pi^D>\pi^*$. Remedios: reputación, banquero conservador, contrato, independencia.
+\item \textbf{¿Cuál es el coste del banquero conservador?} Pasa más cada shock de oferta al paro: credibilidad vs.\ flexibilidad; el contrato de \autor{Walsh} lo evita.
+\item \textbf{¿Por qué $\phi_\pi>1$?} Para que suba el tipo real y frene la demanda; si no, la inflación se alimenta e indeterminación en la NEK.
+\item \textbf{¿Qué es la divina coincidencia y cuándo falla?} Sin shocks de costes, estabilizar $\pi$ estabiliza $x$; con $u_t$, salarios rígidos o búsqueda, dilema.
+\item \textbf{¿Tipo o cantidad?} \autor{Poole}: shocks monetarios, el tipo; reales, la cantidad; la innovación financiera hizo inestable la demanda de dinero.
+\item \textbf{¿Controla el banco central la cantidad de dinero?} No: los bancos la crean al prestar; fija el precio de las reservas; el multiplicador es una identidad.
+\item \textbf{¿Qué es un sistema de suelo?} Reservas abundantes: el tipo a un día cae a la FD; BCE 2024: suelo con demanda, OPF-FD 15 pb.
+\item \textbf{¿Ir contra el viento?} Consenso: no, o muy poco (\autor{Svensson}, 2017); macroprudencial primero.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Discreción: \emph{mismo paro} que la regla ($U^n$), más inflación; $L^T<L^R<L^D$.
+\item Sin $U^*<U^n$ no hay sesgo inflacionista.
+\item \autor{Rogoff}: $\gamma'>\gamma$ pero finito; \autor{Walsh}: penalización lineal, $c=2\alpha(U^n-U^*)$.
+\item \autor{Taylor} original: $1+1{,}5\pi+0{,}5\,\mathrm{OG}$; principio: $\phi_\pi>1$ (en la original, coef.\ 0,5 de $(\pi-\pi^*)$ positivo).
+\item \autor{Poole}: real $\to$ cantidad; monetaria $\to$ tipo (no al revés).
+\item Multiplicador $(1+c_E)/(c_E+c_R)$, decreciente en $c_E$ y $c_R$; no es el de IS-LM.
+\item Reservas mínimas en el euro: 1\,\% (no 2\,\%), sin remunerar desde sep.\ 2023.
+\item Tipo de referencia del BCE desde 2024: la \emph{facilidad de depósito}.
+\item Objetivo de inflación: lo pasado, pasado; nivel de precios: vuelve a la senda.
+\item Inflación media de la Fed (2020) abandonada en ago.\ 2025.
+\item \emph{Twist} $\neq$ control de la curva: sin objetivo de tipo ni ampliar balance.
+\item Dinero helicóptero $\neq$ regla de \autor{Friedman} (tipo nominal cero), mismo libro (1969).
+\item Compras de activos crean reservas, no dinero del público (salvo más préstamos).
+\item Divina coincidencia: resultado de \autor{Goodfriend}-\autor{King} y \autor{Rotemberg}-\autor{Woodford}; nombre de \autor{Blanchard}-\autor{Galí} (2007).
+\item $\lambda_x=\kappa/\sigma$: $\sigma$ es la elasticidad de sustitución entre bienes.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

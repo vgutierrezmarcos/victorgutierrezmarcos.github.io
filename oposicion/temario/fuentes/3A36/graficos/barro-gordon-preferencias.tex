@@ -1,0 +1,43 @@
+% Copiado sin cambios de fuentes/3A06/graficos/barro-gordon-preferencias.tex (3.A.6, gráfico de referencia del canon), 4/11/2026.
+% Preferencias de la autoridad en Barro y Gordon (1983) (3.A.6, anexo B):
+% curvas de pérdida L = (U - U*)^2 + gamma (pi - pi*)^2 alrededor del punto de
+% felicidad (U*, pi*) = (3,5; 3,5), no del origen (rehace la imagen 2 del
+% original, image16.jpg e image17.jpg). Mismos niveles en los 2 paneles,
+% sqrt(L) = 0,8; 1,5; 2: semiejes sqrt(L) en U y sqrt(L/gamma) en pi.
+%   izquierda, gamma = 4 (más aversión a la inflación): semiejes en pi 0,4; 0,75; 1
+%   derecha, gamma = 1/4 (más aversión al paro):      semiejes en pi 1,6; 3; 4
+% Las curvas se recortan en los ejes (U >= 0, pi >= 0).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.58cm,y=0.58cm]
+  % \panel{desplazamiento x}: ejes y punto de felicidad
+  \newcommand{\panel}[1]{%
+    \begin{scope}[shift={(#1,0)}]
+      \ejes{$U$}{$\pi$}{8}{8}
+      \draw[thick] (3.35,3.35) -- (3.65,3.65) (3.35,3.65) -- (3.65,3.35);
+      \draw[guia] (0,3.5) node[left, text=black] {$\pi^*$} -| (3.5,0) node[below, text=black] {$U^*$};
+    \end{scope}}
+  % \elipses{desplazamiento x}{gamma}
+  \newcommand{\elipses}[2]{%
+    \begin{scope}[shift={(#1,0)}]
+      \clip (0,0) rectangle (7.8,7.8);
+      \foreach \r in {0.8,1.5,2}
+        {\draw[curva1, thick] (3.5,3.5) ellipse ({\r} and {\r/sqrt(#2)});}
+    \end{scope}}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-1.1) rectangle (24.6,9.6);
+  % 1: ejes de los 2 paneles y punto (U*, pi*)
+  \capa{1}{\panel{0}}
+  \capa{1}{\panel{13}}
+  \capa{1}{\node[font=\small, align=center] at (4,9.1) {$\gamma$ alto: más aversión a la inflación};}
+  \capa{1}{\node[font=\small, align=center] at (17,9.1) {$\gamma$ bajo: más aversión al paro};}
+  % 2: elipses con gamma alto (aplanadas: alargadas en la dirección de U)
+  \capa{2}{\elipses{0}{4}}
+  \capa{2}{\node[etiqueta, text=tceemorado, font=\footnotesize, anchor=south] at (3.5,4.55) {$L$ crece hacia fuera};}
+  % 3: elipses con gamma bajo (alargadas en la dirección de pi)
+  \capa{3}{\elipses{13}{0.25}}
+  \capa{3}{\node[etiqueta, text=tceemorado, font=\footnotesize, anchor=west] at (18.6,3.5) {$L$ crece hacia fuera};}
+\end{tikzpicture}
+\end{document}

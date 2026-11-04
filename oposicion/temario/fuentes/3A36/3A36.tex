@@ -1,0 +1,1171 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A36.bib}
+\tcetema[Política monetaria (I): diseño e instrumentación]{3.A.36}{Política monetaria (I). El diseño y la instrumentación de la política monetaria.}
+\tcefecha{04/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Lo prometido es deuda». En julio de 2021 el BCE prometió una inflación del 2~\% a medio plazo, simétrica, y en junio de 2025 renovó la promesa \parencite{BCE2021Estrategia,BCE2025Estrategia}. Al año siguiente de hacerla, la inflación de la zona del euro fue del 8,4~\% de media en 2022 \parencite{Eurostat2026IAPC}, y el BCE subió el tipo de su facilidad de depósito del $-0{,}50$~\% al 4~\% entre julio de 2022 y septiembre de 2023, para cumplir lo prometido \parencite{BCE2026TiposOficiales}.
+  \item Hoy la promesa vuelve a examen. En octubre de 2026 la inflación de la zona del euro ha vuelto al 4~\% por la energía, que se encarece más de un 20~\% en un año \parencite{Eurostat2026IAPCoct}, y el BCE, que ya había subido los tipos en junio y en septiembre, los mantuvo el 29 de octubre con la facilidad de depósito en el 2,50~\% \parencite{BCE2026Decisiones}.
+  \item Detrás está la pregunta de esta exposición: \emph{¿por qué debería creer el público a un banco central que promete una inflación del 2~\%, si en cada momento podría convenirle hacer otra cosa, y con qué instrumentos cumple su promesa?}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Para la estabilización}: la política monetaria es la primera línea de defensa frente al ciclo en las economías avanzadas. En la zona del euro es única para los 21 países que comparten la moneda: España no tiene política monetaria propia, y los tipos del BCE llegan a sus hipotecas, a su deuda pública y al crédito de sus empresas \vertema{3.B.43}.
+  \item \emph{Para la teoría}: el diseño de la política monetaria es donde la macroeconomía moderna (expectativas racionales, inconsistencia temporal, nueva economía keynesiana) se ha convertido en instituciones: bancos centrales independientes, con un objetivo de inflación explícito y una respuesta previsible.
+  \item \emph{Para la actualidad}: ha cambiado más en los últimos 15 años que en los 50 anteriores: tipos negativos, compras masivas de activos, orientación de la política, un marco operativo nuevo en 2024 y, quizá, un euro digital. Y el tono de la política monetaria es una de las primeras preguntas de cualquier análisis de coyuntura.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item La \concepto{política monetaria} es la actuación del banco central sobre el precio del dinero (el tipo de interés a muy corto plazo) o sobre su cantidad para lograr sus objetivos macroeconómicos: ante todo, la estabilidad de precios y, según el mandato, el empleo.
+  \item Tiene 2 caras, que son los 2 epígrafes del título:
+    \begin{itemize}
+    \item el \concepto{diseño}: qué objetivos persigue el banco central y con qué estrategia (reglas o discrecionalidad, ancla nominal, respuesta a las perturbaciones);
+    \item la \concepto{instrumentación}: cómo convierte esas decisiones en operaciones, es decir, qué variable controla de verdad y con qué instrumentos.
+    \end{itemize}
+  \item Quedan fuera, con su propio tema, los canales por los que esas decisiones llegan a la producción y a los precios \vertema{3.A.37}, la frontera con la política fiscal \vertema{3.A.39}, la inflación misma \vertema{3.A.41} y el Eurosistema como institución \vertema{3.B.43}.
+  \item El punto de partida es una tensión antigua:
+    \begin{itemize}
+    \item \emph{a largo plazo}, el dinero es casi neutral: \textcite{McCandlessWeber1995}, con datos de 110 países entre 1960 y 1990, hallan una correlación entre el crecimiento del dinero y la inflación de 0,93 a 0,96 según el agregado \vertema{3.A.35}. Correlación no es causalidad: si el banco central acomoda la inflación que causan otros factores, el dinero crecerá con ella sin causarla \parencite[cap.~1]{Walsh2017Monetary}, la causación inversa de \textcite{Tobin1970Money} \vertema{3.A.5};
+    \item \emph{a corto plazo}, en cambio, la política monetaria mueve la producción y el empleo. Como dijo \textcite{Lucas1996Nobel} en su conferencia Nobel, la tensión entre la idea de que el dinero es neutral y la de que mueve el empleo y la producción «ha estado en el centro de la teoría monetaria al menos desde que escribió \autor{Hume}».
+    \end{itemize}
+  \item La historia del diseño es la de cómo se ha gestionado esa tensión: el activismo de los 60, la estanflación de los 70 y la crítica monetarista \vertema{3.A.5}, las expectativas racionales \vertema{3.A.6}, los objetivos de inflación desde 1990 con la nueva síntesis \vertema{3.A.7}, el límite inferior de los tipos y los instrumentos no convencionales desde 2008 y el regreso de la inflación en 2021-2023.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Debe el banco central ocuparse solo de la inflación o también del empleo?
+  \item ¿Debe atarse las manos con una regla o decidir en cada momento? ¿Con qué ancla y con qué regla?
+  \item ¿Cómo debe responder a las perturbaciones de demanda y de oferta, y qué cambia cuando los tipos llegan a su límite inferior?
+  \item ¿Qué variable controla de verdad el banco central y con qué instrumentos, también cuando los tipos no pueden bajar más?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición tiene 2 bloques, los 2 epígrafes del título, y va del qué al cómo:
+  \begin{itemize}
+  \item \concepto{I. Diseño de la política monetaria} (\ref{sec:diseno}): por qué hay política monetaria y qué debe perseguir, por qué conviene comprometerse, con qué ancla y con qué regla, qué dice el modelo de la nueva economía keynesiana sobre la política óptima y qué problemas nuevos han aparecido (el límite inferior de los tipos, las perturbaciones de oferta, la estabilidad financiera);
+  \item \concepto{II. Instrumentación de la política monetaria} (\ref{sec:instrumentacion}): cómo se crea el dinero, qué variable fija el banco central y por qué, y con qué instrumentos, convencionales y no convencionales, hasta el euro digital.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}[unbreakable]
+\textbf{3.A.36. Política monetaria (I). El diseño y la instrumentación de la política monetaria}\\[2pt]
+Introducción\\
+I. Diseño de la política monetaria\\
+\hspace*{1.5em}1. Justificación, objetivos y discrecionalidad\\
+\hspace*{1.5em}2. Diseño de reglas de política monetaria\\
+\hspace*{1.5em}3. Política monetaria óptima: modelo de la NEK\\
+\hspace*{1.5em}4. Nuevas problemáticas: del límite inferior de los tipos a las perturbaciones de oferta\\
+II. Instrumentación de la política monetaria\\
+\hspace*{1.5em}1. Introducción: la creación del dinero en las economías modernas\\
+\hspace*{1.5em}2. El proceso de creación del dinero: balances y multiplicador\\
+\hspace*{1.5em}3. Esquema operativo y elección del instrumento\\
+\hspace*{1.5em}4. Instrumentos a disposición de la autoridad monetaria\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{15} (I.1, \tiempo{6,5}, de ellos \tiempo{4,5} para \autor{Kydland} y \autor{Prescott} y \autor{Barro} y \autor{Gordon}; I.2, \tiempo{3}; I.3, \tiempo{3,5}; I.4, \tiempo{2}); II, \tiempo{11,5} (II.1, \tiempo{1,5}; II.2, \tiempo{1}; II.3, \tiempo{4,5}, de ellos \tiempo{2,5} para \autor{Poole}; II.4, \tiempo{4,5}), y conclusión, \tiempo{1}. El diseño pesa más que la instrumentación, como en el examen. La pizarra se organiza en 3 zonas. A la izquierda, el refrán del enganche y las pegatinas, cada una junto a su concepto: «el camino del infierno está empedrado de buenas intenciones» (el sesgo inflacionista), «entre dos males, el menor» (el dilema ante una perturbación de costes), «perturbación real, fija la cantidad; monetaria, fija el tipo» (\autor{Poole}), «a grandes males, grandes remedios» (los instrumentos no convencionales) y «quien avisa no es traidor» (la orientación de la política). En el centro, los 3 gráficos que hay que saber dibujar, uno tras otro: el de \autor{Barro} y \autor{Gordon} con R, T y D (gráfico~\ref{fig:barro-gordon}), el panel b del modelo de la NEK (gráfico~\ref{fig:nek-xpi}), que se vuelve a usar con las perturbaciones de oferta, y el de \autor{Poole} (gráfico~\ref{fig:poole}). A la derecha, recuadradas hasta el final, las funciones clave: el sesgo inflacionista \eqref{eq:sesgo}, la regla de \autor{Taylor} \eqref{eq:taylor} y la condición de la discreción \eqref{eq:discrecion}. Lo que el cante resume (la función de reacción y las pérdidas de \autor{Barro} y \autor{Gordon}, los balances y el multiplicador, los agregados monetarios, \autor{Poole} paso a paso, la cronología de los instrumentos del Eurosistema y las compras de activos en los balances) está en las cajas grises y en los anexos~\ref{anexo:multiplicador}, \ref{anexo:agregados}, \ref{anexo:poole}, \ref{anexo:cronologia} y~\ref{anexo:compras-activos}.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Diseño de la política monetaria}\label{sec:diseno}
+\minutos{15}
+
+\begin{itemize}
+\item Una vez situada la política monetaria entre la neutralidad a largo plazo y sus efectos a corto, pasamos a su diseño: qué debe perseguir el banco central y con qué estrategia.
+\item \emph{Conclusión anticipada}: la política monetaria puede estabilizar la economía a corto plazo, pero no alejar el paro ni la producción de su nivel natural a largo plazo. Por eso su objetivo central es la estabilidad de precios, y la mejor forma de lograrla es \emph{comprometerse}: un banco central independiente, con un objetivo de inflación explícito y una respuesta sistemática y conocida a la inflación y a la actividad.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Justificación, objetivos y discrecionalidad}\label{sec:justificacion-objetivos}
+
+\begin{itemize}
+\item La primera cuestión del diseño es la de la problemática: ¿debe la autoridad monetaria ocuparse solo de la inflación o también del desempleo? Para responderla hay que ver antes si la política monetaria puede y debe actuar, qué objetivos puede alcanzar y si le conviene atarse a una regla.
+\end{itemize}
+
+\subsubsection{Justificación de la política monetaria: efectiva y deseable}\label{sec:justificacion}
+
+\begin{itemize}
+\item Antes de diseñar la política hay que responder a 2 preguntas: si es \emph{efectiva} (si mueve variables reales) y si es \emph{deseable} (si mejora el bienestar).
+\item \emph{Efectiva}:
+  \begin{itemize}
+  \item con precios y salarios plenamente flexibles hay \concepto{dicotomía clásica}: el dinero solo determina los precios y la política monetaria es neutral \vertema{3.A.3};
+  \item con precios rígidos, un cambio del tipo nominal que no va acompañado de un cambio igual de la inflación esperada mueve el \emph{tipo real}, $r_t\equiv i_t-\mathbb{E}_t[\pi_{t+1}]$ (la relación de \autor{Fisher}), y con él el consumo, la inversión y la producción: a corto plazo, la política monetaria es efectiva \vertema{3.A.7}.
+  \end{itemize}
+\item \emph{Deseable}:
+  \begin{itemize}
+  \item con rigideces nominales y reales \parencite{BallRomer1990Real}, la respuesta descentralizada de la economía a las perturbaciones (de productividad, de demanda, financieras) no es eficiente: la producción se aleja de su valor natural,\footnote{El \emph{valor natural} de una variable (la producción, el tipo de interés, la tasa de paro) es el que tendría con precios y salarios plenamente flexibles. Lo determinan solo las relaciones estructurales de la economía (tecnología, preferencias, instituciones del mercado de trabajo), y por eso se asocia con el equilibrio a largo plazo; la política monetaria no puede moverlo.} el que tendría con precios flexibles, y la política monetaria puede acercarla;
+  \item y la inflación tiene costes: distorsiona los precios relativos y encarece mantener dinero \vertema{3.A.41}. Estabilizar los precios es en sí un objetivo deseable.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Objetivos}\label{sec:objetivos}
+
+\begin{itemize}
+\item Con un solo instrumento, el tipo de interés, no se pueden alcanzar a la vez 2 objetivos independientes: es la \concepto{regla de \autor{Tinbergen}} \parencite{Tinbergen1952Theory}. Hay que elegir qué estabilizar, una variable real (el empleo, la producción) o una nominal (los precios), y los mandatos lo reflejan:
+  \begin{itemize}
+  \item \emph{mandato jerárquico}: el objetivo principal del Sistema Europeo de Bancos Centrales es mantener la estabilidad de precios y, sin perjuicio de ella, apoya las políticas económicas generales de la Unión (artículo 127.1 del Tratado de Funcionamiento de la Unión Europea, TFUE) \vertema{3.B.43};
+  \item \emph{mandato dual}: la Reserva Federal debe promover el máximo empleo, la estabilidad de precios y unos tipos de interés a largo plazo moderados \parencite{Fed2026Mandato};
+  \item en la práctica convergen: los 2 fijan un objetivo de inflación del 2~\% a medio plazo, y el BCE tiene en cuenta el empleo y la actividad al decidir a qué ritmo vuelve la inflación al objetivo \parencite{BCE2021Estrategia}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Objetivos reales: pleno empleo o producción por encima de la natural}
+
+\begin{itemize}
+\item En los 60 dominó la política \emph{activista}: la curva de \autor{Phillips} parecía ofrecer un menú estable entre inflación y paro, que la política podía explotar \parencite{SamuelsonSolow1960Analytical} \vertema{3.A.5}.
+\item La estanflación de los 70 lo desmintió, y la teoría explicó por qué:
+  \begin{itemize}
+  \item Milton \autor{Friedman}, en su discurso presidencial ante la Asociación Económica Americana de diciembre de 1967 \parencite{Friedman1968Role}: con expectativas adaptativas, el paro solo se aparta de su tasa natural mientras la inflación sorprende; mantenerlo por debajo exige una inflación cada vez mayor. A largo plazo no hay dilema \vertema{3.A.28};
+  \item \textcite{Lucas1972Expectations}, sobre la idea de las islas de \textcite{Phelps1970Microeconomic}: con expectativas racionales e información imperfecta sobre los precios, solo la parte \emph{no anticipada} de la política mueve la producción, y \textcite{SargentWallace1975Rational} sacan la \emph{proposición de inefectividad}: una regla monetaria sistemática no afecta a la producción \vertema{3.A.6}.
+  \end{itemize}
+\item \emph{Conclusión}: la política monetaria no puede alejar de forma permanente el paro de su tasa natural ni la producción de la natural, pero sí puede reducir las fluctuaciones a su alrededor. La tasa natural separa lo que puede la política de demanda de lo que solo pueden las reformas, y el banco central la usa como guía, con mucha incertidumbre \vertema{3.A.28}. Si las recesiones dejan huella en la propia tasa natural (histéresis), la frontera se difumina (\ref{sec:histeresis}).
+\end{itemize}
+
+\begin{anotaciones}
+Para la influencia del discurso de \autor{Friedman} (1968) en la macroeconomía posterior, \textcite{MankiwReis2018Friedman}: \url{https://doi.org/10.1257/jep.32.1.81}.
+\end{anotaciones}
+
+\paragraph{Objetivos nominales: la estabilidad de precios}
+
+\begin{itemize}
+\item Hoy hay consenso en que el objetivo central es una inflación baja y estable, pero la justificación depende del modelo:
+  \begin{itemize}
+  \item con precios plenamente flexibles (clásicos, nueva macroeconomía clásica), la inflación anticipada solo cuesta por lo que cuesta mantener dinero;
+  \item en los modelos keynesianos tradicionales, los precios importaban por su efecto sobre la producción, y se usaban para justificar el activismo;
+  \item con expectativas racionales y precios rígidos, la inflación cuesta porque las empresas no cambian sus precios a la vez y se dispersan los precios relativos, y una inflación baja y creíble ancla las expectativas \parencite{Woodford2003Interest}. En el modelo canónico de la nueva economía keynesiana, \emph{sin perturbaciones de costes}, estabilizar la inflación estabiliza también la actividad (la divina coincidencia, \ref{sec:nek}); con ellas aparece el dilema.
+  \end{itemize}
+\item Los costes de la inflación, en resumen \vertema{3.A.41}:
+  \begin{itemize}
+  \item \emph{anticipada}: el coste de mantener saldos reales, los costes de menú y la dispersión de los precios relativos;
+  \item \emph{no anticipada}: además, redistribuye entre acreedores y deudores y aumenta la incertidumbre.
+  \end{itemize}
+\item \emph{Respuesta a la primera pregunta}: el banco central no puede bajar el paro de forma permanente; su objetivo principal es la estabilidad de precios, y la actividad entra en la velocidad con que lleva la inflación al objetivo.
+\end{itemize}
+
+\subsubsection{Reglas frente a discrecionalidad: \autor{Kydland} y \autor{Prescott} (1977), \autor{Barro} y \autor{Gordon} (1983)}\label{sec:kydland-prescott}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Una vez fijado el objetivo, ¿debe el banco central atarse a una regla o decidir en cada momento lo mejor con la información que tiene? Lo segundo parece mejor: quien puede elegir no pierde nada por tener más opciones.\footnote{En muchos problemas económicos, decidir en cada momento con la información de ese momento lleva a una asignación eficiente. En el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}, por ejemplo, la condición de primer orden de cada instante (la regla de \autor{Keynes}-\autor{Ramsey}) dice que el consumo crece si el rendimiento neto del capital, $f'(k)-\delta$, supera la tasa de descuento, y el plan óptimo de hoy sigue siéndolo mañana \vertema{3.A.29}. Con la política monetaria no ocurre así, porque sus efectos dependen de lo que el público espera que haga en el futuro.}
+\item No es así cuando el público mira al futuro. En «Rules Rather than Discretion: The Inconsistency of Optimal Plans», \textcite{KydlandPrescott1977Rules} muestran que un plan óptimo hoy deja de serlo mañana, una vez que el público ha actuado creyéndolo: es la \concepto{inconsistencia temporal}. Vale para la inflación, los impuestos sobre el capital, las patentes o la regulación \vertema{3.A.20}, y tiene su versión individual en el hogar impaciente \vertema{3.A.1}; \textcite{BarroGordon1983Positive} la aplican a la política monetaria.
+\item Distinguimos 2 estrategias:
+  \begin{itemize}
+  \item \concepto{discrecionalidad}: el banco central optimiza periodo a periodo y trata lo pasado, incluidas las expectativas ya formadas, como dado;
+  \item \concepto{regla} (o compromiso): se compromete de antemano con una forma de actuar en cada situación y la cumple.\footnote{La credibilidad hace parte del trabajo del banco central. Si el público espera más inflación y el tipo nominal no se mueve, baja el tipo real, sube la demanda y la inflación esperada se cumple. Si el público sabe que el banco central subirá el tipo, no espera esa inflación y la subida quizá ni haga falta. Por eso los bancos centrales explican sus decisiones y publican sus proyecciones: la transparencia hace que la política sea previsible y que las expectativas trabajen a su favor \parencite{Woodford2003Interest}.}
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Jugadores}: el público, que firma los convenios salariales, y el banco central, que controla la inflación de cada periodo.\footnote{El banco central controla la cantidad de dinero o el tipo de interés y, a través de ellos, la inflación; se simplifica suponiendo que elige directamente la inflación, sin que cambie el resultado.}
+\item \emph{Orden de las jugadas}: primero el público fija sus expectativas, $\pi^e_t$; después el banco central elige $\pi_t$. Si fuera al revés, el banco central sería líder, elegiría la regla y no habría problema.
+\item \emph{Información completa}: el público conoce el objetivo del banco central. Lo que falta no es información, sino \emph{compromiso}.
+\item \emph{Oferta}: la curva de \autor{Phillips} aumentada con expectativas, $U_t=U^n-\alpha\,(\pi_t-\pi^e_t)$, con $\alpha>0$: el paro solo baja de su tasa natural si la inflación sorprende \vertema{3.A.6} \vertema{3.A.28}.
+\item \emph{Objetivo del banco central}: minimizar una pérdida cuadrática con $U^*<U^n$, es decir, quiere menos paro que el natural, por ejemplo porque el natural es ineficiente por las distorsiones del mercado de trabajo (sin ello no hay problema):
+  $$\optim{\min}{\pi_t}{L_t=(U_t-U^*)^2+\gamma\,(\pi_t-\pi^*)^2}{U_t=U^n-\alpha\,(\pi_t-\pi^e_t)}$$
+  Sus curvas de pérdida en el plano $(U,\pi)$ son \emph{elipses} centradas en el punto de felicidad $(U^*,\pi^*)$; $\gamma$ es el peso de la inflación.\footnote{\textcite{KydlandPrescott1977Rules} y \textcite{BarroGordon1983Positive} postulan la pérdida. \textcite{RotembergWoodford1997Optimization} y \textcite{Woodford2003Interest} mostraron después que, en un modelo neokeynesiano, una pérdida de este tipo aproxima el bienestar de los hogares (\ref{sec:nek}) \vertema{3.A.7}.}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Mejor respuesta del banco central}: con $\pi^e_t$ dada, la condición de primer orden es lineal, $\gamma\,(\pi_t-\pi^*)=\alpha\,(U_t-U^*)$: iguala lo que cuesta un punto más de inflación con lo que vale el paro que ahorra.
+\item \emph{Equilibrio con discrecionalidad}: el público, racional, espera la inflación que el banco central elegirá, $\pi^e_t=\pi_t$. Entonces $U_t=U^n$ y
+  \funcionclave[eq:sesgo]{\pi^D=\pi^*+\frac{\alpha}{\gamma}\,(U^n-U^*)>\pi^*}
+\item \emph{Gráficamente} (gráfico~\ref{fig:barro-gordon}), en el plano $(U,\pi)$, 3 puntos:
+  \begin{itemize}
+  \item \textbf{R}, la regla: si el banco central puede comprometerse antes de que se formen las expectativas, elige $\pi^R=\pi^*$ y la economía queda en $(U^n,\pi^*)$;
+  \item \textbf{T}, la tentación: si el público espera $\pi^*$ y el banco central no está atado, le conviene sorprender con $\pi^T=\pi^*+\alpha\,(U^n-U^*)/(\gamma+\alpha^2)$ y baja el paro a $U^T<U^n$ a lo largo de la curva de \autor{Phillips} de corto plazo;
+  \item \textbf{D}, la discreción: el público lo anticipa y la economía acaba en $(U^n,\pi^D)$, con el mismo paro que con la regla y más inflación.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Reglas frente a discrecionalidad: regla (R), tentación (T) y discreción (D)}\label{fig:barro-gordon}
+\grafico[0.68\textwidth]{barro-gordon}
+\fuente{elaboración propia a partir de \textcite{KydlandPrescott1977Rules} y \textcite{BarroGordon1983Positive}.}
+\end{figure}
+
+\begin{anotaciones}
+\textbf{La función de reacción y las pérdidas} (para consultar; no se cantan).
+\begin{itemize}
+\item Sustituyendo la oferta en la pérdida y derivando, con $\pi^e_t$ dada,
+  \begin{equation*}
+  \frac{\partial L_t}{\partial\pi_t}=-2\alpha\,(U_t-U^*)+2\gamma\,(\pi_t-\pi^*)=0\ \Longrightarrow\ \pi_t=\frac{\gamma\,\pi^*+\alpha^2\,\pi^e_t+\alpha\,(U^n-U^*)}{\gamma+\alpha^2},
+  \end{equation*}
+  con $\partial^2L_t/\partial\pi_t^2=2(\gamma+\alpha^2)>0$. Es la función de reacción del banco central: el lugar de las tangencias entre las elipses y las curvas de \autor{Phillips}. Con $\pi^e_t=\pi_t$ sale \eqref{eq:sesgo}; con $\pi^e_t=\pi^*$, la tentación $\pi^T$.
+\item \emph{Pérdidas}, con $\Delta\equiv U^n-U^*$ (letra local): $L^T=\gamma\Delta^2/(\gamma+\alpha^2)<L^R=\Delta^2<L^D=\Delta^2\,(1+\alpha^2/\gamma)$. La tentación es lo mejor para el banco central; por eso la regla no es creíble, y como el público lo anticipa, se acaba en la discreción, la peor de las 3.\findemo
+\item \emph{Las preferencias} (gráfico~\ref{fig:barro-gordon-preferencias}): con $\gamma$ alto (más aversión a la inflación) las elipses son más planas; con $\gamma$ bajo, más verticales. Un banco central más conservador tiene un sesgo menor.
+\end{itemize}
+\begin{figuracaja}
+\caption{Las preferencias del banco central con $\gamma$ alto y con $\gamma$ bajo}\label{fig:barro-gordon-preferencias}
+\grafico[0.8\textwidth]{barro-gordon-preferencias}
+\fuente{elaboración propia a partir de \textcite{BarroGordon1983Positive}.}
+\end{figuracaja}
+\end{anotaciones}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La discrecionalidad tiene un \concepto{sesgo inflacionista} \eqref{eq:sesgo} sin ninguna ganancia de paro. La inflación es mayor cuanto más quiere el banco central bajar el paro ($U^n-U^*$), cuanto más eficaz es la sorpresa ($\alpha$) y cuanto menos pesa la inflación ($\gamma$). Pegatina: «el camino del infierno está empedrado de buenas intenciones»: querer menos paro del natural solo trae más inflación.
+\item La regla es mejor que la discreción, pero no es creíble, porque la tentación es lo mejor para el banco central. La discreción es el equilibrio de \autor{Nash} del juego entre el banco central y el público, y el equilibrio perfecto en subjuegos con el público moviendo primero \vertema{3.A.14}.
+\item La \emph{credibilidad} es, por tanto, un activo: la política no vale solo por lo que hace, sino por lo que el público cree que hará. Es la razón de fondo de la independencia, de los objetivos explícitos y de la transparencia de los bancos centrales de hoy.
+\end{itemize}
+
+\paragraph{c) Extensiones: cómo llegar a la regla}
+
+\begin{itemize}
+\item \emph{Reputación}: si el juego se repite, el banco central puede ganarse la fama de duro con la inflación cumpliendo la regla periodo tras periodo; si se desvía, el público vuelve a esperar $\pi^D$, y ese castigo sostiene la regla \parencite{BarroGordon1983Rules} \vertema{3.A.14}. Paul \autor{Volcker}, presidente de la Reserva Federal de 1979 a 1987, aceptó una recesión para bajar una inflación de 2 cifras y ganarse esa fama \parencite{FedHistory2026Volcker}.
+\item \emph{Reglas}: un mandato legal, o renunciar a la política monetaria propia con un tipo de cambio fijo frente a un país de baja inflación o una unión monetaria, «atarse las manos» \parencite{GiavazziPagano1988Advantage} \vertema{3.B.15} \vertema{3.B.16}.
+\item \emph{Banquero central conservador} \parencite{Rogoff1985Optimal}: delegar la política en alguien con $\gamma'>\gamma$ baja el sesgo a $(\alpha/\gamma')(U^n-U^*)$. Su coste aparece con una perturbación de oferta $u_t$ de media cero, $U_t=U^n-\alpha\,(\pi_t-\pi^e_t)+u_t$. Con discreción, el equilibrio es
+  $$\pi_t=\pi^D+\frac{\alpha}{\gamma+\alpha^2}\,u_t,\qquad U_t=U^n+\frac{\gamma}{\gamma+\alpha^2}\,u_t ,$$
+  de modo que, cuanto mayor es $\gamma$, menor es la inflación media, pero más pasa cada perturbación al paro: \emph{credibilidad frente a flexibilidad}. El $\gamma'$ óptimo es mayor que el de la sociedad, pero finito.\footnote{La $u_t$ de esta extensión es de la misma familia que la perturbación de costes de la nueva economía keynesiana (\ref{sec:nek}): sube la inflación y el paro a la vez. No conviven en el mismo apartado.}
+\item \emph{Contrato de incentivos} \parencite{Walsh1995Optimal}: si al banquero se le penaliza linealmente por la inflación, con una pérdida $L_t+c\,\pi_t$ y $c=2\alpha\,(U^n-U^*)$, el sesgo desaparece y su respuesta a $u_t$ no cambia: se tiene la credibilidad sin perder flexibilidad. El sistema de Nueva Zelanda, en el que el gobernador responde de un objetivo de inflación pactado con el Gobierno, se acerca a esa idea.
+\item \emph{Independencia}: aleja la política monetaria del ciclo político. No basta sola, porque alguien tiene que cerrar la restricción presupuestaria del sector público \parencite{SargentWallace1981Some} \vertema{3.A.39}:
+  \begin{itemize}
+  \item con \concepto{dominación monetaria}, el banco central fija su política sin mirar la deuda y la autoridad fiscal ajusta los superávits primarios;
+  \item con \concepto{dominación fiscal}, la senda de superávits primarios está dada y es la política monetaria la que se ajusta, con señoreaje o dejando que los precios cambien el valor real de la deuda: es la aritmética monetarista desagradable.
+  \end{itemize}
+  De ahí, en la Unión Europea, la prohibición de que el banco central financie a los Estados (artículo 123 del TFUE) y la independencia del BCE (artículo 130).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Los índices de independencia legal de \textcite{CukiermanWebbNeyapti1992} se asocian con menos inflación en los países industriales, no en los países en desarrollo, donde la ley y la práctica divergen.
+\item Entre los países ricos, los bancos centrales más independientes han tenido menos inflación, y menos variable, sin menos crecimiento ni más paro \parencite{AlesinaSummers1993Central}: la independencia parece no tener coste real.
+\item La correlación no prueba causalidad: los países con más aversión a la inflación pueden elegir a la vez bancos centrales independientes y políticas prudentes. Y desde los 90, con casi todos los bancos centrales independientes y con objetivos de inflación, la inflación bajó en todo el mundo.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Es la base de la arquitectura monetaria actual: bancos centrales independientes, con un objetivo de inflación explícito (\ref{sec:variable-objetivo}) y transparentes. Y la crítica de \autor{Lucas} lleva a la misma conclusión por otro camino: hay que evaluar \emph{reglas}, no decisiones sueltas \vertema{3.A.6}.
+\item Críticas:
+  \begin{itemize}
+  \item la pérdida es \emph{ad hoc} y el sesgo exige $U^*<U^n$: un banco central que sabe que no puede bajar el paro de forma permanente puede, sencillamente, no intentarlo \parencite{McCallum1995Two};
+  \item el sesgo inflacionista parece pequeño desde los 90; el problema de la década de 2010 fue el contrario, una inflación por debajo del objetivo con los tipos en su límite inferior (\ref{sec:limite-inferior});
+  \item explica el \emph{nivel} medio de la inflación, no cómo responder a las perturbaciones. Para eso hace falta un modelo con dinámica, el de la nueva economía keynesiana, donde el compromiso vuelve a ganar a la discreción (\ref{sec:nek}).
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Diseño de reglas de política monetaria}\label{sec:reglas}
+
+\begin{itemize}
+\item Una vez visto que conviene comprometerse, falta decidir \emph{con qué}: qué instrumento se usa, qué variable hace de ancla y qué regla liga el instrumento a la economía. El debate empieza con la regla de crecimiento constante del dinero de \textcite{Friedman1960Program} \vertema{3.A.5} y llega a las reglas de tipo de interés de hoy.
+\end{itemize}
+
+\subsubsection{Elección del instrumento}\label{sec:instrumento-diseno}
+
+\begin{itemize}
+\item ¿Cantidad de dinero o tipo de interés? Es una cuestión de instrumentación, que se resuelve con el análisis de \textcite{Poole1970Optimal} (\ref{sec:poole}). Hoy todos los grandes bancos centrales fijan un tipo de interés a muy corto plazo, y las reglas que se discuten son de tipo de interés.
+\end{itemize}
+
+\subsubsection{Elección de la variable objetivo: el ancla nominal}\label{sec:variable-objetivo}
+
+\begin{itemize}
+\item Un \concepto{ancla nominal} es una restricción sobre el valor del dinero nacional; en sentido amplio, una restricción sobre la discrecionalidad que atenúa el problema de inconsistencia temporal \parencite{Mishkin1999International}. Es la variable nominal que el banco central se compromete a estabilizar.
+\item Las estrategias se distinguen por el ancla (tabla~\ref{tab:anclas}):
+  \begin{itemize}
+  \item \emph{el tipo de cambio}: fijarlo frente a la moneda de un país de baja inflación importa su credibilidad, pero se pierde la política monetaria propia y se queda expuesto a crisis especulativas \vertema{3.B.15};
+  \item \emph{un agregado monetario}: la estrategia de los 70 y los 80, que exige una demanda de dinero estable (\ref{sec:objetivo-dinero});
+  \item \emph{la inflación}: la estrategia dominante desde 1990;
+  \item \emph{el nivel de precios} y \emph{el PIB nominal}: las alternativas que se discuten desde que los tipos tocaron su límite inferior.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{El objetivo de inflación}
+
+\begin{itemize}
+\item Según \textcite{Mishkin1999International}, un régimen de \concepto{objetivo de inflación} tiene 5 elementos:
+  \begin{enumerate}
+  \item el anuncio público de un objetivo numérico de inflación a medio plazo;
+  \item el compromiso institucional con la estabilidad de precios como objetivo principal;
+  \item una estrategia que usa toda la información disponible, no solo un agregado o el tipo de cambio;
+  \item transparencia: se explica al público qué se hace y por qué;
+  \item rendición de cuentas por el cumplimiento del objetivo.
+  \end{enumerate}
+\item \textcite{Svensson1997Inflation} lo formaliza como un objetivo sobre la \emph{previsión} de inflación: como la política tarda en hacer efecto, el banco central fija el tipo para que la inflación prevista a 1 o 2 años coincida con el objetivo, y la previsión hace de objetivo intermedio. Es \emph{flexible} si además da peso a la brecha de producción y lleva la inflación al objetivo de forma gradual \parencite{Svensson1999Inflation}.
+\item En la práctica:
+  \begin{itemize}
+  \item Nueva Zelanda fue la primera en adoptarlo, en 1990; la siguieron Canadá, el Reino Unido, Suecia, Finlandia, Australia y España \parencite{BernankeEtAl1997NuevaZelanda,Mishkin1999International};
+  \item el BCE fijó en julio de 2021 un objetivo del 2~\% a medio plazo, \emph{simétrico}: las desviaciones al alza y a la baja son igual de indeseables, y cerca del límite inferior la respuesta debe ser especialmente enérgica o persistente \parencite{BCE2021Estrategia}. La evaluación concluida el 30 de junio de 2025 lo confirmó, pidió responder de forma «adecuadamente enérgica o persistente» a las desviaciones amplias y sostenidas en las 2 direcciones y dejó la siguiente evaluación para 2030 \parencite{BCE2025Estrategia,BCE2025Evaluacion}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{El objetivo de nivel de precios}
+
+\begin{itemize}
+\item Con un objetivo de inflación, lo pasado, pasado: tras una perturbación, la inflación vuelve al 2~\%, pero el nivel de precios no vuelve a su senda. Con un objetivo de \concepto{nivel de precios}, sí: a un periodo de inflación alta le sigue otro de inflación baja (gráfico~\ref{fig:objetivo-precios}).
+\item \emph{Ventajas}: ancla mejor las expectativas a largo plazo y, si el público lo cree, estabiliza solo: cuando los precios caen, el público espera inflación futura, baja el tipo real y se sale antes del límite inferior. Con discreción, puede dar menos variabilidad de la inflación sin más variabilidad de la producción \parencite{Svensson1999Price}. Es lo que haría un banco central que pudiera comprometerse en la nueva economía keynesiana (\ref{sec:nek}).
+\item \emph{Inconvenientes}: exige deflacionar tras una perturbación de oferta y mucha credibilidad; ningún gran banco central lo ha adoptado \parencite{MinfordHatcher2014}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Objetivo de inflación y objetivo de nivel de precios}\label{fig:objetivo-precios}
+\grafico[0.65\textwidth]{objetivo-precios}
+\fuente{elaboración propia a partir de \textcite{MinfordHatcher2014}.}
+\end{figure}
+
+\paragraph{Un caso intermedio: la inflación media}
+
+\begin{itemize}
+\item La Reserva Federal adoptó en agosto de 2020 un objetivo de \concepto{inflación media}: tras periodos por debajo del 2~\%, buscaría una inflación algo por encima durante un tiempo, para que la media se acercara al 2~\% \parencite{Fed2020Prensa}. Compensaba, como un objetivo de nivel de precios, pero solo dentro de una ventana; \textcite{Bernanke2017Temporary} había propuesto compensar solo tras los episodios de límite inferior.
+\item El 22 de agosto de 2025 lo abandonó: volvió al objetivo de inflación flexible del 2~\% y renunció a compensar las desviaciones pasadas \parencite{Fed2025Prensa,Powell2025Jackson}.
+\end{itemize}
+
+\paragraph{El objetivo de PIB nominal}
+
+\begin{itemize}
+\item El banco central estabiliza el crecimiento, o la senda, del PIB nominal, $\gamma^N_t\simeq\pi_t+\gamma_{Y,t}$ \parencite{Meade1978Meaning,Bean1983Targeting}.
+\item \emph{Ventajas}: reparte solo las perturbaciones de oferta entre precios y producción (una caída de la productividad sube la inflación y baja el crecimiento, sin exigir una respuesta), no necesita estimar el PIB potencial y, como objetivo de senda, tiene las ventajas del nivel de precios en el límite inferior \parencite{Woodford2012Methods}.
+\item \emph{Inconvenientes}: el PIB nominal se conoce tarde y se revisa mucho, el público lo entiende peor que la inflación y deja que la inflación varíe con el crecimiento potencial.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las anclas nominales}\label{tab:anclas}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Ancla} & \textbf{Ventaja} & \textbf{Inconveniente} & \textbf{Ejemplo} \\
+\midrule
+Tipo de cambio & Importa credibilidad; fácil de verificar & Sin política propia; crisis especulativas & SME (1979-1998); caja de conversión de Bulgaria (1997-2025) \\
+Agregado monetario & Lo controla el banco central; fácil de verificar & Exige una velocidad estable (ley de \autor{Goodhart}) & Bundesbank (1975-1998); Reserva Federal (1975-1982) \\
+Inflación & Ancla las expectativas; usa toda la información & Lo pasado, pasado; problemas en el límite inferior & Nueva Zelanda (1990); BCE; Reserva Federal (desde 2012) \\
+Nivel de precios & Ancla mejor el largo plazo; ayuda en el límite inferior & Exige deflacionar; mucha credibilidad & Suecia (1931-1937) \\
+PIB nominal & Reparte las perturbaciones de oferta & Datos tardíos y revisados; poco conocido & Propuesta \parencite{Meade1978Meaning} \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Mishkin1999International}, \textcite{BergJonung1999Pioneering}, \textcite{Svensson1999Price} y \textcite{Woodford2012Methods}.}
+\end{table}
+
+\subsubsection{Elección de una regla: la regla de \autor{Taylor}}\label{sec:taylor}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Una regla liga el instrumento a lo que pasa en la economía. Su antecedente es \textcite{Wicksell1898Geldzins}: como el tipo natural no se observa, el banco debe subir su tipo si los precios suben y bajarlo si bajan \vertema{3.A.3}.
+\item John \autor{Taylor} propuso en la conferencia Carnegie-Rochester de noviembre de 1992 una regla sencilla para el tipo de los fondos federales, que describía bien lo que había hecho la Reserva Federal entre 1987 y 1992 y que, en simulaciones con varios modelos, daba buenos resultados \parencite{Taylor1993}. Es a la vez una descripción y una prescripción.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El banco central fija el tipo de interés nominal a muy corto plazo, $i_t$, y observa la inflación, $\pi_t$, y la brecha de producción.
+\item El tipo real de equilibrio, $r^*$, y el objetivo de inflación, $\pi^*$, son constantes y conocidos.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Forma original} (en~\%), con la brecha $\mathrm{OG}_t$ en~\% del PIB potencial:
+  $$i_t=r^*+\pi_t+0{,}5\,(\pi_t-\pi^*)+0{,}5\,\mathrm{OG}_t,\qquad r^*=\pi^*=2\ \Longrightarrow\ i_t=1+1{,}5\,\pi_t+0{,}5\,\mathrm{OG}_t .$$
+  Sin brecha y con la inflación en el objetivo, el tipo nominal es $r^*+\pi^*=4$~\%: el tipo \emph{neutral}, que ni estimula ni frena.
+\item \emph{Forma canónica}, la de los modelos, con $x_t$ la brecha en logaritmos ($\mathrm{OG}_t\approx100\,x_t$):
+  \funcionclave[eq:taylor]{i_t=r^*+\pi^*+\phi_\pi\,(\pi_t-\pi^*)+\phi_x\,x_t+\varepsilon_t}
+  Las 2 son la misma regla, con $\phi_\pi=1+0{,}5=1{,}5$ y $\phi_x=0{,}5$; $\varepsilon_t$ recoge lo que el banco central hace fuera de la regla.
+\item \emph{Cada término}:
+  \begin{itemize}
+  \item la inflación: si sube un punto, el tipo nominal sube $\phi_\pi$ puntos y el real, $\phi_\pi-1$;
+  \item la brecha: si la producción supera a la natural, se sube el tipo; $\phi_x$ mide cuánto pesa la actividad frente a la inflación.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \concepto{Principio de \autor{Taylor}}: $\phi_\pi>1$. El tipo nominal tiene que subir más que la inflación, para que suba el tipo \emph{real} y se frene la demanda; si no, una inflación más alta bajaría el tipo real y se alimentaría a sí misma. En la forma original equivale a que el coeficiente de $(\pi_t-\pi^*)$, el 0,5, sea positivo. En el modelo de la nueva economía keynesiana la condición exacta incluye también $\phi_x$ (\ref{sec:nek}) \vertema{3.A.7}.
+\item Comparar el tipo vigente con el de la regla da una medida sencilla del \emph{tono} de la política: expansivo si está por debajo, contractivo si está por encima.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Suavización}: los bancos centrales mueven el tipo poco a poco,
+  $$i_t=\nu\,i_{t-1}+(1-\nu)\big[r^*+\pi^*+\phi_\pi(\pi_t-\pi^*)+\phi_x x_t\big]+\varepsilon_t,\qquad 0\leq\nu<1 ,$$
+  \begin{itemize}
+  \item por la incertidumbre sobre los parámetros y los datos, que aconseja moverse con cautela \parencite{Brainard1967Uncertainty,Sack2000Does};
+  \item y porque, si el público espera que un cambio se mantenga, un movimiento pequeño hoy mueve mucho los tipos a largo plazo: la suavización es óptima con compromiso \parencite{Woodford2003Optimal}.
+  \end{itemize}
+\item \emph{Prospectiva}: responder a la inflación \emph{prevista}, $\mathbb{E}_t[\pi_{t+k}]$, y no a la actual, porque la política tarda en hacer efecto \parencite{ClaridaGaliGertler2000Rules}.
+\item \emph{Reglas instrumentales y reglas objetivo} \parencite{Svensson2003What}:
+  \begin{itemize}
+  \item una \concepto{regla instrumental}, como la de \autor{Taylor}, dice cómo mover el instrumento;
+  \item una \concepto{regla objetivo} dice qué relación deben cumplir las variables objetivo (la inflación prevista y la brecha) y deja al banco central elegir, con toda su información, el tipo que la cumple. Es lo que hacen los bancos centrales con objetivo de inflación, y lo que sale de la política óptima de la nueva economía keynesiana \eqref{eq:discrecion}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{ClaridaGaliGertler2000Rules} estiman una regla prospectiva para la Reserva Federal: antes de 1979, el coeficiente de la inflación estaba por debajo de 1 (el tipo real \emph{bajaba} cuando subía la inflación esperada); con \autor{Volcker} y \autor{Greenspan}, claramente por encima. El cambio de regla explica parte de la estabilidad de las décadas siguientes.
+\item \emph{La regla en la zona del euro} (gráfico~\ref{fig:regla-taylor-zona-euro}), con los coeficientes originales y la inflación general \parencite{BCE2026TiposOficiales,Eurostat2026IAPC,CE2026AMECOBrecha}:
+  \begin{itemize}
+  \item en 2020 pedía un $-1{,}6$~\%, imposible por el límite inferior de los tipos;
+  \item en 2022 pedía un 14,2~\%, con una inflación media del 8,4~\%, cuando la facilidad de depósito estaba de media en el 0,08~\%;
+  \item en 2026 (hasta octubre) pide un 5,1~\%, frente a una media de la facilidad de depósito del 2,16~\%. Con un tipo real neutral en torno a cero, como estima hoy el BCE (entre el $-0{,}5$ y el 1~\% \parencite{BrandLisackMazelis2025Natural}), en lugar del 2~\% de \autor{Taylor}, pediría un 3,1~\%, más cerca del 2,50~\% vigente.
+  \end{itemize}
+\item En 2022 y en 2026 la regla exagera lo que pide el principio de \autor{Taylor}: se calcula con la inflación general, y buena parte de la subida era energía, una perturbación de oferta de la que el banco central puede «mirar a través» mientras las expectativas sigan ancladas (\ref{sec:oferta}). Calculada con la inflación subyacente, pediría bastante menos.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La regla de \autor{Taylor} y el tipo de la facilidad de depósito del BCE, 1999-2026}\label{fig:regla-taylor-zona-euro}
+\grafico[0.9\textwidth]{regla-taylor-zona-euro}
+\fuente{elaboración propia con datos del BCE (tipos oficiales), Eurostat (IAPC) y la Comisión Europea (AMECO, brecha de producción) \parencite{BCE2026TiposOficiales,Eurostat2026IAPC,CE2026AMECOBrecha}. Regla de \textcite{Taylor1993}: $i_t=1+1{,}5\,\pi_t+0{,}5\,\mathrm{OG}_t$, con la inflación general. Medias anuales; 2026, provisional (tipos hasta el 4 de noviembre, IAPC de enero a octubre y brecha prevista).}
+\end{figure}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{Ventajas}: es sencilla y transparente, ancla las expectativas porque el público puede prever la respuesta del banco central, describe bien la conducta de muchos bancos centrales y da buenos resultados en modelos muy distintos: es \emph{robusta}.
+\item \emph{Inconvenientes}:
+  \begin{itemize}
+  \item el tipo natural no es constante ni se observa: ha caído durante décadas y se estima con mucha incertidumbre \parencite{LaubachWilliams2003,HolstonLaubachWilliams2017Measuring} \vertema{3.A.42}. El gráfico lo muestra: con el $r^*$ de 1993, la regla pide hoy tipos demasiado altos;
+  \item la brecha tampoco se observa, y la NAIRU que hay detrás se estima con intervalos de confianza muy amplios \parencite{StaigerStockWatson1997NAIRU} \vertema{3.A.28};
+  \item los datos en tiempo real se revisan: con los que tenía la Reserva Federal en los 70, la sobrestimación del producto potencial explica buena parte de su política demasiado expansiva \parencite{Orphanides2001Monetary};
+  \item mira a la inflación y a la brecha de hoy, en las que la política de hoy ya no influye: de ahí las reglas prospectivas;
+  \item no tiene en cuenta el límite inferior de los tipos (\ref{sec:limite-inferior}) ni la estabilidad financiera, y no es óptima en ningún modelo concreto: es una aproximación sencilla a la política óptima (\ref{sec:nek}).
+  \end{itemize}
+\item Por eso los bancos centrales la usan como \emph{referencia}, junto a otras reglas, y no como un mandato \parencite{Fed2026Reglas}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Política monetaria óptima: modelo de la NEK}\label{sec:nek}
+
+\begin{itemize}
+\item Una vez vistas las reglas sencillas, pasamos a preguntar qué política es la \emph{mejor}. Hace falta un modelo con expectativas, rigideces y una medida del bienestar: el de la nueva economía keynesiana (NEK). En el debate entre reglas y discrecionalidad, \autor{Taylor}, de la 1.ª generación de la NEK, propuso su regla, y la 2.ª generación defiende el compromiso.
+\end{itemize}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \autor{Kydland} y \autor{Prescott} y \autor{Barro} y \autor{Gordon} usaban una pérdida \emph{ad hoc} y un modelo de un periodo. La NEK deriva la pérdida del bienestar de los hogares y tiene dinámica: permite preguntar cómo debe responder el banco central a cada perturbación y qué gana si puede comprometerse.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los del modelo canónico \parencite{ClaridaGaliGertler1999Science,Woodford2003Interest,Gali2015Monetary} \vertema{3.A.7}: hogares que optimizan con expectativas racionales; empresas en competencia monopolística que solo pueden revisar su precio con probabilidad $1-\eta$ cada periodo, à la \textcite{Calvo1983Staggered}; economía cerrada, sin capital ni sector público, en la que el banco central fija el tipo nominal a corto plazo.
+\item Todo en logaritmos y en desviaciones de un estado estacionario sin inflación. $x_t\equiv y_t-y^n_t$ es la \concepto{brecha de producción}: la diferencia entre la producción y la que habría con precios flexibles, las 2 en términos \emph{reales}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{3 ecuaciones} (gráfico~\ref{fig:nek-esquema}):
+  \begin{align}
+  x_t&=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big) \label{eq:is-dinamica}\\
+  \pi_t&=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t \label{eq:nkpc}\\
+  i_t&=\rho+\phi_\pi\,\pi_t+\phi_x\,x_t+\varepsilon_t \label{eq:taylor-modelo}
+  \end{align}
+  \begin{itemize}
+  \item la IS dinámica \eqref{eq:is-dinamica}: la brecha cae si el tipo real supera al \emph{tipo natural}, $r^n_t$; las perturbaciones de demanda mueven $r^n_t$;
+  \item la curva de \autor{Phillips} neokeynesiana \eqref{eq:nkpc}: la inflación depende de la esperada y de la brecha, con una pendiente $\kappa$ menor cuanto más rígidos son los precios; $\beta$ es el factor de descuento y $u_t$, una perturbación de \emph{costes} (márgenes, impuestos, materias primas);
+  \item la regla de \autor{Taylor} \eqref{eq:taylor} en la forma del modelo \eqref{eq:taylor-modelo}, con $\pi^*=0$ y $r^*=\rho\equiv-\ln\beta$, que lo cierra.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo canónico: 3 ecuaciones que se cierran entre sí}\label{fig:nek-esquema}
+\grafico[0.6\textwidth]{nek-esquema}
+\fuente{elaboración propia a partir de \textcite[cap.~3]{Gali2015Monetary}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Objetivo del banco central}: la aproximación de segundo orden al bienestar de los hogares da la pérdida \parencite{RotembergWoodford1997Optimization,Woodford2003Interest}
+  \begin{equation}\label{eq:perdida}
+  L=\mathbb{E}_0\sum_{t=0}^{\infty}\beta^t\big(\pi_t^2+\lambda_x\,x_t^2\big),\qquad\lambda_x=\frac{\kappa}{\sigma} .
+  \end{equation}
+  La inflación cuesta porque, con precios que no se revisan a la vez, dispersa los precios relativos y la producción entre bienes; la brecha cuesta porque la producción natural es la eficiente (si un subsidio corrige el margen de monopolio). $\sigma$ es la elasticidad de sustitución entre bienes: cuanto mayor, más cuesta la dispersión de precios y menos pesa la brecha. A diferencia de la de \autor{Barro} y \autor{Gordon}, esta pérdida no es \emph{ad hoc}.
+\item \emph{Discreción}: el banco central reoptimiza cada periodo y toma las expectativas como dadas. Con $v_t\equiv\beta\,\mathbb{E}_t[\pi_{t+1}]+u_t$ dado, resuelve
+  $$\optim{\min}{x_t,\,\pi_t}{\pi_t^2+\lambda_x\,x_t^2}{\pi_t=\kappa\,x_t+v_t}$$
+  y la condición de óptimo es
+  \funcionclave[eq:discrecion]{x_t=-\frac{\kappa}{\lambda_x}\,\pi_t}
+  Es una \emph{regla objetivo}: si la inflación sube, hay que contraer la demanda, tanto más cuanto más barato es reducir la inflación ($\kappa$ alto) y menos pesa la brecha ($\lambda_x$ bajo).
+\item Si la perturbación de costes es persistente, $u_t=\rho_u\,u_{t-1}+$ una innovación de media cero, con $0\leq\rho_u<1$, el equilibrio con discreción es
+  $$\pi_t=\frac{\lambda_x}{\kappa^2+\lambda_x(1-\beta\rho_u)}\,u_t,\qquad x_t=-\frac{\kappa}{\kappa^2+\lambda_x(1-\beta\rho_u)}\,u_t ,$$
+  y el tipo que lo consigue, sacado de la IS, sube más que la inflación esperada:
+  $$i_t=r^n_t+\Big[1+\frac{\theta\,\kappa\,(1-\rho_u)}{\lambda_x\,\rho_u}\Big]\,\mathbb{E}_t[\pi_{t+1}] .$$
+\item \emph{Compromiso}: si el banco central puede comprometerse con su conducta futura, tiene en cuenta que lo que se espera que haga mañana mueve la inflación de hoy. La condición óptima pasa a ser \parencite[cap.~5]{Gali2015Monetary}
+  \begin{equation}\label{eq:compromiso}
+  x_t=x_{t-1}-\frac{\kappa}{\lambda_x}\,\pi_t\quad\Longleftrightarrow\quad x_t=-\frac{\kappa}{\lambda_x}\,(p_t-p_{-1}) ,
+  \end{equation}
+  con $p_t$ el logaritmo del nivel de precios: la brecha responde al \emph{nivel} de precios, no a la inflación.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Cómo se obtiene el equilibrio con discreción} (para consultar; no se canta). Se prueba $\pi_t=a\,u_t$ y $x_t=b\,u_t$, de modo que $\mathbb{E}_t[\pi_{t+1}]=a\rho_u u_t$. La condición de óptimo da $b=-(\kappa/\lambda_x)\,a$, y la curva de \autor{Phillips}, $a=\beta\rho_u a+\kappa b+1$, es decir, $a\,(1-\beta\rho_u+\kappa^2/\lambda_x)=1$. Para el tipo, de la IS, $i_t=r^n_t+\mathbb{E}_t[\pi_{t+1}]+\theta\,(\mathbb{E}_t[x_{t+1}]-x_t)$, con $\mathbb{E}_t[x_{t+1}]-x_t=(\kappa/\lambda_x)(1-\rho_u)\,a\,u_t$ y $a\,u_t=\mathbb{E}_t[\pi_{t+1}]/\rho_u$ \parencite{ClaridaGaliGertler1999Science}.\findemo
+\end{anotaciones}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Determinación}: con la regla \eqref{eq:taylor-modelo}, el equilibrio es único si y solo si
+  \begin{equation}\label{eq:determinacion}
+  \kappa\,(\phi_\pi-1)+(1-\beta)\,\phi_x>0 .
+  \end{equation}
+  Es el principio de \autor{Taylor} en el modelo: basta $\phi_\pi>1$ con $\phi_x\geq0$, aunque no es necesario \parencite[cap.~3]{Gali2015Monetary}.\footnote{La intuición: si la inflación esperada sube un punto de forma permanente, la curva de \autor{Phillips} exige a largo plazo una brecha $(1-\beta)/\kappa$ mayor; el tipo nominal sube $\phi_\pi+\phi_x(1-\beta)/\kappa$ puntos, y el tipo real sube, y frena la demanda, si eso es mayor que 1, que es \eqref{eq:determinacion}. Con los coeficientes de \autor{Taylor}, $\phi_\pi=1{,}5$ y $\phi_x=0{,}5$, se cumple.}
+\item \emph{Sin perturbaciones de costes, la divina coincidencia}: si el tipo sigue al tipo natural, $i_t=r^n_t+\phi_\pi\pi_t+\phi_x x_t$, la inflación y la brecha son cero a la vez: estabilizar la inflación estabiliza también la actividad (gráfico~\ref{fig:nek-xpi}, panel a). El resultado está en \textcite{GoodfriendKing1997New} y \textcite{RotembergWoodford1997Optimization}; el nombre se lo pusieron \textcite{BlanchardGali2007Real}.
+  \begin{itemize}
+  \item Es una lectura \emph{neowickselliana} \parencite{Woodford2003Interest}: como en \autor{Wicksell}, la política es expansiva si el tipo real está por debajo del natural, $i_t-\mathbb{E}_t[\pi_{t+1}]<r^n_t$, y contractiva si está por encima. Es la medida teórica del \emph{tono} de la política \vertema{3.A.3}.
+  \end{itemize}
+\item \emph{Con perturbaciones de costes, el dilema} (gráfico~\ref{fig:nek-xpi}, panel b): si $u_t>0$, la curva de \autor{Phillips} sube y no se puede estabilizar a la vez la inflación y la actividad. Con discreción, la perturbación se reparte \eqref{eq:discrecion}: algo más de inflación y algo menos de producción, en lugar de toda la perturbación en una de las 2. Pegatina: «entre dos males, el menor».
+\item \emph{La ganancia del compromiso} \parencite{ClaridaGaliGertler1999Science}: con compromiso, el banco central promete mantener la política restrictiva también \emph{después} de la perturbación; como el público lo cree, la inflación esperada baja y la de hoy sube menos, con menos recesión hoy. Con discreción no puede prometerlo, porque cuando llega el mañana no le conviene cumplir: es el \emph{sesgo de estabilización} de la discreción, otra cara de la inconsistencia temporal (\ref{sec:kydland-prescott}).
+\item \emph{Un objetivo de nivel de precios implícito}: la política óptima con compromiso \eqref{eq:compromiso} tiene inercia y devuelve el nivel de precios a su senda. Por eso un objetivo de nivel de precios (\ref{sec:variable-objetivo}) puede acercar a un banco central discrecional a la política con compromiso.
+\item \emph{Objetivo de inflación flexible}: \eqref{eq:discrecion} es una regla objetivo; un banco central que la sigue con previsiones en lugar de datos practica un objetivo de inflación flexible \parencite{Svensson1997Inflation,Svensson2003What}: no lleva la inflación al objetivo cuanto antes, sino a un ritmo que tiene en cuenta la actividad, a medio plazo.
+\item \emph{El sesgo inflacionista reaparece}: si la producción natural es menor que la eficiente (sin el subsidio), la discreción da además una inflación media positiva, como en \autor{Barro} y \autor{Gordon} \parencite[cap.~5]{Gali2015Monetary}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo canónico en el plano $(x_t,\pi_t)$: perturbación de demanda y de costes}\label{fig:nek-xpi}
+\grafico[0.9\textwidth]{nek-xpi}
+\fuente{elaboración propia a partir de \textcite[caps.~3 y~5]{Gali2015Monetary} y \textcite{ClaridaGaliGertler1999Science}.}
+\end{figure}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Otras fuentes del dilema, además de $u_t$:
+  \begin{itemize}
+  \item los salarios reales rígidos \parencite{BlanchardGali2007Real};
+  \item las fricciones de búsqueda en el mercado de trabajo, que meten el paro en el modelo \parencite{BlanchardGali2010Labor} \vertema{3.A.26} \vertema{3.A.28};
+  \item los salarios nominales rígidos, que añaden una segunda curva de \autor{Phillips} \parencite{ErcegHendersonLevin2000Optimal};
+  \item la histéresis (\ref{sec:histeresis}).
+  \end{itemize}
+\item Con hogares distintos y restricciones de liquidez, la política monetaria actúa sobre todo por efectos indirectos sobre la renta \parencite{KaplanMollViolante2018Monetary} \vertema{3.A.37}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Los modelos estimados de esta familia \parencite{SmetsWouters2003Estimated,SmetsWouters2007Shocks} se usan en los bancos centrales para las proyecciones y para evaluar la política; y la Reserva Federal anterior a \autor{Volcker} no cumplía el principio de \autor{Taylor} (\ref{sec:taylor}).
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Da al objetivo de inflación una base de bienestar, explica por qué importan las expectativas y la credibilidad y por qué la política debe responder más que uno a uno a la inflación.
+\item Pero el tipo natural y la brecha no se observan; el compromiso exige credibilidad, y el modelo canónico no tiene límite inferior de los tipos, ni sector financiero, ni hogares distintos. Son las nuevas problemáticas del apartado siguiente.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Nuevas problemáticas: del límite inferior de los tipos a las perturbaciones de oferta}\label{sec:nuevas}
+
+\begin{itemize}
+\item Desde 2008, 4 cuestiones han puesto a prueba ese diseño: los tipos en su límite inferior, las perturbaciones de oferta de 2021-2023 (y de 2026), el papel de la política monetaria en la estabilidad financiera y el peso que debe tener el empleo.
+\end{itemize}
+
+\subsubsection{El límite inferior de los tipos de interés}\label{sec:limite-inferior}
+
+\begin{itemize}
+\item \emph{El problema}: el efectivo rinde un 0~\% nominal, así que el tipo de interés no puede bajar mucho de cero: es el \concepto{límite inferior de los tipos} (ZLB, \emph{zero lower bound}; o ELB, \emph{effective lower bound}, cuando el límite efectivo es algo negativo). Si una perturbación lleva el tipo natural $r^n_t$ muy por debajo de cero, el banco central no puede bajar el tipo real lo bastante: la brecha se abre, la inflación cae, el tipo real sube y la recesión se agrava \parencite{EggertssonWoodford2003Zero} \vertema{3.A.37}.
+\item \emph{Por qué ahora}: con un tipo natural real que ha caído durante décadas \parencite{HolstonLaubachWilliams2017Measuring} y un objetivo de inflación del 2~\%, el tipo nominal medio es bajo y el margen para bajarlo en una recesión, pequeño. En la zona del euro, la facilidad de depósito estuvo en cero desde julio de 2012 y en negativo de junio de 2014 a julio de 2022, con un mínimo del $-0{,}50$~\% entre septiembre de 2019 y julio de 2022 \parencite{BCE2026TiposOficiales}.
+\item \emph{Respuestas desde el diseño}:
+  \begin{itemize}
+  \item \emph{un objetivo de inflación positivo}: el 2~\% es en parte un colchón frente al límite; \textcite{BlanchardDellAricciaMauro2010} propusieron estudiar un 4~\%, a costa de los costes de una inflación mayor \vertema{3.A.41};
+  \item \emph{estrategias de compensación}: prometer más inflación después del episodio, con un objetivo de nivel de precios o de inflación media (\ref{sec:variable-objetivo}), baja hoy el tipo real esperado; es lo que proponen \textcite{EggertssonWoodford2003Zero} \vertema{3.A.29};
+  \item \emph{la simetría del objetivo}: el BCE pide desde 2021 una respuesta especialmente enérgica o persistente cerca del límite \parencite{BCE2021Estrategia};
+  \item \emph{los instrumentos no convencionales}: tipos negativos, orientación de la política, compras de activos y crédito a largo plazo (\ref{sec:no-convencionales}); su eficacia desde 2008 y el papel de la política fiscal en el límite \vertema{3.A.40}.
+  \end{itemize}
+\item La clave, otra vez, son las expectativas (tabla~\ref{tab:expectativas-elb}): con una política creíble y activa, las expectativas de inflación suben y amortiguan la perturbación; con una política que se percibe pasiva, bajan y la amplifican, como en Japón desde los 90.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las expectativas, amortiguador o amplificador de una perturbación contractiva}\label{tab:expectativas-elb}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.26\textwidth}>{\raggedright\arraybackslash}p{0.64\textwidth}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Situación} & \textbf{Qué pasa} \\
+\midrule
+Tiempos normales & Bajan los tipos nominales; suben las expectativas de inflación; bajan los tipos reales, actuales y futuros; se deprecia el tipo de cambio; se recupera la economía \\
+Límite inferior, con una política activa y creíble & Hacen falta otros instrumentos (compras de activos, orientación, política fiscal); suben las expectativas de inflación; bajan los tipos reales; se deprecia el tipo de cambio; se recupera la economía \\
+Límite inferior, con una política que se percibe pasiva & Los tipos nominales no se mueven; bajan las expectativas de inflación; suben los tipos reales; se aprecia el tipo de cambio; se hunde la economía \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\subsubsection{Las perturbaciones de oferta}\label{sec:oferta}
+
+\begin{itemize}
+\item Una \concepto{perturbación de oferta} (una subida de la energía, cuellos de botella, una mala cosecha) sube la inflación y baja la producción a la vez: es la $u_t$ del modelo, que rompe la divina coincidencia (gráfico~\ref{fig:nek-xpi}, panel b).
+\item \emph{La regla tradicional}: si es transitoria y las expectativas están ancladas, el banco central puede «mirar a través» de ella: subir los tipos no baja el precio de la energía, y la política actúa con retraso, cuando la perturbación ya se ha ido.
+\item \emph{Cuándo no basta}: si es grande y persistente, o se extiende a los salarios y a los márgenes (efectos de segunda ronda), las expectativas pueden desanclarse y la inflación hacerse persistente. Entonces hay que responder, y la política óptima con compromiso responde antes y con más firmeza (\ref{sec:nek}).
+\item \emph{El episodio de 2021-2023}: la inflación nació de la energía, los alimentos y los cuellos de botella tras la pandemia, y se mantuvo por la tensión del mercado de trabajo \parencite{BernankeBlanchard2025What}. Los bancos centrales tardaron en reaccionar porque la juzgaron transitoria; después, el BCE subió la facilidad de depósito 450 puntos básicos en 14 meses, y la inflación volvió cerca del 2~\% en 2025 sin una recesión profunda \parencite{BCE2026TiposOficiales,Eurostat2026IAPC}. La evaluación de la estrategia de 2025 sacó la lección: ante desviaciones amplias y sostenidas, en las 2 direcciones, la respuesta debe ser «adecuadamente enérgica o persistente» \parencite{BCE2025Evaluacion}.
+\item Volvamos a la promesa del BCE. En 2026 la energía vuelve a subir la inflación de la zona del euro, hasta el 4~\% en octubre, aunque la subyacente se queda en el 2,5~\% \parencite{Eurostat2026IAPCoct}. Con la lección de 2022 aprendida, el BCE no ha esperado a ver si era transitoria: subió los tipos en junio y en septiembre para que las expectativas no se desanclaran, y los mantuvo en octubre \parencite{BCE2026Decisiones}.
+\item Los fenómenos meteorológicos extremos son también perturbaciones de oferta, cada vez más frecuentes, y la peor combinación para la política monetaria \vertema{3.B.31}.
+\end{itemize}
+
+\subsubsection{La estabilidad financiera como posible objetivo}\label{sec:estabilidad-financiera}
+
+\begin{itemize}
+\item La crisis de 2008 mostró que la estabilidad de precios no garantiza la estabilidad financiera: la inflación era baja mientras crecían el crédito y el precio de la vivienda \vertema{3.B.26}. ¿Debe la política monetaria subir los tipos para frenar un auge del crédito?
+\item \emph{Ir contra el viento} (\emph{leaning against the wind}): sí, porque los tipos bajos alimentan el endeudamiento y la asunción de riesgos y llegan a todos los rincones del sistema financiero, también a los que escapan a la regulación \parencite{Stein2013Overheating}.
+\item \emph{Limpiar después} (\emph{cleaning}): no, o muy poco. \textcite{BlanchardSummers2017Rethinking} dan 3 razones:
+  \begin{enumerate}
+  \item las burbujas y los auges de crédito malsanos son difíciles de identificar a tiempo: muchas veces solo se ven como tales a posteriori;
+  \item la política monetaria actúa con retraso: endurecerla justo antes de que estalle una burbuja agrava la caída;
+  \item el tipo de interés es un mal instrumento contra el riesgo: frena el crédito, pero empeora la situación de los deudores y de los intermediarios que se financian a corto y prestan a largo.
+  \end{enumerate}
+  \textcite{Svensson2017Cost} lo cuantifica: con los parámetros estimados, los costes de ir contra el viento (más paro hoy) superan a los beneficios (una crisis algo menos probable o menos grave).
+\item \emph{El consenso}: la regulación y la política macroprudencial (colchones de capital, límites a la relación entre préstamo y valor) son la primera línea de defensa \vertema{3.B.27}; la política monetaria tiene en cuenta los riesgos financieros a medio plazo (el BCE los incluye desde 2021 en su análisis monetario y financiero \parencite{BCE2021Estrategia}) y el ciclo financiero \vertema{3.A.42}, y, cuando estalla una crisis, da liquidez con generosidad contra buenas garantías, como prestamista de última instancia, y protege la transmisión de su política (\ref{sec:no-convencionales}).
+\end{itemize}
+
+\begin{anotaciones}
+Lecturas sobre este debate: \textcite[24 y ss.]{BlanchardSummers2017Rethinking}, \url{https://www.nber.org/system/files/working_papers/w24179/w24179.pdf}, y, con un repaso de la literatura, \textcite{NairAnand2020}.
+\end{anotaciones}
+
+\subsubsection{El peso del empleo: la histéresis}\label{sec:histeresis}
+
+\begin{itemize}
+\item Si las recesiones largas suben la propia tasa natural de paro, porque los parados pierden capital humano y dejan de pesar en la fijación de salarios, lo que pasa a corto plazo deja huella a largo \parencite{BlanchardSummers1986Hysteresis} \vertema{3.A.28}.
+\item Entonces la política óptima da más peso al empleo, tanto más cuanto mayor es la histéresis, y debe evitar las recesiones largas aunque cueste algo de inflación \parencite{Gali2022Insider}.
+\item La preocupación por el empleo está detrás de la estrategia de la Reserva Federal de 2020, que pasó a responder a los déficits de empleo respecto a su máximo y no a sus excesos \parencite{Fed2020Prensa}. Tras la inflación de 2021-2023, en 2025 la Reserva Federal eliminó esa asimetría y volvió a un enfoque equilibrado \parencite{Fed2025Prensa}; el BCE, por su parte, tiene en cuenta el empleo al decidir a qué ritmo vuelve la inflación al objetivo (\ref{sec:objetivos}).
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación de I}: el banco central puede estabilizar a corto plazo, pero no mover el paro natural; le conviene comprometerse, con un objetivo de inflación, una regla de respuesta conocida y la independencia; en la nueva economía keynesiana, el compromiso le permite repartir mejor las perturbaciones de costes, y el límite inferior, las perturbaciones de oferta y las finanzas le obligan a matizar. Falta ver cómo ejecuta esas decisiones: la instrumentación.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Instrumentación de la política monetaria}\label{sec:instrumentacion}
+\minutos{11,5}
+
+\begin{itemize}
+\item Una vez decidido qué quiere conseguir el banco central y con qué estrategia, pasamos a cómo lo ejecuta.
+\item \emph{Conclusión anticipada}: el banco central no controla la cantidad de dinero, que crean sobre todo los bancos al prestar, sino el precio de sus reservas. Por eso fija un tipo de interés a muy corto plazo, con un marco operativo (hoy, un sistema de suelo) y unos pocos instrumentos; cuando ese tipo llega a su límite inferior, usa su balance y su palabra.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Introducción: la creación del dinero en las economías modernas}\label{sec:creacion-dinero}
+
+\begin{itemize}
+\item Los modelos del apartado~\ref{sec:diseno} suponen que el banco central elige directamente el tipo de interés o la inflación. En la realidad solo controla su propio balance: la \concepto{base monetaria} (el efectivo y las reservas de los bancos en el banco central) y el tipo de interés al que presta y remunera esas reservas.
+\item \emph{La visión de manual}: el banco central fija la base monetaria y los bancos la «multiplican», prestando una y otra vez los depósitos que reciben: es el multiplicador del dinero (\ref{sec:balances}).
+\item \emph{Cómo se crea el dinero en realidad} \parencite{McLeayRadiaThomas2014Money}:
+  \begin{itemize}
+  \item la mayor parte del dinero son depósitos bancarios, y los crean los bancos al prestar: cuando un banco concede una hipoteca, abona el importe en la cuenta del cliente; nacen a la vez un activo del banco (el préstamo) y un pasivo (el depósito), y el balance del banco central no cambia (tabla~\ref{tab:creacion-dinero});
+  \item el dinero se destruye cuando se devuelve el préstamo;
+  \item los bancos no prestan sus reservas, que solo circulan entre ellos y el banco central: las reservas se adaptan a los préstamos, y no al revés. El banco central fija su \emph{precio}, el tipo de interés, y da las que se le pidan a ese precio.
+  \end{itemize}
+\item Cuánto pesan los depósitos: en el Reino Unido, el 97~\% del dinero en sentido amplio \parencite{McLeayRadiaThomas2014Money}; en la zona del euro, el efectivo es solo el 9~\% de M3 \parencite{BCE2026BSI} (anexo~\ref{anexo:agregados}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La creación de dinero al conceder un préstamo de 100}\label{tab:creacion-dinero}
+\small
+\begin{tabular}{>{\centering\arraybackslash}p{0.2\textwidth}>{\centering\arraybackslash}p{0.2\textwidth}>{\centering\arraybackslash}p{0.2\textwidth}>{\centering\arraybackslash}p{0.2\textwidth}}
+\toprule
+\rowcolor{tceeazulpalido}\multicolumn{2}{c}{\textbf{Banco comercial}} & \multicolumn{2}{c}{\textbf{Hogar}} \\
+\rowcolor{tceeazulpalido}\textbf{Activo} & \textbf{Pasivo} & \textbf{Activo} & \textbf{Pasivo} \\
+\midrule
+Préstamo nuevo $+100$ & Depósito nuevo $+100$ & Depósito nuevo $+100$ & Préstamo nuevo $+100$ \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{McLeayRadiaThomas2014Money}. El balance del banco central no cambia.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Los límites}: los bancos no pueden crear dinero sin límite; los frenan 3 fuerzas:
+  \begin{enumerate}
+  \item su rentabilidad y su riesgo: para prestar más tienen que bajar el tipo que cobran o aceptar más riesgo, y la regulación les exige capital y liquidez \vertema{3.B.27};
+  \item lo que hacen hogares y empresas: si usan el depósito nuevo para devolver otras deudas, el dinero se destruye; si lo gastan, sube la demanda;
+  \item la política monetaria, el límite último: el tipo de interés del banco central marca el coste de la financiación de los bancos y, con él, el de sus préstamos.
+  \end{enumerate}
+\item \emph{Conclusión}: la cantidad de dinero es \emph{endógena}: depende de los bancos, del público y del banco central, que no la controla, sino que la influye a través del tipo de interés.
+\end{itemize}
+
+\begin{anotaciones}
+\textcite{McLeayRadiaThomas2014Money}, del Banco de Inglaterra: el multiplicador puede servir para introducir el dinero y la banca en los manuales, pero no describe cómo se crea el dinero hoy; los bancos centrales no fijan la cantidad de reservas, sino su precio. \url{https://www.bankofengland.co.uk/quarterly-bulletin/2014/q1/money-creation-in-the-modern-economy}
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{El proceso de creación del dinero: balances y multiplicador}\label{sec:balances}
+
+\begin{itemize}
+\item El banco central y los bancos forman el \emph{sistema monetario}, el único cuyos pasivos son dinero. El pasivo monetario del banco central es la base; su activo, los préstamos a los bancos, los valores que compra y las reservas exteriores. Por eso crea base prestando a los bancos (las operaciones de política monetaria), comprando valores (las compras de activos) o comprando divisas; y la controla mal si tiene que defender un tipo de cambio fijo o financiar el déficit (dominación fiscal) \vertema{3.A.39}.
+\item \emph{El multiplicador del dinero}: con el efectivo en manos del público, $\mathrm{Ef}$, los depósitos, $\mathrm{Dep}$, y las reservas, $\mathrm{Res}$, la base es $\mathrm{BM}=\mathrm{Ef}+\mathrm{Res}$ y el dinero, $M=\mathrm{Ef}+\mathrm{Dep}$. Con $c_E\equiv\mathrm{Ef}/\mathrm{Dep}$ y $c_R\equiv\mathrm{Res}/\mathrm{Dep}$,
+  \begin{equation}\label{eq:multiplicador-dinero}
+  M=\frac{1+c_E}{c_E+c_R}\;\mathrm{BM} .
+  \end{equation}
+  Es una identidad contable: el multiplicador cae si el público quiere más efectivo o los bancos más reservas. No es el multiplicador de la política monetaria del modelo IS-LM, que mide cuánto sube la renta \vertema{3.A.5}.
+\item \emph{La Gran Contracción}: en Estados Unidos, entre 1929 y 1933, la base \emph{subió} y la cantidad de dinero cayó en torno a un tercio, porque el multiplicador pasó de 6,5 a 3,6: el cociente entre depósitos y efectivo bajó de 10,8 a 4,4 y el de depósitos y reservas, de 13,1 a 9,1 \parencite{FriedmanSchwartz1963Monetary} \vertema{3.A.5}.
+\item \emph{Identidad, no mecanismo}: con reservas abundantes y un sistema de suelo, el banco central fija el precio de las reservas y presta las que se le piden; la cantidad la decide la demanda de crédito. El multiplicador describe la relación, pero no es el mecanismo (\ref{sec:convencionales}). Los balances y la expansión banco a banco están en el anexo~\ref{anexo:multiplicador}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Esquema operativo y elección del instrumento}\label{sec:esquema-instrumento}
+
+\subsubsection{Esquema operativo}\label{sec:esquema-operativo}
+
+\begin{itemize}
+\item El \concepto{esquema operativo} es la cadena que va de lo que el banco central controla a lo que quiere conseguir (gráfico~\ref{fig:esquema-operativo}):
+  \begin{itemize}
+  \item \emph{instrumentos}: lo que controla directamente: los tipos de sus facilidades y operaciones, el coeficiente de reservas, el tamaño y la composición de su balance;
+  \item \emph{objetivo operativo}: la variable que puede fijar casi a diario con ellos: un tipo de interés a un día (en la zona del euro, el €STR) o una medida de las reservas;
+  \item \emph{objetivo intermedio}: una variable que se observa pronto y está ligada de forma estable al objetivo final: un agregado monetario, el tipo de cambio o, hoy, la \emph{previsión} de inflación;
+  \item \emph{objetivo final}: la estabilidad de precios y, según el mandato, el empleo.
+  \end{itemize}
+\item El esquema en 2 niveles, con un objetivo intermedio cuantitativo, es de los 70 y los 80 (\ref{sec:objetivo-dinero}). Hoy la cadena es más corta: el banco central fija un tipo a un día y lo mueve según sus previsiones de inflación y de actividad (\ref{sec:variable-objetivo}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El esquema operativo de la política monetaria}\label{fig:esquema-operativo}
+\grafico[0.95\textwidth]{esquema-operativo}
+\fuente{elaboración propia a partir de \textcite{MishkinMatthewsGiuliodori2013} y \textcite[cap.~11]{Walsh2017Monetary}.}
+\end{figure}
+
+\subsubsection{La elección de la variable operativa: \autor{Poole} (1970)}\label{sec:poole}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item ¿Debe el banco central fijar la cantidad de dinero y dejar que el tipo de interés se mueva, o fijar el tipo de interés y dar el dinero que se le pida? \textcite{Poole1970Optimal} muestra que depende de dónde vengan las perturbaciones.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El banco central decide \emph{antes} de ver las perturbaciones del periodo: observa enseguida los tipos de interés, pero la producción solo con retraso, así que no sabe si un movimiento del tipo viene del mercado de bienes o del de dinero.\footnote{Es como en un mercado cualquiera: si solo se ve que el precio sube, no se sabe si ha subido la demanda o ha bajado la oferta; hace falta ver también la cantidad. El banco central ve enseguida el tipo de interés, pero no la producción, y no distingue si la subida del tipo viene de más demanda de bienes o de más demanda de dinero.}
+\item Quiere estabilizar la producción en torno a su objetivo, normalizado a cero: minimiza $\mathbb{E}[y_t^2]$, la varianza de la producción.
+\item Un modelo IS-LM con precios fijos, en logaritmos y desviaciones \vertema{3.A.5}:
+  $$y_t=-b\,i_t+\varepsilon^{\mathrm{IS}}_t\ \ \text{(IS)},\qquad m_t=k\,y_t-h\,i_t+\varepsilon^{\mathrm{LM}}_t\ \ \text{(LM)},$$
+  con $\varepsilon^{\mathrm{IS}}_t$ una perturbación real (de la demanda de bienes) y $\varepsilon^{\mathrm{LM}}_t$ una monetaria (de la demanda de dinero), independientes, de media cero y varianzas $\sigma^2_{\mathrm{IS}}$ y $\sigma^2_{\mathrm{LM}}$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Si fija el tipo} ($i_t=0$, es decir, en su nivel $\bar\imath$ en desviaciones): la LM es horizontal y el dinero se adapta; $y_t=\varepsilon^{\mathrm{IS}}_t$, y $\mathbb{E}[y_t^2]_i=\sigma^2_{\mathrm{IS}}$.
+\item \emph{Si fija la cantidad} ($m_t=0$): de la LM, $i_t=(k\,y_t+\varepsilon^{\mathrm{LM}}_t)/h$; en la IS,
+  $$y_t=\frac{h\,\varepsilon^{\mathrm{IS}}_t-b\,\varepsilon^{\mathrm{LM}}_t}{h+b\,k},\qquad \mathbb{E}[y_t^2]_M=\frac{h^2\sigma^2_{\mathrm{IS}}+b^2\sigma^2_{\mathrm{LM}}}{(h+b\,k)^2} .$$
+\item \emph{Gráficamente} (gráfico~\ref{fig:poole}):
+  \begin{itemize}
+  \item con el tipo fijo en $\bar\imath$, la LM es una recta horizontal a esa altura; con la cantidad fija, la LM tiene pendiente positiva. El tramo rojo del eje horizontal es lo que varía la producción;
+  \item \emph{perturbaciones reales} (la IS oscila entre IS$^+$ e IS$^-$): con la cantidad fija, el tipo sube cuando sube la demanda y frena la inversión, y la producción varía menos (panel a) que con el tipo fijo, con el que el banco central acomoda la perturbación (panel b);
+  \item \emph{perturbaciones monetarias} (la LM oscila entre LM$^+$ y LM$^-$): con la cantidad fija, una caída de la demanda de dinero baja el tipo y sube la producción (panel c); con el tipo fijo, el banco central retira o da el dinero que sobra o falta, la LM horizontal no se mueve y la producción tampoco (panel d).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El análisis de \autor{Poole}: perturbaciones reales y monetarias con la cantidad fija y con el tipo fijo}\label{fig:poole}
+\grafico[0.9\textwidth]{poole}
+\fuente{elaboración propia a partir de \textcite{Poole1970Optimal}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Fijar el tipo de interés es mejor si y solo si
+  $$\frac{\sigma^2_{\mathrm{LM}}}{\sigma^2_{\mathrm{IS}}}>k^2+\frac{2\,h\,k}{b} ,$$
+  es decir:
+  \begin{itemize}
+  \item cuanto más pesan las perturbaciones de la demanda de dinero frente a las de la demanda de bienes;
+  \item y, para un cociente dado, cuanto menos sensible al tipo es la demanda de dinero ($h$ pequeño: LM más inclinada) y más lo es la inversión ($b$ grande: IS más plana).
+  \end{itemize}
+\item Con varianzas iguales y una elasticidad renta de la demanda de dinero $k\geq1$, fijar la cantidad nunca es peor (el umbral es mayor que $k^2\geq1$): lo que decide es el peso relativo de las perturbaciones, no las pendientes por sí solas.
+\item Pegatina: «perturbación real, fija la cantidad; monetaria, fija el tipo».
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Ninguno de los 2 extremos es óptimo con los 2 tipos de perturbaciones: lo mejor es una \emph{regla mixta}, una oferta de dinero que responde en parte al tipo de interés, es decir, una LM con la pendiente elegida \parencite{Poole1970Optimal} (anexo~\ref{anexo:poole}).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item En los 70, con la influencia del monetarismo, muchos bancos centrales fijaron objetivos monetarios: la Reserva Federal y el Banco de Canadá desde 1975, el Banco de Inglaterra con objetivos publicados desde 1976 y el Bundesbank, que los mantuvo hasta el euro \parencite{MishkinMatthewsGiuliodori2013,Hotson2010British}.
+\item La innovación financiera de los 70 y los 80 hizo inestable la demanda de dinero (más perturbaciones $\varepsilon^{\mathrm{LM}}_t$) y, como predice \autor{Poole}, los objetivos dejaron de funcionar. La Reserva Federal los abandonó en el otoño de 1982 y el Banco de Canadá, el mismo año: «no abandonamos los agregados monetarios: ellos nos abandonaron a nosotros», dijo su gobernador, Gerald \autor{Bouey} \parencite{Bouey1982Statement,Mishkin1999International}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Explica por qué todos los grandes bancos centrales usan hoy el tipo de interés.
+\item Pero es estático, con precios fijos y sin expectativas: con expectativas racionales, fijar el tipo sin responder a la inflación deja indeterminado el nivel de precios \parencite{SargentWallace1975Rational}. De ahí que la regla de tipos tenga que responder a la inflación, y con fuerza: el principio de \autor{Taylor} (\ref{sec:taylor}).
+\end{itemize}
+
+\subsubsection{La cantidad de dinero como objetivo intermedio}\label{sec:objetivo-dinero}
+
+\begin{itemize}
+\item \emph{Idea}: es la propuesta monetarista \vertema{3.A.5}. Parte de la ecuación cuantitativa en tasas, $\gamma_M+\gamma_V=\pi+\gamma_Y$: si la velocidad es estable, porque lo es la demanda de dinero \parencite{Friedman1956Quantity} \vertema{3.A.35}, controlar el crecimiento del dinero es controlar el del PIB nominal y, a largo plazo, la inflación, que es «siempre y en todas partes un fenómeno monetario» \parencite{Friedman1963Inflation}.
+\item Como la política actúa con retardos largos y variables \parencite{Friedman1961Lag}, la discrecionalidad desestabiliza: mejor una regla, la \concepto{regla del $k$~\%}, un crecimiento constante del dinero, $\gamma_M=\overline{\gamma}_M$ \parencite{Friedman1960Program}.
+\item \emph{Problemas}:
+  \begin{itemize}
+  \item \emph{control imperfecto}: el banco central controla la base, no el dinero, que depende también del público y de los bancos \eqref{eq:multiplicador-dinero};
+  \item \emph{velocidad inestable}: la innovación financiera rompió la relación entre el dinero y la renta (\ref{sec:poole}). Es la \concepto{ley de \autor{Goodhart}}: toda regularidad estadística tiende a romperse cuando se la usa para el control \parencite{Goodhart1975Problems};
+  \item \emph{la transmisión}: la teoría cuantitativa no dice cómo se reparte a corto plazo un cambio del PIB nominal entre precios y producción, la «ecuación que falta» de \textcite{Friedman1970Theoretical}.
+  \end{itemize}
+\item \emph{Qué quedó}: el BCE mantuvo hasta 2021 un «pilar monetario», con un valor de referencia para el crecimiento de M3; en 2021 lo sustituyó por un análisis monetario y financiero, junto al económico \parencite{BCE2021Estrategia}. En septiembre de 2026, M3 crecía un 3,5~\% \parencite{BCE2026Agregados}.
+\end{itemize}
+
+\subsubsection{Los tipos de interés como objetivo intermedio}\label{sec:objetivo-tipos}
+
+\begin{itemize}
+\item Desde los 90, los bancos centrales fijan como objetivo operativo un tipo a un día y lo mueven según una regla de respuesta a la inflación y a la actividad, como la de \autor{Taylor} (\ref{sec:taylor}). No hay objetivo intermedio cuantitativo: ese papel lo hace la previsión de inflación.
+\item El tipo a un día llega al resto de tipos (a plazo, de los préstamos, de la deuda) a través de las expectativas sobre los tipos futuros y de las primas de riesgo: por eso importa tanto lo que el banco central dice que hará \vertema{3.A.37}.
+\item Su límite es el límite inferior de los tipos (\ref{sec:limite-inferior}); entonces el banco central usa su balance y su comunicación (\ref{sec:no-convencionales}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Instrumentos a disposición de la autoridad monetaria}\label{sec:instrumentos}
+
+\subsubsection{Instrumentos convencionales}\label{sec:convencionales}
+
+\begin{itemize}
+\item Sirven para llevar el tipo a un día a donde quiere el banco central, dando o retirando liquidez. En el Eurosistema son 3 \parencite{BdE2026Instrumentos}; su detalle institucional \vertema{3.B.43}.
+\end{itemize}
+
+\paragraph{Operaciones de mercado abierto}
+
+\begin{itemize}
+\item \emph{Qué son}: operaciones a iniciativa del banco central con las entidades de crédito. Pueden ser \emph{temporales} (préstamos con garantía, el grueso) o \emph{en firme} (compras o ventas de valores, como las de los programas de compras de activos).
+\item \emph{En el BCE}: las \emph{operaciones principales de financiación}, semanales y a una semana (su tipo es el «tipo oficial»); las de \emph{financiación a más largo plazo}, a 3 meses, y las de ajuste y estructurales.
+\item \emph{Cómo se adjudican}: hasta 2008, por subasta;\footnote{En una subasta a tipo variable, el banco central ordena las pujas de mayor a menor tipo y adjudica hasta la cantidad que quiere dar; el tipo de la última puja aceptada es el \emph{tipo marginal}. Las pujas por encima se adjudican a su propio tipo (subasta \emph{americana}) o al marginal (\emph{holandesa}). Las entidades entregan como garantía activos que recuperan al devolver los fondos: son préstamos con garantía más que compraventas de valores.} desde octubre de 2008, a tipo fijo y sin límite de cantidad: cada entidad recibe toda la liquidez que pide si aporta garantías.
+\item \emph{Valoración}: son flexibles (grandes o pequeñas, en un sentido u otro) y señalan el tono de la política.
+\end{itemize}
+
+\paragraph{Facilidades permanentes}
+
+\begin{itemize}
+\item A iniciativa de las entidades, a un día y a un tipo que fija el banco central:
+  \begin{itemize}
+  \item la \emph{facilidad marginal de crédito} da liquidez contra garantías: su tipo es el \emph{techo} del tipo a un día, porque ningún banco pagará más en el mercado;
+  \item la \emph{facilidad de depósito} remunera los depósitos de las entidades: su tipo es el \emph{suelo}, porque ningún banco prestará a menos.
+  \end{itemize}
+\item El BCE tiene ese corredor desde 1999, en general con 100 puntos básicos a cada lado del tipo de las operaciones principales; hoy es mucho más estrecho \parencite{BCE2026TiposOficiales}.
+\end{itemize}
+
+\paragraph{Reservas mínimas}
+
+\begin{itemize}
+\item Las entidades deben mantener en el banco central un porcentaje de algunos de sus pasivos (sobre todo depósitos a menos de 2 años), en media durante un periodo de mantenimiento.
+\item \emph{Funciones hoy}: estabilizar el tipo a un día (como se cumplen en media, las reservas sirven de colchón) y crear un déficit estructural de liquidez que obliga a pedir financiación al banco central.
+\item \emph{En la zona del euro}: el coeficiente es del 1~\% desde el 18 de enero de 2012 (antes, el 2~\%) \parencite{BCE2011Medidas} y, desde el 20 de septiembre de 2023, esas reservas no se remuneran \parencite{BCE2023Reservas}: hoy suman unos 175.000 millones de euros \parencite{BCE2026ReservasMinimas}. Las reservas que exceden el mínimo se remuneran si se depositan en la facilidad de depósito.
+\item \emph{Valoración}: es potente, pero no puede cambiarse a menudo sin dañar a las entidades; hoy es secundario. La Reserva Federal lo bajó a cero en 2020 \parencite{Fed2020Reservas}. En el multiplicador \eqref{eq:multiplicador-dinero} parece una palanca sobre la cantidad de dinero; con reservas abundantes, solo estabiliza el tipo a corto.
+\end{itemize}
+
+\paragraph{De un sistema de corredor a un sistema de suelo}
+
+\begin{itemize}
+\item \emph{Sistema de corredor} (gráfico~\ref{fig:pasillo-suelo}): con reservas escasas, el banco central da cada semana justo las que necesitan los bancos y el tipo de mercado queda cerca del centro del pasillo, el tipo de las operaciones principales. Fue el del BCE de 1999 a 2008.
+\item \emph{Sistema de suelo}: con reservas abundantes, que sobran, el tipo de mercado cae al suelo y el tipo que importa es el de la facilidad de depósito. Las compras de activos y las operaciones a largo plazo llenaron el sistema de reservas: el exceso de liquidez de la zona del euro llegó a 4,7 billones de euros en noviembre de 2022 y hoy es de unos 2,1 billones, y el €STR queda unos 6 puntos básicos por debajo de la facilidad de depósito \parencite{BieberLizarazo2026Liquidez,BCE2026ILM}.
+\item \emph{El marco operativo del BCE desde 2024} \parencite{BCE2024Marco}:
+  \begin{itemize}
+  \item el tono de la política se fija con el tipo de la \emph{facilidad de depósito};
+  \item la liquidez se da \emph{a demanda}, en operaciones a tipo fijo y sin límite de cantidad; más adelante, con operaciones estructurales a más largo plazo y una cartera estructural de valores;
+  \item el diferencial entre el tipo de las operaciones principales y el de la facilidad de depósito bajó de 50 a 15 puntos básicos desde el 18 de septiembre de 2024, para que los bancos pidan reservas sin que el tipo de mercado se aleje del suelo; la facilidad marginal sigue 25 puntos por encima de las operaciones principales; sus parámetros se revisarán en 2026 \parencite{BCE2024Marco};
+  \item es, por tanto, un \emph{suelo con demanda}: los tipos vigentes son el 2,50~\% de la facilidad de depósito, el 2,65~\% de las operaciones principales y el 2,90~\% de la facilidad marginal desde el 16 de septiembre de 2026, mantenidos el 29 de octubre \parencite{BCE2026TiposOficiales,BCE2026Decisiones}.
+  \end{itemize}
+\item La Reserva Federal funciona desde 2019 con \emph{reservas amplias}: controla los fondos federales con la remuneración de las reservas y de sus repos inversos, sin gestionar su cantidad \parencite{Fed2019Amplias}. Dejó de reducir su balance en diciembre de 2025 y compra letras para mantener las reservas amplias \parencite{Fed2025FOMCdic}; el objetivo de los fondos federales está en el 3,75-4,00~\% desde el 17 de septiembre de 2026 \parencite{FRED2026FedTipos}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El tipo a un día con un sistema de corredor y con un sistema de suelo}\label{fig:pasillo-suelo}
+\grafico[0.75\textwidth]{pasillo-suelo}
+\fuente{elaboración propia a partir de \textcite{BCE2024Marco} y \textcite[cap.~11]{Walsh2017Monetary}.}
+\end{figure}
+
+\subsubsection{Instrumentos no convencionales}\label{sec:no-convencionales}
+
+\begin{itemize}
+\item Cuando el tipo a corto llega a su límite inferior (\ref{sec:limite-inferior}) o la transmisión se rompe, el banco central usa su balance y su comunicación para influir en los tipos a más largo plazo, en las primas de riesgo y en el crédito. Pegatina: «a grandes males, grandes remedios». Sus canales y su eficacia \vertema{3.A.37}; su interacción con la política fiscal desde 2008 \vertema{3.A.40}. La cronología del Eurosistema está en el anexo~\ref{anexo:cronologia}.
+\end{itemize}
+
+\paragraph{Crédito a largo plazo y barato}
+
+\begin{itemize}
+\item Préstamos a los bancos a plazos largos y tipos bajos para que no corten el crédito: las operaciones a 3 años del BCE de diciembre de 2011 y febrero de 2012 y las \emph{TLTRO}, \emph{condicionadas} a que el banco preste a empresas y hogares (la última serie, de 10 operaciones a 3 años desde septiembre de 2019, ya ha vencido) \parencite{BieberLizarazo2026Liquidez}.
+\end{itemize}
+
+\paragraph{Compras de activos (expansión cuantitativa)}
+
+\begin{itemize}
+\item Compras en firme y a gran escala de deuda pública y privada: el programa de compras de activos del BCE (APP, desde 2014; deuda pública desde 2015) y el programa de compras de emergencia frente a la pandemia (PEPP, desde 2020) \parencite{BCE2026APP,BCE2026PEPP}.
+\item Bajan la prima por plazo de los tipos largos, señalan que los tipos seguirán bajos, dan liquidez y deprecian el tipo de cambio \vertema{3.A.37}. Crean reservas, no préstamos: el dinero de hogares y empresas solo crece si los bancos prestan más (anexo~\ref{anexo:compras-activos}).
+\item Hoy se deshacen: el BCE dejó de reinvertir los vencimientos del APP en julio de 2023 y los del PEPP a finales de 2024, y sus carteras se reducen a un ritmo «mesurado y predecible» \parencite{BieberLizarazo2026Liquidez,BCE2026Decisiones}. El balance del Eurosistema, que llegó a 8,8 billones de euros en junio de 2022, era de 5,9 billones a finales de octubre de 2026 \parencite{BCE2026ILM}.
+\end{itemize}
+
+\paragraph{Tipos de interés negativos}
+
+\begin{itemize}
+\item El límite efectivo está algo por debajo de cero, porque guardar efectivo cuesta. El BCE tuvo la facilidad de depósito en negativo de junio de 2014 a julio de 2022, con un mínimo del $-0{,}50$~\% \parencite{BCE2026TiposOficiales}. El riesgo: dañar los márgenes de los bancos y, con ellos, el crédito.
+\end{itemize}
+
+\paragraph{Orientación de la política (\emph{forward guidance})}
+
+\begin{itemize}
+\item El banco central anuncia cómo moverá los tipos en el futuro: si promete tipos bajos más tiempo, bajan hoy los tipos largos y los reales esperados. Puede ir \emph{ligada a fechas} o \emph{al estado de la economía}, y ser \emph{informativa} (prevé) o \emph{comprometida} (promete) \parencite{CampbellEtAl2012Macroeconomic}. Pegatina: «quien avisa no es traidor».
+\item El BCE la usó por primera vez el 4 de julio de 2013: esperaba que sus tipos siguieran en los niveles de entonces, o más bajos, durante un periodo prolongado \parencite{BCE2013Orientacion}. Su eficacia depende de la credibilidad, como en el compromiso de la nueva economía keynesiana (\ref{sec:nek}).
+\end{itemize}
+
+\paragraph{Control de la curva de tipos}
+
+\begin{itemize}
+\item El banco central se compromete a mantener el tipo de un plazo (por ejemplo, el bono a 10 años) en un nivel, comprando lo que haga falta: lo hicieron la Reserva Federal entre 1942 y 1951, hasta el acuerdo con el Tesoro \parencite{FedHistory2026Accord}, y el Banco de Japón entre septiembre de 2016 y marzo de 2024 \parencite{BoJ2016YCC,BoJ2024Marco} \vertema{3.B.24}.
+\item La «operación \emph{Twist}» de la Reserva Federal, entre septiembre de 2011 y finales de 2012, era otra cosa: sin objetivo de tipo, cambió letras por bonos largos para bajar los tipos a largo sin ampliar su balance \parencite{Fed2011Twist,Fed2012Twist}.
+\end{itemize}
+
+\paragraph{Protección de la transmisión}
+
+\begin{itemize}
+\item En una unión monetaria, las primas de riesgo de un país pueden subir por pánico y romper la transmisión de la política única. «Dentro de nuestro mandato, el BCE está dispuesto a hacer lo que sea necesario para preservar el euro; y créanme, será suficiente», dijo \autor{Draghi} el 26 de julio de 2012 \parencite{Draghi2012Speech}; en septiembre llegaron las \emph{operaciones monetarias de compraventa} (OMT), compras de deuda de un país con un programa de ajuste, que nunca se han usado \parencite{BCE2012OMT}. Desde julio de 2022, el BCE dispone además del \emph{instrumento para la protección de la transmisión} (TPI), para frenar ampliaciones injustificadas de los diferenciales \parencite{BCE2022TPI}.
+\item Más que orientación de la política sobre los tipos, son anuncios de un respaldo creíble: bastó con anunciarlas.
+\end{itemize}
+
+\paragraph{Dinero helicóptero}
+
+\begin{itemize}
+\item El banco central da dinero directamente a los hogares, o financia con dinero nuevo, sin devolución, un gasto público o una rebaja de impuestos. La imagen es de \textcite{Friedman1969Optimum}: dinero lanzado desde un helicóptero (que no es la regla de \autor{Friedman}, un tipo nominal de cero, del mismo libro \vertema{3.A.41}). Tras la crisis del euro se reformuló como «expansión cuantitativa para la gente» \parencite{Muellbauer2014QE}.
+\item \emph{A favor}: no depende de que funcionen los canales financieros y su efecto sobre la demanda es directo; \textcite{Gali2020Helicopter} defendió en 2020 financiar así la respuesta a la pandemia, con un banco central que participa de forma voluntaria y conserva su independencia.
+\item \emph{En contra}: borra la frontera entre la política monetaria y la fiscal, choca con la prohibición de financiar a los Estados (artículo 123 del TFUE) y puede desanclar las expectativas de inflación si el público duda de que sea excepcional \vertema{3.A.39}.
+\end{itemize}
+
+\subsubsection{Una nueva herramienta: el euro digital}\label{sec:euro-digital}
+
+\begin{itemize}
+\item Una \concepto{moneda digital de banco central} (CBDC) es dinero del banco central en forma digital. Puede ser \emph{mayorista}, para liquidar operaciones entre entidades, o \emph{minorista}, para el público: un efectivo digital.
+\item \emph{El euro digital}: la Comisión propuso su reglamento en junio de 2023 \parencite{Comision2023EuroDigital}; sería un medio de pago con curso legal, sin intereses, con un límite de tenencia por persona y utilizable sin conexión. El Consejo fijó su posición en diciembre de 2025 \parencite{Consejo2025EuroDigital} y el Parlamento Europeo, en julio de 2026 \parencite{PE2026EuroDigital}, y las negociaciones siguen abiertas. Si el reglamento se aprueba en 2026, el BCE prevé un piloto en 2027 y la primera emisión en 2029 \parencite{BCE2025EuroDigital}.
+\item \emph{Para la política monetaria}:
+  \begin{itemize}
+  \item si se remunerara, su tipo llegaría directamente al público y reforzaría la transmisión;
+  \item si el público cambiara depósitos por euros digitales, los bancos perderían financiación barata (\emph{desintermediación}), y en una crisis la huida hacia el dinero del banco central sería más rápida: de ahí el límite de tenencia y que no se remunere;
+  \item mantiene el ancla del dinero del banco central cuando el efectivo se usa cada vez menos y reduce la dependencia de medios de pago de fuera de Europa.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación de II}: el banco central no controla la cantidad de dinero sino el precio de las reservas; según \autor{Poole}, fijar ese precio es lo mejor cuando la demanda de dinero es inestable; hoy lo hace con un sistema de suelo y unos pocos instrumentos convencionales y, cuando hace falta, con su balance y su palabra.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: En conclusión, el diseño de la política monetaria responde a la tensión entre la neutralidad del dinero a largo plazo y sus efectos a corto. Como no puede bajar el paro natural, el banco central se centra en la estabilidad de precios; como las expectativas mandan, le conviene comprometerse: independencia, un objetivo de inflación explícito y una respuesta sistemática, que en la nueva economía keynesiana es la política óptima. La instrumentación se ha adaptado: el banco central fija el precio de sus reservas, no la cantidad de dinero, y cuando el tipo toca su límite inferior usa su balance y su comunicación.
+\item \textbf{\emph{Relevancia}}: el regreso de la inflación en 2021-2023, y de nuevo en 2026, ha sido la prueba: los bancos centrales creíbles la han bajado sin una recesión profunda, porque las expectativas a largo plazo siguieron ancladas.
+\item \textbf{\emph{Extensiones}}: la demanda de dinero \vertema{3.A.35}; la transmisión, convencional y no convencional \vertema{3.A.37}; la dominación fiscal \vertema{3.A.39}; la política monetaria y fiscal desde 2008 \vertema{3.A.40}; la inflación y sus costes \vertema{3.A.41}; la nueva economía keynesiana \vertema{3.A.7}; la tasa natural y la histéresis \vertema{3.A.28}; el monetarismo \vertema{3.A.5}; la credibilidad como juego \vertema{3.A.14}; los regímenes cambiarios y la integración monetaria \vertema{3.B.15} \vertema{3.B.16}, y el Eurosistema \vertema{3.B.43}.
+\item \textbf{\emph{Opinión}}: el gran acierto del diseño actual es institucional más que técnico: la independencia y la transparencia han hecho creíble el 2~\%. Sus riesgos están en lo que el modelo canónico deja fuera: el límite inferior, la estabilidad financiera, la dominación fiscal con deudas altas y unas perturbaciones de oferta cada vez más frecuentes.
+\item \textbf{\emph{Idea final}}: a la pregunta del principio, por qué creer a un banco central que promete un 2~\%, la respuesta es que el diseño hace que nunca le convenga incumplir, y la instrumentación, que pueda cumplir. Lo prometido es deuda, y un banco central creíble es el que la paga.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% --------------------------------------------------------------------------
+\section{Anexo: balances y multiplicador del dinero}\label{anexo:multiplicador}
+
+\subsection{Los balances}
+
+\begin{table}[H]
+\centering
+\caption{Balances simplificados del banco central, de los bancos y del sistema monetario}\label{tab:balances}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.35\textwidth}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Activo} & \textbf{Pasivo} \\
+\midrule
+Banco central & Préstamos a los bancos (operaciones de política monetaria); valores (compras de activos); activos exteriores netos (divisas, oro) & Efectivo en circulación; reservas de los bancos (mínimas y exceso); depósitos del Tesoro; capital \\
+Bancos & Reservas en el banco central ($\mathrm{Res}$); préstamos a hogares y empresas; valores & Depósitos ($\mathrm{Dep}$); préstamos del banco central; otros pasivos y capital \\
+Sistema monetario (consolidado) & Crédito al sector privado; crédito a las administraciones públicas; activos exteriores netos & Efectivo en manos del público ($\mathrm{Ef}$) y depósitos: el dinero, $M$ \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{MishkinMatthewsGiuliodori2013}. Al consolidar se cancelan las reservas y los préstamos del banco central a los bancos.}
+\end{table}
+
+\begin{itemize}
+\item El pasivo de los bancos frente al banco central son los préstamos que este les da; las reservas son su activo. La \concepto{base monetaria} es el pasivo monetario del banco central, $\mathrm{BM}=\mathrm{Ef}+\mathrm{Res}$; el dinero es el pasivo monetario del sistema, $M=\mathrm{Ef}+\mathrm{Dep}$.
+\end{itemize}
+
+\subsection{El multiplicador, paso a paso}
+
+\begin{itemize}
+\item \emph{Sin efectivo}: si el banco central da 100 de reservas y cada banco guarda la fracción $c_R$ de sus depósitos y presta el resto, que vuelve como depósito a otro banco (tabla~\ref{tab:expansion}), los depósitos son
+  $$\mathrm{Dep}=\mathrm{BM}\,\big[1+(1-c_R)+(1-c_R)^2+\dots\big]=\frac{\mathrm{BM}}{c_R} .$$
+\item \emph{Con efectivo}: si el público guarda $c_E$ euros de efectivo por euro depositado, $\mathrm{BM}=\mathrm{Ef}+\mathrm{Res}=(c_E+c_R)\,\mathrm{Dep}$ y $M=(1+c_E)\,\mathrm{Dep}$; dividiendo, sale \eqref{eq:multiplicador-dinero}.
+\item \emph{Los cocientes}: el multiplicador baja si el público quiere más efectivo o los bancos más reservas,
+  $$\frac{\partial}{\partial c_E}\left(\frac{1+c_E}{c_E+c_R}\right)=-\frac{1-c_R}{(c_E+c_R)^2}<0,\qquad \frac{\partial}{\partial c_R}\left(\frac{1+c_E}{c_E+c_R}\right)=-\frac{1+c_E}{(c_E+c_R)^2}<0 .$$
+  \findemo
+\item \emph{La Gran Contracción en cifras} \parencite{FriedmanSchwartz1963Monetary}: entre 1929 y 1933, $c_E$ pasó de 0,093 a 0,227 y $c_R$, de 0,076 a 0,110; el multiplicador cayó de 6,5 a 3,6 (un 44~\%), y, con la base un 17,5~\% más alta, el dinero cayó en torno a un tercio \vertema{3.A.5}.
+\item \emph{Por qué no describe hoy la realidad}: el coeficiente de reservas no limita a los bancos, que tienen reservas de sobra (en la zona del euro, el mínimo es el 1~\% y el exceso de liquidez es enorme desde 2015) o las obtienen del banco central al tipo que este fija; la causalidad va de los préstamos a los depósitos y de estos a las reservas \parencite{McLeayRadiaThomas2014Money}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La expansión banco a banco con un coeficiente de reservas del 10~\% y sin efectivo}\label{tab:expansion}
+\small
+\begin{tabular}{lccc}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Banco} & \textbf{Depósito recibido} & \textbf{Reservas} & \textbf{Préstamo} \\
+\midrule
+1 & 100 & 10 & 90 \\
+2 & 90 & 9 & 81 \\
+3 & 81 & 8,1 & 72,9 \\
+\dots & \dots & \dots & \dots \\
+Total & 1.000 & 100 & 900 \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\section{Anexo: los agregados monetarios de la zona del euro}\label{anexo:agregados}
+
+\begin{table}[H]
+\centering
+\caption{Los agregados monetarios del BCE, septiembre de 2026}\label{tab:agregados}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.1\textwidth}>{\raggedright\arraybackslash}p{0.62\textwidth}>{\centering\arraybackslash}p{0.16\textwidth}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Agregado} & \textbf{Qué incluye} & \textbf{Billones de euros} \\
+\midrule
+M1 & Efectivo en circulación y depósitos a la vista & 11,33 \\
+M2 & M1, depósitos a plazo hasta 2 años y depósitos disponibles con preaviso hasta 3 meses & 16,49 \\
+M3 & M2, cesiones temporales, participaciones en fondos del mercado monetario y valores representativos de deuda hasta 2 años & 17,72 \\
+\bottomrule
+\end{tabular}
+\fuente{\textcite{BCE2026AgregadosDef} (definiciones) y \textcite{BCE2026BSI} (saldos).}
+\end{table}
+
+\begin{itemize}
+\item En septiembre de 2026, M3 crecía un 3,5~\% y M1 un 2,7~\% \parencite{BCE2026Agregados}; el efectivo, 1,62 billones de euros, era el 9~\% de M3 y el 14~\% de M1 \parencite{BCE2026BSI}.
+\item En la zona del euro no hay M4: es un agregado del Reino Unido, y a él se refiere el 97~\% de depósitos de \textcite{McLeayRadiaThomas2014Money}. La base monetaria (efectivo y reservas) es un pasivo del banco central, no un agregado del dinero del público.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\section{Anexo: el análisis de \autor{Poole} paso a paso}\label{anexo:poole}
+
+\begin{itemize}
+\item \emph{Modelo}: $y_t=-b\,i_t+\varepsilon^{\mathrm{IS}}_t$ y $m_t=k\,y_t-h\,i_t+\varepsilon^{\mathrm{LM}}_t$, con perturbaciones independientes; el banco central minimiza $\mathbb{E}[y_t^2]$ (\ref{sec:poole}).
+\item \emph{Tipo fijo} ($i_t=0$): $y_t=\varepsilon^{\mathrm{IS}}_t$ y $\mathbb{E}[y_t^2]_i=\sigma^2_{\mathrm{IS}}$.
+\item \emph{Cantidad fija} ($m_t=0$): de la LM, $i_t=(k\,y_t+\varepsilon^{\mathrm{LM}}_t)/h$. Sustituyendo en la IS, $y_t\,(1+bk/h)=\varepsilon^{\mathrm{IS}}_t-(b/h)\,\varepsilon^{\mathrm{LM}}_t$, es decir,
+  $$y_t=\frac{h\,\varepsilon^{\mathrm{IS}}_t-b\,\varepsilon^{\mathrm{LM}}_t}{h+b\,k},\qquad \mathbb{E}[y_t^2]_M=\frac{h^2\sigma^2_{\mathrm{IS}}+b^2\sigma^2_{\mathrm{LM}}}{(h+b\,k)^2},$$
+  porque las perturbaciones son independientes.
+\item \emph{Comparación}: fijar el tipo es mejor si $\mathbb{E}[y_t^2]_i<\mathbb{E}[y_t^2]_M$, es decir, si $(h+bk)^2\sigma^2_{\mathrm{IS}}<h^2\sigma^2_{\mathrm{IS}}+b^2\sigma^2_{\mathrm{LM}}$. Desarrollando el cuadrado, $(2hbk+b^2k^2)\,\sigma^2_{\mathrm{IS}}<b^2\sigma^2_{\mathrm{LM}}$, y dividiendo por $b^2\sigma^2_{\mathrm{IS}}$,
+  $$\frac{\sigma^2_{\mathrm{LM}}}{\sigma^2_{\mathrm{IS}}}>k^2+\frac{2\,h\,k}{b} .$$
+  Si solo hay perturbaciones reales ($\sigma^2_{\mathrm{LM}}=0$), conviene la cantidad; si solo hay monetarias ($\sigma^2_{\mathrm{IS}}=0$), el tipo.\findemo
+\item \emph{La regla mixta}: si el banco central deja que el dinero responda al tipo, $m_t=\mu\,i_t$ ($\mu=0$ es la cantidad fija; $\mu\to\infty$, el tipo fijo), la LM pasa a ser $i_t=(k\,y_t+\varepsilon^{\mathrm{LM}}_t)/(h+\mu)$ y, con $H\equiv h+\mu$,
+  $$\mathbb{E}[y_t^2]=\frac{H^2\sigma^2_{\mathrm{IS}}+b^2\sigma^2_{\mathrm{LM}}}{(H+b\,k)^2} .$$
+  La condición de primer orden, $H\sigma^2_{\mathrm{IS}}(H+bk)=H^2\sigma^2_{\mathrm{IS}}+b^2\sigma^2_{\mathrm{LM}}$, da
+  $$H^*=\frac{b\,\sigma^2_{\mathrm{LM}}}{k\,\sigma^2_{\mathrm{IS}}} :$$
+  la LM óptima es más plana (el dinero acomoda más) cuanto más pesan las perturbaciones monetarias, y nunca es uno de los 2 extremos si las 2 perturbaciones existen \parencite{Poole1970Optimal}.\findemo
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\section{Anexo: los instrumentos del Eurosistema, cronología}\label{anexo:cronologia}
+
+\begin{table}[H]
+\centering
+\caption{Cronología de los instrumentos del Eurosistema, 1999-2026}\label{tab:cronologia}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.2\textwidth}>{\raggedright\arraybackslash}p{0.7\textwidth}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Fecha} & \textbf{Qué cambia} \\
+\midrule
+Enero de 1999 & Corredor de facilidades permanentes en torno al tipo de las operaciones principales; reservas mínimas del 2~\% \\
+Octubre de 2008 & Operaciones a tipo fijo y con adjudicación plena: empieza el exceso de liquidez \\
+Dic. 2011-feb. 2012 & Operaciones a 3 años; coeficiente de reservas del 1~\% desde el 18 de enero de 2012 \parencite{BCE2011Medidas} \\
+Julio de 2012 & Facilidad de depósito al 0~\%; discurso de \autor{Draghi} (26 de julio) \parencite{Draghi2012Speech} \\
+Septiembre de 2012 & Operaciones monetarias de compraventa (OMT) \parencite{BCE2012OMT} \\
+Julio de 2013 & Primera orientación sobre los tipos futuros \parencite{BCE2013Orientacion} \\
+Junio de 2014 & Facilidad de depósito negativa y primeras TLTRO \\
+2014-2015 & Programa de compras de activos (APP): desde 2014, y con deuda pública desde 2015 \parencite{BCE2026APP} \\
+Septiembre de 2019 & Facilidad de depósito en el $-0{,}50$~\%; TLTRO III \\
+Marzo de 2020 & Programa de compras de emergencia frente a la pandemia (PEPP) \parencite{BCE2026PEPP} \\
+Julio de 2022 & Fin de los tipos negativos; instrumento para la protección de la transmisión (TPI) \parencite{BCE2022TPI} \\
+Julio de 2023 & Fin de las reinversiones del APP \\
+Septiembre de 2023 & Facilidad de depósito en el 4~\%; reservas mínimas sin remunerar \parencite{BCE2023Reservas} \\
+Marzo de 2024 & Nuevo marco operativo: suelo con demanda; diferencial de 15 puntos básicos desde el 18 de septiembre \parencite{BCE2024Marco} \\
+Finales de 2024 & Fin de las reinversiones del PEPP \\
+Octubre de 2025 & El euro digital pasa a la siguiente fase \parencite{BCE2025EuroDigital} \\
+Junio y septiembre de 2026 & 2 subidas de 25 puntos básicos: facilidad de depósito en el 2,50~\% desde el 16 de septiembre \parencite{BCE2026TiposOficiales} \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de las fuentes citadas en cada fila y de \textcite{BieberLizarazo2026Liquidez}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\section{Anexo: las compras de activos en los balances}\label{anexo:compras-activos}
+
+\begin{itemize}
+\item Cuando el banco central compra un bono, paga con reservas. Lo que cambia depende de a quién se lo compre (tabla~\ref{tab:compras-activos}):
+  \begin{itemize}
+  \item \emph{a un banco}: el banco cambia un bono por reservas, y los depósitos del público no cambian;
+  \item \emph{a un fondo de pensiones}: el fondo cambia el bono por un depósito en su banco, y el banco recibe las reservas; los depósitos suben, pero los tiene una institución financiera, que no los gasta en bienes, sino que compra otros activos.
+  \end{itemize}
+\item En los 2 casos, las compras crean reservas y cambian la composición de las carteras: bajan los tipos a largo plazo y suben los precios de los activos. El dinero que usan hogares y empresas solo crece si los bancos prestan más o si el sector público gasta más \vertema{3.A.37}.
+\item \emph{Un ejemplo}: entre 2001 y 2006, el Banco de Japón multiplicó las reservas de los bancos, pero el crédito bancario apenas respondió \parencite{BowmanEtAl2015Quantitative}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Una compra de deuda de 100 por el banco central}\label{tab:compras-activos}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.2\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Se la compra a un banco} & \textbf{Se la compra a un fondo de pensiones} \\
+\midrule
+Banco central & Activo: bonos $+100$. Pasivo: reservas $+100$ & Activo: bonos $+100$. Pasivo: reservas $+100$ \\
+Banco & Activo: bonos $-100$ y reservas $+100$ & Activo: reservas $+100$. Pasivo: depósito del fondo $+100$ \\
+Fondo de pensiones & — & Activo: bonos $-100$ y depósito $+100$ \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{McLeayRadiaThomas2014Money}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\section{Anexo: aspectos para el test}\label{anexo:test}
+
+\begin{itemize}
+\item \emph{Fechas y obras}: \autor{Wicksell} (1898), regla de tipos; \autor{Tinbergen} (1952), tantos instrumentos como objetivos; \autor{Friedman} (1960), regla del $k$~\%, y (1968), tasa natural; \autor{Poole} (1970); \autor{Goodhart} (1975); \autor{Sargent} y \autor{Wallace} (1975), inefectividad e indeterminación con el tipo fijo; \autor{Kydland} y \autor{Prescott} (1977); \autor{Barro} y \autor{Gordon} (1983, 2 artículos); \autor{Rogoff} (1985), banquero conservador; \autor{Cukierman}, \autor{Webb} y \autor{Neyapti} (1992); \autor{Taylor} (1993); \autor{Alesina} y \autor{Summers} (1993); \autor{Walsh} (1995), contrato óptimo; \autor{Svensson} (1997); \autor{Clarida}, \autor{Galí} y \autor{Gertler} (1999, 2000); \autor{Woodford} (2003); \autor{McLeay}, \autor{Radia} y \autor{Thomas} (2014).
+\item \emph{Resultados que se preguntan}:
+  \begin{itemize}
+  \item inconsistencia temporal: con discreción, $\pi^D=\pi^*+(\alpha/\gamma)(U^n-U^*)$ y el paro natural; la regla da la misma tasa de paro con menos inflación \eqref{eq:sesgo};
+  \item banquero conservador: menos sesgo, peor estabilización ante perturbaciones de oferta; contrato de \autor{Walsh}: sin sesgo y sin ese coste;
+  \item regla de \autor{Taylor}: $i_t=1+1{,}5\,\pi_t+0{,}5\,\mathrm{OG}_t$; principio $\phi_\pi>1$;
+  \item \autor{Poole}: perturbaciones reales, fijar la cantidad; monetarias, fijar el tipo;
+  \item multiplicador del dinero $(1+c_E)/(c_E+c_R)$, decreciente en los 2 cocientes;
+  \item zona del euro: reservas mínimas del 1~\% sin remunerar; tipo de referencia, la facilidad de depósito.
+  \end{itemize}
+\item Preguntas de test de exámenes anteriores (10 asignadas a este tema, de 2002 a 2023: inconsistencia dinámica, banquero conservador, regla de \autor{Taylor}, medidas no convencionales y multiplicador del dinero), en el simulador: \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}.
+\end{itemize}
+
+\bibliografia
+\end{document}

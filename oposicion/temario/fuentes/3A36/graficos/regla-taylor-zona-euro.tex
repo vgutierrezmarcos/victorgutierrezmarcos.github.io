@@ -1,0 +1,53 @@
+% La regla de Taylor (1993) y el tipo de la facilidad de depósito del BCE,
+% zona del euro, 1999-2026 (medias anuales), con la inflación (IAPC).
+% Gráfico de referencia de la regla de Taylor con datos (el 3.A.7 no tiene
+% gráfico de datos de la regla: lo dejó para el 3.A.36, A07-13).
+% Datos: ../datos/regla-taylor-zona-euro.csv (BCE, Eurostat y AMECO; IAPC
+% hasta octubre de 2026, avance; consulta del 4/11/2026; 2026 provisional).
+%   regla: i = 1 + 1,5 pi + 0,5 OG; -1,57 (2020); 14,15 (2022); 5,10 (2026)
+%   facilidad de depósito: 0,08 (2022); 2,16 (2026, media hasta el 4/11)
+% Capas (CRITERIOS §7): sombreado, ejes y cero -> inflación -> facilidad de
+% depósito -> regla -> puntos -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\taylordatos}{../datos/regla-taylor-zona-euro.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11cm, height=6.2cm, scale only axis,
+      xmin=1998.5, xmax=2027, xtick={2000,2004,...,2024},
+      ymin=-3, ymax=16, ytick={-2,0,...,16},
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      ylabel={\%}, label style={font=\footnotesize},
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none, font=\footnotesize},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: el año provisional, sombreado, y la línea del cero
+    \capa{1}{\dicsombra[fill=dicreferencia, fill opacity=0.15]{2025.5}{-3}{2026.5}{16}}
+    \capa{1}{\dicraya{(1998.5,0) (2027,0)}}
+    \capa{1}{\dicrotulo[rotate=90, anchor=west, font=\scriptsize, text=dicreferencia]{(2026.85,8.5)}{provisional}}
+    % 2: la inflación (referencia, fina y discontinua)
+    \capa{2}{\addplot[thin, dashed, dicinflacion] table[col sep=comma, comment chars={\#}, x=anio, y=inflacion_iapc] {\taylordatos};
+      \addlegendentry{Inflación (IAPC)}}
+    % 3: el tipo de la facilidad de depósito
+    \capa{3}{\addplot[diclinea=dicdeposito] table[col sep=comma, comment chars={\#}, x=anio, y=facilidad_deposito] {\taylordatos};
+      \addlegendentry{Facilidad de depósito del BCE}}
+    % 4: la regla de Taylor (1993) con la inflación general
+    \capa{4}{\addplot[diclinea=tceedorado, line width=1.6pt] table[col sep=comma, comment chars={\#}, x=anio, y=regla_taylor_1993] {\taylordatos};
+      \addlegendentry{Regla de Taylor (1993)}}
+    % 5: puntos clave y sus rótulos
+    \capa{5}{\addplot[dicpuntos=tceedorado, forget plot] coordinates {(2020,-1.57) (2022,14.15) (2026,5.10)};}
+    \capa{5}{\addplot[dicpuntos=dicdeposito, forget plot] coordinates {(2022,0.08) (2026,2.16)};}
+    \capa{5}{\dicrotulo[anchor=north, font=\footnotesize, text=tceedorado]{(2020,-1.95)}{$-1{,}6$ (2020)}}
+    \capa{5}{\dicrotulo[anchor=east, font=\footnotesize, text=tceedorado]{(2021.7,14.15)}{14,2 (2022)}}
+    \capa{5}{\dicrotulo[anchor=south, font=\footnotesize, text=tceedorado]{(2026,5.5)}{5,1}}
+    \capa{5}{\dicrotulo[anchor=north west, font=\footnotesize, text=dicdeposito]{(2022.15,-0.1)}{0,08}}
+    \capa{5}{\dicrotulo[anchor=north, font=\footnotesize, text=dicdeposito]{(2026,1.75)}{2,16}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,32 @@
+% Esquema operativo: instrumentos -> objetivo operativo -> objetivo intermedio
+% -> objetivo final, con el ejemplo del BCE debajo de cada caja (tipos
+% oficiales vigentes desde septiembre de 2026: facilidad marginal de crédito
+% 2,90 %, operaciones principales 2,65 %, facilidad de depósito 2,50 %).
+% Sustituye a la imagen 14 del original (sin título ni fuente).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado, very thick, fill=tceesalvia, rounded corners=2pt,
+      text width=3.2cm, minimum height=1.1cm, execute at begin node={\hyphenpenalty=10000}, align=center, font=\small\bfseries},
+    ejemplo/.style={text width=3.4cm, align=center, font=\footnotesize, execute at begin node={\hyphenpenalty=10000}, text=tceegris!65!black, anchor=north}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.9,-2.8) rectangle (14.2,0.7);
+  % 1: instrumentos
+  \capa{1}{\node[caja] (I) at (0,0) {Instrumentos};}
+  \capa{1}{\node[ejemplo] at (0,-0.75) {tipos de las facilidades y de las operaciones (2,90; 2,65 y 2,50~\%); reservas mínimas; balance};}
+  % 2: objetivo operativo
+  \capa{2}{\node[caja] (O) at (4.1,0) {Objetivo operativo};}
+  \capa{2}{\draw[flecha] (I) -- (O);}
+  \capa{2}{\node[ejemplo] at (4.1,-0.75) {€STR (tipo a un día)};}
+  % 3: objetivo intermedio
+  \capa{3}{\node[caja] (M) at (8.2,0) {Objetivo intermedio};}
+  \capa{3}{\draw[flecha] (O) -- (M);}
+  \capa{3}{\node[ejemplo] at (8.2,-0.75) {previsión de inflación (hasta 2021, también M3)};}
+  % 4: objetivo final
+  \capa{4}{\node[caja] (F) at (12.3,0) {Objetivo final};}
+  \capa{4}{\draw[flecha] (M) -- (F);}
+  \capa{4}{\node[ejemplo] at (12.3,-0.75) {inflación del 2~\% a medio plazo};}
+\end{tikzpicture}
+\end{document}

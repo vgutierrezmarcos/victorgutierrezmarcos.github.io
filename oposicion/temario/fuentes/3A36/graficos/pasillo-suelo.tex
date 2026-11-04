@@ -1,0 +1,39 @@
+% El tipo a un día en un sistema de pasillo (reservas escasas) y en uno de
+% suelo (reservas abundantes), con los tipos del BCE vigentes desde
+% septiembre de 2026 y el marco de 2024 (OPF 15 pb sobre el suelo):
+%   techo (facilidad marginal de crédito, 2,90 %): i = 4
+%   operaciones principales de financiación (2,65 %): i = 1 + 3·15/40 = 2,125
+%   suelo (facilidad de depósito, 2,50 %): i = 1
+%   demanda de reservas: i(R) = 1 + 3 / (1 + exp(1,6 (R - 3,2))), plana en el
+%   techo con pocas reservas y en el suelo con muchas
+%   pasillo: R^S = 3,519 (i = 2,125); suelo: R^S = 7,5 (i = 1,003)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm,
+    declare function={dem(\r)=1+3/(1+exp(1.6*(\r-3.2)));}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.6,-1) rectangle (13.4,6.2);
+  % 1: ejes
+  \capa{1}{\ejes{reservas}{$i$ a un día}{9.8}{5.2}}
+  % 2: techo, operaciones principales y suelo
+  \capa{2}{\draw[guia] (0,4) -- (9.4,4) node[etiqueta, right, align=left, font=\footnotesize] {facilidad marginal\\de crédito (techo)};}
+  \capa{2}{\node[etiqueta, left, font=\footnotesize] at (0,4) {2,90~\%};}
+  \capa{2}{\draw[guia] (0,2.125) -- (9.4,2.125) node[etiqueta, right, align=left, font=\footnotesize] {operaciones principales\\de financiación};}
+  \capa{2}{\node[etiqueta, left, font=\footnotesize] at (0,2.125) {2,65~\%};}
+  \capa{2}{\draw[guia] (0,1) -- (9.4,1) node[etiqueta, right, align=left, font=\footnotesize] {facilidad de\\depósito (suelo)};}
+  \capa{2}{\node[etiqueta, left, font=\footnotesize] at (0,1) {2,50~\%};}
+  \capa{2}{\draw[<->, thin, tceegris] (8.9,2.125) -- (8.9,4) node[midway, left, font=\footnotesize, text=tceegris] {25 pb};}
+  \capa{2}{\draw[<->, thin, tceegris] (8.9,1) -- (8.9,2.125) node[midway, left, font=\footnotesize, text=tceegris] {15 pb};}
+  % 3: demanda de reservas
+  \capa{3}{\draw[curva1] plot[domain=0.25:8.4, samples=80, smooth] (\x,{dem(\x)});}
+  \capa{3}{\node[etiqueta, text=tceemorado, anchor=south west, align=left] at (0.3,4.08) {demanda\\de reservas};}
+  % 4: oferta escasa: equilibrio dentro del pasillo
+  \capa{4}{\draw[curva2] (3.519,0) -- (3.519,4.8) node[etiqueta, above, align=center, text=tceeazul] {oferta escasa\\(pasillo)};}
+  \capa{4}{\node[punto] at (3.519,{dem(3.519)}) {};}
+  % 5: oferta abundante: equilibrio en el suelo
+  \capa{5}{\draw[curva3] (7.5,0) -- (7.5,4.8) node[etiqueta, above, align=center, text=tceeverde] {oferta abundante\\(suelo)};}
+  \capa{5}{\node[punto] at (7.5,{dem(7.5)}) {};}
+\end{tikzpicture}
+\end{document}

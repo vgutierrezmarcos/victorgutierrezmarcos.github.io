@@ -1,0 +1,36 @@
+% Copiado sin cambios de fuentes/3A06/graficos/objetivo-precios.tex (3.A.6, gráfico de referencia del canon), 4/11/2026.
+% Objetivo de inflación frente a objetivo de nivel de precios (3.A.6, anexo B):
+% rehace en castellano, sin copiarla, la imagen 4 del original (image19.png,
+% Minford y Hatcher, 2014, VoxEU). Eje vertical: logaritmo del nivel de precios.
+%   senda objetivo: ln P = 1 + 0,2 t (inflación objetivo constante, el 2 % anual)
+%   shock en t_0 = 3: el nivel de precios salta 0,6 (de 1,6 a 2,2)
+%   objetivo de inflación: ln P = 1,6 + 0,2 t desde t_0 (paralela, más arriba)
+%   objetivo de nivel de precios: de (3; 2,2) a (7; 2,4), con pendiente 0,05
+%     (inflación por debajo del objetivo, pero positiva), y desde t = 7 otra vez
+%     sobre la senda
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1.6cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-0.45) rectangle (9.6,4.2);
+  % 1: ejes (t, ln P) y senda objetivo
+  \capa{1}{\ejes{tiempo}{$\ln P$}{9.3}{3.9}}
+  \capa{1}{\draw[thick, dashed, tceegris] (0,1) -- (8.6,2.72) node[etiqueta, right, text=tceegris] {senda objetivo};}
+  % 2: el shock en t_0
+  \capa{2}{\draw[very thick, black] (0,1) -- (3,1.6);}
+  \capa{2}{\draw[flecha] (3,1.6) -- (3,2.2);}
+  \capa{2}{\node[etiqueta, left, text=tceerojo, font=\footnotesize] at (3,1.9) {shock};}
+  \capa{2}{\node[punto] at (3,2.2) {};}
+  \capa{2}{\draw[guia] (3,1.6) -- (3,0) node[below, text=black] {$t_0$};}
+  % 3: respuesta con objetivo de inflación: lo pasado, pasado
+  \capa{3}{\draw[curva2] (3,2.2) -- (8.6,3.32);}
+  \capa{3}{\node[etiqueta, text=tceeazul, font=\footnotesize, align=right, anchor=south east] at (8.6,3.42)
+      {objetivo de inflación:\\deriva del nivel de precios};}
+  % 4: respuesta con objetivo de nivel de precios: vuelta a la senda
+  \capa{4}{\draw[curva1] (3,2.2) -- (7,2.4) -- (8.6,2.72);}
+  \capa{4}{\node[etiqueta, text=tceemorado, font=\footnotesize, align=right, anchor=north east] at (8.6,1.95)
+      {objetivo de nivel de precios:\\vuelta a la senda};}
+\end{tikzpicture}
+\end{document}
