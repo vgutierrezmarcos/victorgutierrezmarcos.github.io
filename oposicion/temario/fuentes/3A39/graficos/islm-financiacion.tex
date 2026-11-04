@@ -1,0 +1,34 @@
+% Un aumento del gasto financiado con deuda y con dinero en el IS-LM
+% (Blinder y Solow, 1973). Mismas rectas, colores y escala que is-lm.tex del
+% 3.A.5 (IS morada, LM azul, IS' roja discontinua, LM' verde discontinua).
+%   IS:  i = 9 - 0,75 Y        IS':  i = 11 - 0,75 Y   (más gasto)
+%   LM:  i = 0,75 Y - 1,5      LM':  i = 0,75 Y - 3,5  (más dinero, lo justo
+%                                                      para que i vuelva a i_0)
+%   E_0 = (7; 3,75)   E_1 = (8,333; 4,75) con deuda   E_2 = (9,667; 3,75) con dinero
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.55cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.6,-1.4) rectangle (15.6,10.2);
+  % 1: ejes (Y, i)
+  \capa{1}{\ejes{$Y$}{$i$}{14.6}{9.6}}
+  % 2: la IS y la LM y el equilibrio inicial E_0
+  \capa{2}{\draw[curva1] (1.2,8.1) -- (10.8,0.9) node[etiqueta, below right=0pt and -2pt, text=tceemorado] {IS};}
+  \capa{2}{\draw[curva2] (2.4,0.3) -- (12,7.5) node[etiqueta, above right=0pt and -2pt, text=tceeazul] {LM};}
+  \capa{2}{\proyeccion{(7,3.75)}{$Y_0$}{$i_0$}}
+  \capa{2}{\node[punto] (E0) at (7,3.75) {};}
+  \capa{2}{\node[etiqueta, above=4pt] at (E0) {$E_0$};}
+  % 3: gasto financiado con deuda: solo se desplaza la IS; sube el tipo (E_1)
+  \capa{3}{\draw[curvanueva, desplazada] (3.2,8.6) -- (13.2,1.1) node[etiqueta, below right=0pt and -2pt, text=tceerojo] {IS$'$};}
+  \capa{3}{\proyeccion{(8.333,4.75)}{$Y_1$}{$i_1$}}
+  \capa{3}{\node[punto] (E1) at (8.333,4.75) {};}
+  \capa{3}{\node[etiqueta, above left=1pt and 0pt] at (E1) {$E_1$};}
+  % 4: gasto financiado con dinero: también se desplaza la LM, el tipo no sube (E_2)
+  \capa{4}{\draw[curva3, desplazada] (5.067,0.3) -- (14,7) node[etiqueta, right, text=tceeverde] {LM$'$};}
+  \capa{4}{\draw[guia] (9.667,3.75) -- (9.667,0) node[below] {$Y_2$};}
+  \capa{4}{\node[punto] (E2) at (9.667,3.75) {};}
+  \capa{4}{\node[etiqueta, below right=1pt and 0pt] at (E2) {$E_2$};}
+\end{tikzpicture}
+\end{document}

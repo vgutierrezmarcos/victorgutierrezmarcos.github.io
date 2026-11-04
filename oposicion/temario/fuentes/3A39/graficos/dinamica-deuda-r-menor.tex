@@ -1,0 +1,62 @@
+% Dinámica de la deuda con r < gamma_Y: d_t = (g - tau) + [(1+r)/(1+gamma_Y)] d_{t-1},
+% pendiente 0,5 < 1 en los 2 paneles. Mismos estilos que dinamica-deuda.tex.
+%   a) Caso 1, déficit primario: d_t = 2 + 0,5 d_{t-1}; d* = 2/0,5 = 4, estable.
+%      Desde d_0 = 0,8: 2,4; 3,2; 3,6; 3,8. Desde d_0' = 6,5: 5,25; 4,625; 4,3125.
+%   b) Caso 2, superávit primario: d_t = -1 + 0,5 d_{t-1}; d* = -2, estable.
+%      Desde d_0 = 5: 1,5; -0,25; -1,125; -1,5625.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{
+  bisectriz/.style={thick,tceegris},
+  paso/.style={-{Stealth[length=1.5mm]},semithick,#1},
+}
+% \escalera{color}{d_0, d_1, d_2, ...}: de d_0 en el eje va a la recta y
+% en horizontal a la bisectriz, una y otra vez
+\newcommand{\escalera}[2]{%
+  \foreach \d [count=\k] in {#2}{%
+    \ifnum\k=1\relax\xdef\prev{\d}\xdef\prevy{0}\else
+      \draw[paso=#1] (\prev,\prevy) -- (\prev,\d);
+      \draw[paso=#1] (\prev,\d) -- (\d,\d);
+      \xdef\prev{\d}\xdef\prevy{\d}\fi}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.55cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-4.6,-3.8) rectangle (25.4,9.8);
+  % ---------------- a) Caso 1 ----------------
+  % 1: ejes y bisectriz
+  \capa{1}{\draw[eje] (0,0) -- (8.6,0) node[below left=2pt and 0pt] {$d_{t-1}$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,8) node[left] {$d_t$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (2.5,8.8) {a) Caso 1: déficit primario, $\boldsymbol{r<\gamma_Y}$};}
+  \capa{1}{\draw[bisectriz] (0,0) -- (7.6,7.6) node[etiqueta, right, text=tceegris] {$d_t=d_{t-1}$};}
+  % 2: recta del caso 1, d* y escaleras convergentes
+  \capa{2}{\draw[curva1] (0,2) -- (7.6,5.8) node[etiqueta, below right=0pt and -4pt, text=tceemorado, align=left] {pendiente\\$\frac{1+r}{1+\gamma_Y}<1$};}
+  \capa{2}{\node[etiqueta, above left, text=tceemorado] at (0,2) {$g-\tau>0$};}
+  \capa{2}{\draw[guia] (4,4) -- (4,0);}
+  \capa{2}{\node[below] at (4,0) {$d^*$};}
+  \capa{2}{\node[punto] at (4,4) {};}
+  \capa{2}{\node[below] at (0.8,0) {$d_0$};}
+  \capa{2}{\escalera{tceeverde}{0.8,2.4,3.2,3.6,3.8}}
+  \capa{2}{\node[below] at (6.5,0) {$d_0'$};}
+  \capa{2}{\escalera{tceeverde}{6.5,5.25,4.625,4.3125}}
+  \capa{2}{\node[etiqueta, anchor=north] at (4,-1.3) {$d^*=\dfrac{(g-\tau)(1+\gamma_Y)}{\gamma_Y-r}>0$, estable};}
+  % ---------------- b) Caso 2 ----------------
+  \begin{scope}[xshift=7.6cm]
+  % 1: ejes y bisectriz
+  \capa{1}{\draw[eje] (-3,0) -- (8,0) node[below left=2pt and 0pt] {$d_{t-1}$};}
+  \capa{1}{\draw[eje] (0,-3) -- (0,8) node[left] {$d_t$};}
+  \capa{1}{\node[above left] at (0,0) {$0$};}
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (2.5,8.8) {b) Caso 2: superávit primario, $\boldsymbol{r<\gamma_Y}$};}
+  \capa{1}{\draw[bisectriz] (-3,-3) -- (7.6,7.6) node[etiqueta, right, text=tceegris] {$d_t=d_{t-1}$};}
+  % 3: recta del caso 2 y su punto fijo negativo
+  \capa{3}{\draw[curva1] (-3,-2.5) -- (7.6,2.8) node[etiqueta, right, text=tceemorado, align=left] {pendiente\\$\frac{1+r}{1+\gamma_Y}<1$};}
+  \capa{3}{\node[etiqueta, anchor=north west, text=tceemorado] at (0.1,-1.15) {$g-\tau<0$};}
+  \capa{3}{\draw[guia] (-2,-2) -- (-2,0) node[above] {$d^*$};}
+  \capa{3}{\node[punto] at (-2,-2) {};}
+  \capa{3}{\node[below] at (5,0) {$d_0$};}
+  \capa{3}{\escalera{tceeverde}{5,1.5,-0.25,-1.125,-1.5625}}
+  \capa{3}{\node[etiqueta, anchor=north west, align=left] at (2.6,-2.0) {$d^*<0$, estable:\\el Estado acaba acreedor};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

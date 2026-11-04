@@ -1,0 +1,34 @@
+% Curva de Laffer del señoreaje (Cagan, 1956). Gráfico de referencia de la
+% ficha «cagan».
+%   S(pi) = pi zeta e^{-alpha pi}, con zeta = 1 y alpha = 2:
+%   máximo en pi* = 1/alpha = 0,5, S^max = zeta/(alpha e) = 0,1839.
+%   Déficit S = 0,12: pi_B = 0,1679 y pi_A = 1,1142 (calculados con brentq).
+%   Déficit S' = 0,22 > S^max: no hay estado estacionario.
+% Escala: 1 unidad de pi = 3 cm; 1 unidad de S = 20 cm.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=3cm,y=20cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.42,-0.03) rectangle (3.0,0.27);
+  % 1: ejes (pi, S)
+  \capa{1}{\ejes{$\pi$}{$S$}{2.75}{0.26}}
+  % 2: la curva S(pi) y su máximo en 1/alpha
+  \capa{2}{\draw[curva1] plot[domain=0:2.55, samples=160, smooth] (\x,{\x*exp(-2*\x)}) node[etiqueta, above right=0pt and -2pt, text=tceemorado] {$S(\pi)=\pi\,\zeta\,e^{-\alpha\pi}$};}
+  \capa{2}{\proyeccion{(0.5,0.18394)}{$\pi^*=\frac{1}{\alpha}$}{$S^{\max}=\frac{\zeta}{\alpha e}$}}
+  \capa{2}{\node[punto] at (0.5,0.18394) {};}
+  % 3: déficit que hay que financiar con dinero y los 2 equilibrios
+  \capa{3}{\draw[curva2, dashed] (0,0.12) -- (2.6,0.12) node[etiqueta, right, text=tceeazul] {$\bar S$};}
+  \capa{3}{\draw[guia] (0.1679,0.12) -- (0.1679,0) node[below] {$\pi_{\mathrm B}$};}
+  \capa{3}{\draw[guia] (1.1142,0.12) -- (1.1142,0) node[below] {$\pi_{\mathrm A}$};}
+  \capa{3}{\node[punto] at (0.1679,0.12) {};}
+  \capa{3}{\node[punto] at (1.1142,0.12) {};}
+  % 4: rótulos
+  \capa{4}{\node[etiqueta, anchor=south west, text=tceemorado] at (0.85,0.165) {curva de Laffer del señoreaje};}
+  \capa{4}{\node[etiqueta, anchor=north west, font=\footnotesize] at (0.19,0.117) {inflación baja};}
+  \capa{4}{\node[etiqueta, anchor=south west, font=\footnotesize] at (1.13,0.123) {inflación alta};}
+  \capa{4}{\draw[curvanueva, dashed, thick] (0,0.22) -- (2.6,0.22) node[etiqueta, right, text=tceerojo] {$\bar S'$};}
+  \capa{4}{\node[etiqueta, anchor=south east, text=tceerojo] at (2.55,0.222) {$\bar S'>S^{\max}$: déficit no financiable};}
+\end{tikzpicture}
+\end{document}

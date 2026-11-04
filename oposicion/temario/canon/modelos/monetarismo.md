@@ -29,7 +29,7 @@
 | 3.A.41 | Inflación | resumen | «Siempre y en todas partes un fenómeno monetario» (Friedman, 1963, con el sentido de 1970); coste de la desinflación con adaptativas; la regla de Friedman (1969) es suya, distinta de la del k % | La Phillips (3.A.28) |
 | 3.A.6 | Nueva macroeconomía clásica | mención (hecho, 4/11/2026) | I.3: comparte tasa natural, neutralidad a largo y reglas; cambia adaptativas por racionales y Marshall por Walras; la paradoja de De Vroey (el sucesor del monetarismo fue la NMC); Lucas (1994) sin la frase | El monetarismo en extenso |
 | 3.A.4 | Keynes y el desequilibrio | mención (hecho, 4/11/2026) | Solo en las extensiones de la conclusión («la síntesis y su crítica monetarista», `\vertema{3.A.5}`); la columna «Síntesis neoclásica» de `tab:herederos` no la incluye | — |
-| 3.A.38, 3.A.39 | Política fiscal y déficit | mención | Expulsión con IS plana y LM inclinada; el debate Friedman-Heller | — |
+| 3.A.38, 3.A.39 | Política fiscal y déficit | mención (3.A.39 hecho, 4/11/2026: sub-viñeta de I.2 y anexo B; sin «infinitos activos sustitutivos del dinero») | Expulsión con IS plana y LM inclinada; en el 3.A.39, la expulsión del déficit con deuda es casi total y el monetizado solo expansivo a corto plazo (Phillips vertical a largo, `\vertema{3.A.28}`); el debate Friedman-Heller | — |
 | 3.A.42 | Ciclo | mención | El ciclo monetario y el *plucking model* (ficha `historia-monetaria-friedman-schwartz`) | — |
 | 3.A.7 | NEK y nueva síntesis | mención (hecho, 4/11/2026) | Frente al monetarismo (I.1); su pieza en la nueva síntesis: neutralidad a largo plazo, tasa natural, expectativas, reglas, la inflación como objetivo (`tab:nueva-sintesis`) | El monetarismo en extenso |
 

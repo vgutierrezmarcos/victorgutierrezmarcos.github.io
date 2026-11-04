@@ -47,7 +47,7 @@ $$\boxed{f'(k^*)=\rho+\delta+\theta g}\qquad(\texttt{eq:regla-oro-modificada})$$
 | 3.A.29 | Modelos de horizonte infinito | resumen (hecho, 1/11/2026) | Ejemplo de horizonte infinito frente a OLG; la misma utilidad (con el −1), la misma Euler en sus 2 formas y la transversalidad $\lim e^{-(\rho-n)t}\lambda_tb_t=0$; Diamond (1965) y la ineficiencia dinámica son suyos | Diagrama de fases `\vertema{3.A.43}` |
 | 3.A.42 | Ciclos reales | resumen | Punto de partida del RBC (ocio y perturbaciones), con $w_t$ real y la misma Euler | Idem |
 | 3.A.38 | Política fiscal y crecimiento | mención | Gasto permanente y temporal, τ_K y Chamley-Judd con `\vertema{3.A.43}`; Barro (1990) es suyo | El diagrama |
-| 3.A.39 | Déficit público | mención | Equivalencia ricardiana con horizonte infinito | — |
+| 3.A.39 | Déficit público | mención (hecho, 4/11/2026) | Equivalencia ricardiana con horizonte infinito: la dinastía es el hogar del RCK (supuesto 1 de I.3.1), `\vertema{3.A.43}` | — |
 | 3.A.6 | NMC y EGDE | mención (hecho, 4/11/2026) | El ciclo real es un RCK con 3 cambios (III.2); con tendencia, desviaciones de la senda de crecimiento equilibrado (anexo D); `\vertema{3.A.43}` | El RCK |
 | 3.A.35 | Demanda de dinero | mención | Sidrauski construye sobre el RCK | — |
 | 3.A.34 | Inversión | mención (hecho, 31/10/2026) | Ejemplo de control óptimo en el anexo A (pieza común) | El modelo |

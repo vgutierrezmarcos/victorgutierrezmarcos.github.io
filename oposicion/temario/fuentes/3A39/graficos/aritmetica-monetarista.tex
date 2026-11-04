@@ -1,0 +1,33 @@
+% Aritmética monetarista desagradable (Sargent y Wallace, 1981): sendas
+% esquemáticas de la inflación. Gráfico de referencia de la ficha
+% «aritmetica-monetarista». Desde \bar t el público no compra más deuda.
+%   Laxa desde hoy: pi = 3 siempre.
+%   Restrictiva hoy: pi = 1,6 hasta \bar t; 4,4 desde \bar t (más deuda que
+%   estabilizar con señoreaje: s^después > s*).
+%   Variante con demanda de dinero tipo Cagan: la restrictiva ya es más alta
+%   antes de \bar t (punteada), porque el público anticipa la inflación futura.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.8cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-2.0) rectangle (13.6,6.9);
+  % 1: ejes (t, pi) y la fecha \bar t
+  \capa{1}{\ejes{$t$}{$\pi$}{11.6}{6.2}}
+  \capa{1}{\draw[guia] (5,0) node[below] {$\bar t$} -- (5,5.9);}
+  \capa{1}{\node[etiqueta, anchor=south, font=\footnotesize, text=tceegris, align=center] at (5,5.9) {el público deja de\\comprar más deuda};}
+  % 2: senda con política monetaria laxa desde hoy
+  \capa{2}{\draw[curva2] (0,3) -- (11,3) node[etiqueta, right, text=tceeazul, align=left] {laxa\\desde hoy};}
+  % 3: senda con política monetaria restrictiva hoy: más baja hasta \bar t, más alta después
+  \capa{3}{\draw[curva1] (0,1.6) -- (5,1.6);}
+  \capa{3}{\draw[curva1] (5,4.4) -- (11,4.4) node[etiqueta, right, text=tceemorado, align=left] {restrictiva\\hoy};}
+  \capa{3}{\draw[curva1, densely dotted, thin] (5,1.6) -- (5,4.4);}
+  \capa{3}{\node[etiqueta, anchor=north, text=tceemorado, font=\footnotesize] at (2.5,1.5) {menos inflación hoy};}
+  \capa{3}{\node[etiqueta, anchor=south, text=tceemorado, font=\footnotesize] at (8,4.5) {más inflación para siempre};}
+  % 4: rótulos: el mensaje y la variante con demanda de dinero tipo Cagan
+  \capa{4}{\draw[curva1, dotted] (0,3.35) .. controls (2.5,3.45) and (4.2,3.9) .. (5,4.4);}
+  \capa{4}{\node[etiqueta, anchor=south, text=tceemorado, font=\scriptsize, align=center] at (2.4,4.15) {con demanda de dinero tipo \textsc{Cagan},\\más alta ya antes de $\bar t$};}
+  \capa{4}{\node[etiqueta, anchor=north, font=\small, text width=7.6cm, align=center] at (6.1,-0.75) {cuanto más se retrase la monetización inevitable, mayor será la inflación};}
+\end{tikzpicture}
+\end{document}

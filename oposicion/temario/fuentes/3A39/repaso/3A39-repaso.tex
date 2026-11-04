@@ -1,0 +1,298 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Déficit público y deuda]{3.A.39}{Déficit público. Conceptos. Financiación y sus consecuencias macroeconómicas. Dominación monetaria y dominación fiscal. La dinámica de la deuda pública y su sostenibilidad.}
+\tcefecha{04/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «lo que no son cuentas, son cuentos»}{2,5}
+\apartadocante{I. Conceptos y financiación del déficit}{10}
+\subcante{1. Restricción del sector público. Conceptos}{2,5}
+\subcante{2. Debate tradicional (IS-LM)}{1}
+\subcante{3. NMC: ricardiana, suavización, sesgo}{4,5}
+\subcante{4. Evidencia y efectos no keynesianos}{2}
+\apartadocante{II. Dinámica de la deuda y sostenibilidad}{8,5}
+\subcante{1. ¿Qué es sostenibilidad?}{0,75}
+\subcante{2. Formulación analítica}{2}
+\subcante{3. Formulación gráfica}{2,25}
+\subcante{4. Implicaciones de política}{1,5}
+\subcante{5. La deuda pública en España}{1}
+\subcante{6. Otras aproximaciones}{1}
+\apartadocante{III. Dominación monetaria y fiscal}{8}
+\subcante{1. Señoreaje e impuesto inflacionario}{1,5}
+\subcante{2. Hiperinflación: \autor{Cagan} (1956)}{1}
+\subcante{3. Dominación monetaria y fiscal}{5,5}
+\apartadocante{Conclusión}{1}}
+\emph{Reparto}: \hyperref[rep:I.3]{I.3} = ricardiana \tiempo{2,5}, suavización \tiempo{1,25}, sesgo \tiempo{0,75}; \hyperref[rep:I.4]{I.4} = ER \tiempo{0,75}, no keynesianos \tiempo{1,25}. IS-LM en 1 min; restricción intertemporal al empezar el \hyperref[rep:I]{I} (el tribunal la ha echado en falta). \emph{Pizarra}: \emph{izda.}, enganche y pegatinas: «no hay plazo que no se cumpla\ldots» (ER), «lo que es de todos no es de nadie» (fondo común), «quien debe y paga, no debe nada» (sostenibilidad), «nadie puede servir a dos señores» (dominación); \emph{centro}, suavización, fases, \autor{Laffer}, matriz de \autor{Leeper}; \emph{dcha.}, restricción en \% del PIB y solvencia, hasta el final.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Lo que no son cuentas, son cuentos». España 2025: déficit 2,4\,\% del PIB y, por 1.ª vez desde 2007, \emph{sin déficit primario}: todo el déficit son intereses (2,4\,\%). Deuda 100,5\,\% vs.\ 87,7\,\% en la zona del euro (casi 13 puntos más). 2007: 35,7\,\%; 2020: 119,3\,\%. ¿\emph{Quién paga el déficit}?
+\item \textbf{Relevancia}: \emph{teoría}: la restricción del sector público une fiscal y monetaria (ricardiana, aritmética desagradable, TFNP); \emph{política}: gasto AA.\,PP.\ 2025, 45,3\,\% del PIB (España) y 49,8\,\% (zona del euro); reglas UE reformadas en 2024 sobre un análisis de sostenibilidad \vertema{3.B.45}; \emph{actualidad}: subida de tipos 2022-23, debate $r<g$ (\autor{Blanchard}, 2019), deuda en el balance de los bancos centrales $\Rightarrow$ dominación fiscal en primera línea.
+\item \textbf{Contextualización}: \concepto{déficit} = gastos $-$ ingresos de las AA.\,PP.\ (flujo); \concepto{deuda} = saldo vivo (\emph{stock}). Fiscal (gasto e impuestos) y monetaria (dinero o tipo) unidas por la \concepto{restricción presupuestaria del sector público}. 4 etapas: \emph{keynesiana} (30-70: \autor{Kahn}, \autor{Domar}, \autor{Blinder}-\autor{Solow}) $\to$ \emph{restricción intertemporal y racionales} (70: \autor{Barro}, 1974, 1979; economía política) $\to$ \emph{interacción fiscal-monetaria} (1981-90: \autor{Sargent}-\autor{Wallace}, \autor{Leeper}, TFNP; antes \autor{Cagan}, 1956) $\to$ \emph{post-2008}: deudas $\approx$100\,\%, multiplicadores mayores (\autor{Blanchard}-\autor{Leigh}, 2013), $r<g$, compras de deuda, inflación desde 2021.
+\item \textbf{Problemática}: ¿cómo se financia el déficit y qué supone hacerlo con impuestos o con deuda? ¿Cuándo es sostenible la deuda y qué hacer si no? ¿Quién cierra la restricción: la fiscal o el banco central?
+\item \textbf{Estructura}, siguiendo la restricción: \hyperref[rep:I]{I}, conceptos y consecuencias de la financiación; \hyperref[rep:II]{II}, dinámica y sostenibilidad (con España); \hyperref[rep:III]{III}, señoreaje y dominación. La dominación va al final (aunque el título la nombre antes): exige la restricción intertemporal y $r$ vs.\ $\gamma_Y$.
+\end{itemize}
+
+% ==========================================================================
+\bloque[10]{I. Conceptos y financiación del déficit\label{rep:I}}
+\begin{ideaclave}
+El gasto se paga con impuestos, deuda o dinero, y la restricción intertemporal ata las 3 vías. Con hogares ricardianos y mercados perfectos daría igual impuestos o deuda; pero los impuestos distorsionan, muchos hogares no pueden endeudarse y los gobiernos se endeudan de más: la forma de financiar sí importa.
+\end{ideaclave}
+
+\sub{I.1. Restricción del sector público. Conceptos\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Cada periodo}, Tesoro + banco central consolidados (\autor{Walsh}, cap.~4):
+\begin{formula}
+\centering $G_t+i_{t-1}D_{t-1}=T_t+(D_t-D_{t-1})+(M_t-M_{t-1})$
+\end{formula}
+\item[] $G$, gasto sin intereses; $D$, deuda en manos del público; $M$, base monetaria. 3 fuentes: \emph{impuestos} (coactivos, la principal), \emph{deuda} (voluntaria), \emph{dinero} (\concepto{señoreaje}). Tasas y multas, en $T$; privatizar baja la deuda, no el déficit (SEC). Tipo fijo: 4.ª vía transitoria, perder reservas.
+\item \emph{En \% del PIB}, con $1+\gamma^N_t=(1+\pi_t)(1+\gamma_{Y,t})$ y $s_t$ señoreaje/PIB:
+\funcionclave{d_t-d_{t-1}=\underbrace{(g_t-\tau_t)}_{\text{déf.\ primario}}-\,s_t+\underbrace{\frac{i_{t-1}-\gamma^N_t}{1+\gamma^N_t}\,d_{t-1}}_{\text{bola de nieve}}}
+\item[] $d$↑ con el déficit primario, ↓ con el señoreaje, y crece sola si $i>\gamma^N$: \concepto{efecto bola de nieve}. Con datos, + \concepto{ajuste déficit-deuda} (ADD: activos financieros, préstamos a otros países). \emph{Real}: igual con $r$ (\emph{ex ante}) y $\gamma_Y$; regla: nominal con nominal, real con real. \emph{Inflación no esperada}: $\gamma^N$↑ con $i$ fijado $\Rightarrow$ $d$↓ (impuesto a quien tiene deuda nominal); la esperada ya está en $i$.
+\item \emph{Intertemporal}: encadenando hacia delante + \concepto{no juego de Ponzi}, $\lim_{K\to\infty}\big(\frac{1+\gamma_Y}{1+r}\big)^{K+1}d_{t+K}=0$ (nadie compra la deuda del último periodo; inducción hacia atrás) $\Rightarrow$ \concepto{condición de solvencia}: deuda = VA de superávits primarios y señoreaje futuros:
+\funcionclave{d_{t-1}=\sum_{k=0}^{\infty}\Big(\frac{1+\gamma_Y}{1+r}\Big)^{k+1}\big(\tau_{t+k}-g_{t+k}+s_{t+k}\big)\quad (r>\gamma_Y)}
+\item[] La deuda se valora como una acción. Si $r<\gamma_Y$, no converge: $d$ se estabiliza sin superávits. \emph{Se lee 3 veces}: restricción de los impuestos (\hyperref[rep:I.3]{I.3}); condición de sostenibilidad (\hyperref[rep:II]{II}); reparto entre autoridades (\hyperref[rep:III]{III}). = respuestas al enganche: paga el contribuyente de hoy o el de mañana, el crecimiento si supera al tipo o, con inflación, quien tiene dinero y deuda nominal. Inflación = un impuesto más $\Rightarrow$ imposición óptima.
+\item \emph{Saldos} (SEC 2010; AA.\,PP.\ = central, CC.\,AA., CC.\,LL.\ y Seguridad Social; \concepto{necesidad de financiación}) \vertema{3.A.30} \vertema{4.B.1}:
+\begin{itemize}
+\item \concepto{total} $b$ (con intereses; PDE, 3\,\%); \concepto{primario} $b^p$ (sin intereses: lo que hace hoy la fiscal; entra en la dinámica);
+\item \concepto{ajustado por el ciclo} $b^{ca}=b-\varepsilon\cdot\mathrm{OG}$ (sin estabilizadores; $\varepsilon$, semielasticidad) \vertema{4.B.4}; \concepto{estructural} $b^e$ (además sin \emph{one-offs}: lo que vigilan las reglas); \concepto{estructural primario} $b^{pe}$: $\Delta b^{pe}$ = \emph{esfuerzo} o tono fiscal ($>0$ contractivo);
+\item \concepto{operativo}: total $-\pi_tD_{t-1}$ = $G_t+(i_{t-1}-\pi_t)D_{t-1}-T_t$: con $\pi=10\mbox{\,\%}$ y deuda 100\,\%, el total exagera el real en 10 puntos.
+\end{itemize}
+\item \emph{Deuda}: \concepto{PDE}, bruta, consolidada y a valor nominal (efectivo y depósitos, valores, préstamos; sin créditos comerciales ni derechos de pensión); 3\,\% y 60\,\%, Protocolo n.º~12 del TFUE \vertema{3.B.45}; \concepto{neta} (menos activos financieros: vulnerabilidad real); \concepto{contingentes} (avales) e \concepto{implícitos} (pensiones, sanidad).
+\item \emph{4 problemas de medición}: inflación (intereses nominales), privatizaciones (pierde ingresos futuros), pasivos implícitos, ciclo (estructural incierto: España 2025, $-3{,}2\mbox{\,\%}$ CE vs.\ $-2{,}8\mbox{\,\%}$ FMI del PIB potencial).
+\end{itemize}
+
+\sub{I.2. Debate tradicional (IS-LM)\label{rep:I.2}}
+\begin{itemize}
+\item Precios rígidos: déficit ↑ demanda y renta (\concepto{multiplicador}, \autor{Kahn}, 1931) \vertema{3.A.5}:
+\begin{formula}
+\centering $\dfrac{\Delta Y^*}{\Delta\bar G}=\dfrac{1}{1-c(1-t)+bk/h}$
+\end{formula}
+\item[] $bk/h$ = \concepto{expulsión} (\emph{crowding-out}; aquí $b$ es la sensibilidad de la inversión al tipo). \emph{Con deuda}: solo IS, $i$↑, expulsión parcial; \emph{con dinero}: IS y LM, $i$ no sube, más efecto a CP, riesgo de inflación; \emph{con impuestos}: menos expansivo (presupuesto equilibrado = 1 con $i$ dado, \autor{Haavelmo}, 1945; menor en IS-LM).
+\item \emph{Escuelas} \vertema{3.A.4}: \emph{clásicos}, LM vertical, expulsión total; \emph{keynesianos}, LM plana, muy eficaz; \emph{monetaristas}, con deuda expulsión casi total, monetizado solo a CP (\autor{Phillips} vertical a LP) \vertema{3.A.28}.
+\item \autor{Blinder}-\autor{Solow} (1973): restricción del Gobierno + efecto riqueza de los bonos: a LP el presupuesto cierra; si el sistema es estable, con deuda \emph{más} expansivo que con dinero ($1/t$ vs.\ $(1+i\,\partial D/\partial\bar G)/t$), al revés que a CP.
+\item \emph{Valoración}: estático, sin expectativas ni restricción intertemporal. ¿Importa la financiación si la deuda de hoy son impuestos de mañana?
+\end{itemize}
+
+\sub{I.3. Nueva macroeconomía clásica\label{rep:I.3}}
+\begin{itemize}
+\item \textbf{Equivalencia ricardiana} (\autor{Barro}, 1974, «Are Government Bonds Net Wealth?»; nombre de \autor{Buchanan}, 1976). \autor{Ricardo} (cap.~17 de los \emph{Principles}) la planteó y prefirió impuestos. «Modigliani-Miller de las finanzas públicas».
+\item[] \emph{Supuestos}: horizonte infinito (GS unidas por herencias = dinastía \vertema{3.A.29}, hogar de RCK \vertema{3.A.43}); impuestos de suma fija; mercados de capitales perfectos (mismo $r$, sin liquidez); racionales \vertema{3.A.6}; senda de gasto dada.
+\item[] \emph{Desarrollo}: restricción del hogar + la del Estado (sin dinero) $\Rightarrow$ la deuda se cancela:
+\begin{formula}
+\centering $\displaystyle\sum_{t=0}^{\infty}\frac{C_t}{(1+r)^t}=K_0+\sum_{t=0}^{\infty}\frac{w_tL_t-G_t}{(1+r)^t}$
+\end{formula}
+\item[] La riqueza depende del \emph{gasto}, no de impuestos ni deuda. \emph{Ej.}: $-1$ € de impuesto hoy, $+(1+r)$ mañana: VA $=0$; se ahorra el euro, $S$ privado ↑ = $S$ público ↓; $S$ nacional, $r$ e $I$ no cambian.
+\item[] \emph{Dice}: deuda = \emph{impuestos aplazados}, no riqueza neta; sin expulsión. Más que la renta permanente: ni una rebaja permanente con deuda mueve $C$ \vertema{3.A.33}. \emph{No dice}: que el gasto no tenga efectos (sí cambia la riqueza: \autor{Baxter}-\autor{King}, 1993) \vertema{3.A.40}; nada de monetización. Abierta: sin déficits gemelos \vertema{3.B.11}.
+\item[] \emph{Por qué falla} (\autor{Heijdra}): (1) \emph{vidas finitas} (\autor{Blanchard}, 1985): prob.\ de morir $p$, los vivos pagan $\int_0^\infty re^{-(r+p)s}ds=\frac{r}{r+p}<1$ $\Rightarrow$ riqueza ↑ $p/(r+p)$; \autor{Diamond} (1965); (2) \emph{impuestos distorsionantes} $\to$ suavización; (3) \emph{gasto productivo}; (4) \emph{liquidez} (\autor{Campbell}-\autor{Mankiw}, 1989):
+\begin{formula}
+\centering $C_t=\lambda(Y_t-T_t)+(1-\lambda)\,C^{\mathrm R}_t,\quad \lambda\approx0{,}5\ \text{(EE.\,UU.)}$
+\end{formula}
+\item[] (rebaja de 1 € $\Rightarrow$ $C$↑ $\lambda$; también en NEK: \autor{Galí}-\autor{López-Salido}-\autor{Vallés}, 2007; \emph{hand-to-mouth} ricos, \autor{Kaplan}-\autor{Violante}-\autor{Weidner}, 2014); (5) \emph{miopía} \vertema{3.A.1}; + \emph{incertidumbre} sobre quién paga: la rebaja asegura (\autor{Barsky}-\autor{Mankiw}-\autor{Zeldes}, 1986).
+\item[] \emph{Valoración}: supuestos fuertes, se cumple en parte; obliga a pensar con la restricción intertemporal.
+\item \textbf{Suavización impositiva} (\autor{Barro}, 1979): si los impuestos distorsionan, la deuda reparte impuestos en el tiempo (renta permanente aplicada a impuestos \vertema{3.A.33}). Distorsión $Y_tf(T_t/Y_t)$, $f'>0$, $f''>0$ (como \autor{Harberger}) \vertema{4.B.11}; $r$, $G_t$, $Y_t$ conocidos:
+\begin{formula}
+\centering $\displaystyle\min_{\{T_t\}}\sum_t\frac{Y_tf(T_t/Y_t)}{(1+r)^t}\ \ \text{s.a.}\ \sum_t\frac{T_t}{(1+r)^t}=\sum_t\frac{G_t}{(1+r)^t}+(1+r)D_{-1}$
+\end{formula}
+\item[] CPO: $f'(T_t/Y_t)=\mu$ $\forall t$ $\Rightarrow$ \emph{tipo medio constante} $\bar\tau$ = gasto «permanente»/producción «permanente». Incertidumbre: $f'_t=\mathbb{E}_t f'_{t+1}$; $f$ cuadrática $\Rightarrow$ $\tau$ paseo aleatorio (\autor{Hall}). Guerra $\Delta G_0$: $\Delta\bar\tau Y=\frac{r}{1+r}\Delta G_0$; $D$↑ $\Delta G_0/(1+r)$ y \emph{no se amortiza}.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{suavizacion-impositiva}{Guerra $\Delta G_0=10$: el tipo sube 0,0048 para siempre; la deuda (9,52) absorbe el pico y no se amortiza}
+\begin{itemize}
+\item[] \emph{Implicaciones}: transitorio con deuda, permanente con impuestos; \emph{déficits contracíclicos}, dejar actuar a los estabilizadores, no equilibrar cada año \vertema{4.B.4}; \autor{Ramsey} entre periodos \vertema{4.B.11}. \emph{Ext.}: Gobierno impaciente $\rho_G>r$, $\tau_0/\tau_1=\frac{1+r}{1+\rho_G}<1$ (puente a la economía política); deuda contingente (\autor{Lucas}-\autor{Stokey}, 1983). \emph{Evidencia}: EE.\,UU.\ (\autor{Barro}, 1986) y R.\,U.\ 1701-1918 (1987): guerras con deuda; no explica los déficits en paz desde los 70. Teoría \emph{normativa}.
+\item \textbf{Sesgo deficitario}: déficits en expansiones y en paz desde los 70 (\autor{Persson}-\autor{Tabellini}, 2000) \vertema{3.A.23}: (1) \emph{ilusión fiscal} (\autor{Buchanan}-\autor{Wagner}, 1977) \vertema{4.B.2}; (2) \emph{deuda estratégica}, atar las manos al sucesor (\autor{Persson}-\autor{Svensson}, 1989; \autor{Alesina}-\autor{Tabellini}, 1990): $u'(\bar T+D)=\Pr(\text{reel.})\,u'(\bar T-D)$ $\Rightarrow$ $D>0$; (3) \emph{fondo común}: $v'(g_i)=1/n$ y no $=1$ (\autor{Weingast}-\autor{Shepsle}-\autor{Johnsen}, 1981): «lo que es de todos no es de nadie»; (4) \emph{guerra de desgaste} (\autor{Alesina}-\autor{Drazen}, 1991); + ciclo político (\autor{Nordhaus}, 1975; \autor{Rogoff}, 1990). \emph{Evidencia}: coaliciones y gobiernos cortos, más déficit (\autor{Roubini}-\autor{Sachs}, 1989). \emph{Solución}: instituciones (reglas, AIReF, poder de Hacienda) \vertema{4.B.21}.
+\end{itemize}
+
+\sub{I.4. Evidencia y efectos no keynesianos\label{rep:I.4}}
+\begin{itemize}
+\item \emph{ER en los datos}: se gasta parte de las devoluciones: 20-40\,\% en no duraderos (2001; \autor{Johnson}-\autor{Parker}-\autor{Souleles}, 2006); 12-30\,\% (50-90\,\% con duraderos) en 2008 (\autor{Parker} et al., 2013). Israel años 80 a favor (\autor{Barro}, 1989). +1 pp de déficit previsto, +20-30 pb en tipos largos (\autor{Laubach}, 2009). Cuenta corriente +0,6 por punto de consolidación (\autor{Bluedorn}-\autor{Leigh}, 2011): ni 0 ni 1. \autor{Bernheim} (1987) no / \autor{Seater} (1993) sí: \emph{punto de referencia}.
+\item \concepto{Efectos no keynesianos} (\autor{Giavazzi}-\autor{Pagano}, 1990): consolidación creíble con deuda alta $\Rightarrow$ actividad ↑. 4 canales: \emph{expectativas y riqueza} (más fuerte con más deuda: \autor{Bertola}-\autor{Drazen}, 1993); \emph{credibilidad y prima}; \emph{mercado de trabajo} (\autor{Alesina}-\autor{Perotti}, 1995); \emph{composición}: mejor con gasto (\autor{Alesina}-\autor{Ardagna}, 2010; \autor{Alesina}-\autor{Favero}-\autor{Giavazzi}, 2019). Condiciones: deuda y prima altas (\autor{Perotti}, 1999). Casos: Dinamarca 1983-86, Irlanda 1987-89.
+\item[] \emph{Valoración}: ayudas externas (devaluación, tipos, pactos de rentas: \autor{Perotti}, 2011); con método narrativo, contractivas a CP (\autor{Guajardo} et al., 2014); FMI (2012): supuso multiplicadores $\approx$0,5, observados $>1$ (\autor{Blanchard}-\autor{Leigh}, 2013) \vertema{3.A.40}. Cuesta menos, pero rara vez es expansiva: elegir momento, composición y ritmo.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8,5]{II. Dinámica de la deuda y sostenibilidad\label{rep:II}}
+\begin{ideaclave}
+Decide $r-\gamma_Y$: si el tipo es menor que el crecimiento, la deuda se estabiliza sola, incluso con déficit primario; si es mayor, hacen falta superávits primarios crecientes con la deuda, y su credibilidad es lo que hace sostenible la deuda.
+\end{ideaclave}
+
+\sub{II.1. ¿Qué es sostenibilidad?\label{rep:II.1}}
+\begin{itemize}
+\item Interés desde finales de los 80 (déficits federales de EE.\,UU.) y crisis del euro 2010-12. 3 conceptos: \concepto{liquidez} (refinanciar vencimientos; \emph{sudden stop}; financiación puente o prestamista de último recurso); \concepto{solvencia} (se cumple la intertemporal; si no, reestructurar); \concepto{sostenibilidad} (política que garantiza la solvencia, viable y creíble: $d$ estable o ↓ con alta probabilidad; FMI, 2021).
+\item Solvencia, de un Estado; sostenibilidad, de una \emph{política}. «Quien debe y paga, no debe nada»: importan capacidad y voluntad, pero con 100\,\% cada punto de tipo cuesta 5 veces más superávit que con 20\,\%.
+\end{itemize}
+
+\sub{II.2. Formulación analítica\label{rep:II.2}}
+\begin{itemize}
+\item Sin señoreaje ni inflación sorpresa, $d_t=d_{t-1}=d$: \concepto{saldo primario estabilizador}
+\begin{formula}
+\centering $\tau-g=\dfrac{i-\gamma^N}{1+\gamma^N}\,d=\dfrac{r-\gamma_Y}{1+\gamma_Y}\,d$
+\end{formula}
+\item[] El superávit cubre el coste de la deuda neto de lo que la diluye el crecimiento. Más margen con: $r$↓ (credibilidad, prima de riesgo que sube con la deuda), $\gamma_Y$↑ (gasto productivo), inflación \emph{no esperada} (o deuda a largo plazo), $d$↓ si $r>\gamma_Y$ (al revés si $r<\gamma_Y$).
+\item[] \emph{España 2025}: $d_0=101{,}4$, tipo implícito 2,5\,\%, $\gamma^N=5{,}7\mbox{\,\%}$: $\tau-g=\frac{0{,}025-0{,}057}{1{,}057}\times101{,}4\approx-3{,}1$: cabía un déficit primario de $\approx$3 pp; fue 0 $\Rightarrow$ $d$↓. Pero $\gamma^N$ alto por inflación y el implícito subirá.
+\item[] No dice a qué nivel estabilizar: en 100\,\% el esfuerzo ante una subida de tipos es 5 veces el de 20\,\%.
+\end{itemize}
+
+\sub{II.3. Formulación gráfica\label{rep:II.3}}
+\begin{itemize}
+\item Ecuación en diferencias de 1.er orden, \emph{diagrama de fases} $(d_{t-1},d_t)$ con la bisectriz:
+\begin{formula}
+\centering $d_t=(g-\tau)+\dfrac{1+r}{1+\gamma_Y}\,d_{t-1},\qquad d^*=\dfrac{(g-\tau)(1+\gamma_Y)}{\gamma_Y-r}$
+\end{formula}
+\item[] Ordenada = déficit primario; pendiente $\frac{1+r}{1+\gamma_Y}$: $d^*$ estable si $<1$ ($r<\gamma_Y$), inestable si $>1$. 4 casos: (1) déficit y $r<\gamma_Y$: $d^*>0$ estable, sostenible con déficit; (2) superávit y $r<\gamma_Y$: $d^*<0$, Estado acreedor; (3) déficit y $r>\gamma_Y$: crece sin límite, \emph{bola de nieve}; (4) superávit y $r>\gamma_Y$: $d^*>0$ \emph{umbral inestable}. Se cantan el 3 (origen de una crisis) y el 4 (cómo evitarla).
+\end{itemize}
+\graficorepaso[\linewidth]{dinamica-deuda}{$r>\gamma_Y$: a) caso 3, la deuda crece sin límite; b) caso 4, $d^*$ umbral: por debajo baja, por encima se dispara}
+\begin{itemize}
+\item[] \emph{Ej.}: $d=100$, $r=3{,}3\mbox{\,\%}$, $\gamma_Y=3{,}2\mbox{\,\%}$ $\Rightarrow$ superávit $\approx$0,1 pp. \emph{No es mecánico}: si consolidar ↓ $\gamma_Y$, la recta baja pero gana pendiente (multiplicador, \autor{Blanchard}-\autor{Leigh}, 2013).
+\end{itemize}
+
+\sub{II.4. Implicaciones de política\label{rep:II.4}}
+\begin{itemize}
+\item Vías: (1) \emph{crecer más} (reformas, inversión productiva: la menos dolorosa y más lenta); (2) \emph{menos interés}: credibilidad, alargar la vida media, \concepto{represión financiera} (\autor{McKinnon}, \autor{Shaw}, 1973; \autor{Reinhart}-\autor{Sbrancia}, 2015: deuda de la II G.\,M.); (3) \emph{consolidar}: momento (expansiones), composición, ritmo (gradual), credibilidad; (4) \emph{inflación} no esperada y monetización (\hyperref[rep:III]{III}); (5) \emph{vender activos} (deuda, no déficit); (6) \emph{reestructurar}.
+\item \emph{Equilibrios múltiples}: miedo al impago $\Rightarrow$ $i$↑ $\Rightarrow$ impago (\autor{Calvo}, 1988); el euro, deuda en moneda que no se emite (\autor{De Grauwe}, 2011); OMT (2012, «whatever it takes» de \autor{Draghi}) y TPI (2022) quitan el equilibrio malo \vertema{3.B.26} \vertema{3.B.43}.
+\item \emph{Reglas UE desde 2024} \vertema{3.B.45}: 3\,\% y 60\,\% y PDE se mantienen; regla operativa: senda de \concepto{gasto primario neto} en planes fiscal-estructurales de 4 años (hasta 7 con reformas), desde un DSA; salvaguardias: $d$↓ $\geq$1 pp/año si $>90\mbox{\,\%}$, 0,5 si 60-90\,\%; margen estructural 1,5\,\%; instituciones fiscales independientes (AIReF) \vertema{4.B.21}.
+\end{itemize}
+
+\sub{II.5. La deuda pública en España\label{rep:II.5}}
+\begin{itemize}
+\item \emph{Descomposición} (\autor{Esteve}-\autor{Prats}, 2023), $i_t$ tipo implícito: $\Delta d_t=(g_t-\tau_t)+\frac{i_t-\gamma^N_t}{1+\gamma^N_t}d_{t-1}+\mathrm{ADD}_t$. El FLA no cambia la deuda consolidada.
+\item \emph{1996-2007}: 65 $\to$ 35,7\,\% (superávits primarios desde 1997; bola favorable desde 1999). \emph{Crisis}: 104,4\,\% en 2014 (primario $-9{,}5\mbox{\,\%}$ en 2009; ADD +6,3 y +2,1 en 2012-13: Grecia, FEEF, MEDE, FROB, FADE). \emph{Pandemia}: 119,3\,\% en 2020 (primario $-7{,}7$; bola +13 pp: implícito 2,1\,\%, PIB nominal $-9{,}9\mbox{\,\%}$; Sareb $\approx$34.000 M).
+\end{itemize}
+\graficorepaso[0.95\linewidth]{deuda-pde-espana-zona-euro}{Deuda PDE, \% del PIB: España, de 35,7 (2007) a 119,3 (2020) y 100,5 (2025); zona del euro, 87,7 (2025)}
+\begin{itemize}
+\item \emph{2021-25}: a 100,5\,\% por la bola de nieve ($-9{,}5$ a $-3{,}1$ pp/año; implícito solo 1,9 $\to$ 2,5\,\%); primario cerrado hasta 0; ADD +2,2 en 2025. Ago.\ 2026: 99,7\,\%; FMI fin de 2026: 97,6\,\%. Zona del euro 2025: 86,6 $\to$ 87,7\,\% (subida por el ADD, 1,1). \emph{Riesgos}: implícito ↑, $\gamma^N$ más moderado, pensiones, sanidad, defensa, estructural $-3{,}2\mbox{\,\%}$ \vertema{4.B.26}.
+\end{itemize}
+
+\sub{II.6. Otras aproximaciones\label{rep:II.6}}
+\begin{itemize}
+\item \concepto{Test de \autor{Bohn}} (1998): $\tau_t-g_t=\psi d_{t-1}+\ldots$, $\psi>0$ (EE.\,UU.\ desde 1916); estabiliza si $\psi>\frac{r-\gamma_Y}{1+\gamma_Y}$: fiscal \emph{pasiva} de \autor{Leeper}.
+\item \concepto{DSA}: proyecciones con escenarios; FMI (abanicos, necesidades brutas de financiación, tensión; riesgo bajo/moderado/alto); CE, \emph{Debt Sustainability Monitor} (10 años, estocásticas; fija la senda de gasto desde 2024).
+\item \emph{Umbrales}: 90\,\% (\autor{Reinhart}-\autor{Rogoff}, 2010), refutado (\autor{Herndon}-\autor{Ash}-\autor{Pollin}, 2014): ningún nivel seguro (quién la tiene, moneda, plazo, tipo).
+\item \emph{Debate $r-g$}: $r<g$ más norma que excepción en EE.\,UU.\ (\autor{Blanchard}, 2019) \vertema{3.A.29}; 2025: $-3{,}1$ pp España, $-1{,}2$ zona del euro; pero no avisa antes de los impagos (\autor{Mauro}-\autor{Zhou}, 2020); estancamiento secular: $r$ neutral $-300$ pb (\autor{Rachel}-\autor{Summers}, 2019); 2023, \autor{Summers} «terminado», \autor{Blanchard} no \vertema{3.A.40}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{III. Dominación monetaria y fiscal\label{rep:III}}
+\begin{ideaclave}
+El señoreaje tiene un límite y un coste, la inflación. Si la fiscal no estabiliza la deuda, la estabiliza la inflación (señoreaje o valoración de la deuda): la inflación puede ser un fenómeno fiscal, y un banco central independiente necesita una fiscal sostenible.
+\end{ideaclave}
+
+\sub{III.1. Señoreaje e impuesto inflacionario\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Señoreaje}: lo que obtiene el sector público en términos reales por emitir dinero:
+\begin{formula}
+\centering $S_t\equiv\dfrac{M_t-M_{t-1}}{P_t}=\underbrace{\Big(\dfrac{M_t}{P_t}-\dfrac{M_{t-1}}{P_{t-1}}\Big)}_{\text{saldos reales}\uparrow}+\underbrace{\dfrac{\pi_t}{1+\pi_t}\dfrac{M_{t-1}}{P_{t-1}}}_{\text{imp.\ inflacionario}}$
+\end{formula}
+\item[] \concepto{Impuesto inflacionario}: base, saldos reales; tipo, $\pi/(1+\pi)$. Si la demanda de saldos crece con la economía, señoreaje sin inflación. Coste según por qué se demanda dinero \vertema{3.A.35}: utilidad (\autor{Sidrauski}, 1967, superneutral a LP) o \emph{cash-in-advance} (grava consumo frente a ocio) $\Rightarrow$ imposición óptima \vertema{3.A.41}. Dionisio de Siracusa reselló monedas al doble (\emph{Económicos}).
+\item[] \emph{Zona del euro}: rendimiento de los activos contra billetes y reservas, vía beneficios de los bancos centrales; art.~123 TFUE prohíbe la financiación directa. Tipo fijo: pérdida de reservas y ataque (\autor{Krugman}, 1979) \vertema{3.B.17}.
+\end{itemize}
+
+\sub{III.2. Hiperinflación: \autor{Cagan} (1956)\label{rep:III.2}}
+\begin{itemize}
+\item Hiperinflaciones de entreguerras y posguerra; demanda $M^D/P=\zeta e^{-\alpha\mathbb{E}\pi}$ ($\alpha$, semielasticidad). Estado estacionario $\pi=\gamma_M$:
+\begin{formula}
+\centering $S(\pi)=\pi\zeta e^{-\alpha\pi},\qquad \pi^*=\dfrac{1}{\alpha},\qquad S^{\max}=\dfrac{\zeta}{\alpha e}$
+\end{formula}
+\item[] \concepto{Curva de \autor{Laffer} del señoreaje}: más tipo, menos base.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{laffer-senoreaje}{Déficit $<S^{\max}$: 2 equilibrios, $\pi_{\mathrm B}$ y $\pi_{\mathrm A}$; $>S^{\max}$: ninguno, hiperinflación}
+\begin{itemize}
+\item[] La financiación monetaria tiene techo y es cara. \emph{Paradoja}: la inflación efectiva superó con mucho $1/\alpha$: dinámica de expectativas; adaptativas, inestable si $\alpha\gamma>1$ \vertema{3.A.41}.
+\end{itemize}
+
+\sub{III.3. Dominación monetaria y fiscal\label{rep:III.3}}
+\begin{itemize}
+\item Alguien cierra la solvencia (\autor{Sargent}-\autor{Wallace}, 1981): \concepto{dominación monetaria}: el banco central fija su política sin mirar la deuda y la fiscal ajusta superávits; \concepto{dominación fiscal}: superávits dados, ajusta la monetaria (señoreaje o precios). «Nadie puede servir a dos señores».
+\item \textbf{\autor{Leeper} (1991)}: \concepto{activa}, persigue su objetivo; \concepto{pasiva}, se ajusta a la restricción. Monetaria $i_t=\rho+\phi_\pi\pi_t$: activa si $\phi_\pi>1$ (\autor{Taylor}) \vertema{3.A.36}; fiscal $\tau_t-g_t=\psi_0+\psi d_{t-1}$: pasiva si $\psi>\frac{r-\gamma_Y}{1+\gamma_Y}$ (\autor{Bohn}). M activa + F pasiva = \emph{dominación monetaria} (\emph{ricardiano}); M pasiva + F activa = \emph{dominación fiscal} (\emph{no ricardiano}, \autor{Woodford}, 1995); ambas activas = sin equilibrio estable (gallina); ambas pasivas = indeterminación. Casi todos los modelos suponen la 1.ª sin decirlo.
+\item \textbf{Aritmética monetarista desagradable} (\autor{Sargent}-\autor{Wallace}, 1981): con dominación fiscal, dureza hoy = más inflación mañana (y quizá hoy). Supuestos: $g-\tau>0$ fijo; $r>\gamma_Y$; límite a la deuda desde $\bar t$; demanda de dinero tipo \autor{Cagan}. Con $s^*$ el señoreaje que estabiliza $d_0$:
+\begin{formula}
+\centering $s^{\text{desp.}}-s^*=\Big[\Big(\dfrac{1+r}{1+\gamma_Y}\Big)^{\bar t}-1\Big]\big(s^*-s^{\text{antes}}\big)>0$
+\end{formula}
+\end{itemize}
+\begin{itemize}
+\item[] Restrictiva hoy: menos $\pi$ hasta $\bar t$ y más para siempre después (y ya antes: demanda tipo \autor{Cagan}). Cuanto más se retrase la monetización inevitable, mayor la inflación; si supera $S^{\max}$, hiperinflación o impago. Ej.: $r=3\mbox{\,\%}$, $\gamma_Y=1\mbox{\,\%}$, 20 años: $a^{20}\approx1{,}48$. \emph{Ext.}: juego de la gallina \vertema{3.A.14}; \emph{aritmética fiscal desagradable} (\autor{King}, 1995): desinflación no creída, $r$ \emph{ex post} ↑: $\Delta d\approx(g-\tau)+[r-\gamma_Y+(\mathbb{E}\pi-\pi)]d$. \emph{Evidencia}: fin de 4 hiperinflaciones de los 20 con cambio de régimen fiscal y banco central independiente (\autor{Sargent}, 1982). \emph{Valoración}: inflación también fiscal; art.~123 TFUE y reglas \vertema{3.B.43}; menos desagradable si $r<\gamma_Y$.
+\item \textbf{Teoría fiscal del nivel de precios} (\autor{Leeper}, 1991; \autor{Sims}, 1994; \autor{Woodford}, 1995; \autor{Cochrane}, 2023): deuda nominal, F activa, M pasiva; \concepto{ecuación de valoración}:
+\begin{formula}
+\centering $\dfrac{(1+i_{t-1})D_{t-1}}{P_tY_t}=\displaystyle\sum_{k=0}^{\infty}\Big(\frac{1+\gamma_Y}{1+r}\Big)^{k}(\tau_{t+k}-g_{t+k}+s_{t+k})$
+\end{formula}
+\item[] Ricardiano: superávits se ajustan $\forall P_t$; no ricardiano: $P_t$ se ajusta: de restricción a \emph{condición de equilibrio}. Mecanismo: efecto riqueza (el que la ER anulaba). $\pi$ fiscal sin dinero; \autor{Taylor} no basta. Deuda larga: ajusta el precio de los bonos. 2021-22 en EE.\,UU.\ (\autor{Cochrane}). Difícil de contrastar. Crítica: \autor{Buiter} (2002).
+\item \textbf{Monetización hoy}: irrelevancia de las OMA (\autor{Wallace}, 1981); compras con tipos en 0 no cambian la deuda consolidada (\autor{Blanchard}-\autor{Pisani-Ferry}, 2020). Clave: ¿dejará el banco de subir tipos por la deuda? BCE: PSPP, PEPP, OMT, TPI \vertema{3.B.43}; depósito $-0{,}5$ $\to$ 4\,\% (2022-23): dominación monetaria; coste, pérdidas (BCE 2024: 7.944 M €). \concepto{MMT} (\autor{Wray}; \autor{Kelton}): ignora el techo del señoreaje y la credibilidad; abierta; frenar con impuestos, lento (\autor{Mankiw}, 2020). \concepto{Helicóptero}: \autor{Friedman} (1969), \autor{Bernanke} (2002).
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» la restricción intertemporal ata las 3 formas de financiar, leída 3 veces: \emph{impuestos} (ricardiana; suavizar; no ricardianos y sesgo); \emph{sostenibilidad} ($r<\gamma_Y$ sola; si no, superávits crecientes); \emph{reparto} (si no hay superávits, señoreaje o nivel de precios: dominación fiscal).
+\item \textbf{Relevancia}: con deuda $\approx$100\,\%, cada punto de tipo acaba costando 1 punto de PIB al año; España pagó en 2025 el 2,4\,\% en intereses; reglas UE sobre el DSA.
+\item \textbf{Extensiones}: multiplicadores y estancamiento \vertema{3.A.40}; hiperinflación y deflación \vertema{3.A.41}; independencia \vertema{3.A.36}; gobernanza UE \vertema{3.B.45}; deuda externa \vertema{3.B.12}; GS \vertema{3.A.29}; deuda española \vertema{4.B.26}.
+\item \textbf{Opinión}: $r-\gamma_Y$ da margen pero no avisa: aprovechar el crecimiento nominal alto para bajar deuda, consolidación gradual, creíble y en el gasto menos productivo; estabilizadores en las recesiones (suavización).
+\item \textbf{Idea final}: «lo que no son cuentas, son cuentos»: el déficit siempre lo paga alguien (contribuyente de hoy o de mañana, crecimiento, tenedores de dinero y deuda nominal); la política decide quién, y la credibilidad de ese reparto hace sostenible la deuda.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1931}{\autor{Kahn}: multiplicador}
+\hito{1944}{\autor{Domar}: carga de la deuda}
+\hito{1956}{\autor{Cagan}: hiperinflación}
+\hito{1973}{\autor{Blinder}-\autor{Solow}: restricción en el IS-LM; \autor{McKinnon}, \autor{Shaw}: represión financiera}
+\hito{1974}{\autor{Barro}: «Are Government Bonds Net Wealth?»}
+\hito{1976}{\autor{Buchanan}: «equivalencia ricardiana»}
+\hito{1979}{\autor{Barro}: suavización impositiva}
+\hito{1981}{\autor{Sargent}-\autor{Wallace}: aritmética; \autor{Wallace}: irrelevancia OMA; \autor{Weingast}-\autor{Shepsle}-\autor{Johnsen}: fondo común}
+\hito{1982}{\autor{Sargent}: fin de 4 hiperinflaciones}
+\hito{1985}{\autor{Blanchard}: vidas finitas}
+\hito{1988}{\autor{Calvo}: crisis autocumplidas}
+\hito{1989}{\autor{Persson}-\autor{Svensson} (y \autor{Alesina}-\autor{Tabellini}, 1990): deuda estratégica; \autor{Campbell}-\autor{Mankiw}: regla de pulgar}
+\hito{1990}{\autor{Giavazzi}-\autor{Pagano}: no keynesianos}
+\hito{1991}{\autor{Leeper}: activa/pasiva; \autor{Alesina}-\autor{Drazen}: desgaste}
+\hito{1994}{\autor{Sims} (y \autor{Woodford}, 1995): TFNP}
+\hito{1995}{\autor{King}: aritmética fiscal desagradable}
+\hito{1998}{\autor{Bohn}: reacción fiscal}
+\hito{2010}{\autor{Reinhart}-\autor{Rogoff}: 90\,\% (refutado en 2014)}
+\hito{2013}{\autor{Blanchard}-\autor{Leigh}: multiplicadores}
+\hito{2019}{\autor{Blanchard}: «Public Debt and Low Interest Rates»}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item España 2025: déficit \dato{2,4\,\% del PIB}{Eurostat; Hacienda}, primario \dato{0}{Eurostat}, intereses \dato{2,4\,\%}{Eurostat}; deuda \dato{100,5\,\%}{Eurostat, PDE}; zona del euro \dato{87,7\,\%}{Eurostat}.
+\item Deuda España: \dato{35,7\,\% (2007); 104,4\,\% (2014); 119,3\,\% (2020)}{Eurostat}; \dato{99,7\,\% (ago.\ 2026)}{BdE}; \dato{97,6\,\% fin de 2026}{FMI}.
+\item 2025: implícito \dato{2,5\,\%}{Eurostat}; PIB nominal \dato{+5,7\,\%}{Eurostat}; $r-\gamma$: \dato{$-3{,}1$ pp España; $-1{,}2$ zona del euro}{Eurostat}.
+\item BCE: facilidad de depósito \dato{$-0{,}5$ $\to$ 4\,\%, jul.\ 2022-sep.\ 2023}{BCE}; PEPP \dato{1,85 bill.\ €}{BCE}; pérdida 2024 \dato{7.944 M €}{BCE}.
+\item Multiplicadores: \dato{supuestos $\approx$0,5; observados $>1$}{FMI, 2012; \autor{Blanchard}-\autor{Leigh}, 2013}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Qué es la condición de solvencia?} Deuda = VA de superávits primarios + señoreaje futuros; sale de la restricción de cada periodo + no juego de Ponzi; con $r<\gamma_Y$ no hace falta superávit.
+\item \textbf{¿Qué dice y qué no la equivalencia ricardiana?} Dada la senda de gasto, impuestos o deuda dan igual (deuda = impuestos aplazados); no dice que el gasto no tenga efectos ni habla de monetizar.
+\item \textbf{¿Para qué sirve la deuda si la ER falla?} Suavizar impuestos distorsionantes (\autor{Barro}, 1979): transitorio con deuda, permanente con impuestos; déficits contracíclicos.
+\item \textbf{¿Qué saldo estabiliza la deuda?} $\tau-g=\frac{r-\gamma_Y}{1+\gamma_Y}d$; España 2025: cabía déficit primario de $\approx$3 pp.
+\item \textbf{¿Qué es la aritmética monetarista desagradable?} Con dominación fiscal y $r>\gamma_Y$, menos señoreaje hoy $\Rightarrow$ más deuda $\Rightarrow$ más inflación mañana (y hoy por expectativas).
+\item \textbf{¿Son monetización las compras del BCE?} Solo si el banco deja de subir tipos para no encarecer la deuda; en 2022-23 subió de $-0{,}5$ a 4\,\%: dominación monetaria.
+\item \textbf{¿Existe un umbral seguro de deuda?} No: el 90\,\% de \autor{Reinhart}-\autor{Rogoff} no resistió la réplica; depende de quién la tiene, moneda, plazo y tipo.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Multiplicador: de \autor{Kahn} (1931), no de \autor{Keynes}.
+\item ER: \autor{Barro} (1974) usa GS con herencias, no un EGDE.
+\item Suavización: la deuda de un gasto transitorio \emph{no} se amortiza; solo se pagan intereses.
+\item $r<\gamma_Y$: se estabiliza aun con déficit primario; $r>\gamma_Y$: hace falta superávit, creciente con $d$.
+\item Caso 4 ($r>\gamma_Y$, superávit): $d^*$ es un \emph{umbral inestable}, no un atractor.
+\item No mezclar: $i$ con $\gamma^N$; $r$ con $\gamma_Y$. La inflación \emph{esperada} no reduce la deuda (ya está en $i$).
+\item Primario sin intereses; España 2022: total 4,6\,\%, primario 2,3\,\%.
+\item Aritmética \emph{monetarista}: \autor{Sargent}-\autor{Wallace} (1981); \emph{fiscal}: \autor{King} (1995).
+\item Señoreaje máximo de \autor{Cagan}: $\pi^*=1/\alpha$.
+\item \autor{Leeper}: monetaria activa = $\phi_\pi>1$; dominación monetaria = régimen \emph{ricardiano}.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

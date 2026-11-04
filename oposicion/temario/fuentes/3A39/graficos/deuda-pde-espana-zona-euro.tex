@@ -1,0 +1,66 @@
+% Deuda de las Administraciones Públicas según el Protocolo de Déficit
+% Excesivo (PDE), % del PIB, España y zona del euro (EA20), 1995-2025, y
+% previsión 2026-2027 (FMI, WEO de octubre de 2026, columnas ES_deuda_fmi y
+% ZE_deuda_fmi: las dos de la misma fuente; la de la Comisión para la zona del
+% euro, EA20_deuda_ameco, no está consolidada y saltaría 3 puntos en 2026).
+% Datos: ../datos/deuda-pde-espana-zona-euro.csv (Eurostat gov_10dd_edpt1,
+% notificación de octubre de 2026; consulta 04/11/2026).
+% Cifras de control: España 35,7 (2007), 104,4 (2014), 119,3 (2020), 100,5 (2025);
+% zona del euro 65,9 (2007), 96,3 (2020), 87,7 (2025).
+% Paleta: España dicespana, zona del euro dicze (como r-menos-g del 3.A.29).
+% Capas (CRITERIOS §7): bandas de las crisis → ejes y 60 % → zona del euro →
+% España con la previsión → puntos y etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/deuda-pde-espana-zona-euro.csv}\deuda
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=13cm,height=7.6cm,xmin=1994.3,xmax=2027.7,ymin=0,ymax=135,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={1995,2000,...,2025},ytick={0,20,...,120},
+    x tick label style={/pgf/number format/.cd,set thousands separator={}},
+    ticklabel style={font=\footnotesize},
+    ylabel={\% del PIB},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    legend style={at={(0.02,0.98)},anchor=north west,draw=none,font=\footnotesize},
+    legend cell align=left,unbounded coords=jump,dicapas]
+  % 1: bandas de las crisis (financiera y del euro, 2008-2013; pandemia, 2020)
+  \capa{1}{
+    \dicsombra[fill=tceegris,opacity=0.13]{2007.5}{0}{2013.5}{135}
+    \dicsombra[fill=tceegris,opacity=0.13]{2019.5}{0}{2020.5}{135}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north,align=center]{(2010.5,134)}{crisis financiera\\y del euro}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north]{(2020,134)}{pandemia}
+  }
+  % 2: ejes y valor de referencia del 60 %
+  \capa{2}{
+    \dicraya[dicumbral,thick]{(1994.3,60) (2027.7,60)}
+    \dicrotulo[font=\footnotesize,text=dicreferencia,anchor=north east,inner sep=2pt]{(2027.7,60)}{valor de referencia del Protocolo n.º~12: 60~\%}
+  }
+  % 3: zona del euro, con la previsión discontinua
+  \capa{3}{
+    \addplot[diclinea=dicze,thick] table[x=anio,y=EA20_deuda] {\deuda};
+    \addlegendentry{Zona del euro (EA20)}
+    % (la previsión arranca del dato de Eurostat de 2025, 87,7, para no dejar el
+    % salto de 0,4 puntos con la serie del FMI, que incluye a Bulgaria: 88,0 y 88,5)
+    \addplot[diclinea=dicze,thick,dashed,forget plot] coordinates {(2025,87.7) (2026,88.0) (2027,88.5)};
+  }
+  % 4: España, con la previsión discontinua
+  \capa{4}{
+    \addplot[diclinea=dicespana,ultra thick] table[x=anio,y=ES_deuda] {\deuda};
+    \addlegendentry{España}
+    \addplot[diclinea=dicespana,ultra thick,dashed,restrict x to domain=2025:2027] table[x=anio,y=ES_deuda_fmi] {\deuda};
+    \addlegendentry{Previsión del FMI (2026-2027)}
+  }
+  % 5: puntos y etiquetas de los hitos de España
+  \capa{5}{
+    \addplot[on layer=dicpuntos,dicpuntos=dicespana,forget plot] coordinates {(2007,35.7) (2014,104.4) (2020,119.3) (2025,100.5)};
+    \dicrotulo[font=\footnotesize,text=dicespana,anchor=north]{(2007,32.5)}{35,7~\%}
+    \dicrotulo[font=\footnotesize,text=dicespana,anchor=south east]{(2013.8,106)}{104,4~\%}
+    \dicrotulo[font=\footnotesize,text=dicespana,anchor=west]{(2020.6,121)}{119,3~\%}
+    \dicrotulo[font=\footnotesize,text=dicespana,anchor=south west]{(2025.1,102)}{100,5~\%}
+  }
+\end{axis}
+\end{tikzpicture}
+\end{document}

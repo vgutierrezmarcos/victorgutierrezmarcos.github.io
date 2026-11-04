@@ -1,0 +1,50 @@
+% Suavización impositiva (Barro, 1979): una guerra de un periodo se paga con
+% deuda. Gráfico de referencia de la ficha «suavizacion-impositiva-barro».
+% Ejemplo: Y = 100, r = 0,05, G_t = 20 salvo G_{t0} = 30 (Delta G_0 = 10),
+% deuda inicial nula; la guerra se conoce en t_0.
+%   Tipo medio: 0,20 hasta t_0; desde t_0, 0,20 + r Delta G_0/[(1+r) Y]
+%               = 0,20 + 0,0048 (Delta tau Y = 0,476)
+%   Deuda: D_{t0} = 30 - 20,476 = 9,524 = Delta G_0/(1+r); después
+%          D_t = 1,05 x 9,524 + 20 - 20,476 = 9,524: no se amortiza.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \pgfplotsset{panel/.style={
+      width=9.5cm, height=3.6cm, scale only axis=false,
+      xmin=-3, xmax=10, xtick={0}, xticklabels={},
+      axis lines=left, axis line style={-{Stealth[length=2.2mm]}, thick},
+      tick align=outside, clip=false,
+      ylabel style={rotate=-90, anchor=east}, ticklabel style={font=\footnotesize},
+      xlabel style={at={(ticklabel* cs:1)}, anchor=north east},
+    }}
+  % ---------- 1: ejes de los 3 paneles ----------
+  \begin{axis}[panel, name=pG, ymin=0, ymax=36, ytick={20,30},
+      ylabel={$G_t$}]
+    \coordinate (arriba) at (axis cs:0,36);
+    % 2: senda del gasto con el pico de la guerra en t_0
+    \capa{2}{\addplot[curva1, const plot mark left] coordinates {(-3,20) (0,30) (1,20) (10,20)};}
+    \capa{2}{\node[etiqueta, anchor=west, text=tceemorado] at (axis cs:1.2,30) {guerra: $\Delta G_0=10$};}
+  \end{axis}
+  \begin{axis}[panel, name=pT, at={(pG.south west)}, anchor=north west, yshift=-0.5cm,
+      ymin=0.15, ymax=0.25, ytick={0.20},
+      yticklabels={$0{,}20$}, ylabel={$\dfrac{T_t}{Y_t}$}]
+    % 3: tipo medio casi plano: sube 0,0048 para siempre
+    \capa{3}{\addplot[curva2, const plot mark left] coordinates {(-3,0.20) (0,0.2048) (10,0.2048)};}
+    \capa{3}{\node[etiqueta, anchor=south, text=tceeazul] at (axis cs:5,0.208) {el tipo apenas se mueve: $\Delta\bar\tau=0{,}0048$};}
+  \end{axis}
+  \begin{axis}[panel, name=pD, at={(pT.south west)}, anchor=north west, yshift=-0.5cm,
+      ymin=0, ymax=14, ytick={0,9.52}, yticklabels={$0$,$9{,}52$},
+      xticklabels={$t_0$}, xlabel={$t$}, ylabel={$D_t$}]
+    \coordinate (abajo) at (axis cs:0,0);
+    % 4: deuda que sube en el pico y se queda
+    \capa{4}{\addplot[curva3, const plot mark left] coordinates {(-3,0) (0,9.524) (10,9.524)};}
+    \capa{4}{\node[etiqueta, anchor=south, text=tceeverde] at (axis cs:5,10) {no se amortiza: solo se pagan los intereses};}
+    \capa{4}{\node[etiqueta, anchor=east, text=tceeverde] at (axis cs:-0.1,6) {$\dfrac{\Delta G_0}{1+r}$};}
+  \end{axis}
+  % 1: línea de t_0 que cruza los 3 paneles
+  % (en el fondo, para que no tape las sendas)
+  \capa{1}{\begin{scope}[on background layer]\draw[guia] (arriba) -- (abajo);\end{scope}}
+\end{tikzpicture}
+\end{document}

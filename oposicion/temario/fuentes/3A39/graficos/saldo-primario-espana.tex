@@ -1,0 +1,69 @@
+% Saldo primario de las Administraciones Públicas de España, % del PIB,
+% 1995-2025 (barras: superávit en verde, déficit en rojo), con el saldo total
+% de España (B9), el saldo primario de la zona del euro (EA20) y el saldo
+% primario estructural de España estimado por la Comisión (2010-2025 y
+% previsión 2026-2027, en % del PIB potencial).
+% Datos: ../datos/saldos-espana-zona-euro.csv (Eurostat gov_10dd_edpt1,
+% notificación de octubre de 2026; AMECO, primavera de 2026; consulta 04/11/2026).
+% Cifras de control: saldo primario de España -9,53 (2009), -7,68 (2020),
+% -0,01 (2025); saldo total -11,2 (2009), -2,4 (2025).
+% (Las filas de 2026-2027 del CSV solo tienen las series de la Comisión: para
+% las de Eurostat se lee la tabla sin ellas, \saldosdatos.)
+% Capas (CRITERIOS §7): barras → ejes y cero → líneas → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/saldos-espana-zona-euro.csv}\saldos
+% las series de Eurostat, sin las filas de 2026-2027 (vacías)
+\pgfplotstableread[col sep=comma,comment chars={\#},skip rows between index={31}{33}]{../datos/saldos-espana-zona-euro.csv}\saldosdatos
+% leyenda de las líneas del mismo ancho que la de las barras
+\pgfplotsset{leyenda linea/.style={legend image code/.code={%
+  \draw[##1] plot coordinates {(0cm,0cm) (0.6cm,0cm)};}}}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=13.5cm,height=7.6cm,xmin=1994.3,xmax=2027.7,ymin=-12.5,ymax=5,
+    ybar=0pt,bar width=0.62,bar shift=0pt,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={1995,2000,...,2025},ytick={-12,-10,...,4},
+    x tick label style={/pgf/number format/.cd,set thousands separator={}},
+    ticklabel style={font=\footnotesize},
+    ylabel={\% del PIB},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    legend style={at={(0.5,-0.1)},anchor=north,legend columns=2,draw=none,font=\footnotesize,
+      /tikz/every even column/.append style={column sep=10pt}},
+    legend cell align=left,area legend,unbounded coords=discard,dicapas]
+  % 1: barras del saldo primario de España (superávit verde, déficit rojo)
+  \capa{1}{
+    \addplot[on layer=dicbarras,dicbarra=tceeverde,restrict y to domain=0:100]
+      table[x=anio,y=ES_saldo_primario] {\saldosdatos};
+    \addlegendentry{Saldo primario de España: superávit}
+    \addplot[on layer=dicbarras,dicbarra=tceerojo,restrict y to domain=-100:-0.000001]
+      table[x=anio,y=ES_saldo_primario] {\saldosdatos};
+    \addlegendentry{Saldo primario de España: déficit}
+  }
+  % 2: ejes y línea del cero
+  \capa{2}{\dicraya{(1994.3,0) (2027.7,0)}}
+  % 3: saldo total de España, saldo primario de la zona del euro y saldo
+  % primario estructural de España (con la previsión discontinua)
+  \capa{3}{
+    \addplot[sharp plot,very thick,dicinflacion,leyenda linea] table[x=anio,y=ES_saldo] {\saldosdatos};
+    \addlegendentry{Saldo total de España}
+    \addplot[sharp plot,thick,dicze,leyenda linea] table[x=anio,y=EA20_saldo_primario] {\saldosdatos};
+    \addlegendentry{Saldo primario de la zona del euro}
+    \addplot[sharp plot,thick,tceedorado,densely dotted,leyenda linea,restrict x to domain=2010:2025]
+      table[x=anio,y=ES_saldo_primario_estructural_ameco] {\saldos};
+    \addlegendentry{Saldo primario estructural de España (Comisión)}
+    \addplot[sharp plot,thick,tceedorado,dashed,forget plot,restrict x to domain=2025:2027]
+      table[x=anio,y=ES_saldo_primario_estructural_ameco] {\saldos};
+  }
+  % 4: etiquetas de 2009, 2020 y 2025
+  \capa{4}{
+    \dicrotulo[font=\footnotesize,text=tceerojo,anchor=east]{(2008.6,-9.53)}{$-9{,}5$~\%}
+    \dicrotulo[font=\footnotesize,text=tceerojo,anchor=west]{(2020.4,-7.9)}{$-7{,}7$~\%}
+    \dicrotulo[font=\footnotesize,anchor=north east,align=right]{(2025.4,4.9)}{2025: 0,0~\%, primer año sin\\déficit primario desde 2007}
+    \dicrotulo[font=\scriptsize,text=tceedorado,anchor=south]{(2026.4,0.15)}{previsión}
+  }
+\end{axis}
+\end{tikzpicture}
+\end{document}

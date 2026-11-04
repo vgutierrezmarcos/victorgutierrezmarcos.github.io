@@ -1,0 +1,46 @@
+% Estabilidad del modelo de Cagan (1956) con expectativas adaptativas.
+% Demanda ln(M/P) = ln zeta - alpha pi^e; adaptativas dot pi^e = gamma (pi - pi^e).
+% Derivando: dot pi^e = [gamma/(1 - alpha gamma)] (gamma_M - pi^e).
+%   a) alpha gamma < 1: pendiente negativa, pi^e converge a gamma_M (estable).
+%   b) alpha gamma > 1: pendiente positiva, pi^e se aleja de gamma_M (inestable).
+% Rectas: a) dot pi^e = -0,7 (pi^e - 3,5);  b) dot pi^e = 0,7 (pi^e - 3,5).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{dinamica/.style={-{Stealth[length=2.4mm]},very thick,#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.62cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.6,-4.2) rectangle (21.2,5.2);
+  % ---------------- a) estable ----------------
+  % 1: ejes de los 2 paneles
+  \capa{1}{\draw[eje] (0,0) -- (7.6,0) node[below left=2pt and 0pt] {$\pi^e$};}
+  \capa{1}{\draw[eje] (0,-3.2) -- (0,3.6) node[left] {$\dot\pi^e$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (3.8,4.4) {a) $\boldsymbol{\alpha\gamma<1}$: estable};}
+  \begin{scope}[xshift=6.6cm]
+  \capa{1}{\draw[eje] (0,0) -- (7.6,0) node[below left=2pt and 0pt] {$\pi^e$};}
+  \capa{1}{\draw[eje] (0,-3.2) -- (0,3.6) node[left] {$\dot\pi^e$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (3.8,4.4) {b) $\boldsymbol{\alpha\gamma>1}$: inestable};}
+  \end{scope}
+  % 2: panel a) recta decreciente y flechas hacia gamma_M
+  \capa{2}{\draw[curva1] (0.5,2.1) -- (6.6,-2.17) node[etiqueta, below, text=tceemorado] {$\dot\pi^e=\dfrac{\gamma}{1-\alpha\gamma}\,(\gamma_M-\pi^e)$};}
+  \capa{2}{\node[punto] at (3.5,0) {};}
+  \capa{2}{\node[etiqueta, below left=1pt and -2pt] at (3.5,0) {$\gamma_M$};}
+  \capa{2}{\draw[dinamica=tceeverde] (1.0,0.35) -- (2.8,0.35);}
+  \capa{2}{\draw[dinamica=tceeverde] (6.6,0.35) -- (4.2,0.35);}
+  \capa{2}{\node[etiqueta, font=\footnotesize, text=tceegris] at (1.0,0.9) {$\dot\pi^e>0$};}
+  \capa{2}{\node[etiqueta, font=\footnotesize, text=tceegris] at (5.7,-0.55) {$\dot\pi^e<0$};}
+  % 3: panel b) recta creciente y flechas que se alejan de gamma_M
+  \begin{scope}[xshift=6.6cm]
+  \capa{3}{\draw[curva1] (0.5,-2.1) -- (6.6,2.17) node[etiqueta, above, text=tceemorado] {$\dot\pi^e=\dfrac{\gamma}{1-\alpha\gamma}\,(\gamma_M-\pi^e)$};}
+  \capa{3}{\node[punto] at (3.5,0) {};}
+  \capa{3}{\node[etiqueta, below right=1pt and -2pt] at (3.5,0) {$\gamma_M$};}
+  \capa{3}{\draw[dinamica=tceerojo] (2.9,0.35) -- (0.9,0.35);}
+  \capa{3}{\draw[dinamica=tceerojo] (4.1,0.35) -- (6.6,0.35);}
+  \capa{3}{\node[etiqueta, font=\footnotesize, text=tceegris] at (1.0,-0.6) {$\dot\pi^e<0$};}
+  \capa{3}{\node[etiqueta, font=\footnotesize, text=tceegris] at (6.1,0.9) {$\dot\pi^e>0$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

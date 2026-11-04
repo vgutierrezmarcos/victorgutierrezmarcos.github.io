@@ -1,0 +1,82 @@
+% El efecto bola de nieve en España, 1996-2025.
+% Arriba: tipo de interés implícito de la deuda, i (intereses en t / deuda en
+% t-1, %), y crecimiento del PIB nominal, gamma^N (%); sombreado rojo pálido
+% cuando i > gamma^N (la bola de nieve sube la deuda) y verde pálido cuando
+% i < gamma^N. Abajo: efecto bola de nieve [(i - gamma^N)/(1 + gamma^N)] d_{t-1},
+% en puntos del PIB.
+% Datos: ../datos/bola-nieve-espana-zona-euro.csv (cálculo propio con Eurostat
+% gov_10dd_edpt1 y nama_10_gdp, octubre de 2026; consulta 04/11/2026).
+% Los polígonos del sombreado unen las 2 series del CSV y se cortan donde se
+% cruzan (interpolación lineal, calculada con Python sobre el mismo CSV):
+% i > gamma^N en 1996-1998, 2008-2014 y 2020.
+% Cifras de control: efecto bola de nieve +13,0 (2020), -8,1 (2021), -9,5
+% (2022), -6,4 (2023), -4,3 (2024), -3,1 (2025).
+% Paleta: PIB (gamma^N) dicpib, tipo de interés dicdeposito; sombreado rojo =
+% sube la deuda, verde = la baja; barras del efecto bola de nieve en dicopf,
+% el mismo color que en descomposicion-deuda-espana.
+% Capas (CRITERIOS §7): sombreados → ejes → líneas → barras del panel inferior
+% y etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bola-nieve-espana-zona-euro.csv}\bola
+\pgfplotsset{leyenda linea/.style={legend image code/.code={%
+  \draw[##1] plot coordinates {(0cm,0cm) (0.6cm,0cm)};}}}
+\begin{tikzpicture}[tcee]
+\begin{axis}[name=arriba,width=13.5cm,height=6.4cm,xmin=1995.3,xmax=2025.7,ymin=-11,ymax=13,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={1996,2000,...,2024},xticklabels={},ytick={-10,-5,...,10},
+    ticklabel style={font=\small},
+    ylabel={\%},ylabel style={font=\small},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    legend style={at={(0.5,1.02)},anchor=south,legend columns=2,draw=none,font=\small,
+      /tikz/every even column/.append style={column sep=8pt}},
+    legend cell align=left,area legend,dicapas]
+  % 1: sombreados entre las 2 líneas
+  \capa{1}{
+    \addplot[on layer=dicbarras,stack plots=false,sharp plot,mark=none,fill=tceerojo!22,draw=none] coordinates {(1996.000,8.610) (1997.000,7.280) (1998.000,6.780) (1998.237,6.562) (1998.000,6.220) (1997.000,2.850) (1996.000,7.720)} -- cycle;
+    \addlegendentry{$i>\gamma^N$: la bola de nieve sube la deuda}
+    \addplot[on layer=dicbarras,stack plots=false,sharp plot,mark=none,fill=tceeverde!22,draw=none] coordinates {(1998.237,6.562) (1999.000,5.860) (2000.000,5.660) (2001.000,5.560) (2002.000,5.200) (2003.000,4.810) (2004.000,4.470) (2005.000,4.160) (2006.000,4.110) (2007.000,4.340) (2007.686,4.491) (2007.000,7.220) (2006.000,8.280) (2005.000,7.910) (2004.000,7.150) (2003.000,7.060) (2002.000,6.960) (2001.000,8.240) (2000.000,8.790) (1999.000,7.660)} -- cycle;
+    \addlegendentry{$i<\gamma^N$: la baja}
+    \addplot[on layer=dicbarras,dicsuelto,forget plot,fill=tceerojo!22,draw=none] coordinates {(2007.686,4.491) (2008.000,4.560) (2009.000,4.170) (2010.000,3.590) (2011.000,4.090) (2012.000,4.220) (2013.000,3.940) (2014.000,3.580) (2014.592,3.278) (2014.000,1.300) (2013.000,-1.000) (2012.000,-3.060) (2011.000,-0.780) (2010.000,0.390) (2009.000,-3.550) (2008.000,3.240)} -- cycle;
+    \addplot[on layer=dicbarras,dicsuelto,forget plot,fill=tceeverde!22,draw=none] coordinates {(2014.592,3.278) (2015.000,3.070) (2016.000,2.800) (2017.000,2.580) (2018.000,2.500) (2019.000,2.330) (2019.083,2.307) (2019.000,3.420) (2018.000,3.610) (2017.000,4.190) (2016.000,3.300) (2015.000,4.640)} -- cycle;
+    \addplot[on layer=dicbarras,dicsuelto,forget plot,fill=tceerojo!22,draw=none] coordinates {(2019.083,2.307) (2020.000,2.050) (2020.616,1.982) (2020.000,-9.930)} -- cycle;
+    \addplot[on layer=dicbarras,dicsuelto,forget plot,fill=tceeverde!22,draw=none] coordinates {(2020.616,1.982) (2021.000,1.940) (2022.000,2.220) (2023.000,2.360) (2024.000,2.470) (2025.000,2.490) (2025.000,5.720) (2024.000,6.840) (2023.000,8.750) (2022.000,11.360) (2021.000,9.410)} -- cycle;
+  }
+  % 2: ejes y línea del cero
+  \capa{2}{\dicraya{(1995.3,0) (2025.7,0)}}
+  % 3: líneas del tipo implícito y del crecimiento nominal
+  \capa{3}{
+    \addplot[sharp plot,very thick,dicdeposito,leyenda linea] table[x=anio,y=ES_i_implicito] {\bola};
+    \addlegendentry{Tipo implícito, $i$}
+    \addplot[sharp plot,very thick,dicpib,leyenda linea] table[x=anio,y=ES_crec_nominal] {\bola};
+    \addlegendentry{Crecimiento nominal, $\gamma^N$}
+  }
+\end{axis}
+\begin{axis}[at={(arriba.below south west)},anchor=north west,yshift=-0.15cm,
+    width=13.5cm,height=4.4cm,xmin=1995.3,xmax=2025.7,ymin=-12,ymax=17,
+    ybar=0pt,bar width=0.62,bar shift=0pt,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={1996,2000,...,2024},ytick={-10,0,10},
+    x tick label style={/pgf/number format/.cd,set thousands separator={}},
+    ticklabel style={font=\small},
+    ylabel={puntos del PIB},ylabel style={font=\small},
+    ymajorgrids,grid style={tceegris!25},clip=false,dicapas]
+  \capa{2}{\dicraya{(1995.3,0) (2025.7,0)}}
+  % 4: barras del efecto bola de nieve y sus etiquetas
+  \capa{4}{
+    \addplot[on layer=dicbarras,dicbarra=dicopf] table[x=anio,y=ES_bola_nieve] {\bola};
+    \dicrotulo[font=\small,text=tceegris,anchor=north west,align=left]{(1995.6,16.5)}{efecto bola de nieve,\\$\frac{i-\gamma^N}{1+\gamma^N}\,d_{t-1}$}
+    \dicrotulo[font=\small,text=dicopf!70!black,anchor=west]{(2020.4,13.0)}{$+13{,}0$}
+    % (horizontales, encima del cero y en 2 alturas alternas para que no choquen)
+    \dicrotulo[font=\footnotesize,text=dicopf!70!black,anchor=south,inner sep=1pt]{(2021,0.5)}{$-8{,}1$}
+    \dicrotulo[font=\footnotesize,text=dicopf!70!black,anchor=south,inner sep=1pt]{(2022,3.6)}{$-9{,}5$}
+    \dicrotulo[font=\footnotesize,text=dicopf!70!black,anchor=south,inner sep=1pt]{(2023,0.5)}{$-6{,}4$}
+    \dicrotulo[font=\footnotesize,text=dicopf!70!black,anchor=south,inner sep=1pt]{(2024,3.6)}{$-4{,}3$}
+    \dicrotulo[font=\footnotesize,text=dicopf!70!black,anchor=south,inner sep=1pt]{(2025,0.5)}{$-3{,}1$}
+  }
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -50,7 +50,7 @@ $C^J_t$, $C^V_{t+1}$ (mayúscula, superíndice en redonda J y V), **$S_t$ ahorro
 | 4.B.3 | Estado del bienestar | mención | Las pensiones como instrumento redistributivo (ficha `pensiones`) | El modelo |
 | 3.A.35 | Valor del dinero fiduciario | resumen | Samuelson con dinero como depósito de valor; remisión mutua con `sec:samuelson` del 3.A.29, sin duplicar | Diamond |
 | 3.A.21 | Equilibrio general | mención (hecho, 14/10/2026) | Dinero como depósito de valor entre generaciones; tiempo sin fin e ineficiencia | El modelo |
-| 3.A.39 | Deuda pública | mención | OLG: la deuda transfiere entre generaciones y la equivalencia ricardiana falla salvo herencias | El modelo |
+| 3.A.39 | Deuda pública | mención (hecho, 4/11/2026) | OLG: la deuda transfiere entre generaciones y desplaza capital (Diamond, 1965), la equivalencia falla salvo herencias (supuesto 1 y razón 1 de I.3.1); el coste en bienestar con $r<\gamma_Y$, II.6; `\vertema{3.A.29}` | El modelo |
 | 3.A.6 | NMC | mención (hecho, 4/11/2026) | En nota, el modelo original de Lucas (1972) es OLG; vidas finitas (Blanchard, 1985) en la equivalencia ricardiana; `\vertema{3.A.29}` | — |
 | 3.A.33 | Consumo | mención (hecho, 31/10/2026) | Las OLG como el ciclo vital en equilibrio general (ficha `ciclo-vital`) | El modelo |
 | 3.A.43 | RCK | mención (hecho, 31/10/2026) | El contraste: el RCK nunca acumula de más; con OLG sí puede | El modelo `\vertema{3.A.29}` |
