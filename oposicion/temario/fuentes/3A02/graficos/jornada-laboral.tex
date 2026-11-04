@@ -1,0 +1,60 @@
+% La jornada laboral de Marx (1867, libro I, caps. 7-9): jornada de 10 horas;
+% las 5 primeras reponen el valor de la fuerza de trabajo (trabajo necesario,
+% capital variable v) y las otras 5 son plustrabajo (plusvalía, pl).
+% Tasa de plusvalía pl' = pl/v = 5/5 = 100 %.
+% Debajo, las 2 formas de aumentar la plusvalía (libro I, caps. 10 y 12):
+% absoluta (jornada de 12 h, v = 5, pl = 7: pl' = 140 %) y relativa (10 h, el
+% trabajo necesario baja a 4 h por la productividad: pl = 6, pl' = 150 %).
+% Colores: capital variable en azul, plusvalía en rojo (el de Marx).
+% Elaboración propia a partir de Marx (1867, libro I, caps. 7-12).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,
+    tramov/.style={fill=tceeazul,fill opacity=0.22,draw=none},
+    tramopl/.style={fill=tceerojo,fill opacity=0.22,draw=none},
+    llave/.style={decorate,decoration={brace,mirror,amplitude=5pt},thick},
+    marco/.style={thick,black}]
+  % \marcobarra{y}{horas}: barra vacía con una marca por hora
+  \newcommand{\marcobarra}[2]{%
+    \draw[marco] (0,#1) rectangle (#2,{#1+0.6});
+    \foreach \h in {1,...,#2}{\draw[thin,tceegris] (\h-1,#1) -- (\h-1,{#1+0.12});}}
+  % ---------------- jornada de 10 horas ----------------
+  \capa{1}{\node[font=\small\bfseries,anchor=south west] at (0,1.15) {Jornada de 10 horas};}
+  \capa{1}{\marcobarra{0}{10}}
+  \capa{1}{\foreach \h in {0,...,10}{\node[font=\scriptsize,above=1pt] at (\h,0.6) {\h};}}
+  \capa{1}{\node[font=\scriptsize,anchor=west] at (10.15,0.75) {horas};}
+  % trabajo necesario: repone el salario (capital variable)
+  \capa{2}{\fill[tramov] (0,0) rectangle (5,0.6);}
+  \capa{2}{\node[text=tceeazul] at (2.5,0.3) {$v$};}
+  \capa{2}{\draw[llave,tceeazul] (0,-0.08) -- (5,-0.08)
+    node[midway,below=7pt,align=center,font=\small,text=tceeazul]
+    {\textbf{trabajo necesario}\\repone el salario};}
+  % plustrabajo: la plusvalía del capitalista
+  \capa{3}{\fill[tramopl] (5,0) rectangle (10,0.6);}
+  \capa{3}{\node[text=tceerojo] at (7.5,0.3) {$\mathit{pl}$};}
+  \capa{3}{\draw[llave,tceerojo] (5,-0.08) -- (10,-0.08)
+    node[midway,below=7pt,align=center,font=\small,text=tceerojo]
+    {\textbf{plustrabajo}\\plusvalía para el capitalista};}
+  % tasa de plusvalía
+  \capa{4}{\node[anchor=west] at (12.4,0.3)
+    {$\mathit{pl}'=\dfrac{\mathit{pl}}{v}=\dfrac{5}{5}=100\,\%$};}
+  % ---------------- plusvalía absoluta: la jornada se alarga ----------------
+  \capa{5}{\node[font=\small\bfseries,anchor=south west] at (0,-2.25) {Plusvalía absoluta: la jornada se alarga a 12 horas};}
+  \capa{5}{\marcobarra{-2.9}{12}}
+  \capa{5}{\fill[tramov] (0,-2.9) rectangle (5,-2.3);}
+  \capa{5}{\fill[tramopl] (5,-2.9) rectangle (12,-2.3);}
+  \capa{5}{\node[text=tceeazul] at (2.5,-2.6) {$v=5$};}
+  \capa{5}{\node[text=tceerojo] at (8.5,-2.6) {$\mathit{pl}=7$};}
+  \capa{5}{\node[anchor=west] at (12.4,-2.6) {$\mathit{pl}'=\dfrac{7}{5}=140\,\%$};}
+  % ---------------- plusvalía relativa: el trabajo necesario se acorta ----------------
+  \capa{6}{\node[font=\small\bfseries,anchor=south west] at (0,-4.05) {Plusvalía relativa: el trabajo necesario baja a 4 horas};}
+  \capa{6}{\marcobarra{-4.7}{10}}
+  \capa{6}{\fill[tramov] (0,-4.7) rectangle (4,-4.1);}
+  \capa{6}{\fill[tramopl] (4,-4.7) rectangle (10,-4.1);}
+  \capa{6}{\node[text=tceeazul] at (2,-4.4) {$v=4$};}
+  \capa{6}{\node[text=tceerojo] at (7,-4.4) {$\mathit{pl}=6$};}
+  \capa{6}{\node[anchor=west] at (12.4,-4.4) {$\mathit{pl}'=\dfrac{6}{4}=150\,\%$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,28 @@
+% Determinantes de la riqueza de una nación en Smith (1776, introducción y
+% libros I-II): el producto por habitante depende de la productividad del trabajo
+% (división del trabajo, limitada por la extensión del mercado y por la
+% acumulación de capital) y de la proporción de trabajo productivo, que también
+% depende de la acumulación. Elaboración propia a partir de Smith (1776,
+% introducción, libro I, caps. I-III, y libro II, cap. III) y de Landreth y Colander (2006, fig. 4.1).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=#1,very thick,rounded corners=2pt,fill=#1!8,align=center,
+      text width=3.3cm,minimum height=1cm,font=\small},
+    caja/.default=tceemorado,>={Stealth[length=2.2mm]}]
+  \capa{1}{\node[caja=tceemorado,text width=4.2cm] (R) at (0,0) {\textbf{Riqueza}: producto anual\\por habitante};}
+  \capa{2}{\node[caja=tceeazul] (P) at (-3,-2) {Productividad\\del trabajo};}
+  \capa{2}{\draw[->,thick] (P) -- (R);}
+  \capa{3}{\node[caja=tceeazul] (D) at (-3,-4) {División del trabajo\\(fábrica de alfileres)};}
+  \capa{3}{\draw[->,thick] (D) -- (P);}
+  \capa{4}{\node[caja=tceeverde] (E) at (-6,-6) {Extensión del mercado\\(libre comercio)};}
+  \capa{4}{\draw[->,thick] (E) -- (D);}
+  \capa{5}{\node[caja=tceedorado,text width=4.1cm] (K) at (0.3,-6) {Acumulación de capital\\(ahorro: parsimonia)};}
+  \capa{5}{\draw[->,thick] (K) -- (D);}
+  \capa{6}{\node[caja=tceeazul] (T) at (3,-2) {Proporción de\\trabajo productivo};}
+  \capa{6}{\draw[->,thick] (T) -- (R);}
+  \capa{6}{\draw[->,thick] (K) -- (T);}
+\end{tikzpicture}
+\end{document}

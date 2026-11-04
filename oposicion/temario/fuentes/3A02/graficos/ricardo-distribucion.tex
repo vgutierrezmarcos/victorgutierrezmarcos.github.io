@@ -1,0 +1,38 @@
+% Teoría de la distribución de Ricardo (1817, caps. II, V y VI) en la versión gráfica
+% de Kaldor (1956): producción de grano en una cantidad dada de tierra,
+% F(L) = 9L - L^2/2, con L las «dosis» de trabajo y capital (el capital son
+% los salarios adelantados). PMe_L = 9 - L/2 y PMg_L = 9 - L.
+% Salario de subsistencia \bar w = 3. En L_0 = 3,5: PMg = 5,5 y PMe = 7,25;
+% renta (7,25 - 5,5)·3,5 = 6,1; beneficios (5,5 - 3)·3,5 = 8,75; salarios 3·3,5 = 10,5;
+% total F(3,5) = 25,4. Estado estacionario: PMg_L(L*) = \bar w en L* = 6
+% (renta 18, salarios 18, beneficios 0). Curvas ilustrativas.
+% Elaboración propia a partir de Kaldor (1956) y Blaug (1997, cap. 4).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,xscale=0.8,yscale=0.55,
+    declare function={pme(\x)=9-\x/2; pmg(\x)=9-\x;}]
+  \capa{1}{\ejes{$L$}{$\mathrm{PMe}_L,\ \mathrm{PMg}_L$}{9.4}{10}}
+  \capa{2}{\draw[curva2] plot[domain=0:8.6,samples=2] (\x,{pme(\x)})
+    node[etiqueta,above right=0pt and -4pt] {$\mathrm{PMe}_L$};}
+  \capa{3}{\draw[curva1] plot[domain=0:7.4,samples=2] (\x,{pmg(\x)})
+    node[etiqueta,below right=-2pt and 0pt] {$\mathrm{PMg}_L$};}
+  \capa{4}{\draw[curva3] (0,3) -- (8.9,3);}
+  \capa{4}{\node[etiqueta,left] at (0,3) {$\overline{w}$};}
+  \capa{5}{\begin{scope}[on background layer]
+      \fill[tceeverde,fill opacity=0.18] (0,0) rectangle (3.5,3);
+      \fill[area] (0,3) rectangle (3.5,5.5);
+      \fill[area2] (0,5.5) rectangle (3.5,7.25);
+    \end{scope}}
+  \capa{5}{\draw[guia] (3.5,0) node[below,text=black] {$L_0$} -- (3.5,7.25);}
+  \capa{6}{\node[etiqueta] at (1.75,1.5) {salarios};}
+  \capa{7}{\node[etiqueta] at (1.75,4.25) {beneficios};}
+  \capa{8}{\node[etiqueta] at (1.75,6.38) {renta};}
+  \capa{9}{\node[punto] (E) at (6,3) {};}
+  \capa{9}{\draw[guia] (E) -- (6,0) node[below,text=black] {$L^*$};}
+  \capa{10}{\node[etiqueta,align=left,anchor=west] (T) at (6.3,7.2)
+    {estado estacionario:\\$\mathrm{PMg}_L(L^*)=\overline{w}$};}
+  \capa{10}{\draw[->,thin,black] (T.south) .. controls (6.9,5) .. (6.15,3.3);}
+\end{tikzpicture}
+\end{document}

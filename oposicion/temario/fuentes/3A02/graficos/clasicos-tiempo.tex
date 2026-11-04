@@ -1,0 +1,86 @@
+% La economía clásica, Malthus y Marx: (a) línea del tiempo 1750-1875 y
+% (b) árbol de influencias, en una sola figura (3.A.2, I.2).
+% (a) Obras arriba de la línea y sucesos abajo; escala 0,12 cm por año.
+%     Obras: 1752 Hume (Political Discourses); 1758 Quesnay (Tableau); 1776 Smith;
+%     1798 Malthus (Ensayo); 1803 Say (Traité); 1810 Ricardo (High Price of Bullion);
+%     1817 Ricardo (Principles); 1820 Malthus (Principles); 1836 Senior y Mill (método);
+%     1848 Mill (Principles) y Marx y Engels (Manifiesto); 1867 Marx (El capital, I).
+%     Sucesos: 1760-1830 Revolución Industrial (franja, fechas convencionales);
+%     1789 Revolución francesa; 1797 suspensión de la convertibilidad; 1815 Leyes de
+%     Granos; 1821 vuelta al oro; 1844 Ley de Peel; 1846 derogación de las Leyes de
+%     Granos; 1871 revolución marginalista.
+% (b) Influencias: elaboración propia a partir de Landreth y Colander (2006), con
+%     Say, James Mill y Cantillon añadidos. Las flechas, en el sentido de la influencia.
+% Colores: precursores en gris, clásicos en morado, Marx en rojo, sucesos en azul.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    arriba/.style={font=\scriptsize,rotate=45,anchor=south west,inner sep=1pt},
+    abajo/.style={font=\scriptsize,rotate=45,anchor=north east,inner sep=1pt},
+    a/.style={align=center,font=\small},
+    f/.style={->,thick,tceegris}]
+  \newcommand{\obra}[4]{% color, año, separación, texto
+    \node[circle,fill=#1,inner sep=1.3pt] at (#2,0.15) {};
+    \draw[thin,#1] (#2,0.15) -- (#2,{0.2+#3});
+    \node[arriba,text=#1] at (#2,{0.2+#3}) {#4};}
+  \newcommand{\suceso}[3]{% año, separación, texto
+    \node[circle,fill=tceeazul,inner sep=1.3pt] at (#1,-0.15) {};
+    \draw[thin,tceeazul] (#1,-0.15) -- (#1,{-0.2-#2});
+    \node[abajo,text=tceeazul] at (#1,{-0.2-#2}) {#3};}
+  % ---------------- (a) línea del tiempo ----------------
+  \begin{scope}[x=0.12cm,y=1cm,shift={(-1750,0)}]
+    \capa{1}{\node[font=\small\bfseries,anchor=west] at (1745,4.2) {(a) Cronología: obras y sucesos};}
+    \capa{1}{\draw[very thick,->] (1750,0) -- (1877,0);}
+    \capa{1}{\foreach \a in {1750,1775,1800,1825,1850,1875}{
+        \draw (\a,0.07) -- (\a,-0.07);
+        \node[font=\scriptsize,below=5pt] at (\a,0) {\a};}}
+    \capa{2}{\fill[tceeazul,opacity=0.12] (1760,-0.1) rectangle (1830,0.1);}
+    \capa{2}{\fill[tceeazul,opacity=0.12] (1748,3.25) rectangle (1756,3.45);}
+    \capa{2}{\node[font=\scriptsize,text=tceeazul,anchor=west] at (1757,3.35) {Revolución industrial (hacia 1760-1830)};}
+    \capa{2}{\suceso{1789}{0.35}{Revolución francesa}}
+    \capa{2}{\suceso{1797}{0.95}{suspensión de la convertibilidad}}
+    \capa{2}{\suceso{1815}{0.35}{Leyes de Granos}}
+    \capa{2}{\suceso{1821}{0.95}{vuelta al oro}}
+    \capa{2}{\suceso{1844}{0.35}{Ley de \autor{Peel}}}
+    \capa{2}{\suceso{1846}{0.95}{derogación de las Leyes de Granos}}
+    \capa{2}{\suceso{1871}{0.35}{revolución marginalista}}
+    \capa{3}{\obra{tceegris}{1752}{1.0}{\autor{Hume}}}
+    \capa{3}{\obra{tceegris}{1758}{0.3}{\autor{Quesnay}: \emph{Tableau}}}
+    \capa{4}{\obra{tceemorado}{1776}{0.3}{\autor{Smith}: \emph{Riqueza}}}
+    \capa{5}{\obra{tceemorado}{1798}{1.3}{\autor{Malthus}: \emph{Ensayo}}}
+    \capa{5}{\obra{tceemorado}{1803}{0.3}{\autor{Say}: \emph{Traité}}}
+    \capa{6}{\obra{tceemorado}{1810}{1.3}{\autor{Ricardo}: \emph{High Price}}}
+    \capa{6}{\obra{tceemorado}{1817}{0.7}{\autor{Ricardo}: \emph{Principios}}}
+    \capa{6}{\obra{tceemorado}{1820}{0.2}{\autor{Malthus}: \emph{Principios}}}
+    \capa{7}{\obra{tceemorado}{1836}{0.3}{\autor{Senior}; \autor{Mill}: método}}
+    \capa{7}{\obra{tceemorado}{1848}{0.3}{\autor{Mill}: \emph{Principios}; \textcolor{tceerojo}{\autor{Marx} y \autor{Engels}: \emph{Manifiesto}}}}
+    \capa{8}{\obra{tceerojo}{1867}{0.3}{\autor{Marx}: \emph{El capital}, I}}
+  \end{scope}
+  % ---------------- (b) árbol de influencias ----------------
+  \begin{scope}[shift={(7.5,-4.9)}]
+    \capa{9}{\node[font=\small\bfseries,anchor=west] at (-7.9,0.6) {(b) Influencias};}
+    \capa{9}{\node[a] (Pre) at (0,0) {\textbf{Precursores}: \autor{Mun}, \autor{Petty},\\\autor{Cantillon}, \autor{Hume}};}
+    \capa{9}{\node[a] (Q) at (4.6,-1.5) {\autor{Quesnay}, \autor{Turgot}\\(fisiócratas)};}
+    \capa{10}{\node[a,text=tceemorado] (S) at (0,-1.5) {\textbf{Adam \autor{Smith}}\\(1776)};}
+    \capa{10}{\draw[f] (Pre) -- (S);}
+    \capa{10}{\draw[f] (Q) -- (S);}
+    \capa{11}{\node[a] (Say) at (-4.6,-3) {Jean-Baptiste \autor{Say}\\(1803)};}
+    \capa{11}{\node[a,text=tceemorado] (R) at (0,-3) {\textbf{David \autor{Ricardo}}\\(1817)};}
+    \capa{11}{\node[a] (M) at (4.6,-3) {Thomas Robert \autor{Malthus}\\(1798, 1820)};}
+    \capa{11}{\draw[f] (S) -- (R);}
+    \capa{11}{\draw[f] (S) -- (Say);}
+    \capa{11}{\draw[f] (S) -- (M);}
+    \capa{11}{\draw[<->,thick,tceegris] (R) -- (M);}
+    \capa{11}{\draw[f] (Say) -- (R);}
+    \capa{12}{\node[a] (Sen) at (4.6,-4.5) {James \autor{Mill}, \autor{Bentham},\\\autor{Senior} (1836)};}
+    \capa{12}{\node[a,text=tceemorado] (JSM) at (0,-4.5) {\textbf{John Stuart \autor{Mill}}\\(1848)};}
+    \capa{12}{\draw[f] (R) -- (JSM);}
+    \capa{12}{\draw[f] (Sen) -- (JSM);}
+    \capa{13}{\node[a,text=tceerojo] (Mx) at (0,-6.2) {\textbf{Karl \autor{Marx}}\\(1867): la crítica};}
+    \capa{13}{\draw[f,tceerojo] (R.south west) to[bend right=35] (Mx.north west);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

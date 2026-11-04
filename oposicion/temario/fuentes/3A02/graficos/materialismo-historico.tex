@@ -1,0 +1,37 @@
+% Materialismo histórico según el prólogo de Marx (1859): las fuerzas productivas
+% (medios de producción y fuerza de trabajo) y las relaciones de producción
+% (la propiedad de los medios de producción) forman el modo de producción; las
+% relaciones de producción son la estructura económica, la base sobre la que se
+% levanta la superestructura jurídica y política, a la que corresponden formas
+% de conciencia social. La superestructura, a su vez, legitima y reproduce las
+% relaciones de producción. Cuando las fuerzas productivas chocan con las
+% relaciones de producción, se abre una época de revolución social. Modos de
+% producción del prólogo: asiático, antiguo, feudal y burgués moderno.
+% Esquema propio a partir de Marx (1859, prólogo) y Marx y Engels (1848, cap. I).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=#1,very thick,rounded corners=2pt,fill=#1!8,align=center,
+      text width=3.6cm,minimum height=2cm,font=\small},
+    caja/.default=tceemorado]
+  \capa{1}{\node[caja=tceeazul] (FP) at (0,0) {\textbf{Fuerzas productivas}\\medios de producción\\y fuerza de trabajo};}
+  \capa{2}{\node[caja=tceeazul,text width=4.3cm] (RP) at (6.5,0) {\textbf{Relaciones de producción}\\(estructura económica)\\propiedad de los\\medios de producción};}
+  \capa{3}{\draw[decorate,decoration={brace,mirror,amplitude=6pt},thick]
+      ([yshift=-3pt]FP.south west) -- ([yshift=-3pt]RP.south east|-FP.south west)
+      node[midway,below=8pt,font=\small] {\textbf{modo de producción}};}
+  \capa{4}{\node[caja=tceemorado,text width=9cm] (SE) at (3.45,2.7)
+      {\textbf{Superestructura}: el Estado y el derecho\\y las formas de conciencia social (religión, filosofía, ideología)};}
+  \capa{4}{\draw[->,very thick,tceemorado] ([xshift=-6mm]RP.north) -- ([xshift=-6mm]RP.north|-SE.south)
+      node[midway,left,font=\footnotesize,text=black] {determina};}
+  \capa{5}{\draw[->,thick,dashed,tceemorado] ([xshift=6mm]RP.north|-SE.south) -- ([xshift=6mm]RP.north)
+      node[midway,right,font=\footnotesize,text=black] {legitima};}
+  \capa{6}{\draw[<->,very thick,tceerojo] (FP.east) -- (RP.west)
+      node[midway,above=2pt,font=\footnotesize,text=tceerojo] {contradicción};}
+  \capa{7}{\node[font=\small,align=center] (M) at (3.45,-2.4)
+      {asiático $\to$ antiguo $\to$ feudal $\to$ \textbf{burgués moderno} $\to$ (socialismo)};}
+  \capa{7}{\node[font=\footnotesize,align=center,text=tceerojo] at (3.45,-2.95)
+      {cada paso, por una revolución social};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,51 @@
+% Inglaterra, 1700-1869: población y producción agraria, medias por décadas,
+% índice 1700-1709 = 100 (fig:malthus-datos, 3.A.2, II.4). Cada punto es la media
+% de los 10 años de la década y va en el centro de la década (1700-1709 -> 1704,5).
+% Población de Inglaterra (Wrigley y otros, 1997) y producción agraria total
+% (Broadberry y otros, 2015), en Bank of England, «A millennium of macroeconomic
+% data for the UK», v3.1 (2017), hojas A2 y A3. Datos: ../datos/inglaterra-poblacion-agricultura-1700-1869.csv
+% Lectura: entre 1700-1709 y 1850-1859 la población se multiplica por 3,3 (332)
+% y la producción agraria por 3,1 (308); la producción por habitante sube hasta
+% las décadas de 1760-1790 (≈ 125) y luego baja (88 en 1860-1869).
+% Capas: ejes, rejilla y base 100 -> 1798 -> líneas (con sus puntos) -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=11cm,height=7cm,xmin=1700,xmax=1870,ymin=50,ymax=400,
+    axis lines=left,clip=false,
+    xtick={1700,1725,...,1850},minor xtick={1710,1720,...,1860},
+    xticklabel style={/pgf/number format/.cd,1000 sep={}},
+    ytick={50,100,...,400},
+    ylabel={índice, 1700-1709 = 100},
+    ymajorgrids,grid style={tceegris!25},
+    table/col sep=comma,
+    dicapas]
+  % 1: ejes, rejilla y la base 100
+  \capa{1}{\dicraya{(1700,100) (1870,100)}}
+  % 2: 1798, el año del Ensayo de Malthus
+  \capa{2}{\dicraya[dicumbral]{(1798,50) (1798,400)}}
+  \capa{2}{\dicrotulo[anchor=north east,font=\footnotesize,text=tceegris]{(1797,395)}{\emph{Ensayo} (1798)}}
+  % 3: población
+  \capa{3}{\addplot[curva1,mark=*,mark size=1.6pt,mark options={fill=white,line width=0.8pt}]
+    table[x expr=\thisrow{decada}+4.5,y=poblacion_i1700s] {../datos/inglaterra-poblacion-agricultura-1700-1869.csv};}
+  % 4: producción agraria total
+  \capa{4}{\addplot[curva3,mark=*,mark size=1.6pt,mark options={fill=white,line width=0.8pt}]
+    table[x expr=\thisrow{decada}+4.5,y=produccion_agraria_i1700s] {../datos/inglaterra-poblacion-agricultura-1700-1869.csv};}
+  % 5: producción agraria por habitante (cociente de las 2), en línea fina
+  \capa{5}{\addplot[thick,tceedorado,mark=*,mark size=1.2pt,mark options={fill=white,line width=0.6pt}]
+    table[x expr=\thisrow{decada}+4.5,y=produccion_agraria_por_habitante_i1700s] {../datos/inglaterra-poblacion-agricultura-1700-1869.csv};}
+  % 6: rótulos al final de cada serie (sin fondo)
+  \capa{6}{\dicrotulo[anchor=west,text=tceemorado]{(1866,377)}{población}}
+  \capa{6}{\dicrotulo[anchor=west,text=tceeverde]{(1866,332)}{producción agraria}}
+  \capa{6}{\dicrotulo[anchor=west,text=tceedorado]{(1866,80)}{producción por habitante}}
+  % 7: valores de 1850-1859, los del texto (×3,3 y ×3,1)
+  \capa{7}{\dicraya[dicumbral]{(1854.5,50) (1854.5,400)}}
+  \capa{7}{\dicrotulo[anchor=south,font=\footnotesize,text=tceegris]{(1854.5,400)}{1850-1859}}
+  \capa{7}{\dicrotulo[anchor=south east,font=\footnotesize\bfseries,text=tceemorado]{(1853.5,334)}{332}}
+  \capa{7}{\dicrotulo[anchor=north west,font=\footnotesize\bfseries,text=tceeverde]{(1855.5,306)}{308}}
+  \capa{7}{\dicrotulo[anchor=north,font=\footnotesize\bfseries,text=tceedorado]{(1854.5,89)}{93}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

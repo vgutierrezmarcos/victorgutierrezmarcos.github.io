@@ -1,0 +1,28 @@
+% Principio de la población de Malthus (1798, cap. I): la población crece en
+% progresión geométrica (se duplica cada 25 años: 1, 2, 4, 8, 16, 32) y los
+% alimentos en progresión aritmética (1, 2, 3, 4, 5, 6). Índices con el periodo 0 = 1.
+% La brecha la cierran los frenos (positivos y preventivos). Ilustrativo.
+% Elaboración propia a partir de Malthus (1798, caps. I y II).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,xscale=1.2,yscale=0.16]
+  \capa{1}{\ejes{años}{índice}{6.6}{36}}
+  \capa{1}{\foreach \t/\a in {1/25,2/50,3/75,4/100,5/125}{
+      \draw (\t,0) -- (\t,-0.6) node[below] {\a};}}
+  \capa{1}{\foreach \y in {8,16,24,32}{
+      \draw (0,\y) -- (-0.08,\y) node[left] {\y};}}
+  \capa{2}{\draw[curva1] plot[smooth,domain=0:5.15,samples=40] (\x,{2^\x})
+    node[etiqueta,right] {población: 1, 2, 4, 8, 16, 32};}
+  \capa{2}{\foreach \t in {0,...,5}{\node[punto,fill=tceemorado] at (\t,{2^\t}) {};}}
+  \capa{3}{\draw[curva4] (0,1) -- (5.3,6.3)
+    node[etiqueta,right] {alimentos: 1, 2, 3, 4, 5, 6};}
+  \capa{3}{\foreach \t in {0,...,5}{\node[punto,fill=tceedorado] at (\t,{1+\t}) {};}}
+  \capa{4}{\begin{scope}[on background layer]
+      \fill[area] plot[smooth,domain=1:5,samples=40] (\x,{2^\x}) -- (5,6) -- (1,2) -- cycle;
+    \end{scope}}
+  \capa{4}{\node[etiqueta,align=center] (B) at (1.6,18) {brecha que cierran\\los frenos};}
+  \capa{4}{\draw[->,thin,black] (B.south east) .. controls (3.4,14) .. (4.2,10);}
+\end{tikzpicture}
+\end{document}
