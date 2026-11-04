@@ -1,0 +1,65 @@
+% El residuo de Solow y el ciclo en EE. UU., sector empresarial, trimestral,
+% 1947T2-2026T2 (3.A.6, III.1): componente cíclico (filtro HP, lambda = 1600,
+% % de desviación) de la producción, del residuo de Solow sin corregir y de la
+% PTF corregida por la utilización (Basu, Fernald y Kimball).
+% Datos: ../datos/residuo-solow-eeuu.csv (serie de Fernald, Fed de San
+% Francisco, versión del 1/10/2026; cálculo propio y comprobación en su
+% cabecera). corr(residuo, producción) = 0,82; corregida: -0,15.
+% Recesiones del NBER (pico a fondo, trimestres): 1948T4-1949T4, 1953T2-1954T2,
+% 1957T3-1958T2, 1960T2-1961T1, 1969T4-1970T4, 1973T4-1975T1, 1980T1-1980T3,
+% 1981T3-1982T4, 1990T3-1991T1, 2001T1-2001T4, 2007T4-2009T2, 2019T4-2020T2.
+% Eje x: 1947,25 + \coordindex/4 (la tabla empieza en 1947T2).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\rsdatos}{../datos/residuo-solow-eeuu.csv}
+% \recesion{año y trimestre del pico}{del fondo}, en años decimales
+\newcommand{\recesion}[2]{\dicsombra[fill=dicreferencia, fill opacity=0.2]{#1}{-12}{#2}{8}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=14cm, height=6.4cm, scale only axis,
+      xmin=1947, xmax=2027, ymin=-12, ymax=8,
+      xtick={1950,1960,...,2020}, ytick={-12,-8,...,8},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize},
+      ylabel={desviación de la tendencia (\%)}, label style={font=\small},
+      legend style={at={(0.01,0.99)}, anchor=north west, draw=none, font=\footnotesize},
+      legend columns=4, legend cell align=left,
+      dicapas,
+    ]
+    % 1: recesiones del NBER
+    \capa{1}{\recesion{1948.75}{1949.75}}
+    \capa{1}{\recesion{1953.25}{1954.25}}
+    \capa{1}{\recesion{1957.5}{1958.25}}
+    \capa{1}{\recesion{1960.25}{1961}}
+    \capa{1}{\recesion{1969.75}{1970.75}}
+    \capa{1}{\recesion{1973.75}{1975}}
+    \capa{1}{\recesion{1980}{1980.5}}
+    \capa{1}{\recesion{1981.5}{1982.75}}
+    \capa{1}{\recesion{1990.5}{1991}}
+    \capa{1}{\recesion{2001}{2001.75}}
+    \capa{1}{\recesion{2007.75}{2009.25}}
+    \capa{1}{\recesion{2019.75}{2020.25}}
+    % 2: ejes (los dibuja pgfplots) y la línea del 0
+    \capa{2}{\dicraya{(1947,0) (2027,0)}}
+    % 3: ciclo de la producción
+    \capa{3}{\addplot[diclinea=tceemorado, line width=1.4pt] table[col sep=comma, comment chars={\#},
+        x expr=1947.25+\coordindex/4, y=ciclo_produccion] {\rsdatos};
+      \addlegendentry{producción}}
+    % 4: ciclo del residuo de Solow
+    \capa{4}{\addplot[diclinea=tceeazul, thick] table[col sep=comma, comment chars={\#},
+        x expr=1947.25+\coordindex/4, y=ciclo_ptf] {\rsdatos};
+      \addlegendentry{residuo de Solow}}
+    % 5: PTF corregida por la utilización y rótulo de las correlaciones
+    \capa{5}{\addplot[thin, tceegris] table[col sep=comma, comment chars={\#},
+        x expr=1947.25+\coordindex/4, y=ciclo_ptf_util] {\rsdatos};
+      \addlegendentry{PTF corregida por la utilización}}
+    \capa{5}{\addlegendimage{area legend, fill=dicreferencia!20, draw=dicreferencia!20}
+      \addlegendentry{recesiones (NBER)}}
+    \capa{5}{\dicrotulo[anchor=south west, font=\footnotesize, align=left]{(1948,-11.6)}
+        {corr(residuo, producción) $=0{,}82$\\corregida por la utilización: $-0{,}15$}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

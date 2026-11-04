@@ -1,7 +1,7 @@
 # Hechos estilizados del ciclo económico
 
 - **Área:** macro-cerrada · **Tema de referencia:** **3.A.42** («0.2.2. Hechos estilizados de los ciclos económicos» del Word vigente) — es el único que los trata.
-- **Temas que lo usan:** 3.A.42 (desarrollo), 3.A.33 y 3.A.34 (mención: consumo e inversión procíclicos; los 2 hechos, 31/10/2026: el 3.A.34 en la introducción con la desviación típica 1996-2019, FBCF 6,6 frente a PIB 2,3, y 2009-T2, FBCF −20,3 % frente a PIB −4,3 %, INE tabla 67824), 1D01 (resumen: tabla del anexo D, `tab:hechos-ciclo`, y lectura del cuadro en II.3)
+- **Temas que lo usan:** 3.A.42 (desarrollo), 3.A.33 y 3.A.34 (mención: consumo e inversión procíclicos; los 2 hechos, 31/10/2026: el 3.A.34 en la introducción con la desviación típica 1996-2019, FBCF 6,6 frente a PIB 2,3, y 2009-T2, FBCF −20,3 % frente a PIB −4,3 %, INE tabla 67824), 1D01 (resumen: tabla del anexo D, `tab:hechos-ciclo`, y lectura del cuadro en II.3) También 3.A.6 (mención; hecho, 4/11/2026: III.3 c), `tab:calibracion` con los datos de 1947-1991 y el modelo estándar de Hansen y Wright (1992) y una columna propia de 1984-2019 con FRED, filtro HP; corr(horas, productividad) −0,60 en 1984-2019; recesión media de un año con la definición de Rebelo, 2005; `\vertema{3.A.42}`).
 - **Manuales de referencia:** Burns y Mitchell (1946); Kydland y Prescott (1990); Cooley y Prescott (1995); Stock y Watson (1999), «Business Cycle Fluctuations in US Macroeconomic Time Series», *Handbook of Macroeconomics*; Blinder y Maccini (1991) (existencias); Kaminsky, Reinhart y Végh (2004) (política fiscal procíclica en emergentes); Estrella y Mishkin (1998) (curva de tipos).
 
 ## Presentación de referencia
@@ -35,6 +35,7 @@ Cada variable se caracteriza por su **dirección** (procíclica, contracíclica,
 | 3.A.42 | Teorías del ciclo | Desarrollo | La tabla con persistencia; lo que cada teoría (RBC, NEK) debe explicar | — |
 | 3.A.33, 3.A.34 | Consumo, inversión | Mención (los 2 hechos, 31/10/2026; el 3.A.33 en III.3 a) con datos de España, 1996-2026, y `\vertema{3.A.42}`; el 3.A.34 en la introducción, con los datos de la CNTR) | Consumo menos volátil que el PIB; duraderos mucho más (desviación típica de la tasa interanual 10,6 frente a 3,9 del PIB); inversión varias veces más | La tabla |
 | 1D01 | Dictamen de coyuntura | Resumen | Tabla sin persistencia, con existencias, vivienda, paro, curva de tipos y bolsa; lectura del cuadernillo | La teoría |
+| 3.A.6 | NMC: ciclo real | mención (hecho, 4/11/2026) | `tab:calibracion` (σ_Y, σ_C/σ_Y, σ_I/σ_Y, σ_L/σ_Y, σ_L/σ_{Y/L} y corr(horas, productividad)) con 1984-2019 | Los hechos estilizados en general |
 
 ## Divergencias encontradas en el temario actual
 - **Volatilidad del empleo** (Víctor, 24/10/2026, decidido para todo el temario): **similar o algo menor** que la del PIB (Stock y Watson, 1999; Cooley y Prescott, 1995), como la 1D01. El Word del 3.A.42 dice «el empleo es más volátil que el producto» (y las horas por trabajador «mucho menos volátiles»): se corrige al revisarlo (`pendientes-coherencia.md`, 1D01).

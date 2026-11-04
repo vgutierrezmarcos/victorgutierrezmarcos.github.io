@@ -1,45 +1,50 @@
 # Modelo de información imperfecta de Lucas (1972, 1973): islas de Phelps y curva de oferta de Lucas
 
-- **Área:** pensamiento · **Tema de referencia:** 3.A.6 (La nueva macroeconomía clásica) — es el modelo fundacional de la NMC y combina expectativas racionales con neutralidad del dinero anticipado.
-- **Temas que lo usan:** 3.A.6 (desarrollo), 3.A.37 (resumen: neutralidad del dinero anticipado; hoy desarrollo), 3.A.41 (mención; hoy desarrollo), 3.A.42 (resumen: ciclos nominales de equilibrio; hoy mención). También 3.A.5 (mención; hecho, 3/11/2026: II.2.2 y III.2: con las racionales, Lucas (1972) llega a una conclusión aún más dura contra la estabilización, `\vertema{3.A.6}`). También 3.A.7 (mención; hecho, 4/11/2026: contextualización y I.3, en la NMC solo la política no anticipada mueve la producción, Lucas, 1972; en la NEK, también la anticipada).
-- **Manuales de referencia:** Lucas (1972), *JET* 4; Lucas (1973), *AER* 63; Phelps (1970); Romer (2019), cap. 6.9; Blanchard y Fischer (1989), cap. 7; Heijdra (2017), cap. 3; De Vroey (2016), cap. 9.
-- **Decisión D036 (13/10/2026):** ¿Cómo se escriben el coeficiente de extracción de señal y la respuesta de la producción en el modelo de islas de Lucas? ω = σ²_z/(σ²_z+σ²_p) y ψ ≡ ω·ε_S en y_t = y^n_t + ψ(p_t − p^e_t)
+- **Área:** pensamiento · **Tema de referencia:** **3.A.6** (La nueva macroeconomía clásica; revisado el 4/11/2026: II.2.1 `sec:oferta-lucas` y II.2.2 `sec:inefectividad`, con a)-e), y el anexo A `anexo:lucas` paso a paso) — es el modelo fundacional de la NMC y combina expectativas racionales con neutralidad del dinero anticipado.
+- **Temas que lo usan:** 3.A.6 (desarrollo; hecho, 4/11/2026), 3.A.37 (resumen: neutralidad del dinero anticipado; hoy desarrollo), 3.A.41 (mención; hoy desarrollo), 3.A.42 (resumen: ciclos nominales de equilibrio; hoy mención). También 3.A.5 (mención; hecho, 3/11/2026: II.2.2 y III.2: con las racionales, Lucas (1972) llega a una conclusión aún más dura contra la estabilización, `\vertema{3.A.6}`); 3.A.7 (mención; hecho, 4/11/2026: contextualización y I.3, en la NMC solo la política no anticipada mueve la producción, Lucas, 1972; en la NEK, también la anticipada); 3.A.28 (mención; hecho, 31/10/2026: II.3, la curva de oferta de Lucas).
+- **Manuales de referencia:** Lucas (1972), «Expectations and **the** Neutrality of Money», *JET* 4 (`Lucas1972Expectations`); Lucas (1973), *AER* 63 (`Lucas1973Some`); Phelps (1970) (`Phelps1970Microeconomic`); Ball, Mankiw y Romer (1988), *BPEA* (`BallMankiwRomer1988`); Romer (2019), cap. 6; Attfield, Demery y Duck (1991); Blanchard y Fischer (1989), cap. 7; Heijdra (2017), cap. 5; De Vroey (2016), cap. 9.
+- **Decisión D036 (13/10/2026):** ω = σ²_z/(σ²_z+σ²_p) y ψ ≡ ω·ε_S en la curva de oferta de Lucas. En el modelo de islas, **y^n sin subíndice** (constante), como U^n; y^n_t solo donde varía (NEK).
 
-## Presentación de referencia
+## Presentación de referencia (3.A.6, II.2.1-II.2.2 y anexo A)
 
-**Pregunta:** ¿por qué el dinero puede afectar a la producción si los agentes son racionales y los mercados se vacían?
+**Pregunta:** ¿por qué el dinero mueve la producción a corto plazo si los agentes son racionales y los mercados se vacían? Respuesta: porque los productores confunden una subida de su precio *relativo* con una del nivel *general*. Da fundamento a la curva aumentada de Friedman y Phelps (`\vertema{3.A.5}`) sin errores sistemáticos. Versión simplificada de los manuales (el original es un modelo de generaciones solapadas, `\vertema{3.A.29}`, en nota).
 
-**Supuestos:** productores en mercados separados («islas») que observan su precio p_i pero no el nivel general p; p_i = p + z_i, con z_i shock real (relativo) de media nula y varianza σ²_z, y p con varianza σ²_p; expectativas racionales; oferta de cada isla creciente en el precio relativo percibido, con elasticidad ε_S. Variables en logaritmos.
+**Supuestos:** islas de Phelps; cada productor ve $p_{i,t}$ pero no $p_t$; variables en logaritmos; **2 perturbaciones normales e independientes**: $p_{i,t}=p_t+z_{i,t}$, con $z_{i,t}$ real de media nula y varianza $\sigma^2_z$ (ante ella lo óptimo es producir más) y $p_t$ con media $p^e_t\equiv\mathbb{E}_{t-1}[p_t]$ y varianza $\sigma^2_p$ (la mueve el dinero); oferta de la isla $y_{i,t}=y^n+\varepsilon_S\,\mathbb{E}[z_{i,t}\mid p_{i,t}]$, con ε_S > 0 que viene de la oferta de trabajo intertemporal (`lucas-rapping`); **demanda agregada cuantitativa** con la velocidad normalizada, $y_t=m_t-p_t$ (`\vertema{3.A.35}`); expectativas racionales (`eq:her`, ficha `expectativas-racionales`).
 
-**Ecuaciones:** extracción de señal
+**Ecuaciones:** extracción de señales (`eq:extraccion`)
 
-$$E[z_i \mid p_i] = \omega\,(p_i - E[p]),\qquad \omega = \frac{\sigma^2_z}{\sigma^2_z + \sigma^2_p}$$
+$$\mathbb{E}[z_{i,t} \mid p_{i,t}] = \omega\,(p_{i,t} - p^e_t),\qquad \omega = \frac{\sigma^2_z}{\sigma^2_z + \sigma^2_p}\in[0,1]$$
 
-y la **curva de oferta de Lucas**, agregando islas:
+(ω es la parte de la varianza del precio de la isla que se debe a las perturbaciones reales, un **coeficiente de proyección**, $\mathrm{Cov}/\mathrm{Var}$; **no es una probabilidad**). Agregando, la **curva de oferta de Lucas** (`\funcionclave` `eq:oferta-lucas`):
 
-$$y_t = y^n_t + \psi\,(p_t - p^e_t),\qquad \psi = \omega\,\varepsilon_S,\quad p^e_t \equiv E_{t-1}[p_t]$$
+$$y_t = y^n + \psi\,(p_t - p^e_t),\qquad \psi = \omega\,\varepsilon_S,\quad \omega=\frac{\sigma^2_z}{\sigma^2_z+\sigma^2_p}$$
 
-**Resultados:** solo la parte **no anticipada** de la política monetaria afecta a la producción; la pendiente ψ cae cuando sube la volatilidad nominal σ²_p (Lucas 1973: evidencia internacional, países con inflación volátil tienen curvas de oferta más verticales; Ball, Mankiw y Romer 1988 lo contrastan frente a la NEK). Base de la proposición de inefectividad (`sargent-wallace-inefectividad`).
+No hay efecto real si σ²_z = 0, ε_S = 0 o p_t = p^e_t. **Equilibrio** con la demanda (`\funcionclave` `eq:produccion-lucas` y `eq:precios-lucas`):
 
-**Gráfico de referencia:** no imprescindible; si se usa, plano (y, p) con la oferta de Lucas creciente que corta la vertical y^n en p = p^e y se desplaza con p^e.
+$$y_t = y^n + \frac{\psi}{1+\psi}\left(m_t-\mathbb{E}_{t-1}[m_t]\right),\qquad p_t = \mathbb{E}_{t-1}[m_t]-y^n+\frac{1}{1+\psi}\left(m_t-\mathbb{E}_{t-1}[m_t]\right)$$
+
+La parte prevista del dinero va entera a los precios; la sorpresa se reparte. La varianza de los precios es endógena, $\sigma^2_p=\sigma^2_\varepsilon/(1+\psi)^2$: cuanto más errático el dinero, menor ω y menor ψ.
+
+**Implicaciones:** la pendiente depende de la política (semilla de la crítica, `critica-lucas`); con la ley de Okun, la oferta de Lucas es la **curva de Phillips con expectativas racionales**, $U_t=U^n-\alpha(\pi_t-\pi^e_t)$ (`\vertema{3.A.28}`; α = 1/a, `notacion.md` § 8), casi vertical con inflación errática (`\vertema{3.A.41}`); los efectos duran un periodo (sin persistencia, salvo capital: Lucas, 1975). Base de la proposición de inefectividad (`sargent-wallace-inefectividad`). **Evidencia** (en la crítica de Lucas del 3.A.6, A06-09): Lucas (1973), 18 países, 1952-1967: donde la demanda nominal es más **volátil** (importa la varianza, no el nivel de la inflación), su efecto real es menor; Ball, Mankiw y Romer (1988), 43 países, 1948-1986: −1,639 con la volatilidad sola, pero con la inflación media la volatilidad deja de ser significativa (lo que predice la NEK, `\vertema{3.A.7}`). **Valoración**: el vaciado continuo deja fuera el paro involuntario; la información imperfecta es poco creíble con el IPC y los agregados mensuales; necesita una oferta muy elástica; no genera persistencia.
+
+**Gráfico de referencia:** `oposicion/temario/fuentes/3A06/graficos/oferta-lucas.tex` (antes «no imprescindible»; ahora es **el gráfico de la inefectividad** en el cante, CC5): plano (y, p), vertical en y^n, oferta de Lucas con pendiente 1/ψ que la corta en p = p^e, demanda y = m − p; por capas: expansión **no anticipada** (solo se desplaza la demanda: suben y y p) y **anticipada** (se desplazan la demanda y la oferta, porque sube p^e: solo sube p). En la pizarra, `eq:oferta-lucas` recuadrada y conservada hasta el final del bloque II.
 
 ## Cómo se adapta en cada tema
 
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.6 | La NMC | Desarrollo | Supuestos, extracción de señal, curva de oferta, resultados y evidencia de Lucas (1973) | — |
-| 3.A.37 | Transmisión monetaria | Resumen | Solo la parte no anticipada transmite; contraste con la NEK (rigideces) | La extracción de señal |
+| 3.A.6 | La NMC | desarrollo (hecho, 4/11/2026) | Supuestos, extracción de señales, curva de oferta, demanda y equilibrio, gráfico `oferta-lucas`, implicaciones y valoración; la evidencia de Lucas (1973) y BMR (1988), en la crítica de Lucas; la derivación en el anexo A | — |
+| 3.A.37 | Transmisión monetaria | Resumen | Solo la parte no anticipada transmite; contraste con la NEK (rigideces); `eq:produccion-lucas` en una línea con `\vertema{3.A.6}` | La extracción de señales |
 | 3.A.41 | Inflación | Mención | Inflación volátil → menor efecto real de la política; coste informativo de la inflación (confusión de precios relativos) | El modelo |
-| 3.A.42 | Ciclos nominales y reales | Resumen | Ciclo nominal de equilibrio; por qué cayó (información sobre p disponible pronto; persistencia) | La derivación |
+| 3.A.42 | Ciclos nominales y reales | Resumen | Ciclo nominal de equilibrio (Lucas, 1975 y 1977); por qué cayó (información sobre p disponible pronto; persistencia; Sims, 1980) | La derivación |
 | 3.A.5 | Síntesis y monetarismo | mención (hecho, 3/11/2026) | La puerta de la nueva macroeconomía clásica tras la curva aumentada (Lucas, 1972), con `\vertema{3.A.6}` | El modelo |
 | 3.A.7 | NEK | mención (hecho, 4/11/2026) | Solo lo no anticipado mueve la producción en la NMC (Lucas, 1972); en la NEK, perturbaciones anticipadas o no, porque los precios se fijaron antes; `\vertema{3.A.6}` | El modelo |
+| 3.A.28 | Paro y Phillips | mención (hecho, 31/10/2026) | La curva de oferta de Lucas (1972) como Phillips con expectativas racionales | El modelo |
 
 ## Divergencias encontradas en el temario actual
 
-- **θ** como coeficiente de extracción de señal (3.A.6, 3.A.37) choca con la CRRA θ que usan los mismos temas (RBC en 3.A.6, IS dinámica en 3.A.37): canon **ω** = σ²_z/(σ²_z+σ²_p).
-- **β** como respuesta de la producción (3.A.6, 3.A.37, 3.A.41) choca con el factor de descuento: canon **ψ ≡ ω·ε_S** en y_t = y^n_t + ψ(p_t − p^e_t).
-- **y_TNP** (3.A.6, 3.A.37, 3.A.41) para la producción natural: canon **y^n_t**.
-- **3.A.6** escribe ω con varianzas «σ²_{p_i}» y «σ²_p» (varianza del precio de la isla y del nivel general), mientras que el resultado estándar usa la varianza del shock relativo σ²_z en el numerador: aclarar.
-- **Desarrollo en tres temas** (3.A.6, 3.A.37, 3.A.41) con la misma ecuación: propuesta, desarrollo solo en 3.A.6.
+- **3.A.6 (Word)**: θ como «probabilidad de que el shock sea real», con σ²_{p_i} en el numerador; β como respuesta de la producción; y_TNP; E[·]; demanda en una línea y equilibrio vacío; «economía habituada a niveles altos de inflación»; BMR «obteniendo igualmente» el resultado de Lucas. **Resuelto** (4/11/2026): ω, ψ, y^n, 𝔼, `eq:produccion-lucas`, la varianza y BMR bien contados.
+- **3.A.37 y 3.A.41 (sin revisar)**: repiten el modelo con θ, β y y_TNP (el Word del 3.A.41 casi literal): al revisarlos, ω, ψ y y^n, resumen o mención con `\vertema{3.A.6}`.
+- **Esta ficha** escribía E[·] y E_{t−1} y no tenía la demanda ni el equilibrio: **corregida** (CC5 del 3.A.6).
 
 Autor: Víctor Gutiérrez Marcos

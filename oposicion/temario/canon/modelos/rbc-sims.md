@@ -1,7 +1,7 @@
 # Modelo de ciclo real con gasto público (Baxter-King, 1993; Sims)
 
 - **Área:** sector público · **Tema de referencia:** **3.A.38** (política fiscal: efectos sobre el crecimiento y el ahorro), donde se desarrolla el modelo completo; el RBC base está en 3.A.42. 4.B.4 lo resume (efecto riqueza, multiplicador menor que 1, contraste con el NEK) con lo imprescindible para cantarse sin el 3.A.38.
-- **Temas que lo usan:** 3.A.38 (desarrollo; referencia), 4.B.4 (desarrollo → resumen), 3.A.42 (RBC base)
+- **Temas que lo usan:** 3.A.38 (desarrollo; referencia), 4.B.4 (desarrollo → resumen), 3.A.42 (RBC base) También 3.A.6 (mención; hecho, 4/11/2026: anexo D, el gasto público como perturbación real, Christiano y Eichenbaum, 1992, y Baxter y King, 1993, y el efecto riqueza del gasto en el anexo C; `\vertema{3.A.38}`).
 - **Manuales de referencia:** Baxter y King (1993), «Fiscal policy in general equilibrium», *AER*; Aiyagari, Christiano y Eichenbaum (1992); Romer, cap. 5; notas de Eric Sims (Notre Dame) sobre el RBC con gasto público [comprobar la cita «Sims 2015»].
 - **Decisión D088 (13/10/2026):** ¿Cuál es el tema de referencia del RBC con política fiscal? 3.A.38 (elegida por Víctor; la recomendada era «4.B.4, como en el mapa»)
 
@@ -23,6 +23,7 @@ $$G_t+r_{t-1}D_{t-1}=T_t+(D_t-D_{t-1}).$$
 |---|---|---|---|---|
 | 4.B.4 | Presupuesto compensador | Resumen | Resultado: efecto riqueza y multiplicador < 1; contraste con el NEK | Ecuaciones completas |
 | 3.A.38 | Política fiscal y crecimiento/ahorro | Desarrollo (referencia) | Modelo completo | — |
+| 3.A.6 | NMC: ciclo real | mención (hecho, 4/11/2026) | El gasto público como perturbación real que mejora el ajuste | El modelo con sector público |
 
 ## Divergencias encontradas en el temario actual
 - Restricción del gobierno con índices distintos en el RBC ($G_t+r_{t-1}D_t\le T_t+D_{t+1}-D_t$) y en el NEK ($G_t+r_{t-1}D_{t-1}\le T_t+D_t-D_{t-1}$) del mismo 4.B.4. Propuesta: la segunda ($D_t$ = deuda al final de $t$), como 3.A.39.

@@ -1,0 +1,53 @@
+% Funciones impulso-respuesta del modelo de ciclo real a un shock de
+% productividad de una desviación típica (eps^A_0 = sigma_eps = 0,007), en %
+% de desviación del estado estacionario, t = 0 ... 40 trimestres (3.A.6, III.3).
+% Simulación propia: irf-rbc.py (en esta carpeta) escribe ../datos/irf-rbc.csv
+% con la calibración de su cabecera (alfa = 1/3, beta = 0,99, delta = 0,025,
+% phi = 1, L = 1/3, rho_A = 0,95, sigma_eps = 0,007; Prescott, 1986; Hansen y
+% Wright, 1992). Continua: rho_A = 0,95; discontinua: rho_A = 0 (ruido blanco).
+% Impacto con rho_A = 0,95: Y 0,92 %, C 0,27 %, I 2,99 %; con rho_A = 0: Y 1,02 %,
+% C 0,06 %, I 4,10 %, y Y vuelve a 0,02 % al trimestre siguiente.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepgfplotslibrary{groupplots}
+\newcommand{\irfdatos}{../datos/irf-rbc.csv}
+\pgfplotsset{
+  irf/.style={width=4cm, height=3.6cm, scale only axis,
+    xmin=0, xmax=40, xtick={0,10,20,30,40},
+    axis lines=left, tick align=outside, clip=false,
+    ticklabel style={font=\footnotesize},
+    /pgf/number format/use comma,
+    yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+    title style={font=\small, at={(rel axis cs:0.5,1)}, anchor=south, yshift=3pt, text height=1.8ex, text depth=0.5ex},
+    dicapas},
+}
+% \irfpar{columna}{color}: las 2 sendas, rho_A = 0,95 (continua) y rho_A = 0 (discontinua)
+\newcommand{\irfalta}[2]{\addplot[diclinea=#2, line width=1.3pt] table[col sep=comma, comment chars={\#}, x=t, y=#1_95] {\irfdatos};}
+\newcommand{\irfbaja}[2]{\addplot[diclinea=#2, dashed] table[col sep=comma, comment chars={\#}, x=t, y=#1_0] {\irfdatos};}
+\newcommand{\irfcero}{\dicraya{(0,0) (40,0)}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{groupplot}[group style={group size=3 by 1, horizontal sep=1.5cm},
+      irf, xlabel={trimestres}, label style={font=\footnotesize}]
+    % 1: ejes de los 3 paneles y línea del 0; 2: producción
+    \nextgroupplot[title={producción $Y$}, ymin=-0.2, ymax=1.2,
+        ylabel={\% de desviación del estado estacionario},
+        legend style={at={(0.98,0.98)}, anchor=north east, draw=none, font=\scriptsize},
+        legend cell align=left]
+      \capa{1}{\irfcero}
+      \capa{2}{\irfalta{y}{tceemorado}\addlegendentry{$\rho_A=0{,}95$}}
+      \capa{2}{\irfbaja{y}{tceemorado}\addlegendentry{$\rho_A=0$}}
+    % 3: consumo
+    \nextgroupplot[title={consumo $C$}, ymin=-0.2, ymax=1.2]
+      \capa{1}{\irfcero}
+      \capa{3}{\irfalta{c}{tceeazul}}
+      \capa{3}{\irfbaja{c}{tceeazul}}
+    % 4: inversión (otra escala: responde mucho más)
+    \nextgroupplot[title={inversión $I$}, ymin=-0.7, ymax=4.2]
+      \capa{1}{\irfcero}
+      \capa{4}{\irfalta{i}{tceeverde}}
+      \capa{4}{\irfbaja{i}{tceeverde}}
+  \end{groupplot}
+\end{tikzpicture}
+\end{document}

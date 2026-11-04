@@ -1,0 +1,1153 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A06.bib}
+\tcetema[La nueva macroeconomía clásica]{3.A.6}{La nueva macroeconomía clásica. La hipótesis de las expectativas racionales; la crítica de Lucas; el surgimiento de los modelos dinámicos estocásticos de equilibrio general.}
+\tcefecha{04/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «A otro perro con ese hueso», dice el refrán: a quien ya conoce el truco no se le engaña con él. En octubre de 2022 la inflación de la zona del euro llegó al 10,6~\%, la más alta desde que existe el euro \parencite{Eurostat2026IAPC}. Y, sin embargo, los expertos que encuesta el BCE esperaban para dentro de cinco años una inflación del 2,2~\% de media, muy cerca del objetivo \parencite{BCE2026SPF}: casi nadie creía que el banco central fuera a dejarla correr.
+  \item En los 70 había ocurrido lo contrario: los bancos centrales intentaron una y otra vez comprar empleo con inflación, y el público aprendió a esperarla.
+  \item Detrás está la pregunta de esta exposición: \emph{¿puede la política económica engañar de forma sistemática a quien la ve venir?}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Para la teoría}: casi toda la macroeconomía de hoy se hace con su método: agentes que optimizan, expectativas racionales y modelos de equilibrio general dinámicos y estocásticos \parencite{DeVroey2016History}. Lo reconocen 3 premios Nobel: Robert \autor{Lucas} (1995), Finn \autor{Kydland} y Edward \autor{Prescott} (2004) y Thomas \autor{Sargent} (2011).
+  \item \emph{Para la política económica}: los bancos centrales independientes, con un objetivo de inflación y reglas conocidas, y la idea de que la credibilidad es un activo vienen de \textcite{KydlandPrescott1977Rules} \vertema{3.A.36}.
+  \item \emph{Para la actualidad}: el anclaje de las expectativas fue la clave del debate sobre la inflación de 2021-2023. Robert \autor{Lucas} murió el 15 de mayo de 2023 \parencite{NobelPrize2026LucasDatos}, y la evaluación de la estrategia del BCE concluida en 2025 sigue girando en torno a unas expectativas ancladas en el 2~\% \parencite{BCE2025Estrategia}.
+  \item Además, como toda historia del pensamiento económico, enseña a no quedarse con el último manual y a ver por qué unas ideas llegan en unas épocas y no en otras: son 2 de los 4 motivos de \textcite{Schumpeter1954History}.\footnote{Los otros 2: la historia es fuente de ideas (principios que no fructificaron pueden orientar la investigación de hoy) y muestra cómo se desplazan las fronteras de la ciencia (cada época trae sus problemas y su forma de afrontarlos). La evolución del pensamiento económico resulta de la interacción de varios factores: el contexto económico de cada momento, el pensamiento anterior y los avances de otras disciplinas, como la filosofía, las matemáticas, la física o la biología. Conocerla permite entender las raíces del pensamiento actual, analizar los fenómenos económicos pasados y presentes y valorar los distintos programas de investigación.}
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item En los 60 la \emph{síntesis neoclásica} dominaba la teoría y la política: el modelo IS-LM, grandes modelos macroeconométricos estimados con datos y una curva de \autor{Phillips} que se leía como un menú de inflación y paro \vertema{3.A.5}.
+  \item En los 70 el menú se rompe: el fin de Bretton Woods y las crisis del petróleo traen la \emph{estanflación}, inflación y paro altos a la vez. \autor{Friedman} y \autor{Phelps} ya habían anunciado que a largo plazo la curva de \autor{Phillips} es vertical, pero con expectativas \emph{adaptativas}, que admiten errores sistemáticos \vertema{3.A.5} \vertema{3.A.28}. Para \textcite{LucasSargent1979After}, los modelos keynesianos sufrieron un «fracaso econométrico a gran escala».
+  \item La \concepto{nueva macroeconomía clásica} (NMC) cierra esa puerta. Con \concepto{expectativas racionales} \parencite{Muth1961Rational} los agentes usan bien toda la información de que disponen y no cometen errores sistemáticos; con mercados que se vacían, solo las sorpresas mueven la producción \parencite{Lucas1972Expectations}.
+  \item Su consecuencia metodológica es la \concepto{crítica de \autor{Lucas}} \parencite{Lucas1976Econometric}: un modelo cuyos parámetros cambian cuando cambia la política no sirve para evaluarla. La respuesta son los \concepto{modelos de equilibrio general dinámicos y estocásticos} (EGDE): agentes que optimizan a lo largo del tiempo ante perturbaciones aleatorias, en equilibrio general \parencite{KydlandPrescott1982Time}.
+  \item \textcite{DeVroey2016History} habla de la \emph{revolución de \autor{Lucas}}: en el sentido de \autor{Kuhn}, cambia las preguntas, los conceptos y las herramientas de la macroeconomía \parencite{Kuhn1962Structure}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Qué es la nueva macroeconomía clásica y qué la distingue de sus predecesores?
+  \item ¿Qué supone que las expectativas sean racionales?
+  \item ¿Se pueden evaluar políticas con modelos estimados con los datos del pasado?
+  \item ¿Cómo se construye la macroeconomía tras la crítica de \autor{Lucas}, y qué queda hoy de ello?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue el orden en que la escuela se formó, primero su método y después sus 2 etapas, la de la política económica y la de los ciclos:
+  \begin{itemize}
+  \item \concepto{I. Caracterización general de la nueva macroeconomía clásica} (\ref{sec:caracterizacion}): quiénes la forman, la hipótesis de las expectativas racionales y en qué se separa de \autor{Keynes}, de la síntesis y del monetarismo;
+  \item \concepto{II. Inicio de la revolución: estudio de medidas de política económica} (\ref{sec:inicio}): el modelo de \autor{Lucas}, la proposición de inefectividad y la crítica de \autor{Lucas}, y sus consecuencias para la política monetaria y la fiscal;
+  \item \concepto{III. Consolidación de la revolución: teoría de los ciclos reales y el surgimiento de los modelos EGDE} (\ref{sec:consolidacion}): el ciclo real como primer modelo de equilibrio general dinámico y estocástico y el surgimiento de los EGDE que hoy usan los bancos centrales.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}[unbreakable]
+\textbf{3.A.6. La nueva macroeconomía clásica}\\[2pt]
+Introducción\\
+I. Caracterización general de la nueva macroeconomía clásica según \autor{Schumpeter}\\
+\hspace*{1.5em}1. Escuela, autores y universidades\\
+\hspace*{1.5em}2. La hipótesis de las expectativas racionales\\
+\hspace*{1.5em}3. Método y diferencias con sus predecesores\\
+II. Inicio de la revolución: estudio de medidas de política económica\\
+\hspace*{1.5em}1. Oferta de trabajo intertemporal: \autor{Lucas} y \autor{Rapping} (1969)\\
+\hspace*{1.5em}2. Modelo de información imperfecta de \autor{Lucas} (1972) y crítica de \autor{Lucas} (1976)\\
+\hspace*{1.5em}3. Reglas frente a discrecionalidad: \autor{Kydland} y \autor{Prescott} (1977), \autor{Barro} y \autor{Gordon} (1983)\\
+\hspace*{1.5em}4. La equivalencia ricardiana (\autor{Barro}, 1974)\\
+\hspace*{1.5em}5. La aritmética monetarista desagradable (\autor{Sargent} y \autor{Wallace}, 1981)\\
+III. Consolidación de la revolución: teoría de los ciclos reales y el surgimiento de los modelos EGDE\\
+\hspace*{1.5em}1. Idea: del ciclo monetario de \autor{Lucas} al ciclo real\\
+\hspace*{1.5em}2. Características distintivas de los modelos EGDE\\
+\hspace*{1.5em}3. Modelo de ciclo real (\autor{Kydland} y \autor{Prescott}, 1982; versión de \autor{McCallum}, 1989)\\
+\hspace*{1.5em}4. El surgimiento de los modelos EGDE: del ciclo real a la nueva síntesis\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3}; I.2, \tiempo{3,5}; I.3, \tiempo{1,5}); II, \tiempo{10,5} (II.1, \tiempo{1}; II.2, \tiempo{6}: el modelo, \tiempo{2,5}, la inefectividad, \tiempo{1,5}, y la crítica de \autor{Lucas}, \tiempo{2}; II.3, \tiempo{2}; II.4 y II.5, \tiempo{0,75} cada uno); III, \tiempo{8} (III.1, \tiempo{1}; III.2, \tiempo{2}; III.3, \tiempo{3}; III.4, \tiempo{2}), y conclusión, \tiempo{1}. La caracterización de la escuela (autores, universidades, objeto y método) es lo primero que pregunta el tribunal: no baja de \tiempo{3}. Los 3 epígrafes del título que no son la escuela tienen su sitio: las expectativas racionales (\ref{sec:her}), la crítica de \autor{Lucas} (\ref{sec:critica-lucas}) y el surgimiento de los EGDE (\ref{sec:surgimiento-egde}). La pizarra se organiza en 3 zonas, con la línea del tiempo de la escuela arriba, que crece durante el cante. A la izquierda, el refrán del enganche y las pegatinas, cada una junto a su concepto: «nadie da duros a cuatro pesetas» (las expectativas racionales), «otros tiempos, otras costumbres» (la crítica de \autor{Lucas}), «cría fama y échate a dormir» (la reputación) y «al mal tiempo, buena cara» (el ciclo real). En el centro, los gráficos: las expectativas adaptativas frente a las racionales, el plano $(y,p)$ de la oferta de \autor{Lucas}, el plano $(U,\pi)$ de \autor{Kydland} y \autor{Prescott} y las respuestas a un shock de productividad. A la derecha, recuadradas y conservadas hasta el final, la definición de las expectativas racionales y la curva de oferta de \autor{Lucas}; en el bloque~\ref{sec:consolidacion}, las ecuaciones del ciclo real. Lo que esta exposición resume (la extracción de señal, la inconsistencia temporal, la equivalencia ricardiana, la aritmética monetarista y el modelo de ciclo real completo) está desarrollado en los anexos~\ref{anexo:lucas}, \ref{anexo:kydland-prescott}, \ref{anexo:fiscal} y~\ref{anexo:rbc}.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Caracterización general de la nueva macroeconomía clásica\newline según \autor{Schumpeter}}\label{sec:caracterizacion}
+\minutos{8}
+
+\begin{itemize}
+\item Una vez situada la crisis del consenso keynesiano, pasamos a ver qué escuela lo sustituyó, con qué herramienta y frente a quién.
+\item \emph{Conclusión anticipada}: la nueva macroeconomía clásica es, ante todo, un cambio de \emph{método}: agentes que optimizan, mercados que se vacían y expectativas racionales. Sus conclusiones de política, reglas en lugar de discrecionalidad y escepticismo ante la estabilización, salen de ese método.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Escuela, autores y universidades}\label{sec:escuela}
+
+\begin{itemize}
+\item \autor{Schumpeter} reconoce una escuela de pensamiento por 3 rasgos: un \emph{líder}, unos \emph{seguidores} y un \emph{cuerpo doctrinal} propio, con su objeto y su método \parencite{Schumpeter1954History}. La NMC tiene los 3.
+  \begin{itemize}
+  \item \emph{Líder}: Robert E. \autor{Lucas} (1937-2023), en Carnegie Mellon y después en Chicago. Recibió el Nobel en 1995 «por haber desarrollado y aplicado la hipótesis de las expectativas racionales, transformando así el análisis macroeconómico y profundizando en la comprensión de la política económica» \parencite{NobelPrize1995Lucas}.\footnote{En los mismos años, otro \autor{Lucas}, George, cambió su oficio: \emph{La guerra de las galaxias} se estrenó el 25 de mayo de 1977 \parencite{TCM2026StarWars}, un año después de la crítica de Robert \autor{Lucas} \parencite{Lucas1976Econometric}.} Con el ciclo real, \autor{Kydland} y \autor{Prescott} toman el relevo del programa.
+  \item \emph{Seguidores}:
+    \begin{itemize}
+    \item Thomas \autor{Sargent} y Neil \autor{Wallace}, en Minnesota, que sacan las consecuencias para la política monetaria y la fiscal (\ref{sec:lucas-islas}, \ref{sec:aritmetica});
+    \item Robert \autor{Barro}, en Rochester y Chicago, que había formalizado con Herschel \autor{Grossman} el desequilibrio \parencite{BarroGrossman1971General} y lo abandona en \emph{Second Thoughts on Keynesian Economics} \parencite{Barro1979Second} \vertema{3.A.4};
+    \item Finn \autor{Kydland} y Edward \autor{Prescott}, en Carnegie Mellon y Minnesota, que llevan el método al ciclo (\ref{sec:consolidacion}).
+    \end{itemize}
+  Edmund \autor{Phelps}, con sus «islas», es el precursor \parencite{Phelps1970Microeconomic}.\footnote{Premios Nobel de la escuela y de su entorno: \autor{Kydland} y \autor{Prescott} en 2004, «por sus contribuciones a la macroeconomía dinámica: la consistencia temporal de la política económica y las fuerzas que impulsan los ciclos económicos» \parencite{Nobel2004KydlandPrescott}, y \autor{Sargent} en 2011, con Christopher \autor{Sims}, «por su investigación empírica sobre la causa y el efecto en la macroeconomía» \parencite{Nobel2011SargentSims}. La motivación de 2004 nombra los 2 bloques de esta exposición.}
+  \item \emph{Universidades}: Chicago, Minnesota, Rochester y Carnegie Mellon. En 1976, Robert \autor{Hall} llamó \concepto{de agua dulce} (\emph{freshwater}) a los economistas de estas universidades, cercanas a los Grandes Lagos, frente a los \emph{de agua salada} (\emph{saltwater}) de las 2 costas, más keynesianos \parencite{Hall2026Perfil,Kocherlakota2010Modern}.
+  \item \emph{Cuerpo doctrinal}:
+    \begin{itemize}
+    \item \emph{Objeto}: deja de ser el paro involuntario y pasa a ser, en 2 etapas:
+      \begin{itemize}
+      \item en los 70, los \emph{efectos y el diseño de la política económica} cuando los agentes tienen expectativas racionales (bloque~\ref{sec:inicio});
+      \item desde 1982, las \emph{fluctuaciones} como una sucesión de equilibrios con mercados que se vacían: de origen monetario en \autor{Lucas}, real en \autor{Kydland} y \autor{Prescott} (bloque~\ref{sec:consolidacion}).
+      \end{itemize}
+    De ahí el nombre: \emph{nueva clásica}, porque vuelve a los mercados que se vacían de clásicos y neoclásicos \vertema{3.A.2} \vertema{3.A.3}, pero con herramientas nuevas.
+    \item \emph{Método}, en 3 ideas:
+      \begin{itemize}
+      \item \concepto{microfundamentos}: no hay una teoría para la micro y otra para la macro; lo agregado sale de agentes que optimizan dadas sus preferencias, su tecnología y sus restricciones;
+      \item \concepto{expectativas racionales} (\ref{sec:her});
+      \item \concepto{equilibrio continuo de los mercados}: precios y salarios flexibles, sin paro involuntario.
+      \end{itemize}
+    Juntas dan los modelos EGDE (\ref{sec:caracteristicas-egde}).
+    \item \emph{Política económica}: reglas estables y conocidas en lugar de discrecionalidad, y escepticismo ante la estabilización de la demanda.
+    \end{itemize}
+  \end{itemize}
+\item La figura~\ref{fig:linea-tiempo-nmc} ordena las obras de la escuela que recorre la exposición: es la franja que se va completando en la pizarra.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La nueva macroeconomía clásica en el tiempo}\label{fig:linea-tiempo-nmc}
+\grafico[0.95\textwidth]{linea-tiempo-nmc}
+\fuente{elaboración propia a partir de \textcite{DeVroey2016History} y \textcite{SnowdonVane2005Modern}.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{La hipótesis de las expectativas racionales}\label{sec:her}
+
+\begin{itemize}
+\item Una vez vistos quiénes son y qué método comparten, pasamos a la herramienta que los distingue de todos sus predecesores.
+\item \emph{Conclusión anticipada}: con expectativas racionales los agentes pueden equivocarse, pero no de forma \emph{sistemática}. Lo que la política hace de forma previsible ya está descontado.
+\end{itemize}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Casi todas las decisiones económicas dependen de lo que se espera del futuro: salarios, precios, inversión, consumo. Hasta los 60 había 2 formas de modelizarlo:
+  \begin{itemize}
+  \item \emph{estáticas}: se espera lo de hoy, $\pi^e_t=\pi_{t-1}$;
+  \item \emph{adaptativas}: se corrige una parte del error del periodo anterior \vertema{3.A.5},
+  \begin{equation}\label{eq:adaptativas}
+  \pi^e_t=\pi^e_{t-1}+\gamma\,(\pi_{t-1}-\pi^e_{t-1}),\qquad \gamma\in(0,1].
+  \end{equation}
+  Los agentes aprenden de sus errores, pero, si la inflación sube año tras año, se quedan siempre cortos: cometen \emph{errores sistemáticos}.
+  \end{itemize}
+\item \textcite{Muth1961Rational} parte de la telaraña, en la que los agricultores, que deciden cuánto sembrar con el precio de la cosecha anterior, se equivocan siempre en el mismo sentido \vertema{3.A.16}. Propone que las expectativas, «puesto que son predicciones informadas de los acontecimientos futuros, son en lo esencial iguales que las predicciones de la teoría económica relevante» \parencite[316]{Muth1961Rational}. Con ellas, el precio solo se aparta del equilibrio por la perturbación de cada periodo, y el ciclo de la telaraña desaparece.
+\item \textcite{LucasPrescott1971Investment} la aplican a la inversión, y \textcite{Lucas1972Expectations} la lleva por primera vez a un modelo macroeconómico de equilibrio general.
+\item Pegatina: «nadie da duros a cuatro pesetas». Si un error fuera previsible, alguien lo aprovecharía y dejaría de serlo.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los agentes usan de forma eficiente toda la información de que disponen al formar la expectativa, $\Omega_{t-1}$, incluido el modelo de la economía y la regla de la política económica (o se comportan como si los conocieran).
+\item La incertidumbre es \emph{riesgo}: hay una distribución de probabilidad objetiva y estable a la que referirse.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Definición}: la expectativa racional de una variable es su esperanza matemática condicionada a la información disponible, calculada con el verdadero modelo. El error de previsión, $\varepsilon_t$ (aquí no es una elasticidad), tiene media nula dada esa información:
+  \funcionclave[eq:her]{x^e_t\equiv\mathbb{E}\left[x_t\mid\Omega_{t-1}\right]=\mathbb{E}_{t-1}[x_t],\qquad x_t-x^e_t=\varepsilon_t,\quad \mathbb{E}\left[\varepsilon_t\mid\Omega_{t-1}\right]=0}
+\item En palabras: los agentes usan de forma eficiente toda la información de que disponen, incluido el modelo de la economía, y no cometen errores sistemáticos.
+\item \emph{Propiedades del error de previsión}:
+  \begin{itemize}
+  \item \emph{media nula}: la previsión es insesgada;
+  \item \emph{ortogonalidad}: el error no está correlacionado con nada de lo que se sabía al prever, $\mathbb{E}[\varepsilon_t\,z_{t-1}]=0$ para toda $z_{t-1}\in\Omega_{t-1}$. Como los errores pasados forman parte de $\Omega_{t-1}$, los errores no están autocorrelacionados;
+  \item \emph{eficiencia}: ninguna otra previsión basada en $\Omega_{t-1}$ tiene un error cuadrático medio menor;
+  \item \emph{ley de las expectativas iteradas}: lo que hoy espero que esperaré mañana es lo que hoy espero, $\mathbb{E}_t\left[\mathbb{E}_{t+1}[x_{t+2}]\right]=\mathbb{E}_t[x_{t+2}]$.
+  \end{itemize}
+  No exigen previsión perfecta: el error puede ser grande; lo que no puede es ser previsible. Tampoco hace falta que sea normal ni de varianza constante: eso depende del modelo, no de la hipótesis.
+\item \emph{Versión fuerte y versión débil} \parencite[cap.~5]{SnowdonVane2005Modern}:
+  \begin{itemize}
+  \item \emph{fuerte}, la de \autor{Muth} y la NMC: la expectativa subjetiva coincide con la esperanza matemática condicionada del verdadero modelo, \eqref{eq:her};
+  \item \emph{débil}: los agentes usan de forma eficiente la información que deciden reunir, y la reúnen mientras su beneficio marginal supere su coste.
+  \end{itemize}
+\item \emph{Adaptativas frente a racionales}: supongamos que el banco central acelera el crecimiento del dinero y la inflación sube un punto por periodo durante 6 periodos, $\pi_t=\pi_{t-1}+1$, y luego se estabiliza (figura~\ref{fig:expectativas}).
+  \begin{itemize}
+  \item Con adaptativas y $\gamma=0{,}5$, la expectativa corrige cada periodo la mitad del error anterior y va \emph{siempre por detrás} mientras la inflación sube: el error es sistemático y del mismo signo. Con $\gamma=1$, $\pi^e_t=\pi_{t-1}$ y el error sería de $+1$ punto cada periodo. Mientras dura el engaño, el paro se mantiene por debajo de su tasa natural.
+  \item Con racionales, $\pi^e_t=\mathbb{E}_{t-1}[\pi_t]$ es la senda prevista: solo se falla en la perturbación imprevista de cada periodo, de media nula. Con una regla conocida no hay engaño posible.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Expectativas adaptativas y racionales ante una inflación que sube}\label{fig:expectativas}
+\grafico[0.7\textwidth]{expectativas}
+\fuente{elaboración propia.}
+\end{figure}
+
+\begin{anotaciones}
+\emph{Otras reglas de expectativas} (se citan a veces en el test). Además de las estáticas y las adaptativas \eqref{eq:adaptativas}, la literatura anterior a \autor{Muth} usaba:
+\begin{itemize}
+\item \emph{extrapolativas}: una media ponderada de la inflación pasada, $\pi^e_t=\sum_{i=1}^{n}a_i\,\pi_{t-i}$, con $\sum_i a_i=1$ y pesos que bajan con la distancia;
+\item \emph{regresivas}: la misma media con pesos que suman menos de 1 y un ancla de largo plazo, $\pi^e_t=\sum_{i=1}^{n}b_i\,\pi_{t-i}+\left(1-\sum_i b_i\right)\bar\pi$.
+\end{itemize}
+Las adaptativas son un caso de las extrapolativas, con pesos $a_i=\gamma(1-\gamma)^{i-1}$. Todas son \emph{mecánicas}: miran solo al pasado de la propia variable y no cambian aunque cambie la política. Las racionales, en cambio, usan toda la información, también la regla que sigue el banco central, y por eso cambian cuando cambia la regla.
+\end{anotaciones}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Desaparece la ilusión monetaria sistemática: la curva de \autor{Phillips} solo se separa de la vertical por sorpresas \vertema{3.A.28}.
+\item Lo anticipado de la política entra en las expectativas: es la base de la proposición de inefectividad de la política sistemática (\ref{sec:inefectividad}).
+\item Las expectativas \emph{miran al futuro} y dependen de la política que se espera: es la base de la crítica de \autor{Lucas} (\ref{sec:critica-lucas}) y de la inconsistencia temporal (\ref{sec:kydland-prescott}).
+\item Fuera de la política monetaria, el consumo como paseo aleatorio \parencite{Hall1978} \vertema{3.A.33}, la eficiencia de los mercados financieros \parencite{Fama1970Efficient} y la modelización dinámica con agentes que miran al futuro \vertema{3.A.29}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Aprendizaje}: si los agentes estiman el modelo con los datos y revisan sus estimaciones, en muchos modelos acaban en el equilibrio de expectativas racionales; cuando no, el aprendizaje crea dinámicas propias \parencite{EvansHonkapohja2001Learning,Sargent1993Bounded}.
+\item \emph{Información rígida o costosa}: agentes que solo ponen al día su información de vez en cuando \parencite{MankiwReis2002Sticky} o que deciden cuánta atención prestar \parencite{Sims2003Implications} \vertema{3.A.7}.
+\item \emph{Equilibrios múltiples}: incluso con expectativas racionales puede haber burbujas y profecías que se cumplen solas \vertema{3.A.29}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Las encuestas de expectativas rechazan la versión fuerte en el agregado: el error medio de previsión se puede anticipar con la revisión de las previsiones, señal de \emph{rigideces de información} \parencite{CoibionGorodnichenko2015Information}.
+\item Para \autor{Lucas}, la hipótesis no se contrasta sola, sino junto con el modelo del que forma parte: lo que los datos pueden rechazar es el modelo.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{Críticas}:
+  \begin{itemize}
+  \item \emph{coste de la información}: si informarse cuesta, nadie usa toda la información; y si los precios ya la reflejaran entera, nadie pagaría por obtenerla \parencite{GrossmanStiglitz1980Impossibility};
+  \item \emph{conocimiento del modelo}: es mucho suponer que los agentes conocen un modelo sobre el que los propios economistas no se ponen de acuerdo \parencite{Shiller1978Rational};
+  \item \emph{validez limitada}: \textcite{Modigliani1977Monetarist} la aceptaba en los mercados especulativos, pero no en los de trabajo;
+  \item \emph{incertidumbre radical}: con la incertidumbre de \autor{Keynes}, sin distribución de probabilidad estable, el pasado no informa del futuro y la esperanza condicionada no está definida \parencite{Davidson1982Rational} \vertema{3.A.4};\footnote{\autor{Davidson} lo formula con el concepto estadístico de \emph{ergodicidad}: las expectativas racionales suponen que el futuro se puede describir con distribuciones de probabilidad estimadas con datos del pasado; para \autor{Keynes}, el mundo económico no es ergódico y hay sucesos sobre los que no cabe ningún cálculo de probabilidades.}
+  \item \emph{racionalidad limitada}: la economía conductual documenta sesgos sistemáticos al formar expectativas \vertema{3.A.1}.
+  \end{itemize}
+\item \emph{Por qué se impuso}: cualquier otra hipótesis supone que los agentes ignoran información que tienen o repiten errores que podrían evitar, y obliga a elegir una regla \emph{ad hoc} entre muchas. Por eso la nueva economía keynesiana también la adoptó y discutió otra pieza, el vaciado continuo de los mercados \vertema{3.A.7}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Método y diferencias con sus predecesores}\label{sec:metodo}
+
+\begin{itemize}
+\item Con la herramienta ya definida, pasamos a ver en qué se separa la NMC de las escuelas a las que sustituye. La tabla~\ref{tab:comparacion} lo resume y es lo que se cuenta en el cante.
+\item \emph{Frente a \autor{Keynes}}:
+  \begin{itemize}
+  \item \autor{Lucas} lo dijo sin rodeos: «la teoría económica es análisis matemático; todo lo demás son dibujos y palabras» \parencite[9]{Lucas2001Memoir}. Las piezas de la \emph{Teoría general}, como la función de consumo o la preferencia por la liquidez, son reglas de comportamiento sin fundamento en un problema de optimización \vertema{3.A.4}.
+  \item Le reconoce, eso sí, haber convencido al mundo de que había una salida de la Gran Depresión sin abandonar la economía de mercado.
+  \end{itemize}
+\item \emph{Frente a la síntesis neoclásica}: acepta su lenguaje formal, que fue un progreso frente al razonamiento verbal, pero le reprocha 4 cosas \vertema{3.A.5}:
+  \begin{itemize}
+  \item \emph{modelos econométricos cuyos parámetros cambian con la política}: es la crítica de \autor{Lucas} (\ref{sec:critica-lucas});
+  \item \emph{un equilibrio general incompleto}: la síntesis estudia la demanda de consumo, la de inversión o la de dinero por separado; la NMC determina todas las variables a la vez;
+  \item \emph{la separación entre un corto plazo keynesiano y un largo plazo clásico}: para \autor{Lucas} un solo modelo debe valer para cualquier horizonte;
+  \item \emph{la confianza en la estabilización}: si los agentes anticipan la política, la sintonía fina pierde su base (\ref{sec:inefectividad}).
+  \end{itemize}
+  A ellas se suma un cambio en la forma de llevar el modelo a los datos: \autor{Kydland} y \autor{Prescott} \emph{calibran} los parámetros con estudios micro y regularidades de largo plazo, en lugar de estimarlos ecuación a ecuación (\ref{sec:caracteristicas-egde}).
+\item \emph{Frente a \autor{Friedman}}:
+  \begin{itemize}
+  \item comparte la tasa natural, la neutralidad del dinero a largo plazo y la preferencia por las reglas. \autor{Lucas} admitió que ni su modelo de ciclo ni el de \autor{Kydland} y \autor{Prescott} explicaban la Gran Depresión, y elogió la explicación monetaria de \textcite{FriedmanSchwartz1963Monetary} en una reseña treinta años posterior \parencite{Lucas1994Review};
+  \item pero cambia las expectativas adaptativas, que permiten errores sistemáticos, por las racionales, y el equilibrio parcial marshalliano por el general walrasiano;
+  \item es la paradoja que subraya \textcite{DeVroey2016History}: el sucesor del monetarismo no fue el monetarismo, sino la NMC \vertema{3.A.5}.
+  \end{itemize}
+\item \emph{Frente a los keynesianos del desequilibrio}: aceptan precios fijos sin explicar por qué no se mueven y expectativas que no son racionales. Por eso \textcite{Barro1979Second}, que había sido uno de ellos, los abandona: unos precios que no se ajustan dejan sin aprovechar ganancias del intercambio \vertema{3.A.4}.
+\item \emph{Equilibrio}: para \textcite{LucasSargent1979After}, decir que una economía está en equilibrio es decir 2 cosas que se cumplen en cada momento: los mercados se vacían y los agentes optimizan. Ya no es, como en la tradición keynesiana, un estado de reposo al que se llega o no \parencite{DeVroey2016History}. Las recesiones son respuestas óptimas a perturbaciones, no errores.\footnote{Para \autor{Lucas}, un modelo es una construcción deliberadamente irreal, una \emph{economía artificial} que sirve de laboratorio para ensayar políticas que sería demasiado caro probar en una economía real \parencite{Lucas1980Methods}. El equilibrio y las expectativas racionales son instrumentos del modelo, no proposiciones sobre la realidad: no tiene sentido preguntar si los estadounidenses tienen expectativas racionales, sino si el modelo que las supone predice bien \parencite{DeVroey2016History} \vertema{3.A.1}.}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La macroeconomía keynesiana y la nueva macroeconomía clásica}\label{tab:comparacion}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.9cm}>{\raggedright\arraybackslash}m{5cm}>{\raggedright\arraybackslash}m{5.3cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textcolor{tceemorado}{\textbf{Macroeconomía keynesiana}} & \textcolor{tceeverde}{\textbf{Nueva macroeconomía clásica}}\\
+\midrule
+\textbf{Punto de partida} & \textcolor{tceemorado}{\emph{Teoría general} de \autor{Keynes} (1936)} & \textcolor{tceeverde}{«Expectations and the Neutrality of Money», de \autor{Lucas} (1972)}\\
+\textbf{Qué quiere explicar} & \textcolor{tceemorado}{el paro o el subempleo} & \textcolor{tceeverde}{el ciclo}\\
+\textbf{Factor explicativo} & \textcolor{tceemorado}{rigidez o lentitud de los salarios} & \textcolor{tceeverde}{respuesta de los agentes a perturbaciones monetarias cuando extraen señales de los precios}\\
+\textbf{Concepto de equilibrio} & \textcolor{tceemorado}{estado de reposo} & \textcolor{tceeverde}{equilibrio intertemporal}\\
+\textbf{Equilibrio general} & \textcolor{tceemorado}{«incompleto»} & \textcolor{tceeverde}{completo}\\
+\textbf{Tipo de economía} & \textcolor{tceemorado}{monetaria} & \textcolor{tceeverde}{monetaria}\\
+\textbf{Microfundamentos} & \textcolor{tceemorado}{no imprescindibles} & \textcolor{tceeverde}{imprescindibles}\\
+\textbf{Expectativas} & \textcolor{tceemorado}{adaptativas} & \textcolor{tceeverde}{racionales}\\
+\textbf{Qué mueve la economía} & \textcolor{tceemorado}{la demanda} & \textcolor{tceeverde}{la oferta}\\
+\textbf{Efectos reales de la política monetaria} & \textcolor{tceemorado}{la expansión funciona} & \textcolor{tceeverde}{la expansión no funciona}\\
+\textbf{Síntesis neoclásica} & \textcolor{tceemorado}{apoyo} & \textcolor{tceeverde}{rechazo}\\
+\textbf{Método empírico} & \textcolor{tceemorado}{el de la Comisión Cowles} & \textcolor{tceeverde}{la crítica de \autor{Lucas}}\\
+\textbf{Prioridad metodológica} & \textcolor{tceemorado}{coherencia externa (ajuste a los datos)} & \textcolor{tceeverde}{coherencia interna}\\
+\textbf{Conclusión de política} & \textcolor{tceemorado}{activar la demanda} & \textcolor{tceeverde}{\emph{laissez faire}}\\
+\textbf{Intuición y accesibilidad} & \textcolor{tceemorado}{altas} & \textcolor{tceeverde}{bajas}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[tabla~10.1]{DeVroey2016History}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Recapitulación}: la NMC tiene un líder, \autor{Lucas}; unos seguidores, de Minnesota a Rochester; y un cuerpo doctrinal hecho de microfundamentos, mercados que se vacían y expectativas racionales. Con esa herramienta, el bloque~\ref{sec:inicio} pregunta qué puede hacer la política económica.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Inicio de la revolución: estudio de medidas de política económica}\label{sec:inicio}
+\minutos{10,5}
+
+\begin{itemize}
+\item Una vez caracterizada la escuela y su herramienta, pasamos a ver qué dice de la política económica.
+\item \emph{Conclusión anticipada}: con expectativas racionales y mercados que se vacían, solo lo que sorprende mueve la producción, así que una regla conocida no estabiliza; los modelos estimados con el pasado no sirven para evaluar un cambio de régimen; la discrecionalidad tiene un sesgo inflacionista; financiar el gasto con deuda o con impuestos puede dar igual, y la política monetaria depende de la fiscal.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Oferta de trabajo intertemporal: \autor{Lucas} y \autor{Rapping} (1969)}\label{sec:lucas-rapping}
+
+\begin{itemize}
+\item \textcite{LucasRapping1969Real} hacen con la oferta de trabajo lo que \autor{Friedman} y \autor{Modigliani} habían hecho con el consumo \vertema{3.A.33} y \autor{Jorgenson} con la inversión \vertema{3.A.34}: derivarla de un agente que optimiza a lo largo del tiempo. Dejan 2 ideas que la NMC hará suyas:
+  \begin{itemize}
+  \item la \concepto{sustitución intertemporal del trabajo}: el trabajador decide \emph{cuándo} trabajar. Las horas de hoy frente a las de mañana crecen con el salario relativo y con el tipo de interés,
+    \begin{equation}\label{eq:lucas-rapping}
+    \frac{L_1}{L_2}=f\left(\frac{w_1}{w_2},\ r\right),\qquad f_1>0,\ f_2>0,
+    \end{equation}
+    de modo que un salario alto \emph{transitorio} aumenta mucho las horas y uno permanente apenas. Cuánto, lo dice la elasticidad de \autor{Frisch}, $\varepsilon^F_{L,w}=1/\varphi$ \vertema{3.A.25};
+  \item un \concepto{mercado de trabajo que se vacía}: el paro medido sería, en parte, sustitución intertemporal voluntaria. Es el paso que abandona el paro involuntario keynesiano.
+  \end{itemize}
+\item Trabajan todavía con expectativas adaptativas: el salto a las racionales lo da \textcite{Lucas1972Expectations}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelo de información imperfecta de \autor{Lucas} (1972) y crítica de \autor{Lucas} (1976)}\label{sec:lucas-islas}
+
+\begin{itemize}
+\item Con la oferta de trabajo ya microfundamentada, pasamos al modelo que inaugura la escuela. Lo contamos en 3 pasos: el modelo y su curva de oferta; la demanda, el equilibrio y la inefectividad de la política sistemática, y la crítica de \autor{Lucas}, que sale de él.
+\end{itemize}
+
+\subsubsection{El modelo de islas y la curva de oferta de \autor{Lucas}}\label{sec:oferta-lucas}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item En «Expectations and the Neutrality of Money», \textcite{Lucas1972Expectations} junta las 3 piezas del método (agentes que optimizan, mercados que se vacían y expectativas racionales) y añade una cuarta, la \emph{información imperfecta}.
+\item La pregunta: \emph{¿por qué el dinero mueve la producción a corto plazo si los agentes son racionales y los mercados se vacían?} La respuesta: porque los productores confunden una subida de su precio \emph{relativo} con una subida del nivel \emph{general} de precios. Da así fundamento a la curva de \autor{Phillips} aumentada de \autor{Friedman} y \autor{Phelps} \vertema{3.A.5}, sin errores sistemáticos, y llega a una conclusión aún más dura contra la estabilización.
+\item Seguimos la versión simplificada de los manuales;\footnote{El original es un modelo de generaciones solapadas en el que los jóvenes producen y los viejos reciben una transferencia monetaria aleatoria \vertema{3.A.29}. La versión de las islas con extracción de señales es la de \textcite[cap.~6]{Romer2019Advanced} y \textcite{AttfieldDemeryDuck1991}.} la derivación está en el anexo~\ref{anexo:lucas}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Islas}: los productores están repartidos en muchos mercados separados, las «islas» de \textcite{Phelps1970Microeconomic}. Cada uno ve el precio de su isla, $p_{i,t}$, pero no el nivel general, $p_t$. Las variables están en logaritmos.
+\item \emph{2 perturbaciones}: el precio de la isla es el general más una perturbación \emph{real} propia, $p_{i,t}=p_t+z_{i,t}$:
+  \begin{itemize}
+  \item $z_{i,t}$, de media nula y varianza $\sigma^2_z$, cambia el precio relativo de la isla (preferencias o tecnología): ante ella, lo óptimo es producir más;
+  \item $p_t$, con media $p^e_t\equiv\mathbb{E}_{t-1}[p_t]$ y varianza $\sigma^2_p$, la mueve el dinero: ante ella, lo óptimo es no cambiar la producción.
+  \end{itemize}
+  Las 2 son normales e independientes.
+\item \emph{Oferta de cada isla}: crece con el precio relativo que el productor \emph{cree} que tiene, con una elasticidad $\varepsilon_S>0$ que viene de la oferta de trabajo intertemporal (\ref{sec:lucas-rapping}): $y_{i,t}=y^n+\varepsilon_S\,\mathbb{E}[z_{i,t}\mid p_{i,t}]$.
+\item \emph{Demanda agregada} cuantitativa, con la velocidad normalizada: $y_t=m_t-p_t$ \vertema{3.A.35}.
+\item Expectativas racionales \eqref{eq:her}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Extracción de señales}: el productor reparte la subida que ve entre la parte que cree real y la que cree nominal. Con perturbaciones normales,
+  \begin{equation}\label{eq:extraccion}
+  \mathbb{E}[z_{i,t}\mid p_{i,t}]=\omega\,\left(p_{i,t}-p^e_t\right),\qquad \omega=\frac{\sigma^2_z}{\sigma^2_z+\sigma^2_p}\in[0,1].
+  \end{equation}
+  $\omega$ es la parte de la varianza del precio de la isla que se debe a las perturbaciones reales (no es una probabilidad). Si los precios relativos varían mucho y el nivel general poco, $\omega$ se acerca a 1 y el productor atribuye casi toda la subida a su mercado; si la política monetaria es errática, $\omega$ se acerca a 0.
+\item \emph{Oferta agregada}: sumando las islas, las perturbaciones propias se compensan y queda la \concepto{curva de oferta de \autor{Lucas}}:
+  \funcionclave[eq:oferta-lucas]{y_t=y^n+\psi\,(p_t-p^e_t),\qquad \psi=\omega\,\varepsilon_S,\quad \omega=\frac{\sigma^2_z}{\sigma^2_z+\sigma^2_p}}
+\item La producción solo se aparta de la natural, $y^n$, si el nivel de precios sorprende. No se aparta en 3 casos: $\sigma^2_z=0$ (todo se atribuye al dinero), $\varepsilon_S=0$ (la oferta no responde) o $p_t=p^e_t$ (no hay sorpresa).
+\item \emph{Interpretación gráfica} (figura~\ref{fig:oferta-lucas}): en el plano $(y,p)$, la oferta de \autor{Lucas} es creciente, con pendiente $1/\psi$, y corta la vertical $y^n$ en $p=p^e$.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{La pendiente depende de la política}: cuanto más volátil es la política monetaria, mayor es $\sigma^2_p$, menor $\omega$ y más vertical la oferta. Es la semilla de la crítica (\ref{sec:critica-lucas}).
+\item \emph{Con la ley de \autor{Okun}}, la oferta de \autor{Lucas} es la curva de \autor{Phillips} con expectativas racionales, $U_t=U^n-\alpha\,(\pi_t-\pi^e_t)$ \vertema{3.A.28}; en un país de inflación errática la curva es casi vertical \vertema{3.A.41}.
+\item \emph{Los efectos son transitorios}: duran lo que tarda en conocerse el nivel de precios, un periodo; el modelo no genera persistencia salvo que se añada capital, como hizo \textcite{Lucas1975Equilibrium} (\ref{sec:idea-rbc}).
+\end{itemize}
+
+\subsubsection{Demanda, equilibrio e inefectividad de la política sistemática}\label{sec:inefectividad}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Con la oferta en la mano, falta cerrar el modelo con la demanda y preguntar lo que interesa a la política: \emph{¿puede una regla monetaria conocida estabilizar la producción?} Lo preguntaron \textcite{SargentWallace1975Rational,SargentWallace1976Rational}, y su respuesta es la \concepto{proposición de inefectividad} (o de ineficacia) de la política sistemática.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item La oferta de \autor{Lucas} \eqref{eq:oferta-lucas}, con una perturbación de \emph{oferta} $u_t$, ruido blanco: $y_t=y^n+\psi\,(p_t-p^e_t)+u_t$.
+\item La demanda $y_t=m_t-p_t$.
+\item Una regla monetaria con realimentación, que responde a la perturbación de ayer, más un componente imprevisto $\varepsilon_t$ de media nula (la sorpresa monetaria, que es justamente un error de previsión como el de \eqref{eq:her}): $m_t=\mu_0+\mu_1u_{t-1}+\varepsilon_t$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Equilibrio} (sin $u_t$): igualando la oferta y la demanda y tomando expectativas, la producción y los precios son
+  \funcionclave[eq:produccion-lucas]{y_t=y^n+\frac{\psi}{1+\psi}\,\left(m_t-\mathbb{E}_{t-1}[m_t]\right)}
+  \begin{equation}\label{eq:precios-lucas}
+  p_t=\mathbb{E}_{t-1}[m_t]-y^n+\frac{1}{1+\psi}\,\left(m_t-\mathbb{E}_{t-1}[m_t]\right).
+  \end{equation}
+  La parte prevista del dinero va entera a los precios; la sorpresa se reparte entre producción y precios.
+\item \emph{Gráficamente} (figura~\ref{fig:oferta-lucas}): una expansión \emph{no anticipada} desplaza solo la demanda y la economía se mueve a lo largo de la oferta: sube la producción y los precios suben menos que el dinero. Una expansión \emph{anticipada} desplaza a la vez la demanda y la oferta, porque sube $p^e$: solo suben los precios.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La oferta de \autor{Lucas}: dinero anticipado y no anticipado}\label{fig:oferta-lucas}
+\grafico[0.62\textwidth]{oferta-lucas}
+\fuente{elaboración propia a partir de \textcite{Lucas1972Expectations} y \textcite[cap.~6]{Romer2019Advanced}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Con la regla}: como $u_{t-1}$ se conoce en $t-1$, el público lo descuenta, $\mathbb{E}_{t-1}[m_t]=\mu_0+\mu_1u_{t-1}$, y la producción de equilibrio es
+  \begin{equation}\label{eq:inefectividad}
+  y_t=y^n+\frac{\psi\,\varepsilon_t+u_t}{1+\psi},\qquad \frac{\partial y_t}{\partial\mu_1}=0 .
+  \end{equation}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La producción no depende de $\mu_1$: la parte sistemática de la regla solo mueve los precios. Únicamente las sorpresas, $\varepsilon_t$, afectan a la producción, y sorprender no estabiliza: añade ruido.
+\item En sus palabras: «En este sistema, la autoridad no tiene ninguna posibilidad de hacer política contracíclica. Para explotar la curva de \autor{Phillips} tendría que engañar al público. Pero, como las expectativas son racionales, no hay ninguna regla con realimentación con la que pueda esperar engañarlo sistemáticamente. La autoridad no puede esperar explotar la curva de \autor{Phillips} ni siquiera durante un periodo» \parencite{SargentWallace1976Rational}.
+\item No es la \emph{superneutralidad} del dinero (neutralidad a largo plazo frente a su tasa de crecimiento): la inefectividad vale también a corto plazo, para la parte anticipada de la política.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Con contratos salariales firmados antes de conocer la perturbación, la política sistemática sí estabiliza aunque las expectativas sean racionales: el banco central reacciona con información que los contratos no pudieron usar \parencite{Fischer1977Long,Taylor1980Aggregate} \vertema{3.A.7} \vertema{3.A.37}. Lo que da la inefectividad no son las expectativas racionales, sino la flexibilidad de los precios.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{Barro1977Unanticipated} encuentra que en Estados Unidos solo el crecimiento \emph{no anticipado} del dinero explica el paro; \textcite{Mishkin1982Does}, que también el anticipado tiene efectos, en contra de la inefectividad.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{Críticas a los supuestos}: el vaciado continuo deja fuera el paro involuntario, y la información imperfecta es poco creíble cuando el IPC y los agregados monetarios se publican cada mes.
+\item \emph{Críticas a los resultados}: para generar fluctuaciones grandes necesita una oferta de trabajo muy elástica, y no genera persistencia, cuando la producción de los datos está muy autocorrelacionada.
+\item \emph{Lo que queda}: el método y una idea, que la respuesta de la economía depende de la regla que sigue la política. \autor{Lucas} la convirtió en una crítica general a los modelos de la época.
+\end{itemize}
+
+\subsubsection{La crítica de \autor{Lucas}}\label{sec:critica-lucas}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item En los 60 y los 70 la política se evaluaba con grandes modelos macroeconométricos, herederos del de \textcite{KleinGoldberger1955Econometric}: se estimaban con datos del pasado y se simulaban políticas alternativas manteniendo fijos los coeficientes.
+\item En «Econometric Policy Evaluation: A Critique», \textcite{Lucas1976Econometric} sostiene que esa práctica no es legítima cuando la política simulada es distinta de la que regía en la muestra: las reglas de decisión de los agentes, y con ellas los coeficientes estimados, dependen de la política que esperan.
+\item Pegatina: «otros tiempos, otras costumbres». Cambia la política y cambian las reglas con las que deciden los agentes.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Hay 2 tipos de parámetros:
+  \begin{itemize}
+  \item \emph{profundos o estructurales}: preferencias, tecnología y restricciones (la paciencia, la aversión al riesgo, la elasticidad de la oferta, las varianzas de las perturbaciones reales), que no cambian con la política;
+  \item los de las \emph{reglas de decisión} que se estiman, que mezclan los profundos con la regla de política a través de las expectativas.
+  \end{itemize}
+\item Los agentes tienen expectativas racionales y conocen la regla.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Ejemplo con el propio modelo de islas}: si el banco central sigue la regla $m_t=\mu+\rho_m\,m_{t-1}+\varepsilon_t$, entonces $\mathbb{E}_{t-1}[m_t]=\mu+\rho_m m_{t-1}$ y, por \eqref{eq:produccion-lucas},
+  \begin{equation}\label{eq:forma-reducida}
+  y_t=\underbrace{(y^n-\tilde\psi\mu)}_{\beta_0}+\underbrace{\tilde\psi}_{\beta_1}\,m_t\underbrace{-\tilde\psi\rho_m}_{\beta_2}\,m_{t-1},\qquad \tilde\psi\equiv\frac{\psi}{1+\psi}.
+  \end{equation}
+\item Un econometrista que estime $y_t=\beta_0+\beta_1m_t+\beta_2m_{t-1}$ encontrará $\hat\beta_1>0$ y concluirá que más dinero da más producción. Pero:
+  \begin{itemize}
+  \item si el banco central sube $\mu$ para explotarlo, $\beta_0$ cae exactamente lo necesario y la producción no cambia;
+  \item si cambia $\rho_m$, cambia $\beta_2$;
+  \item y si la política se vuelve más errática, baja $\psi$ (\ref{sec:oferta-lucas}) y cambia hasta $\beta_1$.
+  \end{itemize}
+\item Los parámetros \emph{profundos} son $y^n$, $\varepsilon_S$ y $\sigma^2_z$; los $\beta$ son funciones de la política.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Microfundamentar}: los modelos para evaluar políticas deben escribirse con parámetros profundos, agentes que optimizan y expectativas racionales. Es el programa que llevará a los EGDE (bloque~\ref{sec:consolidacion}).
+\item \emph{Evaluar reglas, no decisiones sueltas}: lo que los agentes descuentan es la regla, y la política se elige entre reglas.
+\item \emph{Estimar las condiciones de optimalidad}: la ecuación de \autor{Euler} del consumo no depende de la política y se puede estimar directamente \parencite{Hall1978,HansenSingleton1983Stochastic} \vertema{3.A.33}.
+\item Es también una crítica de método: qué es un buen modelo y para qué sirve \vertema{3.A.1}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \textcite{Sims1980Macroeconomics} propone la salida contraria: vectores autorregresivos (VAR), con la menor carga de teoría posible, para dejar hablar a los datos. Para él, la mayoría de las decisiones de política son movimientos dentro de una regla, no cambios de régimen, y para ellas las formas reducidas sirven: son \emph{intervenciones modestas} \parencite{LeeperZha2003Modest}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{La pendiente cambia con la volatilidad de la política}, como predice \eqref{eq:oferta-lucas}: \textcite{Lucas1973Some} lo contrastó con 18 países (1952-1967): donde la demanda nominal es más volátil, su efecto sobre la producción es menor.
+\item \textcite{BallMankiwRomer1988} lo repitieron con 43 países (1948-1986). Con la volatilidad de la demanda nominal sola, el coeficiente es de $-1{,}639$, como en \autor{Lucas}; pero, al añadir la inflación media, la volatilidad deja de ser significativa y lo que explica la pendiente es el nivel de la inflación \parencite[tabla~5]{BallMankiwRomer1988}. Es lo que predice la nueva economía keynesiana, con precios que se revisan más a menudo cuando la inflación es alta, y no la confusión de \autor{Lucas} \vertema{3.A.7}.
+\item \emph{La curva de \autor{Phillips} de los 60 no era un menú estable}: en Estados Unidos, los datos de los 60 dibujan una curva de pendiente negativa; en los 70 se desplaza hacia arriba, con inflación y paro altos a la vez (figura~\ref{fig:phillips-eeuu-1960-1985}). La relación cambió cuando cambió la política \vertema{3.A.28}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La curva de \autor{Phillips} de Estados Unidos, 1960-1985}\label{fig:phillips-eeuu-1960-1985}
+\grafico[0.7\textwidth]{phillips-eeuu-1960-1985}
+\fuente{elaboración propia con datos del BLS a través de FRED \parencite{FRED2026PhillipsEEUU}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Contrastes formales, con resultados matizados}: \textcite{FaveroHendry1992Testing} no encuentran que los parámetros de la demanda de dinero cambien con los cambios de política; \textcite{Linde2001Testing} muestra que esos contrastes tienen poca potencia, y \textcite{Rudebusch2005Assessing}, que los cambios de la política de la Reserva Federal fueron demasiado pequeños para mover mucho las formas reducidas.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Cambió la profesión más que a los bancos centrales, que siguieron usando durante años modelos macroeconométricos keynesianos antes de adoptar modelos EGDE estimados.
+\item Se vuelve también contra sus herederos: muchos parámetros de los EGDE (hábitos, costes de ajuste, indexación) se añaden para ajustar los datos, y no está claro que sean profundos \parencite{ChariKehoeMcGrattan2009New}.
+\item \emph{Recapitulación}: si los agentes miran al futuro, quien hace la política también debe hacerlo. Es la puerta a la inconsistencia temporal.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Reglas frente a discrecionalidad: \autor{Kydland} y \autor{Prescott} (1977), \autor{Barro} y \autor{Gordon} (1983)}\label{sec:kydland-prescott}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Una vez vista la crítica, pasamos a lo que implica que la política tenga que mirar al futuro.
+\item En «Rules Rather than Discretion: The Inconsistency of Optimal Plans», \textcite{KydlandPrescott1977Rules} muestran que un plan óptimo hoy deja de serlo mañana, una vez que los agentes han actuado creyéndolo. Una autoridad que vuelve a optimizar en cada momento (\emph{discrecionalidad}) acaba peor que una que se compromete con una regla. Vale para la inflación, los impuestos sobre el capital, las patentes o la regulación \vertema{3.A.20}; \textcite{BarroGordon1983Positive} lo aplican a la política monetaria.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Orden de las jugadas}: primero el público fija sus expectativas, $\pi^e_t$ (por ejemplo, en los convenios salariales); después, la autoridad elige la inflación. Hay información completa: el público conoce los objetivos de la autoridad.
+\item \emph{Oferta}: la curva de \autor{Phillips} con expectativas racionales, $U_t=U^n-\alpha\,(\pi_t-\pi^e_t)$.
+\item \emph{Objetivo de la autoridad}, con $U^*<U^n$ (quiere menos paro que el natural, por ejemplo por las distorsiones del mercado de trabajo; sin ello no hay sesgo):
+  $$\optim{\min}{\pi_t}{L_t=(U_t-U^*)^2+\gamma\,(\pi_t-\pi^*)^2}{U_t=U^n-\alpha\,(\pi_t-\pi^e_t)}$$
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con $\pi^e_t$ dada, la condición de primer orden es lineal: $\gamma\,(\pi_t-\pi^*)=\alpha\,(U_t-U^*)$.
+\item El público lo sabe y espera la inflación que la autoridad elegirá, $\pi^e_t=\pi_t$. Entonces $U_t=U^n$ y
+  \begin{equation}\label{eq:sesgo}
+  \pi^D=\pi^*+\frac{\alpha}{\gamma}\,(U^n-U^*)>\pi^* .
+  \end{equation}
+\item \emph{Gráficamente} (figura~\ref{fig:barro-gordon}), en el plano $(U,\pi)$:
+  \begin{itemize}
+  \item \textbf{R}, la regla: $(U^n,\pi^*)$;
+  \item \textbf{T}, la tentación: si el público espera $\pi^*$, a la autoridad le conviene subir la inflación y bajar el paro a lo largo de la curva de \autor{Phillips} de corto plazo;
+  \item \textbf{D}, la discreción: el público lo anticipa y la economía acaba en $(U^n,\pi^D)$, con el mismo paro que con la regla y más inflación.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Reglas frente a discrecionalidad: regla (R), tentación (T) y discreción (D)}\label{fig:barro-gordon}
+\grafico[0.68\textwidth]{barro-gordon}
+\fuente{elaboración propia a partir de \textcite{KydlandPrescott1977Rules} y \textcite{BarroGordon1983Positive}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La discrecionalidad tiene un \concepto{sesgo inflacionista} sin ninguna ganancia de paro. La regla da la misma tasa de paro con menos inflación, pero no es creíble: si el público espera $\pi^*$, a la autoridad le conviene incumplirla. La discreción es el equilibrio de \autor{Nash} del juego entre la autoridad y el público \vertema{3.A.14}. Desarrollo en el anexo~\ref{anexo:kydland-prescott} \vertema{3.A.36}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Cómo llegar a la regla:
+  \begin{itemize}
+  \item la \emph{reputación} en un juego repetido \parencite{BarroGordon1983Rules} \vertema{3.A.14}. Pegatina: «cría fama y échate a dormir»: el banco central que se gana la fama de duro con la inflación puede luego sostenerla con poco esfuerzo;
+  \item delegar en un banquero central más conservador que la sociedad, con un $\gamma$ mayor \parencite{Rogoff1985Optimal}, o darle un contrato de incentivos \parencite{Walsh1995Optimal};
+  \item renunciar a la política monetaria propia, «atarse las manos» \parencite{GiavazziPagano1988Advantage} \vertema{3.B.16}.
+  \end{itemize}
+\item En la práctica: bancos centrales \emph{independientes} con un \emph{objetivo de inflación} explícito. Nueva Zelanda fue la primera: su banco central fijó un objetivo numérico de inflación en marzo de 1990 \parencite{BernankeEtAl1997NuevaZelanda}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Entre los países ricos, los bancos centrales más independientes han tenido menos inflación, sin menos crecimiento \parencite{AlesinaSummers1993Central}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Es la base de la arquitectura monetaria actual. El BCE fijó en julio de 2021 un objetivo de inflación del 2~\% a medio plazo, simétrico, y la evaluación concluida en junio de 2025 lo mantuvo \parencite{BCE2021Estrategia,BCE2025Estrategia}. La Reserva Federal buscó entre 2020 y 2025 una inflación \emph{media} del 2~\%, y en agosto de 2025 volvió a un objetivo de inflación flexible \parencite{Fed2025Prensa} (anexo~\ref{anexo:kydland-prescott}).
+\item La función de pérdida es \emph{ad hoc}, y el modelo no explica por qué el público no castiga antes a la autoridad: lo resuelve la reputación.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La equivalencia ricardiana (\autor{Barro}, 1974)}\label{sec:ricardiana}
+
+\begin{itemize}
+\item Una vez vista la política monetaria, pasamos a la fiscal, con la misma herramienta: las expectativas racionales aplicadas a los impuestos futuros.
+\end{itemize}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \autor{Ricardo} planteó que deuda e impuestos podían ser equivalentes, y lo descartó en la práctica. \textcite{Barro1974} lo recupera en «Are Government Bonds Net Wealth?»; el nombre de \concepto{equivalencia ricardiana} es de \textcite{Buchanan1976Barro}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Hogares de horizonte infinito, o dinastías unidas por herencias altruistas; impuestos de suma fija; sin restricciones de liquidez; el Estado y los hogares se endeudan al mismo tipo de interés; una senda de gasto público dada.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La restricción del Estado obliga a que el valor actual de los impuestos sea igual al del gasto más la deuda inicial. Un recorte de impuestos hoy financiado con deuda significa más impuestos mañana del mismo valor actual: la riqueza de los hogares no cambia y ahorran el recorte entero.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Con una senda de gasto dada, da igual financiarla con impuestos o con deuda: la deuda pública no es riqueza neta, son impuestos aplazados.
+\item \emph{Lo que no dice}: que el gasto público no tenga efectos; solo, que da igual cómo se financie \vertema{3.A.38}.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item Falla si las vidas son finitas sin herencias \parencite{Blanchard1985Debt}, con restricciones de liquidez, impuestos distorsionantes o hogares que consumen su renta corriente \parencite{CampbellMankiw1989Consumption}. La evidencia es de cumplimiento parcial; las razones del incumplimiento se desarrollan en el anexo~\ref{anexo:fiscal} \vertema{3.A.39}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La aritmética monetarista desagradable (\autor{Sargent} y \autor{Wallace}, 1981)}\label{sec:aritmetica}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{SargentWallace1981Some} preguntan si el banco central puede controlar la inflación cuando la política fiscal no se ajusta. Depende de quién manda:
+  \begin{itemize}
+  \item con \concepto{dominación monetaria} (o dominancia), el banco central fija su senda de señoreaje y la autoridad fiscal ajusta el saldo primario;
+  \item con \concepto{dominación fiscal}, la senda de saldos primarios está dada y el banco central tiene que dar el señoreaje que falte.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\begin{itemize}
+\item \emph{Mecanismo}: la solvencia exige que la deuda sea igual al valor actual de los saldos primarios y del señoreaje. Bajo dominación fiscal, menos señoreaje hoy (una política monetaria más dura) significa más deuda y, por tanto, más señoreaje y más inflación mañana; y como la demanda de dinero depende de la inflación esperada, puede subir incluso la de hoy.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item Bajo dominación fiscal, la inflación es en último término un fenómeno fiscal: un banco central independiente necesita disciplina fiscal. La teoría fiscal del nivel de precios lleva la idea más lejos \parencite{Leeper1991}. Desarrollo en el anexo~\ref{anexo:fiscal} \vertema{3.A.39}.
+\item \emph{Recapitulación del bloque}: con expectativas racionales, lo anticipado de la política no engaña, los modelos sin microfundamentos no sirven para evaluarla, la discrecionalidad genera inflación sin empleo y la política monetaria depende de la fiscal. Falta un modelo del ciclo coherente con todo ello: es el bloque~\ref{sec:consolidacion}.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Consolidación de la revolución: teoría de los ciclos reales\newline y el surgimiento de los modelos EGDE}\label{sec:consolidacion}
+\minutos{8}
+
+\begin{itemize}
+\item Una vez vistas las consecuencias para la política, pasamos a los modelos con los que la escuela explicó el ciclo y que acabaron siendo el lenguaje común de la macroeconomía.
+\item \emph{Conclusión anticipada}: \autor{Kydland} y \autor{Prescott} conservan el método de \autor{Lucas} y cambian la perturbación: no el dinero, sino la tecnología. Su modelo de ciclo real es el primer modelo de equilibrio general dinámico y estocástico; con rigideces nominales, se convierte en el EGDE neokeynesiano que hoy usan los bancos centrales.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Idea: del ciclo monetario de \autor{Lucas} al ciclo real}\label{sec:idea-rbc}
+
+\begin{itemize}
+\item \textcite{Lucas1975Equilibrium,Lucas1977Understanding} define el ciclo como los movimientos conjuntos y persistentes de la producción, el consumo, la inversión, las horas, los precios y los tipos de interés alrededor de su tendencia, generados por perturbaciones aleatorias que se propagan por decisiones óptimas. En su versión, las perturbaciones eran monetarias y se transmitían por la confusión de las islas.
+\item Esa versión se agotó pronto:
+  \begin{itemize}
+  \item las perturbaciones monetarias explicaban poco de las fluctuaciones de la producción cuando se incluían los tipos de interés \parencite{Sims1980Comparison}, y las series parecían dominadas por perturbaciones reales y permanentes \parencite{NelsonPlosser1982Trends};
+  \item los datos monetarios se publicaban enseguida, lo que hacía difícil sostener la confusión.
+  \end{itemize}
+\item El propio \autor{Lucas} lo reconoció: «Aquel artículo de 1975 fue un callejón sin salida […]; creo que el de \autor{Kydland} y \autor{Prescott} de 1982 salió de ahí» (entrevista con Carlos \autor{Usabiaga}, en \textcite[181]{Usabiaga1999Lucas}, citada por \textcite{DeVroey2010Lucas}).
+\item El relevo: «Time to Build and Aggregate Fluctuations» \parencite{KydlandPrescott1982Time} y «Real Business Cycles» \parencite{LongPlosser1983Real}. La perturbación pasa a ser \emph{tecnológica}, medida con el residuo de \autor{Solow} \vertema{3.A.45}, y el ciclo se explica con la misma teoría que el crecimiento \vertema{3.A.43}. \autor{Prescott} sostenía que las perturbaciones tecnológicas explican «más de la mitad» de las fluctuaciones de la posguerra, «con una mejor estimación cercana al 75~\%» \parencite{Prescott1986Response}.
+\item El residuo de \autor{Solow} sigue de cerca al ciclo (correlación de 0,82 en 1947-2026), como sostenía \textcite{Prescott1986}; pero, corregido por la utilización del capital y del trabajo, la correlación desaparece ($-0{,}15$): buena parte del «shock tecnológico» medido es intensidad de uso de los factores (figura~\ref{fig:residuo-solow}) \parencite{Fernald2026TFP,BasuFernaldKimball2006Are}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El residuo de \autor{Solow} y el ciclo en Estados Unidos, 1947-2026}\label{fig:residuo-solow}
+\grafico[0.85\textwidth]{residuo-solow}
+\fuente{elaboración propia con la serie trimestral de productividad total de los factores de \textcite{Fernald2026TFP} (Banco de la Reserva Federal de San Francisco); componente cíclico del filtro de \autor{Hodrick} y \autor{Prescott}.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Características distintivas de los modelos EGDE}\label{sec:caracteristicas-egde}
+
+\begin{itemize}
+\item \emph{Qué es un EGDE}: en palabras de \textcite{Kocherlakota2010Modern}, «\emph{dinámico} se refiere a que hogares y empresas miran hacia delante; \emph{estocástico}, a que hay \emph{shocks}; \emph{general}, a que se incluye toda la economía; y \emph{equilibrio}, a que se explicitan las restricciones y los objetivos de hogares y empresas». Son las reglas del juego que la nueva economía keynesiana aceptará después \vertema{3.A.7}.
+\item \emph{El ciclo real es un modelo de crecimiento con 3 cambios}: parte del modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} \vertema{3.A.43}, con un hogar y una empresa representativos \vertema{3.A.29}, competencia perfecta y sin fallos de mercado, y le añade:
+  \begin{itemize}
+  \item \emph{perturbaciones aleatorias} y persistentes a la productividad total de los factores (PTF);
+  \item una \emph{oferta de trabajo} que responde al salario y al tipo de interés, a la manera de \autor{Lucas} y \autor{Rapping} (\ref{sec:lucas-rapping});
+  \item \emph{formas funcionales explícitas} con valores numéricos para los parámetros, para poder compararlo con los datos.
+  \end{itemize}
+\item \emph{Cómo se resuelve}: como no hay fallos de mercado, el equilibrio competitivo coincide con la solución de un planificador benevolente, por el primer teorema fundamental de la economía del bienestar (1TFEB) \vertema{3.A.22}. Las condiciones de primer orden no son lineales: se \emph{log-linealizan} alrededor del estado estacionario y se resuelven por métodos numéricos.\footnote{\textcite{Buiter2009Unfortunate} llamó a la linealización «esta castración de los modelos macroeconómicos»: se pierden los umbrales, los puntos de inflexión y los aceleradores no lineales que importan en una crisis.}
+\item \emph{Cómo se lleva a los datos: la calibración} \parencite{KydlandPrescott1982Time,KydlandPrescott1996Computational}, en 5 pasos:
+  \begin{enumerate}
+  \item se construye el modelo;
+  \item se \emph{calibra}: los parámetros se toman de promedios de largo plazo (la participación del capital en la renta, la depreciación, la fracción del tiempo dedicada a trabajar) y de estudios microeconómicos, no de una estimación del propio modelo; el proceso de la perturbación sale del residuo de \autor{Solow};
+  \item se resuelve numéricamente;
+  \item se simula;
+  \item se comparan los momentos simulados (volatilidades, correlaciones) con los observados.
+  \end{enumerate}
+  No es un contraste formal: \autor{Kydland} y \autor{Prescott} lo presentaron como un \emph{experimento computacional}.
+\item \emph{El precio}: se pierde transparencia. Con una solución numérica no se ve en general cómo afecta cada parámetro a cada variable, y el agente representativo deja fuera la distribución \vertema{3.A.29}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelo de ciclo real (\autor{Kydland} y \autor{Prescott}, 1982; versión de \autor{McCallum}, 1989)}\label{sec:rbc}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La pregunta: \emph{¿pueden las perturbaciones de productividad, en una economía competitiva con agentes que optimizan, explicar las fluctuaciones?}
+\item Pegatina: «al mal tiempo, buena cara». Una recesión es la respuesta óptima a una mala racha de productividad.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Economía cerrada, sin sector público ni dinero, con un solo bien, en tiempo discreto y horizonte infinito.
+\item Un hogar y una empresa representativos, competencia perfecta, precios y salarios flexibles. El bien es el numerario, $P_t=1$: $w_t$ es el salario real y $r_t+\delta$ el alquiler del capital.
+\item El hogar maximiza $\mathbb{E}_0\sum_t\beta^t\left[\frac{C_t^{1-\theta}-1}{1-\theta}-\chi\frac{L_t^{1+\varphi}}{1+\varphi}\right]$, con $\theta$ la aversión relativa al riesgo, $\chi$ el peso de la desutilidad del trabajo y $1/\varphi$ la elasticidad de \autor{Frisch}.
+\item Tecnología \emph{Cobb-Douglas} con una perturbación tecnológica persistente, $\varepsilon^A_t$ ruido blanco, $0\le\rho_A<1$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Las ecuaciones del modelo}: tecnología, precios de los factores, decisiones del hogar (consumo hoy o mañana; ocio o consumo) y acumulación del capital,
+  \begin{align}
+  Y_t&=A_tK_t^{\alpha}L_t^{1-\alpha},\qquad \ln A_t=\rho_A\ln A_{t-1}+\varepsilon^A_t \label{eq:rbc-tecnologia}\\
+  w_t&=(1-\alpha)A_t\left(\tfrac{K_t}{L_t}\right)^{\alpha},\qquad r_t+\delta=\alpha A_t\left(\tfrac{K_t}{L_t}\right)^{\alpha-1} \label{eq:rbc-precios}\\
+  C_t^{-\theta}&=\beta\,\mathbb{E}_t\!\left[C_{t+1}^{-\theta}(1+r_{t+1})\right],\qquad \chi L_t^{\varphi}=C_t^{-\theta}w_t \label{eq:rbc-hogar}\\
+  K_{t+1}&=(1-\delta)K_t+Y_t-C_t \label{eq:rbc-acumulacion}
+  \end{align}
+  La ecuación de \autor{Euler} es la estocástica del \vertema{3.A.29}; la del trabajo, la condición intratemporal del \vertema{3.A.25}.
+\item \emph{Mecanismo} ante una perturbación tecnológica positiva y transitoria (figura~\ref{fig:irf-rbc}):
+  \begin{itemize}
+  \item sube la producción directamente, con los mismos factores;
+  \item suben el salario y el rendimiento del capital: como la mejora es temporal, conviene trabajar más ahora (\emph{sustitución intertemporal}) y ahorrar parte de la renta extra para repartirla en el tiempo, de modo que la inversión sube mucho y el consumo poco;
+  \item la inversión de hoy es capital de mañana: el efecto dura más que la perturbación (\emph{propagación}), aunque casi toda la persistencia viene de $\rho_A$.
+  \end{itemize}
+  Con una perturbación permanente, la riqueza sube más: el consumo salta y las horas apenas cambian, porque el efecto renta compensa el de sustitución.
+\item \emph{Una solución cerrada} \parencite{McCallum1989Real}: con depreciación completa ($\delta=1$), utilidad logarítmica ($\theta=1$) y trabajo inelástico ($L_t=1$), el hogar ahorra una fracción constante de la renta, $K_{t+1}=\alpha\beta A_tK_t^{\alpha}$, y una perturbación de un solo periodo se desvanece poco a poco, en $\alpha^k$ (anexo~\ref{anexo:rbc}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Respuesta a una perturbación tecnológica de una desviación típica ($\varepsilon^A_0=\sigma_\varepsilon=0{,}007$) en el modelo de ciclo real}\label{fig:irf-rbc}
+\grafico[0.95\textwidth]{irf-rbc}
+\fuente{elaboración propia: simulación del modelo log-linealizado con $\alpha=1/3$, $\beta=0{,}99$, $\delta=0{,}025$, $\theta=1$, $\varphi=1$, $\sigma_\varepsilon=0{,}007$ y $\rho_A=0{,}95$ (líneas continuas) o $\rho_A=0$ (discontinuas), con los valores de \textcite{Prescott1986} y \textcite{HansenWright1992Labor}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El ciclo es eficiente}: sin fallos de mercado, el equilibrio es óptimo de Pareto (1TFEB), las fluctuaciones son respuestas óptimas a perturbaciones reales y el paro es voluntario. Estabilizar empeoraría el bienestar \vertema{3.A.22}.
+\item \emph{El dinero es neutral} y no hace falta para explicar el ciclo.
+\item \emph{Crecimiento y ciclo, una sola teoría}: el mismo modelo explica la tendencia y las desviaciones.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{HansenWright1992Labor} calibran el proceso de la tecnología con $\rho_A=0{,}95$ y $\sigma_\varepsilon=0{,}007$, los valores de \textcite{Prescott1986} para el residuo de \autor{Solow}. El modelo reproduce unos dos tercios de la volatilidad de la producción, un consumo más suave y una inversión más volátil que la producción (tabla~\ref{tab:calibracion}).
+\item Falla en el mercado de trabajo: las horas varían la mitad de lo observado, mucho menos que la productividad, y están casi perfectamente correlacionadas con ella, cuando en los datos esa correlación es ligeramente negativa.
+\item Con datos actuales los hechos estilizados se mantienen, salvo uno: desde mediados de los 80 la correlación entre horas y productividad es claramente negativa ($-0{,}60$ en 1984-2019), lo contrario de lo que predice un modelo movido solo por \emph{shocks} tecnológicos \parencite{FRED2026CicloEEUU}. Con la definición de \textcite{Rebelo2005Real} (3 trimestres seguidos por debajo de la tendencia), el modelo da una recesión media de un año, como en los datos.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El ciclo de Estados Unidos y el modelo de ciclo real estándar}\label{tab:calibracion}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{5.6cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.3cm}>{\centering\arraybackslash}m{2.6cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textcolor{tceemorado}{\textbf{Datos, 1947-1991}} & \textcolor{tceeverde}{\textbf{Modelo estándar}} & \textcolor{tceeazul}{\textbf{Datos, 1984-2019}}\\
+\midrule
+Desviación típica de la producción (\%), $\sigma_Y$ & \textcolor{tceemorado}{1,92} & \textcolor{tceeverde}{1,30} & \textcolor{tceeazul}{1,00}\\
+Consumo frente a producción, $\sigma_C/\sigma_Y$ & \textcolor{tceemorado}{0,45} & \textcolor{tceeverde}{0,31} & \textcolor{tceeazul}{0,63}\\
+Inversión frente a producción, $\sigma_I/\sigma_Y$ & \textcolor{tceemorado}{2,78} & \textcolor{tceeverde}{3,15} & \textcolor{tceeazul}{3,97}\\
+Horas frente a producción, $\sigma_L/\sigma_Y$ & \textcolor{tceemorado}{0,96} & \textcolor{tceeverde}{0,49} & \textcolor{tceeazul}{1,68}\\
+Horas frente a productividad, $\sigma_L/\sigma_{Y/L}$ & \textcolor{tceemorado}{2,15} & \textcolor{tceeverde}{0,53} & \textcolor{tceeazul}{1,98}\\
+Correlación de las horas con la productividad & \textcolor{tceemorado}{$-0{,}14$} & \textcolor{tceeverde}{0,93} & \textcolor{tceeazul}{$-0{,}60$}\\
+\bottomrule
+\end{tabular}
+\fuente{datos y modelo estándar de \textcite{HansenWright1992Labor} (1947T1-1991T3; horas de la encuesta de establecimientos), y cálculo propio para 1984T1-2019T4 con datos de FRED (sector empresarial no agrícola) \parencite{FRED2026CicloEEUU}. Componente cíclico del filtro de \autor{Hodrick} y \autor{Prescott} \parencite{HodrickPrescott1997} \vertema{3.A.42}.}
+\end{table}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{¿Qué perturbación?} El residuo de \autor{Solow} no es solo tecnología: se mueve con el gasto militar y la política monetaria \parencite{Hall1988} y recoge la utilización de los factores \parencite{BurnsideEichenbaumRebelo1993Labor}; cuesta además interpretar las recesiones como retrocesos tecnológicos.
+\item \emph{Poca propagación propia}: la producción copia la perturbación; la persistencia se impone con $\rho_A$ \parencite{CogleyNason1995Output}.
+\item \emph{Mercado de trabajo}: necesita una oferta de trabajo mucho más elástica de lo que estiman los estudios microeconómicos (el trabajo indivisible lo resuelve en parte, \vertema{3.A.25}), y, cuando se identifican bien las perturbaciones tecnológicas, las horas \emph{caen} a corto plazo \parencite{Gali1999Technology}.
+\item \emph{El dinero sí importa}, y un modelo de ciclo que no explica la Gran Depresión explica solo los temblores pequeños, no los terremotos: para \textcite{Bernanke1995Macroeconomics}, entenderla es «el Santo Grial de la macroeconomía». Las limitaciones se desarrollan en el anexo~\ref{anexo:rbc} \vertema{3.A.42}.
+\item \emph{Méritos}: con una sola perturbación y pocos parámetros reproduce lo esencial de la volatilidad relativa; une ciclo y crecimiento, y deja un método: el modelo que todos los demás modifican \parencite{Rebelo2005Real}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El surgimiento de los modelos EGDE: del ciclo real a la nueva síntesis}\label{sec:surgimiento-egde}
+
+\begin{itemize}
+\item Una vez visto el primer EGDE, pasamos a ver cómo se convirtió en el modelo estándar de la macroeconomía. La secuencia, que completa la línea del tiempo (figura~\ref{fig:linea-tiempo-nmc}):
+  \begin{enumerate}
+  \item \emph{1982-1988, el ciclo real}: el armazón de equilibrio general dinámico y estocástico, calibrado \parencite{KydlandPrescott1982Time,LongPlosser1983Real,Prescott1986}.
+  \item \emph{Años 90, los EGDE neokeynesianos}: sobre el mismo armazón, competencia monopolística y precios que se ajustan de forma escalonada. El dinero y la política monetaria vuelven a tener efectos reales: es la \concepto{nueva síntesis neoclásica} \parencite{GoodfriendKing1997New,RotembergWoodford1997Optimization} \vertema{3.A.7}.
+  \item \emph{Años 2000, los modelos medianos estimados}: de la calibración a la \emph{estimación bayesiana}; con hábitos, costes de ajuste e indexación, ajustan los datos tan bien como un VAR \parencite{ChristianoEichenbaumEvans2005,SmetsWouters2003Estimated,SmetsWouters2007Shocks}. Los bancos centrales los adoptan para sus proyecciones, como el NAWM del BCE \parencite{ChristoffelCoenenWarne2008}.
+  \item \emph{Desde 2008}: fricciones financieras \parencite{BernankeGertlerGilchrist1999}, el límite inferior de los tipos de interés y hogares heterogéneos, los modelos HANK \parencite{KaplanMollViolante2018Monetary}.
+  \end{enumerate}
+\item \emph{Lectura}: para \textcite{DeVroey2016History}, el ciclo real y la nueva economía keynesiana de 2.ª generación no son 2 escuelas enfrentadas, sino 2 transformaciones sucesivas del programa EGDE de \autor{Lucas}, \autor{Kydland} y \autor{Prescott}.
+\item \emph{Críticas}: tras 2008, Paul \textcite{Romer2016Trouble} y \textcite{Stiglitz2018Wrong} sostienen que el programa se alejó de los datos y del origen financiero de las crisis; \textcite{Blanchard2018Future} defiende que siga siendo el núcleo, junto a modelos más sencillos. El debate se desarrolla en \vertema{3.A.7} y \vertema{3.A.1}.
+\item \emph{Recapitulación}: el surgimiento de los EGDE es la consolidación de la revolución de \autor{Lucas}: el método se quedó y las conclusiones cambiaron.
+\end{itemize}
+
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión, la nueva macroeconomía clásica cambió la macroeconomía en 3 pasos. Las expectativas racionales quitaron a la política la posibilidad de engañar de forma sistemática: con mercados que se vacían, solo las sorpresas mueven la producción. La crítica de \autor{Lucas} obligó a construir los modelos sobre preferencias y tecnología, que no cambian con la política. Y \autor{Kydland} y \autor{Prescott} dieron a ese programa su herramienta, el modelo de equilibrio general dinámico y estocástico. «Lo que voy a describir es una revolución en la macroeconomía, una transformación metodológica que ha cambiado la forma de hacer nuestra ciencia»: así empezó \autor{Prescott} su conferencia Nobel, el 8 de diciembre de 2004 \parencite{Prescott2006Nobel}.
+\item \textbf{\emph{Relevancia}}: 3 premios Nobel lo reconocen (\autor{Lucas}, 1995; \autor{Kydland} y \autor{Prescott}, 2004; \autor{Sargent}, con \autor{Sims}, 2011) \parencite{NobelPrize1995Lucas,Nobel2004KydlandPrescott,Nobel2011SargentSims}, y su método es el lenguaje común de la macroeconomía y de los bancos centrales.
+\item \textbf{\emph{Extensiones}}: la reacción de la nueva economía keynesiana, que acepta el método y recupera las rigideces \vertema{3.A.7}; la tasa natural y la curva de \autor{Phillips} \vertema{3.A.28}; el diseño de la política monetaria y la independencia \vertema{3.A.36}; la transmisión del dinero anticipado y no anticipado \vertema{3.A.37}; la dominación fiscal \vertema{3.A.39}; la inflación \vertema{3.A.41}; los ciclos reales \vertema{3.A.42}; la modelización dinámica \vertema{3.A.29}, y el debate sobre los EGDE \vertema{3.A.1}. En términos de \textcite{Lakatos1970Falsification}, un programa de investigación progresivo: su núcleo se ha mantenido y su cinturón protector ha pasado de las islas al ciclo real y de este a los EGDE con fricciones.
+\item \textbf{\emph{Opinión}}: ganó el método y perdió buena parte de las conclusiones. Las expectativas racionales y los microfundamentos se quedaron; la neutralidad de la política y el ciclo puramente tecnológico, no. En 2003, \autor{Lucas} daba por resuelto «a todos los efectos prácticos» el problema de evitar las depresiones \parencite{Lucas2003}; 5 años después, la crisis obligó a meter en sus modelos los bancos y el límite inferior de los tipos, pero ninguno de esos arreglos volvió a los modelos sin expectativas.
+\item \textbf{\emph{Idea final}}: «a otro perro con ese hueso». La nueva macroeconomía clásica enseñó que a quien conoce las reglas no se le engaña dos veces con el mismo truco, y por eso hoy la política se diseña como reglas creíbles, que anclan las expectativas incluso con una inflación del 10~\%. Lo que no previó es que, mientras los precios tardan en moverse, el hueso todavía alimenta un rato: esa es la respuesta de los nuevos keynesianos.
+\end{itemize}
+
+\clearpage
+\appendix
+
+\section{Anexo: la curva de oferta de \autor{Lucas} paso a paso}\label{anexo:lucas}
+
+\subsection{La extracción de señales}
+
+\begin{itemize}
+\item El productor de la isla $i$ ve $p_{i,t}=p_t+z_{i,t}$ y quiere conocer $z_{i,t}$. Con $p_t\sim N(p^e_t,\sigma^2_p)$ y $z_{i,t}\sim N(0,\sigma^2_z)$ independientes, $z_{i,t}$ y $p_{i,t}$ son conjuntamente normales y la esperanza condicionada es lineal:
+  \begin{equation*}
+  \mathbb{E}[z_{i,t}\mid p_{i,t}]=\frac{\mathrm{Cov}(z_{i,t},p_{i,t})}{\mathrm{Var}(p_{i,t})}\,\left(p_{i,t}-\mathbb{E}_{t-1}[p_{i,t}]\right)=\frac{\sigma^2_z}{\sigma^2_z+\sigma^2_p}\,\left(p_{i,t}-p^e_t\right)=\omega\,\left(p_{i,t}-p^e_t\right),
+  \end{equation*}
+  porque $\mathrm{Cov}(z_{i,t},p_t+z_{i,t})=\sigma^2_z$, $\mathrm{Var}(p_t+z_{i,t})=\sigma^2_p+\sigma^2_z$ y $\mathbb{E}_{t-1}[z_{i,t}]=0$.
+\item La parte que el productor atribuye al nivel general es la complementaria: $\mathbb{E}[p_t\mid p_{i,t}]=(1-\omega)\,p_{i,t}+\omega\,p^e_t$, una media ponderada de lo que ve y de lo que esperaba.
+\end{itemize}
+
+\subsection{La oferta de \autor{Lucas}}
+
+\begin{itemize}
+\item Oferta de la isla: $y_{i,t}=y^n+\varepsilon_S\,\mathbb{E}[z_{i,t}\mid p_{i,t}]=y^n+\omega\varepsilon_S\,\left(p_{i,t}-p^e_t\right)$.\footnote{En \textcite[cap.~6]{Romer2019Advanced}, la elasticidad sale de una utilidad lineal en el consumo y convexa en el trabajo, con la producción igual al trabajo; aquí basta con que la oferta crezca con el precio relativo esperado.}
+\item Agregando, como las $z_{i,t}$ tienen media nula entre islas, la media de los $p_{i,t}$ es $p_t$ y
+  \begin{equation*}
+  y_t=y^n+\psi\,\left(p_t-p^e_t\right),\qquad \psi=\omega\,\varepsilon_S,
+  \end{equation*}
+  que es \eqref{eq:oferta-lucas}.
+\end{itemize}
+\findemo
+
+\subsection{El equilibrio}
+
+\begin{itemize}
+\item Con la demanda $y_t=m_t-p_t$, la esperanza en $t-1$ de la oferta da $\mathbb{E}_{t-1}[y_t]=y^n$, y la de la demanda, $p^e_t=\mathbb{E}_{t-1}[m_t]-y^n$.
+\item Restando las esperanzas, las sorpresas cumplen $y_t-y^n=(m_t-\mathbb{E}_{t-1}[m_t])-(p_t-p^e_t)$ y $y_t-y^n=\psi\,(p_t-p^e_t)$. Despejando,
+  \begin{equation*}
+  p_t-p^e_t=\frac{m_t-\mathbb{E}_{t-1}[m_t]}{1+\psi},\qquad y_t=y^n+\frac{\psi}{1+\psi}\,\left(m_t-\mathbb{E}_{t-1}[m_t]\right),
+  \end{equation*}
+  y $p_t=\mathbb{E}_{t-1}[m_t]-y^n+\frac{1}{1+\psi}\,(m_t-\mathbb{E}_{t-1}[m_t])$, que son \eqref{eq:produccion-lucas} y \eqref{eq:precios-lucas}.
+\item La varianza del nivel de precios es endógena: $\sigma^2_p=\sigma^2_\varepsilon/(1+\psi)^2$, con $\sigma^2_\varepsilon$ la varianza de las sorpresas monetarias. Cuanto más errático es el dinero, mayor $\sigma^2_p$, menor $\omega$ y menor $\psi$: es la predicción que contrasta \textcite{Lucas1973Some} (\ref{sec:critica-lucas}).
+\end{itemize}
+\findemo
+
+\subsection{La inefectividad de la política sistemática}
+
+\begin{itemize}
+\item Con $y_t=y^n+\psi\,(p_t-p^e_t)+u_t$, $y_t=m_t-p_t$ y $m_t=\mu_0+\mu_1u_{t-1}+\varepsilon_t$:
+  \begin{itemize}
+  \item las esperanzas en $t-1$: $\mathbb{E}_{t-1}[y_t]=y^n$ (porque $u_t$ es ruido blanco) y $p^e_t=\mu_0+\mu_1u_{t-1}-y^n$;
+  \item las sorpresas: $p_t-p^e_t=\varepsilon_t-(y_t-y^n)$, y, en la oferta, $(1+\psi)(y_t-y^n)=\psi\,\varepsilon_t+u_t$.
+  \end{itemize}
+\item Luego $y_t-y^n=(\psi\,\varepsilon_t+u_t)/(1+\psi)$, que es \eqref{eq:inefectividad}, y $p_t=\mu_0+\mu_1u_{t-1}-y^n+(\varepsilon_t-u_t)/(1+\psi)$: $\mu_1$ solo afecta a los precios.
+\item Si la producción tiene inercia, $y_t=y^n+\psi\,(p_t-p^e_t)+\lambda_y\,(y_{t-1}-y^n)+u_t$, y la regla responde a la producción pasada, $m_t=\mu_0+\mu_1\,(y_{t-1}-y^n)+\varepsilon_t$, el mismo cálculo da $y_t-y^n=\lambda_y\,(y_{t-1}-y^n)+(\psi\,\varepsilon_t+u_t)/(1+\psi)$: la regla tampoco cambia la dinámica de la producción.\footnote{$\lambda_y$ es local de este anexo (persistencia de la producción); no es un multiplicador de Lagrange. Para un desarrollo más completo, \textcite[cap.~5]{Heijdra2017Foundations}.}
+\end{itemize}
+\findemo
+
+\section{Anexo: la inconsistencia temporal paso a paso}\label{anexo:kydland-prescott}
+
+\subsection{Supuestos}
+
+\begin{itemize}
+\item \emph{Jugadores}: el público (los que firman los convenios salariales) y la autoridad monetaria, que controla la inflación de cada periodo.\footnote{La autoridad controla la oferta monetaria y, a través de ella, la inflación; se simplifica suponiendo que elige directamente la inflación, sin que cambie el resultado.}
+\item \emph{Orden de las jugadas}: primero el público fija $\pi^e_t$; después la autoridad elige $\pi_t$. Si fuera al revés, la autoridad sería líder y elegiría la regla: no habría inconsistencia. Es un juego de información \emph{completa}: el público conoce la función de pérdida de la autoridad; lo que falta es \emph{compromiso}.
+\item \emph{Oferta}: $U_t=U^n-\alpha\,(\pi_t-\pi^e_t)$, $\alpha>0$, la oferta de \autor{Lucas} con la ley de \autor{Okun} (\ref{sec:oferta-lucas}).
+\item \emph{Preferencias de la autoridad}: $L_t=(U_t-U^*)^2+\gamma\,(\pi_t-\pi^*)^2$, con $U^*<U^n$. Sus curvas de indiferencia en el plano $(U,\pi)$ son \emph{elipses} centradas en el punto de felicidad $(U^*,\pi^*)$ (circunferencias si $\gamma=1$, como en la figura~\ref{fig:barro-gordon}); con $\gamma$ alto (más aversión a la inflación) son más planas, y con $\gamma$ bajo, más verticales (figura~\ref{fig:barro-gordon-preferencias}).\footnote{En \textcite{KydlandPrescott1977Rules} y \textcite{BarroGordon1983Positive} la función de pérdida se postula. \textcite{RotembergWoodford1997Optimization} y \textcite{Woodford2003Interest} mostraron después que, en un modelo neokeynesiano, una función de este tipo aproxima el bienestar de los hogares \vertema{3.A.7}.}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Las preferencias de la autoridad con $\gamma$ alto y con $\gamma$ bajo}\label{fig:barro-gordon-preferencias}
+\grafico[0.85\textwidth]{barro-gordon-preferencias}
+\fuente{elaboración propia a partir de \textcite{BarroGordon1983Positive}.}
+\end{figure}
+
+\subsection{Desarrollo}
+
+\begin{itemize}
+\item \emph{Mejor respuesta de la autoridad}: con $\pi^e_t$ dada, sustituyendo la oferta en la pérdida y derivando,
+  \begin{equation*}
+  \frac{\partial L_t}{\partial\pi_t}=-2\alpha\,(U_t-U^*)+2\gamma\,(\pi_t-\pi^*)=0\ \Longrightarrow\ \pi_t=\frac{\gamma\,\pi^*+\alpha^2\,\pi^e_t+\alpha\,(U^n-U^*)}{\gamma+\alpha^2}.
+  \end{equation*}
+  La condición de segundo orden se cumple: $\partial^2L_t/\partial\pi_t^2=2(\alpha^2+\gamma)>0$. Es la función de reacción de la autoridad, el lugar de las tangencias entre las curvas de pérdida y las curvas de \autor{Phillips}; la del público es $\pi^e_t=\pi_t$.
+\item \emph{Equilibrio discrecional}: el público, racional, espera esa inflación, $\pi^e_t=\pi_t$. Sustituyendo, se obtiene \eqref{eq:sesgo}: $\pi^D=\pi^*+(\alpha/\gamma)(U^n-U^*)$ y $U^D=U^n$. Es el equilibrio perfecto en subjuegos del juego en el que el público mueve primero \vertema{3.A.14}.
+\item \emph{Regla (compromiso)}: si la autoridad puede comprometerse antes de que se formen las expectativas, elige $\pi^R=\pi^*$, con $U^R=U^n$.
+\item \emph{Tentación}: si el público espera $\pi^*$ y la autoridad no está comprometida, elige $\pi^T=\pi^*+\alpha\,(U^n-U^*)/(\gamma+\alpha^2)$ y consigue $U^T<U^n$.
+\item \emph{Pérdidas}, con $\Delta\equiv U^n-U^*$: $L^T=\gamma\Delta^2/(\gamma+\alpha^2)<L^R=\Delta^2<L^D=\Delta^2\,(1+\alpha^2/\gamma)$. La tentación es lo mejor para la autoridad; por eso la regla no es creíble, y como el público lo anticipa, se acaba en la discreción, la peor de las 3.
+\end{itemize}
+\findemo
+
+\subsection{Formas de llegar al óptimo}
+
+\begin{itemize}
+\item \emph{Reputación} \parencite{BarroGordon1983Rules}: si el juego se repite, la autoridad puede ganar fama de dura con la inflación cumpliendo la regla periodo tras periodo; el castigo es que, si se desvía, el público vuelve a esperar $\pi^D$ \vertema{3.A.14}. Ejemplo: Paul \autor{Volcker}, presidente de la Reserva Federal de 1979 a 1987, aceptó una recesión para bajar una inflación de 2 cifras \parencite{FedHistory2026Volcker}.
+\item \emph{Reglas}: un mandato legal, o renunciar a la política monetaria propia con un tipo de cambio fijo o una unión monetaria con un país de baja inflación, «atarse las manos» \parencite{GiavazziPagano1988Advantage} \vertema{3.B.16}.
+\item \emph{Delegación en un banquero conservador} \parencite{Rogoff1985Optimal}: con un $\gamma'>\gamma$, el sesgo baja a $(\alpha/\gamma')(U^n-U^*)$. El coste, con perturbaciones de oferta, es que estabiliza menos la producción.
+\item \emph{Contratos de incentivos} \parencite{Walsh1995Optimal}: una penalización lineal en la inflación elimina el sesgo sin ese coste.
+\item \emph{Independencia}: aleja la política monetaria del ciclo político; la evidencia la asocia con menos inflación sin menos crecimiento \parencite{AlesinaSummers1993Central}. No basta sola: si la política fiscal no se ajusta, puede imponerse la dominación fiscal (\ref{sec:aritmetica}).
+\end{itemize}
+
+\subsection{Su reflejo en los bancos centrales}
+
+\begin{itemize}
+\item \emph{Mandato}: el objetivo principal del Sistema Europeo de Bancos Centrales es mantener la estabilidad de precios (artículo 127.1 del Tratado de Funcionamiento de la Unión Europea).
+\item \emph{Objetivos cuantificados a medio plazo}: el BCE fijó en julio de 2021 un objetivo de inflación del 2~\% a medio plazo, simétrico: las desviaciones al alza y a la baja son igual de indeseables \parencite{BCE2021Estrategia}. La evaluación concluida el 30 de junio de 2025 lo mantuvo, pidió una respuesta «adecuadamente enérgica o persistente» ante desviaciones amplias y sostenidas y dejó la siguiente para 2030 \parencite{BCE2025Estrategia,BCE2025Evaluacion}.
+\item \emph{La Reserva Federal}: entre 2020 y 2025 buscó una inflación \emph{media} del 2~\%, compensando los periodos por debajo con otros por encima; en agosto de 2025 abandonó esa estrategia y volvió a un objetivo de inflación flexible del 2~\% \parencite{Fed2025Prensa,Powell2025Jackson}.
+\item \emph{Objetivo de inflación frente a objetivo de nivel de precios} (figura~\ref{fig:objetivo-precios}): con un objetivo de inflación, lo pasado, pasado: tras una perturbación, el nivel de precios no vuelve a su senda. Con un objetivo de nivel de precios, sí vuelve, lo que ancla mejor las expectativas a largo plazo, pero exige una inflación por debajo del objetivo durante un tiempo \parencite{MinfordHatcher2014}. La inflación media de la Reserva Federal era un caso intermedio, que compensaba solo dentro de una ventana; ningún gran banco central tiene hoy un objetivo de nivel de precios.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Objetivo de inflación y objetivo de nivel de precios}\label{fig:objetivo-precios}
+\grafico[0.65\textwidth]{objetivo-precios}
+\fuente{elaboración propia a partir de \textcite{MinfordHatcher2014}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Verificabilidad y seguimiento prospectivo}: el objetivo se mide con un índice conocido (el IAPC en la zona del euro, el deflactor del consumo en Estados Unidos) y la política mira a las previsiones de inflación, no a la inflación pasada \vertema{3.A.36}.
+\end{itemize}
+
+\section{Anexo: la equivalencia ricardiana y la aritmética monetarista}\label{anexo:fiscal}
+
+\subsection{La equivalencia ricardiana}
+
+\begin{itemize}
+\item \emph{Enunciado}: dada una senda de gasto público, da igual financiarla con impuestos o con deuda: el consumo, la inversión y la producción no cambian.\footnote{\autor{Barro} no usa en 1974 el nombre de «equivalencia ricardiana»; lo acuñó \textcite{Buchanan1976Barro}.}
+  \begin{itemize}
+  \item con \emph{deuda}, el ahorro privado sube en la misma cuantía para pagar los impuestos futuros;
+  \item con \emph{impuestos}, baja el ahorro privado y no cambia el público;
+  \item en los 2 casos, el ahorro nacional y el consumo son los mismos.
+  \end{itemize}
+\item \emph{Lo que no implica}: que el gasto no tenga efectos sobre la producción, el consumo o el empleo; en un modelo de ciclo real los tiene, por el efecto riqueza \parencite{BaxterKing1993Fiscal} \vertema{3.A.38}. Tampoco habla de la monetización: compara impuestos y deuda.
+\item \emph{Efectos no keynesianos}: si hay dudas sobre la sostenibilidad de la deuda, una consolidación creíble puede aumentar el consumo al reducir los impuestos futuros esperados y la incertidumbre \parencite{GiavazziPagano1990} \vertema{3.A.40}.
+\item \emph{Por qué falla} \parencite{Heijdra2017Foundations}:
+  \begin{enumerate}
+  \item \emph{vidas finitas} sin herencias, o con altruismo parcial: parte de la carga recae en generaciones futuras \parencite{Blanchard1985Debt} \vertema{3.A.29};
+  \item \emph{impuestos distorsionantes}: el momento del impuesto cambia los incentivos a trabajar y ahorrar;
+  \item \emph{gasto productivo}: si la inversión pública eleva el crecimiento, cambia la base de los impuestos futuros;
+  \item \emph{restricciones de liquidez}: los hogares que no pueden endeudarse gastan el recorte de impuestos \vertema{3.A.33};
+  \item \emph{miopía o racionalidad limitada}: una fracción de hogares consume su renta corriente \parencite{CampbellMankiw1989Consumption}.
+  \end{enumerate}
+\item \emph{Economía abierta}: un recorte de impuestos con el gasto dado no cambia la cuenta corriente, porque el ahorro privado compensa el menor ahorro público \parencite{UribeSchmittGrohe2017Open}.
+\item \emph{Evidencia}: los hogares gastan una parte de las devoluciones y los recortes de impuestos, así que el cumplimiento es parcial; su valor es el de un punto de referencia para estudiar por qué no se cumple \vertema{3.A.39}.
+\end{itemize}
+
+\subsection{La aritmética monetarista desagradable}
+
+\begin{itemize}
+\item \emph{La restricción}: la solvencia exige que la deuda en porcentaje del PIB sea igual al valor actual de los saldos primarios y del señoreaje (con $r>\gamma_Y$):
+  \begin{equation*}
+  d_{t-1}=\sum_{k=0}^{\infty}\left(\frac{1+\gamma_Y}{1+r}\right)^{k+1}\left(\tau_{t+k}-g_{t+k}+s_{t+k}\right),
+  \end{equation*}
+  con $d$ la deuda, $\tau$ los ingresos, $g$ el gasto primario y $s$ el señoreaje, todo sobre el PIB, y $\gamma_Y$ el crecimiento del PIB.
+\item Con una política fiscal laxa, déficit primario y deuda elevados, hay 2 opciones:
+  \begin{itemize}
+  \item \emph{monetizar ya}: más inflación hoy, pero la deuda deja de crecer;
+  \item \emph{financiarse con deuda}: menos inflación hoy, pero la deuda crece, y con ella los intereses, en una bola de nieve si $r>\gamma_Y$. Llega un punto en el que los inversores no compran más deuda y hay que recurrir al señoreaje con una deuda mayor: más inflación que si se hubiera monetizado desde el principio.
+  \end{itemize}
+\item Con expectativas racionales, el público lo anticipa y la inflación sube antes de que cambie la financiación.
+\item \emph{Conclusión}: la inflación puede tener un origen fiscal, y cuanto más se retrase la monetización inevitable, mayor será \parencite{SargentWallace1981Some} \vertema{3.A.39}.
+\end{itemize}
+
+\section{Anexo: el modelo de ciclo real paso a paso}\label{anexo:rbc}
+
+\subsection{El modelo general}
+
+\begin{itemize}
+\item \emph{El hogar} maximiza la utilidad esperada sujeto a su restricción de cada periodo:
+  $$\optim{\max}{\{C_t,L_t,K_{t+1}\}}{\mathbb{E}_0\sum_{t=0}^{\infty}\beta^t\left[\frac{C_t^{1-\theta}-1}{1-\theta}-\chi\,\frac{L_t^{1+\varphi}}{1+\varphi}\right]}{C_t+K_{t+1}=w_tL_t+(1+r_t)\,K_t}$$
+  donde $(1+r_t)K_t$ es el alquiler, $(r_t+\delta)K_t$, más el capital que queda tras la depreciación.
+\item Con el multiplicador $\lambda_t$ de cada restricción, las condiciones de primer orden en $t$ son
+  \begin{equation*}
+  C_t^{-\theta}=\lambda_t,\qquad \chi L_t^{\varphi}=\lambda_t\,w_t,\qquad \lambda_t=\beta\,\mathbb{E}_t\left[\lambda_{t+1}\,(1+r_{t+1})\right],
+  \end{equation*}
+  de las que salen la ecuación de \autor{Euler} y la del trabajo de \eqref{eq:rbc-hogar}. La condición de transversalidad descarta las sendas explosivas \vertema{3.A.29}:
+  \begin{equation*}
+  \lim_{T\to\infty}\mathbb{E}_0\left[\beta^T\lambda_TK_{T+1}\right]=0.
+  \end{equation*}
+\item \emph{La empresa} no tiene un problema intertemporal, porque alquila el capital cada periodo: maximiza $A_tK_t^{\alpha}L_t^{1-\alpha}-w_tL_t-(r_t+\delta)K_t$ y paga los productos marginales \eqref{eq:rbc-precios}.\footnote{Con costes de ajuste de la inversión, el problema de la empresa pasa a ser intertemporal \vertema{3.A.34}.}
+\item \emph{Equilibrio competitivo}: precios $\{w_t,r_t\}$ y asignaciones $\{C_t,I_t,L_t,K_{t+1},Y_t\}$ tales que hogares y empresas optimizan y los mercados de bienes, trabajo y capital se vacían (tabla~\ref{tab:equilibrio-rbc}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Condiciones de equilibrio del modelo de ciclo real}\label{tab:equilibrio-rbc}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{0.6cm}>{\raggedright\arraybackslash}m{6.6cm}>{\raggedright\arraybackslash}m{6.6cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Ecuación} & \textbf{Qué dice}\\
+\midrule
+(1) & $Y_t=C_t+I_t$ & demanda agregada en una economía cerrada sin Estado\\
+(2) & $Y_t=A_tK_t^{\alpha}L_t^{1-\alpha}$ & función de producción\\
+(3) & $K_{t+1}=(1-\delta)K_t+I_t$ & acumulación del capital\\
+(4) & $w_t=(1-\alpha)A_t(K_t/L_t)^{\alpha}$ & salario real igual al producto marginal del trabajo\\
+(5) & $r_t+\delta=\alpha A_t(K_t/L_t)^{\alpha-1}$ & alquiler del capital igual a su producto marginal\\
+(6) & $C_t^{-\theta}=\beta\,\mathbb{E}_t[C_{t+1}^{-\theta}(1+r_{t+1})]$ & ecuación de \autor{Euler}\\
+(7) & $\chi L_t^{\varphi}=C_t^{-\theta}w_t$ & oferta de trabajo\\
+(8) & $C_t+K_{t+1}=w_tL_t+(1+r_t)K_t$ & restricción del hogar\\
+(9) & $\ln A_t=\rho_A\ln A_{t-1}+\varepsilon^A_t$ & perturbación tecnológica\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{Romer2019Advanced}.}
+\end{table}
+
+\begin{itemize}
+\item Son 7 variables endógenas ($Y_t$, $C_t$, $I_t$, $K_{t+1}$, $L_t$, $w_t$, $r_t$), una exógena ($A_t$), 8 parámetros ($\alpha$, $\beta$, $\delta$, $\theta$, $\chi$, $\varphi$, $\rho_A$, más la desviación típica $\sigma_\varepsilon$ de la perturbación) y una perturbación ($\varepsilon^A_t$). Hay 8 ecuaciones para 7 endógenas: una sobra, porque la restricción del hogar (8) es la demanda agregada (1) una vez que se sustituyen (3), (4), (5) y la homogeneidad de grado 1 de la producción.
+\item \emph{Con tendencia}: si la tecnología crece, $A_t=A_0e^{g^At+\tilde A_t}$ con $\tilde A_t=\rho_A\tilde A_{t-1}+\varepsilon^A_t$, y el modelo se escribe en desviaciones respecto de la senda de crecimiento equilibrado \vertema{3.A.43}.
+\item \emph{Respuestas a una perturbación} de todas las variables, con persistencia y sin ella, en la figura~\ref{fig:irf-rbc-completo}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Respuestas de todas las variables a una perturbación tecnológica de una desviación típica ($\varepsilon^A_0=\sigma_\varepsilon=0{,}007$)}\label{fig:irf-rbc-completo}
+\grafico[0.95\textwidth]{irf-rbc-completo}
+\fuente{elaboración propia: simulación del modelo log-linealizado con la calibración de la figura~\ref{fig:irf-rbc}.}
+\end{figure}
+
+\subsection{La solución cerrada de \autor{McCallum}}
+
+\begin{itemize}
+\item \emph{Supuestos}: depreciación completa, $\delta=1$; utilidad logarítmica sin desutilidad del trabajo, $\theta=1$ y $\chi=0$, de modo que la oferta de trabajo es \emph{inelástica}, $L_t=1$; sin tendencia, $\ln A_0=0$ (es decir, $A_0=1$), y $\ln A_t=\rho_A\ln A_{t-1}+\varepsilon^A_t$. Con ellos, $Y_t=A_tK_t^{\alpha}$, $K_{t+1}=I_t$, $1+r_t=\alpha A_tK_t^{\alpha-1}$ y la ecuación de \autor{Euler} es
+  \begin{equation*}
+  \frac{1}{C_t}=\beta\,\mathbb{E}_t\!\left[\frac{\alpha A_{t+1}K_{t+1}^{\alpha-1}}{C_{t+1}}\right].
+  \end{equation*}
+\item \emph{Conjetura}: el hogar ahorra una fracción constante $s$ de la producción, $K_{t+1}=sA_tK_t^{\alpha}$ y $C_t=(1-s)A_tK_t^{\alpha}$.
+\item \emph{Comprobación}: con la conjetura en $t+1$, $\alpha A_{t+1}K_{t+1}^{\alpha-1}/C_{t+1}=\alpha/[(1-s)K_{t+1}]$, que no depende de $A_{t+1}$ y es conocido en $t$. La ecuación de \autor{Euler} queda
+  \begin{equation*}
+  \frac{1}{(1-s)A_tK_t^{\alpha}}=\frac{\alpha\beta}{(1-s)K_{t+1}}\ \Longrightarrow\ K_{t+1}=\alpha\beta\,A_tK_t^{\alpha},
+  \end{equation*}
+  que coincide con la conjetura si $s=\alpha\beta$.
+\end{itemize}
+\findemo
+
+\begin{itemize}
+\item \emph{En logaritmos}: $\ln K_{t+1}=\ln(\alpha\beta)+\ln A_t+\alpha\ln K_t$ y $\ln Y_{t+1}=\ln A_{t+1}+\alpha\ln(\alpha\beta)+\alpha\ln Y_t$; en el estado estacionario sin perturbaciones, $\ln\overline Y=\frac{\alpha}{1-\alpha}\ln(\alpha\beta)$.
+\item \emph{Dinámica}: en desviaciones, $\hat y_t\equiv\ln Y_t-\ln\overline Y$,
+  \begin{equation*}
+  \hat y_{t+1}=\alpha\,\hat y_t+\ln A_{t+1}.
+  \end{equation*}
+  \begin{itemize}
+  \item Con $\rho_A=0$ y una perturbación unitaria en $t$, $\hat y_t=1$, $\hat y_{t+1}=\alpha$ y, en general, $\hat y_{t+k}=\alpha^k$: el efecto se desvanece, pero no de golpe (figura~\ref{fig:persistencia-mccallum}). Con $\alpha\approx1/3$, 2 periodos después del impacto queda un 11~\%.
+  \item Con $\rho_A>0$, $\hat y_{t+k}=(\rho_A^{k+1}-\alpha^{k+1})/(\rho_A-\alpha)$: la respuesta tiene forma de joroba, y la del periodo siguiente, $\alpha+\rho_A$, puede ser mayor que la inicial (1,28 con $\rho_A=0{,}95$ y $\alpha=1/3$).
+  \end{itemize}
+\item \emph{Límites de esta versión}: con $s$ constante, el consumo y la inversión son proporciones fijas de la producción y tienen su misma volatilidad, cuando en los datos la inversión es mucho más volátil; y el trabajo no varía. Con depreciación parcial y oferta de trabajo elástica se corrigen los 2 problemas, al precio de perder la solución cerrada.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Persistencia de una perturbación en el modelo de \autor{McCallum}}\label{fig:persistencia-mccallum}
+\grafico[0.6\textwidth]{persistencia-mccallum}
+\fuente{elaboración propia a partir de \textcite{McCallum1989Real}, con $\alpha=1/3$.}
+\end{figure}
+
+\subsection{Limitaciones y extensiones}
+
+\begin{itemize}
+\item \emph{El origen de las fluctuaciones}:
+  \begin{itemize}
+  \item las perturbaciones tecnológicas se miden con un residuo de \autor{Solow} que también recoge la intensidad del esfuerzo y la utilización del capital; corregido por ello, las perturbaciones son más pequeñas y la respuesta de la producción, más amplificada \parencite{BurnsideEichenbaumRebelo1993Labor,BasuFernaldKimball2006Are};
+  \item las recesiones como retrocesos tecnológicos son difíciles de defender, salvo que la «tecnología» incluya el precio del petróleo, la regulación o el clima;
+  \item identificando las perturbaciones tecnológicas como las únicas que mueven la productividad del trabajo a largo plazo, \textcite{Gali1999Technology} encuentra que las horas caen a corto plazo tras una mejora tecnológica, al revés que en el modelo; el resultado se discute por su sensibilidad a la especificación;
+  \item otras perturbaciones reales mejoran el ajuste: el gasto público \parencite{ChristianoEichenbaum1992Current,BaxterKing1993Fiscal} \vertema{3.A.38}, las noticias sobre la tecnología futura o la de los bienes de inversión; con varios sectores, las perturbaciones sectoriales no se compensan \parencite{LongPlosser1983Real}.
+  \end{itemize}
+\item \emph{La persistencia}: \textcite{NelsonKang1981Spurious} y \textcite{NelsonPlosser1982Trends} mostraron que muchas series tienen raíz unitaria (no son estacionarias: su media o su varianza cambian con el tiempo), de modo que quitarles una tendencia determinista puede generar ciclos espurios y las perturbaciones tienen efectos permanentes, lo que encaja con perturbaciones tecnológicas \vertema{3.A.42}.
+\item \emph{El mercado de trabajo}: el modelo necesita una oferta de trabajo muy elástica para que las horas varíen mucho con salarios poco variables, y la micro estima elasticidades bajas. Con \emph{trabajo indivisible} (se trabaja a jornada completa o no se trabaja), las horas varían por el margen extensivo y la elasticidad agregada es alta aunque la individual sea baja \parencite{Hansen1985Indivisible,Rogerson1988Indivisible} \vertema{3.A.25}.
+\item \emph{La neutralidad del dinero}: el modelo la cumple incluso con dinero explícito, por ejemplo con una restricción de pago por adelantado \parencite{CooleyHansen1989Inflation} \vertema{3.A.35}. La evidencia la rechaza:
+  \begin{itemize}
+  \item la \emph{ecuación de San Luis} \parencite{AndersenJordan1968Monetary} regresa la variación del PNB nominal sobre la de la cantidad de dinero (M1) y la del gasto público de pleno empleo: cada dólar adicional de dinero eleva el PNB nominal en unos 5,8 dólares en un año, mientras que el efecto del gasto no es significativo. Pero correlación no es causalidad: el dinero responde a la actividad;
+  \item el \emph{análisis histórico}: en Estados Unidos entre 1867 y 1960, los movimientos del dinero de origen monetario fueron seguidos por movimientos de la producción en el mismo sentido \parencite{FriedmanSchwartz1963Monetary}; \textcite{RomerRomer1989Does} identifican 6 episodios de la posguerra en los que la Reserva Federal decidió provocar una recesión para bajar la inflación (el último, con \autor{Volcker} en 1979), tras los que el paro sube unos 2 puntos;
+  \item los \emph{VAR}, con la política medida por el tipo de interés \parencite{Sims1992Interpreting,ChristianoEichenbaumEvans1996Effects}, y su combinación con la identificación narrativa \parencite{RomerRomer2004New}, encuentran efectos reales grandes y rápidos \vertema{3.A.37}.
+  \end{itemize}
+\item \emph{La Gran Depresión}: \autor{Lucas} remitía a la explicación monetaria de \autor{Friedman} y \autor{Schwartz} (\ref{sec:metodo}); \autor{Prescott}, en cambio, intentó explicar las grandes depresiones con la PTF \parencite{KehoePrescott2002Great}.
+\end{itemize}
+
+\section{Anexo: aspectos para el test}\label{anexo:test}
+
+\begin{itemize}
+\item \emph{Fechas y obras}: \autor{Muth} (1961), expectativas racionales; \autor{Lucas} y \autor{Rapping} (1969), oferta de trabajo intertemporal, todavía con expectativas adaptativas; \autor{Lucas} y \autor{Prescott} (1971), primera aplicación de las racionales (inversión); \autor{Lucas} (1972), «Expectations and the Neutrality of Money»; \autor{Lucas} (1973), evidencia internacional con 18 países; \autor{Barro} (1974), «Are Government Bonds Net Wealth?»; \autor{Sargent} y \autor{Wallace} (1975, 1976), inefectividad; \autor{Lucas} (1976), la crítica; \autor{Kydland} y \autor{Prescott} (1977), «Rules Rather than Discretion»; \autor{Sargent} y \autor{Wallace} (1981), aritmética monetarista; \autor{Kydland} y \autor{Prescott} (1982), «Time to Build and Aggregate Fluctuations»; \autor{Long} y \autor{Plosser} (1983); \autor{Barro} y \autor{Gordon} (1983, 2 artículos).
+\item \emph{Nobel}: \autor{Lucas} (1995); \autor{Kydland} y \autor{Prescott} (2004); \autor{Phelps} (2006); \autor{Sargent} y \autor{Sims} (2011) \parencite{NobelPrize1995Lucas,Nobel2004KydlandPrescott,Nobel2011SargentSims}.
+\item \emph{Trampas}:
+  \begin{itemize}
+  \item las expectativas racionales no suponen previsión perfecta ni errores normales: solo que el error tiene media nula y no se puede predecir con la información disponible;
+  \item en el modelo de islas, si la varianza de las perturbaciones relativas es nula ($\sigma^2_z=0$), $\omega=0$ y ni siquiera la política \emph{no anticipada} tiene efectos reales;
+  \item los efectos de las sorpresas dependen de $\psi=\omega\varepsilon_S$: de la confusión ($\omega$) y de la elasticidad de la oferta ($\varepsilon_S$);
+  \item la crítica de \autor{Lucas} no dice que no haya relación estadística entre inflación y paro, sino que no es estable cuando cambia la política;
+  \item la inefectividad es de \autor{Sargent} y \autor{Wallace} (1975, 1976); la aritmética desagradable, de los mismos autores en 1981;
+  \item el sesgo inflacionista necesita $U^*<U^n$, y el paro de equilibrio con discrecionalidad es el natural;
+  \item la equivalencia ricardiana no dice que el gasto público no tenga efectos, sino que da igual cómo se financie; el nombre es de \autor{Buchanan} (1976).
+  \end{itemize}
+\item Preguntas de test de exámenes anteriores (17 asignadas a este tema, de 2002 a 2025), en el simulador:
+  \begin{itemize}
+  \item \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}
+  \end{itemize}
+\end{itemize}
+
+\bibliografia
+\end{document}

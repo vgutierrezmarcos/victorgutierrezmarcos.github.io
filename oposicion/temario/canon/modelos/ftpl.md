@@ -1,7 +1,7 @@
 # Teoría fiscal del nivel de precios (Leeper 1991; Sims 1994; Woodford 1995; Cochrane)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.39 (Dominación monetaria y dominación fiscal) — es la versión moderna de la dominación fiscal.
-- **Temas que lo usan:** 3.A.39 (desarrollo), 3.A.41 (resumen: determinación del nivel de precios y deflación).
+- **Temas que lo usan:** 3.A.39 (desarrollo), 3.A.41 (resumen: determinación del nivel de precios y deflación). También 3.A.6 (mención; hecho, 4/11/2026: II.5 c), la teoría fiscal del nivel de precios lleva más lejos la aritmética monetarista, Leeper, 1991; `\vertema{3.A.39}`).
 - **Manuales de referencia:** Leeper (1991), *JME*; Sims (1994), *Economic Theory*; Woodford (1995); Cochrane (2023), *The Fiscal Theory of the Price Level*; Walsh (2017), cap. 4.
 
 ## Presentación de referencia
@@ -24,6 +24,7 @@ Con política fiscal **activa** (superávits exógenos) y monetaria **pasiva** (
 |---|---|---|---|---|
 | 3.A.39 | Dominación fiscal | Desarrollo | Ecuación de valoración, regímenes de Leeper, críticas (Buiter: la restricción debe cumplirse siempre) | — |
 | 3.A.41 | Inflación y deflación | Resumen | La FTPL como teoría alternativa de la inflación; deflación y expansión fiscal (Sims 2016) | La matriz de regímenes |
+| 3.A.6 | NMC | mención (hecho, 4/11/2026) | Una línea tras la aritmética monetarista (Leeper, 1991) | La teoría |
 
 ## Divergencias encontradas en el temario actual
 

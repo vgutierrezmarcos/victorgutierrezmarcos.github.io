@@ -1,7 +1,7 @@
 # Paseo aleatorio del consumo (Hall, 1978), su contrastación (Flavin, 1981; Campbell y Mankiw, 1989; Deaton, 1987) y las salidas
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.33** (revisado el 31/10/2026: II.1 `sec:hall`, II.2 `sec:contrastacion`, II.3 `sec:salidas`; derivaciones en el anexo C `anexo:hall-ccapm`) — único tema que lo desarrolla, con su contrastación; la Euler estocástica es la base del C-CAPM (ficha `ccapm`).
-- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.A.10 (mención; hecho, 19/10/2026: con cuadrática, u‴ = 0 y sin precaución, `\vertema{3.A.33}`), 3.A.6 (mención: la Euler como respuesta a la crítica de Lucas; expectativas racionales), 3.A.39 (mención: λ de Campbell y Mankiw entre las razones del incumplimiento de la equivalencia ricardiana), 3.A.42 (mención: hábitos en los EGDE), 1D01 (mención aplicada; hecho: «otro enfoque», l. 428).
+- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.A.10 (mención; hecho, 19/10/2026: con cuadrática, u‴ = 0 y sin precaución, `\vertema{3.A.33}`), 3.A.6 (mención; hecho, 4/11/2026: I.2 iii, el consumo como paseo aleatorio, Hall, 1978; II.2.3 iii, la Euler no depende de la política y se estima directamente, Hall, 1978, y Hansen y Singleton, 1983; `\vertema{3.A.33}`), 3.A.39 (mención: λ de Campbell y Mankiw entre las razones del incumplimiento de la equivalencia ricardiana), 3.A.42 (mención: hábitos en los EGDE), 1D01 (mención aplicada; hecho: «otro enfoque», l. 428).
 - **Manuales de referencia:** Hall (1978), *JPE*; Flavin (1981), *JPE*; Campbell y Mankiw (1989), *NBER Macro Annual*; Campbell y Deaton (1989), *REStud*; Deaton (1987, 1992); Romer (2019), cap. 8; Blanchard y Fischer (1989), cap. 6; Jappelli y Pistaferri (2017), *The Economics of Consumption*.
 
 ## Presentación de referencia (3.A.33, II)
@@ -30,7 +30,7 @@ $$\Delta C_t=\mu+\lambda\,\Delta Y_t+\varepsilon_t,$$
 |---|---|---|---|---|
 | 3.A.33 | Teorías del consumo | desarrollo (hecho, 31/10/2026) | Todo lo anterior: II.1 en 3′, II.2 en 2′30″, II.3 en 5′30″ | — |
 | 3.A.10 | Incertidumbre y aversión al riesgo | mención (hecho, 19/10/2026) | Con u cuadrática no hay ahorro precautorio y el consumo de Hall sigue un paseo aleatorio sin motivo precaución; con u‴ > 0, sí | Derivación |
-| 3.A.6 | Nueva macroeconomía clásica | mención | Expectativas racionales aplicadas al consumo; la Euler como respuesta a la crítica de Lucas | El modelo |
+| 3.A.6 | Nueva macroeconomía clásica | mención (hecho, 4/11/2026) | Expectativas racionales aplicadas al consumo (paseo aleatorio, I.2); la Euler como respuesta a la crítica de Lucas, con Hansen y Singleton (1983) (II.2.3); `\vertema{3.A.33}` | El modelo |
 | 3.A.39 | Déficit | mención | λ de Campbell y Mankiw entre las razones del incumplimiento de la equivalencia ricardiana, con remisión | — |
 | 3.A.42 | Ciclos | mención | Hábitos en los EGDE (Christiano, Eichenbaum y Evans, 2005) | — |
 | 1D01 | Dictamen | mención aplicada (hecho) | Paseo aleatorio como «otro enfoque» | — |

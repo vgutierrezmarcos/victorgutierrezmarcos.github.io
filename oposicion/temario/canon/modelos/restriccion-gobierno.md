@@ -1,7 +1,7 @@
 # Restricción presupuestaria del sector público y dinámica de la deuda
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.39 (Déficit público: financiación, dominación monetaria y fiscal, dinámica y sostenibilidad de la deuda) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.39 (desarrollo), 4.B.26 (desarrollo aplicado a España: descomposición de la variación de la deuda), 3.A.35 y 3.A.41 (resumen dentro del señoreaje), 4.B.4 (mención en el NEK con gasto), 1D01 (uso: VI.2, `eq:dinamica-deuda`).
+- **Temas que lo usan:** 3.A.39 (desarrollo), 4.B.26 (desarrollo aplicado a España: descomposición de la variación de la deuda), 3.A.35 y 3.A.41 (resumen dentro del señoreaje), 4.B.4 (mención en el NEK con gasto), 1D01 (uso: VI.2, `eq:dinamica-deuda`). También 3.A.6 (mención; hecho, 4/11/2026: anexo C, la solvencia en % del PIB, $d_{t-1}=\sum_k[(1+\gamma_Y)/(1+r)]^{k+1}(\tau_{t+k}-g_{t+k}+s_{t+k})$, con $r>\gamma_Y$, para la aritmética monetarista; `\vertema{3.A.39}`).
 - **Manuales de referencia:** Walsh (2017), cap. 4; Blanchard y Fischer (1989), cap. 10; Sargent y Wallace (1981); Blanchard, *Macroeconomics* (8.ª ed.), cap. 22; Blanchard (2019), «Public Debt and Low Interest Rates», *AER*; Esteve y Prats (2023).
 - **Decisión D028 (13/10/2026):** ¿Cómo se escriben los intereses de la deuda en la restricción del gobierno? i_{t−1}D_{t−1} (Walsh: la deuda emitida en t−1 paga el tipo pactado al emitirla); i_t D_{t−1} solo si i_t se define como tipo implícito pagado en t
 
@@ -39,6 +39,7 @@ Si r < γ_Y la deuda se estabiliza sola con déficit primario constante (Blancha
 | 3.A.41 | Hiperinflación | Resumen | Déficit financiado con dinero → señoreaje → Cagan | La dinámica de la deuda |
 | 4.B.4 | Política fiscal en el NEK | Mención | Restricción en términos reales con r_{t−1}D_{t−1} | — |
 | 1D01 | Dictamen de coyuntura | Uso | $d_t-d_{t-1}=(g_t-\tau_t)+\frac{i_t-\gamma^N_t}{1+\gamma^N_t}d_{t-1}+\mathrm{ADD}_t$ (sin señoreaje en el euro), bola de nieve, saldo primario estabilizador con ejemplo | La solvencia intertemporal |
+| 3.A.6 | NMC: aritmética monetarista | mención (hecho, 4/11/2026) | La solvencia con saldos primarios y señoreaje en % del PIB | La derivación |
 
 ## Divergencias encontradas en el temario actual
 

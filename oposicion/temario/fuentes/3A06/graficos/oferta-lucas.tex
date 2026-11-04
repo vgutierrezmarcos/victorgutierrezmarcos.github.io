@@ -1,0 +1,40 @@
+% La curva de oferta de Lucas y la proposición de inefectividad (3.A.6, II.2),
+% plano (y, p), los dos en logaritmos. Números:
+%   y^n = 5, psi = 1: OA(p^e) es y = y^n + psi (p - p^e), es decir p = y - 5 + p^e
+%   DA(m): y = m - p, es decir p = m - y
+%   E_0: m_0 = 10, p^e_0 = 5 -> (5, 5)
+%   E_1 (no anticipada): m_1 = 12, p^e sigue en 5 -> y_1 = 6, p_1 = 6
+%   E_2 (anticipada): m_1 = 12, p^e_1 = p_2 -> y = y^n = 5, p_2 = 7
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.68cm,y=0.68cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-1.1) rectangle (13.6,9.9);
+  % 1: ejes (y, p)
+  \capa{1}{\ejes{$y$}{$p$}{9.6}{9.6}}
+  % 2: la vertical de largo plazo
+  \capa{2}{\draw[curva3] (5,0) -- (5,9.2) node[etiqueta, above, text=tceeverde] {$y^n$};}
+  % 3: la oferta de Lucas con p^e_0
+  \capa{3}{\draw[curva2] (1.4,1.4) node[etiqueta, below right=0pt and 2pt, text=tceeazul] {$OA(p^e_0)$} -- (8.3,8.3);}
+  \capa{3}{\node[etiqueta, text=tceeazul, font=\footnotesize, rotate=45, anchor=south] at (3.0,3.0) {pendiente $1/\psi$};}
+  % 4: la demanda con m_0 y el equilibrio E_0
+  \capa{4}{\draw[curva1] (1.4,8.6) -- (8.6,1.4) node[etiqueta, right, text=tceemorado] {$DA(m_0)$};}
+  \capa{4}{\node[punto] (E0) at (5,5) {};}
+  \capa{4}{\node[etiqueta, left=2pt] at (E0) {$E_0$};}
+  \capa{4}{\draw[guia] (5,5) -- (0,5) node[left, text=black] {$p_0=p^e_0$};}
+  % 5: expansión no anticipada: la demanda sube y la oferta no se mueve
+  \capa{5}{\draw[curvanueva] (3.4,8.6) -- (9.4,2.6) node[etiqueta, right, text=tceerojo] {$DA(m_1)$};}
+  \capa{5}{\node[punto] (E1) at (6,6) {};}
+  \capa{5}{\node[etiqueta, right=2pt] at (E1) {$E_1$};}
+  \capa{5}{\draw[guia] (0,6) node[left, text=black] {$p_1$} -| (6,0) node[below, text=black] {$y_1$};}
+  \capa{5}{\node[etiqueta, text=tceerojo, anchor=west, font=\footnotesize] at (6.95,6.0) {no anticipada: $y_1>y^n$};}
+  % 6: expansión anticipada: también sube p^e y la oferta se desplaza
+  \capa{6}{\draw[curvanueva, desplazada] (0.8,2.8) -- (6.6,8.6) node[etiqueta, anchor=south west, text=tceerojo] (oa1) {$OA(p^e_1)$};}
+  \capa{6}{\node[punto] (E2) at (5,7) {};}
+  \capa{6}{\node[etiqueta, left=2pt] at (E2) {$E_2$};}
+  \capa{6}{\draw[guia] (5,7) -- (0,7) node[left, text=black] {$p_2=p^e_1$};}
+  \capa{6}{\node[etiqueta, text=tceerojo, anchor=base west, font=\footnotesize] at ([xshift=3pt]oa1.base east) {anticipada: $y=y^n$, solo sube $p$};}
+\end{tikzpicture}
+\end{document}
