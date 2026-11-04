@@ -1,7 +1,7 @@
 # Ley de Okun
 
 - **Área:** macro-cerrada · **Tema de referencia:** **3.A.28** (revisado el 31/10/2026: desarrollo breve, 1′ de cante, en II.1.3 `sec:okun`, con `eq:okun` y el gráfico `okun-espana`) **[decidir]** (A28-05/K29) — completa la tasa natural (paro y producción, tasa natural y potencial), es del 3.er ejercicio (CRITERIOS § 6) y la 1D01 la usa junto a la Phillips. Alternativa: 4.B.4, que solo la usa en los estabilizadores.
-- **Temas que lo usan:** 3.A.28 (desarrollo; hecho, 31/10/2026), 4.B.4 (resumen: respuesta del paro al ciclo en los estabilizadores), 4.A.16 (mención: elasticidad alta del empleo al PIB en España; el 3.A.28 le remite los ERTE de 2020), 3.A.42 (mención: la brecha de producción), 1D01 (uso: III.1, preguntada en 2021 junto a la curva de Phillips). También 3.A.6 (mención; hecho, 4/11/2026: II.2.1 iii y anexo B, la ley de Okun convierte la oferta de Lucas en la Phillips con expectativas racionales).
+- **Temas que lo usan:** 3.A.28 (desarrollo; hecho, 31/10/2026), 4.B.4 (resumen: respuesta del paro al ciclo en los estabilizadores), 4.A.16 (mención: elasticidad alta del empleo al PIB en España; el 3.A.28 le remite los ERTE de 2020), 3.A.42 (no lo usa: revisado el 4/11/2026; antes previsto, mención: la brecha de producción), 1D01 (uso: III.1, preguntada en 2021 junto a la curva de Phillips). También 3.A.6 (mención; hecho, 4/11/2026: II.2.1 iii y anexo B, la ley de Okun convierte la oferta de Lucas en la Phillips con expectativas racionales).
 - **Manuales de referencia:** Okun (1962), «Potential GNP: Its Measurement and Significance» (`Okun1962`); Ball, Leigh y Loungani (2017), «Okun's Law: Fit at 50?», *JMCB* (`Ball2017Okun`); Blanchard, *Macroeconomics*, cap. 9. Las claves son las de la 1D01.
 
 ## Presentación de referencia (3.A.28, II.1.3)
@@ -25,7 +25,7 @@ con γ_{Y,t} el crecimiento del PIB, γ̄_Y el que mantiene estable el paro (cer
 | 3.A.28 | Tasa natural y persistencia | desarrollo breve (hecho, 31/10/2026) | Idea, las 2 formas, la cifra de Okun (ϑ ≈ 1/3) y la de Ball *et al.* (0,45; España 0,85), implicaciones (Phillips en producción), evidencia de España con `okun-espana`, valoración (ERTE) | — |
 | 4.B.4 | Estabilizadores automáticos | Resumen | Respuesta del paro (y de las prestaciones) a la brecha, con `eq:okun` en brechas y ϑ′; remisión al 3.A.28 solo para ampliar | La estimación |
 | 4.A.16 | Mercado de trabajo en España | Mención | Elasticidad alta del empleo al PIB en España (Ball *et al.*, 2017: 0,85) y los ERTE de 2020 | — |
-| 3.A.42 | Ciclos | Mención | La brecha de producción y el paro | — |
+| 3.A.42 | Ciclos | mención (no la usa: revisado el 4/11/2026) | La brecha de producción y el paro | — |
 | 1D01 | Dictamen de coyuntura | Uso | En palabras y con `eq:okun` de coeficiente 0,5: a partir de qué crecimiento baja el paro; cuándo no es razonable usarla | Ecuaciones |
 | 3.A.6 | NMC | mención (hecho, 4/11/2026) | Puente entre la oferta de Lucas y la Phillips con expectativas racionales | La ley |
 

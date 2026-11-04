@@ -1,0 +1,78 @@
+% El multiplicador-acelerador (3.A.42, I.4.3): regiones de Samuelson (1939) y
+% techo y suelo de Hicks (1950).
+% Izquierda, plano (v, c): Y_t = c(1+v) Y_{t-1} - c v Y_{t-2} + G; raíces
+% complejas si c(1+v)^2 < 4v (curva de oscilación c = 4v/(1+v)^2, máximo 1 en
+% v = 1); módulo sqrt(cv) < 1 si cv < 1 (curva de estabilidad c = 1/v). Se
+% tocan en (1, 1). Regiones: A convergencia sin oscilar (encima de la de
+% oscilación, v < 1); B oscilaciones amortiguadas (debajo de las dos); C
+% oscilaciones explosivas (entre c = 1/v y la de oscilación, v > 1); D
+% divergencia sin oscilar (encima de la de oscilación, v > 1). Ejemplo del
+% texto: (v, c) = (1; 0,8), en B.
+% Derecha: trayectoria simulada con c = 0,9 y v = 1,3 (cv = 1,17 > 1 y
+% c(1+v)^2 = 4,76 < 4v = 5,2: oscilaciones explosivas), desviación respecto a
+% la tendencia acotada en [-1, 1]: techo = tendencia + 1, suelo = tendencia - 1;
+% tendencia 2,2 + 0,03 t; 0,155 cm por periodo, 38 periodos. Al quedarse en el
+% techo 2 periodos, Y_t = c Y_{t-1} < techo: «todo lo que sube baja».
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={osc(\v)=4*\v/(1+\v)^2;},
+    region/.style={font=\small\bfseries, inner sep=1pt},
+    mini/.style={thick, black}]
+  % \mini{(posición)}{función de t en [0,1], valores en [0,1]}: minitrayectoria
+  % de 0,85 cm (o el ancho opcional) × 0,42 cm con su nivel de equilibrio (0,5) en guía
+  \newcommand{\mini}[3][0.85cm]{%
+    \begin{scope}[shift={#2}, x=#1, y=0.42cm]
+      \draw[guia] (0,0.5) -- (1,0.5);
+      \draw[mini] plot[domain=0:1, samples=60, smooth] (\x,{#3});
+    \end{scope}}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.6,-0.6) rectangle (16.3,5.6);
+  % ---------------- Panel izquierdo: regiones de Samuelson ----------------
+  \begin{scope}[x=1.5cm, y=4.6cm]
+    % 1: ejes (v, c)
+    \capa{1}{\ejes{$v$}{$c$}{4.35}{1.15}}
+    \capa{1}{\foreach \v in {1,2,3,4} \draw (\v,0) -- (\v,-0.02) node[below] {$\v$};}
+    \capa{1}{\draw[guia] (0,1) node[left,text=black] {$1$} -- (4.2,1);}
+    % 2: curva de oscilación, c = 4v/(1+v)^2
+    \capa{2}{\draw[curva1] plot[domain=0:4.1, samples=80, smooth] (\x,{osc(\x)})
+        node[etiqueta, right, text=tceemorado] {$c\,(1+v)^2=4v$};}
+    % 3: curva de estabilidad, c v = 1, que toca a la anterior en (1, 1)
+    \capa{3}{\draw[curva2] plot[domain=1:4.1, samples=60, smooth] (\x,{1/\x})
+        node[etiqueta, right, text=tceeazul] {$c\,v=1$};}
+    \capa{3}{\node[punto] at (1,1) {};}
+    % 4: las 4 regiones con su minitrayectoria y el punto del ejemplo
+    \capa{4}{\node[region] at (0.42,0.965) {A};
+      \mini[0.5cm]{(0.05,0.86)}{0.5-0.5*exp(-6*\x)}}
+    \capa{4}{\node[region] at (1.12,0.66) {B};
+      \mini{(0.6,0.5)}{0.5-0.5*exp(-3.5*\x)*cos(deg(14*\x))}}
+    \capa{4}{\node[region] at (2.0,0.66) {C};
+      \mini{(2.2,0.6)}{0.5+0.04*exp(2.5*\x)*sin(deg(16*\x))}}
+    \capa{4}{\node[region] at (3.0,0.9) {D};
+      \mini{(3.2,0.84)}{0.45+0.55*(exp(3*\x)-1)/(exp(3)-1)}}
+    \capa{4}{\node[punto, fill=tceerojo] (E) at (1,0.8) {};}
+    \capa{4}{\node[etiqueta, below left=1pt and -3pt, text=tceerojo, font=\footnotesize] at (E) {$(1;\,0{,}8)$};}
+  \end{scope}
+  % ---------------- Panel derecho: techo y suelo de Hicks ----------------
+  \begin{scope}[xshift=9.3cm]
+    % 5: ejes (t, Y), techo y suelo
+    \capa{5}{\ejes{$t$}{$Y_t$}{6.7}{5.3}}
+    \capa{5}{\draw[curva4] (0,3.2) -- (6.3,4.419);}
+    \capa{5}{\node[etiqueta, above right, text=tceedorado!80!black, font=\footnotesize, rotate=11] at (0.05,3.22) {techo: pleno empleo};}
+    \capa{5}{\draw[curva3] (0,1.2) -- (6.3,2.419);}
+    \capa{5}{\node[etiqueta, below right, text=tceeverde, font=\footnotesize, rotate=11] at (2.4,1.66) {suelo: inversión bruta nula};}
+    % 6: trayectoria explosiva acotada
+    \capa{6}{\draw[curva1, thick] plot coordinates {(0.000,2.200) (0.155,2.380) (0.310,2.571)
+        (0.465,2.757) (0.620,2.924) (0.775,3.053) (0.930,3.129) (1.085,3.138) (1.240,3.071)
+        (1.395,2.924) (1.550,2.701) (1.705,2.416) (1.860,2.088) (2.015,1.746) (2.170,1.620)
+        (2.325,1.650) (2.480,1.780) (2.635,2.017) (2.790,2.358) (2.945,2.791) (3.100,3.290)
+        (3.255,3.820) (3.410,3.860) (3.565,3.802) (3.720,3.638) (3.875,3.369) (4.030,3.008)
+        (4.185,2.577) (4.340,2.111) (4.495,2.070) (4.650,2.117) (4.805,2.265) (4.960,2.520)
+        (5.115,2.877) (5.270,3.321) (5.425,3.826) (5.580,4.280) (5.735,4.310) (5.890,4.240)
+        (6.045,4.063)};}
+    \capa{6}{\node[etiqueta, font=\footnotesize\itshape, text=tceerojo, anchor=south] at (3.4,4.05) {«todo lo que sube baja»};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

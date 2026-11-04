@@ -1,0 +1,47 @@
+% Copiado sin cambios de fuentes/3A06/graficos/persistencia-mccallum.tex (3.A.6, gráfico de referencia del canon, ficha rbc), 4/11/2026.
+% Persistencia en el modelo de McCallum (1989) (3.A.6, anexo D): respuesta de
+% ln Y a un shock tecnológico de 1 en k = 0, con delta = 1, utilidad
+% logarítmica, L = 1 y K_{t+1} = alpha beta A_t K_t^alpha (Y_t = A_t K_t^alpha).
+% Solución cerrada: ln K_{t+1} = ln(alpha beta) + ln Y_t, luego la desviación de
+% ln Y es y_k = a_k + alpha y_{k-1}:
+%   rho_A = 0:   y_k = alpha^k = 1; 0,333; 0,111; 0,037; 0,012; ...  (alpha = 1/3)
+%   rho_A = 0,95: y_k = (rho^{k+1} - alpha^{k+1})/(rho - alpha)
+%               = 1; 1,283; 1,330; 1,301; 1,248; 1,190; 1,132; 1,076; 1,022
+%   (rho_A = 0,95, como en el resto del tema)
+% Sustituye a la imagen 6 del original (image21.jpg). Funciones, sin CSV; las
+% 2 series se desplazan 0,13 a cada lado de k para que se vean las 2.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=9.5cm, height=5.6cm, scale only axis,
+      xmin=-0.6, xmax=8.6, ymin=0, ymax=1.8, xtick={0,1,...,8}, ytick={0,0.2,...,1.8},
+      yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=1,
+        /pgf/number format/fixed zerofill},
+      /pgf/number format/use comma,
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize},
+      xlabel={periodos tras el shock, $k$}, ylabel={desviación de $\ln Y$},
+      label style={font=\small},
+      legend style={at={(0.98,0.98)}, anchor=north east, draw=none, font=\footnotesize},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: ejes (k, desviación de ln Y)
+    \capa{1}{\addplot[draw=none, forget plot] coordinates {(0,0)};}
+    % 2: sin persistencia de la tecnología: alpha^k
+    \capa{2}{\addplot[curva1, ycomb, mark=*, mark size=2pt, samples at={-0.13,0.87,...,7.87}]
+        {(1/3)^(x+0.13)};
+      \addlegendentry{$\rho_A=0$: $\alpha^k$, $\alpha=1/3$}}
+    \capa{2}{\dicrotulo[anchor=east, font=\footnotesize, text=tceemorado]{(-0.2,1)}{1}}
+    \capa{2}{\dicrotulo[anchor=south, yshift=3pt, font=\footnotesize, text=tceemorado]{(0.87,0.3333)}{0,33}}
+    \capa{2}{\dicrotulo[anchor=south, yshift=3pt, font=\footnotesize, text=tceemorado]{(1.87,0.1111)}{0,11}}
+    \capa{2}{\dicrotulo[anchor=south, yshift=3pt, font=\footnotesize, text=tceemorado]{(2.87,0.037)}{0,04}}
+    % 3: con persistencia de la tecnología, rho_A = 0,95
+    \capa{3}{\addplot[curva2, ycomb, mark=square*, mark size=1.8pt, samples at={0.13,1.13,...,8.13}]
+        {(0.95^(x-0.13+1)-(1/3)^(x-0.13+1))/(0.95-1/3)};
+      \addlegendentry{$\rho_A=0{,}95$: $\frac{\rho_A^{k+1}-\alpha^{k+1}}{\rho_A-\alpha}$}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

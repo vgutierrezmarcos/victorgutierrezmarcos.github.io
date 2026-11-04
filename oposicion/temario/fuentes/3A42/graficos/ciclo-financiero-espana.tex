@@ -1,0 +1,81 @@
+% Ciclo financiero y ciclo real de España (3.A.42, III.1), 1971T1-2026T3.
+% Ciclo financiero: índice compuesto (en desviaciones típicas) del componente de
+% medio plazo (paso banda de 8 a 30 años) del crédito real, la ratio
+% crédito/PIB y el precio real de la vivienda, al estilo de Drehmann, Borio y
+% Tsatsaronis (2012); elaboración propia, no es una serie del BIS. Ciclo del
+% PIB: paso banda de 6 a 32 trimestres (%; desde 1995), eje de la derecha.
+% Datos: ../datos/ciclo-financiero-real-espana.csv (comprobación en su
+% cabecera; los extremos de la muestra, 1971-1977 y 2022-2026, son poco
+% fiables). Picos del financiero: 1991T2 y 2008T4 (17,5 años); valles: 1985T4,
+% 1997T3 y 2015T4. 2009T2: el PIB en su valle (-2,2 %) y el financiero cerca de
+% su máximo (1,9 desv. típicas; el máximo es 2008T4, 2,0).
+% Recesiones de España (AEE, de pico a valle): 1974T4-1975T2, 1978T3-1979T2,
+% 1992T1-1993T3, 2008T2-2009T4, 2010T4-2013T2, 2019T4-2020T2.
+% Eje x: 1971 + \coordindex/4. Escalas: 1 desviación típica = 4 % del PIB.
+% Colores: financiero dorado (como el crédito en brecha-credito-pib-espana),
+% PIB morado (como el paso banda en hp-paso-banda).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\cfdatos}{../datos/ciclo-financiero-real-espana.csv}
+\newcommand{\recesion}[2]{\dicsombra[fill=dicreferencia, fill opacity=0.2]{#1}{-2.6}{#2}{2.6}}
+\pgfplotsset{cfejes/.style={width=13.4cm, height=6cm, scale only axis,
+    xmin=1970, xmax=2027, ymin=-2.6, ymax=2.6,
+    x tick label style={/pgf/number format/1000 sep={}},
+    /pgf/number format/use comma, tick align=outside, clip=false,
+    ticklabel style={font=\footnotesize}, label style={font=\small},
+    unbounded coords=jump}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------------- Eje izquierdo: ciclo financiero ----------------
+  \begin{axis}[cfejes, name=cf, xtick={1970,1975,...,2025},
+      axis x line*=bottom, axis y line*=left, ytick={-2,-1,...,2},
+      ylabel={ciclo financiero (desv. típicas)},
+      dicapas]
+    % 1: recesiones de la AEE, ejes y la línea del 0
+    \capa{1}{\recesion{1974.75}{1975.25}}
+    \capa{1}{\recesion{1978.5}{1979.25}}
+    \capa{1}{\recesion{1992}{1993.5}}
+    \capa{1}{\recesion{2008.25}{2009.75}}
+    \capa{1}{\recesion{2010.75}{2013.25}}
+    \capa{1}{\recesion{2019.75}{2020.25}}
+    \capa{1}{\dicraya{(1970,0) (2027,0)}}
+    % 2: ciclo financiero
+    \capa{2}{\addplot[diclinea=tceedorado, line width=1.8pt] table[col sep=comma, comment chars={\#},
+        x expr=1971+\coordindex/4, y=ciclo_financiero_indice] {\cfdatos};}
+    % 4: picos y valles del financiero, la distancia entre picos y 2009T2
+    \capa{4}{\addplot[dicpuntos=tceedorado!75!black, forget plot] coordinates
+        {(1991.25,1.191) (2008.75,1.973) (1985.75,-0.288) (1997.5,-1.902) (2015.75,-1.149)};}
+    \capa{4}{\dicrotulo[anchor=south, font=\footnotesize, text=tceedorado!75!black]{(1991.25,1.3)}{pico 1991T2}
+      \dicrotulo[anchor=west, font=\footnotesize, text=tceedorado!75!black]{(2009.3,2.0)}{pico 2008T4}
+      \dicrotulo[anchor=north, font=\footnotesize, text=tceedorado!75!black]{(1985.75,-0.45)}{valle 1985T4}
+      \dicrotulo[anchor=north, font=\footnotesize, text=tceedorado!75!black]{(1997.5,-2.02)}{valle 1997T3}
+      \dicrotulo[anchor=north, font=\footnotesize, text=tceedorado!75!black]{(2015.75,-1.27)}{valle 2015T4}}
+    \capa{4}{\addplot[on layer=axis descriptions, dicsuelto, <->, thin, black] coordinates {(1991.25,2.35) (2008.75,2.35)}
+        node[pos=0.5, above, font=\footnotesize] {17,5 años entre picos};}
+  \end{axis}
+  % ---------------- Eje derecho: ciclo del PIB ----------------
+  \begin{axis}[cfejes, at={(cf.south west)}, anchor=south west,
+      axis x line=none, axis y line*=right, ymin=-10.4, ymax=10.4, ytick={-10,-5,...,10},
+      ylabel={ciclo del PIB (\%)}, ylabel near ticks,
+      legend style={at={(0.5,-0.11)}, anchor=north, draw=none, fill=none, font=\footnotesize},
+      legend columns=3, legend cell align=left,
+      legend style={/tikz/every even column/.append style={column sep=0.4cm}}]
+    % 3: ciclo del PIB (paso banda de 6 a 32 trimestres)
+    \addlegendimage{diclinea=tceedorado, line width=1.8pt}
+    \addlegendentry{ciclo financiero (izquierda)}
+    \capa{3}{\addplot[diclinea=dicpib, thick, forget plot] table[col sep=comma, comment chars={\#},
+        x expr=1971+\coordindex/4, y=ciclo_pib_6_32] {\cfdatos};}
+    \addlegendimage{diclinea=dicpib, thick}
+    \addlegendentry{ciclo del PIB, de 6 a 32 trimestres (derecha)}
+    \addlegendimage{area legend, fill=dicreferencia!20, draw=dicreferencia!20}
+    \addlegendentry{recesiones (AEE)}
+    % 4: 2009T2, el PIB en su valle con el financiero en su máximo
+    \capa{4}{\addplot[dicpuntos=dicpib, forget plot] coordinates {(2009.25,-2.204)};}
+    \capa{4}{\draw[thin, dicpib] (axis cs:2009.25,-2.75) -- (axis cs:2009.25,-6.9);}
+    \capa{4}{\node[anchor=north, font=\footnotesize, text=dicpib, align=center, inner sep=1pt] at (axis cs:2010.3,-6.95)
+        {2009T2: PIB en su valle,\\financiero aún cerca de su máximo};}
+  \end{axis}
+  \path ($(cf.south west)+(0,-1.4)$);
+\end{tikzpicture}
+\end{document}

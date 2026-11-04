@@ -1,0 +1,92 @@
+% El ciclo de Kaldor (1940) (3.A.42, anexo D): inversión y ahorro en forma de S.
+%   I(Y) = 2,5 + 4/(1 + exp(-1,2 (Y - 5)))      (más inclinada en el centro)
+%   S(Y) = 4,5 + 0,3 (Y - 5) + 0,02 (Y - 5)^3    (más plana en el centro)
+% Cortes: A = (1,466; 2,557) estable, B = (5; 4,5) inestable, C = (8,534;
+% 6,443) estable. dY/dt = a [I(Y, K) - S(Y, K)], a > 0.
+% a) Auge: con K alto, I baja y S sube en k = 0,4658 cada una (I_K < 0,
+%    S_K > 0): B y C se funden en T = (6,724; 5,585) (tangencia) y la economía
+%    salta al único corte, A' = (0,679; 2,056); el salto, flecha gruesa
+%    sobre el eje Y (a la altura 1,3).
+% b) Recesión: el capital se desgasta y ocurre lo contrario (I sube y S baja en
+%    0,4658): A y B se funden en (3,276; 3,415) y la economía salta a
+%    C'' = (9,321; 6,944).
+% c) Ciclo límite en el plano (K, Y): en la expansión K crece hasta que la
+%    renta cae; en la recesión K baja hasta que la renta salta (sentido horario).
+% Raíces y tangencias calculadas numéricamente (scipy), comprobadas a mano.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={inv(\y)=2.5+4/(1+exp(-1.2*(\y-5))); aho(\y)=4.5+0.3*(\y-5)+0.02*(\y-5)^3;},
+    inestable/.style={circle, draw=black, fill=white, thick, inner sep=1.3pt},
+    salto/.style={-{Stealth[length=3mm]}, line width=1.6pt, tceerojo},
+    titulo/.style={font=\small, anchor=south west}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.7,-0.9) rectangle (17.4,5.4);
+  % ---------------- a) Auge ----------------
+  \begin{scope}[x=0.5cm, y=0.5cm]
+    % 1: ejes, las curvas en forma de S y los 3 equilibrios
+    \capa{1}{\node[titulo] at (-1,9.7) {a) Auge: $K\uparrow$};}
+    \capa{1}{\ejes{$Y$}{$I,\ S$}{10.6}{9.4}}
+    \capa{1}{\draw[curva1] plot[domain=0:10, samples=80, smooth] (\x,{inv(\x)})
+        node[etiqueta, right, text=tceemorado] {$I$};}
+    \capa{1}{\draw[curva2] plot[domain=0:10, samples=80, smooth] (\x,{aho(\x)})
+        node[etiqueta, right, text=tceeazul] {$S$};}
+    \capa{1}{\node[punto] (A) at (1.466,2.557) {};
+      \node[etiqueta, above left=-1pt and -1pt] at (A) {$A$};}
+    \capa{1}{\node[inestable] (B) at (5,4.5) {};
+      \node[etiqueta, above left=-1pt and 0pt] at (B) {$B$};}
+    \capa{1}{\node[punto] (C) at (8.534,6.443) {};
+      \node[etiqueta, below right=-1pt and -1pt] at (C) {$C$};}
+    % 2: la dinámica de Y sobre el eje: sube si I > S y baja si I < S
+    \capa{2}{\draw[flecha] (0.15,0.45) -- (1.2,0.45);
+      \draw[flecha] (4.7,0.45) -- (1.75,0.45);
+      \draw[flecha] (5.3,0.45) -- (8.25,0.45);
+      \draw[flecha] (10.2,0.45) -- (8.85,0.45);}
+    \capa{2}{\node[font=\footnotesize, anchor=north west, align=left] at (0.3,9.3)
+        {$\dot Y=a\,[I(Y,K)-S(Y,K)]$};}
+    % 3: el capital acumulado baja I y sube S: B y C se funden y la economía salta a A'
+    \capa{3}{\draw[curva1, desplazada] plot[domain=0:10, samples=80, smooth] (\x,{inv(\x)-0.4658})
+        node[etiqueta, below right=-2pt and 0pt, text=tceemorado] {$I'$};}
+    \capa{3}{\draw[curva2, desplazada] plot[domain=0:9.6, samples=80, smooth] (\x,{aho(\x)+0.4658})
+        node[etiqueta, left, text=tceeazul] {$S'$};}
+    \capa{3}{\node[punto, fill=tceerojo] (T) at (6.724,5.585) {};}
+    \capa{3}{\node[punto, fill=tceerojo] (A1) at (0.679,2.056) {};
+      \node[etiqueta, anchor=north west, inner sep=1pt, text=tceerojo] at (0.62,1.15) {$A'$};}
+    \capa{3}{\draw[guia, tceerojo] (T) -- (6.724,1.3);
+      \draw[guia, tceerojo] (A1) -- (0.679,1.3);
+      \draw[salto] (6.724,1.3) -- (0.75,1.3);}
+  \end{scope}
+  % ---------------- b) Recesión ----------------
+  \begin{scope}[xshift=6.6cm, x=0.5cm, y=0.5cm]
+    % 4: el capital se desgasta: I sube y S baja; A y B se funden y la economía salta a C''
+    \capa{4}{\node[titulo] at (-1,9.7) {b) Recesión: $K\downarrow$};}
+    \capa{4}{\ejes{$Y$}{$I,\ S$}{10.6}{9.4}}
+    \capa{4}{\draw[curva1, opacity=0.35] plot[domain=0:10, samples=80, smooth] (\x,{inv(\x)});
+      \draw[curva2, opacity=0.35] plot[domain=0:10, samples=80, smooth] (\x,{aho(\x)});}
+    \capa{4}{\draw[curva1, desplazada] plot[domain=0:10, samples=80, smooth] (\x,{inv(\x)+0.4658})
+        node[etiqueta, right, text=tceemorado] {$I''$};}
+    \capa{4}{\draw[curva2, desplazada] plot[domain=0.4:10, samples=80, smooth] (\x,{aho(\x)-0.4658})
+        node[etiqueta, right, text=tceeazul] {$S''$};}
+    \capa{4}{\node[punto, fill=tceerojo] (T2) at (3.276,3.415) {};}
+    \capa{4}{\node[punto, fill=tceerojo] (C2) at (9.321,6.944) {};
+      \node[etiqueta, above left=0pt and -1pt, text=tceerojo] at (C2) {$C''$};}
+    \capa{4}{\draw[guia, tceerojo] (T2) -- (3.276,1.3);
+      \draw[guia, tceerojo] (C2) -- (9.321,1.3);
+      \draw[salto] (3.276,1.3) -- (9.25,1.3);}
+  \end{scope}
+  % ---------------- c) Ciclo límite en (K, Y) ----------------
+  \begin{scope}[xshift=13.3cm]
+    \capa{4}{\node[titulo] at (-0.5,4.85) {c) Ciclo límite};}
+    \capa{4}{\ejes{$K$}{$Y$}{3.9}{4.6}}
+    \capa{4}{\draw[curva1, rounded corners=6pt] (0.6,3.3) -- (3.0,3.7) -- (3.0,1.0) -- (0.6,0.7) -- cycle;}
+    \capa{4}{\draw[flecha] (1.6,3.47) -- (2.1,3.55);
+      \draw[flecha, line width=1.6pt] (3.0,2.6) -- (3.0,1.95);
+      \draw[flecha] (2.1,0.89) -- (1.6,0.82);
+      \draw[flecha, line width=1.6pt] (0.6,1.75) -- (0.6,2.4);}
+    \capa{4}{\node[font=\footnotesize, anchor=south, text=tceemorado] at (1.8,3.75) {expansión};
+      \node[font=\footnotesize, anchor=north, text=tceemorado] at (1.8,0.68) {recesión};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

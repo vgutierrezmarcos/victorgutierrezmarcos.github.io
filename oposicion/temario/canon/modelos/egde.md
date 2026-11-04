@@ -31,6 +31,7 @@
 | 3.A.7 | NEK de 2.ª generación | resumen (hecho, 4/11/2026) | Las 4 letras (las mismas palabras) y los 2 cambios de la NEK; los modelos medianos estimados como herramienta de los bancos centrales; críticas tras 2008 en desarrollo; `\vertema{3.A.6}` | El ciclo real y la calibración |
 | 3.A.21 | Equilibrio general | mención (hecho, 14/10/2026) | Los EGDE como versión agregada e intertemporal del equilibrio general | — |
 | 3.A.29 | Modelización dinámica | mención (hecho, 1/11/2026) | El agente representativo como base de los EGDE | — |
+| 3.A.42 | Ciclos reales y nominales | mención (hecho, 4/11/2026) | II.1.1, el ciclo real como «primer modelo EGDE» con las 4 letras de Kocherlakota (las mismas palabras) y la linealización con la nota de Buiter (2009); el NAWM II del BCE como heredero de Smets y Wouters (2003) en II.2.3 | El surgimiento (`\vertema{3.A.6}`) |
 | 3.A.1 | Métodos | mención (hecho, 4/11/2026) | Paradigma dominante y su crítica tras 2008 (Romer, 2016; Stiglitz, 2018; Blanchard, 2018) | El modelo |
 
 ## Divergencias encontradas en el temario actual

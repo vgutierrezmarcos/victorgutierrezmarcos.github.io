@@ -1,0 +1,85 @@
+% PIB real de España, su tendencia y su ciclo con el filtro de Hodrick y
+% Prescott (3.A.42, I.2.1), 1995T1-2026T3. Arriba: 100 ln PIB y las tendencias
+% con lambda = 1600 y lambda = 400 000; abajo: los componentes cíclicos (%) y el
+% de la zona del euro (lambda = 1600, hasta 2026T2).
+% Datos: ../datos/hp-pib-espana-zona-euro.csv (Eurostat namq_10_gdp, cálculo
+% propio; comprobación en su cabecera). Marcas: 2008T1, ciclo +3,1 (lambda =
+% 1600) frente a +10,1 (lambda = 400 000); 2019T4, +5,0 con lambda = 1600 (la
+% caída de 2020 tuerce la tendencia hacia abajo antes de la pandemia); 2020T2,
+% -20,3.
+% Recesiones de España (AEE, de pico a valle; ../datos/fechado-recesiones.csv):
+% 2008T2-2009T4, 2010T4-2013T2, 2019T4-2020T2.
+% Eje x: 1995 + \coordindex/4 (la tabla empieza en 1995T1).
+% Colores: PIB morado (dicpib), lambda = 1600 verde, lambda = 400 000 dorado
+% discontinuo, zona del euro azul marino (dicze), como en hp-paso-banda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\hpdatos}{../datos/hp-pib-espana-zona-euro.csv}
+% \recesion{pico}{valle}{ymin}{ymax}, en años decimales
+\newcommand{\recesion}[4]{\dicsombra[fill=dicreferencia, fill opacity=0.2]{#1}{#3}{#2}{#4}}
+\pgfplotsset{hpejes/.style={width=14cm, scale only axis,
+    xmin=1995, xmax=2027, xtick={1995,2000,...,2025},
+    x tick label style={/pgf/number format/1000 sep={}},
+    /pgf/number format/use comma, /pgf/number format/1000 sep={\,},
+    axis lines=left, tick align=outside, clip=false,
+    ticklabel style={font=\footnotesize}, label style={font=\small},
+    legend style={draw=none, font=\footnotesize}, legend cell align=left}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------------- Panel superior: PIB y tendencias ----------------
+  \begin{axis}[hpejes, name=arriba, height=4.6cm, ymin=1205, ymax=1280,
+      ytick={1210,1220,...,1280}, xticklabels={},
+      ylabel={$100\ln \mathrm{PIB}$},
+      legend style={at={(0.01,0.99)}, anchor=north west}, legend columns=2,
+      dicapas]
+    % 1: recesiones (los ejes los dibuja pgfplots)
+    \capa{1}{\recesion{2008.25}{2009.75}{1205}{1280}}
+    \capa{1}{\recesion{2010.75}{2013.25}{1205}{1280}}
+    \capa{1}{\recesion{2019.75}{2020.25}{1205}{1280}}
+    % 2: PIB de España
+    \capa{2}{\addplot[diclinea=dicpib, line width=1.6pt] table[col sep=comma, comment chars={\#},
+        x expr=1995+\coordindex/4, y=ES_ln_pib_x100] {\hpdatos};
+      \addlegendentry{PIB de España}}
+    % 3: tendencia con lambda = 1600
+    \capa{3}{\addplot[diclinea=tceeverde] table[col sep=comma, comment chars={\#},
+        x expr=1995+\coordindex/4, y=ES_tend_l1600] {\hpdatos};
+      \addlegendentry{tendencia, $\lambda=1600$}}
+    % 4: tendencia con lambda = 400 000
+    \capa{4}{\addplot[diclinea=tceedorado, dashed] table[col sep=comma, comment chars={\#},
+        x expr=1995+\coordindex/4, y=ES_tend_l400000] {\hpdatos};
+      \addlegendentry{tendencia, $\lambda=400\,000$}}
+    \capa{4}{\addlegendimage{area legend, fill=dicreferencia!20, draw=dicreferencia!20}
+      \addlegendentry{recesiones (AEE)}}
+  \end{axis}
+  % ---------------- Panel inferior: ciclos ----------------
+  \begin{axis}[hpejes, name=abajo, at={(arriba.south west)}, anchor=north west, yshift=-0.35cm,
+      height=4.2cm, ymin=-24, ymax=12, ytick={-20,-10,0,10},
+      ylabel={ciclo (\%)},
+      legend style={at={(0.01,0.02)}, anchor=south west}, legend columns=1,
+      dicapas]
+    \capa{1}{\recesion{2008.25}{2009.75}{-24}{12}}
+    \capa{1}{\recesion{2010.75}{2013.25}{-24}{12}}
+    \capa{1}{\recesion{2019.75}{2020.25}{-24}{12}}
+    \capa{1}{\dicraya{(1995,0) (2027,0)}}
+    % 5: los 2 ciclos de España, el de la zona del euro y las marcas
+    \capa{5}{\addplot[thin, dicze] table[col sep=comma, comment chars={\#},
+        x expr=1995+\coordindex/4, y=EA20_ciclo_l1600] {\hpdatos};
+      \addlegendentry{zona del euro, $\lambda=1600$}}
+    \capa{5}{\addplot[diclinea=tceeverde] table[col sep=comma, comment chars={\#},
+        x expr=1995+\coordindex/4, y=ES_ciclo_l1600] {\hpdatos};
+      \addlegendentry{España, $\lambda=1600$}}
+    \capa{5}{\addplot[diclinea=tceedorado, dashed] table[col sep=comma, comment chars={\#},
+        x expr=1995+\coordindex/4, y=ES_ciclo_l400000] {\hpdatos};
+      \addlegendentry{España, $\lambda=400\,000$}}
+    \capa{5}{\addplot[dicpuntos=tceeverde, forget plot] coordinates {(2008,3.121) (2019.75,4.978) (2020.25,-20.255)};
+      \addplot[dicpuntos=tceedorado, forget plot] coordinates {(2008,10.124)};}
+    \capa{5}{\dicrotulo[anchor=south east, font=\footnotesize, text=tceedorado!80!black]{(2007.75,10.4)}{2008T1: $+10{,}1$}
+      \dicrotulo[anchor=center, font=\footnotesize, text=tceeverde!80!black]{(2007.1,4.9)}{$+3{,}1$}
+      \dicrotulo[anchor=south east, font=\footnotesize, text=tceeverde!80!black]{(2019.6,5.2)}{2019T4: $+5{,}0$}
+      \dicrotulo[anchor=west, font=\footnotesize, text=tceeverde!80!black]{(2020.6,-20.255)}{2020T2: $-20{,}3$}}
+  \end{axis}
+  % margen para los años del eje inferior (si no, el recorte los corta)
+  \path ($(abajo.south west)+(0,-0.75)$);
+\end{tikzpicture}
+\end{document}

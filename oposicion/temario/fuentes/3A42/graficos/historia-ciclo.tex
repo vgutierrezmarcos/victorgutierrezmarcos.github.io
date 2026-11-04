@@ -1,0 +1,86 @@
+% Las 4 etapas de la teoría del ciclo (3.A.42, I.4): la franja de arriba de la
+% pizarra, que crece durante el cante. Mismo estilo que
+% fuentes/3A06/graficos/linea-tiempo-nmc.tex (hitos alternos arriba y abajo,
+% rótulo a 45°, color de su etapa).
+% Escala por tramos (esquema, no proporcional al tiempo): cada etapa tiene el
+% ancho que piden sus hitos.
+%   1) teorías de las crisis, 1750-1860: 0-3 cm (morado)
+%   2) «edad dorada», 1860-1930: 3-7 cm (azul)
+%   3) keynesianas, 1930-1970: 7-12,5 cm (verde)
+%   4) microfundamentada, desde 1970: 12,5-17,5 cm (dorado; 2026 = 17,5)
+% Frisch (1933) y Slutsky (1937) van juntos, en la frontera de la 2.ª y la 3.ª
+% etapa, con el color de la 2.ª. Crisis (rojo, bajo la franja): 1825, 1929,
+% 1973, 2008 y 2020 (el año de 1973, a la izquierda, para no tocar el tallo de 1976).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{shapes.geometric}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={xt(\a)= \a<1860 ? (\a-1750)*3/110 :
+      (\a<1930 ? 3+(\a-1860)*4/70 : (\a<1970 ? 7+(\a-1930)*5.5/40 : 12.5+(\a-1970)*5/56));},
+    hitoarriba/.style={font=\footnotesize, rotate=45, anchor=south west, inner sep=1pt},
+    hitoabajo/.style={font=\footnotesize, rotate=45, anchor=north east, inner sep=1pt},
+    tallo/.style={thin, #1},
+    tramo/.style={fill=#1!16, draw=#1!60, thin},
+    crisis/.style={isosceles triangle, isosceles triangle apex angle=60, shape border rotate=90,
+      fill=tceerojo, draw=none, inner sep=0pt, minimum size=5pt}]
+  % \hito{color}{año}{a = arriba / b = abajo}{texto}
+  \newcommand{\hito}[4]{%
+    \ifx a#3%
+      \node[circle, fill=#1, inner sep=1.4pt] at ({xt(#2)},0.45) {};
+      \draw[tallo=#1] ({xt(#2)},0.45) -- ({xt(#2)},0.6);
+      \node[hitoarriba, text=#1] at ({xt(#2)},0.6) {#4};
+    \else
+      \node[circle, fill=#1, inner sep=1.4pt] at ({xt(#2)},-0.45) {};
+      \draw[tallo=#1] ({xt(#2)},-0.45) -- ({xt(#2)},-1.05);
+      \node[hitoabajo, text=#1] at ({xt(#2)},-1.05) {#4};
+    \fi}
+  % \crisis{año}: triángulo rojo bajo la franja con el año
+  \newcommand{\crisis}[2][north]{%
+    \node[crisis] at ({xt(#2)},-0.5) {};
+    \node[font=\footnotesize, text=tceerojo, anchor=#1, inner sep=1pt] at ({xt(#2)+0.06},-0.6) {#2};}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.6,-4.6) rectangle (18.3,4.4);
+  % 1: la franja del tiempo con las 4 etapas
+  \capa{1}{\draw[tramo=tceemorado] (0,-0.38) rectangle (3,0.38);}
+  \capa{1}{\node[font=\footnotesize, text=tceemorado, align=center] at (1.5,0)
+      {teorías de las crisis\\[-1pt]1750-1860};}
+  \capa{1}{\draw[tramo=tceeazul] (3,-0.38) rectangle (7,0.38);}
+  \capa{1}{\node[font=\footnotesize, text=tceeazul, align=center] at (5,0)
+      {«edad dorada»\\[-1pt]1860-1930};}
+  \capa{1}{\draw[tramo=tceeverde] (7,-0.38) rectangle (12.5,0.38);}
+  \capa{1}{\node[font=\footnotesize, text=tceeverde, align=center] at (9.75,0)
+      {teorías keynesianas\\[-1pt]1930-1970};}
+  \capa{1}{\draw[tramo=tceedorado] (12.5,-0.38) rectangle (17.5,0.38);}
+  \capa{1}{\node[font=\footnotesize, text=tceedorado!80!black, align=center] at (15,0)
+      {análisis microfundamentado\\[-1pt]desde 1970};}
+  \capa{1}{\draw[eje] (17.5,0) -- (18.1,0);}
+  % 2: hitos de las etapas 1 y 2 y la crisis de 1825
+  \capa{2}{\hito{tceemorado}{1819}{a}{1819-1824 \emph{general glut}: \autor{Sismondi} y \autor{Malthus}}}
+  \capa{2}{\crisis{1825}}
+  \capa{2}{\hito{tceeazul}{1862}{a}{1862 \autor{Juglar}: el ciclo}}
+  \capa{2}{\hito{tceeazul}{1884}{b}{1884 \autor{Jevons}: manchas solares}}
+  \capa{2}{\hito{tceeazul}{1912}{a}{1912-1931 \autor{Mises} y \autor{Hayek}: teoría austriaca}}
+  \capa{2}{\hito{tceeazul}{1913}{b}{1913 \autor{Hawtrey}: teoría monetaria}}
+  \capa{2}{\hito{tceeazul}{1933}{a}{1933-1937 \autor{Frisch} y \autor{Slutsky}: impulso y propagación}}
+  % 3: hitos de la etapa 3
+  \capa{3}{\hito{tceeverde}{1936}{b}{1936 \autor{Keynes} y \autor{Harrod}}}
+  \capa{3}{\hito{tceeverde}{1939}{a}{1939 \autor{Samuelson}: multiplicador-acelerador}}
+  \capa{3}{\hito{tceeverde}{1940}{b}{1940 \autor{Kaldor}: ciclo no lineal}}
+  \capa{3}{\hito{tceeverde}{1950}{a}{1950 \autor{Hicks}: techo y suelo}}
+  \capa{3}{\hito{tceeverde}{1967}{b}{1967 \autor{Goodwin}: depredador y presa}}
+  % 4: hitos de la etapa 4 y las crisis de 1929, 1973, 2008 y 2020
+  \capa{4}{\hito{tceedorado!80!black}{1972}{a}{1972 \autor{Lucas}: ciclo monetario}}
+  \capa{4}{\hito{tceedorado!80!black}{1976}{b}{1976 crítica de \autor{Lucas}}}
+  \capa{4}{\hito{tceedorado!80!black}{1982}{a}{1982 \autor{Kydland} y \autor{Prescott}: ciclo real}}
+  \capa{4}{\hito{tceedorado!80!black}{1999}{b}{1999 \autor{Clarida}, \autor{Galí} y \autor{Gertler}: NEK}}
+  \capa{4}{\hito{tceedorado!80!black}{1999}{a}{1999 BGG: acelerador financiero}}
+  \capa{4}{\hito{tceedorado!80!black}{2014}{b}{2014 \autor{Borio}: ciclo financiero}}
+  \capa{4}{\crisis{1929}}
+  \capa{4}{\crisis[north east]{1973}}
+  \capa{4}{\crisis{2008}}
+  \capa{4}{\crisis{2020}}
+\end{tikzpicture}
+\end{document}

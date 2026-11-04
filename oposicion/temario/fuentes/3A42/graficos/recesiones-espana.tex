@@ -1,0 +1,51 @@
+% Las 2 últimas recesiones de España (3.A.42, III.1 y conclusión): PIB real en
+% índice (pico = 100) frente a los trimestres desde el pico.
+%   índice = 100 exp((ES_ln_pib_x100(t) - ES_ln_pib_x100(pico))/100)
+% Datos: ../datos/hp-pib-espana-zona-euro.csv (Eurostat namq_10_gdp, hasta
+% 2026T3). Fila 53 (desde 0) = 2008T2, 100 ln PIB = 1254,603; fila 99 = 2019T4,
+% 1261,488.
+%   desde 2008T2: fondo en 2013T3 (21 trimestres), -8,9 %; recupera el pico en
+%     2016T4 (34 trimestres después);
+%   desde 2019T4: fondo en 2020T2 (2 trimestres), -22,0 %; recupera el pico en
+%     2022T2 (10 trimestres después).
+% Comprobado a mano con el CSV. Último dato: 2026T3, 112,6 en la de 2020. Picos de la AEE (fechado-recesiones.csv).
+% Colores: la recesión que empezó en el crédito, dorado (el del ciclo
+% financiero); la de la pandemia, azul.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\hpdatos}{../datos/hp-pib-espana-zona-euro.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=13cm, height=6.2cm, scale only axis,
+      xmin=0, xmax=40, ymin=76, ymax=114,
+      xtick={0,4,...,40}, ytick={80,85,...,110},
+      /pgf/number format/use comma,
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize}, label style={font=\small},
+      xlabel={trimestres desde el pico}, ylabel={PIB real (pico $=100$)},
+      legend style={at={(0.99,0.03)}, anchor=south east, draw=none, font=\footnotesize},
+      legend cell align=left,
+      dicapas]
+    % 1: ejes y la línea de 100
+    \capa{1}{\dicraya[dicumbral]{(0,100) (40,100)}}
+    % 2: la recesión de 2008
+    \capa{2}{\addplot[diclinea=tceedorado, line width=1.6pt] table[col sep=comma, comment chars={\#},
+        x expr=\coordindex-53, y expr={100*exp((\thisrow{ES_ln_pib_x100}-1254.603)/100)},
+        restrict x to domain=0:40] {\hpdatos};
+      \addlegendentry{desde 2008T2 (crisis financiera)}}
+    \capa{2}{\addplot[dicpuntos=tceedorado!75!black, forget plot] coordinates {(21,91.08) (34,100.0)};}
+    \capa{2}{\dicrotulo[anchor=north, font=\footnotesize, text=tceedorado!75!black]{(21,90.5)}{2013T3: $-8{,}9$~\%}
+      \dicraya[thin, tceedorado!75!black]{(34,99.3) (35.2,94.2)}
+      \dicrotulo[anchor=north, font=\footnotesize, text=tceedorado!75!black, align=center]{(35.5,94)}{2016T4: recupera el pico\\a los 34 trimestres}}
+    % 3: la recesión de 2020 y sus etiquetas
+    \capa{3}{\addplot[diclinea=tceeazul, line width=1.6pt] table[col sep=comma, comment chars={\#},
+        x expr=\coordindex-99, y expr={100*exp((\thisrow{ES_ln_pib_x100}-1261.488)/100)},
+        restrict x to domain=0:40] {\hpdatos};
+      \addlegendentry{desde 2019T4 (pandemia)}}
+    \capa{3}{\addplot[dicpuntos=tceeazul, forget plot] coordinates {(2,77.95) (10,100.34)};}
+    \capa{3}{\dicrotulo[anchor=west, font=\footnotesize, text=tceeazul]{(2.5,77.95)}{2020T2: $-22{,}0$~\%}
+      \dicrotulo[anchor=south, font=\footnotesize, text=tceeazul, align=center]{(7.5,103)}{2022T2: recupera el pico\\a los 10 trimestres}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

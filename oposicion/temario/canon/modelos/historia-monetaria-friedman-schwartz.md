@@ -1,7 +1,7 @@
 # La Gran Contracción según Friedman y Schwartz (*A Monetary History of the United States*, 1963)
 
 - **Área:** pensamiento · **Tema de referencia:** **3.A.5** (La síntesis neoclásica. El monetarismo; revisado el 3/11/2026: III.1.4 `sec:ciclos`, «Teoría de los ciclos: la Gran Depresión») — es la prueba empírica central del monetarismo y el único tema que la cuenta con sus cifras y su gráfico. Alternativa: el 3.A.42 (ciclo), que la resumirá. Ficha creada en la fase canon del 3.A.5 (CC5, **[decidir]**).
-- **Temas que lo usan:** 3.A.5 (desarrollo; hecho, 3/11/2026), 3.A.42 (resumen: el ciclo monetario y el *plucking model*), 3.A.36 (mención; hecho, 4/11/2026: II.2, la base sube y el dinero cae un tercio porque el multiplicador del dinero pasa de 6,5 a 3,6, con los 2 cocientes canónicos y `\vertema{3.A.5}`; anexo A, $c_E$ de 0,093 a 0,227 y $c_R$ de 0,076 a 0,110, la base +17,5 %; ficha `multiplicador-monetario`; I.4.3, el prestamista de última instancia en una línea), 3.A.37 (mención: el canal del crédito de Bernanke, 1983; ficha `bernanke-gertler`), 3.B.20 (mención: la Gran Depresión en la historia del sistema monetario internacional), 3.A.6 (mención; hecho, 4/11/2026: I.3, Lucas admite que ni su modelo ni el de Kydland y Prescott explican la Gran Depresión y elogia la explicación monetaria de Friedman y Schwartz en la reseña de 1994, sin cita entre comillas; anexo D, el análisis histórico de 1867-1960 contra la neutralidad del dinero). Relacionadas: `monetarismo`, `bernanke-gertler`.
+- **Temas que lo usan:** 3.A.5 (desarrollo; hecho, 3/11/2026), 3.A.42 (hecho, 4/11/2026, ver la tabla; resumen: el ciclo monetario y el *plucking model*), 3.A.36 (mención; hecho, 4/11/2026: II.2, la base sube y el dinero cae un tercio porque el multiplicador del dinero pasa de 6,5 a 3,6, con los 2 cocientes canónicos y `\vertema{3.A.5}`; anexo A, $c_E$ de 0,093 a 0,227 y $c_R$ de 0,076 a 0,110, la base +17,5 %; ficha `multiplicador-monetario`; I.4.3, el prestamista de última instancia en una línea), 3.A.37 (mención: el canal del crédito de Bernanke, 1983; ficha `bernanke-gertler`), 3.B.20 (mención: la Gran Depresión en la historia del sistema monetario internacional), 3.A.6 (mención; hecho, 4/11/2026: I.3, Lucas admite que ni su modelo ni el de Kydland y Prescott explican la Gran Depresión y elogia la explicación monetaria de Friedman y Schwartz en la reseña de 1994, sin cita entre comillas; anexo D, el análisis histórico de 1867-1960 contra la neutralidad del dinero). Relacionadas: `monetarismo`, `bernanke-gertler`.
 - **Manuales de referencia:** Friedman y Schwartz (1963), *A Monetary History of the United States, 1867-1960*, cap. 7 (reeditado en 1965 como *The Great Contraction, 1929-33*); Bernanke (1983), «Nonmonetary Effects of the Financial Crisis…», *AER*; Bernanke (2002), discurso en el 90 cumpleaños de Friedman; Friedman (1964, 1993), *plucking model*; Lucas (1994), reseña en el *JME*; NBER Macrohistory, cap. 14.
 
 ## Presentación de referencia (3.A.5, III.1.4)
@@ -24,7 +24,7 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.5 | Síntesis y monetarismo | desarrollo (hecho, 3/11/2026) | Puntos 1-5 en 1′30″, con el gráfico de apoyo | — |
-| 3.A.42 | Teorías del ciclo | resumen | Ciclo monetario y *plucking model* (Friedman, 1964 y 1993), con las cifras canónicas si se dan y `\vertema{3.A.5}` | Los cocientes del multiplicador |
+| 3.A.42 | Teorías del ciclo | resumen (hecho, 4/11/2026; II.2.1, Friedman y Schwartz, 1963, y el *plucking model*, 1964 y 1993, con Dupraz, Nakamura y Steinsson, 2025; sin cifras ni la frase de Lucas) | Ciclo monetario y *plucking model* (Friedman, 1964 y 1993), con las cifras canónicas si se dan y `\vertema{3.A.5}` | Los cocientes del multiplicador |
 | 3.A.36 | Política monetaria | mención (hecho, 4/11/2026) | El multiplicador del dinero en 1929-1933 con las cifras canónicas (6,5 → 3,6; 10,8 → 4,4 y 13,1 → 9,1; base +17,5 %) y el prestamista de última instancia | La tesis completa |
 | 3.A.37 | Transmisión | mención | Bernanke (1983) y el canal del crédito como complemento de Friedman y Schwartz (ficha `bernanke-gertler`) | — |
 | 3.B.20 | SMI hasta Bretton Woods | mención | La Gran Depresión y el patrón oro (lectura de Eichengreen) junto a la de Friedman y Schwartz | Las cifras del dinero |
@@ -33,6 +33,6 @@
 ## Divergencias encontradas en el temario actual
 
 - **Resuelto en el 3.A.5 (3/11/2026)**: «un tercio de los bancos quebró» (más de una quinta parte suspendió pagos); «la cantidad de dinero se redujo en un tercio» (−35 %); la crisis «hubiera terminado ya en 1930»; nota de la burbuja previa al *crash* como tesis monetarista; «*liquidity tram*» y la cita de unos apuntes con enlace t.co; Bernanke «presidente 2006-2014» y «en 2005 fue nombrado Presidente»; *plucking model* «(1993)… tres décadas más tarde».
-- **3.A.6 y 3.A.42 (sin revisar)**: la frase de Lucas sobre Friedman y Schwartz, sin fuente (ver ficha `monetarismo`).
+- **3.A.6 y 3.A.42 (resueltos el 4/11/2026: fuera en los 2)**: la frase de Lucas sobre Friedman y Schwartz, sin fuente (ver ficha `monetarismo`).
 
 Autor: Víctor Gutiérrez Marcos

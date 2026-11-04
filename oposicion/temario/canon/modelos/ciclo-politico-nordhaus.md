@@ -1,7 +1,7 @@
 # Ciclo político-económico de Nordhaus (1975)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.2 (democracia representativa) — único que lo desarrolla.
-- **Temas que lo usan:** 4.B.2 (desarrollo), 4.B.5 (resumen), 4.B.11 (mención), 3.A.39 (mención; hecho, 4/11/2026: I.3.3, el ciclo político presupuestario, Nordhaus, 1975, y Rogoff, 1990, tras las 4 explicaciones del sesgo deficitario; ficha `sesgo-deficitario`); 3.A.23 (mención; hecho, 21/10/2026).
+- **Temas que lo usan:** 4.B.2 (desarrollo), 4.B.5 (resumen), 4.B.11 (mención), 3.A.39 (mención; hecho, 4/11/2026: I.3.3, el ciclo político presupuestario, Nordhaus, 1975, y Rogoff, 1990, tras las 4 explicaciones del sesgo deficitario; ficha `sesgo-deficitario`); 3.A.23 (mención; hecho, 21/10/2026); 3.A.42 (mención; hecho, 4/11/2026: I.4.3, «El ciclo político», Kalecki, 1943, Nordhaus, 1975, y Rogoff, 1990, con `\vertema{4.B.2}`; CC8 del 3.A.42, que pedía el `faltan` del 4.B.2).
 - **Manuales de referencia:** Nordhaus (1975), «The political business cycle», *RES*; Hibbs (1977), ciclo partidista; Rogoff (1990), ciclos presupuestarios con expectativas racionales; Alesina, Roubini y Cohen, *Political Cycles and the Macroeconomy* (1997); Persson y Tabellini, cap. 16.
 
 ## Presentación de referencia
@@ -21,6 +21,7 @@
 | 4.B.11 | Imposición óptima | Mención | — | — |
 | 3.A.23 | Fallos del sector público (incentivos) | mención (hecho, 21/10/2026) | Políticos que buscan la reelección expanden antes de las elecciones (Nordhaus, 1975); con expectativas racionales, Rogoff, y Kalecki como precedente, en nota y sin gráfico | El modelo |
 | 3.A.39 | Sesgo deficitario | mención (hecho, 4/11/2026) | Déficits antes de las elecciones (Nordhaus, 1975; Rogoff, 1990), una línea | El modelo |
+| 3.A.42 | Teorías del ciclo (tercera etapa) | mención (hecho, 4/11/2026) | Kalecki (1943) como precursor; Nordhaus (1975), con votantes miopes, expande antes de las elecciones y ajusta después; con expectativas racionales, ciclos presupuestarios más suaves (Rogoff, 1990); `\vertema{4.B.2}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - **Fecha errónea en 4.B.2:** «Nordhaus (1971)»; es **Nordhaus (1975)**. **Corregir.**

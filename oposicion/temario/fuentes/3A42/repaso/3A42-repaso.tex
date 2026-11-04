@@ -1,0 +1,246 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Teorías del ciclo]{3.A.42}{Teorías de los ciclos económicos: ciclos nominales y reales. Referencia al ciclo financiero y sus interrelaciones con el ciclo real.}
+\tcefecha{04/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «siempre que llovió, escampó»}{2,5}
+\apartadocante{I. Aproximación descriptiva e histórica}{8}
+\subcante{1. Definición de \autor{Burns} y \autor{Mitchell} (1946)}{1}
+\subcante{2. Caracterización empírica}{3}
+\subcante{3. Evolución: la Gran Moderación}{0,5}
+\subcante{4. Perspectiva histórica (4 etapas)}{3,5}
+\apartadocante{II. Ciclos nominales y reales (EGDE)}{11,5}
+\subcante{1. NMC: el ciclo real}{8}
+\subcante{2. Ciclos nominales: monetarismo a NEK}{3,5}
+\apartadocante{III. Ciclo financiero e interrelaciones}{7}
+\subcante{1. Concepto, medición y hechos}{2}
+\subcante{2. \autor{Fisher}, \autor{Minsky}, \autor{Kindleberger}}{1,5}
+\subcante{3. Acelerador financiero y política}{3,5}
+\apartadocante{Conclusión}{1}}
+\emph{Reparto}: \hyperref[rep:I.4]{I.4} = multiplicador-acelerador \tiempo{2}; \hyperref[rep:II.1]{II.1} = descripción \tiempo{1}, modelo \tiempo{5}, resultados \tiempo{2}; \hyperref[rep:II.2]{II.2} = monetarismo y \autor{Lucas} \tiempo{1}, NEK \tiempo{2}, resultados \tiempo{0,5}. El ciclo real (referencia) no baja de \tiempo{7}; NEK resumida (se desarrolla en \vertema{3.A.7}); ciclo financiero («referencia») $\leq$\tiempo{7}. \emph{Pizarra}: arriba, línea del tiempo de las 4 etapas; \emph{izda.}, refrán y pegatinas: «todo lo que sube baja» (\autor{Hicks}), «al mal tiempo, buena cara» (RBC), «después de la calma viene la tempestad» (\autor{Minsky}), «llueve sobre mojado» (acelerador financiero), «guarda pan para mayo y leña para abril» (colchón anticíclico); \emph{centro}, ciclo-tendencia, regiones de \autor{Samuelson}, respuestas del RBC, plano $(x,\pi)$, ciclo financiero vs.\ real, espiral; \emph{dcha.}, recuadradas hasta el final: \autor{Samuelson}, bloque RBC y prima de financiación externa; debajo, tabla origen-propagación-persistencia, que se rellena teoría a teoría.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Siempre que llovió, escampó». España: 2019 +2,0\,\%; 2020 $-10{,}9\mbox{\,\%}$ (confinamiento); 2021 +6,7\,\%; 2022 +6,4\,\% (nivel de 2019 recuperado en primavera de 2022). 2008-13: $-8{,}9\mbox{\,\%}$, máximo recuperado a finales de 2016 (+8 años): empezó en el crédito y la vivienda. Hoy: 2025 +2,6\,\%; 2026T3 +2,7\,\% interanual; ningún comité (NBER, CEPR, AEE) ve recesión. ¿\emph{Por qué fluctúa la economía, por qué unas recesiones duran más y qué puede hacer la política}?
+\item \textbf{Relevancia}: \emph{teoría}: con el crecimiento, una de las 2 grandes preguntas; «los ciclos son todos iguales» en sus comovimientos (\autor{Lucas}, 1977); «si quieres entender la geología, estudia los terremotos» (\autor{Bernanke} a \autor{Gertler}); \emph{política}: recesión con crisis bancaria: $Y$ $-9\mbox{\,\%}$ en $\approx$2 años, paro +7 pp durante +4 (\autor{Reinhart}-\autor{Rogoff}, 2009); \emph{actualidad}: ago.\ 2008, \autor{Blanchard}: «el estado de la macro es bueno»; 2008 obligó a meter crédito y ciclo financiero.
+\item \textbf{Contextualización}: \concepto{ciclo} = expansiones y contracciones de la actividad agregada en torno a la tendencia, recurrente pero no periódico; se mide con la \concepto{brecha de producción}. 2 preguntas desde \autor{Frisch} (1933): \concepto{origen} (impulso) y \concepto{transmisión} (\emph{propagación} a todas las variables y \emph{persistencia}); caballito de balancín (de \autor{Wicksell}). 2 criterios: \concepto{endógeno} (oscila solo: multiplicador-acelerador, \autor{Kaldor}, \autor{Minsky}) vs.\ \concepto{exógeno} (perturbaciones: \autor{Frisch}, EGDE); \concepto{reales} (respuesta eficiente, dinero neutral) vs.\ \concepto{nominales} (información imperfecta, \autor{Lucas} 1972, o rigideces, NEK). + \concepto{ciclo financiero}: crédito y vivienda, más largo, amplifica (\autor{Borio}, 2014).
+\item \textbf{Problemática}: ¿qué es el ciclo, cómo se mide y qué regularidades muestra? ¿Endógeno o hacen falta perturbaciones? ¿Respuestas eficientes o el dinero y las rigideces las hacen costosas? ¿Qué añade el crédito?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, descripción, medición, hechos e historia (multiplicador-acelerador); \hyperref[rep:II]{II}, ciclo real (referencia) y nominales hasta la NEK; \hyperref[rep:III]{III}, ciclo financiero e interrelaciones. En II, el real antes que el nominal (aunque el título los nombre al revés): orden en que se construyeron y la NEK parte del RBC.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{I. Aproximación descriptiva e histórica\label{rep:I}}
+\begin{ideaclave}
+El ciclo es un movimiento conjunto de muchas variables, recurrente pero no periódico, medido como desviación de una tendencia que no se observa. Sus hechos estilizados son el banco de pruebas de toda teoría. Las primeras teorías lo explicaron con la dinámica de la demanda, sin optimización ni dinero.
+\end{ideaclave}
+
+\sub{I.1. Definición de \autor{Burns} y \autor{Mitchell} (1946)\label{rep:I.1}}
+\begin{itemize}
+\item NBER, desde los años 20 (sobre \autor{Mitchell}, 1927). Rasgos: (1) \concepto{actividad agregada} (PIB, empleo, demanda, precios a la vez); (2) \concepto{economías de mercado} (empresas); (3) \concepto{expansiones} y \concepto{contracciones} separadas por \concepto{pico} y \concepto{valle}; (4) \concepto{recurrente, pero no periódico}; (5) dura \concepto{más de un año} (dentro del año, estacionalidad), de 1 a 10-12 años.
+\item Ciclos regulares superpuestos, abandonados: \autor{Kitchin} ($\approx$40 meses, existencias), \autor{Juglar} (7-11 años, inversión), \autor{Kuznets} (15-25, construcción), \autor{Kondratieff} ($\approx$50, ondas largas); nombres de \autor{Schumpeter} (1939).
+\end{itemize}
+
+\sub{I.2. Caracterización empírica\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Datación} (ciclo de valle a valle): \emph{NBER}: \concepto{recesión} = caída significativa, extendida y de más de unos meses (profundidad, difusión, duración); posguerra: recesiones 10 meses, expansiones 64; la última, feb.-abr.\ 2020. 2 trimestres de caída = convención periodística; algoritmo: \autor{Bry}-\autor{Boschan} (1971), \autor{Harding}-\autor{Pagan} (2002): fase $\geq$2 trimestres, ciclo $\geq$5. \emph{CEPR} (zona del euro): 6 recesiones desde 1970 (2008-09 y 2011-13). \emph{AEE} (España): 6 desde 1970; la más larga, 2011-13 (10 trimestres). Tiempo real: \concepto{indicadores adelantados} (PMI, ESI).
+\item \emph{Medición}: tendencia + ciclo + estacionalidad (TRAMO-SEATS, X-13). Tendencia \emph{lineal}: no (\autor{Nelson}-\autor{Plosser}, 1982: raíz unitaria $\Rightarrow$ ciclos espurios); \emph{función de producción} (CE) \vertema{4.B.4}; \emph{filtros}. \concepto{Filtro HP}:
+\begin{formula}
+\centering $\displaystyle\min_{\{y^p_t\}}\sum_t(y_t-y^p_t)^2+\lambda\sum_t\big[\Delta y^p_{t+1}-\Delta y^p_t\big]^2$
+\end{formula}
+\item[] $\lambda=0$: sin ciclo; $\lambda\to\infty$: recta. $\lambda=1600$ trimestral (ciclo 5\,\% $\equiv$ 1/8 pp: $(5/\tfrac18)^2$; deja en tendencia lo de +8 años); anual 6,25 y mensual 129.600 (\autor{Ravn}-\autor{Uhlig}, 2002; se ven 100 y 14.400). Con $\lambda=400.000$ (crédito), el ciclo de España 2008 pasa del 3 al 10\,\%. \concepto{Brecha de producción} $\mathrm{OG}_t\approx100(y_t-y^p_t)$: $<0$ recursos ociosos, $>0$ recalentamiento. \emph{3 problemas} (\autor{Hamilton}, 2018): ateórico; final de muestra; perturbaciones grandes tuercen la tendencia (2020 $\Rightarrow$ brecha +5\,\% en 2019 que nadie veía). \concepto{Paso banda} (\autor{Baxter}-\autor{King}, 1999; \autor{Christiano}-\autor{Fitzgerald}, 2003): 6-32 \emph{trimestres}.
+\item \emph{4 rasgos}: \concepto{volatilidad relativa} $\sigma_X/\sigma_Y$; \concepto{dirección} (pro-, contra-, acíclica: $\mathrm{corr}(\hat x_t,\hat y_t)$); \concepto{desfase} (adelantada/retrasada); \concepto{persistencia} (autocorrelación).
+\item \emph{Hechos} (\autor{Stock}-\autor{Watson}, 1999): todo se mueve con el PIB, persistencia $\approx$0,9; \emph{inversión} 2,5-4,5 veces el PIB, \emph{consumo} menos (salvo duraderos); vivienda adelantada, existencias muy volátiles; \emph{comercio} 2,5-3,7; \emph{consumo público} sin patrón; \emph{empleo} procíclico, coincidente o retrasado; paro contracíclico; \emph{salario real} poco volátil, débilmente procíclico; precios y tipos cortos detrás; bolsa y pendiente de la curva, delante.
+\item \emph{España} (\autor{Álvarez}-\autor{Gadea}-\autor{Gómez-Loscos}, 2021): empleo (1,22) y consumo (1,18) más volátiles que el PIB (temporalidad: ajuste con personas); \emph{productividad contracíclica}; consumo público procíclico. Pandemia: $\sigma_Y$ de 1,2 a 2,6 $\Rightarrow$ tablas hasta 2019.
+\end{itemize}
+
+\sub{I.3. Evolución: la Gran Moderación\label{rep:I.3}}
+\begin{itemize}
+\item Desde mediados de los 80, volatilidad del PIB de EE.\,UU.\ a la mitad (\autor{Kim}-\autor{Nelson}, 1999; \autor{McConnell}-\autor{Pérez-Quirós}, 2000). 3 causas: \emph{estructurales} (servicios, existencias, crédito), \emph{mejor política}, \emph{buena suerte} (la principal para \autor{Stock}-\autor{Watson}, 2002). \autor{Lucas} (2003): depresiones «resueltas»; 2008 y 2020 lo desmienten: faltaba el crédito.
+\end{itemize}
+
+\sub{I.4. Perspectiva histórica\label{rep:I.4}}
+\begin{itemize}
+\item \emph{1.ª, las crisis (1750-1860)}: sucesos aislados (1825, 1.ª crisis general); \emph{sobreproducción} (\emph{general glut} 1819-24: \autor{Sismondi}, \autor{Malthus} vs.\ ley de \autor{Say}) \vertema{3.A.2}; \emph{dinero y crédito} (burbujas de 1825 y 1836); \emph{desajustes sectoriales} y \autor{Marx} (tasa de ganancia, realización, desproporción). Aún no hay «ciclo».
+\item \emph{2.ª, edad dorada (1860-1930)}: \autor{Juglar} (1862) convierte el ciclo en objeto de estudio (\autor{Petty}, 1662, ya hablaba de 7 años). 6 familias: \emph{climáticas} (manchas solares, \autor{Jevons}, 1884); \emph{sobreinversión} (\autor{Tugan-Baranovsky}, \autor{Spiethoff}, \autor{Cassel}, \autor{Robertson}); \emph{psicológicas y acelerador} (\autor{Aftalion}, 1913; \autor{Clark}, 1917; \autor{Pigou}); \emph{monetarias} (\autor{Hawtrey}; austriacos: tipo bancario < natural de \autor{Wicksell}, \autor{Mises} 1912, \autor{Hayek} 1931) \vertema{3.A.3}; \emph{subconsumo} (\autor{Hobson}); \emph{perturbaciones}: \autor{Slutsky} (1937), sumar ruido da ondas; \autor{Frisch} (1933), impulso aleatorio + propagación amortiguada: la arquitectura actual.
+\item \emph{3.ª, keynesianas (1930-70)}: cap.~22 de la \emph{Teoría general} (eficiencia marginal del capital) \vertema{3.A.4}.
+\item \textbf{Multiplicador-acelerador} (\autor{Harrod}, 1936; \autor{Samuelson}, 1939, a sugerencia de \autor{Hansen}): ciclo endógeno de demanda sin perturbaciones. \emph{Supuestos}: cerrada, precios fijos, capacidad ociosa; $C_t=cY_{t-1}$; $I_t=v(C_t-C_{t-1})$; $G$ constante. Ecuación en diferencias de 2.º orden:
+\funcionclave{Y_t=c\,(1+v)\,Y_{t-1}-c\,v\,Y_{t-2}+G}
+\item[] $Y^*=G/(1-c)$; raíces de $z^2-c(1+v)z+cv=0$: \emph{oscila} si $c(1+v)^2<4v$; \emph{amortiguada} si $cv<1$ (módulo $\sqrt{cv}$). 4 regiones: A, converge sin oscilar ($v$ pequeño); B, oscilación amortiguada; C, explosiva; D, diverge sin oscilar. \emph{Ej.}: $c=0{,}8$, $v=1$: $cv=0{,}8<1$ y $3{,}2<4$: multiplicador 5, oscilaciones que se apagan de $\approx$13,5 periodos.
+\end{itemize}
+\graficorepaso[\linewidth]{multiplicador-acelerador}{Izda.: curvas $cv=1$ y $c(1+v)^2=4v$, tangentes en $(1,1)$, y regiones A-D; dcha.: \autor{Hicks}, trayectoria explosiva entre techo y suelo}
+\begin{itemize}
+\item[] \emph{Implicaciones}: la inversión, lo más volátil; ciclos permanentes solo si $cv=1$: hacen falta perturbaciones (\autor{Frisch}) o límites (\autor{Hicks}). \emph{Ext.}: \autor{Hicks} (1950), caso $cv>1$ con \emph{techo} (pleno empleo) y \emph{suelo} (inversión bruta nula): «todo lo que sube baja»; \autor{Metzler} (1941, existencias); \autor{Goodwin} (1951, acelerador no lineal); \autor{Duesenberry}, \autor{Pasinetti}. \emph{Valoración}: \emph{ad hoc}, crítica de \autor{Lucas} \vertema{3.A.6}; parámetros muy concretos; ciclos demasiado regulares; pero el acelerador vuelve en clave financiera (\hyperref[rep:III.3]{III.3}).
+\item \textbf{Ciclo endógeno no lineal}: \concepto{ciclo límite}. \autor{Kalecki} (1933-35, inversión y beneficios); \autor{Kaldor} (1940): $I$ y $S$ en S, 3 equilibrios, el capital desplaza las curvas y la economía salta; \autor{Goodwin} (1967): participación salarial y empleo, depredador-presa de \autor{Lotka}-\autor{Volterra}. Deterministas y sin dinero.
+\item \textbf{Ciclo político}: \autor{Kalecki} (1943); \autor{Nordhaus} (1975), votantes miopes; con racionales, ciclos presupuestarios (\autor{Rogoff}, 1990) \vertema{4.B.2}.
+\item \emph{4.ª, microfundamentos (desde 1970)}: estanflación, expectativas racionales y \concepto{crítica de \autor{Lucas}} (1976) \vertema{3.A.6}: \autor{Lucas} (1972, nominal) $\to$ RBC (\autor{Kydland}-\autor{Prescott}, 1982; \autor{Long}-\autor{Plosser}, 1983) $\to$ VAR: el dinero importa (\autor{Sims}, 1992) $\to$ NEK.
+\end{itemize}
+
+% ==========================================================================
+\bloque[11,5]{II. Ciclos nominales y reales (EGDE)\label{rep:II}}
+\begin{ideaclave}
+El ciclo real muestra que una economía eficiente, sin dinero ni fallos de mercado, fluctúa ante perturbaciones de productividad, y deja el método EGDE; pero no logra que el dinero importe ni que el empleo se mueva como en los datos. Los ciclos nominales (\autor{Lucas}, NEK) devuelven un papel al dinero y el ciclo deja de ser eficiente.
+\end{ideaclave}
+
+\sub{II.1. NMC: el ciclo real\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Descripción}: ciclo y crecimiento, una sola teoría: RCK \vertema{3.A.43} + 3 cambios: \emph{perturbaciones} aleatorias y persistentes a la PTF (residuo de \autor{Solow}) \vertema{3.A.45}; \emph{oferta de trabajo} elástica (\autor{Lucas}-\autor{Rapping}; \concepto{elasticidad de \autor{Frisch}} $1/\varphi$) \vertema{3.A.25}; \emph{formas funcionales y calibración}. 1.er \concepto{modelo EGDE}: dinámico (miran adelante), estocástico (\emph{shocks}), general, equilibrio (\autor{Kocherlakota}, 2010). Sin fallos $\Rightarrow$ 1TFEB: planificador; programación dinámica \vertema{3.A.29}; se linealiza y simula («castración», \autor{Buiter}, 2009).
+\item \emph{Idea}: ¿pueden las perturbaciones de productividad explicar las fluctuaciones? Sí, sin dinero ni fallos. «Al mal tiempo, buena cara»: recesión = respuesta óptima a una mala racha.
+\item \emph{Supuestos}: cerrada, sin Estado ni dinero, un bien, horizonte infinito; agentes representativos, competencia perfecta, precios flexibles ($P_t=1$); \emph{Cobb-Douglas}; racionales.
+\item \emph{Hogar}: $\max\mathbb{E}_0\sum\beta^t\big[\frac{C_t^{1-\theta}-1}{1-\theta}-\chi\frac{L_t^{1+\varphi}}{1+\varphi}\big]$ s.a.\ $C_t+K_{t+1}=w_tL_t+(1+r_t)K_t$. \emph{Empresa}: alquila $K$ y $L$, paga productos marginales. Ecuaciones:
+\begin{formula}
+\centering $Y_t=A_tK_t^{\alpha}L_t^{1-\alpha},\quad \ln A_t=\rho_A\ln A_{t-1}+\varepsilon^A_t$\\
+$w_t=(1-\alpha)A_t(K_t/L_t)^{\alpha},\quad r_t+\delta=\alpha A_t(K_t/L_t)^{\alpha-1}$\\
+$C_t^{-\theta}=\beta\,\mathbb{E}_t[C_{t+1}^{-\theta}(1+r_{t+1})],\quad \chi L_t^{\varphi}=C_t^{-\theta}w_t$\\
+$K_{t+1}=(1-\delta)K_t+Y_t-C_t$
+\end{formula}
+\item[] 7 endógenas ($Y,C,I,K,L,w,r$), 1 exógena ($A$), 8 parámetros ($\alpha,\beta,\delta,\theta,\chi,\varphi,\rho_A,\sigma_\varepsilon$).
+\item \emph{Mecanismo} (perturbación + transitoria): $Y$↑ con los mismos factores; $w$ y $r$↑: \emph{sustitución intertemporal} (trabajar ahora) y ahorro de la renta extra: $I$↑↑, $C$↑ poco; $I$ de hoy = $K$ de mañana (\emph{propagación}), pero casi toda la persistencia viene de $\rho_A$. \emph{Permanente}: horas apenas cambian (renta compensa sustitución), $C$ salta y sigue subiendo, $I$ alta hasta el nuevo estado estacionario.
+\end{itemize}
+\graficorepaso[\linewidth]{irf-rbc}{Perturbación de 0,007; $\alpha=1/3$, $\beta=0{,}99$, $\delta=0{,}025$, $\theta=\varphi=1$; continua $\rho_A=0{,}95$, discontinua $\rho_A=0$: $I$ $\approx$3-4 veces más que $Y$, $C$ suave en joroba}
+\begin{itemize}
+\item \concepto{Solución cerrada de \autor{McCallum}} (1989): $\delta=1$, $\theta=1$, $L_t=1$ (inelástico) $\Rightarrow$ $K_{t+1}=\alpha\beta A_tK_t^{\alpha}$, $C_t=(1-\alpha\beta)A_tK_t^\alpha$: $s=\alpha\beta$ es un \emph{resultado}. En desviaciones:
+\funcionclave{\hat y_{t+1}=\alpha\,\hat y_t+\ln A_{t+1}}
+\item[] $\rho_A=0$: $\hat y_{t+k}=\alpha^k$ (2 periodos después, 11\,\%); $\rho_A>0$: joroba, $\hat y_{t+k}=\frac{\rho_A^{k+1}-\alpha^{k+1}}{\rho_A-\alpha}$ (1,28 al periodo siguiente con 0,95). Precio: $C$ e $I$ proporciones fijas de $Y$, empleo fijo.
+\item \emph{Implicaciones}: origen real, exógeno, aleatorio; propagación por precios de factores, sustitución intertemporal e inversión; persistencia por $K$ y sobre todo $\rho_A$. \emph{Ciclo eficiente} (Pareto, paro voluntario): estabilizar empeora el bienestar \vertema{3.A.22}; dinero neutral.
+\item \emph{Extensiones}: trabajo indivisible (\autor{Hansen}, 1985; \autor{Rogerson}, 1988); gasto público (efecto riqueza: \autor{Christiano}-\autor{Eichenbaum}, 1992; \autor{Baxter}-\autor{King}, 1993) \vertema{3.A.38}; impuestos (\autor{McGrattan}, 1994); varios sectores (\autor{Long}-\autor{Plosser}); dinero con \emph{cash-in-advance}, casi neutral (\autor{Cooley}-\autor{Hansen}, 1989) \vertema{3.A.35}.
+\item \emph{Evidencia}: \concepto{calibración} (\autor{Prescott}, 1986): comparar momentos del ciclo HP. \autor{Hansen}-\autor{Wright} (1992), $\rho_A=0{,}95$, $\sigma_\varepsilon=0{,}007$: $\sigma_Y$ 1,30 vs.\ 1,92 en datos ($\approx$2/3); $\sigma_C/\sigma_Y$ 0,31 vs.\ 0,45; $\sigma_I/\sigma_Y$ 3,15 vs.\ 2,78; horas 0,49 vs.\ 0,96; corr.\ horas-productividad 0,93 vs.\ $-0{,}14$ ($-0{,}60$ en 1984-2019). \autor{Prescott}: tecnología, $\approx$75\,\% de las fluctuaciones. Residuo corregido por utilización: la relación casi desaparece (\autor{Basu}-\autor{Fernald}-\autor{Kimball}, 2006).
+\item \emph{Valoración}: residuo $\neq$ tecnología (\autor{Hall}, 1988; \autor{Burnside}-\autor{Eichenbaum}-\autor{Rebelo}, 1993); ¿retrocesos tecnológicos?; poca propagación propia (\autor{Cogley}-\autor{Nason}, 1995); oferta de trabajo demasiado elástica; horas caen tras mejora tecnológica (\autor{Galí}, 1999); el dinero importa; grandes depresiones: «Santo Grial» (\autor{Bernanke}, 1995). \emph{Méritos}: pocos parámetros, une ciclo y crecimiento, deja el método: núcleo de los EGDE (\autor{Rebelo}, 2005). Se quedó el método, no las conclusiones.
+\end{itemize}
+
+\sub{II.2. Ciclos nominales: del monetarismo a la NEK\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Monetarismo}: \autor{Friedman}-\autor{Schwartz} (1963): el dinero precede a la producción (1867-1960); Gran Depresión = gran contracción monetaria \vertema{3.A.5}. \concepto{\emph{Plucking model}} (\autor{Friedman}, 1964 y 1993): cuerda pegada al techo del potencial; la caída predice la recuperación y no al revés; misma asimetría en \autor{Dupraz}-\autor{Nakamura}-\autor{Steinsson} (2025).
+\item \autor{Lucas} (1972): \emph{información imperfecta} (islas de \autor{Phelps}, 1970): $y_t=y^n+\psi(p_t-p^e_t)$; solo lo \emph{no anticipado} mueve $y$; política sistemática inútil \vertema{3.A.6}. Crisis: precios se conocen pronto; no explica recesiones largas. Evidencia: \autor{Romer}-\autor{Romer} (1989), VAR (\autor{Sims}, 1992; \autor{Christiano}-\autor{Eichenbaum}-\autor{Evans}, 1996).
+\item \textbf{NEK} (\concepto{nueva síntesis neoclásica}) \vertema{3.A.7}: método RBC + competencia monopolística + rigideces nominales (\autor{Calvo}, 1983: revisa con prob.\ $1-\eta$). Modelo canónico (\autor{Clarida}-\autor{Galí}-\autor{Gertler}, 1999), $x_t\equiv y_t-y^n_t$:
+\begin{formula}
+\centering $x_t=\mathbb{E}_tx_{t+1}-\tfrac1\theta\big(i_t-\mathbb{E}_t\pi_{t+1}-r^n_t\big)$\\
+$\pi_t=\beta\,\mathbb{E}_t\pi_{t+1}+\kappa x_t+u_t$\\
+$i_t=\rho+\phi_\pi\pi_t+\phi_xx_t+\varepsilon_t$
+\end{formula}
+\item[] IS dinámica (\autor{Euler}; demanda en $r^n_t$); \autor{Phillips} NK (de \autor{Calvo}; $u_t$, costes); \autor{Taylor} (1993), \emph{principio} $\phi_\pi>1$ \vertema{3.A.36}. \emph{Mecanismo}: $i$↑ con precios rígidos $\Rightarrow$ $r$↑ $\Rightarrow$ $C$↓, $x$↓, $\pi$↓. Demanda: el tipo frena $x$ y $\pi$ a la vez; costes: $\pi$↑ y $x$↓.
+\item[] \emph{Implicaciones}: dinero no neutral a CP (sí a LP); \emph{ciclo ineficiente}: la política mejora el bienestar. \concepto{Divina coincidencia}: sin $u_t$, $i$ siguiendo a $r^n$ da $\pi=x=0$ (\autor{Goodfriend}-\autor{King}; \autor{Rotemberg}-\autor{Woodford}, 1997; nombre de \autor{Blanchard}-\autor{Galí}, 2007); se rompe con costes, salarios reales rígidos o búsqueda (2010) \vertema{3.A.26}. $x$ y $r^n$ no se observan (\autor{Laubach}-\autor{Williams}, 2003).
+\item \emph{Resultados}: muchas perturbaciones; propagación por equilibrio general y rigideces; persistencia con hábitos, costes de ajuste, indexación (\autor{Christiano}-\autor{Eichenbaum}-\autor{Evans}, 2005; \autor{Smets}-\autor{Wouters}, 2003 $\to$ NAWM~II del BCE). Marco dominante (\autor{Galí}, 2018), pero sin bancos hasta 2008 y con agentes idénticos: HANK (\autor{Kaplan}-\autor{Moll}-\autor{Violante}, 2018) \vertema{3.A.37}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[7]{III. Ciclo financiero e interrelaciones\label{rep:III}}
+\begin{ideaclave}
+Las finanzas no son un velo: crédito y vivienda tienen su propio ciclo, más largo y amplio, que se alimenta solo en el auge y acaba en crisis. A través del patrimonio de los prestatarios amplifica el ciclo real: recesiones financieras más hondas y largas, que piden además política macroprudencial.
+\end{ideaclave}
+
+\sub{III.1. Concepto, medición y hechos\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Ciclo financiero}: oscilaciones conjuntas del crédito y los precios de los activos, que se refuerzan vía percepción y actitud ante el riesgo y restricciones de financiación (\autor{Borio}, 2014). 2 variables: \emph{crédito} privado y \emph{precio de la vivienda} (la bolsa encaja peor).
+\item \emph{Hechos} (\autor{Drehmann}-\autor{Borio}-\autor{Tsatsaronis}, 2012): \emph{más largo} ($\approx$16 años de media vs.\ 1-8; filtros de 8-30 años); \emph{más amplio} (crece desde los 80: liberalización, metas de inflación); \emph{picos = crisis bancarias}; recesiones en su fase de caída, más hondas (\autor{Claessens}-\autor{Kose}-\autor{Terrones}, 2012).
+\item \concepto{Brecha crédito-PIB}: crédito/PIB menos tendencia (HP \emph{de una cola}, $\lambda=400.000$); guía de Basilea III para el \concepto{colchón de capital anticíclico}: se activa con brecha $>2$ y llega al máximo (2,5\,\% de los APR) con 10 \vertema{3.B.27}.
+\end{itemize}
+\graficorepaso[\linewidth]{brecha-credito-pib-espana}{España, BIS: ratio máxima 233,8\,\% (2010T2); brecha +47,3 (2007T2), $-55{,}6$ (2017T4), $-24{,}3$ (2026T1)}
+\begin{itemize}
+\item[] \emph{España}: la brecha cae antes que la ratio (la tendencia arrastra el auge); crédito 119,4\,\% del PIB en 2026T1. Ciclo financiero con picos en 1991 y fin de 2008 (17,5 años); primavera de 2009, PIB en el valle y ciclo financiero aún cerca del máximo: no van al compás. 2008: más larga (+8 años) que 2020 (2,5 años).
+\end{itemize}
+
+\sub{III.2. \autor{Fisher}, \autor{Minsky} y \autor{Kindleberger}\label{rep:III.2}}
+\begin{itemize}
+\item Común: la crisis se incuba en el auge (ya los austriacos).
+\item \concepto{Deflación por deudas} (\autor{Fisher}, 1933) \vertema{3.A.3}: sobreendeudamiento + deflación: liquidaciones, ventas forzosas, valor real de la deuda↑: «cuanto más pagan los deudores, más deben». Salida: reflacionar \vertema{3.A.41}; vuelve con \autor{Bernanke} (1983).
+\item \concepto{Hipótesis de inestabilidad financiera} (\autor{Minsky}, 1986, 1992) \vertema{3.A.4}: posiciones de \emph{cobertura} (pagan intereses y principal), \emph{especulativa} (solo intereses) y \emph{Ponzi} (ni intereses). En expansiones largas se pasa de una a otra: «la estabilidad es desestabilizadora»; «después de la calma viene la tempestad».
+\item \emph{Anatomía} (\autor{Kindleberger}, 1978): desplazamiento, auge del crédito, euforia, pánico, crac \vertema{3.B.26}. Sin modelo formal ni cuantía de la caída real.
+\end{itemize}
+
+\sub{III.3. Acelerador financiero y política\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Idea}: con información asimétrica (racionamiento, \autor{Stiglitz}-\autor{Weiss}, 1981) \vertema{3.A.13}, el patrimonio del prestatario importa. \emph{Supuestos}: NEK con capital; empresarios con riqueza neta + deuda; verificación costosa (\autor{Bernanke}-\autor{Gertler}, 1989; \autor{Bernanke}-\autor{Gertler}-\autor{Gilchrist}, 1999). \concepto{Prima de financiación externa}, ↓ con la riqueza neta:
+\funcionclave{\mathbb{E}_t\big[R^K_{t+1}\big]=s\Big(\frac{\mathrm{RN}_{t+1}}{q_tK_{t+1}}\Big)R_{t+1},\quad s'<0}
+\item[] \emph{Mecanismo}: perturbación $-$ $\Rightarrow$ beneficios y $q_t$↓ $\Rightarrow$ RN↓ $\Rightarrow$ prima↑ $\Rightarrow$ $I$↓ $\Rightarrow$ $Y$↓ $\Rightarrow$ $q_t$↓: «llueve sobre mojado». Amplifica y alarga; acelerador por el \emph{patrimonio}, no por las ventas (\hyperref[rep:I.4]{I.4}).
+\end{itemize}
+\graficorepaso[0.8\linewidth]{acelerador-financiero}{La espiral: RN↓, prima↑, $I$↓, $Y$↓, $q_t$↓; y las garantías de \autor{Kiyotaki}-\autor{Moore} (1997)}
+\begin{itemize}
+\item \emph{Ext.}: \emph{garantías} (\autor{Kiyotaki}-\autor{Moore}, 1997): $q$↓ $\Rightarrow$ crédito↓ $\Rightarrow$ ventas $\Rightarrow$ $q$↓; \emph{bancos} (\autor{Gertler}-\autor{Kiyotaki}, 2010; \autor{Gertler}-\autor{Karadi}, 2011; \autor{Cúrdia}-\autor{Woodford}, 2010; \autor{Sims}-\autor{Wu}, 2019, 4 ecuaciones) \vertema{3.A.37}; España: EREMS (oct.\ 2026: demanda y crédito).
+\item \emph{Evidencia}: el crédito anticipa crisis (14 países desde 1870: \autor{Schularick}-\autor{Taylor}, 2012); recesiones tras auges, más hondas (\autor{Jordà}-\autor{Schularick}-\autor{Taylor}, 2013); deuda de hogares $\Rightarrow$ menos crecimiento (\autor{Mian}-\autor{Sufi}-\autor{Verner}, 2017); crisis bancarias: vivienda $-35\mbox{\,\%}$ en 6 años, bolsa $-55\mbox{\,\%}$ en 3,5, deuda pública real +86\,\% (\autor{Reinhart}-\autor{Rogoff}, 2009); \emph{histéresis} (\autor{Cerra}-\autor{Saxena}, 2008) \vertema{3.A.28}.
+\item \emph{Valoración}: dan la amplificación y persistencia que faltaban; explican mal el auge (burbuja endógena) y las no linealidades.
+\item \emph{Política}: \emph{macroprudencial} 1.ª línea: colchón anticíclico, LTV, DSTI \vertema{3.B.27}: «guarda pan para mayo y leña para abril»; BdE: 0,5\,\% (oct.\ 2025) y 1\,\% (1/10/2026) con brecha negativa (marco de 2024: positivo en tiempos normales). \emph{Monetaria}: \emph{cleaning} (\autor{Bernanke}-\autor{Gertler}, 1999) vs.\ \emph{leaning against the wind} (BPI, \autor{Borio}); \autor{Svensson} (2017): costes > beneficios \vertema{3.A.36}. \emph{En la crisis}: evitar la espiral de \autor{Fisher}: último recurso, liquidez, compras de activos \vertema{3.A.40}, sanear balances.
+\item \emph{Tabla final} (origen / propagación / persistencia / ¿estabilizar?): multiplicador-acelerador: endógeno de demanda / multiplicador y acelerador / techo y suelo / sí. \autor{Kaldor}-\autor{Goodwin}: endógeno real / inversión y reparto / ciclo límite / discutido. \autor{Frisch}-\autor{Slutsky}: exógeno aleatorio / sistema amortiguado / suma de perturbaciones. Monetario: nominal / confusión de precios / poca / reglas. RBC: real (tecnología) / factores e intertemporal / $K$ y $\rho_A$ / no. NEK: real o nominal / rigideces / hábitos, indexación / sí, monetaria. Financiero: endógeno en el auge / RN, prima, garantías / patrimonio, histéresis / macroprudencial y monetaria.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» el ciclo es un movimiento conjunto, recurrente y no periódico, medido como brecha a una tendencia inobservable; primero, dinámica de la demanda (multiplicador-acelerador, \autor{Kaldor}, \autor{Goodwin}); después, perturbaciones que se propagan (RBC eficiente; \autor{Lucas} y NEK con fricciones nominales); el financiero se incuba en el auge y amplifica.
+\item \textbf{Relevancia}: de la respuesta depende la política: ciclo eficiente $\Rightarrow$ no estabilizar; rigideces $\Rightarrow$ monetaria; crédito $\Rightarrow$ + macroprudencial. Potencial y brecha fijan tipos y saldo estructural; desde 2008 se mide el ciclo financiero.
+\item \textbf{Extensiones}: HANK \vertema{3.A.37}; histéresis \vertema{3.A.28}; fiscal \vertema{3.A.38}; regulación \vertema{3.B.27}; ciclos endógenos de equilibrio (\autor{Farmer}: barco sin ancla); ciclo y crecimiento \vertema{3.A.44}.
+\item \textbf{Opinión}: dilema realismo vs.\ claridad; se quedó el método del RBC, no sus conclusiones: dinero y crédito importan.
+\item \textbf{Idea final}: siempre que llovió, escampó, pero no da igual cuánto tarde: guardar en los años buenos (colchón) y actuar pronto en los malos, cuando llueve sobre mojado; las recesiones del crédito dejan cicatriz (histéresis).
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1862}{\autor{Juglar}: el ciclo, objeto de estudio}
+\hito{1933}{\autor{Frisch}: impulso y propagación; \autor{Fisher}: deflación por deudas}
+\hito{1936}{\autor{Harrod}: multiplicador + acelerador; \autor{Keynes}, cap.~22}
+\hito{1937}{\autor{Slutsky}: suma de perturbaciones aleatorias}
+\hito{1939}{\autor{Samuelson}: multiplicador-acelerador}
+\hito{1940}{\autor{Kaldor}: ciclo no lineal}
+\hito{1946}{\autor{Burns}-\autor{Mitchell}: definición}
+\hito{1950}{\autor{Hicks}: techo y suelo}
+\hito{1963}{\autor{Friedman}-\autor{Schwartz}: historia monetaria}
+\hito{1967}{\autor{Goodwin}: ciclo de crecimiento}
+\hito{1972}{\autor{Lucas}: ciclo de equilibrio (información imperfecta)}
+\hito{1975}{\autor{Nordhaus}: ciclo político}
+\hito{1976}{\autor{Lucas}: crítica}
+\hito{1978}{\autor{Kindleberger}: manías, pánicos y cracs}
+\hito{1982}{\autor{Kydland}-\autor{Prescott}: RBC; \autor{Nelson}-\autor{Plosser}: raíz unitaria}
+\hito{1983}{\autor{Calvo}: precios escalonados; \autor{Long}-\autor{Plosser}}
+\hito{1986}{\autor{Minsky}: inestabilidad financiera; \autor{Prescott}: calibración}
+\hito{1989}{\autor{McCallum}: solución cerrada; \autor{Bernanke}-\autor{Gertler}}
+\hito{1997}{\autor{Kiyotaki}-\autor{Moore}; \autor{Hodrick}-\autor{Prescott} (publicado)}
+\hito{1999}{\autor{Clarida}-\autor{Galí}-\autor{Gertler}; \autor{Bernanke}-\autor{Gertler}-\autor{Gilchrist}}
+\hito{2007}{\autor{Blanchard}-\autor{Galí}: «divina coincidencia»}
+\hito{2012}{\autor{Drehmann}-\autor{Borio}-\autor{Tsatsaronis}; \autor{Schularick}-\autor{Taylor}}
+\hito{2014}{\autor{Borio}: el ciclo financiero}
+\hito{2018}{\autor{Hamilton}: contra el filtro HP}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item PIB España: 2020 \dato{$-10{,}9\mbox{\,\%}$}{INE}; 2021 \dato{+6,7\,\%}{INE}; 2022 \dato{+6,4\,\%}{INE}; 2025 \dato{+2,6\,\%}{INE}; 2026T3 \dato{+2,7\,\%}{INE, interanual}; 2008-13 \dato{$-8{,}9\mbox{\,\%}$}{INE}, máximo recuperado en \dato{+8 años}{INE}.
+\item Recesión con crisis bancaria: $Y$ \dato{$-9\mbox{\,\%}$ en $\approx$2 años}{Reinhart-Rogoff, 2009}; paro \dato{+7 pp durante +4 años}{Reinhart-Rogoff, 2009}.
+\item EE.\,UU.\ posguerra: recesiones \dato{10 meses}{NBER}, expansiones \dato{64}{NBER}. Recesiones desde 1970: \dato{6}{CEPR; AEE}.
+\item Brecha crédito-PIB España: \dato{+47,3}{BIS, 2007T2}; \dato{$-55{,}6$}{BIS, 2017T4}; \dato{$-24{,}3$}{BIS, 2026T1}. Crédito/PIB: \dato{233,8\,\%}{BIS, 2010T2}; \dato{119,4\,\%}{BIS, 2026T1}. Colchón anticíclico: \dato{1\,\%}{BdE, desde 1/10/2026}.
+\item España, 1995-2019, volatilidad relativa a la del PIB: inversión \dato{2,89}{Eurostat}; empleo \dato{1,22}{Eurostat}; corr.\ productividad-PIB \dato{$-0{,}26$}{Eurostat}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Cómo explican los modelos actuales 2008 y 2020?} 2008: auge del crédito y la vivienda + acelerador financiero (patrimonio, prima, garantías), larga y con histéresis; 2020: perturbación exógena y transitoria, caída brusca y rebote rápido.
+\item \textbf{Si la crítica al crecimiento exógeno llevó al endógeno, ¿vale contra un ciclo de origen exógeno?} Sí: el RBC impone la persistencia con $\rho_A$ y propaga poco; de ahí ciclos endógenos (\autor{Minsky}, \autor{Farmer}) y fricciones financieras.
+\item \textbf{¿Pueden integrarse ciclo y crecimiento?} El RBC lo hace (mismo modelo para tendencia y desviaciones); la histéresis y el crecimiento endógeno van más allá: las recesiones dañan el potencial \vertema{3.A.44}.
+\item \textbf{¿Por qué es eficiente el ciclo en el RBC y no en la NEK?} Sin fallos de mercado rige el 1TFEB; con competencia monopolística y \autor{Calvo}, $y\neq y^n$ y la política mejora el bienestar.
+\item \textbf{¿Qué falla en el filtro HP?} Ateórico, final de muestra revisable, $\lambda$ discrecional, perturbaciones grandes tuercen la tendencia; alternativa: paso banda o \autor{Hamilton}.
+\item \textbf{¿Debe el banco central pinchar burbujas?} Hoy: macroprudencial primera línea; la monetaria, a la inflación teniendo en cuenta la estabilidad financiera (\autor{Svensson}, 2017: \emph{leaning} cuesta más de lo que da).
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item \autor{Samuelson}: oscila si $c(1+v)^2<4v$; estable si $cv<1$; ciclo permanente solo con $cv=1$.
+\item Acelerador contemporáneo $I_t=v\Delta Y_t$: multiplicador $1/(1-c-v)$, exige $c+v<1$; con retardos, $cv<1$: no se contradicen.
+\item \autor{McCallum}: $\delta=1$, $\theta=1$, $L_t=1$; $s=\alpha\beta$ es resultado, no supuesto; $\hat y_{t+k}=\alpha^k$ con $\rho_A=0$.
+\item HP: $\lambda=1600$ trimestral; paso banda 6-32 \emph{trimestres}; brecha de crédito: HP \emph{de una cola}, $\lambda=400.000$; colchón desde 2 puntos, máximo 2,5\,\% con 10.
+\item \autor{Kitchin} $\approx$40 meses; \autor{Juglar} 7-11 años; \autor{Kuznets} 15-25; \autor{Kondratieff} $\approx$50. Ciclo financiero $\approx$16 años.
+\item \emph{General glut}: 1819-1824. Equilibrios de manchas solares (\autor{Azariadis}, \autor{Cass}-\autor{Shell}) $\neq$ manchas solares de \autor{Jevons}.
+\item \autor{Lucas} (1972): información imperfecta, no rigideces.
+\item Divina coincidencia: \autor{Goodfriend}-\autor{King} y \autor{Rotemberg}-\autor{Woodford} (1997); el nombre, \autor{Blanchard}-\autor{Galí} (2007).
+\item \autor{Goodwin} 1951 (acelerador no lineal) $\neq$ 1967 (depredador-presa: órbitas neutras, no ciclo límite).
+\item Productividad contracíclica en España; corr.\ horas-productividad en el RBC 0,93, en datos $\leq0$.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

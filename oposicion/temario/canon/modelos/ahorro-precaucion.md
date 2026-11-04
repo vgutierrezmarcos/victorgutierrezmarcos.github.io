@@ -1,7 +1,7 @@
 # Ahorro precautorio (Leland, 1968; Sandmo, 1970; Kimball, 1990; Zeldes, 1989; Carroll, 1997)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.33** para la parte macro (revisado el 31/10/2026: II.3 `sec:precautorio`, la deriva en el anexo C `anexo:hall-ccapm`); la prudencia como propiedad de u (u‴ > 0, coeficiente de Kimball) es del **3.A.10** (ficha `aversion-riesgo-arrow-pratt`). Ficha creada en la fase canon del 3.A.33 (K16, K26, **[decidir]**).
-- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.A.10 (mención; hecho, 19/10/2026: la prudencia en I.1.2, «no se canta», con `tab:prudencia` y `\vertema{3.A.33}`), 3.A.42 (mención: choques de incertidumbre; Fernández-Villaverde y Guerrón-Quintana, 2020), 3.A.40 (mención: ahorro precautorio y tipo natural bajo), 1D01 (mención aplicada; hecho: la incertidumbre como determinante del consumo, l. 423, y el ahorro de 2020, l. 432).
+- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.A.10 (mención; hecho, 19/10/2026: la prudencia en I.1.2, «no se canta», con `tab:prudencia` y `\vertema{3.A.33}`), 3.A.42 (no lo usa: revisado el 4/11/2026; antes previsto, mención: choques de incertidumbre; Fernández-Villaverde y Guerrón-Quintana, 2020), 3.A.40 (mención: ahorro precautorio y tipo natural bajo), 1D01 (mención aplicada; hecho: la incertidumbre como determinante del consumo, l. 423, y el ahorro de 2020, l. 432).
 - **Manuales de referencia:** Leland (1968), *QJE*; Sandmo (1970), *REStud*; Kimball (1990), *Econometrica*; Zeldes (1989), *QJE*; Carroll (1997), *QJE*; Carroll y Kimball (1996); Gourinchas y Parker (2002); Romer (2019), cap. 8; Fernández-Villaverde y Guerrón-Quintana (2020), *Review of Economic Dynamics*.
 
 ## Presentación de referencia (3.A.33, II.3)
@@ -28,7 +28,7 @@ $$\mathbb{E}_t\big[\Delta\ln C_{t+1}\big]\simeq\frac{1}{\theta}\,(r-\rho)+\frac{
 |---|---|---|---|---|
 | 3.A.33 | Consumo con incertidumbre | desarrollo (hecho, 31/10/2026) | Todo lo anterior; en el cante, 1 o 2 frases sobre la Euler de la pizarra (pieza 1) | — |
 | 3.A.10 | Elección con riesgo | mención (hecho) | Prudencia u‴ > 0, Kimball, `tab:prudencia`; «el paseo aleatorio de Hall excluye el ahorro precautorio» con `\vertema{3.A.33}` | La parte macro |
-| 3.A.42 | Ciclos | mención | Los choques de incertidumbre reducen el consumo por precaución | El modelo |
+| 3.A.42 | Ciclos | no lo usa (revisado el 4/11/2026; sin los choques de incertidumbre) | Los choques de incertidumbre reducen el consumo por precaución | El modelo |
 | 3.A.40 | Políticas desde 2008 | mención | Ahorro precautorio y tipo natural bajo | El modelo |
 | 1D01 | Dictamen | mención aplicada (hecho) | Incertidumbre (−) y ahorro de 2020 | La teoría |
 

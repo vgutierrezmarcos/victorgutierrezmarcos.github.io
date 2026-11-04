@@ -1,0 +1,48 @@
+% El ciclo del PIB de España con 2 filtros (3.A.42, anexo C), 1995T1-2026T3:
+% Hodrick-Prescott con lambda = 1600 (ES_ciclo_l1600 de
+% ../datos/hp-pib-espana-zona-euro.csv) y paso banda de Christiano y Fitzgerald
+% de 6 a 32 trimestres (ciclo_pib_6_32 de ../datos/ciclo-financiero-real-espana.csv,
+% vacío antes de 1995). Datos de Eurostat (namq_10_gdp), cálculo propio.
+% Recesiones de España (AEE, de pico a valle): 2008T2-2009T4, 2010T4-2013T2,
+% 2019T4-2020T2.
+% Ejes x: 1995 + \coordindex/4 y 1971 + \coordindex/4 (comienzo de cada tabla).
+% Colores: HP lambda = 1600 verde (como en filtro-hp-espana), paso banda morado
+% (como el ciclo del PIB en ciclo-financiero-espana).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\hpdatos}{../datos/hp-pib-espana-zona-euro.csv}
+\newcommand{\cfdatos}{../datos/ciclo-financiero-real-espana.csv}
+\newcommand{\recesion}[2]{\dicsombra[fill=dicreferencia, fill opacity=0.2]{#1}{-22}{#2}{8}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=14cm, height=5.6cm, scale only axis,
+      xmin=1995, xmax=2027, ymin=-22, ymax=8,
+      xtick={1995,2000,...,2025}, ytick={-20,-15,...,5},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize},
+      ylabel={desviación de la tendencia (\%)}, label style={font=\small},
+      legend style={at={(0.01,0.02)}, anchor=south west, draw=none, font=\footnotesize},
+      legend cell align=left,
+      unbounded coords=jump,
+      dicapas]
+    % 1: recesiones de la AEE, ejes y la línea del 0
+    \capa{1}{\recesion{2008.25}{2009.75}}
+    \capa{1}{\recesion{2010.75}{2013.25}}
+    \capa{1}{\recesion{2019.75}{2020.25}}
+    \capa{1}{\dicraya{(1995,0) (2027,0)}}
+    % 2: ciclo con el filtro HP
+    \capa{2}{\addplot[diclinea=tceeverde] table[col sep=comma, comment chars={\#},
+        x expr=1995+\coordindex/4, y=ES_ciclo_l1600] {\hpdatos};
+      \addlegendentry{filtro de \textsc{Hodrick} y \textsc{Prescott}, $\lambda=1600$}}
+    % 3: ciclo con el filtro de paso banda
+    \capa{3}{\addplot[diclinea=dicpib, dashed] table[col sep=comma, comment chars={\#},
+        x expr=1971+\coordindex/4, y=ciclo_pib_6_32, restrict x to domain=1994.9:2027] {\cfdatos};
+      \addlegendentry{paso banda, de 6 a 32 trimestres}}
+    \capa{3}{\addlegendimage{area legend, fill=dicreferencia!20, draw=dicreferencia!20}
+      \addlegendentry{recesiones (AEE)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

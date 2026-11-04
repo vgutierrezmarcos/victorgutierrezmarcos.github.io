@@ -1,7 +1,7 @@
 # Externalidad de demanda agregada y fallos de coordinación (Blanchard y Kiyotaki, 1987)
 
 - **Área:** pensamiento · **Tema de referencia:** **3.A.7** (La nueva economía keynesiana; revisado el 4/11/2026: I.2.1 `sec:rigideces-nominales`, párrafo «Fallos de coordinación», con a)-c)) — es el único modelo de equilibrio general de la NEK de 1.ª generación y el antecedente de la 2.ª; ningún otro tema lo desarrolla. Ficha creada en la fase canon del 3.A.7 (CC5, **[decidir]**).
-- **Temas que lo usan:** 3.A.7 (desarrollo; hecho, 4/11/2026), 3.A.18 (mención; hecho, 19/10/2026: I.3 c), «con costes de cambiar los precios, el dinero deja de ser neutral», `BlanchardKiyotaki1987Monopolistic`, `\vertema{3.A.7}`; ficha `dixit-stiglitz`), 3.A.42 (mención: ciclos nominales con competencia monopolística), 3.A.21 (mención opcional: fallos de coordinación con Cooper y John, 1988, que el 3.A.21 ya cita sin este modelo). Relacionadas: `costes-de-menu`, `dixit-stiglitz`, `rigideces-reales`, `nek-3-ecuaciones`.
+- **Temas que lo usan:** 3.A.7 (desarrollo; hecho, 4/11/2026), 3.A.18 (mención; hecho, 19/10/2026: I.3 c), «con costes de cambiar los precios, el dinero deja de ser neutral», `BlanchardKiyotaki1987Monopolistic`, `\vertema{3.A.7}`; ficha `dixit-stiglitz`), 3.A.42 (no lo usa: revisado el 4/11/2026; antes previsto, mención: ciclos nominales con competencia monopolística), 3.A.21 (mención opcional: fallos de coordinación con Cooper y John, 1988, que el 3.A.21 ya cita sin este modelo). Relacionadas: `costes-de-menu`, `dixit-stiglitz`, `rigideces-reales`, `nek-3-ecuaciones`.
 - **Manuales de referencia:** Blanchard y Kiyotaki (1987), «Monopolistic Competition and the Effects of Aggregate Demand», *AER* 77(4) (`BlanchardKiyotaki1987Monopolistic`); Romer (2019), cap. 7; Blanchard y Fischer (1989), cap. 8; Cooper y John (1988), *QJE* (complementariedades estratégicas).
 
 ## Presentación de referencia (3.A.7, I.2.1)
@@ -25,7 +25,7 @@
 |---|---|---|---|---|
 | 3.A.7 | Por qué la rigidez tiene efectos grandes (NEK de 1.ª generación) | desarrollo (hecho, 4/11/2026) | a)-c) con `eq:demanda-bk`, la externalidad y el fallo de coordinación, la pegatina | — |
 | 3.A.18 | Competencia monopolística | mención (hecho, 19/10/2026) | Con costes de cambiar los precios, el dinero deja de ser neutral; con Calvo, el modelo canónico de la NEK (Galí, 2015) | La demanda con saldos reales |
-| 3.A.42 | Ciclos nominales | mención | La externalidad de demanda agregada como razón de que perturbaciones nominales pequeñas den ciclos; `\vertema{3.A.7}` | El modelo |
+| 3.A.42 | Ciclos nominales | no lo usa (revisado el 4/11/2026: la NEK de 2.ª generación con Calvo, `\vertema{3.A.7}`) | La externalidad de demanda agregada como razón de que perturbaciones nominales pequeñas den ciclos; `\vertema{3.A.7}` | El modelo |
 | 3.A.21 | Equilibrio general | mención opcional | Fallos de coordinación con complementariedades estratégicas (Cooper y John, 1988, ya citados); `\vertema{3.A.7}` | — |
 
 ## Divergencias encontradas en el temario actual

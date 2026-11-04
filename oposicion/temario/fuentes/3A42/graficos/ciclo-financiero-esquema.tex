@@ -1,0 +1,45 @@
+% El ciclo financiero y el ciclo económico (3.A.42, III.1): esquema a partir de
+% Borio (2014) y Drehmann, Borio y Tsatsaronis (2012). Valores ilustrativos.
+%   ciclo financiero (crédito y precio de la vivienda): F(t) = 2 sin(2 pi t/16),
+%     picos en t = 4 y 20 (crisis bancarias), valles en 12 y 28;
+%   ciclo económico: B(t) = -0,7 cos(2 pi (t-7)/6) - exp(-((t-7)/1,1)^2)
+%     - exp(-((t-25)/1,1)^2): ondas de 6 años; las 2 recesiones que caen en la
+%     fase bajista del financiero (picos en 4 y 22, valles en 7 y 25) son más
+%     hondas (-1,7 frente a -0,7).
+% Colores como en ciclo-financiero-espana: financiero dorado, PIB morado.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{shapes.geometric}
+\begin{document}
+\begin{tikzpicture}[tcee, x=0.45cm, y=1cm,
+    declare function={fin(\t)=2*sin(deg(2*pi*\t/16));
+      eco(\t)=-0.7*cos(deg(2*pi*(\t-7)/6))-exp(-((\t-7)/1.1)^2)-exp(-((\t-25)/1.1)^2);},
+    crisis/.style={star, star points=7, star point ratio=2, fill=tceerojo, draw=none,
+      inner sep=0pt, minimum size=9pt},
+    recesion/.style={fill=tceegris, fill opacity=0.18, draw=none}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-3.2) rectangle (36.5,3.0);
+  % 1: eje del tiempo y ciclo económico (ondas cortas)
+  \capa{1}{\draw[eje] (0,-2.65) -- (0,2.7) node[left, align=right, font=\footnotesize] {desviación\\de la tendencia};}
+  \capa{1}{\draw[eje] (0,-2.65) -- (31,-2.65) node[right, font=\footnotesize] {años};}
+  \capa{1}{\foreach \a in {0,5,...,30} {\draw (\a,-2.65) -- (\a,-2.75) node[below, font=\footnotesize] {\a};}}
+  \capa{1}{\draw[guia] (0,0) node[left, text=black] {$0$} -- (30.5,0);}
+  \capa{1}{\draw[curva1] plot[domain=0:30, samples=241, smooth] (\x,{eco(\x)})
+      node[etiqueta, right, text=tceemorado, font=\footnotesize, align=left] {ciclo económico\\(1-8 años)};}
+  % 2: ciclo financiero (onda larga)
+  \capa{2}{\draw[curva4, line width=1.6pt] plot[domain=0:30, samples=121, smooth] (\x,{fin(\x)})
+      node[etiqueta, right, text=tceedorado!80!black, font=\footnotesize, align=left] {ciclo financiero\\($\approx16$ años)};}
+  % 3: crisis bancarias en los picos del financiero y recesiones más hondas
+  \capa{3}{\node[crisis] at (4,2) {};
+    \node[etiqueta, text=tceerojo, anchor=south, font=\footnotesize] at (4,2.15) {crisis bancaria};}
+  \capa{3}{\node[crisis] at (20,2) {};
+    \node[etiqueta, text=tceerojo, anchor=south, font=\footnotesize] at (20,2.15) {crisis bancaria};}
+  \capa{3}{\begin{scope}[on background layer]
+      \fill[recesion] (4,-2.65) rectangle (7,2.4);
+      \fill[recesion] (22,-2.65) rectangle (25,2.4);
+    \end{scope}}
+  \capa{3}{\node[font=\footnotesize, text=tceegris!60!black, align=center, anchor=south, inner sep=1pt] at (5.5,-2.6) {recesión\\[-2pt]más honda};
+    \node[font=\footnotesize, text=tceegris!60!black, align=center, anchor=south, inner sep=1pt] at (23.5,-2.6) {recesión\\[-2pt]más honda};}
+\end{tikzpicture}
+\end{document}
