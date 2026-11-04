@@ -1,7 +1,7 @@
 # Teoría cuantitativa del dinero (Fisher; escuela de Cambridge) y neocuantitativismo de Friedman
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.35 (Teorías de la demanda de dinero) — primera teoría de la demanda de dinero; único tema que la desarrolla.
-- **Temas que lo usan:** 3.A.35 (desarrollo), 3.A.2 (mención: clásicos, currency frente a banking school), 3.A.5 (resumen; hecho, 3/11/2026: II.2.1 c) con `eq:demanda-dinero-friedman`, la LM de Cambridge como caso clásico $h=0$ en I.2 y `eq:cuantitativa` con la regla del k % en III.1), 3.A.37 (resumen: transmisión clásica), 3.A.41 (resumen: inflación como fenómeno monetario).
+- **Temas que lo usan:** 3.A.35 (desarrollo), 3.A.2 (mención: clásicos, currency frente a banking school), 3.A.5 (resumen; hecho, 3/11/2026: II.2.1 c) con `eq:demanda-dinero-friedman`, la LM de Cambridge como caso clásico $h=0$ en I.2 y `eq:cuantitativa` con la regla del k % en III.1), 3.A.37 (resumen: transmisión clásica), 3.A.41 (resumen: inflación como fenómeno monetario); 3.A.3 (resumen; hecho, 4/11/2026: Fisher, 1911, con `eq:cuantitativa`, $M\,V\equiv P\,T$, y el enfoque de los saldos de caja de Cambridge con $k=1/V$, II.4 y III.2; la equivalencia en `anexo:fisher`).
 - **Manuales de referencia:** Fisher (1911), *The Purchasing Power of Money*; Pigou (1917), Marshall; Friedman (1956), «The Quantity Theory of Money: A Restatement»; Walsh (2017), cap. 2; Mishkin (2013), cap. 19.
 
 ## Presentación de referencia
@@ -33,6 +33,7 @@ En tasas (`eq:cuantitativa` del 3.A.5): γ_M + γ_V = π + γ_Y; con V y Y exóg
 | 3.A.5 | Monetarismo | resumen (hecho, 3/11/2026) | Friedman (1956) con $\overline W_H/\overline W$, estabilidad, LM inclinada y velocidad predecible (II.2.1 c); Cambridge como LM con $h=0$ (I.2); $\gamma_M+\gamma_V=\pi+\gamma_Y$ y la regla del k % $\gamma_M=\overline\gamma_M$, con la regla de Friedman (1969) separada en nota (III.1); la velocidad deja de ser estable (gráfico `velocidad-dinero`, Goodhart) | La ecuación de Fisher en extenso |
 | 3.A.37 | Transmisión | Resumen | Transmisión directa (efecto saldos reales) en el modelo clásico | — |
 | 3.A.41 | Inflación | Resumen | γ_M + γ_V = π + γ_Y; inflación a largo plazo como fenómeno monetario | — |
+| 3.A.3 | Los neoclásicos | resumen (hecho, 4/11/2026) | Fisher (1911): la ecuación de cambio $M\,V\equiv P\,T$ (`eq:cuantitativa`; $T$ transacciones, «aquí $T$ no son los impuestos»), con los depósitos y su velocidad: identidad que pasa a teoría si $V$ depende de hábitos e instituciones y $T$ del sector real; el **enfoque de los saldos de caja de Cambridge**, $M^D=k\,P\,Y$ con $k=1/V$ (Marshall, en declaraciones ante comisiones y en 1923; formalizado por Pigou, 1917), **nunca «ecuación de Cambridge»** (la de Pasinetti, 3.A.4); la equivalencia con $MV=PY$ en el anexo `anexo:fisher`; `\vertema{3.A.35}` | Friedman (1956); la evidencia |
 
 ## Divergencias encontradas en el temario actual
 

@@ -1,7 +1,7 @@
 # Excedentes del consumidor y del productor; teoremas del bienestar en equilibrio parcial
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.16 (Mercados I: análisis de eficiencia y bienestar; revisado el 17/10/2026, II.2)
-- **Temas que lo usan:** 3.A.16 (desarrollo; hecho, 17/10/2026), 4.B.6 (resumen: valoración en el ACB), 3.A.17 (mención: comparación del monopolio con el competitivo, PIE; hecho, 17/10/2026); lo usan además 3.B.7 (arancel), 4.B.8 y 4.B.9 (impuestos).
+- **Temas que lo usan:** 3.A.16 (desarrollo; hecho, 17/10/2026), 4.B.6 (resumen: valoración en el ACB), 3.A.17 (mención: comparación del monopolio con el competitivo, PIE; hecho, 17/10/2026); lo usan además 3.B.7 (arancel), 4.B.8 y 4.B.9 (impuestos); 3.A.3 (mención; hecho, 4/11/2026: Dupuit, 1844, en I.2 y el EC de Marshall en II.4 b), `\vertema{3.A.16}`).
 - **Manuales de referencia:** Mas-Colell, Whinston y Green, cap. 10.C-10.E; Marshall (1890), libro III, cap. VI; Dupuit (1844); Varian, cap. 14; Harberger (1964).
 
 ## Presentación de referencia (3.A.16, II.2)
@@ -24,6 +24,7 @@ CPO: φ_i'(x_i) = λ si x_i > 0, CMg_j(q_j) = λ si q_j > 0: son las condiciones
 | 3.A.17 | Monopolio | mención (hecho, 17/10/2026) | I.3: el competitivo maximiza ET (1TFEB parcial, remite a 3.A.16 y 3.A.22; en equilibrio parcial cuasilineal Pareto y eficiencia asignativa coinciden); transferencia, PIE ≈ ½𝓛p^Mq^M = B/2, con `bienestar-monopolio.tex` (mismos colores que `excedentes.tex`: EC morado, EP y transferencia dorado, pérdida rojo al 30 %); 1.er grado eficiente con EC = 0; Ramsey-Boiteux con ET(p⃗) = EC(p⃗) + B(p⃗) | Definiciones y teoremas |
 | 3.B.7, 4.B.8 | Arancel, impuestos | mención | Triángulo de pérdida | Definiciones |
 | 3.A.9 | Medidas de cambio en el bienestar del consumidor | resumen (hecho, 13/10/2026) | $\Delta\mathrm{EC}=\int_{p_1^1}^{p_1^0}x_1\,dp_1$ de un consumidor; exacto con efecto renta nulo; independencia del camino; Willig como justificación de usarlo en equilibrio parcial [3.A.16] (ficha `vc-ve`) | Excedente del productor y teoremas parciales (3.A.16) |
+| 3.A.3 | Los neoclásicos | mención (hecho, 4/11/2026) | I.2: Dupuit (1844) mide con el excedente del consumidor lo que vale una obra pública; II.4 b): el EC de Marshall (libro III, cap. VI), $\mathrm{EC}=\int_0^{q}p^D(s)\,ds-p\,q$, área bajo la demanda y sobre el precio, medida del bienestar con utilidad marginal del dinero constante, `\vertema{3.A.16}` | EP, ET y los teoremas parciales |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.16 original escribía $P(x^*)=C'(x^*)$, Dupuit (1884), el 1TFEB con «rendimientos no crecientes» y el 2TFEB «no demostrable por contradicción»: resuelto (17/10/2026), $p^D(x^*)=\mathrm{CMg}(q^*)$ con $x^*=q^*$, Dupuit (1844), sin convexidad y 2TFEB inmediato con cuasilineales.

@@ -1,7 +1,7 @@
 # Equilibrio de Lindahl: precios personalizados del bien público (Wicksell, 1896; Lindahl, 1919)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.23** (Bienestar II: bienes públicos; revisado el 21/10/2026, II.2.3 `sec:provision-publica`, «Según el beneficio: los precios de Lindahl», con a)-c)). Motivo: es una de las 3 respuestas a cómo financiar el bien público (capacidad de pago, beneficio, mecanismo), justo después de la condición de Samuelson.
-- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.B.7 (resumen: el principio del beneficio como principio impositivo y su límite, la revelación), 3.A.24 (mención; hecho, 22/10/2026: la unanimidad de Wicksell en III.2.4, con `\vertema{3.A.23}`), 4.B.2 (mención: provisión de bienes públicos por decisión colectiva).
+- **Temas que lo usan:** 3.A.23 (desarrollo; hecho, 21/10/2026), 4.B.7 (resumen: el principio del beneficio como principio impositivo y su límite, la revelación), 3.A.24 (mención; hecho, 22/10/2026: la unanimidad de Wicksell en III.2.4, con `\vertema{3.A.23}`), 4.B.2 (mención: provisión de bienes públicos por decisión colectiva); 3.A.3 (mención; hecho, 4/11/2026: III.2, la unanimidad de Wicksell, 1896, y Lindahl, 1919).
 - **Manuales de referencia:** Wicksell (1896), *Finanztheoretische Untersuchungen*; Lindahl (1919), *Die Gerechtigkeit der Besteuerung*; Samuelson (1954), *REStat*; Mas-Colell, Whinston y Green, cap. 11.C (ejercicio) y 16.G; Atkinson y Stiglitz, *Lectures on Public Economics*, lección 16; Johansen (1963).
 
 ## Presentación de referencia
@@ -26,6 +26,7 @@ Sumando, $\mathrm{RMS}^A_{GX}+\mathrm{RMS}^B_{GX}=\mathrm{RMT}_{GX}$: cumple la 
 | 4.B.7 | Principios impositivos | resumen | El principio del beneficio llevado al límite: precios personalizados que suman el coste marginal; por qué no se aplica (revelación, polizón); `\vertema{3.A.23}` | La derivación |
 | 3.A.24 | Elección colectiva | mención (hecho, 22/10/2026) | Unanimidad de Wicksell (protege a cada uno pero da poder de veto) y Lindahl como solución «de mercado» frente a la votación; `\vertema{3.A.23}` | El equilibrio |
 | 4.B.2 | Elección pública | mención | Decisión colectiva sobre el bien público; Bowen y Lindahl solo nombrados con remisión | El gráfico |
+| 3.A.3 | Los neoclásicos | mención (hecho, 4/11/2026) | III.2: la regla de la unanimidad de Wicksell (1896), cada gasto se aprueba con el impuesto que lo financia, `\vertema{3.A.24}`, que Lindahl (1919) convierte en sus precios, `\vertema{3.A.23}`; la escuela de Estocolmo (Myrdal, Lindahl, Lundberg y Ohlin) | El equilibrio de Lindahl |
 
 ## Divergencias encontradas en el temario actual
 - Original del 3.A.23: precios $\widetilde{p_G^i}$ (la tilde es ahora lo **declarado**, `notacion.md` § 5): canon $p^i_G$, $p^A_G$, $p^B_G$ (resuelto en la revisión, 21/10/2026).

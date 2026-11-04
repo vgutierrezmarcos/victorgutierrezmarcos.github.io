@@ -1,0 +1,46 @@
+% La paradoja del agua y los diamantes: utilidad total (área) y marginal (altura).
+% Agua: u'_a(x) = 8/(1+x), cantidad disponible x_a = 6: u'_a = 8/7 = 1,14;
+%   utilidad total 8 ln 7 = 15,6.
+% Diamantes: u'_d(x) = 5/(1+x), por debajo de la del agua en todo el recorrido;
+%   cantidad x_d = 0,4: u'_d = 5/1,4 = 3,57; utilidad total 5 ln 1,4 = 1,7.
+% El agua da unas 9 veces más utilidad total, pero su utilidad marginal en la
+% cantidad disponible es 3 veces menor, y es la marginal la que fija el precio.
+% Elaboración propia a partir de Smith (1776, libro I, cap. IV) y Menger (1871,
+% cap. III); curvas ilustrativas. Misma escala en los 2 paneles.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={ua(\x)=8/(1+\x); ud(\x)=5/(1+\x);}]
+  % ---------------- (a) agua ----------------
+  \begin{scope}[xscale=0.55,yscale=0.5]
+    \capa{1}{\ejes{$x_a$}{$u'_a$}{8}{9}}
+    \capa{1}{\node[etiqueta,font=\small\bfseries] at (4,9.8) {(a) Agua: abundante};}
+    \capa{2}{\draw[curva2] plot[domain=0:7.4,samples=80,smooth] (\x,{ua(\x)})
+      node[etiqueta,above right=0pt and -2pt] {$u'_a$};}
+    \capa{3}{\begin{scope}[on background layer]
+        \fill[area] (0,0) -- plot[domain=0:6,samples=60,smooth] (\x,{ua(\x)}) -- (6,0) -- cycle;
+      \end{scope}}
+    \capa{3}{\node[etiqueta] at (2.4,0.55) {utilidad total};}
+    \capa{4}{\node[punto] (Pa) at (6,{ua(6)}) {};}
+    \capa{4}{\draw[guia] (Pa) -- (6,0) node[below,text=black] {$\bar x_a$};}
+    \capa{4}{\draw[guia] (Pa) -- (0,{ua(6)}) node[left,text=black] {$1{,}1$};}
+  \end{scope}
+  % ---------------- (b) diamantes ----------------
+  \begin{scope}[xshift=6.2cm,xscale=0.55,yscale=0.5]
+    \capa{5}{\ejes{$x_d$}{$u'_d$}{8}{9}}
+    \capa{5}{\node[etiqueta,font=\small\bfseries] at (4,9.8) {(b) Diamantes: escasos};}
+    \capa{6}{\draw[curva1] plot[domain=0:7.4,samples=80,smooth] (\x,{ud(\x)})
+      node[etiqueta,above right=0pt and -2pt] {$u'_d$};}
+    \capa{7}{\begin{scope}[on background layer]
+        \fill[area2] (0,0) -- plot[domain=0:0.4,samples=20,smooth] (\x,{ud(\x)}) -- (0.4,0) -- cycle;
+      \end{scope}}
+    \capa{8}{\node[punto] (Pd) at (0.4,{ud(0.4)}) {};}
+    \capa{8}{\draw[guia] (Pd) -- (0.4,0) node[below right=2pt and -1pt,text=black] {$\bar x_d$};}
+    \capa{8}{\draw[guia] (Pd) -- (0,{ud(0.4)}) node[left,text=black] {$3{,}6$};}
+    \capa{8}{\node[etiqueta,align=left,anchor=west] (R) at (2,6) {poca utilidad total,\\mucha marginal};}
+    \capa{8}{\draw[->,thin,black] (R.west) .. controls (1.2,5.6) .. (0.6,3.9);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

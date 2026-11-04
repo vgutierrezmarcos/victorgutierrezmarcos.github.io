@@ -1,7 +1,7 @@
 # Arancel óptimo (y guerra arancelaria de Johnson)
 
 - **Área:** comercio · **Tema de referencia:** 3.B.7 (Política comercial (I): instrumentos y efectos) — es el efecto del arancel de país grande sobre la RRI, contenido del título; la guerra arancelaria (Johnson, 1953-54), que es interacción estratégica, se queda en 3.B.8.
-- **Temas que lo usan:** 3.B.7 (desarrollo), 3.B.8 (resumen → mención, con Johnson en desarrollo breve), 3.B.41 (mención), 4.A.24 (mención)
+- **Temas que lo usan:** 3.B.7 (desarrollo), 3.B.8 (resumen → mención, con Johnson en desarrollo breve), 3.B.41 (mención), 4.A.24 (mención); 3.A.3 (mención; hecho, 4/11/2026: las curvas de oferta recíproca de Marshall, 1879, como herramienta del arancel óptimo, `\vertema{3.B.7}`)
 - **Manuales de referencia:** Johnson (1953-54), «Optimum Tariffs and Retaliation», *RES*; Krugman, Obstfeld y Melitz, cap. 9 y apéndice; Feenstra, cap. 7; Bhagwati, Panagariya y Srinivasan, *Lectures on International Trade*, cap. 17; Broda, Limão y Weinstein (2008) para la evidencia.
 
 ## Presentación de referencia
@@ -23,6 +23,7 @@ Decir siempre qué elasticidad se usa: las dos fórmulas son equivalentes porque
 | 3.B.7 | Instrumentos y efectos | desarrollo | Arancel de país grande (parcial y general), fórmula, Metzler y Lerner | La guerra arancelaria |
 | 3.B.8 | Política comercial estratégica | resumen + Johnson | La guerra arancelaria de Johnson como juego entre gobiernos [ver tema 3.B.7 para el arancel óptimo] | Volver a derivar el arancel óptimo y el equilibrio de Haberler |
 | 3.B.41, 4.A.24 | Política comercial UE / España | mención | Argumento de la RRI como excepción al librecambio | — |
+| 3.A.3 | Los neoclásicos | mención (hecho, 4/11/2026) | II.4: las curvas de oferta recíproca de Marshall (*The Pure Theory of Foreign Trade*, impresión privada desde 1879) y la relación real de intercambio, `\vertema{3.B.5}`, herramienta con la que después se estudia el arancel óptimo, `\vertema{3.B.7}` | El arancel óptimo |
 
 ## Divergencias encontradas en el temario actual
 - **Duplicado literal** del análisis de equilibrio general (Meade, arancel óptimo, Johnson) en 3.B.7 y en el apartado 3 de 3.B.8; 3.B.7 tiene además una nota del autor («Esto no va aquí, sería del tema 3.B.8»).
