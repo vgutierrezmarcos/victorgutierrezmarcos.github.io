@@ -1,0 +1,80 @@
+% La metodología de la economía en el tiempo, 1600-2025 (3.A.1, II.2): dos
+% franjas de hitos puntuales, arriba la filosofía de la ciencia (morado) y
+% abajo la metodología de la economía (azul). Esquema propio a partir de
+% Blaug (1992) y Landreth y Colander (2006, cap. 1); mismo estilo que
+% 3A07/graficos/historia-macro.tex y 3A06/graficos/linea-tiempo-nmc.tex, sin
+% repetir sus escuelas.
+% Escala partida: 0,016 cm por año de 1600 a 1790 y 0,062 cm por año de 1830
+% a 2025, con un zigzag entre ambos tramos (función X). Unos 16 cm de ancho y
+% letra \footnotesize, para que al ancho del tema se lea a unos 8 pt; los
+% rótulos se escalonan en varias alturas (tallos de 0, 0,8 y 1,6 cm).
+%   Filosofía: 1620 Bacon; 1637 Descartes; 1748 Hume; 1781 Kant; años 20
+%     Círculo de Viena; 1934 Popper; 1962 Kuhn; 1970 Lakatos; 1975 Feyerabend
+%   Economía: 1615 Montchrestien; 1776 Smith; 1836 Mill; 1883-1884
+%     Methodenstreit; 1891 J. N. Keynes; 1932 Robbins; 1938 Hutchison; 1953
+%     Friedman; 1976 Lucas; 1979 Kahneman y Tversky; 1983 McCloskey; 2010
+%     Angrist y Pischke; 2016 Romer
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={X(\a)=(\a<1800)*((\a-1600)*0.016)+(\a>=1800)*(3.64+(\a-1830)*0.062);},
+    rotulo/.style={font=\footnotesize, align=left, inner sep=1.5pt},
+    titulo/.style={font=\footnotesize\bfseries, align=center, rotate=90, inner sep=1pt},
+    franja/.style={fill=#1!13, draw=none}]
+  % \hito{color}{y de la franja}{año}{+1 arriba / -1 abajo}{largo del tallo}{ancla}{texto}
+  \newcommand{\hito}[7]{%
+    \node[circle, fill=#1, inner sep=1.5pt] at ({X(#3)},#2) {};
+    \draw[thin, #1] ({X(#3)},{#2+#4*0.1}) -- ({X(#3)},{#2+#4*(0.12+#5)});
+    \node[rotulo, text=#1, anchor=#6] at ({X(#3)},{#2+#4*(0.12+#5)}) {#7};}
+  % \tramo{y}{color}: las 2 partes de una franja, a cada lado del zigzag
+  \newcommand{\tramo}[2]{%
+    \fill[franja=#2] (0,#1-0.1) rectangle (3.04,#1+0.1);
+    \fill[franja=#2] (3.64,#1-0.1) rectangle ({X(2025)},#1+0.1);}
+  \def\yf{1.55}\def\ye{-3.0}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.75,-5.6) rectangle (16.15,3.4);
+  % 1: el eje del tiempo, partido con un zigzag, y sus marcas
+  \capa{1}{\draw[thick] (0,0) -- (3.04,0) -- (3.14,0.13) -- (3.26,-0.13) -- (3.38,0.13)
+      -- (3.5,-0.13) -- (3.64,0);}
+  \capa{1}{\draw[eje] (3.64,0) -- ({X(2025)+0.35},0);}
+  \capa{1}{\foreach \a in {1600,1650,1700,1750,1850,1875,...,2025}
+      {\draw ({X(\a)},-0.08) -- ({X(\a)},0.08) node[pos=0, below=1pt, font=\footnotesize] {\a};}}
+  % 2: la franja de la filosofía de la ciencia, de Bacon a Kant
+  \capa{2}{\tramo{\yf}{tceemorado}}
+  \capa{2}{\node[titulo, text=tceemorado, anchor=south] at (-0.12,\yf) {filosofía\\de la ciencia};}
+  \capa{2}{\hito{tceemorado}{\yf}{1620}{1}{0}{south west}{1620 \autor{Bacon}:\\\emph{Novum}\\\emph{Organum},\\inducción}}
+  \capa{2}{\hito{tceemorado}{\yf}{1637}{-1}{0}{north west}{1637 \autor{Descartes}:\\\emph{Discurso del}\\\emph{método}, deducción}}
+  \capa{2}{\hito{tceemorado}{\yf}{1748}{1}{0.8}{south west}{1748 \autor{Hume}: el problema\\de la inducción}}
+  \capa{2}{\hito{tceemorado}{\yf}{1781}{-1}{0}{north west}{1781 \autor{Kant}: \emph{Crítica}\\\emph{de la razón pura}}}
+  % 3: el Círculo de Viena (tramo) y Popper
+  \capa{3}{\draw[line width=3.4pt, tceemorado!70] ({X(1922)},\yf) -- ({X(1936)},\yf);}
+  \capa{3}{\draw[thin, tceemorado] ({X(1929)},\yf+0.1) -- ({X(1929)},\yf+0.12);}
+  \capa{3}{\node[rotulo, text=tceemorado, anchor=south] at ({X(1929)},\yf+0.12)
+      {años 20: Círculo de Viena,\\positivismo lógico};}
+  \capa{3}{\hito{tceemorado}{\yf}{1934}{-1}{0}{north}{1934 \autor{Popper}:\\\emph{Logik der Forschung}}}
+  % 4: Kuhn, Lakatos y Feyerabend
+  \capa{4}{\hito{tceemorado}{\yf}{1962}{1}{0.8}{south}{1962 \autor{Kuhn}: \emph{The Structure}\\\emph{of Scientific Revolutions}}}
+  \capa{4}{\hito{tceemorado}{\yf}{1970}{-1}{0}{north west}{1970 \autor{Lakatos}:\\programas de investigación}}
+  \capa{4}{\hito{tceemorado}{\yf}{1975}{1}{0}{south west}{1975 \autor{Feyerabend}:\\\emph{Against Method}}}
+  % 5: la franja de la economía, de Montchrestien a Hutchison
+  \capa{5}{\tramo{\ye}{tceeazul}}
+  \capa{5}{\node[titulo, text=tceeazul, anchor=south] at (-0.12,\ye) {metodología\\de la economía};}
+  \capa{5}{\hito{tceeazul}{\ye}{1615}{1}{0}{south west}{1615 \autor{Montchrestien}:\\«economía política»}}
+  \capa{5}{\hito{tceeazul}{\ye}{1776}{-1}{0}{north east}{1776 \autor{Smith}: \emph{La}\\\emph{riqueza de las naciones}}}
+  \capa{5}{\hito{tceeazul}{\ye}{1836}{1}{0}{south west}{1836 \autor{Mill}:\\definición y método}}
+  \capa{5}{\hito{tceeazul}{\ye}{1883}{-1}{0}{north east}{1883-1884 \emph{Methodenstreit}:\\\autor{Menger} frente a \autor{Schmoller}}}
+  \capa{5}{\hito{tceeazul}{\ye}{1891}{1}{0}{south west}{1891 \autor{J. N. Keynes}:\\positiva, normativa\\y arte}}
+  \capa{5}{\hito{tceeazul}{\ye}{1932}{-1}{0}{north east}{1932 \autor{Robbins}:\\fines y medios escasos}}
+  \capa{5}{\hito{tceeazul}{\ye}{1938}{1}{0}{south west}{1938 \autor{Hutchison}:\\contrastabilidad}}
+  % 6: de Friedman a Romer
+  \capa{6}{\hito{tceeazul}{\ye}{1953}{-1}{0.8}{north east}{1953 \autor{Friedman}: \emph{The Methodology}\\\emph{of Positive Economics}}}
+  \capa{6}{\hito{tceeazul}{\ye}{1976}{1}{0.8}{south east}{1976 crítica\\de \autor{Lucas}}}
+  \capa{6}{\hito{tceeazul}{\ye}{1979}{-1}{0}{north west}{1979\\\autor{Kahneman}\\y \autor{Tversky}}}
+  \capa{6}{\hito{tceeazul}{\ye}{1983}{1}{0}{south west}{1983 \autor{McCloskey}:\\retórica}}
+  \capa{6}{\hito{tceeazul}{\ye}{2010}{-1}{1.6}{north east}{2010 \autor{Angrist} y \autor{Pischke}:\\credibilidad}}
+  \capa{6}{\hito{tceeazul}{\ye}{2016}{1}{1.6}{south east}{2016 \autor{Romer}: \emph{The Trouble}\\\emph{with Macroeconomics}}}
+\end{tikzpicture}
+\end{document}

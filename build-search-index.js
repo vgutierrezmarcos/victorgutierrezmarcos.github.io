@@ -96,7 +96,7 @@ searchIndex.pages = [
 // TERCER EJERCICIO - Parte A: Economía general
 // ============================================
 const tercerEjercicioParteA = [
-  { num: 1, titulo: 'Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía conductual.', disponible: true, file: '3A01.pdf' },
+  { num: 1, titulo: 'Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía conductual.', disponible: true, file: '3A01.html' },
   { num: 2, titulo: 'Los economistas clásicos y Marx.', disponible: true, file: '3A02.pdf' },
   { num: 3, titulo: 'Los economistas neoclásicos.', disponible: true, file: '3A03.html' },
   { num: 4, titulo: 'El pensamiento económico de Keynes. Referencia a la economía postkeynesiana y el desequilibrio.', disponible: true, file: '3A04.html' },

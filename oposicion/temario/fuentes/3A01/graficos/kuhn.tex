@@ -1,0 +1,45 @@
+% El ciclo de Kuhn (3.A.1, II.2.3 c): ciencia normal → anomalías → crisis →
+% revolución científica → nuevo paradigma → nueva ciencia normal, en el sentido
+% de las agujas del reloj. Esquema propio a partir de Kuhn (1962); el original
+% era una infografía de un blog y no se reutiliza. En gris, 3 ejemplos de la
+% economía (revolución marginalista, discutida como tal, keynesiana y de Lucas).
+% Letra \small: al ancho del tema (0,75) sale a unos 8,5 pt.
+% Las 5 cajas, sobre una elipse de semiejes 4,2 y 2,6 cm, cada 72°.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado, thick, rounded corners=4pt, align=center,
+      text width=3.1cm, inner sep=5pt, font=\small},
+    rotulo/.style={font=\small, inner sep=2pt}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-6.0,-3.1) rectangle (6.4,3.4);
+  % 1: la ciencia normal (el paradigma)
+  \capa{1}{\node[caja, fill=tceemorado!15] (normal) at (90:4.2 and 2.6)
+      {\textbf{Ciencia normal}\\(paradigma):\\se resuelven enigmas};}
+  % 2: flecha y caja de las anomalías
+  \capa{2}{\node[caja] (anomalias) at (18:4.2 and 2.6) {\textbf{Anomalías}};}
+  \capa{2}{\draw[flecha] (normal.east) to[bend left=25]
+      node[rotulo, pos=0.6, above right, text=tceerojo] {parches \emph{ad hoc}} (anomalias.north);}
+  % 3: flecha y caja de la crisis
+  \capa{3}{\node[caja, draw=tceerojo, very thick] (crisis) at (-54:4.2 and 2.6) {\textbf{Crisis}};}
+  \capa{3}{\draw[flecha] (anomalias.south) to[bend left=20] (crisis.north);}
+  % 4: flecha y caja de la revolución
+  \capa{4}{\node[caja] (revolucion) at (-126:4.2 and 2.6)
+      {\textbf{Revolución científica}:\\un paradigma rival};}
+  \capa{4}{\draw[flecha] (crisis.west) to[bend left=25] (revolucion.east);}
+  % 5: nuevo paradigma y flecha de cierre hacia la ciencia normal
+  \capa{5}{\node[caja] (nuevo) at (162:4.2 and 2.6) {\textbf{Nuevo paradigma}};}
+  \capa{5}{\draw[flecha] (revolucion.north) to[bend left=25] (nuevo.south);}
+  \capa{5}{\draw[flecha] (nuevo.north) to[bend left=25]
+      node[rotulo, pos=0.4, above left, text=tceerojo] {nueva ciencia normal} (normal.west);}
+  % 6: en gris, 3 ejemplos de la economía, junto a la revolución (en el hueco del ciclo)
+  \capa{6}{\node[rotulo, text=tceegris!75!black, align=left, anchor=south west] at ($(revolucion.north)+(-0.6,0.35)$)
+      {revoluciones en la economía:\\
+       -- marginalista (discutida), 1871-1874\\
+       -- keynesiana, 1936\\
+       -- \autor{Lucas}, 1972-1976};}
+\end{tikzpicture}
+\end{document}

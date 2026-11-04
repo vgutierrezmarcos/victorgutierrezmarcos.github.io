@@ -1,0 +1,84 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Metodología de los artículos publicados en AER, JPE y QJE, 1963-2011 (% de
+% artículos). Hamermesh (2013, tabla 4), ../datos/metodologia-revistas-top.csv;
+% consulta 04/11/2026. En 1963 no se pudieron clasificar 17 artículos.
+% Cifras clave: teoría pura 50,7 % (1963) → 19,1 % (2011); empírico con datos
+% propios 8,7 % → 34,0 %.
+% Paleta por familias: teoría en morados (pura oscuro, con simulación claro),
+% empírico en azules (datos ajenos oscuro, propios claro), experimento dorado.
+% Capas (CRITERIOS §7): barras de teoría → barras empíricas → barras de
+% experimentos → ejes → etiquetas de 1963 y 2011 y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/metodologia-revistas-top.csv}\metodo
+\colorlet{mrteoria}{tceemorado}
+\colorlet{mrsimulacion}{tceemorado!40}
+\colorlet{mrajenos}{tceeazul}
+\colorlet{mrpropios}{tceeazul!38}
+\colorlet{mrexperimento}{tceedorado}
+% \mrde{fila}{columna}{macro}: guarda (global) en \macro el valor de la tabla
+\newcommand{\mrde}[3]{\pgfplotstablegetelem{#1}{#2}\of\metodo\expandafter\global\expandafter\let\csname#3\endcsname\pgfplotsretval}
+\mrde{0}{teoria}{tpa}\mrde{5}{teoria}{tpb}
+\mrde{0}{teoria_con_simulacion}{tsa}\mrde{5}{teoria_con_simulacion}{tsb}
+\mrde{0}{empirico_datos_ajenos}{eaa}\mrde{5}{empirico_datos_ajenos}{eab}
+\mrde{0}{empirico_datos_propios}{epa}\mrde{5}{empirico_datos_propios}{epb}
+% alturas de las etiquetas: el centro de cada segmento
+\pgfmathsetmacro{\ytpa}{\tpa/2}\pgfmathsetmacro{\ytpb}{\tpb/2}
+\pgfmathsetmacro{\yepa}{\tpa+\tsa+\eaa+\epa/2}\pgfmathsetmacro{\yepb}{\tpb+\tsb+\eab+\epb/2}
+\pgfplotsset{
+  mrbarra/.style={on layer=dicbarras, forget plot, fill=#1, draw=#1!65!black, line width=0.3pt},
+}
+\tikzset{mrvalor/.style={font=\footnotesize, inner sep=1pt, text=#1}}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=10.5cm, height=7.4cm, scale only axis=false,
+      ybar stacked, bar width=0.62,
+      xmin=-0.6, xmax=5.6, ymin=0, ymax=100,
+      xtick={0,...,5}, xticklabels from table={\metodo}{anio},
+      ytick={0,20,...,100}, yticklabel={\pgfmathprintnumber{\tick}\,\%},
+      ticklabel style={font=\footnotesize},
+      axis line style={draw=none}, major tick length=0pt,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, dicapas,
+      legend style={at={(0.5,-0.1)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=2, /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left]
+    % 1: barras de teoría (pura y con simulación)
+    \capa{1}{
+      \addplot[mrbarra=mrteoria] table[x expr=\coordindex, y=teoria] {\metodo};
+      \addplot[mrbarra=mrsimulacion] table[x expr=\coordindex, y=teoria_con_simulacion] {\metodo};
+    }
+    % 2: barras empíricas (datos ajenos y propios)
+    \capa{2}{
+      \addplot[mrbarra=mrajenos] table[x expr=\coordindex, y=empirico_datos_ajenos] {\metodo};
+      \addplot[mrbarra=mrpropios] table[x expr=\coordindex, y=empirico_datos_propios] {\metodo};
+    }
+    % 3: barras de experimentos
+    \capa{3}{
+      \addplot[mrbarra=mrexperimento] table[x expr=\coordindex, y=experimento] {\metodo};
+    }
+    % 4: ejes
+    \capa{4}{
+      \dicraya{(-0.6,0) (5.6,0)}
+      \dicraya{(-0.6,0) (-0.6,100)}
+    }
+    % 5: etiquetas de teoría pura y datos propios en 1963 y 2011, y leyenda
+    \capa{5}{
+      \dicrotulo[mrvalor=white]{(0,\ytpa)}{\pgfmathprintnumber[use comma, fixed, precision=1, fixed zerofill]{\tpa}\,\%}
+      \dicrotulo[mrvalor=white]{(5,\ytpb)}{\pgfmathprintnumber[use comma, fixed, precision=1, fixed zerofill]{\tpb}\,\%}
+      \dicrotulo[mrvalor=black]{(0,\yepa)}{\pgfmathprintnumber[use comma, fixed, precision=1, fixed zerofill]{\epa}\,\%}
+      \dicrotulo[mrvalor=black]{(5,\yepb)}{\pgfmathprintnumber[use comma, fixed, precision=1, fixed zerofill]{\epb}\,\%}
+      \addlegendimage{area legend, fill=mrteoria, draw=mrteoria!65!black}
+      \addlegendentry{teoría pura}
+      \addlegendimage{area legend, fill=mrsimulacion, draw=mrsimulacion!65!black}
+      \addlegendentry{teoría con simulación}
+      \addlegendimage{area legend, fill=mrajenos, draw=mrajenos!65!black}
+      \addlegendentry{empírico, datos ajenos}
+      \addlegendimage{area legend, fill=mrpropios, draw=mrpropios!65!black}
+      \addlegendentry{empírico, datos propios}
+      \addlegendimage{area legend, fill=mrexperimento, draw=mrexperimento!65!black}
+      \addlegendentry{experimento}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

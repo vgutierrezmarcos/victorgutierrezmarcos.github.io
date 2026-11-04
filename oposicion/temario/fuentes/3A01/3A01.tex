@@ -1,0 +1,972 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A01.bib}
+\tcetema[Objeto y métodos de la ciencia económica]{3.A.1}{Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía conductual.}
+\tcefecha{04/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «A toro pasado, todos somos Manolete», dice el refrán. En noviembre de 2008, en plena crisis financiera, la reina Isabel~II visitó la London School of Economics y preguntó a los economistas por qué nadie la había visto venir. En julio de 2009, la British Academy le contestó por carta que había sido, sobre todo, un fallo de la imaginación colectiva de mucha gente brillante \parencite{BesleyHennessy2009Letter}.
+  \item \textbf{¿Qué estudia la economía, cómo sabe lo que sabe y qué hace cuando la realidad la desmiente?} Son las 3 preguntas de esta exposición: su objeto, sus métodos y los debates que hoy la mueven, en los que la economía conductual ocupa un lugar central.
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Para la teoría}: el objeto y el método deciden qué cuenta como conocimiento económico y cómo se discute. Cada escuela del pensamiento es una respuesta a «qué estudiamos» con un «cómo lo estudiamos» \vertema{3.A.2} \vertema{3.A.7}.
+  \item \emph{Para la política económica}: la economía es la ciencia social con más peso en las decisiones públicas, y de su método depende que sus recomendaciones sean creíbles. La evaluación de políticas con experimentos y los «empujones» (\emph{nudges}) que hoy usan muchos gobiernos salen de los debates de este tema \vertema{3.B.28}.
+  \item \emph{Para la actualidad}: la crisis de 2008 reabrió el debate sobre los modelos macroeconómicos; los microdatos y el aprendizaje automático están cambiando la forma de contrastar teorías, y la economía conductual ha pasado de ser un catálogo de anomalías a una herramienta de política. Lo reconocen los premios Nobel a Daniel \autor{Kahneman} (2002), Richard \autor{Thaler} (2017), Abhijit \autor{Banerjee}, Esther \autor{Duflo} y Michael \autor{Kremer} (2019) y David \autor{Card}, Joshua \autor{Angrist} y Guido \autor{Imbens} (2021) \parencite{Nobel2002Kahneman,Nobel2017Thaler,NobelPrize2019,Nobel2021CardAngristImbens}.
+  \item Además, como toda historia del pensamiento económico, enseña a no quedarse con el último manual y a ver por qué unas ideas llegan en unas épocas y no en otras: son 2 de los 4 motivos de \textcite{Schumpeter1954History}.\footnote{Los otros 2: la historia es fuente de ideas (principios que no fructificaron pueden orientar la investigación de hoy) y muestra cómo se desplazan las fronteras de la ciencia (cada época trae sus problemas y su forma de afrontarlos). La evolución del pensamiento económico resulta de la interacción de varios factores: el contexto económico de cada momento, el pensamiento anterior y los avances de otras disciplinas, como la filosofía, las matemáticas, la física o la biología. Conocerla permite entender las raíces del pensamiento actual, analizar los fenómenos económicos pasados y presentes y valorar los distintos programas de investigación.}
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item La palabra viene del griego \emph{oikonomía}, la buena administración de la casa, que \autor{Jenofonte} usa en el siglo IV a.~C. en su \emph{Económico}. Durante siglos, los temas económicos (el precio justo, la usura, la moneda del soberano) se trataron dentro de la moral, el derecho y la teología.
+  \item La expresión \emph{economía política} aparece por primera vez en el título de \textcite{Montchrestien1615Traicte}; en inglés, en el tratado de \textcite{Steuart1767Inquiry}. La disciplina se independiza con los clásicos, desde \textcite{Smith1776Wealth}, que toman el testigo de los fisiócratas y su idea del flujo circular de la renta \vertema{3.A.2}. A finales del siglo XIX, \autor{Marshall} populariza el nombre de \emph{economics} \parencite{Marshall1890Principles}.
+  \item Hoy la economía se enseña en todas las universidades, sus conceptos son habituales en la gestión pública y privada y el debate económico ocupa el centro del debate político. Desde 1969, la Real Academia Sueca de Ciencias concede el Premio del Banco de Suecia en Ciencias Económicas en memoria de Alfred Nobel \parencite{NobelPrize2026Economia}.
+  \item La dificultad de definirla la resume la frase que se atribuye a Jacob \autor{Viner}: «economía es lo que hacen los economistas». En cuanto al método, hay un amplio acuerdo en que la economía debe usar los procedimientos de la ciencia; cuáles son esos procedimientos es, precisamente, lo que se discute.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Qué estudia la economía y dónde están sus fronteras?
+  \item ¿Cómo sabe lo que sabe: con qué método construye y contrasta sus teorías, y cómo cambian estas?
+  \item ¿Qué es un buen modelo, y para qué sirve uno cuyos supuestos no son realistas?
+  \item ¿Qué cambia cuando las personas no se comportan como supone la teoría, y qué debates abiertos tiene hoy la disciplina?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue el orden del título, de lo que estudia la economía a cómo lo estudia y, por último, a lo que hoy se discute:
+  \begin{itemize}
+  \item \concepto{I. Objeto de la ciencia económica} (\ref{sec:objeto}): cómo ha cambiado su definición, de la riqueza de las naciones a la elección con recursos escasos, la distinción entre economía positiva y normativa y sus ramas;
+  \item \concepto{II. Métodos de la ciencia económica} (\ref{sec:metodos}): si la economía es una ciencia, cómo ha cambiado la idea de método científico, de la deducción y la inducción a \autor{Popper}, \autor{Kuhn} y \autor{Lakatos}, y los debates sobre los modelos y sus supuestos;
+  \item \concepto{III. Cuestiones y debates actuales, con especial referencia a la economía conductual} (\ref{sec:debates-actuales}): la economía conductual, con el descuento cuasihiperbólico como modelo central; los experimentos, y las innovaciones de método tras la crisis de 2008.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}[unbreakable]
+\textbf{3.A.1. Objeto y métodos de la ciencia económica}\\[2pt]
+Introducción\\
+I. Objeto de la ciencia económica\\
+\hspace*{1.5em}1. Definiciones históricas de economía\\
+\hspace*{1.5em}2. Debates sobre el objeto: economía positiva y normativa; el imperialismo económico\\
+\hspace*{1.5em}3. Ramas de la economía y evolución del objeto\\
+II. Métodos de la ciencia económica\\
+\hspace*{1.5em}1. ¿Es la economía una ciencia?\\
+\hspace*{1.5em}2. Método científico y su aplicación a la economía\\
+\hspace*{1.5em}3. Debates metodológicos de la ciencia económica\\
+III. Cuestiones y debates actuales, con especial referencia a la economía conductual\\
+\hspace*{1.5em}1. Papel de la racionalidad en la economía y la economía conductual\\
+\hspace*{1.5em}2. Experimentos en economía\\
+\hspace*{1.5em}3. Innovaciones metodológicas recientes\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{6} (I.1, \tiempo{2,5}; I.2, \tiempo{2}; I.3, \tiempo{1,5}); II, \tiempo{9} (II.1, \tiempo{1}; II.2, \tiempo{5,5}: el método deductivo y el inductivo, \tiempo{1}, la disputa sobre el método, \tiempo{0,5}, \autor{Popper}, \tiempo{1}, \autor{Kuhn}, \tiempo{1,5}, \autor{Lakatos} y \autor{Feyerabend}, \tiempo{1}, y las escuelas, \tiempo{0,5}; II.3, \tiempo{2,5}); III, \tiempo{11,5} (III.1, \tiempo{7}: la idea y \autor{Simon}, \tiempo{1}, el descuento cuasihiperbólico, \tiempo{2,5}, la teoría de las perspectivas, \tiempo{1}, los demás sesgos, \tiempo{1}, los \emph{nudges} y las finanzas conductuales, \tiempo{1}, y la valoración, \tiempo{0,5}; III.2, \tiempo{2}; III.3, \tiempo{2,5}), y conclusión, \tiempo{1}. Los anexos no se cantan.
+
+La introducción y la conclusión se cantan sin pizarra; el refrán del enganche se apunta en una esquina y vuelve en la idea final. En el bloque~\ref{sec:objeto}, a la izquierda, la escalera de definiciones (\autor{Smith}, \autor{Mill}, \autor{Marshall}, \autor{Robbins}, \autor{Becker}, \autor{Viner}); a la derecha, la tabla~\ref{tab:positiva-normativa}, que se escribe columna a columna, y abajo el árbol micro y macro con la flecha de la microfundamentación. En el bloque~\ref{sec:metodos}, arriba, 5 hitos de la línea del tiempo (gráfico~\ref{fig:metodologia-tiempo}: \autor{Bacon} y \autor{Descartes}, la disputa sobre el método, \autor{Popper}, \autor{Kuhn} y \autor{Lakatos}); debajo, el ciclo de \autor{Kuhn} (gráfico~\ref{fig:kuhn}) y el núcleo y el cinturón de \autor{Lakatos} (gráfico~\ref{fig:lakatos}), imprescindibles, con cada pegatina junto a su concepto; la tabla~\ref{tab:escuelas} es de apoyo. Se borra al pasar a los debates metodológicos (\ref{sec:debates-metodologicos}), que van de palabra, con las 7 cualidades de un modelo en una lista vertical. En el bloque~\ref{sec:debates-actuales}, la función clave del descuento cuasihiperbólico, recuadrada arriba a la izquierda, se conserva hasta el final de la economía conductual (\ref{sec:conductual}), con el gráfico del descuento a su lado y, después, el boceto de la función de valor. Las notas, las cajas y los anexos son de profundización, para las preguntas del tribunal.
+\end{notaopositor}
+
+% ==========================================================================
+\section{Objeto de la ciencia económica}\label{sec:objeto}
+\minutos{6}
+
+\begin{itemize}
+\item Empezamos por lo que estudia la economía. El \concepto{objeto} de una ciencia es el conjunto de fenómenos que estudia; su \concepto{método}, el camino (del griego \emph{méthodos}) por el que llega a conocerlos y a contrastar lo que dice de ellos. \autor{Schumpeter} reconoce una escuela de pensamiento por 3 rasgos: un \emph{líder}, unos \emph{seguidores} y un \emph{cuerpo doctrinal} propio, con su objeto y su método \parencite{Schumpeter1954History}.
+\item \emph{Conclusión anticipada}: la definición de economía ha pasado de la \emph{riqueza} (los clásicos) a la \emph{elección} con recursos escasos (\autor{Robbins}) y de ahí a un \emph{modo de razonar} que se aplica a cualquier conducta (\autor{Becker}). Detrás de cada definición hay un debate: si la economía describe lo que es o prescribe lo que debe ser, y hasta dónde llegan sus fronteras.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Definiciones históricas de economía}\label{sec:definiciones}
+
+\begin{itemize}
+\item \emph{La economía política clásica: la riqueza}.
+  \begin{itemize}
+  \item Para \autor{Smith}, la economía política, como rama de la ciencia del hombre de Estado o del legislador, «se propone dos objetos distintos»: dar al pueblo un abundante ingreso o subsistencia y al Estado un ingreso suficiente para los servicios públicos \parencite[libro~IV, introducción]{Smith1776Wealth}. Es una ciencia práctica, al servicio del buen gobierno, más del \emph{debe ser} que del \emph{es}.
+  \item Jean-Baptiste \autor{Say}, Nassau \autor{Senior} y, en parte, \autor{Ricardo} y \autor{Malthus} la convierten en el estudio de las \emph{leyes} que rigen la producción, la distribución y el consumo de la riqueza \parencite{Senior1836Outline}.
+  \item John Stuart \autor{Mill}, el gran metodólogo del siglo XIX, matiza a ambos. En 1836 la define como la ciencia que traza las leyes de los fenómenos sociales que nacen de las operaciones combinadas de la humanidad para producir riqueza, \emph{en la medida en que no los modifica la persecución de otro objeto} \parencite{Mill1836Definition}. Con ello:
+    \begin{itemize}
+    \item separa la ciencia del arte: el buen gobierno de la nación es arte, no ciencia;
+    \item y deja fuera las leyes técnicas de la producción, que son de las ciencias naturales: la economía estudia la parte de esos fenómenos que resulta de la acción humana.
+    \end{itemize}
+  \end{itemize}
+\item \emph{Los neoclásicos: las personas}. \autor{Marshall} populariza el término \emph{economics}: la economía es «el estudio de la humanidad en los asuntos ordinarios de la vida», la parte de la acción individual y social más ligada a la obtención y el uso de «los requisitos materiales del bienestar» \parencite[libro~I, cap.~1]{Marshall1890Principles}.
+  \begin{itemize}
+  \item \emph{Los asuntos ordinarios}: la economía estudia problemas del día a día, como el efecto de un aumento de la demanda sobre el precio de un bien.
+  \item \emph{La acción humana}: el acento pasa de la riqueza a las personas que deciden, que es el germen del individualismo metodológico (\ref{sec:individualismo-pluralismo}).
+  \item \emph{El bienestar}: la economía mira a los medios materiales de la vida buena, sin dejar de ser una ciencia de lo que es.
+  \end{itemize}
+\item \emph{La definición de \autor{Robbins}: la elección}. Para \textcite[pág.~15]{Robbins1932Essay}, «la economía es la ciencia que estudia el comportamiento humano como una relación entre fines y medios escasos que tienen usos alternativos». Es la definición de los manuales desde que \autor{Samuelson} la llevó al suyo, y encaja con la teoría moderna: un agente que optimiza sujeto a restricciones \vertema{3.A.8}. Tiene 3 elementos:
+  \begin{itemize}
+  \item \emph{escasez}: si los medios bastaran para todos los fines, no habría que elegir, y no habría problema económico;
+  \item \emph{usos alternativos}: lo alternativo son los \emph{usos de los medios}; el tiempo o la tierra sirven para varios fines, y hay que elegir a cuál se dedican;
+  \item \emph{coste de oportunidad}: elegir un uso es renunciar al mejor de los demás, tanto en la decisión individual (un bien u otro) como en la social (la disyuntiva entre eficiencia y equidad).
+  \end{itemize}
+  \begin{itemize}
+  \item La definición es \emph{formal}: no delimita un campo de la realidad (la riqueza, el mercado), sino un \emph{aspecto} de cualquier conducta. Por eso abre la puerta al imperialismo económico (\ref{sec:positiva-normativa}).
+  \end{itemize}
+\item \emph{Cómo se resuelve la escasez}: toda sociedad necesita un mecanismo que asigne unos recursos limitados entre deseos que no lo son. Han convivido 4:
+  \begin{itemize}
+  \item la \emph{fuerza}, el más antiguo, que no ha desaparecido;
+  \item la \emph{tradición}, que repite cómo se han repartido siempre los recursos;
+  \item la \emph{autoridad}, del Estado o de la Iglesia;
+  \item y el \emph{mercado}, que se convierte en el principal en Europa occidental con el fin del feudalismo y la sociedad industrial \parencite[cap.~1]{LandrethColander2006Historia}.
+  \end{itemize}
+  \begin{itemize}
+  \item La economía moderna estudia sobre todo el mercado, la asignación descentralizada de millones de agentes, pero también la intervención del Estado (la economía pública y la del bienestar) y la asignación en las economías planificadas.\footnote{Es el debate del cálculo socialista. Para \textcite{Mises1920Wirtschaftsrechnung}, sin precios de mercado no es posible el cálculo económico; \textcite{Lange1936Socialism} responde con un planificador que fija los precios por tanteo, como haría un subastador; y \textcite{Hayek1945Use} replica que el problema no es de cálculo sino de información: el conocimiento de las preferencias y de las técnicas está disperso entre millones de personas, y los precios lo agregan. Es uno de los orígenes del diseño de mecanismos y del fallo del sector público por falta de información \vertema{3.A.3} \vertema{3.A.23}.}
+  \end{itemize}
+\item \emph{\autor{Becker}: un modo de razonar}. Lo que define a la economía es su enfoque: agentes que maximizan, preferencias estables y equilibrio de mercado, aplicados a cualquier decisión, como la educación, la familia, la discriminación o el delito \parencite{Becker1976Economic}.
+  \begin{itemize}
+  \item \emph{Sujetos activos}: donde el derecho o la sociología veían conductas irracionales o determinadas por el entorno, \autor{Becker} ve decisiones conscientes que responden a costes y beneficios, lo que permite predecir el efecto de una política sobre la natalidad o la delincuencia.
+  \item Recibió el Premio Nobel de 1992 «por haber extendido el análisis microeconómico a un amplio abanico de comportamientos e interacciones humanas, incluidos los que quedan fuera del mercado» \parencite{Nobel1992Becker}; su conferencia, «The Economic Way of Looking at Life», lo resume \parencite{Becker1993Economic}. La economía de la salud y la de la educación son hoy ramas propias en buena parte gracias a él.\footnote{Un ejemplo del alcance de ese enfoque fuera de la academia es el éxito de \emph{Freakonomics} \parencite{Levitt2005Freakonomics}, de Steven \autor{Levitt}, colega de \autor{Becker} en Chicago, y el periodista Stephen \autor{Dubner}.}
+  \end{itemize}
+\item \emph{\autor{Viner}: lo que hacen los economistas}. La frase que se le atribuye, «la economía es lo que hacen los economistas», no aparece en sus obras: la recoge \textcite[pág.~1]{Boulding1941Economic} sin nombrarlo \parencite{BackhouseMedema2009Definition}. Es una crítica a las definiciones, porque en la práctica el objeto lo marca lo que la profesión investiga, y obliga a preguntar quién es economista:
+  \begin{itemize}
+  \item para \textcite{Ferreira2013Pseudociencia}, quien investiga en economía y publica en revistas con revisión por pares, o quien usa con rigor los resultados de esas investigaciones: los responsables de la política económica, sí; quien dirige empresas o asesora, no por eso;
+  \item para \textcite{Tirole2017Bien}, el economista hace algo parecido al médico: diagnostica y propone el mejor tratamiento que permite el conocimiento disponible.\footnote{\autor{Tirole} recibió el Premio Nobel en 2014 «por su análisis del poder de mercado y de la regulación» \parencite{Nobel2014Tirole}.}
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Debates sobre el objeto: economía positiva y normativa; el imperialismo económico}\label{sec:positiva-normativa}
+
+\begin{itemize}
+\item Vistas las definiciones, pasamos al debate que las atraviesa.
+\item \emph{Conclusión anticipada}: el hilo de la discusión sobre el objeto es si la economía describe o prescribe. La respuesta mayoritaria separa los 2 planos, pero reconoce que los juicios de valor entran por la elección de las preguntas y de los conceptos.
+\item \emph{La triple distinción} de John Neville \textcite{KeynesJN1891Scope}, padre de John Maynard, que recupera \textcite{Colander1992Lost} (tabla~\ref{tab:positiva-normativa}):
+  \begin{itemize}
+  \item la \concepto{economía positiva} estudia lo que \emph{es}: relaciones de causa y efecto que se pueden contrastar. «Al pan, pan, y al vino, vino»: describe lo que hay;
+  \item la \concepto{economía normativa} estudia lo que \emph{debe ser}: une economía y ética e incorpora juicios de valor sobre qué estados son mejores, como hace la economía del bienestar \vertema{3.A.22};
+  \item el \concepto{arte de la economía} une las 2: es «un sistema de reglas para alcanzar un fin dado». Dados unos objetivos y lo que sabemos de cómo funciona la economía, ¿cuál es la mejor política para alcanzarlos?
+  \end{itemize}
+  \begin{itemize}
+  \item La distinción importa porque los métodos son distintos: el de la economía positiva es formal y abstracto y aísla las fuerzas económicas; el del arte tiene que integrar lo político, lo social y lo institucional, de lo que la economía positiva hace abstracción \parencite{Colander1992Lost}.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Economía positiva, normativa y arte de la economía}\label{tab:positiva-normativa}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{4.0cm}>{\centering\arraybackslash}m{4.0cm}>{\centering\arraybackslash}m{4.0cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Economía positiva} & \textbf{Economía normativa} & \textbf{Arte de la economía}\\
+\midrule
+Pregunta & \textcolor{tceeazul}{\textbf{Lo que es}} & \textcolor{tceedorado}{\textbf{Lo que debe ser}} & \textcolor{tceeverde}{\textbf{Cómo conseguir lo que debe ser}}\\
+\addlinespace[0.3em]
+Juicios de valor & Se evitan (en lo posible) & Son su contenido & Se toman los fines como dados\\
+\addlinespace[0.3em]
+Método & Abstracto, formal, contrastable & Ético, de criterios & Integra lo político y lo institucional\\
+\midrule
+\cellcolor{tceesalvia}Ejemplo: el salario mínimo & \cellcolor{tceesalvia}¿Qué efecto tiene sobre el empleo? & \cellcolor{tceesalvia}¿Es justo el salario que deja el mercado? & \cellcolor{tceesalvia}¿Qué nivel fijar para mejorar la renta de los que menos ganan sin destruir empleo?\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~II]{KeynesJN1891Scope} y \textcite{Colander1992Lost}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{¿Qué debe primar?} El debate recorre la historia del pensamiento: la escuela histórica alemana y la escuela de \autor{Marshall} ponían el acento en el arte, en la estela de \autor{Smith}; la economía ortodoxa moderna, en la economía positiva, en la de \autor{Ricardo}, y en ella se ha centrado casi toda la metodología moderna.
+\item \emph{La separación de hechos y valores}: para \textcite[pág.~132]{Robbins1932Essay}, «la economía trata de hechos comprobables; la ética, de valoraciones y obligaciones»; no están en el mismo plano.
+  \begin{itemize}
+  \item \textcite{Friedman1953Methodology} lleva la idea al extremo: la economía positiva puede ser independiente de cualquier postura ética, y la normativa debe apoyarse en ella. Su propia regla monetaria se presenta como consecuencia de un resultado positivo, que el crecimiento del dinero es lo que más explica la inflación \vertema{3.A.5}.\footnote{\autor{Friedman} recibió el Premio Nobel en 1976 «por sus logros en el análisis del consumo, la historia y la teoría monetarias y por demostrar la complejidad de la política de estabilización» \parencite{Nobel1976Friedman}.}
+  \end{itemize}
+\item \emph{La crítica}: para Gunnar \textcite{Myrdal1953Political}, los conceptos económicos llevan siempre valoraciones implícitas (el propio criterio de \autor{Pareto} lo es, porque se desentiende del reparto), y lo honrado es hacerlas explícitas.\footnote{\autor{Myrdal} compartió el Premio Nobel de 1974 con Friedrich \autor{Hayek} «por su trabajo pionero en la teoría del dinero y de las fluctuaciones y por su penetrante análisis de la interdependencia de los fenómenos económicos, sociales e institucionales» \parencite{Nobel1974}. La discusión es antigua: a principios del siglo XX, en la Verein für Socialpolitik, Max \autor{Weber} defendió frente a \autor{Schmoller} que la ciencia social debía ser \emph{libre de valores} (\emph{Wertfreiheit}): el investigador puede estudiar qué medios sirven a un fin, pero no decidir con la ciencia qué fines son buenos \parencite{Weber1904Objektivitat}. Es la disputa sobre los juicios de valor (\emph{Werturteilsstreit}), hermana de la disputa sobre el método (\ref{sec:methodenstreit}).}
+\item \emph{La lectura conductual}: \textcite{Thaler1980Positive} observa que la teoría del consumidor es, en realidad, \emph{normativa}: describe cómo debería elegir un agente racional y egoísta, no cómo se elige de verdad. Propone una teoría \emph{positiva} de la elección, que responda a la pregunta de cómo se comportan los consumidores; es el programa de la economía conductual (\ref{sec:conductual}).
+  \begin{itemize}
+  \item Volvamos a la pregunta de la reina. Pedir a los economistas que vieran venir la crisis es pedir economía positiva: describir y predecir. Parte de lo que se les reprochó después fue, en cambio, de arte: qué regulación financiera habían aconsejado.
+  \end{itemize}
+\item \emph{El imperialismo económico}: si la economía es la ciencia de la elección con recursos escasos \parencite{Robbins1932Essay}, su objeto no se limita a los mercados. Gary \autor{Becker} lleva el análisis a la familia, la delincuencia, la discriminación o la educación \parencite{Becker1993Economic} \vertema{3.A.25}, y \textcite{Lazear2000Imperialism} celebra el «imperialismo económico» como una prueba del éxito del método: sus herramientas (optimización, equilibrio, contraste estadístico) explican y predicen en campos en los que otras disciplinas solo describían.
+  \begin{itemize}
+  \item «Quien mucho abarca poco aprieta»: la crítica es que el método se exporta sin la institución ni la psicología de cada campo, y que el supuesto de racionalidad egoísta empobrece lo que estudia.
+  \item La economía conductual es el movimiento contrario: la economía importa de la psicología (\ref{sec:conductual}).
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Ramas de la economía y evolución del objeto}\label{sec:ramas}
+
+\begin{itemize}
+\item Definido el objeto y sus debates, vemos cómo se reparte en ramas.
+\item \emph{Conclusión anticipada}: la gran división entre micro y macro nace con \autor{Keynes} y se ha difuminado desde que la macroeconomía se construye sobre decisiones individuales.
+\item \emph{La microeconomía} estudia las decisiones de consumidores, empresas y Estado y cómo se coordinan en los mercados. Los neoclásicos sientan sus cimientos con el cálculo diferencial aplicado a la elección: la demanda, la producción y los costes y las estructuras de mercado, con \autor{Walras} y \autor{Marshall} al frente \vertema{3.A.3}. De la teoría de la elección salen después la economía del bienestar, la pública, la de la información, la del trabajo, el comercio internacional, la economía financiera y la economía conductual, que trae a la economía ideas de la psicología (\ref{sec:conductual}).\footnote{Campos de la economía y temas del temario. \emph{Microeconomía}: consumidor, producción y estructuras de mercado \vertema{3.A.8}--\vertema{3.A.19}, con \autor{Walras} y \autor{Marshall}; información, desde los años 70 con \autor{Akerlof} \vertema{3.A.13}, y juegos \vertema{3.A.14}; equilibrio general \vertema{3.A.21}; bienestar y elección colectiva, con \autor{Pareto}, \autor{Pigou} y \autor{Coase} \vertema{3.A.22}--\vertema{3.A.24}; economía pública e imposición óptima, con \autor{Ramsey}, \autor{Mirrlees} y \autor{Atkinson} \vertema{4.B.11}; trabajo, de \autor{Marshall} y \autor{Hicks} a \autor{Becker} \vertema{3.A.25}--\vertema{3.A.28}; comercio internacional, con \autor{Ohlin}, \autor{Samuelson}, \autor{Krugman} y \autor{Melitz} \vertema{3.B.5}--\vertema{3.B.9}; finanzas, con la cartera de media y varianza de \autor{Markowitz} \vertema{3.B.23}; economía conductual, con \autor{Kahneman} y \autor{Thaler} (\ref{sec:conductual}); y la salud y la educación, en parte por el impulso de \autor{Becker}. \emph{Macroeconomía}: crecimiento \vertema{3.A.43}--\vertema{3.A.45}, ciclos \vertema{3.A.42} y macroeconomía abierta \vertema{3.B.14}.}
+\item \emph{La macroeconomía} estudia el funcionamiento de la economía en su conjunto (producción, empleo, precios, crecimiento) a partir de la agregación de las conductas. Nace como disciplina propia con la \emph{Teoría general} \parencite{Keynes1936,DeVroey2016History} \vertema{3.A.4}, un ejemplo de cómo la situación social, la Gran Depresión, cambia el objeto de estudio.
+  \begin{itemize}
+  \item \emph{La frontera se ha difuminado}: desde la crítica de \autor{Lucas}, la macroeconomía se construye sobre agentes que optimizan a lo largo del tiempo (la \emph{microfundamentación}), y la diferencia con la micro es más de preguntas que de método \vertema{3.A.6}. Sus ramas (el crecimiento, los ciclos, la economía internacional) usan modelos dinámicos microfundamentados \vertema{3.A.42} \vertema{3.B.14}.
+  \item En ese sentido, la macroeconomía de hoy le debe, en el método, más a la optimización intertemporal de Irving \autor{Fisher} que a \autor{Keynes} \vertema{3.A.29}, aunque las rigideces y la política de estabilización de \autor{Keynes} siguen en el centro de la nueva economía keynesiana \vertema{3.A.7}.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Grandes debates que atraviesan las ramas}: el papel del Estado (los fallos del mercado frente a los del sector público) \vertema{3.A.22} \vertema{3.A.23}; la neutralidad del dinero (clásicos, \autor{Keynes}, monetaristas y nueva macroeconomía clásica) \vertema{3.A.4} \vertema{3.A.5} \vertema{3.A.6}, y la existencia y estabilidad del equilibrio \vertema{3.A.21}. Cada escuela responde de forma distinta porque parte de un objeto y un método distintos: es lo que permite caracterizarlas \parencite{Schumpeter1954History}.
+\item \emph{Recapitulación}: el objeto ha pasado de la riqueza a la elección y de la elección a un modo de razonar; la economía se separa de la ética por su vocación positiva, pero no se libra de los juicios de valor, y se reparte en ramas cuya frontera es cada vez más de preguntas que de método. Definido \emph{qué} estudia la economía, pasamos a \emph{cómo} lo estudia.
+\end{itemize}
+
+% ==========================================================================
+\section{Métodos de la ciencia económica}\label{sec:metodos}
+\minutos{9}
+
+\begin{itemize}
+\item Una vez visto el objeto, pasamos al segundo bloque de la exposición: el \emph{método}, el procedimiento con el que la economía obtiene conocimiento sobre su objeto y lo contrasta. La palabra viene del griego \emph{méthodos}, «camino»: el camino para llegar a algo.
+\item \emph{Conclusión anticipada}: la economía usa el método hipotético-deductivo contrastable de las ciencias, con 2 problemas propios: experimenta poco y sus «partículas» piensan. La filosofía de la ciencia del siglo XX ha pasado de buscar un criterio que garantice la verdad a explicar cómo cambian de hecho las teorías, y la economía ha recorrido ese mismo camino.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{¿Es la economía una ciencia?}\label{sec:ciencia}
+
+\begin{anotaciones}
+\textbf{Para leer.} El debate en la prensa: Robert \textcite{Shiller2013Guardian}, «Is Economics a Science?», y la respuesta de Raj \textcite{Chetty2013Science}, «Yes, Economics Is a Science».
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Sí, con matices}. Para \textcite{Chetty2013Science}, la economía es una ciencia porque formula y contrasta hipótesis precisas, como la medicina o la epidemiología, aunque pueda experimentar menos. En la práctica, el método científico le pide:
+  \begin{itemize}
+  \item un grado de \emph{abstracción}: separar un aspecto de la realidad para analizarlo aislado;
+  \item \emph{contraste con la evidencia empírica};
+  \item y \emph{distinguir lo positivo de lo normativo}, no ocultar los juicios de valor, que están siempre (\ref{sec:positiva-normativa}).
+  \end{itemize}
+\item \emph{Frente a las ciencias naturales}, comparte el tratamiento sistemático (formular proposiciones y comprobar si se cumplen) y que ninguna es exacta: también la medicina discute los efectos de una dieta. Se diferencia en 4 cosas:
+  \begin{itemize}
+  \item \emph{experimenta menos}: no se puede subir los impuestos a un país «de prueba», y los efectos de una política recaen también sobre quien no la recibe (la incidencia económica de un impuesto no es la legal). Es una limitación que los experimentos están reduciendo (\ref{sec:experimentos});
+  \item \emph{predice peor}: el comportamiento humano está disperso y descentralizado, y sus sujetos reaccionan a lo que se dice de ellos. Si cambia la política, cambian las reglas de decisión de los agentes, que es el fondo de la crítica de \autor{Lucas} (\ref{sec:matematicas-econometria}); un electrón, en cambio, se comporta igual aunque se cierre el laboratorio;
+  \item \emph{entiende el equilibrio de otra forma}: en física es un punto fijo de un sistema dinámico; en la macroeconomía desde \autor{Lucas}, un estado en el que los agentes siguen sendas óptimas a lo largo del tiempo y los mercados se vacían \vertema{3.A.6};
+  \item y \emph{tiene más desacuerdo entre autores}, que es lo que explica que haya escuelas de pensamiento.
+  \end{itemize}
+\item \emph{Frente a las demás ciencias sociales}, con las que comparte el objeto, la conducta humana en sociedad, usa teorías más formalizadas, más matemáticas y más estadística, y un núcleo teórico más compartido que la historia o la sociología.
+\item \emph{¿Ciencia natural o moral?} \autor{Keynes} escribió a \autor{Harrod}, el 4 de julio de 1938, frente a la economía como ciencia natural, que «la economía es esencialmente una ciencia moral y no una ciencia natural»: usa la introspección y los juicios de valor \parencite{Keynes1938Harrod}. \textcite{Atkinson2009Moral} toma la idea como título para pedir que la economía del bienestar, con la desigualdad y la libertad real de elegir, vuelva al centro de la disciplina.
+  \begin{itemize}
+  \item Volvamos a la reina: si las personas cambian su conducta cuando cambian las expectativas, predecir una crisis financiera es más difícil que predecir un eclipse. La pregunta no es si la economía acierta siempre, sino con qué método construye y pone a prueba lo que sabe.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Método científico y su aplicación a la economía}\label{sec:metodo-cientifico}
+
+\begin{itemize}
+\item Identificada la economía como ciencia, vemos cómo ha cambiado la idea de \concepto{método científico}: el conjunto de procedimientos para investigar las causas de los fenómenos, obtener conocimiento nuevo y contrastarlo, que une la razón con la observación. La filosofía ha discutido durante 4 siglos qué parte toca a cada una, y la economía ha seguido esa discusión con algo de retraso (gráfico~\ref{fig:metodologia-tiempo}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La metodología de la ciencia y la de la economía: una línea del tiempo}\label{fig:metodologia-tiempo}
+\grafico[\textwidth]{metodologia-tiempo}
+\fuente{elaboración propia a partir de \textcite{Blaug1992Methodology} y \textcite[cap.~1]{LandrethColander2006Historia}. Arriba, la filosofía de la ciencia; abajo, la economía.}
+\end{figure}
+
+% ..........................................................................
+\subsubsection{Distinción tradicional entre método hipotético-deductivo y método inductivo}\label{sec:deductivo-inductivo}
+
+\begin{itemize}
+\item \emph{El método hipotético-deductivo} nace con el \emph{Discurso del método} de \textcite{Descartes1637Discours}: va de lo general a lo particular.
+  \begin{itemize}
+  \item \emph{Pasos}: se parte de un conjunto de \emph{axiomas}; se deducen con la lógica sus \emph{conclusiones}; y se enuncian como leyes generales, los \emph{teoremas}.
+  \item \emph{Ventaja}: rigor y coherencia; si las premisas son ciertas, la conclusión también.
+  \item \emph{Límite}: no dice nada sobre el mundo que no estuviera ya en las premisas, y estas pueden ser falsas. En la ciencia moderna, los axiomas no son verdades evidentes, sino puntos de partida que se aceptan; el problema es encontrar unos que nadie discuta.
+  \item \emph{En economía}: la teoría del consumidor, de los axiomas de las preferencias a la demanda \vertema{3.A.8}, o el primer teorema fundamental de la economía del bienestar \vertema{3.A.22}.
+  \end{itemize}
+\item \emph{El método inductivo} se asocia a \textcite{Bacon1620Novum}: va de lo particular a lo general.
+  \begin{itemize}
+  \item \emph{Pasos}: se observan los hechos sin prejuicios, para descubrir regularidades; se infieren de ellos leyes universales; y se generalizan en teorías, que se distinguen de los teoremas porque vienen de la experiencia.
+  \item \emph{Para los empiristas}, solo es científica una teoría probada con los hechos: no se acepta hasta que se verifica, y se rechaza la especulación que no se puede contrastar.
+  \item \emph{El problema de \autor{Hume}}: ningún número de casos observados garantiza el siguiente; que algo se haya cumplido en $t$ no asegura que se cumpla en $t+1$ \parencite{Hume1748Enquiry}. Además, no se pueden reunir todos los hechos, y la observación nunca es neutral: se observa con una teoría en la cabeza.
+    \begin{itemize}
+    \item «A todo cerdo le llega su San Martín»: el pollo al que el granjero ha dado de comer cada día espera lo mismo mañana, hasta el día en que el granjero le retuerce el pescuezo; es el ejemplo de Bertrand \textcite[cap.~VI]{Russell1912Problems}.
+    \end{itemize}
+  \item \emph{En economía} hay pocos ejemplos puros: la escuela de Harvard de organización industrial, que parte de regularidades observadas entre la estructura de los mercados y sus resultados \vertema{3.A.15}; con matices, la preferencia revelada de \textcite{Samuelson1938Note}, que construye la teoría desde lo que se elige y no desde las preferencias \vertema{3.A.8}; y los experimentos aleatorizados (\ref{sec:experimentos}).
+  \end{itemize}
+\item \emph{La síntesis de \autor{Kant}}: en la \emph{Crítica de la razón pura} \parencite{Kant1781Kritik}, el conocimiento necesita las 2 cosas, los conceptos de la razón, \emph{a priori}, y los datos de la experiencia, \emph{a posteriori}. Desde entonces lo que se discute no es si combinar deducción e inducción, sino en qué proporción.
+\item \emph{El método de los clásicos} \vertema{3.A.2}:
+  \begin{itemize}
+  \item \textcite{Smith1776Wealth} combina ambos antes de que \autor{Kant} lo teorice: razonamiento abstracto (la división del trabajo, la mano invisible) y una masa enorme de ejemplos históricos;
+  \item \textcite{Ricardo1817Principles} es el primer constructor de \emph{modelos}: pocas variables, supuestos fuertes y conclusiones deducidas con rigor. Un modelo es una representación simplificada que aísla un mecanismo: unos supuestos de los que se derivan, con más o menos formalismo, unas conclusiones. \textcite[pág.~473]{Schumpeter1954History} llama \concepto{vicio ricardiano} a cargar conclusiones prácticas sobre supuestos tan endebles, sin contraste empírico;
+  \item \autor{Mill} fija el método de la economía política: una ciencia \emph{abstracta} que estudia al hombre solo como un ser que desea poseer riqueza y es capaz de juzgar los medios para obtenerla, prescindiendo de los demás motivos, y cuyas conclusiones solo son ciertas en abstracto, salvo causas perturbadoras \parencite{Mill1836Definition}. Es empirista en teoría del conocimiento \parencite{Mill1843Logic}, pero para la economía, donde no se puede experimentar, defiende un método deductivo, \emph{a priori}, que se contrasta después. Es el origen de la figura que después se llamará \emph{homo oeconomicus}, un nombre que no es de \autor{Mill}: lo pusieron sus críticos a finales del siglo XIX \parencite{Persky1995Ethology};
+  \item \autor{Marx} va de lo abstracto a lo concreto, de categorías simples (la mercancía, el valor) a la totalidad histórica, y rechaza leyes válidas para todo tiempo: las leyes económicas son las de un modo de producción \parencite{Marx1857Grundrisse}.
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{La disputa sobre el método (\emph{Methodenstreit})}\label{sec:methodenstreit}
+
+\begin{itemize}
+\item \emph{La disputa sobre el método}: en 1883, \autor{Menger} defiende la teoría abstracta frente a la escuela histórica alemana en sus \emph{Untersuchungen} \parencite{Menger1883Untersuchungen}; Gustav von \autor{Schmoller}, que quería una economía inductiva, construida desde la historia y las instituciones, responde con una reseña durísima \parencite{Schmoller1883Methodologie}, y \autor{Menger} replica con \emph{Die Irrthümer des Historismus} \parencite{Menger1884Irrthumer}. Es la \concepto{disputa sobre el método} (\emph{Methodenstreit}) \vertema{3.A.3}.
+  \begin{itemize}
+  \item «Cada loco con su tema»: cada bando defendía su método como el único científico, y la disputa enconó durante años la economía en lengua alemana.
+  \item \emph{Lo que se discute}: si hay leyes económicas exactas, válidas en todo tiempo y lugar, que se deducen de unos pocos rasgos de la conducta (\autor{Menger}), o si solo hay regularidades históricas que se descubren acumulando estudios concretos (\autor{Schmoller}). Es deducción frente a inducción, y también individualismo frente a holismo (\ref{sec:individualismo-pluralismo}).
+  \item \emph{Dentro del marginalismo} hay otra diferencia, que no es parte de la disputa: los austriacos razonan de forma verbal, sin matemáticas, a partir de los principios de la acción humana, lo que \textcite{Mises1949Human} llevará al extremo con la \emph{praxeología}; la escuela de Lausana (\autor{Walras}, \autor{Pareto}), en la senda de \autor{Cournot}, razona con ecuaciones.\footnote{\autor{Cournot}, compañero y amigo de Auguste \autor{Walras}, el padre de Léon, influyó en este: de él toma Léon la idea de escribir la economía con ecuaciones \vertema{3.A.3}.}
+  \item \emph{Su herencia}: Max \autor{Weber} propone los \emph{tipos ideales}, conceptos abstractos construidos para ordenar la historia, como puente entre las 2 posiciones \parencite{Weber1904Objektivitat}.
+  \end{itemize}
+\item \emph{En el siglo XX}, el debate se repite entre \textcite{Robbins1932Essay}, para quien las proposiciones básicas de la economía son verdades evidentes de la experiencia común que no necesitan contraste, y \textcite{Hutchison1938Significance}, que, con el positivismo lógico, le acusa de apoyarse en tautologías y exige proposiciones contrastables; \textcite{Machlup1955Verification} responde que basta con contrastar las conclusiones, no cada supuesto.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Metodología en el siglo XX}\label{sec:siglo-xx}
+
+\begin{itemize}
+\item En el siglo XX la filosofía de la ciencia da 5 respuestas sucesivas a la pregunta de cómo sabemos que una teoría es buena, y cada una deja huella en la economía.
+\end{itemize}
+
+\paragraph{a) El positivismo lógico: el Círculo de Viena (años 20)}
+
+\begin{itemize}
+\item \emph{Idea}: una proposición solo tiene sentido si se puede verificar empíricamente (el \concepto{principio de verificación}); lo que no se puede verificar es metafísica. El científico construye una estructura deductiva que lleva a proposiciones contrastables, y la teoría se acepta como verdadera cuando la experiencia la confirma. Es la culminación de la idea de que la ciencia busca la verdad.
+\item \emph{En economía}: llega con \textcite{Hutchison1938Significance}. El movimiento domina la filosofía de la ciencia en los años 20 y 30, pero su exigencia de contraste empírico sobrevive mucho más en la economía.
+\item \emph{Límite}: una ley universal («todos los mercados se vacían») no se puede verificar nunca, porque haría falta observar todos los casos.
+\end{itemize}
+
+\paragraph{b) El falsacionismo de Karl \autor{Popper} (1934)}
+
+\begin{itemize}
+\item \emph{Idea}: la inducción no tiene justificación lógica, pero hay una asimetría: ningún número de casos favorables verifica una ley universal, y uno solo en contra la refuta \parencite{Popper1934Logik}. Una teoría no se puede verificar, pero sí refutar con una observación incompatible. Que todos los cisnes observados en Europa fueran blancos no probaba que lo fueran todos; un cisne negro en Australia bastó para refutarlo.
+  \begin{itemize}
+  \item «La excepción confirma la regla», dice el refrán; para \autor{Popper}, la excepción la refuta.
+  \end{itemize}
+\item \emph{Criterio de demarcación}: una teoría es científica si es \concepto{falsable}, si prohíbe algo que podría observarse. «La demanda baja cuando sube el precio, salvo cuando no» no es falsable; una elasticidad concreta, sí.
+\item \emph{Método deductivo contrastable}: se proponen hipótesis audaces, se deducen sus predicciones y se intenta refutarlas. Las que resisten no son verdaderas, sino \emph{corroboradas} provisionalmente, y domina la que explica más observaciones sin haber sido refutada. La ciencia avanza por conjeturas y refutaciones, en una especie de revolución permanente \parencite{Popper1963Conjectures}.
+  \begin{itemize}
+  \item Si una teoría dice que, cuando sube la cantidad de dinero, los precios suben en la misma proporción, y un experimento lo confirma, solo sabemos que la teoría aún no ha sido refutada: el siguiente puede refutarla.
+  \end{itemize}
+\item \emph{En economía}: \textcite{Friedman1953Methodology} lo acerca a la práctica: la economía positiva debe dar predicciones contrastables, y una teoría se acepta mientras los datos no la refuten. Es afín al falsacionismo de \autor{Popper}, aunque con un instrumentalismo que \autor{Popper} no compartía: las teorías son instrumentos para predecir, no descripciones verdaderas del mundo \parencite{Boland1979Critique} (\ref{sec:supuestos}) \vertema{3.A.5}. \textcite{Blaug1992Methodology} es el gran defensor del falsacionismo en economía, y su queja es que los economistas lo predican, pero no lo practican.
+\item \emph{Los problemas del falsacionismo}:
+  \begin{itemize}
+  \item \emph{la tesis de \autor{Duhem}-\autor{Quine}}: una hipótesis nunca se contrasta sola, sino junto con hipótesis auxiliares (sobre los datos, la medición, el resto del modelo); si la predicción falla, la lógica no dice qué pieza está mal \parencite{Duhem1906Theorie,Quine1951Dogmas}. En economía casi siempre hay una auxiliar a mano: la cláusula \emph{ceteris paribus}. \autor{Popper} lo admite y completa su criterio: es científica la teoría falsable que, además, no se defiende con hipótesis auxiliares \emph{ad hoc}, las \emph{estratagemas inmunizadoras};
+  \item \emph{la tecnología}: algunas predicciones no se pueden contrastar todavía;
+  \item \emph{la historia y la psicología de la ciencia}: los científicos no abandonan una teoría a la primera anomalía ni contrastan las implicaciones de la que dan por buena, y a veces hacen bien, porque una teoría nueva también nace llena de anomalías.
+  \end{itemize}
+  \begin{itemize}
+  \item Volvamos a la reina: ¿refutó la crisis de 2008 la macroeconomía de los modelos de equilibrio general? Con \autor{Duhem} y \autor{Quine}, la respuesta no es automática: lo que falló pudo ser el núcleo o un supuesto auxiliar, como la ausencia de bancos en los modelos.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{c) Los paradigmas científicos de Thomas \autor{Kuhn} (1962)}
+
+\begin{itemize}
+\item \emph{Idea}: \autor{Kuhn}, físico e historiador de la ciencia, no pregunta cómo \emph{debería} avanzar la ciencia, sino cómo avanza de hecho, y lo presenta como una descripción, no como una norma. Su respuesta: la ciencia avanza por \emph{revoluciones}: un \concepto{paradigma} domina hasta que acumula anomalías que no sabe explicar y otro lo sustituye \parencite{Kuhn1962Structure}.
+\item \emph{Paradigma}: los logros científicos que una comunidad reconoce durante un tiempo como modelo de qué problemas estudiar y cómo resolverlos: teorías, conceptos, instrumentos, ejemplos de manual y valores compartidos.
+\item \emph{El ciclo} (gráfico~\ref{fig:kuhn}):
+  \begin{itemize}
+  \item \emph{ciencia normal}: dentro del paradigma, los científicos resuelven \emph{enigmas} sin cuestionar sus fundamentos, y el sistema teórico explica cada vez más fenómenos;
+  \item \emph{anomalías}: aparecen hechos que el paradigma no explica, o que solo explica con cada vez más supuestos \emph{ad hoc}; al principio se apartan o se parchean;
+  \item \emph{crisis}: si se acumulan, la comunidad pierde la confianza en el paradigma, pero no lo abandona hasta tener otro;
+  \item \emph{revolución}: un paradigma rival que explica las anomalías gana adeptos; durante un tiempo los 2 compiten y los científicos de cada bando casi no se entienden;
+  \item \emph{nueva ciencia normal}, con preguntas y criterios distintos.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El ciclo de \autor{Kuhn}: ciencia normal, anomalías, crisis y revolución}\label{fig:kuhn}
+\grafico[0.75\textwidth]{kuhn}
+\fuente{elaboración propia a partir de \textcite{Kuhn1962Structure}. En gris, revoluciones que se han leído así en la economía; la marginalista, discutida: más un proceso que un vuelco \parencite{Blaug1972Marginal}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Inconmensurabilidad}: los paradigmas rivales usan conceptos y criterios distintos, así que no hay un experimento neutral que decida entre ellos; el cambio se parece más a una conversión que a una votación. Por eso, frente a \autor{Popper}, la teoría que domina no tiene por qué ser la mejor: una superior puede tardar en imponerse por la inercia del paradigma existente.
+  \begin{itemize}
+  \item «La ciencia avanza de funeral en funeral»: \autor{Kuhn} recoge la idea de Max \autor{Planck}, para quien una verdad nueva no triunfa porque convenza a sus oponentes, sino porque estos acaban muriendo y crece una generación que la conoce desde el principio \parencite{Planck1950Scientific}.
+  \end{itemize}
+\item \emph{En economía}: el término \emph{paradigma} se generaliza en los años 70 y 80, sobre todo entre quienes discrepaban de la teoría dominante, porque prometía que la suya podía sustituirla. Cada escuela se lee como una revolución o como su ausencia (tabla~\ref{tab:escuelas}; anexo~\ref{anexo:kuhn-lakatos}):
+  \begin{itemize}
+  \item \emph{la revolución marginalista} cambió el método (el individuo optimizador, el cálculo diferencial) pero no las recomendaciones (\emph{laissez-faire}), y la nueva teoría tardó unos 20 años en imponerse, más un proceso que un vuelco \parencite{Blaug1972Marginal} \vertema{3.A.3};
+  \item \emph{la revolución keynesiana} es el ejemplo de manual: la Gran Depresión era la anomalía que la teoría neoclásica no explicaba. Pero el paradigma viejo no desapareció: la síntesis neoclásica integró los 2 \vertema{3.A.4} \vertema{3.A.5};
+  \item \emph{la revolución de \autor{Lucas}}: en el sentido de \autor{Kuhn}, cambia las preguntas, los conceptos y las herramientas de la macroeconomía \parencite{DeVroey2016History} \vertema{3.A.6}; la nueva economía keynesiana acepta su método y recupera las rigideces: cambia el cinturón, no el núcleo \vertema{3.A.7}.
+  \end{itemize}
+  \begin{itemize}
+  \item ¿Fue 2008 la anomalía que abre una crisis y una revolución? Es una de las preguntas abiertas del debate actual (\ref{sec:evolucion-revolucion}).
+  \end{itemize}
+\end{itemize}
+
+\paragraph{d) Los programas de investigación de Imre \autor{Lakatos} (1970)}
+
+\begin{itemize}
+\item \emph{Idea}: un punto medio entre la refutación permanente de \autor{Popper} y los largos periodos de inmovilidad de \autor{Kuhn}, en el que las teorías cambian sin traumas. La unidad que se evalúa no es una teoría aislada, sino un \concepto{programa de investigación}: una sucesión de teorías con un mismo núcleo \parencite{Lakatos1970Falsification} (gráfico~\ref{fig:lakatos}).\footnote{La obra en la que lo propone es «Falsification and the Methodology of Scientific Research Programmes» (1970); la recopilación póstuma \emph{The Methodology of Scientific Research Programmes} es de 1978 \parencite{Lakatos1978Methodology}, y \emph{Proofs and Refutations} \parencite{Lakatos1976Proofs}, de filosofía de las matemáticas, recoge artículos de 1963-1964. \autor{Lakatos} murió en 1974.}
+\item \emph{Estructura}:
+  \begin{itemize}
+  \item el \concepto{núcleo firme}: los supuestos que los investigadores del programa deciden no someter a contraste, irrefutables por decisión metodológica;
+  \item el \concepto{cinturón protector}: las hipótesis auxiliares, que sí se contrastan, aguantan el peso de las refutaciones y se cambian, incluso por completo, para absorber las anomalías sin tocar el núcleo;
+  \item la \emph{heurística negativa} prohíbe dirigir las refutaciones contra el núcleo, y la \emph{heurística positiva} indica cómo desarrollar el cinturón, qué problemas atacar y en qué orden: es «una poderosa maquinaria de resolver problemas», que digiere las anomalías e incluso las convierte en evidencia a favor \parencite{Lakatos1978Methodology}.
+  \end{itemize}
+  \begin{itemize}
+  \item «Sostenella y no enmendalla»: la heurística negativa manda defender el núcleo aunque lleguen malas noticias; lo que se enmienda es el cinturón.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El programa de investigación de \autor{Lakatos}: núcleo firme y cinturón protector}\label{fig:lakatos}
+\grafico[0.8\textwidth]{lakatos}
+\fuente{elaboración propia a partir de \textcite{Lakatos1970Falsification}. En gris, el ejemplo de la nueva macroeconomía clásica \vertema{3.A.6}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Progresivo o degenerativo}: cada estudio deduce del núcleo implicaciones periféricas e intenta refutarlas; una refutación obliga a ajustar el cinturón, no a abandonar el programa, y solo si se acumulan se reconsidera el núcleo. Un programa es:
+  \begin{itemize}
+  \item \emph{teóricamente progresivo}, si cada ajuste añade contenido y predice hechos nuevos;
+  \item \emph{empíricamente progresivo}, si algunas de esas predicciones se confirman;
+  \item \emph{degenerativo}, si solo acumula parches \emph{ad hoc} para explicar lo que ya se sabía.
+  \end{itemize}
+  \begin{itemize}
+  \item Es científico mientras progresa, y puede dejar de hacerlo, o volver a progresar: es el criterio de \autor{Lakatos} para distinguir la ciencia de lo que no lo es.
+  \end{itemize}
+\item \emph{Lo que aporta}: reconoce que refutar una teoría es complejo (\autor{Duhem}-\autor{Quine}) y que pueden convivir varios programas rivales cuyos méritos tardan en verse. Con él la metodología vuelve a ser \emph{normativa}: dice qué programa conviene seguir, con la historia como prueba.
+\item \emph{En economía}: \textcite{Latsis1976Method} reúne las primeras aplicaciones, y cada escuela se puede resumir en su núcleo y su cinturón (tabla~\ref{tab:escuelas}). En términos de \textcite{Lakatos1970Falsification}, la nueva macroeconomía clásica es un programa de investigación progresivo: su núcleo se ha mantenido y su cinturón protector ha pasado de las islas al ciclo real y de este a los EGDE con fricciones \vertema{3.A.6}.
+\end{itemize}
+
+\paragraph{e) El anarquismo metodológico de Paul \autor{Feyerabend} (1975) y los enfoques retórico y sociológico}
+
+\begin{itemize}
+\item \emph{El anarquismo metodológico}: los movimientos anteriores son refinamientos del positivismo que reconocen los límites del contraste empírico. \textcite{Feyerabend1975Against} rompe con todos: la historia muestra que los grandes avances (\autor{Galileo}) violaron las reglas del método de su tiempo, así que cualquier regla fija frena la creatividad, y la mejor ciencia es la que no se ata a ninguna.
+  \begin{itemize}
+  \item «Todo vale» (\emph{anything goes}), en sus propias palabras. No propone abolir las reglas, sino que ninguna sea infalible ni intocable.
+  \end{itemize}
+\item Los 2 enfoques que siguen dudan, además, de que exista una verdad última que descubrir. Si la verdad no basta para explicar qué teorías triunfan, hay que mirar a otras causas:
+  \begin{itemize}
+  \item \emph{el enfoque retórico}: Deirdre \textcite{McCloskey1983Rhetoric} observa que los economistas no convencen solo con contrastes formales, sino con analogías, autoridad, elegancia matemática y relatos. Una teoría se acepta también porque persuade, y estudiar esa retórica no es negar la ciencia, sino describir cómo se practica;
+  \item \emph{el enfoque sociológico}, que arranca de la sociología del conocimiento de Karl \textcite{Mannheim1929Ideologie}: la aceptación de una teoría depende también de quién la defiende, de los intereses del grupo dominante y de las instituciones (las revistas, la financiación, los puestos), y el cambio espera a la generación siguiente. Con datos de las ciencias de la vida, \textcite{AzoulayFonsRosenGraffZivin2019} encuentran que la muerte prematura de un investigador estrella abre su campo a ideas de fuera.\footnote{Hoy los economistas se forman con los modelos de equilibrio general dinámicos y estocásticos, y eso da cierta inercia al cambio. Para los partidarios de este enfoque, a muchos investigadores les importa menos que sus teorías sean correctas que publicables.}
+  \end{itemize}
+\item \emph{Ciencia e ideología}: para \textcite{Schumpeter1949Science}, todo análisis parte de una \emph{visión} previa en la que se cuela la ideología, pero el análisis tiene reglas propias, que con el tiempo la depuran. Saber por qué un economista cree algo no dice si es verdad.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Conclusiones metodológicas y aplicación}\label{sec:conclusiones-metodologicas}
+
+\begin{itemize}
+\item \emph{Recapitulación de la filosofía de la ciencia}: de la verificación (el positivismo lógico) a la refutación (\autor{Popper}), de la refutación a la historia (\autor{Kuhn}), de la historia a la racionalidad de los programas (\autor{Lakatos}) y de ahí al escepticismo sobre cualquier método (\autor{Feyerabend}, la retórica y la sociología). Ninguno ha ganado: en la práctica, los economistas son falsacionistas de palabra y lakatosianos de hecho.
+\item \emph{Aplicación a las escuelas} (tabla~\ref{tab:escuelas}): \autor{Kuhn} describe bien los vuelcos (\autor{Keynes}, \autor{Lucas}); \autor{Lakatos}, los ajustes (la nueva economía keynesiana, el ciclo real, los EGDE tras 2008).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las escuelas de pensamiento según \autor{Kuhn} y \autor{Lakatos}}\label{tab:escuelas}
+\footnotesize
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.5cm}>{\raggedright\arraybackslash}m{3.6cm}>{\raggedright\arraybackslash}m{3.3cm}>{\raggedright\arraybackslash}m{5.2cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Escuela} & \textbf{Anomalía de partida} & \textbf{¿Revolución? (\autor{Kuhn})} & \textbf{Núcleo y cambio de cinturón (\autor{Lakatos})}\\
+\midrule
+Clásicos (1776) \vertema{3.A.2} & El mercantilismo no explica de dónde sale la riqueza & \textcolor{tceeverde}{\textbf{Paradigma fundacional}} & Núcleo: valor trabajo, clases sociales, acumulación; cinturón: población, renta de la tierra\\
+\addlinespace[0.3em]
+Marginalistas (1871-1874) \vertema{3.A.3} & El valor de lo que no se reproduce; la paradoja del agua y los diamantes & \textcolor{tceedorado}{\textbf{Discutida}}: en el método, no en la política; más un proceso que un vuelco & Núcleo nuevo: utilidad marginal, individuo optimizador, equilibrio\\
+\addlinespace[0.3em]
+\autor{Keynes} (1936) \vertema{3.A.4} & El paro masivo de la Gran Depresión & \textcolor{tceeverde}{\textbf{Sí}}, aunque el paradigma viejo no desaparece & Núcleo nuevo: demanda efectiva, incertidumbre, dinero no neutral\\
+\addlinespace[0.3em]
+Síntesis y monetarismo (1937-1970) \vertema{3.A.5} & La inflación con paro de finales de los 60 & \textcolor{tceedorado}{\textbf{No}}: integración; el monetarismo, programa rival en el mismo marco & Núcleo neoclásico a largo plazo y keynesiano a corto; el monetarismo cambia el cinturón (la curva de \autor{Phillips} aumentada con expectativas)\\
+\addlinespace[0.3em]
+Nueva macroeconomía clásica (1972-) \vertema{3.A.6} & La estanflación y el fracaso de los modelos macroeconométricos & \textcolor{tceeverde}{\textbf{Sí}}: la revolución de \autor{Lucas} & Núcleo: optimización, vaciado de mercados, expectativas racionales; cinturón: de las islas al ciclo real y a los EGDE con fricciones (programa progresivo)\\
+\addlinespace[0.3em]
+Nueva economía keynesiana (1977-) \vertema{3.A.7} & Precios y salarios que no se ajustan & \textcolor{tceedorado}{\textbf{No}}: acepta el método de la nueva macroeconomía clásica & Mismo núcleo; cinturón: competencia imperfecta y rigideces\\
+\addlinespace[0.3em]
+Economía conductual (1979-) (\ref{sec:conductual}) & Desviaciones sistemáticas de la racionalidad & \textcolor{tceedorado}{\textbf{No}}, por ahora & Amplía el cinturón (preferencias, creencias y decisiones no estándar) sin sustituir el núcleo de la optimización\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Kuhn1962Structure}, \textcite{Lakatos1970Falsification}, \textcite{Blaug1972Marginal}, \textcite{Blaug1992Methodology} y \textcite{DeVroey2016History}. En verde, las escuelas que se leen como revolución; en dorado, las que no.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Debates metodológicos de la ciencia económica}\label{sec:debates-metodologicos}
+
+\begin{itemize}
+\item Vista la evolución del método científico, pasamos a los debates prácticos del método en economía.
+\item \emph{Conclusión anticipada}: la herramienta central de la economía es el \emph{modelo}, y los debates del método son sobre qué modelo es bueno: con qué alcance (parcial o general), con cuánta matemática, contrastado cómo, con qué supuestos y sobre qué unidad de análisis.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Equilibrio parcial y equilibrio general}\label{sec:parcial-general}
+
+\begin{itemize}
+\item \emph{El equilibrio parcial} de \autor{Marshall} estudia un mercado por separado con la cláusula \emph{ceteris paribus}, suponiendo que lo que pasa en él no afecta al resto \vertema{3.A.16}.\footnote{La cláusula es antigua: Luis de \autor{Molina} la usa en su tratado sobre el dinero \parencite{Molina1597Iustitia}, al explicar que, cuanto menos dinero hay en un sitio, más vale, y la escuela de Salamanca la aplica a la teoría cuantitativa del dinero, que Martín de \textcite{Azpilcueta1556Cambios} formula 12 años antes que Jean \autor{Bodin} (1568). \autor{Marshall} la populariza con su equilibrio parcial.} El \emph{equilibrio general} de \autor{Walras} estudia todos los mercados a la vez, con sus interrelaciones \vertema{3.A.21}.
+\item \emph{No compiten}: el parcial basta cuando el mercado es pequeño respecto al resto y los efectos indirectos son despreciables (la regulación de un sector), y gana en sencillez; el general es necesario cuando los efectos se transmiten (un acuerdo comercial).
+  \begin{itemize}
+  \item «Los árboles no dejan ver el bosque»: el riesgo del parcial es olvidar los efectos indirectos; el del general, perderse en la interdependencia.
+  \end{itemize}
+\item \emph{Sus herederos}: \autor{Friedman} y la primera generación de la nueva economía keynesiana preferían el enfoque marshalliano, como una «máquina para descubrir verdades concretas» \parencite{Friedman1949Marshallian}; la nueva macroeconomía clásica y la segunda generación de la nueva economía keynesiana trabajan en equilibrio general \vertema{3.A.6} \vertema{3.A.7}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Matemáticas, estadística y econometría}\label{sec:matematicas-econometria}
+
+\begin{itemize}
+\item \emph{Las matemáticas: de herramienta a lenguaje}.
+  \begin{itemize}
+  \item \emph{Historia breve}: Daniel \autor{Bernoulli} resuelve la paradoja de San Petersburgo con una utilidad cóncava \parencite{Bernoulli1738Specimen} \vertema{3.A.10}; \textcite{Cournot1838Recherches} y \autor{Bertrand} modelizan el duopolio \vertema{3.A.19}; los marginalistas traen el cálculo diferencial, y \autor{Walras} y \autor{Pareto}, en Lausana, el equilibrio general, mientras \autor{Menger} y la escuela de Cambridge prefieren el razonamiento verbal; \textcite{Samuelson1947Foundations} reescribe la teoría como problemas de optimización, y \autor{Arrow} y \autor{Debreu} demuestran la existencia del equilibrio \vertema{3.A.21}.
+  \item \emph{La teoría de juegos}, la rama de las matemáticas que formaliza la interdependencia estratégica, nace con \textcite{VonNeumannMorgenstern1944Theory}, centrada en juegos de suma cero y cooperativos. \textcite{Nash1950Equilibrium} define el equilibrio de los juegos no cooperativos, \textcite{Selten1965Spieltheoretische} lo extiende a los dinámicos, \textcite{Harsanyi1967Games} a los de información incompleta, que servirán a la economía de la información de los 70, y \textcite{Schelling1960Strategy} lo aplica al conflicto \vertema{3.A.14}.\footnote{\autor{Nash}, \autor{Selten} y \autor{Harsanyi} recibieron el Premio Nobel en 1994 «por su análisis pionero de los equilibrios en la teoría de los juegos no cooperativos» \parencite{Nobel1994Nash}, y Robert \autor{Aumann} y Thomas \autor{Schelling}, en 2005, «por haber mejorado nuestra comprensión del conflicto y la cooperación mediante el análisis de la teoría de juegos» \parencite{Nobel2005AumannSchelling}.}
+  \item \emph{A favor}: el lenguaje matemático da rigor y generalidad: obliga a escribir todos los supuestos, garantiza que las conclusiones se siguen de ellos y descubre resultados que el razonamiento verbal no ve (la existencia del equilibrio general, la inconsistencia temporal).
+  \item \emph{En contra}:
+    \begin{itemize}
+    \item \emph{el formalismo vacío}: \textcite{Leontief1971Theoretical} denunciaba una profesión que prefiere demostrar teoremas sobre economías imaginarias a recoger datos;
+    \item \emph{confundir la belleza con la verdad}: para \textcite{Krugman2009Wrong}, la profesión se equivocó en 2008 porque tomó por verdad la belleza de unos modelos vestidos de matemáticas impresionantes;
+    \item \emph{la \emph{mathiness}}: \textcite{Romer2015Mathiness} llama así al uso de las matemáticas para dar apariencia de rigor a supuestos que no se discuten, con una conexión débil entre los símbolos y los conceptos económicos que dicen representar. «Mucho ruido y pocas nueces»;
+    \item \emph{lo que no se formaliza se pierde}: la incertidumbre radical, las instituciones o la historia quedan fuera porque no caben en el modelo, y el modelo acaba decidiendo qué preguntas se hacen.
+    \end{itemize}
+  \item \emph{El término medio}: \autor{Marshall} usaba las matemáticas como taquigrafía y las traducía después a palabras con ejemplos reales; si no lo conseguía, quemaba las matemáticas.\footnote{Lo cuenta en una carta a Arthur \autor{Bowley} de 1906: usar las matemáticas como lenguaje abreviado y no como motor de la investigación; conservarlas hasta terminar; traducirlas al inglés; ilustrarlas con ejemplos importantes de la vida real; quemar las matemáticas, y, si no se conseguía lo cuarto, quemar lo tercero, cosa que hacía a menudo \parencite[pág.~427]{Pigou1925Memorials}.} \autor{Keynes}, matemático de formación, escribió una \emph{Teoría general} casi sin ecuaciones, sin dejar de ser riguroso.
+  \end{itemize}
+\item \emph{La econometría}: une la teoría económica, las matemáticas y la estadística para medir relaciones económicas, y sirve para 3 cosas: \emph{contrastar} hipótesis (da los instrumentos para refutar teorías), \emph{predecir} y \emph{evaluar} políticas. \autor{Frisch} y \autor{Tinbergen} recibieron el primer Premio Nobel de Economía, en 1969 \parencite{Nobel1969}. Sus etapas:
+  \begin{itemize}
+  \item \emph{los primeros modelos macroeconométricos}: tras \autor{Keynes} y con la contabilidad nacional, \autor{Tinbergen} estima los primeros, para los Países Bajos y, para la Sociedad de Naciones, para Estados Unidos \parencite{Tinbergen1939Statistical}: la teoría elige las variables (el consumo y la renta, la inversión y el tipo de interés), la economía se divide en sectores y los parámetros se estiman con métodos estadísticos. \textcite{Keynes1939Tinbergen} le critica que los datos no pueden decidir entre teorías si no se sabe de antemano cuáles son las causas;
+  \item \emph{el enfoque probabilístico}: \textcite{Haavelmo1944Probability} da a la econometría su fundamento estadístico (el modelo es una distribución de probabilidad que se estima y se contrasta), y la Comisión Cowles construye los modelos de ecuaciones simultáneas, como el de Estados Unidos de \textcite{KleinGoldberger1955Econometric} \vertema{3.A.5};
+  \item \emph{deducción frente a inducción, otra vez}: \textcite{Koopmans1947Measurement} acusa a la medición del ciclo del NBER \parencite{BurnsMitchell1946} de ser una «medición sin teoría»: sin un modelo, los datos no dicen nada sobre las causas;
+  \item \emph{la causalidad en el sentido de \textcite{Granger1969Investigating}}: una variable «causa» a otra si su pasado ayuda a predecirla mejor que el pasado de la propia variable. Es precedencia predictiva, no causalidad en sentido estricto: el pronóstico del tiempo «causa» en el sentido de \autor{Granger} la lluvia, y nadie cree que la provoque;
+  \item \emph{la crítica de \textcite{Lucas1976Econometric}}: los coeficientes de esos modelos recogen reglas de decisión que cambian cuando cambia la política, así que sirven para predecir, pero no para evaluar políticas. Es también una crítica de método: qué es un buen modelo y para qué sirve \vertema{3.A.6};
+  \item \emph{las respuestas}: los vectores autorregresivos (VAR) de \textcite{Sims1980Macroeconomics}, que dejan hablar a los datos con pocas restricciones porque las de los grandes modelos eran «increíbles»; y la \emph{calibración} de \textcite{KydlandPrescott1996Computational}, que elige los parámetros con datos de largo plazo y juzga el modelo por cómo reproduce los hechos del ciclo \vertema{3.A.42};
+  \item \emph{y la revolución de la credibilidad}, el giro hacia los diseños que identifican efectos causales, que es ya un debate actual (\ref{sec:innovaciones}).
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Debate sobre la relevancia de los supuestos}\label{sec:supuestos}
+
+\begin{itemize}
+\item \emph{¿Tienen que ser realistas los supuestos?}
+  \begin{itemize}
+  \item \emph{La tesis de \textcite{Friedman1953Methodology}}: lo que cuenta es lo bien que predice una teoría, no lo realistas que sean sus supuestos. El buen jugador de billar golpea \emph{como si} resolviera las ecuaciones de la mecánica, y las empresas se comportan \emph{como si} maximizaran el beneficio, aunque no calculen ingresos ni costes marginales: las que no lo hacen desaparecen. Es el \concepto{instrumentalismo}: las teorías son instrumentos para predecir \vertema{3.A.5}.
+    \begin{itemize}
+    \item «Gato blanco o gato negro, lo que importa es que cace ratones», dice el proverbio chino: para \autor{Friedman}, da igual de qué color sea el supuesto si el modelo predice.
+    \end{itemize}
+  \item \emph{La réplica}: \autor{Samuelson} lo criticó como el «giro F» (\emph{F-twist}): unos supuestos falsos no se vuelven inocuos porque el modelo prediga bien \parencite{Samuelson1963Problems}, y daba preferencia al realismo de los supuestos. Si el mecanismo es falso, el modelo fallará en cuanto cambien las circunstancias, que es justo cuando se necesita.
+  \item \emph{Hoy}: el debate sigue abierto en otra forma. Para Paul \textcite{Romer2016Trouble}, la macroeconomía ha usado supuestos cómodos pero increíbles, como perturbaciones que nadie observa, para proteger sus modelos de los datos. Y la crítica de \autor{Lucas} es, en el fondo, un argumento a favor del realismo de los supuestos \emph{estructurales}: solo los parámetros profundos (las preferencias y la tecnología) resisten un cambio de política (\ref{sec:matematicas-econometria}).
+    \begin{itemize}
+    \item Volvamos a la reina: los modelos que usaban los bancos centrales en 2007 casi no tenían sector financiero. Era un supuesto cómodo mientras los bancos funcionaban, y el peor posible cuando dejaron de hacerlo.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Cualidades deseables en un modelo económico}\label{sec:cualidades}
+
+\begin{itemize}
+\item \emph{Qué es un modelo}: una representación simplificada de la realidad, un sistema deductivo en miniatura que aísla un mecanismo dejando fuera lo accesorio. Para \textcite{Lucas1980Methods}, es una construcción deliberadamente irreal, una \emph{economía artificial} que sirve de laboratorio para ensayar políticas que sería demasiado caro probar en una economía real \vertema{3.A.6}.
+\item \emph{Las 7 propiedades de un buen modelo} \parencite{GabaixLaibson2008Seven}:
+  \begin{enumerate}
+  \item \emph{parsimonia}: pocos supuestos y pocos parámetros libres;
+  \item \emph{tratabilidad}: se puede resolver y analizar con facilidad;
+  \item \emph{profundidad conceptual}: revela un mecanismo fundamental, no solo describe;
+  \item \emph{generalidad}: se aplica a muchas situaciones;
+  \item \emph{falsabilidad}: hace predicciones que los datos podrían rechazar;
+  \item \emph{consistencia empírica}: no contradice la evidencia disponible;
+  \item \emph{precisión predictiva}: sus predicciones son concretas y aciertan.
+  \end{enumerate}
+  \begin{itemize}
+  \item Las 4 primeras las acepta toda la profesión; las 3 últimas no siempre, y son las que los autores reivindican frente a los modelos que solo se juzgan por su elegancia. Entre ellas hay disyuntivas: un modelo más realista suele ser menos tratable y menos general.
+  \item A estas cualidades la crítica de \autor{Lucas} añade una para evaluar políticas: que los parámetros sean estructurales, invariantes a la política \vertema{3.A.6}.
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Individualismo metodológico y holismo; monismo y pluralismo}\label{sec:individualismo-pluralismo}
+
+\begin{itemize}
+\item \emph{Individualismo metodológico}: los fenómenos sociales (su estructura y sus cambios) se explican, en último término, por las decisiones de individuos con sus fines, creencias y restricciones. Es el principio de \autor{Marshall}, de los marginalistas y de la teoría moderna: el mercado, el paro o la inflación son resultados agregados de decisiones individuales \vertema{3.A.3}.
+\item \emph{Holismo metodológico}: hay estructuras sociales (clases, instituciones, normas) con leyes propias que no se reducen a las decisiones individuales y que, al revés, las condicionan. Es la posición de \autor{Marx}, de la escuela histórica alemana y de buena parte del institucionalismo y del postkeynesianismo \vertema{3.A.2} \vertema{3.A.4}.
+\item \emph{Por qué importa hoy}: la \emph{microfundamentación} de la macroeconomía es individualismo metodológico, y el agente representativo es individualismo con un solo individuo: nada garantiza que el agregado se comporte como una persona \parencite{Kirman1992Whom} \vertema{3.A.29}. Los modelos de agentes heterogéneos y los de agentes y redes son 2 respuestas, desde el individualismo, a esa crítica holista (\ref{sec:innovaciones}).
+\item \emph{Monismo o pluralismo}: ¿hay un único método científico o caben varios? Tras la caída del positivismo, \textcite{Caldwell1982Beyond} defiende el pluralismo metodológico: ningún criterio de los filósofos sirve para decidir de una vez qué es ciencia, y conviene juzgar cada programa con varios. \textcite{McCloskey1983Rhetoric} lo lleva a la conversación entre economistas, y \textcite{Rodrik2015Rules} a los modelos: la economía no es un modelo, sino una colección de modelos, y su arte es elegir el adecuado a cada pregunta.
+\item \emph{Recapitulación}: el método de la economía es hipotético-deductivo y contrastable; sus modelos se juzgan por su capacidad de aislar mecanismos y de predecir, y la econometría ha pasado de estimar modelos grandes a identificar efectos concretos. Ese giro hacia los datos y las dudas sobre la racionalidad de los agentes son los 2 grandes debates de hoy, que estudiamos en el último bloque.
+\end{itemize}
+
+% ==========================================================================
+\section{Cuestiones y debates actuales,\newline con especial referencia a la economía conductual}\label{sec:debates-actuales}
+\minutos{11,5}
+
+\begin{itemize}
+\item Una vez vistos el objeto y el método, pasamos al último bloque de la exposición: lo que hoy se discute.
+\item \emph{Conclusión anticipada}: los grandes cambios de las últimas décadas van en la misma dirección, hacia los datos. La teoría ha empezado a sustituir al agente perfectamente racional por personas con límites que se miden en el laboratorio, y la economía empírica se ha vuelto experimental y cuasiexperimental. La economía conductual es la parte más visible de ese giro, y también la más discutida; la crisis de 2008 ha obligado, además, a ampliar los modelos macroeconómicos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Papel de la racionalidad en la economía y la economía conductual}\label{sec:conductual}
+
+% ..........................................................................
+\subsubsection{La idea: de la elección racional a la economía conductual}\label{sec:idea-conductual}
+
+\begin{itemize}
+\item \emph{El supuesto}: buena parte de la teoría económica descansa en la \concepto{elección racional}: el individuo tiene preferencias completas, transitivas y estables, sigue su propio interés y elige lo mejor que le permiten sus restricciones \vertema{3.A.8}. Su versión más exigente son las \emph{expectativas racionales}: los agentes no cometen errores sistemáticos al prever \vertema{3.A.6} (anexo~\ref{anexo:expectativas}).
+\item \emph{¿Es un buen supuesto?} Para \autor{Friedman}, sí, aunque no sea literalmente cierto: basta con que los agentes se comporten \emph{como si} optimizaran y el modelo prediga bien (\ref{sec:supuestos}).
+\item \emph{La racionalidad limitada}: Herbert \textcite{Simon1955Behavioral} sustituye al maximizador por un agente con conocimiento parcial de cada situación y capacidad de cálculo limitada, que no maximiza nada, sino que busca resultados \emph{satisfactorios} \vertema{3.A.15}.\footnote{\autor{Simon} recibió el Premio Nobel en 1978 «por su investigación pionera sobre el proceso de toma de decisiones en las organizaciones económicas» \parencite{Nobel1978Simon}.}
+\item \emph{Heurísticas y sesgos}: Daniel \autor{Kahneman} y Amos \autor{Tversky} muestran en los 70 que esos límites dejan huellas \emph{sistemáticas}, y por tanto predecibles \parencite{TverskyKahneman1974Judgment}, y proponen la teoría de las perspectivas \parencite{KahnemanTversky1979Prospect}; sus anomalías parten de los fallos de la utilidad esperada (las paradojas de \autor{Allais} y de \autor{Ellsberg}) \vertema{3.A.10}.\footnote{\autor{Kahneman} recibió el Premio Nobel de 2002 «por haber integrado en la ciencia económica conocimientos de la investigación psicológica, sobre todo del juicio y la toma de decisiones en condiciones de incertidumbre», compartido con Vernon \autor{Smith}, premiado «por haber establecido los experimentos de laboratorio como herramienta del análisis económico empírico» \parencite{Nobel2002Kahneman}. Amos \autor{Tversky} había muerto en 1996, y el premio no se concede a título póstumo; \autor{Kahneman} murió en marzo de 2024.}
+\item \emph{La economía conductual}: Richard \textcite{Thaler1980Positive} lleva esas ideas a la teoría del consumidor, y desde los 90 entran en la corriente principal: el ahorro, las finanzas, el mercado de trabajo, la política pública \parencite{Thaler2016Behavioral}.\footnote{\autor{Thaler} recibió el Premio Nobel en 2017 «por sus contribuciones a la economía conductual» \parencite{Nobel2017Thaler}.} Se define como el estudio de cómo deciden de hecho las personas cuando sus límites cognitivos, su autocontrol y sus preferencias sociales las apartan de la racionalidad estándar, con métodos de la psicología (experimentos) y de la economía (modelos y datos). No niega que las personas persigan fines: documenta desviaciones sistemáticas y las incorpora a los modelos.
+\item \emph{Los 2 sistemas} \parencite{Kahneman2011Thinking}: el \concepto{sistema 1} es rápido, automático e intuitivo (reconocer una cara, contestar $2+2$); el \concepto{sistema 2}, lento, deliberado y costoso (calcular $17\times24$). Casi todas las decisiones las toma el 1, y el 2 solo interviene cuando algo le alerta: de ahí que los errores sean sistemáticos.\footnote{Los nombres son de \textcite{StanovichWest2000Individual}; \autor{Kahneman} los populariza.}
+\item \emph{Un mapa para ordenar las desviaciones}: \textcite{DellaVigna2009Psychology} las clasifica según qué pieza del agente estándar falla:
+  \begin{itemize}
+  \item \emph{preferencias no estándar}: sobre el tiempo (el descuento cuasihiperbólico, \ref{sec:beta-delta}), sobre el riesgo (las perspectivas) y sobre los demás (las preferencias sociales);
+  \item \emph{creencias no estándar}: el exceso de confianza y las heurísticas;
+  \item \emph{decisiones no estándar}: el efecto marco, las cuentas mentales, la atención limitada y la fuerza de la opción por defecto.
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Preferencias intertemporales inconsistentes: el descuento cuasihiperbólico}\label{sec:beta-delta}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿por qué los planes de ahorro, de dieta o de gimnasio se hacen para el lunes y el lunes no se cumplen, si nadie nos obliga a hacerlos?
+\item \emph{El modelo estándar} descuenta de forma \concepto{exponencial} \parencite{Samuelson1937}: entre 2 periodos consecutivos se descuenta siempre lo mismo, estén cerca o lejos, y el plan que hoy parece óptimo lo sigue pareciendo mañana. Si el descuento solo depende de la distancia al presente, el exponencial es el único que da preferencias \concepto{dinámicamente consistentes} \parencite{Strotz1955Myopia} \vertema{3.A.29}.
+\item \emph{La evidencia dice otra cosa}: en las encuestas de \textcite{Thaler1981Some}, la compensación que se pide por esperar implica tasas de descuento altísimas para retrasos cortos y mucho menores para retrasos largos. Se descuenta mucho entre hoy y mañana y poco entre 2 días del futuro lejano: somos impacientes a corto plazo y pacientes a largo, y un descuento así es \concepto{hiperbólico}.
+  \begin{itemize}
+  \item «Una cosa es predicar y otra dar trigo»: el yo de hoy planea ahorrar desde el mes que viene; cuando llega el mes que viene, el yo de entonces prefiere gastar.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Un hogar que vive infinitos periodos elige su consumo $C_t$ en cada uno, con una utilidad instantánea $u(\cdot)$ creciente y cóncava, sin incertidumbre, y valora en cada $t$ el plan que le queda por delante.
+\item Descuenta el futuro con 2 parámetros: $\delta\in(0,1)$, el factor exponencial de siempre, y $\beta\in(0,1)$, el \concepto{sesgo por el presente}, que castiga todo lo que no es hoy \parencite{Laibson1997Golden}.\footnote{Aviso de notación: en este tema, $\delta$ es el factor de descuento exponencial y $\beta\in(0,1)$ el sesgo por el presente del modelo $\beta$-$\delta$ de \autor{Laibson}; en el resto del temario, $\beta\equiv1/(1+\rho)$ es el factor de descuento y $\delta$ la depreciación. Es el nombre con que se conoce el modelo.}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La utilidad del hogar en $t$ es:
+\funcionclave[eq:beta-delta]{U_t=u(C_t)+\beta\sum_{s=1}^{\infty}\delta^{s}\,u(C_{t+s}),\qquad 0<\beta<1,\quad 0<\delta<1}
+\item Entre hoy y mañana se descuenta con $\beta\delta$; entre 2 periodos futuros consecutivos, solo con $\delta$: toda la impaciencia extra se concentra en el primer paso. Con $\beta=1$ es el exponencial de \textcite{Samuelson1937}.
+\item Es una aproximación sencilla al descuento \concepto{hiperbólico generalizado} de \textcite{LoewensteinPrelec1992}, $D(t)=(1+at)^{-\gamma/a}$, con $a,\gamma>0$ (letras locales): la caída del factor de descuento es fuerte al principio y suave después.
+\item \emph{Por qué el plan no se cumple}: la relación marginal de sustitución entre consumir en $t+1$ y en $t+2$ cambia según desde dónde se mire:
+  \begin{align*}
+  \text{desde } t:&\quad \frac{\beta\delta\,u'(C_{t+1})}{\beta\delta^{2}\,u'(C_{t+2})}=\frac{u'(C_{t+1})}{\delta\,u'(C_{t+2})},\\
+  \text{desde } t+1:&\quad \frac{u'(C_{t+1})}{\beta\delta\,u'(C_{t+2})}.
+  \end{align*}
+  Como $\beta<1$, al llegar $t+1$ el hogar valora más el consumo de ese periodo, en relación con el siguiente, de lo que lo valoraba cuando planeaba: quiere consumir más y ahorrar menos de lo previsto. Con $\beta=1$ las 2 expresiones coinciden.
+\item \emph{Un ejemplo con números} (utilidad lineal para simplificar, periodos de una semana, $\beta=0{,}7$ y $\delta=0{,}99$):
+  \begin{itemize}
+  \item \emph{hoy}: 100 euros hoy o 110 dentro de una semana. Como $100>0{,}7\cdot0{,}99\cdot110\approx76{,}2$, se cogen los 100;
+  \item \emph{planeando para dentro de un año}: 100 euros en la semana 52 o 110 en la 53. Los 2 llevan el mismo $\beta\delta^{52}$, y queda $100<0{,}99\cdot110\approx108{,}9$: se planea esperar;
+  \item \emph{al llegar la semana 52}, la elección vuelve a ser la de hoy y se cogen los 100: el plan se incumple sin que haya llegado ninguna información nueva.
+  \end{itemize}
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:descuento}): la exponencial cae a ritmo constante; la cuasihiperbólica salta en $t=1$ (el factor $\beta$) y después cae como una exponencial. Con los parámetros de \textcite{AngeletosEtAl2001Hyperbolic}, un euro dentro de un año vale hoy 0,94 con el descuento exponencial y 0,67 con el cuasihiperbólico; dentro de 30 años, 0,15 y 0,19: el cuasihiperbólico es más impaciente a corto plazo y más paciente a largo.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Funciones de descuento exponencial, hiperbólica y cuasihiperbólica}\label{fig:descuento}
+\grafico[0.7\textwidth]{descuento}
+\fuente{elaboración propia con las funciones y los parámetros de \textcite{AngeletosEtAl2001Hyperbolic}: exponencial, $0{,}939^t$; hiperbólica, $(1+4t)^{-1/4}$; cuasihiperbólica, 1 en $t=0$ y $0{,}7\cdot0{,}957^t$ después ($t$ en años).}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Inconsistencia temporal}: el plan que hoy parece óptimo deja de parecerlo cuando llega su momento. El hogar se comporta como una sucesión de «yoes» con preferencias distintas, y su elección es un juego entre ellos.
+\item \emph{Infraahorro y procrastinación}: se adelantan los placeres y se retrasan los costes; se ahorra menos de lo que el propio hogar querría para su yo futuro.
+\item \emph{Demanda de compromiso}: quien sabe que es impaciente (\emph{sofisticado}) paga por atarse las manos, como \autor{Ulises} ante las sirenas: planes de pensiones que no se pueden rescatar, cuentas de ahorro bloqueadas, cuotas de gimnasio; quien no lo sabe (\emph{ingenuo}) sobrestima lo que hará y procrastina más \parencite{ODonoghueRabin1999Doing}.
+\item \emph{Política}: si las personas se equivocan contra sí mismas, cambiar la opción por defecto ayuda sin prohibir nada (\ref{sec:aplicaciones-conductual}).
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Al consumo agregado}: con hogares cuasihiperbólicos, el consumo responde más a la renta corriente y convive la riqueza ilíquida con deudas caras \vertema{3.A.33}.
+\item \emph{A la búsqueda de empleo}: los parados impacientes buscan menos de lo que les convendría \parencite{DellaVignaPaserman2005Job} \vertema{3.A.26}.
+\item \emph{A la política económica}: la misma lógica, en un gobierno ante agentes que miran al futuro, es la inconsistencia temporal de la política: el plan óptimo de hoy (no inflar) deja de serlo mañana \parencite{KydlandPrescott1977Rules} \vertema{3.A.36}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{Las tasas de descuento} estimadas caen con el horizonte \parencite{FrederickEtAl2002Time}.
+\item \emph{El gimnasio}: en Estados Unidos, los socios con una cuota mensual de más de 70 dólares van de media 4,3 veces al mes, más de 17 dólares por visita, cuando el bono de 10 visitas les saldría a 10: pagan por un autocontrol que creen que tendrán \parencite{DellaVignaMalmendier2006Paying}.
+\item \emph{El compromiso}: en Filipinas, una cuenta que impedía retirar el ahorro antes de una fecha o una cantidad elegidas por el propio cliente, sin ningún interés extra, la abrió algo más de una cuarta parte de quienes la recibieron, y al cabo de un año el saldo medio del grupo al que se ofreció había crecido 81 puntos porcentuales más que el del grupo de control \parencite{AshrafKarlanYin2006Tying}.
+\item \emph{El desarrollo}: en Kenia, un pequeño descuento en el fertilizante ofrecido justo después de la cosecha, cuando los agricultores tienen dinero, aumenta su uso tanto como subvenciones mucho mayores en la época de siembra \parencite{DufloKremerRobinson2011} \vertema{3.B.28}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: explica con un solo parámetro más lo que el modelo estándar no explica, en especial la demanda de compromisos, y conserva su estructura: es el ejemplo de cómo la economía conductual amplía el modelo en vez de sustituirlo, y cumple las cualidades de un buen modelo (\ref{sec:cualidades}).
+\item \emph{En contra}: $\beta$ no se observa y es difícil de medir, porque el dinero es fungible: elegir entre dinero hoy y mañana no es elegir entre consumo hoy y mañana. Con decisiones de esfuerzo, el sesgo por el presente aparece con claridad; con dinero, mucho menos \parencite{AndreoniSprenger2012Estimating,AugenblickNiederleSprenger2015Working}. La impaciencia aparente se confunde, además, con las restricciones de liquidez, y no siempre está claro si el hogar es ingenuo o sofisticado, aunque las recomendaciones de política cambian con ello.
+\item Abre la pregunta normativa de las aplicaciones: si el yo de hoy y el de mañana quieren cosas distintas, ¿cuál cuenta para el bienestar, y debe el Estado ayudar a no equivocarse?
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Otras desviaciones: el riesgo, los demás, las creencias y las decisiones}\label{sec:desviaciones}
+
+\begin{itemize}
+\item \emph{El riesgo: la teoría de las perspectivas} de \textcite{KahnemanTversky1979Prospect}, en resumen \vertema{3.A.10}. Describe cómo se elige con riesgo mejor que la utilidad esperada, con 3 rasgos (gráfico~\ref{fig:funcion-valor}):
+  \begin{itemize}
+  \item \emph{punto de referencia}: se valoran ganancias y pérdidas respecto a un punto de referencia $r$, no la riqueza final;
+  \item \emph{aversión a las pérdidas}: una pérdida duele más que una ganancia igual satisface, unas 2,25 veces con los datos de \textcite{TverskyKahneman1992Advances}; en el gráfico, $\lambda\approx2{,}25$ (aquí $\lambda$ es la aversión a las pérdidas, no un multiplicador);
+  \item \emph{sensibilidad decreciente}: la función de valor es cóncava en las ganancias y convexa en las pérdidas, en forma de S; y las probabilidades no se ponderan de forma lineal: se sobrevaloran las pequeñas.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Función de valor de la teoría de las perspectivas}\label{fig:funcion-valor}
+\grafico[0.6\textwidth]{funcion-valor}
+\fuente{elaboración propia a partir de \textcite{KahnemanTversky1979Prospect} y \textcite{TverskyKahneman1992Advances}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Lo que explica}:
+  \begin{itemize}
+  \item \emph{el efecto dotación}: se pide por desprenderse de un bien bastante más de lo que se pagaría por él. En el experimento de las tazas, quienes recibían una taza pedían por venderla en torno al doble de lo que ofrecían por ella quienes no la tenían, cuando el sorteo había hecho iguales a los 2 grupos \parencite{KahnemanKnetschThaler1990Endowment} \vertema{3.A.8};
+  \item \emph{el sesgo hacia el statu quo}: se tiende a mantener la opción por defecto \parencite{SamuelsonZeckhauser1988Status}, la base de los empujones (\ref{sec:aplicaciones-conductual}). «Virgencita, que me quede como estoy»;
+  \item \emph{la rigidez a la baja de los salarios nominales}: un recorte es una pérdida \parencite{KahnemanKnetschThaler1986Fairness};
+  \item y \emph{la felicidad y la renta}: la satisfacción declarada sube poco con la renta media de un país a largo plazo \parencite{Easterlin1974Does}, coherente con un punto de referencia que se adapta y con la comparación con los demás; con más países y años, \textcite{StevensonWolfers2008Economic} encuentran que sí sube, aunque menos que proporcionalmente.
+  \end{itemize}
+\item \emph{Los demás: las preferencias sociales}. Para \textcite[S285]{KahnemanKnetschThaler1986Assumptions}, «la ausencia de consideraciones de justicia y lealtad en la teoría económica estándar es uno de los contrastes más llamativos entre esta teoría y las demás ciencias sociales, y también entre la teoría económica y las intuiciones de la gente sobre el comportamiento humano». Ya \textcite{Smith1759Theory} subrayaba que la conducta humana se interesa por la suerte de los demás. La evidencia viene del laboratorio, con el ultimátum y el dictador (\ref{sec:experimentos}). Los modelos la recogen con 2 parámetros: en la \emph{aversión a la desigualdad} de \textcite{FehrSchmidt1999Theory}, la utilidad baja con la diferencia entre lo propio y lo ajeno, más si el otro tiene más; con la equidad, la reciprocidad y la competencia de \textcite{BoltonOckenfels2000ERC}, se explica a la vez por qué se reparte en el ultimátum y por qué los mercados competitivos dan resultados egoístas.
+\item \emph{Las creencias: heurísticas y sesgos}. Las heurísticas de \textcite{TverskyKahneman1974Judgment} son atajos que funcionan casi siempre y fallan de forma predecible:
+  \begin{itemize}
+  \item \emph{representatividad}: se juzga la probabilidad por el parecido con un estereotipo, olvidando las probabilidades de partida;
+  \item \emph{disponibilidad}: se cree más probable lo que se recuerda con facilidad, como un accidente de avión frente a uno de coche. «El que se quema con leche, ve una vaca y llora»;
+  \item \emph{anclaje}: una cifra inicial, aunque sea irrelevante, sesga la estimación. Tras girar una ruleta que daba 10 o 65, los sujetos estimaron que el porcentaje de países africanos en la ONU era, en la mediana, del 25 o del 45~\%, respectivamente.
+  \end{itemize}
+  \begin{itemize}
+  \item Se añaden el \emph{exceso de confianza} y el \emph{sesgo retrospectivo}: conocido el resultado, creemos que era más previsible de lo que era \parencite{Fischhoff1975Hindsight}. Volvamos a la reina: «a toro pasado, todos somos Manolete» es, precisamente, ese sesgo; y la economía conductual documenta errores sistemáticos al formar expectativas que las expectativas racionales descartan \vertema{3.A.6}.
+  \end{itemize}
+\item \emph{Las decisiones: el efecto marco y las cuentas mentales}.
+  \begin{itemize}
+  \item \emph{El efecto marco}: la elección cambia con la forma de presentar opciones idénticas. Ante una epidemia que matará a 600 personas, el 72~\% prefiere un programa que «salva a 200 seguro» a otro con 1/3 de probabilidad de salvar a todos; si el mismo par se describe como «morirán 400 seguro» frente a 2/3 de probabilidad de que mueran todos, el 78~\% elige el arriesgado \parencite{TverskyKahneman1981Framing}.
+  \item \emph{Las cuentas mentales}: el dinero es fungible, pero se reparte en «cuentas» (la de la casa, la de las vacaciones) con reglas propias \parencite{Thaler1985Mental,Thaler1999Mental}. Si al llegar al teatro se ha perdido un billete de 10 dólares, el 88~\% compra igualmente la entrada; si se ha perdido la entrada, que costaba 10 dólares, solo la vuelve a comprar el 46~\%: la segunda se carga a la cuenta del teatro, que ya parece gastada \parencite{TverskyKahneman1981Framing}. Por eso la propensión a consumir depende del origen de cada euro \parencite{ShefrinThaler1988} \vertema{3.A.33}.
+  \end{itemize}
+\item \emph{Recapitulación}: el agente de la economía conductual valora ganancias y pérdidas y no riqueza, es impaciente a corto plazo y paciente a largo, se preocupa por los demás, usa atajos y separa su dinero en cuentas. Cada rasgo tiene un modelo con pocos parámetros, y todos comparten una consecuencia: lo que se elige depende de cómo se presentan las opciones. De ahí nacen las aplicaciones.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Aplicaciones: el paternalismo libertario y los empujones}\label{sec:aplicaciones-conductual}
+
+\begin{itemize}
+\item \emph{Idea}: \textcite{ThalerSunstein2003Libertarian} llaman \concepto{paternalismo libertario} a orientar las decisiones hacia lo que las propias personas querrían, sin prohibir ninguna opción ni cambiar mucho los incentivos. Su herramienta es el \concepto{empujón} (\emph{nudge}): un cambio en la \emph{arquitectura de la elección}, como el orden, la opción por defecto o el momento \parencite{ThalerSunstein2008Nudge} \vertema{3.A.20}.
+\item \emph{Por qué es inevitable}: alguien tiene que decidir qué opción viene marcada, qué plato se ve primero en el comedor o cómo se redacta un formulario. Si la presentación cambia la elección, no hay arquitectura neutral: la cuestión no es si influir, sino en qué dirección.
+\item \emph{Ejemplos}:
+  \begin{itemize}
+  \item \emph{la opción por defecto}: en una gran empresa de Estados Unidos, pasar a la inscripción automática en el plan de pensiones elevó mucho la participación de los recién contratados, y la mayoría se quedó con la aportación y el fondo que venían por defecto \parencite{MadrianShea2001Power}. El Reino Unido la generalizó desde 2012, con total libertad para darse de baja: la proporción de asalariados con derecho a la inscripción que ahorra en un plan de empresa pasó del 55~\% en 2012 al 90~\% en 2025 \parencite{DWP2017Review,DWP2026Trends}. «El que calla otorga»;
+  \item \emph{la donación de órganos}: los países europeos en los que todos son donantes salvo que digan lo contrario tienen tasas de consentimiento muy superiores a las de los que exigen apuntarse \parencite{JohnsonGoldstein2003Defaults};
+  \item \emph{ahorrar mañana}: el programa \emph{Save More Tomorrow} compromete a destinar al ahorro parte de las subidas de sueldo futuras, que no se sienten como pérdida; quienes se apuntaron pasaron de ahorrar el 3,5~\% al 13,6~\% de su salario en 40 meses \parencite{ThalerBenartzi2004Save}. Combina el descuento cuasihiperbólico (comprometerse para el futuro es fácil), la aversión a las pérdidas y la inercia.
+  \end{itemize}
+\item \emph{En las administraciones}: siguiendo a la unidad pionera del Gobierno británico (\emph{Behavioural Insights Team}), muchos gobiernos tienen equipos que diseñan empujones y los evalúan con experimentos. Las políticas tienen que contar con el comportamiento, también en el desarrollo \vertema{3.B.28}, en el diseño de los incentivos \vertema{3.A.13} y en la regulación \vertema{3.A.20}.
+\item \emph{Las finanzas conductuales}: los sesgos de los inversores explican regularidades que la eficiencia de los mercados no explica, como la prima de las acciones o el efecto disposición, y el arbitraje no las corrige \parencite{ShleiferVishny1997Limits} (anexo~\ref{anexo:finanzas}) \vertema{3.A.10} \vertema{3.B.23}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Valoración: aportaciones y críticas}\label{sec:valoracion-conductual}
+
+\begin{itemize}
+\item \emph{Aportaciones}: más realismo sin renunciar a los modelos, y políticas baratas y eficaces. La economía conductual ha dejado de ser una escuela aparte para convertirse en una caja de herramientas de la corriente principal: los modelos macroeconómicos con agentes de atención limitada \parencite{Gabaix2020Behavioral} son el ejemplo.
+\item \emph{Las críticas}:
+  \begin{itemize}
+  \item \emph{una lista, no una teoría}: cada anomalía tiene su modelo, pero no hay un modelo unificado que diga cuál usar en cada caso \parencite{Fudenberg2006Advancing}; \autor{Thaler} responde que la exigencia de una sola teoría viene de querer que la economía sea la física de las ciencias sociales \parencite{Thaler2015Misbehaving};
+  \item \emph{el laboratorio no es el mercado}: con apuestas pequeñas, estudiantes y sin aprendizaje, los sesgos pueden exagerarse; los comerciantes con experiencia apenas muestran efecto dotación \parencite{List2003Market}, y la generosidad del laboratorio se reduce fuera de él \parencite{LevittList2007Laboratory};
+  \item \emph{la replicación}: en psicología se reprodujo el 36~\% de 100 estudios \parencite{OSC2015Reproducibility}; en economía experimental, 11 de 18 experimentos de la \emph{American Economic Review} y el \emph{Quarterly Journal of Economics} (el 61~\%), con 2 tercios del efecto original \parencite{Camerer2016Replicability} (gráfico~\ref{fig:replicacion-experimentos}). Y los empujones que evalúan las unidades de los gobiernos tienen efectos mucho menores que los publicados en las revistas: 1,4 puntos de aumento medio frente a 8,7, una diferencia que se explica sobre todo por la publicación selectiva \parencite{DellaVignaLinos2022RCTs};
+  \item \emph{la racionalidad ecológica}: para Gerd \textcite{Gigerenzer2018Bias}, muchas heurísticas no son sesgos, sino reglas que funcionan bien en el entorno en que se usan, con poca información y poco tiempo \parencite{GigerenzerGoldstein1996Reasoning}: llamarlas errores es juzgarlas con el modelo equivocado;
+  \item \emph{el paternalismo}: ¿quién decide qué quiere de verdad la persona, y quién corrige los sesgos del regulador, que también los tiene? Un empujón que funciona porque no se nota roza la manipulación.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{¿Se replican los experimentos? Psicología, economía y ciencias sociales}\label{fig:replicacion-experimentos}
+\grafico[0.75\textwidth]{replicacion-experimentos}
+\fuente{elaboración propia a partir de \textcite{OSC2015Reproducibility}, \textcite{Camerer2016Replicability} y \textcite{Camerer2018Replicability}. Porcentaje de réplicas con un efecto significativo en la misma dirección que el original y tamaño medio del efecto replicado en relación con el original.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Recapitulación}: la racionalidad sigue siendo el punto de partida, pero ya no el de llegada: la economía conductual ha ampliado el cinturón protector de la teoría (tabla~\ref{tab:escuelas}) con preferencias, creencias y decisiones medidas en experimentos. Pasamos a esos experimentos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Experimentos en economía}\label{sec:experimentos}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la idea de que la economía no puede experimentar (\ref{sec:ciencia}) ha dejado de ser cierta. Hoy experimenta en el laboratorio, aprovecha los experimentos que hace la realidad y sortea programas sobre el terreno: es el regreso de la inducción, con un diseño cuidadoso.
+\item \emph{En el laboratorio}: Vernon \textcite{Smith1962Experimental} lleva un mercado al aula y muestra que, con pocos participantes y sin información completa, los precios convergen al equilibrio competitivo \parencite{Nobel2002Smith}. El laboratorio es hoy la principal fuente de la economía conductual:
+  \begin{itemize}
+  \item \emph{el ultimátum} \parencite{GuthSchmittbergerSchwarze1982Ultimatum}: un jugador propone cómo repartir una cantidad y el otro acepta o rechaza; si rechaza, ninguno cobra. Con jugadores que solo miran su dinero, el equilibrio de \autor{Nash} perfecto en subjuegos es ofrecer lo mínimo y aceptarlo \vertema{3.A.14}; en el laboratorio, la oferta media es del 40~\% y se rechaza el 16~\% de las ofertas \parencite{OosterbeekSloofVandeKuilen2004Cultural};
+  \item \emph{el dictador} \parencite{Forsythe1994Fairness}: el mismo, pero el segundo no puede rechazar. Los dictadores dan de media el 28~\% \parencite{Engel2011Dictator}: a la gente le importa el reparto, pero parte de la generosidad del ultimátum es miedo al rechazo. Las preferencias por la equidad existen \vertema{3.A.24}.
+  \end{itemize}
+\item \emph{Los experimentos naturales}: buscar en la realidad una asignación casi aleatoria. David \autor{Card} y Alan \autor{Krueger} comparan los restaurantes de comida rápida de Nueva Jersey, donde el salario mínimo subió el 1 de abril de 1992 de 4,25 a 5,05 dólares por hora (un 19~\%), con los de la vecina Pensilvania, donde no cambió: el empleo no cayó en Nueva Jersey en relación con Pensilvania \parencite{CardKrueger1994} \vertema{3.A.25}. El Premio Nobel de 2021 se repartió entre \autor{Card}, «por sus contribuciones empíricas a la economía laboral», y Joshua \autor{Angrist} y Guido \autor{Imbens}, «por sus contribuciones metodológicas al análisis de las relaciones causales» \parencite{Nobel2021CardAngristImbens}.\footnote{\autor{Krueger} había muerto en 2019 \parencite{Princeton2019Krueger}, y el premio no se concede a título póstumo.}
+\item \emph{Los experimentos aleatorizados} (RCT), la versión más pura, que la economía del desarrollo toma de los ensayos clínicos. Cada persona $i$ tiene 2 resultados posibles, $Y_i(1)$ con el programa y $Y_i(0)$ sin él (aquí $Y$ no es la renta), y $D_i$ indica si lo recibe; solo se observa uno de los 2. Comparar a tratados y no tratados mezcla el efecto con las diferencias previas entre ellos, el \emph{sesgo de selección}; si el programa se sortea, el sesgo desaparece y la diferencia de medias estima el efecto medio \parencite{AngristPischke2009} \vertema{3.B.28}.
+  \begin{itemize}
+  \item «Ver para creer»: un programa se juzga por su efecto medido, no por lo que promete.
+  \item El Premio Nobel de 2019 fue para Abhijit \autor{Banerjee}, Esther \autor{Duflo} y Michael \autor{Kremer}, «por su enfoque experimental para aliviar la pobreza mundial» \parencite{NobelPrize2019}.
+  \item \emph{Validez interna y externa}: el sorteo elimina el sesgo de selección entre tratados y controles, pero no garantiza que el resultado valga en otro sitio; las ventajas y los límites, en el anexo~\ref{anexo:rct}.
+  \end{itemize}
+\item \emph{Lectura metodológica}: conviven los \emph{modelos estructurales}, que van de la teoría a los datos, y el trabajo \emph{experimental}, que va de los datos a la teoría, sin acuerdo sobre cuál debe guiar la política \vertema{3.B.28}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Para leer más.} El debate que abrió el Premio Nobel de 2019: «This year's Nobel prizes prompt soul-searching among economists», \emph{The Economist}, 21 de noviembre de 2019 \parencite{Economist2019Nobel}.
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{Innovaciones metodológicas recientes}\label{sec:innovaciones}
+
+% ..........................................................................
+\subsubsection{La idea: el giro empírico y la revolución de la credibilidad}\label{sec:credibilidad}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la economía de hoy es más empírica que nunca y sus modelos son más heterogéneos y más ricos que los de 2008; la pregunta es si eso es una revolución o una evolución.
+\item \emph{El giro empírico}: en las 3 revistas generales de referencia, la teoría pura pasa del 51~\% de los artículos en 1963 al 19~\% en 2011, y el trabajo empírico con datos propios, del 9 al 34~\% \parencite{Hamermesh2013Six} (gráfico~\ref{fig:metodologia-revistas}).
+\item \emph{La revolución de la credibilidad}: en 1983, Edward \textcite{Leamer1983} pedía quitarle el truco a la econometría, porque los resultados cambiaban con pequeñas decisiones del investigador. \textcite{AngristPischke2010Credibility} llaman \concepto{revolución de la credibilidad} a la respuesta: en lugar de estimar un modelo completo, \emph{diseñar} la investigación para identificar un efecto causal concreto (experimentos naturales y aleatorizados, diferencias en diferencias, variables instrumentales, regresión discontinua) \vertema{3.B.28}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Metodología de los artículos publicados en las 3 grandes revistas generales, 1963-2011}\label{fig:metodologia-revistas}
+\grafico[0.8\textwidth]{metodologia-revistas}
+\fuente{elaboración propia a partir de \textcite[tabla~4]{Hamermesh2013Six}. Artículos de la \emph{American Economic Review}, el \emph{Journal of Political Economy} y el \emph{Quarterly Journal of Economics}; porcentaje de cada año.}
+\end{figure}
+
+% ..........................................................................
+\subsubsection{¿Evolución o revolución? La macroeconomía tras 2008}\label{sec:evolucion-revolucion}
+
+\begin{itemize}
+\item \emph{La pregunta}: si la crisis financiera fue la anomalía que obliga a cambiar de paradigma (\autor{Kuhn}) o un fallo que se arregla ampliando el cinturón protector de los modelos de equilibrio general dinámicos y estocásticos (\autor{Lakatos}) \vertema{3.A.6} \vertema{3.A.7}.
+\item \emph{Revolución}: para Paul \textcite{Romer2016Trouble}, la macroeconomía de los EGDE se alejó de los datos; para \textcite{Stiglitz2018Wrong}, el modelo falló en lo esencial, el origen financiero de las crisis, y no basta con añadirle fricciones. Más lejos van los modelos basados en agentes heterogéneos que siguen reglas sencillas y aprenden, que defiende Axel \textcite{Leijonhufvud2006Agent} desde su crítica a la racionalidad perfecta \parencite{Leijonhufvud1993NotTooRational}.
+\item \emph{Entre las 2}: Roger \textcite{Farmer2010Expectations} propone mantener los EGDE con equilibrios múltiples y expectativas que se cumplen a sí mismas, a la manera de los \emph{animal spirits} de \autor{Keynes}.
+\item \emph{Evolución}: \textcite{Blanchard2018Future} defiende que los EGDE sigan siendo el núcleo, junto a modelos más sencillos para la política y otros para la predicción, cada uno con su uso; \textcite{Reis2018Wrong} recuerda que buena parte de lo que se les reprocha ya se investigaba antes de 2008, y el balance de \textcite{Gali2018State} es que los modelos nuevos keynesianos se han ampliado, no sustituido. Es la tesis del proyecto \emph{Rebuilding Macroeconomic Theory} \parencite{VinesWills2018Rebuilding} y de la conferencia recogida en \textcite{BlanchardSummers2019Evolution}: fricciones financieras, expectativas menos que racionales, agentes heterogéneos y mejores microfundamentos.
+\item \emph{Lectura}: en términos de \autor{Lakatos}, el núcleo (agentes que optimizan, equilibrio, expectativas) se mantiene y el cinturón se ensancha; si los ajustes predicen hechos nuevos, como el papel de la liquidez de los hogares en la transmisión de la política monetaria, el programa es progresivo. Por ahora no hay un paradigma rival con su propio ejemplo de manual, que es lo que \autor{Kuhn} pide para hablar de revolución.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Microdatos, heterogeneidad, desigualdad y colas de la distribución}\label{sec:heterogeneidad}
+
+\begin{itemize}
+\item \emph{Del agente representativo a la distribución}: los modelos de agentes heterogéneos con mercados incompletos (HANK) sustituyen al hogar representativo por hogares con distinta riqueza y liquidez; la política monetaria actúa sobre todo por efectos indirectos, a través del empleo y la renta, y la distribución pasa a importar para el agregado \parencite{KaplanMollViolante2018Monetary} \vertema{3.A.7} \vertema{3.A.33}.
+\item \emph{Los microdatos}: los registros administrativos (declaraciones de impuestos, afiliación a la seguridad social) miden lo que las encuestas no veían: la concentración de la renta en el 1~\% más rico a lo largo de un siglo \parencite{PikettySaez2003Income,Piketty2014} o la movilidad entre generaciones barrio a barrio \parencite{ChettyEtAl2014Land} \vertema{3.A.45}.
+\item \emph{Las colas de la distribución}: cuando unas pocas empresas son enormes, sus perturbaciones no se compensan en el agregado y explican una parte importante de las fluctuaciones \parencite{Gabaix2011Granular}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Complejidad, redes y modelos basados en agentes}\label{sec:complejidad}
+
+\begin{itemize}
+\item \emph{La economía de la complejidad} (Instituto de Santa Fe, desde los 80): la economía como un sistema de muchos agentes que interactúan, aprenden y se adaptan, en el que el agregado tiene propiedades que no se deducen del individuo y el equilibrio es la excepción \parencite{Arthur1999Complexity}.
+  \begin{itemize}
+  \item \emph{Los modelos basados en agentes}: se simulan miles de agentes con reglas sencillas, a menudo heurísticas, y se observa qué agregados emergen; los bancos centrales los usan para estudiar la vivienda o las crisis bancarias \parencite{HaldaneTurrell2018Interdisciplinary}.
+  \item \emph{La dinámica no lineal y el caos}: modelos deterministas pueden generar ciclos sin perturbaciones externas y trayectorias muy sensibles a las condiciones iniciales \parencite{Grandmont1985Endogenous} \vertema{3.A.42}.
+  \item \emph{Las redes}: quién se relaciona con quién (bancos, proveedores) decide cómo se propagan las perturbaciones: una en un sector central llega a todos \parencite{AcemogluEtAl2012Network}.
+  \end{itemize}
+\item \emph{Valoración}: describen mejor la inestabilidad y las crisis, pero sus resultados dependen de reglas de conducta que se eligen con mucha libertad, lo que choca con la parsimonia y la falsabilidad de un buen modelo (\ref{sec:cualidades}).
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Datos masivos, aprendizaje automático y replicación}\label{sec:datos-masivos}
+
+\begin{itemize}
+\item \emph{Aprendizaje automático}: los algoritmos (árboles, redes neuronales) son muy buenos \emph{prediciendo} $\hat y$, pero no estiman efectos causales $\hat\beta$ por sí solos \parencite{MullainathanSpiess2017Machine}. Se usan para predecir en tiempo real (\emph{nowcasting}), para medir con imágenes de satélite o con textos y, combinados con los métodos causales, para estimar efectos distintos en cada grupo \parencite{AtheyImbens2019Machine}. Es inducción a gran escala, y el problema de \autor{Hume} sigue ahí: un algoritmo entrenado con el pasado no sabe qué hacer cuando cambia la política, que es otra vez la crítica de \autor{Lucas} (\ref{sec:matematicas-econometria}).
+\item \emph{Replicación}: en 159 literaturas empíricas de economía, la potencia estadística mediana es muy baja y buena parte de los efectos publicados están exagerados \parencite{IoannidisStanleyDoucouliagos2017}; en macroeconomía empírica, solo un tercio de los artículos se reproduce con los datos y el código de sus autores \parencite{ChangLi2022Replicable}. Las respuestas, el registro previo de los experimentos y la publicación de datos y códigos, son la versión práctica del falsacionismo.
+\item \emph{Recapitulación de III}: los 2 debates actuales del método, la credibilidad de la evidencia y el realismo de la conducta, se han encontrado: los empujones se diseñan con la economía conductual y se evalúan con experimentos, y los modelos macroeconómicos incorporan heterogeneidad y fricciones medidas con microdatos. Todos se enfrentan a la misma pregunta: si lo que funciona en un sitio funciona en otro.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión, la economía estudia cómo las sociedades eligen con recursos escasos, un objeto que ha pasado de la riqueza de las naciones a cualquier elección; lo estudia con un método hipotético-deductivo que se contrasta con los datos y que se entiende mejor con \autor{Kuhn} y \autor{Lakatos} que con el falsacionismo estricto; y hoy lo pone a prueba con la psicología, los experimentos y los microdatos. La economía conductual ha mostrado que las personas se desvían de la racionalidad de forma sistemática, en el tiempo, en el riesgo y en lo que les importa, y lo ha convertido en modelos, como el descuento cuasihiperbólico, y en políticas.
+\item \textbf{\emph{Relevancia}}: el método decide qué políticas se pueden evaluar y cuánto confiar en una recomendación económica. Por la crítica de \autor{Lucas}, los bancos centrales usan modelos estructurales; por la economía conductual, los planes de pensiones con inscripción automática; por los experimentos, los programas que se financian.
+\item \textbf{\emph{Extensiones}}: cada escuela con su objeto y su método \vertema{3.A.2} \vertema{3.A.3} \vertema{3.A.4} \vertema{3.A.5} \vertema{3.A.6} \vertema{3.A.7}; la elección con riesgo \vertema{3.A.10}; los juegos experimentales \vertema{3.A.14}; la elección intertemporal \vertema{3.A.29}; el consumo con descuento cuasihiperbólico \vertema{3.A.33}; las finanzas conductuales \vertema{3.B.23}; la evaluación de impacto \vertema{3.B.28} \vertema{4.B.6}.
+\item \textbf{\emph{Opinión}}: frente a la «visión acumulativa», que ve en la teoría de hoy la suma de todo lo anterior, la historia del método muestra que las ideas abandonadas vuelven cuando cambian las preguntas: la racionalidad limitada de \autor{Simon} esperó décadas, la inducción del \emph{Methodenstreit} ha vuelto con los experimentos y los equilibrios múltiples y la heterogeneidad, con la crisis \parencite{Roncaglia2006Riqueza}. Por eso conviene un pluralismo de modelos, cada uno para su pregunta \parencite{Rodrik2015Rules}.
+\item \textbf{\emph{Idea final}}: a toro pasado, todos vemos venir la crisis, y la economía conductual nos explica por qué. Lo que hace científica a la economía no es acertar siempre, sino convertir cada anomalía en una pregunta que se puede contrastar. Así respondió a la pregunta de la reina: no con un paradigma nuevo, sino con un cinturón protector más ancho y más realista.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: \autor{Kuhn} y \autor{Lakatos} aplicados a las escuelas}\label{anexo:kuhn-lakatos}
+
+\begin{itemize}
+\item \emph{La revolución marginalista} \vertema{3.A.3}: es discutible llamarla revolución en el sentido de \autor{Kuhn}. Sus recomendaciones de política son las de los clásicos (el \emph{laissez-faire}), pero cambia el método en 2 cosas:
+  \begin{itemize}
+  \item el \emph{individualismo metodológico}: los fenómenos sociales se explican por decisiones individuales, y no por clases sociales o naciones, como en los clásicos;
+  \item el \emph{cálculo diferencial}: la optimización en el margen sustituye al razonamiento verbal de los ensayos clásicos.
+  \end{itemize}
+  \begin{itemize}
+  \item Y la nueva teoría tardó unos 20 años en imponerse: más un proceso que un vuelco \parencite{Blaug1972Marginal}.
+  \end{itemize}
+\item \emph{La revolución keynesiana} \vertema{3.A.4}: el mejor ejemplo de lo que \autor{Kuhn} llama revolución científica. La Gran Depresión era la anomalía que el paradigma neoclásico no explicaba, y la \emph{Teoría general} ofrecía una respuesta. Pero el resultado no fue el que predice \autor{Kuhn}: el paradigma viejo no fue sustituido del todo, sino que los 2 convivieron y se integraron en la síntesis neoclásica \vertema{3.A.5}.
+\item \emph{La nueva macroeconomía clásica} \vertema{3.A.6}: la revolución de \autor{Lucas}, que consolidan \autor{Kydland} y \autor{Prescott}, cambia los temas, las herramientas y las conclusiones de política. Sus 2 piezas metodológicas:
+  \begin{itemize}
+  \item \emph{la crítica de \autor{Lucas}} \parencite{Lucas1976Econometric}: los modelos macroeconométricos de la síntesis predecían bien, pero no servían para evaluar políticas alternativas, porque sus coeficientes eran relaciones estadísticas del pasado que recogían reglas de decisión de los agentes, y esas reglas cambian cuando cambia la política. Si un modelo estima que más dinero en $t-1$ eleva la producción en $t$, ese coeficiente no se mantendrá cuando los agentes aprendan la nueva regla monetaria. La respuesta es \emph{microfundamentar}: escribir los modelos con preferencias, tecnología y restricciones, cuyos parámetros no dependen de la política;
+  \item \emph{los modelos de equilibrio general dinámicos y estocásticos} (EGDE): agentes que optimizan a lo largo del tiempo ante perturbaciones aleatorias, en equilibrio general \parencite{KydlandPrescott1982Time}. En el modelo de ciclo real básico, hogares que eligen consumo, trabajo y ahorro, empresas competitivas con una función de producción agregada y ningún sector público: sin fallos de mercado, los ciclos son la respuesta óptima a las perturbaciones y estabilizarlos sería ineficiente. Los agentes forman sus expectativas de forma racional (anexo~\ref{anexo:expectativas}).
+  \end{itemize}
+  \begin{itemize}
+  \item «Lo que voy a describir es una revolución en la macroeconomía, una transformación metodológica que ha cambiado la forma de hacer nuestra ciencia»: así empezó \autor{Prescott} su conferencia Nobel, el 8 de diciembre de 2004 \parencite{Prescott2006Nobel}. El programa lo reconocen los premios Nobel a \autor{Lucas} (1995), \autor{Kydland} y \autor{Prescott} (2004) y \autor{Sargent} (2011) \parencite{NobelPrize1995Lucas,Nobel2004KydlandPrescott,Nobel2011SargentSims}, y su instrumental se ha llevado a la macroeconomía abierta \vertema{3.B.14} y a la economía del clima \vertema{3.B.31}.
+  \end{itemize}
+\item \emph{La nueva economía keynesiana} \vertema{3.A.7}: aquí es difícil hablar de sustitución de paradigmas. Hay más bien una convergencia de método: los nuevos keynesianos adoptan los EGDE y cambian las hipótesis auxiliares, con competencia imperfecta y rigideces de precios. En términos de \autor{Lakatos}, el mismo núcleo con otro cinturón.
+\item \emph{Después de 2008}: el debate entre evolución y revolución (\ref{sec:evolucion-revolucion}). Resumen de todas las escuelas, en la tabla~\ref{tab:escuelas}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: de las expectativas estáticas a las racionales}\label{anexo:expectativas}
+
+Este anexo solo ordena las hipótesis para el debate sobre la racionalidad; el desarrollo está en \vertema{3.A.5} (adaptativas) y \vertema{3.A.6} (racionales).
+
+\begin{itemize}
+\item \emph{Estáticas}: se espera lo mismo que ocurrió en el último periodo, $\pi^e_t=\pi_{t-1}$. Son las de la telaraña y, en la práctica, las de la síntesis.
+\item \emph{Adaptativas}: cada periodo se corrige la previsión en una fracción $\gamma$ del último error,
+  \begin{equation*}
+  \pi^e_t=\pi^e_{t-1}+\gamma\,\big(\pi_{t-1}-\pi^e_{t-1}\big),\qquad \gamma\in(0,1],
+  \end{equation*}
+  con la misma forma que en \vertema{3.A.5}. Miran solo al pasado y admiten errores sistemáticos: si la inflación sube de forma continuada, se la subestima siempre.
+\item \emph{Racionales} \parencite{Muth1961Rational}: los agentes usan de forma eficiente toda la información de que disponen, incluido el modelo de la economía y la regla de la política, y no cometen errores sistemáticos: el error de previsión tiene media nula y no se puede predecir con lo que se sabía al prever \vertema{3.A.6}.
+\item \emph{La crítica conductual}: con racionalidad limitada, las expectativas se forman con reglas sencillas, con anclaje en el pasado y exceso de confianza, y se aprenden; los modelos con aprendizaje o con atención limitada son el punto intermedio \parencite{Gabaix2020Behavioral}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: finanzas conductuales}\label{anexo:finanzas}
+
+La teoría de las perspectivas explica 4 regularidades de los mercados financieros que la teoría tradicional explica mal; el desarrollo, con sus fórmulas, en \vertema{3.A.10} y \vertema{3.B.23}.
+
+\begin{itemize}
+\item \emph{La prima de las acciones}: en Estados Unidos, de 1928 a 2025, las acciones han rendido de media unos 6,7 puntos al año más que las letras del Tesoro y 5,5 más que los bonos a 10 años \parencite{Damodaran2026Historical}; con una aversión al riesgo razonable, la utilidad esperada solo explica una prima muy inferior \parencite{MehraPrescott1985Equity} \vertema{3.A.33}. Para \textcite{BenartziThaler1995Myopic}, un inversor que revisa su cartera muy a menudo y al que las pérdidas duelen el doble que las ganancias ve las acciones muy arriesgadas y exige por ellas una prima alta: es la \emph{aversión miope a las pérdidas}.
+\item \emph{El exceso de volatilidad}: las cotizaciones oscilan mucho más que los dividendos que en teoría descuentan \parencite{Shiller1981Stock}. Si la aversión al riesgo baja tras las ganancias y sube tras las pérdidas, los movimientos se amplifican.
+\item \emph{El efecto disposición}: se venden demasiado pronto las acciones con plusvalía y se retienen demasiado las que tienen minusvalía \parencite{ShefrinStatman1985Disposition}. Con una ganancia latente, la concavidad de la función de valor hace preferir asegurarla: se vende; con una pérdida latente, la convexidad hace preferir arriesgarse: se retiene.
+\item \emph{Los dividendos}: las empresas los pagan aunque durante mucho tiempo tributaran más que las plusvalías. Por la forma de la función de valor, 2 ganancias separadas, un dividendo y una plusvalía, se valoran más que una sola de la misma cuantía, y un dividendo junto a una pérdida la hace menos dolorosa \parencite{ShefrinStatman1984Dividends,Thaler1985Mental}.
+\item \emph{Por qué no lo corrige el arbitraje}: aprovechar los errores ajenos exige capital, paciencia y asumir riesgo, y los precios pueden alejarse aún más antes de volver \parencite{ShleiferVishny1997Limits}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: ventajas y límites de los experimentos aleatorizados}\label{anexo:rct}
+
+Resumen para las preguntas del tribunal; el desarrollo, en \vertema{3.B.28} y, para España, en \vertema{4.B.6}.
+
+\begin{itemize}
+\item \emph{Ventajas}:
+  \begin{itemize}
+  \item eliminan el sesgo de selección entre tratados y controles: la diferencia de medias estima el efecto medio \parencite{AngristPischke2009};
+  \item son transparentes y fáciles de entender para quien decide la política;
+  \item permiten evaluar antes de generalizar un programa, y no solo después, y probar variantes de diseño.
+  \end{itemize}
+\item \emph{Límites}:
+  \begin{itemize}
+  \item \emph{validez externa}: el país, las escuelas o los pueblos se eligen a menudo por conveniencia, y los sitios que aceptan ser evaluados no son representativos \parencite{Allcott2015};
+  \item \emph{falta de teoría}: sin un modelo que explique por qué funciona un programa, no se sabe a qué otros sitios trasladarlo \parencite{DeatonCartwright2018};
+  \item \emph{efectos de equilibrio general}: un programa pequeño no mueve los precios ni los salarios, y el mismo programa a gran escala, sí;
+  \item \emph{conducta observada}: quien sabe que participa en un experimento puede cambiar su conducta;
+  \item \emph{alcance}: sirven para intervenciones concretas, microeconómicas, y poco para las grandes preguntas macroeconómicas e institucionales \parencite{Deaton2010};
+  \item \emph{ética}: el grupo de control no recibe, mientras dura el estudio, un programa que puede beneficiarle.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: aspectos para el test}\label{anexo:test}
+
+\begin{itemize}
+\item \emph{Fechas y obras}: \autor{Montchrestien}, «economía política» (1615); \autor{Bacon}, \emph{Novum Organum} (1620); \autor{Descartes}, \emph{Discurso del método} (1637); \autor{Hume} (1748); \autor{Smith} (1759, 1776); \autor{Kant}, \emph{Crítica de la razón pura} (1781); \autor{Mill}, ensayo sobre la definición (1836) y \emph{Sistema de lógica} (1843); \emph{Methodenstreit} (1883-1884); J.~N.~\autor{Keynes}, \emph{Scope and Method} (1891); \autor{Robbins} (1932); \autor{Popper}, \emph{Logik der Forschung} (1934); \autor{Hutchison} (1938); \autor{Haavelmo} (1944); \autor{Mises}, \emph{Human Action} (1949); \autor{Friedman}, «The Methodology of Positive Economics» (1953); \autor{Simon} (1955); \autor{Kuhn} (1962); \autor{Lakatos} (1970; recopilación póstuma, 1978); \autor{Tversky} y \autor{Kahneman} (1974, 1981) y \autor{Kahneman} y \autor{Tversky} (1979); \autor{Feyerabend} (1975); \autor{Lucas} (1976, 1980); \autor{Thaler} (1980, 1981, 1985); \autor{Güth} \emph{et al.} (1982); \autor{McCloskey} (1983); \autor{Card} y \autor{Krueger} (1994); \autor{Laibson} (1997); \autor{Thaler} y \autor{Sunstein} (2003, 2008); \autor{Gabaix} y \autor{Laibson} (2008); \autor{Angrist} y \autor{Pischke} (2010).
+\item \emph{Nobel}: \autor{Frisch} y \autor{Tinbergen}, 1969 (el primero); \autor{Myrdal} y \autor{Hayek}, 1974; \autor{Simon}, 1978; \autor{Becker}, 1992; \autor{Nash}, \autor{Selten} y \autor{Harsanyi}, 1994; \autor{Kahneman} y Vernon \autor{Smith}, 2002; \autor{Thaler}, 2017; \autor{Banerjee}, \autor{Duflo} y \autor{Kremer}, 2019; \autor{Card}, \autor{Angrist} e \autor{Imbens}, 2021.
+\item \emph{Trampas}:
+  \begin{itemize}
+  \item en la definición de \autor{Robbins}, lo alternativo son los \emph{usos de los medios}, y la definición es solo suya, no de \autor{Samuelson};
+  \item la «ciencia moral» es de \autor{Keynes} (carta a \autor{Harrod}, 1938), no de \autor{Atkinson};
+  \item el \emph{homo oeconomicus} describe la abstracción de \autor{Mill}, pero el nombre se lo pusieron sus críticos;
+  \item la \emph{praxeología} es de \autor{Mises} (1949), no de \autor{Menger}; el \emph{Methodenstreit} enfrenta a \autor{Menger} y \autor{Schmoller}, no a \autor{Walras};
+  \item \autor{Friedman} es instrumentalista; \autor{Popper}, no; en \autor{Lakatos}, lo que se contrasta es el cinturón, no el núcleo; \emph{Proofs and Refutations} (1976) es de filosofía de las matemáticas;
+  \item el descuento hiperbólico generalizado es de \autor{Loewenstein} y \autor{Prelec} (1992); el cuasihiperbólico, de \autor{Laibson} (1997); la inconsistencia, de \autor{Strotz} (1955); en el modelo $\beta$-$\delta$, $\beta$ es el sesgo por el presente;
+  \item el juego del ultimátum es de \autor{Güth}, \autor{Schmittberger} y \autor{Schwarze} (1982), no de \autor{Thaler};
+  \item \autor{Tversky} no recibió el Nobel: murió en 1996.
+  \end{itemize}
+\item \emph{Preguntas del tribunal en exámenes anteriores}, con dónde se contestan: defina «paradigma» (\ref{sec:siglo-xx}); ¿cómo afectan las revoluciones científicas a la economía? (tabla~\ref{tab:escuelas} y anexo~\ref{anexo:kuhn-lakatos}); analice un mercado desde la economía positiva y desde la normativa, y diferencia entre ambas (\ref{sec:positiva-normativa}); la escuela austriaca y su método (\ref{sec:methodenstreit}; \vertema{3.A.3}); \autor{Romer} (2016) y el debate de los supuestos (\ref{sec:supuestos}); el imperialismo de la economía (\ref{sec:positiva-normativa}); verificabilidad y falsabilidad, y las críticas a \autor{Popper} (\ref{sec:siglo-xx}); \autor{Friedman} y el realismo de los supuestos (\ref{sec:supuestos}); la crítica de \autor{Lucas} y los modelos econométricos a los que se refiere (\ref{sec:matematicas-econometria} y anexo~\ref{anexo:kuhn-lakatos}).
+\item Preguntas de test de exámenes anteriores, en el simulador:
+  \begin{itemize}
+  \item \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}
+  \end{itemize}
+\end{itemize}
+
+\bibliografia
+\end{document}

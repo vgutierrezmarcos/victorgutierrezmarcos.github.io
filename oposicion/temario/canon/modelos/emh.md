@@ -1,7 +1,7 @@
 # Hipótesis de los mercados eficientes y finanzas conductuales
 
 - **Área:** finanzas-empresa · **Tema de referencia:** 3.B.23 (Renta variable: análisis fundamental, técnico, carteras) — es donde la eficiencia decide entre gestión activa y pasiva.
-- **Temas que lo usan:** 3.B.23 (desarrollo), 3.B.13 (resumen), 3.A.10 (mención; hecho, 19/10/2026: caja de finanzas conductuales de II.2); relacionado con 3.A.1 (economía conductual) También 3.A.6 (mención; hecho, 4/11/2026: I.2 iii, la eficiencia de los mercados financieros, Fama, 1970, como aplicación de las expectativas racionales).
+- **Temas que lo usan:** 3.B.23 (desarrollo), 3.B.13 (resumen), 3.A.10 (mención; hecho, 19/10/2026: caja de finanzas conductuales de II.2); 3.A.1 (mención; hecho, 4/11/2026: III.1.4, las finanzas conductuales en una viñeta, y anexo C `anexo:finanzas`, 4 regularidades y los límites al arbitraje, Shleifer y Vishny, 1997, con `\vertema{3.A.10}` y `\vertema{3.B.23}`; sin las definiciones de eficiencia). También 3.A.6 (mención; hecho, 4/11/2026: I.2 iii, la eficiencia de los mercados financieros, Fama, 1970, como aplicación de las expectativas racionales).
 - **Manuales de referencia:** Fama (1970, 1991); Grossman y Stiglitz (1980); Shiller (1981, 2003); Bodie, Kane y Marcus, caps. 11-12; Shleifer, *Inefficient Markets* (2000); Duffie, *Dynamic Asset Pricing Theory* (definiciones de eficiencia).
 
 ## Presentación de referencia
@@ -20,6 +20,7 @@
 | 3.A.10 | Elección con riesgo: teoría de las perspectivas | mención (hecho, 19/10/2026; anotación que no se canta) | Caja de finanzas conductuales: los enigmas que la teoría de las perspectivas explica (prima de las acciones, Mehra-Prescott, ≈ 6 puntos sobre letras y ≈ 5 sobre bonos con fuente; exceso de volatilidad, Shiller; efecto disposición; dividendos, que tributaron más hasta 2003), con `\vertema{3.A.1}` y `\vertema{3.B.23}` | Las formas de eficiencia, la hipótesis conjunta, la evidencia de anomalías |
 | 3.B.13 | Eficiencia del mercado de divisas | resumen | Las tres definiciones de Duffie aplicadas a divisas: PCI (no arbitraje), PNCI y paradoja del margen *forward* (eficiencia informativa) | Las tres formas de Fama completas (remitir) |
 | 3.A.6 | NMC | mención (hecho, 4/11/2026) | Aplicación de las expectativas racionales (Fama, 1970) | La hipótesis |
+| 3.A.1 | Economía conductual | mención (hecho, 4/11/2026) | Finanzas conductuales: 4 regularidades (prima de las acciones, exceso de volatilidad, efecto disposición, dividendos) y los límites al arbitraje, en anexo | Las definiciones de eficiencia |
 
 ## Divergencias encontradas en el temario actual
 - Las definiciones (Fama, Duffie) están en los dos temas con redacción similar. Llevar el desarrollo a 3.B.23 y dejar en 3.B.13 solo su aplicación.

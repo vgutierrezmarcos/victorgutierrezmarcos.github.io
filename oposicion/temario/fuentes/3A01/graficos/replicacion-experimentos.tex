@@ -1,0 +1,63 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Replicación de experimentos: tasa de réplicas con efecto significativo en la
+% misma dirección y tamaño relativo del efecto replicado (%). Open Science
+% Collaboration (2015), Camerer et al. (2016, 2018);
+% ../datos/replicacion-experimentos.csv, filas 0-2; consulta 04/11/2026.
+% Cifras: psicología 36 % y 50 % (100 estudios); economía experimental 61 % y
+% 66 % (18); ciencias sociales en Nature y Science 62 % y 50 % (21). Las filas
+% 3-4 (Chang y Li, 2022) son reproducibilidad computacional y no van aquí.
+% Paleta: tasa de replicación en azul oscuro, efecto relativo en azul claro.
+% Capas (CRITERIOS §7): barras de la tasa → barras del efecto → ejes →
+% etiquetas y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/replicacion-experimentos.csv}\repl
+\colorlet{rptasa}{tceeazul}
+\colorlet{rpefecto}{tceeazul!38}
+\pgfplotsset{
+  rpbarra/.style={on layer=dicbarras, xbar, bar width=0.3, bar shift=0pt, forget plot,
+    fill=#1, draw=#1!65!black, line width=0.3pt, skip coords between index={3}{5}},
+  rpvalor/.style={on layer=axis descriptions, dicsuelto, draw=none, skip coords between index={3}{5},
+    nodes near coords={\pgfmathprintnumber{\pgfplotspointmeta}\,\%}, point meta=x,
+    every node near coord/.append style={font=\footnotesize, inner sep=2pt, anchor=west, text=#1}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=11cm, height=6.4cm, scale only axis=false,
+      xmin=0, xmax=100, xtick={0,20,...,100}, xticklabel={\pgfmathprintnumber{\tick}\,\%},
+      ymin=-2.6, ymax=0.6, ytick={0,-1,-2},
+      yticklabels={{Psicología\\(100 estudios)}, {Economía experimental\\(18 estudios)},
+        {Ciencias sociales en\\\emph{Nature} y \emph{Science} (21)}},
+      yticklabel style={font=\footnotesize, align=right},
+      xticklabel style={font=\footnotesize},
+      axis line style={draw=none}, major tick length=0pt,
+      xmajorgrids, grid style={tceegris!25},
+      clip=false, dicapas,
+      legend style={at={(0.5,-0.14)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=2, /tikz/every even column/.append style={column sep=12pt}},
+      legend cell align=left]
+    % 1: barras de la tasa de replicación (arriba en cada fila)
+    \capa{1}{
+      \addplot[rpbarra=rptasa] table[x=tasa_replicacion_pct, y expr=-\coordindex+0.16] {\repl};
+    }
+    % 2: barras del tamaño relativo del efecto (abajo en cada fila)
+    \capa{2}{
+      \addplot[rpbarra=rpefecto] table[x=efecto_relativo_pct, y expr=-\coordindex-0.16] {\repl};
+    }
+    % 3: ejes
+    \capa{3}{
+      \dicraya{(0,-2.6) (0,0.6)}
+      \dicraya{(0,-2.6) (100,-2.6)}
+    }
+    % 4: valores al final de cada barra y leyenda
+    \capa{4}{
+      \addplot[rpvalor=rptasa] table[x=tasa_replicacion_pct, y expr=-\coordindex+0.16] {\repl};
+      \addplot[rpvalor=black] table[x=efecto_relativo_pct, y expr=-\coordindex-0.16] {\repl};
+      \addlegendimage{area legend, fill=rptasa, draw=rptasa!65!black}
+      \addlegendentry{réplicas con efecto significativo en la misma dirección}
+      \addlegendimage{area legend, fill=rpefecto, draw=rpefecto!65!black}
+      \addlegendentry{tamaño del efecto replicado / original}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

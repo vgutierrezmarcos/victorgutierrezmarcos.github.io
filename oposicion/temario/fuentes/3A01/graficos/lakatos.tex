@@ -1,0 +1,59 @@
+% Los programas de investigación de Lakatos (3.A.1, II.2.3 d): el núcleo firme
+% (irrefutable por decisión metodológica) rodeado por el cinturón protector de
+% hipótesis auxiliares, que encaja los hechos y refutaciones; la heurística
+% negativa prohíbe dirigirlos contra el núcleo y la positiva dice cómo
+% desarrollar el cinturón. Debajo, programa progresivo frente a degenerativo.
+% En gris, el ejemplo de la nueva macroeconomía clásica (3.A.6).
+% Esquema propio a partir de Lakatos (1970); el original era una figura de
+% ResearchGate y no se reutiliza.
+% Radios: núcleo 2 cm; cinturón hasta 3,8 cm. Letra \small (gris en
+% \footnotesize): al ancho del tema (0,7) sale a unos 8 pt.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    rotulo/.style={font=\small, align=center, inner sep=2pt},
+    ejemplo/.style={font=\footnotesize, align=center, inner sep=2pt, text=tceegris!75!black},
+    hecho/.style={->, thick, black}]
+  \def\rn{2.0}\def\rc{3.8}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-5.6,-5.0) rectangle (7.6,4.1);
+  % 1: el núcleo firme
+  \capa{1}{\filldraw[fill=tceemorado!22, draw=tceemorado, thick] (0,0) circle (\rn);}
+  \capa{1}{\node[rotulo, text=tceemorado] at (0,0.72)
+      {\textbf{núcleo firme}\\irrefutable por\\decisión metodológica};}
+  % 2: el cinturón protector, un anillo alrededor del núcleo
+  \capa{2}{\fill[tceegris!20, even odd rule] (0,0) circle (\rc) (0,0) circle (\rn);}
+  \capa{2}{\draw[tceegris, thick] (0,0) circle (\rc);}
+  \capa{2}{\draw[tceemorado, thick] (0,0) circle (\rn);}
+  \capa{2}{\node[rotulo] at (0,2.88)
+      {\textbf{cinturón protector}\\hipótesis auxiliares:\\se contrastan y se cambian};}
+  % 3: hechos y refutaciones que golpean el cinturón desde fuera
+  \capa{3}{\foreach \ang in {150,180,210}
+      {\draw[hecho] (\ang:5.15) -- (\ang:\rc+0.06);}}
+  \capa{3}{\node[rotulo, anchor=south] at (150:5.15) {hechos /\\refutaciones};}
+  % 4: heurística negativa: del cinturón al núcleo, tachada
+  \capa{4}{\draw[->, thick, tceerojo] (12:\rc) -- (12:\rn+0.06);}
+  \capa{4}{\draw[very thick, tceerojo] ($(12:2.9)+(-0.17,-0.17)$) -- ++(0.34,0.34)
+      ($(12:2.9)+(-0.17,0.17)$) -- ++(0.34,-0.34);}
+  \capa{4}{\draw[thin, tceerojo] (12:\rc) -- (4.25,1.05);}
+  \capa{4}{\node[rotulo, text=tceerojo, align=left, anchor=west] at (4.25,1.05)
+      {\textbf{heurística negativa}:\\no tocar el núcleo};}
+  % 5: heurística positiva: del núcleo hacia fuera; el cinturón se amplía
+  \capa{5}{\draw[->, thick, tceeverde] (-26:\rn) -- (-26:\rc+0.75);}
+  \capa{5}{\node[rotulo, text=tceeverde, align=left, anchor=west] at (-26:\rc+0.8)
+      {\textbf{heurística positiva}:\\cómo desarrollar\\el cinturón};}
+  \capa{5}{\draw[tceeverde, thick, dashed] (-58:\rc+0.35) arc[start angle=-58, end angle=-4, radius=\rc+0.35];}
+  \capa{5}{\node[rotulo, text=tceeverde, font=\small\itshape, anchor=north west] at (-58:\rc+0.35)
+      {el cinturón se amplía};}
+  % 6: programa progresivo frente a degenerativo
+  \capa{6}{\node[rotulo, text=tceeverde] at (-2.9,-4.7) {\textbf{progresivo}: predice hechos nuevos};}
+  \capa{6}{\node[rotulo, text=tceerojo] at (2.9,-4.7) {\textbf{degenerativo}: parches \emph{ad hoc}};}
+  % 7: en gris, el ejemplo de la nueva macroeconomía clásica (3.A.6)
+  \capa{7}{\node[ejemplo] at (0,-0.78)
+      {optimización,\\vaciado de mercados,\\expectativas racionales};}
+  \capa{7}{\node[ejemplo] at (0,-2.9)
+      {islas $\rightarrow$ ciclo real $\rightarrow$\\EGDE con fricciones};}
+\end{tikzpicture}
+\end{document}
