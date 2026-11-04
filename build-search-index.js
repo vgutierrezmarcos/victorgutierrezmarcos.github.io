@@ -99,7 +99,7 @@ const tercerEjercicioParteA = [
   { num: 1, titulo: 'Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía conductual.', disponible: true, file: '3A01.pdf' },
   { num: 2, titulo: 'Los economistas clásicos y Marx.', disponible: true, file: '3A02.pdf' },
   { num: 3, titulo: 'Los economistas neoclásicos.', disponible: true, file: '3A03.pdf' },
-  { num: 4, titulo: 'El pensamiento económico de Keynes. Referencia a la economía postkeynesiana y el desequilibrio.', disponible: true, file: '3A04.pdf' },
+  { num: 4, titulo: 'El pensamiento económico de Keynes. Referencia a la economía postkeynesiana y el desequilibrio.', disponible: true, file: '3A04.html' },
   { num: 5, titulo: 'La síntesis neoclásica. El monetarismo.', disponible: false },
   { num: 6, titulo: 'La nueva macroeconomía clásica. La hipótesis de las expectativas racionales; la crítica de Lucas; el surgimiento de los modelos dinámicos estocásticos de equilibrio general.', disponible: true, file: '3A06.pdf' },
   { num: 7, titulo: 'La nueva economía keynesiana. Primera y segunda generación.', disponible: true, file: '3A07.pdf' },

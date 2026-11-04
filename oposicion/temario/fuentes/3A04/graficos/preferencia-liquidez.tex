@@ -1,0 +1,53 @@
+% La preferencia por la liquidez (Keynes, 1936, caps. 13 y 15).
+% Panel a, un inversor: con el tipo por encima de su tipo «normal» guarda toda
+%   su riqueza en bonos (demanda especulativa de dinero 0); por debajo, todo en
+%   dinero. Tipo normal 5; riqueza 5,5.
+% Panel b, demanda agregada de dinero L(Y,i) (las ideas de lo «normal»
+%   difieren y el escalón se suaviza): decreciente y convexa,
+%   i = 1,2 + 0,2963 (5 - m)^2 para m <= 5 y horizontal en i_min = 1,2 desde
+%   m = 5 (tangente: pendiente 0 en el empalme): trampa de la liquidez.
+%   M_0/P = 1,6 -> i_0 = 4,625;  M_1/P = 3,4 -> i_1 = 1,959;
+%   M_2/P = 5,9 y M_3/P = 7,6, en el tramo plano: el tipo se queda en i_min.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.55cm,
+    declare function={liq(\m)=1.2+0.2963*(5-\m)^2;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.6,-2.8) rectangle (25.4,11.0);
+  % 1: ejes del panel a
+  \capa{1}{\ejes{$M/P$}{$i$}{8.8}{9.4}}
+  \capa{1}{\node[etiqueta, font=\small\itshape, anchor=south] at (4.4,10.0) {a) Un inversor};}
+  % 2: escalón de la demanda especulativa individual y el tipo «normal»
+  \capa{2}{\draw[guia] (0,5) -- (7.2,5) node[etiqueta, right, text=tceegris] {tipo normal};}
+  \capa{2}{\draw[curva1, line width=2.2pt] (0,8.8) -- (0,5) -- (5.5,5) -- (5.5,0);}
+  \capa{2}{\node[etiqueta, below] at (5.5,0) {riqueza};}
+  % 3: por encima, todo en bonos; por debajo, todo en dinero
+  \capa{3}{\node[etiqueta, text=tceemorado, align=center] at (2.75,7.2) {bonos\\[-1pt]\footnotesize(espera que el tipo baje)};}
+  \capa{3}{\node[etiqueta, text=tceemorado, align=center] at (2.75,2.5) {dinero\\[-1pt]\footnotesize(espera que el tipo suba)};}
+  \begin{scope}[xshift=8.4cm]
+    % 4: ejes del panel b
+    \capa{4}{\ejes{$M/P$}{$i$}{9.8}{9.4}}
+    \capa{4}{\node[etiqueta, font=\small\itshape, anchor=south] at (4.9,10.0) {b) Demanda agregada};}
+    % 5: demanda de dinero L(Y,i), decreciente, convexa y horizontal abajo
+    \capa{5}{\draw[curva1] plot[domain=0.5:5, samples=60] (\x,{liq(\x)}) -- (8.6,1.2) node[etiqueta, right, text=tceemorado] {$L(Y,i)$};}
+    % 6: oferta M_0/P y el tipo i_0
+    \capa{6}{\draw[curva2] (1.6,0) -- (1.6,8.6) node[etiqueta, above, font=\footnotesize, text=tceeazul] {$M_0/P$};}
+    \capa{6}{\node[punto] (E0) at (1.6,{liq(1.6)}) {};}
+    \capa{6}{\draw[guia] (E0) -- (0,{liq(1.6)}) node[left, text=black] {$i_0$};}
+    % 7: más dinero, M_1/P, aún en el tramo inclinado: el tipo baja a i_1
+    \capa{7}{\draw[curvanueva, desplazada] (3.4,0) -- (3.4,8.6) node[etiqueta, above, font=\footnotesize, text=tceerojo] {$M_1/P$};}
+    \capa{7}{\node[punto] (E1) at (3.4,{liq(3.4)}) {};}
+    \capa{7}{\draw[guia] (E1) -- (0,{liq(3.4)}) node[left, text=black] {$i_1$};}
+    % 8: M_2/P y M_3/P en el tramo plano: el tipo no baja de i_min
+    \capa{8}{\draw[curvanueva, desplazada] (5.9,0) -- (5.9,8.6) node[etiqueta, above, font=\footnotesize, text=tceerojo] {$M_2/P$};}
+    \capa{8}{\draw[curvanueva, desplazada] (7.6,0) -- (7.6,8.6) node[etiqueta, above, font=\footnotesize, text=tceerojo] {$M_3/P$};}
+    \capa{8}{\node[punto] at (5.9,1.2) {};}
+    \capa{8}{\node[punto] at (7.6,1.2) {};}
+    \capa{8}{\draw[guia] (5,1.2) -- (0,1.2) node[left, text=black] {$i_{\min}$};}
+    \capa{8}{\draw[decorate, decoration={brace, amplitude=4pt, mirror}, thick, tceemorado] (5,-1.0) -- (8.6,-1.0)
+        node[midway, below=4pt, etiqueta, text=tceemorado] {trampa de la liquidez};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

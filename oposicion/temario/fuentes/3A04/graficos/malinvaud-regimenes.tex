@@ -1,0 +1,42 @@
+% Los 3 regímenes de Malinvaud (1977) en el plano del salario y el precio
+% NOMINALES (W, P), con la cantidad de dinero M dada (Tsoulfidis, 2010).
+%   equilibrio walrasiano: (W*, P*) = (5,5; 6)
+%   frontera K-I (la demanda de bienes, que depende de M/P, iguala a la
+%     producción de pleno empleo F(L-barra)): horizontal, porque la demanda
+%     depende solo de A-barra y M/P (eq:malinvaud): P = 6, W < 5,5
+%   frontera C-I (salario real walrasiano W/P = w^c, el rayo desde el
+%     origen): P = (6/5,5) W, W < 5,5; w^c = 0,917
+%   frontera K-C (la demanda efectiva iguala a la oferta nocional de las
+%     empresas): creciente y más plana que el rayo: P = 6 + 0,5 (W - 5,5), W > 5,5 (el rayo tiene pendiente 1,09)
+% Regiones: K arriba (P alto, saldos reales bajos: exceso de oferta de bienes
+% y de trabajo); C abajo a la derecha (W/P > w^c: exceso de demanda de bienes y
+% de oferta de trabajo); I abajo a la izquierda (P bajo y W/P < w^c: exceso de
+% demanda en los 2).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.75cm,
+    declare function={ki(\w)=6; kc(\w)=6+0.5*(\w-5.5);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-1.0) rectangle (12.4,10.2);
+  % 1: ejes: salario y precio nominales
+  \capa{1}{\ejes{$W$}{$P$}{11.2}{9.6}}
+  % 2: el equilibrio walrasiano
+  \capa{2}{\node[punto] (Wal) at (5.5,6) {};}
+  \capa{2}{\node[etiqueta, below right=1pt and 2pt] at (Wal) {$\mathcal{W}$};}
+  \capa{2}{\draw[guia] (Wal) -- (5.5,0) node[below, text=black] {$W^*$};}
+  % 3: frontera K-I: la demanda de bienes iguala a la producción de pleno empleo
+  \capa{3}{\draw[curva2] (5.5,6) -- (0.3,{ki(0.3)});}
+  \capa{3}{\node[etiqueta, font=\footnotesize, text=tceeazul, anchor=south west] at (0.3,{ki(0.3)+0.2}) {K-I: $Y^D(M/P)=F(\bar L)$};}
+  % 4: frontera C-I: el salario real walrasiano, el rayo desde el origen
+  \capa{4}{\draw[curva3] (0,0) -- (5.5,6);}
+  \capa{4}{\node[etiqueta, font=\footnotesize, text=tceeverde, anchor=north west, rotate=42.3, inner sep=3pt] at (2.9,{2.9*6/5.5-0.35}) {C-I: $W/P=w^c$};}
+  % 5: frontera K-C, creciente y más plana que el rayo
+  \capa{5}{\draw[curva1] (5.5,6) -- (10.5,{kc(10.5)}) node[etiqueta, font=\footnotesize, text=tceemorado, right] {K-C};}
+  % 6: los 3 regímenes
+  \capa{6}{\node[etiqueta, align=center] at (4.6,8.7) {\textbf{K}: paro keynesiano\\[-1pt]\footnotesize exceso de oferta de bienes y de trabajo};}
+  \capa{6}{\node[etiqueta, align=center] at (8.4,3.0) {\textbf{C}: paro clásico\\[-1pt]\footnotesize exceso de demanda de bienes\\[-2pt]\footnotesize y de oferta de trabajo};}
+  \capa{6}{\node[etiqueta, align=left, anchor=north west] at (0.15,5.75) {\textbf{I}: inflación\\[-1pt]reprimida\\[-1pt]\footnotesize exceso de demanda\\[-2pt]\footnotesize en los 2};}
+\end{tikzpicture}
+\end{document}

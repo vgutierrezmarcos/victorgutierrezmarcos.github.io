@@ -1,7 +1,7 @@
 # Renta absoluta y renta relativa: la función de consumo keynesiana y el enigma de Kuznets (Keynes, 1936; Kuznets, 1942, 1946; Duesenberry, 1949)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.33** (revisado el 31/10/2026: I.1 `sec:estaticos`, con `sec:keynes` y `sec:duesenberry`; la teoría neoclásica previa, en el anexo A `anexo:neoclasica`) — es una teoría del consumo con su evidencia (Kuznets) y su crítica (Duesenberry, Friedman); el 3.A.4 la cuenta como una pieza de la *Teoría general* y ya remite al 3.A.33. Ficha creada en la fase canon del 3.A.33 (DC8/A33-08, **[decidir]**).
-- **Temas que lo usan:** 3.A.33 (resumen en el cuerpo como antecedente, 1′30″; hecho, 31/10/2026), 3.A.4 (resumen: la ley psicológica fundamental dentro de la *Teoría general* y el multiplicador), 3.A.5 (mención; hecho, 3/11/2026: la función keynesiana frente a la renta permanente en la crítica monetarista), 3.A.40 (mención: Hansen y el estancamiento secular), 1D01 (mención aplicada: la renta disponible como primer determinante del consumo, l. 413-418).
+- **Temas que lo usan:** 3.A.33 (resumen en el cuerpo como antecedente, 1′30″; hecho, 31/10/2026), 3.A.4 (resumen; hecho, 4/11/2026: la ley psicológica fundamental dentro de la *Teoría general*, con la misma advertencia del cap. 10, apdo. III), 3.A.5 (mención; hecho, 3/11/2026: la función keynesiana frente a la renta permanente en la crítica monetarista), 3.A.40 (mención: Hansen y el estancamiento secular), 1D01 (mención aplicada: la renta disponible como primer determinante del consumo, l. 413-418).
 - **Manuales de referencia:** Keynes (1936), *Teoría general*, libro III (caps. 8-10); Kuznets (1942), *Uses of National Income in Peace and War*, y (1946), *National Product since 1869*; Duesenberry (1949), *Income, Saving and the Theory of Consumer Behavior*; Romer (2019), cap. 8; Blanchard, *Macroeconomía*, cap. 16.
 
 ## Presentación de referencia (3.A.33, I.1)
@@ -24,13 +24,13 @@ $$\frac{C_t}{Y_t}=a_0-a_1\,\frac{Y_t}{Y^{\text{máx}}_t},\qquad a_0,\,a_1>0\qqua
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.33 | Teorías del consumo | resumen como antecedente (hecho, 31/10/2026) | Keynes y Duesenberry con a)-d) en 1′30″, Kuznets como enigma y el plano (Y, C) por capas; neoclásicos en una frase con el anexo A | — |
-| 3.A.4 | Keynes y la *Teoría general* | resumen | La ley psicológica fundamental como pieza de la demanda efectiva y del multiplicador, C_t = C̄ + cY^d_t; la **misma advertencia** sobre la PMgC constante, citada igual (cap. 10, apdo. III); remite al 3.A.33 para Kuznets, Duesenberry y la renta permanente | Kuznets y Duesenberry |
+| 3.A.4 | Keynes y la *Teoría general* | resumen (hecho, 4/11/2026) | La ley psicológica fundamental (cap. 3) como pieza de la demanda efectiva, «una función bastante estable» (cap. 8), $C_t=\overline C+c\,Y^d_t$ con $Y^d_t=(1-t)Y_t$ (`eq:consumo`, sin función clave), la **misma advertencia** sobre la PMgC (cap. 10, apdo. III, traducción del 3.A.33), con `\vertema{3.A.33}`; la propensión media baja con la renta (el estancamiento es de Hansen, 3.A.33) | Kuznets, Duesenberry y la renta permanente |
 | 3.A.5 | Monetarismo y crítica a la síntesis | mención (hecho, 3/11/2026) | $C_t=\overline C+c\,Y^d_t$ en el IS-LM (sin subíndice de tiempo en la estática) y frente a $C^P_t\propto Y^P_t$ en II.2.1 a) (ficha `renta-permanente`): menor multiplicador e inestabilidad; la advertencia de Keynes con la misma cita que el 3.A.33; el estancamiento secular es de Hansen (1939), `\vertema{3.A.40}` | Las ecuaciones de Duesenberry y el gráfico |
 | 3.A.40 | Políticas desde la Gran Recesión | mención | Hansen (1938, 1939) dedujo el estancamiento secular de una propensión media decreciente que Kuznets refutó; el debate actual es otro (tipo natural, ficha `estancamiento-secular`) | La función de consumo |
 | 1D01 | Dictamen | mención aplicada | La renta disponible real como primer determinante, con `\vertema{3.A.33}` | La teoría |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.33 original: advertencia de Keynes sin fuente (V22 decía § IV): es el **cap. 10, apdo. III** (comprobado en la revisión). Duesenberry con «Supuestos» vacío; C = C_0 + cY_d y PMe_C. **Resuelto** (31/10/2026).
-- 3.A.4 (sin revisar): repite la advertencia de la PMgC; debe citarla igual (cap. 10, apdo. III) y escribir C̄ (ya lo hace) y Y^d.
+- 3.A.4: repetía la advertencia de la PMgC con páginas de otra edición; **resuelto** (4/11/2026): citada igual que el 3.A.33 (cap. 10, apdo. III), con $\overline C$ e $Y^d$.
 
 Autor: Víctor Gutiérrez Marcos

@@ -1,7 +1,7 @@
 # Eficiencia marginal del capital y función de inversión keynesiana (Keynes 1936, caps. 11 y 12; Lerner 1953)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.34 (teorías de la inversión) — I.1 «Keynes (1936): la eficiencia marginal del capital» (a)-c)), revisado el 31/10/2026; el 3.A.4 la resume como pieza de la *Teoría general*. Ficha creada en la fase canon del 3.A.34 (C6 de sus propuestas de coherencia, **[decidir]**: alternativa, el 3.A.4 de referencia).
-- **Temas que lo usan:** 3.A.34 (desarrollo; hecho, 31/10/2026), 3.A.4 (resumen: inversión, *animal spirits* y socialización de la inversión), 3.B.2 (mención: la EMgK es la TIR del proyecto), 3.A.5 (mención; hecho, 3/11/2026: la IS con $I=\overline I-b\,i$; ficha `is-lm`)
+- **Temas que lo usan:** 3.A.34 (desarrollo; hecho, 31/10/2026), 3.A.4 (resumen; hecho, 4/11/2026: EMgK = i, $I=\overline I-b\,i$, convenciones, *animal spirits* y socialización de la inversión), 3.B.2 (mención: la EMgK es la TIR del proyecto), 3.A.5 (mención; hecho, 3/11/2026: la IS con $I=\overline I-b\,i$; ficha `is-lm`)
 - **Manuales de referencia:** Keynes (1936), caps. 11, 12 y 24; Keynes (1937), *QJE*; Lerner (1953); Fisher (1930); Dornbusch, Fischer y Startz.
 - **Decisión D009 (13/10/2026):** b (I = Ī − b·i); v solo para la relación capital-producto.
 
@@ -25,12 +25,12 @@ con el autónomo $\overline I$ (expectativas y ***animal spirits***, cap. 12, ap
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.34 | Teorías de la inversión | desarrollo (hecho, 31/10/2026) | Todo lo anterior | — |
-| 3.A.4 | Keynes y su pensamiento | resumen | EMgK = i, *animal spirits*, socialización de la inversión, con $I=\overline I-b\,i$ y `\vertema{3.A.34}` | La derivación y la valoración |
+| 3.A.4 | Keynes y su pensamiento | resumen (hecho, 4/11/2026) | `eq:emgk` y EMgK = i, $I=\overline I-b\,i$, $b>0$ (`eq:inversion`, sin función clave), convenciones y concurso de belleza (cap. 12, apdo. V), *animal spirits* con la cita del 3.A.34 (cap. 12, apdo. VII, «beneficios cuantitativos»), Keynes (1937), los 2 eslabones y la socialización de la inversión (cap. 24), con `\vertema{3.A.34}` | La derivación y la valoración |
 | 3.B.2 | Valoración de proyectos | mención | EMgK ≈ TIR; el orden por TIR puede no coincidir con el del VAN | La teoría macro |
 | 3.A.5 | Síntesis neoclásica | mención (hecho, 3/11/2026) | La IS con $I=\overline I-b\,i$ (I.2); en el monetarismo (II.2.1 b), los keynesianos ven $b$ pequeño (los *animal spirits*: IS inclinada) y los monetaristas, un gasto amplio y sensible a toda la gama de rendimientos ($b$ grande: IS plana) | El gráfico `emgk` |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.34 original: $I=I_0-v\cdot r$ con «tipo real», δ para la eficiencia marginal, «Keynes toma el concepto de Fisher», «ni la fiscal ni la monetaria son efectivas». **Resuelto** (31/10/2026).
-- 3.A.4 (sin revisar): $I=\overline I-v\cdot r$ → $I=\overline I-b\,i$ (D009) y la EMgK con sigla.
+- 3.A.4: $I=\overline I-v\cdot r$ con «$v$ menor que la unidad» y la cita de los *animal spirits* con «beliefs»: **resuelto** (4/11/2026), $I=\overline I-b\,i$ (D009), EMgK con sigla y «benefits».
 
 Autor: Víctor Gutiérrez Marcos

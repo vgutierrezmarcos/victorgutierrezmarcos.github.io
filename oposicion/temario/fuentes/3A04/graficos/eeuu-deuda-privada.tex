@@ -1,0 +1,59 @@
+% EE. UU., 1980T1-2025T4: crédito al sector privado no financiero en % del
+% PIB, hogares (abajo) y empresas no financieras (arriba), áreas apiladas.
+% Datos: ../datos/eeuu-deuda-privada-1980-2025.csv (BIS, Total credit
+% statistics, vía FRED: QUSHAM770A y QUSNAM770A; consulta del 3/11/2026). La
+% columna fed_z1 (segunda comprobación con la Fed) no se dibuja.
+% Máximo del total: 172,0 % en 2008T3 (hogares 97,6 + empresas 74,4); último
+% dato: 140,3 % en 2025T4 (68,1 + 72,2).
+% Recesiones del NBER (sombreado): 1980T1-1980T3, 1981T3-1982T4,
+% 1990T3-1991T1, 2001T1-2001T4, 2007T4-2009T2 y 2020T1-2020T2.
+% Eje x: 1980 + \coordindex/4 (la tabla empieza en 1980T1).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\dpdatos}{../datos/eeuu-deuda-privada-1980-2025.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=8.2cm, height=4.8cm, scale only axis,
+      xmin=1980, xmax=2026, xtick={1980,1990,...,2020},
+      ymin=0, ymax=200, ytick={0,50,...,200},
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize},
+      label style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      ylabel={\% del PIB},
+      stack plots=y,
+      legend style={at={(0.5,-0.16)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=3, /tikz/every even column/.append style={column sep=1em}},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: recesiones del NBER, detrás de todo
+    \capa{1}{\dicsombra[fill=dicotromasclaro]{1980}{0}{1980.75}{200}
+      \dicsombra[fill=dicotromasclaro]{1981.5}{0}{1983}{200}
+      \dicsombra[fill=dicotromasclaro]{1990.5}{0}{1991.25}{200}
+      \dicsombra[fill=dicotromasclaro]{2001}{0}{2002}{200}
+      \dicsombra[fill=dicotromasclaro]{2007.75}{0}{2009.5}{200}
+      \dicsombra[fill=dicotromasclaro]{2020}{0}{2020.5}{200}}
+    % 2: hogares
+    \capa{2}{\addplot[on layer=dicbarras, fill=dicconspriv, draw=dicconspriv!65!black, line width=0.4pt, mark=none, forget plot]
+        table[col sep=comma, comment chars={\#}, x expr=1980+\coordindex/4, y=hogares] {\dpdatos} \closedcycle;}
+    % 3: empresas no financieras, encima
+    \capa{3}{\addplot[on layer=dicbarras, fill=dicfbcf, draw=dicfbcf!65!black, line width=0.4pt, mark=none, forget plot]
+        table[col sep=comma, comment chars={\#}, x expr=1980+\coordindex/4, y=empresas] {\dpdatos} \closedcycle;}
+    % 5: el máximo de 2008T3 y el último dato (total)
+    \capa{5}{\addplot[dicpuntos=black, forget plot, stack plots=false] coordinates {(2008.5,172.0) (2025.75,140.3)};}
+    \capa{5}{\dicrotulo[anchor=south, font=\footnotesize, yshift=2pt]{(2008.5,172.0)}{172,0~\% (2008T3)}}
+    \capa{5}{\dicrotulo[anchor=west, font=\footnotesize, xshift=3pt]{(2025.75,140.3)}{140,3~\%}}
+    % 6: leyenda (con las recesiones)
+    \capa{6}{\addlegendimage{area legend, fill=dicconspriv, draw=dicconspriv!65!black}
+      \addlegendentry{hogares}
+      \addlegendimage{area legend, fill=dicfbcf, draw=dicfbcf!65!black}
+      \addlegendentry{empresas no financieras}
+      \addlegendimage{area legend, fill=dicotromasclaro, draw=none}
+      \addlegendentry{recesiones (NBER)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

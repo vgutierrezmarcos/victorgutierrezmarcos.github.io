@@ -1,0 +1,36 @@
+% La hipótesis de la decisión dual (Clower, 1965; Barro y Grossman, 1971), en
+% una economía de un bien con un hogar que trabaja y consume.
+%   función de producción C = F(L) = 4 sqrt(L)
+%   salario real w = 1: la empresa maximiza el beneficio con F'(L) = w ->
+%     L* = 4, C* = F(4) = 8, beneficio pi = 8 - 4 = 4
+%   recta presupuestaria del hogar: C = pi + w L = 4 + L (tangente a F en E)
+%   curva de indiferencia U = C - L^2/8 = 6: C = 6 + L^2/8, pendiente L/4 = 1
+%     en L = 4: tangente a la recta en E = (4, 8) (equilibrio walrasiano)
+%   racionamiento: L-barra = 1 -> K = (1, F(1)) = (1, 4): C^ef = 4 < C^noc = 8
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.5cm,
+    declare function={prod(\l)=4*sqrt(\l); pres(\l)=4+\l; indif(\l)=6+\l*\l/8;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.8,-1.4) rectangle (9.6,13.2);
+  % 1: ejes: trabajo y consumo
+  \capa{1}{\ejes{$L$}{$C$}{8.6}{12.6}}
+  % 2: la función de producción, cóncava
+  \capa{2}{\draw[curva1] plot[domain=0:{sqrt(7.8)}, samples=60] ({\x*\x},{4*\x}) node[etiqueta, right, text=tceemorado] {$F(L)$};}
+  % 3: la recta presupuestaria del hogar, de pendiente w
+  \capa{3}{\draw[curva2] (0,4) -- (7,{pres(7)}) node[etiqueta, anchor=south east, text=tceeazul] {$C=\pi+w\,L$};}
+  % 4: la curva de indiferencia tangente en E: demanda nocional (L*, C*)
+  \capa{4}{\draw[curva3] plot[domain=0:5.6, samples=60] (\x,{indif(\x)}) node[etiqueta, above, text=tceeverde] {$U_0$};}
+  \capa{4}{\node[punto] (E) at (4,8) {};}
+  \capa{4}{\draw[guia] (0,8) node[left, text=black] {$C^*=C^{\mathrm{noc}}$} -| (4,0) node[below, text=black] {$L^*$};}
+  \capa{4}{\node[etiqueta, anchor=south east, align=right] at (3.85,8.25) {$E$: demanda nocional};}
+  % 5: racionamiento en el mercado de trabajo: solo puede trabajar L-barra
+  \capa{5}{\draw[curvanueva, desplazada, thick] (1,0) node[below, text=black] {$\bar L$} -- (1,5.6);}
+  % 6: el punto efectivo K, sobre la función de producción, y su consumo
+  \capa{6}{\node[punto] (K) at (1,4) {};}
+  \capa{6}{\draw[guia] (K) -- (0,4) node[left, text=black] {$C^{\mathrm{ef}}$};}
+  \capa{6}{\node[etiqueta, anchor=north west, align=left] at (1.1,3.85) {$K$: demanda\\efectiva};}
+\end{tikzpicture}
+\end{document}

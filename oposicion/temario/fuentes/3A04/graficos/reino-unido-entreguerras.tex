@@ -1,0 +1,75 @@
+% Reino Unido, 1920-1938: paro de los trabajadores asegurados (barras, eje
+% izquierdo) y PIB real en índice 1929 = 100 (línea, eje derecho).
+% Datos: ../datos/reino-unido-entreguerras-1913-1939.csv (Bank of England,
+% A millennium of macroeconomic data, v3.1, 2017: hojas A8 y M5; consulta del
+% 3/11/2026). Paro de los asegurados: 16,9 % en 1921 y máximo de 22,1 % en
+% 1932; PIB real: 78,6 en 1921, 94,6 en 1931 y 117,3 en 1938 (1929 = 100).
+% Líneas de referencia: vuelta al patrón oro (1925), salida (1931) y la
+% Teoría general (1936).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\pgfplotsset{
+  ruejes/.style={
+    width=12cm, height=5.2cm, scale only axis,
+    xmin=1919.4, xmax=1938.6,
+    tick align=outside, clip=false,
+    ticklabel style={font=\footnotesize},
+    label style={font=\footnotesize},
+    x tick label style={/pgf/number format/1000 sep={}},
+    /pgf/number format/use comma,
+  },
+}
+% paro: el teja de la paleta (dicparo), aclarado para que la línea del PIB destaque
+\colorlet{ruparo}{dicparo!60!white}
+\newcommand{\rudatos}{../datos/reino-unido-entreguerras-1913-1939.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ------------- Eje izquierdo: paro de los asegurados -------------
+  \begin{axis}[ruejes, name=paro,
+      axis x line*=bottom, axis y line*=left,
+      ymin=0, ymax=25, ytick={0,5,...,25},
+      xtick={1920,1922,...,1938},
+      ylabel={Paro de los asegurados (\%)},
+      ymajorgrids, grid style={thin, dicotromasclaro},
+      dicapas,
+    ]
+    % 1: barras del paro de los asegurados
+    \capa{1}{\addplot[on layer=dicbarras, ybar, bar width=0.62, dicbarra=ruparo, forget plot,
+        restrict x to domain=1920:1938]
+        table[col sep=comma, comment chars={\#}, x=anio, y=paro_asegurados] {\rudatos};}
+    % 3: vuelta al oro (1925), salida del oro (1931) y Teoría general (1936)
+    \capa{3}{\dicraya[dicumbral]{(1925,0) (1925,25)}}
+    \capa{3}{\dicraya[dicumbral]{(1931,0) (1931,25)}}
+    \capa{3}{\dicraya[dicumbral]{(1936,0) (1936,25)}}
+    \capa{3}{\dicrotulo[anchor=base, yshift=4pt, font=\footnotesize, text=dicreferencia]{(1925,25)}{vuelta al oro}}
+    \capa{3}{\dicrotulo[anchor=base, yshift=4pt, font=\footnotesize, text=dicreferencia]{(1931,25)}{salida del oro}}
+    \capa{3}{\dicrotulo[anchor=base, yshift=4pt, font=\footnotesize, text=dicreferencia]{(1936,25)}{\emph{Teoría general}}}
+    % 6: etiquetas del paro en 1921 y en el máximo de 1932
+    \capa{6}{\dicrotulo[anchor=south, font=\footnotesize, text=dicparo]{(1921,16.9)}{16,9~\%}}
+    \capa{6}{\dicrotulo[anchor=south, font=\footnotesize, text=dicparo]{(1932,22.1)}{22,1~\%}}
+  \end{axis}
+  % ------------- Eje derecho: PIB real -------------
+  \begin{axis}[ruejes, at={(paro.south west)}, anchor=south west,
+      axis x line=none, axis y line*=right,
+      ymin=70, ymax=120, ytick={70,80,...,120},
+      ylabel={PIB real (1929 = 100)},
+      legend style={at={(0.5,-0.2)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=2, /tikz/every even column/.append style={column sep=1.2em}},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 4: línea del PIB real
+    \capa{4}{\addplot[diclineahalo=dicpib, forget plot, restrict x to domain=1920:1938]
+        table[col sep=comma, comment chars={\#}, x=anio, y=pib_real_i1929] {\rudatos};}
+    % 5: puntos del PIB
+    \capa{5}{\addplot[dicpuntos=dicpib, forget plot, restrict x to domain=1920:1938]
+        table[col sep=comma, comment chars={\#}, x=anio, y=pib_real_i1929] {\rudatos};}
+    % 6: leyenda
+    \capa{6}{\addlegendimage{area legend, dicbarra=ruparo}
+      \addlegendentry{paro de los asegurados (\%, eje izquierdo)}
+      \addlegendimage{very thick, dicpib, mark=*, mark options={fill=white, draw=dicpib, line width=0.9pt}}
+      \addlegendentry{PIB real (1929 = 100, eje derecho)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

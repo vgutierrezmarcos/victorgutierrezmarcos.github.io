@@ -1,7 +1,7 @@
 # Competencia monopolística de Chamberlin (1933)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.18 (Diferenciación de productos: la teoría de la competencia monopolística; revisado el 19/10/2026, I.2, con el anexo `anexo:chamberlin`)
-- **Temas que lo usan:** 3.A.18 (desarrollo; hecho, 19/10/2026), 3.A.4 (mención: competencia imperfecta en la época de Keynes), 3.A.11 (mención; hecho, 13/10/2026: Sraffa → Robinson y Chamberlin, l. 42); 3.A.7 y 3.B.6 usan la versión de Dixit-Stiglitz (ficha `dixit-stiglitz`).
+- **Temas que lo usan:** 3.A.18 (desarrollo; hecho, 19/10/2026), 3.A.4 (mención; hecho, 4/11/2026: competencia imperfecta en la época de Keynes, que no recurre a ella; el paro por poder de mercado en I.3), 3.A.11 (mención; hecho, 13/10/2026: Sraffa → Robinson y Chamberlin, l. 42); 3.A.7 y 3.B.6 usan la versión de Dixit-Stiglitz (ficha `dixit-stiglitz`).
 - **Manuales de referencia:** Chamberlin (1933); Robinson (1933); Sraffa (1926); Kaldor (1935); Stigler (1949); Koutsoyiannis (1979), p. 209; Tirole (1988), cap. 7; Krugman, Obstfeld y Melitz (2018), cap. 8 (demanda de cuota).
 
 ## Presentación de referencia (3.A.18, I.2)
@@ -20,7 +20,7 @@ Gráfico de referencia: `oposicion/temario/fuentes/3A18/graficos/chamberlin.tex`
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.18 | Competencia monopolística | desarrollo (hecho, 19/10/2026; 3' en el cante, intuiciones) | Lo anterior, con la tabla común `tab:supuestos` (fila 3 en salmón, «Se levanta»), el ajuste paso a paso y los costes de venta en el anexo A, y paso a Dixit-Stiglitz | — |
-| 3.A.4 | Contexto de Keynes | mención | La revolución de la competencia imperfecta (Sraffa, 1926; Chamberlin y Robinson, 1933) | — |
+| 3.A.4 | Contexto de Keynes | mención (hecho, 4/11/2026) | La revolución de la competencia imperfecta (Robinson y Chamberlin, 1933) en I.2, a la que Keynes no recurre, y el paro por poder de mercado en I.3, con `\vertema{3.A.18}`; en nota de III.2, la «demanda efectiva» de Chamberlin como 3.er sentido de la expresión | — |
 | 3.A.11 | Rendimientos y estructura de mercado | mención (hecho, 13/10/2026) | La crítica de Sraffa y la respuesta de Robinson y Chamberlin | — |
 
 ## Divergencias encontradas en el temario actual

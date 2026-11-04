@@ -1,0 +1,39 @@
+# La controversia del capital (de los dos Cambridge): retorno de técnicas y reversión del capital
+
+- **Área:** pensamiento · **Tema de referencia:** **3.A.4** (revisado el 4/11/2026: III.1 d) «La controversia del capital», 1′30″, con el gráfico `retorno-tecnicas`) — es pieza de la «economía postkeynesiana» del título y lo que el 3.A.11 y el 3.A.43 le remiten («la controversia se estudia en \vertema{3.A.4}»). Ficha creada en la fase canon del 3.A.4 (CC1, **[decidir]**). Alternativa: el **3.A.11**, que tiene el anexo más técnico (`anexo:cambridge`, la función de producción agregada); no se recomienda porque allí es un anexo de un tema de producción y el debate es de escuelas.
+- **Temas que lo usan:** 3.A.4 (desarrollo; hecho, 4/11/2026), 3.A.11 (resumen en anexo; hecho, 13/10/2026: `anexo:cambridge` y `anexo:controversia-dos-cambridge`, la agregación del capital y el teorema del agotamiento, con «retorno de técnicas» y Pasinetti, 1966), 3.A.43 (resumen en una caja; hecho, 31/10/2026: «El supuesto discutido: la función de producción agregada y la controversia del capital», l. 200-208, con `\vertema{3.A.4}`), 3.A.5 (mención; hecho, 3/11/2026: la controversia como crítica de Cambridge a la síntesis), 3.A.45 (mención posible: la distribución funcional sin productividad marginal agregada). Relacionadas: `postkeynesianos`, `solow`, `productividad-marginal`, `participacion-trabajo`.
+- **Manuales de referencia:** Robinson (1953), «The Production Function and the Theory of Capital», *RES*; Sraffa (1960), *Production of Commodities by Means of Commodities*; Levhari (1965), *QJE*; Pasinetti (1966) y Levhari y Samuelson (1966), «The Nonswitching Theorem Is False», en el simposio de la *QJE* 80(4); Samuelson (1966), «A Summing Up», *QJE*; Cohen y Harcourt (2003), «Whatever Happened to the Cambridge Capital Theory Controversies?», *JEP*; Harcourt (1972).
+
+## Presentación de referencia (3.A.4, III.1 d)
+
+**Pregunta:** si el capital son máquinas distintas, ¿en qué unidades se suma para meterlo en una función de producción agregada, y qué queda de la teoría de la distribución por la productividad marginal?
+
+1. **La pregunta** (Robinson, 1953): el trabajo se suma en horas, pero el capital solo puede sumarse en valor, y ese valor depende del tipo de beneficio, que es lo que la teoría quería explicar. Pegatina del 3.A.4: «no se pueden sumar peras con manzanas».
+2. **El resultado** (Sraffa, 1960): cada técnica tiene una **frontera salario-beneficio** $w(r)$ decreciente; si 2 fronteras se cortan 2 veces, la técnica $\alpha$ es la más rentable con tipos bajos, la $\beta$ con tipos intermedios y la $\alpha$ otra vez con tipos altos: **retorno de técnicas** (*reswitching*). No puede ordenarse una técnica como «más intensiva en capital», y el capital por trabajador puede subir cuando sube el tipo de beneficio: **reversión del capital** (*capital reversing*).
+3. **El final**: Levhari (1965) intenta probar que no ocurre en la economía en su conjunto; Pasinetti (1966) y Levhari y Samuelson (1966) muestran que la prueba es falsa, y Samuelson (1966) lo admite desde Cambridge (Massachusetts): la «parábola» del capital homogéneo no vale en general (Cohen y Harcourt, 2003).
+4. **Lo que significa**: sin una cantidad de capital medible antes de conocer el tipo de beneficio, la distribución no se explica por las productividades marginales; la explican la acumulación (Kaldor) y el poder de negociación (Kalecki) (ficha `postkeynesianos`). La macroeconomía siguió usando la función agregada como aproximación útil (`\vertema{3.A.11}` `\vertema{3.A.43}`).
+
+**Cronología canónica** (misma en los 3 temas): Robinson (1953) → Sraffa (1960) → Levhari (1965) → Pasinetti (1966) y Levhari y Samuelson (1966) → Samuelson (1966). Claves bibliográficas comunes: `Robinson1953Production`, `Sraffa1960Production`, `Levhari1965Nonswitching`, `Pasinetti1966Changes` (3.A.11), `LevhariSamuelson1966Nonswitching` (3.A.4), `Samuelson1966Summing`, `CohenHarcourt2003Whatever`.
+
+**Terminología** (`notacion.md` § 14): «**retorno de técnicas**» (*reswitching*) y «**reversión del capital**» (*capital reversing*), como el 3.A.11 y el 3.A.4; nunca «reversión de técnicas» para el *reswitching*. «Controversia del capital» o «controversia de los dos Cambridge». En el gráfico, el eje horizontal es el **tipo de beneficio** $r$ (en este debate coincide con el de interés; se avisa en el pie) y el vertical el **salario real** $w$.
+
+**Gráfico de referencia:** `oposicion/temario/fuentes/3A04/graficos/retorno-tecnicas.tex`: técnica $\alpha$, $w=1-r$ (recta); técnica $\beta$, $w=0{,}9\,[1-(r/0{,}95)^2]$ (cóncava); cortes en $r_1=0{,}1127$ y $r_2=0{,}8901$; la técnica elegida es la envolvente exterior ($\alpha$, $\beta$, $\alpha$). En el cante del 3.A.4, boceto en la pizarra (2 fronteras que se cortan 2 veces). Si el 3.A.11 o el 3.A.43 añaden un gráfico, copian este sin cambios.
+
+## Cómo se adapta en cada tema
+
+| Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
+|---|---|---|---|---|
+| 3.A.4 | Keynes, postkeynesianos y desequilibrio | desarrollo (hecho, 4/11/2026) | Los 4 puntos con el gráfico y la pegatina; el sentido para Keynes y la distribución | La agregación técnica (anexo del 3.A.11) |
+| 3.A.11 | Producción | resumen en anexo (hecho, 13/10/2026) | La función de producción agregada y el teorema del agotamiento; la controversia con «retorno de técnicas», Levhari, Pasinetti (1966) y Samuelson (1966); Baqaee y Farhi (2019) como agregación moderna | El sentido para la distribución (3.A.4) |
+| 3.A.43 | Crecimiento I | resumen en caja (hecho, 31/10/2026) | El supuesto discutido de Solow: el capital homogéneo; Robinson, Sraffa y Samuelson en 4 viñetas; «la controversia se estudia en \vertema{3.A.4}» | — |
+| 3.A.5 | Síntesis y monetarismo | mención (hecho, 3/11/2026) | Una de las críticas a la síntesis (Cambridge, Joan Robinson), con `\vertema{3.A.4}` | — |
+| 3.A.45 | Evidencia del crecimiento y distribución | mención (posible) | Si se cita: la distribución funcional sin productividad marginal agregada, con `\vertema{3.A.4}` | — |
+
+## Divergencias encontradas en el temario actual
+
+- **3.A.43 (revisado el 31/10/2026)**: en la caja (l. 204) llama «**reversión de técnicas** (*reswitching*)» a lo que el 3.A.11 y el 3.A.4 llaman «retorno de técnicas» y distinguen de la «reversión del capital». Cambiar a «retorno de técnicas (*reswitching*)» (cosmético; `pendientes-coherencia.md`, «Pendiente del 3.A.4»).
+- **3.A.5 (revisado el 3/11/2026)**: sitúa la crítica de Cambridge, con la controversia, «desde mediados de los 60 y en los 70»; la controversia va de 1953 a 1966 y el «keynesianismo bastardo» es de los 50-60. Matiz, no error: el 3.A.4 da la cronología; no se toca.
+- **3.A.4 frente al 3.A.11**: el 3.A.4 cita la refutación con Levhari y Samuelson (1966) y el 3.A.11 con Pasinetti (1966) «y otros»; los 2 artículos son del mismo simposio de la *QJE*. Compatible; si el 3.A.4 se toca, puede añadir Pasinetti (1966) con la clave del 3.A.11 (opcional, sin entrada).
+- **Resuelto en el 3.A.4 (4/11/2026)**: su Word no trataba la controversia (solo Robinson y Harrod-Domar en una tabla de autores).
+
+Autor: Víctor Gutiérrez Marcos

@@ -1,0 +1,35 @@
+% El mercado de fondos prestables neoclásico: el ahorro (y el consumo, como
+% residuo) depende del tipo de interés. Elaboración propia a partir de
+% Fonseca (2026), The Neoclassical Macromodel (HET).
+%   oferta S(r): r = 0,8 + 0,818 (F - 0,8)
+%   demanda I(r) + G - T: r = 4,4 - 0,818 (F - 0,6)
+%   equilibrio: F = 2,9, r^n = 2,518
+%   sube G en 1,2: demanda r = 4,4 - 0,818 (F - 1,8); equilibrio F = 3,5,
+%     r^n_1 = 3,009; la demanda inicial a r^n_1 da F = 2,3: la inversión
+%     privada cae 0,6 y el ahorro sube 0,6 (el consumo cae 0,6)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.9]
+  % 1: ejes: fondos prestables y tipo de interés real
+  \capa{1}{\ejes{$S,\ I+G-T$}{$r$}{6.8}{5}}
+  % 2: oferta de fondos: el ahorro sube con r
+  \capa{2}{\draw[curva3] (0.8,0.8) -- (5.2,4.4) node[etiqueta,right] {$S(r)$};}
+  % 3: demanda de fondos: inversión más déficit público
+  \capa{3}{\draw[curva2] (0.6,4.4) -- (5,0.8) node[etiqueta,below] {$I(r)+G_0-T$};}
+  % 4: equilibrio: tipo de interés natural
+  \capa{4}{\node[punto] (E0) at (2.9,2.518) {};}
+  \capa{4}{\node[etiqueta,below left=2pt and 0pt] at (E0) {$E_0$};}
+  \capa{4}{\draw[guia] (0,2.518) node[left,text=black] {$r^n$} -| (2.9,0) node[below,text=black] {$S_0$};}
+  % 5: sube G: la demanda se desplaza a la derecha; sube el tipo, aumenta el
+  %    ahorro (cae el consumo) y cae la inversión privada (desplazamiento)
+  \capa{5}{\draw[curvanueva,desplazada] (1.8,4.4) -- (6.2,0.8) node[etiqueta,right] {$I(r)+G_1-T$};}
+  \capa{5}{\node[punto] (E1) at (3.5,3.009) {};}
+  \capa{5}{\node[etiqueta,right=3pt] at (E1) {$E_1$};}
+  \capa{5}{\draw[guia] (0,3.009) node[left,text=black] {$r^n_1$} -| (3.5,0) node[below,text=black] {$S_1$};}
+  \capa{5}{\node[circle,draw=tceeazul,fill=white,thick,inner sep=1.3pt] at (2.3,3.009) {};}
+  \capa{5}{\draw[flecha] (2.9,-1.0) -- (3.5,-1.0) node[right,etiqueta,font=\footnotesize,text=tceerojo] {más ahorro, menos consumo};}
+  \capa{5}{\draw[flecha] (2.9,-1.45) -- (2.3,-1.45) node[left,etiqueta,font=\footnotesize,text=tceerojo,align=right] {menos inversión\\privada};}
+\end{tikzpicture}
+\end{document}

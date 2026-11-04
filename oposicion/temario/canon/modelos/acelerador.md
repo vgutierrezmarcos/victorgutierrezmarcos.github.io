@@ -32,6 +32,7 @@ $$I_t=v\sum_{j=0}^{\infty}\beta_j\,\Delta Y_{t-j},\qquad\sum_{j}\beta_j=1$$
 | 1D01 | Dictamen de coyuntura | mención (hecho) | Brecha de producción y utilización de la capacidad como determinantes de la inversión | El modelo |
 
 ## Divergencias encontradas en el temario actual
+- 3.A.34 (revisado): el título de su I.2, «Teorías **pos**keynesianas: el acelerador» (l. 177), usa la ortografía «poskeynesiano»; el canon sigue la del título oficial del 3.A.4, «**post**keynesiano» (`notacion.md` § 14). Ahí significa «posteriores a Keynes» (Harrod, Samuelson, Hicks), no la escuela de Cambridge del 3.A.4: cosmético, `pendientes-coherencia.md`, «Pendiente del 3.A.4», **[decidir]**.
 - 3.A.34 original: Σβ_j = 0; multiplicador $1/(1-c-v)$ sin condiciones; v también como sensibilidad al tipo. **Resuelto** (31/10/2026).
 - 3.A.42 (sin revisar): comprobar que el multiplicador-acelerador usa $v$ (no otra letra) y la ecuación de Samuelson de arriba.
 

@@ -1,0 +1,52 @@
+% El modelo neoclásico (Fonseca, 2026; Heijdra, 2017, cap. 1): el mercado de
+% trabajo fija el empleo y, con la función de producción, la oferta agregada;
+% la cantidad de dinero solo fija el nivel de precios (neutralidad).
+% Misma escala y marco que keynesiano-shock.tex (3.A.28), para comparar.
+% Panel a, mercado de trabajo con el salario REAL w = W/P en el eje vertical:
+%   demanda  w = PMg_L = 8 - L/2;  oferta  w = 1 + L
+%   E = (L^c, w^c) = (14/3, 17/3)
+% Panel b, oferta y demanda agregadas:
+%   OA vertical en Y_F = F(L^c) = 7
+%   DA cuantitativa P = M V / Y:  M_0 V = 30 -> P_0 = 30/7 = 4,286
+%                                 M_1 V = 45 -> P_1 = 45/7 = 6,429
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.5cm,
+    declare function={dem(\l)=8-0.5*\l; of(\l)=1+\l; da(\y)=30/\y; dab(\y)=45/\y;}]
+  % Marco fijo (el mismo que keynesiano-shock.tex)
+  \path (-1.2,-3.6) rectangle (22.4,11.2);
+  % 1: ejes del panel a (L, w)
+  \capa{1}{\ejes{$L$}{$w=W/P$}{8.4}{9.8}}
+  \capa{1}{\node[etiqueta, font=\small\itshape, anchor=south] at (4.2,10.4) {a) Mercado de trabajo};}
+  % 2: demanda de trabajo, igual a la productividad marginal
+  \capa{2}{\draw[curva2] plot[domain=0:7.6] (\x,{dem(\x)}) node[etiqueta, right, text=tceeazul] {$L^D=\mathrm{PMg}_L$};}
+  % 3: oferta de trabajo, creciente con el salario real
+  \capa{3}{\draw[curva3] plot[domain=0:7.2] (\x,{of(\x)}) node[etiqueta, right, text=tceeverde] {$L^S(w)$};}
+  % 4: equilibrio E con pleno empleo L^c y salario real w^c
+  \capa{4}{\node[punto] (E) at ({14/3},{17/3}) {};}
+  \capa{4}{\node[etiqueta, above=2pt] at (E) {$E$};}
+  \capa{4}{\draw[guia] (0,{17/3}) node[left, text=black] {$w^c$} -| ({14/3},0) node[below, text=black] {$L^c$};}
+  \begin{scope}[xshift=10.2cm]
+    % 5: ejes del panel b (Y, P)
+    \capa{5}{\ejes{$Y$}{$P$}{8.6}{9.8}}
+    \capa{5}{\node[etiqueta, font=\small\itshape, anchor=south] at (4.3,10.4) {b) Oferta y demanda agregadas};}
+    % 6: oferta agregada vertical en Y_F = F(L^c)
+    \capa{6}{\draw[curva1] (7,0) -- (7,9.4) node[etiqueta, above, text=tceemorado] {$\mathit{OA}$};}
+    \capa{6}{\node[etiqueta, below] at (7,0) {$Y_F$};}
+    % 7: demanda agregada cuantitativa con M_0 y el precio P_0
+    \capa{7}{\draw[curva2] plot[domain={30/9.4}:8.4, samples=60] (\x,{da(\x)});}
+    \capa{7}{\node[etiqueta, above, text=tceeazul] at ({30/9.4},9.4) {$\mathit{DA}(M_0)$};}
+    \capa{7}{\node[punto] (F0) at (7,{30/7}) {};}
+    \capa{7}{\draw[guia] (F0) -- (0,{30/7}) node[left, text=black] {$P_0$};}
+    % 8: más dinero, M_1 > M_0: la DA sube y solo sube el precio, a P_1
+    \capa{8}{\draw[curvanueva, desplazada] plot[domain={45/9.4}:8.4, samples=60] (\x,{dab(\x)});}
+    \capa{8}{\node[etiqueta, above, text=tceerojo] at ({45/9.4},9.4) {$\mathit{DA}(M_1)$};}
+    \capa{8}{\node[punto] (F1) at (7,{45/7}) {};}
+    \capa{8}{\draw[guia] (F1) -- (0,{45/7}) node[left, text=black] {$P_1$};}
+    \capa{8}{\draw[flecha] (0.4,{30/7+0.15}) -- (0.4,{45/7-0.15});}
+    \capa{8}{\node[etiqueta, text=tceerojo, font=\footnotesize, anchor=west] at (0.5,{37.5/7}) {neutralidad};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

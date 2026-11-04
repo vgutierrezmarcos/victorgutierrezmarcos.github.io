@@ -1,0 +1,50 @@
+% El retorno de técnicas (Sraffa, 1960; Samuelson, 1966): fronteras
+% salario-beneficio de 2 técnicas.
+%   técnica alfa: w = 1 - r (recta)
+%   técnica beta: w = 0,9 [1 - (r/0,95)^2] (cóncava)
+%   cortes: (0,9/0,9025) r^2 - r + 0,1 = 0 -> r_1 = 0,1127 (w = 0,8873)
+%           y r_2 = 0,8901 (w = 0,1099)
+% La técnica elegida es la que paga más salario a cada tipo de beneficio (la
+% envolvente exterior): alfa con r < r_1, beta entre r_1 y r_2 y otra vez alfa
+% con r > r_2: la misma técnica vuelve a ser la más rentable.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=5.5cm,
+    declare function={wa(\r)=1-\r; wb(\r)=0.9*(1-(\r/0.95)^2);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.12,-0.3) rectangle (1.22,1.2);
+  % 1: ejes: tipo de beneficio y salario real
+  \capa{1}{\ejes{$r$}{$w$}{1.15}{1.15}}
+  % 2: frontera salario-beneficio de la técnica alfa
+  \capa{2}{\draw[curva2] (0,1) -- (1,0);}
+  \capa{2}{\node[etiqueta, left=4pt, text=tceeazul] at (0,1) {$1$};}
+  \capa{2}{\node[etiqueta, text=tceeazul, anchor=north east] at (0.58,{wa(0.58)}) {técnica $\alpha$};}
+  % 3: frontera de la técnica beta, cóncava
+  \capa{3}{\draw[curva3] plot[domain=0:0.95, samples=80] (\x,{wb(\x)});}
+  \capa{3}{\node[etiqueta, left=4pt, text=tceeverde] at (0,0.9) {$0{,}9$};}
+  \capa{3}{\node[etiqueta, text=tceeverde, anchor=south west] at (0.58,{wb(0.58)}) {técnica $\beta$};}
+  % 4: las 2 fronteras se cortan 2 veces, en r_1 y en r_2
+  \capa{4}{\node[punto] (C1) at (0.1127,0.8873) {};}
+  \capa{4}{\draw[guia] (C1) -- (0.1127,0) node[below, text=black] {$r_1$};}
+  \capa{4}{\node[punto] (C2) at (0.8901,0.1099) {};}
+  \capa{4}{\draw[guia] (C2) -- (0.8901,0) node[below, text=black] {$r_2$};}
+  \capa{4}{\node[etiqueta, below] at (1,0) {$1$};}
+  % 5: la técnica elegida, la envolvente exterior: alfa, beta y otra vez alfa
+  %    (en la capa de fondo, debajo de las 2 fronteras)
+  \capa{5}{\begin{pgfonlayer}{background}
+    \draw[tceemorado, line width=6pt, opacity=0.3, line cap=butt]
+      (0,1) -- (0.1127,0.8873)
+      plot[domain=0.1127:0.8901, samples=80] (\x,{wb(\x)})
+      -- (1,0);
+  \end{pgfonlayer}}
+  \capa{5}{\draw[decorate, decoration={brace, amplitude=3pt, mirror}, thick, tceemorado] (0.005,-0.12) -- (0.1077,-0.12)
+      node[midway, below=4pt, etiqueta, text=tceemorado] {$\alpha$};}
+  \capa{5}{\draw[decorate, decoration={brace, amplitude=4pt, mirror}, thick, tceemorado] (0.1177,-0.12) -- (0.8851,-0.12)
+      node[midway, below=4pt, etiqueta, text=tceemorado] {$\beta$};}
+  \capa{5}{\draw[decorate, decoration={brace, amplitude=3pt, mirror}, thick, tceemorado] (0.8951,-0.12) -- (1,-0.12)
+      node[midway, below=4pt, etiqueta, text=tceemorado] {$\alpha$};}
+  \capa{5}{\node[etiqueta, font=\footnotesize, text=tceemorado, anchor=west] at (1.03,-0.17) {técnica elegida};}
+\end{tikzpicture}
+\end{document}

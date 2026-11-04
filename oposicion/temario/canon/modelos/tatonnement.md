@@ -1,7 +1,7 @@
 # Estabilidad del equilibrio: ajuste walrasiano (precios) y marshalliano (cantidades)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.16 (Mercados I: dinámicas de ajuste y estabilidad; revisado el 17/10/2026, II.1.3)
-- **Temas que lo usan:** 3.A.16 (desarrollo, equilibrio parcial; hecho, 17/10/2026), 3.A.21 (resumen del ajuste en un mercado en el anexo D; **desarrollo del tanteo multimercado**, II.1.3; hecho, 14/10/2026); la telaraña (3.A.16) es otra dinámica, con ficha propia (`telarana`, creada el 17/10/2026). 3.A.14 (mención; hecho, 19/10/2026: la subasta de reloj como versión práctica del tanteo walrasiano, con el subastador de Walras hecho realidad, en III.3, con `\vertema{3.A.21}`).
+- **Temas que lo usan:** 3.A.16 (desarrollo, equilibrio parcial; hecho, 17/10/2026), 3.A.21 (resumen del ajuste en un mercado en el anexo D; **desarrollo del tanteo multimercado**, II.1.3; hecho, 14/10/2026); la telaraña (3.A.16) es otra dinámica, con ficha propia (`telarana`, creada el 17/10/2026). 3.A.14 (mención; hecho, 19/10/2026: la subasta de reloj como versión práctica del tanteo walrasiano, con el subastador de Walras hecho realidad, en III.3, con `\vertema{3.A.21}`). 3.A.4 (mención; hecho, 4/11/2026: el subastador ausente en el desequilibrio y, en el anexo A, el orden de Marshall —precios antes que cantidades— que Keynes invierte, la lectura de Leijonhufvud; ficha `desequilibrio`).
 - **Manuales de referencia:** Walras (1874); Marshall (1890); Samuelson (1941); Arrow, Block y Hurwicz (1959); Mas-Colell, Whinston y Green, cap. 17.H; Gandolfo, *Economic Dynamics*.
 
 ## Presentación de referencia
@@ -18,6 +18,7 @@ Gráficos de referencia: oferta con pendiente negativa más y menos inclinada qu
 |---|---|---|---|---|
 | 3.A.16 | Estabilidad en equilibrio parcial | desarrollo (hecho, 17/10/2026) | II.1.3 con a)-e): idea (local y global, correspondencia, Musgrave con el matiz), ambos ajustes con la interpretación en palabras antes de la fórmula, linealización, tabla y gráfico `estabilidad-parcial` del 3.A.21; c) la telaraña (ficha `telarana`); nota del tanteo acortada (Walras, *on y crie*, *bons* de la 4.ª ed., Smith) con remisión a 3.A.21 | La historia completa del tanteo y el tanteo multimercado (3.A.21) |
 | 3.A.21 | Estabilidad del EGC | desarrollo del tanteo multimercado; resumen del ajuste en un mercado (hecho, 14/10/2026) | II.1.3 con a)-e): tanteo con $\kappa_k$, distancia al equilibrio, Arrow-Block-Hurwicz, Scarf, procesos sin tanteo; la comparación walrasiano/marshalliano en un mercado va al anexo D con remisión a 3.A.16 | Los casos de equilibrio parcial en el cuerpo; la nota histórica del tanteo se queda en 3.A.21 (I.1) |
+| 3.A.4 | Keynes y el desequilibrio | mención (hecho, 4/11/2026) | III.2: sin subastador walrasiano se comercia a precios falsos y manda el lado corto; Leijonhufvud: en Keynes las cantidades se ajustan antes que los precios, al revés que en Marshall (anexo A, mercado de pescado), con `\vertema{3.A.21}` | Las condiciones de estabilidad |
 
 ## Divergencias encontradas en el temario actual
 - Nombres: «estabilidad walrasiana» y «marshalliana» se refieren aquí al **ajuste**; no confundir con demanda marshalliana (3.A.8): en 3.A.16 decir «ajuste walrasiano (por precios)» y «ajuste marshalliano (por cantidades)».
