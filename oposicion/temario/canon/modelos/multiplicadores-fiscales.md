@@ -1,7 +1,7 @@
 # Multiplicadores fiscales
 
 - **Área:** sector público · **Tema de referencia:** 3.A.40 para la teoría de los multiplicadores (keynesiano, IS-LM, NEK en el límite inferior); 4.B.4 para las definiciones empíricas (impacto, acumulado, máximo) y la evidencia, con un resumen de la teoría suficiente para cantarse sin el 3.A.40.
-- **Temas que lo usan:** 4.B.4 (resumen keynesiano + desarrollo empírico), 3.A.38 (desarrollo), 3.A.40 (desarrollo previsto), 4.A.11 (mención: inversión pública, Plan E), 4.B.26 (mención: consolidación), 3.A.33 (mención; hecho, 31/10/2026: con hogares sin liquidez el multiplicador es mayor, Galí, López-Salido y Vallés, 2007, `\vertema{3.A.40}`; ficha `restricciones-liquidez`)
+- **Temas que lo usan:** 4.B.4 (resumen keynesiano + desarrollo empírico), 3.A.38 (desarrollo), 3.A.40 (desarrollo previsto), 4.A.11 (mención: inversión pública, Plan E), 4.B.26 (mención: consolidación), 3.A.33 (mención; hecho, 31/10/2026: con hogares sin liquidez el multiplicador es mayor, Galí, López-Salido y Vallés, 2007, `\vertema{3.A.40}`; ficha `restricciones-liquidez`). También 3.A.7 (mención; hecho, 4/11/2026: III.1.2, el multiplicador es mayor cuanto más rígidos los precios, más persistente el gasto y más acomodaticio el banco central, y en el límite inferior puede superar con creces la unidad, Woodford, 2011, y Christiano, Eichenbaum y Rebelo, 2011; III.2, Romer y Romer, 2010, y Perotti, 2011; `\vertema{3.A.40}`).
 - **Manuales de referencia:** Blanchard, cap. 3 y 22; Romer, *Advanced Macroeconomics*, cap. 12; Ramey (2019), «Ten years after the financial crisis: what have we learned from the renaissance in fiscal research?», *JEP*; Blanchard y Leigh (2013); Christiano, Eichenbaum y Rebelo (2011); Galí, López-Salido y Vallés (2007); Hall (2009).
 - **Decisión D052 (13/10/2026):** ¿Cuál es el tema de referencia de los multiplicadores fiscales? 3.A.40 para la teoría (keynesiano, IS-LM, NEK en el límite inferior) y 4.B.4 para las definiciones empíricas y la evidencia
 
@@ -22,6 +22,7 @@ $$m^{\,t}_t=\frac{\Delta Y_t}{\Delta G_t},\qquad m^{\,t+k}_t=\frac{\Delta Y_{t+k
 | 3.A.38 / 3.A.40 | Efectividad de la política fiscal | Desarrollo | Teoría por escuelas y en el ELB | Datos de España |
 | 4.A.11 | Construcción | Mención | Multiplicador de la inversión pública (Plan E) | — |
 | 3.A.33 | Consumo | mención (hecho, 31/10/2026) | El multiplicador depende de la fracción de hogares *hand-to-mouth* (λ de Campbell y Mankiw); `tab:implicaciones` | El cálculo |
+| 3.A.7 | Política fiscal en la NEK | mención (hecho, 4/11/2026) | Los 3 mecanismos (riqueza, rigidez de precios con margen contracíclico, respuesta del banco central); el multiplicador en el límite inferior; `\vertema{3.A.40}` | La evidencia |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.4: la sensibilidad de la inversión al tipo de interés es $v$ en las ecuaciones y $b$ en el texto; el texto dice que con presupuesto equilibrado $\Delta Y<\Delta G$ por desplazamiento y la nota 13 da el multiplicador de Haavelmo $=1$ sin aclarar que difieren por la inversión endógena.

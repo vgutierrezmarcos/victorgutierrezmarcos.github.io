@@ -1,0 +1,43 @@
+% Casi racionalidad (Akerlof y Yellen, 1985): la pérdida de no ajustar el
+% precio tras una perturbación es de segundo orden. Plano (p, B).
+% Misma empresa que costes-menu.tex (CMg = 2; D: p = 10 - q; D': p = 8 - q;
+% con precios en decenas de euros es el monopolista del ejemplo del test de
+% 2021, CMg = 20 y p = 100 - 10q, que parte de q = 4, p = 60):
+%   B_0(p) = (p - 2)(10 - p) = 16 - (p - 6)^2   máximo en p_0 = 6, B = 16
+%   B_1(p) = (p - 2)(8 - p)  =  9 - (p - 5)^2   máximo en p*_1 = 5, B = 9
+%   B_1(p_0) = 8: pérdida de no ajustar = 9 - 8 = 1 = (p_0 - p*_1)^2
+%   (es el triángulo de costes-menu.tex, área 1)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.36cm,
+    declare function={bcero(\p)=16-(\p-6)^2; buno(\p)=9-(\p-5)^2;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.3,-1.6) rectangle (10.4,18.6);
+  % 1: ejes (p, B)
+  \capa{1}{\ejes{$p$}{$B$}{9.6}{18.4}}
+  % 2: beneficio antes de la perturbación, máximo en p_0
+  \capa{2}{\draw[curva1] plot[domain=2.5:8.5, samples=80, smooth] (\x,{bcero(\x)})
+      node[etiqueta, right, text=tceemorado] {$B_0(p)$};}
+  \capa{2}{\draw[guia] (6,16) -- (6,0) node[below, text=black] {$p_0$};}
+  \capa{2}{\node[punto] at (6,16) {};}
+  % 3: beneficio tras la caída de la demanda, máximo en p*_1 < p_0
+  \capa{3}{\draw[curvanueva] plot[domain=2.5:7.75, samples=80, smooth] (\x,{buno(\x)})
+      node[etiqueta, right, text=tceerojo] {$B_1(p)$};}
+  \capa{3}{\draw[guia] (5,9) -- (5,0) node[below, text=black] {$p^*_1$};}
+  \capa{3}{\node[punto] at (5,9) {};}
+  % 4: en el óptimo, la curva es plana (tangente horizontal), y su nivel
+  \capa{4}{\draw[thin, tceerojo] (3.7,9) -- (6.3,9);}
+  \capa{4}{\draw[guia] (0,9) -- (3.7,9);}
+  \capa{4}{\node[left] at (0,9) {$B_1(p^*_1)$};}
+  % 5: si no ajusta, la empresa se queda en B_1(p_0): pierde poco
+  \capa{5}{\node[punto] at (6,8) {};}
+  \capa{5}{\draw[guia] (0,8) -- (6,8);}
+  \capa{5}{\node[left] at (0,7.7) {$B_1(p_0)$};}
+  \capa{5}{\draw[thick, decorate, decoration={brace, amplitude=3pt, mirror}]
+      (6.12,8) -- (6.12,9);}
+  \capa{5}{\node[etiqueta, right, align=left, font=\footnotesize] at (6.3,8.5)
+      {pérdida de\\2.º orden};}
+\end{tikzpicture}
+\end{document}

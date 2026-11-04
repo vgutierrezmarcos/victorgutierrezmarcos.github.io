@@ -1,0 +1,52 @@
+# Costes de menú y casi racionalidad (Mankiw, 1985; Akerlof y Yellen, 1985)
+
+- **Área:** pensamiento · **Tema de referencia:** **3.A.7** (La nueva economía keynesiana; revisado el 4/11/2026: I.2.1 `sec:rigideces-nominales`, párrafos «Casi racionalidad» y «Costes de menú», los 2 con a)-e)) — son los modelos de la NEK de 1.ª generación que explican por qué una empresa racional no ajusta su precio, y el 3.A.7 es el único tema que los desarrolla con gráfico y ejemplo. Ficha creada en la fase canon del 3.A.7 (CC5, **[decidir]**); recoge los ids `casi-racionalidad` y `rotemberg-1982` (alias). Alternativa propuesta en C43 de contenido: 2 fichas (`costes-de-menu` y `casi-racionalidad`); se juntan porque en el 3.A.7 la casi racionalidad es el paso previo (la pérdida de segundo orden) y los costes de menú la cierran.
+- **Temas que lo usan:** 3.A.7 (desarrollo; hecho, 4/11/2026), 3.A.37 (resumen: rigideces de precios como mecanismo de transmisión, junto a Calvo y los contratos escalonados), 3.A.41 (mención: los costes de menú como coste de la inflación anticipada), 3.A.36 y 3.A.42 (mención: por qué el dinero no es neutral a corto plazo), 3.A.27 (mención; hecho, 31/10/2026: III.2, «la rigidez nominal que importa para la política monetaria tiene otras causas, como los costes de menú o los contratos escalonados», `\vertema{3.A.7}`), 3.A.4 (mención; hecho, 4/11/2026: el legado del desequilibrio, «costes de menú, salarios de eficiencia, contratos», `\vertema{3.A.7}`). Relacionadas: `blanchard-kiyotaki` (la versión de equilibrio general), `rigideces-reales` (Ball y Romer, 1990: lo que hace grande la rigidez), `fischer-taylor-contratos` (reglas de tiempo y de estado), `nek-3-ecuaciones` (Calvo y la versión cuadrática de Rotemberg, 1982), `monopolio` (IMg = CMg, `\vertema{3.A.17}`).
+- **Manuales de referencia:** Mankiw (1985), «Small Menu Costs and Large Business Cycles», *QJE* 100(2) (`Mankiw1985Small`); Akerlof y Yellen (1985a), «A Near-Rational Model of the Business Cycle…», *QJE* 100 (`AkerlofYellen1985NearRational`), y (1985b), *AER* 75(4) (`AkerlofYellen1985Small`); Akerlof y Yellen (1991), reglas sencillas (`AkerlofYellen1991RuleThumb`; una sola fuente, sin páginas: A07-08); Rotemberg (1982), *RES* (`Rotemberg1982Monopolistic`); Romer (1993), «The New Keynesian Synthesis», *JEP* 7(1) (`Romer1993New`); Romer (2019), *Advanced Macroeconomics*, cap. 7; Blinder *et al.* (1998), *Asking About Prices* (`BlinderEtAl1998Asking`); Bils y Klenow (2004); Gautier *et al.* (2026), BCE WP 3181 (`GautierEtAl2026WP3181`).
+
+## Presentación de referencia (3.A.7, I.2.1)
+
+**Pregunta:** ¿por qué una empresa perfectamente racional puede no ajustar su precio ante una perturbación de la demanda, y por qué eso importa tanto para el bienestar y el ciclo?
+
+**Idea común:** «grandes efectos de pequeñas desviaciones» (Romer, 1993): lo que para cada empresa es una pérdida de **segundo orden** puede sumar una caída de la producción de **primer orden**. Con competencia **imperfecta** (con competencia perfecta, quien no ajusta pierde todas sus ventas).
+
+**1. Casi racionalidad (Akerlof y Yellen, 1985)**, a)-c):
+- *Supuestos*: empresas en competencia monopolística en su precio óptimo $p_0$; una parte es casi racional (no ajusta si la pérdida es pequeña).
+- *Desarrollo*: si cae la demanda, el nuevo óptimo es $p^*_1<p_0$; con un desarrollo de Taylor de segundo orden del beneficio alrededor de $p^*_1$ (donde $B'(p^*_1)=0$):
+  $$B(p^*_1)-B(p_0)\approx-\tfrac12\,B''(p^*_1)\,(p^*_1-p_0)^2\qquad\texttt{(eq:perdida-segundo-orden)}$$
+  proporcional al **cuadrado** de la perturbación (teorema de la envolvente: en el óptimo la curva de beneficio es plana).
+- *Valoración*: estático y parte del óptimo (Akerlof y Yellen, 1991, responden que las reglas sencillas pierden poco también en dinámica); no explica por qué se elige precisamente no cambiar el precio (Romer, 1993): lo cierran los costes de menú.
+
+**2. Costes de menú (Mankiw, 1985)**, a)-e):
+- *Idea*: todos los costes de cambiar un precio, **administrativos** (etiquetas, listas; decidir el nuevo precio) y **no administrativos** (enfadar a los clientes, desatar una guerra de precios), tomados como un coste fijo y exógeno **$z$** (local) cada vez que se cambia. «Pequeños costes de menú, grandes ciclos».
+- *Supuestos*: monopolista con CMg constante y demanda lineal en su óptimo $A=(q_0,p_0)$, IMg = CMg (`\vertema{3.A.17}`); la demanda cae de $D$ a $D'$ por sorpresa; cambiar el precio cuesta $z$.
+- *Desarrollo*: **ajustar** (C: $p^*_1<p_0$, IMg′ = CMg, $q^*_1$) o **no ajustar** (B: $p_0$, $q_2<q^*_1$). La ganancia privada de ajustar es el triángulo entre IMg′ y CMg de $q_2$ a $q^*_1$; ajusta solo si
+  $$B(p^*_1)-B(p_0)>z\qquad\texttt{(eq:costes-menu)}$$
+  El tamaño del triángulo depende del **entorno real**: pendiente del CMg (con rendimientos decrecientes el CMg baja mucho al caer la producción: triángulo grande, ajusta) y desplazamiento del IMg (si la elasticidad cae en la recesión, menos incentivo).
+- *Implicaciones*: con $z$ pequeño puede ser óptimo **ajustar por cantidades** con agentes racionales; el efecto sobre el bienestar es de **primer orden** (cada unidad no vendida vale $p_0-\mathrm{CMg}>0$; la pérdida social es el área entre $D'$ y CMg de $q_2$ a $q^*_1$), mucho mayor que lo que se ahorra la empresa; sin competencia imperfecta no hay margen y no hay efecto. **Nunca** «si los precios permanecen estáticos, la pérdida social será mayor que la individual» como regla general: el signo del efecto de bienestar depende del de la perturbación (con una subida, quien no ajusta vende **más** y el excedente total sube).
+- *Ejemplo numérico* (pregunta 18 del primer ejercicio de julio de 2021, `preguntas.json` id 213): CMg = 20, $p=100-10q$ ($q=4$, $p=60$); la demanda sube a $p=200-10q$; ajustar: $q=9$, $p=110$, $B=810$; no ajustar: $q=14$, $B=560$; mantiene el precio si $z\geq 250$; el excedente total pasa de 1.215 a 1.540. El gráfico de referencia es la misma empresa con los precios en decenas ante una **caída** ($p=100-10q$ → $p=80-10q$): ajustar da 10 más de beneficio y no ajustar cuesta 35 a la sociedad (A07-21).
+- *Extensiones*: Blanchard y Kiyotaki (1987), al equilibrio general (ficha `blanchard-kiyotaki`); Ball y Romer (1990), con rigideces reales (ficha `rigideces-reales`); **Rotemberg (1982)**, versión dinámica con coste **cuadrático** de cambiar el precio, que a primer orden da la misma NKPC que Calvo (ficha `nek-3-ecuaciones`).
+- *Evidencia*: en las encuestas los costes de menú en sentido estricto pesan poco frente a la coordinación, los contratos y los clientes (Blinder *et al.*, 1998); con microdatos los precios cambian poco: mediana de 4,3 meses en EE. UU. (Bils y Klenow, 2004); en la zona del euro, sin rebajas, cambia cada mes el **8 %** (2010-2019) y el **12 %** en 2022 (Gautier *et al.*, 2026, tabla B1; gráfico `frecuencia-precios`).
+- *Valoración*: fundamento micro de la rigidez nominal; pero como en las recesiones el CMg cae mucho, con costes de menú realistas la rigidez solo es grande si hay además **rigideces reales** (Romer, 1993; Ball y Romer, 1990). Críticas (caja del 3.A.7): también cuesta ajustar la producción; una perturbación **permanente** acaba pasando a los precios (explican la rigidez ante perturbaciones **pequeñas y transitorias**); equilibrios múltiples con y sin ajuste (Ball y Romer, 1990).
+
+**Gráficos de referencia** (`oposicion/temario/fuentes/3A07/graficos/`): `costes-menu.tex` (**imprescindible**, por capas: ejes → CMg → $D$ e IMg → A → $D'$ e IMg′ → C → B → triángulo de la ganancia privada → trapecio de la pérdida social; precios en decenas, los mismos números que el ejemplo) y `casi-racionalidad.tex` (apoyo: la curva de beneficio plana en el óptimo, con los mismos números); de datos, `frecuencia-precios.tex` (8 % → 12 % → 8,6 % en 2024, con la referencia de EE. UU.).
+
+**Notación:** $z$ coste de menú (local, avisado en `notacion.md` § 1, z); $B(p)$ beneficio; $p_0$, $p^*_1$, $q_0$, $q^*_1$, $q_2$; CMg, IMg en redonda; puntos A, B, C.
+
+## Cómo se adapta en cada tema
+
+| Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
+|---|---|---|---|---|
+| 3.A.7 | Por qué no se ajustan los precios (NEK de 1.ª generación) | desarrollo (hecho, 4/11/2026) | Todo lo anterior: casi racionalidad con `eq:perdida-segundo-orden` y el gráfico de apoyo; costes de menú con a)-e), `eq:costes-menu`, el gráfico por capas y el ejemplo de 2021; críticas en la caja | — |
+| 3.A.37 | Rigideces de precios en la transmisión | resumen | Por qué los precios son rígidos (costes de menú, casi racionalidad) en 2-3 líneas, con `\vertema{3.A.7}`; lo que el 3.A.37 desarrolla es cómo se agregan (Fischer, Taylor, Calvo) | El gráfico y el ejemplo |
+| 3.A.41 | Costes de la inflación | mención | Los costes de menú como coste de la inflación anticipada (cambiar precios más a menudo) y como fuente de dispersión de precios relativos; `\vertema{3.A.7}` | El modelo |
+| 3.A.36, 3.A.42 | Política monetaria; ciclos nominales | mención | La no neutralidad a corto plazo con rigidez nominal microfundamentada; `\vertema{3.A.7}` | El modelo |
+| 3.A.27 | Determinación de salarios | mención (hecho, 31/10/2026) | Los contratos implícitos estabilizan el salario real; la rigidez nominal tiene otras causas (costes de menú, contratos escalonados), `\vertema{3.A.7}` | — |
+| 3.A.4 | Keynes y el desequilibrio | mención (hecho, 4/11/2026) | Legado del desequilibrio: la NEK explica con microfundamentos la rigidez (costes de menú, salarios de eficiencia, contratos) | — |
+
+## Divergencias encontradas en el temario actual
+
+- **Resuelto en el 3.A.7 (4/11/2026)**: «si los precios permanecen estáticos, la pérdida social será mayor que la individual» (el efecto es de primer orden y su signo depende de la perturbación); «si el *shock* se percibe como permanente el ajuste sería más rápido» presentado como crítica (es una implicación); equilibrios «extremos y estables»; las 2 imágenes del Word sin números coherentes (rehechas en TikZ con los mismos números); el gráfico (caída de la demanda) y el ejemplo del test (subida) quedan los 2, con la explicación (A07-21).
+- **3.A.41 (sin revisar)**: cita los costes de menú entre los costes de la inflación (3 veces): al revisarlo, mención con `\vertema{3.A.7}`, sin repetir el modelo.
+
+Autor: Víctor Gutiérrez Marcos

@@ -1,0 +1,66 @@
+% Una historia de la macroeconomía en escuelas: línea del tiempo de 1930 a
+% 2025, una banda por escuela con su tramo aproximado. Esquema propio a
+% partir de De Vroey (2016, recuadro 0.1 y tabla 0.1), sin copiar su diseño.
+% La NEK (1.ª y 2.ª generación) va resaltada en morado y el resto en gris;
+% para reutilizarlo en 3.A.4, 3.A.5 o 3.A.6 basta con cambiar el estilo de
+% las bandas (bandaresalte / bandagris) y resaltar su tramo.
+%   Keynes 1936 | síntesis 1937-1970 | monetarismo 1956-1982
+%   desequilibrio 1965-1980 | NMC 1972-1982 | ciclo real 1982 -> EGDE
+%   NEK 1.ª 1977-1990 | nueva síntesis 1997-2008 | NEK 2.ª 1990-
+%   tras 2008: fricciones financieras, HANK
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.15cm,y=-0.62cm,
+    bandagris/.style={fill=tceegris!22, draw=tceegris, thin},
+    bandaresalte/.style={fill=tceemorado, draw=tceemorado!70!black, thin},
+    dentro/.style={font=\footnotesize, anchor=west, inner sep=2pt},
+    fuera/.style={font=\footnotesize, anchor=west, inner sep=2pt},
+    influye/.style={->, thick, black!75}]
+  % \banda{estilo}{fila}{desde}{hasta}
+  \newcommand{\banda}[4]{\draw[#1] (#3,#2-0.32) rectangle (#4,#2+0.32);}
+  \begin{scope}[shift={(-1930,0)}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (1926,-1.3) rectangle (2031,10.9);
+  % 1: el eje del tiempo, con marcas cada década
+  \capa{1}{\draw[eje] (1930,9.8) -- (2029,9.8);}
+  \capa{1}{\foreach \a in {1930,1940,...,2020}
+      {\draw (\a,9.7) -- (\a,9.9) node[below, font=\footnotesize] {\a};}}
+  % 2: Keynes y la síntesis neoclásica
+  \capa{2}{\banda{bandagris}{0}{1936}{1939}}
+  \capa{2}{\node[fuera] at (1939.3,0) {Keynes, \emph{Teoría general} (1936)};}
+  \capa{2}{\banda{bandagris}{1}{1937}{1970}}
+  \capa{2}{\node[dentro] at (1937,1) {síntesis neoclásica (IS-LM)};}
+  % 3: monetarismo y desequilibrio
+  \capa{3}{\banda{bandagris}{2}{1956}{1982}}
+  \capa{3}{\node[dentro] at (1956,2) {monetarismo};}
+  \capa{3}{\banda{bandagris}{3}{1965}{1980}}
+  \capa{3}{\node[fuera] at (1980.3,3) {desequilibrio};}
+  % 4: nueva macroeconomía clásica, ciclo real y EGDE
+  \capa{4}{\banda{bandagris}{4}{1972}{1982}}
+  \capa{4}{\node[fuera] at (1982.3,4) {nueva macroeconomía clásica};}
+  \capa{4}{\banda{bandagris}{5}{1982}{2025}}
+  \capa{4}{\node[dentro] at (1982,5) {ciclo real $\rightarrow$ EGDE};}
+  \capa{4}{\draw[influye] (1979,4.32) to[bend right=25] (1983.5,4.68);}
+  % 5: NEK de 1.ª generación, heredera de la síntesis
+  \capa{5}{\banda{bandaresalte}{6}{1977}{1990}}
+  \capa{5}{\node[font=\footnotesize, anchor=east, inner sep=2pt] at (1976.6,6) {NEK de 1.ª generación};}
+  \capa{5}{\draw[influye] (1968,1.32) to[out=-80, in=95] (1979,5.66);}
+  % 6: NEK de 2.ª generación y nueva síntesis, hasta la crisis de 2008
+  \capa{6}{\banda{bandaresalte}{8}{1990}{2025}}
+  \capa{6}{\node[dentro, text=white] at (1990,8) {NEK de 2.ª generación};}
+  \capa{6}{\draw[influye] (1985,6.32) to[bend right=20] (1989.6,8);}
+  \capa{6}{\banda{bandaresalte}{7}{1997}{2008}}
+  \capa{6}{\node[fuera] at (2008.4,7) {nueva síntesis};}
+  \capa{6}{\draw[influye] (1999,5.32) -- (1999,6.68);}
+  \capa{6}{\draw[influye] (2003,7.68) -- (2003,7.32);}
+  \capa{6}{\draw[guia] (2008,-0.6) -- (2008,9.8);}
+  \capa{6}{\node[font=\footnotesize, anchor=south, text=tceegris] at (2008,-0.6) {2008: crisis financiera};}
+  % 7: desarrollos tras 2008
+  \capa{7}{\banda{bandagris}{9}{2008}{2025}}
+  \capa{7}{\node[font=\footnotesize, anchor=east, inner sep=2pt, align=right] at (2007.4,9)
+      {tras 2008: fricciones financieras, HANK};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

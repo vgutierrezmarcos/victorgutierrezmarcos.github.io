@@ -1,0 +1,35 @@
+% La NAIRU en el modelo de fijación de salarios y precios (Layard, Nickell y
+% Jackman, 1991): plano (U, W/P), WS decreciente y PS horizontal; su corte da
+% U^n. Gráfico de referencia de la ficha «nairu-layard-nickell» del canon.
+% CÓDIGO BASE COMÚN de ws-ps, ws-ps-desplazamientos y el panel a de
+% nairu-demanda-pasos: misma función, escala y puntos.
+%   WS:  W/P = g(U) = 1 + 5,2 e^{-0,3 U}   (decreciente y convexa)
+%   PS:  W/P = PAT/(1+mu) = g(4) = 2,5662  =>  U^n = 4
+%   Brecha a la izquierda de U^n: en U = 2, WS = g(2) = 3,8538 > PS
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm,
+    declare function={g(\u)=1+5.2*exp(-0.3*\u);}]
+  \def\h{2.5662}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.7,-0.8) rectangle (12.6,6.4);
+  % 1: ejes (U, W/P)
+  \capa{1}{\ejes{$U$}{$W/P$}{8.6}{6.1}}
+  % 2: curva de fijación de salarios
+  \capa{2}{\draw[curva1] plot[domain=0.55:8.2, samples=80, smooth] (\x,{g(\x)})
+      node[etiqueta, right, text=tceemorado, align=left] {WS: $\dfrac{W}{P^e}=F(U,Z)\cdot\mathrm{PAT}^e$};}
+  % 3: curva de fijación de precios, horizontal, con su cota
+  \capa{3}{\draw[curva2] (0,\h) node[left, text=black] {$\dfrac{\mathrm{PAT}}{1+\mu}$} -- (8.2,\h)
+      node[etiqueta, right, text=tceeazul] {PS: $\dfrac{W}{P}=\dfrac{\mathrm{PAT}}{1+\mu}$};}
+  % 4: el equilibrio E y la NAIRU
+  \capa{4}{\node[punto] (E) at (4,\h) {};}
+  \capa{4}{\node[etiqueta, above right=1pt and 1pt] at (E) {$E$};}
+  \capa{4}{\draw[guia] (E) -- (4,0) node[below, text=black] {$U^n$ (NAIRU)};}
+  % 5: con U < U^n, los trabajadores piden más de lo que dejan las empresas
+  \capa{5}{\draw[flecha, <->] (2,{\h+0.06}) -- (2,{g(2)-0.06});}
+  \capa{5}{\node[etiqueta, text=tceerojo, align=center, anchor=north, font=\footnotesize] at (2,{\h-0.12})
+      {pretensiones\\incompatibles\\($U<U^n$)};}
+\end{tikzpicture}
+\end{document}

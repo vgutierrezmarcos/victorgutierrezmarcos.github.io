@@ -1,7 +1,7 @@
 # Crítica de Lucas (1976)
 
 - **Área:** pensamiento · **Tema de referencia:** 3.A.6 (La nueva macroeconomía clásica) — está en el título.
-- **Temas que lo usan:** 3.A.6 (desarrollo), 3.A.1 (mención: ejemplo de cambio de paradigma y de crítica a la econometría). Debería citarse también en 3.A.7 (los EGDE con parámetros estructurales como respuesta) y 3.A.36 (evaluación de reglas).. 3.A.33 (mención; hecho, 31/10/2026: en las implicaciones de Hall, II.1, la Euler no depende de la política y se estima directamente, `\vertema{3.A.6}`). También 3.A.5 (mención; hecho, 3/11/2026: I.2 e), última crítica del IS-LM: estático y sin microfundamentos, sus parámetros cambian con la política; III.2, de las adaptativas a las racionales; `\vertema{3.A.6}`).
+- **Temas que lo usan:** 3.A.6 (desarrollo), 3.A.1 (mención: ejemplo de cambio de paradigma y de crítica a la econometría). 3.A.7 (mención; hecho, 4/11/2026: introducción, la crítica de Lucas, 1976, en la contextualización; II.1, los microfundamentos de la 2.ª generación como respuesta, porque los parámetros de preferencias y tecnología no cambian con la política; II.2, la IS dinámica es estructural y la crítica no la alcanza; `\vertema{3.A.6}`). Debería citarse también en 3.A.36 (evaluación de reglas). 3.A.33 (mención; hecho, 31/10/2026: en las implicaciones de Hall, II.1, la Euler no depende de la política y se estima directamente, `\vertema{3.A.6}`). También 3.A.5 (mención; hecho, 3/11/2026: I.2 e), última crítica del IS-LM: estático y sin microfundamentos, sus parámetros cambian con la política; III.2, de las adaptativas a las racionales; `\vertema{3.A.6}`).
 - **Manuales de referencia:** Lucas (1976), «Econometric Policy Evaluation: A Critique», *Carnegie-Rochester* 1; Romer (2019), cap. 7; Heijdra (2017), cap. 3; De Vroey (2016), cap. 10.
 
 ## Presentación de referencia
@@ -24,9 +24,10 @@
 | 3.A.1 | Métodos de la ciencia económica | Mención | Como ejemplo de cambio de paradigma (Kuhn) y del debate sobre la econometría | El ejemplo formal |
 | 3.A.33 | Consumo | mención (hecho, 31/10/2026) | Una función de consumo estimada con una política no sirve para otra; la Euler de Hall, sí | La crítica en general |
 | 3.A.5 | Síntesis y monetarismo | mención (hecho, 3/11/2026) | Crítica de los modelos macroeconométricos de la síntesis (Lucas, 1976) en la valoración del IS-LM, con `\vertema{3.A.6}` | El ejemplo formal |
+| 3.A.7 | NEK de 2.ª generación | mención (hecho, 4/11/2026) | Los EGDE con parámetros estructurales como respuesta (II.1); la IS dinámica, a diferencia de la de la síntesis, no la alcanza (II.2); `\vertema{3.A.6}` | La crítica formalizada |
 
 ## Divergencias encontradas en el temario actual
 
-- Sin conflictos de notación. 3.A.6 la formaliza con Y_t = β̂_0 + β̂_1 m_{t−1} + ε_t: correcto; usar **y_t** en minúscula si se trabaja en logaritmos. Falta remisión desde 3.A.7 y 3.A.36.
+- Sin conflictos de notación. 3.A.6 la formaliza con Y_t = β̂_0 + β̂_1 m_{t−1} + ε_t: correcto; usar **y_t** en minúscula si se trabaja en logaritmos. Falta remisión desde 3.A.36 (la del 3.A.7, hecha el 4/11/2026).
 
 Autor: Víctor Gutiérrez Marcos

@@ -1,7 +1,7 @@
 # Modelo de información imperfecta de Lucas (1972, 1973): islas de Phelps y curva de oferta de Lucas
 
 - **Área:** pensamiento · **Tema de referencia:** 3.A.6 (La nueva macroeconomía clásica) — es el modelo fundacional de la NMC y combina expectativas racionales con neutralidad del dinero anticipado.
-- **Temas que lo usan:** 3.A.6 (desarrollo), 3.A.37 (resumen: neutralidad del dinero anticipado; hoy desarrollo), 3.A.41 (mención; hoy desarrollo), 3.A.42 (resumen: ciclos nominales de equilibrio; hoy mención). También 3.A.5 (mención; hecho, 3/11/2026: II.2.2 y III.2: con las racionales, Lucas (1972) llega a una conclusión aún más dura contra la estabilización, `\vertema{3.A.6}`).
+- **Temas que lo usan:** 3.A.6 (desarrollo), 3.A.37 (resumen: neutralidad del dinero anticipado; hoy desarrollo), 3.A.41 (mención; hoy desarrollo), 3.A.42 (resumen: ciclos nominales de equilibrio; hoy mención). También 3.A.5 (mención; hecho, 3/11/2026: II.2.2 y III.2: con las racionales, Lucas (1972) llega a una conclusión aún más dura contra la estabilización, `\vertema{3.A.6}`). También 3.A.7 (mención; hecho, 4/11/2026: contextualización y I.3, en la NMC solo la política no anticipada mueve la producción, Lucas, 1972; en la NEK, también la anticipada).
 - **Manuales de referencia:** Lucas (1972), *JET* 4; Lucas (1973), *AER* 63; Phelps (1970); Romer (2019), cap. 6.9; Blanchard y Fischer (1989), cap. 7; Heijdra (2017), cap. 3; De Vroey (2016), cap. 9.
 - **Decisión D036 (13/10/2026):** ¿Cómo se escriben el coeficiente de extracción de señal y la respuesta de la producción en el modelo de islas de Lucas? ω = σ²_z/(σ²_z+σ²_p) y ψ ≡ ω·ε_S en y_t = y^n_t + ψ(p_t − p^e_t)
 
@@ -32,6 +32,7 @@ $$y_t = y^n_t + \psi\,(p_t - p^e_t),\qquad \psi = \omega\,\varepsilon_S,\quad p^
 | 3.A.41 | Inflación | Mención | Inflación volátil → menor efecto real de la política; coste informativo de la inflación (confusión de precios relativos) | El modelo |
 | 3.A.42 | Ciclos nominales y reales | Resumen | Ciclo nominal de equilibrio; por qué cayó (información sobre p disponible pronto; persistencia) | La derivación |
 | 3.A.5 | Síntesis y monetarismo | mención (hecho, 3/11/2026) | La puerta de la nueva macroeconomía clásica tras la curva aumentada (Lucas, 1972), con `\vertema{3.A.6}` | El modelo |
+| 3.A.7 | NEK | mención (hecho, 4/11/2026) | Solo lo no anticipado mueve la producción en la NMC (Lucas, 1972); en la NEK, perturbaciones anticipadas o no, porque los precios se fijaron antes; `\vertema{3.A.6}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 

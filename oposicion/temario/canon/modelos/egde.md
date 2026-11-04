@@ -1,7 +1,7 @@
 # Surgimiento de los modelos de equilibrio general dinámico estocástico (EGDE)
 
 - **Área:** pensamiento · **Tema de referencia:** 3.A.6 (La nueva macroeconomía clásica… el surgimiento de los EGDE) — está en el título.
-- **Temas que lo usan:** 3.A.6 (desarrollo; hoy resumen limitado a las características del RBC), 3.A.1 (mención: macro microfundamentada). Conectan con 3.A.7 (EGDE neokeynesianos), 3.A.42 (RBC) y 3.A.29 (modelización dinámica).
+- **Temas que lo usan:** 3.A.6 (desarrollo; hoy resumen limitado a las características del RBC), 3.A.1 (mención: macro microfundamentada). 3.A.7 (mención; hecho, 4/11/2026: II.1, el método de la 2.ª generación como «apalancamiento sobre la nueva macroeconomía clásica», el EGDE con sus 4 letras más competencia monopolística y rigideces; De Vroey, 2016: el ciclo real y la NEK como 2 transformaciones del programa EGDE; Smets y Wouters, 2003 y 2007, en los bancos centrales; `\vertema{3.A.6}`). Conectan con 3.A.42 (RBC) y 3.A.29 (modelización dinámica).
 - **Manuales de referencia:** Kydland y Prescott (1982), *Econometrica*; Smets y Wouters (2003, 2007); Christiano, Eichenbaum y Evans (2005); Galí (2015), cap. 1; Romer (2019), cap. 5; De Vroey (2016), caps. 12-18.
 
 ## Presentación de referencia
@@ -22,6 +22,7 @@
 |---|---|---|---|---|
 | 3.A.6 | La NMC y el surgimiento de los EGDE | Desarrollo | Características, secuencia RBC → NEK → Smets-Wouters → HANK, métodos (calibración, estimación) y críticas (Romer 2016, Stiglitz 2018) | Las ecuaciones del RBC (resumen y remisión a 3.A.42) |
 | 3.A.1 | Métodos | Mención | Como paradigma dominante y su crítica tras 2008 | — |
+| 3.A.7 | NEK de 2.ª generación | mención (hecho, 4/11/2026) | Las 4 letras (equilibrio general, dinámico —Euler, `\vertema{3.A.29}`—, estocástico, con agentes que optimizan) y los 2 cambios de la NEK; los modelos medianos estimados (Smets y Wouters) como herramienta de los bancos centrales; `\vertema{3.A.6}` | El RBC |
 
 ## Divergencias encontradas en el temario actual
 

@@ -1,0 +1,909 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A07.bib}
+\tcetema[La nueva economía keynesiana]{3.A.7}{La nueva economía keynesiana. Primera y segunda generación.}
+\tcefecha{04/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Por un clavo se pierde una herradura», dice el refrán; por la herradura, el caballo, y por el caballo, el caballero. Cambiar el precio de la carta le cuesta poco a un restaurante, y sin embargo los precios no se mueven todos los días. En la zona del euro, entre 2010 y 2019, solo cambiaba en un mes cualquiera el 8~\% de los precios de consumo, sin contar las rebajas: un precio duraba de media en torno a un año. En 2022, con una inflación media del 8,4~\%, la proporción subió al 12~\% \parencite{GautierEtAl2026WP3181,Eurostat2026IAPC}.\footnote{A principios de siglo, con rebajas incluidas, cambiaba cada mes el 15~\% de los precios de consumo en la zona del euro y el 25~\% en Estados Unidos \parencite{DhyneEtAl2006Price}. La rigidez es mayor en los servicios y menor en la energía y los alimentos frescos.}
+  \item Si cada empresa tarda en mover su precio por una razón tan pequeña, el nivel de precios tarda en ajustarse, y un cambio en la cantidad de dinero o en el tipo de interés mueve la producción y el empleo.
+  \item Detrás está la pregunta de esta exposición: \emph{¿cómo pueden fricciones tan pequeñas dar a la política monetaria efectos tan grandes, y qué modelo los explica sin renunciar a agentes racionales?}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Para la teoría}: la nueva economía keynesiana (NEK) es la base de la macroeconomía de hoy. Su modelo canónico (una curva IS dinámica, una curva de \autor{Phillips} y una regla de tipos de interés) es el de los manuales de posgrado \parencite{Gali2015Monetary} y el núcleo de los modelos con los que trabajan los bancos centrales \parencite{SmetsWouters2007Shocks}.
+  \item \emph{Para la política económica}: justifica la estabilidad de precios como objetivo, los bancos centrales independientes con un objetivo de inflación y la importancia de la comunicación \parencite{ClaridaGaliGertler1999Science,Woodford2003Interest} \vertema{3.A.36}.
+  \item \emph{Para la actualidad}: la crisis de 2008, el límite inferior de los tipos de interés y la inflación de 2021-2023 han puesto a prueba el modelo y lo han ido cambiando \parencite{Gali2018State,BernankeBlanchard2025What}.
+  \item Además, como toda historia del pensamiento económico, enseña a no quedarse con el último manual y a ver por qué unas ideas llegan en unas épocas y no en otras: son 2 de los 4 motivos de \textcite{Schumpeter1954History}.\footnote{Los otros 2: la historia es fuente de ideas (principios que no fructificaron pueden orientar la investigación de hoy) y muestra cómo se desplazan las fronteras de la ciencia (cada época trae sus problemas y su forma de afrontarlos). La evolución del pensamiento económico resulta de la interacción de varios factores: el contexto económico de cada momento, el pensamiento anterior y los avances de otras disciplinas, como la filosofía, las matemáticas, la física o la biología. Conocerla permite entender las raíces del pensamiento actual, analizar los fenómenos económicos pasados y presentes y valorar los distintos programas de investigación.}
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item Para los \emph{clásicos} y los \emph{neoclásicos}, con precios y salarios flexibles los mercados se vacían y el dinero solo determina el nivel de precios \vertema{3.A.2} \vertema{3.A.3}. La Gran Depresión rompe esa confianza: en 1936, \autor{Keynes} publica la \emph{Teoría general de la ocupación, el interés y el dinero}, en la que la demanda efectiva fija la producción y puede haber paro involuntario sin que nada lo corrija \parencite{Keynes1936} \vertema{3.A.4}.
+  \item La \concepto{síntesis neoclásica} (John \autor{Hicks}, Alvin \autor{Hansen}, Franco \autor{Modigliani}, Paul \autor{Samuelson}, Robert \autor{Solow}) lo traduce al modelo IS-LM y a la curva de \autor{Phillips}: keynesiana a corto plazo, por la rigidez del salario nominal, y clásica a largo \vertema{3.A.5}. En 1955, \textcite[212]{Samuelson1955Economics} escribía que el 90~\% de los economistas estadounidenses habían dejado de ser keynesianos o antikeynesianos para trabajar en esa síntesis. Pero la rigidez era un \emph{supuesto}, no un resultado, y el modelo no partía de decisiones individuales.\footnote{Como escribe \textcite{Mankiw2006Macroeconomist}: «Cuando un economista moderno lee la \emph{Teoría general}, la experiencia es a la vez estimulante y frustrante. Por un lado, el libro es la obra de una gran mente aplicada a un problema social cuya actualidad y magnitud no pueden discutirse. Por otro, aunque es extenso en su análisis, parece de algún modo incompleto como razonamiento lógico. Quedan demasiados cabos sueltos. El lector no deja de preguntarse: ¿cuál es, exactamente, el modelo económico que une todas las piezas?».}
+  \item La estanflación de los 70 rompe la curva de \autor{Phillips}. El \emph{monetarismo} de Milton \autor{Friedman} añade las expectativas y la tasa natural de paro \vertema{3.A.5}.
+  \item La \concepto{nueva macroeconomía clásica} (NMC) va más lejos: con expectativas racionales \parencite{Muth1961Rational} y mercados que se vacían, solo la política \emph{no anticipada} mueve la producción \parencite{Lucas1972Expectations}, y los modelos sin microfundamentos fallan cuando cambia la política, porque sus parámetros no son estructurales: es la \emph{crítica de \autor{Lucas}} \parencite{Lucas1976Econometric} \vertema{3.A.6}. Con la teoría del ciclo real \parencite{KydlandPrescott1982Time}, el ciclo es la respuesta óptima a perturbaciones tecnológicas en un modelo de \concepto{equilibrio general dinámico y estocástico} (EGDE), y la política de estabilización sobra \vertema{3.A.42}.
+  \item La respuesta keynesiana llega en 2 oleadas. La \concepto{primera generación} de la NEK (finales de los 70 y años 80) acepta la optimización y las expectativas racionales, pero demuestra que con \emph{competencia imperfecta} y pequeñas \emph{rigideces} el dinero no es neutral a corto plazo. La \concepto{segunda generación} (desde los 90) mete esas rigideces dentro del EGDE de la NMC: es la \concepto{nueva síntesis neoclásica} \parencite{GoodfriendKing1997New}.
+  \item Dos conceptos recorren la exposición:
+    \begin{itemize}
+    \item una \concepto{rigidez nominal} es todo lo que impide que los precios o los salarios \emph{nominales} se ajusten de inmediato a un cambio en sus determinantes (costes de cambiar los precios, contratos, información);
+    \item una \concepto{rigidez real} es todo lo que hace que el precio o el salario \emph{relativo} que se desea responda poco a la actividad, aunque los nominales fueran flexibles (salarios de eficiencia, márgenes contracíclicos).
+    \end{itemize}
+  \item Sin rigidez nominal, el dinero es neutral aunque haya rigideces reales; con las dos, las reales amplifican y alargan los efectos de las nominales \parencite{BallRomer1990Real}.\footnote{De ahí 3 matices: las fricciones nominales son condición necesaria, pero no suficiente, para que los precios no se ajusten y lo hagan las cantidades; las rigideces reales son compatibles con precios nominales flexibles, y la no neutralidad del dinero solo aparece cuando hay rigideces nominales.}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Qué rescata la NEK de \autor{Keynes} y qué toma de sus críticos?
+  \item ¿Por qué no se ajustan del todo los precios y los salarios si quienes los fijan son racionales? ¿Y por qué importa en el agregado?
+  \item ¿Qué modelo resulta cuando la rigidez se mete en un EGDE?
+  \item ¿Qué política monetaria y fiscal se deduce de él, y qué quedó en pie tras 2008 y la inflación de 2021-2023?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue las 2 oleadas de la escuela, primero los modelos y después lo que se hace con ellos:
+  \begin{itemize}
+  \item \concepto{I. Economistas neokeynesianos de primera generación} (\ref{sec:primera}): quiénes son y con qué método, por qué son rígidos los precios y los salarios (rigideces nominales y reales) y el modelo agregado que los junta, la NAIRU;
+  \item \concepto{II. Economistas neokeynesianos de segunda generación} (\ref{sec:segunda}): cómo adoptan el método de la nueva macroeconomía clásica y el modelo canónico de 3 ecuaciones que resulta;
+  \item \concepto{III. Implicaciones de política económica y la nueva síntesis} (\ref{sec:politica-sintesis}): qué política monetaria y fiscal se deduce del modelo, qué síntesis forma con sus antiguos rivales y qué ha cambiado desde 2008.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}[unbreakable]
+\textbf{3.A.7. La nueva economía keynesiana. Primera y segunda generación}\\[2pt]
+Introducción\\
+I. Economistas neokeynesianos de primera generación\\
+\hspace*{1.5em}1. Caracterización general de la NEK de 1.ª generación según \autor{Schumpeter}\\
+\hspace*{1.5em}2. Modelos\\
+\hspace*{1.5em}3. Valoración de la NEK de 1.ª generación\\
+II. Economistas neokeynesianos de segunda generación\\
+\hspace*{1.5em}1. Caracterización general de la NEK de 2.ª generación según \autor{Schumpeter}\\
+\hspace*{1.5em}2. El modelo canónico de la NEK\\
+III. Implicaciones de política económica y la nueva síntesis\\
+\hspace*{1.5em}1. Implicaciones de política económica\\
+\hspace*{1.5em}2. Valoración: la nueva síntesis y la importancia de la NEK en el debate económico\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{3}; I.2, \tiempo{7}: rigideces nominales, \tiempo{4}, de ellas los costes de menú, \tiempo{1,5}; rigideces reales, \tiempo{1,5}, y el modelo agregado, \tiempo{1,5}; I.3, \tiempo{1}); II, \tiempo{9} (II.1, \tiempo{2}; II.2, \tiempo{7}); III, \tiempo{6,5} (III.1, \tiempo{3,5}; III.2, \tiempo{3}), y conclusión, \tiempo{1}. La caracterización de cada generación (autores, universidades, objeto y método) es lo primero que pregunta el tribunal: no baja de \tiempo{3} en la 1.ª ni de \tiempo{2} en la 2.ª. El modelo canónico no baja de \tiempo{6}: es lo que el tribunal espera ver en la pizarra. La pizarra se organiza en 3 zonas. A la izquierda, el refrán del enganche y las pegatinas, cada una junto a su concepto: «entre todos la mataron y ella sola se murió» (\autor{Blanchard} y \autor{Kiyotaki}), «si no puedes con tu enemigo, únete a él» (el método de la 2.ª generación), «más vale tarde que nunca» (\autor{Calvo}), «más vale pasarse que quedarse corto» (el principio de \autor{Taylor}) y «matar dos pájaros de un tiro» (la divina coincidencia). En el centro, los 2 gráficos: los costes de menú, en el bloque~\ref{sec:primera}, y el plano $(x_t,\pi_t)$, que se dibuja en el modelo canónico (\ref{sec:modelo-canonico}) y se reutiliza en sus implicaciones para las perturbaciones de demanda y de costes. A la derecha, recuadradas y conservadas hasta el final, la IS dinámica, la curva de \autor{Phillips} neokeynesiana y la regla de \autor{Taylor}. Lo que esta exposición resume (salarios de eficiencia, contratos implícitos, NAIRU e histéresis) se cuenta de palabra o con una ecuación: los modelos completos están en sus temas. La derivación de la curva de \autor{Phillips} está en el anexo~\ref{anexo:nek-derivacion}.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Economistas neokeynesianos de primera generación}\label{sec:primera}
+\minutos{11}
+
+\begin{itemize}
+\item Una vez situada la NEK frente a la síntesis y a la nueva macroeconomía clásica, pasamos a ver cómo su primera generación da fundamento microeconómico a las rigideces.
+\item \emph{Conclusión anticipada}: la 1.ª generación explica por qué precios y salarios no se ajustan aunque los agentes sean racionales: pequeñas fricciones nominales, amplificadas por rigideces reales y por la competencia imperfecta, bastan para que la demanda mueva la producción. Pero lo hace con modelos sueltos, estáticos y de equilibrio parcial, y eso limitará su alcance.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Caracterización general de la NEK de 1.ª generación según \autor{Schumpeter}}\label{sec:caracterizacion-primera}
+
+\begin{itemize}
+\item \autor{Schumpeter} reconoce una escuela de pensamiento por 3 rasgos: un \emph{líder}, unos \emph{seguidores} y un \emph{cuerpo doctrinal} propio, con su objeto y su método \parencite{Schumpeter1954History}. La primera generación de la NEK cumple el tercero, pero no los 2 primeros: es una \emph{escuela sin líder}.
+  \begin{itemize}
+  \item \emph{Sin líder ni seguidores}: es un grupo de autores \emph{en pie de igualdad}, cada uno con su modelo. N.~Gregory \autor{Mankiw}, David \autor{Romer} y Laurence \autor{Ball} (costes de menú y rigideces reales); George \autor{Akerlof} y Janet \autor{Yellen} (casi racionalidad y salarios de eficiencia); Olivier \autor{Blanchard} y Nobuhiro \autor{Kiyotaki} (fallos de coordinación); Joseph \autor{Stiglitz} (información imperfecta en el trabajo y el crédito); Stanley \autor{Fischer} y John \autor{Taylor} (contratos escalonados); Arthur \autor{Okun} y Robert J. \autor{Gordon} (mercados de clientes e inflación); Alan \autor{Blinder} (cómo fijan sus precios las empresas); Lawrence \autor{Summers} (histéresis), y, en Europa, Richard \autor{Layard} y Stephen \autor{Nickell} (la NAIRU).
+  \item \emph{Contexto}: finales de los 70 y años 80, con la NMC en plena expansión y la teoría del ciclo real recién nacida. La NEK nace a la defensiva: tiene que demostrar que las ideas keynesianas sobreviven con agentes racionales.
+  \item \emph{Universidades}: Robert \autor{Hall} (1976) llamó \emph{de agua salada} (\emph{saltwater}) a los economistas de las universidades de las 2 costas de Estados Unidos y \emph{de agua dulce} (\emph{freshwater}) a los de las cercanías de los Grandes Lagos \parencite{Hall2026Perfil}. La NEK es de agua salada: el MIT (\autor{Fischer}, \autor{Blanchard}), Harvard (\autor{Mankiw}, \autor{Summers}), Princeton (\autor{Blinder}), Yale (\autor{Okun}), Columbia y Stanford (\autor{Taylor}) y Berkeley (\autor{Akerlof}, \autor{Yellen}, D.~\autor{Romer}); en Europa, la London School of Economics (\autor{Layard}, \autor{Nickell}). La NMC es de agua dulce: Chicago, Minnesota, Rochester y Carnegie Mellon.
+  \item \emph{Cuerpo doctrinal}: los 2 volúmenes de \emph{New Keynesian Economics} \parencite{MankiwRomer1991New} reúnen sus artículos y fijan 2 proposiciones comunes: el dinero \emph{no es neutral} a corto plazo, y las \emph{imperfecciones de los mercados} (competencia imperfecta, información imperfecta, rigidez de precios y salarios) son esenciales para entender el ciclo. \textcite{BallMankiw1994Manifesto} las defienden después en su manifiesto de los precios rígidos.
+    \begin{itemize}
+    \item \emph{Objeto}: rehabilitar las ideas keynesianas, el paro involuntario y la no neutralidad del dinero, \emph{microfundamentando} las rigideces de precios y salarios que la síntesis suponía. No hay un programa único ni un modelo canónico, sino modelos complementarios, cada uno centrado en una causa de la rigidez.
+    \item \emph{Método}: \concepto{refuerzo de la síntesis neoclásica por el lado de la oferta}. Aceptan su esqueleto (la demanda agregada mueve la producción a corto plazo y la política monetaria y la fiscal son eficaces) y le dan lo que le faltaba: una oferta con fundamentos, en la que optimizan las empresas que fijan precios y los trabajadores que negocian salarios. De la NMC toman la optimización y las expectativas racionales \parencite{Muth1961Rational}; añaden la competencia imperfecta, con la competencia monopolística como modelo de referencia \vertema{3.A.18}. Sus modelos son \emph{estáticos} y de \emph{equilibrio parcial} (salvo el de \textcite{BlanchardKiyotaki1987Monopolistic}).
+    \end{itemize}
+  \end{itemize}
+\item \emph{Frente a las escuelas anteriores}:
+  \begin{itemize}
+  \item \emph{Frente a la síntesis neoclásica}: comparten su visión del mundo en 3 ideas: las rigideces de precios y salarios explican buena parte de las fluctuaciones; la economía puede alejarse de su equilibrio a corto plazo, y la política monetaria y la fiscal influyen en la actividad. Pero le reprochan 2 cosas: no tener microfundamentos y suponer la rigidez del salario nominal sin justificarla.\footnote{Para \autor{Hicks}, la rigidez del salario nominal era una observación de la realidad. Los autores de la NEK la quieren \emph{endógena}: hay que explicar con decisiones de los agentes por qué se produce.}
+  \item \emph{Frente al desequilibrio}: los keynesianos del desequilibrio (Robert \autor{Clower}, Robert \autor{Barro} y Herschel \autor{Grossman}, Edmond \autor{Malinvaud}) tomaban los precios fijos como un dato y estudiaban el racionamiento que resultaba; la NEK explica por qué no se mueven \vertema{3.A.4}.
+  \item \emph{Frente al monetarismo}: para \textcite{MankiwRomer1991New}, en la nueva disputa entre la NEK y la NMC los monetaristas quedan más cerca de la NEK, porque los 2 creen que el dinero importa a corto plazo \vertema{3.A.5}.
+  \item \emph{Frente a la NMC}: no rechazan su método, sino su conclusión, y su blanco es más la teoría del ciclo real que \autor{Lucas}: un ciclo sin dinero contradice la vieja idea de que el dinero es neutral a largo plazo pero no a corto. \textcite{BallMankiw1994Manifesto} abren su manifiesto así: «Hay dos clases de macroeconomistas. Unos creen que la rigidez de los precios desempeña un papel central en las fluctuaciones económicas a corto plazo. Los otros, no». A los segundos los tratan como herejes de una tradición monetaria que se remonta al menos a David \autor{Hume}, de la que la NEK se presenta como heredera.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Los fundamentos de la NEK en 4 puntos} (para consultar; no se cantan):
+\begin{itemize}
+\item \emph{Microfundamentos}: el comportamiento agregado se explica con agentes que optimizan y con matemáticas, no con relaciones de comportamiento \emph{ad hoc}. A diferencia de la NMC, con modelos de equilibrio parcial en la 1.ª generación; los de la 2.ª ya son EGDE.
+\item \emph{Expectativas racionales}: la hipótesis de \textcite{Muth1961Rational}, la misma que usa la NMC.
+\item \emph{Rasgos de la economía}: fallos de coordinación (con agentes racionales puede alcanzarse un equilibrio peor que otro posible), información imperfecta y competencia imperfecta, con empresas y sindicatos que tienen poder de mercado; el modelo de referencia es la competencia monopolística.
+\item \emph{Los mercados no se vacían continuamente}: precios, salarios y tipos de interés no son del todo flexibles y, ante cambios de la demanda, las empresas ajustan las cantidades. \autor{Keynes} ya hablaba de rigideces; la NEK las \emph{endogeneiza}.
+\end{itemize}
+En resumen, la NEK admite los defectos de los modelos keynesianos anteriores (sin microfundamentos ni justificación de las rigideces), pero, al contrario que \autor{Lucas}, no los considera irreparables. Pocos años después, la 2.ª generación dará un paso más: aceptará el marco de la NMC entero y meterá las rigideces dentro.
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{Modelos}\label{sec:modelos-primera}
+
+\begin{itemize}
+\item La primera generación no tiene un modelo, sino una familia. Se ordena por la pregunta que responde cada uno (tabla~\ref{tab:modelos-primera}): por qué una empresa racional no ajusta su precio, por qué eso tiene efectos agregados grandes, cómo se ajustan los precios en el tiempo, qué rigideces reales las amplifican y cómo se juntan en un modelo del paro.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los modelos de la NEK de 1.ª generación}\label{tab:modelos-primera}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.4cm}>{\raggedright\arraybackslash}m{7.4cm}>{\raggedright\arraybackslash}m{3.3cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Pregunta} & \textbf{Modelos} & \textbf{Dónde}\\
+\midrule
+\textcolor{tceemorado}{\textbf{¿Por qué no se ajustan los precios?}} & \textcolor{tceemorado}{Casi racionalidad \parencite{AkerlofYellen1985NearRational}; costes de menú \parencite{Mankiw1985Small}} & \ref{sec:rigideces-nominales}\\
+\textcolor{tceemorado}{\textbf{¿Por qué tiene efectos grandes?}} & \textcolor{tceemorado}{Externalidad de demanda agregada \parencite{BlanchardKiyotaki1987Monopolistic}} & \ref{sec:rigideces-nominales}\\
+\textcolor{tceemorado}{\textbf{¿Cómo se ajustan en el tiempo?}} & \textcolor{tceemorado}{Contratos escalonados \parencite{Fischer1977Long,Taylor1980Aggregate}; reglas de estado \parencite{SheshinskiWeiss1977}} & \ref{sec:rigideces-nominales}; \vertema{3.A.37}\\
+\textcolor{tceeverde}{\textbf{Rigideces reales en bienes y crédito}} & \textcolor{tceeverde}{Rigidez real × nominal \parencite{BallRomer1990Real}; mercados de clientes, colusión contracíclica; racionamiento del crédito \parencite{StiglitzWeiss1981Credit}} & \ref{sec:rigideces-reales}; \vertema{3.A.13}\\
+\textcolor{tceeazul}{\textbf{Rigideces reales en el trabajo}} & \textcolor{tceeazul}{Salarios de eficiencia \parencite{Solow1979Another,ShapiroStiglitz1984Equilibrium}; contratos implícitos \parencite{Baily1974Wages,Gordon1974Neoclassical,Azariadis1975Implicit}} & \ref{sec:nairu-histeresis}; \vertema{3.A.27}\\
+\textcolor{tceeazul}{\textbf{Modelo agregado del paro}} & \textcolor{tceeazul}{NAIRU \parencite{LayardNickell1985Causes,LayardNickellJackman1991Unemployment}; histéresis \parencite{BlanchardSummers1986Hysteresis}} & \ref{sec:nairu-histeresis}; \vertema{3.A.28}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{MankiwRomer1991New} y \textcite[cap.~7]{Romer2019Advanced}. En morado, rigideces nominales; en verde y azul, rigideces reales.}
+\end{table}
+
+% ..........................................................................
+\subsubsection{Rigideces nominales}\label{sec:rigideces-nominales}
+
+\begin{itemize}
+\item La síntesis había puesto la rigidez en el salario nominal; la NEK la pone sobre todo en los \emph{precios} de empresas con poder de mercado. En competencia perfecta, una empresa que no ajusta su precio pierde todas sus ventas o vende con pérdidas; con competencia imperfecta, solo pierde un poco de beneficio.
+\item La idea central la resume \textcite{Romer1993New}: durante años se buscó la no neutralidad del dinero en \emph{grandes} desviaciones del modelo walrasiano, cuando la clave estaba en los \emph{grandes efectos de pequeñas desviaciones}. Lo que para cada empresa es una pérdida de segundo orden puede ser, sumado, una caída de la producción de primer orden.
+\item Se ve en 3 pasos: por qué una empresa racional puede no cambiar su precio (casi racionalidad y costes de menú), por qué eso tiene efectos agregados grandes (fallos de coordinación) y cómo se ajustan los precios en el tiempo (reglas de tiempo y de estado).
+\end{itemize}
+
+\paragraph{Casi racionalidad (\autor{Akerlof} y \autor{Yellen}, 1985)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Un agente \concepto{casi racional} (o de \emph{racionalidad incompleta}) no cambia su decisión ante una perturbación si lo que pierde por no hacerlo es pequeño \parencite{AkerlofYellen1985NearRational,AkerlofYellen1985Small}.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item Empresas con poder de mercado (competencia monopolística), cada una en su precio óptimo, $p_0$, cuando llega una perturbación de la demanda.
+\item Una parte de las empresas es casi racional: no ajusta su precio si la pérdida es pequeña.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Si cae la demanda, el nuevo precio óptimo es $p^*_1<p_0$. Con un desarrollo de \autor{Taylor} de segundo orden del beneficio $B(p)$ alrededor de $p^*_1$, donde $B'(p^*_1)=0$, lo que pierde la empresa por no ajustar es
+  \begin{equation}
+  B(p^*_1)-B(p_0)\approx-\tfrac12\,B''(p^*_1)\,(p^*_1-p_0)^2 \label{eq:perdida-segundo-orden}
+  \end{equation}
+  proporcional al \emph{cuadrado} de la perturbación: es una pérdida de \emph{segundo orden}. Es el teorema de la envolvente: en el óptimo, la curva de beneficio es plana (gráfico~\ref{fig:casi-racionalidad}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Casi racionalidad: la pérdida de no ajustar el precio es de segundo orden}\label{fig:casi-racionalidad}
+\grafico[0.5\textwidth]{casi-racionalidad}
+\fuente{elaboración propia a partir de \textcite[cap.~7]{Romer2019Advanced}.}
+\end{figure}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item En un modelo de competencia monopolística en el que una parte de las empresas no ajusta sus precios ante una perturbación monetaria, cada una pierde algo de segundo orden, pero la producción y el empleo agregados cambian en \emph{primer orden}, en proporción a la perturbación.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item \emph{Crítica}: el argumento es estático y supone que todas las empresas parten de su óptimo. En un entorno dinámico y estocástico, quien no optimiza casi nunca está en él, y sus pérdidas pueden acumularse. \textcite{AkerlofYellen1991RuleThumb} responden que, también ahí, las pérdidas de seguir reglas sencillas son pequeñas: no se pueden descartar conductas que no maximizan del todo a corto plazo.
+\item \emph{Límite}: muchas otras reglas de precios dan pérdidas igual de pequeñas, así que el argumento no explica por qué la empresa elige precisamente no cambiar el precio \parencite{Romer1993New}. Los costes de menú resuelven esa indeterminación.
+\end{itemize}
+
+\paragraph{Costes de menú (\autor{Mankiw}, 1985)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Los \concepto{costes de menú} son todos los costes de cambiar un precio:
+  \begin{itemize}
+  \item \emph{administrativos}: imprimir y repartir nuevas listas o etiquetas (de ahí el nombre), pero también decidir el nuevo precio (recoger información, procesarla y analizarla);
+  \item \emph{no administrativos}: arriesgarse a enfadar a los clientes habituales, que pueden buscar un proveedor más estable, o a empezar una guerra de precios.
+  \end{itemize}
+  Son pequeños y se toman como un coste fijo y exógeno, $z$, cada vez que se cambia el precio.
+\item \textcite{Mankiw1985Small} muestra que un coste así de pequeño basta para que un monopolista \emph{racional} no ajuste su precio ante un cambio pequeño de la demanda, y que las consecuencias para el bienestar son mucho mayores que lo que la empresa se ahorra: \emph{pequeños costes de menú, grandes ciclos}.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item Un monopolista con coste marginal constante, $\mathrm{CMg}$, y demanda lineal, que parte de su óptimo $A=(q_0,p_0)$, donde $\mathrm{IMg}=\mathrm{CMg}$ \vertema{3.A.17}.
+\item La demanda cae de $D$ a $D'$, de forma inesperada, y cambiar el precio cuesta $z$.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item La empresa tiene 2 opciones (gráfico~\ref{fig:costes-menu}):
+  \begin{itemize}
+  \item \emph{ajustar}: baja al nuevo precio óptimo $p^*_1<p_0$, donde $\mathrm{IMg}'=\mathrm{CMg}$, y vende $q^*_1$ (punto C);
+  \item \emph{no ajustar}: mantiene $p_0$ y vende lo que pide la nueva demanda a ese precio, $q_2<q^*_1$ (punto B).
+  \end{itemize}
+\item La ganancia de ajustar es el área entre $\mathrm{IMg}'$ y $\mathrm{CMg}$ de $q_2$ a $q^*_1$ (el triángulo sombreado), pequeña por lo visto con la casi racionalidad \eqref{eq:perdida-segundo-orden}. La empresa ajusta solo si
+  \begin{equation}
+  B(p^*_1)-B(p_0)>z \label{eq:costes-menu}
+  \end{equation}
+\item El tamaño del triángulo depende del entorno \emph{real} de la empresa: de la pendiente del coste marginal (los rendimientos de escala: si el coste marginal baja mucho al caer la producción (rendimientos decrecientes), el triángulo es grande y la empresa ajusta) y de cuánto se desplaza el ingreso marginal (si la elasticidad de la demanda cae en la recesión, se desplaza más y el incentivo a bajar el precio es menor).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Costes de menú: ganancia privada de ajustar el precio y pérdida social de no hacerlo}\label{fig:costes-menu}
+\grafico[0.6\textwidth]{costes-menu}
+\fuente{elaboración propia a partir de \textcite{Mankiw1985Small} y \textcite[cap.~7]{Romer2019Advanced}.}
+\end{figure}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item Con $z$ pequeño puede ser óptimo no ajustar: la empresa se ajusta por \emph{cantidades}, con agentes perfectamente racionales.
+\item El efecto sobre el bienestar es de \emph{primer orden}: como $p_0>\mathrm{CMg}$, cada unidad que se deja de vender vale para la sociedad $p_0-\mathrm{CMg}>0$. La pérdida social de no ajustar (el área entre $D'$ y $\mathrm{CMg}$ de $q_2$ a $q^*_1$) es mucho mayor que lo que la empresa se ahorra.
+\item En competencia perfecta, $p=\mathrm{CMg}$ y ese margen no existe: por eso la \emph{competencia imperfecta} es imprescindible.
+\item \emph{Un ejemplo con números} (pregunta 18 del primer ejercicio de julio de 2021). El gráfico~\ref{fig:costes-menu} es esta misma empresa, con los precios en decenas, ante una \emph{caída} de la demanda, de $p=100-10\,q$ a $p=80-10\,q$: ajustar le da 10 más de beneficio, y no ajustar le cuesta 35 a la sociedad. El test plantea el caso contrario, una \emph{subida}: un monopolista con $\mathrm{CMg}=20$ y demanda $p=100-10\,q$ fija $q=4$ y $p=60$, y la demanda sube a $p=200-10\,q$.
+  \begin{itemize}
+  \item Si ajusta: $\mathrm{IMg}=200-20\,q=20$, de modo que $q=9$, $p=110$ y $B=(110-20)\cdot 9=810$.
+  \item Si mantiene $p=60$: vende $q=14$ y gana $B=(60-20)\cdot 14=560$.
+  \item Mantiene el precio si $z\geq 810-560=250$. Con la subida, quien no ajusta vende \emph{más} que con el precio óptimo, no menos: por eso el excedente total sube, de 1.215 a 1.540; la sociedad gana 325, más de lo que deja de ganar la empresa.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item \textcite{BlanchardKiyotaki1987Monopolistic} lo llevan al equilibrio general (a continuación), \textcite{BallRomer1990Real} le añaden las rigideces reales (\ref{sec:rigideces-reales}) y \textcite{Rotemberg1982Monopolistic} lo hace dinámico con un coste cuadrático de cambiar el precio, que da la misma curva de \autor{Phillips} que la regla de \autor{Calvo} de la 2.ª generación (\ref{sec:modelo-canonico}).
+\end{itemize}
+
+\subparagraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item En las encuestas a empresas, los costes de menú en sentido estricto pesan poco frente a la coordinación con los competidores, los contratos y la relación con los clientes \parencite{BlinderEtAl1998Asking}.
+\item Con microdatos, los precios de consumo cambian con poca frecuencia: la mitad dura menos de 4,3 meses en Estados Unidos \parencite{BilsKlenow2004Some}, y en la zona del euro, sin contar las rebajas, cambia cada mes solo el 8~\% \parencite{GautierEtAl2026WP3181}, una frecuencia que sube con la inflación (\ref{sec:nueva-sintesis}).
+\end{itemize}
+
+\subparagraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{Aportación}: da un fundamento microeconómico a la rigidez nominal y explica por qué una fricción pequeña importa.
+\item \emph{Límite}: como en las recesiones el coste marginal suele caer mucho, el triángulo es grande y la empresa ajusta. Con costes de menú realistas, la rigidez nominal solo es grande si hay además rigideces reales \parencite{Romer1993New,BallRomer1990Real}: es la puerta al apartado~\ref{sec:rigideces-reales}.
+\end{itemize}
+
+\paragraph{Fallos de coordinación (\autor{Blanchard} y \autor{Kiyotaki}, 1987)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{BlanchardKiyotaki1987Monopolistic} llevan los costes de menú a un modelo de \emph{equilibrio general} con competencia monopolística à la \autor{Dixit} y \autor{Stiglitz} \vertema{3.A.18}. La rigidez de cada empresa afecta a las demás sin que nadie lo tenga en cuenta: es una \concepto{externalidad de demanda agregada}. Con costes de cambiar los precios, el dinero deja de ser neutral.
+\item Pegatina: «entre todos la mataron y ella sola se murió». Ninguna empresa baja su precio porque a cada una le cuesta poco no hacerlo, y la producción cae para todas.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item Competencia monopolística con un continuo de variedades. La demanda de la variedad $i$ depende de su precio relativo y de los saldos reales (con velocidad constante, la demanda agregada es $Y=M/P$):
+  \begin{equation}
+  Y_i=\frac{M}{P}\left(\frac{P_i}{P}\right)^{-\sigma},\qquad \sigma>1 \label{eq:demanda-bk}
+  \end{equation}
+  con $\sigma$ la elasticidad de sustitución entre variedades, y cada empresa fija un margen sobre su coste marginal, $P_i=(1+\mu)\,\mathrm{CMg}_i$, con $1+\mu\equiv\sigma/(\sigma-1)$ \vertema{3.A.18}.
+\item Cambiar el precio tiene un coste de menú pequeño.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Si cae $M$:
+  \begin{itemize}
+  \item si todas las empresas ajustan, $P$ cae en la misma proporción que $M$: no cambian los saldos reales ni los precios relativos, y la producción tampoco (\emph{neutralidad});
+  \item si una empresa no ajusta, pierde algo de segundo orden; pero si ninguna lo hace, $P$ no baja, caen los saldos reales $M/P$ y con ellos la demanda de todas: la producción cae en \emph{primer orden}.
+  \end{itemize}
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item Al bajar su precio, cada empresa bajaría un poco $P$ y subiría la demanda de todas las demás. Ese beneficio social no lo cobra ella, así que no ajusta, aunque a todas les convendría que todas lo hicieran: es un \emph{fallo de coordinación}.
+\item Como con poder de mercado la producción de equilibrio es menor que la eficiente, una expansión de la demanda mejora el bienestar en primer orden: la política de demanda vuelve a tener sentido.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item Es el único modelo de la 1.ª generación de equilibrio general y el antecedente directo de la 2.ª: la competencia monopolística à la \autor{Dixit} y \autor{Stiglitz} será su pieza de oferta (\ref{sec:modelo-canonico}).
+\end{itemize}
+
+\paragraph{Cómo se ajustan los precios en el tiempo: reglas de tiempo y de estado}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Si cambiar los precios cuesta, la pregunta ya no es \emph{si} se cambian, sino \emph{cuándo}. La NEK estudia qué reglas siguen las empresas para revisar sus precios (y sus salarios) y qué resulta al agregarlas \vertema{3.A.37}.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item Cambiar el precio (o el salario) cuesta, y cada empresa elige con qué regla lo revisa.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Hay 2 tipos de reglas:
+  \begin{itemize}
+  \item \concepto{reglas dependientes del tiempo}: el precio o el salario se revisa en \emph{fechas fijadas de antemano}, pase lo que pase entre medias. Son los \concepto{contratos escalonados} de \textcite{Fischer1977Long} y \textcite{Taylor1979Staggered,Taylor1980Aggregate}, pensados para los salarios nominales y aplicables a los precios: cada período solo se renegocia una parte de los contratos.\footnote{Los 2 modelos responden a la proposición de inefectividad de \textcite{SargentWallace1975Rational} \vertema{3.A.6}: con expectativas racionales, la política monetaria sistemática no tendría efectos reales. En el de \autor{Fischer}, los contratos duran 2 períodos y el salario de $t$ se fija en $t-j$ con lo que se espera entonces para $t$, $w^j_t=\mathbb{E}_{t-j}[p_t]$: el banco central puede reaccionar a lo que pasa después de firmados los contratos y estabilizar la producción, aunque las expectativas sean racionales. En el de \autor{Taylor}, el salario queda fijo durante todo el contrato y la revisión no está sincronizada: cada empresa que revisa mira el salario de las que no revisan, y así los efectos de la política monetaria duran más que los propios contratos, aunque al final se ajustan los precios. Muestran que expectativas racionales y política eficaz son compatibles: lo que da la neutralidad es la flexibilidad de los precios, no las expectativas. Con una perspectiva dinámica, se adelantaron al giro intertemporal de la NMC; los superó la regla de \autor{Calvo}.} La regla de tiempo más usada hoy es la de \textcite{Calvo1983Staggered}, en la que cada empresa revisa su precio con una probabilidad constante: es la base de la 2.ª generación (\ref{sec:modelo-canonico});
+  \item \concepto{reglas dependientes del estado}: no hay fechas; el precio se cambia cuando la distancia al óptimo supera un umbral, tras comparar el coste de menú con lo que se pierde por no ajustar \parencite{SheshinskiWeiss1977}. La frecuencia de los cambios es endógena y aumenta con la inflación;
+  \item las \emph{reglas mixtas} combinan las 2: revisión periódica y ajuste extraordinario, pagando el coste de menú, ante una perturbación grande.
+  \end{itemize}
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item El intervalo óptimo entre revisiones se acorta cuanto mayores son la inflación y la varianza de la demanda agregada y de las perturbaciones de la empresa. Por eso la curva de \autor{Phillips} es más inclinada donde la inflación es más alta: los precios se ajustan antes y la demanda mueve menos la producción \parencite{BallMankiwRomer1988}.
+\item Lo que alarga los efectos reales no es la rigidez de cada precio, sino el \emph{escalonamiento}. Si todas las empresas revisaran a la vez (\emph{sincronización}), el efecto de una perturbación duraría lo que tarda la próxima revisión. Con revisiones escalonadas, ninguna ajusta del todo, para no alejar su precio relativo del de las demás, y el ajuste del nivel de precios es lento.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item El escalonamiento parece inevitable en una economía con miles de empresas distintas, pero con empresas idénticas no es un equilibrio estable: la que revisa en otro momento que la mayoría tiene incentivos a pasarse a su calendario, y el único equilibrio estable es la sincronización \parencite{BallRomer1989Timing}. Lo sostienen la heterogeneidad de las perturbaciones de cada empresa o el interés en esperar a ver qué precio fijan los competidores antes de fijar el propio \parencite{BallCecchetti1988}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Aportaciones, críticas y limitaciones de las fricciones nominales} (para consultar; no se cantan):
+\begin{itemize}
+\item \emph{Aportaciones}:
+  \begin{itemize}
+  \item un verdadero fundamento microeconómico de la rigidez nominal: el estudio pasa de los salarios a los precios, la competencia imperfecta es el modelo de referencia y se buscan razones por las que un agente racional no cambia su precio;
+  \item un análisis riguroso de sus consecuencias: las reglas de tiempo y de estado salen de optimizar y, agregadas, dan (no siempre) la no neutralidad del dinero y la respuesta asimétrica de precios y producción;
+  \item nuevos instrumentos para modelizar a las empresas, como la casi racionalidad y la heterogeneidad de los agentes.
+  \end{itemize}
+\item \emph{Críticas}:
+  \begin{itemize}
+  \item también cuesta ajustar la producción, y puede costar más que ajustar el precio; la réplica es empírica: las cantidades fluctúan mucho más que los precios;
+  \item el argumento es estático: los costes de menú se pagan una vez y las pérdidas de no ajustar se acumulan, así que una perturbación \emph{permanente} acaba trasladándose a los precios. Los costes de menú explican bien la rigidez ante perturbaciones \emph{pequeñas y transitorias}.
+  \end{itemize}
+\item \emph{Limitaciones}:
+  \begin{itemize}
+  \item el efecto de las fricciones nominales depende del entorno real de la empresa (rendimientos de escala, poder de mercado y su ciclicidad);
+  \item como la decisión de cada empresa depende de lo que hagan las demás, puede haber equilibrios múltiples, con y sin ajuste, para la misma perturbación \parencite{BallRomer1990Real};
+  \item la casi racionalidad no explica por qué se elige mantener el precio y no otra regla con pérdidas igual de pequeñas \parencite{Romer1993New}.
+  \end{itemize}
+\end{itemize}
+\end{anotaciones}
+
+% ..........................................................................
+\subsubsection{Rigideces reales}\label{sec:rigideces-reales}
+
+\begin{itemize}
+\item \emph{Idea}: los costes de menú solo frenan el ajuste si la ganancia de ajustar es pequeña, y eso depende del entorno \emph{real} de la empresa. Si el coste marginal cae mucho en una recesión, la empresa quiere bajar mucho el precio y lo baja. Para que no lo baje, el precio relativo que desea tiene que responder poco a la actividad: es la \concepto{rigidez real}. \textcite{BallRomer1990Real} muestran que una rigidez nominal grande puede salir de juntar rigideces reales y fricciones nominales pequeñas, y \textcite{MankiwRomer1991New} cuentan esa interacción entre los rasgos distintivos de la NEK.
+\item \emph{Analíticamente} (en logaritmos): si el precio que desea la empresa $i$ es $p^*_i=p+\chi\,y$, con $y=m-p$ y $\chi>0$ la sensibilidad del precio relativo deseado a la producción (local), entonces
+  \begin{equation}
+  p^*_i=\chi\,m+(1-\chi)\,p \label{eq:ball-romer}
+  \end{equation}
+  \begin{itemize}
+  \item ante una caída de $m$ con los demás precios quietos, la ganancia de ajustar es proporcional a $(\chi\,\Delta m)^2$, y no ajustar es un equilibrio si es menor que $z$;
+  \item cuanto menor es $\chi$ (más rigidez real), más fácil es ese equilibrio, y con $\chi<1$ los precios son \emph{complementarios estratégicos}: cada empresa quiere mover poco su precio si las demás no mueven el suyo \parencite[cap.~7]{Romer2019Advanced}.
+  \end{itemize}
+\item \emph{En el mercado de bienes}, el margen deseado no baja (o sube) en las recesiones, de modo que el precio relativo apenas responde. Las 2 razones principales:
+  \begin{itemize}
+  \item los \emph{mercados de clientes}: la empresa no cambia sus precios para no dar a sus clientes motivos para buscar otro proveedor \parencite{Okun1975Inflation,Okun1981Prices};
+  \item la \emph{colusión contracíclica}: cuando la demanda es alta, a cada empresa le tienta más romper la colusión tácita bajando el precio, así que el margen es mayor en las recesiones \parencite{RotembergSaloner1986Supergame,RotembergWoodford1991Markups}.
+  \end{itemize}
+\item \emph{En el mercado de crédito}, la información asimétrica entre el banco y el prestatario hace que el tipo de interés no vacíe el mercado: el banco prefiere \emph{racionar} el crédito antes que subir el tipo y atraer a los prestatarios más arriesgados \parencite{StiglitzWeiss1981Credit} \vertema{3.A.13}. Y el coste de la financiación externa depende del patrimonio del prestatario, que cae en las recesiones \parencite{BernankeGertler1989Agency}: es el germen del acelerador financiero de la 2.ª generación \vertema{3.A.37}.
+\item \emph{En el mercado de trabajo}, las rigideces reales son las que fundamentan el modelo agregado del paro, a continuación.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Otras rigideces reales del mercado de bienes} (de pasada): las barreras de entrada; la información imperfecta sobre la \emph{calidad}, que hace que bajar el precio parezca bajar la calidad \parencite{Stiglitz1987Quality}; la reserva de capacidad; los plazos de entrega variables, que permiten ajustar sin tocar el precio, y las externalidades de los \emph{mercados densos}, en los que buscar cuesta menos en las expansiones \parencite{Diamond1982Aggregate}.
+\end{anotaciones}
+
+% ..........................................................................
+\subsubsection{El modelo agregado: la NAIRU y la histéresis}\label{sec:nairu-histeresis}
+
+\begin{itemize}
+\item La NEK busca en el mercado de trabajo por qué el salario \emph{real} no baja aunque haya paro. Si no baja, tampoco el coste marginal, y las empresas tienen menos motivos para bajar los precios: son rigideces reales que amplifican las nominales \parencite{BallRomer1990Real}. Las 2 familias de modelos tienen su desarrollo en otro tema \vertema{3.A.27}:
+  \begin{itemize}
+  \item \concepto{Salarios de eficiencia}: si el esfuerzo depende del salario, $e=e(w)$ con $e'>0$, pagar más puede salir más barato. En el modelo de \textcite{Solow1979Another}, la empresa fija el salario que minimiza el coste por unidad de trabajo efectivo, $w/e(w)$, y lo encuentra donde la elasticidad del esfuerzo al salario es la unidad (\emph{condición de \autor{Solow}}):
+    \begin{equation}
+    \varepsilon_{e,w}\equiv\frac{w^*\,e'(w^*)}{e(w^*)}=1 \label{eq:condicion-solow}
+    \end{equation}
+    Ese salario no depende de la demanda: es una rigidez real, y si a ese salario las empresas no contratan a todos, hay paro \emph{involuntario}. El esfuerzo depende del salario por 5 motivos: nutrición \parencite{Leibenstein1957Theory}, rotación \parencite{Salop1979Model}, selección adversa \parencite{Weiss1980Job}, escaqueo \parencite{ShapiroStiglitz1984Equilibrium} y equidad \parencite{Akerlof1982Labor,AkerlofYellen1990Fair}. En el modelo de \autor{Shapiro} y \autor{Stiglitz}, la empresa no ve el esfuerzo y despide a quien pilla escaqueándose: el salario tiene que cumplir la \emph{condición de no escaqueo} (CNE), que es la restricción de compatibilidad de incentivos (IC) del principal-agente \vertema{3.A.13}, y es tanto más alto cuanto menor es el paro. El paro es lo que disciplina a los trabajadores.\footnote{En palabras de sus autores, el paro es involuntario porque «quienes no tienen empleo trabajarían encantados por $w^*$ o menos, pero no pueden prometer de forma creíble que no se escaquearán con esos salarios» \parencite[438]{ShapiroStiglitz1984Equilibrium}.}
+  \item \concepto{Contratos implícitos} \parencite{Baily1974Wages,Gordon1974Neoclassical,Azariadis1975Implicit}: la empresa, neutral al riesgo, asegura a trabajadores aversos al riesgo con un salario estable a lo largo del ciclo, y el ajuste se hace por el empleo. Explican la rigidez del salario real, pero \emph{no} el paro involuntario: el empleo de cada estado es el eficiente. Y lo que estabilizan es el salario real, no el nominal; por eso la NEK los deja en segundo plano y busca la rigidez nominal en los precios.\footnote{La información es el nexo entre las 2 familias: en los contratos implícitos es incompleta pero simétrica (nadie sabe qué estado llegará, pero todos lo ven cuando llega); en los salarios de eficiencia es asimétrica (la empresa no ve el esfuerzo). Con información asimétrica sobre el estado, los contratos implícitos sí pueden dar subempleo \parencite{Azariadis1975Implicit} \vertema{3.A.27}.}
+  \end{itemize}
+\item La rama europea de la 1.ª generación junta esas rigideces y la competencia imperfecta en un \emph{modelo agregado del paro}, el de fijación de salarios y precios de \textcite{LayardNickell1985Causes} y \textcite{LayardNickellJackman1991Unemployment}, pensado para el paro europeo de los 70 y los 80 \vertema{3.A.28}:
+  \begin{itemize}
+  \item \emph{Curva de fijación de salarios} (WS): los salarios se fijan (por negociación o como salarios de eficiencia) antes de conocer los precios; crecen con lo que se espera de los precios y de la productividad y bajan con el paro:
+    \begin{equation}
+    \frac{W}{P^e}=F(U,Z)\cdot\mathrm{PAT}^e,\qquad F_U<0 \label{eq:ws}
+    \end{equation}
+    y $F_Z>0$, con $Z$ los factores institucionales (prestaciones por desempleo, poder sindical, protección del empleo, impuestos sobre el trabajo).
+  \item \emph{Curva de fijación de precios} (PS): las empresas fijan un margen $\mu$ sobre el coste laboral unitario, $W/\mathrm{PAT}$:
+    \begin{equation}
+    P=(1+\mu)\,\frac{W}{\mathrm{PAT}}\quad\Longrightarrow\quad\frac{W}{P}=\frac{\mathrm{PAT}}{1+\mu} \label{eq:ps}
+    \end{equation}
+  \item \emph{Equilibrio}: sin sorpresas ($P^e=P$, $\mathrm{PAT}^e=\mathrm{PAT}$), la \concepto{NAIRU} es la tasa de paro que hace compatibles las 2 curvas (gráfico~\ref{fig:ws-ps}):
+    \begin{equation}
+    F(U^n,Z)=\frac{1}{1+\mu} \label{eq:nairu}
+    \end{equation}
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La NAIRU: curvas de fijación de salarios (WS) y de precios (PS)}\label{fig:ws-ps}
+\grafico[0.55\textwidth]{ws-ps}
+\fuente{elaboración propia a partir de \textcite{LayardNickellJackman1991Unemployment} y \textcite[cap.~2]{CarlinSoskice2015Macroeconomics}; es el mismo gráfico de \vertema{3.A.28}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item la NAIRU es un paro \emph{involuntario} y \emph{de equilibrio}, fruto de un \emph{conflicto distributivo}: los trabajadores reclaman una parte $F(U,Z)$ de lo que se produce y las empresas, una parte $\mu/(1+\mu)$; el paro es lo que modera las pretensiones hasta que encajan;
+  \item la política de demanda solo baja el paro de forma transitoria y a costa de más inflación; bajarlo de forma duradera exige actuar sobre $Z$ y $\mu$, con políticas de oferta y de competencia;
+  \item la NAIRU no la inventó la NEK: la idea es de \textcite{ModiglianiPapademos1975Targets}, con el nombre de NIRU, y para \textcite{BallMankiw2002NAIRU} es «aproximadamente un sinónimo» de la tasa natural de \autor{Friedman}: lo que cambia es el modelo con que se explica.
+  \end{itemize}
+\item \emph{Extensión: la histéresis}. Tras una recesión, el paro puede no volver a su nivel, porque la NAIRU depende de su propia historia \parencite{BlanchardSummers1986Hysteresis}. En la versión \emph{pura}, no hay una tasa de equilibrio única y la demanda mueve también la de equilibrio; en la versión \emph{débil}, la hay a largo plazo, pero el paro es muy persistente. Los 3 mecanismos \vertema{3.A.28}:
+  \begin{itemize}
+  \item la caída de la inversión reduce el capital y, con él, el empleo que se puede sostener;
+  \item los parados de larga duración pierden capital humano y se desaniman, y les cuesta más volver a encontrar empleo;
+  \item los \emph{insiders} que conservan el empleo negocian salarios pensando en ellos y no en los parados (\emph{outsiders}), que ya no cuentan en la negociación \parencite{LindbeckSnower1986Wage,LindbeckSnower1988Insider} \vertema{3.A.27}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración de la NEK de 1.ª generación}\label{sec:valoracion-primera}
+
+\begin{itemize}
+\item \emph{Aportaciones}:
+  \begin{itemize}
+  \item un fundamento microeconómico de la rigidez nominal y del paro involuntario con agentes racionales: lo que la síntesis suponía, la NEK lo explica;
+  \item el ciclo vuelve a ser, en parte, un fenómeno de demanda: las perturbaciones de la demanda agregada (monetarias, fiscales o de confianza, incluso las profecías autocumplidas) mueven la producción a corto plazo, \emph{anticipadas o no}, porque los precios y los contratos se fijaron antes. En la NMC, solo las no anticipadas \parencite{Lucas1972Expectations};
+  \item la política monetaria tiene efectos reales a corto plazo y es neutral a largo: la economía vuelve a su producción con precios más altos. Pero su uso sistemático para bajar el paro solo sube la inflación media y hace que los precios se ajusten antes, con lo que pierde eficacia \parencite{BallMankiwRomer1988}. Por eso no defienden la sintonía fina de la síntesis: la estabilización es posible, no obligatoria.
+  \end{itemize}
+\item \emph{Limitaciones}:
+  \begin{itemize}
+  \item en el debate entre reglas y discrecionalidad no hay posición común: \autor{Taylor}, de la 1.ª generación, propondrá su regla, y la 2.ª defenderá el compromiso con reglas \vertema{3.A.36};
+  \item para \textcite{DeVroey2016History}, no lograron frenar a la NMC por 2 razones: su actitud fue defensiva, con modelos estáticos y de equilibrio parcial, cada uno con una imperfección, cuando la NMC ofrecía un marco dinámico y general; y el programa aplicado del ciclo real (calibrar y simular economías artificiales) los dejó atrás;
+  \item la evidencia de que los costes de menú en sentido estricto pesan poco \parencite{BlinderEtAl1998Asking} obligó a apoyarse en las rigideces reales.
+  \end{itemize}
+\item \emph{Recapitulación}: la 1.ª generación encontró las piezas (competencia imperfecta, pequeñas fricciones nominales, rigideces reales y un modelo del paro), pero no un modelo que las uniera. Una vez vistas las piezas, pasamos a ver cómo la 2.ª generación las monta en un modelo dinámico de equilibrio general.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Economistas neokeynesianos de segunda generación}\label{sec:segunda}
+\minutos{9}
+
+\begin{itemize}
+\item Vista la primera generación y sus límites, pasamos a la segunda, que cambia de estrategia: en lugar de oponer modelos parciales a la NMC, acepta su marco y le mete dentro las rigideces.
+\item \emph{Conclusión anticipada}: la 2.ª generación toma el método de sus rivales, los EGDE con expectativas racionales, y le añade competencia monopolística y precios rígidos. Resulta un modelo de 3 ecuaciones en el que la política monetaria tiene efectos reales a corto plazo y en el que, salvo ante perturbaciones de costes, estabilizar la inflación estabiliza también la actividad.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Caracterización general de la NEK de 2.ª generación según \autor{Schumpeter}}\label{sec:caracterizacion-segunda}
+
+\begin{itemize}
+\item Con los 3 rasgos de \autor{Schumpeter} (líder, seguidores y cuerpo doctrinal), la 2.ª generación es otra vez una \emph{escuela sin líder}, pero con un cuerpo doctrinal mucho más compacto que la 1.ª: un modelo canónico.
+  \begin{itemize}
+  \item \emph{Sin líder ni seguidores}: un grupo de autores en pie de igualdad que construye el modelo desde los 90. Marvin \autor{Goodfriend} y Robert \autor{King}, que bautizan la nueva síntesis \parencite{GoodfriendKing1997New}; Julio \autor{Rotemberg} y Michael \autor{Woodford}, que derivan la política monetaria óptima del bienestar de los hogares \parencite{RotembergWoodford1997Optimization,Woodford2003Interest}; Richard \autor{Clarida}, Jordi \autor{Galí} y Mark \autor{Gertler}, que dan la versión de referencia \parencite{ClaridaGaliGertler1999Science}; Lawrence \autor{Christiano}, Martin \autor{Eichenbaum} y Charles \autor{Evans} \parencite{ChristianoEichenbaumEvans2005} y Frank \autor{Smets} y Raf \autor{Wouters} \parencite{SmetsWouters2003Estimated}, que lo llevan a los datos; Ben \autor{Bernanke}, con las fricciones financieras, y Olivier \autor{Blanchard}, puente entre las 2 generaciones.
+  \item \emph{Contexto}: los 90 y los 2000, la \emph{Gran Moderación}: inflación baja y estable, bancos centrales independientes que adoptan objetivos de inflación y modelos del ciclo real que ya son el lenguaje común de la macroeconomía \vertema{3.A.42}.
+  \item \emph{Universidades e instituciones}: Princeton (\autor{Woodford}, \autor{Bernanke}), Columbia, Nueva York (\autor{Gertler}), el MIT y Northwestern (\autor{Christiano}, \autor{Eichenbaum}); en Europa, la Universitat Pompeu Fabra y el CREI (\autor{Galí}). Y, cosa nueva, los \emph{bancos centrales}: la Reserva Federal y el BCE (\autor{Smets}) desarrollan y usan el modelo.
+  \item \emph{Cuerpo doctrinal}:
+    \begin{itemize}
+    \item \emph{Objeto}: el ciclo y, sobre todo, la \emph{política monetaria óptima}: qué regla debe seguir el banco central y con qué objetivo.
+    \item \emph{Método}: \concepto{apalancamiento sobre la nueva macroeconomía clásica}. Aceptan sus reglas del juego, el \concepto{equilibrio general dinámico y estocástico} (EGDE) \vertema{3.A.6}: agentes que optimizan (microfundamentos, la respuesta a la crítica de \autor{Lucas}, porque los parámetros de preferencias y tecnología no cambian con la política); equilibrio \emph{general} (las decisiones de unos son las restricciones de otros); \emph{dinámico} (horizonte infinito y ecuación de \autor{Euler} \vertema{3.A.29}), y \emph{estocástico} (perturbaciones y expectativas racionales). Sobre el modelo del ciclo real hacen 2 cambios: la \emph{competencia monopolística} sustituye a la perfecta, y precios y salarios se ajustan de forma \emph{escalonada}. Con ellos, el dinero y la política monetaria vuelven a primera plana. Pegatina: «si no puedes con tu enemigo, únete a él».
+    \end{itemize}
+  \end{itemize}
+\item \emph{Frente a la 1.ª generación}: las rigideces son las mismas; lo que cambia es el marco (tabla~\ref{tab:generaciones}). Por eso, para \textcite{DeVroey2016History}, la teoría del ciclo real y la 2.ª generación son 2 transformaciones sucesivas del programa EGDE de \autor{Lucas}, \autor{Kydland} y \autor{Prescott} más que 2 escuelas enfrentadas: el ciclo real no pasa a la historia, sino que se le añaden fricciones.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La NEK de 1.ª y de 2.ª generación}\label{tab:generaciones}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\raggedright\arraybackslash}m{5cm}>{\raggedright\arraybackslash}m{5cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{1.ª generación} & \textbf{2.ª generación}\\
+\midrule
+\textbf{Objeto} & \textcolor{tceemorado}{paro y subempleo} & \textcolor{tceeazul}{política monetaria óptima}\\
+\textbf{Enfoque} & \textcolor{tceemorado}{sobre todo estático} & \textcolor{tceeazul}{dinámico}\\
+\textbf{Equilibrio} & \textcolor{tceemorado}{parcial o general incompleto} & \textcolor{tceeazul}{general}\\
+\textbf{Vaciado de los mercados} & \textcolor{tceemorado}{no: la oferta no coincide con la demanda} & \textcolor{tceeazul}{sí: las empresas atienden la demanda al precio que fijaron}\\
+\textbf{Frente a la síntesis neoclásica} & \textcolor{tceemorado}{visión ecléctica} & \textcolor{tceeazul}{defensa de una macroeconomía homogénea de estilo walrasiano}\\
+\bottomrule
+\end{tabular}
+\fuente{adaptado de \textcite{DeVroey2016History}, tabla~18.1.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{El modelo canónico de la NEK}\label{sec:modelo-canonico}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La pregunta: \emph{¿cómo afectan la política monetaria y las perturbaciones a la inflación y a la actividad cuando los precios son rígidos, pero los agentes optimizan y tienen expectativas racionales?}
+\item La respuesta de \textcite{ClaridaGaliGertler1999Science}, \textcite{Woodford2003Interest} y \textcite{Gali2015Monetary} es un modelo pequeño que cabe en 3 ecuaciones log-linealizadas: la demanda (hogares), la oferta (empresas) y la política monetaria (banco central). Se le llama \emph{modelo de 3 ecuaciones}, como al IS-PC-MR de \textcite{CarlinSoskice2015Macroeconomics}, que es una versión de manual con otra lógica: no hay que confundirlos.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Un \emph{hogar representativo} de vida infinita que consume, trabaja y ahorra en bonos, con utilidad CRRA en el consumo ($\theta$, la inversa de la elasticidad de sustitución intertemporal) y desutilidad del trabajo ($\varphi$, la inversa de la elasticidad de \autor{Frisch}).
+\item Un continuo de empresas $i\in[0,1]$, cada una con una variedad, en \emph{competencia monopolística} à la \textcite{DixitStiglitz1977Monopolistic}, con elasticidad de sustitución $\sigma>1$ \vertema{3.A.18}. Producen solo con trabajo y rendimientos constantes, $Y_t(i)=A_t\,L_t(i)$.
+\item \emph{Rigidez nominal} à la \textcite{Calvo1983Staggered}: cada período, cada empresa puede revisar su precio con probabilidad $1-\eta$, haga el tiempo que haga desde la última vez; con probabilidad $\eta$ lo mantiene.
+\item Economía cerrada, \emph{sin capital ni sector público}: no hay inversión ni gasto, así que todo lo que se produce se consume, $Y_t=C_t$. El capital no hace falta: la persistencia la dan las rigideces.
+\item \emph{Economía sin dinero} (\emph{cashless}): el dinero solo es unidad de cuenta, y el banco central fija el tipo de interés nominal $i_t$ de los bonos.
+\item Perturbaciones de tecnología ($A_t$), de preferencias (de demanda), de costes ($u_t$) y de política monetaria ($\varepsilon_t$).
+\item Las ecuaciones se log-linealizan alrededor de un estado estacionario con inflación cero; las minúsculas son logaritmos y $x_t\equiv y_t-y^n_t$ es la \concepto{brecha de producción}, la distancia entre la producción y la que habría con precios flexibles, $y^n_t$ (la \emph{natural}).\footnote{No es la brecha de producción de las estadísticas, que compara el PIB con un potencial estimado con una función de producción o con filtros \parencite{GuisingerOwyangShell2018}: aquí la referencia es la producción de una economía igual pero con precios flexibles, que no se observa.}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Hogares: la curva IS dinámica}. El hogar resuelve
+  $$\optim{\max}{\{C_t,L_t,B_t\}}{\mathbb{E}_0\sum_{t=0}^{\infty}\beta^t\left(\frac{C_t^{1-\theta}-1}{1-\theta}-\frac{L_t^{1+\varphi}}{1+\varphi}\right)}{P_t\,C_t+\frac{B_t}{1+i_t}\leq B_{t-1}+W_t\,L_t+D_t}$$
+  con $B_t$ los bonos nominales (local: en el resto del temario $B$ es el beneficio), $D_t$ los beneficios de las empresas y $C_t$ el índice de consumo de \autor{Dixit} y \autor{Stiglitz}. De ahí salen la demanda de cada variedad, $C_t(i)=(P_t(i)/P_t)^{-\sigma}C_t$, la oferta de trabajo, $W_t/P_t=C_t^{\theta}L_t^{\varphi}$, y la ecuación de \autor{Euler} \vertema{3.A.29}. Log-linealizando la de \autor{Euler} con $y_t=c_t$ y restando la misma ecuación con precios flexibles (anexo~\ref{anexo:nek-derivacion}) se obtiene la \concepto{curva IS dinámica} (o aumentada con expectativas):
+  \funcionclave[eq:is-dinamica]{x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big)}
+  con $r^n_t=\rho+\theta\,\mathbb{E}_t[\Delta y^n_{t+1}]$ el \concepto{tipo de interés real natural} ($\rho\equiv-\ln\beta$): el tipo real que habría con precios flexibles. No depende de la política monetaria, solo de las preferencias y de la tecnología, y en él entran las perturbaciones de demanda.
+  \begin{itemize}
+  \item si el tipo real, $i_t-\mathbb{E}_t[\pi_{t+1}]$, supera al natural, los hogares aplazan consumo y la brecha cae; la sensibilidad es la elasticidad de sustitución intertemporal, $1/\theta$;\footnote{Es la lectura del tono de la política monetaria: expansiva si el tipo real está por debajo del natural y contractiva si está por encima. Es la idea de \textcite{Wicksell1898Geldzins}, con su tipo natural y su tipo monetario; por eso se llama también al modelo \emph{neowickselliano}, y \textcite{Woodford2003Interest} tituló su libro en homenaje al de \autor{Wicksell} \vertema{3.A.36}.}
+  \item es \emph{prospectiva}: resolviendo hacia delante, la brecha de hoy depende de toda la senda futura de tipos reales, $x_t=-\frac1\theta\sum_{k\geq0}\mathbb{E}_t[i_{t+k}-\pi_{t+k+1}-r^n_{t+k}]$. Por eso importan los anuncios del banco central;
+  \item a diferencia de la IS de la síntesis, sale de la optimización del hogar: es estructural, y la crítica de \autor{Lucas} no la alcanza \vertema{3.A.6}.
+  \end{itemize}
+\item \emph{Empresas: la curva de \autor{Phillips} neokeynesiana}. Si pudiera, cada empresa fijaría su precio con un margen constante sobre su coste marginal nominal, $P_t(i)=(1+\mu)\,\mathrm{CMg}^n_t$, con $1+\mu\equiv\sigma/(\sigma-1)$. Con \autor{Calvo} solo revisa con probabilidad $1-\eta$, y un precio dura de media $1/(1-\eta)$ períodos (con $\eta=0{,}75$ trimestral, un año). Pegatina: «más vale tarde que nunca».
+  \begin{itemize}
+  \item La que revisa en $t$ sabe que su precio puede durar: lo fija pensando en todos los períodos en que seguirá vigente, ponderados por la probabilidad $\eta^k$ de que siga. En logaritmos, el precio de reajuste es el margen sobre la \emph{media ponderada de los costes marginales esperados}:
+    \begin{equation}
+    p^*_t=\mu+(1-\beta\eta)\sum_{k=0}^{\infty}(\beta\eta)^k\,\mathbb{E}_t\big[\mathrm{cmg}^n_{t+k}\big] \label{eq:precio-reajuste}
+    \end{equation}
+    con $\ln(1+\mu)\approx\mu$.
+  \item El nivel de precios mezcla los que revisan y los que no: $\pi_t=(1-\eta)(p^*_t-p_{t-1})$.
+  \item Juntando las 2 (anexo~\ref{anexo:nek-derivacion}), la inflación depende de la esperada y del coste marginal real en desviación de su estado estacionario, $\widehat{\mathrm{cmg}}_t$, con el coeficiente $(1-\eta)(1-\beta\eta)/\eta$. Y con trabajo como único factor y la oferta de trabajo del hogar, $\widehat{\mathrm{cmg}}_t=(\theta+\varphi)\,x_t$: si la producción supera la natural, hay que pagar más salario real por más horas. Queda la \concepto{curva de \autor{Phillips} neokeynesiana} (NKPC):
+    \funcionclave[eq:nkpc]{\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t}
+    con la pendiente
+    \begin{equation}
+    \kappa\equiv\frac{(1-\eta)(1-\beta\eta)}{\eta}\,(\theta+\varphi) \label{eq:kappa}
+    \end{equation}
+    y $u_t$ una \emph{perturbación de costes} (cambios en el margen deseado o en los impuestos) que no viene de la brecha \parencite{ClaridaGaliGertler1999Science}.\footnote{La otra forma habitual de meter la rigidez es la de \textcite{Rotemberg1982Monopolistic}: todas las empresas pueden cambiar el precio cada período, pero con un coste cuadrático, la versión dinámica de los costes de menú (\ref{sec:rigideces-nominales}). A primer orden da la misma curva de \autor{Phillips}, con otra lectura de la pendiente.}
+  \item \emph{Lectura}: resolviendo hacia delante (sin $u_t$), $\pi_t=\kappa\sum_{k\geq0}\beta^k\,\mathbb{E}_t[x_{t+k}]$: la inflación de hoy es el valor presente de las brechas \emph{futuras} \vertema{3.A.41}. Frente a la curva aumentada de \autor{Friedman} y \autor{Phelps} \vertema{3.A.5}, la expectativa es la de la inflación de \emph{mañana} y sale de la optimización de las empresas. Cuanto más rígidos los precios ($\eta$ mayor), menor $\kappa$: la curva es más plana y la política monetaria mueve más la producción y menos la inflación.
+  \end{itemize}
+\item \emph{Banco central: la regla de tipos de interés}. La IS da la brecha para una senda de tipos y la NKPC, la inflación para una senda de brechas: falta cómo se fija $i_t$. Se cierra con una \concepto{regla de \autor{Taylor}} en su forma canónica \vertema{3.A.36}:
+  \funcionclave[eq:taylor]{i_t=\rho+\phi_\pi\,\pi_t+\phi_x\,x_t+\varepsilon_t}
+  con $\varepsilon_t$ una perturbación de política monetaria (lo que hace el banco central al margen de la regla). En los modelos estimados se añade la suavización, $i_t=\nu\,i_{t-1}+(1-\nu)(\rho+\phi_\pi\pi_t+\phi_x x_t)+\varepsilon_t$, con $0\leq\nu<1$.
+  \begin{itemize}
+  \item La forma original la propuso \textcite{Taylor1993} en la conferencia Carnegie-Rochester de noviembre de 1992, como una regularidad que describía bien la política de la Reserva Federal: $i_t=2+\pi_t+0{,}5(\pi_t-2)+0{,}5\,x_t$ (en~\%), es decir, $i_t=1+1{,}5\,\pi_t+0{,}5\,x_t$; sus ventajas e inconvenientes están en \vertema{3.A.36}.
+  \end{itemize}
+\item \emph{El modelo cerrado}. Las 3 ecuaciones forman un sistema: la regla fija $i_t$, la IS da $x_t$ y la NKPC da $\pi_t$, que vuelve a la regla (gráfico~\ref{fig:nek-esquema}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo canónico: 3 ecuaciones que se cierran entre sí}\label{fig:nek-esquema}
+\grafico[0.6\textwidth]{nek-esquema}
+\fuente{elaboración propia a partir de \textcite[cap.~3]{Gali2015Monetary}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{El equilibrio en el plano $(x_t,\pi_t)$}, con las expectativas dadas (gráfico~\ref{fig:nek-xpi}):
+  \begin{itemize}
+  \item la NKPC es una recta creciente de pendiente $\kappa$, que se desplaza con $\mathbb{E}_t[\pi_{t+1}]$ y con $u_t$;
+  \item sustituyendo la regla en la IS (con expectativas nulas, perturbaciones transitorias) sale la \concepto{demanda agregada dinámica}, decreciente:
+    \begin{equation}
+    \pi_t=-\frac{\theta+\phi_x}{\phi_\pi}\,x_t+\frac{r^n_t-\rho-\varepsilon_t}{\phi_\pi} \label{eq:da-dinamica}
+    \end{equation}
+    Es decreciente porque, si sube la inflación, el banco central sube el tipo real y cae la demanda; se desplaza a la derecha si sube el tipo natural y a la izquierda con una subida discrecional de los tipos ($\varepsilon_t>0$).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo canónico en el plano $(x_t,\pi_t)$: perturbación de demanda y de costes}\label{fig:nek-xpi}
+\grafico[0.9\textwidth]{nek-xpi}
+\fuente{elaboración propia a partir de \textcite[caps.~3 y~5]{Gali2015Monetary} y \textcite{ClaridaGaliGertler1999Science}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El dinero no es neutral a corto plazo, pero sí a largo}: con precios rígidos, subir $i_t$ sube el tipo real, baja la brecha y, con ella, la inflación. A largo plazo, con $\pi$ constante, la NKPC da $x=\frac{1-\beta}{\kappa}\,\pi$: como $\beta$ es casi 1, la curva es casi vertical y apenas hay \emph{trade-off} permanente.
+\item \concepto{Principio de \autor{Taylor}}: para que el equilibrio sea \emph{único} (determinado), el tipo nominal tiene que responder a la inflación \emph{más} que uno a uno, de modo que suba el tipo real y enfríe la demanda. En este modelo la condición es
+  \begin{equation}
+  \kappa(\phi_\pi-1)+(1-\beta)\,\phi_x>0 \label{eq:determinacion}
+  \end{equation}
+  que se cumple siempre que $\phi_\pi>1$ y $\phi_x\geq0$ \parencite[cap.~3]{Gali2015Monetary}: la regla de \autor{Taylor} original, con $\phi_\pi=1{,}5$, la cumple. Si no se cumple, el equilibrio es \emph{indeterminado}: caben fluctuaciones por expectativas que se autocumplen, sin cambio en los fundamentos. \textcite{ClaridaGaliGertler2000Rules} estiman que la Reserva Federal anterior a \autor{Volcker} no lo cumplía, lo que ayuda a explicar la inestabilidad de los 70. Pegatina: «más vale pasarse que quedarse corto».
+\item \emph{El objetivo del banco central}: aproximando el bienestar del hogar representativo, la pérdida que debe minimizar es \parencite{RotembergWoodford1997Optimization,Woodford2003Interest}
+  \begin{equation}
+  L=\mathbb{E}_0\sum_{t=0}^{\infty}\beta^t\big(\pi_t^2+\lambda_x\,x_t^2\big),\qquad \lambda_x=\frac{\kappa}{\sigma} \label{eq:perdida}
+  \end{equation}
+  y no es arbitraria: la \emph{inflación} cuesta porque, con precios que no se revisan a la vez, dispersa los precios relativos y los hogares compran cantidades distintas de variedades que valoran igual y cuestan lo mismo; la \emph{brecha} cuesta porque la producción natural es la eficiente (si un subsidio corrige el margen de monopolio) y apartarse de ella es ineficiente.
+\item \concepto{Divina coincidencia}: sin perturbaciones de costes ($u_t=0$), si el banco central mueve el tipo nominal con el tipo natural, $i_t=r^n_t+\phi_\pi\pi_t+\phi_x x_t$, la inflación y la brecha son cero a la vez: con $x_t=0$, la NKPC da $\pi_t=0$, y a la inversa. No hay conflicto entre estabilizar los precios y la actividad, y basta con mirar la inflación (gráfico~\ref{fig:nek-xpi}, panel a). El resultado está en \textcite{GoodfriendKing1997New} y \textcite{RotembergWoodford1997Optimization}; el nombre se lo pusieron \textcite{BlanchardGali2007Real}. Pegatina: «matar dos pájaros de un tiro».
+\item \emph{Cuándo se rompe}: el resultado exige que la producción natural sea la eficiente, es decir, que la única distorsión sea la rigidez de los precios. Con otras fricciones aparece un dilema \parencite{Gali2018State}:
+  \begin{itemize}
+  \item con \emph{perturbaciones de costes}, $u_t\neq0$: la NKPC sube, la inflación sube y la brecha cae (gráfico~\ref{fig:nek-xpi}, panel b). Lo óptimo es acomodar en parte: subir los tipos y abrir una brecha negativa que deje la inflación por encima de cero; con un compromiso creíble, el banco central logra la misma inflación con menos recesión hoy (la \emph{ganancia del compromiso}) \parencite{ClaridaGaliGertler1999Science} \vertema{3.A.36};
+  \item con \emph{salarios reales rígidos}, que hacen que la producción natural responda demasiado a las perturbaciones de oferta \parencite{BlanchardGali2007Real};
+  \item con \emph{fricciones de búsqueda} en el mercado de trabajo, en la \concepto{NEK con desempleo} de \textcite{BlanchardGali2010Labor}: con fricciones de búsqueda y salarios reales rígidos obtienen una curva de \autor{Phillips} con paro, y la política monetaria ya no puede estabilizar a la vez la inflación y la actividad. En los mercados de trabajo escleróticos, con pocas entradas y salidas del paro, este es además más persistente \vertema{3.A.26} \vertema{3.A.28}. \textcite{Gali2011Return} reescribe después la curva de \autor{Phillips} de salarios en función del paro.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Equilibrios múltiples} (para consultar; no se canta): un sistema dinámico con expectativas racionales tiene un equilibrio único y estable cuando hay tantas raíces inestables como variables que miran hacia delante (aquí, $x_t$ y $\pi_t$); si hay menos, el equilibrio es indeterminado. \textcite{BlanchardFischer1989Lectures} clasifican los equilibrios múltiples que pueden aparecer: burbujas, que se alejan de los fundamentos y se alimentan de sí mismas, y \emph{manchas solares}, fluctuaciones ligadas a variables sin relación con los fundamentos que todos toman como señal. Una regla de política bien diseñada, como la que cumple el principio de \autor{Taylor}, descarta esas soluciones.
+\end{anotaciones}
+
+\begin{notaopositor}
+Para el test (marzo de 2025): con la regla $i_t=\alpha+\beta_y y_t+\beta_\pi\pi_t$, que $\beta_\pi$ sea \emph{igual o mayor} que 1 no es condición necesaria ni suficiente de unicidad. No es necesaria, porque con $\phi_x>0$ basta un $\phi_\pi$ algo menor que 1 \eqref{eq:determinacion}; no es suficiente, porque con $\phi_\pi=1$ y $\phi_x=0$ la condición no se cumple. Sí es suficiente $\phi_\pi>1$ (estricto) con $\phi_x\geq0$.
+\end{notaopositor}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Inercia de la inflación}: la NKPC pura no da persistencia. Con \emph{indexación} de los precios que no se revisan a la inflación pasada \parencite{ChristianoEichenbaumEvans2005} o con una parte de empresas que siguen una regla sencilla \parencite{GaliGertler1999Inflation} sale una \concepto{curva de \autor{Phillips} híbrida}, con $\gamma_b$ y $\gamma_f$ (locales) los pesos retrospectivo y prospectivo:
+  \begin{equation}
+  \pi_t=\gamma_b\,\pi_{t-1}+\gamma_f\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t \label{eq:nkpc-hibrida}
+  \end{equation}
+\item \emph{Información rígida}: \textcite{MankiwReis2002Sticky} sustituyen la rigidez de los precios por la de la información: todos cambian el precio cada período, pero solo una parte actualiza su información, y las perturbaciones pasan a los precios poco a poco.
+\item \emph{Salarios rígidos}: con salarios fijados también à la \autor{Calvo} \parencite{ErcegHendersonLevin2000Optimal} hay 2 curvas de \autor{Phillips}, de precios y de salarios, y estabilizar solo la inflación de precios ya no es óptimo.
+\item \emph{Modelos medianos}: con capital, costes de ajuste de la inversión, hábitos e indexación, \textcite{ChristianoEichenbaumEvans2005} reproducen la respuesta de la economía a una perturbación monetaria, y \textcite{SmetsWouters2003Estimated,SmetsWouters2007Shocks} estiman el modelo con métodos bayesianos para la zona del euro y Estados Unidos. Son la base de los modelos de los bancos centrales.
+\item \emph{Economía abierta}: la misma estructura con tipo de cambio da la versión de \autor{Galí} y \autor{Monacelli} \vertema{3.A.32}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Con el coste marginal real (la participación del trabajo en la renta) en lugar de la brecha, la NKPC se ajusta bien a los datos de Estados Unidos y el término retrospectivo pesa poco \parencite{GaliGertler1999Inflation}.
+\item Con microdatos, la frecuencia de los cambios de precios no es constante, como supone \autor{Calvo}: sube con la inflación, como predicen las reglas dependientes del estado (\ref{sec:rigideces-nominales}). Las cifras, en el apartado~\ref{sec:nueva-sintesis}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{Aportación}: une en un marco coherente la optimización de la NMC y las rigideces de la 1.ª generación; da a la política monetaria un papel claro y permite evaluarla con el bienestar de los hogares.
+\item \emph{Críticas}: la NKPC pura no explica la inercia de la inflación. Con ella, una desinflación \emph{creíble} anunciada para el futuro sería expansiva, porque la inflación caería antes que la producción, cuando en los datos las desinflaciones son graduales y costosas \parencite{Ball1994Credible}. El modelo básico no tiene paro, ni sector financiero, ni hogares distintos, y su tipo natural y su brecha no se observan.
+\item \emph{Recapitulación}: 3 ecuaciones, un gráfico y un principio, el de \autor{Taylor}, bastan para pensar la política monetaria. Con el modelo cerrado, pasamos a lo que se deduce de él para la política económica y al consenso que formó.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Implicaciones de política económica y la nueva síntesis}\label{sec:politica-sintesis}
+\minutos{6,5}
+
+\begin{itemize}
+\item Una vez construido el modelo, pasamos a lo que dice de la política económica y a lo que ha quedado de él tras la crisis de 2008.
+\item \emph{Conclusión anticipada}: el modelo da una receta clara (bancos centrales independientes que mueven el tipo más que la inflación y anclan las expectativas), que fue el consenso de la \emph{nueva síntesis} hasta 2008. La crisis le obligó a añadir el sistema financiero, el límite inferior de los tipos y la política fiscal, y la inflación de 2021-2023 le ha recordado que la rigidez de los precios no es un parámetro fijo.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Implicaciones de política económica}\label{sec:implicaciones}
+
+\subsubsection{Política monetaria}\label{sec:politica-monetaria}
+
+\begin{itemize}
+\item \emph{Estabilidad de precios y objetivos de inflación}: en el modelo, la inflación es a la vez síntoma (de brecha positiva) y causa (de dispersión de los precios) de ineficiencia \eqref{eq:perdida}: es el fundamento del objetivo de estabilidad de precios. En la práctica se elige una inflación algo positiva, en torno al 2~\%, para alejarse del límite inferior de los tipos y por los sesgos de medición: el BCE fija desde 2021 un objetivo simétrico del 2~\% a medio plazo, que confirmó en 2025 \parencite{BCE2021Estrategia,BCE2025Estrategia} \vertema{3.A.41}.
+\item \emph{Expectativas y credibilidad}: como la IS y la NKPC miran hacia delante, la política funciona sobre todo a través de lo que se espera de ella: la gestión de las expectativas es el centro de la política monetaria \parencite{Woodford2003Interest}. De ahí la independencia de los bancos centrales, los objetivos explícitos, las reglas y la comunicación, y que una desinflación creíble cueste menos. Con discreción, el banco central no puede comprometerse con la política futura y logra peores resultados que con compromiso \parencite{ClaridaGaliGertler1999Science} \vertema{3.A.36}.
+\item \emph{Variables naturales}: el tipo natural y la producción natural guían la política, pero no se observan; se estiman con modelos, con mucha incertidumbre \vertema{3.A.42}. La regla de \autor{Taylor} con datos lo muestra: con sus coeficientes originales, en 2020 pedía en la zona del euro un tipo del $-1{,}6$~\%, imposible por el límite inferior, y en 2022, con una inflación media del 8,4~\%, un 14~\%, cuando la facilidad de depósito seguía cerca de cero \parencite{BCE2026Tipos,Eurostat2026IAPC,CE2026AMECOBrecha}.
+\item \emph{El límite inferior de los tipos} (ZLB): con inflación baja, el tipo natural puede caer tanto que el tipo nominal que lo sigue sea negativo. Entonces el banco central recurre a instrumentos no convencionales \vertema{3.A.37}:
+  \begin{itemize}
+  \item la \concepto{orientación de la política} (\emph{forward guidance}): prometer tipos bajos durante más tiempo, aunque luego no haga falta, baja hoy los tipos reales esperados \parencite{EggertssonWoodford2003Zero}. En el modelo canónico esas promesas tienen efectos desmesurados, tanto más cuanto más lejana es la fecha: es la \emph{paradoja de la orientación} (\emph{forward guidance puzzle}), que no se ve en los datos \parencite{DelNegroGiannoniPatterson2023}. Con mercados incompletos y riesgo de paro, los hogares descuentan el futuro con más cautela y el efecto se modera \parencite{McKayNakamuraSteinsson2016};
+  \item las compras de activos: \textcite{SimsWuZhang2023} añaden al modelo una cuarta ecuación con ellas;
+  \item cuando el tipo oficial toca su límite, el tono de la política se mide con el \concepto{tipo sombra}, el tipo a corto plazo que reproduciría la curva de rendimientos sin ese límite: en la zona del euro llegó al $-7{,}8$~\% en agosto de 2019, con la facilidad de depósito en el $-0{,}4$~\% \parencite{Wu2022Sombra,WuXia2016Measuring}.
+  \end{itemize}
+\item \emph{Fricciones financieras}: el modelo canónico no tenía bancos ni crédito. El \emph{acelerador financiero} de \textcite{BernankeGertlerGilchrist1999}, en el que el patrimonio de los prestatarios abarata o encarece su financiación, amplifica las perturbaciones; \textcite{GertlerKaradi2011Unconventional} y \textcite{GertlerKiyotaki2010Financial} añaden bancos con restricciones de capital y justifican las compras de activos del banco central, y \textcite{CurdiaWoodford2010Credit}, un diferencial de crédito que la regla debe vigilar \vertema{3.A.37}.
+\end{itemize}
+
+\subsubsection{Política fiscal}\label{sec:politica-fiscal}
+
+\begin{itemize}
+\item La NEK de 2.ª generación se ocupó poco de la política fiscal, pero el modelo la trata con las mismas 3 ecuaciones, añadiendo el gasto a la IS \vertema{3.A.38}. Un aumento del gasto actúa por 3 vías:
+  \begin{itemize}
+  \item \emph{efecto riqueza}: los hogares anticipan los impuestos futuros, consumen menos y trabajan más, como en el modelo del ciclo real;
+  \item \emph{rigidez de precios}: las empresas atienden la mayor demanda con más producción y empleo, y el margen cae;\footnote{Con el margen $1+\mu=P\cdot\mathrm{PMg}_L/W$, si la producción sube con los precios fijos, el salario real sube y el margen cae: el margen es contracíclico, y eso amplifica el efecto del gasto.}
+  \item \emph{respuesta del banco central}: si sigue la regla de \autor{Taylor}, sube el tipo real y expulsa consumo.
+  \end{itemize}
+\item Con hogares ricardianos e impuestos de suma fija se cumple la \concepto{equivalencia ricardiana} \parencite{Barro1974} \vertema{3.A.39}: da igual financiar el gasto con impuestos o con deuda, y una rebaja de impuestos financiada con deuda no mueve la demanda. El gasto sí la mueve, y el multiplicador es mayor cuanto más rígidos los precios, más persistente el gasto y \emph{más acomodaticio el banco central}: en el límite inferior, cuando el tipo nominal no sube, puede superar con creces la unidad \parencite{Woodford2011Simple,ChristianoEichenbaumRebelo2011} \vertema{3.A.40}.
+\item Con una parte de hogares que no pueden ahorrar ni endeudarse (de \emph{regla de pulgar}), la equivalencia ricardiana deja de cumplirse: el consumo \emph{sube} con el gasto público, como en los datos \parencite{GaliLopezSalidoValles2007}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración: la nueva síntesis y la importancia de la NEK en el debate económico}\label{sec:nueva-sintesis}
+
+\begin{itemize}
+\item \emph{Qué es}: \textcite{GoodfriendKing1997New} llamaron \concepto{nueva síntesis neoclásica} al consenso de los 90. Como la síntesis de \autor{Samuelson} unió a \autor{Keynes} y a los neoclásicos, esta une a la NEK y a la NMC. No fue un pacto entre escuelas, sino una convergencia gradual \parencite{Woodford2009Convergence}: cada una aportó una pieza (tabla~\ref{tab:nueva-sintesis}).
+  \begin{itemize}
+  \item de la \emph{nueva macroeconomía clásica} y el ciclo real, el método: agentes que optimizan con expectativas racionales en modelos dinámicos de equilibrio general, y la credibilidad \parencite{KydlandPrescott1977Rules} \vertema{3.A.6};
+  \item del \emph{monetarismo}, la tasa natural, el papel de las expectativas, las reglas y la inflación como objetivo del banco central \vertema{3.A.5};
+  \item de \emph{Keynes} y la síntesis, por medio de la NEK, la competencia imperfecta y la rigidez de los precios, que dan a la demanda y a la política monetaria efectos reales a corto plazo \vertema{3.A.4}.
+  \end{itemize}
+\item \emph{Su receta}, hasta 2008: la \emph{política monetaria} como instrumento de estabilización, en manos de un banco central independiente con un objetivo de inflación y una regla conocida; una \emph{política fiscal} neutral y sostenible, sin estabilización discrecional (para \textcite{Solow2002Politique}, la discusión seria sobre la política fiscal casi había desaparecido), y unos \emph{mercados financieros} que solo transmiten la política monetaria. Es, como resume \textcite{Mankiw2006Macroeconomist}, la que usan hoy los bancos centrales, con los modelos estimados de \textcite{SmetsWouters2007Shocks} como herramienta \parencite{Blanchard2009State}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Qué toma la nueva síntesis de cada escuela}\label{tab:nueva-sintesis}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\raggedright\arraybackslash}m{10.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Escuela} & \textbf{Pieza}\\
+\midrule
+\textbf{\autor{Keynes} y la síntesis} & rigideces; la demanda agregada mueve la producción a corto plazo; la política de estabilización es útil\\
+\textbf{Monetarismo} & neutralidad del dinero a largo plazo, tasa natural, expectativas, reglas, la inflación como objetivo del banco central\\
+\textbf{NMC y ciclo real} & expectativas racionales, optimización intertemporal, EGDE, crítica de \autor{Lucas}, inconsistencia temporal y credibilidad\\
+\textbf{NEK de 1.ª generación} & competencia monopolística y rigidez nominal microfundamentada (costes de menú, contratos escalonados)\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{GoodfriendKing1997New} y \textcite{Woodford2009Convergence}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{La crisis de 2008}: mostró 3 límites del consenso, que reconoció el propio FMI en febrero de 2010 \parencite{BlanchardDellAricciaMauro2010}:
+  \begin{itemize}
+  \item con una inflación del 2~\%, los tipos nominales están bajos y la política monetaria choca enseguida con su límite inferior;
+  \item la política fiscal vuelve a ser necesaria cuando la monetaria no puede actuar: a finales de 2008, tres meses después de la quiebra de Lehman Brothers, el FMI defendió un estímulo fiscal amplio \parencite{SpilimbergoEtAl2008Fiscal}, y la evidencia sobre los multiplicadores y las consolidaciones \parencite{RomerRomer2010Tax,Perotti2011Austerity} pasó al centro del debate \vertema{3.A.40};
+  \item el sistema financiero no es neutral: el apalancamiento y los precios de los activos generan perturbaciones y las amplifican, y hace falta una política \emph{macroprudencial} que mida y limite el riesgo sistémico \vertema{3.A.42}.
+  \end{itemize}
+  En la tercera conferencia del FMI para repensar la política macroeconómica (abril de 2015), \autor{Blanchard} resumía así los nuevos ejes del debate: los límites de la política monetaria, el nuevo papel de la política fiscal y la regulación macroprudencial \parencite{BlanchardEtAl2016Progress}.
+\item \emph{Cómo ha cambiado el modelo}:
+  \begin{itemize}
+  \item las fricciones financieras y el límite inferior, ya vistos (\ref{sec:politica-monetaria});
+  \item los \emph{agentes heterogéneos}: los modelos HANK \parencite{KaplanMollViolante2018Monetary} sustituyen al hogar representativo por hogares con distinta riqueza y liquidez. La política monetaria actúa sobre todo por efectos \emph{indirectos} (empleo y renta) y no por la sustitución intertemporal de la IS; la propensión marginal a consumir de cada hogar importa, y con ella la política fiscal y la distribución \vertema{3.A.33};
+  \item el \emph{paro}: la NEK con desempleo de \textcite{BlanchardGali2010Labor} y \textcite{Gali2011Return}, y con histéresis \parencite{Gali2022Insider} \vertema{3.A.28}.
+  \end{itemize}
+\item \emph{La inflación de 2021-2023}: en los 2010 la curva de \autor{Phillips} parecía \emph{plana}, con expectativas bien ancladas \parencite{Blanchard2016Phillips}. El repunte mostró que se empina cuando el mercado de trabajo está muy tenso \parencite{BenignoEggertsson2023} y que en Estados Unidos la mayor parte vino de perturbaciones de precios (energía, alimentos, cuellos de botella) y no del mercado de trabajo, aunque el efecto de este es más persistente \parencite{BernankeBlanchard2025What}. Y mostró que la frecuencia de los cambios de precios sube con la inflación: en la zona del euro pasó del 8~\% mensual en 2010-2019 al 12~\% en 2022, casi siempre por subidas, y volvió al 8,6~\% en 2024 \parencite{GautierEtAl2026WP3181} (gráfico~\ref{fig:frecuencia-precios}). Es lo que predicen las reglas dependientes del estado y no \autor{Calvo}: con la inflación alta, los precios se ajustan antes y la curva de \autor{Phillips} es más inclinada.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Frecuencia de los cambios de precios de consumo en la zona del euro}\label{fig:frecuencia-precios}
+\grafico[0.75\textwidth]{frecuencia-precios}
+\fuente{\textcite{GautierEtAl2026WP3181}, tabla~B1; referencia de Estados Unidos, \textcite{GautierEtAl2024New}. Porcentaje de los precios que cambian cada mes; las cifras de estudios distintos no son del todo comparables.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Críticas}: para Paul \autor{Romer} \parencite*{Romer2016Trouble}, la macroeconomía de los EGDE se alejó de los datos; para \textcite{Stiglitz2018Wrong}, el modelo falló en lo esencial, el origen financiero de las crisis, y no basta con añadirle fricciones; \textcite{Blanchard2018Future} defiende que siga siendo el núcleo, junto a modelos más sencillos para la política y más ricos para la teoría \vertema{3.A.1}. El balance de \textcite{Gali2018State}: los modelos nuevos keynesianos se han ampliado, no sustituido.
+\item \emph{Recapitulación}: el modelo dio a los bancos centrales su receta y la nueva síntesis su método; 2008 le añadió las finanzas, el límite inferior y la política fiscal, y la inflación reciente, una rigidez que cambia con la inflación.
+\end{itemize}
+
+
+% ==========================================================================
+\clearpage
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: En conclusión, la nueva economía keynesiana ha respondido en 2 tiempos a la pregunta de la exposición. La primera generación demostró que una rigidez pequeña, racional para cada empresa, tiene efectos grandes con competencia imperfecta y rigideces reales. La segunda metió esas rigideces en el modelo de equilibrio general de la nueva macroeconomía clásica y lo resumió en 3 ecuaciones, con las que el dinero no es neutral a corto plazo y el banco central puede estabilizar a la vez la inflación y la actividad, salvo ante perturbaciones de costes.
+\item \textbf{\emph{Relevancia}}: es el lenguaje en que piensan y hablan los bancos centrales: objetivos de inflación, independencia, reglas, comunicación y modelos estimados para la zona del euro.
+\item \textbf{\emph{Extensiones}}: la tasa natural y la NAIRU \vertema{3.A.28}; la determinación de salarios \vertema{3.A.27}; la búsqueda en el mercado de trabajo \vertema{3.A.26}; el diseño de la política monetaria y la regla de \autor{Taylor} \vertema{3.A.36}; la transmisión con rigideces y fricciones financieras \vertema{3.A.37}; la inflación \vertema{3.A.41}; los ciclos nominales, reales y financieros \vertema{3.A.42}; los multiplicadores fiscales desde 2008 \vertema{3.A.40}; el debate sobre los EGDE \vertema{3.A.1}, y, en la política fiscal española, el saldo estructural y los multiplicadores \vertema{4.B.4}.
+\item \textbf{\emph{Opinión}}: la NEK ganó el método y perdió parte de la ambición. La rigidez nominal es su pieza mejor contrastada; el sistema financiero, la peor, y que la frecuencia de los cambios de precios suba con la inflación recuerda que la rigidez no es un parámetro fijo.
+\item \textbf{\emph{Idea final}}: «por un clavo se pierde una herradura». La primera generación encontró el clavo, pequeñas fricciones que una a una no importan y juntas mueven la economía; la segunda lo metió en el modelo con el que hoy trabajan los bancos centrales. Desde 2008 sabemos que no era el único clavo suelto.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: el modelo canónico paso a paso}\label{anexo:nek-derivacion}
+
+\begin{itemize}
+\item \emph{Convenciones}: minúsculas en logaritmos; estado estacionario con inflación cero; aproximaciones de primer orden ($\ln(1+i_t)\approx i_t$, $\ln(1+\mu)\approx\mu$); $\rho\equiv-\ln\beta$.
+\end{itemize}
+
+\subsection{La curva IS dinámica}\label{anexo:is}
+
+\begin{itemize}
+\item \emph{Paso 1, las condiciones del hogar}. Del problema del apartado~\ref{sec:modelo-canonico}, con el multiplicador $\lambda_t$ de la restricción:
+  \begin{itemize}
+  \item consumo: $C_t^{-\theta}=\lambda_t P_t$;
+  \item trabajo: $L_t^{\varphi}=\lambda_t W_t$, y, dividiendo, $W_t/P_t=C_t^{\theta}L_t^{\varphi}$;
+  \item bonos: $\lambda_t/(1+i_t)=\beta\,\mathbb{E}_t[\lambda_{t+1}]$, que con la primera da la ecuación de \autor{Euler}:
+    $$1=\beta\,\mathbb{E}_t\big[(C_{t+1}/C_t)^{-\theta}(1+i_t)P_t/P_{t+1}\big]$$
+  \end{itemize}
+\item \emph{Paso 2, log-linealización}. En logaritmos y a primer orden, $c_t=\mathbb{E}_t[c_{t+1}]-\frac1\theta\big(i_t-\mathbb{E}_t[\pi_{t+1}]-\rho\big)$, y con $y_t=c_t$ (sin capital ni sector público): $y_t=\mathbb{E}_t[y_{t+1}]-\frac1\theta(i_t-\mathbb{E}_t[\pi_{t+1}]-\rho)$.
+\item \emph{Paso 3, la economía con precios flexibles}. La producción es la natural, $y^n_t$, y el tipo real, el natural, $r^n_t$: $y^n_t=\mathbb{E}_t[y^n_{t+1}]-\frac1\theta(r^n_t-\rho)$, es decir, $r^n_t=\rho+\theta\,\mathbb{E}_t[\Delta y^n_{t+1}]$. Las perturbaciones de preferencias mueven $r^n_t$.
+\item \emph{Paso 4}. Restando las 2 y con $x_t\equiv y_t-y^n_t$ se obtiene la IS dinámica \eqref{eq:is-dinamica}. \findemo
+\end{itemize}
+
+\subsection{La curva de \autor{Phillips} neokeynesiana}\label{anexo:nkpc}
+
+\begin{itemize}
+\item \emph{Paso 1, el nivel de precios}. Una fracción $1-\eta$ de las empresas, elegidas al azar, fija $P^*_t$; el resto mantiene su precio, y su precio medio es el del período anterior. Con el índice de \autor{Dixit} y \autor{Stiglitz}, $P_t^{1-\sigma}=\eta\,P_{t-1}^{1-\sigma}+(1-\eta)(P^*_t)^{1-\sigma}$; en logaritmos, alrededor de inflación cero, $p_t=\eta\,p_{t-1}+(1-\eta)\,p^*_t$, es decir,
+  \begin{equation}
+  \pi_t=(1-\eta)\,(p^*_t-p_{t-1}) \label{eq:anexo-precios}
+  \end{equation}
+\item \emph{Paso 2, el precio de reajuste}. La empresa que revisa en $t$ elige $P^*_t$ para
+  $$\optim{\max}{P^*_t}{\sum_{k=0}^{\infty}\eta^k\,\mathbb{E}_t\Big[Q_{t,t+k}\big(P^*_t\,Y_{t+k|t}-\mathcal{C}_{t+k}(Y_{t+k|t})\big)\Big]}{Y_{t+k|t}=\big(P^*_t/P_{t+k}\big)^{-\sigma}C_{t+k}}$$
+  con $Q_{t,t+k}$ el factor de descuento del hogar, $Y_{t+k|t}$ lo que vende en $t+k$ si no ha revisado desde $t$ y $\mathcal{C}(\cdot)$ su coste. La condición de primer orden es $\sum_k\eta^k\,\mathbb{E}_t\big[Q_{t,t+k}Y_{t+k|t}\big(P^*_t-(1+\mu)\,\mathrm{CMg}^n_{t+k}\big)\big]=0$: el precio es un margen sobre una media ponderada de los costes marginales nominales futuros. Con rendimientos constantes, el coste marginal no depende de lo que produce cada empresa, y a primer orden, con $Q_{t,t+k}\approx\beta^k$, se obtiene \eqref{eq:precio-reajuste}, que se escribe de forma recursiva como
+  $$p^*_t=(1-\beta\eta)\,(\mu+\mathrm{cmg}^n_t)+\beta\eta\,\mathbb{E}_t[p^*_{t+1}].$$
+\item \emph{Paso 3, en términos de inflación}. Con el coste marginal real $\mathrm{cmg}_t\equiv\mathrm{cmg}^n_t-p_t$ y su desviación del estado estacionario, $\widehat{\mathrm{cmg}}_t\equiv\mathrm{cmg}_t+\mu$ (con precios flexibles, $\mathrm{cmg}=-\mu$), y restando $p_{t-1}$ a los 2 lados:
+  $$p^*_t-p_{t-1}=\beta\eta\,\mathbb{E}_t[p^*_{t+1}-p_t]+(1-\beta\eta)\,\widehat{\mathrm{cmg}}_t+\pi_t.$$
+  Por \eqref{eq:anexo-precios}, $p^*_t-p_{t-1}=\pi_t/(1-\eta)$ y $\mathbb{E}_t[p^*_{t+1}-p_t]=\mathbb{E}_t[\pi_{t+1}]/(1-\eta)$. Sustituyendo y multiplicando por $1-\eta$,
+  $$\pi_t=\beta\eta\,\mathbb{E}_t[\pi_{t+1}]+(1-\eta)(1-\beta\eta)\,\widehat{\mathrm{cmg}}_t+(1-\eta)\,\pi_t,$$
+  y despejando,
+  \begin{equation}
+  \pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\frac{(1-\eta)(1-\beta\eta)}{\eta}\,\widehat{\mathrm{cmg}}_t \label{eq:nkpc-cmg}
+  \end{equation}
+\item \emph{Paso 4, del coste marginal a la brecha}. Con $Y_t(i)=A_tL_t(i)$, el coste marginal real es $W_t/(P_tA_t)$: $\mathrm{cmg}_t=(w_t-p_t)-a_t$. La oferta de trabajo da $w_t-p_t=\theta\,c_t+\varphi\,l_t$, y a primer orden $l_t=y_t-a_t$ (la dispersión de precios es de segundo orden) e $y_t=c_t$. Entonces $\mathrm{cmg}_t=(\theta+\varphi)\,y_t-(1+\varphi)\,a_t$. Con precios flexibles, $-\mu=(\theta+\varphi)\,y^n_t-(1+\varphi)\,a_t$. Restando,
+  $$\widehat{\mathrm{cmg}}_t=(\theta+\varphi)\,(y_t-y^n_t)=(\theta+\varphi)\,x_t.$$
+\item Llevándolo a \eqref{eq:nkpc-cmg} se obtiene la NKPC \eqref{eq:nkpc} con $\kappa$ de \eqref{eq:kappa}; la perturbación de costes $u_t$ recoge las variaciones del margen deseado, que mueven la producción natural pero no la eficiente. Con rendimientos decrecientes, el coeficiente se multiplica por un factor menor que 1 \parencite[cap.~3]{Gali2015Monetary}. \findemo
+\end{itemize}
+
+\subsection{La demanda agregada dinámica y la determinación}\label{anexo:determinacion}
+
+\begin{itemize}
+\item Sustituyendo la regla \eqref{eq:taylor} en la IS \eqref{eq:is-dinamica}:
+  $$(\theta+\phi_x)\,x_t=\theta\,\mathbb{E}_t[x_{t+1}]+\mathbb{E}_t[\pi_{t+1}]-\phi_\pi\,\pi_t+r^n_t-\rho-\varepsilon_t,$$
+  que con las expectativas nulas da \eqref{eq:da-dinamica}.
+\item Con la NKPC, el sistema en $(x_t,\pi_t)$ tiene 2 variables que miran hacia delante: el equilibrio es único si los 2 valores propios de su matriz están fuera del círculo unidad, lo que ocurre si y solo si se cumple \eqref{eq:determinacion} \parencite[cap.~3]{Gali2015Monetary}.
+\item \emph{Lectura}: un aumento permanente de la inflación de un punto eleva la brecha a largo plazo en $(1-\beta)/\kappa$ (de la NKPC), y la regla sube el tipo en $\phi_\pi+\phi_x(1-\beta)/\kappa$; la condición pide que eso supere 1, de modo que suba el tipo real. \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: una historia de la macroeconomía}\label{anexo:historia-macro}
+
+\begin{itemize}
+\item \textcite{DeVroey2016History} cuenta la macroeconomía como una sucesión de episodios, de la \emph{Teoría general} a los EGDE (gráfico~\ref{fig:historia-macro}):
+  \begin{itemize}
+  \item la \emph{macroeconomía keynesiana} (1936-finales de los 60): \autor{Keynes}, el IS-LM y la síntesis neoclásica, los modelos macroeconométricos y la curva de \autor{Phillips} \vertema{3.A.4} \vertema{3.A.5};
+  \item las \emph{disidencias}: el monetarismo de \autor{Friedman} y los keynesianos del desequilibrio \vertema{3.A.5} \vertema{3.A.4};
+  \item la \emph{revolución de \autor{Lucas}} (años 70): expectativas racionales, la crítica de \autor{Lucas} y el programa EGDE \vertema{3.A.6};
+  \item la \emph{primera reacción keynesiana}, la NEK de 1.ª generación (finales de los 70 y años 80), y el \emph{ciclo real} de \autor{Kydland} y \autor{Prescott} (desde 1982);
+  \item la \emph{segunda generación} de la NEK y la nueva síntesis (desde los 90), y su revisión tras la crisis de 2008.
+  \end{itemize}
+\item Para \autor{De Vroey}, la línea divisoria no está entre keynesianos y clásicos, sino entre la macroeconomía anterior a \autor{Lucas}, de modelos de pocas ecuaciones y equilibrio parcial, y la posterior, de modelos de equilibrio general dinámicos: la NEK de 1.ª generación todavía es de la primera; la de 2.ª, ya de la segunda.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Las escuelas de la macroeconomía, de \autor{Keynes} a hoy}\label{fig:historia-macro}
+\grafico[0.95\textwidth]{historia-macro}
+\fuente{elaboración propia a partir de \textcite{DeVroey2016History}, recuadro~0.1.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: aspectos para el test}\label{anexo:test}
+
+\begin{itemize}
+\item \emph{Fechas y obras}:
+  \begin{itemize}
+  \item 1.ª generación: \autor{Fischer} (1977) y \autor{Taylor} (1979, 1980), contratos escalonados; \autor{Sheshinski} y \autor{Weiss} (1977), reglas de estado; \autor{Salop} (1979) y \autor{Solow} (1979), salarios de eficiencia; \autor{Stiglitz} y \autor{Weiss} (1981), racionamiento del crédito; \autor{Rotemberg} (1982), coste cuadrático; \autor{Calvo} (1983); \autor{Shapiro} y \autor{Stiglitz} (1984); \autor{Mankiw} (1985), costes de menú; \autor{Akerlof} y \autor{Yellen} (1985), casi racionalidad; \autor{Layard} y \autor{Nickell} (1985); \autor{Blanchard} y \autor{Summers} (1986), histéresis; \autor{Blanchard} y \autor{Kiyotaki} (1987); \autor{Ball}, \autor{Mankiw} y \autor{Romer} (1988); \autor{Ball} y \autor{Romer} (1990), rigideces reales; \autor{Mankiw} y \autor{Romer} (1991), \emph{New Keynesian Economics}; \autor{Ball} y \autor{Mankiw} (1994), manifiesto de los precios rígidos;
+  \item 2.ª generación: \autor{Taylor} (1993), la regla; \autor{Goodfriend} y \autor{King} (1997), la nueva síntesis; \autor{Rotemberg} y \autor{Woodford} (1997); \autor{Clarida}, \autor{Galí} y \autor{Gertler} (1999), el modelo de referencia; \autor{Galí} y \autor{Gertler} (1999), curva híbrida; \autor{Bernanke}, \autor{Gertler} y \autor{Gilchrist} (1999), acelerador financiero; \autor{Mankiw} y \autor{Reis} (2002), información rígida; \autor{Woodford} (2003), \emph{Interest and Prices}; \autor{Smets} y \autor{Wouters} (2003, 2007); \autor{Christiano}, \autor{Eichenbaum} y \autor{Evans} (2005); \autor{Blanchard} y \autor{Galí} (2007), nombre de la divina coincidencia, y (2010), NEK con desempleo; \autor{Kaplan}, \autor{Moll} y \autor{Violante} (2018), HANK.
+  \end{itemize}
+\item \emph{Trampas}:
+  \begin{itemize}
+  \item las reglas dependientes del \emph{tiempo} revisan en fechas fijas; las dependientes del \emph{estado}, cuando la distancia al óptimo supera un umbral;
+  \item los contratos implícitos explican la rigidez del salario real, pero \emph{no} el paro involuntario;
+  \item una rigidez real sin rigidez nominal no da no neutralidad del dinero;
+  \item en \autor{Calvo}, $\eta$ es la probabilidad de \emph{no} revisar; la duración media de un precio es $1/(1-\eta)$;
+  \item la pendiente de la NKPC respecto a la brecha es $\kappa$; $(1-\eta)(1-\beta\eta)/\eta$ es la del coste marginal real;
+  \item ante una caída del tipo natural, con el tipo nominal y las expectativas dados, la brecha \emph{cae};
+  \item principio de \autor{Taylor}: basta $\phi_\pi>1$ con $\phi_x\geq0$, pero no es necesario \eqref{eq:determinacion};
+  \item la divina coincidencia se rompe con perturbaciones de costes, salarios reales rígidos o fricciones de búsqueda;
+  \item en los HANK la política monetaria redistribuye, pero no es el mejor instrumento de redistribución.
+  \end{itemize}
+\item \emph{Preguntas del primer ejercicio sobre este tema}: modelo canónico y principio de \autor{Taylor} (marzo de 2025, n.º 21); modelo básico de la NEK y respuesta a las perturbaciones (junio de 2024, n.º 22); modelos HANK (junio de 2023, n.º 16); el modelo de 3 ecuaciones con números (julio de 2022, n.º 20); costes de menú con números (julio de 2021, n.º 18, resuelta en el apartado~\ref{sec:rigideces-nominales}); qué no es una rigidez real (enero de 2020, n.º 20); rigidez de precios con costes de menú (julio de 2003, n.º 16, y junio de 2004, n.º 14).
+\item Preguntas de test de exámenes anteriores, en el simulador: \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}.
+\end{itemize}
+
+
+\nocite{CuerpoQuesada2016}
+\bibliografia
+
+\end{document}

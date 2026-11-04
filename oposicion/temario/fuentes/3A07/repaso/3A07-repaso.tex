@@ -1,0 +1,278 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[La nueva economía keynesiana]{3.A.7}{La nueva economía keynesiana. Primera y segunda generación.}
+\tcefecha{04/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «por un clavo se pierde una herradura»}{2,5}
+\apartadocante{I. NEK de 1.ª generación}{11}
+\subcante{1. Caracterización según \autor{Schumpeter}}{3}
+\subcante{2. Modelos}{7}
+\subcante{3. Valoración}{1}
+\apartadocante{II. NEK de 2.ª generación}{9}
+\subcante{1. Caracterización según \autor{Schumpeter}}{2}
+\subcante{2. El modelo canónico (3 ecuaciones)}{7}
+\apartadocante{III. Política económica y nueva síntesis}{6,5}
+\subcante{1. Implicaciones de política económica}{3,5}
+\subcante{2. Valoración: la nueva síntesis}{3}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}, 3 zonas. \emph{Izda.}: refrán y pegatinas junto a su concepto: «entre todos la mataron y ella sola se murió» (\autor{Blanchard}-\autor{Kiyotaki}), «si no puedes con tu enemigo, únete a él» (método de la 2.ª gen.), «más vale tarde que nunca» (\autor{Calvo}), «más vale pasarse que quedarse corto» (principio de \autor{Taylor}), «matar dos pájaros de un tiro» (divina coincidencia). \emph{Centro}: costes de menú (\hyperref[rep:I.2]{I.2}) y plano $(x_t,\pi_t)$ (\hyperref[rep:II.2]{II.2}, reutilizado en \hyperref[rep:III]{III}). \emph{Dcha.}, recuadradas hasta el final: IS dinámica, NKPC, regla de \autor{Taylor}. En \hyperref[rep:I.2]{I.2}: nominales \tiempo{4} (menú \tiempo{1,5}), reales \tiempo{1,5}, NAIRU \tiempo{1,5}. Mínimos: caracterización \tiempo{3} (1.ª) y \tiempo{2} (2.ª); modelo canónico, \tiempo{6}. Salarios de eficiencia, contratos implícitos, NAIRU e histéresis: de palabra o con una ecuación.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Por un clavo se pierde una herradura». Cambiar la carta cuesta poco, pero los precios no se mueven a diario: zona del euro 2010-19, solo el 8\,\% de los precios de consumo cambia cada mes (sin rebajas), $\approx$1 año de duración; 2022 (inflación 8,4\,\%), 12\,\%. ¿Cómo dan fricciones tan pequeñas efectos tan grandes a la política monetaria, con agentes racionales?
+\item \textbf{Relevancia}: \emph{teoría}: el modelo canónico (IS dinámica, \autor{Phillips}, regla de tipos) es el de los manuales de posgrado (\autor{Galí}, 2015) y el núcleo de los modelos de los bancos centrales (\autor{Smets}-\autor{Wouters}, 2007); \emph{política}: estabilidad de precios, bancos centrales independientes, objetivo de inflación, comunicación \vertema{3.A.36}; \emph{actualidad}: 2008, límite inferior e inflación 2021-23 lo han puesto a prueba; 2 de los 4 motivos de \autor{Schumpeter} (1954).
+\item \textbf{Contextualización}: neoclásicos \vertema{3.A.3} $\to$ \autor{Keynes} (1936) \vertema{3.A.4} $\to$ \concepto{síntesis neoclásica}: IS-LM + \autor{Phillips}, rigidez \emph{supuesta} \vertema{3.A.5} $\to$ estanflación, monetarismo $\to$ \concepto{NMC}: racionales, solo la política no anticipada (\autor{Lucas}, 1972), crítica de \autor{Lucas} \vertema{3.A.6}, ciclo real y \concepto{EGDE} (\autor{Kydland}-\autor{Prescott}, 1982) \vertema{3.A.42}. Respuesta en 2 oleadas: \emph{1.ª gen.} (finales de los 70 y 80): competencia imperfecta + pequeñas rigideces $\Rightarrow$ dinero no neutral a CP; \emph{2.ª gen.} (desde los 90): rigideces dentro del EGDE = \concepto{nueva síntesis neoclásica} (\autor{Goodfriend}-\autor{King}, 1997).
+\item[] \concepto{Rigidez nominal}: lo que impide que precios o salarios \emph{nominales} se ajusten de inmediato (costes de cambiar precios, contratos, información). \concepto{Rigidez real}: lo que hace que el precio o salario \emph{relativo} deseado responda poco a la actividad (salarios de eficiencia, márgenes contracíclicos). Sin nominal, dinero neutral; con las 2, las reales amplifican y alargan (\autor{Ball}-\autor{Romer}, 1990).
+\item \textbf{Problemática}: ¿qué rescata de \autor{Keynes} y qué toma de sus críticos? ¿Por qué no se ajustan precios y salarios con agentes racionales, y por qué importa en el agregado? ¿Qué modelo resulta en un EGDE? ¿Qué política, y qué queda tras 2008 y 2021-23?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, 1.ª gen. (escuela, rigideces nominales y reales, NAIRU); \hyperref[rep:II]{II}, 2.ª gen. (método NMC, modelo de 3 ecuaciones); \hyperref[rep:III]{III}, política monetaria y fiscal, nueva síntesis y cambios desde 2008.
+\end{itemize}
+
+% ==========================================================================
+\bloque[11]{I. NEK de 1.ª generación\label{rep:I}}
+\begin{ideaclave}
+Precios y salarios no se ajustan aunque los agentes sean racionales: pequeñas fricciones nominales, amplificadas por rigideces reales y competencia imperfecta, bastan para que la demanda mueva la producción. Pero con modelos sueltos, estáticos y de equilibrio parcial.
+\end{ideaclave}
+
+\sub{I.1. Caracterización según \autor{Schumpeter}\label{rep:I.1}}
+\begin{itemize}
+\item 3 rasgos (líder, seguidores, cuerpo doctrinal): cumple solo el 3.º, \emph{escuela sin líder}, autores en pie de igualdad.
+\item \emph{Autores}: \autor{Mankiw}, D.\,\autor{Romer}, \autor{Ball} (menú, rigideces reales); \autor{Akerlof}, \autor{Yellen} (casi racionalidad, eficiencia); \autor{Blanchard}, \autor{Kiyotaki} (coordinación); \autor{Stiglitz} (información imperfecta, trabajo y crédito); \autor{Fischer}, \autor{Taylor} (contratos escalonados); \autor{Okun}, R.\,J.\,\autor{Gordon}; \autor{Blinder} (cómo fijan precios); \autor{Summers} (histéresis); \autor{Layard}, \autor{Nickell} (NAIRU).
+\item \emph{Contexto}: NMC en expansión: nace a la defensiva.
+\item \emph{Universidades}: \autor{Hall} (1976): \emph{agua salada} (costas: MIT, Harvard, Princeton, Yale, Berkeley…; LSE) vs. \emph{agua dulce} (Grandes Lagos: Chicago, Minnesota = NMC).
+\item \emph{Cuerpo doctrinal}: \emph{New Keynesian Economics} (\autor{Mankiw}-\autor{Romer}, 1991), 2 proposiciones: dinero \emph{no neutral} a CP; \emph{imperfecciones} de mercado esenciales para el ciclo. Manifiesto de los precios rígidos (\autor{Ball}-\autor{Mankiw}, 1994).
+\item \emph{Objeto}: rehabilitar paro involuntario y no neutralidad \emph{microfundamentando} las rigideces; sin programa único, modelos complementarios.
+\item \emph{Método}: \concepto{refuerzo de la síntesis por el lado de la oferta}: su esqueleto (demanda mueve $Y$ a CP, políticas eficaces) + oferta con fundamentos; de la NMC, optimización y racionales; + competencia monopolística \vertema{3.A.18}. Modelos \emph{estáticos} y de \emph{equilibrio parcial} (salvo \autor{Blanchard}-\autor{Kiyotaki}).
+\item \emph{Frente a}: \emph{síntesis}, misma visión, pero sin microfundamentos y rigidez del salario nominal supuesta; \emph{desequilibrio}, precios fijos como dato; la NEK explica por qué \vertema{3.A.4}; \emph{monetarismo}, más cerca de la NEK: el dinero importa a CP \vertema{3.A.5}; \emph{NMC}, aceptan el método, no la conclusión; blanco: el ciclo real. Herederos de \autor{Hume} (\autor{Ball}-\autor{Mankiw}, 1994).
+\end{itemize}
+
+\sub{I.2. Modelos\label{rep:I.2}}
+\begin{itemize}
+\item Una familia, por preguntas: ¿por qué no ajustan?, ¿por qué efectos grandes?, ¿cómo en el tiempo?, ¿qué amplifica?, ¿modelo del paro?
+\item \textbf{Rigideces nominales}: en \emph{precios} de empresas con poder de mercado (la síntesis, en el salario nominal). \concepto{Grandes efectos de pequeñas desviaciones} (\autor{Romer}, 1993): pérdida privada de 2.º orden, caída de $Y$ de 1.\textsuperscript{er} orden.
+\item \textbf{Casi racionalidad} (\autor{Akerlof}-\autor{Yellen}, 1985): el agente \concepto{casi racional} no cambia su decisión si lo que pierde es pequeño. Por \autor{Taylor} de 2.º orden en $p^*_1$ ($B'(p^*_1)=0$, envolvente):
+\begin{formula}
+\centering $B(p^*_1)-B(p_0)\approx-\tfrac12\,B''(p^*_1)\,(p^*_1-p_0)^2$
+\end{formula}
+\item[] Pérdida $\propto$ \emph{cuadrado} de la perturbación. \emph{Crítica}: estático; en entorno dinámico se acumula (réplica, 1991: reglas sencillas, pérdidas pequeñas). \emph{Límite}: no explica por qué \emph{no cambiar} y no otra regla $\to$ costes de menú.
+\item \textbf{Costes de menú} (\autor{Mankiw}, 1985): todos los costes de cambiar un precio: \emph{administrativos} (etiquetas, decidir) y \emph{no administrativos} (enfadar clientes, guerra de precios); fijo y exógeno $z$. Monopolista, CMg cte., demanda lineal; cae $D\to D'$: \emph{ajustar} ($C$: $p^*_1$, $q^*_1$) o \emph{no} ($B$: $p_0$, $q_2<q^*_1$). Ajusta solo si
+\begin{formula}
+\centering $B(p^*_1)-B(p_0)>z$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.8\linewidth]{costes-menu}{Costes de menú: ganancia privada de ajustar (triángulo) $\ll$ pérdida social de no ajustar (rayado)}
+\begin{itemize}
+\item[] \emph{Implicaciones}: con $z$ pequeño, ajuste por \emph{cantidades} con agentes racionales; pérdida social de \emph{1.\textsuperscript{er} orden} (cada unidad no vendida vale $p_0-\mathrm{CMg}>0$); sin competencia imperfecta ($p=\mathrm{CMg}$) no hay efecto. Tamaño del triángulo: pendiente del CMg y desplazamiento del IMg.
+\item[] \emph{Ejemplo} (test jul. 2021): CMg $=20$, $p=100-10q$ ($q=4$, $p=60$) $\to$ $p=200-10q$: ajustar, $B=810$; mantener $p=60$, $q=14$, $B=560$: no ajusta si $z\geq250$; vende \emph{más} y el excedente sube 325.
+\item[] \emph{Extensiones}: \autor{Blanchard}-\autor{Kiyotaki} (eq. general), \autor{Ball}-\autor{Romer} (reales), \autor{Rotemberg} (1982, coste cuadrático: misma NKPC que \autor{Calvo}). \emph{Evidencia}: en encuestas pesa poco (\autor{Blinder} et al., 1998); microdatos: mediana 4,3 meses en EE.\,UU. (\autor{Bils}-\autor{Klenow}, 2004); 8\,\% mensual en la zona del euro. \emph{Límite}: en recesión el CMg cae mucho y la empresa ajusta: hacen falta rigideces reales.
+\item \textbf{Fallos de coordinación} (\autor{Blanchard}-\autor{Kiyotaki}, 1987): menú en \emph{equilibrio general}, competencia monopolística à la \autor{Dixit}-\autor{Stiglitz}; \concepto{externalidad de demanda agregada}. Con $Y=M/P$:
+\begin{formula}
+\centering $Y_i=\dfrac{M}{P}\Big(\dfrac{P_i}{P}\Big)^{-\sigma},\quad P_i=(1+\mu)\,\mathrm{CMg}_i,\quad 1+\mu\equiv\dfrac{\sigma}{\sigma-1}$
+\end{formula}
+\item[] $M$↓: si todas ajustan, $P$↓ igual, neutralidad; si ninguna, $M/P$↓ y $Y$↓ en 1.\textsuperscript{er} orden. Bajar el propio precio beneficia a las demás y no lo cobra: \emph{fallo de coordinación}. Como $Y$ de equilibrio $<$ eficiente, expandir la demanda mejora el bienestar en 1.\textsuperscript{er} orden. Único de eq. general de la 1.ª gen.; antecedente de la 2.ª. «Entre todos la mataron y ella sola se murió».
+\item \textbf{Reglas de ajuste en el tiempo} (la pregunta ya es \emph{cuándo}) \vertema{3.A.37}:
+\begin{itemize}
+\item \concepto{dependientes del tiempo}: revisión en \emph{fechas fijas}; \concepto{contratos escalonados} (\autor{Fischer}, 1977; \autor{Taylor}, 1979, 1980), cada período se renegocia una parte; hoy, \autor{Calvo} (1983), probabilidad constante. Frente a \autor{Sargent}-\autor{Wallace} (1975): racionales y política eficaz compatibles;
+\item \concepto{dependientes del estado} (\autor{Sheshinski}-\autor{Weiss}, 1977): cambio cuando la distancia al óptimo supera un umbral; frecuencia endógena, ↑ con la inflación;
+\item \emph{mixtas}: revisión periódica + ajuste extraordinario.
+\end{itemize}
+\item[] Intervalo óptimo ↓ con inflación y varianza $\Rightarrow$ \autor{Phillips} más inclinada con inflación alta (\autor{Ball}-\autor{Mankiw}-\autor{Romer}, 1988). Lo que alarga los efectos es el \emph{escalonamiento}, no la rigidez de cada precio. Con empresas idénticas, el único equilibrio estable es la sincronización (\autor{Ball}-\autor{Romer}, 1989): lo sostienen la heterogeneidad o esperar a los competidores (\autor{Ball}-\autor{Cecchetti}, 1988).
+\item \textbf{Rigideces reales}: el menú solo frena si la ganancia de ajustar es pequeña. Con $p^*_i=p+\chi y$, $y=m-p$:
+\begin{formula}
+\centering $p^*_i=\chi\,m+(1-\chi)\,p$
+\end{formula}
+\item[] Ganancia de ajustar $\propto(\chi\Delta m)^2$; $\chi$ menor (más rigidez real) $\Rightarrow$ no ajustar más fácil; con $\chi<1$, \emph{complementarios estratégicos}. \emph{Bienes}: \emph{mercados de clientes} (\autor{Okun}, 1975, 1981); \emph{colusión contracíclica} (\autor{Rotemberg}-\autor{Saloner}, 1986; \autor{Rotemberg}-\autor{Woodford}, 1991). \emph{Crédito}: \emph{racionamiento} (\autor{Stiglitz}-\autor{Weiss}, 1981) \vertema{3.A.13}; patrimonio del prestatario (\autor{Bernanke}-\autor{Gertler}, 1989): germen del acelerador financiero.
+\item \textbf{Trabajo} \vertema{3.A.27}. \concepto{Salarios de eficiencia}: $e=e(w)$, $e'>0$; la empresa minimiza $w/e(w)$ (\autor{Solow}, 1979):
+\begin{formula}
+\centering $\varepsilon_{e,w}\equiv\dfrac{w^*\,e'(w^*)}{e(w^*)}=1\quad\text{(condición de \autor{Solow})}$
+\end{formula}
+\item[] Salario independiente de la demanda: rigidez real y paro \emph{involuntario}. 5 motivos: nutrición (\autor{Leibenstein}, 1957), rotación (\autor{Salop}, 1979), selección adversa (\autor{Weiss}, 1980), escaqueo (\autor{Shapiro}-\autor{Stiglitz}, 1984: CNE = restricción IC; el paro disciplina), equidad (\autor{Akerlof}, 1982). \concepto{Contratos implícitos} (\autor{Baily}, 1974; \autor{Gordon}, 1974; \autor{Azariadis}, 1975): empresa neutral asegura a trabajadores aversos; salario real estable, ajuste por empleo; \emph{no} explican el paro involuntario.
+\item \textbf{NAIRU} (\autor{Layard}-\autor{Nickell}, 1985; con \autor{Jackman}, 1991) \vertema{3.A.28}. WS (crece con precios y productividad esperados, baja con $U$; $Z$: prestaciones, sindicatos, protección, impuestos) y PS (margen sobre el CLU):
+\begin{formula}
+\centering $\dfrac{W}{P^e}=F(U,Z)\,\mathrm{PAT}^e;\ \ \dfrac{W}{P}=\dfrac{\mathrm{PAT}}{1+\mu};\ \ F(U^n,Z)=\dfrac{1}{1+\mu}$
+\end{formula}
+\end{itemize}
+\graficorepaso[\linewidth]{ws-ps}{La NAIRU: WS y PS; con $U<U^n$, pretensiones incompatibles}
+\begin{itemize}
+\item[] \concepto{NAIRU}: paro \emph{involuntario} y \emph{de equilibrio}, fruto de un \emph{conflicto distributivo}; la demanda solo lo baja transitoriamente y con más inflación; bajarlo: actuar sobre $Z$ y $\mu$. Idea de \autor{Modigliani}-\autor{Papademos} (1975, NIRU); «aproximadamente un sinónimo» de la tasa natural (\autor{Ball}-\autor{Mankiw}, 2002).
+\item[] \concepto{Histéresis} (\autor{Blanchard}-\autor{Summers}, 1986): la NAIRU depende de su historia (pura o débil). 3 mecanismos: menos capital; parados de larga duración pierden capital humano; \emph{insiders-outsiders} (\autor{Lindbeck}-\autor{Snower}, 1986, 1988).
+\end{itemize}
+
+\sub{I.3. Valoración de la 1.ª generación\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Aportaciones}: microfundamento de la rigidez y del paro involuntario; ciclo en parte de demanda, perturbaciones \emph{anticipadas o no} (en la NMC, solo las no anticipadas); política monetaria con efectos a CP y neutral a LP; su uso sistemático sube la inflación media y le resta eficacia: estabilizar es posible, no obligatorio (no sintonía fina).
+\item \emph{Limitaciones}: sin posición común en reglas vs. discrecionalidad \vertema{3.A.36}; no frenaron a la NMC (\autor{De Vroey}, 2016): defensivos, estáticos y parciales, frente al programa aplicado del ciclo real; menú en sentido estricto pesa poco $\Rightarrow$ apoyo en las reales. Encontró las piezas, no el modelo.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{II. NEK de 2.ª generación\label{rep:II}}
+\begin{ideaclave}
+Toma el método de sus rivales (EGDE con racionales) y le añade competencia monopolística y precios rígidos: 3 ecuaciones en las que la política monetaria tiene efectos reales a CP y, salvo perturbaciones de costes, estabilizar la inflación estabiliza la actividad.
+\end{ideaclave}
+
+\sub{II.1. Caracterización según \autor{Schumpeter}\label{rep:II.1}}
+\begin{itemize}
+\item Otra \emph{escuela sin líder}, pero cuerpo doctrinal compacto: un modelo canónico.
+\item \emph{Autores}: \autor{Goodfriend}-\autor{King} (nueva síntesis, 1997); \autor{Rotemberg}-\autor{Woodford} (política óptima desde el bienestar, 1997; \autor{Woodford}, 2003); \autor{Clarida}-\autor{Galí}-\autor{Gertler} (versión de referencia, 1999); \autor{Christiano}-\autor{Eichenbaum}-\autor{Evans} (2005) y \autor{Smets}-\autor{Wouters} (2003), a los datos; \autor{Bernanke} (fricciones financieras); \autor{Blanchard}, puente.
+\item \emph{Contexto}: 90 y 2000, \emph{Gran Moderación}: inflación baja, bancos centrales independientes con objetivos de inflación \vertema{3.A.42}.
+\item \emph{Instituciones}: Princeton, Columbia, NYU, MIT, Northwestern, UPF-CREI y, nuevo, \emph{bancos centrales} (Fed, BCE).
+\item \emph{Objeto}: el ciclo y la \emph{política monetaria óptima}.
+\item \emph{Método}: \concepto{apalancamiento sobre la NMC}: \concepto{EGDE} \vertema{3.A.6} (microfundamentos, respuesta a \autor{Lucas}; equilibrio general; dinámico, \autor{Euler} \vertema{3.A.29}; estocástico). Sobre el ciclo real, 2 cambios: \emph{competencia monopolística} y ajuste \emph{escalonado}. «Si no puedes con tu enemigo, únete a él».
+\item \emph{Frente a la 1.ª}: mismas rigideces, otro marco: objeto paro $\to$ política monetaria óptima; estático $\to$ dinámico; parcial $\to$ general; sin vaciado $\to$ empresas que atienden la demanda al precio fijado; ecléctica $\to$ macro homogénea walrasiana. Ciclo real y 2.ª gen.: 2 transformaciones del programa EGDE (\autor{De Vroey}, 2016).
+\end{itemize}
+
+\sub{II.2. El modelo canónico\label{rep:II.2}}
+\begin{itemize}
+\item \textbf{Idea}: ¿cómo afectan política y perturbaciones a inflación y actividad con precios rígidos, optimización y racionales? 3 ecuaciones log-lineales (\autor{Clarida}-\autor{Galí}-\autor{Gertler}, 1999; \autor{Woodford}, 2003; \autor{Galí}, 2015). $\neq$ IS-PC-MR de \autor{Carlin}-\autor{Soskice}.
+\item \textbf{Supuestos}: hogar representativo, CRRA ($\theta$, inversa de la EIS) y desutilidad del trabajo ($\varphi$, inversa de \autor{Frisch}); continuo de empresas en competencia monopolística ($\sigma>1$), $Y_t(i)=A_tL_t(i)$; \autor{Calvo}: revisa con prob. $1-\eta$; cerrada, sin capital ni sector público ($Y=C$); \emph{cashless}, el banco central fija $i_t$; perturbaciones $A_t$, de demanda, $u_t$, $\varepsilon_t$. \concepto{Brecha de producción} $x_t\equiv y_t-y^n_t$, con $y^n_t$ la de precios flexibles ($\neq$ la estadística).
+\item \textbf{Hogares}: de la ecuación de \autor{Euler}, la \concepto{IS dinámica}:
+\funcionclave{x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big)}
+\item[] \concepto{Tipo real natural} $r^n_t=\rho+\theta\,\mathbb{E}_t[\Delta y^n_{t+1}]$ ($\rho\equiv-\ln\beta$): el de precios flexibles; no depende de la política (\autor{Wicksell}, modelo \emph{neowickselliano}). Tipo real $>r^n$ $\Rightarrow$ brecha ↓. \emph{Prospectiva}: depende de toda la senda futura de tipos reales (importan los anuncios); estructural, inmune a \autor{Lucas}.
+\item \textbf{Empresas}: precio dura $1/(1-\eta)$ ($\eta=0{,}75$ trimestral: 1 año). «Más vale tarde que nunca». Precio de reajuste, margen sobre la media ponderada de CMg esperados:
+\begin{formula}
+\centering $p^*_t=\mu+(1-\beta\eta)\sum_{k\geq0}(\beta\eta)^k\,\mathbb{E}_t[\mathrm{cmg}^n_{t+k}]$
+\end{formula}
+\item[] Nivel de precios: $\pi_t=(1-\eta)(p^*_t-p_{t-1})$. Con $\widehat{\mathrm{cmg}}_t=(\theta+\varphi)\,x_t$, la \concepto{curva de \autor{Phillips} neokeynesiana} (NKPC):
+\funcionclave{\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t,\quad \kappa\equiv\tfrac{(1-\eta)(1-\beta\eta)}{\eta}(\theta+\varphi)}
+\item[] $u_t$: \emph{perturbación de costes} (margen, impuestos). $\pi_t=\kappa\sum\beta^k\mathbb{E}_t[x_{t+k}]$: valor presente de brechas \emph{futuras}; frente a \autor{Friedman}-\autor{Phelps}, expectativa de \emph{mañana} y microfundada. $\eta$↑ $\Rightarrow$ $\kappa$↓, curva más plana: $M$ mueve más $Y$ y menos $\pi$.
+\item \textbf{Banco central}: \concepto{regla de \autor{Taylor}} \vertema{3.A.36}:
+\funcionclave{i_t=\rho+\phi_\pi\,\pi_t+\phi_x\,x_t+\varepsilon_t}
+\item[] Con suavización $\nu i_{t-1}$. Original (\autor{Taylor}, 1993; conferencia Carnegie-Rochester, nov. 1992): $i_t=2+\pi_t+0{,}5(\pi_t-2)+0{,}5x_t=1+1{,}5\pi_t+0{,}5x_t$.
+\item \textbf{Cierre}: la regla fija $i_t$, la IS da $x_t$, la NKPC da $\pi_t$, que vuelve a la regla. En $(x_t,\pi_t)$: NKPC creciente ($\kappa$); \concepto{DA dinámica}, decreciente (regla en la IS):
+\begin{formula}
+\centering $\pi_t=-\dfrac{\theta+\phi_x}{\phi_\pi}\,x_t+\dfrac{r^n_t-\rho-\varepsilon_t}{\phi_\pi}$
+\end{formula}
+\end{itemize}
+\graficorepaso[\linewidth]{nek-xpi}{a) demanda: si el banco central sigue a $r^n_t$, vuelve a $E_0$; b) costes: dilema, más inflación y $x_t<0$}
+\begin{itemize}
+\item \textbf{Implicaciones}. \emph{No neutral a CP, sí a LP}: LP, $x=\frac{1-\beta}{\kappa}\pi$, casi vertical ($\beta\approx1$).
+\item[] \concepto{Principio de \autor{Taylor}}: equilibrio \emph{único} si el tipo responde a la inflación \emph{más} que 1 a 1:
+\begin{formula}
+\centering $\kappa(\phi_\pi-1)+(1-\beta)\,\phi_x>0$
+\end{formula}
+\item[] Basta $\phi_\pi>1$ y $\phi_x\geq0$ ($1{,}5$ la cumple). Si no, \emph{indeterminado}: expectativas autocumplidas. Fed pre-\autor{Volcker} no lo cumplía (\autor{Clarida}-\autor{Galí}-\autor{Gertler}, 2000). «Más vale pasarse que quedarse corto».
+\item[] \emph{Pérdida} del banco central (aprox. al bienestar; \autor{Rotemberg}-\autor{Woodford}, 1997):
+\begin{formula}
+\centering $L=\mathbb{E}_0\sum_{t\geq0}\beta^t\big(\pi_t^2+\lambda_x x_t^2\big),\qquad \lambda_x=\kappa/\sigma$
+\end{formula}
+\item[] Inflación: dispersa precios relativos; brecha: $y^n$ eficiente (con subsidio al margen).
+\item[] \concepto{Divina coincidencia}: con $u_t=0$ e $i_t=r^n_t+\phi_\pi\pi_t+\phi_x x_t$, $\pi=x=0$ a la vez; basta mirar la inflación (panel a). Resultado de \autor{Goodfriend}-\autor{King} y \autor{Rotemberg}-\autor{Woodford} (1997); nombre, \autor{Blanchard}-\autor{Galí} (2007). «Matar dos pájaros de un tiro». \emph{Se rompe} (\autor{Galí}, 2018) con: \emph{perturbaciones de costes} (panel b: acomodar en parte; compromiso creíble = menos recesión hoy, \emph{ganancia del compromiso}); \emph{salarios reales rígidos} (\autor{Blanchard}-\autor{Galí}, 2007); \emph{fricciones de búsqueda}: \concepto{NEK con desempleo} (\autor{Blanchard}-\autor{Galí}, 2010) \vertema{3.A.28}.
+\item \textbf{Extensiones}: \concepto{\autor{Phillips} híbrida} (indexación, \autor{Christiano}-\autor{Eichenbaum}-\autor{Evans}, 2005; reglas sencillas, \autor{Galí}-\autor{Gertler}, 1999):
+\begin{formula}
+\centering $\pi_t=\gamma_b\,\pi_{t-1}+\gamma_f\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t$
+\end{formula}
+\item[] Información rígida (\autor{Mankiw}-\autor{Reis}, 2002); salarios rígidos (\autor{Erceg}-\autor{Henderson}-\autor{Levin}, 2000); modelos medianos (\autor{Smets}-\autor{Wouters}); abierta (\autor{Galí}-\autor{Monacelli}) \vertema{3.A.32}.
+\item \textbf{Evidencia}: con el coste marginal real, la NKPC ajusta bien en EE.\,UU. (\autor{Galí}-\autor{Gertler}, 1999); la frecuencia de cambios sube con la inflación (contra \autor{Calvo}).
+\item \textbf{Valoración}: une optimización de la NMC y rigideces de la 1.ª; política evaluada con el bienestar. \emph{Críticas}: sin inercia (desinflación creíble sería expansiva, \autor{Ball}, 1994); sin paro, finanzas ni heterogeneidad; $r^n$ y $x$ inobservables.
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{III. Política económica y nueva síntesis\label{rep:III}}
+\begin{ideaclave}
+Receta clara: banco central independiente que mueve el tipo más que la inflación y ancla expectativas; consenso de la \emph{nueva síntesis} hasta 2008. La crisis añadió finanzas, límite inferior y política fiscal; 2021-23, que la rigidez no es un parámetro fijo.
+\end{ideaclave}
+
+\sub{III.1. Implicaciones de política económica\label{rep:III.1}}
+\begin{itemize}
+\item \textbf{Monetaria}. \emph{Estabilidad de precios}: inflación, síntoma y causa de ineficiencia; en la práctica $\approx$2\,\% (límite inferior, sesgos de medición): BCE, objetivo simétrico del 2\,\% a medio plazo (2021, confirmado en 2025) \vertema{3.A.41}.
+\item[] \emph{Expectativas y credibilidad}: IS y NKPC miran adelante: gestionar expectativas es el centro (\autor{Woodford}, 2003); independencia, objetivos, reglas, comunicación; con discreción, peores resultados que con compromiso \vertema{3.A.36}.
+\item[] \emph{Variables naturales} inobservables: \autor{Taylor} con datos pedía en la zona del euro $-1{,}6$\,\% en 2020 y 14\,\% en 2022 (inflación 8,4\,\%) con la facilidad de depósito cerca de 0.
+\item[] \emph{Límite inferior} (ZLB) \vertema{3.A.37}: \concepto{orientación de la política} (\emph{forward guidance}; \autor{Eggertsson}-\autor{Woodford}, 2003); \emph{paradoja de la orientación}: efectos desmesurados en el modelo, no en los datos; se modera con mercados incompletos (\autor{McKay}-\autor{Nakamura}-\autor{Steinsson}, 2016); compras de activos, 4.ª ecuación (\autor{Sims}-\autor{Wu}-\autor{Zhang}, 2023); \concepto{tipo sombra}: zona del euro $-7{,}8$\,\% (ago. 2019) con FD en $-0{,}4$\,\%.
+\item[] \emph{Fricciones financieras}: acelerador financiero (\autor{Bernanke}-\autor{Gertler}-\autor{Gilchrist}, 1999); bancos con restricciones de capital (\autor{Gertler}-\autor{Karadi}, 2011).
+\item \textbf{Fiscal} \vertema{3.A.38}: gasto en la IS; 3 vías: \emph{efecto riqueza} (impuestos futuros: $C$↓, $L$↑), \emph{rigidez de precios} ($Y$↑, margen contracíclico), \emph{respuesta del banco central} (tipo real ↑, expulsa consumo). \concepto{Equivalencia ricardiana} (\autor{Barro}, 1974) \vertema{3.A.39}; multiplicador del gasto mayor con precios rígidos, gasto persistente y banco central acomodaticio: en el ZLB, $\gg1$ (\autor{Woodford}, 2011; \autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo}, 2011) \vertema{3.A.40}. Hogares de \emph{regla de pulgar}: $C$ sube con $G$ (\autor{Galí}-\autor{López-Salido}-\autor{Vallés}, 2007).
+\end{itemize}
+
+\sub{III.2. Valoración: la nueva síntesis\label{rep:III.2}}
+\begin{itemize}
+\item \concepto{Nueva síntesis neoclásica} (\autor{Goodfriend}-\autor{King}, 1997): une NEK y NMC; convergencia gradual, no pacto (\autor{Woodford}, 2009). \emph{NMC y ciclo real}: método EGDE, racionales, credibilidad (\autor{Kydland}-\autor{Prescott}, 1977) \vertema{3.A.6}; \emph{monetarismo}: tasa natural, expectativas, reglas, inflación como objetivo \vertema{3.A.5}; \emph{\autor{Keynes} vía NEK}: competencia imperfecta y rigidez, efectos reales a CP \vertema{3.A.4}.
+\item \emph{Receta} hasta 2008: monetaria para estabilizar (independencia, objetivo, regla); fiscal neutral y sostenible (\autor{Solow}, 2002: casi desaparecida); finanzas que solo transmiten. Hoy, la de los bancos centrales (\autor{Mankiw}, 2006; \autor{Blanchard}, 2009).
+\item \emph{Crisis de 2008}, 3 límites (FMI, feb. 2010): ZLB con inflación del 2\,\%; fiscal necesaria (estímulo del FMI a finales de 2008; multiplicadores, \autor{Romer}-\autor{Romer}, 2010; \autor{Perotti}, 2011) \vertema{3.A.40}; finanzas no neutrales $\Rightarrow$ macroprudencial \vertema{3.A.42}.
+\item \emph{Cambios}: fricciones financieras y ZLB; \concepto{HANK} (\autor{Kaplan}-\autor{Moll}-\autor{Violante}, 2018): hogares con distinta riqueza y liquidez, efectos \emph{indirectos} (empleo y renta), importa la PMgC de cada hogar \vertema{3.A.33}; paro (\autor{Blanchard}-\autor{Galí}, 2010; \autor{Galí}, 2011; histéresis, \autor{Galí}, 2022) \vertema{3.A.28}.
+\item \emph{Inflación 2021-23}: \autor{Phillips} \emph{plana} en los 2010 (\autor{Blanchard}, 2016); se empina con mercado de trabajo tenso (\autor{Benigno}-\autor{Eggertsson}, 2023); en EE.\,UU., sobre todo perturbaciones de precios, la del trabajo más persistente (\autor{Bernanke}-\autor{Blanchard}, 2025). Frecuencia de cambios ↑ con la inflación: reglas de \emph{estado}, no \autor{Calvo}.
+\end{itemize}
+\graficorepaso[\linewidth]{frecuencia-precios}{Zona del euro, \% de precios que cambian cada mes: sin rebajas 8,2 (2010-19) $\to$ 12,0 (2022) $\to$ 8,6 (2024)}
+\begin{itemize}
+\item \emph{Críticas}: P.\,\autor{Romer} (2016), lejos de los datos; \autor{Stiglitz} (2018), falló en el origen financiero de las crisis; \autor{Blanchard} (2018): que siga como núcleo, con modelos más sencillos y más ricos \vertema{3.A.1}. \autor{Galí} (2018): ampliados, no sustituidos.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» 2 tiempos: la 1.ª gen. demostró que una rigidez pequeña y racional tiene efectos grandes con competencia imperfecta y rigideces reales; la 2.ª la metió en el EGDE de la NMC: 3 ecuaciones, dinero no neutral a CP, estabilización conjunta salvo costes.
+\item \textbf{Relevancia}: el lenguaje de los bancos centrales: objetivos de inflación, independencia, reglas, comunicación, modelos estimados.
+\item \textbf{Extensiones}: \vertema{3.A.28}, \vertema{3.A.27}, \vertema{3.A.26}, \vertema{3.A.36}, \vertema{3.A.37}, \vertema{3.A.41}, \vertema{3.A.42}, \vertema{3.A.40}, \vertema{3.A.1}, \vertema{4.B.4}.
+\item \textbf{Opinión}: ganó el método y perdió parte de la ambición; rigidez nominal, su pieza mejor contrastada; sistema financiero, la peor; la rigidez no es un parámetro fijo.
+\item \textbf{Idea final}: «por un clavo se pierde una herradura»: la 1.ª gen. encontró el clavo; la 2.ª lo metió en el modelo de los bancos centrales. Desde 2008, no era el único clavo suelto.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1972}{\autor{Lucas}: solo la política no anticipada; 1976, su crítica}
+\hito{1975}{\autor{Sargent}-\autor{Wallace}: inefectividad; \autor{Modigliani}-\autor{Papademos}: NIRU}
+\hito{1977}{\autor{Fischer}: contratos; \autor{Sheshinski}-\autor{Weiss}: reglas de estado; \autor{Kydland}-\autor{Prescott}: reglas}
+\hito{1979}{\autor{Taylor}: contratos escalonados (y 1980); \autor{Solow}, \autor{Salop}: salarios de eficiencia}
+\hito{1981}{\autor{Stiglitz}-\autor{Weiss}: racionamiento del crédito}
+\hito{1982}{\autor{Kydland}-\autor{Prescott}: ciclo real; \autor{Rotemberg}: coste cuadrático}
+\hito{1983}{\autor{Calvo}: probabilidad constante de revisar}
+\hito{1984}{\autor{Shapiro}-\autor{Stiglitz}: escaqueo}
+\hito{1985}{\autor{Mankiw}: costes de menú; \autor{Akerlof}-\autor{Yellen}: casi racionalidad; \autor{Layard}-\autor{Nickell}}
+\hito{1986}{\autor{Blanchard}-\autor{Summers}: histéresis}
+\hito{1987}{\autor{Blanchard}-\autor{Kiyotaki}: externalidad de demanda agregada}
+\hito{1990}{\autor{Ball}-\autor{Romer}: rigideces reales}
+\hito{1991}{\autor{Mankiw}-\autor{Romer}: \emph{New Keynesian Economics}}
+\hito{1993}{\autor{Taylor}: la regla}
+\hito{1994}{\autor{Ball}-\autor{Mankiw}: manifiesto; \autor{Ball}: desinflación creíble}
+\hito{1997}{\autor{Goodfriend}-\autor{King}: nueva síntesis; \autor{Rotemberg}-\autor{Woodford}}
+\hito{1999}{\autor{Clarida}-\autor{Galí}-\autor{Gertler}; \autor{Galí}-\autor{Gertler}: híbrida; acelerador financiero}
+\hito{2002}{\autor{Mankiw}-\autor{Reis}: información rígida}
+\hito{2003}{\autor{Woodford}: \emph{Interest and Prices}; \autor{Smets}-\autor{Wouters}}
+\hito{2007}{\autor{Blanchard}-\autor{Galí}: «divina coincidencia»}
+\hito{2010}{\autor{Blanchard}-\autor{Galí}: NEK con desempleo}
+\hito{2018}{\autor{Kaplan}-\autor{Moll}-\autor{Violante}: HANK}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Precios que cambian cada mes, zona del euro, sin rebajas: \dato{8\,\% (2010-19) $\to$ 12\,\% (2022) $\to$ 8,6\,\% (2024)}{\autor{Gautier} et al., 2026}.
+\item Con rebajas, a principios de siglo: \dato{15\,\% zona del euro; 25\,\% EE.\,UU.}{\autor{Dhyne} et al., 2006}; mediana de duración en EE.\,UU. \dato{4,3 meses}{\autor{Bils}-\autor{Klenow}, 2004}.
+\item Regla de \autor{Taylor} en la zona del euro: \dato{$-1{,}6$\,\% (2020); 14\,\% (2022)}{BCE; Eurostat; AMECO}, con inflación \dato{8,4\,\%}{Eurostat, 2022}.
+\item Tipo sombra de la zona del euro: \dato{$-7{,}8$\,\% (ago. 2019)}{\autor{Wu}-\autor{Xia}}, con FD en $-0{,}4$\,\%.
+\item Objetivo del BCE: \dato{2\,\% simétrico a medio plazo}{BCE, 2021 y 2025}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Rigidez nominal vs. real?} Nominal: impide ajustar precios/salarios nominales; real: el relativo deseado responde poco. Sin nominal, dinero neutral; las reales amplifican.
+\item \textbf{¿Por qué un coste de menú pequeño tiene efectos grandes?} Pérdida privada de 2.º orden (envolvente), pérdida social de 1.\textsuperscript{er} orden porque $p>\mathrm{CMg}$; agregada, externalidad de demanda.
+\item \textbf{¿Qué es la NAIRU y cómo se baja?} Paro que hace compatibles WS y PS; conflicto distributivo; solo con políticas sobre $Z$ y $\mu$.
+\item \textbf{¿En qué se diferencian las 2 generaciones?} Mismas rigideces; la 2.ª, EGDE dinámico y general, objeto la política monetaria óptima.
+\item \textbf{¿Qué es el principio de \autor{Taylor}?} Tipo nominal más que 1 a 1 con la inflación: equilibrio único; $\kappa(\phi_\pi-1)+(1-\beta)\phi_x>0$.
+\item \textbf{¿Qué es la divina coincidencia y cuándo falla?} Estabilizar $\pi$ estabiliza $x$ si $u_t=0$; falla con costes, salarios reales rígidos o búsqueda.
+\item \textbf{¿Qué cambió tras 2008?} ZLB y no convencionales, fricciones financieras, política fiscal, HANK, paro.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Reglas de \emph{tiempo}: fechas fijas; de \emph{estado}: umbral de distancia al óptimo.
+\item Contratos implícitos: rigidez del salario \emph{real}, \emph{no} paro involuntario.
+\item Rigidez real sin nominal: dinero neutral.
+\item \autor{Calvo}: $\eta$ = prob. de \emph{no} revisar; duración media $1/(1-\eta)$.
+\item Pendiente de la NKPC en la brecha: $\kappa$; $(1-\eta)(1-\beta\eta)/\eta$ es la del coste marginal real.
+\item Cae $r^n$ con $i$ y expectativas dados: la brecha \emph{cae}.
+\item $\phi_\pi>1$ con $\phi_x\geq0$ basta, pero no es necesario; $\phi_\pi\geq1$ no es necesario ni suficiente (test mar. 2025).
+\item Modelo de 3 ecuaciones NEK $\neq$ IS-PC-MR de \autor{Carlin}-\autor{Soskice}.
+\item NAIRU: idea de \autor{Modigliani}-\autor{Papademos} (1975), no de la NEK.
+\item Nombre «divina coincidencia»: \autor{Blanchard}-\autor{Galí} (2007); resultado, 1997.
+\item HANK: la política monetaria redistribuye, pero no es el mejor instrumento de redistribución.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

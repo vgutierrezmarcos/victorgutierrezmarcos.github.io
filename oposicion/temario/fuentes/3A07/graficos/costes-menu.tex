@@ -1,0 +1,56 @@
+% Costes de menú (Mankiw, 1985): ganancia privada de ajustar el precio
+% (triángulo) frente a pérdida social de no hacerlo (trapecio). Plano (q, p).
+% Con los precios en decenas de euros es el monopolista del ejemplo del test
+% de 2021 (CMg = 20; p = 100 - 10q; parte de q = 4, p = 60), aquí con una
+% CAÍDA de la demanda a p = 80 - 10q (el test la sube a p = 200 - 10q, y
+% una subida no se puede dibujar como caída: B no existiría).
+% Misma empresa que casi-racionalidad.tex. En las unidades del dibujo:
+%   CMg = 2;  D: p = 10 - q, IMg = 10 - 2q;  D': p = 8 - q, IMg' = 8 - 2q
+%   A = (4, 6): IMg = CMg en q_0 = 4, p_0 = 6       (B = 16)
+%   C = (3, 5): IMg' = CMg en q*_1 = 3, p*_1 = 5    (B = 9)
+%   B = (2, 6): se mantiene p_0, q_2 = 2 en D'      (B = 8)
+%   ganancia privada de ajustar = triángulo (2,2) (2,4) (3,2) = 1 = 9 - 8
+%     (en euros del test: 10, así que ajusta si z < 10)
+%   pérdida social de no ajustar = trapecio (2,2) (2,6) (3,5) (3,2) = 3,5
+%     (en euros: 35, 3,5 veces la ganancia privada)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-1.2) rectangle (11.3,11.0);
+  % 1: ejes (q, p)
+  \capa{1}{\ejes{$q$}{$p$}{10.9}{10.7}}
+  % 2: coste marginal constante
+  \capa{2}{\draw[curva3] (0,2) -- (10.3,2) node[etiqueta, above left, text=tceeverde] {CMg};}
+  % 3: demanda inicial y su ingreso marginal
+  \capa{3}{\draw[curva1] (0,10) -- (9.7,0.3) node[etiqueta, above right, text=tceemorado] {$D$};}
+  \capa{3}{\draw[thick, dashed, tceemorado] (0,10) -- (4.5,1) node[etiqueta, below, text=tceemorado] {IMg};}
+  % 4: equilibrio inicial A, donde IMg = CMg
+  \capa{4}{\proyeccion{(4,6)}{$q_0$}{$p_0$}}
+  \capa{4}{\node[punto] (A) at (4,6) {};}
+  \capa{4}{\node[etiqueta, above right] at (A) {$A$};}
+  % 5: cae la demanda, a D' y IMg'
+  \capa{5}{\draw[curvanueva] (0,8) -- (7.7,0.3) node[etiqueta, above right, text=tceerojo] {$D'$};}
+  \capa{5}{\draw[thick, dashed, tceerojo] (0,8) -- (3.5,1) node[etiqueta, below, text=tceerojo] {IMg$'$};}
+  % 6: ajustar: C, con IMg' = CMg
+  \capa{6}{\proyeccion{(3,5)}{$q^*_1$}{$p^*_1$}}
+  \capa{6}{\node[punto] (C) at (3,5) {};}
+  \capa{6}{\node[etiqueta, above right] at (C) {$C$};}
+  % 7: no ajustar: B, al precio p_0 sobre D'
+  \capa{7}{\draw[guia] (2,6) -- (2,0) node[below] {$q_2$};}
+  \capa{7}{\node[punto] (B) at (2,6) {};}
+  \capa{7}{\node[etiqueta, above left] at (B) {$B$};}
+  % 8: lo que gana la empresa si ajusta (entre IMg' y CMg, de q_2 a q*_1)
+  \capa{8}{\fill[area] (2,2) -- (2,4) -- (3,2) -- cycle;}
+  \capa{8}{\fill[area] (5.6,9.3) rectangle ++(0.45,0.55);}
+  \capa{8}{\node[etiqueta, right] at (6.1,9.58) {ganancia privada de ajustar};}
+  % 9: lo que pierde la sociedad si no ajusta (entre D' y CMg, de q_2 a q*_1)
+  \capa{9}{\draw[pattern=north east lines, pattern color=tceegris, draw=tceegris, thin]
+      (2,2) -- (2,6) -- (3,5) -- (3,2) -- cycle;}
+  \capa{9}{\draw[pattern=north east lines, pattern color=tceegris, draw=tceegris, thin]
+      (5.6,8.3) rectangle ++(0.45,0.55);}
+  \capa{9}{\node[etiqueta, right] at (6.1,8.58) {pérdida social de no ajustar};}
+\end{tikzpicture}
+\end{document}

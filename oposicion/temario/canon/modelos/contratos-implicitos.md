@@ -1,7 +1,7 @@
 # Contratos implícitos (Baily, 1974; Gordon, 1974; Azariadis, 1975)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.27** (determinación de salarios: negociación, salarios de eficiencia y contratos implícitos; revisado el 31/10/2026, bloque III `sec:contratos-implicitos`: idea, modelo, extensiones con *insiders* y *outsiders*, valoración) — lo tiene en el título.
-- **Temas que lo usan:** 3.A.27 (desarrollo; hecho, 31/10/2026), 3.A.7 (resumen: rigidez real de la NEK de 1.ª generación; hoy desarrollo con el texto antiguo del 3.A.27, incluido el error del paro involuntario), 3.A.13 (mención implícita; hecho, 19/10/2026: el caso 2 del principal-agente, principal neutral y agente averso con esfuerzo observable, es este contrato; el 3.A.27 lo dice con `\vertema{3.A.13}`; ficha `principal-agente`).
+- **Temas que lo usan:** 3.A.27 (desarrollo; hecho, 31/10/2026), 3.A.7 (resumen; hecho, 4/11/2026: I.2.3, Baily, 1974, Gordon, 1974, y Azariadis, 1975; seguro con salario estable y empleo eficiente, **sin** paro involuntario; estabilizan el salario real, no el nominal; nota de la información y del subempleo con información asimétrica; `\vertema{3.A.27}`), 3.A.13 (mención implícita; hecho, 19/10/2026: el caso 2 del principal-agente, principal neutral y agente averso con esfuerzo observable, es este contrato; el 3.A.27 lo dice con `\vertema{3.A.13}`; ficha `principal-agente`).
 - **Manuales de referencia:** Baily (1974), *RES*; Gordon (1974), *JEL*; Azariadis (1975), *JPE*; Rosen (1985), *JEL*; Azariadis y Stiglitz (1983), *QJE*; Romer (2019), cap. 11; Cahuc, Carcillo y Zylberberg (2014), cap. 7.
 - **Notación (3.A.27; [decidir] solo en lo que pide Víctor):** probabilidades **π_j** (no $p_j$: $p$ es precio, D017; no $\rho_i$: ρ es descuento), utilidad de reserva **$U^R$** (no $\overline u$; como la PC del 3.A.13), renta **$C_j$** y horas **$L_j$** por estado, $A_j$ productividad, $\overline C$ renta asegurada, $\overline w$ salario con horas fijas, λ multiplicador.
 
@@ -23,11 +23,11 @@ Pregunta: ¿por qué el salario real es estable a lo largo del ciclo y el ajuste
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.27 | Determinación de salarios | desarrollo (hecho, 31/10/2026) | Programa con renta y horas por estado, seguro completo y empleo eficiente, lectura con el principal-agente, extensiones (con *insiders*), evidencia y valoración | — |
-| 3.A.7 | Rigidez del salario real en la NEK de 1.ª generación | resumen | Idea, resultado (salario estable, empleo eficiente) e implicación: **rigidez real sin paro involuntario**; por qué la NEK lo abandona (estabiliza el salario real, no el nominal) | El programa formal: `\vertema{3.A.27}` |
+| 3.A.7 | Rigidez del salario real en la NEK de 1.ª generación | resumen (hecho, 4/11/2026) | Idea, resultado (salario estable, empleo eficiente) y **rigidez real sin paro involuntario**; por qué la NEK los deja en segundo plano (estabilizan el salario real, no el nominal); nota: información incompleta pero simétrica frente a asimétrica (Azariadis, 1975) | El programa formal: `\vertema{3.A.27}` |
 | 3.A.13 | Riesgo moral | mención (hecho, 19/10/2026) | El caso 2 del principal-agente (principal neutral, agente averso, pago fijo) | El contrato implícito |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.27 original: «generan paro involuntario: al salario existente, los desempleados querrían trabajar pero no pueden» (es al revés), solo el salario por estado, probabilidades $\rho_i$, $\pi[X_i-w_i]$, $u(w_R)$. **Resuelto** en la revisión (31/10/2026): renta y horas por estado, π_j, $U^R$, sin paro involuntario.
-- 3.A.7 (sin revisar): copia el texto antiguo con el error del paro involuntario: al revisarlo, resumen con la implicación correcta y remisión al 3.A.27 (`mapa.yaml`, contradicciones del 3.A.27).
+- 3.A.7 (**resuelto** al revisarlo, 4/11/2026; antes): copia el texto antiguo con el error del paro involuntario: al revisarlo, resumen con la implicación correcta y remisión al 3.A.27 (`mapa.yaml`, contradicciones del 3.A.27).
 
 Autor: Víctor Gutiérrez Marcos
