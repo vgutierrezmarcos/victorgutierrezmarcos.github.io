@@ -37,6 +37,6 @@ $$\Delta C_t=\mu+\lambda\,\Delta Y_t+\varepsilon_t,$$
 
 ## Divergencias encontradas en el temario actual
 - 3.A.33 original: ecuación al revés (C_t = C_{t+1} + ε′) y horizonte mezclado; cuadrática con a; tabla sin Kimball; implicaciones vacías; Deaton con cambios «no inesperados»; «Mankiw y Campbell». **Resuelto** (31/10/2026): cuadrática con **b** (cambia la ficha, que decía a), `eq:problema-hall` con no-Ponzi, Euler estocástica como función clave, Kimball y la redacción del 3.A.10.
-- 3.A.38 (sin revisar): Campbell y Mankiw sin λ ni remisión al 3.A.33. **3.A.39 resuelto** (4/11/2026).
+- 3.A.38: Campbell y Mankiw sin λ ni remisión al 3.A.33. **Resuelto (5/11/2026)**: λ ≈ 0,5 en I.3 con `\vertema{3.A.33}`. **3.A.39 resuelto** (4/11/2026).
 
 Autor: Víctor Gutiérrez Marcos

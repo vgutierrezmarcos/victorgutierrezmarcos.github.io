@@ -1,7 +1,7 @@
 # Estabilizadores automáticos (elasticidad de la recaudación y del gasto)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.4 (presupuesto compensador; componentes discrecionales y automáticos) — está en el título.
-- **Temas que lo usan:** 4.B.4 (desarrollo), 4.B.7 (desarrollo; debe quedar en resumen), 4.B.3 (mención: prestaciones por desempleo), 1D01 (mención: VI.2, política neutral)
+- **Temas que lo usan:** 4.B.4 (desarrollo), 4.B.7 (desarrollo; debe quedar en resumen), 4.B.3 (mención: prestaciones por desempleo), 1D01 (mención: VI.2, política neutral) También 3.A.38 (mención; hecho, 5/11/2026: definición en la contextualización, la recaudación y las prestaciones por desempleo se mueven con el ciclo, `\vertema{4.B.4}`; en la suavización y en el anexo D, cuanto mayores, menor el multiplicador de una medida discrecional).
 - **Manuales de referencia:** Blanchard, *Macroeconomics*, cap. 22; Girouard y André (2005), OCDE WP 434; Mourre, Isbasoiu, Paternoster y Salto (2013), *European Economy Economic Papers* 501; Price, Dang y Botev (2015), OCDE; Dolls, Fuest y Peichl (2012), *JPubE*.
 
 ## Presentación de referencia

@@ -1,0 +1,38 @@
+% Exceso de gravamen de un impuesto unitario y su crecimiento con el cuadrado
+% del tipo (3.A.38, nota de la suavización impositiva, I.2 c)).
+% Curvas lineales: demanda p = 5 - q; oferta p = 1 + q (equilibrio q = 2, p = 3).
+%   Con t = 0,8: S+t, p = 1,8 + q; q = 1,6; el consumidor paga 3,4 y el
+%     productor recibe 2,6; triángulo (1,6;3,4)-(1,6;2,6)-(2;3), área 0,16.
+%   Con 2t = 1,6: S+2t, p = 2,6 + q; q = 1,2; paga 3,8 y recibe 2,2;
+%     triángulo (1,2;3,8)-(1,2;2,2)-(2;3), área 0,64 = 4 x 0,16.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.85]
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{4.6}{5.6}}
+  % 2: demanda
+  \capa{2}{\draw[curva1] (0.6,4.4) -- (3.4,1.6) node[etiqueta,right,text=tceemorado] {$D$};}
+  % 3: oferta y equilibrio sin impuesto
+  \capa{3}{\draw[curva2] (0,1) -- (4.1,5.1) node[etiqueta,above,text=tceeazul] {$S$};}
+  \capa{3}{\node[punto] at (2,3) {};}
+  \capa{3}{\draw[guia] (2,3) -- (2,0) node[below,text=black] {$q_0$};}
+  % 4: S+t y su triángulo (claro)
+  \capa{4}{\draw[curvanueva] (0,1.8) -- (3.2,5.0) node[etiqueta,above,text=tceerojo] {$S+t$};}
+  \capa{4}{\fill[tceerojo!22] (1.6,3.4) -- (1.6,2.6) -- (2,3) -- cycle;}
+  \capa{4}{\draw[thick,tceerojo] (1.6,3.4) -- (1.6,2.6);}
+  \capa{4}{\node[etiqueta,right,text=tceerojo,font=\small] at (1.6,3.0) {$t$};}
+  % 5: S+2t y su triángulo (más oscuro, 4 veces mayor), detrás del pequeño
+  \capa{5}{\draw[curvanueva,dashed] (0,2.6) -- (2.0,4.6) node[etiqueta,above,text=tceerojo] {$S+2t$};}
+  \capa{5}{\begin{scope}[on background layer]
+    \fill[tceerojo!50] (1.2,3.8) -- (1.2,2.2) -- (2,3) -- cycle;
+  \end{scope}}
+  \capa{5}{\draw[thick,tceerojo] (1.2,3.8) -- (1.2,2.2);}
+  \capa{5}{\node[etiqueta,left,text=tceerojo,font=\small] at (1.2,3.3) {$2t$};}
+  % 6: rótulos
+  \capa{6}{\node[etiqueta,align=left,anchor=south west] (eg) at (2.45,0.12) {exceso de\\gravamen:\\$\times 4$ con $2t$};}
+  \capa{6}{\draw[->,thin] (eg.north west) ++(0.3,0) .. controls (2.3,2.0) .. (1.8,2.9);}
+\end{tikzpicture}
+\end{document}

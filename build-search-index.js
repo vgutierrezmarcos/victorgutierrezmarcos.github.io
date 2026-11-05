@@ -133,7 +133,7 @@ const tercerEjercicioParteA = [
   { num: 35, titulo: 'Teorías de la demanda de dinero. Implicaciones de política económica.', disponible: true, file: '3A35.pdf' },
   { num: 36, titulo: 'Política monetaria (I). El diseño y la instrumentación de la política monetaria.', disponible: true, file: '3A36.html' },
   { num: 37, titulo: 'Política monetaria (II). Los mecanismos de transmisión de la política monetaria convencional. Rigideces de precios, rigideces de salarios y fricciones financieras. Los mecanismos de transmisión de la política monetaria no convencional.', disponible: true, file: '3A37.pdf' },
-  { num: 38, titulo: 'La política fiscal: efectos sobre el crecimiento económico y el ahorro.', disponible: true, file: '3A38.pdf' },
+  { num: 38, titulo: 'La política fiscal: efectos sobre el crecimiento económico y el ahorro.', disponible: true, file: '3A38.html' },
   { num: 39, titulo: 'Déficit público. Conceptos. Financiación y sus consecuencias macroeconómicas. Dominación monetaria y dominación fiscal. La dinámica de la deuda pública y su sostenibilidad.', disponible: true, file: '3A39.html' },
   { num: 40, titulo: 'Efectividad e interrelación de las políticas monetaria y fiscal en las principales economías desarrolladas desde la Gran Recesión de 2008. El valor de los multiplicadores fiscales.', disponible: false },
   { num: 41, titulo: 'La inflación: causas y efectos sobre la eficiencia económica y el bienestar. Hiperinflación y deflación.', disponible: true, file: '3A41.pdf' },

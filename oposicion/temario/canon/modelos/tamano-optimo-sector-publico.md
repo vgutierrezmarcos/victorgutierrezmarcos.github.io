@@ -1,7 +1,7 @@
 # Tamaño óptimo del sector público (BMg social = CMg social)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.5 (debate sobre el tamaño del sector público, en lo referente al gasto) — está en el título.
-- **Temas que lo usan:** 4.B.5 (resumen; debería ser desarrollo), 4.B.1 (resumen como «comodín»; debería ser mención o desaparecer), 3.A.38/3.A.44 (Barro, 1990: tamaño que maximiza el crecimiento, ficha `barro-1990`)
+- **Temas que lo usan:** 4.B.5 (resumen; debería ser desarrollo), 4.B.1 (resumen como «comodín»; debería ser mención o desaparecer), 3.A.38/3.A.44 (Barro, 1990: tamaño que maximiza el crecimiento, $G/Y=1-\alpha$, ficha `barro-1990`; los 2 hechos: 3.A.44 el 1/11/2026 y 3.A.38 el 5/11/2026)
 - **Manuales de referencia:** Stiglitz y Rosengard, cap. 1 y 4; Musgrave (1959); Barro (1990), *JPE*; Tanzi y Schuknecht, *Public Spending in the 20th Century* (2000); Armey (1995) y Scully (curva de Armey).
 - **Decisión D127 (13/10/2026):** ¿Qué se hace con los indicadores de tamaño del sector público y el «comodín» del tamaño óptimo en 4.B.1? Desarrollo solo en 4.B.5 y suprimir de 4.B.1 el comodín (Barro 1990, BMg = CMg), que no pide su título
 

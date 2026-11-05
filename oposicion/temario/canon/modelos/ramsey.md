@@ -1,7 +1,7 @@
 # Regla de Ramsey (1927): imposición óptima de bienes
 
 - **Área:** sector público · **Tema de referencia:** 4.B.11 (imposición óptima) — está en el título («Regla de Ramsey»).
-- **Temas que lo usan:** 4.B.11 (desarrollo), 4.B.13 (mención: tipos no uniformes de los impuestos especiales e IVA), 4.B.20 (mención prevista: tipos reducidos del IVA), 3.A.17 (variante Ramsey-Boiteux, ficha propia `ramsey-boiteux`); 3.A.22 (mención; hecho, 21/10/2026: solución a los límites del 2TFEB).
+- **Temas que lo usan:** 4.B.11 (desarrollo), 4.B.13 (mención: tipos no uniformes de los impuestos especiales e IVA), 4.B.20 (mención prevista: tipos reducidos del IVA), 3.A.17 (variante Ramsey-Boiteux, ficha propia `ramsey-boiteux`); 3.A.22 (mención; hecho, 21/10/2026: solución a los límites del 2TFEB). También 3.A.38 (mención; hecho, 5/11/2026: la suavización impositiva como «la lógica de Ramsey aplicada al tiempo» en I.2 c) y la intuición de Chamley-Judd —no gravar mucho más unos bienes que otros parecidos, el consumo de 2040 y el de 2041— en II.1, `\vertema{4.B.11}`).
 - **Manuales de referencia:** Ramsey (1927), «A contribution to the theory of taxation», *EJ*; Diamond y Mirrlees (1971), *AER*; Atkinson y Stiglitz, *Lectures*, lección 12; Stiglitz y Rosengard, cap. 20; Rosen y Gayer, cap. 16; Salanié, *The Economics of Taxation*, cap. 3; Informe Mirrlees (2011), cap. 6 y 9.
 
 ## Presentación de referencia

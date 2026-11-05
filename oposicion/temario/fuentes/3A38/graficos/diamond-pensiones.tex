@@ -1,0 +1,42 @@
+% Modelo de Diamond (1965) con pensiones de reparto (3.A.38, II.2,
+% fig:diamond-pensiones), sobre fuentes/3A29/graficos/diamond.tex (mismas
+% unidades: Cobb-Douglas, utilidad logarítmica, delta = 1, alfa = 0,3,
+% beta = 0,9, coeficiente escalado a = 1,6).
+%   Sin pensiones: k_{t+1} = 1,6 k_t^0,3; k* = 1,6^(1/0,7) = 1,957.
+%   Regla de oro (diamond.tex): k_oro = 1,696.
+%   Con reparto (eq:diamond-reparto): k_{t+1} = 1,6 F(tau) k_t^0,3, con
+%   F(tau) = (1-tau)(1+beta)/[(1+beta) + tau(1-alfa)/alfa].
+%   El nuevo estado estacionario es k*_R = (1,6 F)^(1/0,7) = k* F^(1/0,7);
+%   para que sea k_oro hace falta F = (k_oro/k*)^0,7 = 0,90476 (= 19/21), es
+%   decir, tau = 0,04511 (comprobado numéricamente; con tau = 0,045 redondeado,
+%   F = 0,9050 y k*_R = 1,697). Se dibuja con tau = 0,04511: 1,6 F = 1,4476.
+% La capitalización no se dibuja: es neutral (la misma curva que sin pensiones).
+% Elaboración propia a partir de Romer (2019, cap. 2) y Diamond (1965).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=1.6,declare function={ley(\x)=1.6*\x^(0.3); leyR(\x)=1.44762*\x^(0.3);}]
+  % 1: ejes: capital por unidad de trabajo eficiente hoy y mañana
+  \capa{1}{\ejes{$k_t$}{$k_{t+1}$}{3.4}{3.0}}
+  % 2: bisectriz: k_{t+1} = k_t
+  \capa{2}{\draw[thick,tceegris] (0,0) -- (2.85,2.85) node[etiqueta,above,text=black] {$k_{t+1}=k_t$};}
+  \capa{2}{\draw[thin,tceegris] (0.45,0) arc[start angle=0,end angle=45,radius=0.45];}
+  \capa{2}{\node[etiqueta,font=\footnotesize] at (0.64,0.2) {$45^{\circ}$};}
+  % 3: ley de movimiento sin pensiones
+  \capa{3}{\draw[curva1] plot[domain=0:3.1,samples=150] (\x,{ley(\x)}) node[etiqueta,anchor=south west,text=tceemorado] {sin pensiones};}
+  % 4: estado estacionario k* y su proyección
+  \capa{4}{\node[punto] (E) at (1.957,1.957) {};}
+  \capa{4}{\draw[guia] (0,1.957) node[left,text=black] {$k^*$} -| (1.957,0) node[below,text=black] {$k^*$};}
+  \capa{4}{\node[etiqueta,above left] at (E) {$E$};}
+  % 5: ley con reparto, desplazada hacia abajo, y flecha del desplazamiento
+  \capa{5}{\draw[curvanueva] plot[domain=0:3.1,samples=150] (\x,{leyR(\x)}) node[etiqueta,anchor=north west,text=tceerojo] {reparto, $\tau=0{,}045$};}
+  \capa{5}{\draw[flecha] (2.65,{ley(2.65)-0.03}) -- (2.65,{leyR(2.65)+0.03});}
+  % 6: nuevo estado estacionario = k_oro y su proyección
+  \capa{6}{\node[punto] (R) at (1.696,1.696) {};}
+  \capa{6}{\draw[guia] (0,1.696) node[left,text=tceerojo] {$k_{\mathrm{oro}}$} -| (1.696,0) node[below left=0pt and -4pt,text=tceerojo] {$k_{\mathrm{oro}}$};}
+  \capa{6}{\node[etiqueta,below right] at (R) {$E'$};}
+  % 7: rótulos
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=north west] at (2.15,1.05) {con $\tau=0{,}045$, el reparto\\lleva el capital a la\\regla de oro: $k^*_{\mathrm R}=k_{\mathrm{oro}}$};}
+\end{tikzpicture}
+\end{document}

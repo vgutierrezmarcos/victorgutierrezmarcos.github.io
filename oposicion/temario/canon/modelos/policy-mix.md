@@ -1,7 +1,7 @@
 # Combinación de políticas monetaria y fiscal (*policy mix*)
 
 - **Área:** macro-cerrada · **Tema de referencia:** **3.A.40** («Efectividad e interrelación de las políticas monetaria y fiscal…», en el título).
-- **Temas que lo usan:** 3.A.40 (desarrollo), 3.A.32 (resumen: políticas en OA-DA abierta), 3.B.19 (resumen: coordinación internacional), 1D01 (uso: VI.3, `fig:policy-mix`; preguntado en 2020 y 2021)
+- **Temas que lo usan:** 3.A.40 (desarrollo), 3.A.32 (resumen: políticas en OA-DA abierta), 3.B.19 (resumen: coordinación internacional), 1D01 (uso: VI.3, `fig:policy-mix`; preguntado en 2020 y 2021) También 3.A.38 (mención; hecho, 5/11/2026: extensiones de la conclusión, la coordinación con la política monetaria y quién cierra la restricción del Estado, `\vertema{3.A.36}` `\vertema{3.A.39}`).
 - **Manuales de referencia:** Blanchard, *Macroeconomics*, caps. 6 y 19; Mundell (1962) (asignación de instrumentos); Sargent y Wallace (1981) y la teoría fiscal del nivel de precios (dominancia); Bartsch et al. (2020), *It's All in the Mix*.
 
 ## Presentación de referencia

@@ -1,0 +1,52 @@
+% Esquema del modelo de generaciones solapadas (3.A.38, II.2,
+% fig:olg-generaciones): cada generación vive 2 periodos (joven: trabaja,
+% cobra w_t, consume C^J_t y ahorra S_t; vieja: consume C^V_{t+1}) y en cada
+% periodo conviven una generación joven y una vieja. Flechas: capitalización
+% (la cotización tau w_t de cada joven le vuelve de vieja con intereses) y
+% reparto (la cotización de los jóvenes de t+1 paga la pensión Z_{t+1} de los
+% viejos de t+1). Notación de la ficha olg-samuelson-diamond.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    joven/.style={draw=tceeazul,fill=tceeazul!14,thick,minimum height=1.0cm,minimum width=3.2cm,inner sep=1pt,font=\normalsize},
+    viejo/.style={draw=tceedorado,fill=tceedorado!20,thick,minimum height=1.0cm,minimum width=3.2cm,inner sep=1pt,font=\normalsize},
+    gen/.style={font=\normalsize,anchor=east,align=right}]
+  % columnas: periodo t-1 en [0,3.2], t en [3.2,6.4], t+1 en [6.4,9.6], t+2 en [9.6,12.8]
+  % filas (centro de las barras): generación t-2 en y = 0, t-1 en -1,9, t en -3,8,
+  % t+1 en -5,7, t+2 en -7,6
+  % 1: eje del tiempo y periodos
+  \capa{1}{\draw[eje] (-0.3,0.9) -- (13.4,0.9) node[right] {tiempo};}
+  \capa{1}{\foreach \x in {0,3.2,6.4,9.6,12.8} \draw[thin] (\x,0.82) -- (\x,0.98);}
+  \capa{1}{\foreach \x/\p in {1.6/t-1,4.8/t,8/t+1,11.2/t+2} \node[font=\normalsize,above] at (\x,0.95) {periodo $\p$};}
+  % bandas suaves en los periodos t y t+2 para leer las columnas (sin líneas que crucen los rótulos)
+  \capa{1}{\begin{scope}[on background layer]\fill[tceegris!9] (3.2,0.82) rectangle (6.4,-8.25);\fill[tceegris!9] (9.6,0.82) rectangle (12.8,-8.25);\end{scope}}
+  % 2: generaciones (barras de 2 periodos; las de los extremos, cortadas)
+  \capa{2}{\node[viejo] (V2) at (1.6,0) {};}
+  \capa{2}{\node[joven] (J1) at (1.6,-1.9) {};}
+  \capa{2}{\node[viejo] (V1) at (4.8,-1.9) {};}
+  \capa{2}{\node[joven] (J0) at (4.8,-3.8) {};}
+  \capa{2}{\node[viejo] (V0) at (8,-3.8) {};}
+  \capa{2}{\node[joven] (Jm) at (8,-5.7) {};}
+  \capa{2}{\node[viejo] (Vm) at (11.2,-5.7) {};}
+  \capa{2}{\node[joven] (Jn) at (11.2,-7.6) {};}
+  \capa{2}{\draw[thick,tceedorado,-{Stealth[length=2.2mm]}] (0,0) -- (-0.4,0);}
+  \capa{2}{\draw[thick,tceedorado,-{Stealth[length=2.2mm]}] (12.8,-7.6) -- (13.3,-7.6);}
+  \capa{2}{\foreach \y/\g in {0/t-2,-1.9/t-1,-3.8/t,-5.7/t+1,-7.6/t+2} \node[gen] at (-0.45,\y) {generación\\$\g$};}
+  % 3: rótulos joven / viejo y variables
+  \capa{3}{\node[font=\normalsize,align=center] at (V2) {vieja\\$C^V_{t-1}$};}
+  \capa{3}{\node[font=\normalsize,align=center] at (J1) {joven\\$w_{t-1}$, $C^J_{t-1}$, $S_{t-1}$};}
+  \capa{3}{\node[font=\normalsize,align=center] at (V1) {vieja\\$C^V_{t}$};}
+  \capa{3}{\node[font=\normalsize,align=center] at (J0) {joven\\$w_{t}$, $C^J_{t}$, $S_{t}$};}
+  \capa{3}{\node[font=\normalsize,align=center] at (V0) {vieja\\$C^V_{t+1}$};}
+  \capa{3}{\node[font=\normalsize,align=center] at (Jm) {joven\\$w_{t+1}$, $C^J_{t+1}$, $S_{t+1}$};}
+  \capa{3}{\node[font=\normalsize,align=center] at (Vm) {vieja\\$C^V_{t+2}$};}
+  \capa{3}{\node[font=\normalsize,align=center] at (Jn) {joven\\$w_{t+2}$, $C^J_{t+2}$, $S_{t+2}$};}
+  % 4: capitalización: la cotización de la generación t le vuelve de vieja
+  \capa{4}{\draw[->,thick,tceeverde] ([xshift=0.9cm]J0.north) to[out=60,in=120] node[pos=0.8,above right,font=\normalsize,text=tceeverde] {capitalización: $(1+r_{t+1})\,\tau w_t$} ([xshift=-0.4cm]V0.north);}
+  % 5: reparto: los jóvenes de t+1 pagan la pensión de los viejos de t+1
+  \capa{5}{\draw[->,thick,tceerojo] (Jm.north) -- node[right,font=\normalsize,text=tceerojo] {reparto: $Z_{t+1}=(1+n)\,\tau w_{t+1}$} (V0.south);}
+\end{tikzpicture}
+\end{document}

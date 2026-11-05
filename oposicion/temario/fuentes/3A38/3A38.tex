@@ -1,0 +1,899 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A38.bib}
+\tcetema[La política fiscal: crecimiento y ahorro]{3.A.38}{La política fiscal: efectos sobre el crecimiento económico y el ahorro.}
+\tcefecha{05/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item En la fábula que \autor{Samaniego} puso en verso en 1781, la cigarra pasa el verano cantando y la hormiga, guardando grano. Cuando llega el invierno, la una tiene y la otra pide.
+  \item En 2025 la economía española hizo un poco de las 2 cosas. Las Administraciones Públicas cerraron con un déficit del 2,4~\% del PIB y una deuda del 100,5~\% \parencite{Eurostat2026EDP}. A la vez, el ahorro nacional bruto llegó al 25,0~\% del PIB, el más alto desde que empieza la serie, en 1995, y las propias Administraciones volvieron a ahorrar (un 0,3~\% del PIB), algo que no ocurría desde 2008 \parencite{Eurostat2026nasa10nftr,Eurostat2026Nama10gdp}.\footnote{No hay contradicción entre ahorrar y tener déficit: el ahorro público es la diferencia entre los ingresos y el gasto corriente; el déficit resta además la inversión pública y las transferencias de capital.}
+  \item Detrás está la pregunta de esta exposición: \emph{¿es la política fiscal cigarra u hormiga? ¿Puede hacer que una economía ahorre y crezca más, o solo adelanta el verano a costa del invierno?}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Para la teoría}: en la política fiscal se encuentran la macroeconomía del ciclo y la del crecimiento. Sus efectos dependen del horizonte de los hogares, de cómo se financia el gasto (impuestos de suma fija o distorsionantes, deuda) y de si el gasto es productivo.
+  \item \emph{Para la política económica}: el gasto de las Administraciones Públicas fue en 2025 el 45,3~\% del PIB en España y el 49,8~\% en la zona del euro \parencite{Eurostat2026GovMain}. Las reglas fiscales europeas, reformadas en 2024, se apoyan en una senda de gasto neto a medio plazo \parencite{RegUE2024Preventivo} \vertema{3.A.39}, y el envejecimiento obliga a decidir cuánto ahorra el país a través del Estado: el gasto público en pensiones de España pasaría del 13,1~\% del PIB en 2022 a un máximo del 17,3~\% hacia 2050 \parencite{CE2024AgeingReport} \vertema{4.B.24}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item La \concepto{política fiscal} es la actuación del sector público sobre el gasto público, los impuestos y el saldo presupuestario para alcanzar sus objetivos macroeconómicos: estabilizar la economía, favorecer el crecimiento y repartir la renta. Es la pareja de la política monetaria, que actúa sobre la cantidad de dinero o el tipo de interés \vertema{3.A.36}.
+    \begin{itemize}
+    \item \emph{Instrumentos}: el gasto (consumo e inversión públicos, transferencias), los impuestos (de suma fija o distorsionantes; sobre la renta, el consumo, el trabajo o el capital) y la deuda, que reparte en el tiempo la financiación \vertema{3.A.39}.
+    \item \emph{Discrecional o automática}: la discrecional exige decidir y aprobar medidas; la automática actúa sola, porque la recaudación y algunos gastos, como las prestaciones por desempleo, se mueven con el ciclo. Son los \concepto{estabilizadores automáticos} \vertema{4.B.4}.
+    \item \emph{Funciones}: \textcite{Musgrave1959Theory} ordenó las tareas del sector público en 3: la \emph{asignativa} (corregir fallos de mercado), la \emph{redistributiva} (una distribución de la renta más equitativa) y la \emph{estabilizadora} (pleno empleo y precios estables) \vertema{4.B.1}. Esta exposición trata la tercera y lo que hace la política fiscal, a más largo plazo, con el ahorro y el crecimiento.
+    \end{itemize}
+  \item La literatura ha seguido 2 caminos:
+    \begin{enumerate}
+    \item el del \emph{corto plazo}: primero el keynesiano, con el multiplicador de \textcite{Kahn1931Relation} y el debate sobre cuánto expulsa el gasto a la inversión privada; después, la restricción intertemporal y los modelos de equilibrio general dinámico, con hogares que saben que la deuda de hoy son impuestos de mañana \parencite{Barro1974}, de ciclo real \parencite{BaxterKing1993Fiscal} y neokeynesianos \parencite{Woodford2011Simple}; y, tras 2008, multiplicadores mayores de lo previsto con los tipos de interés en su límite inferior \parencite{BlanchardLeigh2013Growth};
+    \item el del \emph{largo plazo}: qué hacen la deuda y las pensiones con el ahorro cuando las generaciones se solapan \parencite{Diamond1965National}, por qué no conviene gravar las rentas del capital con hogares de vida infinita \parencite{Chamley1986Optimal,Judd1985Redistributive} y cómo el gasto productivo y los impuestos pueden cambiar la tasa de crecimiento \parencite{Barro1990,Rebelo1991Long}.
+    \end{enumerate}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Cuánto mueve la producción un aumento del gasto público a corto plazo, y de qué depende?
+  \item ¿Qué hacen la deuda, los impuestos y las pensiones con el ahorro y el capital?
+  \item ¿Puede la política fiscal cambiar la tasa de crecimiento a largo plazo, o solo el nivel de la renta?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: dividiremos la exposición en 3 apartados.
+  \begin{itemize}
+  \item \concepto{I. La política fiscal a corto plazo} (\ref{sec:corto-plazo}): cuánto mueve la demanda y la producción un aumento del gasto, del IS-LM de la síntesis a los modelos con agentes que optimizan, de ciclo real y neokeynesiano.
+  \item \concepto{II. Sus efectos a largo plazo sobre el ahorro} (\ref{sec:ahorro}): con hogares de vida infinita, la deuda no cambia el ahorro nacional y los impuestos sobre el capital sí; con generaciones que se solapan, las pensiones de reparto y la deuda lo reducen.
+  \item \concepto{III. Sus efectos sobre el crecimiento} (\ref{sec:crecimiento}): el gasto productivo y la estructura impositiva pueden cambiar no solo el nivel de la renta, sino su tasa de crecimiento.
+  \end{itemize}
+  El orden va del corto al largo plazo y, en el largo, del \emph{nivel} a la \emph{tasa}: el ahorro decide cuánto capital tiene la economía; el crecimiento endógeno, a qué ritmo crece. Por eso el ahorro va antes que el crecimiento, aunque el título los nombre al revés.
+\end{itemize}
+
+\begin{esquema}[unbreakable]
+\textbf{3.A.38. La política fiscal: efectos sobre el crecimiento económico y el ahorro}\\[2pt]
+Introducción\\
+I. Política fiscal en el corto plazo: papel estabilizador sobre la demanda\\
+\hspace*{1.5em}1. Debate tradicional sobre la efectividad de la política fiscal con el marco IS-LM\\
+\hspace*{1.5em}2. Modelo del ciclo real para el análisis de la política fiscal\\
+\hspace*{1.5em}3. Modelo neokeynesiano para el análisis de la política fiscal\\
+II. Efectos de la política fiscal a largo plazo sobre el ahorro\\
+\hspace*{1.5em}1. La política fiscal con un agente representativo de horizonte infinito\\
+\hspace*{1.5em}2. Efectos de los sistemas públicos de pensiones sobre el ahorro\\
+III. Efectos de la política fiscal a largo plazo sobre el crecimiento económico\\
+\hspace*{1.5em}1. La política fiscal y el crecimiento endógeno (\autor{Barro}, 1990)\\
+\hspace*{1.5em}2. La estructura impositiva y el crecimiento\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9,5} (I.1, \tiempo{1,5}; I.2, \tiempo{5}; I.3, \tiempo{3}); II, \tiempo{9} (II.1, \tiempo{3}; II.2, \tiempo{6}); III, \tiempo{8} (III.1, \tiempo{5,5}; III.2, \tiempo{2,5}), y conclusión, \tiempo{1}. El título pide el crecimiento y el ahorro: el corto plazo no pasa de \tiempo{9,5}, el IS-LM se canta en un minuto y medio y el modelo neokeynesiano y los multiplicadores se resumen, porque se desarrollan en otras exposiciones; el modelo de ciclo real con gasto, las pensiones y \autor{Barro} (1990) son los 3 desarrollos de esta. La pizarra se organiza en 3 zonas. A la izquierda, la pregunta del enganche, la cigarra y la hormiga y las pegatinas, cada una junto a su concepto: «lo que no va en lágrimas va en suspiros» (el efecto riqueza del gasto), «no hay plazo que no se cumpla ni deuda que no se pague» (la equivalencia ricardiana), «dos no riñen si uno no quiere» (el banco central y el multiplicador), «no mates la gallina de los huevos de oro» (\autor{Chamley} y \autor{Judd}), «hijo eres, padre serás; cual hiciste, tal habrás» (el reparto), «la avaricia rompe el saco» (la ineficiencia dinámica) y «ni contigo ni sin ti» (\autor{Barro}). En el centro, los gráficos: las respuestas al gasto en el ciclo real, el plano $(x_t,\pi_t)$, el diagrama de fases con el gasto, la ley de movimiento de \autor{Diamond} con pensiones y la U invertida de \autor{Barro}. A la derecha, recuadradas y conservadas hasta el final, la restricción de recursos con el gasto \eqref{eq:rbc-acumulacion}, la ecuación de \autor{Euler} con el impuesto sobre el capital \eqref{eq:euler-tauk}, el ahorro con reparto \eqref{eq:ahorro-reparto} y el tamaño óptimo del Estado \eqref{eq:barro-tau}. Lo que la exposición resume o simplifica (el IS-LM y \autor{Mundell}-\autor{Fleming}, el ciclo real con gasto paso a paso, la suavización impositiva, el tamaño del multiplicador, las pensiones en el modelo de \autor{Diamond} paso a paso y \autor{Barro} con ahorro constante) está en los anexos~\ref{anexo:islm} a~\ref{anexo:barro}.
+\end{notaopositor}
+
+\begin{anotaciones}
+\textbf{Notación.} $Y_t$, $C_t$, $I_t$, $K_t$, $L_t$: producción, consumo, inversión, capital y horas; $w_t$, el salario real, y $r_t+\delta$, el alquiler del capital (el bien es el numerario); $G_t$, el gasto público en bienes y servicios; $T_t$, la recaudación de los impuestos de suma fija; $\tau_{L,t}$ y $\tau_{K,t}$, los tipos sobre las rentas del trabajo y del capital; $D_t$, la deuda pública al final de $t$, y $r^D_{t-1}$, el tipo real de la deuda emitida en $t-1$. $\theta$ es la aversión relativa al riesgo (la elasticidad de sustitución intertemporal es $1/\theta$), $\beta\equiv1/(1+\rho)$ el factor de descuento, $\chi$ el peso de la desutilidad del trabajo y $1/\varphi$ la elasticidad de \autor{Frisch}; $\rho_A$ y $\rho_G$, la persistencia de la productividad y del gasto. En el IS-LM, $t$ es el tipo impositivo proporcional; en el modelo neokeynesiano, las minúsculas son logaritmos y $g_t\equiv-\ln(1-G_t/Y_t)\simeq G_t/Y_t$ es el peso del gasto en el PIB.
+\end{anotaciones}
+
+% ==========================================================================
+\section{Política fiscal en el corto plazo:\newline papel estabilizador sobre la demanda}\label{sec:corto-plazo}
+\minutos{9,5}
+
+\begin{itemize}
+\item Empezamos por el uso más conocido de la política fiscal: estabilizar la demanda.
+\item \emph{Conclusión anticipada}: el gasto público mueve la producción a corto plazo, pero cuánto depende del modelo. Mucho en el keynesiano, con precios rígidos; poco en el de ciclo real, donde actúa por un efecto riqueza y el multiplicador es positivo y menor que 1; algo más en el neokeynesiano, según responda el banco central. En todos, el gasto se paga, hoy o mañana, y eso nos llevará al largo plazo.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Debate tradicional sobre la efectividad de la política fiscal con el marco IS-LM}\label{sec:islm}
+
+\begin{itemize}
+\item Comenzamos por la visión tradicional, que se cuenta en un minuto y medio: su respuesta depende de un modelo sin futuro.
+\item \emph{Idea}: con precios y salarios rígidos, la demanda determina la producción. El gasto público la eleva directamente y, por el \concepto{multiplicador} de \textcite{Kahn1931Relation}, a través del consumo inducido: más gasto, más renta, más consumo y otra vez más renta. \autor{Keynes} prefería el gasto a las rebajas de impuestos, porque una parte de estas se ahorra \vertema{3.A.4}.
+\item \emph{En el modelo IS-LM} \vertema{3.A.5}, con el consumo $C=\overline{C}+c\,(1-t)\,Y$, la inversión $I=\overline{I}-b\,i$ y la demanda de dinero $M/P=kY-h\,i$, el multiplicador del gasto es
+  \begin{equation}\label{eq:multiplicador-fiscal}
+  \frac{\Delta Y^*}{\Delta\overline{G}}=\frac{1}{1-c(1-t)+b\,k/h},
+  \end{equation}
+  con $c$ la propensión marginal a consumir, $t$ el tipo impositivo, $b$ la sensibilidad de la inversión al tipo de interés y $k$ y $h$ las de la demanda de dinero a la renta y al tipo. El término $b\,k/h$, que se \emph{suma} en el denominador, es la \concepto{expulsión} (\emph{crowding-out}): el gasto eleva la renta y la demanda de dinero, sube el tipo de interés y cae la inversión privada (gráfico~\ref{fig:islm-escuelas}). El multiplicador del tipo impositivo y el del presupuesto equilibrado están en el anexo~\ref{anexo:islm}.
+\item \emph{Las escuelas} discrepan por las pendientes de las curvas, es decir, por $b$ y $h$:
+  \begin{itemize}
+  \item \emph{clásicos}: el dinero solo se demanda para las transacciones ($h=0$), la LM es vertical y la expulsión, total: $\Delta Y^*/\Delta\overline{G}=0$;
+  \item \emph{keynesianos}: la inversión depende de los «espíritus animales» y poco del tipo ($b$ pequeño) y la demanda de dinero es muy sensible al tipo por el motivo especulación ($h$ grande; en el límite, la trampa de la liquidez). Con la IS inclinada y la LM plana, el multiplicador se acerca al simple, $1/[1-c(1-t)]$;
+  \item \emph{monetaristas}: la inversión es muy sensible al tipo ($b$ grande) y la demanda de dinero poco, porque el dinero compite con muchos activos ($h$ pequeño): la expulsión es casi total. \autor{Friedman} lo debatió en público con Walter \autor{Heller} \parencite{FriedmanHeller1969Monetary} y añadió que, a largo plazo, con la curva de \autor{Phillips} vertical, la expansión solo deja inflación \vertema{3.A.28}.
+  \end{itemize}
+\item \emph{En economía abierta} (\autor{Mundell}-\autor{Fleming}), la propensión a importar reduce el multiplicador, porque parte del gasto se va fuera, y su eficacia depende del tipo de cambio: con movilidad perfecta del capital, la política fiscal funciona muy bien si el tipo de cambio es fijo y nada si es flexible, porque entonces la moneda se aprecia y expulsa exportaciones netas (tabla~\ref{tab:mundell-fleming}) \vertema{3.A.32}.
+\item \emph{Valoración}: es un modelo estático, sin expectativas ni restricción intertemporal del Estado. Desde los años 70 se exigen expectativas racionales y microfundamentos, y la pregunta cambia: ¿qué hace el gasto si los hogares saben que lo pagarán con impuestos?
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El mismo aumento del gasto en el IS-LM de cada escuela}\label{fig:islm-escuelas}
+\grafico[0.95\textwidth]{islm-escuelas}
+\fuente{Elaboración propia a partir de \textcite{Heijdra2017Foundations} (gráfico del tema del déficit público). a) Clásicos: LM vertical, expulsión total. b) Keynesianos: LM plana, expulsión casi nula. c) Monetaristas: LM inclinada e IS plana, expulsión casi total.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Modelo del ciclo real para el análisis de la política fiscal}\label{sec:rbc-fiscal}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Para estudiar la política fiscal con hogares que optimizan y miran al futuro, el punto de partida es el modelo de ciclo real: competencia perfecta, precios flexibles y un hogar de vida infinita \vertema{3.A.42}. Le añadimos un Estado que gasta y cobra impuestos, como \textcite{ChristianoEichenbaum1992Current} y \textcite{BaxterKing1993Fiscal}; seguimos la presentación de \textcite{Sims2017Fiscal}.
+\item La pregunta: \emph{¿qué hace un aumento del gasto público si no hay rigideces y los hogares saben que lo pagarán?}
+\item Pegatina: «lo que no va en lágrimas va en suspiros». El gasto se paga, con impuestos hoy o con deuda e impuestos mañana, y los hogares lo saben: esa factura es el canal por el que el gasto mueve la economía.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los del modelo de ciclo real \vertema{3.A.42}: economía cerrada, un solo bien, tiempo discreto y horizonte infinito; un hogar y una empresa representativos, competencia perfecta, precios y salarios flexibles y expectativas racionales; tecnología \emph{Cobb-Douglas} con una perturbación tecnológica persistente. El bien es el numerario: $w_t$ es el salario real y $r_t+\delta$, el alquiler del capital.
+\item \emph{Un Estado} que compra bienes, $G_t$, que no dan utilidad ni aumentan la producción,\footnote{Si dieran utilidad de forma separable, $u(C_t,L_t)+v(G_t)$, las decisiones del hogar no cambiarían. Si el gasto fuera inversión productiva, cambiaría la producción: es la extensión de \textcite{BaxterKing1993Fiscal} (c) y, con el gasto como flujo, el modelo de \textcite{Barro1990} (\ref{sec:barro}).} y que sigue un proceso autorregresivo propio,
+  \begin{equation}\label{eq:rbc-gasto}
+  \ln G_t=(1-\rho_G)\ln\overline{G}+\rho_G\ln G_{t-1}+\varepsilon^G_t,\qquad 0\le\rho_G<1,
+  \end{equation}
+  con $\varepsilon^G_t$ ruido blanco y $\rho_G$ la persistencia del gasto, paralela a la $\rho_A$ de la tecnología.
+\item \emph{Lo financia} con impuestos de suma fija, que recaudan $T_t$; con impuestos proporcionales sobre las rentas del trabajo, $\tau_{L,t}$, y del capital, $\tau_{K,t}$, y con deuda, $D_t$, que compran los hogares. Su restricción en cada periodo es
+  \begin{equation}\label{eq:rbc-gobierno}
+  G_t+r^D_{t-1}D_{t-1}=T_t+\tau_{L,t}\,w_tL_t+\tau_{K,t}\,r_tK_t+(D_t-D_{t-1}),
+  \end{equation}
+  con $D_t$ la deuda al final de $t$ y $r^D_{t-1}$ el tipo real de la deuda emitida en $t-1$, fijado al emitirla \vertema{3.A.39}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{El hogar} elige consumo, horas, capital y bonos:
+  $$\optim{\max}{\{C_t,L_t,K_{t+1},D_t\}}{\mathbb{E}_0\sum_{t=0}^{\infty}\beta^t\left[\frac{C_t^{1-\theta}-1}{1-\theta}-\chi\,\frac{L_t^{1+\varphi}}{1+\varphi}\right]}{C_t+K_{t+1}+D_t=(1-\tau_{L,t})\,w_tL_t+\big[1+(1-\tau_{K,t})\,r_t\big]K_t+(1+r^D_{t-1})\,D_{t-1}-T_t}$$
+\item \emph{La empresa} alquila capital y trabajo cada periodo y paga sus productos marginales: no tiene un problema intertemporal, salvo que haya costes de ajuste \vertema{3.A.34}.
+\item \emph{Las ecuaciones del modelo} son las del ciclo real \vertema{3.A.42} con 2 cambios: los impuestos abren una cuña en las decisiones del hogar,
+  \begin{align}
+  Y_t&=A_tK_t^{\alpha}L_t^{1-\alpha},\qquad \ln A_t=\rho_A\ln A_{t-1}+\varepsilon^A_t \label{eq:rbc-tecnologia}\\
+  w_t&=(1-\alpha)A_t\left(\tfrac{K_t}{L_t}\right)^{\alpha},\qquad r_t+\delta=\alpha A_t\left(\tfrac{K_t}{L_t}\right)^{\alpha-1} \label{eq:rbc-precios}\\
+  C_t^{-\theta}&=\beta\,\mathbb{E}_t\!\left[C_{t+1}^{-\theta}\big(1+(1-\tau_{K,t+1})\,r_{t+1}\big)\right],\qquad \chi L_t^{\varphi}=C_t^{-\theta}(1-\tau_{L,t})\,w_t \label{eq:rbc-hogar}
+  \end{align}
+  y el gasto público compite con el consumo y la inversión por la producción:
+  \funcionclave[eq:rbc-acumulacion]{K_{t+1}=(1-\delta)K_t+Y_t-C_t-G_t}
+  Con $\tau_{L,t}=\tau_{K,t}=0$ y $G_t=0$ son las del modelo base. Junto con \eqref{eq:rbc-gasto} y \eqref{eq:rbc-gobierno} describen la economía; la restricción del hogar sobra por la ley de \autor{Walras}. La derivación, con la ecuación de \autor{Euler} de los bonos, está en el anexo~\ref{anexo:rbc-fiscal}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{La equivalencia ricardiana}: con impuestos de suma fija ($\tau_{L,t}=\tau_{K,t}=0$), ni $T_t$ ni $D_t$ aparecen en \eqref{eq:rbc-tecnologia}-\eqref{eq:rbc-acumulacion}. Dada la senda del gasto, da igual financiarla con impuestos o con deuda \parencite{Barro1974} \vertema{3.A.39}.
+  \begin{itemize}
+  \item \uline{La deuda pública no es riqueza neta, sino impuestos aplazados}: «no hay plazo que no se cumpla ni deuda que no se pague». Si el Estado baja hoy los impuestos y se endeuda, los hogares ahorran la rebaja para pagar los impuestos de mañana; el ahorro privado sube lo que baja el público y el ahorro nacional no cambia (\ref{sec:horizonte-infinito}).
+  \item \autor{Ricardo} la planteó al comparar cómo pagar una guerra, aunque dudó de que la gente razonara así \parencite[cap.~17]{Ricardo1817Principles}; \textcite{Barro1974} la recuperó en «Are Government Bonds Net Wealth?» y \textcite{Buchanan1976Barro} le puso el nombre.
+  \item \emph{Lo que no dice}: que el gasto no tenga efectos; los tiene, porque cambia la riqueza de los hogares. Tampoco habla de la monetización: compara impuestos y deuda. Falla con vidas finitas sin herencias (\ref{sec:pensiones}), con impuestos distorsionantes (c), con restricciones de liquidez (\ref{sec:nek-fiscal}) y con miopía o racionalidad limitada \vertema{3.A.1} \vertema{3.A.33}.
+  \end{itemize}
+
+\item \emph{Un aumento del gasto financiado con impuestos de suma fija} \parencite{BaxterKing1993Fiscal}:
+  \begin{itemize}
+  \item los hogares saben que lo pagarán: su riqueza cae (\concepto{efecto riqueza negativo});
+  \item consumen menos y, como el ocio también es un bien normal, trabajan más: la oferta de trabajo se desplaza a la derecha y, como la demanda de trabajo no cambia, el salario real baja y suben el empleo y la producción;\footnote{En el impacto también sube el tipo de interés real, y un tipo más alto hace más atractivo trabajar hoy que mañana (sustitución intertemporal): otro empujón a la oferta de trabajo \parencite[cap.~5]{Romer2019Advanced}.}
+  \item la producción sube menos que el gasto, porque este expulsa consumo e inversión privados: el multiplicador es \uline{positivo y menor que 1}.
+  \end{itemize}
+\item \emph{La persistencia del gasto lo decide} (tabla~\ref{tab:gasto-rbc} y gráfico~\ref{fig:irf-rbc-gasto}):
+  \begin{itemize}
+  \item un gasto \emph{transitorio} ($\rho_G=0$) apenas cambia la riqueza de toda la vida: casi no mueve el consumo ni el trabajo y se paga, sobre todo, con menos inversión. El multiplicador de impacto es casi nulo, 0,03;
+  \item uno \emph{persistente} ($\rho_G=0{,}95$) empobrece más a los hogares: trabajan más, la producción sube más (0,32 por cada euro de gasto en el impacto) y el consumo cae más;
+  \item cuando el gasto se retira, se deshace el camino: el consumo y el salario real suben y las horas y la producción vuelven a su nivel;
+  \item a largo plazo, un gasto \emph{permanente} eleva el capital en la misma proporción que el empleo, y el multiplicador llega a 0,75 con esta calibración;\footnote{Con un gasto permanente, el tipo de interés y la ratio capital-trabajo vuelven a su nivel, así que el salario no cambia; de la condición del trabajo, $\varphi\,\hat L=-\theta\,\hat C$, y de la restricción de recursos sale $\Delta Y/\Delta G=1/[s_C(\theta+\varphi)/\theta+s_G]$, con $s_C$ y $s_G$ los pesos del consumo y del gasto en el PIB (locales). Con $\theta=\varphi=1$, $s_C\approx0{,}563$ y $s_G=0{,}2$, 0,75.} con una oferta de trabajo más elástica puede superar la unidad \parencite{BaxterKing1993Fiscal}.
+  \end{itemize}
+\item \emph{El papel de la oferta de trabajo}: cuanto menos elástica, menor el multiplicador. En el límite, con oferta inelástica, el efecto riqueza no mueve las horas, la producción no cambia y el gasto expulsa consumo e inversión privados uno a uno: es la \concepto{expulsión completa}. Con un gasto permanente, todo lo expulsado es consumo, como en el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} (\ref{sec:horizonte-infinito}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Efecto en el impacto de un aumento del gasto del 1~\% del PIB en el modelo de ciclo real}\label{tab:gasto-rbc}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{5.2cm}>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{1.9cm}}
+\toprule
+\rowcolor{tceeazulpalido} Financiación y persistencia & $\Delta Y$ & $\Delta C$ & $\Delta I$ & Horas (\%)\\
+\midrule
+\textcolor{tceeverde}{Suma fija, transitorio ($\rho_G=0$)} & $0{,}03$ & $-0{,}04$ & $-0{,}93$ & $0{,}05$\\
+\textcolor{tceeverde}{Suma fija, persistente ($\rho_G=0{,}95$)} & $0{,}32$ & $-0{,}36$ & $-0{,}31$ & $0{,}49$\\
+\textcolor{tceerojo}{Impuesto sobre el trabajo ($\rho_G=0{,}95$)} & $-0{,}68$ & $-0{,}61$ & $-1{,}07$ & $-1{,}02$\\
+\bottomrule
+\end{tabular}
+\fuente{Elaboración propia: simulación del modelo log-linealizado \eqref{eq:rbc-tecnologia}-\eqref{eq:rbc-acumulacion} con $\alpha=1/3$, $\beta=0{,}99$, $\delta=0{,}025$, $\theta=1$, $\varphi=1$ y $G/Y=0{,}2$, los valores del modelo de ciclo real de \textcite{Prescott1986} y \textcite{HansenWright1992Labor}. $\Delta Y$, $\Delta C$ y $\Delta I$, en puntos del PIB: son multiplicadores. Con el impuesto sobre el trabajo, el presupuesto se equilibra cada periodo.}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\caption{Respuesta a un aumento del gasto público del 1~\% del PIB en el modelo de ciclo real}\label{fig:irf-rbc-gasto}
+\grafico[0.95\textwidth]{irf-rbc-gasto}
+\fuente{Elaboración propia: simulación del modelo log-linealizado con la calibración de la tabla~\ref{tab:gasto-rbc}. a) Producción, consumo e inversión, en puntos del PIB, con impuestos de suma fija y $\rho_G=0{,}95$ (continuas) o $\rho_G=0$ (discontinuas). b) Horas y salario real, en \%, con $\rho_G=0{,}95$. c) Producción con impuestos de suma fija y con un impuesto sobre el trabajo.}
+\end{figure}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Impuestos distorsionantes}: la equivalencia ricardiana falla y la forma de financiar el gasto importa tanto como el propio gasto \parencite{BaxterKing1993Fiscal}.
+  \begin{itemize}
+  \item Un impuesto sobre el trabajo reduce el salario neto, $(1-\tau_{L,t})\,w_t$, y con él las horas. Si el gasto se paga así, el efecto sustitución domina al efecto riqueza y el multiplicador es \emph{negativo}: $-0{,}68$ en el impacto en la tabla~\ref{tab:gasto-rbc}. No es una curiosidad: en 2024 el tipo implícito sobre el trabajo fue del 36,2~\% en España y del 37,1~\% en la UE \parencite{CE2026DataTaxation}.
+  \item Un impuesto sobre el capital reduce el rendimiento del ahorro, $(1-\tau_{K,t+1})\,r_{t+1}$, y con él la inversión: es la cuña que, a largo plazo, deja menos capital (\ref{sec:horizonte-infinito}).
+  \item Los cambios de los tipos impositivos son otra perturbación real que mejora el ajuste del modelo a los datos \parencite{McGrattan1994Macroeconomic}.
+  \end{itemize}
+\item \emph{La suavización impositiva}: si la distorsión de un impuesto crece con el cuadrado del tipo,\footnote{El exceso de gravamen de un impuesto unitario es un triángulo cuya base y cuya altura crecen con el tipo: con curvas lineales, su área crece con el cuadrado del tipo. Doblar el tipo dobla, más o menos, la recaudación, pero cuadruplica el exceso de gravamen \vertema{4.B.11}.\graficonota[0.3]{exceso-gravamen}} al Estado le conviene mantener constante el tipo medio, $T_t/Y_t=\bar\tau$, y dejar que la deuda absorba el gasto transitorio (una guerra, una pandemia) y el ciclo: déficits en las recesiones y superávits en las expansiones, con los estabilizadores automáticos actuando \parencite{Barro1979Determination} \vertema{3.A.39}. Es la lógica de \autor{Ramsey} aplicada al tiempo: \autor{Ramsey} reparte los impuestos entre bienes para minimizar el exceso de gravamen, con más impuesto donde la base es menos elástica; \autor{Barro} los reparte entre periodos y, si la base es igual de elástica en todos, con el mismo tipo \vertema{4.B.11}. El problema, en el anexo~\ref{anexo:suavizacion}.
+\item \emph{Gasto productivo}: \textcite{BaxterKing1993Fiscal} distinguen el consumo público, que solo absorbe recursos, de la inversión pública, que forma un capital público $K^G_t$ que entra en la producción, $Y_t=A_tK_t^{\alpha}L_t^{1-\alpha}(K^G_t)^{\alpha_G}$, con $0<\alpha_G<1-\alpha$ ($K^G_t$ y $\alpha_G$, locales). Un aumento permanente de la inversión pública tiene 3 efectos:
+  \begin{enumerate}
+  \item absorbe recursos, como el consumo público (efecto riqueza negativo);
+  \item eleva la producción con los mismos factores privados, tanto más cuanto mayor es $\alpha_G$;
+  \item eleva el producto marginal del trabajo y del capital privados y, con él, el empleo y la inversión privada: el capital público complementa al privado \vertema{3.A.34}.
+  \end{enumerate}
+  A corto plazo domina el primero y el consumo cae; a largo plazo, el tercero, y la producción, el consumo y la inversión privada quedan por encima. Si $\alpha_G=1-\alpha$, los 2 capitales juntos tendrían rendimientos constantes y el crecimiento sería endógeno. Aquí el capital público se acumula; en el modelo de \autor{Barro} el gasto es un flujo de servicios (\ref{sec:barro}).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item El modelo acierta en el signo de la producción y de las horas, pero no en el del consumo: en los modelos de vectores autorregresivos, el consumo privado \emph{sube} tras un aumento del gasto \parencite{BlanchardPerotti2002Empirical,GaliLopezSalidoValles2007}, y en el modelo cae.
+\item Ese desajuste es el que intenta cerrar el modelo neokeynesiano con hogares que viven al día (\ref{sec:nek-fiscal}).
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: da a la política fiscal un mecanismo con microfundamentos, el efecto riqueza, y muestra que lo que importa es el gasto y cómo se financia, no el déficit en sí.
+\item \emph{En contra}: el consumo cae cuando sube el gasto, al revés que en los datos; el multiplicador depende de una elasticidad de la oferta de trabajo mayor que la que estima la microeconomía \vertema{3.A.25}; y, como el ciclo es eficiente, no hay nada que estabilizar.\footnote{No toda fluctuación es mala: en los modelos de ciclo real, el ciclo es la respuesta óptima a perturbaciones reales, y una política que lo suavizara alejaría a la economía de su óptimo intertemporal \vertema{3.A.42}.}
+\item \emph{Nexo}: ¿y si los precios no se ajustan enseguida? Es el modelo neokeynesiano.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelo neokeynesiano para el análisis de la política fiscal}\label{sec:nek-fiscal}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Una vez visto el gasto con precios flexibles, pasamos a precios rígidos. El modelo neokeynesiano añade al de ciclo real competencia monopolística, para que las empresas fijen precios, y rigidez de precios a la \autor{Calvo} \vertema{3.A.7}. A corto plazo la producción la determina la demanda y el banco central fija el tipo de interés.
+\item Lo resumimos: es el modelo canónico de 3 ecuaciones, y la política fiscal solo entra en la primera.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los del modelo canónico \vertema{3.A.7}, sin capital: toda la producción es consumo o gasto público, $Y_t=C_t+G_t$, y el gasto se financia con impuestos de suma fija. En logaritmos, con $g_t\equiv-\ln(1-G_t/Y_t)\simeq G_t/Y_t$, $y_t=c_t+g_t$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{La IS dinámica con gasto}: llevando $c_t=y_t-g_t$ a la ecuación de \autor{Euler} del consumo,
+  \begin{equation}\label{eq:is-gasto}
+  y_t=\mathbb{E}_t[y_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-\rho\big)+\big(g_t-\mathbb{E}_t[g_{t+1}]\big).
+  \end{equation}
+  En términos de la brecha, $x_t\equiv y_t-y^n_t$, es la IS dinámica canónica, $x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big)$, con el gasto dentro del tipo natural, $r^n_t=\rho+\theta\,\mathbb{E}_t[\Delta y^n_{t+1}]-\theta\,\mathbb{E}_t[\Delta g_{t+1}]$.
+\item Las otras 2 ecuaciones no cambian: la curva de \autor{Phillips} neokeynesiana, $\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t$, y la regla de \autor{Taylor}, $i_t=\rho+\phi_\pi\pi_t+\phi_x x_t+\varepsilon_t$ \vertema{3.A.7} \vertema{3.A.36}.
+\item \emph{Un aumento transitorio del gasto}, que se espera que vuelva, sube $r^n_t$: es una perturbación de demanda. La demanda agregada dinámica se desplaza a la derecha, suben la brecha y, por la curva de \autor{Phillips}, la inflación, y el banco central sube el tipo (gráfico~\ref{fig:nek-xpi}, panel a).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo canónico en el plano $(x_t,\pi_t)$: un aumento del gasto es una perturbación de demanda (panel a)}\label{fig:nek-xpi}
+\grafico[0.9\textwidth]{nek-xpi}
+\fuente{Elaboración propia a partir de \textcite[caps.~3 y~5]{Gali2015Monetary} y \textcite{ClaridaGaliGertler1999Science} (gráfico del tema de la nueva economía keynesiana).}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Un aumento del gasto actúa por 3 vías} \vertema{3.A.7}:
+  \begin{itemize}
+  \item \emph{efecto riqueza}: los hogares anticipan los impuestos futuros, consumen menos y trabajan más, como en el modelo de ciclo real;
+  \item \emph{rigidez de precios}: las empresas atienden la mayor demanda con más producción y empleo, y el margen cae: con precios rígidos el margen es \emph{contracíclico}, y eso amplifica el efecto del gasto;\footnote{Con el margen $1+\mu=P\cdot\mathrm{PMg}_L/W$, si la producción sube con los precios fijos, el salario real sube y el margen cae. Cuanto más rígidos los precios, más cae el margen cuando sube la demanda, más trabajo demandan las empresas y mayor es el multiplicador.}
+  \item \emph{respuesta del banco central}: si sigue la regla de \autor{Taylor}, sube el tipo real y expulsa consumo.
+  \end{itemize}
+\item \emph{El multiplicador depende del banco central} \parencite{Woodford2011Simple}. Como $Y_t=C_t+G_t$, $\Delta Y/\Delta G=1+\Delta C/\Delta G$: es menor que 1 si el consumo cae y mayor si sube. Pegatina: «dos no riñen si uno no quiere». El gasto solo expulsa consumo si el banco central sube el tipo real:
+  \begin{itemize}
+  \item con precios flexibles, el tipo real sube lo que pide el efecto riqueza y el multiplicador es el del ciclo real sin capital, $\theta/(\theta+\varphi)<1$ (0,5 con $\theta=\varphi=1$);\footnote{Con precios flexibles, el salario real iguala la relación marginal de sustitución, $\chi L_t^{\varphi}C_t^{\theta}$, y es $A_t/(1+\mu)$ con $Y_t=A_tL_t$. En logaritmos, $\varphi(y_t-a_t)+\theta(y_t-g_t)=a_t-\mu$, y $\partial y^n_t/\partial g_t=\theta/(\theta+\varphi)$: el multiplicador, con $g_t\simeq G_t/Y_t$ pequeño.}
+  \item si el banco central mantiene constante el tipo real, en \eqref{eq:is-gasto} el consumo no cambia y el multiplicador es exactamente 1;
+  \item con una regla de \autor{Taylor}, el tipo real sube y el multiplicador es menor que 1, aunque mayor que con precios flexibles; en el límite inferior de los tipos, el tipo nominal se queda en su suelo: el gasto sube la inflación esperada y baja el tipo real, y si dura lo que dura ese límite, el multiplicador puede superar con creces la unidad \parencite{ChristianoEichenbaumRebelo2011} \vertema{3.A.40}.
+  \end{itemize}
+\item \emph{Con hogares que viven al día}: si una fracción $\lambda$ de los hogares consume su renta corriente, por restricciones de liquidez o por miopía \parencite{CampbellMankiw1989Consumption} \vertema{3.A.33}, la equivalencia ricardiana deja de cumplirse y el consumo \emph{sube} con el gasto, como en los datos; el multiplicador puede superar 1 \parencite{GaliLopezSalidoValles2007}. \autor{Campbell} y \autor{Mankiw} estiman $\lambda$ en torno a 0,5 en Estados Unidos.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica: el valor del multiplicador}
+
+\begin{itemize}
+\item \emph{Del gasto}: la mayoría de las estimaciones están entre 0,6 y 1 \parencite{Ramey2019Ten}. \textcite{Hall2009By} lo sitúa entre 0,7 y 1 en tiempos normales y en torno a 1,7 con el tipo de interés en cero; en 2012 el FMI reconoció que había supuesto multiplicadores de en torno a 0,5 cuando los de la crisis fueron muy superiores a 1 \parencite{BlanchardLeigh2013Growth}.
+\item \emph{De los impuestos}: con subidas identificadas en los documentos legislativos, una subida del 1~\% del PIB reduce la producción casi un 3~\% \parencite{RomerRomer2010Tax}; con un modelo de vectores autorregresivos estructural, un dólar más de impuestos reduce la producción de Estados Unidos entre 0,78 y 1,33 dólares en el máximo \parencite{BlanchardPerotti2002Empirical}.
+\item \emph{Efectos no keynesianos}: con una deuda muy alta, una consolidación creíble puede \emph{aumentar} la actividad, porque anuncia menos impuestos y menos riesgo: un multiplicador con el signo cambiado \parencite{GiavazziPagano1990}. Los ajustes basados en recortes de gasto cuestan mucha menos producción que los basados en subidas de impuestos \parencite{AlesinaFaveroGiavazzi2019Austerity} \vertema{3.A.39}.
+\item La teoría y la evidencia del tamaño del multiplicador se desarrollan aparte \vertema{3.A.40} \vertema{4.B.4}; sus definiciones y de qué depende, en el anexo~\ref{anexo:multiplicadores}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Da a la política fiscal un papel estabilizador mayor que el ciclo real y explica por qué los multiplicadores fueron altos con los tipos en cero. Pero no tiene capital ni crecimiento: no dice nada del largo plazo.
+\item \emph{Recapitulación del bloque}: a corto plazo el gasto mueve la producción, poco si los precios son flexibles y más si son rígidos y el banco central acomoda. En todos los modelos el gasto se paga, y cómo se paga cambia el ahorro y el capital: ese es el efecto que dura. Pasamos al largo plazo.
+\end{itemize}
+
+% ==========================================================================
+\section{Efectos de la política fiscal a largo plazo\newline sobre el ahorro}\label{sec:ahorro}
+\minutos{9}
+
+\begin{itemize}
+\item Una vez visto el corto plazo, pasamos al largo, en el que la producción la decide la oferta y el ahorro decide cuánto capital tiene la economía.
+\item \emph{Conclusión anticipada}: con hogares de vida infinita, la deuda no cambia el ahorro nacional, pero un impuesto sobre las rentas del capital sí, y por eso a largo plazo conviene no gravarlas; con generaciones que se solapan, las pensiones de reparto y la deuda reducen el ahorro y el capital, lo que solo es bueno si la economía acumula de más.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La política fiscal con un agente representativo de horizonte infinito}\label{sec:horizonte-infinito}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item El ciclo real ya tenía hogares de vida infinita. Si le quitamos las perturbaciones y fijamos el trabajo, queda el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}, el marco de referencia para ver qué hace la política fiscal con el ahorro y el capital a largo plazo \vertema{3.A.43}.
+\item La pregunta: \emph{¿qué hacen el gasto, la deuda y los impuestos con el capital de estado estacionario cuando los hogares miran al futuro sin límite?}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los del modelo de crecimiento con ahorro óptimo \vertema{3.A.43}: hogares de vida infinita con utilidad CRRA, población que crece a la tasa $n$, progreso técnico a la tasa $g$, competencia perfecta y oferta de trabajo inelástica; $k$ y $c$ son el capital y el consumo por unidad de trabajo eficiente, y $f(k)$ la producción.
+\item Un Estado que compra $G_t$, que no da utilidad ni produce, y lo financia con impuestos de suma fija, con deuda o con un impuesto de tipo $\tau_K$ sobre las rentas del capital.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Gasto financiado con impuestos de suma fija}: la ecuación de \autor{Euler} no cambia y el gasto se resta de la acumulación, $\dot k_t=f(k_t)-c_t-G_t/(A_tL_t)-(n+g+\delta)\,k_t$ (gráfico~\ref{fig:rck-gasto}).
+  \begin{itemize}
+  \item Un aumento \emph{permanente} e inesperado baja el lugar $\dot k=0$ en su cuantía: el consumo cae lo mismo en el momento del anuncio, y el capital y el tipo de interés no cambian. Es la \concepto{expulsión completa del consumo privado}, el caso límite del ciclo real con trabajo inelástico (\ref{sec:rbc-fiscal}).
+  \item Un aumento \emph{temporal}: el consumo cae menos que el gasto, porque el hogar reparte el coste en el tiempo; mientras dura, el capital baja y el tipo de interés sube.
+  \end{itemize}
+\item \emph{Deuda frente a impuestos: el ahorro nacional}. El ahorro nacional es la suma del privado y el público, $S^N_t=S^P_t+S^G_t$, con $S^G_t$ los ingresos menos el gasto corriente del Estado:
+  \begin{itemize}
+  \item con horizonte infinito, si el Estado baja hoy los impuestos y se endeuda, el hogar ahorra toda la rebaja para pagar los impuestos de mañana: \uline{el ahorro privado sube lo que baja el público y el ahorro nacional no cambia}, ni el capital ni el tipo de interés (la equivalencia ricardiana de \ref{sec:rbc-fiscal}) \vertema{3.A.39};
+  \item en los datos la compensación es solo parcial: en España, el ahorro de las Administraciones Públicas fue negativo de 2009 a 2024, y el de los hogares solo subió con fuerza en 2020, cuando no se podía gastar (gráfico~\ref{fig:ahorro-nacional-espana}); en 2025 los hogares ahorraron el 11,9~\% de su renta disponible, frente al 14,8~\% en la zona del euro \parencite{Eurostat2026nasa10ki};
+  \item con vidas finitas la equivalencia falla, y es lo que estudia el modelo de generaciones solapadas (\ref{sec:pensiones}).
+  \end{itemize}
+\item \emph{Impuesto sobre las rentas del capital}: un tipo $\tau_K$ reduce el rendimiento del ahorro y entra en la ecuación de \autor{Euler},
+  \funcionclave[eq:euler-tauk]{\frac{\dot c_t}{c_t}=\frac{(1-\tau_K)\big(f'(k_t)-\delta\big)-\rho-\theta g}{\theta}\quad\Longrightarrow\quad f'(k^*)=\delta+\frac{\rho+\theta g}{1-\tau_K}}
+  El lugar $\dot c=0$ se desplaza a la izquierda: el nuevo estado estacionario tiene menos capital, menos renta y menos consumo. En el momento de la subida, el consumo salta hacia arriba y después la economía desacumula capital (gráfico~\ref{fig:rck-impuesto}).
+\item \emph{Otros impuestos}: uno proporcional y constante sobre el consumo no cambia el precio relativo del consumo de hoy y de mañana; con el trabajo inelástico, tampoco el impuesto sobre el trabajo. Los 2 actúan como uno de suma fija.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Un aumento del gasto público permanente (izquierda) y temporal (derecha) en el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}}\label{fig:rck-gasto}
+\grafico[0.9\textwidth]{rck-gasto}
+\fuente{Elaboración propia a partir de \textcite[cap.~2, figs.~2.8 y 2.9]{Romer2019Advanced} y \textcite[fig.~3.2]{BarroSalaiMartin2004} (gráfico del tema del crecimiento exógeno).}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{Ahorro nacional bruto de España por sectores, 1995-2025 (\% del PIB)}\label{fig:ahorro-nacional-espana}
+\grafico[0.85\textwidth]{ahorro-nacional-espana}
+\fuente{Eurostat, cuentas de los sectores institucionales \parencite{Eurostat2026nasa10nftr} y PIB \parencite{Eurostat2026Nama10gdp}; elaboración propia. Zona del euro de 21 países, desde 2002.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{Un impuesto sobre las rentas del capital en el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}}\label{fig:rck-impuesto}
+\grafico[0.55\textwidth]{rck-impuesto}
+\fuente{Elaboración propia a partir de \textcite[cap.~8, fig.~8.2]{Acemoglu2009} y \textcite[fig.~3.1]{BarroSalaiMartin2004} (gráfico del tema del crecimiento exógeno).}
+\end{figure}
+
+\subparagraph{iii) Implicaciones: el resultado de \autor{Chamley} y \autor{Judd}}
+
+\begin{itemize}
+\item \textcite{Judd1985Redistributive} y \textcite{Chamley1986Optimal}: si el Estado puede comprometerse y la economía converge a un estado estacionario, \uline{el impuesto óptimo sobre las rentas del capital a largo plazo es nulo}, aunque el Estado quiera redistribuir hacia los trabajadores (\autor{Judd}) y tenga que financiar su gasto con impuestos distorsionantes (\autor{Chamley}).
+\item Pegatina: «no mates la gallina de los huevos de oro». El capital es la gallina: gravar lo que rinde reduce la puesta de todos los años futuros.
+\item \emph{Intuición}:
+  \begin{itemize}
+  \item un impuesto constante sobre las rentas del capital es un impuesto sobre el consumo futuro que crece con la distancia: un euro ahorrado hoy da $(1+r)^T$ euros dentro de $T$ periodos sin impuesto y $[1+(1-\tau_K)\,r]^T$ con él, y la cuña crece sin límite con $T$ \parencite{AtkesonChariKehoe1999Taxing}. La regla de \autor{Ramsey} pide no gravar mucho más unos bienes que otros parecidos, y el consumo de 2040 y el de 2041 lo son \vertema{4.B.11};
+  \item en el estado estacionario, la oferta de capital es infinitamente elástica al rendimiento neto: por \eqref{eq:euler-tauk}, $(1-\tau_K)\big(f'(k^*)-\delta\big)=\rho+\theta g$ no depende del impuesto. Todo el impuesto acaba recayendo en el trabajo, a través de un salario menor, y es mejor gravar el trabajo directamente.
+  \end{itemize}
+\item \emph{Implicación}: conviene gravar el capital ya instalado, que no puede escapar, y comprometerse a no gravar el futuro. De ahí la \emph{inconsistencia temporal}: una vez acumulado el capital, la tentación es gravarlo \vertema{3.A.36}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \textcite{StraubWerning2020Positive} muestran que el resultado no se sigue de los propios modelos que lo dieron: en el de \autor{Judd}, si la elasticidad de sustitución intertemporal es menor que 1, el impuesto óptimo a largo plazo es positivo y alto; en el de \autor{Chamley}, los límites al impuesto pueden estar activos para siempre, y la convergencia puede tardar décadas.
+\item Con mercados incompletos y riesgos individuales sin asegurar \parencite{Aiyagari1995Optimal}, o con vidas finitas, el impuesto óptimo sobre el capital es positivo: en torno al 36~\% en el modelo de ciclo vital calibrado para Estados Unidos de \textcite{ConesaKitaoKrueger2009Taxing}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Los Estados no siguen el resultado: en 2024 el tipo implícito sobre el capital fue del 29,5~\% en España y del 32,5~\% en la UE, no muy lejos del que soporta el trabajo \parencite{CE2026ITRCapital,CE2026DataTaxation}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Con crecimiento exógeno, la política fiscal cambia el \emph{nivel} del capital y de la renta, nunca su tasa de crecimiento a largo plazo, que sigue siendo $g$ (la tasa, en el bloque~\ref{sec:crecimiento}).
+\item Y con hogares de vida infinita la deuda es neutral. Para ver lo que hacen la deuda y las pensiones con el ahorro hacen falta generaciones que se solapen.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Efectos de los sistemas públicos de pensiones sobre el ahorro}\label{sec:pensiones}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Con hogares de vida infinita no hay transferencias entre generaciones que estudiar, y las pensiones públicas son la mayor de ellas: en España, el 13,1~\% del PIB en 2022 \parencite{CE2024AgeingReport}.\footnote{La primera pensión pública de vejez la creó la Alemania de \autor{Bismarck}, junto con los seguros de enfermedad (1883) y de accidentes de trabajo (1884): la ley de 1889, en vigor desde 1891, daba una pensión a los 70 años, y el canciller buscaba con ella restar apoyo a los socialdemócratas \parencite{DRV2026Historie}. Su salida en 1890 se debió a su choque con Guillermo~II, no a los seguros.}
+\item Hay 2 formas de organizarlas:
+  \begin{itemize}
+  \item de \concepto{capitalización}: lo que cotiza cada trabajador se invierte y se le devuelve, con sus rendimientos, al jubilarse;
+  \item de \concepto{reparto}: las cotizaciones de los que trabajan pagan las pensiones de los jubilados de ese momento; es el sistema de España y de la mayoría de los países europeos \vertema{4.B.24}.
+  \end{itemize}
+\item Pegatina: «hijo eres, padre serás; cual hiciste, tal habrás». En el reparto, lo que hoy pagas a la generación de tus padres te lo pagará la de tus hijos.
+\item La pregunta: \emph{¿cómo cambia cada sistema el ahorro y el capital, y cuál es mejor?} El marco es el modelo de generaciones solapadas de \textcite{Diamond1965National}, con producción y acumulación de capital \vertema{3.A.29}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Hogares}: viven 2 periodos (gráfico~\ref{fig:olg-generaciones}). De jóvenes ofrecen una unidad de trabajo, de forma inelástica, cobran el salario real $w_t$, cotizan un tipo $\tau$ sobre él, consumen $C^J_t$ y ahorran $S_t$; de viejos consumen $C^V_{t+1}$, su ahorro con sus rendimientos más la pensión $Z_{t+1}$ ($Z_{t+1}$, local). Su número crece a la tasa $n$ y su utilidad es $\ln C^J_t+\beta\ln C^V_{t+1}$.
+\item \emph{Empresas}: competitivas, con $Y_t=K_t^{\alpha}(A_tL_t)^{1-\alpha}$, $A_{t+1}=(1+g)A_t$ y depreciación completa en un periodo de unos 30 años, como en el \vertema{3.A.29}: $1+r_t=\alpha k_t^{\alpha-1}$ y $w_t=A_t(1-\alpha)k_t^{\alpha}$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Generaciones solapadas: capitalización y reparto}\label{fig:olg-generaciones}
+\grafico[0.95\textwidth]{olg-generaciones}
+\fuente{Elaboración propia.}
+\end{figure}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Sin pensiones}, el joven ahorra $S_t=\frac{\beta}{1+\beta}\,w_t$ y el capital sigue la ley de movimiento de \autor{Diamond} \vertema{3.A.29}:
+  \begin{equation}\label{eq:diamond}
+  k_{t+1}=\frac{\beta\,(1-\alpha)}{(1+\beta)(1+n)(1+g)}\,k_t^{\alpha}.
+  \end{equation}
+\item \emph{Con capitalización}, lo cotizado se invierte y rinde lo mismo que el ahorro privado, $Z_{t+1}=(1+r_{t+1})\,\tau w_t$. La renta de toda la vida no cambia y el hogar ahorra menos justo lo que cotiza: $S_t+\tau w_t=\frac{\beta}{1+\beta}\,w_t$. El ahorro total y el capital \uline{no cambian}: el ahorro obligatorio sustituye uno a uno al voluntario, mientras la cotización no supere lo que el hogar ahorraría.
+\item \emph{Con reparto}, lo cotizado por los jóvenes paga a los viejos. Por cada viejo hay $1+n$ jóvenes, así que $Z_{t+1}=(1+n)\,\tau w_{t+1}$, y el hogar resuelve
+  $$\optim{\max}{S_t}{\ln C^J_t+\beta\ln C^V_{t+1}}{C^J_t=(1-\tau)\,w_t-S_t\\ C^V_{t+1}=(1+r_{t+1})\,S_t+(1+n)\,\tau\,w_{t+1}}$$
+  con la solución
+  \funcionclave[eq:ahorro-reparto]{S_t=\frac{\beta}{1+\beta}\,(1-\tau)\,w_t-\frac{1}{1+\beta}\,\frac{(1+n)\,\tau\,w_{t+1}}{1+r_{t+1}}}
+  El ahorro privado cae por 2 vías: la cotización reduce la renta de hoy y la pensión aumenta la de mañana. Y nadie ahorra por los jóvenes: su cotización no se invierte, se paga a los viejos.
+\item \emph{El capital}: el capital de mañana es el ahorro de los jóvenes de hoy. Sustituyendo $w_t$, $w_{t+1}$ y $1+r_{t+1}$ y despejando $k_{t+1}$, que aparece a los 2 lados (anexo~\ref{anexo:pensiones}):
+  \begin{equation}\label{eq:diamond-reparto}
+  k_{t+1}=\frac{\beta\,(1-\alpha)\,(1-\tau)}{(1+n)(1+g)\left[1+\beta+\tau\,(1-\alpha)/\alpha\right]}\,k_t^{\alpha}.
+  \end{equation}
+  Con $\tau=0$ es \eqref{eq:diamond}. El coeficiente baja con $\tau$: la ley de movimiento se desplaza hacia abajo y el capital de estado estacionario es menor que sin pensiones o con capitalización (gráfico~\ref{fig:diamond-pensiones}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Las pensiones de reparto en el modelo de \autor{Diamond}: menos ahorro y menos capital}\label{fig:diamond-pensiones}
+\grafico[0.6\textwidth]{diamond-pensiones}
+\fuente{Elaboración propia a partir de \textcite[cap.~2]{Romer2019Advanced} y \textcite{Diamond1965National}, sobre el gráfico del tema de las preferencias intertemporales. Parámetros ilustrativos: $\alpha=0{,}3$, $\beta=0{,}9$ y, con reparto, $\tau=0{,}045$, la cotización que lleva el capital justo a la regla de oro.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Rendimientos}: la capitalización rinde $1+r$; el reparto, $(1+n)(1+g)$ en el estado estacionario, porque la pensión crece con el número de cotizantes y con sus salarios.
+\item \emph{La condición de \autor{Aaron}}: el reparto rinde más que la capitalización si
+  \begin{equation}\label{eq:aaron}
+  n+g>r
+  \end{equation}
+  \parencite{Aaron1966Social}, que es justo la condición de \concepto{ineficiencia dinámica}: la economía tiene tanto capital que el tipo de interés queda por debajo del crecimiento, $r^*<(1+n)(1+g)-1\simeq n+g$ \vertema{3.A.29}. Es «la avaricia rompe el saco»: ahorrar de más empeora a todos. Entonces introducir el reparto reduce el capital hacia la regla de oro y mejora a \emph{todas} las generaciones; con los parámetros del gráfico~\ref{fig:diamond-pensiones}, una cotización del 4,5~\% basta para llegar a ella.
+\item \emph{¿Cómo puede haber ineficiencia sin fallos de mercado?} Por la «doble infinitud» de \textcite{Shell1971Notes}: infinitos periodos y agentes hacen que el valor de las dotaciones a los precios de equilibrio pueda ser infinito, y el primer teorema fundamental de la economía del bienestar necesita que no lo sea \vertema{3.A.22}. Y porque cada generación solo puede ahorrar para la vejez acumulando capital, aunque rinda poco: no puede prestar a quien aún no ha nacido.\footnote{\textcite{Malinvaud1953Capital} y \textcite{Cass1972Capital} caracterizan qué sendas de acumulación de capital son eficientes; la exposición de manual está en \textcite[cap.~9]{Acemoglu2009}.}
+\item \emph{Si la economía es eficiente} ($r>n+g$), el reparto es un mal negocio para las generaciones futuras: la primera generación de viejos cobra sin haber cotizado y las siguientes reciben menos de lo que rendiría su cotización. Volver a la capitalización exige que una generación pague 2 veces: la pensión de sus padres y su propio ahorro.
+\item \emph{La deuda hace lo mismo}: los jóvenes ahorran comprando capital o deuda pública, así que el capital de mañana es su ahorro menos la deuda que compran, $K_{t+1}=L_tS_t-D_t$: la deuda desplaza capital y traslada la carga a quienes aún no han nacido \parencite{Diamond1965National} \vertema{3.A.29}. La equivalencia ricardiana solo se recupera si cada generación deja herencias a la siguiente por altruismo \parencite{Barro1974}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Jubilación endógena}: si las pensiones adelantan la jubilación, hay que financiar un retiro más largo y el ahorro puede subir; el efecto total de las pensiones sobre el ahorro es ambiguo \parencite{Feldstein1974Social}.
+\item \emph{Modelos con muchas generaciones}: los que se usan para evaluar reformas tienen decenas de generaciones, oferta de trabajo y el detalle de la relación entre lo cotizado y la pensión \parencite{AuerbachKotlikoff1987Dynamic}.
+\item \emph{El empujón al ahorro voluntario}: si los hogares ahorran menos de lo que querrían para la jubilación, por miopía o por inercia, el Estado puede cambiar la opción por defecto sin obligar a nadie: es el \concepto{paternalismo libertario} de \textcite{ThalerSunstein2008Nudge} \vertema{3.A.1}.
+  \begin{itemize}
+  \item El Reino Unido afilia por defecto a los trabajadores a un plan de pensiones de empresa, con libertad para salirse, desde octubre de 2012, empezando por las grandes empresas \parencite{UK2008PensionsAct,UK2010EmployersDuties}.
+  \item Funciona porque la mayoría de los hogares es pasiva: en Dinamarca, cada corona de subvención fiscal al ahorro para la jubilación crea solo un céntimo de ahorro nuevo, mientras que las aportaciones automáticas lo elevan mucho \parencite{ChettyEtAl2014Active}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{Feldstein1974Social} estimó que la «riqueza de la Seguridad Social» había reducido mucho el ahorro personal de Estados Unidos; \textcite{LeimerLesnoy1982Social} encontraron un error de programación en la construcción de esa variable y, corregido, un efecto mucho menor y poco robusto.
+\item Entre países, los que tienen sistemas de reparto ahorran menos, tanto más cuanto mayor es su cobertura; pero los que pasaron a sistemas de aportación definida no muestran después un ahorro mayor \parencite{Samwick2000Pension}.
+\item \emph{¿Hay ineficiencia dinámica?} En las grandes economías avanzadas, los beneficios del capital superan año tras año a la inversión, señal de que no acumulan de más \parencite{AbelEtAl1989Assessing}: el reparto no es una mejora de \autor{Pareto}, sino una transferencia hacia las primeras generaciones \vertema{3.A.29}.
+\item \emph{El envejecimiento} baja $n$ y, con él, el rendimiento del reparto. En España, la población de 65 años o más pasaría del 33,3~\% de la de 20 a 64 años en 2022 al 64,5~\% en 2054, y el gasto público en pensiones, del 13,1~\% del PIB en 2022 a un máximo del 17,3~\% hacia 2050 y al 16,7~\% en 2070; en la UE, del 11,4~\% hasta un máximo del 12,2~\% hacia 2035-2044 y al 11,8~\% en 2070 \parencite{CE2024AgeingReport,CE2024AgeingReportAnexo} (gráfico~\ref{fig:demografia-pensiones}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Envejecimiento y pensiones: tasa de dependencia de mayores (España y UE-27, 1960-2100) y gasto público en pensiones (2022-2070)}\label{fig:demografia-pensiones}
+\grafico[0.95\textwidth]{demografia-pensiones}
+\fuente{Elaboración propia a partir de \textcite{Eurostat2026Dependencia} (observado; mayores de 65 años sobre la población de 15 a 64), \textcite{Eurostat2026EUROPOP2025} (proyección, escenario base) y \textcite{CE2024AgeingReport} (gráfico del tema de las preferencias intertemporales).}
+\end{figure}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item El modelo explica por qué el reparto reduce el ahorro y el capital y cuándo eso es bueno, pero deja fuera el riesgo (la capitalización expone la pensión a los mercados; el reparto, a la demografía y a la política), la jubilación endógena y la redistribución dentro de cada generación, que es la razón de ser de muchos sistemas públicos.
+\item Las reformas reales combinan los 2 sistemas: cuentas nocionales, como en Suecia, fondos de reserva y cotizaciones finalistas, como el mecanismo de equidad intergeneracional español \vertema{4.B.24}.
+\item \emph{Recapitulación del bloque}: con horizonte infinito, el déficit no cambia el ahorro nacional y solo el impuesto sobre el rendimiento del ahorro lo reduce; con generaciones solapadas, la deuda y el reparto reducen el ahorro y el capital: malo si la economía es eficiente, como parecen serlo las avanzadas, y bueno si acumula de más. En todos los casos, la política fiscal cambia el \emph{nivel} del capital. ¿Puede cambiar también su \emph{tasa} de crecimiento?
+\end{itemize}
+
+% ==========================================================================
+\section{Efectos de la política fiscal a largo plazo\newline sobre el crecimiento económico}\label{sec:crecimiento}
+\minutos{8}
+
+\begin{itemize}
+\item Pasamos del nivel a la tasa. Con rendimientos decrecientes del capital, la política fiscal solo cambia el nivel de la renta; si el capital no los tiene, también la tasa de crecimiento.
+\item \emph{Conclusión anticipada}: con gasto productivo, el tamaño del Estado tiene un óptimo, $G/Y=1-\alpha$, y los impuestos que gravan la acumulación reducen la tasa de crecimiento, no solo su nivel. Lo que más importa es la composición: qué gasto y qué impuestos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La política fiscal y el crecimiento endógeno (\autor{Barro}, 1990)}\label{sec:barro}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿puede el gasto público generar crecimiento sostenido, y qué tamaño del Estado lo maximiza? El Estado tiene 2 caras:
+  \begin{itemize}
+  \item suministra bienes productivos (infraestructuras, justicia, seguridad, investigación\footnote{En la literatura se ha considerado productivo el gasto en seguridad, justicia, defensa, sanidad, transporte y comunicaciones, infraestructuras y las subvenciones a la I+D.}) que hacen más productivo el capital privado;
+  \item pero tiene que financiarlos con impuestos, que reducen el rendimiento de invertir.
+  \end{itemize}
+  Si el gasto no fuera productivo, solo quedaría la segunda cara y su tamaño óptimo sería nulo.
+\item Pegatina: «ni contigo ni sin ti». Sin gasto productivo no se crece; con demasiado, los impuestos que lo pagan ahogan la inversión.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Producción}: con capital privado y un flujo de servicios públicos, $G_t$, que todas las empresas usan a la vez y toman como dado, con rendimientos constantes en los 2 y decrecientes en cada uno:
+  \begin{equation}\label{eq:barro-produccion}
+  Y_t=A\,K_t^{\alpha}\,G_t^{1-\alpha},\qquad 0<\alpha<1.
+  \end{equation}
+  La población es constante y se normaliza a 1, así que los agregados son también por trabajador. Aquí $G_t$ es un flujo de gasto, no el capital público acumulado de \autor{Baxter} y \autor{King} (\ref{sec:rbc-fiscal}).
+\item \emph{Sector público}: financia el gasto con un impuesto proporcional sobre la renta, de tipo $\tau$ constante, con el presupuesto equilibrado, $G_t=\tau Y_t$. A largo plazo el Estado no puede gastar más de lo que ingresa \vertema{3.A.39}.
+\item \emph{Hogares de \autor{Ramsey}} con utilidad CRRA, como en \ref{sec:horizonte-infinito}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con $G=\tau Y$, la producción es lineal en el capital: un modelo $AK$ cuya productividad depende del tamaño del Estado,
+  \begin{equation*}
+  Y=A\,K^{\alpha}(\tau Y)^{1-\alpha}\quad\Longrightarrow\quad Y=A^{1/\alpha}\,\tau^{(1-\alpha)/\alpha}\,K.
+  \end{equation*}
+\item Cada empresa toma $G$ como dado: el producto marginal privado del capital es $\alpha Y/K$ y, tras impuestos, el hogar recibe $r=(1-\tau)\,\alpha\,A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-\delta$. Con la ecuación de \autor{Euler}, $\gamma=(r-\rho)/\theta$:
+  \begin{equation}\label{eq:barro}
+  \gamma=\frac{1}{\theta}\left[(1-\tau)\,\alpha\,A^{1/\alpha}\,\tau^{(1-\alpha)/\alpha}-\delta-\rho\right],
+  \end{equation}
+  y el consumo, el capital y la producción crecen a esa tasa desde el principio, sin transición, como en el modelo $AK$ \vertema{3.A.44}.
+\item \emph{2 efectos del impuesto}: el factor $\tau^{(1-\alpha)/\alpha}$, positivo (más gasto, capital más productivo), y $(1-\tau)$, negativo (menos rendimiento neto). Maximizando $(1-\tau)\,\tau^{(1-\alpha)/\alpha}$ (anexo~\ref{anexo:barro}):
+  \funcionclave[eq:barro-tau]{\tau^*=\frac{G}{Y}=1-\alpha}
+  \begin{itemize}
+  \item El crecimiento sube con el tipo mientras $\tau<1-\alpha$ y baja después: tiene forma de U invertida (gráfico~\ref{fig:barro}).
+  \item En $\tau^*$ se cumple la \concepto{regla de \autor{Barro}}: $\partial Y/\partial G=(1-\alpha)Y/G=1$, el gasto productivo se lleva hasta que su producto marginal iguala su coste.
+  \item El tipo óptimo coincide con la elasticidad de la producción al gasto público.
+  \end{itemize}
+\item La versión con una tasa de ahorro constante, como en \autor{Solow}, da $\gamma=s\,(1-\tau)\,A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-\delta$ y el mismo $\tau^*$ (anexo~\ref{anexo:barro}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Tasa de crecimiento y tipo impositivo en el modelo de \autor{Barro} (1990)}\label{fig:barro}
+\grafico[0.55\textwidth]{barro}
+\fuente{Elaboración propia a partir de \textcite{Barro1990} y \textcite{SalaiMartin2000} (gráfico del tema del crecimiento endógeno).}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El tamaño del Estado afecta al crecimiento a largo plazo}: hay un tamaño óptimo del gasto productivo, $G/Y=1-\alpha$. Por debajo, más gasto acelera el crecimiento; por encima, lo frena.
+\item \emph{La composición importa}: el gasto improductivo solo tiene el efecto negativo de su financiación, y un impuesto que no grave el rendimiento de invertir no frena el crecimiento.
+\item \emph{El equilibrio no es óptimo}: el hogar recibe por su capital solo la fracción $\alpha$ de lo que rinde a la sociedad. El planificador, que elige $G/Y=1-\alpha$ y no grava el margen de la inversión, crece a $\gamma^{\mathrm P}=\left[\alpha A^{1/\alpha}(1-\alpha)^{(1-\alpha)/\alpha}-\delta-\rho\right]/\theta$, más que el equilibrio con impuesto sobre la renta. Con un impuesto de suma fija que financiara el mismo gasto, el equilibrio alcanzaría el óptimo \parencite[sec.~4.4]{BarroSalaiMartin2004}.
+\item \emph{Matices}: el gasto productivo rinde más si va acompañado de reformas de oferta que permitan aprovecharlo (invertir en educación rinde menos con un mercado de trabajo muy rígido), y sus efectos sobre la producción se ven sobre todo a largo plazo (\ref{sec:rbc-fiscal}).
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Congestión}: si los servicios públicos se congestionan, lo que importa es el gasto en relación con el tamaño de la economía, y un impuesto proporcional actúa como un precio por su uso \parencite{BarroSalaiMartin1992Public}.
+\item \emph{Capital público acumulable}: si el gasto productivo forma un capital, como en \textcite{BaxterKing1993Fiscal}, hay dinámica de transición, y el crecimiento endógeno exige que el capital privado y el público tengan juntos rendimientos constantes.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: da una base al tamaño óptimo del sector público productivo y muestra que la composición del gasto y la forma de financiarlo importan para el crecimiento.
+\item \emph{En contra}: hereda el filo de la navaja del $AK$ (rendimientos exactamente constantes en $K$ y $G$ a la vez); trata todo el gasto como un flujo productivo homogéneo, sin deuda; y su regla depende de una elasticidad difícil de medir.
+\item \emph{Nexo}: no todos los impuestos son iguales. ¿Cuáles frenan más el crecimiento, y qué dicen los datos?
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La estructura impositiva y el crecimiento}\label{sec:impuestos-crecimiento}
+
+\begin{itemize}
+\item \emph{La teoría}: con una tecnología $AK$ \parencite{Rebelo1991Long} \vertema{3.A.44}, un impuesto $\tau_K$ sobre las rentas del capital (en el $AK$ toda la renta lo es) reduce el rendimiento neto de acumular y, con él, la tasa de crecimiento, para siempre:
+  \begin{equation}\label{eq:rebelo}
+  \gamma=\frac{(1-\tau_K)\,A-\delta-\rho}{\theta}.
+  \end{equation}
+  En el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} el mismo impuesto solo bajaba el nivel del capital (\ref{sec:horizonte-infinito}); aquí baja la tasa. Por eso, para financiar un gasto dado, la literatura prefiere gravar el consumo antes que las rentas del capital o del trabajo, aunque el impuesto sobre el consumo también distorsiona la elección entre consumo y ocio si el trabajo es elástico \vertema{4.B.11}.
+\item \emph{La jerarquía de la OCDE}: ordena los impuestos de más a menos dañinos para el crecimiento: el de sociedades, el de la renta personal, los del consumo y, el que menos, el recurrente sobre la propiedad inmobiliaria \parencite{JohanssonEtAl2008Taxation,Arnold2011Tax}. Es la jerarquía de la teoría: los que gravan el rendimiento de acumular son los que más frenan.
+\item \emph{El gasto productivo}: \textcite{Aschauer1989Public} estimó una elasticidad de la producción de Estados Unidos al capital público cercana a 0,4, que implicaría rendimientos enormes. El metaanálisis de \textcite{BomLigthart2014What}, con 578 estimaciones de 68 estudios, la sitúa en 0,083 a corto plazo y 0,122 a largo para el capital público de la Administración central. El gasto en infraestructuras es productivo, pero no tanto como para sostener solo el crecimiento.
+  \begin{itemize}
+  \item En España, la inversión pública cayó del 5,2~\% del PIB en 2009 al 2,0~\% en 2016-2017 y se ha recuperado hasta el 3,0~\% en 2025, aún por debajo del 3,9~\% de la UE \parencite{Eurostat2026GovMain} (gráfico~\ref{fig:inversion-publica-espana}) \vertema{3.A.34}.
+  \end{itemize}
+\item \emph{Toda la restricción del Estado}: \textcite{KnellerBleaneyGemmell1999} muestran, para la OCDE, que los resultados cambian cuando se tiene en cuenta entera la restricción presupuestaria del Estado: los impuestos distorsionantes reducen el crecimiento y el gasto productivo lo aumenta, mientras que el improductivo no lo afecta. Con la cautela de la causalidad inversa: crecer también cambia el gasto y los impuestos \vertema{3.A.45}.
+\item \emph{La deuda}: \textcite{ReinhartRogoff2010Growth} hallaron que el crecimiento caía con deudas superiores al 90~\% del PIB, pero el resultado no resistió la réplica de \textcite{HerndonAshPollin2014}, que encontró errores de cálculo y de ponderación y ningún umbral claro. La correlación negativa existe, pero la causalidad va en los 2 sentidos: crecer poco también aumenta la deuda \vertema{3.A.39}.
+\item \emph{Recapitulación del bloque}: con gasto productivo y crecimiento endógeno, la política fiscal cambia la tasa de crecimiento; el tamaño del gasto productivo tiene un óptimo y los impuestos sobre la acumulación son los que más la reducen.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Inversión pública en España, la zona del euro y la UE, 1995-2025 (\% del PIB)}\label{fig:inversion-publica-espana}
+\grafico[0.8\textwidth]{inversion-publica-espana}
+\fuente{Eurostat, \emph{Government revenue, expenditure and main aggregates} \parencite{Eurostat2026GovMain}; elaboración propia. Formación bruta de capital fijo de las Administraciones Públicas; zona del euro de 21 países.}
+\end{figure}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: a modo de conclusión,
+  \begin{itemize}
+  \item a corto plazo, el gasto público mueve la producción, pero cuánto depende del modelo: con hogares ricardianos y precios flexibles, el multiplicador es positivo y menor que 1 por el efecto riqueza; con precios rígidos, mayor, y tanto más cuanto más acomode el banco central;
+  \item sobre el ahorro: con horizonte infinito, la deuda no cambia el ahorro nacional, pero un impuesto sobre las rentas del capital reduce el capital, y por eso a largo plazo conviene no gravarlas (\autor{Chamley} y \autor{Judd}); con generaciones solapadas, el reparto y la deuda reducen el ahorro y el capital, lo que solo mejora el bienestar si la economía es dinámicamente ineficiente;
+  \item sobre el crecimiento: con gasto productivo, el tamaño del Estado tiene un óptimo, $G/Y=1-\alpha$, y los impuestos que gravan la acumulación reducen la tasa de crecimiento, no solo su nivel.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: con deudas cercanas al 100~\% del PIB y una población que envejece, la pregunta ya no es solo cuánto gastar, sino en qué y cómo financiarlo. Tras bajar la facilidad de depósito al 2~\% en junio de 2025, el BCE la ha vuelto a subir, al 2,25~\% en junio de 2026 y al 2,50~\% en septiembre \parencite{BCE2026TiposOficiales,BdE2026SubidaSeptiembre}: con la política monetaria otra vez restrictiva, el margen fiscal depende de la deuda heredada y de que el tipo de interés no supere al crecimiento \parencite{Blanchard2019Deuda} \vertema{3.A.39}.
+\item \textbf{\emph{Extensiones}}: la coordinación con la política monetaria, el \emph{policy mix}, y quién cierra la restricción del Estado, si el banco central o la política fiscal \vertema{3.A.36} \vertema{3.A.39}; los multiplicadores en el límite inferior de los tipos \vertema{3.A.40}; la imposición óptima \vertema{4.B.11}; el sistema español de pensiones \vertema{4.B.24}; la evidencia sobre el crecimiento \vertema{3.A.45}.
+\item \textbf{\emph{Opinión}}: la política fiscal se juzgó durante décadas por su multiplicador a corto plazo, cuando sus efectos más duraderos están en la composición: dejar actuar a los estabilizadores automáticos en el ciclo, como pide la suavización impositiva, y proteger la inversión productiva y gravar poco el ahorro y la acumulación para el largo plazo.
+\item \textbf{\emph{Idea final}}: volviendo a la fábula del principio, la política fiscal no tiene que elegir entre ser cigarra u hormiga. A corto plazo, cuando llega el invierno, puede cantar: el gasto sostiene la demanda. A largo plazo, lo que cuenta es qué guarda y en qué lo invierte: el ahorro decide el nivel de la renta, y el gasto productivo y los impuestos que no castigan la acumulación, su ritmo de crecimiento.
+\end{itemize}
+
+\begin{anotaciones}
+Para el debate sobre si el tipo de interés seguirá por debajo del crecimiento: \textcite{Blanchard2023Secular}, «Secular stagnation is not over», \url{https://www.piie.com/blogs/realtime-economics/2023/secular-stagnation-not-over}.
+\end{anotaciones}
+
+\clearpage
+\appendix
+
+\section{Anexo: el modelo IS-LM y la economía abierta}\label{anexo:islm}
+
+\subsection{El equilibrio y los multiplicadores}
+
+\begin{itemize}
+\item \emph{La IS}: con $C=\overline{C}+c\,(1-t)\,Y$, $I=\overline{I}-b\,i$ y $G=\overline{G}$, el mercado de bienes está en equilibrio si
+  \begin{equation*}
+  Y=\frac{\overline{A}-b\,i}{1-c(1-t)},\qquad \overline{A}\equiv\overline{C}+\overline{I}+\overline{G}.
+  \end{equation*}
+\item \emph{La LM}: la demanda de dinero depende de la renta (motivos transacción y precaución) y del tipo de interés (motivo especulación) \vertema{3.A.35}, y la oferta la fija el banco central: $M/P=kY-h\,i$, es decir, $i=(kY-M/P)/h$.
+\item \emph{El equilibrio}: sustituyendo la LM en la IS,
+  \begin{equation*}
+  Y^*=\frac{\overline{A}+(b/h)\,M/P}{1-c(1-t)+b\,k/h},
+  \end{equation*}
+  de donde salen el multiplicador del gasto \eqref{eq:multiplicador-fiscal} y el del tipo impositivo,
+  \begin{equation*}
+  \frac{\partial Y^*}{\partial t}=-\frac{c\,Y^*}{1-c(1-t)+b\,k/h}<0
+  \end{equation*}
+  \vertema{3.A.5}.
+\item \emph{Las 2 proposiciones keynesianas}: con $b\,k/h$ pequeño, el multiplicador del gasto supera 1, y es mayor que el de los impuestos, porque el gasto entra entero en la demanda y una rebaja de impuestos solo en la parte que se consume.
+\item \emph{El presupuesto equilibrado} \parencite{Haavelmo1945Multiplier}: con un impuesto de suma fija $T$, la inversión dada y $\Delta\overline{G}=\Delta T$, $(1-c)\,\Delta Y=\Delta\overline{G}-c\,\Delta T=(1-c)\,\Delta\overline{G}$, y el multiplicador es 1. En el IS-LM es menor, porque la renta sube el tipo de interés y expulsa inversión.
+\end{itemize}
+
+\subsection{El modelo de \autor{Mundell}-\autor{Fleming}}
+
+\begin{itemize}
+\item \emph{La IS en economía abierta}: con exportaciones netas $XN=x\,Y^*-m\,Y+\nu\,q$, con $Y^*$ la renta exterior, $m$ la propensión a importar y $q$ el tipo de cambio real \vertema{3.A.32},
+  \begin{equation*}
+  Y=\frac{\overline{A}-b\,i+x\,Y^*+\nu\,q}{1-c(1-t)+m}:
+  \end{equation*}
+  la propensión a importar reduce el multiplicador, porque parte del gasto se va fuera; ese desbordamiento es el que justifica la coordinación internacional y el «efecto locomotora» \vertema{3.B.19}.
+\item \emph{La BP}: la balanza de pagos está en equilibrio cuando la cuenta corriente se financia con la financiera, que responde al diferencial de tipos: $x\,Y^*-m\,Y+\nu\,q+\beta_K\,(i-i^*)=0$, con $\beta_K$ la movilidad del capital ($\beta_K$ local, para no confundirla con el factor de descuento). Su pendiente es $\partial i/\partial Y=m/\beta_K$:
+  \begin{itemize}
+  \item con movilidad perfecta ($\beta_K\to\infty$), horizontal: $i=i^*$;
+  \item sin movilidad ($\beta_K=0$), vertical: la balanza depende solo del comercio;
+  \item con movilidad imperfecta, creciente; la movilidad es «alta» si la BP es menos inclinada que la LM y «baja» si lo es más.
+  \end{itemize}
+\item \emph{La eficacia de la política fiscal} depende del régimen cambiario y de la movilidad del capital (tabla~\ref{tab:mundell-fleming}). Con tipo fijo y movilidad perfecta, la entrada de capitales obliga al banco central a comprar divisas, la oferta monetaria acompaña al gasto y no hay expulsión; con tipo flexible, la moneda se aprecia y expulsa exportaciones netas. Sin movilidad, al revés: con tipo fijo, la pérdida de reservas contrae el dinero; con flexible, la depreciación refuerza el gasto.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Eficacia de la política fiscal en el modelo de \autor{Mundell}-\autor{Fleming}}\label{tab:mundell-fleming}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{2.3cm}>{\centering\arraybackslash}m{2.3cm}>{\centering\arraybackslash}m{2.3cm}>{\centering\arraybackslash}m{2.3cm}}
+\toprule
+\rowcolor{tceeazulpalido} Movilidad del capital & Perfecta & Alta & Baja & Nula\\
+\midrule
+Tipo de cambio fijo & \textcolor{tceeverde}{Muy eficaz} & \textcolor{tceeverde}{Eficaz} & \textcolor{tceedorado}{Poco eficaz} & \textcolor{tceerojo}{Ineficaz}\\
+Tipo de cambio flexible & \textcolor{tceerojo}{Ineficaz} & \textcolor{tceedorado}{Poco eficaz} & \textcolor{tceeverde}{Eficaz} & \textcolor{tceeverde}{Muy eficaz}\\
+\bottomrule
+\end{tabular}
+\fuente{Elaboración propia a partir de \textcite{Heijdra2017Foundations}.}
+\end{table}
+
+\section{Anexo: el modelo de ciclo real con política fiscal paso a paso}\label{anexo:rbc-fiscal}
+
+\begin{itemize}
+\item \emph{El hogar}. Con el multiplicador $\beta^t\lambda_t$ de su restricción en cada periodo, el lagrangiano es
+  \begin{equation*}
+  \mathcal{L}=\mathbb{E}_0\sum_{t=0}^{\infty}\beta^t\Big\{u(C_t,L_t)+\lambda_t\Big[(1-\tau_{L,t})\,w_tL_t+\big[1+(1-\tau_{K,t})\,r_t\big]K_t+(1+r^D_{t-1})\,D_{t-1}-T_t-C_t-K_{t+1}-D_t\Big]\Big\},
+  \end{equation*}
+  con $u(C_t,L_t)=(C_t^{1-\theta}-1)/(1-\theta)-\chi L_t^{1+\varphi}/(1+\varphi)$. Las condiciones de primer orden:
+  \begin{align*}
+  C_t:&\quad C_t^{-\theta}=\lambda_t,\\
+  L_t:&\quad \chi L_t^{\varphi}=\lambda_t\,(1-\tau_{L,t})\,w_t,\\
+  K_{t+1}:&\quad \lambda_t=\beta\,\mathbb{E}_t\big[\lambda_{t+1}\big(1+(1-\tau_{K,t+1})\,r_{t+1}\big)\big],\\
+  D_t:&\quad \lambda_t=\beta\,\mathbb{E}_t\big[\lambda_{t+1}\big](1+r^D_t),
+  \end{align*}
+  más la condición de transversalidad, que descarta acumular deuda o capital sin límite \vertema{3.A.29}. Eliminando $\lambda_t$ salen las 2 condiciones de \eqref{eq:rbc-hogar}. Las de capital y bonos juntas son una condición de no arbitraje: sin incertidumbre, $r^D_t=(1-\tau_{K,t+1})\,r_{t+1}$; el bono y el capital rinden lo mismo después de impuestos.
+\item \emph{La empresa} alquila capital y trabajo cada periodo: maximiza $A_tK_t^{\alpha}L_t^{1-\alpha}-w_tL_t-(r_t+\delta)K_t$ y paga los productos marginales \eqref{eq:rbc-precios}. No tiene un problema intertemporal, porque el hogar es el dueño del capital y decide la inversión; con costes de ajuste lo tendría \vertema{3.A.34}.
+\item \emph{El Estado} cumple \eqref{eq:rbc-gobierno} cada periodo y una condición de no juego de \autor{Ponzi}: la deuda no puede crecer más deprisa que el tipo de interés. Encadenando sus restricciones, el valor actual de sus ingresos tiene que cubrir el de su gasto más la deuda inicial \vertema{3.A.39}.
+\item \emph{El equilibrio}. Sumando las restricciones del hogar y del Estado, los impuestos, los intereses y la deuda se cancelan y queda la de recursos, \eqref{eq:rbc-acumulacion}. Con impuestos de suma fija, ninguna de las condiciones de la tabla~\ref{tab:equilibrio-rbc-fiscal} contiene $T_t$ ni $D_t$: \uline{dada la senda del gasto, la del déficit es indiferente}. Es la equivalencia ricardiana; con $\tau_{L,t}$ o $\tau_{K,t}$ variables, no.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las condiciones de equilibrio del modelo de ciclo real con política fiscal}\label{tab:equilibrio-rbc-fiscal}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.4cm}>{\raggedright\arraybackslash}m{9.2cm}}
+\toprule
+\rowcolor{tceeazulpalido} Condición & Ecuación\\
+\midrule
+Tecnología & $Y_t=A_tK_t^{\alpha}L_t^{1-\alpha}$, $\ln A_t=\rho_A\ln A_{t-1}+\varepsilon^A_t$\\
+Salario real & $w_t=(1-\alpha)\,Y_t/L_t$\\
+Alquiler del capital & $r_t+\delta=\alpha\,Y_t/K_t$\\
+Ecuación de \autor{Euler} & $C_t^{-\theta}=\beta\,\mathbb{E}_t\big[C_{t+1}^{-\theta}\big(1+(1-\tau_{K,t+1})\,r_{t+1}\big)\big]$\\
+Oferta de trabajo & $\chi L_t^{\varphi}=C_t^{-\theta}(1-\tau_{L,t})\,w_t$\\
+Recursos & $K_{t+1}=(1-\delta)K_t+Y_t-C_t-G_t$\\
+Gasto público & $\ln G_t=(1-\rho_G)\ln\overline{G}+\rho_G\ln G_{t-1}+\varepsilon^G_t$\\
+Restricción del Estado & $G_t+r^D_{t-1}D_{t-1}=T_t+\tau_{L,t}w_tL_t+\tau_{K,t}r_tK_t+(D_t-D_{t-1})$\\
+\bottomrule
+\end{tabular}
+\fuente{Elaboración propia a partir de \textcite{BaxterKing1993Fiscal} y \textcite{Sims2017Fiscal}. Hay que añadir una regla que diga cómo se reparte la financiación entre $T_t$, los tipos y $D_t$.}
+\end{table}
+
+\begin{itemize}
+\item \emph{La simulación} de la tabla~\ref{tab:gasto-rbc} y del gráfico~\ref{fig:irf-rbc-gasto}: el modelo se log-lineariza alrededor del estado estacionario sin perturbación tecnológica y se resuelve por el método de \autor{Blanchard} y \autor{Kahn}, como el del ciclo real \vertema{3.A.42}. Con $\alpha=1/3$, $\beta=0{,}99$ y $\delta=0{,}025$ (trimestral), el capital es 9,5 veces la producción trimestral, la inversión el 23,7~\% del PIB, el consumo el 56,3~\% y el gasto el 20~\%. En el caso del impuesto sobre el trabajo, el tipo se ajusta cada periodo para que $\tau_{L,t}w_tL_t=G_t$, sin deuda.
+\end{itemize}
+
+\section{Anexo: la suavización impositiva}\label{anexo:suavizacion}
+
+\begin{itemize}
+\item \emph{El punto de partida}: si se cumple la equivalencia ricardiana, el Estado no tiene motivo para elegir una senda de déficit. Pero los impuestos reales cambian precios relativos, y entonces su reparto en el tiempo importa. \textcite{Barro1979Determination} relaja ese supuesto, uno de los menos realistas, y estudia qué senda de déficit minimiza las distorsiones.
+\item \emph{Supuestos}: recaudar $T_t$ cuesta una distorsión $Y_t\,f(T_t/Y_t)$ que depende del tipo medio $T_t/Y_t$, con $f(0)=0$, $f'>0$ y $f''>0$: la distorsión crece más que proporcionalmente con el tipo, como el exceso de gravamen, que crece con su cuadrado. El tipo de interés $r$ es constante y las sendas del gasto y de la producción se conocen. Aquí no hace falta un Gobierno impaciente: descuenta al tipo de interés (en este tema, $\rho_G$ es la persistencia del gasto).
+\item \emph{El problema}: minimizar el valor actual de las distorsiones con la restricción intertemporal del Estado \vertema{3.A.39},
+  $$\optim{\min}{\{T_t\}}{\sum_{t=0}^{\infty}\frac{Y_t\,f(T_t/Y_t)}{(1+r)^t}}{\displaystyle\sum_{t=0}^{\infty}\frac{T_t}{(1+r)^t}=\sum_{t=0}^{\infty}\frac{G_t}{(1+r)^t}+(1+r)D_{-1}}$$
+\item Con el precio sombra $\mu$ de la restricción, la condición de primer orden es $f'(T_t/Y_t)=\mu$ para todo $t$, y como $f'$ es creciente,
+  \begin{equation*}
+  \frac{T_t}{Y_t}=\frac{T_{t+1}}{Y_{t+1}}=\bar\tau=\frac{\sum_tG_t/(1+r)^t+(1+r)D_{-1}}{\sum_tY_t/(1+r)^t}:
+  \end{equation*}
+  el tipo medio es constante, el que cubre el gasto «permanente» sobre la producción «permanente». \findemo
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item es preferible un impuesto algo más alto durante muchos años que uno muy alto durante uno solo;
+  \item con el tipo constante, los estabilizadores automáticos actúan: déficit en las recesiones y superávit en las expansiones, un ahorro público procíclico;
+  \item un gasto transitorio, como una guerra, se paga con deuda que no se amortiza: el tipo sube para siempre lo justo para pagar sus intereses, $\Delta\bar\tau\,Y=\frac{r}{1+r}\,\Delta G_0$ con la producción constante.
+  \end{itemize}
+\end{itemize}
+
+\section{Anexo: el tamaño del multiplicador fiscal}\label{anexo:multiplicadores}
+
+\subsection{Definiciones}
+
+\begin{itemize}
+\item Un \concepto{multiplicador fiscal} es el cociente entre la variación de la producción y la variación exógena de un instrumento fiscal, ambas respecto de un escenario sin la medida. Según el horizonte \vertema{3.A.40}:
+  \begin{equation*}
+  m^{\,t}_t=\frac{\Delta Y_t}{\Delta G_t},\qquad m^{\,t+k}_t=\frac{\Delta Y_{t+k}}{\Delta G_t},\qquad m^{\mathrm{acum}}_{t,k}=\frac{\sum_{j=0}^{k}\Delta Y_{t+j}}{\sum_{j=0}^{k}\Delta G_{t+j}},\qquad m^{\max}=\max_k m^{\,t+k}_t,
+  \end{equation*}
+  el de impacto, el de $k$ periodos, el acumulado (el cociente de las sumas, no la suma de los cocientes) y el máximo.
+\end{itemize}
+
+\subsection{De qué depende}
+
+\begin{itemize}
+\item \emph{El horizonte}: el multiplicador de impacto suele ser positivo, pero el de largo plazo de un gasto permanente financiado con impuestos sobre la renta o el consumo puede ser casi nulo.
+\item \emph{La elasticidad de la oferta de trabajo}: cuanto menor, menor el multiplicador; con oferta inelástica, expulsión completa (\ref{sec:rbc-fiscal}).
+\item \emph{La respuesta del banco central y el límite inferior de los tipos}: \textcite{Hall2009By} sitúa el multiplicador entre 0,7 y 1 en tiempos normales y en torno a 1,7 con el tipo en cero; en el modelo de \textcite{ChristianoEichenbaumRebelo2011}, con regla de \autor{Taylor} es menor que 1, pero con el tipo nominal en cero llega a 1,6 en el impacto y a 2,3 en su máximo si el gasto dura 12 trimestres.
+\item \emph{Las restricciones de liquidez}: con hogares que consumen su renta corriente, el multiplicador puede superar 1 \parencite{GaliLopezSalidoValles2007}.
+\item \emph{La financiación}: los impuestos futuros que pagan el gasto pueden hacer negativo el multiplicador a largo plazo; los ajustes basados en recortes de gasto cuestan mucha menos producción que los basados en subidas de impuestos \parencite{AlesinaFaveroGiavazzi2019Austerity} \vertema{3.A.39}.
+\item \emph{La deuda pública}: con una deuda alta, un estímulo puede encarecer la financiación del país y reducir el multiplicador.
+\item \emph{La unión monetaria}: el tipo de interés común no responde al gasto de un solo país, así que el multiplicador nacional es mayor y la política fiscal es el instrumento que le queda frente a perturbaciones propias \parencite{GaliMonacelli2008Optimal} \vertema{3.B.40}.
+\item \emph{La apertura}: cuanto mayor la propensión a importar, menor el multiplicador.
+\item \emph{El tipo de cambio}: con tipo flexible, la apreciación compensa parte del efecto (anexo~\ref{anexo:islm}).
+\item \emph{Los estabilizadores automáticos}: cuanto mayores, más amortiguan la perturbación y menor es el multiplicador de una medida discrecional.
+\item \emph{El destino del gasto}: el multiplicador no es exógeno. La inversión pública rinde más a corto plazo cuando hay holgura y la política monetaria acomoda, y a largo plazo si se invierte con eficiencia \parencite{FMI2014Infrastructure}; las reformas que permiten aprovecharla lo elevan.
+\end{itemize}
+
+\subsection{Evidencia}
+
+\begin{itemize}
+\item Las estimaciones del multiplicador del gasto y de los impuestos están en el apartado~\ref{sec:nek-fiscal} (c); el debate completo, en \vertema{3.A.40}.
+\end{itemize}
+
+\section{Anexo: las pensiones en el modelo de \autor{Diamond}}\label{anexo:pensiones}
+
+\begin{itemize}
+\item \emph{Sin pensiones}. De la ecuación de \autor{Euler}, $C^V_{t+1}=\beta\,(1+r_{t+1})\,C^J_t$, y de la restricción de toda la vida, $C^J_t+C^V_{t+1}/(1+r_{t+1})=w_t$, sale $C^J_t=w_t/(1+\beta)$ y $S_t=\beta w_t/(1+\beta)$: con utilidad logarítmica, el ahorro no depende del tipo de interés, porque los efectos renta y sustitución se compensan \vertema{3.A.29}.
+\item \emph{Con capitalización}, la pensión es $(1+r_{t+1})\,\tau w_t$, la riqueza de toda la vida sigue siendo $w_t$ y $C^J_t$ no cambia: $S_t+\tau w_t=\beta w_t/(1+\beta)$.
+\item \emph{Con reparto}, la restricción de toda la vida es
+  \begin{equation*}
+  C^J_t+\frac{C^V_{t+1}}{1+r_{t+1}}=(1-\tau)\,w_t+\frac{(1+n)\,\tau\,w_{t+1}}{1+r_{t+1}},
+  \end{equation*}
+  de donde $C^J_t=\frac{1}{1+\beta}\Big[(1-\tau)\,w_t+\frac{(1+n)\,\tau\,w_{t+1}}{1+r_{t+1}}\Big]$ y, con $S_t=(1-\tau)w_t-C^J_t$, \eqref{eq:ahorro-reparto}. Si $g=0$, $w_{t+1}=w_t$ y $S_t=\frac{w_t}{1+\beta}\Big[\beta(1-\tau)-\frac{(1+n)\,\tau}{1+r_{t+1}}\Big]$.
+\item \emph{El presupuesto del sistema}: con reparto, lo que cobran los $L_{t-1}$ viejos es lo que pagan los $L_t=(1+n)L_{t-1}$ jóvenes, $L_{t-1}Z_t=\tau w_tL_t$, de donde $Z_t=(1+n)\,\tau w_t$; con capitalización no hay transferencia entre generaciones.
+\item \emph{La ley de movimiento}. El capital de $t+1$ es el ahorro de los jóvenes de $t$, $K_{t+1}=L_tS_t$; dividiendo por $A_{t+1}L_{t+1}=(1+g)(1+n)A_tL_t$, $(1+n)(1+g)\,k_{t+1}=S_t/A_t$. Con $\delta=1$, $w_t=A_t(1-\alpha)k_t^{\alpha}$ y $1+r_{t+1}=\alpha k_{t+1}^{\alpha-1}$, de modo que
+  \begin{equation*}
+  \frac{w_{t+1}}{1+r_{t+1}}=\frac{A_{t+1}(1-\alpha)\,k_{t+1}^{\alpha}}{\alpha\,k_{t+1}^{\alpha-1}}=\frac{(1+g)\,A_t\,(1-\alpha)}{\alpha}\,k_{t+1}.
+  \end{equation*}
+  Sustituyendo en \eqref{eq:ahorro-reparto}:
+  \begin{equation*}
+  (1+n)(1+g)\,k_{t+1}=\frac{\beta\,(1-\tau)(1-\alpha)}{1+\beta}\,k_t^{\alpha}-\frac{(1+n)(1+g)\,\tau\,(1-\alpha)}{(1+\beta)\,\alpha}\,k_{t+1},
+  \end{equation*}
+  y, despejando $k_{t+1}$, \eqref{eq:diamond-reparto}. Con $\tau=0$ es \eqref{eq:diamond}.
+\item \emph{El estado estacionario} con reparto,
+  \begin{equation*}
+  k^*_{\mathrm R}=\left[\frac{\beta\,(1-\alpha)\,(1-\tau)}{(1+n)(1+g)\left[1+\beta+\tau\,(1-\alpha)/\alpha\right]}\right]^{1/(1-\alpha)},
+  \end{equation*}
+  es decreciente en $\tau$: el numerador baja y el denominador sube. Frente al de sin pensiones, $k^*$, se cumple $(k^*_{\mathrm R}/k^*)^{1-\alpha}=(1-\tau)(1+\beta)/[1+\beta+\tau(1-\alpha)/\alpha]$; con $\alpha=0{,}3$ y $\beta=0{,}9$, el capital de la regla de oro del gráfico~\ref{fig:diamond-pensiones} se alcanza con $\tau\approx0{,}045$. \findemo
+\item \emph{La transición}: al introducir el reparto, los viejos de ese momento cobran sin haber cotizado; si la economía es dinámicamente ineficiente, todas las generaciones siguientes también ganan, porque el reparto rinde $(1+n)(1+g)>1+r$.
+\end{itemize}
+
+\section{Anexo: el modelo de \autor{Barro} (1990) paso a paso}\label{anexo:barro}
+
+\paragraph{a) El tipo que maximiza el crecimiento}
+
+\begin{itemize}
+\item En \eqref{eq:barro}, $\gamma$ depende de $\tau$ solo a través de $\phi(\tau)\equiv(1-\tau)\,\tau^{(1-\alpha)/\alpha}$ ($\phi$, local). La condición de primer orden:
+  \begin{equation*}
+  \phi'(\tau)=\frac{1-\alpha}{\alpha}\,(1-\tau)\,\tau^{(1-2\alpha)/\alpha}-\tau^{(1-\alpha)/\alpha}=0\;\Longleftrightarrow\;\frac{1-\alpha}{\alpha}\,(1-\tau)=\tau\;\Longleftrightarrow\;\tau^*=1-\alpha.
+  \end{equation*}
+\item Es un máximo: $\phi(0)=\phi(1)=0$, $\phi>0$ en $(0,1)$ y $\tau^*$ es el único punto crítico interior. \findemo
+\end{itemize}
+
+\paragraph{b) La versión con tasa de ahorro constante}
+
+\begin{itemize}
+\item Es la del modelo de \autor{Solow}, y la que usan muchos manuales \parencite{SalaiMartin2000}: los hogares ahorran una fracción constante $s$ de su renta disponible, $(1-\tau)\,Y$, y el capital se deprecia a la tasa $\delta$, así que $\dot K=s\,(1-\tau)\,Y-\delta K$. Con $Y=A^{1/\alpha}\tau^{(1-\alpha)/\alpha}K$,
+  \begin{equation*}
+  \gamma=\frac{\dot K}{K}=s\,(1-\tau)\,A^{1/\alpha}\,\tau^{(1-\alpha)/\alpha}-\delta,
+  \end{equation*}
+  la misma función $\phi(\tau)$ multiplicada por una constante, y el mismo $\tau^*=1-\alpha$. \findemo
+\item Es una simplificación: con el ahorro fijo, el impuesto no cambia el incentivo a invertir, y ese canal, el que reduce el rendimiento neto del capital, solo se ve cuando los hogares eligen cuánto ahorrar, como en el texto.
+\item \emph{Con población creciente} a la tasa $n$, si el servicio público que importa es el gasto por trabajador, el capital por trabajador crece a $\gamma=s\,(1-\tau)\,A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-\delta-n$. Ese gasto por trabajador no se escribe $g$, que en todo el temario es el progreso técnico.
+\end{itemize}
+
+\section{Anexo: aspectos para el test}\label{anexo:test}
+
+\begin{itemize}
+\item \emph{Lo más preguntado}: 11 de las 14 preguntas oficiales asignadas a este tema en el simulador son de equivalencia ricardiana o de economías de 2 periodos en las que se cumple. Las claves: con impuestos de suma fija, mercados perfectos y horizonte infinito, o finito con herencias altruistas, una rebaja de impuestos financiada con deuda eleva el ahorro privado en la misma cuantía y no cambia el consumo; que el Estado se endeude a un tipo menor que los hogares la rompe; con vidas finitas sin herencias, no se cumple (\ref{sec:rbc-fiscal}, \ref{sec:horizonte-infinito}) \vertema{3.A.39}.
+\item \emph{La pregunta 47 de junio de 2023} \parencite{GutierrezMarcos2026Simulador} preguntaba cuándo una política fiscal expansiva puede tener efectos contractivos. La respuesta oficial es la b): cuando los agentes interpretan el aumento del gasto como permanente y el consumo cae más que lo que sube el gasto. Ojo: en los modelos de este tema, un gasto permanente financiado con impuestos de suma fija hace caer el consumo, como mucho, lo mismo que sube el gasto (\ref{sec:horizonte-infinito}); una caída mayor exige, por ejemplo, impuestos distorsionantes (tabla~\ref{tab:gasto-rbc}) o efectos sobre las expectativas.
+\item \emph{Fechas y obras}: \textcite{Kahn1931Relation}, el multiplicador; \textcite{Haavelmo1945Multiplier}, presupuesto equilibrado; \textcite{Musgrave1959Theory}, las 3 funciones; \textcite{Diamond1965National}, generaciones solapadas con capital; \textcite{Aaron1966Social}, la paradoja del seguro social; \textcite{Shell1971Notes}, la doble infinitud; \textcite{Barro1974}, «Are Government Bonds Net Wealth?»; \textcite{Feldstein1974Social}, la Seguridad Social y el ahorro; \textcite{Buchanan1976Barro}, el nombre de la equivalencia ricardiana; \textcite{Barro1979Determination}, suavización impositiva; \textcite{LeimerLesnoy1982Social}; \textcite{Judd1985Redistributive} y \textcite{Chamley1986Optimal}, el impuesto sobre el capital; \textcite{Aschauer1989Public}; \textcite{Barro1990}, gasto productivo; \textcite{Rebelo1991Long}, $AK$; \textcite{ChristianoEichenbaum1992Current} y \textcite{BaxterKing1993Fiscal}, el gasto en el ciclo real; \textcite{KnellerBleaneyGemmell1999}; \textcite{BlanchardPerotti2002Empirical}; \textcite{GaliLopezSalidoValles2007}; \textcite{Hall2009By}; \textcite{RomerRomer2010Tax}; \textcite{Woodford2011Simple} y \textcite{ChristianoEichenbaumRebelo2011}; \textcite{StraubWerning2020Positive}.
+\item \emph{Trampas}:
+  \begin{itemize}
+  \item el multiplicador es de \autor{Kahn}, no de \autor{Keynes} ni de \autor{Hahn}; en el IS-LM, el término de expulsión $b\,k/h$ se suma en el denominador;
+  \item las 3 funciones del sector público son de \autor{Musgrave} (1959), no de 1939;
+  \item la divina coincidencia es de \autor{Blanchard} y \autor{Galí} (2007; el documento de trabajo es de 2005) \parencite{BlanchardGali2007Real};
+  \item la política fiscal en una unión monetaria es de \autor{Galí} y \autor{Monacelli} (2008), no de 2005, que es de política monetaria en economía abierta;
+  \item con precios rígidos, el margen es contracíclico, no procíclico;
+  \item la condición de \autor{Aaron} es $n+g>r$, no $r<n$;
+  \item la curva de \autor{Laffer}, preguntada en noviembre de 2016 \parencite{GutierrezMarcos2026Simulador}, se estudia con la imposición \vertema{4.B.11}.
+  \end{itemize}
+\item Preguntas de test de exámenes anteriores sobre este tema, en el simulador \parencite{GutierrezMarcos2026Simulador}:
+  \begin{itemize}
+  \item \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}
+  \end{itemize}
+\end{itemize}
+
+\bibliografia
+\end{document}

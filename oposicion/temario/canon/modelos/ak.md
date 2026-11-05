@@ -1,7 +1,7 @@
 # Modelo AK (Rebelo 1991)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.44** (crecimiento endógeno: rendimientos crecientes) — es el único tema que lo desarrolla, con a)-e) en I.2.1 (`sec:ak`, 2′30″ en el cante) y el anexo A con hogares (`anexo:ak-barro`); revisado el 1/11/2026. Ficha creada en la fase canon del 3.A.44 (CC1 de sus propuestas de coherencia; **[decidir]**: Víctor está fuera hasta el 9/11). **Id `ak`** (ya estaba en `mapa.yaml`, `alias.json` y `areas.json`); alias `ak-rebelo` y `modelo-ak`.
-- **Temas que lo usan:** 3.A.44 (desarrollo; hecho, 1/11/2026), 3.A.43 (mención; hecho, 31/10/2026: II.2 «Hacia el crecimiento endógeno», versión con ahorro exógeno $\gamma_{Y/L}=sA-(n+\delta)$), 3.A.38 (mención: Barro, 1990, y Rebelo, 1991, como $AK$ con impuestos; ficha `barro-1990`), 3.B.28 (mención; hecho, 3/11/2026: III.1, $\gamma_{Y/L}=sA-(n+\delta)$ con ahorro exógeno, la del 3.A.43, Rebelo, 1991, y `\vertema{3.A.44}`; paradoja de Lucas, 1990), 3.B.9 (mención: el $AK$ en economía abierta)
+- **Temas que lo usan:** 3.A.44 (desarrollo; hecho, 1/11/2026), 3.A.43 (mención; hecho, 31/10/2026: II.2 «Hacia el crecimiento endógeno», versión con ahorro exógeno $\gamma_{Y/L}=sA-(n+\delta)$), 3.A.38 (resumen; hecho, 5/11/2026: III.2 `sec:impuestos-crecimiento`, Rebelo con $\tau_K$ en `eq:rebelo`, frente al nivel de `eq:euler-tauk`; Barro, 1990, como $AK$ con gasto público, ficha `barro-1990`), 3.B.28 (mención; hecho, 3/11/2026: III.1, $\gamma_{Y/L}=sA-(n+\delta)$ con ahorro exógeno, la del 3.A.43, Rebelo, 1991, y `\vertema{3.A.44}`; paradoja de Lucas, 1990), 3.B.9 (mención: el $AK$ en economía abierta)
 - **Manuales de referencia:** Rebelo (1991), *JPE*; Knight (1944); Barro y Sala-i-Martin (2004), cap. 4; Sala-i-Martín (2000), cap. 3; Acemoglu (2009), cap. 11; Romer (2019), cap. 3; Saint-Paul (1992), *REStud*; Jones (1995), *QJE*.
 
 ## Presentación de referencia (3.A.44, I.2.1 y anexo A)
@@ -36,7 +36,7 @@ $$\gamma_c=\gamma_k=\gamma_y=\frac{A-\delta-\rho}{\theta}\qquad(\texttt{eq:ak-ra
 |---|---|---|---|---|
 | 3.A.44 | Crecimiento endógeno: rendimientos no decrecientes | desarrollo (hecho, 1/11/2026) | Lo de arriba: 2 versiones del ahorro (la de hogares, de referencia), `tab:ak-solow`, Saint-Paul, Rebelo con $\tau_K$ | — |
 | 3.A.43 | Puente al crecimiento endógeno | mención (hecho, 31/10/2026) | Versión con ahorro exógeno, $\gamma_{Y/L}=sA-(n+\delta)$ (la misma que `eq:ak-solow`, con $y=Y/L$) | El modelo `\vertema{3.A.44}` |
-| 3.A.38 | Política fiscal y crecimiento | mención | Barro (1990) y Rebelo (1991): en un $AK$ los impuestos sobre el capital cambian la tasa de crecimiento | El modelo `\vertema{3.A.44}` |
+| 3.A.38 | Política fiscal y crecimiento | resumen (hecho, 5/11/2026) | III.2: con un $AK$ (Rebelo, 1991, `\vertema{3.A.44}`), un impuesto $\tau_K$ sobre las rentas del capital (toda la renta lo es) baja la tasa para siempre, **`eq:rebelo`** $\gamma=[(1-\tau_K)A-\delta-\rho]/\theta$, la misma de arriba; «nivel frente a tasa» con `eq:euler-tauk` del RCK (II.1; ficha `chamley-judd`); Barro (1990) en III.1 | El modelo `\vertema{3.A.44}` |
 | 3.B.28 | Teorías del desarrollo | mención (hecho, 3/11/2026) | III.1: el $AK$ con ahorro exógeno, $\gamma_{Y/L}=sA-(n+\delta)$, y las 2 ideas que los teóricos del desarrollo adelantaron (la convergencia no está garantizada; el equilibrio no es eficiente); la paradoja de Lucas (1990) en nota | El modelo |
 | 3.B.9 | Comercio y crecimiento | mención | Efectos de la apertura sobre la tasa en un $AK$ | El modelo |
 

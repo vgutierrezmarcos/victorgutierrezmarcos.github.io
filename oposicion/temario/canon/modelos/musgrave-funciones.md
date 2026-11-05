@@ -1,7 +1,7 @@
 # Funciones del sector público de Musgrave (asignación, distribución, estabilización)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.14 (federalismo fiscal: asignación óptima de funciones entre niveles de gobierno) — es donde se usan analíticamente; tema **sin fuente**. Como marco general se cita en las introducciones de 4.B.1, 4.B.3, 4.B.4 y 4.B.5.
-- **Temas que lo usan:** 4.B.14 (desarrollo previsto), 4.B.1 (mención), 4.B.5 (mención), 4.B.3/4.B.4 (mención: funciones distributiva y estabilizadora), 3.A.23 (mención: fallos de mercado), 3.A.16 y 3.A.21 (mención: la función de estabilización como justificación de intervenir si un mercado o la economía no vuelven al equilibrio; hecho en los dos)
+- **Temas que lo usan:** 4.B.14 (desarrollo previsto), 4.B.1 (mención), 4.B.5 (mención), 4.B.3/4.B.4 (mención: funciones distributiva y estabilizadora), 3.A.23 (mención: fallos de mercado), 3.A.16 y 3.A.21 (mención: la función de estabilización como justificación de intervenir si un mercado o la economía no vuelven al equilibrio; hecho en los dos) También 3.A.38 (mención; hecho, 5/11/2026: las 3 funciones, asignativa, redistributiva y estabilizadora, con Musgrave, 1959 —el Word decía 1939—, en la contextualización, `\vertema{4.B.1}`).
 - **Manuales de referencia:** Musgrave, *The Theory of Public Finance* (1959); Musgrave y Musgrave, *Public Finance in Theory and Practice* (1989); Oates, *Fiscal Federalism* (1972).
 
 ## Presentación de referencia
