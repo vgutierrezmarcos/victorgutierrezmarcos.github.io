@@ -44,6 +44,7 @@
 | 3.B.27 | Regulación financiera | resumen (previsto) | El colchón anticíclico y los instrumentos macroprudenciales como respuesta a la prociclicidad | Las teorías |
 | 3.A.40 | Políticas desde 2008 | mención (hecho, 5/11/2026) | La Gran Recesión como crisis del ciclo financiero; *leaning* frente a *cleaning* (I.3) | Las teorías |
 | 4.A.11, 4.A.19 | Construcción; sector bancario español | mención (prevista) | El ciclo de la vivienda y del crédito de España con las cifras de arriba; el colchón del Banco de España | La teoría |
+| 3.A.41 | Deflación | mención (hecho, 5/11/2026) | III.2.2: la deflación por deudas de Fisher (1933) con la frase de la pág. 344 (traducción propia) y la receta de reflacionar; `\vertema{3.A.42}`; ficha `deflacion` | Minsky, el ciclo financiero |
 
 ## Divergencias encontradas en el temario actual
 

@@ -1,0 +1,40 @@
+% El coste de bienestar de la inflación: el triángulo de Bailey (1956).
+% Gráfico de referencia de la ficha «regla-friedman».
+%   Demanda de saldos reales L(i) = zeta e^{-alpha i} (la de Cagan), con
+%   zeta = 6 y alpha = 0,5 en unidades del dibujo: en el plano (M/P, i),
+%   i = (1/alpha) ln(zeta/(M/P)), decreciente y convexa; corta el eje
+%   horizontal en la saciedad L(0) = 6.
+%   i_0 = r + pi = 1,6: L(i_0) = 6 e^{-0,8} = 2,6960 (punto A).
+%   Rectángulo i_0 L(i_0): impuesto inflacionario (transferencia al emisor).
+%   Triángulo curvilíneo entre L(i_0), L(0) y la curva:
+%   PB(i_0) = int_0^{i_0} L(x) dx - i_0 L(i_0) ~ (1/2)|L'(0)| i_0^2.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    impuesto/.style={fill=tceeazul,fill opacity=0.16,draw=none},
+    perdida/.style={fill=tceerojo,fill opacity=0.25,draw=none}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.5,-0.75) rectangle (8.9,4.95);
+  % 1: ejes (M/P, i)
+  \capa{1}{\ejes{$M/P$}{$i$}{7.9}{4.8}}
+  % 2: la demanda de saldos reales L(i) y su corte en la saciedad L(0)
+  \capa{2}{\draw[curva1] plot[domain=0:4.3, samples=120, smooth] ({6*exp(-0.5*\x)},\x) node[etiqueta, right, text=tceemorado] {$L(i)\equiv M^D/P$};}
+  \capa{2}{\node[below] at (6,0) {$L(0)$};}
+  % 3: el tipo nominal i_0 = r + pi, el punto A y su proyección
+  \capa{3}{\proyeccion{(2.6960,1.6)}{$L(i_0)$}{$i_0=r+\pi$}}
+  \capa{3}{\node[punto, label={[etiqueta]above right:$A$}] at (2.6960,1.6) {};}
+  % 4: el rectángulo del impuesto inflacionario
+  \capa{4}{\fill[impuesto] (0,0) rectangle (2.6960,1.6);}
+  \capa{4}{\node[etiqueta, align=center, font=\footnotesize, text=tceeazul] at (1.348,0.8) {impuesto\\inflacionario\\(transferencia)};}
+  % 5: el triángulo de la pérdida de Bailey
+  \capa{5}{\fill[perdida] (2.6960,0) -- (6,0) -- plot[domain=0:1.6, samples=60, smooth] ({6*exp(-0.5*\x)},\x) -- cycle;}
+  \capa{5}{\draw[->, thin, tceerojo] (4.75,2.15) -- (3.55,0.45);}
+  \capa{5}{\node[etiqueta, anchor=south west, text=tceerojo] at (4.4,2.15) {pérdida de \textsc{Bailey}, $\mathrm{PB}(i_0)$};}
+  % 6: la saciedad L(0) y la regla de Friedman
+  \capa{6}{\node[punto] at (6,0) {};}
+  \capa{6}{\draw[->, thin] (6.75,0.95) -- (6.08,0.1);}
+  \capa{6}{\node[etiqueta, anchor=south west, align=left] at (6.5,0.95) {$i=0$: regla\\de \textsc{Friedman}};}
+\end{tikzpicture}
+\end{document}

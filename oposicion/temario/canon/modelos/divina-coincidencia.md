@@ -31,6 +31,7 @@
 | 3.A.36 | Diseño de la política monetaria | resumen del resultado + desarrollo del dilema (hecho, 4/11/2026) | La pérdida con la misma forma; el resultado con $i_t=r^n_t+\phi_\pi\pi_t+\phi_x x_t$ y la atribución fija; con $u_t$, discreción (`eq:discrecion`) frente a compromiso (`eq:compromiso`), la ganancia del compromiso y el objetivo de inflación flexible; panel b de `nek-xpi` copiado; pegatina «entre dos males, el menor» (no «matar dos pájaros de un tiro», que es del 3.A.7); `\vertema{3.A.7}` | La derivación de la pérdida |
 | 3.A.37, 3.A.42 | Transmisión; ciclos nominales | mención (el 3.A.42, hecho, 4/11/2026) | Perturbaciones de demanda (sin dilema) frente a perturbaciones de costes (dilema); `\vertema{3.A.7}` | — |
 | 3.A.28 | NEK con desempleo | mención (hecho, 31/10/2026) | Con búsqueda y salarios reales rígidos se rompe la divina coincidencia (Blanchard y Galí, 2010), `\vertema{3.A.7}` | — |
+| 3.A.41 | Causas de la inflación (otras perturbaciones de demanda); estabilización | mención (hecho, 5/11/2026) | I.2.1: con perturbaciones de demanda (que van en $r^n_t$, sin letra) el banco central estabiliza inflación y actividad a la vez, gráfico `nek-xpi` panel a; con las de costes, el dilema (panel b); II.3, inflación y estabilización; `\vertema{3.A.7}`, `\vertema{3.A.36}` | La derivación |
 
 ## Divergencias encontradas en el temario actual
 

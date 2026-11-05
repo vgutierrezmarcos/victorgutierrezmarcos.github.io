@@ -31,6 +31,7 @@ La parte sistemática solo mueve los precios; solo las sorpresas mueven la produ
 | 3.A.7 | NEK de 1.ª generación | mención (hecho, 4/11/2026) | Fischer y Taylor responden a la proposición de inefectividad: con contratos, la política sistemática es eficaz aunque las expectativas sean racionales; lo que da la neutralidad es la flexibilidad de los precios | La proposición formal |
 | 3.A.28 | Paro y Phillips | mención (hecho, 31/10/2026) | La política sistemática no mueve el paro; «proposición de ineficacia» (cosmético: «de inefectividad», **[decidir]**) | La proposición formal |
 | 3.A.36 | Diseño de la política monetaria | mención (hecho, 4/11/2026) | I.1.2: la proposición de inefectividad con su nombre canónico; II.3.2 e): la indeterminación del nivel de precios con el tipo fijo (Sargent y Wallace, 1975) | La solución cerrada |
+| 3.A.41 | Causas de la inflación (demanda) | mención (hecho, 5/11/2026) | I.2.1: «solo la política monetaria no anticipada mueve la producción», la **proposición de inefectividad** con `SargentWallace1975Rational` (el Word decía «irrelevancia (PIP)» y «Sargent y Wallace, 1976»); el resumen en el anexo E; `\vertema{3.A.6}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 

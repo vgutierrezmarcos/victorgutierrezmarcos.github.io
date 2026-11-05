@@ -39,6 +39,7 @@ Quien estime $y_t=\beta_0+\beta_1m_t+\beta_2m_{t-1}$ encuentra $\hat\beta_1>0$; 
 | 3.A.29 | Modelización dinámica | mención (hecho, 1/11/2026) | El porqué del agente representativo y de los microfundamentos | El ejemplo formal |
 | 3.A.4 | Keynes y el desequilibrio | mención (hecho, 4/11/2026) | La crítica a los modelos de desequilibrio | — |
 | 3.A.36 | Diseño de la política monetaria | mención (hecho, 4/11/2026) | Evaluar reglas, no decisiones sueltas | El ejemplo formal |
+| 3.A.41 | Causas de la inflación | mención (hecho, 5/11/2026) | I.2.1: la curva de Phillips no es un menú estable porque sus parámetros cambian con la política; I.2.3 d): la persistencia de la inflación depende del régimen monetario (Benati, 2008), «la crítica de Lucas aplicada a la inflación»; `\vertema{3.A.6}` | La forma reducida |
 
 ## Divergencias encontradas en el temario actual
 

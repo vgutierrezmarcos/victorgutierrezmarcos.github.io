@@ -28,6 +28,7 @@
 | 3.A.37 | Rigideces de salarios y transmisión | Desarrollo | Los dos modelos, sus resultados y el paso a Calvo | — |
 | 3.A.7 | NEK de 1.ª generación: cómo se ajustan los precios en el tiempo | resumen (hecho, 4/11/2026) | Reglas de **tiempo** (fechas fijadas de antemano: Fischer, Taylor, Calvo) y de **estado** (umbral: Sheshinski y Weiss), mixtas; Fischer y Taylor como contratos de **salarios** aplicables a los precios y respuesta a Sargent y Wallace (nota con $w^j_t=\mathbb{E}_{t-j}[p_t]$); intervalo óptimo y Phillips más inclinada con inflación alta (Ball, Mankiw y Romer, 1988); escalonamiento frente a sincronización (Ball y Romer, 1989; Ball y Cecchetti, 1988); `\vertema{3.A.37}` | Las ecuaciones de Taylor |
 | 3.A.6 | NMC: inefectividad | mención (hecho, 4/11/2026) | Respuesta a la proposición de inefectividad: con contratos, la política sistemática estabiliza aunque las expectativas sean racionales | Los contratos formales |
+| 3.A.41 | Persistencia de la inflación | mención (hecho, 5/11/2026) | Anexo C: los contratos escalonados de Fischer (1977) y Taylor (1980) como origen de la rigidez (los de Taylor dan persistencia a la producción, los de Fischer mucha menos); Fuhrer y Moore (1995), contratos sobre salarios relativos, como persistencia intrínseca; `\vertema{3.A.7}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 

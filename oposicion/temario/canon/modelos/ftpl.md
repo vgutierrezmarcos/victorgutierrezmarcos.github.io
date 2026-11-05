@@ -1,7 +1,7 @@
 # Teoría fiscal del nivel de precios y regímenes de Leeper (Leeper 1991; Sims 1994; Woodford 1995; Cochrane 2023)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.39 (Dominación monetaria y dominación fiscal) — es la versión moderna de la dominación fiscal. **Hecho (revisado el 4/11/2026):** III.3.1 (regímenes de Leeper, `tab:regimenes-leeper`) y III.3.3 (FTPL con a)-e) y `eq:valoracion`). Esta ficha recoge también los **regímenes de Leeper (1991)**, que son su marco y el de la aritmética monetarista (ficha `aritmetica-monetarista`).
-- **Temas que lo usan:** 3.A.39 (desarrollo; hecho, 4/11/2026), 3.A.41 (resumen: determinación del nivel de precios y deflación; hoy desarrollo con críticas en su Word, l. 1000-1060, sin revisar). También 3.A.6 (mención; hecho, 4/11/2026: II.5 c), la teoría fiscal del nivel de precios lleva más lejos la aritmética monetarista, Leeper, 1991; `\vertema{3.A.39}`), 3.A.36 (mención; en revisión: la dominación fiscal en las extensiones, `\vertema{3.A.39}`), 3.A.7 (mención; hecho: el principio de Taylor, que es la política monetaria activa de Leeper). También 3.A.40 (mención; hecho, 5/11/2026: III.1, quién cierra la restricción, la dominación fiscal y la FTPL en una viñeta con `\vertema{3.A.39}`; III.2, con dominación fiscal el multiplicador es mayor, Leeper, Traum y Walker, 2017, sin cifra; III.3 e), la FTPL exige una política fiscal activa, Bianchi, Faccini y Melosi, 2023).
+- **Temas que lo usan:** 3.A.39 (desarrollo; hecho, 4/11/2026), 3.A.41 (resumen; hecho, 5/11/2026: I.2.1, política fiscal, `eq:valoracion` del 3.A.39 con la misma forma y etiqueta, Cochrane (2023) sobre 2021-2022 y su vídeo en una caja, la crítica de Buiter en una frase, la rama minoritaria en nota; III.1.4, la hiperinflación como fiscal; III.2.2, la reflación fiscal de Sims, 2016; anexo E, el régimen de Leeper en una línea; `\vertema{3.A.39}`). También 3.A.6 (mención; hecho, 4/11/2026: II.5 c), la teoría fiscal del nivel de precios lleva más lejos la aritmética monetarista, Leeper, 1991; `\vertema{3.A.39}`), 3.A.36 (mención; en revisión: la dominación fiscal en las extensiones, `\vertema{3.A.39}`), 3.A.7 (mención; hecho: el principio de Taylor, que es la política monetaria activa de Leeper). También 3.A.40 (mención; hecho, 5/11/2026: III.1, quién cierra la restricción, la dominación fiscal y la FTPL en una viñeta con `\vertema{3.A.39}`; III.2, con dominación fiscal el multiplicador es mayor, Leeper, Traum y Walker, 2017, sin cifra; III.3 e), la FTPL exige una política fiscal activa, Bianchi, Faccini y Melosi, 2023).
 - **Manuales de referencia:** Leeper (1991), *JME*; Sims (1994), *Economic Theory*; Woodford (1995), *Carnegie-Rochester*; Cochrane (2023), *The Fiscal Theory of the Price Level*; Buiter (2002), *EJ*; Walsh (2017), cap. 4.
 
 ## Presentación de referencia
@@ -27,14 +27,14 @@ Es `eq:solvencia` multiplicada por $(1+r)/(1+\gamma_Y)$, con $P_t$ a la vista (e
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.39 | Dominación fiscal | Desarrollo (hecho, 4/11/2026) | Matriz de Leeper con las 4 casillas y las 2 reglas; FTPL a)-e) con `eq:valoracion`, mecanismo, Cochrane, Buiter | — |
-| 3.A.41 | Inflación y deflación | Resumen | La FTPL como teoría alternativa de la inflación; deflación y expansión fiscal (Sims, 2016); `eq:valoracion` en una línea con `\vertema{3.A.39}` | La matriz de regímenes y la crítica de Buiter en detalle |
+| 3.A.41 | Inflación y deflación | resumen (hecho, 5/11/2026) | La FTPL como causa fiscal de la inflación (I.2.1, `eq:valoracion` sobre el PIB, Cochrane, 2023, Buiter, 2002, en una frase); deflación y expansión fiscal (Sims, 2016, III.2.2); `\vertema{3.A.39}` | La matriz de regímenes y la crítica de Buiter en detalle |
 | 3.A.6 | NMC | Mención (hecho, 4/11/2026) | Una línea tras la aritmética monetarista (Leeper, 1991) | La teoría |
 | 3.A.36 | Política monetaria | Mención (en revisión) | La dominación fiscal como límite de la independencia, `\vertema{3.A.39}` | La teoría |
 
 ## Divergencias encontradas en el temario actual
 
 - **3.A.39 resuelto** (4/11/2026): la FTPL estaba a medio hacer y en amarillo, con «previsión perfecta ($P^e_{t+1}=P_t$)» y $\mu_t$ sin definir, y la tabla de regímenes de Walsh incompleta; «régimen ricardiano (Sargent, 1982)» → sin atribuir.
-- **3.A.41** (sin revisar) copia párrafos del Word del 3.A.39 y desarrolla la FTPL con críticas: al revisarlo, resumen con `\vertema{3.A.39}`.
+- **3.A.41 resuelto** (5/11/2026): resumen con `\vertema{3.A.39}`; la frase del Word «necesitan un superávit primario… supone el aumento sostenido de la deuda» corregida (no hace falta que la deuda crezca) y «dominancia» → «dominación».
 - Notación de la restricción: la de `restriccion-gobierno` (intereses $i_{t-1}D_{t-1}$, ratios sobre el PIB).
 
 Autor: Víctor Gutiérrez Marcos

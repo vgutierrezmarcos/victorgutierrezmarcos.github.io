@@ -1,0 +1,32 @@
+% Expectativas adaptativas en el modelo de Cagan (1956):
+%   dpi^e/dt = gamma (pi - pi^e).
+% La inflación efectiva salta en t_0 de pi_0 = 1,2 a pi_1 = 3,4 (unidades del
+% dibujo); desde t_0 la esperada es
+%   pi^e(t) = pi_0 + (pi_1 - pi_0) [1 - e^{-gamma (t - t_0)}],
+% con t_0 = 1,8, gamma alto = 2 y gamma bajo = 0,45 (por unidad de t).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.75,-0.6) rectangle (7.6,4.6);
+  % 1: ejes (t, pi)
+  \capa{1}{\ejes{$t$}{$\pi$}{7.3}{4.4}}
+  % 2: la inflación efectiva salta en t_0 de pi_0 a pi_1
+  \capa{2}{\draw[curva3] (0,1.2) -- (1.8,1.2) -- (1.8,3.4) -- (6.8,3.4) node[etiqueta, right, text=tceeverde] {$\pi$};}
+  \capa{2}{\draw[guia] (0,3.4) -- (1.8,3.4);}
+  \capa{2}{\draw[guia] (1.8,0) -- (1.8,1.2);}
+  \capa{2}{\node[left] at (0,1.2) {$\pi_0$};}
+  \capa{2}{\node[left] at (0,3.4) {$\pi_1$};}
+  \capa{2}{\node[below] at (1.8,0) {$t_0$};}
+  % 3: la inflación esperada con gamma alto: se acerca deprisa
+  \capa{3}{\draw[curva1] plot[domain=1.8:6.6, samples=100, smooth] (\x,{1.2+2.2*(1-exp(-2*(\x-1.8)))});}
+  \capa{3}{\draw[->, thin, tceemorado] (1.62,2.45) -- (2.1,2.45);}
+  \capa{3}{\node[etiqueta, anchor=east, text=tceemorado] at (1.66,2.45) {$\pi^e$, $\gamma$ alto};}
+  % 4: la inflación esperada con gamma bajo: despacio
+  \capa{4}{\draw[curva2] plot[domain=1.8:6.6, samples=100, smooth] (\x,{1.2+2.2*(1-exp(-0.45*(\x-1.8)))});}
+  \capa{4}{\node[etiqueta, anchor=north west, text=tceeazul] at (4.4,2.55) {$\pi^e$, $\gamma$ bajo};}
+  \capa{4}{\node[etiqueta, anchor=north west, font=\footnotesize, align=left] at (2.3,1.1) {$\dot\pi^e=\gamma\,(\pi-\pi^e)$};}
+\end{tikzpicture}
+\end{document}
