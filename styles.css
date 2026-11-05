@@ -1912,3 +1912,16 @@ body.vgm-con-fijo { overflow: hidden; }
 .apuntes-nota p { margin: 0.5rem 0 0; }
 .apuntes-enlaces { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; }
 .apuntes-aviso { font-size: 0.93rem; color: var(--color-text-muted); margin-top: 1rem; }
+
+/* Texto solo para lectores de pantalla y buscadores (p. ej. el h1 del blog) */
+.solo-lectores {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
