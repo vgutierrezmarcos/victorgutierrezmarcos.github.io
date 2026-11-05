@@ -1,0 +1,39 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Especialización perversa (Corden, 1972). CMe_i = c_i + F/Q, con c_A > c_B
+% (A es menos eficiente); D_B: p = 6 - 2Q (mercado pequeño) y D_A:
+% p = 13 - 2Q (mercado grande). Cortes: B en Q = 1,64 y p = 2,73; A en
+% Q = 5,42 y p = 2,16, más bajo pese a tener la curva de costes más alta.
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.85cm]
+  % 1: ejes
+  \capa{1}{\ejes{$Q$}{$p,\ \mathrm{CMe}$}{8.4}{6.6}}
+  % 2: costes medios decrecientes (economías de escala); el de A, más alto
+  \capa{2}{%
+    \draw[curva3,name path=cmea] plot[domain=1.15:6.3,samples=60,smooth]
+      (\x,{1.7+2.5/\x}) node[etiqueta,right] {$\mathrm{CMe}_A$};
+    \draw[curva3,name path=cmeb] plot[domain=0.85:6.3,samples=60,smooth]
+      (\x,{1.2+2.5/\x}) node[etiqueta,right] {$\mathrm{CMe}_B$};
+  }
+  % 3: mercado de B, pequeño: corte con su coste medio
+  \capa{3}{%
+    \draw[curva1,name path=db] (0,6) -- (2.75,0.5) node[etiqueta,right] {$D_B$};
+    \path[name intersections={of=db and cmeb,by=B}];
+    \node[punto] at (B) {};
+    \proyeccion{(B)}{$Q_B$}{$p_B$}
+  }
+  % 4: mercado de A, grande: corte con su coste medio, a un precio menor
+  \capa{4}{%
+    \draw[curva1,name path=da] (3.5,6) -- (6.25,0.5) node[etiqueta,right] {$D_A$};
+    \path[name intersections={of=da and cmea,by=A}];
+    \node[punto] at (A) {};
+    \proyeccion{(A)}{$Q_A$}{$p_A$}
+  }
+  % 5: con la unión se queda con el mercado la empresa de A, la menos eficiente
+  \capa{5}{%
+    \draw[flecha] ([shift={(0.15,0.25)}]B) to[out=40,in=150] ([shift={(-0.2,0.2)}]A);
+    \node[etiqueta,align=left,text=tceerojo,anchor=west] at (4.75,4.1)
+      {con la unión abastece\\el mercado la empresa\\de $A$, la menos eficiente};
+  }
+\end{tikzpicture}
+\end{document}

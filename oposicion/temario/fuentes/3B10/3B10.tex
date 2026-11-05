@@ -1,0 +1,1112 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B10.bib}
+\tcetema[Teoría de la integración económica]{3.B.10}{Teoría de la integración económica.}
+\tcefecha{05/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Dime con quién andas y te diré quién eres», dice el refrán. Toda la teoría de la integración cabe en él: lo que una unión aduanera hace al bienestar de un país depende de \emph{con quién} la forma.
+  \item El 1 de mayo de 2026 empezó a aplicarse de forma provisional el acuerdo comercial de la Unión Europea con el Mercosur \parencite{CE2026MercosurProvisional}. La Unión, la unión aduanera más antigua y profunda del mundo, sigue eligiendo socios, y cada elección abre el mismo debate: ¿ganan los consumidores europeos un proveedor más barato, o se desvía el comercio hacia quien no es el más eficiente?
+  \item Detrás está la pregunta de esta exposición: ¿mejora el bienestar suprimir las barreras al comercio con unos países y mantenerlas frente a los demás?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Desde un punto de vista práctico}, basta un dato: a noviembre de 2026 hay 390 acuerdos comerciales regionales notificados a la OMC y en vigor, casi 9 de cada 10 de ellos zonas de libre comercio, y al menos otros 84 en vigor que aún no se han notificado \parencite{OMC2026RTAIS,OMC2026ACR}. La integración regional se ha convertido en la vía principal de la liberalización comercial.
+    \begin{itemize}
+    \item La forma que más estudia la teoría, la unión aduanera, es la menos frecuente en la práctica: solo 16 de esos acuerdos son uniones aduaneras \parencite{OMC2026RTAISExportacion}. Casi todos los países prefieren no ceder su política comercial.
+    \end{itemize}
+  \item \emph{Desde un punto de vista teórico}, la integración es el caso más claro de \emph{segundo óptimo}: acerca al libre comercio entre los socios y aleja de él frente a terceros, y por eso sus efectos sobre el bienestar no se pueden dar por supuestos.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}. Desde un punto de vista conceptual:
+  \begin{itemize}
+  \item La \concepto{integración económica} es la eliminación de las «fronteras económicas» entre 2 o más países, es decir, de cualquier elemento, no solo físico, que restrinja la circulación de bienes, servicios y factores entre ellos \parencite{Pelkmans2006European}. Tiene una cara \emph{negativa}, suprimir obstáculos, y otra \emph{positiva}, crear instituciones y políticas comunes \parencite{Tinbergen1954International}.\footnote{Según \textcite{Tinbergen1954International}, todo proceso de integración comporta 2 grupos de aspectos: una «integración negativa», la eliminación de obstáculos, restricciones y discriminaciones al movimiento de bienes, servicios y factores productivos (esto es, un proceso de liberalización entre los países que se integran), y una «integración positiva», la modificación de los instrumentos e instituciones existentes y la creación de otros nuevos, a nivel supranacional, para que el mercado funcione con suficiente armonía y se promuevan objetivos más amplios de política económica.}
+  \item \textcite{Balassa1961Theory} la define a la vez como un \emph{proceso}, las medidas que suprimen la discriminación entre unidades económicas de distintos países, y como un \emph{estado}, la ausencia de esa discriminación. De ahí su escalera de formas de integración, de la zona de libre comercio a la integración económica total (apartado~\ref{sec:idea-formas}).
+  \item En esta exposición la integración es siempre \emph{discriminatoria}: las barreras caen entre los socios y se mantienen frente al resto del mundo. Eso la distingue de la liberalización unilateral o multilateral, que rebaja las barreras frente a todos, y es la fuente de todos sus problemas teóricos.
+  \end{itemize}
+  Desde un punto de vista histórico:
+  \begin{itemize}
+  \item La teoría de la integración nace como un apéndice de la teoría del comercio internacional: estudia la protección \emph{discriminatoria}, la que se mantiene frente a unos países y se suprime frente a otros. Su campo se ha ido ampliando a la movilidad de factores, a la moneda y a las instituciones, y bebe hoy de la organización industrial, la teoría del crecimiento, la geografía económica y la economía política.\footnote{La teoría de la integración económica se nutre de la teoría del comercio y de la financiación internacional, de la macroeconomía de las economías abiertas y de la economía industrial, que permite analizar el impacto de la integración sobre los mercados no competitivos. Lo que comenzó siendo, con el análisis pionero de \textcite{Viner1950Customs}, un apéndice de la teoría neoclásica del comercio, dedicado a los efectos de la protección arancelaria \emph{discriminatoria} en un contexto de «segundo óptimo» (la teoría tradicional de las uniones aduaneras), ha ido ampliando su campo para incluir otros efectos de la liberalización, en especial los llamados «efectos dinámicos», más relevantes que los estáticos aunque más difíciles de cuantificar, y los que se generan al suprimir barreras no arancelarias y entrar en fases más avanzadas de integración (mercado común).}
+  \item \emph{Teoría tradicional} (años 50 y 60): \textcite{Viner1950Customs} demuestra que una unión aduanera puede empeorar el bienestar; \textcite{Meade1955Customs} y \textcite{Lipsey1957Theory} añaden los efectos sobre el consumo. Es un análisis estático, con competencia perfecta, y no es casual que surja a la vez que la Comunidad Económica Europea.
+  \item \emph{Nueva teoría de la integración} (años 80): las economías de escala y la competencia imperfecta \parencite{Corden1972Economies,Krugman1979Increasing} y los efectos sobre el crecimiento \parencite{Baldwin1989Growth}, al calor del mercado único europeo.
+  \item \emph{Geografía económica} (desde 1991): dónde se instala la actividad cuando caen las barreras \parencite{Krugman1991Increasing}.
+  \item Desde los años 90, la economía política explica por qué los gobiernos eligen unos acuerdos y no otros \parencite{GrossmanHelpman1995Politics}, y la ecuación de gravedad, ya con fundamentos teóricos, se convierte en la herramienta estándar para medir sus efectos \parencite{AndersonVanWincoop2003}.
+  \item Como el libre comercio mundial es inalcanzable, la integración se ha entendido siempre como un \emph{segundo óptimo} del librecambio de \autor{Smith} y \autor{Ricardo}: elimina unas distorsiones y mantiene otras \vertema{3.A.22}.\footnote{Los procesos de integración eliminan algunas distorsiones pero mantienen otras respecto del libre comercio, tanto en los países que se integran como en los de fuera, y por eso no llevan a óptimos de \autor{Pareto}: con la integración no se puede garantizar que mejore el bienestar de todos los países respecto de la situación de partida.}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}. La exposición responde a 4 preguntas:
+  \begin{itemize}
+  \item ¿Mejora el bienestar una integración que, por definición, discrimina entre socios y terceros? (apartado~\ref{sec:efectos})
+  \item ¿Por qué se integran los países, y por qué con unos socios y no con otros? (apartado~\ref{sec:determinantes})
+  \item ¿Cómo se miden los efectos de la integración y qué dicen los datos? (apartado~\ref{sec:medicion})
+  \item ¿Son los acuerdos regionales un peldaño o un escollo para el libre comercio multilateral? (conclusión)
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue el orden en que la teoría ha ido levantando supuestos, de los efectos a sus causas y a su medida.
+  \begin{itemize}
+  \item \concepto{I. Efectos de la integración económica} (\ref{sec:efectos}): primero el análisis estático clásico de las uniones aduaneras, con país pequeño y competencia perfecta, y después lo que ese análisis dejaba fuera (compensaciones, país grande, competencia imperfecta, crecimiento y redistribución) y las formas superiores de integración.
+  \item \concepto{II. Determinantes de la integración económica} (\ref{sec:determinantes}): por qué se integran los países, la geografía y la economía política.
+  \item \concepto{III. Metodología empírica y evidencia} (\ref{sec:medicion}): cómo se miden esos efectos, con la ecuación de gravedad como herramienta central, y qué dice la evidencia.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.B.10. Teoría de la integración económica}\\[2pt]
+Introducción\\
+I. Efectos de la integración económica\\
+\hspace*{1.5em}1. Formas de integración y enfoques\\
+\hspace*{1.5em}2. Efectos estáticos de las uniones aduaneras (\autor{Viner}, \autor{Meade}, \autor{Lipsey}, factores, \autor{Cooper} y \autor{Massell})\\
+\hspace*{1.5em}3. ¿Por qué puede ser mejor la unión aduanera? (\autor{Kemp} y \autor{Wan}, país grande, competencia imperfecta, crecimiento, redistribución)\\
+\hspace*{1.5em}4. Formas superiores\\
+II. Determinantes de la integración económica\\
+\hspace*{1.5em}1. Determinantes geográficos\\
+\hspace*{1.5em}2. Determinantes políticos\\
+III. Metodología empírica y evidencia de la integración\\
+\hspace*{1.5em}1. Modelos de equilibrio general computable\\
+\hspace*{1.5em}2. La ecuación de gravedad\\
+\hspace*{1.5em}3. Nuevos modelos cuantitativos\\
+\hspace*{1.5em}4. Evidencia\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{1}; I.2, \tiempo{6}; I.3, \tiempo{5}; I.4, \tiempo{1}); II, \tiempo{5} (advertencia, \tiempo{0,25}; II.1, \tiempo{2,25}; II.2, \tiempo{2,5}); III, \tiempo{8} (idea, \tiempo{0,25}; III.1, \tiempo{1,25}; III.2, \tiempo{3,75}; III.3, \tiempo{0,75}; III.4, \tiempo{2}), y conclusión, \tiempo{1,5}. La introducción y la conclusión se cantan sin pizarra. La pizarra se usa en 3 columnas: en la izquierda, el apartado~\ref{sec:efectos}, con la escalera de formas de integración (tabla~\ref{tab:formas}, en versión mínima: 7 peldaños) y el gráfico de \autor{Viner} y \autor{Lipsey} (gráfico~\ref{fig:viner-lipsey}), que se dibuja por capas y se queda hasta el final del bloque; en la central, el apartado~\ref{sec:determinantes}, con el diagrama \emph{tomahawk} (gráfico~\ref{fig:tomahawk}); en la derecha, el apartado~\ref{sec:medicion}, con la ecuación de gravedad. Los gráficos imprescindibles son el de \autor{Viner} y \autor{Lipsey} con sus 2 capas, el de \autor{Corden} (gráfico~\ref{fig:corden}) y el \emph{tomahawk}. Los refranes se apuntan en una esquina al decirlos: el del enganche, «dime con quién andas y te diré quién eres», y las pegatinas «para este viaje no se necesitaban alforjas» (\autor{Cooper} y \autor{Massell}), «quien da primero da dos veces» (la especialización perversa), «arrimarse al sol que más calienta» (el modelo centro-periferia), «cuando las barbas de tu vecino veas pelar, pon las tuyas a remojar» (el dominó de \autor{Baldwin}) y «el roce hace el cariño» (la ecuación de gravedad). Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+\end{notaopositor}
+
+\begin{anotaciones}
+\textbf{Notación.} $A$ es el país propio, $B$ el socio y $R$ el resto del mundo; $X$ e $Y$, los 2 bienes cuando el análisis es de equilibrio general. $p_A$, $p_B$ y $p_R$ son los precios (costes unitarios) a los que cada país ofrece el bien, en minúscula como todo precio de un bien; $t$ es un arancel \emph{ad valorem}, de modo que el bien de $R$ llega a $A$ a $p_R(1+t)$, y $t'$ es el arancel no discriminatorio de \autor{Cooper} y \autor{Massell}, con $p_R(1+t')=p_B$. $x$ y $q$ son el consumo y la producción de $A$; $p^{\mathrm{UA}}$, el precio tras la unión con economías de escala. $\mathrm{RRI}=p_X/p_Y$ es la relación real de intercambio, y $\mathrm{RMS}_{XY}$ y $\mathrm{RMT}_{XY}$, las relaciones marginales de sustitución y de transformación. En el modelo centro-periferia, $\mu$ es el peso de las manufacturas, $\lambda_i$ la cuota de la región $i$ en los trabajadores industriales, $\sigma$ la elasticidad de sustitución entre variedades, $\tau>1$ el coste iceberg y $\phi_\tau=\tau^{1-\sigma}$ la libertad comercial. En la ecuación de gravedad, $X_{ij}$ es el comercio del exportador $i$ al importador $j$, $Y_i$ el tamaño, $d_{ij}$ la distancia, $\tau_{ij}\geq 1$ el coste bilateral de comerciar (no el arancel $t$), $u_{ij}$ el término de error y $\mathrm{ACR}_{ij}$ la variable del acuerdo comercial regional. Las siglas van en redonda: ZLC (zona de libre comercio), UA (unión aduanera), ACR (acuerdo comercial regional), MEGC (modelos de equilibrio general computable) y NGE (nueva geografía económica).
+\end{anotaciones}
+
+% ==========================================================================
+\section{Efectos de la integración económica}\label{sec:efectos}
+\minutos{13}
+
+\begin{notaopositor}
+En el cante (\tiempo{13}): I.1, \tiempo{1}, con la escalera de formas en la pizarra; I.2, \tiempo{6}, con \autor{Viner} con la lectura de la tabla~\ref{tab:viner} (\tiempo{1,75}: 3 situaciones, ninguna, creación y desviación; la tabla y el gráfico~\ref{fig:viner-situaciones} son de apoyo); \autor{Meade} de palabra (\tiempo{0,5}); \autor{Lipsey} en equilibrio parcial con el gráfico~\ref{fig:viner-lipsey} dibujado capa a capa hasta las áreas $a$-$e$ y el efecto neto $b+d-e$ (\tiempo{1,25}); el equilibrio general, de palabra, con la regla de \textcite{Lipsey1960Customs} (\tiempo{0,75}); los factores, en los 3 grupos de la tabla~\ref{tab:bhagwati-panagariya} (\tiempo{0,75}), y \autor{Cooper} y \autor{Massell}, añadiendo al mismo gráfico las áreas $f$ y $g$ (\tiempo{1}), con la pegatina «para este viaje no se necesitaban alforjas»; I.3, \tiempo{5}, con \autor{Kemp} y \autor{Wan} frente al artículo~XXIV (\tiempo{0,5}); el país grande (\tiempo{0,75}); la competencia imperfecta (\tiempo{2,25}), con el gráfico de \autor{Corden} (caso a) y el cuadro de los 3 casos, la especialización perversa de palabra con «quien da primero da dos veces», \autor{Krugman} (1979) y las conclusiones de \autor{Melitz}; los efectos dinámicos (\tiempo{1}) y \autor{Stolper} y \autor{Samuelson} en mención (\tiempo{0,5}); I.4, \tiempo{1}, sobre la escalera del apartado~\ref{sec:idea-formas}, marcando los peldaños superiores.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: los efectos estáticos de una unión aduanera son ambiguos, y una rebaja no discriminatoria del arancel podría lograr lo mismo sin desviar comercio. Lo que justifica la integración es lo que ese análisis deja fuera (compensaciones, poder sobre la relación real de intercambio, escala, competencia y crecimiento), que además tiene costes redistributivos.
+\item \emph{Nexo}: se estudia la unión aduanera porque es la forma que dio origen a la teoría; casi todo vale para una zona de libre comercio. Empezamos por las formas que puede tomar la integración.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Idea: formas de integración y enfoques}\label{sec:idea-formas}
+
+\begin{itemize}
+\item La integración puede tomar distintas formas según el grado de compromiso de los países. La escalera de \textcite{Balassa1961Theory}, con el mercado único que añade la experiencia europea, ordena las formas por lo que añade cada peldaño al anterior (tabla~\ref{tab:formas}). Las 7 formas, con sus ejemplos, se desarrollan en el anexo~\ref{anexo:formas}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Formas de integración económica: lo que añade cada peldaño}\label{tab:formas}
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.2cm}*{7}{>{\centering\arraybackslash}m{1.6cm}}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Prefe\-rencias} & \textbf{ZLC} & \textbf{UA} & \textbf{Mercado común} & \textbf{Mercado único} & \textbf{Unión económica} & \textbf{Integración total}\\
+\midrule
+Rebaja de aranceles entre socios & \textcolor{tceeverde}{$\checkmark$}\newline{\scriptsize parcial} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
+Arancel exterior común & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
+Libre circulación de factores & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
+Supresión de las barreras no arancelarias & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
+Coordinación de políticas (y moneda común en la unión económica y monetaria) & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
+Instituciones supranacionales con poder de decisión & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceeverde}{$\checkmark$}\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\fuente{elaboración propia a partir de \textcite{Balassa1961Theory} y \textcite{Pelkmans2006European}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Zona de libre comercio (ZLC) frente a unión aduanera (UA)}: en la ZLC cada socio mantiene su arancel frente a terceros, y la mercancía de fuera puede entrar por el socio con el arancel más bajo y llegar al de arancel más alto (gráfico~\ref{fig:zlc-ua}).
+  \begin{itemize}
+  \item Es la \concepto{desviación del tráfico} (\emph{trade deflection}), que no hay que confundir con la desviación de comercio de \autor{Viner}.
+  \item Se combate con \emph{reglas de origen}, que solo dejan circular libremente lo producido en la zona, del todo o en un porcentaje del valor añadido; pero encarecen y complican el comercio (el «plato de espaguetis» del apartado~\ref{sec:politicos}).
+  \item La UA la evita con un \emph{arancel exterior común}, a cambio de ceder la política comercial: es un territorio aduanero único, con una legislación aduanera y una política comercial comunes.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Zona de libre comercio y desviación del tráfico (izquierda) frente a unión aduanera con arancel exterior común (derecha)}\label{fig:zlc-ua}
+\grafico[0.8\textwidth]{zlc-ua}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{CamareroTamarit2019Economia}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Las reglas de la OMC}: la integración discrimina, y choca con la cláusula de nación más favorecida del artículo~I del GATT. Por eso solo se admite como excepción \vertema{3.B.33}:
+  \begin{itemize}
+  \item el artículo~XXIV del GATT ampara las ZLC y las UA que cubran «lo esencial de los intercambios comerciales» entre los socios \parencite{GATT1947};
+  \item en una UA, el arancel común no puede ser «en conjunto» más alto que la protección previa, medida, desde el Entendimiento de 1994, con el promedio ponderado de los aranceles y de los derechos percibidos \parencite{OMC1994EntendimientoXXIV};
+  \item las preferencias parciales solo caben entre países en desarrollo, al amparo de la cláusula de habilitación de 1979 \parencite{GATT1979Habilitacion}, y en servicios rige el artículo~V del Acuerdo General sobre el Comercio de Servicios (AGCS) \vertema{3.B.34}.
+  \end{itemize}
+\item \emph{La práctica}: pocos procesos son formas puras, y los acuerdos de \emph{nueva generación} cubren servicios, inversión, contratación pública y normas aunque sean, formalmente, ZLC. Su número se ha multiplicado desde los 90 (gráfico~\ref{fig:acr-en-vigor}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Acuerdos comerciales regionales notificados al GATT y a la OMC y en vigor, por tipo, 1958-2026}\label{fig:acr-en-vigor}
+\grafico[0.85\textwidth]{acr-en-vigor}
+\fuente{elaboración propia con datos de la OMC, base RTA-IS \parencite{OMC2026RTAISExportacion}. Acuerdos en vigor a 31 de diciembre de cada año, sin adhesiones; el dato de 2026 es parcial (a 5 de noviembre).}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Lectura del gráfico}: hasta 1990 había solo 44 acuerdos en vigor; en los 90, tras el fin de la Guerra Fría y la creación de la OMC, entraron en vigor 145. El salto de 2021 son sobre todo los acuerdos de continuidad del Reino Unido tras el \emph{Brexit} (38 de los 46 que entraron en vigor ese año) \parencite{OMC2026RTAISExportacion}.
+\item \emph{2 enfoques}: la \emph{teoría tradicional} estudia los efectos estáticos de una UA con competencia perfecta (apartado~\ref{sec:estaticos}); la \emph{nueva teoría} añade la escala, la competencia imperfecta, el crecimiento y la localización (apartados~\ref{sec:mejor-ua} y~\ref{sec:geograficos}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Efectos de las uniones aduaneras sobre el bienestar en un contexto de país pequeño, competencia perfecta y análisis estático}\label{sec:estaticos}
+
+\begin{itemize}
+\item \emph{Nexo}: una vez vistas las formas, pasamos a los efectos de la más estudiada, la UA, en el marco más sencillo: un país pequeño, competencia perfecta y estática comparativa.
+\end{itemize}
+
+\subsubsection{Aportación de \autor{Viner} (1950)}\label{sec:viner}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Las UA combinan \emph{proteccionismo} hacia fuera (\emph{erga extra}, frente al resto del mundo) y \emph{libre comercio} hacia dentro (\emph{erga intra}, en su interior).
+\item Hasta los 50 se pensaba que una UA mejoraba siempre el bienestar, porque estaba más cerca del libre comercio. \textcite{Viner1950Customs} es el primero en rebatirlo, antes de que existiera la teoría del segundo óptimo: toda UA tiene 2 efectos contrapuestos.
+  \begin{itemize}
+  \item \concepto{Creación de comercio}: cuando 2 países forman una UA (el razonamiento vale para una ZLC), la supresión del arancel hace más barato importar del socio que producir en casa. El país deja de producir un bien con costes altos y pasa a importarlo del socio, más eficiente: se crea comercio que antes no existía.
+  \item \concepto{Desviación de comercio}: la formación de la unión lleva a un país a dejar de importar de un tercero con costes bajos para importar del socio, con costes más altos, solo porque el arancel ya no grava al socio. El arancel común, que protege al productor ineficiente de dentro frente a la competencia de fuera, es lo que la hace posible.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Equilibrio parcial: 3 países, el nuestro ($A$), el socio ($B$) y el resto del mundo ($R$), y un solo bien.
+\item $A$ es pequeño: $B$ y $R$ le venden a precios dados, $p_B$ y $p_R$ (oferta perfectamente elástica); los costes de $A$ también son constantes, $p_A$.
+\item Antes de la unión, $A$ grava todas las importaciones con un arancel \emph{ad valorem} $t$; después, suprime el de $B$ y lo mantiene frente a $R$.
+\item Demanda de $A$ perfectamente inelástica, fija en $\bar{x}$ unidades (el supuesto que levantan \autor{Meade} y \autor{Lipsey}).
+\item Competencia perfecta en los mercados de bienes ($p=\mathrm{CMg}$) y de factores.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con un arancel del 50~\% caben 3 situaciones, según los costes de cada país (tabla~\ref{tab:viner} y gráfico~\ref{fig:viner-situaciones}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Creación y desviación de comercio en el ejemplo de \autor{Viner}: precio al que cada país ofrece el bien en $A$ ($t=50$~\%)}\label{tab:viner}
+\footnotesize
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{>{\centering\arraybackslash}m{1.4cm}>{\raggedright\arraybackslash}m{2.8cm}>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{3.2cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Situación} & & \textbf{$B$ (socio)} & \textbf{$A$ (nuestro país)} & \textbf{$R$ (resto del mundo)} & \textbf{Efecto de la unión}\\
+\midrule
+\multirow{3}{*}{1} & Coste & 16 & 10 & 12 & \multirow{3}{=}{\centering Ninguno: $A$ sigue produciendo}\\
+ & Antes de la unión & 24 & 10 & 18 & \\
+ & Después de la unión & 16 & 10 & 18 & \\
+\midrule
+\multirow{3}{*}{2} & Coste & 8 & 10 & 12 & \multirow{3}{=}{\centering \textcolor{tceeverde}{Creación de comercio}}\\
+ & Antes de la unión & 12 & 10 & 18 & \\
+ & Después de la unión & 8 & 10 & 18 & \\
+\midrule
+\multirow{3}{*}{3} & Coste & 8 & 10 & 6 & \multirow{3}{=}{\centering \textcolor{tceerojo}{Desviación de comercio}}\\
+ & Antes de la unión & 12 & 10 & 9 & \\
+ & Después de la unión & 8 & 10 & 9 & \\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\fuente{elaboración propia a partir de \textcite{Viner1950Customs}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Situación 1}: el socio es caro; $A$ sigue produciendo y la unión no cambia nada.\footnote{Es lo mismo que si $A$ importara de $R$ antes de la unión y siguiera haciéndolo después. Y también si importara de $B$ antes y después: aunque tras la unión le compre más barato, la demanda es perfectamente inelástica, la cantidad no cambia y el análisis mira solo a la producción.}
+\item \emph{Situación 2}, creación de comercio, con $p_B<p_A<p_R(1+t)$: $A$ producía a 10 y pasa a importar de $B$ a 8. Con una demanda fija de $\bar{x}$ unidades, $A$ gana $(p_A-p_B)\,\bar{x}=2\bar{x}$: libera recursos que costaban 10 para obtener lo mismo por 8.
+\item \emph{Situación 3}, desviación de comercio, con $p_R<p_B<p_R(1+t)<p_A$: $A$ importaba de $R$ a $p_R(1+t)=9$ y pasa a importar de $B$ a 8. Los consumidores ganan $[p_R(1+t)-p_B]\,\bar{x}=\bar{x}$, pero el Estado deja de recaudar $t\,p_R\,\bar{x}=3\bar{x}$. El saldo es
+  \[
+  \Delta W=[p_R(1+t)-p_B]\,\bar{x}-t\,p_R\,\bar{x}=(p_R-p_B)\,\bar{x}<0:
+  \]
+  $A$ pierde exactamente lo que el socio es más caro que el proveedor eficiente.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Las 3 situaciones de \autor{Viner} con demanda inelástica: sin efecto, creación y desviación de comercio}\label{fig:viner-situaciones}
+\grafico[0.95\textwidth]{viner-situaciones}
+\fuente{elaboración propia a partir de \textcite{Viner1950Customs}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Si la desviación de comercio domina a la creación, la UA reduce el bienestar de $A$. Su efecto es, por tanto, \emph{ambiguo}: depende de con quién se forme.
+\item Como $A$ es pequeño, sus decisiones no alteran el bienestar de $B$ ni de $R$: lo que gana o pierde $A$ es lo que gana o pierde el mundo.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: es pionero al cuestionar que una UA sea siempre deseable, y sus 2 conceptos siguen siendo los que se usan para evaluar cualquier acuerdo.
+\item \emph{En contra}: parte de supuestos muy restrictivos. Sobre todo, no tiene en cuenta la demanda, que supone fija. \textcite{Meade1955Customs} y \textcite{Lipsey1957Theory} levantan ese supuesto y añaden a los efectos sobre la producción los efectos sobre el consumo.
+\end{itemize}
+
+\subsubsection{Aportaciones de \autor{Meade} (1955): expansión del comercio y teoría del \emph{second best}}\label{sec:meade}
+
+\begin{itemize}
+\item La aportación de \autor{Meade} es pionera en 2 sentidos:
+  \begin{itemize}
+  \item En primer lugar, \textcite{Meade1955Customs} \emph{incorpora la demanda}: la UA cambia los precios relativos y, con ellos, lo que se demanda. Si un bien se obtiene más barato, se compra más de él: es la \concepto{expansión del comercio}, una ganancia para los consumidores, que compran más y pagan menos.
+  \item En segundo lugar, anticipa la \concepto{teoría del segundo óptimo} (\emph{second best}) \parencite{Meade1955Trade}, que \textcite{LipseyLancaster1956General} demuestran en general \vertema{3.A.22}: si una condición de \autor{Pareto} no puede cumplirse, no es necesariamente deseable cumplir las demás. Acercarse al primer óptimo suprimiendo \emph{una} distorsión no garantiza mejorar.\footnote{El problema venía del debate entre librecambio y protección: muchos autores defendían que, si había que proteger una industria naciente o corregir una distorsión, era mejor un impuesto o una subvención que un arancel, y que acercarse al libre comercio siempre mejoraba. \textcite{LipseyLancaster1956General} mostraron que, cuando una condición de \autor{Pareto} se incumple, el segundo óptimo exige en general incumplir también las demás, y que añadir o quitar una distorsión puede mejorar o empeorar. \textcite{Gandolfo2014International} lo ilustra con una cordillera: quien quiere llegar a la cumbre y encuentra el camino cortado puede tener que bajar para subir a un pico más bajo pero accesible (la analogía de la montaña, \vertema{3.A.22}).}
+  \end{itemize}
+\item Aplicado a la UA, el segundo óptimo da 2 resultados:
+  \begin{itemize}
+  \item \emph{La UA da menos bienestar que el libre comercio}. El óptimo de \autor{Pareto} mundial exige $\mathrm{RMS}_{XY}=\mathrm{RMT}_{XY}=\mathrm{RRI}$. Con libre comercio se cumple; con una UA, el arancel frente a terceros abre una brecha entre los precios interiores y la relación real de intercambio, y la igualdad se rompe.
+  \item \emph{La UA no es necesariamente mejor que un arancel no discriminatorio}. Elimina una distorsión, el arancel entre los socios, pero mantiene otra, el arancel frente a terceros. Aunque estemos más cerca del libre comercio, no estamos necesariamente mejor: es un problema de segundo óptimo, y su signo, una cuestión empírica.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Aportación de \autor{Lipsey} (1957)}\label{sec:lipsey}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Lipsey1957Theory} estudia a la vez la producción y el consumo, y lo hace en equilibrio general. Su resultado se entiende mejor empezando por su traducción de manual en equilibrio parcial, con oferta y demanda.
+\end{itemize}
+
+\paragraph{b) Modelo de equilibrio parcial}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los de \autor{Viner}, salvo 2, que se levantan:
+  \begin{itemize}
+  \item la demanda de $A$ tiene \emph{pendiente negativa}: la caída del precio aumenta el consumo y, con él, el excedente del consumidor; es la \concepto{creación de consumo};
+  \item el coste marginal de $A$ (su curva de oferta) es \emph{creciente}, no constante.
+  \end{itemize}
+\item La recaudación del arancel se devuelve a los consumidores como transferencia de suma fija.\footnote{Con preferencias homotéticas idénticas, de modo que el reparto de la recaudación no altera el patrón de consumo.}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Antes de la unión, $A$ importa de $R$ al precio $p_R(1+t)$, más bajo que el de $B$ con arancel, $p_B(1+t)$, pero más alto que el de $B$ sin él: $p_R<p_B<p_R(1+t)<p_B(1+t)$. Produce $q_0$, consume $x_0$ e importa $x_0-q_0$ (gráfico~\ref{fig:viner-lipsey}).
+\item Con la unión, $B$ vende sin arancel a $p_B<p_R(1+t)$: el precio interior baja, la producción cae a $q_1$, el consumo sube a $x_1$ y todas las importaciones vienen de $B$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Unión aduanera (áreas $a$-$e$) y rebaja no discriminatoria del arancel (áreas $f$ y $g$)}\label{fig:viner-lipsey}
+\grafico[0.75\textwidth]{viner-lipsey}
+\fuente{elaboración propia a partir de \textcite{Lipsey1957Theory} y \textcite{CooperMassell1965New}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Efectos sobre cada agente}:
+  \begin{itemize}
+  \item excedente del consumidor: $+(a+b+c+d)$;
+  \item excedente del productor: $-a$;
+  \item recaudación: $-(c+e)$, que pasa a ser nula.
+  \end{itemize}
+\item \emph{Efecto neto}:
+  \[
+  \Delta W=\underbrace{b}_{\text{creación de comercio}}+\underbrace{d}_{\text{creación de consumo}}-\underbrace{e}_{\text{desviación de comercio}}
+  \]
+  \begin{itemize}
+  \item $b$: la producción nacional cara que se sustituye por importaciones del socio, más barato;
+  \item $d$: el consumo que la bajada del precio hace posible (la novedad frente a \autor{Viner});
+  \item $e$: lo que se paga de más por comprar a $B$ y no a $R$ lo que ya se importaba.
+  \end{itemize}
+\item El efecto de una UA frente a un arancel no discriminatorio sigue siendo \emph{ambiguo}, como en \autor{Viner}: gana más cuanto más elásticas sean la oferta y la demanda ($b$ y $d$ mayores) y cuanto menor sea el sobrecoste del socio ($e$ menor).\footnote{En el gráfico: cuanto más planas son las curvas de oferta y de demanda, más grandes son las áreas $b$ y $d$ y mayor es la ganancia de la integración. El anexo~\ref{anexo:lipsey-eg} lo dibuja con otras pendientes.}
+\end{itemize}
+
+\paragraph{c) Extensiones: el equilibrio general}
+
+\begin{itemize}
+\item En equilibrio general, el resultado de \textcite{Lipsey1957Theory} es más fuerte: \emph{la desviación de comercio puede mejorar el bienestar}.
+  \begin{itemize}
+  \item El arancel no discriminatorio distorsiona también el consumo, porque los consumidores de $A$ igualan su relación marginal de sustitución a un precio relativo interior distinto del internacional.
+  \item La unión suprime esa distorsión frente al socio: aunque $B$ sea más caro que $R$, $A$ puede acabar en una curva de indiferencia más alta. El modelo, con sus 3 situaciones (libre comercio, arancel y unión), está en el anexo~\ref{anexo:lipsey-eg}.
+  \end{itemize}
+\item \textcite{Lipsey1960Customs} lo resume en una regla: una UA tiene más probabilidad de mejorar el bienestar cuanto mayor sea la parte del comercio de un país que se hace con el socio, cuanto menor la que se hace con el resto del mundo y cuanto menor sea el comercio exterior en relación con el consumo de bienes nacionales.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \autor{Lipsey} confirma, con la demanda y en equilibrio general, lo que anticipaba el segundo óptimo: acercarse al libre comercio suprimiendo unas distorsiones y no otras no garantiza mejorar, ni empeorar. Lo que decide es la estructura del comercio de partida, y eso lleva a preguntarse de qué depende el saldo.
+\end{itemize}
+
+\subsubsection{Factores de los que depende el saldo de una unión aduanera}\label{sec:bhagwati-panagariya}
+
+\begin{itemize}
+\item Los modelos anteriores dicen que el saldo es ambiguo; la literatura ha ordenado los factores que lo inclinan a un lado u otro. Se agrupan en 3: los de antes de la unión, los de después y la estructura del acuerdo (tabla~\ref{tab:bhagwati-panagariya}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Factores que hacen más probable que una unión aduanera mejore el bienestar}\label{tab:bhagwati-panagariya}
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\centering\arraybackslash}m{2.1cm}>{\raggedright\arraybackslash}m{6.2cm}>{\raggedright\arraybackslash}m{6.2cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Factor (signo)} & \textbf{Por qué}\\
+\midrule
+\multirow{3}{=}{\centering Antes de la unión} & Aranceles previos altos (\textcolor{tceeverde}{$+$}) & Más producción nacional cara que sustituir: más creación\\
+ & Mayor diferencia de costes entre $A$ y $B$ (\textcolor{tceeverde}{$+$}); menor entre $B$ y $R$ (\textcolor{tceeverde}{$+$}) & Más ganancia por unidad creada; menos sobrecoste por unidad desviada\\
+ & Poco comercio previo con el resto del mundo (\textcolor{tceeverde}{$+$}) & Menos comercio que desviar\\
+\midrule
+\multirow{2}{=}{\centering Después de la unión} & Arancel común bajo (\textcolor{tceeverde}{$+$}) & Menos margen para que el socio caro desplace a $R$\\
+ & Oferta y demanda elásticas (\textcolor{tceeverde}{$+$}) & Áreas $b$ y $d$ mayores\\
+\midrule
+\multirow{3}{=}{\centering Estructura} & Más miembros (\textcolor{tceeverde}{$+$}) & Más probable que el productor eficiente esté dentro\\
+ & Economías parecidas, productos sustitutivos (\textcolor{tceeverde}{$+$}) & Compiten entre sí: más creación y menos desviación\\
+ & Número de bloques en el mundo (\textcolor{tceedorado}{$\pm$}) & No monótono: el bienestar mundial es mínimo con unos 3 bloques\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\fuente{elaboración propia a partir de \textcite{Lipsey1960Customs}, \textcite{Krugman1991Bilateralism} y \textcite{BhagwatiPanagariya1996}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{La sustituibilidad}: en el caso extremo en que $A$ y $B$ producen el mismo bien industrial y $A$ importaba de $R$ bienes agrícolas que $B$ no produce, la unión crea comercio en la industria y no desvía nada en la agricultura.
+\item \emph{El número de bloques}: \textcite{Krugman1991Bilateralism} muestra que el bienestar mundial no depende de forma monótona del número de bloques. Con un solo bloque hay libre comercio mundial y con muchos bloques pequeños apenas hay protección; el mínimo está en torno a 3 bloques.
+\item \emph{El comercio previo entre los socios} es el factor más debatido:
+  \begin{itemize}
+  \item para la hipótesis de los \concepto{socios comerciales naturales}, los países que ya comercian mucho entre sí, a menudo vecinos, crearían comercio sin apenas desviarlo \parencite{WonnacottLutz1989,Krugman1991Move,Summers1991};
+  \item \textcite{BhagwatiPanagariya1996} la rechazan: si el socio es un proveedor caro, cuanto más se le compraba antes con arancel, más recaudación se pierde al suprimirlo, y el volumen previo de comercio no dice nada del signo del efecto. Con datos de EE.\,UU., ni la cercanía ni el volumen de comercio predicen las ganancias de un acuerdo \parencite{Krishna2003}.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Comparación de la unión aduanera con una reducción de aranceles no discriminatoria (\autor{Cooper} y \autor{Massell}, 1965)}\label{sec:cooper-massell}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{CooperMassell1965New} dan la vuelta a la pregunta: siempre existe una rebaja \emph{no discriminatoria} del arancel que da una ganancia de bienestar mayor que la UA, y sin ambigüedad.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los de \autor{Lipsey} en equilibrio parcial.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item En vez de formar una UA, $A$ rebaja el arancel frente a todos hasta el $t'$ que iguala el precio de $R$ con arancel al de $B$: $p_R(1+t')=p_B$. El precio interior es el mismo que con la unión, pero las importaciones siguen viniendo de $R$, el proveedor eficiente (áreas $f$ y $g$ del gráfico~\ref{fig:viner-lipsey}).
+\item \emph{Efectos sobre cada agente}:
+  \begin{itemize}
+  \item excedente del consumidor: $+(a+b+c+d)$, como con la unión;
+  \item excedente del productor: $-a$, como con la unión;
+  \item recaudación: pasa de $c+e$ a $e+f+g$, es decir, varía en $(f+g)-c$, que puede ser positivo o negativo.
+  \end{itemize}
+\item \emph{Efecto neto}: $b+d+f+g>0$, una ganancia inequívoca. Frente a la UA, la rebaja no discriminatoria gana además $e+f+g$: no hay desviación de comercio y el Estado sigue recaudando.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Si siempre hay una rebaja no discriminatoria mejor, ¿por qué se forman UA? Porque el análisis supone un país pequeño, un solo mercado, competencia perfecta y un contexto estático. El apartado siguiente levanta esos supuestos.
+\item Además, supone que el socio no tiene aranceles. \textcite{WonnacottWonnacott1981} muestran que, si el socio protege su mercado y hay costes de transporte con el resto del mundo, la unión da a $A$ algo que una rebaja unilateral no da: \emph{acceso preferente al mercado del socio}, porque el socio también rebaja su arancel. La integración es un intercambio de concesiones.\footnote{\textcite{CooperMassell1965Toward} y \textcite{Johnson1965Economic} añaden otra razón: si los países valoran la producción industrial en sí misma (un bien público para ellos), la UA es la forma más barata de conseguirla, porque reparte la industria protegida en un mercado mayor. Es el argumento de las uniones entre países en desarrollo de los años 60.}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{¿Por qué puede ser mejor la unión aduanera que la reducción indiscriminada de aranceles? Efectos no considerados por \autor{Cooper} y \autor{Massell}}\label{sec:mejor-ua}
+
+\begin{itemize}
+\item \emph{Nexo}: como acabamos de ver, en el marco estático una rebaja no discriminatoria domina a la UA. Pasamos a ver qué ocurre al levantar, uno a uno, los supuestos de ese marco.
+\end{itemize}
+
+\subsubsection{Consideración de posibles compensaciones: \autor{Kemp} y \autor{Wan} (1976)}\label{sec:kemp-wan}
+
+\begin{itemize}
+\item \textcite{KempWan1976Elementary}, a partir de \textcite{Ohyama1972}, demuestran que \emph{siempre existe} una UA que mejora a sus miembros sin empeorar al resto del mundo: basta fijar el arancel exterior común que deja \emph{inalterado el comercio con terceros} y repartir las ganancias dentro de la unión con transferencias de suma fija.
+\item \emph{Intuición}: si el comercio con el resto del mundo no cambia, no hay desviación de comercio; dentro de la unión, la supresión de barreras es un paso hacia el libre comercio con compensaciones, y es una mejora en el sentido de \autor{Pareto}.
+\item \emph{Límites}: es un resultado de existencia; no dice qué arancel elegir ni que la unión vaya a elegirlo, y las compensaciones rara vez se pagan \parencite{Bhagwati1991World}. Implica que ampliar uniones de este tipo puede llevar, paso a paso, al libre comercio mundial.\footnote{Dos aplicaciones de la idea: el artículo~XXIV.5 del GATT impide que el arancel común sea, en conjunto, más alto que la incidencia media de los anteriores, y el XXIV.6 obliga a compensar a los terceros si la unión eleva algún arancel consolidado \parencite{GATT1947} \vertema{3.B.33}; y el Acuerdo de Cartagena (1969), que dio origen a la Comunidad Andina, previó un trato preferente para sus socios de menor desarrollo relativo, Bolivia y Ecuador. Las compensaciones entre miembros que exige el teorema rara vez se pagan \parencite{Bhagwati1991World}.}
+\item No hay que confundirlo con la \emph{regla del artículo~XXIV.5} del GATT (apartado~\ref{sec:idea-formas}): el arancel común no puede ser «en conjunto» más alto que la incidencia media de los aranceles anteriores. La regla mira el nivel del arancel; el teorema, que el comercio con terceros no cambie. Un arancel igual a la media puede seguir desviando comercio.
+\end{itemize}
+
+\subsubsection{Consideración de un país grande: efectos sobre la relación real de intercambio (\autor{Mundell}, 1964)}\label{sec:pais-grande}
+
+\begin{itemize}
+\item Hasta ahora los socios eran \emph{pequeños} frente al resto del mundo y la unión no podía alterar los precios mundiales. Si son grandes, el resultado cambia \parencite{Mundell1964Tariff}.
+\item Al formar la UA, $A$ discrimina a favor de $B$ en unos bienes, lo que mejora la relación real de intercambio (RRI) de $B$ frente a $A$ y a $R$, porque sube la demanda de sus exportaciones y su precio; y $B$ discrimina a favor de $A$ en otros, lo que mejora la RRI de $A$. Por tanto:
+  \begin{itemize}
+  \item el efecto neto sobre la RRI entre $A$ y $B$ es \emph{ambiguo};
+  \item el efecto sobre la RRI de la unión frente a $R$ es \emph{inequívoco}: la unión importa menos de $R$ y, como es grande, el precio de esas importaciones baja; su RRI mejora.
+  \end{itemize}
+\item Esa ganancia de la unión frente al resto del mundo es la del \emph{arancel óptimo} \vertema{3.B.7}: la unión, con más poder de mercado que cada socio, puede fijar un arancel común que mejore su RRI, a costa del resto del mundo y con riesgo de represalias. Es lo contrario de \autor{Kemp} y \autor{Wan}: allí la unión mejora sin perjudicar a terceros; aquí mejora \emph{porque} los perjudica.
+\item Una unión grande tiene además más peso en las negociaciones comerciales mundiales (apartado~\ref{sec:politicos}). La RRI y las curvas de oferta neta con las que se ve este efecto se estudian en \vertema{3.B.5}.
+\end{itemize}
+
+\subsubsection{Consideración de competencia imperfecta}\label{sec:competencia-imperfecta}
+
+\paragraph{Efectos procompetitivos}
+
+\begin{itemize}
+\item La integración reduce el poder de mercado de las empresas nacionales en los sectores de bienes comerciables, lo que mejora la eficiencia asignativa y la productiva.
+\item En el modelo de \textcite{BranderKrugman1983Reciprocal}, 2 monopolios nacionales protegidos por el arancel pasan, al integrarse, a competir à la \autor{Cournot} en los 2 mercados \vertema{3.A.19}: sube la cantidad, baja el precio y se reduce el margen. Con costes de comercio nulos el bienestar sube sin ambigüedad; con costes de transporte altos, el «dumping recíproco» malgasta recursos en cruzar la frontera y el saldo puede ser negativo \vertema{3.B.6} \vertema{3.B.8}.
+\item Los efectos procompetitivos son de 3 tipos:
+  \begin{itemize}
+  \item \emph{efecto precio}: la reducción de los márgenes;
+  \item \emph{efecto no precio}: el estímulo a la innovación;
+  \item \emph{reducción de las ineficiencias}: los incentivos a reducir la ineficiencia X de \textcite{Leibenstein1966Allocative} \vertema{3.A.12}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Economías de escala: \autor{Corden} (1972)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item La teoría tradicional suponía costes marginales constantes (\autor{Viner}) o crecientes (\autor{Lipsey}). Pero muchas industrias tienen \emph{economías de escala internas}\footnote{La clave son las economías de escala, más que los costes marginales decrecientes: puede haber economías de escala, un coste medio decreciente, con un coste marginal ya creciente, mientras este siga por debajo del medio.\graficonota{escala-cmg-creciente}} \vertema{3.A.12}, y una UA les da un mercado mayor en el que aprovecharlas.
+\item \textcite{Corden1972Economies} muestra que con escala siguen existiendo la creación y la desviación de comercio, y surgen 2 efectos más:
+  \begin{itemize}
+  \item el \concepto{efecto reducción de costes}, \emph{positivo}: lo que ya se producía se produce más barato, al aprovechar la escala;
+  \item el \concepto{efecto supresión de comercio}, \emph{negativo}: la unión permite que nazcan empresas que solo sobreviven gracias a la protección común y que sin ella serían desplazadas por las importaciones del resto del mundo.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\begin{itemize}
+\item \emph{i) Supuestos}:
+  \begin{itemize}
+  \item 3 países ($A$, $B$ y $R$) y un solo bien; $A$ y $B$ forman la unión;
+  \item tecnología con economías de escala: el coste medio es decreciente y, con precio igual al coste medio, la curva de coste medio hace de curva de oferta;\footnote{Con economías de escala el precio se fija en el coste medio, no en el marginal: si fuera igual al marginal, que está por debajo del medio, las empresas tendrían pérdidas.}
+  \item preferencias idénticas en $A$ y $B$, y por tanto curvas de demanda idénticas;
+  \item un productor como mucho por país, porque con fuertes economías de escala no caben más;
+  \item relación de costes: el resto del mundo es el productor más eficiente y vende a $p_R$; $B$ produce más barato que $A$. Cada caso parte de una situación distinta:
+    \begin{itemize}
+    \item caso a), arancel prohibitivo y un productor en cada país: $p_R<p_B<p_A<p_R(1+t)$;
+    \item caso b), un productor solo en $B$, que abastece su mercado ($p_B<p_R(1+t)$), mientras $A$ importa de $R$;
+    \item caso c), ningún productor: los 2 países importan de $R$ porque, a la escala de un solo mercado, producir costaría más que $p_R(1+t)$.
+    \end{itemize}
+  \end{itemize}
+\item \emph{ii) Desarrollo} del caso a) (gráfico~\ref{fig:corden}): antes de la unión, cada país se abastece de su propia empresa, al precio en que su curva de coste medio corta a su demanda, $p_A$ y $p_B$. Con la unión, la empresa de $B$ abastece los 2 mercados. Al vender más, su coste medio baja hasta $p^{\mathrm{UA}}$, donde $\mathrm{CMe}_B$ corta a la demanda conjunta $D_{A+B}$, con $p_R<p^{\mathrm{UA}}<p_B<p_A$:
+  \begin{itemize}
+  \item en $A$, \emph{creación de comercio}: el productor nacional cierra y $A$ importa de $B$ más barato; sus consumidores ganan el área entre $p_A$ y $p^{\mathrm{UA}}$ bajo $D_A$;
+  \item en $B$, \emph{reducción de costes}: lo que ya se producía en casa se produce ahora más barato; sus consumidores ganan el área entre $p_B$ y $p^{\mathrm{UA}}$ bajo $D_B$;
+  \item no hay desviación de comercio ($A$ no importaba de $R$) ni supresión de comercio (no nace ninguna empresa).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Unión aduanera con economías de escala: el caso a) de \autor{Corden}}\label{fig:corden}
+\grafico[0.7\textwidth]{corden}
+\fuente{elaboración propia a partir de \textcite{Corden1972Economies}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{iii) Implicaciones}: la tabla~\ref{tab:corden} resume los 3 casos (los casos b y c, en el anexo~\ref{anexo:corden}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Efectos de una unión aduanera con economías de escala}\label{tab:corden}
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\centering\arraybackslash}m{3.4cm}>{\centering\arraybackslash}m{3.4cm}>{\centering\arraybackslash}m{3.4cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{a) Un productor en cada país} & \textbf{b) Un productor, en $B$} & \textbf{c) Ningún productor}\\
+\midrule
+Productores antes $\rightarrow$ después & 2 $\rightarrow$ 1 & 1 $\rightarrow$ 1 & 0 $\rightarrow$ 1\\
+Creación de comercio (\textcolor{tceeverde}{$+$}) & \textcolor{tceeverde}{$\checkmark$} en $A$ & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$}\\
+Desviación de comercio (\textcolor{tceerojo}{$-$}) & \textcolor{tceerojo}{$\times$} & \textcolor{tceeverde}{$\checkmark$} en $A$, que deja de importar de $R$ & \textcolor{tceeverde}{$\checkmark$} en $A$\\
+Reducción de costes (\textcolor{tceeverde}{$+$}) & \textcolor{tceeverde}{$\checkmark$} en $B$ & \textcolor{tceeverde}{$\checkmark$} en $B$ & \textcolor{tceerojo}{$\times$}\\
+Supresión de comercio (\textcolor{tceerojo}{$-$}) & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceeverde}{$\checkmark$} en $B$: su producción nueva sustituye importaciones de $R$\\
+\rowcolor{tceesalvia}Saldo & \textcolor{tceeverde}{Positivo} & \textcolor{tceedorado}{Ambiguo} & \textcolor{tceerojo}{Negativo en la producción}\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\fuente{elaboración propia a partir de \textcite{Corden1972Economies}. $\checkmark$: el efecto se da; $\times$: no se da.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Regla de bolsillo}: si tras la unión hay menos productores, el bienestar sube (salvo especialización perversa); si hay los mismos, el efecto es ambiguo; si hay más, la producción se encarece.
+\item En el caso c) los consumidores pueden aun así ganar si $p^{\mathrm{UA}}<p_R(1+t)$, pero la unión ha creado una industria que solo vive de la protección común.
+\end{itemize}
+
+\paragraph{Especialización perversa}
+
+\begin{itemize}
+\item Con economías de escala, la unión no garantiza que produzca el más eficiente. Si se abandona el supuesto de demandas idénticas, la empresa de $A$, con una curva de coste medio más alta, puede partir de un coste medio más bajo porque su mercado era mayor o porque empezó antes, por algún \emph{accidente histórico}.
+\item Entonces es ella la que se queda con el mercado ampliado: la unión consolida a un productor ineficiente, una \concepto{especialización perversa} (gráfico~\ref{fig:especializacion-perversa}).
+\item Es la misma dependencia de la historia que da la histéresis del modelo centro-periferia: como en la especialización perversa, la historia decide quién se queda con la industria (apartado~\ref{sec:geograficos}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Especialización perversa: la empresa menos eficiente, que parte de un coste medio más bajo, abastece la unión}\label{fig:especializacion-perversa}
+\grafico[0.65\textwidth]{especializacion-perversa}
+\fuente{elaboración propia a partir de \textcite{Corden1972Economies}.}
+\end{figure}
+
+\paragraph{Diferenciación de productos: \autor{Krugman} (1979)}
+
+\begin{itemize}
+\item Desde finales de los 70, las nuevas teorías del comercio llevan al comercio internacional la organización industrial \vertema{3.B.6}. Con productos diferenciados y economías de escala internas \parencite{Krugman1979Increasing}, integrar mercados equivale a hacerlos más grandes:
+  \begin{itemize}
+  \item hay más variedades al alcance de cada consumidor;
+  \item cada empresa vende más y aprovecha mejor la escala;
+  \item con la elasticidad de la demanda creciente de \autor{Krugman}, la competencia baja el margen y el precio.
+  \end{itemize}
+\item Es el comercio \emph{intraindustrial} que \textcite{Grubel1967Intra} documentó en la Comunidad Económica Europea: países parecidos que intercambian variedades del mismo producto. Su ajuste es más suave que el del comercio interindustrial, porque se reestructuran empresas, no sectores enteros.
+\end{itemize}
+
+\paragraph{Heterogeneidad de las empresas: \autor{Melitz} (2003)}
+
+\begin{itemize}
+\item Con empresas de productividad distinta \parencite{Melitz2003Impact}, la integración tiene un efecto que no captan los modelos de empresa representativa: la \concepto{reasignación} hacia las más productivas \vertema{3.B.6}.
+  \begin{itemize}
+  \item Al bajar los costes de exportar, las empresas más productivas, que ya exportaban o empiezan a hacerlo, crecen.
+  \item La competencia de las extranjeras y la subida de los salarios expulsan a las menos productivas, que solo vendían en su mercado.
+  \item Sube así la productividad media del sector, aunque ninguna empresa haya mejorado: la ganancia está en la composición.
+  \end{itemize}
+\item \emph{Evidencia}: tras el acuerdo de libre comercio entre Canadá y EE.\,UU. de 1989, las industrias canadienses con las mayores rebajas arancelarias perdieron un 12~\% del empleo por el cierre de plantas poco productivas y ganaron un 15~\% de productividad del trabajo \parencite{Trefler2004Long}.
+\item \emph{Implicación}: las ganancias de la integración se reparten de forma desigual entre empresas, y el coste de ajuste se concentra en las pequeñas que no exportan.
+\end{itemize}
+
+\subsubsection{Consideración de un contexto dinámico: efectos sobre el crecimiento}\label{sec:dinamicos}
+
+\begin{itemize}
+\item Los \concepto{efectos dinámicos} son los que la integración tiene sobre la \emph{tasa} de crecimiento, a través de la productividad o de la acumulación de factores, y no solo sobre el nivel de la renta \vertema{3.B.9}. Los efectos procompetitivos, de escala y de variedad del apartado~\ref{sec:competencia-imperfecta} pasan a ser dinámicos cuando afectan a la innovación.
+\item En el modelo neoclásico, la integración mejora la asignación y eleva el nivel de la renta: sube el capital por trabajador y hay un \emph{efecto de acumulación a medio plazo} \parencite{Baldwin1989Growth}, pero el crecimiento a largo plazo no cambia.
+\item En el crecimiento endógeno el efecto puede ser permanente. Integrar 2 economías que intercambian bienes \emph{e ideas} equivale a duplicar su población: más investigadores y un mercado mayor para cada invento elevan la tasa de crecimiento \parencite{RiveraBatizRomer1991} \vertema{3.A.44}. Si solo se integran los bienes y no las ideas, el efecto es menor y puede desaparecer.
+  \begin{itemize}
+  \item El mecanismo, en una línea: en el modelo de \textcite{Romer1990Endogenous}, la tasa de crecimiento depende del número de investigadores y del tamaño del mercado de cada invento. Integrar 2 economías iguales que comparten las ideas duplica las 2 cosas y, con ellas, la tasa de crecimiento: es un \emph{efecto escala}.
+  \item En \textcite{GrossmanHelpman1991}, con 2 países distintos, el que tiene ventaja comparativa en investigación crece más y el otro puede especializarse en bienes que no innovan.
+  \end{itemize}
+\item La inversión es la vía más inmediata:
+  \begin{itemize}
+  \item con el mercado ampliado, las empresas de la unión invierten para aprovechar las nuevas oportunidades y alcanzar la nueva escala \parencite{Baldwin1989Growth};
+  \item las de terceros países instalan plantas dentro para «saltar» el arancel común y tener acceso a un mercado mucho mayor: es la inversión directa de sorteo del arancel \vertema{3.B.18}.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Efectos redistributivos causados por cambios en los precios relativos}\label{sec:redistributivos}
+
+\begin{itemize}
+\item La integración cambia los precios relativos de los bienes y, con ellos, la renta de los factores. Según el teorema de \textcite{StolperSamuelson1941Protection}, en el modelo de \autor{Heckscher}-\autor{Ohlin}-\autor{Samuelson}, la subida del precio relativo de un bien eleva la remuneración real del factor que usa intensivamente y reduce la del otro \vertema{3.B.5}.
+  \begin{itemize}
+  \item La integración genera ganadores y perdedores.
+  \item Las barreras al comercio benefician al factor escaso: el arancel eleva el precio relativo del bien importable, intensivo en ese factor.
+  \end{itemize}
+\item En un país que se integra con socios más abundantes en su factor escaso, ese factor pierde: tiene un motivo para oponerse a la integración y, si se organiza, para presionar al gobierno. Es el puente con la economía política del apartado~\ref{sec:politicos}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Formas superiores de integración}\label{sec:formas-superiores}
+
+\begin{itemize}
+\item \emph{Nexo}: hasta aquí, la integración de los mercados de bienes. Al subir por la escalera de la tabla~\ref{tab:formas} aparecen efectos nuevos:
+  \begin{itemize}
+  \item \emph{Mercado común}: a la libre circulación de bienes se suma la de factores. \textcite{MacDougall1960} lo analiza para el capital: con la productividad marginal decreciente, el capital sale del país donde rinde poco hacia donde rinde más hasta igualar su remuneración.
+    \begin{itemize}
+    \item La producción conjunta aumenta (un triángulo de eficiencia), porque cada unidad de capital pasa a donde produce más.
+    \item Pero redistribuye: en el país de destino ganan los trabajadores (más capital por trabajador) y pierden los propietarios del capital local (rinde menos); en el de origen, al revés. Con el trabajo como factor móvil el análisis es simétrico, y explica por qué la inmigración tiene ganadores y perdedores \vertema{3.B.18}.
+    \item Comercio de bienes y movimientos de factores pueden ser \emph{sustitutivos}: en el modelo de 2 bienes y 2 factores, el comercio ya iguala la remuneración de los factores sin que se muevan \parencite{Mundell1957} \vertema{3.B.5}.
+    \end{itemize}
+  \item \emph{Mercado único}: además de los aranceles, se suprimen las barreras no arancelarias (normas técnicas, reconocimiento mutuo), que son las que más pesan entre economías avanzadas \vertema{3.B.39}.
+  \item \emph{Unión monetaria}: se suma la moneda común; sus costes y beneficios se estudian con la teoría de las áreas monetarias óptimas \vertema{3.B.16}.
+  \item \emph{Unión económica}: coordinación o unificación de las políticas fiscales y estructurales \vertema{3.B.19}.
+  \end{itemize}
+\item \emph{Recapitulando}: los efectos estáticos de una UA son ambiguos y una rebaja no discriminatoria los domina; lo que justifica la unión es lo que ese análisis deja fuera, las compensaciones, el poder sobre la RRI, la escala, la competencia y el crecimiento. Pero la integración redistribuye entre factores, empresas y, como veremos, regiones. Esto nos lleva a preguntarnos por qué, si sus efectos son tan inciertos, los países se integran.
+\end{itemize}
+
+% ==========================================================================
+\section{Determinantes de la integración económica:\newline ¿por qué se integran los países?}\label{sec:determinantes}
+\minutos{5}
+
+\begin{notaopositor}
+En el cante (\tiempo{5}): advertencia de las «2 caras», \tiempo{0,25}; II.1, \tiempo{2,25}, con las 2 naturalezas y las 2 fuerzas de palabra, y el \emph{tomahawk} en la columna central de la pizarra ($\lambda_A$ frente a $\phi_\tau$, punto de ruptura y de sostenibilidad), con la pegatina «arrimarse al sol que más calienta» y la «U» de \autor{Krugman} y \autor{Venables}; II.2, \tiempo{2,5}, con el esquema de los 5 determinantes, con la pegatina «cuando las barbas de tu vecino veas pelar, pon las tuyas a remojar» junto al dominó, y el debate del peldaño o el escollo, que prepara la idea final. El modelo completo del centro-periferia (anexo~\ref{anexo:centro-periferia}) no se canta.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la integración se decide por razones que el análisis del bienestar no recoge. La geografía hace que la actividad se concentre cuando caen las barreras, y la economía política explica que se elijan socios y acuerdos que no son los que más bienestar dan.
+\item \emph{Las 2 caras de la moneda}: efectos y determinantes son 2 caras de la misma moneda: el efecto que un país espera de la integración es lo que la determina \emph{ex ante}. Por eso este apartado no repite los efectos de bienestar del apartado~\ref{sec:efectos}, sino que añade lo que ellos no explican: \emph{dónde} se instala la actividad cuando caen las barreras (la geografía) y \emph{por qué} un gobierno elige unos socios y no otros (la economía política).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Determinantes geográficos}\label{sec:geograficos}
+
+\subsubsection{¿Qué es la nueva geografía económica?}\label{sec:nge}
+
+\begin{itemize}
+\item La actividad económica se concentra en el espacio, entre regiones y entre países: el cinturón manufacturero del noreste de EE.\,UU. en torno a los Grandes Lagos a finales del siglo XIX, la cuenca del Ruhr o, hoy, Silicon Valley. Hay 2 tipos de causas:
+  \begin{itemize}
+  \item de \emph{primera naturaleza}: los recursos naturales, el clima, los ríos y los puertos;\footnote{Las ubicaciones originales de la industria pesada (Pittsburgh en Estados Unidos, Birmingham en Inglaterra y la cuenca del Ruhr en Alemania) reflejan la necesidad de que la producción de hierro y acero tenga lugar cerca de los yacimientos de carbón y de mineral de hierro.}
+  \item de \emph{segunda naturaleza}: las que crea la propia actividad, como los rendimientos crecientes y los costes de transporte.
+  \end{itemize}
+\item La \concepto{nueva geografía económica} (NGE), iniciada por \textcite{Fujita1988Monopolistic}, \textcite{Krugman1991Increasing} y \textcite{Venables1996Equilibrium} y recopilada por \textcite{FujitaKrugmanVenables1999Spatial}, estudia las segundas: cómo una pequeña asimetría entre regiones se convierte en una distribución muy desigual de la actividad, por el juego entre 2 fuerzas.\footnote{Es «nueva» porque la localización ya la estudiaron \autor{von Thünen} (1826), en la localización de los cultivos en torno a las ciudades, \autor{Hotelling} (1929), en la de las empresas, y \autor{Ohlin} (1933), que consideraba la localización y los costes de transporte en el comercio interior y en el internacional. \textcite{Krugman1991Geography} define la geografía económica como la localización de la producción en el espacio, la rama de la economía que se ocupa de dónde ocurren las cosas: la teoría de la localización forma parte de ella, y la del comercio internacional sería un caso especial.}
+  \begin{itemize}
+  \item \emph{Fuerzas de aglomeración} (centrípetas): las que concentran la actividad, como un mercado amplio o una mayor productividad.
+  \item \emph{Fuerzas de dispersión} (centrífugas): las que la reparten, como los costes de transporte, la congestión o los factores inmóviles.
+  \end{itemize}
+\item Sus modelos tienen 2 sectores: uno tradicional, con un bien homogéneo y rendimientos constantes (la agricultura), y otro diferenciado, con rendimientos crecientes (las manufacturas, por analogía con la concentración industrial de la revolución industrial; hoy, también los servicios avanzados).
+\item Sus resultados son muy sensibles a los supuestos y a los parámetros, lo que dificulta sacar conclusiones de bienestar y de política y contrastarlos.
+\end{itemize}
+
+\subsubsection{El modelo centro-periferia (\autor{Krugman}, 1991)}\label{sec:centro-periferia}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Igual que \textcite{Krugman1979Increasing} mostraba que puede haber comercio sin ventaja comparativa, el modelo centro-periferia de \textcite{Krugman1991Increasing} muestra que la integración puede concentrar la industria en una región sin que haya diferencias de partida entre ellas. Responde a por qué, y cuándo, un sector se concentra en pocas regiones y deja a las demás relativamente atrasadas.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item 2 regiones idénticas y 2 sectores:
+  \begin{itemize}
+  \item agricultura, con rendimientos constantes y trabajadores inmóviles, repartidos a partes iguales;
+  \item manufacturas, con variedades diferenciadas \vertema{3.A.18}, rendimientos crecientes y trabajadores que emigran hacia el salario real más alto.
+  \end{itemize}
+\item Los consumidores gastan una fracción $\mu$ de su renta en manufacturas; el comercio de manufacturas tiene costes iceberg $\tau>1$ (de cada $\tau$ unidades enviadas llega una), y el agrícola es libre.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Fuerzas de aglomeración}:
+  \begin{itemize}
+  \item el efecto del \emph{mercado doméstico}: las empresas se instalan donde está la demanda, y donde hay más empresas y trabajadores hay más demanda;\footnote{Los costes de transporte generan una causación circular entre el tamaño de la demanda y la localización de las empresas: a más empresas en una región, más demanda de sus bienes, y a más demanda de los bienes de una región, más empresas se instalan en ella.}
+  \item el del \emph{coste de la vida}: donde hay más variedades, el índice de precios es menor y el salario real mayor, y eso atrae a más trabajadores.
+  \end{itemize}
+\item \emph{Fuerzas de dispersión}: la competencia en el mercado local (más empresas por consumidor) y la demanda de los agricultores, que no se mueven.
+\item El \concepto{diagrama \emph{tomahawk}} (gráfico~\ref{fig:tomahawk}) resume el resultado en función de la libertad comercial $\phi_\tau=\tau^{1-\sigma}$, que va de 0 (comercio imposible) a 1 (comercio libre):
+  \begin{itemize}
+  \item con costes de comercio altos ($\phi_\tau$ bajo), el reparto simétrico es estable: la actividad está dispersa;
+  \item al integrarse, $\phi_\tau$ sube y se cruza el \emph{punto de ruptura}: el reparto simétrico se vuelve inestable y, ante cualquier perturbación, la industria se concentra en una región;
+  \item hay histéresis: entre el \emph{punto de sostenibilidad} y el de ruptura caben los 2 equilibrios, y la historia decide.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El diagrama \emph{tomahawk}: cuota de la región $A$ en la industria según la libertad comercial}\label{fig:tomahawk}
+\grafico[0.7\textwidth]{tomahawk}
+\fuente{elaboración propia a partir de \textcite{FujitaKrugmanVenables1999Spatial} y \textcite{Gandolfo2014Globalization}. Líneas continuas: equilibrios estables; discontinuas: inestables.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Rebajar los costes de comercio puede agrandar primero y reducir después la desigualdad entre regiones: la «U» de \textcite{KrugmanVenables1995Globalization} \vertema{3.B.40}. Con costes altos cada región produce para sí; con costes intermedios la industria se concentra en el centro; con costes muy bajos la periferia, con salarios más bajos, vuelve a atraerla.
+\item La integración tiene así un efecto que el análisis del bienestar no veía: \emph{dónde} se produce. Por eso la integración profunda suele ir acompañada de políticas de cohesión.
+\item El desarrollo completo está en \vertema{3.B.6}; lo necesario para leer el \emph{tomahawk}, en el anexo~\ref{anexo:centro-periferia}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \textcite{BaldwinForslid2000Core} unen el modelo centro-periferia con el crecimiento endógeno de \textcite{Romer1990Endogenous}: abaratar el comercio de \emph{bienes} favorece la aglomeración, y abaratar el de \emph{ideas} (que el conocimiento se difunda entre regiones) favorece la dispersión. La integración puede así estabilizar o desestabilizar el reparto de la actividad según lo que se integre.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: es muy estilizado, y esa sencillez deja ver los mecanismos que deciden si una industria se aglomera. Todos son endógenos y salen del efecto de la migración sobre la demanda regional, los índices de precios y la demanda de cada variedad.
+\item \emph{En contra}: sus resultados dependen mucho de los supuestos (un solo factor móvil, costes iceberg, preferencias concretas), y el modelo no dice si la aglomeración es buena o mala para el bienestar del conjunto.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Determinantes políticos: economía política de la integración económica}\label{sec:politicos}
+
+\begin{itemize}
+\item \emph{Nexo}: la geografía dice dónde se instala la actividad; la política, con quién se integra un país. Al empezar un proceso de integración, lo primero que se decide, y no es obvio, es quiénes serán los socios, y muchas veces se elige por razones políticas más que económicas.
+\item \emph{Desde un punto de vista histórico}:
+  \begin{itemize}
+  \item los primeros teóricos de la integración dejaban fuera las decisiones políticas de todo proceso integrador, desde la firma del primer acuerdo hasta su profundización;
+  \item la investigación posterior las incorpora, partiendo de que es un político quien firma el acuerdo, y en su decisión pueden pesar más los motivos políticos que los económicos;
+  \item varios autores sostienen que esa es precisamente la razón por la que los países no avanzan hacia el libre comercio y recurren a acuerdos regionales, en el espíritu del segundo óptimo.
+  \end{itemize}
+\item Los determinantes políticos que llevan a un país a integrarse, o a no hacerlo, se pueden ordenar en 5:
+  \begin{enumerate}
+  \item \emph{Poder de negociación}: un bloque negocia mejor que cada socio por separado; por eso a los países pequeños les interesa más integrarse. La UE negocia en la OMC y en sus acuerdos como un solo miembro, y ha conseguido así mejores condiciones frente a socios grandes como EE.\,UU. \vertema{3.B.41}.
+  \item \emph{Paz y seguridad}: la integración europea nació para hacer impensable otra guerra entre Francia y Alemania; la económica fue el medio.
+  \item \emph{Grupos de presión}: el nivel de integración resulta de la demanda de protección de los grupos de interés y de la oferta del gobierno, que pesa su apoyo frente al bienestar general \parencite{Rodrik1995Political}.
+    \begin{itemize}
+    \item Los productores están mejor organizados que los consumidores, y eso sesga los acuerdos: un acuerdo de libre comercio es más viable políticamente cuando \emph{desvía} comercio, porque entonces los productores del socio ganan cuota a costa de terceros y apoyan el acuerdo, aunque reduzca el bienestar \parencite{GrossmanHelpman1995Politics}.
+    \item Lo que \autor{Viner} veía como un riesgo es, para la economía política, un incentivo. Por eso los sectores sensibles suelen quedar fuera de los acuerdos o con largos periodos de transición.
+    \end{itemize}
+  \item \emph{Afinidad institucional}: socios con regímenes y calidad institucional muy distintos cumplen peor los compromisos, porque unas instituciones son más permeables que otras a los grupos de interés. La ASEAN lo ilustra: su antecesora, la Asociación del Sudeste Asiático de 1961 (Filipinas, la Federación Malaya y Tailandia), quedó paralizada por la disputa entre Filipinas y Malasia sobre Sabah, y en 1967 la sustituyó una asociación más amplia y con reglas más laxas, la ASEAN, que decide por consenso y sin injerencia en los asuntos internos de sus miembros \parencite{ASEAN2026Founding}.
+  \item \emph{Efecto dominó}: cada acuerdo perjudica a los exportadores de los países que se quedan fuera, por la desviación de comercio, y estos presionan a su gobierno para entrar; el bloque crece por sí mismo \parencite{Baldwin1993Domino}.\footnote{La teoría del dominó se conoce también como efecto bola de nieve.}
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{¿Peldaño o escollo?}
+
+\begin{itemize}
+\item La pregunta que deja la economía política es si los acuerdos regionales son un \emph{peldaño} (\emph{building block}) o un \emph{escollo} (\emph{stumbling block}) hacia el libre comercio multilateral \parencite{Bhagwati1991World}.
+\item A favor de que sean un peldaño:
+  \begin{itemize}
+  \item el dominó amplía los bloques hasta hacerlos casi multilaterales \parencite{Baldwin1993Domino};
+  \item entre pocos socios se negocia más deprisa y se llega más lejos (servicios, inversión, normas), y lo pactado sirve luego de modelo en la OMC;
+  \item si los socios son vecinos que ya comercian mucho, los bloques serían «naturales» y desviarían poco \parencite{FrankelSteinWei1995}.
+  \end{itemize}
+\item En contra:
+  \begin{itemize}
+  \item cada acuerdo tiene sus propias reglas de origen y se superponen en un \concepto{plato de espaguetis} (\emph{spaghetti bowl}) que encarece el comercio, sobre todo a las pymes \parencite{Bhagwati1995Infatuation};
+  \item los grupos que ganan con la preferencia se oponen a extenderla a terceros, y los bloques grandes tienen poder para elevar el arancel común (con unos 3 bloques el bienestar mundial es mínimo, tabla~\ref{tab:bhagwati-panagariya}).
+  \end{itemize}
+\item \emph{Integración profunda}: con las cadenas globales de valor, lo que se protege ya no es el producto sino la cadena (la fábrica deslocalizada necesita reglas sobre inversión, servicios, propiedad intelectual y movimientos de capital). Los acuerdos de nueva generación regulan esas materias, que la OMC apenas cubre: es el «regionalismo del siglo XXI» \parencite{Lawrence1996Regionalism,Baldwin2011Regionalism} \vertema{3.B.18}.
+\item \emph{Recapitulando}: la integración se decide por la geografía, que concentra la actividad cuando caen las barreras, y por la política, que a menudo prefiere los acuerdos que desvían comercio. Si los efectos son ambiguos en la teoría y los motivos no siempre económicos, solo los datos pueden decir cuánto ha ganado cada acuerdo: es lo que estudia el apartado siguiente.
+\end{itemize}
+
+\begin{anotaciones}
+Lecturas complementarias: el debate de la OMC «¿Son los ACR un escalón o un obstáculo para el sistema comercial?», entre Jagdish \autor{Bhagwati} y Gary \autor{Hufbauer} (2007) \parencite{OMCDebateACR}, en \url{https://www.wto.org/spanish/forums_s/debates_s/debate3_s.htm}.
+\end{anotaciones}
+
+% ==========================================================================
+\section{Metodología empírica y evidencia de la integración}\label{sec:medicion}
+\minutos{8}
+
+\begin{notaopositor}
+En el cante (\tiempo{8}): idea, \tiempo{0,25}, \emph{ex ante} frente a \emph{ex post}; III.1, \tiempo{1,25}, de palabra («MEGC: \emph{ex ante}, bienestar» en una línea de la columna derecha) con el ejemplo de UE-Mercosur; III.2, \tiempo{3,75}, con la ecuación de gravedad \eqref{eq:gravedad} recuadrada en la pizarra, la versión estructural \eqref{eq:gravedad-estructural} debajo y, si da tiempo, el esquema del gráfico~\ref{fig:gravedad}, con la pegatina «el roce hace el cariño»; III.3, \tiempo{0,75}, de palabra; III.4, \tiempo{2}, con la tabla~\ref{tab:ex-ante-ex-post} de apoyo (se dicen sus 3 o 4 cifras).
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: medir la integración es comparar lo que pasó con lo que habría pasado sin ella, un contrafactual que no se observa. Las herramientas han convergido en modelos que dan el bienestar a partir de la gravedad, y la evidencia es clara: los grandes acuerdos han creado mucho más comercio del que han desviado.
+\item \emph{Nexo}: los apartados~\ref{sec:efectos} y~\ref{sec:determinantes} dejan la respuesta en el aire: los efectos son ambiguos en la teoría y los motivos, a menudo políticos. Pasamos a ver cómo se miden y qué dicen los datos.
+\item \emph{Idea}: hay 2 familias de herramientas, y desde 2012 convergen en los \emph{nuevos modelos cuantitativos del comercio}, que dan el bienestar a partir de la gravedad \parencite{ArkolakisCostinotRodriguezClare2012New}:
+  \begin{itemize}
+  \item los \concepto{modelos de equilibrio general computable} (MEGC; en inglés, CGE), que simulan \emph{ex ante} el efecto de un acuerdo sobre la producción, el comercio y el bienestar;
+  \item la \concepto{ecuación de gravedad}, que estima \emph{ex post} cuánto comercio ha añadido un acuerdo.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelos de equilibrio general computable}\label{sec:megc}
+
+\begin{itemize}
+\item Son modelos numéricos del equilibrio walrasiano con muchos sectores, factores y países, calibrados a un año base recogido en una matriz de contabilidad social \vertema{3.A.21}. Simulan el acuerdo comparando el equilibrio con y sin él.
+\item \emph{Aplicación}: la Comisión Europea evalúa así cada acuerdo comercial antes de negociarlo y de firmarlo \vertema{3.B.41}.
+  \begin{itemize}
+  \item Para el de la UE con el Mercosur, con el modelo dinámico GTAP, estima que el PIB de la UE será unos 77.600 millones de euros mayor en 2040 y sus exportaciones a la región, un 39~\% mayores \parencite{CE2025MercosurAnalisis}. El acuerdo se aplica de forma provisional desde el 1 de mayo de 2026 \parencite{CE2026MercosurProvisional}.
+  \end{itemize}
+\item \emph{España}: \textcite{BajoRubioGomezPlana2005Simulating} simulan, con un MEGC con rendimientos crecientes y paro de equilibrio, 2 medidas del mercado único (servicios y contratación pública): ganancias de PIB y de bienestar, con contracción de algunos sectores, que piden políticas de acompañamiento para reasignar los recursos.
+\item \emph{Valoración}: los resultados dependen de las elasticidades y de los cierres elegidos, y han tendido a infravalorar el aumento del comercio, como mostró la evaluación \emph{ex post} del Tratado de Libre Comercio de América del Norte \parencite{Kehoe2005Evaluation}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La ecuación de gravedad}\label{sec:gravedad}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item El comercio entre 2 países crece con su tamaño y cae con la distancia, como la atracción entre 2 masas \parencite{Tinbergen1962Shaping}. Es una de las regularidades más sólidas de la economía, y la herramienta estándar para medir cuánto comercio añade un acuerdo.
+\item Nació como regularidad empírica, sin modelo detrás, pero hoy tiene fundamentos teóricos: \textcite{Anderson1979} la deriva de preferencias CES por bienes diferenciados por su origen, y \textcite{EatonKortum2002Technology}, de un modelo ricardiano con muchos bienes.\footnote{Como señalan \textcite{CostinotRodriguezClare2014Trade}, los tiempos han cambiado: los modelos de gravedad surgieron con \textcite{Tinbergen1962Shaping} como ateóricos, meramente descriptivos, y hoy se sabe que una amplia clase de modelos microeconómicos del comercio da ecuaciones de gravedad.}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Flujo bilateral $X_{ij}$ del exportador $i$ al importador $j$; tamaños $Y_i$ e $Y_j$, y $Y_W$ el del mundo.
+\item Costes bilaterales de comerciar $\tau_{ij}\geq 1$ (distancia, frontera, aranceles), que no hay que confundir con el arancel $t$ del apartado~\ref{sec:efectos}.
+\item Preferencias CES con elasticidad $\sigma>1$ entre bienes de distinto origen \parencite{Anderson1979}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Versión empírica}, con $d_{ij}$ la distancia, $\mathrm{ACR}_{ij}$ una variable ficticia que vale 1 si $i$ y $j$ tienen un acuerdo comercial regional y $u_{ij}$ el término de error:
+  \funcionclave[eq:gravedad]{\ln X_{ij} = \beta_0 + \beta_1 \ln Y_i + \beta_2 \ln Y_j - \beta_3 \ln d_{ij} + \beta_4\,\mathrm{ACR}_{ij} + u_{ij}}
+  $\beta_4$ mide el efecto del acuerdo: con un acuerdo, el comercio es $e^{\beta_4}$ veces el que habría sin él (gráfico~\ref{fig:gravedad}).
+\item \emph{Versión estructural} \parencite{AndersonVanWincoop2003}:
+  \begin{equation}\label{eq:gravedad-estructural}
+  X_{ij} = \frac{Y_i\,Y_j}{Y_W}\left(\frac{\tau_{ij}}{\Pi_i\,P_j}\right)^{1-\sigma}
+  \end{equation}
+  donde $\Pi_i$ y $P_j$ son las \concepto{resistencias multilaterales}: lo que cuenta no es lo lejos que están $i$ y $j$, sino lo lejos que están en relación con el resto de sus socios.
+  \begin{itemize}
+  \item En la práctica se recogen con efectos fijos de exportador y de importador.
+  \item Se estima por pseudo máxima verosimilitud de \autor{Poisson} (PPML), que trata los flujos nulos y la heterocedasticidad que sesgan la estimación en logaritmos \parencite{SantosSilvaTenreyro2006}.
+  \end{itemize}
+\item \emph{Heterogeneidad de empresas}: con empresas a la \autor{Melitz}, la distancia reduce sobre todo el número de empresas que exportan (margen extensivo), no lo que vende cada una (margen intensivo) \parencite{Chaney2008,HelpmanMelitzRubinstein2008} \vertema{3.B.6}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La ecuación de gravedad: comercio corregido por el tamaño frente a la distancia, sin acuerdo y con acuerdo comercial regional}\label{fig:gravedad}
+\grafico[0.65\textwidth]{gravedad}
+\fuente{elaboración propia a partir de \textcite{HeadMayer2014} y \textcite{BaierBergstrand2007}. Esquema, no datos.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Elasticidades}: renta cercana a 1 y distancia en torno a $-0{,}9$ en los más de 2.500 coeficientes que recogen \textcite{HeadMayer2014}; el de los acuerdos regionales es positivo, pero varía mucho según el método.
+\item \emph{Efecto frontera}: en 1988 las provincias canadienses comerciaban entre sí unas 22 veces más que con estados de EE.\,UU. de tamaño y distancia parecidos \parencite{McCallum1995}. Con las resistencias multilaterales la cifra se reduce mucho, pero la frontera sigue restando un 44~\% al comercio entre los 2 países \parencite{AndersonVanWincoop2003}. Dentro de un mercado único el efecto frontera debería ser nulo, y no lo es.
+\item \emph{Efecto de los acuerdos}: tratando el acuerdo como endógeno (los países firman con quien más esperan ganar), un acuerdo de libre comercio duplica aproximadamente el comercio entre sus miembros al cabo de unos 10 años \parencite{BaierBergstrand2007}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{España}: \textcite{Sanz2000Kalman} estima con una ecuación de gravedad el comercio que habría tenido España sin la entrada en la Comunidad (1986-1992): la rebaja de barreras hizo crecer más las importaciones que las exportaciones, lo que no es necesariamente malo para el bienestar.
+\item La evidencia de los grandes acuerdos, en el apartado~\ref{sec:evidencia}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: mide bien los flujos y es sencilla de estimar con datos públicos.
+\item \emph{En contra}: no da el bienestar, para eso hacen falta los modelos del apartado siguiente, y la elasticidad de los acuerdos depende de cómo se trate su endogeneidad.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Nuevos modelos cuantitativos del comercio}\label{sec:nqtm}
+
+\begin{itemize}
+\item \emph{Nexo}: la gravedad dice cuánto comercio crea un acuerdo; los nuevos modelos cuantitativos dicen cuánto bienestar. Son modelos de tamaño mediano, ni tan parcos como una ecuación de gravedad ni tan prolijos como un MEGC, que permiten simular contrafactuales.
+\item \textcite{ArkolakisCostinotRodriguezClare2012New} muestran que en una amplia clase de modelos (\autor{Armington}, \autor{Krugman}, \autor{Eaton} y \autor{Kortum}, y versiones de \autor{Melitz}) la ganancia del comercio depende solo de 2 estadísticos:
+  \begin{itemize}
+  \item la parte del gasto que un país dedica a bienes nacionales;
+  \item la elasticidad del comercio a los costes, que estima la gravedad.
+  \end{itemize}
+  Para EE.\,UU., la ganancia del comercio frente a la autarquía está entre el 0,7 y el 1,4~\% de la renta real.
+\item \textcite{CostinotRodriguezClare2014Trade} lo aplican a muchos países, también España: las ganancias del comercio frente a la autarquía son positivas en todos y crecen mucho al añadir varios sectores, bienes intermedios y competencia imperfecta.\footnote{Son modelos de consumidor representativo en los que el cambio del bienestar se mide como el cambio porcentual del consumo real: la variación equivalente del cambio de política, en porcentaje del gasto previo, es decir, el cambio de renta real que el consumidor aceptaría en lugar del cambio.}
+\item Miden la ganancia del comercio \emph{existente} frente a la autarquía, no la de una apertura adicional; para un acuerdo concreto se simula el cambio de costes que supone.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Evidencia de la integración}\label{sec:evidencia}
+
+\begin{itemize}
+\item \emph{El mercado único europeo, antes y después}:
+  \begin{itemize}
+  \item En 1988, el informe dirigido por Paolo \autor{Cecchini} estimó que completar el mercado interior elevaría el PIB comunitario en torno a un 4,5~\% a medio plazo (entre el 3,2 y el 5,7~\%), con más empleo, precios más bajos y mejores saldos público y exterior \parencite{Cecchini1988European,Emerson1988Economics,Shigehara1991External}. Fue el primer estudio que sumó a los efectos estáticos los de escala y competencia, y daba varias veces la ganancia, de alrededor del 1~\% del PIB, que se atribuía a la unión aduanera de 1968 \parencite{Peck1989Industrial}.
+  \item Las estimaciones \emph{ex post} le dan la razón en el signo y aun en el tamaño: con el modelo QUEST de la Comisión, el PIB de la UE es entre un 8 y un 9~\% mayor de lo que sería sin el mercado único, con ganancias mayores en las economías pequeñas y abiertas \parencite{intVeld2019Quantifying,intVeld2019Economic}.
+  \end{itemize}
+\item \emph{Acuerdos de libre comercio}: duplican el comercio entre sus miembros en una década \parencite{BaierBergstrand2007} y, como predice \autor{Melitz}, elevan la productividad por reasignación \parencite{Trefler2004Long}.
+\item \emph{Desintegración}: el \emph{Brexit} es el experimento inverso.
+  \begin{itemize}
+  \item La Oficina de Responsabilidad Presupuestaria británica supone que la salida reducirá a largo plazo la productividad un 4~\% y el comercio un 15~\% \parencite{OBR2026Brexit}.
+  \item \textcite{Bloom2025Economic} estiman que en 2025 el PIB del Reino Unido ya era entre un 6 y un 8~\% menor que sin él. La integración también se puede deshacer, y tiene costes.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Estimaciones \emph{ex ante} y \emph{ex post} de los efectos de la integración}\label{tab:ex-ante-ex-post}
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\centering\arraybackslash}m{1.6cm}>{\raggedright\arraybackslash}m{5.2cm}>{\raggedright\arraybackslash}m{3.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Proceso} & \textbf{Tipo} & \textbf{Efecto estimado} & \textbf{Fuente}\\
+\midrule
+Mercado único europeo & \emph{Ex ante} & PIB comunitario \textcolor{tceeverde}{$+4{,}5$~\%} a medio plazo (3,2-5,7~\%) & \textcite{Emerson1988Economics}\\
+Mercado único europeo & \emph{Ex post} & PIB de la UE \textcolor{tceeverde}{entre un 8 y un 9~\%} mayor & \textcite{intVeld2019Quantifying}\\
+Acuerdo UE-Mercosur & \emph{Ex ante} & PIB de la UE \textcolor{tceeverde}{77.600 millones de euros} mayor en 2040 & \textcite{CE2025MercosurAnalisis}\\
+Acuerdos de libre comercio & \emph{Ex post} & Comercio entre los miembros \textcolor{tceeverde}{$\times 2$} en 10 años & \textcite{BaierBergstrand2007}\\
+\emph{Brexit} & \emph{Ex post} & PIB del Reino Unido \textcolor{tceerojo}{entre un 6 y un 8~\%} menor en 2025 & \textcite{Bloom2025Economic}\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+\fuente{elaboración propia a partir de las fuentes citadas.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Recapitulando}: la gravedad y los nuevos modelos cuantitativos permiten medir lo que la teoría dejaba ambiguo, y la evidencia es favorable: los grandes acuerdos han creado comercio y renta, y deshacerlos cuesta.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1,5}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión, la integración es la eliminación discriminatoria de barreras entre socios.
+  \begin{itemize}
+  \item Sus efectos estáticos son ambiguos: crea comercio con el socio y lo desvía del proveedor más barato, y una rebaja no discriminatoria podría lograr lo mismo sin desviación.
+  \item La justifican lo que el análisis estático deja fuera: compensaciones, poder sobre la relación real de intercambio, escala, competencia y crecimiento.
+  \item Tiene costes: redistribución entre factores (\autor{Stolper} y \autor{Samuelson}, \autor{MacDougall}), entre sectores, más acusada si crece el comercio interindustrial que el intraindustrial, y entre regiones (centro-periferia); además, una transmisión más rápida del ciclo, el desbordamiento de las políticas nacionales y menos autonomía de política.
+  \item Se decide por razones geográficas y políticas, y se mide hoy con la ecuación de gravedad y modelos cuantitativos que, para la UE, dan ganancias claras.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: la integración es un segundo óptimo: acerca al libre comercio entre los socios y aleja de él frente a terceros, y por eso su efecto sobre el bienestar es una cuestión empírica, no un teorema. Aun así, la dificultad de avanzar en la OMC ha hecho de los acuerdos regionales la vía principal de liberalización: el artículo~XXIV los admite como excepción a la nación más favorecida, y hoy hay en vigor 390 acuerdos notificados a la OMC \parencite{OMC2026RTAIS}.
+\item \textbf{\emph{Extensiones}}: la teoría de la integración continúa en la de la integración monetaria, que pregunta cuándo compensa renunciar al tipo de cambio propio \vertema{3.B.16}; en los movimientos internacionales de factores \vertema{3.B.18} y la coordinación de políticas \vertema{3.B.19}; y, en la práctica, en los procesos de integración fuera de la UE \vertema{3.B.35}, el mercado único \vertema{3.B.39} y la política comercial de la Unión \vertema{3.B.41}.
+\item \textbf{\emph{Opinión}}: la teoría estática dice que la integración puede empeorar el bienestar; la evidencia dice que, en la práctica, los grandes acuerdos han creado mucho más comercio del que han desviado. La diferencia está en lo que el análisis de \autor{Viner} dejaba fuera: la escala, la competencia y la reasignación hacia las mejores empresas. El riesgo hoy no es tanto la desviación de comercio como la fragmentación en bloques con reglas incompatibles.
+\item \textbf{\emph{Idea final}}: ¿peldaño o escollo? La teoría no lo decide: un bloque con arancel común bajo y abierto a nuevos socios, el de \autor{Kemp} y \autor{Wan} o el dominó de \autor{Baldwin}, empuja hacia el libre comercio; un bloque que protege a sus productores ineficientes, el que prefieren los grupos de presión, lo frena. Al final, como en el refrán, dime con quién andas y te diré quién eres: depende de con quién se ande y de para qué.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: las formas de integración y sus ejemplos}\label{anexo:formas}
+
+\begin{itemize}
+\item En su forma más básica, la integración es una mera rebaja de aranceles para algunos productos y con algún país; la teoría de la integración se ocupa sobre todo de procesos más amplios. Las formas, de menos a más compromiso (tabla~\ref{tab:formas}):
+  \begin{enumerate}
+  \item \emph{Acuerdo de preferencias comerciales}: rebaja, sin llegar a cero, los aranceles de algunos productos entre los socios, y mantiene los aranceles frente a terceros. Un ejemplo es el Acuerdo de Comercio Preferencial de la Organización D-8 (Bangladés, Egipto, Indonesia, Irán, Malasia, Nigeria, Pakistán y Turquía, ocho países de mayoría musulmana, todos no árabes salvo Egipto, a los que se sumó Azerbaiyán en 2025), firmado en 2006 y en vigor desde 2011, que rebaja aranceles en una lista de productos sin llegar a eliminarlos \parencite{APP2026D8PTA,D82025Azerbaiyan}. Como acuerdo entre países en desarrollo, se ampara en la cláusula de habilitación, no en el artículo~XXIV \parencite{GATT1979Habilitacion}.
+  \item \emph{Zona de libre comercio}: suprime los aranceles y las restricciones cuantitativas entre los socios, y cada uno conserva los suyos frente al resto del mundo. Ejemplos: el T-MEC entre México, Estados Unidos y Canadá (en vigor desde 2020) o la Asociación Europea de Libre Comercio (AELC; en inglés, \emph{European Free Trade Association}, EFTA), que desde 1960 une hoy a Islandia, Liechtenstein, Noruega y Suiza \parencite{OMC2026RTAISExportacion}. Su problema práctico es la desviación del tráfico, que se combate con reglas de origen (gráfico~\ref{fig:zlc-ua}).
+  \item \emph{Unión aduanera}: añade un arancel aduanero común frente al resto del mundo, que da la misma protección a cada producto entre por donde entre; exige una legislación aduanera y una política comercial comunes. El ejemplo clásico es la Comunidad Económica Europea: los seis fundadores (Tratado de Roma, 1957) completaron la unión aduanera el 1 de julio de 1968, dieciocho meses antes de lo previsto \parencite{CCE1968UnionAduanera}. La más antigua en funcionamiento es la Unión Aduanera de África Austral (SACU), de 1910, que forman Sudáfrica, Botsuana, Esuatini, Lesoto y Namibia \parencite{SACU2026Historia}.
+  \item \emph{Mercado común}: a la unión aduanera se suma la libre circulación de los factores, el trabajo y el capital, lo que exige armonizar o coordinar algunas políticas. Un ejemplo, aunque imperfecto, es el Mercosur (Argentina, Brasil, Paraguay y Uruguay, con Bolivia como Estado parte desde 2024 y Venezuela suspendida desde 2017), que en la práctica no pasa de una unión aduanera incompleta y con fallos en la libre movilidad del trabajo \parencite{AgenciaGov2024Bolivia}.
+  \item \emph{Mercado único}: suprime también las barreras no arancelarias (normas técnicas, reconocimiento mutuo, contratación pública). Es el mercado interior de la UE desde 1993, ampliado a Islandia, Liechtenstein y Noruega por el Espacio Económico Europeo \vertema{3.B.39}.
+  \item \emph{Unión económica y monetaria}: se coordinan las políticas económicas (por ejemplo, la armonización fiscal) y se unifica la política monetaria, con una moneda común y un banco central que controla la inflación de toda el área. La zona del euro, con 21 de los 27 Estados de la UE desde la entrada de Bulgaria en 2026, es el ejemplo de manual \parencite{BCE2026Euro,CE2026PaisesEuro} \vertema{3.B.16}.
+  \item \emph{Integración económica total}: aun con una política monetaria y fiscal común pueden surgir fallos de gobernanza, y la solución es integrarse también en lo político, con instituciones comunes que legislan y ejecutan para todos. Es la integración que existe entre los estados de una federación.
+  \end{enumerate}
+\item En la práctica pocos procesos se presentan en estas formas puras. La tipología completa y los ejemplos de cada región se desarrollan en \vertema{3.B.35}.
+\item La unión aduanera tampoco está libre de problemas: supone solo libertad de movimiento de bienes, y a medida que los países se integran necesitan mecanismos formales para mover los demás factores, lo que lleva al mercado común; y un mercado común con ciclos y políticas muy dispares empuja hacia la unión económica.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo de \autor{Lipsey} en equilibrio general}\label{anexo:lipsey-eg}
+
+\paragraph{a) Supuestos}
+
+\begin{itemize}
+\item 3 países ($A$, $B$ y $R$) y 2 bienes, $X$ (exportable de $A$) e $Y$ (importable), con $p_Y^R<p_Y^B<p_Y^A$.
+\item $A$ es pequeño: la relación real de intercambio con cada país viene dada.
+\item Las preferencias de la sociedad de $A$ se representan con curvas de indiferencia convexas: la sustitución entre bienes en el consumo es la novedad frente a \autor{Viner}.
+\item Tecnología neoclásica con rendimientos constantes y competencia perfecta; frontera de posibilidades de producción cóncava.\footnote{Según las exposiciones habituales del modelo, \textcite{Lipsey1957Theory} supone además que $A$ está completamente especializado en $X$, de modo que la producción no cambia y todo el efecto es de consumo. Con una frontera cóncava, más familiar, se añade el efecto producción, que es el de equilibrio parcial.}
+\item La recaudación del arancel se devuelve a los consumidores como transferencia de suma fija.
+\end{itemize}
+
+\paragraph{b) Desarrollo}
+
+\begin{itemize}
+\item \emph{Libre comercio} (capa 1 del gráfico~\ref{fig:lipsey-eg}): $A$ produce $X$ e importa $Y$ de $R$, el más barato. La relación real de intercambio es $\mathrm{RRI}=p_X^A/p_Y^R$; $A$ produce en $P$, donde la RRI es tangente a la frontera, y consume en $C$.
+\item \emph{Arancel no discriminatorio} (capa 2): el precio relativo interior pasa a ser
+  \[
+  \frac{p_X^A}{p_Y^R(1+t)}<\frac{p_X^A}{p_Y^R}\equiv\mathrm{RRI}:
+  \]
+  la recta de precios interiores es más plana.
+  \begin{itemize}
+  \item Los productores de $Y$, más protegidos, producen más $Y$ y menos $X$, hasta $P'$.
+  \item Los consumidores igualan $\mathrm{RMS}_{XY}$ al precio interior, no a la RRI, y, con la recaudación devuelta, consumen en $C'$, sobre la paralela a la RRI que pasa por $P'$ (la relación con el resto del mundo no cambia: $A$ es pequeño). $C'$ está en una curva de indiferencia más baja que $C$.\footnote{Aunque suba el precio relativo de $Y$, no tiene por qué caer el consumo de $Y$ y subir el de $X$: depende de los efectos renta y sustitución \vertema{3.A.8}. Lo que sí se exige es que el nuevo punto de consumo esté en una curva de indiferencia más baja.}
+  \end{itemize}
+\item \emph{Unión aduanera con $B$} (capa 3): si $p_Y^B<p_Y^R(1+t)<p_Y^A$, $A$ pasa a importar de $B$. La relación de intercambio pasa a ser $p_X^A/p_Y^B$, peor que la de $R$ (desviación de comercio), pero los consumidores ya no tienen la distorsión del arancel frente a lo que importan. El consumo puede quedar en un punto como $C''$, en la misma curva de indiferencia que $C'$, en una más alta o en una más baja.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\autor{Lipsey} en equilibrio general: libre comercio, arancel no discriminatorio y unión aduanera}\label{fig:lipsey-eg}
+\grafico[0.75\textwidth]{lipsey-eg}
+\fuente{elaboración propia a partir de \textcite{Lipsey1957Theory}.}
+\end{figure}
+
+\paragraph{c) Implicaciones}
+
+\begin{itemize}
+\item Arancel y unión son los 2 subóptimos: acercarse al óptimo de \autor{Pareto} suprimiendo unas imperfecciones no garantiza mejorar a una situación con más imperfecciones. La desviación de comercio, que en equilibrio parcial con demanda fija siempre empeoraba, puede mejorar el bienestar porque suprime la distorsión del consumo.
+\item El efecto de las elasticidades se ve en el gráfico~\ref{fig:lipsey-elasticidades}: con oferta y demanda más elásticas, las áreas de creación de comercio y de consumo son mayores y la unión tiene más probabilidad de mejorar.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Unión aduanera con oferta y demanda poco elásticas y muy elásticas}\label{fig:lipsey-elasticidades}
+\grafico[0.75\textwidth]{lipsey-elasticidades}
+\fuente{elaboración propia a partir de \textcite{Lipsey1957Theory}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: los casos b) y c) de \autor{Corden}}\label{anexo:corden}
+
+\begin{itemize}
+\item Los supuestos son los del apartado~\ref{sec:competencia-imperfecta}; la tabla~\ref{tab:corden} resume los 3 casos.
+\item \emph{Caso b), un solo productor, en $B$}: antes de la unión, la empresa de $B$ abastece su mercado ($p_B<p_R(1+t)$) y $A$ importa de $R$ a $p_R(1+t)$. Con la unión, la empresa de $B$ abastece los 2 mercados y su coste medio baja hasta $p^{\mathrm{UA}}$.
+  \begin{itemize}
+  \item En $A$, \emph{desviación de comercio}: deja de importar de $R$, el más eficiente, para importar de $B$. Sus consumidores pueden ganar si $p^{\mathrm{UA}}<p_R(1+t)$, pero el Estado pierde la recaudación del arancel.
+  \item En $B$, \emph{reducción de costes}: lo que ya se producía se produce más barato, y sus consumidores ganan el área entre $p_B$ y $p^{\mathrm{UA}}$.
+  \item No hay creación de comercio ($A$ no producía) ni supresión (no nace ninguna empresa). El saldo es \emph{ambiguo}.
+  \end{itemize}
+\item \emph{Caso c), ningún productor}: a la escala de un solo mercado, producir costaría más que $p_R(1+t)$ y los 2 países importan de $R$. Con el mercado ampliado y el arancel común, una empresa de $B$ puede producir para los 2 a $p^{\mathrm{UA}}$, con $p_R<p^{\mathrm{UA}}<p_R(1+t)$.
+  \begin{itemize}
+  \item En $B$, \emph{supresión de comercio}: una producción nueva y cara, que solo vive de la protección común, sustituye importaciones de $R$, el productor eficiente.
+  \item En $A$, \emph{desviación de comercio}: pasa a importar de $B$ lo que compraba a $R$.
+  \item No hay creación de comercio ni reducción de costes (no había producción que abaratar). En la producción el saldo es inequívocamente \emph{negativo}; los consumidores solo ganan si $p^{\mathrm{UA}}<p_R(1+t)$.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo centro-periferia}\label{anexo:centro-periferia}
+
+\begin{itemize}
+\item El desarrollo completo está en \vertema{3.B.6}; aquí, lo necesario para leer el diagrama \emph{tomahawk} \parencite{Krugman1991Increasing,FujitaKrugmanVenables1999Spatial}.
+\end{itemize}
+
+\paragraph{a) Supuestos}
+
+\begin{itemize}
+\item 2 regiones, $A$ y $B$, con la misma tecnología (para que no haya diferencias de partida), y el trabajo total normalizado a 1.
+  \begin{itemize}
+  \item Una fracción $1-\mu$ de los trabajadores son agricultores inmóviles, repartidos a partes iguales, $(1-\mu)/2$ en cada región.
+  \item Una fracción $\mu$ son trabajadores industriales móviles, con $\lambda_i$ la cuota de la región $i$ ($\lambda_A+\lambda_B=1$).
+  \end{itemize}
+\item El bien agrícola es homogéneo, se produce con una unidad de trabajo por unidad, en competencia perfecta, se comercia sin coste y es el numerario.
+\item Las manufacturas son variedades \autor{Dixit}-\autor{Stiglitz} con elasticidad $\sigma>1$ \vertema{3.A.18}, en competencia monopolística, producidas con un coste $w_i(F+c\,q)$ y comerciadas con costes iceberg $\tau>1$.
+\item Los consumidores gastan una fracción $1-\mu$ de la renta en el bien agrícola y $\mu$ en manufacturas:
+  \[
+  U=X^{1-\mu}V^{\mu},\qquad V=\Big[\sum_{k=1}^{n}x_k^{\frac{\sigma-1}{\sigma}}\Big]^{\frac{\sigma}{\sigma-1}}.
+  \]
+  La preferencia por la variedad lleva a repartir el gasto entre todas las variedades y a cada empresa a diferenciar la suya, lo que le da poder de mercado.
+\end{itemize}
+
+\paragraph{b) Equilibrio instantáneo (dado $\lambda_A$)}
+
+\begin{enumerate}
+\item \emph{Precios}: cada empresa maximiza beneficios con un margen constante sobre el coste marginal: $p_{ii}=\frac{\sigma}{\sigma-1}\,c\,w_i$ en el mercado propio y $p_{ij}=\tau\,p_{ii}$ en el otro.
+\item \emph{Libre entrada}: con beneficio nulo, $p\,q=(F+c\,q)\,w$ da $q^*=\frac{F(\sigma-1)}{c}$, igual para todas las empresas de cualquier región.
+\item \emph{Mercado de trabajo industrial}: la demanda de trabajo de cada empresa por el número de empresas iguala a la oferta, y $n_i=\frac{\lambda_i\mu}{F\sigma}$.
+\item \emph{Índice de precios de las manufacturas}: $P_i=\big[n_i\,p_{ii}^{1-\sigma}+n_j\,(\tau p_{jj})^{1-\sigma}\big]^{\frac{1}{1-\sigma}}$.
+\item \emph{Renta regional}, que equivale al equilibrio de la balanza comercial de cada región: $Y_i=\frac{1-\mu}{2}+\lambda_i\,\mu\,w_i$, y el salario que vacía el mercado de cada variedad cumple $w_i^{\sigma}\propto Y_i\,P_i^{\sigma-1}+\phi_\tau\,Y_j\,P_j^{\sigma-1}$, con $\phi_\tau=\tau^{1-\sigma}$.
+\end{enumerate}
+
+\paragraph{c) Dinámica}
+
+\begin{itemize}
+\item Los trabajadores industriales emigran hacia el salario real más alto, $\omega_i=w_i/P_i^{\mu}$ (el precio del bien agrícola es 1):
+  \[
+  \dot\lambda_A=\omega_A(\lambda_A)-\omega_B(\lambda_A).
+  \]
+\item \emph{3 mecanismos} ante una subida de $\lambda_A$:
+  \begin{itemize}
+  \item \emph{mercado doméstico}: más gasto en $A$, aglomeración;
+  \item \emph{coste de la vida}: más variedades locales, $P_A$ baja, aglomeración;
+  \item \emph{competencia en el mercado local}: más empresas por consumidor, dispersión.
+  \end{itemize}
+\item Con $\phi_\tau$ bajo domina la dispersión; con $\phi_\tau$ alto, la aglomeración; en medio caben los 2 equilibrios (gráfico~\ref{fig:centro-periferia-dinamica} y gráfico~\ref{fig:tomahawk}): son estables los equilibrios en los que, ante una perturbación, la diferencia de salarios reales devuelve a los trabajadores al punto de partida.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Dinámica del modelo centro-periferia con costes de comercio altos, intermedios y bajos}\label{fig:centro-periferia-dinamica}
+\grafico[0.95\textwidth]{centro-periferia-dinamica}
+\fuente{elaboración propia a partir de \textcite{Gandolfo2014Globalization}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio sobre creación y desviación de comercio, uniones aduaneras, formas de integración, el artículo~XXIV del GATT y la ecuación de gravedad: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test} \parencite{GutierrezMarcos2026Simulador}.
+\end{anotaciones}
+
+\bibliografia
+\end{document}
