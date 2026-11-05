@@ -1,0 +1,45 @@
+% Descomposición de la respuesta del consumo a una bajada de los tipos de
+% interés en efectos directos (sustitución intertemporal y renta de los
+% intereses: el tipo en las decisiones del hogar) e indirectos (empleo y
+% salarios, a través del equilibrio general), en % de la respuesta total.
+% Gráfico de referencia de la ficha hank (3.A.37, II.4).
+%   Modelo de agente representativo (RANK): casi todo directo (se dibuja 100/0).
+%   HANK de Kaplan, Moll y Violante (2018): en torno a 1/5 directo y 4/5
+%   indirecto (cifra redonda del texto; la del artículo, 19 % y 81 % en su
+%   tabla de descomposición, por comprobar en la tabla antes de publicar).
+% Paleta: directos dicopf (el canal del tipo de interés en canales-transmision),
+% indirectos dicempleo (empleo y renta).
+% Capas (CRITERIOS §7): barras RANK → ejes → barras HANK → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=11cm,height=5cm,
+    xbar stacked,bar width=0.75cm,
+    xmin=0,xmax=100,ymin=0.4,ymax=2.75,
+    ytick={1,2},yticklabels={{HANK},{agente\\ representativo}},
+    yticklabel style={align=right,font=\footnotesize},
+    xtick={0,20,...,100},
+    xticklabel={\pgfmathprintnumber{\tick}~\%},
+    ticklabel style={font=\footnotesize},
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    y axis line style={-},
+    xlabel={\% de la respuesta del consumo},xlabel style={font=\footnotesize},
+    clip=false,
+    dicapas]
+  % 1: modelo representativo: casi todo es directo
+  \capa{1}{\addplot[on layer=dicbarras,dicbarra=dicopf,forget plot] coordinates {(0,1) (100,2)};}
+  \capa{1}{\addplot[on layer=dicbarras,dicbarra=dicempleo,forget plot] coordinates {(0,1) (0,2)};}
+  % 3: HANK: 1/5 directo, 4/5 indirecto
+  \capa{3}{\addplot[on layer=dicbarras,dicbarra=dicopf,forget plot] coordinates {(20,1) (0,2)};}
+  \capa{3}{\addplot[on layer=dicbarras,dicbarra=dicempleo,forget plot] coordinates {(80,1) (0,2)};}
+  % 4: etiquetas
+  \capa{4}{\dicrotulo[text=white,font=\footnotesize\bfseries]{(50,2)}{directos: casi todo}}
+  \capa{4}{\dicrotulo[text=white,font=\footnotesize\bfseries]{(10,1)}{$\approx\frac15$}}
+  \capa{4}{\dicrotulo[text=white,font=\footnotesize\bfseries]{(60,1)}{indirectos: $\approx\frac45$}}
+  \capa{4}{\dicrotulo[anchor=south west,font=\scriptsize,text=dicopf!80!black]{(0,2.36)}{directos (el tipo en las decisiones del hogar)}}
+  \capa{4}{\dicrotulo[anchor=south east,font=\scriptsize,text=dicempleo!80!black]{(100,2.36)}{indirectos (empleo y renta)}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

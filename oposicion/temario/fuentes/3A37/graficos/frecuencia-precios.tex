@@ -1,0 +1,64 @@
+% Copiado sin cambios de fuentes/3A07/graficos/frecuencia-precios.tex (3.A.7, frecuencia de cambio de precios en la zona del euro), 5/11/2026. Si cambia el original, copiar de nuevo.
+% Frecuencia mensual de los cambios de precios de consumo en la zona del euro
+% (9 países), 2010-2024, con y sin rebajas, frente a EE. UU. (sin rebajas,
+% 1998-2005). Datos: ../datos/frecuencia-precios.csv (filas de Gautier et
+% al., 2026, BCE WP 3181, tabla B1: las 6 últimas; se leen saltando las
+% 8 primeras líneas, comentario, cabecera y otros estudios; la línea
+% del 10 % es la fila de Gautier et al., 2024, PRISMA, para EE. UU.).
+%   sin rebajas: 8,2 (2010-2019); 8,0; 8,0; 12,0 (2022); 10,2; 8,6 (2024)
+%   con rebajas: 12,0; 11,9; 11,8; 15,7; 14,2; 13,2
+% Consulta: 4/11/2026.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% tono claro de la misma familia para las barras con rebajas
+\colorlet{tceemoradoclaro}{tceemorado!35}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11cm, height=7cm,
+      xmin=-0.6, xmax=5.6, ymin=0, ymax=18,
+      xtick={0,...,5}, xticklabels={2010-2019,2020,2021,2022,2023,2024},
+      ytick={0,3,...,18},
+      axis lines=left, tick align=outside, clip=false,
+      ylabel={\% de los precios que cambian cada mes},
+      ticklabel style={font=\footnotesize},
+      /pgf/number format/use comma,
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none,
+        font=\footnotesize},
+      legend columns=2, legend cell align=left, reverse legend,
+      legend style={/tikz/every even column/.append style={column sep=8pt}},
+      dicapas,
+    ]
+    % 1: barras con rebajas (tono claro), a la derecha de cada año
+    \capa{1}{\addplot[on layer=dicbarras, ybar, area legend, bar width=0.36, bar shift=0.19,
+        dicbarra=tceemoradoclaro]
+      table[col sep=comma, comment chars={\#}, header=false, skip first n=8, x expr=\coordindex,
+        y index=3]
+        {../datos/frecuencia-precios.csv};
+      \addlegendentry{con rebajas}}
+    % 2: barras sin rebajas (color fuerte), a la izquierda
+    \capa{2}{\addplot[on layer=dicbarras, ybar, area legend, bar width=0.36, bar shift=-0.19,
+        dicbarra=tceemorado]
+      table[col sep=comma, comment chars={\#}, header=false, skip first n=8, x expr=\coordindex,
+        y index=4]
+        {../datos/frecuencia-precios.csv};
+      \addlegendentry{sin rebajas}}
+    % 3: eje horizontal
+    \capa{3}{\dicraya{(-0.6,0) (5.6,0)}}
+    % 4: referencia de EE. UU. sin rebajas (Gautier et al., 2024)
+    \capa{4}{\dicraya[dicumbral]{(-0.6,10) (5.6,10)}}
+    \capa{4}{\dicrotulo[anchor=west, font=\footnotesize, text=dicreferencia, align=left]{(5.62,10)}
+      {EE.\,UU., sin\\rebajas,\\1998-2005}}
+    % 5: valores de las barras sin rebajas
+    \capa{5}{\addplot[on layer=axis descriptions, dicsuelto, draw=none,
+        nodes near coords, nodes near coords style={font=\footnotesize, anchor=south, yshift=2pt,
+          /pgf/number format/.cd, fixed, fixed zerofill, precision=1, use comma}]
+      table[col sep=comma, comment chars={\#}, header=false, skip first n=8, x expr=\coordindex-0.19,
+        y index=4]
+        {../datos/frecuencia-precios.csv};}
+  \end{axis}
+  % Marco fijo: deja sitio al rótulo de EE. UU. desde la primera capa del vídeo
+  \path ([xshift=2.4cm]current axis.east) ([yshift=0.2cm]current axis.north);
+\end{tikzpicture}
+\end{document}

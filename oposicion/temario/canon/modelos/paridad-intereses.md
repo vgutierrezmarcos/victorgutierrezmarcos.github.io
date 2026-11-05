@@ -1,7 +1,7 @@
 # Paridades de intereses (cubierta y no cubierta)
 
 - **Área:** macro-abierta · **Tema de referencia:** 3.B.13 (Mercados de divisas: operaciones e instrumentos) — la PCI es la condición de no arbitraje de las operaciones a plazo y la PNCI la de la especulación; ambas y su contraste (paradoja del margen *forward*) ya se desarrollan allí. 3.B.14 las usa como teoría de determinación.
-- **Temas que lo usan:** 3.B.13 (desarrollo), 3.B.14 (desarrollo → resumen), 3.B.25 (mención: precio del *forward* de divisas), 3.B.12, 3.B.15, 3.B.17 (uso de $i = i^* + \gamma E^e$)
+- **Temas que lo usan:** 3.B.13 (desarrollo), 3.B.14 (desarrollo → resumen), 3.B.25 (mención: precio del *forward* de divisas), 3.B.12, 3.B.15, 3.B.17 (uso de $i = i^* + \gamma E^e$) También 3.A.37 (mención; hecho, 5/11/2026: I.2, el canal del tipo de cambio con la PNCI $i=i^*+\gamma E^e$ y $E$ directo, euros por dólar, `\vertema{3.B.14}`).
 - **Manuales de referencia:** Krugman, Obstfeld y Melitz, cap. 14 y apéndice (paridad de intereses); Sarno y Taylor, *The Economics of Exchange Rates*, cap. 2; Obstfeld y Rogoff, *Foundations…*, cap. 8; Fama (1984); Froot y Thaler (1990).
 - **Decisión D013 (13/10/2026):** ¿Cómo se escribe el tipo de cambio nominal en niveles, a plazo, en logaritmos y esperado? E (directo, ↑E = depreciación), F a plazo, minúsculas e, f para logaritmos, E^e_{t+1} para el esperado; la esperanza se escribe 𝔼_t[·]
 - **Decisión D082 (13/10/2026):** ¿Cómo se llama la paridad de intereses sin cobertura? Paridad no cubierta de intereses (PNCI), citando PDI («descubierta») como sinónimo
@@ -28,6 +28,7 @@ Contraste (Fama, 1984): $\Delta e_{t+1} = \beta_0 + \beta_1 (f_t - e_t) + \varep
 | 3.B.14 | Determinación del tipo de cambio | resumen | Las dos ecuaciones y su lectura como teoría de $E$; la PNCI como pieza de Dornbusch y del enfoque monetario | Derivación completa y evidencia empírica (remitir a 3.B.13) |
 | 3.B.25 | Derivados | mención | Precio del *forward* de divisas por PCI: $F_0 = S_0 e^{(i-i^*)T}$ | El razonamiento de arbitraje paso a paso |
 | 3.B.15, 3.B.17 | Regímenes; crisis | mención | $i = i^* + \gamma E^e$ (+ prima de riesgo) como restricción de la política monetaria con tipo fijo | — |
+| 3.A.37 | Transmisión por el tipo de cambio | mención (hecho, 5/11/2026) | I.2: $i=i^*+\gamma E^e$; si el BCE sube y la Reserva Federal no, el euro se aprecia hoy lo bastante para que se espere una depreciación que iguale los rendimientos; el tipo real, sin letra (la $q$ es la de Tobin en el mismo tema) | La PCI y los mercados a plazo |
 
 ## Divergencias encontradas en el temario actual
 - **Repetición**: el bloque de paridades está casi literal en 3.B.13 y 3.B.14 (el Word lo admite: «Es parecido en los temas 3.B.13 y 3.B.14») y la PCI vuelve en 3.B.25.

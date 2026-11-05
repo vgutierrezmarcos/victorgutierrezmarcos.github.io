@@ -1,0 +1,41 @@
+% Transmisión de una subida inesperada del tipo de interés en el modelo
+% neokeynesiano canónico, plano (x_t, pi_t), con expectativas dadas
+% (perturbación transitoria: E_t[x_{t+1}] = E_t[pi_{t+1}] = 0).
+% Variante de fuentes/3A07/graficos/nek-xpi.tex: mismo plano, valores y estilos.
+%   NKPC: pi_t = kappa x_t                       (kappa = 0,5)
+%   DA (IS + regla de Taylor): pi_t = -[(theta + phi_x)/phi_pi] x_t + (r^n_t - rho - eps_t)/phi_pi
+%   Valores: theta = 1; phi_x = 0,5; phi_pi = 1,5 (pendiente de la DA = -1); E_0 = (0, 0)
+%   eps_t = 1,125: DA' pi = -x - 0,75; E_1 = (-0,5; -0,25)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=2.1cm,y=2.1cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.75,-1.6) rectangle (1.95,1.55);
+  % 1: ejes (origen en el centro)
+  \capa{1}{\draw[eje] (-1.4,0) -- (1.5,0) node[below left=2pt and 0pt] {$x_t$};}
+  \capa{1}{\draw[eje] (0,-1.25) -- (0,1.4) node[left] {$\pi_t$};}
+  % 2: curva de Phillips neokeynesiana, creciente (pendiente kappa)
+  \capa{2}{\draw[curva1] (-1.3,-0.65) -- (1.35,0.675) node[etiqueta, right, text=tceemorado] {NKPC};}
+  % 3: demanda agregada dinámica (IS + regla), decreciente
+  \capa{3}{\draw[curva3] (-1.1,1.1) -- (1.05,-1.05) node[etiqueta, right, text=tceeverde] {DA};}
+  % 4: equilibrio inicial
+  \capa{4}{\node[punto] (E0) at (0,0) {};}
+  \capa{4}{\node[etiqueta, anchor=south west] at (0.08,0.03) {$E_0$};}
+  % 5: subida inesperada del tipo (eps_t > 0): la DA se desplaza a la izquierda
+  \capa{5}{\draw[curva3, desplazada] (-1.4,0.65) -- (0.4,-1.15) node[etiqueta, right, text=tceeverde] {DA$'$};}
+  \capa{5}{\draw[flecha] (0.66,-0.78) -- (0.1,-0.78);}
+  \capa{5}{\node[etiqueta, text=tceerojo, font=\footnotesize, anchor=south] at (0.36,-0.76) {$\varepsilon_t>0$};}
+  % 6: nuevo equilibrio: brecha negativa e inflación más baja
+  \capa{6}{\node[punto] (E1) at (-0.5,-0.25) {};}
+  \capa{6}{\node[etiqueta, anchor=north east, inner sep=1pt] at (-0.55,-0.3) {$E_1$};}
+  \capa{6}{\draw[flecha, shorten <=3pt, shorten >=3pt] (E0) to[bend right=35] (E1);}
+  \capa{6}{\draw[guia] (E1) -- (-0.5,0) node[above, font=\footnotesize, text=black] {$x_t<0$};}
+  \capa{6}{\draw[guia] (E1) -- (0,-0.25);}
+  \capa{6}{\node[font=\footnotesize, anchor=west] at (0.3,-0.25) {$\pi_t<0$};}
+  % 7: la cadena de la transmisión
+  \capa{7}{\node[etiqueta, text=tceerojo, font=\footnotesize, anchor=west] at (-1.65,-1.45)
+      {$i_t\uparrow\ \Rightarrow\ i_t-\mathbb{E}_t[\pi_{t+1}]\uparrow\ \Rightarrow\ x_t\downarrow$ (IS) $\ \Rightarrow\ \pi_t\downarrow$ (NKPC)};}
+\end{tikzpicture}
+\end{document}

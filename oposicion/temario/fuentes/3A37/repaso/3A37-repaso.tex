@@ -1,0 +1,272 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Transmisión monetaria]{3.A.37}{Política monetaria (II). Los mecanismos de transmisión de la política monetaria convencional. Rigideces de precios, rigideces de salarios y fricciones financieras. Los mecanismos de transmisión de la política monetaria no convencional.}
+\tcefecha{05/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «las cosas de palacio van despacio»}{2,5}
+\apartadocante{I. Transmisión de la política convencional}{8}
+\subcante{1. ¿Por qué tiene efectos reales el dinero?}{2,5}
+\subcante{2. Los canales de transmisión}{3,5}
+\subcante{3. Evidencia: efectos, retardos, identificación}{2}
+\apartadocante{II. Rigideces y fricciones financieras}{10,5}
+\subcante{1. Rigideces de precios: modelo neokeynesiano}{3}
+\subcante{2. Rigideces de salarios: contratos escalonados}{2,5}
+\subcante{3. Fricciones financieras: canales del crédito}{3}
+\subcante{4. Hogares distintos: canal redistributivo}{2}
+\apartadocante{III. Transmisión de la política no convencional}{8}
+\subcante{1. El límite inferior de los tipos}{1,5}
+\subcante{2. La orientación de la política}{2}
+\subcante{3. Las compras de activos}{2,5}
+\subcante{4. Tipos negativos, préstamos condicionados, curva}{1,5}
+\subcante{5. La evidencia y la salida}{0,5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: \emph{izda.} (\hyperref[rep:I]{I}), escuelas y esquema de canales, que se queda; joroba en un rincón. \emph{Centro} (\hyperref[rep:II]{II}): 3 ecuaciones y gráficos que se borran. \emph{Dcha.} (\hyperref[rep:III]{III}): esquema no convencional con el tipo largo en el centro. \emph{Pegatinas}: «cuando EE.\,UU.\ estornuda, el mundo se resfría», «despacito y buena letra», «a lo hecho, pecho», «el banco te presta el paraguas cuando hace sol…», «donde no hay harina, todo es mohína», «las palabras se las lleva el viento», «cada mochuelo a su olivo», «tanto va el cántaro a la fuente…». \emph{Ejemplo}: familia con hipoteca variable y pyme de azulejos.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Las cosas de palacio van despacio». 21/7/2022: BCE sube tipos por 1.ª vez en 11 años. Euríbor 12 m: $-0{,}50$\,\% (dic.\ 2021) $\to$ 4,16\,\% (oct.\ 2023); inflación zona del euro: techo 10,6\,\% (oct.\ 2022), cerca del 2\,\% solo en otoño 2024. Efecto máximo en precios: 29 meses. Y se repite: inflación 4\,\% (oct.\ 2026), subidas en jun.\ y sept.: depósito 2,50\,\%. \emph{¿Por qué caminos y con qué retraso llega el tipo a un día al gasto y a los precios, y qué hacer cuando ya no puede bajar?}
+\item \textbf{Relevancia}: \emph{política}: se decide hoy sobre la economía de dentro de 1-2 años; sin canales ni retardos no se sabe cuánto mover ni cuándo parar. \emph{España} (bancos, hipotecas variables): antes y más fuerte \vertema{3.B.43}. \emph{Teoría}: efectos reales exigen fricciones.
+\item \textbf{Contextualización}: \concepto{mecanismos de transmisión}: caminos de una decisión del BC (tipo, balance, comunicación) a precios de activos y financiación $\to$ demanda $\to$ $Y$ y $\pi$; cada camino, un \concepto{canal}. \concepto{Convencional}: tipo a muy CP (BCE desde 2024: facilidad de depósito, guía el €STR); \concepto{no convencional}: balance (compras, préstamos largos) y comunicación en el límite o si la transmisión se rompe. \concepto{Neutral}: solo mueve lo nominal (casi a LP, no a CP). \concepto{Rigidez nominal}: precios/salarios nominales no se ajustan enseguida. \concepto{Rigidez real}: el precio/salario \emph{relativo} deseado responde poco a la actividad; sola no da efectos reales, amplía los de la nominal (\autor{Ball}-\autor{Romer}, 1990) \vertema{3.A.7}. \concepto{Fricción financiera}: información o incentivos entre prestamista y prestatario $\Rightarrow$ coste del crédito depende del patrimonio.
+\item \textbf{Problemática}: ¿por qué efectos reales y solo a CP? ¿Por qué canales y con qué retraso? ¿Las fricciones crean o amplifican? ¿Qué cambia si el tipo no puede bajar?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, canales de la convencional; \hyperref[rep:II]{II}, rigideces y fricciones que la hacen posible y la amplifican; \hyperref[rep:III]{III}, canales de la no convencional.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{I. Transmisión de la política convencional\label{rep:I}}
+\begin{ideaclave}
+Efectos reales a CP, casi ninguno a LP. Llega por varios canales a la vez (tipo de interés, activos, tipo de cambio, crédito, expectativas) y despacio: más de 1 año en $Y$, más de 2 en $\pi$. Medirlo exige separar lo que decide el BC de su respuesta a la economía.
+\end{ideaclave}
+
+\sub{I.1. ¿Por qué tiene efectos reales el dinero?\label{rep:I.1}}
+\begin{itemize}
+\item \textbf{Clásicos}: \autor{Hume} (1752): más dinero anima la actividad solo durante el ajuste. \autor{Fisher} (1911) lee causal la ecuación de cambio $MV\equiv PT$ (\autor{Newcomb}, 1885); $\gamma_M+\gamma_V=\pi+\gamma_Y$. Transmisión \emph{directa} por saldos reales; \concepto{dicotomía clásica}.
+\item \textbf{\autor{Keynes}} (1936): \emph{indirecta}, \concepto{canal del tipo de interés}: $M$↑ $\Rightarrow$ $i$↓ $\Rightarrow$ $I$↑ $\Rightarrow$ multiplicador. 2 eslabones débiles: \emph{trampa de la liquidez} (el tipo no baja) e \emph{inversión insensible} (\emph{animal spirits}). Postkeynesianos (\autor{Kaldor}, 1982; \autor{Moore}, 1988): dinero endógeno, oferta horizontal al tipo oficial; los préstamos crean depósitos (\autor{McLeay}-\autor{Radia}-\autor{Thomas}, 2014).
+\item \textbf{Síntesis}: IS-LM (\autor{Hicks}, 1937) \vertema{3.A.5}: más eficaz con LM inclinada e IS plana; eslabones débiles = LM horizontal, IS vertical. \autor{Phillips} como menú (\autor{Samuelson}-\autor{Solow}, 1960).
+\item \textbf{Monetaristas}: \emph{money matters}; \emph{reajuste de carteras} (bonos, acciones, capital, duraderos) + riqueza (\autor{Brunner}-\autor{Meltzer}, 1972). Retardos largos y variables: 6-9 meses a $PY$ y otros tantos a $P$ (\autor{Friedman}, 1961, 1970) $\Rightarrow$ regla del $k$\,\%. LP: \autor{Phillips} vertical.
+\item \textbf{NMC}: solo lo \emph{no anticipado}. Islas (\autor{Lucas}, 1972): $y_t=y^n+\psi(p_t-p^e_t)$ \vertema{3.A.6}; \concepto{proposición de inefectividad} (\autor{Sargent}-\autor{Wallace}, 1975): $y_t=y^n+(\psi\varepsilon_t+u_t)/(1+\psi)$. \autor{Ball}-\autor{Mankiw}-\autor{Romer} (1988), 43 países: la pendiente la explica el \emph{nivel} de inflación. Ciclo real: neutral incluso a CP.
+\item \textbf{NEK}: expectativas racionales sin flexibilidad: con contratos escalonados también la política anticipada tiene efectos (\autor{Fischer}, 1977; \autor{Taylor}, 1980). Lo que daba la inefectividad era la flexibilidad.
+\end{itemize}
+
+\sub{I.2. Los canales de transmisión\label{rep:I.2}}
+\begin{itemize}
+\item \emph{1.er eslabón}: tipo oficial $\to$ interbancario $\to$ curva y tipos bancarios. Tipo largo = media de cortos esperados + prima por plazo \vertema{3.B.24}: pesa lo que el BC anuncia.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{canales-transmision}{Canales: del tipo oficial a la demanda, $Y$ y $\pi$ (1-2 años de retraso)}
+\begin{itemize}
+\item \textbf{Tipo de interés}: con precios rígidos, $i$↑ = $r$↑: inversión (coste de uso) \vertema{3.A.34}; consumo por sustitución intertemporal (EIS baja) \vertema{3.A.33}; vivienda y duraderos, lo más sensible. $i\uparrow\Rightarrow r\uparrow\Rightarrow I,C^{\mathrm{dur}},C\downarrow\Rightarrow Y\downarrow\Rightarrow\pi\downarrow$. \emph{Familia}: 150.000 € a 25 años, Euríbor + 1: cuota $\approx$530 € (dic.\ 2021) $\to$ $\approx$890 € (oct.\ 2023): 360 € menos al mes, por la cuota, no por preferir ahorrar.
+\item \textbf{Precios de activos}: \concepto{$q$ de \autor{Tobin}} (1969) = valor de mercado / coste de reposición; $q<1$ no compensa invertir; cuenta la $q$ marginal, la bolsa da la media: coinciden con rend.\ constantes y competencia perfecta (\autor{Hayashi}, 1982). \emph{Efecto riqueza} (acciones, vivienda) \vertema{3.A.33}.
+\item \textbf{Tipo de cambio}: paridad no cubierta $i=i^*+\gamma E^e$ ($E$ €/\$): BCE sube y la Fed no $\Rightarrow$ € se aprecia hoy hasta esperar depreciación \vertema{3.B.14}. Efectos: $X-M$↓ (\autor{Marshall}-\autor{Lerner}) \vertema{3.B.12}; inflación importada↓, traspaso incompleto, depende de la moneda de facturación (dólar: \autor{Gopinath}, 2020); menor en zona del euro que en cada país. \emph{Pyme}: azulejos más caros en EE.\,UU., menos pedidos. Hacia fuera: \concepto{ciclo financiero global} (\autor{Rey}, 2013; \autor{Miranda-Agrippino}-\autor{Rey}, 2020).
+\item \textbf{Crédito} (\autor{Bernanke}-\autor{Gertler}, 1995): cambia \emph{cuánto} crédito y a quién. \concepto{Crédito bancario}: bancos dependientes de depósitos prestan menos; pymes sin sustituto. \concepto{Balance}: $i$↑ $\Rightarrow$ flujo de caja y garantías↓ $\Rightarrow$ prima↑. \concepto{Toma de riesgos} (\autor{Borio}-\autor{Zhu}, 2012): tipos bajos largo tiempo $\Rightarrow$ búsqueda de rentabilidad; España, registro de crédito: bancos con menos capital prestan a empresas más arriesgadas (\autor{Jiménez} et al., 2014).
+\item \textbf{Expectativas}: subida creíble $\Rightarrow$ $\pi^e$↓ $\Rightarrow$ salarios y precios fijados con el objetivo: desinflación con menos pérdida de $Y$ \vertema{3.A.36}. Clave del NEK y del límite inferior.
+\item \emph{Zona del euro y España}: empresas más dependientes de bancos que en EE.\,UU. (\autor{De Fiore}-\autor{Uhlig}, 2011) $\Rightarrow$ pesa el crédito. \emph{2022-2023}: depósito $-0{,}50\to4$\,\% (450 pb): crédito nuevo a empresas +350 pb; hipotecas nuevas algo más de 200; plazo hogares $\approx$300 (zona) y 260 (España); vista 0 $\to$ 0,4\,\% (zona), 0,2\,\% (España). \emph{Tipo variable}: hipotecas vivas España 1,2\,\% (jun.\ 2022) $\to$ 3,7\,\% (feb.\ 2024); zona 1,6 $\to$ 2,5\,\%: canal del balance más rápido aquí. \emph{Bajadas} jun.\ 2024-jun.\ 2025: $-200$ pb; empresas $-150$, hipotecas $<50$.
+\item \emph{Retardos} (revisión gradual, inversión planificada, deudas escalonadas) $\Rightarrow$ el BC mira a la $\pi$ prevista a 1-2 años.
+\end{itemize}
+
+\sub{I.3. Evidencia: efectos, retardos, identificación\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Identificación}: el BC reacciona a la economía (sube si prevé $\pi$): aislar la \concepto{perturbación monetaria} ($\varepsilon_t$ de la regla de \autor{Taylor}).
+\item \emph{Métodos}: \emph{historia} (\autor{Friedman}-\autor{Schwartz}, 1963) y \emph{San Luis} (\autor{Andersen}-\autor{Jordan}, 1968: \$1 $\to$ +5,8 de PNB nominal; pero el dinero responde a la renta). \emph{Narrativa}: \autor{Romer}-\autor{Romer} (1989, 6 episodios, el último \autor{Volcker} 1979; 2004, limpian de previsiones). \emph{VAR} (\autor{Sims}, 1992; \autor{Christiano}-\autor{Eichenbaum}-\autor{Evans}, 1996): $Y$ y $P$ no reaccionan en el periodo. \emph{Alta frecuencia} (30 min alrededor del anuncio): \autor{Gertler}-\autor{Karadi} (2015, EE.\,UU.); zona del euro, \autor{Altavilla} et al.\ (2019), \autor{Jarociński}-\autor{Karadi} (2020: separan sorpresa de política y de \emph{información}).
+\item \emph{Resultados}: LP $\gamma_M$ y $\pi$ casi 1 a 1, $Y$ independiente. CP: $Y$ cae en \concepto{joroba}, fondo tras varios trimestres; narrativa: producción industrial $-4{,}3$\,\% $\approx$2 años tras +1 punto. Precios: bajan tras 22 meses (\autor{Romer}-\autor{Romer}); máximo a 29 meses de media (\autor{Havranek}-\autor{Rusnak}).
+\item \concepto{Rompecabezas de los precios} (\emph{price puzzle}): en los 1.os VAR los precios \emph{subían} (\autor{Sims}, 1992): el BC sube porque prevé $\pi$. Se corrige con sus previsiones y separando las sorpresas de información.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{respuesta-joroba}{Subida inesperada: $Y$ en joroba; precios después}
+
+% ==========================================================================
+\bloque[10,5]{II. Rigideces y fricciones financieras\label{rep:II}}
+\begin{ideaclave}
+Basta que los precios no se ajusten todos a la vez para que mover el tipo nominal mueva el real y la demanda. Los contratos salariales alargan el efecto; las fricciones financieras lo amplifican; los hogares distintos cambian el canal principal: de la sustitución intertemporal a la renta y el empleo.
+\end{ideaclave}
+
+\sub{II.1. Rigideces de precios: el modelo neokeynesiano\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Idea}: con precios flexibles $i$↑ va a precios y $r$ no cambia; con revisión gradual, $i$↑ = $r$↑. Por qué rígidos \vertema{3.A.7}: \concepto{costes de menú}: no cambiar el precio cuesta poco a la empresa, pero la suma tiene efectos grandes (\autor{Mankiw}, 1985; \autor{Akerlof}-\autor{Yellen}, 1985); \concepto{rigideces reales} lo amplían (\autor{Ball}-\autor{Romer}, 1990). \emph{Pyme}: tarifa 1-2 veces al año; ajusta pedidos. «Despacito y buena letra».
+\item \emph{Supuestos}: hogar representativo, aversión $\theta$ (EIS $1/\theta$), $\beta$; competencia monopolística, \autor{Calvo} (1983): mantiene el precio con prob.\ $\eta$, dura $1/(1-\eta)$; sin capital, sector público ni exterior; $x_t$ = brecha frente a precios flexibles. 3 ecuaciones:
+\begin{formula}
+\centering $\displaystyle\begin{aligned}
+x_t&=\mathbb E_t[x_{t+1}]-\tfrac1\theta\big(i_t-\mathbb E_t[\pi_{t+1}]-r^n_t\big)\\
+\pi_t&=\beta\,\mathbb E_t[\pi_{t+1}]+\kappa x_t+u_t\\
+i_t&=\rho+\phi_\pi\pi_t+\phi_x x_t+\varepsilon_t
+\end{aligned}$
+\end{formula}
+\item[] $\kappa$↓ si $\eta$↑; $u_t$ costes (\autor{Clarida}-\autor{Galí}-\autor{Gertler}, 1999); $\phi_\pi>1$ (\emph{principio de \autor{Taylor}}); \autor{Taylor} (1993): $i=1+1{,}5\pi+0{,}5x$.
+\item \emph{Clave}: IS hacia delante, la brecha depende de toda la senda esperada del tipo real (lectura a la \autor{Wicksell}: neowickselliano, \autor{Woodford}, 2003):
+\funcionclave{x_t=-\frac1\theta\sum_{k\geq0}\mathbb E_t\big[i_{t+k}-\pi_{t+k+1}-r^n_{t+k}\big]}
+\item \emph{Subida inesperada} $\varepsilon_t>0$: $r$↑, $x$↓, $\pi$↓; en $(x,\pi)$, la demanda a la izquierda, baja por la \autor{Phillips}. Con $\varepsilon_t=\rho_\varepsilon\varepsilon_{t-1}+\dots$ (\autor{Galí}, 2015):
+\begin{formula}
+\centering $\displaystyle x_t=-(1-\beta\rho_\varepsilon)\Lambda\varepsilon_t,\quad \pi_t=-\kappa\Lambda\varepsilon_t$
+\end{formula}
+\item[] Precios de 1 año, $\rho_\varepsilon=0{,}5$, $\varepsilon$ de 1 punto anual: $r$ +0,52; $x$ $-0{,}26$\,\%; $\pi$ $-0{,}35$; $i$ solo +0,34 (la regla responde a la caída).
+\item \emph{Implicaciones}: no neutral a CP, no cambia la $Y$ natural; más rígidos ($\kappa$↓) $\Rightarrow$ más efecto en $Y$, menos en $\pi$; canal = tipo real (sustitución intertemporal); \emph{expectativas}: más persistente, más contractiva, aun con $i$ \emph{más bajo} ($\rho_\varepsilon=0{,}8$: $i$ $-0{,}51$, $r$ +0,22): $i$ mal indicador del tono. \concepto{Divina coincidencia}: demanda, sin dilema; costes $u_t$, dilema (\autor{Goodfriend}-\autor{King}, \autor{Rotemberg}-\autor{Woodford}, 1997; nombre: \autor{Blanchard}-\autor{Galí}, 2007).
+\item \emph{Ext.}: reglas por estado: \emph{efecto selección}, casi neutral (\autor{Golosov}-\autor{Lucas}, 2007); multiproducto, vuelve a \autor{Calvo} (\autor{Midrigan}, 2011). \autor{Phillips} híbrida (\autor{Galí}-\autor{Gertler}, 1999); información rígida (\autor{Mankiw}-\autor{Reis}, 2002). Medianos: CEE (2005), \autor{Smets}-\autor{Wouters} (2007).
+\item \emph{Evid.}: EE.\,UU., mitad de precios $<$4,3 meses con rebajas (\autor{Bils}-\autor{Klenow}, 2004), más sin ellas (\autor{Nakamura}-\autor{Steinsson}, 2008); zona del euro $\approx$8\,\% al mes sin rebajas, sube con la inflación de 2022 (depende del estado; \autor{Gautier} et al.). Para la joroba, salarios rígidos.
+\item \emph{Val.}: optimización + rigideces, bienestar. \emph{Contra}: todo por la EIS (baja); sin joroba, bancos ni hogares distintos.
+\end{itemize}
+\pareja{nek-perturbacion-monetaria}{Subida inesperada en el NEK: DA a la izquierda}{fischer-taylor}{Contratos, $a=0{,}1$: \autor{Fischer} 2 periodos; \autor{Taylor} decae a $\rho_w\approx0{,}52$}
+
+\sub{II.2. Rigideces de salarios: contratos escalonados\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Idea}: respuesta a la inefectividad: salarios fijados antes de las perturbaciones y no todos a la vez $\Rightarrow$ efectos reales con expectativas racionales. \emph{Pyme}: convenio de 3 años previo a 2022. «A lo hecho, pecho».
+\item \emph{Supuestos}: logaritmos; $y_t=m_t-p_t$; contratos de 2 periodos, la mitad cada periodo (\emph{escalonados}); $p$ = media de salarios; deseado $p^*_t=p_t+a\,y_t$, $0<a\leq1$ ($a$ pequeña = rigidez real).
+\item \textbf{\autor{Fischer}} (1977), \emph{predeterminados}: $w^j_t=\mathbb E_{t-j}[p^*_t]$, $p_t=\frac12(w^1_t+w^2_t)$:
+\begin{formula}
+\centering $\displaystyle y_t=\big(m_t-\mathbb E_{t-1}m_t\big)+\tfrac{1}{1+a}\big(\mathbb E_{t-1}m_t-\mathbb E_{t-2}m_t\big)$
+\end{formula}
+\item[] 1.er término: sorpresa (\autor{Lucas}); 2.º, nuevo: lo sabido en $t-1$, tras firmar en $t-2$, mueve $Y$.
+\item \textbf{\autor{Taylor}} (1980), \emph{fijos} en el contrato: $w^c_t=\frac12(p^*_t+\mathbb E_t p^*_{t+1})$, $p_t=\frac12(w^c_t+w^c_{t-1})$; $m$ paseo aleatorio:
+\funcionclave{w^c_t=\rho_w w^c_{t-1}+(1-\rho_w)m_t,\quad \rho_w=\frac{1-\sqrt a}{1+\sqrt a}}
+\item[] Subida permanente de $m$: $y_k=\frac12(1+\rho_w)\rho_w^{\,k}$.
+\item \emph{Implicaciones}: \emph{política sistemática estabiliza}: actúa \emph{después} de firmados los contratos, sin saber más que el público; \emph{persistencia}: \autor{Fischer} dura lo que el contrato (1; 0,91; 0); \autor{Taylor}, cada grupo mira al otro: $a=0{,}1$, $\rho_w\approx0{,}52$: 0,76; 0,40; 0,21; 0,11…; dura más que los contratos; inercia: la rigidez real amplía la nominal.
+\item \emph{Ext.}: \autor{Calvo} (1983), probabilidad en vez de duración. Salarios a la \autor{Calvo}: 2 \autor{Phillips}, estabilizar solo precios no es óptimo (\autor{Erceg}-\autor{Henderson}-\autor{Levin}, 2000). Salario real rígido: rompe la divina coincidencia (\autor{Blanchard}-\autor{Galí}, 2007; con paro, 2010) \vertema{3.A.28}. Indexación óptima parcial (\autor{Gray}, 1976).
+\item \emph{Evid.}: Europa: salarios $\approx$15 meses sin cambio (precios $\approx$10), en enero (\autor{Druant} et al., 2009); pico en cero, pocas bajadas (\autor{Dickens} et al., 2007): paro de la periferia tras 2008 (\autor{Schmitt-Grohé}-\autor{Uribe}, 2016), razón contra $\pi=0$ (\autor{Akerlof}-\autor{Dickens}-\autor{Perry}, 1996) \vertema{3.A.41}; fricción más importante en los medianos.
+\item \emph{Val.}: puente expectativas racionales-rigideces, persistencia. \emph{Contra}: contratos exógenos; ¿por qué no indexar? (\autor{Barro}, 1977).
+\end{itemize}
+
+\sub{II.3. Fricciones financieras: los canales del crédito\label{rep:II.3}}
+\begin{itemize}
+\item Sin fricciones, \autor{Modigliani}-\autor{Miller}: la financiación no importa \vertema{3.A.34}; con información asimétrica, sí \vertema{3.A.13}. \emph{Fundamento}: racionamiento (\autor{Stiglitz}-\autor{Weiss}, 1981); verificación costosa (\autor{Townsend}, 1979) $\Rightarrow$ \concepto{prima de financiación externa}, ↓ con el patrimonio (\autor{Bernanke}-\autor{Gertler}, 1989). \autor{Bernanke} (1983): Gran Depresión por quiebras bancarias.
+\item \concepto{Canal del crédito bancario} (\autor{Bernanke}-\autor{Blinder}, 1988, 1990; antes \autor{Blinder}-\autor{Stiglitz}, 1983): préstamos y bonos no sustitutos perfectos $\Rightarrow$ la política mueve la \emph{oferta} de crédito; por la oferta de préstamos, no por el multiplicador. \emph{Evid.}: bancos pequeños y menos líquidos recortan más (\autor{Kashyap}-\autor{Stein}, 2000); España: bancos con menos capital o liquidez conceden menos y la empresa rechazada no lo encuentra en otro (\autor{Jiménez} et al., 2012).
+\item \concepto{Acelerador financiero} (\autor{Bernanke}-\autor{Gertler}-\autor{Gilchrist}, 1999): NEK con capital; empresarios compran capital ($q_t$) con riqueza neta RN y deuda:
+\funcionclave{\mathbb E_t[R^K_{t+1}]=s\Big(\frac{\mathrm{RN}_{t+1}}{q_tK_{t+1}}\Big)R_{t+1},\quad s'<0}
+\item[] \emph{Doble golpe}: sube el tramo plano ($r\to r'$) y cae RN (intereses variables, flujo de caja, garantías $q_t$): $I_0\to I_1$, más que solo con $r$. Bajada: $\downarrow i\Rightarrow\uparrow$flujo, garantías, $P$ no anticipado $\Rightarrow\uparrow$RN$\Rightarrow\downarrow s\Rightarrow\uparrow I,C$.
+\item \emph{Implicaciones}: amplificación y persistencia (RN tarda en reconstruirse); \emph{asimetría} (recesiones, pequeñas); deflación por deudas (\autor{Fisher}, 1933). \emph{Pyme}: menos pedidos, local que vale menos: el banco pide más. «El banco te presta el paraguas…».
+\item \emph{Ext.}: garantías (\autor{Kiyotaki}-\autor{Moore}, 1997) \vertema{3.A.42}; capital de los bancos (\autor{Gertler}-\autor{Kiyotaki}, 2010; \autor{Gertler}-\autor{Karadi}, 2011): puente a las compras.
+\item \emph{Evid.}: ventas y existencias de pequeñas caen más (\autor{Gertler}-\autor{Gilchrist}, 1994); subida sorpresa sube diferenciales (\autor{Gertler}-\autor{Karadi}, 2015). \emph{Val.}: amplificación, potencia en recesiones con deuda; \emph{contra}: lineales, explican mejor la caída que el auge.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{coste-fondos-politica}{Doble golpe: $r\to r'$ y RN$\to$RN$'$: $I_0\to I_1$}
+
+\sub{II.4. Hogares distintos: el canal redistributivo\label{rep:II.4}}
+\begin{itemize}
+\item \emph{Idea}: EIS baja; muchos viven al día (\emph{hand-to-mouth}): EE.\,UU.\ $\approx$1/3, la mayoría con riqueza ilíquida (\autor{Kaplan}-\autor{Violante}-\autor{Weidner}, 2014): el tipo les llega por renta y empleo. \emph{Familia}: cuota y empleo. «Donde no hay harina, todo es mohína».
+\item \concepto{HANK} (\autor{Kaplan}-\autor{Moll}-\autor{Violante}, 2018): hogares distintos en renta, riqueza y liquidez, riesgos no asegurables, límite al endeudamiento, activo líquido e ilíquido \vertema{3.A.29}:
+\begin{formula}
+\centering $\displaystyle \mathrm dC_0=\underbrace{\sum_t\tfrac{\partial C_0}{\partial r_t}\mathrm dr_t}_{\text{directo}}+\underbrace{\sum_t\Big(\tfrac{\partial C_0}{\partial(wL)_t}\mathrm d(wL)_t+\tfrac{\partial C_0}{\partial T_t}\mathrm dT_t\Big)}_{\text{indirectos}}$
+\end{formula}
+\item[] RANK: casi todo directo; HANK: indirectos $\approx$4 de cada 5 €.
+\item \concepto{Canal redistributivo} (\autor{Auclert}, 2019): reparto entre propensiones distintas: \emph{renta} (paro de rentas bajas), \emph{\autor{Fisher}} ($\pi$ inesperada↓: de deudores a acreedores), \emph{exposición a tipos} (ganan depósitos, pierden deudas variables). TANK (\autor{Galí}-\autor{López-Salido}-\autor{Vallés}, 2007; \autor{Bilbiie}, 2008, 2020): amplifica si la renta de los que viven al día es más cíclica.
+\item \emph{Impl.}: actúa por renta y empleo; España (variable) más fuerte; quién paga intereses de la deuda pública importa \vertema{3.A.40}; promesas lejanas pesan menos (\autor{McKay}-\autor{Nakamura}-\autor{Steinsson}, 2016); redistribuye, pero redistribuir es de la fiscal.
+\item \emph{Evid.}: Noruega, indirectos dominan con el tiempo, endeudados recortan más (\autor{Holm}-\autor{Paul}-\autor{Tischbirek}, 2021); RU y EE.\,UU.: con hipoteca e inquilinos ajustan, propietarios sin deuda no (\autor{Cloyne}-\autor{Ferreira}-\autor{Surico}, 2020). \emph{Val.}: encajan con microdatos; dependen de la calibración.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{III. Transmisión de la política no convencional\label{rep:III}}
+\begin{ideaclave}
+Con el tipo corto en su suelo, el BC actúa sobre lo que mueve el gasto: tipos cortos esperados, primas de los largos y crédito, con su palabra y su balance. Funcionó, con menos precisión que el tipo oficial; deshacerlo movió los mercados menos que hacerlo.
+\end{ideaclave}
+
+\sub{III.1. El límite inferior de los tipos\label{rep:III.1}}
+\begin{itemize}
+\item Efectivo rinde 0\,\% $\Rightarrow$ \concepto{límite inferior efectivo} $i^{\mathrm{ELB}}$ (ZLB; ELB si algo negativo) \vertema{3.A.35}; suelo del tipo real $r_t\geq i^{\mathrm{ELB}}-\mathbb E_t\pi_{t+1}$.
+\item \emph{Trampa}: $r^n$ bajo el suelo $\Rightarrow$ brecha negativa, $\pi$↓, $\pi^e$↓, $r$↑: espiral deflacionista (\autor{Krugman}, 1998; \autor{Eggertsson}-\autor{Woodford}, 2003) \vertema{3.A.41}. No es la trampa de \autor{Keynes}: allí el dinero no bajaba el tipo; aquí ya está en el suelo. DA con codo: pendiente positiva en el límite \vertema{3.A.40}.
+\item \emph{Hechos}: Fed 0-0,25\,\% 2008-2015 y 2020-2022; BCE negativo jun.\ 2014-jul.\ 2022 (mín.\ $-0{,}50$\,\%).
+\item \emph{Lógica}: el gasto depende del tipo largo:
+\funcionclave{i^{(n)}_t=\frac1n\sum_{k=0}^{n-1}\mathbb E_t[i_{t+k}]+\text{prima por plazo}_t}
+\item[] 3 palancas: \emph{cortos esperados} (orientación, negativos); \emph{prima} (compras, control de curva); \emph{crédito} (préstamos condicionados, protección de la transmisión). \emph{Familia}: Euríbor $<0$ en 2016-2021: cuota↓ sin tocar el tipo a un día. Quitar el suelo: suprimir billetes grandes (\autor{Rogoff}, 2016).
+\end{itemize}
+\graficorepaso[\linewidth]{no-convencionales-canales}{Instrumentos $\to$ sumandos del tipo largo $\to$ canales $\to$ demanda}
+
+\sub{III.2. La orientación de la política\label{rep:III.2}}
+\begin{itemize}
+\item \concepto{Orientación} (\emph{forward guidance}): anuncio sobre tipos futuros \vertema{3.A.36}. BCE: 1.ª vez 4/7/2013; jun.\ 2018: tipos «al menos hasta el verano de 2019».
+\item \emph{Canal}: 1.er sumando; IS prospectiva: prometer tipos bajos más tiempo del que pide la regla sube $Y$ y $\pi$ esperadas y baja hoy $r$ (\autor{Eggertsson}-\autor{Woodford}, 2003).
+\item \emph{Credibilidad}: tentación de incumplir; «prometer de forma creíble que será irresponsable» (\autor{Krugman}, 1998). \emph{Délfica} (previsión: puede leerse como mala noticia) vs.\ \emph{odiseica} (compromiso: funciona) (\autor{Campbell} et al., 2012). Compensación: Fed, inflación media 2020, abandonada ago.\ 2025.
+\item \concepto{Paradoja de la orientación}: en el modelo, una promesa lejana pesa tanto o más que bajar ahora; no en los datos (\autor{Del Negro}-\autor{Giannoni}-\autor{Patterson}, 2023); se modera con riesgo de paro (\autor{McKay}-\autor{Nakamura}-\autor{Steinsson}, 2016). «Las palabras se las lleva el viento».
+\item \emph{Evid.}: orientación mueve tipos a 1-2 años; compras, los largos (\autor{Swanson}, 2021); zona del euro (\autor{Altavilla} et al., 2019).
+\end{itemize}
+
+\sub{III.3. Las compras de activos\label{rep:III.3}}
+\begin{itemize}
+\item Compras en firme a gran escala, pagadas con reservas: APP (2014), PEPP (2020) \vertema{3.A.36}.
+\item \emph{Por qué no deberían funcionar}: \autor{Wallace} (1981): sin fricciones, tamaño y composición del balance irrelevantes: \autor{Modigliani}-\autor{Miller} del BC \vertema{3.A.39}.
+\item \emph{Canales} (cada imperfección, uno): \emph{señalización} (perdería dinero si sube pronto; \autor{Bauer}-\autor{Rudebusch}, 2014); \emph{reequilibrio de carteras} (sustitutos imperfectos, \autor{Tobin}, 1969: prima por plazo↓; \autor{Gagnon} et al., 2011); \emph{hábitat preferente} (pensiones, aseguradoras; \autor{Vayanos}-\autor{Vila}, 2021) \vertema{3.B.24}, «cada mochuelo a su olivo»; \emph{liquidez} (2008, mar.\ 2020; \autor{Bernanke}, 2020); \emph{crédito y capital bancario} (\autor{Gertler}-\autor{Karadi}, 2011); \emph{tipo de cambio y riqueza} (\autor{Dedola} et al., 2021).
+\item \emph{No hacen}: crean reservas, no préstamos. Importa qué se compra: deuda pública sin más apenas sirve; activos privados con mercados dañados, sí (\autor{Cúrdia}-\autor{Woodford}, 2011).
+\end{itemize}
+
+\sub{III.4. Negativos, condicionados, curva\label{rep:III.4}}
+\begin{itemize}
+\item \concepto{Tipos negativos} (BCE $-0{,}50$\,\%): como una bajada, tramo corto y tipo de cambio; límite: margen bancario (no se trasladan a depósitos de hogares): bancos con más depósitos prestaron menos y más arriesgado (\autor{Heider}-\autor{Saidi}-\autor{Schepens}, 2019); Suecia, transmisión débil (\autor{Eggertsson} et al., 2024); \concepto{tipo de reversión}: bajar más contrae el crédito (\autor{Abadi}-\autor{Brunnermeier}-\autor{Koby}, 2023). «Tanto va el cántaro…».
+\item \concepto{Préstamos condicionados}: TLTRO (BCE, 2014), \emph{Funding for Lending} (BoE, 2012): canal del crédito bancario. Préstamos a 3 años 2011-12: 1.000 M€ a un banco francés $\to$ +186 M€ de crédito a empresas en un año (\autor{Andrade} et al., 2019).
+\item \concepto{Protección de la transmisión}: OMT (2012), TPI (2022): primas de riesgo de un país; bastó anunciarlos \vertema{3.B.43}.
+\item \concepto{Control de la curva}: Banco de Japón, bono a 10 años, sept.\ 2016-mar.\ 2024: 2.º sumando; si creíble apenas compra; si no, sin límite.
+\end{itemize}
+
+\sub{III.5. La evidencia y la salida\label{rep:III.5}}
+\begin{itemize}
+\item Anuncios bajaron tipos largos, en parte por la señal (\autor{Krishnamurthy}-\autor{Vissing-Jorgensen}, 2011). \concepto{Tipo sombra} (\autor{Wu}-\autor{Xia}, 2016): el corto que reproduciría la curva sin límite; zona del euro $-7{,}8$\,\% (ago.\ 2019).
+\item \emph{Salida}: BCE sin reinversión APP 2023, PEPP fin 2024; tono con la facilidad de depósito y reservas abundantes (2024); Fed reduce balance jun.\ 2022-dic.\ 2025, hoy compra letras. \emph{Asimétrica}: reducir subió los largos mucho menos que bajó ampliar (anunciado, lento, mercados tranquilos; \autor{Du}-\autor{Forbes}-\autor{Luzzetti}, 2024).
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» varios canales a la vez (tipo, activos, cambio, crédito, expectativas) porque hay fricciones: precios y salarios lentos, patrimonio que importa; crean y amplifican la transmisión; con hogares distintos cambia a quién llega; en el límite, palabra y balance.
+\item \textbf{Relevancia}: España (variable, bancos): más rápida y desigual (2022-2023).
+\item \textbf{Extensiones}: \vertema{3.A.36}, \vertema{3.A.35}, \vertema{3.A.7}, \vertema{3.A.40}, \vertema{3.A.39}, \vertema{3.A.41}, \vertema{3.A.42}, \vertema{3.B.14}, \vertema{3.B.19}, \vertema{3.B.43}; euro digital remunerado: canal directo al público.
+\item \textbf{Opinión}: consenso en la joroba con retraso; menos acuerdo en los canales de las compras: bajaron los largos, pero tuvieron que ser muy grandes (\autor{Walsh}, 2017).
+\item \textbf{Idea final}: las cosas de palacio van despacio: actúa hoy sobre la economía de dentro de 2 años; mirar adelante y ser creíble, porque cuando el tipo ya no baja, su palabra es lo que le queda.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1752}{\autor{Hume}; 1911, \autor{Fisher}: ecuación de cambio causal}
+\hito{1936}{\autor{Keynes}: canal del tipo de interés}
+\hito{1972}{\autor{Lucas}: islas; 1975, \autor{Sargent}-\autor{Wallace}: inefectividad}
+\hito{1977}{\autor{Fischer}: contratos predeterminados}
+\hito{1980}{\autor{Taylor}: contratos escalonados}
+\hito{1981}{\autor{Stiglitz}-\autor{Weiss}: racionamiento; \autor{Wallace}: irrelevancia del balance}
+\hito{1983}{\autor{Calvo}; \autor{Bernanke}: Gran Depresión}
+\hito{1988}{\autor{Bernanke}-\autor{Blinder}: crédito bancario; 1989, \autor{Bernanke}-\autor{Gertler}: prima}
+\hito{1995}{\autor{Bernanke}-\autor{Gertler}: canales del crédito}
+\hito{1996}{\autor{Christiano}-\autor{Eichenbaum}-\autor{Evans}: VAR, joroba (\autor{Sims}, 1992: rompecabezas)}
+\hito{1998}{\autor{Krugman}: «irresponsable» creíble}
+\hito{1999}{\autor{Bernanke}-\autor{Gertler}-\autor{Gilchrist}: acelerador}
+\hito{2003}{\autor{Eggertsson}-\autor{Woodford}: orientación en el límite}
+\hito{2007}{\autor{Blanchard}-\autor{Galí}: divina coincidencia; \autor{Smets}-\autor{Wouters}}
+\hito{2015}{\autor{Gertler}-\autor{Karadi}: alta frecuencia}
+\hito{2016}{\autor{McKay}-\autor{Nakamura}-\autor{Steinsson}; \autor{Rogoff}}
+\hito{2018}{\autor{Kaplan}-\autor{Moll}-\autor{Violante}: HANK}
+\hito{2019}{\autor{Auclert}: canal redistributivo}
+\hito{2023}{\autor{Abadi}-\autor{Brunnermeier}-\autor{Koby}: tipo de reversión}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Euríbor 12 m: \dato{$-0{,}50\to4{,}16$\,\%}{BCE, 2021-2023}; inflación: \dato{10,6\,\%}{Eurostat, oct.\ 2022}; \dato{4\,\%}{oct.\ 2026}; depósito \dato{2,50\,\%}{BCE, sept.\ 2026}.
+\item Efecto máximo en precios: \dato{29 meses}{Havranek-Rusnak, 2013}; precios bajan tras \dato{22 meses}{Romer-Romer, 2004}; $Y$ industrial \dato{$-4{,}3$\,\%}{Romer-Romer, 2004}.
+\item Traspaso 2022-23: empresas \dato{+350 pb}{BCE MIR}; hipotecas \dato{$>$200 pb}{BCE MIR}; vista \dato{0,4 / 0,2\,\%}{zona / España}.
+\item Hipotecas vivas: España \dato{1,2 $\to$ 3,7\,\%}{BCE MIR, jun.\ 2022-feb.\ 2024}; zona \dato{1,6 $\to$ 2,5\,\%}{BCE MIR}.
+\item Precios que cambian al mes (sin rebajas): \dato{$\approx$8\,\%}{zona del euro, Gautier et al.}; salarios fijos \dato{$\approx$15 meses}{Druant et al., 2009}.
+\item Hogares que viven al día, EE.\,UU.: \dato{$\approx$1/3}{Kaplan-Violante-Weidner, 2014}; efectos indirectos \dato{$\approx$4/5}{Kaplan-Moll-Violante, 2018}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué tiene efectos reales la política monetaria?} Rigideces nominales: mover $i$ mueve $r$; reales y fricciones financieras amplían; a LP, neutral.
+\item \textbf{¿Qué refuta \autor{Fischer} de la inefectividad?} Con contratos firmados antes, la regla actúa tras la firma y mueve $Y$ aun con expectativas racionales: la clave era la flexibilidad.
+\item \textbf{¿Por qué un tipo nominal más bajo puede ser contractivo?} Con perturbación persistente la inflación cae tanto que $r$ sube ($\rho_\varepsilon=0{,}8$: $i$ $-0{,}51$, $r$ +0,22).
+\item \textbf{¿Qué añade el acelerador financiero?} Doble golpe: $r$↑ y RN↓ $\Rightarrow$ prima↑; amplificación, persistencia, asimetría.
+\item \textbf{¿Por qué el HANK cambia el canal?} EIS baja y hogares sin liquidez: $\approx$4/5 del efecto es indirecto (renta, empleo).
+\item \textbf{¿Por qué funcionan las compras si \autor{Wallace} dice que no?} Mercados imperfectos: señalización, carteras/hábitat, liquidez, crédito, cambio.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Stanley \autor{Fischer} (contratos, 1977) $\neq$ Irving \autor{Fisher} (ecuación de cambio, 1911; deflación por deudas, 1933). Regla del $k$\,\% $\neq$ regla de \autor{Friedman} ($i=0$).
+\item Canal del crédito = préstamo bancario (\autor{Bernanke}-\autor{Blinder}, 1988) + balance (\autor{Bernanke}-\autor{Gertler}, 1995); \autor{Blinder}-\autor{Stiglitz} (1983), antecedente.
+\item Divina coincidencia: resultado de \autor{Goodfriend}-\autor{King} y \autor{Rotemberg}-\autor{Woodford} (1997); nombre de \autor{Blanchard}-\autor{Galí} (2007); perturbación de costes, \autor{Clarida}-\autor{Galí}-\autor{Gertler} (1999).
+\item \autor{Calvo}: duración $1/(1-\eta)$, $\eta$ = prob.\ de \emph{no} revisar; \autor{Taylor}: más rigidez real, más persistencia.
+\item Paradoja de la orientación: en el modelo la promesa lejana tiene tanto efecto como la cercana.
+\item Límite inferior no es exactamente 0 (BCE $-0{,}50$\,\%); bajo el tipo de reversión, contrae el crédito.
+\item \autor{Gertler}-\autor{Karadi} (2015), EE.\,UU.; BCE: \autor{Altavilla} et al., \autor{Jarociński}-\autor{Karadi}.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

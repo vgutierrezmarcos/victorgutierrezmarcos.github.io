@@ -1,0 +1,48 @@
+% Copiado sin cambios de fuentes/3A42/graficos/acelerador-financiero.tex (3.A.42, acelerador financiero como teoría del ciclo), 5/11/2026. Si cambia el original, copiar de nuevo.
+% El acelerador financiero (3.A.42, III.3): Bernanke, Gertler y Gilchrist (1999)
+% y Kiyotaki y Moore (1997). Esquema circular en sentido horario:
+% perturbación negativa -> riqueza neta RN baja -> prima de financiación externa
+% s(.) sube -> inversión I baja -> producción Y baja -> precio de los activos q_t
+% baja -> RN baja de nuevo. Entrada lateral de Kiyotaki y Moore: el valor de las
+% garantías baja y con él el crédito, que recorta la inversión.
+% Notación de BGG del 3.A.34: RN, s(.), q_t (gráfico de referencia del canon,
+% ficha bernanke-gertler: 3A34/graficos/coste-fondos.tex, la oferta de fondos con
+% el escalón en RN; este esquema es su versión dinámica).
+% Nodos en una elipse de semiejes 3,7 y 2,3 cm, a 90°, 18°, -54°, -126° y 162°.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={draw=tceemorado, fill=tceemorado!7, rounded corners=3pt, thick,
+      align=center, font=\small, inner sep=4pt, minimum width=2.6cm},
+    circuito/.style={->, very thick, tceemorado, shorten <=3pt, shorten >=3pt},
+    km/.style={->, thick, tceeazul, dashed, shorten <=3pt, shorten >=3pt},
+    choque/.style={->, very thick, tceerojo, shorten >=3pt}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-7.6,-3.9) rectangle (5.6,3.4);
+  % 1: los 5 nodos del círculo
+  \capa{1}{\node[nodo] (RN) at (90:3.7cm and 2.3cm) {riqueza neta\\$\mathrm{RN}\downarrow$};}
+  \capa{1}{\node[nodo] (s) at (18:3.7cm and 2.3cm) {prima de financiación\\externa $s(\cdot)\uparrow$};}
+  \capa{1}{\node[nodo] (I) at (-54:3.7cm and 2.3cm) {inversión\\$I\downarrow$};}
+  \capa{1}{\node[nodo] (Y) at (-126:3.7cm and 2.3cm) {producción\\$Y\downarrow$};}
+  \capa{1}{\node[nodo] (q) at (162:3.7cm and 2.3cm) {precio de los activos\\$q_t\downarrow$};}
+  % 2: la perturbación y las flechas del círculo (sentido horario)
+  \capa{2}{\node[font=\small, text=tceerojo, align=center] (P) at (-4.6,2.85) {perturbación\\negativa};
+    \draw[choque] (P) -- (RN);}
+  \capa{2}{\draw[circuito] (RN) to[bend left=18] (s);}
+  \capa{2}{\draw[circuito] (s) to[bend left=18] (I);}
+  \capa{2}{\draw[circuito] (I) to[bend left=18] (Y);}
+  \capa{2}{\draw[circuito] (Y) to[bend left=18] (q);}
+  \capa{2}{\draw[circuito] (q) to[bend left=18] (RN);}
+  % 3: el centro (la pegatina) y la entrada de las garantías de Kiyotaki y Moore
+  \capa{3}{\node[align=center, font=\small] at (0,0.05)
+      {\textbf{acelerador financiero}\\[1pt]{\itshape\color{tceerojo}«llueve sobre mojado»}};}
+  \capa{3}{\node[draw=tceeazul, dashed, rounded corners=3pt, align=center, font=\small, text=tceeazul, inner sep=4pt]
+      (KM) at (-5.9,-1.15) {valor de las\\garantías $\downarrow$\\$\Rightarrow$ crédito $\downarrow$};
+    \draw[km] (q.south west) ++(0.3,0) -- (KM.north);
+    \draw[km] (KM.south) |- ($(I.south)+(0,-0.75)$) -- (I.south);
+    \node[font=\footnotesize, text=tceeazul, anchor=south] at (-0.6,-3.62) {\autor{Kiyotaki} y \autor{Moore} (1997)};}
+\end{tikzpicture}
+\end{document}
