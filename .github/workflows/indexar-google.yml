@@ -3,13 +3,14 @@ name: Pedir a Google que indexe (tanda diaria)
 # Cada día a las 8:00 de Madrid manda a la Indexing API de Google hasta 10 URL
 # del sitemap por orden de relevancia: primero las que aún no están indexadas y
 # luego las que cambiaron desde el último rastreo (ver scripts/indexar-google.py).
-# Se programa a las 6:00 y a las 7:00 UTC para cubrir el horario de verano y el
+# Se programa a las 5:23, 6:23 y 7:23 UTC (no a la hora en punto: GitHub retrasa
+# horas o se salta las ejecuciones en punto) para cubrir el horario de verano y el
 # de invierno; el script solo actúa si en Madrid son ya las 8 y hoy no lo hizo.
 # A mano (workflow_dispatch) manda la tanda sin mirar la hora.
 
 on:
   schedule:
-    - cron: '0 6,7 * * *'
+    - cron: '23 5,6,7 * * *'
   workflow_dispatch:
 
 concurrency:
