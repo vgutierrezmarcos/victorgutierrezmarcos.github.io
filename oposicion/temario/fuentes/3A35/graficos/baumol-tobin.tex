@@ -1,0 +1,68 @@
+% Modelo de inventarios de Baumol (1952) y Tobin (1956), con el ejemplo de
+% Lucía del texto: Y = 21.600 euros al año, b = 2 euros por retirada, i = 3 %.
+% a) Saldo en dientes de sierra: M* = sqrt(2·2·21.600/0,03) = 1.697,1 euros,
+%    n = 21.600/1.697,1 = 12,73 retiradas al año (una cada 0,943 meses);
+%    saldo medio M^D = M*/2 = 848,5 euros.
+% b) Costes al año frente a M: conversión bY/M = 43.200/M; oportunidad
+%    iM/2 = 0,015 M; CT = 43.200/M + 0,015 M, mínimo en M* = 1.697,1 con
+%    CT* = 50,9 (25,5 cada coste: las 2 rectas se cortan en M*).
+%    Con i' = 12 %: i'M/2 = 0,06 M; CT' mínimo en M*' = 848,5, CT*' = 101,8.
+% Escalas: a) x = 1,1 cm por mes, y = 0,002 cm por euro;
+%          b) M en miles de euros, x = 1,65 cm por mil euros (pgfmath no pasa de 16.383), y = 0,025 cm por euro de coste.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={conv(\m)=43.2/\m; opo(\m)=15*\m; ct(\m)=conv(\m)+opo(\m);
+                      opon(\m)=60*\m; ctn(\m)=conv(\m)+opon(\m);}]
+  \def\Mopt{1697.1}
+  \def\Mnue{848.5}
+  \def\mopt{1.6971}% en miles de euros (panel b)
+  \def\mnue{0.8485}
+  \def\per{0.9428}
+  % ---------------------------------------------------------------- panel a
+  \begin{scope}[x=1.1cm,y=0.002cm]
+    % 1: ejes
+    \capa{1}{\ejes{$t$ (meses)}{$M$ (euros)}{5.9}{2250}}
+    \capa{1}{\node[font=\small\bfseries,anchor=south west] at (-0.75,2420) {a) El saldo de Lucía};}
+    \capa{1}{\foreach \k in {1,...,4} {\draw (\k,0) -- (\k,-60) node[below,font=\small] {\k};}}
+    % 2: dientes de sierra de altura M*
+    \capa{2}{\draw[curva1] (0,\Mopt)
+      \foreach \k in {1,...,5} { -- ({\k*\per},0) -- ({\k*\per},\Mopt) };}
+    \capa{2}{\draw[guia] (0,\Mopt) -- (5.3,\Mopt);}
+    \capa{2}{\node[left,align=right] at (0,\Mopt) {$M^*$\\[-1pt]{\small 1.697}};}
+    \capa{2}{\node[etiqueta,font=\small,text=tceemorado,align=center,anchor=south] at ({2.5*\per},\Mopt) {retira $M^*$ unas 13 veces al año};}
+    % 3: saldo medio M*/2 = M^D
+    \capa{3}{\draw[curva2,dashed] (0,{\Mopt/2}) -- (5.3,{\Mopt/2}) node[etiqueta,right,text=tceeazul] {$M^D=\dfrac{M^*}{2}$};}
+    \capa{3}{\node[left,align=right] at (0,{\Mopt/2}) {{\small 849}};}
+  \end{scope}
+  % ---------------------------------------------------------------- panel b
+  \begin{scope}[xshift=8.8cm,x=1.65cm,y=0.025cm]
+    % 4: ejes
+    \capa{4}{\ejes{$M$ (euros)}{euros al año}{3.95}{185}}
+    \capa{4}{\node[font=\small\bfseries,anchor=south west] at (-0.85,193.6) {b) Sus costes};}
+    % 5: coste de conversión bY/M
+    \capa{5}{\draw[curva1] plot[domain=0.245:3.6,samples=120,smooth] (\x,{conv(\x)});}
+    \capa{5}{\node[etiqueta,text=tceemorado,anchor=west] at (3.6,{conv(3.6)}) {$bY/M$ (conversión)};}
+    % 6: coste de oportunidad iM/2
+    \capa{6}{\draw[curva2] (0,0) -- (3.6,{opo(3.6)});}
+    \capa{6}{\node[etiqueta,text=tceeazul,anchor=west] at (3.6,{opo(3.6)}) {$iM/2$ (oportunidad)};}
+    % 7: coste total en U
+    \capa{7}{\draw[curva3] plot[domain=0.265:3.0,samples=120,smooth] (\x,{ct(\x)});}
+    \capa{7}{\node[etiqueta,text=tceeverde,anchor=south] at (3.0,{ct(3.0)}) {$CT$};}
+    % 8: mínimo M* y proyección (los 2 costes se igualan en M*)
+    \capa{8}{\node[punto,fill=tceeverde] (E) at (\mopt,{ct(\mopt)}) {};}
+    \capa{8}{\node[punto,fill=black,inner sep=1pt] at (\mopt,{opo(\mopt)}) {};}
+    \capa{8}{\draw[guia] (E) -- (\mopt,0) node[below,align=center,text=black] {$M^*$\\[-1pt]{\small 1.697}};}
+    \capa{8}{\draw[guia] (E) -- (0,{ct(\mopt)}) node[left,align=right,text=black] {$CT^*$\\[-1pt]{\small 51}};}
+    % 9: subida del tipo al 12 %: i'M/2 más empinada, nueva U y M*'
+    \capa{9}{\draw[curvanueva,desplazada] (0,0) -- (2.95,{opon(2.95)}) node[etiqueta,above,text=tceerojo] {$i'M/2$};}
+    \capa{9}{\draw[curvanueva] plot[domain=0.275:2.35,samples=120,smooth] (\x,{ctn(\x)}) node[etiqueta,above,text=tceerojo] {$CT'$};}
+    \capa{9}{\node[punto,fill=tceerojo] (E2) at (\mnue,{ctn(\mnue)}) {};}
+    \capa{9}{\draw[guia] (E2) -- (\mnue,0) node[below,align=center,text=black] {$M^{*\prime}$\\[-1pt]{\small 849}};}
+    \capa{9}{\draw[guia] (E2) -- (0,{ctn(\mnue)}) node[left,align=right,text=black] {$CT^{*\prime}$\\[-1pt]{\small 102}};}
+    \capa{9}{\draw[flecha] ({\mopt-0.09},-38) -- ({\mnue+0.11},-38);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

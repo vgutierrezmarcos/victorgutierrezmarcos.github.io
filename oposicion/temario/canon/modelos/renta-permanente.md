@@ -29,13 +29,13 @@ $$\hat b=\frac{\operatorname{cov}(C,Y)}{\operatorname{var}(Y)}=k\,\frac{\operato
 |---|---|---|---|---|
 | 3.A.33 | Teorías del consumo | desarrollo (hecho, 31/10/2026) | Todo lo anterior en 2′30″, sobre el plano (Y, C) | — |
 | 3.A.5 | Crítica monetarista a la síntesis | mención (hecho, 3/11/2026) | La función keynesiana $C_t=\overline C+c\,Y^d_t$ frente a **$C^P_t\propto Y^P_t$** («el consumo permanente es una proporción de la renta permanente que no depende de su nivel»), con la $k$ de Friedman en nota y el aviso frente a la $k$ de la LM (K13, **[decidir]**); lo transitorio apenas mueve el consumo, multiplicador menor y más estable, efecto riqueza de la política monetaria; la advertencia de Keynes citada igual (cap. 10, apdo. III); `\vertema{3.A.33}` y sin el gráfico `kuznets-duesenberry-friedman` | El modelo y el gráfico |
-| 3.A.35 | Demanda de dinero | mención | La renta permanente como variable de escala de Friedman; **W̄** (no W_L/W) para la riqueza y `\vertema{3.A.33}` | El modelo de consumo |
+| 3.A.35 | Demanda de dinero | mención (hecho, 5/11/2026) | La renta permanente como variable de escala de Friedman; **W̄** (no W_L/W) para la riqueza y `\vertema{3.A.33}` | El modelo de consumo |
 | 3.A.39 | Déficit | mención (hecho, 4/11/2026) | Renta permanente frente a equivalencia ricardiana con la frase del 3.A.33 (l. 360): lo transitorio apenas mueve el consumo; la ER va más allá; la suavización impositiva es la suavización del consumo aplicada a los impuestos; `\vertema{3.A.33}` | — |
 | 1D01 | Dictamen | mención aplicada (hecho) | El consumo se suaviza según la renta permanente | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.33 original: renta permanente estimada «con la renta permanente en el pasado» (circular), k = f(r, W_L/W), nota 14 que confundía renta permanente y equivalencia ricardiana, «1950s». **Resuelto** (31/10/2026).
 - 3.A.5 escribía la función keynesiana C = C̄ + cY^d como si fuera la de Friedman: **resuelto** (3/11/2026), contrapone $C_t=\overline C+c\,Y^d_t$ y $C^P_t\propto Y^P_t$. **Variante de notación**: en un tema con LM, la renta permanente se escribe con ∝ y la $k$ de Friedman va en nota; donde no hay LM (3.A.33), $C^P_t=kY^P_t$.
-- 3.A.35 (sin revisar): demanda de dinero de Friedman con W_L/W (W es el salario nominal en el canon) y sin `\vertema{3.A.33}`.
+- **Resuelto en el 3.A.35** (5/11/2026): `eq:demanda-dinero-friedman` con $Y^P$ «el rendimiento de la riqueza total» y $\overline W_H/\overline W$, con `\vertema{3.A.33}`.
 
 Autor: Víctor Gutiérrez Marcos

@@ -1,7 +1,7 @@
 # Patinkin (1956): efecto saldos reales e integración de la teoría monetaria y del valor
 
 - **Área:** pensamiento · **Tema de referencia:** 3.A.4 (D111): con el título vigente, Patinkin entra como antecedente del desequilibrio (capítulos 13-14 de *Money, Interest and Prices*) y del debate con Keynes. El Word del 3.A.5 (título anterior) lo desarrollaba; el 3.A.5 revisado (3/11/2026) lo resume como pieza de la síntesis (efecto Pigou-Patinkin contra la trampa de la liquidez) y pasa el desequilibrio al 3.A.4 (D031).
-- **Temas que lo usan:** 3.A.4 (desarrollo en el documento y resumen en el cante; hecho, 4/11/2026: III.2 con a) idea, b) modelo i)-iii) y c) valoración, `eq:patinkin` con $i$, sin gráfico, A04-16; ficha `desequilibrio`), 3.A.5 (resumen; hecho, 3/11/2026: I.2 b) iii), efecto Pigou-Patinkin con `\vertema{3.A.21}` y `\vertema{3.A.4}`), 3.A.21 (resumen: el dinero en el equilibrio general; hecho, 14/10/2026, III.3), 3.A.35 (mención: lo fecha mal, véase abajo).
+- **Temas que lo usan:** 3.A.4 (desarrollo en el documento y resumen en el cante; hecho, 4/11/2026: III.2 con a) idea, b) modelo i)-iii) y c) valoración, `eq:patinkin` con $i$, sin gráfico, A04-16; ficha `desequilibrio`), 3.A.5 (resumen; hecho, 3/11/2026: I.2 b) iii), efecto Pigou-Patinkin con `\vertema{3.A.21}` y `\vertema{3.A.4}`), 3.A.21 (resumen: el dinero en el equilibrio general; hecho, 14/10/2026, III.3), 3.A.35 (mención; hecho, 5/11/2026: antecedente del MIU, «pone los saldos reales en la utilidad para romper la dicotomía clásica», con *Money, Interest and Prices* (1956) y `\vertema{3.A.4}`; también en la contextualización).
 - **Manuales de referencia:** Patinkin (1956, 2.ª ed. 1965), *Money, Interest and Prices*; Pigou (1943); Heijdra (2017), cap. 1; De Vroey (2016), cap. 5.
 - **Decisión D031 (13/10/2026):** ¿Se deshace el cruce de contenidos entre los Word de 3.A.4 y 3.A.5? Sí: IS-LM y la curva de Phillips (síntesis) a 3.A.5 (Phillips en resumen; desarrollo en 3.A.28); el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud) a 3.A.4
 - **Decisión D111 (13/10/2026):** ¿Cuál es el tema de referencia de Patinkin? 3.A.4 (antecedente del desequilibrio y debate con Keynes)
@@ -36,7 +36,7 @@ Una caída de precios aumenta M/P y la demanda (**efecto saldos reales** o Pigou
 - Tema de referencia fijado en 3.A.4 al deshacer el cruce 3.A.4/3.A.5 (D111). Sin ecuaciones en el inventario. Esta ficha decía «3.A.5 (hoy desarrollo), 3.A.4 (propuesto)»: corregido con el 3.A.5 revisado (3/11/2026, CC8).
 - `mapa.yaml` pedía al 3.A.35 remitir Patinkin al 3.A.5 (estado «corregir -> 3.A.5»), contra D111: corregido a **ok (3.A.4)**, con la fecha 1956 (3.A.5, 3/11/2026, CC7).
 - La presentación de referencia de arriba es la macroeconómica (3.A.4-3.A.5); la de equilibrio general es la de la fila del 3.A.21 (la versión rigurosa de «integración del dinero en el EG»). Las dos deben reconocerse como el mismo efecto saldos reales.
-- 3.A.35 (sin revisar) fecha a Patinkin en 1951 («intentona previa como la de Patinkin (1951)»): canon *Money, Interest and Prices* (1956; 2.ª ed. 1965) y, si se citan los artículos previos, 1948-1949.
+- **Resuelto en el 3.A.35** (5/11/2026): Patinkin (1956), `Patinkin1956Money`, en lugar de 1951; la remisión, al 3.A.4.
 - 3.A.21 original contaba aquí la historia de los cuatro pasos del desequilibrio (materia de 3.A.4, D111): resuelto (14/10/2026), una línea y remisión.
 
 Autor: Víctor Gutiérrez Marcos

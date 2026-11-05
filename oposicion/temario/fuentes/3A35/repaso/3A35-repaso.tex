@@ -1,0 +1,301 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Demanda de dinero]{3.A.35}{Teorías de la demanda de dinero. Implicaciones de política económica.}
+\tcefecha{05/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «poderoso caballero es don Dinero»}{2,5}
+\apartadocante{I. ¿Por qué el dinero?}{7,5}
+\subcante{1. Historia del pensamiento}{5,5}
+\subcante{2. El dinero fiduciario: credibilidad y confianza}{2}
+\apartadocante{II. ¿Qué determina la cantidad demandada?}{11,5}
+\subcante{1. Teoría según las funciones del dinero}{10}
+\subcante{2. Evidencia empírica. Hechos estilizados}{1,5}
+\apartadocante{III. Implicaciones de política económica}{7,5}
+\subcante{1. Inflación óptima}{1,5}
+\subcante{2. Eficacia de la estabilización}{2}
+\subcante{3. Señoreaje e hiperinflación}{1}
+\subcante{4. Una economía sin efectivo}{3}
+\apartadocante{Conclusión}{1}}
+\emph{Reparto en II.1}: \autor{Baumol}-\autor{Tobin} y \autor{Miller}-\autor{Orr} \tiempo{2,5}; \autor{Whalen} \tiempo{0,5}; MIU \tiempo{3}; tiempo de compra y CIA \tiempo{1,5}; \autor{Tobin} \tiempo{1,5}; \autor{Cagan} \tiempo{1}. \emph{Pizarra}: \emph{izda.}, refrán y pegatinas: «puedes llevar el caballo al río, pero no obligarlo a beber» (trampa), «cuando seas padre, comerás huevos» (\autor{Samuelson}), «juntarse el hambre con las ganas de comer» (búsqueda), «en el término medio está la virtud» (\autor{Baumol}-\autor{Tobin}), «por si las moscas» (precaución), «el dinero no da la felicidad» (MIU), «por dinero baila el perro» (CIA), «no poner todos los huevos en la misma cesta» (\autor{Tobin}), «ojos que no ven, corazón que no siente» (efectivo); \emph{centro}: preferencia por la liquidez, \autor{Baumol}-\autor{Tobin}, \autor{Tobin}; \emph{dcha.}, recuadradas: liquidez, \autor{Baumol}-\autor{Tobin}, MIU y la función general $L(\text{escala},\text{coste})$, que se llena hasta ser la tabla resumen. \emph{Ejemplo}: Lucía y el cajero.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Poderoso caballero es don Dinero» (\autor{Quevedo}). Efectivo en pagos en tienda: zona del euro 72\,\% (2019) $\to$ 52\,\% (2024); España 83 $\to$ 57\,\%. Pero billetes en circulación 1,62 bill.\ € (sept.\ 2026), casi $\times5$ desde 1999: \emph{se paga menos con billetes, pero se guardan más}. ¿Por qué queremos un papel que no rinde, cuánto y qué implica?
+\item \textbf{Relevancia}: \emph{teoría}: mitad del mercado de dinero; LM, eficacia fiscal/monetaria \vertema{3.A.5}, transmisión \vertema{3.A.37}, precios a LP \vertema{3.A.41}. \emph{Política}: demanda \emph{estable} $\Rightarrow$ guiar $PY$ con $M$; si no, fijar $i$ \vertema{3.A.36}; fija el señoreaje \vertema{3.A.39}. \emph{Actualidad}: pagos digitales, criptoactivos, euro digital.
+\item \textbf{Contextualización}: el dinero se define por lo que hace (\autor{Hicks}): \emph{medio de cambio} (evita la doble coincidencia), \emph{depósito de valor}, \emph{unidad de cuenta} \vertema{3.A.21}. \concepto{Demanda de dinero}: saldos reales $M/P$ que el público desea mantener frente a activos más rentables y menos líquidos; coste de oportunidad: $i$ nominal. M1 = efectivo + depósitos a la vista; M2 + plazo $\leq$2 años y preaviso $\leq$3 meses; M3 + instrumentos negociables. 3 etapas: \emph{cuantitativa} (Salamanca, \autor{Hume}; \autor{Fisher}, Cambridge); \emph{elección} (\autor{Keynes}; síntesis; \autor{Friedman}); \emph{equilibrio general} (\autor{Patinkin}; \autor{Hahn}: \autor{Arrow}-\autor{Debreu} sin sitio para el dinero; \autor{Samuelson}, \autor{Sidrauski}, \autor{Clower}, \autor{Lucas}, \autor{Kiyotaki}-\autor{Wright}). Abre el bloque de ciclo y políticas de demanda.
+\item \textbf{Problemática}: como \emph{bien}, un billete no da utilidad; como \emph{activo}, está dominado por los bonos: ¿por qué existe su demanda? ¿De qué depende, con qué sensibilidad, es estable? ¿Qué implica: inflación óptima, instrumento, señoreaje, suelo de los tipos sin efectivo?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, por qué existe el dinero; \hyperref[rep:II]{II}, qué determina la cantidad (según la función del dinero) y datos; \hyperref[rep:III]{III}, implicaciones de política.
+\end{itemize}
+
+% ==========================================================================
+\bloque[7,5]{I. ¿Por qué el dinero?\label{rep:I}}
+\begin{ideaclave}
+La historia del pensamiento explica cada vez mejor \emph{cuánto} dinero se quiere (para pagar, por prudencia, como activo); la teoría moderna, \emph{por qué} se acepta un papel sin valor: porque se espera que los demás lo acepten. El dinero fiduciario descansa en la confianza.
+\end{ideaclave}
+
+\sub{I.1. Historia del pensamiento\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Teoría cuantitativa}: a LP, $P$ proporcional a $M$; dinero como medio de cambio. Salamanca s.\ XVI (\autor{Azpilcueta}, 1556, antes que \autor{Bodin}, 1568; \autor{Molina}: \emph{ceteris paribus}) \vertema{3.A.1}; \autor{Hume} (1752); \emph{Bullion Report} (1810), Ley de \autor{Peel} (1844): \emph{currency} vs.\ \emph{banking school} \vertema{3.A.2}.
+\item \emph{Supuestos}: $V$ fijada por hábitos e instituciones (constante); $Y$ real a pleno empleo; $M$ exógena, causalidad $M\to P$.
+\item \textbf{\autor{Fisher}} (1911), ecuación de cambio (antes \autor{Newcomb}, 1885); \concepto{velocidad}: veces que cambia de manos cada unidad:
+\begin{formula}
+\centering $\displaystyle MV\equiv PT;\quad MV=PY\ \Rightarrow\ M^D=\frac{PY}{V}$
+\end{formula}
+\item \textbf{Cambridge} (\autor{Marshall}, \autor{Pigou}, 1917), \concepto{saldos de caja}: cuánto quiere \emph{tener} cada uno:
+\begin{formula}
+\centering $\displaystyle M^D=kPY\iff \frac{M^D}{P}=kY,\qquad k=\frac1V$
+\end{formula}
+\item[] Demanda \emph{real}; dinero también depósito de valor (riqueza $\propto$ renta); $k$ es una \emph{decisión} (antecedente de \autor{Keynes}); equivalente a \autor{Fisher} en equilibrio.
+\item \emph{Implicaciones}: $\gamma_M+\gamma_V=\pi+\gamma_Y$: inflación fenómeno monetario; dinero \concepto{neutral} (dicotomía clásica: el dinero es un \emph{velo}). \emph{Neutralidad} (nivel de $M$) $\neq$ \emph{superneutralidad} (tasa $\gamma_M$) $\neq$ dicotomía.
+\item \emph{Evidencia}: \autor{McCandless}-\autor{Weber} (1995), 110 países 1960-90: correlación $\gamma_M$-$\pi$ 0,925 (base), 0,958 (M1), 0,950 (M2); sin correlación con $\gamma_Y$. Pero correlación $\neq$ causalidad: causación inversa (\autor{Tobin}, 1970).
+\item \emph{Valoración}: teoría de precios más que de demanda; $V$ no es constante.
+\item \textbf{\autor{Keynes}} (1936), \concepto{preferencia por la liquidez}: 2 activos (dinero, bonos largos); cada inversor con su tipo «normal». 3 motivos: \emph{transacción} y \emph{precaución} ($L_1(Y)$), \emph{especulación} ($L_2(i)$, novedad): si $i<$ normal, espera que suba, guarda dinero; demanda individual en escalón, agregada continua y decreciente:
+\funcionclave{\frac MP=L_1(Y)+L_2(i)=kY-hi,\quad k,h>0}
+\item[] $h=0$: caso clásico (vertical). $h\to\infty$: \concepto{trampa de la liquidez}: el dinero adicional se atesora y $i$ no baja («puedes llevar el caballo al río…»); \autor{Keynes} no conocía casos.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{preferencia-liquidez}{a) Inversor: todo en bonos o todo en dinero según el tipo normal; b) demanda agregada decreciente y tramo horizontal (trampa)}
+\begin{itemize}
+\item \emph{Impl.}: $i$ fenómeno monetario ($i=(kY-M/P)/h$; compensación por renunciar a la liquidez); fin de la dicotomía; demanda \emph{inestable} (expectativas); $h$ grande: monetaria mueve poco $i$ (eslabón débil) \vertema{3.A.34}. \emph{Val.}: CP; sin diversificación (lo resuelve \autor{Tobin}, 1958).
+\item \textbf{\autor{Friedman}} (1956), \emph{neocuantitativismo}: el dinero, un activo más (sin motivos propios); muchos sustitutos imperfectos (bonos, acciones, bienes físicos):
+\begin{formula}
+\centering $\displaystyle \frac{M^D}{P}=f\Big(\underset{+}{Y^P},\underset{-}{r_b-r_m},\underset{-}{r_e-r_m},\underset{-}{\pi^e-r_m},\underset{+}{\overline W_H/\overline W}\Big)$
+\end{formula}
+\item[] \emph{Estable} (renta permanente; diferenciales se mueven poco porque $r_m$ sube con los demás); $h$ pequeño, sin trampa. $V$ predecible $\Rightarrow$ $M$ controla $PY$; no neutral a CP, sí a LP $\Rightarrow$ \emph{regla del k\,\%} (\autor{Friedman}, 1960) \vertema{3.A.5}. Estabilidad rota en los 70-80.
+\end{itemize}
+\begin{center}\footnotesize
+\begin{tabular}{@{}p{0.27\linewidth}p{0.32\linewidth}p{0.32\linewidth}@{}}
+\toprule
+ & \autor{Keynes} (1936) & \autor{Friedman} (1956)\\
+\midrule
+Sustitutos & Uno, perfecto (bonos) & Muchos, imperfectos\\
+Escala & Renta corriente & Renta permanente\\
+Sensib.\ al tipo & Alta; trampa posible & Baja\\
+Estabilidad & Inestable & Estable\\
+LM & Plana & Inclinada\\
+Política & Fiscal & Monetaria con regla\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\sub{I.2. El dinero fiduciario: credibilidad y confianza\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Paradoja}: dinero \concepto{fiduciario}: sin valor intrínseco ni convertible (desde 1971) \vertema{3.B.20}; deuda del banco central o de los bancos que no da derecho a nada más que a sí misma. \autor{Menger} (1892): el bien más vendible se vuelve medio de cambio, institución no diseñada \vertema{3.A.3}. \autor{Hahn} (1965): siempre hay un equilibrio en que el dinero no vale nada \vertema{3.A.21}.
+\item \textbf{\autor{Samuelson}} (1958), generaciones solapadas \vertema{3.A.29}: viven 2 periodos, $L_{t+1}=(1+n)L_t$, dotación $e$ perecedera solo de joven. \emph{Sin dinero}: autarquía ($C^J=e$, $C^V=0$). \emph{Con dinero} ($M$ constante): $P_{t+1}/P_t=1/(1+n)$, rinde $1+n$, el «tipo de interés biológico». Mejora a todos, pero el equilibrio no monetario existe siempre: valor = \emph{burbuja} de confianza. Demanda de dinero = de ahorro, depende de $1/(1+\pi)$ (efectos renta y sustitución: ambigua). «Cuando seas padre, comerás huevos». \emph{Val.}: \concepto{paradoja del dinero dominado}: con un bono, nadie guarda dinero.
+\item \textbf{\autor{Kiyotaki}-\autor{Wright}} (1989, 1993), búsqueda: encuentros al azar; trueque exige doble coincidencia ($x^2$), dinero solo simple ($x$) si el otro lo acepta. \emph{Equilibrios múltiples}: sin dinero, monetario puro, mixto; en 1989, \emph{fundamental} vs.\ \emph{especulativo}. Aceptar conviene si los demás aceptan: confianza; credibilidad del emisor = activo (hiperinflaciones, criptoactivos). «Juntarse el hambre con las ganas de comer». \emph{Ext.}: \autor{Lagos}-\autor{Wright} (2005): mercado centralizado, demanda que cae con $i$. \emph{Val.}: la explicación más profunda, muy abstracta.
+\end{itemize}
+\graficorepaso[0.55\linewidth]{samuelson}{\autor{Samuelson}: autarquía frente a equilibrio monetario}
+
+% ==========================================================================
+\bloque[11,5]{II. ¿Qué determina la cantidad demandada?\label{rep:II}}
+\begin{ideaclave}
+Cada función del dinero da una demanda distinta, pero casi todas crecen con el gasto (elasticidad $<1$) y caen con el tipo nominal. Las separan la \emph{sensibilidad} al tipo y la \emph{estabilidad}, que es lo que importa para la política.
+\end{ideaclave}
+\begin{itemize}
+\item \emph{Forma común} (demanda de saldos reales):
+\funcionclave{\frac{M^D}{P}=L\big(\underset{+}{\text{escala}},\ \underset{-}{\text{coste de oportunidad}}\big)}
+\end{itemize}
+
+\sub{II.1. Teoría. Medio de cambio\label{rep:II.1}}
+\begin{itemize}
+\item \textbf{\autor{Baumol}} (1952) \textbf{-\autor{Tobin}} (1956), transacción como \emph{inventario} \vertema{3.B.2}: ingreso $Y$ al inicio, gasto uniforme; bonos rinden $i$; coste fijo $b$ por retirada; $n$ retiradas de $M=Y/n$; saldo en dientes de sierra, medio $M/2$; minimiza $CT=b\,Y/M+i\,M/2$ (conversión + oportunidad):
+\funcionclave{M^*=\sqrt{\frac{2bY}{i}},\qquad M^D=\frac{M^*}2=\sqrt{\frac{bY}{2i}}}
+\item[] CSO $CT''=2bY/M^3>0$. Sin ilusión monetaria: $M^D/P=\sqrt{(b/P)(Y/P)/2i}$. Esquina: si $Y\leq 2b/i$, todo en dinero. «En el término medio está la virtud».
+\end{itemize}
+\graficorepaso[\linewidth]{baumol-tobin}{a) Saldo en dientes de sierra; b) coste total en U: si $i$↑, la recta del coste de oportunidad gira y $M^*$↓}
+\begin{itemize}
+\item \emph{Impl.}: elasticidades $1/2$ (renta), $-1/2$ (tipo), $1/2$ ($b$): \emph{economías de escala}; \emph{velocidad endógena} $V=\sqrt{2iY/b}$; en el óptimo costes iguales, $CT^*=\sqrt{2biY}$ = \concepto{coste de suela de zapato}; innovación financiera $b$↓ $\Rightarrow$ $M^D$↓; LM con pendiente positiva finita.
+\item \emph{Lucía}: $Y=21.600$ €, $b=2$ €, $i=3$\,\%: $M^*\approx1.697$ €, 13 visitas/año, saldo medio $\approx$849 €, $V\approx25$; $CT^*\approx51$ €/año. Con $i=12$\,\% ($\times4$): $M^*$ a la mitad ($\approx$849 €, 25 visitas), saldo $\approx$424 €, coste $\approx$102 € ($\times2$).
+\item \textbf{\autor{Miller}-\autor{Orr}} (1966), empresa con flujos aleatorios ($\sigma^2$): \emph{banda} $M^{\inf}$-$M^{\sup}=M^{\inf}+3z^*$, retorno $M^{\mathrm{ret}}=M^{\inf}+z^*$; $z^*=(3b\sigma^2/4i)^{1/3}$; saldo medio $M^{\inf}+\frac43z^*$. Elasticidad $-1/3$ al tipo, $1/3$ a $b$ y $\sigma^2$.
+\item \emph{Evid.}: elasticidad renta de M1 EE.\,UU.\ 0,5 (\autor{Ball}, 2001), mayor con agregados amplios o riqueza (\autor{Knell}-\autor{Stix}, 2005); al tipo 0,3-0,6, 38 países (\autor{Benati}-\autor{Lucas}-\autor{Nicolini}-\autor{Weber}, 2021). \emph{Val.}: primera forma funcional derivada; parcial, certeza, da por hecho que se paga con dinero.
+\item \textbf{Precaución: \autor{Whalen}} (1966): pagos netos con media 0 y varianza $\sigma^2$; por \autor{Chebyshev}, $P(\text{faltar})\leq\sigma^2/M^2$; coste $b$ de iliquidez:
+\begin{formula}
+\centering $\displaystyle \min_M\ iM+b\frac{\sigma^2}{M^2}\ \Rightarrow\ M^*=\Big(\frac{2b\sigma^2}{i}\Big)^{1/3}$
+\end{formula}
+\item[] Elasticidad $-1/3$ al tipo, $1/3$ a $b$ y $\sigma^2$; a la renta 1/3 (más pagos) o 2/3 (pagos mayores). Más incertidumbre, más dinero. «Por si las moscas». \autor{Goldman} (1974): valor de la \emph{flexibilidad}.
+\item \textbf{MIU: \autor{Sidrauski}} (1967) (antes \autor{Patinkin}, 1956) en RCK \vertema{3.A.43}: hogar infinito, $u(C_t,m_t)$, $m=M/P$, señoreaje devuelto en suma fija; $1+i_t=(1+r_t)(1+\pi_{t+1})$:
+\funcionclave{\frac{u_m(C_t,m_t)}{u_C(C_t,m_t)}=\frac{i_t}{1+i_t}}
+\item[] RMS = precio relativo. Con $u=\ln C+\ln m$: $m=C(1+i)/i$ (elasticidad 1 al consumo, $\approx-1$ al tipo). Escala = \emph{consumo}. \concepto{Superneutralidad}: $f'(K^*)=\rho+\delta$, $C^*=f(K^*)-\delta K^*$; $\pi=\gamma_M$; solo cae $m^*$. Óptimo: $u_m=0$ $\Rightarrow$ $i=0$ (regla de \autor{Friedman}). «El dinero no da la felicidad»: aquí sí (atajo). \emph{Ext.}: trabajo elástico, no superneutral (\autor{Brock}, 1974); NEK «sin dinero» (\autor{Woodford}, 2003; \autor{Galí}, 2015) \vertema{3.A.7}. \emph{Val.}: supone lo que debe explicar (\autor{Hahn}); \autor{Feenstra} (1986): equivale a costes de transacción: \emph{forma reducida}.
+\item \textbf{Tiempo de compra} (\autor{Saving}, 1971; \autor{McCallum}-\autor{Goodfriend}, 1987): $u(C,1-L-\psi(C,m))$, $\psi_m<0$: $-w\,\psi_m=i/(1+i)$; demanda crece con $C$ y $w$.
+\item \textbf{Pago por adelantado} (CIA): \autor{Clower} (1967): «el dinero compra bienes, los bienes compran dinero, los bienes no compran bienes»; \autor{Lucas} (1980), \autor{Svensson} (1985): $C_t\leq m_t$; con $i>0$, $m=C$, $V=1$: cuantitativa con fundamento; $u_{\text{ocio}}/u_C=w/(1+i)$: la inflación grava el consumo, no superneutral; \autor{Cooley}-\autor{Hansen} (1989); bienes de crédito (\autor{Lucas}-\autor{Stokey}, 1987). «Por dinero baila el perro». \emph{Val.}: $\psi$ arbitraria; \autor{Friedman} (1953): supuesto irreal que predice igual.
+\end{itemize}
+
+\sub{II.1 (cont.). Depósito de valor y unidad de cuenta\label{rep:II.1b}}
+\begin{itemize}
+\item \textbf{\autor{Tobin}} (1958), preferencia por la liquidez como conducta frente al \emph{riesgo} (\autor{Markowitz} \vertema{3.B.23}; \vertema{3.A.10}): dinero sin riesgo ni rendimiento; bonos $i+\tilde g$, $\sigma_{\mathrm B}$; fracción $w_{\mathrm B}$:
+\begin{formula}
+\centering $\displaystyle \mathbb E[r_p]=\frac{i}{\sigma_{\mathrm B}}\sigma_p;\quad M^D=(1-w^*_{\mathrm B})\overline W$
+\end{formula}
+\item[] Tangencia con curva de indiferencia convexa. \emph{Diversificación}; $M^D$↑ con riqueza, riesgo y aversión. $i$↑: \emph{sustitución} (menos dinero) vs.\ \emph{renta} (más); domina la sustitución. Transmisión por carteras \vertema{3.A.37}; crisis: huida a la liquidez. \emph{Val.}: dinero dominado (letras igual de seguras y rinden). «No poner todos los huevos en la misma cesta».
+\end{itemize}
+\pareja{tobin-cartera}{\autor{Tobin}: si $i$↑ la recta gira; abajo, $w_{\mathrm B}$}{whalen}{\autor{Whalen}: beneficio marginal $=i$}
+\begin{itemize}
+\item \textbf{\autor{Cagan}} (1956), unidad de cuenta en hiperinflaciones (7 europeas):
+\begin{formula}
+\centering $\displaystyle \frac{M^D_t}{P_t}=\zeta e^{-\alpha\mathbb E_t[\pi_{t+1}]};\qquad \dot\pi^e=\gamma(\pi-\pi^e)$
+\end{formula}
+\item[] $\alpha$: semielasticidad; expectativas adaptativas; \autor{Sargent}-\autor{Wallace} (1973), racionales: $P$ hoy depende de toda la senda esperada de $M$. Estado estacionario $\pi=\gamma_M$; límite al señoreaje \vertema{3.A.41}.
+\end{itemize}
+\begin{center}\scriptsize
+\begin{tabular}{@{}p{0.27\linewidth}p{0.22\linewidth}p{0.4\linewidth}@{}}
+\toprule
+Teoría & Escala (elast.) & Coste (elast.)\\
+\midrule
+\autor{Fisher}, Cambridge & Renta (1) & No\\
+\autor{Keynes} & Renta & $i$ (alta; trampa)\\
+\autor{Friedman} & $Y^P$ & Rend.\ relativos (baja)\\
+\autor{Baumol}-\autor{Tobin} & Renta (1/2) & $i$ ($-1/2$)\\
+\autor{Whalen}, \autor{Miller}-\autor{Orr} & Renta (1/3-2/3) & $i$ ($-1/3$)\\
+MIU, tiempo de compra & Consumo (salario) & $i/(1+i)$\\
+CIA & Consumo ($V=1$) & $1+i$ sobre el consumo\\
+Búsqueda & Encuentros & Aceptación\\
+\autor{Samuelson} & Ahorro & $1/(1+\pi)$\\
+\autor{Tobin} (1958) & Riqueza & $i$ (ambiguo)\\
+\autor{Cagan} & Constante & $\mathbb E_t[\pi_{t+1}]$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\sub{II.2. Evidencia empírica. Hechos estilizados\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Medir}: índices de \concepto{Divisia} (\autor{Barnett}, 1980): ponderan por coste de uso. \emph{Identificar}: la oferta también responde; corrección del error o corte transversal (\autor{Mulligan}-\autor{Sala-i-Martin}, 1992).
+\item LP: $\gamma_M$ y $\pi$ casi 1 a 1; sin relación con $Y$. Renta: $<1$ en M1, más con agregados amplios (\autor{Meltzer}, 1963). Tipo: 0,3-0,6; con tipos bajos no se dispara (muchos hogares sin otros activos: \autor{Mulligan}-\autor{Sala-i-Martin}, 2000).
+\item \emph{Estabilidad, el punto débil}: «dinero perdido» desde 1974 (\autor{Goldfeld}, 1976); innovación financiera rompe $V$ de M1 (80) y M2 (90): $V_{M2}$ 2,19 (1997) $\to$ 1,13 (2020) $\to$ 1,42 hoy; zona del euro $V_{M3}$ 1,42 (1999) $\to$ 0,94 (2025); redefinir el dinero recupera parte (\autor{Lucas}-\autor{Nicolini}, 2015).
+\item Hiperinflación: $\pi^e$ sustituye a $i$. Trampa de la liquidez: Japón (\autor{Krugman}, 1998) y 2008 \vertema{3.A.40}.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{velocidad-dinero}{EE.\,UU., 1959-2026: velocidad de M1 y M2 (M1 se corta en 2020 por cambio de definición)}
+
+% ==========================================================================
+\bloque[7,5]{III. Implicaciones de política económica\label{rep:III}}
+\begin{ideaclave}
+La forma de la demanda de dinero decide cuánta inflación conviene, qué instrumento usar, cuánto puede recaudar el Estado imprimiendo y hasta dónde bajan los tipos. La tecnología cambia qué es dinero, no por qué se acepta: la confianza.
+\end{ideaclave}
+
+\sub{III.1. Inflación óptima\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Regla de \autor{Friedman}} (1969): coste privado $i$, social $\approx0$ $\Rightarrow$ $i=0$. Por la ecuación de \autor{Fisher}:
+\begin{formula}
+\centering $\displaystyle i=0\Rightarrow 1+\pi^*=\frac1{1+r}\Rightarrow\pi^*\simeq-r;\quad 1+\pi^*=\beta$
+\end{formula}
+\item[] Igual con tiempo de compra y CIA. Coste social: área bajo la demanda de dinero (\autor{Bailey}, 1956; \autor{Lucas}, 2000) \vertema{3.A.41}; Lucía: 51 € con 3\,\%, 102 € con 12\,\%.
+\item \emph{Matices}: sin impuestos de suma fija, inflación óptima positiva (\autor{Phelps}, 1973); precios rígidos, casi nula; 2\,\% por errores de medida, rigidez salarial a la baja y margen frente al límite (\autor{Schmitt-Grohé}-\autor{Uribe}, 2010).
+\end{itemize}
+
+\sub{III.2. Eficacia de la estabilización\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Sensibilidad} \vertema{3.A.5}: $h$ grande (\autor{Keynes}): LM plana, fiscal eficaz, monetaria no en la trampa; $h$ pequeño (\autor{Friedman}): monetaria potente, fiscal expulsa.
+\item \emph{Estabilidad decide el instrumento} (\autor{Poole}, 1970): fijar $M$ traslada los choques de demanda de dinero a $i$ e $Y$; si es más inestable que la de bienes, fijar $i$ \vertema{3.A.36}.
+\item \emph{Experiencia}: objetivos monetarios en los 70; \concepto{ley de \autor{Goodhart}} (1975): toda regularidad estadística tiende a romperse al usarla para el control. Canadá abandona M1 (nov.\ 1982); BCE: pilar monetario hasta 2021, hoy análisis monetario y financiero.
+\item \emph{Dinero endógeno}: el banco central fija el precio de las reservas; los bancos crean depósitos al prestar (\autor{McLeay}-\autor{Radia}-\autor{Thomas}, 2014): la demanda fija \emph{cuánto} dinero hay al tipo decidido. Transmisión por rendimientos relativos \vertema{3.A.37}.
+\end{itemize}
+
+\sub{III.3. Señoreaje e hiperinflación\label{rep:III.3}}
+\begin{itemize}
+\item \concepto{Señoreaje} (deuda constante) \vertema{3.A.39}:
+\begin{formula}
+\centering $\displaystyle S_t=\frac{M_t-M_{t-1}}{P_t}=\Delta\frac MP+\underbrace{\frac{\pi_t}{1+\pi_t}\frac{M_{t-1}}{P_{t-1}}}_{\text{impuesto inflacionario}}$
+\end{formula}
+\item[] \concepto{Impuesto inflacionario}: base $M/P$, tipo $\pi/(1+\pi)$. Con \autor{Cagan}, máximo en $\pi^*=1/\alpha$ (curva de \autor{Laffer}); déficit mayor: hiperinflación \vertema{3.A.41}. Fin creíble con cambio de régimen fiscal (\autor{Sargent}, 1982); art.\ 123 TFUE prohíbe financiar al Estado.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{laffer-senoreaje}{Máximo en $\pi^*=1/\alpha$; déficit $<S^{\max}$: 2 equilibrios $\pi_{\mathrm B}$, $\pi_{\mathrm A}$}
+
+\sub{III.4. Una economía sin efectivo\label{rep:III.4}}
+\begin{itemize}
+\item Dinero $\neq$ efectivo: retrocede el efectivo, no el dinero.
+\item \emph{Suelo de los tipos}: efectivo rinde 0\,\%: demanda horizontal (como la trampa, pero por el rendimiento nulo); guardar billetes cuesta: \concepto{límite inferior efectivo} $i^{\mathrm{ELB}}$ algo $<0$. Si $r^n<i^{\mathrm{ELB}}-\pi^e$, ajuste por renta \vertema{3.A.40}. BCE: depósito negativo jun.\ 2014-jul.\ 2022 (mín.\ $-0{,}50$\,\%), sin huida al efectivo; hoy 2,50\,\%. \emph{Salidas}: objetivo de inflación con margen, no convencionales, fiscal, suprimir el efectivo.
+\item \autor{Rogoff} (2016): retirar billetes grandes (100, 50): menos atesoramiento y economía sumergida, sin suelo. «Ojos que no ven, corazón que no siente». \emph{Contras}: privacidad, exclusión (mayores, pocos recursos), fallos y ciberataques, perder el único dinero público al alcance del público.
+\item \emph{Datos}: Dinamarca 9\,\% (2025), Suecia 5\,\%; Países Bajos 22\,\%. España 57\,\% en número, 45\,\% en valor (zona del euro 52 y 39\,\%); principal medio para el 57\,\%; móvil 18\,\%, tarjeta 25\,\%. Billetes: 1,62 bill.\ €, 14\,\% de M1, 9\,\% de M3 (7\,\% en 1999): precaución y tipos bajos.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{medios-pago-space}{Efectivo en los pagos en tienda, España y zona del euro, 2016-2024 (número y valor)}
+\begin{itemize}
+\item \emph{Criptoactivos}: sin emisor; volátiles, poco aceptados: activo especulativo, no dinero. \emph{Stablecoins}: depósitos de entidad no bancaria; BPI: no cumplen el buen dinero (misma unidad, oferta elástica, sin eludir controles). MiCA: \emph{stablecoins} desde jun.\ 2024, todo desde 30/12/2024.
+\item \emph{Euro digital}: dinero del banco central digital, curso legal, sin intereses, límite de tenencia, sin conexión. Comisión jun.\ 2023; Consejo dic.\ 2025; PE jul.\ 2026; piloto 2027 y emisión 2029 si se aprueba en 2026 \vertema{3.A.36}. Riesgo: huida de depósitos (por eso límite y sin remunerar); a cambio, ancla pública.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» el dinero existe porque resuelve la doble coincidencia y el ahorro entre generaciones, y vale por confianza; demanda de saldos reales $\uparrow$ con la escala y $\downarrow$ con el coste: \autor{Fisher}, \autor{Keynes}, \autor{Friedman}, \autor{Baumol}-\autor{Tobin}, equilibrio general. Datos: signos y elasticidades moderadas, no estabilidad.
+\item \textbf{Relevancia}: por la inestabilidad, se fija $i$ y no $M$; el efectivo pone suelo a los tipos; la sensibilidad a $\pi$ limita el señoreaje y mide el coste de la inflación.
+\item \textbf{Extensiones}: \vertema{3.A.36}, \vertema{3.A.37}, \vertema{3.A.39}, \vertema{3.A.41}, \vertema{3.A.21}, \vertema{3.B.2}, \vertema{3.B.23}.
+\item \textbf{Opinión}: de «cuánto dinero se quiere» a «por qué se acepta»; la digitalización la vuelve práctica: euro digital y \emph{stablecoins} compiten por la misma confianza.
+\item \textbf{Idea final}: don Dinero es poderoso, pero su poder es prestado; la primera tarea de la política monetaria es cuidar la confianza: que el caballero siga siéndolo sin billetes.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1556}{\autor{Azpilcueta}: cuantitativa en Salamanca (\autor{Bodin}, 1568)}
+\hito{1752}{\autor{Hume}: dinero y precios}
+\hito{1844}{Ley de \autor{Peel}: \emph{currency school}}
+\hito{1892}{\autor{Menger}: origen del dinero}
+\hito{1911}{\autor{Fisher}: ecuación de cambio}
+\hito{1917}{\autor{Pigou}: saldos de caja (Cambridge)}
+\hito{1936}{\autor{Keynes}: preferencia por la liquidez}
+\hito{1952}{\autor{Baumol}: inventarios}
+\hito{1956}{\autor{Tobin} (transacciones); \autor{Friedman}; \autor{Cagan}; \autor{Patinkin}; \autor{Bailey}}
+\hito{1958}{\autor{Tobin}: cartera; \autor{Samuelson}: generaciones solapadas}
+\hito{1965}{\autor{Hahn}: el dinero en el equilibrio general}
+\hito{1966}{\autor{Miller}-\autor{Orr}; \autor{Whalen}}
+\hito{1967}{\autor{Sidrauski}: MIU; \autor{Clower}: pago por adelantado}
+\hito{1969}{\autor{Friedman}: cantidad óptima de dinero}
+\hito{1970}{\autor{Poole}: instrumento; \autor{Tobin}: causación inversa}
+\hito{1975}{\autor{Goodhart}: ley}
+\hito{1976}{\autor{Goldfeld}: «dinero perdido»}
+\hito{1980}{\autor{Lucas}: CIA; \autor{Barnett}: Divisia}
+\hito{1986}{\autor{Feenstra}: MIU = costes de transacción}
+\hito{1987}{\autor{McCallum}-\autor{Goodfriend}: tiempo de compra}
+\hito{1989}{\autor{Kiyotaki}-\autor{Wright}: búsqueda}
+\hito{1995}{\autor{McCandless}-\autor{Weber}: 110 países}
+\hito{2005}{\autor{Lagos}-\autor{Wright}}
+\hito{2016}{\autor{Rogoff}: la maldición del efectivo}
+\hito{2021}{\autor{Benati} et al.: elasticidad 0,3-0,6}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Efectivo en tienda (número): zona del euro \dato{72 $\to$ 52\,\%}{BCE SPACE, 2019-2024}; España \dato{83 $\to$ 57\,\%}{BCE SPACE}; en valor, \dato{45\,\%}{España} y \dato{39\,\%}{zona del euro}.
+\item Billetes en circulación: \dato{1,62 bill.\ €}{BCE, sept.\ 2026}; \dato{14\,\% de M1, 9\,\% de M3}{BCE}.
+\item Velocidad M2 EE.\,UU.: \dato{2,19 / 1,13 / 1,42}{FRED, 1997/2020/2026}; M3 zona del euro \dato{1,42 $\to$ 0,94}{BCE-Eurostat, 1999-2025}.
+\item Correlación $\gamma_M$-$\pi$: \dato{0,925 / 0,958 / 0,950}{McCandless-Weber, 1995}.
+\item Facilidad de depósito del BCE: mínimo \dato{$-0{,}50$\,\%}{BCE}; hoy \dato{2,50\,\%}{BCE}.
+\item España: efectivo, medio principal en comercios para el \dato{57\,\%}{BdE, 2026}; móvil \dato{18\,\%}{BdE}; tarjeta \dato{25\,\%}{BdE}.
+\item Elasticidad renta de M1: \dato{0,5}{Ball, 2001, EE.\,UU.}; al tipo: \dato{0,3-0,6}{Benati et al., 2021, 38 países}.
+\item Efectivo en Dinamarca \dato{9\,\%}{Danmarks Nationalbank, 2025}; Suecia \dato{5\,\%}{Riksbank}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué se demanda dinero si está dominado por los bonos?} Porque sirve para pagar (búsqueda, CIA, inventarios); \autor{Samuelson} y \autor{Tobin} explican activos seguros, no dinero.
+\item \textbf{¿Qué diferencia \autor{Fisher} de Cambridge?} Iguales en equilibrio ($V=1/k$); en \autor{Fisher} $V$ la fijan instituciones, en Cambridge $k$ es una decisión.
+\item \textbf{¿Qué pasa en \autor{Baumol}-\autor{Tobin} si $i$ se multiplica por 4?} $M^*$ y saldo medio a la mitad; el coste se duplica (elasticidad $-1/2$).
+\item \textbf{¿Es superneutral el dinero?} En \autor{Sidrauski}, sí; con CIA o trabajo elástico y utilidad no separable, no.
+\item \textbf{¿Por qué los bancos centrales fijan $i$ y no $M$?} Demanda inestable (\autor{Poole}; ley de \autor{Goodhart}) y dinero endógeno.
+\item \textbf{¿Por qué fracasaron los objetivos monetarios?} La innovación financiera de los 70-80 hizo inestable la demanda y la velocidad (\autor{Goldfeld}: «dinero perdido»); ley de \autor{Goodhart}.
+\item \textbf{¿Son dinero los criptoactivos?} No cumplen bien ninguna función (volátiles, poco aceptados): demanda de activo especulativo; solo circularían si se confía en que los demás los aceptan (\autor{Kiyotaki}-\autor{Wright}).
+\item \textbf{¿Tiene sentido eliminar el efectivo?} Quita el suelo de los tipos y la economía sumergida (\autor{Rogoff}), pero privacidad, exclusión y ancla pública: euro digital.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Rendimiento real del dinero: bruto $1/(1+\pi)$, neto $-\pi/(1+\pi)$.
+\item \autor{Baumol}-\autor{Tobin}: $M^*=\sqrt{2bY/i}$ es la retirada; la demanda es $M^*/2$. Elasticidades $\pm1/2$; \autor{Whalen} y \autor{Miller}-\autor{Orr}, $\pm1/3$.
+\item \autor{Friedman}: renta \emph{permanente} y rendimientos \emph{relativos} al del dinero; sin trampa.
+\item Regla del k\,\% (1960) $\neq$ regla de \autor{Friedman} (1969, $i=0$, $\pi\simeq-r$).
+\item MIU: $u_m/u_C=i/(1+i)$, no $i$; escala = consumo.
+\item \autor{Cagan}: señoreaje máximo en $\pi=1/\alpha$; con expectativas racionales, $P$ depende de toda la senda futura de $M$.
+\item \autor{Tobin} (1958): efecto renta y sustitución; supone que domina la sustitución.
+\item Trampa de la liquidez: $h\to\infty$; \autor{Keynes} no conocía casos. La forma lineal $kY-hi$ no tiene tramo horizontal.
+\item \autor{Keynes}: transacción y precaución dependen de $Y$; solo la especulación de $i$ (la respuesta de la precaución al tipo es de \autor{Whalen}).
+\item Ecuación de cambio: \autor{Fisher} (1911), pero antes \autor{Newcomb} (1885); Salamanca (\autor{Azpilcueta}, 1556) antes que \autor{Bodin} (1568).
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

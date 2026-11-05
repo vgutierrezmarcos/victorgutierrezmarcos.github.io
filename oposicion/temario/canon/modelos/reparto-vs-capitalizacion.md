@@ -45,7 +45,7 @@ Con τ = 0 es `eq:diamond`; el coeficiente baja con τ. Estado estacionario $k^*
 | 4.B.24 | Seguridad Social y sostenibilidad de las pensiones | resumen | Capitalización neutral, reparto con $(1+n)(1+g)$, Aaron $n+g>r$, ineficiencia dinámica, transición, envejecimiento con las cifras de España; `eq:ahorro-reparto` en una línea si se quiere; `\vertema{3.A.38}` para ampliar | `eq:diamond-reparto` y su derivación |
 | 3.A.29 | Generaciones solapadas | mención (hecho, 1/11/2026) | Aaron como salida a la ineficiencia dinámica | Las pensiones en detalle |
 | 4.B.3 | Estado del bienestar | mención | Las pensiones como instrumento redistributivo, remitiendo al 4.B.24 | El modelo (su Word: «si $n>r_{t+1}$» 2 veces con conclusiones opuestas) |
-| 3.A.35 | Demanda de dinero | mención | Samuelson con dinero hace lo mismo que el reparto | El modelo de Diamond |
+| 3.A.35 | Demanda de dinero | no lo usa (comprobado, 5/11/2026) | Samuelson con dinero sin la comparación con el reparto (la hace el 3.A.29); si se quisiera, una frase con `\vertema{3.A.29}` | El modelo de Diamond |
 
 ## Divergencias encontradas en el temario actual
 - **Resuelto en el 3.A.38 (5/11/2026):** Word sin producción ni capital (solo el hogar con $w$ dado), con $w^J_t$, $s_t$; Euler con $C^V_t$; jóvenes que «ofertan su trabajo de forma perfectamente elástica»; ineficiencia con $r^*<n$; «Acemoğlu demuestra… criterio Malinvaud-Cass… finitud de la suma de todos los precios»; «externalidades pecuniarias»; Bismarck «no consiguió su función y tuvo que dimitir en 1890» (ahora: ley de 1889, en vigor en 1891, pensión a los 70 años; su salida en 1890, por el choque con Guillermo II).

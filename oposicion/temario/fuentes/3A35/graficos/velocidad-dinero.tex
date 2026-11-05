@@ -1,0 +1,77 @@
+% Copiado sin cambios de fuentes/3A05/graficos/velocidad-dinero.tex (3.A.05), 5/11/2026.
+% Velocidad del dinero en EE. UU., trimestral, 1959T1-2026T3
+% (../datos/eeuu-velocidad-dinero-1959-2026.csv; FRED, M2V y M1V; consulta del
+% 3/11/2026). M2V en el eje izquierdo (morado), de 1959T1 a 2026T3 (último
+% dato 1,417); M1V en el eje derecho (azul), hasta 2020T1: en mayo de 2020 la
+% Fed metió los depósitos de ahorro en M1 y la serie se rompe.
+%   M2V: máximo 2,192 en 1997T3; mínimo 1,126 en 2020T2; último 1,417 en 2026T3
+%   M1V: de 3,66 (1959T1) a 10,70 (2007T4, máximo) y 5,27 (2020T1)
+% Sombreado: el experimento monetarista de la Fed, octubre de 1979-octubre de 1982.
+% Marcas: julio de 1993 (Greenspan: M2 deja de ser indicador) y junio de 2000
+% (la Fed deja de fijar bandas de crecimiento de los agregados).
+% M1V se dibuja en el eje izquierdo reescalada (y = 1 + (M1V - 2)/7,5) para
+% que todo esté en un mismo eje y las capas se respeten; el eje derecho de
+% abajo da su escala (2-14).
+% Eje x: 1959 + (trimestre - 1)/4, con \coordindex (la tabla empieza en 1959T1).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\pgfplotsset{
+  velo/.style={
+    width=11cm, height=6.2cm, scale only axis,
+    xmin=1959, xmax=2027.5, xtick={1960,1970,...,2020},
+    ymin=1, ymax=2.6,
+    axis lines=left, tick align=outside, clip=false,
+    ticklabel style={font=\footnotesize},
+    x tick label style={/pgf/number format/1000 sep={}},
+    /pgf/number format/use comma,
+    label style={font=\footnotesize},
+  },
+}
+\newcommand{\velodatos}{../datos/eeuu-velocidad-dinero-1959-2026.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[velo, name=velo,
+      ytick={1,1.2,...,2.6},
+      yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=1,
+        /pgf/number format/fixed zerofill},
+      ylabel={M2V (PIB nominal / M2)},
+      legend style={at={(0.01,0.99)}, anchor=north west, draw=none, font=\footnotesize},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: el experimento monetarista, octubre de 1979-octubre de 1982
+    \capa{1}{\dicsombra[fill=dicreferencia, fill opacity=0.18]{1979.75}{1}{1982.75}{2.6}}
+    % 2: ejes (los dibuja pgfplots) y marcas de 1993 y 2000
+    \capa{2}{\dicraya[thin, dicreferencia]{(1993.5,1) (1993.5,2.6)}}
+    \capa{2}{\dicraya[thin, dicreferencia]{(2000.417,1) (2000.417,2.6)}}
+    % 3: M2V
+    \capa{3}{\addplot[diclinea=tceemorado, line width=1.6pt] table[col sep=comma, comment chars={\#},
+        x expr=1959+\coordindex/4, y=m2v] {\velodatos};
+      \addlegendentry{M2V (eje izquierdo)}}
+    % 4: M1V hasta 2020T1 (la casilla vacía desde 2020T2 corta la línea)
+    \capa{4}{\addplot[diclinea=tceeazul, unbounded coords=jump,
+        y filter/.code={\ifx\pgfmathresult\empty\else\pgfmathparse{1+(\pgfmathresult-2)/7.5}\fi}]
+        table[col sep=comma, comment chars={\#},
+        x expr=1959+\coordindex/4, y=m1v] {\velodatos};
+      \addlegendentry{M1V (eje derecho)}}
+    % 5: máximo, mínimo y último dato de M2V
+    \capa{5}{\addplot[dicpuntos=tceemorado, forget plot] coordinates {(1997.5,2.192) (2020.25,1.126) (2026.5,1.417)};}
+    % 6: rótulos
+    \capa{6}{\dicrotulo[anchor=south, font=\footnotesize, text=tceemorado]{(1997.5,2.215)}{2,19 (1997T3)}}
+    \capa{6}{\dicrotulo[anchor=east, font=\footnotesize, text=tceemorado]{(2019.7,1.126)}{1,13 (2020T2)}}
+    \capa{6}{\dicrotulo[anchor=south, font=\footnotesize, text=tceemorado]{(2026.5,1.44)}{1,42}}
+    \capa{6}{\dicrotulo[rotate=90, anchor=west, align=left, font=\scriptsize, text=dicreferencia]{(1981.25,2.02)}{experimento\\monetarista}}
+    \capa{6}{\dicrotulo[rotate=90, anchor=south west, align=left, font=\scriptsize, text=dicreferencia]{(1993.3,1.03)}{M2 deja de\\ser indicador}}
+    \capa{6}{\dicrotulo[rotate=90, anchor=south west, font=\scriptsize, text=dicreferencia]{(2000.2,1.03)}{fin de las bandas}}
+  \end{axis}
+  % 2: eje derecho de M1V
+  \capa{2}{\begin{axis}[velo, at={(velo.south east)}, anchor=south east,
+      ymin=2, ymax=14, ytick={2,4,...,14},
+      axis x line=none, axis y line*=right,
+      ylabel={M1V (PIB nominal / M1)},
+    ]
+    \addplot[draw=none, forget plot] coordinates {(1960,2)};
+  \end{axis}}
+\end{tikzpicture}
+\end{document}

@@ -29,7 +29,7 @@ $$u(x)=\begin{cases}\dfrac{x^{1-\theta}-1}{1-\theta} & \theta\ge 0,\ \theta\ne 1
 | 3.A.8 | Formas funcionales de la utilidad | resumen (hecho) | La CRRA con la misma ecuación (θ, el −1, ln con θ = 1), caso particular de las HARA, ESI = 1/θ; remite a 3.A.10 y 3.A.29 | Los coeficientes y Pratt |
 | 3.A.29 | Elección intertemporal | resumen (hecho, 1/11/2026) | θ = r_R y ESI = 1/θ (un mismo parámetro para el riesgo y el tiempo; Epstein-Zin los separa); nunca «σ = 1/θ» | ξ, ρ, Pratt |
 | 3.A.33 | Teorías del consumo | resumen (hecho, 31/10/2026: II.3 `sec:precautorio`) | Prudencia u‴ > 0 necesaria y suficiente sea cual sea el signo de u″, Kimball, Jensen y `tab:prudencia` copiada con su `\fuente` (θ y b); DARA ⇒ prudencia; la parte macro en la ficha `ahorro-precaucion` | La definición de r_A |
-| 3.A.35 | Demanda de dinero | mención | El averso reparte entre dinero seguro y bonos con riesgo (Tobin, 1958; ficha `tobin-cartera`) | — |
+| 3.A.35 | Demanda de dinero | mención (hecho, 5/11/2026; II.1.2, con `\vertema{3.A.10}`; las curvas de indiferencia media-riesgo convexas porque es averso, no «porque la aversión al riesgo es creciente») | El averso reparte entre dinero seguro y bonos con riesgo (Tobin, 1958; ficha `tobin-cartera`) | — |
 | 3.B.23 | Elección de cartera | resumen | Aversión y curvas de indiferencia en (σ, 𝔼(r_p)); cuándo vale media-varianza | Pratt, prudencia |
 | 3.A.13 | Información asimétrica | mención (hecho) | Agente averso; contrato lineal con r_A constante (CARA) y equivalente cierto ξ = a + be − (r_A/2)b²σ² − e²/2 | Las definiciones |
 | 3.A.27 | Contratos implícitos y contratos eficientes | mención (hecho, 31/10/2026) | Trabajador averso, empresa neutral: el salario estable es un seguro | — |
