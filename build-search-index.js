@@ -155,7 +155,7 @@ const tercerEjercicioParteB = [
   { num: 6, titulo: 'Teoría del comercio internacional (II). Nueva teoría del comercio internacional. Especial referencia a la competencia imperfecta, los rendimientos crecientes y la heterogeneidad empresarial.', disponible: true, file: '3B06.html' },
   { num: 7, titulo: 'La política comercial (I). Instrumentos y efectos. Barreras arancelarias y no arancelarias. Otros instrumentos tradicionales.', disponible: true, file: '3B07.html' },
   { num: 8, titulo: 'La política comercial (II). La política comercial estratégica.', disponible: true, file: '3B08.html' },
-  { num: 9, titulo: 'Comercio internacional y crecimiento económico. Especial referencia a los efectos del comercio sobre el crecimiento.', disponible: true, file: '3B09.pdf' },
+  { num: 9, titulo: 'Comercio internacional y crecimiento económico. Especial referencia a los efectos del comercio sobre el crecimiento.', disponible: true, file: '3B09.html' },
   { num: 10, titulo: 'Teoría de la integración económica.', disponible: true, file: '3B10.html' },
   { num: 11, titulo: 'Balanza de pagos: concepto, medición e interpretación.', disponible: true, file: '3B11.pdf' },
   { num: 12, titulo: 'Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior.', disponible: true, file: '3B12.pdf' },

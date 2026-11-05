@@ -1,0 +1,42 @@
+% Efecto del crecimiento sobre el consumo en un país pequeño (Johnson, 1955):
+% las 5 regiones. RRI = 1 (pendiente -1), renta en unidades de Y:
+%   recta inicial X + Y = W0 = 3,6, consumo C0 = (1,9; 1,7);
+%   recta desplazada X + Y = W1 = 7 (RRI constante).
+% Cortes de la recta nueva con las 3 guías por C0:
+%   vertical X = 1,9: (1,9; 5,1); rayo Y = (1,7/1,9) X: (3,694; 3,306);
+%   horizontal Y = 1,7: (5,3; 1,7).
+% CIS0 tangente en C0: Cobb-Douglas Y = 1,7 (1,9/X)^1,1176 (pendiente -1 en C0).
+% Colores de los tramos: los de la tabla tab:sesgos.
+% Elaboración propia a partir de Johnson (1955) y Gandolfo (2014).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={cis(\x)=1.7*(1.9/\x)^1.1176;}]
+  % 1: ejes X (exportable) e Y (importable)
+  \capa{1}{\ejes{$X$}{$Y$}{8.2}{7.8}}
+  % 2: recta de presupuesto inicial, su ordenada W0, el consumo C0 y la CIS
+  \capa{2}{\draw[curva1] (0,3.6) -- (3.6,0);}
+  \capa{2}{\node[etiqueta,rotate=-45,text=tceemorado,font=\footnotesize] at (0.75,2.2) {$-\mathrm{RRI}$};}
+  \capa{2}{\node[etiqueta,left] at (0,3.6) {$\overline W_0$};}
+  \capa{2}{\draw[thin,tceeverde] plot[domain=0.95:4.4,samples=60] (\x,{cis(\x)}) node[etiqueta,right,text=tceeverde,font=\footnotesize] {$\mathrm{CIS}_0$};}
+  \capa{2}{\node[punto] (C) at (1.9,1.7) {};}
+  \capa{2}{\node[etiqueta,below left=-1pt and 0pt] at (C) {$C_0$};}
+  % 3: recta desplazada, paralela (la RRI no cambia), y su ordenada W1
+  \capa{3}{\draw[curva1,desplazada] (0,7) -- (7,0);}
+  \capa{3}{\node[etiqueta,left] at (0,7) {$\overline W_1$};}
+  % 4: las 3 guías por C0: vertical (X_C constante), rayo (proporciones
+  %    constantes) y horizontal (Y_C constante)
+  \capa{4}{\draw[guia] (1.9,0) node[below] {$X_{C,0}$} -- (1.9,5.45);}
+  \capa{4}{\draw[guia] (0,0) -- (4.6,4.116);}
+  \capa{4}{\draw[guia] (0,1.7) node[left] {$Y_{C,0}$} -- (5.6,1.7);}
+  % 5: los 5 tramos de la recta nueva
+  \capa{5}{\draw[line width=2.4pt,tceerojo] (0,7) -- (1.9,5.1) node[pos=0.5,sloped,above,etiqueta,font=\footnotesize] {ultraprocomercio};}
+  \capa{5}{\draw[line width=2.4pt,tceedorado] (1.9,5.1) -- (3.694,3.306) node[pos=0.5,sloped,above,etiqueta,font=\footnotesize] {procomercio};}
+  \capa{5}{\draw[line width=2.4pt,tceeazul] (3.694,3.306) -- (5.3,1.7) node[pos=0.5,sloped,above,etiqueta,font=\footnotesize] {anticomercio};}
+  \capa{5}{\draw[line width=2.4pt,tceeverde] (5.3,1.7) -- (7,0) node[pos=0.5,sloped,above,etiqueta,font=\footnotesize] {ultraanticomercio};}
+  \capa{5}{\node[circle,fill=tceemorado,draw=white,line width=0.8pt,inner sep=2pt] at (3.694,3.306) {};}
+  \capa{5}{\node[etiqueta,anchor=south west,text=tceemorado,font=\footnotesize] at (4.6,4.116) {neutral};}
+\end{tikzpicture}
+\end{document}

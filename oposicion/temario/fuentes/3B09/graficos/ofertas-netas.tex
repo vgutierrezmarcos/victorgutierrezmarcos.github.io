@@ -1,0 +1,50 @@
+% Curvas de oferta neta de A y B y crecimiento procomercio de A. Parte del
+% gráfico del 3.B.5 (3B05/graficos/ofertas-netas.tex), sin su panel de
+% equilibrios múltiples. X la exporta A y la importa B; Y la exporta B;
+% RRI = p_X/p_Y es la pendiente del rayo desde el origen. Calculado:
+%   A: FPP X^2 + Y^2 = 36, CIS Cobb-Douglas simétrica, (p_X/p_Y)^A_aut = 1.
+%      Con una FPP X^2/a^2 + Y^2/b^2 = 1 y RRI = p, d = sqrt(a^2 p^2 + b^2):
+%        E^A = a^2 p/d - d/(2p),  M^A = d/2 - b^2/d   (aquí a = b = 6).
+%   B: FPP X^2/9 + Y^2/144 = 1, misma CIS, (p_X/p_Y)^B_aut = 4. Con RRI = p,
+%      d = sqrt(9p^2 + 144): importa d/(2p) - 9p/d de X y exporta 144/d - d/2 de Y.
+%   Equilibrio inicial: E = (2,012; 4,025), RRI = 2.
+%   Crecimiento de A sesgado hacia X: FPP X^2/7,8^2 + Y^2/6^2 = 1 (a = 7,8,
+%      b = 6; a cada RRI comercia más: ON_A' está fuera de ON_A).
+%      Nuevo equilibrio con ON_B: E' = (2,774; 4,593), RRI' = 1,656 < 2.
+% Elaboración propia a partir de Marshall (1879), Meade (1952) y Gandolfo
+% (2014), cap. 3 y 13.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={
+      da(\p)=sqrt(36*\p*\p+36); ea(\p)=36*\p/da(\p)-da(\p)/(2*\p); ma(\p)=da(\p)/2-36/da(\p);
+      dn(\p)=sqrt(60.84*\p*\p+36); en(\p)=60.84*\p/dn(\p)-dn(\p)/(2*\p); mn(\p)=dn(\p)/2-36/dn(\p);
+      db(\p)=sqrt(9*\p*\p+144); xb(\p)=db(\p)/(2*\p)-9*\p/db(\p); yb(\p)=144/db(\p)-db(\p)/2;}]
+  % 1: ejes X e Y
+  \capa{1}{\ejes{$X$}{$Y$}{6.4}{8.6}}
+  \capa{1}{\node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (5.0,-0.45) {exportación de $A$\\importación de $B$};}
+  \capa{1}{\node[etiqueta,font=\footnotesize,align=right,anchor=south east] at (-0.15,8.95) {importación de $A$\\exportación de $B$};}
+  % 2: rayo del precio de autarquía de A y ON_A, tangente a él en el origen
+  \capa{2}{\draw[guia] (0,0) -- (6.1,6.1) node[etiqueta,right,text=tceegris,font=\footnotesize] {$(p_X/p_Y)^A_{\mathrm{aut}}=1$};}
+  \capa{2}{\draw[curva1] plot[domain=1:2.75,samples=70] ({ea(\x)},{ma(\x)}) node[etiqueta,above left=0pt and -4pt,text=tceemorado] {$\mathrm{ON}_A$};}
+  % 3: rayo del precio de autarquía de B y ON_B, tangente a él en el origen
+  \capa{3}{\draw[guia] (0,0) -- (2.05,8.2) node[etiqueta,above,text=tceegris,font=\footnotesize] {$(p_X/p_Y)^B_{\mathrm{aut}}=4$};}
+  \capa{3}{\draw[curva2] plot[domain=4:1.12,samples=70] ({xb(\x)},{yb(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{ON}_B$};}
+  % 4: equilibrio E y sus proyecciones
+  \capa{4}{\node[punto] (E) at (2.012,4.025) {};}
+  \capa{4}{\node[etiqueta,above left=0pt and 0pt] at (E) {$E$};}
+  \capa{4}{\proyeccion{(E)}{$E^A$}{$M^A$}}
+  % 5: rayo de la RRI de equilibrio por E
+  \capa{5}{\draw[thick,tceeverde] (0,0) -- (3.935,7.871) node[etiqueta,above,text=tceeverde,font=\footnotesize] {$\mathrm{RRI}=\frac{p_X}{p_Y}=2$};}
+  % 6: crecimiento procomercio de A: ON_A' desplazada hacia fuera
+  \capa{6}{\draw[curvanueva] plot[domain=0.7693:2.2,samples=80] ({en(\x)},{mn(\x)}) node[etiqueta,above left=0pt and -4pt,text=tceerojo] {$\mathrm{ON}_A'$};}
+  % 7: nuevo equilibrio E', sus proyecciones y el rayo RRI', menos inclinado
+  \capa{7}{\node[punto] (E2) at (2.774,4.593) {};}
+  \capa{7}{\node[etiqueta,below right=0pt and 0pt] at (E2) {$E'$};}
+  \capa{7}{\proyeccion{(E2)}{$E^{A\prime}$}{$M^{A\prime}$}}
+  \capa{7}{\draw[thick,tceerojo] (0,0) -- (4.549,7.533) node[etiqueta,right,text=tceerojo,font=\footnotesize] {$\mathrm{RRI}'<\mathrm{RRI}$};}
+  \capa{7}{\draw[flecha,thin] (63.43:8.2) arc[start angle=63.43,end angle=58.87,radius=8.2];}
+\end{tikzpicture}
+\end{document}

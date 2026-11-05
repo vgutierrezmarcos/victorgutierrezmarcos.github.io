@@ -1,0 +1,43 @@
+% Efecto del crecimiento sobre la producción en un país pequeño (Johnson, 1955):
+% las 5 regiones, con la nomenclatura al revés que en el consumo. RRI = 1.
+%   FPP0: cuarto de elipse X = 3,2 cos t, Y = 3 sin t; tangente a X + Y = 4,3863
+%     en P0 = (2,3345; 2,0518) (X = a^2/s, Y = b^2/s, s = sqrt(a^2 + b^2)).
+%   FPP1: la misma por 1,7 (no sesgada): a = 5,44, b = 5,1; tangente a
+%     X + Y = 7,4568 en (3,9687; 3,4881), que está en el rayo por P0 (neutral).
+% Cortes de la recta X + Y = 7,4568 con las guías por P0:
+%   vertical X = 2,3345: (2,3345; 5,1223); rayo: (3,9687; 3,4881);
+%   horizontal Y = 2,0518: (5,4050; 2,0518).
+% Colores de los tramos: los de la tabla tab:sesgos.
+% Elaboración propia a partir de Johnson (1955) y Gandolfo (2014).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % 1: ejes X (exportable) e Y (importable)
+  \capa{1}{\ejes{$X$}{$Y$}{8.6}{8.2}}
+  % 2: FPP0, recta de la RRI tangente y producción inicial P0
+  \capa{2}{\draw[curva1] plot[domain=0:90,samples=60,smooth] ({3.2*cos(\x)},{3*sin(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,below] at (3.2,0) {$\mathrm{FPP}_0$};}
+  \capa{2}{\draw[very thick,black] (0.6,3.7863) -- (3.9,0.4863);}
+  \capa{2}{\node[etiqueta,rotate=-45,font=\footnotesize] at (3.55,1.25) {$-\mathrm{RRI}$};}
+  \capa{2}{\node[punto] (P) at (2.3345,2.0518) {};}
+  \capa{2}{\node[etiqueta,below left=-1pt and 0pt] at (P) {$P_0$};}
+  % 3: FPP1, desplazada hacia fuera sin sesgo, y la paralela tangente
+  \capa{3}{\draw[curvanueva] plot[domain=0:90,samples=60,smooth] ({5.44*cos(\x)},{5.1*sin(\x)});}
+  \capa{3}{\node[etiqueta,text=tceerojo,below] at (5.44,0) {$\mathrm{FPP}_1$};}
+  \capa{3}{\draw[very thick,black,desplazada] (0,7.4568) -- (7.4568,0);}
+  % 4: las 3 guías por P0
+  \capa{4}{\draw[guia] (2.3345,0) node[below] {$X_{P,0}$} -- (2.3345,5.45);}
+  \capa{4}{\draw[guia] (0,0) -- (4.9,4.307);}
+  \capa{4}{\draw[guia] (0,2.0518) node[left] {$Y_{P,0}$} -- (5.7,2.0518);}
+  % 5: los 5 tramos de la recta (al revés que en el consumo)
+  \capa{5}{\draw[line width=2.4pt,tceeverde] (0,7.4568) -- (2.3345,5.1223) node[pos=0.5,sloped,above,etiqueta,font=\footnotesize] {ultraanticomercio};}
+  \capa{5}{\draw[line width=2.4pt,tceeazul] (2.3345,5.1223) -- (3.9687,3.4881) node[pos=0.5,sloped,above,etiqueta,font=\footnotesize] {anticomercio};}
+  \capa{5}{\draw[line width=2.4pt,tceedorado] (3.9687,3.4881) -- (5.4050,2.0518) node[pos=0.5,sloped,above,etiqueta,font=\footnotesize] {procomercio};}
+  \capa{5}{\draw[line width=2.4pt,tceerojo] (5.4050,2.0518) -- (7.4568,0) node[pos=0.5,sloped,above,etiqueta,font=\footnotesize] {ultraprocomercio};}
+  \capa{5}{\node[circle,fill=tceemorado,draw=white,line width=0.8pt,inner sep=2pt] at (3.9687,3.4881) {};}
+  \capa{5}{\node[etiqueta,anchor=south west,text=tceemorado,font=\footnotesize] at (4.9,4.307) {neutral};}
+  \capa{5}{\node[etiqueta,anchor=north east,align=right,font=\footnotesize,text=tceegris] at (8.6,7.9) {nomenclatura al revés\\que en el consumo};}
+\end{tikzpicture}
+\end{document}
