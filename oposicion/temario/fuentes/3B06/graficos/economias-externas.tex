@@ -1,0 +1,44 @@
+% Economías de escala externas y especialización por accidente histórico
+% (el ejemplo de los botones de Krugman, Obstfeld y Melitz, cap. 7).
+% Coste medio de la industria, decreciente en la producción Q de la industria
+% del país (economías externas):
+%   CMe_1(Q) = 1,7 + 3/(Q + 0,75)   (país 1, que empezó antes)
+%   CMe_2(Q) = 1,0 + 2,6/(Q + 0,75) (país 2, por debajo para todo Q)
+%   c_0 = CMe_2(0) = 4,467
+% Demanda mundial D: p = 5,2 - 0,55 Q
+%   punto 1: D = CMe_1 en Q_1 = 5,489, p_1 = 2,181 < c_0
+%   punto 2: D = CMe_2 en Q_2 = 7,029, p_2 = 1,334
+% Demanda interior del país 2, D_2: p = 4,6 - 1,1 Q
+%   autarquía del país 2: D_2 = CMe_2 en Q = 2,558, p = 1,786 < p_1
+% Sustituye a las 2 imágenes del anexo 1 del original.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=1.05cm,
+    declare function={cme1(\q)=1.7+3/(\q+0.75); cme2(\q)=1+2.6/(\q+0.75);}]
+  % 1: ejes
+  \capa{1}{\ejes{$Q$}{precio, coste medio}{9.3}{6.2}}
+  % 2: coste medio del país 1
+  \capa{2}{\draw[curva1] plot[domain=0.07:8.5,samples=80] (\x,{cme1(\x)}) node[etiqueta,right] {$\mathrm{CMe}_1$};}
+  % 3: coste medio del país 2, por debajo
+  \capa{3}{\draw[curva2] plot[domain=0:8.5,samples=80] (\x,{cme2(\x)}) node[etiqueta,right] {$\mathrm{CMe}_2$};}
+  % 4: demanda mundial
+  \capa{4}{\draw[curva3] (0,5.2) -- (8.5,{5.2-0.55*8.5}) node[etiqueta,right] {$D$};}
+  % 5: equilibrio con la industria en el país 1
+  \capa{5}{\node[punto,label={[etiqueta]above right:$1$}] (P1) at (5.489,2.181) {};}
+  \capa{5}{\proyeccion{(P1)}{$Q_1$}{$p_1$}}
+  % 6: c_0, por encima de p_1: ninguna empresa del país 2 puede entrar
+  \capa{6}{\node[punto] (C0) at (0,4.467) {};}
+  \capa{6}{\node[etiqueta,left] at (0,4.467) {$c_0$};}
+  \capa{6}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thin] (0.12,2.181) -- (0.12,4.467) ;}
+  \capa{6}{\node[etiqueta,anchor=west,font=\footnotesize] at (0.45,5.85) {$c_0>p_1$: ninguna empresa del país 2 puede entrar};}
+  % 7: equilibrio potencial con la industria en el país 2
+  \capa{7}{\node[punto,label={[etiqueta]above right:$2$}] (P2) at (7.029,1.334) {};}
+  \capa{7}{\proyeccion{(P2)}{$Q_2$}{$p_2$}}
+  % 8: demanda interior del país 2 y su autarquía, por debajo de p_1
+  \capa{8}{\draw[curva4,desplazada] (0.35,{4.6-1.1*0.35}) -- (3.8,{4.6-1.1*3.8}) node[etiqueta,below] {$D_2$ (país 2)};}
+  \capa{8}{\node[punto] (A2) at (2.558,1.786) {};}
+  \capa{8}{\draw[thin] (A2) -- (2.05,1.6) node[etiqueta,anchor=east,font=\footnotesize] {autarquía};}
+\end{tikzpicture}
+\end{document}

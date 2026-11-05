@@ -1,0 +1,32 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Desfase tecnológico de Posner (1961). A innova en t0, la demanda nace en B
+% en t1, B imita en t2 y A deja de exportar en t3. Pendientes: subida 1,5 y
+% bajada 4/3; con imitación tardía (t2' = 4,4) el máximo sube a 3,6 y las
+% exportaciones se anulan en t3' = 4,4 + 3,6/(4/3) = 7,1.
+\begin{tikzpicture}[tcee,
+    llave/.style={decorate,decoration={brace,mirror,amplitude=5pt},thick}]
+  % 1: ejes
+  \capa{1}{\ejes{$t$}{\shortstack[r]{exportaciones\\netas de A}}{7.8}{4.3}}
+  % 2: t0, t1 y desfase de demanda (tramo nulo)
+  \capa{2}{\draw[curva1] (0.6,0) -- (2,0);}
+  \capa{2}{\draw[thin] (0.6,0.08) -- (0.6,-0.08) node[below] {$t_0$};}
+  \capa{2}{\draw[thin] (2,0.08) -- (2,-0.08) node[below] {$t_1$};}
+  \capa{2}{\draw[llave] (0.6,-0.55) -- (2,-0.55)
+    node[midway,below=5pt,etiqueta,align=center] {desfase\\de demanda};}
+  % 3: tramo creciente hasta t2 (B imita) y desfase de imitación
+  \capa{3}{\draw[curva1] (2,0) -- (3.6,2.4);}
+  \capa{3}{\draw[guia] (3.6,2.4) -- (3.6,0) node[below,black] {$t_2$};}
+  \capa{3}{\draw[llave] (0.6,-1.8) -- (3.6,-1.8)
+    node[midway,below=5pt,etiqueta] {desfase de imitación};}
+  % 4: tramo decreciente hasta t3
+  \capa{4}{\draw[curva1] (3.6,2.4) -- (5.4,0);}
+  \capa{4}{\draw[thin] (5.4,0.08) -- (5.4,-0.08) node[below] {$t_3$};}
+  % 5: imitación tardía
+  \capa{5}{\draw[curvanueva,desplazada] (3.6,2.4) -- (4.4,3.6) -- (7.1,0);}
+  \capa{5}{\draw[guia] (4.4,3.6) -- (4.4,0) node[below,black] {$t_2'$};}
+  \capa{5}{\draw[thin] (7.1,0.08) -- (7.1,-0.08) node[below] {$t_3'$};}
+  \capa{5}{\node[etiqueta,right,tceerojo,align=left] at (5.9,2.3) {imitación\\tardía};}
+\end{tikzpicture}
+\end{document}

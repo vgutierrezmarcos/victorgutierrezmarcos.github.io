@@ -1,0 +1,41 @@
+% Modelo de Krugman (1979) con elasticidad de la demanda decreciente: curvas PP y ZZ
+% en el plano (x, p/w) y efecto de la apertura (L -> 2L).
+% Parámetros (cualitativos): c = 1.
+%   PP (maximización del beneficio): p/w = c |e|/(|e|-1), creciente en x; aquí
+%     p/w = 1,5 + 0,05 x^2 (no depende de L).
+%   ZZ (beneficio nulo, q = L x): p/w = c + F/(L x); aquí 1 + 6/x y, con 2L, ZZ': 1 + 3/x.
+%   E0 = (4,261; 2,408) y E1 = (3,080; 1,974): bajan x y p/w; q = L x sube
+%   (6/(p/w - 1) pasa de 4,26 a 3/0,974 x 2 = 6,16, en unidades de F).
+% Elaboración propia a partir de Krugman (1979).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=1.1cm,
+    declare function={pp(\x)=1.5+0.05*\x*\x; zz(\x,\k)=1+\k/\x;}]
+  % 1: ejes y asíntota p/w = c
+  \capa{1}{\ejes{$x$}{$p/w$}{8.6}{5.6}}
+  \capa{1}{\draw[guia] (0,1) node[left,text=black] {$c$} -- (8.2,1);}
+  % 2: curva PP (maximización del beneficio), creciente
+  \capa{2}{\draw[curva1] plot[domain=0:7.6,samples=60,smooth] (\x,{pp(\x)})
+    node[etiqueta,above] {PP};}
+  % 3: curva ZZ (beneficio nulo), decreciente y asintótica a c
+  \capa{3}{\draw[curva2] plot[domain=1.4:8,samples=80,smooth] (\x,{zz(\x,6)})
+    node[etiqueta,right] {ZZ};}
+  % 4: equilibrio E0 y sus proyecciones
+  \capa{4}{\node[punto] (E0) at (4.2614,2.4080) {};}
+  \capa{4}{\node[etiqueta,above left] at (E0) {$E_0$};}
+  \capa{4}{\proyeccion{(E0)}{$x_0$}{$(p/w)_0$}}
+  % 5: la apertura (L -> 2L) baja ZZ; PP no se mueve
+  \capa{5}{\draw[curvanueva] plot[domain=0.78:8,samples=80,smooth] (\x,{zz(\x,3)})
+    node[etiqueta,right] {ZZ$'$};}
+  \capa{5}{\draw[flecha] (6.6,{zz(6.6,6)-0.06}) -- (6.6,{zz(6.6,3)+0.06});}
+  \capa{5}{\node[etiqueta,text=tceerojo,anchor=west] at (5.6,2.3) {apertura: $L\to 2L$};}
+  % 6: nuevo equilibrio E1 sobre PP, abajo y a la izquierda
+  \capa{6}{\node[punto] (E1) at (3.0795,1.9742) {};}
+  \capa{6}{\node[etiqueta,above left] at (E1) {$E_1$};}
+  \capa{6}{\proyeccion{(E1)}{$x_1$}{$(p/w)_1$}}
+  \capa{6}{\draw[flecha,shorten >=3pt,shorten <=3pt]
+    plot[domain=4.1:3.25,samples=20,smooth] ({\x+0.28},{pp(\x)-0.16});}
+\end{tikzpicture}
+\end{document}

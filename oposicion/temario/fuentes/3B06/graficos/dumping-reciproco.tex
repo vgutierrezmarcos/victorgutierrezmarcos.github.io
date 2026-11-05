@@ -1,0 +1,49 @@
+% Dumping recíproco (Brander y Krugman, 1983): funciones de reacción en el
+% mercado A, sin costes de transporte (tau = 1) y con ellos (tau > 1). Mismo
+% estilo que 3A19/graficos/cournot.tex; el 3.B.8 parte de él para el arancel.
+% Escala: demanda p = a - bQ en A; la nacional produce con coste marginal c y
+% la extranjera con tau c. Cantidades en unidades de (a-c)/b.
+%   R_A: q_A = 1/2 - q_B/2 -> en el plano (q_A, q_B): q_B = 1 - 2 q_A,
+%        de (0, 1) a (1/2, 0)
+%   R_B (tau = 1): q_B = 1/2 - q_A/2, de (0, 1/2) a (1, 0)
+%   E0 = (1/3, 1/3) = (q^C, q^C), en la bisectriz
+%   R_B' (tau > 1): q_B = k - q_A/2 con k = (a - tau c)/2b = 0,4 (elegido)
+%   E1: 1 - 2 q_A = k - q_A/2 -> q_A = (1-k)/1,5 = 0,4; q_B = 0,2
+%     (q_A sube 1/15 y q_B baja 2/15: el doble)
+%   Cantidad total: 2/3 en E0 (recta q_A + q_B = 2/3) y 0,6 en E1, por debajo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=8cm]
+  \useasboundingbox (-0.2,-0.17) rectangle (1.4,1.17);
+  % 1: ejes
+  \capa{1}{\ejes{$q_A^A$}{$q_B^A$}{1.18}{1.12}}
+  % 2: función de reacción de la empresa nacional, R_A(q_B^A)
+  \capa{2}{\draw[curva1] (0,1) -- (0.5,0);}
+  \capa{2}{\node[etiqueta,right,text=tceemorado] at (0.03,0.97) {$R_A(q_B^A)$};}
+  \capa{2}{\node[etiqueta,left] at (0,1) {$\frac{a-c}{b}$};}
+  \capa{2}{\node[etiqueta,below] at (0.5,0) {$\frac{a-c}{2b}$};}
+  % 3: función de reacción de la extranjera sin costes de transporte
+  \capa{3}{\draw[curva2] (0,0.5) -- (1,0);}
+  \capa{3}{\node[etiqueta,text=tceeazul,rotate={atan(-0.5)},anchor=south] at (0.8,0.1) {$R_B(q_A^A)$, $\tau=1$};}
+  \capa{3}{\node[etiqueta,left] at (0,0.5) {$\frac{a-c}{2b}$};}
+  \capa{3}{\node[etiqueta,below] at (1,0) {$\frac{a-c}{b}$};}
+  % 4: equilibrio sin costes de transporte, en la bisectriz
+  \capa{4}{\draw[guia] (0,0) -- (0.62,0.62) node[etiqueta,above right,text=tceegris] {bisectriz};}
+  \capa{4}{\node[punto,label={[etiqueta]above right:$E_0$}] (E0) at ({1/3},{1/3}) {};}
+  \capa{4}{\proyeccion{(E0)}{$q^C$}{$q^C$}}
+  % 5: con tau > 1, R_B se desplaza hacia el origen en paralelo
+  \capa{5}{\draw[curvanueva] (0,0.4) -- (0.8,0);}
+  \capa{5}{\node[etiqueta,text=tceerojo,rotate={atan(-0.5)},anchor=south] at (0.71,0.045) {$R_B'$, $\tau>1$};}
+  \capa{5}{\node[etiqueta,left] at (0,0.4) {$\frac{a-\tau c}{2b}$};}
+  % 6: nuevo equilibrio: la nacional vende más y la extranjera, el doble menos
+  \capa{6}{\node[punto,label={[etiqueta]right:$E_1$}] (E1) at (0.4,0.2) {};}
+  \capa{6}{\proyeccion{(E1)}{$q_{A1}^A$}{$q_{B1}^A$}}
+  \capa{6}{\draw[flecha,shorten <=3pt,shorten >=3pt] (E0) -- (E1);}
+  % 7: cantidad total constante por E0: en E1 la cantidad total es menor
+  \capa{7}{\draw[desplazada,thick,tceegris] (0,{2/3}) -- ({2/3},0);}
+  \capa{7}{\node[etiqueta,left,text=tceegris] at (0,{2/3}) {$2q^C$};}
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceegris,rotate=-45,anchor=south] at (0.075,0.592) {cantidad total};}
+\end{tikzpicture}
+\end{document}

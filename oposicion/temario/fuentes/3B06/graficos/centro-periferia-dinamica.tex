@@ -1,0 +1,87 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Dinámica del modelo centro-periferia: lambda_A punto = omega_A - omega_B
+% frente a lambda_A. Curvas calculadas resolviendo el modelo de Krugman (1991)
+% con mu = 0,4 y sigma = 5 para phi_tau = 0,06, 0,12 y 0,25 (sostenibilidad
+% en 0,094 y ruptura en 0,143), cada una normalizada a su máximo en valor
+% absoluto. Punto lleno: equilibrio estable; hueco: inestable.
+\tikzset{
+  estable/.style={circle,fill=black,inner sep=1.6pt},
+  inestable/.style={circle,draw=black,fill=white,thick,inner sep=1.4pt},
+  dinamica/.style={->,thick,tceerojo},
+}
+% \panelejes: ejes de un panel
+\newcommand{\panelejes}{%
+  \draw[eje] (0,-1.15) -- (0,1.25) node[left] {$\dot\lambda_A$};
+  \draw[eje] (0,0) -- (1.18,0) node[below=1pt] {$\lambda_A$};
+  \node[below left] at (0,0) {$0$};
+  \draw (0.5,0) -- (0.5,-0.06) node[below,font=\footnotesize] {$\tfrac12$};
+  \draw (1,0) -- (1,-0.06) node[below,font=\footnotesize] {$1$};}
+\begin{document}
+\begin{tikzpicture}[tcee,x=3.6cm,y=1.4cm]
+  % 1: ejes de los 3 paneles
+  \capa{1}{%
+    \begin{scope}\panelejes
+      \node[etiqueta,align=center] at (0.55,-1.55) {costes de comercio altos\\($\phi_\tau<\phi_\tau^{\mathrm{s}}$)};
+    \end{scope}
+    \begin{scope}[xshift=5.2cm]\panelejes
+      \node[etiqueta,align=center] at (0.55,-1.55) {costes de comercio intermedios\\($\phi_\tau^{\mathrm{s}}<\phi_\tau<\phi_\tau^{\mathrm{r}}$)};
+    \end{scope}
+    \begin{scope}[xshift=10.4cm]\panelejes
+      \node[etiqueta,align=center] at (0.55,-1.55) {costes de comercio bajos\\($\phi_\tau>\phi_\tau^{\mathrm{r}}$)};
+    \end{scope}
+  }
+  % 2: costes altos: corta una vez en 1/2, con pendiente negativa (dispersión)
+  \capa{2}{%
+    \draw[curva1] plot[smooth] coordinates {
+      (0.00,0.712) (0.04,0.820) (0.08,0.903) (0.12,0.961) (0.16,0.993)
+      (0.20,1.000) (0.24,0.979) (0.28,0.926) (0.32,0.839) (0.36,0.715)
+      (0.40,0.551) (0.44,0.349) (0.48,0.120) (0.52,-0.120) (0.56,-0.349)
+      (0.60,-0.551) (0.64,-0.715) (0.68,-0.839) (0.72,-0.926) (0.76,-0.979)
+      (0.80,-1.000) (0.84,-0.993) (0.88,-0.961) (0.92,-0.903) (0.96,-0.820)
+      (1.00,-0.712)};
+    \draw[dinamica] (0.08,0.12) -- (0.40,0.12);
+    \draw[dinamica] (0.92,0.12) -- (0.60,0.12);
+    \node[estable] at (0.5,0) {};
+  }
+  % 3: costes intermedios: 1/2 estable, 2 interiores inestables y los
+  % extremos estables (histéresis)
+  \capa{3}{%
+    \begin{scope}[xshift=5.2cm]
+      \draw[curva1] plot[smooth] coordinates {
+      (0.00,-1.000) (0.04,-0.695) (0.08,-0.432) (0.12,-0.210) (0.16,-0.028)
+      (0.20,0.113) (0.24,0.215) (0.28,0.276) (0.32,0.297) (0.36,0.280)
+      (0.40,0.229) (0.44,0.150) (0.48,0.052) (0.52,-0.052) (0.56,-0.150)
+      (0.60,-0.229) (0.64,-0.280) (0.68,-0.297) (0.72,-0.276) (0.76,-0.215)
+      (0.80,-0.113) (0.84,0.028) (0.88,0.210) (0.92,0.432) (0.96,0.695)
+      (1.00,1.000)};
+      \draw[dinamica] (0.13,0.12) -- (0.02,0.12);
+      \draw[dinamica] (0.21,0.12) -- (0.44,0.12);
+      \draw[dinamica] (0.79,0.12) -- (0.56,0.12);
+      \draw[dinamica] (0.87,0.12) -- (0.98,0.12);
+      \node[estable] at (0,0) {};
+      \node[inestable] at (0.167,0) {};
+      \node[estable] at (0.5,0) {};
+      \node[inestable] at (0.833,0) {};
+      \node[estable] at (1,0) {};
+    \end{scope}
+  }
+  % 4: costes bajos: corta en 1/2 con pendiente positiva (aglomeración en 0 o 1)
+  \capa{4}{%
+    \begin{scope}[xshift=10.4cm]
+      \draw[curva1] plot[smooth] coordinates {
+      (0.00,-1.000) (0.04,-0.900) (0.08,-0.806) (0.12,-0.715) (0.16,-0.629)
+      (0.20,-0.547) (0.24,-0.467) (0.28,-0.391) (0.32,-0.316) (0.36,-0.244)
+      (0.40,-0.173) (0.44,-0.103) (0.48,-0.034) (0.52,0.034) (0.56,0.103)
+      (0.60,0.173) (0.64,0.244) (0.68,0.316) (0.72,0.391) (0.76,0.467)
+      (0.80,0.547) (0.84,0.629) (0.88,0.715) (0.92,0.806) (0.96,0.900)
+      (1.00,1.000)};
+      \draw[dinamica] (0.42,0.12) -- (0.06,0.12);
+      \draw[dinamica] (0.58,0.12) -- (0.94,0.12);
+      \node[estable] at (0,0) {};
+      \node[inestable] at (0.5,0) {};
+      \node[estable] at (1,0) {};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}
