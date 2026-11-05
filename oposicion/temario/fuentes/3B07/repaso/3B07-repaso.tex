@@ -1,0 +1,273 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Política comercial (I)]{3.B.7}{La política comercial (I). Instrumentos y efectos. Barreras arancelarias y no arancelarias. Otros instrumentos tradicionales.}
+\tcefecha{05/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: puertas al campo}{2,5}
+\apartadocante{I. Barreras arancelarias}{13}
+\subcante{1. Definición}{1}
+\subcante{2. Efectos: parcial (\tiempo{4,5}) y general (\tiempo{7,5})}{12}
+\apartadocante{II. Barreras no arancelarias}{10}
+\subcante{Apertura: neoproteccionismo y clasificación}{1}
+\subcante{1. Cuotas a la importación}{3}
+\subcante{2. Subsidios a la exportación}{2}
+\subcante{3. Impuestos a la exportación}{1}
+\subcante{4. Restricciones voluntarias (RVE)}{1}
+\subcante{5. Otros instrumentos tradicionales}{2}
+\apartadocante{III. Medición de los efectos}{3,5}
+\subcante{1. Medición del proteccionismo}{2}
+\subcante{2. Evidencia empírica}{1,5}
+\apartadocante{Conclusión}{1}}
+\emph{Reparto fino de I.2}: país pequeño parcial \tiempo{2,5}; grande parcial \tiempo{2}; herramienta ON-CIC \tiempo{1}; pequeño general \tiempo{1,5}; arancel óptimo \tiempo{3,5}; \autor{Metzler} y \autor{Lerner} \tiempo{1,5}. \emph{Pizarra}: $t^{\mathrm{opt}}=1/(\varepsilon^*-1)$ en una esquina hasta la conclusión; en la otra, el acero ($x=100-p$, $q=p$, $p^W=20$), que vuelve en cuotas, monopolio y RVE. Pegatinas: «el pez grande se come al chico» (arancel óptimo), «salirle a uno el tiro por la culata» (\autor{Lerner}), «tanto monta, monta tanto» (simetría), «hacer de la necesidad virtud» (RVE), «desnudar a un santo para vestir a otro» (protección efectiva).
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «no se le pueden poner puertas al campo». EE.\,UU., 2/4/2025: aranceles «recíprocos» a casi todos sus socios; feb. 2026: su Supremo resuelve que la ley de emergencia económica (IEEPA) no le autoriza a fijar aranceles. Comercio en condiciones NMF: 80\,\% \ensuremath{\Rightarrow} 72\,\%. ¿Qué consigue un país cuando le pone puertas a su comercio, y quién las paga?
+\item \textbf{Relevancia}: \emph{teórica}: parte normativa de la teoría del comercio (por qué el libre comercio es eficiente, cuánto cuesta apartarse, quién gana y quién pierde). \emph{Práctica}: comercio mundial de bienes y servicios 34,65 billones \$ (2025); política comercial = competencia exclusiva de la UE \vertema{3.B.41}.
+\item \textbf{Contextualización}: \concepto{política comercial}: medidas con que un gobierno actúa sobre volumen, composición, precios o dirección del comercio exterior. \emph{Objetivos}: proteger (empleo, reparto, seguridad, industria naciente: \autor{Hamilton} 1791, \autor{List} 1841 \vertema{3.B.8}), recaudar, mejorar la RRI de un país grande, corregir fallos de mercado; y economía política (ganadores concentrados, perdedores dispersos: \autor{Grossman}-\autor{Helpman}, 1994). \emph{Clasificación}: por la variable (\emph{precio}: aranceles, subvenciones, impuestos a la exportación; \emph{cantidad}: cuotas, RVE); por el sentido (\emph{defensivos} / \emph{ofensivos}); por la forma (arancelarios, no arancelarios, otros). \emph{Historia}: \autor{Hume} y \autor{Ricardo} contra el mercantilismo; GATT ↓ aranceles; desde los 70, neoproteccionismo; desde 2018, vuelven los aranceles. Completan: \vertema{3.B.8} \vertema{3.B.9} \vertema{3.B.10} \vertema{3.B.33}.
+\item \textbf{Problemática}: ¿efectos de un arancel (precios, comercio, bienestar, reparto), en país pequeño y grande? ¿Puede un país ganar con un arancel; cuál es el óptimo? ¿Arancel = cuota? ¿Qué cambia con los demás? ¿Cómo se mide la protección y qué dicen los datos?
+\item \textbf{Estructura}: del instrumento clásico a sus sustitutos y a la medición: \hyperref[rep:I]{I}, barreras arancelarias; \hyperref[rep:II]{II}, no arancelarias y otros; \hyperref[rep:III]{III}, medición y evidencia.
+\end{itemize}
+
+% ==========================================================================
+\bloque[13]{I. Barreras arancelarias\label{rep:I}}
+\begin{ideaclave}
+País pequeño: el arancel siempre reduce el bienestar ($b+d$) y redistribuye hacia productores, Estado y factor intensivo en el bien protegido. País grande: además mejora la RRI ($e$); un arancel pequeño siempre gana y hay un óptimo $t^{\mathrm{opt}}=1/(\varepsilon^*-1)=1/\varepsilon^*_X$, a costa del resto del mundo y con riesgo de represalias.
+\end{ideaclave}
+
+\sub{I.1. Definición\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Arancel a la importación}: impuesto sobre una mercancía importada al cruzar la frontera. (Aranceles a la exportación: abastecimiento, transformación interior, recaudar; los de tránsito, prohibidos por el art.~V del GATT.)
+\item \emph{Según cómo se calcula}:
+  \begin{itemize}
+  \item \concepto{\emph{ad valorem}}: \% $t$ del valor en aduana, $p=p^W(1+t)$. Misma protección con inflación, no discrimina variedades; pero hay que valorar (Acuerdo sobre Valoración en Aduana \vertema{3.B.33});
+  \item \concepto{específico}: $T$ € por unidad física (azúcar blanco en la UE, por 100 kg). Sencillo; equivalente \emph{ad valorem} $T/p^W$ ↑ si ↓$p^W$, se erosiona con la inflación, \emph{regresivo} dentro de cada partida;
+  \item \concepto{compuesto} (\% + fijo) y \concepto{mixto} (el mayor o el menor de los 2): frecuentes en agricultura.
+  \end{itemize}
+\item \emph{Según cuándo o cuánto}: \concepto{estacional} (frutas y hortalizas); \concepto{contingente arancelario}: arancel bajo dentro de un cupo y alto fuera (arancelización de la Ronda Uruguay; precio + cantidad).
+\item \emph{Según el compromiso}: \concepto{consolidado} (máximo comprometido en la OMC) frente a \concepto{aplicado}; la diferencia es el «agua» arancelaria (India: 50,8 frente a 16,0\,\%). \concepto{NMF}: igual para todos los miembros (art.~I del GATT); excepciones: acuerdos preferenciales \vertema{3.B.10} y preferencias a los PED \vertema{3.B.33}.
+\item \concepto{Escalonamiento arancelario}: más arancel cuanto más elaborado el producto \ensuremath{\Rightarrow} protege más de lo que parece (protección efectiva, \hyperref[rep:III.1]{III.1}).
+\item \emph{Nivel}: ↓ desde 1996 (\hyperref[rep:datos]{datos}); simple > ponderada: los aranceles altos frenan las importaciones y pesan poco.
+\end{itemize}
+
+\sub{I.2. Efectos\label{rep:I.2}}
+\begin{itemize}
+\item Arancel \emph{ad valorem} $t$ sobre un bien del que el país es \concepto{importador neto}. \emph{Supuestos}: CP, bien homogéneo, sin transporte, recaudación devuelta a suma fija. \concepto{País pequeño}: no altera los precios mundiales; \concepto{grande}: sí.
+\end{itemize}
+\textbf{\color{tceemorado}a) Equilibrio parcial: país pequeño}
+\begin{itemize}
+\item \emph{Positivo}: precio interior ↑ en todo el arancel, $p^W\to p^W(1+t)$; consumo ↓ ($x^0\to x^1$), producción ↑ ($q^0\to q^1$); importaciones ↓ por los 2 lados ($M=x-q$).
+\item \emph{Normativo}: EC $-(a+b+c+d)$; EP $+a$; recaudación $c=t\,p^WM^1$; \concepto{PIE} $=b+d$: $b$, \emph{distorsión en la producción}; $d$, \emph{en el consumo} \vertema{3.A.16}. Triángulo de \autor{Harberger} \vertema{4.B.8}:
+\begin{formula}\centering $\displaystyle \mathrm{PIE}=b+d\approx\tfrac12\,t^2p^W\bigl(\varepsilon_{q,p}q^0+\lvert\varepsilon_{x,p}\rvert x^0\bigr)=\tfrac12\,t^2\lvert\varepsilon_{M,p}\rvert\,p^WM^0$\end{formula}
+  ↑ con las elasticidades y con el \emph{cuadrado} de $t$ \ensuremath{\Rightarrow} mejor aranceles bajos en muchos productos que altos en pocos.
+\item \emph{Acero}: $x=100-p$, $q=p$, $p^W=20$: libre comercio $x=80$, $q=20$, $M=60$. Arancel 50\,\% \ensuremath{\Rightarrow} $p=30$, $x=70$, $q=30$, $M=40$; EC $-750$, $a=250$, $c=400$, $b+d=50+50=100$ (fórmula: $\tfrac12\cdot0{,}25\cdot20\cdot(20+0{,}25\cdot80)=100$). \concepto{Arancel prohibitivo}: 150\,\% \ensuremath{\Rightarrow} $p=50$, el de autarquía; no recauda.
+\item \emph{Reparto}: de consumidores a productores y Estado; hacia el factor intensivo en el bien protegido (\autor{Stolper}-\autor{Samuelson}) \vertema{3.B.5}.
+\item \emph{Descomposición} (\autor{Corden}, 1971): arancel = subvención a la producción + impuesto al consumo, ambos a $t$. \concepto{Principio de focalización} (\autor{Bhagwati}-\autor{Ramaswami}, 1963): corregir cada distorsión en su origen; la subvención a la producción evita $d$ \vertema{3.A.22}.
+\item Conclusión: todo arancel ↓ bienestar nacional y mundial en la misma cuantía; $t^{\mathrm{opt}}=0$.
+\end{itemize}
+\textbf{\color{tceemorado}b) Equilibrio parcial: país grande}
+\begin{itemize}
+\item $M(p)=x(p)-q(p)$ frente a $X^*(p^*)$; cuña $p=p^*(1+t)$, con $p^*<p^W<p^*(1+t)$: parte del arancel la pagan los exportadores extranjeros.
+\item \emph{Importador}: EC $-(a+b+c+d)$, EP $+a$, Estado $c+e$, con $e=(p^W-p^*)M^1$ = \emph{mejora de la RRI}; neto $e-(b+d)$, \emph{ambiguo}. \emph{Exportador}: pierde $e+f+h$. \emph{Mundo}: $-(b+d+f+h)<0$.
+\item Arancel pequeño: $e\propto t$, $b+d\propto t^2$ \ensuremath{\Rightarrow} \emph{siempre gana}; el bienestar sube hasta un máximo, luego cae por debajo del libre comercio hasta el prohibitivo:
+\begin{formula}\centering $\displaystyle t^{\mathrm{opt}}=\frac{1}{\varepsilon^*_X}$\end{formula}
+  $\varepsilon^*_X$: elasticidad de la oferta de exportaciones del resto del mundo; si $\varepsilon^*_X\to\infty$, $t^{\mathrm{opt}}=0$.
+\end{itemize}
+\graficorepaso[\linewidth]{arancel-grande}{País grande: $c+e$ recaudación ($e$, la paga el exportador); $b+d$ y $f+h$, PIE. Con $p^*=p^W$ es el país pequeño.}
+
+\textbf{\color{tceemorado}c) Equilibrio general}
+\begin{itemize}
+\item El parcial es simplista: el arancel mueve recursos, rentas de factores y, como hay que pagar las importaciones, ↓ las exportaciones (arancel = impuesto a la exportación). Modelo 2×2×2 de \autor{Haberler} (1936) \vertema{3.B.5}; $A$ exporta $X$, importa $Y$ y grava $Y$.
+\item \emph{Herramienta}: \concepto{curva de oferta neta} (ON, \autor{Marshall}, 1879): $(E^A,M^A)$ para cada RRI, cada punto con $\mathrm{RMT}_{XY}=\mathrm{RMS}_{XY}=\mathrm{RRI}$; \concepto{curva de indiferencia comercial} (CIC, \autor{Meade}, 1952): vectores de comercio de igual utilidad, pendiente > 0, mejor arriba y a la izquierda; ON$_A$ = tangencias CIC-rectas de la RRI. $\hat E^A=(\varepsilon^A_M-1)\widehat{\mathrm{RRI}}$: sube si $\varepsilon^A_M>1$, se dobla hacia atrás si $<1$. Arancel \ensuremath{\Rightarrow} precio interior $p_X/[p_Y(1+t)]<\mathrm{RRI}$ \ensuremath{\Rightarrow} ON$_A$ se contrae hacia el eje de su importación.
+\item \emph{País pequeño}: produce en $P'$ (más $Y$), consume en $C'$ (CIS tangente al precio interior y sobre la recta de la RRI por $P'$); ↓ triángulo de comercio; ON$_B$ = recta; RRI igual, CIS y CIC más bajas \ensuremath{\Rightarrow} $t^{\mathrm{opt}}=0$ también aquí.
+\item \emph{País grande}: a la RRI inicial, $E_0\to E'_1$: exceso de demanda de $X$ \ensuremath{\Rightarrow} ↑RRI de $A$ hasta $E_1$ (\autor{Walras}). 2 efectos: (+) \emph{mejora de la RRI} (monopsonio en $Y$, monopolio en $X$); ($-$) \emph{distorsión} en los 2 bienes. Reparto: \autor{Stolper}-\autor{Samuelson} (gana el factor escaso).
+\end{itemize}
+
+\textbf{\color{tceemorado}d) El arancel óptimo}
+\begin{itemize}
+\item \concepto{Arancel óptimo}: el que maximiza el bienestar del país que lo pone, dados los demás. Idea de \autor{Torrens} y \autor{Mill}; fórmula de \autor{Bickerdike} (1906); con ON, \autor{Johnson} (1953). «El pez grande se come al chico».
+\item \emph{Supuestos}: \autor{Haberler} + $A$ grande (corta a ON$_B$ en su tramo curvo), CP, recaudación devuelta, $B$ no responde.
+\item En $E_0$ se cumplen las 3 condiciones de Pareto (RMS común, RMST común, RMS = RMT) \vertema{3.A.22}, pero no la 4.ª: $\mathrm{RMT}_{XY}=\mathrm{RRI}>\mathrm{RMT}^*_{XY}$ (pendiente de ON$_B$). En $E_1$, CIC tangente a ON$_B$: $\mathrm{RMS}_{XY}=\mathrm{RMT}_{XY}=\mathrm{RMT}^*_{XY}$:
+\funcionclave{t^{\mathrm{opt}}=\frac{1}{\varepsilon^*-1}\ \Longleftrightarrow\ \frac{t^{\mathrm{opt}}}{1+t^{\mathrm{opt}}}=\frac{1}{\varepsilon^*}}
+  $\varepsilon^*\equiv\varepsilon^B_M$ (ON del resto del mundo); con $\varepsilon^*_X=\varepsilon^*-1$, es $1/\varepsilon^*_X$, la del parcial. 2.ª forma = regla de elasticidad inversa del monopolista, $\mathcal L=1/\lvert\varepsilon_{q,p}\rvert$ \vertema{3.A.17}.
+\item \emph{Interpretación}: RRI = coste \emph{medio} de importar; el \emph{marginal} es mayor. Libre comercio iguala precio interior a coste medio; el óptimo, al marginal (monopsonista).
+\item $\varepsilon^*>1$ siempre en el óptimo (en el tramo inelástico se importa lo mismo exportando menos). Por encima del óptimo, ↓ bienestar; al final, prohibitivo (corte en el origen).
+\end{itemize}
+\graficorepaso[0.82\linewidth]{arancel-optimo}{Arancel óptimo: ON$_A\to$ ON$'_A$, de $E_0$ a $E_1$, donde la CIC$_{A,1}$ es tangente a ON$_B$.}
+\begin{itemize}
+\item \emph{Implicaciones}: > 0 en país grande, 0 en pequeño ($\varepsilon^*\to\infty$); ↑ cuanto más rígida ON$_B$: $\varepsilon^*=3$ \ensuremath{\Rightarrow} 50\,\%; $\varepsilon^*=11$ \ensuremath{\Rightarrow} 10\,\%. Igual con un impuesto a la exportación (\autor{Lerner}). El mundo pierde: \emph{beggar-thy-neighbour}.
+\item \emph{Extensiones}: unión aduanera, más peso conjunto \vertema{3.B.10}; competencia imperfecta: extraer rentas al monopolista extranjero o trasladar beneficios \vertema{3.B.8}; competencia monopolística: > 0 aunque no mueva el precio (\autor{Gros}, 1987) \vertema{3.B.6}.
+\item \emph{Evidencia}: antes de entrar en la OMC, aranceles \dato{$\approx$9 puntos más altos con oferta extranjera inelástica}{Broda, Limão y Weinstein, 2008}; pero EE.\,UU. 2018-2019 no abarató lo que compraba.
+\item \emph{Valoración}: exige ser grande en el bien y conocer $\varepsilon^*$ (más elástica a l/p); fuera de este caso nunca es la mejor política \vertema{3.A.22}; ignora la respuesta: guerra arancelaria (\autor{Johnson}, 1953) \ensuremath{\Rightarrow} equilibrio de \autor{Nash} en aranceles, normalmente los 2 pierden (dilema del prisionero) \vertema{3.A.14} \vertema{3.B.8}; puede ganar el de ON mucho más elástica (\autor{Kennan}-\autor{Riezman}, 1988).
+\end{itemize}
+
+\textbf{\color{tceemorado}e) Paradojas de \autor{Metzler} y \autor{Lerner}}
+\begin{itemize}
+\item \concepto{Paradoja de \autor{Metzler}} (1949): la RRI mejora tanto que $p_Y$ \emph{interior} (con arancel) baja: el arancel \emph{desprotege}. Si ON$_B$ es inelástica en el corte y más que la propensión de $A$ a gastar en su exportado:
+\begin{formula}\centering $\varepsilon^*<1-\mathrm{PMgC}^A_Y$\quad (si la recaudación se gasta en $X$: $\varepsilon^*<1$)\end{formula}
+  $B$ exporta más $Y$ para pagar; \autor{Stolper}-\autor{Samuelson} al revés (gana el factor del bien exportado).
+\item \concepto{Paradoja de \autor{Lerner}} (1936): la RRI de $A$ \emph{empeora} («el tiro por la culata»). Exige que el Estado gaste la recaudación en el bien importado; si toda en $Y$:
+\begin{formula}\centering $\varepsilon^A_M<1$\end{formula}
+  En general, $\varepsilon^A_M<$ parte de la recaudación gastada en $Y$; con la recaudación devuelta, imposible: aviso sobre su uso.
+\end{itemize}
+\graficorepaso[\linewidth]{metzler-lerner}{Caso normal, \autor{Metzler} (ON$_B$ inelástica: se desprotege $Y$) y \autor{Lerner} (recaudación en $Y$: la RRI de $A$ empeora).}
+
+% ==========================================================================
+\bloque[10]{II. Barreras no arancelarias\label{rep:II}}
+\begin{ideaclave}
+Con CP casi toda barrera no arancelaria tiene un arancel equivalente, pero cuesta más: deja la renta a quien tiene la licencia o al exportador, protege más cuando crece la demanda, da poder de mercado al monopolio nacional y se ve menos. La subvención a la exportación empeora la RRI del país grande; el impuesto a la exportación es la otra cara del arancel.
+\end{ideaclave}
+\begin{itemize}
+\item \concepto{Neoproteccionismo}: rondas Kennedy (1964-1967) y Tokio (1973-1979) negocian también otras barreras; tras la crisis del petróleo (70), sin poder subir aranceles consolidados \ensuremath{\Rightarrow} cuotas, RVE, reglamentos: menos visibles, dirigibles contra un país (Acuerdo Multifibras; cuotas textiles eliminadas el 1/1/2005).
+\item \concepto{Medida no arancelaria} (MNA): toda medida distinta de un arancel ordinario que puede afectar al comercio, a las cantidades, a los precios o a ambos. \emph{Clasificación UNCTAD (2019)}: 16 capítulos A-P: \emph{técnicas} A (MSF), B (OTC), C (inspección previa); \emph{no técnicas} D-O (defensa comercial, licencias y cuotas, precios, financieras, competencia, inversiones, distribución, posventa, subvenciones, contratación pública, propiedad intelectual, normas de origen); P, a la exportación.
+\item \emph{Técnicas} (MSF y OTC): las más frecuentes; pueden \emph{corregir un fallo de mercado} (información) \ensuremath{\Rightarrow} las admiten los acuerdos MSF y OTC si no discriminan y se basan en ciencia o normas internacionales \vertema{3.B.33}. Pero coste fijo de adaptación \ensuremath{\Rightarrow} protegen (carne con hormonas, OMC 1998; aftosa, Argentina frente a EE.\,UU., 2015).
+\end{itemize}
+
+\sub{II.1. Cuotas a la importación\label{rep:II.1}}
+\begin{itemize}
+\item \concepto{Cuota} (contingente): límite a la cantidad importada en un periodo. Prohibidas en general (art.~XI del GATT; excepciones: agricultura antes de la Ronda Uruguay, balanza de pagos, salvaguardias). Gestión: orden de llegada, licencias subastadas o asignadas gratis.
+\item \emph{Equivalencia} (\autor{Bhagwati}, 1965), CP y país pequeño: para cada cuota hay un \concepto{arancel equivalente} (mismo precio y mismas importaciones), en parcial y en general. Acero: cuota de 40 \ensuremath{\Rightarrow} $p=30$, como el 50\,\%; $b+d=100$.
+\item \emph{Diferencia: el área $c$} = \concepto{renta de la cuota}, $(p-p^W)\bar M=400$: subastada \ensuremath{\Rightarrow} la recupera el Estado; regalada a importadores \ensuremath{\Rightarrow} \concepto{búsqueda de rentas} (\autor{Krueger}, 1974) convierte parte de $c$ en pérdida \vertema{4.B.2}; cedida al exportador \ensuremath{\Rightarrow} pérdida $b+c+d$ (RVE). Cuota: se fija la cantidad y se ajusta el precio; arancel, al revés.
+\item \emph{Deja de haber equivalencia}: ↑demanda o ↓$p^W$ (con cuota ↑ el precio y la protección solas); incertidumbre (el productor sabe cuánto se importará: prefiere cuotas); transparencia (el arancel se ve); competencia imperfecta.
+\item \emph{Monopolio nacional} (levanta el supuesto 4, atomicidad; $\mathrm{CMg}=q$): \emph{autarquía} $100-2q=q$ \ensuremath{\Rightarrow} $q=33{,}3$, $p=66{,}7$; \emph{libre comercio}: demanda horizontal a $p^W$ \ensuremath{\Rightarrow} $p^W=\mathrm{CMg}$, $q=20$, $M=60$ (el comercio disciplina); \emph{arancel} 50\,\%: horizontal a 30 \ensuremath{\Rightarrow} $q=30$, $M=40$, como CP; \emph{cuota} de 40: monopolista de la \concepto{demanda residual} $x(p)-\bar M=60-p$: $60-2q=q$ \ensuremath{\Rightarrow} $q=20$, $p=40$.
+\item \emph{Implicaciones}: no equivalentes: con igual importación, la cuota da precio mayor (40 frente a 30) y producción menor (20 frente a 30); pérdida 200 frente a 100; arancel equivalente por precio > por importaciones \ensuremath{\Rightarrow} medir cuotas por su equivalente es delicado.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{cuota-monopolio}{Cuota con monopolio: $M$ (40, 20) frente al arancel $A$ (30, 30).}
+
+\sub{II.2. Subsidios a la exportación\label{rep:II.2}}
+\begin{itemize}
+\item \concepto{Subvención a la exportación}: pago por unidad exportada (fijo o \% $s$, directo, fiscal o crediticio) condicionado a exportar o a usar productos nacionales. Prohibida por el Acuerdo SMC; respuesta: derechos compensatorios \vertema{3.B.33}.
+\item \emph{País pequeño}: precio interior ↑ a $p^W(1+s)$ (sin reimportar); ↑producción, ↓consumo, ↑exportaciones; EC $-(a+b)$, EP $+(a+b+c)$, coste $b+c+d$ \ensuremath{\Rightarrow} pérdida $b+d$.
+\item \emph{País grande}: ↓precio mundial \ensuremath{\Rightarrow} empeora su RRI y regala parte de la subvención: \emph{con CP no hay subvención óptima}; lo óptimo para un exportador grande es un impuesto a la exportación.
+\item Economía política (PAC \vertema{3.B.38}). \emph{Nairobi} (2015): eliminarlas en agricultura (desarrollados, ya; PED, antes de 2019). Alta tecnología con pocas empresas: traslado de beneficios (\autor{Brander}-\autor{Spencer}, 1985; Airbus-Boeing) \vertema{3.B.8}.
+\end{itemize}
+
+\sub{II.3. Impuestos a la exportación\label{rep:II.3}}
+\begin{itemize}
+\item \concepto{Impuesto a la exportación}: grava los bienes que salen (abastecimiento, abaratar dentro, transformación, recaudar). CE, trigo blando (dic. 1995); alimentos 2007-2008: restricciones que subieron aún más los precios mundiales (\autor{Martin}-\autor{Anderson}, 2011).
+\item \emph{País pequeño}: ↓precio interior; EC $+a$, EP $-(a+b+c+d)$, Estado $c$ \ensuremath{\Rightarrow} pérdida $b+d$. \emph{Grande}: ↑precio mundial, mejora la RRI \ensuremath{\Rightarrow} impuesto óptimo, simétrico del arancel óptimo.
+\item \concepto{Teorema de la simetría} (\autor{Lerner}, 1936): en equilibrio general, arancel \emph{ad valorem} a la importación = impuesto \emph{ad valorem} a la exportación del mismo tipo: $p_X/[p_Y(1+t)]=[p_X/(1+t)]/p_Y$. «Tanto monta, monta tanto». Límites: comercio equilibrado a l/p, precios y tipos flexibles, mismo uso de la recaudación (\autor{Costinot}-\autor{Werning}, 2017); en parcial no hay simetría.
+\end{itemize}
+
+\sub{II.4. Restricciones voluntarias (RVE)\label{rep:II.4}}
+\begin{itemize}
+\item \concepto{RVE}: cuota que el exportador pone a sus ventas a petición del importador, para evitar algo peor (automóviles japoneses a EE.\,UU., 1981). «Hacer de la necesidad virtud».
+\item \emph{Importador}: cuota con licencias regaladas fuera: pierde $b+c+d$ (acero: $50+400+50=500$, 5 veces el arancel). \emph{Exportador}: pierde ventas, sus empresas se quedan la renta; con cártel y mercado grande, puede ganar.
+\item L/p: \emph{mejora de calidad} (\autor{Feenstra}, 1988). Las prohíbe el Acuerdo sobre Salvaguardias (art.~11).
+\end{itemize}
+
+\sub{II.5. Otros instrumentos tradicionales\label{rep:II.5}}
+\begin{itemize}
+\item \emph{Defensa comercial}: \concepto{dumping}: exportar por debajo del \emph{valor normal} (precio de origen o coste + margen); si causa daño importante, derecho antidumping $\le$ margen (art.~VI del GATT y Acuerdo Antidumping). Persistente = \emph{discriminación de 3.\textsuperscript{er} grado} (menos precio donde la demanda es más elástica) \vertema{3.A.17}. \autor{Viner} (1923): esporádico, persistente, predatorio (solo este daña al importador). Recíproco con oligopolio \vertema{3.B.6}. \concepto{Compensatorias} (contra subvenciones: UE a los eléctricos chinos, 2024); \concepto{salvaguardias} (temporales, sin práctica desleal) \vertema{3.B.33} \vertema{3.B.41}.
+\item \emph{Resto}: \concepto{tipos de cambio múltiples} (arancel o subvención; art.~VIII del FMI); \concepto{depósitos previos} (coste de oportunidad = arancel); \concepto{comercio de Estado y contratación pública} (ACP plurilateral); \concepto{contenido local} (cuota sobre insumos; prohibido por el MIC); \concepto{ayuda ligada} (encarece \dato{15-30\,\%}{OCDE, 2018; Jepma, 1991}) \vertema{3.B.42}; \concepto{créditos a la exportación} (Consenso OCDE) \vertema{4.A.24}; \concepto{embargos} (EE.\,UU.-Cuba, 1960-1962, Helms-Burton 1996); \concepto{MAFC} de la UE, definitivo desde el 1/1/2026 \vertema{3.B.31}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[3,5]{III. Medición de los efectos\label{rep:III}}
+\begin{ideaclave}
+El arancel medio mide mal la protección: hay que tener en cuenta los insumos (protección efectiva) y las barreras no arancelarias (índices de restricción y equivalentes \emph{ad valorem}). La evidencia reciente: el arancel lo paga sobre todo quien lo pone.
+\end{ideaclave}
+
+\sub{III.1. Medición del proteccionismo\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Protección nominal}: lo que sube el precio interior sobre el de frontera ($t$); óptica del consumidor. Media \emph{simple} (exagera si las partidas altas apenas se comercian) y \emph{ponderada} (subestima: el prohibitivo pesa 0).
+\item \concepto{Protección efectiva} (\autor{Corden}, 1966; \autor{Balassa}, 1965; \autor{Johnson}, 1965): lo que sube el \emph{valor añadido} por unidad de la industria $j$. Insumos intermedios: \dato{52\,\% del comercio de mercancías sin combustibles}{OMC, 2024}. Con $a_{ij}$ la parte del insumo $i$ en el valor de $j$ en libre comercio:
+\funcionclave{z_j=\frac{t_j-\sum_i a_{ij}t_i}{1-\sum_i a_{ij}}}
+\item \emph{Coche}: vale 100, 60 de piezas ($a_{ij}=0{,}6$), 10\,\% al coche: piezas 0\,\% \ensuremath{\Rightarrow} $z=25$\,\%; 5\,\% \ensuremath{\Rightarrow} 17,5\,\%; 20\,\% \ensuremath{\Rightarrow} $-5$\,\% (desprotegida). «Desnudar a un santo para vestir a otro».
+\item $z_j>t_j$ si $t_i<t_j$; $<0$ si $t_j<\sum_ia_{ij}t_i$ \ensuremath{\Rightarrow} el escalonamiento protege a las transformadoras y frena la transformación en los países de materias primas. \emph{Críticas}: país pequeño; coeficientes fijos de \autor{Leontief} (con sustitución, \emph{subestima}); en general, ignora el tipo de cambio (\autor{Corden}, 1971).
+\item \concepto{TRI} (\autor{Anderson}-\autor{Neary}, 1996): arancel uniforme con el mismo bienestar; \concepto{OTRI} (\autor{Kee}-\autor{Nicita}-\autor{Olarreaga}, 2009): mismo volumen de importaciones. \concepto{Equivalentes \emph{ad valorem}} de las MNA (gravedad o demanda de importaciones): en muchos de los 78 países, las MNA protegen más que los aranceles.
+\end{itemize}
+
+\sub{III.2. Evidencia empírica\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Métodos}: \emph{ex ante}, CGE; \emph{ex post}, gravedad (\autor{Tinbergen}, 1962; con fundamentos desde \autor{Eaton}-\autor{Kortum}, 2002); nuevos modelos cuantitativos: ganancia = f(gasto interior, elasticidad del comercio) (\autor{Arkolakis}-\autor{Costinot}-\autor{Rodríguez-Clare}, 2012).
+\item \emph{¿Quién paga?} Aranceles de EE.\,UU. 2018-2019: traslado casi completo a precios de importación (\autor{Amiti} et al., 2019; \autor{Fajgelbaum} et al., 2020); pérdida > recaudación + ganancia de productores; represalias en la agricultura; en tiendas, menos traslado (\autor{Cavallo} et al., 2021) \ensuremath{\Rightarrow} predicción del país pequeño.
+\item \emph{¿Se usa el poder de mercado?} Sí, donde las reglas no lo impiden (\autor{Broda}-\autor{Limão}-\autor{Weinstein}, 2008): la OMC lo desactiva \vertema{3.B.8}. RVE de automóviles: ↑precio y calidad, renta en Japón (\autor{Feenstra}, 1988).
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: país pequeño: toda barrera ↓ bienestar y redistribuye; país grande: arancel óptimo $1/(\varepsilon^*-1)$, a costa de otros y con represalias; cuotas = arancel con CP, más caras con renta fuera, ↑demanda o monopolio; protección real en el valor añadido y con MNA.
+\item \textbf{Relevancia}: vuelven los aranceles (EE.\,UU. 2018 y 2025, represalias); MNA > aranceles en muchos países; el arancel lo paga quien lo pone; economía política detrás de cada barrera.
+\item \textbf{Extensiones}: política comercial estratégica \vertema{3.B.8}; integración \vertema{3.B.10}; reglas multilaterales \vertema{3.B.33}; política comercial de la UE \vertema{3.B.41}; apertura como política de competencia (CNMC, 2017); promoción de exportaciones \vertema{4.A.24}.
+\item \textbf{Opinión}: diferencias de competitividad artificiales y caras: reparto \ensuremath{\Rightarrow} compensar; fallo de mercado \ensuremath{\Rightarrow} en su origen \vertema{3.A.22}; exportadoras \ensuremath{\Rightarrow} promoción compatible con la OMC. El único argumento de eficiencia (país grande) es el que más fácil acaba en guerra comercial.
+\item \textbf{Idea final}: al campo se le pueden poner puertas, pero casi siempre las paga quien se queda dentro; solo el grande se las cobra a los de fuera, y solo mientras no pongan las suyas.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1752}{\autor{Hume}; 1817, \autor{Ricardo}: contra la protección mercantilista}
+\hito{1791}{\autor{Hamilton}; 1841, \autor{List}: industria naciente}
+\hito{1879}{\autor{Marshall}: curvas de oferta neta}
+\hito{1906}{\autor{Bickerdike}: fórmula del arancel óptimo (idea de \autor{Torrens} y \autor{Mill})}
+\hito{1936}{\autor{Lerner}: teorema de la simetría y paradoja; \autor{Haberler}: modelo general}
+\hito{1941}{\autor{Stolper}-\autor{Samuelson}: protección y retribución de los factores}
+\hito{1947}{GATT; rondas Kennedy (1964-1967), Tokio (1973-1979), Uruguay (1986-1994)}
+\hito{1949}{\autor{Metzler}: el arancel que desprotege}
+\hito{1952}{\autor{Meade}: curvas de indiferencia comercial}
+\hito{1953}{\autor{Johnson}: arancel óptimo con ON y guerra arancelaria}
+\hito{1963}{\autor{Bhagwati}-\autor{Ramaswami}: principio de focalización}
+\hito{1965}{\autor{Bhagwati}: equivalencia arancel-cuota; \autor{Balassa}, \autor{Johnson} (1965) y \autor{Corden} (1966): protección efectiva}
+\hito{1974}{\autor{Krueger}: búsqueda de rentas}
+\hito{1981}{RVE de los automóviles japoneses; \autor{Feenstra} (1988): mejora de calidad}
+\hito{1985}{\autor{Brander}-\autor{Spencer}: subvención estratégica}
+\hito{1988}{\autor{Kennan}-\autor{Riezman}: el grande puede ganar la guerra}
+\hito{1994}{\autor{Grossman}-\autor{Helpman}: economía política de la protección}
+\hito{1996}{\autor{Anderson}-\autor{Neary}: TRI; 2009, \autor{Kee}-\autor{Nicita}-\autor{Olarreaga}: OTRI}
+\hito{2008}{\autor{Broda}-\autor{Limão}-\autor{Weinstein}: aranceles y poder de mercado}
+\hito{2015}{Nairobi: fin de las subvenciones a la exportación agrícola}
+\hito{2019}{\autor{Amiti} et al.; 2020, \autor{Fajgelbaum} et al.: quién pagó los aranceles}
+\hito{2025}{EE.\,UU.: aranceles «recíprocos» (2/4/2025)}
+\hito{2026}{Supremo de EE.\,UU. (IEEPA, feb.); MAFC definitivo (1/1/2026)}
+
+% ==========================================================================
+\bloque{Datos clave\label{rep:datos}}
+\begin{itemize}
+\item Comercio mundial de bienes y servicios: \dato{34,65 billones \$ en 2025}{OMC, 2026}.
+\item Comercio en condiciones NMF: \dato{80\,\% \ensuremath{\Rightarrow} 72\,\% (inicio de 2025 a feb. 2026)}{OMC, 2026}.
+\item Arancel NMF medio OMC 1996-2024: simple \dato{13,1 \ensuremath{\Rightarrow} 8,9\,\%}{OMC, 2026}; ponderado \dato{7,0 \ensuremath{\Rightarrow} 3,9\,\%}{OMC, 2026}; efectivo \dato{2,2\,\%}{OMC, 2026}.
+\item UE agrícola: media \dato{10,3\,\%}{OMC, 2026}; no \emph{ad valorem} \dato{31,3\,\%}{OMC, 2026}; contingentes \dato{13,5\,\%}{OMC, 2026}. India: consolidado \dato{50,8\,\%}{OMC, 2026}, aplicado \dato{16,0\,\%}{OMC, 2026}.
+\item Bienes intermedios: \dato{52\,\% del comercio sin combustibles}{OMC, 2024}.
+\item Déficit de bienes de EE.\,UU. con China: \dato{418.000 M\$ (2018)}{Census Bureau, 2026} \ensuremath{\Rightarrow} \dato{203.000 M\$ (2025), $-31{,}8$\,\%}{Census Bureau, 2026}.
+\item Aranceles medios bilaterales tras la fase uno (2020): EE.\,UU. \dato{19,3\,\%}{PIIE, 2026}, China \dato{21\,\%}{PIIE, 2026}; >100\,\% en la primavera de 2025; ago. 2026: \dato{$\approx$35\,\% y 32\,\%}{PIIE, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{itemize}
+\item \emph{¿Por qué un arancel pequeño siempre mejora el bienestar de un país grande?} La ganancia de RRI ($e$) es proporcional a $t$ y la PIE ($b+d$), a $t^2$: en $t=0$, $dW=-M\,dp^*>0$.
+\item \emph{¿Por qué $\varepsilon^*>1$ en el óptimo?} En el tramo inelástico de ON$_B$, subiendo el arancel se importa lo mismo exportando menos, como el monopolista que no produce donde la demanda es inelástica.
+\item \emph{¿Cuota y arancel son equivalentes?} Con CP y país pequeño, sí en precios y cantidades; difieren en quién se queda $c$, en la respuesta a ↑demanda, la incertidumbre, la transparencia y con monopolio nacional (cuota: 40 y 20 frente a 30 y 30).
+\item \emph{¿Hay subvención a la exportación óptima?} Con CP no: empeora la RRI del grande; lo óptimo es un impuesto a la exportación. Con oligopolio, puede trasladar beneficios \vertema{3.B.8}.
+\item \emph{¿Por qué la RVE es peor que la cuota?} La renta $c$ se va al exportador: pérdida $b+c+d$ (500 frente a 100 en el acero).
+\item \emph{¿Puede ser negativa la protección efectiva?} Sí, si $t_j<\sum_ia_{ij}t_i$: coche con piezas al 20\,\%, $z=-5$\,\%.
+\end{itemize}
+
+% ==========================================================================
+\begin{trampa}
+\begin{itemize}
+\item $t^{\mathrm{opt}}=1/(\varepsilon^*-1)$ con la elasticidad de la \emph{ON} (demanda de importaciones) del resto del mundo; $=1/\varepsilon^*_X$ con la de su \emph{oferta de exportaciones}. No confundir con $1/\varepsilon^*$, que es $t/(1+t)$.
+\item País pequeño: $t^{\mathrm{opt}}=0$ en parcial \emph{y} en general; la pérdida mundial = la nacional.
+\item Recaudación: $c$ en el pequeño; $c+e$ en el grande ($e$ la paga el extranjero). Pérdida del exportador: $e+f+h$.
+\item PIE $\propto t^2$, no a $t$.
+\item \autor{Metzler}: baja el precio \emph{interior} del importado (ON$_B$ inelástica). \autor{Lerner}: empeora la RRI (recaudación gastada en el importado; imposible si se devuelve).
+\item Simetría de \autor{Lerner}: en equilibrio \emph{general}, no en parcial.
+\item Subvención a la exportación: pérdida $b+d$ y \emph{empeora} la RRI del grande; impuesto a la exportación: la mejora.
+\item RVE: renta al exportador (la impone el exportador, no el importador); prohibidas por el Acuerdo sobre Salvaguardias.
+\item Arancel específico: su equivalente \emph{ad valorem} ↑ al ↓ $p^W$ y se erosiona con la inflación.
+\item UNCTAD: 16 capítulos A-P; técnicas = A, B y C (MSF, OTC, inspección previa); P, a la exportación.
+\item Dumping: solo el \emph{predatorio} perjudica al país importador en conjunto.
+\item Protección efectiva con coeficientes fijos \emph{subestima} si hay sustitución.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

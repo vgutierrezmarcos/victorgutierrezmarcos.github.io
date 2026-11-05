@@ -1,0 +1,82 @@
+% Arancel de un país pequeño en equilibrio general. Mismo país A que
+% 3B05/graficos/haberler-comercio.tex y ofertas-netas.tex:
+%   FPP X^2 + Y^2 = 36 (RMT = X/Y), CIS Cobb-Douglas simétrica (RMS = Y/X).
+%   RRI = p_X/p_Y = 3, dada (país pequeño). Arancel t = 1 sobre Y (grande, para
+%   que se vea): precio interior q = 3/2 = 1,5.
+% Izquierda (plano de bienes):
+%   Libre comercio: P = (5,692; 1,897), C = (3,162; 9,487), CIS: XY = 30.
+%   Con el arancel: P' = (4,992; 3,328), tangencia de la FPP con pendiente
+%   1,5; renta a precios mundiales 3·4,992 + 3,328 = 18,305; C' sobre la
+%   recta de la RRI por P' con Y/X = 1,5: C' = (4,068; 6,102);
+%   CIS': XY = 24,82 < 30.
+%   Triángulos de comercio: exporta 2,530 e importa 7,589 antes; 0,925 y
+%   2,774 después. Escala vertical menor que la horizontal (las tangencias se
+%   conservan).
+% Derecha (curvas de oferta neta): ON_B es el rayo de pendiente 3; ON_A como en
+%   ofertas-netas.tex y ON'_A con t = 1 (ver arancel-optimo.tex); cortes
+%   E_0 = (2,530; 7,589) y E_1 = (0,925; 2,774), en el mismo rayo: son los
+%   triángulos de comercio de la izquierda.
+%   CIC_0 (U = 5,477) tangente al rayo en E_0; CIC_1 (U = 4,982), más baja,
+%   pasa por E_1 con la pendiente del precio interior (1,5), no la de la RRI.
+% Elaboración propia a partir de Krugman, Obstfeld y Melitz (2018), cap. 9,
+% y Gandolfo (2014), cap. 10.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={
+      xp(\s)=6*\s/sqrt(1+\s*\s); yp(\s)=6/sqrt(1+\s*\s);
+      xc(\p,\t)=(\p*xp(\p/(1+\t))+yp(\p/(1+\t)))/(\p+\p/(1+\t));
+      oe(\p,\t)=xp(\p/(1+\t))-xc(\p,\t); om(\p,\t)=\p/(1+\t)*xc(\p,\t)-yp(\p/(1+\t));
+      ce(\s,\u)=xp(\s)-\u/sqrt(\s); cm(\s,\u)=\u*sqrt(\s)-yp(\s);}]
+  % ---------- Panel izquierdo: plano de bienes ----------
+  \begin{scope}[x=0.7cm,y=0.45cm]
+    % 1: ejes
+    \capa{1}{\ejes{$X$}{$Y$}{8.6}{11.2}}
+    \capa{1}{\node[etiqueta,anchor=south] at (4.3,11.6) {en el plano de bienes};}
+    % 2: FPP de A
+    \capa{2}{\draw[curva1] (0,6) arc[start angle=90,end angle=0,radius=6];}
+    \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (0.15,6.0) {FPP};}
+    % 3: libre comercio: recta de la RRI tangente en P, C y su CIS
+    \capa{3}{\draw[curva2] (2.89,10.30) -- (6.324,0);}
+    \capa{3}{\node[etiqueta,above,text=tceeazul,font=\footnotesize] at (2.89,10.30) {$\mathrm{RRI}=\frac{p_X}{p_Y}$};}
+    \capa{3}{\node[punto] (P) at (5.692,1.897) {};}
+    \capa{3}{\node[etiqueta,right=2pt] at (P) {$P$};}
+    \capa{3}{\draw[curva3] plot[domain=2.9:8.4,samples=80] (\x,{30/\x}) node[etiqueta,right,text=tceeverde] {$\mathrm{CIS}$};}
+    \capa{3}{\node[punto] (C) at (3.162,9.487) {};}
+    \capa{3}{\node[etiqueta,right=2pt] at (C) {$C$};}
+    \capa{3}{\fill[area] (C) -- (3.162,1.897) -- (P) -- cycle;}
+    % 4: con el arancel, el precio interior (más plano) es tangente a la FPP en P'
+    \capa{4}{\draw[thick,tceerojo] (1.4,8.716) -- (7.211,0);}
+    \capa{4}{\node[etiqueta,above left=-2pt and -6pt,text=tceerojo,font=\footnotesize] at (1.4,8.716) {$\frac{p_X}{p_Y(1+t)}$};}
+    \capa{4}{\node[punto] (Pp) at (4.992,3.328) {};}
+    \capa{4}{\node[etiqueta,right=3pt] at (Pp) {$P'$};}
+    % 5: la RRI por P' (paralela a la inicial), C' y la CIS más baja
+    \capa{5}{\draw[curva2,desplazada] (2.75,10.054) -- (6.101,0);}
+    \capa{5}{\draw[curva4] plot[domain=2.45:8.4,samples=80] (\x,{24.82/\x}) node[etiqueta,right,text=tceedorado] {$\mathrm{CIS}'$};}
+    \capa{5}{\draw[thin,tceerojo] (2.5,8.453) -- (5.9,3.353);}
+    \capa{5}{\node[punto] (Cp) at (4.068,6.102) {};}
+    \capa{5}{\node[etiqueta,right=3pt] at (Cp) {$C'$};}
+    \capa{5}{\fill[area2] (Cp) -- (4.068,3.328) -- (Pp) -- cycle;}
+  \end{scope}
+  % ---------- Panel derecho: curvas de oferta neta ----------
+  \begin{scope}[xshift=7.8cm,x=1.4cm,y=0.45cm]
+    \capa{1}{\ejes{$E^A$}{$M^A$}{3.7}{11.2}}
+    \capa{1}{\node[etiqueta,anchor=south] at (1.85,11.6) {con curvas de oferta neta};}
+    % 6: ON_B, el rayo de la RRI: oferta perfectamente elástica
+    \capa{6}{\draw[curva2] (0,0) -- (3.4,10.2) node[etiqueta,right,text=tceeazul] {$\mathrm{ON}_B=\mathrm{RRI}$};}
+    % 7: ON_A y su corte con ON_B
+    \capa{7}{\draw[curva1] plot[domain=1:3.35,samples=70] ({oe(\x,0)},{om(\x,0)}) node[etiqueta,above,text=tceemorado] {$\mathrm{ON}_A$};}
+    \capa{7}{\node[punto] (E0) at (2.530,7.589) {};}
+    \capa{7}{\node[etiqueta,right=2pt] at (E0) {$E_0$};}
+    \capa{7}{\draw[thick,tceeverde] plot[domain=2.2:3.7,samples=50] ({ce(\x,5.4772)},{cm(\x,5.4772)}) node[etiqueta,below right=-2pt and 0pt,font=\footnotesize,text=tceeverde] {$\mathrm{CIC}_0$};}
+    % 8: ON'_A, el nuevo corte, en la misma recta, y la CIC más baja
+    \capa{8}{\draw[curvanueva] plot[domain=2:5.6,samples=70] ({oe(\x,1)},{om(\x,1)}) node[etiqueta,above,text=tceerojo] {$\mathrm{ON}'_A$};}
+    \capa{8}{\node[punto] (E1) at (0.925,2.774) {};}
+    \capa{8}{\node[etiqueta,right=2pt] at (E1) {$E_1$};}
+    \capa{8}{\draw[thick,tceedorado] plot[domain=1.2:2.5,samples=50] ({ce(\x,4.9820)},{cm(\x,4.9820)}) node[etiqueta,right,font=\footnotesize,text=tceedorado] {$\mathrm{CIC}_1$};}
+    \capa{8}{\node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (1.9,3.6) {la RRI no cambia:\\$t^{\mathrm{opt}}=0$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

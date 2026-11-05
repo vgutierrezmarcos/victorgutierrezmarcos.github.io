@@ -1,0 +1,53 @@
+% Aranceles medios aplicados por los miembros de la OMC, 1996-2024 (%):
+% media simple NMF, media NMF ponderada por el comercio y arancel efectivo
+% ponderado (con preferencias). OMC, Analytical Database (blog de datos de la
+% OMC, 22 sep. 2026, figura 1); CSV en ../datos/aranceles-medios-mundo.csv.
+% Sustituye a la fig. 10-3 de Feenstra y Taylor. No recoge las medidas de 2025.
+% Capas (CRITERIOS §7): ejes y rejilla → líneas → puntos → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{arsimple}{tceemorado}
+\colorlet{arponderado}{tceeazul}
+\colorlet{arefectivo}{tceedorado}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/aranceles-medios-mundo.csv}\ar
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      name=ar, width=10.5cm, height=6.8cm,
+      xmin=1995, xmax=2025, ymin=0, ymax=14,
+      xtick={1996,2000,...,2024}, ytick={0,2,...,14},
+      xticklabel style={font=\footnotesize, /pgf/number format/1000 sep={}},
+      yticklabel style={font=\footnotesize},
+      ylabel={\%}, ylabel style={font=\footnotesize, rotate=-90},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 2: media simple NMF
+    \capa{2}{\addplot[diclinea=arsimple, mark=none] table[x=anio, y=nmf_simple] {\ar};}
+    % 3: media NMF ponderada por el comercio
+    \capa{3}{\addplot[diclinea=arponderado, mark=none] table[x=anio, y=nmf_ponderado] {\ar};}
+    % 4: arancel efectivo ponderado (con preferencias)
+    \capa{4}{\addplot[diclinea=arefectivo, mark=none] table[x=anio, y=efectivo_ponderado] {\ar};}
+    % 5: puntos de 1996 y 2024, valores y nombres de las series
+    \capa{5}{
+      \addplot[on layer=dicpuntos, dicpuntos=arsimple, forget plot] coordinates {(1996,13.05) (2024,8.93)};
+      \addplot[on layer=dicpuntos, dicpuntos=arponderado, forget plot] coordinates {(1996,7.04) (2024,3.94)};
+      \addplot[on layer=dicpuntos, dicpuntos=arefectivo, forget plot] coordinates {(1996,6.76) (2024,2.25)};
+      \dicrotulo[anchor=south, text=arsimple, font=\footnotesize]{(1996,13.25)}{13,1}
+      \dicrotulo[anchor=south, text=arponderado, font=\footnotesize]{(1996,7.2)}{7,0}
+      \dicrotulo[anchor=north, text=arefectivo!80!black, font=\footnotesize]{(1996,6.55)}{6,8}
+      \dicrotulo[anchor=west, text=arsimple, font=\footnotesize]{(2024.4,8.93)}{8,9}
+      \dicrotulo[anchor=west, text=arponderado, font=\footnotesize]{(2024.4,3.94)}{3,9}
+      \dicrotulo[anchor=west, text=arefectivo!80!black, font=\footnotesize]{(2024.4,2.25)}{2,2}
+      \dicrotulo[anchor=south east, text=arsimple, font=\footnotesize]{(2023.6,9.25)}{Media simple NMF}
+      \dicrotulo[anchor=south east, text=arponderado, font=\footnotesize]{(2023.6,4.25)}{Media NMF ponderada por el comercio}
+      \dicrotulo[anchor=north east, text=arefectivo!80!black, font=\footnotesize]{(2023.6,2.0)}{Arancel efectivo ponderado (con preferencias)}
+    }
+  \end{axis}
+  % caja del dibujo: los rótulos en capas no la amplían
+  \path (ar.outer south west) ($(ar.outer north east)+(0.5,0)$);
+\end{tikzpicture}
+\end{document}

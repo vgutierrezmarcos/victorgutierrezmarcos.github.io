@@ -1,0 +1,81 @@
+% El monopolio nacional en autarquía, con libre comercio y con arancel
+% (3.B.7, anexo D). Mismas curvas que cuota-monopolio (acero):
+%   demanda x = 100 - p; IMg = 100 - 2q; CMg = q de la única empresa nacional.
+%   (1) Autarquía: IMg = CMg -> q^M = 33,3, p^M = 66,7; competencia (D = CMg):
+%       q^c = p^c = 50; pérdida del monopolio: (66,7 - 33,3)(50 - 33,3)/2 = 278.
+%   (2) Libre comercio, p^W = 20: demanda horizontal a 20 hasta x = 80;
+%       CMg = 20 -> produce 20; importaciones 60.
+%   (3) Arancel del 50 %: precio 30, produce 30, importaciones 40. Un arancel
+%       mayor con p^c <= p^W(1+t) < p^M, p. ej. precio 55: abastece toda la
+%       demanda, x(55) = 45 (CMg(45) = 45 < 55), sin importaciones.
+% Estética del monopolio de 3A17 (equilibrio-monopolio).
+% Elaboración propia a partir de Feenstra y Taylor (2021, cap. 9).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.045cm,y=0.052cm,
+    areaperdida/.style={fill=tceerojo,fill opacity=0.25,draw=none},
+    llave/.style={decorate,decoration={brace,amplitude=4pt,mirror},thick},
+    titulo/.style={font=\small\bfseries,anchor=base},
+    rotulo/.style={etiqueta,font=\footnotesize,align=center,anchor=north},
+    demfirma/.style={curvanueva,line width=2.4pt}]
+  % ------------------------------------------------------------------
+  % 1: ejes de los 3 paneles
+  \foreach \dx/\tit in {0/Autarquía,135/Libre comercio,270/Arancel}{
+    \begin{scope}[xshift=\dx*0.045cm]
+      \capa{1}{\ejes{$x$, $q$}{$p$}{108}{95}}
+      \capa{1}{\node[titulo] at (54,100) {\tit};}
+    \end{scope}}
+  % ------------------------------------------------------------------
+  % Panel 1: autarquía
+  % 2: D, IMg y CMg
+  \capa{2}{\draw[curva2] (10,90) -- (95,5) node[etiqueta,right] {$D$};}
+  \capa{2}{\draw[curva4] (5,90) -- (48,4) node[etiqueta,right] {IMg};}
+  \capa{2}{\draw[curva1] (0,0) -- (85,85) node[etiqueta,right] {CMg};}
+  % 3: monopolio (IMg = CMg, precio en la demanda) y punto competitivo
+  \capa{3}{\fill[areaperdida] (33.33,66.67) -- (33.33,33.33) -- (50,50) -- cycle;}
+  \capa{3}{\node[punto] at (33.33,33.33) {};}
+  \capa{3}{\node[punto,label={[etiqueta]above right:$M$}] (M1) at (33.33,66.67) {};}
+  \capa{3}{\draw[guia] (33.33,0) node[below,text=black] {$q^M$} |- (0,66.67) node[left,text=black] {$p^M$};}
+  \capa{3}{\node[punto,label={[etiqueta]right:$C$}] (C1) at (50,50) {};}
+  \capa{3}{\draw[guia] (50,0) node[below,text=black] {$q^c$} |- (0,50) node[left,text=black] {$p^c$};}
+  % ------------------------------------------------------------------
+  % Panel 2: libre comercio
+  \begin{scope}[xshift=135*0.045cm]
+    % 4: D y CMg, p^W y la demanda horizontal que ve la empresa
+    \capa{4}{\draw[curva2] (10,90) -- (95,5) node[etiqueta,right] {$D$};}
+    \capa{4}{\draw[curva1] (0,0) -- (85,85) node[etiqueta,right] {CMg};}
+    \capa{4}{\draw[guia] (0,20) node[left,text=black] {$p^W$} -- (104,20);}
+    \capa{4}{\draw[demfirma] (0,20) -- (80,20);}
+    % 5: produce 20 (CMg = p^W) y se importan 60
+    \capa{5}{\node[punto] at (20,20) {};}
+    \capa{5}{\node[punto] at (80,20) {};}
+    \capa{5}{\draw[guia] (20,20) -- (20,0) node[below,text=black] {$20$};}
+    \capa{5}{\draw[guia] (80,20) -- (80,0) node[below,text=black] {$80$};}
+    \capa{5}{\draw[llave] (20,-13) -- (80,-13) node[midway,below=4pt] {$M=60$};}
+  \end{scope}
+  % ------------------------------------------------------------------
+  % Panel 3: arancel
+  \begin{scope}[xshift=270*0.045cm]
+    % 6: D y CMg, p^W(1+t) = 30, produce 30 y se importan 40
+    \capa{6}{\draw[curva2] (10,90) -- (95,5) node[etiqueta,right] {$D$};}
+    \capa{6}{\draw[curva1] (0,0) -- (85,85) node[etiqueta,right] {CMg};}
+    \capa{6}{\draw[demfirma] (0,30) node[left,text=black] {$30$} -- (70,30);}
+    \capa{6}{\node[punto] at (30,30) {};}
+    \capa{6}{\node[punto] at (70,30) {};}
+    \capa{6}{\draw[guia] (30,30) -- (30,0) node[below,text=black] {$30$};}
+    \capa{6}{\draw[guia] (70,30) -- (70,0) node[below,text=black] {$70$};}
+    \capa{6}{\draw[llave] (30,-13) -- (70,-13) node[midway,below=4pt] {$M=40$};}
+    % 7: arancel intermedio (precio 55): abastece toda la demanda, 45
+    \capa{7}{\draw[guia,thick] (0,55) node[left,text=black] {$55$} -- (45,55);}
+    \capa{7}{\node[punto] (T) at (45,55) {};}
+    \capa{7}{\draw[guia] (T) -- (45,0) node[below,text=black] {$45$};}
+  \end{scope}
+  % ------------------------------------------------------------------
+  % 8: rótulos
+  \capa{8}{\node[rotulo] at (54,-32) {$p^M>\mathrm{CMg}$ y $q^M<q^c$:\\\textcolor{tceerojo}{pérdida del monopolio}};}
+  \capa{8}{\node[rotulo] at (135+54,-32) {demanda horizontal a $p^W$ hasta 80:\\produce 20 e importa 60};}
+  \capa{8}{\node[rotulo] at (270+54,-32) {$t=50\,\%$: precio 30, produce 30;\\precio 55 ($p^c\leq p^W(1+t)<p^M$):\\produce 45 y no importa};}
+\end{tikzpicture}
+\end{document}
