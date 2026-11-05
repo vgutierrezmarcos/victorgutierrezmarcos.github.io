@@ -1,0 +1,79 @@
+% Blanchard y Leigh (2013): consolidación fiscal prevista para 2010-2011 (WEO
+% de primavera de 2010, % del PIB potencial) frente al error de previsión del
+% crecimiento del PIB real acumulado 2010-2011 (puntos), 26 economías europeas
+% (3.A.40, II.3.4). Datos: ../datos/blanchard-leigh-2013.csv (datos de
+% replicación de los autores, NBER WP 18779; consulta 5/11/2026).
+% Recta de MCO: error = 0,775 - 1,095 consolidación (t = -4,29; R2 = 0,50),
+%   dibujada en el rango de los datos, de -2,644 (Alemania) a 5,296 (Grecia).
+% Extremos destacados: Grecia (5,3; -7,2) y Alemania (-2,6; 4,3).
+% Capas (CRITERIOS §7): ejes y líneas de 0 → recta → puntos → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\bldatos}{../datos/blanchard-leigh-2013.csv}
+\tikzset{blrot/.style={font=\scriptsize,text=dicotro,inner sep=1.5pt}}
+\pgfplotsset{blguia/.style={very thin,dicotroclaro}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=10.5cm,height=8.6cm,
+    xmin=-3.5,xmax=6,ymin=-8,ymax=7.5,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={-3,-2,...,6},ytick={-8,-6,...,6},
+    ticklabel style={font=\footnotesize},
+    /pgf/number format/use comma,
+    xlabel={consolidación fiscal prevista para 2010-2011 (\% del PIB)},
+    ylabel={error de previsión del crecimiento, 2010-2011 (puntos)},
+    label style={font=\footnotesize},
+    clip=false,dicapas]
+  % 1: ejes y líneas de 0
+  \capa{1}{
+    \dicraya[dicumbral]{(-3.5,0) (6,0)}
+    \dicraya[dicumbral]{(0,-8) (0,7.5)}
+  }
+  % 2: recta de regresión, en el rango de los datos
+  \capa{2}{\addplot[curva1,domain=-2.644:5.296,samples=2] {0.775-1.095*x};}
+  % 3: los 26 puntos (Grecia y Alemania, filas 7 y 13, aparte y destacados)
+  \capa{3}{
+    \addplot[dicpuntos=dicotro,skip coords between index={6}{7},skip coords between index={12}{13}]
+      table[col sep=comma,comment chars={\#},x=consolidacion_prevista,y=error_prevision_crecimiento] {\bldatos};
+    \addplot[only marks,mark=*,mark size=2.4pt,mark options={fill=dicze,draw=dicze,solid}] coordinates {(5.296,-7.151) (-2.644,4.266)};
+  }
+  % 4: etiquetas de los países (las del grupo cercano al origen, con una
+  %    línea fina hasta el punto) y rótulo de la pendiente
+  \capa{4}{
+    \dicrotulo[font=\footnotesize,text=dicze,anchor=east]{(5.12,-7.151)}{Grecia}
+    \dicrotulo[font=\footnotesize,text=dicze,anchor=south]{(-2.644,4.75)}{Alemania}
+    \dicrotulo[blrot,anchor=west]{(0.02,6.316)}{SWE}
+    \dicrotulo[blrot,anchor=east]{(-1.07,2.678)}{FIN}
+    \dicrotulo[blrot,anchor=south]{(-0.544,2.95)}{MLT}
+    \dicrotulo[blrot,anchor=west]{(0.2,2.279)}{POL}
+    \dicrotulo[blrot,anchor=east]{(-1.29,1.702)}{CHE}
+    \dicrotulo[blrot,anchor=north]{(-1.133,1.5)}{AUT}
+    \dicrotulo[blrot,anchor=west]{(1.45,1.743)}{BEL}
+    \dicrotulo[blrot,anchor=west]{(-1.64,0.412)}{CYP}
+    \dicrotulo[blrot,anchor=west]{(-1.44,-0.701)}{DNK}
+    \dicrotulo[blrot,anchor=south east]{(-0.06,0.12)}{NLD}
+    \dicrotulo[blrot,anchor=east]{(-0.04,-0.745)}{NOR}
+    \dicraya[blguia]{(0.245,0.096) (0.3,1.0)}
+    \dicrotulo[blrot,anchor=south]{(0.3,1.0)}{CZE}
+    \dicraya[blguia]{(0.403,0.084) (0.85,1.0)}
+    \dicrotulo[blrot,anchor=south]{(0.85,1.0)}{FRA}
+    \dicraya[blguia]{(0.546,0.232) (1.4,1.0)}
+    \dicrotulo[blrot,anchor=south]{(1.4,1.0)}{ITA}
+    \dicraya[blguia]{(0.708,-0.043) (1.95,0.75)}
+    \dicrotulo[blrot,anchor=west]{(1.95,0.75)}{HUN}
+    \dicraya[blguia]{(0.173,-0.136) (0.3,-1.45)}
+    \dicrotulo[blrot,anchor=north]{(0.3,-1.45)}{BGR}
+    \dicrotulo[blrot,anchor=west]{(1.29,-0.42)}{ESP}
+    \dicrotulo[blrot,anchor=south east]{(1.05,-1.02)}{SVK}
+    \dicrotulo[blrot,anchor=north east]{(1.3,-1.4)}{PRT}
+    \dicrotulo[blrot,anchor=south west]{(1.78,-1.02)}{GBR}
+    \dicrotulo[blrot,anchor=north]{(1.70,-1.55)}{SVN}
+    \dicrotulo[blrot,anchor=west]{(2.26,-0.284)}{ISL}
+    \dicrotulo[blrot,anchor=west]{(3.26,0.292)}{IRL}
+    \dicrotulo[blrot,anchor=west]{(2.61,-5.150)}{ROM}
+    \dicrotulo[font=\footnotesize,text=tceemorado,anchor=north east,align=right]{(6,7.3)}{pendiente $-1{,}095$ ($t=-4{,}3$)\\$R^2=0{,}50$}
+  }
+\end{axis}
+\end{tikzpicture}
+\end{document}

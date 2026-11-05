@@ -1,0 +1,36 @@
+% El multiplicador del gasto en el modelo neokeynesiano según la política
+% monetaria (3.A.40, III.2 y anexo A). beta = 0,99, theta = varphi = 1
+% (Gamma = 0,5), kappa = 0,02, phi_pi = 1,5. Eje horizontal: persistencia
+% (rho_g con la regla de Taylor; rho_L en el límite inferior).
+%   límite: m = [(1-x)(1-0,99x) - 0,01x] / [(1-x)(1-0,99x) - 0,02x]
+%           x = 0: 1; 0,5: 1,021; 0,8: 1,313; 0,85: 2,255; 0,86: 3,386
+%           (el denominador se anula en x = 0,8722)
+%   Taylor: W = 0,02(1,5-x)/[(1-x)(1-0,99x)]; m = (1 + 0,5W)/(1 + W)
+%           x = 0: 0,985; 0,5: 0,963; 0,8: 0,874; 0,85: 0,823; 0,86: 0,810
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=10cm,height=7cm,axis lines=left,xmin=0,xmax=0.9,ymin=0,ymax=3.6,
+  xlabel={persistencia del gasto ($\rho_g$) o del límite inferior ($\rho_L$)},ylabel={multiplicador},
+  label style={font=\footnotesize},ticklabel style={font=\footnotesize},
+  xtick={0,0.2,0.4,0.6,0.8},ytick={0,0.5,1,2,3},
+  /pgf/number format/use comma,
+  clip=false]
+  % 1: precios flexibles (Gamma) y tipo real constante (1)
+  \capa{1}{\addplot[curva3,domain=0:0.86] {0.5} node[pos=1,right,font=\footnotesize,text=tceeverde] {precios flexibles, $\Gamma$};}
+  \capa{1}{\addplot[guia,thick,domain=0:0.86] {1} node[pos=1,right,font=\footnotesize,text=tceegris] {tipo real constante};}
+  % 2: regla de Taylor: entre Gamma y 1, menor cuanto más persistente
+  \capa{2}{\addplot[curva2,domain=0:0.86,samples=80] {(1+0.5*0.02*(1.5-x)/((1-x)*(1-0.99*x)))/(1+0.02*(1.5-x)/((1-x)*(1-0.99*x)))} node[pos=0.5,below,font=\footnotesize,text=tceeazul] {regla de Taylor};}
+  % 3: límite inferior: mayor que 1 y creciente con la duración
+  \capa{3}{\addplot[curva1,domain=0:0.86,samples=200] {((1-x)*(1-0.99*x)-0.01*x)/((1-x)*(1-0.99*x)-0.02*x)} node[pos=1,right,font=\footnotesize,text=tceemorado] {límite inferior};}
+  % 4: el ejemplo del texto: 5 trimestres (0,8) y 6,7 trimestres (0,85)
+  \capa{4}{\addplot[only marks,mark=*,mark size=1.8pt,black] coordinates {(0.8,1.3125) (0.85,2.2546) (0.8,0.8741) (0.85,0.8232)};}
+  \capa{4}{\node[font=\footnotesize,anchor=south east] at (axis cs:0.795,1.33) {1,31};}
+  \capa{4}{\node[font=\footnotesize,anchor=east] at (axis cs:0.84,2.2546) {2,25};}
+  \capa{4}{\node[font=\footnotesize,anchor=north east] at (axis cs:0.8,0.84) {0,87};}
+  \capa{4}{\node[font=\footnotesize,anchor=west] at (axis cs:0.862,0.8) {0,82};}
+\end{axis}
+\end{tikzpicture}
+\end{document}

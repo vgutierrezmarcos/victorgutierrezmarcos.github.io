@@ -1,0 +1,89 @@
+% Impulso fiscal y diferencial r - gamma_Y de EE. UU., la zona del euro, el
+% Reino Unido y Japón, 2008-2027 (2026-2027, proyecciones) (3.A.40, III.3).
+% a) Impulso fiscal = -(variación del saldo primario ajustado por el ciclo),
+%    puntos del PIB potencial; positivo = expansivo. FMI, Fiscal Monitor
+%    (../datos/impulso-fiscal-4-economias.csv, columnas *_impulso).
+% b) r - gamma_Y con el tipo implícito de la deuda pública (intereses / deuda
+%    de t-1, deflactado con el deflactor del PIB), puntos. AMECO, primavera de
+%    2026 (../datos/r-menos-g-4-economias.csv, columnas *_r_menos_g). Japón
+%    2025 sin dato (AMECO no da AYIGD): la línea se corta (2 tramos, filas 0-16 y 18-19).
+% Cifras de control: impulso 2020 EE. UU. 5,0, zona del euro 3,4, Reino Unido
+%   8,2, Japón 4,9; 2022 EE. UU. -6,6. r - gamma_Y 2021 EE. UU. -7,6, zona del
+%   euro -6,9; 2025 zona del euro -1,6 (el 3.A.39 da -1,2 con Eurostat).
+% Paleta de las 4 economías del tema: EE. UU. tceedorado, zona del euro dicze,
+% Reino Unido tceeverde, Japón tceerojo. Método de 1D01/graficos/impulso-fiscal.tex
+% y 3A29/graficos/r-menos-g.tex.
+% Capas (CRITERIOS §7): barras → ejes y 0 → líneas → etiquetas y sombreado.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/impulso-fiscal-4-economias.csv}\impulso
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/r-menos-g-4-economias.csv}\rmg
+\pgfplotsset{
+  panel/.style={width=13.5cm,height=5cm,
+    xmin=2007.4,xmax=2027.6,xtick={2008,2010,...,2026},
+    x tick label style={/pgf/number format/.cd,set thousands separator={}},
+    /pgf/number format/use comma,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    ticklabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    title style={font=\small,anchor=south west,at={(0,1)},xshift=-0.9cm},
+    unbounded coords=jump},
+}
+% Capas «dic» para los 2 paneles (fuera de los axis: con varios axis en el
+% mismo dibujo, set layers va antes de ellos)
+\pgfplotsset{dicapas}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------------- a) impulso fiscal ----------------
+  \begin{axis}[panel,name=impulso,
+      title={a) Impulso fiscal (puntos del PIB potencial)},
+      ymin=-7.5,ymax=9,ytick={-6,-4,...,8},
+      ybar=0pt,bar width=0.15]
+    % 1: barras del impulso fiscal
+    \capa{1}{
+      \addplot[on layer=dicbarras,dicbarra=tceedorado] table[x=anio,y=eeuu_impulso] {\impulso};
+      \addplot[on layer=dicbarras,dicbarra=dicze] table[x=anio,y=zona_euro_impulso] {\impulso};
+      \addplot[on layer=dicbarras,dicbarra=tceeverde] table[x=anio,y=reino_unido_impulso] {\impulso};
+      \addplot[on layer=dicbarras,dicbarra=tceerojo] table[x=anio,y=japon_impulso] {\impulso};
+    }
+    % 2: línea del 0
+    \capa{2}{\dicraya{(2007.4,0) (2027.6,0)}}
+    % 4: proyecciones y sentido del impulso
+    \capa{4}{
+      \dicsombra[fill=tceegris,opacity=0.10]{2025.5}{-7.5}{2027.6}{9}
+      \dicrotulo[font=\scriptsize,text=tceegris,anchor=north]{(2026.55,8.9)}{proyección}
+      \dicrotulo[font=\scriptsize,text=tceegris,anchor=north west]{(2007.5,8.9)}{$+$ expansivo}
+      \dicrotulo[font=\scriptsize,text=tceegris,anchor=south west]{(2007.5,-7.4)}{$-$ contractivo}
+    }
+  \end{axis}
+  % ---------------- b) r - gamma_Y ----------------
+  \coordinate (panelb) at ([yshift=-1.4cm]impulso.south west);
+  \begin{axis}[panel,at={(panelb)},anchor=north west,
+      title={b) $r-\gamma_Y$ con el tipo implícito de la deuda pública (puntos)},
+      ymin=-9,ymax=9,ytick={-8,-4,...,8},
+      legend style={at={(0.5,-0.2)},anchor=north,legend columns=4,draw=none,font=\footnotesize,
+        /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left]
+    % 2: línea del 0 (r = gamma_Y)
+    \capa{2}{\dicraya{(2007.4,0) (2027.6,0)}}
+    % 3: las 4 economías
+    \capa{3}{
+      \addplot[diclinea=tceedorado] table[x=anio,y=eeuu_r_menos_g] {\rmg};
+      \addplot[diclinea=dicze] table[x=anio,y=zona_euro_r_menos_g] {\rmg};
+      \addplot[diclinea=tceeverde] table[x=anio,y=reino_unido_r_menos_g] {\rmg};
+      \addplot[diclinea=tceerojo,skip coords between index={17}{20}] table[x=anio,y=japon_r_menos_g] {\rmg};
+      \addplot[diclinea=tceerojo,skip coords between index={0}{18},forget plot] table[x=anio,y=japon_r_menos_g] {\rmg};
+      \legend{EE.\,UU.,Zona del euro,Reino Unido,Japón}
+    }
+    % 4: proyecciones y lectura del signo
+    \capa{4}{
+      \dicsombra[fill=tceegris,opacity=0.10]{2025.5}{-9}{2027.6}{9}
+      \dicrotulo[font=\scriptsize,text=tceegris,anchor=north]{(2026.55,8.9)}{proyección}
+      \dicrotulo[font=\scriptsize,text=tceegris,anchor=north west]{(2010.5,8.9)}{$r>\gamma_Y$}
+      \dicrotulo[font=\scriptsize,text=tceegris,anchor=south west]{(2007.5,-8.9)}{$r<\gamma_Y$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

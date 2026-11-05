@@ -1,0 +1,46 @@
+% Respuesta ilustrativa del PIB a un aumento del gasto público y los 4
+% multiplicadores de la ficha «multiplicadores-fiscales» (3.A.40, II.1).
+% Gráfico de referencia de la ficha (no había ninguno).
+%   gasto:      Delta G_{t+k} = 0,85^k
+%   producción: Delta Y_{t+k} = 0,5 * 0,8^k + 0,4 k * 0,7^k
+%   k:  0     1     2     3     4     5     6     7     8     9     10    11    12
+%   G:  1,000 0,850 0,723 0,614 0,522 0,444 0,377 0,321 0,273 0,232 0,197 0,167 0,142
+%   Y:  0,500 0,680 0,712 0,668 0,589 0,500 0,413 0,335 0,268 0,212 0,167 0,130 0,101
+%   impacto 0,5; máximo 0,712 en k = 2; m^{t+4}_t = 0,589;
+%   acumulado a 12: 5,276 / 5,861 = 0,90
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=4.2cm,
+    declare function={gasto(\k)=0.85^\k; prod(\k)=0.5*0.8^\k+0.4*\k*0.7^\k;}]
+  % 1: ejes (trimestres y desviación respecto a la senda sin el gasto)
+  \capa{1}{\draw[eje] (0,0) -- (13.2,0) node[right] {$k$ (trimestres)};}
+  \capa{1}{\draw[eje] (0,0) -- (0,1.17) node[left] {$\Delta G,\ \Delta Y$};}
+  \capa{1}{\foreach \k in {0,2,4,6,8,10,12} \draw (\k,0) -- (\k,-0.02) node[below,font=\footnotesize] {$\k$};}
+  \capa{1}{\foreach \v/\t in {0.5/{0{,}5},1/1} \draw (0,\v) -- (-0.12,\v) node[left,font=\footnotesize] {$\t$};}
+  % 2: el gasto sube en 1 y vuelve poco a poco
+  \capa{2}{\draw[curva2] plot[domain=0:12,samples=61] (\x,{gasto(\x)});}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south west] at (9.6,0.215) {$\Delta G_{t+k}$};}
+  % 3: la producción: respuesta en joroba
+  \capa{3}{\draw[curva1] plot[domain=0:12,samples=121] (\x,{prod(\x)});}
+  \capa{3}{\node[etiqueta,text=tceemorado,anchor=south west] at (5.6,0.47) {$\Delta Y_{t+k}$};}
+  % 4: multiplicador de impacto
+  \capa{4}{\node[punto] at (0,0.5) {};}
+  \capa{4}{\node[etiqueta,anchor=west,font=\footnotesize] at (0.15,0.45) {$m^{\,t}_t=0{,}5$};}
+  % 5: multiplicador máximo (pico)
+  \capa{5}{\draw[guia] (2,0.712) -- (2,0);}
+  \capa{5}{\node[punto] at (2,0.712) {};}
+  \capa{5}{\node[etiqueta,anchor=south west,font=\footnotesize] at (2.1,0.73) {$m^{\max}=0{,}71$};}
+  % 6: multiplicador a 4 trimestres
+  \capa{6}{\draw[guia] (4,0.589) -- (4,0);}
+  \capa{6}{\node[punto] at (4,0.589) {};}
+  \capa{6}{\node[etiqueta,anchor=south west,font=\footnotesize] at (4.1,0.6) {$m^{\,t+4}_t=0{,}59$};}
+  % 7: acumulado: las áreas bajo las 2 curvas hasta k = 12 (detrás de las curvas)
+  \capa{7}{\begin{scope}[on background layer]
+    \fill[tceeazul,fill opacity=0.12] (0,0) -- plot[domain=0:12,samples=61] (\x,{gasto(\x)}) -- (12,0) -- cycle;
+    \fill[tceemorado,fill opacity=0.18] (0,0) -- plot[domain=0:12,samples=121] (\x,{prod(\x)}) -- (12,0) -- cycle;
+  \end{scope}}
+  \capa{7}{\node[etiqueta,font=\footnotesize,anchor=west] at (6.6,0.9) {$m^{\mathrm{acum}}_{t,12}=\dfrac{\sum_{j=0}^{12}\Delta Y_{t+j}}{\sum_{j=0}^{12}\Delta G_{t+j}}=0{,}90$};}
+\end{tikzpicture}
+\end{document}

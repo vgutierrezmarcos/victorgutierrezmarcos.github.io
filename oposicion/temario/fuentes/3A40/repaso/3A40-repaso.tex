@@ -1,0 +1,248 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Políticas desde 2008]{3.A.40}{Efectividad e interrelación de las políticas monetaria y fiscal en las principales economías desarrolladas desde la Gran Recesión de 2008. El valor de los multiplicadores fiscales.}
+\tcefecha{05/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «peor el remedio que la enfermedad»}{2,5}
+\apartadocante{I. Efectividad de la política monetaria}{8}
+\subcante{1. Cae el tipo natural: estancamiento secular}{3,5}
+\subcante{2. Límite inferior y respuesta no convencional}{2}
+\subcante{3. ¿Funcionó? Eficacia y costes}{2,5}
+\apartadocante{II. Política fiscal: los multiplicadores}{9,5}
+\subcante{1. Qué es y cómo se mide}{1,5}
+\subcante{2. De qué depende: la teoría}{4}
+\subcante{3. Qué dicen los datos}{4}
+\apartadocante{III. Interrelación desde 2008}{9}
+\subcante{1. \emph{Policy mix} y dominación}{2}
+\subcante{2. El multiplicador según la monetaria}{3}
+\subcante{3. Experiencia por fases}{4}
+\apartadocante{Conclusión}{1}}
+\emph{Orden fijo} de las 4 economías: EE.\,UU., zona del euro, R.\,U., Japón. \emph{Hilo}: el tipo natural (su caída explica el límite monetario, el multiplicador alto y la deuda barata). \emph{Pizarra}: \emph{izda.}, pregunta del enganche, refrán y pegatinas: «no hay mal que cien años dure» (estancamiento secular), «no se le pueden pedir peras al olmo» (límite inferior), «todo es según el color del cristal con que se mira» (multiplicador), «juntos, pero no revueltos» (\emph{policy mix}); \emph{centro}, 4 gráficos: fondos prestables con $r^n$ bajo el límite, IRF con los 4 multiplicadores, NEK con el codo del límite, 4 cuadrantes; \emph{dcha.}, recuadradas hasta el final, condición del estancamiento y multiplicador acumulado. Derivación NEK, métodos y cronología: anexos.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Es peor el remedio que la enfermedad». Oct.\ 2012, FMI (WEO): previsiones con multiplicadores $\approx$0,5; observados desde 2008, 0,9-1,7; quien más ajustó, menos creció (\autor{Blanchard}-\autor{Leigh}, 2013). Bancos centrales con tipos en cero. ¿\emph{Cuánto vale un euro de gasto público}? ¿\emph{Qué hace un banco central que ya no puede bajar tipos}?
+\item \textbf{Relevancia}: \emph{teoría}: el multiplicador separa escuelas ($\approx$0 clásicos, >2 keynesianos); el límite inferior obligó a revisar el consenso NEK. \emph{Política}: 2 recesiones profundas + inflación no vista desde los 80; deuda zona del euro 87,7\,\% del PIB (2025): cada euro tiene que rendir. \emph{Actualidad}: fin del MRR en 2026; Fed y BCE vuelven a subir tipos (sept.\ 2026); ¿seguirá $r<\gamma_Y$?
+\item \textbf{Contextualización}: \concepto{política fiscal} (gasto, impuestos, transferencias); \concepto{política monetaria} (tipo corto y, desde 2008, balance y anuncios). \concepto{Multiplicador fiscal}: variación de $Y$ por unidad de variación exógena de un instrumento fiscal, frente a un escenario sin ella (incluye respuesta de hogares, empresas y banco central). \concepto{Tono}: monetaria expansiva si $r_t<r^n$; fiscal por $\Delta b^{pe}$ (saldo primario estructural; \concepto{impulso fiscal} $=-\Delta b^{pe}$). \concepto{\emph{Policy mix}}: \emph{coherente} si cada una ayuda a la otra (aunque no vayan en el mismo sentido), \emph{tensionado} si una deshace a la otra. \emph{Consenso roto}: en la Gran Moderación, banco central independiente con objetivo de inflación y regla de \autor{Taylor} (1993); fiscal: sostenibilidad y estabilizadores automáticos. 3 grietas (\autor{Blanchard}-\autor{Dell'Ariccia}-\autor{Mauro}, 2010): límite inferior; estabilidad de precios $\neq$ financiera; vuelve la fiscal discrecional.
+\item \textbf{Problemática}: ¿por qué se quedó sin munición la monetaria y qué pudo hacer? ¿Cuánto vale un euro de gasto y de qué depende? ¿Coordinar las 2 políticas y quién manda?
+\item \textbf{Estructura} (orden en que entraron en escena): \hyperref[rep:I]{I}, monetaria (la 1.ª en responder y en topar con su límite); \hyperref[rep:II]{II}, fiscal y multiplicadores (tomó el relevo); \hyperref[rep:III]{III}, interrelación y experiencia de las 4 economías.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{I. Efectividad de la política monetaria\label{rep:I}}
+\begin{ideaclave}
+La monetaria evitó el colapso financiero y la deflación, pero perdió potencia al llegar al límite inferior porque el tipo natural había caído. Los instrumentos nuevos bajaron los tipos largos, con menos fuerza y más costes que el tipo oficial: sola no bastaba.
+\end{ideaclave}
+
+\sub{I.1. El tipo natural cae: estancamiento secular\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Idea}: \autor{Hansen} (1939): menos población y sin grandes inventos, $I$ no absorbe el ahorro de pleno empleo $\Rightarrow$ insuficiencia crónica de demanda (\concepto{estancamiento secular}); la guerra lo desmintió. \autor{Summers} (FMI, nov.\ 2013; 2014): si el $r$ que iguala $S$ e $I$ con pleno empleo es muy bajo, el banco central no llega y $Y<Y^p$ durante años.
+\item \emph{Supuestos}: fondos prestables con pleno empleo \vertema{3.A.4}; \concepto{tipo natural} $r^n$: $S(r^n,Y_F)=I(r^n)+G-T$; $r=i-\pi^e$; \concepto{límite inferior efectivo} $i^{\mathrm{ELB}}$ (0 o algo menos: guardar efectivo cuesta); $\pi^e$ anclada.
+\item \emph{Por qué cae $r^n$} (\autor{Rachel}-\autor{Summers}, 2019): \emph{más ahorro}: envejecimiento, desigualdad, precaución tras la crisis \vertema{3.A.33}, exceso de ahorro mundial (\autor{Bernanke}, 2005); \emph{menos inversión}: menos crecimiento de población y productividad \vertema{3.A.45}, capital más barato, intangibles.
+\item \emph{El problema}: $r^n$ inalcanzable:
+\funcionclave{r^n<i^{\mathrm{ELB}}-\pi^e\;\leq\; r=i-\pi^e}
+\item[] Al $r$ mínimo sobra ahorro; ningún $r$ vacía el mercado: se ajusta la renta ($S$↓ hasta $I$). «No hay mal que cien años dure», pero este dura décadas (causas lentas).
+\end{itemize}
+\graficorepaso[0.95\linewidth]{estancamiento-secular}{$S$↑ e $I$↓: $r^n_1$ bajo el límite $i^{\mathrm{ELB}}-\pi^e$; exceso de ahorro: la renta cae ($S_2$) hasta $E_2$}
+\begin{itemize}
+\item \emph{Implicaciones}: monetaria sin instrumento (brecha $<0$ persiste, $\pi$ bajo objetivo); fiscal más eficaz (sin expulsión: multiplicador mayor, \hyperref[rep:III.2]{III.2}); deuda barata ($r<\gamma_Y$, \hyperref[rep:III.3]{III.3}): argumento de \autor{Summers} por la inversión pública.
+\item \emph{Ext.}: generaciones solapadas (\autor{Eggertsson}-\autor{Mehrotra}-\autor{Robbins}, 2019): $r^n<0$ permanente; la flexibilidad no arregla (deflación $\Rightarrow$ $r$↑); escasez de activos seguros (\autor{Caballero}-\autor{Farhi}-\autor{Gourinchas}, 2017); transición climática: efecto neto incierto \vertema{3.B.31}.
+\item \emph{Evidencia}: tipo neutral de avanzadas $-300$ pb en una generación (\autor{Rachel}-\autor{Summers}). $r^n$ no se observa: filtros IS + \autor{Phillips} (\autor{Laubach}-\autor{Williams}, 2003; HLW, 2017). HLW: EE.\,UU.\ 2,6\,\% (2007) $\to$ 1,0\,\% (mediados 2026); zona del euro 2,3 $\to$ 0,1\,\%. Incierto: LW, EE.\,UU.\ 1,7\,\%; BCE, zona del euro entre $-0{,}5$ y 1\,\%. Discrepan en el nivel, coinciden en la caída.
+\item \emph{Valoración}: \autor{Cochrane} (2019): paro 3,9\,\%: problema de oferta, reformas y no gasto. ¿Terminado? Desde 2022 $r$↑: \autor{Summers} (2023), sí; \autor{Blanchard}, no (\hyperref[rep:III.3]{III.3}).
+\end{itemize}
+
+\sub{I.2. Límite inferior y respuesta no convencional\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Tipos a cero}: \emph{Fed} 0-0,25\,\% (dic.\ 2008-dic.\ 2015; mar.\ 2020-mar.\ 2022); \emph{BCE}, más tarde: depósito 0\,\% (jul.\ 2012), negativo jun.\ 2014-jul.\ 2022, mínimo $-0{,}50$\,\%; \emph{BoE} 0,5\,\% (mar.\ 2009), 0,1\,\% (2020-21); \emph{BoJ} cerca de 0 desde finales de los 90; $-0{,}1$\,\% (2016-24).
+\item \emph{Por qué es grave}: $r$ no baja $\Rightarrow$ brecha↑, $\pi$↓, $r$\,↑, recesión↑. Trampa de \autor{Krugman} (1998, Japón): habría que prometer inflación futura, no creíble \vertema{3.A.36} \vertema{3.A.41}. «No se le pueden pedir peras al olmo».
+\item \emph{Lógica}: el gasto depende del tipo largo:
+\begin{formula}
+\centering $\displaystyle i^{(n)}_t=\frac{1}{n}\sum_{k=0}^{n-1}\mathbb{E}_t[i_{t+k}]+\text{prima por plazo}_t$
+\end{formula}
+\item[] Sobre los \emph{cortos esperados}: \concepto{orientación} (\emph{forward guidance}) y tipos negativos; sobre la \emph{prima}: \concepto{compras de activos} (QE) y \emph{control de la curva}; si falla el crédito, \emph{préstamos condicionados} (TLTRO, \emph{Funding for Lending}). Diseño \vertema{3.A.36}; canales \vertema{3.A.37}.
+\item \emph{Uso}: compras: Fed 2008-14 y 2020-22; BCE APP 2014-22 (deuda pública desde mar.\ 2015, 60.000 M€/mes) y PEPP 2020-22 (hasta 1,85 bill.); BoE 2009-21 (895.000 M£); BoJ 2001-06 y masivas desde 2013 (duplicar base en 2 años). Negativos: BCE y BoJ. Curva: solo BoJ (2016-24, 10 años $\approx$0\,\%). Orientación: BoJ 1999, Fed 2008, BCE y BoE 2013.
+\item \emph{Balance} (mediados 2007 $\to$ máximo 2021, \% PIB, BPI): Fed 6 $\to$ 37; Eurosistema 13 $\to$ 68; BoE 5 $\to$ 48; BoJ 18 $\to$ 129.
+\end{itemize}
+
+\sub{I.3. ¿Funcionó? Eficacia y costes\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Funcionó}: tipos largos↓: primeras compras de la Fed, prima a 10 años $-30$ a $-100$ pb (\autor{Gagnon} et al., 2011); credibilidad decisiva (\autor{Dell'Ariccia}-\autor{Rabanal}-\autor{Sandri}, 2018). QE + orientación $\approx$ 3 pp más de recorte con neutral nominal del 2-3\,\% (\autor{Bernanke}, 2020). OMT (2012): primas↓ sin comprar un bono.
+\item \emph{Menos}: rendimientos decrecientes (antes a activos que a economía real); Japón: QQE 2013 subió $\pi$, pero no al 2\,\% duradero; si $r^n$ aún menor, hace falta objetivo mayor o más fiscal (\autor{Bernanke}, 2020).
+\item \emph{Costes}: \emph{pérdidas}: bonos largos a tipo fijo pagados con reservas al tipo oficial; con subidas 2022-23, BCE $-7.944$ M€ (2024). \emph{Distribución}: vivienda y acciones (ricos), pero el empleo ayuda a los demás. \emph{Estabilidad financiera}: búsqueda de rentabilidad, deuda privada; «momento \autor{Minsky}»; \emph{leaning} vs.\ \emph{cleaning} \vertema{3.A.42}; macroprudencial 1.ª línea \vertema{3.B.27}. \emph{Frontera fiscal}: comprar deuda abarata al Estado; independencia = subir tipos cuando toque.
+\item \emph{Normalización 2022-26}: BoE reduce desde 2022; BCE deja de reinvertir APP (2023) y PEPP (fin 2024); Fed termina la reducción el 1/12/2025. Mediados 2026: 21, 39, 26 y 94\,\% del PIB, muy por encima de 2007.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9,5]{II. Política fiscal: los multiplicadores\label{rep:II}}
+\begin{ideaclave}
+El multiplicador no es un número fijo: la teoría da de menos de 1 a más de 2 según precios, hogares y, sobre todo, la respuesta del banco central; los datos, 0,6-1 en tiempos normales y por encima de 1 cuando la monetaria acompaña.
+\end{ideaclave}
+
+\sub{II.1. Qué es y cómo se mide\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Por instrumento}: gasto (consumo o inversión pública), transferencias, impuestos (negativo).
+\item \emph{Por horizonte}: \emph{impacto} $m^{\,t}_t=\Delta Y_t/\Delta G_t$; \emph{a $k$ periodos} $m^{\,t+k}_t=\Delta Y_{t+k}/\Delta G_t$; \emph{máximo} $m^{\max}=\max_k m^{\,t+k}_t$; \emph{acumulado} (el preferido; divide por el \emph{gasto acumulado}, no por $\Delta G_t$: \autor{Ramey}-\autor{Zubairy}, 2018):
+\funcionclave{m^{\mathrm{acum}}_{t,k}=\frac{\sum_{j=0}^{k}\Delta Y_{t+j}}{\sum_{j=0}^{k}\Delta G_{t+j}}}
+\item[] $=1$: cada euro añade un euro de PIB, gasto privado igual; $>1$, lo arrastra; $<1$, lo expulsa en parte.
+\end{itemize}
+\graficorepaso[\linewidth]{multiplicadores-irf}{Respuesta en joroba (ilustrativa): impacto 0,5; máximo 0,71 a los 2 trimestres; $m^{\,t+4}_t=0{,}59$; acumulado a 12 trimestres 0,90 (cociente de áreas)}
+
+\sub{II.2. De qué depende: la teoría\label{rep:II.2}}
+\begin{itemize}
+\item Secuencia de modelos, cada uno añade una pieza. «Todo es según el color del cristal con que se mira» (\autor{Campoamor}).
+\item \textbf{Keynesiano} (\autor{Kahn}, 1931; \autor{Keynes}, 1936, cap.~10) \vertema{3.A.4}: precios rígidos, paro, $C=\overline{C}+cY^d$, impuestos al tipo $t$. Cruz keynesiana:
+\begin{formula}
+\centering $\displaystyle\frac{\Delta Y^*}{\Delta\overline{G}}=\frac{1}{1-c(1-t)}\;;\quad\text{abierta: }\frac{1}{1-c(1-t)+m}$
+\end{formula}
+\item[] IS-LM, con expulsión: $\frac{\partial Y^*}{\partial\overline G}=\frac{1}{1-c(1-t)+bk/h}$; menos expulsión con LM plana ($h$↑) e IS vertical ($b$↓): de clásicos (LM vertical, expulsión total) a keynesianos (casi nula) y monetaristas (casi total) \vertema{3.A.5}. \emph{Impl.}: >1; si el banco central fija $i$, vuelve al de la cruz; \concepto{presupuesto equilibrado} = 1 con impuestos fijos (\autor{Haavelmo}, 1945); con deuda, mayor. \emph{Evid.}: \autor{Keynes}, con datos de \autor{Kuznets}, «menor que 3», $\approx$2,5. \emph{Val.}: sin expectativas; crítica de \autor{Lucas} \vertema{3.A.6}.
+\item \textbf{Ciclo real} \vertema{3.A.42}: precios flexibles, expectativas racionales; \concepto{equivalencia ricardiana} (\autor{Barro}, 1974) \vertema{3.A.39}. Gasto $\Rightarrow$ impuestos $\Rightarrow$ \emph{efecto riqueza negativo}: $C$↓, ocio↓, $L$↑, $w$↓, $Y$↑. \autor{Baxter}-\autor{King} (1993): \emph{transitorio}, $0<m<1$, $C$ e $I$ privadas↓; \emph{permanente}, puede superar 1. No estabiliza; rebaja de impuestos con deuda sin efecto; gasto productivo, crecimiento (\autor{Barro}, 1990) \vertema{3.A.38}. \emph{Val.}: en los datos $C$ no cae (\autor{Blanchard}-\autor{Perotti}, 2002; \autor{Galí}-\autor{López-Salido}-\autor{Vallés}, 2007).
+\item \textbf{NEK} (\autor{Woodford}, 2011) \vertema{3.A.7}: efecto riqueza + rigidez + banco central: «¿qué hace el banco central cuando sube el gasto?». IS dinámica, NKPC $\pi_t=\beta\mathbb{E}_t\pi_{t+1}+\kappa x_t$ y regla. $\hat g_t$ eleva $y^n_t=\Gamma\hat g_t$, $\Gamma\equiv\theta/(\theta+\varphi)\in(0,1)$, y $r^n_t$ mientras dura. Multiplicador: \emph{precios flexibles} $\Gamma<1$; \emph{tipo real constante}, exactamente 1 ($C$ no se mueve); \emph{\autor{Taylor}} ($\phi_\pi>1$), entre $\Gamma$ y 1 ($\approx$0,87); \emph{límite inferior}, >1 (\hyperref[rep:III.2]{III.2}). Mayor con precios más rígidos, gasto más persistente y banco central más acomodaticio. \emph{Val.}: predice $C$↓, que no se ve.
+\item \textbf{Hogares al día y HANK}: $\approx$mitad de la renta a hogares que consumen su renta (\autor{Campbell}-\autor{Mankiw}, 1989) \vertema{3.A.33}. 2 tipos (\autor{Galí}-\autor{López-Salido}-\autor{Vallés}, 2007): $C$ agregado↑, sin equivalencia ricardiana, multiplicador mayor. \emph{Cruz keynesiana intertemporal} (\autor{Auclert}-\autor{Rognlie}-\autor{Straub}, 2024): con deuda, acumulado >1; fiscal y monetaria se mezclan (\autor{Kaplan}-\autor{Moll}-\autor{Violante}, 2018) \vertema{3.A.37}. Importa \emph{a quién}: transferencias a hogares con restricciones hasta 2 vs.\ 0,2-0,6; también hogares con riqueza ilíquida (vivienda: \autor{Kaplan}-\autor{Violante}, 2014).
+\end{itemize}
+
+\sub{II.3. Qué dicen los datos\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Problema}: gasto e impuestos responden al ciclo y se anticipan: causa y efecto mezclados.
+\item \emph{Métodos}: \emph{SVAR} (\autor{Blanchard}-\autor{Perotti}, 2002: $G$ no responde a $Y$ en el trimestre; se descuenta la elasticidad legal de los impuestos); \emph{narrativo} (\autor{Romer}-\autor{Romer}, 2010, impuestos; \autor{Ramey}, 2011, noticias de gasto militar: anticipación); \emph{proyecciones locales} (\autor{Jordà}, 2005; estado del ciclo: \autor{Auerbach}-\autor{Gorodnichenko}, 2012; \autor{Ramey}-\autor{Zubairy}, 2018); \emph{locales} (\autor{Nakamura}-\autor{Steinsson}, 2014: \emph{relativo}, no nacional); \emph{modelos estimados} (\autor{Coenen} et al., 2012: 7 modelos).
+\item \emph{Síntesis} (\autor{Ramey}, 2019): gasto \textbf{0,6-1}; impuestos \textbf{2-3} en valor absoluto; >1 solo con monetaria acomodaticia. Coherentes: gasto estudiado transitorio; impuestos permanentes (incentivos).
+\item \emph{Estimaciones}: SVAR actualizado 0,6-0,8; gasto militar 0,6-0,8; impuestos $-2{,}5$ a $-3$; \autor{Auerbach}-\autor{Gorodnichenko} 2,2 en recesión y $-0{,}3$ en expansión; \autor{Ramey}-\autor{Zubairy} (desde 1889) <1 con o sin holgura; regiones $\approx$1,5 (relativo); bancos centrales <1, 2-3 con tipos fijos 2 años.
+\item \emph{Determinantes}: \emph{monetaria} (el más sólido: acompaña o límite: hasta 1,5 EE.\,UU., 1,5-2,5 Japón); \emph{instrumento} (inversión y transferencias focalizadas > rebajas generales); \emph{hogares al día}; \emph{persistencia y anuncios}; \emph{ciclo} (frágil); \emph{apertura y tipo de cambio}: flexible casi nulo, fijo positivo, abierta menor; \emph{deuda} >60\,\% PIB: nulo en impacto y negativo a LP (\autor{Ilzetzki}-\autor{Mendoza}-\autor{Végh}, 2013); \emph{financiación} con deuda, si no ricardianos.
+\item \emph{Error de los multiplicadores} (\autor{Blanchard}-\autor{Leigh}, 2013): 26 economías europeas; error de previsión del crecimiento 2010-11 frente a consolidación prevista en primavera de 2010. Pendiente $-1{,}095$: por punto de consolidación, $\approx$1 punto menos de crecimiento; multiplicadores casi 1 punto mayores que el 0,5 supuesto.
+\end{itemize}
+\graficorepaso[\linewidth]{blanchard-leigh}{26 economías europeas: pendiente $-1{,}095$ ($t=-4{,}3$), $R^2=0{,}50$; Alemania arriba a la izda., Grecia abajo a la dcha.}
+\begin{itemize}
+\item[] Efectos no keynesianos (consolidación expansiva): no aparecieron \vertema{3.A.39}. \emph{Matiz} (\autor{Ramey}, 2019): no fueron mayores que los normales; los supuestos eran bajos. Se ajustó en el peor momento: sin margen monetario.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{III. Interrelación de las políticas desde 2008\label{rep:III}}
+\begin{ideaclave}
+Más eficaces juntas, sin que una se ponga al servicio de la otra: el gasto multiplica más si el banco central acompaña, y el banco central solo es independiente si la fiscal es sostenible. Coherentes en 2009 y 2020; tensionadas en 2010-13 y 2022.
+\end{ideaclave}
+
+\sub{III.1. \emph{Policy mix} y dominación\label{rep:III.1}}
+\begin{itemize}
+\item \emph{4 cuadrantes}: \emph{ambas expansivas} (recesión con $\pi$ baja: 2009, 2020); \emph{ambas contractivas} (recalentamiento: 2022-23); \emph{fiscal expansiva + monetaria contractiva} ($i$ y moneda↑: EE.\,UU.\ principios de los 80, R.\,U.\ 2022); \emph{fiscal contractiva + monetaria expansiva} (consolidar sin hundir la demanda: zona del euro desde 2012).
+\item Coherente $\neq$ mismo signo. FMI: 2020, 77\,\% de economías ambas expansivas; 2021, 62\,\% monetaria expansiva + fiscal contractiva; 2022, 74\,\% ambas contractivas. «Juntos, pero no revueltos».
+\item \emph{¿Quién cierra la restricción?} (\autor{Sargent}-\autor{Wallace}, 1981; \autor{Leeper}, 1991) \vertema{3.A.39}: \concepto{dominación monetaria}: monetaria \emph{activa} (inflación), fiscal \emph{pasiva} (superávits estabilizan la deuda): Gran Moderación. \concepto{Dominación fiscal}: superávits dados, se ajusta la monetaria: señoreaje (\emph{aritmética monetarista desagradable}) o nivel de precios (\emph{teoría fiscal del nivel de precios}). Argumento a favor de la disciplina fiscal, no de la dominación.
+\end{itemize}
+
+\sub{III.2. El multiplicador según la monetaria\label{rep:III.2}}
+\begin{itemize}
+\item \emph{El multiplicador lo fija, en buena parte, el banco central}: \autor{Taylor} con dominación monetaria, <1 ($\approx$0,87); límite inferior o banco central que acompaña, >1, más cuanto más dure; dominación fiscal: deuda = riqueza neta, mayor (\autor{Leeper}-\autor{Traum}-\autor{Walker}, 2017).
+\item \emph{En el límite}: perturbación de demanda lleva $r^n$ bajo el límite; $i$ en el límite mientras dura la crisis (continúa con prob.\ $\rho_L$, duración esperada $1/(1-\rho_L)$); gasto igual de largo. Gasto $\Rightarrow$ $\pi^e$↑, $i$ fijo $\Rightarrow$ $r$↓ $\Rightarrow$ $C$↑:
+\begin{formula}
+\centering $\displaystyle m^{\mathrm{ELB}}=\frac{(1-\rho_L)(1-\beta\rho_L)-\rho_L\kappa\Gamma/\theta}{(1-\rho_L)(1-\beta\rho_L)-\rho_L\kappa/\theta}>1$
+\end{formula}
+\item[] Con $\beta=0{,}99$, $\theta=\varphi=1$ ($\Gamma=0{,}5$), $\kappa=0{,}02$: 1 si dura 1 periodo; 1,31 con $\rho_L=0{,}8$ (5 trim.); 2,25 con $\rho_L=0{,}85$ (6,7); \autor{Taylor}, 0,87.
+\item \emph{Gráfico}: DA con codo; sobre el límite, decreciente (regla); bajo él, \emph{creciente} (más $\pi^e$ baja $r$) y más inclinada que la NKPC: el mismo desplazamiento mueve $x_t$ \emph{más} que él ($m>1$); en la rama de \autor{Taylor}, menos.
+\end{itemize}
+\graficorepaso[\linewidth]{nek-limite-inferior}{Cae $r^n$: DA$_0$ con codo en $i=i^{\mathrm{ELB}}$; el gasto (DA$_1$) mueve $x_t$ más que el desplazamiento ($m>1$); en la rama de \autor{Taylor} (DA$'$), $m<1$}
+\begin{itemize}
+\item \emph{Impl.}: en el límite, el gasto multiplica por 2-3 (\autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo}, 2011; \autor{Coenen} et al., 2012); rebajas de impuestos sobre el trabajo pueden ser contractivas ($P$↓, $r$↑: \autor{Eggertsson}, 2011); base teórica de 2009 y 2020. \emph{Paradoja de la flexibilidad} (\autor{Eggertsson}-\autor{Krugman}, 2012).
+\item \emph{Val.}: desconfiar del extremo (denominador $\to0$, como la paradoja de la orientación) \vertema{3.A.37}; el gasto debe llegar \emph{mientras} dura el límite; el límite debe apretar: tipos a 1-2 años de EE.\,UU.\ respondían en 2008-10 (\autor{Swanson}-\autor{Williams}, 2014).
+\item \emph{Unión monetaria}: el banco central común no responde a una región $\Rightarrow$ como tipos fijos: multiplicador relativo $\approx$1,5 (\autor{Nakamura}-\autor{Steinsson}, 2014); distingue modelos (NEK sí, flexibles no); \autor{Farhi}-\autor{Werning} (2016). En el euro, fiscal = único instrumento propio \vertema{3.B.16}, limitado por la prima.
+\item \emph{La otra dirección}: deuda alta y corta: cada subida encarece la deuda (canal de dominación fiscal); hogares al día: la fiscal amplifica o amortigua la monetaria. \emph{Normativa} (\autor{Blanchard}-\autor{Summers}, 2017; \autor{Bernanke}, 2020): con $r^n$ bajo, más papel a la fiscal en recesión con tipos en el límite; en el potencial, que estabilice el banco central y la fiscal cuide la sostenibilidad.
+\end{itemize}
+
+\sub{III.3. Experiencia por fases\label{rep:III.3}}
+\begin{itemize}
+\item \textbf{2008-09, estímulo coordinado}: tipos al límite, QE en EE.\,UU.\ y R.\,U.; BCE, liquidez ilimitada. FMI pide estímulo del 2\,\% del PIB, temporal, rápido y dirigido (\autor{Spilimbergo} et al., 2008); G-20 \vertema{3.B.19}; ARRA (feb.\ 2009, $\approx$831.000 M\$); Plan Europeo de Recuperación (nov.\ 2008, 200.000 M€, 1,5\,\% PIB). Impulso 2009: 2,3 / 1,4 / 2,3 / 2,4 pp. Ambas expansivas en el límite; ARRA entre estados $\approx$2 (relativo: \autor{Chodorow-Reich}, 2019).
+\item \textbf{2010-14, austeridad}: G-20 Toronto (jun.\ 2010): déficits a la mitad antes de 2013. Zona del euro retira $\approx$4 pp (2011-13), reglas más duras \vertema{3.B.45}; EE.\,UU.\ $\approx$2 pp/año (2011-13); R.\,U.\ 2011 y 2013. BCE sube tipos 2 veces en 2011. Consolidar en el límite: España \vertema{4.B.26}. \emph{Giro}: \autor{Draghi}, «lo que sea necesario» (26/7/2012); OMT (2/8 y 6/9/2012): primas↓ sin activarse; monetaria respalda a la fiscal con condiciones \vertema{3.B.43}. Japón: abenomía 2013 + IVA al 8\,\% (2014; 10\,\% en 2019): tensionada.
+\item \textbf{2015-19, tipos bajos}: BCE compra deuda (2015), depósito $-0{,}50$\,\% (2019); BoJ negativos y curva (2016); Fed sube (2015-18). \autor{Blanchard} (2019): $r<\gamma_Y$ casi siempre en EE.\,UU.; con déficit primario constante la deuda converge:
+\begin{formula}
+\centering $\displaystyle d^*=\frac{(g-\tau)(1+\gamma_Y)}{\gamma_Y-r}$
+\end{formula}
+\item[] Coste fiscal pequeño: margen para inversión \vertema{3.A.39}. \emph{Críticas}: el diferencial puede cambiar de signo (\autor{Wyplosz}, 2019); $r-\gamma_Y$ no avisa antes de impagos (\autor{Mauro}-\autor{Zhou}, 2020); oferta, no demanda (\autor{Cochrane}).
+\item \textbf{2020-21, Covid}: tipos al límite, compras masivas (Fed «en las cantidades necesarias»; PEPP 1,85 bill.; BoE 0,1\,\%). CARES (+1,7 bill.\ \$ de déficit), Plan de Rescate (2021); reglas suspendidas; SURE 98.400 M€; NGEU hasta 806.900 M€ (1.ª deuda común a gran escala). Impulso 2020: 5,0 / 3,4 / 8,2 / 4,9 pp. \emph{Perturbación de oferta keynesiana} (\autor{Guerrieri} et al., 2022): mejor seguros de rentas y liquidez que gasto genérico; tras crisis sanitaria, acumulado doble (\autor{Kinda}-\autor{Lengyel}-\autor{Chahande}, 2022). Mayor coordinación, cerca de lo «revuelto».
+\item \textbf{2021-26, inflación}: \autor{Summers} y \autor{Blanchard} (feb.\ 2021): Plan de Rescate >> brecha. Inflación 9,1\,\% EE.\,UU.\ (jun.\ 2022), 10,6\,\% zona del euro (oct.): energía, alimentos, cuellos de botella y mercado laboral tenso (\autor{Bernanke}-\autor{Blanchard}, 2025); TFNP: gasto sin superávits esperados (\autor{Bianchi}-\autor{Faccini}-\autor{Melosi}, 2023). Subidas: Fed +525 pb, BCE +450 en 14 meses, BoE 5,25\,\% (ago.\ 2023), BoJ sale de negativos y curva (mar.\ 2024). Sept.\ 2026: Fed 3,75-4,00\,\%; BCE 2,50\,\%; BoE 3,75\,\%; BoJ 1,25\,\%. \emph{Tensionada}: EE.\,UU.\ $-6{,}6$ pp de impulso (2022), pero ayudas energéticas europeas expansivas ($-1$ a $-2$ pp de $\pi$; poco selectivas); R.\,U.\ (23/9/2022): rebajas sin financiar, BoE compra gilts: «revueltos». TPI (jul.\ 2022) \vertema{3.B.43}: dominación monetaria con red. $r-\gamma_Y<0$ en las 4 (2021-25); 2025: $-1{,}0$ EE.\,UU., $-1{,}6$ zona del euro, $-1{,}5$ R.\,U.
+\item \emph{¿Fin del estancamiento?} (PIIE, 7/3/2023): \autor{Summers}, sí (neutral >0,5\,\%; 1,5\,\% ya es salir); \autor{Blanchard}, no (35 años de caída; fuerzas de fondo; mientras $r<\gamma_Y$). Desacuerdo en parte de definición.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» la monetaria perdió su instrumento porque $r^n$ cayó bajo el límite (instrumentos nuevos: menos fuerza, más costes); multiplicador del gasto 0,6-1 normal y >1 si la monetaria acompaña (y según apertura, deuda, a quién llega); se condicionan: coherentes 2009 y 2020, tensionadas 2010-13 y 2022; independencia con red.
+\item \textbf{Relevancia}: deudas $\approx$100\,\% PIB y tipos al alza: margen escaso; saber cuándo multiplica decide cuándo gastar.
+\item \textbf{Extensiones}: \vertema{3.A.39} déficit y dominación; \vertema{3.A.36}-\vertema{3.A.37}; \vertema{3.A.38}; \vertema{3.A.41}; \vertema{3.A.42}; \vertema{3.B.19}; \vertema{3.B.43}-\vertema{3.B.45} (euro digital hacia 2029); \vertema{4.B.4}-\vertema{4.B.26}.
+\item \textbf{Opinión}: lección de calendario: gastar con fuerza en el límite (multiplica y deuda barata), consolidar cuando economía y banco central lo absorben. Europa: al revés en 2010-13, al derecho en 2020.
+\item \textbf{Idea final}: en 2010-13 el remedio fue peor que la enfermedad porque se aplicó solo; el multiplicador no es una constante de la naturaleza: depende del banco central. Políticas \emph{juntas, pero no revueltas}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1931}{\autor{Kahn}: multiplicador del empleo}
+\hito{1936}{\autor{Keynes}: multiplicador de la inversión ($\approx$2,5)}
+\hito{1939}{\autor{Hansen}: estancamiento secular}
+\hito{1945}{\autor{Haavelmo}: presupuesto equilibrado}
+\hito{1974}{\autor{Barro}: equivalencia ricardiana}
+\hito{1981}{\autor{Sargent}-\autor{Wallace}: aritmética monetarista desagradable}
+\hito{1991}{\autor{Leeper}: políticas activas y pasivas}
+\hito{1993}{\autor{Taylor}: regla; \autor{Baxter}-\autor{King}: gasto en el RBC}
+\hito{1998}{\autor{Krugman}: trampa de liquidez en Japón}
+\hito{2002}{\autor{Blanchard}-\autor{Perotti}: SVAR fiscal}
+\hito{2003}{\autor{Laubach}-\autor{Williams}: tipo natural}
+\hito{2005}{\autor{Bernanke}: exceso de ahorro mundial}
+\hito{2007}{\autor{Galí}-\autor{López-Salido}-\autor{Vallés}: hogares al día}
+\hito{2010}{\autor{Romer}-\autor{Romer}: impuestos (narrativo)}
+\hito{2011}{\autor{Woodford}; \autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo}; \autor{Eggertsson}; \autor{Ramey}}
+\hito{2012}{\autor{Auerbach}-\autor{Gorodnichenko}; \autor{Coenen} et al.; FMI, \emph{mea culpa}; \autor{Draghi}}
+\hito{2013}{\autor{Blanchard}-\autor{Leigh}; \autor{Summers} (FMI); \autor{Ilzetzki}-\autor{Mendoza}-\autor{Végh}}
+\hito{2014}{\autor{Nakamura}-\autor{Steinsson}: multiplicador local}
+\hito{2018}{\autor{Ramey}-\autor{Zubairy}; \autor{Kaplan}-\autor{Moll}-\autor{Violante}}
+\hito{2019}{\autor{Ramey}: síntesis; \autor{Blanchard}: $r<\gamma_Y$; \autor{Rachel}-\autor{Summers}}
+\hito{2020}{\autor{Bernanke}: la nueva política monetaria}
+\hito{2023}{Debate \autor{Summers}-\autor{Blanchard} (PIIE)}
+\hito{2024}{\autor{Auclert}-\autor{Rognlie}-\autor{Straub}: cruz intertemporal}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Deuda zona del euro: \dato{87,7\,\% del PIB}{Eurostat, 2025}.
+\item $r^*$ (HLW): EE.\,UU.\ \dato{2,6 $\to$ 1,0\,\%}{Fed NY, 2007-2026T2}; zona del euro \dato{2,3 $\to$ 0,1\,\%}{Fed NY}; tipo neutral \dato{$-300$ pb}{Rachel-Summers, 2019}.
+\item Activo de los bancos centrales, máximo 2021: Fed \dato{37\,\%}{BPI}; Eurosistema \dato{68\,\%}{BPI}; BoE \dato{48\,\%}{BPI}; BoJ \dato{129\,\% del PIB}{BPI}.
+\item Pérdidas del BCE: \dato{7.944 M€}{BCE, 2024}.
+\item Impulso fiscal 2020: \dato{5,0 / 3,4 / 8,2 / 4,9 pp}{FMI}; 2022, EE.\,UU.\ \dato{$-6{,}6$ pp}{FMI}.
+\item Inflación máxima: \dato{9,1\,\%}{BLS, jun.\ 2022}; \dato{10,6\,\%}{Eurostat, oct.\ 2022}.
+\item $r-\gamma_Y$ 2025: \dato{$-1{,}0$ / $-1{,}6$ / $-1{,}5$}{AMECO; EE.\,UU., zona del euro, R.\,U.}
+\item Fondos: NGEU \dato{806.900 M€}{CE}; SURE \dato{98.400 M€}{CE}; CARES \dato{1,7 bill.\ \$}{CBO}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué el multiplicador es mayor en el límite inferior?} El gasto eleva $\pi^e$ y, con $i$ fijo, baja $r$: $C$↑ en vez de caer. Más cuanto más dure el episodio.
+\item \textbf{¿Fue la austeridad de 2010-13 un error?} Se consolidó con tipos en el límite y sin compensación monetaria (\autor{Blanchard}-\autor{Leigh}: pendiente $-1{,}095$); matiz de \autor{Ramey}: los supuestos eran bajos.
+\item \textbf{¿Cómo concilia 0,6-1 del gasto con 2-3 de los impuestos?} Gasto estudiado transitorio; impuestos permanentes, que cambian incentivos a trabajar e invertir.
+\item \textbf{¿Qué mide \autor{Nakamura}-\autor{Steinsson}?} Un multiplicador \emph{relativo} entre regiones, con la misma monetaria e impuestos: no es el nacional, pero discrimina modelos.
+\item \textbf{¿Ha terminado el estancamiento secular?} \autor{Summers} (2023), sí, por el nivel de $r$; \autor{Blanchard}, no, mientras $r<\gamma_Y$ y sigan las fuerzas de fondo.
+\item \textbf{¿Por qué en la Covid seguros de rentas y no gasto genérico?} Perturbación de oferta keynesiana: con sectores cerrados el gasto genérico multiplica poco; lo eficaz, sostener rentas y liquidez (\autor{Guerrieri} et al., 2022).
+\item \textbf{¿Pierde independencia el BCE con el TPI?} No: dominación monetaria con red; compra solo si la prima sube sin justificación y se cumplen las reglas.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Presupuesto equilibrado: 1 en la cruz con impuestos fijos (\autor{Haavelmo}, 1945); <1 en IS-LM.
+\item \autor{Keynes}: $\approx$2,5 con datos de \autor{Kuznets}, no «entre 2 y 3» como regla.
+\item FMI: supuestos $\approx$0,5; observados 0,9-1,7.
+\item Mayor en recesión: \autor{Auerbach}-\autor{Gorodnichenko}; \autor{Ramey}-\autor{Zubairy} no lo hallan.
+\item \autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo} (2011), no «Rebelo y otros». Rebaja de impuestos al trabajo en el límite: contractiva (\autor{Eggertsson}).
+\item Tipo de cambio flexible: casi nulo; fijo, positivo (\autor{Mundell}-\autor{Fleming} \vertema{3.A.32}).
+\item \autor{Hansen} 1939; \autor{Summers} 2013; $-300$ pb.
+\item \autor{Sargent}-\autor{Wallace} describen la dominación fiscal, no la defienden.
+\item Acumulado: dividir por el \emph{gasto acumulado}, no por $\Delta G_t$.
+\item NEK: precios flexibles $\Gamma=\theta/(\theta+\varphi)<1$; tipo real constante, exactamente 1; \autor{Taylor}, entre $\Gamma$ y 1.
+\item Dominación monetaria: monetaria \emph{activa}, fiscal \emph{pasiva} (no al revés).
+\item OMT (2012): nunca se activaron; TPI (2022), compra condicionada a cumplir las reglas.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
