@@ -1,0 +1,208 @@
+# Revisión del 3.B.5: Teoría del comercio internacional (I). Ventaja comparativa, relación real de intercambio, factores específicos y Heckscher-Ohlin-Samuelson
+
+Revisión autónoma (Víctor fuera del 31/10 al 9/11/2026). La fuente nueva está en LaTeX (`3B05.tex`) y se escribió en 2 partes el 5/11/2026. La parte 1 comprende el preámbulo, la introducción y los apartados I y II; la parte 2, el apartado III, la conclusión y los 8 anexos. La base es el Word de Víctor (≈17.000 palabras, 38 págs. en el PDF publicado, 45 notas al pie y 33 imágenes). Las dudas de estructura (D1-D5) se han resuelto con la opción que recomendaba coherencia y se anotan en «Dudas abiertas».
+
+## 1. Resumen
+
+- **Estructura de 3 apartados (D1, D2)**: el «Pensamiento neoclásico» del original se parte en 2.
+  - I, pensamiento clásico: Smith y Ricardo-Torrens, con DFS y Eaton-Kortum como extensiones.
+  - II, Haberler y un subapartado nuevo de determinación de la RRI: Mill, Marshall y Meade.
+  - III, las dotaciones: los factores específicos suben de extensión a III.1, y el H-O-S queda como III.2, con cada teorema en su `\subsubsection`.
+  - Se mantienen todos los títulos de segundo nivel del original y se sigue el orden del título oficial.
+- **Minutos**: introducción 2′30″ · I 6′30″ · II 6′ · III 13′30″ · conclusión 1′30″ = 30′.
+- **Lo más importante que se ha corregido**:
+  - el salario real en Stolper-Samuelson: la nota 37 decía lo contrario del teorema;
+  - la unicidad y la estabilidad de las curvas de oferta neta;
+  - la notación de Ricardo, alineada con el canon y el 3.A.2;
+  - los años y los autores: Hume 1752, Hamilton 1791, Robert Peel, Bernhofen y Brown, Trefler 1995 y Leamer 1980.
+- **Contenido nuevo**:
+  - determinación de la RRI, con la oferta relativa escalonada, las curvas de indiferencia comercial de Meade, la condición de Marshall-Lerner en el trueque, sus usos y Prebisch-Singer;
+  - factores específicos con sus bloques a)-e);
+  - el álgebra de Jones con el efecto magnificación;
+  - los apartados que estaban vacíos: fallos en los supuestos, valoración e influencia del H-O-S;
+  - la tabla de los 4 modelos (`tab:modelos`);
+  - un anexo de datos de España con 3 gráficos pgfplots, en lugar de las capturas.
+- **Enganche nuevo**: «Lo que abunda no daña», con los aceites de España (ventaja comparativa revelada de 3,65 en 2024) y su déficit energético. La idea final retoma el refrán.
+- **Ficheros**:
+  - `3B05.bib`, con 120 entradas;
+  - `graficos-pedidos.json`, con 22 gráficos (19 de teoría y 3 de datos);
+  - `seo.json`.
+- **Construcción**: compila sin referencias ni citas indefinidas y sin líneas desbordadas: 29 págs. de tema, 11 de anexos y 5 de bibliografía (45 en total), con los 22 gráficos del tema.
+
+## 2. Errores corregidos
+
+| Dónde (original) | Decía | Dice ahora |
+|---|---|---|
+| Nota 37 (Stolper-Samuelson) | El salario real crece en términos de *X* «pero no es seguro que lo haga en términos de *Y*» | En el 2×2 el salario real sube en términos de los 2 bienes ($\hat w>\hat p_Y>\hat p_X>\hat r$, `eq:magnificacion`). Lo que decía la nota es el resultado de los factores específicos, y ahora va en una nota que avisa de esa confusión (C32) |
+| Haberler, unicidad (l. 544) | El equilibrio es único si los 2 bienes son normales | La normalidad no lo garantiza: con un tramo inelástico puede haber varios cortes, que alternan estables e inestables (C22) |
+| Haberler, estabilidad (l. 544) | $\lvert\varepsilon_M\rvert+\lvert\varepsilon_X\rvert>1$ | $\lvert\varepsilon_M^A\rvert+\lvert\varepsilon_M^B\rvert>1$: son las elasticidades de importación de los 2 países (`eq:ml-trueque`) |
+| Curva de oferta neta (l. 536-538, nota 24) | Tramos elástico e inelástico con la causa invertida; «es convexa» | `eq:oferta-neta-elasticidad`: la curva sube si $\varepsilon_M>1$, es vertical si vale 1 y se dobla hacia atrás si es menor; se curva hacia el eje del bien importado |
+| Nota 23 (Meade) | «las exportaciones son un bien y las importaciones un mal» | Al revés: exportar es un coste y por eso la curva de indiferencia comercial tiene pendiente positiva |
+| Libre comercio en Haberler (l. 512) | «mayor consumo de ambos bienes», en contradicción con la nota 21 | Una curva de indiferencia social más alta, no necesariamente más de los 2 bienes; se separan las ganancias del intercambio y de la especialización (C21) |
+| Ricardo (l. 258, 290, nota 14) | Si la RRI iguala el coste de un país, ese país «no tendría interés en comerciar» | Comercia, pero no gana (caso del país grande); la RRI de equilibrio siempre queda dentro del intervalo (C10) |
+| Ricardo, desigualdad | $80/90<120/100$ (RRI medida en vino) | `eq:ventaja-comparativa`: $100/120<p_X/p_Y<90/80$, como en el 3.A.2 |
+| Tabla 2 y nota 13 | $a_1,a_2,b_1,b_2$ | $a_X^A,a_Y^A,a_X^B,a_Y^B$ (canon § 10) |
+| Rybczynski (l. 816 y amarillo) | Un aumento de L en una viñeta y de K en las siguientes; los precios de los factores constantes como supuesto | Siempre un aumento de $\overline K$ (C33). Que los precios de los factores no cambien es una consecuencia, no un supuesto |
+| Factores específicos (l. 1023) | La curva $P_Y\cdot\mathrm{PMgL}_Y$ «se desplazará hacia la izquierda» | Sube; las flechas apuntan a la izquierda porque se mide desde $O_Y$ (anexo `anexo:factores-especificos`) |
+| Nota 33 | Llamaba «reversión factorial» a un sesgo de demanda | Es una contradicción entre las 2 definiciones de abundancia, no una reversión (`fn:sesgo-demanda`) |
+| Supuestos del H-O-S | Homotecia = «la proporción de la renta dedicada a cada bien no cambia» | La proporción entre las cantidades no depende de la renta a precios dados (eso otro es Cobb-Douglas) |
+| Teorema H-O | Los 2 países consumen en el mismo punto | Consumen en el mismo rayo; coinciden solo si tienen la misma renta (C30) |
+| Deardorff (l. 957) | Enunciado incorrecto | El de su artículo: la cadena se cumple con costes de comercio *o* bienes intermedios, pero puede romperse con los 2 (C37) |
+| Nota 7 | Falvey como competencia monopolística; «Kierzowski» | Nota quitada: el 3.B.6 la tiene bien (Falvey es neo-H-O, Kierzkowski) |
+| Nota 31 | Con movilidad de factores «las conclusiones seguirán siendo las mismas» | Los factores sustituyen al comercio (Mundell, 1957) |
+| Anexo 1 | Atribuía de forma confusa el equilibrio parcial | El equilibrio parcial es el de Keynes y el efecto renta lo introduce Ohlin (C43) |
+| Fechas y nombres | Hume (*Discursos políticos*, 1952); Hamilton (1790); «Sir Thomas Peel»; Ricardo cap. 7 de 1817; «Brown *et al.* (2005)»; «Trefler (1959)»; Leamer sin año; Samuelson 1949; neolítico en el 6000 a. C. | 1752; 1791; Sir Robert Peel, junio de 1846; cap. VI en 1817 y VII en 1821; Bernhofen y Brown (2004, 2005); Trefler (1995); Leamer (1980); Samuelson (1948-1949); hacia el 10.000 a. C. |
+| Erratas | «tranformación», «ente», «linear», «porque» por «por qué», «mucho países», «libre-cambio», HOS/H-O sin unificar, $W$ mayúscula | Corregidas; H-O-S para el modelo y teorema de Heckscher-Ohlin para el teorema; $w$ y $r$ en todo el tema |
+
+## 3. Marcas resueltas
+
+| Marca | Texto original | Qué se hizo |
+|---|---|---|
+| P1 (amarillo, Rybczynski) | 5 viñetas a medio redactar tras la Imagen 10 | Reescritas como intuición, álgebra de Jones (`eq:magnificacion-ryb`) y plano de los bienes, siempre con un aumento de K |
+| P2 (amarillo vacío) | «Fallos en los supuestos del modelo: …» | Escrito: capital humano, recursos naturales y Leamer (1980) en el cuerpo; el resto de explicaciones en el anexo `anexo:leontief` |
+| P3, P4 (amarillo vacío) | «Valoración» e «Influencia» del H-O-S | Escritas (C38, C39) |
+| P5, P6 (amarillo y comentario) | Appleyard y Field, y la idea de un «apartado cero» | Sin apartado cero: mercantilistas y Hume van en la nota de la contextualización, como en el 3.B.6. No se cita Appleyard y Field (su capítulo 2 no se ha podido leer); la entrada sigue en el `.bib` sin citar |
+| P7 (amarillo, anexo 1) | Keynes contra Ohlin | Reescrito con las fuentes de 1929, Samuelson (1952, 1954) y Leontief (1936); se queda aquí (D5) |
+| P8 (amarillo vacío) | Estructura de la introducción | Escrita con los 3 apartados y el porqué del orden |
+| P9 | 4 «Nota al opositor» del cambio de temario y la captura | Quitadas |
+| P10 | *Disclaimer* de las FPP | Convertido en una frase del texto (K8) |
+| P11, P12 | «Las 3 primeras extensiones no da tiempo…» y «Gandolfo, pág. 24/25/28 – Llevar a anexos» | Al anexo `anexo:ricardo-extensiones`, con 3 gráficos rehechos; en el cuerpo, una viñeta de remisión |
+| P13 | «Debe enfatizarse que este modelo no es exitoso…» | Integrada en la evidencia del HOV y matizada con Davis y Weinstein (2001) |
+| P14 | «Modelo muy apropiado para… distribución de la renta» | En la valoración de los factores específicos |
+| P15 (comentario) | «No perder mucho tiempo en la exposición…» | No se publica; con el título nuevo la RRI tiene subapartado propio, así que no se pasa de puntillas |
+| P16 (comentario) | Nota privada sobre un tema de otro preparador | No se publica. Ese tema no estaba entre las referencias disponibles |
+| P53 | Temas de preparadores en la bibliografía | Quitados |
+| P54 | Forvo, YouTube (nota 22), archive.org (nota 19), hetwebsite, quia.com, glosario de umich | Quitados; el test, con el enlace genérico al simulador (`anexo:test`) |
+| Notas al pie | 45 en el original | Se mantienen como notas, reescritas donde hacía falta: 1, 2, 5, 8, 9, 10, 12, 15, 17, 18, 20, 21, 26, 29, 31, 32, 33, 34, 35, 37, 38, 39, 40, 43 y 44. Pasan al texto la 11, 14, 23, 24, 27, 28, 36, 41 y 42. Se quitan la 3 (fundida en la relevancia), 4, 6, 7 y 45 (son del 3.B.6), 13, 16 (sustituida por un gráfico), 19, 22, 25 (vacía) y 30 (en el anexo de la igualación). La 29 y la 32 pasan al anexo `anexo:igualacion` con sus gráficos |
+| Imágenes | Capturas del Anexo 2 y recortes de un manual (nota 32) | No se publican; se sustituyen por gráficos pgfplots y TikZ |
+
+## 4. Datos actualizados
+
+| Dato | Anterior | Nuevo | Fuente | URL | Consulta | Segunda comprobación |
+|---|---|---|---|---|---|---|
+| Comercio mundial de bienes y servicios | 31 billones de USD (2022) | 34,65 billones (2025) | OMC, *Perspectivas…* marzo de 2026 | https://www.wto.org/spanish/res_s/booksp_s/gtos0326_s.pdf | 05/11/2026 | UNCTAD, *Global Trade Update*, abril de 2026 (≈35 billones): cuadra |
+| Comercio de mercancías de España (anexo 2) | 2022, en capturas | Exportaciones 387.092 M€, importaciones 444.146 M€, saldo −57.055 M€, cobertura 87,2 %, UE 61,8 % (2025) | Ministerio de Economía, Comercio y Empresa, informe mensual de diciembre de 2025 | https://comercio.gob.es/ImportacionExportacion/Informes_Estadisticas/Historico_Informes/Mensuales/2025/2025-12_Informe_Mensual_Comercio_Exterior.pdf | 05/11/2026 | Nota de prensa de 19/2/2026 y Eurostat Comext: cuadra |
+| Ventaja comparativa revelada de España (enganche y anexo 2) | — | Aceites y grasas 3,65; intensivas en trabajo y recursos naturales 1,44; tecnología media 1,12; alta 0,67 (2024) | UN Comtrade (SITC Rev. 4) con la clasificación de la UNCTAD | https://comtradeplus.un.org/ | 05/11/2026 | UNCTADstat US.RCA: 1,41 / 1,19 / 0,74, cuadra (secciones CUCI solo con Comtrade) |
+| Déficit energético de España (enganche) | — | −29.292 M€ (2025) | Ministerio, informe mensual (cuadro 17) | ídem | 05/11/2026 | Eurostat Comext SA 27, misma estructura |
+| Revolución neolítica | 6000 a. C. | Hacia el 10.000 a. C. | National Geographic | https://www.nationalgeographic.com/culture/topics/reference/neolithic-agricultural-revolution/ | 05/11/2026 | Citéco (Banco de Francia): ≈8500 a. C., mismo orden de magnitud |
+| Corn Laws | «Sir Thomas Peel» | Sir Robert Peel, junio de 1846 | Gobierno del Reino Unido | https://www.gov.uk/government/history/past-prime-ministers/robert-peel-2nd-baronet | 05/11/2026 | EBSCO Research Starters: cuadra |
+| Leontief (1953) | Sin cifra | 18.184 frente a 13.991 USD de capital por año-hombre (≈30 % más) | Cuadro de Leontief (1953), reproducido por Nowak (2019) | https://prawo.uwr.edu.pl/wp-content/uploads/sites/210/2022/08/IE_Lecture3_2019.pdf | 05/11/2026 | Otra fuente secundaria: 14.010 y 18.180, el mismo 30 %. El artículo original no se ha leído |
+| Eaton y Kortum (2002) | 19 países de la OCDE, 1990 | Igual, y θ ≈ 8,28 | Separata de Cowles | https://cowles.yale.edu/sites/default/files/2024-03/p1866.pdf | 05/11/2026 | RePEc: cuadra |
+| Harrigan (1997) | Sin muestra | 10 países de la OCDE, 20 años | RePEc | https://econpapers.repec.org/RePEc:aea:aecrev:v:87:y:1997:i:4:p:475-94 | 05/11/2026 | NBER WP 5722: cuadra |
+| Bowen, Leamer y Sveikauskas (1987) | Sin muestra | 27 países, 12 factores, 1967 | RePEc | https://econpapers.repec.org/RePEc:aea:aecrev:v:77:y:1987:i:5:p:791-809 | 05/11/2026 | NBER WP 1918: cuadra |
+| Balassa (1963) | Datos de 1951 | Datos de 1950-1951 | MIT 14.581 (Costinot), lección 6 | https://ocw.tau.edu.ng/courses/economics/14-581-international-economics-i-spring-2013/lecture-slides/MIT14_581S13_Lecslides6.pdf | 05/11/2026 | **Sin segunda comprobación** |
+| Kreinin (1965) | Entre un 20 y un 25 % | «Como mucho un 25 %» | Tsoulfidis, «Revisiting Leontief's Paradox» | https://ruomoplus.lib.uom.gr/bitstream/8000/1230/1/Tsoulfidis_IRAE_Revisiting%20Leontief%27s%20Paradox_2R.pdf | 05/11/2026 | Discrepancia leve: se usa la formulación prudente |
+| Magee (1980) | — | 19 de 21 sectores con la misma postura de capital y trabajo; 2 de 21 con Stolper-Samuelson | Magee, Davidson y Matusz (2005) | https://doi.org/10.1016/j.jinteco.2004.04.002 | 05/11/2026 | Una sola fuente (la versión de trabajo es el mismo texto) |
+| Nobel de Ohlin y Meade, Samuelson y Leontief | Motivaciones incompletas | Textos de nobelprize.org | https://www.nobelprize.org/prizes/economic-sciences/1977/summary/ | 05/11/2026 | Texto literal |
+
+## 5. Contenido añadido
+
+- **I.2 Ricardo**:
+  - la tabla única que pasa de Smith a Ricardo (110 → 90, K7) y las fronteras de posibilidades de producción con la RRI;
+  - el salario relativo (`eq:salario-relativo`) y la ganancia como ahorro de trabajo (C11);
+  - DFS y Eaton-Kortum con sus ecuaciones (C16, C17), con las mismas frases que el 3.B.6 (ACR, gravedad);
+  - en la evidencia, Bernhofen y Brown, Kiyota (2007, 2011), Costinot y Donaldson (2012) y Costinot, Donaldson y Komunjer (2012).
+- **II.1 Haberler**: las 2 ganancias del comercio, implicaciones propias, Harrigan con su muestra y una valoración.
+- **II.2 Determinación de la RRI** (P41), nueva:
+  - Mill con la `\funcionclave` `eq:mill` y la oferta relativa escalonada;
+  - las curvas de oferta neta de Marshall y Edgeworth, con su forma, existencia, unicidad y estabilidad;
+  - las curvas de indiferencia comercial de Meade, a partir de Leontief (1933) y Lerner (1934);
+  - los usos (arancel, crecimiento empobrecedor de Bhagwati, integración, transferencias) y Prebisch-Singer.
+- **III.1 Factores específicos** (P42): bloques a)-e), con el diagrama de Mussa, la magnificación de Jones (1971), Magee, Grossman y Levinsohn, Kovak y la enfermedad holandesa (Corden y Neary, 1982).
+- **III.2 H-O-S**:
+  - en los supuestos, las 2 definiciones de abundancia en el texto, la especialización incompleta y el número de bienes y de factores;
+  - en la igualación del precio de los factores, las curvas de coste unitario, el cono de diversificación, Lerner (1952) y Mundell (1957);
+  - en Stolper-Samuelson, el álgebra de Jones con `\funcionclave` `eq:magnificacion` y el 2TFEB (remisión al 3.A.22);
+  - en Rybczynski, el álgebra de Jones y la dualidad con Samuelson (1953);
+  - en la evidencia, Leamer (1980), el HOV con `eq:hov`, Trefler, Davis y Weinstein, Romalis y Schott;
+  - las extensiones (más bienes o más factores, Jones, Deardorff, reversión, costes de transporte, Davis, 1995, y Bernard, Redding y Schott), la valoración y la influencia (Wood, Autor, Dorn y Hanson, Harberger).
+- **Tabla `tab:modelos`** (K14): 4 preguntas × 4 modelos; se construye en la pizarra a lo largo de todo el cante.
+- **Anexos**:
+  - A, Ricardo con más bienes o más países (Gandolfo; Jones, 1961);
+  - B, transferencias;
+  - C, dotaciones en el modelo de factores específicos;
+  - D, la igualación paso a paso, con Samuelson-Johnson, la reversión y los coeficientes fijos;
+  - E, Rybczynski gráficamente, el álgebra de Jones demostrada y la reciprocidad;
+  - F, la paradoja de Leontief en detalle;
+  - G, datos de España (3 gráficos pgfplots);
+  - H, test.
+
+## 6. Coherencia
+
+- **Notación del canon**:
+  - A, B, X e Y en todo el tema, con A = Inglaterra (abundante en capital) y X = paño (intensivo en capital);
+  - $a_X^A$, $\mathrm{RRI}=p_X/p_Y$, $w$ y $r$ (D011) y el cociente siempre $w/r$;
+  - el álgebra de Jones con $s_{Lj}$, $\ell_{Lj}$ y $\hat x$;
+  - siglas en redonda.
+  - Son símbolos locales, avisados en la caja de notación: θ y $T_i$ (EK), $\vartheta(\tilde z)$ (DFS), $\varepsilon_M^A$, $r_X$, $r_Y$, $G(\cdot)$ y $\varsigma^i$. Están en `_trabajo/canon-pendiente.md` para el canon (esta sesión no tiene fase canon).
+- **Mismo modelo, misma forma**:
+  - `tab:pano-vino` y `eq:ventaja-comparativa` son idénticas a las del 3.A.2;
+  - la nota de Hume, Hamilton y List y la del neolítico tienen la forma del 3.B.6;
+  - Eaton-Kortum y Bernard-Redding-Schott dicen lo mismo que en el 3.B.6;
+  - los gráficos de coste unitario y de Rybczynski parten de los del 3.A.21, con X e Y intercambiados (D4);
+  - Haberler usa la geometría de Robinson Crusoe del 3.A.29.
+- **Remisiones nuevas o corregidas** (K20): 3.A.2, 3.A.3, 3.A.4, 3.A.11, 3.A.21, 3.A.22, 3.A.29, 3.A.31, 3.B.6, 3.B.7, 3.B.8, 3.B.9, 3.B.10, 3.B.12, 3.B.18, 3.B.28 y 4.B.8. La nota 23, que remitía al 3.B.7 para algo que se necesita aquí, se ha invertido: el 3.B.5 es el tema de referencia de las curvas de indiferencia comercial.
+- **Refranes**: el enganche, «Lo que abunda no daña», y 5 pegatinas («A buen hambre no hay pan duro», «Cada mochuelo a su olivo», «Si la montaña no va a Mahoma…», «No hay rosa sin espinas» y «Donde menos se piensa, salta la liebre»). Ninguno estaba usado en otro tema; habría que avisar al 3.B.8, que se revisa en paralelo.
+- **Contradicciones con otros temas** (no se han tocado):
+  - el 3.B.7 y el 3.B.8 (Word) desarrollan la curva de indiferencia comercial «añadiéndola al 3.B.5»: al revisarlos, que resuman y remitan aquí;
+  - el 3.B.9 (Word) enuncia Rybczynski sin «a precios constantes» y sin el efecto magnificación;
+  - el 3.A.21 tiene X intensivo en trabajo en sus gráficos y este tema, en capital: los pies lo dicen;
+  - el 3.B.12 (Word) remite aquí por Marshall-Lerner: debería ser solo por la versión de estabilidad de las curvas de oferta;
+  - el 3.A.3 llama a las curvas de Marshall «de oferta recíproca»: aquí se dice «oferta neta (u oferta recíproca)»;
+  - el 3.B.6 y el 3.B.10 son coherentes con lo escrito (sus remisiones a la RRI, a Stolper-Samuelson y a Mundell tienen contenido aquí).
+
+## 7. Dudas abiertas
+
+1. **D1-D5 (estructura)**, aplicadas con la opción recomendada:
+   - D1: 3 apartados en lugar de los 2 del original;
+   - D2: factores específicos como III.1, antes del H-O-S;
+   - D3: el enganche del aceite (punto 2);
+   - D4: X intensivo en capital, como el original, con los gráficos del 3.A.21 intercambiados;
+   - D5: el anexo de Keynes y Ohlin se queda aquí.
+   ¿Las da por buenas?
+2. **Enganche sin cifra del aceite de oliva**: no se ha encontrado en una fuente oficial comprobada la cuota de España en las exportaciones mundiales de aceite de oliva. Se usan 2 datos oficiales comprobados:
+   - la ventaja comparativa revelada de los aceites y grasas (sección 4 de la CUCI) en 2024, 3,65 (UN Comtrade, elaboración propia);
+   - el déficit energético de 2025 (−29.292 M€).
+   No se dice que España sea «el primer productor y exportador mundial». Si quiere la cuota del aceite de oliva, haría falta el dato del Consejo Oleícola Internacional o de DataComex (capítulo 1509 del SA).
+3. **«Hecksher» en el título oficial**: `\tcetema` copia literalmente el título de `temario.json`, con la errata; en el texto siempre se escribe Heckscher. ¿Se corrige en `temario.json`?
+4. **Mill, 1848 frente a 1909**: este tema cita los *Principles* con `Mill1848Principles` (libro III, cap. XVIII), como pide coherencia; el 3.A.2 usa también `Mill1909Principles` (la edición de Ashley) para citas con página. Son la misma obra. ¿Se unifica en el canon?
+5. **Bibliografía sin comprobar en Crossref**: Crossref cortó por exceso de peticiones (error 429). Quedan con los datos de contenido Edgeworth (1894), Lerner (1952), Vanek (1963), Travis (1964), Leontief (1964), Ethier (1984), Davis (1995), Leamer (1995), Wood (1994), Goldberg y Pavcnik (2007), Keynes (1929, réplica), Samuelson (1954) y Leontief (1936). De Grossman y Levinsohn (1989) Crossref solo devuelve el NBER WP de 1987. Ya estaban sin segunda comprobación en datos: Haberler (1930), DFS (1977), Keesing (1966), Baldwin (1971), Jones (1971) y Costinot, Donaldson y Komunjer (2012).
+6. **Datos con formulación prudente**:
+   - Magee: «19 de 21» y «2 de 21», con una sola fuente secundaria; el capítulo de 1980 no se ha leído.
+   - Kreinin: «como mucho un 25 %», y no el «20-25 %» del original.
+   - Balassa: datos de 1950-1951, con una sola fuente.
+   - Samuelson (1969): sin página («creérsela» en lugar de «comprenderla»).
+   - El 30 % de Leontief sale de un cuadro reproducido en fuentes secundarias.
+   - Bernhofen y Brown (2005): «no más de un 8-9 % del PIB», tomado del resumen del artículo.
+7. **Decisiones del editor**, por si quiere otra cosa:
+   - Rybczynski con un aumento de K (contenido y coordinador), no de L (coherencia K15);
+   - Stolper-Samuelson con la `\funcionclave` de la cadena de precios, y la de cantidades como ecuación normal, para no tener 2 funciones clave en el mismo bloque;
+   - DFS y EK como `\subparagraph` dentro de las extensiones de Ricardo;
+   - el gráfico del mercado de factores (propuesta C32) no se usa en el tema, para no pasar de ~32 páginas (ver el punto 8);
+   - la caja de Rybczynski, el plano de los bienes, el diagrama de Samuelson-Johnson, la reversión y los coeficientes fijos van a los anexos (no se dibujan en la pizarra);
+   - en la estructura y el esquema se ha escrito «Pensamiento neoclásico» sin «(I)» ni «(II)», porque `verificar-tema.py` lo toma por una remisión a mano.
+8. **Control de calidad (05/11/2026)**, para que decida:
+   - `graficos/mercado-factores` (propuesta C32) está dibujado y compilado, pero el `.tex` no lo usa. Recomendado: no incluirlo (repite lo que muestran las curvas de coste unitario y alargaría el tema). ¿Se queda fuera, o lo incluimos en el anexo de Rybczynski y Jones?
+   - Magee (1980) es Stephen P. Magee y Magee, Davidson y Matusz (2005) es Christopher S. P. Magee: son autores distintos, así que las citas salen con iniciales («S. P. Magee», «C. S. P. Magee»). Es correcto; si prefiere evitarlo, habría que citar el de 2005 sin `\textcite` del apellido junto al de 1980.
+
+## 8. Instrucciones para el vídeo
+
+(Aún no hay guion ni escenas: entrega 3.)
+
+- **Enganche e idea final**: «Lo que abunda no daña», con los aceites de España (pesan 3 veces y media más en sus exportaciones que en las del mundo) y la energía que importa. La pregunta es por qué comercian los países, qué intercambian, a qué precio y quién gana. La idea final retoma el refrán: no daña al país, pero sí al dueño del factor escaso. Introducción y conclusión, sin pizarra.
+- **Gráfico conjunto por partes**: la tabla `tab:modelos` (4 preguntas × 4 modelos).
+  - Se dibuja vacía en una esquina al empezar el I y se rellena una fila al terminar Ricardo, Haberler y la RRI, los factores específicos y el H-O-S.
+  - Se queda todo el cante y en la conclusión se señala, sin escribirla otra vez.
+  - Cada pegatina se apunta junto a su fila: Mill, factores específicos, igualación, Stolper-Samuelson y Leontief.
+- **Funciones clave que se conservan**:
+  - `eq:ventaja-comparativa`, desde el I.2 hasta el final del II;
+  - `eq:mill`, durante el II;
+  - `eq:magnificacion`, desde Stolper-Samuelson hasta el final; la cadena de Rybczynski (`eq:magnificacion-ryb`) se escribe debajo de ella, porque son duales.
+- **Rejillas sugeridas**:
+  - I, «35|65»: la tabla de Smith y Ricardo (se tacha el 110 y se escribe el 90) a la izquierda, `ricardo-fpp` a la derecha;
+  - II, «50|50»: `haberler-comercio` a la izquierda; a la derecha, `ofertas-netas`, que se deriva del triángulo de al lado, y `ricardo-oferta-relativa` como boceto de 30″;
+  - III.1, «100»: `especificos`, con la subida de $p_Y$ como capa nueva y la cadena `eq:especificos-magnificacion` debajo;
+  - III.2, «45|55»: `costes-unitarios` y las cadenas a la izquierda, `teorema-ho` a la derecha.
+- **Gráficos de apoyo**, sin escribirlos: `dfs`, `meade`, `rybczynski-caja` y `rybczynski-fpp`. Los de los anexos (`frontera-mundial`, `cadena-ventaja`, `viner`, `especificos-ky`, `especificos-l`, `samuelson-johnson`, `reversion-intensidades`, `fpp-coeficientes-fijos`) y los 3 de datos, nunca a mano.
+- **De palabra**: Eaton-Kortum, la evidencia de Ricardo salvo MacDougall y Japón, Harrigan, Prebisch-Singer, la evidencia de los factores específicos salvo Magee, el HOV (solo «el comercio que falta» de Trefler) y las extensiones del H-O-S salvo HOV y Bernard-Redding-Schott.
+- **Nunca** se dice en voz alta el número de un tema.

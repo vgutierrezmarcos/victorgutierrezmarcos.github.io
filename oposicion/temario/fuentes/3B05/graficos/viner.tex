@@ -1,0 +1,50 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Diagrama de Viner con 5 bienes (1 a 5) y 4 países (A a D), a partir de
+% Gandolfo (2014), cap. 2: en cada columna, el coste del bien j en el país i
+% en moneda común, w^i a_j^i, en escala logarítmica (los salarios desplazan
+% cada escala entera). Cada bien lo produce el país en que está más bajo; el
+% bien 1 cuesta lo mismo en A y en B.
+\begin{tikzpicture}[tcee]
+  \def\col{1.0/A/0.81,2.6/B/0.19,4.2/C/0.19,5.8/D/0.81}
+  % 1: las escalas de los países
+  \capa{1}{%
+    \draw[->,thin,tceegris] (-0.35,0.2) -- node[sloped,above,etiqueta,black] {coste en moneda común, $w^i a_j^i$ (escala log.)} (-0.35,7.3);
+    \foreach \x/\p/\o in \col{%
+      \draw[eje] (\x,\o) -- (\x,7.2);
+      \node[above] at (\x,7.2) {país \p};
+      \draw (\x-0.08,\o) -- (\x+0.08,\o);
+      \node[etiqueta,left] at (\x-0.08,\o) {$O_\p$};
+    }
+  }
+  % 2: los bienes en cada escala
+  \capa{2}{%
+    \foreach \x/\lista in {1.0/{1.55/1,3.0/2,4.11/3,5.0/4,6.17/5},
+                           2.6/{1.55/1,3.11/2,3.47/3,5.0/4,6.42/5},
+                           4.2/{1.67/1,2.5/2,4.86/3,3.97/4,6.58/5},
+                           5.8/{2.33/1,3.94/2,6.42/3,3.33/4,5.72/5}}{%
+      \foreach \y/\j in \lista{%
+        \draw[curva1] (\x-0.1,\y) -- (\x+0.1,\y);
+        \node[etiqueta,right] at (\x+0.1,\y) {$\j$};
+      }
+    }
+  }
+  % 3: dónde es más barato cada bien y el patrón de comercio que resulta
+  \capa{3}{%
+    \foreach \x/\y in {1.0/1.55,2.6/1.55,4.2/2.5,2.6/3.47,5.8/3.33,5.8/5.72}{%
+      \node[circle,draw=tceerojo,very thick,inner sep=2.6pt] at (\x,\y) {};
+    }
+  }
+  \capa{3}{%
+    \draw (-1.3,-0.15) -- (6.6,-0.15);
+    \node[etiqueta,left] at (0.1,-0.55) {Exporta};
+    \node[etiqueta,left] at (0.1,-1.05) {Importa};
+    \foreach \x/\e/\i in {1.0/1/{2, 3, 4, 5},2.6/3/{2, 4, 5},4.2/2/{1, 3, 4, 5},5.8/{4, 5}/{1, 2, 3}}{%
+      \node[etiqueta] at (\x,-0.55) {\e};
+      \node[etiqueta] at (\x,-1.05) {\i};
+    }
+    \draw (-1.3,-1.35) -- (6.6,-1.35);
+  }
+\end{tikzpicture}
+\end{document}

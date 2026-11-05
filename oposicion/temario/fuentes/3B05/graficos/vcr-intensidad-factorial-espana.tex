@@ -1,0 +1,81 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Ventaja comparativa revelada (índice de Balassa) de España en 2024 por grupos
+% de intensidad factorial de la UNCTAD: cálculo propio con UN Comtrade (vcr) y
+% agregación de los índices de UNCTADstat (vcr_unctad); umbral VCR = 1.
+% Elaboración propia con datos de UN Comtrade y UNCTAD (2026); CSV en
+% ../datos/vcr-intensidad-factorial-espana.csv.
+% Paleta del bloque de comercio (comercio-sectores-espana, acr-en-vigor del
+% 3.B.10): UN Comtrade en azul marino (dicze), UNCTAD en azul claro (dicexterna).
+% Capas (CRITERIOS §7): barras → ejes y umbral → etiquetas y leyenda.
+\colorlet{vcrcomtrade}{dicze}
+\colorlet{vcrunctad}{dicexterna}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/vcr-intensidad-factorial-espana.csv}\vcr
+% Ejes desde la capa 2 y nombres de los grupos desde la 3 (antes, transparentes)
+\ifnum\tceepaso<2
+  \pgfplotsset{vcrejes/.style={axis line style={draw=none}, major tick style={draw=none},
+    xticklabel style={opacity=0}, xlabel style={opacity=0}, xmajorgrids=false}}
+\else
+  \pgfplotsset{vcrejes/.style={}}
+\fi
+\ifnum\tceepaso<3
+  \pgfplotsset{vcrnombres/.style={yticklabel style={opacity=0}}}
+\else
+  \pgfplotsset{vcrnombres/.style={}}
+\fi
+\pgfplotsset{vcrvalor/.style={nodes near coords, nodes near coords style={
+    font=\scriptsize, inner sep=1.5pt, /pgf/number format/use comma,
+    /pgf/number format/fixed, /pgf/number format/fixed zerofill,
+    /pgf/number format/precision=2}}}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=10cm, height=7.2cm,
+      xbar, bar width=7pt, y dir=reverse,
+      xmin=0, xmax=1.6, ymin=-0.6, ymax=4.6,
+      ytick={0,...,4}, yticklabels from table={\vcr}{grupo},
+      yticklabel style={font=\footnotesize, text width=3.6cm, align=right},
+      xtick={0,0.25,...,1.5}, xticklabel style={font=\footnotesize,
+        /pgf/number format/use comma, /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill, /pgf/number format/precision=2},
+      xlabel={Índice de Balassa (VCR)}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      y axis line style={draw=none}, ytick style={draw=none},
+      xmajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.2)}, anchor=north, draw=none,
+        font=\footnotesize, legend columns=2,
+        /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left, area legend,
+      dicapas, vcrejes, vcrnombres,
+    ]
+    % 1: barras de los 2 cálculos por grupo
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=vcrcomtrade, bar shift=4pt, forget plot]
+        table[x=vcr, y expr=\coordindex] {\vcr};
+      \addplot[on layer=dicbarras, dicbarra=vcrunctad, bar shift=-4pt, forget plot]
+        table[x=vcr_unctad, y expr=\coordindex] {\vcr};
+    }
+    % 2: eje vertical y umbral de ventaja VCR = 1
+    \capa{2}{\dicraya{(0,-0.6) (0,4.6)}}
+    \capa{2}{\dicraya[dicumbral, thick]{(1,-0.6) (1,4.6)}}
+    \capa{2}{\dicrotulo[font=\scriptsize, anchor=south, text=dicreferencia]{(1,-0.6)}{ventaja: VCR $>1$}}
+    % 3: valores (sin fondo), en una columna a la derecha de las barras para
+    % que el umbral no los cruce, y leyenda (con el fondo del gráfico)
+    \capa{3}{
+      \addplot[on layer=axis descriptions, only marks, mark=none, vcrvalor,
+        nodes near coords style={anchor=west, yshift=-1pt, text=vcrcomtrade},
+        point meta=explicit, forget plot]
+        table[x expr=1.52, y expr=\coordindex, meta=vcr] {\vcr};
+      \addplot[on layer=axis descriptions, only marks, mark=none, vcrvalor,
+        nodes near coords style={anchor=west, yshift=-9pt, text=vcrunctad!60!black},
+        point meta=explicit, forget plot]
+        table[x expr=1.52, y expr=\coordindex, meta=vcr_unctad] {\vcr};
+      \addlegendimage{dicbarra=vcrcomtrade}
+      \addlegendentry{UN Comtrade (cálculo propio)}
+      \addlegendimage{dicbarra=vcrunctad}
+      \addlegendentry{Índices de la UNCTAD}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

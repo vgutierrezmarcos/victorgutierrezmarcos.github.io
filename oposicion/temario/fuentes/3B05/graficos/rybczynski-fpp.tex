@@ -1,0 +1,33 @@
+% Teorema de Rybczynski en el plano de los bienes (aumento de K̄, X intensivo
+% en capital). FPP como cuartos de elipse X = a cos t, Y = b sin t:
+%   inicial a = 4, b = 3,5; ampliada a' = 5,5, b' = 3,6 (sesgo hacia X).
+% Tangencia con pendiente -1 (RRI dada): X = a^2/s, Y = b^2/s, s = sqrt(a^2 + b^2).
+%   E  = (3,0104; 2,3048), recta X + Y = 5,3151;
+%   E' = (4,6022; 1,9717), recta X + Y = 6,5739.
+% Recta de Rybczynski por E y E': pendiente -0,2093.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.1cm]
+  % 1: ejes
+  \capa{1}{\ejes{$X$}{$Y$}{6.8}{4.4}}
+  % 2: FPP inicial, recta de la RRI y tangencia E
+  \capa{2}{\draw[curva1] plot[domain=0:90,samples=60,smooth] ({4*cos(\x)},{3.5*sin(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,below] at (4,0) {$FPP_0$};}
+  \capa{2}{\draw[curva2] (1.8,3.5151) -- (4.5,0.8151);}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=north] at (4.5,0.8151) {$-p_X/p_Y$};}
+  \capa{2}{\node[punto,label={[etiqueta]above right:$E$}] (E) at (3.0104,2.3048) {};}
+  \capa{2}{\proyeccion{(E)}{$X_0$}{$Y_0$}}
+  % 3: FPP ampliada, sesgada hacia X
+  \capa{3}{\draw[curvanueva] plot[domain=0:90,samples=60,smooth] ({5.5*cos(\x)},{3.6*sin(\x)});}
+  \capa{3}{\node[etiqueta,text=tceerojo,below] at (5.5,0) {$FPP_1$};}
+  % 4: recta paralela tangente en E' y sus proyecciones
+  \capa{4}{\draw[curva2,desplazada] (3.1,3.4739) -- (6.2,0.3739);}
+  \capa{4}{\node[punto,label={[etiqueta]below left:$E'$}] (E2) at (4.6022,1.9717) {};}
+  \capa{4}{\proyeccion{(E2)}{$X_1$}{$Y_1$}}
+  % 5: recta de Rybczynski por E y E'
+  \capa{5}{\draw[curva4] (1.6,2.6000) -- (6.4,1.5954);}
+  \capa{5}{\node[etiqueta,text=tceedorado,anchor=south east,align=right] at (6.5,1.85) {recta de\\Rybczynski};}
+\end{tikzpicture}
+\end{document}

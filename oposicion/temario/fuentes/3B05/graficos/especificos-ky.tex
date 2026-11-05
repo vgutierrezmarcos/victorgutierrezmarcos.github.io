@@ -1,0 +1,52 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Diagrama de Mussa (misma base que especificos.tex). Aumenta K_Y: con una
+% función Cobb-Douglas, PMg_L^Y sube en la misma proporción para cada L_Y, así
+% que la curva de Y sube (aquí un 30 %); no se desplaza «a la izquierda».
+% El trabajo pasa a Y y el salario sube de w_0 = 2,36 a w_1 = 2,73.
+\begin{tikzpicture}[tcee]
+  \pgfmathsetmacro{\Lb}{8}
+  \pgfmathsetmacro{\xa}{(ln(5)-ln(4.2)+0.15*\Lb)/0.33}
+  \pgfmathsetmacro{\wa}{5*exp(-0.18*\xa)}
+  \pgfmathsetmacro{\xb}{(ln(5)-ln(4.2*1.3)+0.15*\Lb)/0.33}
+  \pgfmathsetmacro{\wb}{5*exp(-0.18*\xb)}
+  % 1: base L̄, orígenes y ejes del salario
+  \capa{1}{%
+    \draw[thick] (0,0) -- (\Lb,0);
+    \draw[eje] (0,0) -- (0,6.3) node[above] {$w$};
+    \draw[eje] (\Lb,0) -- (\Lb,6.3) node[above] {$w$};
+    \node[below left] at (0,0) {$O_X$};
+    \node[below right] at (\Lb,0) {$O_Y$};
+    \node[etiqueta,above right] at (0.05,0.05) {$L_X\rightarrow$};
+    \node[etiqueta,above left] at (\Lb-0.05,0.05) {$\leftarrow L_Y$};
+    \draw[<->,thin] (0,-1.75) -- node[below] {$\bar L = L_X+L_Y$} (\Lb,-1.75);
+  }
+  % 2: las 2 curvas iniciales y el equilibrio E
+  \capa{2}{\draw[curva1] plot[domain=0:\Lb,samples=60] (\x,{5*exp(-0.18*\x)});}
+  \capa{2}{\node[etiqueta,above right,tceemorado] at (0.45,4.6) {$p_X\cdot\mathrm{PMg}_L^X$};}
+  \capa{2}{\draw[curva2] plot[domain=0:\Lb,samples=60] (\x,{4.2*exp(-0.15*(\Lb-\x))});}
+  \capa{2}{\node[etiqueta,below right,tceeazul] at (0.05,1.2) {$p_Y\cdot\mathrm{PMg}_L^Y$};}
+  \capa{2}{\node[punto,label={[etiqueta]below:$E$}] (E) at (\xa,\wa) {};}
+  \capa{2}{\draw[guia] (0,\wa) node[left,black] {$w_0$} -- (\xa,\wa);}
+  \capa{2}{\draw[guia] (\xa,\wa) -- (\xa,0);}
+  \capa{2}{%
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt}] (0.03,-0.12) -- node[below=5pt] {$L_{X0}$} (\xa-0.03,-0.12);
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt}] (\xa+0.03,-0.12) -- node[below=5pt] {$L_{Y0}$} (\Lb-0.03,-0.12);
+  }
+  % 3: aumenta K_Y: la curva de Y sube
+  \capa{3}{\draw[curvanueva,desplazada] plot[domain=0:\Lb,samples=60] (\x,{1.3*4.2*exp(-0.15*(\Lb-\x))});}
+  \capa{3}{\node[etiqueta,left,tceerojo,align=right] at (\Lb-0.1,6.05) {aumenta $K_Y$:\\$p_Y\cdot\mathrm{PMg}_L^Y(K'_Y)$};}
+  \capa{3}{\draw[flecha] (7.3,{4.2*exp(-0.15*0.7)}) -- (7.3,{1.3*4.2*exp(-0.15*0.7)});}
+  \capa{3}{\draw[flecha] (2.0,{4.2*exp(-0.15*6)}) -- (2.0,{1.3*4.2*exp(-0.15*6)});}
+  % 4: nuevo equilibrio: sube w y el trabajo pasa de X a Y
+  \capa{4}{\node[punto,label={[etiqueta]above right:$E'$}] (E1) at (\xb,\wb) {};}
+  \capa{4}{\draw[guia] (0,\wb) node[left,black] {$w_1$} -- (\xb,\wb);}
+  \capa{4}{\draw[guia] (\xb,\wb) -- (\xb,0);}
+  \capa{4}{\draw[flecha] (\xa,0.55) -- (\xb,0.55);}
+  \capa{4}{%
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt},tceerojo] (0.03,-0.85) -- node[below=5pt] {$L_{X1}$} (\xb-0.03,-0.85);
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt},tceerojo] (\xb+0.03,-0.85) -- node[below=5pt] {$L_{Y1}$} (\Lb-0.03,-0.85);
+  }
+\end{tikzpicture}
+\end{document}

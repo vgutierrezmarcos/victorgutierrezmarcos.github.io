@@ -1,0 +1,104 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Comercio exterior de mercancías de España en 2025 por sectores económicos:
+% peso en las exportaciones y en las importaciones (panel izquierdo, %) y saldo
+% (panel derecho, miles de millones de euros), de mayor a menor peso en las
+% exportaciones. Ministerio de Economía, Comercio y Empresa, Informe mensual
+% de comercio exterior, diciembre de 2025 (datos provisionales); CSV en
+% ../datos/comercio-sectores-espana.csv.
+% Paleta del bloque de comercio (la de acr-en-vigor del 3.B.10): exportaciones
+% en azul marino (dicze), importaciones en dorado (otra gama), saldo en gris.
+% Capas (CRITERIOS §7): barras → ejes y línea del 0 → etiquetas y leyenda.
+\colorlet{comexp}{dicze}
+\colorlet{comimp}{tceedorado}
+\colorlet{comsaldo}{dicotro}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/comercio-sectores-espana.csv}\com
+\pgfplotstablesort[sort key=exp_pct,sort cmp=float >]\comord\com
+% Ejes desde la capa 2 y nombres de los sectores desde la 3 (antes, transparentes)
+\ifnum\tceepaso<2
+  \pgfplotsset{comejes/.style={axis line style={draw=none}, major tick style={draw=none},
+    xticklabel style={opacity=0}, xlabel style={opacity=0}, xmajorgrids=false}}
+\else
+  \pgfplotsset{comejes/.style={}}
+\fi
+\ifnum\tceepaso<3
+  \pgfplotsset{comnombres/.style={yticklabel style={opacity=0}, title style={opacity=0}}}
+\else
+  \pgfplotsset{comnombres/.style={}}
+\fi
+\pgfplotsset{comvalor/.style={nodes near coords, nodes near coords style={
+    font=\scriptsize, inner sep=1.5pt, /pgf/number format/use comma,
+    /pgf/number format/fixed, /pgf/number format/fixed zerofill,
+    /pgf/number format/precision=1}}}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      name=pct, width=8.6cm, height=10cm,
+      xbar, bar width=5pt, y dir=reverse,
+      xmin=0, xmax=27.5, ymin=-0.6, ymax=9.6,
+      ytick={0,...,9}, yticklabels from table={\comord}{sector},
+      yticklabel style={font=\footnotesize, text width=4.1cm, align=right},
+      xtick={0,5,...,25}, xticklabel style={font=\footnotesize},
+      xlabel={\% del total}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      y axis line style={draw=none}, ytick style={draw=none},
+      xmajorgrids, grid style={tceegris!25},
+      legend style={at={(0.97,0.03)}, anchor=south east, draw=none,
+        font=\footnotesize},
+      legend cell align=left, area legend,
+      title={\footnotesize Peso en el total (\%)},
+      dicapas, comejes, comnombres,
+    ]
+    % 1: barras de exportaciones e importaciones
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=comexp, bar shift=2.8pt, forget plot]
+        table[x=exp_pct, y expr=\coordindex] {\comord};
+      \addplot[on layer=dicbarras, dicbarra=comimp, bar shift=-2.8pt, forget plot]
+        table[x=imp_pct, y expr=\coordindex] {\comord};
+    }
+    % 2: eje vertical (línea del 0)
+    \capa{2}{\dicraya{(0,-0.6) (0,9.6)}}
+    % 3: valores (sin fondo) y leyenda (con el fondo del gráfico)
+    \capa{3}{
+      \addplot[on layer=axis descriptions, xbar, draw=none, fill=none, bar shift=2.8pt,
+        comvalor, nodes near coords style={text=comexp}, forget plot]
+        table[x=exp_pct, y expr=\coordindex] {\comord};
+      \addplot[on layer=axis descriptions, xbar, draw=none, fill=none, bar shift=-2.8pt,
+        comvalor, nodes near coords style={text=comimp!70!black}, forget plot]
+        table[x=imp_pct, y expr=\coordindex] {\comord};
+      \addlegendimage{dicbarra=comexp}
+      \addlegendentry{Exportaciones}
+      \addlegendimage{dicbarra=comimp}
+      \addlegendentry{Importaciones}
+    }
+  \end{axis}
+  \begin{axis}[
+      name=sal, at={(pct.east)}, anchor=west, xshift=0.6cm, width=5.2cm, height=10cm,
+      xbar, bar width=7pt, y dir=reverse,
+      xmin=-40, xmax=30, ymin=-0.6, ymax=9.6,
+      ytick=\empty, xtick={-30,-15,0,15}, xticklabel style={font=\footnotesize},
+      xlabel={miles de millones de euros}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line=none, tick align=outside, clip=false,
+      xmajorgrids, grid style={tceegris!25},
+      title={\footnotesize Saldo},
+      dicapas, comejes, comnombres,
+    ]
+    % 1: barras del saldo
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=comsaldo, forget plot]
+        table[x expr=\thisrow{saldo_mill}/1000, y expr=\coordindex] {\comord};
+    }
+    % 2: línea del 0
+    \capa{2}{\dicraya{(0,-0.6) (0,9.6)}}
+    % 3: valores del saldo (a la derecha si es positivo, a la izquierda si es negativo)
+    \capa{3}{
+      \addplot[on layer=axis descriptions, xbar, draw=none, fill=none, bar width=7pt,
+        comvalor, nodes near coords style={text=black}, forget plot]
+        table[x expr=\thisrow{saldo_mill}/1000, y expr=\coordindex] {\comord};
+    }
+  \end{axis}
+  % caja del dibujo: los rótulos en capas no la amplían
+  \path (pct.outer south west) ($(sal.outer north east)+(0.4,0)$);
+\end{tikzpicture}
+\end{document}

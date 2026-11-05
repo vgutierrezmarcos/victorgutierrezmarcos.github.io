@@ -1,0 +1,27 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Cadena de ventaja comparativa con m bienes y 2 países (Gandolfo, 2014,
+% cap. 2): los bienes, ordenados de mayor a menor productividad relativa de A,
+% a_j^B/a_j^A. A produce el bien j si w^A a_j^A < w^B a_j^B, es decir, si
+% a_j^B/a_j^A > w^A/w^B: los bienes por encima del corte.
+\begin{tikzpicture}[tcee]
+  % 1: la escala con los bienes ordenados y sus productividades relativas
+  \capa{1}{%
+    \draw[eje] (0,0) -- (0,7.4) node[above] {$a_j^B/a_j^A$};
+    \foreach \y/\j in {6.5/1,5.7/2,4.9/3,3.6/k,2.4/k+1,0.9/m}{%
+      \draw[curva1] (-0.1,\y) -- (0.1,\y);
+      \node[etiqueta,left] at (-0.12,\y) {$a_{\j}^B/a_{\j}^A$};
+      \node[etiqueta,right] at (0.12,\y) {bien $\j$};
+    }
+    \node at (0.55,4.3) {$\vdots$};
+    \node at (0.55,1.75) {$\vdots$};
+  }
+  % 2: el corte en el salario relativo, que fija la demanda
+  \capa{2}{\draw[curvanueva] (-1.45,3.0) -- (1.6,3.0) node[etiqueta,right] {$w^A/w^B$};}
+  \capa{2}{\draw[<->,thick,tceerojo] (-1.75,2.35) -- node[etiqueta,left,align=right,black] {la demanda\\fija el corte} (-1.75,3.65);}
+  % 3: lo que produce y exporta cada país
+  \capa{3}{\draw[decorate,decoration={brace,amplitude=6pt}] (3.15,6.8) -- node[etiqueta,right=7pt,align=left] {A produce\\y exporta} (3.15,3.15);}
+  \capa{3}{\draw[decorate,decoration={brace,amplitude=6pt}] (3.15,2.85) -- node[etiqueta,right=7pt,align=left] {B produce\\y exporta} (3.15,0.6);}
+\end{tikzpicture}
+\end{document}

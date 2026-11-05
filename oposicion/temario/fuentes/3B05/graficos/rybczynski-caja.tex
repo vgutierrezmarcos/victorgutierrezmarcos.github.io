@@ -1,0 +1,47 @@
+% Teorema de Rybczynski en la caja de los factores con un aumento de K̄
+% (misma geometría que rybczynski.tex del 3.A.21, con X intensivo en capital).
+% L̄ = 6, K̄ = 4; O_X abajo a la izquierda, O_Y arriba a la derecha.
+% Intensidades fijas (precios de los bienes dados, mismo w/r):
+%   K_X/L_X = 1,2 (X intensivo en capital); K_Y/L_Y = 0,3.
+% P: 1,2 L_X + 0,3 (6 - L_X) = 4 -> L_X = 2,4444; K_X = 2,9333.
+% Aumenta K̄ a 5 (+25 %): 1,2 L_X + 0,3 (6 - L_X) = 5 -> P' = (3,5556; 4,2667):
+%   X sube un 45,5 % (más que K̄) y L_Y baja de 3,5556 a 2,4444 (Y cae un 31,3 %).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % 1: la caja L̄ × K̄ con O_X y O_Y y sus llaves
+  \capa{1}{
+    \draw[thick] (0,0) rectangle (6,4);
+    \node[below left,text=tceemorado] at (0,0) {$O_X$};
+    \node[above right,text=tceeverde] at (6,4) {$O_Y$};
+    \node[etiqueta] at (-0.3,3.7) {$K_X$};
+    \node[etiqueta] at (5.7,-0.25) {$L_X$};
+    \node[etiqueta] at (5.35,4.22) {$L_Y$};
+    \node[etiqueta] at (6.35,3.6) {$K_Y$};
+    \draw[llave] (6,-0.65) -- (0,-0.65) node[midway,below=5pt,text=black] {$\bar L$};
+    \draw[llave] (-0.75,0) -- (-0.75,4) node[midway,left=5pt,text=black] {$\bar K$};
+  }
+  % 2: rayo de X desde O_X (muy inclinado: X intensivo en capital)
+  \capa{2}{\draw[curva1] (0,0) -- (3.3333,4);}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=west] at (1.05,0.9) {pendiente $K_X/L_X$};}
+  % 3: rayo de Y desde O_Y (poco inclinado) y asignación de pleno empleo P
+  \capa{3}{\draw[curva3] (6,4) -- (1.2,2.56);}
+  \capa{3}{\node[etiqueta,text=tceeverde,anchor=north] at (4.7,3.45) {pendiente $K_Y/L_Y$};}
+  \capa{3}{\node[punto,label={[etiqueta]right:$P$}] (P) at (2.4444,2.9333) {};}
+  % 4: aumenta K̄: la caja crece hacia arriba y O_Y pasa a O_Y'
+  \capa{4}{\draw[curvanueva] (0,4) -- (0,5) -- (6,5) -- (6,4);}
+  \capa{4}{\node[above right,text=tceerojo] at (6,5) {$O_Y'$};}
+  \capa{4}{\draw[llave,tceerojo] (6.85,5) -- (6.85,4) node[midway,right=5pt,text=tceerojo] {$\Delta\bar K$};}
+  % 5: el rayo de X sigue en la caja nueva; rayo de Y desde O_Y' (paralelo) y nuevo corte P'
+  \capa{5}{\draw[curva1] (3.3333,4) -- (4.1667,5);}
+  \capa{5}{\draw[curvanueva,desplazada] (6,5) -- (2.9,4.07);}
+  \capa{5}{\node[punto,label={[etiqueta]above:$P'$}] (P2) at (3.5556,4.2667) {};}
+  % 6: X aumenta (P' más lejos de O_X) e Y disminuye (P' más cerca de O_Y')
+  \capa{6}{\draw[flecha] ($(P)+(-0.35,0.2)$) node[left,text=tceerojo] {$X\uparrow$}
+    -- ($(P2)+(-0.35,0.2)$);}
+  \capa{6}{\node[etiqueta,text=tceerojo] at (4.45,4.82) {$Y\downarrow$};}
+\end{tikzpicture}
+\end{document}

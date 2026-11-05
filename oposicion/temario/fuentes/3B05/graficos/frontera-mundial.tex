@@ -1,0 +1,36 @@
+% Frontera de posibilidades de producción mundial con 4 países ricardianos y
+% 2 bienes (Gandolfo, 2014, cap. 2). Cada país i aporta un tramo de anchura
+% L^i/a_X^i y altura L^i/a_Y^i, con pendiente a_X^i/a_Y^i; los tramos se
+% ordenan de menor a mayor coste comparativo de X (frontera cóncava):
+%   pendientes 0,3 < 0,7 < 1,4 < 3; anchuras 1,6; 1,3; 1,0; 0,6
+%   vértices: (0; 4,59), (1,6; 4,11), (2,9; 3,20), (3,9; 1,80), (4,5; 0)
+%   RRI = 0,5 (entre 0,3 y 0,7): toca la frontera solo en el vértice (1,6; 4,11):
+%     el país 1 produce solo X y los países 2 a 4 solo Y
+%   RRI' = 1,4: coincide con el tramo del país 3, que produce los 2 bienes
+% Elaboración propia a partir de Gandolfo (2014), cap. 2.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm]
+  % 1: ejes
+  \capa{1}{\ejes{$X$}{$Y$}{6.6}{5.6}}
+  % 2: la poligonal: un tramo por país, de menor a mayor pendiente
+  \coordinate (V0) at (0,4.59); \coordinate (V1) at (1.6,4.11);
+  \coordinate (V2) at (2.9,3.2); \coordinate (V3) at (3.9,1.8);
+  \coordinate (V4) at (4.5,0);
+  \capa{2}{\draw[guia] (V0) -| (V1); \draw[guia] (V1) -| (V2); \draw[guia] (V2) -| (V3); \draw[guia] (V3) -| (V4);}
+  \capa{2}{\draw[curva1] (V0) -- (V1) -- (V2) -- (V3) -- (V4);}
+  \capa{2}{\foreach \v in {V0,V1,V2,V3,V4} \node[punto,inner sep=1pt] at (\v) {};}
+  \capa{2}{\node[etiqueta,font=\footnotesize] at (1.07,4.43) {1};
+    \node[etiqueta,font=\footnotesize] at (2.47,3.81) {2};
+    \node[etiqueta,font=\footnotesize] at (3.57,2.73) {3};
+    \node[etiqueta,font=\footnotesize] at (4.3,1.2) {4};}
+  \capa{2}{\node[etiqueta,font=\footnotesize,align=left,anchor=south west] at (0.15,0.25) {pendiente del tramo del país $i$: $a_X^i/a_Y^i$,\\creciente hacia la derecha};}
+  % 3: RRI que toca la frontera en un vértice: todos especializados
+  \capa{3}{\draw[curva3,desplazada] (3.3,3.26) -- (0.2,4.81) node[etiqueta,above right,text=tceeverde,font=\footnotesize] {$\mathrm{RRI}=0{,}5$: todos especializados};}
+  \capa{3}{\node[punto] at (V1) {};}
+  % 4: RRI' que coincide con un tramo: ese país produce los 2 bienes
+  \capa{4}{\draw[curvanueva,desplazada] (2.62,3.59) -- (4.75,0.61) node[etiqueta,right,text=tceerojo,font=\footnotesize,align=left] {$\mathrm{RRI}'=1{,}4$: el país 3\\produce los 2 bienes};}
+\end{tikzpicture}
+\end{document}

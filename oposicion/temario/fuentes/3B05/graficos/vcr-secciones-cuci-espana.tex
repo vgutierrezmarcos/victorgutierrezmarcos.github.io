@@ -1,0 +1,68 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Ventaja comparativa revelada (índice de Balassa) de España en 2024 por
+% secciones de la CUCI (0 a 9), de mayor a menor; umbral VCR = 1.
+% Elaboración propia con datos de UN Comtrade (2026); CSV en
+% ../datos/vcr-secciones-cuci-espana.csv.
+% Paleta del bloque de comercio: la VCR calculada con UN Comtrade en azul
+% marino (dicze), como en vcr-intensidad-factorial-espana.
+% Capas (CRITERIOS §7): barras → ejes y umbral → etiquetas.
+\colorlet{vcrcomtrade}{dicze}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/vcr-secciones-cuci-espana.csv}\cuci
+\pgfplotstablesort[sort key=vcr,sort cmp=float >]\cuciord\cuci
+\pgfplotstablecreatecol[create col/assign/.code={%
+    \edef\entry{\thisrow{nombre} (\thisrow{seccion})}%
+    \pgfkeyslet{/pgfplots/table/create col/next content}\entry}]{rotulo}\cuciord
+% Ejes desde la capa 2 y nombres de las secciones desde la 3 (antes, transparentes)
+\ifnum\tceepaso<2
+  \pgfplotsset{cuciejes/.style={axis line style={draw=none}, major tick style={draw=none},
+    xticklabel style={opacity=0}, xlabel style={opacity=0}, xmajorgrids=false}}
+\else
+  \pgfplotsset{cuciejes/.style={}}
+\fi
+\ifnum\tceepaso<3
+  \pgfplotsset{cucinombres/.style={yticklabel style={opacity=0}}}
+\else
+  \pgfplotsset{cucinombres/.style={}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=10cm, height=8.5cm,
+      xbar, bar width=9pt, bar shift=0pt, y dir=reverse,
+      xmin=0, xmax=4.1, ymin=-0.6, ymax=9.6,
+      ytick={0,...,9}, yticklabels from table={\cuciord}{rotulo},
+      yticklabel style={font=\footnotesize},
+      xtick={0,0.5,...,4}, xticklabel style={font=\footnotesize,
+        /pgf/number format/use comma, /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill, /pgf/number format/precision=1},
+      xlabel={Índice de Balassa (VCR)}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      y axis line style={draw=none}, ytick style={draw=none},
+      xmajorgrids, grid style={tceegris!25},
+      dicapas, cuciejes, cucinombres,
+    ]
+    % 1: barras de la VCR por sección
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=vcrcomtrade, forget plot]
+        table[x=vcr, y expr=\coordindex] {\cuciord};
+    }
+    % 2: eje vertical y umbral de ventaja VCR = 1
+    \capa{2}{\dicraya{(0,-0.6) (0,9.6)}}
+    \capa{2}{\dicraya[dicumbral, thick]{(1,-0.6) (1,9.6)}}
+    \capa{2}{\dicrotulo[font=\scriptsize, anchor=south, text=dicreferencia]{(1,-0.6)}{ventaja: VCR $>1$}}
+    % 3: valores (sin fondo), al final de cada barra; las que acaban justo
+    %    antes del umbral (0,7 < VCR < 1) llevan el valor a la derecha de la recta
+    \capa{3}{
+      \addplot[on layer=axis descriptions, xbar, draw=none, fill=none, bar width=9pt,
+        point meta=explicit, nodes near coords, nodes near coords style={font=\scriptsize, inner sep=2pt, anchor=west,
+          text=vcrcomtrade, /pgf/number format/use comma, /pgf/number format/fixed,
+          /pgf/number format/fixed zerofill, /pgf/number format/precision=2},
+        forget plot]
+        table[x expr={and(\thisrow{vcr}>0.7,\thisrow{vcr}<1) ? 1.02 : \thisrow{vcr}},
+          y expr=\coordindex, meta=vcr] {\cuciord};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,31 @@
+% FPP con coeficientes fijos (Heckscher y Ohlin, tipo Leontief).
+% Restricción del trabajo: a_LX X + a_LY Y <= L̄, de (0; 4) a (6; 0).
+% Restricción del capital: a_KX X + a_KY Y <= K̄, de (0; 6) a (4; 0)
+% (X intensivo en capital: con todo el capital se hace poco X).
+% Vértice de pleno empleo: X/6 + Y/4 = 1 y X/4 + Y/6 = 1 dan E = (2,4; 2,4).
+% FPP: poligonal (0; 4) -> E -> (4; 0). En el tramo de arriba sobra capital
+% (r = 0); en el de abajo sobra trabajo (w = 0).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm]
+  % 1: ejes
+  \capa{1}{\ejes{$X$}{$Y$}{7.8}{7}}
+  % 2: restricción del trabajo
+  \capa{2}{\draw[curva2] (0,4) -- (6,0);}
+  \capa{2}{\node[etiqueta,left] at (0,4) {$\bar L/a_{LY}$};}
+  \capa{2}{\node[etiqueta,below] at (6,0) {$\bar L/a_{LX}$};}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south west] at (4.4,1.1) {$L$};}
+  % 3: restricción del capital
+  \capa{3}{\draw[curva3] (0,6) -- (4,0);}
+  \capa{3}{\node[etiqueta,left] at (0,6) {$\bar K/a_{KY}$};}
+  \capa{3}{\node[etiqueta,below] at (4,0) {$\bar K/a_{KX}$};}
+  \capa{3}{\node[etiqueta,text=tceeverde,anchor=south west] at (1.05,4.5) {$K$};}
+  % 4: FPP poligonal y vértice de pleno empleo
+  \capa{4}{\draw[curva1,line width=2.2pt] (0,4) -- (2.4,2.4) -- (4,0);}
+  \capa{4}{\node[punto,label={[etiqueta]above right:$E$}] (E) at (2.4,2.4) {};}
+  \capa{4}{\node[etiqueta,text=tceemorado,font=\footnotesize,anchor=north west,align=left] at (0.2,2.75) {sobra $K$\\$r=0$};}
+  \capa{4}{\node[etiqueta,text=tceemorado,font=\footnotesize,anchor=north east,align=right] at (2.9,1.0) {sobra $L$\\$w=0$};}
+\end{tikzpicture}
+\end{document}

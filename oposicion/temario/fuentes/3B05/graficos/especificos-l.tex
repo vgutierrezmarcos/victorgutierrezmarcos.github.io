@@ -1,0 +1,57 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Diagrama de Mussa (misma base que especificos.tex). Aumenta L̄ de 8 a 9,5:
+% O_Y pasa a O'_Y y la curva de Y se traslada 1,5 a la derecha con su origen.
+% Nuevo corte: w baja de 2,36 a 2,09; L_X sube de 4,17 a 4,85 y L_Y de 3,83
+% a 4,65 (más trabajo en los 2 sectores: suben r_X y r_Y).
+\begin{tikzpicture}[tcee]
+  \pgfmathsetmacro{\Lb}{8}
+  \pgfmathsetmacro{\Lc}{9.5}
+  \pgfmathsetmacro{\xa}{(ln(5)-ln(4.2)+0.15*\Lb)/0.33}
+  \pgfmathsetmacro{\wa}{5*exp(-0.18*\xa)}
+  \pgfmathsetmacro{\xb}{(ln(5)-ln(4.2)+0.15*\Lc)/0.33}
+  \pgfmathsetmacro{\wb}{5*exp(-0.18*\xb)}
+  % 1: base inicial L̄, orígenes y ejes del salario
+  \capa{1}{%
+    \draw[thick] (0,0) -- (\Lb,0);
+    \draw[eje] (0,0) -- (0,6.3) node[above] {$w$};
+    \draw[eje] (\Lb,0) -- (\Lb,6.3) node[above] {$w$};
+    \node[below left] at (0,0) {$O_X$};
+    \node[below right] at (\Lb,0) {$O_Y$};
+    \node[etiqueta,above right] at (0.05,0.05) {$L_X\rightarrow$};
+    \draw[<->,thin] (0,-1.75) -- node[below] {$\bar L$} (\Lb,-1.75);
+  }
+  % 2: las 2 curvas iniciales y el equilibrio E
+  \capa{2}{\draw[curva1] plot[domain=0:\Lc,samples=70] (\x,{5*exp(-0.18*\x)});}
+  \capa{2}{\node[etiqueta,above right,tceemorado] at (0.45,4.6) {$p_X\cdot\mathrm{PMg}_L^X$};}
+  \capa{2}{\draw[curva2] plot[domain=0:\Lb,samples=60] (\x,{4.2*exp(-0.15*(\Lb-\x))});}
+  \capa{2}{\node[etiqueta,anchor=south east,tceeazul] at (7.9,4.35) {$p_Y\cdot\mathrm{PMg}_L^Y$};}
+  \capa{2}{\node[punto,label={[etiqueta]above:$E$}] (E) at (\xa,\wa) {};}
+  \capa{2}{\draw[guia] (0,\wa) node[left,black] {$w_0$} -- (\xa,\wa);}
+  \capa{2}{\draw[guia] (\xa,\wa) -- (\xa,0);}
+  \capa{2}{%
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt}] (0.03,-0.12) -- node[below=5pt] {$L_{X0}$} (\xa-0.03,-0.12);
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt}] (\xa+0.03,-0.12) -- node[below=5pt] {$L_{Y0}$} (\Lb-0.03,-0.12);
+  }
+  % 3: base ampliada hasta O'_Y y curva de Y trasladada con su origen
+  \capa{3}{%
+    \draw[thick,tceerojo] (\Lb,0) -- (\Lc,0);
+    \draw[eje,tceerojo] (\Lc,0) -- (\Lc,6.3) node[above] {$w$};
+    \node[below right,tceerojo] at (\Lc,0) {$O'_Y$};
+    \node[etiqueta,above left] at (\Lc-0.05,0.05) {$\leftarrow L_Y$};
+    \draw[<->,thin,tceerojo] (0,-2.45) -- node[below] {$\bar L'$} (\Lc,-2.45);
+  }
+  \capa{3}{\draw[curvanueva,desplazada] plot[domain=0:\Lc,samples=70] (\x,{4.2*exp(-0.15*(\Lc-\x))});}
+  \capa{3}{\node[etiqueta,anchor=north west,tceerojo] at (6.0,2.45) {$p_Y\cdot\mathrm{PMg}_L^Y$};}
+  \capa{3}{\draw[flecha] ({\Lb-ln(1.5/4.2)/-0.15},1.5) -- ({\Lc-ln(1.5/4.2)/-0.15},1.5);}
+  % 4: nuevo equilibrio con w menor y más trabajo en los 2 sectores
+  \capa{4}{\node[punto,label={[etiqueta]above right:$E'$}] (E1) at (\xb,\wb) {};}
+  \capa{4}{\draw[guia] (0,\wb) node[left,black] {$w_1$} -- (\xb,\wb);}
+  \capa{4}{\draw[guia] (\xb,\wb) -- (\xb,0);}
+  \capa{4}{%
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt},tceerojo] (0.03,-0.85) -- node[below=5pt] {$L_{X1}$} (\xb-0.03,-0.85);
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt},tceerojo] (\xb+0.03,-0.85) -- node[below=5pt] {$L_{Y1}$} (\Lc-0.03,-0.85);
+  }
+\end{tikzpicture}
+\end{document}

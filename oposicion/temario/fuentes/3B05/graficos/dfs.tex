@@ -1,0 +1,37 @@
+% Dornbusch, Fischer y Samuelson (1977): continuo de bienes z en [0, 1].
+%   Oferta (eq:dfs-oferta): A(z) = a^B(z)/a^A(z), decreciente; cualitativa:
+%   A(z) = 3,6 e^{-1,9 z} + 0,15.
+%   Demanda (eq:dfs-demanda): B(z) = [θ(z)/(1-θ(z))] L^B/L^A, con θ(z) = z
+%   (Cobb-Douglas con el mismo peso por bien): B(z) = λ z/(1-z), λ = L^B/L^A.
+%   λ = 1: corte en z~ = 0,576, ω~ = 1,356.
+%   Aumenta L^A (λ = 0,55): B'(z) más baja; corte en z~' = 0,676, ω~' = 1,147.
+% Elaboración propia a partir de Dornbusch, Fischer y Samuelson (1977).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=7cm,y=1.5cm,
+    declare function={oa(\z)=3.6*exp(-1.9*\z)+0.15; db(\z)=\z/(1-\z); dbp(\z)=0.55*\z/(1-\z);}]
+  % 1: ejes, bienes ordenados de 0 a 1 y salario relativo; z = 1
+  \capa{1}{\ejes{$z$}{$\omega=w^A/w^B$}{1.12}{4.4}}
+  \capa{1}{\draw[guia,thick] (1,0) node[below,text=black] {$1$} -- (1,4.2);}
+  % 2: A(z), la productividad relativa de A, decreciente
+  \capa{2}{\draw[curva1] plot[domain=0.02:1,samples=80] (\x,{oa(\x)}) node[etiqueta,right,text=tceemorado] {$A(z)=\dfrac{a^B(z)}{a^A(z)}$};}
+  % 3: B(z), el equilibrio de la balanza, creciente, con asíntota en z = 1
+  \capa{3}{\draw[curva2] plot[domain=0:0.808,samples=80] (\x,{db(\x)}) node[etiqueta,left,text=tceeazul] {$B(z)=\dfrac{\vartheta(z)}{1-\vartheta(z)}\,\dfrac{\overline L^B}{\overline L^A}$};}
+  % 4: equilibrio y patrón de especialización
+  \capa{4}{\node[punto] (E) at (0.5756,1.3561) {};}
+  \capa{4}{\node[etiqueta,above right] at (E) {$E$};}
+  \capa{4}{\draw[guia] (0,1.3561) node[left,text=black] {$\tilde\omega$} -| (0.5756,0) node[below,text=black] {$\tilde z$};}
+  \capa{4}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceemorado] (0,-0.42) -- (0.5756,-0.42) node[midway,below=4pt,etiqueta,font=\footnotesize,text=tceemorado] {A produce};}
+  \capa{4}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceeazul] (0.5756,-0.42) -- (1,-0.42) node[midway,below=4pt,etiqueta,font=\footnotesize,text=tceeazul] {B produce};}
+  % 5: aumenta la población de A: B(z) baja
+  \capa{5}{\draw[curvanueva,desplazada] plot[domain=0:0.88,samples=80] (\x,{dbp(\x)}) node[etiqueta,right,text=tceerojo] {$B'(z)$};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=east] at (0.735,3.1) {aumenta $\overline L^A$};}
+  \capa{5}{\draw[flecha] (0.745,2.95) -- (0.81,2.4);}
+  % 6: nuevo equilibrio: salario relativo menor y más bienes para A
+  \capa{6}{\node[punto,fill=tceerojo] (E2) at (0.6759,1.1468) {};}
+  \capa{6}{\node[etiqueta,below right,text=tceerojo] at (E2) {$E'$};}
+  \capa{6}{\draw[guia] (0,1.1468) node[left,text=tceerojo] {$\tilde\omega'$} -| (0.6759,0) node[below,text=tceerojo] {$\tilde z'$};}
+\end{tikzpicture}
+\end{document}
