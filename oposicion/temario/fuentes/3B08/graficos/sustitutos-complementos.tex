@@ -1,0 +1,37 @@
+% Sustitutos y complementos estratégicos: pendiente de las funciones de reacción.
+% Rehace la fig. 3.6 de Chevalier-Roignant y Trigeorgis (2011) (nota 23 del tema
+% original), para una nota al pie (se ve a 0,6 del ancho).
+% Copia del 3A19 con la notación del 3.B.8 (empresas A y B; B es el beneficio,
+% así que el equilibrio en precios es E).
+% Izquierda (cantidades): R_A: q_A = 2 - 0,4 q_B; R_B: q_B = 2 - 0,4 q_A;
+%   corte en q^C = 2/1,4 = 10/7.
+% Derecha (precios, producto diferenciado): R_A: p_A = 1 + 0,4 p_B;
+%   R_B: p_B = 1 + 0,4 p_A (pendiente menor que 1); corte en p^E = 1/0,6 = 5/3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \useasboundingbox (-0.75,-1.35) rectangle (10.4,4.1);
+  % ---------------- Izquierda: cantidades ----------------
+  % 1: ejes
+  \capa{1}{\ejes{$q_A$}{$q_B$}{4}{3.9}}
+  % 2: funciones de reacción decrecientes y su corte
+  \capa{2}{\draw[curva1] plot[domain=0:3.6] ({2-0.4*\x},\x) node[etiqueta,above] {$R_A(q_B)$};}
+  \capa{2}{\draw[curva2] plot[domain=0:3.6] (\x,{2-0.4*\x}) node[etiqueta,above right] {$R_B(q_A)$};}
+  \capa{2}{\node[punto,label={[etiqueta]above right:$C$}] (C) at ({10/7},{10/7}) {};}
+  \capa{2}{\proyeccion{(C)}{$q^C$}{$q^C$}}
+  \capa{2}{\node[etiqueta,align=center] at (2,-0.95) {sustitutos estratégicos (cantidades)};}
+  % ---------------- Derecha: precios ----------------
+  \begin{scope}[xshift=5.9cm]
+  % 3: ejes
+  \capa{3}{\ejes{$p_A$}{$p_B$}{4}{3.9}}
+  % 4: funciones de reacción crecientes y su corte
+  \capa{4}{\draw[curva1] plot[domain=0:3.6] ({1+0.4*\x},\x) node[etiqueta,above] {$R_A(p_B)$};}
+  \capa{4}{\draw[curva2] plot[domain=0:3.6] (\x,{1+0.4*\x}) node[etiqueta,above] {$R_B(p_A)$};}
+  \capa{4}{\node[punto,label={[etiqueta]above left:$E$}] (E) at ({5/3},{5/3}) {};}
+  \capa{4}{\proyeccion{(E)}{$p^E$}{$p^E$}}
+  \capa{4}{\node[etiqueta,align=center] at (2,-0.95) {complementos estratégicos (precios)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

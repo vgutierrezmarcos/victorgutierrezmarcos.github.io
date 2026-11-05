@@ -1,0 +1,48 @@
+% Eaton y Grossman (1986): competencia en precios en el tercer mercado; el
+% impuesto óptimo a la exportación. Rehace la imagen 4 del tema original
+% (image8.jpg). Parte de 3A19/graficos/bertrand-reaccion.tex (reacción en
+% precios, creciente) y de brander-spencer.tex (rótulos y capas).
+% Ejemplo lineal del anexo: q_i = 1 - p_i + gamma p_j, gamma = 1/2, c = 0.
+%   R_A: p_A = 1/2 + p_B/4 (empinada en el plano); R_B: p_B = 1/2 + p_A/4
+%   E_0 = (2/3; 2/3). Isobeneficio de A sin impuesto (B_A = p_A q_A = k):
+%   p_B = 2 (k/p_A - 1 + p_A), en U con el mínimo sobre R_A (p_A = raíz de k)
+%   por E_0: k = 4/9; tangente a R_B en E_1: k = 25/56 (pendiente 1/4)
+%   impuesto óptimo s_A = -5/56: R_A': p_A = 61/112 + p_B/4
+%   E_1 = (5/7; 19/28)
+% Zoom con el eje roto: el origen del dibujo es (p_A; p_B) = (0,58; 0,60) y las
+% escalas son distintas en los 2 ejes (27 y 40 cm por unidad) para que se vea
+% el desplazamiento; las tangencias y los cortes son exactos (u = p_A - 0,58,
+% v = p_B - 0,60).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=27cm,y=40cm,
+    declare function={iso(\k,\u)=2*(\k/(\u+0.58)-1+\u+0.58)-0.6;}]
+  \useasboundingbox (-0.035,-0.03) rectangle (0.335,0.2);
+  % 1: ejes (rotos: no empiezan en 0)
+  \capa{1}{\draw[eje] (0,0) -- (0.285,0) node[below left=2pt and 0pt] {$p_A$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,0.185) node[left] {$p_B$};}
+  \capa{1}{\draw[thick] (0.012,0) ++(-2pt,-4pt) -- ++(3pt,8pt) ++(0pt,-8pt) -- ++(3pt,8pt);}
+  \capa{1}{\draw[thick] (0,0.012) ++(-4pt,-3pt) -- ++(8pt,3pt) ++(-8pt,0pt) -- ++(8pt,3pt);}
+  % 2: función de reacción de la extranjera, R_B(p_A): creciente y plana
+  \capa{2}{\draw[curva2] (0,0.045) -- (0.27,{0.27/4+0.045}) node[etiqueta,right] {$R_B(p_A)$};}
+  % 3: función de reacción de la nacional, R_A(p_B): creciente y empinada
+  \capa{3}{\draw[curva1] (0.07,0) -- ({0.175/4+0.07},0.175) node[etiqueta,above left] {$R_A(p_B)$};}
+  % 4: equilibrio de Bertrand sin política
+  \capa{4}{\node[punto,label={[etiqueta]below right:$E_0$}] (E0) at ({2/3-0.58},{2/3-0.6}) {};}
+  \capa{4}{\proyeccion{(E0)}{$p_{A0}$}{$p_{B0}$}}
+  % 5: isobeneficio de A por E_0: U con el mínimo sobre R_A
+  \capa{5}{\draw[curva1,thin] plot[domain=0.008:0.25,samples=80] (\x,{iso(4/9,\x)}) node[etiqueta,below,text=tceemorado] {$B_A^0$};}
+  % 6: isobeneficio de A tangente a R_B en E_1 (más arriba, más beneficio)
+  \capa{6}{\draw[curva1,thin] plot[domain=0.008:0.25,samples=80] (\x,{iso(25/56,\x)}) node[etiqueta,right,text=tceemorado] {$B_A^1$};}
+  \capa{6}{\draw[->,thin,tceemorado] (0.03,0.115) -- (0.03,0.145) node[etiqueta,right,midway,text=tceemorado] {más $B_A$};}
+  % 7: el impuesto desplaza R_A hacia la derecha
+  \capa{7}{\draw[curvanueva] ({5/112+0.07},0) -- ({0.175/4+5/112+0.07},0.175) node[etiqueta,above right,text=tceerojo] {$R_A(p_B;s_A)$};}
+  \capa{7}{\draw[flecha] ({0.155/4+0.07},0.155) -- ({0.155/4+5/112+0.07},0.155) node[etiqueta,below right,text=tceerojo] {impuesto, $s_A<0$};}
+  % 8: nuevo equilibrio E_1
+  \capa{8}{\node[punto,label={[etiqueta]below right:$E_1$}] (E1) at ({5/7-0.58},{19/28-0.6}) {};}
+  \capa{8}{\proyeccion{(E1)}{$p_{A1}$}{$p_{B1}$}}
+  \capa{8}{\draw[flecha,shorten <=3pt,shorten >=3pt] (E0) -- (E1);}
+\end{tikzpicture}
+\end{document}
