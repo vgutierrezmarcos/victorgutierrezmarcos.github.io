@@ -149,7 +149,7 @@ const tercerEjercicioParteA = [
 const tercerEjercicioParteB = [
   { num: 1, titulo: 'La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero de la empresa.', disponible: true, file: '3B01.pdf' },
   { num: 2, titulo: 'La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital.', disponible: true, file: '3B02.html' },
-  { num: 3, titulo: 'La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital.', disponible: true, file: '3B03.pdf' },
+  { num: 3, titulo: 'La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital.', disponible: true, file: '3B03.html' },
   { num: 4, titulo: 'Análisis del crecimiento de la empresa. Métodos de valoración de empresas. Especial referencia a los procesos de fusión, adquisición y alianzas estratégicas.', disponible: true, file: '3B04.html' },
   { num: 5, titulo: 'Teoría del comercio internacional (I). La teoría ricardiana de la ventaja comparativa. Determinación de la relación real de intercambio. El modelo de factores específicos. El Modelo Hecksher-Ohlin-Samuelson (H-O-S); teoremas derivados del modelo y extensiones.', disponible: true, file: '3B05.html' },
   { num: 6, titulo: 'Teoría del comercio internacional (II). Nueva teoría del comercio internacional. Especial referencia a la competencia imperfecta, los rendimientos crecientes y la heterogeneidad empresarial.', disponible: true, file: '3B06.html' },

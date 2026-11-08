@@ -1,0 +1,40 @@
+% Factoring y confirming: los 3 agentes de cada operación y sus pasos, numerados.
+% Misma disposición en los 2 esquemas: la empresa abajo a la izquierda, su
+% cliente o proveedor abajo a la derecha y la entidad financiera arriba.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    agente/.style={draw=tceemorado,very thick,rounded corners=3pt,fill=tceesalvia,
+      align=center,minimum width=2.4cm,minimum height=9mm},
+    paso/.style={->,thick},
+    num/.style={circle,fill=tceemorado,text=white,font=\scriptsize\bfseries,inner sep=1.2pt,minimum size=4.2mm},
+    texto/.style={etiqueta,font=\footnotesize,align=center,text width=#1},
+    texto/.default=2.5cm]
+  % ---------------- Factoring
+  % 1: agentes
+  \capa{1}{\node[font=\bfseries] at (2.6,4.4) {\emph{Factoring}};}
+  \capa{1}{\node[agente] (Ef) at (0,0) {Empresa};}
+  \capa{1}{\node[agente] (Cf) at (5.2,0) {Cliente};}
+  \capa{1}{\node[agente] (Ff) at (2.6,3.3) {Entidad de\\[-2pt]\emph{factoring}};}
+  % 2: pasos
+  \capa{2}{\draw[paso] (Ef) -- node[num] {1} node[texto,below=5pt] {vende a crédito} (Cf);}
+  \capa{2}{\draw[paso] (Ef) to[bend left=18] node[num] {2} node[texto=2.2cm,above left=0pt and 4pt] {cede las facturas} (Ff);}
+  \capa{2}{\draw[paso] (Ff) to[bend left=18] node[num] {3} node[texto=2.3cm,below right=2pt and 2pt] {adelanta el importe, con descuento} (Ef);}
+  \capa{2}{\draw[paso] (Cf) -- node[num] {4} node[texto=2.2cm,above right=0pt and 4pt] {paga al vencimiento} (Ff);}
+  % ---------------- Confirming
+  \begin{scope}[xshift=10cm]
+  % 3: agentes
+  \capa{3}{\node[font=\bfseries] at (2.6,4.4) {\emph{Confirming}};}
+  \capa{3}{\node[agente] (Ec) at (0,0) {Empresa};}
+  \capa{3}{\node[agente] (Pc) at (5.2,0) {Proveedor};}
+  \capa{3}{\node[agente] (Bc) at (2.6,3.3) {Banco};}
+  % 4: pasos
+  \capa{4}{\draw[paso] (Pc) -- node[num] {1} node[texto,below=5pt] {vende a crédito} (Ec);}
+  \capa{4}{\draw[paso] (Ec) to[bend left=18] node[num] {2} node[texto=2.2cm,above left=0pt and 4pt] {envía las facturas aprobadas} (Bc);}
+  \capa{4}{\draw[paso] (Bc) -- node[num] {3} node[texto=2.2cm,above right=0pt and 4pt] {ofrece el cobro anticipado, con descuento} (Pc);}
+  \capa{4}{\draw[paso] (Ec) to[bend right=18] node[num] {4} node[texto=2.3cm,below right=0pt and 0pt] {paga al vencimiento} (Bc);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

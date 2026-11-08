@@ -1,0 +1,323 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Decisión de financiación]{3.B.3}{La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital.}
+\tcefecha{08/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «no hay que matar la gallina…»}{2,5}
+\apartadocante{I. Aproximación contable: fuentes}{6,5}
+\subcante{1. Clasificación}{2}
+\subcante{2. Autofinanciación}{1,5}
+\subcante{3. Financiación externa}{3}
+\subcante{\hspace*{0.8em}Acciones, deuda e híbridos}{1,5}
+\subcante{\hspace*{0.8em}Banco frente a mercado}{1,5}
+\apartadocante{II. Aproximación financiera: estructura óptima}{13,5}
+\subcante{1. ¿Qué es la estructura financiera?}{1}
+\subcante{2. El coste de capital}{1}
+\subcante{3. La estructura óptima}{11,5}
+\subcante{\hspace*{0.8em}Tesis tradicional}{1}
+\subcante{\hspace*{0.8em}\autor{Modigliani}-\autor{Miller} sin impuestos}{4}
+\subcante{\hspace*{0.8em}Impuestos (1963, 1977)}{2}
+\subcante{\hspace*{0.8em}Teoría del equilibrio}{1,5}
+\subcante{\hspace*{0.8em}Agencia y jerarquía financiera}{2,5}
+\subcante{\hspace*{0.8em}Factores en la práctica}{0,5}
+\apartadocante{III. Política de dividendos}{6,5}
+\subcante{1. ¿Qué hacer con los beneficios?}{1}
+\subcante{2. ¿Por qué se pagan dividendos?}{2,5}
+\subcante{3. ¿Afectan al valor de las acciones?}{3}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: izq., funciones clave ($V=V_E+V_D$, MM, equilibrio); dcha., \emph{nuestra empresa} (600 FP + 400 deuda al 5\,\%; EBIT 100; $r_A=10$\,\%). I: matriz de fuentes. II: coste del capital por capas (a-d) y valor frente a deuda (\emph{imprescindibles}); escalera de la jerarquía. III: \autor{Walter}. Pegatinas: «los mismos perros con distinto collar» (irrelevancia), «ni tanto que queme al santo, ni tanto que no lo alumbre» (equilibrio), «la ocasión hace al ladrón» (FCL), «la ropa sucia se lava en casa» (jerarquía), «despacito y buena letra» (\autor{Lintner}).
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «No hay que matar la gallina de los huevos de oro»: cuántos huevos se reparten y con qué se alimenta a la gallina (lo de casa, los socios o lo prestado). Telefónica (4/11/2025): dividendo de \dato{0,30 a 0,15 €}{plan 2026-2030} $\Rightarrow$ acción \dato{$-$13\,\%}{peor sesión desde marzo de 2020} (también rebajó previsiones de caja). ¿Se equivocó el mercado? ¿Importa cómo se financia y cuánto reparte, o el valor depende solo de los activos?
+\item \textbf{Relevancia}: \emph{micro}: VAN $>0$ \vertema{3.B.2}, crecimiento \vertema{3.B.4}, insolvencia, control. \emph{Macro}: ahorro $\to$ inversión \vertema{3.A.34}; la deuda amplifica el ciclo y la transmisión monetaria \vertema{3.A.37}; deuda SNF España \dato{119,6\,\% del PIB (2010) $\to$ 61,9\,\% (2026); zona del euro 66,1\,\%}{BCE}. \emph{Política}: valores de renta fija sobre la deuda empresarial \dato{14\,\% España, 18\,\% zona del euro, 59\,\% EE.\,UU.}{BCE; Fed}: Unión de Ahorros e Inversiones \vertema{3.B.44}; sesgo fiscal a la deuda \vertema{4.B.10}.
+\item \textbf{Contextualización}: micro, la empresa maximiza beneficios \vertema{3.A.12}; finanzas, conjunto de decisiones de inversión y financiación; \autor{Friedman} (1970) $\to$ \concepto{maximizar el valor para el accionista} (\autor{Jensen}, 2001): rentabilidad, solvencia y liquidez. 3 decisiones: inversión \vertema{3.B.2}, \emph{financiación} y dimensión \vertema{3.B.4}. \concepto{Decisión de financiación}: de qué fuentes y en qué proporción obtener los fondos y cómo remunerar a quien los aporta. \concepto{Estructura del capital}: proporción de una y otra, a valor de mercado. \concepto{Política de dividendos}: parte del beneficio que se reparte y forma. \emph{Historia}: tradicional (\autor{Durand}, 1952) $\to$ MM (1958, 1961) $\to$ desde los 70, impuestos, insolvencia, agencia e información \vertema{3.A.13}.
+\item \textbf{Problemática}: ¿cómo pueden financiarse y en qué difieren fondos propios y deuda? ¿Existe una estructura del capital que maximice el valor y de qué depende? ¿Cuánto repartir, y por qué se reparte aunque no haga falta?
+\item \textbf{Estructura}: del balance contable al valor de mercado: \hyperref[rep:I]{I}, aproximación contable (fuentes); \hyperref[rep:II]{II}, aproximación financiera (estructura óptima); \hyperref[rep:III]{III}, dividendos. La estructura va antes que los dividendos (al revés que el título): los dividendos son un corolario (mismo argumento de MM y mismas fricciones).
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{I. Aproximación contable: fuentes de financiación\label{rep:I}}
+\begin{ideaclave}
+La empresa se financia con lo que genera o con lo que le aportan, y en los 2 casos con fondos propios o con deuda. La diferencia esencial es la \emph{exigibilidad}: quién soporta el riesgo y quién manda.
+\end{ideaclave}
+
+\sub{I.1. Clasificación\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Según el origen} (¿de dónde salen?): \concepto{financiación interna} o autofinanciación (reservas, amortizaciones, provisiones) y \concepto{externa} (acciones, obligaciones, préstamos). \emph{Según la exigibilidad} (¿hay que devolverlos?): \concepto{propia} (patrimonio neto: capital y reservas) y \concepto{ajena} (pasivo exigible).
+\item Matriz: reservas = interna y propia; provisiones = interna y ajena; ampliación de capital = externa y propia; préstamos, obligaciones, proveedores, \emph{leasing} = externa y ajena. Las \emph{amortizaciones}, internas pero en ninguna columna: caja que se queda para reponer el activo.
+\end{itemize}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.37\linewidth}>{\raggedright\arraybackslash}p{0.37\linewidth}@{}}
+\toprule
+& \textbf{Propia} & \textbf{Ajena} \\
+\midrule
+Exigibilidad & No se devuelve & En los plazos pactados \\
+Remuneración & Residual, discrecional & Fija o pactada \\
+Prelación & Cobra la última & Antes que los socios \\
+Control & Voto en la junta & Sin voto, salvo cláusulas o impago \\
+Fiscalidad & Dividendo no deducible & Interés deducible (con límites) \\
+Riesgo & Amortigua pérdidas & Riesgo de insolvencia \\
+Coste & Más alto, $r_E$ & Más bajo, $r_D$ \\
+\bottomrule
+\end{tabular}
+\begin{itemize}
+\item España: IS general \dato{25\,\%}{LIS, art.~29}; gastos financieros netos deducibles hasta el \dato{30\,\% del beneficio operativo, salvo el primer millón}{art.~16} \vertema{4.B.10}.
+\end{itemize}
+
+\sub{I.2. Autofinanciación\label{rep:I.2}}
+\begin{itemize}
+\item \concepto{Autofinanciación}: recursos que genera la empresa y no salen de ella. \concepto{De enriquecimiento}: \emph{reservas} (beneficios no repartidos; $\uparrow$ patrimonio neto). \concepto{De mantenimiento}: \emph{amortizaciones} y \emph{provisiones} (evitan que $\downarrow$).
+\item Reservas: \emph{legal} (\dato{10\,\% del beneficio hasta el 20\,\% del capital}{LSC, art.~274}; protege a los acreedores), \emph{estatutarias} y \emph{voluntarias}.
+\item \emph{Efecto multiplicador}, con $V_D/V_E$ constante (valores contables):
+  \begin{formula}
+  \[\Delta(\text{recursos totales})=\Delta V_E+\Delta V_D=\Big(1+\frac{V_D}{V_E}\Big)\Delta V_E\]
+  \end{formula}
+  Nuestra empresa ($V_D/V_E=2/3$): 60 retenidos + 40 de deuda = 100.
+\item \concepto{Efecto \autor{Lohmann}-\autor{Ruchti}}: si las amortizaciones se reinvierten al dotarse, la capacidad \emph{de cada periodo} crece sin aportar un euro. 4 supuestos: sin obsolescencia, activos divisibles, sin inflación y amortización recuperada vía precios. 10 barcos $\to$ $\approx$18 a l/p; la capacidad \emph{total} no crece.
+\item \emph{Coste}: sin coste explícito, pero de \emph{oportunidad}: $r_E$ (retener = repartir y pedir que lo reaporten).
+\item \emph{Ventajas}: autonomía; sin costes de emisión ni de información; pymes. \emph{Inconvenientes}: lenta e insuficiente; cuesta $r_E>r_D$; tienta a invertir sin crear valor; menos dividendos.
+\end{itemize}
+
+\sub{I.3. Financiación externa\label{rep:I.3}}
+\begin{itemize}
+\item \concepto{Acciones}: partes alícuotas del capital; remuneración según resultados, sin vencimiento; derechos económicos (dividendo, suscripción preferente) y políticos (voto, información) \vertema{3.B.23}. Clases: a la par o con prima (nunca bajo el nominal); \emph{liberadas} (con cargo a reservas: no dan riqueza, base del \emph{scrip}); privilegiadas, sin voto, rescatables; en bolsa o capital riesgo \vertema{3.B.4}.
+\item \concepto{Obligaciones}: partes alícuotas de la deuda; acreedor, no socio: interés pase lo que pase, principal al vencimiento, sin voto, cobra antes \vertema{3.B.24}. \concepto{Préstamos}: un solo acreedor (banco); c/p tesorería, l/p activo no corriente.
+\item Otras: \emph{leasing} (100\,\% sin desembolso); \emph{factoring} (cede facturas de cobro) frente a \emph{confirming} (el banco paga a sus proveedores); \emph{crowdfunding}; eurobonos.
+\item \concepto{Híbridos}: deuda en la remuneración, acciones en el riesgo: preferentes, subordinada, perpetua, convertibles (opción $\Rightarrow$ menos interés) \vertema{3.B.25}. \emph{CoCos} (bancos): a acciones o pérdida de valor si el CET1 cae bajo un umbral $\geq$\dato{5,125\,\% de los APR}{CRR, art.~54} \vertema{3.B.27}.
+\item \emph{Banco frente a mercado} (diferencia de información): el banco es un \concepto{supervisor delegado} (\autor{Diamond}, 1984): selecciona y vigila; compensa a la empresa pequeña, joven u opaca y renegocia mejor. El mercado exige tamaño, información y calificación; da plazos largos. \concepto{Racionamiento del crédito} (\autor{Stiglitz}-\autor{Weiss}, 1981): un tipo más alto atrae a los más arriesgados \vertema{3.A.13}; pymes, las primeras sin crédito \vertema{4.A.8}.
+\item MARF \dato{$>$10.000 M€ de saldo vivo}{BME, 2025}; ICO, ENISA \vertema{4.A.20}.
+\item \emph{Recapitulación}: la deuda es más barata y no quita control, pero obliga; los fondos propios cuestan más, pero amortiguan. Para saber si una mezcla vale más: del valor en libros al de mercado.
+\end{itemize}
+
+% ==========================================================================
+\bloque[13,5]{II. Aproximación financiera: estructura óptima\label{rep:II}}
+\begin{ideaclave}
+Con mercados perfectos la estructura no importa: el valor lo crean los activos. Importa por las fricciones: los impuestos favorecen la deuda, la insolvencia y la agencia la frenan y la información asimétrica ordena las fuentes. Cada empresa tiene su zona razonable.
+\end{ideaclave}
+\emph{Notación}: $L=V_D/V$, \emph{peso} (0-1); $V_D/V_E$, \emph{ratio}; $V_U$/$V_L$, sin/con deuda.
+
+\sub{II.1. ¿Qué es la estructura financiera?\label{rep:II.1}}
+\begin{itemize}
+\item \concepto{Estructura del capital}: proporción entre las fuentes. El valor es el de los flujos descontados a la tasa que exigen los financiadores $\Rightarrow$ ¿alguna mezcla minimiza la tasa? A \emph{valores de mercado} (ROA $\to$ WACC, ROE $\to r_E$):
+  \funcionclave{V=V_E+V_D}
+\end{itemize}
+\begin{itemize}
+\item \concepto{Palanca financiera} (valores contables) \vertema{3.B.2}:
+  \begin{formula}
+  \[\mathrm{ROE}=\Big[\mathrm{ROA}+\frac{V_D}{V_E}(\mathrm{ROA}-r_D)\Big](1-t_{IS})\]
+  \end{formula}
+  $\uparrow$ ROE si $\mathrm{ROA}>r_D$ y siempre amplifica sus oscilaciones (\emph{riesgo financiero}). Nuestra empresa: ROA 10\,\%, deuda al 5\,\% $\Rightarrow$ ROE 13,3\,\% (antes de imp.); con ROA 4\,\%, ROE 3,3\,\%. Más ROE $\neq$ más valor.
+\end{itemize}
+
+\sub{II.2. El coste de capital\label{rep:II.2}}
+\begin{itemize}
+\item \concepto{Coste del capital}: rentabilidad que exigen los inversores dado el riesgo; tasa de descuento que fija el valor. $r_D$ menor (cobran antes); $r_E=r_f+\beta_E\lambda_M$ (CAPM) \vertema{3.B.23}; reservas, también $r_E$; activos $r_A=r_f+\beta_A\lambda_M$.
+\item \concepto{Coste medio ponderado del capital}, pesos de mercado, deuda tras impuestos:
+  \begin{formula}
+  \[\mathrm{WACC}=r_E(1-L)+r_D(1-t_{IS})L,\qquad L=\frac{V_D}{V}\]
+  \end{formula}
+  Sin impuestos, $=r_A$. Flujos dados $\Rightarrow$ máx. valor = mín. WACC. Pero $r_E$ sube con $L$: $\beta_E=\beta_A[1+(1-t_{IS})V_D/V_E]$ (\autor{Hamada}, 1972).
+\end{itemize}
+
+\sub{II.3. La estructura financiera óptima\label{rep:II.3}}
+\begin{itemize}
+\item \concepto{Estructura óptima}: la que minimiza el WACC y maximiza el valor. ¿Existe? Tradicional: sí; MM: no (mercados perfectos); modernas: sí, por fricciones.
+\end{itemize}
+\graficorepaso[\linewidth]{coste-capital}{Coste del capital frente a $V_D/V_E$: a) tradicional; b) MM 1958; c) MM 1963; d) equilibrio}
+
+\textbf{a) Tesis tradicional} (\autor{Durand}, 1952). Entre 2 extremos: \emph{resultado neto} ($r_E$, $r_D$ fijos $\Rightarrow$ 100\,\% deuda) y \emph{resultado de explotación} (WACC constante). Tradicional: $r_E$ crece convexa; $r_D$ constante y luego creciente; WACC en U con mínimo en $(V_D/V_E)^*$ (panel a). Inversión y financiación ligadas. Describe, no explica por qué el mercado pagaría más por cómo se reparten los flujos.
+
+\textbf{b) \autor{Modigliani}-\autor{Miller} (1958)}
+\begin{itemize}
+\item \emph{Idea}: el valor lo crea la decisión de \emph{inversión}; la financiación solo reparte los flujos. Propósito: aislar \emph{qué} hace importar la estructura.
+\item \emph{Supuestos}: mercados perfectos (sin impuestos, costes de transacción, emisión ni insolvencia; misma información); \emph{clases de riesgo}; \emph{mismo tipo para empresas e inversores} (crucial); inversores racionales con expectativas comunes (no hace falta nada sobre su aversión al riesgo).
+\item \concepto{Proposición I}: el valor no depende de la estructura (flujos a $r_A$). \concepto{Proposición II}: $r_E$ crece linealmente con $V_D/V_E$:
+  \funcionclave{V_L=V_U\qquad\text{y}\qquad r_E=r_A+(r_A-r_D)\frac{V_D}{V_E}}
+\item \concepto{Arbitraje} y \concepto{apalancamiento casero}: el inversor replica o deshace la deuda de la empresa por su cuenta $\Rightarrow$ no paga por ella. Ej.: $V_U=100/0{,}10=1.000$; L con 400 al 5\,\% deja 80. Si $V_E^L=700$ ($V_L=1.100$): vender 1\,\% de L (7), pedir 4 al 5\,\% y comprar 1\,\% de U (10): cobra $1-0{,}2=0{,}8$, igual, y le sobra 1 $\Rightarrow$ hasta $V_E^L=600$.
+\item Prop.~II con nuestra empresa: $r_E=10+5\cdot\tfrac{2}{3}=13{,}3$\,\%; $\mathrm{WACC}=0{,}6\cdot13{,}3+0{,}4\cdot5=10$\,\% $=r_A$. No contradice la I: sube $r_E$, no $V$.
+\item \emph{Deuda con riesgo}: $r_D\uparrow$, $r_E$ cóncava; WACC sigue plano (panel b, discontinuo).
+\item \emph{Implicaciones}: \emph{irrelevancia}; \emph{separación} (invertir si rinde más que $r_A$, sin mirar la financiación) \vertema{3.A.34}. Pizza de \autor{Miller}: más trozos no dan más pizza. «Los mismos perros con distinto collar».
+\end{itemize}
+
+\textbf{c) Impuestos}
+\begin{itemize}
+\item \emph{MM (1963)}: intereses deducibles $\Rightarrow$ \concepto{escudo fiscal} $t_{IS}r_DV_D$ al año, descontado a $r_D$ (deuda permanente):
+  \begin{formula}
+  \[V_L=V_U+t_{IS}V_D;\qquad \mathrm{WACC}=r_A(1-t_{IS}L)\]
+  \[r_E=r_A+(1-t_{IS})(r_A-r_D)\frac{V_D}{V_E}\]
+  \end{formula}
+  Nuestra empresa (25\,\%): $V_U=750$, $V_L=850$, WACC 8,8\,\% (panel c). Implicaría casi 100\,\% de deuda: no se observa.
+\item \emph{\autor{Miller} (1977)}: impuestos personales, $t_D$ (intereses) y $t_E$ (acciones); 1 € de EBIT deja $1-t_D$ como interés y $(1-t_{IS})(1-t_E)$ a los accionistas:
+  \begin{formula}
+  \[V_L=V_U+\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]V_D\]
+  \end{formula}
+  $t_E=t_D$: $t_{IS}V_D$; $t_D>t_E$: ventaja menor; $1-t_D=(1-t_{IS})(1-t_E)$: irrelevancia. Ventaja $\uparrow$ con $t_{IS}$ y $t_E$, $\downarrow$ con $t_D$. Equilibrio: el $t_D$ del inversor marginal anula la ventaja: óptimo agregado, no para cada empresa.
+\item España: intereses, dividendos y plusvalías en la base del ahorro, \dato{19-30\,\%}{LIRPF, arts.~66 y 76} $\Rightarrow t_D\simeq t_E$ (plusvalía diferida baja $t_E$). EE.\,UU.: $t_D>t_E$. Con $t_D=30$\,\%, $t_E=15$\,\%: ventaja $\approx$36 en vez de 100.
+\end{itemize}
+
+\textbf{d) Teoría del equilibrio (\emph{trade-off})} (\autor{Kraus}-\autor{Litzenberger}, 1973; \autor{Kim}, 1978)
+\begin{itemize}
+\item Escudo fiscal frente a \concepto{costes de insolvencia}: \emph{directos} (jueces, abogados, administradores) e \emph{indirectos}, mayores (clientes y proveedores que se van, inversiones perdidas, ventas con descuento):
+  \funcionclave{V_L=V_U+\mathrm{VA}(\text{ahorro fiscal})-\mathrm{VA}(\text{costes esp. de insolvencia})}
+  Máx. en $V_D^*$: escudo marginal = coste marginal esperado; WACC en U (panel d). Nuestra empresa con 800: $750+200-120=830<850$. «Ni tanto que queme al santo, ni tanto que no lo alumbre».
+\end{itemize}
+\graficorepaso[0.8\linewidth]{valor-tradeoff}{Valor frente a deuda: óptimo interior en $V_D^*$}
+\begin{itemize}
+\item \emph{Implicaciones}: más deuda con activos tangibles, beneficios estables y tipo efectivo alto; menos con intangibles, crecimiento o flujos volátiles; objetivo de endeudamiento.
+\item \emph{Evidencia}: costes directos \dato{$\approx$1\,\% del valor}{\autor{Warner}, 1977}; con indirectos \dato{10-20\,\%}{\autor{Andrade}-\autor{Kaplan}, 1998}; \dato{44\,\%}{\autor{Graham}-\autor{Harvey}, 2002} de los directores financieros, objetivo estricto o bastante estricto; emisores de grado especulativo \dato{24\,\% (1981) $\to$ 48\,\% (2024)}{S\&P}; solo 2 no financieras AAA (Microsoft, J\&J).
+\item \emph{Valoración}: explica las diferencias entre sectores, no que las más rentables tengan \emph{menos} deuda ni que las grandes podrían doblar su escudo (\autor{Graham}, 2000).
+\end{itemize}
+
+\textbf{e) Agencia} (\autor{Jensen}-\autor{Meckling}, 1976): la deuda corrige unos conflictos y crea otros.
+\begin{itemize}
+\item \emph{Accionistas-directivos: la deuda disciplina}. \concepto{Flujo de caja libre} (\autor{Jensen}, 1986): la deuda quita al directivo la caja ociosa. «La ocasión hace al ladrón». Caso extremo: LBO \vertema{3.B.4}.
+\item \emph{Accionistas-acreedores: la deuda tienta}. \concepto{Sustitución de activos} (\emph{risk shifting}): debe 100; seguro 110 (deja 10) frente a 160/20 (vale 90, pero deja 30 a los accionistas) $\Rightarrow$ eligen el que destruye valor. \concepto{Sobreendeudamiento} (\emph{debt overhang}, \autor{Myers}, 1977): debe 100, activos 80; proyecto de 10 que da 15 no se financia (todo para los acreedores) $\Rightarrow$ invierte de menos.
+\item \emph{Implicaciones}: deuda en maduras con caja; peligrosa con oportunidades de crecimiento; \emph{covenants}. \emph{Control}: con impago mandan los acreedores (\autor{Aghion}-\autor{Bolton}, 1992; \autor{Hart}-\autor{Moore}, 1994) \vertema{3.A.15}. \emph{Liquidez} (\autor{Holmström}-\autor{Tirole}, 1997, 2011): riesgo moral $\Rightarrow$ sin FP bastantes no hay crédito aunque VAN $>0$; guardar caja y líneas; sectores verificables, más deuda.
+\end{itemize}
+
+\textbf{f) Jerarquía financiera (\autor{Myers}-\autor{Majluf}, 1984)}
+\begin{itemize}
+\item \emph{Idea}: la dirección sabe más; emite acciones si están caras $\Rightarrow$ el mercado lee mala noticia: selección adversa de \autor{Akerlof} \vertema{3.A.13}. Orden observado por \autor{Donaldson} (1961).
+\item \emph{Modelo}: buenas ($a_{\mathrm A}$) y malas ($a_{\mathrm B}$), proporción $\nu$; el mercado paga $\bar a$; mismo proyecto $I_0$ con VAN $>0$ financiado con acciones. La buena regala valor; solo emite si
+  \begin{formula}
+  \[\mathrm{VAN}\geq I_0\,\frac{a_{\mathrm A}-\bar a}{\bar a+I_0+\mathrm{VAN}}\]
+  \end{formula}
+  Nuestra empresa: vale 1.200, el mercado dice 1.000; proyecto 200, VAN 20; cede el 16,4\,\% $\Rightarrow$ regalo $\approx$33 $>$ 20: no invierte. Con retenidos o deuda segura, sí (1.220).
+\item \emph{Implicaciones}: solo emiten las sobrevaloradas; cotización $\downarrow$ al anunciar; las buenas invierten de menos; \concepto{jerarquía financiera} (\emph{pecking order}, \autor{Myers}, 1984): retenidos $\to$ deuda $\to$ acciones. Sin endeudamiento óptimo; conviene la \emph{holgura financiera}. «La ropa sucia se lava en casa».
+\end{itemize}
+\graficorepaso[0.9\linewidth]{jerarquia}{Escalera de la oferta de fondos: $D_1$ se financia sola; $D_2$ llega a la deuda}
+\begin{itemize}
+\item \emph{Extensiones}: capacidad de endeudamiento (\autor{Leary}-\autor{Roberts}, 2010); \emph{deuda como señal} (\autor{Ross}, 1977; \autor{Leland}-\autor{Pyle}, 1977: predice \emph{más} deuda en las rentables); \emph{market timing} (\autor{Baker}-\autor{Wurgler}, 2002; \dato{62,6\,\%}{\autor{Graham}-\autor{Harvey}, 2001} lo tiene en cuenta).
+\item \emph{Evidencia}: ampliación $\Rightarrow$ cotización \dato{$\approx-$3\,\%}{\autor{Asquith}-\autor{Mullins}, 1986}; bonos, casi nada; \dato{67\,\%}{\autor{Graham}-\autor{Harvey}, 2001} mira si están infravaloradas; rentables, menos deuda (\autor{Fama}-\autor{French}, 2002); maduras siguen el déficit (\autor{Shyam-Sunder}-\autor{Myers}, 1999), pequeñas no; inversión y flujo de caja (\autor{Fazzari}-\autor{Hubbard}-\autor{Petersen}, 1988).
+\item \emph{Valoración}: explica rentables poco endeudadas y castigo a las ampliaciones; no que jóvenes tecnológicas emitan acciones. Teorías complementarias: equilibrio = zona; jerarquía = orden; agencia = cuándo disciplina.
+\item \emph{Acelerador financiero} (\autor{Bernanke}-\autor{Gertler}, 1989): en recesión $\downarrow$ riqueza neta, $\uparrow$ prima externa, $\downarrow\downarrow$ inversión \vertema{3.A.34} \vertema{3.A.37}.
+\end{itemize}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth}>{\centering\arraybackslash}p{0.14\linewidth}>{\centering\arraybackslash}p{0.14\linewidth}>{\centering\arraybackslash}p{0.14\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}@{}}
+\toprule
+Deuda si\ldots & Equil. & Jerarq. & Agencia & Datos \\
+\midrule
+$\uparrow$ rentabilidad & $\uparrow$ & $\downarrow$ & $\uparrow$ & $\downarrow$ \\
+$\uparrow$ crecimiento & $\downarrow$ & $\uparrow$ & $\downarrow$ & $\downarrow$ \\
+$\uparrow$ tangibles & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ \\
+¿Objetivo? & Sí & No & Sí & A medias \\
+\bottomrule
+\end{tabular}
+
+\textbf{g) Factores en la práctica}
+\begin{itemize}
+\item \emph{Datos}: más deuda con tangibilidad y tamaño; menos con rentabilidad y crecimiento (\autor{Rajan}-\autor{Zingales}, 1995); además, sector e inflación esperada (\autor{Frank}-\autor{Goyal}, 2009).
+\item \emph{Directores financieros}: \emph{flexibilidad} y \emph{calificación} antes que WACC; en 2019, flexibilidad \dato{87\,\%}{grandes de EE.\,UU.}, deducción de intereses \dato{24\,\%}{\autor{Graham}, 2022} (IS de EE.\,UU. del 35 al 21\,\%).
+\item \emph{Fase}: joven, fondos propios (capital riesgo); madura, deuda. \emph{Contexto}: sector, fiscalidad, tipos, ciclo, inflación, internacionalización.
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{III. Política de dividendos\label{rep:III}}
+\begin{ideaclave}
+Con mercados perfectos y la inversión dada, el dividendo no importa (MM, 1961). Importa por las mismas fricciones: impuestos (retener, recomprar), información (señal, suavizar) y agencia (disciplina).
+\end{ideaclave}
+
+\sub{III.1. ¿Qué hacer con los beneficios?\label{rep:III.1}}
+\begin{itemize}
+\item Retener (autofinanciación) o repartir: \emph{tasa de reparto} (\emph{payout}) $1-b$, $b$ = tasa de retención \vertema{3.B.23}.
+\item \concepto{Dividendos}: ordinarios o extraordinarios; a cuenta, flexible (\emph{scrip}: acciones o vender derechos), preferente. \concepto{Recompra}: equivale con mercados perfectos; más \emph{flexible} (no crea expectativa), cambia pesos y endeudamiento, tributa como plusvalía; autocartera de cotizadas $\leq$\dato{10\,\% del capital}{LSC, art.~509}.
+\item \emph{Hechos}: pagadoras en EE.\,UU. \dato{66,5\,\% (1978) $\to$ 20,8\,\% (1999)}{\autor{Fama}-\autor{French}, 2001}; S\&P~500, recompras \dato{1,02 billones de \$ frente a 665.000 M de dividendos}{12 meses a sept. 2025}; España \dato{$\approx$41.500 M€ de dividendos y 12.500 M€ de amortizaciones}{BME, 2025}.
+\end{itemize}
+
+\sub{III.2. ¿Por qué se pagan dividendos?\label{rep:III.2}}
+\begin{itemize}
+\item \concepto{Rompecabezas de los dividendos} (\autor{Black}, 1976): en EE.\,UU. tributaban más que las plusvalías (hasta 2003) y aun así se pagaban.
+\item \textbf{\autor{Lintner} (1956)}: 28 empresas: objetivo de reparto, ajuste gradual, casi nunca recortan. Con $c$ la velocidad de ajuste:
+  \begin{formula}
+  \[D_t-D_{t-1}=c\big[(1-b^{*})\mathrm{BPA}_t-D_{t-1}\big],\qquad 0<c\leq1\]
+  \end{formula}
+  «Despacito y buena letra». Se confirma (\autor{Brav} et al., 2005): prefieren ajustar recompras.
+\item \textbf{Señal}: el beneficio se maquilla (contabilidad creativa); la caja, no. Señal creíble \emph{porque cuesta} (\autor{Bhattacharya}, 1979; \autor{Miller}-\autor{Rock}, 1985) \vertema{3.A.13}; reacciona al \emph{cambio}, no al nivel.
+\item \textbf{Agencia}: quita caja al directivo (\autor{Jensen}, 1986) y obliga a volver al mercado, que vigila (\autor{Easterbrook}, 1984).
+\item \textbf{Impuestos y clientelas}: si el dividendo tributa más, retener o recomprar. \concepto{Efecto clientela} (MM, 1961): cada inversor elige su política; \autor{Elton}-\autor{Gruber} (1970); institucionales (\autor{Allen}-\autor{Bernardo}-\autor{Welch}, 2000). EE.\,UU. 2003, \dato{35\,\% $\to$ 15\,\%}{\autor{Chetty}-\autor{Saez}, 2005}: dividendos $\uparrow$ (Microsoft). España: misma escala del ahorro; entre sociedades ($\geq$5\,\%) casi exento (LIS, art.~21) \vertema{4.B.12}. \emph{Catering} (\autor{Baker}-\autor{Wurgler}, 2004).
+\item \textbf{Conductual}: cuentas mentales (\autor{Shefrin}-\autor{Statman}, 1984) \vertema{3.B.23}.
+\end{itemize}
+
+\sub{III.3. ¿Afectan al valor de las acciones?\label{rep:III.3}}
+\begin{itemize}
+\item \textbf{No: \autor{Miller}-\autor{Modigliani} (1961)}: mercados perfectos e \emph{inversión dada}. $r=(D_1+P_1-P_0)/P_0$: lo que se reparte de más en $D_1$ se pierde en $P_1$; si emite para invertir lo mismo, los antiguos tienen menos parte. \emph{Dividendo casero}: vender o comprar acciones. Otra vez «los mismos perros con distinto collar».
+\item \textbf{Sí, en contra: impuestos} (\autor{Brennan}, 1970): repartir poco y recomprar. Evidencia mixta (\autor{Black}-\autor{Scholes}, 1974; \autor{Miller}-\autor{Scholes}, 1978); en España, con la misma escala, pierde fuerza.
+\item \textbf{Depende: \autor{Walter} (1956, 1963)}: solo autofinanciación; $g=b\cdot\mathrm{ROE}$; \autor{Gordon}-\autor{Shapiro} (1956) \vertema{3.B.4}:
+  \funcionclave{P_0=\frac{(1-b)\mathrm{BPA}_1}{r_E-b\cdot\mathrm{ROE}},\quad \frac{\partial P_0}{\partial b}\gtrless0\iff\mathrm{ROE}\gtrless r_E}
+  $\mathrm{ROE}>r_E$: retener; $=$: da igual; $<$: repartirlo todo. Nuestra empresa (BPA 10, $r_E=10$\,\%, $b=0{,}4$): 115,4 (12\,\%), 100 (10\,\%), 88,2 (8\,\%). No contradice MM: no puede financiarse fuera; lo que crea valor es la inversión.
+\end{itemize}
+\graficorepaso[0.75\linewidth]{walter}{\autor{Walter}: $P_0$ frente a $b$ según $\mathrm{ROE}\gtrless r_E$}
+\begin{itemize}
+\item \textbf{Sí, a favor: «pájaro en mano»} (\autor{Gordon}, 1959, 1963; \autor{Lintner}, 1962): $r_E$ crece con $b$. \emph{Falacia del pájaro en mano} (MM, 1961; \autor{Bhattacharya}, 1979): el riesgo lo fijan los flujos, no cuándo se reparten.
+\item \emph{Recapitulación}: Telefónica no destruyó valor con el recorte: el mercado leyó una señal sobre beneficios futuros y sobre lo que rendiría lo retenido.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: fondos propios o deuda, dentro o fuera; con mercados perfectos ni la mezcla ni el dividendo cambian el valor. Importan impuestos (a favor de la deuda), insolvencia (la frena), información y agencia (orden, señal, disciplina).
+\item \textbf{Relevancia}: tipos bajos abaratan la deuda pero amplifican el ciclo \vertema{3.A.37}; sesgo fiscal \vertema{4.B.10}; UAI \vertema{3.B.44}; dividendos bancarios \vertema{3.B.27}. España: la mitad de deuda/PIB que en 2010, pero dependiente del banco.
+\item \textbf{Extensiones}: \vertema{3.B.2} \vertema{3.B.4} \vertema{3.A.13} \vertema{3.A.15} \vertema{3.A.34}.
+\item \textbf{Opinión}: importa menos lo que ahorra en impuestos que lo que cuesta equivocarse: la flexibilidad es un seguro. Neutralizar el trato fiscal de deuda y FP y abrir el mercado a las pymes.
+\item \textbf{Idea final}: la gallina se alimenta primero con lo de casa, se endeuda mientras el ahorro fiscal compense la quiebra y solo conviene dejarle los huevos si los multiplica más deprisa de lo que exigen sus dueños.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1952}{\autor{Durand}: resultado neto y de explotación}
+\hito{1956}{\autor{Lintner}: dividendos; \autor{Walter}; \autor{Gordon}-\autor{Shapiro}}
+\hito{1958}{\autor{Modigliani}-\autor{Miller}: irrelevancia de la estructura}
+\hito{1959}{\autor{Gordon}: pájaro en mano (\autor{Lintner}, 1962)}
+\hito{1961}{\autor{Miller}-\autor{Modigliani}: dividendos; \autor{Donaldson}: orden}
+\hito{1963}{MM: escudo fiscal $t_{IS}V_D$}
+\hito{1972}{\autor{Hamada}: beta apalancada}
+\hito{1973}{\autor{Kraus}-\autor{Litzenberger}: equilibrio}
+\hito{1976}{\autor{Jensen}-\autor{Meckling}: agencia; \autor{Black}: rompecabezas}
+\hito{1977}{\autor{Miller}: imp. personales; \autor{Myers}: \emph{debt overhang}; \autor{Ross}; \autor{Leland}-\autor{Pyle}}
+\hito{1979}{\autor{Bhattacharya}: señal}
+\hito{1984}{\autor{Myers}-\autor{Majluf}; \autor{Diamond}; \autor{Easterbrook}}
+\hito{1985}{\autor{Miller}-\autor{Rock}; Nobel \autor{Modigliani} (\autor{Miller}, 1990)}
+\hito{1986}{\autor{Jensen}: FCL}
+\hito{1989}{\autor{Bernanke}-\autor{Gertler}: acelerador}
+\hito{1997}{\autor{Holmström}-\autor{Tirole}: liquidez}
+\hito{2001}{\autor{Graham}-\autor{Harvey}: encuesta; \autor{Fama}-\autor{French}: dividendos que desaparecen}
+\hito{2002}{\autor{Baker}-\autor{Wurgler}: \emph{market timing}}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Deuda SNF España \dato{61,9\,\% del PIB}{BCE, 2026} (119,6\,\% en 2010; UEM 66,1\,\%); renta fija en su deuda \dato{14\,\%}{BCE} (EE.\,UU. 59\,\%).
+\item Grado especulativo \dato{48\,\%}{S\&P, 2024}; impagos \dato{225}{S\&P, 2020}; recompras S\&P~500 \dato{1,02 billones de \$}{S\&P DJI, 2025}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Contradice la prop. II a la I?} No: la deuda sube $r_E$, no $V=V_E+V_D$.
+\item \textbf{Si la deuda es más barata, ¿por qué no baja el WACC?} Porque $r_E$ sube justo lo necesario: el riesgo de los activos, $r_A$, solo se reparte de otra forma.
+\item \textbf{¿Por qué no 100\,\% de deuda?} Insolvencia y agencia, jerarquía financiera e impuestos personales (\autor{Miller}, 1977).
+\item \textbf{¿Por qué cae la cotización al anunciar una ampliación?} La dirección emite cuando cree que están caras (\autor{Myers}-\autor{Majluf}): $\approx-$3\,\%.
+\item \textbf{¿Dividendo o recompra?} Iguales con mercados perfectos; la recompra es más flexible, no crea expectativa y tributa como plusvalía.
+\item \textbf{¿Cuándo crea valor retener?} Si $\mathrm{ROE}>r_E$ (\autor{Walter}); la inversión, no el dividendo.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Prop.~II: lineal en la \emph{ratio} $V_D/V_E$, no en el peso $L=V_D/V$; con IS lleva $(1-t_{IS})$.
+\item MM 1963: $V_L=V_U+t_{IS}V_D$, $\mathrm{WACC}=r_A(1-t_{IS}L)$. \autor{Miller} 1977: si $t_D>t_E$, ventaja \emph{menor} que $t_{IS}V_D$; si $1-t_D=(1-t_{IS})(1-t_E)$, desaparece.
+\item MM no exige neutralidad ante el riesgo ni certidumbre: es arbitraje; sí, endeudarse al mismo tipo que las empresas.
+\item Tradicional: $r_E$ convexa; MM con deuda con riesgo: $r_E$ \emph{cóncava}, WACC plano.
+\item Jerarquía: internos $\to$ deuda $\to$ acciones (\autor{Myers}-\autor{Majluf}, 1984; \autor{Donaldson}, 1961). Equilibrio: \autor{Kraus}-\autor{Litzenberger} (1973).
+\item Dividendos: irrelevancia, MM (1961); $\mathrm{ROE}\gtrless r_E$, \autor{Walter}; pájaro en mano, \autor{Gordon} y \autor{Lintner}.
+\item Reserva legal: 10\,\% del beneficio hasta el 20\,\% del capital. Autocartera cotizadas: 10\,\%. CoCos: CET1 $\geq$5,125\,\%.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

@@ -1,0 +1,22 @@
+% Balance financiero a valor de mercado (Vernimmen et al., 2017): a la
+% izquierda, el valor de la empresa, V (lo que valen los flujos de sus
+% activos); a la derecha, quién tiene derecho a esos flujos: fondos propios,
+% V_E (60 %), y deuda, V_D (40 %), como la empresa del ejemplo (600 y 400).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: el valor de la empresa
+  \capa{1}{\filldraw[fill=tceesalvia, draw=black, thick] (0,0) rectangle (4.5,4);
+    \node[align=center] at (2.25,2) {Valor de la empresa,\\[2pt] $V$};}
+  % 2: los fondos propios (arriba, 60 %)
+  \capa{2}{\filldraw[fill=tceemorado!14, draw=black, thick] (4.5,1.6) rectangle (9,4);
+    \node[align=center] at (6.75,2.8) {Valor de los fondos propios,\\[2pt] $V_E$};}
+  % 3: la deuda (abajo, 40 %)
+  \capa{3}{\filldraw[fill=tceeazul!14, draw=black, thick] (4.5,0) rectangle (9,1.6);
+    \node[align=center] at (6.75,0.8) {Valor de la deuda,\\[2pt] $V_D$};}
+  % 4: la identidad
+  \capa{4}{\node[font=\normalsize] at (4.5,-0.6) {$V = V_E + V_D$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,33 @@
+% Tesis de Walter con el modelo de Gordon y Shapiro: precio de la acción frente
+% a la tasa de retención, P_0 = (1 - b) BPA_1 / (r_E - b ROE), con BPA_1 = 10 y
+% r_E = 10 %. Las 3 curvas parten de (0, 100):
+%   ROE = 12 %: creciente y convexa (b = 0,4: 115,4; b = 0,6: 142,9)
+%   ROE = 10 %: horizontal en 100
+%   ROE =  8 %: decreciente (b = 0,4: 88,2; b = 0,6: 76,9)
+% Escala: 1 cm = 0,0833 de b; 1 cm = 33,3 de P_0.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=12cm,y=0.03cm,
+    declare function={p(\b,\roe)=(1-\b)*10/(0.10-\b*\roe);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.08,-22) rectangle (0.86,172);
+  % 1: ejes: tasa de retención y precio de la acción
+  \capa{1}{\ejes{$b$}{$P_0$}{0.68}{165}}
+  % 2: ROE = r_E: el precio no depende de la retención
+  \capa{2}{\draw[curva2] (0,100) node[left,text=black] {$100$} -- (0.6,100) node[etiqueta,right,text=tceeazul] {$\mathrm{ROE}=r_E$};}
+  % 3: ROE > r_E: retener sube el precio
+  \capa{3}{\draw[curva3] plot[domain=0:0.6,samples=60] (\x,{p(\x,0.12)}) node[etiqueta,right,text=tceeverde] {$\mathrm{ROE}>r_E$};}
+  % 4: ROE < r_E: retener baja el precio
+  \capa{4}{\draw[very thick,tceerojo] plot[domain=0:0.6,samples=60] (\x,{p(\x,0.08)}) node[etiqueta,right,text=tceerojo] {$\mathrm{ROE}<r_E$};}
+  % 5: nuestra empresa, que retiene el 40 %
+  \capa{5}{\draw[guia] (0.4,0) node[below,text=black] {$0{,}4$} -- (0.4,150);}
+  \capa{5}{\node[punto,fill=tceeverde] (V1) at (0.4,{p(0.4,0.12)}) {};}
+  \capa{5}{\node[punto,fill=tceeazul] (V2) at (0.4,100) {};}
+  \capa{5}{\node[punto,fill=tceerojo] (V3) at (0.4,{p(0.4,0.08)}) {};}
+  \capa{5}{\node[etiqueta,below right,font=\footnotesize,text=tceeverde] at (V1) {$115{,}4$};}
+  \capa{5}{\node[etiqueta,below right,font=\footnotesize,text=tceeazul] at (V2) {$100$};}
+  \capa{5}{\node[etiqueta,below left,font=\footnotesize,text=tceerojo] at (V3) {$88{,}2$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,85 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Emisores corporativos calificados por S&P a 1 de enero, 1981-2024: grado
+% de inversión (BBB- o mejor; abajo) y grado especulativo (arriba), barras
+% apiladas en el eje izquierdo; % en grado especulativo, línea en el eje
+% derecho. S&P Global Ratings (2025), tabla 29 (consulta del 8/11/2026);
+% la columna pct_especulativo es elaboración propia. Misma serie que el 3.B.2.
+% Datos clave: 23,6 % (1981), máximo 50,9 % (2022), 48,1 % (2024); los rótulos
+% de 2022 y 2024 van por encima de las barras (que llegan a 7.207 = 54 %).
+% 2 ejes superpuestos del mismo tamaño: el primero lleva las barras y el eje
+% izquierdo; el segundo, el eje derecho, la línea, los puntos y los rótulos.
+% Capas «dic» (tikz-tcee.tex): barras → ejes → línea → puntos → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+% Paleta: grado de inversión, azul claro; especulativo, dorado claro; la
+% línea, morada (más oscura que las barras)
+\colorlet{spinversion}{tceeazul!60}
+\colorlet{spespeculativo}{tceedorado!65}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/sp-calificaciones-grado.csv}\spc
+% Los ejes salen en la capa 3, después de las barras
+\ifnum3>\tceepaso\relax
+  \pgfplotsset{ejessp/.style={hide axis}}
+\else
+  \pgfplotsset{ejessp/.style={}}
+\fi
+\pgfplotsset{
+  marcosp/.style={width=10cm, height=5.6cm, scale only axis,
+    xmin=1979.6, xmax=2025.4, clip=false,
+    ticklabel style={font=\footnotesize}, label style={font=\footnotesize},
+    tick align=outside},
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[marcosp,
+      ymin=0, ymax=8000, ytick={0,1000,...,8000},
+      yticklabel style={/pgf/number format/.cd,1000 sep={.}},
+      xtick={1985,1990,...,2020},
+      xticklabel style={/pgf/number format/.cd,1000 sep={}},
+      axis x line*=bottom, axis y line*=left,
+      ylabel={Número de emisores},
+      ymajorgrids, grid style={tceegris!25},
+      ybar stacked, bar width=0.72,
+      dicapas, ejessp]
+    % 1: grado de inversión
+    \capa{1}{\addplot[on layer=dicbarras, forget plot, dicbarra=spinversion]
+        table[x=anio, y=grado_inversion] {\spc};}
+    % 2: grado especulativo, encima
+    \capa{2}{\addplot[on layer=dicbarras, forget plot, dicbarra=spespeculativo]
+        table[x=anio, y=grado_especulativo] {\spc};}
+    % 3: ejes horizontal e izquierdo (los dibuja el entorno axis)
+  \end{axis}
+  \begin{axis}[marcosp,
+      ymin=0, ymax=60, ytick={0,10,...,60},
+      axis x line=none, axis y line*=right,
+      ylabel={\% en grado especulativo},
+      /pgf/number format/use comma,
+      legend style={at={(0.5,-0.12)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize,
+        /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left,
+      dicapas, ejessp]
+    % 3: eje derecho (lo dibuja el entorno axis)
+    \addplot[dicsuelto, draw=none] coordinates {(1981,0) (2024,60)};
+    % 4: % en grado especulativo
+    \capa{4}{\addplot[forget plot, diclineahalo=tceemorado, sharp plot, mark=none]
+        table[x=anio, y=pct_especulativo] {\spc};}
+    % 5: puntos y rótulos de 1981, 2022 (máximo) y 2024; leyenda
+    \capa{5}{
+      \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=tceemorado]
+        coordinates {(1981,23.6) (2022,50.9) (2024,48.1)};
+      \dicrotulo[font=\footnotesize, anchor=south west, xshift=-4pt, yshift=4pt, text=tceemorado]{(1981,23.6)}{23,6~\%}
+      \dicrotulo[font=\footnotesize, anchor=south east, text=tceemorado]{(2020.4,55.2)}{máximo: 50,9~\% (2022)}
+      \dicrotulo[font=\footnotesize, anchor=south east, text=tceemorado]{(2025.2,55.2)}{48,1~\%}
+      \addlegendimage{area legend, fill=spinversion, draw=spinversion!65!black}
+      \addlegendentry{Grado de inversión}
+      \addlegendimage{area legend, fill=spespeculativo, draw=spespeculativo!65!black}
+      \addlegendentry{Grado especulativo}
+      \addlegendimage{leyenda linea corta, very thick, tceemorado}
+      \addlegendentry{\% en grado especulativo (eje dcho.)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

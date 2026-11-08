@@ -1,0 +1,95 @@
+% El coste del capital frente a la ratio deuda/fondos propios, x = V_D/V_E,
+% en 4 paneles con los mismos ejes (gráfico de referencia de la ficha
+% modigliani-miller del canon). WACC = (r_E + r_D (1 - t_IS) x) / (1 + x).
+% Valores: r_A = 10, r_D = 5, t_IS = 0,25; x de 0 a 3, r de 0 a 27.
+%  a) tradicional: r_D = 5 hasta x = 1 y 5 + 2 (x - 1)^2 después;
+%     r_E = 10 + 1,5 x + x^2 (convexa); WACC en U, mínimo en x* = 1,04 (8,75).
+%  b) MM (1958): r_D = 5, r_E = 10 + 5 x, WACC = r_A = 10. Deuda con riesgo
+%     (discontinua): r_D = 10 - 5/(1 + 0,1 (x - 1)^2) desde x = 1 y
+%     r_E = 10 + (10 - r_D) x (cóncava); el WACC sigue en 10. Nuestra empresa:
+%     x = 2/3, r_E = 13,3.
+%  c) MM (1963): r_D (1 - t_IS) = 3,75, r_E = 10 + 3,75 x,
+%     WACC = r_A (1 - t_IS L) = (10 + 7,5 x)/(1 + x), decreciente y convexo.
+%  d) equilibrio: r_D = 5 + 1,5 (x - 1)^2 desde x = 1 (se dibuja r_D (1 - t_IS)),
+%     r_E = 10 + 3,75 x + 2,5 (x - 1)^2 desde x = 1; WACC en U, mínimo en
+%     x* = 1,155 (8,70).
+% Colores del bloque II: r_E morado, r_D verde, WACC azul; r_A como guía.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.6cm,y=0.15cm,
+    declare function={
+      rda(\x)=(\x<1)*5+(\x>=1)*(5+2*(\x-1)^2);
+      rea(\x)=10+1.5*\x+\x^2;
+      wa(\x)=(rea(\x)+rda(\x)*\x)/(1+\x);
+      rdb(\x)=10-5/(1+0.1*(\x-1)^2);
+      reb(\x)=10+(10-rdb(\x))*\x;
+      wc(\x)=(10+7.5*\x)/(1+\x);
+      rdd(\x)=0.75*((\x<1)*5+(\x>=1)*(5+1.5*(\x-1)^2));
+      red(\x)=10+3.75*\x+(\x>=1)*2.5*(\x-1)^2;
+      wd(\x)=(red(\x)+rdd(\x)*\x)/(1+\x);}]
+  % Ejes de un panel: \ejescc{rótulo del panel}
+  \newcommand{\ejescc}[1]{%
+    \draw[eje] (0,0) -- (3.45,0) node[below left=2pt and 0pt] {$V_D/V_E$};
+    \draw[eje] (0,0) -- (0,27.5) node[above right=0pt and -2pt,font=\footnotesize] {coste del capital};
+    \node[below left] at (0,0) {$0$};
+    \node[anchor=west,font=\small\bfseries] at (-0.55,33) {#1};}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.75,-49) rectangle (9.5,35);
+  % ---------------- a) Tesis tradicional
+  \begin{scope}
+    % 1: ejes y rótulo
+    \capa{1}{\ejescc{a) Tesis tradicional}}
+    % 2: r_D, plana y luego creciente
+    \capa{2}{\draw[curva3] plot[domain=0:3,samples=80] (\x,{rda(\x)}) node[etiqueta,right,text=tceeverde] {$r_D$};}
+    % 3: r_E convexa
+    \capa{3}{\draw[curva1] plot[domain=0:3,samples=80] (\x,{rea(\x)}) node[etiqueta,right,text=tceemorado] {$r_E$};}
+    % 4: WACC en U y su mínimo
+    \capa{4}{\draw[curva2] plot[domain=0:3,samples=100] (\x,{wa(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{WACC}$};}
+    \capa{4}{\node[punto,fill=tceeazul] (Ma) at (1.0397,8.7475) {};}
+    \capa{4}{\draw[guia] (Ma) -- (1.0397,0) node[below,text=black] {$(V_D/V_E)^*$};}
+  \end{scope}
+  % ---------------- b) Modigliani y Miller (1958)
+  \begin{scope}[xshift=7cm]
+    % 5: ejes y rótulo
+    \capa{5}{\ejescc{b) \textsc{Modigliani} y \textsc{Miller} (1958)}}
+    % 6: WACC = r_A, horizontal
+    \capa{6}{\draw[curva2] (0,10) node[left,text=black] {$r_A$} -- (3,10) node[etiqueta,right,text=tceeazul] {$\mathrm{WACC}=r_A$};}
+    % 7: r_D plana
+    \capa{7}{\draw[curva3] (0,5) -- (3,5) node[etiqueta,below right=-1pt and -2pt,text=tceeverde] {$r_D$};}
+    % 8: r_E recta desde r_A, con nuestra empresa en V_D/V_E = 2/3
+    \capa{8}{\draw[curva1] (0,10) -- (3,25) node[etiqueta,right,text=tceemorado] {$r_E$};}
+    \capa{8}{\node[punto,fill=tceemorado] (Nb) at (0.6667,13.333) {};}
+    \capa{8}{\draw[guia] (Nb) -- (0.6667,0) node[below,text=black] {$\tfrac23$};}
+    \capa{8}{\node[etiqueta,above left,font=\footnotesize] at (Nb) {$13{,}3~\%$};}
+    % 9: deuda con riesgo: r_D creciente y r_E cóncava; el WACC sigue plano
+    \capa{9}{\draw[curva3,desplazada] plot[domain=1:3,samples=60] (\x,{rdb(\x)});}
+    \capa{9}{\draw[curva1,desplazada] plot[domain=1:3,samples=60] (\x,{reb(\x)}) node[etiqueta,right,font=\footnotesize,text=tceemorado,align=left] {deuda\\[-2pt]con riesgo};}
+  \end{scope}
+  % ---------------- c) Modigliani y Miller (1963), con impuesto sobre sociedades
+  \begin{scope}[yshift=-6.7cm]
+    % 10: ejes y rótulo
+    \capa{10}{\ejescc{c) \textsc{Modigliani} y \textsc{Miller} (1963), con IS}}
+    % 11: r_D (1 - t_IS) y r_E, con menos pendiente
+    \capa{11}{\draw[curva3] (0,3.75) -- (3,3.75) node[etiqueta,right,text=tceeverde] {$r_D(1-t_{IS})$};}
+    \capa{11}{\draw[curva1] (0,10) -- (3,21.25) node[etiqueta,right,text=tceemorado] {$r_E$};}
+    % 12: WACC decreciente y guía en r_A
+    \capa{12}{\draw[guia] (0,10) node[left,text=black] {$r_A$} -- (3,10);}
+    \capa{12}{\draw[curva2] plot[domain=0:3,samples=80] (\x,{wc(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{WACC}$};}
+  \end{scope}
+  % ---------------- d) Teoría del equilibrio
+  \begin{scope}[xshift=7cm,yshift=-6.7cm]
+    % 13: ejes y rótulo
+    \capa{13}{\ejescc{d) Teoría del equilibrio}}
+    % 14: r_D y r_E, que se disparan con mucha deuda
+    \capa{14}{\draw[guia] (0,10) node[left,text=black] {$r_A$} -- (3,10);}
+    \capa{14}{\draw[curva3] plot[domain=0:3,samples=80] (\x,{rdd(\x)}) node[etiqueta,right,text=tceeverde] {$r_D(1-t_{IS})$};}
+    \capa{14}{\draw[curva1] plot[domain=0:2.5,samples=80] (\x,{red(\x)}) node[etiqueta,right,text=tceemorado] {$r_E$};}
+    % 15: WACC en U y su mínimo
+    \capa{15}{\draw[curva2] plot[domain=0:3,samples=100] (\x,{wd(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{WACC}$};}
+    \capa{15}{\node[punto,fill=tceeazul] (Md) at (1.1547,8.7024) {};}
+    \capa{15}{\draw[guia] (Md) -- (1.1547,0) node[below,text=black] {$(V_D/V_E)^*$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

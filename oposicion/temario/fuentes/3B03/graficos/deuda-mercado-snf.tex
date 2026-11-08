@@ -1,0 +1,47 @@
+% Valores representativos de deuda en % de la deuda (préstamos + valores) de
+% las sociedades no financieras, fin de año, 1999-2025: España, zona del euro
+% y Estados Unidos. Datos: ../datos/deuda-mercado-snf.csv (BCE, QSA
+% consolidado; Reserva Federal, Z.1, vía FRED; consulta del 8/11/2026).
+% Último dato (2025): España 13,6 %, zona del euro 18,4 %, EE. UU. 58,9 %.
+% Colores fijos del bloque (también en deuda-snf-pib): España tceemorado,
+% zona del euro tceeazul, EE. UU. tceedorado. Capas: ejes → líneas →
+% puntos → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\dmdatos}{../datos/deuda-mercado-snf.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=9cm, height=5.2cm, scale only axis,
+      xmin=1998.5, xmax=2025.5, xtick={2000,2005,...,2025},
+      ymin=0, ymax=70, ytick={0,10,...,70},
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize},
+      label style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      ylabel={\% de la deuda},
+      ymajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: ejes y rejilla (los dibuja el entorno axis)
+    % 2: Estados Unidos
+    \capa{2}{\addplot[diclinea=tceedorado, mark=none, forget plot]
+        table[col sep=comma, comment chars={\#}, x=anio, y=eeuu] {\dmdatos};}
+    % 3: zona del euro
+    \capa{3}{\addplot[diclinea=tceeazul, mark=none, forget plot]
+        table[col sep=comma, comment chars={\#}, x=anio, y=zona_euro] {\dmdatos};}
+    % 4: España
+    \capa{4}{\addplot[diclinea=tceemorado, mark=none, forget plot]
+        table[col sep=comma, comment chars={\#}, x=anio, y=espana] {\dmdatos};}
+    % 5: último dato (2025), con punto y etiqueta a la derecha
+    \capa{5}{\addplot[dicpuntos=tceedorado, forget plot] coordinates {(2025,58.9)};
+      \addplot[dicpuntos=tceeazul, forget plot] coordinates {(2025,18.4)};
+      \addplot[dicpuntos=tceemorado, forget plot] coordinates {(2025,13.6)};
+      \dicrotulo[anchor=west, font=\footnotesize, xshift=4pt, text=tceedorado!80!black]{(2025,58.9)}{EE.\,UU.: 58,9~\%}
+      \dicrotulo[anchor=west, font=\footnotesize, xshift=4pt, yshift=3pt, text=tceeazul]{(2025,18.4)}{zona del euro: 18,4~\%}
+      \dicrotulo[anchor=west, font=\footnotesize, xshift=4pt, yshift=-3pt, text=tceemorado]{(2025,13.6)}{España: 13,6~\%}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}
