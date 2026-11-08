@@ -1,0 +1,47 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% CML frente a SML con los mismos activos. Frontera: sigma(mu) =
+% sqrt(2,25 + 3,125 (mu - 1,8)^2); desde r_f = 1,2 la tangente toca en
+% M = (sqrt(6,75), 3,0) = (2,598; 3,0), pendiente 1,8/2,598. beta = (mu - r_f)/1,8.
+% P: mu = 2,1 (beta = 0,5) sobre la CML; i: mu = 2,6 (beta = 7/9), sigma = 3,4.
+\begin{tikzpicture}[tcee,scale=0.9]
+  \def\sM{2.598}
+  % 1: panel izquierdo: ejes, r_f, frontera, CML y M
+  \capa{1}{
+    \ejes{$\sigma$}{$\mathbb{E}[r]$}{5.4}{5}
+    \node[etiqueta,left] at (0,1.2) {$r_f$};
+    \draw[thick,tceegris] plot[domain=0.7:3.75,samples=80] ({sqrt(2.25+3.125*(\x-1.8)^2)},\x);
+    \draw[curva1] (0,1.2) -- (4.8,{1.2+1.8/\sM*4.8}) node[etiqueta,above,text=tceemorado] {CML};
+    \node[punto,label={above left:$M$}] (M) at (\sM,3.0) {};
+    \proyeccion{(M)}{$\sigma_M$}{$\mathbb{E}[r_M]$}
+  }
+  % 2: P sobre la CML, i por debajo y su riesgo específico
+  \capa{2}{
+    \node[punto,fill=tceemorado,inner sep=1.8pt,label={above left:$P$}] at ({\sM*0.5},2.1) {};
+    \draw[->,thin,tceedorado!80!black] ({\sM*1.4/1.8+0.05},2.6) -- (3.33,2.6);
+    \node[punto,fill=tceedorado,inner sep=1.8pt,label={right:$i$}] at (3.4,2.6) {};
+    \node[etiqueta,font=\footnotesize,align=center,anchor=north,text=tceedorado!70!black] at (3.3,2.55) {riesgo\\específico};
+  }
+  % 3: panel derecho: ejes, r_f, SML y M
+  \begin{scope}[xshift=7.2cm]
+    \capa{3}{
+      \ejes{$\beta$}{$\mathbb{E}[r]$}{5.4}{5}
+      \node[etiqueta,left] at (0,1.2) {$r_f$};
+      \draw[curva1] (0,1.2) -- (4.8,{1.2+1.8/3*4.8}) node[etiqueta,above,text=tceemorado] {SML};
+      \node[punto,label={above left:$M$}] at (3,3.0) {};
+      \proyeccion{(3,3.0)}{$1$}{$\mathbb{E}[r_M]$}
+    }
+    % 4: P e i sobre la SML
+    \capa{4}{
+      \node[punto,fill=tceemorado,inner sep=1.8pt,label={above left:$P$}] at (1.5,2.1) {};
+      \node[punto,fill=tceedorado,inner sep=1.8pt,label={above left:$i$}] at ({3*7/9},2.6) {};
+    }
+  \end{scope}
+  % 5: rótulos de los 2 paneles
+  \capa{5}{
+    \node[etiqueta,align=center] at (2.6,-1.1) {CML: riesgo total $\sigma$,\\solo carteras eficientes};
+    \node[etiqueta,align=center] at (9.8,-1.1) {SML: riesgo sistemático $\beta$,\\todos los activos};
+  }
+\end{tikzpicture}
+\end{document}

@@ -169,7 +169,7 @@ const tercerEjercicioParteB = [
   { num: 20, titulo: 'El sistema económico internacional desde el siglo XIX hasta la ruptura del sistema de Bretton-Woods.', disponible: true, file: '3B20.pdf' },
   { num: 21, titulo: 'El sistema económico internacional desde la desaparición del sistema de Bretton-Woods.', disponible: true, file: '3B21.pdf' },
   { num: 22, titulo: 'El Fondo Monetario Internacional. Estructura y políticas. La prevención y solución de crisis.', disponible: true, file: '3B22.pdf' },
-  { num: 23, titulo: 'Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico.', disponible: true, file: '3B23.pdf' },
+  { num: 23, titulo: 'Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico.', disponible: true, file: '3B23.html' },
   { num: 24, titulo: 'Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.', disponible: true, file: '3B24.pdf' },
   { num: 25, titulo: 'Análisis de los instrumentos y de los mercados de derivados.', disponible: true, file: '3B25.pdf' },
   { num: 26, titulo: 'Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras.', disponible: false },

@@ -1,0 +1,47 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Velas japonesas (Murphy, 1999): alcista (cierre > apertura, cuerpo verde) y
+% bajista (apertura > cierre, cuerpo rojo), con sus mechas hasta el máximo y
+% el mínimo; a la derecha, una secuencia de velas con tendencia alcista.
+% \vela{x}{apertura}{cierre}{máximo}{mínimo}{semiancho}
+\newcommand{\vela}[6]{%
+  \pgfmathsetmacro{\velacolor}{#3>#2 ? "tceeverde" : "tceerojo"}%
+  \draw[thick] (#1,#5) -- (#1,{min(#2,#3)}) (#1,{max(#2,#3)}) -- (#1,#4);
+  \draw[thick,fill=\velacolor] ({#1-#6},#2) rectangle ({#1+#6},#3);}
+\begin{tikzpicture}[tcee]
+  % 1: vela alcista y sus rótulos
+  \capa{1}{
+    \vela{0.6}{1.5}{4.5}{5.6}{0.4}{0.6}
+    \node[etiqueta,tceeverde,font=\small\bfseries,anchor=base] at (0.6,6.1) {alcista};
+    \draw[->,thin] (2.0,5.6) node[etiqueta,right] {máximo} -- (0.75,5.6);
+    \draw[->,thin] (2.0,4.5) node[etiqueta,right] {cierre} -- (1.3,4.5);
+    \draw[->,thin] (2.0,1.5) node[etiqueta,right] {apertura} -- (1.3,1.5);
+    \draw[->,thin] (2.0,0.4) node[etiqueta,right] {mínimo} -- (0.75,0.4);
+    \draw[->,thin] (-0.8,3.0) node[etiqueta,left] {cuerpo} -- (-0.1,3.0);
+    \draw[->,thin] (-0.8,5.05) node[etiqueta,left] {mecha} -- (0.5,5.05);
+    \draw[->,thin] (-0.8,0.95) node[etiqueta,left] {mecha} -- (0.5,0.95);
+  }
+  % 2: vela bajista y sus rótulos
+  \capa{2}{
+    \vela{5.4}{4.5}{1.5}{5.6}{0.4}{0.6}
+    \node[etiqueta,tceerojo,font=\small\bfseries,anchor=base] at (5.4,6.1) {bajista};
+    \draw[->,thin] (6.8,5.6) node[etiqueta,right] {máximo} -- (5.55,5.6);
+    \draw[->,thin] (6.8,4.5) node[etiqueta,right] {apertura} -- (6.1,4.5);
+    \draw[->,thin] (6.8,1.5) node[etiqueta,right] {cierre} -- (6.1,1.5);
+    \draw[->,thin] (6.8,0.4) node[etiqueta,right] {mínimo} -- (5.55,0.4);
+  }
+  % 3: secuencia de velas pequeñas con tendencia alcista
+  \capa{3}{
+    \draw[guia] (9.6,-0.1) -- (9.6,6.4);
+    \foreach \x/\a/\c/\h/\l in {
+        10.3/1.4/1.0/1.7/0.6, 10.8/1.0/1.9/2.1/0.9, 11.3/1.9/2.6/2.9/1.7,
+        11.8/2.6/2.2/2.8/1.9, 12.3/2.2/3.1/3.4/2.1, 12.8/3.1/3.7/4.0/2.9,
+        13.3/3.7/3.2/3.9/2.9, 13.8/3.2/4.2/4.4/3.1, 14.3/4.2/5.0/5.3/4.0,
+        14.8/5.0/4.6/5.4/4.4, 15.3/4.6/5.6/5.9/4.5}
+      {\vela{\x}{\a}{\c}{\h}{\l}{0.16}}
+    \draw[flecha,tceeverde] (10.2,2.6) -- (14.2,6.1);
+    \node[etiqueta,above,rotate=41,tceeverde] at (12.2,4.35) {tendencia alcista};
+  }
+\end{tikzpicture}
+\end{document}

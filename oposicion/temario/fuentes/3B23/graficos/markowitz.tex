@@ -1,0 +1,37 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Frontera de mínima varianza (hipérbola): sigma(y) = sqrt(1,8^2 + 1,6^2 (y-2,4)^2),
+% vértice MVG = (1,8; 2,4). La misma frontera, ejes y escala que cml.tex.
+% Curvas de indiferencia y = k + g sigma^2; tangencia con la frontera en
+% y - 2,4 = 1/(2 g 1,6^2):
+%   muy averso, g = 0,4: O_1 = (1,9622; 2,8883), k = 1,3481
+%   poco averso, g = 0,1: O_2 = (3,6063; 4,3531), k = 3,0526
+\begin{tikzpicture}[tcee]
+  \capa{1}{\ejes{$\sigma_p$}{$\mathbb{E}[r_p]$}{7}{7.2}}
+  \capa{2}{\foreach \p in {(2.6,2.0),(3.2,3.0),(4.0,2.5),(3.6,3.8),(2.8,1.5),
+      (4.6,4.2),(5.0,3.2),(2.9,2.6)}
+      \node[punto,inner sep=1pt,fill=tceegris] at \p {};}
+  \capa{3}{\draw[thick,dashed,tceegris] plot[domain=0.6:2.4,samples=40,smooth]
+      ({sqrt(3.24+2.56*(\x-2.4)*(\x-2.4))},\x);
+    \node[punto] (MVG) at (1.8,2.4) {};
+    \node[etiqueta,left] at (MVG) {MVG};}
+  \capa{4}{\draw[curva1,line width=1.8pt] plot[domain=2.4:5.6,samples=60,smooth]
+      ({sqrt(3.24+2.56*(\x-2.4)*(\x-2.4))},\x);
+    \node[etiqueta,right,tceemorado,align=left] at (5.0,4.3) {frontera\\eficiente};}
+  \capa{5}{\foreach \k in {0.7481,1.3481,1.9481}
+      \draw[thick,tceeverde] plot[domain=0:{sqrt((6.4-\k)/0.4)},samples=40,smooth]
+        (\x,{\k+0.4*\x*\x});
+    \node[punto] (O1) at (1.9622,2.8883) {};
+    \node[etiqueta,above left=0pt and 1pt] at (O1) {$O_1$};
+    \proyeccion{(O1)}{}{};}
+  \capa{6}{\foreach \k in {2.4526,3.0526,3.6526}
+      \draw[thick,tceedorado] plot[domain=0:{sqrt((6.4-\k)/0.1)},samples=40,smooth]
+        (\x,{\k+0.1*\x*\x});
+    \node[punto] (O2) at (3.6063,4.3531) {};
+    \node[etiqueta,above left=0pt and 1pt] at (O2) {$O_2$};
+    \proyeccion{(O2)}{}{};}
+  \capa{7}{\node[etiqueta,tceeverde,align=center,above] at (3.3,6.4) {inversor\\muy averso};
+    \node[etiqueta,tceedorado,align=center,above] at (6.0,6.4) {inversor\\poco averso};}
+\end{tikzpicture}
+\end{document}

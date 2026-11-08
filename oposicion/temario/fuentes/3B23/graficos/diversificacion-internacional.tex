@@ -1,0 +1,46 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Varianza de una cartera equiponderada en % de la de una acción típica, con
+% acciones de EE. UU. y con acciones de varios países. Solo los suelos (27 % y
+% 11,7 %) son de Solnik (1974); la curva es suelo + (100 - suelo)/n.
+% Capas «dic» (tikz-tcee.tex): ejes -> suelos -> curvas -> rótulos y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/solnik-diversificacion.csv}\solnik
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=10cm, height=6.5cm,
+      xmin=0, xmax=52, xtick={1,10,20,30,40,50},
+      ymin=0, ymax=105, ytick={0,20,...,100},
+      ticklabel style={font=\footnotesize},
+      xlabel={número de acciones, $n$},
+      ylabel={\% de la varianza de una acción típica},
+      label style={font=\small},
+      axis lines*=left, tick align=outside, clip=false,
+      legend style={at={(0.97,0.97)}, anchor=north east, draw=none, font=\footnotesize},
+      legend cell align=left, dicapas,
+    ]
+    % 1: ejes (los dibuja el entorno axis)
+    % 2: suelos de Solnik
+    \capa{2}{
+      \dicraya[dicumbral, tceeazul]{(0,27) (52,27)}
+      \dicraya[dicumbral, tceeverde]{(0,11.7) (52,11.7)}
+    }
+    % 3: cartera de acciones de EE. UU.
+    \capa{3}{
+      \addplot[diclinea=tceeazul] table[x=n, y=eeuu] {\solnik};
+      \addlegendentry{solo acciones de EE.\,UU.}
+    }
+    % 4: cartera internacional
+    \capa{4}{
+      \addplot[diclinea=tceeverde] table[x=n, y=internacional] {\solnik};
+      \addlegendentry{cartera internacional}
+    }
+    % 5: rótulos de los suelos
+    \capa{5}{
+      \dicrotulo[anchor=west, font=\footnotesize, text=tceeazul]{(52,27)}{27~\%}
+      \dicrotulo[anchor=west, font=\footnotesize, text=tceeverde]{(52,11.7)}{11,7~\%}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

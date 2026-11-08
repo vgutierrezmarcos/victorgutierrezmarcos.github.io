@@ -1,0 +1,34 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Esquema de análisis técnico para la pizarra: soporte (1,5), resistencia
+% (3,5), ruptura al alza y cambio de papel de la resistencia, y media móvil.
+% La media móvil es la media simple de los 2,0 últimos (en unidades de x) de
+% la propia serie quebrada (calculada aparte), así que va de verdad con
+% retraso; la señal de compra es el corte real de la serie con la media en el
+% tramo de la ruptura (x = 6,23).
+\begin{tikzpicture}[tcee]
+  % 1: ejes
+  \capa{1}{\ejes{tiempo}{precio}{10.2}{6.4}}
+  % 2: serie de precios
+  \capa{2}{\draw[curva1] (0.3,2.8) -- (0.9,1.5) -- (1.5,2.9) -- (1.8,2.5) -- (2.4,3.5)
+      -- (3.1,1.5) -- (3.6,2.4) -- (3.9,2.0) -- (4.5,3.5) -- (5.1,2.2) -- (5.5,2.7)
+      -- (5.9,1.5) -- (6.9,4.6) -- (7.5,3.5) -- (8.4,5.0) -- (8.8,4.6) -- (9.4,5.6);}
+  % 3: soporte
+  \capa{3}{\draw[thick,dashed,tceeverde] (0.3,1.5) -- (6.3,1.5)
+      node[etiqueta,right] {soporte};}
+  % 4: resistencia
+  \capa{4}{\draw[thick,dashed,tceerojo] (0.3,3.5) -- (6.545,3.5);
+    \node[etiqueta,above,tceerojo] at (1.2,3.5) {resistencia};}
+  % 5: ruptura y cambio de papel
+  \capa{5}{\draw[thick,dashed,tceeverde] (6.545,3.5) -- (9.6,3.5);
+    \node[punto] at (6.545,3.5) {};
+    \draw[flecha] (5.3,4.7) node[etiqueta,above left,tceerojo] {ruptura} -- (6.4,3.7);
+    \node[etiqueta,right,align=left,tceeverde] at (9.6,3.5) {la resistencia rota\\hace de soporte};}
+  % 6: media móvil y señal de compra
+  \capa{6}{\draw[thick,tceedorado] plot coordinates {(2.29,2.44) (2.49,2.52) (2.69,2.6) (2.89,2.66) (3.09,2.67) (3.29,2.62) (3.49,2.55) (3.69,2.51) (3.89,2.46) (4.09,2.41) (4.29,2.36) (4.49,2.35) (4.69,2.38) (4.89,2.43) (5.09,2.5) (5.29,2.56) (5.49,2.61) (5.69,2.62) (5.89,2.59) (6.09,2.55) (6.29,2.51) (6.49,2.49) (6.69,2.53) (6.89,2.67) (7.09,2.87) (7.29,3.05) (7.49,3.16) (7.69,3.28) (7.89,3.5) (8.09,3.75) (8.29,3.98) (8.49,4.17) (8.69,4.28) (8.89,4.32) (9.09,4.37) (9.29,4.49) (9.4,4.59)}
+      node[etiqueta,below right] {media móvil};
+    \node[punto,fill=tceedorado] at (6.23,2.52) {};
+    \node[etiqueta,right,tceedorado!70!black] at (6.3,2.2) {señal de compra};}
+\end{tikzpicture}
+\end{document}

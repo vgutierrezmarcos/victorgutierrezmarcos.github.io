@@ -1,0 +1,19 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Triángulo rectángulo de desviaciones típicas: sigma_i^2 = beta_i^2 sigma_M^2 + sigma_eps^2
+\begin{tikzpicture}[tcee]
+  \capa{1}{\draw[curva1] (0,0) -- (4.5,0);
+    \node[etiqueta,below,tceemorado,align=center] at (2.25,0)
+      {$\beta_i\sigma_M$\\riesgo sistemático};}
+  \capa{2}{\draw[curva4] (0,0) -- (0,2.2);
+    \node[etiqueta,left,tceedorado,align=center] at (0,1.1)
+      {$\sigma_{\varepsilon_i}$\\riesgo\\específico};}
+  \capa{3}{\draw[very thick,black] (0,2.2) -- (4.5,0);
+    \draw[thin] (0.25,0) -- (0.25,0.25) -- (0,0.25);
+    \node[etiqueta,above right,align=center] at (2.25,1.1)
+      {$\sigma_i$\\riesgo total};
+    \node[etiqueta,below] at (2.25,-1.0)
+      {$\sigma_i^2=\beta_i^2\sigma_M^2+\sigma_{\varepsilon_i}^2$};}
+\end{tikzpicture}
+\end{document}

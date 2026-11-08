@@ -1,0 +1,319 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Renta variable, cartera, CAPM y APT]{3.B.23}{Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico.}
+\tcefecha{08/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «nadie da nada por nada»}{2,5}
+\apartadocante{I. Renta variable, cartera y valoración}{14}
+\subcante{1. Los instrumentos de renta variable}{2}
+\subcante{2. Elección de cartera}{5,5}
+\subcante{\hspace*{0.8em}\autor{Markowitz} (1952)}{2,75}
+\subcante{\hspace*{0.8em}\autor{Tobin} (1958)}{1,75}
+\subcante{\hspace*{0.8em}\autor{Sharpe}, diagonal (1963)}{1}
+\subcante{3. Modelos de valoración}{6,5}
+\subcante{\hspace*{0.8em}CAPM}{4}
+\subcante{\hspace*{0.8em}APT}{2,5}
+\apartadocante{II. Gestión activa (I): eficiencia}{4,5}
+\subcante{1. Hipótesis de los mercados eficientes}{2,75}
+\subcante{2. Finanzas conductuales}{1,75}
+\apartadocante{III. Gestión activa (II): fundamental y técnico}{8}
+\subcante{Apertura}{0,5}
+\subcante{1. Análisis fundamental}{4}
+\subcante{2. Análisis técnico}{3,5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra} (solo en I-III) en 3 columnas: izq., tabla mínima renta fija/variable, $r_i$ y $\sigma_p^2$ recuadrada; centro, \autor{Markowitz} por capas y encima la recta de \autor{Tobin}; dcha., riesgo frente a n.º de títulos y $\beta_p^2\sigma_M^2+\sum w_i^2\sigma_{\varepsilon_i}^2$. En \hyperref[rep:I.3]{I.3} se borra el centro: SML con un activo encima y otro debajo; la SML recuadrada pasa a la esquina sup. dcha. hasta el final y la APT debajo. En II, tabla de las 3 formas de eficiencia (se queda para III). Pegatinas: «no poner todos los huevos en la misma cesta» (\autor{Markowitz}), «todos los caminos llevan a Roma» (separación), «cuando llueve, todos se mojan» (riesgo sistemático), «a buenas horas, mangas verdes» (eficiencia), «todo necio confunde valor y precio» (fundamental), «quien tuvo, retuvo» (técnico).
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Nadie da nada por nada». Fondos indexados en EE.\,UU.: \dato{52\,\% de los fondos a largo plazo (2025) frente a 19\,\% (2010)}{ICI, 2026}. ¿Se puede ganar en bolsa, de forma sistemática, más de lo que corresponde al riesgo?
+\item \textbf{Relevancia}: \emph{micro}, financiar sin obligación de devolver ni pagar renta fija; trasladar renta y repartir riesgo \vertema{3.B.3}. \emph{Macro}: efecto riqueza \vertema{3.A.33}, $q$ de \autor{Tobin} \vertema{3.A.34}, transmisión monetaria \vertema{3.A.37}; los precios asignan el capital. \emph{Dimensión}: cotizadas en BME \dato{1,10 billones de €, $\approx$2/3 del PIB, +40\,\%}{BME, 2025}; IBEX \dato{+49\,\%}{2025}; bolsas del mundo \dato{$\approx$152 billones de \$}{WFE, 2025}.
+\item \textbf{Contextualización}: \concepto{inversión} = compromiso presente de recursos esperando beneficios futuros (tiempo y riesgo). 3 familias: \concepto{renta variable} (propiedad, remuneración según resultados), \concepto{renta fija} (contrato) \vertema{3.B.24}, \concepto{derivados} (subyacente) \vertema{3.B.25}. Hitos: cartera (\autor{Markowitz}, 1952; \autor{Tobin}, 1958); equilibrio (CAPM, 1964-66; APT, 1976); eficiencia (\autor{Fama}, 1970) y conductuales; fundamental antes de todos (\autor{Graham}-\autor{Dodd}, 1934). Nobel 1990, 2013, 2017.
+\item \textbf{Problemática}: ¿qué es la renta variable y cómo se miden rentabilidad y riesgo? ¿Cómo elige cartera un averso al riesgo y qué riesgo paga el mercado? ¿Qué rentabilidad exigir a cada acción? ¿Se puede batir al mercado?
+\item \textbf{Estructura}: de la teoría que justifica la gestión pasiva a las técnicas que intentan batirla. \hyperref[rep:I]{I}, instrumentos, cartera, CAPM y APT; \hyperref[rep:II]{II}, eficiencia y conductuales (puente); \hyperref[rep:III]{III}, fundamental y técnico (el fundamental al final: necesita precio $\neq$ valor y la tasa del CAPM).
+\end{itemize}
+
+% ==========================================================================
+\bloque[14]{I. Renta variable, cartera y valoración\label{rep:I}}
+\begin{ideaclave}
+El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de una cartera. Diversificar elimina el específico, no el sistemático, y en equilibrio solo se paga el sistemático.
+\end{ideaclave}
+
+\sub{I.1. Los instrumentos de renta variable\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Acción}: parte alícuota del capital social de una SA; da la condición de socio (LSC, art.~91).
+\item \emph{Frente a la renta fija} (5 rasgos): pagos según resultados y reparto (no por contrato); sin vencimiento (se vende en el secundario); derechos económicos \emph{y políticos}; cobra el último (derecho \emph{residual}); para el emisor, patrimonio neto (el bono, pasivo) $\Rightarrow$ más riesgo.
+\item \emph{Derechos mínimos} (art.~93): dividendo y cuota de liquidación; \concepto{suscripción preferente} (negociable); voto e impugnación; información.
+\item \emph{Mercados}: primario (OPS capta fondos; OPV, no); secundario, liquidez. BME (grupo SIX desde 2020), BME Growth; CNMV; Ley 6/2023 (MiFID~II) \vertema{3.B.27} \vertema{4.A.20}.
+\item \emph{Rentabilidad} de un periodo:
+  \begin{formula}
+  \[r_i=\frac{D_1+P_1-P_0}{P_0}=\underbrace{\frac{D_1}{P_0}}_{\text{dividendo}}+\underbrace{\frac{P_1-P_0}{P_0}}_{\text{plusvalía}}\]
+  \end{formula}
+  Variable aleatoria: $\mathbb{E}[r_i]$ \concepto{rentabilidad esperada}; $\sigma_i$ (volatilidad) \concepto{riesgo}; $\sigma_{ij}$, cuánto se mueven juntas. \concepto{Prima de riesgo} de las acciones en EE.\,UU. \dato{$\approx$6,6 pt/año sobre letras}{Damodaran, 1928-2025}.
+\item \emph{3 formas de analizar}: por lo que aporta a una cartera (\hyperref[rep:I.2]{I.2}-\hyperref[rep:I.3]{I.3}), por su valor intrínseco (\hyperref[rep:III.1]{III.1}), por sus precios pasados (\hyperref[rep:III.2]{III.2}).
+\end{itemize}
+
+\sub{I.2. Teoría de la elección de cartera\label{rep:I.2}}
+\begin{itemize}
+\item Un activo se juzga por cómo cambia la media y el riesgo de la cartera: deciden las \emph{covarianzas}. Inversor averso de media-varianza \vertema{3.A.10}. 3 modelos, cada uno corrige al anterior.
+\end{itemize}
+
+\textbf{a) Media y varianza (\autor{Markowitz}, 1952)}. «No poner todos los huevos en la misma cesta» convertido en optimización (más que cestas: qué gallinas se llevan bien).
+\begin{itemize}
+\item \emph{Supuestos}: un periodo; distribución conocida; solo media y varianza (utilidad cuadrática o normalidad); aversión: curvas de indiferencia \emph{crecientes y convexas} en $(\sigma_p,\mathbb{E}[r_p])$; sin fricciones ni ventas en corto ($w_i\geq0$).
+\item \emph{Cartera}: $\mathbb{E}[r_p]=\sum_iw_i\mathbb{E}[r_i]$, $\sum_iw_i=1$; el riesgo \emph{no} es media ponderada:
+  \funcionclave{\sigma_p^2=\sum_{i=1}^{n}\sum_{j=1}^{n}w_iw_j\,\sigma_{ij},\quad \sigma_{ij}=\mathrm{corr}(r_i,r_j)\,\sigma_i\sigma_j}
+\item \emph{2 activos}: $\sigma_p^2=w^2\sigma_A^2+(1-w)^2\sigma_B^2+2w(1-w)\,\mathrm{corr}\,\sigma_A\sigma_B$. $\mathrm{corr}=1$: recta, diversificar no reduce riesgo; $=-1$: 2 segmentos, riesgo nulo con $w=\sigma_B/(\sigma_A+\sigma_B)$; intermedia: curva, más curvada cuanto menor corr.
+\end{itemize}
+\pareja{correlaciones}{Combinaciones de 2 activos según la correlación}{markowitz}{Frontera eficiente y óptimo de 2 inversores}
+\begin{itemize}
+\item \emph{2 etapas}: (1) \emph{objetiva}, igual para todos: \concepto{frontera de mínima varianza} (mín.\ $\sigma_p^2$ s.\,a. $\sum w_i\mathbb{E}[r_i]=\bar r$, $\sum w_i=1$, $w_i\geq0$); su tramo sobre la cartera de mínima varianza global = \concepto{frontera eficiente}. (2) \emph{subjetiva}: tangencia con la curva de indiferencia más alta; el más averso, más a la izquierda.
+\item \emph{Implicaciones}: diversificar reduce riesgo sin reducir rentabilidad esperada (si corr $<1$); $\sigma_p\leq$ media ponderada de $\sigma_i$; importa la contribución: $\partial\sigma_p^2/\partial w_i=2\,\mathrm{Cov}(r_i,r_p)$.
+\item \emph{Límites}: (1) no ordena las eficientes (\autor{Tobin}); (2) $n(n+3)/2$ parámetros: (665 para 35 títulos; 125.750 para 500) (diagonal); (3) muy sensible a errores en las medias (\autor{Michaud}, 1989); (4) normativo: no dice qué rentabilidad exigir a un activo (CAPM).
+\end{itemize}
+
+\textbf{b) Carteras mixtas (\autor{Tobin}, 1958)}. Añade un activo sin riesgo $r_f$ para prestar y pedir prestado sin límite.
+\begin{itemize}
+\item Con $w$ en $T$ y $1-w$ en $r_f$: $\mathbb{E}[r_p]=(1-w)r_f+w\,\mathbb{E}[r_T]$, $\sigma_p=w\,\sigma_T$ (el seguro no tiene varianza ni covaría) $\Rightarrow$ recta: \concepto{línea de asignación de capital} (CAL); pendiente = \concepto{ratio de \autor{Sharpe}} $(\mathbb{E}[r_T]-r_f)/\sigma_T$. $w<1$ presta; $w>1$ se endeuda.
+\item La mejor CAL es la tangente; $T$ = \concepto{cartera de tangencia} (máx. ratio de Sharpe):
+  \begin{formula}
+  \[\mathbb{E}[r_p]=r_f+\frac{\mathbb{E}[r_T]-r_f}{\sigma_T}\,\sigma_p\]
+  \end{formula}
+  Peso óptimo con $U=\mathbb{E}[r_p]-\tfrac a2\sigma_p^2$: $w^*=(\mathbb{E}[r_T]-r_f)/(a\sigma_T^2)$.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{cml}{La recta tangente domina a la frontera: prestamista a la izq. de $T$, prestatario a la dcha.}
+\begin{itemize}
+\item \concepto{Teorema de separación}: (1) \emph{qué cartera con riesgo}: $T$, igual para todos, sin depender de preferencias; (2) \emph{cuánto riesgo}: según la aversión. «Todos los caminos llevan a Roma».
+\item Con expectativas homogéneas, $T$ = \concepto{cartera de mercado} $M$ (vaciado): la recta es la \concepto{línea del mercado de capitales} (CML); pendiente $(\mathbb{E}[r_M]-r_f)/\sigma_M$ = precio de mercado del riesgo.
+\item \emph{Valoración}: ordena por ratio de Sharpe; sigue con muchos parámetros, presta a $r_f$ y es normativo.
+\end{itemize}
+
+\textbf{c) Modelo de la diagonal (\autor{Sharpe}, 1963)}. Los activos solo se correlacionan a través del mercado (\concepto{simplificación de \autor{Sharpe}}).
+\begin{itemize}
+\item \emph{Modelo de índice}:
+  \begin{formula}
+  \[r_i-r_f=\alpha_i+\beta_i(r_M-r_f)+\varepsilon_i,\quad \mathbb{E}[\varepsilon_i]=0,\ \mathrm{Cov}(\varepsilon_i,r_M)=0\]
+  \end{formula}
+  $\mathrm{Cov}(\varepsilon_i,\varepsilon_j)=0$: diagonal la matriz de \emph{los residuos}; la de rentabilidades no ($\sigma_{ij}=\beta_i\beta_j\sigma_M^2$).
+\item \emph{Riesgo}: $\sigma_i^2=\beta_i^2\sigma_M^2+\sigma_{\varepsilon_i}^2$; con $\beta_p=\sum_iw_i\beta_i$:
+  \begin{formula}
+  \[\sigma_p^2=\underbrace{\beta_p^2\,\sigma_M^2}_{\text{sistemático}}+\underbrace{\textstyle\sum_{i}w_i^2\,\sigma_{\varepsilon_i}^2}_{\text{específico}}\]
+  \end{formula}
+  $3n+2$ parámetros (302 frente a 5.150 con 100 títulos).
+\item $w_i=1/n$: el específico $\to0$; el sistemático $\to\bar\beta^{\,2}\sigma_M^2>0$. Importa la beta, no la varianza.
+\end{itemize}
+\pareja{diversificacion}{Riesgo de la cartera y n.º de títulos}{diversificacion-internacional}{Nacional e internacional (suelos de \autor{Solnik})}
+\begin{itemize}
+\item \emph{Internacional}: cartera de EE.\,UU. \dato{27\,\% de la varianza de una acción típica; internacional, 11,7\,\%}{Solnik, 1974}. \concepto{Sesgo doméstico} (\autor{French}-\autor{Poterba}, 1991); hoy las bolsas se mueven más juntas, sobre todo en crisis.
+\item \emph{Valoración}: resuelve los parámetros y estima las betas (regresión); pero es \emph{estadístico}, no de equilibrio; un factor se queda corto (residuos de un sector correlacionados).
+\end{itemize}
+
+\sub{I.3. Modelos de valoración: CAPM y APT\label{rep:I.3}}
+\begin{itemize}
+\item De \emph{normativo} a \emph{positivo}: si todos eligen así, ¿qué rentabilidad debe ofrecer cada activo? Equilibrio (CAPM) o arbitraje (APT).
+\end{itemize}
+
+\textbf{a) CAPM (\autor{Sharpe}, 1964; \autor{Lintner}, 1965; \autor{Mossin}, 1966)}. Generaliza la CML a \emph{cualquier} activo; da la tasa de descuento.
+\begin{itemize}
+\item \emph{Supuestos}: (1) un periodo; (2) media-varianza, aversos; (3) expectativas homogéneas; (4) prestar y pedir prestado sin límite a $r_f$; (5) competencia, sin fricciones, divisibles; (6) oferta fija.
+\item \emph{Desarrollo}: todos tienen $M$ $\Rightarrow$ el riesgo de $i$ es su aportación al de $M$, $\mathrm{Cov}(r_i,r_M)/\sigma_M$; en equilibrio cada unidad se paga igual ($\lambda_M/\sigma_M$):
+  \begin{formula}
+  \[\beta_i\equiv\frac{\mathrm{Cov}(r_i,r_M)}{\mathrm{Var}(r_M)}=\mathrm{corr}(r_i,r_M)\,\frac{\sigma_i}{\sigma_M}\]
+  \end{formula}
+  \concepto{Línea del mercado de títulos} (SML):
+  \funcionclave{\mathbb{E}[r_i]=r_f+\beta_i\,\lambda_M,\qquad \lambda_M\equiv\mathbb{E}[r_M]-r_f}
+  Argumento de \emph{equilibrio}, no de arbitraje; no exige normalidad.
+\item \emph{Beta}: $\beta_M=1$; $\beta_p=\sum w_i\beta_i$. $>1$ agresivo; $=1$ neutro (mismo riesgo \emph{sistemático}); $0<\beta<1$ defensivo; $=0$ rinde $r_f$ aunque varíe; $<0$ refugio, rinde \emph{menos} que $r_f$. Determinantes: negocio, apalancamiento operativo y financiero.
+\item \emph{Implicaciones}: todo activo bien valorado está en la SML; igual para todos el \emph{precio} del riesgo $\lambda_M$, distinta la prima $\beta_i\lambda_M$. \concepto{Alfa de \autor{Jensen}} (1968) $\alpha_i=\mathbb{E}[r_i]-r_f-\beta_i\lambda_M$: $>0$ infravalorado (se compra, $P\uparrow$, $\mathbb{E}[r]\downarrow$ hasta la recta). 115 fondos 1945-64: alfa medio neto \emph{negativo}. «Cuando llueve, todos se mojan»: solo se paga el sistemático.
+\end{itemize}
+\pareja{sml}{SML: $A$ infravalorado ($\alpha_A>0$), $B$ sobrevalorado}{cml-sml}{CML y SML: $P$ eficiente en las 2; $i$ solo en la SML}
+\begin{itemize}
+\item \concepto{Ratio de \autor{Treynor}} $(\mathbb{E}[r_i]-r_f)/\beta_i=\lambda_M$ (riesgo sistemático; activo en cartera mayor) frente a ratio de \autor{Sharpe} (riesgo total; todo el patrimonio).
+\item \emph{Extensiones}: beta cero (\autor{Black}, 1972): ordenada $>r_f$, SML más plana; ICAPM (\autor{Merton}, 1973): más betas por cobertura; C-CAPM (\autor{Breeden}, 1979):
+  \begin{formula}
+  \[\mathbb{E}_t[r_{i,t+1}]-r_f\simeq\theta\,\mathrm{Cov}_t(r_{i,t+1},\Delta\ln C_{t+1})\]
+  \end{formula}
+  \concepto{Enigma de la prima de riesgo} (\autor{Mehra}-\autor{Prescott}, 1985): exige aversión inverosímil.
+\item \emph{Evidencia}: relación lineal y positiva pero \emph{más plana} (\autor{Black}-\autor{Jensen}-\autor{Scholes}, 1972; \autor{Fama}-\autor{MacBeth}, 1973); tamaño y valor explican, la beta apenas (\autor{Fama}-\autor{French}, 1992, 2004); betas condicionales y capital humano (\autor{Jagannathan}-\autor{Wang}, 1996); acciones sueltas: \dato{$\approx$3\,\% (CAPM) y 5\,\% (3 factores)}{Bartholdy-Peare, 2005}; aun así, \dato{casi 3 de cada 4 directores financieros}{Graham-Harvey, 2001}.
+\item \emph{Aplicaciones}: coste de los fondos propios $r_E=r_f+\beta_E\lambda_M$, CMPC \vertema{3.B.2}; evaluar gestores; tarifas reguladas; salidas a bolsa.
+\item \emph{Límites}: beta estimada (60 meses), vuelve a 1: $\beta^{\mathrm{aj}}=\tfrac23\hat\beta+\tfrac13$ (\autor{Blume}, 1975); con deuda, $\beta_E=\beta_A[1+(1-t_{\mathrm{IS}})V_D/V_E]$ (\autor{Hamada}, 1972) \vertema{3.B.3}; $\lambda_M$ no se observa; supuestos; anomalías.
+\item \concepto{Crítica de \autor{Roll}} (1977): la SML se cumple por aritmética si la cartera de referencia es eficiente; solo se contrasta la eficiencia de $M$, que no se observa (inmuebles, no cotizadas, capital humano). Salida: correlación mínima índice-mercado (\autor{Shanken}, 1987); España 1963-82, rechazado con corr.\ $\geq0{,}5$ (\autor{Rubio}, 1986).
+\end{itemize}
+
+\textbf{b) APT (\autor{Ross}, 1976)}. Sin supuestos de preferencias (salvo más es mejor): factores comunes + \concepto{no arbitraje} (estrategia sin coste ni riesgo con beneficio positivo). «Nadie da nada por nada»; bastan unos pocos arbitrajistas.
+\begin{itemize}
+\item \emph{Supuestos}: modelo factorial lineal ($J$ factores con sorpresas de media nula; específico sin correlación); muchos activos (carteras sin riesgo específico); sin fricciones, ventas en corto; no arbitraje. Ni media-varianza, ni $r_f$ ilimitado, ni cartera de mercado.
+\item \emph{Generador}: $r_i=\mathbb{E}[r_i]+\beta_{i1}F_1+\dots+\beta_{iJ}F_J+\varepsilon_i$.
+\item \emph{Valoración} (cartera diversificada sin exposición rinde $r_f$; sin coste ni riesgo, 0):
+  \funcionclave{\mathbb{E}[r_i]=r_f+\beta_{i1}\lambda_1+\dots+\beta_{iJ}\lambda_J}
+  $\lambda_j$ = prima del factor $j$ (cartera con sensibilidad 1 a $j$ y 0 al resto). Un factor, el mercado: SML. Ejemplo: misma beta y distinta $\mathbb{E}[r]$ $\Rightarrow$ comprar una y vender en corto la otra.
+\item \emph{Factores}: macro (\autor{Chen}-\autor{Roll}-\autor{Ross}, 1986: producción industrial, inflación no anticipada, prima de crédito, pendiente de tipos) o características (\autor{Fama}-\autor{French}, 1993):
+  \begin{formula}
+  \[r_i-r_f=\alpha_i+\beta_{i,M}(r_M-r_f)+\beta_{i,S}\mathrm{SMB}+\beta_{i,H}\mathrm{HML}+\varepsilon_i\]
+  \end{formula}
+  SMB tamaño; HML valor (contable/mercado alto); bien especificado, $\alpha_i=0$. \emph{Momentum} (\autor{Jegadeesh}-\autor{Titman}, 1993; \autor{Carhart}, 1997); 5 factores (2015). ¿Riesgo o error? Hipótesis conjunta.
+\item \emph{Implicaciones}: riesgo sistemático multidimensional (misma beta de mercado, distinta exigencia); CAPM, caso particular; escapa a \autor{Roll}.
+\item \emph{Valoración}: supuestos débiles; pero no dice cuántos ni cuáles factores (3-4 en \autor{Roll}-\autor{Ross}, 1980; riesgo de minería de datos), aproximada para la mayoría.
+\end{itemize}
+\begin{itemize}
+\item \emph{CAPM frente a APT}: equilibrio/no arbitraje; 1 factor/varios sin especificar; $M$ imprescindible/no hace falta; exacta/aproximada. \emph{En común}: prima sobre $r_f$, solo sistemático, lineal; ninguno supone eficiencia informativa.
+\end{itemize}
+
+% ==========================================================================
+\bloque[4,5]{II. Gestión activa (I): eficiencia\label{rep:II}}
+\begin{ideaclave}
+Si los mercados son eficientes, ningún alfa es distinto de cero y basta la gestión pasiva. Evidencia y conductuales dejan un resquicio a la activa, pero estrecho: aprovechar los errores es caro y arriesgado.
+\end{ideaclave}
+
+\sub{II.1. La hipótesis de los mercados eficientes\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Pasiva}: comprar el mercado (indexado o ETF) y elegir solo la proporción de $r_f$: \dato{54,5\,\% del patrimonio de los fondos a largo plazo de EE.\,UU.}{ICI, sept.\ 2026}. \emph{Activa}: selección de valores o \emph{market timing}.
+\item \concepto{HME} (\autor{Fama}, 1970): los precios reflejan en todo momento toda la información disponible. Antecedentes: \autor{Bachelier} (1900), \autor{Kendall} (1953), \autor{Samuelson} (1965); expectativas racionales \vertema{3.A.6}. Solo lo nuevo mueve precios: «a buenas horas, mangas verdes».
+\item \concepto{Hipótesis conjunta}: toda prueba contrasta a la vez un modelo de valoración y la eficiencia; un rendimiento anormal no distingue cuál falla.
+\item \emph{3 sentidos} (\autor{Duffie}): (1) \concepto{ausencia de arbitraje} (compatible con burbujas; supuesto de la APT); (2) \concepto{informativa}; (3) \concepto{Pareto} (mercados completos, sin externalidades ni asimetrías) \vertema{3.A.22}.
+\item \emph{Formas de la informativa} (\autor{Roberts}, 1967; \autor{Fama}, 1970), cada una implica la anterior:
+  \begin{formula}
+  \centering\begin{tabular}{@{}lccc@{}}
+  \textbf{Forma} & \textbf{Información} & \textbf{¿Técnico?} & \textbf{¿Fundamental?}\\
+  \hline
+  Débil & histórica & No & Sí\\
+  Semifuerte & + pública & No & No\\
+  Fuerte & + privada & No & No\\
+  \end{tabular}
+  \end{formula}
+\item \emph{A favor}: rentabilidades a corto casi impredecibles; reacción en minutos; gestores activos no baten al índice tras comisiones.
+\item \emph{En contra}: \concepto{paradoja de \autor{Grossman}-\autor{Stiglitz}} (1980): si los precios lo reflejan todo, nadie paga por informarse; exceso de volatilidad (\autor{Shiller}, 1981); anomalías (tamaño, valor, \emph{momentum}, sobrerreacción, burbujas).
+\item \emph{Límites al arbitraje} (\autor{Shleifer}-\autor{Vishny}, 1997): capital, paciencia, riesgo; burbujas que duran (\autor{Abreu}-\autor{Brunnermeier}, 2003).
+\item \emph{Lectura}: no arbitraje plausible; informativa, buena aproximación; Pareto, no se cumple.
+\end{itemize}
+
+\sub{II.2. La crítica de las finanzas conductuales\label{rep:II.2}}
+\begin{itemize}
+\item Errores \emph{sistemáticos} + arbitraje limitado $\Rightarrow$ mueven precios. Análisis positivo (\autor{Thaler}); teoría de las perspectivas (\autor{Kahneman}-\autor{Tversky}, 1979) \vertema{3.A.10} \vertema{3.A.1}.
+\item \emph{Creencias}: \concepto{exceso de confianza} (los que más operan, menos ganan, \autor{Barber}-\autor{Odean}, 2000; hombres más que mujeres, 2001); \concepto{extrapolación}: perdedores de 3-5 años baten a ganadores (\autor{De Bondt}-\autor{Thaler}, 1985), sobrerreacción.
+\item \emph{Preferencias}: aversión a las pérdidas; \concepto{sesgo por el presente}: descuento \emph{cuasihiperbólico} (\autor{Laibson}, 1997), no exponencial.
+\item \emph{Decisiones}: \concepto{cuentas mentales} (\autor{Thaler}, 1985, 1999): cada riesgo por separado, sin covarianzas.
+\item \emph{Enigmas}: prima de las acciones \dato{6,6 pt sobre letras, 5,5 sobre bonos a 10 años}{Damodaran, 1928-2025} $\Rightarrow$ \emph{aversión miope a las pérdidas} (\autor{Benartzi}-\autor{Thaler}, 1995); exceso de volatilidad (dinero de la casa); efecto disposición (función de valor en S); dividendos pese a tributar más (hasta 2003).
+\item Sesgos $\neq$ arbitraje: lo que ponen en duda es la eficiencia \emph{informativa}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{III. Gestión activa (II): fundamental y técnico\label{rep:III}}
+\begin{ideaclave}
+El fundamental estima el valor intrínseco y apuesta a que el precio converge (exige ineficiencia semifuerte); el técnico busca pautas en los precios (exige ineficiencia débil). La evidencia les deja poco margen tras costes.
+\end{ideaclave}
+
+\sub{III.1. Análisis fundamental\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Análisis fundamental}: \concepto{valor intrínseco} (capacidad de generar beneficios y flujos) frente a precio; valor $>$ precio, comprar (\autor{Graham}-\autor{Dodd}, 1934). Inversión en valor (\autor{Buffett}). «Todo necio confunde valor y precio».
+\item Enfoques \emph{de arriba abajo} (economía $\to$ sector $\to$ empresa) y \emph{de abajo arriba}. Sin eficiencia semifuerte bate al mercado; con ella, sigue sirviendo para no cotizadas y salidas a bolsa.
+\item \emph{Métodos}: \emph{estáticos} (contable, liquidación, sustancial: no miran al futuro); \emph{dinámicos} (descuento de flujos al CMPC menos deuda neta) \vertema{3.B.4}; \emph{relativos} (múltiplos).
+\item \emph{Puente con el CAPM: \autor{Gordon}-\autor{Shapiro}} ($g<r_E$):
+  \begin{formula}
+  \[P_0=\frac{D_1}{r_E-g},\quad g=b\cdot\mathrm{ROE};\qquad \mathrm{PER}=\frac{P_0}{\mathrm{BPA}_1}=\frac{1-b}{r_E-g}\]
+  \end{formula}
+  $r_E$ sale de la SML. PER $\uparrow$ con el crecimiento, $\downarrow$ con el riesgo; PER de mercado $<$ teórico: infravalorada (estrategia de valor).
+\item \emph{Múltiplos}: \emph{directos}, \concepto{PER} (recoge la estructura financiera; alto $\neq$ caro); \emph{indirectos}, \concepto{EV/EBIT} ($EV$ = fondos propios a mercado + deuda neta; no depende del endeudamiento). Apalancamientos distintos: EV/EBIT.
+\item \concepto{CAPE} (\autor{Campbell}-\autor{Shiller}, 1988): precio / media de 10 años de beneficios reales. S\&P 500 \dato{40,7 (oct.\ 2026); media 17,8; máx.\ 44,2 (dic.\ 1999)}{Shiller, 2026}: rentabilidades bajas a 10 años, no dice cuándo. Exceso de rentabilidad del CAPE = 1/CAPE $-$ tipo real a 10 años.
+\end{itemize}
+
+\sub{III.2. Análisis técnico\label{rep:III.2}}
+\begin{itemize}
+\item \concepto{Análisis técnico}: prever precios con precios y volúmenes, sin estudiar la empresa; \concepto{chartismo} = solo gráficos.
+\item \emph{Premisas} (\autor{Murphy}, 1999): (1) el precio lo descuenta todo; (2) tendencias, con soportes y resistencias; (3) la historia se repite: «quien tuvo, retuvo». (1) suena a eficiencia; (2) y (3) niegan el paseo aleatorio, la forma \emph{débil}.
+\item \emph{Teoría de \autor{Dow}}: tendencia primaria (años), secundaria (semanas-meses), menores (días); se confirma con volumen y otros índices.
+\item \concepto{Soporte} (mínimo previo donde la compra frena la caída) y \concepto{resistencia}; resistencia rota $\Rightarrow$ soporte. \concepto{Medias móviles}: cruce \emph{dorado} (la de 50 cruza al alza la de 200: compra) y \emph{de la muerte}. Velas, RSI (\autor{Wilder}, 1978; $>70$ sobrecomprado, $<30$ sobrevendido), sentimiento.
+\end{itemize}
+\pareja{soporte-resistencia}{Soporte, resistencia y media móvil}{sp500-soporte-medias}{S\&P 500: cruces de 2025 y soporte de 6.980}
+\begin{itemize}
+\item \emph{Ejemplo}: S\&P 500, \dato{6.980 puntos}{resistencia ene.-feb.\ 2026, soporte desde la ruptura del 15/4/2026}; cruce de la muerte 14/4/2025 y dorado 1/7/2025.
+\item \emph{Evidencia}: medias y rupturas predecían el Dow 1897-1986 (\autor{Brock}-\autor{Lakonishok}-\autor{LeBaron}, 1992); con \emph{data snooping} desaparece (\autor{Sullivan}-\autor{Timmermann}-\autor{White}, 1999) y no resiste costes; algo de información en patrones (\autor{Lo}-\autor{Mamaysky}-\autor{Wang}, 2000).
+\item \emph{Valoración}: en contra, débil eficiencia, sin teoría, sesgo de recuerdo; a favor, sencillo, \emph{momentum} y profecías autocumplidas a corto; útil para elegir el momento.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: lo que importa es lo que una acción aporta al riesgo de la cartera; \autor{Markowitz}: diversificar; \autor{Tobin}: misma cartera con riesgo; CAPM y APT: solo se paga lo no diversificable; con eficiencia, gestión pasiva; anomalías y conductuales: resquicio para fundamental y técnico.
+\item \textbf{Relevancia}: enfoques complementarios: cartera (si conviene), fundamental (cuánto vale), técnico (cuándo); la diversidad de valoraciones da liquidez y profundidad.
+\item \textbf{Extensiones}: \vertema{3.B.24} \vertema{3.B.25} \vertema{3.B.2} \vertema{3.B.4} \vertema{3.B.3} \vertema{3.A.33} \vertema{3.A.34} \vertema{3.A.37} \vertema{3.B.26} \vertema{3.B.27} \vertema{4.A.20}.
+\item \textbf{Opinión}: la gestión pasiva tiene un límite lógico (\autor{Grossman}-\autor{Stiglitz}): los activos hacen eficiente el mercado del que viven los pasivos.
+\item \textbf{Idea final}: «nadie da nada por nada»: prima solo por el riesgo no diversificable; lo único gratis, diversificar; la bolsa canaliza ahorro a inversión y reparte riesgo.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1900}{\autor{Bachelier}: paseo aleatorio}
+\hito{1934}{\autor{Graham}-\autor{Dodd}: análisis fundamental}
+\hito{1952}{\autor{Markowitz}: media y varianza}
+\hito{1953}{\autor{Kendall}: precios como paseo aleatorio}
+\hito{1958}{\autor{Tobin}: carteras mixtas, separación}
+\hito{1963}{\autor{Sharpe}: modelo de la diagonal}
+\hito{1964}{\autor{Sharpe}: CAPM (\autor{Lintner}, 1965; \autor{Mossin}, 1966)}
+\hito{1965}{\autor{Samuelson}: precios bien anticipados}
+\hito{1968}{\autor{Jensen}: alfa y fondos}
+\hito{1970}{\autor{Fama}: HME (débil, semifuerte, fuerte)}
+\hito{1972}{\autor{Black}: beta cero; \autor{Hamada}: beta y deuda}
+\hito{1973}{\autor{Merton}: ICAPM; \autor{Fama}-\autor{MacBeth}}
+\hito{1974}{\autor{Solnik}: diversificación internacional}
+\hito{1976}{\autor{Ross}: APT}
+\hito{1977}{\autor{Roll}: crítica}
+\hito{1979}{\autor{Breeden}: C-CAPM; \autor{Kahneman}-\autor{Tversky}}
+\hito{1980}{\autor{Grossman}-\autor{Stiglitz}: paradoja}
+\hito{1981}{\autor{Shiller}: exceso de volatilidad}
+\hito{1985}{\autor{Mehra}-\autor{Prescott}: enigma; \autor{De Bondt}-\autor{Thaler}}
+\hito{1986}{\autor{Chen}-\autor{Roll}-\autor{Ross}; \autor{Rubio}: Roll en España}
+\hito{1988}{\autor{Campbell}-\autor{Shiller}: CAPE}
+\hito{1990}{Nobel: \autor{Markowitz}, \autor{Miller}, \autor{Sharpe}}
+\hito{1992}{\autor{Fama}-\autor{French}: tamaño y valor}
+\hito{1993}{\autor{Fama}-\autor{French}: 3 factores; \emph{momentum}}
+\hito{1995}{\autor{Benartzi}-\autor{Thaler}: aversión miope}
+\hito{1997}{\autor{Shleifer}-\autor{Vishny}: límites al arbitraje; \autor{Laibson}}
+\hito{2013}{Nobel: \autor{Fama}, \autor{Hansen}, \autor{Shiller}}
+\hito{2015}{\autor{Fama}-\autor{French}: 5 factores}
+\hito{2017}{Nobel: \autor{Thaler}}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Indexados/fondos a largo plazo en EE.\,UU.: \dato{19\,\% (2010), 52\,\% (2025)}{ICI, 2026}; \dato{54,5\,\% (sept.\ 2026)}{ICI, 2026}.
+\item Cotizadas en BME: \dato{1,10 billones de €, $\approx$2/3 del PIB; IBEX +49\,\%}{BME, 2025}. Mundo: \dato{$\approx$152 billones de \$}{WFE, 2025}.
+\item Prima de las acciones en EE.\,UU.: \dato{6,6 pt (letras), 5,5 pt (bonos a 10 años)}{Damodaran, 1928-2025}.
+\item CAPE del S\&P 500: \dato{40,7; media 17,8}{Shiller, oct.\ 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Beta = volatilidad?} No: $\beta_i=\mathrm{corr}(r_i,r_M)\,\sigma_i/\sigma_M$; muy volátil y poco correlacionada $\Rightarrow$ beta baja.
+\item \textbf{¿Diferencia entre CML y SML?} CML: carteras eficientes, $\sigma$, pendiente ratio de Sharpe; SML: todo activo, $\beta$, pendiente $\lambda_M$. Un activo suelto está bajo la CML: su riesgo específico no se paga.
+\item \textbf{¿Por qué es diagonal el modelo de \autor{Sharpe}?} Lo es la matriz de covarianzas de los \emph{residuos}; la de rentabilidades, $\beta_i\beta_j\sigma_M^2$.
+\item \textbf{¿Es contrastable el CAPM?} \autor{Roll}: solo se contrasta la eficiencia de un índice; \autor{Shanken} y \autor{Rubio}: con correlación mínima, se rechaza en España.
+\item \textbf{¿Refutan las conductuales la eficiencia?} Ponen en duda la informativa, no la ausencia de arbitraje (compatible con burbujas).
+\item \textbf{¿En qué se diferencian CAPM y APT?} Equilibrio frente a no arbitraje; un factor (mercado) frente a varios sin especificar; la APT no necesita la cartera de mercado y escapa a \autor{Roll}; el CAPM es su caso particular.
+\item \textbf{¿Tiene límite la gestión pasiva?} Sí (\autor{Grossman}-\autor{Stiglitz}, 1980): si nadie se informa, los precios dejan de reflejar la información y vuelve a compensar buscarla.
+\item \textbf{¿Por qué el fundamental va al final?} Solo tiene sentido si precio $\neq$ valor y necesita $r_E$ de la SML.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $\beta_i=\mathrm{Cov}(r_i,r_M)/\mathrm{Var}(r_M)$ (covarianza de rentabilidades, no de esperanzas); $\beta=0$ rinde $r_f$ aunque tenga riesgo; $\beta<0$, menos que $r_f$.
+\item Diagonal: $\beta_p=\sum w_i\beta_i$ y $\beta_p^2\sigma_M^2$, \emph{no} $\sum w_i^2\beta_i^2$ (daría riesgo sistemático $\to0$).
+\item Curvas de indiferencia en $(\sigma,\mathbb{E}[r])$: \emph{crecientes} y convexas.
+\item La recta de \autor{Tobin} sale de que el activo seguro no tiene varianza ni covaría; $\sigma_p$ no es media ponderada en general.
+\item Tangencia $T$ = $M$ solo en equilibrio (expectativas homogéneas).
+\item CAPM: equilibrio, no arbitraje, sin normalidad. APT: no arbitraje, no dice qué factores; CAPM, caso particular.
+\item El precio del riesgo ($\lambda_M$) es igual para todos; la prima ($\beta_i\lambda_M$), no.
+\item Formas de eficiencia de débil a fuerte; débil: no sirve el técnico; semifuerte: tampoco el fundamental.
+\item Descuento estándar exponencial; observado, cuasihiperbólico. RSI $\neq$ fuerza relativa. Interés abierto: solo futuros y opciones.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

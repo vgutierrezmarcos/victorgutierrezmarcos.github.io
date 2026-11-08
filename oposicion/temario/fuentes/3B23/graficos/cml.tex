@@ -1,0 +1,39 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% La misma frontera, ejes y escala que markowitz.tex:
+%   sigma(y) = sqrt(1,8^2 + 1,6^2 (y-2,4)^2), MVG = (1,8; 2,4).
+% r_f = 1. Tangente desde (0; r_f): M = (2,3091; 3,3040), pendiente S = 0,99778.
+% CAL(A): A = (1,8282; 2,2) en la frontera, pendiente 0,65638.
+% Curvas de indiferencia y = k + g sigma^2, tangentes a la CML en sigma = S/(2g):
+%   prestamista, g = 0,4:  P_1 = (1,2472; 2,2445), k = 1,6222
+%   prestatario, g = 0,15: P_2 = (3,3259; 4,3185), k = 2,6593
+\begin{tikzpicture}[tcee]
+  \capa{1}{\ejes{$\sigma_p$}{$\mathbb{E}[r_p]$}{7}{7.2}
+    \draw[thick,dashed,tceegris!70] plot[domain=0.6:2.4,samples=40,smooth]
+      ({sqrt(3.24+2.56*(\x-2.4)*(\x-2.4))},\x);
+    \draw[line width=1.8pt,tceegris!70] plot[domain=2.4:5.6,samples=60,smooth]
+      ({sqrt(3.24+2.56*(\x-2.4)*(\x-2.4))},\x);
+    \node[etiqueta,font=\footnotesize,tceegris,below right] at (5.43,5.6) {frontera eficiente};}
+  \capa{2}{\node[punto] (rf) at (0,1) {};
+    \node[etiqueta,left] at (rf) {$r_f$};}
+  \capa{3}{\draw[thick,tceegris] (0,1) -- (5.6,4.6757)
+      node[etiqueta,right] {CAL$(A)$};
+    \node[punto] (A) at (1.8282,2.2) {};
+    \node[etiqueta,below right] at (A) {$A$};}
+  \capa{4}{\draw[curva1,line width=1.8pt] (0,1) -- (5.8,6.7871)
+      node[etiqueta,above,tceemorado] {CML};
+    \node[punto] (M) at (2.3091,3.3040) {};
+    \node[etiqueta,right=2pt] at (M) {$T=M$};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,tceemorado,rotate=44.9,below] at (0.65,1.6486) {prestar};
+    \node[etiqueta,font=\footnotesize,tceemorado,rotate=44.9,below] at (5.0,5.9889) {pedir prestado};}
+  \capa{6}{\draw[thick,tceeverde] plot[domain=0:3.4,samples=40,smooth] (\x,{1.6222+0.4*\x*\x});
+    \node[punto] (P1) at (1.2472,2.2445) {};
+    \node[etiqueta,right=1pt] at (P1) {$P_1$};}
+  \capa{7}{\draw[thick,tceedorado] plot[domain=0:5.3,samples=50,smooth] (\x,{2.6593+0.15*\x*\x});
+    \node[punto] (P2) at (3.3259,4.3185) {};
+    \node[etiqueta,below right] at (P2) {$P_2$};}
+  \capa{8}{\node[etiqueta,right,tceemorado] at (0.1,6.8)
+      {pendiente $=\dfrac{\mathbb{E}[r_M]-r_f}{\sigma_M}$};}
+\end{tikzpicture}
+\end{document}
