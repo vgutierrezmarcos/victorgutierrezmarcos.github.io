@@ -98,7 +98,7 @@ Fecha de consulta: 8/11/2026 en todos los casos.
 | ITF | 0,2 %; «reducir la especulación con derivados» | 0,2 % sobre compra de acciones > 1.000 M€; no grava derivados; 339,15 M€ en 2025 (+36,5 %) | BOE, AEAT | ver `.bib` | AEAT, cap. 6 |
 | Nobel 1997 | «Scholes habría fallecido» | Black murió en 1995 | `Nobel1997Prensa` | ver `.bib` | Crossref |
 | Tulipomanía | «malas cosechas» de 1637 | 1634-1637; Garber y Thompson | `Garber1990Famous`, `Thompson2007Tulipmania` | — | Crossref |
-| FX *swaps* | «el más utilizado», sin dato | 4 bn USD diarios, 42 % (abril de 2025) | `BIS2025Trienal` | https://www.bis.org/statistics/rpfx25_fx.htm | nota del BIS del 30/9/2025 |
+| FX *swaps* | «el más utilizado», sin dato | 4 bn USD diarios, 42 % (abril de 2025) | `BIS2025Trienal`, `HuangKrohnSushko2025FX` | https://www.bis.org/statistics/rpfx25_fx.htm | nota del BIS del 30/9/2025; cifra definitiva del total (9,5 billones) en el BIS Quarterly Review de dic. 2025, comprobada al revisar el 3.B.13 |
 | Líneas *swap* de la Fed | amarillo | 19/3/2020, 9 bancos más los 5 permanentes; máximo ≈450.000 M$ a finales de abril | `Fed2020Swaps`, `GarciaEscuderoSanchez2020Swaps` | ver `.bib` | BdE (2020) |
 | Regulación OTC | EMIR 2012 y 2019 | G-20 de 2009, EMIR, Refit, 2.2, EMIR 3 (2024/2987), MiFIR, ventas en corto | EUR-Lex, G20 | ver `.bib` | autoridades de Malta y Austria (EMIR 3) |
 | LIBOR | ejemplo de referencia | dejó de publicarse (último sintético USD, 30/9/2024): Euríbor/€STR | `FCA2026LIBOR` | ver `.bib` | ICMA (2024) |
@@ -221,7 +221,7 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
 - **D7 de contenido. Ranking de bolsas de 2025.** Se usa el dato anual de la FIA (Q4 2025): NSE primera, confirmada por la nota de la NSE. La B3 superó a la NSE solo en los primeros meses de 2025.
 - **D8 de contenido. Segundas comprobaciones pendientes antes de publicar.**
   - El PIB mundial de 2025 (no se usa «7 veces»).
-  - Las cifras finales de la Encuesta Trienal de 2025 (junio de 2026) frente a las preliminares (4,0 y 9,6 billones).
+  - Resuelto al revisar el 3.B.13 (8/11/2026): la cifra definitiva del total es 9,5 billones (la preliminar era 9,6); los FX swaps siguen en 4 billones y el 42 %.
   - El máximo de las líneas *swap* de la Fed en la serie SWPT de FRED.
   - Las URL estables de los informes de Archegos, LTCM y Brady.
   - Una cita del BIS, el FSB o la ESMA para la prociclicidad de los márgenes (2020 y 2022) y la concentración de la compensación en la UE.
