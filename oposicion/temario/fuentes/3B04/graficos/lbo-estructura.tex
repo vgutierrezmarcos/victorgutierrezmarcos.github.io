@@ -1,0 +1,56 @@
+% Estructura de capital antes y después de un LBO (3.B.4, anexo D).
+% DATOS ILUSTRATIVOS, sin fuente: rehace el escaneo de la imagen 8 del
+% original (sin título ni fuente). Los 2 paneles son coherentes entre sí:
+% antes, 200 = 180 de fondos propios + 20 de deuda (90 % / 10 %); después,
+% 400 = 60 + 340 (15 % / 85 %), dentro de la horquilla habitual del 60-90 %
+% de deuda en un LBO.
+% Capas (CRITERIOS §7): barras → ejes → etiquetas y leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 2: los ejes aparecen en el paso 2 (antes, solo las barras)
+  \ifnum2>\tceepaso\relax
+    \pgfplotsset{every axis/.append style={axis line style={draw=none},
+      tick style={draw=none},ticklabel style={opacity=0},title style={opacity=0}}}
+  \fi
+  \pgfplotsset{lbo/.style={
+    ybar stacked, bar width=1.1cm, width=6.2cm, height=6.4cm,
+    symbolic x coords={Antes,Después}, xtick=data, enlarge x limits=0.45,
+    axis x line*=bottom, axis y line*=left, ymin=0,
+    title style={font=\small\bfseries},
+    tick label style={font=\footnotesize},
+    ymajorgrids, x tick style={draw=none}, grid style={tceegris!25},
+    dicapas}}
+  \begin{axis}[lbo, name=pct, title={Estructura de capital (\%)},
+      ymax=100, ytick={0,20,...,100},
+      legend to name=leyendalbo, legend columns=2,
+      legend style={draw=none,font=\footnotesize,/tikz/every even column/.append style={column sep=0.6cm}}]
+    % 1: barras
+    \addplot[on layer=dicbarras, dicbarra=tceemorado] coordinates {(Antes,90) (Después,15)};
+    \addlegendentry{Fondos propios}
+    \addplot[on layer=dicbarras, dicbarra=tceedorado] coordinates {(Antes,10) (Después,85)};
+    \addlegendentry{Deuda}
+    % 3: etiquetas
+    \capa{3}{\dicrotulo[text=white,font=\footnotesize]{(Antes,45)}{90}}
+    \capa{3}{\dicrotulo[font=\footnotesize]{(Antes,95)}{10}}
+    \capa{3}{\dicrotulo[text=white,font=\footnotesize]{(Después,7.5)}{15}}
+    \capa{3}{\dicrotulo[font=\footnotesize]{(Después,57.5)}{85}}
+  \end{axis}
+  \begin{axis}[lbo, at={($(pct.east)+(1.2cm,0)$)}, anchor=west,
+      title={Estructura de capital (millones)},
+      ymax=420, ytick={0,100,...,400}]
+    % 1: barras
+    \addplot[on layer=dicbarras, dicbarra=tceemorado] coordinates {(Antes,180) (Después,60)};
+    \addplot[on layer=dicbarras, dicbarra=tceedorado] coordinates {(Antes,20) (Después,340)};
+    % 3: etiquetas
+    \capa{3}{\dicrotulo[text=white,font=\footnotesize]{(Antes,90)}{180}}
+    \capa{3}{\dicrotulo[font=\footnotesize,right,xshift=0.6cm]{(Antes,190)}{20}}
+    \capa{3}{\dicrotulo[text=white,font=\footnotesize]{(Después,30)}{60}}
+    \capa{3}{\dicrotulo[font=\footnotesize]{(Después,230)}{340}}
+  \end{axis}
+  % 3: leyenda común
+  \capa{3}{\node[anchor=north] at ($(pct.south east)!0.5!(pct.south east)+(0.6cm,-0.7cm)$) {\pgfplotslegendfromname{leyendalbo}};}
+\end{tikzpicture}
+\end{document}

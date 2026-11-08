@@ -1,0 +1,91 @@
+% Crecimiento financieramente sostenible (3.B.4, III.1). Rehace el esquema
+% escaneado del original (imagen 3, sin fuente) a partir de Higgins (1977):
+% g* = b·ROE. Balances en bloques con alturas proporcionales y el ejemplo del
+% texto: activo 100, deuda 40, patrimonio neto 60 (deuda = 2/3 de los fondos
+% propios; activo/fondos propios = 5/3); ventas 240 (rotación 2,4); beneficio
+% 24 (margen 10 %; ROE = 0,10·2,4·5/3 = 0,40); b = 0,5: dividendos 12 y
+% retenido 12; g* = 0,5·0,40 = 0,20: patrimonio neto 72, deuda 48, activo 120,
+% ventas 288 (todo crece un 20 %). Las franjas nuevas, sombreadas.
+% (Sin D ni E en los rótulos: en el tema D_t es el dividendo.)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    activo/.style={draw=tceeazul,fill=tceeazul!12,thick},
+    deuda/.style={draw=tceegris,fill=tceegris!15,thick},
+    neto/.style={draw=tceemorado,fill=tceemorado!12,thick},
+    activonuevo/.style={draw=tceeazul,fill=tceeazul!50,thick},
+    deudanueva/.style={draw=tceegris,fill=tceegris!55,thick},
+    netonuevo/.style={draw=tceemorado,fill=tceemorado!50,thick},
+    caja/.style={draw=black,thick,align=center,font=\footnotesize,inner sep=3pt},
+    texto/.style={align=center,font=\footnotesize},
+    titulo/.style={font=\small\bfseries,align=left},
+    pasotexto/.style={font=\footnotesize\bfseries,anchor=north west,text width=3.8cm,align=left},
+    paso/.style={->,very thick,tceegris}]
+  % 1: situación inicial
+  \capa{1}{\node[titulo,anchor=south west] at (0,12.6) {1. Situación inicial};}
+  \capa{1}{\draw[activo] (0,9.5) rectangle (1.7,12.5);}
+  \capa{1}{\node[texto] at (0.85,11) {Activo\\ 100};}
+  \capa{1}{\draw[deuda] (1.8,11.3) rectangle (3.5,12.5);}
+  \capa{1}{\node[texto] at (2.65,11.9) {Deuda\\ 40};}
+  \capa{1}{\draw[neto] (1.8,9.5) rectangle (3.5,11.3);}
+  \capa{1}{\node[texto] at (2.65,10.4) {Patrimonio\\ neto\\ 60};}
+  % 2: beneficio, dividendos y retención
+  \capa{2}{\draw[paso] (3.8,11.6) -- (5.9,12.2);}
+  \capa{2}{\node[titulo,anchor=south west] at (6.2,12.6) {2. Proyección del año siguiente};}
+  \capa{2}{\node[caja] (B) at (7.6,12) {Beneficio: 24\\ (ROE = 40~\%)};}
+  \capa{2}{\node[caja] (Div) at (6.75,10.3) {Dividendos: 12\\ $(1-b)=0{,}5$};}
+  \capa{2}{\node[caja] (Ret) at (8.45,9.4) {Retenido: 12\\ $b=0{,}5$};}
+  \capa{2}{\draw[->,thick] (B.south) -- (Div.north);}
+  \capa{2}{\draw[->,thick] (B.south) -- (Ret.north);}
+  \capa{2}{\draw[neto] (10.2,9.5) rectangle (11.9,11.3);}
+  \capa{2}{\node[texto] at (11.05,10.4) {Patrimonio\\ neto\\ 60};}
+  \capa{2}{\draw[netonuevo] (10.2,11.3) rectangle (11.9,11.66);}
+  \capa{2}{\node[texto,anchor=south] at (11.05,11.66) {$+12$ ($+20$~\%)};}
+  \capa{2}{\draw[->,thick] (Ret.east) -| (10.05,11.48) -- (10.2,11.48);}
+  % 3: aumento de la deuda
+  \capa{3}{\draw[paso] (11.05,9.3) -- (11.05,7.6);}
+  \capa{3}{\node[pasotexto] at (6.2,7.3)
+    {3. Si no cambia el endeudamiento (deuda/patrimonio neto constante), la deuda aumenta en la misma proporción};}
+  \capa{3}{\draw[deuda] (10.2,5.6) rectangle (11.9,6.8);}
+  \capa{3}{\node[texto] at (11.05,6.2) {Deuda\\ 40};}
+  \capa{3}{\draw[deudanueva] (10.2,6.8) rectangle (11.9,7.04);}
+  \capa{3}{\node[texto,anchor=south] at (11.05,7.04) {$+8$};}
+  % 4: aumento del activo
+  \capa{4}{\draw[paso] (11.05,5.4) -- (11.05,4.1);}
+  \capa{4}{\node[pasotexto] at (6.2,1.9)
+    {4. Y el activo (los recursos invertidos) aumenta en la misma proporción};}
+  \capa{4}{\draw[activo] (10.2,0) rectangle (11.9,3);}
+  \capa{4}{\node[texto] at (11.05,1.5) {Activo\\ 100};}
+  \capa{4}{\draw[activonuevo] (10.2,3) rectangle (11.9,3.6);}
+  \capa{4}{\node[texto,text=white] at (11.05,3.3) {$+20$};}
+  % 5: situación final
+  \capa{5}{\draw[paso] (9.9,3.4) -- (3.9,5.3);}
+  \capa{5}{\node[titulo,anchor=south west] at (0,7.7) {5. Situación final};}
+  \capa{5}{\draw[activo] (0,4) rectangle (1.7,7);}
+  \capa{5}{\node[texto] at (0.85,5.5) {Activo\\ 120};}
+  \capa{5}{\draw[activonuevo] (0,7) rectangle (1.7,7.6);}
+  \capa{5}{\draw[neto] (1.8,4) rectangle (3.5,5.8);}
+  \capa{5}{\node[texto] at (2.65,4.9) {Patrimonio\\ neto 72};}
+  \capa{5}{\draw[netonuevo] (1.8,5.8) rectangle (3.5,6.16);}
+  \capa{5}{\draw[deuda] (1.8,6.16) rectangle (3.5,7.36);}
+  \capa{5}{\node[texto] at (2.65,6.76) {Deuda 48};}
+  \capa{5}{\draw[deudanueva] (1.8,7.36) rectangle (3.5,7.6);}
+  % 6: ventas y fórmula g* = b·ROE
+  \capa{6}{\draw[paso] (0.85,3.8) -- (0.85,2.9);}
+  \capa{6}{\node[pasotexto,text width=5.6cm] at (0,2.7)
+    {6. Si no cambia la rotación (ventas/activo), las ventas crecen en la misma proporción};}
+  \capa{6}{\draw[activo] (0.4,-1.5) rectangle (1.4,0);}
+  \capa{6}{\node[texto,below] at (0.9,-1.5) {Ventas 240};}
+  \capa{6}{\draw[activo] (2.2,-1.5) rectangle (3.2,0);}
+  \capa{6}{\draw[activonuevo] (2.2,0) rectangle (3.2,0.3);}
+  \capa{6}{\node[texto,below] at (2.7,-1.5) {Ventas 288};}
+  \capa{6}{\node[anchor=west,font=\normalsize] at (3.7,-0.6) {$g^*=b\cdot\mathrm{ROE}=0{,}5\cdot0{,}40=20~\%$};}
+  \capa{6}{\node[anchor=north,font=\normalsize] at (5.95,-2.4)
+    {$g^*=b\cdot\mathrm{ROE}=b\cdot
+      \underbrace{\frac{\text{beneficio}}{\text{ventas}}}_{\substack{\text{margen}\\ 0{,}10}}\cdot
+      \underbrace{\frac{\text{ventas}}{\text{activo}}}_{\substack{\text{rotación}\\ 2{,}4}}\cdot
+      \underbrace{\frac{\text{activo}}{\text{fondos propios}}}_{\substack{\text{apalancamiento}\\ 5/3}}$};}
+\end{tikzpicture}
+\end{document}
