@@ -1,0 +1,368 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Inversión y coste del capital]{3.B.2}{La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital.}
+\tcefecha{08/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «más vale un hoy que dos mañanas»}{2,5}
+\apartadocante{I. Métodos generales de valoración y selección}{10,5}
+\subcante{Apertura: presupuesto de capital}{0,5}
+\subcante{1. Variables de una inversión}{1,25}
+\subcante{2. Principios de valoración}{0,75}
+\subcante{3. Métodos de valoración}{7,5}
+\subcante{\hspace*{0.8em}Estáticos}{0,5}
+\subcante{\hspace*{0.8em}VAN; TIR; VAN frente a TIR}{3,5}
+\subcante{\hspace*{0.8em}TIRM e índice del VAN}{0,75}
+\subcante{\hspace*{0.8em}Tasa ajustada, equivalente cierto, sensibilidad}{1,25}
+\subcante{\hspace*{0.8em}Opciones reales}{1,5}
+\subcante{4. ¿Qué se usa en la práctica?}{0,5}
+\apartadocante{II. Valoración de otros proyectos de inversión}{6,5}
+\subcante{Apertura y clasificación}{0,75}
+\subcante{1. Activos reales: retiro, MAPI, caja, intangibles}{4,5}
+\subcante{2. Inversiones financieras}{0,5}
+\subcante{3. Capital humano}{0,75}
+\apartadocante{III. Rentabilidad, riesgo y coste del capital}{9,5}
+\subcante{Apertura}{0,25}
+\subcante{1. Rentabilidad: ROA y ROE}{1,75}
+\subcante{2. Riesgo: GAO y GAF}{2}
+\subcante{3. Coste del capital: CAPM, \autor{Gordon}, WACC}{5,5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: refrán arriba a la izq.; VAN recuadrado a la dcha. de \hyperref[rep:I.3]{I.3} al final. I: línea de flujos; VAN de A y B con TIR y punto de \autor{Fisher} (imprescindible). II: U de \autor{Baumol}-\autor{Tobin} (imprescindible) con $M^*$ y \autor{Wilson}. III: 3 vías y WACC recuadrado con flecha a la $k$ del VAN. Pegatinas: «borrón y cuenta nueva», «lo bueno, si breve\ldots», «no por mucho madrugar\ldots», «renovarse o morir», «en el término medio está la virtud».
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «más vale un hoy que dos mañanas»; invertir le lleva la contraria. Intel en Magdeburgo: 2 fábricas de chips, \dato{$>$30.000 M€, 9.900 M de ayuda}{2023}; aplazada (2024) y abandonada (jul. 2025). No cambió la fábrica: cambiaron los flujos esperados, el coste de financiarlos y el valor de esperar.
+\item \textbf{Relevancia}: la inversión, componente más volátil de la demanda \vertema{3.A.34} y vía del ahorro al capital y al crecimiento \vertema{3.A.43}. SNF españolas \dato{$\approx$218.000 M€, casi 13\,\% del PIB}{Eurostat, 2025}. Mismos criterios para la inversión pública con tasa social de descuento \vertema{4.B.6}.
+\item \textbf{Contextualización}: micro: maximiza beneficio \vertema{3.A.12}; \autor{Friedman} (1970): aumentar beneficios $\to$ finanzas: \concepto{maximizar el valor para el accionista} (\autor{Jensen}, 2001). 3 decisiones: \emph{inversión} (este tema), \emph{financiación} \vertema{3.B.3}, \emph{dimensión} \vertema{3.B.4}. \concepto{Inversión}: compromiso actual de recursos con la expectativa de beneficios futuros: \emph{tiempo} + \emph{riesgo}. \concepto{Activos reales} (producen) frente a \concepto{financieros} (derechos sobre sus rentas). Historia: \autor{Fisher} (1930, separación) $\to$ \autor{Keynes} (1936, EMgK) $\to$ \autor{Dean} (1951, \emph{capital budgeting}) $\to$ \autor{Lorie}-\autor{Savage} (1955), \autor{Hirshleifer} (1958) $\to$ \autor{Markowitz}, \autor{Sharpe}, MM $\to$ opciones reales (\autor{Myers}, 1977; \autor{Dixit}-\autor{Pindyck}, 1994).
+\item \textbf{Problemática}: ¿qué proyectos crean valor y con qué criterio? ¿En qué invierte la empresa y cómo se valora cada cosa? ¿Qué rentabilidad exigir según el riesgo: cuál es el coste del capital?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, criterios con $k$ dada; \hyperref[rep:II]{II}, inversiones concretas; \hyperref[rep:III]{III}, de dónde sale $k$ (el riesgo convertido en coste).
+\end{itemize}
+
+% ==========================================================================
+\bloque[10,5]{I. Métodos generales de valoración y selección\label{rep:I}}
+\begin{ideaclave}
+El VAN es el criterio coherente con maximizar el valor; los demás (TIR, \emph{payback}) son aproximaciones útiles que pueden equivocarse.
+\end{ideaclave}
+\begin{itemize}
+\item \concepto{Presupuesto de capital}, 5 etapas: identificar, estimar flujos/riesgo/tasa, evaluar y seleccionar, aprobar y ejecutar, revisar (auditoría \emph{ex post}). Riesgo de incentivos: proponente optimista $\Rightarrow$ tasas de corte altas \vertema{3.A.13}.
+\end{itemize}
+
+\sub{I.1. Variables de una inversión\label{rep:I.1}}
+\begin{itemize}
+\item 5 variables: \concepto{desembolso inicial} $I_0$ (sin costes hundidos); \concepto{flujos de caja} $\mathrm{FC}_t$ = flujo de caja libre, como si no hubiera deuda \vertema{3.B.4}:
+  \begin{formula}
+  \[\mathrm{FC}_t=\mathrm{EBIT}_t(1-t_{\mathrm{IS}})+\text{amort.}_t-\mathrm{CAPEX}_t-\Delta\mathrm{NOF}_t\]
+  \end{formula}
+\item \concepto{duración} $n$ (vida útil, tecnológica, económica); \concepto{valor residual} $\mathrm{VR}$; \concepto{tasa de descuento} $k$ (lo que se deja de ganar con igual riesgo).
+\end{itemize}
+\graficorepaso[0.72\linewidth]{esquema-pagos}{Esquema de pagos de un proyecto}
+\begin{itemize}
+\item \emph{Simples}: un cambio de signo. \emph{No simples} (\autor{Teichroew}-\autor{Robichek}-\autor{Montalbano}, 1965): \emph{puras} (saldo nunca $>0$ antes del final; TIR única) y \emph{mixtas} (el proyecto financia a la empresa un tiempo; p.\,ej. $-100,+230,-132$: TIR de 10 y 20\,\%).
+\end{itemize}
+
+\sub{I.2. Principios de valoración\label{rep:I.2}}
+\begin{enumerate}
+\item Flujos de caja, no contables (amortización no es pago; NOF sí).
+\item Incrementales: costes hundidos fuera, «borrón y cuenta nueva»; sí efectos sobre otros negocios y recursos propios usados.
+\item De oportunidad: frente a las alternativas (solar: hotel, aparcamiento, vender, esperar).
+\item Separar inversión y financiación: sin intereses ni dividendos; la financiación entra por $k$ (si no, se cuenta 2 veces).
+\item Después de impuestos.
+\item Coherencia: nominal con nominal, real con real.
+\end{enumerate}
+
+\sub{I.3. Métodos de valoración\label{rep:I.3}}
+\textbf{a) Estáticos} (no descuentan). Flujo neto por unidad comprometida $\sum\mathrm{FC}_t/I_0>1$. \concepto{Plazo de recuperación} (\emph{payback}): con FC constantes, $I_0/\mathrm{FC}$. Sencillos, idea de liquidez y riesgo; pero suman euros de fechas distintas, sin $k$, e ignoran los flujos tras la recuperación (cortoplacismo). \emph{Payback descontado}: corrige lo 1.º, no lo 2.º.
+
+\textbf{b) VAN}. \concepto{Valor actual neto}: VA de los flujos a $k$ menos el desembolso = aumento del valor de la empresa:
+\funcionclave{\mathrm{VAN}=-I_0+\sum_{t=1}^{n}\frac{\mathrm{FC}_t}{(1+k)^t}+\frac{\mathrm{VR}}{(1+k)^n}}
+\begin{itemize}
+\item Aceptar si $\mathrm{VAN}>0$; excluyentes: mayor VAN; independientes sin límite de capital: todos los de $\mathrm{VAN}>0$.
+\item \emph{Ventajas}: todos los flujos y su calendario, riesgo vía $k$, \emph{aditivo}, coherente con maximizar el valor (\autor{Hirshleifer}, 1958).
+\item \emph{Límites}: $k$ no se observa; $k$ constante y prestar/endeudarse a $k$ («reinversión a $k$»: es la hipótesis correcta); número absoluto; decisión de ahora o nunca.
+\end{itemize}
+
+\textbf{c) TIR}. \concepto{Tasa interna de rentabilidad}: la que anula el VAN; \autor{Keynes}: \emph{eficiencia marginal del capital} \vertema{3.A.34}; en un bono, rentabilidad a vencimiento \vertema{3.B.24}.
+\begin{itemize}
+\item La TIR resuelve:
+  \begin{formula}
+  \[-I_0+\sum_{t=1}^{n}\frac{\mathrm{FC}_t}{(1+\mathrm{TIR})^t}+\frac{\mathrm{VR}}{(1+\mathrm{TIR})^n}=0\]
+  \end{formula}
+  Aceptar si $\mathrm{TIR}>k$ (coste del capital máximo soportable). Un número en \%, comparable; calcularla no exige $k$.
+\item \emph{Límites}: reinversión a la propia TIR; varias o ninguna con flujos no convencionales (\autor{Descartes}: n.º de raíces positivas $\leq$ cambios de signo); ordena mal excluyentes. FC constantes y vida ilimitada: $\mathrm{TIR}=\mathrm{FC}/I_0=1/\textit{payback}$.
+\end{itemize}
+
+\textbf{d) VAN frente a TIR}
+\begin{itemize}
+\item \emph{Aceptar/rechazar} (simple): coinciden, $\mathrm{VAN}(k)>0\iff\mathrm{TIR}>k$.
+\item \emph{Ordenar} excluyentes: discrepan si las curvas se cortan: \concepto{punto de \autor{Fisher}} $k^{\mathrm F}$ (una \emph{tasa}, con VAN iguales). Por \emph{escala} o por \emph{calendario} (el que cobra tarde es más sensible a $k$).
+\item Ej.: ambos cuestan 100; A cobra 144 en $t=2$ ($\mathrm{TIR}_{\mathrm A}=20$\,\%), B 125 en $t=1$ ($\mathrm{TIR}_{\mathrm B}=25$\,\%):
+  \begin{formula}
+  \[\frac{144}{(1+k^{\mathrm F})^2}=\frac{125}{1+k^{\mathrm F}}\ \Rightarrow\ k^{\mathrm F}=\frac{144}{125}-1=15{,}2\text{\,\%}\]
+  \end{formula}
+  Con $k=8$\,\%: $\mathrm{VAN}_{\mathrm A}\approx23{,}5>\mathrm{VAN}_{\mathrm B}\approx15{,}7$: VAN elige A, TIR elige B. Con $k>k^{\mathrm F}$, los 2 eligen B.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{van-fisher}{VAN de A y B frente a $k$: TIR y punto de \autor{Fisher}}
+\begin{itemize}
+\item Hacer caso al VAN (euros de valor); la TIR premia lo pequeño o corto: «lo bueno, si breve, dos veces bueno», pero no siempre (\autor{Lorie}-\autor{Savage}, 1955; \autor{Hirshleifer}, 1958).
+\end{itemize}
+
+\textbf{e) TIR modificada (TIRM)}. Corrige reinversión a la TIR y TIR múltiples. 3 pasos: negativos al 0 a $k$ ($VA^{-}$); positivos al final a la tasa de reinversión, normalmente $k$ ($VF^{+}$); y
+\begin{itemize}
+\item la TIRM iguala ambos en $n$ periodos:
+  \begin{formula}
+  \[VA^{-}=\frac{VF^{+}}{(1+\mathrm{TIRM})^n}\qquad(\mathrm{TIRM}>k\iff\mathrm{VAN}>0)\]
+  \end{formula}
+  Única; pero relativa: con escalas distintas puede ordenar distinto que el VAN.
+\end{itemize}
+
+\textbf{f) Índice del VAN y racionamiento}. $\mathrm{IVAN}=\mathrm{VAN}/I_0$ (aceptar si $>0$). \concepto{Racionamiento de capital} \emph{duro} (no hay fondos) o \emph{blando} (tope de la dirección):
+\begin{itemize}
+\item programa con proyectos divisibles:
+  \begin{formula}
+  \[\max_{x_j}\sum_{j}x_j\mathrm{VAN}_j\ \text{s.\,a.}\ \sum_{j}x_jI_{0,j}\leq\overline I,\ 0\leq x_j\leq1\]
+  \end{formula}
+  Solución: ordenar por IVAN hasta agotar $\overline I$. Ej.: $\overline I=100$; 1 (100; 30), 2 (50; 20), 3 (50; 18): 2+3 dan 38 $>$ 30 (IVAN 0,40 y 0,36 frente a 0,30). Indivisibles o varios años: programación lineal o entera (\autor{Weingartner}, 1963). El blando, señal de fallos de agencia o información.
+\end{itemize}
+
+\textbf{g) Criterios con riesgo}. Por la tasa o por los flujos (mismo resultado bien hechos), más sensibilidad y opciones reales.
+\begin{itemize}
+\item \emph{Tasa ajustada}: flujos \emph{esperados} a $k=r_f+$ prima del proyecto; riesgo medio $\Rightarrow$ WACC; sumar una prima al WACC de un proyecto medio cuenta el riesgo 2 veces.
+\item \concepto{Equivalente cierto}: cantidad segura que se valora igual, $\xi_t=\alpha_t\mathbb{E}[\mathrm{FC}_t]$, $0<\alpha_t\leq1$ \vertema{3.A.10}, descontada a $r_f$ (no al WACC):
+  \begin{formula}
+  \[\mathrm{VAN}=-I_0+\sum_{t=1}^{n}\frac{\alpha_t\,\mathbb{E}[\mathrm{FC}_t]}{(1+r_f)^t};\quad \alpha_t=\Big(\frac{1+r_f}{1+k}\Big)^{t}\ \text{iguala}\]
+  \end{formula}
+  $\alpha_t$ cae con $t$: tasa constante = riesgo que crece geométricamente con el plazo; no vale si el riesgo está al principio.
+\item \emph{Sensibilidad} (una variable; punto muerto), \emph{escenarios} (varias coherentes), \emph{Monte Carlo} (\autor{Hertz}, 1964: distribución del VAN). Informan, no deciden.
+\end{itemize}
+
+\textbf{h) Opciones reales}. El VAN supone inversión \emph{reversible} o \emph{de ahora o nunca} (\autor{Dixit}-\autor{Pindyck}, 1994). \concepto{Opción real}: derecho, no obligación, de cambiar el proyecto (\autor{Myers}, 1977); valor = VAN estático + opciones (\autor{Trigeorgis}, 1996).
+\begin{itemize}
+\item \emph{Esperar}: coste $I_0$ irrecuperable; en un año $V^{\mathrm A}$ (prob. $\pi$) o $V^{\mathrm B}$, $V^{\mathrm B}<I_0<V^{\mathrm A}$; neutral al riesgo, $r_f$. Invertir hoy solo si:
+  \begin{formula}
+  \[V_0-I_0\ \geq\ \frac{\pi\,(V^{\mathrm A}-I_0)}{1+r_f}\]
+  \end{formula}
+  No basta $\mathrm{VAN}>0$. \autor{Pindyck} (1991): fábrica de 1.600 que vale 2.200 (VAN 600), esperando vale $\approx$773. «No por mucho madrugar amanece más temprano».
+\item Valor $\uparrow$ con incertidumbre, tiempo e irreversibilidad. Ampliar, reducir, abandonar, por fases: \emph{árbol de decisión} (cuadrados = decisión, círculos = azar; hacia atrás) o modelos de opciones \vertema{3.B.25}. La incertidumbre frena la inversión \vertema{3.A.34}. Difícil de estimar; poco usado.
+\end{itemize}
+
+\sub{I.4. ¿Qué se usa en la práctica?\label{rep:I.4}}
+\begin{itemize}
+\item \autor{Graham}-\autor{Harvey} (2001; 392 directores financieros, 1999): \dato{VAN 74,9\,\%, TIR 75,7\,\%}{siempre o casi}; \emph{payback} más de la mitad; grandes más VAN; casi el 60\,\% una sola tasa para todo (2002).
+\item Mediados de los 70: VAN regla principal en el 10\,\% (\autor{Gitman}-\autor{Forrester}, 1977); 2020: 77\,\% de grandes, 40\,\% de pequeñas (\autor{Graham}, 2022).
+\item Tasa de corte media 15\,\%, $\approx$6 puntos sobre el coste del capital: sin directivos para todos los VAN $>0$ (\autor{Jagannathan} et al., 2016).
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{II. Valoración de otros proyectos de inversión\label{rep:II}}
+\begin{ideaclave}
+La misma regla (VAN) responde a preguntas distintas según el activo; en el activo corriente se equilibra el coste de mantener con el de reponer.
+\end{ideaclave}
+\begin{itemize}
+\item Sentido amplio: toda decisión que cambia el activo. Por motivo: \emph{renovación}, \emph{expansión} (más de lo mismo), \emph{modernización/innovación}, \emph{estratégicas} (I+D). Por relación: independientes, complementarias, excluyentes (comparar VAN), dependientes (valorar el conjunto).
+\end{itemize}
+
+\sub{II.1. Inversiones en activos reales\label{rep:II.1}}
+\textbf{a) No corriente: vida óptima}
+\begin{itemize}
+\item \emph{Retiro simple} (sin sustitución): \concepto{vida económica} = $n$ que maximiza $\mathrm{VAN}(n)$ con $\mathrm{VR}_n$. $n$ entero, sin derivar: seguir un año más si
+  \begin{formula}
+  \[\mathrm{FC}_{n+1}+\mathrm{VR}_{n+1}\geq(1+k)\,\mathrm{VR}_n\]
+  \end{formula}
+\item \emph{Reemplazos idénticos}: maximizar la cadena, no $\mathrm{VAN}(n)$; equivale a maximizar el \concepto{valor anual equivalente}:
+  \begin{formula}
+  \[\mathrm{VAN}_\infty(n)=\mathrm{VAN}(n)\frac{(1+k)^n}{(1+k)^n-1}=\frac{\mathrm{VAE}(n)}{k}\]
+  \end{formula}
+  Se retira \emph{antes} que en el simple (retrasar el siguiente ciclo cuesta). VAE: compara equipos de vidas distintas.
+\item \emph{Reemplazos distintos}: \concepto{MAPI} o \emph{mínimo adverso} (\autor{Terborgh}, 1949): coste del capital ($a/n$, $\downarrow$) + inferioridad de servicio ($c\,n$, $\uparrow$); mínimo en $n^*=\sqrt{a/c}$. Sustituir cuando seguir cuesta más que el mínimo adverso del mejor nuevo: «renovarse o morir», en el momento justo.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{mapi}{MAPI: coste del capital + inferioridad de servicio; mínimo adverso en $n^*$}
+
+\textbf{b) Corriente: existencias}. Complementaria del no corriente; entra como $\Delta\mathrm{NOF}$. Problema de inventario: tener mucho cuesta rendimiento; poco, reponer a menudo.
+\begin{itemize}
+\item \concepto{Lote económico} (\autor{Wilson}, 1934; antes \autor{Harris}, 1913): $Y$ uds. a ritmo constante, pedido $b$, mantener $c_a$:
+  \begin{formula}
+  \[\min_Q\ b\frac{Y}{Q}+c_a\frac{Q}{2}\ \Rightarrow\ Q^*=\sqrt{\frac{2bY}{c_a}}\]
+  \end{formula}
+  Con demanda incierta, regla $(S,s)$ (\autor{Arrow}-\autor{Harris}-\autor{Marschak}, 1951; \autor{Scarf}, 1960) \vertema{3.A.34} \vertema{3.A.33}.
+\end{itemize}
+
+\textbf{c) Tesorería: \autor{Baumol} (1952) y \autor{Tobin} (1956)}. Mismo problema con el dinero \vertema{3.A.35}. Pagos $Y$ ciertos; activos líquidos rinden $i$; cada reposición cuesta $b$; repone $M$: dientes de sierra, $Y/M$ reposiciones, saldo medio $M/2$.
+\begin{itemize}
+\item Minimiza reposición + oportunidad:
+  \begin{formula}
+  \[\min_M\ CT=b\frac{Y}{M}+i\frac{M}{2}\Rightarrow M^*=\sqrt{\frac{2bY}{i}},\ M^D=\sqrt{\frac{bY}{2i}}\]
+  \end{formula}
+  Hipérbola $\downarrow$ + recta $\uparrow$ = U; mínimo donde son iguales; $CT^*=\sqrt{2biY}$. Es \autor{Wilson} con $i$ como coste de almacenar. «En el término medio está la virtud».
+\end{itemize}
+\graficorepaso[\linewidth]{baumol-tesoreria}{\autor{Baumol}-\autor{Tobin}: a) dientes de sierra; b) coste total en U y $M^*$}
+\begin{itemize}
+\item $M^D=f(\underset{+}{Y},\underset{+}{b},\underset{-}{i})$; elasticidades $1/2$, $1/2$, $-1/2$: \emph{economías de escala} (doble de pagos $\Rightarrow$ +41\,\% de caja; \emph{cash pooling}). Tipos $\approx0$: se acumula liquidez.
+\item Ej.: $Y=3{,}6$ M€, $b=50$, $i=4$\,\%: $M^*\approx94.900$ €, $\approx$38 veces/año, saldo medio $\approx$47.400, coste $\approx$3.800. Con $i=8$\,\%, $M^*\approx67.100$.
+\item Esquina: si $Y\leq2b/i$, todo en caja (pequeñas, tipos bajos).
+\end{itemize}
+
+\textbf{d) Con incertidumbre: \autor{Miller}-\autor{Orr} (1966)}. Saldo = paseo aleatorio con varianza diaria $\sigma^2$; coste $b$ por operación; rendimiento $i$ diario. \emph{Banda de control}:
+\begin{itemize}
+\item $M^{\mathrm{inf}}$ lo fija la empresa; retorno $M^{\mathrm{ret}}=M^{\mathrm{inf}}+z^*$; máximo $M^{\mathrm{sup}}=M^{\mathrm{inf}}+3z^*$, con
+  \begin{formula}
+  \[z^*=\Big(\frac{3\,b\,\sigma^2}{4\,i}\Big)^{1/3},\quad \text{saldo medio}=M^{\mathrm{inf}}+\tfrac43 z^*\]
+  \end{formula}
+  Toca arriba: compra activos hasta $M^{\mathrm{ret}}$; abajo: vende. Banda $\uparrow$ con $\sigma^2$ y $b$, $\downarrow$ con $i$; retorno a 1/3 de la banda. Regla $(S,s)$ para la caja.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{miller-orr}{\autor{Miller}-\autor{Orr}: la caja se mueve libre dentro de la banda}
+
+\textbf{e) Liquidez como seguro: \autor{Holmström}-\autor{Tirole} (2011)}. ¿Por qué tanta caja y líneas de crédito sin usar? Cotizadas no financieras de EE.\,UU.: \dato{$\approx$1,9 billones de \$}{Damodaran, 2026}, $\approx$PIB de España. Información asimétrica \vertema{3.A.13}: la financiación externa llega tarde, cara o no llega $\Rightarrow$ se guarda liquidez para no perder VAN $>0$. Corolarios: la estructura financiera importa; jerarquía (\autor{Myers}-\autor{Majluf}, 1984) \vertema{3.B.3}; tecnológicas, más caja \vertema{3.B.4}. Caja/activo $\times$2 en 1980-2006 (\autor{Bates}-\autor{Kahle}-\autor{Stulz}, 2009).
+
+\textbf{f) Intangibles e inmuebles}. Intangibles (I+D, \emph{software}, marcas, organización), del orden de las máquinas (\autor{Corrado}-\autor{Hulten}-\autor{Sichel}, 2009); 4 rasgos (\autor{Haskel}-\autor{Westlake}, 2017): \emph{escalables}, \emph{hundidos} (mala garantía $\Rightarrow$ fondos propios), \emph{desbordamientos} \vertema{3.A.44}, \emph{sinergias}. Método natural: opciones reales por fases. Inmuebles: $V_0=\mathrm{FC}_1/(k-g)$; \emph{cap rate} $=k-g$.
+
+\sub{II.2. Inversiones financieras\label{rep:II.2}}
+\begin{itemize}
+\item No son FBCF. \emph{Renta fija}: TIR = rentabilidad a vencimiento; riesgos de crédito y de tipo \vertema{3.B.24}. \emph{Renta variable}: VA de dividendos, $\mathbb{E}[r_i]=r_f+\beta_i\lambda_M$ \vertema{3.B.23}; con eficiencia, comprar a precio de mercado tiene VAN nulo. \emph{Derivados}: cobertura \vertema{3.B.25}.
+\end{itemize}
+
+\sub{II.3. Capital humano\label{rep:II.3}}
+\begin{itemize}
+\item Formar = invertir (matrícula, horas, salario al que se renuncia); misma regla del VAN. \autor{Schultz} (1961), \autor{Becker} (1964, Nobel 1992), \autor{Mincer} (1974) \vertema{3.A.25}.
+\item \autor{Becker}: formación \emph{general} la paga el trabajador (menor salario); \emph{específica}, se reparte (menos rotación). Mercados imperfectos (salario sube menos que productividad): la empresa paga también la general (\autor{Acemoglu}-\autor{Pischke}, 1998-99; aprendices alemanes).
+\end{itemize}
+
+% ==========================================================================
+\bloque[9,5]{III. Rentabilidad, riesgo y coste del capital\label{rep:III}}
+\begin{ideaclave}
+La $k$ del VAN es la rentabilidad que exigen los financiadores por el riesgo que no se elimina diversificando: el coste del capital. Crea valor quien rinde más que ella.
+\end{ideaclave}
+
+\sub{III.1. Rentabilidad\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Rentabilidad} $r=(\text{valor final}-\text{inicial})/\text{inicial}$; \emph{ex post}, dato; \emph{ex ante}, $\mathbb{E}[r]$. Competencia: la de activos de riesgo parecido = coste de oportunidad.
+\item Determinantes: preferencia temporal \vertema{3.A.3}; inflación esperada, \autor{Fisher}: $(1+i)=(1+r^{\mathrm{real}})(1+\pi^e)$; riesgo (solo el no diversificable) \vertema{3.A.10}; impuestos; sesgos y asimetrías.
+\item \concepto{Rentabilidad económica} (DuPont) \vertema{3.B.1}:
+  \begin{formula}
+  \[\mathrm{ROA}=\frac{\mathrm{EBIT}}{AT}=\underbrace{\frac{\mathrm{EBIT}}{\text{ventas}}}_{\text{margen}}\cdot\underbrace{\frac{\text{ventas}}{AT}}_{\text{rotación}}\]
+  \end{formula}
+\item \concepto{Rentabilidad financiera} $\mathrm{ROE}$ = beneficio neto / patrimonio neto; con beneficio $(\mathrm{EBIT}-r_DV_D)(1-t_{\mathrm{IS}})$ y valores \emph{contables}:
+  \funcionclave{\mathrm{ROE}=\Big[\mathrm{ROA}+\frac{V_D}{V_E}(\mathrm{ROA}-r_D)\Big](1-t_{\mathrm{IS}})}
+  \concepto{Apalancamiento financiero}: deuda $\uparrow$ ROE si $\mathrm{ROA}>r_D$, y amplifica su variación.
+\item No bastan para decidir: contables, pasado y empresa entera, sin riesgo, no se comparan con el coste del capital (ROE \emph{ex post} frente a $r_E$ \emph{ex ante}).
+\end{itemize}
+
+\sub{III.2. Riesgo\label{rep:III.2}}
+\begin{itemize}
+\item \concepto{Riesgo}: posibilidad de apartarse de lo esperado. $\mathbb{E}[r]=\sum_s\pi_sr_s$; $\sigma^2=\sum_s\pi_s(r_s-\mathbb{E}[r])^2$; coef. de variación $\sigma/\mathbb{E}[r]$. Incertidumbre \autor{Knight} (1921): sin probabilidades.
+\item \concepto{Específico} (se diversifica) frente a \concepto{sistemático} (economía; beta): solo se paga el sistemático \vertema{3.B.23}. Ojo: sistémico es otra cosa \vertema{3.B.27}.
+\item \concepto{Riesgo económico}: variabilidad del EBIT; ciclicidad + costes fijos. \concepto{Riesgo financiero}: el que añade la deuda (intereses fijos):
+  \begin{formula}
+  \[\mathrm{GAO}=\frac{\text{ventas}-CV}{\text{ventas}-CV-CF},\quad \mathrm{GAF}=\frac{\mathrm{EBIT}}{\mathrm{EBIT}-\text{int.}}\]
+  \end{formula}
+  Ej.: ventas 1.000, CV 600, CF 300 $\Rightarrow$ EBIT 100, $\mathrm{GAO}=4$; intereses 50 $\Rightarrow$ $\mathrm{GAF}=2$; \emph{total} $\mathrm{GAO}\times\mathrm{GAF}=8$: ventas +10\,\% $\Rightarrow$ beneficio neto +80\,\%. Más deuda: $\uparrow\beta_E$, $\uparrow r_E$, riesgo de insolvencia \vertema{3.B.3}.
+\end{itemize}
+
+\sub{III.3. Coste del capital\label{rep:III.3}}
+\begin{itemize}
+\item Condición económica (cobros $>$ pagos) + \emph{financiera} (rendir más que lo que cuesta financiarse). \concepto{Coste del capital}: rentabilidad que exigen los inversores por un activo de riesgo dado = coste de oportunidad, no contable; tasa de corte (\emph{hurdle rate}), la $k$ del VAN.
+\item \emph{Del proyecto, no de la empresa}: solo coinciden si el proyecto tiene el riesgo medio y se financia igual.
+\item 3 vías (\autor{Vernimmen}): \emph{directa} (CAPM, APT), \emph{implícita} (precio + flujos esperados), \emph{indirecta} (WACC).
+\end{itemize}
+\textbf{a) Directa: CAPM} (\autor{Sharpe}, 1964; \autor{Lintner}, 1965; \autor{Mossin}, 1966) \vertema{3.B.23}:
+\begin{itemize}
+\item equilibrio media-varianza (\autor{Markowitz}, 1952); solo se paga el riesgo sistemático:
+  \begin{formula}
+  \[r_E=r_f+\beta_E\lambda_M,\quad \lambda_M\equiv\mathbb{E}[r_M]-r_f,\quad \beta_E=\frac{\mathrm{Cov}(r_E,r_M)}{\mathrm{Var}(r_M)}\]
+  \end{formula}
+\item Proyecto: $r_A=r_f+\beta_A\lambda_M$; deuda sin riesgo sistemático, \autor{Hamada} (1972):
+  \begin{formula}
+  \[\beta_E=\beta_A\Big[1+(1-t_{\mathrm{IS}})\frac{V_D}{V_E}\Big]\]
+  \end{formula}
+  Comparables cotizadas: \emph{desapalancar} su $\beta_E$ $\to\beta_A$ y, si hace falta, \emph{reapalancar} con la estructura propia \vertema{3.B.4}.
+\item Primas: histórica EE.\,UU. \dato{6,6 pp/año}{1928-2025}; implícita \dato{4,2\,\%}{comienzos de 2026} + riesgo país España 1,6 pp; WACC medio EE.\,UU. $\approx$7,7\,\% (\autor{Damodaran}, 2026). Lo usa siempre o casi \dato{73,5\,\%}{Graham-Harvey, 2002}. Límites: supuestos, beta con error, prima no observable; alternativa APT (\autor{Ross}, 1976), $\mathbb{E}[r_i]=r_f+\sum_j\beta_{ij}\lambda_j$.
+\end{itemize}
+\textbf{b) Implícita}: la TIR del activo. Empresa: $V=\sum\mathbb{E}[\mathrm{FCL}_t]/(1+\mathrm{WACC})^t$. Acciones, \autor{Gordon}-\autor{Shapiro} (1956), dividendo que crece a $g<r_E$:
+\begin{itemize}
+\item despejando $r_E$ = rentabilidad por dividendo + crecimiento:
+  \begin{formula}
+  \[P_0=\sum_{t=1}^{\infty}\frac{\mathbb{E}[D_t]}{(1+r_E)^t}=\frac{D_1}{r_E-g}\ \Rightarrow\ r_E=\frac{D_1}{P_0}+g\]
+  \end{formula}
+  Muy sensible a $g$; solo maduras con dividendo estable; poco usada.
+\end{itemize}
+\textbf{c) Indirecta: WACC}. $r_E$ (CAPM o \autor{Gordon}); $r_D$: TIR de la deuda neta de gastos, $V_{D,0}=\sum S_t/(1+r_D)^t$; cuesta $r_D(1-t_{\mathrm{IS}})$: \concepto{escudo fiscal} (MM, 1963). Pesos a \emph{mercado}:
+\funcionclave{\mathrm{WACC}=r_E(1-L)+r_D(1-t_{\mathrm{IS}})L,\quad L=\frac{V_D}{V},\ V=V_E+V_D}
+\begin{itemize}
+\item Es la $k$ del VAN para proyectos de riesgo medio financiados como la empresa. El FCL no resta intereses $\Rightarrow$ el ahorro fiscal entra por la tasa. Sin impuestos, $\mathrm{WACC}=r_A$.
+\item ¿Abaratar con deuda? $r_D<r_E$, pero $\uparrow L\Rightarrow\uparrow\beta_E,r_E$ (y $r_D$). MM (1958): sin impuestos ni insolvencia se compensan, $r_E=r_A+(r_A-r_D)V_D/V_E$; valor independiente de la financiación. Con impuestos e insolvencia: endeudamiento óptimo \vertema{3.B.3}. MM aísla \emph{qué} hace importar la estructura (impuestos, insolvencia, asimetrías).
+\end{itemize}
+\textbf{d) Determinantes}: $\uparrow$ con $r_f$ (política monetaria \vertema{3.A.37}), $\beta_A$ (ciclicidad, costes fijos), aversión al riesgo ($\lambda_M$), impuestos de los inversores y fricciones (asimetría, insolvencia). El específico no se paga (el impago esperado sí entra en $r_D$).
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: crea valor si $\mathrm{VAN}>0$ al coste del capital; TIR y estáticos pueden ordenar mal; riesgo por tasa o flujos; irreversibilidad $\Rightarrow$ esperar vale; mismos criterios para máquinas y caja; la tasa = riesgo sistemático, resumido en el WACC.
+\item \textbf{Relevancia}: que el ahorro llegue a proyectos que crean valor sostiene productividad y crecimiento.
+\item \textbf{Extensiones}: financiación \vertema{3.B.3}; valoración de empresas \vertema{3.B.4}; $q$ de \autor{Tobin} y opción de esperar \vertema{3.A.34}; canal del coste del capital \vertema{3.A.37} y burbujas (vivienda real $\times$2 en España e Irlanda, 1997-2007; BIS, OCDE); escudo fiscal \vertema{4.B.10}; estabilidad e igualdad (\autor{Alesina}-\autor{Perotti}, 1996); VAN social \vertema{4.B.6}.
+\item \textbf{Opinión}: el VAN vale lo que sus 2 ingredientes; una sola tasa sobreinvierte en lo arriesgado (\autor{Krüger}-\autor{Landier}-\autor{Thesmar}, 2015); tasas de corte muy altas. Estimar bien el riesgo de cada proyecto y valorar la flexibilidad.
+\item \textbf{Idea final}: más vale un hoy que dos mañanas, salvo que esos 2 mañanas, descontados al coste del capital, valgan más; esa cuenta dejó a Intel sin Magdeburgo.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1913}{\autor{Harris}: lote económico (\autor{Wilson}, 1934)}
+\hito{1921}{\autor{Knight}: riesgo e incertidumbre}
+\hito{1930}{\autor{Fisher}: separación; tasa de rendimiento sobre el coste}
+\hito{1936}{\autor{Keynes}: eficiencia marginal del capital}
+\hito{1949}{\autor{Terborgh}: MAPI}
+\hito{1951}{\autor{Dean}: presupuesto de capital}
+\hito{1952}{\autor{Markowitz}; \autor{Baumol}: tesorería (\autor{Tobin}, 1956)}
+\hito{1955}{\autor{Lorie}-\autor{Savage}: problemas de la TIR}
+\hito{1956}{\autor{Gordon}-\autor{Shapiro}}
+\hito{1958}{\autor{Hirshleifer}: VAN; \autor{Modigliani}-\autor{Miller} (escudo fiscal, 1963)}
+\hito{1964}{\autor{Sharpe}: CAPM; \autor{Becker}: capital humano; \autor{Hertz}: Monte Carlo}
+\hito{1965}{\autor{Teichroew}-\autor{Robichek}-\autor{Montalbano}: puras y mixtas}
+\hito{1966}{\autor{Miller}-\autor{Orr}: banda de control}
+\hito{1972}{\autor{Hamada}: beta apalancada}
+\hito{1976}{\autor{Ross}: APT}
+\hito{1977}{\autor{Myers}: opciones reales}
+\hito{1994}{\autor{Dixit}-\autor{Pindyck}: inversión con incertidumbre}
+\hito{2001}{\autor{Graham}-\autor{Harvey}: encuesta a directores financieros}
+\hito{2011}{\autor{Holmström}-\autor{Tirole}: liquidez}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Inversión de las SNF en España \dato{$\approx$218.000 M€, $\approx$13\,\% del PIB}{Eurostat, 2025}.
+\item VAN siempre o casi: \dato{74,9\,\%}{Graham-Harvey, 2001}; \dato{77\,\% grandes, 40\,\% pequeñas}{Graham, 2022}; tasa de corte \dato{15\,\%, $\approx$+6 pp}{Graham, 2022}.
+\item Prima de mercado \dato{6,6 pp histórica; 4,2\,\% implícita}{Damodaran, 2026}; caja de las cotizadas de EE.\,UU. \dato{1,9 billones de \$}{Damodaran, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué el VAN y no la TIR?} Mide euros de valor; la TIR puede ordenar mal excluyentes (escala, calendario: punto de \autor{Fisher}) y ser múltiple.
+\item \textbf{¿Descontar todo al WACC?} No: solo proyectos con el riesgo de los activos de la empresa y financiados como ella; si no, $\beta_A$ de comparables.
+\item \textbf{¿A qué tasa el equivalente cierto?} A $r_f$: el riesgo ya se quitó del flujo; al WACC se contaría 2 veces.
+\item \textbf{¿Por qué $(1-t_{\mathrm{IS}})$ en el WACC?} Intereses deducibles y el FCL no los resta: el escudo entra por la tasa.
+\item \textbf{¿El VAN supone irreversibilidad?} No: reversible o de ahora o nunca; con irreversibilidad e incertidumbre se suma la opción de esperar.
+\item \textbf{¿Elasticidades de \autor{Baumol}?} $1/2$ a $Y$ y $b$, $-1/2$ a $i$; \autor{Miller}-\autor{Orr}, $-1/3$ a $i$.
+\item \textbf{¿La hipótesis de reinversión del VAN es un defecto?} No: $k$ es lo que rinde el dinero en otro uso de igual riesgo; la TIR supone reinvertir a la propia TIR.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Punto de \autor{Fisher}: es una \emph{tasa} (15,2\,\% en el ej.), no un VAN.
+\item TIR única con un cambio de signo (simple) y en las puras; varias o ninguna en mixtas. $\mathrm{TIR}=1/\textit{payback}$ solo con FC constantes y vida ilimitada.
+\item \autor{Gordon}: $D_1=D_0(1+g)$, no $D_0$; $g<r_E$.
+\item WACC: pesos a \emph{mercado}; ROE-ROA: valores \emph{contables} y $(1-t_{\mathrm{IS}})$ multiplicando \emph{todo} el corchete.
+\item \autor{Hamada}: $(1-t_{\mathrm{IS}})$ solo sobre $V_D/V_E$.
+\item $\mathrm{GAO}\times\mathrm{GAF}$ (no suma) = elasticidad del beneficio neto a las ventas.
+\item Equivalente cierto a $r_f$; tasa ajustada: flujos esperados a $k$.
+\item Cadena de renovaciones: se retira \emph{antes} que en el retiro simple.
+\item \autor{Miller}-\autor{Orr}: retorno $M^{\mathrm{inf}}+z^*$ (1/3), techo $+3z^*$; exponente $1/3$.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

@@ -1,0 +1,41 @@
+% La TIR modificada en 3 pasos sobre la línea de flujos (mismo estilo que esquema-pagos):
+% 1) el desembolso y los flujos negativos se descuentan a 0 (VA^-);
+% 2) los positivos se capitalizan hasta n (VF^+);
+% 3) la TIRM es la tasa que convierte VA^- en VF^+ en n periodos.
+% Sustituye a los 3 esquemas del original (con X e Y).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    paso/.style={circle,draw=#1,text=#1,font=\scriptsize\bfseries,inner sep=1pt,minimum size=4mm},
+    traslado/.style={->,thick,dashed,#1}]
+  % 1: eje del tiempo y los flujos
+  \capa{1}{\draw[eje] (-0.4,0) -- (10,0) node[below left=2pt and 0pt] {$t$};}
+  \capa{1}{\foreach \t/\r in {0/0,1.6/1,3.2/2,4.8/3,6.4/4,8.8/n} {\draw (\t,0.08) -- (\t,-0.08);}}
+  \capa{1}{\foreach \t/\r in {1.6/1,3.2/2,6.4/4,8.8/n} {\node[below] at (\t,-0.08) {$\r$};}}
+  \capa{1}{\node[above] at (0,0.08) {$0$};}
+  \capa{1}{\node[above] at (4.8,0.08) {$3$};}
+  \capa{1}{\node at (7.6,-0.3) {$\cdots$};}
+  \capa{1}{\draw[curva1,->] (0,0) -- (0,-1.5) node[below] {$-I_0$};}
+  \capa{1}{\draw[curva1,->] (4.8,0) -- (4.8,-0.8) node[below] {$\mathrm{FC}_3$};}
+  \capa{1}{\foreach \t/\r/\h in {1.6/1/1.0,3.2/2/1.2,6.4/4/1.1,8.8/n/0.9} {\draw[curva2,->] (\t,0) -- (\t,\h) node[above] {$\mathrm{FC}_{\r}$};}}
+  \capa{1}{\node at (7.6,0.6) {$\cdots$};}
+  % 2: paso 1, los negativos al momento 0
+  \capa{2}{\draw[traslado=tceedorado] (4.6,-1.35) to[bend left=25] node[midway,below,text=tceedorado] {$\div\,(1+k)^{t}$} (0.3,-1.25);}
+  \capa{2}{\node[text=tceedorado] (VA) at (0,-2.85) {$VA^{-}$};}
+  \capa{2}{\draw[traslado=tceedorado] (0,-2.0) -- (VA.north);}
+  \capa{2}{\node[paso=tceedorado] at (3.9,-2.05) {1};}
+  % 3: paso 2, los positivos al momento n
+  \capa{3}{\node[text=tceeverde] (VF) at (8.8,2.55) {$VF^{+}$};}
+  \capa{3}{\draw[traslado=tceeverde] (1.6,1.6) to[bend left=22] node[midway,above,text=tceeverde] {$\times\,(1+k)^{n-t}$} ($(VF.west)+(0,0.12)$);}
+  \capa{3}{\draw[traslado=tceeverde] (3.2,1.8) to[bend left=16] ($(VF.west)+(0,-0.05)$);}
+  \capa{3}{\draw[traslado=tceeverde] (6.4,1.7) to[bend left=14] ($(VF.west)+(0,-0.2)$);}
+  \capa{3}{\draw[traslado=tceeverde] (8.8,1.5) -- (VF.south);}
+  \capa{3}{\node[paso=tceeverde] at (2.4,2.75) {2};}
+  % 4: paso 3, de VA^- a VF^+ con la TIRM
+  \capa{4}{\node[text=tceeverde] (VF2) at (8.8,-2.85) {$VF^{+}$};}
+  \capa{4}{\draw[flecha] (VA.east) -- node[midway,below,text=tceerojo] {$\times\,(1+\mathrm{TIRM})^{n}$} (VF2.west);}
+  \capa{4}{\node[paso=tceerojo] at (6.2,-3.25) {3};}
+\end{tikzpicture}
+\end{document}

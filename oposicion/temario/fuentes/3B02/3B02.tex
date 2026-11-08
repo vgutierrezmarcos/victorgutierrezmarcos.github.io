@@ -1,0 +1,1010 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B02.bib}
+\tcetema[Decisiones de inversión y coste del capital]{3.B.2}{La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital.}
+\tcefecha{08/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Más vale un hoy que dos mañanas», dice el refrán. Toda inversión le lleva la contraria: renuncia a un euro hoy a cambio de más euros mañana. La pregunta es cuántos más hacen falta.
+  \item En junio de 2023, Intel acordó con el Gobierno alemán construir 2 fábricas de chips en Magdeburgo por más de 30.000 millones de euros \parencite{Intel2023Magdeburg}, con 9.900 millones de ayuda pública comprometida \parencite{Bundesregierung2023Intel}. En septiembre de 2024 aplazó el proyecto unos 2 años \parencite{Intel2024Gelsinger} y en julio de 2025 renunció a él para mejorar la rentabilidad de su capital \parencite{Intel2025Q2}. Entre medias no cambió la fábrica: cambiaron los flujos de caja que se esperaban, el coste de financiarlos y el valor de esperar a saber más.
+  \item Detrás está la pregunta de esta exposición: ¿cómo decide una empresa qué proyectos acometer, y qué rentabilidad tiene que exigirles?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Aunque el análisis es el de una empresa, sus consecuencias son agregadas. La inversión es el componente más volátil de la demanda \vertema{3.A.34} y la vía por la que el ahorro se convierte en capital y en crecimiento a largo plazo \vertema{3.A.43}. En España, las sociedades no financieras invirtieron en 2025 unos 218.000 millones de euros, casi el 13~\% del PIB \parencite{Eurostat2026Sectores}.
+  \item Una economía es la suma de millones de decisiones de inversión: cuanto mejores sean los criterios con que se toman, la información con que se cuenta y la formación de quienes deciden, mejor se asigna el ahorro, más productiva es la economía y más competitiva fuera.
+  \item Y los mismos criterios sirven para evaluar la inversión pública, con una tasa social de descuento en lugar del coste del capital de una empresa \vertema{4.B.6}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item Para la \emph{teoría microeconómica}, la empresa combina factores para producir y maximiza su beneficio \vertema{3.A.12}. Para las \emph{finanzas corporativas}, es un conjunto de decisiones de inversión que exigen sus correspondientes decisiones de financiación. Según \textcite{Friedman1970Social}, la responsabilidad social de la empresa es aumentar sus beneficios; las finanzas lo traducen en \concepto{maximizar el valor de la empresa para sus accionistas} \parencite{Jensen2001Value}: el valor es el beneficio de todos los periodos, descontado y ajustado por el riesgo.\footnote{Para ello la empresa tiene que cumplir a la vez 3 objetivos: de \emph{rentabilidad} (crear valor con sus inversiones), de \emph{solvencia} (poder hacer frente a sus deudas) y de \emph{liquidez} (que sus activos se conviertan en dinero cuando haga falta).}
+  \item Ese objetivo se concreta en 3 decisiones: de \emph{inversión}, la de esta exposición; de \emph{financiación}, cómo y de qué fuentes obtener los fondos y cómo remunerar a quienes los aportan \vertema{3.B.3}, y de \emph{dimensión}, cuánto y cómo crece la empresa \vertema{3.B.4}.
+  \item \emph{Definiciones}. Una \concepto{inversión} es el compromiso actual de dinero o de otros recursos con la expectativa de obtener beneficios en el futuro \parencite[cap.~1]{BodieKaneMarcus2021Investments};\footnote{Si sale bien, la diferencia entre lo que se obtiene y lo que se sacrificó aumenta el patrimonio neto de la empresa \vertema{3.B.1}.} tiene, por tanto, 2 dimensiones: el \emph{tiempo}, porque se renuncia a algo hoy a cambio de algo mañana, y el \emph{riesgo}, porque lo de mañana es incierto \parencite[cap.~1]{SharpeAlexanderBailey1999Investments}.
+    \begin{itemize}
+    \item Su \concepto{rentabilidad} es lo que gana por cada euro comprometido; su \concepto{riesgo}, la dispersión de lo que puede ganar, y su \concepto{coste del capital}, la rentabilidad que exigen quienes la financian, que es la que dejan de ganar en otra inversión de igual riesgo.
+    \item Los \concepto{activos reales} (terrenos, edificios, máquinas, conocimiento) producen los bienes y servicios: de ellos depende la capacidad productiva de la economía. Los \concepto{activos financieros} (acciones, bonos, préstamos) son derechos sobre las rentas que generan los activos reales; no añaden capacidad productiva, sino que reparten esas rentas entre quienes los financian.\footnote{Un activo financiero es siempre, a la vez, el pasivo de otro agente; un activo real no es el pasivo de nadie. Por eso, en el agregado, los activos y los pasivos financieros se compensan y la riqueza de una economía es la de sus activos reales \parencite[cap.~1]{BodieKaneMarcus2021Investments}.}
+    \item Nos centramos en las \emph{sociedades no financieras} y en su inversión más común, la de activos reales, con una mirada \emph{microeconómica}: no la formación bruta de capital de un país \vertema{3.A.34}, sino la decisión de una empresa sobre un proyecto concreto.
+    \end{itemize}
+  \item \emph{Historia}. La teoría de la decisión de inversión nace en la economía y se convierte en técnica de gestión en la segunda mitad del siglo~XX.
+    \begin{itemize}
+    \item \textcite{Fisher1930Theory} muestra que, con un mercado de capitales perfecto, la empresa debe invertir mientras la \emph{tasa de rendimiento sobre el coste} supere el tipo de interés, y que esa decisión no depende de las preferencias de sus dueños (la \emph{separación de \autor{Fisher}}). \textcite{Keynes1936} llama a la misma tasa \emph{eficiencia marginal del capital} \vertema{3.A.34}.
+    \item \textcite{Dean1951Capital} lleva el descuento de flujos a la gestión de la empresa con el nombre de \emph{presupuesto de capital} (\emph{capital budgeting}); \textcite{LorieSavage1955Three} y \textcite{Hirshleifer1958Optimal} señalan los problemas de la TIR y asientan el VAN como el criterio coherente con maximizar el valor.
+    \item La economía financiera pone precio al riesgo \parencites{Markowitz1952Portfolio}{Sharpe1964Capital} \vertema{3.B.23} y separa la inversión de la financiación \parencite{ModiglianiMiller1958Cost} \vertema{3.B.3}; desde \textcite{Myers1977Determinants} y \textcite{DixitPindyck1994}, las \emph{opciones reales} valoran la posibilidad de esperar, ampliar o abandonar.
+    \end{itemize}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Qué proyectos crean valor y con qué criterio se eligen entre ellos?
+  \item ¿En qué invierte la empresa (máquinas, existencias, tesorería, activos financieros, personas) y cómo se valora cada inversión?
+  \item ¿Qué rentabilidad hay que exigir a un proyecto según su riesgo? Es decir, ¿cuál es el coste del capital y cómo se estima?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue el orden del título:
+  \begin{itemize}
+  \item en el bloque~\ref{sec:criterios}, los \emph{criterios de valoración}: cómo se decide si un proyecto crea valor, con una tasa de descuento dada, con y sin riesgo;
+  \item en el bloque~\ref{sec:otros-proyectos}, los mismos criterios aplicados a \emph{inversiones concretas}: la renovación de equipos, las existencias y la tesorería, los intangibles, los activos financieros y el capital humano;
+  \item en el bloque~\ref{sec:rentabilidad-riesgo-coste}, la \emph{rentabilidad}, el \emph{riesgo} y el \emph{coste del capital}: de dónde sale la tasa a la que se descuentan los proyectos.
+  \end{itemize}
+\item El orden no es casual: primero se aprende a decidir con una tasa dada; después se aplica a lo que compra la empresa, y al final se ve qué tasa poner, que es la que convierte el riesgo en un coste.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.B.2. La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital}\\[2pt]
+Introducción\\
+I. Métodos generales de valoración y selección de inversiones: ¿cómo invierten las empresas?\\
+\hspace*{1.5em}1. Variables integrantes de una inversión \quad 2. Principios fundamentales de valoración\\
+\hspace*{1.5em}3. Métodos de valoración: estáticos; dinámicos (VAN, TIR, TIRM, índice); con riesgo; opciones reales \quad 4. ¿Qué se utiliza en la práctica?\\
+II. Métodos de valoración de otros proyectos de inversión: ¿en qué invierten las empresas?\\
+\hspace*{1.5em}1. Inversiones en activos reales: no corriente (retiro, MAPI), corriente (existencias, tesorería), intangibles\\
+\hspace*{1.5em}2. Inversiones financieras \quad 3. Inversión en capital humano\\
+III. Rentabilidad, riesgo y coste del capital: ¿cuánto debe rendir la inversión?\\
+\hspace*{1.5em}1. Rentabilidad \quad 2. Riesgo \quad 3. Coste del capital\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10,5} (apertura, \tiempo{0,5}; I.1, \tiempo{1,25}; I.2, \tiempo{0,75}; I.3, \tiempo{7,5}: estáticos, \tiempo{0,5}, VAN, \tiempo{1,25}, TIR, \tiempo{0,75}, comparación, \tiempo{1,5}, TIRM e índice, \tiempo{0,75}, tasa ajustada y equivalente cierto, \tiempo{1}, sensibilidad, \tiempo{0,25}, y opciones reales, \tiempo{1,5}; I.4, \tiempo{0,5}); II, \tiempo{6,5} (apertura, \tiempo{0,75}; II.1, \tiempo{4,5}: activo no corriente, \tiempo{1,25}, activo corriente, \tiempo{3}, e intangibles, \tiempo{0,25}; II.2, \tiempo{0,5}; II.3, \tiempo{0,75}); III, \tiempo{9,5} (apertura, \tiempo{0,25}; III.1, \tiempo{1,75}; III.2, \tiempo{2}; III.3, \tiempo{5,5}), y conclusión, \tiempo{1}. La introducción y la conclusión se cantan sin pizarra, con el refrán del enganche, «más vale un hoy que dos mañanas», en la esquina superior izquierda. A la derecha, el VAN \eqref{eq:van} recuadrado desde el apartado~\ref{sec:metodos} hasta el final. En el bloque~\ref{sec:criterios}, arriba, la línea de flujos con las 5 variables (gráfico~\ref{fig:esquema-pagos}), y en el centro el VAN de 2 proyectos frente a la tasa, con las TIR y el punto de \autor{Fisher} (gráfico~\ref{fig:van-fisher}), imprescindible, y la tabla~\ref{tab:van-tir}. En el bloque~\ref{sec:otros-proyectos}, el coste total de \autor{Baumol} y \autor{Tobin} en U (gráfico~\ref{fig:baumol-tesoreria}), imprescindible, con $M^*$ y la fórmula de \autor{Wilson} debajo. En el bloque~\ref{sec:rentabilidad-riesgo-coste}, el esquema de las 3 vías para estimar el coste del capital y el WACC \eqref{eq:wacc} recuadrado, con una flecha a la $k$ del VAN: es la tasa que faltaba. Las pegatinas se apuntan junto a su concepto al decirlas: «borrón y cuenta nueva» (costes hundidos), «lo bueno, si breve, dos veces bueno» (la TIR), «no por mucho madrugar amanece más temprano» (opción de esperar), «renovarse o morir» (MAPI) y «en el término medio está la virtud» (\autor{Baumol}-\autor{Tobin}). Las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
+\end{notaopositor}
+
+\begin{anotaciones}
+\textbf{Notación.} $I_0$ es el desembolso inicial; $\mathrm{FC}_t$, el flujo de caja del periodo $t$ (el flujo de caja libre del proyecto); $\mathrm{VR}$, el valor residual; $n$, la vida del proyecto, y $k$, la tasa de descuento de un proyecto, cualquiera que sea, que en el bloque~\ref{sec:rentabilidad-riesgo-coste} se concreta en el coste del capital: $r_E$ el de los fondos propios, $r_D$ el de la deuda, $r_A$ el de los activos (o del proyecto) y $\mathrm{WACC}$ el coste medio ponderado de la empresa, que solo es la $k$ correcta para proyectos de su mismo riesgo. $r_f$ es la rentabilidad del activo sin riesgo y $\lambda_M\equiv\mathbb{E}[r_M]-r_f$ la prima de riesgo del mercado; $\beta_A$ y $\beta_E$, las betas de los activos y de las acciones. $V_E$, $V_D$ y $V=V_E+V_D$ son los valores de mercado de los fondos propios, de la deuda y de la empresa; $L=V_D/V$, el peso de la deuda, y $t_{IS}$, el tipo del impuesto sobre sociedades. $\mathbb{E}[\cdot]$ es la esperanza y $\sigma$ la desviación típica. Los proyectos se llaman A y B. Son locales: $k^{\mathrm F}$, la tasa del punto de \autor{Fisher}; $VA^{-}$ y $VF^{+}$ en la TIR modificada; $\xi_t$ y $\alpha_t$ en el equivalente cierto ($\alpha_t$ no es el alfa de \autor{Jensen}); $\mathrm{VAN}(n)$, $\mathrm{VAN}_\infty(n)$ y $\mathrm{VAE}(n)$ en la renovación de equipos; $Q$ y $c_a$ en el lote económico; $b$, $Y$, $i$ y $M$ en el modelo de \autor{Baumol} y \autor{Tobin}, con $M^{\mathrm{inf}}$, $M^{\mathrm{sup}}$, $M^{\mathrm{ret}}$ y $z^*$ en el de \autor{Miller} y \autor{Orr}, como en la demanda de dinero \vertema{3.A.35}.
+\end{anotaciones}
+
+% ==========================================================================
+\section{Métodos generales de valoración y selección\newline de inversiones: ¿cómo invierten las empresas?}\label{sec:criterios}
+\minutos{10,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{10,5}). La apertura, de palabra (\tiempo{0,5}): la conclusión anticipada y los 5 pasos del proceso, sin escribirlos. I.1, \tiempo{1,25}: arriba, a lo ancho, la línea de flujos del gráfico~\ref{fig:esquema-pagos}, numerando las 5 variables; el flujo de caja libre, de palabra; la tabla~\ref{tab:signos} no se canta. I.2, \tiempo{0,75}: los 6 principios nombrados, con «borrón y cuenta nueva» junto a los costes hundidos y «nominal con nominal». I.3, \tiempo{7,5}: los estáticos de palabra (\tiempo{0,5}); el VAN \eqref{eq:van} recuadrado a la derecha, donde se queda hasta el final (\tiempo{1,25}); la TIR en una línea bajo el VAN (\tiempo{0,75}); en el centro, el gráfico~\ref{fig:van-fisher} por capas y la tabla~\ref{tab:van-tir} de 3 columnas, con «lo bueno, si breve, dos veces bueno» (\tiempo{1,5}); la TIRM y el índice con el racionamiento, de palabra (\tiempo{0,75}); la tasa ajustada y el equivalente cierto, con las 2 fórmulas en una línea cada una (\tiempo{1}); la sensibilidad, de palabra (\tiempo{0,25}); las opciones reales con la regla \eqref{eq:opcion-esperar} en una línea bajo el VAN, el ejemplo en una frase y «no por mucho madrugar amanece más temprano» (\tiempo{1,5}). I.4, \tiempo{0,5}: las cifras de la encuesta, de palabra. El gráfico~\ref{fig:tirm} y el árbol del gráfico~\ref{fig:arbol-opciones} son de apoyo.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: el criterio coherente con maximizar el valor de la empresa es el \emph{valor actual neto}, el VAN; los demás son aproximaciones útiles, pero pueden equivocarse.
+\item \emph{La decisión de inversión es un proceso}, el \concepto{presupuesto de capital}, con 5 etapas \parencite[cap.~10]{BrealeyMyersAllen2020Principles}:
+  \begin{enumerate}
+  \item \emph{identificar} oportunidades, que suelen venir de abajo (las plantas, los equipos comerciales);
+  \item \emph{estimar} sus flujos de caja, su riesgo y la tasa a la que descontarlos;
+  \item \emph{evaluarlas} con un criterio y seleccionarlas, encajándolas en el presupuesto anual y en la estrategia;
+  \item \emph{aprobar y ejecutar} el proyecto;
+  \item y \emph{revisar} sus resultados después (la auditoría \emph{ex post}), para aprender y corregir los sesgos de las previsiones.
+  \end{enumerate}
+\item El riesgo principal del proceso no es de cálculo, sino de incentivos: quien propone el proyecto tiende a ser optimista, y la dirección lo compensa con tasas de corte altas o con presupuestos rígidos \vertema{3.A.13}.
+\item \emph{Nexo}: este bloque se ocupa de los pasos 2 y 3, en 4 etapas: qué variables definen un proyecto (\ref{sec:variables}); qué principios deben seguirse al calcularlas (\ref{sec:principios}); qué métodos permiten decidir (\ref{sec:metodos}), y cómo deciden de verdad las empresas (\ref{sec:practica}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Variables integrantes de una inversión}\label{sec:variables}
+
+\begin{itemize}
+\item Una inversión se describe por la corriente de flujos de caja que genera a lo largo del tiempo (gráfico~\ref{fig:esquema-pagos}), con 5 variables:\footnote{Las 5 están en la fórmula del VAN \eqref{eq:van}: $\mathrm{VAN}=-\overset{\scriptscriptstyle(1)}{I_0}+\sum_{t=1}^{\overset{\scriptscriptstyle(3)}{n}}\frac{\overset{\scriptscriptstyle(2)}{\mathrm{FC}_t}}{(1+\underset{\scriptscriptstyle(5)}{k})^t}+\frac{\overset{\scriptscriptstyle(4)}{\mathrm{VR}}}{(1+\underset{\scriptscriptstyle(5)}{k})^n}$.}
+  \begin{enumerate}
+  \item el \concepto{desembolso inicial}, $I_0$: lo que hay que pagar para ponerla en marcha, el precio de compra más el transporte, la instalación y la formación; va ligado al proyecto, y lo que ya se ha pagado y no se recupera (un coste hundido) no cuenta;
+  \item los \concepto{flujos de caja}, $\mathrm{FC}_t$: los cobros menos los pagos que genera el proyecto cada periodo, normalmente cada año, que es la duración del ejercicio económico \vertema{3.B.1}. Se calculan como el \concepto{flujo de caja libre} del proyecto, como si no tuviera deuda \vertema{3.B.4}:
+  \[
+  \mathrm{FC}_t=\mathrm{EBIT}_t\,(1-t_{IS})+\text{amortizaciones}_t-\mathrm{CAPEX}_t-\Delta\mathrm{NOF}_t,
+  \]
+  el resultado de explotación después de impuestos, más la amortización (que es un gasto, pero no un pago), menos lo que se invierte en activo fijo ($\mathrm{CAPEX}$) y en necesidades operativas de fondos ($\Delta\mathrm{NOF}$);
+  \item la \concepto{duración}, $n$: la vida del proyecto, que no se conoce con certeza hasta que acaba y se estima con su vida \emph{útil} (mientras sus activos funcionan con normalidad), su vida \emph{tecnológica} (hasta que quedan obsoletos) y su vida \emph{económica} (la que maximiza su VAN, \ref{sec:no-corriente});
+  \item el \concepto{valor residual}, $\mathrm{VR}$: lo que se obtendría al final por vender lo que queda. Es también una forma de tratar la incertidumbre sobre la duración: se estiman los flujos de unos años y, a partir de ahí, se añade el valor residual;
+  \item y la \concepto{tasa de descuento}, $k$: la rentabilidad que se deja de ganar en otra inversión de igual riesgo. Cuál es y cómo se estima se ve en el apartado~\ref{sec:coste-capital}.
+  \end{enumerate}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Esquema de pagos de un proyecto de inversión}\label{fig:esquema-pagos}
+\grafico[0.8\textwidth]{esquema-pagos}
+\fuente{elaboración propia.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Tipos de inversión según el signo de sus flujos} (tabla~\ref{tab:signos}):
+  \begin{itemize}
+  \item \emph{simples} o convencionales: tras el desembolso, todos los flujos son positivos (por eso, un solo cambio de signo);
+  \item \emph{no simples}: algún flujo posterior es negativo (una gran reparación, el desmantelamiento de una central). Entre ellas, \textcite{TeichroewRobichekMontalbano1965Analysis} distinguen las \emph{puras}, en las que el saldo acumulado del proyecto nunca es positivo antes del final (el proyecto es siempre una inversión), de las \emph{mixtas}, en las que en algún momento lo es (el proyecto financia a la empresa durante un tiempo).
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Tipos de inversión según el signo de sus flujos}\label{tab:signos}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.4cm}>{\centering\arraybackslash}m{3.4cm}>{\centering\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{3.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Tipo} & \textbf{Ejemplo} ($t=0,1,2$) & \textbf{Cambios de signo} & \textbf{TIR} \\
+\midrule
+Simple & $-100$, $+60$, $+60$ & 1 & \textcolor{tceeverde}{Una}: 13,1~\% \\
+No simple pura & $-100$, $-20$, $+150$ & 1 & \textcolor{tceeverde}{Una}: 12,9~\% \\
+No simple mixta & $-100$, $+230$, $-132$ & 2 & \textcolor{tceerojo}{Dos}: 10~\% y 20~\% \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{TeichroewRobichekMontalbano1965Analysis}. En la mixta, al 10~\% el saldo del proyecto tras el primer año es positivo ($-110+230=120$): durante ese año el proyecto financia a la empresa.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Principios fundamentales de valoración}\label{sec:principios}
+
+\begin{itemize}
+\item Una vez definido el proyecto, hay que decidir qué flujos entran en él. Algunos principios valen para cualquier proyecto \parencite[cap.~28]{Vernimmen2017Corporate}:
+  \begin{enumerate}
+  \item \emph{Razonar en flujos de caja}, no en ingresos y gastos contables: estos no recogen las necesidades operativas de fondos e incluyen partidas que no son cobros ni pagos, como la amortización, útil para ver cómo afecta la inversión a la cuenta de resultados, pero no para decidirla. Cuentan los flujos positivos y los negativos.
+  \item \emph{Razonar en términos incrementales}: cuentan solo los flujos que cambian si se hace el proyecto, para medir lo que aporta al valor de la empresa. Los \concepto{costes hundidos}, ya pagados se haga o no, no cuentan: «borrón y cuenta nueva».\footnote{Si una empresa de cines ya ha pagado el diseño de un nuevo complejo, ese gasto no debe pesar en la decisión de construirlo: se ha pagado igual. Sí cuentan, en cambio, los efectos sobre otros negocios de la empresa (la nueva sala puede quitar público a otra) y el valor de los recursos propios que se usan, por lo que podrían alquilarse o venderse \parencite[cap.~6]{BrealeyMyersAllen2020Principles}.}
+  \item \emph{Razonar en términos de oportunidad}: lo que aporta una decisión se mide frente a las alternativas, no por separado. Quien tiene un solar y piensa construir un hotel debe compararlo con construir un aparcamiento, alquilarlo, venderlo o esperar a que suba de precio.
+  \item \emph{Separar la inversión de la financiación}: los flujos del proyecto no restan intereses ni dividendos; la financiación entra por la tasa de descuento, que ya recoge lo que exigen accionistas y acreedores (\ref{sec:coste-capital}). Si no, se contaría 2 veces.
+  \item \emph{Tener en cuenta los impuestos}: los flujos son después de impuestos, porque lo que paga la empresa al fisco no está disponible para sus financiadores.
+  \item \emph{Ser coherente}: la misma moneda y los mismos supuestos en todos los flujos, y los flujos \emph{nominales} descontados con una tasa nominal o los \emph{reales} con una real. Mezclarlos infla o desinfla el VAN tanto más cuanto mayor es la inflación y más largo el proyecto.
+  \end{enumerate}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Métodos de valoración}\label{sec:metodos}
+
+\begin{itemize}
+\item Con los flujos ya calculados, los métodos de valoración dicen si conviene hacer un proyecto (\emph{efectuación}) y, si hay varios, en qué orden (\emph{jerarquización}). Interesan los que llevan a maximizar el valor de la empresa.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Métodos aproximados o estáticos}\label{sec:estaticos}
+
+\begin{itemize}
+\item Los \concepto{métodos estáticos} no tienen en cuenta cuándo llega cada flujo: suman cantidades de momentos distintos como si se cobraran a la vez.
+  \begin{itemize}
+  \item El \emph{flujo neto de caja por unidad monetaria comprometida} es $\sum_{t=1}^{n}\mathrm{FC}_t/I_0$. Interesa el proyecto si es mayor que 1, porque recupera el desembolso; solo lo que pasa de 1 es rentabilidad en sentido estricto.
+  \item El \concepto{plazo de recuperación} (\emph{payback}) es el tiempo que se tarda en recuperar el desembolso inicial. Con flujos constantes, $\mathrm{FC}_t=\mathrm{FC}$ para todo $t$, es $\textit{payback}=I_0/\mathrm{FC}$.
+  \end{itemize}
+\item \emph{Valoración de los métodos estáticos}:
+  \begin{itemize}
+  \item su ventaja es la sencillez, y el \emph{payback} da una idea de la liquidez y del riesgo del proyecto: cuanto antes se recupera, menos tiempo se está expuesto;
+  \item pero suman cantidades heterogéneas, sin tener en cuenta que un euro hoy vale más que uno mañana (por impaciencia, por el riesgo y porque se puede reinvertir), y no usan el coste del capital;
+  \item el \emph{payback}, además, ignora los flujos posteriores a la recuperación: prefiere un proyecto que recupera pronto y luego no da nada a otro que tarda más pero rinde durante décadas, y sesga la empresa hacia el corto plazo. El \emph{payback descontado}, el tiempo hasta que los flujos \emph{descontados} igualan $I_0$, corrige el primer problema, pero no este \parencite[cap.~5]{BrealeyMyersAllen2020Principles}.
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Métodos dinámicos}\label{sec:dinamicos}
+
+\begin{itemize}
+\item Los \concepto{métodos dinámicos} corrigen ese defecto: \emph{descuentan} los flujos para expresar en euros de hoy cantidades que llegan en momentos distintos. Los principales son el VAN y la TIR.
+\end{itemize}
+
+\paragraph{a) El valor actual neto (VAN)}
+
+\begin{itemize}
+\item El \concepto{valor actual neto} es el valor actual de los flujos de caja que genera el proyecto, descontados a la tasa $k$, menos el desembolso inicial:
+  \funcionclave[eq:van]{\mathrm{VAN}=-I_0+\sum_{t=1}^{n}\frac{\mathrm{FC}_t}{(1+k)^t}+\frac{\mathrm{VR}}{(1+k)^n}}
+  Mide cuánto aumenta el valor de la empresa si se hace el proyecto.
+\item \emph{Regla de decisión}:
+  \begin{itemize}
+  \item \emph{aceptar} los proyectos con $\mathrm{VAN}>0$: rinden más que su coste del capital y aumentan el valor de la empresa;
+  \item entre proyectos \emph{excluyentes}, elegir el de mayor VAN; si son independientes y no falta capital, hacer todos los de VAN positivo.
+  \end{itemize}
+\item \emph{Ventajas}: usa todos los flujos y su calendario, y el riesgo a través de $k$; es aditivo (el VAN de 2 proyectos es la suma de sus VAN), y es el criterio coherente con maximizar el valor de la empresa \parencite{Hirshleifer1958Optimal}.
+\item \emph{Limitaciones}:
+  \begin{itemize}
+  \item depende de una tasa $k$ que no se observa y hay que estimar (\ref{sec:coste-estimacion});
+  \item supone que la tasa es la misma cada año y que la empresa puede prestar y endeudarse a $k$. Por eso se dice que el VAN «supone que los flujos se reinvierten a $k$»: más que un supuesto discutible, es que $k$ es lo que la empresa puede obtener con su dinero en otro uso de igual riesgo, y por eso es la hipótesis correcta;
+  \item da un número absoluto, que no dice cuánto se gana por euro invertido (lo da el índice del VAN, más abajo);
+  \item y trata la inversión como una decisión de ahora o nunca, sin la posibilidad de esperar o de cambiar el proyecto (\ref{sec:opciones-reales}).
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) La tasa interna de rentabilidad (TIR)}
+
+\begin{itemize}
+\item La \concepto{tasa interna de rentabilidad} es la tasa de descuento que anula el VAN:
+  \[
+  -I_0+\sum_{t=1}^{n}\frac{\mathrm{FC}_t}{(1+\mathrm{TIR})^t}+\frac{\mathrm{VR}}{(1+\mathrm{TIR})^n}=0.
+  \]
+  Es la rentabilidad del proyecto por euro invertido y periodo; \textcite{Keynes1936} la llamó \emph{eficiencia marginal del capital} \vertema{3.A.34}.\footnote{Para un inversor en renta fija, la TIR de un bono es su \emph{rentabilidad a vencimiento} (\emph{yield to maturity}) \vertema{3.B.24}.}
+\item \emph{Regla}: aceptar si $\mathrm{TIR}>k$; la TIR es el coste del capital máximo que soportaría el proyecto. Entre proyectos, preferir el de mayor TIR.
+\item \emph{Ventajas}: un solo número, en porcentaje, comparable entre proyectos de distinto tamaño; para calcularla no hace falta conocer $k$, aunque para decidir sí.
+\item \emph{Limitaciones}: supone que los flujos intermedios se reinvierten a la propia TIR, no a $k$; con flujos no convencionales puede haber varias TIR o ninguna,\footnote{La TIR es una raíz de un polinomio de grado $n$ en $1/(1+\mathrm{TIR})$. Por la regla de los signos de \autor{Descartes}, el número de raíces positivas no supera el de cambios de signo de los flujos: con un solo cambio de signo (inversiones simples), la TIR es única; con varios, puede haber varias o ninguna. Las inversiones puras tienen una sola TIR aunque cambien de signo varias veces \parencite{TeichroewRobichekMontalbano1965Analysis}. Si los flujos son constantes y la duración ilimitada, $\mathrm{TIR}=\mathrm{FC}/I_0$: la inversa del \emph{payback}.} y, como medida relativa, puede ordenar mal proyectos excluyentes.
+\end{itemize}
+
+\paragraph{c) Comparación del VAN y la TIR}
+
+\begin{itemize}
+\item \emph{Para aceptar o rechazar} un proyecto simple, los 2 criterios coinciden: como el VAN cae al subir la tasa de descuento, $\mathrm{VAN}(k)>0$ si y solo si $\mathrm{TIR}>k$.
+\item \emph{Para ordenar} proyectos excluyentes, pueden no coincidir. Ocurre cuando las curvas del VAN de 2 proyectos se cortan: la tasa del corte, $k^{\mathrm F}$, es el \concepto{punto de \autor{Fisher}}, en el que los 2 proyectos tienen el mismo VAN (gráfico~\ref{fig:van-fisher}).\footnote{Si las curvas no se cortan en tasas positivas, un proyecto tiene a la vez más VAN para toda $k$ y más TIR, y los 2 criterios eligen el mismo.}
+  \begin{itemize}
+  \item Las curvas se cortan cuando los proyectos tienen distinta \emph{escala} (el mayor da más VAN y menos TIR) o distinto \emph{calendario} (el que cobra más tarde es más sensible a la tasa: su VAN es mayor con tasas bajas y menor con tasas altas).
+  \item Sean 2 proyectos que cuestan 100: A cobra 144 dentro de 2 años ($\mathrm{TIR}_{\mathrm A}=20$~\%) y B cobra 125 dentro de uno ($\mathrm{TIR}_{\mathrm B}=25$~\%). Sus VAN se igualan en $k^{\mathrm F}=144/125-1=15{,}2$~\%. Con $k=8$~\%, $\mathrm{VAN}_{\mathrm A}\approx23{,}5$ y $\mathrm{VAN}_{\mathrm B}\approx15{,}7$: el VAN elige A y la TIR, B. Con $k>k^{\mathrm F}$, los 2 eligen B (tabla~\ref{tab:van-tir}).
+  \end{itemize}
+\item \emph{¿A cuál hacer caso?} Al VAN: mide en euros lo que gana la empresa. La TIR premia la rentabilidad porcentual y puede preferir un proyecto pequeño o corto muy rentable a uno grande o largo que crea más valor: «lo bueno, si breve, dos veces bueno», pero no siempre.
+\item \emph{Con flujos no convencionales} (las inversiones mixtas), la TIR puede ser múltiple o no existir (tabla~\ref{tab:signos}), y los 2 criterios pueden no coincidir ni para aceptar o rechazar. Estos problemas los señalaron \textcite{LorieSavage1955Three} y \textcite{Hirshleifer1958Optimal}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{VAN, TIR y punto de \autor{Fisher}}\label{fig:van-fisher}
+\grafico[0.7\textwidth]{van-fisher}
+\fuente{elaboración propia. El proyecto A cobra 144 dentro de 2 años y el B, 125 dentro de uno; los 2 cuestan 100. Con tasas por debajo de $k^{\mathrm F}=15{,}2$~\% el VAN prefiere A y la TIR, B.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{El VAN y la TIR con un punto de \autor{Fisher}}\label{tab:van-tir}
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.8cm}>{\centering\arraybackslash}m{3.6cm}>{\centering\arraybackslash}m{3.6cm}>{\centering\arraybackslash}m{3.6cm}}
+\toprule
+\rowcolor{tceeazulpalido} & $k<k^{\mathrm F}$ & $k=k^{\mathrm F}$ & $k>k^{\mathrm F}$ \\
+\midrule
+Criterio del VAN & $\mathrm{VAN}_{\mathrm A}>\mathrm{VAN}_{\mathrm B}$:\newline \textcolor{tceeazul}{A} & $\mathrm{VAN}_{\mathrm A}=\mathrm{VAN}_{\mathrm B}$:\newline indiferente & $\mathrm{VAN}_{\mathrm A}<\mathrm{VAN}_{\mathrm B}$:\newline \textcolor{tceeverde}{B} \\
+Criterio de la TIR & $\mathrm{TIR}_{\mathrm A}<\mathrm{TIR}_{\mathrm B}$:\newline \textcolor{tceeverde}{B} & $\mathrm{TIR}_{\mathrm A}<\mathrm{TIR}_{\mathrm B}$:\newline \textcolor{tceeverde}{B} & $\mathrm{TIR}_{\mathrm A}<\mathrm{TIR}_{\mathrm B}$:\newline \textcolor{tceeverde}{B} \\
+\rowcolor{tceesalvia}¿Coinciden? & \textcolor{tceerojo}{No} & \textcolor{tceerojo}{No} & \textcolor{tceeverde}{Sí} \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\paragraph{d) La TIR modificada (TIRM)}
+
+\begin{itemize}
+\item La \concepto{TIR modificada} corrige 2 problemas de la TIR: la reinversión implícita a la propia TIR y las TIR múltiples. Se calcula en 3 pasos (gráfico~\ref{fig:tirm}):
+  \begin{enumerate}
+  \item se llevan al momento 0, descontándolos a $k$, el desembolso y los flujos negativos: $VA^{-}=I_0+\sum_{\mathrm{FC}_t<0}|\mathrm{FC}_t|\,(1+k)^{-t}$;
+  \item se llevan al final, capitalizándolos a la tasa de reinversión, que suele ser $k$, los flujos positivos: $VF^{+}=\sum_{\mathrm{FC}_t>0}\mathrm{FC}_t\,(1+k)^{n-t}$;
+  \item la TIRM es la tasa que convierte $VA^{-}$ en $VF^{+}$ en $n$ periodos:
+  \[
+  VA^{-}=\frac{VF^{+}}{(1+\mathrm{TIRM})^n}.
+  \]
+  \end{enumerate}
+\item \emph{Regla}: aceptar si $\mathrm{TIRM}>k$, lo que equivale a $\mathrm{VAN}>0$;\footnote{Basta dividir $VF^{+}$ entre $(1+k)^n$: el VAN es $VF^{+}(1+k)^{-n}-VA^{-}$, que es positivo si y solo si $VF^{+}/VA^{-}>(1+k)^n$, es decir, si $\mathrm{TIRM}>k$.} entre proyectos, el de mayor TIRM. Es siempre única. Pero, como la TIR, es una medida relativa: entre proyectos de distinta escala puede seguir ordenando distinto que el VAN \parencite[cap.~5]{BrealeyMyersAllen2020Principles}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La TIR modificada en 3 pasos}\label{fig:tirm}
+\grafico[0.8\textwidth]{tirm}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{BrealeyMyersAllen2020Principles}.}
+\end{figure}
+
+\paragraph{e) El índice del VAN y el racionamiento de capital}
+
+\begin{itemize}
+\item El \concepto{índice del valor actual neto} o índice de rentabilidad es el VAN por euro invertido, $\mathrm{IVAN}=\mathrm{VAN}/I_0$. Se aceptan los proyectos con $\mathrm{IVAN}>0$, lo mismo que con $\mathrm{VAN}>0$.
+\item Su uso es el \concepto{racionamiento de capital}: cuando la empresa no puede financiar todos los proyectos con VAN positivo, porque no consigue fondos (\emph{racionamiento duro}) o porque la dirección fija un presupuesto máximo (\emph{racionamiento blando}).
+  \begin{itemize}
+  \item El problema es elegir los proyectos que dan más VAN con el presupuesto disponible, $\overline{I}$, siendo $x_j$ la parte del proyecto $j$ que se hace:
+  \[
+  \optim{\max}{x_1,\dots,x_m}{\sum_{j=1}^{m}x_j\,\mathrm{VAN}_j}{\sum_{j=1}^{m}x_j\,I_{0,j}\leq\overline{I}\\ 0\leq x_j\leq 1}
+  \]
+  Si los proyectos son divisibles, la solución es ordenarlos de mayor a menor $\mathrm{IVAN}$ e ir haciéndolos hasta agotar el presupuesto.
+  \item Por ejemplo, con 100 de presupuesto y 3 proyectos, el 1 ($I_0=100$, $\mathrm{VAN}=30$), el 2 ($I_0=50$, $\mathrm{VAN}=20$) y el 3 ($I_0=50$, $\mathrm{VAN}=18$), el mayor VAN es el del 1, pero el 2 y el 3 juntos dan 38: tienen más VAN por euro ($\mathrm{IVAN}$ de 0,40 y 0,36 frente a 0,30).
+  \item Si los proyectos no se pueden partir o hay límites en varios años, el orden por $\mathrm{IVAN}$ ya no basta y se resuelve con programación lineal o entera \parencites{LorieSavage1955Three}{Weingartner1963Mathematical}.
+  \end{itemize}
+\item \emph{Lectura}: el racionamiento blando es una señal de que algo falla (desconfianza de la dirección hacia las previsiones, problemas de agencia o de información) y hace que la empresa renuncie a valor \vertema{3.A.13}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Criterios que consideran el riesgo}\label{sec:criterios-riesgo}
+
+\begin{itemize}
+\item La tasa $k$ ya recoge el riesgo medio, pero los flujos de caja y la duración de un proyecto concreto son inciertos. Hay 2 maneras de meter ese riesgo en el VAN, que llevan al mismo resultado si se hacen bien, y 2 herramientas que lo completan:
+  \begin{enumerate}
+  \item ajustar la \emph{tasa de descuento};
+  \item ajustar los \emph{flujos}, con su equivalente cierto;
+  \item estudiar cómo cambia el VAN si cambian los supuestos (sensibilidad, escenarios y simulación);
+  \item y valorar la \emph{flexibilidad} de la dirección para cambiar el proyecto (las opciones reales, \ref{sec:opciones-reales}).
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{a) Tasa de descuento ajustada al riesgo}
+
+\begin{itemize}
+\item Se descuentan los flujos \emph{esperados} a la rentabilidad que exige el riesgo del proyecto, $k=r_f+\text{prima de riesgo del proyecto}$:
+  \[
+  \mathrm{VAN}=-I_0+\sum_{t=1}^{n}\frac{\mathbb{E}[\mathrm{FC}_t]}{(1+k)^t}.
+  \]
+  Si el proyecto tiene el riesgo medio de la empresa, esa tasa es el $\mathrm{WACC}$ \eqref{eq:wacc}; si no, se ajusta: se sube o se baja según el proyecto sea más o menos arriesgado que los activos actuales, o se usa la beta de empresas del sector del proyecto. Cómo se mide la prima, con la beta del proyecto, se ve en el apartado~\ref{sec:coste-estimacion}. Sumar una prima al $\mathrm{WACC}$ de un proyecto de riesgo medio contaría el riesgo 2 veces.
+\end{itemize}
+
+\paragraph{b) Equivalente cierto}
+
+\begin{itemize}
+\item Cada flujo incierto se sustituye por su \concepto{equivalente cierto}, la cantidad segura que el inversor valora igual que el flujo arriesgado, $\xi_t=\alpha_t\,\mathbb{E}[\mathrm{FC}_t]$ con $0<\alpha_t\leq1$ \vertema{3.A.10}, y se descuenta al tipo \emph{sin riesgo}, porque el riesgo ya se ha quitado del numerador:
+  \[
+  \mathrm{VAN}=-I_0+\sum_{t=1}^{n}\frac{\alpha_t\,\mathbb{E}[\mathrm{FC}_t]}{(1+r_f)^t}.
+  \]
+  Descontarlo al $\mathrm{WACC}$ contaría el riesgo 2 veces.
+\item \emph{Relación entre los 2 métodos}: dan el mismo VAN si $\alpha_t=\big[(1+r_f)/(1+k)\big]^t$. Como ese $\alpha_t$ cae con $t$, usar una tasa ajustada constante supone que el riesgo crece con el plazo de forma geométrica; no vale para proyectos cuyo riesgo se concentra al principio, como una fase de pruebas \parencite[cap.~9]{BrealeyMyersAllen2020Principles}. La tasa ajustada trata el proyecto en conjunto; el equivalente cierto, cada flujo por separado.
+\end{itemize}
+
+\paragraph{c) Sensibilidad, escenarios y simulación}
+
+\begin{itemize}
+\item El \emph{análisis de sensibilidad} cambia una variable cada vez (ventas, precio, costes, la tasa) y mira cuánto se mueve el VAN; revela las variables críticas y el \emph{punto muerto}, el valor de cada una que deja el VAN en cero.
+\item El \emph{análisis de escenarios} cambia varias a la vez de forma coherente (pesimista, central, optimista) para ver si el resultado aguanta.
+\item La \emph{simulación de Monte Carlo} \parencite{Hertz1964Risk} da a cada variable una distribución de probabilidad, con sus correlaciones, genera miles de combinaciones al azar y calcula el VAN en cada una: el resultado es la distribución del VAN, no un número. Es más sofisticada y se usa menos.
+\item Las 3 informan del riesgo, pero no dicen qué hacer con él: la decisión sigue siendo comparar con cero el VAN esperado, descontado a la tasa que corresponde al riesgo sistemático.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Opciones reales}\label{sec:opciones-reales}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item El VAN clásico trata la inversión como una decisión pasiva: supone que es \emph{reversible} (si sale mal, se deshace sin pérdida) o que es \emph{de ahora o nunca} \parencite[cap.~1]{DixitPindyck1994}. Pero casi todas las inversiones son en parte irreversibles (sus costes son hundidos) y aplazables, y la dirección puede cambiar el proyecto cuando llega información: esperar, ampliar, reducir o abandonar.
+\item Esa flexibilidad es una \concepto{opción real}: el derecho, pero no la obligación, de cambiar el proyecto, con un valor como el de una opción financiera \vertema{3.B.25}; el nombre es de \textcite{Myers1977Determinants}. El valor de un proyecto es su VAN estático más el valor de sus opciones \parencite{Trigeorgis1996Real}.
+\end{itemize}
+
+\paragraph{b) Modelo: la opción de esperar}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Invertir cuesta $I_0$, que no se recupera; se puede invertir hoy o dentro de un año.
+\item El proyecto vale hoy $V_0$, y dentro de un año valdrá $V^{\mathrm A}$ en el escenario bueno, con probabilidad $\pi$, o $V^{\mathrm B}$ en el malo, con $V^{\mathrm B}<I_0<V^{\mathrm A}$. La empresa es neutral al riesgo y descuenta al tipo sin riesgo, $r_f$.\footnote{Es la misma presentación que en las teorías de la inversión \vertema{3.A.34}, donde el desembolso se escribe $I$ y el tipo de interés $r$; aquí $I_0$ es la letra del desembolso en todo el tema.}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Si espera, solo invierte en el escenario bueno, así que esperar vale $\pi\,(V^{\mathrm A}-I_0)/(1+r_f)$. Invertir hoy mata esa opción, y solo conviene si vale más que ella:
+  \begin{equation}\label{eq:opcion-esperar}
+  V_0-I_0\ \geq\ \frac{\pi\,(V^{\mathrm A}-I_0)}{1+r_f}.
+  \end{equation}
+  Ya no basta con $\mathrm{VAN}>0$ ($V_0\geq I_0$): el proyecto tiene que cubrir su coste más el valor de la opción de esperar a la que se renuncia. «No por mucho madrugar amanece más temprano».
+\item En el ejemplo de \textcite{Pindyck1991Irreversibility}, una fábrica que cuesta 1.600 y vale hoy 2.200 tiene un VAN de 600; pero si se espera un año a saber si el precio sube o baja, vale unos 773: un VAN positivo no basta.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Con incertidumbre e irreversibilidad, las empresas exigen a los proyectos más de lo que dice el VAN y esperan aunque el VAN sea positivo. La incertidumbre frena la inversión \vertema{3.A.34}.
+\item El valor de una opción real, como el de una financiera \parencite{BlackScholes1973Pricing}, crece con la \emph{incertidumbre} (si nada puede cambiar, la flexibilidad no vale nada), con el \emph{tiempo} durante el que se puede ejercer y con la \emph{irreversibilidad} (si cambiar fuera gratis, no haría falta la opción).
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Además de esperar, se puede \emph{ampliar} si va bien, \emph{reducir} o \emph{abandonar} si va mal (recuperando el valor residual) o invertir \emph{por fases}. Se valoran con un \emph{árbol de decisión} (gráfico~\ref{fig:arbol-opciones}), que alterna nodos de decisión (cuadrados) y de azar (círculos) y se resuelve hacia atrás, o, con más pasos, con los modelos de valoración de opciones \vertema{3.B.25}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Árbol de decisión con opciones reales}\label{fig:arbol-opciones}
+\grafico[0.8\textwidth]{arbol-opciones}
+\fuente{elaboración propia a partir de \textcite[cap.~22]{BrealeyMyersAllen2020Principles}.}
+\end{figure}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Completa el VAN y explica por qué las empresas esperan aunque el VAN sea positivo; pero estimar la volatilidad y los demás parámetros es difícil, y pocas empresas lo usan de forma sistemática \parencite{GrahamHarvey2001Theory}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{¿Qué se utiliza en la práctica?}\label{sec:practica}
+
+\begin{itemize}
+\item \textcite{GrahamHarvey2001Theory} preguntaron en 1999 a 392 directores financieros de Estados Unidos qué métodos usaban:
+  \begin{itemize}
+  \item 3 de cada 4 usaban siempre o casi siempre el VAN (el 74,9~\%) y la TIR (el 75,7~\%), y más de la mitad el plazo de recuperación;
+  \item las grandes empresas usaban más el VAN; las pequeñas, el plazo de recuperación casi tanto como el VAN, y este era más frecuente cuanto mayor era el consejero delegado, cuanto más tiempo llevaba en el cargo y si no tenía un MBA;
+  \item y casi el 60~\% usaba la misma tasa de descuento para todos sus proyectos, aunque tuvieran riesgos distintos \parencite{GrahamHarvey2002How}.
+  \end{itemize}
+\item El uso del VAN se ha generalizado: a mediados de los 70, solo el 10~\% de las grandes empresas de Estados Unidos lo usaba como regla principal \parencite{GitmanForrester1977Survey}; en 2020 lo usaba siempre o casi siempre el 77~\% de las grandes, aunque solo el 40~\% de las pequeñas, que prefieren el plazo de recuperación \parencite{Graham2022Presidential}.
+\item Pero las empresas exigen a sus proyectos un 15~\% de media, unos 6 puntos más que su coste del capital \parencite{Graham2022Presidential}, sobre todo porque no tienen directivos ni organización para hacer todos los proyectos con VAN positivo y se reservan para los mejores \parencite{JagannathanEtAl2016Why}.
+\item \emph{Recapitulación del bloque~\ref{sec:criterios}}: el VAN, descontado a la tasa que corresponde al riesgo del proyecto, es el criterio coherente con crear valor; la TIR y el \emph{payback} lo complementan, pero pueden equivocarse; el riesgo se mete por la tasa o por los flujos, y la flexibilidad, con opciones reales. En la práctica, las empresas usan el VAN y la TIR, pero simplifican la tasa y piden más rentabilidad de la que exige la teoría.
+\item \emph{Nexo}: con estos criterios, pasamos a ver cómo se aplican a inversiones concretas.
+\end{itemize}
+
+% ==========================================================================
+\section{Métodos de valoración de otros proyectos\newline de inversión: ¿en qué invierten las empresas?}\label{sec:otros-proyectos}
+\minutos{6,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{6,5}). Se borra el centro de la pizarra; el VAN sigue recuadrado a la derecha. La apertura y la clasificación, de palabra (\tiempo{0,75}). II.1, \tiempo{4,5}: el retiro simple y la cadena de renovaciones en una línea cada uno (\tiempo{0,5}); el MAPI con el gráfico~\ref{fig:mapi} pequeño y «renovarse o morir» (\tiempo{0,75}); las existencias con la fórmula de \autor{Wilson} y la regla $(S,s)$ en una frase (\tiempo{0,5}); \autor{Baumol} y \autor{Tobin} para la tesorería, el corazón del bloque (\tiempo{1,5}): el coste total del gráfico~\ref{fig:baumol-tesoreria} por capas (al menos el panel de la U; los dientes de sierra, si da tiempo), $M^*$ debajo junto a la fórmula de \autor{Wilson}, para que se vea que es la misma, y «en el término medio está la virtud»; \autor{Miller} y \autor{Orr} con la banda del gráfico~\ref{fig:miller-orr}, recomendado (\tiempo{0,5}); \autor{Holmström} y \autor{Tirole}, de palabra (\tiempo{0,5}); los intangibles, en una frase (\tiempo{0,25}). II.2, \tiempo{0,5}, y II.3, \tiempo{0,75}, de palabra. Las notas al pie y el anexo~\ref{anexo:renovaciones} son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: los criterios del bloque~\ref{sec:criterios} valen para cualquier inversión, pero cada activo tiene su pregunta: cuándo renovar una máquina, cuánta tesorería y cuántas existencias tener, cómo valorar lo intangible, si comprar activos financieros o formar a los trabajadores. En el activo corriente, además, se compara lo que cuesta mantener el activo con lo que cuesta reponerlo.
+\item En sentido estricto, las decisiones de inversión son las del bloque anterior; en sentido amplio, invertir es cualquier decisión que cambia el activo del balance. Las empresas invierten en:
+  \begin{itemize}
+  \item activos reales, no corrientes, corrientes e intangibles (\ref{sec:activos-reales});
+  \item activos financieros (\ref{sec:financieras});
+  \item y capital humano (\ref{sec:capital-humano}).
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Inversiones en activos reales}\label{sec:activos-reales}
+
+% ..........................................................................
+\subsubsection{Clasificación según el motivo}\label{sec:clasificacion}
+
+\begin{itemize}
+\item Según su finalidad, las inversiones en activos reales son:
+  \begin{itemize}
+  \item de \emph{renovación} o reposición: sustituir equipos gastados u obsoletos;
+  \item de \emph{expansión}: ampliar la capacidad para vender más de lo que ya se vende;
+  \item de \emph{modernización o innovación}: mejorar los productos o los procesos, o lanzar productos nuevos;
+  \item y \emph{estratégicas}: inversiones a largo plazo que refuerzan la posición de la empresa frente al progreso técnico y la competencia, como la investigación y el desarrollo (I+D).
+  \end{itemize}
+\item Según su relación con otros proyectos, son \emph{independientes}, \emph{complementarias}, \emph{excluyentes} (hacer una impide la otra) o \emph{dependientes} (una solo tiene sentido con otra). Los criterios ordenan bien proyectos independientes; con excluyentes hay que comparar el VAN, y con dependientes, valorar el conjunto \parencite{SuarezSuarez2014Decisiones}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Inversión en activo no corriente: la vida óptima}\label{sec:no-corriente}
+
+\begin{itemize}
+\item Con el VAN se puede \emph{estimar la vida económica} de un equipo, la que maximiza su valor. La respuesta depende de qué pase cuando se retira: si no se sustituye, si se sustituye por otro igual o si aparecen equipos mejores \parencite[caps.~18-19]{SuarezSuarez2014Decisiones}.
+\end{itemize}
+
+\paragraph{a) Modelo simple de retiro}
+
+\begin{itemize}
+\item \emph{Supuesto}: el equipo no se sustituye (no aparecen equipos técnicamente mejores ni se repite el proyecto). La \concepto{vida económica} es la duración que maximiza el VAN, con un valor residual $\mathrm{VR}_n$ que depende de cuándo se vende:
+  \[
+  \max_{n}\ \mathrm{VAN}(n)=-I_0+\sum_{t=1}^{n}\frac{\mathrm{FC}_t}{(1+k)^t}+\frac{\mathrm{VR}_n}{(1+k)^n}.
+  \]
+\item \emph{Regla}: como $n$ es un número de años, no se deriva; se compara un año más con vender ya. Se mantiene el equipo mientras lo que da ese año, su flujo más lo que valga al final, supere lo que se obtendría vendiéndolo hoy e invirtiendo el dinero a $k$:
+  \[
+  \mathrm{FC}_{n+1}+\mathrm{VR}_{n+1}\geq(1+k)\,\mathrm{VR}_n.
+  \]
+  Con flujos decrecientes (más averías) y un valor residual que cae, llega un año en que deja de cumplirse: es el momento de retirarlo.
+\end{itemize}
+
+\paragraph{b) Retiro con reemplazos idénticos}
+
+\begin{itemize}
+\item \emph{Supuesto}: la empresa no cierra cuando el equipo se retira, sino que lo sustituye por otro igual, y así indefinidamente. Lo que se decide ya no es la vida de un equipo, sino la política de renovación.
+\item \emph{Resultado}: si cada equipo dura $n$ años y su VAN al comprarlo es $\mathrm{VAN}(n)$, la cadena de renovaciones vale
+  \[
+  \mathrm{VAN}_\infty(n)=\mathrm{VAN}(n)\,\frac{(1+k)^n}{(1+k)^n-1},
+  \]
+  y la duración óptima es la que maximiza $\mathrm{VAN}_\infty(n)$, no $\mathrm{VAN}(n)$ (anexo~\ref{anexo:renovaciones}). Es lo mismo que maximizar el \concepto{valor anual equivalente}, $\mathrm{VAE}(n)=k\,\mathrm{VAN}_\infty(n)$, la renta constante que tiene el mismo valor actual que el equipo, que sirve también para comparar equipos de vidas distintas \parencite[cap.~6]{BrealeyMyersAllen2020Principles}.
+\item \emph{Implicación}: con reemplazo, el equipo se retira antes que en el modelo simple, porque alargar su vida retrasa el siguiente ciclo, que también crea valor. Lo óptimo para un equipo aislado no es lo óptimo para la empresa a lo largo del tiempo; el equipo aislado solo tiene sentido si la empresa termina con él o si se compra para atender un aumento pasajero de la demanda \parencite[cap.~18]{SuarezSuarez2014Decisiones}.
+\end{itemize}
+
+\paragraph{c) Retiro con reemplazos distintos: el método MAPI}
+
+\begin{itemize}
+\item \emph{Supuesto}: aparecen equipos técnicamente mejores. Mantener el viejo tiene un coste de oportunidad: lo que se deja de ganar por no tener el nuevo. La decisión es un \emph{trade-off} entre el coste de reponer y ese coste de oportunidad.
+\item El método del \concepto{mínimo adverso} de \textcite{Terborgh1949Dynamic}, desarrollado para el \emph{Machinery and Allied Products Institute} (MAPI), busca la vida que minimiza el coste medio anual de un equipo, suma de 2 costes que se mueven en sentidos opuestos (gráfico~\ref{fig:mapi}):
+  \begin{itemize}
+  \item el \emph{coste del capital}, la amortización y los intereses por año, que \emph{baja} con la vida, porque el desembolso se reparte entre más años;
+  \item y la \emph{inferioridad de servicio}, lo que el equipo pierde frente a los nuevos por desgaste y obsolescencia, que \emph{sube} con la edad.
+  \end{itemize}
+\item La vida óptima es la del mínimo de la suma, el «mínimo adverso». Se sustituye el equipo cuando el coste de seguir con él supera el mínimo adverso del mejor equipo nuevo: «renovarse o morir», pero en el momento justo.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El método MAPI o del mínimo adverso}\label{fig:mapi}
+\grafico[0.6\textwidth]{mapi}
+\fuente{elaboración propia a partir de \textcite{Terborgh1949Dynamic} y \textcite[cap.~18]{SuarezSuarez2014Decisiones}: coste del capital $a/n$ e inferioridad de servicio $c\cdot n$; el mínimo está en $n^*=\sqrt{a/c}$.}
+\end{figure}
+
+% ..........................................................................
+\subsubsection{Inversión en activo corriente: existencias y tesorería}\label{sec:corriente}
+
+\begin{itemize}
+\item El activo corriente (existencias, clientes, caja) acompaña al no corriente: cuanto más se produce, más hace falta, y cuanto más largo es el ciclo de explotación, más se inmoviliza.\footnote{Por eso la inversión en activo corriente es complementaria de la inversión en activo no corriente, y entra en los flujos del proyecto como $\Delta\mathrm{NOF}_t$ (\ref{sec:variables}).}
+\item Su gestión es un \emph{problema de inventario}: mantener mucho cuesta el rendimiento al que se renuncia; mantener poco obliga a reponer a menudo, y cada reposición tiene un coste fijo. La solución equilibra los 2 costes.
+\end{itemize}
+
+\paragraph{a) Existencias: el lote económico}
+
+\begin{itemize}
+\item \emph{Supuestos}: la empresa usa $Y$ unidades en el periodo a ritmo constante; cada pedido cuesta $b$, sea cual sea su tamaño; mantener una unidad en el almacén cuesta $c_a$ en el periodo (el capital inmovilizado, el espacio, el seguro); sin incertidumbre ni roturas de existencias.
+\item \emph{Desarrollo}: si pide lotes de $Q$ unidades, hace $Y/Q$ pedidos y mantiene de media $Q/2$:
+  \[
+  \min_{Q}\ CT(Q)=b\,\frac{Y}{Q}+c_a\,\frac{Q}{2}\quad\Longrightarrow\quad Q^{*}=\sqrt{\frac{2\,b\,Y}{c_a}}.
+  \]
+  Es la fórmula del \concepto{lote económico de pedido} o \emph{fórmula de \autor{Wilson}} \parencite{Wilson1934Scientific}, que ya había dado \textcite{Harris1913How}.
+\item \emph{Extensión}: con demanda incierta, la política óptima es una regla $(S,s)$: cuando las existencias bajan de un mínimo $s$, se pide lo necesario para volver al nivel $S$ \parencites{ArrowHarrisMarschak1951Optimal}{Scarf1960Optimality}. Es la misma banda de inacción de la inversión con costes fijos \vertema{3.A.34} y de la compra de bienes duraderos \vertema{3.A.33}.
+\end{itemize}
+
+\paragraph{b) Tesorería: el modelo de \autor{Baumol} (1952) y \autor{Tobin} (1956)}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item La caja no rinde, pero hace falta para pagar. ¿Cuánta conviene tener? Es el mismo problema que el de las existencias, con el dinero como mercancía \parencites{Baumol1952Transactions}{Tobin1956Interest}; su versión para los hogares es la demanda de dinero por transacciones \vertema{3.A.35}.
+\item La empresa tiene que hacer pagos por un total de $Y$ euros en el periodo, a ritmo constante y conocido.
+\item Guarda su liquidez en activos a corto plazo que rinden un tipo $i$ (letras, depósitos) y en caja, que no rinde nada.
+\item Cada vez que vende activos para reponer la caja paga un coste fijo $b$ (comisiones, gestión) y repone $M$ euros cada vez: su caja baja de $M$ a cero en «dientes de sierra», hace $Y/M$ reposiciones y su saldo medio es $M/2$ (gráfico~\ref{fig:baumol-tesoreria}, panel a).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La empresa minimiza el coste de reposición más el de oportunidad, los intereses a los que renuncia por su saldo medio:
+  \[
+  \min_{M}\ CT(M)=b\,\frac{Y}{M}+i\,\frac{M}{2}\quad\Longrightarrow\quad M^{*}=\sqrt{\frac{2\,b\,Y}{i}},\qquad M^D=\frac{M^{*}}{2}=\sqrt{\frac{b\,Y}{2\,i}}.
+  \]
+  El coste de reposición es una hipérbola que cae con $M$; el de oportunidad, una recta que sube; el total tiene forma de U y su mínimo está donde los 2 son iguales (gráfico~\ref{fig:baumol-tesoreria}, panel b).\footnote{La condición de primer orden es $-b\,Y/M^2+i/2=0$, y la de segundo orden se cumple: $CT''(M)=2\,b\,Y/M^3>0$. En el óptimo, $b\,Y/M^{*}=i\,M^{*}/2$ y el coste total es $CT^*=\sqrt{2\,b\,i\,Y}$.} Es la fórmula de \autor{Wilson} con el tipo de interés como coste de almacenar el dinero. «En el término medio está la virtud»: ni vender activos cada día ni tener toda la tesorería parada.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de \autor{Baumol} y \autor{Tobin} aplicado a la tesorería: a) la caja en dientes de sierra; b) el coste total y la reposición óptima}\label{fig:baumol-tesoreria}
+\grafico[0.95\textwidth]{baumol-tesoreria}
+\fuente{elaboración propia a partir de \textcite{Baumol1952Transactions} y \textcite{Tobin1956Interest}. Si el tipo sube del 4~\% al 8~\%, la recta del coste de oportunidad gira hacia arriba y $M^*$ baja a unos 67.100~euros (con un coste de unos 5.370~euros).}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item El saldo medio de caja sube con los pagos y con el coste de reponer, y baja con el tipo de interés: $M^D=f\big(\underset{+}{Y},\underset{+}{b},\underset{-}{i}\big)$, con elasticidades de $1/2$ respecto a $Y$ y a $b$ y de $-1/2$ respecto a $i$.
+\item La elasticidad de $1/2$ respecto a los pagos son \emph{economías de escala}: si una empresa paga el doble, no necesita el doble de caja, sino un 41~\% más. Por eso las empresas grandes, y los grupos que centralizan la tesorería de sus filiales (\emph{cash pooling}), necesitan menos caja por euro pagado.
+\item Con tipos altos conviene tener menos caja y reponer más a menudo; con tipos cerca de cero, el coste de oportunidad desaparece y las empresas acumulan liquidez. Lo que el modelo implica para la demanda de dinero agregada, la velocidad y la política monetaria se estudia con la demanda de dinero \vertema{3.A.35}.
+\item Pensemos en una empresa que paga 3,6 millones de euros al año, a la que cada venta de letras le cuesta 50~euros, con un tipo del 4~\%: repone $M^{*}=\sqrt{2\cdot50\cdot3.600.000/0{,}04}\approx94.900$~euros unas 38 veces al año, mantiene de media unos 47.400~euros en caja y le cuesta todo unos 3.800~euros al año.
+\item \emph{Valoración}: supone pagos ciertos y regulares y que la empresa no cobra durante el periodo. En la realidad, los cobros y los pagos son inciertos, y eso lleva al modelo siguiente.
+\end{itemize}
+
+\paragraph{c) Tesorería con incertidumbre: el modelo de \autor{Miller} y \autor{Orr} (1966)}
+
+\begin{itemize}
+\item \emph{Supuestos}: \textcite{MillerOrr1966Model} piensan en una empresa cuyos cobros y pagos netos de cada día son aleatorios, sin tendencia y con varianza diaria $\sigma^2$: su saldo de caja sigue un paseo aleatorio. Cada compra o venta de activos líquidos cuesta $b$, y los activos rinden $i$ al día.
+\item \emph{Resultado}: la política óptima es una \emph{banda de control} (gráfico~\ref{fig:miller-orr}). La empresa fija un saldo mínimo, $M^{\mathrm{inf}}$ (por seguridad o porque lo exige el banco), y deja que la caja se mueva libremente hasta un límite superior, $M^{\mathrm{sup}}=M^{\mathrm{inf}}+3z^*$:
+  \begin{itemize}
+  \item si toca el límite superior, compra activos líquidos hasta volver al \emph{punto de retorno}, $M^{\mathrm{ret}}=M^{\mathrm{inf}}+z^*$;
+  \item si toca el inferior, vende activos hasta volver a él;
+  \end{itemize}
+  con
+  \[
+  z^*=\left(\frac{3\,b\,\sigma^2}{4\,i}\right)^{1/3},
+  \]
+  y el saldo medio es $M^{\mathrm{inf}}+\tfrac{4}{3}\,z^*$. Solo el saldo mínimo lo fija la empresa a su criterio; el punto de retorno y el límite superior son óptimos.
+\item \emph{Implicaciones}: la banda es más ancha cuanto más volátiles son los flujos y más cuesta cada operación, y más estrecha cuanto más alto es el tipo de interés; el punto de retorno está a un tercio de la banda, más cerca del mínimo que del máximo, porque así se ahorra rendimiento. Sigue habiendo economías de escala, y la incertidumbre aumenta la caja. Es la regla $(S,s)$ aplicada a la tesorería: aquí es donde mejor encaja, porque el modelo se pensó para una empresa.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de \autor{Miller} y \autor{Orr}: la caja se mueve libremente dentro de una banda}\label{fig:miller-orr}
+\grafico[0.7\textwidth]{miller-orr}
+\fuente{elaboración propia a partir de \textcite{MillerOrr1966Model}.}
+\end{figure}
+
+\paragraph{d) La liquidez como seguro: \autor{Holmström} y \autor{Tirole} (2011)}
+
+\begin{itemize}
+\item Los modelos de \autor{Baumol}-\autor{Tobin} y de \autor{Miller}-\autor{Orr} explican la caja para pagar, pero no por qué muchas empresas acumulan mucha más liquidez de la que necesitan y pagan además líneas de crédito que no usan. Las empresas no financieras de Estados Unidos que cotizan en bolsa tenían a comienzos de 2026 unos 1,9 billones de dólares en efectivo \parencite{Damodaran2026Cash}, más o menos el PIB de España en 2025 \parencite{FMI2026WEO}.
+\item \textcite{HolmstromTirole2011Inside}\footnote{Premios Nobel: \autor{Tirole} (2014), «por su análisis del poder de mercado y de la regulación» \parencite{Nobel2014Tirole}; \autor{Holmström} (2016), con \autor{Hart}, «por sus contribuciones a la teoría de los contratos» \parencite{Nobel2016HartHolmstrom}.} lo explican con la información asimétrica \vertema{3.A.13}: quien financia no puede verificar bien los proyectos futuros ni el esfuerzo de los directivos, así que la financiación externa llega tarde, cara o no llega, y la empresa guarda liquidez para no perder proyectos con VAN positivo cuando aparezcan.\footnote{De ahí salen 3 consecuencias. Primera, la estructura financiera importa, en contra de la irrelevancia de \autor{Modigliani} y \autor{Miller}: los financiadores solo prestan si la empresa se juega fondos propios suficientes \parencite{HolmstromTirole1997Financial}. Segunda, la financiación externa cuesta más que la interna, y por eso las empresas prefieren los beneficios retenidos, luego la deuda y por último las acciones \parencite{MyersMajluf1984Corporate} \vertema{3.B.3}. Tercera, las empresas cuyos proyectos son más difíciles de verificar, como las tecnológicas o las que compran empresas emergentes, necesitan más fondos propios y más caja \vertema{3.B.4}. Los impuestos también influyen: si los dividendos tributan más que las ganancias de capital, o si repatriar beneficios del exterior tributa, a las empresas les conviene retener la caja.}
+\item La liquidez propia es también lo que permite crecer cuando el crédito está racionado \vertema{3.B.4}. En Estados Unidos, la caja media de las empresas industriales sobre su activo se duplicó con creces de 1980 a 2006, sobre todo porque sus flujos se volvieron más arriesgados y porque invierten más en I+D \parencite{BatesKahleStulz2009Why}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Inversión en intangibles e inmuebles}\label{sec:intangibles}
+
+\begin{itemize}
+\item \emph{Intangibles}. La I+D, el \emph{software}, las bases de datos, las marcas, el diseño y la organización son hoy una parte de la inversión de las empresas del mismo orden que las máquinas \parencite{CorradoHultenSichel2009Intangible}. Se valoran con el mismo VAN, pero con 4 rasgos que lo complican \parencite{HaskelWestlake2017Capitalism}:
+  \begin{itemize}
+  \item son \emph{escalables}: un programa se usa mil veces sin coste adicional, lo que da flujos muy asimétricos, con pocos éxitos enormes;
+  \item son \emph{hundidos}: no se pueden revender, así que sirven mal de garantía y se financian con fondos propios más que con deuda;
+  \item generan \emph{desbordamientos}: otros se aprovechan de ellos, lo que justifica la protección de la propiedad intelectual y el apoyo público a la I+D \vertema{3.A.44};
+  \item y tienen \emph{sinergias}: valen más combinados con otros intangibles.
+  \end{itemize}
+\item Por eso las opciones reales (\ref{sec:opciones-reales}) son el método natural para un proyecto de I+D, que se hace por fases y se puede abandonar en cada una \vertema{3.A.34}. Y como la contabilidad los registra como gasto, la rentabilidad contable de las empresas intensivas en intangibles no refleja bien su rentabilidad (\ref{sec:rentabilidad}).
+\item \emph{Inmuebles}. Un inmueble de inversión se valora por el valor actual de sus rentas netas. Si la renta neta del primer año es $\mathrm{FC}_1$ y crece a una tasa $g<k$, su valor es una perpetuidad creciente (anexo~\ref{anexo:rentas}), $V_0=\mathrm{FC}_1/(k-g)$. La rentabilidad inicial, $\mathrm{FC}_1/V_0=k-g$, es la tasa de capitalización (\emph{cap rate}) con la que se comparan los inmuebles.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Inversiones financieras}\label{sec:financieras}
+
+\begin{itemize}
+\item La mayor parte del activo de una sociedad no financiera es real, pero cuando tiene excedentes los invierte en activos financieros, o los usa para cubrir riesgos. No son formación bruta de capital: no añaden capacidad productiva a la economía.
+\item Se valoran con los mismos principios, adaptados:
+  \begin{itemize}
+  \item la \emph{renta fija} da flujos fijados de antemano (cupones y nominal) y no da derechos de propiedad. Su TIR es la \emph{rentabilidad a vencimiento}, que supone mantener el bono hasta el final, que el emisor pague y que los cupones se reinviertan a esa misma tasa. Crea valor si rinde más que las alternativas de riesgo parecido; sus riesgos son el de crédito y el de tipo de interés \vertema{3.B.24};
+  \item la \emph{renta variable} da derechos de propiedad y flujos inciertos. El precio de una acción es el valor actual de sus dividendos, y la rentabilidad que se le debe exigir depende de su riesgo sistemático, $\mathbb{E}[r_i]=r_f+\beta_i\,\lambda_M$ (CAPM) \vertema{3.B.23}. En un mercado eficiente, comprar acciones a su precio tiene un VAN nulo: no crea valor, salvo que la empresa sepa algo que el mercado no sabe;
+  \item los \emph{derivados}, cuyo valor depende del de otro activo, el subyacente, sirven a la empresa sobre todo para cubrir riesgos de tipo de cambio, de tipo de interés o de materias primas \vertema{3.B.25}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Inversión en capital humano}\label{sec:capital-humano}
+
+\begin{itemize}
+\item También es inversión formarse, y formar a los trabajadores: se sacrifica hoy (matrículas, horas, el salario al que se renuncia) a cambio de más productividad mañana, y se decide con la misma regla del VAN. El concepto de \concepto{capital humano} lo desarrollan \textcite{Schultz1961Investment}, \textcite{Becker1964Human} y \textcite{Mincer1974Schooling} \vertema{3.A.25}.\footnote{\autor{Becker} recibió el Nobel de 1992 «por haber extendido el análisis microeconómico a un amplio abanico de comportamientos e interacciones humanas, incluidos los que no pasan por el mercado» \parencite{Nobel1992Becker}. Ya \textcite{Marshall1890Principles} había escrito que «el más valioso de todos los capitales es el que se invierte en seres humanos», pero el interés por el capital humano llega en los 60, cuando se ve que el capital físico explica solo una parte del crecimiento de la renta.}
+\item \emph{¿Quién paga la formación que da la empresa?} \textcite{Becker1964Human} distingue:
+  \begin{itemize}
+  \item la formación \emph{general}, útil en cualquier empresa: la paga el trabajador, con un salario menor mientras se forma, porque si la pagara la empresa, otra se llevaría al trabajador formado;
+  \item y la \emph{específica}, útil solo en esa empresa: el coste y el rendimiento se reparten, y por eso el trabajador formado cambia menos de empleo.
+  \end{itemize}
+\item Con mercados de trabajo imperfectos, en los que el salario sube menos que la productividad, la empresa paga también formación general \parencites{AcemogluPischke1998Why}{AcemogluPischke1999Beyond}: es el caso de los aprendices alemanes.
+\item \emph{Recapitulación del bloque~\ref{sec:otros-proyectos}}: la misma regla, el VAN, contesta preguntas distintas. En el activo fijo, cuándo retirar un equipo, antes si se va a reponer; en el corriente, cuántas existencias o cuánta caja mantener, con un equilibrio entre el coste de reponer y el de tener que da economías de escala; en los intangibles, cómo valorar proyectos hundidos y muy inciertos, con opciones reales; y en los activos financieros y el capital humano, cómo encajan en la decisión de la empresa.
+\item \emph{Nexo}: en los 2 bloques hemos dado por conocida la tasa $k$. Pasamos ahora a ver de dónde sale: la rentabilidad, el riesgo y el coste del capital.
+\end{itemize}
+
+% ==========================================================================
+\section{Rentabilidad, riesgo y coste del capital:\newline ¿cuánto debe rendir la inversión?}\label{sec:rentabilidad-riesgo-coste}
+\minutos{9,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{9,5}). Se borra el centro de la pizarra; el VAN sigue recuadrado a la derecha. La apertura, de palabra (\tiempo{0,25}). III.1, \tiempo{1,75}: la definición de rentabilidad \emph{ex ante} y \emph{ex post} y sus determinantes, de palabra (\tiempo{0,5}); el ROA con \emph{DuPont} en una línea (\tiempo{0,5}); la relación del ROE con el ROA \eqref{eq:roe-roa} en una línea (\tiempo{0,75}). III.2, \tiempo{2}: la varianza y el coeficiente de variación de palabra, el riesgo sistemático y el específico (\tiempo{1}); el GAO y el GAF con el ejemplo numérico, en 2 líneas (\tiempo{1}). III.3, \tiempo{5,5}: la definición, proyecto frente a empresa (\tiempo{0,75}); en el centro, el esquema de las 3 vías de la tabla~\ref{tab:vias-coste}, imprescindible (\tiempo{0,25}); el CAPM y \autor{Hamada} en la columna de la vía directa (\tiempo{1,25}); \autor{Gordon} y \autor{Shapiro} despejado en la de la implícita (\tiempo{0,5}); el WACC \eqref{eq:wacc} recuadrado en la de la indirecta, con una flecha a la $k$ del VAN de la derecha: es la tasa que faltaba (\tiempo{1,75}); \autor{Modigliani} y \autor{Miller}, de palabra (\tiempo{0,5}); los determinantes, de palabra (\tiempo{0,5}). Al final, la pizarra queda con el VAN, el WACC y la flecha entre ellos. Las notas al pie, las cifras de la prima y el anexo~\ref{anexo:derivaciones} son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la tasa del VAN es la rentabilidad que exigen los financiadores por el riesgo que corren: el coste del capital. Invertir crea valor solo si la rentabilidad esperada del proyecto supera esa tasa, que es mayor cuanto mayor es el riesgo que no se puede eliminar diversificando.
+\item \emph{Nexo}: en los 2 bloques anteriores hemos descontado a una tasa $k$ dada. Para saber cuál es, vemos por orden la rentabilidad, el riesgo y su precio, el coste del capital.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Rentabilidad}\label{sec:rentabilidad}
+
+\begin{itemize}
+\item La \concepto{rentabilidad} relaciona lo que se gana con lo que se sacrifica:
+  \[
+  r=\frac{\text{valor final}-\text{valor inicial}}{\text{valor inicial}}.
+  \]
+  \begin{itemize}
+  \item \emph{Ex post}, cuando el resultado ya se conoce, es un dato.
+  \item \emph{Ex ante}, antes de invertir, el valor final es incierto y lo relevante es la \concepto{rentabilidad esperada}, $\mathbb{E}[r]$.
+  \item En un mercado competitivo y sin fricciones, el precio de un activo se ajusta hasta que su rentabilidad esperada es la de otros activos de riesgo parecido: si fuera mayor, todos lo comprarían. Esa rentabilidad de los activos comparables es el \emph{coste de oportunidad} de invertir en él.
+  \end{itemize}
+\item \emph{¿De qué depende la rentabilidad que se exige a una inversión?}
+  \begin{itemize}
+  \item De la \emph{preferencia temporal} (la impaciencia) y del rendimiento de otros usos del dinero: un euro hoy vale más que un euro mañana porque se puede consumir o invertir ya. Es el tipo de interés real sin riesgo \vertema{3.A.3}.
+  \item De la \emph{inflación esperada}: el inversor exige que se le compense la pérdida de poder adquisitivo. Por la relación de \autor{Fisher}, $(1+i)=(1+r^{\mathrm{real}})(1+\pi^{e})$, con $i$ el tipo nominal, $r^{\mathrm{real}}$ el real y $\pi^{e}$ la inflación esperada \parencite{Fisher1930Theory}. Por eso los flujos nominales se descuentan con tasas nominales y los reales con tasas reales (\ref{sec:principios}).
+  \item Del \emph{riesgo}: los inversores aversos al riesgo piden una prima por soportarlo \vertema{3.A.10}, pero solo por el que no pueden eliminar diversificando (\ref{sec:riesgo}).
+  \item De los \emph{impuestos} sobre los rendimientos, que separan la rentabilidad antes y después de impuestos.
+  \item Y, en la práctica, de los sesgos de los inversores y de la información asimétrica \vertema{3.A.13}.
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Rentabilidad económica}\label{sec:roa}
+
+\begin{itemize}
+\item La \concepto{rentabilidad económica} mide lo que rinden los activos, con independencia de cómo se financien. Con el resultado de explotación, $\mathrm{EBIT}$ (antes de intereses e impuestos), y el activo total, $AT$ \vertema{3.B.1}:
+  \[
+  \mathrm{ROA}=\frac{\mathrm{EBIT}}{AT}=\underbrace{\frac{\mathrm{EBIT}}{\text{ventas}}}_{\text{margen}}\cdot\underbrace{\frac{\text{ventas}}{AT}}_{\text{rotación}}.
+  \]
+  Se mejora vendiendo con más margen o con menos activo por unidad vendida (la descomposición de \emph{DuPont}).
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Rentabilidad financiera}\label{sec:roe}
+
+\begin{itemize}
+\item La \concepto{rentabilidad financiera} mide lo que rinden los fondos de los accionistas, después de pagar intereses e impuestos: $\mathrm{ROE}=\text{beneficio neto}/\text{patrimonio neto}$.
+\item \emph{Relación entre las 2}: si la deuda cuesta $r_D$ y el activo se financia con deuda, $V_D$, y fondos propios, $V_E$, el beneficio neto es $(\mathrm{EBIT}-r_D\,V_D)(1-t_{IS})$ y
+  \begin{equation}\label{eq:roe-roa}
+  \mathrm{ROE}=\Big[\mathrm{ROA}+\frac{V_D}{V_E}\,(\mathrm{ROA}-r_D)\Big](1-t_{IS}).
+  \end{equation}
+  Aquí $V_D$ y $V_E$ son valores contables; en el $\mathrm{WACC}$ son de mercado (anexo~\ref{anexo:derivaciones}).
+  \begin{itemize}
+  \item Endeudarse sube el ROE si el activo rinde más de lo que cuesta la deuda ($\mathrm{ROA}>r_D$) y lo baja en caso contrario: es el \concepto{apalancamiento financiero}. Pero también amplifica en el ROE las variaciones del ROA: es el riesgo financiero (\ref{sec:riesgo-financiero}) \vertema{3.B.1}.
+  \end{itemize}
+\item \emph{Por qué no bastan para decidir una inversión}:
+  \begin{itemize}
+  \item son medidas \emph{contables}: dependen de cómo se amortizan y se valoran los activos, no de los flujos de caja;
+  \item miran al \emph{pasado} y a la empresa entera, no al proyecto que se va a decidir;
+  \item no tienen en cuenta el \emph{riesgo}: un ROE más alto conseguido con más deuda no es mejor si es más arriesgado;
+  \item y no se comparan con el \emph{coste del capital}: el ROE es la rentabilidad obtenida \emph{ex post}; el coste de los fondos propios, la exigida \emph{ex ante}.
+  \end{itemize}
+\item Por eso, para valorar un proyecto, se comparan los flujos de caja que genera con su coste del capital, que es lo que hacen los métodos dinámicos (\ref{sec:dinamicos}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Riesgo}\label{sec:riesgo}
+
+\begin{itemize}
+\item El \concepto{riesgo} es la posibilidad de que el resultado de una inversión se aparte del esperado. Si se pueden asignar probabilidades a los resultados, la rentabilidad es una variable aleatoria con su distribución,\footnote{No siempre se puede: en la \emph{incertidumbre} en el sentido de \textcite{Knight1921Risk} no hay probabilidades objetivas a las que agarrarse (una pandemia, una tecnología nueva) \vertema{3.A.10}. Con un enfoque frecuentista, se pueden aproximar con la frecuencia con que fenómenos parecidos ocurrieron en el pasado, pero la distinción sigue siendo útil.} y se resume con:
+  \begin{itemize}
+  \item la \emph{esperanza}, $\mathbb{E}[r]=\sum_s \pi_s\,r_s$, con $\pi_s$ la probabilidad del estado $s$;
+  \item la \emph{varianza}, $\sigma^2=\sum_s \pi_s\,\big(r_s-\mathbb{E}[r]\big)^2$, o su raíz, la \emph{desviación típica}, $\sigma$;
+  \item y, para comparar proyectos de distinta rentabilidad, el \emph{coeficiente de variación}, $\sigma/\mathbb{E}[r]$.
+  \end{itemize}
+\item \emph{Fuentes del riesgo}: el negocio (la demanda, los costes, la tecnología, la competencia), los tipos de interés, el tipo de cambio, la inflación inesperada, la liquidez (no poder vender a tiempo y a buen precio), la solvencia de clientes y socios, el riesgo político y el de catástrofes.
+\item \emph{Riesgo sistemático y específico} \vertema{3.B.23}:
+  \begin{itemize}
+  \item el \concepto{riesgo específico} o idiosincrático es propio del proyecto o de la empresa (que fracase un producto, una avería) y desaparece al combinar muchos activos en una cartera;
+  \item el \concepto{riesgo sistemático} o de mercado es el que comparten todos los activos porque depende de la marcha de la economía (una recesión, una subida de tipos), y no se puede eliminar diversificando. Se mide con la beta, la sensibilidad de la rentabilidad del activo a la del mercado: lo que no depende de la empresa es su causa, la marcha de la economía;
+  \item como los inversores pueden diversificar, el mercado solo paga por el riesgo sistemático: es el que cuenta para el coste del capital (\ref{sec:coste-estimacion}).\footnote{No hay que confundirlo con el \emph{riesgo sistémico}, el de que caiga el sistema financiero en su conjunto por el contagio entre entidades \vertema{3.B.27}.}
+  \end{itemize}
+\item Para la empresa, el riesgo tiene 2 capas: el \emph{económico}, que viene del negocio, y el \emph{financiero}, que añade la deuda \parencite[cap.~30]{Vernimmen2017Corporate}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Riesgo económico}\label{sec:riesgo-economico}
+
+\begin{itemize}
+\item El \concepto{riesgo económico} u operativo es la variabilidad del resultado de explotación, el $\mathrm{EBIT}$, ante cambios en las ventas. Depende de 2 cosas:
+  \begin{itemize}
+  \item de lo \emph{cíclico} que sea el negocio: las ventas de bienes de equipo o de automóviles se mueven más con la economía que las de alimentación o electricidad;
+  \item y del peso de los \emph{costes fijos}: cuantos más costes fijos, más se mueve el resultado cuando se mueven las ventas.
+  \end{itemize}
+\item El segundo efecto se mide con el \concepto{grado de apalancamiento operativo}, el cociente entre el margen de contribución y el $\mathrm{EBIT}$:
+  \[
+  \mathrm{GAO}=\frac{\Delta\mathrm{EBIT}/\mathrm{EBIT}}{\Delta\text{ventas}/\text{ventas}}=\frac{\text{ventas}-\text{costes variables}}{\text{ventas}-\text{costes variables}-\text{costes fijos}}.
+  \]
+  \begin{itemize}
+  \item Con ventas de 1.000, costes variables de 600 y fijos de 300, el $\mathrm{EBIT}$ es 100 y el $\mathrm{GAO}$, $400/100=4$: si las ventas suben un 10~\%, el $\mathrm{EBIT}$ sube un 40~\%, y si bajan, cae lo mismo.
+  \end{itemize}
+\item Por eso las empresas de sectores cíclicos y con muchos costes fijos tienen betas de los activos más altas y un coste del capital mayor \parencite[cap.~9]{BrealeyMyersAllen2020Principles}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Riesgo financiero}\label{sec:riesgo-financiero}
+
+\begin{itemize}
+\item El \concepto{riesgo financiero} es el que añade la deuda: los intereses hay que pagarlos vaya bien o mal el negocio, así que son un coste fijo financiero que amplifica en el beneficio neto las variaciones del $\mathrm{EBIT}$.
+\item Se mide con el \concepto{grado de apalancamiento financiero}:
+  \[
+  \mathrm{GAF}=\frac{\Delta\,\text{beneficio neto}/\text{beneficio neto}}{\Delta\mathrm{EBIT}/\mathrm{EBIT}}=\frac{\mathrm{EBIT}}{\mathrm{EBIT}-\text{intereses}}.
+  \]
+  \begin{itemize}
+  \item Siguiendo con el ejemplo, si la empresa paga 50 de intereses, $\mathrm{GAF}=100/50=2$, y el \emph{apalancamiento total} es $\mathrm{GAO}\cdot\mathrm{GAF}=8$: una subida de las ventas del 10~\% sube el beneficio neto un 80~\%, y una caída del 10~\% lo hunde lo mismo.
+  \end{itemize}
+\item \emph{Consecuencias}:
+  \begin{itemize}
+  \item la deuda sube el ROE esperado si $\mathrm{ROA}>r_D$ \eqref{eq:roe-roa}, pero también su variabilidad: más rentabilidad a cambio de más riesgo;
+  \item por eso la beta de las acciones y la rentabilidad que exigen los accionistas suben con la deuda (\ref{sec:coste-estimacion});
+  \item y con demasiada deuda aparece el \emph{riesgo de insolvencia}: no poder pagar \vertema{3.B.3}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Coste del capital}\label{sec:coste-capital}
+
+% ..........................................................................
+\subsubsection{Definición del coste del capital}\label{sec:coste-definicion}
+
+\begin{itemize}
+\item Una inversión no solo tiene que generar más cobros que pagos (\emph{condición económica}): su rentabilidad tiene que superar lo que cuesta financiarla (\emph{condición financiera}). La financiación puede venir de los beneficios retenidos, de los accionistas o de los acreedores \vertema{3.B.3}.
+\item El \concepto{coste del capital} es la rentabilidad que exigen los inversores por financiar un activo de un riesgo dado: la que obtendrían en la mejor alternativa de riesgo parecido. Es un \emph{coste de oportunidad}, una magnitud financiera y no contable.
+  \begin{itemize}
+  \item Si la rentabilidad esperada del proyecto lo supera, el proyecto crea valor.
+  \item Por eso es la \emph{tasa de descuento} con la que se valoran los flujos del proyecto, la $k$ del VAN \eqref{eq:van}: la tasa mínima o tasa de corte (\emph{hurdle rate}).
+  \end{itemize}
+\item \emph{Del proyecto, no de la empresa}. El coste del capital de un proyecto es la rentabilidad de una inversión de igual riesgo en el mercado; el de la empresa, el de sus activos en conjunto. Solo coinciden si el proyecto tiene el riesgo medio de la empresa y se financia como ella: un proyecto más arriesgado exige una tasa mayor y uno menos arriesgado, menor \parencite[cap.~9]{BrealeyMyersAllen2020Principles}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Estimación del coste del capital}\label{sec:coste-estimacion}
+
+\begin{itemize}
+\item El coste del capital no se observa: se estima. Hay 3 vías \parencite[cap.~29]{Vernimmen2017Corporate} (tabla~\ref{tab:vias-coste}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las 3 vías para estimar el coste del capital}\label{tab:vias-coste}
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.4cm}>{\raggedright\arraybackslash}m{4.4cm}>{\centering\arraybackslash}m{3.6cm}>{\raggedright\arraybackslash}m{3.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Vía} & \textbf{Cómo} & \textbf{Fórmula} & \textbf{Límite} \\
+\midrule
+\textcolor{tceeazul}{Directa} & Con un modelo de valoración de activos (CAPM, APT) & $r_A=r_f+\beta_A\,\lambda_M$ & Supuestos fuertes; la beta se estima con error \\
+\textcolor{tceeverde}{Implícita} & A partir del precio de mercado y de los flujos que se esperan & $r_E=\dfrac{D_1}{P_0}+g$ & Los flujos que espera el mercado no se observan \\
+\textcolor{tceemorado}{Indirecta} & Media ponderada de lo que cuestan los fondos propios y la deuda & $\mathrm{WACC}$ \eqref{eq:wacc} & Solo para proyectos de riesgo medio \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~29]{Vernimmen2017Corporate}.}
+\end{table}
+
+\paragraph{a) Estimación directa: el CAPM}
+
+\begin{itemize}
+\item El modelo de valoración de los activos de capital (CAPM) \parencites{Sharpe1964Capital}{Lintner1965Valuation}{Mossin1966Equilibrium} es un modelo de \emph{equilibrio}: si todos los inversores eligen sus carteras con el criterio de media y varianza de \textcite{Markowitz1952Portfolio}, solo se paga el riesgo sistemático, y la rentabilidad que se exige a cualquier activo es la del activo sin riesgo más una prima proporcional a su beta \vertema{3.B.23}. Para las acciones de la empresa,
+  \[
+  r_E=r_f+\beta_E\,\lambda_M,\qquad \lambda_M\equiv\mathbb{E}[r_M]-r_f,
+  \]
+  con $\beta_E=\mathrm{Cov}(r_E,r_M)/\mathrm{Var}(r_M)$ la sensibilidad de la rentabilidad de la acción a la del mercado y $\lambda_M$ la prima de riesgo del mercado.
+  \begin{itemize}
+  \item ¿Cuánto vale la prima? En Estados Unidos, de 1928 a 2025, las acciones rindieron de media unos 6,6 puntos al año más que las letras del Tesoro \parencite{Damodaran2026Historical}; la prima que descuentan hoy los precios es menor, del 4,2~\% a comienzos de 2026, y para una empresa española se suma una prima de riesgo país de 1,6 puntos \parencites{Damodaran2026Implied}{Damodaran2026Country}. Con ella, el coste del capital medio de las empresas no financieras cotizadas de Estados Unidos ronda el 7,7~\% \parencite{Damodaran2026WACC}.
+  \end{itemize}
+\item \emph{Para un proyecto}, la tasa adecuada es la del riesgo de sus activos, con la beta de los activos: $r_A=r_f+\beta_A\,\lambda_M$. La beta de los activos depende del negocio (lo cíclico que sea y su apalancamiento operativo, \ref{sec:riesgo-economico}); la de las acciones añade la deuda. Si la deuda no tiene riesgo sistemático, la de los activos se obtiene desapalancando \parencite{Hamada1972Effect}:
+  \[
+  \beta_E=\beta_A\Big[1+(1-t_{IS})\,\frac{V_D}{V_E}\Big].
+  \]
+  \begin{itemize}
+  \item Así se estima el coste del capital de un proyecto de otro sector o de una empresa que no cotiza: se toman las betas de empresas cotizadas del sector, se \emph{desapalancan} con su estructura financiera para obtener $\beta_A$ y, si hace falta $r_E$, se vuelven a \emph{apalancar} con la de la empresa \vertema{3.B.4}.
+  \end{itemize}
+\item \emph{Ventajas}: separa el riesgo del negocio del de la financiación, y es el método más usado: el 73,5~\% de los directores financieros lo usa siempre o casi siempre \parencite{GrahamHarvey2002How}.
+\item \emph{Limitaciones}: sus supuestos son fuertes, la beta se estima con error y la prima del mercado no se observa. La alternativa con varios factores es la teoría de la valoración por arbitraje (APT) de \textcite{Ross1976Arbitrage}, $\mathbb{E}[r_i]=r_f+\sum_j\beta_{ij}\lambda_j$ \vertema{3.B.23}.
+\end{itemize}
+
+\paragraph{b) Estimación implícita}
+
+\begin{itemize}
+\item Si se conocen el precio de mercado de un activo y los flujos que los inversores esperan de él, la tasa que los iguala es la rentabilidad que exigen: la TIR del activo (\ref{sec:dinamicos}). Para la empresa entera, el $\mathrm{WACC}$ es la tasa que iguala su valor con el de sus flujos de caja libres esperados, $V=\sum_{t=1}^{\infty}\mathbb{E}[\mathrm{FCL}_t]/(1+\mathrm{WACC})^t$ \vertema{3.B.4}.
+\item Para las acciones, el precio es el valor actual de los dividendos esperados, $D_t$:
+  \[
+  P_0=\sum_{t=1}^{\infty}\frac{\mathbb{E}[D_t]}{(1+r_E)^t}.
+  \]
+  Si el dividendo crece a una tasa constante $g<r_E$, la suma es una perpetuidad creciente (anexo~\ref{anexo:rentas}) y se obtiene el modelo de \textcite{GordonShapiro1956Capital} \vertema{3.B.4}, que despejado da el coste de los fondos propios, la rentabilidad por dividendo más su crecimiento:
+  \[
+  P_0=\frac{D_1}{r_E-g}\quad\Longrightarrow\quad r_E=\frac{D_1}{P_0}+g.
+  \]
+\item \emph{Limitaciones}: los flujos que espera el mercado no se observan; con \autor{Gordon} y \autor{Shapiro}, el resultado es muy sensible a $g$ y solo sirve para empresas maduras con dividendos estables. Pocas empresas lo usan \parencite{GrahamHarvey2002How}.
+\end{itemize}
+
+\paragraph{c) Estimación indirecta: el coste medio ponderado del capital}
+
+\begin{itemize}
+\item Es el método más usado para la empresa en su conjunto: se estima por separado lo que cuesta cada fuente y se pondera por su peso \emph{a valor de mercado}.
+  \begin{itemize}
+  \item El \emph{coste de los fondos propios}, $r_E$, no es explícito: es el coste de oportunidad de los accionistas, que se estima con el CAPM o con \autor{Gordon} y \autor{Shapiro}.
+  \item El \emph{coste de la deuda}, $r_D$, es la tasa que iguala lo que la empresa recibe por su deuda, neto de gastos, $V_{D,0}$, con el valor actual de lo que pagará en intereses y devoluciones, $S_t$: $V_{D,0}=\sum_{t=1}^{n}S_t/(1+r_D)^t$. Como los intereses se deducen en el impuesto sobre sociedades, a la empresa le cuesta $r_D(1-t_{IS})$: es el \concepto{escudo fiscal} de la deuda \parencite{ModiglianiMiller1963Corporate}.
+  \end{itemize}
+\item El \concepto{coste medio ponderado del capital} es
+  \funcionclave[eq:wacc]{\mathrm{WACC}=r_E\,(1-L)+r_D\,(1-t_{IS})\,L,\qquad L=\frac{V_D}{V},\quad V=V_E+V_D}
+  Es la $k$ del VAN \eqref{eq:van} para los proyectos de riesgo medio que se financian como la empresa. Como los flujos de caja libres no restan los intereses, el ahorro fiscal de la deuda entra por la tasa \vertema{3.B.4}. Sin impuestos, $\mathrm{WACC}=r_A$, el coste de los activos \parencite{ModiglianiMiller1958Cost}.
+\item \emph{¿Se puede abaratar el capital endeudándose?} La deuda es más barata que los fondos propios ($r_D<r_E$), porque cobra antes y con menos riesgo. Pero $r_E$ y $r_D$ dependen de $L$: al endeudarse, las acciones se vuelven más arriesgadas y suben $\beta_E$ y $r_E$ (\ref{sec:riesgo-financiero}), y con mucha deuda sube también $r_D$. Sin impuestos ni costes de insolvencia, los 2 efectos se compensan y el $\mathrm{WACC}$ no depende de la estructura financiera; con impuestos y costes de insolvencia, hay un endeudamiento óptimo \vertema{3.B.3}.\footnote{Lo que fija el coste del capital es el riesgo de los activos, $r_A$; los costes de las acciones y de la deuda se ajustan para repartirse ese riesgo. Sin impuestos, $r_E=r_A+(r_A-r_D)\,V_D/V_E$ (la proposición II de \autor{Modigliani} y \autor{Miller}): el $\mathrm{WACC}$ no cambia con $L$.}
+\item \textcite{ModiglianiMiller1958Cost} demostraron que, con mercados de capitales perfectos (sin impuestos, costes de quiebra ni de agencia), el valor de la empresa depende solo de sus activos y de los flujos que generan, no de cómo se financian: la decisión de invertir es independiente de la de financiarse \vertema{3.B.3}.\footnote{Premios Nobel: \autor{Modigliani} (1985), «por sus análisis pioneros del ahorro y de los mercados financieros» \parencite{Nobel1985Modigliani}, por la hipótesis del ciclo vital (\emph{life-cycle}) y por este teorema; \autor{Miller} (1990), con \autor{Markowitz} y \autor{Sharpe}, «por sus trabajos pioneros en la teoría de la economía financiera» \parencite{Nobel1990Markowitz}.}
+  \begin{itemize}
+  \item Su propósito no era decir que la estructura financiera da igual, sino aislar \emph{qué} la hace importar: los impuestos, que favorecen la deuda; los costes de insolvencia, que la frenan, y la información asimétrica (\ref{sec:corriente}).
+  \item Para valorar proyectos, la consecuencia práctica es que se descuentan los flujos del proyecto sin restar los intereses, a la tasa que corresponde a su riesgo, y la financiación entra por la tasa.\footnote{La ventaja fiscal de la deuda y los tipos bajos han empujado a muchas empresas a endeudarse más \parencite{Wigglesworth2020Debt}: entre los emisores de empresas calificados por S\&P, los de grado especulativo han pasado del 24~\% en 1981 al 48~\% en 2024, y en 2020 S\&P contó 225 impagos de empresas, el mayor número desde 2009 \parencite{SP2025DefaultStudy}. Por eso hay quien propone igualar el trato fiscal de la deuda y de los fondos propios \vertema{4.B.10}.}
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Determinantes del coste del capital}\label{sec:coste-determinantes}
+
+\begin{itemize}
+\item En resumen, el coste del capital de un proyecto sube con:
+  \begin{itemize}
+  \item el \emph{tipo de interés sin riesgo}, que recoge la preferencia temporal y la inflación esperada, y que mueve la política monetaria \vertema{3.A.37};
+  \item su \emph{riesgo sistemático}, $\beta_A$, que depende de lo cíclico del negocio y de sus costes fijos; el riesgo específico no se paga, aunque el impago esperado sí entra en el coste de la deuda;
+  \item la \emph{aversión al riesgo} de los inversores, que fija la prima del mercado, $\lambda_M$;
+  \item los \emph{impuestos} que soportan los inversores sobre los rendimientos, que elevan la rentabilidad que piden antes de impuestos;
+  \item y las \emph{fricciones} financieras: la información asimétrica y los costes de insolvencia encarecen la financiación externa.
+  \end{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:rentabilidad-riesgo-coste}}: la rentabilidad de una inversión se mide con flujos de caja, no con ratios contables; su riesgo relevante es el sistemático, que suben el apalancamiento operativo y el financiero; y su coste del capital es la rentabilidad que exigen los inversores por ese riesgo: el $\mathrm{WACC}$ \eqref{eq:wacc} si el proyecto es como la empresa. Es la $k$ que faltaba en el VAN \eqref{eq:van}.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión, una inversión crea valor si su VAN, descontado al coste del capital, es positivo. La TIR y los métodos estáticos son útiles, pero pueden ordenar mal los proyectos; con incertidumbre, el riesgo se mete en la tasa o en los flujos, y si la inversión es irreversible, esperar tiene valor. Los mismos criterios deciden cuándo renovar una máquina o cuánta caja tener. Y la tasa no es un dato: es la rentabilidad que exigen accionistas y acreedores por el riesgo sistemático del proyecto, que resume el $\mathrm{WACC}$.
+\item \textbf{\emph{Relevancia}}: de estas decisiones, tomadas una a una en cada empresa, depende cuánto y en qué se invierte en una economía: que el ahorro llegue a los proyectos que crean valor es la base de la productividad y del crecimiento.
+\item \textbf{\emph{Extensiones}}: la financiación y la estructura del capital \vertema{3.B.3}; la valoración de empresas, que aplica el mismo descuento a la empresa entera \vertema{3.B.4}; la inversión agregada, con la $q$ de \autor{Tobin} (invertir si el mercado valora el capital por encima de su coste de reposición, que es un VAN positivo) y la opción de esperar \vertema{3.A.34}; el canal del coste del capital de la política monetaria \vertema{3.A.37}, con el riesgo de que el crédito barato alimente burbujas, como en España e Irlanda, donde el precio real de la vivienda se multiplicó por más de 2 entre 1997 y 2007 (en Italia subió entre un 35~\% y un 58~\%) y cayó después casi a la mitad \parencites{BIS2026Vivienda}{OCDE2026Vivienda}; el escudo fiscal de la deuda \vertema{4.B.10}; la estabilidad macroeconómica e institucional, que reduce la incertidumbre y el valor de esperar, y a la que también contribuye una distribución más igualitaria de la renta, que reduce la inestabilidad política \parencite{AlesinaPerotti1996Income}; y la evaluación de proyectos públicos, con el VAN social y la tasa social de descuento \vertema{4.B.6}.
+\item \textbf{\emph{Opinión}}: el VAN es el criterio correcto, pero vale lo que valen sus 2 ingredientes: los flujos, que se estiman con optimismo, y la tasa. Las empresas que usan una sola tasa para todos sus proyectos invierten de más en los arriesgados y de menos en los seguros \parencite{KrugerLandierThesmar2015WACC}, y muchas exigen tasas de corte muy por encima de su coste del capital \parencite{JagannathanEtAl2016Why}. Más que nuevas fórmulas, lo que mejora la inversión es estimar bien el riesgo de cada proyecto y, con la inversión cada vez más intangible, valorar la flexibilidad.
+\item \textbf{\emph{Idea final}}: más vale un hoy que dos mañanas, salvo que esos 2 mañanas, descontados al coste del capital, valgan más que el hoy. Esa cuenta, la que dejó a Intel sin fábrica en Magdeburgo, repetida en millones de empresas, decide cuánto capital tiene una economía.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: valor actual de rentas y perpetuidades}\label{anexo:rentas}
+
+\begin{itemize}
+\item Todas las fórmulas salen de la suma de una progresión geométrica, $\sum_{t=1}^{n}x^t=x\,(1-x^n)/(1-x)$, con la misma notación que en la valoración de empresas \vertema{3.B.4}: $F$ es el flujo, $k$ la tasa de descuento y $VA$ el valor actual.
+\item \emph{Renta constante} $F$ durante $n$ periodos, desde el periodo 1:
+  \[
+  VA=\sum_{t=1}^{n}\frac{F}{(1+k)^t}=F\,\frac{1-(1+k)^{-n}}{k}.
+  \]
+\item \emph{Perpetuidad constante}: con $n\to\infty$, $VA=F/k$.
+\item \emph{Renta creciente} a la tasa $g$, con primer flujo $F_1=F_0(1+g)$ (el flujo de hoy, $F_0$, ya se ha cobrado): es una progresión geométrica de primer término $F_1/(1+k)$ y razón $x=(1+g)/(1+k)$. Como $(1+k)(1-x)=k-g$,
+  \[
+  VA=\sum_{t=1}^{n}\frac{F_0(1+g)^{t}}{(1+k)^t}=\frac{F_1}{k-g}\left[1-\left(\frac{1+g}{1+k}\right)^{n}\right],\qquad k\neq g.
+  \]
+\item \emph{Perpetuidad creciente}: si $g<k$, $x^n\to0$ y
+  \[
+  VA=\frac{F_0(1+g)}{k-g}=\frac{F_1}{k-g}.
+  \]
+  Con $F$ = dividendos y $k=r_E$ es el modelo de \autor{Gordon} y \autor{Shapiro} (\ref{sec:coste-estimacion}); con $F$ = flujos de caja libres y $k=\mathrm{WACC}$, el valor terminal del descuento de flujos \vertema{3.B.4}; y con las rentas de un alquiler, el valor de un inmueble (\ref{sec:intangibles}). Si $g\geq k$, la suma no converge.\findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la cadena de renovaciones}\label{anexo:renovaciones}
+
+\begin{itemize}
+\item \emph{Planteamiento}: la empresa compra un equipo que dura $n$ años y, al retirarlo, compra otro idéntico, y así indefinidamente. Cada equipo, en el momento de comprarlo, tiene el mismo valor, $\mathrm{VAN}(n)$, el del modelo simple de retiro (\ref{sec:no-corriente}). Esos valores llegan en $0$, $n$, $2n$, $3n$… (gráfico~\ref{fig:cadena-renovaciones}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La cadena de renovaciones con equipos idénticos}\label{fig:cadena-renovaciones}
+\grafico[0.8\textwidth]{cadena-renovaciones}
+\fuente{elaboración propia a partir de \textcite[cap.~18]{SuarezSuarez2014Decisiones}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Valor de la cadena}: llevando cada $\mathrm{VAN}(n)$ al momento 0,
+  \begin{align*}
+  \mathrm{VAN}_\infty(n)&=\mathrm{VAN}(n)+\frac{\mathrm{VAN}(n)}{(1+k)^{n}}+\frac{\mathrm{VAN}(n)}{(1+k)^{2n}}+\cdots\\
+  &=\mathrm{VAN}(n)\big[1+(1+k)^{-n}+(1+k)^{-2n}+\cdots\big].
+  \end{align*}
+  El corchete es una progresión geométrica de razón $(1+k)^{-n}<1$, cuya suma es $1/[1-(1+k)^{-n}]$:
+  \[
+  \mathrm{VAN}_\infty(n)=\frac{\mathrm{VAN}(n)}{1-(1+k)^{-n}}=\mathrm{VAN}(n)\,\frac{(1+k)^n}{(1+k)^n-1}.
+  \]
+  La duración óptima es la $n$ que maximiza $\mathrm{VAN}_\infty(n)$: lo que se optimiza no es un equipo aislado, sino la política de inversión de la empresa a lo largo del tiempo.\findemo
+\item \emph{Valor anual equivalente}: la renta constante $\mathrm{VAE}(n)$ que durante $n$ años tiene el mismo valor actual que el equipo cumple, por la fórmula de la renta constante del anexo~\ref{anexo:rentas}, $\mathrm{VAN}(n)=\mathrm{VAE}(n)\,[1-(1+k)^{-n}]/k$. Sustituyendo,
+  \[
+  \mathrm{VAN}_\infty(n)=\frac{\mathrm{VAE}(n)}{k},
+  \]
+  que es una perpetuidad de $\mathrm{VAE}(n)$: maximizar la cadena es maximizar lo que el equipo aporta por año.\findemo
+\item \emph{Por qué se renueva antes}: alargar la vida de un equipo un año retrasa todos los equipos siguientes, que también crean valor. En el óptimo de la cadena, lo que da el último año de vida tiene que cubrir, además de lo que se obtendría vendiendo el equipo, el valor de adelantar la cadena; por eso la vida óptima es más corta que la del modelo simple.
+\item \emph{Cálculo}: los manuales de investigación operativa dan procedimientos prácticos para encontrar la $n$ óptima \parencite{ChurchmanAckoffArnoff1957Introduction}. Suelen suponer ingresos constantes y minimizar los costes, pero se adaptan sin dificultad a maximizar el VAN, como hace \textcite{Mao1969Quantitative}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: derivaciones}\label{anexo:derivaciones}
+
+\subsection{La relación entre el ROE y el ROA}\label{anexo:roe-roa}
+
+\begin{itemize}
+\item Con valores contables, el activo es $AT=V_D+V_E$ y el $\mathrm{EBIT}=\mathrm{ROA}\cdot(V_D+V_E)$. El beneficio neto es lo que queda tras pagar los intereses, $r_D\,V_D$, y el impuesto:
+  \[
+  \text{beneficio neto}=\big[\mathrm{ROA}\,(V_D+V_E)-r_D\,V_D\big](1-t_{IS}).
+  \]
+\item Dividiendo por los fondos propios, $V_E$, se obtiene \eqref{eq:roe-roa}:
+  \[
+  \mathrm{ROE}=\Big[\mathrm{ROA}+\frac{V_D}{V_E}\,\mathrm{ROA}-\frac{V_D}{V_E}\,r_D\Big](1-t_{IS})=\Big[\mathrm{ROA}+\frac{V_D}{V_E}\,(\mathrm{ROA}-r_D)\Big](1-t_{IS}).
+  \]
+  El impuesto multiplica a todo el corchete porque se paga sobre el beneficio después de intereses.\findemo
+\end{itemize}
+
+\subsection{La tasa ajustada al riesgo y el equivalente cierto}\label{anexo:equivalente}
+
+\begin{itemize}
+\item Los 2 métodos de los criterios con riesgo (\ref{sec:criterios-riesgo}) dan el mismo valor a cada flujo si
+  \[
+  \frac{\alpha_t\,\mathbb{E}[\mathrm{FC}_t]}{(1+r_f)^t}=\frac{\mathbb{E}[\mathrm{FC}_t]}{(1+k)^t}\quad\Longleftrightarrow\quad\alpha_t=\left(\frac{1+r_f}{1+k}\right)^{t}.
+  \]
+\item Como $k>r_f$, el cociente es menor que 1 y $\alpha_t$ cae de forma geométrica con $t$: descontar con una tasa ajustada constante supone que el riesgo de cada flujo crece con el plazo. Si el riesgo se concentra al principio, conviene el equivalente cierto, flujo a flujo.\findemo
+\end{itemize}
+
+\subsection{La solución de esquina del modelo de \autor{Baumol} y \autor{Tobin}}\label{anexo:baumol-esquina}
+
+\begin{itemize}
+\item La reposición óptima $M^*=\sqrt{2bY/i}$ no puede ser mayor que los pagos del periodo, $Y$. Si $M^*\geq Y$, es decir, si $Y\leq 2b/i$, a la empresa no le compensa colocar nada en activos líquidos: guarda toda su tesorería en caja \parencite{Tobin1956Interest}. Es el caso de las empresas pequeñas o de los periodos con tipos muy bajos (\ref{sec:corriente}).\findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: para el tribunal y el test}\label{anexo:test}
+
+\begin{itemize}
+\item \emph{¿Por qué el VAN y no la TIR?} Porque mide en euros lo que gana la empresa; la TIR puede ordenar mal proyectos excluyentes de distinta escala o calendario y puede ser múltiple.
+\item \emph{¿Se puede descontar cualquier proyecto al WACC?} No: solo los que tienen el riesgo de los activos de la empresa y se financian como ella.
+\item \emph{¿A qué tasa se descuenta el equivalente cierto?} Al tipo sin riesgo: el riesgo ya se ha quitado del flujo.
+\item \emph{¿Por qué el WACC lleva $(1-t_{IS})$?} Porque los intereses son deducibles y los flujos de caja libres no los restan: el ahorro fiscal entra por la tasa.
+\item \emph{¿Supone el VAN que la inversión es irreversible?} No: supone que es reversible o de ahora o nunca; con irreversibilidad e incertidumbre hay que sumar el valor de la opción de esperar.
+\item \emph{¿Qué elasticidades da \autor{Baumol}?} $1/2$ respecto a los pagos y al coste de reponer, $-1/2$ respecto al tipo de interés; en \autor{Miller} y \autor{Orr}, $-1/3$ respecto al tipo.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Para el test.}
+\begin{itemize}
+\item La TIR de una inversión simple (un solo cambio de signo) es única; las mixtas pueden tener varias o ninguna.
+\item El \emph{payback} ignora los flujos posteriores a la recuperación; con flujos constantes y vida ilimitada, $\mathrm{TIR}=1/\textit{payback}$.
+\item El punto de \autor{Fisher} es una tasa de descuento, la que iguala el VAN de 2 proyectos, no un VAN.
+\item \autor{Gordon}: $P_0=D_1/(r_E-g)$, con $D_1=D_0(1+g)$, no $D_0$.
+\item $\mathrm{WACC}$: pesos a valor de mercado y deuda después de impuestos, $r_D(1-t_{IS})$.
+\item $\mathrm{GAO}\cdot\mathrm{GAF}$ es el apalancamiento total: la elasticidad del beneficio neto respecto a las ventas.
+\end{itemize}
+Preguntas de test de este y de los demás temas: \parencite{GutierrezMarcos2026Simulador}, \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}.
+\end{anotaciones}
+
+\bibliografia
+
+\end{document}

@@ -1,0 +1,50 @@
+% Árbol de decisión con opciones reales (de izquierda a derecha): decisión
+% inicial (invertir hoy o esperar), nodos de azar con el escenario bueno A
+% (probabilidad π) y el malo B (1 − π), y decisiones posteriores (ampliar,
+% mantener, abandonar recuperando el valor residual). Valores en abstracto,
+% con la notación del tema (V^A, V^B, I_0, VR). Se resuelve hacia atrás.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{
+  decision/.style={draw=tceemorado,fill=tceemorado!15,very thick,minimum size=4mm,inner sep=0pt},
+  azar/.style={circle,draw=tceeazul,fill=tceeazul!15,very thick,minimum size=4.4mm,inner sep=0pt},
+  rama/.style={thick},
+  final/.style={font=\small,anchor=west,inner sep=2pt},
+  sobre/.style={font=\small,above,sloped,inner sep=2pt},
+  bajo/.style={font=\small,below,sloped,inner sep=2pt},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: decisión inicial y sus 2 ramas
+  \capa{1}{\node[decision] (D0) at (0,0) {};}
+  \capa{1}{\coordinate (C1) at (3.4,2.1);}
+  \capa{1}{\coordinate (C2) at (3.4,-2.3);}
+  \capa{1}{\draw[rama] (D0) -- (C1) node[sobre,pos=0.5] {invertir hoy ($-I_0$)};}
+  \capa{1}{\draw[rama] (D0) -- (C2) node[bajo,pos=0.5] {esperar};}
+  % 2: rama de invertir hoy: nodo de azar y sus 2 escenarios
+  \capa{2}{\node[azar] (A1) at (C1) {};}
+  \capa{2}{\draw[rama] (A1) -- (7,3.3) node[sobre,pos=0.5] {demanda alta ($\pi$)};}
+  \capa{2}{\draw[rama] (A1) -- (7,0.9) node[bajo,pos=0.5] {demanda baja ($1-\pi$)};}
+  % 3: decisiones posteriores
+  \capa{3}{\node[decision] (D1) at (7,3.3) {};}
+  \capa{3}{\draw[rama] (D1) -- (9.6,3.85) node[sobre,pos=0.5] {ampliar} node[final] {$V^{\mathrm A}+\text{ampliación}$};}
+  \capa{3}{\draw[rama] (D1) -- (9.6,2.75) node[bajo,pos=0.5] {mantener} node[final] {$V^{\mathrm A}$};}
+  \capa{3}{\node[decision] (D2) at (7,0.9) {};}
+  \capa{3}{\draw[rama] (D2) -- (9.6,1.45) node[sobre,pos=0.5] {mantener} node[final] {$V^{\mathrm B}$};}
+  \capa{3}{\draw[rama] (D2) -- (9.6,0.35) node[bajo,pos=0.5] {abandonar} node[final] {$\mathrm{VR}$ (se recupera)};}
+  % 4: rama de esperar: nodo de azar, invertir o no invertir
+  \capa{4}{\node[azar] (A2) at (C2) {};}
+  \capa{4}{\draw[rama] (A2) -- (7,-1.3) node[sobre,pos=0.5] {alta ($\pi$)};}
+  \capa{4}{\draw[rama] (A2) -- (7,-3.3) node[bajo,pos=0.5] {baja ($1-\pi$)};}
+  \capa{4}{\node[decision] (D3) at (7,-1.3) {};}
+  \capa{4}{\draw[rama] (D3) -- (9.6,-1.3) node[sobre,pos=0.5] {invertir} node[final] {$V^{\mathrm A}-I_0$};}
+  \capa{4}{\node[decision] (D4) at (7,-3.3) {};}
+  \capa{4}{\draw[rama] (D4) -- (9.6,-3.3) node[sobre,pos=0.5] {no invertir} node[final] {$0$};}
+  % 5: leyenda
+  \capa{5}{\node[decision] at (0,-4.6) {};}
+  \capa{5}{\node[font=\small,anchor=west] at (0.3,-4.6) {decisión};}
+  \capa{5}{\node[azar] at (2.2,-4.6) {};}
+  \capa{5}{\node[font=\small,anchor=west] at (2.5,-4.6) {azar};}
+\end{tikzpicture}
+\end{document}

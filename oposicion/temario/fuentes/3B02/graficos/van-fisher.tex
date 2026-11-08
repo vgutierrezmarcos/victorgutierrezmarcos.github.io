@@ -1,0 +1,35 @@
+% VAN en función de la tasa de descuento de 2 proyectos con punto de Fisher.
+% A: VAN_A(k) = -100 + 144/(1+k)^2 (TIR_A = 20 %); B: VAN_B(k) = -100 + 125/(1+k)
+% (TIR_B = 25 %). Se cortan en k^F = 144/125 - 1 = 15,2 %, con VAN = 8,51.
+% Colores como la tabla tab:van-tir: A en azul, B en verde.
+% Escala: 1 cm = 4 puntos porcentuales de k; 1 cm = 12,5 unidades de VAN.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=25cm,y=0.08cm,
+    declare function={va(\k)=-100+144/((1+\k)^2); vb(\k)=-100+125/(1+\k);}]
+  % 1: ejes (el horizontal en VAN = 0)
+  \capa{1}{\draw[eje] (0,0) -- (0.35,0) node[above left=2pt and 0pt] {$k$};}
+  \capa{1}{\draw[eje] (0,-22) -- (0,56) node[left] {$\mathrm{VAN}$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: VAN del proyecto A (cobra más tarde: más empinado)
+  \capa{2}{\draw[curva2] plot[domain=0:0.32,samples=80] (\x,{va(\x)}) node[etiqueta,right] {$\mathrm{VAN}_{\mathrm A}$};}
+  % 3: TIR de A
+  \capa{3}{\node[punto,fill=tceeazul] at (0.20,0) {};}
+  \capa{3}{\node[etiqueta,below,text=tceeazul] at (0.20,-0.8) {$\mathrm{TIR}_{\mathrm A}$};}
+  % 4: VAN del proyecto B
+  \capa{4}{\draw[curva3] plot[domain=0:0.32,samples=80] (\x,{vb(\x)}) node[etiqueta,right] {$\mathrm{VAN}_{\mathrm B}$};}
+  % 5: TIR de B
+  \capa{5}{\node[punto,fill=tceeverde] at (0.25,0) {};}
+  \capa{5}{\node[etiqueta,above right,text=tceeverde] at (0.25,0.5) {$\mathrm{TIR}_{\mathrm B}$};}
+  % 6: punto de Fisher y su proyección
+  \capa{6}{\node[punto] (F) at (0.152,{vb(0.152)}) {};}
+  \capa{6}{\draw[guia] (F) -- (0.152,0) node[below,text=black] {$k^{\mathrm F}$};}
+  \capa{6}{\node[etiqueta,above right] at (F) {punto de \textsc{Fisher}};}
+  % 7: zonas
+  \capa{7}{\draw[guia] (0.152,0) -- (0.152,50);}
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceegris,left] at (0.148,48) {VAN: A; TIR: B};}
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceegris,right] at (0.156,48) {los 2: B};}
+\end{tikzpicture}
+\end{document}

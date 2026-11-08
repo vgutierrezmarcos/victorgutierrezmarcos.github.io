@@ -1,0 +1,32 @@
+% Método MAPI o del mínimo adverso (Terborgh, 1949): coste medio anual de un
+% equipo frente a su vida n. Coste del capital a/n (hipérbola decreciente),
+% inferioridad de servicio c·n (recta creciente) y su suma, en U.
+% Con a = 36 y c = 1: mínimo en n* = sqrt(a/c) = 6, coste total 12, y en n*
+% los 2 costes son iguales (6 cada uno).
+% Colores como en baumol-tesoreria: el coste que baja, morado (como la
+% reposición); el que sube, azul (como el de oportunidad); el total, verde (CT).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=0.25cm,
+    declare function={cap(\n)=36/\n; infs(\n)=\n; ct(\n)=cap(\n)+infs(\n);}]
+  \def\nopt{6}
+  % 1: ejes
+  \capa{1}{\ejes{$n$ (años)}{coste medio anual}{14.5}{22}}
+  % 2: coste del capital a/n
+  \capa{2}{\draw[curva1] plot[domain=1.8:13.5,samples=120,smooth] (\x,{cap(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=west,align=left] at (13.5,{cap(13.5)}) {coste del capital\\$a/n$};}
+  % 3: inferioridad de servicio c·n
+  \capa{3}{\draw[curva2] (0,0) -- (13.5,{infs(13.5)});}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=west,align=left] at (13.5,{infs(13.5)}) {inferioridad\\de servicio $c\,n$};}
+  % 4: coste total en U
+  \capa{4}{\draw[curva3] plot[domain=1.9:12.5,samples=120,smooth] (\x,{ct(\x)});}
+  \capa{4}{\node[etiqueta,text=tceeverde,anchor=south] at (12.5,{ct(12.5)}) {coste total $a/n+c\,n$};}
+  % 5: mínimo adverso en n*, donde los 2 costes son iguales
+  \capa{5}{\node[punto,fill=tceeverde] (E) at (\nopt,{ct(\nopt)}) {};}
+  \capa{5}{\node[punto,fill=black,inner sep=1pt] at (\nopt,{infs(\nopt)}) {};}
+  \capa{5}{\draw[guia] (E) -- (\nopt,0) node[below,text=black] {$n^*=\sqrt{a/c}$};}
+  \capa{5}{\node[etiqueta,anchor=south,text=tceeverde] at (7,13.6) {mínimo adverso};}
+\end{tikzpicture}
+\end{document}
