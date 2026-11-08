@@ -1,0 +1,39 @@
+\documentclass[tikz,border=2pt]{standalone}
+\input{../../../../latex/tikz-tcee}
+\begin{document}
+% Versión compacta para la ficha de repaso del gráfico «estructura-mercado» del
+% tema: los 2 niveles del mercado (King, Osler y Rime, 2012) y CLS debajo.
+\begin{tikzpicture}[tcee,
+    dealer/.style={circle,draw=tceemorado,thick,fill=tceemorado,text=white,
+      minimum size=0.42cm,inner sep=0pt,font=\tiny},
+    interno/.style={draw=tceemorado,thick,fill=white,rounded corners=2pt,
+      align=center,font=\footnotesize,inner sep=1.5pt},
+    cliente/.style={draw=tceegris,thick,fill=tceegris!10,rounded corners=2pt,
+      align=center,font=\footnotesize,inner sep=2pt},
+    enlace/.style={thick,tceemorado},
+    clienlace/.style={thick,tceegris},
+    peso/.style={etiqueta,font=\footnotesize\bfseries,inner sep=1pt}]
+  \draw[tceemorado,thick,fill=tceemorado!6] (0,0) ellipse (1.9cm and 1.35cm);
+  \node[etiqueta,text=tceemorado,font=\footnotesize\bfseries] at (0,1.6) {\emph{interdealer} 46,7 \%};
+  \foreach \k [count=\i] in {90,162,234,306,18}
+    \node[dealer] (d\i) at ({1.45*cos(\k)},{0.98*sin(\k)}) {D};
+  \foreach \a/\b in {1/2,2/3,3/4,4/5,5/1}
+    \draw[enlace] (d\a) -- (d\b);
+  \node[interno] at (0,-0.05) {brókeres\\plataformas};
+  \node[cliente] (fin) at (-3.55,0.1) {otras\\financieras\\\textbf{48,6 \%}};
+  \draw[clienlace] (fin) -- (d2);
+  \node[cliente,dashed,draw=tceeazul,fill=tceeazul!8] (bc) at (-3.3,1.55) {banco central};
+  \draw[thick,dashed,tceeazul] (bc) -- (d2);
+  \node[cliente] (emp) at (3.55,1.2) {empresas\\\textbf{4,6 \%}};
+  \draw[clienlace] (emp) -- (d5);
+  \node[cliente] (min) at (3.55,-0.35) {minoristas\\\textbf{2,5 \%}};
+  \draw[clienlace] (min) -- (d5);
+  \node[cliente] (cus) at (-3.3,-1.35) {custodios};
+  \draw[clienlace] (cus) -- (d3);
+  \node[cliente] (af) at (3.3,-1.55) {alta frecuencia};
+  \draw[clienlace] (af) -- (d4);
+  \node[draw=tceeverde,thick,fill=tceeverde!12,rounded corners=2pt,
+      minimum width=8.6cm,minimum height=0.45cm,font=\footnotesize] (cls) at (0,-2.45)
+    {CLS: liquidación pago contra pago};
+\end{tikzpicture}
+\end{document}

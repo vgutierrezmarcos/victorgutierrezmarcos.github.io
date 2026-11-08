@@ -1,0 +1,57 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Los 2 niveles del mercado de divisas (King, Osler y Rime, 2012): el
+% interdealer en el centro y los clientes alrededor, cada uno con su dealer;
+% el banco central aparte y CLS debajo, liquidando pago contra pago.
+\begin{tikzpicture}[tcee,
+    dealer/.style={circle,draw=tceemorado,thick,fill=tceemorado,text=white,
+      minimum size=0.62cm,inner sep=0pt,font=\scriptsize},
+    interno/.style={draw=tceemorado,thick,fill=white,rounded corners=2pt,
+      align=center,font=\scriptsize,inner sep=2.5pt},
+    cliente/.style={draw=tceegris,thick,fill=tceegris!10,rounded corners=3pt,
+      align=center,font=\footnotesize,inner sep=3pt},
+    enlace/.style={thick,tceemorado},
+    clienlace/.style={thick,tceegris},
+    peso/.style={etiqueta,font=\footnotesize\bfseries}]
+  % 1: óvalo del mercado interdealer, dealers y sus enlaces
+  \capa{1}{\draw[tceemorado,thick,fill=tceemorado!6] (0,0) ellipse (3.3cm and 2.15cm);
+    \node[etiqueta,text=tceemorado,font=\small\bfseries] at (0,2.45) {Mercado \emph{interdealer}};
+    \foreach \k [count=\i] in {90,162,234,306,18}
+      \node[dealer] (d\i) at ({2.5*cos(\k)},{1.55*sin(\k)}) {dealer};
+    \foreach \a/\b in {1/2,2/3,3/4,4/5,5/1}
+      \draw[enlace] (d\a) -- (d\b);}
+  % 2: brókeres y plataformas dentro del óvalo
+  \capa{2}{\node[interno] (brk) at (0,0.45) {brókeres};
+    \node[interno] (plat) at (0,-0.3) {plataformas\\(EBS, LSEG FX Matching)};}
+  % 3: clientes financieros
+  \capa{3}{\node[cliente,text width=4.3cm] (fin) at (-6.9,0.2)
+      {otras instituciones financieras\\{\scriptsize(bancos no declarantes, inversores institucionales, \emph{hedge funds} y PTF)}};
+    \draw[clienlace] (fin) -- (d2);}
+  % 4: empresas, minoristas, alta frecuencia y custodios
+  \capa{4}{\node[cliente] (emp) at (5.6,2.4) {empresas no financieras\\(la almazara)};
+    \draw[clienlace] (emp) -- (d5);
+    \node[cliente] (min) at (6.7,-0.3) {minoristas\\(vía plataformas\\minoristas)};
+    \draw[clienlace] (min) -- (d5);
+    \node[cliente] (af) at (4.8,-2.5) {alta frecuencia};
+    \draw[clienlace] (af) -- (d4);
+    \node[cliente] (cus) at (-4.6,-2.4) {custodios};
+    \draw[clienlace] (fin) -- (cus) -- (d3);}
+  % 5: el banco central, aparte
+  \capa{5}{\node[cliente,dashed,draw=tceeazul,fill=tceeazul!8] (bc) at (-5.2,2.8)
+      {banco central\\(cliente; líneas \emph{swap})};
+    \draw[thick,dashed,tceeazul] (bc) -- (d2);}
+  % 6: CLS liquida pago contra pago
+  \capa{6}{\node[draw=tceeverde,thick,fill=tceeverde!12,rounded corners=2pt,
+        minimum width=14cm,minimum height=0.55cm,font=\footnotesize] (cls) at (0,-3.85)
+      {CLS: liquidación pago contra pago};
+    \foreach \x in {-6,-3.6,-1.2,1.2,3.6,6}
+      \draw[->,thick,tceeverde] (\x,-3.55) -- (\x,-3.05);}
+  % 7: pesos en el volumen de 2025
+  \capa{7}{\node[peso,text=tceemorado] at (0,-1.75) {46,7 \%};
+    \node[peso,text=tceegris!70!black,anchor=north] at (fin.south) {48,6 \%};
+    \node[peso,text=tceegris!70!black,anchor=south] at (emp.north) {4,6 \%};
+    \node[etiqueta,font=\scriptsize,text=tceegris,anchor=north] at (cls.south)
+      {Porcentajes: cuota de cada contrapartida en el volumen diario de 2025.};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Sesiones del mercado de divisas en hora peninsular española (invierno),
+% de lunes a viernes; horarios aproximados (convención de mercado).
+% Escala: 0,5 cm por hora (24 h = 12 cm).
+\begin{tikzpicture}[tcee,x=0.5cm,
+    franja/.style={draw=#1!70!black,fill=#1!55,thick,rounded corners=1.5pt},
+    ciudad/.style={etiqueta,anchor=east,font=\small}]
+  % 1: eje de 0 a 24 h con marcas cada 3 h
+  \capa{1}{\draw[eje] (0,0) -- (25,0) node[right,font=\footnotesize] {hora};
+    \foreach \h in {0,3,...,24} {\draw[thin] (\h,0) -- (\h,-0.1) node[below,font=\footnotesize] {\h:00};}
+    \draw[guia] (0,0) -- (0,3.6);
+    \draw[guia] (24,0) -- (24,3.6);}
+  % 2: Sídney (22:00-07:00: cruza la medianoche)
+  \capa{2}{\node[ciudad] at (-0.4,3.1) {Sídney};
+    \draw[franja=tceeverde] (22,2.88) rectangle (24,3.32);
+    \draw[franja=tceeverde] (0,2.88) rectangle (7,3.32);}
+  % 3: Tokio (01:00-10:00)
+  \capa{3}{\node[ciudad] at (-0.4,2.3) {Tokio};
+    \draw[franja=tceeazul] (1,2.08) rectangle (10,2.52);}
+  % 4: Londres (09:00-18:00)
+  \capa{4}{\node[ciudad] at (-0.4,1.5) {Londres};
+    \draw[franja=tceemorado] (9,1.28) rectangle (18,1.72);}
+  % 5: Nueva York (14:00-23:00)
+  \capa{5}{\node[ciudad] at (-0.4,0.7) {Nueva York};
+    \draw[franja=tceedorado] (14,0.48) rectangle (23,0.92);}
+  % 6: solapamiento Londres-Nueva York (14:00-18:00), por debajo de las franjas
+  \capa{6}{\begin{pgfonlayer}{background}
+      \fill[tceerojo,fill opacity=0.12] (14,0) rectangle (18,3.6);
+    \end{pgfonlayer}
+    \draw[tceerojo,thin,dashed] (14,0) -- (14,3.6) (18,0) -- (18,3.6);
+    \node[etiqueta,text=tceerojo,anchor=south,font=\footnotesize\bfseries] at (16,3.6) {máxima actividad};}
+  % 7: apertura y cierre semanal
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceegris,anchor=north] at (12,-0.75)
+      {Abre el domingo por la tarde y cierra el viernes por la tarde (hora de Nueva York).};}
+\end{tikzpicture}
+\end{document}

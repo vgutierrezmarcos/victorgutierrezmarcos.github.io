@@ -1,0 +1,267 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Mercados de divisas]{3.B.13}{Mercados de divisas: operaciones e instrumentos.}
+\tcefecha{08/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «quien no arriesga, no gana»}{2,5}
+\apartadocante{I. Caracterización general del mercado}{9}
+\subcante{1. Divisa, mercado y tipo de cambio}{1}
+\subcante{2. Convenciones en los tipos de cambio}{2,5}
+\subcante{3. Características (6 rasgos)}{3}
+\subcante{4. Agentes}{2,5}
+\apartadocante{II. Instrumentos y operaciones}{12,5}
+\subcante{1. Instrumentos}{3,5}
+\subcante{2. Operaciones}{9}
+\subcante{\hspace*{0.8em}Comerciales}{1,5}
+\subcante{\hspace*{0.8em}Provisión de liquidez}{1}
+\subcante{\hspace*{0.8em}Cobertura}{0,75}
+\subcante{\hspace*{0.8em}Reservas e intervención}{0,75}
+\subcante{\hspace*{0.8em}Arbitraje y PCI}{3}
+\subcante{\hspace*{0.8em}Especulación y PNCI}{2}
+\apartadocante{III. Eficiencia en el mercado de divisas}{5}
+\subcante{1. Definiciones de eficiencia}{0,75}
+\subcante{2. ¿Es eficiente el mercado de divisas?}{1,25}
+\subcante{3. La paradoja del margen \emph{forward}}{3}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: intro y conclusión sin pizarra, con el refrán y «9,5 billones de \$ al día» en una esquina. A la izq., los 3 bloques. I: par EUR/USD, recuadro $q$ y $E^{ef}$, 2 niveles. II: tabla de instrumentos, oferta y demanda, 2 caminos (PCI y PNCI en morado arriba a la dcha.\ hasta el final). III: tabla de eficiencia y paradoja. Pegatinas: «camarón que se duerme…» (24 h), «ande yo caliente…» (cobertura), «lo que no puede ser…» (PCI), «sube por la escalera y baja en ascensor» (\emph{carry}), «en todas partes cuecen habas» (paradoja).
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «quien no arriesga, no gana». El tipo de cambio, para \autor{Volcker}, el precio más importante de una economía. Abril de 2025 (aranceles de EE.\,UU.): dólar \dato{$-3{,}3$~\% frente a la cesta amplia en un mes}{Fed}; EUR/USD de 1,08 a 1,14; récord de \dato{9,5 billones de \$ diarios, +27~\%}{BPI, 2025}: en < 4 días, el comercio mundial de un año. ¿Deja ganar sin arriesgar? ¿Adivina el tipo de mañana?
+\item \textbf{Relevancia}: forma el \concepto{tipo de cambio}, que conecta los precios de todos los países. \emph{Micro}: rentabilidad de exportar, importar, invertir fuera; asigna recursos entre comerciables y no comerciables. \emph{Macro}: canal de la política monetaria (expansión $\Rightarrow$ depreciación $\Rightarrow$ ↑ competitividad, ↑ inflación); instrumento u objetivo si se interviene; inflación, competitividad y estabilidad financiera (deuda en otra moneda) \vertema{3.B.15}.
+\item \textbf{Contextualización}: \emph{histórica}: Bretton Woods (1944-1973), dólar ancla, comerciantes y bancos centrales que defienden paridades \vertema{3.B.20}; desde 1973, tipos flexibles, el «no sistema» (\autor{Williamson}) y explosión de flujos financieros \vertema{3.B.21}. \emph{Estadística}: \concepto{Encuesta Trienal} del BPI desde 1986 (2025: 52 jurisdicciones, > 1.100 bancos y \emph{dealers}). \emph{Reciente} (tras 2008): la PCI deja de cumplirse exacta; derivados a ECC, pero casi nada de divisas; escándalos de los \emph{fixings} $\Rightarrow$ Código Global.
+\item \textbf{Problemática}: ¿qué es el mercado, cómo se cotiza y quién opera? ¿Qué instrumentos y para qué operaciones? ¿Qué relación imponen arbitraje y especulación entre intereses y tipos de cambio? ¿Es eficiente? Si arbitra tan bien, ¿por qué el \emph{forward} predice tan mal?
+\item \textbf{Estructura}: de lo que es a lo que se hace y a si fija bien el precio. \hyperref[rep:I]{I}, qué es (conceptos, convenciones, rasgos, agentes); \hyperref[rep:II]{II}, instrumentos (antes, aunque el título nombre primero las operaciones: cada operación se hace con ellos) y operaciones, con PCI y PNCI; \hyperref[rep:III]{III}, eficiencia y paradoja del margen \emph{forward}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{I. Caracterización general del mercado de divisas\label{rep:I}}
+\begin{ideaclave}
+No es un lugar sino una red de bancos y plataformas: el mayor mercado financiero del mundo, extrabursátil, alrededor de unos pocos creadores de mercado, abierto 24 h, concentrado en el dólar y en Londres; casi todo son operaciones financieras, no comerciales.
+\end{ideaclave}
+
+\sub{I.1. Divisa, mercado de divisas y tipo de cambio\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Divisa}: medio de pago en moneda extranjera, en manos de residentes, aceptado en transacciones internacionales. Sentido \emph{amplio} (cualquier moneda extranjera) y \emph{estricto} (saldos a la vista en moneda extranjera y sus instrumentos: transferencias, cheques, tarjetas; los billetes, aparte). \emph{No} son divisas letras o pagarés de no residentes ni acciones o bonos en moneda extranjera.
+\item \concepto{Convertible}: se cambia libremente, sin controles. \concepto{Moneda de libre uso} (FMI): muy usada en pagos y muy negociada; condición para la cesta del DEG: USD 43,38~\%, EUR 29,31~\%, CNY 12,28~\%, JPY 7,59~\%, GBP 7,44~\% \vertema{3.B.22}. No es lo mismo: renminbi de libre uso desde 2016 con controles de capital.
+\item \concepto{Mercado de divisas}: marco (infraestructura e instituciones) en que se compran y venden divisas; red de bancos, brókeres, plataformas; internacional, con \emph{plazas}. 3 \emph{funciones}: (1) transferir poder adquisitivo entre monedas y países; (2) financiar el comercio (crédito a corto en divisas); (3) facilitar la cobertura del riesgo de cambio.
+\item \concepto{Tipo de cambio}: precio de una divisa en términos de otra. \emph{Ejemplo}: almazara de Jaén que cobrará 1 M\$ dentro de 3 meses.
+\end{itemize}
+
+\sub{I.2. Convenciones en los tipos de cambio\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Códigos} ISO~4217 (3 letras: país + moneda). \emph{Par} «BASE/COTIZADA»: EUR/USD = dólares (cotizada) por 1 euro (base). \emph{Majors}: dólar con EUR, JPY, GBP, CHF, CAD, AUD, NZD (el CNY no: convertibilidad limitada, CNY y CNH); \emph{crosses} sin el dólar (EUR/GBP), muchos vía dólar; \emph{exóticos}: menos liquidez, más \emph{spread}.
+\item \emph{Bid} $E^{\mathrm{bid}}$: el creador de mercado \emph{compra} la base (el cliente vende); \emph{ask} $E^{\mathrm{ask}}$: la \emph{vende} (el cliente compra). \concepto{\emph{Spread}} $=E^{\mathrm{ask}}-E^{\mathrm{bid}}>0$: pago por liquidez y riesgo de inventario; sin comisiones aparte; más estrecho cuanto más líquido el par.
+\item \concepto{\emph{Pip}}: 4.º decimal (0,0001; 2.º con el yen); \emph{pipette}, un decimal más. \emph{Tick}: variación mínima de cualquier instrumento (de los futuros).
+\end{itemize}
+\graficorepaso[0.92\linewidth]{par-divisas}{Almazara: EUR/USD 1,1650/1,1652, 2 \emph{pips}; cambiando hoy 1 M\$ recibiría $\approx$858.200~€ (al \emph{ask})}
+\begin{itemize}
+\item \concepto{Cotización directa} (de precio): moneda nacional por 1 unidad de divisa; \concepto{indirecta} (de volumen): divisa por 1 unidad nacional. \emph{En el tema}, $E$ directo: \textbf{↑$E$ = depreciación} del euro. EUR/USD es indirecta para España: $E=1/1{,}1651\approx0{,}8583$~€/\$. Decirlo al empezar el cante.
+\item \concepto{Tipo de cambio efectivo nominal}: cesta de socios, media \emph{geométrica} (no depende de base ni de convención; $\times1{,}1$ y $\div1{,}1$ se compensan):
+  \begin{formula}
+  \[E^{ef}=\prod_{i=1}^{n}E_i^{\,\omega_i},\qquad \sum_i\omega_i=1\]
+  \end{formula}
+\item \concepto{Tipo de cambio real}: precio relativo de los bienes extranjeros en bienes nacionales; ↑$q$ = \concepto{depreciación real} (↑ competitividad-precio):
+  \funcionclave{q=\frac{E\,P^{*}}{P}}
+  \concepto{Efectivo real} $q^{ef}=\prod_i(E_iP^{*}_i/P)^{\omega_i}$: mejor indicador de competitividad-precio; con CLU, en costes \vertema{4.A.22}.
+\item \emph{Ojo con los datos}: BCE y BdE en la convención contraria (↑ = apreciación). Efectivo nominal frente a 17: \dato{98,2, $-3{,}6$~\% interanual}{BCE, oct.\ 2026} = euro \emph{depreciado}.
+\end{itemize}
+
+\sub{I.3. Características del mercado\label{rep:I.3}}
+\begin{itemize}
+\item \textbf{a) El más grande del mundo}: \dato{9,5 billones de \$ diarios, +27~\%}{BPI, abr.\ 2025}; $\approx$1,5 billones por los aranceles y la cobertura del dólar. Comercio mundial \dato{34,65 billones de \$}{OMC, 2025}: < 4 días. \emph{Lo mueven las finanzas}: clientes no financieros \dato{4,6~\%}{2025; 13,4~\% en 2010}. España: \dato{67.900 M\$ diarios, +73~\%, 0,5~\%}{BdE}.
+\item \textbf{b) Muy concentrado}. \emph{Divisas} (suman 200~\%): USD 89,1~\% (vehicular, \emph{flight to safety}), EUR 28,5~\% (30,6 en 2022; 32,3 en 2019), JPY 16,9~\%, GBP 10,2~\%, CNY 8,6~\% (4,3 en 2019). Los 10 pares mayores llevan el dólar; EUR/USD 20,7~\%. \emph{Plazas}: Reino Unido 37,8~\% (máx.\ 43,2 en 2019), EE.\,UU. 18,6, Singapur 11,8 (la que más crece), Hong Kong 7, Japón 3,5; 5 primeros 78,7~\%.
+\item \textbf{c) Abierto 24 h}: domingo tarde a viernes tarde (Nueva York); Sídney, Tokio, Londres, Nueva York encadenadas; máximo en la tarde europea (Londres + NY). «Camarón que se duerme, se lo lleva la corriente».
+\item \textbf{d) Extrabursátil (OTC)}: 3 etapas: negociación, compensación, liquidación. OTC: flexibilidad frente a riesgo de contraparte y opacidad. \emph{Compensación} casi siempre bilateral: tras el G-20 (Pittsburgh, 2009), divisas casi fuera de las ECC: EMIR (ESMA no impuso compensar NDF, 2015); EE.\,UU., Dodd-Frank (2010) y el Tesoro (nov.\ 2012) excluye FX \emph{swaps} y \emph{forwards} con entrega \vertema{3.B.25}.
+\item \concepto{Riesgo de liquidación} o \concepto{de \autor{Herstatt}}: 2 pagos en 2 sistemas a horas distintas; si uno paga y el otro quiebra, se pierde \emph{todo el principal} (Bankhaus Herstatt, 26/6/1974; ese año, Comité de Basilea \vertema{3.B.27}). Respuesta: \concepto{pago contra pago} (PvP), CLS desde 2002 (18 monedas, > 75 miembros). 2025: 36~\% con PvP, 54~\% otros métodos, \dato{10~\%, $\approx$1,4 billones diarios expuestos}{BPI}.
+\item \textbf{e) Tecnología}: \emph{spreads} ↓, transparencia ↑, eficiencia operativa ↑. Plataformas \emph{interbancarias} (EBS, LSEG FX Matching) y \emph{de clientes}; terminales (LSEG Workspace, Bloomberg) no son plataformas minoristas.
+\item \textbf{f) Autorregulación}: el contado no es instrumento financiero en MiFID~II (solo derivados); sin supervisor propio. 12/11/2014: multas a 5 bancos (> 1.100 M£ y > 1.400 M\$) por manipular los \emph{fixings} (4 p.m.\ de Londres, 2008-2013) $\Rightarrow$ \concepto{Código Global de Conducta} (25/5/2017): 55 principios en 6 áreas, voluntario (adhesión), GFXC (revisiones 2021 y dic.\ 2024: liquidación). Principio 17: \concepto{\emph{last look}}, solo para comprobar precio y validez.
+\end{itemize}
+
+\sub{I.4. Agentes\label{rep:I.4}}
+\begin{itemize}
+\item Por papel e información (\autor{King}-\autor{Osler}-\autor{Rime}, 2012): en el centro, creadores de mercado (dan liquidez); alrededor, usuarios; entre ellos, brókeres y plataformas; aparte, bancos centrales. 2 niveles: \emph{interdealer} y clientes.
+\item \emph{Proveen liquidez}: \concepto{creadores de mercado} (\emph{dealers}): grandes bancos sistémicos, cotizan siempre \emph{bid} y \emph{ask}, ganan con el \emph{spread}, los mejor informados (ven el flujo de órdenes). \emph{Interdealer} (\emph{hot potato}): \dato{46,7~\%}{2025; 38-42~\% en 2010-2019}; Basilea~III encarece el inventario $\Rightarrow$ menos liquidez en tensión. \emph{Custodios} (\emph{mark-up}); \emph{retail aggregators}.
+\item \emph{Necesitan liquidez}: \emph{otras financieras} \dato{48,6~\%}{2025}: bancos no \emph{dealers} 23,1, institucionales 13,3, \emph{hedge funds} y PTF 8 (los más apalancados; \autor{Soros} contra la libra, 1992 \vertema{3.B.17}), sector oficial 1,4, otras 2,9. \emph{No financieras} 4,6~\%: comerciales y cobertura; no especulan (\emph{rogue trader}). \emph{Minoristas} 2,5~\%: muy apalancados, no anticipan el tipo (exceso de confianza \vertema{3.B.23}). \concepto{Negociación algorítmica} y de \concepto{alta frecuencia} (HFT): velocidad, \emph{colocation}.
+\item \emph{Brókeres}: eligen los mejores precios para sus clientes, comisión, Londres. \concepto{\emph{Prime brokerage}}: un gran banco presta su nombre y asume el riesgo de contraparte: \dato{22,7~\%}{2025}.
+\item \emph{Bancos centrales}: reservas, intervención, política monetaria \vertema{3.B.15}; operan como \emph{clientes} (1,4~\%); los emisores de reserva dan líneas \emph{swap} (\hyperref[rep:II.2]{II.2}).
+\end{itemize}
+\graficorepaso[\linewidth]{estructura-mercado-ficha}{Los 2 niveles del mercado: \emph{interdealer} (46,7~\%) y clientes}
+
+% ==========================================================================
+\bloque[12,5]{II. Instrumentos y operaciones\label{rep:II}}
+\begin{ideaclave}
+Se negocia sobre todo a plazo y con FX \emph{swaps}. Con esos instrumentos se hacen 6 operaciones, 2 de las cuales ordenan el mercado: el arbitraje impone la paridad cubierta; la especulación, en el mejor de los casos, la no cubierta.
+\end{ideaclave}
+
+\sub{II.1. Instrumentos\label{rep:II.1}}
+\begin{itemize}
+\item 5 instrumentos OTC de la Encuesta \dato{(abril de 2025)}{BPI}: contado 2,95 billones (31~\%, +42~\%); \emph{outright forwards} 1,75 (18~\%, +51~\%); FX \emph{swaps} 4 (42~\%); \emph{currency swaps} 0,16 (1,7~\%); opciones 0,63 (6,6~\%, más del doble). Futuros, fuera (organizados) \vertema{3.B.25}.
+\item \concepto{Contado} (\emph{spot}): se liquida en $\leq$2 días hábiles; precio $E_t$.
+\item \concepto{\emph{Forward}} o \concepto{seguro de cambio}: pactado hoy, liquidado a > 2 días hábiles; precio $F_t^{t+1}$. \concepto{NDF} (sin entrega): solo la diferencia frente al tipo oficial, en moneda convertible: monedas con controles (won, rupia, real, dólar taiwanés), 3,5~\%. \concepto{Futuros}: \emph{forwards} normalizados con ECC, márgenes y liquidación diaria; los 1.\textsuperscript{os} financieros (IMM de Chicago, 1972); sin riesgo de contraparte, pero rígidos.
+\item \concepto{FX \emph{swap}}: compraventa al contado + la inversa a plazo, sin pagos intermedios = préstamo en una moneda garantizado con depósito en la otra; precio por la PCI. Liquidez en otra moneda sin riesgo de cambio; el más negociado.
+\item \concepto{\emph{Currency swap}}: intercambia principales al inicio y al final y, \emph{además}, intereses en cada moneda durante la vida; plazos largos; convertir deuda de una moneda a otra.
+\item \concepto{Opción sobre divisas}: derecho del comprador (no obligación) a comprar (\emph{call}) o vender (\emph{put}) a un precio de ejercicio; europea/americana; \emph{prima}. Cobertura asimétrica; especulación (\emph{straddle}, \emph{strip}, \emph{strap}, \emph{spreads}, \emph{butterfly}; sintéticas por la paridad \emph{put-call}).
+\end{itemize}
+
+\sub{II.2. Operaciones\label{rep:II.2}}
+\textbf{a) Comerciales}. Del comercio de bienes y servicios; sobre todo contado. Modelo más sencillo del tipo de cambio:
+\begin{itemize}
+\item \concepto{Demanda de divisas}: importaciones + salidas de capital; \emph{decreciente} en $E$. \concepto{Oferta}: exportaciones + entradas de capital; suele ser \emph{creciente} (si la demanda extranjera es elástica, > 1; si no, tramo decreciente e inestabilidad: \autor{Marshall}-\autor{Lerner} \vertema{3.B.12}).
+\item \concepto{Tipo de vaciado} $E^{*}$: equilibra la balanza de pagos (no cada cuenta):
+  \begin{formula}
+  \[X+\text{entradas}=M+\text{salidas}\iff \mathrm{CC}=\mathrm{CF}\]
+  \end{formula}
+  Sin capitales, CF $=0\Rightarrow$ CC $=0$ (aprox.\ Bretton Woods); hoy, flexibles con desequilibrios corrientes persistentes \vertema{3.B.11}. \emph{Tipo fijo} $\bar E>E^{*}$ (moneda infravalorada): exceso de oferta, el banco central compra, $\Delta R>0$.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{oferta-demanda-divisas}{Tipo flexible ($E^{*}$) y tipo fijo ($\bar E$); detrás, flujos o activos \vertema{3.B.14}}
+
+\textbf{b) Provisión de liquidez}. Fed (y BCE) dan su moneda a otros bancos centrales. Bancos de fuera de EE.\,UU. con activos en \$ financiados a corto (depósitos, \emph{repos}, papel comercial, FX \emph{swaps}, reservas, FMI, líneas \emph{swap}). \concepto{Eurodólares} / \concepto{euromercados}: depósitos y préstamos en una moneda fuera de su país (Londres, años 50-60).
+\begin{itemize}
+\item \emph{Marzo de 2020}: obtener \$ con FX \emph{swaps} se encarece; 15/3, Fed abarata las 5 líneas permanentes (BCE, Japón, Inglaterra, Canadá, Suiza; permanentes desde 2013); 19/3, 9 temporales (Brasil, México…). \dato{$\approx$450.000 M\$ a fin de abril}{García-Escudero y Sánchez, 2020}.
+\item \emph{Línea} = FX \emph{swap} entre bancos centrales al \emph{mismo} tipo a la ida y a la vuelta (1 día-3 meses) + intereses; el riesgo de crédito lo asume el banco central receptor. \emph{Valoración}: rápidas y potentes (prestamista de última instancia internacional), pero solo para quien elige la Fed \vertema{3.B.22} \vertema{3.B.43}.
+\end{itemize}
+
+\textbf{c) Cobertura}. Cerrar una posición abierta: certidumbre de flujos. \concepto{Exposición}: \emph{de transacción} (cobros y pagos pactados; \emph{forwards}, futuros, opciones), \emph{contable} (de traslación, al consolidar), \emph{económica} (valor de la empresa vía ventas y competidores; la más difícil; \autor{Williamson}, 2001, en el automóvil).
+\begin{itemize}
+\item Almazara: vende 1 M\$ a plazo a 0,8541 $\Rightarrow$ $\approx$854.100~€ seguros. «Ande yo caliente, y ríase la gente»: renuncia a la ganancia por la certeza. 4 vías: \emph{forward}, futuro, \emph{put} sobre el dólar (prima), cobertura en el mercado de dinero (pedir \$ prestados y cambiarlos hoy; con PCI, cuesta lo mismo). Cobertura \emph{natural}; \emph{currency swaps} para deuda larga.
+\end{itemize}
+
+\textbf{d) Reservas e intervención}. \concepto{Intervenir}: comprar divisas (frenar apreciación) o venderlas; \emph{esterilizar} con mercado abierto de signo contrario \vertema{3.B.15}.
+\begin{itemize}
+\item \emph{Por qué}: con tipo fijo, defender la paridad; con flexible, \emph{precaución} (seguro frente a \emph{sudden stops}; 3 meses de importaciones, regla de \autor{Greenspan}-\autor{Guidotti}: deuda que vence en un año, métrica del FMI), \emph{mercantilista}, \emph{estabilización} («ir contra el viento»; fondos soberanos).
+\item \dato{13,2 billones de \$; USD 56,7~\%, EUR 20,6~\%, CNY 2,1~\%}{FMI, COFER, 2.º trim.\ 2026}; > 8 veces 1997; China $\approx$3,4. \emph{Coste}: \dato{$\approx$1~\% del PIB}{\autor{Rodrik}, 2006}; casi 2~\% (\autor{Summers}, 2006).
+\end{itemize}
+
+\textbf{e) Arbitraje}. Compraventas simultáneas, beneficio \emph{sin riesgo}: ley del precio único (\autor{Keynes}, 1923). \emph{Espacial}: bilateral y \emph{triangular} (cruzado = producto de los 2 frente al dólar).
+\begin{itemize}
+\item \concepto{Paridad cubierta de intereses} (PCI). \emph{Supuestos}: movilidad perfecta de capitales, mismo riesgo de impago y plazo, sin costes. \emph{Nada} sobre riesgo ni expectativas. 1~€: en euros, $1+i$; o comprar $1/E_t$ \$, invertir a $i^{*}$ y vender hoy a plazo a $F_t^{t+1}$:
+  \funcionclave{1+i=(1+i^{*})\,\frac{F_t^{t+1}}{E_t}\;\Rightarrow\; i-i^{*}\approx\frac{F_t^{t+1}-E_t}{E_t}}
+  Lado dcho.: \concepto{margen a plazo} (prima o descuento), un \emph{precio}, no una previsión. «Lo que no puede ser no puede ser, y además es imposible».
+\end{itemize}
+\graficorepaso[\linewidth]{dos-caminos-ficha}{Los 2 caminos del inversor: cubierto (PCI) y sin cubrir (PNCI)}
+\begin{itemize}
+\item \emph{Almazara}: $i=2$~\% y $i^{*}=4$~\% anuales (0,5 y 1~\% a 3 meses): $F=0{,}8583\cdot1{,}005/1{,}01\approx0{,}8541$; el dólar con \concepto{descuento a plazo} $\approx$0,5~\%: lo ganado en intereses se pierde en el cambio cubierto.
+\item \emph{Ajuste}: si $1+i>(1+i^{*})F/E$: endeudarse en \$, vender al contado, invertir en €, comprar \$ a plazo $\Rightarrow$ $i$↓, $i^{*}$↑, $E_t$↓, $F_t^{t+1}$↑. La moneda de \emph{tipo alto} cotiza con \emph{descuento} a plazo; la de tipo bajo, con prima.
+\item \emph{Extensiones}: continua $F_0=S_0e^{(i-i^{*})T}$ \vertema{3.B.25}; precio de FX \emph{swaps}; enfoque de las paridades \vertema{3.B.14}.
+\item \emph{Evidencia}: casi exacta hasta 2007; desde 2008, desviaciones persistentes (\concepto{base} de los \emph{swaps} de divisas: \$ vía divisas más caros), al cierre de trimestre y en crisis: límites al balance (ratio de apalancamiento) y demanda de cobertura en \$ (\autor{Du}-\autor{Tepper}-\autor{Verdelhan}, 2018) \vertema{3.B.27}. \emph{Valoración}: no arbitraje, la que mejor se cumple; no es teoría del tipo (da $F$ dado $E$); \emph{límites al arbitraje} (\autor{Shleifer}-\autor{Vishny}, 1997) \vertema{3.B.23}.
+\item \concepto{Arbitraje por latencia}: milisegundos entre plataformas; HFT. En calma, liquidez y \emph{spreads} ↓; en tensión, se retiran y amplifican; defensa: \emph{last look}. Episodios relámpago: libra $\approx-9$~\% (7/10/2016), yen +3~\% en 30 s (3/1/2019); no confundir con el franco suizo (15/1/2015: decisión del SNB).
+\end{itemize}
+
+\textbf{f) Especulación}. Busca ganar \emph{asumiendo} riesgo de cambio: posiciones abiertas según expectativas.
+\begin{itemize}
+\item \concepto{Paridad no cubierta de intereses} (PNCI o PDI). \emph{Supuestos}: los de la PCI + \emph{sustituibilidad perfecta} (neutralidad al riesgo y expectativas homogéneas). Mismo camino sin vender a plazo:
+  \funcionclave{1+i=(1+i^{*})\,\frac{E^e_{t+1}}{E_t}\;\Rightarrow\; i-i^{*}\approx\gamma E^e}
+  Diferencial = \concepto{depreciación esperada}. Si $i-i^{*}>\gamma E^e$, invertir en casa; si <, fuera. Almazara sin cubrir: especula sin quererlo.
+\item \emph{Implicación}: PCI + PNCI $\Rightarrow$ $F_t^{t+1}=E^e_{t+1}$: \emph{forward} predictor insesgado. No es condición de arbitraje (no hay beneficio seguro).
+\item \emph{Extensiones}: prima de riesgo, $i-i^{*}\approx\gamma E^e+\rho$ \vertema{3.B.15} \vertema{3.B.17}; con expectativas estáticas, $i=i^{*}$ (BP horizontal de \autor{Mundell}-\autor{Fleming}) \vertema{3.A.32}; pieza de \autor{Dornbusch} \vertema{3.B.14}. \emph{Evidencia}: falla a corto (\hyperref[rep:III.3]{III.3}).
+\item \emph{A plazo}: si $E^e_{t+1}>F_t^{t+1}$, comprar a plazo (sin fondos); neutrales y abundantes $\Rightarrow$ $F=E^e$.
+\item \concepto{\emph{Carry trade}}: endeudarse en moneda de tipo bajo (yen, franco) e invertir en la de tipo alto sin cubrir: apuesta contra la PNCI. Gana en promedio, pero con sesgo negativo (\autor{Brunnermeier}-\autor{Nagel}-\autor{Pedersen}, 2008): «sube por la escalera y baja en ascensor». 5/8/2024: \dato{$\approx$250.000 M\$ deshechos}{BPI}; yen +12~\% desde el 10/7; Tokio $-12$~\% ese día.
+\end{itemize}
+
+% ==========================================================================
+\bloque[5]{III. Eficiencia en el mercado de divisas\label{rep:III}}
+\begin{ideaclave}
+Eficiente como ausencia de arbitraje (salvo la base desde 2008), no en el sentido de \autor{Pareto} y dudosamente en el informativo: el tipo a plazo predice mal el contado futuro, hasta equivocar el sentido. Eficiente para no ser explotado, no para predecir.
+\end{ideaclave}
+
+\sub{III.1. Definiciones de eficiencia\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Mercado eficiente}: precios que reflejan toda la información disponible (\autor{Fama}, 1970; Nobel 2013 con \autor{Hansen} y \autor{Shiller}). Contraste = \concepto{hipótesis conjunta} con un modelo de rentabilidad normal \vertema{3.B.23}.
+\item 3 sentidos, de menos a más (\autor{Duffie}, 2001): (1) \emph{ausencia de arbitraje}; (2) \emph{informativa}: débil, semifuerte, fuerte (\autor{Roberts}, 1967); (3) \emph{de \autor{Pareto}} (1TFEB) \vertema{3.A.22}.
+\end{itemize}
+
+\sub{III.2. ¿Es eficiente el mercado de divisas?\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Sin arbitraje}: tipos cruzados, casi siempre; PCI, sí hasta 2007; luego la base es el coste del balance, no un regalo: eficiente \emph{descontados los límites al arbitraje}.
+\item \emph{Informativa}: información barata, muchos agentes, muy líquido; pero paradoja de \autor{Grossman}-\autor{Stiglitz} (1980): solo eficiente de forma imperfecta.
+\item \emph{\autor{Pareto}}: no, por 3 fallos: \emph{mercados incompletos} (NDF, sin plazos largos, «pecado original»: \autor{Eichengreen}-\autor{Hausmann}, 1999 \vertema{3.B.17}); \emph{externalidades} pecuniarias de la deuda en \$ (\autor{Korinek}, 2011: reservas, líneas, macroprudencial \vertema{3.B.26}); \emph{información asimétrica} (\emph{fixings}, Código Global). \autor{Cochrane}: fallos pequeños; ¿corrige el Estado?
+\end{itemize}
+
+\sub{III.3. La paradoja del margen \emph{forward}\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Supuestos}: PCI ($f_t-e_t\approx i-i^{*}$), neutralidad (PNCI) y expectativas racionales ($e_{t+1}=\mathbb{E}_t[e_{t+1}]+\varepsilon_{t+1}$). Regresión de \autor{Fama} (1984):
+  \funcionclave{\Delta e_{t+1}=\beta_0+\beta_1\,(f_t-e_t)+\varepsilon_{t+1}}
+  Insesgado si $\beta_0=0$ y $\beta_1=1$ (recta de 45°).
+\item \emph{Evidencia}: se rechaza; $\beta_1$ \emph{negativa}: media $\approx-0{,}9$ de unas 75 estimaciones, ninguna llega a 1 (\autor{Froot}-\autor{Thaler}, 1990). La moneda de tipo alto tiende a \emph{apreciarse}: \concepto{paradoja del margen \emph{forward}} (\autor{Engel}, 1996). «En todas partes cuecen habas». Lo confirma el \emph{carry trade}.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{paradoja-forward}{Teoría ($\beta_1=1$) frente a evidencia ($\beta_1\approx-0{,}9$)}
+\begin{itemize}
+\item \emph{Salidas} (hipótesis conjunta):
+  \begin{enumerate}
+  \item \emph{Prima de riesgo variable}: $\rho_t\equiv f_t-\mathbb{E}_t[e_{t+1}]$; $f_t-e_t=$ depreciación esperada $+\,\rho_t$. Para $\beta_1<0$: $\mathrm{cov}(\rho_t,d_t)<0$ y $\sigma(\rho_t)>\sigma(d_t)$ (\autor{Fama}, 1984). Modelos con aversión razonable dan primas pequeñas (\autor{Engel}); mejor riesgo de crisis (\autor{Lustig}-\autor{Verdelhan}, 2007). Igual que \emph{backwardation}/\emph{contango} \vertema{3.B.25} y ETTI \vertema{3.B.24}.
+  \item \emph{\emph{Peso problem}} (\autor{Krasker}, 1980): salto raro que no ocurre en la muestra (peso mexicano, años 70, devaluación de 1976); parte de las ganancias del \emph{carry} (\autor{Burnside} et al., 2011).
+  \item \emph{Expectativas no racionales}: encuestas (\autor{Frankel}-\autor{Froot}, 1987): casi todo el sesgo, errores de expectativas; \concepto{fundamentalistas} y \concepto{chartistas} (1990); \autor{De Grauwe}-\autor{Grimaldi} (2006): cambian de regla según rinde, equilibrios múltiples \vertema{3.A.10}.
+  \end{enumerate}
+\item \emph{Matiz}: con $\beta_0>0$ grande puede predecir depreciación menor: mejor hablar de \emph{sesgo} (\autor{Hodrick}, 1987). \emph{Almazara}: 0,8541 es un precio exacto (PCI), no una buena previsión.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: el mayor mercado financiero, OTC, de \emph{dealers}, 24 h, dólar y Londres, riesgo de liquidación propio; FX \emph{swaps} y plazo; finanzas, no comercio. Arbitraje $\Rightarrow$ PCI; especulación $\Rightarrow$ (en el mejor caso) PNCI, que falla.
+\item \textbf{Relevancia}: fija el tipo que transmite la política monetaria, mueve inflación y competitividad y decide la estabilidad de quien se endeuda en otra moneda; CLS y líneas \emph{swap}, parte de la red de seguridad \vertema{3.B.22}.
+\item \textbf{Extensiones}: determinación del tipo y \autor{Dornbusch} \vertema{3.B.14}; regímenes e intervención \vertema{3.B.15}; crisis \vertema{3.B.17}; euro internacional \vertema{3.B.43}; intervención «implícita» con compras de activos (\autor{Dedola} et al., 2021); manipulación: Tesoro de EE.\,UU., jul.\ 2026: ninguno, China en observación.
+\item \textbf{Opinión}: que el \emph{forward} prediga mal es una advertencia: primas que cambian y sucesos raros; por eso reservas, líneas \emph{swap} y \emph{carry} que baja en ascensor.
+\item \textbf{Idea final}: quien no arriesga, no gana: el arbitraje no deja dinero encima de la mesa y el especulador cobra por un riesgo que se cobra de golpe. Eficiente para no ser explotado, no para predecir.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas\label{rep:autores}}
+\hito{1923}{\autor{Keynes}, \emph{Breve tratado}: arbitraje y PCI}
+\hito{1970}{\autor{Fama}: mercados eficientes (\autor{Roberts}, 1967)}
+\hito{1972}{IMM de Chicago: futuros de divisas; \autor{Tobin}: impuesto}
+\hito{1974}{Bankhaus Herstatt (26/6); Comité de Basilea}
+\hito{1980}{\autor{Krasker}: \emph{peso problem}; \autor{Grossman}-\autor{Stiglitz}}
+\hito{1984}{\autor{Fama}: regresión y prima de riesgo}
+\hito{1990}{\autor{Froot}-\autor{Thaler}: $\beta_1\approx-0{,}9$; chartistas}
+\hito{1992}{\autor{Soros} contra la libra (16 sept.)}
+\hito{1996}{\autor{Engel}: paradoja del margen \emph{forward}}
+\hito{1999}{\autor{Eichengreen}-\autor{Hausmann}: pecado original; \autor{Greenspan}}
+\hito{2001}{\autor{Duffie}: 3 sentidos; \autor{Williamson}: exposición}
+\hito{2002}{CLS: pago contra pago}
+\hito{2012}{\autor{King}-\autor{Osler}-\autor{Rime}; EMIR; Tesoro excluye FX \emph{swaps}}
+\hito{2014}{Multas por los \emph{fixings} (12/11)}
+\hito{2017}{Código Global (25/5)}
+\hito{2018}{\autor{Du}-\autor{Tepper}-\autor{Verdelhan}: desviaciones de la PCI}
+\hito{2024}{5/8: \emph{carry trade} en yenes; revisión del Código}
+\hito{2025}{Trienal: 9,5 billones diarios}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item \dato{9,5 billones de \$ diarios, +27~\%}{BPI, abr.\ 2025}: FX \emph{swaps} 42~\%, contado 31, \emph{forwards} 18, opciones 6,6, \emph{currency swaps} 1,7. USD 89,1~\%, EUR 28,5; RU 37,8~\%, EE.\,UU. 18,6. \emph{Interdealer} 46,7~\%, no financieras 4,6. PvP 36~\%, expuesto 10~\%. Reservas \dato{13,2 billones; USD 56,7~\%}{FMI, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Qué convención usa para $E$?} Directa: € por \$; ↑$E$ = depreciación del euro. EUR/USD es indirecta para España; el BCE publica los efectivos al revés (↑ = apreciación).
+\item \textbf{¿Predice el \emph{forward} el contado futuro?} Solo si se cumplen PCI y PNCI; en los datos $\beta_1<0$: es un precio de arbitraje, no una previsión.
+\item \textbf{¿PCI y PNCI: qué diferencia hay?} PCI: arbitraje sin riesgo, solo movilidad de capitales; PNCI: además neutralidad al riesgo y expectativas homogéneas; no la impone un beneficio seguro.
+\item \textbf{¿Por qué falla la PCI desde 2008 si hay arbitrajistas?} Arbitrar ocupa balance (ratio de apalancamiento): límites al arbitraje, no ganancia gratis.
+\item \textbf{¿Diferencia entre FX \emph{swap} y \emph{currency swap}?} El \emph{currency swap} paga intereses intermedios y es a largo; el FX \emph{swap}, contado + plazo inverso, sin pagos intermedios.
+\item \textbf{¿Qué es el riesgo de \autor{Herstatt}?} Perder todo el principal al pagar una pata sin cobrar la otra; PvP (CLS), aún 10~\% expuesto.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item \emph{Bid}: el banco \emph{compra} la base (el cliente vende); \emph{ask}: el banco vende. \emph{Pip} = 4.º decimal (2.º con el yen).
+\item Directa: ↑$E$ = depreciación. EUR/USD = dólares por euro (base el euro). ↑$q$ = depreciación real = ↑ competitividad.
+\item Tipo de interés alto $\Rightarrow$ \emph{descuento} a plazo (PCI), no prima.
+\item PCI no exige neutralidad al riesgo ni expectativas; la PNCI sí (sustituibilidad perfecta, no solo movilidad).
+\item Encuesta 2022: FX \emph{swaps} 50,9~\%; en 2025, 42~\%. 1.ª plaza: Reino Unido, no EE.\,UU. Cuotas de divisas suman 200~\%.
+\item Contado: $\leq$2 días hábiles; \emph{forward}: > 2. Futuros: fuera de la Encuesta. NDF: solo la diferencia.
+\item Libre uso (FMI) $\neq$ convertible. Línea \emph{swap}: mismo tipo a la ida y a la vuelta.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

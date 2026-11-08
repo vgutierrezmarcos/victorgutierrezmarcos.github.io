@@ -1,0 +1,1305 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B13.bib}
+\tcetema[Mercados de divisas]{3.B.13}{Mercados de divisas: operaciones e instrumentos.}
+\tcefecha{08/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Quien no arriesga, no gana», dice el refrán. En el mercado de divisas se fija el precio que, para Paul \autor{Volcker}, es probablemente el más importante de una economía, porque influye en todos los demás: en los precios, en las exportaciones y las importaciones y en la actividad \parencite{VolckerGyohten1992}.\footnote{Paul \autor{Volcker} fue el 12.º presidente de la Junta de Gobernadores de la Reserva Federal de Estados Unidos, del 6 de agosto de 1979 al 11 de agosto de 1987 \parencite{FedHistory2026Volcker}.}
+  \item En abril de 2025, el mes de los anuncios arancelarios de Estados Unidos, ese precio se movió como pocas veces: el dólar, que en las crisis suele subir, perdió un 3,3~\% frente a una cesta amplia de monedas en solo un mes \parencite{Fed2026DolarAmplio}, y el euro pasó de 1,08 a 1,14 dólares \parencite{BCE2026EURUSD}. Ese mismo mes el mercado de divisas batió su récord: 9,5 billones de dólares diarios, un 27~\% más que en 2022 \parencite{BIS2026TrienalDatos,HuangKrohnSushko2025FX}. En menos de 4 días mueve lo que el comercio mundial de bienes y servicios en todo un año \parencite{OMC2026GTOS}.
+  \item ¿Qué es ese mercado, quién opera en él, con qué instrumentos y para qué? ¿Y fija bien el precio más importante de la economía: deja ganar sin arriesgar, o al menos adivina el tipo de cambio de mañana?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item En el mercado de divisas se forma el \concepto{tipo de cambio}, el precio de una moneda en términos de otra, que conecta los precios de todos los países.
+  \item \emph{En lo microeconómico}, decide la rentabilidad de exportar, importar o invertir fuera y el riesgo que asumen empresas, bancos e inversores; con él se asignan los recursos entre los sectores que comercian con el exterior y los que no.
+  \item \emph{En lo macroeconómico}, el tipo de cambio:
+    \begin{itemize}
+    \item es un \emph{canal de transmisión de la política monetaria}: una política expansiva tiende a depreciar la moneda, lo que mejora la competitividad-precio y, al encarecer las importaciones, puede elevar la inflación;
+    \item puede ser un \emph{instrumento o un objetivo de la política económica}, si la autoridad monetaria interviene en el mercado para moverlo o para fijarlo;
+    \item y sus movimientos bruscos afectan a la \emph{inflación}, a la \emph{competitividad} y a la \emph{estabilidad financiera}, sobre todo cuando empresas, bancos o Estados están endeudados en otra moneda.\footnote{Por eso interesa tanto cómo se determina el tipo de cambio y cuál es su valor de equilibrio con tipos flexibles. Pero también importa con flexibilidad limitada o con tipos fijos: si el tipo fijado no es el de equilibrio, el mercado presiona sobre él y obliga a la autoridad monetaria a intervenir \vertema{3.B.15}.}
+    \end{itemize}
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Histórica}: la evolución del mercado de divisas va ligada a la del sistema monetario internacional.
+    \begin{itemize}
+    \item Con el sistema de \emph{Bretton Woods} (1944-1973),\footnote{El acuerdo toma el nombre de la localidad de New Hampshire (Estados Unidos) donde se negoció y se firmó en julio de 1944.} el dólar se consolidó como moneda de reserva y ancla del sistema. En el mercado operaban sobre todo los comerciantes, cuyas transacciones crecían con el comercio internacional, y los bancos centrales, que intervenían para mantener las paridades fijas \vertema{3.B.20}.
+    \item La integración financiera, la liberalización de los capitales y la creciente interdependencia de las economías agravaron los defectos de diseño del sistema, que se rompió en 1973. Desde entonces, con tipos flexibles entre las grandes monedas, lo que John \autor{Williamson} llamó el «no sistema» monetario internacional, el crecimiento de los flujos financieros ha disparado el tamaño del mercado \vertema{3.B.21}.
+    \end{itemize}
+  \item \emph{Estadística}: desde 1986, los bancos centrales, coordinados por el Banco de Pagos Internacionales (BPI; BIS en inglés), miden el mercado cada 3 años con la \concepto{Encuesta Trienal}. La última, la de abril de 2025, abarcó 52 jurisdicciones y más de 1.100 bancos y \emph{dealers} \parencite{BIS2025Trienal}; es la fuente de casi todos los datos de esta exposición.
+  \item \emph{Reciente}: tras la crisis de 2008 han cambiado 3 cosas. El arbitraje de intereses dejó de cumplirse con exactitud; la regulación llevó a cámaras de contrapartida muchos derivados, pero casi nada de divisas; y los escándalos de manipulación de los tipos de referencia dieron lugar a un código de conducta común.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Qué es el mercado de divisas, cómo se cotiza el tipo de cambio y quién opera en él?
+  \item ¿Qué instrumentos se negocian y para qué operaciones se usan?
+  \item ¿Qué relación imponen el arbitraje y la especulación entre los tipos de interés y los tipos de cambio?
+  \item ¿Es un mercado eficiente? Y si arbitra tan bien, ¿por qué el tipo a plazo predice tan mal el de contado?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición va de lo que es el mercado a lo que se hace en él y, por último, a si fija bien el precio.
+  \begin{itemize}
+  \item En el bloque~\ref{sec:caracterizacion}, qué es el mercado de divisas: los conceptos y las convenciones con que se cotiza, sus rasgos (el mayor del mundo, concentrado, abierto las 24 horas, extrabursátil y con un riesgo de liquidación propio) y quién opera en él.
+  \item En el bloque~\ref{sec:instrumentos-operaciones}, los instrumentos con que se negocia y las operaciones para las que se usan. Se estudian antes los instrumentos, aunque el título nombre primero las operaciones, porque cada operación se hace con ellos. Las de arbitraje y especulación dan las 2 relaciones que ordenan el mercado: la paridad cubierta y la no cubierta de intereses.
+  \item En el bloque~\ref{sec:eficiencia}, si el mercado es eficiente: arbitra casi a la perfección, pero el tipo a plazo predice mal el de contado futuro (la paradoja del margen \emph{forward}).
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.B.13. Mercados de divisas: operaciones e instrumentos}\\[2pt]
+Introducción\\
+I. Caracterización general del mercado de divisas\\
+\hspace*{1.5em}1. Conceptos básicos: divisa, mercado de divisas y tipo de cambio\\
+\hspace*{1.5em}2. Convenciones en los tipos de cambio\\
+\hspace*{1.5em}3. Características: tamaño, concentración, 24 horas, OTC y liquidación, tecnología y Código Global\\
+\hspace*{1.5em}4. Agentes\\
+II. Instrumentos y operaciones\\
+\hspace*{1.5em}1. Instrumentos: \emph{spot}, \emph{forward}, NDF y futuros, FX \emph{swaps}, \emph{currency swaps} y opciones\\
+\hspace*{1.5em}2. Operaciones: comerciales, de liquidez, de cobertura, de reservas, de arbitraje (PCI) y de especulación (PNCI)\\
+III. Eficiencia en el mercado de divisas\\
+\hspace*{1.5em}1. Definiciones de eficiencia\\
+\hspace*{1.5em}2. ¿Es eficiente el mercado de divisas?\\
+\hspace*{1.5em}3. La paradoja del margen \emph{forward}\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9} (I.1, \tiempo{1}; I.2, \tiempo{2,5}; I.3, \tiempo{3}; I.4, \tiempo{2,5}); II, \tiempo{12,5} (II.1, \tiempo{3,5}; II.2, \tiempo{9}: comerciales, \tiempo{1,5}, liquidez, \tiempo{1}, cobertura, \tiempo{0,75}, reservas, \tiempo{0,75}, arbitraje y PCI, \tiempo{3}, y especulación y PNCI, \tiempo{2}); III, \tiempo{5} (III.1, \tiempo{0,75}; III.2, \tiempo{1,25}; III.3, \tiempo{3}), y conclusión, \tiempo{1}. Las 2 paridades son el modelo de referencia del tema y se llevan la mitad del bloque~\ref{sec:instrumentos-operaciones}. La introducción y la conclusión se cantan sin pizarra, con el refrán del enganche, «quien no arriesga, no gana», y la cifra de «9,5 billones de dólares al día» apuntados en una esquina: el refrán vuelve en la idea final. A la izquierda de la pizarra, el esquema de los 3 bloques, que se queda todo el tema. En el bloque~\ref{sec:caracterizacion}, el par de divisas con la cotización de la almazara del ejemplo, el recuadro con $q$ y $E^{ef}$ y el esquema de dos niveles de los agentes. En el bloque~\ref{sec:instrumentos-operaciones}, la tabla de instrumentos, la oferta y la demanda de divisas y el gráfico de los 2 caminos del inversor, sobre el que se dibujan primero la PCI y después la PNCI; las 2 ecuaciones se recuadran en morado en la esquina superior derecha y se quedan hasta el final. En el bloque~\ref{sec:eficiencia}, la tabla de los 3 sentidos de la eficiencia y la recta de la paradoja del margen \emph{forward}. Las pegatinas se apuntan junto a su concepto al decirlas: «camarón que se duerme, se lo lleva la corriente» (24 horas y latencia), «ande yo caliente, y ríase la gente» (cobertura), «lo que no puede ser no puede ser, y además es imposible» (PCI), «sube por la escalera y baja en ascensor» (\emph{carry trade}) y «en todas partes cuecen habas» (paradoja). Las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
+\end{notaopositor}
+
+% ==========================================================================
+\section{Caracterización general del mercado de divisas}\label{sec:caracterizacion}
+\minutos{9}
+
+\begin{notaopositor}
+En el cante (\tiempo{9}): I.1, \tiempo{1}, de palabra, con la almazara presentada en una frase. I.2, \tiempo{2,5}: el par EUR/USD con la cotización de la almazara (gráfico~\ref{fig:par-divisas}), dibujado a mano; debajo, el recuadro con $q=EP^{*}/P$ \eqref{eq:tipo-real} y $E^{ef}=\prod_iE_i^{\omega_i}$, que se queda. Las convenciones se dicen deprisa pero sin errores de signo: el tribunal pregunta por la cotización directa e indirecta, así que conviene decir la convención del tema en voz alta al empezar. I.3, \tiempo{3}: las 6 características en lista, con las cifras de 2025, la pegatina «camarón que se duerme, se lo lleva la corriente» junto a las 24 horas y un mini esquema del riesgo de \autor{Herstatt} (2 flechas con desfase horario y CLS en medio). I.4, \tiempo{2,5}: el esquema de dos niveles (gráfico~\ref{fig:estructura-mercado}). Los gráficos de datos se dicen, no se dibujan.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: el mercado de divisas no es un lugar, sino una red de bancos y plataformas en la que se compran y venden monedas. Es el mayor mercado financiero del mundo, extrabursátil, organizado alrededor de unos pocos bancos creadores de mercado, abierto las 24 horas y concentrado en el dólar y en Londres; casi todo lo que se negocia en él son operaciones financieras, no comerciales.
+\item \emph{Nexo}: antes de ver qué se hace en el mercado, hay que fijar el vocabulario: qué es una divisa, cómo se cotiza su precio, qué rasgos tiene el mercado y quién opera en él.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Conceptos básicos: divisa, mercado de divisas y tipo de cambio}\label{sec:conceptos}
+
+\begin{itemize}
+\item Una \concepto{divisa} es un medio de pago denominado en una moneda extranjera, en manos de los residentes de un país, y aceptado en las transacciones internacionales.\footnote{Casi todo el comercio internacional se paga en dinero, no con trueque, y cada país (o unión monetaria) tiene su moneda: de ahí la necesidad de cambiar unas monedas por otras. Una transacción económica es internacional cuando las partes residen en países distintos, sea real (bienes y servicios) o financiera (dinero, créditos y activos).} La palabra se usa en 2 sentidos:
+  \begin{itemize}
+  \item \emph{amplio}: cualquier moneda extranjera, sea cual sea su forma;
+  \item \emph{estricto}, el de la práctica bancaria: los saldos a la vista en moneda extranjera y los instrumentos para disponer de ellos (transferencias, cheques, tarjetas). Los billetes y monedas extranjeros se tratan aparte, como «billetes». El mercado de divisas al por mayor negocia casi solo saldos bancarios.
+  \end{itemize}
+\item No son divisas los instrumentos de crédito (letras de cambio o pagarés emitidos por no residentes) ni los activos financieros (acciones, bonos), aunque estén denominados en moneda extranjera.
+\item Una divisa es \concepto{convertible} si se puede cambiar libremente por otras, sin restricciones a los pagos ni controles de cambios; si no, es \emph{no convertible}. El Fondo Monetario Internacional (FMI) llama \concepto{moneda de libre uso} a la que, de hecho, se usa mucho para pagar transacciones internacionales y se negocia mucho en los principales mercados de divisas \parencite[art.~\textsc{xxx}, letra f]{FMIConvenio}. Es la condición para entrar en la cesta del derecho especial de giro (DEG), que hoy forman el dólar (43,38~\%), el euro (29,31~\%), el renminbi (12,28~\%), el yen (7,59~\%) y la libra (7,44~\%) \parencite{FMI2022DEG} \vertema{3.B.22}. No es lo mismo que convertible: el renminbi es de libre uso desde 2016 aunque China mantiene controles de capital.\footnote{El renminbi («moneda del pueblo») es la moneda de curso legal de la República Popular China, emitida por el Banco Popular de China; el yuan (código CNY) es su unidad, y por ese nombre se la conoce también.}
+\item El \concepto{mercado de divisas} es el marco en el que se compran y venden divisas a cambio de otras: la infraestructura y las instituciones con que agentes de todo el mundo las negocian.
+  \begin{itemize}
+  \item Como cualquier mercado de la teoría económica, no es un lugar físico: es una red de bancos, brókeres, plataformas electrónicas y otros agentes autorizados, a los que acuden empresas, inversores y bancos centrales.
+  \item Es internacional, aunque se hable de las \emph{plazas} (Londres, Nueva York, Singapur, Hong Kong, Tokio, Zúrich, Fráncfort…) en las que cotizan los tipos de cambio.
+  \item Cumple 3 \emph{funciones}:
+    \begin{enumerate}
+    \item \emph{transferir poder adquisitivo} de una moneda a otra, y con él de un país a otro;
+    \item \emph{financiar el comercio internacional} con crédito a corto plazo en divisas, mientras las mercancías están en tránsito;
+    \item \emph{facilitar la cobertura del riesgo de cambio} con los instrumentos a plazo (\ref{sec:op-cobertura}).
+    \end{enumerate}
+  \end{itemize}
+\item El \concepto{tipo de cambio} es el precio de una divisa en términos de otra.
+  \begin{itemize}
+  \item Para seguir la exposición tomemos una almazara de Jaén que vende aceite a un importador de Estados Unidos y cobrará 1 millón de dólares dentro de 3 meses. Necesitará euros para pagar a sus olivareros, así que tendrá que vender dólares en el mercado de divisas. Las cifras del ejemplo son ilustrativas, redondas, no datos.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Convenciones en los tipos de cambio}\label{sec:convenciones}
+
+\begin{anotaciones}
+\textbf{Notación.} $E_t$ es el tipo de cambio nominal \emph{directo} al contado (euros por dólar para España; $\uparrow E$ = depreciación del euro), $F_t^{t+1}$ el tipo a plazo pactado en $t$ para $t+1$ y $E^e_{t+1}$ el tipo de contado que se espera en $t$ para $t+1$, con $\gamma E^e\equiv(E^e_{t+1}-E_t)/E_t$ la depreciación esperada; $i$ e $i^{*}$ son los tipos de interés nacional y extranjero al mismo plazo; las minúsculas $e$ y $f$ son los logaritmos de $E$ y $F$. $q=EP^{*}/P$ es el tipo de cambio real y $E^{ef}$, $q^{ef}$ los efectivos, con pesos $\omega_i$. $E^{\mathrm{bid}}$ y $E^{\mathrm{ask}}$ son los precios de compra y de venta del creador de mercado, y $\rho$ la prima de riesgo cambiaria. En la notación de los derivados \vertema{3.B.25}, $S_0\equiv E_t$ y $F_0\equiv F_t^{t+1}$.
+\end{anotaciones}
+
+\paragraph{a) Códigos de divisas y pares}
+
+\begin{itemize}
+\item \emph{Códigos}: cada divisa tiene un código de 3 letras, el de la norma ISO~4217. Casi siempre las 2 primeras letras indican el país y la tercera la moneda: USD (dólar estadounidense), EUR, JPY (yen), GBP (libra esterlina), CNY (renminbi), CHF (franco suizo), CAD, AUD y NZD (dólares canadiense, australiano y neozelandés).
+\item \emph{Pares}: el tipo de cambio se cotiza como un par «BASE/COTIZADA»: la cotización del par EUR/USD dice cuántas unidades de la moneda \emph{cotizada} o de cuenta (aquí, el dólar; \emph{quote currency}) hacen falta para comprar 1 unidad de la moneda \emph{base} (aquí, el euro; \emph{base currency}) (gráfico~\ref{fig:par-divisas}).
+  \begin{itemize}
+  \item Siguiendo con nuestra almazara, su banco le cotiza el par EUR/USD a 1,1650/1,1652: el euro es la moneda base y el dólar la cotizada, y 1 euro vale algo más de 1,165 dólares.
+  \end{itemize}
+\item \emph{Clasificación de los pares}, en la jerga del mercado:
+  \begin{itemize}
+  \item \emph{pares mayores} (\emph{majors}): los del dólar con el euro, el yen, la libra, el franco suizo y los dólares canadiense, australiano y neozelandés. El renminbi es ya la 5.ª moneda más negociada (\ref{sec:caracteristicas}), pero no suele contarse entre los \emph{majors} porque su convertibilidad sigue limitada: cotiza en China (CNY) y fuera de China (CNH) a tipos distintos;
+  \item \emph{pares cruzados} (\emph{crosses} o \emph{minors}): los de 2 monedas principales sin el dólar, como EUR/GBP o EUR/JPY. Muchos se forman a través del dólar: primero se negocia una moneda contra el dólar y luego el dólar contra la otra;\footnote{El dólar es la moneda de referencia de los tipos cruzados porque es la moneda dominante del sistema monetario internacional: hay más liquidez en cada moneda frente al dólar que en muchos pares directos.}
+  \item \emph{pares exóticos}: una moneda principal con la de una economía pequeña o emergente; tienen menos liquidez y \emph{spreads} más amplios.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Cómo se lee la cotización de un par de divisas}\label{fig:par-divisas}
+\grafico[0.75\textwidth]{par-divisas}
+\fuente{elaboración propia; cotización ilustrativa.}
+\end{figure}
+
+\paragraph{b) \emph{Bid}, \emph{ask} y \emph{spread}}
+
+\begin{itemize}
+\item Quien cotiza un par da 2 precios:
+  \begin{itemize}
+  \item el precio \emph{bid} (de compra), $E^{\mathrm{bid}}$, al que el creador de mercado \emph{compra} la moneda base: el cliente vende a ese precio;
+  \item el precio \emph{ask} u \emph{offer} (de venta), $E^{\mathrm{ask}}$, al que el creador de mercado la \emph{vende}: el cliente compra a ese precio.
+  \end{itemize}
+\item Siempre $E^{\mathrm{bid}}<E^{\mathrm{ask}}$, y la diferencia es el \concepto{\emph{spread}}, $E^{\mathrm{ask}}-E^{\mathrm{bid}}$.
+\item En un mercado de creadores de mercado como el de divisas, la operación no espera a que los 2 precios se igualen: el cliente que acepta la cotización opera en el acto, comprando al \emph{ask} o vendiendo al \emph{bid}. El \emph{spread} es lo que cobra el creador de mercado por dar liquidez y por el riesgo de quedarse con la posición; con estos volúmenes, no suele cobrar comisiones aparte.
+  \begin{itemize}
+  \item Volvamos a la almazara: con la cotización EUR/USD 1,1650/1,1652, el banco compra euros a 1,1650 dólares y los vende a 1,1652. La almazara, que tiene dólares y quiere euros, compra euros al \emph{ask}: si cambiara hoy su millón de dólares, recibiría $1.000.000/1{,}1652\approx858.200$ euros, unos 70 euros menos que al precio medio. Esa diferencia es lo que le cuesta el \emph{spread}.
+  \end{itemize}
+\item En los libros de órdenes de las plataformas electrónicas, en cambio, sí se cruzan órdenes: la operación se cierra cuando una orden de compra alcanza el precio de una de venta.
+\item El \emph{spread} depende sobre todo de la \emph{liquidez} del par: cuanto más líquido, más estrecho. Por eso varía entre pares, y en un mismo par según el día y la hora.
+\end{itemize}
+
+\paragraph{c) \emph{Pips} y \emph{ticks}}
+
+\begin{itemize}
+\item Un \concepto{\emph{pip}} es la unidad convencional en que se miden las variaciones de un par: el cuarto decimal en casi todos (0,0001) y el segundo en los pares con el yen (0,01). Las plataformas cotizan hoy con un decimal más, la \emph{pipette} o fracción de \emph{pip}.\footnote{El acrónimo no está fijado: se lee como \emph{percentage in point} o \emph{price interest point}, según la fuente. Lo importante es la convención del decimal.} En el ejemplo, el \emph{spread} de la almazara es de 2 \emph{pips}.
+\item El \emph{tick} es la variación mínima del precio de cualquier instrumento financiero, un término que viene de los mercados de futuros. La distinción con el \emph{pip} es sutil: para unos es solo de ámbito (\emph{pip} en divisas, \emph{tick} en los demás mercados); para otros, el \emph{pip} es la variación posible y el \emph{tick} la que efectivamente se produce.
+\end{itemize}
+
+\paragraph{d) Cotización directa e indirecta}
+
+\begin{itemize}
+\item En la \concepto{cotización directa} (o \emph{de precio}), la moneda cotizada es la nacional: el tipo de cambio dice cuántas unidades de moneda nacional cuesta 1 unidad de divisa, el \emph{precio} de la divisa. En la \concepto{cotización indirecta} (o \emph{de volumen}), la moneda cotizada es la extranjera: cuántas unidades de divisa se obtienen con 1 unidad de moneda nacional.
+\item En esta exposición, $E$ es siempre el tipo \emph{directo}: un aumento, $\uparrow E$, es una \emph{depreciación} de la moneda nacional, porque hace falta más moneda nacional para comprar 1 unidad de divisa.\footnote{Conviene decirlo al empezar el cante: la convención indirecta (llamada a veces «anglosajona») está muy extendida en los mercados y en las estadísticas, y quien escucha puede estar acostumbrado a ella.}
+  \begin{itemize}
+  \item El par EUR/USD, que dice cuántos dólares vale 1 euro, es una cotización \emph{indirecta} para España. El tipo directo de la almazara es su inversa: al precio medio, $E=1/1{,}1651\approx0{,}8583$ euros por dólar.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{e) Tipos de cambio nominal y real, bilateral y efectivo}\label{sec:tipos-cambio}
+
+\begin{itemize}
+\item \concepto{Tipo de cambio nominal bilateral}, $E$: el precio de una divisa en unidades de la moneda nacional.
+\item \concepto{Tipo de cambio efectivo nominal}, $E^{ef}$: el precio de una cesta de divisas de los socios comerciales en moneda nacional (en esta convención, $\uparrow E^{ef}$ = depreciación efectiva). Es una media \emph{geométrica} de los tipos bilaterales, ponderada por el peso de cada socio en el comercio:
+  \begin{equation}\label{eq:tipo-efectivo}
+  E^{ef}=\prod_{i=1}^{n}E_i^{\,\omega_i},\qquad \sum_{i=1}^{n}\omega_i=1 .
+  \end{equation}
+  Se usa la media geométrica porque así el índice no depende de la base ni de la convención de cotización, y una apreciación y una depreciación de la misma proporción (multiplicar por 1,1 y dividir por 1,1) se compensan.\footnote{Con una media aritmética, el resultado cambiaría según se escribieran los tipos en cotización directa o indirecta y según el año base. Los índices del BCE son geométricos, con pesos del comercio de manufacturas y de servicios que recogen también la competencia en terceros mercados, y se encadenan cada 3 años; los últimos pesos son los de 2022-2024, en vigor desde enero de 2026 \parencite{BCE2026TCEMetodo}.}
+\item \concepto{Tipo de cambio real bilateral}, $q$: el precio relativo de los bienes extranjeros en términos de los nacionales, es decir, cuántas unidades del bien nacional hay que entregar por una del extranjero:
+  \funcionclave[eq:tipo-real]{q=\frac{E\,P^{*}}{P}}
+  donde $P$ y $P^{*}$ son los niveles de precios nacional y extranjero. $\uparrow q$ es una \concepto{depreciación real}: los bienes nacionales se abaratan frente a los extranjeros y el país gana competitividad-precio.
+\item \concepto{Tipo de cambio efectivo real}, $q^{ef}$: el real frente a la cesta de socios,
+  \begin{equation}\label{eq:tipo-efectivo-real}
+  q^{ef}=\prod_{i=1}^{n}\left(\frac{E_i\,P^{*}_i}{P}\right)^{\omega_i}.
+  \end{equation}
+  Al recoger los tipos nominales y los precios relativos frente a todos los socios, es el mejor indicador de la competitividad-precio de una economía; si se deflacta con costes laborales unitarios en vez de con precios, mide la competitividad en costes \vertema{4.A.22}.
+\item \emph{Aviso al pasar a los datos}: el BCE y el Banco de España publican los tipos efectivos en la convención contraria a la de esta exposición: una subida es una \emph{apreciación} del euro y una pérdida de competitividad. El BCE los calcula frente a 12, 17 y 40 socios; el efectivo nominal frente a 17 estaba en 98,2 (primer trimestre de 1999 = 100) en octubre de 2026, un 3,6~\% por debajo de un año antes, es decir, el euro se había \emph{depreciado} \parencite{BCE2026TCE}. Hay que decir siempre en qué convención se lee el dato \vertema{4.A.22}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Características del mercado de divisas}\label{sec:caracteristicas}
+
+\begin{itemize}
+\item Como el mercado está cada vez más atomizado, lo que mejor lo distingue de otros mercados financieros son 6 rasgos: su tamaño, su concentración, su horario, su organización extrabursátil (con un riesgo de liquidación propio), el peso de la tecnología y una regulación que descansa sobre todo en la autorregulación.
+\end{itemize}
+
+\paragraph{a) Es el mercado más grande del mundo}
+
+\begin{itemize}
+\item Desde la Segunda Guerra Mundial, el aumento de los flujos internacionales de bienes, servicios y capitales multiplicó la necesidad de cambiar unas monedas por otras. Hoy el de divisas es el \emph{mercado financiero más grande del mundo}.
+\item En abril de 2025 se negociaron de media 9,5 billones de dólares al día, un 27~\% más que en abril de 2022 \parencite{BIS2026TrienalDatos}. Fue un mes excepcional: el BPI atribuye unos 1,5 billones diarios a la reacción a los anuncios arancelarios de Estados Unidos y a la cobertura del riesgo del dólar \parencite{HuangKrohnSushko2025FX}.
+  \begin{itemize}
+  \item Para hacerse una idea: el comercio mundial de bienes y servicios sumó 34,65 billones de dólares en 2025 \parencite{OMC2026GTOS}, de modo que el mercado de divisas negocia en menos de 4 días lo que el comercio mueve en un año.\footnote{Es mejor comparar así que multiplicar el dato diario por 365: la Encuesta da la media de los días hábiles de abril. Cada día hábil se negocian unas 5 veces el PIB anual de España \parencite{BIS2026TrienalDatos,FMI2026WEO}.}
+  \end{itemize}
+\item \emph{Lo mueven las finanzas, no el comercio}: las operaciones con clientes no financieros, como exportadores e importadores, son menos del 5~\% del volumen (4,6~\% en 2025, frente al 13,4~\% de 2010) \parencite{BIS2026TrienalDatos}. Casi todo lo demás es gestión de liquidez, cobertura de carteras, arbitraje y especulación.
+\item En España se negociaron 67.900 millones de dólares diarios, un 73~\% más que en 2022, el 0,5~\% del total mundial \parencite{BdE2025Encuesta}.
+\end{itemize}
+
+\paragraph{b) Es un mercado muy concentrado}
+
+\begin{itemize}
+\item \emph{En divisas}: como cada operación tiene 2 monedas, las cuotas suman el 200~\% (gráfico~\ref{fig:divisas-bis}) \parencite{BIS2026TrienalDatos}:
+  \begin{enumerate}
+  \item el \emph{dólar} está en uno de los lados del 89,1~\% de las operaciones (88,4~\% en 2022): es la moneda vehicular y el activo líquido y seguro por excelencia, y su demanda sube en las crisis (\emph{flight to safety});
+  \item el \emph{euro}, en el 28,5~\%, y sigue perdiendo peso (30,6~\% en 2022 y 32,3~\% en 2019). La UE quiere reforzar su papel internacional: en 2018, cuando más del 80~\% de sus importaciones de energía se pagaban en dólares, la Comisión propuso fomentar el euro en esos contratos \parencite{CE2018Euro} \vertema{3.B.43};
+  \item el \emph{yen}, en el 16,9~\%, sin apenas cambios;
+  \item la \emph{libra}, en el 10,2~\% (12,9~\% en 2022);
+  \item el \emph{renminbi}, en el 8,6~\%, casi el doble que en 2019 (4,3~\%); el par dólar-renminbi es ya el 8,2~\% del mercado.
+  \end{enumerate}
+  Los 10 pares más negociados llevan todos el dólar; el primero es el EUR/USD, con el 20,7~\% del volumen.
+\item \emph{Geográficamente}: 4 plazas, Londres, Nueva York, Singapur y Hong Kong, intermedian tres cuartas partes del mercado. El Reino Unido sigue a la cabeza, con el 37,8~\% (su máximo fue el 43,2~\% de 2019), seguido de Estados Unidos (18,6~\%), Singapur, la que más crece (11,8~\%), y Hong Kong (7~\%); con Japón (3,5~\%), los 5 primeros centros suman el 78,7~\% \parencite{BIS2026TrienalDatos}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Las divisas y los pares más negociados (abril de 2025)}\label{fig:divisas-bis}
+\grafico[0.95\textwidth]{divisas-bis}
+\fuente{BPI, Encuesta Trienal de 2025, datos definitivos \parencite{BIS2026TrienalDatos}. Cuotas en el volumen medio diario; las de las divisas suman el 200~\%.}
+\end{figure}
+
+\begin{anotaciones}
+\textbf{¿Rival para el dólar?} \textcite{Wei2023Renminbi} sostiene que, pese a sus avances, el renminbi está lejos de ser una moneda de reserva mundial y que no amenazará la hegemonía del dólar mientras China no liberalice mucho más su cuenta de capital; una moneda digital podría servir para liberalizarla en parte, pero eso no bastaría. Los datos le dan la razón: el renminbi gana peso en la negociación, pero en las reservas de los bancos centrales apenas llega al 2~\% (\ref{sec:op-reservas}).
+\end{anotaciones}
+
+\paragraph{c) Es un mercado abierto las 24 horas}
+
+\begin{itemize}
+\item A diferencia de las bolsas, no tiene horario de apertura y cierre: gracias a los husos horarios de los principales centros financieros, siempre hay alguno abierto. En la práctica, funciona sin interrupción desde la tarde del domingo hasta la del viernes, hora de Nueva York, con las sesiones de Sídney, Tokio, Londres y Nueva York encadenadas; la de más actividad es la tarde europea, cuando coinciden Londres y Nueva York (gráfico~\ref{fig:sesiones}).
+\item «Camarón que se duerme, se lo lleva la corriente»: en un mercado que no cierra, el precio se mueve mientras unos duermen, y hoy lo hace a la velocidad de los algoritmos (\ref{sec:latencia}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Las sesiones del mercado de divisas a lo largo del día (hora peninsular española)}\label{fig:sesiones}
+\grafico[0.85\textwidth]{sesiones}
+\fuente{elaboración propia; horarios aproximados de las sesiones, en horario de invierno.}
+\end{figure}
+
+\paragraph{d) Es un mercado extrabursátil: negociación, compensación y liquidación}\label{sec:otc}
+
+\begin{itemize}
+\item Una operación de divisas pasa por 3 etapas:
+  \begin{enumerate}
+  \item \emph{negociación}: las partes se ponen en contacto, se descubre el precio y se acuerdan precio y cantidad;
+  \item \emph{compensación}: se confirman las operaciones y se calculan las obligaciones de cada parte, operación a operación o en neto;
+  \item \emph{liquidación}: se hacen los pagos en las 2 monedas.
+  \end{enumerate}
+\item El mercado de divisas es \concepto{extrabursátil} (OTC, \emph{over the counter}) en la negociación: no hay un mercado organizado con un contrato tipo, sino acuerdos bilaterales o en plataformas electrónicas.
+  \begin{itemize}
+  \item \emph{Ventaja}: flexibilidad; el contrato se adapta a lo que necesita cada parte.
+  \item \emph{Inconvenientes}: riesgo de contraparte, menos transparencia y menos requisitos para operar que en un mercado organizado.
+  \end{itemize}
+\item \emph{Compensación}: es casi siempre \emph{bilateral}, no en una entidad de contrapartida central (ECC).\footnote{Una ECC se interpone entre las partes: es compradora frente a cada vendedor y vendedora frente a cada comprador, y su posición neta es siempre nula. Para protegerse del incumplimiento, exige a cada parte un depósito de garantía (el margen inicial) y liquida cada día las pérdidas y ganancias (\emph{mark-to-market}). Así, cada participante tiene una sola exposición, frente a la ECC, en lugar de una frente a cada contraparte \parencite[82]{NunezValdeolivas2019CCP}.\graficonota{ccp}} Tras la crisis de 2008, el G-20 acordó llevar a ECC los derivados OTC normalizados \parencite{G20Pittsburgh2009}, pero las divisas quedaron casi fuera:
+  \begin{itemize}
+  \item en la UE, el Reglamento de infraestructuras de mercado (EMIR) obliga a compensar en una ECC solo las clases de derivados que decide la Autoridad Europea de Valores y Mercados (ESMA), y ninguna es de divisas: en 2015 estudió los \emph{forwards} sin entrega y decidió no imponerla \parencite{UE2012EMIR,ESMA2015NDF}. El Reglamento MiFIR, por su parte, obliga a negociar en plataformas algunos derivados \parencite{UE2014MiFIR} \vertema{3.B.25};
+  \item en Estados Unidos, la ley Dodd-Frank (2010) permitió al Tesoro excluir de la definición de \emph{swap} a los FX \emph{swaps} y a los \emph{forwards} con entrega, lo que hizo en noviembre de 2012: quedaron fuera de la compensación y de la negociación obligatorias, aunque no de la obligación de comunicarlos \parencite{DoddFrank2010,Tesoro2012FXSwaps}. Las opciones, los \emph{currency swaps} y los \emph{forwards} sin entrega sí son \emph{swaps} a esos efectos; el contado nunca lo fue.
+  \end{itemize}
+\item \emph{Liquidación}: una compraventa de divisas se liquida con 2 pagos, uno en cada moneda, en 2 sistemas de pago nacionales que pueden estar abiertos a horas distintas. Si una parte paga y la otra quiebra antes de pagar, la primera pierde \emph{todo} el principal, no solo la diferencia de precio: es el \concepto{riesgo de liquidación} o \concepto{riesgo de \autor{Herstatt}}.
+  \begin{itemize}
+  \item El nombre viene del Bankhaus Herstatt, un banco alemán que las autoridades cerraron a media tarde del 26 de junio de 1974, cuando ya había cobrado marcos de sus contrapartes y aún no había pagado los dólares que les debía en Nueva York \parencite{CPSS1996Settlement,BIS2019Liquidacion}. Ese mismo año se creó el Comité de Supervisión Bancaria de Basilea \vertema{3.B.27}.
+  \item \emph{La respuesta}: el \concepto{pago contra pago} (PvP, \emph{payment versus payment}), que liquida las 2 partes a la vez o ninguna. Lo ofrece desde 2002 CLS, una entidad creada por los grandes bancos que hoy liquida en 18 monedas, con más de 75 miembros \parencite{CLS2026About}.
+  \item \emph{Lo que queda}: en abril de 2025 solo el 36~\% de los pagos se liquidó con PvP; el 54~\% se liquidó con otros métodos que reducen el riesgo (compensación en neto u operaciones dentro de un mismo grupo), y un 10~\%, unos 1,4 billones de dólares diarios, seguía plenamente expuesto, sobre todo en monedas fuera de CLS y en operaciones con clientes \parencite{Drehmann2026Liquidacion}.
+  \item Siguiendo con la almazara: cuando su banco venda los dólares que cobre, CLS le asegura que no entregará los dólares sin recibir a la vez los euros.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{e) Es un mercado transformado por la tecnología}
+
+\begin{itemize}
+\item Ocurre en todos los mercados financieros, pero en el de divisas se ve en 3 efectos:
+  \begin{enumerate}
+  \item \emph{spreads} más estrechos;
+  \item más \emph{transparencia}: cualquiera puede seguir el mercado en tiempo real sin depender de la información de los \emph{dealers};
+  \item más \emph{eficiencia operativa}: todas las etapas de la operación se hacen electrónicamente, sin papeleo y casi sin intervención humana.
+  \end{enumerate}
+\item Las plataformas electrónicas son de 2 tipos: las \emph{interbancarias}, con libro de órdenes entre creadores de mercado (EBS y LSEG FX Matching, antes Reuters Matching), y las \emph{de clientes}, de un solo banco o de varios, en las que el cliente pide precio a varios bancos a la vez. Los terminales de información, como LSEG Workspace (antes Eikon) o Bloomberg, dan precios y noticias, pero no son plataformas de negociación minorista \parencite{BIS2020Algos}.
+\item La tecnología ha traído también los algoritmos de ejecución y la negociación de alta frecuencia (\ref{sec:usuarios}), con sus ventajas y sus riesgos (\ref{sec:latencia}).
+\end{itemize}
+
+\paragraph{f) Se rige sobre todo por la autorregulación}\label{sec:codigo-global}
+
+\begin{itemize}
+\item El contado de divisas no es un instrumento financiero a efectos de la normativa europea de mercados de valores (MiFID~II), que solo alcanza a los derivados sobre divisas \parencite{UE2014MiFID2}, y el mercado no tiene un supervisor propio: lo ordenan los bancos centrales, sus comités y un código voluntario.
+\item El 12 de noviembre de 2014, los supervisores británico y estadounidense multaron a 5 grandes bancos, con más de 1.100 millones de libras y más de 1.400 millones de dólares, por intentar manipular entre 2008 y 2013 los \emph{fixings}, los tipos de referencia que se calculan a las 4 de la tarde de Londres con las operaciones de unos minutos \parencite{FCA2014FX,CFTC2014FX}.
+\item En respuesta, bancos centrales y participantes privados publicaron el 25 de mayo de 2017 el \concepto{Código Global de Conducta del Mercado de Divisas} (\emph{FX Global Code}) \parencite{BIS2017CodigoGlobal}:
+  \begin{itemize}
+  \item 55 principios de buenas prácticas en 6 áreas: ética, gobernanza, ejecución, intercambio de información, gestión de riesgos y cumplimiento, y confirmación y liquidación;
+  \item no es una norma legal: los participantes se adhieren y declaran que lo cumplen;
+  \item lo mantiene el Comité Global de Divisas (GFXC), que lo revisó en julio de 2021 y en diciembre de 2024, esta vez sobre todo para reforzar la gestión del riesgo de liquidación \parencite{GFXC2021Revision,GFXC2025Revision};
+  \item uno de sus principios, el 17, regula el \concepto{\emph{last look}}: el plazo de milisegundos que se reserva el creador de mercado para aceptar o rechazar una orden al precio que cotizó, que solo puede usar para comprobar el precio y la validez de la operación, no para operar con esa información \parencite{GFXC2024Codigo} (\ref{sec:latencia}).
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Agentes}\label{sec:agentes}
+
+\begin{itemize}
+\item Clasificar a los agentes por lo que ofrecen y demandan no es fácil: en cada operación se ofrece una divisa y se demanda otra, y el mercado está cada vez más atomizado. Por eso se clasifican por su papel y por la información de que disponen, como hacen \textcite{KingOslerRime2012}:
+  \begin{enumerate}
+  \item en el centro, los \emph{creadores de mercado}, que dan liquidez;
+  \item alrededor, un grupo heterogéneo de \emph{usuarios} que se sirven de esa liquidez;
+  \item entre unos y otros, los \emph{brókeres} y las plataformas;
+  \item y, aparte, los \emph{bancos centrales}.
+  \end{enumerate}
+\item El mercado tiene así 2 niveles (gráfico~\ref{fig:estructura-mercado}): el \emph{interdealer}, entre creadores de mercado, y el de los \emph{clientes} con sus creadores de mercado.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Los 2 niveles del mercado de divisas}\label{fig:estructura-mercado}
+\grafico[0.8\textwidth]{estructura-mercado}
+\fuente{elaboración propia a partir de \textcite{KingOslerRime2012}.}
+\end{figure}
+
+\subsubsection{Agentes que proveen liquidez}\label{sec:proveedores}
+
+\paragraph{a) Creadores de mercado (\emph{dealers} o \emph{market makers})}
+
+\begin{itemize}
+\item Son grandes bancos (bancos de inversión o universales, casi todos de importancia sistémica mundial en la terminología del Consejo de Estabilidad Financiera) siempre dispuestos a comprar y a vender: cotizan a cualquiera, en cualquier momento, un precio de compra (\emph{bid}) y otro de venta (\emph{ask}).
+  \begin{itemize}
+  \item Son los principales \emph{proveedores de liquidez} del mercado y ganan con el \emph{spread}, la compensación por el servicio de liquidez y por el riesgo de quedarse con la posición.\footnote{También toman posiciones especulativas, pero por poco tiempo y en general cubiertas.}
+  \item Son los agentes mejor informados: ven el flujo de órdenes de muchos clientes, y sus órdenes anticipan los movimientos del tipo de cambio.
+  \end{itemize}
+\item \emph{El mercado interdealer}: tras operar con un cliente, el creador de mercado prefiere no quedarse con inventario y lo traspasa a otros creadores de mercado, que a su vez hacen lo mismo (\emph{hot potato trading}).\footnote{Las operaciones entre creadores de mercado pueden ser directas, en el mercado OTC, o indirectas, a través de libros de órdenes limitadas que organizan los brókeres y las plataformas. Una orden limitada dice el precio al que se está dispuesto a comprar o vender una cantidad; el conjunto de órdenes del libro es la oferta de liquidez, y cada orden se mantiene hasta que se ejecuta o se cancela.}
+  \begin{itemize}
+  \item Supone el 46,7~\% del volumen, el mismo peso que en 2022 (46,8~\%) y bastante más que entre 2010 y 2019, cuando osciló entre el 38 y el 42~\% \parencite{BIS2026TrienalDatos}.
+  \item La tecnología permite hoy gestionar el inventario con menos operaciones, y la regulación de Basilea~III, que exige capital por el riesgo de mercado, encarece que los bancos mantengan posiciones: un efecto colateral es una menor liquidez en los momentos de tensión \vertema{3.B.27}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Bancos custodios}
+
+\begin{itemize}
+\item Los grandes gestores de activos contratan a bancos custodios que guardan sus valores, calculan el valor de las carteras y cobran dividendos, cupones e intereses.\footnote{Es una actividad poco conocida, pero esencial para el sistema financiero.} Cuando necesitan cambiar divisas, suelen hacerlo con su custodio y no con los grandes bancos, porque les reduce costes y papeleo.
+\item El custodio les da liquidez y cobra un pequeño recargo (\emph{mark-up}) sobre el precio que paga a un creador de mercado: un papel parecido al de un bróker.
+\end{itemize}
+
+\paragraph{c) Plataformas de operadores minoristas (\emph{retail aggregators})}
+
+\begin{itemize}
+\item Operan solo en internet: agrupan las pequeñas órdenes de los inversores minoristas en operaciones grandes con las que negocian con los creadores de mercado.
+\item Unas solo hacen de bróker, casando las órdenes de los minoristas con las cotizaciones de los bancos; otras, además, actúan como contraparte de sus clientes, como un creador de mercado.
+\end{itemize}
+
+\subsubsection{Agentes que necesitan liquidez}\label{sec:usuarios}
+
+\begin{itemize}
+\item Desde 1990 ha crecido el peso de las instituciones financieras no bancarias y ha caído el de las empresas no financieras; en la última década han llegado los operadores minoristas y los algorítmicos (gráfico~\ref{fig:contrapartidas-bis}).
+\end{itemize}
+
+\paragraph{a) Otras instituciones financieras}
+
+\begin{itemize}
+\item Son todas las que no son creadores de mercado declarantes en la Encuesta: el 48,6~\% del volumen en 2025 \parencite{BIS2026TrienalDatos}. Por su volumen, suelen estar mejor informadas que las empresas no financieras:
+  \begin{itemize}
+  \item \emph{bancos que no son creadores de mercado} (23,1~\%): bancos regionales y pequeños que cubren las operaciones de sus clientes;
+  \item \emph{inversores institucionales} (13,3~\%): fondos de pensiones, aseguradoras y fondos de inversión, que invierten en otras divisas y cubren el riesgo de cambio de sus carteras;
+  \item \emph{fondos de inversión libre (hedge funds) y sociedades de negociación por cuenta propia} (8~\%), entre ellas las de alta frecuencia. Son los que más se apalancan y especulan, y los que tienen más incentivos para estar informados, porque sus gestores cobran según la rentabilidad. No buscan ganar con el \emph{spread}, sino con los movimientos del tipo de cambio.\footnote{El ejemplo más conocido es el de George \autor{Soros}, cuyo fondo apostó contra la libra en 1992 y ganó cuando el Reino Unido la sacó del mecanismo de cambios del Sistema Monetario Europeo, el 16 de septiembre \vertema{3.B.17}. Es una estrategia muy arriesgada: la apuesta contraria puede hundir al fondo.}
+  \item \emph{sector oficial} (1,4~\%): bancos centrales, fondos soberanos y organismos internacionales, que operan como clientes de los creadores de mercado (\ref{sec:bancos-centrales}).
+  \item y \emph{otras} (2,9~\%), las instituciones financieras que la Encuesta no clasifica en los grupos anteriores.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Sociedades no financieras}
+
+\begin{itemize}
+\item Pesan poco, el 4,6~\% del volumen \parencite{BIS2026TrienalDatos}, y hacen 2 tipos de operaciones:
+  \begin{enumerate}
+  \item \emph{comerciales}: cobran sus exportaciones y pagan sus importaciones, como nuestra almazara;
+  \item \emph{de cobertura} del riesgo de cambio de esos flujos.
+  \end{enumerate}
+\item No suelen especular: un departamento que lo haga es caro y arriesgado (el riesgo de que un solo operador, un \emph{rogue trader}, lleve a la quiebra a la empresa).
+\end{itemize}
+
+\paragraph{c) Inversores minoristas}
+
+\begin{itemize}
+\item Especulan o invierten con importes pequeños, casi siempre a través de plataformas minoristas, al contado y en las monedas principales, aunque cada vez más en las de economías emergentes. Las operaciones que generan suponen el 2,5~\% del volumen \parencite{BIS2026TrienalDatos}.
+\item Se apalancan mucho, así que deberían tener fuertes incentivos a informarse. Pero la evidencia muestra que sus operaciones no anticipan el tipo de cambio y no suelen ganar: las finanzas conductuales lo explican por el \emph{exceso de confianza} \vertema{3.B.23} \vertema{3.A.1}.
+\item En mucha menor medida, compran divisas para gastarlas (el turista en el aeropuerto), una fracción insignificante del mercado.
+\end{itemize}
+
+\paragraph{d) Operadores algorítmicos y de alta frecuencia}
+
+\begin{itemize}
+\item En la \concepto{negociación algorítmica}, un programa decide y ejecuta las órdenes sin intervención humana, salvo para programarlo y vigilarlo. Los programas más rápidos hacen muchas operaciones en milisegundos: es la \concepto{negociación de alta frecuencia} (HFT, \emph{high-frequency trading}).
+\item Ejecutan estrategias de arbitraje y de especulación de muy corto plazo, en las que la velocidad lo es todo: por eso instalan sus servidores lo más cerca posible de los de las plataformas (\emph{colocation}).\footnote{La negociación de alta frecuencia nació y es más conocida en los mercados de acciones (anexo~\ref{anexo:alta-frecuencia}).}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Volumen del mercado de divisas según la contrapartida (2013-2025)}\label{fig:contrapartidas-bis}
+\grafico[0.85\textwidth]{contrapartidas-bis}
+\fuente{BPI, Encuesta Trienal, datos definitivos de 2025 \parencite{BIS2026TrienalDatos}. Porcentaje del volumen medio diario de abril.}
+\end{figure}
+
+\subsubsection{Brókeres}\label{sec:brokeres}
+
+\begin{itemize}
+\item Son intermediarios entre los creadores de mercado y los demás agentes, y facilitan el acceso al mercado: los creadores de mercado les hacen llegar sus precios de compra y de venta, y los brókeres eligen los mejores y se los ofrecen a sus clientes. Así, inversores pequeños consiguen precios a los que no llegarían solos.
+\item Cobran una comisión por el servicio y están muy concentrados en Londres.
+\item Una forma moderna es el \concepto{\emph{prime brokerage}}: un gran banco deja que un fondo o un banco pequeño opere en su nombre y asume el riesgo de contraparte frente al mercado. Una de cada 5 operaciones, el 22,7~\% del volumen, se hace así \parencite{BIS2026TrienalDatos}.
+\end{itemize}
+
+\subsubsection{Bancos centrales}\label{sec:bancos-centrales}
+
+\begin{itemize}
+\item Sus operaciones influyen en el tipo de cambio: la gestión de las reservas internacionales, la intervención para moverlo o para fijarlo y su propia política monetaria \vertema{3.B.15}.
+\item No son creadores de mercado: cuando intervienen o gestionan sus reservas, operan como clientes de los \emph{dealers}. En la Encuesta, el sector oficial supone el 1,4~\% del volumen \parencite{BIS2026TrienalDatos}.
+\item Los que emiten las monedas de reserva, sobre todo la Reserva Federal, dan además liquidez en su moneda a otros bancos centrales con las líneas \emph{swap}, que tienen la estructura de un FX \emph{swap} (\ref{sec:op-liquidez}).
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:caracterizacion}}: el tipo de cambio es el precio de una divisa en otra; en esta exposición, directo ($\uparrow E$ = depreciación), y su versión real, $q=EP^{*}/P$, mide la competitividad-precio. El mercado en que se forma es el mayor del mundo, financiero más que comercial, concentrado en el dólar y en Londres, abierto las 24 horas, extrabursátil, con un riesgo de liquidación propio y regulado sobre todo por un código voluntario. Lo sostienen unos pocos creadores de mercado, alrededor de los cuales operan financieras, empresas, minoristas, algoritmos y bancos centrales.
+\item \emph{Nexo}: una vez visto qué es el mercado y quién opera en él, pasamos a analizar con qué se negocia y para qué: los instrumentos y las operaciones.
+\end{itemize}
+
+% ==========================================================================
+\section{Instrumentos y operaciones}\label{sec:instrumentos-operaciones}
+\minutos{12,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{12,5}): se borra el centro de la pizarra. II.1, \tiempo{3,5}: la tabla de instrumentos (tabla~\ref{tab:instrumentos}) a mano en versión mínima (instrumento, qué se intercambia y para qué), con lo que haría la almazara con cada uno; el gráfico de datos del BPI se dice, no se dibuja. II.2, \tiempo{9}: comerciales (\tiempo{1,5}), con la oferta y la demanda de divisas trazo a trazo (gráfico~\ref{fig:oferta-demanda-divisas}): ejes, curvas, $E^{*}$, y luego $\bar E$ y el exceso de oferta; liquidez (\tiempo{1}) y reservas (\tiempo{0,75}), de palabra; cobertura (\tiempo{0,75}), con «ande yo caliente, y ríase la gente»; arbitraje (\tiempo{3}): el espacial en una frase, la PCI con los 2 caminos del inversor (gráfico~\ref{fig:dos-caminos}) y la ecuación \eqref{eq:pci} recuadrada en morado en la esquina superior derecha, con «lo que no puede ser no puede ser, y además es imposible», y la latencia en una frase; especulación (\tiempo{2}): la PNCI sobre el mismo gráfico (la rama sin cubrir), con \eqref{eq:pnci} recuadrada bajo la PCI, y el \emph{carry trade} con «sube por la escalera y baja en ascensor». La tabla de operaciones (tabla~\ref{tab:operaciones}), solo si sobra tiempo.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: el mercado de divisas se negocia sobre todo a plazo, y el instrumento estrella es el FX \emph{swap}. Con sus instrumentos se hacen 6 tipos de operaciones, de las que 2 ordenan el mercado: el \emph{arbitraje}, que impone la paridad cubierta de intereses, y la \emph{especulación}, que en el mejor de los casos lleva a la no cubierta.
+\item \emph{Nexo}: partimos de los instrumentos, que son las herramientas, para ver después qué hacen con ellos los agentes.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Instrumentos}\label{sec:instrumentos}
+
+\begin{itemize}
+\item En el mercado de divisas pesan mucho los derivados \vertema{3.B.25}. Seguimos la clasificación de la Encuesta Trienal, que distingue 5 instrumentos OTC; en abril de 2025 se repartían así el volumen diario \parencite{BIS2026TrienalDatos,HuangKrohnSushko2025FX} (gráfico~\ref{fig:instrumentos-bis}):
+  \begin{enumerate}
+  \item contado (\emph{spot}): 2,95 billones de dólares, el 31~\%;
+  \item plazo (\emph{outright forwards}): 1,75 billones, el 18~\%;
+  \item FX \emph{swaps}: 4 billones, el 42~\%;
+  \item \emph{currency swaps}: 0,16 billones, el 1,7~\%;
+  \item opciones y otros productos: 0,63 billones, el 6,6~\%.
+  \end{enumerate}
+\item Fuera de la Encuesta quedan los futuros, que se negocian en mercados organizados (\ref{sec:forward}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Volumen diario del mercado de divisas por instrumento (2001-2025)}\label{fig:instrumentos-bis}
+\grafico[0.85\textwidth]{instrumentos-bis}
+\fuente{BPI, Encuesta Trienal, datos definitivos de 2025 \parencite{BIS2026TrienalDatos}. Billones de dólares, media diaria de abril.}
+\end{figure}
+
+\subsubsection{Contado (\emph{spot})}\label{sec:spot}
+
+\begin{itemize}
+\item Las operaciones \concepto{al contado} son compraventas directas de divisas que se liquidan, como mucho, 2 días hábiles después de contratarse; su precio es el \concepto{tipo de cambio al contado} (\emph{spot}), $E_t$.
+  \begin{itemize}
+  \item En un \emph{swap} hay también una compraventa al contado, pero la Encuesta la cuenta con los \emph{swaps}.
+  \end{itemize}
+\item Mueven 2,95 billones de dólares diarios, un 42~\% más que en 2022, y su peso ha subido del 28~\% al 31~\% \parencite{BIS2026TrienalDatos,HuangKrohnSushko2025FX}.
+\item Si la almazara no hace nada, cambiará sus dólares al contado dentro de 3 meses, al tipo que haya entonces.
+\end{itemize}
+
+\subsubsection{Plazo (\emph{forward}), NDF y futuros}\label{sec:forward}
+
+\begin{itemize}
+\item Un \concepto{\emph{forward}} o \concepto{seguro de cambio} es una compraventa de divisas que se pacta hoy y se liquida más de 2 días hábiles después; su precio es el \concepto{tipo de cambio a plazo}, $F_t^{t+1}$.
+  \begin{itemize}
+  \item Mueven 1,75 billones de dólares diarios, un 51~\% más que en 2022, el 18~\% del total \parencite{HuangKrohnSushko2025FX}.
+  \item La almazara puede vender hoy a su banco, a plazo de 3 meses, el millón de dólares que cobrará (\ref{sec:op-cobertura}).
+  \end{itemize}
+\item Un \concepto{\emph{forward} sin entrega} (NDF, \emph{non-deliverable forward}) es un \emph{forward} en el que, al vencimiento, no se intercambian las 2 monedas: solo se paga, en una moneda convertible (casi siempre el dólar), la diferencia entre el tipo pactado y el tipo oficial de referencia de ese día.
+  \begin{itemize}
+  \item Permiten cubrirse o especular con monedas que tienen controles de cambios, desde fuera del país: el won coreano, la rupia india, el real brasileño o el nuevo dólar de Taiwán. Son el 3,5~\% del mercado \parencite{BIS2026TrienalDatos}.
+  \item Con la internacionalización del renminbi, su mercado de NDF ha cedido ante los \emph{forwards} con entrega en Hong Kong (CNH), mientras que el de otras monedas emergentes ha crecido \parencite{McCauleyShu2016NDF}.
+  \end{itemize}
+\item Los \concepto{futuros sobre divisas} son \emph{forwards} normalizados que se negocian en mercados organizados, con una ECC, márgenes y liquidación diaria de pérdidas y ganancias.
+  \begin{itemize}
+  \item Fueron los primeros futuros financieros: los lanzó en 1972 el \emph{International Monetary Market} de la bolsa mercantil de Chicago, tras el fin de la convertibilidad del dólar \parencite{Chalupa1982Currency} \vertema{3.B.25}.
+  \item Eliminan casi todo el riesgo de contraparte, pero no se adaptan a la fecha ni al importe que necesita cada cliente. Por eso su volumen es pequeño frente al del mercado OTC, que es el que mide la Encuesta.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{FX \emph{swaps}}\label{sec:fx-swaps}
+
+\begin{itemize}
+\item Un \concepto{FX \emph{swap}} (permuta de divisas a plazo) son 2 operaciones de signo contrario entre las mismas partes: una compraventa de divisas al contado y la inversa a plazo, al tipo \emph{forward}, sin pagos intermedios.
+\item Equivale a un préstamo en una moneda garantizado con un depósito en la otra, y su precio lo da la paridad cubierta de intereses (\ref{sec:op-arbitraje}). Sirve sobre todo para \emph{gestionar la liquidez} en otra moneda sin asumir riesgo de cambio: un banco europeo con activos en dólares obtiene dólares entregando euros y se compromete a deshacer la operación al vencimiento. También sirve para renovar o ajustar coberturas a plazo.
+  \begin{itemize}
+  \item Si el importador estadounidense pagara a la almazara antes de lo previsto, pero ella ya hubiera vendido los dólares a plazo para dentro de 3 meses, podría cambiarlos hoy por euros y recomprarlos a plazo para esa fecha con un FX \emph{swap}, sin tocar su cobertura.
+  \end{itemize}
+\item Es el instrumento más negociado, sobre todo entre creadores de mercado: 4 billones de dólares diarios en abril de 2025, el 42~\% del total \parencite{BIS2026TrienalDatos,HuangKrohnSushko2025FX}.
+\end{itemize}
+
+\subsubsection{\emph{Currency swaps}}\label{sec:currency-swaps}
+
+\begin{itemize}
+\item Un \concepto{\emph{currency swap}} (permuta financiera de divisas) se parece a un FX \emph{swap}:
+  \begin{itemize}
+  \item intercambia 2 monedas en sentido contrario, al principio y al final del contrato;
+  \item y, como todo instrumento OTC, tiene riesgo de contraparte.
+  \end{itemize}
+\item Pero además, durante la vida del contrato, cada parte paga a la otra los intereses de la moneda que recibió al principio, fijos o variables. Suele tener plazos más largos.
+\item Sirve para convertir una deuda en una moneda en una deuda en otra: una empresa o un Tesoro que emite en dólares y tiene ingresos en euros, o un banco multilateral de desarrollo que se financia en una moneda y presta en otra \vertema{3.B.25}.
+\item Es un mercado pequeño, aunque crece: 0,16 billones de dólares diarios, el 1,7~\% del total \parencite{BIS2026TrienalDatos}.
+\end{itemize}
+
+\subsubsection{Opciones y otros productos}\label{sec:opciones-divisas}
+
+\begin{itemize}
+\item Una \concepto{opción sobre divisas} es un contrato que da a su \emph{comprador} el derecho, pero no la obligación, de comprar (\emph{call}) o de vender (\emph{put}) una divisa frente a otra a un tipo de cambio fijado hoy, el \emph{precio de ejercicio}, en una fecha (opción europea) o hasta una fecha (americana). El \emph{vendedor} asume la obligación de cumplir si el comprador ejerce, y por ello cobra una \emph{prima} al contratar \parencite[cap.~10]{Hull2022Options} \vertema{3.B.25}.
+\item Las opciones, como los demás derivados, se usan para:
+  \begin{itemize}
+  \item \emph{cubrirse} de forma asimétrica: quien comprará divisas se protege de su apreciación comprando una \emph{call}, y quien las cobrará, de su depreciación comprando una \emph{put}. Así se limita la pérdida sin renunciar a la ganancia;
+    \begin{itemize}
+    \item la almazara podría comprar una \emph{put} sobre el dólar a 0,85 euros: si el dólar cae por debajo, venderá a 0,85; si sube, venderá al contado y ganará más, a cambio de la prima que pagó;
+    \end{itemize}
+  \item \emph{especular}: con estrategias simples (comprar o vender una \emph{call} o una \emph{put}), combinaciones de \emph{calls} y \emph{puts} para apostar por la volatilidad (\emph{straddle}, \emph{strip} y \emph{strap}), diferenciales que limitan la pérdida y la ganancia (\emph{bull} y \emph{bear spreads}, \emph{butterfly}) y opciones sintéticas, que replican una opción combinando otra con un \emph{forward} por la paridad \emph{put-call} \vertema{3.B.25}.
+  \end{itemize}
+\item Mueven 0,63 billones de dólares diarios, el 6,6~\% del total, más del doble que en 2022 \parencite{HuangKrohnSushko2025FX}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Instrumentos del mercado de divisas}\label{tab:instrumentos}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{2.3cm}>{\centering\arraybackslash}m{4.0cm}>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{2.0cm}>{\centering\arraybackslash}m{3.2cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Instrumento} & \textbf{Qué se intercambia} & \textbf{Pagos intermedios} & \textbf{Peso en 2025} & \textbf{Uso típico}\\
+\midrule
+Contado & 2 monedas, en 2 días hábiles como mucho & No & 31~\% & Comercio, inversión, arbitraje\\
+\addlinespace[0.2em]
+\emph{Forward} (y NDF) & 2 monedas (o la diferencia) en una fecha posterior & No & 18~\% & Cobertura, especulación\\
+\addlinespace[0.2em]
+FX \emph{swap} & Contado y la operación inversa a plazo & No & 42~\% & Liquidez en otra moneda\\
+\addlinespace[0.2em]
+\emph{Currency swap} & Principal al inicio y al final, e intereses & Sí & 1,7~\% & Deuda en otra moneda\\
+\addlinespace[0.2em]
+Opción & Derecho a comprar o vender a un precio fijado & Prima al inicio & 6,6~\% & Cobertura asimétrica, volatilidad\\
+\addlinespace[0.2em]
+Futuro & Como el \emph{forward}, normalizado & Márgenes diarios & Fuera de la Encuesta & Cobertura, especulación\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia con los datos de \textcite{BIS2026TrienalDatos}. Porcentajes del volumen OTC de abril de 2025.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Operaciones}\label{sec:operaciones}
+
+\begin{itemize}
+\item Una vez vistos los instrumentos, pasamos a ver cómo los usan los agentes para sus fines: las \concepto{operaciones}. Distinguimos 6 tipos (tabla~\ref{tab:operaciones}):
+  \begin{enumerate}
+  \item comerciales;
+  \item de provisión de liquidez en divisas;
+  \item de cobertura;
+  \item de acumulación de reservas e intervención;
+  \item de arbitraje;
+  \item de especulación.
+  \end{enumerate}
+\end{itemize}
+
+\subsubsection{Operaciones comerciales}\label{sec:op-comerciales}
+
+\begin{itemize}
+\item Las \concepto{operaciones comerciales} nacen del comercio internacional de bienes y servicios entre economías con monedas distintas. Son, sobre todo, compraventas al contado de una moneda por otra, y con ellas (y con los movimientos de capital) se construye el modelo más sencillo de la determinación del tipo de cambio: la oferta y la demanda de divisas.
+\item La \concepto{demanda de divisas} la generan las \emph{importaciones} (se pagan en moneda extranjera) y las \emph{salidas de capital} (los activos extranjeros se pagan en moneda extranjera). Es \emph{decreciente} con $E$: si la moneda nacional se deprecia ($\uparrow E$), los bienes y activos extranjeros se encarecen en moneda nacional, bajan las importaciones y las salidas de capital y, por tanto, \emph{disminuye la demanda} de divisas.
+\item La \concepto{oferta de divisas} la generan las \emph{exportaciones} (los exportadores, como la almazara, cambian por moneda nacional lo que cobran en divisa) y las \emph{entradas de capital}. Suele ser \emph{creciente} con $E$: si la moneda nacional se deprecia, los bienes y activos nacionales se abaratan para los extranjeros, aumentan las exportaciones y las entradas de capital y, por tanto, \emph{aumenta la oferta} de divisas.
+  \begin{itemize}
+  \item Matiz: lo que se ofrece es el valor de las exportaciones \emph{en divisa}, $PX/E$. Una depreciación abarata cada unidad exportada y solo aumenta ese valor si la demanda extranjera es elástica (elasticidad mayor que 1). Si no lo es, la oferta tiene un tramo decreciente y el mercado puede ser inestable: es la condición de \autor{Marshall}-\autor{Lerner} vista desde el mercado de divisas \vertema{3.B.12}.
+  \end{itemize}
+\item El \concepto{tipo de cambio de vaciado}, $E^{*}$, iguala la oferta y la demanda de divisas (gráfico~\ref{fig:oferta-demanda-divisas}). Con tipo flexible y sin intervención, asegura el equilibrio de la balanza de pagos, aunque no el de cada una de sus cuentas:
+  \begin{align}
+  \underbrace{X+\text{entradas de capital}}_{\text{oferta de divisas}}&=\underbrace{M+\text{salidas de capital}}_{\text{demanda de divisas}}\nonumber\\
+  \Longleftrightarrow\qquad\underbrace{X-M}_{\mathrm{CC}}&=\underbrace{\text{salidas}-\text{entradas de capital}}_{\mathrm{CF}} ,\label{eq:vaciado}
+  \end{align}
+  donde CC es la cuenta corriente y CF la cuenta financiera (en términos netos, sin variación de reservas) \vertema{3.B.11}.
+  \begin{itemize}
+  \item Sin movimientos de capital, la flexibilidad del tipo de cambio equilibraría la cuenta corriente: $\mathrm{CF}=0\Rightarrow\mathrm{CC}=0$. Ocurría, aproximadamente, durante Bretton Woods (1944-1973), cuando la mayoría de los países mantenía controles de capital. Pero los movimientos de capital no son nuevos: fueron muy grandes bajo el patrón oro (1870-1914), se hundieron entre las guerras y con Bretton Woods y volvieron con la liberalización de los años 70 y 80 \parencite{ObstfeldTaylor2004Global}.
+  \item Hoy, con capitales móviles, un tipo flexible es compatible con desequilibrios persistentes de la cuenta corriente, financiados con la cuenta financiera.
+  \end{itemize}
+\item Con un \concepto{tipo de cambio fijo}, $\bar E$, distinto del de vaciado, el mercado no se vacía solo. Si la moneda nacional está infravalorada, $\bar E>E^{*}$, hay un \emph{exceso de oferta} de divisas (superávit corriente o salidas netas de capital menores que las que lo compensarían), que el banco central compra acumulando reservas, $\Delta R>0$; si está sobrevalorada, ocurre lo contrario y pierde reservas.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El mercado de divisas con tipo flexible y con tipo fijo}\label{fig:oferta-demanda-divisas}
+\grafico[0.62\textwidth]{oferta-demanda-divisas}
+\fuente{elaboración propia.}
+\end{figure}
+
+\begin{anotaciones}
+\textbf{Por qué las teorías del ajuste se plantean con tipo fijo.} Las teorías del ajuste de la balanza de pagos nacieron cuando los movimientos de capital eran pequeños y los tipos de cambio, fijos (Bretton Woods, 1944-1973). Con tipo fijo, el mercado de divisas no se vacía solo: si el tipo fijado no es el de equilibrio, el banco central cubre la diferencia con reservas, y lo que interesa es cómo se ajustan las cuentas de la balanza de pagos. Por eso esas teorías se plantean sobre todo con tipo fijo \vertema{3.B.12}.
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{¿Qué hay detrás de la oferta y la demanda?} Que el tipo de cambio se determina por la oferta y la demanda de divisas es indiscutible (salvo con controles de cambios); el problema es explicar esa oferta y esa demanda. Hay 2 formas de ordenarlas:
+  \begin{itemize}
+  \item el \emph{enfoque de flujos} las ve como flujos de la balanza de pagos (comercio y, desde los modelos keynesianos, la renta, más los movimientos de capital como un flujo más), y se resume en una ecuación del tipo de cambio en función de los precios, las rentas y los tipos de interés relativos \parencite[cap.~3]{Kallianiotis2013Exchange};
+  \item el \emph{enfoque de activos} las ve como demandas de \emph{stocks} de activos nacionales y extranjeros, que es lo que olvida el de flujos.
+  \end{itemize}
+  Las 2, con la ecuación y la tabla de factores, están en el anexo~\ref{anexo:flujos-activos}; cómo se determina con ellas el tipo de cambio es la pregunta de \vertema{3.B.14}. La crítica a los flujos no cambia lo esencial: es la interacción de la oferta y la demanda lo que fija el tipo de cambio.
+\end{itemize}
+
+\subsubsection{Operaciones de provisión de liquidez en divisas}\label{sec:op-liquidez}
+
+\begin{itemize}
+\item Son las que hacen los bancos centrales que emiten las monedas fuertes, sobre todo la Reserva Federal, para dar su moneda a otros bancos centrales cuando los mercados de financiación se cierran.
+\item \emph{Por qué hacen falta}: los bancos de fuera de Estados Unidos tienen muchos activos en dólares, financiados a corto plazo en los mercados mayoristas, sin acceso directo a la Reserva Federal. Obtienen dólares por varias vías:
+  \begin{enumerate}
+  \item depósitos en dólares, una parte pequeña;\footnote{Los depósitos y préstamos en dólares fuera de Estados Unidos son los \concepto{eurodólares}, el origen de los \concepto{euromercados}: mercados de depósitos, préstamos y bonos denominados en una moneda distinta de la del país donde se negocian, que nacieron en Londres en los años 50 y 60. Por eso pueden quedar sujetos a una regulación distinta de la del país emisor de la moneda; tradicionalmente han estado dominados por el dólar, y en ellos se financian también los organismos multilaterales, como el Banco Mundial \parencite{KrugmanObstfeldMelitz2022International}.}
+  \item préstamos con garantía (\emph{repos}) y papel comercial en los mercados de Estados Unidos, que son a corto plazo y se cierran en las crisis;\footnote{Un \emph{repo} (\emph{repurchase agreement}) es una venta de valores con el compromiso de recomprarlos en una fecha y a un precio fijados: en la práctica, un préstamo con garantía de esos valores. El tipo \emph{repo} lo fija el mercado; los bancos centrales también prestan con \emph{repos} en sus operaciones de mercado abierto.}
+  \item FX \emph{swaps}: entregan euros o yenes y reciben dólares (\ref{sec:fx-swaps});
+  \item el uso de las reservas en dólares de su banco central, que en una crisis grave pueden no bastar;
+  \item el FMI, cuyos recursos dependen de las cuotas de los socios: útil en crisis de un país, pero lento y limitado para una crisis de liquidez mundial;\footnote{El balance de un banco central puede crecer cuanto haga falta; los recursos del FMI, no. En la pandemia, el FMI creó en abril de 2020 una Línea de Liquidez a Corto Plazo \parencite{FMI2020SLL} y en 2021 hizo una asignación general de DEG de unos 650.000 millones de dólares, la mayor de su historia \parencite{FMI2023DEGFicha} \vertema{3.B.22}.}
+  \item las líneas \emph{swap} con la Reserva Federal.
+  \end{enumerate}
+\item \emph{Marzo de 2020}: con la pandemia, los bancos y empresas de fuera de Estados Unidos que se financian en dólares se quedaron sin ellos. Obtenerlos con FX \emph{swaps} se encareció mucho (la desviación de la paridad cubierta se disparó, \ref{sec:op-arbitraje}) \parencite{ErenSchrimpfSushko2020Dollar}.
+  \begin{itemize}
+  \item El 15 de marzo, la Reserva Federal abarató sus 5 líneas permanentes (con el BCE y los bancos centrales de Japón, Inglaterra, Canadá y Suiza, permanentes desde 2013) \parencite{Fed2020SwapsCoordinada}, y el 19 abrió otras 9 temporales, entre ellas con Brasil y México \parencite{Fed2020Swaps}.
+  \item El saldo prestado llegó a unos 450.000 millones de dólares a finales de abril, y la prima por obtener dólares con \emph{swaps} desapareció en pocas semanas; las tensiones se aliviaron antes donde había líneas permanentes \parencite{GarciaEscuderoSanchez2020Swaps,ErenSchrimpfSushko2020Dollar}.
+  \end{itemize}
+\item \emph{Cómo funciona una línea}: es un FX \emph{swap} entre bancos centrales. El banco central extranjero vende su moneda a la Reserva Federal al tipo de contado y se compromete a recomprarla al \emph{mismo} tipo en un plazo de un día a 3 meses, pagando intereses \parencite{Fed2023LiquiditySwaps}.
+  \begin{itemize}
+  \item Presta los dólares a sus bancos al mismo plazo y tipo, con las garantías que exige en sus operaciones en su moneda.
+  \item Asume él el riesgo: si un banco no le devuelve los dólares, tiene que devolverlos igualmente a la Reserva Federal; si no lo hiciera, esta se quedaría con la moneda que recibió.
+  \end{itemize}
+\item El BCE forma parte de esa red de líneas permanentes y tiene, además, líneas \emph{swap} y \emph{repo} en euros con bancos centrales de fuera de la zona del euro, como instrumento de política monetaria y de estabilidad financiera \parencite{BCE2026LineasSwap} \vertema{3.B.43}.
+\item \emph{Valoración}: las líneas \emph{swap} son rápidas y potentes, las 2 cualidades de un prestamista de última instancia internacional; en la crisis de 2008, ningún otro mecanismo habría podido cubrir las necesidades de dólares de fuera de Estados Unidos. Pero solo llegan a quien elige la Reserva Federal, y por eso se debate cómo extenderlas o completarlas con el FMI \parencite{GarciaEscuderoSanchez2020Swaps} \vertema{3.B.22}.
+\end{itemize}
+
+\subsubsection{Operaciones de cobertura}\label{sec:op-cobertura}
+
+\begin{itemize}
+\item Las \concepto{operaciones de cobertura} del riesgo de cambio son las que permiten a empresas e inversores protegerse de los movimientos del tipo de cambio en sus cobros, pagos o activos en divisas. Suelen ir de la mano de las operaciones comerciales.
+\item Consisten en \emph{cerrar una posición abierta}: tomar la posición contraria a la que se tiene, para que las variaciones del tipo de cambio no afecten al valor de lo que se tiene.
+\item Reducen la incertidumbre de los flujos de caja, lo que facilita planificar y mejora el acceso al crédito.
+\item Qué se cubre depende del tipo de \concepto{exposición al riesgo de cambio}:
+  \begin{itemize}
+  \item \emph{de transacción}: cobros y pagos ya pactados en divisas, como el millón de dólares de la almazara; es la que se cubre con \emph{forwards}, futuros u opciones;
+  \item \emph{contable} (o de traslación): la variación en euros del valor de los activos y pasivos en divisas al consolidar las cuentas, por ejemplo de una filial en el extranjero;
+  \item \emph{económica}: el efecto del tipo de cambio en el valor de la empresa a través de sus ventas futuras y de su posición frente a competidores de otros países, aunque no tenga ni una operación en divisas. Es la más difícil de cubrir. \textcite{Williamson2001Exposure} la estima en la industria del automóvil (1973-1995) con la sensibilidad del valor bursátil de las empresas a los tipos de cambio de sus competidores (el marco y el yen frente al dólar), y encuentra que depende de la competencia y cambia con el tiempo.
+  \end{itemize}
+\item Volvamos a la almazara, que cobrará 1 millón de dólares dentro de 3 meses y está expuesta a que el dólar se deprecie. Su banco le ofrece comprárselos a plazo a 0,8541 euros por dólar (de dónde sale ese precio lo veremos con la paridad cubierta, \ref{sec:op-arbitraje}):
+  \begin{itemize}
+  \item si los vende a plazo, cobrará con certeza unos 854.100 euros, pase lo que pase con el dólar;
+  \item renuncia así a ganar si el dólar se aprecia, a cambio de no perder si se deprecia. «Ande yo caliente, y ríase la gente»: la cobertura sacrifica la ganancia posible a cambio de la certeza.
+  \end{itemize}
+\item Tiene 4 formas de cubrirse:
+  \begin{enumerate}
+  \item un \emph{forward}, como en el ejemplo;
+  \item un \emph{futuro} sobre el par euro-dólar: lo mismo en un mercado organizado, sin riesgo de contraparte, pero con importes y fechas normalizados y márgenes diarios;
+  \item una \emph{opción de venta} (\emph{put}) sobre el dólar: paga una prima y se protege de la depreciación del dólar sin renunciar a ganar si se aprecia;
+  \item una \emph{cobertura en el mercado de dinero}: pide prestados hoy dólares a 3 meses, los cambia al contado por euros y devuelve el préstamo con lo que cobre. Si se cumple la paridad cubierta, cuesta lo mismo que el \emph{forward} (\ref{sec:op-arbitraje}).
+  \end{enumerate}
+\item Las empresas con cobros y pagos en la misma divisa se cubren en parte de forma \emph{natural}, abriendo cuentas o endeudándose en esa moneda: la almazara que se financiara en dólares compensaría unos flujos con otros. Los \emph{currency swaps} permiten hacer lo mismo con la deuda a largo plazo.
+\end{itemize}
+
+\subsubsection{Operaciones de acumulación de reservas e intervención}\label{sec:op-reservas}
+
+\begin{itemize}
+\item Son las operaciones de los bancos centrales en el mercado de divisas para alterar sus reservas internacionales o el tipo de cambio. Un banco central \concepto{interviene} cuando compra divisas (y acumula reservas) para frenar una apreciación, o las vende para frenar una depreciación; si no quiere que la intervención altere la base monetaria, la \emph{esteriliza} con una operación de mercado abierto de signo contrario. Los regímenes cambiarios, la eficacia de la intervención y la regulación de los mercados de cambio se estudian en \vertema{3.B.15}.
+\item \emph{Para qué se acumulan reservas}:
+  \begin{itemize}
+  \item con \emph{tipo de cambio fijo}, para defender la paridad, como bajo Bretton Woods;
+  \item con \emph{tipo flexible}, por otros 3 motivos:
+    \begin{enumerate}
+    \item \emph{precaución}: en los países emergentes, las reservas dan \emph{confianza} en que el país podrá pagar en divisas, abaratan su financiación exterior y reducen la probabilidad de una crisis cambiaria (una señal de solvencia); son un seguro frente a las paradas súbitas de los flujos de capital (\emph{sudden stops}). Reglas habituales de suficiencia: 3 meses de importaciones, toda la deuda externa que vence en un año (regla de \autor{Greenspan}-\autor{Guidotti}) o un porcentaje de la masa monetaria amplia, combinadas en la métrica del FMI \parencite{Greenspan1999Currency,FMI2011Reserve} \vertema{3.B.22};
+    \item \emph{mercantilista}: comprar divisas para mantener depreciada la moneda, ganar competitividad y atraer inversión, según algunos analistas en ciertas economías emergentes;
+    \item \emph{estabilización}: los exportadores de materias primas acumulan reservas cuando los precios son altos y las usan cuando caen, a veces a través de fondos soberanos, que sirven también de ahorro para generaciones futuras. Se trata de «ir contra el viento» de los movimientos del tipo de cambio a corto plazo.
+    \end{enumerate}
+  \end{itemize}
+\item \emph{Cuántas}: las reservas de divisas de los bancos centrales suman 13,2 billones de dólares (segundo trimestre de 2026), más de 8 veces las de 1997, antes de la crisis asiática; el 56,7~\% de las asignadas está en dólares, el 20,6~\% en euros y el 2,1~\% en renminbis \parencite{FMI2026COFER}. China tiene unos 3,4 billones \parencite{SAFE2026Reservas}. Muchos países emergentes resistieron mejor la crisis de 2008 gracias a ellas.
+\item \emph{Coste}: tienen un coste de oportunidad, la diferencia entre lo que rinden (bonos públicos de las monedas de reserva) y lo que cuesta endeudarse en el exterior o lo que rendiría invertir ese ahorro en el país. \textcite{Rodrik2006Social} lo estima en torno al 1~\% del PIB de los países en desarrollo, y \textcite{Summers2006Reflections}, en casi el 2~\% del PIB de los 10 mayores tenedores de reservas «excesivas».
+\end{itemize}
+
+\subsubsection{Operaciones de arbitraje}\label{sec:op-arbitraje}
+
+\begin{itemize}
+\item Las \concepto{operaciones de arbitraje} son compraventas simultáneas de una divisa para obtener un beneficio \emph{sin riesgo} aprovechando diferencias de precio. Hacen que los tipos de cambio sean coherentes entre plazas, monedas y plazos: que se cumpla la \emph{ley del precio único}. Su lógica la expuso John Maynard \autor{Keynes} en su \emph{Breve tratado sobre la reforma monetaria} \parencite{Keynes1923Tract}.
+\item Hay 3 tipos: el arbitraje \emph{espacial}, en el contado; el \emph{temporal}, entre el contado y el plazo; y el \emph{de latencia}, que vive de los milisegundos.
+\end{itemize}
+
+\paragraph{Arbitraje espacial (en el contado)}
+
+\begin{itemize}
+\item Aprovecha las diferencias de precio de una misma divisa en distintas plazas o plataformas:
+  \begin{itemize}
+  \item el \emph{arbitraje bilateral} compra una divisa donde vale menos frente a otra y la vende donde vale más;
+  \item el \emph{arbitraje triangular} hace lo mismo con 3 monedas: si el tipo cruzado no es coherente con los 2 tipos frente al dólar, se gana dando la vuelta por las 3.\footnote{Sin arbitraje, el tipo cruzado es el producto de los 2 tipos frente al dólar: $\frac{\mathrm{GBP}}{\mathrm{CAD}}=\frac{\mathrm{GBP}}{\mathrm{USD}}\cdot\frac{\mathrm{USD}}{\mathrm{CAD}}$ \parencite[15-18]{Gandolfo2002International}.}
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Arbitraje temporal: la paridad cubierta de intereses}\label{sec:pci}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Como la divisa se negocia a la vez al contado y a plazo, se puede comparar lo que rinde invertir en casa con lo que rinde invertir fuera \emph{cubriendo} hoy el cambio de vuelta. Si una de las 2 rinde más con certeza, hay un beneficio sin riesgo y sin capital propio: un arbitraje.
+\item La condición que lo impide es la \concepto{paridad cubierta de intereses} (PCI): el diferencial de tipos de interés entre 2 monedas es igual al margen a plazo de una frente a la otra. Es la paridad de referencia del mercado: con ella fijan los bancos el precio de los \emph{forwards} y de los FX \emph{swaps}.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\begin{itemize}
+\item \emph{i) Supuestos}:
+  \begin{itemize}
+  \item movilidad perfecta de capitales: ni controles de cambios ni riesgo de que se impongan;
+  \item activos nacionales y extranjeros con el mismo riesgo de impago y el mismo plazo;
+  \item sin costes de transacción ni límites al endeudamiento.
+  \end{itemize}
+  No hace falta suponer nada sobre las preferencias ante el riesgo ni sobre las expectativas: la operación no tiene riesgo de cambio. Esos supuestos son los de la paridad no cubierta (\ref{sec:op-especulacion}).\footnote{La \emph{movilidad perfecta} significa que la cartera se ajusta al instante a la deseada; con activos del mismo riesgo de impago y sin controles, basta para la PCI. La \emph{sustituibilidad perfecta} es un supuesto más fuerte: los inversores son indiferentes entre activos nacionales y extranjeros con la misma rentabilidad esperada, aunque uno tenga riesgo de cambio. Es la que lleva a la PNCI.}
+\item \emph{ii) Desarrollo}: un inversor tiene 1 euro durante un periodo y 2 caminos (gráfico~\ref{fig:dos-caminos}):
+  \begin{enumerate}
+  \item invertirlo en un activo nacional y obtener $1+i$ euros;
+  \item invertirlo en un activo extranjero sin riesgo de cambio:
+    \begin{enumerate}
+    \item compra hoy al contado $1/E_t$ dólares;
+    \item los invierte al tipo extranjero y tendrá $(1+i^{*})/E_t$ dólares en $t+1$;
+    \item vende hoy a plazo esa cantidad al tipo $F_t^{t+1}$, de modo que en $t+1$ recibirá con certeza $(1+i^{*})F_t^{t+1}/E_t$ euros.
+    \end{enumerate}
+  \end{enumerate}
+  Sin arbitraje, los 2 caminos rinden lo mismo:
+  \funcionclave[eq:pci]{1+i=(1+i^{*})\,\frac{F_t^{t+1}}{E_t}\quad\Longrightarrow\quad i-i^{*}\approx\frac{F_t^{t+1}-E_t}{E_t}}
+  \begin{itemize}
+  \item El lado derecho de la aproximación es el \concepto{margen a plazo} (prima o descuento a plazo, \emph{forward premium}): un precio que el arbitraje fija hoy, no una previsión. Que coincida con la depreciación esperada exige además la paridad no cubierta (\ref{sec:op-especulacion}).\footnote{La aproximación sale de tomar logaritmos en \eqref{eq:pci}. El logaritmo de un producto es la \emph{suma} de los logaritmos: $\ln(1+i)=\ln(1+i^{*})+\ln F_t^{t+1}-\ln E_t$; como $\ln(1+x)\approx x$ para $x$ pequeño, $i-i^{*}\approx f_t-e_t\approx(F_t^{t+1}-E_t)/E_t$, con $f_t$ y $e_t$ los logaritmos de $F_t^{t+1}$ y $E_t$. Otra vía: $(1+i)/(1+i^{*})\approx1+i-i^{*}$ cuando $i\,i^{*}$ es despreciable; restando 1 a los 2 lados de $F_t^{t+1}/E_t=(1+i)/(1+i^{*})$ se llega a lo mismo. La relación exacta es $(F_t^{t+1}-E_t)/E_t=(i-i^{*})/(1+i^{*})$.}
+  \item «Lo que no puede ser no puede ser, y además es imposible»: si un camino rindiera más con certeza, todos lo tomarían y la diferencia desaparecería.
+  \item Siguiendo con la almazara: si el euro rinde un 2~\% anual y el dólar un 4~\%, a 3 meses rinden el 0,5~\% y el 1~\%. Con un contado de 0,8583 euros por dólar, la PCI exige
+    \begin{equation}\label{eq:pci-almazara}
+    F_t^{t+1}=0{,}8583\cdot\frac{1{,}005}{1{,}01}\approx0{,}8541 ,
+    \end{equation}
+    el precio que le ofrecía su banco (\ref{sec:op-cobertura}). El dólar cotiza con un \concepto{descuento a plazo} de casi el 0,5~\% a 3 meses, lo mismo que rinde de más: lo que se gana en intereses se pierde en el cambio cubierto.
+  \end{itemize}
+\item \emph{iii) Implicaciones}: cómo el arbitraje restablece la paridad.
+  \begin{itemize}
+  \item Si $1+i>(1+i^{*})F_t^{t+1}/E_t$, rinde más el activo nacional: el arbitrajista se endeuda en dólares, los vende al contado, invierte en euros y compra hoy a plazo los dólares con que devolverá el préstamo. Baja $i$ (más demanda del activo nacional), sube $i^{*}$ (más demanda de préstamos en dólares), baja $E_t$ (más oferta de dólares al contado: el euro se aprecia) y sube $F_t^{t+1}$ (más compras de dólares a plazo), hasta que se cumple la paridad:
+    \[
+    (1+{\downarrow}i)\;>\;(1+{\uparrow}i^{*})\,\frac{{\uparrow}F_t^{t+1}}{{\downarrow}E_t}\quad\Longrightarrow\quad 1+i=(1+i^{*})\,\frac{F_t^{t+1}}{E_t}.
+    \]
+  \item Si $1+i<(1+i^{*})F_t^{t+1}/E_t$, ocurre lo contrario: se endeuda en euros, compra dólares al contado, los invierte y los vende a plazo. Sube $i$, baja $i^{*}$, sube $E_t$ y baja $F_t^{t+1}$:
+    \[
+    (1+{\uparrow}i)\;<\;(1+{\downarrow}i^{*})\,\frac{{\downarrow}F_t^{t+1}}{{\uparrow}E_t}\quad\Longrightarrow\quad 1+i=(1+i^{*})\,\frac{F_t^{t+1}}{E_t}.
+    \]
+  \item La moneda con el tipo de interés más alto cotiza con descuento a plazo, y la de tipo más bajo, con prima.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Los 2 caminos del inversor: cubierto (PCI) y sin cubrir (PNCI)}\label{fig:dos-caminos}
+\grafico[0.85\textwidth]{dos-caminos}
+\fuente{elaboración propia.}
+\end{figure}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{En tiempo continuo}, la PCI es la paridad \emph{spot-forward} de los derivados con la divisa como subyacente: $F_0=S_0e^{(i-i^{*})T}$, en la que la divisa rinde su tipo de interés como un dividendo continuo \parencite[cap.~5]{Hull2022Options} \vertema{3.B.25}.
+\item \emph{Valoración de los FX swaps}: un FX \emph{swap} es un préstamo en una moneda garantizado con un depósito en la otra, y su precio, el margen entre la pata de contado y la de plazo, lo da la PCI (\ref{sec:fx-swaps}). Lo mismo vale para la cobertura en el mercado de dinero de la almazara (\ref{sec:op-cobertura}).
+\item \emph{Como teoría del tipo de cambio}: el enfoque de las paridades la combina con las demás paridades para explicar el tipo a plazo \vertema{3.B.14}.
+\end{itemize}
+
+\subparagraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Hasta 2007, la PCI se cumplía casi exactamente en las grandes monedas, una vez descontados los costes de transacción.
+\item Desde 2008 hay desviaciones \emph{persistentes}, la \concepto{base} de los \emph{swaps} de divisas: obtener dólares a plazo a través del mercado de divisas cuesta más que pedirlos prestados directamente, sobre todo al cierre de los trimestres y en las crisis (como en marzo de 2020, \ref{sec:op-liquidez}). No se explican por el riesgo de crédito ni por los costes de transacción, sino por los límites al balance de los bancos que arbitran (la ratio de apalancamiento de Basilea~III encarece ocupar balance) y por la gran demanda de cobertura en dólares \parencite{DuTepperVerdelhan2018Deviations,BorioEtAl2016CIP} \vertema{3.B.27}.
+\end{itemize}
+
+\subparagraph{e) Valoración}
+
+\begin{itemize}
+\item La PCI es una condición de no arbitraje: no depende de preferencias ni de expectativas, y por eso es la paridad que mejor se cumple.
+\item No es una teoría del tipo de cambio: dice cuánto vale el \emph{forward} dado el contado, no cuánto vale el contado.
+\item Y el arbitraje exige balance, que tiene un coste. Cuando ese coste sube (regulación, tensiones de liquidez), la paridad deja de cumplirse sin que haya un beneficio fácil que aprovechar: es un ejemplo de los \emph{límites al arbitraje} \parencite{ShleiferVishny1997Limits} \vertema{3.B.23}.
+\item Queda abierta la otra pregunta: ¿qué pasa si el inversor no se cubre? Eso es especular, y lleva a la paridad no cubierta.
+\end{itemize}
+
+\paragraph{Arbitraje por latencia}\label{sec:latencia}
+
+\begin{itemize}
+\item El \concepto{arbitraje por latencia} aprovecha que los precios de un mismo par tardan unos milisegundos en igualarse entre plataformas: quien ve antes el cambio en una plataforma compra o vende en otra antes de que se ajuste. Lo hacen los operadores de alta frecuencia (\ref{sec:usuarios}), con algoritmos y servidores junto a los de las plataformas.
+\item \emph{Efectos}:
+  \begin{itemize}
+  \item en tiempos normales, dan liquidez y estrechan los \emph{spreads}, sobre todo en los pares más líquidos \parencite{BIS2011HFT};
+  \item pero no están obligados a dar precio y se retiran cuando el mercado se tensa, justo cuando más falta hace la liquidez, y pueden amplificar los movimientos bruscos \parencite{BIS2020Algos};
+  \item los creadores de mercado se defienden con el \emph{last look}, que el Código Global limita (\ref{sec:codigo-global}).
+  \end{itemize}
+\item \emph{Episodios relámpago en divisas}: la libra cayó cerca de un 9~\% frente al dólar en minutos en la madrugada del 7 de octubre de 2016, en las primeras horas de la sesión asiática, por una suma de factores sin un detonante único \parencite{BIS2017Sterling}; y el yen se apreció un 3~\% frente al dólar en unos 30 segundos el 3 de enero de 2019, con Japón en fiesta y poca liquidez, mientras los algoritmos que se desconectan ante movimientos inusuales lo amplificaban \parencite{RBA2019Yen}. En los 2 casos el precio volvió pronto. No hay que confundirlos con la subida del franco suizo del 15 de enero de 2015, que siguió a la decisión del banco central de abandonar su tipo mínimo frente al euro \parencite{SNB2015Minimo}.
+\item La negociación de alta frecuencia, sus prácticas de manipulación y su regulación, casi toda pensada para las bolsas, están en el anexo~\ref{anexo:alta-frecuencia} \vertema{3.B.27}.
+\end{itemize}
+
+\subsubsection{Operaciones de especulación}\label{sec:op-especulacion}
+
+\begin{itemize}
+\item Las \concepto{operaciones de especulación}, como las de arbitraje, buscan ganar con diferencias de rentabilidad, pero \emph{asumen riesgo de cambio}: toman posiciones abiertas guiándose por sus expectativas.
+\item Se especula al contado, a plazo y con el \emph{carry trade}.
+\end{itemize}
+
+\paragraph{Especulación al contado: la paridad no cubierta de intereses}\label{sec:pnci}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item El especulador hace la misma inversión en el extranjero que el arbitrajista, pero \emph{sin cubrirla}: deja abierto el cambio de vuelta porque espera ganar con él. Lo que compara ya no es un precio cierto ($F_t^{t+1}$), sino el tipo que espera, $E^e_{t+1}$.
+\item Si los especuladores son neutrales al riesgo y esperan lo mismo, en equilibrio la rentabilidad esperada de los 2 caminos se iguala: es la \concepto{paridad no cubierta de intereses} (PNCI), también llamada paridad descubierta (PDI).
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\begin{itemize}
+\item \emph{i) Supuestos}: los de la PCI más \emph{sustituibilidad perfecta} entre activos nacionales y extranjeros, es decir, \emph{neutralidad al riesgo} (no se exige prima por el riesgo de cambio) y \emph{expectativas homogéneas}.
+\item \emph{ii) Desarrollo}: partimos del mismo inversor de la PCI (\ref{sec:pci}), pero ahora no vende a plazo: en $t+1$ cambiará sus $(1+i^{*})/E_t$ dólares al contado que haya entonces, $E_{t+1}$, que hoy no conoce (la rama sin cubrir del gráfico~\ref{fig:dos-caminos}). Espera obtener $(1+i^{*})E^e_{t+1}/E_t$ euros. En equilibrio,
+  \funcionclave[eq:pnci]{1+i=(1+i^{*})\,\frac{E^e_{t+1}}{E_t}\quad\Longrightarrow\quad i-i^{*}\approx\frac{E^e_{t+1}-E_t}{E_t}\equiv\gamma E^e}
+  \begin{itemize}
+  \item El diferencial de tipos es igual a la \concepto{depreciación esperada} de la moneda nacional: si el dólar rinde 2 puntos más que el euro, se espera que se deprecie un 2~\% frente a él.
+  \item \emph{Comportamiento del especulador}:
+    \begin{itemize}
+    \item si $i-i^{*}>\gamma E^e$, espera ganar invirtiendo en el activo nacional;
+    \item si $i-i^{*}<\gamma E^e$, compra divisas al contado, invierte fuera y espera venderlas más caras en $t+1$.
+    \end{itemize}
+  \item Siguiendo con la almazara: si no se cubre, especula sin quererlo. Gana frente al \emph{forward} si dentro de 3 meses el dólar vale más de 0,8541 euros, y pierde si vale menos.
+  \end{itemize}
+\item \emph{iii) Implicaciones}:
+  \begin{itemize}
+  \item Si se cumplen a la vez la PCI \eqref{eq:pci} y la PNCI \eqref{eq:pnci}, el tipo a plazo es igual al esperado, $F_t^{t+1}=E^e_{t+1}$: el \emph{forward} sería un predictor insesgado del contado futuro. En el ejemplo, el mercado esperaría que el dólar valiera 0,8541 euros dentro de 3 meses.
+  \item La PNCI no es una condición de arbitraje: no hay un beneficio \emph{seguro} que la imponga. Si todos los agentes fueran neutrales al riesgo y compartieran expectativas, la especulación llevaría a ella; como no es así, es una referencia que falla en los datos (\ref{sec:paradoja}).
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Con prima de riesgo}: si los inversores son aversos al riesgo, exigen una prima $\rho$ por mantener la moneda más arriesgada, $i-i^{*}\approx\gamma E^e+\rho$, que es la forma que usan los temas de regímenes cambiarios y de crisis \vertema{3.B.15} \vertema{3.B.17}.
+\item \emph{En la macroeconomía abierta}: con movilidad perfecta de capitales y expectativas estáticas, la PNCI se reduce a $i=i^{*}$, la curva BP horizontal del modelo de \autor{Mundell}-\autor{Fleming} \vertema{3.A.32}; y es la pieza que convierte las expectativas en tipo de cambio de hoy en las teorías de su determinación, como el modelo de \autor{Dornbusch} \vertema{3.B.14}.
+\end{itemize}
+
+\subparagraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Falla de forma sistemática a plazos cortos: las monedas con tipos de interés altos tienden a apreciarse, no a depreciarse. Es la paradoja del margen \emph{forward}, que se contrasta en el bloque~\ref{sec:eficiencia} (\ref{sec:paradoja}); el \emph{carry trade} vive de ella.
+\end{itemize}
+
+\subparagraph{e) Valoración}
+
+\begin{itemize}
+\item Es la referencia teórica de la especulación, pero descansa en supuestos fuertes (neutralidad al riesgo y expectativas homogéneas y racionales) que los datos no respaldan a corto plazo. Si falla, ¿falla el mercado o fallan los supuestos? Esa pregunta abre el bloque~\ref{sec:eficiencia}.
+\end{itemize}
+
+\paragraph{Especulación a plazo}
+
+\begin{itemize}
+\item El especulador no necesita invertir fondos: le basta con comprar o vender divisas a plazo. Si espera que el contado futuro supere el tipo pactado hoy, $E^e_{t+1}>F_t^{t+1}$, compra a plazo: al vencimiento recibirá la divisa a $F_t^{t+1}$ y espera venderla a $E_{t+1}$. Si espera lo contrario, vende a plazo.
+\item Si los especuladores son neutrales al riesgo y abundantes, sus operaciones llevan a $F_t^{t+1}=E^e_{t+1}$: el tipo a plazo predice sin sesgo el contado futuro. Junto con la PCI, es otra forma de llegar a la PNCI. Si son aversos al riesgo, exigen una prima y $F_t^{t+1}\neq E^e_{t+1}$, como en los futuros de materias primas \vertema{3.B.25}.
+\end{itemize}
+
+\paragraph{El \emph{carry trade}}\label{sec:carry-trade}
+
+\begin{itemize}
+\item Consiste en endeudarse en una moneda de tipo de interés bajo (la de \emph{financiación}: el yen o el franco suizo) para invertir en una de tipo alto (la de \emph{inversión}), sin cubrir el cambio. Es una apuesta contra la PNCI: si se cumpliera, la moneda de tipo alto se depreciaría lo justo para anular el diferencial y no se ganaría nada en promedio.
+\item Por la paradoja del margen \emph{forward} (\ref{sec:paradoja}), ha ganado en promedio. Pero sus ganancias se acumulan poco a poco y se pierden de golpe cuando la aversión al riesgo sube y todos deshacen sus posiciones a la vez: la moneda de financiación se aprecia bruscamente y la rentabilidad tiene un sesgo negativo \parencite{BrunnermeierNagelPedersen2008Carry}. «Sube por la escalera y baja en ascensor», dicen los operadores.
+  \begin{itemize}
+  \item El 5 de agosto de 2024, tras una subida de tipos del Banco de Japón y un dato flojo de empleo en Estados Unidos, se deshicieron posiciones financiadas en yenes que el BPI estima en unos 250.000 millones de dólares. El yen se había apreciado un 12~\% frente al dólar desde el 10 de julio, y ese día la bolsa de Tokio cayó un 12~\% \parencite{Aquilina2024Carry,Fed2026H10Yen,FRED2026Nikkei}.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Operaciones del mercado de divisas}\label{tab:operaciones}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{2.4cm}>{\centering\arraybackslash}m{3.0cm}>{\centering\arraybackslash}m{3.0cm}>{\centering\arraybackslash}m{2.4cm}>{\centering\arraybackslash}m{2.8cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Operación} & \textbf{Quién} & \textbf{Instrumento} & \textbf{Riesgo de cambio} & \textbf{Condición de equilibrio}\\
+\midrule
+Comercial & Exportadores e importadores & Contado & Sí, si no se cubre & Oferta = demanda de divisas\\
+\addlinespace[0.2em]
+Liquidez & Bancos centrales & FX \emph{swap} (línea \emph{swap}) & No (mismo tipo a la ida y a la vuelta); el riesgo de crédito lo asume el banco central receptor & —\\
+\addlinespace[0.2em]
+Cobertura & Empresas, inversores & \emph{Forward}, futuro, opción, \emph{swap} & Se elimina & —\\
+\addlinespace[0.2em]
+Reservas e intervención & Bancos centrales & Contado, FX \emph{swap} & Lo asume el banco central & —\\
+\addlinespace[0.2em]
+\rowcolor{tceesalvia}Arbitraje & Bancos, alta frecuencia & Contado y plazo & \textcolor{tceeverde}{No} & \textbf{Tipos cruzados, PCI}\\
+\addlinespace[0.2em]
+\rowcolor{tceesalvia}Especulación & Fondos, bancos, minoristas & Contado, plazo, opción & \textcolor{tceerojo}{Sí, buscado} & \textbf{PNCI}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia. En fondo salvia, las 2 operaciones que dan las paridades del tema.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:instrumentos-operaciones}}: el mercado se negocia sobre todo con FX \emph{swaps} y a plazo, y cada operación usa sus instrumentos: las comerciales, el contado; la liquidez entre bancos centrales, las líneas \emph{swap}; la cobertura, \emph{forwards}, futuros y opciones. El arbitraje impone la PCI, $1+i=(1+i^{*})F_t^{t+1}/E_t$, que se cumple casi siempre; la especulación, en el mejor de los casos, la PNCI, $1+i=(1+i^{*})E^e_{t+1}/E_t$. Si se cumplieran las 2, el tipo a plazo predeciría sin sesgo el de contado futuro.
+\item \emph{Nexo}: ¿lo hace? Para responder hay que preguntarse si el mercado de divisas es eficiente.
+\end{itemize}
+
+% ==========================================================================
+\section{Eficiencia en el mercado de divisas}\label{sec:eficiencia}
+\minutos{5}
+
+\begin{notaopositor}
+En el cante (\tiempo{5}): se borra el centro de la pizarra; quedan las 2 paridades recuadradas. III.1, \tiempo{0,75}: la tabla de los 3 sentidos de la eficiencia (tabla~\ref{tab:eficiencia-divisas}) con las 3 primeras columnas. III.2, \tiempo{1,25}: se rellena la última columna, sentido a sentido. III.3, \tiempo{3}: la regresión \eqref{eq:fama} recuadrada bajo las paridades y el gráfico de la paradoja (gráfico~\ref{fig:paradoja-forward}): primero la recta de 45° que predice la teoría y después la nube y la recta estimada con pendiente negativa, con «en todas partes cuecen habas»; las salidas en lista corta, de palabra, y la vuelta al \emph{carry trade} y a la almazara. La descomposición de \autor{Fama}, el anexo~\ref{anexo:degrauwe} y las notas son para las preguntas del tribunal.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: el mercado de divisas es eficiente en el sentido más débil, el de la ausencia de arbitraje, con la salvedad de la base desde 2008. No lo es en el sentido de \autor{Pareto}, y no está claro que lo sea en el informativo: el tipo a plazo predice mal el de contado futuro, hasta el punto de equivocarse de sentido. Es la paradoja del margen \emph{forward}.
+\item \emph{Nexo}: con las 2 paridades ya construidas, podemos preguntarnos si el mercado fija bien el precio; antes, hay que precisar qué se entiende por «eficiente».
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Definiciones de eficiencia en el mercado financiero}\label{sec:definiciones-eficiencia}
+
+\begin{itemize}
+\item Un mercado es \concepto{eficiente} si los precios reflejan toda la información disponible \parencite{Fama1970Efficient}: es la \concepto{hipótesis de los mercados eficientes} (HME). Eugene \autor{Fama} recibió en 2013 el Premio Nobel, con Lars Peter \autor{Hansen} y Robert \autor{Shiller}, «por su análisis empírico de los precios de los activos» \parencite{Nobel2013Fama}.\footnote{Tras la crisis de 2008, la hipótesis fue blanco de muchas críticas: \textcite{Fox2009Myth} la culpa de la confianza en que los mercados se regulaban solos, y \textcite{Quiggin2010Zombie} la incluye entre las «ideas zombi», que siguen vivas pese a haber sido desmentidas por los hechos. Que el Nobel de 2013 premiara a la vez a \autor{Fama} y a \autor{Shiller}, su crítico más conocido, resume el estado del debate.}
+\item Contrastarla exige un modelo que diga qué rentabilidad es «normal», de equilibrio (como el CAPM) o de arbitraje (como la APT): toda prueba de eficiencia es una \concepto{hipótesis conjunta} de eficiencia y de ese modelo, y si se rechaza no se sabe cuál de las 2 falla \parencite{Fama2014Two} \vertema{3.B.23}.
+\item La palabra se usa en 3 sentidos, de menos a más exigente \parencite{Duffie2001Dynamic}:
+  \begin{enumerate}
+  \item \emph{ausencia de arbitraje}: nadie puede ganar sin riesgo y sin capital;\footnote{La ausencia de arbitraje no exige que todos los agentes sean racionales ni impide las burbujas, y no excluye ganancias positivas a largo plazo para quien asuma riesgo. Equivale a que los precios descontados se comporten como una martingala, pero con una probabilidad ajustada por el riesgo, la \emph{medida de martingala equivalente} \parencite{HarrisonKreps1979}: con la probabilidad real, los precios pueden ser en parte predecibles.}
+  \item \emph{eficiencia informativa}: el precio incorpora deprisa toda la información; según qué información, en forma \emph{débil} (la histórica de los precios), \emph{semifuerte} (también la pública) o \emph{fuerte} (también la privada), una clasificación de Harry \autor{Roberts} (1967) que popularizó \textcite{Fama1970Efficient};\footnote{Con eficiencia y PNCI, \textcite{Roll1979PPP} deduce que las desviaciones de la paridad del poder adquisitivo (el tipo real) deberían seguir un paseo aleatorio: si se puede especular con bienes, ningún cambio esperado del tipo real queda sin aprovechar, $\mathbb{E}_t[\Delta\ln q_{t+1}]=0$. Un choque al tipo real sería permanente, y la PPA a largo plazo, incompatible con la eficiencia. La evidencia apunta más bien a una vuelta lenta y no lineal hacia la PPA \parencite{SarnoTaylor2002Economics} \vertema{3.B.14}.}
+  \item \emph{eficiencia en el sentido de \autor{Pareto}}: la del primer teorema fundamental de la economía del bienestar (1TFEB): ninguna otra asignación mejora a alguien sin empeorar a nadie \vertema{3.A.22}.
+  \end{enumerate}
+\item El detalle de las 3 formas de eficiencia informativa y sus consecuencias para el análisis técnico y el fundamental está en \vertema{3.B.23}; aquí se aplican al mercado de divisas (tabla~\ref{tab:eficiencia-divisas}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los 3 sentidos de la eficiencia en el mercado de divisas}\label{tab:eficiencia-divisas}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{2.8cm}>{\centering\arraybackslash}m{4.3cm}>{\centering\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{3.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Sentido} & \textbf{Qué exige en divisas} & \textbf{Condición} & \textbf{¿Se cumple?}\\
+\midrule
+Ausencia de arbitraje & Que no se gane sin riesgo entre plazas ni entre plazos & Tipos cruzados y PCI & \textcolor{tceeverde}{Casi siempre} (base desde 2008)\\
+\addlinespace[0.2em]
+Informativa & Que el tipo a plazo prediga sin sesgo el de contado & PNCI con expectativas racionales & \textcolor{tceerojo}{No}: paradoja del margen \emph{forward}\\
+\addlinespace[0.2em]
+De \autor{Pareto} & Mercados completos, sin externalidades ni asimetrías & 1TFEB & \textcolor{tceerojo}{No}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Duffie2001Dynamic}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{¿Es eficiente el mercado de divisas?}\label{sec:es-eficiente}
+
+\paragraph{a) Eficiencia como ausencia de arbitraje}
+
+\begin{itemize}
+\item Exige que se cumplan la ley del precio único entre plazas (los tipos cruzados) y la PCI \eqref{eq:pci}.
+\item Los tipos cruzados se cumplen casi siempre: las plataformas y los algoritmos cierran en milisegundos cualquier diferencia (\ref{sec:op-arbitraje}).
+\item La PCI se cumplió con gran precisión hasta 2007. Desde 2008 hay desviaciones persistentes que no se deben a controles ni a comisiones, sino al coste de usar el balance de los bancos que arbitran \parencite{DuTepperVerdelhan2018Deviations}. No es un beneficio gratis que nadie aprovecha: aprovecharlo cuesta capital. Por eso se dice que el mercado es eficiente \emph{una vez descontados los límites al arbitraje} (\ref{sec:pci}).
+\end{itemize}
+
+\paragraph{b) Eficiencia informativa}
+
+\begin{itemize}
+\item Si el mercado es eficiente en este sentido, los tipos de cambio reflejan en cada momento toda la información disponible y cualquier novedad se traslada de inmediato a la cotización. Con neutralidad al riesgo, el tipo a plazo sería el mejor predictor del de contado futuro.
+\item Pero la información cuesta: si los precios la reflejaran por completo, nadie tendría incentivos a buscarla, y entonces los precios no podrían reflejarla. Es la paradoja de \textcite{GrossmanStiglitz1980}: los mercados solo pueden ser eficientes de forma imperfecta.
+\item El mercado de divisas tiene rasgos que lo acercan a la eficiencia informativa: la información es barata (plataformas, datos en tiempo real), los agentes son muchísimos y el mercado es muy líquido. Lo que diga la evidencia se ve en el contraste (\ref{sec:paradoja}).
+\end{itemize}
+
+\paragraph{c) Eficiencia en el sentido de \autor{Pareto}}
+
+\begin{itemize}
+\item Es la más exigente y el mercado de divisas no la cumple, por 3 fallos propios:
+  \begin{itemize}
+  \item \emph{mercados incompletos}: no todos pueden cubrirse. Muchas monedas no tienen mercado a plazo fuera de su país (de ahí los NDF, \ref{sec:forward}) y casi ninguna a plazos largos, y muchos países emergentes no pueden endeudarse en el exterior en su propia moneda, el «pecado original» \parencite{EichengreenHausmann1999} \vertema{3.B.17};
+  \item \emph{externalidades}: quien se endeuda en dólares no tiene en cuenta que, si muchos lo hacen, una depreciación los obliga a vender a la vez y la convierte en crisis. Es una externalidad pecuniaria que justifica las reservas, las líneas \emph{swap} y las medidas macroprudenciales sobre los flujos de capital \parencite{Korinek2011New} \vertema{3.B.15} \vertema{3.B.26};
+  \item \emph{información asimétrica}: los creadores de mercado ven el flujo de órdenes de sus clientes antes que nadie (\ref{sec:proveedores}), y esa ventaja se usó para manipular los \emph{fixings}, lo que llevó a las multas de 2014 y al Código Global de Conducta (\ref{sec:codigo-global}).
+  \end{itemize}
+\item Aun así, los defensores de la HME, como John \autor{Cochrane}, admiten estos fallos, pero sostienen que suelen ser pequeños y dudan de que la intervención pública los corrija \parencite{Cochrane2011Krugman} \vertema{3.B.23}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Contraste: los incumplimientos de la PNCI y la paradoja del margen \emph{forward}}\label{sec:paradoja}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Si el mercado es eficiente en el sentido informativo y los inversores son neutrales al riesgo, se cumplen la PCI y la PNCI y, por tanto, el tipo a plazo es el predictor insesgado del contado futuro: $F_t^{t+1}=E^e_{t+1}$, con expectativas racionales (\ref{sec:pnci}).
+\item Contrastarlo es contrastar a la vez 2 hipótesis, la eficiencia y la ausencia de prima de riesgo: es la hipótesis conjunta aplicada a las divisas. Si se rechaza, no se sabe cuál de las 2 falla.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Se cumple la PCI: en logaritmos, $f_t-e_t\approx i-i^{*}$.
+\item Neutralidad al riesgo: se cumple la PNCI, $\mathbb{E}_t[e_{t+1}]-e_t\approx i-i^{*}$.
+\item Expectativas racionales: lo que ocurre es lo esperado más un error de previsión impredecible, $e_{t+1}=\mathbb{E}_t[e_{t+1}]+\varepsilon_{t+1}$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Juntando los 3 supuestos, la depreciación \emph{observada} es igual al margen a plazo más un error impredecible. Se contrasta con la regresión de \textcite{Fama1984Forward}:
+  \funcionclave[eq:fama]{\Delta e_{t+1}=\beta_0+\beta_1\,(f_t-e_t)+\varepsilon_{t+1}}
+  donde $\Delta e_{t+1}\equiv e_{t+1}-e_t$ es la depreciación observada y $f_t-e_t$ el margen a plazo (gráfico~\ref{fig:paradoja-forward}).
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Si el tipo a plazo es un predictor insesgado, $\beta_0=0$ y $\beta_1=1$: en el gráfico, los puntos se reparten alrededor de la recta de 45°.
+\item Siguiendo con la almazara: con el dólar a 0,8583 euros al contado y a 0,8541 a plazo, el mercado «predeciría» que el dólar se deprecia un 0,5~\% en 3 meses. ¿Lo hace en promedio?
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item La hipótesis se rechaza casi siempre, y no por poco: en las grandes monedas frente al dólar la pendiente estimada suele ser \emph{negativa}. En el repaso de \textcite{FrootThaler1990}, la media de unas 75 estimaciones publicadas está cerca de $-0{,}9$, y ninguna llega a 1.
+\item La moneda con el tipo de interés más alto, que según la PNCI debería depreciarse, tiende a apreciarse. Es la \concepto{paradoja del margen \emph{forward}} (\emph{forward premium puzzle}): el margen a plazo predice mal no ya la magnitud del cambio, sino incluso su sentido \parencite{Engel1996Forward}. «En todas partes cuecen habas»: también el mercado más grande y líquido del mundo tiene su anomalía.
+\item Lo confirma el éxito del \emph{carry trade} (\ref{sec:carry-trade}): si se cumpliera la PNCI, endeudarse en la moneda de tipo bajo para invertir en la de tipo alto no ganaría nada en promedio, y ha ganado.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La paradoja del margen \emph{forward}}\label{fig:paradoja-forward}
+\grafico[0.6\textwidth]{paradoja-forward}
+\fuente{elaboración propia, ilustrativo: la recta de 45° es la predicción de la PNCI con expectativas racionales ($\beta_1=1$); la nube y la recta estimada, con pendiente negativa, la evidencia que resume \textcite{FrootThaler1990}.}
+\end{figure}
+
+\begin{anotaciones}
+Para un contraste reciente de la eficiencia del mercado de divisas con 4 tipos de cambio y la estimación de la prima de riesgo con modelos GARCH, véase \textcite{Kallianiotis2018Efficient}.
+\end{anotaciones}
+
+\paragraph{d) Valoración: las salidas a la paradoja}
+
+\begin{itemize}
+\item Como el contraste es de una hipótesis conjunta, hay 3 salidas, según qué supuesto se abandone, y un matiz sobre cómo se lee la regresión:
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Prima de riesgo variable} (se abandona la neutralidad al riesgo):
+  \begin{itemize}
+  \item Si los inversores son aversos al riesgo, el tipo a plazo no es el esperado: la diferencia es la prima de riesgo cambiaria, $\rho_t\equiv f_t-\mathbb{E}_t[e_{t+1}]$, y el margen a plazo se descompone en 2 partes:
+    \begin{equation}\label{eq:descomposicion-fama}
+    f_t-e_t=\underbrace{\mathbb{E}_t[e_{t+1}]-e_t}_{\text{depreciación esperada}}+\underbrace{\rho_t}_{\text{prima de riesgo}} .
+    \end{equation}
+  \item \textcite{Fama1984Forward} muestra que, para que la pendiente de \eqref{eq:fama} salga negativa, la prima y la depreciación esperada tienen que moverse en sentido contrario y la prima tiene que variar \emph{más} que la depreciación esperada (anexo~\ref{anexo:fama}).
+  \item Los modelos de equilibrio con una aversión al riesgo razonable generan primas demasiado pequeñas y estables para cumplir esas condiciones \parencite{Engel1996Forward}. Han tenido más éxito los que ligan la prima a riesgos que se materializan en los malos momentos: las monedas de tipo alto se deprecian justo en las crisis \parencite{LustigVerdelhan2007Cross,BrunnermeierNagelPedersen2008Carry}.
+  \item Es la versión para divisas de la vieja pregunta de si el precio a plazo predice el de contado, con las hipótesis de expectativas, \emph{normal backwardation} y \emph{contango} de los futuros \vertema{3.B.25}, y de la misma pregunta en la estructura temporal de los tipos de interés \vertema{3.B.24}.
+  \end{itemize}
+\item \emph{Sucesos raros: el \emph{peso problem}} (las expectativas son racionales, pero la muestra engaña):
+  \begin{itemize}
+  \item Si el mercado da una probabilidad pequeña a un salto grande, como una devaluación, que no llega a ocurrir en la muestra, el tipo a plazo parecerá sesgado aunque las expectativas sean racionales: la muestra no contiene el suceso que el mercado temía \parencite{Krasker1980Peso}. El nombre viene del peso mexicano, que en los años 70 cotizó a plazo con descuento durante años antes de su devaluación de 1976 \vertema{3.B.17}.
+  \item Explica parte de las ganancias del \emph{carry trade}, que pagan el riesgo de un desplome raro pero grande \parencite{BurnsideEtAl2011Peso}.
+  \end{itemize}
+\item \emph{Expectativas no racionales y heterogéneas} (se abandonan las expectativas racionales):
+  \begin{itemize}
+  \item Con encuestas de previsiones, \textcite{FrankelFroot1987Survey} y \textcite{FrootFrankel1989Forward} encuentran que casi todo el sesgo se debe a errores sistemáticos de expectativas, y poco a la prima de riesgo.
+  \item Una explicación es la convivencia de \concepto{fundamentalistas}, que esperan que el tipo vuelva a su valor de equilibrio, y \concepto{chartistas}, que extrapolan la tendencia reciente \parencite{FrankelFroot1990Chartists}. Como los fundamentalistas conocen la fuerza de los chartistas, pueden dejar de apostar por la vuelta al equilibrio, y el tipo puede alejarse mucho y durante mucho tiempo de sus fundamentos.
+  \item \textcite{DeGrauweGrimaldi2006} lo modelizan con agentes que cambian de regla según lo que les ha rendido (anexo~\ref{anexo:degrauwe}), en la línea de la economía conductual \vertema{3.A.10} \vertema{3.A.1} \vertema{3.B.14}.
+  \end{itemize}
+\item \emph{Un matiz sobre la constante}:
+  \begin{itemize}
+  \item Una pendiente negativa dice que la depreciación prevista es \emph{menor} cuanto mayor es el margen a plazo, $f_t-e_t$, no necesariamente que la moneda se aprecie: si la constante $\beta_0$ es positiva y grande, la regresión puede predecir una depreciación aunque sea menor que el margen a plazo. Por eso la paradoja se enuncia mejor como un \emph{sesgo} del tipo a plazo que como una apreciación de las monedas de tipo alto \parencite{Hodrick1987Empirical}.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:eficiencia}}: el mercado de divisas es eficiente como ausencia de arbitraje (salvo la base desde 2008, que es el coste del balance), no lo es en el sentido de \autor{Pareto} y falla el contraste de eficiencia informativa con neutralidad al riesgo: el tipo a plazo es un predictor sesgado del contado futuro. Las salidas, una prima de riesgo variable, los sucesos raros y las expectativas heterogéneas, no se excluyen entre sí.
+\item Volviendo a la almazara: el 0,8541 que fija su seguro de cambio es un precio exacto, el que impone la PCI, pero no una buena previsión de cuánto valdrá el dólar dentro de 3 meses.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión, el mercado de divisas es el mayor mercado financiero del mundo: extrabursátil, organizado alrededor de unos pocos creadores de mercado, abierto las 24 horas, concentrado en el dólar y en Londres y con un riesgo propio, el de liquidación. Se negocia sobre todo con FX \emph{swaps} y a plazo, y casi todo lo que se negocia son operaciones financieras, no comerciales. El arbitraje impone la paridad cubierta de intereses; la especulación, en el mejor de los casos, la no cubierta, que falla en los datos.
+\item \textbf{\emph{Relevancia}}: en él se fija el tipo de cambio, que transmite la política monetaria, mueve la inflación y la competitividad y decide la estabilidad financiera de los países que se endeudan en otra moneda; y su infraestructura (los creadores de mercado, la liquidación en CLS, las líneas \emph{swap}) es parte de la red de seguridad financiera mundial \vertema{3.B.22}.
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item cómo se determina el tipo de cambio, donde la PNCI es la pieza central del modelo de \autor{Dornbusch} \vertema{3.B.14}; qué régimen cambiario elegir y cuándo intervenir \vertema{3.B.15}; las crisis cambiarias \vertema{3.B.17}; y el papel internacional del euro y las líneas \emph{swap} del BCE \vertema{3.B.43};
+  \item la intervención «implícita» con la política monetaria: con tipos flexibles, las compras de activos de los bancos centrales con moneda fuerte deprecian su moneda, como hizo la del BCE con el euro \parencite{DedolaEtAl2021Bazooka}, una forma más sutil de la devaluación competitiva que el FMI prohíbe; en enero de 2018 el presidente del BCE reprochó a quienes hablaban del tipo de cambio que se saltaran ese compromiso \parencite{BCE2018Draghi};
+  \item y las acusaciones de manipulación: Estados Unidos acusó a China de manipular su moneda en agosto de 2019 y retiró la acusación en enero de 2020 \parencite{Tesoro2019China,Tesoro2020FX}; en su informe de julio de 2026 no ve manipuladores, aunque mantiene a China en observación por la poca transparencia de su política cambiaria \parencite{Tesoro2026FX}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}: que el tipo a plazo prediga mal no es tanto un fallo del mercado como una advertencia: las primas de riesgo cambian y los sucesos raros pesan. Por eso los bancos centrales acumulan reservas y se ofrecen líneas \emph{swap} en las crisis, y por eso el \emph{carry trade} sube por la escalera y baja en ascensor.
+\item \textbf{\emph{Idea final}}: volviendo al refrán, en el mercado de divisas quien no arriesga, no gana: el arbitraje sin riesgo apenas deja dinero encima de la mesa, y lo que gana el especulador es el pago por un riesgo que a veces se cobra de golpe. El precio más importante de la economía se fija en un mercado que es eficiente para no ser explotado, no para predecir.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: qué mueve la oferta y la demanda de divisas. Flujos y activos}\label{anexo:flujos-activos}
+
+\subsection{El enfoque de flujos}
+
+\begin{itemize}
+\item Con tipo flexible y sin variación de reservas, la cuenta corriente iguala a la cuenta financiera \eqref{eq:vaciado}. Si se escriben sus determinantes \parencite[cap.~3]{Kallianiotis2013Exchange}:
+  \begin{equation}\label{eq:kallianiotis-bp}
+  \underbrace{XN_t\big(\underset{+}{q_t},\ \underset{-}{Y_t},\ \underset{+}{Y^{*}_t},\ \underset{+}{Z_t},\ \underset{-}{Z^{*}_t}\big)}_{\mathrm{CC}_t}=\underbrace{SK_t\big(\underset{-}{i_t-i^{*}_t}\big)}_{\mathrm{CF}_t\,=\,\text{salidas}-\text{entradas de capital}},
+  \end{equation}
+  donde $XN_t$ son las exportaciones netas, $q_t=E_tP^{*}_t/P_t$ el tipo de cambio real, $Y_t$ e $Y^{*}_t$ las rentas nacional y extranjera, $Z_t$ y $Z^{*}_t$ las distorsiones al comercio (aranceles, subvenciones, intervenciones) que introducen el país y el resto del mundo (locales de este anexo) e $i_t-i^{*}_t$ el diferencial de tipos de interés.
+\item Con tipo flexible, el equilibrio se mantiene con el ajuste continuo del tipo de cambio. Despejando $E_t$ y tomando logaritmos (en minúscula), salvo en los tipos de interés:
+  \begin{equation}\label{eq:kallianiotis-e}
+  e_t=\beta_0+\beta_1\,(p_t-p^{*}_t)+\beta_2\,(y_t-y^{*}_t)+\beta_3\,(i_t-i^{*}_t)+\beta_4\,(z_t-z^{*}_t)+\varepsilon_t,
+  \end{equation}
+  con los signos:
+  \begin{itemize}
+  \item $\beta_1>0$: si suben los precios nacionales, el país pierde competitividad, empeora la cuenta corriente y la moneda se deprecia ($\uparrow e_t$);
+  \item $\beta_2>0$: si sube la renta nacional, suben las importaciones, empeora la cuenta corriente y la moneda se deprecia;
+  \item $\beta_3<0$: si sube el diferencial de tipos de interés, entran capitales, aumenta la demanda de moneda nacional y esta se aprecia ($\downarrow e_t$);
+  \item $\beta_4<0$: una política comercial que mejora la cuenta corriente aumenta las exportaciones netas y aprecia la moneda.
+  \end{itemize}
+\item La ecuación se puede extender con otros diferenciales: de deuda pública, de inversión, de ahorro o de salarios reales.
+\item \emph{Crítica}: trata los movimientos de capital como flujos e ignora los ajustes de \emph{stocks}, lo que lo hace poco útil para explicar los determinantes de la oferta y la demanda de divisas; no cambia, en cambio, que el tipo de cambio lo fije la interacción entre ambas.
+\end{itemize}
+
+\subsection{El enfoque de activos}
+
+\begin{itemize}
+\item Ve la demanda de moneda nacional como demanda de \emph{activos} nacionales frente a extranjeros: el tipo de cambio iguala la rentabilidad esperada de unos y otros. La tabla~\ref{tab:mishkin} resume qué la desplaza, con la convención \emph{directa} de esta exposición: una apreciación de la moneda nacional es $\downarrow E$.\footnote{\textcite{MishkinMatthewsGiuliodori2013} usan la convención indirecta (unidades de moneda extranjera por unidad de moneda nacional), así que en su tabla todas las flechas del tipo de cambio van al revés que aquí.}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Factores que desplazan la demanda de activos nacionales y su efecto en el tipo de cambio}\label{tab:mishkin}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{5.2cm}>{\centering\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{3.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Sube…} & \textbf{Demanda de activos nacionales} & \textbf{Tipo de cambio directo, $E$}\\
+\midrule
+la riqueza del resto del mundo & $\uparrow$ & \textcolor{tceeverde}{$\downarrow$ (apreciación)}\\
+el riesgo relativo de los activos nacionales & $\downarrow$ & \textcolor{tceerojo}{$\uparrow$ (depreciación)}\\
+la liquidez relativa de los activos nacionales & $\uparrow$ & \textcolor{tceeverde}{$\downarrow$ (apreciación)}\\
+el tipo de interés nacional, $i$ & $\uparrow$ & \textcolor{tceeverde}{$\downarrow$ (apreciación)}\\
+el tipo de interés extranjero, $i^{*}$ & $\downarrow$ & \textcolor{tceerojo}{$\uparrow$ (depreciación)}\\
+el nivel de precios nacional esperado (relativo) & $\downarrow$ & \textcolor{tceerojo}{$\uparrow$ (depreciación)}\\
+las barreras comerciales esperadas (relativas) & $\uparrow$ & \textcolor{tceeverde}{$\downarrow$ (apreciación)}\\
+la demanda esperada de importaciones & $\downarrow$ & \textcolor{tceerojo}{$\uparrow$ (depreciación)}\\
+la demanda esperada de exportaciones & $\uparrow$ & \textcolor{tceeverde}{$\downarrow$ (apreciación)}\\
+la productividad esperada (relativa) & $\uparrow$ & \textcolor{tceeverde}{$\downarrow$ (apreciación)}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[395]{MishkinMatthewsGiuliodori2013}, pasada a la convención directa. Si el factor baja, los efectos son los contrarios.}
+\end{table}
+
+\begin{itemize}
+\item Son 2 maneras de ordenar lo que mueve la oferta y la demanda de divisas: como flujos de la balanza de pagos o como demandas de activos. Cómo se determina con ellas el tipo de cambio es la pregunta de \vertema{3.B.14}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la negociación de alta frecuencia y su regulación}\label{anexo:alta-frecuencia}
+
+\begin{itemize}
+\item Casi todo lo que sigue se refiere a los mercados de \emph{acciones}, donde la negociación de alta frecuencia nació y donde se ha regulado; en el contado de divisas, que no es un instrumento financiero a efectos de MiFID~II, la respuesta ha sido sobre todo la autorregulación (\ref{sec:codigo-global}).
+\end{itemize}
+
+\subsection{Ventajas e inconvenientes}
+
+\begin{itemize}
+\item \emph{Ventajas}:
+  \begin{itemize}
+  \item aumenta la liquidez: facilita que cada orden de venta encuentre una de compra y estrecha los \emph{spreads} en tiempos normales \parencite{BIS2011HFT};
+  \item y acelera la incorporación de la información a los precios \parencite{BIS2011HFT}.
+  \end{itemize}
+\item \emph{Inconvenientes}:
+  \begin{itemize}
+  \item quien la practica no está obligado a dar precio: en los momentos de tensión suele retirarse, justo cuando la liquidez haría más falta, y puede amplificar los movimientos bruscos \parencite{BIS2011HFT,BIS2020Algos};
+  \item la carrera por la velocidad: en un mercado que negocia en continuo, quien llega antes aprovecha los precios que los demás aún no han actualizado (el arbitraje por latencia), y los creadores de mercado lo trasladan a todos con \emph{spreads} más amplios. \textcite{BudishCramtonShim2015} proponen sustituir la negociación continua por subastas frecuentes por lotes, que eliminarían esa carrera;
+  \item la velocidad permite prácticas de manipulación:
+    \begin{itemize}
+    \item \emph{quote stuffing}: enviar miles de órdenes pequeñas y triviales que inundan el mercado y retrasan a los demás programas;
+    \item \emph{spoofing}: introducir órdenes que no se quiere ejecutar, a un precio distinto del de mercado, y cancelarlas al instante, para crear la ilusión de que hay interés comprador o vendedor y aprovechar el movimiento de precios que provocan;
+    \end{itemize}
+  \item y riesgos técnicos: errores de los algoritmos o interacciones entre ellos que se propagan más deprisa de lo que un operador humano puede detectar y frenar \parencite{BIS2020Algos}.
+  \end{itemize}
+\item El ejemplo más citado es el \emph{flash crash} bursátil del 6 de mayo de 2010, en el que el índice Dow Jones cayó casi 1.000 puntos, en torno a un 9~\%, en pocos minutos antes de recuperarse \parencite{SECCFTC2010}. En divisas, los episodios relámpago son los de la libra (2016) y el yen (2019) (\ref{sec:latencia}).
+\end{itemize}
+
+\subsection{La regulación}
+
+\begin{itemize}
+\item En la UE, MiFID~II (Directiva 2014/65/UE, aplicable desde el 3 de enero de 2018) \parencite{UE2014MiFID2}:
+  \begin{itemize}
+  \item obliga a quien hace negociación algorítmica a tener sistemas y controles de riesgo (art.~17);
+  \item obliga a los centros de negociación a tener mecanismos para interrumpir la negociación ante movimientos bruscos de precios (\emph{circuit breakers}) (art.~48): no evitan las caídas, pero limitan los daños;
+  \item y fija un régimen de variación mínima de precio (\emph{tick size}) para acciones y fondos cotizados (art.~49) \parencite{UE2017TickSize}, que reduce la frecuencia de los cambios de precio y es una regulación indirecta de la alta frecuencia.
+  \end{itemize}
+\item Otras propuestas que no han prosperado:
+  \begin{itemize}
+  \item un periodo mínimo de permanencia de las órdenes (de 500 milisegundos, en una enmienda del Parlamento Europeo de 2012), contra el \emph{spoofing} y el \emph{quote stuffing}, o un límite a las cancelaciones;
+  \item un periodo mínimo de tenencia de los activos comprados;
+  \item un impuesto sobre las transacciones financieras. La idea viene precisamente de las divisas: James \autor{Tobin} propuso en 1972 gravar las operaciones de cambio para frenar la especulación de corto plazo \parencite{Tobin1978Proposal}. La Comisión Europea propuso un impuesto común en 2011 y en cooperación reforzada en 2013, sin que se haya aprobado \parencite{CE2011ITF,CE2013ITF}; el impuesto español de 2020 grava la compra de acciones, no las divisas \parencite{BOE2020ITF} \vertema{4.B.18}.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la prima de riesgo de \autor{Fama}}\label{anexo:fama}
+
+\begin{itemize}
+\item Con expectativas racionales, $\Delta e_{t+1}=\mathbb{E}_t[\Delta e_{t+1}]+\varepsilon_{t+1}$, con $\varepsilon_{t+1}$ incorrelacionado con lo que se sabe en $t$. Llamando $d_t\equiv\mathbb{E}_t[\Delta e_{t+1}]$ a la depreciación esperada y usando \eqref{eq:descomposicion-fama}, $f_t-e_t=d_t+\rho_t$.
+\item La pendiente de la regresión \eqref{eq:fama} por mínimos cuadrados es la covarianza entre la variable explicada y la explicativa dividida por la varianza de esta:
+  \begin{equation}\label{eq:beta-fama}
+  \beta_1=\frac{\mathrm{cov}(d_t+\varepsilon_{t+1},\,d_t+\rho_t)}{\mathrm{var}(d_t+\rho_t)}=\frac{\mathrm{var}(d_t)+\mathrm{cov}(\rho_t,d_t)}{\mathrm{var}(d_t)+\mathrm{var}(\rho_t)+2\,\mathrm{cov}(\rho_t,d_t)} .
+  \end{equation}
+\item El denominador es una varianza, positiva. Para que $\beta_1<0$, el numerador tiene que ser negativo: $\mathrm{cov}(\rho_t,d_t)<-\mathrm{var}(d_t)$. Eso exige:
+  \begin{enumerate}
+  \item que la prima y la depreciación esperada se muevan en sentido contrario, $\mathrm{cov}(\rho_t,d_t)<0$;
+  \item y, como $|\mathrm{cov}(\rho_t,d_t)|\leq\sigma(\rho_t)\,\sigma(d_t)$, que $\sigma(\rho_t)>\sigma(d_t)$: la prima varía más que la depreciación esperada \parencite{Fama1984Forward}.
+  \end{enumerate}
+\item Sin prima ($\rho_t=0$), $\beta_1=1$.\findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: expectativas heterogéneas. El modelo de \autor{De Grauwe} y \autor{Grimaldi}}\label{anexo:degrauwe}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{DeGrauweGrimaldi2006} siguen la línea de los modelos de cartera, en los que el tipo de cambio es el precio de un activo, pero con agentes que no forman expectativas racionales: para simplificar una realidad compleja, usan reglas sencillas (\emph{rules of thumb}), como describe la economía conductual \vertema{3.A.10} \vertema{3.A.1}.
+\item Explica por qué el tipo de cambio es tan volátil y puede alejarse tanto de sus fundamentos, y es una salida a la paradoja del margen \emph{forward} (\ref{sec:paradoja}).
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Agentes heterogéneos, que se distinguen por cómo prevén el tipo de cambio futuro: \emph{fundamentalistas} y \emph{chartistas}, una distinción de \textcite{FrankelFroot1990Chartists}.
+\item Cada agente maximiza una utilidad de media-varianza sobre su riqueza en $t+1$, invertida en activos nacionales y extranjeros:
+  \begin{equation}\label{eq:dgg-utilidad}
+  U\big(W^{k}_{t+1}\big)=\mathbb{E}^{k}_t\big[W^{k}_{t+1}\big]-\tfrac{1}{2}\,\mu\,V^{k}\big(W^{k}_{t+1}\big),
+  \end{equation}
+  donde $k$ es el tipo de agente, $\mu$ la aversión al riesgo y $V^k$ la varianza que percibe (locales de este anexo).
+\item La oferta neta de activos extranjeros es exógena.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Demanda de activos}: la parte de la riqueza que cada agente invierte en activos extranjeros crece con el diferencial de tipos a favor del extranjero y con la depreciación esperada de la moneda nacional, y decrece con la aversión al riesgo y con el riesgo percibido. Sumando a todos los agentes se obtiene la demanda de activos extranjeros, y el tipo de cambio es el que la iguala a la oferta: depende de las expectativas.
+\item \emph{Fundamentalistas}: esperan que el tipo vuelva a su valor fundamental, $e^{\mathrm{fund}}_t$, a una velocidad $\psi$:
+  \begin{equation}\label{eq:dgg-fundamentalistas}
+  \mathbb{E}^{f}_t[\Delta e_{t+1}]=-\psi\,\big(e_{t-1}-e^{\mathrm{fund}}_{t-1}\big).
+  \end{equation}
+\item \emph{Chartistas}: no miran el valor fundamental, sino los gráficos, y extrapolan la última variación con un coeficiente $\phi$ (local):
+  \begin{equation}\label{eq:dgg-chartistas}
+  \mathbb{E}^{c}_t[\Delta e_{t+1}]=\phi\,\Delta e_{t-1}.
+  \end{equation}
+\item \emph{Cambio de regla}: la proporción de agentes que usa cada regla sube con lo que esa regla ha rendido en el pasado reciente, ajustado por su riesgo.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Hay \emph{equilibrios múltiples}, de 2 tipos: en unos conviven fundamentalistas y chartistas; en otros se imponen los chartistas.
+\item Si los chartistas ganan peso, el tipo se aleja de su fundamental durante periodos largos, con burbujas que acaban en desplomes; los fundamentalistas, al ver la fuerza de los chartistas, pueden dejar de apostar por la vuelta al equilibrio.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item Las interacciones entre agentes heterogéneos generan dinámicas complejas y un tipo de cambio muy volátil y poco ligado a los fundamentos, como el que se observa, y el margen a plazo puede predecir mal incluso su sentido.
+\item A cambio, los resultados dependen de reglas de previsión y de cambio de regla elegidas por el modelizador, difíciles de contrastar; por eso la evidencia de encuestas de \textcite{FrankelFroot1987Survey} es su mejor apoyo empírico.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: para el test}\label{anexo:test}
+
+\begin{itemize}
+\item Preguntas oficiales del primer ejercicio sobre este tema y apartado donde se contestan (las respuestas, en el simulador):
+  \begin{itemize}
+  \item Encuesta Trienal: junio de 2024 (n.º 31) (\ref{sec:caracteristicas} y \ref{sec:instrumentos}). Ojo: preguntaba por la Encuesta de 2022, en la que los FX \emph{swaps} eran el 50,9~\% del volumen; en la de 2025 son el 42~\%. La primera plaza es el Reino Unido, no Estados Unidos;
+  \item paridad cubierta de intereses: enero de 2018 (n.º 31) y octubre de 2011 (n.º 34) (\ref{sec:pci});
+  \item especulación a plazo: enero de 2020 (n.º 32) y noviembre de 2013 (n.º 32) (\ref{sec:op-especulacion});
+  \item riesgo de cambio: noviembre de 2013 (n.º 35) (\ref{sec:op-cobertura});
+  \item funciones del mercado de divisas: julio de 2003 (n.º 30) (\ref{sec:conceptos});
+  \item euromercados: julio de 2021 (n.º 40) (\ref{sec:op-liquidez});
+  \item exposición económica al riesgo de cambio, a partir de \textcite{Williamson2001Exposure}: julio de 2022 (n.º 40) (\ref{sec:op-cobertura}).
+  \end{itemize}
+\item Estas y las demás preguntas, en el \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test de la web}.
+\end{itemize}
+
+\bibliografia
+\end{document}

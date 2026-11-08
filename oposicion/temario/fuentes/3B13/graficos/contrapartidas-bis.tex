@@ -1,0 +1,103 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Volumen medio diario del mercado de divisas OTC en abril, por contrapartida
+% del dealer declarante (cuota en % del total), en las encuestas de 2013 a
+% 2025. BPI, Encuesta Trienal, datos definitivos de 2025 (consulta
+% 8/11/2026). Barras apiladas al 100 %, de abajo arriba: dealers declarantes
+% (B); otras instituciones financieras con su desglose (D bancos no
+% declarantes, E inversores institucionales, F hedge funds y PTF, G sector
+% oficial, R otras), y clientes no financieros (U). El CSV tiene una fila por
+% contrapartida y una columna por encuesta: se transpone (una fila por
+% encuesta, una columna por código).
+% Paleta: dealers, morado; otras financieras, familia azul de oscuro a claro
+% (el residuo, gris claro); no financieros, dorado.
+% Capas «dic» (tikz-tcee.tex): barras → ejes y leyenda → etiquetas de 2025.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bis2025-contrapartidas.csv}\conorig
+\pgfplotstabletranspose[colnames from=codigo, input colnames to=encuesta,
+  columns={codigo,c2013,c2016,c2019,c2022,c2025}]\con\conorig
+% Los ejes salen en la capa 4, después de las barras
+\ifnum4>\tceepaso\relax
+  \pgfplotsset{ejescon/.style={hide axis}}
+\else
+  \pgfplotsset{ejescon/.style={}}
+\fi
+\colorlet{condealers}{tceemorado}
+\colorlet{conbancos}{dicze}
+\colorlet{coninstit}{tceeazul!80}
+\colorlet{conhedge}{dicopf!55}
+\colorlet{conoficial}{dicfmc!45}
+\colorlet{conotras}{dicotromasclaro}
+\colorlet{connofin}{tceedorado}
+\pgfplotsset{
+  % x = número de encuesta (0 = 2013, …, 4 = 2025)
+  barra con/.style={on layer=dicbarras, forget plot, dicbarra=#1, ybar stacked, bar width=0.85cm},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11cm, height=8.5cm,
+      xmin=-0.6, xmax=4.5, xtick={0,...,4},
+      xticklabels={2013,2016,2019,2022,2025},
+      ymin=0, ymax=100, ytick={0,20,...,100},
+      ylabel={\% del volumen diario},
+      ticklabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      major x tick style={draw=none},
+      clip=false, stack plots=y,
+      legend style={at={(0.5,-0.11)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize,
+        /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left,
+      dicapas, ejescon]
+    % 1: dealers declarantes (mercado interdealer), en la base
+    \capa{1}{
+      \addplot[barra con=condealers] table[x expr=\coordindex, y=B] {\con};
+    }
+    % 2: otras instituciones financieras, con su desglose
+    \capa{2}{
+      \addplot[barra con=conbancos] table[x expr=\coordindex, y=D] {\con};
+      \addplot[barra con=coninstit] table[x expr=\coordindex, y=E] {\con};
+      \addplot[barra con=conhedge] table[x expr=\coordindex, y=F] {\con};
+      \addplot[barra con=conoficial] table[x expr=\coordindex, y=G] {\con};
+      \addplot[barra con=conotras] table[x expr=\coordindex, y=R] {\con};
+    }
+    % 3: clientes no financieros, arriba
+    \capa{3}{
+      \addplot[barra con=connofin] table[x expr=\coordindex, y=U] {\con};
+    }
+    % 4: ejes (los dibuja el entorno axis) y leyenda
+    \capa{4}{
+      \addlegendimage{area legend, dicbarra=condealers}
+      \addlegendentry{Creadores de mercado declarantes}
+      \addlegendimage{area legend, dicbarra=conbancos}
+      \addlegendentry{Bancos no declarantes}
+      \addlegendimage{area legend, dicbarra=coninstit}
+      \addlegendentry{Inversores institucionales}
+      \addlegendimage{area legend, dicbarra=conhedge}
+      \addlegendentry{\emph{Hedge funds} y PTF}
+      \addlegendimage{area legend, dicbarra=conoficial}
+      \addlegendentry{Sector oficial}
+      \addlegendimage{area legend, dicbarra=conotras}
+      \addlegendentry{Otras (resto)}
+      \addlegendimage{area legend, dicbarra=connofin}
+      \addlegendentry{Clientes no financieros}
+    }
+    % 5: valores de 2025 de cada tramo, a la derecha de la barra, a la altura
+    % del centro del tramo (acumulados de 2025: 46,7 | 69,8 | 83,1 | 91,1 |
+    % 92,5 | 95,4 | 100); la llave agrupa todas las otras financieras, de 46,7 a 95,3 (48,6 %,
+    % con el sector oficial y el resto)
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, anchor=west, text=condealers]{(4.3,23.35)}{46,7}
+      \dicrotulo[font=\footnotesize, anchor=west, text=conbancos]{(4.3,58.25)}{23,1}
+      \dicrotulo[font=\footnotesize, anchor=west, text=coninstit]{(4.3,76.45)}{13,3}
+      \dicrotulo[font=\footnotesize, anchor=west, text=dicopf]{(4.3,87.1)}{8,0}
+      \dicrotulo[font=\footnotesize, anchor=west, text=connofin]{(4.3,97.7)}{4,6}
+      \addplot[on layer=axis descriptions, dicsuelto, draw=dicze, thin,
+        decorate, decoration={brace, amplitude=4pt}]
+        coordinates {(4.75,95.3) (4.75,46.7)};
+      \dicrotulo[font=\footnotesize, anchor=west, text=dicze, align=left]{(4.88,71.0)}{otras\\instituciones\\financieras:\\48,6}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,40 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Cómo se lee la cotización de un par (ejemplo de la almazara, cotización
+% ilustrativa). Base en morado, cotizada en azul, bid en verde, ask en dorado.
+\begin{tikzpicture}[tcee,
+    cifra/.style={font=\fontsize{30}{32}\selectfont,inner sep=1pt},
+    rotulo/.style={etiqueta,font=\footnotesize,align=center,text width=4.2cm},
+    apunta/.style={->,thick}]
+  % 1: el par y la cotización
+  \capa{1}{\node[cifra,text=tceemorado,anchor=base east] (base) at (0,0) {EUR};
+    \node[cifra,anchor=base west] (barra) at (base.base east) {/};
+    \node[cifra,text=tceeazul,anchor=base west] (cot) at (barra.base east) {USD};
+    \node[cifra,text=tceeverde!85!black,anchor=base west] (bid) at (4.4,0) {1,1650};
+    \node[cifra,anchor=base west] (barra2) at (bid.base east) {/};
+    \node[cifra,text=tceedorado!85!black,anchor=base west] (ask) at (barra2.base east) {1,1652};}
+  % 2: moneda base y moneda cotizada
+  \capa{2}{\node[rotulo,text=tceemorado,anchor=south] (rbase) at ([xshift=-0.6cm,yshift=0.9cm]base.north)
+      {\textbf{moneda base}:\\1 euro};
+    \draw[apunta,tceemorado] (rbase.south) -- ([yshift=1mm]base.north);
+    \node[rotulo,text=tceeazul,anchor=south] (rcot) at ([xshift=0.6cm,yshift=0.9cm]cot.north)
+      {\textbf{moneda cotizada} (de cuenta):\\dólares por euro};
+    \draw[apunta,tceeazul] (rcot.south) -- ([yshift=1mm]cot.north);}
+  % 3: bid
+  \capa{3}{\node[rotulo,text=tceeverde!85!black,anchor=north] (rbid) at ([yshift=-0.9cm]bid.south)
+      {\textbf{\emph{bid}}: el banco compra euros\\(el cliente los vende)};
+    \draw[apunta,tceeverde] (rbid.north) -- ([yshift=-1mm]bid.south);}
+  % 4: ask
+  \capa{4}{\node[rotulo,text=tceedorado!85!black,anchor=north] (rask) at ([yshift=-0.9cm]ask.south)
+      {\textbf{\emph{ask}}: el banco vende euros\\(el cliente los compra)};
+    \draw[apunta,tceedorado] (rask.north) -- ([yshift=-1mm]ask.south);}
+  % 5: el spread
+  \capa{5}{\draw[thick,decorate,decoration={brace,amplitude=6pt}]
+      ([yshift=2mm]bid.north west) -- ([yshift=2mm]ask.north east)
+      node[midway,above=7pt,etiqueta] {\emph{spread} $=1{,}1652-1{,}1650=$ 2 \emph{pips}};}
+  % 6: el tipo directo para España
+  \capa{6}{\node[etiqueta,font=\normalsize] at ($(base.south)!0.5!(ask.south)+(0,-2.7)$)
+      {para España (tipo directo): $E=1/1{,}1651\approx0{,}8583$ €/\$};}
+\end{tikzpicture}
+\end{document}

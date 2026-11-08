@@ -1,0 +1,44 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Los 2 caminos del inversor con 1 euro entre t y t+1: en euros (arriba) o en
+% dólares (abajo), cubriendo el cambio de vuelta a plazo (PCI, morado) o sin
+% cubrirlo (PNCI, dorado y discontinuo).
+\begin{tikzpicture}[tcee,
+    valor/.style={etiqueta,font=\normalsize,inner sep=3pt},
+    paso/.style={->,very thick,black},
+    rot/.style={etiqueta,font=\footnotesize},
+    cubierta/.style={->,very thick,tceemorado},
+    sincubrir/.style={->,very thick,tceedorado,dashed},
+    llave/.style={thick,decorate,decoration={brace,amplitude=5pt}}]
+  % 1: el euro de partida y el camino de arriba
+  \capa{1}{\node[etiqueta,text=tceegris] at (0,0.9) {$t$};
+    \node[etiqueta,text=tceegris] at (10.2,0.9) {$t+1$};
+    \node[valor] (A) at (0,0) {$1$ €};
+    \node[valor,anchor=west] (B) at (9.2,0) {$(1+i)$ €};
+    \draw[paso] (A) -- node[rot,above] {invertir en euros ($i$)} (B);}
+  % 2: cambio al contado
+  \capa{2}{\node[valor] (C) at (0,-2.8) {$1/E_t$ \$};
+    \draw[paso] (A) -- node[rot,left,align=right] {cambiar\\al contado\\($\times 1/E_t$)} (C);}
+  % 3: inversión en dólares
+  \capa{3}{\node[valor] (Dd) at (4.6,-2.8) {$(1+i^{*})/E_t$ \$};
+    \draw[paso] (C) -- node[rot,above] {invertir en dólares ($i^{*}$)} (Dd);}
+  % 4: rama cubierta y la PCI
+  \capa{4}{\node[valor,anchor=west,text=tceemorado] (Fc) at (9.2,-1.75)
+      {$(1+i^{*})\,F_t^{t+1}/E_t$ € seguros};
+    \draw[cubierta] (Dd.north east) -- node[rot,above,sloped,text=tceemorado]
+      {vender hoy a plazo ($\times F_t^{t+1}$)} (Fc.west);
+    \draw[llave,tceemorado] ([xshift=1mm]Fc.east |- B.north) -- ([xshift=1mm]Fc.south east)
+      node[midway,right=6pt,text=tceemorado,align=center] (pci) {$=$\\\textbf{PCI}};}
+  % 5: rama sin cubrir y la PNCI (se añade al cantar la especulación)
+  \capa{5}{\node[valor,anchor=west,align=left,text=tceedorado!85!black] (Fs) at (9.2,-3.95)
+      {$(1+i^{*})\,E_{t+1}/E_t$ €;\\[-1pt]{\footnotesize se espera $(1+i^{*})\,E^{e}_{t+1}/E_t$}};
+    \draw[sincubrir] (Dd.south east) -- node[rot,below=3pt,sloped,align=center,text=tceedorado!85!black]
+      {cambiar en $t+1$\\al contado ($\times E_{t+1}$)} (Fs.west);
+    \draw[llave,tceedorado] ([xshift=13mm]Fc.east |- B.north) -- ([xshift=13mm]Fc.east |- Fs.south)
+      node[midway,right=6pt,text=tceedorado!85!black,align=center] {$=$\\\textbf{PNCI}\\{\footnotesize(en}\\{\footnotesize esperanza)}};}
+  % 6: los números de la almazara
+  \capa{6}{\node[etiqueta,font=\footnotesize,text=tceegris,anchor=north west] at (-0.4,-4.85)
+      {Almazara: $E_t=0{,}8583$ €/\$; a 3 meses, $i=0{,}5$~\% e $i^{*}=1$~\%; $F_t^{t+1}=0{,}8583\cdot1{,}005/1{,}01\approx0{,}8541$ €/\$.};}
+\end{tikzpicture}
+\end{document}

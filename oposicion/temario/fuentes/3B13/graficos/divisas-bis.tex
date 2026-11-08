@@ -1,0 +1,141 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Las divisas y los pares más negociados en el mercado de divisas OTC (cuota
+% en el volumen medio diario de abril). BPI, Encuesta Trienal de 2025, datos
+% definitivos (consulta 8/11/2026).
+% Panel izquierdo: las 10 divisas de bis2025-divisas.csv, ya ordenadas de
+% mayor a menor en 2025 (las cuotas suman 200 %); 2025 en pleno y, debajo,
+% 2022 en tono medio y 2019 en claro (el texto compara con los 2). Panel derecho: los 8 primeros pares de bis2025-pares.csv;
+% 2025 en pleno y, debajo, 2022 en tono medio (el mismo que en las divisas). El BPI escribe USD/EUR, USD/GBP y
+% USD/AUD: se rotulan con la convención de mercado (EUR/USD, GBP/USD y
+% AUD/USD), sin tocar el dato.
+% Paleta: el dólar, azul marino (dicze); las demás divisas y los pares,
+% morado; el renminbi y el par USD/CNY, dorado (casi dobla su cuota de 2019).
+% Capas «dic» (tikz-tcee.tex): en cada panel, barras → ejes → etiquetas.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bis2025-divisas.csv}\divisasbis
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bis2025-pares.csv}\paresbis
+% Los ejes de cada panel salen después de sus barras: capa 3 (divisas) y
+% capa 6 (pares)
+\ifnum3>\tceepaso\relax
+  \pgfplotsset{ejesdiv/.style={hide axis}}
+\else
+  \pgfplotsset{ejesdiv/.style={}}
+\fi
+\ifnum6>\tceepaso\relax
+  \pgfplotsset{ejespar/.style={hide axis}}
+\else
+  \pgfplotsset{ejespar/.style={}}
+\fi
+\colorlet{divdolar}{dicze}
+\colorlet{divotras}{tceemorado}
+\colorlet{divcny}{tceedorado}
+\colorlet{divdolarclaro}{dicze!35}
+\colorlet{divotrasclaro}{tceemorado!35}
+\colorlet{divcnyclaro}{tceedorado!40}
+\colorlet{divdolarmedio}{dicze!65}
+\colorlet{divotrasmedio}{tceemorado!65}
+\colorlet{divcnymedio}{tceedorado!70}
+\pgfplotsset{
+  % solo las filas #1 a #2 del CSV
+  filas/.style 2 args={y filter/.expression={
+    and(\coordindex>=#1, \coordindex<=#2) ? y : nan}},
+  % fila i del CSV en la posición i (de arriba abajo); la barra del año
+  % reciente, arriba (i - 0,19); la del año de comparación, debajo (i + 0,19).
+  % En las divisas, 3 barras: 2025 (i - 0,26), 2022 (i) y 2019 (i + 0,26)
+  reciente/.style={/pgfplots/table/y expr=\coordindex-0.19},
+  anterior/.style={/pgfplots/table/y expr=\coordindex+0.19},
+  d2025/.style={/pgfplots/table/y expr=\coordindex-0.26},
+  d2022/.style={/pgfplots/table/y expr=\coordindex},
+  d2019/.style={/pgfplots/table/y expr=\coordindex+0.26},
+  barra div/.style={on layer=dicbarras, forget plot, dicbarra=#1, xbar, bar width=0.32cm},
+  % valor al final de la barra, con coma decimal
+  valor div/.style={on layer=axis descriptions, forget plot, draw=none, fill=none,
+    xbar, bar width=0.32cm, nodes near coords={\pgfmathprintnumber[
+      /pgf/number format/.cd, use comma, fixed, fixed zerofill, precision=1]{\pgfplotspointmeta}},
+    nodes near coords style={font=\footnotesize, anchor=west, fill=none},
+    point meta=x},
+  panel div/.style={
+      width=6.4cm, height=9cm, scale only axis,
+      xmin=0, y dir=reverse,
+      ticklabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      major y tick style={draw=none},
+      xmajorgrids, grid style={tceegris!25},
+      clip=false,
+      title style={font=\small, yshift=2pt},
+      legend style={at={(0.5,-0.09)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize,
+        /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left},
+}
+\begin{tikzpicture}[tcee]
+  % Panel izquierdo: divisas
+  \begin{axis}[panel div, name=divisas,
+      xmax=100, xtick={0,20,...,100},
+      ymin=-0.6, ymax=9.6, ytick={0,...,9},
+      yticklabels={USD,EUR,JPY,GBP,CNY,CHF,AUD,CAD,HKD,SGD},
+      title={Divisas (\% sobre 200~\%)},
+      dicapas, ejesdiv]
+    % 1: barras de 2019 (claras) y de 2022 (tono medio)
+    \capa{1}{
+      \addplot[barra div=divdolarclaro, bar width=0.24cm, filas={0}{0}] table[x=c2019, d2019] {\divisasbis};
+      \addplot[barra div=divotrasclaro, bar width=0.24cm, filas={1}{3}] table[x=c2019, d2019] {\divisasbis};
+      \addplot[barra div=divcnyclaro, bar width=0.24cm, filas={4}{4}] table[x=c2019, d2019] {\divisasbis};
+      \addplot[barra div=divotrasclaro, bar width=0.24cm, filas={5}{9}] table[x=c2019, d2019] {\divisasbis};
+      \addplot[barra div=divdolarmedio, bar width=0.24cm, filas={0}{0}] table[x=c2022, d2022] {\divisasbis};
+      \addplot[barra div=divotrasmedio, bar width=0.24cm, filas={1}{3}] table[x=c2022, d2022] {\divisasbis};
+      \addplot[barra div=divcnymedio, bar width=0.24cm, filas={4}{4}] table[x=c2022, d2022] {\divisasbis};
+      \addplot[barra div=divotrasmedio, bar width=0.24cm, filas={5}{9}] table[x=c2022, d2022] {\divisasbis};
+    }
+    % 2: barras de 2025
+    \capa{2}{
+      \addplot[barra div=divdolar, bar width=0.24cm, filas={0}{0}] table[x=c2025, d2025] {\divisasbis};
+      \addplot[barra div=divotras, bar width=0.24cm, filas={1}{3}] table[x=c2025, d2025] {\divisasbis};
+      \addplot[barra div=divcny, bar width=0.24cm, filas={4}{4}] table[x=c2025, d2025] {\divisasbis};
+      \addplot[barra div=divotras, bar width=0.24cm, filas={5}{9}] table[x=c2025, d2025] {\divisasbis};
+    }
+    % 3: ejes y códigos de las divisas (los dibuja el entorno axis) y leyenda
+    \capa{3}{
+      \addlegendimage{area legend, dicbarra=divotras}
+      \addlegendentry{2025}
+      \addlegendimage{area legend, dicbarra=divotrasmedio}
+      \addlegendentry{2022}
+      \addlegendimage{area legend, dicbarra=divotrasclaro}
+      \addlegendentry{2019}
+    }
+    % 4: valor de 2025 al final de cada barra (y, en el renminbi, el de
+    % 2019 al lado de su barra)
+    \capa{4}{
+      \addplot[valor div, bar width=0.24cm] table[x=c2025, d2025] {\divisasbis};
+      \dicrotulo[font=\footnotesize, anchor=west, text=divcny!80!black]{(5.2,4.26)}{4,3 en 2019}
+    }
+  \end{axis}
+  % Panel derecho: pares
+  \begin{axis}[panel div, at={($(divisas.east)+(1.9cm,0)$)}, anchor=west,
+      xmax=25, xtick={0,5,...,25},
+      ymin=-0.6, ymax=7.6, ytick={0,...,7},
+      yticklabels={EUR/USD,USD/JPY,USD/CNY,GBP/USD,USD/CAD,AUD/USD,USD/CHF,USD/HKD},
+      title={Pares (\% del total)},
+      dicapas, ejespar]
+    % 5: barras de 2022 (tono medio, como en las divisas) y de 2025
+    \capa{5}{
+      \addplot[barra div=divotrasmedio, filas={0}{1}] table[x=c2022, anterior] {\paresbis};
+      \addplot[barra div=divcnymedio, filas={2}{2}] table[x=c2022, anterior] {\paresbis};
+      \addplot[barra div=divotrasmedio, filas={3}{7}] table[x=c2022, anterior] {\paresbis};
+      \addplot[barra div=divotras, filas={0}{1}] table[x=c2025, reciente] {\paresbis};
+      \addplot[barra div=divcny, filas={2}{2}] table[x=c2025, reciente] {\paresbis};
+      \addplot[barra div=divotras, filas={3}{7}] table[x=c2025, reciente] {\paresbis};
+    }
+    % 6: ejes y pares (los dibuja el entorno axis), leyenda y valores de 2025
+    \capa{6}{
+      \addlegendimage{area legend, dicbarra=divotras}
+      \addlegendentry{2025}
+      \addlegendimage{area legend, dicbarra=divotrasmedio}
+      \addlegendentry{2022}
+      \addplot[valor div, filas={0}{7}] table[x=c2025, reciente] {\paresbis};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}
