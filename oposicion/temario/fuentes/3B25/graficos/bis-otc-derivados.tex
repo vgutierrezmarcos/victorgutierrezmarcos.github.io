@@ -1,0 +1,99 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Derivados OTC: nocional vivo por categoría de riesgo (áreas apiladas, eje
+% izquierdo, billones de dólares) y valor de mercado bruto (línea, eje
+% derecho), de junio de 1998 a diciembre de 2025 (columna anio, fin del
+% semestre: 2008.5 = jun. 2008; 2026.0 = dic. 2025). BIS, estadísticas semestrales de derivados OTC (consulta
+% 8/11/2026). Paleta: tipos y divisas, familia morada; crédito, dorado (para
+% que se vea el pico de 2007-2008); renta variable, materias primas y sin
+% asignar, grises; valor bruto, azul marino (dicze).
+% 2 ejes superpuestos del mismo tamaño: el primero lleva las áreas y el eje
+% izquierdo; el segundo, el eje derecho, la línea, los puntos y los rótulos.
+% Los puntos del nocional se dibujan en el segundo eje con su valor pasado a
+% la escala derecha (× 40/900): 672,55 → 29,891 y 844,58 → 37,537.
+% Capas «dic» (tikz-tcee.tex): áreas → ejes → línea → puntos → rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bis-otc-derivados.csv}\otc
+% Los ejes salen en la capa 2, después de las áreas
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesotc/.style={hide axis}}
+\else
+  \pgfplotsset{ejesotc/.style={}}
+\fi
+\pgfplotsset{
+  marcootc/.style={width=14cm, height=8cm, scale only axis=false,
+    xmin=1998, xmax=2026, clip=false,
+    ticklabel style={font=\footnotesize}, tick align=outside},
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[marcootc,
+      ymin=0, ymax=900, ytick={0,100,...,900},
+      xtick={2000,2005,...,2025},
+      xticklabel style={/pgf/number format/.cd,1000 sep={}},
+      axis x line*=bottom, axis y line*=left,
+      ylabel={Nocional (billones de dólares)},
+      ymajorgrids, grid style={tceegris!25},
+      stack plots=y, area style,
+      dicapas, ejesotc]
+    % 1: áreas apiladas del nocional, de abajo arriba
+    \capa{1}{
+      \addplot[on layer=dicbarras, forget plot, draw=none, fill=tceemorado] table[x=anio, y=tipos] {\otc} \closedcycle;
+      \addplot[on layer=dicbarras, forget plot, draw=none, fill=tceemorado!40] table[x=anio, y=divisas] {\otc} \closedcycle;
+      \addplot[on layer=dicbarras, forget plot, draw=none, fill=tceegris!75] table[x=anio, y=renta_variable] {\otc} \closedcycle;
+      \addplot[on layer=dicbarras, forget plot, draw=none, fill=tceegris!45] table[x=anio, y=materias_primas] {\otc} \closedcycle;
+      \addplot[on layer=dicbarras, forget plot, draw=none, fill=tceedorado] table[x=anio, y=credito] {\otc} \closedcycle;
+      \addplot[on layer=dicbarras, forget plot, draw=none, fill=tceegris!20] table[x=anio, y=sin_asignar] {\otc} \closedcycle;
+    }
+    % 2: ejes horizontal e izquierdo (los dibuja el entorno axis)
+  \end{axis}
+  \begin{axis}[marcootc,
+      ymin=0, ymax=40, ytick={0,10,...,40},
+      axis x line=none, axis y line*=right,
+      ylabel={Valor de mercado bruto (billones de dólares)},
+      legend style={at={(0.5,-0.11)}, anchor=north, legend columns=4,
+        draw=none, font=\footnotesize,
+        /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left,
+      dicapas, ejesotc]
+    % 2: eje derecho (lo dibuja el entorno axis); el trazo invisible deja el eje
+    % con algo dentro en la capa 1, antes de la línea
+    \addplot[dicsuelto, draw=none] coordinates {(1998,0) (2026,40)};
+    % 3: valor de mercado bruto
+    \capa{3}{
+      \addplot[forget plot, diclineahalo=dicze, sharp plot, mark=none] table[x=anio, y=valor_bruto] {\otc};
+    }
+    % 4: puntos destacados: nocional en jun. 2008 y dic. 2025; valor bruto en
+    % dic. 2008 (máximo) y dic. 2025
+    \capa{4}{
+      \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=tceemorado]
+        coordinates {(2008.5,29.891) (2026,37.537)};
+      \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=dicze]
+        coordinates {(2009,34.94) (2026,22.80)};
+    }
+    % 5: rótulos y leyenda
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, anchor=east, text=tceemorado, align=right]{(2008.1,30.6)}{nocional: 672,6\\(jun.\ 2008)}
+      \dicrotulo[font=\footnotesize, anchor=south east, text=tceemorado]{(2025.9,38.2)}{844,6 (dic.\ 2025)}
+      \dicrotulo[font=\footnotesize, anchor=south west, text=dicze, align=left]{(2009.2,35.2)}{valor bruto: 34,9 (dic.\ 2008)}
+      \dicrotulo[font=\footnotesize, anchor=north east, text=white, align=right]{(2025.9,15.6)}{22,8\\(dic.\ 2025)}
+      \addlegendimage{area legend, draw=none, fill=tceemorado}
+      \addlegendentry{Tipos de interés}
+      \addlegendimage{area legend, draw=none, fill=tceemorado!40}
+      \addlegendentry{Divisas}
+      \addlegendimage{area legend, draw=none, fill=tceedorado}
+      \addlegendentry{Crédito}
+      \addlegendimage{leyenda linea corta, very thick, dicze}
+      \addlegendentry{Valor de mercado bruto (eje dcho.)}
+      \addlegendimage{area legend, draw=none, fill=tceegris!75}
+      \addlegendentry{Renta variable}
+      \addlegendimage{area legend, draw=none, fill=tceegris!45}
+      \addlegendentry{Materias primas}
+      \addlegendimage{area legend, draw=none, fill=tceegris!20}
+      \addlegendentry{Sin asignar}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

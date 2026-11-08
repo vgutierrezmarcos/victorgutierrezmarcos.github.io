@@ -1,0 +1,1281 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B25.bib}
+\tcetema[Instrumentos y mercados de derivados]{3.B.25}{Análisis de los instrumentos y de los mercados de derivados.}
+\tcefecha{08/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Cubrirse las espaldas», dice el dicho. Para eso nacieron los derivados: para que el agricultor, la aerolínea o el banco fijen hoy el precio al que comprarán o venderán mañana.
+  \item Pero el 20 de abril de 2020, con un mercado saturado de crudo y la demanda hundida por la pandemia, el futuro de petróleo WTI con vencimiento en mayo liquidó a $-37{,}63$ dólares por barril: quien tenía la posición compradora y no podía recibir el crudo en Cushing (Oklahoma) pagó por deshacerse de ella \parencite{CFTC2020WTI,EIA2026WTI}. Un contrato pensado para cubrirse se convirtió en una pérdida mayor que todo lo comprometido.
+  \item Cinco años antes de la crisis financiera, Warren \autor{Buffett} había advertido que los derivados eran «armas financieras de destrucción masiva», con peligros «hoy latentes, pero potencialmente letales» \parencite[15]{Buffett2003Carta}.
+  \item ¿Sirven los derivados para cubrirse las espaldas o multiplican los riesgos que deberían cubrir? Para responder hay que saber qué son, cuánto valen y cómo funcionan sus mercados.
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Microeconómica}: los derivados separan el riesgo del activo que lo genera y lo trasladan a quien está dispuesto a asumirlo; con ellos se pueden asegurar estados de la naturaleza que antes no tenían precio, es decir, \emph{completan los mercados} \parencite{Ross1976Options}, en la línea de los títulos de \autor{Arrow} \vertema{3.A.21}.
+  \item \emph{Macroeconómica y de estabilidad}: son el mayor mercado financiero por importe. El nocional de los derivados OTC vivos alcanzó 845 billones de dólares en diciembre de 2025, cerca de su máximo histórico, aunque su valor de mercado bruto, que mide mejor el riesgo, era de 22,8 billones \parencite{BIS2026OTCDerivados,ISDA2026KeyTrends}. Estuvieron en el centro de la crisis de 2008 y de la reforma financiera posterior \vertema{3.B.26} \vertema{3.B.27}.\footnote{No hay que confundir la regulación de los derivados con el impuesto sobre las transacciones financieras, en vigor en España desde enero de 2021: grava al 0,2~\% la \emph{compra de acciones} de sociedades españolas cotizadas con una capitalización de más de 1.000 millones de euros \parencite{BOE2020ITF}, no los derivados en sí (solo la compra de acciones que resulte de liquidar uno con entrega). En 2025 recaudó 339 millones de euros, un 36,5~\% más que en 2024 \parencite{AEAT2026Recaudacion}.}
+  \item \emph{Teórica}: la valoración por ausencia de arbitraje es una de las ideas más fecundas de la economía financiera. Robert C. \autor{Merton} y Myron \autor{Scholes} recibieron el Premio Nobel de Economía de 1997 «por un nuevo método para determinar el valor de los derivados» \parencite{Nobel1997Prensa}.\footnote{Fischer \autor{Black}, coautor del modelo, había muerto en 1995, y el Premio Nobel no se concede a título póstumo; la Academia lo recordó al anunciar el de 1997 \parencite{Nobel1997Prensa}.}
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Qué son}: un \concepto{derivado} es un contrato cuyo valor depende (se deriva) del precio de otro activo, el \concepto{subyacente}, que puede ser financiero (una acción, un índice, un bono, un tipo de interés, una divisa o el riesgo de crédito de un emisor) o real (petróleo, trigo, electricidad o derechos de emisión). Son la tercera familia de activos financieros, junto a la renta variable \vertema{3.B.23} y la renta fija \vertema{3.B.24}, y tienen 3 rasgos:
+    \begin{itemize}
+    \item no existen sin el subyacente y tienen un vencimiento fijado en el contrato;
+    \item en sus pagos son un juego de suma cero: lo que gana una parte lo pierde la otra (no en bienestar: si una de las partes se cubre, las 2 pueden salir ganando con el contrato);
+    \item no sirven para financiarse: al firmarlos no se intercambia nada o casi nada, y por eso permiten tomar mucho riesgo con poco dinero, el \concepto{apalancamiento}.\footnote{En contabilidad, los derivados se reconocen en el balance por su valor razonable desde que se contratan, con los cambios de valor en la cuenta de resultados salvo que se aplique la contabilidad de coberturas (NIIF~9); el nominal, que no es un activo ni un pasivo, solo aparece en la memoria. En la balanza de pagos se registran solo en la cuenta financiera, en la partida de derivados financieros (distintos de reservas) y opciones de compra de acciones por los empleados, y en términos netos (variación neta de activos menos variación neta de pasivos): no generan rentas primarias, ni siquiera las liquidaciones periódicas de un \emph{swap} de tipos de interés \parencite[cap.~6]{FMI2009MBP6} \vertema{3.B.11}.}
+    \end{itemize}
+  \item \emph{Tipos}: los \concepto{\emph{forwards}} y los \concepto{futuros} obligan a comprar y a vender en una fecha futura a un precio fijado hoy; las \concepto{opciones} dan a su comprador el derecho, pero no la obligación, de hacerlo; los \concepto{\emph{swaps}} intercambian flujos durante varios periodos y son una cartera de \emph{forwards}; y los \concepto{derivados de crédito} pagan si ocurre un impago.
+  \item \emph{Para qué}: para \emph{cubrir} un riesgo que ya se tiene, para \emph{especular} con poco capital y para \emph{arbitrar} cuando 2 formas de conseguir lo mismo tienen precios distintos \parencite[cap.~1]{Hull2022Options}.
+  \item \emph{Histórica}: los derivados nacen para cubrir el riesgo de precio de las cosechas.
+    \begin{itemize}
+    \item Los contratos a plazo sobre mercancías son muy antiguos;\footnote{Entre 1634 y 1637 los comerciantes de las Provincias Unidas negociaron contratos a plazo sobre bulbos de tulipán que se entregarían al florecer; los precios se dispararon y se hundieron a principios de 1637. Es el ejemplo clásico de burbuja, aunque \textcite{Garber1990Famous} sostiene que buena parte de esos precios se explica por los fundamentos (bulbos raros), y \textcite{Thompson2007Tulipmania}, porque un cambio legal convirtió de hecho los contratos en opciones. El hundimiento no se debió a una mala cosecha: los bulbos aún no se habían recogido.} el primer mercado de futuros organizado fue el del arroz de Dojima, en Osaka, reconocido en 1730 \parencite{Schaede1989Forwards}. En Occidente, el \emph{Chicago Board of Trade} (1848) adoptó en 1865 reglas formales de márgenes y entrega para sus contratos de grano \parencite{CFTC2026Historia}.
+    \item Los derivados financieros llegan con el fin de la convertibilidad del dólar: en 1972 el \emph{International Monetary Market} del \emph{Chicago Mercantile Exchange} (fundado en 1898) empezó a negociar futuros sobre divisas, los primeros futuros financieros \parencite{Chalupa1982Currency,CFTC2026Historia}; en 1973 abrió el \emph{Chicago Board Options Exchange}, el primer mercado organizado de opciones sobre acciones \parencite{Cboe2020Form10K}, el mismo año en que \textcite{BlackScholes1973Pricing} publicaron su fórmula; y los \emph{swaps} aparecen a principios de los años 80 \parencite[cap.~7]{Hull2022Options}.
+    \item En España, los primeros mercados de futuros y opciones financieros nacieron en 1989 sobre la deuda pública, al amparo de la Ley del Mercado de Valores de 1988, y en 1992 MEFF fue reconocido como mercado secundario oficial \parencite{BOE1992OrdenMEFF}.
+    \item Tras la crisis de 2008, el G-20 llevó los derivados OTC a las cámaras de contrapartida y a los registros de operaciones (\ref{sec:mercados-derivados}).
+    \end{itemize}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Qué derivados hay y qué pago dan a vencimiento?
+  \item ¿Para qué se usan: para cubrir, para especular o para arbitrar?
+  \item ¿Cuánto vale un derivado? La respuesta, común a todos: lo que cuesta replicarlo, porque si no, habría arbitraje. ¿Y por qué ese valor no depende de lo que cada uno espere ni de su aversión al riesgo?
+  \item ¿Cómo se negocian, y sus mercados estabilizan o desestabilizan el sistema financiero?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición estudia las 3 familias de derivados con el mismo guion, para que se vea lo que tienen en común: definición, tipos, pago a vencimiento, estrategias y valoración.
+  \begin{itemize}
+  \item En el bloque~\ref{sec:futuros}, los futuros y los \emph{forwards}, los más sencillos. Con ellos se presentan sus mercados (la cámara, los márgenes y la liquidación diaria) y la idea que recorre todo el tema: un derivado vale lo que cuesta replicarlo.
+  \item En el bloque~\ref{sec:opciones}, las opciones, que añaden la asimetría del derecho sin obligación y obligan a modelizar la incertidumbre: la paridad \emph{put-call}, el modelo binomial y el de \autor{Black} y \autor{Scholes}.
+  \item En el bloque~\ref{sec:swaps}, los \emph{swaps}, que son carteras de \emph{forwards}, los derivados de crédito y el análisis de conjunto de los mercados de derivados tras la crisis de 2008: tamaño, participantes, regulación y estabilidad.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.B.25. Análisis de los instrumentos y de los mercados de derivados}\\[2pt]
+Introducción\\
+I. Mercados de futuros y \emph{forwards}\\
+\hspace*{1.5em}1. Definición\\
+\hspace*{1.5em}2. Tipos: según el mercado y según el subyacente\\
+\hspace*{1.5em}3. Pago del futuro a vencimiento\\
+\hspace*{1.5em}4. Estrategias: cobertura, especulación y arbitraje\\
+\hspace*{1.5em}5. Valoración: la ausencia de arbitraje\\
+II. Mercados de opciones\\
+\hspace*{1.5em}1. Definición\\
+\hspace*{1.5em}2. Tipos\\
+\hspace*{1.5em}3. Pago de la opción a vencimiento y beneficio\\
+\hspace*{1.5em}4. Estrategias\\
+\hspace*{1.5em}5. Valoración: paridad \emph{put-call}, binomial y \autor{Black}-\autor{Scholes}\\
+III. Mercados de \emph{swaps}\\
+\hspace*{1.5em}1. Definición\\
+\hspace*{1.5em}2. Tipos\\
+\hspace*{1.5em}3. Pagos del \emph{swap}\\
+\hspace*{1.5em}4. Estrategias\\
+\hspace*{1.5em}5. Valoración\\
+\hspace*{1.5em}6. Los mercados de derivados: tamaño, participantes, regulación y estabilidad\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{7} (I.1, \tiempo{0,5}; I.2, \tiempo{1,75}; I.3, \tiempo{0,75}; I.4, \tiempo{0,75}; I.5, \tiempo{3,25}: paridad \emph{spot-forward}, \tiempo{1,5}, expectativas y \emph{contango}, \tiempo{1,25}, y la paridad cubierta de intereses, \tiempo{0,5}); II, \tiempo{11,5} (II.1, \tiempo{0,5}; II.2, \tiempo{1}; II.3, \tiempo{1,5}; II.4, \tiempo{1,5}; II.5, \tiempo{7}: paridad \emph{put-call}, \tiempo{1,5}, valor intrínseco y temporal, \tiempo{1}, binomial, \tiempo{2}, \autor{Black} y \autor{Scholes}, \tiempo{2}, y opciones reales, \tiempo{0,5}); III, \tiempo{8} (III.1, \tiempo{0,5}; III.2, \tiempo{2,5}; III.3, \tiempo{0,25}; III.4, \tiempo{0,75}; III.5, \tiempo{1}; III.6, \tiempo{3}), y conclusión, \tiempo{1}. La valoración es el hilo del tema y se lleva casi la mitad del cuerpo. La introducción y la conclusión se cantan sin pizarra, con el dicho del enganche, «cubrirse las espaldas», apuntado arriba: vuelve en la idea final. A la izquierda de la pizarra, en columna, el guion que se repite en los 3 bloques (definición, tipos, pago, estrategias y valoración), que se queda todo el tema. Las funciones clave son la paridad \emph{spot-forward} \eqref{eq:spot-forward}, la paridad \emph{put-call} \eqref{eq:put-call} y la fórmula de \autor{Black} y \autor{Scholes} \eqref{eq:black-scholes}: se recuadran en morado en la esquina superior derecha y se quedan hasta el final. Las pegatinas se apuntan junto a su concepto al decirlas: «cada día tiene su afán» (liquidación diaria), «lo que se gana en los columpios se pierde en los tiovivos» (paridad \emph{spot-forward}), «el que paga, manda» (asimetría de la opción) y «dos caras de la misma moneda» (paridad \emph{put-call}). Las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
+\end{notaopositor}
+
+\begin{anotaciones}
+\textbf{Notación.} Es la de \textcite{Hull2022Options}, la del canon del temario para los derivados. $S_0$ es el precio de contado del subyacente hoy, $S_t$ el de la fecha $t$ y $S_T$ el del vencimiento, en la fecha $T$ (en años); $F_0$ es el precio a plazo o del futuro pactado hoy para entregar en $T$, y $F_t$ el que cotiza en $t$; $K$ es el precio de ejercicio de una opción y el precio de entrega de un \emph{forward} ya firmado; $c$ y $p$ son las primas de la \emph{call} y de la \emph{put} europeas, y $C$ y $P$, las de las americanas; $r$ es el tipo sin riesgo con capitalización continua (el $r_f$ de la teoría de carteras \vertema{3.B.23}: un euro invertido hoy vale $e^{rT}$ en $T$); $\sigma$ es la volatilidad anual del rendimiento del subyacente. $\mathbb{E}_0[S_T]$ es el precio de contado que el mercado espera hoy para $T$, y $\mathbb{E}^{\mathbb{Q}}[\cdot]$, la esperanza con la probabilidad neutral al riesgo. Son locales de este tema, como en \autor{Hull}: $I$, el valor actual de las rentas que da el subyacente hasta $T$ (no la inversión); $q$, su rendimiento continuo; $u$, el coste de almacenamiento, e $y$, el rendimiento de conveniencia de una materia prima (no la TIR de un bono); y, en el modelo binomial, $u$ y $d$ son los factores de subida y de bajada, $\pi$ la probabilidad neutral al riesgo (no la real) y $\Delta$ la delta o ratio de cobertura. En el binomial y en los ejemplos numéricos, $r$ es el tipo simple del periodo (se descuenta con $1+r$, como $K/1{,}05$); en las fórmulas de tiempo continuo, el tipo continuo. $N(\cdot)$ es la función de distribución de la normal estándar. En divisas, $S_0\equiv E_0$ es el tipo de cambio directo de contado e $i$ e $i^{*}$ los tipos de interés nacional y extranjero, como en los temas de mercados de divisas \vertema{3.B.13}. En los \emph{swaps} y los FRA, $\mathrm{VN}$ es el nominal, y $B_{\mathrm{fix}}$ y $B_{\mathrm{fl}}$, los valores de un bono a tipo fijo y de otro a tipo variable.
+\end{anotaciones}
+
+\begin{anotaciones}
+Para entender los derivados en pocos minutos: en castellano, \url{https://youtu.be/U1qvH5roZ5U}; en francés, \url{https://youtu.be/t-6MyCpL9yU}. Sobre la tulipomanía: \url{https://youtu.be/G1dUA80d58w}.
+\end{anotaciones}
+
+% ==========================================================================
+\section{Mercados de futuros y \emph{forwards}}\label{sec:futuros}
+\minutos{7}
+
+\begin{notaopositor}
+En el cante (\tiempo{7}): a la izquierda, en columna, el guion de 5 pasos, que se queda todo el tema. I.1, \tiempo{0,5}: de palabra, con los 5 elementos del contrato. I.2, \tiempo{1,75}: la estrella de la cámara frente a la malla bilateral (gráfico~\ref{fig:ccp}), con «cada día tiene su afán» junto a la liquidación diaria, y la tabla~\ref{tab:organizados-otc} en versión mínima o de palabra. I.3, \tiempo{0,75}: el gráfico~\ref{fig:pago-futuro}, largo y corto, y la vuelta al WTI de abril de 2020. I.4, \tiempo{0,75}: de palabra. I.5, \tiempo{3,25}: la paridad \eqref{eq:spot-forward} recuadrada en morado en la esquina superior derecha, con «lo que se gana en los columpios se pierde en los tiovivos»; debajo, una sola extensión, la del coste de mantenimiento \eqref{eq:coste-mantenimiento}; y el gráfico~\ref{fig:contango} con las 3 trayectorias. La paridad cubierta de intereses, de palabra. La definición legal, la ratio de cobertura, el FRA y las notas son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: un futuro fija hoy el precio de mañana. Su pago es lineal, y su precio no lo decide lo que el mercado espere del subyacente, sino lo que cuesta comprarlo hoy y mantenerlo hasta el vencimiento, $F_0=S_0e^{rT}$: si no fuera así, alguien ganaría sin riesgo.
+\item \emph{Nexo}: empezamos por el derivado más sencillo, el que obliga a las 2 partes, y con él presentamos cómo funciona un mercado organizado de derivados.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Definición}\label{sec:definicion-futuros}
+
+\begin{itemize}
+\item Un \concepto{contrato a plazo} (\emph{forward}) o de \concepto{futuros} es un acuerdo por el que 2 partes se \emph{obligan} hoy a comprar y a vender un subyacente en una fecha futura y a un precio fijado hoy. Tiene 5 elementos:
+  \begin{enumerate}
+  \item un \emph{contrato};
+  \item una \emph{obligación} para las 2 partes: el \concepto{comprador}, que toma la \concepto{posición larga}, se obliga a comprar, y el \concepto{vendedor}, que toma la \concepto{posición corta}, a vender;
+  \item un \emph{subyacente}, en una cantidad dada;
+  \item un \emph{precio a plazo}, $F_0$, que se fija hoy y se paga en el vencimiento;
+  \item una \emph{fecha de vencimiento}, $T$.
+  \end{enumerate}
+\item Al firmarlo, ninguna de las partes paga nada.\footnote{Por eso un futuro no tiene prima, a diferencia de una opción (\ref{sec:opciones}): las 2 partes asumen obligaciones simétricas. $F_0$ no es el precio del contrato, sino el de la compraventa futura que se pacta, y tampoco es un precio de ejercicio, porque nadie elige si ejerce.} La misma lista, con una prima, define la opción (\ref{sec:definicion-opciones}), y con varias fechas, el \emph{swap} (\ref{sec:definicion-swaps}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Tipos}\label{sec:tipos-futuros}
+
+\subsubsection{Según el mercado en el que se negocian}\label{sec:futuros-mercado}
+
+\begin{itemize}
+\item \emph{Futuros}: un \concepto{futuro} es un contrato a plazo \emph{normalizado} (importe, subyacente y vencimiento) que se negocia en un \concepto{mercado organizado}, cuya \concepto{entidad de contrapartida central} (ECC o cámara) se interpone entre comprador y vendedor: por \emph{novación}, se convierte en compradora frente a cada vendedor y en vendedora frente a cada comprador, y su posición neta es siempre nula \parencite[cap.~2]{Hull2022Options}. En España, la Ley 6/2023 incluye los futuros, las opciones, las permutas y los FRA entre los instrumentos financieros \parencite[art.~2.1.d]{Ley6_2023}, y el Real Decreto 814/2023 los desarrolla \parencite[art.~3]{BOE2023RD814}.\footnote{La definición clásica de futuro financiero era la del artículo~1 del Real Decreto 1814/1991, por el que se regulaban los mercados oficiales de futuros y opciones \parencite{BOE1991RD1814}. Lo derogó en 2010 el Real Decreto 1282/2010; a este, el Real Decreto 1464/2018, y a este, el Real Decreto 814/2023. Ninguna norma vigente repite aquella definición.}
+\item \emph{Cómo se protege la cámara} del incumplimiento de una de las partes, con 3 mecanismos \parencite[cap.~2]{Hull2022Options}:
+  \begin{itemize}
+  \item el \concepto{margen inicial}, un depósito de garantía que cada parte entrega al abrir la posición y que cubre la pérdida de un día malo;
+  \item la \concepto{liquidación diaria} (\emph{mark-to-market}): cada día se cargan las pérdidas y se abonan las ganancias según el precio de cierre, el \concepto{margen de variación}; si el saldo cae por debajo del \emph{margen de mantenimiento}, la cámara pide reponerlo (\emph{margin call}) y, si no se repone, cierra la posición. Un futuro es, en la práctica, un \emph{forward} que se liquida y se vuelve a firmar cada día. «Cada día tiene su afán»: las pérdidas no se acumulan hasta el vencimiento;
+  \item y, si eso no basta, una cascada de recursos: las garantías del incumplidor, una parte del capital de la cámara, el fondo de garantía al que aportan todos los miembros y, al final, el resto del capital (anexo~\ref{anexo:ccp}).
+  \end{itemize}
+  \begin{itemize}
+  \item Por ejemplo, en un futuro sobre un índice que valga 10~euros por punto, como el del IBEX~35 en MEFF, quien compra un contrato a 15.000 puntos tiene una exposición de 150.000~euros. Si el índice cierra en 14.800, ese día se le cargan 2.000~euros; si al día siguiente cierra en 15.300, se le abonan 5.000. Con unas garantías que son una pequeña fracción del nominal, el apalancamiento es grande.
+  \end{itemize}
+\item El número de contratos vivos en un momento dado es el \concepto{interés abierto} (\emph{open interest}). La mayoría de los contratos no llegan a entregarse: se cierran antes del vencimiento con la operación contraria (quien compró un futuro vende otro igual y se queda con la diferencia de precios).\footnote{Muchos, como los de índices bursátiles, se liquidan por diferencias porque la entrega sería imposible \parencite[cap.~2]{Hull2022Options}. Si el tipo de interés no es aleatorio, el precio de un futuro y el de un \emph{forward} con el mismo vencimiento coinciden; si lo es, difieren por la liquidación diaria \parencite{CoxIngersollRoss1981Relation}.}
+\item \emph{Forwards}: se pactan en mercados no organizados u OTC (\emph{over the counter}), de forma bilateral y a medida de las partes. No hay cámara, así que hay \concepto{riesgo de contrapartida}, y la ganancia o la pérdida se liquida al vencimiento. Habitualmente, los futuros se usan para cubrir carteras de acciones y bonos, y los \emph{forwards}, el riesgo de tipo de cambio (seguros de cambio) y de tipo de interés (FRA). Tras 2008, la regulación ha llevado a compensar en una cámara buena parte de lo OTC (\ref{sec:mercados-derivados}).
+\item Las 2 formas conviven porque se complementan (gráfico~\ref{fig:ccp} y tabla~\ref{tab:organizados-otc}): el mercado organizado da liquidez y seguridad, y el OTC, flexibilidad.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Compensación bilateral y compensación con una cámara de contrapartida central}\label{fig:ccp}
+\grafico[0.8\textwidth]{ccp}
+\fuente{elaboración propia a partir de \textcite[82]{NunezValdeolivas2019CCP}.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Mercados organizados y mercados OTC}\label{tab:organizados-otc}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.2cm}>{\raggedright\arraybackslash}m{5.5cm}>{\raggedright\arraybackslash}m{5.5cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Organizado} (futuros, opciones cotizadas) & \textbf{OTC} (\emph{forwards}, FRA, \emph{swaps}, CDS, opciones a medida)\\
+\midrule
+\emph{Contrato} & Normalizado & A medida de las partes\\
+\addlinespace[0.2em]
+\emph{Contraparte} & La cámara, con márgenes y liquidación diaria & La otra parte, con el colateral pactado (salvo que se compense en una ECC)\\
+\addlinespace[0.2em]
+\emph{Liquidez} & Alta: se cierra la posición con la operación contraria & Menor: cerrar exige negociar con la contraparte\\
+\addlinespace[0.2em]
+\emph{Coste y transparencia} & Bajo coste; precios públicos & Mayor coste; precios bilaterales, hoy comunicados a registros\\
+\addlinespace[0.2em]
+\rowcolor{tceesalvia}\textbf{Ventaja} & \textcolor{tceeverde}{Liquidez, coste y menor riesgo de contrapartida} & \textcolor{tceedorado}{Flexibilidad}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[caps.~1-2]{Hull2022Options}. En fondo salvia, por qué conviven los 2 mercados.}
+\end{table}
+
+\subsubsection{Según el subyacente}\label{sec:futuros-subyacente}
+
+\begin{itemize}
+\item \emph{Financieros}: sobre índices bursátiles (el futuro sobre el IBEX~35), acciones, bonos (el \emph{Bund} alemán), tipos de interés a corto plazo (sobre el Euríbor o el €STR) y divisas (el euro frente al dólar).
+\item \emph{Sobre materias primas} (\emph{commodities}): petróleo, gas, electricidad, metales, cereales o derechos de emisión de CO$_2$.
+\item \emph{Sobre tipos de interés, a medida}: el \concepto{acuerdo de tipo de interés futuro} (\emph{forward rate agreement}, FRA) es un \emph{forward} OTC sobre un tipo de interés. El comprador fija hoy un tipo $R_K$ para un préstamo teórico de nominal $\mathrm{VN}$ entre las fechas $T_1$ y $T_2$; el nominal no se intercambia ni se presta: en $T_1$ se liquida solo la diferencia con el tipo de mercado de ese momento, $R_M$ (hoy, el Euríbor del plazo). Si el tipo sube, cobra el comprador:
+  \begin{equation}\label{eq:fra}
+  \text{Liquidación en }T_1\text{ al comprador}=\frac{\mathrm{VN}\,(R_M-R_K)\,(T_2-T_1)}{1+R_M\,(T_2-T_1)},
+  \end{equation}
+  descontada porque el interés se pagaría en $T_2$. Por eso compra un FRA quien teme una \emph{subida} de tipos, como una empresa que va a endeudarse a tipo variable. Un FRA «2x3» empieza dentro de 2 meses y vence dentro de 3: cubre el tipo a 1 mes que regirá dentro de 2 \parencite[cap.~4]{Hull2022Options}.\footnote{Los FRA y los \emph{swaps} se referían al LIBOR, cuyos paneles dejaron de contribuir a finales de 2021 (en dólares, en junio de 2023); los últimos valores «sintéticos» en dólares se publicaron el 30 de septiembre de 2024 \parencite{FCA2026LIBOR}. En el euro, los contratos se refieren hoy al Euríbor o al €STR, el tipo a un día que publica el BCE.}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Pago del futuro a vencimiento}\label{sec:pago-futuro}
+
+\begin{itemize}
+\item Al vencimiento, quien compró a $F_0$ recibe un activo que vale $S_T$: gana si el precio ha subido por encima de lo pactado y pierde si ha bajado. El vendedor, lo contrario:
+  \begin{equation}\label{eq:pago-futuro}
+  \text{Pago del comprador (largo)}=S_T-F_0,\qquad \text{Pago del vendedor (corto)}=F_0-S_T.
+  \end{equation}
+\item \emph{Interpretación gráfica}: 2 rectas de pendiente $+1$ y $-1$ que cortan el eje horizontal en $F_0$ (gráfico~\ref{fig:pago-futuro}).
+  \begin{itemize}
+  \item La ganancia del comprador no tiene límite, porque el precio puede subir sin techo; su pérdida máxima es $F_0$, si el subyacente llega a valer cero.
+  \item El vendedor gana como mucho $F_0$ y su pérdida no tiene límite: si el precio se dispara, tendrá que entregar a $F_0$ algo que vale mucho más.
+  \item Es un juego de suma cero: los 2 pagos suman cero para cualquier $S_T$. Y el futuro es \emph{simétrico}: protege de lo malo a costa de renunciar a lo bueno.
+  \end{itemize}
+\item Volvamos al petróleo de abril de 2020. El gráfico de los manuales supone que $S_T\geq0$, y por eso dice que el comprador pierde como mucho $F_0$. Pero el precio de liquidación del WTI cayó a $-37{,}63$ dólares: el comprador perdió $F_0+37{,}63$ por barril, más que todo lo que había comprometido \parencite{CFTC2020WTI}. Un precio negativo solo es posible cuando recibir el activo cuesta: no había dónde guardar el crudo (\ref{sec:spot-forward}).
+\item \emph{Convergencia}: al vencimiento el futuro y el contado son el mismo activo, así que $F_T=S_T$; si no, se compraría el barato y se entregaría a través del caro. Es la primera condición de ausencia de arbitraje del tema.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Pago del futuro a vencimiento}\label{fig:pago-futuro}
+\grafico[0.8\textwidth]{pago-futuro}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{Hull2022Options}.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Estrategias: cobertura, especulación y arbitraje}\label{sec:estrategias-futuros}
+
+\begin{itemize}
+\item \emph{Cobertura}: se toma en el futuro la posición contraria a la que se tiene (o se va a tener) en el subyacente, para reducir el riesgo de una variación desfavorable de su precio. Los \concepto{coberturistas} son los participantes que usan así los derivados:
+  \begin{itemize}
+  \item quien va a \emph{comprar} una cartera de renta fija, de acciones o de divisas teme una bajada de los tipos de interés (que sube el precio de los bonos), una subida de las cotizaciones o una apreciación de la divisa: se cubre \emph{comprando} futuros (posición larga);
+  \item quien va a \emph{vender} esa cartera teme lo contrario: se cubre \emph{vendiendo} futuros (posición corta).
+  \end{itemize}
+\item \emph{Cobertura imperfecta}: el contrato normalizado rara vez coincide con el activo, el plazo o la cantidad que se quiere cubrir, y queda el \concepto{riesgo de base}, el de que cambie la diferencia entre el precio de contado y el del futuro (la \emph{base}, $S_t-F_t$). Por eso se elige el número de contratos que minimiza la varianza de la posición cubierta: si $\Delta S$ y $\Delta F$ son las variaciones de los precios de contado y del futuro, la \concepto{ratio de cobertura de mínima varianza} es la pendiente de la regresión de $\Delta S$ sobre $\Delta F$,
+  \begin{equation}\label{eq:ratio-cobertura}
+  h^{*}=\mathrm{corr}(\Delta S,\Delta F)\,\frac{\sigma_{\Delta S}}{\sigma_{\Delta F}},
+  \end{equation}
+  y el número de contratos es $h^{*}$ por las unidades que se quieren cubrir, entre las unidades de cada contrato \parencite[cap.~3]{Hull2022Options}.
+\item \emph{Especulación}: los \concepto{especuladores} toman una posición abierta según lo que esperan, larga si creen que el precio subirá y corta si creen que bajará. Como al firmar no se paga nada, salvo las garantías, el apalancamiento multiplica las ganancias y las pérdidas. Y son necesarios: asumen el riesgo del que se quieren librar los coberturistas.
+\item \emph{Arbitraje}: los \concepto{arbitrajistas} compran lo barato y venden lo caro a la vez cuando el precio del futuro no es coherente con el de contado, y ganan sin riesgo. Al hacerlo corrigen la incoherencia: esa operación es la que fija el precio de los futuros (\ref{sec:valoracion-futuros}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración: la ausencia de arbitraje}\label{sec:valoracion-futuros}
+
+\begin{itemize}
+\item La valoración responde a 3 preguntas: cuánto debe valer hoy el futuro respecto del contado (la paridad \emph{spot-forward}); si ese precio predice el de contado futuro (expectativas, \emph{normal backwardation} y \emph{contango}); y un caso conocido, el de las divisas (la paridad cubierta de intereses).
+\end{itemize}
+
+\begin{anotaciones}
+Una explicación breve de la paridad \emph{spot-forward}, con ejemplos: \url{https://en.wikipedia.org/wiki/Spot\%E2\%80\%93future_parity}.
+\end{anotaciones}
+
+\subsubsection{La paridad \emph{spot-forward}}\label{sec:spot-forward}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Hay 2 formas de tener el subyacente en $T$: comprarlo hoy y guardarlo, o pactar hoy su compra a plazo. Si costaran distinto, alguien ganaría sin riesgo haciendo una y deshaciendo la otra. La condición de que no sea así da el precio del futuro.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item No hay costes de transacción ni impuestos.
+\item Se puede prestar y pedir prestado al tipo sin riesgo $r$, y vender en corto.
+\item No hay riesgo de contrapartida, y el subyacente, de momento, no da rentas ni cuesta guardarlo.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{La estrategia de arbitraje} (\emph{cash and carry}): hoy se pide prestado $S_0$, se compra el subyacente y se vende un \emph{forward} a $F_0$; la operación no cuesta nada. En $T$ se entrega el activo, se cobra $F_0$ y se devuelve el préstamo con sus intereses, $S_0e^{rT}$. El beneficio, $F_0-S_0e^{rT}$, es seguro y no ha exigido dinero propio: tiene que ser cero.\footnote{Dicho de otra forma, la rentabilidad bruta de comprar al contado y vender a plazo es $F_0/S_0$, y es segura: sin arbitraje tiene que ser la del activo sin riesgo, $e^{rT}$. Si $F_0/S_0>e^{rT}$, se pide prestado al tipo $r$ y se hace la operación descrita; si $F_0/S_0<e^{rT}$, la inversa (\emph{reverse cash and carry}): se vende en corto el activo, se invierte lo obtenido al tipo $r$ y se compra a plazo.} Si fuera negativo, se haría la operación inversa. Por tanto:
+  \funcionclave[eq:spot-forward]{F_0=S_0\,e^{rT}}
+\item \emph{Ejemplo}: con $S_0=100$, $r=5$~\% y $T=1$ año, $F_0=100\,e^{0{,}05}\approx105{,}13$. Si el mercado cotizara el \emph{forward} a 108, se vendería a plazo, se compraría al contado con un préstamo de 100 y en un año se ganarían $108-105{,}13=2{,}87$ sin riesgo.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item El precio del futuro no depende de lo que el mercado espere que valga el subyacente en $T$ ni de la aversión al riesgo: solo del precio de hoy y del coste de mantenerlo. «Lo que se gana en los columpios se pierde en los tiovivos»: quien compra a plazo se ahorra los intereses de pagar hoy, pero los paga dentro del precio $F_0$.
+\item \emph{Convergencia}: según se acerca el vencimiento, cuando $t\to T$, $F_t\to S_t$, y en $T$, $F_T=S_T$.
+\item \emph{Valor de un contrato ya firmado}: un \emph{forward} vale cero al firmarse, pero después no. Si se firmó a un precio de entrega $K$ y hoy el precio a plazo para la misma fecha es $F_0$, la posición larga vale $f=(F_0-K)\,e^{-rT}$.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Con rentas y costes}: lo que se gana por tener el activo (dividendos, cupones, intereses en otra moneda) abarata el futuro, y lo que cuesta tenerlo (almacenarlo) lo encarece \parencite[cap.~5]{Hull2022Options}:
+  \begin{itemize}
+  \item con rentas conocidas de valor actual $I$ (una acción que paga un dividendo o un bono con cupón), $F_0=(S_0-I)\,e^{rT}$;
+  \item con un rendimiento continuo $q$ (la rentabilidad por dividendo de un índice bursátil), $F_0=S_0\,e^{(r-q)T}$;
+  \item en las materias primas, con un coste de almacenamiento $u$ y un \concepto{rendimiento de conveniencia} $y$, lo que se gana por tener el activo en la mano en momentos de escasez \parencite{Kaldor1939Speculation,Working1949Theory}:
+  \begin{equation}\label{eq:coste-mantenimiento}
+  F_0=S_0\,e^{(r+u-y)T},
+  \end{equation}
+  donde $r+u-y$ es el \concepto{coste de mantenimiento} (\emph{cost of carry}).
+  \end{itemize}
+\item \emph{En divisas}: el subyacente rinde el tipo de interés extranjero, $q=i^{*}$, y la paridad es la paridad cubierta de intereses (\ref{sec:pci}).
+\item \emph{Con expectativas}: la paridad no dice si $F_0$ predice el precio futuro; esa es la pregunta de la \emph{normal backwardation} y el \emph{contango} (\ref{sec:contango}).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item En los mercados financieros líquidos la paridad se cumple casi siempre, porque arbitrar es barato. En las materias primas, con almacenamiento caro o imposible, solo se cumple como desigualdad: el arbitraje de comprar barato al contado y guardarlo exige tener dónde guardar. El 20 de abril de 2020 el futuro de mayo del WTI cerró a $-37{,}63$ dólares por barril: el coste de almacenar, $u$, se había disparado \parencite{CFTC2020WTI}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Es un resultado muy general, porque solo exige que no haya arbitraje. Pero fija el precio del futuro respecto del contado y no dice nada de si $F_0$ predice bien el precio que habrá en $T$. Esa es la pregunta del apartado siguiente.
+\end{itemize}
+
+\subsubsection{Expectativas, \emph{normal backwardation} y \emph{contango}}\label{sec:contango}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿es el precio del futuro un predictor insesgado del precio de contado que se espera para el vencimiento? Hay 3 respuestas \parencites[cap.~22]{BodieKaneMarcus2021Investments}[cap.~5]{Hull2022Options}:
+  \begin{itemize}
+  \item la \concepto{hipótesis de expectativas}: sí, $F_0=\mathbb{E}_0[S_T]$, como si los participantes fueran neutrales al riesgo;
+  \item la \concepto{\emph{normal backwardation}} de \textcite{Keynes1930Treatise} y \textcite{Hicks1939Value}: en la mayoría de las materias primas, los coberturistas naturales son los productores (el agricultor), que venden a plazo. Para que los especuladores tomen la posición larga, tienen que esperar ganar: el precio a plazo tiene que estar por debajo del esperado, $F_0<\mathbb{E}_0[S_T]$, y $F_t$ sube hacia $S_T$ mientras se acerca el vencimiento. La diferencia es la prima que los productores pagan por quitarse el riesgo;
+  \item el \concepto{\emph{contango}}: si los coberturistas naturales son los compradores (el molinero, que quiere asegurarse lo que pagará por el trigo), son ellos los que pagan la prima: $F_0>\mathbb{E}_0[S_T]$, y $F_t$ baja hacia $S_T$.
+  \end{itemize}
+\item \emph{Interpretación gráfica}: en los 3 casos, el precio del futuro converge al de contado en el vencimiento; con \emph{normal backwardation} sube hacia él y con \emph{contango} baja (gráfico~\ref{fig:contango}). En la \emph{normal backwardation} gana en promedio el especulador comprador, y en el \emph{contango}, el vendedor.
+\item \emph{Con el riesgo sistemático}: la prima depende de la beta del subyacente. Si $k$ es la rentabilidad que se exige al subyacente, $F_0=\mathbb{E}_0[S_T]\,e^{(r-k)T}$, y con la recta del mercado de títulos del CAPM, $k-r=\beta\lambda_M$ \vertema{3.B.23}: con beta positiva hay \emph{normal backwardation}; con beta nula se cumplen las expectativas, y con beta negativa hay \emph{contango} \parencite{Dusak1973Futures} (desarrollo en el anexo~\ref{anexo:contango}).
+\item \emph{Aviso de terminología}: en el mercado, \emph{contango} y \emph{backwardation} se usan casi siempre para comparar el futuro con el precio \emph{de hoy}, no con el esperado. Hay \emph{contango} si $F_0>S_0$ (curva de futuros creciente, lo normal si guardar el activo cuesta, $r+u>y$) y \emph{backwardation} si $F_0<S_0$ (curva decreciente, cuando hay escasez y el rendimiento de conveniencia es alto, $y>r+u$). Hay que decir siempre en cuál de los 2 sentidos se usa \parencite[cap.~5]{Hull2022Options}: en abril de 2020 el WTI estaba en un \emph{contango} extremo en el sentido del mercado.
+\item \emph{Evidencia}: comprar futuros de materias primas ha dado en promedio una rentabilidad por encima del tipo sin riesgo, como predice la \emph{normal backwardation} \parencite{GortonRouwenhorst2006Facts}, aunque la prima no es estable entre productos ni entre periodos \parencite{FamaFrench1987Commodity}. En divisas, el tipo a plazo es un predictor sesgado del tipo de contado futuro, el sesgo del \emph{forward} \parencite{Fama1984Forward} \vertema{3.B.13}. Es la misma pregunta que la teoría de las expectativas de la estructura temporal de los tipos de interés \vertema{3.B.24}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Hipótesis de expectativas, \emph{normal backwardation} y \emph{contango}}\label{fig:contango}
+\grafico[0.62\textwidth]{contango}
+\fuente{elaboración propia a partir de \textcite[cap.~22]{BodieKaneMarcus2021Investments}.}
+\end{figure}
+
+\subsubsection{Un caso: la paridad cubierta de intereses}\label{sec:pci}
+
+\begin{itemize}
+\item Con una divisa como subyacente, $S_0\equiv E_0$ es el tipo de cambio de contado (euros por dólar), y el activo rinde el tipo de interés extranjero, $i^{*}$. Un inversor con 1~euro tiene 2 opciones a un año:
+  \begin{enumerate}
+  \item invertirlo en euros y obtener $1+i$;
+  \item cambiarlo hoy por $1/S_0$ dólares, invertirlos al tipo $i^{*}$ y vender hoy a plazo, al precio $F_0$, los $(1+i^{*})/S_0$ dólares que tendrá: obtendrá $(1+i^{*})\,F_0/S_0$ euros, sin riesgo de cambio.
+  \end{enumerate}
+\item Sin arbitraje, las 2 rinden lo mismo. Es la \concepto{paridad cubierta de intereses} (PCI), que ya formuló \textcite{Keynes1923Tract}:
+  \begin{equation}\label{eq:pci}
+  1+i=(1+i^{*})\,\frac{F_0}{S_0}\qquad\Longleftrightarrow\qquad F_0=S_0\,e^{(i-i^{*})T}\ \text{en tiempo continuo},
+  \end{equation}
+  que es la paridad \emph{spot-forward} con $r=i$ y $q=i^{*}$: la divisa con el tipo más alto cotiza con descuento a plazo \vertema{3.B.13} \vertema{3.B.14}.
+\item La PCI se cumplía casi exactamente hasta 2008; desde entonces hay desviaciones persistentes (la \emph{base} de los \emph{swaps} de divisas), por los límites al balance de los bancos que arbitran y la demanda de dólares \parencite{DuTepperVerdelhan2018Deviations}. La paridad descubierta y la paradoja del margen \emph{forward}, que no son de arbitraje sino de expectativas, se estudian con los tipos de cambio \vertema{3.B.13} \vertema{3.B.14}.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:futuros}}: un futuro obliga a las 2 partes y su pago es lineal, $S_T-F_0$; la cámara, los márgenes y la liquidación diaria eliminan casi todo el riesgo de contrapartida; y su precio lo fija el arbitraje, $F_0=S_0e^{rT}$ (o $S_0e^{(r+u-y)T}$), no las expectativas, que solo explican la prima entre $F_0$ y $\mathbb{E}_0[S_T]$.
+\item \emph{Nexo}: pero el futuro es simétrico: protege de lo malo a costa de renunciar a lo bueno. ¿Y si se quisiera quedarse solo con la parte buena? Eso es una opción.
+\end{itemize}
+
+% ==========================================================================
+\section{Mercados de opciones}\label{sec:opciones}
+\minutos{11,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{11,5}): se borra todo salvo el guion y la \eqref{eq:spot-forward}. Definición y tipos, \tiempo{1,5}: de palabra, los 6 elementos y los 3 criterios principales (\emph{call} o \emph{put}, europea o americana, organizado u OTC). Pago y beneficio, \tiempo{1,5}: el gráfico~\ref{fig:pagos-opciones}, al menos la \emph{call} y la \emph{put} compradas, con «el que paga, manda». Estrategias, \tiempo{1,5}: los 3 perfiles pequeños del gráfico~\ref{fig:estrategias-opciones} a mano alzada. Valoración, \tiempo{7}: la \eqref{eq:put-call} en morado, con «dos caras de la misma moneda» y las 2 carteras debajo (\tiempo{1,5}); la tabla~\ref{tab:determinantes} en versión mínima, con 5 filas y la \emph{call} y la \emph{put} europeas (\tiempo{1}); el árbol binomial (gráfico~\ref{fig:arbol-binomial}) con $\Delta=1/3$ y $\pi=2/3$, contado casi de palabra (\tiempo{2}); la \eqref{eq:black-scholes} en morado y, de palabra, $N(d_2)$, $N(d_1)$, la sonrisa de volatilidad y el VIX (\tiempo{2}); y las opciones reales, de palabra (\tiempo{0,5}). El gráfico~\ref{fig:valor-call}, solo si sobra tiempo. Los tipos de opciones exóticas, las cotas, las extensiones y los anexos de estrategias y de griegas son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la opción separa el lado bueno del malo a cambio de una prima. Esa prima se calcula sin conocer las probabilidades reales ni la actitud ante el riesgo del inversor: basta con replicar la opción con el subyacente y un bono. Depende de la volatilidad, no de lo que cada uno espere.
+\item \emph{Nexo}: una vez visto el derivado que obliga a las 2 partes, pasamos al que solo obliga a una.
+\end{itemize}
+
+\begin{anotaciones}
+Una introducción a las opciones en vídeo: \url{https://youtu.be/LSPGfLiTtKY}.
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{Definición}\label{sec:definicion-opciones}
+
+\begin{itemize}
+\item Una \concepto{opción} es un contrato que da a su comprador el derecho, pero no la obligación, de comprar o de vender un subyacente a un precio y en una fecha fijados hoy. Tiene 6 elementos, los 5 del futuro con un cambio y una prima:
+  \begin{enumerate}
+  \item un \emph{contrato};
+  \item un \emph{derecho} para el \concepto{comprador} (o tenedor), pero no una obligación: el de comprar (una \concepto{opción de compra} o \emph{call}) o el de vender (una \concepto{opción de venta} o \emph{put}); el \concepto{vendedor} (o emisor) asume la obligación de vender, en la \emph{call}, o de comprar, en la \emph{put}, si el comprador ejerce;
+  \item uno o varios \emph{subyacentes};
+  \item un \concepto{precio de ejercicio}, $K$;
+  \item una \emph{fecha de vencimiento}, $T$, en la que (o hasta la que) se puede ejercer;
+  \item una \concepto{prima}, $c$ o $p$, que el comprador paga hoy al vendedor por el derecho: es el precio de la opción.
+  \end{enumerate}
+\item El primer mercado organizado de opciones normalizadas sobre acciones fue el \emph{Chicago Board Options Exchange}, en 1973 \parencite{Cboe2020Form10K}; en España se negocian en MEFF, sobre todo opciones sobre acciones y sobre el IBEX~35 \parencite{BME2026InformeMercado}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Tipos}\label{sec:tipos-opciones}
+
+\begin{itemize}
+\item Las opciones se clasifican con varios criterios (tabla~\ref{tab:tipos-opciones}). Los 3 primeros son los que importan en el cante:
+  \begin{itemize}
+  \item \emph{Según el derecho}: la \emph{call} da el derecho a comprar, y la \emph{put}, a vender.
+  \item \emph{Según cuándo se puede ejercer}: la \concepto{europea}, solo en la fecha de vencimiento; la \concepto{americana}, en cualquier momento hasta ella; y la \emph{bermuda}, en algunas fechas prefijadas antes del vencimiento.
+  \item \emph{Según el mercado}: en un mercado organizado, normalizadas y con cámara; u OTC, a medida, con las mismas ventajas e inconvenientes que en los futuros (tabla~\ref{tab:organizados-otc}).
+  \end{itemize}
+\item Según el estado en que se encuentra, una opción está \emph{dentro de dinero} (\emph{in the money}) si ejercerla ahora daría un pago positivo ($S_t>K$ en una \emph{call}, $S_t<K$ en una \emph{put}), \emph{en el dinero} (\emph{at the money}) si $S_t=K$ y \emph{fuera de dinero} (\emph{out of the money}) en el resto de los casos.\footnote{Una opción fuera de dinero no se ejerce: no da un pago negativo, sino ningún pago.}
+\item \emph{Estándar o exóticas}: en una opción estándar (\emph{plain vanilla}) el pago depende solo del precio del subyacente al ejercer y de $K$. Las \concepto{exóticas} cambian esa regla:
+  \begin{itemize}
+  \item las que dependen de la trayectoria del subyacente: las \emph{asiáticas} comparan $K$ con el precio medio durante la vida de la opción, y las \emph{barrera} se activan o se extinguen si el subyacente toca un nivel;
+  \item las \emph{digitales} o binarias pagan una cantidad fija si terminan dentro de dinero (una \emph{call} digital, si $S_T>K$; una \emph{put} digital, si $S_T<K$), y nada si no;
+  \item y las de varios subyacentes: sobre una cesta, sobre el que mejor evolucione (\emph{best of}) o sobre el que peor (\emph{worst of}).
+  \end{itemize}
+\item \emph{Sobre tipos de interés}: un \emph{cap} es una serie de \emph{calls} sobre el tipo de interés que pone un techo al tipo que paga quien se endeuda a tipo variable; un \emph{floor}, una serie de \emph{puts} que pone un suelo al que cobra un prestamista; y un \emph{collar} combina la compra de un \emph{cap} y la venta de un \emph{floor}, de modo que el tipo que se \emph{paga} queda en una banda y la prima del \emph{floor} abarata la del \emph{cap}.\footnote{Es lo que hacían las «cláusulas suelo» de muchas hipotecas españolas a tipo variable: el cliente vendía de hecho un \emph{floor} al banco, a menudo sin la contrapartida de un techo.}
+\item \emph{Warrants}: opciones que emite una entidad (un banco o la propia empresa) y que el inversor solo puede comprar; suelen tener plazos más largos que las opciones cotizadas y, si las emite la propia empresa sobre sus acciones, son \emph{dilutivas}, porque al ejercerlas se emiten acciones nuevas y la empresa cobra $K$ \parencite{Hull2022Options} \vertema{3.B.23}.\footnote{Son productos apalancados: con un desembolso limitado, la prima, se obtiene el mismo resultado que comprando o vendiendo valores de un precio muy superior, y pequeñas variaciones del subyacente mueven mucho su precio. Una variante para el inversor minorista son los \emph{turbo warrants}, que se extinguen si el subyacente toca una barrera, con lo que se pierde la prima. La CNMV explica sus riesgos en \url{https://www.cnmv.es/portal/inversor/Warrants} y en \url{https://www.cnmv.es/DocPortal/Publicaciones/Fichas/GR17_Warrants_Turbowarrants.pdf}.}
+\item \emph{Opciones incorporadas a otros activos}: muchos bonos llevan una opción dentro, como los amortizables anticipadamente por el emisor (\emph{callable}), los que el inversor puede devolver (\emph{putable}) o los convertibles en acciones \vertema{3.B.24}.
+\end{itemize}
+
+\begin{table}[tbp]
+\centering
+\caption{Tipos de opciones}\label{tab:tipos-opciones}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.2cm}>{\raggedright\arraybackslash}m{10cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Criterio} & \textbf{Tipos}\\
+\midrule
+\emph{Derecho} & \textcolor{tceeverde}{\emph{Call}} (comprar) y \textcolor{tceedorado}{\emph{put}} (vender)\\
+\addlinespace[0.2em]
+\emph{Momento del ejercicio} & Europea (al vencimiento), americana (hasta el vencimiento) y bermuda (en fechas prefijadas)\\
+\addlinespace[0.2em]
+\emph{Mercado} & Organizado (normalizada, con cámara) u OTC (a medida)\\
+\addlinespace[0.2em]
+\emph{Estado} & Dentro, en o fuera de dinero\\
+\addlinespace[0.2em]
+\emph{Regla de pago} & Estándar (\emph{plain vanilla}) o exótica (asiática, barrera, digital, sobre varios subyacentes)\\
+\addlinespace[0.2em]
+\emph{Subyacente} & Acciones, índices, divisas, futuros o tipos de interés (\emph{caps}, \emph{floors} y \emph{collars})\\
+\addlinespace[0.2em]
+\emph{Emisor} & Opciones negociadas o \emph{warrants} emitidos por una entidad\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[caps.~10 y 26]{Hull2022Options}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Pago de la opción a vencimiento y beneficio}\label{sec:pago-opciones}
+
+\begin{itemize}
+\item Al vencimiento, el comprador solo ejerce si le conviene. Por eso los pagos son \emph{no lineales}:
+  \begin{equation}\label{eq:pago-call}
+  \text{Pago de la call comprada}=\max(S_T-K,\,0),
+  \end{equation}
+  \begin{equation}\label{eq:pago-put}
+  \text{Pago de la put comprada}=\max(K-S_T,\,0).
+  \end{equation}
+\item El \emph{beneficio} del comprador es el pago menos la prima ($c$ o $p$; para ser exactos, capitalizada hasta $T$). El vendedor tiene el pago y el beneficio opuestos: a vencimiento, lo que gana una parte lo pierde la otra, contando la prima (gráfico~\ref{fig:pagos-opciones}).
+  \begin{itemize}
+  \item El comprador de una \emph{call} pierde como mucho la prima y su ganancia no tiene límite; gana dinero si $S_T>K+c$.
+  \item El comprador de una \emph{put} pierde como mucho la prima y gana como mucho $K-p$, si el subyacente llega a cero; gana dinero si $S_T<K-p$.
+  \item El vendedor de una \emph{call} gana como mucho la prima y su pérdida no tiene límite; el de una \emph{put} gana como mucho la prima y pierde como mucho $K-p$.
+  \end{itemize}
+\item «El que paga, manda»: el comprador paga la prima y decide si ejerce; el vendedor la cobra y acata lo que decida el comprador. La asimetría no hace mejor negocio al comprador: la prima es justo lo que compensa al vendedor por el riesgo que asume.\footnote{Comprar opciones no es mejor ni peor negocio que venderlas. Con pérdidas limitadas y ganancias ilimitadas el comprador parece salir ganando, y con una distribución simétrica del subyacente el vendedor gana más a menudo; pero la probabilidad de ganar no es el valor esperado. Sin arbitraje, ninguna de las 2 posiciones tiene valor positivo una vez descontado con las probabilidades neutrales al riesgo (\ref{sec:binomial}).}
+\end{itemize}
+
+\begin{figure}[tbp]
+\centering
+\caption{Pago y beneficio a vencimiento de las 4 posiciones simples}\label{fig:pagos-opciones}
+\grafico[0.85\textwidth]{pagos-opciones}
+\fuente{elaboración propia a partir de \textcite[cap.~10]{Hull2022Options}. En gris discontinuo, el pago; en color, el beneficio, desplazado por la prima.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Estrategias}\label{sec:estrategias-opciones}
+
+\begin{itemize}
+\item Combinando opciones entre sí y con el subyacente se puede fabricar casi cualquier perfil de pagos: es la \emph{ingeniería financiera}. En la exposición basta con una estrategia de cada familia; el resto, con sus perfiles, en el anexo~\ref{anexo:estrategias}.
+\end{itemize}
+
+\subsubsection{Estrategias de especulación}\label{sec:opciones-especulacion}
+
+\begin{itemize}
+\item \emph{Simples}: comprar una \emph{call} o vender una \emph{put} si se espera que el subyacente suba; comprar una \emph{put} o vender una \emph{call} si se espera que baje (gráfico~\ref{fig:pagos-opciones}). Comprar limita la pérdida a la prima; vender la deja abierta.
+\item \emph{Combinaciones}: \emph{calls} y \emph{puts} sobre el mismo subyacente y con el mismo vencimiento, compradas o vendidas a la vez. Son apuestas sobre la \emph{volatilidad}, no sobre la dirección. La más conocida es el \concepto{cono} (\emph{straddle}): comprar una \emph{call} y una \emph{put} con el mismo $K$. Gana si el precio se aleja mucho de $K$ en cualquier sentido y pierde las 2 primas si se queda cerca (panel izquierdo del gráfico~\ref{fig:estrategias-opciones}). Venderlo es apostar por la calma.
+\item \emph{Diferenciales} (\emph{spreads}): comprar y vender a la vez opciones del mismo tipo con distinto $K$. Sirven cuando la expectativa es moderada: limitan la pérdida a cambio de limitar la ganancia. En el \concepto{diferencial alcista} (\emph{bull spread}) se compra una \emph{call} de $K_1$ y se vende otra de $K_2>K_1$: la prima que se cobra abarata la estrategia y, a cambio, la ganancia se detiene en $K_2$ (panel central).
+\end{itemize}
+
+\subsubsection{Estrategias de cobertura}\label{sec:opciones-cobertura}
+
+\begin{itemize}
+\item Como con los futuros, quien va a \emph{comprar} una cartera de renta fija, de acciones o de divisas se cubre de una subida de su precio comprando una \emph{call}, y quien va a \emph{venderla}, de una bajada comprando una \emph{put}.
+\item La cobertura más conocida es la \concepto{\emph{put} protectora} (\emph{protective put}): tener el activo y comprar una \emph{put} sobre él. Al vencimiento la cartera vale $S_T+\max(K-S_T,0)=\max(S_T,K)$: nunca menos de $K$, y todo lo que suba el activo (panel derecho). Es un seguro con franquicia: la prima es lo que cuesta, y $S_0-K$, la parte de la caída que no se cubre.
+\item La inversa es la \emph{call} cubierta: tener el activo y vender una \emph{call}; se cobra la prima a cambio de renunciar a lo que suba por encima de $K$. Juntas forman un \emph{collar}: comprar la \emph{put} y vender la \emph{call} acota el valor de la cartera entre 2 precios casi sin coste.
+\item A diferencia del futuro, que fija el precio y elimina a la vez las pérdidas y las ganancias, la opción elimina solo las pérdidas, y por eso cuesta una prima.\footnote{Replicar una \emph{put} protectora sin comprarla, ajustando sin cesar la proporción entre acciones y liquidez, era el «seguro de carteras» (\emph{portfolio insurance}) de los años 80. Como obligaba a vender cuando el mercado caía, contribuyó a la caída del 19 de octubre de 1987 \parencite{Brady1988Report}.} La \emph{put} protectora lleva directamente a la paridad \emph{put-call}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Tres estrategias con opciones: cono, diferencial alcista y \emph{put} protectora}\label{fig:estrategias-opciones}
+\grafico[0.95\textwidth]{estrategias-opciones}
+\fuente{elaboración propia a partir de \textcite[cap.~12]{Hull2022Options}. En gris discontinuo, las posiciones que se combinan; en color, el beneficio de la estrategia.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración}\label{sec:valoracion-opciones}
+
+\begin{itemize}
+\item La valoración de las opciones avanza en 3 pasos: lo que el arbitraje dice sin ningún modelo (la paridad \emph{put-call} y las cotas), de qué depende la prima (valor intrínseco y temporal) y cuánto vale con un modelo del subyacente (el binomial y el de \autor{Black} y \autor{Scholes}).
+\end{itemize}
+
+\subsubsection{Ausencia de arbitraje: la paridad \emph{put-call}}\label{sec:put-call}
+
+\begin{anotaciones}
+La paridad \emph{put-call}, explicada con sus 2 carteras: \url{https://youtu.be/SbkvkU7-dEA}.
+\end{anotaciones}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Sin saber aún cuánto vale una opción, el arbitraje ya dice cuánto vale una \emph{put} si se conoce la \emph{call} con el mismo subyacente, el mismo $K$ y el mismo $T$: 2 carteras que pagan lo mismo en cualquier estado tienen que costar lo mismo hoy.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Opciones europeas sobre un subyacente sin dividendos, con el mismo $K$ y el mismo $T$.
+\item Mercados sin costes de transacción, en los que se presta y se pide prestado al tipo $r$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Se comparan 2 carteras (tabla~\ref{tab:put-call} y gráfico~\ref{fig:paridad-put-call}):
+  \begin{itemize}
+  \item la \concepto{\emph{call} fiduciaria} (\emph{fiduciary call}): una \emph{call} y un bono cupón cero sin riesgo que paga $K$ en $T$, que hoy cuesta $Ke^{-rT}$;
+  \item la \concepto{\emph{put} protectora}: una \emph{put} y una unidad del subyacente.
+  \end{itemize}
+\item Las 2 valen $\max(S_T,K)$ en $T$, suba o baje el subyacente: si $S_T<K$, la primera vale el bono, $K$, y la segunda se vende a $K$ con la \emph{put}; si $S_T\geq K$, las 2 valen $S_T$. Si pagan lo mismo en todos los estados, «son dos caras de la misma moneda» y tienen que costar lo mismo hoy:
+  \funcionclave[eq:put-call]{c+K\,e^{-rT}=p+S_0}
+\item Si la igualdad no se cumple, se compra la cartera barata y se vende la cara, y se gana sin riesgo. \emph{Ejemplo}: una acción sin dividendos cotiza a 105, y las opciones a un año en el dinero ($K=105$) cotizan a $c=9$ y $p=2$, con un tipo del 5~\%. La paridad exige $c-p=S_0-K/1{,}05=105-100=5$, pero en el mercado $c-p=7$: la \emph{call} está cara respecto de la \emph{put}. Se vende la \emph{call}, se compran la \emph{put} y la acción y se pide prestado el valor actual de $K$; hoy se ingresan 2, y en $T$ la posición vale cero en cualquier caso.\footnote{Es la pregunta 35 del primer ejercicio de marzo de 2026 (anexo~\ref{anexo:test}), con el tipo en capitalización simple. Con capitalización continua, $Ke^{-0{,}05}=99{,}88$ y la paridad exige $c-p=5{,}12$: la conclusión es la misma.}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Basta con valorar la \emph{call}: la \emph{put} sale de la paridad.
+\item Despejando, cualquiera de los 4 activos se replica con los otros 3: por ejemplo, $S_0=c-p+Ke^{-rT}$ es una acción sintética. Es la base de las opciones sintéticas (anexo~\ref{anexo:estrategias}).
+\item La paridad no dice cuánto vale cada opción, sino cuánto valen una respecto de la otra.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Con dividendos} de valor actual $D$: $c+D+Ke^{-rT}=p+S_0$. Los dividendos, que cobra quien tiene la acción y no quien tiene la opción, abaratan la \emph{call} y encarecen la \emph{put}.
+\item \emph{Opciones americanas}: la igualdad se convierte en las desigualdades $S_0-K\leq C-P\leq S_0-Ke^{-rT}$, porque la \emph{put} americana puede ejercerse antes y el arbitraje deja de ser seguro \parencite[cap.~11]{Hull2022Options}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item En las opciones sobre índices muy líquidos las desviaciones son pequeñas y se explican por los costes de transacción y por las restricciones a la venta en corto, que encarecen las \emph{puts} cuando es difícil vender el subyacente. Las desviaciones grandes y persistentes son raras: cuando aparecen, señalan precisamente esas fricciones.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Es un resultado muy general, porque no supone nada sobre cómo se mueve el precio. Pero no da el precio de la opción: para eso hace falta saber de qué depende y un modelo de cómo puede evolucionar el subyacente.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La paridad \emph{put-call}: pagos al vencimiento}\label{tab:put-call}
+\begin{tabular}{>{\raggedright\arraybackslash}m{5.4cm}>{\centering\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{3.2cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Posición} & $S_T<K$ & $S_T\geq K$\\
+\midrule
+Comprar una \emph{call} & $0$ & $S_T-K$\\
+Comprar un bono que paga $K$ & $K$ & $K$\\
+\rowcolor{tceesalvia}\textbf{\emph{Call} fiduciaria} & $\boldsymbol{K}$ & $\boldsymbol{S_T}$\\
+\midrule
+Comprar una \emph{put} & $K-S_T$ & $0$\\
+Comprar la acción & $S_T$ & $S_T$\\
+\rowcolor{tceesalvia}\textbf{\emph{Put} protectora} & $\boldsymbol{K}$ & $\boldsymbol{S_T}$\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~20]{BodieKaneMarcus2021Investments}. En fondo salvia, el pago de cada cartera: el mismo en los 2 estados.}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\caption{\emph{Call} fiduciaria y \emph{put} protectora}\label{fig:paridad-put-call}
+\grafico[0.85\textwidth]{paridad-put-call}
+\fuente{elaboración propia a partir de \textcite[cap.~20]{BodieKaneMarcus2021Investments}.}
+\end{figure}
+
+\begin{notaopositor}
+Para cantar la paridad sin perderse: se escriben las 2 carteras en 2 columnas, se dibujan sus pagos por partes (en la izquierda, el bono como una recta horizontal en $K$ y la \emph{call} encima; en la derecha, la acción como la diagonal y la \emph{put} encima) y se señala que los 2 gráficos acaban iguales. La fórmula se lee de izquierda a derecha: «lo que cuesta una cartera es lo que cuesta la otra».
+\end{notaopositor}
+
+\subsubsection{Valor intrínseco y valor temporal}\label{sec:valor-temporal}
+
+\begin{itemize}
+\item La paridad relaciona la \emph{call} con la \emph{put}, pero no dice qué da valor a cada una. La prima tiene 2 partes:
+  \begin{itemize}
+  \item el \concepto{valor intrínseco}, lo que se obtendría ejerciendo ya: $\max(S_0-K,0)$ en una \emph{call} y $\max(K-S_0,0)$ en una \emph{put}. Es el pago que hemos dibujado al vencimiento;
+  \item el \concepto{valor temporal} (o extrínseco), el resto: lo que vale la posibilidad de que el subyacente se mueva a favor antes del vencimiento. Una \emph{call} fuera de dinero no vale nada si se ejerce hoy, pero tiene valor porque puede acabar dentro de dinero.
+  \end{itemize}
+\item El valor temporal depende de:
+  \begin{itemize}
+  \item el \emph{plazo hasta el vencimiento}: cuanto más largo, más posibilidades de que la opción acabe dentro de dinero;
+  \item la \emph{volatilidad del subyacente}: cuanto mayor, más posibilidades de un movimiento favorable, y la pérdida por uno desfavorable está limitada a la prima;
+  \item el \emph{tipo de interés}: cuanto mayor, menor es el valor actual del precio de ejercicio, así que sube la \emph{call} (que lo paga) y baja la \emph{put} (que lo cobra); afecta en sentido contrario a $K$;
+  \item los \emph{dividendos} u otras rentas del subyacente: al pagarse, el precio de la acción baja en esa cuantía, así que reducen el valor de la \emph{call} y aumentan el de la \emph{put}; afectan como una bajada del precio del subyacente;
+  \item la \emph{distancia entre $S_0$ y $K$}: el valor temporal es máximo en el dinero y se reduce cuanto más dentro o más fuera de dinero está la opción. Al vencimiento se anula.
+  \end{itemize}
+\item \emph{Cotas}: sin arbitraje, una \emph{call} europea sobre un activo sin dividendos vale entre $\max(S_0-Ke^{-rT},0)$ y $S_0$ (nadie paga por el derecho a comprar un activo más de lo que cuesta el activo), y una \emph{put}, entre $\max(Ke^{-rT}-S_0,0)$ y $Ke^{-rT}$.
+  \begin{itemize}
+  \item Por eso una \emph{call} americana sobre un activo sin dividendos nunca se ejerce antes del vencimiento: vale al menos $S_0-Ke^{-rT}$, más de lo que daría ejercerla, $S_0-K$; así que vale lo mismo que la europea, $C=c$ \parencite{Merton1973Theory}.
+  \item En cambio, una \emph{put} europea muy dentro de dinero puede valer menos que su valor intrínseco: su valor temporal es negativo.
+  \end{itemize}
+\item \emph{Interpretación gráfica}: la prima de la \emph{call} es una curva convexa en $S_0$ que está siempre por encima de su cota inferior y se acerca a ella cuando la opción está muy dentro o muy fuera de dinero; la distancia vertical al valor intrínseco es el valor temporal, máximo en $K$ (gráfico~\ref{fig:valor-call}).
+\item Los signos de todos los efectos se resumen en la tabla~\ref{tab:determinantes}; la sensibilidad a cada variable es una «griega» (anexo~\ref{anexo:griegas}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Valor intrínseco y valor temporal de una \emph{call}}\label{fig:valor-call}
+\grafico[0.62\textwidth]{valor-call}
+\fuente{elaboración propia con la fórmula de \textcite{BlackScholes1973Pricing}: $K=100$, $r=5$~\%, $\sigma=20$~\% y $T=1$ año.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Efecto de cada variable sobre la prima (\emph{ceteris paribus})}\label{tab:determinantes}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.9cm}>{\centering\arraybackslash}m{1.65cm}>{\centering\arraybackslash}m{1.65cm}>{\centering\arraybackslash}m{1.85cm}>{\centering\arraybackslash}m{1.85cm}>{\centering\arraybackslash}m{1.5cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Variable} & \emph{Call} europea & \emph{Put} europea & \emph{Call} americana & \emph{Put} americana & Griega\\
+\midrule
+Precio del subyacente, $S_0$ & \textcolor{tceeverde}{$+$} & \textcolor{tceerojo}{$-$} & \textcolor{tceeverde}{$+$} & \textcolor{tceerojo}{$-$} & $\Delta$ (y $\Gamma$)\\
+Precio de ejercicio, $K$ & \textcolor{tceerojo}{$-$} & \textcolor{tceeverde}{$+$} & \textcolor{tceerojo}{$-$} & \textcolor{tceeverde}{$+$} & ---\\
+Plazo, $T$ & ?\textsuperscript{a} & ?\textsuperscript{b} & \textcolor{tceeverde}{$+$} & \textcolor{tceeverde}{$+$} & $\Theta$\\
+Volatilidad, $\sigma$ & \textcolor{tceeverde}{$+$} & \textcolor{tceeverde}{$+$} & \textcolor{tceeverde}{$+$} & \textcolor{tceeverde}{$+$} & $\mathcal{V}$\\
+Tipo sin riesgo, $r$ & \textcolor{tceeverde}{$+$} & \textcolor{tceerojo}{$-$} & \textcolor{tceeverde}{$+$} & \textcolor{tceerojo}{$-$} & $\rho$\\
+Dividendos, $D$ & \textcolor{tceerojo}{$-$} & \textcolor{tceeverde}{$+$} & \textcolor{tceerojo}{$-$} & \textcolor{tceeverde}{$+$} & ---\\
+\bottomrule
+\end{tabular}
+\fuente{\textcite[tabla~11.1]{Hull2022Options}. a)~Sin dividendos, $+$: la \emph{call} europea vale lo mismo que la americana; con dividendos, una \emph{call} europea a más plazo puede valer menos si antes de su vencimiento se paga un dividendo grande. b)~Más plazo da más volatilidad, pero retrasa el cobro de $K$, cuyo valor actual baja. En las americanas, más plazo siempre suma, porque el tenedor puede ejercer cuando le convenga.}
+\end{table}
+
+\subsubsection{El modelo binomial}\label{sec:binomial}
+
+\begin{anotaciones}
+El modelo binomial de un periodo, paso a paso: \url{https://youtu.be/JeY4Bq1F-8Q}.
+\end{anotaciones}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La fórmula exacta exige matemáticas de tiempo continuo, pero la idea se ve con el caso más simple: un periodo y 2 estados. Lo propuso \textcite{Sharpe1978Investments} en su manual, y lo desarrollaron \textcite{CoxRossRubinstein1979Option} y \textcite{RendlemanBartter1979Two}.
+\item La clave: con el subyacente y un bono se puede fabricar una cartera que paga lo mismo que la opción en los 2 estados, así que la opción vale lo que cuesta esa cartera. Su precio no depende de la probabilidad real de cada estado ni de la aversión al riesgo de nadie.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item En un periodo, el subyacente, que no paga dividendos, pasa de $S_0$ a $uS_0$ o a $dS_0$, con $d<1+r<u$ (si no, habría arbitraje con el bono).
+\item Se presta y se pide prestado al tipo $r$ del periodo, sin costes de transacción.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Se busca la cartera de $\Delta$ acciones y una deuda $B$ que paga lo mismo que la \emph{call} en los 2 estados, $c_u$ y $c_d$:
+  \begin{equation}\label{eq:replica}
+  \Delta\,uS_0-(1+r)B=c_u,\qquad \Delta\,dS_0-(1+r)B=c_d\quad\Longrightarrow\quad \Delta=\frac{c_u-c_d}{(u-d)\,S_0}.
+  \end{equation}
+  Su coste, $\Delta S_0-B$, es el precio de la opción. Reordenando (anexo~\ref{anexo:valoracion-neutral}):
+  \begin{equation}\label{eq:binomial}
+  c=\frac{\pi\,c_u+(1-\pi)\,c_d}{1+r},\qquad \pi=\frac{(1+r)-d}{u-d}.
+  \end{equation}
+\item \emph{Ejemplo} (gráfico~\ref{fig:arbol-binomial}): una acción vale hoy $S_0=100$ y en un año puede subir a 125 ($u=1{,}25$) o bajar a 80 ($d=0{,}8$); una \emph{call} a un año tiene $K=110$, y el tipo es $r=10$~\%, en capitalización simple. Al vencimiento la \emph{call} vale 15 o 0.
+  \begin{itemize}
+  \item \emph{Con la réplica}: $\Delta=15/45=1/3$ de acción; la deuda se elige para que la cartera valga cero en el estado malo, $B=(80/3)/1{,}1=24{,}24$. La cartera cuesta $100/3-24{,}24=9{,}09$, y eso vale la \emph{call}.
+  \item \emph{Con la fórmula}: $\pi=(1{,}1-0{,}8)/0{,}45=2/3$ y $c=(2/3\cdot15+1/3\cdot0)/1{,}1\approx9{,}09$.
+  \item \emph{Y la \emph{put}} con el mismo $K$, por la paridad: $p=c+K/(1+r)-S_0=9{,}09+100-100=9{,}09$; con el árbol, $(1/3\cdot30)/1{,}1=9{,}09$.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{La probabilidad real no interviene}: da igual que la acción suba con una probabilidad del 50~\% o del 90~\%; la \emph{call} vale 9,09 porque se puede replicar. $\pi$ no es la probabilidad real, sino la que haría que la acción rindiera en promedio el tipo sin riesgo, $\pi uS_0+(1-\pi)dS_0=(1+r)S_0$: la \concepto{probabilidad neutral al riesgo}. Valorar es calcular el pago esperado con ella y descontarlo al tipo sin riesgo.
+\item \emph{La volatilidad entra por $u$ y $d$}: cuanto más separados, más vale la opción. En la versión de \textcite{CoxRossRubinstein1979Option}, $u=e^{\sigma\sqrt{\Delta t}}$ y $d=1/u$; en el ejemplo, $d=1/u$ y $\ln1{,}25\approx0{,}223$: una volatilidad anual del 22~\%.
+\item \emph{$\Delta$ es la ratio de cobertura}: comprar $\Delta$ acciones por cada \emph{call} vendida da una cartera sin riesgo (en el ejemplo, vale $26{,}67$ en los 2 estados).
+\item Es el mismo árbol de 2 ramas, con la misma $\pi$, que la opción de esperar en la decisión de inversión \vertema{3.A.34} \vertema{3.B.2}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Varios periodos}: el árbol se resuelve hacia atrás, nodo a nodo. En cada nodo se puede comparar el valor de seguir con el de ejercer, así que sirve para las opciones americanas, lo que no hace la fórmula de \autor{Black} y \autor{Scholes}.
+\item \emph{Del binomial a \autor{Black}-\autor{Scholes}}: si el plazo se divide en $n$ periodos cada vez más cortos, con $u$ y $d$ ajustados a la volatilidad, el logaritmo del precio final es una suma de muchos saltos independientes y, por el teorema central del límite, tiende a una normal: el precio es lognormal y el valor de la opción converge a la fórmula de \autor{Black} y \autor{Scholes} \parencite{CoxRossRubinstein1979Option} (anexo~\ref{anexo:valoracion-neutral}).
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Es flexible e intuitivo y es el método de cálculo de las opciones americanas, pero con un periodo los 2 estados son una caricatura, y con muchos exige un ordenador. Una fórmula cerrada sería más útil.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El árbol binomial de un periodo}\label{fig:arbol-binomial}
+\grafico[0.78\textwidth]{arbol-binomial}
+\fuente{elaboración propia a partir de \textcite{CoxRossRubinstein1979Option}: $S_0=100$, $u=1{,}25$, $d=0{,}8$, $K=110$ y $r=10$~\%.}
+\end{figure}
+
+\begin{notaopositor}
+El binomial se canta casi de palabra: se dibuja el árbol con la acción (100, 125 y 80) y la opción (?, 15 y 0), se dice que con un tercio de acción y un préstamo se fabrica la opción y se escribe solo la \eqref{eq:binomial} con $\pi=2/3$ y $c\approx9{,}09$. La frase que hay que decir: «la probabilidad real no aparece».
+\end{notaopositor}
+
+\subsubsection{El modelo de \autor{Black} y \autor{Scholes}}\label{sec:black-scholes}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{BlackScholes1973Pricing} y \textcite{Merton1973Theory} llevan la réplica del binomial al tiempo continuo: si la cartera se ajusta en cada instante, una acción y un bono replican exactamente la opción, y su precio sale de una fórmula cerrada.\footnote{\textcite{Merton1973Theory} dio la versión más general (con dividendos, con tipos aleatorios y las cotas de las americanas) y la justificación de la cobertura continua; el nombre de la fórmula quedó para \autor{Black} y \autor{Scholes}, cuyo artículo salió en el \emph{Journal of Political Economy} en 1973.}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El precio del subyacente sigue un \emph{movimiento browniano geométrico}, $dS=\mu S\,dt+\sigma S\,dz$: rendimientos instantáneos normales e independientes, con media $\mu$ y volatilidad $\sigma$ constantes, y precio futuro lognormal.
+\item El tipo sin riesgo $r$ es constante, y se presta y se pide prestado sin límite a ese tipo.
+\item La opción es europea y el subyacente no paga dividendos.
+\item Se negocia en tiempo continuo, sin costes de transacción ni impuestos, y se puede vender en corto.
+\item No hay oportunidades de arbitraje.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Una cartera con una \emph{call} vendida y $\Delta=\partial c/\partial S$ acciones no tiene riesgo durante un instante, así que tiene que rendir $r$. Esa condición da una ecuación en derivadas parciales para el precio $f(S,t)$ de cualquier derivado sobre $S$ \parencite{BlackScholes1973Pricing}:
+  \begin{equation}\label{eq:edp-bs}
+  \frac{\partial f}{\partial t}+r\,S\,\frac{\partial f}{\partial S}+\frac{1}{2}\,\sigma^2S^2\,\frac{\partial^2f}{\partial S^2}=r\,f,
+  \end{equation}
+  en la que la rentabilidad esperada de la acción, $\mu$, no aparece. Por eso el precio es el mismo que en un mundo neutral al riesgo: el pago esperado con la \concepto{medida neutral al riesgo} $\mathbb{Q}$, en la que el subyacente rinde en promedio $r$, descontado al tipo sin riesgo (anexo~\ref{anexo:valoracion-neutral}):
+  \begin{equation}\label{eq:neutral-riesgo}
+  c=e^{-rT}\,\mathbb{E}^{\mathbb{Q}}\big[\max(S_T-K,0)\big].
+  \end{equation}
+\item Con la condición final de la \emph{call}, $f(S,T)=\max(S-K,0)$, la solución es la \concepto{fórmula de \autor{Black} y \autor{Scholes}}:
+  \funcionclave[eq:black-scholes]{c=S_0\,N(d_1)-K\,e^{-rT}N(d_2)}
+  \begin{equation}\label{eq:d1-d2}
+  d_1=\frac{\ln(S_0/K)+(r+\sigma^2/2)\,T}{\sigma\sqrt{T}},\qquad d_2=d_1-\sigma\sqrt{T},
+  \end{equation}
+  y, por la paridad, $p=Ke^{-rT}N(-d_2)-S_0N(-d_1)$.
+\item \emph{Ejemplo}: con $S_0=K=100$, $r=5$~\%, $\sigma=20$~\% y $T=1$, $d_1=0{,}35$ y $d_2=0{,}15$; $N(d_1)=0{,}637$ y $N(d_2)=0{,}560$, así que $c=63{,}68-95{,}12\cdot0{,}560\approx10{,}45$ y $p\approx5{,}57$.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Cómo se lee}: la \emph{call} vale lo que se espera recibir (la acción, si se ejerce) menos lo que se espera pagar ($K$, si se ejerce), en valor actual y con probabilidades neutrales al riesgo:
+  \begin{itemize}
+  \item $N(d_2)$ es la probabilidad neutral al riesgo de que la opción se ejerza, $\mathbb{Q}(S_T>K)$;
+  \item $N(d_1)$ es la delta de la \emph{call}, $\Delta=\partial c/\partial S_0$: las acciones que hay que tener por cada \emph{call} para replicarla.
+  \end{itemize}
+\item \emph{Casos límite}: si la opción está muy dentro de dinero, $N(d_1)$ y $N(d_2)$ tienden a 1 y $c\to S_0-Ke^{-rT}$, su cota inferior (la \emph{put} no vale nada); si está muy fuera, $c\to0$.
+\item \emph{De qué depende}: de 5 variables, $c=c(S_0,K,T,r,\sigma)$, todas observables salvo la volatilidad, con los signos de la tabla~\ref{tab:determinantes}; no depende de $\mu$ ni de la aversión al riesgo, que ya están en $S_0$. Las sensibilidades a cada variable son las griegas, $\Delta$, $\Gamma$, $\mathcal{V}$, $\Theta$ y $\rho$, con las que se gestionan las carteras de opciones (anexo~\ref{anexo:griegas}) \vertema{3.B.26}.
+\item \emph{Volatilidad implícita}: como todo lo demás se observa, del precio de mercado de una opción se puede despejar la $\sigma$ que lo justifica, y compararla con la volatilidad histórica del subyacente. Los mercados cotizan las opciones en volatilidad, y los índices de volatilidad implícita (el VIX del Cboe sobre el S\&P~500, el «índice del miedo», o el VIBEX de BME sobre el IBEX~35, con una media del 15,1~\% en 2025) miden la incertidumbre que descuenta el mercado \parencite{BME2026InformeMercado}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Con dividendos} continuos a la tasa $q$, basta cambiar $S_0$ por $S_0e^{-qT}$ \parencite{Merton1973Theory}; sobre futuros, la fórmula de \textcite{Black1976Pricing}; sobre divisas, con $q=i^{*}$.
+\item \emph{Opciones americanas}: no tienen fórmula cerrada (salvo la \emph{call} sin dividendos, que vale como la europea); se valoran con árboles binomiales.
+\item \emph{Más allá de la lognormal}: volatilidad estocástica \parencite{Heston1993Closed}, saltos y volatilidad local; y, para las exóticas, la simulación de Montecarlo, que calcula el pago esperado con $\mathbb{Q}$ promediando miles de trayectorias simuladas.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{Ajuste}: el modelo da precios cercanos a los de mercado para opciones en el dinero y a corto plazo, y su lógica, la cobertura delta, la usan todos los creadores de mercado. Su adopción fue tan rápida que llegó a hacer que los precios de mercado se parecieran a los de la fórmula \parencite{MacKenzieMillo2003Constructing}.
+\item \emph{La sonrisa de volatilidad}: si el modelo fuera exacto, la volatilidad implícita sería la misma para todos los $K$ de un mismo subyacente. Desde el desplome de octubre de 1987 no lo es: en los índices bursátiles, la implícita de las \emph{puts} fuera de dinero es mucho mayor (una «mueca» o \emph{skew}), porque el mercado da a las caídas fuertes más probabilidad que la lognormal \parencite{Rubinstein1994Implied}.
+\item \emph{Colas gruesas}: los rendimientos tienen más sucesos extremos que una normal, como mostró ya \textcite{Mandelbrot1963Variation}, y la volatilidad cambia con el tiempo y se agrupa en rachas.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Sus supuestos no se cumplen, y las 3 críticas clásicas son:
+  \begin{enumerate}
+  \item la volatilidad no es constante: se alternan periodos de fuerte volatilidad y de calma, y una opción no vale lo mismo si vence en un periodo agitado;
+  \item los rendimientos no son del todo independientes de los pasados: hay inercias (en los tipos de interés) y rebotes (tras una subida fuerte, ventas para recoger beneficios);
+  \item no siguen una normal: hay más sucesos extremos (más curtosis) y asimetría hacia las caídas.
+  \end{enumerate}
+\item Aun así, el mercado lo usa como un lenguaje: cotiza en volatilidad implícita y corrige la fórmula con la sonrisa, porque da una fórmula cerrada y las griegas. Su gran aportación, la valoración por réplica y neutral al riesgo, va más allá de la fórmula. Pero el riesgo de modelo es real: \emph{Long-Term Capital Management}, el fondo del que eran socios \autor{Merton} y \autor{Scholes}, tuvo que ser rescatado por un consorcio de bancos, con la mediación de la Reserva Federal de Nueva York, en septiembre de 1998, cuando sus posiciones apalancadas se movieron todas a la vez en contra \parencite{PWG1999LTCM}.
+\end{itemize}
+
+\subsubsection{Las opciones reales}\label{sec:opciones-reales}
+
+\begin{itemize}
+\item La lógica de las opciones sirve fuera de los mercados financieros. Una \concepto{opción real} es el derecho, y no la obligación, de tomar una decisión sobre un activo real: esperar antes de invertir, ampliar un proyecto, abandonarlo o hacerlo por fases.
+  \begin{itemize}
+  \item La oportunidad de invertir en un proyecto aplazable es una \emph{call} americana sobre el proyecto: el subyacente $S_0$ es el valor actual de sus flujos, $V_0$, y el precio de ejercicio $K$, la inversión, $I$. Como toda opción, vale más cuanto mayor es la incertidumbre, y por eso puede convenir esperar aunque el valor actual neto sea positivo \vertema{3.A.34} \vertema{3.B.2}.
+  \item Las acciones de una empresa endeudada son una \emph{call} sobre sus activos con precio de ejercicio igual a la deuda \parencite{Merton1974Pricing}: valen algo aunque el patrimonio contable sea negativo, y son la base de los modelos de riesgo de crédito y de la valoración de empresas con opciones reales \vertema{3.B.4}.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:opciones}}: la opción da un derecho, su pago no es lineal y por eso se paga una prima. Su valor relativo lo fija la paridad \emph{put-call}, y su valor absoluto, la réplica: en el binomial con 2 estados y en \autor{Black} y \autor{Scholes} en tiempo continuo, con un resultado que no depende de las expectativas ni de la aversión al riesgo, sino de la volatilidad.
+\item \emph{Nexo}: futuros y opciones resuelven un pago en una fecha. ¿Y si se quiere intercambiar una serie de pagos durante años? Con futuros y opciones se construye todo lo demás: un \emph{swap} es una cadena de \emph{forwards}.
+\end{itemize}
+
+% ==========================================================================
+\section{Mercados de \emph{swaps}}\label{sec:swaps}
+\minutos{8}
+
+\begin{notaopositor}
+En el cante (\tiempo{8}): se borra todo salvo el guion y las 3 funciones clave. III.1, \tiempo{0,5}: de palabra, «un \emph{swap} es una cartera de \emph{forwards}». III.2, \tiempo{2,5}: el esquema del IRS (gráfico~\ref{fig:irs}) con el ejemplo del banco (\tiempo{1}); FX \emph{swaps} y \emph{currency swaps}, de palabra, con el dato de la Encuesta Trienal (\tiempo{0,5}); permutas de rentabilidad total y Archegos, en una frase (\tiempo{0,25}); CDS con $s\simeq\lambda(1-R)$ y AIG (\tiempo{0,75}). III.3, \tiempo{0,25}: de palabra. III.4, \tiempo{0,75}: cobertura y ventaja comparativa, con la crítica de \autor{Turnbull}, de palabra. III.5, \tiempo{1}: $V_{\mathrm{swap}}=B_{\mathrm{fl}}-B_{\mathrm{fix}}$, que vuelve a la ETTI. III.6, \tiempo{3}: 3 columnas, «tamaño», «reforma de 2009» y «riesgos», con 2 o 3 palabras en cada una; los gráficos de datos no se dibujan. La caja de las líneas \emph{swap} de la Reserva Federal, los otros derivados de crédito y los detalles de la regulación son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: vale cero al firmarse y se valora, como todo lo anterior, por arbitraje. Con los \emph{swaps} y los derivados de crédito, casi todos OTC, llegamos al mercado que estuvo en el centro de la crisis de 2008 y a la pregunta del final: qué hacen los mercados de derivados por la economía y qué riesgos crean.
+\item \emph{Nexo}: una vez vistos los derivados con un pago en una fecha, pasamos a los que intercambian una serie de pagos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Definición}\label{sec:definicion-swaps}
+
+\begin{itemize}
+\item Un \concepto{\emph{swap}} o \concepto{permuta financiera} es un contrato por el que 2 partes se comprometen a intercambiar flujos de caja en una serie de fechas, calculados sobre un nominal con reglas fijadas hoy (un tipo fijo contra uno variable, una moneda contra otra). Tiene 3 elementos:
+  \begin{enumerate}
+  \item un \emph{contrato};
+  \item un \emph{intercambio de flujos de caja} con una regla fijada hoy;
+  \item unas \emph{fechas de liquidación}, hasta un vencimiento.
+  \end{enumerate}
+\item Cada intercambio es un \emph{forward}: el \emph{swap} es un \concepto{\emph{forward} multiperiodo} o, lo que es lo mismo, una cartera de \emph{forwards} con distintos vencimientos. Así, cada parte transforma una corriente de pagos en otra que se ajusta mejor a su perfil de riesgo: un pasivo a tipo variable en uno a tipo fijo, una deuda en dólares en una en euros.
+\item Se negocian OTC, con el contrato marco de la ISDA (\emph{International Swaps and Derivatives Association}). Aparecieron a principios de los años 80 \parencite[cap.~7]{Hull2022Options}, con la internacionalización de las finanzas y la volatilidad de tipos de interés y de cambio que siguió al fin de Bretton Woods, y hoy son los derivados más negociados: los \emph{swaps} de tipos de interés suman 545 billones de dólares de nominal, casi dos terceras partes de todos los derivados OTC \parencite{BIS2026OTCDerivados,ISDA2026KeyTrends}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Tipos}\label{sec:tipos-swaps}
+
+\begin{itemize}
+\item Según lo que se intercambia, hay 5 grandes familias:
+  \begin{enumerate}
+  \item \emph{permutas de tipos de interés} (\emph{interest rate swaps}, IRS), en una sola moneda;
+  \item \emph{swaps de divisas a plazo} (\emph{FX swaps}): una compraventa de divisas al contado y la inversa a plazo;
+  \item \emph{permutas de divisas} (\emph{currency swaps}): intercambian principal e intereses en 2 monedas;
+  \item \emph{permutas de rentabilidad total} y de acciones (\emph{total return} y \emph{equity swaps});
+  \item \emph{permutas de incumplimiento crediticio} (\emph{credit default swaps}, CDS), que son derivados de crédito.
+  \end{enumerate}
+\end{itemize}
+
+\subsubsection{Permutas de tipos de interés}\label{sec:irs}
+
+\begin{itemize}
+\item En una \concepto{permuta de tipos de interés} (IRS) las 2 partes intercambian intereses en la misma moneda sobre un nominal $\mathrm{VN}$ que no se intercambia; es el \emph{swap} más importante por volumen. Hay 2 subtipos:
+  \begin{itemize}
+  \item el \emph{plain vanilla}, fijo contra variable: una parte paga un tipo fijo, el \concepto{tipo \emph{swap}} $R_s$, y la otra el Euríbor (o el €STR, en los \emph{overnight index swaps}, OIS);
+  \item el de \emph{base} (\emph{basis swap}), variable contra variable (por ejemplo, el Euríbor a 3 meses contra el de 6).
+  \end{itemize}
+\item \emph{Ejemplo de cobertura}: un banco tiene préstamos hipotecarios a tipo variable (Euríbor más un diferencial) y se financia con depósitos a tipo fijo. Si el Euríbor baja, sus ingresos caen y sus costes no. Para cubrirse entra en un IRS en el que paga variable y recibe fijo: si el Euríbor baja, paga menos en el \emph{swap}, y lo que pierde en el balance lo gana en la permuta (gráfico~\ref{fig:irs}).
+  \begin{itemize}
+  \item Su contraparte, que paga fijo y recibe variable, puede ser una empresa con un préstamo a tipo variable que quiere fijar su coste. Cada una se cubre de un riesgo distinto: el banco, de las bajadas de tipos, y la empresa, de las subidas.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Permuta de tipos de interés fijo contra variable}\label{fig:irs}
+\grafico[0.75\textwidth]{irs}
+\fuente{elaboración propia a partir de \textcite[cap.~7]{Hull2022Options}.}
+\end{figure}
+
+\subsubsection{\emph{Swaps} de divisas}\label{sec:swaps-divisas}
+
+\begin{itemize}
+\item \emph{FX swaps}: 2 operaciones de signo contrario entre las mismas partes, una compraventa de divisas al contado y la inversa a plazo, al tipo \emph{forward}, sin pagos intermedios. Equivalen a un préstamo en una moneda garantizado con un depósito en la otra, y su precio lo da la paridad cubierta de intereses \eqref{eq:pci}. Son el instrumento más negociado del mercado de divisas: 4 billones de dólares diarios en abril de 2025, el 42~\% de los 9,6 billones del total, aunque su peso es el menor desde 2010 \parencite{BIS2025Trienal} \vertema{3.B.13}.
+\item \emph{Currency swaps}: como los FX \emph{swaps}, intercambian los principales al principio y al final, pero además cada parte paga durante la vida del contrato los intereses de la moneda que recibió, fijos o variables. Sirven para convertir una deuda en una moneda en una deuda en otra: el Tesoro o una empresa que emite en dólares y quiere pagar en euros, o un organismo multilateral que presta a medio y largo plazo en una moneda y se financia en otra.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Las líneas \emph{swap} entre bancos centrales.} Un banco central puede prestar a otro su moneda con una operación de estructura de FX \emph{swap}: le entrega dólares a cambio de su moneda al tipo de cambio de contado y se los recompra al mismo tipo al vencimiento, con intereses aparte. El banco central que recibe los dólares los presta a sus bancos y asume su riesgo \parencite{GarciaEscuderoSanchez2020Swaps}.
+\begin{itemize}
+\item \emph{Por qué hacen falta}: los bancos de fuera de Estados Unidos tienen muchos activos en dólares, financiados a corto plazo en los mercados mayoristas, sin acceso directo a la Reserva Federal. Cuando esos mercados se cierran, necesitan dólares que su banco central no puede crear.
+\item \emph{En marzo de 2020}, con la pandemia, la escasez de dólares fuera de Estados Unidos llevó a la Reserva Federal a reactivar sus 5 líneas permanentes (con el BCE y los bancos centrales de Japón, Inglaterra, Canadá y Suiza) y, el 19 de marzo, a abrir otras 9 temporales, entre ellas con Brasil y México \parencite{Fed2020Swaps}. El saldo prestado llegó a unos 450.000 millones de dólares a finales de abril, sobre todo al Banco de Japón y al BCE, y la prima por obtener dólares en el mercado de \emph{swaps} desapareció en pocas semanas \parencite{GarciaEscuderoSanchez2020Swaps}; las tensiones se aliviaron más en los países con líneas permanentes \parencite{ErenSchrimpfSushko2020Dollar}.
+\end{itemize}
+Funcionan como un prestamista de última instancia internacional en dólares, más rápido que el FMI, pero solo para quien la Reserva Federal elige \vertema{3.B.13} \vertema{3.B.22}. Más información: \textcite{BCE2026LineasSwap}, \url{https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/currency_swap_lines.es.html}.
+\end{anotaciones}
+
+\subsubsection{Permutas de rentabilidad total y de acciones}\label{sec:equity-swaps}
+
+\begin{itemize}
+\item Una parte paga la rentabilidad total de una acción o de un índice (variación del precio más dividendos) y la otra un tipo \emph{variable} más un diferencial. Quien recibe la rentabilidad total tiene la exposición económica a las acciones sin comprarlas y sin figurar como accionista.\footnote{Es lo que hizo \emph{Archegos Capital Management}, una oficina familiar que acumuló con estas permutas, con varios bancos a la vez y sin que ninguno conociera la posición total, exposiciones muy apalancadas a unas pocas acciones. Cuando cayeron, en marzo de 2021, no pudo atender los márgenes, y Credit Suisse perdió unos 5.500 millones de dólares \parencite{PaulWeiss2021Archegos}.}
+\end{itemize}
+
+\subsubsection{Derivados de crédito}\label{sec:cds}
+
+\begin{itemize}
+\item Un \concepto{derivado de crédito} transfiere el riesgo de impago de un emisor, la \emph{entidad de referencia}, sin transferir el bono o el préstamo.
+\item El principal es la \concepto{permuta de incumplimiento crediticio} (\emph{credit default swap}, CDS): el comprador de protección paga una cuota periódica, el \emph{diferencial} del CDS, $s$ (en puntos básicos anuales sobre el nominal), y el vendedor le paga la pérdida si hay un evento de crédito (impago, reestructuración o quiebra), $\mathrm{VN}\,(1-R)$, con $R$ la tasa de recuperación. Es como un seguro, con una diferencia: no hace falta tener el bono para comprarlo.
+  \begin{itemize}
+  \item \emph{Precio}: si la intensidad anual de impago es $\lambda$, sin arbitraje la cuota cubre la pérdida esperada, $s\simeq\lambda\,(1-R)$ \parencite[caps.~24-25]{Hull2022Options}. Por eso el diferencial de los CDS es un indicador diario del riesgo de crédito que percibe el mercado, de empresas y de Estados.
+  \item \emph{Tamaño}: su nominal se dobló cada año entre 2004 y 2007, hasta 61 billones de dólares, y desde entonces ha caído a 11 billones (diciembre de 2025) \parencite{BIS2026OTCDerivados}.
+  \end{itemize}
+\item \emph{Otros derivados de crédito} \parencite[cap.~25]{Hull2022Options} \vertema{3.B.26}:
+  \begin{itemize}
+  \item los \emph{índices de CDS} (iTraxx en Europa, CDX en Estados Unidos), protección sobre una cesta normalizada de emisores;
+  \item las \emph{permutas de rentabilidad total}, que transfieren a la vez el riesgo de crédito y el de mercado;
+  \item los \emph{bonos ligados al crédito} (\emph{credit-linked notes}, CLN): un bono que incorpora un CDS vendido, por el que el inversor cobra más cupón y pierde principal si la entidad de referencia impaga;
+  \item y las \emph{obligaciones de deuda garantizadas} (CDO) por tramos, que reparten las pérdidas de una cartera de créditos entre tramos de distinta prioridad; las \emph{sintéticas}, con CDS en lugar de bonos, multiplicaron la exposición a las hipotecas \emph{subprime} antes de 2008.
+  \end{itemize}
+\item \emph{Riesgos}: los CDS pueden generar inestabilidad por 2 rasgos:
+  \begin{itemize}
+  \item \emph{CDS al descubierto} (\emph{naked}): como no hace falta tener el bono, una parte importante de la protección se compra para especular sobre el impago, lo que en la crisis de la deuda del euro se acusó de amplificar la presión sobre los soberanos. La UE prohibió en 2012 comprar CDS soberanos al descubierto \parencite{UE2012VentasCorto}.\footnote{El Reglamento (UE) 236/2012, de ventas en corto, prohíbe las posiciones al descubierto en CDS soberanos, salvo las que cubren riesgos ligados a ese soberano. En Estados Unidos, la ley Dodd-Frank (2010) \parencite{DoddFrank2010} llevó a compensar en cámara y a negociar en plataformas los CDS y, en general, los derivados normalizados.}
+  \item \emph{Vendedor frágil}: el valor de la protección es el de la solvencia de quien la vende, que no tiene por qué ser una entidad regulada ni tener capital para pagar. La aseguradora AIG había vendido protección sobre cientos de miles de millones de dólares de tramos de CDO sin cubrirse; en septiembre de 2008, tras la quiebra de Lehman Brothers, no pudo atender los márgenes y fue rescatada para evitar el contagio a sus contrapartes, lo que plantea un problema de riesgo moral \parencite{Bernanke2010Causes,Stulz2010Credit} \vertema{3.B.26}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Pagos del \emph{swap}}\label{sec:pagos-swaps}
+
+\begin{itemize}
+\item Un \emph{swap} no tiene un pago a vencimiento, sino uno en cada fecha de liquidación, y cada uno es el de un \emph{forward} (en un IRS, el de un FRA): en cada fecha solo se paga la diferencia neta entre los 2 flujos. Quien paga fijo y recibe variable cobra en cada fecha
+  \begin{equation}\label{eq:pago-swap}
+  \mathrm{VN}\,(\text{Euríbor}-R_s)\,\tau,
+  \end{equation}
+  con $\tau$ la fracción de año del periodo y el Euríbor fijado al principio de ese periodo, si es positivo, y lo paga si es negativo. Si los tipos suben por encima de $R_s$, gana; si bajan, pierde. Como el futuro, es un juego de suma cero y su perfil es lineal; el pago del \emph{swap} es la suma de esos pagos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Estrategias}\label{sec:estrategias-swaps}
+
+\begin{itemize}
+\item \emph{Cobertura}:
+  \begin{itemize}
+  \item \emph{Transformar pasivos y activos}: una empresa con un préstamo a tipo variable que paga fijo en un IRS convierte su deuda en deuda a tipo fijo; un banco que recibe fijo cubre un activo a tipo variable (\ref{sec:irs}). Es la gestión de activos y pasivos: cerrar la diferencia de sensibilidad a los tipos entre el activo y el pasivo \vertema{3.B.24}.
+  \item \emph{Cubrir el riesgo de cambio de una emisión}: el Tesoro o una empresa que se financia en dólares y tiene ingresos en euros convierte la deuda con un \emph{currency swap}.
+  \end{itemize}
+\item \emph{Especulación}: pagar fijo es apostar a que los tipos subirán; recibirlo, a que bajarán. Con un \emph{swap} se toma esa posición sobre toda la curva de tipos sin comprar ni vender bonos, y con poco capital.
+\item \emph{Arbitraje de ventaja comparativa}: cada empresa se endeuda donde es relativamente más barata y luego intercambian los pagos \parencite{BickslerChen1986Economic} \parencite[cap.~7]{Hull2022Options}.
+  \begin{itemize}
+  \item Por ejemplo, la empresa A, de mejor calidad crediticia, se endeuda al 4,0~\% fijo o al Euríbor $-0{,}1$, y la B, al 5,2~\% fijo o al Euríbor $+0{,}6$. A paga 1,2 puntos menos en el fijo y solo 0,7 menos en el variable: tiene ventaja \emph{comparativa} en el fijo, y B en el variable. Si A se endeuda a fijo y B a variable y firman un \emph{swap} en el que A paga el Euríbor a B y B paga a A el 4,35~\%, A acaba pagando el Euríbor $-0{,}35$ y B, el 4,95~\% fijo: cada una ahorra 0,25 puntos, la mitad de la diferencia de 0,5.
+  \item La ganancia es en parte aparente: el prestamista a tipo variable puede revisar el diferencial de B en cada renovación si su calidad empeora, mientras que el tipo fijo cubre ese riesgo para todo el plazo. Lo que A y B ahorran lo pagan asumiendo el riesgo de crédito de la otra \parencite{Turnbull1987Swaps}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración}\label{sec:valoracion-swaps}
+
+\begin{itemize}
+\item \emph{Al firmarse}, un \emph{swap} vale cero: si no, habría arbitraje. El \concepto{tipo \emph{swap}} $R_s$ es el tipo fijo que iguala el valor de los 2 lados.
+\item \emph{Como diferencia de 2 bonos}: para quien recibe fijo y paga variable, el \emph{swap} equivale a haber comprado un bono a tipo fijo y vendido uno a tipo variable con el mismo nominal (los nominales se compensan):
+  \begin{equation}\label{eq:valor-swap}
+  V_{\mathrm{swap}}=B_{\mathrm{fix}}-B_{\mathrm{fl}},
+  \end{equation}
+  y, para quien paga fijo, $B_{\mathrm{fl}}-B_{\mathrm{fix}}$. El bono variable vale su nominal en cada fecha de revisión, porque paga el tipo de mercado. Con los tipos de contado $r_i$ de cada fecha $t_i$, que dan la estructura temporal de los tipos de interés (ETTI), el tipo \emph{swap} es el cupón que hace que el bono fijo valga también el nominal:
+  \begin{equation}\label{eq:tipo-swap}
+  R_s=\frac{1-e^{-r_nt_n}}{\sum_{i=1}^{n}\tau_i\,e^{-r_it_i}}.
+  \end{equation}
+\item \emph{Como cartera de FRA}: cada intercambio es un FRA (\ref{sec:futuros-subyacente}); se supone que cada tipo variable futuro será el tipo a plazo que implica hoy la ETTI, se calcula el pago neto de cada fecha con \eqref{eq:pago-swap} y se descuenta. Las 2 formas dan lo mismo \parencite[cap.~7]{Hull2022Options} \vertema{3.B.24}.\footnote{Un \emph{swap} es, por tanto, una cartera de FRA, que son a su vez \emph{forwards} sobre un tipo de interés, y no de futuros, que se liquidan a diario en un mercado organizado.}
+\item \emph{Después}, si los tipos suben, el bono fijo vale menos: el \emph{swap} pierde valor para quien recibe fijo y lo gana quien paga fijo. Un \emph{currency swap} se valora igual, como la diferencia entre un bono en cada moneda, convertida al tipo de cambio de hoy.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Los mercados de derivados: tamaño, participantes, regulación y estabilidad}\label{sec:mercados-derivados}
+
+\begin{itemize}
+\item Vistos los instrumentos, el título pide analizar sus mercados: qué tamaño tienen, quién participa, cómo se han regulado tras 2008 y si estabilizan o desestabilizan el sistema financiero.
+\end{itemize}
+
+\subsubsection{Tamaño y estructura}\label{sec:mercados-tamano}
+
+\begin{itemize}
+\item \emph{OTC}: según el BIS, el nocional de los derivados OTC vivos pasó de 95 billones de dólares a finales de 2000 a 673 billones a mediados de 2008. Tras la crisis se movió entre 480 y 730 billones, y en diciembre de 2025 alcanzó 845 billones, cerca de su máximo histórico (gráfico~\ref{fig:bis-otc-derivados}) \parencite{BIS2026OTCDerivados,ISDA2026KeyTrends}.
+  \begin{itemize}
+  \item Por subyacente, los derivados de tipos de interés son casi cuatro quintas partes del nocional (669,5 billones, sobre todo \emph{swaps}), y los de divisas, 148,7 billones; los de crédito, acciones y materias primas son pequeños \parencite{ISDA2026KeyTrends}.
+  \item Casi el 80~\% del nocional de los derivados de tipos (el 78,7~\%) tiene ya una entidad de contrapartida central como contraparte, efecto de la compensación obligatoria acordada tras 2008 \parencite{BIS2026OTCDerivados}.
+  \end{itemize}
+\item \emph{Nocional no es riesgo}: un \emph{swap} de 100 millones expone a la diferencia de intereses, no a 100 millones. El valor de mercado bruto, lo que costaría reponer todos los contratos a precios de hoy, era de 22,8 billones, un 2,7~\% del nocional, y la exposición crediticia tras compensar posiciones, de 3,35 billones \parencite{BIS2026OTCDerivados}.
+\item \emph{Mercados organizados}: en 2025 se negociaron en todo el mundo 119.000 millones de contratos de futuros y opciones, un 42~\% menos que en 2024, sobre todo por las restricciones del regulador indio a la especulación con opciones sobre índices \parencite{FIA2026ETDDic}. Por número de contratos, los mayores mercados fueron 2 bolsas indias, la NSE y la BSE (casi todo opciones sobre índices de muy pequeño tamaño), seguidas de la brasileña B3, el CME Group y el ICE de Estados Unidos; el primer mercado europeo, Eurex, fue el 14.º y el español MEFF, el 34.º (gráfico~\ref{fig:fia-bolsas}) \parencite{FIA2026ETDQ4}.\footnote{El CME Group integra el \emph{Chicago Board of Trade} desde 2007 y el NYMEX y el COMEX desde 2008 \parencite{CME2020Form10K}. Que la NSE de la India sea la primera bolsa de derivados del mundo por contratos lo confirma su nota de prensa \parencite{NSE2026NotaPrensa}; por importe negociado, el CME va muy por delante.}
+\end{itemize}
+
+\begin{figure}[tbp]
+\centering
+\caption{Derivados OTC: nocional por categoría de riesgo y valor de mercado bruto (billones de dólares)}\label{fig:bis-otc-derivados}
+\grafico[0.85\textwidth]{bis-otc-derivados}
+\fuente{BIS, estadísticas semestrales de derivados OTC \parencite{BIS2026OTCDerivados}; datos de junio y diciembre de cada año, de 1998 a diciembre de 2025 (consulta: 8/11/2026).}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\caption{Mayores mercados organizados de derivados por contratos negociados en 2025 (miles de millones)}\label{fig:fia-bolsas}
+\grafico[0.75\textwidth]{fia-bolsas-2025}
+\fuente{FIA, \emph{Trends in ETD Trading Q4 2025} \parencite{FIA2026ETDQ4}. Contratos, no importe: un contrato indio vale mucho menos que uno del CME.}
+\end{figure}
+
+\subsubsection{Participantes e infraestructura}\label{sec:mercados-participantes}
+
+\begin{itemize}
+\item \emph{Usuarios finales}, que se cubren, especulan o arbitran (\ref{sec:estrategias-futuros}): empresas no financieras que cubren riesgos de cambio, de tipos o de materias primas; gestoras de fondos y aseguradoras, que cubren carteras y ajustan su duración; bancos, que gestionan el riesgo de tipos de su balance; y Tesoros y bancos centrales.
+\item \emph{Intermediarios}: un puñado de grandes bancos actúan como \concepto{creadores de mercado} (\emph{dealers}): cotizan precios de compra y de venta, casan las operaciones de los clientes y cubren entre ellos el riesgo neto que les queda. Por eso el mercado OTC está muy concentrado y muy interconectado.
+\item \emph{Infraestructuras}:
+  \begin{itemize}
+  \item las \concepto{entidades de contrapartida central}, que se interponen entre las partes, compensan las posiciones y piden garantías; reducen el riesgo de contrapartida, pero lo concentran en ellas, que pasan a ser sistémicas \parencite{NunezValdeolivas2019CCP,DuffieZhu2011Does} (anexo~\ref{anexo:ccp});
+  \item los \concepto{registros de operaciones} (\emph{trade repositories}), a los que se comunica cada contrato, para que los supervisores vean quién está expuesto a quién;
+  \item y, en lo bilateral, el contrato marco de la ISDA, con la compensación por saldos netos en caso de quiebra (\emph{close-out netting}) y el intercambio de garantías.
+  \end{itemize}
+\item \emph{En España}, los derivados organizados se negocian en \concepto{MEFF}, mercado regulado del grupo BME (propiedad de la suiza SIX desde 2020), y se compensan en \concepto{BME Clearing}, la entidad de contrapartida central; los supervisa la CNMV \parencite{CNMV2026RegistroMercados,SIX2020BME}. En 2025 MEFF negoció algo más de 35 millones de contratos, un 22,6~\% más que en 2024, sobre todo opciones sobre acciones (16,3 millones, un 48~\% más) y futuros y opciones sobre el IBEX~35 y el Mini IBEX~35 \parencite{BME2026InformeMercado}.\footnote{Desde el 1 de enero de 2026, la sociedad rectora de MEFF está integrada por absorción en BME Markets \& Exchanges \parencite{CNMV2026RegistroMercados}.}
+\end{itemize}
+
+\subsubsection{La regulación tras 2008}\label{sec:mercados-regulacion}
+
+\begin{itemize}
+\item En la cumbre de Pittsburgh de 2009, el G-20 acordó que los derivados OTC normalizados se negociaran en plataformas y se compensaran en entidades de contrapartida central, que todos se comunicaran a registros de operaciones y que los no compensados tuvieran más requisitos de capital \parencite{G20Pittsburgh2009}. La UE lo aplica con 3 normas \vertema{3.B.27}:
+  \begin{itemize}
+  \item el \concepto{EMIR} \parencite{UE2012EMIR}: obligación de compensar en una cámara los derivados que determine la ESMA, de comunicar todos los contratos a un registro y de intercambiar garantías en los no compensados; regula y supervisa las cámaras. Se reformó en 2019 \parencite{UE2019EMIRRefit,UE2019EMIR22} y en 2024 con EMIR~3, que obliga a los grandes usuarios a mantener una cuenta activa en una cámara de la Unión para reducir la dependencia de las de terceros países \parencite{UE2024EMIR3};
+  \item el \concepto{MiFIR}, que obliga a negociar en plataformas los derivados más líquidos \parencite{UE2014MiFIR};
+  \item y el Reglamento de ventas en corto, que prohíbe los CDS soberanos al descubierto y permite a los supervisores prohibir temporalmente las posiciones cortas \parencite{UE2012VentasCorto}: la CNMV lo hizo entre marzo y mayo de 2020.\footnote{\emph{Venta en corto}: se vende un activo tomado en préstamo, con la idea de recomprarlo más barato antes de devolverlo; la ganancia es la diferencia entre el precio de venta y el de recompra. \emph{Venta en corto al descubierto}: se vende un activo que no se tiene ni se ha tomado en préstamo, con la idea de comprarlo más barato antes de entregarlo.}
+  \end{itemize}
+\item En Estados Unidos, el título VII de la ley Dodd-Frank (2010) hizo lo mismo con los \emph{swaps}, bajo la supervisión de la CFTC y de la SEC \parencite{DoddFrank2010}.
+\item \emph{Resultado}: el riesgo de contrapartida bilateral ha bajado y la transparencia ha subido, pero las cámaras se han convertido en infraestructuras críticas, «demasiado importantes para quebrar», y sus márgenes pueden ser procíclicos.
+\end{itemize}
+
+\subsubsection{Eficiencia y estabilidad}\label{sec:mercados-estabilidad}
+
+\begin{itemize}
+\item \emph{A favor}:
+  \begin{itemize}
+  \item \emph{Reparten el riesgo}: lo trasladan de quien no lo quiere a quien está dispuesto a asumirlo a cambio de una prima, como en la \emph{normal backwardation}. Las opciones completan los mercados: con suficientes opciones se puede construir cualquier pago contingente, lo que acerca la economía a la asignación eficiente de \textcite{Arrow1964Role} \parencite{Ross1976Options} \vertema{3.A.21}.
+  \item \emph{Revelan información}: los futuros y las opciones son a menudo el primer sitio donde se forman los precios, y sus precios dan las expectativas de tipos, inflación, volatilidad o impago que usan los bancos centrales.
+  \item \emph{Abaratan las transacciones}: es más barato cubrirse o tomar posición con un futuro que comprar o vender la cartera.
+  \end{itemize}
+\item \emph{En contra}:
+  \begin{itemize}
+  \item \emph{Apalancamiento}: con poco capital se toman posiciones enormes, y las pérdidas pueden superar el patrimonio (Archegos en 2021, el WTI en 2020).
+  \item \emph{Interconexión y opacidad}: en lo OTC, nadie sabía en 2008 quién estaba expuesto a quién, y la quiebra de uno podía arrastrar a sus contrapartes (AIG) \vertema{3.B.26}. La gravedad de la Gran Recesión se debió sobre todo al pánico en los mercados de financiación mayorista y de titulización, más que a la caída de la vivienda en sí \parencite{Bernanke2018Real}.
+  \item \emph{Prociclicidad}: en una crisis suben a la vez la volatilidad y los márgenes, y los usuarios tienen que vender activos para atenderlos, lo que agrava la caída, como ocurrió en marzo de 2020.
+  \item \emph{Riesgo de modelo}: los derivados complejos se valoran con modelos cuyos supuestos fallan justo en las crisis (LTCM en 1998; las CDO en 2007).
+  \end{itemize}
+\item \emph{Balance}: los derivados son neutrales como instrumento; lo que los hace útiles o peligrosos es quién los usa, con cuánto apalancamiento y con cuánta transparencia. La regulación posterior a 2008 ha atacado la opacidad y el riesgo de contrapartida, pero no el apalancamiento ni la concentración del riesgo en las cámaras.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:swaps}}: un \emph{swap} es una cartera de \emph{forwards} y vale la diferencia entre 2 bonos; los derivados de crédito trasladan el riesgo de impago y fueron centrales en 2008. Los mercados de derivados son enormes en nocional y mucho menores en riesgo neto, están muy concentrados y, desde 2009, mucho más regulados: reparten el riesgo y dan información, pero con apalancamiento y opacidad lo amplifican.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: A modo de conclusión, las 3 familias de derivados se analizan con el mismo guion y la misma idea: un derivado vale lo que cuesta replicarlo.
+  \begin{itemize}
+  \item El futuro fija hoy el precio de mañana, $F_0=S_0e^{rT}$.
+  \item La opción separa el lado bueno del malo, y su prima sale de una cartera de réplica (paridad \emph{put-call}, binomial, \autor{Black} y \autor{Scholes}), sin depender de las expectativas ni de la aversión al riesgo.
+  \item El \emph{swap} es una cartera de \emph{forwards}.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: son el mayor mercado financiero por nocional; con sus precios, los bancos centrales leen lo que el mercado espera de los tipos, de la inflación y de la volatilidad; y están en la gestión de la deuda pública (el Tesoro cubre con \emph{swaps} sus emisiones en divisas), en la supervisión y en la regulación europea.
+\item \textbf{\emph{Extensiones}}: la valoración de opciones se aplica a la inversión real y a la valoración de empresas, con las opciones de esperar, ampliar o abandonar \vertema{3.A.34} \vertema{3.B.2} \vertema{3.B.4}; la ETTI, que está detrás de la valoración de los \emph{swaps} \vertema{3.B.24}; el CAPM, que explica la prima entre el futuro y el precio esperado \vertema{3.B.23}; los mercados de divisas y la paridad cubierta \vertema{3.B.13}; la crisis de 2008 y la gestión de riesgos \vertema{3.B.26}; y la regulación financiera \vertema{3.B.27}.
+\item \textbf{\emph{Opinión}}: el riesgo no está en el instrumento, sino en el apalancamiento y en la opacidad. La reforma de 2009 llevó los derivados OTC a cámaras con márgenes, y en abril de 2020 el mercado absorbió un precio negativo del petróleo sin que cayera ninguna cámara. Pero ahora el riesgo se concentra en esas cámaras, cuyos márgenes, en una crisis, obligan a vender cuando todos venden.
+\item \textbf{\emph{Idea final}}: volviendo al dicho y a la pregunta del principio, los derivados no crean ni destruyen el riesgo: lo cambian de manos y le ponen precio. Con márgenes, cámaras y transparencia sirven para cubrirse las espaldas; sin ellos, multiplican el riesgo que deberían cubrir. Por eso el título habla de instrumentos y de mercados.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: bases de la valoración de un derivado. Ausencia de arbitraje, probabilidad neutral al riesgo y teorema de \autor{Girsanov}}\label{anexo:valoracion-neutral}
+
+\subsection{El arbitraje y el teorema fundamental}
+
+\begin{itemize}
+\item El arbitraje está ligado al desarrollo de los mercados de derivados y es la base de su valoración. Una \concepto{oportunidad de arbitraje} es una cartera que no cuesta nada, no puede dar pérdidas y da ganancias con probabilidad positiva: en sentido estricto, no tiene riesgo. Surge cuando un activo está mal valorado respecto de otros, y los arbitrajistas operan hasta que la oferta y la demanda devuelven los precios a niveles sin arbitraje.
+\item \emph{Teorema fundamental de la valoración de activos} \parencite{HarrisonKreps1979,HarrisonPliska1981Martingales}: no hay arbitraje si y solo si existe una medida de probabilidad $\mathbb{Q}$, con los mismos sucesos imposibles que la real, con la que el precio de cada activo descontado al tipo sin riesgo es una martingala (su valor esperado futuro, descontado, es su precio de hoy).
+\item Si además el mercado es completo (todo pago se puede replicar con los activos existentes), $\mathbb{Q}$ es única y todo derivado tiene un único precio \parencite{Duffie2001Dynamic}:
+  \begin{equation}\label{eq:teorema-fundamental}
+  f_0=e^{-rT}\,\mathbb{E}^{\mathbb{Q}}[f_T].
+  \end{equation}
+  Las probabilidades neutrales al riesgo son los precios de los títulos de \autor{Arrow} capitalizados al tipo sin riesgo \vertema{3.A.21}.
+\end{itemize}
+
+\subsection{El caso binomial}
+
+\begin{itemize}
+\item De las ecuaciones de réplica \eqref{eq:replica}, restando la segunda de la primera, $\Delta S_0(u-d)=c_u-c_d$, así que $\Delta=(c_u-c_d)/[(u-d)S_0]$.
+\item Sustituyendo en la primera,
+  \[
+  (1+r)B=\Delta uS_0-c_u=\frac{u(c_u-c_d)-(u-d)\,c_u}{u-d}=\frac{d\,c_u-u\,c_d}{u-d}.
+  \]
+\item El precio es el coste de la cartera:
+  \[
+  c=\Delta S_0-B=\frac{(1+r)(c_u-c_d)-(d\,c_u-u\,c_d)}{(u-d)(1+r)}=\frac{1}{1+r}\left[\frac{(1+r)-d}{u-d}\,c_u+\frac{u-(1+r)}{u-d}\,c_d\right].
+  \]
+\item Los 2 pesos son positivos si $d<1+r<u$ y suman 1: son probabilidades, $\pi$ y $1-\pi$, que es la \eqref{eq:binomial}. Con ellas la acción rinde en promedio el tipo sin riesgo, $\pi uS_0+(1-\pi)dS_0=(1+r)S_0$: son las probabilidades neutrales al riesgo del teorema fundamental. \findemo
+\item \emph{Del binomial a la lognormal}: con $n$ periodos de duración $\Delta t=T/n$, $u=e^{\sigma\sqrt{\Delta t}}$ y $d=1/u$ \parencite{CoxRossRubinstein1979Option}, $\ln(S_T/S_0)$ es la suma de $n$ saltos independientes de $\pm\sigma\sqrt{\Delta t}$. Por el teorema central del límite, cuando $n\to\infty$ tiende a una normal con varianza $\sigma^2T$: el precio final es lognormal y el precio binomial de la opción converge a la fórmula de \autor{Black} y \autor{Scholes}.
+\end{itemize}
+
+\subsection{La ecuación de \autor{Black} y \autor{Scholes}}
+
+\begin{itemize}
+\item Si $dS=\mu S\,dt+\sigma S\,dz$, con $dz$ el incremento de un proceso de Wiener, el lema de Itô da para el precio $f(S,t)$ de un derivado:
+  \[
+  df=\left(\frac{\partial f}{\partial t}+\mu S\frac{\partial f}{\partial S}+\frac12\sigma^2S^2\frac{\partial^2f}{\partial S^2}\right)dt+\sigma S\frac{\partial f}{\partial S}\,dz.
+  \]
+\item La cartera $\Pi=-f+\frac{\partial f}{\partial S}S$ (vender el derivado y comprar $\partial f/\partial S$ acciones, la delta) cambia en $d\Pi=-df+\frac{\partial f}{\partial S}dS$. Los términos en $dz$ y en $\mu$ se cancelan:
+  \[
+  d\Pi=-\left(\frac{\partial f}{\partial t}+\frac12\sigma^2S^2\frac{\partial^2f}{\partial S^2}\right)dt.
+  \]
+\item Sin riesgo, la cartera tiene que rendir $r$: $d\Pi=r\Pi\,dt$. Igualando y reordenando se obtiene la ecuación \eqref{eq:edp-bs}. Como $\mu$ no aparece, el precio es el mismo para cualquier $\mu$, en particular para $\mu=r$: el de un mundo neutral al riesgo. \findemo
+\end{itemize}
+
+\subsection{El teorema de \autor{Girsanov} y la fórmula}
+
+\begin{itemize}
+\item El \concepto{teorema de \autor{Girsanov}} \parencite{Girsanov1960} justifica ese cambio de mundo. Dice que, al cambiar de medida de probabilidad de forma adecuada, un proceso de Wiener con una tendencia añadida vuelve a ser un proceso de Wiener: la volatilidad no cambia, solo la tendencia.
+  \begin{itemize}
+  \item Con $dz^{\mathbb{Q}}=dz+\frac{\mu-r}{\sigma}\,dt$, que es un proceso de Wiener con la medida $\mathbb{Q}$, el precio sigue $dS=rS\,dt+\sigma S\,dz^{\mathbb{Q}}$.
+  \item El cociente $(\mu-r)/\sigma$ es el \emph{precio de mercado del riesgo}, la ratio de \autor{Sharpe} del subyacente \vertema{3.B.23}: cambiar de medida es quitar la prima de riesgo de la tendencia. Por eso $\sigma$ entra en la fórmula y $\mu$ no.
+  \end{itemize}
+\item Con $\mathbb{Q}$, $S_T=S_0\exp\big[(r-\sigma^2/2)T+\sigma\sqrt{T}\,\varepsilon\big]$, con $\varepsilon\sim N(0,1)$ y densidad $\phi(\cdot)$ (aquí, $\varepsilon$ es una normal estándar, no la perturbación del modelo de índice del \vertema{3.B.23}). Entonces:
+  \begin{itemize}
+  \item $S_T>K\iff\varepsilon>-d_2$, así que $\mathbb{Q}(S_T>K)=N(d_2)$;
+  \item $\mathbb{E}^{\mathbb{Q}}\big[S_T\mathbf{1}_{\{S_T>K\}}\big]=S_0e^{rT}\int_{-d_2}^{\infty}e^{-\sigma^2T/2+\sigma\sqrt{T}\varepsilon}\phi(\varepsilon)\,d\varepsilon=S_0e^{rT}\int_{-d_2}^{\infty}\phi(\varepsilon-\sigma\sqrt{T})\,d\varepsilon=S_0e^{rT}N(d_1)$, completando el cuadrado y con $d_1=d_2+\sigma\sqrt{T}$.
+  \end{itemize}
+\item Llevándolo a \eqref{eq:neutral-riesgo}, $c=e^{-rT}\big[S_0e^{rT}N(d_1)-K\,N(d_2)\big]=S_0N(d_1)-Ke^{-rT}N(d_2)$, que es \eqref{eq:black-scholes}. \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: funcionamiento y participantes de las cámaras de contrapartida central}\label{anexo:ccp}
+
+\begin{itemize}
+\item Las \concepto{entidades de contrapartida central} (ECC) se interponen en nombre propio en las operaciones de compraventa de instrumentos financieros y se convierten en vendedoras frente a cada comprador y en compradoras frente a cada vendedor. Cuando una operación se registra en una ECC, da lugar a una compra y a una venta, y las 2 tienen a la ECC como contrapartida (gráfico~\ref{fig:ccp}) \parencite{NunezValdeolivas2019CCP,Gregory2014Central}.
+\item Así, la posición abierta de la ECC es nula; si deja de serlo por el incumplimiento de un miembro, tiene que actuar enseguida para volver a la posición neta nula. Pero, al interponerse en todos los contratos, queda expuesta al riesgo de contrapartida con el comprador y con el vendedor originales.\footnote{El riesgo de contrapartida es el de que la contraparte no cumpla sus obligaciones. Frente a una ECC, esas obligaciones son depositar y reponer el margen inicial, depositar el margen de variación y las que resultan de la compra o la venta del subyacente al vencimiento.}
+\item \emph{Compensación}: uno de los principales beneficios de la compensación centralizada frente a la bilateral es facilitar el neteo de posiciones. Como la ECC es contraparte de todas las operaciones, las posiciones de signo contrario se netean automáticamente, lo que reduce o elimina la exposición del miembro.\footnote{Las ECC facilitan también la \emph{compresión de carteras}, una técnica por la que 2 o más contrapartes sustituyen sus posiciones por otras de menor nocional y el mismo riesgo de mercado. En la compensación bilateral, en cambio, una entidad puede tener un riesgo de mercado neto pequeño y, a la vez, un riesgo de contrapartida grande con cada una de las entidades con las que ha operado, porque las posiciones con contrapartes distintas no se compensan entre sí.}
+\item \emph{Miembros y clientes}: las ECC son sistemas cerrados que solo operan con sus \emph{miembros} y, a través de ellos, con sus \emph{clientes}. Si un miembro negocia con el cliente de otro, en la fase de compensación la ECC se interpone entre los 2 miembros, y el miembro del cliente hace con él una operación espejo (gráfico~\ref{fig:ccp-miembros}). Para ser miembro, la ECC exige requisitos de solvencia y de capacidad operativa, para reducir el riesgo de impago.
+\item \emph{La cascada ante incumplimientos} (\emph{default waterfall}): si un miembro incumple y su posición da pérdidas, la ECC las cubre por este orden (gráfico~\ref{fig:ccp-cascada}):
+  \begin{enumerate}
+  \item el margen inicial del incumplidor y su aportación al fondo de garantía: «quien incumple paga», lo que reduce el riesgo moral;
+  \item una parte del capital propio de la ECC (\emph{skin in the game}), que alinea sus incentivos con los de los miembros;
+  \item las aportaciones al fondo de garantía de los miembros cumplidores: la mutualización del riesgo, que reduce el apetito por el riesgo de contrapartida;
+  \item y, al final, el resto del capital y las herramientas de recuperación de la ECC.
+  \end{enumerate}
+\item \emph{Canales de contagio}: si una ECC gestiona mal el incumplimiento de un miembro, o si ella misma incumple, las pérdidas y la escasez de liquidez pueden pasar a los demás miembros, a otras ECC vinculadas, a los mercados que compensa y a los bancos centrales y depositarios de valores con los que opera, y de ahí a otros mercados y zonas monetarias. Por eso EMIR las regula y supervisa, y exige que tengan planes de recuperación y resolución \parencite[101]{NunezValdeolivas2019CCP} \vertema{3.B.27}.
+\end{itemize}
+
+\begin{figure}[tbp]
+\centering
+\caption{Miembros y clientes de una cámara de contrapartida central}\label{fig:ccp-miembros}
+\grafico[0.6\textwidth]{ccp-miembros}
+\fuente{elaboración propia a partir de \textcite[83]{NunezValdeolivas2019CCP}.}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\caption{La cascada de recursos de una cámara ante el incumplimiento de un miembro}\label{fig:ccp-cascada}
+\grafico[0.7\textwidth]{ccp-cascada}
+\fuente{elaboración propia a partir de \textcite[90]{NunezValdeolivas2019CCP}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: expectativas, \emph{normal backwardation} y \emph{contango}}\label{anexo:contango}
+
+\subsection{La relación con el riesgo sistemático}
+
+\begin{itemize}
+\item Un inversor invierte hoy $F_0e^{-rT}$ al tipo sin riesgo y compra un futuro. En $T$ tiene $F_0$, con lo que paga el subyacente, que vale $S_T$: la estrategia le da el subyacente en $T$. Su valor actual, descontando el flujo seguro al tipo sin riesgo y el incierto, $S_T$, a la rentabilidad que se exige al subyacente, $k$, tiene que ser nulo \parencite[cap.~5]{Hull2022Options}:
+  \[
+  -F_0e^{-rT}+\mathbb{E}_0[S_T]\,e^{-kT}=0\quad\Longrightarrow\quad F_0=\mathbb{E}_0[S_T]\,e^{(r-k)T}.
+  \]
+\item Con la recta del mercado de títulos, $k=r+\beta\lambda_M$ \vertema{3.B.23}:
+  \begin{itemize}
+  \item si $\beta=0$ (solo riesgo diversificable), $k=r$ y $F_0=\mathbb{E}_0[S_T]$: la \emph{hipótesis de expectativas};
+  \item si $\beta>0$, $k>r$ y $F_0<\mathbb{E}_0[S_T]$: \emph{normal backwardation}; quien compra el futuro asume un riesgo sistemático, y se le paga con un precio esperado al alza;
+  \item si $\beta<0$, $k<r$ y $F_0>\mathbb{E}_0[S_T]$: \emph{contango}.
+  \end{itemize}
+\item Es el enfoque moderno de la prima de los futuros: \textcite{Dusak1973Futures} no encontró en los futuros agrícolas de Estados Unidos una prima de riesgo apreciable, coherente con las betas casi nulas de esas materias primas \parencite[cap.~22]{BodieKaneMarcus2021Investments}.
+\end{itemize}
+
+\subsection{La presión de los coberturistas}
+
+\begin{itemize}
+\item Para \textcite{Keynes1930Treatise} y \textcite{Hicks1939Value}, el signo de la prima no lo da la beta, sino quién se cubre: si los productores venden a plazo más de lo que la industria compra, los especuladores tienen que absorber la diferencia comprando, y solo lo hacen con un precio a plazo por debajo del esperado. Con más coberturistas compradores, \emph{contango}.
+\end{itemize}
+
+\subsection{La teoría del almacenamiento}
+
+\begin{itemize}
+\item \textcite{Kaldor1939Speculation} y \textcite{Working1949Theory} explican la otra comparación, la del futuro con el precio de hoy, por las existencias. Con existencias abundantes, el rendimiento de conveniencia $y$ es bajo y $F_0=S_0e^{(r+u-y)T}>S_0$ (\emph{contango} en el sentido del mercado); con escasez, tener el producto vale mucho, $y$ es alto y $F_0<S_0$ (\emph{backwardation} en el sentido del mercado). En abril de 2020 los depósitos de petróleo estaban casi llenos y guardar crudo costaba tanto que el futuro más próximo llegó a cotizar en negativo (\ref{sec:spot-forward}).
+\end{itemize}
+
+\subsection{Evidencia}
+
+\begin{itemize}
+\item \emph{Materias primas}: una cartera diversificada de futuros comprados ha dado una prima parecida a la de las acciones, con correlación negativa con ellas, lo que apoya una \emph{normal backwardation} media \parencite{GortonRouwenhorst2006Facts}; pero producto a producto la prima es pequeña y cambiante, y la pendiente de la curva se explica mejor por las existencias \parencite{FamaFrench1987Commodity}.
+\item \emph{Divisas}: si se cumpliera la hipótesis de expectativas, el tipo a plazo predeciría sin sesgo el tipo de contado futuro. Al regresar la depreciación sobre el descuento a plazo, el coeficiente sale menor que 1 y a menudo negativo: la divisa con tipos altos tiende a apreciarse, no a depreciarse. Es el sesgo del \emph{forward} \parencite{Fama1984Forward}, que se interpreta como una prima de riesgo variable o como expectativas no racionales \vertema{3.B.13} \vertema{3.B.14}.
+\item \emph{Tipos de interés}: la misma pregunta, aplicada a los tipos a plazo, es la teoría de las expectativas de la ETTI y su prima por plazo \vertema{3.B.24}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: estrategias con opciones}\label{anexo:estrategias}
+
+\begin{itemize}
+\item Las estrategias del cuerpo (\ref{sec:estrategias-opciones}) se completan con estas, cuyos perfiles de beneficio recoge el gráfico~\ref{fig:estrategias-anexo} \parencite[cap.~12]{Hull2022Options}.
+\item \emph{Combinaciones} (\emph{calls} y \emph{puts} sobre el mismo subyacente y con el mismo vencimiento): apuestas sobre la volatilidad.
+  \begin{itemize}
+  \item \emph{Cono} (\emph{straddle}): comprar una \emph{call} y una \emph{put} con el mismo $K$ (en el cuerpo).
+  \item \emph{Cuna} (\emph{strangle}): lo mismo con una \emph{put} de $K$ más bajo que el de la \emph{call}; es más barata, pero exige un movimiento mayor.
+  \item \emph{Strap}: 2 \emph{calls} y 1 \emph{put} con el mismo $K$; un cono con sesgo alcista, que gana más si el precio sube mucho.
+  \item \emph{Strip}: 1 \emph{call} y 2 \emph{puts}; un cono con sesgo bajista.
+  \item Venderlas es apostar por la calma: se cobran las primas y se pierde si el precio se mueve mucho.
+  \end{itemize}
+\item \emph{Diferenciales} (opciones del mismo tipo y distinto $K$): para expectativas moderadas, limitan la pérdida a cambio de limitar la ganancia.
+  \begin{itemize}
+  \item \emph{Alcista} (\emph{bull spread}): comprar una \emph{call} de $K_1$ y vender otra de $K_2>K_1$ (en el cuerpo).
+  \item \emph{Bajista} (\emph{bear spread}): vender una \emph{call} de $K_1$ y comprar otra de $K_2>K_1$. Se cobra la prima neta (la de la \emph{call} vendida, más cara, menos la de la comprada) y se gana si el precio no sube; la \emph{call} comprada pone un techo a la pérdida si sube.
+  \item \emph{Mariposa} (\emph{butterfly}): comprar una \emph{call} de $K_1$ y otra de $K_3$ y vender 2 de $K_2$, en medio (el precio que se cree que tendrá el subyacente al vencimiento). Gana si el precio se queda cerca de $K_2$: es una estrategia neutral, que combina un diferencial alcista y uno bajista.
+  \end{itemize}
+\item \emph{Sintéticas}: una opción combinada con un futuro replica otra opción (tabla~\ref{tab:sinteticas}). Es la misma idea que la paridad \emph{put-call} (\ref{sec:put-call}): con 3 instrumentos se replica el cuarto.\footnote{Si el precio de ejercicio de la opción coincide con el precio del futuro; si no, el pago sintético difiere del de la opción en una cantidad fija, $K-F_0$.}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Opciones sintéticas con futuros}\label{tab:sinteticas}
+\begin{tabular}{>{\centering\arraybackslash}m{5cm}>{\centering\arraybackslash}m{1cm}>{\centering\arraybackslash}m{4.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Combinación} & & \textbf{Equivale a}\\
+\midrule
+Comprar futuro + comprar \emph{put} & $=$ & \textcolor{tceeverde}{Comprar \emph{call}}\\
+Vender futuro + vender \emph{put} & $=$ & \textcolor{tceedorado}{Vender \emph{call}}\\
+Vender futuro + comprar \emph{call} & $=$ & \textcolor{tceeverde}{Comprar \emph{put}}\\
+Comprar futuro + vender \emph{call} & $=$ & \textcolor{tceedorado}{Vender \emph{put}}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia. Se comprueba sumando los pagos: $(S_T-K)+\max(K-S_T,0)=\max(S_T-K,0)$.}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\caption{Otras estrategias con opciones: perfiles de beneficio a vencimiento}\label{fig:estrategias-anexo}
+\grafico[0.95\textwidth]{estrategias-anexo}
+\fuente{elaboración propia a partir de \textcite[cap.~12]{Hull2022Options}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: las griegas y la gestión de carteras de opciones}\label{anexo:griegas}
+
+\begin{itemize}
+\item Las \concepto{griegas} miden cómo cambia el valor de una opción (o de una cartera) cuando se mueve una de las variables, dejando las demás fijas. Con la fórmula de \autor{Black} y \autor{Scholes}, para una \emph{call} sin dividendos \parencite[cap.~19]{Hull2022Options} (gráfico~\ref{fig:griegas}):
+  \begin{itemize}
+  \item \emph{Delta}, $\Delta=\partial c/\partial S=N(d_1)$, entre 0 y 1 (en la \emph{put}, $N(d_1)-1$, entre $-1$ y 0): cuanto más dentro de dinero, mayor, porque los cambios del subyacente pasan casi enteros a la opción, que se ejercerá. Una cartera con delta nula no se mueve ante cambios pequeños del subyacente; como la delta cambia con $S$ y con el tiempo, mantenerla exige una \emph{cobertura dinámica}, ajustando la cartera.
+  \item \emph{Gamma}, $\Gamma=\partial^2c/\partial S^2=\phi(d_1)/(S\sigma\sqrt{T})>0$: cuánto cambia la delta. Es máxima cerca del dinero y al acercarse el vencimiento; cuanto mayor, más a menudo hay que reajustar la cobertura, y reajustar cuesta.
+  \item \emph{Vega}, $\mathcal{V}=\partial c/\partial\sigma=S\sqrt{T}\,\phi(d_1)>0$, igual en la \emph{call} y en la \emph{put}: más volatilidad, más valor temporal.
+  \item \emph{Theta}, $\Theta=\partial c/\partial t<0$: lo que pierde la opción cada día que pasa; es mayor en valor absoluto cerca del dinero y tiende a cero muy fuera de dinero, donde no queda nada que perder.
+  \item \emph{Rho}, $\rho=\partial c/\partial r=KTe^{-rT}N(d_2)>0$ (negativa en la \emph{put}).
+  \end{itemize}
+\item Están ligadas: en una cartera con delta nula, la ecuación \eqref{eq:edp-bs} se reduce a $\Theta+\tfrac12\sigma^2S^2\,\Gamma=r\,\Pi$, con $\Pi$ el valor de la cartera. Quien vende opciones cobra theta y paga gamma: gana si el mercado se mueve poco y pierde si se mueve mucho. Son la base de la gestión de riesgos de las carteras de derivados \vertema{3.B.26}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Delta, gamma, vega y theta de una \emph{call}}\label{fig:griegas}
+\grafico[0.9\textwidth]{griegas}
+\fuente{elaboración propia con la fórmula de \textcite{BlackScholes1973Pricing}: $K=100$, $r=5$~\%, $\sigma=20$~\% y $T=1$; vega por punto de volatilidad y theta por día.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: para el test}\label{anexo:test}
+
+\begin{itemize}
+\item Preguntas oficiales del primer ejercicio sobre este tema y apartado donde se contestan (las respuestas, en el simulador):
+  \begin{itemize}
+  \item paridad \emph{put-call} y arbitraje: marzo de 2026 (n.º 35) (\ref{sec:put-call});
+  \item pagos de la \emph{put}: junio de 2024 (n.º 40) (gráfico~\ref{fig:pagos-opciones});
+  \item estrategias sintéticas y diferenciales: junio de 2023 (n.º 37), julio de 2021 (n.º 42), noviembre de 2016 (n.º 36) y octubre de 2002 (n.º 35) (\ref{sec:opciones-especulacion} y anexo~\ref{anexo:estrategias});
+  \item valor intrínseco, valor temporal y cotas: enero de 2018 (n.º 35), enero de 2020 (n.º 37) y julio de 2007 (n.º 36) (\ref{sec:valor-temporal});
+  \item definición del futuro y márgenes: noviembre de 2013 (n.º 25) y enero de 2016 (n.º 39) (\ref{sec:futuros-mercado});
+  \item volatilidad y precio de las opciones: septiembre de 2006 (n.º 32) (tabla~\ref{tab:determinantes});
+  \item \autor{Black} y \autor{Scholes}: junio de 2004 (n.º 33) y octubre de 2002 (n.º 37) (\ref{sec:black-scholes});
+  \item \emph{swaps} de tipos de interés y ventaja comparativa: julio de 2003 (n.º 40) (\ref{sec:estrategias-swaps}).
+  \end{itemize}
+\item Para practicar, el simulador de test de la web \parencite{GutierrezMarcos2026Simulador}.
+\end{itemize}
+
+\bibliografia
+\end{document}

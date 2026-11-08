@@ -171,7 +171,7 @@ const tercerEjercicioParteB = [
   { num: 22, titulo: 'El Fondo Monetario Internacional. Estructura y políticas. La prevención y solución de crisis.', disponible: true, file: '3B22.pdf' },
   { num: 23, titulo: 'Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico.', disponible: true, file: '3B23.html' },
   { num: 24, titulo: 'Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.', disponible: true, file: '3B24.pdf' },
-  { num: 25, titulo: 'Análisis de los instrumentos y de los mercados de derivados.', disponible: true, file: '3B25.pdf' },
+  { num: 25, titulo: 'Análisis de los instrumentos y de los mercados de derivados.', disponible: true, file: '3B25.html' },
   { num: 26, titulo: 'Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras.', disponible: false },
   { num: 27, titulo: 'Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica.', disponible: true, file: '3B27.pdf' },
   { num: 28, titulo: 'Economía de los países en desarrollo. Teorías recientes del desarrollo económico. Evidencia empírica, con especial referencia a la aproximación experimental, e implicaciones para el diseño de políticas.', disponible: true, file: '3B28.html' },

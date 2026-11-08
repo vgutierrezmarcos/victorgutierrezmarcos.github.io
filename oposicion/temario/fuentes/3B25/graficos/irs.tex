@@ -1,0 +1,30 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Permuta de tipos de interés fijo contra variable (plain vanilla): el banco
+% recibe fijo y paga Euríbor; la empresa, al revés. Lo fijo, en azul; lo
+% variable, en dorado, en todo el gráfico.
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado,very thick,fill=tceemorado!8,rounded corners=3pt,
+      minimum width=2.8cm,minimum height=1.1cm,align=center,font=\normalsize},
+    balance/.style={draw=tceegris,thick,fill=tceegris!10,rounded corners=3pt,
+      minimum width=2.6cm,minimum height=0.8cm,align=center,font=\small},
+    flujofijo/.style={->,very thick,tceeazul},
+    flujovar/.style={->,very thick,tceedorado}]
+  % 1: las 2 partes del swap
+  \capa{1}{\node[caja] (B) at (0,0) {Banco};}
+  \capa{1}{\node[caja] (E) at (6.5,0) {Empresa};}
+  % 2: los 2 flujos del swap: la empresa paga fijo y el banco, Euríbor
+  \capa{2}{\draw[flujofijo] ([yshift=3mm]E.west) -- node[above,etiqueta,text=tceeazul] {fijo, $R_s$} ([yshift=3mm]B.east);}
+  \capa{2}{\draw[flujovar] ([yshift=-3mm]B.east) -- node[below,etiqueta,text=tceedorado!80!black] {Euríbor} ([yshift=-3mm]E.west);}
+  % 3: lo que cubre el banco: cobra Euríbor de las hipotecas y paga fijo a
+  % los depositantes
+  \capa{3}{\node[balance] (H) at (0,2.5) {Hipotecas};
+    \draw[flujovar] (H) -- node[left,etiqueta,text=tceedorado!80!black] {Euríbor $+$ dif.} (B);}
+  \capa{3}{\node[balance] (D) at (0,-2.5) {Depositantes};
+    \draw[flujofijo] (B) -- node[left,etiqueta,text=tceeazul] {fijo} (D);}
+  % 4: lo que cubre la empresa: paga Euríbor por su préstamo
+  \capa{4}{\node[balance] (P) at (6.5,-2.5) {Banco prestamista};
+    \draw[flujovar] (E) -- node[right,etiqueta,text=tceedorado!80!black] {Euríbor $+$ dif.} (P);}
+\end{tikzpicture}
+\end{document}

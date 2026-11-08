@@ -1,0 +1,46 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{shapes.geometric}
+\begin{document}
+% Cascada de recursos de una ECC ante el incumplimiento de un miembro
+% (Núñez y Valdeolivas, 2019, diagrama 3), en escalera de arriba abajo.
+% Recursos del incumplidor en azul claro, de la ECC en salvia, de los
+% cumplidores en dorado claro; el tamaño de cada caja sugiere su peso.
+\begin{tikzpicture}[tcee,
+    recurso/.style={rectangle,rounded corners=3pt,thick,align=center,anchor=north west,inner sep=4pt},
+    incumplidor/.style={recurso,draw=tceeazul,fill=tceeazul!15},
+    propio/.style={recurso,draw=tceeverde,fill=tceesalvia},
+    cumplidor/.style={recurso,draw=tceedorado,fill=tceedorado!18},
+    paso/.style={-{Triangle[length=2.6mm,width=4.2mm]},line width=2.6pt,tceegris!65},
+    efecto/.style={ellipse,fill=tceegris!15,draw=tceegris!60,font=\footnotesize\itshape,
+      align=center,inner sep=1pt},
+    apunta/.style={->,thin,dashed,tceeazul}]
+  % 1: lo que aporta el incumplidor
+  \capa{1}{\node[incumplidor,text width=4.4cm,minimum height=1.25cm,font=\normalsize] (M) at (0,0)
+      {Margen inicial del\\miembro incumplidor};}
+  \capa{1}{\node[incumplidor,text width=3.6cm,font=\footnotesize] (F) at ($(M.south west)+(1.2,-0.3)$)
+      {Aportación al fondo de\\garantía del incumplidor};}
+  \capa{1}{\draw[paso] ($(M.south west)+(0.6,0)$) |- (F.west);}
+  % 2: el capital de la ECC
+  \capa{2}{\node[propio,text width=3.6cm,font=\footnotesize] (S) at ($(F.south west)+(1.2,-0.3)$)
+      {Capital propio de la ECC\\(\emph{skin in the game})};}
+  \capa{2}{\draw[paso] ($(F.south west)+(0.6,0)$) |- (S.west);}
+  % 3: lo que aportan los cumplidores
+  \capa{3}{\node[cumplidor,text width=4.4cm,minimum height=1.7cm,font=\normalsize] (C) at ($(S.south west)+(1.2,-0.3)$)
+      {Aportaciones al fondo\\de garantía de los\\miembros cumplidores};}
+  \capa{3}{\draw[paso] ($(S.south west)+(0.6,0)$) |- (C.west);}
+  % 4: el resto del capital y la recuperación
+  \capa{4}{\node[propio,text width=4.8cm,font=\footnotesize] (R) at ($(C.south west)+(1.2,-0.3)$)
+      {Resto del capital y herramientas\\de recuperación de la ECC};}
+  \capa{4}{\draw[paso] ($(C.south west)+(0.6,0)$) |- (R.west);}
+  % 5: para qué sirve cada escalón
+  \capa{5}{\draw[thick,tceeazul,decorate,decoration={brace,amplitude=5pt}]
+      (5.75,0) -- (5.75,0 |- F.south) coordinate[midway,xshift=6pt] (llave);}
+  \capa{5}{\node[efecto] (E1) at (10.3,-1.3) {Quien incumple paga\\(reduce el riesgo moral)};}
+  \capa{5}{\draw[apunta] (llave) -- (E1.west);}
+  \capa{5}{\node[efecto] (E2) at (10.5,0 |- S) {Alinea los incentivos\\de la ECC con\\los de los miembros};}
+  \capa{5}{\draw[apunta] (S.east) -- (E2.west);}
+  \capa{5}{\node[efecto] (E3) at (11.0,0 |- C) {Mutualización\\del riesgo};}
+  \capa{5}{\draw[apunta] (C.east) -- (E3.west);}
+\end{tikzpicture}
+\end{document}

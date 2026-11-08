@@ -1,0 +1,96 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Las 10 mayores bolsas de derivados por contratos negociados en 2025 (miles
+% de millones) y, tras una raya, Eurex (14.ª, la primera europea) y MEFF
+% (34.ª). FIA, Trends in ETD Trading Q4 2025 (consulta 8/11/2026).
+% Filas del CSV 0-9 en las posiciones 0-9 (de arriba abajo); Eurex y MEFF,
+% en 10,8 y 11,8, tras el hueco. Un color por zona: India (dorado), América
+% (azul), Europa (lila; Borsa Istanbul cuenta como Europa en la FIA), resto
+% de Asia (gris) y España (rojo, el de dicespana).
+% Capas «dic» (tikz-tcee.tex): barras → ejes y nombres → raya y barras de
+% Eurex y MEFF → valores (el de MEFF, en rojo: su barra apenas se ve).
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/fia-bolsas-2025.csv}\fia
+% Los ejes y los nombres salen en la capa 2, después de las barras
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesfia/.style={hide axis}}
+\else
+  \pgfplotsset{ejesfia/.style={}}
+\fi
+\pgfplotsset{
+  % solo las filas #1 a #2 del CSV (0 = NSE): India 0-1, América 2-6,
+  % Europa 7 y 10, resto de Asia 8-9, España 11
+  filas/.style 2 args={x filter/.expression={
+    and(\coordindex>=#1, \coordindex<=#2) ? x : nan}},
+  % posición vertical: hueco de 0,8 antes de Eurex y MEFF (filas 10 y 11)
+  fila fia/.style={/pgfplots/table/x=contratos, /pgfplots/table/y expr={\coordindex<10 ? \coordindex : \coordindex+0.8}},
+  barra fia/.style={on layer=dicbarras, forget plot, dicbarra=#1, xbar, bar width=0.36cm},
+  % valor al final de la barra, con coma decimal
+  valor fia/.style={on layer=axis descriptions, forget plot, draw=none, fill=none,
+    xbar, bar width=0.36cm, nodes near coords={\pgfmathprintnumber[
+      /pgf/number format/.cd, use comma, fixed, fixed zerofill, precision=#1,
+      1000 sep={.}]{\pgfplotspointmeta}},
+    nodes near coords style={font=\footnotesize, anchor=west, fill=none},
+    point meta=x},
+}
+\colorlet{fiaindia}{tceedorado}
+\colorlet{fiaamerica}{tceeazul}
+\colorlet{fiaeuropa}{tceemorado!50}
+\colorlet{fiaasia}{tceegris!70}
+\colorlet{fiaespana}{dicespana}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11cm, height=8.6cm,
+      xmin=0, xmax=40, xtick={0,5,...,35},
+      ymin=-0.6, ymax=12.4, y dir=reverse,
+      ytick={0,1,...,9,10.8,11.8},
+      yticklabel={%
+        \pgfmathtruncatemacro{\filafia}{\tick<10 ? \tick : \tick-0.8}%
+        \pgfplotstablegetelem{\filafia}{puesto}\of\fia\let\puestofia\pgfplotsretval
+        \pgfplotstablegetelem{\filafia}{bolsa}\of\fia
+        \puestofia.º\ \pgfplotsretval},
+      ticklabel style={font=\footnotesize},
+      xlabel={Miles de millones de contratos de futuros y opciones},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      major y tick style={draw=none},
+      xmajorgrids, grid style={tceegris!25},
+      clip=false,
+      legend style={at={(0.5,-0.17)}, anchor=north, legend columns=5,
+        draw=none, font=\footnotesize,
+        /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left,
+      dicapas, ejesfia]
+    % 1: las 10 mayores, de mayor a menor, con el color de su zona
+    \capa{1}{
+      \addplot[barra fia=fiaindia, filas={0}{1}] table[fila fia] {\fia};
+      \addplot[barra fia=fiaamerica, filas={2}{6}] table[fila fia] {\fia};
+      \addplot[barra fia=fiaeuropa, filas={7}{7}] table[fila fia] {\fia};
+      \addplot[barra fia=fiaasia, filas={8}{9}] table[fila fia] {\fia};
+    }
+    % 2: ejes y nombres de las bolsas (los dibuja el entorno axis)
+    % 3: raya de separación y barras de Eurex (14.ª) y MEFF (34.ª)
+    \capa{3}{
+      \dicraya[dicumbral]{(0,10.2) (40,10.2)}
+      \addplot[barra fia=fiaeuropa, filas={10}{10}] table[fila fia] {\fia};
+      \addplot[barra fia=fiaespana, filas={11}{11}] table[fila fia] {\fia};
+    }
+    % 4: valores de cada barra y leyenda de las zonas
+    \capa{4}{
+      \addplot[valor fia=2, filas={0}{10}]
+        table[fila fia] {\fia};
+      \addplot[valor fia=3, filas={11}{11}, nodes near coords style={text=fiaespana, font=\footnotesize\bfseries}] table[fila fia] {\fia};
+      \addlegendimage{area legend, dicbarra=fiaindia}
+      \addlegendentry{India}
+      \addlegendimage{area legend, dicbarra=fiaamerica}
+      \addlegendentry{América}
+      \addlegendimage{area legend, dicbarra=fiaeuropa}
+      \addlegendentry{Europa}
+      \addlegendimage{area legend, dicbarra=fiaespana}
+      \addlegendentry{España}
+      \addlegendimage{area legend, dicbarra=fiaasia}
+      \addlegendentry{Resto de Asia}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

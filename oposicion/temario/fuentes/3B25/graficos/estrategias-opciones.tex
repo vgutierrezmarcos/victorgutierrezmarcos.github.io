@@ -1,0 +1,59 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Beneficio a vencimiento de 3 estrategias (mismos ejes y estilo que
+% pagos-opciones.tex). En gris discontinuo, las posiciones que se combinan;
+% en morado, el beneficio de la estrategia.
+%  Cono: K = 2,4; c = p = 0,6; vértice -(c+p) = -1,2; umbrales 1,2 y 3,6.
+%  Diferencial alcista: K_1 = 1,6 (c_1 = 1,2), K_2 = 3,4 (c_2 = 0,4);
+%    suelo -(c_1-c_2) = -0,8, techo K_2-K_1-(c_1-c_2) = 1.
+%  Put protectora: S_0 = 2,8; K = 1,8; p = 0,6; suelo -(S_0-K+p) = -1,6.
+\begin{tikzpicture}[tcee,scale=0.75,
+    pago/.style={thick,dashed,tceegris},
+    rotgris/.style={etiqueta,font=\footnotesize,text=tceegris}]
+  % #1 título, #2 profundidad del eje vertical
+  \newcommand{\panel}[2]{%
+    \draw[eje] (0,0) -- (6,0) node[below left] {$S_T$};
+    \draw[eje] (0,-#2) -- (0,2.8) node[left] {Beneficio};
+    \node[etiqueta,font=\normalsize] at (3,3.35) {#1};}
+  % 1: ejes del cono
+  \capa{1}{\panel{Cono (\emph{straddle})}{2.1}}
+  \capa{1}{\draw (2.4,0.08) -- (2.4,-0.08) node[above=2pt] {$K$};}
+  % 2: call y put compradas (gris) y la V del cono con sus umbrales
+  \capa{2}{\draw[pago] (0,-0.6) -- (2.4,-0.6) -- (4.8,1.8) node[rotgris,right] {\emph{call}};}
+  \capa{2}{\draw[pago] (0,1.8) -- (2.4,-0.6) -- (4.8,-0.6);}
+  \capa{2}{\node[rotgris,above right] at (0.6,1.2) {\emph{put}};}
+  \capa{2}{\draw[curva1] (0,1.2) -- (2.4,-1.2) -- (4.8,1.2);}
+  \capa{2}{\draw[guia] (2.4,-1.2) -- (0,-1.2) node[etiqueta,left,text=black] {$-(c+p)$};}
+  \capa{2}{\node[punto] at (1.2,0) {};
+    \draw[guia] (1.2,0) -- (1.2,-1.45) node[etiqueta,font=\footnotesize,below,text=black] {$K-(c+p)$};}
+  \capa{2}{\node[punto] at (3.6,0) {};
+    \draw[guia] (3.6,0) -- (3.6,-1.45) node[etiqueta,font=\footnotesize,below,text=black] {$K+(c+p)$};}
+  \begin{scope}[xshift=8.6cm]
+    % 3: ejes del diferencial alcista
+    \capa{3}{\panel{Diferencial alcista (\emph{bull spread})}{1.6}}
+    \capa{3}{\draw (1.6,0.08) -- (1.6,-0.08) node[below left=0pt and -4pt] {$K_1$};}
+    \capa{3}{\draw (3.4,0.08) -- (3.4,-0.08) node[below] {$K_2$};}
+    % 4: las 2 calls (gris) y el beneficio del diferencial
+    \capa{4}{\draw[pago] (0,-1.2) -- (1.6,-1.2) -- (4.8,2.0) node[rotgris,right,align=left] {\emph{call}\\comprada};}
+    \capa{4}{\draw[pago] (0,0.4) -- (3.4,0.4) -- (4.8,-1.0);}
+    \capa{4}{\node[rotgris,above right] at (0.1,0.4) {\emph{call} vendida};}
+    \capa{4}{\draw[curva1] (0,-0.8) -- (1.6,-0.8) -- (3.4,1.0) -- (4.8,1.0);}
+    \capa{4}{\node[etiqueta,left] at (0,-0.8) {$-(c_1-c_2)$};}
+  \end{scope}
+  \begin{scope}[xshift=17.2cm]
+    % 5: ejes de la put protectora
+    \capa{5}{\panel{\emph{Put} protectora}{3.1}}
+    \capa{5}{\draw (1.8,0.08) -- (1.8,-0.08) node[above=2pt] {$K$};}
+    \capa{5}{\draw (2.8,0.08) -- (2.8,-0.08);
+    \capa{5}{\node[above left=0pt and -1pt] at (2.8,0) {$S_0$};}}
+    % 6: acción y put (gris) y su suma
+    \capa{6}{\draw[pago] (0,-2.8) -- (4.8,2.0) node[rotgris,right] {acción};}
+    \capa{6}{\node[etiqueta,left] at (0,-2.8) {$-S_0$};}
+    \capa{6}{\draw[pago] (0,1.2) -- (1.8,-0.6) -- (4.8,-0.6);}
+    \capa{6}{\node[rotgris,above right] at (0.5,0.7) {\emph{put}};}
+    \capa{6}{\draw[curva1] (0,-1.6) -- (1.8,-1.6) -- (4.8,1.4);}
+    \capa{6}{\node[etiqueta,left] at (0,-1.6) {$-(S_0-K+p)$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

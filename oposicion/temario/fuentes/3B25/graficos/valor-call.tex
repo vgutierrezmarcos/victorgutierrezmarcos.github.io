@@ -1,0 +1,29 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Prima de una call europea (Black-Scholes, K = 100, r = 0,05, sigma = 0,2,
+% T = 1) frente a S_0, con el valor intrínseco max(S_0-K,0) y la cota inferior
+% max(S_0-Ke^{-rT},0), que corta el eje en Ke^{-0,05} = 95,12.
+% En S_0 = K: c = 10,451 (todo es valor temporal).
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=8.5cm,height=6.2cm,axis lines=left,xmin=60,xmax=145,ymin=0,ymax=50,
+  xlabel={$S_0$},ylabel={Prima},xtick={100},xticklabels={$K$},ytick=\empty,
+  every axis x label/.style={at={(ticklabel* cs:1)},anchor=north east},
+  every axis y label/.style={at={(ticklabel* cs:1)},anchor=east},
+  clip=false]
+  % 1: ejes (los dibuja el propio axis)
+  % 2: valor intrínseco
+  \capa{2}{\addplot[thick,dashed,tceegris] coordinates {(60,0) (100,0) (140,40)};}
+  \capa{2}{\node[etiqueta,font=\footnotesize,text=tceegris,anchor=west] at (axis cs:140,39) {valor intrínseco};}
+  % 3: cota inferior
+  \capa{3}{\addplot[thin,tceeazul] coordinates {(60,0) (95.12,0) (140,44.88)};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (axis cs:140,44.9) {cota inferior};}
+  % 4: prima de Black-Scholes
+  \capa{4}{\addplot[curva1,smooth] coordinates {(60,0.054) (65,0.171) (70,0.441) (75,0.967) (80,1.859) (85,3.214) (90,5.091) (95,7.511) (100,10.451) (105,13.858) (110,17.663) (115,21.791) (120,26.169) (125,30.736) (130,35.440) (135,40.242) (140,45.111)};}
+  \capa{4}{\node[etiqueta,text=tceemorado,anchor=south east] at (axis cs:115,23.5) {prima, $c$};}
+  % 5: valor temporal en el dinero
+  \capa{5}{\draw[<->,thick,tceedorado] (axis cs:100,0.5) -- (axis cs:100,10);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceedorado,anchor=south east,align=right] at (axis cs:98,12) {valor\\temporal};}
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,43 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Miembros y clientes de una ECC (Núñez y Valdeolivas, 2019, diagrama 2).
+% Cada flecha va de quien hace la operación a su contraparte: «vende» de A a
+% B es que A vende a B. Miembros en morado claro, clientes en azul claro,
+% ECC en morado (como en ccp.tex).
+\begin{tikzpicture}[tcee,
+    banda/.style={fill=tceemorado!14,draw=none,minimum width=11cm,minimum height=0.6cm,
+      text=tceemorado,font=\normalsize\scshape},
+    miembro/.style={rectangle,rounded corners=2pt,draw=tceemorado,thick,fill=tceemorado!15,
+      minimum width=3cm,minimum height=0.85cm,align=center},
+    cliente/.style={rectangle,rounded corners=2pt,draw=tceeazul,thick,fill=tceeazul!15,
+      minimum width=3cm,minimum height=0.85cm,align=center},
+    ecc/.style={rectangle,rounded corners=2pt,draw=tceemorado,thick,fill=tceemorado,text=white,
+      minimum width=1.9cm,minimum height=0.8cm,font=\small\bfseries},
+    op/.style={->,thick},
+    rot/.style={etiqueta,font=\footnotesize}]
+  % 1: fase de negociación
+  \capa{1}{\node[banda] at (5.5,0) {Fase de negociación};}
+  % 1: el miembro A y el cliente B (de C) negocian
+  \capa{1}{\node[miembro] (A1) at (1.6,-1.35) {Miembro A};}
+  \capa{1}{\node[cliente] (B1) at (9.4,-1.35) {Cliente B\\[-1pt]{\footnotesize(cliente del miembro C)}};}
+  \capa{1}{\draw[op] ([yshift=5pt]A1.east) -- ([yshift=5pt]B1.west) node[rot,midway,above] {vende};}
+  \capa{1}{\draw[op] ([yshift=-5pt]B1.west) -- ([yshift=-5pt]A1.east) node[rot,midway,below] {compra};}
+  % 2: fase de compensación y la ECC
+  \capa{2}{\node[banda] at (5.5,-2.75) {Fase de compensación};}
+  \capa{2}{\node[ecc] (ECC) at (5.5,-4.0) {ECC};}
+  % 3: el miembro A, frente a la ECC
+  \capa{3}{\node[miembro] (A2) at (1.6,-6.3) {Miembro A};}
+  \capa{3}{\draw[op] ($(A2.north east)!0.2!(A2.north)+(0.10,0.10)$) -- ($(ECC.south west)+(0.10,-0.10)$) node[rot,midway,below right] {vende};}
+  \capa{3}{\draw[op] ($(ECC.south west)+(-0.10,0.0)$) -- ($(A2.north east)!0.2!(A2.north)+(-0.12,0.10)$) node[rot,midway,above left] {compra};}
+  % 4: el miembro C, la operación espejo y su cliente B
+  \capa{4}{\fill[tceedorado!18] (9.4,-7.35) ellipse (1.3cm and 0.8cm);}
+  \capa{4}{\node[miembro] (C) at (9.4,-6.3) {Miembro C};}
+  \capa{4}{\draw[op] ($(ECC.south east)+(0.12,0.0)$) -- ($(C.north west)!0.2!(C.north)+(0.10,0.10)$) node[rot,midway,above right] {vende};}
+  \capa{4}{\draw[op] ($(C.north west)!0.2!(C.north)+(-0.12,0.10)$) -- ($(ECC.south east)+(-0.10,-0.10)$) node[rot,midway,below left] {compra};}
+  \capa{4}{\node[etiqueta,font=\footnotesize\itshape,text=tceedorado!80!black,align=center,anchor=east] at (8.0,-7.35) {operación\\espejo};}
+  \capa{4}{\node[cliente] (B2) at (9.4,-8.4) {Cliente B};}
+  \capa{4}{\draw[op] ([xshift=5pt]C.south) -- ([xshift=5pt]B2.north) node[rot,midway,right] {vende};}
+  \capa{4}{\draw[op] ([xshift=-5pt]B2.north) -- ([xshift=-5pt]C.south) node[rot,midway,left] {compra};}
+\end{tikzpicture}
+\end{document}
