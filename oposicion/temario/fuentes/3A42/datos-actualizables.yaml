@@ -1,0 +1,99 @@
+tema: 3A42
+fecha_inventario: 2026-11-09
+datos:
+  - id: pib-espana-ultimo
+    texto: "En 2025 creció un 2,6~\\% y en el tercer trimestre de 2026, un 2,7~\\% interanual"
+    donde: [3A42.tex, repaso/3A42-repaso.tex]
+    valor: [2.6, 2.7]
+    unidad: "% (PIB real, variación anual 2025 e interanual del trimestre)"
+    periodo: 2025 y tercer trimestre de 2026 (avance)
+    fuente: INE2026avCNTR3T26
+    organismo: INE
+    serie: "CNTR, PIB pm volumen encadenado CVEC (CNTR6652)"
+    url: https://www.ine.es/dyngs/Prensa/avCNTR3T26.htm
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: ine-cntr
+    frase: "repaso: enganche «Hoy: 2025 +2,6 %; 2026T3 +2,7 % interanual» y caja; los datos 2019-2022 y 2008-2013 son históricos (solo revisiones)"
+  - id: comites-fechado
+    texto: "Ningún comité de fechado ve hoy una recesión"
+    donde: [3A42.tex, repaso/3A42-repaso.tex]
+    valor: null
+    unidad: estado del ciclo según NBER, CEPR-EABCN y AEE
+    periodo: otoño de 2026
+    fuente: NBER2026Ciclos
+    organismo: NBER, CEPR (EABCDC2026Primavera), AEE (AEE2026Fechado)
+    serie: "Cronologías oficiales de recesiones"
+    url: https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions
+    periodicidad: irregular
+    familia: fechado-ciclo
+    depende: [datos/fechado-recesiones.csv]
+    frase: "«que destaca que España crece a más del doble de la media»; duraciones medias NBER (10 y 64 meses) y «6 recesiones desde 1970» (CEPR y AEE) cambian si se fecha una nueva; repaso: enganche y caja"
+  - id: pib-hp-grafico
+    texto: "1995T1-2026T3, con las recesiones fechadas por la AEE"
+    donde: [3A42.tex]
+    valor: null
+    unidad: "100 ln del PIB real y componentes cíclicos (%), España y EA20"
+    periodo: 1995T1-2026T3
+    fuente: Eurostat2026namq10gdp
+    organismo: Eurostat
+    serie: "namq_10_gdp, B1GQ, CLV10_MEUR, SCA, ES y EA20"
+    url: https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: eurostat-nama
+    depende: [datos/hp-pib-espana-zona-euro.csv, graficos/filtro-hp-espana.tex, graficos/hp-paso-banda.tex, graficos/recesiones-espana.tex]
+    frase: "pie del gráfico de paso banda (l. 1077) dice «1995T1-2026T2» y el CSV llega a 2026T3: igualar al actualizar; la brecha del 5 % a finales de 2019 (l. 165) se mueve con cada dato nuevo (punto final del filtro HP)"
+  - id: brecha-credito
+    texto: "aún es negativa, $-24{,}3$ a comienzos de 2026, con un crédito del 119,4~\\% del PIB"
+    donde: [3A42.tex, repaso/3A42-repaso.tex]
+    valor: [-24.3, 119.4]
+    unidad: "puntos (brecha crédito/PIB) y % del PIB (crédito total al sector privado no financiero)"
+    periodo: 2026T1
+    fuente: BIS2026CreditGap
+    organismo: BPI
+    serie: "BIS credit-to-GDP gaps, ES (WS_CREDIT_GAP)"
+    url: https://data.bis.org/topics/CREDIT_GAPS
+    periodicidad: trimestral
+    familia: bpi-credito
+    depende: [datos/brecha-credito-pib-espana.csv, graficos/brecha-credito-pib-espana.tex, datos/ciclo-financiero-real-espana.csv, graficos/ciclo-financiero-espana.tex]
+    frase: "pie «1980T1-2026T1»; el mínimo −55,6 (2017) y máximos +47,3 (2007) y 233,8 % (2010) son históricos salvo revisión; l. 835 «con la brecha aún negativa»; repaso: l. 215"
+  - id: colchon-anticiclico
+    texto: "el Banco de España subió el colchón al 0,5~\\% en octubre de 2025 y al 1~\\% desde el 1 de octubre de 2026"
+    donde: [3A42.tex, repaso/3A42-repaso.tex]
+    valor: 1.0
+    unidad: "% de las exposiciones (colchón de capital anticíclico, España)"
+    periodo: desde el 1/10/2026
+    fuente: BdE2026CCA
+    organismo: Banco de España
+    serie: "Colchón de capital anticíclico (revisión trimestral)"
+    url: https://www.bde.es/wbe/es/areas-actuacion/politica-macroprudencial/herramientas-macroprudenciales/colchon-capital-anticiclico/
+    periodicidad: trimestral
+    familia: bde-colchon-anticiclico
+    frase: "repaso: l. 168 y caja «1 % (BdE, desde 1/10/2026)»"
+  - id: erems-observatorio
+    texto: "en octubre de 2026 atribuía a la demanda y al crédito el crecimiento por encima de la media"
+    donde: [3A42.tex, repaso/3A42-repaso.tex]
+    valor: null
+    unidad: descomposición del crecimiento del PIB por perturbaciones (EREMS)
+    periodo: octubre 2026
+    fuente: BoscaEtAl2026Observatorio
+    organismo: BBVA Research / Fedea (EREMS)
+    serie: "Observatorio del ciclo económico en España"
+    url: https://www.bbvaresearch.com/wp-content/uploads/2026/10/Observatorio_Ciclo_Oct2026_edi.pdf
+    periodicidad: semestral
+    familia: fedea-erems
+    frase: "repaso: l. 165 «EREMS (oct. 2026: demanda y crédito)»"
+  - id: residuo-solow-grafico
+    texto: "El residuo de \\autor{Solow} y el ciclo en Estados Unidos, 1947-2026"
+    donde: [3A42.tex]
+    valor: null
+    unidad: "% de desviación cíclica (producción y PTF, sector empresarial de EE. UU.)"
+    periodo: 1947T2-2026T2
+    fuente: Fernald2026TFP
+    organismo: Federal Reserve Bank of San Francisco
+    serie: "Fernald, quarterly utilization-adjusted TFP"
+    url: https://www.frbsf.org/research-and-insights/data-and-indicators/total-factor-productivity-tfp/
+    periodicidad: trimestral
+    familia: frbsf-ptf
+    depende: [datos/residuo-solow-eeuu.csv, graficos/residuo-solow.tex]

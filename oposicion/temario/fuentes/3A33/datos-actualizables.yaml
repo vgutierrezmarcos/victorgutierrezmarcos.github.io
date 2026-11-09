@@ -1,0 +1,72 @@
+tema: 3A33
+fecha_inventario: 2026-11-09
+datos:
+  - id: tasa-ahorro-ultimo
+    texto: "en el segundo trimestre de 2026 había vuelto al 11~\\%"
+    donde: [3A33.tex, repaso/3A33-repaso.tex]
+    valor: 11.0
+    unidad: "% de la renta disponible bruta (hogares e ISFLSH, ajustada de estacionalidad)"
+    periodo: segundo trimestre de 2026
+    fuente: INE2026CTNFSI
+    organismo: INE
+    serie: "CTNFSI, tasa de ahorro, CTNFSI11270 (tabla 62275)"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=62275
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: ine-ctnfsi
+    depende: [datos/tasa-ahorro-hogares.csv, graficos/tasa-ahorro-hogares.tex]
+    frase: "«el triple de su media de 2000-2019» (25,6 % en 2T 2020 es histórico); repaso: «11 % (2T 2026)» (enganche y caja)"
+  - id: consumo-hogares-pib
+    texto: "el gasto en consumo final de los hogares fue el 54,1~\\% del PIB de España en 2025"
+    donde: [3A33.tex, repaso/3A33-repaso.tex]
+    valor: 54.1
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: INE2026CNA2025
+    organismo: INE
+    serie: "Contabilidad Nacional Anual, gasto en consumo final de los hogares / PIB pm"
+    url: https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177057
+    periodicidad: anual
+    proxima: 2027-09
+    familia: ine-cna
+    frase: "repaso: «54,1 % del PIB (2025)» (relevancia y caja)"
+  - id: consumo-hogares-pib-ze
+    texto: "y el 51,5~\\% en la zona del euro"
+    donde: [3A33.tex, repaso/3A33-repaso.tex]
+    valor: 51.5
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026Nama10gdp
+    organismo: Eurostat
+    serie: "nama_10_gdp, P31_S14 / B1GQ, EA20, CP_MEUR"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual
+    familia: eurostat-nama
+  - id: duraderos-peso
+    texto: "el gasto de los hogares en duraderos fue el 6,9~\\% de su consumo en 2025"
+    donde: [3A33.tex, repaso/3A33-repaso.tex]
+    valor: 6.9
+    unidad: "% del consumo interior de los hogares"
+    periodo: 2025
+    fuente: INE2026CNTRDemanda
+    organismo: INE
+    serie: "CNTR, consumo interior de los hogares en bienes duraderos (CNTR7171) / consumo de los hogares"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=67824
+    periodicidad: trimestral
+    familia: ine-cntr
+    frase: "repaso: «6,9 % del consumo (2025)»"
+  - id: duraderos-volatilidad
+    texto: "entre 1996 y 2026, la desviación típica de su tasa de variación interanual en volumen fue de 10,6 puntos, frente a 2,0 en los no duraderos, 4,5 en el consumo de los hogares y 3,9 en el PIB"
+    donde: [3A33.tex, repaso/3A33-repaso.tex]
+    valor: [10.6, 2.0, 4.5, 3.9]
+    unidad: puntos (desviación típica de la tasa interanual en volumen)
+    periodo: 1996-2026 (hasta el último trimestre)
+    fuente: INE2026CNTRDemanda
+    organismo: INE
+    serie: "CNTR tabla 67824, índices de volumen encadenados CVEC (CNTR6652, CNTR7161, CNTR7171, CNTR8283)"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=67824
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: ine-cntr
+    depende: [datos/consumo-duraderos.csv, graficos/duraderos-datos.tex]
+    frase: "repaso: «10,6 puntos (1996-2026) vs. 2,0 no duraderos, 4,5 consumo, 3,9 PIB»; las caídas de 2009, 2012 y 2020 son históricas (cambian solo con revisiones)"

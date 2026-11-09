@@ -1,0 +1,244 @@
+tema: 3B31
+fecha_inventario: 2026-11-09
+datos:
+  - id: temperatura-global
+    texto: "según Copernicus, 2025 fue el tercer año más cálido registrado, 1,47~°C por encima de 1850-1900, tras el récord de 2024, con 1,60~°C"
+    texto_repaso: "\\dato{2024, $+1{,}60$~°C; 2025, $+1{,}47$~°C sobre 1850-1900}{Copernicus, 2026}"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 1.47
+    unidad: °C sobre 1850-1900
+    periodo: "2025"
+    fuente: C3S2026GCH2025
+    organismo: Copernicus (C3S)
+    serie: "Global Climate Highlights (ERA5); cotejo HadCRUT5 (MetOffice2026HadCRUT5)"
+    url: https://climate.copernicus.eu/global-climate-highlights-2025
+    periodicidad: anual (enero) y boletín mensual
+    proxima: 2027-01
+    familia: copernicus-clima
+    depende: [datos/temperatura-global.csv, graficos/temperatura-co2.tex]
+    frase: "l. 16 «2024 fue el primer año natural ... y 2023-2025, el primer trienio»; nota del gráfico «2026, hasta el 29 de octubre; provisional»; ficha l. 32, 51, 272"
+
+  - id: co2-concentracion
+    texto: "la concentración de CO\\textsubscript{2} alcanzó en 2025 un récord de 426,8 partes por millón (ppm), un 53~\\% más que antes de la Revolución Industrial"
+    texto_repaso: "\\dato{426,8~ppm en 2025, $+53$\\,\\%}{OMM, 2026}"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 426.8
+    unidad: ppm (media mundial)
+    periodo: "2025"
+    fuente: OMM2026BoletinGEI22
+    organismo: OMM (y NOAA para la serie del gráfico)
+    serie: "Greenhouse Gas Bulletin; NOAA GML co2_annmean_mlo y co2_annmean_gl"
+    url: https://wmo.int/publication-series/greenhouse-gas-bulletin
+    periodicidad: anual (octubre-noviembre)
+    proxima: 2027-10
+    familia: omm-gei
+    depende: [datos/co2-concentracion.csv, graficos/temperatura-co2.tex]
+    frase: "ficha l. 51 y 273"
+
+  - id: calentamiento-humano
+    texto: "el calentamiento de origen humano llegaba ya a 1,37~°C en 2025 y avanza a unos 0,27~°C por década"
+    texto_repaso: "\\dato{1,37~°C, $+0{,}27$~°C/década}{Forster et al., 2026}"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 1.37
+    unidad: °C
+    periodo: "2025"
+    fuente: Forster2026Indicators
+    organismo: Indicators of Global Climate Change (Forster et al., Earth System Science Data)
+    url: https://igcc.earth/
+    periodicidad: anual (junio)
+    proxima: 2027-06
+    familia: igcc-forster
+    frase: "presupuesto de carbono, misma fuente: «a principios de 2026 quedaban unos 130.000 millones de toneladas de CO\\textsubscript{2}, unos 3 años al ritmo actual» (l. 153); ficha l. 51, 53, 272, 275"
+
+  - id: emisiones-gei-mundo
+    texto: "En 2025 el mundo emitió unos 54.100 millones de toneladas de CO\\textsubscript{2}e, un 0,7~\\% más que en 2024"
+    texto_repaso: "\\dato{54.100~Mt CO\\textsubscript{2}e en 2025}{EDGAR, 2026}"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 54100
+    unidad: Mt CO2e (sin LULUCF, GWP-100 AR5)
+    periodo: "2025"
+    fuente: JRC2026EDGAR
+    organismo: Comisión Europea (JRC, EDGAR)
+    serie: "GHG emissions of all world countries, GHG_totals_by_country y GHG_per_capita_by_country"
+    url: https://edgar.jrc.ec.europa.eu/report_2026
+    periodicidad: anual
+    proxima: 2027-09
+    familia: edgar-emisiones
+    depende: [datos/emisiones-gei-paises.csv, graficos/emisiones-paises.tex]
+    frase: "l. 120 cuotas (China casi 30 %, EE. UU. 11 %, India 8 %, UE menos del 6 %) y por habitante (17,5; 7,1; 3,1); caption «en 2025»; ficha l. 48 y 274"
+
+  - id: co2-fosil-gcp
+    texto: "el CO\\textsubscript{2} de los combustibles fósiles, unos 38.000 millones, marcó otro récord"
+    donde: [3B31.tex]
+    valor: 38000
+    unidad: Mt CO2
+    periodo: "2025 (proyección de noviembre de 2025)"
+    fuente: GCP2025Budget
+    organismo: Global Carbon Project
+    serie: "Global Carbon Budget, emisiones fósiles"
+    url: https://globalcarbonbudget.org/
+    periodicidad: anual (noviembre, durante la COP)
+    proxima: 2026-11
+    familia: gcp-carbon-budget
+    nota: "el Global Carbon Budget 2026 sale estos días (COP31)"
+
+  - id: proyecciones-calentamiento
+    texto: "con las políticas en vigor, el mundo va hacia unos 2,8~°C en 2100, y hacia 2,3-2,5~°C si se cumplen todas las contribuciones anunciadas"
+    texto_repaso: "políticas en vigor $\\approx$2,8~°C en 2100; con todas las contribuciones, 2,3-2,5~°C (PNUMA, 2025)"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 2.8
+    unidad: °C en 2100
+    periodo: Emissions Gap Report 2025
+    fuente: UNEP2025Emissions
+    organismo: PNUMA
+    serie: "Emissions Gap Report"
+    url: https://www.unep.org/resources/emissions-gap-report-2025
+    periodicidad: anual (octubre-noviembre)
+    proxima: 2026-11
+    familia: pnuma-brecha-emisiones
+    frase: "l. 843 «llevaría a unos 2,3-2,5~°C»"
+    nota: "la entrada del .bib no tiene url; el informe de 2026 puede estar ya publicado"
+
+  - id: corales-punto-inflexion
+    texto: "los arrecifes de coral de aguas cálidas ya han cruzado el suyo, en torno a 1,2~°C"
+    texto_repaso: "los corales ya lo han cruzado ($\\approx$1,2~°C)"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    periodo: "2025"
+    fuente: Lenton2025GTPR
+    organismo: Global Tipping Points Report
+    url: https://global-tipping-points.org/
+    periodicidad: irregular (2023, 2025)
+    familia: puntos-inflexion
+    nota: "conclusión de un informe, no serie"
+
+  - id: precios-carbono-mundo
+    texto: "en 2026 funcionan 87 impuestos o mercados de carbono, que cubren casi el 30~\\% de las emisiones mundiales y recaudaron más de 107.000 millones de dólares en 2025"
+    texto_repaso: "\\dato{87, $\\approx$30\\,\\% de las emisiones}{BM, 2026}"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 87
+    unidad: instrumentos de precio del carbono; % de emisiones; millones de USD recaudados
+    periodo: "2026 (recaudación de 2025)"
+    fuente: BM2026StateTrends
+    organismo: Banco Mundial
+    serie: "State and Trends of Carbon Pricing"
+    url: https://www.worldbank.org/en/publication/state-and-trends-of-carbon-pricing
+    periodicidad: anual (mayo-junio)
+    proxima: 2027-06
+    familia: bm-precio-carbono
+    frase: "l. 23 (introducción, sin la recaudación); ficha l. 232 y 276"
+
+  - id: precio-eua
+    texto: "En octubre de 2026 el derecho se subastaba a unos 85~€ por tonelada"
+    texto_repaso: "\\dato{$\\approx$85~€/t (oct. 2026)}{EEX, 2026}"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 85
+    unidad: euros por tonelada (media mensual de subastas primarias)
+    periodo: octubre 2026
+    fuente: EEX2026Subastas
+    organismo: EEX
+    serie: "Emission Spot Primary Market Auction Report (EUA, T3PA)"
+    url: https://public.eex-group.com/eex/eua-auction-report/emission-spot-primary-market-auction-report-2026-data.xlsx
+    periodicidad: diaria (media mensual)
+    proxima: 2026-12
+    familia: rcde-precio
+    depende: [datos/precio-eua-subastas.csv, graficos/precio-rcde.tex]
+    frase: "l. 23 «se subastaba en octubre de 2026 a unos 85~€»; nota del gráfico «octubre de 2026, 85,96~€»"
+
+  - id: precio-cbam
+    texto: "en el tercer trimestre de 2026, el certificado costaba 82,32~€"
+    texto_repaso: "\\dato{82,32~€/t (3.\\textsuperscript{er} trim. 2026)}{CE, 2026}"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 82.32
+    unidad: euros por certificado (t CO2)
+    periodo: 2026-T3
+    fuente: CE2026PrecioCBAM
+    organismo: Comisión Europea (DG TAXUD)
+    serie: "Price of CBAM certificates (trimestral en 2026; semanal desde 2027)"
+    url: https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism/price-cbam-certificates_en
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: rcde-precio
+
+  - id: rcde-emisiones-cubiertas
+    texto: "ya se han reducido a la mitad \\parencite{CE2026EmisionesETS2025}"
+    texto_repaso: "(ya a la mitad)"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    unidad: "% de reducción de las emisiones cubiertas frente a 2005"
+    periodo: "2025"
+    fuente: CE2026EmisionesETS2025
+    organismo: Comisión Europea
+    serie: "EU ETS verified emissions"
+    url: https://climate.ec.europa.eu/eu-action/carbon-markets/eu-emissions-trading-system-eu-ets_en
+    periodicidad: anual (abril)
+    proxima: 2027-04
+    familia: rcde-emisiones
+
+  - id: ue-emisiones-netas
+    texto: "En 2024 las emisiones netas de la UE eran un 37~\\% menores que en 1990"
+    texto_repaso: "\\dato{$-37$\\,\\% netas en 2024 frente a 1990}{AEMA, 2025}"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 37
+    unidad: "% de reducción frente a 1990"
+    periodo: "2024"
+    fuente: AEMA2025Tendencias
+    organismo: Agencia Europea de Medio Ambiente
+    serie: "Total net greenhouse gas emission trends and projections in Europe"
+    url: https://www.eea.europa.eu/en/analysis/indicators/total-greenhouse-gas-emission-trends
+    periodicidad: anual (octubre-noviembre; avance en junio)
+    proxima: 2026-11
+    familia: aema-emisiones-ue
+    frase: "ficha l. 220 «en 2024, $-37$\\,\\%» y l. 277"
+    nota: "el dato aproximado de 2025 debería salir ya en otoño de 2026"
+
+  - id: china-ets
+    texto: "hasta cubrir unos 8.000 millones de toneladas"
+    donde: [3B31.tex]
+    valor: 8000
+    unidad: Mt CO2 cubiertas
+    periodo: "2025"
+    fuente: ICAP2025China
+    organismo: ICAP
+    url: https://icapcarbonaction.com/en/news/china-officially-expands-national-ets-cement-steel-and-aluminum-sectors
+    periodicidad: irregular
+    familia: bm-precio-carbono
+
+  - id: financiacion-climatica
+    texto: "solo se alcanzó en 2022, con 115.900 millones"
+    texto_repaso: "100.000~M\\$ alcanzados en 2022 (115.900)"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    valor: 115900
+    unidad: millones de USD movilizados
+    periodo: "2022"
+    fuente: OCDE2024Financiacion
+    organismo: OCDE
+    serie: "Climate Finance Provided and Mobilised by Developed Countries"
+    url: https://www.oecd.org/en/about/news/press-releases/2024/05/developed-countries-materially-surpassed-their-usd-100-billion-climate-finance-commitment-in-2022-oecd.html
+    periodicidad: anual (irregular)
+    familia: ocde-financiacion-clima
+    nota: "posible desfase: puede haber ya datos de 2023-2024"
+
+  - id: partes-cmnucc-paris
+    texto: "hoy tiene 198 partes"
+    donde: [3B31.tex]
+    valor: 198
+    unidad: partes
+    periodo: noviembre 2026
+    fuente: ONU2026CMNUCC
+    organismo: Naciones Unidas (Colección de Tratados)
+    url: https://treaties.un.org/
+    periodicidad: irregular
+    familia: tratados-clima-partes
+    frase: "Acuerdo de París «tiene hoy 194 partes» (l. 819, ONU2026Paris); la salida de EE. UU. de la CMNUCC es efectiva el 27/2/2027: entonces bajará a 197"
+
+  - id: cop31
+    texto: "La COP31 se celebra en Antalya (Turquía) del 9 al 20 de noviembre de 2026"
+    texto_repaso: "COP31 (Antalya, 9-20/11/2026)"
+    donde: [3B31.tex, repaso/3B31-repaso.tex]
+    periodo: noviembre 2026
+    fuente: CMNUCC2026COP31
+    organismo: CMNUCC
+    url: https://unfccc.int/cop31
+    periodicidad: anual (cada COP)
+    proxima: 2026-11
+    familia: cmnucc-cop
+    nota: "caduca el 20/11/2026: hay que pasar a pasado y añadir los resultados; también la cronología del anexo (l. 1139-1151)"

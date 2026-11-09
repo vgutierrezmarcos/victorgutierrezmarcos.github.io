@@ -1,0 +1,46 @@
+tema: 3A12
+fecha_inventario: 2026-11-09
+datos:
+  - id: "lcoe-fotovoltaica"
+    texto: "bajó de 0,41 a 0,044 dólares por kWh (en dólares de 2025), un 89\\,\\%"
+    donde: [3A12.tex, repaso/3A12-repaso.tex]
+    valor: 0.044
+    unidad: "USD de 2025 por kWh (media mundial ponderada, plantas nuevas)"
+    periodo: "2010-2025"
+    fuente: "IRENA2026CostesGeneracion"
+    organismo: "IRENA"
+    serie: "Renewable Power Generation Costs, global weighted-average LCOE, solar PV"
+    url: "https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025"
+    periodicidad: "anual"
+    proxima: "2027-07"
+    familia: "irena-costes"
+    frase: "«Su coste ha caído un 89\\,\\% desde 2010» (sec. aprendizaje); repaso: enganche «$0{,}41\\to0{,}044$ \\$/kWh (2010-2025, $-89$\\,\\%)», idea final «en 2025 equipos $-6$\\,\\% y el coste nivelado no bajó» y caja de datos"
+  - id: "fotovoltaica-espana"
+    texto: "más de 41.500~MW, y en 2025 produjo el 18,4\\,\\% de la electricidad"
+    donde: [3A12.tex, repaso/3A12-repaso.tex]
+    valor: 18.4
+    unidad: "% de la generación eléctrica (potencia > 41.500 MW)"
+    periodo: "2025"
+    fuente: "REE2026RenovablesSol"
+    organismo: "Red Eléctrica"
+    serie: "REData, potencia instalada y estructura de la generación, solar fotovoltaica"
+    url: "https://www.sistemaelectrico-ree.es/es/informe-de-energias-renovables/sol/generacion/solar-fotovoltaica-solgeneracion"
+    periodicidad: "anual"
+    proxima: "2027-03"
+    familia: "ree-electricidad"
+    frase: "«la fotovoltaica ya es la tecnología con más potencia instalada»; repaso: «\\dato{$>$41.500 MW}{REE}, \\dato{18,4\\,\\% de la electricidad}{REE, 2025}» y enganche"
+  - id: "ratio-eficiencia-banca"
+    texto: "en el segundo trimestre de 2026 los gastos de explotación absorbían el 42,9\\,\\% del margen bruto"
+    donde: [3A12.tex, repaso/3A12-repaso.tex]
+    valor: 42.89
+    unidad: "% (cost-to-income; 53,1 % en la supervisión europea)"
+    periodo: "2T 2026"
+    fuente: "BCE2026SBSNota"
+    organismo: "BCE"
+    serie: "Supervisory Banking Statistics, SUP.Q.ES.W0._Z.I2100._T.SII._Z._Z._Z.PCT.C y SUP.Q.B01…"
+    url: "https://www.bankingsupervision.europa.eu/press/pr/date/2026/html/ssm.pr260915~7917ca1416.en.html"
+    periodicidad: "trimestral"
+    proxima: "2027-01"
+    familia: "banca-ratios"
+    depende: [datos/ratio-eficiencia-bancos.csv, graficos/ratio-eficiencia-bancos.tex]
+    frase: "«frente al 53,1\\,\\% del conjunto de la supervisión europea»; pie del gráfico «último dato, segundo trimestre de 2026»; repaso: «\\dato{42,9\\,\\% España vs 53,1\\,\\% MUS}{BCE, 2T 2026}»"

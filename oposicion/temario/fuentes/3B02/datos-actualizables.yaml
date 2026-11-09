@@ -1,0 +1,125 @@
+tema: 3B02
+fecha_inventario: 2026-11-09
+datos:
+  - id: snf-inversion-espana
+    texto: "invirtieron en 2025 unos 218.000 millones de euros, casi el 13~\\% del PIB"
+    texto_repaso: "$\\approx$218.000 M€"
+    donde: [3B02.tex, repaso/3B02-repaso.tex]
+    valor: 218000
+    unidad: millones de euros (formación bruta de capital fijo de las SNF) y % del PIB
+    periodo: "2025"
+    fuente: Eurostat2026Sectores
+    organismo: Eurostat
+    serie: "nasa_10_nf_tr, S11, P51G (y B1GQ del total de la economía)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-sectores
+    frase: "aparece dos veces en la ficha (apertura y cifras clave)"
+
+  - id: caja-cotizadas-eeuu
+    texto: "tenían a comienzos de 2026 unos 1,9 billones de dólares en efectivo"
+    texto_repaso: "1,9 billones de \\$"
+    donde: [3B02.tex, repaso/3B02-repaso.tex]
+    valor: 1.9
+    unidad: billones de USD
+    periodo: enero 2026
+    fuente: Damodaran2026Cash
+    organismo: Damodaran (NYU Stern)
+    serie: "Cash Holdings by Sector (US), total market"
+    url: https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/cash.html
+    periodicidad: anual
+    proxima: 2027-01
+    familia: damodaran-datos
+    frase: "«más o menos el PIB de España en 2025» (compárese con el dato del FMI)"
+
+  - id: pib-espana-usd
+    texto: "más o menos el PIB de España en 2025 \\parencite{FMI2026WEO}"
+    texto_repaso: "$\\approx$PIB de España"
+    donde: [3B02.tex, repaso/3B02-repaso.tex]
+    unidad: miles de millones de USD corrientes
+    periodo: "2025"
+    fuente: FMI2026WEO
+    organismo: FMI
+    serie: "WEO, NGDPD, ESP"
+    url: https://www.imf.org/external/datamapper/NGDPD@WEO/ESP/PRT
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: fmi-weo
+    nota: "comparación cualitativa; en la ficha «$\\approx$PIB de España»"
+
+  - id: prima-historica-eeuu
+    texto: "de 1928 a 2025, las acciones rindieron de media unos 6,6 puntos al año más que las letras del Tesoro"
+    texto_repaso: "\\dato{6,6 pp/año}{1928-2025}"
+    donde: [3B02.tex, repaso/3B02-repaso.tex]
+    valor: 6.6
+    unidad: puntos porcentuales (media aritmética acciones - letras)
+    periodo: 1928-2025
+    fuente: Damodaran2026Historical
+    organismo: Damodaran (NYU Stern)
+    serie: "Historical Returns on Stocks, Bonds and Bills"
+    url: https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html
+    periodicidad: anual
+    proxima: 2027-01
+    familia: damodaran-datos
+    frase: "también en «cifras clave» de la ficha («6,6 pp histórica»)"
+
+  - id: prima-implicita-eeuu
+    texto: "del 4,2~\\% a comienzos de 2026"
+    texto_repaso: "\\dato{4,2\\,\\%}{comienzos de 2026}"
+    donde: [3B02.tex, repaso/3B02-repaso.tex]
+    valor: 4.2
+    unidad: "%"
+    periodo: enero 2026
+    fuente: Damodaran2026Implied
+    organismo: Damodaran (NYU Stern)
+    serie: "Historical Implied Equity Risk Premiums for the US"
+    url: https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/implpr.html
+    periodicidad: anual (actualización mensual en la web)
+    proxima: 2027-01
+    familia: damodaran-datos
+
+  - id: prima-riesgo-pais-espana
+    texto: "una prima de riesgo país de 1,6 puntos"
+    texto_repaso: "riesgo país España 1,6 pp"
+    donde: [3B02.tex, repaso/3B02-repaso.tex]
+    valor: 1.6
+    unidad: puntos porcentuales
+    periodo: enero 2026
+    fuente: Damodaran2026Country
+    organismo: Damodaran (NYU Stern)
+    serie: "Country Default Spreads and Risk Premiums, Spain (country risk premium)"
+    url: https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html
+    periodicidad: anual (revisión a mitad de año)
+    proxima: 2027-01
+    familia: damodaran-datos
+
+  - id: wacc-medio-eeuu
+    texto: "ronda el 7,7~\\% \\parencite{Damodaran2026WACC}"
+    texto_repaso: "$\\approx$7,7"
+    donde: [3B02.tex, repaso/3B02-repaso.tex]
+    valor: 7.7
+    unidad: "%"
+    periodo: enero 2026
+    fuente: Damodaran2026WACC
+    organismo: Damodaran (NYU Stern)
+    serie: "Cost of Equity and Capital (US), total market"
+    url: https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/wacc.html
+    periodicidad: anual
+    proxima: 2027-01
+    familia: damodaran-datos
+
+  - id: sp-grado-especulativo-impagos
+    texto: "han pasado del 24~\\% en 1981 al 48~\\% en 2024"
+    donde: [3B02.tex]
+    valor: 48
+    unidad: "% de emisores calificados con grado especulativo"
+    periodo: "2024"
+    fuente: SP2025DefaultStudy
+    organismo: S&P Global Ratings
+    serie: "Default, Transition, and Recovery: Annual Global Corporate Default and Rating Transition Study"
+    url: https://maalot.co.il/Publications/FTS20250331162126.pdf
+    periodicidad: anual
+    proxima: 2027-04
+    familia: sp-impagos
+    nota: "la URL es una copia en maalot.co.il; mismo estudio en 3B03 (sp-calificaciones-grado.csv). El estudio con datos de 2025 debió salir en 2026: posible desfase"

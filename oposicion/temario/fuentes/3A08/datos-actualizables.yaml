@@ -1,0 +1,32 @@
+tema: 3A08
+fecha_inventario: 2026-11-09
+datos:
+  - id: "consumo-hogares-pib"
+    texto: "supuso en 2025 el 54,1\\,\\% del PIB (el 55,2\\,\\% si se suman"
+    donde: [3A08.tex, repaso/3A08-repaso.tex]
+    valor: 54.1
+    unidad: "% del PIB (55,2 % con ISFLSH)"
+    periodo: "2025"
+    fuente: "Eurostat2026Nama10gdp"
+    organismo: "Eurostat e INE"
+    serie: "nama_10_gdp P31_S14 y P31_S14_S15 / B1GQ, ES; INE CNTR"
+    url: "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table"
+    periodicidad: "anual"
+    proxima: "2027-09"
+    familia: "eurostat-cuentas-nacionales"
+    frase: "repaso: «\\dato{54,1\\,\\% del PIB}{España, 2025}» (relevancia) y caja «\\dato{54,1\\,\\% del PIB}{Eurostat e INE, 2025}; \\dato{55,2\\,\\%}»; mismo dato en 3A33"
+  - id: "engel-epf-quintiles"
+    texto: "dedicaron en 2025 el 19,6\\,\\% de su presupuesto a alimentos y bebidas no alcohólicas, frente al 12,3\\,\\% del quintil de mayor gasto; la media fue el 16,0\\,\\%"
+    donde: [3A08.tex, repaso/3A08-repaso.tex]
+    valor: 19.6
+    unidad: "% del gasto del hogar en alimentos (Q1; Q5 12,3; media 16,0)"
+    periodo: "2025"
+    fuente: "INE2026EPFTabla73828"
+    organismo: "INE"
+    serie: "EPF, tabla 73828, grupo 01 por quintiles de gasto"
+    url: "https://www.ine.es/jaxiT3/Tabla.htm?t=73828"
+    periodicidad: "anual"
+    proxima: "2027-06"
+    familia: "ine-epf"
+    depende: [datos/epf2025-alimentos-quintil.csv, graficos/epf-alimentos-quintil.tex]
+    frase: "título del gráfico «(2025)» y \\fuente «Encuesta de Presupuestos Familiares 2025, tabla 73828 (consulta: 10/10/2026)»; «solo se rompe, ligeramente, entre los 2 primeros quintiles» puede cambiar; repaso: «19,6\\,\\% (Q1) frente a 12,3\\,\\% (Q5)}{INE, EPF 2025}» y caja"

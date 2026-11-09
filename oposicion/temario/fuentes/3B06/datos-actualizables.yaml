@@ -1,0 +1,97 @@
+tema: 3B06
+fecha_inventario: 2026-11-09
+datos:
+  - id: medicamentos-espana-alemania
+    texto: "en 2025 le vendió unos 2.100 millones de euros y le compró unos 2.500 millones"
+    texto_repaso: "$\\approx$2.100 M€ de medicamentos"
+    donde: [3B06.tex, repaso/3B06-repaso.tex]
+    valor: 2100
+    unidad: millones de euros (CUCI 542)
+    periodo: "2025"
+    fuente: Eurostat2026Comext
+    organismo: Eurostat
+    serie: "Comext DS-018995 (SITC), España-Alemania, SITC 542"
+    url: https://ec.europa.eu/eurostat/comext/newxtweb/
+    periodicidad: anual
+    proxima: 2027-03
+    familia: eurostat-comext
+    frase: "nota al pie: «el índice de Grubel-Lloyd del comercio bilateral es de 0,92»; ficha «\\dato{2.100 vs. 2.500 M€, GL 0,92}{Eurostat, 2025}»"
+
+  - id: comercio-mundial-valor
+    texto: "alcanzó 34,65 billones de dólares en 2025, un 7~\\% más que el año anterior; solo las exportaciones de mercancías sumaron 26,26 billones"
+    texto_repaso: "34,65 billones \\$ (2025, +7\\,\\%"
+    donde: [3B06.tex, repaso/3B06-repaso.tex]
+    valor: 34.65
+    unidad: billones de USD
+    periodo: "2025"
+    fuente: OMC2026Perspectivas
+    organismo: OMC
+    serie: "Global Trade Outlook and Statistics, exportaciones mundiales de bienes y servicios; mercancías"
+    url: https://www.wto.org/spanish/res_s/booksp_s/trade_outlook26_s.pdf
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-comercio-mundial
+    frase: "también «\\dato{34,65 billones \\$, +7\\,\\%}{OMC, 2025}» en cifras clave"
+
+  - id: apertura-renta-alta
+    texto: "pasó del 31~\\% al 60~\\% de su PIB entre 1970 y 2024"
+    texto_repaso: "31 $\\to$ 60\\,\\% del PIB, 1970-2024"
+    donde: [3B06.tex, repaso/3B06-repaso.tex]
+    valor: 60
+    unidad: "% del PIB (comercio de bienes y servicios)"
+    periodo: "2024"
+    fuente: BancoMundial2026Apertura
+    organismo: Banco Mundial
+    serie: "WDI NE.TRD.GNFS.ZS, High income"
+    url: https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    frase: "también «\\dato{31 $\\to$ 60\\,\\% del PIB}{BM, 1970-2024}» en cifras clave"
+
+  - id: comercio-entre-desarrollados
+    texto: "un 36~\\% en 2024 \\parencite{UNCTAD2026KeyStatistics}"
+    texto_repaso: "(36\\,\\% del comercio de bienes, 2024)"
+    donde: [3B06.tex, repaso/3B06-repaso.tex]
+    valor: 36
+    unidad: "% del comercio mundial de bienes"
+    periodo: "2024"
+    fuente: UNCTAD2026KeyStatistics
+    organismo: UNCTAD
+    serie: "Key statistics and trends in international trade"
+    url: https://unctad.org/publication/key-statistics-and-trends-international-trade-2025
+    periodicidad: anual
+    proxima: 2027-03
+    familia: unctad-comercio
+    frase: "también «\\dato{36\\,\\%}{UNCTAD, 2024}» en cifras clave"
+
+  - id: empresas-exportadoras-espana
+    texto: "En 2025 exportaron bienes 127.084 empresas, pero solo 46.229 lo hicieron con regularidad"
+    texto_repaso: "127.084 exportadoras, 46.229 regulares"
+    donde: [3B06.tex, repaso/3B06-repaso.tex]
+    valor: 127084
+    unidad: empresas exportadoras
+    periodo: "2025 (provisional)"
+    fuente: MINECO2026InformeComexDic2025
+    organismo: Ministerio de Economía, Comercio y Empresa
+    serie: "Informe mensual de comercio exterior, diciembre, tabla 13"
+    url: https://comercio.gob.es/ImportacionExportacion/Informes_Estadisticas/Historico_Informes/Mensuales/2025/2025-12_Informe_Mensual_Comercio_Exterior.pdf
+    periodicidad: anual
+    proxima: 2027-02
+    familia: mineco-comex-anual
+    frase: "y la tabla tab:concentracion-espana (10, 100, 1.000 y 5.000 primeros, columnas 2019 y 2025) y «las 1.000 primeras hicieron el 65,2~\\%»"
+
+  - id: exportadoras-grandes-tec
+    texto: "en 2024 las empresas de 250 o más empleados eran el 1,9~\\% de las exportadoras e hicieron el 57~\\% de la exportación"
+    texto_repaso: "\\dato{1,9\\,\\% de las empresas, 57\\,\\% del valor}{Eurostat, 2024}"
+    donde: [3B06.tex, repaso/3B06-repaso.tex]
+    valor: 57
+    unidad: "% del valor exportado"
+    periodo: "2024"
+    fuente: Eurostat2026TEC
+    organismo: Eurostat
+    serie: "ext_tec01, España, clase de tamaño 250+"
+    url: https://ec.europa.eu/eurostat/databrowser/view/ext_tec01/default/table
+    periodicidad: anual
+    proxima: 2027-06
+    familia: eurostat-tec

@@ -1,0 +1,73 @@
+tema: 3A09
+fecha_inventario: 2026-11-09
+datos:
+  - id: "revalorizacion-pensiones"
+    texto: "en 2026 han subido un 2,7\\,\\%"
+    donde: [3A09.tex, repaso/3A09-repaso.tex]
+    valor: 2.7
+    unidad: "% de revalorización de las pensiones contributivas"
+    periodo: "2026"
+    fuente: "Moncloa2025Pensiones"
+    organismo: "Gobierno de España (Seguridad Social)"
+    serie: "revalorización anual = media de las tasas interanuales del IPC dic-nov (art. 58 LGSS)"
+    url: "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2025/121225-revalorizacion-pensiones.aspx"
+    periodicidad: "anual"
+    proxima: "2026-12"
+    familia: "pensiones-revalorizacion"
+    frase: "repaso: «(+2,7\\,\\% en 2026)» (enganche) y «\\dato{+2,7\\,\\% en 2026}»"
+  - id: "epf-gasto-medio"
+    texto: "La última es la de 2025, con un gasto medio por hogar de 35.101 euros"
+    donde: [3A09.tex, repaso/3A09-repaso.tex]
+    valor: 35101
+    unidad: "euros por hogar y año"
+    periodo: "2025"
+    fuente: "INE2026EPF"
+    organismo: "INE"
+    serie: "Encuesta de Presupuestos Familiares, gasto medio por hogar"
+    url: "https://www.ine.es/dyngs/Prensa/EPF2025.htm"
+    periodicidad: "anual"
+    proxima: "2027-06"
+    familia: "ine-epf"
+    frase: "repaso: «gasto medio \\dato{35.101 €/hogar}{INE, EPF 2025}»"
+  - id: "ipc-cesta"
+    texto: "su cesta tiene 487 artículos repartidos en 196 subclases y 13 grupos"
+    donde: [3A09.tex, repaso/3A09-repaso.tex]
+    valor: 487
+    unidad: "artículos (196 subclases, 13 grupos)"
+    periodo: "IPC base 2025, ponderaciones 2026"
+    fuente: "INE2026IPCPonderaciones"
+    organismo: "INE"
+    serie: "IPC, ponderaciones y artículos de la cesta"
+    url: "https://www.ine.es/jaxiT3/Tabla.htm?t=76156"
+    periodicidad: "anual"
+    proxima: "2027-02"
+    familia: "ine-ipc"
+    frase: "«La base vigente es la 2025» (cambia solo con un cambio de base); repaso: «IPC base 2025: \\dato{487 artículos, 196 subclases, 13 grupos}{INE, 2026}» y «(base 2025; ponderaciones anuales…)»"
+  - id: "deflactor-pib"
+    texto: "En 2025 creció un 3,0\\,\\%"
+    donde: [3A09.tex, repaso/3A09-repaso.tex]
+    valor: 3.0
+    unidad: "% de variación anual del deflactor del PIB"
+    periodo: "2025"
+    fuente: "INE2026CNA2025"
+    organismo: "INE"
+    serie: "Contabilidad Nacional Anual, deflactor implícito del PIB"
+    url: "https://www.ine.es/dyngs/Prensa/CNA2025.htm"
+    periodicidad: "anual"
+    proxima: "2027-09"
+    familia: "ine-cna"
+    frase: "repaso: «Deflactor del PIB: \\dato{+3,0\\,\\%}{INE, 2025}»"
+  - id: "cpi-encadenado-sesgo"
+    texto: "0,25 puntos de media entre diciembre de 2005 y diciembre de 2024"
+    donde: [3A09.tex]
+    valor: 0.25
+    unidad: "puntos porcentuales al año (CPI-U menos C-CPI-U)"
+    periodo: "dic. 2005-dic. 2024"
+    fuente: "BLS2026ChainedCPI"
+    organismo: "BLS (EE. UU.)"
+    serie: "C-CPI-U (SUUR0000SA0) frente a CPI-U (CUUR0000SA0), finales"
+    url: "https://api.bls.gov/publicAPI/v1/timeseries/data/SUUR0000SA0"
+    periodicidad: "anual"
+    proxima: "2027-02"
+    familia: "bls-cpi"
+    frase: "«crece entre 0,25 y 0,3 puntos menos al año» (cálculo propio con la serie)"

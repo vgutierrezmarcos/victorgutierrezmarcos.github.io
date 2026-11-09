@@ -1,0 +1,112 @@
+tema: 3B04
+fecha_inventario: 2026-11-09
+datos:
+  - id: dirce-empresas
+    texto: "de los 3,31 millones de empresas activas a 1 de enero de 2025, el 54,4~\\% no tenía asalariados y solo el 2,3~\\% tenía 20 o más"
+    texto_repaso: "3,31 M de empresas; 54,4\\,\\% sin asalariados; 2,3\\,\\% con 20 o más"
+    donde: [3B04.tex, repaso/3B04-repaso.tex]
+    valor: 3.31
+    unidad: millones de empresas activas; % por tamaño
+    periodo: 1 de enero de 2025
+    fuente: INE2025DIRCE
+    organismo: INE
+    serie: "Directorio Central de Empresas (DIRCE), empresas por estrato de asalariados"
+    url: https://www.ine.es/dyngs/Prensa/DIRCE2025.htm
+    periodicidad: anual
+    proxima: 2026-12
+    familia: ine-dirce
+    frase: "dos veces en la ficha (apertura y cifras clave: «3,31 M; 54,4\\,\\% sin asalariados; 2,3\\,\\% con 20+»)"
+
+  - id: cifras-pyme-grandes
+    texto: "las empresas de 250 trabajadores o más son solo el 0,2~\\% del total"
+    texto_repaso: "\\dato{0,2\\,\\% del total}{Cifras PYME, 2026}"
+    donde: [3B04.tex, repaso/3B04-repaso.tex]
+    valor: 0.2
+    unidad: "% de las empresas"
+    periodo: septiembre 2026
+    fuente: MIT2026CifrasPyme
+    organismo: Ministerio de Industria y Turismo
+    serie: "Cifras PYME (afiliación a la Seguridad Social)"
+    url: https://ipyme.org/Publicaciones/Cifras%20PYME/CifrasPyme_septiembre_2026.pdf
+    periodicidad: mensual
+    proxima: 2026-11
+    familia: cifras-pyme
+    frase: "también «\\dato{0,2\\,\\% con 250+}{Cifras PYME, 2026}» en cifras clave"
+
+  - id: vab-ocupado-grandes-micro
+    texto: "en 2024, el valor añadido por ocupado de las grandes empresas era 1,7 veces el de las microempresas"
+    texto_repaso: "\\dato{1,7 veces el de las micro}{Eurostat, 2024}"
+    donde: [3B04.tex, repaso/3B04-repaso.tex]
+    valor: 1.7
+    unidad: ratio
+    periodo: "2024"
+    fuente: Eurostat2026SBS
+    organismo: Eurostat
+    serie: "sbs_sc_ovw, España, valor añadido por persona ocupada, 250+ frente a 0-9"
+    url: https://ec.europa.eu/eurostat/databrowser/view/sbs_sc_ovw/default/table
+    periodicidad: anual
+    proxima: 2027-06
+    familia: eurostat-sbs
+    frase: "también «\\dato{1,7× micro}{Eurostat, 2024}» en cifras clave"
+
+  - id: fyA-mundo
+    texto: "sumaron 4,6 billones de dólares, un 49~\\% más que el año anterior, con 68 operaciones de más de 10.000 millones"
+    texto_repaso: "\\dato{4,6 billones de \\$, +49\\,\\%, 68 operaciones $>$10.000 M}{LSEG, 2025}"
+    donde: [3B04.tex, repaso/3B04-repaso.tex]
+    valor: 4.6
+    unidad: billones de USD (operaciones anunciadas)
+    periodo: "2025"
+    fuente: LSEG2026MA
+    organismo: LSEG
+    serie: "LSEG Deals Intelligence, M&A anunciadas en el mundo"
+    url: https://www.lseg.com/en/insights/data-analytics/separating-the-signal-from-the-noise-ma-booms-in-early-2026
+    periodicidad: anual (avances trimestrales)
+    proxima: 2027-01
+    familia: lseg-fya
+    frase: "repetido en l. 914: «La última llega en 2025: las fusiones y adquisiciones anunciadas en el mundo sumaron 4,6 billones de dólares» y en cifras clave de la ficha"
+    nota: "fuente: artículo de LSEG; el dato de 2025 puede revisarse"
+
+  - id: fyA-espana
+    texto: "En España se anunciaron o cerraron 3.336 operaciones en 2025, por unos 103.000 millones de euros"
+    texto_repaso: "\\dato{3.336 operaciones, $\\approx$103.000 M€}{TTR, 2025}"
+    donde: [3B04.tex, repaso/3B04-repaso.tex]
+    valor: 3336
+    unidad: operaciones; millones de euros
+    periodo: "2025"
+    fuente: TTR2026Anual
+    organismo: TTR Data (vía Forbes España)
+    url: https://forbes.es/economia/858819/el-mercado-espanol-de-ma-cae-un-8-de-operaciones-y-crece-en-capital/
+    periodicidad: anual
+    proxima: 2027-01
+    familia: ttr-fya
+    nota: "fuente secundaria (Forbes); conviene citar el informe anual de TTR Data"
+
+  - id: capital-privado-espana
+    texto: "En 2025, el capital privado invirtió en España unos 7.000 millones de euros en más de 1.000 operaciones"
+    texto_repaso: "\\dato{$\\approx$7.000 M€, $>$1.000 operaciones}{SpainCap, 2025}"
+    donde: [3B04.tex, repaso/3B04-repaso.tex]
+    valor: 7000
+    unidad: millones de euros
+    periodo: "2025"
+    fuente: SpainCap2026Estimacion
+    organismo: SpainCap
+    serie: "Estimación anual de la actividad de capital privado en España"
+    url: https://capital-riesgo.es/es/articles/
+    periodicidad: anual (avance en enero-abril, informe en junio)
+    proxima: 2027-04
+    familia: spaincap
+
+  - id: spac-eeuu
+    texto: "En Estados Unidos hubo 613 en 2021, cayeron a 57 en 2024 y repuntaron en 2025, con unas 140"
+    texto_repaso: "\\dato{$\\approx$140}{2025"
+    donde: [3B04.tex, repaso/3B04-repaso.tex]
+    valor: 140
+    unidad: SPAC que salieron a bolsa en EE. UU.
+    periodo: "2025"
+    fuente: SPACInsider2025H1
+    organismo: SPACInsider
+    url: https://old.spacinsider.com/wp-content/uploads/2025/07/Q2-H1-2025-SPAC-Review-Final1.pdf
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: spacinsider
+    nota: "sospechoso: el dato del año completo 2025 (unas 140) se cita con el informe del primer semestre; buscar el resumen anual"

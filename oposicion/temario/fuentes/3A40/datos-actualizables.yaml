@@ -1,0 +1,102 @@
+tema: 3A40
+fecha_inventario: 2026-11-09
+datos:
+  - id: deuda-ze
+    texto: "La deuda pública de la zona del euro era en 2025 el 87,7~\\% del PIB"
+    donde: [3A40.tex, repaso/3A40-repaso.tex]
+    valor: 87.7
+    unidad: "% del PIB (deuda PDE, EA20)"
+    periodo: 2025
+    fuente: Eurostat2026EDP
+    organismo: Eurostat
+    serie: "gov_10dd_edpt1, GD, EA20"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table
+    periodicidad: semestral (notificaciones PDE de abril y octubre)
+    proxima: 2027-04
+    familia: eurostat-deuda
+    frase: "repaso: relevancia y caja"
+  - id: tipos-oficiales-4bc
+    texto: "la Reserva Federal tiene los fondos federales en el 3,75-4,00~\\% desde el 17 de septiembre; el BCE, la facilidad de depósito en el 2,50~\\% desde el 16 de septiembre; el Banco de Inglaterra, el tipo en el 3,75~\\%, y el Banco de Japón, en el 1,25~\\% desde el 24 de septiembre"
+    donde: [3A40.tex, repaso/3A40-repaso.tex]
+    valor: [3.75, 4.00, 2.50, 3.75, 1.25]
+    unidad: "% (Fed horquilla, BCE FD, BoE Bank Rate, BoJ)"
+    periodo: octubre 2026
+    fuente: BoJ2026Octubre
+    organismo: Fed (FedNY2026EFFR), BCE (BCE2026Tipos), Banco de Inglaterra (BoE2026BankRate), Banco de Japón (BoJ2026Octubre); 2.ª comprobación BPI2026CBPOL
+    serie: "DFEDTARL/DFEDTARU, FM.D.U2.EUR.4F.KR.DFR.LEV, IUDBEDR, BoJ policy rate; BIS WS_CBPOL"
+    periodicidad: por reunión de cada banco central
+    proxima: 2026-12
+    familia: bce-tipos
+    depende: [datos/tipos-oficiales-4-bancos-centrales.csv, graficos/tipos-oficiales.tex]
+    frase: "también l. 24 («la Reserva Federal y el BCE han vuelto a subir los tipos en septiembre»), tabla de cronología fila 2022-2026 («+25 pb (sept.~2026)», «subidas en junio y septiembre de 2026», «3,75~\\%», «hasta el 1,25~\\% (sept.~2026)»), títulos «2007-2026» y «2008-2026», pie «Datos mensuales hasta octubre de 2026»; repaso: relevancia y l. 165; las familias fed-tipos, boe-tipos y boj-tipos se actualizan con esta"
+  - id: tipo-natural-hlw
+    texto: "el tipo natural pasó de 2,6~\\% en 2007 a 1,0~\\% a mediados de 2026 en Estados Unidos, y de 2,3~\\% a 0,1~\\% en la zona del euro"
+    donde: [3A40.tex, repaso/3A40-repaso.tex]
+    valor: [1.0, 0.1]
+    unidad: "% real anual (r*, estimación unilateral HLW)"
+    periodo: 2026T2
+    fuente: FedNY2026HLW
+    organismo: Reserva Federal de Nueva York
+    serie: "Holston-Laubach-Williams estimates (HLW, y LW para EE. UU.)"
+    url: https://www.newyorkfed.org/research/policy/rstar
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: fedny-rstar
+    depende: [datos/tipo-natural-hlw.csv, graficos/tipo-natural.tex]
+    frase: "l. 156: «con el modelo anterior de Laubach y Williams, el de Estados Unidos sale hoy en 1,7~\\%»; título «1990-2026» y pie «(2026T2)»; repaso: l. 57 y caja «Fed NY, 2007-2026T2»"
+  - id: balances-bc-actual
+    texto: "A mediados de 2026, los balances eran el 21, el 39, el 26 y el 94~\\% del PIB"
+    donde: [3A40.tex, repaso/3A40-repaso.tex]
+    valor: [21, 39, 26, 94]
+    unidad: "% del PIB (activo: Fed, Eurosistema, BoE, BoJ)"
+    periodo: 2026T2 (Eurosistema 2026T1)
+    fuente: BPI2026CBTA
+    organismo: BPI
+    serie: "WS_CBTA, Q.US+XM+GB+JP, XDF_R_B1GQ"
+    url: https://data.bis.org/topics/CBTA
+    periodicidad: trimestral
+    familia: bpi-balances-bc
+    depende: [datos/balance-bancos-centrales-pib.csv, graficos/balances-bancos-centrales.tex]
+    frase: "título «2007-2026» y pie «Eurosistema hasta 2026T1 y los demás hasta 2026T2»; los máximos de 2021 son históricos; el mismo gráfico se copia a 3A37; repaso: l. 79"
+  - id: bce-perdidas
+    texto: "El BCE perdió 7.944 millones de euros en 2024"
+    donde: [3A40.tex, repaso/3A40-repaso.tex]
+    valor: 7944
+    unidad: millones de EUR
+    periodo: 2024
+    fuente: BCE2025Cuentas2024
+    organismo: BCE
+    serie: "Cuentas anuales del BCE"
+    periodicidad: anual
+    proxima: 2027-02
+    familia: bce-cuentas
+    frase: "SOSPECHOSO DE DESFASE: las cuentas de 2025 se publicaron en febrero de 2026; repaso: l. 78 y caja"
+  - id: r-menos-g-2025
+    texto: "en 2025 era de $-1{,}0$ puntos en Estados Unidos, $-1{,}6$ en la zona del euro y $-1{,}5$ en el Reino Unido; la Comisión prevé que en 2026 el Reino Unido vuelva a cero"
+    donde: [3A40.tex, repaso/3A40-repaso.tex]
+    valor: [-1.0, -1.6, -1.5]
+    unidad: "puntos (r − γ con el tipo implícito real de la deuda)"
+    periodo: 2025 (y previsiones 2026-2027)
+    fuente: CE2026AMECO
+    organismo: Comisión Europea (AMECO)
+    serie: "AYIGD (tipo implícito) y deflactor del PIB; OVGD"
+    url: https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en
+    periodicidad: semestral
+    proxima: 2026-11
+    familia: ameco
+    depende: [datos/r-menos-g-4-economias.csv, graficos/impulso-fiscal-r-menos-g.tex]
+    frase: "«fue negativo en las 4 economías de 2021 a 2025»; nota al pie compara con −1,2 de 3A39 (Eurostat); repaso: caja"
+  - id: impulso-fiscal-grafico
+    texto: "2026 y 2027, previsiones"
+    donde: [3A40.tex]
+    valor: null
+    unidad: "puntos del PIB potencial (impulso fiscal = −Δ saldo primario ajustado por el ciclo)"
+    periodo: 2007-2027 (2026-2027 previsiones)
+    fuente: FMI2026FMdatos
+    organismo: FMI (Fiscal Monitor); 2.ª comprobación OCDE2026EOsaldos
+    serie: "Fiscal Monitor, cyclically adjusted primary balance, USA/EA/GBR/JPN"
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: fmi-fiscal-monitor
+    depende: [datos/impulso-fiscal-4-economias.csv, graficos/impulso-fiscal-r-menos-g.tex]
+    frase: "las cifras de 2009, 2011-2013, 2020 y 2022 del texto son históricas, pero el FMI las revisa: comprobar al actualizar"

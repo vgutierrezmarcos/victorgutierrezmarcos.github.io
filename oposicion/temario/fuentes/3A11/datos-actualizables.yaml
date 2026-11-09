@@ -1,0 +1,33 @@
+tema: 3A11
+fecha_inventario: 2026-11-09
+datos:
+  - id: "participacion-salarial"
+    texto: "la remuneración de los asalariados fue el 48,4~\\% del PIB en 2025"
+    donde: [3A11.tex, repaso/3A11-repaso.tex]
+    valor: 48.4
+    unidad: "% del PIB"
+    periodo: "2025"
+    fuente: "Eurostat2026Nama10gdp"
+    organismo: "Eurostat (comprobado con INE CNTR, tabla 67825)"
+    serie: "nama_10_gdp D1 / B1GQ, ES"
+    url: "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table"
+    periodicidad: "anual"
+    proxima: "2027-09"
+    familia: "eurostat-cuentas-nacionales"
+    depende: [datos/participacion-salarial-es.csv]
+    frase: "repaso: «\\dato{48,4\\,\\% del PIB}{Eurostat, 2025}»"
+  - id: "participacion-salarial-ajustada"
+    texto: "y el 56,6~\\% si se imputa un salario a los autónomos"
+    donde: [3A11.tex, repaso/3A11-repaso.tex]
+    valor: 56.6
+    unidad: "% del PIB (ajustada por autónomos)"
+    periodo: "2025"
+    fuente: "AMECO2026WageShare"
+    organismo: "Comisión Europea (AMECO)"
+    serie: "ALCD0, ESP"
+    url: "https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=1.0.0.0.ALCD0&countries=ESP"
+    periodicidad: "semestral"
+    proxima: "2026-11"
+    familia: "ameco"
+    depende: [datos/participacion-salarial-es.csv]
+    frase: "repaso: «\\dato{56,6\\,\\%}{AMECO, ajustada por autónomos}»; AMECO se actualiza con las previsiones de otoño (nov.) y primavera (mayo)"

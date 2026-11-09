@@ -1,0 +1,187 @@
+tema: 3B28
+fecha_inventario: 2026-11-09
+datos:
+  - id: pobreza-extrema-mundo
+    texto: "en 2024, el 10,1~\\% de la población mundial, unos 824 millones de personas, vivía con menos de 3 dólares al día"
+    texto_repaso: "\\dato{43,4\\,\\% (1990) $\\to$ 10,1\\,\\% (2024), 824 M}{BM, PIP 2026}"
+    donde: [3B28.tex, repaso/3B28-repaso.tex]
+    valor: 10.1
+    unidad: "% de la población mundial (menos de 3,00 USD PPA de 2021 al día)"
+    periodo: "2024"
+    fuente: BM2026PIP
+    organismo: Banco Mundial
+    serie: "Poverty and Inequality Platform (versión 20260922), pip-grp group_by=wb"
+    url: https://pip.worldbank.org
+    periodicidad: semestral (marzo-junio y septiembre)
+    proxima: 2027-06
+    familia: bm-pip-pobreza
+    depende: [datos/pobreza-extrema-regiones.csv, graficos/pobreza-regiones.tex]
+    frase: "l. 140 «del 43,4~\\% ... al 10,1~\\% en 2024, aunque desde 2014 lo hace muy despacio»; l. 139 «es pobre el 18~\\% y el 46~\\%» (líneas de 4,20 y 8,30); l. 142 China (940 M, 83 %); l. 143 África (62 → 45 %, 321 → 581 M, 70 %); l. 881 «del 43~\\% al 10~\\%»; l. 888 «Una de cada 10 personas del mundo, unos 800 millones»; caption «1990-2026» y nota de la fuente; ficha l. 34, 50-53, 244"
+    nota: "si el BM cambia de PPA (p. ej. a PPA de 2024) cambian la línea (3,00 USD) y toda la serie"
+
+  - id: convergencia-pib-pc
+    texto: "se ha multiplicado por 2,6 entre 1995 y 2024, frente a 1,5 en las avanzadas"
+    texto_repaso: "\\dato{×2,6 emergentes vs. ×1,5 avanzadas}{FMI, 2026}"
+    donde: [3B28.tex, repaso/3B28-repaso.tex]
+    valor: 2.6
+    unidad: veces (PIB real por habitante)
+    periodo: 1995-2024
+    fuente: FMI2026WEO
+    organismo: FMI
+    serie: "WEO, PIB real por habitante, emergentes y en desarrollo frente a avanzadas"
+    url: https://www.imf.org/en/Publications/WEO
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: fmi-weo
+    frase: "ficha l. 34 y 245"
+
+  - id: ahorro-china
+    texto: "aún era del 42,9~\\% en 2024"
+    donde: [3B28.tex]
+    valor: 42.9
+    unidad: "% del PIB (ahorro nacional bruto)"
+    periodo: "2024"
+    fuente: FMI2026WEO
+    organismo: FMI
+    serie: "WEO, NGSD_NGDP, China"
+    url: https://www.imf.org/en/Publications/WEO
+    periodicidad: semestral
+    proxima: 2027-04
+    familia: fmi-weo
+    nota: "con WEO de octubre de 2026 debería existir el dato de 2025"
+
+  - id: clasificacion-renta-bm
+    texto: "\\emph{renta baja}: hasta 1.175 dólares (25 economías);"
+    texto_repaso: "baja $\\leq$1.175\\,\\$ (25)"
+    donde: [3B28.tex, repaso/3B28-repaso.tex]
+    valor: 1175
+    unidad: USD de RNB por habitante (método Atlas) y número de economías por grupo
+    periodo: ejercicio FY27 (desde julio de 2026)
+    fuente: BM2026ClasificacionRenta
+    organismo: Banco Mundial
+    serie: "Country Income Classification (umbrales 1.175 / 4.635 / 14.375; 25, 47, 59 y 86 economías)"
+    url: https://datahelpdesk.worldbank.org/knowledgebase/articles/906519
+    periodicidad: anual (1 de julio)
+    proxima: 2027-07
+    familia: bm-clasificacion-renta
+    frase: "las 4 líneas de la lista (l. 125-128); «Desde julio de 2026»; ficha l. 49 y 247"
+
+  - id: kenia-rnb
+    texto: "con una RNB por habitante de unos 2.200 dólares en 2025 es un país de renta media-baja, como la India"
+    texto_repaso: "Kenia RNB pc \\dato{$\\approx$2.200\\,\\$}{BM, 2025}"
+    donde: [3B28.tex, repaso/3B28-repaso.tex]
+    valor: 2200
+    unidad: USD (Atlas)
+    periodo: "2025"
+    fuente: BM2026WDI
+    organismo: Banco Mundial
+    serie: "WDI NY.GNP.PCAP.CD, KEN"
+    url: https://databank.worldbank.org/source/world-development-indicators
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+
+  - id: tabla-hechos-renta
+    texto: "RNB por habitante, PPA (dólares internacionales corrientes, 2025) & 2.653 & 10.785 & 6.910 & 69.862"
+    donde: [3B28.tex]
+    unidad: varias (RNB PPA, empleo agrario, fecundidad, población joven, crecimiento demográfico, esperanza de vida, urbanización, crédito y ahorro)
+    periodo: "2024-2025 (alguna celda de 2020)"
+    fuente: BM2026WDI
+    organismo: Banco Mundial
+    serie: "WDI: NY.GNP.PCAP.PP.CD, SL.AGR.EMPL.ZS, SP.DYN.TFRT.IN, SP.POP.0014.TO.ZS, SP.POP.GROW, SP.DYN.LE00.IN, SP.URB.TOTL.IN.ZS, FS.AST.PRVT.GD.ZS, NY.GNS.ICTR.ZS (renta baja, media-baja, Kenia, renta alta)"
+    url: https://databank.worldbank.org/source/world-development-indicators
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    frase: "toda la tabla tab:hechos (l. 185-207) y el texto que la usa: l. 215 «casi la mitad del empleo (el 46~\\%)»; l. 218 crédito 13 % y 152 %; l. 250 «65 años», «4,5 hijos», «2,7~\\%», «el 41~\\%»; l. 365 Kenia; ficha l. 250; l. 122 «65 veces ... y 26 veces en PPA»; l. 35 «más del 80~\\% de la población mundial»"
+
+  - id: kuznets-corte
+    texto: "un ajuste cuadrático explica el 10~\\% de las diferencias de desigualdad entre países"
+    donde: [3B28.tex]
+    unidad: R² y Gini por país
+    periodo: último año disponible 2015-2024
+    fuente: BM2026WDI
+    organismo: Banco Mundial
+    serie: "WDI SI.POV.GINI y NY.GDP.PCAP.PP.KD (150 países)"
+    url: https://databank.worldbank.org/source/world-development-indicators
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/kuznets-gini-renta.csv, graficos/kuznets.tex]
+    frase: "caption «(último año disponible entre 2015 y 2024)» y nota «$R^2=0{,}10$»; l. 229 Kenia Gini 38,5 (2022), Sudáfrica 54, Brasil 50, España 33"
+
+  - id: idh-datos
+    texto: "en 2023 lo encabeza Islandia (0,972), lo cierra Sudán del Sur (0,388) y España ocupa el puesto 28 (0,918)"
+    texto_repaso: "IDH 2023: España \\dato{0,918 (28.ª)}{PNUD, 2025}"
+    donde: [3B28.tex, repaso/3B28-repaso.tex]
+    valor: 0.918
+    unidad: IDH y puesto
+    periodo: "2023 (Informe 2025)"
+    fuente: PNUD2025IDH
+    organismo: PNUD
+    serie: "Human Development Report, tabla 1 del anexo y serie completa de índices compuestos"
+    url: https://hdr.undp.org/data-center
+    periodicidad: anual (irregular)
+    proxima: 2026-12
+    familia: pnud-idh
+    depende: [datos/idh-grupos-regiones.csv, graficos/idh-regiones.tex]
+    frase: "l. 164 China 0,797 (78); l. 166 Nigeria 0,560 (164), «unos 5.600 dólares»; l. 34 Guinea Ecuatorial y Sri Lanka (12.700 USD, puestos 89 y 133); l. 16 «unas 8 veces la de Kenia»; l. 932-932 anexo (Suiza y Noruega 0,970; media mundial 0,756); caption «1990 y 2023»; ficha l. 59 y 248"
+    nota: "posible desfase: el Informe sobre Desarrollo Humano 2026 (datos de 2024) puede haber salido o salir pronto"
+
+  - id: pobreza-multidimensional
+    texto: "Unos 1.100 millones de personas sufren pobreza multidimensional aguda, la mitad de ellas menores"
+    texto_repaso: "\\dato{1.100 M}{PNUD-Oxford, 2025}"
+    donde: [3B28.tex, repaso/3B28-repaso.tex]
+    valor: 1100
+    unidad: millones de personas
+    periodo: "2025"
+    fuente: PNUD2025IPM
+    organismo: PNUD y OPHI (Oxford)
+    serie: "Global Multidimensional Poverty Index"
+    url: https://hdr.undp.org/content/2025-global-multidimensional-poverty-index-mpi
+    periodicidad: anual (octubre)
+    proxima: 2026-10
+    familia: pnud-idh
+    nota: "posible desfase: el IPM 2026 debió publicarse en octubre de 2026"
+
+  - id: empleo-informal
+    texto: "El 58~\\% del empleo mundial es informal"
+    texto_repaso: "empleo informal \\dato{58\\,\\%}{OIT, 2023}"
+    donde: [3B28.tex, repaso/3B28-repaso.tex]
+    valor: 58
+    unidad: "% del empleo mundial"
+    periodo: "2019 (informe de 2023)"
+    fuente: OIT2023Informal
+    organismo: OIT
+    serie: "Women and Men in the Informal Economy: A Statistical Update"
+    url: https://www.ilo.org/publications/women-and-men-informal-economy-statistical-update
+    periodicidad: irregular
+    familia: oit-informalidad
+    nota: "la entrada del .bib no tiene url"
+
+  - id: trampa-renta-media
+    texto: "Desde 1990 solo 34 economías de renta media han llegado a renta alta"
+    texto_repaso: "\\dato{34 llegan a alta desde 1990; 108 siguen, 6.000 M}{BM, 2024}"
+    donde: [3B28.tex, repaso/3B28-repaso.tex]
+    valor: 34
+    unidad: economías
+    periodo: "2023 (Informe sobre el Desarrollo Mundial 2024)"
+    fuente: BM2024Informe
+    organismo: Banco Mundial
+    url: https://www.worldbank.org/wdr2024
+    periodicidad: irregular (cambia con la clasificación anual de renta)
+    familia: bm-clasificacion-renta
+    frase: "«y 108 siguen en la renta media, con unos 6.000 millones de personas»; l. 888 «108 países están en la renta media»; ficha l. 156 y 252"
+
+  - id: jpal-evaluaciones
+    texto: "han hecho más de 2.700 evaluaciones aleatorias en más de 140 países"
+    texto_repaso: "\\dato{$>$2.700 evaluaciones, $>$140 países}{J-PAL, 2026}"
+    donde: [3B28.tex, repaso/3B28-repaso.tex]
+    valor: 2700
+    unidad: evaluaciones aleatorias
+    periodo: "2026"
+    fuente: JPAL2026
+    organismo: J-PAL
+    url: https://www.povertyactionlab.org/about-us
+    periodicidad: continua
+    familia: jpal

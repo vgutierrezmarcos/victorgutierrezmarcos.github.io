@@ -1,0 +1,133 @@
+tema: 3A38
+fecha_inventario: 2026-11-09
+datos:
+  - id: deficit-deuda-espana
+    texto: "cerraron con un déficit del 2,4~\\% del PIB y una deuda del 100,5~\\%"
+    donde: [3A38.tex, repaso/3A38-repaso.tex]
+    valor: [2.4, 100.5]
+    unidad: "% del PIB (déficit y deuda PDE de las AA. PP.)"
+    periodo: 2025
+    fuente: Eurostat2026EDP
+    organismo: Eurostat
+    serie: "gov_10dd_edpt1, B9 y GD, ES"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table
+    periodicidad: semestral (notificaciones PDE de abril y octubre)
+    proxima: 2027-04
+    familia: eurostat-deuda
+    frase: "«En 2025 la economía española hizo un poco de las 2 cosas»; repaso: enganche y caja «España 2025: déficit 2,4 %; deuda 100,5 %»; l. 177 del repaso «deudas ≈100 %»"
+  - id: ahorro-nacional
+    texto: "el ahorro nacional bruto llegó al 25,0~\\% del PIB, el más alto desde que empieza la serie, en 1995, y las propias Administraciones volvieron a ahorrar (un 0,3~\\% del PIB), algo que no ocurría desde 2008"
+    donde: [3A38.tex, repaso/3A38-repaso.tex]
+    valor: [25.0, 0.3]
+    unidad: "% del PIB (ahorro nacional bruto; ahorro de las AA. PP.)"
+    periodo: 2025
+    fuente: Eurostat2026nasa10nftr
+    organismo: Eurostat
+    serie: "nasa_10_nf_tr, B8G, S1 y S13, ES; nama_10_gdp B1GQ"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table
+    periodicidad: anual
+    proxima: 2027-10
+    familia: eurostat-sectores
+    depende: [datos/ahorro-nacional-es.csv, graficos/ahorro-nacional-espana.tex]
+    frase: "«el más alto desde 1995» y «no ocurría desde 2008» deben comprobarse con el dato nuevo; l. 360 «el ahorro de las AA. PP. fue negativo de 2009 a 2024»; título del gráfico «1995-2025»; repaso: enganche, l. 103 y caja"
+  - id: tasa-ahorro-hogares
+    texto: "en 2025 los hogares ahorraron el 11,9~\\% de su renta disponible, frente al 14,8~\\% en la zona del euro"
+    donde: [3A38.tex, repaso/3A38-repaso.tex]
+    valor: [11.9, 14.8]
+    unidad: "% de la renta disponible bruta"
+    periodo: 2025
+    fuente: Eurostat2026nasa10ki
+    organismo: Eurostat
+    serie: "nasa_10_ki, SRG_S14_S15, ES y EA"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_ki/default/table
+    periodicidad: anual
+    proxima: 2027-10
+    familia: eurostat-sectores
+    depende: [datos/ahorro-nacional-es.csv]
+    frase: "repaso: l. 103 y caja"
+  - id: gasto-publico-pib
+    texto: "el gasto de las Administraciones Públicas fue en 2025 el 45,3~\\% del PIB en España y el 49,8~\\% en la zona del euro"
+    donde: [3A38.tex, repaso/3A38-repaso.tex]
+    valor: [45.3, 49.8]
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026GovMain
+    organismo: Eurostat
+    serie: "gov_10a_main, TE, S13, ES y EA21"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: eurostat-gov
+    frase: "repaso: relevancia y caja"
+  - id: inversion-publica
+    texto: "se ha recuperado hasta el 3,0~\\% en 2025, aún por debajo del 3,9~\\% de la UE"
+    donde: [3A38.tex, repaso/3A38-repaso.tex]
+    valor: [3.0, 3.9]
+    unidad: "% del PIB (FBCF de las AA. PP., España y UE)"
+    periodo: 2025
+    fuente: Eurostat2026GovMain
+    organismo: Eurostat
+    serie: "gov_10a_main, P51G, S13"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: eurostat-gov
+    depende: [datos/inversion-publica.csv, graficos/inversion-publica-espana.tex]
+    frase: "título del gráfico «1995-2025»; repaso: l. 168 y caja"
+  - id: tipo-implicito-trabajo
+    texto: "en 2024 el tipo implícito sobre el trabajo fue del 36,2~\\% en España y del 37,1~\\% en la UE"
+    donde: [3A38.tex, repaso/3A38-repaso.tex]
+    valor: [36.2, 37.1]
+    unidad: "% (tipo impositivo implícito sobre el trabajo)"
+    periodo: 2024
+    fuente: CE2026DataTaxation
+    organismo: Comisión Europea (DG TAXUD, Data on Taxation Trends)
+    serie: "ITR labour, ES y EU27"
+    url: https://taxation-customs.ec.europa.eu/taxation/economic-analysis/data-taxation-trends_en
+    periodicidad: anual
+    proxima: 2027-06
+    familia: ce-taxation-trends
+    frase: "repaso: l. 74 y caja"
+  - id: tipo-implicito-capital
+    texto: "en 2024 el tipo implícito sobre el capital fue del 29,5~\\% en España y del 32,5~\\% en la UE"
+    donde: [3A38.tex, repaso/3A38-repaso.tex]
+    valor: [29.5, 32.5]
+    unidad: "% (tipo impositivo implícito sobre el capital)"
+    periodo: 2024
+    fuente: CE2026ITRCapital
+    organismo: Comisión Europea (DG TAXUD)
+    serie: "ITR capital, ES y EU27"
+    url: https://webgate.ec.europa.eu/taxation_customs/redisstat/databrowser/explore/all/DATA_ON_TAX?lang=en&display=card&sort=category
+    periodicidad: anual
+    proxima: 2027-06
+    familia: ce-taxation-trends
+    frase: "«no muy lejos del que soporta el trabajo»; repaso: l. 108 y caja"
+  - id: pensiones-ageing
+    texto: "del 13,1~\\% del PIB en 2022 a un máximo del 17,3~\\% hacia 2050 y al 16,7~\\% en 2070"
+    donde: [3A38.tex, repaso/3A38-repaso.tex]
+    valor: [13.1, 17.3, 16.7]
+    unidad: "% del PIB (gasto público bruto en pensiones); dependencia 65+/20-64 33,3 → 64,5 %"
+    periodo: 2024 Ageing Report (2022-2070)
+    fuente: CE2024AgeingReport
+    organismo: Comisión Europea y Comité de Política Económica
+    serie: "2024 Ageing Report, escenario de referencia"
+    url: https://economy-finance.ec.europa.eu/publications/2024-ageing-report-economic-and-budgetary-projections-eu-member-states-2022-2070_en
+    periodicidad: trienal
+    proxima: 2027-06
+    familia: ageing-report
+    depende: [datos/pensiones-proyeccion.csv, datos/dependencia-pensiones-espana-ue.csv, graficos/demografia-pensiones.tex]
+    frase: "también l. 23 («pasaría del 13,1~\\% del PIB en 2022 a un máximo del 17,3~\\%»), l. 429 («el 13,1~\\% del PIB en 2022») y la UE (11,4 → 12,2 → 11,8 %); dependencia «del 33,3~\\% … al 64,5~\\% en 2054»; el gráfico es el mismo que en 3A29; repaso: relevancia y caja"
+  - id: dfr-bce
+    texto: "al 2,25~\\% en junio de 2026 y al 2,50~\\% en septiembre"
+    donde: [3A38.tex, repaso/3A38-repaso.tex]
+    valor: 2.50
+    unidad: "% (facilidad de depósito del BCE)"
+    periodo: desde el 16/09/2026
+    fuente: BCE2026TiposOficiales
+    organismo: BCE
+    serie: "FM.D.U2.EUR.4F.KR.DFR.LEV"
+    url: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html
+    periodicidad: por reunión del Consejo de Gobierno (cada 6 semanas)
+    proxima: 2026-12
+    familia: bce-tipos
+    frase: "«con la política monetaria otra vez restrictiva»; repaso: l. 177 y caja «2,50 % (BCE, sept. 2026)»"

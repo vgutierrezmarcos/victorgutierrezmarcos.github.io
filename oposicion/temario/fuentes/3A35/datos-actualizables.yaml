@@ -1,0 +1,110 @@
+tema: 3A35
+fecha_inventario: 2026-11-09
+datos:
+  - id: space-efectivo-numero
+    texto: "el efectivo era el 72~\\% de los pagos en tienda en 2019 y el 52~\\% en 2024; en España, el 83~\\% y el 57~\\%"
+    donde: [3A35.tex, repaso/3A35-repaso.tex]
+    valor: [52, 57]
+    unidad: "% del número de pagos en el punto de venta (zona del euro; España)"
+    periodo: 2024
+    fuente: BCE2024SPACE
+    organismo: BCE
+    serie: "Study on the payment attitudes of consumers in the euro area (SPACE), hojas de datos por país"
+    url: https://www.ecb.europa.eu/stats/ecb_surveys/space/html/ecb.space2024~19d46f0f17.en.html
+    periodicidad: bienal
+    familia: bce-space
+    depende: [datos/efectivo-pdv-space.csv, graficos/medios-pago-space.tex]
+    frase: "repite en l. 902 («el 57~\\% de las compras en tienda en número, pero solo el 45~\\% en valor; en la zona del euro, el 52~\\% y el 39~\\%») y en l. 901 (Países Bajos 22 %); títulos del gráfico «2016-2024»; repaso: enganche, l. 213 y caja"
+  - id: billetes-circulacion
+    texto: "en septiembre de 2026 circulaban 1,62 billones de euros en efectivo, casi 5 veces más que en 1999"
+    donde: [3A35.tex, repaso/3A35-repaso.tex]
+    valor: 1.62
+    unidad: billones de EUR (efectivo en circulación, zona del euro)
+    periodo: septiembre 2026
+    fuente: BCE2026BSI
+    organismo: BCE
+    serie: "BSI.M.U2.Y.V.L10.X.1.U2.2300.Z01.E (efectivo en circulación)"
+    url: https://data.ecb.europa.eu/data/datasets/BSI
+    periodicidad: mensual
+    familia: bce-agregados
+    frase: "repite en l. 903 («suman 1,62 billones de euros, el 14~\\% de M1 y el 9~\\% de M3»); repaso: enganche, l. 213 y caja «1,62 bill. € (sept. 2026); 14 % de M1, 9 % de M3»"
+  - id: velocidad-m2-eeuu
+    texto: "cayó a 1,13 en 2020 y hoy es de 1,42"
+    donde: [3A35.tex, repaso/3A35-repaso.tex]
+    valor: 1.42
+    unidad: veces (PIB nominal / M2)
+    periodo: tercer trimestre de 2026
+    fuente: FRED2026Velocidad
+    organismo: Reserva Federal de San Luis (FRED)
+    serie: "M2V (y M1V)"
+    url: https://fred.stlouisfed.org/series/M2V
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: fred-velocidad
+    depende: [datos/eeuu-velocidad-dinero-1959-2026.csv, graficos/velocidad-dinero.tex]
+    frase: "pie del gráfico «1959-2026» y «último dato, tercer trimestre de 2026»; repaso: «→ 1,42 hoy», caja «FRED, 1997/2020/2026» y pie «1959-2026»"
+  - id: velocidad-m3-ze
+    texto: "la velocidad de M3 ha caído de 1,42 en 1999 a 0,94 en 2025"
+    donde: [3A35.tex, repaso/3A35-repaso.tex]
+    valor: 0.94
+    unidad: veces (PIB nominal / M3, zona del euro)
+    periodo: 2025
+    fuente: BCE2026BSI
+    organismo: BCE y Eurostat (Eurostat2026nama10gdp)
+    serie: "BSI M3 (BSI.M.U2.Y.V.M30.X.1.U2.2300.Z01.E) y nama_10_gdp B1GQ EA20"
+    url: https://data.ecb.europa.eu/data/datasets/BSI
+    periodicidad: anual
+    proxima: 2027-03
+    familia: bce-agregados
+    frase: "repaso: «V_M3 1,42 (1999) → 0,94 (2025)» (dos veces)"
+  - id: dfr-bce
+    texto: "Hoy ese tipo está en el 2,50~\\%."
+    donde: [3A35.tex, repaso/3A35-repaso.tex]
+    valor: 2.50
+    unidad: "% (facilidad de depósito del BCE)"
+    periodo: noviembre 2026
+    fuente: BCE2026Tipos
+    organismo: BCE
+    serie: "FM.D.U2.EUR.4F.KR.DFR.LEV"
+    url: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html
+    periodicidad: por reunión del Consejo de Gobierno (cada 6 semanas)
+    familia: bce-tipos
+    frase: "repaso: «hoy 2,50 %»; el mínimo −0,50 % (2019-2022) es histórico"
+  - id: bde-habitos-efectivo
+    texto: "Sigue siendo el medio de pago principal en los comercios para el 57~\\% de la población, aunque el móvil ya llega al 18~\\% y la tarjeta baja al 25~\\%"
+    donde: [3A35.tex, repaso/3A35-repaso.tex]
+    valor: [57, 18, 25]
+    unidad: "% de la población (medio de pago principal en comercios: efectivo, móvil, tarjeta)"
+    periodo: 2026
+    fuente: BdE2026HabitosNota
+    organismo: Banco de España
+    serie: "Estudio sobre hábitos en el uso del efectivo 2026"
+    url: https://www.bde.es/f/webbe/GAP/Secciones/SalaPrensa/NotasInformativas/26/presbe2026-100.pdf
+    periodicidad: anual
+    familia: bde-habitos-efectivo
+    frase: "repaso: l. 213 y caja «57 %; móvil 18 %; tarjeta 25 %»"
+  - id: efectivo-dinamarca
+    texto: "en Dinamarca fue el 9~\\% de los pagos en tiendas en 2025"
+    donde: [3A35.tex, repaso/3A35-repaso.tex]
+    valor: 9
+    unidad: "% de los pagos en el comercio físico"
+    periodo: 2025
+    fuente: DNB2026Kontanter
+    organismo: Danmarks Nationalbank
+    url: https://www.nationalbanken.dk/en/news-and-knowledge/press/archive/2026/danes-are-paying-more-digitally-making-offline-payments-an-even-more-important-contingency-26-06-2026
+    periodicidad: bienal
+    familia: pagos-nordicos
+    frase: "repaso: «Dinamarca 9 % (2025)» (dos veces)"
+  - id: efectivo-suecia
+    texto: "en Suecia solo el 5~\\% pagó en efectivo su última compra"
+    donde: [3A35.tex, repaso/3A35-repaso.tex]
+    valor: 5
+    unidad: "% de la población que pagó en efectivo su última compra en tienda"
+    periodo: 2025 (encuesta de septiembre)
+    fuente: Riksbank2026Payments
+    organismo: Sveriges Riksbank
+    serie: "Payments Report, Payment habits in Sweden"
+    url: https://www.riksbank.se/en-gb/payments--cash/payments-in-sweden/payments-report-2026/developments-in-the-payments-market/payment-habits-in-sweden/
+    periodicidad: anual
+    familia: pagos-nordicos
+    frase: "repaso: «Suecia 5 %» (dos veces)"

@@ -1,0 +1,60 @@
+tema: 3A34
+fecha_inventario: 2026-11-09
+datos:
+  - id: fbcf-pib
+    texto: "la formación bruta de capital fijo (FBCF) fue el 21,0~\\% del PIB en 2025, como en la zona del euro (21,3~\\%)"
+    donde: [3A34.tex, repaso/3A34-repaso.tex]
+    valor: [21.0, 21.3]
+    unidad: "% del PIB (España; zona del euro)"
+    periodo: 2025
+    fuente: INE2026CNTRActivos
+    organismo: INE (España); Eurostat (zona del euro, Eurostat2026nama10gdp)
+    serie: "CNTR tabla 67823, FBCF (CNTR6974) / PIB (CNTR6548), suma de 4 trimestres; nama_10_gdp P51G/B1GQ EA20"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=67823
+    periodicidad: anual
+    proxima: 2027-03
+    familia: ine-cntr
+    depende: [datos/fbcf-activos.csv, graficos/fbcf-activos.tex]
+    frase: "máximo 30,0 % (2006) y mínimo 17,6 % (2013) son históricos; repaso: relevancia y caja «21,0 % del PIB (2025); ZE 21,3 %»"
+  - id: fbcf-composicion
+    texto: "(el 26,8~\\% de la FBCF de España en 2025), los productos de la propiedad intelectual (19,7~\\%"
+    donde: [3A34.tex, repaso/3A34-repaso.tex]
+    valor: [26.8, 19.7, 24.7, 71.9, 28.1]
+    unidad: "% de la FBCF (maquinaria y equipo; propiedad intelectual; no residencial; total productiva; vivienda)"
+    periodo: 2025
+    fuente: INE2026CNTRActivos
+    organismo: INE
+    serie: "CNTR tabla 67823 (CNTR6793, CNTR6806, CNTR6790, CNTR6787 sobre CNTR6974)"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=67823
+    periodicidad: anual
+    proxima: 2027-03
+    familia: ine-cntr
+    depende: [datos/fbcf-activos.csv, graficos/fbcf-activos.tex]
+    frase: "en la misma frase: «(24,7~\\%)», «(71,9~\\%)» y «La vivienda (28,1~\\%)»; título del gráfico «1995-2025»; repaso: pie del gráfico y caja de datos"
+  - id: epu-bde-2025
+    texto: "en 2025 se mantuvo, de media, un 77~\\% por encima de su nivel histórico"
+    donde: [3A34.tex, repaso/3A34-repaso.tex]
+    valor: 77
+    unidad: "% sobre la media 1997-2018 (índice EPU del Banco de España)"
+    periodo: 2025 (media anual)
+    fuente: BdE2026EPU
+    organismo: Banco de España
+    serie: "Índice de incertidumbre de política económica para España (Ghirelli, Pérez y Urtasun, 2019)"
+    periodicidad: mensual
+    familia: epu-espana
+    depende: [datos/epu-espana.csv, graficos/epu-espana.tex]
+    frase: "también en el enganche (l. 16: «cerró el año un 77~\\% por encima de su media histórica») y en el repaso (enganche y caja); pie del gráfico «1997-2026» y «último dato, septiembre de 2026»; el máximo de abril de 2025 (212, BBD) solo cambia si hay uno mayor"
+  - id: epu-bbd-maximo
+    texto: "marcó el valor más alto de su historia"
+    donde: [3A34.tex, repaso/3A34-repaso.tex]
+    valor: 212
+    unidad: índice (media anterior a 2011 = 100)
+    periodo: abril 2025
+    fuente: BakerBloomDavis2026EPU
+    organismo: Baker, Bloom y Davis (policyuncertainty.com)
+    serie: "Europe_Policy_Uncertainty_Data.xlsx, Spain_News_Index"
+    url: https://www.policyuncertainty.com/europe_monthly.html
+    periodicidad: mensual
+    familia: epu-espana
+    depende: [datos/epu-espana.csv]
+    frase: "comprobar que abril de 2025 sigue siendo el máximo; repaso: «abril 2025, 212» (dos veces)"

@@ -1,0 +1,59 @@
+tema: 3A37
+fecha_inventario: 2026-11-09
+datos:
+  - id: iapc-ze-ultimo
+    texto: "con la inflación de nuevo en el 4~\\% en octubre de 2026"
+    donde: [3A37.tex, repaso/3A37-repaso.tex]
+    valor: 4.0
+    unidad: "% interanual (IAPC general de la zona del euro)"
+    periodo: octubre 2026 (avance)
+    fuente: Eurostat2026IAPCoct
+    organismo: Eurostat
+    serie: "prc_hicp_manr, CP00, EA (estimación avanzada)"
+    url: https://ec.europa.eu/eurostat/web/euro-indicators
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: eurostat-iapc
+    frase: "«Y la escena se repite» (l. 17) y «ha vuelto a hacer en 2026» (l. 182) dependen de que siga el episodio; repaso: enganche y caja «4 % (oct. 2026)»"
+  - id: dfr-bce
+    texto: "hasta dejar la facilidad de depósito en el 2,50~\\%"
+    donde: [3A37.tex, repaso/3A37-repaso.tex]
+    valor: 2.50
+    unidad: "% (facilidad de depósito del BCE)"
+    periodo: desde el 16/09/2026
+    fuente: BCE2026Decisiones
+    organismo: BCE
+    serie: "FM.D.U2.EUR.4F.KR.DFR.LEV"
+    url: https://www.ecb.europa.eu/press/govcdec/mopo/html/index.en.html
+    periodicidad: por reunión del Consejo de Gobierno (cada 6 semanas)
+    proxima: 2026-12
+    familia: bce-tipos
+    frase: "«ha vuelto a subir los tipos en junio y en septiembre»; repaso: enganche «depósito 2,50 %» y caja «2,50 % (BCE, sept. 2026)»"
+  - id: transmision-tipos-grafico
+    texto: "los tipos bancarios llegan a septiembre de 2026"
+    donde: [3A37.tex]
+    valor: null
+    unidad: "% anual (FD, €STR, Euríbor, tipos MIR de nuevas operaciones y saldos, zona del euro y España)"
+    periodo: enero 2021 - octubre 2026 (MIR hasta septiembre de 2026)
+    fuente: BCE2026MIR
+    organismo: BCE
+    serie: "FM DFR, EST €STR, FM Euribor 3M/12M, MIR.M.{U2|ES}.B.A2C/A2I/L21/L22…"
+    url: https://data.ecb.europa.eu/data/datasets/MIR
+    periodicidad: mensual
+    familia: bce-mir
+    depende: [datos/transmision-tipos-2021-2026.csv, graficos/transmision-tipos-2022.tex]
+    frase: "título del gráfico «(2021-2026)»; las cifras del texto sobre 2022-2023 y 2024-2025 son históricas"
+  - id: balances-bancos-centrales
+    texto: "El activo de los 4 grandes bancos centrales (\\% del PIB)"
+    donde: [3A37.tex]
+    valor: null
+    unidad: "% del PIB (activo total: Fed, Eurosistema, BoE, BoJ)"
+    periodo: 2007T1-2026T2 (zona del euro hasta 2026T1)
+    fuente: BCE2026ILM
+    organismo: BPI (WS_CBTA)
+    serie: "BIS Central bank total assets, Q.US+XM+GB+JP, XDF_R_B1GQ"
+    url: https://data.bis.org/topics/CBTA
+    periodicidad: trimestral
+    familia: bpi-balances-bc
+    depende: [datos/balance-bancos-centrales-pib.csv, graficos/balances-bancos-centrales.tex]
+    frase: "el gráfico se copia de 3A40 (actualizar allí y volver a copiar); «se reducen desde 2022» depende de la serie"

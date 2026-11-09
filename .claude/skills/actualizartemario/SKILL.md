@@ -36,6 +36,7 @@ datos:
     familia: bis-trienal                # agrupa datos que se actualizan juntos en varios temas (ver abajo)
     depende: [datos/fx-volumen.csv, graficos/fx-volumen.tex]   # gráficos o CSV que hay que rehacer
     frase: "cambia también «unas 3 veces el PIB mundial anual»"  # texto derivado que hay que revisar, si lo hay
+    texto_repaso: "9,5 bill. USD/día"   # literal en la ficha, si allí se escribe distinto
 ```
 
 **Familias** (mismo dato en varios temas; se actualizan de una vez y con la

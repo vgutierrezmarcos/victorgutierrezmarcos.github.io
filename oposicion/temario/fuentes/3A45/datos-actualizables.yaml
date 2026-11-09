@@ -1,0 +1,155 @@
+tema: 3A45
+fecha_inventario: 2026-11-09
+datos:
+  - id: nogales-renta-mediana
+    texto: "la renta mediana de los hogares supera los 43.000 dólares"
+    donde: [3A45.tex]
+    valor: 43000
+    unidad: dólares corrientes (renta mediana de los hogares, Nogales, Arizona)
+    periodo: ACS 5 años 2020-2024
+    fuente: Census2025ACSNogales
+    organismo: U.S. Census Bureau (American Community Survey)
+    serie: "ACSDT5Y2024 B19013, Nogales city (AZ)"
+    url: https://data.census.gov/table/ACSDT5Y2024.B19013?g=160XX00US0449640
+    periodicidad: anual
+    proxima: 2026-12
+    familia: census-acs
+  - id: pobreza-mundial
+    texto: "ha bajado del 43~\\% en 1990 al 10~\\% en 2024; en la India, del 52~\\% en 1987 al 27~\\% en 2011 y al 5~\\% en 2022"
+    donde: [3A45.tex, repaso/3A45-repaso.tex]
+    valor: [10, 5]
+    unidad: "% de la población con menos de 3 dólares diarios (PPA de 2021)"
+    periodo: 2024 (mundo); 2022 (India)
+    fuente: BM2026PIP
+    organismo: Banco Mundial (Poverty and Inequality Platform)
+    serie: "PIP, headcount ratio at 3.00 USD (2021 PPP)"
+    url: https://pip.worldbank.org/
+    periodicidad: semestral (actualizaciones de marzo/junio y septiembre)
+    familia: bm-pobreza
+    frase: "repaso: relevancia «43 % (1990) → 10 % (2024), India 52 → 5 %» y caja"
+  - id: pwt-niveles-ritmos
+    texto: "en 2023, es 117 veces la de Sudán del Sur, el país más pobre con datos"
+    donde: [3A45.tex, repaso/3A45-repaso.tex]
+    valor: [117, 1.27, 1.9]
+    unidad: "veces (EE. UU./país más pobre); desviación típica del log de la renta (σ); crecimiento medio anual (%)"
+    periodo: 1960-2023 (PWT 11.0)
+    fuente: GGDC2025PWT
+    organismo: Groningen Growth and Development Centre
+    serie: "PWT 11.0 (rgdpe/pop, rgdpna/pop)"
+    url: https://www.rug.nl/ggdc/productivity/pwt/
+    periodicidad: irregular (PWT, cada 2-3 años)
+    familia: pwt
+    depende: [datos/sigma-convergencia.csv, graficos/convergencia-sigma.tex, datos/convergencia-pwt.csv, graficos/convergencia-periodos.tex]
+    frase: "todo el bloque de hechos con la PWT 11.0 cambia con la PWT 12: l. 148 (σ 0,96 → 1,34 → 1,27), l. 149 (111 países, 1,9 %, China 6,1 %, Corea 5,4 %, Congo −1,5 %, puestos 28 de 181 y 176), l. 153 (Corea 52.400, España 46.700, Nigeria 4.600 $), l. 186 (K/Y 3,8 y 3,2), l. 307, l. 805, l. 851-852, l. 875 (pendientes −0,52/−0,47/−0,34, velocidades 0,5 % y 1,8 %), l. 903 (capital humano 3,9 y 2,1), l. 1027 (pendiente −0,61, correlación −0,73); repaso: caja (Corea/Nigeria, σ)"
+  - id: pwt-contabilidad-desarrollo
+    texto: "la brecha entre los 5 países más productivos y los 5 menos es de 47,1 veces, con un factor de 1,07 del capital, 2,29 del capital humano y 19,1 de la PTF"
+    donde: [3A45.tex, repaso/3A45-repaso.tex]
+    valor: [47.1, 1.07, 2.29, 19.1, 0.30]
+    unidad: "veces (brecha de producción por ocupado y factores); éxito de los factores"
+    periodo: 2023 (PWT 11.0)
+    fuente: GGDC2025PWT
+    organismo: Groningen Growth and Development Centre (cálculo propio)
+    serie: "PWT 11.0 (rgdpo, emp, rnna, hc), α = 1/3"
+    url: https://www.rug.nl/ggdc/productivity/pwt/
+    periodicidad: irregular (PWT, cada 2-3 años)
+    familia: pwt
+    depende: [datos/contabilidad-desarrollo-pwt.csv, graficos/ptf-renta.tex]
+    frase: "también l. 576 y 1201 (Corea/Nigeria: 8,1 = 0,72 × 1,82 × 6,2), l. 615 y 1215 (éxito 0,30, 143 países), tabla tab:desarrollo y tabla de l. 1236; repaso: caja «Desarrollo 2023»"
+  - id: mrw-actual
+    texto: "entre 1960 y 2023, con 78 países, la $\\alpha$ implícita sin capital humano es 0,64 y el $R^2$ ajustado pasa de 0,54 a 0,76"
+    donde: [3A45.tex]
+    valor: [0.64, 0.54, 0.76]
+    unidad: "α implícita y R² ajustado"
+    periodo: 1960-2023
+    fuente: GGDC2025PWT
+    organismo: Groningen Growth and Development Centre (cálculo propio, el mismo que en 3A43)
+    serie: "PWT 11.0, csh_i, emp, rgdpna, hc"
+    url: https://www.rug.nl/ggdc/productivity/pwt/
+    periodicidad: irregular (PWT, cada 2-3 años)
+    familia: pwt
+    depende: [datos/inversion-renta-mrw.csv, graficos/mrw-ajuste.tex]
+  - id: maddison-largo-plazo
+    texto: "se ha multiplicado por 12 entre 1870 y 2022, de 4.803 a 58.487 dólares de 2011, un 1,6~\\% anual"
+    donde: [3A45.tex, repaso/3A45-repaso.tex]
+    valor: [58487, 1.6]
+    unidad: "dólares internacionales de 2011 por habitante; % anual"
+    periodo: 1870-2022 (Maddison Project Database 2023)
+    fuente: BoltvanZanden2025
+    organismo: Maddison Project (Universidad de Groningen)
+    serie: "Maddison Project Database 2023, gdppc"
+    url: https://www.rug.nl/ggdc/historicaldevelopment/maddison/
+    periodicidad: irregular (cada 2-3 años)
+    familia: maddison
+    depende: [datos/pib-pc-largo-plazo-maddison.csv, graficos/pib-pc-largo.tex]
+    frase: "l. 135 (1960-2022: Corea y Taiwán >5 %, India y España ≈3 %, Argentina ≈1 %); repaso: caja «×12, 1,6 % anual»"
+  - id: participacion-salarial
+    texto: "en España, sube hasta el 67,5~\\% en 1976, cae al 55~\\% en 2007 y desde entonces se mueve entre el 53 y el 58~\\% (56,6~\\% en 2025)"
+    donde: [3A45.tex, repaso/3A45-repaso.tex]
+    valor: [56.6, 56.9, 54]
+    unidad: "% del PIB (participación salarial ajustada: España, zona del euro, EE. UU.)"
+    periodo: 2025 (estimación de la previsión de primavera de 2026)
+    fuente: CE2026AMECO
+    organismo: Comisión Europea (AMECO)
+    serie: "ALCD0"
+    url: https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en
+    periodicidad: semestral
+    proxima: 2026-11
+    familia: ameco
+    depende: [datos/participacion-trabajo-esp-ea-eeuu.csv, graficos/participacion-trabajo.tex]
+    frase: "también l. 304 («el 56,6~\\% con el ajuste»), l. 311 (EE. UU. «al 54~\\% en 2025»), l. 313 (zona del euro «56,9~\\% en 2025»); pie «2025, estimación de la previsión de primavera de 2026»; repaso: l. 77 y caja"
+  - id: remuneracion-asalariados
+    texto: "la remuneración de los asalariados fue el 48,4~\\% del PIB en 2025"
+    donde: [3A45.tex, repaso/3A45-repaso.tex]
+    valor: 48.4
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026Nama10gdp
+    organismo: Eurostat
+    serie: "nama_10_gdp, D1 / B1GQ, ES"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual
+    familia: eurostat-nama
+    frase: "repaso: l. 77 y caja"
+  - id: contabilidad-crecimiento
+    texto: "sumó 0,6 en la recuperación de 2014-2019 y apenas se ha movido en 2020-2025"
+    donde: [3A45.tex, repaso/3A45-repaso.tex]
+    valor: null
+    unidad: "puntos de crecimiento anual (contribución de la PTF), España, EA20 y EE. UU. por periodos"
+    periodo: 1996-2025 (último tramo 2020-2025; EA20 y PWT hasta 2024)
+    fuente: CE2026AMECO
+    organismo: Comisión Europea (AMECO) y PWT (GGDC2025PWT, capital humano)
+    serie: "AMECO OVGD, OKND, NLHT, ALCD0; PWT hc"
+    url: https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en
+    periodicidad: semestral
+    proxima: 2026-11
+    familia: ameco
+    depende: [datos/contabilidad-crecimiento-esp-ea-eeuu.csv, graficos/contabilidad-espana.tex]
+    frase: "l. 671 (zona del euro «en 2020-2024»), l. 672 (EE. UU. «0,8 en 2020-2025»); el último tramo se alarga cada año; 1996-2007 (−0,51) es histórico salvo revisión"
+  - id: ptf-eeuu
+    texto: "Desde 1970 ha crecido, de media, un 0,9~\\%; entre 2020 y 2025, un 1,1~\\%"
+    donde: [3A45.tex, repaso/3A45-repaso.tex]
+    valor: [0.9, 1.1]
+    unidad: "% anual (PTF del sector empresarial de EE. UU.)"
+    periodo: 1970-2025 y 2020-2025
+    fuente: FRBSF2026PTF
+    organismo: Federal Reserve Bank of San Francisco (Fernald)
+    serie: "Fernald quarterly TFP, business sector"
+    url: https://www.frbsf.org/research-and-insights/data-and-indicators/total-factor-productivity-tfp/
+    periodicidad: trimestral
+    familia: frbsf-ptf
+    frase: "l. 311 («la del capital sube de 0,32 en 1948-1973 a 0,41 en 2020-2025»); repaso: caja «0,9 % desde 1970»"
+  - id: convergencia-estados-eeuu
+    texto: "renta personal por habitante en 1929 y crecimiento medio anual, 1929-2025"
+    donde: [3A45.tex, repaso/3A45-repaso.tex]
+    valor: 1.4
+    unidad: "% anual (velocidad de convergencia β entre los 48 estados contiguos)"
+    periodo: 1929-2025
+    fuente: BEA2026SAINC
+    organismo: BEA (cuentas regionales)
+    serie: "SAINC1, renta personal per cápita por estado"
+    url: https://apps.bea.gov/regional/zip/SAINC.zip
+    periodicidad: anual
+    proxima: 2027-09
+    familia: bea-regional
+    depende: [datos/convergencia-estados-eeuu.csv, graficos/estados-eeuu.tex]
+    frase: "repaso: l. 178 «Estados 1929-2025, 1,4 %»"
