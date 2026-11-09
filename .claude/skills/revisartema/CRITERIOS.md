@@ -229,6 +229,14 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   viñetas indentadas debajo, para que el opositor detecte el patrón. Los
   bloques de cada autor son títulos de un nivel inferior al del autor
   (`\paragraph`), salvo que del autor se hable poco (entonces, viñetas).
+- **Esquema del tema** (caja `esquema` al final de la introducción; Víctor,
+  9/11/2026, 2.ª tanda): **un título por línea** (nunca dos subapartados en
+  la misma línea con `\quad`) y los minutos orientativos de cada parte, a la
+  derecha y en gris, con `\esqtiempo{…}` solo en la línea de la introducción,
+  de cada apartado de primer nivel y de la conclusión
+  (`I. Título\esqtiempo{11}\\`). Son los mismos que los `\minutos` del cuerpo
+  (verificar-tema.py lo comprueba); si cambian los minutos o la estructura, se
+  cambia también el esquema.
 - **Cajas grises para lo que no se canta** (Víctor, 9/11/2026): datos de
   tablas que es imposible memorizar pero ayudan a entender, anécdotas
   biográficas, desarrollos largos y material complementario van en un
@@ -386,6 +394,19 @@ el texto original y lo que se hizo.
   dato cita una entrada del `.bib` del tema. Para fuentes en línea: autor institucional, título, año,
   `url` y `urldate` (fecha de consulta). Gráficos y tablas con `\fuente{…}`.
 - Se respetan las citas que ya hay en el tema (bibliografía, notas al pie).
+- **Los enlaces del tema original se conservan** (Víctor, 9/11/2026): apuntes,
+  documentos, vídeos o páginas que el original enlazaba siguen enlazados, con
+  una cita mejor para llegar a ellos con un clic (entrada del `.bib` con `url`
+  y `urldate`, o `\href{url}{título}` en una nota o en la caja). Solo se
+  quitan los de quia.com, los `file:///` y los que no funcionan (se busca
+  antes la dirección nueva y, si no hay, se anota en `revision.md`).
+- **Datos que caducan** (Víctor, 9/11/2026): toda cifra que cambia cuando se
+  publica un dato nuevo (series del INE, Eurostat, BCE, FMI…; encuesta trienal
+  del BIS; presupuestos de la UE y PGE; MFP; aranceles de la OMC; rankings)
+  se anota en `D/datos-actualizables.yaml` (formato y uso en la skill
+  `/actualizartemario`) con su texto literal, fuente, serie y periodicidad,
+  también las de gráficos de datos (`D/datos/*.csv`) y fichas. Al escribir o
+  cambiar un dato, se actualiza su entrada.
   Si una cita antigua no se puede comprobar, se anota en el informe.
 
 ## 5. Temas de otros preparadores y de Manuel

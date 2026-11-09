@@ -303,6 +303,10 @@
   colback=tceecrema,colframe=tceemorado,boxrule=0.6pt,arc=2pt,
   title={Esquema del tema},fonttitle=\bfseries,colbacktitle=tceemorado,
   fontupper=\small,#1}
+% Minutos orientativos de cada parte en el esquema, a la derecha y en gris,
+% solo en la línea de la introducción, de cada apartado y de la conclusión:
+% «I. Título\esqtiempo{11}\\». Un título por línea (CRITERIOS §2).
+\newcommand{\esqtiempo}[1]{\hfill{\scriptsize\itshape\color{tceegris}\tceemmss{#1}}}
 
 % --- Figuras y tablas ---------------------------------------------------------
 % Título encima («Gráfico 1.– …») y fuente obligatoria debajo con \fuente{…}.

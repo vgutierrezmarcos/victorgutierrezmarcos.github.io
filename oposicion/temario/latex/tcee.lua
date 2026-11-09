@@ -266,6 +266,11 @@ local function Span(s)
   local color = estilo:match('color:%s*(tcee%w+)')
   if color == 'tceetiempo' then
     return pandoc.Str(mmss(pandoc.utils.stringify(s)))
+  elseif color == 'tceeesqtiempo' then
+    -- Minutos del esquema del tema: a la derecha y en gris (tema.css); en Word, tras un espacio ancho
+    local t = mmss(pandoc.utils.stringify(s))
+    if es_docx then return pandoc.Str('\u{2003}' .. t) end
+    return pandoc.Span({ pandoc.Str(t) }, pandoc.Attr('', { 'esq-tiempo' }))
   elseif color == 'tceefindemo' then
     -- ∎ de fin de demostración: a la derecha en la web; en Word, tras un espacio ancho
     if es_docx then return pandoc.Str('\u{2003}∎') end

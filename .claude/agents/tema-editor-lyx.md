@@ -70,6 +70,11 @@ sencillo y solo las órdenes de `tcee.sty`):
   viñetas indentadas; viñetas que se entienden solas; rótulos repetidos con el
   mismo formato; cajas grises para lo que no se canta. verificar-tema.py lo
   comprueba.
+- **Esquema del tema y enlaces** (CRITERIOS §2 y §4, 9/11/2026): en la caja
+  `esquema`, un título por línea y `\esqtiempo{…}` (los mismos minutos que
+  `\minutos`) en la introducción, cada apartado y la conclusión; los enlaces
+  del tema original se conservan con una cita que lleve a ellos; cada dato que
+  caduca va a `D/datos-actualizables.yaml`.
 - **Toda remisión es un enlace** (CRITERIOS §6): `\vertema{3.A.12}` para otros
   temas y `\ref{…}`/`\eqref{…}` para apartados, anexos, gráficos, tablas y
   ecuaciones; nunca «(II.3)», «apartado~I.2», «bloque~III» o «anexo~B» a mano.

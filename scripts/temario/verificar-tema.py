@@ -373,6 +373,19 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
             for r in re.finditer(r'\\item\s*\\textbf\{\\emph\{([^}]+)\}\}\s*:?[ \t]*(?=[^\s:])(?!\\begin\{itemize\})', m.group(1)):
                 errores.append(f'{titulo}: el rótulo «{r.group(1)}» lleva el texto en su misma línea; va solo y el '
                                'desarrollo en viñetas indentadas debajo (CRITERIOS §2)')
+    # --- Esquema del tema (§2, Víctor 9/11/2026): un título por línea y los
+    # minutos de cada parte (\esqtiempo) iguales a los \minutos del cuerpo
+    m = re.search(r'\\begin\{esquema\}(?:\[[^\n]*\])?(.*?)\\end\{esquema\}', cuerpo, re.S)
+    if m and not tema.es_dictamen:
+        esq = m.group(1)
+        for ln in esq.split('\\\\'):
+            if re.search(r'(\\quad|\\qquad|\\hspace\{[\d.]+em\}|\\enspace)\s*(\d+|[IVX]+)[.)]\s', ln):
+                errores.append(f'Esquema del tema: varios títulos en la misma línea («{ln.strip()[:60]}…»); uno por línea (CRITERIOS §2)')
+        en_esq = [float(x.replace(',', '.')) for x in re.findall(r'\\esqtiempo\{([\d.,]+)\}', esq)]
+        if not en_esq:
+            avisos.append('Esquema del tema sin los minutos de cada parte (\\esqtiempo{…} en la introducción, cada apartado y la conclusión)')
+        elif en_esq != [float(x.replace(',', '.')) for x in re.findall(r'\\minutos\{(\d+(?:[.,]\d+)?)\}', cuerpo)]:
+            errores.append('Los minutos del esquema (\\esqtiempo) no coinciden con los \\minutos de los apartados')
     # --- Sin nombres de preparadores (§2) ni enlaces a quia.com
     ruta_ref = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'referencias.json')
     if os.path.exists(ruta_ref):
