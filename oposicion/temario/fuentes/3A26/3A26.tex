@@ -26,7 +26,7 @@
 
 \item \textbf{\emph{Contextualización}}:
   \begin{itemize}
-  \item En el modelo neoclásico del mercado de trabajo, el salario real vacía el mercado y no hay paro involuntario salvo con un salario mínimo \vertema{3.A.25}. Esta exposición levanta 2 de sus supuestos (tabla~\ref{tab:supuestos-trabajo}):
+  \item En el modelo neoclásico del mercado de trabajo, el salario real vacía el mercado y no hay paro involuntario salvo con un salario mínimo \vertema{3.A.25}. Esta exposición levanta 2 de sus supuestos, con la misma numeración (tabla~\ref{tab:supuestos-trabajo}):
     \begin{itemize}
     \item la \emph{información perfecta} (supuesto 2): el trabajador no sabe qué empresa paga qué, ni la empresa dónde está el trabajador que necesita;
     \item la \emph{movilidad sin costes de ajuste} (supuesto 7): encontrarse lleva tiempo, y cambiar de plantilla, dinero.
@@ -55,7 +55,7 @@
 \textcolor{tceemorado}{\textbf{7}} & \textbf{Movilidad perfecta, sin costes de ajuste} & los trabajadores cambian de empleo y las empresas de plantilla sin coste & encontrar pareja lleva tiempo (\ref{sec:dmp}) y cambiar la plantilla cuesta (\ref{sec:costes-ajuste})\\
 \bottomrule
 \end{tabular}
-\fuente{elaboración propia; numeración y redacción de la tabla de supuestos del modelo neoclásico del mercado de trabajo \vertema{3.A.25}.}
+\fuente{elaboración propia.}
 \end{table}
 
 \item \textbf{\emph{Problemática}}:
@@ -331,7 +331,7 @@ Lecturas y vídeos complementarios: el informe de \textcite{NunezUsabiaga2007} s
   \begin{equation}
   \dot U=\underbrace{s\,(1-U)}_{\text{entradas}}-\underbrace{f(\theta)\,U}_{\text{salidas}=m(U,V)}\label{eq:dinamica-paro}
   \end{equation}
-\item \emph{Valores de cada estado}. Con ecuaciones de \autor{Bellman}, $V_{\mathrm E}$ y $V_{\mathrm U}$ son los valores de estar empleado y parado, como en \vertema{3.A.27}, y $J_{\mathrm O}$ y $J_{\mathrm V}$ los de un puesto ocupado y uno vacante:\footnote{Se leen como el rendimiento de un activo: lo que rinde por unidad de tiempo ($r$ por su valor) es igual al flujo que da más la ganancia o pérdida esperada de cambiar de estado. Es la ecuación de \autor{Bellman} de la programación dinámica en tiempo continuo \vertema{3.A.29}.}
+\item \emph{Valores de cada estado}. Con ecuaciones de \autor{Bellman}, $V_{\mathrm E}$ y $V_{\mathrm U}$ son los valores de estar empleado y parado \vertema{3.A.27}, y $J_{\mathrm O}$ y $J_{\mathrm V}$ los de un puesto ocupado y uno vacante:\footnote{Se leen como el rendimiento de un activo: lo que rinde por unidad de tiempo ($r$ por su valor) es igual al flujo que da más la ganancia o pérdida esperada de cambiar de estado. Es la ecuación de \autor{Bellman} de la programación dinámica en tiempo continuo \vertema{3.A.29}.}
   \begin{equation}
   \begin{aligned}
   r\,V_{\mathrm E}&=w-s\,(V_{\mathrm E}-V_{\mathrm U}), & r\,V_{\mathrm U}&=z+f(\theta)\,(V_{\mathrm E}-V_{\mathrm U}),\\
@@ -342,7 +342,7 @@ Lecturas y vídeos complementarios: el informe de \textcite{NunezUsabiaga2007} s
   \item el ocupado cobra $w$ y a la tasa $s$ pierde el empleo; el parado recibe $z$ y a la tasa $f(\theta)$ encuentra uno;
   \item el puesto ocupado produce $y$ y paga $w$, y a la tasa $s$ se destruye; el vacante cuesta $c$ y se cubre a la tasa $q(\theta)$.
   \end{itemize}
-\item \emph{Negociación}. Cada emparejamiento crea una renta, el \emph{excedente} $S\equiv(V_{\mathrm E}-V_{\mathrm U})+(J_{\mathrm O}-J_{\mathrm V})$, porque romperlo obliga a los 2 a volver a buscar. El salario la reparte con la solución de \autor{Nash} generalizada \vertema{3.A.14}:\footnote{Es la misma solución, con el mismo poder $\gamma$ y el mismo valor del desempleo $z$, que la de la negociación salarial \vertema{3.A.27}; sus axiomas se estudian en \vertema{3.A.14}.}
+\item \emph{Negociación}. Cada emparejamiento crea una renta, el \emph{excedente} $S\equiv(V_{\mathrm E}-V_{\mathrm U})+(J_{\mathrm O}-J_{\mathrm V})$, porque romperlo obliga a los 2 a volver a buscar. El salario la reparte con la solución de \autor{Nash} generalizada \vertema{3.A.14}:\footnote{Es la misma solución, con el mismo poder $\gamma$ y el mismo valor del desempleo $z$, que la de la negociación salarial \vertema{3.A.27}; sus axiomas se estudian aparte \vertema{3.A.14}.}
   $$\optim{\max}{w}{\big(V_{\mathrm E}(w)-V_{\mathrm U}\big)^{\gamma}\big(J_{\mathrm O}(w)-J_{\mathrm V}\big)^{1-\gamma}}{}$$
   cuya condición de primer orden reparte el excedente en proporciones fijas: $V_{\mathrm E}-V_{\mathrm U}=\gamma S$ y $J_{\mathrm O}-J_{\mathrm V}=(1-\gamma)S$.
 \item El modelo se resuelve con 3 ecuaciones, 2 en el plano $(\theta,w)$ y una en el $(U,V)$ (tabla~\ref{tab:ecuaciones-dmp}).
@@ -605,7 +605,7 @@ En el cante (\tiempo{8}): la idea, con el punto de partida estático y los tipos
 \subsection{Idea}\label{sec:ajuste-idea}
 
 \begin{itemize}
-\item \emph{Punto de partida}: en el modelo neoclásico, la empresa contrata en cada momento hasta que la productividad marginal del trabajo iguala al salario real, $F_L=w$ (\vertema{3.A.25}, demanda de trabajo a corto plazo). Si cambia el salario o la productividad, la plantilla salta al nuevo óptimo. El tiempo no importa.
+\item \emph{Punto de partida}: en el modelo neoclásico, la empresa contrata en cada momento hasta que la productividad marginal del trabajo iguala al salario real, $F_L=w$ (demanda de trabajo a corto plazo) \vertema{3.A.25}. Si cambia el salario o la productividad, la plantilla salta al nuevo óptimo. El tiempo no importa.
 \item Al introducir el tiempo, una perturbación de hoy tiene efectos más allá de hoy:
   \begin{itemize}
   \item por el lado de la \emph{oferta}, el trabajador sustituye ocio presente por futuro según el salario de cada periodo \parencite{LucasRapping1969Real}, una idea que desarrolla el modelo neoclásico del mercado de trabajo \vertema{3.A.25};
@@ -658,7 +658,7 @@ En el cante (\tiempo{8}): la idea, con el punto de partida estático y los tipos
   \begin{itemize}
   \item Con un coste marginal constante, da igual contratar de golpe o poco a poco: ajustar despacio no ahorra nada. La empresa decide trabajador a trabajador. Contratar a uno más compensa si lo que aporta para siempre, $[F_L(L)-w]/r$, supera lo que cuesta contratarlo, $\phi_c$; despedir a uno compensa si lo que se ahorra, $[w-F_L(L)]/r$, supera $\phi_d$ \parencite{BentolilaBertola1990Firing}. Entre los 2 umbrales, la empresa no toca la plantilla:
     \funcionclave[eq:banda-inaccion]{w-r\,\phi_d\ \leq\ F_L(L)\ \leq\ w+r\,\phi_c}
-  \item Es una \concepto{banda de inacción} (gráfico~\ref{fig:banda-inaccion}): $r\phi_c$ y $r\phi_d$ son los costes de contratar y de despedir convertidos en un flujo por unidad de tiempo. Sobre la demanda de trabajo a corto plazo (la recta de demanda del \vertema{3.A.25}), la banda es el tramo de plantillas entre $\underline{L}$, donde $F_L(\underline{L})=w+r\phi_c$, y $\overline{L}$, donde $F_L(\overline{L})=w-r\phi_d$, alrededor del $L^*$ sin costes.
+  \item Es una \concepto{banda de inacción} (gráfico~\ref{fig:banda-inaccion}): $r\phi_c$ y $r\phi_d$ son los costes de contratar y de despedir convertidos en un flujo por unidad de tiempo. Sobre la demanda de trabajo a corto plazo (la recta de demanda del modelo neoclásico \vertema{3.A.25}), la banda es el tramo de plantillas entre $\underline{L}$, donde $F_L(\underline{L})=w+r\phi_c$, y $\overline{L}$, donde $F_L(\overline{L})=w-r\phi_d$, alrededor del $L^*$ sin costes.
   \item Ante una perturbación que deja la plantilla dentro de la nueva banda, no hay ajuste. Si la deja fuera, la empresa ajusta \emph{de inmediato, pero solo hasta el borde}: contrata hasta $\underline{L}$ si la productividad sube, y despide hasta $\overline{L}$ si baja. «Más vale malo conocido que bueno por conocer»: dentro de la banda, la empresa prefiere la plantilla que tiene, aunque no sea la óptima sin costes, a pagar por cambiarla.
   \end{itemize}
 

@@ -462,8 +462,8 @@ Serie de vídeos de \emph{Everything Econ} sobre el modelo de ciclo real: el mod
   C_t^{-\theta}&=\beta\,\mathbb{E}_t\!\left[C_{t+1}^{-\theta}(1+r_{t+1})\right],\qquad \chi L_t^{\varphi}=C_t^{-\theta}w_t \label{eq:rbc-hogar}\\
   K_{t+1}&=(1-\delta)K_t+Y_t-C_t \label{eq:rbc-acumulacion}
   \end{align}
-  La ecuación de \autor{Euler} es la estocástica del \vertema{3.A.29}; la del trabajo, la condición intratemporal del \vertema{3.A.25}. Son 7 variables endógenas ($Y_t$, $C_t$, $I_t$, $K_{t+1}$, $L_t$, $w_t$, $r_t$), una exógena ($A_t$) y 8 parámetros ($\alpha$, $\beta$, $\delta$, $\theta$, $\chi$, $\varphi$, $\rho_A$ y $\sigma_\varepsilon$) (anexo~\ref{anexo:rbc}).\footnote{El modelo no tiene tendencia, como el del \vertema{3.A.6}. Con crecimiento, la tecnología es $A_t=A_0e^{g^At+\tilde A_t}$, un producto y no una suma, con $\tilde A_t=\rho_A\tilde A_{t-1}+\varepsilon^A_t$ y $g^A$ el crecimiento de la PTF; con \emph{Cobb-Douglas}, $g^A=(1-\alpha)\,g$, el progreso técnico aumentador del trabajo a la tasa $g$ del modelo de crecimiento \vertema{3.A.43}. Las variables se escriben entonces en desviaciones respecto de la senda de crecimiento equilibrado, y la ley de movimiento del capital por trabajador eficiente incorpora el crecimiento de la población y del progreso técnico.}
-\item \emph{Mecanismo} ante una perturbación tecnológica positiva y transitoria (gráfico~\ref{fig:irf-rbc}):
+  La ecuación de \autor{Euler} es la de la modelización dinámica, en versión estocástica \vertema{3.A.29}; la del trabajo, la condición intratemporal entre consumo y ocio \vertema{3.A.25}. Son 7 variables endógenas ($Y_t$, $C_t$, $I_t$, $K_{t+1}$, $L_t$, $w_t$, $r_t$), una exógena ($A_t$) y 8 parámetros ($\alpha$, $\beta$, $\delta$, $\theta$, $\chi$, $\varphi$, $\rho_A$ y $\sigma_\varepsilon$) (anexo~\ref{anexo:rbc}).\footnote{Como el de la nueva macroeconomía clásica, el modelo no tiene tendencia \vertema{3.A.6}. Con crecimiento, la tecnología es $A_t=A_0e^{g^At+\tilde A_t}$, un producto y no una suma, con $\tilde A_t=\rho_A\tilde A_{t-1}+\varepsilon^A_t$ y $g^A$ el crecimiento de la PTF; con \emph{Cobb-Douglas}, $g^A=(1-\alpha)\,g$, el progreso técnico aumentador del trabajo a la tasa $g$ del modelo de crecimiento \vertema{3.A.43}. Las variables se escriben entonces en desviaciones respecto de la senda de crecimiento equilibrado, y la ley de movimiento del capital por trabajador eficiente incorpora el crecimiento de la población y del progreso técnico.}
+\item \emph{Mecanismo} ante una perturbación tecnológica positiva y transitoria (gráfico~\ref{fig:irf-rbc}, el mismo que en otro tema \vertema{3.A.6}):
   \begin{itemize}
   \item sube la producción directamente, con los mismos factores;
   \item suben el salario y el rendimiento del capital: como la mejora es temporal, conviene trabajar más ahora (\emph{sustitución intertemporal}) y ahorrar parte de la renta extra para repartirla en el tiempo, de modo que la inversión sube mucho y el consumo poco;
@@ -476,7 +476,7 @@ Serie de vídeos de \emph{Everything Econ} sobre el modelo de ciclo real: el mod
 \centering
 \caption{Respuesta a una perturbación tecnológica de una desviación típica ($\varepsilon^A_0=\sigma_\varepsilon=0{,}007$) en el modelo de ciclo real}\label{fig:irf-rbc}
 \grafico[0.95\textwidth]{irf-rbc}
-\fuente{elaboración propia: simulación del modelo log-linealizado con $\alpha=1/3$, $\beta=0{,}99$, $\delta=0{,}025$, $\theta=1$, $\varphi=1$, $\sigma_\varepsilon=0{,}007$ y $\rho_A=0{,}95$ (líneas continuas) o $\rho_A=0$ (discontinuas), con los valores de \textcite{Prescott1986} y \textcite{HansenWright1992Labor} (gráfico del tema de la nueva macroeconomía clásica).}
+\fuente{elaboración propia: simulación del modelo log-linealizado con $\alpha=1/3$, $\beta=0{,}99$, $\delta=0{,}025$, $\theta=1$, $\varphi=1$, $\sigma_\varepsilon=0{,}007$ y $\rho_A=0{,}95$ (líneas continuas) o $\rho_A=0$ (discontinuas), con los valores de \textcite{Prescott1986} y \textcite{HansenWright1992Labor}.}
 \end{figure}
 
 \begin{table}[H]
@@ -503,7 +503,7 @@ Inversión & Sube mucho y vuelve a su nivel & Sube y se mantiene alta hasta que 
   En desviaciones respecto al estado estacionario, $\hat y_t\equiv\ln Y_t-\ln\overline Y$, la producción sigue
   \funcionclave[eq:mccallum]{\hat y_{t+1}=\alpha\,\hat y_t+\ln A_{t+1}}
   \begin{itemize}
-  \item con $\rho_A=0$, una perturbación de un solo periodo se desvanece poco a poco, $\hat y_{t+k}=\alpha^k$: con $\alpha\approx1/3$, 2 periodos después queda un 11~\% (gráfico~\ref{fig:persistencia-mccallum});
+  \item con $\rho_A=0$, una perturbación de un solo periodo se desvanece poco a poco, $\hat y_{t+k}=\alpha^k$: con $\alpha\approx1/3$, 2 periodos después queda un 11~\% (gráfico~\ref{fig:persistencia-mccallum}, el mismo que en otro tema \vertema{3.A.6});
   \item con $\rho_A>0$, $\hat y_{t+k}=(\rho_A^{k+1}-\alpha^{k+1})/(\rho_A-\alpha)$: la respuesta tiene forma de joroba (1,28 en el periodo siguiente con $\rho_A=0{,}95$);
   \item el precio de la solución cerrada: el consumo y la inversión son proporciones fijas de la producción, igual de volátiles que ella, y el empleo no se mueve.
   \end{itemize}
@@ -513,7 +513,7 @@ Inversión & Sube mucho y vuelve a su nivel & Sube y se mantiene alta hasta que 
 \centering
 \caption{Persistencia de una perturbación en el modelo de \autor{McCallum}}\label{fig:persistencia-mccallum}
 \grafico[0.6\textwidth]{persistencia-mccallum}
-\fuente{elaboración propia a partir de \textcite{McCallum1989Real}, con $\alpha=1/3$ (gráfico del tema de la nueva macroeconomía clásica).}
+\fuente{elaboración propia a partir de \textcite{McCallum1989Real}, con $\alpha=1/3$.}
 \end{figure}
 
 \subparagraph{iii) Implicaciones}
@@ -539,9 +539,9 @@ Inversión & Sube mucho y vuelve a su nivel & Sube y se mantiene alta hasta que 
 
 \begin{itemize}
 \item El método es la \concepto{calibración} \parencite{KydlandPrescott1982Time,Prescott1986}: dar a los parámetros los valores que salen de los estudios microeconómicos y de las medias de largo plazo, simular el modelo y comparar sus momentos (volatilidades y correlaciones del componente cíclico, con el filtro HP de \ref{sec:medir}) con los de los datos, en lugar de estimarlo y contrastarlo econométricamente.
-\item \textcite{HansenWright1992Labor} calibran la tecnología con $\rho_A=0{,}95$ y $\sigma_\varepsilon=0{,}007$, los valores de \textcite{Prescott1986} para el residuo de \autor{Solow}. El modelo reproduce unos 2 tercios de la volatilidad de la producción, un consumo más suave y una inversión más volátil que la producción (tabla~\ref{tab:calibracion}). \autor{Prescott} atribuía a la tecnología «más de la mitad» de las fluctuaciones de la posguerra, con una mejor estimación cercana al 75~\% \parencite{Prescott1986Response}.
+\item \textcite{HansenWright1992Labor} calibran la tecnología con $\rho_A=0{,}95$ y $\sigma_\varepsilon=0{,}007$, los valores de \textcite{Prescott1986} para el residuo de \autor{Solow}. El modelo reproduce unos 2 tercios de la volatilidad de la producción, un consumo más suave y una inversión más volátil que la producción (tabla~\ref{tab:calibracion}, la misma que en otro tema \vertema{3.A.6}). \autor{Prescott} atribuía a la tecnología «más de la mitad» de las fluctuaciones de la posguerra, con una mejor estimación cercana al 75~\% \parencite{Prescott1986Response}.
 \item Falla en el mercado de trabajo: las horas varían la mitad de lo observado y están casi perfectamente correlacionadas con la productividad, cuando en los datos esa correlación es ligeramente negativa; desde mediados de los 80 es claramente negativa, $-0{,}60$ en 1984-2019 \parencite{FRED2026CicloEEUU}.
-\item El residuo de \autor{Solow} sigue de cerca al ciclo, como sostenía \autor{Prescott}; corregido por la utilización del capital y del trabajo, la relación casi desaparece (gráfico~\ref{fig:residuo-solow}) \parencite{BasuFernaldKimball2006Are}.
+\item El residuo de \autor{Solow} sigue de cerca al ciclo, como sostenía \autor{Prescott}; corregido por la utilización del capital y del trabajo, la relación casi desaparece (gráfico~\ref{fig:residuo-solow}, el mismo que en otro tema \vertema{3.A.6}) \parencite{BasuFernaldKimball2006Are}.
 \end{itemize}
 
 \begin{table}[H]
@@ -560,14 +560,14 @@ Horas frente a productividad, $\sigma_L/\sigma_{Y/L}$ & \textcolor{tceemorado}{2
 Correlación de las horas con la productividad & \textcolor{tceemorado}{$-0{,}14$} & \textcolor{tceeverde}{0,93} & \textcolor{tceeazul}{$-0{,}60$}\\
 \bottomrule
 \end{tabular}
-\fuente{datos y modelo estándar de \textcite{HansenWright1992Labor} (1947T1-1991T3; horas de la encuesta de establecimientos), y cálculo propio para 1984T1-2019T4 con datos de FRED (sector empresarial no agrícola) \parencite{FRED2026CicloEEUU}. Componente cíclico del filtro de \autor{Hodrick} y \autor{Prescott} \parencite{HodrickPrescott1997}. Tabla del tema de la nueva macroeconomía clásica.}
+\fuente{datos y modelo estándar de \textcite{HansenWright1992Labor} (1947T1-1991T3; horas de la encuesta de establecimientos), y cálculo propio para 1984T1-2019T4 con datos de FRED (sector empresarial no agrícola) \parencite{FRED2026CicloEEUU}. Componente cíclico del filtro de \autor{Hodrick} y \autor{Prescott} \parencite{HodrickPrescott1997}.}
 \end{table}
 
 \begin{figure}[H]
 \centering
 \caption{El residuo de \autor{Solow} y el ciclo en Estados Unidos, 1947-2026}\label{fig:residuo-solow}
 \grafico[0.85\textwidth]{residuo-solow}
-\fuente{elaboración propia con la serie trimestral de productividad total de los factores de \textcite{Fernald2026TFP}; componente cíclico del filtro de \autor{Hodrick} y \autor{Prescott} (gráfico del tema de la nueva macroeconomía clásica).}
+\fuente{elaboración propia con la serie trimestral de productividad total de los factores de \textcite{Fernald2026TFP}; componente cíclico del filtro de \autor{Hodrick} y \autor{Prescott}.}
 \end{figure}
 
 \paragraph{e) Valoración}
@@ -641,21 +641,21 @@ Correlación de las horas con la productividad & \textcolor{tceemorado}{$-0{,}14
   \item la \emph{curva de \autor{Phillips} neokeynesiana} sale de la fijación de precios de \autor{Calvo}: la inflación es el valor actual de las brechas futuras, con pendiente $\kappa$, y $u_t$ recoge las perturbaciones de costes, que introducen \textcite{ClaridaGaliGertler1999Science};
   \item la \emph{regla de \autor{Taylor}} cierra el modelo: el banco central sube el tipo nominal con la inflación y la brecha, y $\varepsilon_t$ es la perturbación monetaria \parencite{Taylor1993}.\footnote{Los bancos centrales mueven los tipos poco a poco, y la regla se estima con \emph{suavización}: $i_t=\nu\,i_{t-1}+(1-\nu)(\rho+\phi_\pi\pi_t+\phi_x x_t)+\varepsilon_t$, con $0\le\nu<1$. El tipo pasado recoge esa inercia, que da credibilidad y deja actuar a las expectativas; la inflación entra con $\phi_\pi>1$ (\emph{principio de \autor{Taylor}}: el tipo real tiene que subir cuando sube la inflación, o el equilibrio no sería único), y la brecha con $\phi_x\ge0$, porque una brecha positiva anuncia más inflación \vertema{3.A.36}. \textcite{ClaridaGaliGertler2000Rules} estiman que la Reserva Federal no cumplía el principio antes de \autor{Volcker}.}
   \end{itemize}
-\item \emph{Mecanismo}: si el banco central sube el tipo nominal y los precios no se ajustan, sube el tipo real, el hogar consume menos, cae la brecha y con ella la inflación. Ante una perturbación de demanda, el tipo sube y frena a la vez la inflación y la brecha; ante una de costes, la inflación sube y la brecha cae (gráficos~\ref{fig:nek-xpi} y~\ref{fig:nek-esquema}).
+\item \emph{Mecanismo}: si el banco central sube el tipo nominal y los precios no se ajustan, sube el tipo real, el hogar consume menos, cae la brecha y con ella la inflación. Ante una perturbación de demanda, el tipo sube y frena a la vez la inflación y la brecha; ante una de costes, la inflación sube y la brecha cae (gráficos~\ref{fig:nek-xpi} y~\ref{fig:nek-esquema}, los mismos que en otro tema \vertema{3.A.7}).
 \end{itemize}
 
 \begin{figure}[H]
 \centering
 \caption{El modelo canónico en el plano $(x_t,\pi_t)$: perturbación de demanda y de costes}\label{fig:nek-xpi}
 \grafico[0.9\textwidth]{nek-xpi}
-\fuente{elaboración propia a partir de \textcite[caps.~3 y~5]{Gali2015Monetary} y \textcite{ClaridaGaliGertler1999Science} (gráfico del tema de la nueva economía keynesiana).}
+\fuente{elaboración propia a partir de \textcite[caps.~3 y~5]{Gali2015Monetary} y \textcite{ClaridaGaliGertler1999Science}.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \caption{Las 3 ecuaciones del modelo neokeynesiano}\label{fig:nek-esquema}
 \grafico[0.8\textwidth]{nek-esquema}
-\fuente{elaboración propia (gráfico del tema de la nueva economía keynesiana).}
+\fuente{elaboración propia.}
 \end{figure}
 
 \subparagraph{iii) Implicaciones}
@@ -964,7 +964,7 @@ Preguntas que puede hacer el tribunal: ¿cómo explican los modelos actuales la 
   \lim_{T\to\infty}\mathbb{E}_0\left[\beta^T\lambda_TK_{T+1}\right]=0.
   \end{equation*}
 \item \emph{La empresa} no tiene un problema intertemporal, porque alquila el capital cada periodo: maximiza $A_tK_t^{\alpha}L_t^{1-\alpha}-w_tL_t-(r_t+\delta)K_t$ y paga los productos marginales \eqref{eq:rbc-precios}.
-\item \emph{Equilibrio competitivo}: precios $\{w_t,r_t\}$ y asignaciones $\{C_t,I_t,L_t,K_{t+1},Y_t\}$ tales que hogares y empresas optimizan y los mercados de bienes, trabajo y capital se vacían (tabla~\ref{tab:equilibrio-rbc}).
+\item \emph{Equilibrio competitivo}: precios $\{w_t,r_t\}$ y asignaciones $\{C_t,I_t,L_t,K_{t+1},Y_t\}$ tales que hogares y empresas optimizan y los mercados de bienes, trabajo y capital se vacían (tabla~\ref{tab:equilibrio-rbc}, la misma que en otro tema \vertema{3.A.6}).
 \end{itemize}
 
 \begin{table}[H]
@@ -986,20 +986,20 @@ Preguntas que puede hacer el tribunal: ¿cómo explican los modelos actuales la 
 (9) & $\ln A_t=\rho_A\ln A_{t-1}+\varepsilon^A_t$ & perturbación tecnológica\\
 \bottomrule
 \end{tabular}
-\fuente{elaboración propia a partir de \textcite[cap.~5]{Romer2019Advanced} (tabla del tema de la nueva macroeconomía clásica).}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{Romer2019Advanced}.}
 \end{table}
 
 \begin{itemize}
 \item Son 7 variables endógenas, una exógena ($A_t$), 8 parámetros y una perturbación ($\varepsilon^A_t$). Hay 8 ecuaciones para 7 endógenas: una sobra, porque la restricción del hogar (8) es la demanda agregada (1) una vez que se sustituyen (3), (4), (5) y la homogeneidad de grado 1 de la producción.
 \item \emph{El original de \textcite{KydlandPrescott1982Time}} es más rico: la inversión tarda varios trimestres en convertirse en capital productivo (\emph{time to build}), el ocio pasado da utilidad y la perturbación tecnológica tiene un componente permanente y otro transitorio que los agentes no distinguen. El tiempo de construcción ayuda a la persistencia, porque los proyectos empezados siguen en marcha. No es la ley de movimiento del capital del modelo básico, \eqref{eq:rbc-acumulacion}, que es la estándar.
-\item \emph{Respuestas a una perturbación} de todas las variables, con persistencia y sin ella, en el gráfico~\ref{fig:irf-rbc-completo}.
+\item \emph{Respuestas a una perturbación} de todas las variables, con persistencia y sin ella, en el gráfico~\ref{fig:irf-rbc-completo}, el mismo que en otro tema \vertema{3.A.6}.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
 \caption{Respuestas de todas las variables a una perturbación tecnológica de una desviación típica ($\varepsilon^A_0=\sigma_\varepsilon=0{,}007$)}\label{fig:irf-rbc-completo}
 \grafico[0.95\textwidth]{irf-rbc-completo}
-\fuente{elaboración propia: simulación del modelo log-linealizado con la calibración del gráfico~\ref{fig:irf-rbc} (gráfico del tema de la nueva macroeconomía clásica).}
+\fuente{elaboración propia: simulación del modelo log-linealizado con la calibración del gráfico~\ref{fig:irf-rbc}.}
 \end{figure}
 
 \subsection{La solución cerrada de \autor{McCallum}}

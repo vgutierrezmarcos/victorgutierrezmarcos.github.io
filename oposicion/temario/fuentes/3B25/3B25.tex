@@ -1139,7 +1139,7 @@ Funcionan como un prestamista de última instancia internacional en dólares, m�
   \item Con $dz^{\mathbb{Q}}=dz+\frac{\mu-r}{\sigma}\,dt$, que es un proceso de Wiener con la medida $\mathbb{Q}$, el precio sigue $dS=rS\,dt+\sigma S\,dz^{\mathbb{Q}}$.
   \item El cociente $(\mu-r)/\sigma$ es el \emph{precio de mercado del riesgo}, la ratio de \autor{Sharpe} del subyacente \vertema{3.B.23}: cambiar de medida es quitar la prima de riesgo de la tendencia. Por eso $\sigma$ entra en la fórmula y $\mu$ no.
   \end{itemize}
-\item Con $\mathbb{Q}$, $S_T=S_0\exp\big[(r-\sigma^2/2)T+\sigma\sqrt{T}\,\varepsilon\big]$, con $\varepsilon\sim N(0,1)$ y densidad $\phi(\cdot)$ (aquí, $\varepsilon$ es una normal estándar, no la perturbación del modelo de índice del \vertema{3.B.23}). Entonces:
+\item Con $\mathbb{Q}$, $S_T=S_0\exp\big[(r-\sigma^2/2)T+\sigma\sqrt{T}\,\varepsilon\big]$, con $\varepsilon\sim N(0,1)$ y densidad $\phi(\cdot)$ (aquí, $\varepsilon$ es una normal estándar, no la perturbación del modelo de índice de la renta variable \vertema{3.B.23}). Entonces:
   \begin{itemize}
   \item $S_T>K\iff\varepsilon>-d_2$, así que $\mathbb{Q}(S_T>K)=N(d_2)$;
   \item $\mathbb{E}^{\mathbb{Q}}\big[S_T\mathbf{1}_{\{S_T>K\}}\big]=S_0e^{rT}\int_{-d_2}^{\infty}e^{-\sigma^2T/2+\sigma\sqrt{T}\varepsilon}\phi(\varepsilon)\,d\varepsilon=S_0e^{rT}\int_{-d_2}^{\infty}\phi(\varepsilon-\sigma\sqrt{T})\,d\varepsilon=S_0e^{rT}N(d_1)$, completando el cuadrado y con $d_1=d_2+\sigma\sqrt{T}$.

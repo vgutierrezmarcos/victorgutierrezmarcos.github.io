@@ -760,11 +760,11 @@ Fuerte & histórica, pública y privada & \textcolor{tceerojo}{No} & \textcolor{
   \end{itemize}
 \item \emph{Preferencias no estándar}:
   \begin{itemize}
-  \item la \emph{aversión a las pérdidas} de la teoría de las perspectivas, que explica los enigmas de la tabla~\ref{tab:enigmas};
+  \item la \emph{aversión a las pérdidas} de la teoría de las perspectivas \vertema{3.A.10}, que explica los enigmas de la tabla~\ref{tab:enigmas};
   \item el \concepto{sesgo por el presente}: el descuento de la teoría estándar es \emph{exponencial}, el único que es dinámicamente consistente, mientras que las personas descuentan mucho el futuro inmediato y poco el lejano, con un descuento \emph{cuasihiperbólico} \parencite{Laibson1997Golden} \vertema{3.A.1}. En las finanzas personales, lleva a ahorrar menos de lo planeado para la jubilación y a buscar compromisos que lo eviten.
   \end{itemize}
 \item \emph{Decisiones no estándar}: las \concepto{cuentas mentales} \parencite{Thaler1985Mental,Thaler1999Mental}. Aunque el dinero es fungible, se reparte en cuentas que se tratan de forma distinta: se es prudente con la cuenta de los estudios de los hijos y arriesgado con la de inversión. Y cada riesgo se evalúa por separado, sin tener en cuenta las covarianzas con el resto de la cartera, que son justo lo que importa en \autor{Markowitz} y en el CAPM \parencite{BarberisHuang2001}.
-\item \emph{Los enigmas}: la teoría de las perspectivas explica 4 regularidades que la teoría financiera tradicional explica mal (tabla~\ref{tab:enigmas}). La primera es el enigma de la prima de riesgo del C-CAPM (\ref{sec:capm}): para \textcite{BenartziThaler1995Myopic}, un inversor que revisa su cartera muy a menudo, y al que las pérdidas duelen el doble que las ganancias, ve las acciones muy arriesgadas y exige por ellas una prima alta; la exigencia baja cuanto más largo es el periodo con el que evalúa la cartera, como confirman los experimentos.
+\item \emph{Los enigmas}: la teoría de las perspectivas explica 4 regularidades que la teoría financiera tradicional explica mal (tabla~\ref{tab:enigmas}, que recoge también el anexo de finanzas conductuales de otro tema \vertema{3.A.1}). La primera es el enigma de la prima de riesgo del C-CAPM (\ref{sec:capm}): para \textcite{BenartziThaler1995Myopic}, un inversor que revisa su cartera muy a menudo, y al que las pérdidas duelen el doble que las ganancias, ve las acciones muy arriesgadas y exige por ellas una prima alta; la exigencia baja cuanto más largo es el periodo con el que evalúa la cartera, como confirman los experimentos.
 \end{itemize}
 \begin{table}[H]
 \centering
@@ -783,7 +783,7 @@ Efecto disposición & Se venden pronto las acciones que ganan y se retienen las 
 Dividendos & Las empresas de Estados Unidos los pagaban aunque, hasta 2003, tributaban más que las plusvalías \parencite{IRS2026Topic404} & 2 ganancias separadas se valoran más que una sola de la misma cuantía, y un dividendo hace menos dolorosa una pérdida \parencite{ShefrinStatman1984}\\
 \bottomrule
 \end{tabular}
-\fuente{elaboración propia. El desarrollo de la función de valor y los ejemplos numéricos, en \vertema{3.A.10}; los 4 enigmas, en el anexo de finanzas conductuales de \vertema{3.A.1}. En fondo salvia, el que se canta.}
+\fuente{elaboración propia. En fondo salvia, el que se canta.}
 \end{table}
 
 \begin{notaopositor}
@@ -833,13 +833,13 @@ En el cante (\tiempo{8}). La apertura, de palabra (\tiempo{0,5}). El análisis f
   \begin{equation}\label{eq:per-teorico}
   \mathrm{PER}=\frac{P_0}{\mathrm{BPA}_1}=\frac{1-b}{r_E-g}
   \end{equation}
-  Es mayor cuanto más se espera que crezca la empresa y menor cuanto más arriesgada es. Un PER de mercado por debajo del teórico apunta a una acción infravalorada (la \emph{estrategia de valor}), y al revés. La política de dividendos que hay detrás, en \vertema{3.B.3}.
+  Es mayor cuanto más se espera que crezca la empresa y menor cuanto más arriesgada es. Un PER de mercado por debajo del teórico apunta a una acción infravalorada (la \emph{estrategia de valor}), y al revés. La política de dividendos que hay detrás se estudia aparte \vertema{3.B.3}.
 \item \emph{Múltiplos}: se calcula una ratio entre el precio y una magnitud contable en empresas comparables y se aplica a la que se valora; después se compara el múltiplo de la empresa con el teórico, que depende del crecimiento esperado de los beneficios y del riesgo. Es rápido y usa precios de mercado, pero hereda los errores de valoración de las comparables \parencite{BadenesSantos1999Multiplos}. Hay 2 familias \parencite{Vernimmen2017Corporate}:
   \begin{itemize}
   \item \emph{directos}, que valoran la acción: el principal es el \concepto{PER}, precio por acción entre beneficio por acción, lo que el mercado paga por cada euro de beneficio.\footnote{Un PER alto no significa que la acción esté cara: puede que el mercado espere un fuerte crecimiento de los beneficios, y solo habría que vender si la expectativa propia es menor. Un PER bajo tampoco significa que esté barata. El PER se interpreta también como los años que tardaría en recuperarse la inversión si el beneficio no cambiara. Sus inconvenientes: no sirve con pérdidas y relaciona un precio, que mira al futuro, con un beneficio contable del pasado, por lo que se usa el beneficio previsto.} Al incluir los gastos financieros, recoge la estructura financiera de la empresa;
   \item \emph{indirectos}, que valoran todo el negocio y restan después la deuda neta: el \concepto{EV/EBIT}, el valor de la empresa (\emph{enterprise value}, $\mathrm{EV}$, valor de mercado de los fondos propios más la deuda neta) entre el resultado de explotación.\footnote{El EBIT es el resultado de explotación, antes del resultado financiero y de los impuestos \vertema{3.B.1}. Si se comparan empresas con regímenes fiscales distintos, es mejor usar el resultado de explotación después de impuestos.} No depende del endeudamiento.
   \end{itemize}
-  Si las comparables tienen distinto apalancamiento, el PER deja de ser comparable y conviene el EV/EBIT; con un apalancamiento parecido, el PER sirve. Los demás múltiplos y sus ventajas e inconvenientes, en \vertema{3.B.4}.
+  Si las comparables tienen distinto apalancamiento, el PER deja de ser comparable y conviene el EV/EBIT; con un apalancamiento parecido, el PER sirve. Los demás múltiplos y sus ventajas e inconvenientes se estudian aparte \vertema{3.B.4}.
 \item \emph{El PER ajustado al ciclo} (CAPE), de \autor{Campbell} y \autor{Shiller}, divide el precio entre la media de los beneficios reales de los últimos 10 años, para que un año excepcional del ciclo no distorsione la ratio \parencite{CampbellShiller1988}. Valora el mercado en su conjunto, más que una acción:
   \begin{itemize}
   \item en octubre de 2026, el CAPE del S\&P~500 estaba en 40,7, más del doble de su media desde 1881 (17,8) y cerca del máximo de diciembre de 1999 (44,2) \parencite{Shiller2026Data}. Un CAPE alto anuncia rentabilidades bajas a 10 años vista, pero no dice cuándo corregirá el mercado \parencite{CampbellShiller1998};
