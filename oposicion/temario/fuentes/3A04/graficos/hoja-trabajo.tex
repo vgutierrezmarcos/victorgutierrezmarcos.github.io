@@ -1,0 +1,113 @@
+% Hoja de esquema 1: el mercado de trabajo y la oferta agregada, neoclásicos
+% (A. C. Pigou) frente a Keynes. Recrea la hoja a mano del tema antiguo
+% (pág. 17/54): en cada columna, el gráfico de 3 cuadrantes (trabajo arriba a
+% la derecha; función de producción abajo a la derecha, con Y hacia abajo;
+% oferta agregada abajo a la izquierda, con P hacia la izquierda), los
+% supuestos, el mecanismo y la conclusión. En azul y negrita, los conceptos
+% que introduce Keynes (como en la tabla de supuestos del tema).
+% Curvas (las mismas en las 2 columnas):
+%   demanda de trabajo  0,3 + 2,6 e^{-L/2}   (con P_1 = 0,75 P_0 en Keynes)
+%   oferta de trabajo   0,3 + 0,55 L
+%   producción          Y = 1,6 sqrt(L)
+%   equilibrio: L_0 = 1,863, W_0 = 1,324, Y_0 = 2,184; con P_1: L_1 = 1,146, Y_1 = 1,713
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\sube}{\mathord{\uparrow}}\newcommand{\baja}{\mathord{\downarrow}}
+\newcommand{\clave}[1]{\textcolor{tceeazul}{\textbf{#1}}}
+\begin{document}
+\begin{tikzpicture}[tcee, font=\footnotesize,
+    declare function={ld(\l)=0.3+2.6*exp(-0.5*\l); ldb(\l)=0.75*(0.3+2.6*exp(-0.5*\l));
+      ls(\l)=0.3+0.55*\l; pf(\l)=1.6*sqrt(\l);},
+    texto/.style={anchor=north west, align=left, text width=7.7cm, inner sep=0pt,
+      execute at begin node=\hyphenpenalty 10000\relax},
+    rotulo/.style={font=\small\bfseries\itshape}]
+  % Marco fijo
+  \path (-0.2,-9.6) rectangle (16.6,7.9);
+  % ======================= 1: títulos y ejes =======================
+  \capa{1}{\node[font=\large\bfseries, text=tceemorado] at (8.2,7.5) {El mercado de trabajo y la oferta agregada};}
+  \capa{1}{\draw[tceedorado, thick] (0,7.05) -- (16.4,7.05);}
+  \capa{1}{\draw[tceedorado, thin] (8.2,6.8) -- (8.2,-6.3);}
+  \capa{1}{\node[font=\normalsize\bfseries] at (4.0,6.6) {Neoclásicos (\textsc{A. C. Pigou})};}
+  \capa{1}{\node[font=\normalsize\bfseries, text=tceeazul] at (12.4,6.6) {\textsc{Keynes} (1936)};}
+  \foreach \dx/\ev in {0/{W/P}, 8.4/W}{
+    \begin{scope}[shift={(\dx+4.1,3.2)}]
+      \capa{1}{\draw[eje] (-3.4,0) -- (3.6,0) node[right] {$L$};
+        \draw[eje] (0,-3.0) -- (0,2.9) node[left] {$\ev$};
+        \node[left] at (-3.4,0) {$P$};
+        \node[below left] at (0,-3.0) {$Y$};
+        \draw[eje] (0,0) -- (-3.4,0);
+        \draw[eje] (0,0) -- (0,-3.0);}
+    \end{scope}}
+  % ======================= 2: neoclásicos, gráfico =======================
+  \begin{scope}[shift={(4.1,3.2)}]
+    \capa{2}{\draw[curva1] plot[domain=0.15:3.3, samples=40] (\x,{ld(\x)}) node[right, etiqueta, text=tceemorado] {$L^D$: $\mathrm{PMg}_L=\frac{W}{P}$};}
+    \capa{2}{\draw[curva2] plot[domain=0:3.3] (\x,{ls(\x)}) node[right, etiqueta, text=tceeazul] {$L^S\!\left(\frac{W}{P}\right)$};}
+    \capa{2}{\node[punto] at (1.863,1.324) {};
+      \draw[guia] (0,1.324) node[left, text=black] {$w^c$} -- (1.863,1.324) -- (1.863,0) node[above right=-1pt and -1pt, text=black] {$L^c$};}
+    \capa{2}{\draw[curva3] plot[domain=0:3.3, samples=40] (\x,{-pf(\x)}) node[below, etiqueta, text=tceeverde] {$Y=F(L)$};}
+    \capa{2}{\draw[guia] (1.863,0) -- (1.863,-2.184) -- (-3.0,-2.184);
+      \node[etiqueta, anchor=north east] at (0,-2.184) {$Y_F$};}
+    \capa{2}{\draw[curva4] (-0.35,-2.184) -- (-3.1,-2.184) node[above, etiqueta, text=tceedorado] {OA};
+      \foreach \p/\n in {-1.2/0,-2.4/1}{\draw[guia] (\p,0) node[above, text=black] {$P_\n$} -- (\p,-2.184); \node[punto] at (\p,-2.184) {};}
+      \node[etiqueta, text=tceedorado, align=center] at (-1.8,-2.75) {OA vertical};}
+  \end{scope}
+  % ======================= 3: neoclásicos, texto =======================
+  \capa{3}{\node[texto] at (0.15,-0.25) {%
+    {\small\bfseries\itshape Supuestos}\\[1pt]
+    $\bullet$ Competencia perfecta e información perfecta.\\
+    $\bullet$ Precios y salarios perfectamente flexibles.\\
+    $\bullet$ Demanda de trabajo: la empresa maximiza el beneficio hasta $\mathrm{PMg}_L(L)=W/P$.\\
+    $\bullet$ Oferta de trabajo: el hogar elige entre consumo y ocio según el salario \emph{real}, $L^S(W/P)$: sin ilusión monetaria.\\[4pt]
+    {\small\bfseries\itshape Mecanismo}\\[1pt]
+    $\sube P\Rightarrow\sube W$ en la misma proporción $\Rightarrow W/P$ y $L^c$ no cambian $\Rightarrow Y=Y_F$.\\[4pt]
+    {\small\bfseries\itshape Conclusión}\\[1pt]
+    $\bullet$ Las variables reales se fijan sin el dinero ni los precios: dicotomía clásica.\\
+    $\bullet$ La oferta agregada es \textbf{vertical} en $Y_F$.\\
+    $\bullet$ Solo hay paro friccional y voluntario; si persiste, la receta es bajar el salario.};}
+  % ======================= 4: Keynes, gráfico =======================
+  \begin{scope}[shift={(12.5,3.2)}]
+    \capa{4}{\draw[curva2] plot[domain=0:3.3] (\x,{ls(\x)}) node[right, etiqueta, text=tceeazul] {$L^S(W)$};}
+    \capa{4}{\draw[curva1] plot[domain=0.15:3.3, samples=40] (\x,{ld(\x)}) node[right, etiqueta, text=tceemorado] {$P_0\cdot\mathrm{PMg}_L$};}
+    \capa{4}{\node[punto] at (1.863,1.324) {};
+      \draw[guia] (1.863,1.324) -- (1.863,0) node[above right=-1pt and -1pt, text=black] {$L_0$};}
+    \capa{4}{\draw[curva4, dashed] (0,1.324) node[left, text=tceedorado] {$W_0$} -- (3.3,1.324);}
+    \capa{4}{\draw[curvanueva, desplazada] plot[domain=0.15:3.3, samples=40] (\x,{ldb(\x)}) node[below right=-3pt and 0pt, etiqueta, text=tceerojo] {$P_1\cdot\mathrm{PMg}_L$};
+      \node[punto] at (1.146,1.324) {};
+      \draw[guia] (1.146,1.324) -- (1.146,0) node[above left=-1pt and -2pt, text=black] {$L_1$};}
+    \capa{4}{\draw[decorate, decoration={brace, amplitude=3pt, mirror}, thick, tceerojo] (1.146,-0.12) -- (1.863,-0.12)
+      node[midway, below=3pt, etiqueta, text=tceerojo, align=center, font=\scriptsize] {paro\\involuntario};}
+    \capa{4}{\draw[curva3] plot[domain=0:3.3, samples=40] (\x,{-pf(\x)}) node[below, etiqueta, text=tceeverde] {$Y=F(L)$};}
+    \capa{4}{\draw[guia] (1.863,0) -- (1.863,-2.184) -- (-2.4,-2.184);
+      \draw[guia] (1.146,0) -- (1.146,-1.713) -- (-1.4,-1.713);
+      \node[etiqueta, anchor=south east] at (0,-2.184) {$Y_0$};
+      \node[etiqueta, anchor=south east] at (0,-1.713) {$Y_1$};}
+    \capa{4}{\draw[guia] (-2.4,0) node[above, text=black] {$P_0$} -- (-2.4,-2.184);
+      \draw[guia] (-1.4,0) node[above, text=black] {$P_1$} -- (-1.4,-1.713);
+      \draw[curva4] (-0.6,{-1.713+0.8*0.47}) -- (-3.1,{-1.713-1.7*0.47});
+      \node[etiqueta, text=tceedorado, anchor=south] at (-0.6,{-1.713+0.8*0.47}) {OA};
+      \node[punto] at (-2.4,-2.184) {}; \node[punto] at (-1.4,-1.713) {};
+      \node[etiqueta, align=center, anchor=north] at (-1.9,-2.7) {\clave{OA con pendiente}\\\clave{positiva}};}
+  \end{scope}
+  % ======================= 5: Keynes, texto =======================
+  \capa{5}{\node[texto] at (8.55,-0.25) {%
+    {\small\bfseries\itshape Supuestos}\\[1pt]
+    $\bullet$ Acepta la demanda de trabajo neoclásica (el 1.\textsuperscript{er} postulado): $W=P\cdot\mathrm{PMg}_L$.\\
+    $\bullet$ Rechaza el 2.\textsuperscript{o} postulado: se negocia el \clave{salario nominal}, $W$, y no el real; la oferta es $L^S(W)$.\\
+    $\bullet$ Los trabajadores defienden su salario relativo: \clave{$W$ rígido a la baja}, $W=W_0$.\\[4pt]
+    {\small\bfseries\itshape Mecanismo}\\[1pt]
+    $\baja\mathrm{DA}\Rightarrow\baja P$ con $W_0$ fijo $\Rightarrow\sube W/P\Rightarrow\baja L$ (\clave{paro involuntario}) $\Rightarrow\baja Y$.\\[4pt]
+    {\small\bfseries\itshape Conclusión}\\[1pt]
+    $\bullet$ El empleo lo fija la \clave{demanda efectiva}: el mercado de trabajo recibe lo que deciden los de bienes y dinero.\\
+    $\bullet$ \clave{OA con pendiente positiva} mientras haya recursos ociosos; vertical solo en $Y_F$.\\
+    $\bullet$ Bajar $W$ no cura el paro (cap.~19): hace falta más demanda.};}
+  % ======================= 6: lo que cambia =======================
+  \capa{6}{\node[draw=tceedorado, fill=tceesalvia, rounded corners=3pt, line width=0.8pt,
+      anchor=north, text width=15.9cm, inner sep=6pt, align=left,
+      execute at begin node=\hyphenpenalty 10000\relax] at (8.2,-6.55) {%
+    {\small\bfseries ¿Por qué la oferta agregada tiene pendiente positiva y no es vertical?}\\[2pt]
+    $\bullet$ \emph{Neoclásicos}: oferta de trabajo en salario \textbf{real} $+$ salarios flexibles $\Rightarrow$ $W$ sigue a $P$ $\Rightarrow$ el salario real y el empleo no dependen de $P$ $\Rightarrow$ OA vertical.\\
+    $\bullet$ \emph{\textsc{Keynes}}: oferta de trabajo en salario \clave{nominal} $+$ \clave{$W_0$ rígido a la baja} $\Rightarrow$ $W$ no sigue a $P$ $\Rightarrow$ cada nivel de precios da un salario real y un empleo distintos $\Rightarrow$ \clave{OA creciente}.\\
+    $\bullet$ \emph{Implicación}: la demanda agregada mueve la producción y el empleo, y no solo los precios; contra el paro involuntario, política de demanda.};}
+\end{tikzpicture}
+\end{document}

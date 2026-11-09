@@ -1,0 +1,96 @@
+% Hoja de esquema 2: el mercado de bienes, neoclásicos frente a Keynes.
+% Mismo formato que hoja-trabajo: en cada columna, el gráfico, los supuestos,
+% el mecanismo y la conclusión; en azul y negrita, los conceptos de Keynes.
+% Neoclásicos: fondos prestables (ahorro r = 0,4 + 0,75 x; demanda
+%   I + G - T: r = 3,6 - 0,75 x -> (2,13; 2,0); con más G: r = 4,8 - 0,75 x
+%   -> (2,93; 2,6)).
+% Keynes: cruz keynesiana (DA_0 = 1,2 + 0,5 Y -> Y* = 2,4; DA_1 = 1,7 + 0,5 Y
+%   -> Y* = 3,4; Y_F = 4,4).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\sube}{\mathord{\uparrow}}\newcommand{\baja}{\mathord{\downarrow}}
+\newcommand{\clave}[1]{\textcolor{tceeazul}{\textbf{#1}}}
+\begin{document}
+\begin{tikzpicture}[tcee, font=\footnotesize,
+    texto/.style={anchor=north west, align=left, text width=7.7cm, inner sep=0pt,
+      execute at begin node=\hyphenpenalty 10000\relax}]
+  % Marco fijo
+  \path (-0.2,-10.1) rectangle (16.6,7.9);
+  % ======================= 1: títulos y ejes =======================
+  \capa{1}{\node[font=\large\bfseries, text=tceemorado] at (8.2,7.5) {El mercado de bienes};}
+  \capa{1}{\draw[tceedorado, thick] (0,7.05) -- (16.4,7.05);}
+  \capa{1}{\draw[tceedorado, thin] (8.2,6.8) -- (8.2,-6.8);}
+  \capa{1}{\node[font=\normalsize\bfseries] at (4.0,6.6) {Neoclásicos: fondos prestables};}
+  \capa{1}{\node[font=\normalsize\bfseries, text=tceeazul] at (12.4,6.6) {\textsc{Keynes}: la demanda efectiva};}
+  \begin{scope}[shift={(1.4,0.9)}]
+    \capa{1}{\ejes{$S,\ I+G-T$}{$r$}{5.4}{4.9}}
+  \end{scope}
+  \begin{scope}[shift={(9.8,0.9)}]
+    \capa{1}{\ejes{$Y$}{$\mathit{DA}$}{5.6}{4.9}}
+  \end{scope}
+  % ======================= 2: neoclásicos, gráfico =======================
+  \begin{scope}[shift={(1.4,0.9)}]
+    \capa{2}{\draw[curva2] (0.2,{0.4+0.15}) -- (4.6,{0.4+0.75*4.6}) node[right, etiqueta, text=tceeazul] {$S(r)$};}
+    \capa{2}{\draw[curva1] (0.4,{3.6-0.3}) node[above, etiqueta, text=tceemorado] {$I(r)+G_0-T$} -- (4.4,{3.6-0.75*4.4});}
+    \capa{2}{\node[punto] at (2.133,2.0) {};
+      \draw[guia] (0,2.0) node[left, text=black] {$r^n_0$} -| (2.133,0);}
+    \capa{2}{\draw[curvanueva, desplazada] (2.2,{4.8-0.75*2.2}) node[above right=0pt and -6pt, etiqueta, text=tceerojo] {$I(r)+G_1-T$} -- (5.2,{4.8-0.75*5.2});
+      \node[punto] at (2.933,2.6) {};
+      \draw[guia] (0,2.6) node[left, text=black] {$r^n_1$} -- (2.933,2.6);}
+    \capa{2}{\draw[flecha] (2.133,2.0) ++(0.15,-0.55) -- ++(1.6,0) node[right, etiqueta, text=tceerojo, font=\scriptsize] {$\Delta G$};
+      \node[etiqueta, text=tceerojo, align=left, font=\scriptsize, anchor=west] at (0.15,4.55) {$\sube G\Rightarrow\sube r$: expulsión total};}
+  \end{scope}
+  % ======================= 3: neoclásicos, texto =======================
+  \capa{3}{\node[texto] at (0.15,-0.25) {%
+    {\small\bfseries\itshape Supuestos}\\[1pt]
+    $\bullet$ La producción está dada en $Y_F$: la fija el mercado de trabajo.\\
+    $\bullet$ El ahorro sube con el tipo de interés \emph{real}: es el premio por renunciar al consumo presente.\\
+    $\bullet$ La inversión baja con él: se invierte hasta que la productividad marginal del capital iguala $r$.\\
+    $\bullet$ El tipo de interés real es flexible.\\[4pt]
+    {\small\bfseries\itshape Mecanismo}\\[1pt]
+    $S(r)=I(r)+G-T\Rightarrow r^n$, el tipo natural de \textsc{Wicksell}.\\
+    $\sube G\Rightarrow\sube r\Rightarrow\baja C$ y $\baja I$ en la misma cuantía.\\[4pt]
+    {\small\bfseries\itshape Conclusión}\\[1pt]
+    $\bullet$ Se cumple la ley de \textsc{Say}: todo lo que se ahorra se invierte.\\
+    $\bullet$ La política fiscal cambia la composición de la demanda, no su nivel: \textbf{expulsión total}.\\
+    $\bullet$ Receta: presupuesto equilibrado.};}
+  % ======================= 4: Keynes, gráfico =======================
+  \begin{scope}[shift={(9.8,0.9)}]
+    \capa{4}{\draw[thick, black] (0,0) -- (4.8,4.8) node[above, etiqueta] {$Y=\mathit{DA}$};}
+    \capa{4}{\draw[curva1] (0,1.2) -- (5.2,{1.2+0.5*5.2}) node[right, etiqueta, text=tceemorado] {$\mathit{DA}_0$};
+      \node[punto] at (2.4,2.4) {};
+      \draw[guia] (2.4,2.4) -- (2.4,0) node[below, text=black] {$Y^*_0$};}
+    \capa{4}{\draw[curvanueva, desplazada] (0,1.7) -- (5.2,{1.7+0.5*5.2}) node[right, etiqueta, text=tceerojo] {$\mathit{DA}_1$};
+      \draw[flecha] (0.4,1.42) -- (0.4,1.88) node[below right=-2pt and 1pt, etiqueta, text=tceerojo, font=\scriptsize] {$\Delta G$};
+      \node[punto] at (3.4,3.4) {};
+      \draw[guia] (3.4,3.4) -- (3.4,0) node[below, text=black] {$Y^*_1$};}
+    \capa{4}{\draw[curva4, dashed] (4.4,0) node[below, text=tceedorado] {$Y_F$} -- (4.4,4.6);
+      \draw[decorate, decoration={brace, amplitude=3pt, mirror}, thick, tceerojo] (2.4,-0.5) -- (3.4,-0.5)
+        node[midway, below=3pt, etiqueta, text=tceerojo, font=\scriptsize] {\clave{multiplicador}: $\frac{\Delta G}{1-c(1-t)}$};
+}
+  \end{scope}
+  % ======================= 5: Keynes, texto =======================
+  \capa{5}{\node[texto] at (8.55,-0.25) {%
+    {\small\bfseries\itshape Supuestos}\\[1pt]
+    $\bullet$ Corto plazo y recursos ociosos: las empresas producen lo que se les demanda.\\
+    $\bullet$ \clave{Ley psicológica fundamental}: $C=\overline{C}+c\,Y^d$, con $0<c<1$, la \clave{propensión marginal a consumir}.\\
+    $\bullet$ La inversión depende de la \clave{eficiencia marginal del capital} frente al tipo de interés, que viene del dinero; con \clave{incertidumbre} y \clave{\emph{animal spirits}}, es inestable.\\[4pt]
+    {\small\bfseries\itshape Mecanismo}\\[1pt]
+    $Y=\mathit{DA}\Rightarrow Y^*$, el punto de \clave{demanda efectiva}.\\
+    $\sube G\Rightarrow\Delta Y^*=\frac{\Delta G}{1-c(1-t)}$: el \clave{multiplicador}.\\
+    La renta se mueve hasta que el ahorro iguala la inversión.\\[4pt]
+    {\small\bfseries\itshape Conclusión}\\[1pt]
+    $\bullet$ La ley de \textsc{Say} no se cumple: $Y^*$ puede quedarse por debajo de $Y_F$.\\
+    $\bullet$ \clave{Paradoja del ahorro}: si todos ahorran más, cae la renta y no sube el ahorro total.\\
+    $\bullet$ Con paro, la política fiscal es eficaz y no expulsa inversión.};}
+  % ======================= 6: lo que cambia =======================
+  \capa{6}{\node[draw=tceedorado, fill=tceesalvia, rounded corners=3pt, line width=0.8pt,
+      anchor=north, text width=15.9cm, inner sep=6pt, align=left,
+      execute at begin node=\hyphenpenalty 10000\relax] at (8.2,-7.05) {%
+    {\small\bfseries ¿Qué iguala el ahorro y la inversión?}\\[2pt]
+    $\bullet$ \emph{Neoclásicos}: el \textbf{tipo de interés real}, con la producción fija en $Y_F$; el ahorro manda y la inversión se adapta.\\
+    $\bullet$ \emph{\textsc{Keynes}}: la \clave{renta}; la inversión manda y el ahorro se adapta, porque depende de la renta y no del tipo de interés.\\
+    $\bullet$ \emph{Hacia la demanda agregada}: la cruz da la producción para cada tipo de interés; el tipo lo fija el mercado de dinero (hoja siguiente). Con el tipo variable, la misma ecuación es la IS de la síntesis.};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,59 @@
+% Clower (1965) y Barro y Grossman (1971): el paro keynesiano como equilibrio con
+% racionamiento. Mismo formato que patinkin-desequilibrio (figuras 3.1 y 3.2 de
+% De Vroey, 2016), para ver qué cambia: con P y W fijos, el punto K ya no es
+% un tránsito, sino un equilibrio en el que nada empuja a la economía.
+% Panel a, trabajo:  L^S: w = 0,5 + 0,6 L;  L^D nocional: w = 4 - 0,7 L -> A = (2,692; 2,115).
+%   Demanda efectiva de trabajo: F^{-1}(Y_1) = 1,15 (vertical hasta la nocional, en w = 3,195).
+% Panel b, bienes: E = Y; oferta nocional en Y_0 = 3,6; demanda nocional E^noc = E_0 de
+%   patinkin-desequilibrio (corta en B); demanda efectiva E^ef = 0,8 + 0,6 Y -> Y_1 = 2;
+%   con más gasto autónomo, E^ef' = 1,2 + 0,6 Y -> Y_2 = 3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={e0(\y)=3.6+0.35*(\y-3.6)-0.03*(\y-3.6)^2;}]
+  \path (-0.9,-1.4) rectangle (14.9,5.6);
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{5.2}{4.9}}
+  \capa{1}{\node[etiqueta, font=\small\itshape, anchor=south] at (2.6,5.15) {a) Mercado de trabajo};}
+  \begin{scope}[xshift=7.6cm]
+    \capa{1}{\ejes{$Y$}{$E$}{5.8}{4.9}}
+    \capa{1}{\node[etiqueta, font=\small\itshape, anchor=south] at (2.9,5.15) {b) Mercado de bienes};}
+  \end{scope}
+  % 2: el trabajo nocional (walrasiano): A
+  \capa{2}{\draw[curva1] (0.3,{4-0.7*0.3}) -- (5.0,{4-0.7*5.0}) node[right, etiqueta, text=tceemorado] {$L^D$ nocional};}
+  \capa{2}{\draw[curva2] (0,0.5) -- (5.0,3.5) node[right, etiqueta, text=tceeazul] {$L^S$};}
+  \capa{2}{\node[punto] at (2.692,2.115) {};
+    \node[etiqueta, above right] at (2.692,2.115) {$A$};
+    \draw[guia] (0,2.115) node[left, text=black] {$w_0$} -| (2.692,0) node[below, text=black] {$N_0$};}
+  % 3: los bienes, nocionales: B
+  \begin{scope}[xshift=7.6cm]
+    \capa{3}{\draw[thick, black] (0,0) -- (4.7,4.7) node[above, etiqueta] {$E=Y$};}
+    \capa{3}{\draw[curva4, dashed] (3.6,0) node[below, text=black] {$Y_0$} -- (3.6,4.9) node[anchor=east, etiqueta, text=tceedorado] at (3.55,4.75) {oferta nocional};}
+    \capa{3}{\draw[curva1, dashed] plot[domain=0.6:5.6, samples=40] (\x,{e0(\x)}) node[right, etiqueta, text=tceemorado] {$E^{\mathrm{noc}}$};
+      \node[punto] at (3.6,3.6) {}; \node[etiqueta, above left] at (3.6,3.6) {$B$};}
+    % 4: la demanda efectiva de bienes depende de la renta realizada: Y_1
+    \capa{4}{\draw[curvanueva] (0,0.8) -- (5.2,{0.8+0.6*5.2}) node[right, etiqueta, text=tceerojo] {$E^{\mathrm{ef}}$};
+      \node[punto] at (2,2) {}; \node[etiqueta, above left] at (2,2) {$G$};
+      \draw[guia] (2,2) -- (2,0) node[below, text=black] {$Y_1$};
+      \node[etiqueta, text=tceerojo, font=\scriptsize, align=left, anchor=north west] at (3.75,1.3) {los hogares gastan según\\la renta que obtienen};}
+  \end{scope}
+  % 5: la demanda efectiva de trabajo: solo el necesario para producir Y_1 (K)
+  \capa{5}{\draw[curvanueva] (1.15,0) -- (1.15,3.195) -- (0.3,{4-0.7*0.3});
+    \node[etiqueta, text=tceerojo, anchor=east] at (1.1,2.9) {$L^{D,\mathrm{ef}}$};
+    \node[punto, tceerojo] at (1.15,2.115) {};
+    \node[etiqueta, above right, text=tceerojo] at (1.15,2.115) {$K$};
+    \node[below, text=black] at (1.15,0) {$N_1$};
+    \draw[decorate, decoration={brace, amplitude=3pt, mirror}, thick, tceerojo] (1.15,-0.55) -- (2.692,-0.55)
+      node[midway, below=3pt, etiqueta, text=tceerojo, font=\scriptsize] {paro involuntario};}
+  % 6: más gasto autónomo: el multiplicador saca a la economía de K
+  \begin{scope}[xshift=7.6cm]
+    \capa{6}{\draw[curva3, desplazada] (0,1.2) -- (5.6,{1.2+0.6*5.6}) node[above right=-2pt and 0pt, etiqueta, text=tceeverde] {$E^{\mathrm{ef}}+\Delta\overline{G}$};
+      \node[punto] at (3,3) {};
+      \draw[guia] (3,3) -- (3,0) node[below, text=black] {$Y_2$};
+      \draw[decorate, decoration={brace, amplitude=3pt, mirror}, thick, tceeverde] (2,-0.55) -- (3,-0.55)
+        node[midway, below=3pt, etiqueta, text=tceeverde, font=\scriptsize] {multiplicador};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
