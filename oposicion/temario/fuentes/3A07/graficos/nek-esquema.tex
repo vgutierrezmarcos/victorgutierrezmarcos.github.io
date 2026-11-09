@@ -1,5 +1,6 @@
 % El modelo neokeynesiano canónico: cómo se cierra con la regla de política
-% monetaria (Galí, 2015, cap. 3). Esquema de las 3 ecuaciones, con la
+% monetaria (Galí, 2015, cap. 3). Cada fórmula en una línea (Víctor, 9/11/2026);
+% la perturbación de demanda z_t (preferencias) entra a través de r^n_t. Esquema de las 3 ecuaciones, con la
 % notación de la ficha «nek-3-ecuaciones» (theta CRRA, kappa pendiente de la
 % NKPC, regla de Taylor con rho y phi_x). Colores coherentes con nek-xpi:
 % curva de Phillips en morado (la NKPC de nek-xpi), IS en verde (la DA de
@@ -14,10 +15,10 @@
     perturb/.style={->, thick, tceegris},
     ecuacion/.style={font=\small, align=center, inner sep=3pt}]
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
-  \path (-4.6,-2.6) rectangle (8.6,5.4);
+  \path (-5.4,-2.6) rectangle (9.8,5.4);
   % 1: los hogares deciden la demanda: brecha de producción x_t
   \capa{1}{\node[nodo] (x) at (0,0) {$x_t$\\[1pt]{\footnotesize hogares: demanda}};}
-  \capa{1}{\draw[perturb] (-2.2,-1.6) node[below left=-2pt, text=black, font=\small, align=center] {$r^n_t$\\(demanda)} -- (x.south west);}
+  \capa{1}{\draw[perturb] (-2.2,-1.6) node[below left=-2pt, text=black, font=\small, align=center] {$r^n_t$\\(demanda: $z_t$)} -- (x.south west);}
   % 2: las empresas fijan los precios: inflación pi_t
   \capa{2}{\node[nodo] (p) at (6.4,0) {$\pi_t$\\[1pt]{\footnotesize empresas: oferta}};}
   \capa{2}{\draw[perturb] (8.6,-1.6) node[below left=-2pt and -10pt, text=black, font=\small, align=center] {$u_t$\\(costes)} -- (p.south east);}
@@ -30,7 +31,7 @@
   \capa{4}{\draw[perturb] (3.2,5.3) node[right, text=black, font=\small] {$\varepsilon_t$ (monetaria)} -- (i.north);}
   % 5: la regla de Taylor: el banco central responde a la inflación y a la brecha
   \capa{5}{\node[ecuacion, anchor=west, align=left, text=tceeazul] at ([xshift=2pt]i.east)
-      {regla de Taylor\\$i_t=\rho+\phi_\pi\,\pi_t$\\$\phantom{i_t=\rho}+\phi_x\,x_t+\varepsilon_t$};}
+      {regla de Taylor\\$i_t=\rho+\phi_\pi\,\pi_t+\phi_x\,x_t+\varepsilon_t$};}
   \capa{5}{\draw[->, very thick, tceeazul] (x.north east) to[bend right=12]
       node[ecuacion, below right=-2pt and 0pt, text=tceeazul] {$\phi_x$} (i.south west);}
   \capa{5}{\draw[->, very thick, tceeazul] (p.north west) to[bend left=12]
@@ -38,7 +39,6 @@
   % 6: la IS dinámica: el tipo de interés real mueve la demanda (cierra el círculo)
   \capa{6}{\draw[->, very thick, tceeverde] (i.west) to[bend right=30]
       node[ecuacion, left=12pt, align=right, text=tceeverde] {IS dinámica\\
-        $x_t=\mathbb{E}_t[x_{t+1}]$\\
-        $-\dfrac{1}{\theta}\left(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\right)$} (x.north);}
+        $x_t=\mathbb{E}_t[x_{t+1}]-\tfrac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big)$} (x.north);}
 \end{tikzpicture}
 \end{document}
