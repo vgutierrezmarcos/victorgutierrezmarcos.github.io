@@ -1,0 +1,59 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Shapiro y Stiglitz (1984), estática comparativa (iii): caída de la demanda de
+% trabajo (A baja), con supervisión perfecta (E^W -> E^W') e imperfecta (E -> E').
+% Código base de shapiro-stiglitz.tex: Lbar = 6, ebar = 1;
+% demanda w = 0,4 + 6 e^{-0,25 JL}, tras el shock × 0,75;
+% CNE w = 2 + 1,5/(6 - JL). Cortes calculados con intersections.
+% E^W = (6; 1,7388) -> E^W' = (6; 1,3041): con oferta vertical todo el ajuste es
+% de salario; sobre la CNE, sobre todo de empleo.
+% Elaboración propia a partir de Shapiro y Stiglitz (1984) y Romer (2019),
+% cap. 11. Autor: Víctor Gutiérrez Marcos
+\begin{tikzpicture}[tcee, y=1.3cm,
+    demanda/.style={very thick,tceerojo},
+    declare function={LD(\x)=0.4+6*exp(-0.25*\x); CNE(\x)=2+1.5/(6-\x);}]
+  % 1: ejes
+  \capa{1}{\ejes{$J\,L$}{$w$}{7.2}{6.6}}
+  % 2: demanda y oferta de trabajo, y equilibrio walrasiano
+  \capa{2}{
+    \draw[demanda, name path=LD, domain=0.25:6, samples=60] plot (\x,{LD(\x)});
+    \node[etiqueta, text=tceerojo, anchor=west] at (0.55,5.85) {$L^D$};
+    \draw[curva2] (0,1) -- (6,1) -- (6,6.4) node[etiqueta, above] {$L^S$};
+    \node[left] at (0,1) {$\overline{e}$};
+    \node[below] at (6,0) {$\overline{L}$};
+    \draw[guia] (6,0) -- (6,1);
+    \node[punto] at (6,{LD(6)}) {};
+    \node[etiqueta, right] at (6,{LD(6)}) {$E^W$};
+  }
+  % 3: CNE con su zona sin escaqueo y el equilibrio E
+  \capa{3}{
+    \fill[area] plot[domain=0:5.6591, samples=80] (\x,{CNE(\x)}) -- (0,6.4) -- cycle;
+    \draw[curva1, name path=CNE, domain=0:5.6591, samples=80] plot (\x,{CNE(\x)});
+    \node[etiqueta, text=tceemorado, anchor=east] at (5.5,5.6) {CNE};
+    \path[name intersections={of=LD and CNE, by=E}];
+    \node[punto] at (E) {};
+    \node[etiqueta, above right] at (E) {$E$};
+    \proyeccion{(E)}{$J\,L^*$}{$w^*$}
+  }
+  % 4: caída de la demanda de trabajo
+  \capa{4}{
+    \draw[curvanueva, desplazada, name path=LD2, domain=0.25:6, samples=60]
+      plot (\x,{0.75*LD(\x)});
+    \node[etiqueta, text=tceerojo, below left] at (4.6,{0.75*LD(4.6)}) {$L^{D\prime}$};
+    \draw[flecha] (1.6,{LD(1.6)-0.15}) -- (1.25,{0.75*LD(1.25)+0.2});
+  }
+  % 5: supervisión perfecta: solo baja el salario (E^W')
+  \capa{5}{
+    \node[punto] (EW2) at (6,{0.75*LD(6)}) {};
+    \node[etiqueta, right] at (EW2) {$E^{W\prime}$};
+  }
+  % 6: supervisión imperfecta: nuevo equilibrio E' sobre la CNE
+  \capa{6}{
+    \path[name intersections={of=LD2 and CNE, by=E2}];
+    \node[punto] at (E2) {};
+    \node[etiqueta, below left] at (E2) {$E'$};
+    \proyeccion{(E2)}{$J\,L^{*\prime}$}{$w^{*\prime}$}
+  }
+\end{tikzpicture}
+\end{document}

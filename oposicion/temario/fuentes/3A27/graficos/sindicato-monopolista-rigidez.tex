@@ -1,0 +1,57 @@
+% El sindicato monopolista con demanda de trabajo isoelástica: ante desplazamientos
+% de la demanda (A_1 < A_2 < A_3 < A_4) el salario no cambia (E_1, E_2, E_3 a la
+% altura de w^S, un margen constante sobre w^R) hasta que se emplea a todos los
+% afiliados (Lbar); entonces sube (E_4). Rehace la imagen de abajo de la p. 13 del
+% tema anterior. Elaboración propia a partir de Dunlop (1944) y Booth (1995).
+% Código base del bloque I (sindicato-monopolista.tex): F(L) = L^0,4,
+%   w^R = z = 2,2, L^c = 4,4, Lbar = 6,6, u(w) = ln w.
+%   Demanda con A_1: dem(L) = 2,2 (L/4,4)^{-0,6}; con A_k, dem(L/k) (el empleo a
+%   cada salario se multiplica por k = (A_k/A_1)^{5/3}).
+%   w^S = z e^{0,6} = 4,0087; L^S_1 = 1,6187.
+%   k = 1; 1,9769 (E_2 en L = 3,2); 4,0773 (E_3 en Lbar = 6,6); 5,5 (E_4: la
+%   restricción L <= Lbar se satura y w = dem(6,6/5,5) = 4,7966).
+%   Indiferencias por (p, q): w = 2,2 (q/2,2)^{p/min(L,6,6)}.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=1cm,
+    declare function={
+      dem(\x)=2.2*exp(-0.6*ln(\x/4.4));
+      ind(\x,\p,\q)=2.2*exp(\p*ln(\q/2.2)/min(\x,6.6));
+    },
+    demanda/.style={very thick,tceerojo},
+    indif/.style={thick,tceeazul,dashed},
+    rotulo/.style={etiqueta,font=\footnotesize}]
+  \def\wS{4.0087}
+  % 1: ejes, salario de reserva y afiliados
+  \capa{1}{\ejes{$L$}{$w$}{10.2}{6.6}}
+  \capa{1}{\draw[guia] (0,2.2) node[left,text=black] {$w^R$} -- (9.6,2.2);}
+  \capa{1}{\draw[guia] (6.6,0) node[below,text=black] {$\overline{L}$} -- (6.6,6.3);}
+  % 2: demanda inicial y equilibrio E_1 (tangencia con la indiferencia)
+  \capa{2}{\draw[demanda] plot[domain=0.79:9.4,samples=60] (\x,{dem(\x)}) node[rotulo,right,text=tceerojo] {$L^D(A_1)$};}
+  \capa{2}{\draw[indif] plot[domain=1.0:2.9,samples=40] (\x,{ind(\x,1.6187,\wS)});}
+  \capa{2}{\node[punto,fill=tceerojo] (E1) at (1.6187,\wS) {};}
+  \capa{2}{\node[etiqueta,above right] at (E1) {$E_1$};}
+  \capa{2}{\draw[guia] (0,\wS) node[left,text=black] {$w^S$} -- (6.6,\wS);}
+  % 3: más demanda (A_2): mismo salario, más empleo
+  \capa{3}{\draw[demanda] plot[domain=1.55:9.4,samples=60] (\x,{dem(\x/1.9769)}) node[rotulo,right,text=tceerojo] {$L^D(A_2)$};}
+  \capa{3}{\draw[indif] plot[domain=2.0:5.6,samples=40] (\x,{ind(\x,3.2,\wS)});}
+  \capa{3}{\node[punto,fill=tceerojo] (E2) at (3.2,\wS) {};}
+  \capa{3}{\node[etiqueta,above right] at (E2) {$E_2$};}
+  % 4: A_3: se llega a emplear a todos los afiliados con el mismo salario
+  \capa{4}{\draw[demanda] plot[domain=3.2:9.4,samples=60] (\x,{dem(\x/4.0773)}) node[rotulo,right,text=tceerojo] {$L^D(A_3)$};}
+  \capa{4}{\draw[indif] plot[domain=4.1:6.6,samples=40] (\x,{ind(\x,6.6,\wS)}) -- (9.4,\wS);}
+  \capa{4}{\node[punto,fill=tceerojo] (E3) at (6.6,\wS) {};}
+  \capa{4}{\node[etiqueta,below right] at (E3) {$E_3$};}
+  % 5: A_4: con todos empleados, el sindicato sube el salario
+  \capa{5}{\draw[demanda] plot[domain=4.31:9.4,samples=60] (\x,{dem(\x/5.5)}) node[rotulo,above right,text=tceerojo] {$L^D(A_4)$};}
+  \capa{5}{\draw[indif] plot[domain=5.0:6.6,samples=30] (\x,{ind(\x,6.6,4.7966)}) -- (9.4,4.7966);}
+  \capa{5}{\node[punto,fill=tceeazul] (E4) at (6.6,4.7966) {};}
+  \capa{5}{\node[etiqueta,below left] at (E4) {$E_4$};}
+  \capa{5}{\draw[guia] (0,4.7966) node[left,text=black] {$w^{S\prime}$} -- (E4);}
+  % 6: lectura
+  \capa{6}{\node[rotulo,align=left,draw=tceegris,rounded corners=2pt,inner sep=4pt] at (3.0,1.0)
+    {si $L<\overline{L}$: $w^S$ constante\\ ante cambios en $A$};}
+\end{tikzpicture}
+\end{document}
