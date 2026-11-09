@@ -4,6 +4,7 @@ Revisión autónoma del 3/11/2026 (Víctor fuera hasta el 9/11). Las dudas lleva
 
 ## 1. Resumen
 
+- **9/11/2026, comentarios de Víctor**: el tema pasa a 2 bloques (I. La síntesis neoclásica, 9′30″; II. El monetarismo, 17′) y las recomendaciones de política monetarista se amplían (II.3); detalle al final, en «Comentarios de Víctor (9/11/2026)». Lo que sigue describe la revisión del 3/11.
 - El original era un borrador del título anterior: la síntesis estaba vacía (su contenido estaba en el Word del 3.A.4 y pasa aquí por D031), el monetarismo a medias y el desequilibrio sale al 3.A.4. El tema se ha escrito de nuevo con 3 apartados: I. La síntesis neoclásica (9′30″), II. La crítica monetarista: caracterización y formalización (8′30″) y III. La crítica monetarista: política económica y valoración (8′30″); introducción 2′30″ y conclusión 1′.
 - Introducción con sus 5 bloques y un enganche nuevo («Cada maestrillo tiene su librillo», M2 de 2020-2021, inflación de 2022 y el «ahora todos somos keynesianos» de *Time*); I.1 caracterización de la síntesis con el esquema de Schumpeter; I.2 el IS-LM completo con los bloques a)-e) (es su tema de referencia), con la IS, la LM y la DA como funciones clave; I.3 la curva de Phillips en resumen, con remisión al 3.A.28.
 - II: caracterización de la escuela monetarista según Schumpeter (con el método de Friedman, 1953, y las expectativas adaptativas con γ) y formalización por el lado de la demanda (renta permanente, inversión, demanda de dinero de Friedman, 1956, transmisión, evidencia y debate de las pendientes) y de la oferta (curva aumentada como función clave, tasa natural, aceleracionista, estanflación). III: implicaciones de política (retardos, regla del k % separada de la regla de Friedman, experimento monetarista con cifras, velocidad, oferta, tipos flexibles y enfoque monetario de la balanza, Gran Depresión con las cifras de Friedman y Schwartz), valoración y contracrítica (Tobin, Kaldor, Goodhart, Poole, legado en la nueva síntesis) y tabla comparativa; conclusión con 5 bloques; anexos A (IS-LM paso a paso), B (metodología de Friedman) y C (test).
@@ -148,7 +149,7 @@ Revisión autónoma del 3/11/2026 (Víctor fuera hasta el 9/11). Las dudas lleva
 
 Todas con la opción recomendada aplicada.
 
-- **A05-01. Estructura en 3 apartados** (K-estructura, P-est): I síntesis; II y III el monetarismo partido por donde ya lo estaba en el original (caracterización y formalización / política y valoración). Alternativa: 2 apartados (síntesis y monetarismo), con un bloque II de 17′.
+- ~~**A05-01. Estructura en 3 apartados**~~ *Resuelta por Víctor (9/11/2026)*: 2 bloques, «I. La síntesis neoclásica» (9′30″) y «II. El monetarismo» (17′).
 - **A05-02. Neoclásicos y Keynes a la introducción** (K3, nota de Víctor P9). Alternativa: un I.1 de 1′ quitando tiempo al IS-LM.
 - **A05-03. Enganche**: «Cada maestrillo tiene su librillo» con M2 de 2020-2021, la inflación de 2022 y *Time* (1965). La frase de la carta de Friedman (4/2/1966) se ha tomado de una fuente secundaria que cita la carta; el título del artículo de 1965 sí está comprobado en el archivo de *Time*. Si Víctor tiene acceso al archivo, cotejar la carta.
 - **A05-04. Relevancia** propia del tema en 3 viñetas y los 4 motivos de Schumpeter resumidos en una (2 en el texto y 2 en la nota 1 del original, que se conserva) (K31).
@@ -171,6 +172,10 @@ Todas con la opción recomendada aplicada.
 - **A05-20. La experiencia de 1979-1982 en III.1** («la regla en la práctica») y no en la valoración, como fija el coordinador; la valoración se queda con la contracrítica.
 - **A05-21. Retratos**: ninguno (no se ha comprobado la licencia de ninguno).
 - **A05-22. Fichas nuevas del canon** (CC5: `monetarismo`, `historia-monetaria-friedman-schwartz`, `expectativas-adaptativas`) y cambios de notación (CC3, CC4): para la fase canon.
+- **A05-23. Friedman (1948), «A Monetary and Fiscal Framework for Economic Stability»** (*AER*, 38(3), 245-264): datos bibliográficos y contenido (presupuesto equilibrado en pleno empleo, estabilizadores automáticos, déficits financiados con dinero) comprobados en fuentes secundarias (Mercatus, Wray/Levy, Johns Hopkins IAE), no en el artículo. Igual con Friedman (1974), *Monetary Correction* (IEA Occasional Paper 41; catálogos de bibliotecas y la reseña del Fed de Richmond). Opción aplicada: se citan sin comillas.
+- **A05-24. Cifras del experimento monetarista y de la velocidad a una caja gris** (regla del 9/11/2026 sobre datos que no se cantan): en el cuerpo queda el hecho (Volcker, octubre de 1979; la MTFS de 1980; la velocidad se rompe) y en la caja, todas las cifras y fechas, sin perder ninguna. Alternativa: devolverlas al cuerpo.
+- **A05-25. Retardos sin cifras**: el cante de otro preparador da «6-9 meses» para el efecto sobre la producción y «5-10 años» para que desaparezca; no se ha podido comprobar en Friedman (1961) ni en Friedman (1970, *Counter-Revolution*), así que el tema dice solo «largos y variables», con retardos internos y externos.
+- **A05-26. Ficha de repaso**: solo se ha cambiado lo que contradecía el tema (esquema del cante con 2 bloques, Estructura, el bloque III pasa a II.3 y II.4) y se han separado en 2 viñetas la política monetaria y la fiscal, con una línea más en oferta y en economía abierta. Ocupaba el 98 % de la cuarta página: al construirla, `construir-repaso.py` puede bajar la letra o pedir recortes (la línea «Pieza a pieza» es la candidata).
 
 ## 8. Instrucciones para el vídeo
 
@@ -196,3 +201,29 @@ Todas con la opción recomendada aplicada.
 
 
 Control de calidad (3/11/2026): correcciones aplicadas por el coordinador (Lucas y Hicks unificados, «Commission on Money {and} Credit», autores corporativos del Nobel y del BLS, titleaddon de la carta de Friedman, pie del gráfico de la Gran Contracción con pico a fondo frente a medias anuales).
+
+## Comentarios de Víctor (9/11/2026)
+
+**Generales**
+
+| Comentario | Qué se hizo |
+|---|---|
+| Nombres de economistas enteros en versalitas | «Alvin \textcite{Hansen…}» y «Harry \textcite{Johnson…}» pasan a `\autor{Alvin Hansen}` y `\autor{Harry Johnson}` con `\parencite`; los nuevos (Robert Mundell, Jacob Frenkel, Paul Volcker, Walter Heller…) van enteros. |
+| Ningún gráfico con otro tema como fuente; `\vertema` al margen de la frase | Fuera «el mismo gráfico que el tema de la tasa natural de paro \vertema{3.A.28}» de los pies de `samuelson-solow` y `phillips-aumentada`; las remisiones nuevas van detrás de la idea. |
+| Introducción y conclusión: rótulo solo y viñetas indentadas | Ya estaba; se parte en 3 viñetas la de las 3 críticas a la síntesis (antes 2 viñetas para 3 críticas) y la «Estructura» en una viñeta por bloque. |
+| Viñetas que se entienden solas | Reescritas las de la demanda monetarista (consumo, inversión, dinero, transmisión), que encadenaban varias ideas. |
+| Patrones visibles | En toda la formalización y en las recomendaciones, el mismo patrón con rótulo solo en su línea: «*Keynes y la síntesis*» → «*Friedman y los monetaristas*» → «*Implicaciones*». |
+| Datos que no se cantan, a cajas grises | 3 cajas `anotaciones` nuevas: la regla en detalle; el experimento monetarista en cifras (con las de la velocidad); la financiación del déficit y la expulsión. |
+| Notas de la versión antigua (pensamiento) | Ya se conservaban las útiles (nota 1, Modigliani, Keynes y la PMgC, Bernanke…). La nota 4 era solo un enlace de YouTube que no es de Friedman (un vídeo de VisualEconomik sobre la educación sueca): no se recupera. |
+
+**3.A.5**
+
+| Comentario | Qué se hizo |
+|---|---|
+| Estructurar en 2 bloques, «Síntesis neoclásica» y «Monetarismo» | II y III se funden en «II. El monetarismo» (17′) con II.1 Caracterización (2′), II.2 Formalización (5′30″), II.3 Recomendaciones de política económica (7′) y II.4 Valoración y contracrítica (2′30″). Actualizados el esquema de la introducción, la «Estructura», la `notaopositor` del reparto, las etiquetas (`sec:monetarismo` sustituye a `sec:monetarismo-teoria` y `sec:monetarismo-politica`), la tabla comparativa y la ficha de repaso. Los `\minutos` suman 30 (2′30″ + 9′30″ + 17′ + 1′). |
+| Desarrollar la crítica monetarista: políticas de oferta y de economía abierta, y en las de demanda distinguir la fiscal de la monetaria (a partir del cante de Juan Luis Cordero, 5A.docx de la numeración antigua) | II.3 nuevo, con la idea de por qué salen esas recomendaciones de las 3 piezas de la formalización y el patrón síntesis/monetaristas en cada política. **a) Política monetaria**: retardos internos y externos, la «ecuación que falta» (Friedman, 1970, *JPE*), qué puede y qué no, la cantidad de dinero como objetivo intermedio (efecto Fisher: los tipos altos señalan política laxa), la base monetaria (Brunner y Meltzer), la regla del k % como estabilizador automático y la caja con la regla por ley y el coeficiente del 100 %; el experimento monetarista. **b) Política fiscal**: expulsión grande y total a largo plazo, rebajas transitorias de impuestos y renta permanente, la financiación (pura con deuda frente a monetizada; Cagan y la hiperinflación), las reglas fiscales de Friedman (1948: estabilizadores automáticos y presupuesto equilibrado en pleno empleo), Estado pequeño; caja con Blinder y Solow, el marco de 1948 y la aritmética desagradable de Sargent y Wallace (1981). **c) Expectativas y tasa natural**: tesis aceleracionista, estabilidad nominal como objetivo, gradualismo, indexación (Friedman, 1974) frente a la desinflación de golpe de la NMC. **Oferta**: reformas que bajan $U^n$ (Friedman, 1968, p. 9: salario mínimo, sindicatos, servicios de empleo), rechazo de las políticas de rentas, más mercado, y la inflación alta y variable que sube el paro (Friedman, 1977, Nobel). **Economía abierta**: la visión de la síntesis (Bretton Woods, elasticidades y absorción, IS-LM-BP), los 4 argumentos de Friedman (1953) por los tipos flexibles (con la analogía del horario de verano) y el enfoque monetario de la balanza de pagos con supuestos, $\Delta R=\Delta M^D-\Delta D$ e implicaciones (y el enfoque monetario del tipo de cambio). Del cante de Cordero se toman la distinción PF/PM, la financiación del déficit con Cagan y la economía abierta; redacción propia y sin nombrarlo en el tema. Lo que no se canta va a cajas grises para que quepa en 30′. |
+
+Bibliografía añadida: Friedman (1948), Friedman (1970, *JPE*), Friedman (1974) y Sargent y Wallace (1981) (las 2 del *JPE* y del Fed de Minneapolis, copiadas de los .bib del 3.A.36 y del 3.A.41). Anexo de test: 3 trampas nuevas (fiscal de 1948, enfoque monetario, rentas y gradualismo).
+
+**Para el vídeo** (cuando se rehaga el guion): el cuerpo ya no tiene III; II.3 dura 7′ (monetaria 1′30″, fiscal 1′30″, expectativas 30″, oferta 1′, economía abierta 1′30″, Gran Depresión 1′). En la pizarra, además de $\gamma_M=\overline\gamma_M$, se escribe $\Delta R=\Delta M^D-\Delta D$; las 3 cajas grises, como apoyo o fuera. Las minutaciones de «Instrucciones para el vídeo» de arriba (II.1 2′30″, II.2.1 4′, III.1 5′30″, III.2 3′) quedan sustituidas por estas.
+
