@@ -1,6 +1,6 @@
 # Apuntes de otros TCEE: el repositorio de la ATCEE
 
-<!-- Lo genera scripts/apuntes-otros.py (cada lunes, acción apuntes-otros.yml); generado el 2026-11-02. No se edita a mano. -->
+<!-- Lo genera scripts/apuntes-otros.py (cada lunes, acción apuntes-otros.yml); generado el 2026-11-09. No se edita a mano. -->
 
 ## Qué es
 
