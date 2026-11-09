@@ -507,12 +507,19 @@ def preparar_pandoc(tema, tex, formato):
     # como alineadas a la izquierda; como «c» salen centradas (y tcee.lua las
     # centra también en vertical)
     cuerpo = re.sub(r'>\{\\centering(?:\\arraybackslash)?\}[mpb]\{[^{}]*\}', 'c', cuerpo)
+    # Con >{\raggedright\arraybackslash} delante de una columna, pandoc deja vacías
+    # las filas con \multicolumn (filas de grupo de las tablas): se quita el prefijo
+    cuerpo = re.sub(r'>\{\\(?:raggedright|raggedleft)(?:\\arraybackslash)?\}(?=[mpb]\{)', '', cuerpo)
     # Con columnas «c», pandoc deja el argumento de \cline como texto («1-2»): las
     # rayas parciales no hacen falta en la web ni en Word
     cuerpo = re.sub(r'\\cline\{[^}]*\}', '', cuerpo)
     cuerpo = re.sub(r'\\hhline\{[^}]*\}', '', cuerpo)
     cuerpo = re.sub(r'\\newline\b\s*', r'\\textcolor{tceesalto}{.}', cuerpo)
     cuerpo = re.sub(r'\\cellcolor\{(\w+)\}', r'\\textcolor{tceefondo\1}{.}', cuerpo)
+    # Fila de grupo (\rowcolor{X}\multicolumn{n}{l}{texto}): si la marca va delante
+    # del \multicolumn, pandoc pierde el texto; se mete dentro de la celda combinada
+    cuerpo = re.sub(r'\\rowcolor\{(\w+)\}\s*(\\multicolumn\{\d+\}\{[^{}]*\}\{)',
+                    r'\2\\textcolor{tceefilafondo\1}{.}', cuerpo)
     cuerpo = re.sub(r'\\rowcolor\{(\w+)\}', r'\\textcolor{tceefilafondo\1}{.}', cuerpo)
     cuerpo = re.sub(r'\{\\(?:footnotesize|scriptsize|small)\s+', r'\\textcolor{tceenota}{', cuerpo)
     # Dentro de \text{…} de una fórmula, \autor{} y \textsc{} rompen la conversión

@@ -1,0 +1,33 @@
+% Copiado sin cambios de fuentes/3A28/graficos/samuelson-solow.tex (3.A.28, capa 1 de phillips-aumentada), 5/11/2026. Si cambia el original, copiar de nuevo.
+% El menú de Samuelson y Solow (1960, p. 192, fig. 2): la curva de Phillips en
+% precios. Es la capa 1 de la curva de Phillips de la pizarra: mismos ejes,
+% escala y curva que la de corto plazo con pi^e = 0 de phillips-aumentada.tex.
+%   curva: pi = f(U) = k (e^{-0,6 (U - 5,5)} - 1), k = 4,5 / (e^{1,5} - 1)
+%   pasa por A = (5,5; 0) y B = (3; 4,5), como en el original
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,y=0.42cm,
+    declare function={f(\u)=4.5/(exp(1.5)-1)*(exp(-0.6*(\u-5.5))-1);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.6,-2.6) rectangle (12.4,11.4);
+  % 1: ejes (U, pi); el vertical baja un poco porque la curva corta el eje
+  \capa{1}{\ejes{$U$ (\%)}{$\pi$ (\%)}{10.6}{10.8}}
+  \capa{1}{\draw[thick] (0,-1.6) -- (0,0);}
+  % 2: la curva de Phillips en precios
+  \capa{2}{\draw[curva1] plot[domain=9.6:1.95, samples=80, smooth] (\x,{f(\x)})
+      node[etiqueta, right=2pt, text=tceemorado] {curva de \textsc{Phillips} (menú)};}
+  % 3: punto A, estabilidad de precios
+  \capa{3}{\node[punto] (A) at (5.5,0) {};}
+  \capa{3}{\node[etiqueta, below=1pt] at (A) {$5{,}5$};}
+  \capa{3}{\node[etiqueta, above right=1pt and 2pt, align=left] at (A) {$A$: estabilidad\\de precios};}
+  % 4: punto B, menos paro y más inflación
+  \capa{4}{\node[punto] (B) at (3,4.5) {};}
+  \capa{4}{\draw[guia] (0,4.5) node[left, text=black] {$4{,}5$} -| (3,0) node[below, text=black] {$3$};}
+  \capa{4}{\node[etiqueta, right=3pt, align=left] at (B) {$B$: menos paro,\\más inflación};}
+  % 5: la política de demanda expansiva lleva de A a B a lo largo de la curva
+  \capa{5}{\draw[flecha] plot[domain=5.0:3.55, samples=30, smooth] ({\x-0.33},{f(\x)-0.33});}
+  \capa{5}{\node[etiqueta, text=tceerojo, align=right, anchor=north east] at (2.75,3.1) {política de\\demanda\\expansiva};}
+\end{tikzpicture}
+\end{document}

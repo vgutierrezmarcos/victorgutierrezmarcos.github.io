@@ -1,0 +1,76 @@
+% Ahorro nacional bruto de España por sectores, % del PIB, 1995-2025 (3.A.38,
+% II.1, fig:ahorro-nacional-espana): barras de hogares (con las instituciones
+% sin fines de lucro), sociedades (financieras y no financieras) y AA. PP.
+% (negativo en 2009-2024), con el total de España y el de la zona del euro
+% (EA21, zona del euro de 21 países, desde 2002).
+% Datos: ../datos/ahorro-nacional-es.csv (Eurostat nasa_10_nf_tr y nama_10_gdp;
+% consulta 05/11/2026).
+% Cifras de control: total de España 25,0 (2025, máximo de la serie), 18,1
+% (2011, mínimo); zona del euro 23,9 (2025); AA. PP. -7,0 (2020), +0,3 (2025).
+% (Las barras suman el total salvo redondeo: 7,5 + 17,3 + 0,3 = 25,1 en 2025.)
+% Paleta: hogares naranja (dicconspriv) y sociedades verde (dicfbcf), como en
+% el 3.A.4; AA. PP. en gris, el color del gasto G en irf-rbc-gasto; total de
+% España dicespana y zona del euro dicze, como en el 3.A.39.
+% Capas (CRITERIOS §7): barras → ejes y cero → total de España → zona del
+% euro → puntos de 2025 → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/ahorro-nacional-es.csv}\ahorro
+% leyenda de las líneas del mismo ancho que la de las barras
+\pgfplotsset{leyenda linea/.style={legend image code/.code={%
+  \draw[##1] plot coordinates {(0cm,0cm) (0.6cm,0cm)};}}}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=13.5cm,height=7.6cm,xmin=1994.3,xmax=2026.7,ymin=-8.5,ymax=30,
+    bar width=0.62,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={1995,2000,...,2025},ytick={-5,0,...,30},
+    x tick label style={/pgf/number format/.cd,set thousands separator={}},
+    ticklabel style={font=\footnotesize},
+    /pgf/number format/use comma,
+    ylabel={\% del PIB},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    legend style={at={(0.5,-0.1)},anchor=north,legend columns=3,draw=none,font=\footnotesize,
+      /tikz/every even column/.append style={column sep=10pt}},
+    legend cell align=left,unbounded coords=jump,dicapas]
+  % 1: barras: hogares y sociedades apiladas desde el 0; el ahorro de las
+  % AA. PP. encima cuando es positivo y por debajo del 0 cuando es negativo
+  \capa{1}{
+    \addplot[on layer=dicbarras,ybar stacked,bar shift=0pt,dicbarra=dicconspriv,area legend]
+      table[x=anio,y=hogares_es] {\ahorro};
+    \addlegendentry{Hogares}
+    \addplot[on layer=dicbarras,ybar stacked,bar shift=0pt,dicbarra=dicfbcf,area legend]
+      table[x=anio,y=sociedades_es] {\ahorro};
+    \addlegendentry{Sociedades}
+    \addplot[on layer=dicbarras,ybar stacked,bar shift=0pt,dicbarra=tceegris,area legend]
+      table[x=anio,y expr={max(\thisrow{aapp_es},0)}] {\ahorro};
+    \addlegendentry{AA.~PP.}
+    \addplot[on layer=dicbarras,ybar,bar shift=0pt,stack plots=false,dicbarra=tceegris,forget plot]
+      table[x=anio,y expr={min(\thisrow{aapp_es},0)}] {\ahorro};
+  }
+  % 2: ejes y línea del 0
+  \capa{2}{\dicraya{(1994.3,0) (2026.7,0)}}
+  % 3: total de España
+  \capa{3}{
+    \addplot[stack plots=false,sharp plot,mark=none,diclineahalo=dicespana,line width=1.6pt,leyenda linea]
+      table[x=anio,y=nacional_es] {\ahorro};
+    \addlegendentry{Total de España}
+  }
+  % 4: total de la zona del euro (desde 2002)
+  \capa{4}{
+    \addplot[stack plots=false,sharp plot,mark=none,diclineahalo=dicze,leyenda linea]
+      table[x=anio,y=nacional_ea] {\ahorro};
+    \addlegendentry{Total de la zona del euro (21 países)}
+  }
+  % 5: puntos de 2025
+  \capa{5}{\addplot[on layer=dicpuntos,stack plots=false,dicpuntos=dicespana,forget plot] coordinates {(2025,25.0)};}
+  \capa{5}{\addplot[on layer=dicpuntos,stack plots=false,dicpuntos=dicze,forget plot] coordinates {(2025,23.9)};}
+  % 6: etiquetas
+  \capa{6}{\dicrotulo[font=\footnotesize,text=dicespana,anchor=south]{(2025,25.5)}{25,0~\%}}
+  \capa{6}{\dicrotulo[font=\footnotesize,text=dicze,anchor=west]{(2025.5,23.6)}{23,9~\%}}
+  \capa{6}{\dicrotulo[font=\footnotesize,text=tceegris!70!black,anchor=east]{(2019.5,-6.6)}{$-7{,}0$~\%}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

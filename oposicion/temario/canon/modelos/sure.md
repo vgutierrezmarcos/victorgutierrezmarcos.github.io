@@ -1,7 +1,7 @@
 # SURE (Instrumento de Apoyo Temporal para mitigar los Riesgos de Desempleo en una Emergencia)
 
 - **Área:** union-europea · **Tema de referencia:** 3.B.45 (respuesta fiscal común a la covid; sin fuente). Hoy lo cuentan 3.B.37 y 3.B.40
-- **Temas que lo usan:** 3.B.37 (resumen), 3.B.40 (resumen: política de empleo), 3.B.45 (desarrollo previsto), 4.A.16 (mención: ERTE), 4.A.23 (mención)
+- **Temas que lo usan:** 3.B.37 (resumen), 3.B.40 (resumen: política de empleo), 3.B.45 (desarrollo previsto), 4.A.16 (mención: ERTE), 4.A.23 (mención) También 3.A.40 (mención; hecho, 5/11/2026: III.3 d), 98.400 millones de euros con bonos sociales para los ERTE y sus equivalentes, `\vertema{3.B.45}`).
 - **Manuales de referencia:** Reglamento (UE) 2020/672 del Consejo; Comisión Europea, informes semestrales sobre SURE
 - **Decisión D032 (13/10/2026):** ¿Dónde van NGEU y SURE? 3.B.45 la lógica de la política fiscal común; 3.B.37 su financiación (endeudamiento de la Comisión, techo de recursos propios); el PRTR en 4.A.29
 

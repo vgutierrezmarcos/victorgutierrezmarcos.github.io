@@ -1,0 +1,46 @@
+% Canales de transmisión de la política monetaria convencional (3.A.37, I.2).
+% Amplía el esquema de la guía del dictamen (fuentes/1D01/graficos/
+% esquema-canales-monetaria.tex): mismos 5 grupos, colores y orden (tipo de
+% interés, crédito, activos, tipo de cambio, expectativas); el crédito se parte
+% en bancario, balance y toma de riesgos, y se cierra en la producción y los
+% precios. A partir de Mishkin (2021, cap. 26) y Boivin, Kiley y Mishkin (2010).
+% Capas: banco central → cada grupo de canales con sus flechas → demanda → Y y π.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  c/.style={draw=#1, fill=#1!14, rounded corners=2pt, line width=0.7pt, text width=3.3cm, align=center, minimum height=0.72cm, font=\scriptsize, inner sep=2pt},
+  sig/.style={-{Stealth[length=1.6mm]}, thick, tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.95cm,-3.25cm) rectangle (7.9cm,4.1cm);
+  % 1: el banco central
+  \capa{1}{\node[draw=dicdeposito, fill=dicdeposito, text=white, rounded corners=2pt, text width=1.55cm, align=center, minimum height=7.2cm] (bc) at (0,0.42) {\textbf{Tipo oficial}\\ y balance del banco central};}
+  % 2: tipo de interés
+  \capa{2}{\node[c=dicopf] (k1) at (3.2,3.6) {\textbf{Tipo de interés}\\ tipo real y coste de uso};
+    \draw[sig] (bc.east |- k1) -- (k1.west);}
+  % 3: crédito: bancario, balance y toma de riesgos
+  \capa{3}{\draw[dicprestamos, line width=0.6pt, dashed, rounded corners=3pt] (1.4,3.08) rectangle (5.0,-0.18);
+    \node[font=\scriptsize\bfseries, text=dicprestamos!70!black] at (3.2,2.85) {Crédito};
+    \node[c=dicprestamos] (k2a) at (3.2,2.25) {\textbf{Crédito bancario}\\ oferta de préstamos};
+    \node[c=dicprestamos] (k2b) at (3.2,1.3) {\textbf{Balance}\\ riqueza neta y prima};
+    \node[c=dicprestamos] (k2c) at (3.2,0.35) {\textbf{Toma de riesgos}\\ apetito de riesgo};
+    \foreach \k in {k2a,k2b,k2c} \draw[sig] (bc.east |- \k) -- (\k.west);}
+  % 4: precios de los activos
+  \capa{4}{\node[c=dicpib] (k3) at (3.2,-0.65) {\textbf{Activos}\\ riqueza, $q$ de \textsc{Tobin}};
+    \draw[sig] (bc.east |- k3) -- (k3.west);}
+  % 5: tipo de cambio
+  \capa{5}{\node[c=dicexterna] (k4) at (3.2,-1.65) {\textbf{Tipo de cambio}\\ exportaciones netas, inflación importada};
+    \draw[sig] (bc.east |- k4) -- (k4.west);}
+  % 6: expectativas
+  \capa{6}{\node[c=dicservicios] (k5) at (3.2,-2.75) {\textbf{Expectativas}\\ credibilidad, salarios y precios};
+    \draw[sig] (bc.east |- k5) -- (k5.west);}
+  % 7: la demanda
+  \capa{7}{\node[draw=dicinflacion, line width=0.7pt, rounded corners=2pt, text width=1.9cm, minimum height=7.2cm] (obj) at (6.85,0.42) {};
+    \node[align=center, text width=1.9cm] at (6.85,1.6) {\textbf{Demanda}\\($C$, $I$, $X-M$)};
+    \foreach \k in {k1,k2a,k2b,k2c,k3,k4,k5} \draw[sig] (\k.east) -- (obj.west |- \k);}
+  % 8: la producción y la inflación, con retraso
+  \capa{8}{\node[align=center, text width=1.9cm] at (6.85,-0.35) {$\Downarrow$\\[5pt]\textbf{Producción}, $Y$\\[5pt]$\Downarrow$\\[5pt]\textbf{Inflación}, $\pi$\\(con 1-2 años de retraso)};}
+\end{tikzpicture}
+\end{document}

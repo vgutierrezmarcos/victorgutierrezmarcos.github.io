@@ -1,0 +1,44 @@
+% Una subida de tipos con fricciones financieras: el doble golpe (3.A.37, II.3).
+% Variante de fuentes/3A34/graficos/coste-fondos.tex (mismos estilos y números):
+%   oferta de fondos: r hasta la riqueza neta RN; desde RN, r + 0,12 (I - RN)^2
+%   inicial: r = 1,5; RN = 3          -> con D = 5,6 - 0,5 I, I_0 = 6,016 (2,592)
+%   solo sube el tipo: r' = 2; RN = 3 -> I = 5,590 (2,805)
+%   sube el tipo y baja la riqueza neta: r' = 2; RN' = 2 -> I_1 = 5,016 (3,092)
+% (la empresa con pocos proyectos, D_1, del gráfico del 3.A.34 no se dibuja.)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=1cm,
+    declare function={of(\i)=1.5+0.12*(\i-3)^2; ofr(\i)=2+0.12*(\i-3)^2;
+      ofn(\i)=2+0.12*(\i-2)^2; dB(\i)=5.6-0.5*\i;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.3,-1.0) rectangle (11.6,5.6);
+  % 1: ejes: inversión de la empresa y coste de los fondos
+  \capa{1}{\ejes{$I$}{coste de los fondos}{9.6}{5.2}}
+  % 2: fondos propios: se invierten al tipo r hasta la riqueza neta RN
+  \capa{2}{\draw[curva1] (0,1.5) node[left,text=black] {$r$} -- (3,1.5);}
+  \capa{2}{\draw[guia] (3,1.5) -- (3,0) node[below,text=black] {$\mathrm{RN}$};}
+  % 3: fondos externos: la prima crece con el endeudamiento
+  \capa{3}{\draw[curva1] plot[domain=3:8.5,samples=50,smooth] (\x,{of(\x)})
+      node[etiqueta,above,text=tceemorado,align=center] {oferta de\\fondos};}
+  % 4: la empresa con muchos proyectos: su demanda corta el tramo creciente
+  \capa{4}{\draw[curva3] (1.6,{dB(1.6)}) -- (9.6,{dB(9.6)}) node[etiqueta,right,text=tceeverde] {$D$};}
+  \capa{4}{\node[punto] (B) at (6.0164,2.5918) {};}
+  \capa{4}{\draw[guia] (B) -- (6.0164,0) node[below,text=black] {$I_0$};}
+  % 5: primer golpe: sube el tipo sin riesgo, r -> r' (toda la oferta sube)
+  \capa{5}{\draw[flecha] (0.5,1.56) -- (0.5,1.94);}
+  \capa{5}{\draw[curva1,desplazada] (0,2) node[left,text=black] {$r'$} -- (3,2) plot[domain=3:7.85,samples=50,smooth] (\x,{ofr(\x)})
+      node[etiqueta,anchor=south east,text=tceemorado,font=\footnotesize] {solo sube $r$};}
+  \capa{5}{\node[punto,fill=white,draw=black,line width=0.6pt] (Br) at (5.59,2.805) {};}
+  \capa{5}{\draw[guia] (Br) -- (5.59,0);}
+  % 6: segundo golpe: baja la riqueza neta, RN -> RN' (el escalón va a la izquierda)
+  \capa{6}{\draw[curvanueva,desplazada] (2,2) plot[domain=2:6.4,samples=50,smooth] (\x,{ofn(\x)});}
+  \capa{6}{\node[etiqueta,anchor=south east,text=tceerojo,font=\footnotesize] at (6.3,4.3) {sube $r$ y baja RN};}
+  \capa{6}{\draw[guia,tceerojo] (2,2) -- (2,0) node[below,text=tceerojo] {$\mathrm{RN}'$};}
+  \capa{6}{\draw[flecha] (2.85,0.7) -- (2.15,0.7);}
+  \capa{6}{\node[punto,fill=tceerojo] (B1) at (5.0164,3.0918) {};}
+  \capa{6}{\draw[guia,tceerojo] (B1) -- (5.0164,0) node[below,text=tceerojo] {$I_1$};}
+  \capa{6}{\draw[flecha] (6.0164,-0.8) -- (5.0164,-0.8);}
+\end{tikzpicture}
+\end{document}

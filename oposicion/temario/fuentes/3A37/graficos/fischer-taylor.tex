@@ -1,0 +1,41 @@
+% Respuesta de la producción a una subida permanente e inesperada del dinero
+% de 1 en t = 0 con contratos de 2 periodos y rigidez real a = 0,1
+% (p*_t = p_t + a y_t; demanda y_t = m_t - p_t). Gráfico de referencia de la
+% ficha fischer-taylor-contratos.
+%   Fischer (eq:fischer): y_t = (m_t - E_{t-1}m_t) + 1/(1+a) (E_{t-1}m_t - E_{t-2}m_t)
+%     -> 1; 0,909; 0; 0...
+%   Taylor (eq:taylor-contratos): rho_w = (1 - sqrt a)/(1 + sqrt a) = 0,5195;
+%     y_k = 1/2 (1 + rho_w) rho_w^k -> 0,760; 0,395; 0,205; 0,107; 0,055; 0,029; 0,015
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=10cm, height=6.2cm,
+      xmin=-0.3, xmax=6.4, ymin=0, ymax=1.12,
+      xtick={0,...,6}, ytick={0,0.25,0.5,0.75,1},
+      axis lines=left, tick align=outside, clip=false,
+      xlabel={periodos desde la subida del dinero}, ylabel={producción, $y_t$},
+      label style={font=\footnotesize},
+      ticklabel style={font=\footnotesize},
+      /pgf/number format/use comma,
+      dicapas,
+    ]
+    % 1: Fischer: el efecto dura lo que el contrato más largo (2 periodos)
+    \capa{1}{\addplot[diclinea=tceeazul] coordinates
+      {(0,1) (1,0.9091) (2,0) (3,0) (4,0) (5,0) (6,0)};}
+    \capa{1}{\addplot[dicpuntos=tceeazul, mark=square*] coordinates
+      {(0,1) (1,0.9091) (2,0) (3,0) (4,0) (5,0) (6,0)};}
+    \capa{2}{\dicrotulo[anchor=south west, font=\footnotesize, text=tceeazul]{(1.05,0.92)}{\textsc{Fischer}: 2 periodos y nada más}}
+    % 3: Taylor: el efecto se va apagando a la tasa rho_w
+    \capa{3}{\addplot[diclinea=tceemorado] coordinates
+      {(0,0.7597) (1,0.3947) (2,0.2051) (3,0.1065) (4,0.0553) (5,0.0288) (6,0.0149)};}
+    \capa{3}{\addplot[dicpuntos=tceemorado] coordinates
+      {(0,0.7597) (1,0.3947) (2,0.2051) (3,0.1065) (4,0.0553) (5,0.0288) (6,0.0149)};}
+    \capa{4}{\dicrotulo[anchor=south west, font=\footnotesize, text=tceemorado]{(2.15,0.24)}{\textsc{Taylor}: cae a la tasa $\rho_w\approx0{,}52$}}
+    % 5: el parámetro de la rigidez real
+    \capa{5}{\dicrotulo[anchor=east, font=\footnotesize]{(6.3,0.7)}{rigidez real $a=0{,}1$}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

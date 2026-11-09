@@ -1,7 +1,7 @@
 # Elección del instrumento de la política monetaria: Poole (1970)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.36** (Política monetaria (I). El diseño y la instrumentación; revisado el 4/11/2026: II.3.2 `sec:poole` con a)-e), gráfico `poole`, y anexo C `anexo:poole`, paso a paso con la regla mixta), **[decidir]** (CC1 y D6 de la coherencia del 3.A.36). Motivo: la elección entre fijar la cantidad de dinero o el tipo de interés es la pregunta de la instrumentación, que está en el título; el 3.A.5 lo cita en la contracrítica al monetarismo y el 3.A.35 y el 3.A.37 lo mencionan. Ficha creada en la fase canon del 3.A.36 (el id ya estaba en la lista del tema y en `_inventario/areas.json`, sin ficha).
-- **Temas que lo usan:** 3.A.36 (desarrollo; hecho, 4/11/2026), 3.A.5 (mención; hecho, 3/11/2026: III.2, l. 580, en la valoración del monetarismo junto a la ley de Goodhart: «si las perturbaciones vienen de la demanda de dinero, estabiliza mejor fijar el tipo de interés», `Poole1970Optimal`, `\vertema{3.A.36}`), 3.A.35 (mención: la estabilidad de la demanda de dinero decide el instrumento; sin revisar), 3.A.37 (mención: por qué el instrumento es un tipo de interés; sin revisar). Relacionadas: `is-lm` (el modelo de partida, con $b$, $k$, $h$ del 3.A.5), `monetarismo` (los objetivos monetarios de los 70 y la ley de Goodhart), `taylor` (la regla de tipos que sucede a la del k %), `objetivo-inflacion`.
+- **Temas que lo usan:** 3.A.36 (desarrollo; hecho, 4/11/2026), 3.A.5 (mención; hecho, 3/11/2026: III.2, l. 580, en la valoración del monetarismo junto a la ley de Goodhart: «si las perturbaciones vienen de la demanda de dinero, estabiliza mejor fijar el tipo de interés», `Poole1970Optimal`, `\vertema{3.A.36}`), 3.A.35 (mención; hecho, 5/11/2026: III.2, la estabilidad de la demanda de dinero decide el instrumento, de palabra, `Poole1970Optimal`, `\vertema{3.A.36}`), 3.A.37 (no lo usa; hecho, 5/11/2026: la transmisión empieza en el tipo oficial sin discutir el instrumento, que es del 3.A.36). Relacionadas: `is-lm` (el modelo de partida, con $b$, $k$, $h$ del 3.A.5), `monetarismo` (los objetivos monetarios de los 70 y la ley de Goodhart), `taylor` (la regla de tipos que sucede a la del k %), `objetivo-inflacion`.
 - **Manuales de referencia:** Poole (1970), «Optimal Choice of Monetary Policy Instruments in a Simple Stochastic Macro Model», *QJE* 84(2) (`Poole1970Optimal`); Walsh (2017), *Monetary Theory and Policy*, cap. 11 (`Walsh2017Monetary`); Romer (2019), cap. 12; Mishkin, Matthews y Giuliodori (2013) (`MishkinMatthewsGiuliodori2013`); Sargent y Wallace (1975) para la indeterminación con el tipo fijo (`SargentWallace1975Rational`).
 
 ## Presentación de referencia (3.A.36, II.3.2 y anexo C)
@@ -46,12 +46,12 @@ la LM óptima es más plana cuanto más pesan las perturbaciones monetarias, y n
 |---|---|---|---|---|
 | 3.A.36 | Instrumentación: qué fija el banco central | desarrollo (hecho, 4/11/2026) | II.3.2 a)-e) en 2′30″ con el gráfico por paneles; anexo C con las varianzas, la condición y la regla mixta | — |
 | 3.A.5 | Valoración del monetarismo | mención (hecho, 3/11/2026) | Una frase junto a Goodhart: con perturbaciones de la demanda de dinero, mejor fijar el tipo; `\vertema{3.A.36}` | El modelo |
-| 3.A.35 | Demanda de dinero | mención | Si la demanda de dinero es inestable, el instrumento es el tipo de interés; `\vertema{3.A.36}` | La derivación |
-| 3.A.37 | Transmisión | mención | Por qué la transmisión empieza en un tipo a muy corto plazo; `\vertema{3.A.36}` | — |
+| 3.A.35 | Demanda de dinero | mención (hecho, 5/11/2026) | III.2, de palabra y sin letras: si se fija la cantidad, toda perturbación de la demanda de dinero mueve el tipo y la renta; cuanto más inestable la demanda de dinero frente a la de bienes, más conviene fijar el tipo (Poole, 1970); `\vertema{3.A.36}` | La derivación y las varianzas |
+| 3.A.37 | Transmisión | no lo usa (hecho, 5/11/2026) | — (el tipo oficial como primer eslabón, sin Poole; el instrumento, `\vertema{3.A.36}`) | — |
 
 ## Divergencias encontradas en el temario actual
 
 - **Resuelto en el 3.A.36 (4/11/2026)**: el Word escribía la función objetivo «$\mathbb{E}[y_t]^2$», con $y=-\alpha i+u$, $m=y-c\,i+v$ (α es la de Barro-Gordon y $c$ la propensión a consumir; $u_t$ es la de costes de la NEK en el mismo tema) y la implicación falsa «con varianzas iguales, el tipo es mejor cuanto más empinada la LM y más plana la IS»; la imagen venía del tema de un preparador; el Reino Unido con objetivos «desde 1973».
-- **3.A.35 y 3.A.37 (sin revisar)**: si lo citan, con esta notación ($\varepsilon^{\mathrm{IS}}_t$, $\varepsilon^{\mathrm{LM}}_t$; nunca las $u_t$, $v_t$ de Walsh, que chocan con la $u_t$ de costes) y `\vertema{3.A.36}`.
+- **3.A.35 cumplido** (5/11/2026): de palabra, sin letras. **3.A.37 revisado** (hecho, 5/11/2026): no lo cita.
 
 Autor: Víctor Gutiérrez Marcos

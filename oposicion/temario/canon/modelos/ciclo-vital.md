@@ -1,7 +1,7 @@
 # Hipótesis del ciclo vital (Modigliani y Brumberg, 1954; Ando y Modigliani, 1963)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.33** (revisado el 31/10/2026: I.2.3 `sec:ciclo-vital`) — lo tiene en el título. Ficha creada en la fase canon del 3.A.33 (K25, **[decidir]**).
-- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.A.29 (mención; hecho, 1/11/2026: Diamond como «la versión de equilibrio general del ciclo vital» con `\vertema{3.A.33}`, III.1 b), ficha `olg-samuelson-diamond`), 3.A.38 (mención: pensiones de reparto y ahorro), 4.B.24 (mención aplicada: envejecimiento, pensiones y ahorro), 4.B.10 (resumen: impuestos y ahorro a lo largo de la vida), 1D01 (mención aplicada; hecho: la estructura de edades como determinante del consumo, l. 424).
+- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.A.29 (mención; hecho, 1/11/2026: Diamond como «la versión de equilibrio general del ciclo vital» con `\vertema{3.A.33}`, III.1 b), ficha `olg-samuelson-diamond`), 3.A.38 (mención; hecho, 5/11/2026: el modelo de ciclo vital calibrado de Conesa, Kitao y Krueger, 2009, en las extensiones de Chamley-Judd, II.1 c); las pensiones se cuentan con el OLG de Diamond, ficha `reparto-vs-capitalizacion`), 4.B.24 (mención aplicada: envejecimiento, pensiones y ahorro), 4.B.10 (resumen: impuestos y ahorro a lo largo de la vida), 1D01 (mención aplicada; hecho: la estructura de edades como determinante del consumo, l. 424).
 - **Manuales de referencia:** Modigliani y Brumberg (1954); Ando y Modigliani (1963), *AER*; Modigliani (1986), conferencia Nobel, *AER*; Romer (2019), cap. 8; Deaton (1992), *Understanding Consumption*; Attanasio y Weber (2010), *JEL*.
 
 ## Presentación de referencia (3.A.33, I.2.3)
@@ -26,7 +26,7 @@ $$C_t=\alpha_L\,Y^L_t+\alpha_b\,b_t$$
 |---|---|---|---|---|
 | 3.A.33 | Teorías del consumo | desarrollo (hecho, 31/10/2026) | Todo lo anterior en 2′ con el gráfico | — |
 | 3.A.29 | Modelización dinámica | mención (hecho, 1/11/2026) | Las OLG de Samuelson y Diamond son el ciclo vital de 2 periodos en equilibrio general; remite al 3.A.33 | La función agregada y la evidencia |
-| 3.A.38 | Política fiscal y gasto | mención | Pensiones de reparto y ahorro privado | El modelo |
+| 3.A.38 | Política fiscal y ahorro | mención (hecho, 5/11/2026) | El ciclo vital calibrado de Conesa, Kitao y Krueger (2009): impuesto óptimo sobre el capital ≈ 36 %; las pensiones con el OLG de Diamond (ficha `reparto-vs-capitalizacion`); la remisión del Word al 3.A.29 por el ciclo vital (nota 30) sobra | El modelo |
 | 4.B.24 | Pensiones | mención aplicada | Envejecimiento y ahorro; resumir en 2 líneas para cantarse sin el 3.º | La derivación |
 | 4.B.10 | Impuestos y ahorro | resumen | Fiscalidad del ahorro a lo largo de la vida con el mismo perfil | La agregación |
 | 1D01 | Dictamen | mención aplicada (hecho) | Población dependiente → más consumo en proporción a la renta (Leff, 1969) | La teoría |

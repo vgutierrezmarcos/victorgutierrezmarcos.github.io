@@ -1,0 +1,31 @@
+% Motivo precaución: Whalen (1966). Minimiza i M + b sigma^2/M^2: el ahorro
+% esperado por el último euro (beneficio marginal), 2 b sigma^2/M^3,
+% decreciente y convexo, se iguala al coste de oportunidad, i.
+% Calibración: 2 b sigma^2 = 8; i = 1 da M* = 8^(1/3) = 2; i' = 2 da
+% M*' = 4^(1/3) = 1,587 (M* = (2 b sigma^2 / i)^(1/3)).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.6cm,y=1cm,declare function={bmg(\m)=8/(\m^3);}]
+  \def\Mopt{2}
+  \def\Mnue{1.5874}
+  % 1: ejes
+  \capa{1}{\ejes{$M$}{euros por euro}{4.6}{4.8}}
+  % 2: beneficio marginal (ahorro esperado de costes de ruptura)
+  \capa{2}{\draw[curva1] plot[domain=1.21:4.3,samples=100,smooth] (\x,{bmg(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=west,align=left] at (1.33,3.7) {$2b\sigma^2/M^3$\\(beneficio marginal)};}
+  % 3: coste de oportunidad i
+  \capa{3}{\draw[curva2] (0,1) -- (4.3,1) node[etiqueta,right,text=tceeazul,align=left] {$i$ (coste de\\oportunidad)};}
+  \capa{3}{\node[left] at (0,1) {$i$};}
+  % 4: M* y proyección
+  \capa{4}{\node[punto] (E) at (\Mopt,1) {};}
+  \capa{4}{\draw[guia] (E) -- (\Mopt,0) node[below,text=black] {$M^*$};}
+  % 5: subida de i y M*'
+  \capa{5}{\draw[curvanueva,desplazada] (0,2) -- (4.3,2) node[etiqueta,right,text=tceerojo] {$i'$};}
+  \capa{5}{\node[left] at (0,2) {$i'$};}
+  \capa{5}{\node[punto,fill=tceerojo] (E2) at (\Mnue,2) {};}
+  \capa{5}{\draw[guia] (E2) -- (\Mnue,0) node[below,text=black] {$M^{*\prime}$};}
+  \capa{5}{\draw[flecha] (\Mopt-0.05,-0.62) -- (\Mnue+0.05,-0.62);}
+\end{tikzpicture}
+\end{document}

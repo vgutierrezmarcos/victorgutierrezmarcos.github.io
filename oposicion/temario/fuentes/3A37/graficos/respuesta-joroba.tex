@@ -1,0 +1,41 @@
+% Respuesta estilizada de la producción y de los precios a una subida
+% inesperada del tipo de interés en t = 0 (3.A.37, I.3): la «joroba».
+% Esquema sin escala vertical (las formas, no las cifras), a partir de
+% Christiano, Eichenbaum y Evans (1999) y Walsh (2017, cap. 1).
+%   producción: y(t) = -1,1 (t/5) e^{1 - t/5}  -> mínimo en t = 5 trimestres
+%     (entre 1 y 2 años) y vuelta a cero;
+%   precios: p(t) = -0,75 (t/10)^3 e^{3(1 - t/10)} -> casi nada el primer año,
+%     mínimo en t = 10 trimestres (≈ 29 meses de media, Havranek y Rusnak, 2013).
+% Eje horizontal en trimestres (x = 0,5 cm por trimestre).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=2.4cm,
+    declare function={yy(\t)=-1.1*(\t/5)*exp(1-\t/5); pp(\t)=-0.75*(\t/10)^3*exp(3*(1-\t/10));}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.6,-1.45) rectangle (25.5,0.62);
+  % 1: ejes: trimestres desde la subida y desviación respecto a la senda sin subida
+  \capa{1}{\draw[eje] (0,0) -- (22,0) node[above left=2pt and 0pt] {trimestres};}
+  \capa{1}{\draw[eje] (0,-1.35) -- (0,0.5) node[left,align=right,font=\footnotesize] {desviación\\ respecto a la\\ senda sin subida};}
+  \capa{1}{\foreach \t in {4,8,...,20} \draw (\t,0.03) -- (\t,-0.03) node[below=1pt,font=\footnotesize] {\t};}
+  \capa{1}{\node[left] at (0,0) {$0$};}
+  % 2: la subida inesperada del tipo, en t = 0
+  \capa{2}{\draw[flecha] (0.6,0.08) -- (0.6,0.42);}
+  \capa{2}{\node[etiqueta,right,text=tceerojo,font=\footnotesize] at (0.8,0.3) {sube $i_t$ por sorpresa};}
+  % 3: la producción: cae despacio, toca fondo y vuelve (la joroba)
+  \capa{3}{\draw[curva1] plot[domain=0:21.5,samples=90,smooth] (\x,{yy(\x)});}
+  \capa{3}{\node[etiqueta,text=tceemorado,anchor=south west] at (21.5,{yy(21.5)-0.02}) {producción};}
+  % 4: el máximo efecto sobre la producción, entre 1 y 2 años
+  \capa{4}{\node[punto,fill=tceemorado] (Y) at (5,-1.1) {};}
+  \capa{4}{\draw[guia] (Y) -- (5,0);}
+  \capa{4}{\node[etiqueta,below,text=tceemorado,font=\footnotesize,align=center] at (5,-1.14) {máximo efecto: 1-2 años};}
+  % 5: los precios: apenas se mueven al principio y bajan después
+  \capa{5}{\draw[curva2] plot[domain=0:21.5,samples=90,smooth] (\x,{pp(\x)});}
+  \capa{5}{\node[etiqueta,text=tceeazul,anchor=north west] at (21.5,{pp(21.5)+0.03}) {precios};}
+  % 6: el máximo efecto sobre los precios, más tarde
+  \capa{6}{\node[punto,fill=tceeazul] (P) at (10,-0.75) {};}
+  \capa{6}{\draw[guia] (P) -- (10,0);}
+  \capa{6}{\node[etiqueta,below right=0pt and -2pt,text=tceeazul,font=\footnotesize,align=left] at (10,-0.78) {máximo efecto: 2-3 años\\ (29 meses de media)};}
+\end{tikzpicture}
+\end{document}

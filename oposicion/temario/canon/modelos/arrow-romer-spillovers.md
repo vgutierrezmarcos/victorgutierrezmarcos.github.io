@@ -1,7 +1,7 @@
 # Externalidades del capital: aprendizaje por la práctica con desbordamientos (Arrow 1962; Romer 1986)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.44** (crecimiento endógeno: rendimientos crecientes) — único tema que lo desarrolla: I.2.4 (`sec:externalidades`, 1′30″ en el cante) con a)-d); revisado el 1/11/2026. Ficha creada en la fase canon del 3.A.44 (CC2; **[decidir]**). **Id `arrow-romer-spillovers`** (ya estaba en `mapa.yaml`, `alias.json`, `areas.json` y la ficha `grossman-helpman`); alias `learning-by-doing`, `aprendizaje-por-la-practica`, `romer-1986` y **`lucas-spillovers`** (el id que el inventario dio al «modelo de Lucas» del 3.B.9, que se quita de `uzawa-lucas`).
-- **Temas que lo usan:** 3.A.44 (desarrollo; hecho, 1/11/2026), 3.B.9 (resumen: su «modelo de Lucas de externalidades», que hay que renombrar), 3.A.38 (mención: Barro, 1990, leído como desbordamiento del gasto público), 3.A.43 (mención; hecho, 31/10/2026: «con externalidades del capital o del conocimiento el mercado invierte de menos», valoración del RCK)
+- **Temas que lo usan:** 3.A.44 (desarrollo; hecho, 1/11/2026), 3.B.9 (resumen: su «modelo de Lucas de externalidades», que hay que renombrar), 3.A.38 (no lo usa: revisado el 5/11/2026; Barro, 1990, se cuenta como gasto productivo, sin la lectura de desbordamiento, que queda en la nota del 3.A.44), 3.A.43 (mención; hecho, 31/10/2026: «con externalidades del capital o del conocimiento el mercado invierte de menos», valoración del RCK)
 - **Manuales de referencia:** Arrow (1962), *REStud*; Romer (1986), *JPE* (tesis de 1983, Chicago); Barro y Sala-i-Martin (2004), sec. 4.3; Sala-i-Martín (2000), cap. 3; Acemoglu (2009), cap. 11; Wright (1936). La curva de aprendizaje de la empresa, base de la regularidad, es la ficha `curva-aprendizaje` (3.A.12).
 
 ## Presentación de referencia (3.A.44, I.2.4)
@@ -36,7 +36,7 @@ $$\gamma^{\mathrm E}=\frac{\alpha A-\delta-\rho}{\theta}\quad<\quad\gamma^{\math
 |---|---|---|---|---|
 | 3.A.44 | Rendimientos crecientes con competencia | desarrollo (hecho, 1/11/2026) | Lo de arriba; con E = k la principal y E = K para el efecto escala | — |
 | 3.B.9 | Comercio y crecimiento | resumen | Con el nombre de Arrow y Romer (no «Lucas»), la misma `eq:externalidad` con E y η, y lo que añade la apertura (el conocimiento se desborda entre países); si usa β para la externalidad de la apertura, decir que no es el factor de descuento | La derivación de los 3 casos `\vertema{3.A.44}` |
-| 3.A.38 | Política fiscal y crecimiento | mención | Barro (1990) como desbordamiento: la inversión pública eleva la productividad de todas las empresas | El modelo |
+| 3.A.38 | Política fiscal y crecimiento | no lo usa (revisado, 5/11/2026) | — (la lectura de Barro como desbordamiento queda en el 3.A.44) | — |
 | 3.A.43 | Valoración del RCK | mención (hecho, 31/10/2026) | Con externalidades del capital, el mercado invierte de menos | El modelo `\vertema{3.A.44}` |
 
 ## Divergencias encontradas en el temario actual

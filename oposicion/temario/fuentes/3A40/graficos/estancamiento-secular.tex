@@ -1,0 +1,43 @@
+% Estancamiento secular en el mercado de fondos prestables (3.A.40, I.1):
+% el tipo natural cae por debajo del límite inferior, r^n < i^ELB - pi^e.
+% Gráfico de referencia de la ficha «estancamiento-secular» del canon (image22
+% del Word del 3.A.39 rehecho; rótulos S(r) e I(r)+G-T de 3A33/fondos-prestables).
+%   límite inferior del tipo real: r = -1
+%   S_0: r = F - 3;  I_0: r = 5 - F;  E_0 = (4; 1), r^n_0 = 1
+%   más ahorro: S_1: r = F - 5,5; menos inversión: I_1: r = 2,5 - F
+%     tipo natural nuevo: F = 4, r^n_1 = -1,5 < -1 (inalcanzable)
+%   al tipo -1: S_1 da F = 4,5, I_1 da F = 3,5: sobra ahorro (1)
+%   cae la renta, el ahorro baja: S_2: r = F - 4,5; E_2 = (3,5; -1)
+% (La propuesta C18 tenía S_1 y S_2 desplazadas 0,5 de menos: corregido.)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm]
+  % 1: ejes: fondos prestables y tipo de interés real (con negativos)
+  \capa{1}{\draw[eje] (0,0) -- (8.6,0) node[below left=2pt and 0pt] {$S,\ I+G-T$};}
+  \capa{1}{\draw[eje] (0,-2.8) -- (0,5.3) node[left] {$r$};}
+  \capa{1}{\node[left] at (0,0) {$0$};}
+  % 2: ahorro e inversión de partida y tipo natural positivo
+  \capa{2}{\draw[curva3] (0.7,-2.3) -- (6.5,3.5) node[etiqueta,right] {$S(r)$};}
+  \capa{2}{\draw[curva2] (0.5,4.5) node[etiqueta,above right=0pt and -2pt] {$I(r)+G-T$} -- (5.2,-0.2);}
+  \capa{2}{\node[punto] (E0) at (4,1) {};}
+  \capa{2}{\node[etiqueta,right=3pt] at (E0) {$E_0$};}
+  \capa{2}{\draw[guia] (0,1) node[left,text=black] {$r^n_0$} -- (4,1);}
+  % 3: el límite inferior del tipo real
+  \capa{3}{\draw[curvanueva,dashed] (0,-1) -- (8.4,-1) node[etiqueta,below left,text=tceerojo] {$i^{\mathrm{ELB}}-\pi^e$};}
+  % 4: más ahorro y menos inversión: el tipo natural cae por debajo del límite
+  \capa{4}{\draw[curva3,desplazada] (3.2,-2.3) -- (7.8,2.3) node[etiqueta,right] {$S_1(r)$};}
+  \capa{4}{\draw[curva2,desplazada] (0.3,2.2) -- (4.9,-2.4) node[etiqueta,right] {$I_1(r)+G-T$};}
+  \capa{4}{\node[circle,draw=black,fill=white,thick,inner sep=1.3pt] at (4,-1.5) {};}
+  \capa{4}{\draw[guia] (0,-1.5) node[left,text=black] {$r^n_1$} -- (4,-1.5);}
+  % 5: al tipo más bajo posible sobra ahorro
+  \capa{5}{\draw[flecha,<->,shorten <=1pt,shorten >=1pt] (3.5,-1) -- (4.5,-1);}
+  \capa{5}{\node[etiqueta,anchor=west,font=\footnotesize,text=tceerojo] at (4.95,-0.72) {exceso de ahorro};}
+  % 6: la renta cae y el ahorro se desplaza a la izquierda hasta E_2
+  \capa{6}{\draw[curva4] (2.2,-2.3) -- (7.2,2.7) node[etiqueta,right] {$S_2(r)$ (renta menor)};}
+  \capa{6}{\node[punto] (E2) at (3.5,-1) {};}
+  \capa{6}{\node[etiqueta] (E2r) at (2.55,-0.62) {$E_2$};}
+  \capa{6}{\draw[very thin,tceegris,shorten <=1pt,shorten >=2pt] (E2r.south east) -- (E2);}
+\end{tikzpicture}
+\end{document}

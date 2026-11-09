@@ -1,0 +1,91 @@
+% La transmisión de los tipos del BCE a los tipos de mercado y bancarios,
+% enero de 2021-octubre de 2026 (% anual), en 2 paneles apilados: a) zona del
+% euro, b) España (3.A.37, I.2). Datos: ../datos/transmision-tipos-2021-2026.csv
+% (BCE, ECB Data Portal, MIR, FM y EST; consulta 5/11/2026). Mensual, sin huecos:
+% x = 2021 + (fila + 0,5)/12 (mitad del mes); los tipos MIR acaban en septiembre
+% de 2026 (la celda de octubre está vacía).
+% Cifras de control (V4-V6): empresas ZE 1,83 (jun. 2022) -> 5,28 (oct. 2023);
+%   hipotecas nuevas ZE 1,97 -> 4,03 (nov. 2023); vista ZE 0,00 -> 0,39;
+%   hipotecas vivas ES 1,24 -> 3,71 (feb. 2024), ZE 1,62 -> 2,47 (sept. 2024).
+% Paleta (la del esquema de canales, canales-transmision, y la del 1D01): tipo
+% oficial dicdeposito; mercado (Euríbor) dicopf; crédito en la gama del crédito
+% (hipotecas dicconspriv, nuevas continua y vivas discontinua; empresas
+% dicprestamos); depósitos en verde (dicempleo, a plazo continua, a la vista
+% discontinua). Marcas: 1.ª subida (jul. 2022), 4 % (sept. 2023), nueva subida
+% (jun. 2026).
+% Capas (CRITERIOS §7): ejes → tipo oficial → Euríbor → crédito → depósitos →
+% hipotecas vivas → marcas y rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/transmision-tipos-2021-2026.csv}\tipos
+\newcommand{\serie}[2]{\addplot[#1] table[x expr={2021+(\coordindex+0.5)/12},y=#2] {\tipos};}
+% el tipo oficial, a fin de mes y en escalón: cambia al final del mes en que se decide
+\newcommand{\oficial}{\addplot[const plot mark right,diclinea=dicdeposito,line width=1.6pt]
+  table[x expr={2021+(\coordindex+1)/12},y=facilidad_deposito] {\tipos};}
+\pgfplotsset{panel/.style={width=13cm,height=5.4cm,
+    xmin=2021,xmax=2026.9,ymin=-1,ymax=5.8,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={2021,...,2026},ytick={-1,0,...,5},
+    x tick label style={/pgf/number format/set thousands separator={}},
+    ticklabel style={font=\footnotesize},
+    /pgf/number format/use comma,
+    ylabel={\% anual},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    title style={font=\small\bfseries,at={(0,1)},anchor=south west,yshift=2pt},
+    dicapas}}
+\newcommand{\marcas}{%
+  \dicraya[dicumbral]{(2022.54,-1) (2022.54,5.8)}
+  \dicraya[dicumbral]{(2023.71,-1) (2023.71,5.8)}
+  \dicraya[dicumbral]{(2026.46,-1) (2026.46,5.8)}
+  \dicraya{(2021,0) (2026.9,0)}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+% ---------------- a) zona del euro ----------------
+\begin{axis}[panel,name=ze,title={a) Zona del euro}]
+  % 1: ejes, cero y marcas de las subidas
+  \capa{1}{\marcas}
+  % 2: tipo oficial
+  \capa{2}{\oficial}
+  % 3: mercado
+  \capa{3}{\serie{diclinea=dicopf}{euribor_12m}}
+  % 4: crédito nuevo
+  \capa{4}{\serie{diclinea=dicconspriv}{ze_vivienda_coste}}
+  \capa{4}{\serie{diclinea=dicprestamos}{ze_empresas_coste}}
+  % 5: depósitos
+  \capa{5}{\serie{diclinea=dicempleo}{ze_depositos_plazo_hogares}}
+  \capa{5}{\serie{diclinea=dicempleo,dashed}{ze_depositos_vista_hogares}}
+  % 6: hipotecas vivas
+  \capa{6}{\serie{diclinea=dicconspriv,densely dashed}{ze_vivienda_saldo}}
+  % 7: rótulos de las marcas
+  \capa{7}{\dicrotulo[anchor=south west,font=\scriptsize,text=dicreferencia,xshift=1pt]{(2022.54,-0.98)}{1.ª subida}}
+  \capa{7}{\dicrotulo[anchor=south west,font=\scriptsize,text=dicreferencia,xshift=1pt]{(2023.71,-0.98)}{4~\%}}
+  \capa{7}{\dicrotulo[anchor=south east,font=\scriptsize,text=dicreferencia,xshift=-1pt]{(2026.46,-0.98)}{nueva subida}}
+\end{axis}
+% ---------------- b) España ----------------
+\begin{axis}[panel,name=es,at={(ze.south west)},anchor=north west,yshift=-1.7cm,title={b) España},
+    legend style={at={(0.5,-0.2)},anchor=north,draw=none,font=\footnotesize,legend columns=4,
+      /tikz/every even column/.append style={column sep=0.35cm}},
+    legend cell align=left]
+  \capa{1}{\marcas}
+  \capa{2}{\oficial
+    \addlegendentry{facilidad de depósito}}
+  \capa{3}{\serie{diclinea=dicopf}{euribor_12m}
+    \addlegendentry{Euríbor a 12 meses}}
+  \capa{4}{\serie{diclinea=dicconspriv}{es_vivienda_coste}
+    \addlegendentry{hipotecas nuevas}}
+  \capa{4}{\serie{diclinea=dicprestamos}{es_empresas_coste}
+    \addlegendentry{préstamos nuevos a empresas}}
+  \capa{5}{\serie{diclinea=dicempleo}{es_depositos_plazo_hogares}
+    \addlegendentry{depósitos a plazo}}
+  \capa{5}{\serie{diclinea=dicempleo,dashed}{es_depositos_vista_hogares}
+    \addlegendentry{depósitos a la vista}}
+  \capa{6}{\serie{diclinea=dicconspriv,densely dashed}{es_vivienda_saldo}
+    \addlegendentry{hipotecas vivas}}
+\end{axis}
+% Marco fijo (con las capas de pgfplots y 2 ejes, el recuadro no cuenta la leyenda ni los
+% rótulos del 2.º panel; además, todas las capas del vídeo tienen el mismo tamaño)
+\path (-1.6cm,-7.45cm) rectangle (13.75cm,4.55cm);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,251 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Fiscal, crecimiento y ahorro]{3.A.38}{La política fiscal: efectos sobre el crecimiento económico y el ahorro.}
+\tcefecha{05/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: la cigarra y la hormiga}{2,5}
+\apartadocante{I. Corto plazo: estabilizar la demanda}{9,5}
+\subcante{1. Debate tradicional: IS-LM}{1,5}
+\subcante{2. Modelo de ciclo real con gasto}{5}
+\subcante{3. Modelo neokeynesiano}{3}
+\apartadocante{II. Largo plazo: el ahorro}{9}
+\subcante{1. Agente de horizonte infinito}{3}
+\subcante{2. Pensiones públicas y ahorro}{6}
+\apartadocante{III. Largo plazo: el crecimiento}{8}
+\subcante{1. Crecimiento endógeno: \autor{Barro} (1990)}{5,5}
+\subcante{2. Estructura impositiva y crecimiento}{2,5}
+\apartadocante{Conclusión}{1}}
+\emph{Reparto}: el título pide crecimiento y ahorro: corto plazo $\leq$\tiempo{9,5}; IS-LM en \tiempo{1,5}; NEK y multiplicadores, resumidos (\vertema{3.A.40}, \vertema{4.B.4}). 3 desarrollos propios: ciclo real con gasto, pensiones en \autor{Diamond} y \autor{Barro} (1990). \emph{Hilo}: \emph{nivel} frente a \emph{tasa}. \emph{Pizarra}: \emph{izda.}, pregunta, fábula y pegatinas: «lo que no va en lágrimas va en suspiros» (efecto riqueza), «no hay plazo que no se cumpla ni deuda que no se pague» (ER), «dos no riñen si uno no quiere» (BC y multiplicador), «no mates la gallina de los huevos de oro» (\autor{Chamley}-\autor{Judd}), «hijo eres, padre serás; cual hiciste, tal habrás» (reparto), «la avaricia rompe el saco» (ineficiencia dinámica), «ni contigo ni sin ti» (\autor{Barro}); \emph{centro}, respuestas al gasto en el RBC, plano $(x,\pi)$, fases de RCK con gasto, \autor{Diamond} con pensiones, U invertida; \emph{dcha.}, recuadradas hasta el final: recursos con $G$, \autor{Euler} con $\tau_K$, ahorro con reparto y $\tau^*=1-\alpha$.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: fábula de \autor{Samaniego} (1781): la cigarra canta, la hormiga guarda. España 2025: déficit 2,4\,\% del PIB, deuda 100,5\,\%; a la vez, ahorro nacional bruto 25,0\,\% (máximo desde 1995) y AA.\,PP.\ vuelven a ahorrar (0,3\,\%; no desde 2008). Ahorro público = ingresos $-$ gasto corriente; el déficit resta además inversión y transferencias de capital: no se contradicen. ¿\emph{Es la política fiscal cigarra u hormiga? ¿Hace ahorrar y crecer más o solo adelanta el verano a costa del invierno}?
+\item \textbf{Relevancia}: \emph{teoría}: se cruzan ciclo y crecimiento; los efectos dependen del horizonte de los hogares, de la financiación (suma fija, distorsionantes, deuda) y de si el gasto es productivo. \emph{Política}: gasto AA.\,PP.\ 45,3\,\% del PIB en España y 49,8\,\% en la zona del euro (2025); reglas UE de 2024: senda de gasto neto \vertema{3.A.39}; pensiones de 13,1\,\% (2022) a máx.\ 17,3\,\% hacia 2050 \vertema{4.B.24}.
+\item \textbf{Contextualización}: \concepto{política fiscal} = actuación del sector público sobre gasto, impuestos y saldo para estabilizar, crecer y redistribuir; pareja de la monetaria \vertema{3.A.36}. \emph{Instrumentos}: gasto (consumo, inversión, transferencias), impuestos (suma fija o distorsionantes), deuda. \emph{Discrecional} vs.\ \emph{automática} (\concepto{estabilizadores automáticos} \vertema{4.B.4}). 3 funciones de \autor{Musgrave} (1959): asignativa, redistributiva, estabilizadora \vertema{4.B.1}. 2 caminos: \emph{corto plazo} (\autor{Kahn}, 1931 $\to$ ER, \autor{Barro} 1974 $\to$ RBC, \autor{Baxter}-\autor{King} 1993 $\to$ NEK, \autor{Woodford} 2011 $\to$ \autor{Blanchard}-\autor{Leigh} 2013) y \emph{largo} (\autor{Diamond} 1965; \autor{Chamley} 1986-\autor{Judd} 1985; \autor{Barro} 1990, \autor{Rebelo} 1991).
+\item \textbf{Problemática}: ¿cuánto mueve $Y$ el gasto a CP y de qué depende? ¿Qué hacen deuda, impuestos y pensiones con el ahorro y el capital? ¿Cambia la \emph{tasa} de crecimiento o solo el \emph{nivel}?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, corto plazo (IS-LM, RBC, NEK); \hyperref[rep:II]{II}, ahorro (horizonte infinito; generaciones solapadas); \hyperref[rep:III]{III}, crecimiento (gasto productivo, impuestos). Del CP al LP y del \emph{nivel} a la \emph{tasa}: ahorro antes que crecimiento, aunque el título los nombre al revés.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9,5]{I. Política fiscal en el corto plazo\label{rep:I}}
+\begin{ideaclave}
+El gasto mueve la producción a CP, pero cuánto depende del modelo: mucho en el keynesiano (precios rígidos); poco en el RBC (efecto riqueza, multiplicador $>0$ y $<1$); algo más en el NEK, según responda el banco central. En todos el gasto se paga, hoy o mañana: eso lleva al largo plazo.
+\end{ideaclave}
+
+\sub{I.1. Debate tradicional: IS-LM\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Idea}: precios rígidos $\Rightarrow$ la demanda fija $Y$; \concepto{multiplicador} de \autor{Kahn} (1931) por el consumo inducido; \autor{Keynes} prefería gasto a rebajas (parte se ahorra) \vertema{3.A.4}. Con $C=\overline C+c(1-t)Y$, $I=\overline I-bi$, $M/P=kY-hi$ \vertema{3.A.5}:
+\begin{formula}
+\centering $\displaystyle\frac{\Delta Y^*}{\Delta\overline G}=\frac{1}{1-c(1-t)+bk/h}$
+\end{formula}
+\item[] $bk/h$ (se \emph{suma}) = \concepto{expulsión} (\emph{crowding-out}): $G$↑ $\Rightarrow$ $Y$↑ $\Rightarrow$ $M^d$↑ $\Rightarrow$ $i$↑ $\Rightarrow$ $I$↓. \emph{Escuelas} ($b$, $h$): \emph{clásicos} $h=0$, LM vertical, expulsión total; \emph{keynesianos} $b$ pequeño, $h$ grande (trampa de liquidez): $\approx1/[1-c(1-t)]$; \emph{monetaristas} $b$ grande, $h$ pequeño: expulsión casi total (\autor{Friedman}-\autor{Heller}, 1969; LP: \autor{Phillips} vertical, solo inflación \vertema{3.A.28}). Presupuesto equilibrado: multiplicador 1 (\autor{Haavelmo}, 1945), $<1$ en IS-LM.
+\item \emph{Abierta} (\autor{Mundell}-\autor{Fleming}): $m$ reduce el multiplicador; movilidad perfecta: muy eficaz con tipo \emph{fijo}, ineficaz con \emph{flexible} (apreciación); sin movilidad, al revés \vertema{3.A.32}.
+\item \emph{Valoración}: estático, sin expectativas ni restricción intertemporal; desde los 70: ¿qué hace $G$ si los hogares saben que lo pagarán?
+\end{itemize}
+
+\sub{I.2. Modelo de ciclo real con política fiscal\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Idea}: RBC \vertema{3.A.42} + Estado que gasta y grava (\autor{Christiano}-\autor{Eichenbaum}, 1992; \autor{Baxter}-\autor{King}, 1993; presentación de \autor{Sims}, 2017). ¿Qué hace $G$↑ sin rigideces y con hogares que saben que lo pagarán? «Lo que no va en lágrimas va en suspiros».
+\item \emph{Supuestos}: los del RBC (cerrada, 1 bien, horizonte infinito, representativos, competencia perfecta, precios flexibles, ER, \emph{Cobb-Douglas}, $\ln A_t$ AR(1)). $G_t$ no da utilidad ni produce; $\ln G_t=(1-\rho_G)\ln\overline G+\rho_G\ln G_{t-1}+\varepsilon^G_t$. Financia con $T_t$ (suma fija), $\tau_{L,t}$, $\tau_{K,t}$ y deuda:
+\begin{formula}
+\centering $G_t+r^D_{t-1}D_{t-1}=T_t+\tau_{L,t}w_tL_t+\tau_{K,t}r_tK_t+(D_t-D_{t-1})$
+\end{formula}
+\item \emph{Ecuaciones}: las del RBC con 2 cambios: cuñas fiscales en el hogar y $G$ en la restricción de recursos:
+\begin{formula}
+\centering $C_t^{-\theta}=\beta\,\mathbb{E}_t\big[C_{t+1}^{-\theta}\big(1+(1-\tau_{K,t+1})r_{t+1}\big)\big]$\\
+$\chi L_t^{\varphi}=C_t^{-\theta}(1-\tau_{L,t})\,w_t$
+\end{formula}
+\funcionclave{K_{t+1}=(1-\delta)K_t+Y_t-C_t-G_t}
+\item[] La restricción del hogar sobra (\autor{Walras}).
+\item \concepto{Equivalencia ricardiana}: con suma fija, ni $T_t$ ni $D_t$ entran en las ecuaciones: dada la senda de $G$, da igual impuestos o deuda (\autor{Barro}, 1974, «Are Government Bonds Net Wealth?»; \autor{Ricardo}, 1817, cap.~17, que dudó; nombre de \autor{Buchanan}, 1976). \emph{La deuda no es riqueza neta, sino impuestos aplazados}: «no hay plazo que no se cumpla ni deuda que no se pague». No dice que $G$ no tenga efectos ni habla de monetizar. Falla con vidas finitas sin herencias, impuestos distorsionantes, restricciones de liquidez, miopía \vertema{3.A.33}.
+\item \emph{Gasto↑ con suma fija}: \concepto{efecto riqueza negativo} $\Rightarrow$ $C$↓ y, ocio normal, $L^s$ a la dcha.: $w$↓, $L$↑, $Y$↑ (en el impacto, $r$↑: sustitución intertemporal). $Y$ sube menos que $G$ (expulsa $C$ e $I$): multiplicador \emph{positivo y menor que 1}.
+\item \emph{Persistencia}: \emph{transitorio} ($\rho_G=0$): apenas riqueza, se paga con $I$↓; impacto 0,03. \emph{Persistente} ($\rho_G=0{,}95$): 0,32 en el impacto, $C$ cae más. \emph{Permanente}: $K$ sube como $L$, multiplicador LP 0,75 ($1/[s_C(\theta+\varphi)/\theta+s_G]$); $>1$ con trabajo más elástico. Oferta inelástica $\Rightarrow$ \concepto{expulsión completa}.
+\end{itemize}
+\graficorepaso[\linewidth]{irf-rbc-gasto}{Gasto +1\,\% del PIB; $\alpha=1/3$, $\beta=0{,}99$, $\delta=0{,}025$, $\theta=\varphi=1$, $G/Y=0{,}2$. a) $Y$, $C$, $I$ con suma fija, $\rho_G=0{,}95$ (continuas) y $0$ (discontinuas); b) horas↑, $w$↓; c) $Y$ con suma fija (0,32) y con impuesto sobre el trabajo ($-0{,}68$)}
+\begin{itemize}
+\item \emph{Impacto} de +1\,\% del PIB ($\Delta Y$, $\Delta C$, $\Delta I$; horas en \%): suma fija con $\rho_G=0$: 0,03, $-0{,}04$, $-0{,}93$; 0,05. Con $\rho_G=0{,}95$: 0,32, $-0{,}36$, $-0{,}31$; 0,49. Impuesto sobre el trabajo: $-0{,}68$, $-0{,}61$, $-1{,}07$; $-1{,}02$.
+\item \emph{Extensiones}: \emph{distorsionantes}: la ER falla; $\tau_L$↓ salario neto y horas: sustitución domina, multiplicador \emph{negativo} (tipo implícito sobre el trabajo 2024: 36,2\,\% España, 37,1\,\% UE); $\tau_K$↓ inversión; tipos como perturbación (\autor{McGrattan}, 1994). \concepto{Suavización impositiva} (\autor{Barro}, 1979): distorsión $\propto\tau^2$ $\Rightarrow$ tipo medio constante $T_t/Y_t=\bar\tau$, la deuda absorbe lo transitorio (guerra, pandemia) y el ciclo: \autor{Ramsey} en el tiempo \vertema{4.B.11}. \emph{Gasto productivo} (\autor{Baxter}-\autor{King}): $Y=AK^{\alpha}L^{1-\alpha}(K^G)^{\alpha_G}$; 3 efectos: absorbe recursos, $Y$↑ con los mismos factores, PMg privados↑ (complementa); CP domina el 1.º, LP el 3.º; con $\alpha_G=1-\alpha$, crecimiento endógeno.
+\item \emph{Evidencia}: acierta en $Y$ y horas, no en $C$: en los VAR, $C$ \emph{sube} (\autor{Blanchard}-\autor{Perotti}, 2002; \autor{Galí}-\autor{López-Salido}-\autor{Vallés}, 2007).
+\item \emph{Valoración}: \emph{a favor}, microfundamentos (efecto riqueza): importan el gasto y su financiación, no el déficit. \emph{En contra}: $C$ cae; necesita oferta de trabajo más elástica que la micro \vertema{3.A.25}; ciclo eficiente: nada que estabilizar.
+\end{itemize}
+
+\sub{I.3. Modelo neokeynesiano\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Supuestos}: canónico \vertema{3.A.7} sin capital, competencia monopolística, \autor{Calvo}; $Y_t=C_t+G_t$, suma fija; $g_t\equiv-\ln(1-G_t/Y_t)\simeq G_t/Y_t$. El gasto solo entra en la IS:
+\begin{formula}
+\centering $y_t=\mathbb{E}_ty_{t+1}-\tfrac1\theta\big(i_t-\mathbb{E}_t\pi_{t+1}-\rho\big)+\big(g_t-\mathbb{E}_tg_{t+1}\big)$
+\end{formula}
+\item[] En brecha: IS canónica con $r^n_t=\rho+\theta\mathbb{E}_t\Delta y^n_{t+1}-\theta\mathbb{E}_t\Delta g_{t+1}$; \autor{Phillips} NK y \autor{Taylor} sin cambios \vertema{3.A.36}. $G$↑ transitorio $\Rightarrow$ $r^n$↑: \emph{perturbación de demanda}: DA dinámica a la dcha., $x$↑, $\pi$↑, $i$↑.
+\item \emph{3 vías}: efecto riqueza (como el RBC); rigidez de precios: \emph{margen contracíclico}, amplifica; respuesta del BC (\autor{Taylor}: $r$↑, expulsa $C$).
+\item \emph{El multiplicador depende del BC} (\autor{Woodford}, 2011): $\Delta Y/\Delta G=1+\Delta C/\Delta G$. «Dos no riñen si uno no quiere». Precios flexibles: $\theta/(\theta+\varphi)$ (0,5 con $\theta=\varphi=1$); $r$ constante: \emph{exactamente 1}; \autor{Taylor}: $<1$ pero mayor que con flexibles; \emph{límite inferior}: $\pi^e$↑, $r$↓: $\gg1$ (\autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo}, 2011: 1,6 en el impacto y 2,3 de máximo si dura 12 trimestres) \vertema{3.A.40}.
+\item \emph{Hogares al día}: fracción $\lambda$ (\autor{Campbell}-\autor{Mankiw}, 1989: $\approx$0,5 en EE.\,UU.) $\Rightarrow$ ER falla, $C$↑ con $G$, multiplicador $>1$ (\autor{Galí}-\autor{López-Salido}-\autor{Vallés}, 2007).
+\item \emph{Evidencia}: gasto, 0,6-1 (\autor{Ramey}, 2019); \autor{Hall} (2009): 0,7-1 normal, $\approx$1,7 con tipo en cero; FMI supuso $\approx$0,5 y en la crisis $>1$ (\autor{Blanchard}-\autor{Leigh}, 2013). Impuestos: +1\,\% del PIB $\Rightarrow$ $Y$ $\approx-3$\,\% (\autor{Romer}-\autor{Romer}, 2010); $-0{,}78$ a $-1{,}33$ (\autor{Blanchard}-\autor{Perotti}, 2002). \emph{No keynesianos}: consolidación creíble con deuda alta puede \emph{expandir} (\autor{Giavazzi}-\autor{Pagano}, 1990); recortes de gasto cuestan menos que subidas de impuestos (\autor{Alesina}-\autor{Favero}-\autor{Giavazzi}, 2019) \vertema{3.A.39}.
+\item \emph{Valoración}: más papel estabilizador y explica multiplicadores altos con tipos en cero; sin capital ni crecimiento: nada del LP.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{II. Efectos a largo plazo sobre el ahorro\label{rep:II}}
+\begin{ideaclave}
+Con hogares de vida infinita, la deuda no cambia el ahorro nacional, pero un impuesto sobre las rentas del capital sí: a LP conviene no gravarlas. Con generaciones solapadas, el reparto y la deuda reducen ahorro y capital, lo que solo es bueno si la economía acumula de más.
+\end{ideaclave}
+
+\sub{II.1. Agente representativo de horizonte infinito\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Marco}: RCK \vertema{3.A.43} (RBC sin perturbaciones, trabajo inelástico): CRRA, $n$, $g$; $k$, $c$ por trabajador eficiente. Estado: $G$ sin utilidad ni producción; suma fija, deuda o $\tau_K$.
+\item \emph{$G$ con suma fija}: \autor{Euler} igual; $\dot k=f(k)-c-G/(AL)-(n+g+\delta)k$. \emph{Permanente}: $\dot k=0$ baja en su cuantía, $c$ cae lo mismo al anunciarse; $k$ y $r$ no cambian: \concepto{expulsión completa del consumo privado}. \emph{Temporal}: $c$ cae menos; mientras dura, $k$↓ y $r$↑.
+\item \emph{Ahorro nacional} $S^N=S^P+S^G$: rebaja con deuda $\Rightarrow$ el hogar ahorra toda la rebaja: $S^P$ sube lo que baja $S^G$, $S^N$, $k$ y $r$ igual (ER) \vertema{3.A.39}. Datos: compensación parcial; España: $S^G<0$ de 2009 a 2024; $S^P$ hogares solo ↑ con fuerza en 2020; 2025: tasa de ahorro de hogares 11,9\,\% vs.\ 14,8\,\% zona del euro.
+\item \emph{Impuesto sobre el capital}: entra en \autor{Euler}:
+\funcionclave{\frac{\dot c}{c}=\frac{(1-\tau_K)\big(f'(k)-\delta\big)-\rho-\theta g}{\theta}\ \Rightarrow\ f'(k^*)=\delta+\frac{\rho+\theta g}{1-\tau_K}}
+\item[] $\dot c=0$ a la izda.: menos $k^*$, $y^*$, $c^*$; al subir, $c$ salta arriba y luego desacumula. Consumo (constante) y trabajo (inelástico): como suma fija.
+\item \concepto{Resultado de \autor{Chamley}-\autor{Judd}} (\autor{Judd}, 1985; \autor{Chamley}, 1986): con compromiso y convergencia al estado estacionario, \emph{el impuesto óptimo sobre el capital a LP es nulo}, aunque se quiera redistribuir (\autor{Judd}) y haya que usar distorsionantes (\autor{Chamley}). «No mates la gallina de los huevos de oro». \emph{Intuición}: grava el consumo futuro con cuña creciente: $(1+r)^T$ vs.\ $[1+(1-\tau_K)r]^T$ (\autor{Atkeson}-\autor{Chari}-\autor{Kehoe}, 1999): \autor{Ramsey}, no gravar distinto bienes parecidos \vertema{4.B.11}; en el EE la oferta de capital es infinitamente elástica: recae en el trabajo. \emph{Implicación}: gravar el capital instalado y comprometerse a no gravar el futuro: \emph{inconsistencia temporal} \vertema{3.A.36}.
+\item \emph{Extensiones}: \autor{Straub}-\autor{Werning} (2020): en \autor{Judd}, con EIS $<1$, óptimo positivo y alto; en \autor{Chamley}, límites activos para siempre. Mercados incompletos (\autor{Aiyagari}, 1995) o vidas finitas: positivo, $\approx$36\,\% (\autor{Conesa}-\autor{Kitao}-\autor{Krueger}, 2009). \emph{Evidencia}: tipo implícito sobre el capital 2024: 29,5\,\% España, 32,5\,\% UE.
+\item \emph{Valoración}: con crecimiento exógeno solo cambia el \emph{nivel}, nunca la tasa ($g$); y la deuda es neutral: hacen falta generaciones solapadas.
+\end{itemize}
+
+\sub{II.2. Pensiones públicas y ahorro\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Idea}: la mayor transferencia entre generaciones (España: 13,1\,\% del PIB en 2022; 1.ª pensión, \autor{Bismarck}, ley de 1889). \concepto{Capitalización}: lo cotizado se invierte y se devuelve con rendimientos. \concepto{Reparto}: cotizaciones de hoy pagan pensiones de hoy (España, mayoría de Europa) \vertema{4.B.24}. «Hijo eres, padre serás; cual hiciste, tal habrás». Marco: \autor{Diamond} (1965) \vertema{3.A.29}.
+\item \emph{Supuestos}: viven 2 periodos; de jóvenes, 1 unidad de trabajo inelástica, cobran $w_t$, cotizan $\tau$, consumen $C^J_t$ y ahorran $S_t$; de viejos, ahorro + rendimiento + pensión $Z_{t+1}$; $U=\ln C^J_t+\beta\ln C^V_{t+1}$; población a $n$; $Y=K^{\alpha}(AL)^{1-\alpha}$, $A$ a $g$, $\delta=1$ (periodo $\approx$30 años).
+\item \emph{Sin pensiones}: $S_t=\frac{\beta}{1+\beta}w_t$; $k_{t+1}=\frac{\beta(1-\alpha)}{(1+\beta)(1+n)(1+g)}k_t^{\alpha}$.
+\item \emph{Capitalización}: $Z_{t+1}=(1+r_{t+1})\tau w_t$; $S_t+\tau w_t=\frac{\beta}{1+\beta}w_t$: ahorro total y capital \emph{no cambian} (obligatorio sustituye 1 a 1 al voluntario, si $\tau$ no excede lo que ahorraría).
+\item \emph{Reparto}: $Z_{t+1}=(1+n)\tau w_{t+1}$; $C^J_t=(1-\tau)w_t-S_t$, $C^V_{t+1}=(1+r_{t+1})S_t+(1+n)\tau w_{t+1}$:
+\funcionclave{S_t=\frac{\beta}{1+\beta}(1-\tau)w_t-\frac{1}{1+\beta}\,\frac{(1+n)\tau w_{t+1}}{1+r_{t+1}}}
+\item[] $S$↓ por 2 vías (cotización ↓ renta de hoy, pensión ↑ la de mañana); nadie ahorra por los jóvenes. Ley de movimiento (desplazada abajo):
+\begin{formula}
+\centering $\displaystyle k_{t+1}=\frac{\beta(1-\alpha)(1-\tau)}{(1+n)(1+g)\big[1+\beta+\tau(1-\alpha)/\alpha\big]}\,k_t^{\alpha}$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.8\linewidth]{diamond-pensiones}{$\alpha=0{,}3$, $\beta=0{,}9$: el reparto baja la ley de movimiento; con $\tau=0{,}045$, $k^*_{\mathrm R}=k_{\mathrm{oro}}$}
+\begin{itemize}
+\item \emph{Rendimientos}: capitalización $1+r$; reparto $(1+n)(1+g)$. \concepto{Condición de \autor{Aaron}} (1966): reparto rinde más si $n+g>r$ = \concepto{ineficiencia dinámica} ($r^*<n+g$) \vertema{3.A.29}: «la avaricia rompe el saco»; introducir el reparto lleva $k$ hacia la regla de oro y mejora a \emph{todas} las generaciones (aquí basta $\tau=4{,}5$\,\%). ¿Sin fallos de mercado? \emph{Doble infinitud} (\autor{Shell}, 1971): valor infinito de las dotaciones, falla el 1TFEB \vertema{3.A.22}; y no se puede prestar a quien no ha nacido (\autor{Malinvaud}, 1953; \autor{Cass}, 1972).
+\item \emph{Si es eficiente} ($r>n+g$): mal negocio para las futuras; la 1.ª generación cobra sin cotizar; volver a capitalización: una generación paga 2 veces.
+\item \emph{La deuda hace lo mismo}: $K_{t+1}=L_tS_t-D_t$: desplaza capital y traslada la carga a los no nacidos (\autor{Diamond}, 1965); ER solo con herencias altruistas (\autor{Barro}, 1974).
+\item \emph{Extensiones}: jubilación endógena: efecto ambiguo (\autor{Feldstein}, 1974); muchas generaciones (\autor{Auerbach}-\autor{Kotlikoff}, 1987); \concepto{paternalismo libertario} (\autor{Thaler}-\autor{Sunstein}, 2008) \vertema{3.A.1}: R.\,U., afiliación automática desde oct.\ 2012; Dinamarca: 1 corona de subvención fiscal crea 1 céntimo de ahorro nuevo; las aportaciones automáticas, mucho (\autor{Chetty} et al., 2014).
+\item \emph{Evidencia}: \autor{Feldstein} (1974): la riqueza de la Seguridad Social reduce mucho el ahorro; \autor{Leimer}-\autor{Lesnoy} (1982): error de programación, efecto menor y poco robusto. Países con reparto ahorran menos; los que pasaron a aportación definida no ahorran más después (\autor{Samwick}, 2000). Beneficios del capital > inversión: no hay ineficiencia dinámica (\autor{Abel} et al., 1989): el reparto es transferencia a las 1.as generaciones, no mejora de \autor{Pareto}. \emph{Envejecimiento}: $n$↓ $\Rightarrow$ rendimiento del reparto↓. España: mayores de 65/20-64 años, 33,3\,\% (2022) $\to$ 64,5\,\% (2054); pensiones 13,1\,\% del PIB (2022) $\to$ máx.\ 17,3\,\% ($\approx$2050) $\to$ 16,7\,\% (2070); UE 11,4\,\% $\to$ máx.\ 12,2\,\% (2035-44) $\to$ 11,8\,\%.
+\item \emph{Valoración}: deja fuera el riesgo (mercados vs.\ demografía y política), la jubilación endógena y la redistribución intrageneracional. Reformas mixtas: cuentas nocionales (Suecia), fondos de reserva, MEI español \vertema{4.B.24}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{III. Efectos a largo plazo sobre el crecimiento\label{rep:III}}
+\begin{ideaclave}
+Con rendimientos decrecientes, la política fiscal solo cambia el nivel; si el capital no los tiene, también la tasa. Con gasto productivo, el tamaño del Estado tiene un óptimo, $G/Y=1-\alpha$, y los impuestos que gravan la acumulación reducen la tasa de crecimiento. Lo que más importa es la composición.
+\end{ideaclave}
+
+\sub{III.1. Crecimiento endógeno: \autor{Barro} (1990)\label{rep:III.1}}
+\begin{itemize}
+\item \emph{Idea}: 2 caras del Estado: suministra bienes productivos (infraestructuras, justicia, seguridad, I+D), pero los financia con impuestos que reducen el rendimiento de invertir. «Ni contigo ni sin ti». Si el gasto fuera improductivo, tamaño óptimo nulo.
+\item \emph{Supuestos}: $Y=AK^{\alpha}G^{1-\alpha}$, $G$ \emph{flujo} de servicios que las empresas toman como dado (RCE en $K$ y $G$); población 1; $G=\tau Y$ (presupuesto equilibrado, $\tau$ proporcional sobre la renta); hogares de \autor{Ramsey}, CRRA.
+\item \emph{Desarrollo}: $Y=A^{1/\alpha}\tau^{(1-\alpha)/\alpha}K$: un $AK$ con productividad que depende del tamaño del Estado. PMg privado $\alpha Y/K$; tras impuestos:
+\begin{formula}
+\centering $\displaystyle\gamma=\frac1\theta\Big[(1-\tau)\,\alpha A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-\delta-\rho\Big]$
+\end{formula}
+\item[] Sin transición (\vertema{3.A.44}). \emph{2 efectos}: $\tau^{(1-\alpha)/\alpha}$ (+, capital más productivo) y $(1-\tau)$ ($-$, menos rendimiento neto). Maximizando $(1-\tau)\tau^{(1-\alpha)/\alpha}$:
+\funcionclave{\tau^*=\frac{G}{Y}=1-\alpha}
+\item[] U invertida; \concepto{regla de \autor{Barro}}: $\partial Y/\partial G=(1-\alpha)Y/G=1$ (PMg = coste); $\tau^*$ = elasticidad de $Y$ al gasto. Con ahorro constante (\autor{Solow}): $\gamma=s(1-\tau)A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-\delta$, mismo $\tau^*$.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{barro}{$\gamma(\tau)$: efecto del gasto (+) a la izquierda de $\tau^*=1-\alpha$, del impuesto ($-$) a la derecha; en $\tau=0$ y $\tau=1$, $\gamma=-(\delta+\rho)/\theta$}
+\begin{itemize}
+\item \emph{Implicaciones}: el tamaño del Estado afecta al crecimiento a LP; la \emph{composición} importa (improductivo: solo el efecto negativo; impuesto que no grave invertir no frena). \emph{Equilibrio no óptimo}: el hogar recibe solo $\alpha$ de lo que rinde su capital; el planificador crece a $\gamma^{\mathrm P}=[\alpha A^{1/\alpha}(1-\alpha)^{(1-\alpha)/\alpha}-\delta-\rho]/\theta$; suma fija alcanzaría el óptimo (\autor{Barro}-\autor{Sala-i-Martin}, 2004). Matices: rinde más con reformas de oferta; efectos sobre todo a LP.
+\item \emph{Extensiones}: \emph{congestión}: importa $G/Y$, el impuesto actúa como precio (\autor{Barro}-\autor{Sala-i-Martin}, 1992); \emph{capital público acumulable}: transición; RCE de $K$ y $K^G$ juntos.
+\item \emph{Valoración}: base al tamaño óptimo del gasto productivo; pero filo de la navaja del $AK$, gasto homogéneo sin deuda, elasticidad difícil de medir.
+\end{itemize}
+
+\sub{III.2. Estructura impositiva y crecimiento\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Teoría}: $AK$ (\autor{Rebelo}, 1991) \vertema{3.A.44}: $\tau_K$ reduce la \emph{tasa} para siempre (en RCK, solo el nivel: \hyperref[rep:II.1]{II.1}):
+\begin{formula}
+\centering $\displaystyle\gamma=\frac{(1-\tau_K)A-\delta-\rho}{\theta}$
+\end{formula}
+\item[] $\Rightarrow$ mejor gravar el consumo que el capital o el trabajo (aunque el IVA distorsiona consumo-ocio con trabajo elástico) \vertema{4.B.11}.
+\item \emph{Jerarquía de la OCDE} (\autor{Johansson} et al., 2008; \autor{Arnold}, 2011), de más a menos dañino: sociedades $>$ renta personal $>$ consumo $>$ propiedad inmobiliaria recurrente.
+\item \emph{Gasto productivo}: \autor{Aschauer} (1989): elasticidad al capital público $\approx$0,4; metaanálisis \autor{Bom}-\autor{Ligthart} (2014, 578 estimaciones, 68 estudios): 0,083 CP y 0,122 LP. España: inversión pública 5,2\,\% (2009) $\to$ 2,0\,\% (2016-17) $\to$ 3,0\,\% (2025) vs.\ 3,9\,\% UE \vertema{3.A.34}.
+\item \emph{Restricción completa}: \autor{Kneller}-\autor{Bleaney}-\autor{Gemmell} (1999, OCDE): distorsionantes ↓ crecimiento, gasto productivo ↑, improductivo neutro; ojo con la causalidad inversa \vertema{3.A.45}.
+\item \emph{Deuda}: umbral del 90\,\% (\autor{Reinhart}-\autor{Rogoff}, 2010) no resiste la réplica (\autor{Herndon}-\autor{Ash}-\autor{Pollin}, 2014: errores, sin umbral); causalidad en los 2 sentidos \vertema{3.A.39}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «A modo de conclusión,» CP: multiplicador $>0$ y $<1$ con hogares ricardianos y precios flexibles; mayor con rigideces y BC que acomoda. Ahorro: horizonte infinito, deuda neutral, $\tau_K$ reduce $k$ (\autor{Chamley}-\autor{Judd}); generaciones solapadas, reparto y deuda ↓ ahorro y capital, bueno solo con ineficiencia dinámica. Crecimiento: óptimo $G/Y=1-\alpha$; gravar la acumulación baja la \emph{tasa}.
+\item \textbf{Relevancia}: deudas $\approx$100\,\% y envejecimiento: en qué gastar y cómo financiarlo. BCE: facilidad de depósito 2\,\% (jun.\ 2025), 2,25\,\% (jun.\ 2026), 2,50\,\% (sept.\ 2026): margen fiscal según deuda heredada y $r$ vs.\ $g$ (\autor{Blanchard}, 2019) \vertema{3.A.39}.
+\item \textbf{Extensiones}: \emph{policy mix} y quién cierra la restricción \vertema{3.A.36} \vertema{3.A.39}; multiplicadores en el límite inferior \vertema{3.A.40}; imposición óptima \vertema{4.B.11}; pensiones en España \vertema{4.B.24}; evidencia del crecimiento \vertema{3.A.45}.
+\item \textbf{Opinión}: se juzgó por el multiplicador a CP, pero lo duradero es la composición: estabilizadores automáticos en el ciclo (suavización) y, a LP, proteger la inversión productiva y gravar poco el ahorro y la acumulación.
+\item \textbf{Idea final}: ni cigarra ni hormiga: en invierno puede cantar (sostener la demanda); a LP cuenta qué guarda y en qué lo invierte: el ahorro decide el \emph{nivel}; el gasto productivo y los impuestos que no castigan la acumulación, el \emph{ritmo}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1817}{\autor{Ricardo}: cómo pagar una guerra (cap.~17)}
+\hito{1889}{\autor{Bismarck}: 1.ª pensión pública de vejez}
+\hito{1931}{\autor{Kahn}: el multiplicador}
+\hito{1945}{\autor{Haavelmo}: presupuesto equilibrado}
+\hito{1959}{\autor{Musgrave}: las 3 funciones}
+\hito{1965}{\autor{Diamond}: generaciones solapadas con capital}
+\hito{1966}{\autor{Aaron}: paradoja del seguro social}
+\hito{1971}{\autor{Shell}: doble infinitud}
+\hito{1974}{\autor{Barro}: «Are Government Bonds Net Wealth?»; \autor{Feldstein}: Seguridad Social y ahorro}
+\hito{1976}{\autor{Buchanan}: nombre de la equivalencia ricardiana}
+\hito{1979}{\autor{Barro}: suavización impositiva}
+\hito{1982}{\autor{Leimer}-\autor{Lesnoy}: el error de \autor{Feldstein}}
+\hito{1985}{\autor{Judd}; 1986, \autor{Chamley}: $\tau_K=0$ a LP}
+\hito{1989}{\autor{Aschauer}: capital público; \autor{Campbell}-\autor{Mankiw}; \autor{Abel} et al.}
+\hito{1990}{\autor{Barro}: gasto productivo; \autor{Giavazzi}-\autor{Pagano}: no keynesianos}
+\hito{1991}{\autor{Rebelo}: $AK$}
+\hito{1992}{\autor{Christiano}-\autor{Eichenbaum}; 1993, \autor{Baxter}-\autor{King}: gasto en el RBC}
+\hito{1995}{\autor{Aiyagari}: mercados incompletos}
+\hito{1999}{\autor{Kneller}-\autor{Bleaney}-\autor{Gemmell}; \autor{Atkeson}-\autor{Chari}-\autor{Kehoe}}
+\hito{2002}{\autor{Blanchard}-\autor{Perotti}: VAR fiscal}
+\hito{2007}{\autor{Galí}-\autor{López-Salido}-\autor{Vallés}: hogares al día}
+\hito{2008}{\autor{Thaler}-\autor{Sunstein}; \autor{Galí}-\autor{Monacelli}: unión monetaria}
+\hito{2010}{\autor{Romer}-\autor{Romer}: impuestos; \autor{Reinhart}-\autor{Rogoff}: 90\,\%}
+\hito{2011}{\autor{Woodford}; \autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo}}
+\hito{2013}{\autor{Blanchard}-\autor{Leigh}: multiplicadores del FMI}
+\hito{2014}{\autor{Bom}-\autor{Ligthart}; \autor{Herndon}-\autor{Ash}-\autor{Pollin}}
+\hito{2019}{\autor{Ramey}; \autor{Alesina}-\autor{Favero}-\autor{Giavazzi}}
+\hito{2020}{\autor{Straub}-\autor{Werning}: contra $\tau_K=0$}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item España 2025: déficit \dato{2,4\,\% del PIB}{Eurostat}; deuda \dato{100,5\,\%}{Eurostat}; ahorro nacional bruto \dato{25,0\,\%}{Eurostat, máx.\ desde 1995}; ahorro AA.\,PP.\ \dato{0,3\,\%}{Eurostat}; tasa de ahorro de hogares \dato{11,9\,\%}{Eurostat; 14,8\,\% zona del euro}.
+\item Gasto AA.\,PP.\ 2025: \dato{45,3\,\% del PIB}{Eurostat, España}; \dato{49,8\,\%}{Eurostat, zona del euro}.
+\item Pensiones: \dato{13,1\,\% (2022) $\to$ 17,3\,\% ($\approx$2050)}{CE, Ageing Report 2024}; dependencia \dato{33,3 $\to$ 64,5\,\%}{CE, 2022-2054}.
+\item Tipo implícito 2024: trabajo \dato{36,2\,\%}{CE; UE 37,1}; capital \dato{29,5\,\%}{CE; UE 32,5}.
+\item Inversión pública: \dato{5,2\,\% (2009), 2,0\,\% (2016-17), 3,0\,\% (2025)}{Eurostat; UE 3,9\,\%}.
+\item BCE, facilidad de depósito: \dato{2,50\,\%}{BCE, sept.\ 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué el multiplicador es menor que 1 en el RBC?} Actúa solo por el efecto riqueza: $L$↑, pero $G$ expulsa $C$ e $I$; mayor cuanto más persistente el gasto y más elástica la oferta de trabajo.
+\item \textbf{¿Cuándo supera 1 en el NEK?} Si el BC no sube el tipo real (con $r$ constante, 1), en el límite inferior ($\pi^e$↑, $r$↓) o con hogares que viven al día.
+\item \textbf{¿Por qué no gravar el capital a LP si el Estado quiere redistribuir?} Cuña creciente sobre el consumo futuro y oferta de capital infinitamente elástica en el EE: recae en el trabajo (\autor{Chamley}-\autor{Judd}); con mercados incompletos o EIS $<1$, positivo.
+\item \textbf{¿Puede el reparto mejorar a todas las generaciones?} Sí, si hay ineficiencia dinámica ($n+g>r$, \autor{Aaron}); los datos (\autor{Abel} et al., 1989) no la encuentran: es transferencia a las 1.as generaciones.
+\item \textbf{¿Por qué $\tau_K$ baja el nivel en RCK y la tasa en \autor{Rebelo}?} Con rendimientos decrecientes el PMg del capital se recupera al bajar $k$; en el $AK$ es constante y $\tau_K$ reduce el rendimiento neto para siempre.
+\item \textbf{¿Qué falla en el umbral del 90\,\%?} Errores de cálculo y ponderación (\autor{Herndon}-\autor{Ash}-\autor{Pollin}, 2014); causalidad en los 2 sentidos.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item ER: 11 de 14 preguntas oficiales. Suma fija, mercados perfectos, horizonte infinito (o finito con herencias altruistas): rebaja con deuda $\Rightarrow$ $S^P$↑ lo mismo, $C$ igual; Estado que se endeuda más barato que los hogares la rompe.
+\item Junio 2023 (P47): expansión contractiva si se ve permanente y $C$ cae más que sube $G$; con suma fija, $C$ cae como mucho lo mismo: hace falta, p.\,ej., impuesto distorsionante.
+\item Multiplicador de \autor{Kahn} (no \autor{Keynes} ni \autor{Hahn}); $bk/h$ se \emph{suma} en el denominador.
+\item \autor{Musgrave}: 1959, no 1939. Divina coincidencia: \autor{Blanchard}-\autor{Galí} (2007; DT de 2005).
+\item Unión monetaria: \autor{Galí}-\autor{Monacelli} 2008 (la de 2005 es monetaria en abierta).
+\item Precios rígidos: margen \emph{contracíclico}.
+\item \autor{Aaron}: $n+g>r$, no $r<n$.
+\item \autor{Laffer} (nov.\ 2016) va con imposición \vertema{4.B.11}.
+\item \autor{Barro} (1990): $G$ es flujo; $\tau^*=1-\alpha$ (elasticidad de $Y$ a $G$), no $\alpha$.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

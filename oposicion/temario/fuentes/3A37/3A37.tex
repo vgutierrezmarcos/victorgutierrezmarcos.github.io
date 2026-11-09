@@ -1,0 +1,988 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A37.bib}
+\tcetema[Transmisión de la política monetaria]{3.A.37}{Política monetaria (II). Los mecanismos de transmisión de la política monetaria convencional. Rigideces de precios, rigideces de salarios y fricciones financieras. Los mecanismos de transmisión de la política monetaria no convencional.}
+\tcefecha{05/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Las cosas de palacio van despacio», dice el refrán. El 21 de julio de 2022 el BCE subió sus tipos por primera vez en 11 años \parencite{BCE2026TiposOficiales}. Las familias con hipoteca a tipo variable lo notaron pronto: el Euríbor a 12 meses, que en diciembre de 2021 estaba en el $-0{,}50$~\%, llegó al 4,16~\% en octubre de 2023 \parencite{BCE2026FMEuribor}. Los precios tardaron bastante más: la inflación de la zona del euro tocó techo en octubre de 2022, con un 10,6~\%, y no volvió cerca del 2~\% hasta el otoño de 2024 \parencite{Eurostat2026IAPC}.
+  \item No es una casualidad de aquel episodio: reuniendo decenas de estudios, el efecto máximo de un cambio de tipos sobre los precios llega, de media, a los 29 meses \parencite{HavranekRusnak2013}.
+  \item Y la escena se repite: con la inflación de nuevo en el 4~\% en octubre de 2026 \parencite{Eurostat2026IAPCoct}, el BCE ha vuelto a subir los tipos en junio y en septiembre, hasta dejar la facilidad de depósito en el 2,50~\% \parencite{BCE2026Decisiones}.
+  \item Detrás está la pregunta de esta exposición: \emph{¿por qué caminos, y con qué retraso, llega una decisión sobre el tipo de interés a un día a lo que gastan las familias y las empresas y a los precios, y qué puede hacer el banco central cuando ese tipo ya no puede bajar más?}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Para la política económica}: el banco central decide hoy sobre una economía que reaccionará dentro de 1 o 2 años. Sin conocer los canales y sus retardos no sabría cuánto mover los tipos ni cuándo parar, y nadie podría juzgar si acertó.
+  \item \emph{Para España}: es una economía en la que las empresas se financian sobre todo con bancos y en la que muchas hipotecas son a tipo variable, así que las decisiones del BCE llegan antes y con más fuerza a sus hogares que a los de otros países de la zona del euro \vertema{3.B.43}.
+  \item \emph{Para la teoría}: que el dinero tenga efectos reales exige alguna fricción. Las rigideces de precios y de salarios y las fricciones financieras son las que permiten que la política monetaria funcione, y las que deciden cuánto y cuándo.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Definiciones}:
+    \begin{itemize}
+    \item los \concepto{mecanismos de transmisión} son los caminos por los que una decisión del banco central (sobre el tipo de interés, sobre su balance o sobre lo que comunica) llega a los precios de los activos y a las condiciones de financiación, de ahí a la demanda y, al final, a la producción y a la inflación; cada camino es un \concepto{canal};
+    \item la política \concepto{convencional} mueve el tipo de interés a muy corto plazo: en la zona del euro, desde 2024, el de la facilidad de depósito, que guía al €STR \parencite{BCE2024Marco}; la \concepto{no convencional} usa el balance del banco central (compras de activos, préstamos a largo plazo) y su comunicación cuando ese tipo está en su límite inferior o cuando la transmisión se rompe. Qué instrumentos hay y cómo se diseña la política es objeto de otra exposición \vertema{3.A.36}; aquí interesa cómo actúan.
+    \end{itemize}
+  \item \emph{Neutralidad y fricciones}: el dinero es \concepto{neutral} si sus variaciones solo cambian las variables nominales. A largo plazo lo es casi del todo \vertema{3.A.35}; a corto plazo no, y la razón son las fricciones que nombra el título:
+    \begin{itemize}
+    \item una \concepto{rigidez nominal} impide que los precios o los salarios \emph{nominales} se ajusten enseguida a sus determinantes (costes de cambiar los precios, contratos, información que llega despacio);
+    \item una \concepto{rigidez real} hace que el precio o el salario \emph{relativo} que cada uno desea responda poco a la actividad; por sí sola no da efectos reales al dinero, pero amplía y alarga los de la rigidez nominal \parencite{BallRomer1990Real} \vertema{3.A.7};
+    \item una \concepto{fricción financiera} es un problema de información o de incentivos entre quien presta y quien pide prestado, que hace que el coste del crédito dependa del patrimonio del prestatario y no solo del tipo sin riesgo.
+    \end{itemize}
+  \item \emph{Delimitación}: la eficacia de la política en las grandes economías desde 2008 y el multiplicador fiscal en el límite inferior \vertema{3.A.40}, la frontera con la política fiscal \vertema{3.A.39} y el ciclo financiero \vertema{3.A.42} se tratan en otras exposiciones; aquí, solo en la medida en que explican la transmisión.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Por qué tiene efectos reales la política monetaria, y por qué solo a corto plazo?
+  \item ¿Por qué canales llega un tipo a un día a la inversión, al consumo y a los precios, y con qué retraso?
+  \item ¿Qué papel tienen las rigideces de precios y de salarios y las fricciones financieras: crean la transmisión o la amplifican?
+  \item ¿Qué cambia cuando el tipo de interés no puede bajar más?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue el título en 3 bloques:
+  \begin{itemize}
+  \item \concepto{I. Los mecanismos de transmisión de la política convencional} (\ref{sec:convencional}): por qué tiene efectos reales según cada escuela, por qué canales llega y qué dicen los datos;
+  \item \concepto{II. Rigideces de precios, de salarios y fricciones financieras} (\ref{sec:rigideces}): las fricciones que hacen posible la transmisión y la amplifican, y la novedad de los hogares distintos;
+  \item \concepto{III. Los mecanismos de transmisión de la política no convencional} (\ref{sec:no-convencional}): qué hace el banco central cuando el tipo a corto plazo llega a su límite, y por qué canales actúa.
+  \end{itemize}
+  Vamos de la herramienta habitual a la razón de que funcione y, por último, a lo que se hace cuando deja de funcionar.
+\end{itemize}
+
+\begin{anotaciones}
+La estrategia de política monetaria del BCE, con el objetivo simétrico del 2~\% a medio plazo, adoptado en 2021 y confirmado en la evaluación de 2025 \parencite{BCE2021Estrategia,BCE2025Estrategia}: \url{https://www.ecb.europa.eu/mopo/strategy/strategy-review/ecb.strategyreview202506_strategy_statement.es.html}. Cómo explica el propio BCE la transmisión de su política: \url{https://www.ecb.europa.eu/mopo/intro/transmission/html/index.es.html}.
+\end{anotaciones}
+
+\begin{esquema}[unbreakable]
+\textbf{3.A.37. Transmisión de la política monetaria}\\[2pt]
+Introducción\\
+I. Los mecanismos de transmisión de la política monetaria convencional\\
+\hspace*{1.5em}1. Aproximación teórica: ¿por qué tiene efectos reales el dinero?\\
+\hspace*{1.5em}2. Los canales de transmisión\\
+\hspace*{1.5em}3. La evidencia empírica: efectos, retardos e identificación\\
+II. Rigideces de precios, de salarios y fricciones financieras\\
+\hspace*{1.5em}1. Rigideces de precios: el modelo neokeynesiano\\
+\hspace*{1.5em}2. Rigideces de salarios: los contratos escalonados\\
+\hspace*{1.5em}3. Fricciones financieras: los canales del crédito\\
+\hspace*{1.5em}4. Hogares distintos: el canal redistributivo\\
+III. Los mecanismos de transmisión de la política monetaria no convencional\\
+\hspace*{1.5em}1. El límite inferior de los tipos de interés\\
+\hspace*{1.5em}2. La orientación de la política\\
+\hspace*{1.5em}3. Las compras de activos\\
+\hspace*{1.5em}4. Tipos negativos, préstamos condicionados y control de la curva\\
+\hspace*{1.5em}5. La evidencia y la salida\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{2,5}; I.2, \tiempo{3,5}; I.3, \tiempo{2}); II, \tiempo{10,5} (II.1, \tiempo{3}; II.2, \tiempo{2,5}; II.3, \tiempo{3}; II.4, \tiempo{2}); III, \tiempo{8} (III.1, \tiempo{1,5}; III.2, \tiempo{2}; III.3, \tiempo{2,5}; III.4, \tiempo{1,5}; III.5, \tiempo{0,5}), y conclusión, \tiempo{1}. Las escuelas se cuentan deprisa: el tribunal quiere los canales y las fricciones, que son el título. La pizarra se organiza en 3 zonas. A la izquierda, durante todo el bloque~\ref{sec:convencional}, la lista de escuelas con su canal y, debajo, el esquema de los canales (gráfico~\ref{fig:canales-transmision}), que se queda; la respuesta con forma de joroba (gráfico~\ref{fig:respuesta-joroba}) se dibuja a mano alzada en un rincón. En el centro, el bloque~\ref{sec:rigideces}: las ecuaciones del modelo arriba y, debajo, un gráfico tras otro (la subida de tipos en el modelo neokeynesiano, los contratos de \autor{Fischer} y \autor{Taylor} y el coste de los fondos con la prima de financiación externa), que se borran de uno en uno. A la derecha, el esquema de la política no convencional, que crece rama a rama en el bloque~\ref{sec:no-convencional} con el tipo largo en el centro y se queda para la conclusión. Las pegatinas, una por concepto: «cuando Estados Unidos estornuda, el mundo se resfría» (el tipo de cambio y el ciclo financiero global), «despacito y buena letra» (los precios a la \autor{Calvo}), «a lo hecho, pecho» (los contratos firmados), «el banco te presta el paraguas cuando hace sol y te lo quita cuando llueve» (el acelerador financiero), «donde no hay harina, todo es mohína» (los hogares sin liquidez), «las palabras se las lleva el viento» (la paradoja de la orientación), «cada mochuelo a su olivo» (el hábitat preferente) y «tanto va el cántaro a la fuente que al final se rompe» (el tipo de reversión). El ejemplo que acompaña a todo el tema es el de una familia con hipoteca a tipo variable y una pyme que exporta azulejos y se financia con su banco. Lo que la exposición resume (las escuelas en detalle, las soluciones de los contratos, la evidencia empírica, la economía abierta, los balances y la supresión del efectivo) está en los anexos~\ref{anexo:escuelas} a~\ref{anexo:efectivo}.
+\end{notaopositor}
+
+% ==========================================================================
+\section{Los mecanismos de transmisión\newline de la política monetaria convencional}\label{sec:convencional}
+\minutos{8}
+
+\begin{itemize}
+\item Empezamos por la herramienta habitual del banco central, el tipo de interés a corto plazo, y por la pregunta previa a cualquier canal: ¿por qué habría de tener efectos reales?
+\item \emph{Conclusión anticipada}: los tiene a corto plazo y casi ninguno a largo. Las escuelas discrepan sobre el porqué y sobre el camino; hoy se acepta que llega por varios canales a la vez (el tipo de interés, los precios de los activos, el tipo de cambio, el crédito y las expectativas), y los datos lo confirman cuando se separa lo que el banco central decide de lo que es su respuesta a la economía. Llega, eso sí, despacio.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Aproximación teórica: ¿por qué tiene efectos reales el dinero?}\label{sec:aproximacion}
+
+\begin{itemize}
+\item La respuesta de cada escuela depende de cómo cree que se forman los precios y los salarios, y de ella sale su canal de transmisión (tabla~\ref{tab:escuelas-transmision}). Las repasamos en orden histórico.
+\end{itemize}
+
+\paragraph{Los clásicos: la teoría cuantitativa}
+\begin{itemize}
+\item La idea es antigua: \textcite{Hume1752Money} ya contaba que una entrada de dinero sube los precios y anima la actividad solo mientras dura el ajuste. \textcite{Fisher1911Purchasing} da una lectura causal a la ecuación de cambio, $M\,V\equiv P\,T$, que había escrito \textcite{Newcomb1885Principles}: si la velocidad es estable y la oferta fija la producción, más dinero solo trae más precios.\footnote{Tomando logaritmos y derivando respecto al tiempo, las tasas de crecimiento se \emph{suman}: $\gamma_M+\gamma_V=\pi+\gamma_Y$, con las transacciones $T$ aproximadas por la producción $Y$. Con la velocidad constante, $\gamma_V=0$, la inflación es el crecimiento del dinero menos el de la producción, $\pi=\gamma_M-\gamma_Y$ \vertema{3.A.35}.}
+\item La transmisión es \emph{directa}, por los saldos reales: quien tiene más dinero del que desea lo gasta en bienes. Es la \concepto{dicotomía clásica}: las variables reales se determinan sin el dinero, que solo fija el nivel de precios.
+\end{itemize}
+
+\paragraph{\autor{Keynes}: el tipo de interés y sus 2 eslabones débiles}
+\begin{itemize}
+\item Para \textcite{Keynes1936} la transmisión es \emph{indirecta}: más dinero baja el tipo de interés en el mercado de dinero, el tipo más bajo anima la inversión y el multiplicador lleva el impulso a la renta. Es el \concepto{canal del tipo de interés}.
+\item La cadena puede romperse por 2 eslabones distintos:
+  \begin{itemize}
+  \item la \emph{trampa de la liquidez}: si la demanda de dinero es muy sensible al tipo, el dinero nuevo se atesora y \emph{el tipo no baja};
+  \item la \emph{inversión poco sensible} al tipo, guiada por los \emph{animal spirits}: el tipo baja, pero \emph{la inversión no sube}.
+  \end{itemize}
+\item Los postkeynesianos dan la vuelta a la pregunta: el dinero es endógeno y la política actúa por el precio del crédito, no por la cantidad de dinero.\footnote{Para \textcite{Kaldor1982Scourge} y \textcite{Moore1988Horizontalists}, los bancos crean dinero al prestar y el banco central fija el tipo de interés y facilita las reservas que se le piden: la oferta de dinero es horizontal al tipo oficial \vertema{3.A.4}. Los bancos centrales describen hoy así su funcionamiento: los préstamos crean los depósitos, y no al revés \parencite{McLeayRadiaThomas2014Money} \vertema{3.A.36}.}
+\end{itemize}
+
+\paragraph{La síntesis neoclásica: el modelo IS-LM}
+\begin{itemize}
+\item La cadena keynesiana, en el IS-LM: $M\uparrow\Rightarrow i\downarrow\Rightarrow I\uparrow\Rightarrow Y\uparrow$ \parencite{Hicks1937Keynes} \vertema{3.A.5}. La política monetaria es más eficaz cuanto más inclinada es la LM y más plana la IS; los 2 eslabones débiles de \autor{Keynes} son una LM horizontal y una IS vertical.
+\item Con la curva de \autor{Phillips} leída como un menú, más dinero compraba menos paro a cambio de algo más de inflación de forma permanente \parencite{SamuelsonSolow1960Analytical} \vertema{3.A.28}.
+\end{itemize}
+
+\paragraph{Los monetaristas: el reajuste de carteras}
+\begin{itemize}
+\item El dinero importa (\emph{money matters}), pero no llega por un único tipo de interés: con más dinero del deseado, los agentes \emph{reajustan sus carteras} y compran bonos, acciones, capital y bienes duraderos; suben sus precios, bajan sus rendimientos y el gasto crece por muchos caminos a la vez, con un efecto riqueza añadido \parencite{BrunnerMeltzer1972Money} \vertema{3.A.5}.
+\item Los efectos llegan con retardos largos y variables: de 6 a 9 meses hasta la renta nominal y otros tantos hasta los precios \parencite{Friedman1961Lag,Friedman1970Counter}. Por eso \autor{Friedman} prefería una regla fija de crecimiento del dinero a la política discrecional.\footnote{Es la regla del $k$~\%, que no debe confundirse con la regla de \autor{Friedman} de un tipo nominal nulo \vertema{3.A.41}. La teoría monetarista dejaba además una pregunta sin cerrar: cómo se reparte a corto plazo un aumento de la renta nominal entre precios y producción, la «ecuación perdida» de \textcite{Friedman1970Theoretical}.}
+\item A largo plazo, con expectativas adaptativas, la curva de \autor{Phillips} es vertical y solo quedan los precios.
+\end{itemize}
+
+\paragraph{La nueva macroeconomía clásica: solo lo no anticipado}
+\begin{itemize}
+\item Con expectativas racionales y precios flexibles, solo la parte \emph{no anticipada} del dinero mueve la producción. En el modelo de islas de \textcite{Lucas1972Expectations}, los productores confunden una subida general de precios con una de su precio relativo, $y_t=y^n+\psi\,(p_t-p^e_t)$ \vertema{3.A.6}.
+\item Si el banco central sigue una regla conocida, el público la descuenta y la producción no depende de ella: $y_t=y^n+(\psi\,\varepsilon_t+u_t)/(1+\psi)$, donde solo cuenta la sorpresa $\varepsilon_t$. Es la \concepto{proposición de inefectividad} \parencite{SargentWallace1975Rational}.
+\item La pendiente $\psi$ debería ser menor donde la demanda nominal es más volátil \parencite{Lucas1973Some}; con 43 países, lo que mejor la explica es el nivel de la inflación, como predice la nueva economía keynesiana \parencite{BallMankiwRomer1988}. En el ciclo real, el dinero es neutral incluso a corto plazo \vertema{3.A.42}.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{La respuesta keynesiana}: la nueva economía keynesiana acepta las expectativas racionales, pero no la flexibilidad. Si los salarios se fijan en contratos que no se renuevan todos a la vez, también la política anticipada tiene efectos reales \parencite{Fischer1977Long,Taylor1980Aggregate}: lo que daba la inefectividad era la flexibilidad, no las expectativas racionales. Es el bloque~\ref{sec:rigideces}.
+\item \emph{Recapitulación}: hoy hay consenso en que la política monetaria mueve la producción a corto plazo porque los precios y los salarios no se ajustan enseguida, y en que a largo plazo solo cambia los precios. Queda por ver por qué caminos llega.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La transmisión de la política monetaria según las escuelas}\label{tab:escuelas-transmision}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.9cm}|>{\raggedright\arraybackslash}m{3.6cm}|>{\centering\arraybackslash}m{2.3cm}|>{\raggedright\arraybackslash}m{4.6cm}}
+\rowcolor{tceeazulpalido}\textbf{Escuela} & \textbf{Canal} & \textbf{¿Efectos reales a corto?} & \textbf{Por qué}\\
+\hline
+Clásicos & Directo: saldos reales y precios & \textcolor{tceerojo}{No} & Precios flexibles; dicotomía clásica\\
+\hline
+\autor{Keynes} & Tipo de interés $\Rightarrow$ inversión & \textcolor{tceeverde}{Sí} & Salvo trampa de la liquidez o inversión insensible\\
+\hline
+Síntesis & Tipo de interés en el IS-LM & \textcolor{tceeverde}{Sí} & Precios fijos a corto plazo; menú de \autor{Phillips}\\
+\hline
+Monetaristas & Reajuste de carteras y riqueza & \textcolor{tceeverde}{Sí} & Expectativas adaptativas; neutral a largo plazo\\
+\hline
+Nueva macroeconomía clásica & Sorpresas monetarias & \textcolor{tceedorado}{Solo lo no anticipado} & Expectativas racionales y precios flexibles\\
+\hline
+\rowcolor{tceesalvia}Nueva economía keynesiana & Tipo real, crédito, expectativas & \textcolor{tceeverde}{Sí, también lo anticipado} & Rigideces nominales y reales y fricciones financieras (\ref{sec:rigideces})\\
+\hline
+\rowcolor{tceesalvia}Agentes heterogéneos (HANK) & Renta y empleo; redistribución & \textcolor{tceeverde}{Sí} & Hogares sin liquidez que gastan lo que ingresan (\ref{sec:heterogeneidad})\\
+\hline
+\rowcolor{tceesalvia}No convencional & Balance del banco central y expectativas & \textcolor{tceeverde}{Sí} & Mercados financieros imperfectos (\ref{sec:no-convencional})\\
+\hline
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{DeVroey2016History}, \textcite[cap.~1]{Walsh2017Monetary} y \textcite{Gali2015Monetary}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Los canales de transmisión}\label{sec:canales}
+
+\begin{itemize}
+\item Una vez vistas las razones de que haya efectos reales, pasamos a los caminos. Seguimos una subida de tipos, que es lo que el BCE hizo en 2022-2023 y ha vuelto a hacer en 2026 \parencite{BCE2026TiposOficiales} (gráfico~\ref{fig:canales-transmision}).
+\item \emph{El primer eslabón}: el tipo oficial pasa enseguida al mercado interbancario y, desde ahí, a toda la curva de tipos y a los tipos de los préstamos y de los depósitos. A lo largo de la curva, un tipo a largo plazo es la media de los tipos a corto que se esperan más una prima por plazo (\ref{sec:limite-inferior}) \vertema{3.B.24}: por eso pesa tanto lo que el banco central anuncia que hará \vertema{3.A.36}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Los canales de transmisión de la política monetaria}\label{fig:canales-transmision}
+\grafico[0.85\textwidth]{canales-transmision}
+\fuente{elaboración propia a partir de \textcite{BernankeGertler1995}, \textcite{BoivinKileyMishkin2010} y \textcite{Mishkin2021Economics}.}
+\end{figure}
+
+\paragraph{El canal del tipo de interés}
+\begin{itemize}
+\item Con precios rígidos, subir el tipo nominal es subir el tipo \emph{real}, y eso frena el gasto por 3 vías:
+  \begin{itemize}
+  \item la \emph{inversión}, porque sube el coste de uso del capital \vertema{3.A.34};
+  \item el \emph{consumo}, por la sustitución intertemporal: ahorrar rinde más y se pospone el gasto, tanto más cuanto mayor es la elasticidad de sustitución intertemporal, que los datos sitúan baja \vertema{3.A.29} \vertema{3.A.33};
+  \item la \emph{vivienda y los bienes duraderos}, los componentes más sensibles, porque el tipo entra en su coste de uso y en el del crédito con que se compran \vertema{3.A.33}.
+  \end{itemize}
+\item La cadena: $i\uparrow\ \Rightarrow\ r\uparrow\ \Rightarrow\ I,\ C^{\mathrm{dur}},\ C\downarrow\ \Rightarrow\ Y\downarrow\ \Rightarrow\ \pi\downarrow$.
+\item Pensemos en una familia con una hipoteca de 150.000 euros a 25 años, a Euríbor más 1 punto. Con el Euríbor de diciembre de 2021 pagaba unos 530 euros al mes, y con el de octubre de 2023, unos 890, según un cálculo propio con los datos del BCE \parencite{BCE2026FMEuribor}. Son 360 euros menos cada mes para todo lo demás, y la subida le llega por la cuota, no porque prefiera ahorrar.
+\end{itemize}
+
+\paragraph{El canal de los precios de los activos}
+\begin{itemize}
+\item \emph{La $q$ de \autor{Tobin}}: una subida de tipos baja el valor de las acciones y, con él, la $q$, el cociente entre el valor de mercado de la empresa y el coste de reponer su capital; con $q<1$ no compensa invertir \parencite{Tobin1969General} \vertema{3.A.34}. La inversión responde a la $q$ \emph{marginal} y la bolsa da la \emph{media}; coinciden con rendimientos constantes a escala y competencia perfecta \parencite{Hayashi1982Tobin}.
+\item \emph{El efecto riqueza}: bajan el precio de las acciones y el de la vivienda, y con ellos la riqueza con la que los hogares planean su consumo a lo largo de la vida \vertema{3.A.33}.
+\item \emph{El reajuste de carteras} de los monetaristas es la versión general de este canal: el tipo oficial mueve los rendimientos de todos los activos que compiten con el dinero \vertema{3.A.35}.
+\end{itemize}
+
+\paragraph{El canal del tipo de cambio}
+\begin{itemize}
+\item Con libre movilidad de capitales, se cumple la paridad no cubierta de intereses, $i=i^*+\gamma E^e$, con $E$ el tipo de cambio nominal directo (euros por dólar) y $\gamma E^e$ la depreciación esperada. Si el BCE sube su tipo y la Reserva Federal no, el euro se aprecia hoy lo bastante para que se espere una depreciación que iguale los rendimientos \vertema{3.B.14}.
+\item La apreciación tiene 2 efectos:
+  \begin{itemize}
+  \item bajan las exportaciones netas, si se cumple la condición de \autor{Marshall}-\autor{Lerner} \vertema{3.B.12};
+  \item baja la \emph{inflación importada}: las importaciones se abaratan en euros. El traspaso del tipo de cambio a los precios es incompleto y depende de la moneda en que se facturan las importaciones, muy a menudo el dólar \parencite{Gopinath2020DCP}; es menor en una economía grande y poco abierta, como la zona del euro en su conjunto, que en cada uno de sus países por separado.
+  \end{itemize}
+\item Siguiendo con la pyme exportadora: si el euro se aprecia frente al dólar, sus azulejos se encarecen en Estados Unidos y recibe menos pedidos.
+\item El canal también funciona hacia fuera: la política de la Reserva Federal mueve los precios de los activos con riesgo y el crédito de todo el mundo, el \concepto{ciclo financiero global} \parencite{Rey2013Dilema,MirandaAgrippinoRey2020}. Pegatina: «cuando Estados Unidos estornuda, el mundo se resfría». La economía abierta con 2 países está en el anexo~\ref{anexo:abierta}.
+\end{itemize}
+
+\paragraph{Los canales del crédito}
+\begin{itemize}
+\item Con fricciones financieras, la política no solo cambia el precio del crédito, sino también cuánto crédito se da y a quién \parencite{BernankeGertler1995}:
+  \begin{itemize}
+  \item el \concepto{canal del crédito bancario}: la subida encarece la financiación de los bancos, y los que dependen más de los depósitos prestan menos; quien no tiene otra fuente de crédito, como las pymes, no puede sustituirlo;
+  \item el \concepto{canal del balance}: la subida reduce el flujo de caja de los prestatarios endeudados a tipo variable y el valor de sus garantías, y el banco les cobra una prima mayor;
+  \item el \concepto{canal de la toma de riesgos}: con tipos bajos durante mucho tiempo, bancos e inversores buscan rentabilidad y aceptan más riesgo; al subir los tipos, el apetito se corta \parencite{BorioZhu2012Capital}. Con el registro de crédito del Banco de España, los tipos bajos llevan a los bancos con menos capital a prestar a empresas más arriesgadas \parencite{JimenezEtAl2014Hazardous} \vertema{3.A.42}.
+  \end{itemize}
+\item Los 3 nacen de las fricciones financieras y se desarrollan en el apartado~\ref{sec:fricciones}.
+\end{itemize}
+
+\paragraph{El canal de las expectativas}
+\begin{itemize}
+\item Lo que el banco central hace hoy cambia lo que se espera de los tipos y de la inflación futuros. Si es creíble, una subida baja hoy la inflación esperada: los salarios y los precios se fijan pensando en su objetivo, y la inflación vuelve a él con menos pérdida de producción \vertema{3.A.36}.
+\item Es el canal que hace prospectivo el modelo neokeynesiano (\ref{sec:precios}) y el principal cuando los tipos están en su límite (\ref{sec:orientacion}).
+\end{itemize}
+
+\paragraph{La transmisión en la zona del euro y en España}
+\begin{itemize}
+\item \emph{Su peso depende de la estructura financiera}: las empresas de la zona del euro dependen más de los bancos que las de Estados Unidos, que se financian más en los mercados \parencite{DeFioreUhlig2011Bank}. Por eso aquí pesan más los canales del crédito.
+\item \emph{Las subidas de 2022-2023} (gráfico~\ref{fig:transmision-tipos-2022}): el BCE subió la facilidad de depósito 450 puntos básicos, del $-0{,}50$~\% al 4~\%, y la transmisión fue desigual \parencite{BCE2026MIR,BdE2026BE19}:
+  \begin{itemize}
+  \item el crédito nuevo a las empresas se encareció unos 350 puntos básicos, casi lo mismo que el tipo oficial \parencite{BCE2026MIR};
+  \item las hipotecas nuevas, algo más de 200, y los depósitos a plazo de los hogares, unos 300 en la zona del euro y 260 en España;
+  \item los depósitos a la vista apenas se movieron: del 0~\% al 0,4~\% en la zona del euro y al 0,2~\% en España.
+  \end{itemize}
+\item \emph{El tipo variable cuenta}: en España, donde predominan las hipotecas a tipo variable, el tipo medio de las hipotecas vivas pasó del 1,2~\% de junio de 2022 al 3,7~\% de febrero de 2024; en el conjunto de la zona del euro, solo del 1,6~\% al 2,5~\% \parencite{BCE2026MIR}. Es el canal del balance de los hogares, más rápido en España.
+\item \emph{También en las bajadas}: entre junio de 2024 y junio de 2025 el BCE bajó la facilidad de depósito 200 puntos básicos; el crédito nuevo a empresas se abarató unos 150 y las hipotecas, menos de 50 \parencite{BCE2026MIR}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La transmisión de los tipos del BCE a los tipos bancarios (2021-2026)}\label{fig:transmision-tipos-2022}
+\grafico[0.95\textwidth]{transmision-tipos-2022}
+\fuente{elaboración propia con datos de \textcite{BCE2026MIR} y \textcite{BCE2026FMEuribor}. Tipos de las operaciones nuevas (coste compuesto en las hipotecas) y facilidad de depósito a fin de mes; los tipos bancarios llegan a septiembre de 2026.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Los retardos}: todos los canales tardan, porque los precios y los salarios se revisan poco a poco, la inversión se planea con tiempo y las deudas vencen o se revisan de forma escalonada. Por eso el banco central mira a la inflación prevista a 1 o 2 años, no a la de hoy.
+\item \emph{Recapitulación}: los canales del tipo de interés, de los activos y del tipo de cambio existen porque los precios son rígidos; los del crédito, porque hay fricciones financieras; el de las expectativas, porque el público mira hacia delante (tabla~\ref{tab:canales}). ¿Qué dicen los datos de su fuerza y de su retraso?
+\end{itemize}
+
+\begin{table}[!htbp]
+\centering
+\caption{Los canales de transmisión de una subida de tipos}\label{tab:canales}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.4cm}|>{\raggedright\arraybackslash}m{6.6cm}|>{\centering\arraybackslash}m{4.4cm}}
+\rowcolor{tceeazulpalido}\textbf{Canal} & \textbf{Cadena} & \textbf{Dónde se estudia}\\
+\hline
+Tipo de interés & $i\uparrow\Rightarrow r\uparrow\Rightarrow I,\ C^{\mathrm{dur}},\ C\downarrow$ & \ref{sec:precios}; \vertema{3.A.33}, \vertema{3.A.34}\\
+\hline
+$q$ de \autor{Tobin} & $i\uparrow\Rightarrow$ acciones $\downarrow\ \Rightarrow q\downarrow\ \Rightarrow I\downarrow$ & \vertema{3.A.34}\\
+\hline
+Riqueza & $i\uparrow\Rightarrow$ vivienda y acciones $\downarrow\ \Rightarrow C\downarrow$ & \vertema{3.A.33}\\
+\hline
+Tipo de cambio & $i\uparrow\Rightarrow$ apreciación $\Rightarrow X-M\downarrow$, precios de importación $\downarrow$ & Anexo~\ref{anexo:abierta}; \vertema{3.B.14}\\
+\hline
+Crédito bancario & $i\uparrow\Rightarrow$ financiación de los bancos $\uparrow\ \Rightarrow$ crédito $\downarrow$ & \ref{sec:fricciones}\\
+\hline
+Balance & $i\uparrow\Rightarrow$ flujo de caja y garantías $\downarrow\ \Rightarrow$ prima $\uparrow\ \Rightarrow I\downarrow$ & \ref{sec:fricciones}\\
+\hline
+Toma de riesgos & $i\uparrow\Rightarrow$ menos búsqueda de rentabilidad $\Rightarrow$ crédito al riesgo $\downarrow$ & \ref{sec:fricciones}; \vertema{3.A.42}\\
+\hline
+Renta y empleo & $i\uparrow\Rightarrow$ empleo $\downarrow\ \Rightarrow C\downarrow$ de quien vive al día & \ref{sec:heterogeneidad}\\
+\hline
+Expectativas & $i\uparrow$ creíble $\Rightarrow\pi^e\downarrow\ \Rightarrow$ salarios y precios $\downarrow$ & \ref{sec:orientacion}; \vertema{3.A.36}\\
+\hline
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{BernankeGertler1995}, \textcite{Ireland2008Transmission}, \textcite{BoivinKileyMishkin2010} y \textcite{Mishkin2021Economics}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{La evidencia empírica: efectos, retardos e identificación}\label{sec:evidencia}
+
+\begin{itemize}
+\item Una vez trazados los caminos, toca medir cuánto mueve la política y con qué retraso. La conclusión adelantada: una subida inesperada de tipos baja la producción con forma de joroba y los precios después, y medirlo exige separar lo que decide el banco central de lo que responde a la economía.
+\item \emph{El problema de identificación}: el banco central reacciona a la economía. Si sube los tipos porque espera más inflación, los datos mostrarán tipos altos seguidos de inflación alta, y no por eso la subida la causa. Hay que aislar la parte de la política que no responde al estado de la economía: la \concepto{perturbación monetaria}, la $\varepsilon_t$ de la regla de \autor{Taylor} del modelo (\ref{sec:precios}).
+\item \emph{Los métodos}, en orden histórico:
+  \begin{itemize}
+  \item \emph{la historia y las regresiones}: entre 1867 y 1960, en Estados Unidos, los cambios del dinero de origen monetario fueron seguidos por cambios de la producción en el mismo sentido \parencite{FriedmanSchwartz1963Monetary} \vertema{3.A.5}. La ecuación de San Luis regresa la variación del PNB nominal sobre la del dinero y la del gasto público: cada dólar más de dinero sube el PNB nominal unos 5,8 dólares en un año, y el gasto no tiene efecto significativo \parencite{AndersenJordan1968Monetary}. Pero el dinero también responde a la renta, y la regresión no lo distingue;
+  \item \emph{la narrativa}: leyendo las actas de la Reserva Federal, \textcite{RomerRomer1989Does} fechan 6 episodios de posguerra en los que decidió frenar la economía para bajar la inflación (el último, con \autor{Volcker} en 1979); \textcite{RomerRomer2004New} limpian el tipo decidido de lo que la Reserva Federal preveía;
+  \item \emph{los vectores autorregresivos} (VAR), en los que cada variable depende del pasado de todas: \textcite{Sims1992Interpreting} y \textcite{ChristianoEichenbaumEvans1996Effects} miden la política por el tipo de interés y suponen que la producción y los precios no reaccionan a ella en el mismo periodo;
+  \item \emph{la alta frecuencia}: lo que se mueven los tipos de mercado en los 30 minutos alrededor de un anuncio solo puede deberse al anuncio. \textcite{GertlerKaradi2015} lo usan en Estados Unidos, y \textcite{AltavillaEtAl2019} y \textcite{JarocinskiKaradi2020} en la zona del euro; los segundos separan la sorpresa de política de la de \emph{información}, cuando el anuncio revela lo que el banco central sabe de la economía.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Los resultados} (gráfico~\ref{fig:respuesta-joroba}):
+  \begin{itemize}
+  \item a largo plazo, el crecimiento del dinero y la inflación van casi uno a uno, y la producción no depende de ellos \parencite[cap.~1]{Walsh2017Monetary};
+  \item a corto plazo, tras una subida inesperada, la producción cae poco a poco, toca fondo al cabo de varios trimestres y luego se recupera: tiene forma de \concepto{joroba} \parencite{ChristianoEichenbaumEvans1996Effects}. Con la serie narrativa el efecto es mayor: la producción industrial cae un 4,3~\% unos 2 años después de una subida de un punto \parencite{RomerRomer2004New,Ramey2016Macroeconomic};
+  \item los precios apenas se mueven al principio: con la serie narrativa no empiezan a bajar hasta pasados 22 meses \parencite{RomerRomer2004New}, y el efecto máximo llega, de media, a los 29 meses, con mucha dispersión entre países \parencite{HavranekRusnak2013}. Las cosas de palacio, en efecto, van despacio.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La respuesta de la producción y de los precios a una subida inesperada de tipos}\label{fig:respuesta-joroba}
+\grafico[0.7\textwidth]{respuesta-joroba}
+\fuente{elaboración propia, esquemática, a partir de \textcite{ChristianoEichenbaumEvans1996Effects}, \textcite{RomerRomer2004New} y \textcite{HavranekRusnak2013}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{El rompecabezas de los precios} (\emph{price puzzle}): en los primeros VAR los precios \emph{subían} tras una subida de tipos \parencite{Sims1992Interpreting}. No es que la subida cause inflación: el banco central sube los tipos cuando prevé inflación, y el VAR atribuye a la subida lo que el banco ya veía venir. Se corrige al tener en cuenta las previsiones del banco central \parencite{RomerRomer2004New} y al separar las sorpresas de información \parencite{JarocinskiKaradi2020}.
+\item \emph{Lo que se discute}: la parte sistemática de la política, la que responde a la economía, es la que mueve casi todo el tipo de interés, y es la más difícil de medir: un cambio de regla cambia también las expectativas, como advierte la crítica de \autor{Lucas} \vertema{3.A.6}. Los métodos y una tabla de estimaciones están en el anexo~\ref{anexo:evidencia}.
+\item \emph{Recapitulación}: la política monetaria convencional tiene efectos reales a corto plazo, llega por varios canales y tarda: más de un año en la producción y más de 2 en los precios. ¿Por qué tanto, y qué decide su fuerza? Es la pregunta del bloque siguiente.
+\end{itemize}
+
+% ==========================================================================
+\section{Rigideces de precios, de salarios\newline y fricciones financieras}\label{sec:rigideces}
+\minutos{10,5}
+
+\begin{itemize}
+\item Una vez vistos los canales y lo que tardan, pasamos a lo que los hace posibles. Es el corazón del título: las rigideces de precios y de salarios y las fricciones financieras.
+\item \emph{Conclusión anticipada}: basta que los precios no se ajusten todos a la vez para que el banco central, al mover el tipo nominal, mueva el tipo real y la demanda. Los salarios fijados en contratos alargan el efecto; las fricciones financieras lo amplifican, y las diferencias entre hogares cambian el canal principal: de la sustitución intertemporal a la renta y el empleo.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Rigideces de precios: el modelo neokeynesiano}\label{sec:precios}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item Con precios flexibles, una subida del tipo nominal se traslada a los precios y el tipo real no cambia. Si los precios se revisan poco a poco, subir el tipo nominal es subir el tipo real, y eso frena la demanda. Es la versión moderna del canal del tipo de interés, ahora con agentes que optimizan y expectativas racionales.
+\item \emph{Por qué son rígidos los precios}, en 2 líneas \vertema{3.A.7}:
+  \begin{itemize}
+  \item cambiar un precio cuesta (\concepto{costes de menú}), y cerca del óptimo no cambiarlo apenas le cuesta a la empresa, mientras que la suma de esas pequeñas pérdidas tiene efectos grandes sobre la producción \parencite{Mankiw1985Small,AkerlofYellen1985NearRational};
+  \item las \concepto{rigideces reales} lo amplían: si a cada empresa le importa su precio relativo, sube poco el suyo mientras los demás no suben \parencite{BallRomer1990Real}.
+  \end{itemize}
+\item Siguiendo con la pyme de azulejos: no cambia su tarifa cada mes, sino una o 2 veces al año; cuando el BCE sube los tipos, durante meses vende a los mismos precios y lo que ajusta son los pedidos y la producción. Pegatina: «despacito y buena letra».
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item Un hogar representativo de vida infinita, con aversión relativa al riesgo $\theta$ (la elasticidad de sustitución intertemporal es $1/\theta$) y factor de descuento $\beta$.
+\item Un continuo de empresas en competencia monopolística que revisan su precio a la \autor{Calvo}: cada periodo, una empresa mantiene su precio con probabilidad $\eta$, de modo que un precio dura de media $1/(1-\eta)$ periodos \parencite{Calvo1983Staggered}.
+\item Sin capital, sector público ni sector exterior; un banco central que fija el tipo nominal. Variables en logaritmos y en desviaciones del estado estacionario; $x_t$ es la brecha de producción respecto a la natural, la que habría con precios flexibles.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item El modelo se resume en 3 ecuaciones, las mismas que se derivan en el tema de la nueva economía keynesiana \vertema{3.A.7}: la IS dinámica, que sale de la ecuación de \autor{Euler} del hogar (las perturbaciones de demanda van dentro del tipo natural $r^n_t$); la curva de \autor{Phillips} neokeynesiana, que sale de la fijación de precios a la \autor{Calvo}; y la regla de \autor{Taylor}, que cierra el modelo:
+  \begin{align}
+  x_t&=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big) \label{eq:is-dinamica}\\
+  \pi_t&=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t \label{eq:nkpc}\\
+  i_t&=\rho+\phi_\pi\,\pi_t+\phi_x\,x_t+\varepsilon_t \label{eq:taylor}
+  \end{align}
+  con $\kappa$ la pendiente (menor cuanto mayor es $\eta$, cuanto más rígidos son los precios), $u_t$ las perturbaciones de costes \parencite{ClaridaGaliGertler1999Science} y $\varepsilon_t$ la perturbación monetaria.\footnote{La regla responde a la inflación con $\phi_\pi>1$, para que el tipo real suba cuando sube la inflación y el equilibrio sea único (el \emph{principio de \autor{Taylor}}), y a la brecha con $\phi_x\geq0$. La original de \textcite{Taylor1993} es $i_t=1+1{,}5\,\pi_t+0{,}5\,x_t$, en puntos porcentuales anuales \vertema{3.A.36}.}
+\item \emph{La clave de la transmisión}: resolviendo la IS hacia delante, la brecha de hoy depende de toda la senda esperada del tipo real frente al natural,
+  \begin{equation}
+  x_t=-\frac{1}{\theta}\sum_{k\geq0}\mathbb{E}_t\big[i_{t+k}-\pi_{t+k+1}-r^n_{t+k}\big] \label{eq:is-prospectiva}
+  \end{equation}
+  Mover hoy el tipo importa poco si no cambia lo que se espera de los tipos futuros: es la puerta de la orientación de la política (\ref{sec:orientacion}).\footnote{Es una lectura a la \autor{Wicksell}: la política es expansiva si el tipo real que fija está por debajo del natural y contractiva si está por encima; por eso el modelo se llama también \emph{neowickselliano} \parencite{Woodford2003Interest} \vertema{3.A.3}.}
+\item \emph{Una subida inesperada de tipos}, $\varepsilon_t>0$ (gráfico~\ref{fig:nek-perturbacion-monetaria}): con precios rígidos sube el tipo real; por la IS cae la brecha, y por la curva de \autor{Phillips} cae la inflación. En el plano $(x_t,\pi_t)$, la demanda agregada (la IS con la regla) se desplaza a la izquierda y la economía baja por la curva de \autor{Phillips}.
+\item \emph{Con números} \parencite[cap.~3]{Gali2015Monetary}: si la perturbación persiste, $\varepsilon_t=\rho_\varepsilon\varepsilon_{t-1}+$ una innovación ($\rho_\varepsilon$, local), la solución es
+  \begin{equation}
+  x_t=-(1-\beta\rho_\varepsilon)\,\Lambda\,\varepsilon_t,\qquad \pi_t=-\kappa\,\Lambda\,\varepsilon_t,\qquad \Lambda\equiv\frac{1}{(1-\beta\rho_\varepsilon)\big[\theta(1-\rho_\varepsilon)+\phi_x\big]+\kappa(\phi_\pi-\rho_\varepsilon)}>0 \label{eq:respuesta-monetaria}
+  \end{equation}
+  ($\Lambda$, local; derivación en el anexo~\ref{anexo:contratos}). Con precios que duran un año y $\rho_\varepsilon=0{,}5$, una perturbación de 1 punto anual sube el tipo real 0,52 puntos y baja la brecha un 0,26~\% y la inflación anual 0,35 puntos; el tipo nominal sube solo 0,34 puntos, porque la regla responde a la caída de la inflación y de la brecha.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Una subida inesperada de tipos en el modelo neokeynesiano}\label{fig:nek-perturbacion-monetaria}
+\grafico[0.6\textwidth]{nek-perturbacion-monetaria}
+\fuente{elaboración propia a partir de \textcite[cap.~3]{Gali2015Monetary}, con el plano y los valores del gráfico del tema de la nueva economía keynesiana ($\kappa=0{,}5$, $\theta=1$, $\phi_x=0{,}5$, $\phi_\pi=1{,}5$) y una perturbación transitoria $\varepsilon_t=1{,}125$.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item \emph{El dinero no es neutral a corto plazo}, pero no cambia la producción natural: cuando todos los precios se han revisado, solo quedan los precios.
+\item \emph{Cuanto más rígidos los precios} ($\eta$ mayor, $\kappa$ menor), más efecto sobre la producción y menos sobre la inflación.
+\item \emph{El canal es el tipo real}: la política llega al consumo solo por la sustitución intertemporal del hogar representativo.
+\item \emph{Las expectativas lo son todo}: una política más persistente es más contractiva, y puede serlo con un tipo nominal \emph{más bajo}: con $\rho_\varepsilon=0{,}8$, la inflación cae tanto que el tipo nominal baja 0,51 puntos mientras el real sube 0,22. El tipo nominal es un mal indicador del tono de la política.
+\item \emph{Divina coincidencia}: ante perturbaciones de demanda, si el tipo nominal sigue al natural, la inflación y la brecha son cero a la vez; ante las de costes, $u_t$, hay un dilema. El resultado está en \textcite{GoodfriendKing1997New} y \textcite{RotembergWoodford1997Optimization}; el nombre se lo pusieron \textcite{BlanchardGali2007Real} \vertema{3.A.7}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+\begin{itemize}
+\item \emph{Cómo se agregan las revisiones}: con reglas que dependen del tiempo (\autor{Taylor}, \autor{Calvo}) la rigidez agregada es grande; con reglas que dependen del estado (la empresa cambia el precio cuando se aleja demasiado del óptimo), el \emph{efecto selección} puede devolver casi la neutralidad \parencite{CaplinSpulber1987Menu,GolosovLucas2007Menu}; con empresas de muchos productos y cambios pequeños, el resultado vuelve a parecerse al de \autor{Calvo} \parencite{Midrigan2011Menu,NakamuraSteinsson2010Monetary}.
+\item \emph{Inercia}: con indexación a la inflación pasada la curva de \autor{Phillips} es híbrida \parencite{GaliGertler1999Inflation}; con información que se actualiza despacio, la inflación también se retrasa \parencite{MankiwReis2002Sticky}.
+\item \emph{Modelos medianos}: con capital, hábitos, costes de ajuste de la inversión y salarios rígidos, \textcite{ChristianoEichenbaumEvans2005} y \textcite{SmetsWouters2007Shocks} reproducen las respuestas de los VAR; son la base de los modelos de los bancos centrales.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item \emph{Los microdatos}: en Estados Unidos la mitad de los precios de consumo dura menos de 4,3 meses contando las rebajas \parencite{BilsKlenow2004Some}, y bastante más sin ellas \parencite{NakamuraSteinsson2008Five}. En la zona del euro cambia cada mes en torno al 8~\% de los precios sin rebajas, y la frecuencia subió con la inflación de 2022 (gráfico~\ref{fig:frecuencia-precios}): señal de que la revisión también depende del estado \parencite{GautierEtAl2024New,GautierEtAl2026WP3181}.
+\item \emph{Los datos agregados}: el modelo puro da el efecto máximo en el primer periodo, y los VAR dan una joroba (\ref{sec:evidencia}). Para reproducirla hacen falta más fricciones, sobre todo salarios rígidos \parencite{ChristianoEichenbaumEvans2005}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Frecuencia de los cambios de precios en la zona del euro}\label{fig:frecuencia-precios}
+\grafico[0.75\textwidth]{frecuencia-precios}
+\fuente{elaboración propia con datos de \textcite{GautierEtAl2024New} y \textcite{GautierEtAl2026WP3181} (gráfico del tema de la nueva economía keynesiana).}
+\end{figure}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item \emph{A favor}: une la optimización con las rigideces, explica por qué incluso la política anticipada tiene efectos reales y permite evaluarla con el bienestar.
+\item \emph{En contra}: toda la transmisión pasa por la sustitución intertemporal, que los datos sitúan baja \vertema{3.A.33}; no hay joroba sin más rigideces; no hay bancos ni crédito, y el hogar es único. Son las 3 piezas que siguen: los salarios, las fricciones financieras y los hogares distintos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Rigideces de salarios: los contratos escalonados}\label{sec:salarios}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item De los precios pasamos a los salarios, que se revisan aún menos: se fijan en contratos, a menudo para varios años. Es la respuesta keynesiana a la proposición de inefectividad (\ref{sec:aproximacion}): los salarios nominales se fijan antes de conocer las perturbaciones y no se renegocian todos a la vez, así que la política tiene efectos reales aunque las expectativas sean racionales.\footnote{Stanley \autor{Fischer} (1943-2025), que fue gobernador del Banco de Israel y vicepresidente de la Reserva Federal, no es Irving \autor{Fisher} (1867-1947), el de la ecuación de cambio y de la deflación por deudas.}
+\item Siguiendo con la pyme: sus trabajadores tienen un convenio de 3 años firmado antes de las subidas de 2022; el salario no se ajusta del todo hasta la renovación. Pegatina: «a lo hecho, pecho»: el contrato firmado se cumple.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item Variables en logaritmos; expectativas racionales; demanda agregada $y_t=m_t-p_t$, con $m_t$ el dinero (velocidad normalizada).
+\item Los salarios se fijan en contratos de 2 periodos y cada periodo firma la mitad de los trabajadores: los contratos están \emph{escalonados}. El precio es la media de los salarios vigentes (con un margen constante, normalizado a cero).
+\item El salario que se desea fijar sube con los precios y con la actividad: $p^*_t=p_t+a\,y_t$, con $0<a\leq1$. Una $a$ pequeña es una rigidez real.\footnote{La $a$ es local: es la sensibilidad del salario deseado a la producción, la misma idea que la $\chi$ de \autor{Ball} y \autor{Romer} en el tema de la nueva economía keynesiana \vertema{3.A.7}; no es la pendiente de la curva de \autor{Phillips}, que no sale en este apartado.}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item \autor{Fischer}: \emph{salarios predeterminados}. El contrato firmado en $t-j$ fija un salario para cada periodo, el que se espera que iguale al deseado, $w^j_t=\mathbb{E}_{t-j}[p^*_t]$, $j=1,2$. La oferta agregada cierra el modelo: el precio es la media de los 2 salarios, $p_t=\tfrac12\big(w^1_t+w^2_t\big)$. Resolviendo (anexo~\ref{anexo:contratos}):
+  \begin{equation}
+  y_t=\big(m_t-\mathbb{E}_{t-1}[m_t]\big)+\frac{1}{1+a}\big(\mathbb{E}_{t-1}[m_t]-\mathbb{E}_{t-2}[m_t]\big) \label{eq:fischer}
+  \end{equation}
+  El primer término es la sorpresa del periodo, como en \autor{Lucas}. El segundo es nuevo: lo que se supo en $t-1$, \emph{después} de firmar los contratos de $t-2$, también mueve la producción \parencite{Fischer1977Long}.\footnote{En el artículo original la oferta sale de la demanda de trabajo: $w^j_t=\mathbb{E}_{t-j}[p_t]$ y $y_t=\tfrac12\sum_{j=1,2}(p_t-w^j_t)$, con lo que $y_t=\tfrac12(m_t-\mathbb{E}_{t-1}[m_t])+\tfrac13(\mathbb{E}_{t-1}[m_t]-\mathbb{E}_{t-2}[m_t])$. La conclusión es la misma (anexo~\ref{anexo:contratos}).}
+\item \autor{Taylor}: \emph{salarios fijos durante el contrato}. El salario del contrato, $w^c_t$, es el mismo los 2 periodos y mira a los 2: $w^c_t=\tfrac12\big(p^*_t+\mathbb{E}_t[p^*_{t+1}]\big)$, con $p_t=\tfrac12\big(w^c_t+w^c_{t-1}\big)$. Si el dinero sigue un paseo aleatorio, la solución es \parencite{Taylor1980Aggregate}
+  \funcionclave[eq:taylor-contratos]{w^c_t=\rho_w\,w^c_{t-1}+(1-\rho_w)\,m_t,\qquad \rho_w=\frac{1-\sqrt{a}}{1+\sqrt{a}}}
+  con $\rho_w$ la persistencia (local). Cada contrato nuevo se ajusta solo en parte al dinero, porque la mitad de los salarios sigue fijada por el contrato anterior. Tras una subida permanente del dinero de 1 punto, la producción es $y_k=\tfrac12(1+\rho_w)\rho_w^{\,k}$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Respuesta de la producción a una subida permanente del dinero con contratos de \autor{Fischer} y de \autor{Taylor}}\label{fig:fischer-taylor}
+\grafico[0.7\textwidth]{fischer-taylor}
+\fuente{elaboración propia a partir de \textcite{Fischer1977Long}, \textcite{Taylor1980Aggregate} y \textcite[cap.~7]{Romer2019Advanced}. Contratos de 2 periodos y $a=0{,}1$.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item \emph{La política sistemática estabiliza}, aunque las expectativas sean racionales: una regla que responde a lo ocurrido en $t-1$ cambia $m_t$ después de firmados los contratos de $t-2$, y por \eqref{eq:fischer} mueve $y_t$. El banco central no sabe más que el público: puede actuar \emph{después}. Lo que daba la inefectividad era la flexibilidad, no las expectativas racionales \vertema{3.A.6}.
+\item \emph{Persistencia}: con \autor{Fischer}, el efecto dura lo que el contrato más largo (con $a=0{,}1$: 1 y 0,91, y luego nada); con \autor{Taylor}, cada grupo mira el salario del otro para no quedarse atrás y, con rigidez real ($a$ pequeña, $\rho_w$ grande), el ajuste es lento: con $a=0{,}1$, $\rho_w\approx0{,}52$ y la producción es 0,76, 0,40, 0,21, 0,11\dots\ El efecto dura mucho más que los contratos (gráfico~\ref{fig:fischer-taylor}).
+\item \emph{Inercia}: el nivel de precios se mueve despacio porque cada contrato mira a los demás. La rigidez real amplía la nominal.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+\begin{itemize}
+\item \emph{De \autor{Taylor} a \autor{Calvo}}: \textcite{Calvo1983Staggered} cambia la duración fija por una probabilidad de revisar; es la base de la curva de \autor{Phillips} neokeynesiana \eqref{eq:nkpc}.
+\item \emph{Salarios nominales a la \autor{Calvo}}: hay 2 curvas de \autor{Phillips}, de precios y de salarios, y el salario real no puede saltar a su nivel natural; estabilizar solo la inflación de precios ya no es óptimo \parencite{ErcegHendersonLevin2000Optimal} \vertema{3.A.7}.
+\item \emph{Salarios reales rígidos}: si el salario real se ajusta solo en parte, se rompe la divina coincidencia y la inflación gana inercia \parencite{BlanchardGali2007Real}; con búsqueda y emparejamiento, el mismo resultado se expresa en paro \parencite{BlanchardGali2010Labor} \vertema{3.A.26} \vertema{3.A.28}.
+\item \emph{¿Por qué escalonar? ¿Y por qué no indexar?} El escalonamiento se sostiene si las perturbaciones son distintas o si conviene esperar a ver qué hacen los demás \parencite{BallRomer1989Timing,BallCecchetti1988}; la indexación óptima es parcial, porque aísla de las perturbaciones monetarias pero empeora las reales \parencite{Gray1976Wage}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item En Europa, las empresas mantienen los salarios sin cambios unos 15 meses de media, frente a unos 10 los precios, y concentran los cambios en un mes, casi siempre enero \parencite{DruantEtAl2009How}.
+\item Los salarios nominales casi nunca bajan: en muchos países, la distribución de sus cambios tiene un pico en cero y pocas bajadas \parencite{DickensEtAl2007How}. Esa rigidez a la baja ayuda a explicar el paro de la periferia del euro tras 2008, sin tipo de cambio propio con el que ajustar \parencite{SchmittGroheUribe2016Downward}, y es una razón para no apuntar a una inflación nula \parencite{AkerlofDickensPerry1996} \vertema{3.A.41}.
+\item En los modelos medianos, los salarios rígidos son la fricción más importante para reproducir la respuesta a la política monetaria \parencite{ChristianoEichenbaumEvans2005}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item \emph{A favor}: fueron el puente entre las expectativas racionales y las rigideces, explican la persistencia y son la base de la fijación de precios de los modelos actuales.
+\item \emph{En contra}: los contratos son exógenos. Si la rigidez cuesta producción, ¿por qué no se indexan o se hacen contingentes \parencite{Barro1977Long}? La duración y el escalonamiento se suponen, no se explican.
+\item \emph{Recapitulación}: con precios y salarios rígidos, la política llega a la demanda por el tipo real y tarda en llegar a los precios. Pero el modelo sigue sin bancos ni crédito, y fue el crédito el que hundió la economía en 2008.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Fricciones financieras: los canales del crédito}\label{sec:fricciones}
+
+\begin{itemize}
+\item Los modelos anteriores suponen mercados financieros perfectos: se cumple el teorema de \autor{Modigliani} y \autor{Miller}, y cómo se financie una empresa no importa \vertema{3.A.34}.\footnote{En el modelo canónico todos se endeudan y prestan al mismo tipo, el que fija el banco central más la inflación esperada: no hay bancos, ni primas de riesgo, ni quiebras.} Con información asimétrica sí importa \vertema{3.A.13}.
+\item \emph{Conclusión anticipada}: el coste del crédito depende del patrimonio del prestatario y del capital de los bancos. La política monetaria mueve ese patrimonio y, con él, la prima que se paga por el crédito: abre canales propios y amplifica los demás.
+\item \emph{El fundamento}: el prestamista no ve bien la calidad de los proyectos ni el esfuerzo del prestatario. Puede preferir racionar el crédito antes que subir el tipo, que atraería a los prestatarios más arriesgados \parencite{StiglitzWeiss1981Credit}; y si comprobar los resultados de un proyecto fallido le cuesta \parencite{Townsend1979Optimal}, exige una \concepto{prima de financiación externa} que baja cuanto mayor es el patrimonio del prestatario \parencite{BernankeGertler1989Agency}.
+\item \emph{Un precedente histórico}: \textcite{Bernanke1983Nonmonetary} explicó la profundidad de la Gran Depresión por las quiebras bancarias, que destruyeron información y relaciones de crédito, no solo dinero \vertema{3.A.5}.
+\item \concepto{El canal del crédito bancario}: si para los bancos los préstamos y los bonos no son sustitutos perfectos, ni para las empresas los préstamos y otras fuentes de financiación, la política monetaria mueve también la \emph{oferta} de crédito: una subida encarece la financiación de los bancos, los que dependen más de los depósitos prestan menos, y las empresas que solo pueden pedir a un banco, como las pymes, no encuentran sustituto \parencite{BernankeBlinder1988,BernankeBlinder1990}. Lo anticiparon \textcite{BlinderStiglitz1983}.
+  \begin{itemize}
+  \item Actúa por la oferta de préstamos de los bancos, no por el multiplicador del dinero: los bancos no prestan las reservas, y los préstamos crean los depósitos \vertema{3.A.36}.
+  \item \emph{Evidencia}: en Estados Unidos, los bancos pequeños y con balances menos líquidos son los que más recortan el crédito tras una subida \parencite{KashyapStein2000}; en España, con las solicitudes de préstamo del registro de crédito, la subida reduce sobre todo las concesiones de los bancos con menos capital o liquidez, y las empresas rechazadas no consiguen el crédito en otro banco \parencite{JimenezEtAl2012Credit}.
+  \end{itemize}
+\item \concepto{El canal del balance}: la política mueve también el patrimonio de los prestatarios, y con él la prima que pagan. Es el acelerador financiero, que se cuenta como un modelo.
+\end{itemize}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item ¿Por qué una subida de un cuarto de punto puede tener efectos grandes y duraderos? Porque el patrimonio de los prestatarios y la actividad se refuerzan entre sí: es el \concepto{acelerador financiero} \parencite{BernankeGertler1989Agency,BernankeGertlerGilchrist1999}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item El modelo neokeynesiano con capital; los empresarios compran capital, de precio $q_t$, con su riqueza neta, RN, y con deuda; la quiebra es posible y comprobar los resultados le cuesta al prestamista; los contratos de deuda son óptimos.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item La rentabilidad esperada del capital es el tipo sin riesgo por una prima que baja cuanto mayor es la parte que la empresa financia con su patrimonio \parencite{BernankeGertlerGilchrist1999},
+  \funcionclave[eq:bgg]{\mathbb{E}_t\left[R^K_{t+1}\right]=s\left(\frac{\mathrm{RN}_{t+1}}{q_t\,K_{t+1}}\right)R_{t+1},\qquad s'(\cdot)<0}
+  con $R$ y $R^K$ los rendimientos brutos sin riesgo y del capital, y $s(\cdot)$ la prima \vertema{3.A.34}. Gráficamente, el coste de los fondos es plano al tipo sin riesgo mientras la empresa invierte con su riqueza neta y sube después.
+\item \emph{La transmisión}: una subida de tipos golpea 2 veces (gráfico~\ref{fig:coste-fondos-politica}). Sube el tipo sin riesgo, el tramo plano ($r$ a $r'$ en el gráfico); y además cae RN (a RN$'$): suben los intereses de la deuda a tipo variable, bajan los flujos de caja y cae el valor de los activos que sirven de garantía, $q_t$. La prima sube y la inversión de la empresa cae de $I_0$ a $I_1$, más que con la subida del tipo sola \parencite{BernankeGertler1995}. Con una bajada, al revés:
+  \[\downarrow i\ \Rightarrow\ \uparrow\text{flujo de caja},\ \uparrow\text{garantías},\ \uparrow P\text{ no anticipado}\ \Rightarrow\ \uparrow\mathrm{RN}\ \Rightarrow\ \downarrow s(\cdot)\ \Rightarrow\ \uparrow I,\ \uparrow C\]
+  donde un nivel de precios mayor de lo esperado reduce el valor real de las deudas en nominal.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Una subida de tipos con fricciones financieras: el doble golpe}\label{fig:coste-fondos-politica}
+\grafico[0.65\textwidth]{coste-fondos-politica}
+\fuente{elaboración propia a partir de \textcite{BernankeGertler1989Agency} y \textcite{BernankeGertler1995}, con el plano y los valores del gráfico del tema de la inversión.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item \emph{Amplificación y persistencia}: la inversión y la producción responden más y durante más tiempo, porque la riqueza neta tarda en reconstruirse (gráfico~\ref{fig:acelerador-financiero}).
+\item \emph{Asimetría}: el efecto es mayor cuando el patrimonio es escaso, en las recesiones y en las empresas pequeñas.
+\item \emph{Deuda y deflación}: con deudas en nominal, la deflación sube su valor real y vuelve a encarecer el crédito: la deflación por deudas de \textcite{Fisher1933} \vertema{3.A.41}.
+\item Siguiendo con la pyme: con menos pedidos y un local que vale menos como garantía, el banco le pide más por el mismo crédito justo cuando más lo necesita. Pegatina: «el banco te presta el paraguas cuando hace sol y te lo quita cuando llueve».
+\end{itemize}
+
+\paragraph{c) Extensiones}
+\begin{itemize}
+\item \emph{Las garantías}: si se presta contra el valor de los activos, una caída de su precio recorta el crédito, obliga a vender y vuelve a bajar el precio; es la teoría del ciclo de \textcite{KiyotakiMoore1997Credit}, que se estudia con el ciclo financiero \vertema{3.A.42}. Las \emph{ventas forzosas} de muchos a la vez, a precios por debajo del valor fundamental, son otra amplificación, distinta del acelerador \parencite{ShleiferVishny2011Fire}.
+\item \emph{El capital de los bancos}: si un banco solo puede endeudarse hasta un múltiplo de su capital, sus pérdidas encogen el crédito a toda la economía y suben los diferenciales; el tipo oficial pierde fuerza y el banco central puede prestar o comprar activos en su lugar \parencite{GertlerKiyotaki2010Financial,GertlerKaradi2011Unconventional}: es el puente con las compras de activos (\ref{sec:compras}). \textcite{CurdiaWoodford2010Credit} añaden a la regla de \autor{Taylor} el diferencial de crédito.
+\item \emph{La toma de riesgos}: con tipos bajos durante mucho tiempo, los bancos relajan sus criterios \parencite{BorioZhu2012Capital}; en España, los bancos con menos capital prestaron más a empresas arriesgadas \parencite{JimenezEtAl2014Hazardous}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El acelerador financiero: la espiral entre el ciclo financiero y el real}\label{fig:acelerador-financiero}
+\grafico[0.65\textwidth]{acelerador-financiero}
+\fuente{elaboración propia a partir de \textcite{BernankeGertlerGilchrist1999} y \textcite{KiyotakiMoore1997Credit} (gráfico del tema de los ciclos).}
+\end{figure}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item Tras una subida de tipos, las ventas y las existencias de las empresas pequeñas, más dependientes de los bancos, caen bastante más que las de las grandes \parencite{GertlerGilchrist1994Monetary} \vertema{3.A.34}.
+\item Una subida sorpresa del tipo oficial sube los diferenciales del crédito, algo que el modelo sin fricciones no predice \parencite{GertlerKaradi2015}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item \emph{A favor}: explica la amplificación que le faltaba al modelo, por qué la política es más potente en las recesiones con mucha deuda y por qué la salud de los bancos decide cuánto llega.
+\item \emph{En contra}: linealizados, estos modelos pierden la no linealidad de las crisis y explican mejor la caída que el auge del crédito que la prepara; el ciclo financiero como teoría del ciclo es de otro tema \vertema{3.A.42}.
+\item \emph{Recapitulación}: el crédito abre canales propios y amplifica los demás. Pero el modelo sigue teniendo un único hogar, y la política no llega igual a todos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Hogares distintos: el canal redistributivo}\label{sec:heterogeneidad}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item En el modelo canónico, la subida de tipos actúa casi solo por la sustitución intertemporal del hogar representativo. Pero la elasticidad de sustitución intertemporal estimada es baja \vertema{3.A.33}, y muchos hogares viven al día (\emph{hand-to-mouth}): en Estados Unidos, en torno a un tercio, y la mayoría de ellos tiene riqueza, pero ilíquida, como la vivienda o un plan de pensiones \parencite{KaplanViolanteWeidner2014Wealthy}. A estos hogares el tipo les llega por la renta y el empleo.
+\item Volvamos a nuestra familia: con hipoteca variable y sin ahorros, la subida le llega por la cuota y, si se pierde un empleo, por la renta; apenas por la sustitución intertemporal. Pegatina: «donde no hay harina, todo es mohína».
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item Los \concepto{modelos neokeynesianos con agentes heterogéneos} (HANK) sustituyen el hogar representativo por muchos hogares que difieren en renta, riqueza y liquidez, sufren perturbaciones individuales que no pueden asegurar y no pueden endeudarse sin límite; tienen un activo líquido y otro ilíquido más rentable \parencite{KaplanMollViolante2018Monetary} \vertema{3.A.29}. El resto, como en el modelo canónico.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item La respuesta del consumo a un cambio de tipos se descompone en un \concepto{efecto directo}, el del tipo con las rentas dadas, y unos \concepto{efectos indirectos}, los que llegan en equilibrio general por el empleo, los salarios y los impuestos:
+  \begin{equation}
+  \mathrm{d}C_0=\underbrace{\sum_{t\geq0}\frac{\partial C_0}{\partial r_t}\,\mathrm{d}r_t}_{\text{directo}}+\underbrace{\sum_{t\geq0}\left(\frac{\partial C_0}{\partial (wL)_t}\,\mathrm{d}(wL)_t+\frac{\partial C_0}{\partial T_t}\,\mathrm{d}T_t\right)}_{\text{indirectos}} \label{eq:hank}
+  \end{equation}
+  con $(wL)_t$ la renta del trabajo y $T_t$ los impuestos netos de transferencias.
+\item \emph{El resultado}: con un hogar representativo, casi toda la respuesta es directa; en el HANK, los efectos directos son pequeños y los indirectos, la mayor parte, en torno a 4 de cada 5 euros, porque los hogares sin liquidez gastan lo que ganan (gráfico~\ref{fig:hank-efectos}) \parencite{KaplanMollViolante2018Monetary}.
+\item \emph{El canal redistributivo}: la política reparte ganancias y pérdidas, y como quienes ganan y quienes pierden tienen propensiones a consumir distintas, el reparto mueve el consumo agregado \parencite{Auclert2019Monetary}:
+  \begin{itemize}
+  \item por la \emph{renta}: el empleo que se pierde con una subida es sobre todo de rentas bajas, con propensión alta;
+  \item por la \emph{inflación} (efecto \autor{Fisher}): una inflación menor de lo esperado pasa riqueza de los deudores en nominal a los acreedores;
+  \item por la \emph{exposición a los tipos}: ganan quienes tienen activos que se renuevan pronto, como los depósitos, y pierden quienes tienen deudas a tipo variable.
+  \end{itemize}
+\item \emph{La versión sencilla}: con 2 tipos de hogares, una parte que consume su renta y el resto que optimiza (TANK), la política se amplifica si la renta de los que viven al día es más sensible al ciclo que la media \parencite{GaliLopezSalidoValles2007,Bilbiie2008Limited,Bilbiie2020New}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Efectos directos e indirectos de la política monetaria sobre el consumo}\label{fig:hank-efectos}
+\grafico[0.6\textwidth]{hank-efectos}
+\fuente{elaboración propia a partir de \textcite{KaplanMollViolante2018Monetary}; cifras redondeadas.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item \emph{La política actúa sobre todo por la renta y el empleo}, y su fuerza depende de la propensión marginal a consumir y del reparto de la deuda: con muchas hipotecas a tipo variable, como en España, el canal de la exposición a los tipos es más fuerte \vertema{3.A.33}.
+\item \emph{La política fiscal importa para la monetaria}: quién paga los intereses de la deuda pública cuando suben los tipos cambia el efecto sobre el consumo \vertema{3.A.40}.
+\item \emph{Las promesas lejanas pesan menos}: con riesgo de paro y límites al endeudamiento, los hogares descuentan el futuro con más cautela y se modera la paradoja de la orientación \parencite{McKayNakamuraSteinsson2016} (\ref{sec:orientacion}).
+\item La política monetaria redistribuye, pero no es el instrumento para redistribuir: para eso está la fiscal.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+\begin{itemize}
+\item La \emph{cruz keynesiana intertemporal} lleva la cruz keynesiana a muchos periodos con las propensiones a consumir que se observan, y une así la política monetaria con la fiscal \parencite{AuclertRognlieStraub2024} \vertema{3.A.40}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item Con datos administrativos de Noruega, los efectos indirectos crecen con el tiempo y acaban dominando, y los hogares más endeudados son los que más recortan su consumo tras una subida \parencite{HolmPaulTischbirek2021Transmission}.
+\item En el Reino Unido y Estados Unidos, los hogares con hipoteca y los inquilinos ajustan su gasto tras un cambio de tipos; los propietarios sin deudas, apenas \parencite{CloyneFerreiraSurico2020Monetary}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item \emph{A favor}: encajan con los microdatos (sustitución intertemporal débil, propensiones a consumir altas) y unen la política monetaria, la fiscal y la distribución.
+\item \emph{En contra}: son difíciles de resolver y sus resultados dependen de cómo se calibre la distribución de la liquidez.
+\item \emph{Recapitulación del bloque}: las rigideces de precios y salarios explican por qué la política mueve la demanda; las fricciones financieras y los hogares distintos, con qué fuerza y a quién llega. Todo descansa en que el banco central pueda mover el tipo real. ¿Y si el nominal ya no puede bajar más?
+\end{itemize}
+
+% ==========================================================================
+\section{Los mecanismos de transmisión\newline de la política monetaria no convencional}\label{sec:no-convencional}
+\minutos{8}
+
+\begin{itemize}
+\item Todo lo anterior supone que el banco central puede mover el tipo real moviendo el nominal. Pasamos ahora a lo que ocurre cuando ya no puede bajarlo, o cuando la transmisión se rompe.
+\item \emph{Conclusión anticipada}: el banco central actúa entonces sobre lo que de verdad mueve el gasto, los tipos cortos que se esperan, las primas de los tipos largos y el crédito, con su palabra y con su balance. Sus canales son las expectativas, el reequilibrio de carteras, la liquidez, el crédito bancario y el tipo de cambio. Funcionaron, aunque con menos precisión que el tipo oficial, y deshacerlos ha movido los mercados menos que hacerlos.
+\item El catálogo de los instrumentos pertenece al diseño de la política \vertema{3.A.36}, y su eficacia agregada desde 2008, con las cifras de los balances, a otra exposición \vertema{3.A.40}. Aquí interesa por qué canales actúan.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El límite inferior de los tipos de interés}\label{sec:limite-inferior}
+
+\begin{itemize}
+\item \emph{El problema}: el efectivo rinde un 0~\% nominal, y nadie aceptará un depósito o un bono con un rendimiento claramente negativo si puede guardar billetes, salvo lo que cuesta guardarlos y asegurarlos \vertema{3.A.35}. El tipo nominal tiene un \concepto{límite inferior efectivo}, $i^{\mathrm{ELB}}$ (ZLB, \emph{zero lower bound}; ELB, \emph{effective lower bound}, cuando es algo negativo), y con él el tipo real tiene un suelo: $r_t\geq i^{\mathrm{ELB}}-\mathbb{E}_t[\pi_{t+1}]$.
+\item \emph{La trampa}: si una perturbación lleva el tipo natural $r^n_t$ por debajo de ese suelo, la IS dinámica \eqref{eq:is-dinamica} deja una brecha negativa que el banco central no puede cerrar bajando el tipo; la brecha baja la inflación \eqref{eq:nkpc}, la inflación esperada baja y el tipo real \emph{sube}: es el riesgo de espiral deflacionista \parencite{Krugman1998Baaack,EggertssonWoodford2003Zero} \vertema{3.A.41}. No es exactamente la trampa de la liquidez de \autor{Keynes} \vertema{3.A.4}: allí más dinero no bajaba el tipo; aquí el tipo ya está en su suelo.
+\item \emph{No es una curiosidad}: la Reserva Federal tuvo su tipo en el 0-0,25~\% de diciembre de 2008 a diciembre de 2015 y de marzo de 2020 a marzo de 2022, y el BCE mantuvo negativo el tipo de la facilidad de depósito entre junio de 2014 y julio de 2022, con un mínimo del $-0{,}50$~\% \parencite{FRED2026FedTipos,BCE2026FMEuribor}. Por qué ha caído el tipo natural es de otra exposición \vertema{3.A.40}.
+\item \emph{La lógica de las respuestas}: lo que mueve el consumo y la inversión es el tipo a largo plazo, que es la media de los tipos cortos esperados más una prima por plazo:\footnote{Es la hipótesis de las expectativas con prima, en logaritmos; $i^{(n)}_t$ es el tipo a $n$ periodos y la prima por plazo va sin letra. La estructura temporal de los tipos, \vertema{3.B.24}.}
+  \funcionclave[eq:tipo-largo]{i^{(n)}_t=\frac{1}{n}\sum_{k=0}^{n-1}\mathbb{E}_t[i_{t+k}]+\text{prima por plazo}_t}
+  Con el tipo de hoy en el suelo, quedan 3 palancas (gráfico~\ref{fig:no-convencionales-canales}):
+  \begin{itemize}
+  \item los \emph{tipos cortos esperados}, el primer sumando: la orientación de la política (\ref{sec:orientacion}) y los tipos negativos (\ref{sec:otros-instrumentos});
+  \item la \emph{prima por plazo} y las de riesgo, el segundo: las compras de activos (\ref{sec:compras}) y el control de la curva;
+  \item el \emph{crédito}, cuando lo que falla son los bancos o la unión monetaria: los préstamos condicionados y la protección de la transmisión (\ref{sec:otros-instrumentos}).
+  \end{itemize}
+\item Volvamos a nuestra familia: entre 2016 y 2021 el Euríbor a 12 meses estuvo por debajo de cero \parencite{BCE2026FMEuribor}, y su cuota bajó sin que el BCE tocara el tipo a un día: lo bajaron las expectativas de tipos y las compras de deuda.
+\item \emph{Otra salida, quitar el suelo}: suprimir o encarecer el efectivo, empezando por los billetes grandes \parencite{Rogoff2016Curse}; el detalle, en el anexo~\ref{anexo:efectivo}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La política no convencional: instrumentos, sumandos del tipo largo y canales}\label{fig:no-convencionales-canales}
+\grafico[0.95\textwidth]{no-convencionales-canales}
+\fuente{elaboración propia a partir de \textcite{EggertssonWoodford2003Zero}, \textcite{Bernanke2020New} y la ecuación~\eqref{eq:tipo-largo}.}
+\end{figure}
+
+\Needspace{0.6\textheight}
+\begin{anotaciones}
+\emph{El modelo neokeynesiano con el límite inferior}. Con el tipo en el suelo, la demanda agregada del plano $(x_t,\pi_t)$ tiene un codo: por encima del límite, la regla de \autor{Taylor} hace que la demanda tenga pendiente negativa; en el límite, el tipo no baja, y una caída de la inflación sube el tipo real y hunde la brecha, así que la demanda pasa a tener pendiente positiva. Por eso, en el límite, el gasto público es más potente ($m$, el multiplicador del gasto público) que en tiempos normales \vertema{3.A.40}.
+\begin{figuracaja}
+\centering
+\caption{La demanda agregada con codo en el límite inferior}\label{fig:nek-limite-inferior}
+\grafico[0.7\textwidth]{nek-limite-inferior}
+\fuente{elaboración propia a partir de \textcite{EggertssonWoodford2003Zero} y \textcite{Gali2015Monetary} (gráfico del tema de la política fiscal tras 2008).}
+\end{figuracaja}
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{La orientación de la política}\label{sec:orientacion}
+
+\begin{itemize}
+\item \emph{Qué es}: la \concepto{orientación de la política} (\emph{forward guidance}) es lo que el banco central anuncia sobre sus tipos futuros \vertema{3.A.36}. El BCE la usó por primera vez el 4 de julio de 2013 \parencite{BCE2013Orientacion}; en junio de 2018 anunció que mantendría los tipos «al menos hasta el verano de 2019» y que dejaría de comprar en términos netos en diciembre \parencite{BCE2018Decisiones}.
+\item \emph{Por qué canal actúa}: por el primer sumando de \eqref{eq:tipo-largo}. Como la IS mira hacia delante \eqref{eq:is-prospectiva}, prometer tipos bajos durante más tiempo del que pediría la regla, cuando el límite ya no apriete, sube la producción y la inflación esperadas para entonces y baja hoy el tipo real \parencite{EggertssonWoodford2003Zero}. El ejemplo, paso a paso, en el anexo~\ref{anexo:contratos}.
+\item \emph{De qué depende}: de la credibilidad. Llegado el momento, al banco central le convendrá subir los tipos y no cumplir; en palabras de \textcite{Krugman1998Baaack}, la política funciona si el banco central puede «prometer de forma creíble que será irresponsable», es decir, que tolerará un nivel de precios más alto en el futuro. Si el anuncio es solo una previsión (orientación \emph{délfica}), puede leerse como una mala noticia sobre la economía; si es un compromiso (\emph{odiseica}), funciona \parencite{CampbellEtAl2012Macroeconomic}.
+\item \emph{Las estrategias de compensación} hacen automática esa promesa: la Reserva Federal adoptó en 2020 un objetivo de inflación media \parencite{Fed2020Prensa}, pero lo abandonó en agosto de 2025, tras la inflación de 2021-2023 \parencite{Fed2025Prensa,Powell2025Jackson} \vertema{3.A.36}.
+\item \emph{La paradoja de la orientación} (\emph{forward guidance puzzle}): en el modelo canónico, prometer un tipo más bajo dentro de muchos años tiene tanto efecto hoy como bajarlo ahora, o más, y eso no se ve en los datos \parencite{DelNegroGiannoniPatterson2023}. Se modera con hogares que temen al paro y no pueden asegurarse, que descuentan más el futuro \parencite{McKayNakamuraSteinsson2016} (\ref{sec:heterogeneidad}). Pegatina: «las palabras se las lleva el viento».
+\item \emph{Evidencia}: separando las sorpresas de los anuncios, la orientación mueve sobre todo los tipos a 1 y 2 años, y las compras de activos, los más largos \parencite{Swanson2021Measuring}; en la zona del euro, la orientación explica buena parte de la reacción de los tipos medios \parencite{AltavillaEtAl2019}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Las compras de activos}\label{sec:compras}
+
+\begin{itemize}
+\item \emph{Qué son}: compras en firme y a gran escala de deuda pública y privada, pagadas con reservas; en la zona del euro, el programa de compras de activos (APP) desde 2014 y el de emergencia frente a la pandemia (PEPP) desde 2020 \parencite{BCE2026APP,BCE2026PEPP} \vertema{3.A.36}.
+\item \emph{Por qué no deberían funcionar}: \textcite{Wallace1981ModiglianiMiller} demostró que, con mercados sin fricciones, el tamaño y la composición del balance del banco central son irrelevantes: el sector público consolidado tiene los mismos pasivos, y los inversores deshacen lo que hace el banco central. Es un teorema de \autor{Modigliani} y \autor{Miller} para el balance del banco central \vertema{3.A.39}.
+\item \emph{Por qué funcionan}: porque los mercados no son perfectos, y cada imperfección es un canal:
+  \begin{itemize}
+  \item el de \emph{señalización}: comprar bonos largos es una forma creíble de prometer que los tipos seguirán bajos, porque subirlos pronto le haría perder dinero al banco central; refuerza la orientación \parencite{BauerRudebusch2014Signaling};
+  \item el de \emph{reequilibrio de carteras}: si los activos no son sustitutos perfectos \parencite{Tobin1969General}, retirar bonos largos deja a los inversores con menos riesgo de plazo, baja la prima por plazo y empuja a comprar otros activos, cuyas primas también bajan \parencite{GagnonEtAl2011Financial}. Los inversores que prefieren un plazo concreto, como los fondos de pensiones y las aseguradoras, refuerzan el efecto: es el \emph{hábitat preferente} \parencite{VayanosVila2021Preferred} \vertema{3.B.24}. Pegatina: «cada mochuelo a su olivo»;
+  \item el de \emph{liquidez}: en un pánico, como en 2008 o en marzo de 2020, el banco central compra lo que nadie quiere y baja las primas de liquidez; es cuando las compras son más eficaces \parencite{Bernanke2020New};
+  \item el del \emph{crédito y el capital de los bancos}: suben los precios de los activos que tienen los bancos y el banco central sustituye a los que no pueden prestar \parencite{GertlerKaradi2011Unconventional} (\ref{sec:fricciones});
+  \item el del \emph{tipo de cambio y la riqueza}: con tipos más bajos se deprecia la moneda y suben las acciones y la vivienda (\ref{sec:canales}); las compras de la Reserva Federal y del BCE movieron el dólar y el euro \parencite{DedolaEtAl2021}.
+  \end{itemize}
+\item \emph{Lo que no hacen}: crean reservas, no préstamos; el dinero de hogares y empresas solo crece si los bancos prestan más \vertema{3.A.36}. Y lo que se compra importa: en el límite inferior, ampliar las reservas comprando deuda pública sin más apenas sirve, mientras que comprar activos privados cuando sus mercados están dañados sí puede servir \parencite{CurdiaWoodford2011Balance}. Cómo cambian los balances, en el anexo~\ref{anexo:compras-balances}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Tipos negativos, préstamos condicionados y control de la curva}\label{sec:otros-instrumentos}
+
+\begin{itemize}
+\item \concepto{Tipos negativos}: como el límite efectivo está algo por debajo de cero, el BCE pudo llevar la facilidad de depósito al $-0{,}50$~\%. Actúan como una bajada normal, sobre todo el tramo corto de la curva y el tipo de cambio. Su límite es el margen de los bancos, que no trasladan los tipos negativos a los depósitos de los hogares:
+  \begin{itemize}
+  \item en la zona del euro, los bancos con más depósitos prestaron menos y a empresas más arriesgadas \parencite{HeiderSaidiSchepens2019Life};
+  \item en Suecia, por debajo de cero la transmisión a los tipos de los préstamos se debilitó mucho \parencite{EggertssonEtAl2024Negative};
+  \item por debajo de un \emph{tipo de reversión}, bajar más el tipo daña tanto el capital de los bancos que el crédito se contrae \parencite{AbadiBrunnermeierKoby2023Reversal}. Pegatina: «tanto va el cántaro a la fuente que al final se rompe».
+  \end{itemize}
+\item \concepto{Préstamos condicionados}: préstamos a los bancos a largo plazo y a un tipo que mejora si prestan a empresas y hogares, como las TLTRO del BCE desde 2014 \parencite{BCE2014TLTRO} o el \emph{Funding for Lending} del Banco de Inglaterra desde 2012. Actúan por el canal del crédito bancario (\ref{sec:fricciones}): financiación barata a cambio de crédito. Con los préstamos a 3 años del BCE de 2011-2012, cada 1.000 millones de euros que tomaba un banco francés elevaban su crédito a las empresas en unos 186 millones en un año \parencite{AndradeEtAl2019Long}.
+\item \concepto{Protección de la transmisión}: en una unión monetaria, las primas de riesgo de un país pueden dispararse por pánico y romper la transmisión de la política única. Las operaciones monetarias de compraventa (OMT, 2012) y el instrumento para la protección de la transmisión (TPI, 2022) actúan sobre esas primas, y bastó con anunciarlos \parencite{BCE2012OMT,BCE2022TPI} \vertema{3.B.43}.
+\item \concepto{Control de la curva}: el banco central fija el tipo de un plazo largo y compra lo que haga falta para defenderlo, como el Banco de Japón con el bono a 10 años de septiembre de 2016 a marzo de 2024 \parencite{BoJ2016YCC,BoJ2024Marco}. Actúa sobre el segundo sumando de \eqref{eq:tipo-largo}; si es creíble, apenas necesita comprar, y si no, puede tener que comprar sin límite.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La evidencia y la salida}\label{sec:salida}
+
+\begin{itemize}
+\item \emph{La evidencia por canal}: los anuncios de compras bajaron los tipos largos, y una parte importante lo hizo por la señal sobre los tipos futuros, no solo por la cartera \parencite{KrishnamurthyVissingJorgensen2011Effects,BauerRudebusch2014Signaling}. Para medir el tono conjunto se usa el \concepto{tipo sombra}, el tipo a corto que reproduciría la curva de tipos si no hubiera límite \parencite{WuXia2016Measuring}: en la zona del euro llegó al $-7{,}8$~\% en agosto de 2019 \parencite{Wu2022Sombra}. Su eficacia agregada, por economías, es de otra exposición \vertema{3.A.40}.
+\item \emph{La salida}: la «estrategia de salida» ya se ha recorrido. El BCE dejó de reinvertir el APP en 2023 y el PEPP a finales de 2024 \parencite{BieberLizarazo2026Liquidez} y señala desde 2024 el tono de su política con la facilidad de depósito, con reservas abundantes \parencite{BCE2024Marco}; la Reserva Federal redujo su balance entre junio de 2022 y diciembre de 2025 \parencite{Fed2022Reduccion,Fed2025FOMCoct} y ahora compra letras para mantener amplias las reservas \parencite{Fed2025FOMCdic}.
+\item \emph{Una transmisión asimétrica}: reducir el balance ha subido los tipos largos mucho menos de lo que los bajó ampliarlo, porque se anuncia con antelación, se hace despacio y llega en mercados tranquilos, sin la señal ni la liquidez de las compras de crisis \parencite{DuForbesLuzzetti2024Quantitative}.
+\item \emph{Recapitulación}: con el tipo corto en su límite, el banco central sigue actuando sobre el tipo largo, por sus 2 sumandos, y sobre el crédito. Los instrumentos no convencionales se han quedado en la caja de herramientas: la estrategia del BCE de 2025 los mantiene \parencite{BCE2025Estrategia}.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: En conclusión, la política monetaria llega a la economía por varios canales a la vez (el tipo de interés, los precios de los activos, el tipo de cambio, el crédito y las expectativas), y llega porque hay fricciones: precios y salarios que se revisan poco a poco, y mercados financieros en los que el patrimonio importa. Esas fricciones crean la transmisión y la amplifican, y con hogares distintos cambian a quién llega. Cuando el tipo de interés toca su límite, el banco central actúa sobre los tipos esperados y las primas, con su palabra y con su balance.
+\item \textbf{\emph{Relevancia}}: en España, con hipotecas a tipo variable y empresas que dependen de los bancos, la transmisión es más rápida y más desigual que en otros países del euro, como mostraron las subidas de 2022-2023 \parencite{BCE2026MIR}.
+\item \textbf{\emph{Extensiones}}: el diseño y los instrumentos de la política \vertema{3.A.36}; la demanda de dinero \vertema{3.A.35}; la nueva economía keynesiana \vertema{3.A.7}; la eficacia desde 2008 y la política fiscal en el límite \vertema{3.A.40}; la dominación fiscal \vertema{3.A.39}; la inflación y la deflación \vertema{3.A.41}; el ciclo financiero \vertema{3.A.42}; la economía abierta \vertema{3.B.14} \vertema{3.B.19}, y el Eurosistema \vertema{3.B.43}. Un euro digital remunerado, si llegara, abriría un canal directo del tipo oficial al público \vertema{3.A.36}.
+\item \textbf{\emph{Opinión}}: hay consenso en que una subida inesperada baja la producción con forma de joroba y retraso, y los precios después; hay menos acuerdo sobre los canales exactos de las compras de activos, que bajaron los tipos largos pero tuvieron que ser muy grandes para mover la economía \parencite{Walsh2017Monetary}.
+\item \textbf{\emph{Idea final}}: las cosas de palacio van despacio. La política monetaria actúa hoy sobre la economía de dentro de 2 años; por eso tiene que mirar hacia delante y ser creíble, porque, cuando el tipo de interés ya no puede bajar, su palabra es lo que le queda.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: las escuelas en detalle}\label{anexo:escuelas}
+
+\paragraph{La teoría cuantitativa}
+\begin{itemize}
+\item La ecuación de cambio, $M\,V\equiv P\,T$, es una identidad: el dinero por las veces que cambia de manos iguala el valor de las transacciones. \textcite{Fisher1911Purchasing} la convierte en teoría con 3 supuestos: la velocidad depende de hábitos e instituciones y es estable; las transacciones (la producción) las fija la oferta, con pleno empleo; y la causalidad va del dinero a los precios.
+\item En tasas, $\gamma_M+\gamma_V=\pi+\gamma_Y$; con $\gamma_V=0$, $\pi=\gamma_M-\gamma_Y$. Es la base de que, para \textcite{Friedman1963Inflation}, la inflación sea «siempre y en todas partes un fenómeno monetario» \vertema{3.A.35}.
+\end{itemize}
+
+\paragraph{\autor{Keynes} y la síntesis en el IS-LM}
+\begin{itemize}
+\item En el IS-LM \parencite{Hicks1937Keynes}, con la LM $M/P=kY-h\,i$ y una inversión que baja con el tipo, $I=\overline{I}-b\,i$, una expansión monetaria sube la renta tanto más cuanto menor es $h$ (LM más inclinada) y mayor es $b$ (IS más plana) \vertema{3.A.5}.
+\item Los 2 eslabones débiles son los 2 casos extremos: $h\to\infty$ (LM horizontal, trampa de la liquidez: el tipo no baja) y $b\to0$ (IS vertical: la inversión no responde).
+\end{itemize}
+
+\paragraph{\autor{Friedman} y los monetaristas}
+\begin{itemize}
+\item El dinero es un activo más de una cartera amplia (bonos, acciones, capital, bienes duraderos); con más dinero del deseado, se reajusta toda la cartera y el gasto sube por muchos caminos \parencite{BrunnerMeltzer1972Money}.
+\item \textcite{Friedman1970Counter} estima que un cambio del dinero llega a la renta nominal en 6 a 9 meses y a los precios en otros 6 a 9; los retardos son largos y variables \parencite{Friedman1961Lag}, y por eso una política activa puede desestabilizar.
+\item La «ecuación perdida» \parencite{Friedman1970Theoretical}: la teoría cuantitativa dice cuánto crece la renta nominal, pero no cómo se reparte a corto plazo entre precios y producción; la curva de \autor{Phillips} aumentada con expectativas cubrió ese hueco \vertema{3.A.28}.
+\end{itemize}
+
+\paragraph{\autor{Lucas} y la proposición de inefectividad}
+\begin{itemize}
+\item En cada isla, el productor ve su precio, $p_{i,t}=p_t+z_{i,t}$, pero no el general, y atribuye a una perturbación real la parte $\omega=\sigma^2_z/(\sigma^2_z+\sigma^2_p)$ de lo que observa: $\omega$ es un \emph{coeficiente de proyección}, no una probabilidad \parencite{Lucas1972Expectations}. Agregando, $y_t=y^n+\psi\,(p_t-p^e_t)$, con $\psi$ creciente en $\omega$ \vertema{3.A.6}.
+\item Si la pendiente depende de las varianzas, donde la demanda nominal es más volátil la oferta debería ser más vertical: \textcite{Lucas1973Some} lo encuentra en 18 países. Con 43 países, \textcite{BallMankiwRomer1988} obtienen un coeficiente de $-1{,}639$ para la varianza sola, pero al añadir la inflación media cae a $-0{,}322$ y deja de ser significativo: lo que explica la pendiente es el nivel de la inflación, como predicen los costes de menú.
+\item Con una regla de política que responde a la perturbación de oferta del periodo anterior, $m_t=\mu_0+\mu_1u_{t-1}+\varepsilon_t$, el público la descuenta y $y_t=y^n+(\psi\,\varepsilon_t+u_t)/(1+\psi)$: la parte sistemática, $\mu_1$, no afecta a la producción \parencite{SargentWallace1975Rational}. En palabras de \textcite{SargentWallace1976Rational}, la autoridad «no puede esperar explotar la curva de \autor{Phillips} ni siquiera durante un periodo».
+\item En el ciclo real, que nace del modelo de crecimiento, el dinero no tiene papel alguno.\footnote{\textcite{Solow1956} y \textcite{Swan1956}, con un ahorro fijo; \textcite{Cass1965} y \textcite{Koopmans1965}, con la optimización de \textcite{Ramsey1928}; \textcite{KydlandPrescott1982Time} añaden la oferta de trabajo y las perturbaciones tecnológicas. Son economías sin dinero: para estudiar la política monetaria hay que darle una función \vertema{3.A.35} \vertema{3.A.42}.}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: las derivaciones, paso a paso}\label{anexo:contratos}
+
+\subsection*{La respuesta del modelo canónico a una perturbación monetaria}
+\begin{itemize}
+\item \emph{Supuestos}: sin perturbaciones de costes ni de demanda ($u_t=0$, $r^n_t=\rho$) y $\varepsilon_t=\rho_\varepsilon\varepsilon_{t-1}+$ una innovación de media cero, $0\leq\rho_\varepsilon<1$.
+\item \emph{Paso 1}: la regla \eqref{eq:taylor} en la IS \eqref{eq:is-dinamica}:
+  \[x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(\phi_\pi\pi_t+\phi_x x_t+\varepsilon_t-\mathbb{E}_t[\pi_{t+1}]\big)\]
+\item \emph{Paso 2}: se prueba una solución proporcional a la perturbación, $x_t=X\varepsilon_t$ y $\pi_t=\Pi\,\varepsilon_t$ (coeficientes indeterminados, locales del anexo), con $\mathbb{E}_t[x_{t+1}]=X\rho_\varepsilon\varepsilon_t$ y $\mathbb{E}_t[\pi_{t+1}]=\Pi\rho_\varepsilon\varepsilon_t$.
+\item \emph{Paso 3}: la curva de \autor{Phillips} \eqref{eq:nkpc} da $\Pi=\beta\rho_\varepsilon\Pi+\kappa X$, es decir, $\Pi=\kappa X/(1-\beta\rho_\varepsilon)$.
+\item \emph{Paso 4}: la IS da $\theta(1-\rho_\varepsilon)X=-\big[(\phi_\pi-\rho_\varepsilon)\Pi+\phi_x X+1\big]$; con el paso 3,
+  \[X\left[\theta(1-\rho_\varepsilon)+\phi_x+\frac{\kappa(\phi_\pi-\rho_\varepsilon)}{1-\beta\rho_\varepsilon}\right]=-1\ \Rightarrow\ X=-(1-\beta\rho_\varepsilon)\Lambda,\qquad \Pi=-\kappa\Lambda\]
+  con $\Lambda$ la de \eqref{eq:respuesta-monetaria}.
+\item \emph{Paso 5}: los tipos. De la IS, $(1-\rho_\varepsilon)x_t=-\frac1\theta(r_t-\rho)$, y por tanto
+  \[r_t-\rho=\theta(1-\rho_\varepsilon)(1-\beta\rho_\varepsilon)\Lambda\,\varepsilon_t>0,\qquad i_t-\rho=\big[\theta(1-\rho_\varepsilon)(1-\beta\rho_\varepsilon)-\rho_\varepsilon\kappa\big]\Lambda\,\varepsilon_t\]
+  El tipo real sube siempre; el nominal puede bajar si la perturbación es muy persistente.
+\item \emph{Los números del texto}: con $\eta=0{,}75$ (precios que duran un año en un modelo trimestral), $\beta=0{,}99$ y $\theta=1$, una elasticidad de Frisch unitaria y rendimientos constantes, $\kappa\approx0{,}17$; con $\phi_\pi=1{,}5$, $\phi_x=0{,}125$ y $\rho_\varepsilon=0{,}5$, $\Lambda\approx2{,}05$, y una perturbación de 0,25 puntos trimestrales (1 punto anual) da $x_t\approx-0{,}26$~\%, una inflación anualizada 0,35 puntos menor, un tipo real 0,52 puntos mayor y un nominal 0,34 puntos mayor. Con $\rho_\varepsilon=0{,}8$, $\Lambda\approx5{,}33$: el tipo real sube 0,22 puntos y el nominal baja 0,51 \parencite[cap.~3]{Gali2015Monetary}. \findemo
+\end{itemize}
+
+\subsection*{Los contratos de \autor{Fischer}}
+\begin{itemize}
+\item Con $p^*_t=p_t+a\,y_t$ y $y_t=m_t-p_t$, el salario deseado es $p^*_t=a\,m_t+(1-a)\,p_t$, y con $w^j_t=\mathbb{E}_{t-j}[p^*_t]$:
+  \[p_t=\tfrac12\Big(a\,\mathbb{E}_{t-1}[m_t]+(1-a)\,\mathbb{E}_{t-1}[p_t]+a\,\mathbb{E}_{t-2}[m_t]+(1-a)\,\mathbb{E}_{t-2}[p_t]\Big)\]
+\item \emph{Expectativa en $t-2$}: $\mathbb{E}_{t-2}[p_t]=a\,\mathbb{E}_{t-2}[m_t]+(1-a)\,\mathbb{E}_{t-2}[p_t]$, luego $\mathbb{E}_{t-2}[p_t]=\mathbb{E}_{t-2}[m_t]$.
+\item \emph{Expectativa en $t-1$}: $\mathbb{E}_{t-1}[p_t]=\tfrac12\big(a\,\mathbb{E}_{t-1}[m_t]+(1-a)\,\mathbb{E}_{t-1}[p_t]+\mathbb{E}_{t-2}[m_t]\big)$, luego $\mathbb{E}_{t-1}[p_t]=\dfrac{a\,\mathbb{E}_{t-1}[m_t]+\mathbb{E}_{t-2}[m_t]}{1+a}$.
+\item \emph{Equilibrio}: el precio está predeterminado (solo depende de lo que se sabía en $t-1$ y $t-2$), así que $p_t=\mathbb{E}_{t-1}[p_t]$ y $y_t=m_t-p_t$ da \eqref{eq:fischer}.
+\item \emph{La versión del artículo}: con $w^j_t=\mathbb{E}_{t-j}[p_t]$ y la oferta $y_t=\tfrac12\sum_j(p_t-w^j_t)$, se obtiene $\mathbb{E}_{t-2}[p_t]=\mathbb{E}_{t-2}[m_t]$, $\mathbb{E}_{t-1}[p_t]=\tfrac23\mathbb{E}_{t-1}[m_t]+\tfrac13\mathbb{E}_{t-2}[m_t]$, $p_t=\tfrac12m_t+\tfrac16\mathbb{E}_{t-1}[m_t]+\tfrac13\mathbb{E}_{t-2}[m_t]$ y $y_t=\tfrac12(m_t-\mathbb{E}_{t-1}[m_t])+\tfrac13(\mathbb{E}_{t-1}[m_t]-\mathbb{E}_{t-2}[m_t])$ \parencite{Fischer1977Long}.
+\item \emph{La regla estabilizadora}: si a la demanda se suma una perturbación que el banco central ve en $t-1$, una regla que la compense con $m_t$ anula el segundo término y solo queda la sorpresa del periodo. \findemo
+\end{itemize}
+
+\subsection*{Los contratos de \autor{Taylor}}
+\begin{itemize}
+\item Con el dinero como paseo aleatorio, $\mathbb{E}_t[m_{t+1}]=m_t$, el salario del contrato es $w^c_t=a\,m_t+\tfrac{1-a}{2}\big(p_t+\mathbb{E}_t[p_{t+1}]\big)$, y con $p_t=\tfrac12(w^c_t+w^c_{t-1})$:
+  \[w^c_t=A\big(w^c_{t-1}+\mathbb{E}_t[w^c_{t+1}]\big)+\frac{2a}{1+a}\,m_t,\qquad A\equiv\frac{1-a}{2(1+a)}\]
+\item Se prueba $w^c_t=\rho_w w^c_{t-1}+(1-\rho_w)m_t$. Sustituyendo, $\rho_w$ cumple $A\rho_w^2-\rho_w+A=0$, con raíces $[1\pm\sqrt{1-4A^2}]/(2A)$; como $1-4A^2=4a/(1+a)^2$, la raíz estable es
+  \[\rho_w=\frac{(1-\sqrt a)^2}{1-a}=\frac{1-\sqrt a}{1+\sqrt a}\in[0,1)\]
+  y el término en $m_t$ resulta ser $1-\rho_w$.
+\item Tras una subida del dinero de 1 en $t=0$: $w^c_t=1-\rho_w^{\,t+1}$, $p_0=\tfrac12(1-\rho_w)$, $p_t=1-\tfrac12\rho_w^{\,t}(1+\rho_w)$ y $y_t=\tfrac12(1+\rho_w)\rho_w^{\,t}$. Con $a=1$, $\rho_w=0$ y el efecto dura un periodo; con $a=0{,}1$, $\rho_w\approx0{,}52$ y la producción es 0,76, 0,40, 0,21, 0,11\dots\ \findemo
+\end{itemize}
+
+\subsection*{La orientación de la política en el límite inferior}
+\begin{itemize}
+\item \emph{Supuestos}: el tipo natural es negativo hasta $T-1$ y positivo desde $T$; $i^{\mathrm{ELB}}=0$; desde $T+1$ el banco central vuelve a seguir al tipo natural, de modo que $\mathbb{E}_T[x_{T+1}]=\mathbb{E}_T[\pi_{T+1}]=0$.
+\item \emph{Sin orientación}, en $T$ el banco central fija $i_T=r^n_T$ y $x_T=\pi_T=0$; antes, en el límite, la brecha es negativa: $x_{T-1}=\frac1\theta r^n_{T-1}<0$.
+\item \emph{Con orientación}, promete $i_T=0$: en $T$, $x_T=-\frac1\theta(0-0-r^n_T)=r^n_T/\theta>0$ y $\pi_T=\kappa\,x_T>0$. Un periodo antes, $x_{T-1}=x_T+\frac1\theta(\pi_T+r^n_{T-1})$, mayor que sin orientación en $\frac{r^n_T}{\theta}\big(1+\frac{\kappa}{\theta}\big)$, y lo mismo, acumulado, en cada periodo anterior: la promesa baja hoy el tipo real \parencite{EggertssonWoodford2003Zero}. \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la evidencia empírica en detalle}\label{anexo:evidencia}
+
+\begin{itemize}
+\item \emph{La historia}: \textcite{FriedmanSchwartz1963Monetary} recorren la historia monetaria de Estados Unidos de 1867 a 1960 y muestran que los cambios del dinero de origen monetario precedieron a los de la producción; la Gran Contracción de 1929-1933 sería un fracaso de la Reserva Federal \vertema{3.A.5}.
+\item \emph{La ecuación de San Luis}: \textcite{AndersenJordan1968Monetary} regresan, con datos trimestrales de 1952 a 1968, la variación del PNB nominal sobre las variaciones actuales y retardadas del dinero (M1 o la base) y del gasto de pleno empleo: la suma de los coeficientes del dinero es de unos 5,8 y la del gasto no es significativa. El problema es el de identificación: el dinero responde a la renta.
+\item \emph{La causalidad de \autor{Granger}}: una variable causa a otra si sus valores pasados mejoran la predicción de la segunda \parencite{Granger1969Investigating}. \textcite{Sims1972Money} encuentra que el dinero causa en ese sentido a la renta y no al revés. Pero es predicción, no causalidad: el dinero puede adelantarse a la renta porque los bancos y el banco central se anticipan a ella.
+\item \emph{La narrativa}: \textcite{RomerRomer1989Does} fechan 6 episodios de posguerra en que la Reserva Federal decidió frenar la economía para bajar la inflación (octubre de 1947, septiembre de 1955, diciembre de 1968, abril de 1974, agosto de 1978 y octubre de 1979); \textcite{RomerRomer2004New} construyen una serie de sorpresas limpiando el tipo decidido de las previsiones internas de la Reserva Federal.
+\item \emph{Los VAR}: \textcite{Sims1980Macroeconomics} propone sistemas en los que cada variable depende del pasado de todas; para identificar la política, \textcite{Sims1992Interpreting} y \textcite{ChristianoEichenbaumEvans1996Effects} suponen que la producción y los precios no reaccionan a ella en el mismo periodo; \textcite{Sims1992Interpreting} encuentra el rompecabezas de los precios, y \textcite{ChristianoEichenbaumEvans1996Effects} lo evitan añadiendo los precios de las materias primas.
+\item \emph{La alta frecuencia}: \textcite{GertlerKaradi2015} usan las sorpresas en los futuros de tipos en los 30 minutos alrededor de cada reunión de la Reserva Federal como instrumento en un VAR mensual de 1979 a 2012, con el bono a 1 año como indicador de política: una subida sorpresa sube los diferenciales de crédito. \textcite{AltavillaEtAl2019} construyen la base de sorpresas del BCE, y \textcite{JarocinskiKaradi2020} separan, por el signo de la reacción de la bolsa, las sorpresas de política de las de información; el efecto información lo habían señalado \textcite{NakamuraSteinsson2018High}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El efecto de una subida de 100 puntos básicos sobre la producción de Estados Unidos según varios estudios}\label{tab:estudios-evidencia}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}|>{\raggedright\arraybackslash}m{3.6cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{1.8cm}|>{\centering\arraybackslash}m{1.6cm}}
+\rowcolor{tceeazulpalido}\textbf{Estudio} & \textbf{Método} & \textbf{Muestra} & \textbf{Efecto mínimo (\%)} & \textbf{Mes del mínimo}\\
+\hline
+\autor{Faust}, \autor{Swanson} y \autor{Wright} (2004) & Alta frecuencia & 1991-2001 & $-0{,}6$ & 10\\
+\hline
+\autor{Romer} y \autor{Romer} (2004) & Narrativa & 1970-1996 & $-4{,}3$ & 24\\
+\hline
+\autor{Bernanke}, \autor{Boivin} y \autor{Eliasz} (2005) & VAR con factores & 1959-2001 & $-0{,}6$ & 18\\
+\hline
+\autor{Smets} y \autor{Wouters} (2007) & Modelo EGDE estimado & 1966-2004 & $-1{,}8$ & 12\\
+\hline
+\autor{Boivin}, \autor{Kiley} y \autor{Mishkin} (2010) & VAR con factores & 1962-1979 & $-1{,}6$ & 8\\
+\hline
+\autor{Boivin}, \autor{Kiley} y \autor{Mishkin} (2010) & VAR con factores & 1984-2008 & $-0{,}7$ & 24\\
+\hline
+\autor{Coibion} (2012) & Narrativa robusta & 1970-1996 & $-2{,}0$ & 18\\
+\hline
+\autor{Barakchian} y \autor{Crowe} (2013) & Alta frecuencia y VAR & 1988-2008 & $-5{,}0$ & 23\\
+\hline
+\autor{Gertler} y \autor{Karadi} (2015) & VAR con instrumentos de alta frecuencia & 1979-2012 & $-2{,}2$ & 18\\
+\hline
+\autor{Amir} y \autor{Uhlig} (2015) & VAR bayesiano con signos & 1960-2010 & $-1{,}3$ & 9\\
+\hline
+\end{tabular}
+\fuente{elaboración propia con datos de \textcite[tabla~3.1]{Ramey2016Macroeconomic}. Efecto mínimo sobre la producción, normalizado a una subida máxima de 100 puntos básicos del tipo de los fondos federales; las cifras no son del todo comparables, porque la normalización no controla la persistencia de la subida.}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: la transmisión en una economía abierta}\label{anexo:abierta}
+
+\subsection*{\autor{Mundell}-\autor{Fleming} con 2 países grandes}
+\begin{itemize}
+\item \emph{Supuestos}: precios fijos (sin expectativas de inflación), 2 países grandes, A y B, tipo de cambio flexible, movilidad perfecta del capital ($\beta_K\to\infty$ en la BP, con $\beta_K$ la sensibilidad de los flujos de capital al diferencial de tipos; 0 sería movilidad nula), activos sustitutos perfectos, expectativas estáticas del tipo de cambio y la condición de \autor{Marshall}-\autor{Lerner} \parencite{Fleming1962Domestic,Mundell1963Capital} \vertema{3.A.32}. El modelo es de 1962-1963 y fue la referencia de la economía abierta en los 60 y los 70.
+\item \emph{Una expansión monetaria en A} (gráfico~\ref{fig:mundell-fleming-dos-paises}): baja el tipo de A, salen capitales hacia B, la moneda de A se deprecia y la de B se aprecia; como A es grande, el tipo de interés mundial también baja.
+  \begin{itemize}
+  \item \emph{en A}, la renta sube, por el tipo y por la depreciación;
+  \item \emph{en B}, la renta de A compra más importaciones de B, pero la apreciación le resta competitividad: en el caso canónico domina la apreciación y la renta de B \emph{baja}. La expansión monetaria «empobrece al vecino» \parencite{Mundell1964Reply}.
+  \end{itemize}
+\item \emph{El tamaño importa}: cuanto menor es A, más eficaz es su política, porque el tipo mundial apenas se mueve y toda la expansión actúa por la depreciación; si A es tan grande que fija el tipo mundial, su política se parece a la de una economía cerrada (tabla~\ref{tab:mundell-fleming-2}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Una expansión monetaria en A con 2 países grandes, tipo de cambio flexible y movilidad perfecta}\label{fig:mundell-fleming-dos-paises}
+\grafico[0.9\textwidth]{mundell-fleming-dos-paises}
+\fuente{elaboración propia a partir de \textcite{Fleming1962Domestic} y \textcite{Mundell1963Capital}.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Políticas expansivas en A con 2 países grandes, tipo flexible y movilidad perfecta}\label{tab:mundell-fleming-2}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.2cm}|>{\raggedright\arraybackslash}m{4.6cm}|>{\raggedright\arraybackslash}m{4.6cm}}
+\rowcolor{tceeazulpalido}\textbf{Política en A} & \textbf{Renta de A} & \textbf{Renta de B}\\
+\hline
+Monetaria & \textcolor{tceeverde}{Sube}; más cuanto menor es A & \textcolor{tceerojo}{Baja} en el caso canónico (domina la apreciación de B)\\
+\hline
+Fiscal (otra exposición) & \textcolor{tceeverde}{Sube}; más cuanto mayor es A & \textcolor{tceeverde}{Sube} (efecto locomotora) \vertema{3.B.19}\\
+\hline
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Mundell1963Capital} y \textcite{Mundell1964Reply}.}
+\end{table}
+
+\subsection*{La nueva macroeconomía abierta: \autor{Corsetti} y \autor{Pesenti}}
+\begin{itemize}
+\item La nueva macroeconomía abierta, que inauguran \textcite{ObstfeldRogoff1995Redux}, lleva los modelos con rigideces nominales y agentes que optimizan a 2 países; \textcite{CorsettiPesenti2009} la reducen a unas pocas curvas para enseñarla como el IS-LM, y la Reserva Federal la usa en modelos como SIGMA \parencite{ErcegGuerrieriGust2005} \vertema{3.B.19}.
+\item \emph{El gráfico} (gráfico~\ref{fig:corsetti-pesenti}), en el plano del empleo, $\ell$, y el consumo, $C$: la demanda agregada AD es horizontal ($C=\mu/P$, con $\mu$ el tono de la política), la oferta AS es un rayo ($C=Z\ell$, con $Z$ la productividad) y NR es la vertical del empleo natural, $\overline{\ell}$.
+  \begin{itemize}
+  \item \emph{Panel a, economía cerrada}: una subida de la productividad ($Z\uparrow$, AS$'$) lleva la economía de $O$ a $R$ si los precios son rígidos: el consumo no cambia y el empleo cae por debajo del natural ($\ell_R$). Si el banco central sube $\mu$ (AD$'$), la economía llega al equilibrio con precios flexibles, $F$, sobre NR.
+  \item \emph{Panel b, el otro país (B)} cuando A responde así y su moneda se deprecia: con precios en la moneda del productor (PCP), la relación real de intercambio de B mejora ($\tau_B\uparrow$), su consumo sube (AD$'_B$) y B sigue en su empleo natural, en $H$; con precios en la moneda del comprador (LCP), $\tau_B\downarrow$ y B queda fuera de su empleo natural, en $L$.
+  \end{itemize}
+\item \emph{Lo que decide la transmisión es en qué moneda se fijan los precios}:
+  \begin{itemize}
+  \item si los exportadores fijan los precios en su moneda, el tipo de cambio pasa por completo a los precios de importación y reasigna el gasto entre países, como en \autor{Mundell}-\autor{Fleming}, y la política que replica los precios flexibles en cada país es la óptima;
+  \item si los fijan en la moneda del comprador, a corto plazo el tipo de cambio apenas mueve los precios que pagan los consumidores: cambia los márgenes de los exportadores, y aparece un dilema para la política;
+  \item si casi todo el comercio se factura en dólares, la política de la Reserva Federal mueve los precios del comercio de todos \parencite{Gopinath2020DCP}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Perturbación de productividad y respuesta monetaria en el modelo de \autor{Corsetti} y \autor{Pesenti}}\label{fig:corsetti-pesenti}
+\grafico[0.9\textwidth]{corsetti-pesenti}
+\fuente{elaboración propia a partir de \textcite{CorsettiPesenti2009}. $\mu$ es aquí el tono de la política monetaria, no el margen.}
+\end{figure}
+
+\subsection*{El ciclo financiero global}
+\begin{itemize}
+\item Los precios de los activos con riesgo, los flujos brutos de capital y el crédito se mueven a la vez en todo el mundo, en sentido contrario al índice de volatilidad de la bolsa estadounidense (VIX). La política de la Reserva Federal da forma a ese ciclo: una subida de sus tipos baja los precios de los activos, el apalancamiento de los bancos y el crédito en todo el mundo \parencite{Rey2013Dilema,MirandaAgrippinoRey2020}.
+\item El canal no es el tipo de interés de cada país, sino los precios de los activos, el apalancamiento y la toma de riesgos; y un tipo de cambio flexible no aísla del todo: más que un trilema, un \emph{dilema} entre la libre movilidad del capital y una política monetaria propia \vertema{3.B.14}. Para la zona del euro, el BCE matiza que el motor principal es el apetito global por el riesgo y que no ha perdido el control de sus condiciones financieras \parencite{HabibVenditti2018}.
+\end{itemize}
+
+\begin{anotaciones}
+M. M. \autor{Habib} y F. \autor{Venditti}, «The global financial cycle: implications for the global economy and the euro area», \emph{Boletín Económico} del BCE, 6/2018 \parencite{HabibVenditti2018}: \url{https://www.ecb.europa.eu/press/economic-bulletin/articles/2018/html/ecb.ebart201806_01.en.html}.
+\end{anotaciones}
+
+% ==========================================================================
+\section{Anexo: las compras de activos en los balances}\label{anexo:compras-balances}
+
+\begin{itemize}
+\item \emph{Si el banco central compra un bono a un banco}: en su activo entra el bono y en su pasivo aumentan las reservas de ese banco; el banco cambia un bono por reservas, y el dinero de hogares y empresas no cambia.
+\item \emph{Si lo compra a un fondo de pensiones o a otro inversor no bancario}: el banco del vendedor recibe las reservas y abona un depósito al vendedor; aumentan a la vez las reservas y los depósitos, y el inversor tiene ahora un depósito en lugar de un bono, que querrá cambiar por otros activos (el reequilibrio de carteras, \ref{sec:compras}).
+\item \emph{En los 2 casos}, el banco central crea reservas, no préstamos: el crédito solo crece si los bancos prestan más \parencite{McLeayRadiaThomas2014Money} \vertema{3.A.36}.
+\item \emph{Para el sector público consolidado}, comprar deuda larga con reservas que pagan el tipo oficial acorta el plazo de su deuda: abarata su financiación mientras los tipos están bajos y la expone a las subidas, como se vio en las pérdidas de los bancos centrales desde 2022 \vertema{3.A.39} \vertema{3.A.40}.
+\item \emph{La evolución de los balances} (gráfico~\ref{fig:balances-bancos-centrales}): crecieron con las compras de 2008-2021 y se reducen desde 2022 \parencite{BCE2026ILM,FRED2026BalanceFed}; su análisis, por economías, es de otra exposición \vertema{3.A.40}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El activo de los 4 grandes bancos centrales (\% del PIB)}\label{fig:balances-bancos-centrales}
+\grafico[0.8\textwidth]{balances-bancos-centrales}
+\fuente{elaboración propia con datos del BPI (gráfico del tema de la política fiscal tras 2008).}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: suprimir el efectivo}\label{anexo:efectivo}
+
+\begin{itemize}
+\item \emph{La propuesta}: \textcite{Rogoff2016Curse} propone retirar poco a poco los billetes grandes, empezando por los de 100 y 50, y quedarse solo con los pequeños y las monedas; atesorar efectivo costaría más y el suelo de los tipos bajaría \parencite{FernandezVillaverde2016Maldicion}. Además, se dificultarían la evasión fiscal y las actividades ilegales, que usan sobre todo billetes grandes.
+\item \emph{El uso del efectivo}: en España todavía pagó el 57~\% de las compras en tienda en 2024, aunque solo el 45~\% en valor \parencite{BCE2024SPACE}; en Dinamarca fue el 9~\% de los pagos en comercios en 2025 \parencite{DNB2026Kontanter}, y en Suecia solo el 5~\% pagó en efectivo su última compra \parencite{Riksbank2026Payments}.
+\item \emph{Las objeciones}: el efectivo es el único dinero público al alcance de todos, protege la privacidad y sirve de reserva ante fallos de los pagos electrónicos; un euro digital, si llega, lo complementaría, no lo sustituiría \vertema{3.A.36}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: aspectos para el test}\label{anexo:test}
+
+\begin{itemize}
+\item Stanley \autor{Fischer} (contratos, 1977) no es Irving \autor{Fisher} (ecuación de cambio, 1911; deflación por deudas, 1933).
+\item El canal del crédito tiene 2 partes \parencite{BernankeGertler1995}: el del préstamo bancario \parencite{BernankeBlinder1988} y el del balance; \textcite{BlinderStiglitz1983} son un antecedente.
+\item La divina coincidencia: el resultado, \textcite{GoodfriendKing1997New} y \textcite{RotembergWoodford1997Optimization}; el nombre, \textcite{BlanchardGali2007Real}. La perturbación de costes en la curva de \autor{Phillips}, \textcite{ClaridaGaliGertler1999Science}.
+\item Con precios a la \autor{Calvo}, un precio dura de media $1/(1-\eta)$ periodos, con $\eta$ la probabilidad de \emph{no} revisar.
+\item Con contratos de \autor{Taylor}, la persistencia es mayor cuanto mayor es la rigidez real ($a$ pequeña, $\rho_w$ grande).
+\item En el modelo canónico la política llega al consumo por la sustitución intertemporal; en los HANK, sobre todo por la renta y el empleo \parencite{KaplanMollViolante2018Monetary}. La política monetaria redistribuye, pero no es el mejor instrumento para redistribuir.
+\item \textcite{Wallace1981ModiglianiMiller}: sin fricciones, las compras de activos son irrelevantes.
+\item La paradoja de la orientación: en el modelo, una promesa lejana tiene tanto efecto como una cercana \parencite{DelNegroGiannoniPatterson2023}.
+\item El límite inferior no es exactamente cero: el BCE llegó al $-0{,}50$~\%; por debajo del tipo de reversión, bajar más puede contraer el crédito.
+\item \textcite{GertlerKaradi2015} usan datos de Estados Unidos; para el BCE, \textcite{AltavillaEtAl2019} y \textcite{JarocinskiKaradi2020}.
+\end{itemize}
+
+Preguntas de test de exámenes anteriores, con su explicación: \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}.
+
+\bibliografia
+\end{document}

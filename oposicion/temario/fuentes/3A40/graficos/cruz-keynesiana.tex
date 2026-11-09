@@ -1,0 +1,53 @@
+% Copiado sin cambios de fuentes/3A04/graficos/cruz-keynesiana.tex (3.A.4, gráfico de referencia del canon), 05/11/2026.
+% La cruz keynesiana (Samuelson, 1948; Keynes, 1936, caps. 3 y 10): la
+% producción se ajusta a la demanda planeada.
+%   DA_0 = 1,6 + 0,6 Y  ->  E_0 = (4; 4)
+%   a la derecha, Y_a = 7: DA_0 = 5,8 < 7 (se acumulan existencias: la
+%     inversión realizada supera a la planeada); a la izquierda, Y_b = 1,5:
+%     DA_0 = 2,5 > 1,5 (se desacumulan)
+%   más gasto público, Delta G = 1,6: DA_1 = 3,2 + 0,6 Y -> E_1 = (8; 8)
+%   Delta Y* = 4 = 2,5 Delta G (multiplicador 1/(1 - 0,6))
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.62cm,
+    declare function={da(\y)=1.6+0.6*\y; dab(\y)=3.2+0.6*\y;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.2,-2.6) rectangle (15.4,10.4);
+  % 1: ejes: producción y demanda agregada planeada
+  \capa{1}{\ejes{$Y$}{$\mathrm{DA}$}{10.4}{9.8}}
+  % 2: la recta de 45 grados, donde la producción iguala a la demanda
+  \capa{2}{\draw[curva1, thick] (0,0) -- (9.5,9.5) node[etiqueta, above right=0pt and -2pt, text=tceemorado] {$Y=\mathrm{DA}$};}
+  \capa{2}{\draw[tceemorado] (0.65,0) arc[start angle=0, end angle=45, radius=0.65];}
+  \capa{2}{\node[etiqueta, font=\footnotesize, text=tceemorado, anchor=west, inner sep=1pt] at (0.7,0.22) {$45^\circ$};}
+  % 3: la demanda agregada planeada DA_0, con pendiente c(1-t) < 1
+  \capa{3}{\draw[curva2] plot[domain=0:9.6] (\x,{da(\x)}) node[etiqueta, right, text=tceeazul] {$\mathrm{DA}_0$};}
+  % 4: equilibrio E_0 y producción Y*_0
+  \capa{4}{\node[punto] (E0) at (4,4) {};}
+  \capa{4}{\node[etiqueta, below right=0pt and 1pt] at (E0) {$E_0$};}
+  \capa{4}{\draw[guia] (E0) -- (4,0) node[below, text=black] {$Y^*_0$};}
+  % 5: a la derecha de Y*_0 la producción supera a la demanda: se acumulan
+  %    existencias (inversión realizada > planeada) y la producción baja
+  \capa{5}{\draw[tceerojo, line width=1.6pt] (7,{da(7)}) -- (7,7);}
+  \capa{5}{\node[etiqueta, font=\footnotesize, text=tceerojo, align=left, anchor=north west] at (8.1,{da(7)-0.2}) {acumulación de existencias:\\inversión realizada $>$ planeada};}
+  \capa{5}{\draw[guia, tceerojo] (8.05,{da(7)-0.55}) -- (7.12,6.2);}
+  \capa{5}{\draw[flecha] (7,0.45) -- (4.4,0.45);}
+  % 6: a la izquierda, la demanda supera a la producción: se desacumulan
+  %    existencias (inversión realizada < planeada) y la producción sube
+  \capa{6}{\draw[tceerojo, line width=1.6pt] (1.5,1.5) -- (1.5,{da(1.5)});}
+  \capa{6}{\node[etiqueta, font=\footnotesize, text=tceerojo, align=left, anchor=north west] (des) at (0.25,9.6) {desacumulación de existencias:\\inversión realizada $<$ planeada};}
+  \capa{6}{\draw[guia, tceerojo] (1.5,8.2) -- (1.5,{da(1.5)+0.15});}
+  \capa{6}{\draw[flecha] (1.9,0.45) -- (3.6,0.45);}
+  % 7: más gasto público: la demanda sube en Delta G
+  \capa{7}{\draw[curvanueva, desplazada] plot[domain=0:9.6] (\x,{dab(\x)}) node[etiqueta, right, text=tceerojo] {$\mathrm{DA}_1$};}
+  \capa{7}{\draw[decorate, decoration={brace, amplitude=4pt}, thick, tceerojo] (-0.25,1.6) -- (-0.25,3.2)
+      node[midway, left=5pt, etiqueta, text=tceerojo] {$\Delta\overline{G}$};}
+  % 8: nuevo equilibrio E_1: la producción sube en Delta Y* = 2,5 Delta G
+  \capa{8}{\node[punto] (E1) at (8,8) {};}
+  \capa{8}{\node[etiqueta, below right=0pt and 1pt] at (E1) {$E_1$};}
+  \capa{8}{\draw[guia] (E1) -- (8,0) node[below, text=black] {$Y^*_1$};}
+  \capa{8}{\draw[decorate, decoration={brace, amplitude=4pt, mirror}, thick, tceerojo] (4,-1.0) -- (8,-1.0)
+      node[midway, below=5pt, etiqueta, text=tceerojo] {$\Delta Y^*=\dfrac{\Delta\overline{G}}{1-c(1-t)}$};}
+\end{tikzpicture}
+\end{document}

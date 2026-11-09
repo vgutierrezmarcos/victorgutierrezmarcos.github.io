@@ -1,7 +1,7 @@
 # Suavización impositiva (Barro, 1979)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.39 (Déficit público. Financiación): teoría normativa de la deuda. **Hecho (revisado el 4/11/2026):** I.3.2 con a)-e), `\optim`, la CPO con μ, el tipo constante, el paseo aleatorio, el ejemplo de la guerra y el gráfico de referencia. La versión con ecuaciones de partida estaba en el **Word del 3.A.38** («La política fiscal óptima y la suavización impositiva», con τ como recaudación), **no en el 4.B.11** como decía antes esta ficha (el Word del 4.B.11 solo cita la equivalencia ricardiana).
-- **Temas que lo usan:** 3.A.39 (desarrollo; hecho, 4/11/2026), 3.A.38 (mención con `\vertema{3.A.39}`; hoy desarrollo con ecuaciones en su Word, sin revisar), 4.B.11 (resumen: enlace con Ramsey), 4.B.9 (resumen), 4.B.4 (mención: déficits contracíclicos y estabilizadores, sin revisar).
+- **Temas que lo usan:** 3.A.39 (desarrollo; hecho, 4/11/2026), 3.A.38 (mención en el cuerpo y resumen en el anexo C; hecho, 5/11/2026: I.2 c) en una viñeta, «la lógica de Ramsey aplicada al tiempo», con la nota del exceso de gravamen y el gráfico pequeño `exceso-gravamen`, `\vertema{3.A.39}` `\vertema{4.B.11}`; anexo C con $T_t/Y_t$, μ y $\bar\tau$, la deuda que no se amortiza y ρ_G dicho con palabras), 4.B.11 (resumen: enlace con Ramsey), 4.B.9 (resumen), 4.B.4 (mención: déficits contracíclicos y estabilizadores, sin revisar).
 - **Manuales de referencia:** Barro (1979), «On the Determination of the Public Debt», *JPE* 87; Romer (2019), cap. 13; Lucas y Stokey (1983); Barro (1986, 1987) para la evidencia.
 - **Decisión D089 (13/10/2026):** ¿Cuál es el tema de referencia de la suavización impositiva de Barro (1979)? 3.A.39 (financiación del déficit). La precisión de que las ecuaciones venían del 3.A.38 y no del 4.B.11 es del 4/11/2026 (C1 de la coherencia del 3.A.39).
 
@@ -34,7 +34,7 @@ el gasto «permanente» sobre la producción «permanente» ($\bar\tau$ es la mi
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.39 | Financiación óptima del déficit | Desarrollo (hecho, 4/11/2026) | I.3.2 a)-e): `eq:suavizacion`, CPO con μ, `eq:tipo-constante`, paseo aleatorio, ejemplo de la guerra, gráfico `suavizacion-impositiva`, Ramsey, Gobierno impaciente, Lucas-Stokey, Barro (1986, 1987) | — |
-| 3.A.38 | Efectos de la política fiscal | Mención (hoy desarrollo con ecuaciones en el Word, con τ recaudación) | El resultado (tipo constante, gasto transitorio con deuda) en una viñeta con `\vertema{3.A.39}` | La derivación |
+| 3.A.38 | Efectos de la política fiscal | Mención (hecho, 5/11/2026; anexo C en resumen) | El resultado en una viñeta de I.2 c): si la distorsión crece con el cuadrado del tipo, tipo medio constante $T_t/Y_t=\bar\tau$ y deuda para el gasto transitorio y el ciclo (déficits en las recesiones, superávits en las expansiones); Ramsey reparte entre bienes y Barro entre periodos; nota del exceso de gravamen (doblar el tipo cuadruplica el triángulo) con `exceso-gravamen` (`fuentes/3A38/graficos/`); anexo C con la notación del 3.A.39 | La derivación (`\vertema{3.A.39}`) |
 | 4.B.11 | Imposición óptima en el tiempo | Resumen | Enlace con Ramsey (entre bienes frente a entre periodos) y Lucas-Stokey; el tipo constante con $T_t/Y_t$ | La derivación completa (remitir a 3.A.39 sin depender de él) |
 | 4.B.9 | Impuestos y ahorro | Resumen | Resultado: tipo constante | La derivación |
 | 4.B.4 | Política fiscal discrecional | Mención | Justificación de los déficits contracíclicos | El modelo |

@@ -1,0 +1,56 @@
+% Formación bruta de capital fijo de las Administraciones Públicas (P51G),
+% % del PIB, 1995-2025: España, zona del euro (EA21, zona del euro de 21
+% países) y UE (3.A.38, III, fig:inversion-publica-espana).
+% Datos: ../datos/inversion-publica.csv (Eurostat gov_10a_main; consulta
+% 05/11/2026).
+% Cifras de control: España 5,2 (2009, máximo), 2,0 (2016 y 2017, mínimo),
+% 3,0 (2025); zona del euro 3,7 y UE 3,9 en 2025.
+% Paleta del tema (como demografia-pensiones): España dicespana, zona del euro
+% dicze, UE dicopf.
+% Capas (CRITERIOS §7): ejes → UE → zona del euro → España → puntos → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/inversion-publica.csv}\inversion
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=13cm,height=7cm,xmin=1994.3,xmax=2026.7,ymin=1.5,ymax=5.6,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={1995,2000,...,2025},ytick={1.5,2,...,5.5},
+    x tick label style={/pgf/number format/.cd,set thousands separator={}},
+    y tick label style={/pgf/number format/.cd,fixed,fixed zerofill,precision=1,use comma},
+    ticklabel style={font=\footnotesize},
+    ylabel={\% del PIB},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    legend style={at={(0.98,0.98)},anchor=north east,draw=none,font=\footnotesize},
+    legend cell align=left,dicapas]
+  % 1: ejes (siempre visibles)
+  % 2: UE
+  \capa{2}{
+    \addplot[diclinea=dicopf,thick,mark=none] table[x=anio,y=inversion_publica_ue] {\inversion};
+    \addlegendentry{UE}
+  }
+  % 3: zona del euro
+  \capa{3}{
+    \addplot[diclinea=dicze,thick,mark=none] table[x=anio,y=inversion_publica_ea] {\inversion};
+    \addlegendentry{Zona del euro (21 países)}
+  }
+  % 4: España
+  \capa{4}{
+    \addplot[diclinea=dicespana,ultra thick,mark=none] table[x=anio,y=inversion_publica_es] {\inversion};
+    \addlegendentry{España}
+  }
+  % 5: puntos de España (máximo de 2009, mínimo de 2016-2017 y 2025) y 2025 de la UE y la zona del euro
+  \capa{5}{\addplot[on layer=dicpuntos,dicpuntos=dicespana,forget plot] coordinates {(2009,5.2) (2016,2.0) (2017,2.0) (2025,3.0)};}
+  \capa{5}{\addplot[on layer=dicpuntos,dicpuntos=dicze,forget plot] coordinates {(2025,3.7)};}
+  \capa{5}{\addplot[on layer=dicpuntos,dicpuntos=dicopf,forget plot] coordinates {(2025,3.9)};}
+  % 6: etiquetas
+  \capa{6}{\dicrotulo[font=\footnotesize,text=dicespana,anchor=south]{(2009,5.27)}{5,2~\%}}
+  \capa{6}{\dicrotulo[font=\footnotesize,text=dicespana,anchor=north]{(2016.5,1.93)}{2,0~\%}}
+  \capa{6}{\dicrotulo[font=\footnotesize,text=dicespana,anchor=west]{(2025.4,2.95)}{3,0~\%}}
+  \capa{6}{\dicrotulo[font=\footnotesize,text=dicze,anchor=west]{(2025.4,3.65)}{3,7~\%}}
+  \capa{6}{\dicrotulo[font=\footnotesize,text=dicopf,anchor=west]{(2025.4,3.98)}{3,9~\%}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

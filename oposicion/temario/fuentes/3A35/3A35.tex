@@ -1,0 +1,967 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A35.bib}
+\tcetema[Teorías de la demanda de dinero]{3.A.35}{Teorías de la demanda de dinero. Implicaciones de política económica.}
+\tcefecha{05/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Poderoso caballero es don Dinero», escribió Francisco de \autor{Quevedo}. Hoy, sin embargo, pagamos cada vez menos con él: en la zona del euro, el efectivo era el 72~\% de los pagos en tienda en 2019 y el 52~\% en 2024; en España, el 83~\% y el 57~\% \parencite{BCE2024SPACE}.
+  \item Y, a la vez, nunca ha habido tantos billetes: en septiembre de 2026 circulaban 1,62 billones de euros en efectivo, casi 5 veces más que en 1999 \parencite{BCE2026BSI}. Se paga menos con billetes, pero se guardan más.
+  \item Detrás está la pregunta de esta exposición: \emph{¿por qué queremos tener un papel que no rinde intereses, de qué depende cuánto queremos y qué implica eso para la política económica?}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Para la teoría}: la demanda de dinero es la mitad del mercado de dinero. De ella dependen la curva LM y la eficacia relativa de las políticas fiscal y monetaria \vertema{3.A.5}, la transmisión de la política monetaria \vertema{3.A.37} y el nivel de precios a largo plazo \vertema{3.A.41}.
+  \item \emph{Para la política}: una demanda de dinero \emph{estable}, que depende de pocas variables y de forma predecible, es la condición para que el dinero influya en la economía de forma previsible. Si lo es, el banco central puede guiar la renta nominal con la cantidad de dinero; si no, tiene que fijar un tipo de interés \vertema{3.A.36}. Y como el dinero se puede gravar con la inflación, su demanda fija cuánto puede recaudar el Estado imprimiéndolo \vertema{3.A.39}.
+  \item \emph{Para la actualidad}: la digitalización de los pagos, los criptoactivos y el euro digital vuelven a plantear la vieja pregunta de qué es dinero y por qué se acepta.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item El dinero se define por lo que hace, no por lo que es \parencite{Hicks1967Critical}. Cumple 3 funciones \vertema{3.A.21}:
+    \begin{itemize}
+    \item \emph{medio de cambio}: con él se paga, y se evita la doble coincidencia de deseos que exige el trueque;\footnote{El trueque exige encontrar a alguien que tenga lo que yo quiero y que quiera, a la vez, lo que yo tengo. El dinero parte cada trueque en 2 intercambios, una venta y una compra, y ahorra los costes de buscar esa doble coincidencia.}
+    \item \emph{depósito de valor}: traslada poder de compra del presente al futuro;
+    \item \emph{unidad de cuenta}: en él se expresan los precios, las deudas y los contratos.
+    \end{itemize}
+  \item La \concepto{demanda de dinero} es la cantidad de saldos reales, $M/P$, que el público desea mantener en lugar de otros activos que rinden más pero son menos líquidos. Su coste de oportunidad es el tipo de interés nominal, $i$: lo que se deja de ganar por no tener esa riqueza en bonos. Qué se cuenta como dinero depende de la liquidez: en la zona del euro, M1 es el efectivo y los depósitos a la vista; M2 añade los depósitos a plazo de hasta 2 años y los disponibles con preaviso de hasta 3 meses, y M3, los instrumentos negociables a corto plazo \parencite{BCE2026AgregadosDef}.
+  \item El papel del dinero preocupa desde \autor{Aristóteles}, y la relación entre el préstamo y el interés como su coste ocupa a Santo \autor{Tomás} y a los escolásticos. Pero las teorías explícitas de por qué se guarda dinero son del siglo XX, y su historia tiene 3 etapas:\footnote{Antes, John Stuart \textcite{Mill1848Principles} y Knut \textcite{Wicksell1898Geldzins} admitían que en ciertas circunstancias se desea mantener saldos, y Léon \autor{Walras} incluye el dinero en su equilibrio general \parencite{Walras1874Elements}, pero ninguno hace de esa demanda una teoría propia.}
+    \begin{itemize}
+    \item \emph{la teoría cuantitativa}: de la escuela de Salamanca a \autor{Hume} se intuye que más dinero significa precios más altos; \textcite{Fisher1911Purchasing} y la escuela de Cambridge \parencite{Pigou1917Value} la convierten en una teoría en la que el dinero sirve sobre todo para pagar;
+    \item \emph{la demanda de dinero como elección}: \textcite{Keynes1936} la hace depender del tipo de interés; la síntesis neoclásica formaliza cada uno de sus motivos \parencite{Baumol1952Transactions,Tobin1956Interest,Tobin1958Liquidity}, y \textcite{Friedman1956Quantity} la reformula como la demanda de un activo más;
+    \item \emph{el dinero en el equilibrio general}: \textcite{Patinkin1956Money} pone los saldos reales en la utilidad, pero el modelo de \autor{Arrow}-\autor{Debreu} no tiene sitio para el dinero \parencite{Hahn1965Problems}, y desde finales de los 50 se le busca una función que lo justifique: depósito de valor entre generaciones \parencite{Samuelson1958Exact}, utilidad \parencite{Sidrauski1967Rational}, pago por adelantado \parencite{Clower1967Reconsideration,Lucas1980Equilibrium} o medio de cambio en una economía con búsqueda \parencite{KiyotakiWright1989Money}.
+    \end{itemize}
+  \item La exposición abre el bloque del ciclo y las políticas de demanda: es la LM del modelo IS-LM \vertema{3.A.38} y la base de la instrumentación de la política monetaria \vertema{3.A.36}, de su transmisión \vertema{3.A.37}, del señoreaje \vertema{3.A.39} y de la inflación \vertema{3.A.41}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Por qué existe una demanda de dinero? La pregunta no es trivial:
+    \begin{itemize}
+    \item si el dinero se trata como un \emph{bien}, un billete no da utilidad por sí mismo, y nadie demanda lo que no da utilidad;
+    \item si se trata como un \emph{activo}, rinde menos que los bonos, y nadie guardaría un activo dominado por otro.
+    \end{itemize}
+  \item Si existe, ¿de qué variables depende, con qué sensibilidad y es estable?
+  \item ¿Qué implica su forma para la política económica: cuánta inflación conviene, qué instrumento debe usar el banco central, cuánto puede financiar el Estado con dinero y hasta dónde pueden bajar los tipos si desaparece el efectivo?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición responde a las 3 preguntas en 3 apartados, que van de por qué existe el dinero a qué determina su demanda y a qué implica para la política:
+  \begin{itemize}
+  \item \concepto{I. ¿Por qué el dinero?} (\ref{sec:por-que-dinero}): de la teoría cuantitativa a \autor{Keynes} y \autor{Friedman}, y por qué se acepta un dinero sin valor intrínseco;
+  \item \concepto{II. ¿Qué determina la cantidad demandada?} (\ref{sec:determinantes}): los modelos según la función del dinero que explican (medio de cambio, depósito de valor, unidad de cuenta) y lo que dicen los datos;
+  \item \concepto{III. Implicaciones de política económica} (\ref{sec:implicaciones}): la inflación óptima, la eficacia de la estabilización, el señoreaje y una economía sin efectivo.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+Hélène \autor{Rey} (2016), \emph{Breaking the Wall of Global Economic Crises}, Falling Walls Conference: \url{https://youtu.be/LUK5LZBiOBY?t=105}. Khan Academy, \emph{Functions of money}: \url{https://www.khanacademy.org/economics-finance-domain/ap-macroeconomics/ap-financial-sector/definition-measurement-and-functions-of-money-ap/v/functions-of-money}.
+\end{anotaciones}
+
+\begin{esquema}[unbreakable]
+\textbf{3.A.35. Teorías de la demanda de dinero. Implicaciones de política económica}\\[2pt]
+Introducción\\
+I. ¿Por qué el dinero? Existencia de la función de demanda de dinero\\
+\hspace*{1.5em}1. Aproximación desde la historia del pensamiento económico\\
+\hspace*{1.5em}2. El dinero fiduciario: credibilidad y confianza\\
+II. ¿Qué determina la cantidad demandada? La demanda de dinero según las funciones del dinero\\
+\hspace*{1.5em}1. Aproximación desde la teoría económica\\
+\hspace*{1.5em}2. Evidencia empírica sobre los determinantes. Hechos estilizados\\
+III. Implicaciones de política económica. Una economía sin dinero en efectivo\\
+\hspace*{1.5em}1. Demanda de dinero e inflación óptima\\
+\hspace*{1.5em}2. Demanda de dinero y eficacia de la política de estabilización\\
+\hspace*{1.5em}3. Demanda de dinero y política fiscal: señoreaje e hiperinflación\\
+\hspace*{1.5em}4. Una economía sin dinero en efectivo\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{7,5} (I.1, \tiempo{5,5}: teoría cuantitativa, \tiempo{2}, \autor{Keynes}, \tiempo{2}, y \autor{Friedman}, \tiempo{1,5}; I.2, \tiempo{2}); II, \tiempo{11,5} (II.1, \tiempo{10}: \autor{Baumol}-\autor{Tobin} con \autor{Miller}-\autor{Orr}, \tiempo{2,5}, \autor{Whalen}, \tiempo{0,5}, el dinero en la utilidad, \tiempo{3}, el tiempo de compra y el pago por adelantado, \tiempo{1,5}, \autor{Tobin}, \tiempo{1,5}, y \autor{Cagan}, \tiempo{1}; II.2, \tiempo{1,5}); III, \tiempo{7,5} (III.1, \tiempo{1,5}; III.2, \tiempo{2}; III.3, \tiempo{1}; III.4, \tiempo{3}), y conclusión, \tiempo{1}. La introducción y la conclusión se cantan sin pizarra. La pizarra se organiza en 3 zonas. A la izquierda, el refrán del enganche y las pegatinas, cada una junto a su concepto: «puedes llevar el caballo al río, pero no obligarlo a beber» (la trampa de la liquidez), «cuando seas padre, comerás huevos» (\autor{Samuelson}), «juntarse el hambre con las ganas de comer» (la doble coincidencia de \autor{Kiyotaki} y \autor{Wright}), «en el término medio está la virtud» (\autor{Baumol}-\autor{Tobin}), «por si las moscas» (la precaución), «el dinero no da la felicidad» (el dinero en la utilidad), «por dinero baila el perro» (el pago por adelantado), «no poner todos los huevos en la misma cesta» (\autor{Tobin}) y «ojos que no ven, corazón que no siente» (el efectivo). En el centro, los gráficos, que se borran al cambiar de bloque: la preferencia por la liquidez (gráfico~\ref{fig:liquidez}), imprescindible, y en el bloque de los determinantes el de \autor{Baumol}-\autor{Tobin}, imprescindible, y el de \autor{Tobin}, recomendado. A la derecha, recuadradas y conservadas desde que se escriben, las funciones clave: la preferencia por la liquidez \eqref{eq:liquidez}, \autor{Baumol}-\autor{Tobin} \eqref{eq:baumol-tobin} y el dinero en la utilidad \eqref{eq:miu}; debajo, la función general de demanda de dinero \eqref{eq:demanda-general}, que se va llenando con cada teoría hasta convertirse en la tabla~\ref{tab:modelos-demanda-dinero}. Lo que no se canta (la nota de Salamanca, las derivaciones, los anexos y los párrafos de profundización) sirve para las preguntas del tribunal.
+\end{notaopositor}
+
+% ==========================================================================
+\section{¿Por qué el dinero? Existencia de la función\newline de demanda de dinero}\label{sec:por-que-dinero}
+\minutos{7,5}
+
+\begin{itemize}
+\item Empezamos por la pregunta previa: por qué alguien quiere guardar un activo que no rinde intereses.
+\item \emph{Conclusión anticipada}: la historia del pensamiento responde que por sus funciones, y explica cada vez mejor \emph{cuánto} dinero se quiere (para pagar, por prudencia, como activo); la teoría moderna añade \emph{por qué} se acepta un papel sin valor: porque se espera que los demás lo acepten. Por eso el valor del dinero fiduciario descansa en la confianza.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Aproximación desde la historia del pensamiento económico}\label{sec:pensamiento}
+
+\begin{itemize}
+\item La historia del pensamiento da 3 respuestas sucesivas: la teoría cuantitativa, para la que el dinero sirve sobre todo para pagar; \autor{Keynes}, que lo convierte en un activo cuya demanda depende del tipo de interés, y \autor{Friedman}, que lo trata como un activo más de la cartera.
+\end{itemize}
+
+\subsubsection{La teoría cuantitativa del dinero: \autor{Fisher} frente a Cambridge}\label{sec:cuantitativa}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La \concepto{teoría cuantitativa del dinero} sostiene que, a largo plazo, el nivel de precios es proporcional a la cantidad de dinero. El dinero interesa sobre todo como \emph{medio de cambio}.
+\item Es una idea antigua:
+  \begin{itemize}
+  \item la escuela de Salamanca la formula en el siglo XVI, al explicar la subida de los precios en España con la llegada de los metales de América \vertema{3.A.1};\footnote{Martín de \textcite{Azpilcueta1556Cambios} explica, 12 años antes que Jean \textcite{Bodin1568Reponse}, que las cosas valen más en España que en Francia porque en España, tras el oro y la plata de las Indias, abunda el dinero: «el dinero vale más donde y cuando hay falta de él que donde y cuando hay abundancia» \parencite{GriceHutchinson1952School}. Luis de \textcite{Molina1597Iustitia} usa ya la cláusula \emph{ceteris paribus} al explicar que, cuanto menos dinero hay en un sitio, más vale.}
+  \item David \textcite{Hume1752Money} la expone en el siglo XVIII y la une al ajuste automático de la balanza comercial; la controversia bullionista (el \emph{Bullion Report} del 8 de junio de 1810) y la Ley de \autor{Peel} de 1844, que da la razón a la \emph{currency school} frente a la \emph{banking school} de John Stuart \autor{Mill}, la llevan a la política \vertema{3.A.2}.
+  \end{itemize}
+\item A principios del siglo XX la formalizan 2 enfoques, independientes entre sí:
+  \begin{itemize}
+  \item el de \autor{Fisher}, de la economía en su conjunto, que pone el énfasis en las instituciones de pago;
+  \item el de Cambridge, de la decisión de cada individuo, que estudia por qué se quiere tener dinero.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item La \emph{velocidad} del dinero depende de los hábitos de pago y de las instituciones (la frecuencia con que se cobra, la densidad de la población, los transportes), que cambian despacio: se puede tratar como constante.
+\item El volumen de transacciones (o la renta real) lo fija el sector real, a pleno empleo.
+\item La cantidad de dinero es exógena (la fija la autoridad monetaria) y la causalidad va del dinero a los precios.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{\autor{Fisher}: la ecuación de cambio}. \textcite{Fisher1911Purchasing} parte de una identidad, el valor de lo que se paga es igual al valor de lo que se compra:
+  \begin{equation}
+  M\,V\equiv P\,T, \label{eq:cuantitativa}
+  \end{equation}
+  con $M$ el dinero, $V$ su \concepto{velocidad de circulación} (las veces que cambia de manos cada unidad en el periodo), $P$ el nivel de precios y $T$ el volumen de transacciones (aquí $T$ no son los impuestos). \autor{Fisher} añade los depósitos, con su propia velocidad.
+  \begin{itemize}
+  \item La ecuación la había escrito antes Simon \textcite{Newcomb1885Principles}, a quien \autor{Fisher} dedica el libro; \autor{Hume} había expresado la relación en palabras.
+  \item Con los supuestos, la identidad se vuelve teoría: los precios son proporcionales al dinero. En términos de renta, $M\,V=P\,Y$, y en equilibrio la demanda de dinero es $M^D=P\,Y/V$: depende de la renta nominal y no del tipo de interés. El dinero solo sirve para pagar, porque cobros y pagos no coinciden en el tiempo.\footnote{Si se cambian las transacciones, $T$, por la renta, $Y$, la velocidad no es la misma (las transacciones incluyen los bienes intermedios y los activos que se compran y venden), pero por lo demás los 2 enfoques son intercambiables \parencite[cap.~4]{Serletis2007Demand}.}
+  \end{itemize}
+\item \emph{Cambridge: los saldos de caja}. Alfred \autor{Marshall}, en sus declaraciones ante comisiones oficiales y en \textcite{Marshall1923}, y \textcite{Pigou1917Value} cambian la pregunta: no cuánto dinero circula, sino cuánto quiere \emph{tener} cada uno. Es el \concepto{enfoque de los saldos de caja de Cambridge}:
+  \begin{equation}
+  M^D=k\,P\,Y\quad\Longleftrightarrow\quad\frac{M^D}{P}=k\,Y,\qquad k=\frac{1}{V}, \label{eq:cambridge}
+  \end{equation}
+  con $k$ la fracción de la renta que se desea guardar en dinero.
+  \begin{itemize}
+  \item \emph{Se demanda en términos reales}: la demanda nominal es proporcional a la renta nominal y la de saldos reales, a la renta real; si los precios se duplican, se quiere el doble de dinero nominal.
+  \item \emph{El dinero es también depósito de valor}: por eso su demanda depende de la riqueza, que Cambridge supone proporcional a la renta.
+  \item \emph{$k$ es una decisión}: depende de la comodidad del dinero frente a su coste en rentas perdidas, y a corto plazo puede moverse con los rendimientos de los otros activos y con las expectativas \parencite[cap.~4]{Serletis2007Demand}. Es el antecedente directo de \autor{Keynes}, también de Cambridge.
+  \item \emph{Equivalencia con \autor{Fisher}}: en equilibrio, $M=M^D$, y comparando $M\,V=P\,Y$ con \eqref{eq:cambridge}, $V=1/k$. La diferencia está en la lectura: en \autor{Fisher}, $V$ la fijan los hábitos de pago; en Cambridge, $k$ es una decisión de cuánta riqueza guardar en dinero \vertema{3.A.3}.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Con $V$ (o $k$) e $Y$ dados, la cantidad de dinero solo fija el nivel de precios:
+  \begin{itemize}
+  \item \emph{la inflación es un fenómeno monetario}; en tasas de variación, la ecuación de cambio en términos de renta dice
+    \begin{equation}
+    \gamma_M+\gamma_V=\pi+\gamma_Y, \label{eq:cuantitativa-tasas}
+    \end{equation}
+    y con $\gamma_V=0$ y $\gamma_Y$ dado, cada punto más de crecimiento del dinero es un punto más de inflación;
+  \item \emph{el dinero es \concepto{neutral}}: no afecta a la producción ni al empleo, que se determinan en el sector real (la \emph{dicotomía clásica}) \vertema{3.A.21};\footnote{Hay que distinguir 3 conceptos \parencite[p.~11]{Serletis2007Demand}. \emph{Neutralidad}: un cambio del nivel de la cantidad de dinero no tiene efectos reales. \emph{Superneutralidad}: tampoco los tiene un cambio de su tasa de crecimiento (en un modelo estático como este no tiene sentido; sí en el de \autor{Sidrauski}, \ref{sec:medio-cambio}). \emph{Dicotomía clásica}: las variables reales se determinan en un subsistema independiente de la cantidad de dinero y del nivel de precios; el dinero es un \emph{velo}. No son lo mismo: un sistema puede ser neutral sin dicotomizar.}
+  \item \emph{la demanda de dinero depende sobre todo de la renta}, aunque Cambridge abre la puerta a otros factores.
+  \end{itemize}
+\item \emph{Para la política}: la monetaria solo mueve los precios, y la fiscal, a pleno empleo, desplaza gasto privado a través del tipo de interés real que fija el mercado de fondos prestables \vertema{3.A.4}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{A largo plazo se cumple bien}. \textcite{McCandlessWeber1995}, con datos de 110 países entre 1960 y 1990, hallan una correlación entre el crecimiento del dinero y la inflación de 0,925 con la base monetaria, 0,958 con M1 y 0,950 con M2; en los 21 países de la OCDE, de 0,894, 0,940 y 0,958. Con tantos países y 30 años, el resultado no depende de lo que haya pasado en una región.
+  \begin{itemize}
+  \item En la muestra completa no hay correlación entre el crecimiento del dinero y el de la producción real: es lo que predice la neutralidad.
+  \item Es la base empírica de la teoría cuantitativa: un cambio en el crecimiento del dinero acaba en un cambio casi igual de la inflación.
+  \end{itemize}
+\item \emph{Pero correlación no es causalidad}: si el banco central acomoda la inflación que causan otros factores, el dinero crecerá con ella sin causarla \parencite[cap.~1]{Walsh2017Monetary}; es la causación inversa de \textcite{Tobin1970Money} \vertema{3.A.36}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Es más una teoría de los precios que de la demanda de dinero: supone $V$ estable y no explica qué determina $k$.
+\item Y la velocidad no es constante: se mueve con la innovación financiera y con los tipos de interés (\ref{sec:evidencia}). Explicar por qué se guarda dinero, y no solo cuánto circula, es la pregunta de \autor{Keynes}.
+\end{itemize}
+
+\subsubsection{\autor{Keynes} (preferencia por la liquidez) frente a \autor{Friedman} (neocuantitativismo)}\label{sec:keynes-friedman}
+
+\paragraph{La preferencia por la liquidez de \autor{Keynes} (1936)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Cambridge había abierto la puerta a que el tipo de interés y las expectativas afectaran a la demanda de dinero, pero no los incluyó en ella. \textcite{Keynes1936} lo hace: el dinero es también un activo que compite con los bonos, y su demanda depende del tipo de interés \vertema{3.A.4}.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item 2 activos financieros: el dinero, que no rinde, y los bonos a largo plazo, cuyo precio baja cuando sube el tipo de interés (pierden valor porque los nuevos pagan más) \vertema{3.B.24}.
+\item Cada inversor tiene su propia idea del tipo de interés «normal», el que espera que vuelva a fijar el mercado.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Se demanda dinero por 3 motivos \parencite[caps.~13 y 15]{Keynes1936}:\footnote{\autor{Keynes} los define así: el de transacción, por la necesidad de efectivo para las operaciones corrientes, personales y de los negocios; el de precaución, por el deseo de seguridad sobre el valor futuro en dinero de una parte de los recursos, y el de especulación, por el propósito de obtener un beneficio sabiendo mejor que el mercado lo que traerá el futuro \parencite[cap.~13; traducción propia]{Keynes1936}.}
+  \begin{itemize}
+  \item \emph{transacción}: para los pagos corrientes, porque cobros y pagos no coinciden en el tiempo; aquí \autor{Keynes} acepta la teoría cuantitativa, y crece con la renta;
+  \item \emph{precaución}: para gastos imprevistos; también crece con la renta. Que responda además al tipo de interés lo mostrará \textcite{Whalen1966Rationalization} (\ref{sec:medio-cambio});
+  \item \emph{especulación}: es la novedad, y liga el dinero a su función de depósito de valor. Si el tipo de mercado está por debajo del que un inversor cree normal, espera que suba y que el precio de los bonos baje, y guarda su \emph{riqueza} en dinero para no perder; si está por encima, compra bonos. Cada inversor tiene una demanda en escalón: toda su riqueza en dinero o toda en bonos. Como cada uno tiene su tipo normal, la demanda agregada de dinero especulativo es continua y sube cuando baja el tipo, porque hay más inversores para los que el tipo está por debajo del normal \parencite{Laidler1993Demand}.
+  \end{itemize}
+\item Los 2 primeros motivos dependen de la renta, $L_1(Y)$, y el tercero, del tipo de interés, $L_2(i)$. En forma lineal, la misma del modelo keynesiano:
+  \funcionclave[eq:liquidez]{\frac{M}{P}=L_1(Y)+L_2(i)=k\,Y-h\,i,\qquad k,\,h>0}
+  con $k$ la sensibilidad a la renta y $h$ al tipo de interés (gráfico~\ref{fig:liquidez}).
+  \begin{itemize}
+  \item Con $h=0$ vuelve la demanda de Cambridge: es el caso clásico, una demanda vertical frente al tipo.
+  \item Con $h\to\infty$ la demanda es horizontal: es la \concepto{trampa de la liquidez}. Con un tipo tan bajo que todos esperan que suba, cualquier dinero de más se atesora y el tipo no baja \parencite[cap.~15]{Keynes1936}. \autor{Keynes} la veía posible, aunque decía no conocer ningún caso. Pegatina: «puedes llevar el caballo al río, pero no obligarlo a beber».
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La preferencia por la liquidez: del inversor individual a la demanda agregada de dinero y la trampa de la liquidez}\label{fig:liquidez}
+\grafico[0.85\textwidth]{preferencia-liquidez}
+\fuente{elaboración propia a partir de \textcite[caps.~13 y 15]{Keynes1936}. La forma lineal $k\,Y-h\,i$ no tiene tramo horizontal: la trampa es el límite $h\to\infty$.}
+\end{figure}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El tipo de interés es un fenómeno monetario}: lo fijan la oferta y la demanda de dinero, $i=(k\,Y-M/P)/h$, no el ahorro y la inversión \vertema{3.A.4}.\footnote{Para los neoclásicos, el tipo de interés es la compensación por renunciar al consumo presente; para \autor{Keynes}, la compensación por renunciar a la liquidez.} Desaparece la dicotomía clásica: el dinero llega a la economía real a través del tipo y la inversión.
+\item \emph{La demanda de dinero es inestable}: depende de las expectativas sobre el tipo de interés, que cambian a menudo.
+\item \emph{Para la política}, con $h$ grande la política monetaria mueve poco el tipo: es uno de los 2 eslabones débiles de la transmisión, junto con una inversión que responde poco al tipo \vertema{3.A.34}. Sus consecuencias se ven en el apartado de las implicaciones (\ref{sec:estabilizacion}).
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item Aporta el motivo especulación y, con él, la sensibilidad de la demanda de dinero al tipo de interés. Pero \autor{Keynes} no es el primero en ver el dinero como activo: Cambridge ya lo trataba como depósito de valor.
+\item Es un modelo de corto plazo, y cada inversor tiene toda su riqueza en un solo activo: no diversifica, y el modelo no explica por qué se guarda dinero cuando el tipo es el normal. Lo resolverá \textcite{Tobin1958Liquidity} (\ref{sec:deposito-valor}); y los motivos transacción y precaución se fundamentan con los modelos de inventarios (\ref{sec:medio-cambio}).
+\end{itemize}
+
+\begin{anotaciones}
+Universidad de Valladolid, \emph{Mercado de activos. Demanda de dinero. Modelo IS-LM}: \url{https://www.youtube.com/watch?v=lNFmvoht4t8}, y la lista \emph{Modelo IS-LM (economía cerrada)}: \url{https://www.youtube.com/playlist?list=PLSbo9kXA_Lcx5baMlEVo4s60RODjZiwsW}. Khan Academy, \emph{Demand curve for money}: \url{https://www.khanacademy.org/economics-finance-domain/ap-macroeconomics/ap-financial-sector/the-money-market-apmacro/v/demand-curve-for-money-in-the-money-market-ap-macroeconomics-khan-academy}.
+\end{anotaciones}
+
+\paragraph{El neocuantitativismo de \autor{Friedman} (1956)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Friedman1956Quantity} reformula la teoría cuantitativa como una teoría de la \emph{demanda} de dinero, con 2 elementos keynesianos (el dinero es un activo y su demanda es proporcional a la renta) y una diferencia de fondo: el dinero es un bien más, y su demanda no necesita motivos propios. Se demanda como cualquier otro activo, según la riqueza, el rendimiento de las alternativas y las preferencias \vertema{3.A.5}.
+\item Frente a \autor{Keynes}, para quien el dinero tiene un solo sustituto, y perfecto (los bonos), para \autor{Friedman} tiene muchos, aunque imperfectos: bonos, acciones y bienes físicos.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Desarrollo}
+
+\begin{itemize}
+\item La demanda de saldos reales \parencite[cap.~19]{MishkinMatthewsGiuliodori2013}:
+  \begin{equation}
+  \frac{M^D}{P}=f\Big(\underset{+}{Y^P},\ \underset{-}{r_b-r_m},\ \underset{-}{r_e-r_m},\ \underset{-}{\pi^e-r_m},\ \underset{+}{\overline{W}_H/\overline{W}}\Big), \label{eq:demanda-dinero-friedman}
+  \end{equation}
+  con $Y^P$ la renta permanente, el rendimiento de la riqueza total \vertema{3.A.33}; $r_b$, $r_e$ y $r_m$ los rendimientos esperados de los bonos, las acciones y el propio dinero; $\pi^e$ el de los bienes físicos (su revalorización), y $\overline{W}_H/\overline{W}$ el peso de la riqueza humana, que no se puede vender ni pignorar con facilidad, en la riqueza total. Es una demanda de saldos \emph{reales}: no depende del nivel de precios.
+\item \emph{Es estable}: depende sobre todo de la renta permanente, que cambia despacio, y los diferenciales de rendimiento se mueven poco, porque el del dinero sube con los demás (los depósitos se remuneran). Es \emph{poco} sensible al tipo de interés ($h$ pequeño), y no hay trampa de la liquidez.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Implicaciones}
+
+\begin{itemize}
+\item Si la demanda es estable, la velocidad es predecible y la cantidad de dinero determina la renta nominal: con $V$ estable en $M\,V=P\,Y$, controlar $M$ es controlar $P\,Y$.
+\item A corto plazo el dinero no es neutral; a largo plazo, sí. Por eso los monetaristas piden una regla de crecimiento constante del dinero, la del k~\%, $\gamma_M=\overline{\gamma}_M$ \parencite{Friedman1960Program}, en vez de la discrecionalidad \vertema{3.A.5}.\footnote{No es la \emph{regla de \autor{Friedman}} de la cantidad óptima de dinero, que pide un tipo nominal nulo y una deflación igual al tipo de interés real \parencite{Friedman1969Optimum} (\ref{sec:inflacion-optima}). La del k~\% da una inflación baja y positiva; solo coincidirían si el dinero decreciera a la tasa $-r$.}
+\item Sus consecuencias para la elección entre política fiscal y monetaria se ven en el apartado de las implicaciones (\ref{sec:estabilizacion}).
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item Aporta la demanda de dinero como elección de cartera y la idea de estabilidad, que los datos confirmaron hasta los 70.
+\item Pero la estabilidad se rompió con la innovación financiera de los 70 y los 80 (\ref{sec:evidencia}), y con ella los objetivos monetarios (\ref{sec:estabilizacion}).
+\end{itemize}
+
+\begin{anotaciones}
+Fraser Institute, \emph{Essential Milton Friedman: The Theory of Money and Prices}: \url{https://www.youtube.com/watch?v=YQPS-9DRPvY}.
+\end{anotaciones}
+
+\begin{itemize}
+\item Recapitulando la historia del pensamiento (cuadro~\ref{tab:keynes-friedman}): la demanda de dinero pasa de depender solo de la renta a depender también del tipo de interés, y la discusión entre \autor{Keynes} y \autor{Friedman} se resume en 2 preguntas: cuánto responde al tipo y si es estable.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La demanda de dinero según \autor{Keynes} y según \autor{Friedman}}\label{tab:keynes-friedman}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.22\textwidth}>{\centering\arraybackslash}m{0.33\textwidth}>{\centering\arraybackslash}m{0.33\textwidth}}
+\toprule
+\rowcolor{tceeazulpalido} & \textcolor{tceemorado}{\textbf{\autor{Keynes} (1936)}} & \textcolor{tceeazul}{\textbf{\autor{Friedman} (1956)}}\\
+\midrule
+Sustitutos del dinero & Uno, y perfecto: los bonos & Muchos, imperfectos: bonos, acciones, bienes físicos\\
+Variable de escala & Renta corriente & Renta permanente (riqueza)\\
+Sensibilidad al tipo & Alta ($h$ grande); trampa posible & Baja ($h$ pequeño)\\
+Estabilidad & Inestable: depende de las expectativas sobre el tipo & Estable\\
+\rowcolor{tceesalvia} LM & Plana & Inclinada\\
+Política preferida & Fiscal & Monetaria, con una regla\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Keynes1936}, \textcite{Friedman1956Quantity} y \textcite[cap.~19]{MishkinMatthewsGiuliodori2013}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{El dinero fiduciario: credibilidad y confianza}\label{sec:fiduciario}
+
+\begin{itemize}
+\item La historia del pensamiento explica \emph{cuánto} dinero se quiere, pero da por hecho \emph{que} se quiere. Pasamos a esa pregunta.
+\item \emph{La paradoja}: el dinero de hoy es \concepto{fiduciario}. No tiene valor intrínseco ni se puede cambiar por oro desde que en 1971 se suspendió la convertibilidad del dólar \vertema{3.B.20}. Es una deuda del banco central (los billetes y las reservas) o de los bancos (los depósitos) que no da derecho a nada más que a sí misma \parencite{McLeayRadiaThomas2014Money}. ¿Por qué vale un pasivo que no promete nada?
+\item \emph{2 puntos de partida}:
+  \begin{itemize}
+  \item \textcite{Menger1892Origin}: el dinero no lo inventó el Estado. Cada uno acepta a cambio el bien más fácil de vender, aunque no lo quiera consumir, porque le ahorra buscar a quien quiera justo lo que ofrece; poco a poco, ese bien se convierte en el medio de cambio de todos. Es una institución que nadie ha diseñado \vertema{3.A.3} (anexo~\ref{anexo:origen}).
+  \item \textcite{Hahn1965Problems}: si el dinero no da utilidad ni presta ningún servicio en el modelo, solo vale porque los demás lo aceptan, y siempre es posible que nadie lo acepte. Siempre existe un equilibrio en el que el dinero no vale nada \vertema{3.A.21}.
+  \end{itemize}
+\item 2 modelos responden a la paradoja, y llegan a la misma conclusión: el valor del dinero descansa en la confianza, y por eso puede haber equilibrios con dinero y sin él.
+\end{itemize}
+
+\paragraph{El dinero como depósito de valor entre generaciones: \autor{Samuelson} (1958)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Samuelson1958Exact} se pregunta cómo se ahorra para la vejez en una economía en la que la gente vive 2 periodos, solo produce de joven y lo que produce no se puede guardar. El mercado, por sí solo, no lo permite; un \emph{contrato social} como el dinero, sí \vertema{3.A.29}. Pegatina: «cuando seas padre, comerás huevos».
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item En cada periodo nacen $L_t$ jóvenes, con $L_{t+1}=(1+n)\,L_t$; cada uno vive 2 periodos.
+\item De joven recibe $e$ unidades de un bien perecedero y de viejo, nada. Su utilidad es $u(C^J_t)+\beta\,u(C^V_{t+1})$, con $C^J_t$ el consumo de joven y $C^V_{t+1}$ el de viejo.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Sin dinero}, nadie puede ahorrar: el bien no se guarda, los viejos no pueden devolver un préstamo y los acreedores futuros aún no han nacido. El único equilibrio es la \emph{autarquía}: $C^J=e$, $C^V=0$.
+\item \emph{Con dinero}: los primeros viejos tienen $M$ unidades de un papel sin valor intrínseco; cada joven vende parte de su dotación a cambio de dinero y de viejo lo gasta. Con $M$ constante, en un estado estacionario los precios caen al ritmo de la población, $P_{t+1}/P_t=1/(1+n)$, y el dinero rinde $1+n$ en términos reales: el «tipo de interés biológico» (gráfico~\ref{fig:samuelson}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de \autor{Samuelson}: autarquía y equilibrio monetario}\label{fig:samuelson}
+\grafico[0.55\textwidth]{samuelson}
+\fuente{elaboración propia a partir de \textcite{Samuelson1958Exact} y \textcite[sec.~20.H]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El dinero mejora a todos}: el equilibrio monetario mejora a todas las generaciones frente a la autarquía, pero el no monetario existe siempre. El dinero vale porque el joven confía en que el sistema dure hasta que él sea viejo: su valor es una \emph{burbuja} que descansa en la confianza.
+\item \emph{La demanda de dinero es una demanda de ahorro}: depende del rendimiento real del dinero, $1/(1+\pi)$, con efectos renta y sustitución de signo contrario, y su respuesta a la inflación es ambigua \parencite[cap.~4]{BlanchardFischer1989Lectures}.\footnote{\textcite{Wallace1980Overlapping} hace de este modelo la base de la teoría del dinero fiduciario. Si hay otro modo de ahorrar, por ejemplo guardar un bien que se deprecia a una tasa $\delta$, el dinero solo se demanda si rinde al menos lo mismo: $1/(1+\pi)\geq 1-\delta$, es decir, si la inflación no supera aproximadamente la depreciación \parencite[cap.~4]{BlanchardFischer1989Lectures}.}
+\item \emph{Para la política}: si se guarda dinero, conviene que pierda poco valor; la inflación óptima es baja, incluso negativa (\ref{sec:inflacion-optima}).
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item Es la explicación más sencilla del valor del dinero fiduciario como depósito de valor. Pero falla en cuanto hay otro activo que rinde interés: nadie guardaría un papel que pierde valor con la inflación teniendo un bono. Es la \emph{paradoja del dinero dominado}: el modelo explica la demanda de un activo seguro, no la de dinero, que se quiere porque sirve para pagar.
+\end{itemize}
+
+\paragraph{El dinero como medio de cambio en una economía con búsqueda: \autor{Kiyotaki} y \autor{Wright} (1989, 1993)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Los modelos de búsqueda vuelven a la idea de \autor{Menger}: el dinero sirve para evitar la doble coincidencia de deseos del trueque. Pegatina: «juntarse el hambre con las ganas de comer», que es lo que el trueque necesita y casi nunca ocurre.
+\item Sustituyen el subastador walrasiano por intercambios descentralizados entre parejas que se encuentran al azar \parencite{KiyotakiWright1989Money,KiyotakiWright1993Search}. Así, alguien acepta dinero solo si confía en que otros lo aceptarán después.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item Cada agente produce un bien y quiere consumir otro distinto; en cada periodo se encuentra al azar con otro agente.
+\item Sea $x$ la probabilidad de que un agente cualquiera produzca lo que uno quiere consumir (aquí $x$ no es una cantidad de bien). Para el trueque hace falta la doble coincidencia, con probabilidad $x^2$; con dinero basta la coincidencia simple, con probabilidad $x$, siempre que el otro acepte el dinero.
+\item Cada agente está en uno de 3 estados: produciendo su bien, con un bien buscando con quién cambiarlo, o con dinero buscando una ocasión de comprar.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Aceptar dinero conviene si la probabilidad de gastarlo (coincidencia simple, por la probabilidad de que el otro lo acepte) supera la de encontrar un trueque. Esa probabilidad depende de lo que hagan los demás: si todos aceptan el dinero, a cada uno le conviene aceptarlo; si nadie lo acepta, a nadie le conviene.
+\item Hay, por tanto, \emph{equilibrios múltiples} \parencite{KiyotakiWright1993Search}: uno sin dinero, en el que nadie lo acepta; uno monetario puro, en el que todos lo aceptan, y uno mixto, en el que se acepta con probabilidad $x$. En el modelo de 1989, con dinero mercancía, el bien que acaba sirviendo de medio de cambio puede ser el más barato de almacenar (equilibrio \emph{fundamental}) o el que todos \emph{creen} que los demás aceptarán (equilibrio \emph{especulativo}).
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El dinero se demanda para evitar la doble coincidencia y en función de la confianza}. Con dinero se cierran intercambios que el trueque no permite, y el equilibrio monetario es mejor cuanto más difícil es la doble coincidencia ($x$ pequeño), siempre que la gente confíe en él.
+\item \emph{Para la política, la credibilidad del emisor es un activo}: si el público deja de creer que los demás aceptarán el dinero (porque espera que pierda valor deprisa), deja de quererlo y la profecía se cumple. Es lo que ocurre en las hiperinflaciones (\ref{sec:senoreaje-hiperinflacion}), y explica por qué una divisa nueva o un criptoactivo pueden no circular aunque sean técnicamente mejores (\ref{sec:sin-efectivo}).
+\end{itemize}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item En estos modelos cada agente tiene 0 o 1 unidad de dinero: no dicen \emph{cuánto} se demanda. \textcite{LagosWright2005Unified} añaden un mercado centralizado en el que se ajustan las tenencias, y obtienen una demanda de dinero que cae con el tipo de interés nominal, como en los modelos del apartado siguiente.
+\end{itemize}
+
+\subparagraph{d) Valoración}
+
+\begin{itemize}
+\item Da la explicación más profunda de por qué existe el dinero, a costa de modelos muy abstractos y difíciles de llevar a los datos. Por eso la macroeconomía usa, para la demanda de dinero, formas más sencillas que suponen que el dinero sirve para pagar.
+\end{itemize}
+
+\begin{anotaciones}
+El documento de trabajo de \autor{Kiyotaki} y \autor{Wright} que dio lugar al artículo de 1993: \url{https://www.nber.org/papers/w3482}.
+\end{anotaciones}
+
+\begin{itemize}
+\item Recapitulando el apartado: el dinero existe porque resuelve problemas que el mercado sin dinero no resuelve (la doble coincidencia, el ahorro entre generaciones), y vale porque se confía en que los demás lo aceptarán. Una vez visto por qué existe una demanda de dinero, pasamos a qué la determina.
+\end{itemize}
+
+% ==========================================================================
+\section{¿Qué determina la cantidad demandada? La demanda\newline de dinero según las funciones del dinero}\label{sec:determinantes}
+\minutos{11,5}
+
+\begin{itemize}
+\item Una vez visto por qué existe una demanda de dinero, pasamos a qué la determina. Todas las teorías dan, en el fondo, una función del mismo tipo:
+  \begin{equation}
+  \frac{M^D}{P}=L\big(\underset{+}{\text{escala}},\ \underset{-}{\text{coste de oportunidad}}\big), \label{eq:demanda-general}
+  \end{equation}
+  con una \emph{variable de escala} (la renta, el consumo, la riqueza) y un \emph{coste de oportunidad} (el tipo de interés nominal o, en las hiperinflaciones, la inflación esperada). Es una demanda de saldos \emph{reales}: si los precios se duplican, se quiere el doble de dinero nominal.
+\item \emph{Conclusión anticipada}: cada función del dinero da una demanda distinta, pero casi todas coinciden en que crece con el gasto, con elasticidad menor que 1, y cae con el tipo de interés nominal, su coste de oportunidad. Lo que las separa es la \emph{sensibilidad} al tipo y la \emph{estabilidad}, que es lo que importa para la política.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Aproximación desde la teoría económica}\label{sec:teoria}
+
+\begin{itemize}
+\item La síntesis neoclásica fundamenta los 3 motivos de \autor{Keynes} con modelos de decisión individual: la transacción, con un problema de inventarios; la precaución, con el mismo problema con pagos inciertos, y la especulación, con un problema de cartera. Después, la macroeconomía de equilibrio general mete el dinero en modelos dinámicos dándole una función. Los ordenamos según la función del dinero que explican.
+\end{itemize}
+
+\subsubsection{El dinero como medio de cambio}\label{sec:medio-cambio}
+
+\paragraph{El motivo transacción: \autor{Baumol} (1952) y \autor{Tobin} (1956)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Baumol1952Transactions} trata el dinero para pagar como un inventario: igual que una empresa decide cuántas existencias tener comparando lo que cuesta pedir con lo que cuesta almacenar, el individuo decide cuánto efectivo llevar. \textcite{Tobin1956Interest} llega por separado al mismo resultado, y su título resume la novedad: incluso la demanda de dinero para transacciones depende del tipo de interés. Es el mismo modelo que se usa para la tesorería de la empresa \vertema{3.B.2}.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item El individuo recibe al principio del periodo un ingreso nominal $Y$ y lo gasta de forma uniforme a lo largo del periodo.
+\item Puede guardarlo en dinero, que no rinde, o en bonos (una cuenta remunerada), que rinden $i$ en el periodo.
+\item Cada vez que pasa bonos a dinero paga un coste fijo $b$, en euros o en tiempo (comisiones, ir al cajero), que no depende de la cantidad (aquí $b$ no es la sensibilidad de la inversión al tipo del modelo IS-LM).
+\item Hace $n$ retiradas iguales de $M=Y/n$ euros: su saldo baja de $M$ a 0 en línea recta antes de cada retirada, en «dientes de sierra», y su \emph{saldo medio}, que es su demanda de dinero, es $M/2$ (gráfico~\ref{fig:baumol-tobin}, panel a).
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Elige $M$ para minimizar el coste total: el \emph{coste de conversión}, $b$ por cada una de las $Y/M$ retiradas, más el \emph{coste de oportunidad}, los intereses que no cobra por su saldo medio:
+  $$\min_{M}\ CT(M)=b\,\frac{Y}{M}+i\,\frac{M}{2}.$$
+\item La condición de primer orden, $-b\,Y/M^2+i/2=0$, da la retirada óptima, y la de segundo orden se cumple, $CT''(M)=2\,b\,Y/M^3>0$. La demanda de dinero es el saldo medio:
+  \funcionclave[eq:baumol-tobin]{M^*=\sqrt{\frac{2\,b\,Y}{i}},\qquad M^D=\frac{M^*}{2}=\sqrt{\frac{b\,Y}{2\,i}}}
+  Gráficamente, $M^*$ está en el mínimo de la curva de costes totales en U (gráfico~\ref{fig:baumol-tobin}, panel b). Pegatina: «en el término medio está la virtud», ni ir al cajero cada día ni llevar todo el sueldo encima.
+\item \emph{Sin ilusión monetaria}: si $b$ e $Y$ suben con los precios, $M^D/P=\sqrt{(b/P)\,(Y/P)/(2\,i)}$: la demanda de saldos reales depende de la renta real y del coste real de cada retirada.
+\item \emph{La solución de esquina}: si $Y\leq 2\,b/i$, la retirada óptima sería mayor que todo el ingreso, y el individuo lo guarda todo en dinero; quien gana poco no tiene bonos \parencite{Tobin1956Interest}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de inventarios de \autor{Baumol} y \autor{Tobin}: a) el saldo en dientes de sierra; b) el coste total y la retirada óptima}\label{fig:baumol-tobin}
+\grafico[0.95\textwidth]{baumol-tobin}
+\fuente{elaboración propia a partir de \textcite{Baumol1952Transactions} y \textcite{Tobin1956Interest}. Si sube el tipo de interés, la recta del coste de oportunidad gira hacia arriba y $M^*$ baja.}
+\end{figure}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Elasticidades}: $1/2$ respecto a la renta, $-1/2$ respecto al tipo y $1/2$ respecto al coste de cada retirada. Hay \emph{economías de escala}: quien gasta el doble no necesita el doble de efectivo.
+\item \emph{La velocidad es endógena}: $V=Y/M^D=\sqrt{2\,i\,Y/b}$ sube con el tipo de interés y con la renta. No es una constante, como suponía \autor{Fisher}, sino una decisión.
+\item \emph{En el óptimo, los 2 costes son iguales}, y el coste total es $CT^*=\sqrt{2\,b\,i\,Y}$: crece con el tipo nominal. Es el \concepto{coste de suela de zapato} de la inflación (\ref{sec:inflacion-optima}).
+\item \emph{La innovación financiera} (cajeros, tarjetas, banca en línea) baja $b$ y, con él, la demanda de dinero: cuando cambia la tecnología de pagos, la demanda se desplaza (\ref{sec:evidencia}).
+\item \emph{Para la política}: fundamenta que la LM tenga pendiente positiva y finita, porque también el dinero para pagar responde al tipo; y con elasticidad renta menor que 1, la demanda agregada depende de cómo se reparte la renta.
+\item Pensemos en Lucía, que cobra 21.600~euros al año, paga $b=2$~euros por cada visita al cajero y deja el resto en una cuenta al $i=3$~\%:
+  \begin{itemize}
+  \item su retirada óptima es $M^*=\sqrt{2\cdot 2\cdot 21.600/0{,}03}\approx 1.697$~euros: va al cajero unas 13 veces al año, lleva de media unos 849~euros y su dinero da unas 25 vueltas al año;
+  \item le cuesta $CT^*=\sqrt{2\cdot 2\cdot 0{,}03\cdot 21.600}\approx 51$~euros al año, la mitad en comisiones y la otra mitad en intereses perdidos;
+  \item si el tipo se multiplica por 4, hasta el 12~\%, su retirada se divide por 2 (unos 849~euros, 25 veces al año), su saldo medio baja a unos 424~euros y su coste se duplica, hasta unos 102~euros.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{c) Extensiones: pagos aleatorios (\autor{Miller} y \autor{Orr}, 1966)}
+
+\begin{itemize}
+\item \textcite{MillerOrr1966Model} llevan el modelo a una \emph{empresa} cuyos cobros y pagos netos de cada día son aleatorios: su saldo de caja sigue un paseo aleatorio, con varianza diaria $\sigma^2$.
+\item \emph{La regla óptima es una banda} (gráfico~\ref{fig:miller-orr}): la empresa fija un saldo mínimo, $M^{\mathrm{inf}}$, y deja que la caja se mueva libremente entre él y un límite superior, $M^{\mathrm{sup}}=M^{\mathrm{inf}}+3z^*$. Si toca el límite superior, compra bonos hasta volver al \emph{punto de retorno}, $M^{\mathrm{ret}}=M^{\mathrm{inf}}+z^*$; si toca el inferior, vende bonos hasta volver a él. Con $b$ el coste de cada operación e $i$ el tipo diario,
+  $$z^*=\left(\frac{3\,b\,\sigma^2}{4\,i}\right)^{1/3},$$
+  y el saldo medio es $M^{\mathrm{inf}}+\tfrac{4}{3}\,z^*$. Solo el saldo mínimo lo fija la empresa a su criterio; el punto de retorno y el límite superior son óptimos.
+\item \emph{Implicaciones}: la demanda de dinero tiene elasticidad $-1/3$ respecto al tipo y $1/3$ respecto al coste de cada operación y a la varianza de los flujos: la incertidumbre aumenta la demanda de dinero, y sigue habiendo economías de escala.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de \autor{Miller} y \autor{Orr}: la caja se mueve libremente dentro de una banda}\label{fig:miller-orr}
+\grafico[0.7\textwidth]{miller-orr}
+\fuente{elaboración propia a partir de \textcite{MillerOrr1966Model}.}
+\end{figure}
+
+\subparagraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item La elasticidad renta de M1 en Estados Unidos después de la guerra es de 0,5 \parencite{Ball2001Another}, la de \autor{Baumol} y \autor{Tobin}; con agregados más amplios y con la riqueza como variable de escala sale mayor \parencite{KnellStix2005Income}.
+\item Con datos de 38 países, algunos de más de un siglo, la elasticidad al tipo de interés de M1 está entre 0,3 y 0,6, un intervalo que contiene el 0,5 de la raíz cuadrada \parencite{BenatiLucasNicoliniWeber2021}.
+\end{itemize}
+
+\subparagraph{e) Valoración}
+
+\begin{itemize}
+\item Es el primer modelo que da a la demanda de dinero una forma funcional derivada de una decisión, con elasticidades que se pueden contrastar.
+\item Pero es individual y parcial, supone certeza y no explica por qué hace falta dinero para pagar: lo da por hecho. Lo primero lo resuelve el motivo precaución; lo segundo, los modelos de equilibrio general.
+\end{itemize}
+
+\paragraph{El motivo precaución: \autor{Whalen} (1966)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Con pagos inciertos, el dinero es un seguro: si en el periodo los pagos netos superan el efectivo, hay que vender bonos con prisa y pagar un coste $b$ (una penalización, una venta a mal precio; aquí $b$ es el coste de quedarse sin liquidez) \parencite{Whalen1966Rationalization}. Es la respuesta del motivo precaución al tipo de interés que \autor{Keynes} no recogía (\ref{sec:keynes-friedman}). Pegatina: «por si las moscas».
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item Los pagos netos del periodo tienen media nula y varianza $\sigma^2$. Por la desigualdad de \autor{Chebyshev}, la probabilidad de quedarse sin efectivo con un saldo $M$ es como mucho $\sigma^2/M^2$, y el individuo prudente la toma como estimación.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Minimiza la suma del coste de oportunidad y del coste esperado de quedarse sin liquidez:
+  $$\min_{M}\ i\,M+b\,\frac{\sigma^2}{M^2}\quad\Longrightarrow\quad M^*=\left(\frac{2\,b\,\sigma^2}{i}\right)^{1/3}.$$
+  Guarda dinero hasta que el ahorro esperado por el último euro, $2\,b\,\sigma^2/M^3$, decreciente, iguala su coste de oportunidad, $i$, constante (gráfico~\ref{fig:whalen}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El motivo precaución: el beneficio marginal del efectivo y su coste de oportunidad}\label{fig:whalen}
+\grafico[0.6\textwidth]{whalen}
+\fuente{elaboración propia a partir de \textcite{Whalen1966Rationalization}. Si sube el tipo, la recta del coste marginal sube y el saldo óptimo baja; si aumenta la incertidumbre, la curva del beneficio marginal se desplaza a la derecha.}
+\end{figure}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item Elasticidad $-1/3$ respecto al tipo y $1/3$ respecto al coste de la falta de liquidez y a la varianza: más incertidumbre, más dinero.
+\item \emph{Efecto de la renta}: la demanda crece con la dispersión de los pagos y, por ella, con la renta. Si la renta crece porque hay más pagos del mismo tamaño, la elasticidad es 1/3; si crece porque cada pago es mayor, 2/3.\footnote{Con $n$ pagos de tamaño $s$, la renta es $n\,s$ y la varianza crece con $n\,s^2$. Con $s$ fijo, $\sigma^2$ es proporcional a la renta y $M^*$ a su raíz cúbica; con $n$ fijo, $\sigma^2$ es proporcional al cuadrado de la renta y $M^*$ a la renta elevada a 2/3.}
+\end{itemize}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item \textcite{Goldman1974Flexibility} explica el motivo precaución como el valor de la \emph{flexibilidad}: el dinero permite aprovechar oportunidades que no se conocen al decidir la cartera.
+\end{itemize}
+
+\paragraph{El dinero en la función de utilidad: \autor{Sidrauski} (1967)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Los modelos de inventarios dan una demanda de dinero, pero en equilibrio parcial y suponiendo que hace falta dinero para pagar. En un modelo dinámico de equilibrio general, el dinero solo tiene valor si se le da una función que el modelo sin dinero no tenga \vertema{3.A.21}. La forma más directa es ponerlo en la utilidad (MIU, \emph{money in the utility function}): si el dinero ahorra tiempo y molestias al pagar, ese servicio se resume poniendo los saldos reales en la utilidad, como un bien más.
+\item \textcite{Patinkin1956Money} ya los había puesto para romper la dicotomía clásica \vertema{3.A.4}; \textcite{Sidrauski1967Rational}\footnote{Miguel \autor{Sidrauski} (1939-1968), economista argentino, se doctoró en Chicago en 1966 con \autor{Uzawa} y \autor{Friedman} y fue profesor en el MIT; murió a los 28 años, un año después de publicar el artículo que lleva su nombre.} los lleva al modelo de crecimiento de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans} (RCK) \vertema{3.A.43} para responder a una pregunta: ¿afecta el crecimiento del dinero, y con él la inflación, a la acumulación de capital?
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item Un hogar representativo que vive infinitos periodos, con previsión perfecta, población constante y trabajo inelástico, que produce con su capital, $f(K_{t-1})$, y lo deprecia a la tasa $\delta$.
+\item Su utilidad depende del consumo, $C_t$, y de los saldos reales, $m_t\equiv M_t/P_t$, con $u_C>0$, $u_m>0$ y concavidad; descuenta el futuro con $\beta\equiv 1/(1+\rho)$.
+\item La cantidad de dinero crece a la tasa $\gamma_M$, y el Estado devuelve el señoreaje como una transferencia de suma fija ($T_t<0$, un impuesto negativo). La inflación es $1+\pi_t\equiv P_t/P_{t-1}$.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item El dinero de ayer llega a hoy con su valor real erosionado por la inflación, $m_{t-1}/(1+\pi_t)$. El problema es:
+  $$\optim{\max}{\{C_t,\,K_t,\,m_t\}}{\sum_{t=0}^{\infty}\beta^t\,u(C_t,m_t)}{C_t+K_t+m_t=f(K_{t-1})+(1-\delta)\,K_{t-1}-T_t+\dfrac{m_{t-1}}{1+\pi_t}}$$
+\item Las condiciones de primer orden (anexo~\ref{anexo:miu}) igualan la utilidad marginal del consumo a la de ahorrar en capital, que rinde $1+r_t=f'(K_t)+1-\delta$, y la del dinero a lo que cuesta guardarlo. Con la ecuación de \autor{Fisher}, $1+i_t\equiv(1+r_t)(1+\pi_{t+1})$ \vertema{3.A.3}, se resumen en:
+  \funcionclave[eq:miu]{\frac{u_m(C_t,m_t)}{u_C(C_t,m_t)}=\frac{i_t}{1+i_t}}
+\item \emph{Interpretación}: la relación marginal de sustitución entre dinero y consumo se iguala a su precio relativo. Guardar un euro en dinero en lugar de en bonos cuesta los intereses, $i_t$, que se cobrarían mañana; consumir hoy un euro cuesta $1+i_t$ euros de mañana. Como en el problema del consumidor con 2 bienes, la relación subjetiva se iguala a la de mercado.
+\item \emph{Ejemplo}: con $u=\ln C_t+\ln m_t$, la demanda de dinero es $m_t=C_t\,(1+i_t)/i_t$: elasticidad 1 respecto al consumo y $-1/(1+i_t)$, casi $-1$, respecto al tipo.
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{La demanda de dinero}, $m_t=L(C_t,i_t)$, crece con el consumo (la variable de escala es el gasto, no la renta) y baja con el tipo nominal.\footnote{Los signos exigen que el dinero y el consumo sean bienes normales, como en el problema del consumidor. Y es la demanda del hogar representativo: la de una economía con hogares distintos se puede escribir así solo si sus preferencias son de la forma polar de \autor{Gorman}, con curvas de \autor{Engel} lineales y paralelas \vertema{3.A.8}.} Pegatina: «el dinero no da la felicidad»; en este modelo, sí, y por eso hay que tomarlo como un atajo.
+\item \emph{Superneutralidad}: en el estado estacionario, la ecuación de \autor{Euler} da $f'(K^*)=\rho+\delta$, y el consumo es $C^*=f(K^*)-\delta\,K^*$: ni el capital ni el consumo dependen de $\gamma_M$. Con los saldos reales constantes, $\pi=\gamma_M$: más crecimiento del dinero sube la inflación y el tipo nominal y reduce los saldos reales, $m^*$, pero no la producción. El dinero es superneutral, y la inflación cuesta bienestar solo porque se tiene menos dinero.
+\item \emph{La cantidad óptima de dinero}: como imprimir dinero no cuesta casi nada, el óptimo es saciar la demanda, $u_m=0$, lo que exige $i=0$: es la regla de \autor{Friedman} (\ref{sec:inflacion-optima}).
+\end{itemize}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item Con trabajo elástico y una utilidad no separable, la inflación cambia la oferta de trabajo y la superneutralidad se pierde \parencite{Brock1974Money}.
+\item En la nueva economía keynesiana, con utilidad separable, la demanda de dinero es una ecuación aparte que solo dice cuánto dinero hace falta para el tipo que fija el banco central: se puede ignorar, y el modelo se resuelve «sin dinero» \parencite{Woodford2003Interest} \parencite[cap.~2]{Gali2015Monetary} \vertema{3.A.7}. Esa economía «sin dinero» no es la economía sin \emph{efectivo} de este tema (\ref{sec:sin-efectivo}): en ella el dinero solo es unidad de cuenta.
+\end{itemize}
+
+\subparagraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: es sencillo, da una demanda de dinero positiva en equilibrio general y permite comparar el bienestar con distintas inflaciones.
+\item \emph{En contra}: supone lo que había que explicar \parencite{Hahn1965Problems}. Un billete no se consume: según el modelo, tener dinero da utilidad aunque no se use nunca para pagar, y las derivadas que deciden los resultados ($u_m$, $u_{Cm}$) no tienen fundamento. Los modelos de costes de transacción se lo dan, y \textcite{Feenstra1986Functional} demuestra que son equivalentes: poner el dinero en la utilidad equivale a que reduzca unos costes de liquidez de la restricción presupuestaria. El MIU es así una \emph{forma reducida}.
+\end{itemize}
+
+\paragraph{El dinero y los costes de transacción: el tiempo de compra y el pago por adelantado}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item En lugar de suponer que el dinero da utilidad, estos modelos dicen \emph{cómo} la da: ahorra tiempo al comprar o es imprescindible para comprar.
+\item \textcite{Clower1967Reconsideration} resume la economía monetaria en una idea: el dinero compra bienes y los bienes compran dinero, pero los bienes no compran bienes \vertema{3.A.21}. Pegatina: «por dinero baila el perro».
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Tiempo de compra} (\emph{shopping time}): \textcite{Saving1971Transactions} propone la idea y \textcite{McCallumGoodfriend1987Demand} la llevan al equilibrio general. El hogar reparte una unidad de tiempo entre el trabajo, $L_t$, pagado al salario real $w_t$, el ocio y el tiempo de compra, $\psi(C_t,m_t)$, que crece con el consumo, $\psi_C>0$, y baja con los saldos reales, $\psi_m<0$, cada vez menos. Su utilidad es $u\big(C_t,\ 1-L_t-\psi(C_t,m_t)\big)$: el dinero no da utilidad por sí mismo.
+\item \emph{Pago por adelantado} (\emph{cash in advance}, CIA): \textcite{Lucas1980Equilibrium} lleva la idea de \autor{Clower} a un modelo de equilibrio general. La utilidad es $u(C_t,\ 1-L_t)$, sin dinero, y el consumo hay que pagarlo con el dinero que se tiene:
+  \begin{equation}
+  C_t\leq m_t. \label{eq:cia}
+  \end{equation}
+  \textcite{Svensson1985Money} fija el orden en que se abren los mercados, de modo que se paga con el dinero de antes de abrir el de activos.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Tiempo de compra}: se guarda dinero hasta que el valor del tiempo que ahorra el último euro, medido al salario, iguala su coste de oportunidad,\footnote{De la condición del trabajo, la utilidad marginal del ocio es $\lambda_t\,w_t$, con $\lambda_t$ la del consumo de la restricción presupuestaria; de la del dinero, $-u_{\text{ocio}}\,\psi_m=\lambda_t\,i_t/(1+i_t)$, como en el MIU. Dividiendo, sale la condición del texto \parencite[cap.~3]{Walsh2017Monetary}.}
+  $$-\,w_t\,\psi_m(C_t,m_t)=\frac{i_t}{1+i_t}.$$
+\item \emph{Pago por adelantado}: si el tipo nominal es positivo, nadie guarda más dinero del que va a gastar, la restricción \eqref{eq:cia} se cumple con igualdad y, en el estado estacionario,
+  $$m=C,\qquad \frac{u_{\text{ocio}}}{u_C}=\frac{w}{1+i}.$$
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Tiempo de compra}: la demanda de dinero, $m_t=L(C_t,i_t,w_t)$, crece con el consumo y con el salario (el tiempo vale más) y baja con el tipo. Si a Lucía cada visita al cajero le cuesta un cuarto de hora y no 2 euros, su $b$ de \autor{Baumol}-\autor{Tobin} sube con su salario, y su demanda de dinero, con su renta, en la misma proporción. Sustituyendo la restricción de tiempo en la utilidad queda una función de $C_t$, $L_t$ y $m_t$: el MIU es la forma reducida de este modelo \parencite{Feenstra1986Functional}.
+\item \emph{Pago por adelantado}: la demanda de dinero es el gasto, la velocidad es 1 por periodo y la variable de escala es el consumo: es la teoría cuantitativa con fundamento.
+\item \emph{La inflación grava el consumo frente al ocio}: para consumir hay que haber tenido el dinero, y eso cuesta el tipo nominal; el precio efectivo del consumo frente al ocio es $1+i$. Más inflación, menos trabajo y menos producción: el dinero no es superneutral. \textcite{CooleyHansen1989Inflation} usan la restricción de pago por adelantado para medir el coste de la inflación en un modelo de ciclo real, y el dinero sigue siendo casi neutral \vertema{3.A.42}.
+\item \emph{Con bienes de crédito}, la relación marginal de sustitución entre el bien que se paga en efectivo y el que se paga a crédito es $1+i$: con más inflación se paga más a crédito, la velocidad sube y la demanda vuelve a depender del tipo \parencite{LucasStokey1987Money}.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item Explican por qué el dinero es útil, pero la función $\psi$ es tan arbitraria como la utilidad del dinero, y en la CIA qué se paga con dinero lo fija el modelo, no los agentes; en la versión básica la velocidad es constante, contra los datos. Es un ejemplo de la defensa metodológica de \textcite{Friedman1953Methodology}: un supuesto irreal y sencillo, el dinero en la utilidad, predice lo mismo que uno más realista.
+\item Recapitulando el medio de cambio: según el modelo, la escala es la renta o el consumo, y el coste, el tipo nominal; todos dan el mismo signo y difieren en la sensibilidad y en la explicación de por qué se usa el dinero. Los modelos de búsqueda (\ref{sec:fiduciario}) explican cuándo se usa.
+\end{itemize}
+
+\subsubsection{El dinero como depósito de valor}\label{sec:deposito-valor}
+
+\paragraph{La cartera de \autor{Tobin} (1958)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item En \autor{Keynes}, cada inversor tiene toda su riqueza en dinero o toda en bonos. \textcite{Tobin1958Liquidity} explica la preferencia por la liquidez como una conducta frente al \emph{riesgo}: el dinero es el activo seguro de una cartera, y se combina con los bonos para diversificar. Aplica la teoría de carteras de \autor{Markowitz} \vertema{3.B.23} y la aversión al riesgo \vertema{3.A.10}. Pegatina: «no poner todos los huevos en la misma cesta».
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item El inversor reparte su riqueza, $\overline{W}$, entre dinero, que no rinde ni tiene riesgo, y bonos perpetuos, que pagan el tipo $i$ más una ganancia de capital aleatoria, $\tilde g$, de media nula y desviación típica $\sigma_{\mathrm B}$ (aquí $\tilde g$ no es el progreso técnico).
+\item Es averso al riesgo: le importan la rentabilidad esperada de su cartera, $\mathbb{E}[r_p]$, que es un bien, y su riesgo, $\sigma_p$, que es un mal. Pone en bonos una fracción $w_{\mathrm B}$ (aquí $w$ no es el salario).
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item La rentabilidad de la cartera es $r_p=w_{\mathrm B}\,(i+\tilde g)$, así que $\mathbb{E}[r_p]=w_{\mathrm B}\,i$ y $\sigma_p=w_{\mathrm B}\,\sigma_{\mathrm B}$. Eliminando $w_{\mathrm B}$, las carteras posibles forman la recta
+  \begin{equation}
+  \mathbb{E}[r_p]=\frac{i}{\sigma_{\mathrm B}}\,\sigma_p, \label{eq:tobin}
+  \end{equation}
+  cuya pendiente es el precio del riesgo.
+\item El inversor elige el punto en que una curva de indiferencia, creciente y convexa porque es averso al riesgo, es tangente a esa recta: su relación marginal de sustitución entre riesgo y rentabilidad se iguala a $i/\sigma_{\mathrm B}$. El cuadrante de abajo traduce el riesgo elegido en la cartera: $w^*_{\mathrm B}=\sigma^*_p/\sigma_{\mathrm B}$, y la demanda de dinero es $M^D=(1-w^*_{\mathrm B})\,\overline{W}$ (gráfico~\ref{fig:tobin}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La preferencia por la liquidez como conducta frente al riesgo: la cartera de \autor{Tobin}}\label{fig:tobin}
+\grafico[0.6\textwidth]{tobin-cartera}
+\fuente{elaboración propia a partir de \textcite{Tobin1958Liquidity}. Arriba, la recta de carteras posibles y la curva de indiferencia; abajo, el riesgo en función de la fracción en bonos. Si sube el tipo, la recta gira hacia arriba.}
+\end{figure}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Diversificación}: se tienen a la vez dinero y bonos. La demanda de dinero crece con la riqueza, con el riesgo de los bonos y con la aversión al riesgo.
+\item \emph{El tipo de interés}: si sube, la recta gira hacia arriba y hay 2 efectos: el de \emph{sustitución} (los bonos rinden más por unidad de riesgo y se compran más: menos dinero) y el de \emph{renta} (se puede lograr la misma rentabilidad con menos riesgo: más dinero, si el inversor es muy averso). \autor{Tobin} supone que domina el primero: la demanda de dinero baja con el tipo, como en \autor{Keynes}, sin necesidad de un tipo «normal».
+\item \emph{Para la política}: la demanda de dinero es una decisión de cartera, y la política monetaria actúa cambiando los rendimientos relativos de todos los activos, no solo un tipo de interés \vertema{3.A.37}. Y en las crisis, cuando sube el riesgo percibido, se dispara la demanda de activos seguros y líquidos: el banco central tiene que dar la liquidez que se le pide.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item Da fundamento a la sensibilidad de la demanda de dinero al tipo y es la base de la teoría de carteras de los activos financieros.
+\item Pero el dinero está \emph{dominado}: los depósitos a plazo o las letras del Tesoro son tan seguros como el dinero y rinden más. El modelo explica la demanda de activos seguros, no la de dinero; y en términos reales el dinero tampoco está libre de riesgo, porque la inflación lo erosiona.
+\end{itemize}
+
+\subsubsection{El dinero como unidad de cuenta}\label{sec:unidad-cuenta}
+
+\paragraph{La demanda de dinero en las hiperinflaciones: \autor{Cagan} (1956)}
+
+\begin{itemize}
+\item \emph{Idea}: la función de unidad de cuenta se ve cuando falla. En una hiperinflación, los precios dejan de expresarse en la moneda nacional, se indexan o se fijan en otra divisa, y el público se deshace del dinero en cuanto lo cobra.
+\item \emph{Modelo}: \textcite{Cagan1956Monetary} estudia 7 hiperinflaciones europeas de entreguerras y de posguerra. Como la renta y el tipo real cambian poco frente a la inflación, la demanda de saldos reales depende solo de la inflación esperada:
+  \begin{equation}
+  \frac{M^D_t}{P_t}=\zeta\,e^{-\alpha\,\mathbb{E}_t[\pi_{t+1}]},\qquad \zeta,\ \alpha>0, \label{eq:cagan}
+  \end{equation}
+  con $\alpha$ la semielasticidad de la demanda a la inflación esperada. \autor{Cagan} forma las expectativas de modo adaptativo, en tiempo continuo, $\dot\pi^e=\gamma\,(\pi-\pi^e)$, con $\gamma>0$ la velocidad de ajuste; \textcite{SargentWallace1973Rational} las hacen racionales, y entonces el nivel de precios de hoy depende de toda la senda esperada del dinero: un anuncio creíble de que el dinero dejará de crecer baja los precios hoy.
+\item \emph{Implicaciones}: en estado estacionario, la inflación es el crecimiento del dinero, $\pi=\gamma_M$. La demanda de dinero pone un límite a lo que el Estado puede recaudar imprimiéndolo (\ref{sec:senoreaje-hiperinflacion}); y si las expectativas se ajustan muy deprisa, la inflación puede dispararse sin que el dinero se acelere \vertema{3.A.41}. El dinero fiduciario es frágil: si se pierde la confianza en el emisor, su demanda se hunde y la inflación se alimenta sola.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Evidencia empírica sobre los determinantes. Hechos estilizados}\label{sec:evidencia}
+
+\begin{itemize}
+\item \emph{Medir}: los agregados oficiales suman activos muy distintos (efectivo, depósitos a la vista, a plazo) como si fueran iguales. Los \emph{índices de Divisia} los ponderan por su coste de uso, lo que se deja de ganar por tenerlos, y miden mejor los servicios de liquidez \parencite{Barnett1980Economic}; los usan los bancos centrales en sus estudios, no como objetivo.
+\item \emph{Identificar}: la oferta de dinero también responde a la renta y a los tipos, y separar la demanda exige modelos de corrección del error o datos de corte transversal \parencite{MulliganSalaiMartin1992US}.
+\item \emph{Hechos estilizados}:
+  \begin{itemize}
+  \item a largo plazo, el crecimiento del dinero y la inflación van casi uno a uno, y el dinero y la producción real no tienen relación (\ref{sec:cuantitativa});
+  \item la demanda crece con la renta, menos que proporcionalmente en M1 \parencite{Ball2001Another}, y más con agregados amplios o con la riqueza como escala \parencite{Meltzer1963Demand,KnellStix2005Income};
+  \item baja con el tipo de interés, con una elasticidad de 0,3 a 0,6 a largo plazo \parencite{BenatiLucasNicoliniWeber2021}; con tipos muy bajos no se dispara como predice la forma logarítmica, porque muchos hogares no tienen otros activos y no reaccionan al tipo \parencite{MulliganSalaiMartin2000Extensive};
+  \item la estabilidad es el punto débil: las funciones de M1 de posguerra dejan de explicar los datos de Estados Unidos desde 1974, el «dinero perdido» \parencite{Goldfeld1976Case}, y la innovación financiera de los 80 rompe la velocidad de M1 y, en los 90, la de M2 (gráfico~\ref{fig:velocidad}): la de M2 subió hasta 2,19 en 1997, cayó a 1,13 en 2020 y hoy es de 1,42 \parencite{FRED2026Velocidad}. En la zona del euro, la velocidad de M3 ha caído de 1,42 en 1999 a 0,94 en 2025 \parencite{BCE2026BSI,Eurostat2026nama10gdp}. Parte de la inestabilidad desaparece al redefinir el dinero tras la desregulación \parencite{LucasNicolini2015Stability};
+  \item en las hiperinflaciones, la inflación esperada sustituye al tipo como coste de oportunidad \parencite{Cagan1956Monetary};
+  \item la trampa de la liquidez, que \autor{Keynes} no conocía en la práctica, volvió al debate con Japón a finales de los 90 \parencite{Krugman1998Baaack} y con la crisis de 2008, cuando los grandes bancos centrales llevaron sus tipos a cero \vertema{3.A.40}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Velocidad del dinero en Estados Unidos, 1959-2026 (PIB nominal entre M2 y entre M1)}\label{fig:velocidad}
+\grafico[0.85\textwidth]{velocidad-dinero}
+\fuente{elaboración propia a partir de \textcite{FRED2026Velocidad}; último dato, tercer trimestre de 2026. La velocidad de M1 se corta en 2020 porque la Reserva Federal cambió la definición de M1 en mayo de ese año.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Las teorías de la demanda de dinero, resumidas}\label{tab:modelos-demanda-dinero}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.19\textwidth}>{\centering\arraybackslash}m{0.12\textwidth}>{\centering\arraybackslash}m{0.14\textwidth}>{\centering\arraybackslash}m{0.16\textwidth}>{\raggedright\arraybackslash}m{0.23\textwidth}}
+\toprule
+\rowcolor{tceeazulpalido} \textbf{Teoría} & \textbf{Función} & \textbf{Escala} & \textbf{Coste de oportunidad} & \textbf{Para la política}\\
+\midrule
+\rowcolor{tceesalvia} \multicolumn{5}{c}{$M^D/P=L(\text{escala},\ \text{coste de oportunidad})$ \eqref{eq:demanda-general}}\\
+\autor{Fisher}, Cambridge & \textcolor{tceeverde}{Cambio} & Renta (1) & No & Neutralidad; la inflación es monetaria\\
+\autor{Keynes} & Las 3 & Renta & $i$ (alta; trampa) & Inestable; política fiscal\\
+\autor{Friedman} & \textcolor{tceeazul}{Activo} & Renta permanente & Rendimientos relativos (baja) & Estable; regla monetaria\\
+\autor{Baumol}-\autor{Tobin} & \textcolor{tceeverde}{Cambio} & Renta (1/2) & $i$ ($-1/2$) & Velocidad endógena; suela de zapato\\
+\autor{Whalen}, \autor{Miller}-\autor{Orr} & \textcolor{tceeverde}{Precaución} & Renta (1/3-2/3) & $i$ ($-1/3$) & La incertidumbre sube la demanda\\
+MIU (\autor{Sidrauski}) & \textcolor{tceeverde}{Cambio (atajo)} & Consumo & $i/(1+i)$ & Superneutralidad; regla de \autor{Friedman}\\
+Tiempo de compra & \textcolor{tceeverde}{Cambio} & Consumo, salario & $i/(1+i)$ & No superneutral\\
+Pago por adelantado & \textcolor{tceeverde}{Cambio} & Consumo (velocidad 1) & $1+i$ sobre el consumo & No superneutral\\
+Búsqueda & \textcolor{tceeverde}{Cambio} & Encuentros & Aceptación & Confianza; equilibrios múltiples\\
+\autor{Samuelson} & \textcolor{tceeazul}{Depósito} & Ahorro & $1/(1+\pi)$ & Confianza; dinero dominado\\
+\autor{Tobin} (1958) & \textcolor{tceeazul}{Depósito} & Riqueza & $i$ (ambiguo) & Transmisión por carteras\\
+\autor{Cagan} & \textcolor{tceedorado}{Unidad de cuenta} & Constante & $\mathbb{E}_t[\pi_{t+1}]$ & Límite al señoreaje\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de las obras citadas en el bloque~\ref{sec:determinantes}. Entre paréntesis, la elasticidad. En verde, el dinero como medio de cambio; en azul, como depósito de valor; en dorado, como unidad de cuenta.}
+\end{table}
+
+\begin{itemize}
+\item Recapitulando el bloque (cuadro~\ref{tab:modelos-demanda-dinero}): todas las teorías dan una demanda de saldos reales que crece con una variable de escala y baja con el coste de oportunidad, como en \eqref{eq:demanda-general}; los datos confirman los signos y unas elasticidades moderadas, pero no la estabilidad a corto plazo. Pasamos a lo que eso implica para la política.
+\end{itemize}
+
+% ==========================================================================
+\section{Implicaciones de política económica.\newline Una economía sin dinero en efectivo}\label{sec:implicaciones}
+\minutos{7,5}
+
+\begin{itemize}
+\item Con la demanda de dinero especificada, pasamos a lo que pide el título: qué implica para la política económica.
+\item \emph{Conclusión anticipada}: su forma decide cuánta inflación conviene, qué instrumento usar, cuánto puede financiar el Estado con dinero y hasta dónde pueden bajar los tipos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Demanda de dinero e inflación óptima}\label{sec:inflacion-optima}
+
+\begin{itemize}
+\item \emph{La regla de \autor{Friedman}} \parencite{Friedman1969Optimum}: el coste privado de tener dinero es el tipo nominal, $i$, y su coste social es casi nulo, porque imprimirlo no cuesta. La eficiencia exige igualarlos: el tipo nominal debe ser cero.
+\item \emph{La derivación}: en el MIU \eqref{eq:miu}, el bienestar de estado estacionario es máximo cuando el público tiene todo el dinero que quiere, $u_m=0$, y eso exige $i=0$. Por la ecuación de \autor{Fisher},
+  \begin{equation}
+  i=0\quad\Longrightarrow\quad 1+\pi^*=\frac{1}{1+r}\quad\Longrightarrow\quad\pi^*=-\frac{r}{1+r}\simeq-r, \label{eq:regla-friedman}
+  \end{equation}
+  una deflación igual al tipo real; en el estado estacionario, $1+\pi^*=\beta$ (anexo~\ref{anexo:miu}). El mismo resultado sale con el tiempo de compra y con el pago por adelantado: en todos, el tipo nominal es un impuesto sobre un medio de cambio que no cuesta producir.
+\item Volvamos a Lucía: con $i=0$ no le costaría nada tener todo su sueldo en la cuenta y en la cartera, y no tendría que ir al cajero. Con el 3~\%, pierde unos 51~euros al año; con el 12~\%, unos 102. Sumando a todas las Lucías se obtiene el coste de la inflación para la sociedad: el área bajo la curva de demanda de dinero que se pierde porque el tipo nominal es positivo \parencite{Bailey1956Welfare,Lucas2000Inflation} \vertema{3.A.41}.
+\item \emph{Los matices}: si el Estado no tiene impuestos de suma fija, la inflación es un impuesto más y su tipo óptimo puede ser positivo \parencite{Phelps1973Inflation}; con precios rígidos, la inflación óptima es casi nula, y los bancos centrales eligen un 2~\% por los errores de medida, la rigidez a la baja de los salarios nominales y el margen frente al límite inferior \parencite{SchmittGroheUribe2010Optimal}. No es la regla del k~\% del monetarismo (\ref{sec:keynes-friedman}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Demanda de dinero y eficacia de la política de estabilización}\label{sec:estabilizacion}
+
+\begin{itemize}
+\item \emph{La sensibilidad al tipo decide qué política es eficaz} \vertema{3.A.5}:
+  \begin{itemize}
+  \item con $h$ grande, la de \autor{Keynes}, la LM es plana: una expansión monetaria baja poco el tipo y lo poco que baja mueve poco la inversión, mientras que una fiscal apenas sube el tipo y expulsa poca inversión privada. La fiscal es más eficaz, y en la trampa la monetaria no sirve: son los 2 eslabones débiles \vertema{3.A.34};
+  \item con $h$ pequeño y una demanda estable, la de \autor{Friedman}, la LM es inclinada: la monetaria es potente a corto plazo y la fiscal expulsa casi tanto gasto privado como añade.
+  \end{itemize}
+\item \emph{La estabilidad decide el instrumento}: si el banco central fija la cantidad de dinero, toda perturbación de la demanda de dinero mueve el tipo y, con él, la renta; si fija el tipo, la cantidad se adapta y esas perturbaciones no llegan a la economía real. Cuanto más inestable es la demanda de dinero frente a la de bienes, más conviene fijar el tipo \parencite{Poole1970Optimal} \vertema{3.A.36}.
+\item \emph{La experiencia}: en los 70, con la demanda que \autor{Friedman} suponía estable, varios bancos centrales fijaron objetivos de crecimiento del dinero. La innovación financiera hizo inestable la demanda y la relación entre dinero y renta se rompió justo cuando se usaba para el control: es la \concepto{ley de \autor{Goodhart}}, toda regularidad estadística tiende a romperse cuando se la usa para el control \parencite{Goodhart1975Problems}. El Banco de Canadá abandonó sus objetivos de M1 en noviembre de 1982 \parencite{Bouey1982Statement}, y el BCE mantuvo hasta 2021 un pilar monetario, que desde su revisión de la estrategia es un análisis monetario y financiero \parencite{BCE2021Estrategia}.
+\item \emph{El dinero endógeno}: hoy el banco central fija el precio de las reservas, y la cantidad de dinero la decide la demanda: los bancos crean depósitos al prestar y el banco central da las reservas que se le piden a ese precio \parencite{McLeayRadiaThomas2014Money} \vertema{3.A.36}. La demanda de dinero ya no fija el tipo de interés, como en \autor{Keynes}: fija cuánto dinero hay al tipo que decide el banco central.
+\item \emph{La transmisión}: como la demanda de dinero es una decisión de cartera (\ref{sec:deposito-valor}), la política monetaria llega a la economía cambiando los rendimientos relativos de todos los activos \vertema{3.A.37}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Demanda de dinero y política fiscal: señoreaje e hiperinflación}\label{sec:senoreaje-hiperinflacion}
+
+\begin{itemize}
+\item \emph{El señoreaje} es lo que el Estado obtiene en términos reales por emitir dinero que el público quiere tener. Con la deuda constante \vertema{3.A.39},
+  \begin{equation}\label{eq:senoreaje}
+  S_t\equiv\frac{M_t-M_{t-1}}{P_t}=\underbrace{\left(\frac{M_t}{P_t}-\frac{M_{t-1}}{P_{t-1}}\right)}_{\text{aumento de los saldos reales}}+\underbrace{\frac{\pi_t}{1+\pi_t}\,\frac{M_{t-1}}{P_{t-1}}}_{\text{impuesto inflacionario}}.
+  \end{equation}
+  El \concepto{impuesto inflacionario} tiene como base la demanda de saldos reales y como tipo $\pi/(1+\pi)$: es lo que pierde quien guarda dinero, cuyo rendimiento real neto es $-\pi_t/(1+\pi_t)$.
+\item \emph{Su límite}: con la demanda de \autor{Cagan} \eqref{eq:cagan}, más inflación sube el tipo del impuesto pero reduce su base; el señoreaje es máximo con $\pi^*=1/\alpha$, y un déficit mayor que ese máximo no se puede financiar con dinero: es la puerta de la hiperinflación (gráfico~\ref{fig:laffer-senoreaje}) \vertema{3.A.41}.
+\item \emph{Credibilidad}: como el dinero fiduciario vale por la confianza, el banco central necesita un ancla nominal creíble y no estar obligado a financiar al Estado. Las hiperinflaciones de entreguerras terminaron de golpe cuando un cambio de régimen fiscal lo hizo creíble \parencite{Sargent1982Ends}; en la zona del euro, el artículo~123 del TFUE prohíbe esa financiación \vertema{3.A.39}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La curva de \autor{Laffer} del señoreaje}\label{fig:laffer-senoreaje}
+\grafico[0.6\textwidth]{laffer-senoreaje}
+\fuente{elaboración propia a partir de \textcite{Cagan1956Monetary} y \textcite[cap.~4]{Walsh2017Monetary}. El señoreaje es máximo con $\pi^*=1/\alpha$; un déficit menor que $S^{\max}$ tiene 2 equilibrios, $\pi_{\mathrm B}$ y $\pi_{\mathrm A}$; uno mayor no se puede financiar con dinero.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Una economía sin dinero en efectivo}\label{sec:sin-efectivo}
+
+\begin{itemize}
+\item \emph{Dinero no es solo efectivo}: dinero es todo lo bastante líquido y creíble para servir de medio de cambio, y los depósitos que se mueven con una tarjeta o con el móvil lo son tanto como los billetes. Lo que retrocede es el \emph{efectivo}.
+\end{itemize}
+
+\paragraph{El efectivo como suelo de los tipos}
+
+\begin{itemize}
+\item El efectivo rinde un 0~\% nominal. Si el tipo de los bonos bajara mucho de cero, todos preferirían el efectivo: la demanda de dinero se vuelve horizontal, como en la trampa de \autor{Keynes}, pero por el rendimiento nulo del efectivo y no por las expectativas sobre el tipo. Guardar y asegurar billetes cuesta, así que el \concepto{límite inferior efectivo} de los tipos, $i^{\mathrm{ELB}}$, está algo por debajo de cero.
+\item \emph{El problema}: si el tipo natural real es muy negativo, el tipo real más bajo que se puede lograr, $i^{\mathrm{ELB}}-\pi^e$, queda por encima; con precios rígidos la inflación no sube lo bastante para bajarlo, el ahorro supera a la inversión y la economía se ajusta con menos renta \vertema{3.A.40}.
+\item \emph{La experiencia}: el BCE mantuvo negativo el tipo de la facilidad de depósito de junio de 2014 a julio de 2022, con un mínimo del $-0{,}50$~\% \parencite{BCE2026Tipos}, sin huida masiva hacia el efectivo. Hoy ese tipo está en el 2,50~\%.
+\item \emph{Las salidas}: un objetivo de inflación positivo que deje margen \vertema{3.A.41}; los instrumentos no convencionales \vertema{3.A.37}; la política fiscal, que absorbe el exceso de ahorro \vertema{3.A.40}, y suprimir el efectivo.
+\end{itemize}
+
+\paragraph{La propuesta de \autor{Rogoff} y el uso del efectivo}
+
+\begin{itemize}
+\item \textcite{Rogoff2016Curse} propone retirar poco a poco los billetes grandes (primero los de 100 y 50) y conservar solo los pequeños y las monedas, para encarecer el atesoramiento y la economía sumergida y quitar el suelo del tipo nominal \parencite{FernandezVillaverde2016Maldicion}. Pegatina: «ojos que no ven, corazón que no siente», lo que buscan el que atesora y el que defrauda con billetes.
+\item \emph{Sus inconvenientes}:
+  \begin{itemize}
+  \item la pérdida del anonimato y de la privacidad en los pagos;
+  \item la exclusión de quien tiene más dificultades con los medios digitales, como muchas personas mayores o con pocos recursos;
+  \item la dependencia de redes de pago que pueden fallar o sufrir ciberataques;
+  \item la pérdida del único dinero del banco central al alcance del público, que ancla la confianza en el dinero de los bancos.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El efectivo en los pagos en tienda, España y zona del euro, 2016-2024 (\% del número y del valor de las operaciones)}\label{fig:medios-pago}
+\grafico[0.8\textwidth]{medios-pago-space}
+\fuente{elaboración propia con datos de \textcite{BCE2024SPACE}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Los datos}: no sería una revolución en todas partes.
+  \begin{itemize}
+  \item En los países nórdicos el efectivo ya es marginal: en Dinamarca fue el 9~\% de los pagos en tiendas en 2025 \parencite{DNB2026Kontanter} y en Suecia solo el 5~\% pagó en efectivo su última compra \parencite{Riksbank2026Payments}; en la zona del euro, el mínimo está en los Países Bajos, con el 22~\% \parencite{BCE2024SPACE}.
+  \item En España, el efectivo pagó en 2024 el 57~\% de las compras en tienda en número, pero solo el 45~\% en valor; en la zona del euro, el 52~\% y el 39~\% \parencite{BCE2024SPACE} (gráfico~\ref{fig:medios-pago}). Sigue siendo el medio de pago principal en los comercios para el 57~\% de la población, aunque el móvil ya llega al 18~\% y la tarjeta baja al 25~\% \parencite{BdE2026HabitosNota}.
+  \item Y, sin embargo, la demanda de efectivo como depósito de valor no cae: los billetes en circulación en la zona del euro suman 1,62 billones de euros, el 14~\% de M1 y el 9~\% de M3, frente al 7~\% de M3 en 1999 \parencite{BCE2026BSI}. Es la paradoja del enganche: se paga menos con billetes, pero se guardan más, por precaución y porque con tipos bajos guardarlos costaba poco.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\autor{Fernández-Villaverde}, J. (2016), «Eliminemos el dinero (en metálico)» y «La maldición del metálico», \emph{Nada es Gratis}: \url{https://nadaesgratis.es/fernandez-villaverde/eliminemos-el-dinero-en-metalico} y \url{https://nadaesgratis.es/fernandez-villaverde/51817}.
+\end{anotaciones}
+
+\paragraph{Criptoactivos, \emph{stablecoins} y euro digital}
+
+\begin{itemize}
+\item \emph{Los criptoactivos} (bitcóin y similares) se registran en una cadena de bloques y no tienen un emisor que responda de ellos. No cumplen bien ninguna función del dinero: su precio es tan volátil que nadie fija precios en ellos, se aceptan poco para pagar y no conservan el valor. Su demanda es la de un activo especulativo, no la de dinero; y, como en \autor{Kiyotaki} y \autor{Wright} (\ref{sec:fiduciario}), un medio de pago nuevo solo circula si se confía en que los demás lo aceptarán.
+\item \emph{Las \emph{stablecoins}} prometen valer siempre una unidad de una moneda oficial, respaldadas por depósitos o deuda pública a corto plazo: son, en el fondo, depósitos de una entidad no bancaria. Para el Banco de Pagos Internacionales no cumplen las condiciones del buen dinero: que una unidad valga lo mismo la emita quien la emita, que su oferta se adapte a la demanda de pagos y que no sirva para eludir los controles \parencite{BIS2025Annual}. Desde el 30 de diciembre de 2024 los criptoactivos tienen en la UE un régimen común, el Reglamento MiCA, que ya se aplicaba desde junio de 2024 a las \emph{stablecoins} \parencite{UE2023MiCA}.
+\item \emph{El euro digital} sería dinero del banco central en forma digital para el público: un medio de pago con curso legal, sin intereses, con un límite de tenencia por persona y utilizable sin conexión. La Comisión propuso su reglamento en junio de 2023 \parencite{Comision2023EuroDigital}; el Consejo fijó su posición en diciembre de 2025 \parencite{Consejo2025EuroDigital} y el Parlamento Europeo, en julio de 2026 \parencite{PE2026EuroDigital}, y las negociaciones siguen abiertas. Si el reglamento se aprueba en 2026, el BCE prevé un piloto en 2027 y la primera emisión en 2029 \parencite{BCE2025EuroDigital} \vertema{3.A.36}.
+\item \emph{Para la demanda de dinero}: si el público cambiara depósitos por euros digitales, los bancos perderían financiación barata, y en una crisis la huida hacia el dinero del banco central sería más rápida: por eso el límite de tenencia y que no se remunere. A cambio, mantiene un ancla pública cuando el efectivo se usa cada vez menos.
+\item Recapitulando el bloque: la forma de la demanda de dinero decide la inflación óptima, el instrumento, cuánto se puede recaudar con la inflación y el margen de la política con tipos bajos; y la tecnología de pagos está cambiando qué es dinero, pero no por qué se acepta: la confianza en el emisor.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión, el dinero existe porque resuelve lo que un mercado sin dinero no resuelve, la doble coincidencia y el ahorro entre generaciones, y vale porque se confía en que los demás lo aceptarán. Su demanda es una demanda de saldos reales que crece con una variable de escala y baja con su coste de oportunidad: de la ecuación de \autor{Fisher} a la preferencia por la liquidez de \autor{Keynes}, la cartera de \autor{Friedman}, los inventarios de \autor{Baumol} y \autor{Tobin} y los modelos de equilibrio general. Los datos confirman los signos y unas elasticidades moderadas, pero no la estabilidad.
+\item \textbf{\emph{Relevancia}}: por esa inestabilidad, los bancos centrales fijan hoy un tipo de interés y no la cantidad de dinero; el rendimiento nulo del efectivo pone un suelo a los tipos; la sensibilidad de la demanda a la inflación limita el señoreaje y mide el coste de la inflación.
+\item \textbf{\emph{Extensiones}}: el diseño de la política monetaria y el euro digital \vertema{3.A.36}; su transmisión \vertema{3.A.37}; el señoreaje y la dominación fiscal \vertema{3.A.39}; la inflación, su coste y la hiperinflación \vertema{3.A.41}; el dinero en el equilibrio general \vertema{3.A.21}; la gestión de la tesorería \vertema{3.B.2} y la teoría de carteras \vertema{3.B.23}.
+\item \textbf{\emph{Opinión}}: la teoría ha pasado de preguntarse cuánto dinero se quiere a preguntarse por qué se acepta, y la digitalización hace que la segunda pregunta vuelva a ser práctica: el euro digital y las \emph{stablecoins} compiten por la misma confianza.
+\item \textbf{\emph{Idea final}}: don Dinero es poderoso, pero su poder es prestado: vale porque todos esperan que los demás lo acepten, y se guarda en la medida en que su servicio compensa lo que cuesta, el tipo de interés nominal. Por eso la primera tarea de la política monetaria es cuidar esa confianza, y por eso los bancos centrales preparan un euro digital: que el caballero siga siéndolo cuando ya no se pague con billetes.
+\end{itemize}
+
+\clearpage
+\appendix
+
+\section{Anexo: el modelo de \autor{Sidrauski}, paso a paso}\label{anexo:miu}
+
+\begin{itemize}
+\item \emph{Lagrangiana}, con $\lambda_t$ el precio sombra de la restricción de $t$:
+  $$\mathcal{L}=\sum_{t=0}^{\infty}\beta^t\Big\{u(C_t,m_t)+\lambda_t\Big[f(K_{t-1})+(1-\delta)K_{t-1}-T_t+\frac{m_{t-1}}{1+\pi_t}-C_t-K_t-m_t\Big]\Big\}.$$
+\item \emph{Condiciones de primer orden}:
+  \begin{align*}
+  C_t:&\quad u_C(C_t,m_t)=\lambda_t,\\
+  K_t:&\quad \lambda_t=\beta\,\lambda_{t+1}\,[f'(K_t)+1-\delta]\equiv\beta\,\lambda_{t+1}\,(1+r_t),\\
+  m_t:&\quad u_m(C_t,m_t)=\lambda_t-\beta\,\frac{\lambda_{t+1}}{1+\pi_{t+1}}.
+  \end{align*}
+\item \emph{La demanda de dinero}: de la segunda, $\beta\lambda_{t+1}=\lambda_t/(1+r_t)$; en la tercera,
+  $$u_m=\lambda_t\Big[1-\frac{1}{(1+r_t)(1+\pi_{t+1})}\Big]=\lambda_t\Big[1-\frac{1}{1+i_t}\Big]=\lambda_t\,\frac{i_t}{1+i_t},$$
+  y, dividiendo por la primera, \eqref{eq:miu}.\findemo
+\item \emph{Estado estacionario}: con $C$, $K$ y $m$ constantes, la segunda condición da $1=\beta\,(1+r)$, es decir, $f'(K^*)-\delta=\rho$. El Estado devuelve el señoreaje, $-T=m-m/(1+\pi)$, y la restricción da $C^*=f(K^*)-\delta K^*$; como $m$ es constante, $\pi=\gamma_M$. Ni $K^*$ ni $C^*$ dependen de $\gamma_M$: superneutralidad. La tercera condición da $m^*$ con $1+i=(1+\rho)(1+\gamma_M)$: los saldos reales bajan con el crecimiento del dinero.\findemo
+\item \emph{La regla de \autor{Friedman}}: la utilidad de estado estacionario, $u(C^*,m^*)$, solo depende de $\gamma_M$ a través de $m^*$, y es máxima cuando $u_m=0$, es decir, con $i=0$: $1+\gamma_M=1+\pi=1/(1+\rho)=\beta$. La cantidad de dinero debe decrecer a la tasa a la que se descuenta el futuro.\findemo
+\end{itemize}
+
+\section{Anexo: el origen del dinero}\label{anexo:origen}
+
+\begin{itemize}
+\item \emph{La explicación de \autor{Menger}}: en el trueque, cada uno busca a quien tenga lo que quiere y quiera lo que tiene. Los bienes se diferencian por lo fácil que es venderlos (su liquidez, en términos de hoy). Quien acepta a cambio un bien más vendible que el suyo, aunque no lo quiera consumir, se acerca a lo que busca; a medida que otros lo imitan, ese bien se vuelve aún más vendible, hasta que todos lo aceptan. Los metales preciosos ganaron porque son duraderos, divisibles y de valor alto por unidad de peso. El Estado llegó después: acuña y da curso legal a lo que el mercado ya usaba \parencite{Menger1892Origin}.
+\item \emph{La historia}: el dinero aparece con las primeras ciudades de Mesopotamia, hacia el año 3000~a.~C. La especialización en oficios y la población que no producía alimentos exigían intercambiar dentro de la ciudad, y el intercambio usó productos con valores estandarizados, como la cebada o la plata; la escritura y la contabilidad de los templos y de los palacios registraban las deudas en esas unidades \parencite{Comin2014Historia}. El dinero nace, pues, como medio de cambio y también como deuda anotada, mucho antes que la moneda acuñada.
+\item \emph{Para esta exposición}: las 2 historias encajan con los modelos del apartado~\ref{sec:fiduciario}. Para \autor{Menger} y para \autor{Kiyotaki} y \autor{Wright}, el dinero surge del intercambio y descansa en lo que se espera que acepten los demás; la contabilidad de las deudas anticipa la idea de que el dinero es una deuda del emisor.
+\end{itemize}
+
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+\begin{itemize}
+\item Las preguntas de exámenes anteriores sobre este tema están en el \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test} \parencite{GutierrezMarcos2026Simulador}.
+\item En el primer ejercicio han caído 7 (2 en 2002 y una en 2007, 2009, 2016, 2019 y 2023) \parencite{GutierrezMarcos2026Simulador}: el rendimiento real del dinero fiduciario, que es $1/(1+\pi_t)$ en términos brutos y $-\pi_t/(1+\pi_t)$ en netos; los argumentos de la demanda de \autor{Friedman}; la reacción de la demanda de \autor{Baumol}-\autor{Tobin} a una subida del tipo; los modelos de pago por adelantado, y el modelo de \autor{Cagan} con expectativas racionales.
+\end{itemize}
+
+\bibliografia
+\end{document}

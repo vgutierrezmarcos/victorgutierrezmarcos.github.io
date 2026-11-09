@@ -33,6 +33,7 @@ Gráfico de referencia: plano $(x_1,x_2)$, cesta $x^0$ en $\overline U^0$, recta
 | 3.A.8 | Preferencia revelada | mención | Las comparaciones con Laspeyres y Paasche se basan en el ADPR [3.A.9] | — |
 | 1D01 | Dictamen de coyuntura | Mención | IPC Laspeyres encadenado y deflactor Paasche encadenado, con $\vect{p}^t\cdot\vect{x}^0$ (no $q_i$) | La teoría |
 | 3.A.3 | Los neoclásicos | mención (hecho, 4/11/2026) | III.2 c): el índice ideal de Fisher (1922), la media geométrica de los de Laspeyres y Paasche ($I_F$), de palabra, `\vertema{3.A.9}` | La teoría de los índices |
+| 3.A.41 | Inflación: medición y objetivo | mención (hecho, 5/11/2026) | Introducción: IPC, IAPC, deflactor del PIB y subyacente; II.2.2: el sesgo de medición del IPC (Boskin, 1996: 1,1 puntos al año, 0,6 de calidad) como razón del 2 %; `\vertema{3.A.9}` | La construcción de los índices |
 
 ## Divergencias encontradas en el temario actual
 - **Esta ficha** decía «$p^1\cdot x^0-\overline W\ge VC$» (signo cambiado con la convención de `vc-ve`) y presentaba Laspeyres y Paasche como cotas del mismo índice; corregida el 13/10/2026 a raíz del 3.A.9 (ver `cambios.md`).

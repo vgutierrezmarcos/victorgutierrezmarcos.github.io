@@ -1,0 +1,123 @@
+% Inflación general y subyacente (IAPC sin energía ni alimentos), tasa
+% interanual en %, zona del euro y España, enero de 1999-octubre de 2026
+% (octubre: avance). Pequeños múltiplos apilados con la misma escala vertical.
+% Datos: ../datos/iapc-general-subyacente-zona-euro-espana-1999-2026.csv
+% (Eurostat prc_hicp_minr; la subyacente anterior a 2001-2002, BCE ICP;
+% consulta 05/11/2026). Eje x: n.º de mes desde enero de 1999 (fila del CSV):
+% 1999-01 = 0, 2026-10 = 333.
+% Cifras de control: zona del euro, general 10,6 (10/2022), subyacente 5,7
+% (3/2023), 4,0 y 2,5 (10/2026); España, general 10,7 (7/2022), subyacente
+% 5,1 (1/2023), 4,9 y 3,5 (10/2026; la subyacente es la de Eurostat, no la
+% del INE, 3,1).
+% Paleta: zona del euro dicze, España dicespana (como en el 3.A.35 y el
+% 3.A.39); general continua, subyacente discontinua.
+% Capas (CRITERIOS §7): bandas → ejes, 0 y 2 % → general → subyacente →
+% puntos → etiquetas y leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/iapc-general-subyacente-zona-euro-espana-1999-2026.csv}\iapc
+\pgfplotsset{
+  panel/.style={width=14cm,height=5.6cm,xmin=-3,xmax=336,ymin=-2,ymax=12,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={0,36,...,324},xticklabels={1999,2002,2005,2008,2011,2014,2017,2020,2023,2026},
+    ytick={-2,0,...,12},
+    ticklabel style={font=\footnotesize},
+    ylabel={\%},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    title style={font=\small,anchor=south west,at={(0,1)},yshift=-2pt},
+    dicapas},
+}
+\begin{tikzpicture}[tcee]
+% ---------------------------------------------------------------- a) zona del euro
+\begin{axis}[panel,name=ze,title={\textcolor{dicze}{a) Zona del euro}}]
+  % 1: bandas: tasas negativas (6-10/2009, 12/2014-5/2016 y 8-12/2020) y el
+  % repunte (2021-2023)
+  \capa{1}{
+    \dicsombra[fill=dicotromasclaro,opacity=0.6]{124.5}{-2}{129.5}{12}
+    \dicsombra[fill=dicotromasclaro,opacity=0.6]{190.5}{-2}{208.5}{12}
+    \dicsombra[fill=dicotromasclaro,opacity=0.6]{258.5}{-2}{263.5}{12}
+    \dicsombra[fill=dicotromasclaro]{269.5}{-2}{293.5}{12}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north,align=center]{(127,11.9)}{tasas\\negativas}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north,align=center]{(199.5,11.9)}{tasas\\negativas}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north,align=center]{(261,11.9)}{tasas\\negativas}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=south]{(281.5,-1.9)}{repunte}
+  }
+  % 2: cero y objetivo del 2 %
+  \capa{2}{
+    \dicraya{(-3,0) (336,0)}
+    \dicraya[dicumbral,thick]{(-3,2) (336,2)}
+  }
+  % 3: IAPC general
+  \capa{3}{
+    \addplot[diclinea=dicze,forget plot] table[x expr=\coordindex,y=ea_general] {\iapc};
+  }
+  % 4: subyacente (sin energía ni alimentos)
+  \capa{4}{
+    \addplot[diclinea=dicze,thick,dashed,forget plot] table[x expr=\coordindex,y=ea_subyacente] {\iapc};
+  }
+  % 5: máximos y último dato
+  \capa{5}{
+    \addplot[on layer=dicpuntos,dicpuntos=dicze,forget plot] coordinates {(285,10.6) (290,5.7) (333,4.0) (333,2.5)};
+  }
+  % 6: etiquetas
+  \capa{6}{
+    \dicrotulo[font=\footnotesize,text=dicze,anchor=west]{(289,10.6)}{10,6~\% (oct.\ 2022)}
+    \dicrotulo[font=\footnotesize,text=dicze,anchor=south west]{(294,6.0)}{5,7~\% (mar.\ 2023)}
+    \dicrotulo[font=\footnotesize,text=dicze,anchor=west]{(336,4.1)}{4,0~\%}
+    \dicrotulo[font=\footnotesize,text=dicze,anchor=west]{(336,2.4)}{2,5~\%}
+  }
+\end{axis}
+% ---------------------------------------------------------------- b) España
+\begin{axis}[panel,at={(ze.below south west)},anchor=above north west,yshift=-0.9cm,
+    title={\textcolor{dicespana}{b) España}},
+    legend style={at={(0.5,-0.2)},anchor=north,legend columns=3,draw=none,
+      font=\footnotesize,/tikz/every even column/.append style={column sep=10pt}},
+    legend cell align=left]
+  % 1: bandas: tasas negativas de España (3-10/2009, 3/2014, 7/2014-8/2016 y
+  % 4/2020-2/2021, esta unida porque solo la separa 1/2021) y el repunte
+  \capa{1}{
+    \dicsombra[fill=dicotromasclaro,opacity=0.6]{121.5}{-2}{129.5}{12}
+    \dicsombra[fill=dicotromasclaro,opacity=0.6]{181.5}{-2}{182.5}{12}
+    \dicsombra[fill=dicotromasclaro,opacity=0.6]{185.5}{-2}{211.5}{12}
+    \dicsombra[fill=dicotromasclaro,opacity=0.6]{253.5}{-2}{265.5}{12}
+    \dicsombra[fill=dicotromasclaro]{269.5}{-2}{293.5}{12}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north,align=center]{(125.5,11.9)}{tasas\\negativas}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north,align=center]{(198.5,11.9)}{tasas\\negativas}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north,align=center]{(259.5,11.9)}{tasas\\negativas}
+  }
+  % 2: cero y objetivo del 2 %
+  \capa{2}{
+    \dicraya{(-3,0) (336,0)}
+    \dicraya[dicumbral,thick]{(-3,2) (336,2)}
+  }
+  % 3: IAPC general
+  \capa{3}{
+    \addplot[diclinea=dicespana,forget plot] table[x expr=\coordindex,y=es_general] {\iapc};
+  }
+  % 4: subyacente (sin energía ni alimentos; la de Eurostat)
+  \capa{4}{
+    \addplot[diclinea=dicespana,thick,dashed,forget plot] table[x expr=\coordindex,y=es_subyacente] {\iapc};
+  }
+  % 5: máximos y último dato
+  \capa{5}{
+    \addplot[on layer=dicpuntos,dicpuntos=dicespana,forget plot] coordinates {(282,10.7) (288,5.1) (333,4.9) (333,3.5)};
+  }
+  % 6: etiquetas y leyenda (común a los 2 paneles)
+  \capa{6}{
+    \dicrotulo[font=\footnotesize,text=dicespana,anchor=west]{(286,10.7)}{10,7~\% (jul.\ 2022)}
+    \dicrotulo[font=\footnotesize,text=dicespana,anchor=south west]{(294,6.2)}{5,1~\% (ene.\ 2023)}
+    \dicrotulo[font=\footnotesize,text=dicespana,anchor=west]{(336,5.0)}{4,9~\%}
+    \dicrotulo[font=\footnotesize,text=dicespana,anchor=west]{(336,3.4)}{3,5~\%}
+    \addlegendimage{very thick,dicinflacion}
+    \addlegendentry{IAPC general}
+    \addlegendimage{thick,dashed,dicinflacion}
+    \addlegendentry{Sin energía ni alimentos («subyacente»)}
+    \addlegendimage{dicumbral,thick}
+    \addlegendentry{Objetivo del BCE (2~\%)}
+  }
+\end{axis}
+\end{tikzpicture}
+\end{document}

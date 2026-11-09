@@ -1,0 +1,165 @@
+# Revisión del 3.A.38 — La política fiscal: efectos sobre el crecimiento económico y el ahorro
+
+Revisión autónoma (5/11/2026). Fase de integración en 2 partes: la **parte 1** escribió la introducción, el esquema y el apartado I; la **parte 2**, II, III, la conclusión y los 7 anexos. Las dudas que se han resuelto con la opción recomendada van numeradas A38-NN.
+
+## Resumen
+
+- El Word tenía 2 apartados y dedicaba el 70 % al corto plazo, con el modelo neokeynesiano copiado del 3.A.7 en amarillo; el tema pasa a **3 apartados** (I corto plazo, II ahorro, III crecimiento), con el corto plazo en 9′30″ y 17′ para lo que pide el título (A38-01).
+- Introducción nueva: enganche con «La cigarra y la hormiga» (Samaniego, 1781) y los datos fiscales y de ahorro de 2025; definición de política fiscal en paralelo con la monetaria, Musgrave (1959), y el hilo «nivel frente a tasa».
+- I.1 (IS-LM) en resumen con el multiplicador bien escrito (suma, no producto) y el gráfico de las escuelas del 3.A.39; I.2 (ciclo real con gasto) desarrollado sobre el bloque `eq:rbc-*` del 3.A.42, con una simulación propia que sustituye a la figura de un preparador; I.3 (neokeynesiano) en resumen con el gasto en la IS dinámica y el multiplicador según el banco central.
+- II (ahorro): el modelo de Ramsey-Cass-Koopmans con gasto e impuestos en resumen (gráficos del 3.A.43), el ahorro nacional con la equivalencia ricardiana y los datos de 2025, Chamley-Judd desarrollado (`eq:euler-tauk`, Straub-Werning, Conesa-Kitao-Krueger) y las pensiones en el modelo de Diamond con producción y capital (`eq:ahorro-reparto`, `eq:diamond-reparto`, Aaron, Shell, Feldstein y Leimer-Lesnoy, Samwick, afiliación automática británica, Bismarck corregido).
+- III (crecimiento): Barro (1990) con optimización, como el 3.A.44, y la estructura impositiva (Rebelo, jerarquía de la OCDE, Aschauer, Bom-Ligthart, Kneller-Bleaney-Gemmell, inversión pública española, Reinhart-Rogoff y Herndon-Ash-Pollin). Conclusión con los 5 bloques y la idea final de la cigarra; 7 anexos (IS-LM y Mundell-Fleming, ciclo real paso a paso, suavización, multiplicadores, pensiones paso a paso, Barro con ahorro constante y test).
+
+## Errores corregidos
+
+| Dónde | Decía | Dice ahora |
+|---|---|---|
+| Contextualización (l. 59) | «Musgrave (1939)» | Musgrave (1959), *The Theory of Public Finance* (V16) |
+| I.1 (l. 213) | «lo que Hahn denominó efecto multiplicador» | Kahn (1931) (V17, P50) |
+| I.1 (l. 219 y 259) | multiplicador $1/[(1-c(1-t))(1+vk/h)]$ (producto) | $1/[1-c(1-t)+bk/h]$ (`eq:multiplicador-fiscal`, la del 3.A.5): la expulsión se suma (P49) |
+| I.1 (l. 221 y 261) | «para Keynes $k$ es muy reducida», «para los monetaristas, muy elevada» | El debate es sobre $b$ y $h$, no sobre $k$: quitado |
+| I.1 | $v$ para la sensibilidad de la inversión; $C_0$, $I_0$, $G_0$ | $b$ (canon) y $\overline C$, $\overline I$, $\overline G$ |
+| I.2 (l. 361, 367, nota 7) | «Sims (2015)» en el título y el texto; «Sims (2017)» en la bibliografía | Título sin autor (K3); en el texto, «seguimos la presentación de Sims (2017)», la versión que sigue en línea (V20, P54) |
+| I.2 (l. 389, 431) | AR(1) $\tilde A_t=\rho_A A_{t-1}+\varepsilon^A_t$, $\rho_A\in(-1,1)$ | `eq:rbc-tecnologia` del 3.A.42 y `eq:rbc-gasto` con $0\le\rho_G<1$ |
+| I.2 (l. 421-506) | $\tau_t$ como pago de suma fija; «ninguna condición depende de $\tau_t$»; $W_t$, $R_t$, ζ, $(1/(1+\rho))^t$, «E» | $T_t$ (recaudación de suma fija), $\tau_{L,t}$ y $\tau_{K,t}$ tipos; $w_t$, $r_t+\delta$, χ, β, 𝔼 (canon) |
+| I.2 (l. 427, 480) | $G_t+r_{t-1}D_t\le T_t+D_{t+1}-D_t$ (deuda al principio del periodo) | `eq:rbc-gobierno`: $G_t+r^D_{t-1}D_{t-1}=T_t+\tau_{L,t}w_tL_t+\tau_{K,t}r_tK_t+(D_t-D_{t-1})$, $D_t$ al final de $t$ (D028) |
+| I.2, ER (l. 526) | Ricardo «inmediatamente la descartó por ser irrelevante» | «dudó de que la gente razonara así» (3.A.39) |
+| I.2 (l. 606-616) | El ajuste tras un gasto transitorio («el consumo aumentará, el output caerá…») sin el impacto: parecía contradecir el párrafo anterior | Impacto y vuelta separados (K8.3) |
+| I.2 (l. 618) | «Siguiendo a Campbell (1994), el output aumentaría en 1/10 del aumento del gasto» | Quitado: no se ha podido comprobar (V25). Cifras de la simulación propia: 0,03 transitorio, 0,32 con $\rho_G=0{,}95$, $-0{,}68$ con impuesto sobre el trabajo (A38-04) |
+| I.2, Baxter y King (l. 695-700, nota 17) | $G_t$ como stock de capital público y η como su elasticidad; «no establecen este supuesto de forma explícita» | $K^G_t$ y $\alpha_G$ (locales; $G_t$ es el gasto, un flujo, en todo el tema); la frase sin comprobar, fuera; aviso de que en Barro el gasto es un flujo (K8.4) |
+| I.3 (l. 1040, i.) | «cuanto mayor sea la rigidez de precios, mayor prociclicidad del margen» | Con precios rígidos el margen es **contracíclico** (3.A.7) (K8.1) |
+| I.3 (bloque copiado del 3.A.7) | «Galí, Clarida y Gertler (1999)» como formulación de la NKPC; «menos empresas pueden ajustar los empresas»; η para Calvo y en $r^n_t$; nota 22 «$\phi_\pi=\phi_\pi=0{,}5$»; regla sin coeficiente de la brecha; «[Tema 3.A.41]»; «Blanchard y Galí (2005)» | Desaparecen con el resumen (las 3 ecuaciones con la notación del 3.A.7) |
+| I.3 (l. 1101) | Hall: «entre 0,5 y 1… 1,7 cerca de cero» | Hall (2009): 0,7-1 en tiempos normales y ≈1,7 con el tipo en cero (V33) |
+| I.3 (l. 1151) | Romer y Romer (2010) «efectos aún peores», sin cifra | Una subida de impuestos del 1 % del PIB reduce la producción casi un 3 % (V40) |
+| I.3 (l. 1113, nota 28) | Alesina citado con un artículo de *The Economist* | Alesina, Favero y Giavazzi (2019) (V36) |
+| Anexo D (l. 1073) | Multiplicador acumulado como suma de cocientes, $\sum_j\Delta Y_{t+j}/\Delta G_t$ | Cociente de las sumas, $m^{\mathrm{acum}}_{t,k}=\sum_j\Delta Y_{t+j}/\sum_j\Delta G_{t+j}$ (ficha `multiplicadores-fiscales`) |
+| Anexo D (l. 1103) | «Christiano… multiplicador de impacto entre 1,2 y 1,3» | Christiano, Eichenbaum y Rebelo (2011): menor que 1 con regla de Taylor; con el tipo en cero, 1,6 en el impacto y 2,3 de máximo si el gasto dura 12 trimestres (V34) |
+| Anexo D (l. 1121) | «Galí y Monacelli (2005)» | Galí y Monacelli (2008), *JIE* (V37) |
+| Anexo D (l. 1141) | «Blanchard y Portugal sostienen que el gobierno puede elevar el multiplicador» | La idea, con FMI (2014), *WEO* de octubre, cap. 3 (V38) |
+| Anexo E (NEK, l. 1015) | «Divina coincidencia (Blanchard y Galí, 2005)» | 2007 (V31), en las trampas del test |
+| II.2 (l. 1197) | Los jóvenes «ofertan su trabajo de forma perfectamente elástica» | Una unidad de trabajo, de forma inelástica |
+| II.2 (l. 1191-1420) | $w^J_t$, $s_t$; $C^V_t=\beta(1+r_{t+1})C^J_t$; nota 31 sin $w$ | $w_t$, $S_t$, $C^J_t$, $C^V_{t+1}$ (3.A.29); la Euler con $C^V_{t+1}$; la forma simplificada con $w_t$ en el anexo E |
+| II.2 (l. 1397-1407, 1429-1435) | Condición de ineficiencia $r^*<n$; «Acemoğlu demuestra… criterio Malinvaud-Cass… finitud de la suma de todos los precios» | $n+g>r$ (Aaron, `eq:aaron`) y $r^*<(1+n)(1+g)-1\simeq n+g$; la doble infinitud de Shell (1971) y el 1TFEB con las palabras del 3.A.29; Malinvaud (1953) y Cass (1972) en nota (P57) |
+| II.2 (l. 1439-1445, nota 33) | Ineficiencia por «externalidades pecuniarias» | Fuera: con mercados completos las externalidades pecuniarias no causan ineficiencia; queda la explicación del 3.A.29 (no se puede prestar a quien no ha nacido) |
+| II.2, nota 29 | Bismarck «no consiguió su función y tuvo que dimitir en 1890» | Ley de 1889, en vigor en 1891, pensión a los 70 años; salida en 1890 por el choque con Guillermo II, sin relación causal (V41, P58) |
+| II.2 (capturas) | Auerbach y Kotlikoff (1987): 24 %; Conesa y Garriga (2000): 40 % en España | Fuera las cifras, no comprobadas (V44); Auerbach y Kotlikoff se citan sin cifra |
+| III.1 (l. 1485-1572) | Barro con ahorro exógeno y $g=G/L$ | Versión con optimización del 3.A.44 (`eq:barro`, `eq:barro-tau`, planificador, suma fija); la de ahorro constante en el anexo F, sin llamar $g$ al gasto por trabajador (P42, D050) |
+| III.1, imagen 12 | «Sala i Martín (1999)» | Sala-i-Martín (2000), 2.ª ed. (V46); gráfico `barro` del 3.A.44 |
+| III.2 (l. 1610) | «Judd, Chamley, Jones y Stoky y Rebelo» | Chamley-Judd (II.1) y Rebelo (`eq:rebelo`); Jones-Manuelli-Rossi y Stokey-Rebelo no se citan (no comprobados; A38-18) |
+| Conclusión (l. 1658) | «a día 24/05/2022…» (amarilla) | Tipos del BCE de 2026 (V8) |
+
+## Marcas resueltas
+
+| Marca | Qué decía | Qué se hizo |
+|---|---|---|
+| P1 (comentario, l. 577) | «ver mis apuntes a mano y ver tema 3.A.37 (numeración antigua) de Zapico» | Nota privada: no se publica. La racionalidad limitada se remite al 3.A.1 y al 3.A.33; la λ de Campbell y Mankiw va en I.3 |
+| P2 (amarilla, l. 584) | «Hilar con la imposición óptima de Ramsey» | Hecho en I.2 c): la suavización impositiva es la lógica de Ramsey aplicada al tiempo, con `\vertema{4.B.11}` |
+| P3, P4 (82 tramos amarillos, imagen 9) | Modelo canónico de la NEK copiado del 3.A.7 | Sustituido por el resumen de I.3 con la notación del 3.A.7, el gasto en la IS (`eq:is-gasto`) y `nek-xpi` copiado |
+| P5 (amarilla, l. 1095) | Trabajo inelástico: solo efecto riqueza, *crowding-out* completo | Verificado e integrado en negro en I.2 iii), precisado: con gasto transitorio cae sobre todo la inversión; con gasto permanente, todo es consumo (enlace con II.1) |
+| P7, P8, P9 | Notas del cambio de temario, ficha del tribunal, «el tema de ICEX-CECO está bien» | No se publican; la ficha del tribunal sirvió para la estructura |
+| P10 | «Ver la carpeta del tema… lo desarrollé por escrito» | No se ha podido consultar la carpeta física; las fotos de los folios (image10, image14-16) se han tenido en cuenta (P13, P17) y no se publican |
+| P11 (comentario, l. 67) | «dar una definición de política fiscal similar a la de política monetaria» | Hecho en la contextualización (K10), con instrumentos, discrecional frente a automática y estabilizadores automáticos |
+| P12 (nota al opositor) | «Cantar este apartado brevemente» (IS-LM) | Reflejado en los minutos (I.1, 1′30″) y en la nota del reparto |
+| P13 (foto de pizarra) | RBC con impuestos distorsionantes τ^c, τ^w, τ^k | No se publica; los impuestos distorsionantes entran en I.2 ($\tau_L$, $\tau_K$ en `eq:rbc-hogar`, simulación con impuesto sobre el trabajo, McGrattan, 1994) |
+| P14, P15 | «Coordinar impuestos en 3.A.6, 3.A.38 y 3.A.39»; «la ER es más del 3.A.39» | La ER va en resumen (3 viñetas) con `\vertema{3.A.39}` y las mismas palabras (A38-09) |
+| P16 (comentarios, l. 636-641) | Clase de un preparador sobre el exceso de gravamen y su gráfico | Sin el nombre ni la grabación; la idea va en una nota al pie de I.2 c) con un gráfico propio pequeño (`exceso-gravamen`) |
+| P17 (notas y comentarios, l. 789-811) | «no veo claro cómo serían los efectos en las 3 ecuaciones»; folio con la IS de Galí (2008, cap. 3) | Resuelto en I.3: el gasto entra en el tipo natural; multiplicador θ/(θ+φ) con precios flexibles, 1 con tipo real constante, menor que 1 con Taylor y mayor que 1 en el límite inferior. Fotos, no |
+| P21 | Bibliografía con materiales de preparadores | La bibliografía es la del `.bib`: solo obras |
+| P30 (imagen 8) | Figura de Salazar (2022), tema de un preparador | Sustituida por la simulación propia `irf-rbc-gasto` (script y CSV en `graficos/` y `datos/`) |
+| P62 | Notas privadas, nombres de preparadores | Ninguna se publica |
+| P6 (amarilla, idea final) | «a día 24/05/2022 el énfasis está en… retomar la política monetaria contractiva» | Reescrita en la relevancia de la conclusión con los tipos del BCE de 2025-2026; la idea final vuelve a la fábula del enganche |
+| P18 (comentarios, l. 1161-1166) | Nota de Heijdra sobre pensiones; «lo de Juan Luis está sacado de ICEX-CECO, que incluye la producción» | Privadas: no se publican. Lo que piden (Diamond con producción y capital) está en II.2 y el anexo E |
+| P19 (comentario) | «Coordinar en tema 3.A.38 y tema 3.A.44» | Hecho: Barro con las mismas palabras y etiquetas que el 3.A.44 (`eq:barro`, `eq:barro-tau`, `fig:barro`) |
+| P20 (comentario) | Meter en la conclusión el *policy mix* y la financiación del déficit | En las extensiones de la conclusión, con \vertema{3.A.36} y \vertema{3.A.39} |
+| P22 | «Preguntas de otros exámenes» vacío, enlace a quia.com, «Anexo 1» vacío | Anexo G de test con el enlace al simulador; quia fuera |
+| P31-P36 | Imagen 9, imagen 10 (ResearchGate), imagen 11 (UC3M), capturas de diapositivas, imagen 12, tabla de 8 condiciones | `nek-xpi`; `olg-generaciones` (nuevo); la imagen 11 se sustituye por la frase de la capitalización neutral; capturas redactadas en `eq:ahorro-reparto`, `eq:diamond-reparto` y `diamond-pensiones` (nuevo); `barro` copiado; `tab:equilibrio-rbc-fiscal` en el anexo B |
+| P57-P60 | Malinvaud-Cass, Bismarck, racionalidad limitada, notas en inglés | Ver «Errores corregidos»; el empujón británico, comprobado en legislation.gov.uk (afiliación automática de la Pensions Act 2008, desde octubre de 2012 por tamaño de empresa); nota 38 fuera (A38-07) |
+
+## Datos actualizados
+
+| Dato | Anterior | Nuevo | Fuente | URL | Consulta | Segunda comprobación |
+|---|---|---|---|---|---|---|
+| Enganche | Inflación de 2022 (8,4 %) y BdE, Informe Anual 2022 | Déficit 2,4 % y deuda 100,5 % del PIB en 2025 | Eurostat, PDE oct. 2026 (`Eurostat2026EDP`) | https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table | 5/11/2026 | IGAE: 2,39 %; notificación de abril: 100,7 % (revisión del PIB) (V2, V3) |
+| Enganche | — | Ahorro nacional bruto 25,0 % del PIB en 2025, el más alto de la serie (desde 1995); AA. PP. +0,3 %, por primera vez desde 2008 | Eurostat, nasa_10_nf_tr y nama_10_gdp | https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table | 5/11/2026 | INE, tabla 80333 (igual); AMECO (V4) |
+| Relevancia | — | Gasto de las AA. PP. 45,3 % del PIB (España) y 49,8 % (zona del euro) en 2025 | Eurostat, gov_10a_main (las cifras del 3.A.39) | https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table | 5/11/2026 | 3.A.39 |
+| Relevancia | — | Gasto público en pensiones: 13,1 % del PIB en 2022, máximo 17,3 % hacia 2050 | Ageing Report 2024 (`CE2024AgeingReport`) | https://economy-finance.ec.europa.eu/document/download/403cc04f-9487-406b-a48a-22538e0d461c_en?filename=2024_Ageing_Report-Statistical_annex_all_horizontal_tables.xlsx | 5/11/2026 | Texto del informe (V12) |
+| Relevancia | — | Reglamento (UE) 2024/1263 (senda de gasto neto) | EUR-Lex (`RegUE2024Preventivo`) | https://eur-lex.europa.eu/eli/reg/2024/1263/oj | 5/11/2026 | Hacienda (V5) |
+| I.2 c) | — | Tipo implícito sobre el trabajo 2024: 36,2 % (España), 37,1 % (UE) | Comisión, Data on Taxation Trends (`CE2026DataTaxation`) | https://taxation-customs.ec.europa.eu/taxation/economic-analysis/data-taxation-trends_en | 5/11/2026 | Base TAX_ITR (V14) |
+| II.1 | — | Tasa de ahorro de los hogares 2025: 11,9 % (España), 14,8 % (zona del euro, 21 países) | Eurostat, nasa_10_ki | https://ec.europa.eu/eurostat/databrowser/view/nasa_10_ki/default/table | 5/11/2026 | INE CTNFSI (12,0 %, antes de la revisión de septiembre); AMECO (V9) |
+| II.1 | — | Ahorro nacional por sectores 1995-2025 (gráfico) | Eurostat, nasa_10_nf_tr y nama_10_gdp | ídem | 5/11/2026 | Suma de sectores = total; INE 80333 (V10) |
+| II.1 d) | — | Tipo implícito sobre el capital 2024: 29,5 % (España), 32,5 % (UE) | Comisión, TAX_ITR_CAPITAL (`CE2026ITRCapital`) | https://taxation-customs.ec.europa.eu/taxation/economic-analysis/data-taxation-trends_en | 5/11/2026 | Una sola fuente (nueva metodología) (V14) |
+| II.2 d) | — | Dependencia 65+/20-64: 33,3 % (2022) → 64,5 % (2054); pensiones 13,1 → 17,3 (2050) → 16,7 % (2070); UE 11,4 → 12,2 (2036) → 11,8 % | Ageing Report 2024 y su anexo | https://economy-finance.ec.europa.eu/document/download/403cc04f-9487-406b-a48a-22538e0d461c_en?filename=2024_Ageing_Report-Statistical_annex_all_horizontal_tables.xlsx | 5/11/2026 | Texto del informe; Eurostat demo_pjanind con otro denominador (V12, V13) |
+| III.2 | — | Inversión pública: 5,2 % del PIB (2009) → 2,0 % (2016-2017) → 3,0 % (2025); UE 3,9 % | Eurostat, gov_10a_main | https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table | 5/11/2026 | AMECO UIGG0 (V15) |
+| Conclusión | «24/05/2022», subida de tipos | Facilidad de depósito: 2 % desde el 11/6/2025, 2,25 % desde el 17/6/2026 y 2,50 % desde el 16/9/2026 | BCE, Data Portal (`BCE2026TiposOficiales`) | https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV | 5/11/2026 | Banco de España (V8) |
+
+## Contenido añadido
+
+- **Introducción**: enganche nuevo (K15, V2-V4), relevancia con datos de 2025 y las reglas fiscales de 2024 (C5), definición de política fiscal con instrumentos, discrecional frente a automática y Musgrave (K10, C6), 2 caminos de la literatura (corto y largo plazo), problemática y estructura con el hilo «nivel frente a tasa» (K4). Recuadro de notación (C3) y nota del reparto con el plan de la pizarra.
+- **I.2**: el Estado con $\tau_{L,t}$, $\tau_{K,t}$ y deuda (`eq:rbc-gasto`, `eq:rbc-gobierno`), el hogar con `\optim`, el bloque `eq:rbc-*` del 3.A.42 con las cuñas fiscales y `eq:rbc-acumulacion` con $-G_t$ como función clave (K11, C11); la simulación propia con 3 casos (tabla `tab:gasto-rbc`, gráfico `irf-rbc-gasto`; C13); el multiplicador de largo plazo de un gasto permanente (0,75, derivación en nota); impuestos distorsionantes (P41, C14); suavización en una viñeta con la nota del exceso de gravamen (C14); evidencia (consumo en los VAR; Blanchard y Perotti, 2002; Galí, López-Salido y Vallés, 2007) y valoración, vacía en el Word (C18, P43).
+- **I.3**: IS dinámica con gasto (`eq:is-gasto`), las 3 vías con las palabras del 3.A.7, el multiplicador según la política monetaria (Woodford, 2011; Christiano, Eichenbaum y Rebelo, 2011), hogares que viven al día (Campbell y Mankiw, 1989; Galí, López-Salido y Vallés, 2007), la evidencia del multiplicador en 4 viñetas (Ramey, 2019; Hall, 2009; Blanchard y Leigh, 2013; Romer y Romer, 2010; Blanchard y Perotti, 2002; efectos no keynesianos) y valoración con la recapitulación del bloque (C20, C21, K12).
+- **II.1** (nuevo, P39; ficha del tribunal II.I): RCK con gasto permanente y temporal y con $\tau_K$ (`rck-gasto`, `rck-impuesto` copiados del 3.A.43), ahorro nacional con la equivalencia ricardiana y el gráfico nuevo `ahorro-nacional-espana`, Chamley-Judd con la intuición de Atkeson, Chari y Kehoe (1999), la inconsistencia temporal, Straub y Werning (2020), Aiyagari (1995) y Conesa, Kitao y Krueger (2009) (C23, K18).
+- **II.2**: Diamond con producción (P40), capitalización neutral, `eq:ahorro-reparto` y `eq:diamond-reparto` (derivación propia comprobada en el anexo E), Aaron, Shell, la transición, la deuda en OLG; extensiones (jubilación endógena, muchas generaciones, empujón con Thaler-Sunstein, la afiliación automática británica y Chetty et al., 2014), evidencia (Feldstein y Leimer-Lesnoy, Samwick, Abel et al., envejecimiento) y valoración, vacías en el Word (C30-C34, K19).
+- **III.1**: Barro con optimización y extensiones (congestión, capital acumulable); **III.2**: Rebelo (`eq:rebelo`), OCDE, Aschauer y Bom-Ligthart, Kneller-Bleaney-Gemmell con las palabras del 3.A.45, inversión pública española, Reinhart-Rogoff y Herndon-Ash-Pollin con las del 3.A.39 (C24, C26, K21).
+- **Conclusión** con relevancia, extensiones y opinión, vacías en el Word (P43), y la caja con Blanchard (2023, PIIE), la nota 39 del Word.
+- **Anexos**: A (IS-LM, Haavelmo, Mundell-Fleming con $\beta_K$ y la tabla con color), B (ciclo real paso a paso con el lagrangiano y `tab:equilibrio-rbc-fiscal`), C (suavización con $T_t/Y_t$ y μ), D (multiplicadores: definiciones, 11 determinantes y evidencia), E (pensiones paso a paso), F (Barro: el máximo y la versión con ahorro constante) y G (test).
+
+**Propuestas, aplicadas y no**:
+
+- **Contenido (C1-C42)**: aplicadas todas salvo: C1 (orden crecimiento → ahorro: manda la coherencia, A38-01); C4 (refrán «pan para hoy…»: la fábula, A38-02); C9 (etiqueta `eq:multiplicador-islm`: se usa `eq:multiplicador-fiscal` del 3.A.5); C13 (nombre `irf-gasto-rbc`: `irf-rbc-gasto`); C16 (η: $K^G_t$ y $\alpha_G$, A38-08); C22-C29 (apartados II.3, III.1 y III.2 propios del contenido): su texto se aprovecha dentro de II.1, II.2 y III.2 de la coherencia; C33 (cifra de Auerbach y Kotlikoff: fuera, V44); C35 (idea final con «pan para hoy»: con la fábula); C41 (unificar la clave de Baxter y King en el 3.A.44: anotado, no se toca otro tema).
+- **Datos (V1-V49)**: aplicadas todas; sin cifra las no comprobadas (V24, V25, V32, V44) y «Blanchard y Portugal» sustituido por el FMI (V38); V6-V7 (inflación de 2022 y BCE de 1998) sobran con el enganche nuevo.
+- **Coherencia (K1-K23, CC1-CC10)**: aplicadas K1-K22 en el tema; K23 y CC1-CC10 son cambios del canon y del mapa, para `tema-canon` (ver arriba).
+- **Pendientes (P1-P62)**: resueltos todos (ver «Marcas resueltas» y «Errores corregidos»); P10 (la carpeta física) no se ha podido consultar.
+
+## Coherencia
+
+- **Estructura** (K1, A38-01): 3 apartados que conservan los títulos y el orden del Word (el II del Word partido en 2); el ahorro antes que el crecimiento, como en el Word (pensiones antes que Barro) y no como en el título; se explica en la Estructura de la introducción.
+- **Minutos**: introducción 2′30″; I 9′30″ (I.1 1′30″, I.2 5′, I.3 3′); II 9′ (II.1 3′, II.2 6′); III 8′ (III.1 5′30″, III.2 2′30″); conclusión 1′. Suman 30.
+- **Mismo modelo, misma forma**: el ciclo real con las etiquetas `eq:rbc-tecnologia`, `eq:rbc-precios`, `eq:rbc-hogar`, `eq:rbc-acumulacion` del 3.A.42 (la última con $-G_t$, como pide la ficha `rbc`); el IS-LM con `eq:multiplicador-fiscal` del 3.A.5 y el gráfico `islm-escuelas` del 3.A.39; la NEK con las ecuaciones del 3.A.7 y `nek-xpi` copiado; las 3 vías del gasto con las palabras del 3.A.7 (l. 716-722); la ER con las del 3.A.39 («Net Wealth», Ricardo «dudó», sin la monetización).
+- **Cumplimientos** de lo que otros temas remiten aquí: Friedman-Heller (3.A.5, l. 496); efecto riqueza del gasto en el ciclo real y $K_{t+1}=(1-\delta)K_t+Y_t-C_t-G_t$ (3.A.6, l. 646, 988, 1118; 3.A.42, l. 529, 1011); 3 vías y hogares de regla de pulgar (3.A.7); inversión pública complementaria (3.A.34, una viñeta en I.2 c). Reparto con $(1+n)(1+g)$ y Aaron (3.A.29, l. 683); RCK fiscal y Chamley-Judd (3.A.43, l. 826-838); Barro con $\tau^*=1-\alpha$ (3.A.44); Kneller, Bleaney y Gemmell (3.A.45, l. 908).
+- **Notación**: $T_t$ recaudación de suma fija y $\tau_{L,t}$, $\tau_{K,t}$ tipos; $r^D_{t-1}$ tipo de la deuda; $\rho_G$ persistencia del gasto (en el 3.A.39, $\rho_G$ es el descuento de un Gobierno impaciente, local: no conviven); $K^G_t$ y $\alpha_G$ locales de Baxter y King; $g_t\equiv-\ln(1-G_t/Y_t)$ en la NEK; $s_C$, $s_G$ locales en una nota. Propuestas al canon: CC5 de `propuestas-coherencia.md`.
+- **Remisiones**: todas con `\vertema` o `\ref`; Mundell-Fleming al 3.A.32 (no al 3.B.14); la empresa sin problema intertemporal al 3.A.34 (no al 3.A.29); la racionalidad limitada al 3.A.1 y al 3.A.33.
+- **Contradicciones con otros temas** (no se tocan; para `pendientes-coherencia.md`): el 3.A.42 (l. 1011) dice «impuestos distorsionadores» y este tema, como el 3.A.43 y la ficha del tribunal, «distorsionantes»; el 3.A.44 usa la clave `BaxterKing1993` y aquí `BaxterKing1993Fiscal` (C41); aviso al 3.A.40 (en elaboración): el ciclo real da un multiplicador «positivo y menor que 1, mayor si el gasto es persistente», no «≈ 0» (CC8 de la coherencia).
+- Gráficos copiados sin cambios: `rck-gasto`, `rck-impuesto` (3.A.43; aquí `fig:rck-gasto`, allí `fig:rck-fiscal`), `barro` (3.A.44), `demografia-pensiones` (3.A.29). `diamond-pensiones` se dibuja sobre `diamond.tex` del 3.A.29 con sus mismas unidades.
+- Para `pendientes-coherencia.md`: (1) ficha `olg-samuelson-diamond`: añadir `eq:diamond-reparto` y el dato ilustrativo τ ≈ 0,045 (exacto, 0,0451) con los parámetros de `diamond.tex` (CC9); (2) fichas nuevas `chamley-judd` y `reparto-vs-capitalizacion` con este tema de referencia (CC2, CC3); (3) `ramsey-cass-koopmans`, fila del 3.A.38: «resumen» (CC4); (4) `notacion.md`: $\rho_G$ persistencia del gasto, $s_G$, $K^G_t$ y $\alpha_G$ locales, $Z_{t+1}$ local, $r^D_{t-1}$, $\beta_K$ local en la BP (CC5); (5) `multiplicadores-fiscales`: el 3.A.38 resume (CC7); (6) `barro-1990`: lo que añade este tema (CC8).
+
+## Dudas abiertas
+
+Resueltas con la opción recomendada (se pueden cambiar):
+
+- **A38-01** Estructura: 3 apartados en el orden del Word (I corto plazo, II ahorro, III crecimiento), opción A de la coherencia, en lugar de 2 como el Word o del orden del título (que proponía el contenido, D1).
+- **A38-02** Enganche: «La cigarra y la hormiga» (Samaniego, 1781) con los datos de 2025, en lugar del refrán «pan para hoy, hambre para mañana» que proponía el contenido (C4). La idea final debe volver a la fábula.
+- **A38-03** Pegatinas reutilizadas por ser el mismo modelo: «no hay plazo que no se cumpla ni deuda que no se pague» (del 3.A.39, la equivalencia ricardiana) y «la avaricia rompe el saco» (del 3.A.29, la ineficiencia dinámica). La del reparto, en su forma clásica: «hijo eres, padre serás; cual hiciste, tal habrás». Las nuevas no salen en ningún otro tema (grep del 5/11/2026).
+- **A38-04** Campbell (1994), «1/10»: fuera (no comprobado); en su lugar, las cifras de la simulación propia.
+- **A38-05** Sims: título de I.2 sin autor; en el texto, Sims (2017), y el modelo citado a Christiano y Eichenbaum (1992) y Baxter y King (1993).
+- **A38-06** La evidencia del multiplicador (l. 1045-1151): resumen de 4 viñetas en I.3 c) y el resto al anexo D con las citas corregidas (D4 del contenido).
+- **A38-07** Notas 24 y 38 del Word (en inglés: principio de Taylor; Friedman y Meiselman y la ecuación de San Luis): fuera, con la remisión al 3.A.5, al 3.A.7 y al 3.A.42, que ya las tratan (D11).
+- **A38-08** Baxter y King: $K^G_t$ y $\alpha_G$ (coherencia, K20) en lugar de η (contenido, C16).
+- **A38-09** Equivalencia ricardiana en resumen de 3 viñetas, aunque sea lo más preguntado en el test con este tema (11 de 14 preguntas): el anexo de test la repasa (D2).
+- **A38-10** El multiplicador con precios flexibles en la NEK, $\theta/(\theta+\varphi)$, es una derivación propia (en nota) del caso neoclásico de Woodford (2011), cuya ecuación no se ha podido leer; el multiplicador 1 con el tipo real constante sí está en su resumen.
+- **A38-11** Tipos implícitos: el del trabajo en I.2 c) (impuestos distorsionantes); el del capital queda para II.1 (Chamley-Judd).
+- **A38-12** Ramey (2011) (el gasto militar como experimento narrativo) no se añade a la evidencia del ciclo real: no se ha comprobado; la evidencia queda con Blanchard y Perotti (2002) y Galí, López-Salido y Vallés (2007).
+- **A38-13** Envejecimiento: se copia `demografia-pensiones` del 3.A.29 (sus mismas cifras) en lugar de hacer un gráfico nuevo con `pensiones-proyeccion.csv` (K19).
+- **A38-14** Anexos: además de A-D y test, E (pensiones paso a paso) y F (Barro con ahorro constante), para no borrar nada del Word; la nota del reparto remite a los anexos A a F.
+- **A38-15** El impuesto óptimo sobre el capital de Conesa, Kitao y Krueger (36 %) y la referencia de Aiyagari (1995) se mantienen (D6 del contenido); Aiyagari no se ha abierto, se cita por su resultado conocido.
+- **A38-16** Feldstein (1974) sin cifra («reducía mucho el ahorro personal»): no se pudo leer la cifra exacta en el artículo.
+- **A38-17** Barro: `eq:barro-tau` como función clave (coherencia) en lugar de `eq:barro-produccion` (contenido); la producción va como ecuación numerada.
+- **A38-18** Jones, Manuelli y Rossi (1993) y Stokey y Rebelo (1995) («Jones y Stoky» del Word) no se añaden (D7): no se han comprobado; la idea («mejor gravar el consumo que el trabajo o el capital, aunque el consumo también distorsiona con trabajo elástico») queda sin atribuir en III.2.
+- **A38-19** Envejecimiento: el texto da la dependencia del Ageing Report (65+/20-64: 33,3 → 64,5 %) y el gráfico copiado del 3.A.29 la de Eurostat (65+/15-64); el pie lo dice.
+- **A38-20** Pregunta 47 de junio de 2023: se da la respuesta oficial b) con el aviso de que el modelo estándar no da una caída del consumo mayor que el gasto (D12).
+- **A38-21** III.1 no lleva bloque de evidencia propio: la evidencia del gasto productivo (Aschauer, Bom-Ligthart, inversión pública) va en III.2, como pedía el reparto del coordinador; III.1 queda en a) Idea, b) Modelo, c) Extensiones, d) Valoración.
+- **A38-22** (control de calidad, 5/11/2026) El anexo D (tamaño del multiplicador: definiciones, 11 determinantes y evidencia) se solapa con el 3.A.40, que es ahora el tema de referencia de los multiplicadores y está en elaboración. Cuando se revise el 3.A.40, decidir si el anexo D se queda en un resumen con `\vertema{3.A.40}` o se quita.
+- **A38-23** (control de calidad, 5/11/2026) I.3 dice que con regla de Taylor el multiplicador es «mayor que con precios flexibles». Vale con la regla sobre la brecha $x_t$, que es la del tema; con una regla sobre la producción observada podría quedar por debajo. No se ha comprobado en Woodford (2011): si se puede abrir, confirmarlo (como A38-10).
+- Control de calidad (5/11/2026): con correcciones pendientes (lista entregada al coordinador: el texto, para `tema-editor-lyx`; los gráficos, para `tema-tikz`).
+
+## Instrucciones para el vídeo
+
+- **Enganche e idea final**: la fábula de la cigarra y la hormiga (Samaniego, 1781) y los datos de 2025 (déficit 2,4 %, deuda 100,5 %, ahorro nacional 25,0 %, el más alto desde 1995; las AA. PP. vuelven a ahorrar por primera vez desde 2008); la pregunta «¿es la política fiscal cigarra u hormiga?». La idea final vuelve a la fábula: «a corto plazo, cuando llega el invierno, puede cantar; a largo plazo, lo que cuenta es qué guarda y en qué lo invierte». Hilo de todo el tema: «nivel frente a tasa» (el ahorro decide el nivel del capital; el crecimiento endógeno, su tasa). Nunca decir «hilo» en voz alta.
+- **Pizarra en 3 zonas** (nota del reparto del tema): a la izquierda, la pregunta, la fábula y las pegatinas junto a su concepto; en el centro, los gráficos; a la derecha, recuadradas y conservadas hasta el final, las 4 funciones clave: `eq:rbc-acumulacion` (I.2), `eq:euler-tauk` (II.1), `eq:ahorro-reparto` (II.2) y `eq:barro-tau` (III.1).
+- **I.1** (1′30″): de palabra; como mucho, el panel keynesiano de `islm-escuelas` a mano alzada (IS → IS′ y la subida del tipo); `eq:multiplicador-fiscal` escrita, señalando el término $bk/h$. Las escuelas, como apoyo (el gráfico de 3 paneles).
+- **I.2** (5′): pegatina «lo que no va en lágrimas va en suspiros» al empezar; escribir `eq:rbc-gasto` y `eq:rbc-gobierno` en una línea cada una y `eq:rbc-acumulacion` recuadrada a la derecha (se conserva); el bloque `eq:rbc-*` completo, como apoyo. Pegatina «no hay plazo que no se cumpla ni deuda que no se pague» al decir la ER. Gráfico imprescindible: `irf-rbc-gasto`, panel a (Y, C, I con $\rho_G=0{,}95$, trazo a trazo, y las discontinuas con $\rho_G=0$); el panel c (impuesto sobre el trabajo, multiplicador $-0{,}68$) como apoyo. La tabla `tab:gasto-rbc`, apoyo.
+- **I.3** (3′): las 3 ecuaciones dichas (apoyo); en la pizarra solo el panel a de `nek-xpi` (DA dinámica a la derecha); pegatina «dos no riñen si uno no quiere» junto a la lista θ/(θ+φ) → 1 → >1. La evidencia del multiplicador, de palabra.
+- **II.1** (3′): pegatina «no mates la gallina de los huevos de oro» en Chamley-Judd. Imprescindible: `rck-gasto`, panel del gasto permanente (bajar $\dot k=0$ y el salto del consumo); el temporal y `rck-impuesto`, apoyo. `eq:euler-tauk` recuadrada a la derecha (se conserva). El ahorro nacional, de palabra con `ahorro-nacional-espana` de apoyo.
+- **II.2** (6′): pegatina «hijo eres, padre serás; cual hiciste, tal habrás» al presentar el reparto y «la avaricia rompe el saco» en Aaron. `olg-generaciones`, opcional (15″). Escribir el problema con reparto y `eq:ahorro-reparto` recuadrada (se conserva); `eq:diamond-reparto` en la pizarra. Gráfico imprescindible: `diamond-pensiones` por capas (ley sin pensiones, $k^*$, ley con reparto que baja, nuevo estado en $k_{\mathrm{oro}}$). Evidencia y `demografia-pensiones`, apoyo.
+- **III.1** (5′30″): pegatina «ni contigo ni sin ti». Escribir $Y=AK^{\alpha}G^{1-\alpha}$, $G=\tau Y$ → $AK$, `eq:barro` y `eq:barro-tau` recuadrada; gráfico imprescindible: `barro` (U invertida con el máximo en $1-\alpha$). El planificador, de palabra.
+- **III.2** (2′30″): `eq:rebelo` en una línea frente a `eq:euler-tauk` (nivel frente a tasa); la jerarquía de la OCDE y la evidencia, de palabra; `inversion-publica-espana`, apoyo.
+- **Conclusión** (1′): sin pizarra, salvo las 4 funciones clave que quedan a la derecha. Empieza por «A modo de conclusión,»; relevancia con los tipos del BCE de 2026; idea final con la cigarra y la hormiga y «nivel frente a tasa». Sin la frase de Joan Robinson.
