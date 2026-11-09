@@ -246,6 +246,14 @@ Se aplicó en todas la opción recomendada; Víctor puede cambiarlas a la vuelta
 - **A07-29. Mapa de la nota de las universidades**: redibujado en TikZ como mapa esquemático (contorno aproximado de Estados Unidos, franjas de color como el original y las universidades con su punto), no a escala. La fuente es la del Word (Wójcik, Kreston y McGill, 2012).
 - **A07-30. Extensión**: el documento crece (prueba de compilación en `_trabajo/`: 33 páginas de tema frente a 27, por el método de la 1.ª generación, las cajas y el anexo A). El cante sigue en 30′: lo nuevo que no se canta va en cajas grises (Calvo, equilibrios múltiples) y en el anexo A.
 
+## Enlaces del original (9/11/2026)
+
+Revisados los enlaces del tema original que no estaban en la versión revisada (CRITERIOS § 4).
+
+- **Restaurado**: en la nota de las universidades de agua salada y agua dulce, el artículo «Saltwater and freshwater economics» de Wikipedia (estaba en la misma nota del original).
+- **Ya cubiertos por otra vía**: el documento de Wójcik, Kreston y McGill (2012) se cita con la ficha de ORA en lugar del enlace de descarga (`WojcikKrestonMcGill2012`); «Measuring Potential Output» (St. Louis Fed, 2018) está en `GuisingerOwyangShell2018` con su dirección nueva (files.stlouisfed.org); el borrador de Sims y Wu (FRBSF, 2019) se cita en su versión publicada, `SimsWuZhang2023`, con DOI.
+- **Descartado**: el enlace de Forvo del retrato de Robert J. Gordon apuntaba por error a la pronunciación de Kalecki.
+
 ## Instrucciones para el vídeo
 
 ### Parte 1 (introducción y bloque I)

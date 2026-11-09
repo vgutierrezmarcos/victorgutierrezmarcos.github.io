@@ -165,6 +165,14 @@ Además:
 - Word: la banda del título del III, partida con `\newline`, sale justificada con espacios anchos entre palabras (es del conversor, no del tema; afecta a cualquier título de primer nivel en dos líneas).
 - Control de calidad: sin incidencias (17/10/2026). Corregido en esta fase: llave de $t$ fuera del gráfico `incidencia` (la cruzaba la oferta desplazada) y rótulo «vendedores» recolocado; puntos $A$, $B$ y $C$ nombrados en el texto de `corto-largo-industria` y `oferta-largo-plazo`; el impuesto (II.3.2) con bloques a) Idea y b) Modelo (i, ii, iii); condición de segundo orden de la empresa (necesaria con ≤, suficiente con <); «la primera y la tercera» condiciones dan $p=\mathrm{CMg}=\mathrm{CMe}$ en la libre entrada; «quienes no lo valoran más»; gráfico de la oferta a corto plazo más grande (0,8 del ancho).
 
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Ya estaba, en otra dirección**: Walras (1874), *Éléments d'économie politique pure*, que el tema antiguo enlazaba en Google Books, va en `Walras1874Elements` con la copia de archive.org.
+- **Restaurado**: Superprof, «Teorema de Bolzano», en una nota del teorema de Bolzano (existencia del equilibrio).
+- **Descartados**: los 2 temas en PDF de fabiansalazar.es (3A-14 y 3A-21), fuentes de gráficos del tema antiguo: son temas de otro preparador (CRITERIOS §5); los gráficos actuales se rehicieron con fuentes propias.
+
 ## Instrucciones para el vídeo
 
 - Funciones clave que se conservan en la esquina: las condiciones del equilibrio (`eq:equilibrio`) desde I.2 hasta el final y la maximización del excedente total (`eq:max-et`) desde II.2.2; en III, la del largo plazo (`eq:largo-plazo`).

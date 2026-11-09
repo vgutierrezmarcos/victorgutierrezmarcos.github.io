@@ -141,6 +141,14 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P58), `p
 7. **Extensión**: 28 páginas de cuerpo; el cante se ciñe a lo marcado en las notas al opositor.
 8. Control de calidad (19/10/2026): sin incidencias pendientes en el tema. Corregido en esta fase: la nota al opositor de III decía «los 2 efectos» (son 3); la lotería del seguro, con el orden del 3.A.10, $(\overline{W},\overline{W}-L;\ 1-\pi,\pi)$, y «prima recargada» en vez de «desfavorable»; el equilibrio separador de Spence y el de Rothschild-Stiglitz ya no se llaman «óptimo restringido» sin matiz (pueden no ser el mejor resultado posible con esa información: agrupador que domina en Spence, menú con subvenciones cruzadas en R-S), y la conclusión dice «en el mejor de los casos, un óptimo restringido»; la nota del caso 2 citaba un punto $R$ que no está en el gráfico; el ejercicio de 2019 decía que era el caso de franquicia del anexo (no lo es: el principal es neutral ante $X$) y citaba una opción «a)» que no se reproduce; las condiciones de primer orden del anexo A.3 daban un error de MathJax en la web (dos `\label` en un `align`): ahora son 2 ecuaciones. Queda, de las plantillas y no del tema: en el móvil, las ecuaciones anchas (4) y (9) se salen por la derecha, y en el Word las ecuaciones no llevan número aunque se remita a ellas.
 
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Ya estaban**: el vídeo de Rothschild y Stiglitz que el tema antiguo recomendaba tras la autoselección (nota del paso a paso del modelo); Laffont y Martimort, *The Theory of Incentives*, con su DOI (`LaffontMartimort2002Theory`).
+- **Restaurados**, en la misma nota del vídeo: la tercera parte de la serie de Ashley Hodgson (prueba de que no hay equilibrio agrupador) y la lista completa de vídeos sobre el modelo.
+- **No restaurado**: la copia del libro de Laffont y Martimort en ResearchGate (bloquea las consultas automáticas; la obra ya se cita con su DOI, que lleva a la edición de la editorial).
+
 ## Instrucciones para el vídeo
 
 En este tema la pizarra es el reto: cada modelo se cuenta alternando la parte **analítica (mitad izquierda)** y la **gráfica (mitad derecha)**, y los gráficos se construyen con las capas de su TikZ, en el mismo orden que el texto (los envoltorios `-pasoK` del PDF marcan los cortes). Nunca se escribe dos veces lo mismo: lo que cambia se añade o se borra sobre lo ya escrito.

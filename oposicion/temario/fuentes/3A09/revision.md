@@ -244,6 +244,16 @@ Partes 2 y 3:
 - Minutos: introducción 2, I 10 (I.1, 2; I.2, 5; I.3, 3), II 5, III 12 (III.1, 2,5; III.2, 3,5; III.3, 6), conclusión 1 = 30. El bloque I recibe 3 minutos más que antes. Se usan minutos enteros en las bandas para que `construir-tema.py` (que solo suma enteros) dé 30.
 - Instrucción del coordinador: sin nombres de preparadores ni de clases en el `.tex` (comprobado: no queda ninguno; solo la lectura de Rodríguez López, por petición expresa).
 
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Ya estaba**: el boletín ICE de Aguilar y Mateos (`AguilarMateos2015Deaton`, en la dirección nueva de argos.gva.es).
+- **Restaurado**: las diapositivas de Rafael Salas (*Microeconomía Superior I*, tema 6), fuente de los gráficos del problema de medir el bienestar y del excedente del consumidor (`SalasMicroTema6`, en el `\fuente` de `fig:bienestar-problema` y `fig:bienestar-delta-ec`). La dirección original da 404: se enlaza la copia de web.archive.org de 25/7/2024.
+- **No restaurados**:
+  - Policonomics, «Índices de Laspeyres y Paasche» (fuente de un gráfico antiguo): todo policonomics.com da error 500 el 9/11/2026 (funcionaba en abril de 2026; hay copias en web.archive.org). Si vuelve, basta con añadirlo al `\fuente` de `fig:indice-konus-laspeyres`.
+  - Vídeo de Derivando sobre el teorema de Rouché-Frobenius: la revisión corrigió la referencia (la condición de integrabilidad es el teorema de Frobenius de las ecuaciones en derivadas parciales, no el de Rouché-Frobenius de los sistemas lineales), así que el vídeo ya no corresponde. Decide Víctor si quiere un vídeo sobre el de Frobenius.
+
 ## Instrucciones para el vídeo
 
 - **Bloque I, gráficos del primal y del dual (Víctor, 13/10/2026)**: la pizarra se divide en dos mitades. En la **mitad izquierda** se cuenta el primal (I.2.1): ejes, recta de balance, curvas de indiferencia, tangencia $\vec x^*=\vec x(\vec p,\overline W)$, y a su lado la resolución analítica (PMU, lagrangiana, $U_i/p_i=\lambda$, $RMS_{12}=p_1/p_2$). En la **mitad derecha**, el dual (I.2.2): curva $\overline U$ fija, isogastos, tangencia $\vec h^*=\vec h(\vec p,\overline U)$ y su resolución ($\mathcal L$ con $\mu$, $p_i/U_i=\mu$). Las propiedades de las demandas y de las funciones valor salen como **apoyo** (no se escriben). En I.3 se cuentan las **relaciones de dualidad** sobre esos dos gráficos: primero el teorema básico ($\overline W=E^*$, $\overline U=U^*$, misma cesta: gráfico conjunto `primal-dual`), después las identidades entre demandas y entre funciones valor, Roy y Shephard, hasta completar el **esquema de dualidad** (gráfico `esquema-dualidad`). Se pueden borrar los gráficos intermedios; al final la pizarra debe quedar lo más limpia posible, con el gráfico conjunto y el esquema.

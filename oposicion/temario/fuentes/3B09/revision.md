@@ -166,6 +166,12 @@ Título oficial: «Comercio internacional y crecimiento económico. Especial ref
 - **Corea, I+D**: el ejemplo de que Corea «está entre los países que más invierten en I+D en relación con su PIB» va sin cifra (la de la OCDE no se comprobó); si se quiere el dato, OCDE, MSTI.
 - **Comisión sobre el Crecimiento (2008)**: el dato de las 13 economías se ha comprobado en resúmenes, no en el informe: sin página.
 
+## Enlaces del original (9/11/2026)
+
+- **Restaurado**: el documento de trabajo de Rivera-Batiz y Romer (NBER WP 3528, `https://www.nber.org/system/files/working_papers/w3528/w3528.pdf`), que el original enlazaba como versión libre del modelo de integración. Va como entrada nueva del `.bib` (`RiveraBatizRomer1990NBER`, con `url` y `urldate`) citada en una nota al pie de «La integración» (\parencite junto a `RiveraBatizRomer1991`, que conserva su DOI).
+- **No restaurado, sustituido por la edición vigente**: *World Trade Statistical Review 2023* de la OMC (`wtsr_2023_e.pdf`, enlace con la portada en la introducción). Funciona, pero la OMC dejó de publicarlo y sus datos ya los da *Global Trade Outlook and Statistics* (octubre de 2026), que el tema cita con enlace (`OMC2026PerspectivasOct`). Si Víctor quiere el enlace al de 2023, iría en una nota de la relevancia.
+- **Descartados**: el libro de Grossman y Helpman y el artículo de 2015 enlazados como `file:///` (el artículo conserva su DOI en el `.bib`).
+
 ## 8. Instrucciones para el vídeo
 
 - **Introducción** (2′30″, `modo: guion`, sin pizarra): tras el título, la pregunta del huevo y la gallina con Corea (2,6 % → 44,4 % de exportaciones sobre el PIB; renta por habitante × 36); la relevancia con el gráfico `fig:comercio-pib-mundial` como **apoyo**; la estructura con los 2 bloques. La idea final de la conclusión tiene que retomar el dicho y responderlo (parte 2).

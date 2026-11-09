@@ -181,6 +181,10 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada de
 - **Extensión**: 38 páginas de tema (antes 29) para 30′. El plan de pizarra cabe en el tiempo, pero se propone pasar al anexo A (o quitar) lo que ya es profundización: la caja de Cournot con costes privados (ya está en el anexo del 3.A.19, basta con la remisión), la caja «Cómo se comprueba cada fila» de las estrategias repetidas y la caja del juego de la inspección con su tabla y su gráfico (ya resumidos en el anexo de clásicos). Ahorro estimado: unas 3 páginas. **Hecho** (20/10): la caja de Cournot se quita y las otras 2 pasan al anexo A; el tema queda en 36 páginas.
 - **La gallina de 2012 (España y el BCE)**: la lectura no tiene fuente y simplifica mucho lo que pasó (en 2012 España sí pidió la asistencia financiera para la banca, y el pulso de verdad fue por la compra de deuda del BCE, condicionada a pedir un programa). ¿Se mantiene con una fuente, se reescribe con la condicionalidad de las OMT o se deja como ejemplo estilizado sin año? **Hecho** (20/10): se mantiene estilizado, con el contexto citado (MEDE y BCE) y el aviso de que los pagos son una lectura propia; ver «Correcciones del 20/10».
 
+## Enlaces del original (9/11/2026)
+
+El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada que restaurar.
+
 ## Instrucciones para el vídeo
 
 - **El vídeo sigue el plan de pizarra de las notas al opositor y la historia de I y E** (20/10/2026): cada concepto, primero con el ejemplo de los 2 operadores (las viñetas sangradas que lo retoman, paso a paso y con sus números; en las subastas, la tabla `tab:subasta-5g` se rellena formato a formato y el gráfico `subasta-5g` va por capas) y después el clásico en una frase (como `apunte:`); los refranes pegatina se dicen una vez y se escriben junto a su casilla de la tabla. Pizarra en 3 zonas fijas (`rejilla: "30|40|30"`): izquierda, la tabla de clasificación (en III, la de formatos de subasta); centro, el ejemplo de I y E, que se borran al acabar cada apartado; derecha, lo que se queda.

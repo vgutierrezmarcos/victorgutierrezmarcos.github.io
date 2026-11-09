@@ -346,6 +346,10 @@ la COP29 (cifras cotejadas en fuentes secundarias), la financiación climática 
 emisiones de la UE en 2025 (AEMA), el número del real decreto del PNIEC y la vinculación de los
 mercados de emisiones de la UE y el Reino Unido.
 
+## Enlaces del original (9/11/2026)
+
+El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada que restaurar.
+
 ## Instrucciones para el vídeo
 
 - **Introducción y conclusión, sin pizarra** (`modo: guion`), con sus 5 bloques nombrados.

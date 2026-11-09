@@ -233,6 +233,16 @@ Consultas del 05/11/2026 (verificador de datos, salvo el enganche, que consultó
 - **HTML, fallo común de la conversión**: los `align` con varias etiquetas salen en el HTML como `\begin{aligned}` con un `\tag` en cada fila, y MathJax no los admite: se ve el código en amarillo en lugar de la fórmula. En este tema, las 4 ecuaciones del centro-periferia (7)-(10) del anexo D. Pasa también en los HTML de 3.A.5, 3.A.6, 3.A.8, 3.A.25, 3.A.36, 3.A.42, 3.A.44 y 3.B.28 (comprobado en 3.A.42). Hay que arreglarlo en el paso de pandoc a HTML (por ejemplo, convertir esos bloques en `align` de MathJax, que sí admite una etiqueta por fila) y reconstruir esos HTML.
 - **HTML, licencia**: la cabecera lleva `<link rel="license">` a CC BY-NC-ND 4.0, pero el pie dice «Todos los derechos reservados · Exclusivo». Sale de la plantilla común (también en 3.A.36, 3.A.42 y 3.B.10): decidir si se cambia o se quita en los temas exclusivos.
 
+## Enlaces del original (9/11/2026)
+
+Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del original ya estaban en el tema.
+
+- **Restaurados**:
+  - Cahal Moran (2020), «A Theory of Enormous Gravity» (Rethinking Economics; nota 8 del original): la dirección de rethinkeconomics.org da 404; el ensayo sigue en Exploring Economics. Entrada nueva `Moran2020Gravity` y cita en la nota de Isard de los modelos de gravedad (III.2).
+  - Ficha del ciclo del producto de Vernon en ProvenModels (fuente del gráfico del original): en el `\fuente` del gráfico `fig:vernon`.
+- **Ya conservado por otra vía**: el capítulo 16 de Gandolfo (2014) (DOI del capítulo, fuente de un gráfico): `Gandolfo2014International` lleva el DOI del libro y el tema cita el cap. 16.
+- **No restaurado**: OMC, *Examen estadístico del comercio mundial 2023* (nota sobre el volumen del comercio mundial): la cifra que respaldaba se ha sustituido por la de 2025 (`OMC2026Perspectivas`). El enlace funciona; si Víctor quiere conservarlo como lectura, se añade al `.bib`.
+
 ## 8. Instrucciones para el vídeo
 
 (Aún no hay guion ni escenas: entrega 3.)

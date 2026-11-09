@@ -261,6 +261,16 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
   gráfico del S\&P 500, que dejaba un carácter roto en el texto alternativo;
   rótulo «frontera eficiente» en `cml`). Reconstruido: 0 errores.
 
+## Enlaces del original (9/11/2026)
+
+- **Restaurados** (todos con `\href`):
+  - Wikipedia, «Markowitz model»: en el `\fuente` del gráfico de la frontera eficiente (era la fuente de la imagen del original).
+  - Economipedia, «Riesgo sistemático»: en el `\fuente` del gráfico del riesgo y el número de títulos.
+  - Comparativa de Bancos, «Soportes, resistencias y falsas rupturas», y Admirals, «Qué son las medias móviles en trading» (`admiralmarkets.com/es/…/media-movil-simple`): en el `\fuente` del esquema de soporte, resistencia y media móvil.
+  - Wikipedia («Roll's critique») e Investopedia («Roll's Critique»): nota al pie de la crítica de Roll (el original los tenía en una nota y en un comentario).
+  - Economipedia y Admirals no dejan comprobarlos con un robot (403); existen según el buscador.
+- **No restaurado**: Análisis técnico street, «Gráfico de velas japonesas» (pie de una imagen del anexo de indicadores): el dominio ya no responde y el buscador no lo encuentra.
+
 ## Instrucciones para el vídeo
 
 - **Enganche e idea final**: «Nadie da nada por nada» y el 52 % de fondos

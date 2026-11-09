@@ -187,3 +187,7 @@ Propuestas de datos: V1-V26 aplicadas (V24 y V25, sin poder comprobar: Sahuquill
 - III.3 d): cita del Banco de España tras el +77 % y frase que explica que, con otra metodología (2 periódicos), el índice de Baker, Bloom y Davis marca su récord para España en abril de 2025, mientras que el del Banco de España da entonces 212, por debajo de 2020 y 2012.
 - Anexo D: el ∎ suelto tras la fórmula del umbral pasa al final de la viñeta.
 - Hueco de un cuarto de página antes de los gráficos de la desgravación: el de la desgravación permanente se adelanta tras su viñeta y los 2 pasan a 0,55 del ancho; la página queda llena (comprobado en la compilación de prueba con los gráficos reales).
+
+## Enlaces del original (9/11/2026)
+
+Los 4 enlaces del original siguen en el tema (en el `.tex` o en el `.bib`): no se ha perdido ninguno.

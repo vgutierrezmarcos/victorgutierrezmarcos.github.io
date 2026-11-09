@@ -146,6 +146,11 @@ Propuestas: todas las de coherencia (K1-K35), contenido (C1-C46) y datos (V1-V17
    - Wonnacott y Wonnacott (1981): datos del artículo según fuentes secundarias (no está en Crossref).
 7. Gandolfo (2014), cap. 17 (citado en la bibliografía del original): no se usa en el tema revisado; queda la entrada por si Víctor quiere citarlo.
 
+## Enlaces del original (9/11/2026)
+
+- **Restaurados**, en la caja de lecturas complementarias del final del bloque II (la del debate Bhagwati-Hufbauer, que ya tenía la versión en castellano): la versión en inglés del debate (`https://www.wto.org/english/forums_e/debates_e/debate3_e.htm`) y la página de los demás debates de la OMC (`https://www.wto.org/spanish/forums_s/debates_s/debates_s.htm`), con `\href`.
+- Ninguno descartado.
+
 ## Instrucciones para el vídeo
 
 - **Enganche e idea final**: refrán «Dime con quién andas y te diré quién eres» y el acuerdo UE-Mercosur (provisional desde el 1/5/2026); pregunta: ¿mejora el bienestar suprimir barreras con unos y mantenerlas frente a otros? La idea final responde con el peldaño o escollo y retoma el refrán («depende de con quién se ande y de para qué»).

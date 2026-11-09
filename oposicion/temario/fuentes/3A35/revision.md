@@ -144,6 +144,18 @@ Resueltas con la opción recomendada (decisiones del coordinador y de coherencia
 - **A35-15** (control de calidad, 5/11/2026) · $\pi^*$ significa 2 cosas en III: la inflación de la regla de Friedman ($\pi^*\simeq-r$, `eq:regla-friedman`, III.1) y la que maximiza el señoreaje ($\pi^*=1/\alpha$, III.3 y el gráfico `laffer-senoreaje` copiado del 3.A.39, que lo rotula así). (a) **dejarlo** (cada uno es el canon de su tema de referencia, 3.A.41 y 3.A.39, y van en apartados distintos); (b) en este tema, escribir $\pi^{S}=1/\alpha$ (o $\pi^{\max}$) en III.3 y en el gráfico.
 - **A35-16** (control de calidad) · «Milton Friedman» sin `\autor` en el título del vídeo del Fraser Institute (anotaciones de I.1.2): es el título literal del vídeo y no se toca (el aviso de verificar-tema se acepta).
 
+## Enlaces del original (9/11/2026)
+
+Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
+
+- **Restaurados** (2):
+  - Documento de trabajo de Sargent en el repositorio de la Universidad de Minnesota (n.º 1975-56, pp. 60-66), que el original enlazaba en la nota de neutralidad y dicotomía: `\href` en la nota de la neutralidad del dinero (I.1), con el identificador permanente `hdl.handle.net/11299/54808`, porque la dirección antigua (`/bitstream/handle/…`) es de la versión anterior del repositorio. El repositorio bloquea las consultas automáticas (403), así que **no se ha podido ver el título del documento**: conviene que Víctor lo abra y, si es el borrador de *Macroeconomic Theory*, se pase al `.bib`.
+  - Documento de trabajo del NBER de Schmitt-Grohé y Uribe (w16054), que el original citaba en la nota de la regla de Friedman: `url` (versión de libre acceso) y `urldate` en la entrada `SchmittGroheUribe2010Optimal`, que cita la versión publicada en el *Handbook*.
+- **Ya estaban** (por otra vía): los 2 vídeos de Khan Academy (funciones del dinero y curva de demanda de dinero), en las cajas de anotaciones; Feenstra (1986), con su DOI en el `.bib`; el estudio de hábitos de uso del efectivo del Banco de España, sustituido por la edición de 2026 y por la página con todas las ediciones (`BdE2026HabitosWeb`).
+- **No restaurados**:
+  - `econ.ccu.edu.tw/graduate/1051114.pdf` (nota al opositor de Kiyotaki y Wright): da 404 y no se ha encontrado otra dirección; el tema ya enlaza el documento de trabajo del NBER de Kiyotaki y Wright.
+  - Documento de Google Docs con la estructura del tema de otro preparador: privado y de otro preparador.
+
 ## 8. Instrucciones para el vídeo
 
 - Introducción y conclusión sin pizarra. Enganche: Quevedo y la paradoja del efectivo (cada vez se paga menos con billetes y nunca ha habido tantos); idea final que lo retoma (K28): don Dinero es poderoso, pero su poder es prestado.

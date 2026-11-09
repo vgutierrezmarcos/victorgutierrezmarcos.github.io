@@ -154,6 +154,21 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada (o
 
 **Datos sin verificar o con una sola fuente**: firmeza de la multa a las constructoras (el texto dice que está recurrida); 116/53 de clemencia (una sola fuente oficial); mayor multa de cártel de la UE (solo la tabla de la Comisión); volumen de Edgeworth (1897) y de Forchheimer (1908); páginas finales de varios artículos (marcadas en `bib-datos.bib`). **Otras**: la excepción agraria de la nota 29 (art. 42 TFUE, Reglamento 1308/2013) se dejó fuera por no estar comprobada; Ross (1992), que coherencia cita para la diferenciación horizontal, no está en ningún `.bib`: el factor «diferenciación» de la tabla se dejó sin cita.
 
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A19.tex` y `3A19.bib` (CRITERIOS §4).
+
+- **Restaurados** (9):
+  - Vídeo «Game Theory: The Pinnacle of Decision Making» (Metamorphosis 77; nota de los antecedentes de la teoría de juegos): nota «Para ver» en el nacimiento de la teoría de juegos (introducción).
+  - Vídeo «Juegos repetidos - Parte 2» (URJC, desde el minuto 8:41; nota del *tit for tat*): nota «Para ver» en «donde las dan, las toman» (II).
+  - Policonomics, «Duopolio de Cournot», «Duopolio de Stackelberg», «Colusión» y «Duopolio de Edgeworth» (fuentes de gráficos): en el `\fuente` de `fig:cournot`, `fig:stackelberg`, `fig:cartel` y `fig:edgeworth`.
+  - Policonomics, «Oligopolio I» y «Oligopolio II» (bibliografía del original): nota al pie al presentar los 4 modelos (tabla `tab:modelos-oligopolio`).
+  - AulaDeEconomia, «Modelos de oligopolio» (fuente del gráfico de Edgeworth): `AulaDeEconomiaOligopolio` en el `\fuente` de `fig:edgeworth`.
+  - **Policonomics da error en todo el sitio** (WordPress, HTTP 500, 9/11/2026): las 6 entradas enlazan la copia de Internet Archive.
+- **Ya estaban**: los 2 de JSTOR (Hahn, 1962, y Green y Porter, 1984) siguen accesibles por el `doi` de sus entradas.
+- **Descartados**: el enlace a quia.com (CRITERIOS §4).
+- **Para Víctor**: si Policonomics vuelve, cambiar las `url` por las originales.
+
 ## Instrucciones para el vídeo
 
 - **Introducción y conclusión, sin pizarra** (`modo: guion`). Enganche: la frase de Smith (en castellano, como paráfrasis) y el cártel de camiones (2.926 millones, 14 años, MAN exento). Pregunta: «Si a las empresas les conviene ponerse de acuerdo, ¿por qué compiten? ¿Y por qué un acuerdo de 14 años se rompe?». La idea final la responde: a cada una le conviene romper el acuerdo; la repetición lo sostiene y la clemencia usa el mismo dilema para que al primero que confiesa (MAN) le salga a cuenta.

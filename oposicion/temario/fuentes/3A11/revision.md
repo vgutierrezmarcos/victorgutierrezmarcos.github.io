@@ -274,3 +274,11 @@ Resueltas el 13/10/2026 y quitadas de esta lista: el orden de I.1 e I.2 (se vuel
 - **Apoyo (no se escribe)**: todo lo 3D (`funcion-produccion-3d`, `plazos-3d` y sus cortes de corto, largo y muy largo plazo, `rendimientos-globales-locales-superficies`) por estados sucesivos según se narra; `region-economica` completa como referencia; `progreso-tecnico-neutral` por paneles.
 - **Sin pizarra**: introducción y conclusión.
 - **Enganche e idea final**: la pregunta con que abre el documento se retoma en el cierre.
+
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Ya estaba**: Fuleky, *Anatomy of C-D Production/Utility Functions* (`FulekyAnatomy`, copia de web.archive.org: www2.hawaii.edu no responde).
+- **Restaurado**: el artículo de JSTOR (`https://www.jstor.org/stable/4101869`) que el tema antiguo daba para la distinción entre rendimientos locales y globales a escala, junto con Jehle y Reny (pp. 133-134), en una nota al principio de «Rendimientos globales y locales a escala».
+- **Duda para Víctor**: JSTOR bloquea las consultas automáticas y no se ha podido ver qué artículo es (quizá Podinovski, 2004, «Local and global returns to scale in performance measurement», *Journal of the Operational Research Society*, 55: sin comprobar). Si se identifica, conviene pasarlo a una entrada del `.bib` con `\textcite`.

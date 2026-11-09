@@ -156,6 +156,15 @@ Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
 
 Control de calidad (31/10/2026): las 15 correcciones aplicadas (7 de gráficos, 4 de fuente y bibliografía, 4 de maquetación); reconstruido con 0 errores y sin cajas anchas.
 
+## Enlaces del original (9/11/2026)
+
+Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
+
+- **Restaurados** (2):
+  - Lista de vídeos «Docencia: análisis intertemporal» (Economedia, YouTube), que el original ponía en la contextualización: nota «Para ver» al final de la contextualización conceptual.
+  - Tribuna de *El Confidencial* del 7/12/2019 sobre el estancamiento secular, que el original enlazaba al final de la nota de Hansen: `\href` en esa misma nota. El sitio bloquea las consultas automáticas (403), así que no se ha podido comprobar el título ni el autor; conviene abrirlo una vez.
+- **Descartados**: ninguno (las demás direcciones del original ya estaban en el tema o eran de quia.com).
+
 ## Instrucciones para el vídeo
 
 - **Plan de pizarra de Víctor (P20, K10)**, en 3 zonas fijas: a la izquierda, el plano (Y, C) (Keynes → Kuznets → Duesenberry → Friedman) y, debajo, el ciclo vital; en el centro, el gráfico de Fisher, que se queda hasta el final de II; a la derecha, la ecuación de Euler. En II, la de Fisher pasa a ser la Euler estocástica (se escribe encima, añadiendo 𝔼_t) y en II.3 **se va modificando pieza a pieza con un número sobre cada pieza**: 1) la utilidad (prudencia, u‴ > 0; hábitos, u(C_t − hC_{t−1})); 2) el tipo de interés (r ≠ ρ: giro de la recta de Fisher; r incierto: C-CAPM, `eq:ccapm`); 3) la restricción (liquidez: recta quebrada en A, Euler con ≥); 4) el agente representativo (heterogeneidad); 5) la plena optimización (conducta). Las pegatinas, al lado: «Hombre prevenido vale por dos» junto a la prudencia y «Lo comido por lo servido» junto a los *hand-to-mouth*.

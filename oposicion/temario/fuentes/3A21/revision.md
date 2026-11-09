@@ -170,6 +170,16 @@ Confirmadas las opciones recomendadas; las que piden un cambio, aplicadas el 16/
 20. **Bibliografía con datos sin comprobar** (control de calidad): se han quitado del campo `note` del `.bib` (salían en la bibliografía pública) los avisos de trabajo de `Wald1936Gleichungssysteme` (página final, 670, sin comprobar), `Arrow1951Extension` (páginas sin comprobar en la edición impresa), `Arrow1953Role` (datos de la edición francesa sin comprobar) y `USITC2019USMCA` (el PDF da 403 a descargas automáticas; cifras tomadas de la nota de Thompson Hine). Conviene cotejarlos antes de publicar.
 21. **Ekelund y Hébert, páginas**: las notas de la escuela de Estocolmo y de Bentham a Pareto (y la de las tecnologías del consumo, cap. 26) citan el capítulo; las páginas no se han podido ver (ejemplar restringido). Si las localizas en tu ejemplar, se añaden. La clave sigue siendo `EkelundHebert2013History` (con `year = {2014}`), común a 3A08, 3A09, 3A11, 3A12 y 3A21.
 
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A21.tex` y `3A21.bib` (CRITERIOS §4). No hace falta tocar el tema:
+
+- **Ya enlazados por otra dirección**:
+  - Walras (1874), *Éléments d'économie politique pure* (Gallica y Google Books en el original): la entrada `Walras1874Elements` enlaza el facsímil de Internet Archive.
+  - Martinez-Giralt (2008), *Microeconomía avanzada* (el original enlazaba el PDF en hurkens.iae-csic.org, que hoy da error 503, y el capítulo 4 en pareto.uab.cat): `MartinezGiralt2008Microeconomia` enlaza el libro completo en el depósito de la UAB (ddd.uab.cat).
+  - Observatorio sobre el Ciclo Económico en España de BBVA Research (el original enlazaba la edición de abril de 2023): el tema cita la edición de abril de 2026 (`BoscaEtAl2026Ciclo`), con enlace.
+- **Descartados**: el enlace a quia.com y los `file:///` del ordenador de Víctor (CRITERIOS §4); los 2 PDF de fabiansalazar.es, temas de otro preparador.
+
 ## Instrucciones para el vídeo
 
 - La caja de intercambio se dibuja en I.3 en una celda propia que **no se borra** hasta el final de III.2 y crece capa a capa (`caja-intercambio`: 1-6 en I.3; 7-8 en II.2; 9 en III.1; 10 en III.2). Nunca se dibuja una segunda caja.

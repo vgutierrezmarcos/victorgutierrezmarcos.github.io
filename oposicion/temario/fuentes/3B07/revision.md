@@ -150,6 +150,14 @@ Las 4 del artifact, aplicadas con la opción recomendada a la espera de Víctor:
 - **Sin comprobar por el verificador** (parte 2): Cavallo y otros (2021) y Fajgelbaum y Khandelwal (2022), citados en cualitativo; Johnson (1965) tiene ahora entrada (`Johnson1965Theory`), sin comprobar en línea.
 - **Control de calidad (5/11/2026)**: la URL de Jones Day (sentencia del Supremo sobre la IEEPA, `JonesDay2026IEEPA`) devuelve 403 a la consulta automática (bloqueo de robots); el resto de las URL de la tabla de datos responde y las cifras muestreadas cuadran (OMC: 34,65 billones, NMF del 80 al 72 %, 13,1/8,9, 7,0/3,9 y 6,8/2,2 %; PIIE: 19,3 y 21 % en 2020, 35,2 y 31,9 % el 22/8/2026). Conviene abrir a mano el enlace de Jones Day o sustituirlo por la sentencia (*Learning Resources, Inc. v. Trump*) en supremecourt.gov.
 
+## Enlaces del original (9/11/2026)
+
+Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del original ya estaban en el tema.
+
+- **Restaurado**: vídeo de Economicsfun que anima la curva de oferta neta (nota 9 del original): «Para ver» en la nota de la curva de oferta neta del anexo `anexo:oferta-neta`, la misma frase del original.
+- **Descartado**: el tema 3B-7 de Fabián Salazar (fuente de 2 gráficos del original): es de otro preparador (CRITERIOS § 5); los gráficos son ahora de elaboración propia.
+- **No restaurado**: OMC, *Examen estadístico del comercio mundial 2023* (nota sobre el volumen del comercio mundial): la cifra que respaldaba se ha sustituido por la de 2025 (`OMC2026Perspectivas`). El enlace funciona; si Víctor quiere conservarlo como lectura, se añade al `.bib`.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche**: el refrán «No se le pueden poner puertas al campo», los aranceles «recíprocos» del 2 de abril de 2025 y la sentencia del Supremo de febrero de 2026, y la pregunta «¿Qué consigue un país cuando le pone puertas a su comercio, y quién las paga?». La idea final (parte 2) retoma el refrán. Introducción en `modo: guion`, sin pizarra.

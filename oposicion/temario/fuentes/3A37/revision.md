@@ -168,6 +168,17 @@ Todas con la opción recomendada aplicada.
 - **A37-25** (control de calidad, 5/11/2026). El 3.A.6 (l. 1126) y el 3.A.42 (l. 1019) remiten a este tema diciendo que los VAR y la narrativa «encuentran efectos reales grandes y rápidos», pero aquí la producción cae «poco a poco» y toca fondo al cabo de varios trimestres (I.3). No se toca en esos temas. *Propuesta*: cambiar «grandes y rápidos» por «grandes y con retraso» en los 2 cuando se vuelvan a abrir (anotarlo en `pendientes-coherencia.md`).
 - **A37-26** (control de calidad, 5/11/2026). `transmision-tipos-2022` no usa la paleta pedida (tipo oficial morado, Euríbor gris, crédito en azules, depósitos en verdes): usa la de `canales-transmision` (tipo oficial azul marino, crédito en dorados, depósitos en verdes) y no marca el último dato con un punto. Se lee bien y casa con el gráfico 1. *Recomendada*: dejarla así.
 
+## Enlaces del original (9/11/2026)
+
+Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
+
+- **Restaurados** (9):
+  - En la caja de la introducción (la de la estrategia del BCE): la página del BCE sobre sus funciones en política monetaria (dirección nueva), la del cambio de objetivo de 2021, el artículo de *Economía 3* sobre los objetivos y funciones del BCE y el *Informe Anual 2022* del Banco de España (`BdE2023InformeAnual2022`; la dirección antigua del PDF sigue valiendo).
+  - Los 3 vídeos de Khan Academy sobre la expansión cuantitativa: nota «Para ver» en «Las compras de activos» (III.3).
+  - Las 2 entradas de Blanchard en el blog del PIIE (2021 y 2023, direcciones nuevas): `Blanchard2021LowRates` y `Blanchard2023Secular` (igual que en el 3.A.38), en una nota sobre el tipo natural bajo en el límite inferior (III.1), junto a `Blanchard2023Fiscal`, que estaba en el `.bib` sin citar.
+- **Ya estaban** (por otra vía): Galí (2020) sobre el dinero helicóptero (cepr.org), el artículo del Boletín Económico del BCE de 2018 (Habib y Venditti), la página del BCE sobre la transmisión (en español) y la tabla 50934 del INE.
+- **Descartados**: ninguno.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche y cierre**: «Las cosas de palacio van despacio»; la pregunta, por qué caminos y con qué retraso llega un tipo a un día a los precios, y qué se hace cuando ya no puede bajar. La idea final la retoma: la política monetaria actúa hoy sobre la economía de dentro de 2 años; por eso tiene que mirar hacia delante y ser creíble, porque, cuando el tipo de interés ya no puede bajar, su palabra es lo que le queda. Introducción sin pizarra.

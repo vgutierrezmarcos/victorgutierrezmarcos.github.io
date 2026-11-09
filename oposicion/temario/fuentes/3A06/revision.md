@@ -229,3 +229,10 @@ Aplicados en la fuente (`3A06.tex`, gráficos y ficha); el tema no se ha constru
 
 **Gráficos**: nuevo `phillips-ampliada`; rehechos `barro-gordon` (pasos 2 y 3, rótulos 0 = R, 1 = T, F = D) y `linea-tiempo-nmc` (NEK en verde claro). Los 3 compilados y revisados en PNG.
 
+## Enlaces del original (9/11/2026)
+
+Revisados los enlaces del tema original que no estaban en la versión revisada (CRITERIOS § 4).
+
+- **Restaurados**: nota al pie en el objetivo simétrico del BCE con las 2 páginas del Banco de España que enlazaba el original (nota 25 y el enlace de «instrumentos de política monetaria»), con sus direcciones nuevas (`bde.es/wbe/…`). La de la estrategia ya estaba en el `.bib` (`BdE2026EstrategiaBCE`) pero no se citaba; la de los instrumentos es la entrada nueva `BdE2026InstrumentosBCE`.
+- **Ya cubierto**: la página de la Reserva Federal sobre la revisión de su estrategia redirige hoy a la de 2025, que ya se cita (`Fed2025Revision`).
+- **Descartado**: el enlace de Forvo del retrato de Thomas Sargent apuntaba por error a la pronunciación de Kalecki.

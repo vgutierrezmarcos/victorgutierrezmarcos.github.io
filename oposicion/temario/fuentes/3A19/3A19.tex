@@ -38,7 +38,7 @@
       \item las restricciones de capacidad de \textcite{Edgeworth1897Teoria};
       \item el liderazgo de \textcite{Stackelberg1934Marktform}.
       \end{itemize}
-    \item La teoría de juegos nace con \emph{Theory of Games and Economic Behavior} de \autor{John von Neumann} y \autor{Oskar Morgenstern} \parencite{VonNeumannMorgenstern1944Theory}, centrada en los juegos de suma cero y cooperativos. \textcite{Nash1950Equilibrium} define el equilibrio de los juegos no cooperativos, y después llegan:
+    \item La teoría de juegos\footnote{\textbf{Para ver.} Su historia, de los antecedentes a la actualidad, en \href{https://www.youtube.com/watch?v=KHNnuqmRvAU}{«Game Theory: The Pinnacle of Decision Making»} (Metamorphosis 77, YouTube).} nace con \emph{Theory of Games and Economic Behavior} de \autor{John von Neumann} y \autor{Oskar Morgenstern} \parencite{VonNeumannMorgenstern1944Theory}, centrada en los juegos de suma cero y cooperativos. \textcite{Nash1950Equilibrium} define el equilibrio de los juegos no cooperativos, y después llegan:
       \begin{itemize}
       \item la forma extensiva \parencite{Kuhn1953Extensive};
       \item los juegos repetidos \parencite{Aumann1959Acceptable};
@@ -230,7 +230,7 @@ Son de profundización la existencia, unicidad y estabilidad del equilibrio de \
   \item \concepto{sustitutos estratégicos}: si la rival es más agresiva, a mí me conviene serlo menos, y la función de reacción es decreciente. Es el caso de las cantidades: si la rival produce más, el precio baja y a mí me conviene producir menos;
   \item \concepto{complementos estratégicos}: si la rival es más agresiva, a mí me conviene serlo más, y la función de reacción es creciente. Es el caso de los precios: si la rival baja el suyo, me conviene bajar el mío.\footnote{Formalmente, son sustitutos estratégicos si $\partial^2B_i/\partial x_i\,\partial x_j<0$ y complementos si $\partial^2B_i/\partial x_i\,\partial x_j>0$, con $x_i$ la variable de la empresa $i$. A la izquierda, reacciones decrecientes (cantidades); a la derecha, crecientes (precios). Elaboración propia a partir de \textcite[cap.~3]{ChevalierRoignantTrigeorgis2011Competitive}.\graficonota[0.45]{sustitutos-complementos}}
   \end{itemize}
-\item Con 2 variables (cantidad o precio) y 2 órdenes (a la vez o una detrás de otra) salen los 4 modelos del bloque (tabla~\ref{tab:modelos-oligopolio}).
+\item Con 2 variables (cantidad o precio) y 2 órdenes (a la vez o una detrás de otra) salen los 4 modelos del bloque (tabla~\ref{tab:modelos-oligopolio}).\footnote{Un repaso de estos modelos con gráficos, en \textcite{PoliconomicsOligopolio1} y \textcite{PoliconomicsOligopolio2}.}
 \end{itemize}
 
 \begin{table}[H]
@@ -309,7 +309,7 @@ Son de profundización la existencia, unicidad y estabilidad del equilibrio de \
 \centering
 \caption{Equilibrio de \autor{Cournot} (C): funciones de reacción e isobeneficios}\label{fig:cournot}
 \grafico[0.62\textwidth]{cournot}
-\fuente{elaboración propia a partir de \textcite{PindyckRubinfeld2009Microeconomia}.}
+\fuente{elaboración propia a partir de \textcite{PindyckRubinfeld2009Microeconomia} y \textcite{PoliconomicsCournot}.}
 \end{figure}
 
 \begin{anotaciones}
@@ -435,7 +435,7 @@ Son de profundización la existencia, unicidad y estabilidad del equilibrio de \
 \centering
 \caption{Equilibrio de \autor{Stackelberg} (S): la líder elige sobre la función de reacción de la seguidora el punto de su isobeneficio más bajo}\label{fig:stackelberg}
 \grafico[0.62\textwidth]{stackelberg}
-\fuente{elaboración propia a partir de \textcite{PindyckRubinfeld2009Microeconomia}.}
+\fuente{elaboración propia a partir de \textcite{PindyckRubinfeld2009Microeconomia} y \textcite{PoliconomicsStackelberg}.}
 \end{figure}
 
 \subparagraph{iii) Implicaciones}
@@ -546,7 +546,7 @@ Son de profundización la existencia, unicidad y estabilidad del equilibrio de \
 \centering
 \caption{Capacidad limitada: demanda residual y ciclo de precios de \autor{Edgeworth}}\label{fig:edgeworth}
 \grafico[0.85\textwidth]{edgeworth}
-\fuente{elaboración propia a partir de \textcite[cap.~5]{Vives1999Oligopoly}.}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{Vives1999Oligopoly}, \textcite{PoliconomicsEdgeworth} y \textcite{AulaDeEconomiaOligopolio}.}
 \end{figure}
 
 \begin{anotaciones}
@@ -781,7 +781,7 @@ La tabla de estrategias de los juegos repetidos, los castigos óptimos y la rene
 \begin{itemize}
 \item \emph{El teorema de tradición oral} (\emph{folk theorem}) \emph{aplicado a la colusión}: con $\beta$ suficientemente alto, cualquier precio entre $c$ y $p^M$ puede sostenerse como ENPS \vertema{3.A.14}. Hay \emph{infinitos} ENPS, entre ellos el de $p=c$ en todos los periodos: la teoría dice que la colusión es \emph{posible}, no que ocurra ni a qué precio. Por eso la colusión puede ser \concepto{perfecta}, al precio de monopolio, o \concepto{imperfecta}, a cualquier precio entre $p^c$ y $p^M$.
 \item La colusión es \emph{tácita}: no hace falta comunicarse; basta con que cada empresa entienda que a todas les conviene el precio alto y que una rebaja desataría una guerra de precios. Por eso es tan difícil de perseguir (\ref{sec:limites-cooperacion}).
-\item Además del gatillo hay otras estrategias condicionadas, más indulgentes (tabla~\ref{tab:estrategias-repetidas} y gráfico~\ref{fig:estrategias-automatas}). En los torneos de \textcite{Axelrod1984Evolution} ganó la más sencilla, «donde las dan, las toman» (\emph{tit for tat}); pero no es en general un ENPS: solo lo es para valores muy concretos de $\beta$, porque castigar puede no convenir al que castiga \parencite{KalaiSametStanford1988Note}.\footnote{En el primer torneo, de 200 jugadas por partida, se presentaron 14 estrategias; «donde las dan, las toman», enviada por \autor{Anatol Rapoport}, era la más sencilla y ganó. En el segundo, con un número de jugadas aleatorio para que no hubiera una última jugada especial, se presentaron 62, y volvió a ganar \parencites{Axelrod1980Effective}{Axelrod1980More}.}
+\item Además del gatillo hay otras estrategias condicionadas, más indulgentes (tabla~\ref{tab:estrategias-repetidas} y gráfico~\ref{fig:estrategias-automatas}). En los torneos de \textcite{Axelrod1984Evolution} ganó la más sencilla, «donde las dan, las toman» (\emph{tit for tat});\footnote{\textbf{Para ver.} Las estrategias de los juegos repetidos, explicadas en \href{https://www.youtube.com/watch?v=U7go4HcB1Tc&t=521s}{«Juegos repetidos - Parte 2»} (Universidad Rey Juan Carlos, YouTube, desde el minuto 8:41).} pero no es en general un ENPS: solo lo es para valores muy concretos de $\beta$, porque castigar puede no convenir al que castiga \parencite{KalaiSametStanford1988Note}.\footnote{En el primer torneo, de 200 jugadas por partida, se presentaron 14 estrategias; «donde las dan, las toman», enviada por \autor{Anatol Rapoport}, era la más sencilla y ganó. En el segundo, con un número de jugadas aleatorio para que no hubiera una última jugada especial, se presentaron 62, y volvió a ganar \parencites{Axelrod1980Effective}{Axelrod1980More}.}
 \end{itemize}
 
 \begin{table}[H]
@@ -949,7 +949,7 @@ El ejemplo de la negociación con costes distintos y los casos concretos son de 
 \centering
 \caption{El cártel en el plano de cantidades: curva de colusión e incentivo a desviarse}\label{fig:cartel}
 \grafico[0.62\textwidth]{cartel}
-\fuente{elaboración propia a partir de \textcite{PindyckRubinfeld2009Microeconomia}.}
+\fuente{elaboración propia a partir de \textcite{PindyckRubinfeld2009Microeconomia} y \textcite{PoliconomicsColusion}.}
 \end{figure}
 
 \subparagraph{iii) Implicaciones}

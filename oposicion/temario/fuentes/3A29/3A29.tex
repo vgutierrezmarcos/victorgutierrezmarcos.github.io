@@ -13,7 +13,7 @@
 \item \textbf{\emph{Enganche}}:
   \begin{itemize}
   \item «No dejes para mañana lo que puedas hacer hoy», dice el refrán. La economía responde con un «depende»: si lo que se aparta hoy rinde mañana más de lo que nos cuesta esperar, conviene dejar para mañana parte del consumo de hoy. Y, aunque lo planeemos, no siempre lo cumplimos: el lunes en que íbamos a empezar a ahorrar se convierte en el lunes siguiente.
-  \item En 1928, un matemático de Cambridge de 25 años, \autor{Frank Ramsey}, abrió su artículo sobre el ahorro con una pregunta: ¿cuánto de su renta debe ahorrar una nación? \parencite[p.~543]{Ramsey1928}. Responderla obliga a mirar a la vez el presente y el futuro, a las generaciones de hoy y a las que vendrán.
+  \item En 1928, un matemático de Cambridge de 25 años, \autor{Frank Ramsey},\footnote{Filósofo y matemático, amigo de \autor{Keynes}, murió en 1930 con 26 años: \href{https://es.wikipedia.org/wiki/Frank_P._Ramsey}{«Frank P. Ramsey»} (Wikipedia).} abrió su artículo sobre el ahorro con una pregunta: ¿cuánto de su renta debe ahorrar una nación? \parencite[p.~543]{Ramsey1928}. Responderla obliga a mirar a la vez el presente y el futuro, a las generaciones de hoy y a las que vendrán.
   \item Detrás está la pregunta de esta exposición: ¿cómo se modelizan las decisiones cuando lo que hacemos hoy cambia lo que podremos hacer mañana? ¿Y cambia la respuesta a \autor{Ramsey} según cómo modelicemos el tiempo?
   \end{itemize}
 
@@ -469,7 +469,7 @@ En el cante (\tiempo{8}): el agente representativo (\tiempo{2}), de palabra (la 
 \item \emph{La consistencia temporal}. Con un horizonte largo importa que el plan que se hace hoy se siga cumpliendo mañana.
   \begin{itemize}
   \item Con descuento exponencial y preferencias recursivas se cumple el principio de optimalidad de \autor{Bellman}, y el plan óptimo de hoy sigue siéndolo mañana: las preferencias son \concepto{dinámicamente consistentes}. Si el descuento solo depende de la distancia al presente, el exponencial es el único que lo consigue \parencite{Strotz1955Myopia}.
-  \item La evidencia muestra, sin embargo, que se descuenta mucho entre hoy y mañana y poco entre 2 días lejanos del futuro \parencite{Thaler1981Some}: un descuento \concepto{hiperbólico}, como el generalizado de \textcite{LoewensteinPrelec1992}, o el \concepto{cuasihiperbólico} de \textcite{Laibson1997Golden}, el más usado (gráfico~\ref{fig:descuento})\footnote{La economía del comportamiento, a la que \autor{Thaler} debe el Premio Nobel de 2017 por sus contribuciones a la economía conductual \parencite{Nobel2017Thaler}, escribe el descuento cuasihiperbólico como $U_t=u(C_t)+\beta\sum_{s=1}^{\infty}\delta^s\,u(C_{t+s})$, con $0<\beta,\delta<1$: entre hoy y mañana se descuenta con $\beta\delta$, y entre 2 periodos futuros, con $\delta$. Ojo con las letras: en este modelo $\beta$ es el sesgo por el presente y $\delta$ el factor exponencial, no $1/(1+\rho)$ ni la depreciación del resto del tema. El hiperbólico generalizado es $D(t)=(1+at)^{-\gamma/a}$, con $a,\gamma>0$.}. Con él, lo que hoy se planea para mañana deja de parecer óptimo cuando llega mañana: hay \emph{inconsistencia temporal}, infraahorro y demanda de mecanismos de compromiso, como el ahorro para la jubilación que no se puede sacar antes de tiempo. Es el lunes que se convierte en el lunes siguiente del enganche \vertema{3.A.1}.
+  \item La evidencia muestra, sin embargo, que se descuenta mucho entre hoy y mañana y poco entre 2 días lejanos del futuro \parencite{Thaler1981Some}: un descuento \concepto{hiperbólico}, como el generalizado de \textcite{LoewensteinPrelec1992}, o el \concepto{cuasihiperbólico} de \textcite{Laibson1997Golden}, el más usado (gráfico~\ref{fig:descuento})\footnote{La economía del comportamiento, a la que \autor{Thaler} debe el Premio Nobel de 2017 por sus contribuciones a la economía conductual \parencite{Nobel2017Thaler}, escribe el descuento cuasihiperbólico como $U_t=u(C_t)+\beta\sum_{s=1}^{\infty}\delta^s\,u(C_{t+s})$, con $0<\beta,\delta<1$: entre hoy y mañana se descuenta con $\beta\delta$, y entre 2 periodos futuros, con $\delta$. Ojo con las letras: en este modelo $\beta$ es el sesgo por el presente y $\delta$ el factor exponencial, no $1/(1+\rho)$ ni la depreciación del resto del tema. El hiperbólico generalizado es $D(t)=(1+at)^{-\gamma/a}$, con $a,\gamma>0$. Para ampliar: \href{https://en.wikipedia.org/wiki/Hyperbolic_discounting}{«Hyperbolic discounting»} (Wikipedia), las transparencias de \autor{Mark Hurlstone} \href{https://mark-hurlstone.github.io/Week\%207.\%20Intertemporal\%20Choice.pdf}{«Intertemporal Choice»} y la clase \href{https://ocw.mit.edu/courses/14-13-psychology-and-economics-spring-2020/resources/lec3-time-pref-theory-i/}{«Time Preferences: Theory I»} del curso 14.13 del MIT (OpenCourseWare).}. Con él, lo que hoy se planea para mañana deja de parecer óptimo cuando llega mañana: hay \emph{inconsistencia temporal}, infraahorro y demanda de mecanismos de compromiso, como el ahorro para la jubilación que no se puede sacar antes de tiempo. Es el lunes que se convierte en el lunes siguiente del enganche \vertema{3.A.1}.
     \begin{figure}[H]
     \centering
     \caption{Funciones de descuento exponencial, hiperbólica y cuasihiperbólica}\label{fig:descuento}
@@ -914,7 +914,7 @@ En este anexo, $y_t$ (variable de estado) y $u_t$ (variable de control) son gen�
 
 \begin{itemize}
 \item La \concepto{optimización estática} busca el valor óptimo de unas variables en un momento dado; el tiempo no entra en el problema. Cuando las decisiones de hoy cambian las posibilidades de mañana, hace falta la \concepto{optimización dinámica}, que da una trayectoria óptima completa de cada variable a lo largo del tiempo.
-\item Hay 3 métodos: el cálculo de variaciones, la teoría del control óptimo y la programación dinámica; la exposición los compara (\ref{sec:metodos}, tabla~\ref{tab:metodos}) y el anexo~\ref{anexo:bellman} desarrolla la programación dinámica. Este anexo desarrolla la \emph{teoría del control óptimo}, la de los modelos en tiempo continuo del temario (la q, el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}, los costes de ajuste del empleo), que trata con naturalidad las restricciones sobre los controles y cuyas condiciones tienen una lectura económica directa: el multiplicador es el precio sombra del \emph{stock}.
+\item Hay 3 métodos: el cálculo de variaciones, la teoría del control óptimo y la programación dinámica \parencite{EscotEtAl2002Optimizacion}; la exposición los compara (\ref{sec:metodos}, tabla~\ref{tab:metodos}) y el anexo~\ref{anexo:bellman} desarrolla la programación dinámica. Este anexo desarrolla la \emph{teoría del control óptimo}, la de los modelos en tiempo continuo del temario (la q, el modelo de \autor{Ramsey}, \autor{Cass} y \autor{Koopmans}, los costes de ajuste del empleo), que trata con naturalidad las restricciones sobre los controles y cuyas condiciones tienen una lectura económica directa: el multiplicador es el precio sombra del \emph{stock}.
 \end{itemize}
 
 \paragraph{El problema}
@@ -1098,7 +1098,7 @@ Este anexo completa la pieza común de optimización dinámica (anexos~\ref{anex
   \centering
   \caption{El modelo de Robinson Crusoe: la separación de \autor{Fisher}}\label{fig:robinson}
   \grafico[0.95\textwidth]{robinson-crusoe}
-  \fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite{Hirshleifer1958Optimal}.}
+  \fuente{elaboración propia a partir de \textcite{Fisher1930Theory}, \textcite{Hirshleifer1958Optimal} y \textcite{HETFisherInvest}.}
   \end{figure}
 \end{itemize}
 
@@ -1230,7 +1230,7 @@ Este anexo completa la pieza común de optimización dinámica (anexos~\ref{anex
   \begin{equation*}
   \frac{u'(C_t)}{u'(C_{t+1})}=\frac{1+r}{1+\rho},
   \end{equation*}
-  si el consumo de mañana es muy valioso frente al de hoy (mucha renta hoy, malas perspectivas), el cociente de la izquierda es menor que 1, y con $\rho$ pequeño el tipo real que vacía el mercado es negativo.
+  si el consumo de mañana es muy valioso frente al de hoy (mucha renta hoy, malas perspectivas), el cociente de la izquierda es menor que 1, y con $\rho$ pequeño el tipo real que vacía el mercado es negativo.\footnote{La evolución del tipo real de la deuda de EE.~UU. a 10 años desde 1962, con sus tramos negativos, en \textcite{Esteve2023Tipos}.}
 \item Si los activos son nominales y existe el efectivo, la ecuación pasa a ser
   \begin{equation*}
   \frac{u'(C_t)}{u'(C_{t+1})}=\frac{1+i_t}{(1+\rho)(1+\pi_{t+1})},

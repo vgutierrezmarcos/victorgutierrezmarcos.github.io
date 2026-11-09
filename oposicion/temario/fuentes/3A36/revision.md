@@ -197,6 +197,21 @@ Propuestas de coherencia de la parte 2: K7 (6 anexos: los 5 previstos y el de te
 - **A36-16** (control de calidad, 4/11/2026) Las letras de las citas del mismo autor y año no coinciden entre el PDF y el HTML (en la introducción, el PDF dice Eurostat 2026b y BCE 2026h; el HTML, Eurostat 2026a y BCE 2026i): biblatex y la conversión del HTML ordenan distinto las entradas sin fecha completa. Es del pipeline, no de este tema; cada formato es coherente con su propia bibliografía.
 - Control de calidad (4/11/2026): con correcciones pendientes (Poole con varianzas iguales, cita entre paréntesis dobles en I.2.3, citas de 3 párrafos y retoques del gráfico `poole`); ver el informe de la fase 6.
 
+## Enlaces del original (9/11/2026)
+
+Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
+
+- **Restaurados** (10):
+  - Cajas de la introducción (página del BCE sobre el cambio de objetivo, artículo de *Economía 3* sobre las funciones del BCE) e *Informe Anual 2022* del Banco de España (cita del contexto de la invasión de Ucrania): nota nueva al final del enganche; el informe, como `BdE2023InformeAnual2022` (la dirección antigua del PDF sigue valiendo).
+  - Página del Banco de España sobre la estrategia del BCE (nota 15 del original): dirección nueva, `BdE2026EstrategiaBCE`, citada junto a la evaluación de 2025 (I.3).
+  - MonetaryPolicyRules.org (caja de los instrumentos convencionales): nota «Para ver» al final de la valoración de la regla de Taylor, donde encaja mejor.
+  - Tuit de *elEconomista* (4/3/2021) y tribuna de *La Tribune* (24/6/2021) sobre el dinero helicóptero: nota en el dinero helicóptero; el tuit se sustituye por la noticia a la que enlazaba (Vicente Nieves, «Suecia saca el helicóptero del dinero…»; el sitio bloquea la consulta automática, comprobada a través del tuit).
+  - Líneas de liquidez del BCE (nota 29): dirección nueva, en nota a las operaciones de mercado abierto.
+  - Hilo de @MacroAlf sobre la creación de dinero (título del antiguo anexo 2): en la caja de McLeay, Radia y Thomas.
+- **Ya estaban** (por otra vía): PEPP (`BCE2026PEPP` sustituye a data.europa.eu), Mankiw y Reis (2018) con DOI, Galí (2020) en cepr.org, Nair y Anand (2020) con DOI (era el enlace de ScienceDirect de la estabilidad financiera), el PDF de McLeay, Radia y Thomas (página del boletín), los dos enlaces antiguos de instrumentos del Banco de España (`BdE2026Instrumentos`) y la tabla 50934 del INE.
+- **Descartados**: ninguno.
+- **Para Víctor**: el tuit y el hilo de X pueden borrarse en cualquier momento; si prefiere no enlazar redes sociales, basta con quitar la frase del hilo de la caja de McLeay.
+
 ## Instrucciones para el vídeo
 
 - **Enganche**: «Lo prometido es deuda», arriba a la izquierda; la promesa del BCE (2 % simétrico, 2021 y 2025), 2022 (8,4 %) y octubre de 2026 (4 %, subidas de junio y septiembre).

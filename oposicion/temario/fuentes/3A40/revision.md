@@ -163,3 +163,7 @@ Aplicada en cada una la opción recomendada:
 - **III** (9′): III.1, **a la pizarra** `policy-mix` (los 4 cuadrantes, cada uno con su año: 2009/2020, 2022-2023, R. U. 2022, zona del euro 2012) y la pegatina «juntos, pero no revueltos»; la dominación, de palabra. III.2, **a la pizarra** `nek-limite-inferior` por capas (curva de Phillips, rama de Taylor, codo y rama del límite, E_0, más gasto con m > 1, comparación m < 1); la ecuación `eq:multiplicador-elb` como **apoyo** con los números 1; 1,31; 2,25 frente a 0,87, y `multiplicador-politica-monetaria` también de apoyo. III.3, sin pizarra salvo una línea temporal con las 5 fases y una palabra por fase («juntos», «revueltos»); **apoyo**: `impulso-fiscal-r-menos-g` y `tipos-oficiales`. **Gráfico conjunto**: no hay uno que lo resuma todo; al final la pizarra queda con las 2 funciones clave, el *policy mix* y las 4 pegatinas.
 - **Conclusión** (1′, sin pizarra): empieza por «En conclusión,»; la idea final señala el refrán del enganche y el cuadrante del *policy mix*.
 - **Idea final**: retoma el refrán del enganche y responde a las preguntas: el remedio (la austeridad) fue peor que la enfermedad porque el multiplicador depende del banco central; las 2 políticas son más eficaces «juntas, pero no revueltas».
+
+## Enlaces del original (9/11/2026)
+
+El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada que restaurar.

@@ -197,6 +197,19 @@ Estado de las propuestas:
 6. **Ejemplo de los vecinos** (D8): ¿te convence como hilo del bloque III?
 7. Control de calidad, segunda pasada (22/10/2026): las 10 correcciones están bien en el PDF y en el HTML, `verificar-tema.py` da 0 errores y los párrafos reescritos no comparten con Cerezal ni con el original ninguna secuencia de 7 palabras. Queda 1 incidencia: en el HTML y en el Word, Condorcet sale en el texto como «Condorcet, Marie-Jean-Antoine-Nicolas de Caritat, marqués de (1785)» (4 veces), porque pandoc no lee `shortauthor`. En el PDF sale bien. [hecho, 22/10/2026] En el `.bib`, el autor va ahora como persona (`Condorcet, Marie-Jean-Antoine-Nicolas de Caritat`, sin `shortauthor`): sale «Condorcet (1785)» en el PDF, el HTML y el Word.
 
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A24.tex` y `3A24.bib` (CRITERIOS §4).
+
+- **Restaurados** (4):
+  - Wikipedia, «Ofelimidad» (nota sobre Pareto): nota al pie nueva en el criterio de Pareto de la introducción.
+  - Wikipedia, «May's theorem» (comentario del original): nota al pie en el resultado del teorema de May.
+  - PhilArchive, Nebel (2022) (el original lo atribuía a d'Aspremont y Gevers, 2002): la entrada `Nebel2022Aggregation` ya existía pero no se citaba; se le añade `url` y se cita en una nota nueva tras la tabla de bases informativas.
+  - Policonomics, «Economía del bienestar I: equilibrio general» (fuente del gráfico de la GFPU): `PoliconomicsBienestarEG` en el `\fuente` de `fig:fbs-gfpu-tradeoff`. **Policonomics da error en todo el sitio** (HTTP 500, 9/11/2026): se enlaza la copia de Internet Archive.
+- **Ya estaban**: Morreau, «Arrow's Theorem» (SEP): el tema enlaza la edición de invierno de 2025, que sustituye a la de 2019 y a la dirección sin edición del original.
+- **Descartados**: el enlace a quia.com (CRITERIOS §4).
+- **Para Víctor**: si Policonomics vuelve, cambiar la `url` por la original.
+
 ## Instrucciones para el vídeo
 
 - **Enganche e idea final**: tras leer el título, «Nunca llueve a gusto de todos», dice el refrán, y el veto en el Consejo Europeo de diciembre de 2023. Pregunta: ¿puede una sociedad decidir de forma coherente cuando sus miembros quieren cosas distintas? La idea final la responde: ninguna regla deja contentos a todos (Arrow), pero se puede decidir de forma coherente si se dice qué se valora y qué se sacrifica.

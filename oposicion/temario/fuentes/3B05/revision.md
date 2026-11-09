@@ -185,6 +185,18 @@ Revisión autónoma (Víctor fuera del 31/10 al 9/11/2026). La fuente nueva est�
    - `graficos/mercado-factores` (propuesta C32) está dibujado y compilado, pero el `.tex` no lo usa. Recomendado: no incluirlo (repite lo que muestran las curvas de coste unitario y alargaría el tema). ¿Se queda fuera, o lo incluimos en el anexo de Rybczynski y Jones?
    - Magee (1980) es Stephen P. Magee y Magee, Davidson y Matusz (2005) es Christopher S. P. Magee: son autores distintos, así que las citas salen con iniciales («S. P. Magee», «C. S. P. Magee»). Es correcto; si prefiere evitarlo, habría que citar el de 2005 sin `\textcite` del apellido junto al de 1980.
 
+## Enlaces del original (9/11/2026)
+
+Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del original ya estaban en el tema.
+
+- **Restaurados**:
+  - *The Theory of International Trade* de Haberler (1936) en archive.org (nota 19 del original): `url` y `urldate` en `Haberler1936Theory`.
+  - Semblanza de Haberler en el History of Economic Thought Website y su pronunciación en Forvo (enlaces del nombre en el título del apartado del original): en la nota de II.1 sobre el manual de Haberler. Forvo rechaza las consultas automáticas (403); se da por bueno porque el sitio funciona en el navegador.
+  - Lección de Khan Academy sobre la ventaja comparativa (fuente del gráfico de la frontera de posibilidades del original): en el `\fuente` del gráfico `fig:ricardo-fpp`, sin el parámetro `?modal=1`.
+  - Vídeo de Economicsfun que anima la curva de oferta neta (nota 22): «Para ver» en la curva de oferta neta (II.2).
+  - Diagrama de Lerner del *Glossary of International Economics* de Alan Deardorff (comentario del original): con la dirección nueva (`public.websites.umich.edu`, a la que redirige la antigua), en nota al fundamento de Meade. Responde 403 a las consultas automáticas, pero el glosario sigue publicado.
+- **No restaurados**: OMC, *Examen estadístico del comercio mundial 2023* (nota 4), y ICE, *El sector exterior en 2022* (caja del anexo de evolución reciente): las cifras que respaldaban se han sustituido por datos más recientes (`OMC2026Perspectivas` en la introducción y `MINECO2026InformeDic2025` en el anexo de datos de España). Ambos enlaces funcionan; si Víctor quiere conservarlos como lectura, irían en ese anexo.
+
 ## 8. Instrucciones para el vídeo
 
 (Aún no hay guion ni escenas: entrega 3.)

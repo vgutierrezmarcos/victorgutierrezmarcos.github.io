@@ -216,3 +216,12 @@ Del 3.A.4:
 
 Gráficos nuevos, compilados con `construir-tema.py 3A04 --grafico …` (PDF, SVG y PNG): `cronologia-keynes`, `hoja-trabajo`, `hoja-bienes`, `hoja-dinero`, `patinkin-desequilibrio`, `desequilibrio-racionamiento`. No se ha construido el tema ni la ficha.
 
+## Enlaces del original (9/11/2026)
+
+Revisados los enlaces del tema original que no estaban en la versión revisada (CRITERIOS § 4).
+
+- **Restaurados**:
+  - Caja de las biografías de Skidelsky (contexto de Keynes): el documental de la BBC «Masters of Money» sobre Keynes (estaba en la caja del enganche del original).
+  - Nota al pie en el primer Kalecki del bloque III: su pronunciación en Forvo (en el original, enlazada desde su nombre en la tabla de retratos). Forvo bloquea robots y no se ha podido comprobar que la búsqueda dé resultado.
+  - Llegados del 3.A.5 original, con el contenido que ahora está aquí: en la fuente de la figura de los regímenes de Malinvaud, el esquema de Wikimedia Commons del que salía la imagen del original; nota al pie con la pronunciación de Leijonhufvud en Forvo (mismo aviso).
+- **Trasladados con su contenido al 3.A.5**: la curva de Phillips ya no está en este tema. Phillips (1958) y Samuelson y Solow (1960), fuentes de las imágenes del original, se citan allí con DOI y URL; la conferencia Nobel de Akerlof (2001), con su frase sobre la curva de Phillips, se ha restaurado en el 3.A.5.

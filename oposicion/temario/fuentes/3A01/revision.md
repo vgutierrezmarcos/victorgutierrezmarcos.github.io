@@ -220,6 +220,18 @@ Todas resueltas con la opción recomendada; Víctor puede cambiarlas.
 - **A01-25** (9/11/2026). Mapa de la oposición (`graficos/mapa-temario`, anexo nuevo `anexo:mapa`, gráfico `fig:mapa-temario`): 3.A.1-3.A.7 arriba; 3.er ejercicio en 2 columnas con los colores de `estructura_temario.json` (micro, verdes; macro, cálidos) y una relación por fila en el pasillo central (microfundamentación, rigideces y salarios, el Estado, ahorro e inversión, lo real y lo monetario); los mixtos debajo; al pie, 4.A, 4.B y la econometría (5.B, en gris: no tiene color en la organización del temario). Cada bloque lleva su lista de temas. Decisiones propias: el trabajo (3.A.25-3.A.28) va en «Demanda agregada y oferta agregada», como en la organización; el 5.º ejercicio solo con la econometría (el marketing y el derecho no son ramas de la economía en el sentido del tema). El anexo va el primero, porque es el mapa de todo el temario. Fuente: «elaboración propia a partir de los títulos oficiales del temario y de la organización por bloques de Víctor Gutiérrez Marcos». En el vídeo no se dibuja: es apoyo.
 - **A01-26** (9/11/2026). La reina Isabel II del enganche no va en versalitas: la regla de nombres enteros se aplica a economistas y autores; si Víctor quiere todas las personas, es un cambio de una línea.
 
+## Enlaces del original (9/11/2026)
+
+Revisados los enlaces del tema original que no estaban en la versión revisada (CRITERIOS § 4).
+
+- **Restaurados**:
+  - Caja «Para ver» al final de la introducción (donde estaban en el original): vídeo de Skidelsky (New Economic Thinking), vídeo de Óscar Vara sobre Menger, Hayek y Keynes y la entrada de Wikipedia «Pararse sobre hombros de gigantes».
+  - Nota al pie en la contextualización (Premio Nobel): portal del Premio Nobel de Economía de Wikipedia (el de nobelprize.org ya estaba en `NobelPrize2026Economia`).
+  - Nota al pie en el imperialismo económico: las entradas de Libertad González en Nada es Gratis (era la nota 6 del original).
+  - Nota al pie en «predice peor» (el electrón): cita de Gell-Mann en Page (1999), entrada nueva `Page1999Computational` con DOI y `url`.
+  - Nota al pie en el descuento hiperbólico generalizado: Wikipedia «Hyperbolic discounting», diapositivas de Mark Hurlstone y la lección 3 del MIT OCW (antes fuente de la imagen del original).
+- **Descartados**: stringfixer.com (espejo de Wikipedia; hoy redirige a una tienda) y la versión fijada de Wikipedia (`oldid=1038908957`), que duplica el artículo ya enlazado; ambos estaban en comentarios internos, no en el texto.
+
 ## Instrucciones para el vídeo
 
 - **Enganche y cierre**: tras el título, el refrán «A toro pasado, todos somos Manolete» y la pregunta de la reina en la LSE; la pregunta de la exposición: ¿qué estudia la economía, cómo sabe lo que sabe y qué hace cuando la realidad la desmiente? La idea final (parte 2) retoma el refrán y responde con Lakatos: ante 2008, un cinturón protector más ancho y más realista. El hilo de la reina vuelve en I.2, II.1, II.2 (Popper y Kuhn) y II.3 (supuestos), siempre en su propia viñeta.

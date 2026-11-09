@@ -191,6 +191,25 @@ El artifact de dudas no estaba disponible en esta sesión: las dudas quedan aqu�
 - **Discrepancias de datos** anotadas en la sección 4 (Airbus 2018, SPAC 2025, SpainCap, TTR, Vernimmen 5.ª ed.).
 - Control de calidad (08/11/2026): con correcciones pendientes (devueltas al editor y a tema-tikz). Notas para Víctor: el PDF de Pautler (2001) en ftc.gov responde 403/404 a las comprobaciones automáticas (protección Akamai); datos dice haberlo leído, conviene abrirlo en el navegador. La URL de Forbes de TTR lleva «2024» en la dirección y en el título de la página, aunque el texto da las cifras de 2025 (3.336 operaciones); la entrada del `.bib` titula «en 2025». El 3.B.23 (revisado en paralelo) escribe las siglas en cursiva (`\mathit{ROE}`, `\mathit{PER}`, `$EV$`), y el canon (notacion.md, § 0) y este tema las ponen en redonda: hay que unificar en el 3.B.23.
 
+## Enlaces del original (9/11/2026)
+
+Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del original ya estaban en el tema.
+
+- **Restaurados**:
+  - Economipedia, «Costos de transacción» (nota 2 del original): nota en los costes de transacción (I.1, enfoque transaccional).
+  - Fernández-Villaverde (2016), «Liquidez interna y externa (I)», *Nada es Gratis* (nota 51): entrada `FernandezVillaverde2016Liquidez` del `.bib` (la del 3.B.3) y nota en «El ingreso comprometible».
+  - Vídeo de Date un Voltio sobre el método de Monte Carlo (nota 39): «Para ver» en la nota de la simulación de Monte Carlo (valoración).
+  - Economipedia, «Fusiones y adquisiciones de empresas (M&A)» (lecturas del principio del original): caja «Para leer» al empezar «Operaciones de concentración».
+  - CNMV, página de OPAS (nota 23): en el régimen legal del anexo de la OPA.
+  - Blog *Peón de Dama* (*Expansión*, 4/4/2013), «El caballero blanco, la bella durmiente y Lady Macbeth» (nota 30): nota en las tácticas del anexo de la OPA.
+  - Openbank, «¿Qué es una SPAC?»: la dirección antigua (`openbank.es/open-news/spac/`) da 404; restaurado con la nueva (`openbank.es/open-to-learn/spac`), en nota a las SPAC del anexo de las *start-ups*.
+  - Clemente, González y Olloqui, «Las leyes de Zipf y Gibrat para las migraciones» (PDF de un congreso alojado en la ULPGC; comentario sobre Gibrat y Zipf): en la respuesta a «¿Qué es una ley de potencias? ¿Y la ley de Zipf?».
+- **No restaurados**:
+  - Policonomics, «Economías de escala» y «Costes III: teoría de costes de Stigler» (fuente de 2 gráficos del original): todas las páginas del sitio dan un error de WordPress (500) el 9/11/2026, y los gráficos del tema son de elaboración propia a partir de Bain (1956) y Stigler (1958). Si el sitio vuelve, se pueden añadir como «Para ver».
+  - Deloitte México, PDF sobre los derechos *drag along* y *tag along* (nota 29): 404, sin dirección nueva encontrada.
+  - Agicap, «Love Money…» (Muñoz Tavella, 2022; nota 55): la dirección lleva ahora a la portada del blog; no se ha encontrado el artículo en otra dirección.
+- **Decide Víctor**: el enlace a Thomson Reuters ProView (Aranzadi, monografía 134345413, comentario «Importante verlo» de la introducción) solo funciona con suscripción y no deja ver qué obra es; no se ha restaurado. Si es una obra citable, basta con decir cuál para añadirla al `.bib`.
+
 ## 8. Instrucciones para el vídeo
 
 - Introducción y conclusión sin pizarra. El enganche es «Roma no se hizo en un día»: la idea final lo retoma («Roma no se hizo en un día, y tampoco se compra de un día para otro»).

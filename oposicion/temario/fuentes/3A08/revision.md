@@ -575,3 +575,16 @@ Puesta al día con los criterios del 16/10/2026 (CRITERIOS.md § 2 y «Órdenes 
 - **Apoyo (no se escribe)**: `esquema-ingredientes` que crece en la apertura de I, `preferencias-venn`, `esquema-axiomas` que crece con cada axioma, el 3D `superficie-utilidad-repaso` por estados sucesivos (nunca trazo a trazo) y el gráfico completo de referencia cuando la pizarra solo lleva una parte.
 - **Sin pizarra**: introducción, II.3 y conclusión (modo guion con sus cinco partes).
 - **Enganche e idea final**: la pregunta con que abre el documento se retoma en el cierre.
+
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Ya estaban**: Debreu (1959) en la web de Cowles (dirección nueva, `Debreu1959Theory`), el boletín ICE de Aguilar y Mateos (`AguilarMateos2015Deaton`) y la primera página de Fuleky (copia en web.archive.org, `FulekyAnatomy`: www2.hawaii.edu no responde).
+- **Restaurados**:
+  - «Ofelimidad» (Wikipedia), en la nota de Pareto de la función de utilidad.
+  - «Non-convexity (economics)» (Wikipedia), en la nota del axioma de convexidad.
+  - «Utility», ejemplos (Wikipedia), al principio del anexo de formas de la función de utilidad.
+  - «Elasticidad (economía)» (Wikipedia), en una nota nueva de la elasticidad-renta (Marshall introduce el concepto, con `Marshall1890Principles`).
+  - Segunda parte de *Anatomy of a function* de Fuleky (copia de web.archive.org de 16/1/2026) y su versión en RPubs, en la nota de la cuasiconcavidad.
+- **Descartados**: ninguno.

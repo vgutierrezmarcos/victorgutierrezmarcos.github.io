@@ -172,6 +172,20 @@ En todas se ha aplicado la opción recomendada (o la que fijó el coordinador).
 - **A41-30 · Arreglo de `construir-tema.py`** (coordinador): las filas de grupo con `\multicolumn` salían vacías en HTML y Word por el prefijo `>{\raggedright}` de las columnas; afectaba también a la 1D01, al 3.A.20 y al 3.A.36. Arreglado en el script; las tablas del tema no se han tocado.
 - **A41-31 · Subidas del BCE de 2026**: se citan con la serie de tipos oficiales (`BCE2026Tipos`: facilidad de depósito al 2,25 % el 17/6 y al 2,50 % el 16/9), no con la nota del 29/10, que solo dice que se mantienen.
 
+## Enlaces del original (9/11/2026)
+
+Restaurados:
+- Conferencia del Nobel de Akerlof (nobelprize.org, minuto 20:32): nota al pie de la cita «la relación macroeconómica más importante» (I).
+- Debates de la Fundación Ramón Areces «El retorno de la inflación» y «La inflación y la crisis del coste de la vida» (YouTube) y «Monetarism» de *The History of Economic Thought Website*: caja de anotaciones de la introducción (en el original iban en comentarios al principio del tema).
+- Banco de España, «¿Qué es la estrategia de política monetaria del BCE?» y «¿Cuáles son los instrumentos…?»: con la dirección nueva (bde.es/wbe/…), entradas `BdEEstrategiaBCE` y `BdEInstrumentosBCE`, en una nota al pie del objetivo simétrico del BCE (II).
+- Página de la revisión de la estrategia de la Reserva Federal: la dirección antigua lleva ahora a la revisión de 2025; entrada `Fed2025Revision`, citada con `Fed2025Prensa` en la nota del objetivo de inflación media.
+- Schmitt-Grohé y Uribe (NBER WP 16054): `url` de libre acceso en `SchmittGroheUribe2010Optimal`.
+- «Hiperinflación en la República de Weimar» (Wikipedia): al final de la nota al pie sobre Alemania en 1921-1923.
+
+No restaurados:
+- Phillips (1958) con el DOI de Wiley: la entrada `Phillips1958` ya enlaza el artículo por su DOI de JSTOR.
+- No se han podido abrir desde aquí las páginas nuevas del Banco de España (bde.es no responde a esta máquina): las direcciones salen del buscador; conviene abrirlas una vez.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche e idea final**: «Quien juega con fuego, se quema»: Weimar (precios ×300 en octubre de 1923), la deflación de la zona del euro de 2015 y 2020 y el 4 % de octubre de 2026 con las expectativas ancladas en el 2 %; la pregunta «¿de dónde sale ese fuego y cuánto calor conviene?». La idea final la retoma: «quien juega con fuego se quema, pero una casa sin fuego se hiela» (conclusión).

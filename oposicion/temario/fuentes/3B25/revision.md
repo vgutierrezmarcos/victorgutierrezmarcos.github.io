@@ -230,6 +230,15 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
 - **Imagen de la tulipomanía**: quitada por derechos desconocidos. Si se quiere, la acuarela del *Semper Augustus* (dominio público, Wikimedia Commons).
 - **Control de calidad (8/11/2026): capítulos de Hull.** Contrastados con el índice de la 11.ª ed. (sin el libro delante), cuadran caps. 1-5, 7, 10-12, 19, 25-26 y la tabla 11.1. Quedan 2 dudosos: la aproximación $s\simeq\lambda(1-R)$ está en el cap. 24 («Credit risk»), no en el 25; y la evidencia de la paridad *put-call* (costes de transacción y venta en corto), citada a Hull, cap. 11, que no parece tratarla. Hay que comprobar los dos en el libro.
 
+## Enlaces del original (9/11/2026)
+
+- **Restaurados**:
+  - Wikipedia, «Tulipomanía»: al final de la nota de la tulipomanía.
+  - Bloomberg (21/1/2020), «India Now Has World's Largest Derivatives Exchange by Volume»: entrada `Bloomberg2020India` del `.bib`, citada en la nota de la NSE («ya lo era en 2019»). Bloomberg no deja comprobarla con un robot (403).
+- **Conservados con otra dirección** (ya estaban): la página de *warrants* de la CNMV (ahora `cnmv.es/portal/inversor/Warrants`) y las líneas *swap* del BCE (`BCE2026LineasSwap`).
+- **Sustituido**: la página «About derivatives statistics» del BIS da 404 también sin el parámetro; el tema enlaza el portal de datos del BIS (`BIS2026OTCDerivados`), con las cifras actualizadas.
+- **No restaurado**: brokeronline.es, «Swaps» (caja de anotaciones): el dominio redirige a otro sitio y la página ya no existe.
+
 ## Instrucciones para el vídeo
 
 - **Enganche e idea final**: «Cubrirse las espaldas», el futuro del WTI liquidado a −37,63 $ el 20/4/2020 y la advertencia de Buffett (carta de 2002). Pregunta: «¿sirven los derivados para cubrirse las espaldas o multiplican los riesgos que deberían cubrir?».

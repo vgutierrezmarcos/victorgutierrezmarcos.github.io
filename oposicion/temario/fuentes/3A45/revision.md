@@ -253,6 +253,19 @@ Todas resueltas con la opción recomendada, para que Víctor las confirme:
 - **A45-26** (control de calidad, 1/11/2026) Extensión: 39 págs. de tema frente a las 34 del 3.A.43 y del 3.A.44. Se deja así (el título tiene 3 epígrafes y el tema 13 gráficos). Alternativa: llevar a un anexo el árbol `tipos-convergencia` y la tabla `tab:teorias-convergencia` y aligerar la caja de Piketty (unas 2 págs. menos).
 - **A45-27** (control de calidad, 1/11/2026) Contabilidad del desarrollo de 2023: los «5 más ricos» de la PWT son Irlanda, Noruega, Brunéi, Catar y Suiza (3 exportadores de petróleo y un centro financiero). Recomendada: dar la cifra sin exportadores de petróleo ni centros financieros (47,1 = 1,07 × 2,29 × 19,1, del mismo CSV), más comparable con Hall y Jones (1999). Alternativa: mantener 59,5 diciendo qué países son.
 
+## Enlaces del original (9/11/2026)
+
+Restaurados:
+- Solow (1957), PDF de libre acceso en la web de Piketty: `url` de `Solow1957`.
+- Klenow y Rodríguez-Clare, «Externalities and Growth» (*Handbook of Economic Growth*, cap. 11), la página de Charles Jones (con «Are Ideas Getting Harder to Find?») y el capítulo 6 de los apuntes de Jeffrey Parker (Reed College): caja «Para saber más» de la introducción; en el original iban en comentarios y en la bibliografía. Entradas nuevas `KlenowRodriguezClare2005Externalities` y `Parker2012Empirical`.
+- *Duda*: el capítulo de Parker da 404 en reed.edu y no se ha encontrado otra dirección; se enlaza la copia del Internet Archive (diciembre de 2025). Si Víctor prefiere no enlazar copias archivadas, se quita esa línea.
+
+Ya enlazados de otra forma (no se tocan):
+- Kremer, Willis y You (documento del BFI): `KremerWillisYou2022` enlaza la versión publicada en el NBER.
+- Acemoglu y Molina (NBER WP 28992): en la nota de `AcemogluMolina2022`.
+- Del Río Casasola (2018), eprints.ucm.es: redirige a docta.ucm.es, que es la `url` de `delRioCasasola2018`.
+- t.co/S7U5PS6uDy: lleva a Jones (2023), «The Outlook for Long-Term Economic Growth», ya en la caja «Para saber más» (`Jones2023`).
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche e idea final**: Nogales y «Por sus frutos los conoceréis». La foto (gráfico 1) solo como apoyo, nunca en la pizarra. La idea final vuelve a Nogales y al refrán: la misma tierra y la misma gente dan frutos distintos según las reglas del juego.

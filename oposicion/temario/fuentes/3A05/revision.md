@@ -227,3 +227,14 @@ Bibliografía añadida: Friedman (1948), Friedman (1970, *JPE*), Friedman (1974)
 
 **Para el vídeo** (cuando se rehaga el guion): el cuerpo ya no tiene III; II.3 dura 7′ (monetaria 1′30″, fiscal 1′30″, expectativas 30″, oferta 1′, economía abierta 1′30″, Gran Depresión 1′). En la pizarra, además de $\gamma_M=\overline\gamma_M$, se escribe $\Delta R=\Delta M^D-\Delta D$; las 3 cajas grises, como apoyo o fuera. Las minutaciones de «Instrucciones para el vídeo» de arriba (II.1 2′30″, II.2.1 4′, III.1 5′30″, III.2 3′) quedan sustituidas por estas.
 
+## Enlaces del original (9/11/2026)
+
+Revisados los enlaces del tema original que no estaban en la versión revisada (CRITERIOS § 4).
+
+- **Restaurados**:
+  - Nota al pie en los cheques escolares de Friedman: vídeo de VisualEconomik sobre el sistema educativo sueco (nota 4 del original).
+  - Nota al pie tras la frase de Bernanke en el 90 cumpleaños de Friedman: la entrada «“You're right, we did it…”, twice!» del blog Macro Thoughts.
+  - Nota al pie en el *plucking model*: la explicación de Roger Garrison (Auburn), el artículo de *Business Insider* (2015) y el vídeo de Russ Roberts (Hoover Institution) (nota 11 del original).
+  - Nota al pie en Phillips (1958): la conferencia Nobel de Akerlof (2001), que en el original estaba en el 3.A.4, con la curva de Phillips, que hoy está en este tema.
+- **Trasladados al 3.A.4** con su contenido: el esquema de Wikimedia Commons de los regímenes de Malinvaud y la pronunciación de Leijonhufvud en Forvo.
+- **No restaurados**: el enlace t.co de los apuntes de Monacelli (Bocconi) lleva a un archivo de Google Drive que ya no existe (404); el documento de scholar.smu.edu (O'Neil Center) devuelve 403 y no se ha podido identificar su título para citarlo. Si Víctor sabe cuál era, basta con añadirlo a la nota del *plucking model*.

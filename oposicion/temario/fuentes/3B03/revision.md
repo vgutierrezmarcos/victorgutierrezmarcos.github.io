@@ -159,6 +159,16 @@ Víctor está fuera y el artifact de dudas no está disponible en esta sesión: 
 - El límite de Lohmann-Ruchti (en torno a 18 barcos, 2n/(n+1) veces la flota) es un cálculo propio con el ejemplo del original.
 - `construir-tema.py` dejó `tercer-ejercicio/3B03-anterior.pdf` y `.docx` (copia de la versión publicada, como en otros temas).
 
+## Enlaces del original (9/11/2026)
+
+Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del original ya estaban en el tema.
+
+- **Restaurados**:
+  - Vídeo de AllThingsMathematics sobre las proposiciones I y II de Modigliani y Miller con impuestos (`youtube.com/watch?v=DoLc5CCqd3g`): nota «Para ver» en el escudo fiscal (II.3, i) Los impuestos), donde la nota 27 del original.
+  - Noticia de *Cinco Días* del 23/7/2021 sobre el fin de la recomendación del BCE de no repartir dividendos: enlace en la nota de los dividendos de los bancos (III), donde estaba en el original.
+- **Ya conservado por otra vía**: el PDF de Wiley de Miller (1977), «Debt and Taxes» (nota 30 del original), es `Miller1977Debt`, que lleva el DOI (enlace en la bibliografía); no se añade el enlace al PDF, que exige suscripción.
+- **Descartados**: ninguno.
+
 ## Instrucciones para el vídeo
 
 - **Enganche**: «no hay que matar la gallina de los huevos de oro» y el recorte del dividendo de Telefónica, con la pregunta «¿se equivocó el mercado?». El dicho, en la esquina superior izquierda hasta el final. **Idea final**: la gallina se alimenta primero con lo de casa, se endeuda mientras el ahorro fiscal compense el riesgo de quiebra y solo conviene dejarle los huevos si los multiplica más deprisa de lo que exigen sus dueños; el recorte de Telefónica se juzgó por lo que decía de la gallina. La introducción y la conclusión, sin pizarra (modo guion); la conclusión empieza por «En conclusión,».

@@ -150,6 +150,23 @@ Revisión autónoma (Víctor fuera del 31/10 al 9/11/2026): las dudas llevan apl
 | A42-18 | `tab:calibracion`: σL/σ(Y/L) del modelo estándar de Hansen y Wright | Control de calidad (4/11/2026): el 0,53 del tema es σ(Y/L)/σY; el artículo da **0,94** («σh/σw has increased from 0.94», p. 10 del QR 16(2)), y solo 0,94 es compatible con σL/σY = 0,49 y corr = 0,93. Corrección pedida al editor aquí; **el 3.A.6 (l. 814) y su CSV `hechos-estilizados-eeuu.csv` (fila sh_sw) tienen el mismo error** y hay que corregirlos en su propia revisión | — |
 | A42-19 | Avisos de verificar-tema «cifra sin cita» (4) | Control de calidad: los 4 son falsos positivos (fechas de los enlaces de *The Economist* y *The Conversation*, «2008 y 2020» en la nota al opositor y la lista de fechas del anexo de test); no requieren cita | — |
 
+## Enlaces del original (9/11/2026)
+
+Restaurados:
+- *The History of Economic Thought Website*, «Business Cycle Theory» (fuente del apartado I en el original) y las clases de la UNED de Sonia Benito Muela («Tema 6. Los ciclos económicos» y la serie «Macroeconomía. Demanda agregada», de donde salía un gráfico del original): caja de anotaciones de la introducción.
+- BBVA Research, «(Im)productividad: ¿la enfermedad española?» (2020): entrada `BBVA2020Improductividad`, citada en la productividad contracíclica de España (I.2).
+- «Equilibrio de manchas solares» (Wikipedia): al final de la nota al pie de las manchas solares de Jevons.
+- «Slutsky» (Wiktionary, pronunciación): nota al pie nueva en Slutsky (1937).
+- Repositorio DSGE_mod de Johannes Pfeifer (GitHub): caja de anotaciones del ciclo real, para simular el modelo en Dynare (en el original era la fuente de unos gráficos de otro preparador; los del tema son de simulación propia).
+- Nota de la OCDE sobre filtros de paso banda (oecd-ilibrary ya no existe): entrada `Yamada2011Note` con su DOI, citada en el anexo del filtro HP.
+- JSTOR 2646708: como `url` de `BaxterKing1999Measuring`. *Duda*: JSTOR no se deja abrir desde aquí; por el contexto (nota del filtro de paso banda) y el número es el artículo de Baxter y King (1999), pero conviene comprobarlo.
+- Sims, Wu y Zhang, «The Four Equation New Keynesian Model» (dirección nueva en sites.nd.edu): entrada `SimsWuZhang2023Four`, citada en los bancos del ciclo financiero (en el original era una nota al opositor).
+
+No restaurados:
+- Tema 3A-41 de otro preparador (fabiansalazar.es): CRITERIOS § 5.
+- Galí (2018) en la AEA: ya enlazado por el DOI de `Gali2018State`.
+- *Informe Anual 2022* del Banco de España y BBVA Research, «La economía española en el primer año de la guerra de Ucrania» (observatorio del ciclo de abril de 2023): el tema revisado ya no habla de 2022 y cita la edición de octubre de 2026 del observatorio (`BoscaEtAl2026Observatorio`). Si Víctor quiere la de 2023 como lectura, iría en la caja de III.
+
 ## 8. Instrucciones para el vídeo
 
 - **Pizarra** (parte 1): arriba, la franja `historia-ciclo`, que crece con el cante; a la izquierda, el refrán y las pegatinas; en el centro, `ciclo-tendencia` (I.1) y el panel izquierdo de `multiplicador-acelerador` (regiones); a la derecha, recuadrada y conservada hasta el final, la ecuación de Samuelson `eq:samuelson`. Apoyo (no se dibujan): `filtro-hp-espana`, `fases-ciclo-brecha`, `comovimientos` y la tabla de hechos.

@@ -159,6 +159,21 @@ Fuentes: `propuestas-contenido.md` (C1-C24) y `propuestas-coherencia.md` (K2-K20
 - **Páginas sin comprobar**: Ostrom (1990), pp. 61-65 (Törbel), y Ostrom y Ostrom (1977), pp. 7-49 o 7-47.
 - **Stern (2007)**: la frase «el mayor fallo de mercado que el mundo ha visto» es la del resumen ejecutivo del informe; no se ha comprobado la página.
 
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A23.tex` y `3A23.bib` (CRITERIOS §4).
+
+- **Restaurados** (7):
+  - Wikipedia, «Ofelimidad» (nota sobre Pareto): nota al pie nueva en el criterio de Pareto de la introducción.
+  - Vídeo «Balizas y boyas en la economía» (UFM; nota del faro): nota «Para ver» en la nota del faro de Coase (bienes públicos).
+  - Sala-i-Martín, «El teorema de Coase (descanse en paz, Professor)» (2013; bibliografía del original): entrada `SalaiMartin2013Coase`, en una nota al enunciar el teorema de Coase.
+  - Wikipedia, «Régimen de comercio de derechos de emisión de la UE» (nota del RCDE): nota al pie en la evidencia del RCDE.
+  - Katalepsis, «El coste de lo gratis y la ilusión fiscal» (2015; nota de la imposición indirecta): nota al pie en la ilusión fiscal.
+  - CADEP (UFM), «Regulatory capture (teoría de la captura)» (nota de la captura del regulador): en la caja «Para ampliar sobre la captura del regulador». **La página da 404**: se enlaza la copia de Internet Archive (junio de 2021).
+  - Wikipedia, «Debate sobre el cálculo económico en el socialismo» (comentario del original): nota al pie al presentar el debate (fallos del sector público).
+- **Descartados**: el enlace a quia.com (CRITERIOS §4) y el tema de Sahuquillo (alfonsosahuquillo.com), de otro preparador (CRITERIOS §5).
+- **Para Víctor**: la nota de Katalepsis es divulgación; el original la usaba para decir que los países escandinavos financiaron el Estado del bienestar con impuestos indirectos, afirmación que no se ha comprobado y no se recupera en el texto.
+
 ## Instrucciones para el vídeo
 
 - **Enganche**: «Unos por otros, la casa sin barrer» y el hecho de 2026 (objetivo del 90 % y RCDE 2 aplazado); la idea final debe retomar el refrán.

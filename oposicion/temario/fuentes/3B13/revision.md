@@ -251,6 +251,18 @@ El artifact de dudas no está disponible en esta sesión: en cada duda se ha apl
 - **Para Víctor (sin cambiar aún):** ¿se actualiza CRITERIOS §2 para que el anexo de test liste las preguntas oficiales con el apartado donde se contestan (como el 3.B.13, el 3.B.23 y el 3.B.25), en lugar de un único enlace genérico al simulador? Recomendada: sí.
 - Q2 (aplicado: mención en II.2.2 y II.2.3). Dos preguntas oficiales etiquetadas 3.B.13 tratan temas que el tema no cubre: los euromercados (julio de 2021, n.º 40) y la exposición económica al riesgo de cambio de Williamson (2001; el enunciado dice «William») (julio de 2022, n.º 40). Se pide al editor una mención breve de cada una. Si Víctor prefiere tratarlos en otro tema, habría que volver a etiquetar esas preguntas.
 
+## Enlaces del original (9/11/2026)
+
+- **Restaurados**:
+  - Cinco Días (2016), «¿Cuál es la mejor hora para ganar dinero en Bolsa?» (pie de una imagen del original): entrada `StumpfArevalo2016Bolsa` del `.bib` citada en el `\fuente` del gráfico de las sesiones. El original lo atribuía a «Trincado, B.»; los autores, según la propia página, son Andrés Stumpf Guirao y Alicia Arévalo.
+  - FOREX.com, curso de introducción a los mercados (pie de la imagen de cómo se lee un par): la dirección antigua (`/ie/…/trading-forex/`) ya no aparece; se pone la nueva del mismo curso (`https://www.forex.com/en/trading-academy/courses/introduction-to-financial-markets/forex-trading`), en el `\fuente` del gráfico del par. El sitio no deja comprobarla con un robot (403); la encuentra el buscador.
+  - Investopedia, «Market Maker»: en la nota al pie de los creadores de mercado (sin el fragmento `#:~:text`).
+  - Vídeo «High Frequency Trading» (WEED, YouTube): nota «Para ver» en el arbitraje por latencia, donde estaba en la caja.
+  - *Financial Times* (febrero de 2018) sobre la disputa Draghi-Mnuchin: nota al pie tras `BCE2018Draghi`. El FT no deja leer la página sin suscripción; no se ha podido comprobar el titular, por eso va sin título.
+- **Conservados con otra dirección** (ya estaban en el tema): Kallianiotis (versión definitiva del artículo), líneas de liquidez del BCE (`BCE2026LineasLiquidez`), De Grauwe y Rovira (CESifo WP 1849, vía RePEc).
+- **Sustituidos por la edición vigente**: la Encuesta Trienal del BPI de 2022 (`rpfx22`, `rpfx22_fx.pdf`) y la del Banco de España de 2019: el tema usa las de 2025, con enlace (`BIS2025Trienal`, `BIS2026TrienalDatos`, `BdE2025EncuestaTablas`).
+- **No restaurados**: FVP Trade, «Understanding Forex Quotes» (el dominio ya no responde y no hay dirección nueva); la «noticia» de Deutsche Bank Research (el enlace lleva a la portada; sin título no se puede localizar); Wikipedia e Investopedia sobre la crítica de Roll: hablan de la crítica de Roll (1977) al CAPM, y la nota de este tema es otro resultado de Roll (1979, la PPA y la eficiencia); esos enlaces van en el 3.B.23, donde está la crítica al CAPM.
+
 ## Instrucciones para el vídeo
 
 - **Sin pizarra**: la introducción y la conclusión. En una esquina: «quien no arriesga, no gana» y «9,5 billones $/día».

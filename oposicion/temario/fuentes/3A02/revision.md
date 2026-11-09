@@ -243,6 +243,19 @@ Ninguna bloquea el tema: todas se han resuelto con la opción recomendada.
 - **A02-23 (Say)**: Víctor permite integrarlo en Smith. Opción aplicada: se mantiene II.2 propio (1′), en viñetas y con caja gris, para no tocar el esquema ni el reparto; la «ley de Say antes de Say» de Smith remite a él. Integrarlo en II.1 cambiaría la numeración de II.
 - **A02-24 (rótulos de los modelos dentro de las líneas)**: como el nombre del modelo ocupa el `\paragraph`, a)-e) van en `\subparagraph` y i)-iii) como rótulos en negrita y cursiva (no hay un nivel de título más bajo). Es lo que admite `verificar-tema.py` (como el 3.A.9).
 
+## Enlaces del original (9/11/2026)
+
+Revisados los enlaces del tema original que no estaban en la versión revisada (CRITERIOS § 4).
+
+- **Restaurados**:
+  - Nota al pie de Hesíodo (anexo de los comienzos): el mito de la caja de Pandora (TED-Ed), que era la nota 57 del original.
+  - Nota al pie de Sancho de Moncada (anexo de precursores): su entrada de Wikipedia (nota 61 del original).
+  - Caja de la ley de Say: la entrada «Ley de Say» de Wikipedia (estaba en la nota de James Mill).
+  - Caja del *Ensayo* de Malthus: vídeo de VisualEconomik sobre el colapso demográfico (estaba en «Contexto, método y obra» de Malthus).
+  - Caja «Para ampliar» del final: vídeos «Classical Economics» (Rethinking Economics Norge) y «David Ricardo in One Minute» (este último enlazado en el original desde el nombre de Ricardo).
+- **Ya cubiertos por otra vía**: la *Riqueza de las naciones* (PDF de ibiblio.org) y los *Principles* de Ricardo (Google Books) ya llevan enlace al texto completo en Project Gutenberg (`Smith1776Wealth`, `Ricardo1817Principles`).
+- **No restaurados**: el vídeo de Juan Ramón Rallo sobre el valor trabajo (youtu.be/F0eJgIcDNo4) es hoy privado y no se ha encontrado otra copia; la fuente de Policonomics de la imagen de Malthus devuelve error 500 en todo el sitio (9/11/2026) y la imagen se ha sustituido por un gráfico propio.
+
 ## Instrucciones para el vídeo
 
 - **Enganche e idea final**: el refrán «cada uno habla de la feria según le va en ella», arriba a la izquierda de la pizarra, con la estatua de Tréveris (2018) y el tricentenario de Smith (2023) como apoyo (fotos de dominio público si se encuentran; si no, solo texto). La pregunta: ¿de dónde sale la riqueza de una nación y quién se la queda? La idea final (parte 2) la responde con el mismo refrán: Smith y Ricardo hablan desde el capitalista que ahorra, Malthus desde el terrateniente y Marx desde el obrero.

@@ -203,6 +203,16 @@ Todas aplicadas con la opción recomendada; para que Víctor las confirme.
 - **B28-23** (control de calidad, 3/11/2026) En el Word, las llaves de `\underbrace` de la función clave `eq:sesgo-seleccion` y de la demostración del anexo C salen como un signo diminuto bajo la etiqueta, sin abarcar el término (conversión de pandoc a OMML; pasa igual en los demás temas con `\underbrace`). No es del tema sino de la conversión: el PDF y el HTML están bien. Si molesta, se cambia en el conversor para todos.
 - **B28-24** (control de calidad, 3/11/2026) Sobre B28-18: el WDR 2024 dice, en efecto, 108 países de renta media con unos 6.000 millones de personas (el 75 % de la población mundial); la cifra del tema es la del informe, falta solo la segunda fuente independiente.
 
+## Enlaces del original (9/11/2026)
+
+- **Restaurados**:
+  - El Orden Mundial, «La teoría del centro-periferia» (pie de un mapa del original): `\href` en una nota nueva al final de «La correa de transmisión rota».
+  - Del Río Casasola (2018), tesis *Análisis centro-periferia en la UE-20 (1995-2014)*: entrada `DelRio2018CentroPeriferia` del `.bib` con la dirección nueva del repositorio de la UCM (`docta.ucm.es/handle/20.500.14352/17069`; la antigua de eprints redirige), citada en la misma nota.
+  - Wikipedia, «Índice de desarrollo humano» y «Anexo:Países por índice de desarrollo humano»: en el `\fuente` del gráfico del IDH.
+  - Wikipedia, «Modelo de Harris-Todaro»: nota al pie del modelo.
+  - Vídeo de Ha-Joon Chang, «Why Are Some Countries Rich and Others Poor?» (New Economic Thinking): «Para ver» al final de la nota de la ISI (el original lo tenía en una nota de la escuela estructuralista).
+- Ninguno descartado.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche e idea final**: «Unos nacen con estrella y otros estrellados»; Kenia frente a España (20 años de vida y 8 veces la renta). La idea final (parte 2) responde que la estrella no es un destino.

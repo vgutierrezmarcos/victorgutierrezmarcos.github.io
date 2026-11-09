@@ -181,6 +181,15 @@ El artifact de dudas no estaba disponible en esta sesión: todas las dudas queda
 - **DOI** de Teichroew et al. (1965) y Corrado et al. (2009): los dio contenido de memoria; comprobar en doi.org antes de publicar. *Control de calidad (08/11/2026)*: los 2 resuelven en doi.org y Crossref da el mismo título, volumen y páginas que el `.bib`.
 - **Control de calidad (08/11/2026), fuera del tema (conversor y CSS)**: (1) en el HTML, el esquema pierde los números que van tras `\quad` («1. Variables… . Principios…»: falta el «2.»); pasa igual en el 3.A.34 y en los demás temas que escriben varios epígrafes en una línea del esquema: hay que arreglarlo en el conversor a HTML, no en cada tema. (2) En modo oscuro, las filas con `\rowcolor{tceesalvia}` (aquí, «¿Coinciden?» de la tabla del VAN y la TIR) conservan el fondo claro y el «Sí» verde claro apenas se lee: es del CSS común de los temas.
 
+## Enlaces del original (9/11/2026)
+
+Restaurados:
+- Fernández-Villaverde, «Liquidez interna y externa (I)», *Nada es Gratis* (2016): entrada `FernandezVillaverde2016Liquidez`, citada en la nota de los Nobel de Holmström y Tirole (II, la liquidez como seguro). En el original era la fuente del efectivo de las empresas del S&P 500, dato que el tema actualiza con Damodaran (2026).
+- «¿En qué consiste el Método Montecarlo?» (*Date un Voltio*, YouTube): nota al pie nueva en la simulación de Monte Carlo (I.4).
+
+No restaurados:
+- Wolters Kluwer, *Guías jurídicas*, «Tasa Interna de Retorno Modificada (TIRM)»: da 404 y no se ha encontrado la dirección nueva (la guía es de pago y su dirección cambia con cada sesión). La TIRM del tema no depende de ella.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche e idea final**: el refrán «Más vale un hoy que dos mañanas» abre (con Intel en Magdeburgo y la pregunta «¿cómo decide una empresa qué proyectos acometer, y qué rentabilidad tiene que exigirles?») y vuelve en la idea final (parte 2): más vale un hoy que dos mañanas, salvo que esos 2 mañanas, descontados al coste del capital, valgan más. Introducción y conclusión sin pizarra (`modo: guion`), con el refrán en la esquina superior izquierda.

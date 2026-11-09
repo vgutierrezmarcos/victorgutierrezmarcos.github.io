@@ -155,6 +155,17 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada de
 
 **Otras**: la frase reservada de Joan Robinson (mapa a escala 1:1) no encaja aquí. El tema es largo (unas 15.500 palabras de fuente, con los anexos): el cante se ciñe a las notas al opositor. Compilado con `construir-tema.py 3A15` (PDF, HTML y Word) y comprobado con `verificar-tema.py`: **0 errores**, 4 avisos (2 «cifra sin cita» en las cajas de lecturas, falsos positivos por las URL, y la falta de `guion-cante.md` y `escenas.yaml`, de la fase de vídeo); 33 páginas de tema, 4 de anexos y 8 de bibliografía (45 en total), 0 cajas desbordadas.
 
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Restaurados**:
+  - Los vídeos de Policonomics, con dirección nueva en su canal de YouTube (policonomics.com da error 500 el 9/11/2026), como «Para ver» en notas: «C.5 Economías de escala» (escala mínima eficiente), «C.6 Subaditividad» y «C.7 Economías de alcance».
+  - Vídeo «La empresa que estafó a todo un país. Caso Enron» (Emprende Aprendiendo), en una nota de los escándalos financieros y el gobierno corporativo.
+  - Economipedia, «Costos de transacción», en una nota de la definición de Coase (`Economipedia2026CostosTransaccion`; la web bloquea las consultas automáticas, pero la página existe).
+  - Las 2 introducciones a la economía industrial de la bibliografía antigua, en una nota «Para repasar» al empezar la Teoría de la Organización Industrial: diapositivas de la Universidade de Vigo (`UVigoEconomiaIndustrial`) y de Matilde Machado, UC3M (`Machado2006Introduccion`; eco.uc3m.es da 403, así que se enlaza la copia de web.archive.org de 2020).
+- **No restaurado**: Policonomics, «Costes III: teoría de costes de Stigler» (página de texto, sin dirección nueva; el sitio da error 500).
+
 ## Instrucciones para el vídeo
 
 - **Introducción y conclusión, sin pizarra** (`modo: guion`). Enganche: Coase, con 20 años, cruza el Atlántico en 1931 con una beca; Lenin quería una economía como una gran fábrica, los economistas occidentales decían que era imposible y, sin embargo, en Occidente había fábricas enormes. Pregunta: «Si el mercado coordina tan bien, ¿por qué existen las empresas? Y, si dentro de una empresa se planifica con éxito, ¿por qué no se organiza toda la economía como una sola?». La idea final la responde retomando a Lenin y a los profesores de Coase: los 2 cuestan; hay empresas porque los contratos no lo prevén todo, y no hay una sola porque la jerarquía también tiene costes: islas de organización en un mar de mercado.

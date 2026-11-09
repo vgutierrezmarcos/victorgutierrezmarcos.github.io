@@ -411,7 +411,7 @@ $u'''(x)$ & $0$ (sin prudencia) & $\theta(\theta+1)x^{-\theta-2}>0$ (prudente)\\
 \paragraph{Distribución de probabilidad: dominancia estocástica}
 
 \begin{itemize}
-\item Hasta aquí hemos visto si una lotería es preferida a otra \emph{por un consumidor concreto}. Pero ¿hay loterías que \emph{todos} prefieren, sea cual sea su $u$? La \concepto{dominancia estocástica} responde con condiciones sobre las distribuciones $F$ y $G$, que son objetivas \parencites{HadarRussell1969Rules}{HanochLevy1969Efficiency}.
+\item Hasta aquí hemos visto si una lotería es preferida a otra \emph{por un consumidor concreto}. Pero ¿hay loterías que \emph{todos} prefieren, sea cual sea su $u$? La \concepto{dominancia estocástica} responde con condiciones sobre las distribuciones $F$ y $G$, que son objetivas \parencites{HadarRussell1969Rules}{HanochLevy1969Efficiency}.\footnote{\textbf{Para ver.} \href{https://www.youtube.com/watch?v=pNmX7g-FRrw}{«An Overview of Stochastic Dominance»} (EconJohn, YouTube). Una aplicación de los dos órdenes de dominancia, con gráficos, a la elección de un decisor averso al riesgo entre mapas de riesgo de plagas, en \textcite{Yemshanov2013Quantifying}.}
 \item \concepto{Dominancia estocástica de primer orden}: $F$ domina a $G$ si la prefiere todo consumidor que prefiere más riqueza a menos, sea cual sea su actitud ante el riesgo:
   \begin{align*}
   &\int u(x)\,dF(x)\geq\int u(x)\,dG(x)\ \ \text{para toda } u \text{ no decreciente}\\
@@ -717,7 +717,7 @@ En el cante de \ref{sec:limitaciones} (\tiempo{3,5}): \autor{Friedman}-\autor{Sa
 \paragraph{Violaciones del axioma de independencia: la paradoja de \autor{Allais}}
 
 \begin{itemize}
-\item Desde los años 50, los experimentos que observan las elecciones reales ante el riesgo encuentran \concepto{violaciones sistemáticas} de la utilidad esperada. La más conocida es la \concepto{paradoja de \autor{Allais}}. \textcite{Allais1953Comportement} planteó sus preguntas en un coloquio sobre el riesgo celebrado en París en 1952:\footnote{\autor{Maurice Allais} recibió el Premio Nobel de Economía en 1988 «por sus contribuciones pioneras a la teoría de los mercados y a la utilización eficiente de los recursos» \parencite{Nobel1988Allais}: no por la paradoja.} pares de loterías en los que la mayoría elige de una forma que ninguna utilidad esperada puede racionalizar. \autor{Allais} encontró evidencia contraria al axioma de independencia, y en particular un \concepto{efecto certeza}: se prefieren de forma desproporcionada los pagos seguros.
+\item Desde los años 50, los experimentos que observan las elecciones reales ante el riesgo encuentran \concepto{violaciones sistemáticas} de la utilidad esperada. La más conocida es la \concepto{paradoja de \autor{Allais}}.\footnote{\textbf{Para ver.} \href{https://youtu.be/FMEApkB4vUo}{«Teoría de la decisión 14: la paradoja de Allais»} (Juan Carlos Aguado Franco, YouTube).} \textcite{Allais1953Comportement} planteó sus preguntas en un coloquio sobre el riesgo celebrado en París en 1952:\footnote{\autor{Maurice Allais} recibió el Premio Nobel de Economía en 1988 «por sus contribuciones pioneras a la teoría de los mercados y a la utilización eficiente de los recursos» \parencite{Nobel1988Allais}: no por la paradoja.} pares de loterías en los que la mayoría elige de una forma que ninguna utilidad esperada puede racionalizar. \autor{Allais} encontró evidencia contraria al axioma de independencia, y en particular un \concepto{efecto certeza}: se prefieren de forma desproporcionada los pagos seguros.
 \item Podemos ilustrar la paradoja con el siguiente ejemplo (tabla~\ref{tab:allais}), con 2 juegos y 2 loterías en cada uno:
   \begin{itemize}
   \item en el \emph{juego~1}, la mayoría elige $A_1$: ofrece un pago esperado mayor ($0{,}75\cdot 110=82{,}5$ frente a $0{,}80\cdot 100=80$) y la diferencia en la probabilidad de cobrar algo (75\,\% frente a 80\,\%) parece poco importante;
@@ -1040,7 +1040,7 @@ En el cante de \ref{sec:probabilidad-subjetiva} (\tiempo{3}): la definición de 
 \centering
 \caption{La paradoja de Ellsberg: urna conocida y urna ambigua}\label{fig:ellsberg}
 \grafico[0.55\textwidth]{ellsberg}
-\fuente{elaboración propia a partir de \textcite{Ellsberg1961Risk}.}
+\fuente{elaboración propia a partir de \textcite{Ellsberg1961Risk} y \textcite{Neuroprofiler2022Ellsberg}.}
 \end{figure}
 
 % --------------------------------------------------------------------------
@@ -1192,7 +1192,7 @@ Con los axiomas de \autor{Savage}, la incertidumbre se reduce al riesgo con prob
 % ==========================================================================
 \section{La función de utilidad de \autor{von Neumann} y \autor{Morgenstern}:\newline una utilidad «cardinal que es ordinal» (\autor{Baumol}, 1958)}\label{anexo:cardinal}
 
-Este anexo no se canta: precisa en qué sentido es cardinal la utilidad esperada (\ref{sec:ingredientes}), de forma coherente con la teoría del consumidor \vertema{3.A.8}.
+Este anexo no se canta: precisa en qué sentido es cardinal la utilidad esperada (\ref{sec:ingredientes}), de forma coherente con la teoría del consumidor \vertema{3.A.8}. Véase también \href{https://en.wikipedia.org/wiki/Cardinal_utility}{«Cardinal utility», Wikipedia}.
 
 \begin{itemize}
 \item \emph{Escalas de medida} \parencite{Stevens1946Theory}: lo que una escala permite decir depende de las transformaciones que la dejan igual de válida (tabla~\ref{tab:escalas}).
@@ -1215,7 +1215,7 @@ De razón & Peso, longitud & Proporcional, $a\,x$ & \textcolor{tceeverde}{$\chec
 Absoluta & Recuento & Ninguna & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
 \bottomrule
 \end{tabular}
-\fuente{elaboración propia a partir de \textcite{Stevens1946Theory}; la escala absoluta es un añadido posterior a su clasificación.}
+\fuente{elaboración propia a partir de \textcite{Stevens1946Theory}; la escala absoluta es un añadido posterior a su clasificación. Más detalle en \href{https://en.wikipedia.org/wiki/Level_of_measurement}{«Level of measurement», Wikipedia}.}
 \end{table}
 
 \begin{itemize}

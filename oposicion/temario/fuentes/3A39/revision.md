@@ -181,6 +181,17 @@ Aplicada en todas la opción recomendada; Víctor puede cambiarlas al volver.
 - **A39-22. Enlaces no comprobables desde la red del Ministerio** (control de calidad, 4/11/2026): el datamapper del FMI (`FMI2026WEO`, responde 403 a peticiones automáticas) y el Observatorio de deuda de la AIReF (sin respuesta). Los demás enlaces de la tabla de datos responden. Conviene abrirlos a mano al aprobar.
 - Control de calidad (4/11/2026): con correcciones pendientes de texto, `.bib` y maquetación (ver el informe de la fase 6); ninguna afecta a la estructura.
 
+## Enlaces del original (9/11/2026)
+
+Restaurados:
+- Vídeo del debate Summers-Blanchard del PIIE (YouTube, minutos de Blanchard y de Summers): caja de anotaciones nueva al final de «Otras aproximaciones al análisis de la sostenibilidad», con `PIIE2023Debate`.
+- «Balanced budget» (Wikipedia): nota al pie del teorema del presupuesto equilibrado en el anexo del IS-LM.
+- Ya estaban, con la dirección nueva: el artículo de Blanchard en el PIIE (`Blanchard2023Secular`) y la página del debate (`PIIE2023Debate`).
+
+No restaurados:
+- INE, IPC (tabla 50934), Banco Mundial (deflactor de España), Cinco Días (20/9/2022, deuda en máximo histórico) y *Informe Anual 2022* del Banco de España: eran las fuentes de las cifras de 2022 (inflación del 8,4 %, superávit necesario de 2022) que el tema revisado sustituye por datos de 2025 de Eurostat; el texto donde iban ya no existe. Si Víctor quiere conservarlos como lectura, irían en una caja de anotaciones de «La situación de la deuda pública en España».
+- Tesoro, *Estadísticas* (PDF): da 404 y la dirección antigua no tiene equivalente directo; el tipo medio de la deuda sale ahora del tipo implícito de Eurostat.
+
 ## 8. Instrucciones para el vídeo
 
 - **Pizarra en 3 zonas** (nota del reparto): izquierda, la pregunta «¿quién paga el déficit?», el refrán «lo que no son cuentas, son cuentos» y las 4 pegatinas junto a su concepto: «no hay plazo que no se cumpla ni deuda que no se pague» (equivalencia ricardiana, I.3.1), «lo que es de todos no es de nadie» (fondo común, I.3.3), «quien debe y paga, no debe nada» (sostenibilidad, II.1) y «nadie puede servir a dos señores» (dominación, III.3). Centro, los gráficos. Derecha, las 2 funciones clave.

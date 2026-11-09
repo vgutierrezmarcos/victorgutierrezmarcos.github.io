@@ -219,6 +219,22 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 - **Davis y Whinston (1965)**: referencia comprobada, contenido leído solo en fuentes secundarias (V25).
 - **Little (1950), p. 90**: la página viene de HET (2.ª ed.).
 
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A22.tex` y `3A22.bib` (CRITERIOS §4).
+
+- **Restaurados** (6):
+  - Wikipedia, «Ofelimidad» (nota de la ruptura de Pareto con la utilidad cardinal): en la nota de la ofelimidad de la introducción.
+  - Wikipedia, «Juego del ultimátum» (nota del juego del ultimátum): junto a la cita de Güth, Schmittberger y Schwarze (1982).
+  - HET, *The Paretian System: Contents* (nota de la concavidad de la FPU): entrada `HETParetoContents`, en una nota nueva sobre la forma de la GFPU (I).
+  - HET, portada (comentario que recomendaba el sitio para profundizar): en la caja «Para ampliar» de los criterios de compensación.
+  - Policonomics, «Equilibrio general» (fuente de la caja de Edgeworth de la producción y de la FPP): `PoliconomicsEquilibrioGeneral` en el `\fuente` de `fig:caja-edgeworth-fpp`.
+  - Policonomics, «Economía del bienestar I: equilibrio general» (fuente de la construcción de la GFPU): `PoliconomicsBienestarEG` en el `\fuente` del gráfico de la GFPU.
+  - **Policonomics da error en todo el sitio** (WordPress, HTTP 500, 9/11/2026): las 2 entradas enlazan la copia de Internet Archive.
+- **Ya estaban**: HET, *Social Welfare* (con y sin `#social`), en `HETParetoSocial` y en la caja «Para ampliar».
+- **Descartados**: el enlace a quia.com (CRITERIOS §4).
+- **Para Víctor**: si Policonomics vuelve, cambiar las `url` por las originales.
+
 ## Instrucciones para el vídeo
 
 - **Minutos nuevos** (21/10/2026): I, 8′; II, 10′ (II.1, 5′30″); III, 8′30″ (III.3, 2′). El guion y las escenas hay que ajustarlos.

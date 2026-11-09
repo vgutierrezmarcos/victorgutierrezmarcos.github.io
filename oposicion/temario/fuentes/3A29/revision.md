@@ -158,6 +158,18 @@ Revisión autónoma del 1/11/2026 (Víctor fuera hasta el 9/11; las dudas llevan
 - `.bib`: Stokey, Lucas, Jr. y Prescott (1989) con el «Jr.» en su sitio; Blanchard (2019), «Olivier J.».
 - `seo.json`: 18 palabras clave (fuera «hamiltoniano»).
 
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A29.tex` y `3A29.bib` (CRITERIOS §4).
+
+- **Restaurados** (8):
+  - Wikipedia, «Frank P. Ramsey» (nota biográfica): nota al pie nueva en el enganche.
+  - Wikipedia, «Hyperbolic discounting» (en el original, la versión actual, una versión fija y una copia en stringfixer.com, que hoy redirige a una tienda), transparencias de Hurlstone, «Intertemporal Choice», y MIT OCW 14.13, «Time Preferences: Theory I» (nota y fuente del gráfico del descuento hiperbólico): en la nota del descuento cuasihiperbólico (I.2), con un «Para ampliar».
+  - HET, «Fisher's Theory of Investment» (fuente de los gráficos de la separación de Fisher): `HETFisherInvest` en el `\fuente` de `fig:robinson`.
+  - Escot, Olmedo y del Pozo (2002), *Optimización dinámica* (UCM; bibliografía del original): la entrada `EscotEtAl2002Optimizacion` ya existía (con la dirección nueva en Docta) pero no se citaba; ahora se cita en la introducción del anexo de control óptimo.
+  - Esteve (2023), blog sobre los tipos reales de la deuda de EE. UU. desde 1962 (nota de los tipos reales negativos): `Esteve2023Tipos`, en una nota al pie del anexo de la cota cero.
+- **Descartados**: el enlace a quia.com (CRITERIOS §4); stringfixer.com y la versión fija de Wikipedia se sustituyen por el artículo actual.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche y cierre**: «No dejes para mañana lo que puedas hacer hoy» y la pregunta de Ramsey (1928), ¿cuánto de su renta debe ahorrar una nación?, que hila los 3 bloques: el hogar ahorra hasta que $r$ compensa ρ (I); con un agente de vida infinita el mercado nunca ahorra de más (II); con generaciones solapadas puede ahorrar de más (III). La idea final vuelve al refrán («conviene dejar para mañana lo que mañana valga más», que es la Euler) y responde a Ramsey: depende de cómo se modelice el tiempo; generaciones que se suceden pueden ahorrar de más, «avaricia que rompe el saco».

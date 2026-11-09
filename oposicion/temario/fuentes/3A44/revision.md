@@ -135,6 +135,15 @@ Datos aplicados: V1-V5, V7-V13, V15-V19 (V15, Lucas 2003, no: la cita la usa el 
 - Control de calidad (01/11/2026): verificar-tema.py sin errores; quedan correcciones menores de gráficos (gasto-id-pib, efecto-escala, aghion-howitt), encargadas a tema-tikz.
 - Control de calidad (1/11/2026): correcciones aplicadas: autor «Lucas, Jr., Robert E.»; fecha del vídeo de Óscar Vara (8/5/2019); Jefferson como capítulo de *The Founders' Constitution* (vol. 3, ed. Kurland y Lerner); fuera la nota «Endogeneous» de Barro (1990) y la frase sobre Frisch de la nota de las letras de Jones; la tabla 4 deja de dejar media página en blanco (la recapitulación del II va tras ella); PTF de EE. UU., 0,9 % de media desde 1970; «Datos actualizados» en tabla.
 
+## Enlaces del original (9/11/2026)
+
+Restaurados:
+- Aghion y Howitt (1992), PDF de libre acceso en Harvard DASH (estaba en la caja de anotaciones del modelo schumpeteriano): `url` de `AghionHowitt1992`, que el tema ya cita en ese apartado.
+- t.co/S7U5PS6uDy: lleva a Jones (2023), «The Outlook for Long-Term Economic Growth», ya citado con su `url` (`Jones2023`).
+
+No restaurados:
+- Tema 3A-43 de otro preparador (alfonsosahuquillo.com), fuente de un gráfico del original: CRITERIOS § 5.
+
 ## Instrucciones para el vídeo
 
 (Sin vídeo en esta revisión autónoma; se dejan las instrucciones.)

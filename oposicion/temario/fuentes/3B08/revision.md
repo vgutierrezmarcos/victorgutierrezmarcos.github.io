@@ -259,6 +259,17 @@ Todas las consultas se hicieron el 5/11/2026. Las URL están en `3B08.bib`.
   - **Conclusión**: «lo normal es que los 2 países pierdan».
   - **Pies de gráficos**: el de `arancel-reciproco` dice que la curva desplazada, $R_B(q_A^A;t_A^*)$, es la del arancel óptimo $t_A^*=(a-c)/3$. En `sustitutos-complementos` no hay nada que cambiar: el texto de la nota no nombra el equilibrio (ni $B$ ni $p^B$) ni usa los subíndices 1 y 2.
 
+## Enlaces del original (9/11/2026)
+
+Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del original ya estaban en el tema.
+
+- **Restaurados**:
+  - Brander (1995), «Strategic Trade Policy», versión de libre acceso como NBER Working Paper 5020 (comentario del original: el modelo sale de sus págs. 38-42): `url`, `urldate` y `addendum` en `Brander1995Strategic`, que ya se cita en el tema.
+  - Vídeo de Economicsfun que anima la curva de oferta neta (nota 33): «Para ver» en la nota de las curvas de indiferencia comercial de la guerra arancelaria de Johnson (III).
+- **Ya conservados por otra vía**: JSTOR 2296310 es Hahn (1962), `Hahn1962Stability`, con su DOI (10.2307/2296310); la página general del *World Trade Report* de la OMC queda cubierta por `OMC2008WTR`, que enlaza directamente la sección C del informe de 2008 que recomendaba la nota del original.
+- **No restaurados**: Policonomics, «Duopolio de Cournot» y «Duopolio de Stackelberg» (cajas de fuente del original): todas las páginas del sitio dan un error de WordPress (500) el 9/11/2026. Si vuelve, se pueden añadir como «Para ver» en los modelos de Cournot y Stackelberg.
+- **No restaurado**: OMC, *Examen estadístico del comercio mundial 2023* (nota sobre el volumen del comercio mundial): la cifra que respaldaba se ha sustituido por la de 2025 (`OMC2026Perspectivas`). El enlace funciona; si Víctor quiere conservarlo como lectura, se añade al `.bib`.
+
 ## 8. Instrucciones para el vídeo
 
 Todavía no hay vídeo: este tema se entrega sin guion ni escenas (entregas 1 y 2). Para cuando se haga:

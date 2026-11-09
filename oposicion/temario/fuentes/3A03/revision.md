@@ -206,6 +206,19 @@ Se aplica la opción recomendada y se anota aquí; Víctor decide a la vuelta.
 - **A03-27** (nuevo, 9/11) `seo.json` no se ha tocado (fuera del encargo): convendría añadir «resurgimiento paretiano» y «teoremas del bienestar» a las palabras clave.
 - Control de calidad (04/11/2026): con correcciones pendientes (devueltas a `tema-editor-lyx` y `tema-tikz`: regla de Marshall a Bowley, escuela de Edgeworth y Wicksteed en `tab:autores`, ancho de la fila final de `tab:menger`, hueco de la pág. 11, «págs.» en las citas con página, doble paréntesis de Jevons 1884, rótulos de `agua-diamantes`). El aviso «Daniel» de verificar-tema es un falso positivo (nombre de pila de Daniel Bernoulli).
 
+## Enlaces del original (9/11/2026)
+
+Revisados los enlaces del tema original que no estaban en la versión revisada (CRITERIOS § 4).
+
+- **Restaurados**:
+  - Nota al pie en el enganche (la utilidad marginal): «The Marginalist Revolution» de The History of Economic Thought Website (estaba en el enganche del original).
+  - Nota al pie en el contexto de Menger: «The Austrian School» del mismo sitio (era el enlace del anexo de la escuela austriaca).
+  - Nota al pie en la imputación de Menger: vídeo de Jesús Huerta de Soto «Los costes no determinan los precios» (nota 7 del original).
+  - Nota al pie en el tanteo de Walras: vídeo «HET II: Walras, Part 1» de Charles N. Steele.
+  - Nota al pie en el «no tuismo» de Wicksteed: la cita en la Online Library of Liberty (dirección nueva, `/quotes/`; la antigua, `/quote/`, redirige a una página que bloquea robots, pero existe).
+  - `Walras1874Elements`: `url` a los *Éléments* en Google Libros (estaba en la nota de la subasta del original).
+- **Descartados**: el tema en PDF de otro preparador (fabiansalazar.es) y la portada de The History of Economic Thought Website, que ya se cita por páginas concretas en una decena de entradas del `.bib`.
+
 ## Instrucciones para el vídeo
 
 - **Enganche e idea final**: el vídeo empieza con «Nadie sabe lo que vale el agua hasta que el pozo se seca» (comentario de Víctor del 9/11/2026) y la paradoja del agua y los diamantes; la pregunta es «¿qué determina el valor de las cosas: lo que cuesta producirlas o lo que las valoramos?». La idea final la responde con las tijeras de Marshall y vuelve al refrán (el valor está en la última unidad y depende de la escasez), y cierra con la frase de Víctor: si la escuela clásica da origen a la economía como ciencia, los neoclásicos la consolidan como tal (K40). Sin la frase de Joan Robinson (reservada).

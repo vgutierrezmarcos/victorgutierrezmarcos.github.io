@@ -151,6 +151,21 @@ Resueltas con la opción recomendada (se pueden cambiar):
 - **A38-23** (control de calidad, 5/11/2026) I.3 dice que con regla de Taylor el multiplicador es «mayor que con precios flexibles». Vale con la regla sobre la brecha $x_t$, que es la del tema; con una regla sobre la producción observada podría quedar por debajo. No se ha comprobado en Woodford (2011): si se puede abrir, confirmarlo (como A38-10).
 - Control de calidad (5/11/2026): con correcciones pendientes (lista entregada al coordinador: el texto, para `tema-editor-lyx`; los gráficos, para `tema-tikz`).
 
+## Enlaces del original (9/11/2026)
+
+Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
+
+- **Restaurados** (2):
+  - «The legacy of Alberto Alesina» (*The Economist*, 28/5/2020; nota 28 del original): nota en los efectos no keynesianos (I), junto a Alesina, Favero y Giavazzi (2019). La revista no deja comprobarlo de forma automática (403, de pago), pero el artículo existe.
+  - «Balanced budget» (Wikipedia), que el original enlazaba en la demostración del teorema del presupuesto equilibrado: nota en ese teorema (IV).
+- **Ya estaban** (por otra vía): Blanchard (2023) en el blog del PIIE (`Blanchard2023Secular`), las notas de Sims de 2017 con su dirección nueva (`Sims2017Fiscal`) y la tabla 50934 del INE.
+- **No restaurados**:
+  - Notas de Sims de 2015 (`fiscal_policy_sp2015.pdf`): la dirección ya no existe (404) y son la versión anterior de las de 2017, que el tema cita.
+  - Notas de Sims sobre Galí, López-Salido y Vallés (`GLS_may_2021.pdf`): la dirección antigua redirige a `academicweb.nd.edu`, que da 403, y no se ha encontrado en la web nueva de Sims; el tema cita el artículo original de Galí, López-Salido y Vallés.
+  - Figura de ResearchGate de las generaciones solapadas: era la fuente de un gráfico que el tema ha redibujado (elaboración propia).
+  - Tema de otro preparador (fabiansalazar.es), fuente de una simulación: no se enlazan temas de otros preparadores; el gráfico es de elaboración propia.
+- **Para Víctor**: el *Informe Anual 2022* del Banco de España se citaba en un párrafo de la introducción (la inflación tras la invasión de Ucrania) que el tema revisado ya no tiene; no se ha añadido. Si quiere conservarlo, iría en una nota del enganche.
+
 ## Instrucciones para el vídeo
 
 - **Enganche e idea final**: la fábula de la cigarra y la hormiga (Samaniego, 1781) y los datos de 2025 (déficit 2,4 %, deuda 100,5 %, ahorro nacional 25,0 %, el más alto desde 1995; las AA. PP. vuelven a ahorrar por primera vez desde 2008); la pregunta «¿es la política fiscal cigarra u hormiga?». La idea final vuelve a la fábula: «a corto plazo, cuando llega el invierno, puede cantar; a largo plazo, lo que cuenta es qué guarda y en qué lo invierte». Hilo de todo el tema: «nivel frente a tasa» (el ahorro decide el nivel del capital; el crecimiento endógeno, su tasa). Nunca decir «hilo» en voz alta.

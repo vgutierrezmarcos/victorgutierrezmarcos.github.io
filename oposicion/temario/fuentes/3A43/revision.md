@@ -168,6 +168,14 @@ Víctor está fuera hasta el 9/11: se aplica la opción recomendada.
 - Coordinador (1/11/2026): el gráfico de tasas de Solow (gráfico 7, imprescindible en el cante) vuelve a 0,7 del ancho; a 0,52 los rótulos eran ilegibles. Se acepta el hueco que vuelva a quedar.
 - Control de calidad (31/10/2026): `verificar-tema.py` sin errores; PDF, HTML (claro y oscuro) y Word revisados. Quedan correcciones menores de bibliografía, de 4 gráficos y de este informe, devueltas al coordinador.
 
+## Enlaces del original (9/11/2026)
+
+Restaurados:
+- Fuleky, «Anatomy of Cobb-Douglas Type Production Functions in 3D» (fuente de un gráfico del original): al final de la nota al pie de la Cobb-Douglas (I.1). *Duda*: la página de la Universidad de Hawái da 404 y no hay dirección nueva (Wikipedia aún enlaza la antigua); se enlaza la copia del Internet Archive (enero de 2026). Si Víctor prefiere no enlazar copias archivadas, se quita esa frase.
+- «Frank P. Ramsey» (Wikipedia): al final de la nota biográfica de Ramsey.
+- «Elasticidad de sustitución intertemporal» (Wikipedia): al final de la nota de la ecuación de Euler (regla de Keynes-Ramsey).
+- t.co/S7U5PS6uDy: lleva a Jones (2023), «The Outlook for Long-Term Economic Growth», que el tema ya cita con su `url` (`Jones2023`).
+
 ## Instrucciones para el vídeo
 
 - **Introducción y conclusión, sin pizarra** (modo guion). Enganche: el frenazo soviético con «Poco a poco se va lejos»; la idea final responde que acumular no basta: lo que lleva lejos es aprender a producir más con lo mismo.
