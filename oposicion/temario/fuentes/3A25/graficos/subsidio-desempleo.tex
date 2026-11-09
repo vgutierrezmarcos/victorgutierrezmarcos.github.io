@@ -1,0 +1,43 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Prestación por desempleo (nota al pie). Misma base que oferta-trabajo.tex y
+% prima-horas.tex (O_0 = 7, W = 1,8, w = 0,4, U = C^{0,6} O^{0,4},
+% E = (4,6; 2,76), U(E) = 3,385). La prestación W_d = 0,6 solo se cobra si no
+% se trabaja: punto aislado A_d = (7; 2,4), con U(A_d) = 3,683 > U(E), así que
+% la curva que pasa por A_d queda entera por encima de la recta y el individuo
+% deja de trabajar. El tramo de la recta con w L < W_d (de O = 5,5 a O_0)
+% da menos consumo y menos ocio que A_d: horas dominadas.
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.8cm]
+  \pgfmathsetmacro{\Ocero}{7}
+  \pgfmathsetmacro{\Wb}{1.8}
+  \pgfmathsetmacro{\w}{0.4}
+  \pgfmathsetmacro{\Wd}{0.6}
+  \pgfmathsetmacro{\KE}{2.76*4.6^(2/3)}
+  \pgfmathsetmacro{\Kd}{(\Wb+\Wd)*\Ocero^(2/3)}
+  \pgfmathsetmacro{\OB}{\Ocero-\Wd/\w}            % w L = W_d
+  % 1: ejes
+  \capa{1}{\ejes{$O$}{$C$}{8.4}{6.2}}
+  % 2: recta de balance sin prestación, tangencia E
+  \capa{2}{\draw[curva1] (\Ocero,0) node[below,black] {$O_0$} -- (\Ocero,\Wb);}
+  \capa{2}{\draw[curva1] (0,\w*\Ocero+\Wb) -- (\Ocero,\Wb)
+    node[pos=0.13,below,sloped,black,etiqueta] {$-w$};}
+  \capa{2}{\draw[curva2] plot[domain=6.3:3.2,samples=50] (\x,{\KE*\x^(-2/3)})
+    node[etiqueta,left] {$U_0$};}
+  \capa{2}{\node[punto] (E) at (4.6,2.76) {};
+    \node[etiqueta,below left] at (E) {$E$};}
+  % 3: con la prestación, A deja de estar disponible y aparece el punto aislado A_d
+  \capa{3}{\node[circle,draw=black,fill=white,inner sep=1.3pt] (A) at (\Ocero,\Wb) {};
+    \node[etiqueta,right] at (A) {$A$};}
+  \capa{3}{\node[punto] (Ad) at (\Ocero,\Wb+\Wd) {};
+    \node[etiqueta,above right] at (Ad) {$A_d$};}
+  % 4: curva de indiferencia por A_d, más alta que la de E
+  \capa{4}{\draw[curva3] plot[domain=7.5:3.6,samples=50] (\x,{\Kd*\x^(-2/3)})
+    node[etiqueta,above left] {$U_d$};}
+  % 5: horas dominadas: menos consumo y menos ocio que en A_d
+  \capa{5}{\draw[guia] (Ad) -- (\OB,\Wb+\Wd);}
+  \capa{5}{\draw[guia] (\OB,\Wb+\Wd) -- (\OB,0);}
+  \capa{5}{\draw[decorate,decoration={brace,amplitude=4pt}]
+    (\Ocero,-0.75) -- (\OB,-0.75) node[midway,below=4pt,etiqueta] {horas dominadas};}
+\end{tikzpicture}
+\end{document}
