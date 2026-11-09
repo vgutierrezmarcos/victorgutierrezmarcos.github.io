@@ -51,7 +51,7 @@
       \textcite{Uzawa1964Duality} y \textcite{Diewert1974Applications} la convierten en un método general, que hoy es la forma habitual de trabajar con la demanda.
     \item \concepto{Integrabilidad}. \textcite{Antonelli1886Teoria}, un ingeniero de Pisa, plantea el camino inverso: recuperar la utilidad a partir de las demandas. \textcite{HurwiczUzawa1971Integrability} dan la respuesta general. La vía alternativa, la \emph{preferencia revelada} de \textcite{Samuelson1938Note,Samuelson1948Consumption} y \textcite{Houthakker1950Revealed}, se une a la anterior con \textcite{KihlstromMasColellSonnenschein1976}, que relacionan sus axiomas con las propiedades de la matriz de \autor{Slutsky}.
     \item \concepto{Medición del bienestar}. \textcite{Dupuit1844Mesure} introduce el excedente del consumidor para evaluar obras públicas y \textcite{Marshall1890Principles} lo formaliza como el área bajo la curva de demanda. \textcite{Hicks1939Value,Hicks1941Rehabilitation,Hicks1943Four} lo reconstruye con curvas de indiferencia y define las variaciones \emph{compensatoria} y \emph{equivalente}, y \textcite{Willig1976Surplus} muestra cuándo el excedente marshalliano es una buena aproximación de ambas. El índice verdadero de coste de la vida es de \autor{Konüs}, que lo propuso en 1924 \parencite{Konus1939Problem}.
-    \item \concepto{Sistemas de demanda}. Desde el sistema lineal de gasto de \textcite{Stone1954Linear} hasta el sistema casi ideal (AIDS) de \textcite{DeatonMuellbauer1980AIDS}, la estimación de la demanda se apoya en la dualidad: se parte de una función de gasto o de utilidad indirecta y las demandas se obtienen derivando. Angus \autor{Deaton} recibió el Premio Nobel de Economía en 2015 «por su análisis del consumo, la pobreza y el bienestar» \parencite{Nobel2015Deaton}, y los sistemas de demanda son una parte central de esa obra.
+    \item \concepto{Sistemas de demanda}. Desde el sistema lineal de gasto de \textcite{Stone1954Linear} hasta el sistema casi ideal (AIDS) de \textcite{DeatonMuellbauer1980AIDS}, la estimación de la demanda se apoya en la dualidad: se parte de una función de gasto o de utilidad indirecta y las demandas se obtienen derivando. \autor{Angus Deaton} recibió el Premio Nobel de Economía en 2015 «por su análisis del consumo, la pobreza y el bienestar» \parencite{Nobel2015Deaton}, y los sistemas de demanda son una parte central de esa obra.
     \end{itemize}
   \item En sentido estricto, \concepto{dual} designa la relación entre maximizar la utilidad con una restricción de renta y minimizar el gasto con una restricción de utilidad: se intercambian la función objetivo y la restricción. En sentido amplio se aplica a cualquier par de problemas o funciones formalmente parecidos salvo por el papel invertido de objetivo y restricción, de cantidades y precios o de máximo y mínimo \parencite{MasColellWhinstonGreen1995,Blume2008Duality}. Aquí se usa en sentido estricto, aunque alguna vez aparezca el amplio.\footnote{Por ejemplo, la relación entre la función indirecta de utilidad y la función de utilidad directa (apartado~\ref{sec:problema-integrabilidad-preferencias}). En la teoría de la empresa el sentido amplio es más habitual: se habla de dualidad entre la minimización del coste y la maximización del beneficio (que no son duales en sentido estricto, porque el segundo problema incluye los ingresos) o entre las funciones de costes o de beneficios y la tecnología que se recupera a partir de ellas \vertema{3.A.12}.}
   \end{itemize}
@@ -64,7 +64,9 @@
   \item ¿Cómo se mide en unidades monetarias lo que gana o pierde un consumidor cuando cambian los precios, y qué error se comete con el excedente del consumidor o con los índices de precios?
   \end{itemize}
 
-\item \textbf{\emph{Estructura}}: la exposición se organiza en tres partes.
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición se organiza en tres partes.
   \begin{itemize}
   \item \concepto{I. Análisis teórico de la dualidad}:
     \begin{itemize}
@@ -86,6 +88,7 @@
     \end{itemize}
   \end{itemize}
   El orden va de las herramientas a su uso. La integrabilidad se estudia después de los sistemas de demanda porque responde a la pregunta que estos dejan abierta: si lo que se estima puede proceder de un consumidor racional.
+  \end{itemize}
 \end{itemize}
 
 \begin{esquema}
@@ -579,7 +582,7 @@ En el cante: la idea (\tiempo{0,5}); las formas funcionales, cada una con su ide
 
 \begin{itemize}
 \item Gracias a la dualidad, la forma funcional puede ponerse en la utilidad directa, en la FIU (y obtener las demandas por \autor{Roy}) o en la función de gasto (y obtenerlas por \autor{Shephard}). Así el sistema es coherente con la maximización \emph{por construcción}. La elección es un compromiso entre \emph{sencillez} y \emph{flexibilidad}: las formas más fáciles de manejar son las más rígidas, porque predeterminan los resultados. Cada sistema nace para superar el límite del anterior (tabla~\ref{tab:sistemas}).
-\item El punto de partida es la \concepto{\autor{Cobb}-\autor{Douglas}}\footnote{La función toma su nombre de \textcite{CobbDouglas1928Theory}. Paul \autor{Douglas}, entonces profesor de economía en Chicago (y después senador por Illinois de 1949 a 1967), había observado que, en las manufacturas de Estados Unidos de 1899 a 1922, el índice de producción se movía entre los del trabajo y el capital, mucho más cerca del primero, y pidió a un matemático amigo suyo, Charles \autor{Cobb}, una fórmula que lo recogiera. La forma propuesta, $q=A\,z_K^{\alpha}z_L^{1-\alpha}$, tiene una propiedad notable: si cada factor cobra su productividad marginal, se lleva una parte constante del producto, porque $\mathrm{PMg}_K\,z_K=\alpha q$ y $\mathrm{PMg}_L\,z_L=(1-\alpha)q$. La estimación dio $q\approx1{,}01\,z_K^{1/4}z_L^{3/4}$, con unos exponentes que suman uno y se acercan a las participaciones observadas del capital y del trabajo \parencite{Douglas1976Once}. La misma propiedad, aplicada a la utilidad, es la que aquí interesa: participaciones constantes en el gasto. Sus demás propiedades (rendimientos constantes, elasticidad de sustitución unitaria, linealidad en logaritmos) se estudian en \vertema{3.A.11}.}: $U(\vect{x})=\sum_i\alpha_i\ln x_i$, con $\alpha_i>0$ y $\sum_i\alpha_i=1$ (normalización que no cambia las preferencias). Da participaciones constantes en el gasto, $s_i=p_ix_i/\overline{W}=\alpha_i$, es decir,
+\item El punto de partida es la \concepto{\autor{Cobb}-\autor{Douglas}}\footnote{La función toma su nombre de \textcite{CobbDouglas1928Theory}. \autor{Paul Douglas}, entonces profesor de economía en Chicago (y después senador por Illinois de 1949 a 1967), había observado que, en las manufacturas de Estados Unidos de 1899 a 1922, el índice de producción se movía entre los del trabajo y el capital, mucho más cerca del primero, y pidió a un matemático amigo suyo, \autor{Charles Cobb}, una fórmula que lo recogiera. La forma propuesta, $q=A\,z_K^{\alpha}z_L^{1-\alpha}$, tiene una propiedad notable: si cada factor cobra su productividad marginal, se lleva una parte constante del producto, porque $\mathrm{PMg}_K\,z_K=\alpha q$ y $\mathrm{PMg}_L\,z_L=(1-\alpha)q$. La estimación dio $q\approx1{,}01\,z_K^{1/4}z_L^{3/4}$, con unos exponentes que suman uno y se acercan a las participaciones observadas del capital y del trabajo \parencite{Douglas1976Once}. La misma propiedad, aplicada a la utilidad, es la que aquí interesa: participaciones constantes en el gasto. Sus demás propiedades (rendimientos constantes, elasticidad de sustitución unitaria, linealidad en logaritmos) se estudian en \vertema{3.A.11}.}: $U(\vect{x})=\sum_i\alpha_i\ln x_i$, con $\alpha_i>0$ y $\sum_i\alpha_i=1$ (normalización que no cambia las preferencias). Da participaciones constantes en el gasto, $s_i=p_ix_i/\overline{W}=\alpha_i$, es decir,
   \begin{equation}
   \ln x_i(\vect{p},\overline{W})=\ln\alpha_i+\ln\overline{W}-\ln p_i, \label{eq:cobb-douglas}
   \end{equation}
@@ -1371,7 +1374,12 @@ La función de gasto traduce la utilidad a euros:
     \item y la medida del bienestar con la métrica monetaria, la VC y la VE, que el excedente aproxima (\autor{Willig}) y los índices de \autor{Laspeyres} y \autor{Paasche} acotan.
     \end{itemize}
   \end{itemize}
-\item \textbf{\emph{Relevancia}}: la dualidad convierte una teoría basada en algo inobservable, la utilidad, en un conjunto de restricciones sobre lo observable (precios, renta, cantidades) y en medidas del bienestar en unidades monetarias. Con ellas se calculan las elasticidades de la política fiscal, el exceso de gravamen, los beneficios de un proyecto público o el sesgo del IPC.
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item La dualidad convierte una teoría basada en algo inobservable, la utilidad, en un conjunto de restricciones sobre lo observable (precios, renta, cantidades) y en medidas del bienestar en unidades monetarias.
+
+  \item Con ellas se calculan las elasticidades de la política fiscal, el exceso de gravamen, los beneficios de un proyecto público o el sesgo del IPC.
+  \end{itemize}
 \item \textbf{\emph{Extensiones y relación con otras partes del temario}}:
   \begin{itemize}
   \item la misma dualidad se aplica a la empresa: función de costes, lema de \autor{Shephard} y demandas condicionadas de factores \vertema{3.A.12};
@@ -1379,8 +1387,22 @@ La función de gasto traduce la utilidad a euros:
   \item en economía pública, la VE mide el exceso de gravamen \vertema{4.B.9} y la VC y la VE valoran los proyectos en el análisis coste-beneficio \vertema{4.B.6}; el IPC y el deflactor del PIB son las aproximaciones de \autor{Laspeyres} y \autor{Paasche} \vertema{3.A.30} \vertema{4.A.1};
   \item la elección con riesgo \vertema{3.A.10} y las decisiones intertemporales \vertema{3.A.29} extienden el análisis.
   \end{itemize}
-\item \textbf{\emph{Opinión}}: la dualidad es uno de los casos en que la teoría más abstracta ha resultado más útil en la práctica: una pregunta de apariencia académica, qué pasa si se minimiza el gasto en lugar de maximizar la utilidad, dio la herramienta con la que hoy se traduce el bienestar a euros en cualquier evaluación de políticas. Su límite es el del modelo del que parte, un consumidor estático, racional y bien informado, y el de la agregación: las medidas son individuales y sumarlas exige juicios de valor sobre la distribución. Por eso la línea de \autor{Deaton}, que consiste en medir con microdatos y tener en cuenta la heterogeneidad antes de recomendar, es quizá la herencia más valiosa de este campo.
-\item \textbf{\emph{Idea final}}: volviendo a la pregunta del principio, ¿se puede medir en euros algo que solo sabemos ordenar? Sí, si no se mide la utilidad, sino lo que cuesta alcanzarla: la función de gasto, que la dualidad permite recuperar de la demanda. Con ella se responde al pensionista: si su cesta se parece a la del IPC, la subida le compensa algo más de lo necesario, porque un índice de \autor{Laspeyres} ignora que el consumidor sustituye lo que se encarece: a falta de pan, buenas son tortas; si es distinta, puede quedarse corta, y la compensación exacta es la variación compensatoria. Lo que esa traducción no permite es sumar el bienestar de personas distintas: para eso hacen falta juicios de valor, y ahí empieza la economía del bienestar.
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item La dualidad es uno de los casos en que la teoría más abstracta ha resultado más útil en la práctica: una pregunta de apariencia académica, qué pasa si se minimiza el gasto en lugar de maximizar la utilidad, dio la herramienta con la que hoy se traduce el bienestar a euros en cualquier evaluación de políticas.
+
+  \item Su límite es el del modelo del que parte, un consumidor estático, racional y bien informado, y el de la agregación: las medidas son individuales y sumarlas exige juicios de valor sobre la distribución.
+
+  \item Por eso la línea de \autor{Deaton}, que consiste en medir con microdatos y tener en cuenta la heterogeneidad antes de recomendar, es quizá la herencia más valiosa de este campo.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item Volviendo a la pregunta del principio, ¿se puede medir en euros algo que solo sabemos ordenar? Sí, si no se mide la utilidad, sino lo que cuesta alcanzarla: la función de gasto, que la dualidad permite recuperar de la demanda.
+
+  \item Con ella se responde al pensionista: si su cesta se parece a la del IPC, la subida le compensa algo más de lo necesario, porque un índice de \autor{Laspeyres} ignora que el consumidor sustituye lo que se encarece: a falta de pan, buenas son tortas; si es distinta, puede quedarse corta, y la compensación exacta es la variación compensatoria.
+
+  \item Lo que esa traducción no permite es sumar el bienestar de personas distintas: para eso hacen falta juicios de valor, y ahí empieza la economía del bienestar.
+  \end{itemize}
 \end{itemize}
 
 \begin{anotaciones}
@@ -1388,7 +1410,7 @@ La función de gasto traduce la utilidad a euros:
 \begin{itemize}
 \item \textcite[cap.~3]{MasColellWhinstonGreen1995}: apartados 3.E (minimización del gasto), 3.G (relaciones de dualidad), 3.H (integrabilidad) y 3.I (medidas de bienestar).
 \item \textcite{DeatonMuellbauer1980Economics}: el manual de referencia sobre sistemas de demanda.
-\item \textcite{AguilarMateos2015Deaton}: resumen en castellano de la obra de Angus \autor{Deaton}, con la historia del AIDS.
+\item \textcite{AguilarMateos2015Deaton}: resumen en castellano de la obra de \autor{Angus Deaton}, con la historia del AIDS.
 \item \textcite{RodriguezLopez2018Dualidad}: \emph{Tema 3.A.8: La dualidad en la teoría de la demanda del consumidor y sus aplicaciones}. ICEX-CECO.
 \end{itemize}
 \end{anotaciones}

@@ -14,7 +14,7 @@
   \begin{itemize}
   \item «Cubrirse las espaldas», dice el dicho. Para eso nacieron los derivados: para que el agricultor, la aerolínea o el banco fijen hoy el precio al que comprarán o venderán mañana.
   \item Pero el 20 de abril de 2020, con un mercado saturado de crudo y la demanda hundida por la pandemia, el futuro de petróleo WTI con vencimiento en mayo liquidó a $-37{,}63$ dólares por barril: quien tenía la posición compradora y no podía recibir el crudo en Cushing (Oklahoma) pagó por deshacerse de ella \parencite{CFTC2020WTI,EIA2026WTI}. Un contrato pensado para cubrirse se convirtió en una pérdida mayor que todo lo comprometido.
-  \item Cinco años antes de la crisis financiera, Warren \autor{Buffett} había advertido que los derivados eran «armas financieras de destrucción masiva», con peligros «hoy latentes, pero potencialmente letales» \parencite[15]{Buffett2003Carta}.
+  \item Cinco años antes de la crisis financiera, \autor{Warren Buffett} había advertido que los derivados eran «armas financieras de destrucción masiva», con peligros «hoy latentes, pero potencialmente letales» \parencite[15]{Buffett2003Carta}.
   \item ¿Sirven los derivados para cubrirse las espaldas o multiplican los riesgos que deberían cubrir? Para responder hay que saber qué son, cuánto valen y cómo funcionan sus mercados.
   \end{itemize}
 
@@ -22,7 +22,7 @@
   \begin{itemize}
   \item \emph{Microeconómica}: los derivados separan el riesgo del activo que lo genera y lo trasladan a quien está dispuesto a asumirlo; con ellos se pueden asegurar estados de la naturaleza que antes no tenían precio, es decir, \emph{completan los mercados} \parencite{Ross1976Options}, en la línea de los títulos de \autor{Arrow} \vertema{3.A.21}.
   \item \emph{Macroeconómica y de estabilidad}: son el mayor mercado financiero por importe. El nocional de los derivados OTC vivos alcanzó 845 billones de dólares en diciembre de 2025, cerca de su máximo histórico, aunque su valor de mercado bruto, que mide mejor el riesgo, era de 22,8 billones \parencite{BIS2026OTCDerivados,ISDA2026KeyTrends}. Estuvieron en el centro de la crisis de 2008 y de la reforma financiera posterior \vertema{3.B.26} \vertema{3.B.27}.\footnote{No hay que confundir la regulación de los derivados con el impuesto sobre las transacciones financieras, en vigor en España desde enero de 2021: grava al 0,2~\% la \emph{compra de acciones} de sociedades españolas cotizadas con una capitalización de más de 1.000 millones de euros \parencite{BOE2020ITF}, no los derivados en sí (solo la compra de acciones que resulte de liquidar uno con entrega). En 2025 recaudó 339 millones de euros, un 36,5~\% más que en 2024 \parencite{AEAT2026Recaudacion}.}
-  \item \emph{Teórica}: la valoración por ausencia de arbitraje es una de las ideas más fecundas de la economía financiera. Robert C. \autor{Merton} y Myron \autor{Scholes} recibieron el Premio Nobel de Economía de 1997 «por un nuevo método para determinar el valor de los derivados» \parencite{Nobel1997Prensa}.\footnote{Fischer \autor{Black}, coautor del modelo, había muerto en 1995, y el Premio Nobel no se concede a título póstumo; la Academia lo recordó al anunciar el de 1997 \parencite{Nobel1997Prensa}.}
+  \item \emph{Teórica}: la valoración por ausencia de arbitraje es una de las ideas más fecundas de la economía financiera. \autor{Robert C. Merton} y \autor{Myron Scholes} recibieron el Premio Nobel de Economía de 1997 «por un nuevo método para determinar el valor de los derivados» \parencite{Nobel1997Prensa}.\footnote{Fischer \autor{Black}, coautor del modelo, había muerto en 1995, y el Premio Nobel no se concede a título póstumo; la Academia lo recordó al anunciar el de 1997 \parencite{Nobel1997Prensa}.}
   \end{itemize}
 
 \item \textbf{\emph{Contextualización}}:
@@ -52,11 +52,14 @@
   \item ¿Cómo se negocian, y sus mercados estabilizan o desestabilizan el sistema financiero?
   \end{itemize}
 
-\item \textbf{\emph{Estructura}}: la exposición estudia las 3 familias de derivados con el mismo guion, para que se vea lo que tienen en común: definición, tipos, pago a vencimiento, estrategias y valoración.
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición estudia las 3 familias de derivados con el mismo guion, para que se vea lo que tienen en común: definición, tipos, pago a vencimiento, estrategias y valoración.
   \begin{itemize}
   \item En el bloque~\ref{sec:futuros}, los futuros y los \emph{forwards}, los más sencillos. Con ellos se presentan sus mercados (la cámara, los márgenes y la liquidación diaria) y la idea que recorre todo el tema: un derivado vale lo que cuesta replicarlo.
   \item En el bloque~\ref{sec:opciones}, las opciones, que añaden la asimetría del derecho sin obligación y obligan a modelizar la incertidumbre: la paridad \emph{put-call}, el modelo binomial y el de \autor{Black} y \autor{Scholes}.
   \item En el bloque~\ref{sec:swaps}, los \emph{swaps}, que son carteras de \emph{forwards}, los derivados de crédito y el análisis de conjunto de los mercados de derivados tras la crisis de 2008: tamaño, participantes, regulación y estabilidad.
+  \end{itemize}
   \end{itemize}
 \end{itemize}
 
@@ -1045,16 +1048,39 @@ Funcionan como un prestamista de última instancia internacional en dólares, m�
 \minutos{1}
 
 \begin{itemize}
-\item \textbf{\emph{Recapitulación}}: A modo de conclusión, las 3 familias de derivados se analizan con el mismo guion y la misma idea: un derivado vale lo que cuesta replicarlo.
+\item \textbf{\emph{Recapitulación}}:
+  \begin{itemize}
+  \item A modo de conclusión, las 3 familias de derivados se analizan con el mismo guion y la misma idea: un derivado vale lo que cuesta replicarlo.
   \begin{itemize}
   \item El futuro fija hoy el precio de mañana, $F_0=S_0e^{rT}$.
   \item La opción separa el lado bueno del malo, y su prima sale de una cartera de réplica (paridad \emph{put-call}, binomial, \autor{Black} y \autor{Scholes}), sin depender de las expectativas ni de la aversión al riesgo.
   \item El \emph{swap} es una cartera de \emph{forwards}.
   \end{itemize}
-\item \textbf{\emph{Relevancia}}: son el mayor mercado financiero por nocional; con sus precios, los bancos centrales leen lo que el mercado espera de los tipos, de la inflación y de la volatilidad; y están en la gestión de la deuda pública (el Tesoro cubre con \emph{swaps} sus emisiones en divisas), en la supervisión y en la regulación europea.
-\item \textbf{\emph{Extensiones}}: la valoración de opciones se aplica a la inversión real y a la valoración de empresas, con las opciones de esperar, ampliar o abandonar \vertema{3.A.34} \vertema{3.B.2} \vertema{3.B.4}; la ETTI, que está detrás de la valoración de los \emph{swaps} \vertema{3.B.24}; el CAPM, que explica la prima entre el futuro y el precio esperado \vertema{3.B.23}; los mercados de divisas y la paridad cubierta \vertema{3.B.13}; la crisis de 2008 y la gestión de riesgos \vertema{3.B.26}; y la regulación financiera \vertema{3.B.27}.
-\item \textbf{\emph{Opinión}}: el riesgo no está en el instrumento, sino en el apalancamiento y en la opacidad. La reforma de 2009 llevó los derivados OTC a cámaras con márgenes, y en abril de 2020 el mercado absorbió un precio negativo del petróleo sin que cayera ninguna cámara. Pero ahora el riesgo se concentra en esas cámaras, cuyos márgenes, en una crisis, obligan a vender cuando todos venden.
-\item \textbf{\emph{Idea final}}: volviendo al dicho y a la pregunta del principio, los derivados no crean ni destruyen el riesgo: lo cambian de manos y le ponen precio. Con márgenes, cámaras y transparencia sirven para cubrirse las espaldas; sin ellos, multiplican el riesgo que deberían cubrir. Por eso el título habla de instrumentos y de mercados.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Son el mayor mercado financiero por nocional; con sus precios, los bancos centrales leen lo que el mercado espera de los tipos, de la inflación y de la volatilidad; y están en la gestión de la deuda pública (el Tesoro cubre con \emph{swaps} sus emisiones en divisas), en la supervisión y en la regulación europea.
+  \end{itemize}
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item La valoración de opciones se aplica a la inversión real y a la valoración de empresas, con las opciones de esperar, ampliar o abandonar \vertema{3.A.34} \vertema{3.B.2} \vertema{3.B.4}; la ETTI, que está detrás de la valoración de los \emph{swaps} \vertema{3.B.24}; el CAPM, que explica la prima entre el futuro y el precio esperado \vertema{3.B.23}; los mercados de divisas y la paridad cubierta \vertema{3.B.13}; la crisis de 2008 y la gestión de riesgos \vertema{3.B.26}; y la regulación financiera \vertema{3.B.27}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item El riesgo no está en el instrumento, sino en el apalancamiento y en la opacidad.
+
+  \item La reforma de 2009 llevó los derivados OTC a cámaras con márgenes, y en abril de 2020 el mercado absorbió un precio negativo del petróleo sin que cayera ninguna cámara.
+
+  \item Pero ahora el riesgo se concentra en esas cámaras, cuyos márgenes, en una crisis, obligan a vender cuando todos venden.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item Volviendo al dicho y a la pregunta del principio, los derivados no crean ni destruyen el riesgo: lo cambian de manos y le ponen precio.
+
+  \item Con márgenes, cámaras y transparencia sirven para cubrirse las espaldas; sin ellos, multiplican el riesgo que deberían cubrir.
+
+  \item Por eso el título habla de instrumentos y de mercados.
+  \end{itemize}
 \end{itemize}
 
 \clearpage

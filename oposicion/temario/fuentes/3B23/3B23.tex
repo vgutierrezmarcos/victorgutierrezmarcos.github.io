@@ -35,12 +35,12 @@
   \item \emph{Histórica}: en el último medio siglo las bolsas se han integrado, con colocaciones de acciones en varios mercados a la vez y normas contables comunes, las Normas Internacionales de Información Financiera \vertema{3.B.1}. Hoy invierten en bolsa muchos más pequeños ahorradores, a menudo desde plataformas en línea, y gana peso la gestión pasiva, con fondos indexados y fondos cotizados (ETF).
   \item \emph{Teórica}: la economía financiera nace como rama de la teoría económica en los años 50 y 60, y los 3 apartados de la exposición siguen sus hitos:
     \begin{itemize}
-    \item la \emph{cartera}: \textcite{Markowitz1952Portfolio} y \textcite{Tobin1958Liquidity};\footnote{Cuando \autor{Markowitz} defendió su tesis en Chicago (1954), Milton \autor{Friedman}, miembro del tribunal, comentó medio en broma que aquello no era economía y que no se le podía dar el título de doctor en economía \parencites{Markowitz1991Foundations}{PenalvaRubio2023Markowitz}. Su director había sido Jacob \autor{Marschak}.}
+    \item la \emph{cartera}: \textcite{Markowitz1952Portfolio} y \textcite{Tobin1958Liquidity};\footnote{Cuando \autor{Markowitz} defendió su tesis en Chicago (1954), \autor{Milton Friedman}, miembro del tribunal, comentó medio en broma que aquello no era economía y que no se le podía dar el título de doctor en economía \parencites{Markowitz1991Foundations}{PenalvaRubio2023Markowitz}. Su director había sido \autor{Jacob Marschak}.}
     \item la \emph{valoración en equilibrio}: el CAPM de \textcite{Sharpe1964Capital}, \textcite{Lintner1965Valuation} y \textcite{Mossin1966Equilibrium}, y la APT de \textcite{Ross1976Arbitrage};
     \item la \emph{eficiencia de los mercados}: \textcite{Fama1970Efficient}, y la respuesta de las finanzas conductuales \parencite{Shiller1981Move,KahnemanTversky1979};
     \item el \emph{análisis fundamental} es anterior a todos: \textcite{GrahamDodd1934Security}.
     \end{itemize}
-    \autor{Markowitz}, Merton \autor{Miller} y \autor{Sharpe} recibieron el Premio Nobel de 1990 «por sus trabajos pioneros en la teoría de la economía financiera» \parencite{Nobel1990Markowitz};\footnote{Franco \autor{Modigliani}, que con \autor{Miller} había formulado en 1958 la irrelevancia de la estructura de capital \vertema{3.B.3}, lo había recibido en 1985. Gracias a estos autores, las finanzas se estudian como «economía financiera»: la teoría económica entra en el análisis de los mercados financieros.} \autor{Fama}, \autor{Hansen} y \autor{Shiller}, el de 2013 «por su análisis empírico de los precios de los activos» \parencite{Nobel2013Fama}, y \autor{Thaler}, el de 2017, por sus contribuciones a la economía conductual.
+    \autor{Markowitz}, \autor{Merton Miller} y \autor{Sharpe} recibieron el Premio Nobel de 1990 «por sus trabajos pioneros en la teoría de la economía financiera» \parencite{Nobel1990Markowitz};\footnote{\autor{Franco Modigliani}, que con \autor{Miller} había formulado en 1958 la irrelevancia de la estructura de capital \vertema{3.B.3}, lo había recibido en 1985. Gracias a estos autores, las finanzas se estudian como «economía financiera»: la teoría económica entra en el análisis de los mercados financieros.} \autor{Fama}, \autor{Hansen} y \autor{Shiller}, el de 2013 «por su análisis empírico de los precios de los activos» \parencite{Nobel2013Fama}, y \autor{Thaler}, el de 2017, por sus contribuciones a la economía conductual.
   \end{itemize}
 
 \item \textbf{\emph{Problemática}}:
@@ -51,12 +51,15 @@
   \item ¿Se puede batir al mercado? ¿Tiene sentido la gestión activa, con el análisis fundamental o con el técnico, o basta la gestión pasiva?
   \end{itemize}
 
-\item \textbf{\emph{Estructura}}: la exposición va de la teoría que justifica la gestión pasiva a las técnicas que intentan batirla.
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición va de la teoría que justifica la gestión pasiva a las técnicas que intentan batirla.
   \begin{itemize}
   \item En el bloque~\ref{sec:cartera-valoracion}, los instrumentos de renta variable y la teoría de la elección de cartera (\autor{Markowitz}, \autor{Tobin} y \autor{Sharpe}), y sobre ella los 2 modelos de valoración del título, el CAPM y la APT: en equilibrio, cada acción rinde lo que corresponde a su riesgo sistemático.
   \item En el bloque~\ref{sec:emh-bloque}, la hipótesis de los mercados eficientes, que convierte ese resultado en una recomendación, la gestión pasiva, y la crítica de las finanzas conductuales.
   \item En el bloque~\ref{sec:fundamental-tecnico}, si los mercados no son del todo eficientes, las 2 técnicas de la gestión activa: el análisis fundamental y el análisis técnico.
   \item El análisis fundamental, segundo en el título, va al final por 2 razones: solo tiene sentido como estrategia si el precio puede apartarse del valor, y necesita la tasa de descuento que da el CAPM.
+  \end{itemize}
   \end{itemize}
 \end{itemize}
 
@@ -186,7 +189,7 @@ En el cante (\tiempo{14}). Los instrumentos (\tiempo{2}): la tabla~\ref{tab:rent
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item ¿Cómo debe repartir su riqueza entre $n$ activos con riesgo un inversor averso al riesgo? \textcite{Markowitz1952Portfolio} responde que no hay que buscar el activo con más rentabilidad ni el de menos riesgo, sino la combinación que da la máxima rentabilidad esperada para cada nivel de riesgo. Es el refrán «no poner todos los huevos en la misma cesta» convertido en un problema de optimización: el modelo dice cuánto repartir y entre qué.\footnote{Antes de \autor{Markowitz}, cualquier inversor sabía que no convenía jugárselo todo a una carta, pero nadie sabía decir cuánto repartir ni con qué criterio. \autor{Markowitz} aplicó el concepto matemático de eficiencia que había aprendido de Tjalling \autor{Koopmans} (Nobel de 1975) y definió un criterio objetivo para decir cuándo una cartera es mejor que otra. La metáfora de los huevos, además, se queda corta: lo que importa no son los huevos, sino las gallinas que los ponen y si se llevan bien entre sí; es decir, cómo se mueve el precio de cada acción con el de las demás \parencite{PenalvaRubio2023Markowitz}.}
+\item ¿Cómo debe repartir su riqueza entre $n$ activos con riesgo un inversor averso al riesgo? \textcite{Markowitz1952Portfolio} responde que no hay que buscar el activo con más rentabilidad ni el de menos riesgo, sino la combinación que da la máxima rentabilidad esperada para cada nivel de riesgo. Es el refrán «no poner todos los huevos en la misma cesta» convertido en un problema de optimización: el modelo dice cuánto repartir y entre qué.\footnote{Antes de \autor{Markowitz}, cualquier inversor sabía que no convenía jugárselo todo a una carta, pero nadie sabía decir cuánto repartir ni con qué criterio. \autor{Markowitz} aplicó el concepto matemático de eficiencia que había aprendido de \autor{Tjalling Koopmans} (Nobel de 1975) y definió un criterio objetivo para decir cuándo una cartera es mejor que otra. La metáfora de los huevos, además, se queda corta: lo que importa no son los huevos, sino las gallinas que los ponen y si se llevan bien entre sí; es decir, cómo se mueve el precio de cada acción con el de las demás \parencite{PenalvaRubio2023Markowitz}.}
 \end{itemize}
 
 \paragraph{b) Modelo}
@@ -328,7 +331,7 @@ En el cante (\tiempo{14}). Los instrumentos (\tiempo{2}): la tabla~\ref{tab:rent
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item Para que el modelo de \autor{Markowitz} pudiera aplicarse con cientos de títulos, \textcite{Sharpe1963Simplified} supone que los activos solo están correlacionados porque todos responden a un factor común, el mercado, medido por un índice bursátil. En lugar de estimar la correlación de cada título con todos los demás, basta con la de cada título con el índice: es la \concepto{simplificación de \autor{Sharpe}}.\footnote{\autor{Markowitz} ya lo había sugerido \parencite{Markowitz1959Portfolio}. William \autor{Sharpe} desarrolló la idea en su tesis, que preparaba en UCLA mientras trabajaba en la RAND Corporation, donde estaba \autor{Markowitz}: este no formaba parte de su tribunal, pero hizo un papel parecido al de director \parencite{Sharpe1990Biografia}. Los 2 compartieron el Nobel de 1990.}
+\item Para que el modelo de \autor{Markowitz} pudiera aplicarse con cientos de títulos, \textcite{Sharpe1963Simplified} supone que los activos solo están correlacionados porque todos responden a un factor común, el mercado, medido por un índice bursátil. En lugar de estimar la correlación de cada título con todos los demás, basta con la de cada título con el índice: es la \concepto{simplificación de \autor{Sharpe}}.\footnote{\autor{Markowitz} ya lo había sugerido \parencite{Markowitz1959Portfolio}. \autor{William Sharpe} desarrolló la idea en su tesis, que preparaba en UCLA mientras trabajaba en la RAND Corporation, donde estaba \autor{Markowitz}: este no formaba parte de su tribunal, pero hizo un papel parecido al de director \parencite{Sharpe1990Biografia}. Los 2 compartieron el Nobel de 1990.}
 \end{itemize}
 
 \paragraph{b) Modelo}
@@ -408,7 +411,7 @@ En el cante (\tiempo{14}). Los instrumentos (\tiempo{2}): la tabla~\ref{tab:rent
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item La CML de \autor{Tobin} solo relaciona la rentabilidad y el riesgo de las carteras \emph{eficientes}. El CAPM (\emph{capital asset pricing model}) generaliza esa relación lineal a \emph{cualquier} activo o cartera, eficiente o no.\footnote{\textcite{Sharpe1964Capital}, \textcite{Lintner1965Valuation} y \textcite{Mossin1966Equilibrium} llegaron al modelo de forma independiente, 12 años después de \textcite{Markowitz1952Portfolio}; Jack \autor{Treynor} lo había formulado antes en trabajos que no publicó en su momento. \autor{Sharpe} recibió por él el Nobel de 1990.} Por eso sirve para valorar: da la rentabilidad que el mercado exige a un activo según su riesgo, la tasa a la que se descuentan sus flujos.
+\item La CML de \autor{Tobin} solo relaciona la rentabilidad y el riesgo de las carteras \emph{eficientes}. El CAPM (\emph{capital asset pricing model}) generaliza esa relación lineal a \emph{cualquier} activo o cartera, eficiente o no.\footnote{\textcite{Sharpe1964Capital}, \textcite{Lintner1965Valuation} y \textcite{Mossin1966Equilibrium} llegaron al modelo de forma independiente, 12 años después de \textcite{Markowitz1952Portfolio}; \autor{Jack Treynor} lo había formulado antes en trabajos que no publicó en su momento. \autor{Sharpe} recibió por él el Nobel de 1990.} Por eso sirve para valorar: da la rentabilidad que el mercado exige a un activo según su riesgo, la tasa a la que se descuentan sus flujos.
 \item Es un modelo de \emph{equilibrio}, con supuestos fuertes, pero sigue siendo la referencia para calcular el coste de los fondos propios, evaluar a los gestores o fijar el precio de una acción que aún no cotiza, como en una oferta pública de venta.
 \end{itemize}
 
@@ -682,7 +685,7 @@ En el cante (\tiempo{4,5}). La hipótesis de los mercados eficientes (\tiempo{2,
 \subsubsection{La hipótesis conjunta}\label{sec:hipotesis-conjunta}
 
 \begin{itemize}
-\item Eugene \autor{Fama} recibió en 2013 el Premio Nobel, con Lars Peter \autor{Hansen} y Robert \autor{Shiller}, «por su análisis empírico de los precios de los activos» \parencite{Nobel2013Fama}, sobre todo por sus trabajos sobre la eficiencia de los mercados.\footnote{Tras la crisis de 2008, la HME se convirtió en blanco de muchas críticas. \textcite{Fox2009Myth} la culpa de la confianza en que los mercados financieros se regulaban solos, y \textcite{Quiggin2010Zombie} la incluye entre las «ideas zombi», refutadas por los hechos pero vivas en la academia. Que el Nobel de 2013 premiara a la vez a \autor{Fama} y a \autor{Shiller}, su crítico más conocido, resume bien el estado del debate.}
+\item \autor{Eugene Fama} recibió en 2013 el Premio Nobel, con \autor{Lars Peter Hansen} y \autor{Robert Shiller}, «por su análisis empírico de los precios de los activos» \parencite{Nobel2013Fama}, sobre todo por sus trabajos sobre la eficiencia de los mercados.\footnote{Tras la crisis de 2008, la HME se convirtió en blanco de muchas críticas. \textcite{Fox2009Myth} la culpa de la confianza en que los mercados financieros se regulaban solos, y \textcite{Quiggin2010Zombie} la incluye entre las «ideas zombi», refutadas por los hechos pero vivas en la academia. Que el Nobel de 2013 premiara a la vez a \autor{Fama} y a \autor{Shiller}, su crítico más conocido, resume bien el estado del debate.}
 \item Decir que un precio «refleja toda la información» exige saber qué precio sería el correcto, es decir, un modelo de rentabilidades esperadas: uno de equilibrio, como el CAPM, o de arbitraje, como la APT. Por eso toda prueba de eficiencia contrasta a la vez 2 hipótesis:
   \begin{enumerate}
   \item que hay un modelo de valoración que dice cuál es la rentabilidad «normal» de cada activo;
@@ -741,7 +744,7 @@ Fuerte & histórica, pública y privada & \textcolor{tceerojo}{No} & \textcolor{
   \begin{itemize}
   \item la ausencia de arbitraje es plausible, o, donde no se cumple, aprovechar el arbitraje es tan costoso que no compensa;
   \item la eficiencia informativa es una buena aproximación, no una ley exacta: se han observado regularidades en los precios que la información disponible no explica;
-  \item la eficiencia en el sentido de Pareto no se cumple, porque los mercados son incompletos y hay información asimétrica y externalidades. Aun así, defensores de la HME como John \autor{Cochrane} admiten estos fallos, pero sostienen que suelen ser pequeños y dudan de que la intervención pública los corrija.
+  \item la eficiencia en el sentido de Pareto no se cumple, porque los mercados son incompletos y hay información asimétrica y externalidades. Aun así, defensores de la HME como \autor{John Cochrane} admiten estos fallos, pero sostienen que suelen ser pequeños y dudan de que la intervención pública los corrija.
   \end{itemize}
 \end{itemize}
 
@@ -809,7 +812,7 @@ En el cante (\tiempo{8}). La apertura, de palabra (\tiempo{0,5}). El análisis f
 \subsection{Análisis fundamental}\label{sec:fundamental}
 
 \begin{itemize}
-\item \emph{Idea}: el \concepto{análisis fundamental} estima el \concepto{valor intrínseco} de una acción, el que se deriva de la capacidad de la empresa para generar beneficios y flujos de caja, y lo compara con su precio de mercado. Si el valor es mayor que el precio, la acción está infravalorada y se compra; si es menor, sobrevalorada, y se vende. Lo sistematizaron \textcite{GrahamDodd1934Security}.\footnote{Benjamin \autor{Graham} lo divulgó después en \emph{The Intelligent Investor} (1949). Análisis fundamental e \emph{inversión en valor} (\emph{value investing}) suelen ir juntos, pero no son lo mismo: el primero es una técnica para estimar el valor; la segunda, un estilo de inversión que compra acciones cuyo precio está por debajo de su valor intrínseco y espera, a veces años, a que el mercado lo reconozca. Su seguidor más conocido es Warren \autor{Buffett}.} Detrás está la diferencia entre lo que algo vale y lo que cuesta: «todo necio confunde valor y precio», en palabras que suelen atribuirse a Antonio \autor{Machado}.
+\item \emph{Idea}: el \concepto{análisis fundamental} estima el \concepto{valor intrínseco} de una acción, el que se deriva de la capacidad de la empresa para generar beneficios y flujos de caja, y lo compara con su precio de mercado. Si el valor es mayor que el precio, la acción está infravalorada y se compra; si es menor, sobrevalorada, y se vende. Lo sistematizaron \textcite{GrahamDodd1934Security}.\footnote{\autor{Benjamin Graham} lo divulgó después en \emph{The Intelligent Investor} (1949). Análisis fundamental e \emph{inversión en valor} (\emph{value investing}) suelen ir juntos, pero no son lo mismo: el primero es una técnica para estimar el valor; la segunda, un estilo de inversión que compra acciones cuyo precio está por debajo de su valor intrínseco y espera, a veces años, a que el mercado lo reconozca. Su seguidor más conocido es \autor{Warren Buffett}.} Detrás está la diferencia entre lo que algo vale y lo que cuesta: «todo necio confunde valor y precio», en palabras que suelen atribuirse a \autor{Antonio Machado}.
 \item \emph{Enfoques}:
   \begin{itemize}
   \item \emph{de arriba abajo} (\emph{top-down}): de la situación de la economía al sector y del sector a la empresa;
@@ -898,11 +901,42 @@ En el cante (\tiempo{8}). La apertura, de palabra (\tiempo{0,5}). El análisis f
 \minutos{1}
 
 \begin{itemize}
-\item \textbf{\emph{Recapitulación}}: en conclusión, la rentabilidad de una acción es una variable aleatoria, y lo que importa no es su riesgo aislado sino lo que aporta al de una cartera. \autor{Markowitz} mostró que diversificar reduce el riesgo sin sacrificar rentabilidad; \autor{Tobin}, que todos deberían tener la misma cartera con riesgo; y el CAPM y la APT, que en equilibrio solo se paga el riesgo que no se puede diversificar. Si además los mercados son eficientes, nadie bate al índice de forma sistemática y basta la gestión pasiva; las anomalías y las finanzas conductuales abren un resquicio a la gestión activa, con el análisis fundamental, que busca el valor intrínseco, y el técnico, que busca pautas en los precios.
-\item \textbf{\emph{Relevancia}}: los 3 enfoques son complementarios. La teoría de la cartera dice si conviene un título por lo que aporta a la rentabilidad y al riesgo; el análisis fundamental, cuánto vale a medio y largo plazo; el técnico, cuándo entrar o salir. Y todos tienen un componente subjetivo: que los inversores valoren distinto es lo que hace que los mercados sean líquidos y profundos.
-\item \textbf{\emph{Extensiones}}: la renta fija \vertema{3.B.24} y los derivados \vertema{3.B.25}; el coste del capital y la valoración de proyectos y de empresas \vertema{3.B.2} \vertema{3.B.4}; la estructura de capital y los dividendos \vertema{3.B.3}; la valoración basada en el consumo \vertema{3.A.33}; la bolsa y la economía real, por el efecto riqueza, la $q$ de \autor{Tobin} y la política monetaria \vertema{3.A.34} \vertema{3.A.37}; las burbujas y su regulación \vertema{3.B.26} \vertema{3.B.27}; y los mercados de valores en España \vertema{4.A.20}.
-\item \textbf{\emph{Opinión}}: el auge de la gestión pasiva tiene un límite lógico, la paradoja de \textcite{GrossmanStiglitz1980}: si nadie buscara información, los precios dejarían de reflejarla y volvería a compensar buscarla. Los gestores activos son los que hacen eficiente el mercado del que viven los pasivos.
-\item \textbf{\emph{Idea final}}: «nadie da nada por nada». La bolsa paga una prima, pero solo por el riesgo que no se puede diversificar, y batir al mercado exige saber algo que el precio aún no recoge. Lo único gratis es la diversificación: no poner todos los huevos en la misma cesta. Y, más allá de quién gana y quién pierde, los mercados de renta variable cumplen una función que los justifica: canalizar el ahorro hacia la inversión de las empresas y repartir su riesgo.
+\item \textbf{\emph{Recapitulación}}:
+  \begin{itemize}
+  \item En conclusión, la rentabilidad de una acción es una variable aleatoria, y lo que importa no es su riesgo aislado sino lo que aporta al de una cartera.
+
+  \item \autor{Markowitz} mostró que diversificar reduce el riesgo sin sacrificar rentabilidad; \autor{Tobin}, que todos deberían tener la misma cartera con riesgo; y el CAPM y la APT, que en equilibrio solo se paga el riesgo que no se puede diversificar.
+
+  \item Si además los mercados son eficientes, nadie bate al índice de forma sistemática y basta la gestión pasiva; las anomalías y las finanzas conductuales abren un resquicio a la gestión activa, con el análisis fundamental, que busca el valor intrínseco, y el técnico, que busca pautas en los precios.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Los 3 enfoques son complementarios.
+
+  \item La teoría de la cartera dice si conviene un título por lo que aporta a la rentabilidad y al riesgo; el análisis fundamental, cuánto vale a medio y largo plazo; el técnico, cuándo entrar o salir.
+
+  \item Y todos tienen un componente subjetivo: que los inversores valoren distinto es lo que hace que los mercados sean líquidos y profundos.
+  \end{itemize}
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item La renta fija \vertema{3.B.24} y los derivados \vertema{3.B.25}; el coste del capital y la valoración de proyectos y de empresas \vertema{3.B.2} \vertema{3.B.4}; la estructura de capital y los dividendos \vertema{3.B.3}; la valoración basada en el consumo \vertema{3.A.33}; la bolsa y la economía real, por el efecto riqueza, la $q$ de \autor{Tobin} y la política monetaria \vertema{3.A.34} \vertema{3.A.37}; las burbujas y su regulación \vertema{3.B.26} \vertema{3.B.27}; y los mercados de valores en España \vertema{4.A.20}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item El auge de la gestión pasiva tiene un límite lógico, la paradoja de \textcite{GrossmanStiglitz1980}: si nadie buscara información, los precios dejarían de reflejarla y volvería a compensar buscarla.
+
+  \item Los gestores activos son los que hacen eficiente el mercado del que viven los pasivos.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item «Nadie da nada por nada».
+
+  \item La bolsa paga una prima, pero solo por el riesgo que no se puede diversificar, y batir al mercado exige saber algo que el precio aún no recoge.
+
+  \item Lo único gratis es la diversificación: no poner todos los huevos en la misma cesta.
+
+  \item Y, más allá de quién gana y quién pierde, los mercados de renta variable cumplen una función que los justifica: canalizar el ahorro hacia la inversión de las empresas y repartir su riesgo.
+  \end{itemize}
 \end{itemize}
 
 \clearpage
