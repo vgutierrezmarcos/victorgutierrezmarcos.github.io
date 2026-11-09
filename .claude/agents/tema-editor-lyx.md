@@ -63,6 +63,13 @@ sencillo y solo las órdenes de `tcee.sty`):
 - Cada modelo con sus bloques a) Idea, b) Modelo (i Supuestos, ii Desarrollo,
   iii Implicaciones), c) Extensiones, d) Evidencia, e) Valoración: a), b)…
   con `\paragraph`, i), ii)… con `\subparagraph`, letras seguidas.
+- **Reglas del 9/11/2026** (CRITERIOS §2): nombres de persona enteros en
+  versalitas (`\autor{John Stuart Mill}`); `\vertema{}` al margen de la frase
+  (nunca «el desarrollo está en \vertema{…}»); ninguna `\fuente{}` con otro
+  tema; en introducción y conclusión, el rótulo solo en su línea y el texto en
+  viñetas indentadas; viñetas que se entienden solas; rótulos repetidos con el
+  mismo formato; cajas grises para lo que no se canta. verificar-tema.py lo
+  comprueba.
 - **Toda remisión es un enlace** (CRITERIOS §6): `\vertema{3.A.12}` para otros
   temas y `\ref{…}`/`\eqref{…}` para apartados, anexos, gráficos, tablas y
   ecuaciones; nunca «(II.3)», «apartado~I.2», «bloque~III» o «anexo~B» a mano.

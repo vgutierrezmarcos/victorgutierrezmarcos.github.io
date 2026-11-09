@@ -346,6 +346,33 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
     for m in re.finditer(r'(?:visto|vista|vistos|estudiado|estudiada|estudiados|desarrollado|desarrollada|analizado|'
                          r'analizada|explicado|explicada|tratado|tratada)\s+(?:ya\s+)?en\s+(?:el|los)\s+temas?\b', cuerpo, re.I):
         errores.append(f'«{m.group(0)}» (l. {linea(m.start())}): cada tema se canta solo; se remite con \\vertema sin decir que se vio en otro tema')
+    # --- Remisiones al margen de la frase (§2, Víctor 9/11/2026): nunca «está en \vertema…»
+    # (aviso: puede haber falsos positivos)
+    dentro = [linea(m.start()) for m in re.finditer(
+        r'\b(?:en|de|del|al|según|como|véase|ver|que)\s*[(~]?\s*\\vertema(?:corto)?\{', antes_anexos)]
+    if dentro:
+        avisos.append(f'{len(dentro)} remisiones \\vertema dentro de la frase (l. {", ".join(map(str, dentro[:8]))}'
+                      f'{"…" if len(dentro) > 8 else ""}): van al margen, la frase se lee entera sin ellas (CRITERIOS §2)')
+    # --- Ningún gráfico ni tabla con otro tema como fuente (§2, Víctor 9/11/2026)
+    for m in re.finditer(r'\\fuente\{((?:[^{}]|\{[^{}]*\})*)\}', cuerpo):
+        if re.search(r'\\vertema|\b[Tt]ema\s+\d|\b\d\.[AB]\.\d', m.group(1)):
+            errores.append(f'\\fuente con otro tema como fuente (l. {linea(m.start())}): la fuente es la obra o el dato '
+                           'original; la remisión, en el texto (CRITERIOS §2)')
+    # --- Nombres enteros en versalitas (§2, Víctor 9/11/2026): «Karl \autor{Marx}» → «\autor{Karl Marx}»
+    pila = [m.group(1) + ' ' + linea(m.start()).__str__() for m in re.finditer(
+        r'(?<![.:;?!»]\s)(?<![\w\\{])((?:[A-ZÁÉÍÓÚ][a-záéíóúüñ]+|[A-Z]\.)(?:[ ~](?:[A-ZÁÉÍÓÚ][a-záéíóúüñ]+|[A-Z]\.))*)[ ~]\\autor\{',
+        cuerpo) if not re.match(r'(?:Para|En|Con|De|Del|Según|Sin|Cuando|Si|La|El|Los|Las|Efecto|Plan|Informe|Ley|'
+                                r'Teorema|Modelo|Curva|Paradoja|Regla|Criterio|Lema|Óptimo|Caja|Diagrama)\b', m.group(1))]
+    if pila:
+        avisos.append(f'{len(pila)} nombres de pila fuera de \\autor{{}} (p. ej., {"; ".join(pila[:5])}): '
+                      'el nombre entero va en versalitas (CRITERIOS §2)')
+    # --- Introducción y conclusión: rótulo solo en su línea (§2, Víctor 9/11/2026)
+    for titulo in ('Introducción', 'Conclusión'):
+        m = re.search(r'\\section\*\{' + titulo + r'\}(.*?)(?=\\section|\\clearpage|\\appendix|$)', cuerpo, re.S)
+        if m:
+            for r in re.finditer(r'\\item\s*\\textbf\{\\emph\{([^}]+)\}\}\s*:?[ \t]*(?=[^\s:])(?!\\begin\{itemize\})', m.group(1)):
+                errores.append(f'{titulo}: el rótulo «{r.group(1)}» lleva el texto en su misma línea; va solo y el '
+                               'desarrollo en viñetas indentadas debajo (CRITERIOS §2)')
     # --- Sin nombres de preparadores (§2) ni enlaces a quia.com
     ruta_ref = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'referencias.json')
     if os.path.exists(ruta_ref):

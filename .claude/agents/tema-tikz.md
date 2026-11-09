@@ -14,6 +14,10 @@ gráfico es el de un modelo del canon (`R/oposicion/temario/canon/modelos/<id>.m
 dice cuál es su gráfico de referencia y en qué tema está), parte de ese
 `.tex` para que el modelo se reconozca igual en todos los temas.
 
+Nombres de persona enteros en versalitas (`\autor{Robert Lucas}`). La fuente
+de un gráfico nunca es otro tema: la obra o el dato original, o «elaboración
+propia» (Víctor, 9/11/2026; CRITERIOS §2).
+
 Para cada gráfico:
 
 1. Mira el original (`D/_trabajo/<original>`, una página del PDF: localiza el
