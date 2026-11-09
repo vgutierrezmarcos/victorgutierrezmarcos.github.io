@@ -1,43 +1,77 @@
-% Flujos del modelo DMP: población activa normalizada a 1, sin inactivos.
-% Ocupados (1 - U) y parados (U); las vacantes (V) se abren con libre entrada
-% y se cubren a la tasa q(theta). Notación del canon: s, f(theta), q(theta).
+% Flujos del modelo DMP, como la figura de los supuestos del tema antiguo:
+% inactivos (I), parados (U), ocupados (1 - U) y vacantes (V) en fila.
+%  - Sin inactivos: población activa normalizada a 1, ningún flujo con I.
+%  - La función de emparejamiento m(U, V) = A U^alpha V^(1-alpha) toma los
+%    parados y las vacantes que buscan y da los emparejamientos, que son a la
+%    vez salidas del paro, f(theta) U, y vacantes cubiertas, q(theta) V.
+%  - A la tasa s se destruye el emparejamiento: el trabajador vuelve al paro y
+%    el puesto vuelve a ser una vacante (con valor J_V = 0 por libre entrada).
+% Notación del canon: s, f(theta), q(theta), m(U, V).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
 \begin{tikzpicture}[tcee,
     estado/.style={rounded corners=6pt, draw=tceemorado, fill=tceemorado!12, very thick,
-      minimum width=2.9cm, minimum height=1.15cm, align=center, font=\normalsize},
+      minimum width=2.5cm, minimum height=1.15cm, align=center, font=\normalsize},
     vacante/.style={estado, draw=tceeverde, fill=tceeverde!12},
-    transicion/.style={->, thick, black!75},
+    inactivo/.style={estado, draw=tceegris, fill=none, dashed, text=tceegris},
+    funcion/.style={rounded corners=4pt, draw=tceemorado, very thick, fill=tceemorado!6,
+      inner sep=5pt, align=center, font=\normalsize},
+    transicion/.style={->, thick, tceemorado},
+    entrada/.style={->, thin, densely dashed, black!70},
     tasa/.style={font=\normalsize, text=black, fill=none, inner sep=3pt, align=center}]
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
-  \path (-4.2,-4.6) rectangle (8.2,1.9);
-  % 1: ocupados y parados
+  \path (-4.6,-3.9) rectangle (13.6,4.3);
+  % 1: parados y ocupados
   \capa{1}{
-    \node[estado] (O) at (0,0) {Ocupados\\$1-U$};
-    \node[estado] (P) at (5.6,0) {Parados\\$U$};
+    \node[estado] (U) at (0,0) {Parados\\$U$};
+    \node[estado] (L) at (4.6,0) {Ocupados\\$1-U$};
   }
-  % 2: separaciones, de ocupados a parados (por arriba)
+  % 2: vacantes
   \capa{2}{
-    \draw[transicion] (O.north east) to[out=35, in=145]
-      node[tasa, midway, above] {$s$ (separaciones)} (P.north west);
+    \node[vacante] (V) at (9.2,0) {Vacantes\\$V$};
   }
-  % 3: salida del paro, de parados a ocupados (por abajo)
+  % 3: la función de emparejamiento toma parados y vacantes
   \capa{3}{
-    \draw[transicion] (P.south west) to[out=215, in=-35]
-      node[tasa, midway, below] {$f(\theta)$ (encuentran empleo)} (O.south east);
+    \node[funcion] (M) at (4.6,3.35) {$m(U,V)=A\,U^{\alpha}V^{1-\alpha}$\\[-1pt]{\small emparejamientos}};
+    \draw[entrada] (U.north) |- node[pos=0.25, left, font=\small, text=black!70] {buscan} (M.west);
+    \draw[entrada] (V.north) |- node[pos=0.25, right, font=\small, text=black!70] {buscan} (M.east);
   }
-  % 4: vacantes: entran con libre entrada y se cubren a la tasa q(theta)
+  % 4: los emparejamientos son salidas del paro, a la tasa f(theta)
   \capa{4}{
-    \node[vacante] (V) at (0,-3) {Vacantes\\$V$};
-    \draw[transicion] (V.north) -- node[tasa, midway, left] {$q(\theta)$\\(se cubren)} (O.south);
-    \draw[transicion] (-4.1,-3) -- node[tasa, midway, below, font=\small] {libre entrada\\(coste $c$)} (V.west);
+    \draw[transicion] (U.north east) to[out=40, in=140]
+      node[tasa, midway, above] {$f(\theta)=\dfrac{m}{U}$} (L.north west);
   }
-  % 5: estado estacionario
+  % 5: y vacantes cubiertas, a la tasa q(theta)
   \capa{5}{
-    \node[font=\small, anchor=west] at (2.0,-3.0) {estado estacionario:};
-    \node[font=\small, anchor=west] at (2.0,-3.6) {entradas al paro $s\,(1-U)$ $=$ salidas $f(\theta)\,U$};
+    \draw[transicion, draw=tceeverde] (V.north west) to[out=140, in=40]
+      node[tasa, midway, above] {$q(\theta)=\dfrac{m}{V}$} (L.north east);
+  }
+  % 6: separaciones: el ocupado vuelve al paro a la tasa s
+  \capa{6}{
+    \draw[transicion] (L.south west) to[out=-140, in=-40]
+      node[tasa, midway, below] {$s$\\{\small pierde el empleo}} (U.south east);
+  }
+  % 7: y su puesto vuelve a ser una vacante, a la misma tasa s
+  \capa{7}{
+    \draw[transicion, draw=tceeverde] (L.south east) to[out=-40, in=-140]
+      node[tasa, midway, below] {$s$\\{\small el puesto queda vacante}} (V.south west);
+  }
+  % 8: nuevas vacantes con libre entrada, a un coste c por unidad de tiempo
+  \capa{8}{
+    \draw[->, thick, tceeverde] (13.4,0) -- node[tasa, midway, above, font=\small] {libre entrada} node[tasa, midway, below, font=\small] {coste $c$} (V.east);
+  }
+  % 9: sin inactivos: ningún flujo entre la inactividad y el paro
+  \capa{9}{
+    \node[inactivo] (I) at (-3.5,0) {Inactivos\\$I$};
+    \draw[->, thin, tceegris] (I.north east) to[out=35, in=145] node[tasa, midway, above, text=tceegris, font=\small] {$0$} (U.north west);
+    \draw[->, thin, tceegris] (U.south west) to[out=-145, in=-35] node[tasa, midway, below, text=tceegris, font=\small] {$0$} (I.south east);
+    \node[font=\small, text=tceegris, align=center] at (-3.5,-2.25) {sin inactivos:\\activos $=1$};
+  }
+  % 10: estado estacionario
+  \capa{10}{
+    \node[font=\small] at (4.6,-3.35) {estado estacionario: entradas al paro $s\,(1-U)\;=\;$ salidas $f(\theta)\,U\;=\;m(U,V)$};
   }
 \end{tikzpicture}
 \end{document}

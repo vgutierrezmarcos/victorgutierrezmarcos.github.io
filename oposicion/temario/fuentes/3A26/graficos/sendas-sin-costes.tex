@@ -1,0 +1,39 @@
+% Sendas del empleo con costes de ajuste nulos (caso de referencia): panel a, perturbación
+% permanente en t_0; panel b, perturbación transitoria (ciclo). Es la pareja
+% de paneles de sendas-ajuste.tex (mismos números, ver allí las fórmulas)
+% solo con este caso, para mostrarlo al hablar de él (Víctor, 9/11/2026);
+% la senda sin costes va en azul claro como referencia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={onda(\t)=2.2+1.2*sin(deg(pi*\t/2));
+      cuad(\t)=3.6-2.8*exp(-(\t-2)/1.2);
+      antes(\t)=0.8+1.7887*(exp((\t-2)/1.2)-exp(-1/1.2));
+      despues(\t)=3.6-1.7887*exp(-(\t-2)/1.2);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-0.8) rectangle (17.3,5.0);
+  % ---------------- Panel a: perturbación permanente -----------------------
+  % 1: ejes, t_0 y el nuevo óptimo L_1*
+  \capa{1}{\ejes{$t$}{$L_t$}{6.8}{4.3}
+    \node[etiqueta,font=\small\itshape,anchor=south] at (3.4,4.5) {a) Perturbación permanente};
+    \draw[guia] (2,0) node[below,text=black] {$t_0$} -- (2,4.0);
+    \draw[guia] (0,3.6) node[left,text=black] {$L_1^*$} -- (6.4,3.6);
+    \node[left] at (0,0.8) {$L_0$};}
+  % 2: sin costes, el empleo salta de inmediato y del todo al nuevo óptimo
+  \capa{2}{\draw[curva2,thick] (0,0.8) -- (2,0.8) -- (2,3.6) -- (6.2,3.6);
+    \node[etiqueta,text=tceeazul,anchor=north west,align=left] at (2.15,3.5) {sin costes: salto\\inmediato y completo};}
+  % ---------------- Panel b: perturbación transitoria ----------------------
+  \begin{scope}[xshift=9.6cm]
+    % 3: ejes y L*
+    \capa{3}{\ejes{$t$}{$L_t$}{6.8}{4.3}
+      \node[etiqueta,font=\small\itshape,anchor=south] at (3.4,4.5) {b) Perturbación transitoria (ciclo)};
+      \draw[guia] (0,2.2) node[left,text=black] {$L^*$} -- (6.4,2.2);}
+    % 4: sin costes, el empleo sigue a la productividad
+    \capa{4}{\draw[curva2,thick] plot[domain=0:6.2,samples=100,smooth] (\x,{onda(\x)});
+      \node[etiqueta,text=tceeazul,anchor=south] at (1,3.45) {sin costes};
+      \node[etiqueta,text=tceeazul,align=center,anchor=north] at (3.45,0.92) {sigue a la perturbación};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
