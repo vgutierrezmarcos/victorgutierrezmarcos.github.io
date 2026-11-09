@@ -1,0 +1,30 @@
+% La curva de fijación de precios (PS) sola, en el plano (U, W/P): rehace la
+% imagen 9 del tema antiguo («Curva de salario real precio»): horizontal en
+% PAT/(1+mu); por encima, hasta PAT, el beneficio real por trabajador,
+% mu·PAT/(1+mu).
+% Misma escala que ws-ps.tex: PS = 2,5662; PAT = 4,6 (mu = 0,79, ilustrativo).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm]
+  \def\h{2.5662}
+  \def\pat{4.6}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.7,-0.8) rectangle (12.6,6.4);
+  % 1: ejes (U, W/P)
+  \capa{1}{\ejes{$U$}{$W/P$}{8.6}{6.1}}
+  % 2: la productividad aparente del trabajo, lo que produce cada trabajador
+  \capa{2}{\draw[guia, thick] (0,\pat) node[left, text=black] {$\mathrm{PAT}$} -- (8.2,\pat);}
+  % 3: la curva de fijación de precios, horizontal
+  \capa{3}{\draw[curva2] (0,\h) node[left, text=black] {$\dfrac{\mathrm{PAT}}{1+\mu}$} -- (8.2,\h);}
+  \capa{3}{\node[etiqueta, right, text=tceeazul] at (8.2,\h) {PS: $\dfrac{W}{P}=\dfrac{\mathrm{PAT}}{1+\mu}$};}
+  % 4: el reparto de lo producido: salario real y beneficio por trabajador
+  \capa{4}{\draw[decorate, decoration={brace, amplitude=5pt}, tceegris, thick] (0.25,0.05) -- (0.25,{\h-0.05});}
+  \capa{4}{\node[etiqueta, text=tceegris, font=\footnotesize, anchor=west, align=left] at (0.55,{\h/2})
+      {salario real: $\dfrac{W}{P}=\dfrac{\mathrm{PAT}}{1+\mu}$};}
+  \capa{4}{\draw[decorate, decoration={brace, amplitude=5pt}, tceegris, thick] (0.25,{\h+0.05}) -- (0.25,{\pat-0.05});}
+  \capa{4}{\node[etiqueta, text=tceegris, font=\footnotesize, anchor=west, align=left] at (0.55,{(\h+\pat)/2})
+      {beneficio real por trabajador: $\dfrac{\mu\cdot\mathrm{PAT}}{1+\mu}$};}
+\end{tikzpicture}
+\end{document}

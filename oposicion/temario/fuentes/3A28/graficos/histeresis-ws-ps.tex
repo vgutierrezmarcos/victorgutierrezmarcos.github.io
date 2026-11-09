@@ -1,0 +1,52 @@
+% La persistencia del desempleo con el aparato de la NAIRU (WS-PS), plano
+% (U, W/P). Misma función y escala que ws-ps.tex:
+%   WS:  g(U) = 1 + 5,2 e^{-0,3 U};  PS = g(4) = 2,5662  =>  U^n_0 = 4
+%   Recesión: la demanda lleva el paro a U_1 = 7 (punto 1): g(7) = 1,6365 < PS,
+%     los trabajadores piden menos de lo que dejan las empresas y la inflación baja.
+%   Histéresis: insiders y capital humano suben la WS (WS' = g(U - 1));
+%     el capital físico perdido baja la PS (PS' = 2,2662).
+%   Nueva NAIRU: g(U - 1) = 2,2662  =>  U = 1 + ln(5,2/1,2662)/0,3 = 5,709.
+%   Recuperación: el paro solo vuelve a U^n_1 = 5,7 (punto 2), no a U^n_0.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm,
+    declare function={g(\u)=1+5.2*exp(-0.3*\u);},
+    num/.style={etiqueta, font=\footnotesize}]
+  \def\h{2.5662}
+  \def\hh{2.2662}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.7,-1.7) rectangle (12.4,6.4);
+  % 1: ejes (U, W/P)
+  \capa{1}{\ejes{$U$}{$W/P$}{9.6}{6.1}}
+  % 2: WS, PS y el equilibrio inicial, U^n_0
+  \capa{2}{\draw[curva1] plot[domain=0.55:9.2, samples=80, smooth] (\x,{g(\x)});}
+  \capa{2}{\node[etiqueta, anchor=west, text=tceemorado] at (0.75,{g(0.55)}) {WS};}
+  \capa{2}{\draw[curva2] (0,\h) -- (9.2,\h) node[etiqueta, right, text=tceeazul] {PS};}
+  \capa{2}{\node[punto] (E0) at (4,\h) {};}
+  \capa{2}{\node[num, above right=0pt and 0pt] at (E0) {$0$};}
+  \capa{2}{\draw[guia] (E0) -- (4,0) node[below, text=black] {$U^n_0$};}
+  % 3: la recesión lleva el paro a U_1: los trabajadores piden menos (la inflación baja)
+  \capa{3}{\node[punto] (P1) at (7,{g(7)}) {};}
+  \capa{3}{\node[num, below left=0pt and 0pt] at (P1) {$1$};}
+  \capa{3}{\draw[guia] (7,\h) -- (7,0) node[below, text=black] {$U_1$};}
+  \capa{3}{\draw[flecha] (4.1,-0.9) -- (6.9,-0.9);}
+  \capa{3}{\node[num, text=tceerojo, anchor=west] at (7.0,-0.9) {recesión};}
+  % 4: histéresis en la WS: insiders y capital humano
+  \capa{4}{\draw[curva1, desplazada] plot[domain=1.55:9.2, samples=80, smooth] (\x,{g(\x-1)});}
+  \capa{4}{\node[etiqueta, anchor=west, text=tceemorado, font=\footnotesize] at (9.2,{g(8.2)+0.12}) {WS$'$};}
+  \capa{4}{\draw[flecha, thin] (2.6,{g(2.6)+0.1}) -- (3.3,{g(2.3)+0.1});}
+  \capa{4}{\node[num, text=tceemorado, align=left, anchor=south west] at (3.0,{g(2.3)+0.15})
+      {\emph{insiders} y capital humano:\\piden más con el mismo paro};}
+  % 5: histéresis en la PS: capital físico
+  \capa{5}{\draw[curva2, desplazada] (0,\hh) -- (9.2,\hh) node[etiqueta, right, text=tceeazul, font=\footnotesize] {PS$'$};}
+  \capa{5}{\node[num, text=tceeazul, anchor=north west] at (0.1,{\hh-0.05}) {menos capital: dejan menos};}
+  % 6: la nueva NAIRU y la recuperación incompleta
+  \capa{6}{\node[punto, fill=tceerojo] (E1) at (5.709,\hh) {};}
+  \capa{6}{\node[num, above right=0pt and 0pt] at (E1) {$2$};}
+  \capa{6}{\draw[guia] (E1) -- (5.709,0) node[below, text=tceerojo] {$U^n_1$};}
+  \capa{6}{\draw[flecha] (6.9,-1.4) -- (5.8,-1.4);}
+  \capa{6}{\node[num, text=tceerojo, anchor=east] at (5.7,-1.4) {recuperación incompleta};}
+\end{tikzpicture}
+\end{document}
