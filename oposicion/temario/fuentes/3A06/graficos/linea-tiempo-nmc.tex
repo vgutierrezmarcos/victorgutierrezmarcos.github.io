@@ -6,6 +6,8 @@
 % abajo de la banda del tiempo, con el rótulo inclinado 45°; cuando 2 del mismo
 % lado distan un año (1982 y 1983), el posterior arranca más lejos de la banda.
 % Colores por bloque: I morado, II azul, III verde; Nobel en dorado con estrella.
+% Las aportaciones más propias de la nueva economía keynesiana (1997, 2003-2007,
+% HANK) van en verde claro (Víctor, 9/11/2026).
 %   I:  1961 Muth; 1969 Lucas y Rapping; 1970 Phelps; 1971 Lucas y Prescott
 %   II: 1972 Lucas; 1974 Barro; 1975-1976 Sargent y Wallace; 1976 crítica;
 %       1977 Kydland y Prescott; 1979 Barro; 1981 Sargent y Wallace; 1983 Barro y Gordon
@@ -38,7 +40,7 @@
     \fi}
   \begin{scope}[shift={(-1958,0)}]
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
-  \path (1953,-4.75) rectangle (2026,4.1);
+  \path (1953,-5.3) rectangle (2026,4.1);
   % 1: el eje del tiempo, una banda con las décadas
   \capa{1}{\fill[tceegris!14] (1958,-0.2) rectangle (2022,0.2);}
   \capa{1}{\draw[eje] (1958,0) -- (2023,0);}
@@ -66,12 +68,15 @@
   \capa{4}{\hito{tceeverde}{1982}{b}{0}{1982 \autor{Kydland} y \autor{Prescott}: \emph{Time to Build}}}
   \capa{4}{\hito{tceeverde}{1983}{b}{0.3}{1983 \autor{Long} y \autor{Plosser}}}
   \capa{4}{\hito{tceeverde}{1986}{a}{0}{1986 \autor{Prescott}: calibración}}
-  \capa{4}{\hito{tceeverde}{1997}{b}{0}{1997 \autor{Goodfriend} y \autor{King}: nueva síntesis}}
-  \capa{4}{\hito{tceeverde}{2003}{a}{0}{2003-2007 \autor{Smets} y \autor{Wouters}}}
-  \capa{4}{\hito{tceeverde}{2018}{b}{0}{2018 \autor{Kaplan}, \autor{Moll} y \autor{Violante}: HANK}}
+  % aportaciones más propias de la nueva economía keynesiana: verde claro
+  \capa{4}{\hito{tceeverde!45}{1997}{b}{0}{1997 \autor{Goodfriend} y \autor{King}: nueva síntesis}}
+  \capa{4}{\hito{tceeverde!45}{2003}{a}{0}{2003-2007 \autor{Smets} y \autor{Wouters}}}
+  \capa{4}{\hito{tceeverde!45}{2018}{b}{0}{2018 \autor{Kaplan}, \autor{Moll} y \autor{Violante}: HANK}}
   \capa{4}{\draw[llave=tceeverde] (1982,-4.2) -- (2018,-4.2);}
   \capa{4}{\node[font=\scriptsize, text=tceeverde, anchor=north] at (2000,-4.45)
       {consolidación: ciclos reales y EGDE};}
+  \capa{4}{\node[font=\scriptsize, text=tceeverde!60, anchor=north] at (2000,-4.85)
+      {en verde claro, aportaciones de la nueva economía keynesiana};}
   % 5: los 3 Nobel
   \capa{5}{\hito{tceedorado}{1995}{a}{0.12}{1995 Nobel: \autor{Lucas}}}
   \capa{5}{\node[nobel] at (1995,0.2) {};}
