@@ -1285,6 +1285,41 @@ class PreparadorRepo {
     } catch (_) {}
     final codigo = perfil().codigo;
     if (codigo != null) await oposicion.red(_db, 'codigos').doc(codigo).delete();
+    // Lo demás que tiene a su nombre en la red: reservas de clase (pedidas o
+    // recibidas), sus huecos, su solicitud de alta y las clases sueltas y
+    // búsquedas de preparador que abrió. Cada cosa por separado: lo que las
+    // reglas no dejan (o no existe) no impide el resto.
+    Future<void> intenta(Future<void> Function() f) async {
+      try {
+        await f();
+      } catch (_) {}
+    }
+
+    for (final campo in const ['alumno', 'preparador']) {
+      await intenta(() async {
+        for (final d in (await oposicion.red(_db, 'reservas').where(campo, isEqualTo: uid).get()).docs) {
+          await d.reference.delete();
+        }
+      });
+    }
+    await intenta(() => oposicion.red(_db, 'huecos').doc(uid).delete());
+    await intenta(() => oposicion.red(_db, 'solicitudesPreparador').doc(uid).delete());
+    await intenta(() async {
+      for (final d in (await oposicion.red(_db, 'sustituciones').where('alumno', isEqualTo: uid).get()).docs) {
+        await intenta(() => d.reference.collection('privado').doc('alumno').delete());
+        await d.reference.delete();
+      }
+    });
+    await intenta(() async {
+      for (final d in (await oposicion.red(_db, 'busquedas').where('alumno', isEqualTo: uid).get()).docs) {
+        await intenta(() async {
+          for (final i in (await d.reference.collection('interesados').get()).docs) {
+            await i.reference.delete();
+          }
+        });
+        await d.reference.delete();
+      }
+    });
   }
 
   // ------------------------------------------------------------- Clases fijas

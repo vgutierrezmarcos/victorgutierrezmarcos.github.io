@@ -43,6 +43,61 @@ class OposicionCuenta {
     }
   }
 
+  // ------------------------------------------------------- Marca de borrado
+  //
+  // La app guarda todo también en el dispositivo y, al sincronizar, sube lo
+  // que la nube no tiene. Si los datos de una oposición se borran desde otro
+  // dispositivo o desde el conector de la IA, sin una marca este dispositivo
+  // los volvería a subir. La marca va en `users/{uid}/cuenta/app`, campo
+  // `borrados.{oposicion}` (texto ISO en UTC), y cada dispositivo apunta en
+  // [Cajas.app] la última que ha aplicado.
+
+  static String _claveVista(String uid, Oposicion o) => 'borrado_visto_${uid}_${o.id}';
+
+  /// Apunta en la cuenta que los datos de [oposicion] se han borrado ahora y,
+  /// en este dispositivo, que ya está aplicado. Devuelve la marca.
+  static Future<String?> marcarBorrado(Oposicion oposicion) async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return null;
+    final marca = DateTime.now().toUtc().toIso8601String();
+    await _doc(uid).set({
+      'borrados': {oposicion.id: marca},
+    }, SetOptions(merge: true)).timeout(_espera);
+    await Hive.box(Cajas.app).put(_claveVista(uid, oposicion), marca);
+    return marca;
+  }
+
+  /// Marca de un borrado de [oposicion] hecho en otro sitio que este
+  /// dispositivo aún no ha aplicado, o null. Sin red no se sabe: null.
+  static Future<String?> borradoPendiente(Oposicion oposicion) async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return null;
+    try {
+      final borrados = (await _doc(uid).get(const GetOptions(source: Source.server)).timeout(_espera)).data()?['borrados'];
+      final marca = borrados is Map ? borrados[oposicion.id] : null;
+      if (marca is! String || marca.isEmpty) return null;
+      final vista = Hive.box(Cajas.app).get(_claveVista(uid, oposicion));
+      return vista is String && vista.compareTo(marca) >= 0 ? null : marca;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Este dispositivo ya ha aplicado el borrado [marca] de [oposicion].
+  static Future<void> borradoAplicado(Oposicion oposicion, String marca) async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid != null) await Hive.box(Cajas.app).put(_claveVista(uid, oposicion), marca);
+  }
+
+  /// Al eliminar la cuenta: lo que es de la cuenta y no de una oposición.
+  static Future<void> borrar() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+    try {
+      await _doc(uid).delete().timeout(_espera);
+    } catch (_) {}
+  }
+
   /// La oposición de la cuenta, o null si no se sabe (sin sesión, sin red o
   /// cuenta nueva). Cuentas de antes de guardarla: la primera en la que ya
   /// eligió papel o, en TCEE, la que tiene ajustes del opositor.

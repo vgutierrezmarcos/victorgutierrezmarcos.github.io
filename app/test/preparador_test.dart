@@ -339,20 +339,45 @@ void main() {
     await prep.guardarSesion(Cante(id: 's1', fecha: DateTime(2026, 10, 8, 17), alumno: prep.alumnos().single.id, updatedAt: DateTime.now()));
     await usuarioPrep.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.1'}));
     await usuarioPrep.guardarNota('3.A.1', 'Repasar Keynes');
+    // Lo que cuelga de un documento (borrarlo no lo borra) y lo que es de la cuenta o de otra oposición.
+    await db.doc('users/prep/cantes/c1').set({'tema': '3.A.1'});
+    await db.doc('users/prep/cantes/c1/informes/i1').set({'resumen': 'Bien'});
+    await db.doc('users/prep/sesiones/s1/notas/prep').set({'texto': 'Nota'});
+    // Las anotaciones de un tema cuelgan de un documento que no existe.
+    await db.doc('users/prep/anotaciones/3A01/paginas/1').set({'trazos': []});
+    await db.doc('users/prep/anotaciones/3.A.2-revisado/paginas/p2').set({'trazos': []});
+    await db.doc('users/prep/tablon/t1').set({'de': 'otro', 'texto': 'Hola'});
+    await db.doc('users/prep/oposiciones/dce/cantes/d1').set({'tema': '1.A.1'});
+    await db.doc('users/prep/cuenta/app').set({'oposicion': 'tcee'});
+    await db.doc('reservas/r1').set({'alumno': 'prep', 'preparador': 'otro', 'estado': 'pedida'});
+    await db.doc('reservas/r2').set({'alumno': 'alu', 'preparador': 'prep', 'estado': 'pedida'});
+    await db.doc('reservas/r3').set({'alumno': 'alu', 'preparador': 'otro', 'estado': 'pedida'});
+    await db.doc('huecos/prep').set({'activo': true});
     // El preparador es a la vez alumno de otro preparador.
     final otro = await repo(db, sesion('otro', 'Olga'));
     await prep.enlazarConCodigo((await otro.activar()).codigo!);
 
     await prep.romperTodosLosEnlaces();
-    await usuarioPrep.borrarTodoEnLaNube();
+    await usuarioPrep.borrarTodoEnLaNube(temas: const ['3A01', '3.A.2']);
 
     expect((await db.doc('codigos/$codigo').get()).exists, isFalse);
     expect((await db.doc('users/alu/preparadores/prep').get()).exists, isFalse);
     expect((await db.collection('preparadores').doc('prep').collection('alumnos').get()).docs, isEmpty);
     expect((await db.doc('preparadores/otro/alumnos/prep').get()).exists, isFalse);
-    for (final c in UsuarioRepo.coleccionesUsuario) {
+    for (final MapEntry(key: c, value: debajo) in UsuarioRepo.coleccionesOposicion.entries) {
       expect((await db.collection('users').doc('prep').collection(c).get()).docs, isEmpty, reason: c);
+      for (final sub in debajo) {
+        expect((await db.collectionGroup(sub).get()).docs.where((d) => d.reference.path.startsWith('users/prep/$c/')), isEmpty, reason: '$c/$sub');
+      }
     }
+    // Lo de la otra oposición y lo de la cuenta no se tocan.
+    expect((await db.doc('users/prep/oposiciones/dce/cantes/d1').get()).exists, isTrue);
+    expect((await db.doc('users/prep/cuenta/app').get()).exists, isTrue);
+    // Sus reservas (pedidas y recibidas) y sus huecos se van; las de otros, no.
+    expect((await db.doc('reservas/r1').get()).exists, isFalse);
+    expect((await db.doc('reservas/r2').get()).exists, isFalse);
+    expect((await db.doc('reservas/r3').get()).exists, isTrue);
+    expect((await db.doc('huecos/prep').get()).exists, isFalse);
     // Lo del alumno sigue siendo suyo: la sesión que recibió se queda en su agenda.
     expect((await db.doc('users/alu/cantes/s1').get()).exists, isTrue);
   });

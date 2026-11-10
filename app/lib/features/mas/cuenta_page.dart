@@ -118,17 +118,12 @@ class CuentaPage extends ConsumerWidget {
                 title: Text('Reiniciar repaso Leitner', style: TextStyle(color: context.esquema.error)),
                 onTap: () => _confirmar(context, 'Se olvidarán las preguntas en seguimiento.', () => ref.read(leitnerProvider.notifier).reiniciar()),
               ),
-              if (usuario != null)
-                ListTile(
-                  leading: Icon(Icons.cloud_off_outlined, color: context.esquema.error),
-                  title: Text('Borrar todos mis datos', style: TextStyle(color: context.esquema.error)),
-                  subtitle: Text('De la nube y de este dispositivo; rompe los enlaces con preparadores y alumnos', style: context.textos.labelSmall),
-                  onTap: () => _confirmar(
-                    context,
-                    'Se borrarán de la nube y de este dispositivo tus tests, repaso, temas, notas, cantes, planificación, alumnos y sesiones, y se romperán los enlaces con tus preparadores y alumnos. Después se cerrará la sesión. Tu cuenta de Google no se toca. Esta acción no se puede deshacer.',
-                    () => borrarTodosMisDatos(ref),
-                  ),
-                ),
+              ListTile(
+                leading: Icon(Icons.cloud_off_outlined, color: context.esquema.error),
+                title: Text('Borrar mis datos de una oposición', style: TextStyle(color: context.esquema.error)),
+                subtitle: Text(usuario == null ? 'Todo lo de esa oposición en este dispositivo' : 'Todo lo de esa oposición, en la nube y en este dispositivo; rompe sus enlaces con preparadores y alumnos', style: context.textos.labelSmall),
+                onTap: () => showDialog<void>(context: context, builder: (_) => DialogoBorrarOposicion(conSesion: usuario != null)),
+              ),
               if (usuario != null)
                 ListTile(
                   leading: Icon(Icons.person_remove_outlined, color: context.esquema.error),
@@ -166,6 +161,114 @@ class CuentaPage extends ConsumerWidget {
       await accion();
       if (context.mounted) ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Hecho')));
     }
+  }
+}
+
+/// Borrar todos los datos de una oposición: se elige cuál, se lee qué se
+/// pierde y hay que escribir «BORRAR» y sus siglas para que el botón se active.
+class DialogoBorrarOposicion extends ConsumerStatefulWidget {
+  const DialogoBorrarOposicion({super.key, required this.conSesion});
+
+  final bool conSesion;
+
+  /// Lo que hay que escribir para confirmar el borrado de [o].
+  static String frase(Oposicion o) => 'BORRAR ${o.siglas.toUpperCase()}';
+
+  @override
+  ConsumerState<DialogoBorrarOposicion> createState() => _DialogoBorrarOposicionState();
+}
+
+class _DialogoBorrarOposicionState extends ConsumerState<DialogoBorrarOposicion> {
+  late Oposicion _oposicion = ref.read(oposicionProvider);
+  final _texto = TextEditingController();
+  bool _borrando = false;
+  String? _error;
+
+  @override
+  void dispose() {
+    _texto.dispose();
+    super.dispose();
+  }
+
+  bool get _confirmado => _texto.text.trim().toUpperCase() == DialogoBorrarOposicion.frase(_oposicion);
+
+  Future<void> _borrar() async {
+    setState(() {
+      _borrando = true;
+      _error = null;
+    });
+    final mensajes = ScaffoldMessenger.of(context);
+    try {
+      await borrarDatosDeOposicion(ref, _oposicion);
+      if (!mounted) return;
+      Navigator.pop(context);
+      mensajes.mostrar(SnackBar(content: Text('Borrados tus datos de ${_oposicion.siglas}')));
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _borrando = false;
+        _error = 'No se ha podido borrar todo (¿sin conexión?). Vuelve a intentarlo: no pasa nada por repetirlo.';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final frase = DialogoBorrarOposicion.frase(_oposicion);
+    final varias = Oposiciones.disponibles.length > 1;
+    return AlertDialog(
+      title: Text('Borrar mis datos de ${_oposicion.siglas}'),
+      content: SingleChildScrollView(
+        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          if (varias) ...[
+            Text('¿De qué oposición?', style: context.textos.labelLarge),
+            const SizedBox(height: 6),
+            SegmentedButton<String>(
+              segments: [for (final o in Oposiciones.disponibles) ButtonSegment(value: o.id, label: Text(o.siglas))],
+              selected: {_oposicion.id},
+              onSelectionChanged: _borrando
+                  ? null
+                  : (s) => setState(() {
+                        _oposicion = Oposiciones.disponibles.firstWhere((o) => o.id == s.first);
+                        _texto.clear();
+                      }),
+            ),
+            const SizedBox(height: 14),
+          ],
+          Text(
+            widget.conSesion
+                ? 'Se borrará todo lo que tienes en ${_oposicion.siglas}, en la nube y en este dispositivo: tests, repaso, temas, notas, cantes y sus informes, cronogramas, clases, alumnos y reservas. Se romperán tus enlaces con preparadores y alumnos de ${_oposicion.siglas}. En tus otros dispositivos se borrará al sincronizar.'
+                : 'Se borrará de este dispositivo todo lo que tienes en ${_oposicion.siglas}: tests, repaso, temas, notas, cantes, cronogramas, clases y alumnos.',
+          ),
+          const SizedBox(height: 10),
+          Text(
+            varias ? 'No se toca nada de las demás oposiciones ni tu cuenta. No se puede deshacer: si quieres una copia, exporta antes tus datos.' : 'Tu cuenta no se toca. No se puede deshacer: si quieres una copia, exporta antes tus datos.',
+            style: context.textos.bodySmall,
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _texto,
+            enabled: !_borrando,
+            autocorrect: false,
+            textCapitalization: TextCapitalization.characters,
+            decoration: InputDecoration(labelText: 'Escribe $frase para confirmar', border: const OutlineInputBorder()),
+            onChanged: (_) => setState(() {}),
+          ),
+          if (_error != null) ...[
+            const SizedBox(height: 10),
+            Text(_error!, style: context.textos.bodySmall?.copyWith(color: context.esquema.error)),
+          ],
+        ]),
+      ),
+      actions: [
+        TextButton(onPressed: _borrando ? null : () => Navigator.pop(context), child: const Text('Cancelar')),
+        FilledButton(
+          style: FilledButton.styleFrom(backgroundColor: context.esquema.error),
+          onPressed: _confirmado && !_borrando ? _borrar : null,
+          child: Text(_borrando ? 'Borrando…' : 'Borrar los datos de ${_oposicion.siglas}'),
+        ),
+      ],
+    );
   }
 }
 
