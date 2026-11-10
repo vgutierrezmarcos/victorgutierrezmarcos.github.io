@@ -81,7 +81,7 @@ Tres o cuatro días de trabajo: Worker con OAuth (un día), herramientas de lect
 **Falta (Víctor):**
 
 1. `git push` de `main` y de `revision-temario` (hasta entonces la web sigue sirviendo los temas en abierto y `login.html` lleva el texto de consentimiento antiguo).
-2. Activar Analytics Engine en el panel de Cloudflare y quitar las almohadillas de `[[analytics_engine_datasets]]` en `wrangler.toml` (la medición anónima está escrita y probada, pero sin enlace no mide).
+2. ~~Activar Analytics Engine.~~ Hecho el 10 nov. 2026: conjunto `analytics_mcp`, enlace `USO` activo en `wrangler.toml`.
 3. Quitar y volver a añadir el conector en su Claude para ver las herramientas nuevas (los clientes guardan la lista).
 4. Decidir los textos públicos que ya no cuadran: `economia.html` («Solo lo tuyo…», «Si tienes alumnos en la app, lo sabe», Le Chat «Probado») y `politica-cookies.html` 2.3 (clases, reservas y datos de alumnos para preparadores; contadores anónimos).
 5. ~~Textos de apuntes en el KV (`extraer-textos.py`).~~ Resuelto el 10 nov. 2026.

@@ -15,11 +15,10 @@ enabled = false
 
 # Contadores anónimos de uso (qué herramienta, qué IA, qué oposición, si fue bien y cuánto tardó): sin uid, correo ni contenido.
 # Se consultan con la API SQL de Analytics Engine (ver ../README.md).
-# PENDIENTE de Víctor: activar Analytics Engine en https://dash.cloudflare.com/ → Workers → Analytics Engine (un clic, gratis)
-# y quitar después las tres almohadillas de abajo y volver a desplegar. Mientras tanto el Worker funciona igual, sin medir.
-# [[analytics_engine_datasets]]
-# binding = "USO"
-# dataset = "conector_uso"
+# El conjunto «analytics_mcp» lo creó Víctor en el panel el 10 nov. 2026; el enlace se llama USO en el código.
+[[analytics_engine_datasets]]
+binding = "USO"
+dataset = "analytics_mcp"
 
 [vars]
 # Clave pública de la app web de Firebase (la misma de firebase-config.js): identifica el proyecto, no da acceso a nada.
