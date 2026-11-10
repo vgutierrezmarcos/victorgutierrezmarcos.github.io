@@ -84,7 +84,7 @@ Tres o cuatro días de trabajo: Worker con OAuth (un día), herramientas de lect
 2. Activar Analytics Engine en el panel de Cloudflare y quitar las almohadillas de `[[analytics_engine_datasets]]` en `wrangler.toml` (la medición anónima está escrita y probada, pero sin enlace no mide).
 3. Quitar y volver a añadir el conector en su Claude para ver las herramientas nuevas (los clientes guardan la lista).
 4. Decidir los textos públicos que ya no cuadran: `economia.html` («Solo lo tuyo…», «Si tienes alumnos en la app, lo sabe», Le Chat «Probado») y `politica-cookies.html` 2.3 (clases, reservas y datos de alumnos para preparadores; contadores anónimos).
-5. Confirmar con la ATCEE que se puede guardar en el KV el texto de sus apuntes (`extraer-textos.py`), o dejar solo la lectura en directo.
+5. ~~Textos de apuntes en el KV (`extraer-textos.py`).~~ Resuelto el 10 nov. 2026.
 6. Probar las escrituras con una cuenta real (cronograma, informe, `anotar_tema`, reserva y, como preparador, aceptar una reserva y poner deberes): solo están probadas con el Firestore simulado.
 
 **Pendiente de código** (no entra en esta tanda): `fases` al proponer un cronograma con `examen`; guardar informes de dictamen y de escritos (no hay sitio en la app); borrar `cantes/*/informes` al borrar la cuenta (`coleccionesUsuario` en `usuario_repo.dart`); tablón y reparto entre preparadores; importar tarjetas.
