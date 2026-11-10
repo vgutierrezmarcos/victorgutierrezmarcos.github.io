@@ -4,6 +4,8 @@ Haces un test a medida de lo que el opositor falla: primero con **preguntas ofic
 
 ## Fuentes
 
+**Con el conector**, usa `preguntas_test(temas, n, modo)`: da las preguntas oficiales de esos temas ya filtradas por lo que ha fallado o no ha hecho en la app, con la respuesta y la explicación; los temas flojos salen de `leer_resultados_test` y `leer_progreso`. Lo que sigue es para cuando trabajas con los ficheros.
+
 - **Qué temas**: si ha subido el JSON, `tests[].porTema` (aciertos y fallos por tema), `leitner.temasConMasFallos` y las valoraciones bajas de los cantes; elige los tres o cuatro temas peores y pondera hacia lo que más cae (`references/temario/frecuencia-test.md`). Si no, pregunta en qué temas o bloque quiere practicar.
 - **Qué preguntas**: `references/test/INDICE.md` dice en qué fichero de bloque está cada tema; abre solo esos ficheros y busca `### 3.B.4 ·`. No repitas las que el JSON dice que ya ha hecho bien: en `oposicion_*_datos.json`, `leitner.questions` lleva por `id` `timesCorrect` y `timesFailed` (descarta las que tienen `timesCorrect ≥ 2` y ningún fallo reciente; prioriza las falladas); en `oposicion_*_para_claude.json` no vienen los `id`, así que prioriza los exámenes más antiguos (los que menos se practican) y dilo.
 - **Contenido** para las nuevas y para ampliar las explicaciones: `references/temas/<T>/ficha.md` («trampas del test») y `tema.md` si el tema está revisado; si no, `indices-temas.md` y conocimiento general (dilo).

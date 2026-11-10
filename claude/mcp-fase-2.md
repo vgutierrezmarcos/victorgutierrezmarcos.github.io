@@ -66,3 +66,25 @@ Tres o cuatro días de trabajo: Worker con OAuth (un día), herramientas de lect
 7. App (`app/DCE.md`): pantalla de informes del cante, «Desconectar Claude», aviso en `TarjetaPrivacidad`.
 8. Página `oposicion/prepara-con-claude.html`: el apartado «Conector» (`#conector`) ya está escrito con los pasos de alta y la URL prevista del Worker, pero lleva `hidden`: quitarlo cuando el conector esté desplegado y probado. La novedad del conector en `novedades.json` también va en ese momento (la de la skill ya está puesta).
 9. **Directorio de conectores de Anthropic (tras el lanzamiento, decidido el 30 oct. 2026).** Es la única vía para que Claude muestre el logo de la app en vez de la «P»: en los conectores personalizados Claude no usa el favicon del Worker ni los `icons` del servidor MCP (el servicio de favicons de Google da 404 para `*.workers.dev`). Ya cumple lo que piden: servidor remoto con OAuth 2.1 (DCR + PKCE), anotaciones `readOnlyHint`/`destructiveHint` en las 16 herramientas (30 oct.), política de privacidad (`politica-cookies.html`), condiciones (`condiciones-materiales.html#ia`) y documentación (`oposicion/prepara-con-claude.html`). Para la solicitud hará falta: la página ya visible (`scripts/prepara-con-claude-visible.py --mostrar`), una cuenta de Google de prueba con datos en la app para los revisores de Anthropic, el logo en SVG/PNG (`app/assets/icon/icon.svg`) y ejemplos de uso. La revisión es de Anthropic y no tiene plazo.
+
+## Revisión del 10 nov. 2026 (plan `~/.claude/plans/quiero-que-revises-c-mo-keen-key.md`)
+
+**Hecho y desplegado** (Worker 1.0.0, 29 herramientas, 80 pruebas):
+
+- Arreglado lo que estaba roto en producción desde el primer día: toda lectura de Firestore fallaba («Illegal invocation», el `fetch` global llamado como método); el filtro `desde` de los tests; el índice de temas (la columna «Pizarra» de `INDICE.md`); `buscar_temario` por contenido y en DCE.
+- La dirección antigua (`…workers.dev`) explica cómo volver a añadir el conector (la autorización no puede empezar en un dominio y acabar en otro: «not started in this browser»).
+- El material exclusivo ya no está en la copia de la skill de la web: lo sirve el KV con sesión (`scripts/skill-opositor.py --kv`). Sigue en el historial de git y en la rama `revision-temario`, que es pública (de ahí lo lee la app).
+- Opositor: `empezar`, `leer_informes_cante`, `preguntas_test`, `leer_proceso`, textos por tramos, aviso de «la otra oposición», `anotar_tema`; cronograma atómico que conserva lo hecho y el compartir; el informe no pisa lo que ya había.
+- Preparador (fase 2 b): `leer_alumnos`, `leer_alumno`, `responder_reserva`, `guardar_nota_alumno`, `guardar_deberes`.
+- `mcp/prueba-humo.mjs` tras cada despliegue.
+
+**Falta (Víctor):**
+
+1. `git push` de `main` y de `revision-temario` (hasta entonces la web sigue sirviendo los temas en abierto y `login.html` lleva el texto de consentimiento antiguo).
+2. Activar Analytics Engine en el panel de Cloudflare y quitar las almohadillas de `[[analytics_engine_datasets]]` en `wrangler.toml` (la medición anónima está escrita y probada, pero sin enlace no mide).
+3. Quitar y volver a añadir el conector en su Claude para ver las herramientas nuevas (los clientes guardan la lista).
+4. Decidir los textos públicos que ya no cuadran: `economia.html` («Solo lo tuyo…», «Si tienes alumnos en la app, lo sabe», Le Chat «Probado») y `politica-cookies.html` 2.3 (clases, reservas y datos de alumnos para preparadores; contadores anónimos).
+5. Confirmar con la ATCEE que se puede guardar en el KV el texto de sus apuntes (`extraer-textos.py`), o dejar solo la lectura en directo.
+6. Probar las escrituras con una cuenta real (cronograma, informe, `anotar_tema`, reserva y, como preparador, aceptar una reserva y poner deberes): solo están probadas con el Firestore simulado.
+
+**Pendiente de código** (no entra en esta tanda): `fases` al proponer un cronograma con `examen`; guardar informes de dictamen y de escritos (no hay sitio en la app); borrar `cantes/*/informes` al borrar la cuenta (`coleccionesUsuario` en `usuario_repo.dart`); tablón y reparto entre preparadores; importar tarjetas.

@@ -5,12 +5,12 @@ Una carpeta ordenada en el ordenador, con todo lo de la oposición, hace que Cla
 ```
 Oposición TCEE/                          (o «Oposición DCE»)
   LEEME.md                               qué hay en cada carpeta
-  prepara-con-claude.zip                 la skill (descargada de la app o de la web)
+  prepara-oposicion.zip                  la skill (descargada de la app o de la web)
   0_organizacion/
      OEP2025TECOS_Convocatoria_BOE.pdf   convocatoria y programa oficial
      preparacion_oposicion_tcee.xlsm     Excel de estrategia (probabilidades, sorteos)
      estructura_temario.pdf · como_cantar_un_tema.pdf
-     oposicion_tcee_para_claude.json     la exportación de la app (actualízala cada semana)
+     oposicion_tcee_para_ia.json         la exportación de la app (actualízala cada semana)
      cronograma.txt                      el último cronograma acordado con Claude
   1_primer_ejercicio/
      1_test/                             examenes_oficiales_test.pdf, plantillas; tus simulacros
@@ -44,7 +44,7 @@ Claude ejecuta `python3 scripts/carpeta-oposicion.py "<ruta>" --oposicion tcee` 
 ## Qué le pides a Claude cuando trabaja en la carpeta
 
 - «Corrige `3_tercer_ejercicio/A/3A08/cantes/2026-11-03.txt` y guarda el informe en PDF al lado.»
-- «Con `0_organizacion/oposicion_tcee_para_claude.json`, replanifica desde esta semana y actualiza `cronograma.txt`.»
+- «Con `0_organizacion/oposicion_tcee_para_ia.json`, replanifica desde esta semana y actualiza `cronograma.txt`.»
 - «Compara `3_tercer_ejercicio/A/3A08/mis-apuntes-3A08.docx` con la ficha del tema y dime qué me falta.»
 - «Lee los tres últimos informes de `cantes/` de los temas que he cantado este mes y dime qué error se repite.»
 

@@ -6,9 +6,10 @@ Servidor MCP remoto de la app «Oposición TCEE · DCE», como Cloudflare Worker
 
 | Ruta | Qué es |
 |---|---|
-| `worker/` | El Worker (TypeScript): `src/index.ts` (OAuth y rutas), `src/mcp.ts` (transporte MCP), `src/herramientas.ts` (las doce herramientas), `src/firestore.ts` (REST de Firestore), `src/datos.ts` (documentos de la app ↔ JSON de la skill), `src/firebase.ts` (Secure Token e Identity Toolkit), `src/cifrado.ts` (AES-GCM), `src/contenido.ts` (material exclusivo en KV), `src/paginas.ts` (consentimiento), `test/` (vitest sobre workerd) |
+| `worker/` | El Worker (TypeScript): `src/index.ts` (OAuth y rutas), `src/mcp.ts` (transporte MCP), `src/herramientas.ts` (las herramientas), `src/firestore.ts` (REST de Firestore), `src/datos.ts` (documentos de la app ↔ JSON de la skill), `src/firebase.ts` (Secure Token e Identity Toolkit), `src/cifrado.ts` (AES-GCM), `src/contenido.ts` (material exclusivo en KV), `src/paginas.ts` (consentimiento), `test/` (vitest sobre workerd) |
 | `login.html` | Página de la web (`https://www.victorgutierrezmarcos.es/mcp/login.html`) que entra con Google (Firebase 8.10.1, como el resto de la web) y devuelve los tokens al Worker |
-| `publicar-contenido.py` | Sube al KV `CONTENIDO` los `.md` exclusivos de la skill (`oposicion/temario/app/skill/prepara-oposicion/references/`) |
+| `publicar-contenido.py` | Sube al KV `CONTENIDO` los `.md` exclusivos de la skill (temas, dictamen y canon) desde la carpeta de construcción de `scripts/skill-opositor.py` (`~/.cache/skill-opositor/…`). La copia de la skill desplegada en la web **no** los lleva: solo se sirven con sesión |
+| `extraer-textos.py` | Sube a `CONTENIDO` las claves `textos/{tema}` (texto del PDF de la web y de los apuntes de la ATCEE en PDF o .doc) que usa `leer_fuente`. Solo funciona en el equipo de Víctor (usa `curl.exe` y rutas de Windows) |
 
 ## Cómo funciona
 
@@ -31,24 +32,38 @@ Claude ──POST /mcp (Bearer)──► herramientas: Firestore REST con el ID 
 - **Tokens de Firebase**: el refresh token va cifrado con AES-GCM (`CLAVE_CIFRADO`) dentro de los `props` de la concesión (que la biblioteca cifra a su vez); el ID token (1 h) se renueva con la Secure Token API y se cachea cifrado 50 min en `SESIONES`. En cada renovación del token de Claude se comprueba que Firebase sigue aceptando el refresh token: si no (contraseña cambiada, cuenta borrada, «Desconectar Claude» en la app), la concesión se revoca con `invalid_grant` y Claude pide volver a conectar.
 - **Contenido exclusivo** en el KV `CONTENIDO`: solo se sirve con sesión válida, con el aviso de uso personal en cada respuesta.
 - Sin registros: `observability.enabled = false`; el Worker no guarda nada con datos personales salvo lo anterior (uid, correo y tokens cifrados en KV, con caducidad).
+- **Medición anónima** (Workers Analytics Engine, conjunto `conector_uso`): por cada llamada, la herramienta, el nombre de la IA cliente, la oposición, si fue bien y los milisegundos. Sin uid, correo ni contenido. Se consulta con la API SQL (`POST https://api.cloudflare.com/client/v4/accounts/<cuenta>/analytics_engine/sql`, p. ej. `SELECT blob1 AS herramienta, blob4 AS resultado, SUM(_sample_interval) AS llamadas FROM conector_uso WHERE timestamp > NOW() - INTERVAL '7' DAY GROUP BY herramienta, resultado ORDER BY llamadas DESC`).
+- **Dirección antigua** (`…workers.dev`): sigue respondiendo, pero `/authorize` enseña una página que explica cómo volver a añadir el conector con `mcp.victorgutierrezmarcos.es` (la autorización empezada en un dominio no puede acabar en el otro).
 
 ## Herramientas
 
-| Herramienta | Lee / escribe |
+Lecturas (todas con `oposicion`: `tcee` por defecto o `dce`; si una sale vacía y los datos están en la otra, lo avisa):
+
+| Herramienta | Lee |
 |---|---|
-| `leer_skill(ruta)` | La skill publicada en la web: `SKILL.md` sin ruta, o el fichero que cite |
-| `leer_metodo(tarea)` | El método de una tarea (`corregir_cante`, `simulacro`, `tribunal`, `cronograma`…): cabecera y reglas comunes de `SKILL.md` más el agente y lo que haga falta leer; sin tarea, la lista. Lo usan las IA sin skills (ChatGPT, Le Chat, Gemini). Cada tarea es también un *prompt* MCP (`TAREAS` en `herramientas.ts`) |
-| `preparar_clase(oposicion, con, dia)` | Para agendar una clase: como opositor, sus preparadores aceptados (`users/{uid}/preparadores` + `preparadores/{p}/alumnos/{uid}`), sus huecos libres (`huecos/{p}`), sus reservas y sus próximas clases; como preparador, sus alumnos, sus sesiones y el cronograma compartido y la agenda del alumno; y los temas del cronograma para ese día |
-| `agendar_clase(oposicion, como, con, dia, hora, modalidad, temas, …)` | Escribe con confirmación. Opositor: `reservas/{id}` (`pedida`, con `modalidad` y `temas`) y los temas en `progress/settings.temasClases` (`res_{id}`). Preparador: `sesiones/{id}` y su copia en `cantes/{id}` del alumno (si las reglas lo dejan: preparador verificado y alumno enlazado). Horas de Madrid sin zona, como la app (`src/clases.ts`) |
-| `leer_progreso(oposicion)` | `progress/settings`, `progress/plan`, `progress/spaced_repetition`, `notes/*` → el JSON de `datos-app.md` (sin cantes, cronograma ni tests) |
-| `leer_resultados_test(desde, limite)` | `exam_results` con acierto por tema (a partir de `respuestas` y `preguntas.json`) |
-| `leer_cantes(n)` | Los últimos `n` hechos (con `resultado`) y los próximos pendientes |
-| `leer_cronograma` | El activo, semana a semana |
-| `proponer_cronograma(semanas[], diaCante, ejercicio, …)` | Escribe `cronogramas/{id}` como `Cronograma.toJson()` con `manual: true`; archiva el anterior |
-| `guardar_informe_cante(canteId, informe, valoracion, …)` | Escribe `cantes/{id}/informes/{fecha}` y, si el cante está hecho, `resultado.valoracion/valoraciones/comentarios/criterios` |
-| `listar_temas_revisados` | `indice.json` de `CONTENIDO` |
-| `leer_tema(tema, apartado, guion)`, `leer_ficha(tema)`, `leer_guia_dictamen(documento, seccion)`, `leer_canon(documento)` | `CONTENIDO` |
-| `desconectar(confirmar)` | Revoca las concesiones OAuth del opositor y borra su ID token cacheado |
+| `empezar()` | Visión de conjunto de las dos oposiciones: papeles (opositor, preparador), días a cada ejercicio, semana del cronograma, últimos cantes, deberes, tareas de la última corrección, tests de la semana y contenido revisado. Es la primera llamada de cada conversación |
+| `leer_metodo(tarea)`, `leer_skill(ruta)` | El método de una tarea (cabecera y reglas comunes de `SKILL.md` más el agente) o un fichero de la skill publicada en la web; lo exclusivo (`references/temas/<T>/`, `dictamen/`, `canon/`), del KV |
+| `leer_progreso`, `leer_resultados_test(desde, limite)`, `leer_cantes(n)`, `leer_cronograma` | `progress/*`, `notes/*`, `exam_results` (con acierto por tema), `cantes`, `cronogramas` y `cronogramasRecibidos` |
+| `leer_informes_cante(canteId, n, completo)` | `cantes/{id}/informes`: las correcciones guardadas |
+| `preguntas_test(temas, n, modo)` | Preguntas oficiales de `preguntas.json` por tema, filtradas con `progress/spaced_repetition`, con la clave de `explicaciones/<examen>.json` |
+| `leer_proceso(seccion)` | `oposicion/proceso.json` (documentos del proceso selectivo en curso) |
+| `fuentes_tema(tema)`, `buscar_temario(consulta)`, `leer_fuente(enlace)` | `fuentes-temas.json`; la búsqueda mira también los apartados de cada PDF (`references/temario/indices-temas.md`); `leer_fuente` lee apuntes de la ATCEE, PDF de la web (`textos/{tema}` en KV) y páginas de Manuel |
+| `listar_temas_revisados`, `leer_tema`, `leer_ficha`, `leer_guia_dictamen`, `leer_canon` | KV `CONTENIDO`; por apartado o por tramos (`desde`/`limite`, 40.000 caracteres por defecto) |
+| `preparar_clase(con, dia)` | Preparadores, huecos, reservas, próximas clases y temas del cronograma para agendar |
+| `leer_alumnos`, `leer_alumno(alumno, n)` | Preparadores: `alumnos`, `sesiones`, `reservas` que le piden y, del alumno enlazado, lo que las reglas le dejan ver (`progress/settings`, cronograma compartido, informes de las clases que firma él) |
+
+Escrituras (siempre con confirmación del usuario en la conversación):
+
+| Herramienta | Escribe |
+|---|---|
+| `proponer_cronograma` | `cronogramas/{id}` como `Cronograma.toJson()` y archiva el anterior en un solo `:commit`; hereda `compartir`, `hechos` y `desmarcados` |
+| `guardar_informe_cante` | `cantes/{id}/informes/{fecha}`; en el diario solo lo que no estuviera ya puesto (salvo `sustituir`); las tareas, como deberes en un cante propio |
+| `anotar_tema` | `notes/{tema}.pendientes` y, opcional, `temasEstudiados` / `temasEnRepaso` |
+| `agendar_clase` | Opositor: `reservas/{id}` y `temasClases`. Preparador: `sesiones/{id}` y la copia en los `cantes` del alumno |
+| `responder_reserva`, `guardar_nota_alumno`, `guardar_deberes` | Preparadores: estado de la reserva y la clase `res_{id}` en las dos agendas; `alumnos/{id}.notas`; `tareas` de la sesión y de su copia |
+| `desconectar(confirmar)` | Revoca las concesiones OAuth del usuario y borra su ID token cacheado |
+
+Las fechas se escriben como la app: hora de Madrid sin zona. Los ids que llegan de la IA se codifican antes de ir en una ruta.
 
 ## Desplegar (Víctor)
 
@@ -57,7 +72,7 @@ Hace falta una cuenta de Cloudflare (gratuita) y `node` 20 o posterior. Todo des
 ```bash
 cd mcp/worker
 npm install
-npx wrangler login                       # abre el navegador con la cuenta de Cloudflare
+export CLOUDFLARE_API_TOKEN=$(cat ~/.config/oposicion-red/cloudflare.token)   # desde WSL, `wrangler login` no sirve
 
 # 1. Los tres espacios KV (copiar cada id en wrangler.toml)
 npx wrangler kv namespace create OAUTH_KV
@@ -77,7 +92,7 @@ Después del primer despliegue:
 1. Apuntar la URL real del Worker (la que imprime `wrangler deploy`, `https://prepara-con-claude.<subdominio>.workers.dev`) en **tres sitios**: `URL_WORKER` en `wrangler.toml`, la constante `WORKER` de `mcp/login.html` y la URL que se publica en `oposicion/economia.html`; volver a desplegar y publicar la web. Con dominio propio (`mcp.victorgutierrezmarcos.es`: Workers → Settings → Domains & Routes → Custom domain; el DNS tiene que estar en Cloudflare) es lo mismo con esa URL.
 2. En la consola de Firebase, Authentication → Settings → **Dominios autorizados**: `www.victorgutierrezmarcos.es` ya está (el login se hace ahí, no en el Worker), así que no hay que añadir nada.
 3. Publicar las reglas de Firestore nuevas (`firestore.rules`, bloque `cantes/{id}/informes/{informe}`) en la consola.
-4. Subir el contenido exclusivo: `python3 scripts/skill-opositor.py && python3 mcp/publicar-contenido.py` (usa `wrangler kv bulk put --remote`). Repetirlo cada vez que se apruebe un tema o una ficha.
+4. Subir el contenido exclusivo: `python3 scripts/skill-opositor.py --kv` (construye la skill, despliega en la web la copia sin lo exclusivo y sube lo exclusivo al KV con `mcp/publicar-contenido.py`). Repetirlo cada vez que se apruebe un tema o una ficha.
 5. Probar con la cuenta propia: Claude.ai → Personalizar → Conectores → **Añadir conector personalizado** → nombre «EconomIA», URL `https://…/mcp`, sin client id ni secreto (Claude se registra solo) → Conectar → consentimiento → Google → «Cuenta conectada» → de vuelta en Claude. En Claude Code: `claude mcp add --transport http prepara-con-claude https://…/mcp` y `/mcp` para entrar.
 
 Los `vars` de `wrangler.toml` (`FIREBASE_API_KEY`, `URL_LOGIN`, `URL_PREGUNTAS`, `ORIGENES_LOGIN`…) son públicos; el único secreto es `CLAVE_CIFRADO`.
@@ -93,7 +108,7 @@ Los `vars` de `wrangler.toml` (`FIREBASE_API_KEY`, `URL_LOGIN`, `URL_PREGUNTAS`,
 
 ```bash
 cd mcp/worker
-npm test                          # vitest sobre workerd (38 pruebas); si fallan al arrancar workerd a la vez,
+npm test                          # vitest sobre workerd (80 pruebas); si fallan al arrancar workerd a la vez,
                                   # npx vitest run --fileParallelism=false
 npm run typecheck
 printf 'CLAVE_CIFRADO="%s"\n' "$(openssl rand -base64 32)" > .dev.vars
@@ -102,11 +117,12 @@ npx wrangler dev --local --var URL_WORKER:http://localhost:8787      # sin cuent
 
 Con `wrangler dev` se puede recorrer todo menos Google: `POST /oauth/register`, `GET /authorize?…` (página de consentimiento), `POST /authorize` (302 a `login.html?state=…&worker=http://localhost:8787`). Para probar el login contra el Worker local, servir la web en `http://localhost:8000` (`python3 -m http.server`) y abrir `http://localhost:8000/mcp/login.html?state=…&worker=http://localhost:8787`: `login.html` solo acepta `worker` si es localhost; con `firebase-config.js` real, Google exige que `localhost` esté en los dominios autorizados de Firebase (lo está por defecto). Para probar las herramientas contra Firestore real hay que pasar por OAuth entero, lo más cómodo con el MCP Inspector (`npx @modelcontextprotocol/inspector`) apuntando al Worker desplegado.
 
-Las pruebas de `test/` cubren la conversión de valores de Firestore, el acierto por tema, Leitner, el cronograma (`Cronograma.toJson()` exacto), el informe del cante, el cifrado, el enrutado de las doce herramientas con un Firestore simulado y el transporte Streamable HTTP en workerd (initialize, tools/list). `@cloudflare/vitest-pool-workers` avisa de que pasa a llamarse `@cloudflare/vitest-plugin`: cuando se actualice, `npx @cloudflare/codemods vitest:pool-workers-to-vitest-plugin`.
+Las pruebas de `test/` cubren la conversión de valores de Firestore, el acierto por tema, Leitner, el cronograma (`Cronograma.toJson()` exacto), el informe del cante, el cifrado, la capa HTTP de Firestore con el `fetch` global (lo que falló en producción), el enrutado de las herramientas con un Firestore simulado y el transporte Streamable HTTP en workerd (initialize, tools/list). `@cloudflare/vitest-pool-workers` avisa de que pasa a llamarse `@cloudflare/vitest-plugin`: cuando se actualice, `npx @cloudflare/codemods vitest:pool-workers-to-vitest-plugin`.
 
 ## Mantenimiento
 
-- **Temas nuevos**: `python3 scripts/skill-opositor.py && python3 mcp/publicar-contenido.py`.
+- **Temas nuevos**: `python3 scripts/skill-opositor.py --kv`. `empezar` avisa si la versión del método (web) y la del contenido (KV) no coinciden.
+- **Tras cada despliegue**: `node mcp/prueba-humo.mjs` (portada, metadatos OAuth, 401 de `/mcp` y página de la dirección antigua; con `MCP_TOKEN`, además una lectura por herramienta).
 - **Cambios en los modelos de la app** (`app/lib/data/models`): `src/datos.ts` replica `Cronograma.toJson()`, `ResultadoCante`, `Ajustes`, `Plan`, `AgendaTema` y `EstadoLeitner`; si cambian, cambiar aquí y en `test/datos.test.ts`.
 - **Desconectar desde la app**: la app no puede revocar las concesiones OAuth del Worker directamente; basta con que el opositor cierre sesión en Firebase o revoque la app en su cuenta de Google (el refresh token deja de valer y la siguiente renovación revoca la concesión). Para un botón «Desconectar Claude» inmediato, la app puede llamar a `desconectar` por la misma vía que Claude (ver `app/DCE.md`), o el opositor usa Claude → Personalizar → Conectores → Eliminar.
 - **Limpieza de KV**: la biblioteca pone TTL a todo; si se quiere, un Cron Trigger con `env.OAUTH_PROVIDER.purgeExpiredData()`.

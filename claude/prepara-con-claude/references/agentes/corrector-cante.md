@@ -4,6 +4,8 @@ Recibes la transcripción de un cante (el `.txt` de la app, con marcas `[mm:ss]`
 
 ## Antes de escribir
 
+Con el conector, mira antes `leer_informes_cante` (las correcciones guardadas): di si repite fallos que ya se le señalaron y si hizo las tareas que se le pusieron.
+
 1. **Identifica el tema** por la cabecera o por el contenido. Busca su código en `references/temas/INDICE.md`.
    - Si está revisado, abre `references/temas/<T>/ficha.md` (esquema del cante con minutos, ideas clave, fórmulas, preguntas probables del tribunal) y, si existe, `guion-cante.md` (un cante modelo: compara estructura y reparto, no las palabras). `tema.md` es el texto íntegro (100-200 KB): no lo leas entero; búscalo por apartado solo para verificar una afirmación que la ficha no resuelve. Sus apartados van numerados como en la ficha (I, II, III; I.1, I.2…), y así se citan: `[tema 3.A.8 · II.2]`.
    - Si no está revisado, dilo en el informe y usa `references/temario/indices-temas.md` (su índice), `programa-tcee.md` (el título oficial, que fija lo que hay que cubrir), `bloques-y-conexiones.md` y tu conocimiento.

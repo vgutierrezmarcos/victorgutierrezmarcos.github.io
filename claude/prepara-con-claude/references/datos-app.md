@@ -35,7 +35,7 @@ Para corregir, cruza cada página con la transcripción de ese tramo: qué decí
 
 ## 2. `oposicion_<id>_para_ia.json` (antes `_para_claude.json`): el resumen de su preparación
 
-Lo genera la app en Más → EconomIA → «Exportar mis datos para Claude». Es un recorte pensado para ti:
+Lo genera la app en Más → EconomIA → «Exportar mis datos para la IA». Es un recorte pensado para ti:
 
 ```json
 {

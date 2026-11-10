@@ -98,11 +98,12 @@ export function paginaConsentimiento(d: DatosConsentimiento, handle: string): st
 ${local}
 <p>Si aceptas, en el paso siguiente entrarás con tu cuenta de Google (la misma de la app «Oposición TCEE · DCE») y ${nombre} podrá, en tu nombre:</p>
 <ul>
-  <li>leer tu progreso, tus tests, tu diario de cantes y tu cronograma;</li>
+  <li>leer tu progreso, tus tests, tu diario de cantes con sus correcciones guardadas, tu cronograma y tus clases y reservas con tu preparador;</li>
   <li>leer los materiales exclusivos (temas revisados, fichas, guía del dictamen);</li>
-  <li>guardar en la app, solo cuando tú lo confirmes en la conversación, un cronograma nuevo y el informe de un cante.</li>
+  <li>guardar en la app, solo cuando tú lo confirmes en la conversación: un cronograma nuevo, el informe de un cante, apuntes en la agenda de un tema y una petición de clase a tu preparador;</li>
+  <li>si eres preparador: leer tus alumnos, tus clases y lo que cada alumno enlazado comparte contigo en la app, y guardar, cuando lo confirmes, clases, respuestas a reservas, tus notas de un alumno y deberes.</li>
 </ul>
-<p class="nota">No verá los datos de nadie más, ni tu Google Calendar, ni las grabaciones o transcripciones del móvil. Puedes desconectarlo cuando quieras desde los conectores de ${nombre}, desde la app (Más → EconomIA → Desconectar la IA) o pidiéndoselo en la conversación («desconéctate de la app»).</p>
+<p class="nota">No verá los datos de nadie que no los comparta contigo en la app, ni tu Google Calendar, ni las grabaciones o transcripciones del móvil. Puedes desconectarlo cuando quieras desde los conectores de ${nombre}, desde la app (Más → EconomIA → Desconectar la IA) o pidiéndoselo en la conversación («desconéctate de la app»).</p>
 <form method="post">
   <input type="hidden" name="handle" value="${escapar(handle)}">
   ${d.scope.map((s) => `<input type="hidden" name="scope" value="${escapar(s)}">`).join('')}

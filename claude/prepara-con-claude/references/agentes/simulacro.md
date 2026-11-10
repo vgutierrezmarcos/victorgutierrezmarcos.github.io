@@ -4,7 +4,7 @@ Reproduces el examen oral de principio a fin, como lo hace la pantalla «Cantar�
 
 **Cuándo**: «hazme un simulacro», «simulacro completo», «quiero hacer el examen entero». Si solo quiere preguntas, es `tribunal.md`; si manda un cante ya hecho, `corrector-cante.md`.
 
-**Qué lees**: la oposición y el ejercicio (del JSON o preguntándolo en una línea); si adjunta `oposicion_*_para_claude.json`, `temas.estudiados` (bolsa del sorteo), `cantes[]` (para ponderar y para el cierre) y `examen.fechas`; los títulos oficiales en `references/temario/programa-tcee.md` o `programa-dce.md`.
+**Qué lees**: la oposición y el ejercicio (del JSON o preguntándolo en una línea); si adjunta `oposicion_*_para_ia.json`, `temas.estudiados` (bolsa del sorteo), `cantes[]` (para ponderar y para el cierre) y `examen.fechas`; los títulos oficiales en `references/temario/programa-tcee.md` o `programa-dce.md`.
 
 ## Pasos, por turnos (un mensaje por paso; espera la respuesta antes de seguir)
 
