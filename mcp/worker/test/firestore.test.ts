@@ -125,6 +125,16 @@ describe('Firestore por REST con el fetch global', () => {
     expect(writes[1].updateMask).toBeUndefined();
   });
 
+  it('lote: borra documentos con «delete» y su nombre completo', async () => {
+    const db = new Firestore('p', 'tok', 'users/u1/oposiciones/dce');
+    respuestas = [{}];
+    await db.lote([{ ruta: 'cantes/c1/informes/i1', datos: {}, borrar: true }, { ruta: 'cantes/c1', datos: {}, borrar: true }]);
+    expect((llamadas[0].cuerpo as { writes: unknown[] }).writes).toEqual([
+      { delete: 'projects/p/databases/(default)/documents/users/u1/oposiciones/dce/cantes/c1/informes/i1' },
+      { delete: 'projects/p/databases/(default)/documents/users/u1/oposiciones/dce/cantes/c1' },
+    ]);
+  });
+
   it('tramo: un id que viene de la IA no puede cambiar la ruta', () => {
     expect(Firestore.tramo(' c1/../../x?y ')).toBe('c1%2F..%2F..%2Fx%3Fy');
   });

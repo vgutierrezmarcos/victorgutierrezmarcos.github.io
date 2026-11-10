@@ -95,6 +95,8 @@ export interface Escritura {
   datos: { [k: string]: Json };
   /** Si se da, solo cambian esos campos; si no, se sustituye (o crea) el documento entero. */
   soloCampos?: string[];
+  /** true: el documento se borra (`datos` no cuenta). Borrar uno que no existe no es un error. */
+  borrar?: boolean;
 }
 
 /**
@@ -189,10 +191,12 @@ export class Firestore implements AlmacenDatos {
   /** `:commit`: todas las escrituras en una sola operación atómica (archivar un cronograma y crear el nuevo, por ejemplo). */
   async lote(escrituras: Escritura[]): Promise<void> {
     if (!escrituras.length) return;
-    const writes = escrituras.map((e) => ({
-      update: { name: `${this.documentos}/${[this.raiz, e.ruta].filter(Boolean).join('/')}`, fields: aCampos(e.datos) },
-      ...(e.soloCampos ? { updateMask: { fieldPaths: e.soloCampos } } : {}),
-    }));
+    const nombre = (ruta: string) => `${this.documentos}/${[this.raiz, ruta].filter(Boolean).join('/')}`;
+    const writes = escrituras.map((e) =>
+      e.borrar
+        ? { delete: nombre(e.ruta) }
+        : { update: { name: nombre(e.ruta), fields: aCampos(e.datos) }, ...(e.soloCampos ? { updateMask: { fieldPaths: e.soloCampos } } : {}) },
+    );
     await this.peticion('POST', `${this.base}:commit`, { writes });
   }
 }

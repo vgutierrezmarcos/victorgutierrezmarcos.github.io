@@ -22,6 +22,7 @@ const ctx: Contexto = {
   proceso: async () => ({ actualizado: 'hoy', tcee: { procesos: [{ convocatoria: '2025', url: 'https://ministerio', documentos: [{ seccion: 'Tercer ejercicio', titulo: 'Convocatoria', url: 'https://doc', desde: '2026-10-07' }, { seccion: 'Convocatoria', titulo: 'BOE', url: 'https://boe', desde: null }] }] } }),
   almacenEn: async () => { throw new Error('sin red'); },
   desconectar: async () => undefined,
+  sello: async () => 'sello',
 };
 
 function peticion(cuerpo: unknown, cabeceras: Record<string, string> = {}): Request {
@@ -48,7 +49,7 @@ describe('Streamable HTTP sin estado', () => {
     expect(r.status).toBe(200);
     const j = (await r.json()) as { result: { tools: Array<{ name: string; inputSchema: unknown }> } };
     expect(j.result.tools.map((t) => t.name)).toContain('leer_progreso');
-    expect(j.result.tools).toHaveLength(29);
+    expect(j.result.tools).toHaveLength(30);
   });
 
   it('GET no se admite y una petición mal formada da error JSON-RPC', async () => {

@@ -36,11 +36,19 @@ class Vista implements AlmacenDatos {
     if (this.base.prohibidas.some((p) => abs.startsWith(p))) throw new ErrorFirestore(403, 'Missing or insufficient permissions.');
     if (!soloCampos) return void this.base.docs.set(abs, datos);
     const actual = { ...(this.base.docs.get(abs) ?? {}) };
-    for (const campo of soloCampos) actual[campo] = datos[campo];
+    for (const campo of soloCampos) {
+      const [a, b] = campo.split('.');
+      if (b) actual[a] = { ...((actual[a] as Obj) ?? {}), [b]: (datos[a] as Obj)[b] };
+      else actual[campo] = datos[campo];
+    }
     this.base.docs.set(abs, actual);
   }
-  async lote(escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[] }>) {
-    for (const e of escrituras) await this.escribir(e.ruta, e.datos, e.soloCampos);
+  async lote(escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[]; borrar?: boolean }>) {
+    for (const e of escrituras) {
+      if (!e.borrar) await this.escribir(e.ruta, e.datos, e.soloCampos);
+      else if (this.base.prohibidas.some((p) => this.abs(e.ruta).startsWith(p))) throw new ErrorFirestore(403, 'Missing or insufficient permissions.');
+      else this.base.docs.delete(this.abs(e.ruta));
+    }
   }
 }
 
@@ -126,12 +134,13 @@ describe('preparar_clase y agendar_clase', () => {
       skill: async () => null,
       explicaciones: async () => ({}),
       proceso: async () => null,
-      fuentes: async () => ({ aviso: '', bloques: [], tcee: {}, dce: {} }),
+      fuentes: async () => ({ aviso: '', bloques: [], tcee: { '3.A.8': { oposicion: 'tcee', titulo: 'Demanda', ejercicio: 3, parte: 'A' } }, dce: {} }),
       apuntes: async () => ({ formato: 'docx', esquema: [], texto: '' }),
       textos: async () => null,
       pagina: async () => null,
       cliente: async () => 'Claude',
       desconectar: async () => undefined,
+      sello: async (t) => `sello${[...t].reduce((n, c) => (n * 31 + c.charCodeAt(0)) >>> 0, 7)}abcdefgh`,
     });
   });
 
@@ -257,5 +266,65 @@ describe('preparar_clase y agendar_clase', () => {
     expect((base.docs.get('users/alu/cantes/s2')!.tareas as Obj[]).map((t) => t.tipo)).toEqual(['libre', 'esquema', 'test']);
     expect((await llamar('prep', 'guardar_deberes', { sesion: 's2', tareas: [{ tipo: 'estudiar' }] })).error).toBe(true); // falta el tema
     expect((await llamar('alu', 'guardar_nota_alumno', { alumno: 'alu', nota: 'no soy preparador' })).error).toBe(true);
+  });
+  it('borrar_datos_oposicion pide la frase y el código, y borra solo esa oposición', async () => {
+    // Lo de «alu» en TCEE (con lo que cuelga de un cante), en DCE y en la cuenta
+    base.docs.set('users/alu/cantes/c1', { id: 'c1', estado: 'hecho' });
+    base.docs.set('users/alu/cantes/c1/informes/i1', { resumen: 'Bien' });
+    base.docs.set('users/alu/exam_results/t1', { notaSobre10: 7 });
+    // Las anotaciones de un tema cuelgan de un documento que no existe
+    base.docs.set('users/alu/anotaciones/3.A.8/paginas/p1', { trazos: [] });
+    base.docs.set('users/alu/anotaciones/3.A.8-revisado/paginas/p2', { trazos: [] });
+    base.docs.set('users/alu/oposiciones/dce/cantes/d1', { id: 'd1' });
+    base.docs.set('users/alu/cuenta/app', { oposicion: 'tcee' });
+    base.docs.set('reservas/r1', { id: 'r1', preparador: 'prep', alumno: 'alu', estado: 'pedida' });
+    base.docs.set('reservas/otra', { id: 'otra', preparador: 'prep', alumno: 'zoe', estado: 'pedida' });
+
+    const paso1 = await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee' });
+    expect(paso1.datos).toMatchObject({ borrado: false, frase: 'BORRAR TCEE' });
+    expect((paso1.datos!.seBorraria as Obj)['cantes y clases']).toBe(1);
+    expect(base.docs.has('users/alu/cantes/c1')).toBe(true); // el paso 1 no borra nada
+    const codigo = String(paso1.datos!.codigo);
+
+    // Sin la frase exacta, con el código de otra oposición o con uno inventado: nada
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee', codigo, frase: 'sí, adelante' })).error).toBe(true);
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee', codigo: 'ABCDEFGH', frase: 'BORRAR TCEE' })).error).toBe(true);
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'dce', codigo, frase: 'BORRAR DCE' })).error).toBe(true);
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee', frase: 'BORRAR TCEE' })).error).toBe(true);
+    expect(base.docs.has('users/alu/cantes/c1')).toBe(true);
+    expect(base.docs.has('users/alu/oposiciones/dce/cantes/d1')).toBe(true);
+
+    const paso2 = await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee', codigo, frase: ' borrar tcee ' });
+    expect(paso2.datos).toMatchObject({ borrado: true, enlacesRotos: 1 });
+    const quedan = [...base.docs.keys()].filter((r) => r.startsWith('users/alu/'));
+    expect(quedan.sort()).toEqual(['users/alu/cuenta/app', 'users/alu/oposiciones/dce/cantes/d1']);
+    // La marca para que la app borre su copia local, sin perder lo que había en la cuenta
+    expect(base.docs.get('users/alu/cuenta/app')).toMatchObject({ oposicion: 'tcee' });
+    expect(typeof (base.docs.get('users/alu/cuenta/app')!.borrados as Obj).tcee).toBe('string');
+    // Su enlace y su reserva se van; lo del preparador y lo de otros, no
+    expect(base.docs.has('preparadores/prep/alumnos/alu')).toBe(false);
+    expect(base.docs.has('reservas/r1')).toBe(false);
+    expect(base.docs.has('reservas/otra')).toBe(true);
+    expect(base.docs.has('users/prep/alumnos/alu')).toBe(true);
+    expect(base.docs.has('huecos/prep')).toBe(true);
+    // Ya no hay nada: el paso 1 lo dice
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee' })).datos).toMatchObject({ borrado: false });
+  });
+
+  it('borrar_datos_oposicion de un preparador rompe los enlaces por los dos lados y sigue si la red niega algo', async () => {
+    base.docs.set('users/prep/progress/preparador', { activo: true, nombre: 'Víctor', codigo: 'ABC123' });
+    base.docs.set('codigos/ABC123', { uid: 'prep' });
+    base.docs.set('materiales/m1', { preparador: 'prep', titulo: 'Guion' });
+    base.docs.set('users/prep/sesiones/s1', { id: 's1', alumno: 'alu' });
+    base.docs.set('users/prep/sesiones/s1/notas/prep', { texto: 'Nota' });
+    base.prohibidas.push('huecos/');
+    const codigo = String((await llamar('prep', 'borrar_datos_oposicion', { oposicion: 'tcee' })).datos!.codigo);
+    const r = await llamar('prep', 'borrar_datos_oposicion', { oposicion: 'tcee', codigo, frase: 'BORRAR TCEE' });
+    expect(r.datos).toMatchObject({ borrado: true, enlacesRotos: 1 });
+    expect((r.datos!.avisos as string[]).join(' ')).toContain('huecos');
+    expect([...base.docs.keys()].filter((k) => k.startsWith('users/prep/') && !k.startsWith('users/prep/cuenta/'))).toEqual([]);
+    for (const ruta of ['preparadores/prep/alumnos/alu', 'users/alu/preparadores/prep', 'codigos/ABC123', 'materiales/m1']) expect(base.docs.has(ruta), ruta).toBe(false);
+    // Lo del alumno sigue siendo suyo
+    expect(base.docs.has('users/alu/progress/settings')).toBe(true);
   });
 });

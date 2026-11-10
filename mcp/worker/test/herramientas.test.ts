@@ -44,9 +44,12 @@ export class FirestoreSimulado implements AlmacenDatos {
     this.docs.set(ruta, actual);
   }
   lotes = 0;
-  async lote(escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[] }>) {
+  async lote(escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[]; borrar?: boolean }>) {
     this.lotes++;
-    for (const e of escrituras) await this.escribir(e.ruta, e.datos, e.soloCampos);
+    for (const e of escrituras) {
+      if (e.borrar) this.docs.delete(e.ruta);
+      else await this.escribir(e.ruta, e.datos, e.soloCampos);
+    }
   }
 }
 
@@ -130,6 +133,7 @@ describe('herramientas', () => {
       cliente: async () => 'Le Chat',
   explicaciones: async () => ({ '1': { clave: 'Porque sí.' } }),
   proceso: async () => ({ actualizado: 'hoy', tcee: { procesos: [{ convocatoria: '2025', url: 'https://ministerio', documentos: [{ seccion: 'Tercer ejercicio', titulo: 'Convocatoria', url: 'https://doc', desde: '2026-10-07' }, { seccion: 'Convocatoria', titulo: 'BOE', url: 'https://boe', desde: null }] }] } }),
+      sello: async (t) => `sello-${t.length}-abcdefgh`,
       desconectar: async () => {
         desconectado = true;
       },
@@ -139,7 +143,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
+    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
