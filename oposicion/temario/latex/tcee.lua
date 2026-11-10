@@ -152,6 +152,8 @@ end
 
 -- Primera frase de un texto, como mucho unos 160 caracteres (sin cortar palabras)
 local function frase_corta(t)
+  -- Las remisiones «[ver tema …]» no van al texto alternativo (allí no hay hipervínculo)
+  t = t:gsub('%s*%[ver tema[^%]]*%]', '')
   local frase = (t:match('^(.-[%.:;])%s') or t):gsub('[:;]$', '')
   if utf8.len(frase) and utf8.len(frase) > 160 then
     local corte = utf8.offset(frase, 161)

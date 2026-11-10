@@ -1,0 +1,86 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Composición por monedas de las reservas mundiales de divisas, 1999T4-2026T2
+% (% del total; FMI, COFER, serie revisada sin reservas «no asignadas»;
+% consulta 05/11/2026). x = fin del periodo en años (1999T4 = 2000,0).
+% «No tradicionales» = 100 - dólar - euro - yen - libra - franco suizo
+% (dólares canadiense y australiano, renminbi y otras; el franco suizo, 0,3 %,
+% no se dibuja). Rótulos al final de cada línea en vez de leyenda.
+% Paleta: el euro en azul marino (el de la zona del euro en la 1D01), el dólar
+% en verde, el yen en teja, la libra en gris y las no tradicionales en dorado.
+% Capas: dólar -> euro -> yen -> libra -> no tradicionales -> puntos finales
+% -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/cofer-composicion-reservas.csv}\cofer
+\colorlet{rsusd}{dicfbcf}
+\colorlet{rseur}{dicze}
+\colorlet{rsjpy}{dicparo}
+\colorlet{rsgbp}{dicotro}
+\colorlet{rsnt}{dicprestamos}
+\pgfplotsset{
+  ultimo/.style={on layer=dicpuntos, forget plot, dicpuntos=#1,
+    restrict x to domain=2026.4:2026.6},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      scale only axis, width=12cm, height=6.2cm,
+      xmin=1999.5, xmax=2026.9, xtick={2000,2005,...,2025},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      ymin=0, ymax=75, ytick={0,10,...,70},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% de las reservas de divisas}, ylabel style={font=\footnotesize},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: el dólar
+    \capa{1}{
+      \addplot[diclinea=rsusd] table[x=x, y=usd] {\cofer};
+    }
+    % 2: el euro
+    \capa{2}{
+      \addplot[diclinea=rseur] table[x=x, y=eur] {\cofer};
+    }
+    % 3: el yen
+    \capa{3}{
+      \addplot[diclinea=rsjpy] table[x=x, y=jpy] {\cofer};
+    }
+    % 4: la libra
+    \capa{4}{
+      \addplot[diclinea=rsgbp, dashed] table[x=x, y=gbp] {\cofer};
+    }
+    % 5: las monedas no tradicionales (CAD, AUD, CNY y otras)
+    \capa{5}{
+      \addplot[diclinea=rsnt]
+        table[x=x, y expr=100-\thisrow{usd}-\thisrow{eur}-\thisrow{jpy}-\thisrow{gbp}-\thisrow{chf}] {\cofer};
+    }
+    % 6: el último dato (2026T2) y el primero del dólar
+    \capa{6}{
+      \addplot[ultimo=rsusd] table[x=x, y=usd] {\cofer};
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=rsusd,
+        restrict x to domain=1999.9:2000.1] table[x=x, y=usd] {\cofer};
+      \addplot[ultimo=rseur] table[x=x, y=eur] {\cofer};
+      \addplot[ultimo=rsjpy] table[x=x, y=jpy] {\cofer};
+      \addplot[ultimo=rsgbp] table[x=x, y=gbp] {\cofer};
+      \addplot[ultimo=rsnt]
+        table[x=x, y expr=100-\thisrow{usd}-\thisrow{eur}-\thisrow{jpy}-\thisrow{gbp}-\thisrow{chf}] {\cofer};
+    }
+    % 7: rótulos
+    \capa{7}{
+      \dicrotulo[font=\footnotesize, text=rsusd, anchor=south west, inner sep=2pt]
+        {(2000.1,71.0)}{$71{,}0$ (1999)}
+      \dicrotulo[font=\footnotesize, text=rsusd, anchor=west, inner sep=3pt]
+        {(2026.5,56.7)}{\textbf{Dólar} $56{,}7$}
+      \dicrotulo[font=\footnotesize, text=rseur, anchor=west, inner sep=3pt]
+        {(2026.5,20.6)}{\textbf{Euro} $20{,}6$}
+      \dicrotulo[font=\footnotesize, text=rsnt!80!black, anchor=west, inner sep=3pt]
+        {(2026.5,12.9)}{\textbf{No tradicionales} $12{,}9$}
+      \dicrotulo[font=\footnotesize, text=rsjpy, anchor=west, inner sep=3pt]
+        {(2026.5,6.6)}{\textbf{Yen} $5{,}0$}
+      \dicrotulo[font=\footnotesize, text=rsgbp, anchor=west, inner sep=3pt]
+        {(2026.5,3.1)}{\textbf{Libra} $4{,}6$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

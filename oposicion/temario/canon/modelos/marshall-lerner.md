@@ -1,7 +1,7 @@
 # Condición de Marshall-Lerner y curva J
 
 - **Área:** macro-abierta · **Tema de referencia:** **3.B.12** (I.1, «Enfoque de las elasticidades y condición Marshall-Lerner») — lo desarrolla.
-- **Temas que lo usan:** 3.B.12 (desarrollo), 3.B.14, 3.B.15, 3.B.19 y 3.A.37 (supuesto de Mundell-Fleming y de la transmisión por el tipo de cambio: mención; hecho, 5/11/2026: I.2, `\vertema{3.B.12}`, y anexo D), 3.B.5 (mención: estabilidad de la curva de oferta), 1D01 (uso: IV.2, cómo se comprueba en el cuadro; preguntado en 2022)
+- **Temas que lo usan:** 3.B.12 (desarrollo), 3.B.14, 3.B.15, 3.B.19 y 3.A.37 (supuesto de Mundell-Fleming y de la transmisión por el tipo de cambio: mención; hecho, 5/11/2026: I.2, `\vertema{3.B.12}`, y anexo D), 3.B.5 (mención: estabilidad de la curva de oferta), 1D01 (uso: IV.2, cómo se comprueba en el cuadro; preguntado en 2022), 3.B.11 (mención; hecho, 5/11/2026: III.2, una depreciación desvía el gasto si se cumple la condición, y el resumen de las políticas de ajuste al final del anexo E, con la suma de los valores absolutos de las elasticidades mayor que 1; `\vertema{3.B.12}`)
 - **Manuales de referencia:** Marshall (1923); Lerner (1944); Robinson (1937); Magee (1973) (curva J); Krugman, Obstfeld y Melitz, cap. 16 y apéndice; Gandolfo, *International Finance and Open-Economy Macroeconomics*, cap. 7.
 
 ## Presentación de referencia

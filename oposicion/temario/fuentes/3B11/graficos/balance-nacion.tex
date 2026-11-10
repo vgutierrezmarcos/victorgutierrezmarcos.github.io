@@ -1,0 +1,54 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% El balance de la nación (enfoque de hoja de balance; Allen et al., 2002):
+% una T con el capital y los activos exteriores en el activo, y los pasivos
+% exteriores (deuda y no deuda) y la riqueza nacional neta K + PIIN en el
+% pasivo; al margen, los 4 descalces junto a la partida que afectan.
+% Gráfico de referencia de la ficha enfoque-hoja-balance.
+% Colores: lo real (K) en verde, lo financiero en azul (como en el panorama de
+% las cuentas internacionales), la riqueza neta en morado y los descalces en rojo.
+% Capas: la T -> el activo -> el pasivo -> la riqueza -> los descalces.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  part/.style={draw=#1, fill=#1!12, line width=0.7pt, align=center},
+  desc/.style={anchor=west, align=left, text width=4.3cm, font=\scriptsize, text=tceerojo},
+  sig/.style={-{Stealth[length=2mm]}, thick, tceerojo}]
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-5.1,-5.25) rectangle (10.0,0.85);
+  % 1: la T
+  \capa{1}{\draw[very thick] (-4.9,0) -- (4.9,0);
+    \draw[very thick] (0,0) -- (0,-4.75);
+    \node[font=\small\bfseries, anchor=base] at (-2.45,0.15) {Activo};
+    \node[font=\small\bfseries, anchor=base] at (2.45,0.15) {Pasivo y riqueza neta};}
+  % 2: el capital (activos reales)
+  \capa{2}{\draw[part=tceeverde] (-4.8,-0.15) rectangle (-0.15,-2.35);
+    \node[align=center] at (-2.475,-1.25) {\textbf{Capital} $K$\\ activos reales: viviendas,\\ equipo, infraestructuras};}
+  % 3: los activos exteriores
+  \capa{3}{\draw[part=tceeazul] (-4.8,-2.35) rectangle (-0.15,-4.55);
+    \node[align=center] at (-2.475,-3.45) {\textbf{Activos exteriores}\\ inversión directa, cartera,\\ derivados, otra inversión\\ y reservas};}
+  % 4: los pasivos exteriores que son deuda
+  \capa{4}{\draw[part=tceeazul] (0.15,-0.15) rectangle (4.8,-2.05);
+    \node[align=center] at (2.475,-1.1) {\textbf{Pasivos exteriores: deuda}\\ préstamos, depósitos, bonos\\ (a plazo, en euros o en divisas)};}
+  % 5: los pasivos exteriores que no son deuda
+  \capa{5}{\draw[part=tceeazul] (0.15,-2.05) rectangle (4.8,-3.05);
+    \node[align=center] at (2.475,-2.55) {\textbf{Pasivos exteriores: no deuda}\\ acciones y capital de la ID};}
+  % 6: la riqueza nacional neta
+  \capa{6}{\draw[part=tceemorado] (0.15,-3.05) rectangle (4.8,-4.55);
+    \node[align=center] at (2.475,-3.8) {\textbf{Riqueza nacional neta}\\ $K+\mathrm{PIIN}$};
+    \node[font=\scriptsize, text=tceegris, align=center] at (0,-4.95)
+      {$\mathrm{PIIN}=$ activos exteriores $-$ pasivos exteriores};}
+  % 7: descalce de plazos
+  \capa{7}{\node[desc] (dp) at (5.4,-0.45) {\textbf{Plazos}: deuda a corto frente a activos a largo (riesgo de refinanciación)};
+    \draw[sig] (dp.west) -- (4.85,-0.45);}
+  % 8: descalce de monedas
+  \capa{8}{\node[desc] (dm) at (5.4,-1.5) {\textbf{Monedas}: deuda en divisas frente a ingresos en moneda nacional (riesgo de tipo de cambio)};
+    \draw[sig] (dm.west) -- (4.85,-1.5);}
+  % 9: descalce de estructura de capital
+  \capa{9}{\node[desc] (de) at (5.4,-2.55) {\textbf{Estructura de capital}: mucha deuda y poco capital (las pérdidas no se comparten)};
+    \draw[sig] (de.west) -- (4.85,-2.55);}
+  % 10: solvencia
+  \capa{10}{\node[desc] (ds) at (5.4,-3.8) {\textbf{Solvencia}: riqueza neta pequeña o negativa (los activos no cubren los pasivos)};
+    \draw[sig] (ds.west) -- (4.85,-3.8);}
+\end{tikzpicture}
+\end{document}
