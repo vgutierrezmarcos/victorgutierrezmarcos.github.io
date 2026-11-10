@@ -7,6 +7,7 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 
 ## Para la siguiente versión en Google Play (1.22.0 publicada el 29 oct.)
 
+- (10 nov., 1.25.0) Más → Cuenta → «Borrar mis datos de una oposición»: eliges TCEE o DCE y se borra todo lo tuyo de esa (nube y dispositivo), sin tocar la otra ni cerrar la sesión; hay que escribir «BORRAR DCE» para confirmarlo. También se lo puedes pedir a tu IA con el conector
 - (30 oct., siguiente versión) Las clases pedidas al preparador llevan presencial u online y los temas que quieres cantar (desde el conector de IA, EconomIA); al aceptarlas, la clase sale ya con ellos y el preparador los ve en la reserva
 - (30 oct., siguiente versión) También desde la app: al pedir clase (Reservar o «Con quién» en Nuevo cante) eliges presencial u online y los temas, que por defecto son los de tu cronograma para ese día
 - (30 oct., siguiente versión) El cronómetro de la clase con el preparador cuenta hacia delante desde 0 (o cuenta atrás, si lo prefieres), se pone a pantalla completa y tiene todo lo del de Cantar: más o menos minutos, pasar a exponer, reiniciar, pasar al tema siguiente, avisos y la pantalla encendida mientras corre

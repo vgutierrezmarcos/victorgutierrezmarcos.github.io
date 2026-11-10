@@ -529,25 +529,59 @@ class UsuarioRepo {
     await sincronizarNotas();
   }
 
-  /// Subcolecciones de users/{uid} (ver firestore.rules).
-  static const coleccionesUsuario = ['exam_results', 'progress', 'notes', 'cantes', 'alumnos', 'sesiones', 'preparadores', 'cronogramas'];
+  /// Colecciones del usuario en una oposición (bajo su raíz: users/{uid} en
+  /// TCEE, users/{uid}/oposiciones/{id} en las demás), con las colecciones que
+  /// cuelgan de cada documento (borrar un documento no borra lo de debajo).
+  /// La misma lista está en el conector (mcp/worker/src/borrado.ts): al añadir
+  /// una colección nueva, van las dos. «oposiciones» y «cuenta» no están a
+  /// propósito: son de la cuenta, no de una oposición.
+  static const coleccionesOposicion = <String, List<String>>{
+    'exam_results': [],
+    'progress': [],
+    'notes': [],
+    'cantes': ['reloj', 'pizarra', 'informes'],
+    'alumnos': [],
+    'sesiones': ['notas'],
+    'preparadores': [],
+    'cronogramas': [],
+    'cronogramasRecibidos': [],
+    'contactosPreparadores': [],
+    'notasPreparadores': [],
+    'tablon': [],
+    'coordinacion': [],
+    'anotaciones': ['paginas'],
+  };
 
-  /// Borra todo lo que el usuario tiene en la nube (users/{uid}/…). Los enlaces
-  /// con preparadores y alumnos se rompen antes en [PreparadorRepo].
-  Future<void> borrarTodoEnLaNube() async {
+  /// Ids de `anotaciones` de un tema: el del PDF de siempre y el del revisado.
+  /// (Los mismos que usa la página del tema; «/» no cabe en un id.)
+  static List<String> idsAnotaciones(String codigo) => [for (final c in [codigo, '$codigo-revisado']) c.replaceAll('/', '_')];
+
+  /// Borra todo lo que el usuario tiene en la nube en esta oposición. Los
+  /// enlaces con preparadores y alumnos se rompen antes en [PreparadorRepo].
+  ///
+  /// [temas] son los códigos del temario: las anotaciones a mano de un tema
+  /// están en `anotaciones/{tema}/paginas` y el documento `anotaciones/{tema}`
+  /// no existe, así que no salen al listar la colección: hay que ir tema a tema.
+  Future<void> borrarTodoEnLaNube({Iterable<String> temas = const []}) async {
     final doc = _docUsuario;
     if (doc == null) return;
-    for (final c in coleccionesUsuario) {
+    for (final MapEntry(key: c, value: debajo) in coleccionesOposicion.entries) {
       final snap = await doc.collection(c).get();
-      // Las clases de preparador llevan debajo el cronómetro y la pizarra
-      // compartidos: también se borran (borrar el documento no los borra).
       final refs = [
         for (final d in snap.docs) ...[
-          if (c == 'cantes' && d.data()['preparador'] != null)
-            for (final sub in const ['reloj', 'pizarra']) ...(await d.reference.collection(sub).get()).docs.map((x) => x.reference),
+          for (final sub in debajo) ...(await d.reference.collection(sub).get()).docs.map((x) => x.reference),
           d.reference,
         ],
       ];
+      if (c == 'anotaciones') {
+        final vistos = {for (final d in snap.docs) d.id};
+        final ids = [for (final t in temas) ...idsAnotaciones(t)].where((id) => !vistos.contains(id)).toSet().toList();
+        // De veinte en veinte: son dos lecturas por tema del temario.
+        for (var i = 0; i < ids.length; i += 20) {
+          final paginas = await Future.wait([for (final id in ids.skip(i).take(20)) doc.collection(c).doc(id).collection('paginas').get()]);
+          refs.addAll([for (final p in paginas) ...p.docs.map((x) => x.reference)]);
+        }
+      }
       // Un lote admite 500 operaciones.
       for (var i = 0; i < refs.length; i += 400) {
         final lote = _db!.batch();

@@ -36,6 +36,7 @@ import '../data/models/preparador.dart';
 import '../data/models/temario.dart';
 import '../data/repos/contenido_repo.dart';
 import '../data/repos/descargas_repo.dart';
+import '../data/repos/oposicion_cuenta.dart';
 import '../data/repos/plan_repo.dart';
 import '../data/repos/preparador_repo.dart';
 import '../data/repos/usuario_repo.dart';
@@ -396,16 +397,61 @@ class SesionNotifier extends Notifier<bool> {
 
 final sesionProvider = NotifierProvider<SesionNotifier, bool>(SesionNotifier.new);
 
-/// Borra todos los datos del usuario en la nube y en este dispositivo y cierra
-/// la sesión. La cuenta de Google no se toca.
-Future<void> borrarTodosMisDatos(WidgetRef ref) async {
-  await ref.read(preparadorRepoProvider).romperTodosLosEnlaces();
-  await ref.read(usuarioRepoProvider).borrarTodoEnLaNube();
+/// Lo que hay que releer cuando cambian de golpe los datos de la oposición en curso.
+final _proveedoresDeDatos = <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, vinculosPreparadorProvider, solicitudesEnlaceProvider];
+
+/// Borra todos los datos del usuario en [o], y solo en ella: en la nube (si
+/// hay sesión) y en este dispositivo, y rompe sus enlaces con preparadores y
+/// alumnos de esa oposición. No cierra la sesión ni toca las demás
+/// oposiciones ni la cuenta. Deja una marca en la cuenta para que los demás
+/// dispositivos borren su copia en vez de volver a subirla.
+Future<void> borrarDatosDeOposicion(WidgetRef ref, Oposicion o) async {
+  final enCurso = o.id == ref.read(oposicionProvider).id;
+  final auth = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
+  final conNube = ref.read(serviciosProvider).firebaseDisponible && auth.currentUser != null;
+  final preparador = enCurso ? ref.read(preparadorRepoProvider) : await PreparadorRepo.crear(oposicion: o, firestore: conNube ? db : null, auth: conNube ? auth : null);
+  final usuario = enCurso ? ref.read(usuarioRepoProvider) : await UsuarioRepo.crear(oposicion: o, firestore: conNube ? db : null, auth: conNube ? auth : null);
+  final plan = enCurso ? ref.read(planRepoProvider) : await PlanRepo.crear(oposicion: o, firestore: conNube ? db : null, auth: conNube ? auth : null);
+  if (conNube) {
+    // La marca, antes: si otro dispositivo sincroniza a mitad, ya no resube.
+    await OposicionCuenta.marcarBorrado(o);
+    await preparador.romperTodosLosEnlaces();
+    await usuario.borrarTodoEnLaNube(temas: await _codigosDeTemas(ref, o));
+  }
+  await usuario.borrarDatosLocales();
+  await plan.borrarDatosLocales();
+  await preparador.borrarDatosLocales();
+  if (enCurso) {
+    for (final p in _proveedoresDeDatos) {
+      ref.invalidate(p);
+    }
+  }
+}
+
+/// Códigos de los temas de [o] (para encontrar las anotaciones a mano de cada
+/// uno). Sin red ni copia del temario, vacío: se borra todo lo demás.
+Future<List<String>> _codigosDeTemas(WidgetRef ref, Oposicion o) async {
+  try {
+    final temario = await ContenidoRepo(ref.read(serviciosProvider).http, o).temario();
+    return [for (final t in temario.todosLosTemas) t.codigo];
+  } catch (_) {
+    return const [];
+  }
+}
+
+/// Si los datos de la oposición en curso se han borrado en otro dispositivo o
+/// desde el conector de la IA, borra la copia de este dispositivo antes de
+/// sincronizar (si no, la volvería a subir).
+Future<void> aplicarBorradoRemoto(Ref ref) async {
+  final o = ref.read(oposicionProvider);
+  final marca = await OposicionCuenta.borradoPendiente(o);
+  if (marca == null) return;
   await ref.read(usuarioRepoProvider).borrarDatosLocales();
   await ref.read(planRepoProvider).borrarDatosLocales();
   await ref.read(preparadorRepoProvider).borrarDatosLocales();
-  await ref.read(sesionProvider.notifier).cerrarSesion();
-  for (final p in <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, vinculosPreparadorProvider, solicitudesEnlaceProvider]) {
+  await OposicionCuenta.borradoAplicado(o, marca);
+  for (final p in _proveedoresDeDatos) {
     ref.invalidate(p);
   }
 }
@@ -426,11 +472,12 @@ Future<String?> eliminarMiCuenta(WidgetRef ref) async {
       final usuario = await UsuarioRepo.crear(oposicion: o, firestore: db, auth: auth);
       final plan = await PlanRepo.crear(oposicion: o, firestore: db, auth: auth);
       await preparador.romperTodosLosEnlaces();
-      await usuario.borrarTodoEnLaNube();
+      await usuario.borrarTodoEnLaNube(temas: await _codigosDeTemas(ref, o));
       await usuario.borrarDatosLocales();
       await plan.borrarDatosLocales();
       await preparador.borrarDatosLocales();
     }
+    await OposicionCuenta.borrar();
     try {
       await auth.currentUser!.delete();
     } on FirebaseAuthException catch (e) {
@@ -497,6 +544,7 @@ Future<void> avisarCambiosDeLaRed(PreparadorRepo preparador) async {
 Future<bool> sincronizarTodo(Ref ref, {bool delServidor = false}) async {
   // Una versión demasiado antigua no toca la nube (ver versionObsoletaProvider).
   if (versionObsoleta || await ref.read(versionObsoletaProvider.future)) return false;
+  await aplicarBorradoRemoto(ref);
   await ref.read(usuarioRepoProvider).sincronizarTodo();
   final ok = await ref.read(planRepoProvider).sincronizarTodo(delServidor: delServidor);
   final preparador = ref.read(preparadorRepoProvider);
