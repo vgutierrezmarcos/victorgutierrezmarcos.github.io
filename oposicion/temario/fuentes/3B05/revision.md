@@ -170,6 +170,12 @@ Revisión autónoma (Víctor fuera del 31/10 al 9/11/2026). La fuente nueva est�
 | Reestructurar con el esquema del título | I. Teoría clásica (1. Antecedentes: Smith; 2. Ricardo-Torrens); II. Teoría neoclásica (1): RRI y Haberler; III. Teoría neoclásica (2): H-O-S, con a) idea, b) modelo (supuestos, 4 teoremas, implicaciones), c) evidencia (Leontief, salidas y paso a las extensiones), d) extensiones (i HOV con su evidencia; ii Jones y Deardorff; iii factores específicos, con idea, supuestos, desarrollo, 4 preguntas, extensiones, evidencia y valoración; caja gris con los demás levantamientos de supuestos), e) valoración e influencia. Actualizados la estructura de la introducción, el esquema, `\esqtiempo` y minutos (2,5 + 6,5 + 6 + 13,5 + 1,5 = 30), las notas al opositor, la tabla de los 4 modelos (H-O-S antes que los factores específicos) y la ficha. Los anexos quedan: A extensiones de Ricardo; B la RRI con el ejemplo de Ricardo (nuevo); C transferencias; D igualación (demostración, reversión y coeficientes fijos); E álgebra de Jones y reciprocidad; F Leontief; G datos de España; H test. |
 | Gráficos por pasos explicados poco a poco | Cada gráfico nuevo o rehecho tiene capas (`\capa`) y el texto las recorre en orden (FPP/FPC de Ricardo, pasos 2-3 de Haberler, curvas de coste unitario, Samuelson-Johnson, caja de Rybczynski, anexo de Ricardo). |
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 11 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): anexos A (corte tras «Ricardo») y G (corte antes de «y su ventaja»), con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## 7. Dudas abiertas
 
 1. **D1-D5 (estructura)**, aplicadas con la opción recomendada:
@@ -222,6 +228,8 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **No restaurados**: OMC, *Examen estadístico del comercio mundial 2023* (nota 4), y ICE, *El sector exterior en 2022* (caja del anexo de evolución reciente): las cifras que respaldaban se han sustituido por datos más recientes (`OMC2026Perspectivas` en la introducción y `MINECO2026InformeDic2025` en el anexo de datos de España). Ambos enlaces funcionan; si Víctor quiere conservarlos como lectura, irían en ese anexo.
 
 ## 8. Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: tabla de los 4 modelos en una esquina, una fila por modelo; en Ricardo, tachar el 110 y escribir el 90 en la tabla de Smith (también en la ficha); desigualdad de ventaja comparativa recuadrada.
 
 (Aún no hay guion ni escenas: entrega 3. Actualizadas el 10/11/2026 con la 3.ª tanda de Víctor.)
 

@@ -176,6 +176,12 @@ Propuestas de coherencia de la parte 2: K7 (6 anexos: los 5 previstos y el de te
 - Remisiones nuevas en la parte 2: 3.A.5, 3.A.35, 3.A.37, 3.A.39, 3.A.40, 3.A.41, 3.B.24, 3.B.27, 3.B.43 y, en la conclusión, 3.A.7, 3.A.14, 3.A.28, 3.B.15, 3.B.16.
 - Para la fase de canon: fichas nuevas `poole`, `multiplicador-monetario` y `objetivo-inflacion` con el 3.A.36 de referencia (CC1-CC3) y las notas CC4-CC9; en `poole`, la regla mixta H* = bσ²_LM/(kσ²_IS) del anexo C.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): ningún título ocupa 2 líneas. |
+
 ## Dudas abiertas
 
 - **A36-01** 2 apartados (D1 de coherencia): aplicada la recomendada (2).
@@ -221,6 +227,7 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 - **Pizarra, bloque II**: la tabla en T de la creación de dinero (2 cuentas); `eq:multiplicador-dinero` de palabra; `esquema-operativo` rápido (4 cajas); `poole` por paneles (al menos la fila de perturbaciones reales y el panel d), con la pegatina «perturbación real, fija la cantidad; monetaria, fija el tipo»; `pasillo-suelo` si da tiempo; pegatinas «a grandes males, grandes remedios» y «quien avisa no es traidor».
 - **Apoyo (no se dibuja)**: los anexos A-E, la tabla de agregados y la cronología.
 - **Idea final**: «Lo prometido es deuda, y un banco central creíble es el que la paga», que cierra el enganche.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas. A la izquierda, el refrán del enganche y las pegatinas, cada una junto a su concepto: «el camino del infierno está empedrado de buenas intenciones» (el sesgo inflacionista), «entre dos males, el menor» (el dilema ante una perturbación de costes), «perturbación real, fija la cantidad; monetaria, fija el tipo» (\autor{Poole}), «a grandes males, grandes remedios» (los instrumentos no convencionales) y «quien avisa no es traidor» (la orientación de la política). En el centro, los 3 gráficos que hay que saber dibujar, uno tras otro: el de \autor{Barro} y \autor{Gordon} con R, T y D (gráfico~\ref{fig:barro-gordon}), el panel b del modelo de la NEK (gráfico~\ref{fig:nek-xpi}), que se vuelve a usar con las perturbaciones de oferta, y el de \autor{Poole} (gráfico~\ref{fig:poole}). A la derecha, recuadradas hasta el final, las funciones clave: el sesgo inflacionista \eqref{eq:sesgo}, la regla de \autor{Taylor} \eqref{eq:taylor} y la condición de la discreción \eqref{eq:discrecion}.
 
 ## Correcciones del control de calidad (4/11/2026)
 

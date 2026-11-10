@@ -148,6 +148,12 @@ Aplicados en la fuente (`3A26.tex`, `3A26.bib`, `graficos/`, `repaso/3A26-repaso
 
 Otros: `datos-actualizables.yaml` nuevo (10 datos que caducan: EPA, vacantes de Eurostat, curva de Beveridge con su CSV, flujos y temporalidad); `_trabajo/canon-pendiente.md` con lo que cambia en las fichas `dmp`, `curva-beveridge`, `mccall` y `costes-ajuste-empleo`; `seo.json` sin cambios (sigue valiendo).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo»; también fuera «recuadrada(s)», «se quedan hasta el final del bloque», «En la pizarra, en el centro…», «a la derecha, recuadradas» y «se apunta/se marca a la izquierda» de las notas de cante de I.3, II y III.2 (queda «se levanta el supuesto n» y el refrán). Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): Anexo A: corte antes de «y otras extensiones»; anexo B: corte tras «Anexo:»; II: \newline → \cortetitulo{}. |
+
 ## Dudas abiertas
 
 Todas con la opción recomendada **ya aplicada** (Víctor fuera hasta el 9/11).
@@ -190,3 +196,5 @@ Todas con la opción recomendada **ya aplicada** (Víctor fuera hasta el 9/11).
 - **Introducción y conclusión**, en modo guion, sin pizarra. Enganche: «Cada oveja con su pareja» y los 2,6 millones de parados frente a las 150.000 vacantes, unos 16 por vacante, con la pregunta «¿cómo puede haber a la vez gente que busca trabajo y trabajo que busca gente?». Idea final: encontrar pareja lleva tiempo y cuesta; el paro friccional es el precio de que cada trabajador acabe en su puesto, y la política no puede eliminarlo, pero sí abaratarlo.
 - **Reparto del guion** (unas 4.700 palabras): introducción ≈ 400, I ≈ 870, II ≈ 2.050, III ≈ 1.250, conclusión ≈ 160. Si falta tiempo, el comodín que se acorta son las extensiones del DMP (II.3) y la evidencia de III (III.4).
 - Las notas de los Nobel, las tablas y los anexos no van al cante. No se dice «hilo» ni números de temas en voz alta.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas fijas, como en el modelo neoclásico del mercado de trabajo \vertema{3.A.25} y en la determinación de salarios \vertema{3.A.27}. A la izquierda, los supuestos que se levantan (2, información perfecta; 7, movilidad sin costes de ajuste) y los refranes pegatina: «quien busca, halla» (pero buscar cuesta), «cada oveja con su pareja» (el del enganche: el emparejamiento), «ni tanto ni tan calvo» (\autor{Hosios}), «vísteme despacio, que tengo prisa» (costes convexos) y «más vale malo conocido que bueno por conocer» (banda de inacción). En el centro, los gráficos por capas: la densidad de ofertas con $w^R$ (\ref{sec:busqueda}); los 2 paneles del DMP, $(\theta,w)$ y $(U,V)$, que se quedan hasta el final del bloque para la estática comparativa y la curva española (\ref{sec:dmp}); las sendas del empleo de cada tipo de coste, una a una, y la banda de inacción (\ref{sec:costes-ajuste}). A la derecha, las ecuaciones recuadradas: $w^R$, $m(U,V)$ con $f(\theta)$ y $q(\theta)$, la creación de empleo, la curva salarial, $U=s/(s+f(\theta))$, $\gamma=\alpha$ y la ecuación de $\lambda_t$.
+

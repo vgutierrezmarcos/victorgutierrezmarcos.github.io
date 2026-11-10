@@ -802,3 +802,10 @@ Tras ver el borrador de 1 h 30 (sin renderizar de nuevo hasta que Víctor lo pid
 - (Segunda vuelta, aprobada por Víctor) Evidencia de vivienda en `1D01.bib`, con las mismas claves y datos que la solución del examen (Segu2020Vacantes, Carozzi2024HelpToBuy, Fack2006Ayudas, GarciaLopez2020Airbnb, BdE2024Vivienda, Alam2019Macroprudencial, BdF2023AyudasVivienda; siguen también en `solucion.bib`, y biber solo avisa del duplicado). Se citan en la guía: localización (riesgos de la vivienda), vivienda vacía, pisos turísticos, LTV/LTI, no residentes y capitalización de las ayudas (VI.2; Fack, con el 78 % según la reseña del Banco de Francia) y en la recomendación del anexo de España.
 - Las 3 frases dudosas, reescritas en la guía y el resumen. Competitividad-precio: medidas según el origen de la pérdida (salarios frente a productividad, márgenes, tipo de cambio). Oferta: «eleva el potencial, como la inversión pública, el capital humano y la I+D» (antes, «las únicas»). Paro friccional: movilidad geográfica si el desajuste es territorial, que la vivienda cara puede frenar (antes, «fomento del alquiler»); también en la infografía `esquema-tipos-paro`. La solución del examen no tenía ninguna de las 3.
 - Solución del examen: el entorno `examen` deja de ser una tcolorbox (atrapaba las notas al final de la caja). Ahora es una lista con la misma sangría y la raya morada de changebar, así que las notas van al pie de su página (la raya no se pinta en las notas). `\que` ya no deja espacio antes de `,` `.` `:` `;` `)`; en la guía y el resumen no hay macros que dejen ese hueco.
+
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Las fórmulas que conviene llevar a la pizarra» → «que conviene recordar» (1 frase). Se mantienen «cómo se escribe» y «se tacha con una raya» (examen escrito). Títulos: sin cambios (títulos en una línea). Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+

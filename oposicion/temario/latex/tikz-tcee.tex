@@ -40,6 +40,14 @@
 \providecommand{\vect}[1]{\vec{#1}}
 \providecommand{\tceepaso}{1000}
 \newcommand{\capa}[2]{\ifnum#1>\tceepaso\relax\else#2\fi}
+% Gráficos por pasos del mismo tamaño (propuesta del 3.A.29, 11/11/2026): con
+% \def\tceefantasma{1} antes del \input (p. ej., x-paso1.tex:
+% «\def\tceepaso{3}\def\tceefantasma{1}\input{x.tex}»), las capas posteriores
+% al paso se dibujan invisibles y ocupan su sitio. Sin \tceefantasma (el vídeo),
+% no cambia nada.
+\ifdefined\tceefantasma
+  \renewcommand{\capa}[2]{\ifnum#1>\tceepaso\relax\begin{scope}[opacity=0]#2\end{scope}\else#2\fi}
+\fi
 
 \tikzset{
   tcee/.style={line cap=round,line join=round,font=\small,>={Stealth[length=2.2mm]}},

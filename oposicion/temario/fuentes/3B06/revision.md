@@ -186,6 +186,12 @@ Consultas del 05/11/2026 (verificador de datos, salvo el enganche, que consultó
 | Tabla 2 con gráfico de cuota acumulada 2019 y 2025 e implicaciones en Melitz; comparación europea en caja gris | `concentracion-exportadoras-espana`: % acumulado del valor exportado frente al % de empresas de mayor a menor (eje X logarítmico, duda B06-02), 2019 y 2025, con microdatos de la AEAT (reproducen la tabla 2: 15,0/39,2/66,7/87,5 en 2019). Lectura: de unas 209.000 a 127.000 exportadoras; la curva de 2025 queda por debajo (1 %: 76,7 → 68,6 %; 10 %: 98,6 → 95,7 %) porque sale la cola de exportadoras pequeñas, que hacían el 0,2 % del valor; en Melitz, una subida de $\varphi^*_x$ (más $F^x$ o incertidumbre) que reduce el margen extensivo (duda B06-03). Caja gris con `concentracion-exportadoras-ue` (Eurostat TEC 2024, 12 países: 10, 100 y 1.000 primeras): España, de las menos concentradas (1.000 primeras, 67,5 %), como Alemania y Polonia; Italia 53,3 %, Irlanda 97,8 % |
 | Gráficos de varios pasos explicados poco a poco | Krugman (autarquía y apertura), CES, nota 23, Melitz (3 gráficos) y la curva de concentración llevan sus pasos numerados en el texto, en el orden de las capas del `.tex` |
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 2 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): II.1: corte tras «Competencia en cantidades:», con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## 7. Dudas abiertas
 
 **Estructura (aplicada la opción recomendada por coherencia):**
@@ -273,6 +279,8 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **No restaurado**: OMC, *Examen estadístico del comercio mundial 2023* (nota sobre el volumen del comercio mundial): la cifra que respaldaba se ha sustituido por la de 2025 (`OMC2026Perspectivas`). El enlace funciona; si Víctor quiere conservarlo como lectura, se añade al `.bib`.
 
 ## 8. Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: tabla de modelos vacía en una esquina, que se rellena con cada modelo; debajo, la regla del margen.
 
 (Aún no hay guion ni escenas: entrega 3.)
 

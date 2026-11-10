@@ -22,7 +22,7 @@
   % 1: panel A
   \capa{1}{
     \ejes{$k$}{inversión}{4.6}{3.8}
-    \draw[curva3] (0,0) -- (4.0,2.4) node[etiqueta,right,text=tceeverde] {$(n+g+\delta)k$};
+    \draw[curva3] (0,0) -- (4.0,2.4) node[etiqueta,right,text=tceeverde] {$(n+\delta)k$};
     \draw[curva2] plot[domain=0:3.9,samples=80] (\x,{fa(\x)}) node[etiqueta,right,text=tceeazul] {$s\,f(k)$};
     \draw[flecha] (0.4,0) -- (1.6,0); \draw[flecha] (2.0,0) -- (3.4,0);
     \node[panel] at (2.0,-1.0) {A};
@@ -31,7 +31,7 @@
   % 2: panel B
   \capa{2}{\begin{scope}[xshift=6.7cm]
     \ejes{$k$}{inversión}{4.6}{3.8}
-    \draw[curva3] (0,0) -- (4.0,2.4) node[etiqueta,right,text=tceeverde] {$(n+g+\delta)k$};
+    \draw[curva3] (0,0) -- (4.0,2.4) node[etiqueta,right,text=tceeverde] {$(n+\delta)k$};
     \draw[curva2] plot[domain=0:4.0,samples=80] (\x,{fb(\x)}) node[etiqueta,right,text=tceeazul] {$s\,f(k)$};
     \node[punto] at (0,0) {};
     \draw[flecha] (3.4,0) -- (2.0,0); \draw[flecha] (1.6,0) -- (0.3,0);
@@ -41,7 +41,7 @@
   % 3: panel C
   \capa{3}{\begin{scope}[xshift=13.4cm]
     \ejes{$k$}{inversión}{4.6}{3.8}
-    \draw[curva3] (0,0) -- (4.0,2.4) node[etiqueta,above right,text=tceeverde] {$(n+g+\delta)k$};
+    \draw[curva3] (0,0) -- (4.0,2.4) node[etiqueta,above right,text=tceeverde] {$(n+\delta)k$};
     \draw[curva2] plot[domain=0:4.0,samples=120] (\x,{fc(\x)}) node[etiqueta,below right,text=tceeazul] {$s\,f(k)$};
     \node[punto] (C1) at (1.3408,0.8045) {};
     \node[punto,fill=white,draw=black] (C2) at (2.0307,1.2184) {};

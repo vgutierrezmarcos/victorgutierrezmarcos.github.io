@@ -289,6 +289,12 @@ Todo el tema es nuevo. Lo que no está en Tebar (o está en una línea) y de dó
      el transitorio del MAFC mal fechado y el RCDE como «sistema de Coase»; el 4.B.18 está
      desactualizado; el 3.B.20 remite al 3.B.31 lo que es del 3.B.30.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 10 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): III: corte tras «Acuerdos internacionales» (antes, antes de «frente al»), con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## Dudas abiertas
 
 Todas tienen aplicada la opción recomendada (★); basta con confirmarla o elegir otra.
@@ -351,6 +357,8 @@ mercados de emisiones de la UE y el Reino Unido.
 El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada que restaurar.
 
 ## Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: gráfico de las emisiones óptimas todo el cante, con $t^*$ y $\overline E$ marcados en III; celdas del dilema tachadas y reescritas con el arancel del club.
 
 - **Introducción y conclusión, sin pizarra** (`modo: guion`), con sus 5 bloques nombrados.
   - Enganche: «Quien siembra vientos recoge tempestades»; 2024, primer año por encima de 1,5 °C, y

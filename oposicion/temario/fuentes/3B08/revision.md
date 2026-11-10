@@ -228,6 +228,12 @@ Todas las consultas se hicieron el 5/11/2026. Las URL están en `3B08.bib`.
 |---|---|
 | «Pocos comentarios. Está bastante bien, lo único si pudieras mantener en las funciones de los modelos (p.ej. el modelo de Brander y Spencer) los argumentos adicionales marcados en rojo y tachar para que sea al menos tan visual como estaba en la versión antigua.» | Órdenes nuevas en `latex/tcee-comun.sty`: `\nuevo{…}` (término o argumento que añade el modelo, en rojo `tceerojo`) y `\tachado{…}` (lo que se cancela, tachado en diagonal en rojo, paquete `cancel`). Aplicadas en todas las funciones de los modelos: Brander y Spencer (1985) (beneficio de $A$ con $+s_A q_A$; CPO con $+s_A$; $R_A(q_B;s_A)$; $W_A=B_A-s_Aq_A$ con los 2 términos $s_Aq_A$ tachados, como en la pág. 11 del antiguo); Eaton y Grossman (beneficio con $+s_A$, $R_A(p_B;s_A)$ y $W_A$ con la misma cancelación); mercados recíprocos (coste $c+t_A$, $R_B(q_A^A;t_A)$ y la recaudación en $W_A$); anexo A (funciones de reacción con $s_A$, Eaton y Grossman, y $s_B$ en la guerra de subvenciones). Web: `pandoc-macros.tex` da rojo y `\cancel` de MathJax. Word: texmath no entiende `\cancel`, así que `construir-tema.py` cambia `\tachado` por un recuadro marcado y `tachado_docx` lo convierte en raya diagonal (OMML `strikeBLTR`); el rojo no sale en Word (texmath ignora `\color`). Ver D5. |
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 4 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): anexo B: corte antes de «del equilibrio de Cournot», con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## 7. Dudas abiertas
 
 - **D5, tachado y color en las fórmulas (10/11/2026)**: (a) raya diagonal (`\cancel`) en PDF, web y Word; (b) raya horizontal, como en el antiguo, que MathJax y Word no tienen. **Aplicada: (a)**. En Word las fórmulas no salen en rojo (solo el tachado); para tenerlo habría que pasar los términos a texto, que rompe la ecuación.
@@ -279,6 +285,8 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **No restaurado**: OMC, *Examen estadístico del comercio mundial 2023* (nota sobre el volumen del comercio mundial): la cifra que respaldaba se ha sustituido por la de 2025 (`OMC2026Perspectivas`). El enlace funciona; si Víctor quiere conservarlo como lectura, se añade al `.bib`.
 
 ## 8. Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: tabla de modelos en una esquina, con la columna «si responden» en III; funciones de reacción recuadradas; esquema de 3 casillas en II.
 
 Todavía no hay vídeo: este tema se entrega sin guion ni escenas (entregas 1 y 2). Para cuando se haga:
 

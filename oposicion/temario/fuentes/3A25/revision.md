@@ -153,6 +153,12 @@ Sin cambios, ahora con fuente: V9, V13, V14, V17 (Marshall, sin página), V18 (B
   - `mapa.yaml`: referencias y `faltan` de coherencia § 6;
   - choque de letras: $L^S$ es en el 3.A.17 (y en el anexo D) el empleo que fija el sindicato, y en `notacion.md` § 6 la oferta $L^S(w)$ (A25-10).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 9 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de títulos → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
@@ -199,6 +205,7 @@ Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
   - sin pizarra (apoyo): `becker-inversion`, `fisher-capital-humano` y `ees-edad-estudios` (en el cante basta la cifra del 86 %).
 - **Anexos**: nada se canta; sus gráficos (`lr-oferta`, `sindicato-monopolista`, `ben-porath`) no salen en el vídeo. Ben-Porath, en una frase en III.3.
 - No decir números de temas en voz alta; al final la pizarra queda con las 4 funciones clave y la lista de supuestos marcada.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Comentarios de Víctor (9/11/2026, 2.ª tanda)
 

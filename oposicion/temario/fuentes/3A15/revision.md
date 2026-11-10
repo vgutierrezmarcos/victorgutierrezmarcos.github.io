@@ -125,6 +125,12 @@ No se usan V6 (peso de las pymes), V8 (Cifras PYME de agosto de 2026), V10 (conc
 - **Cambios opcionales a temas revisados** (para `pendientes-coherencia.md`): PC1 (3.A.13, matiz del equilibrio separador en el precio límite como señal), PC2 (3.A.11, «teoría de la empresa y de la organización industrial»), PC3 (3.A.14, citas de Spence y Dixit y remisión de la predación).
 - **Contradicciones con otros temas** (no se tocan): 3.A.19 (6 condiciones erróneas de impugnabilidad, notas de las aerolíneas y Pepephone, juego en 3 etapas con π y «beneficios unitarios», precio límite sin fórmula: al revisarlo, resumir y remitir aquí); 3.B.4 (copia del bloque de costes de transacción con los mismos errores: Coase en totales, frecuencia, «contratos incompletos de Williamson», título de Penrose, Marris en agencia); 3.A.23 (índice con numeración antigua; su Coase, 1960, debe distinguirse del de 1937); 4.B.15 (resumir los impugnables con los supuestos canónicos); 3.B.39 (remitir la depredación aquí); 3.A.1 (Harvard y Simon, coherente).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 4 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): corte en II.3 tras «derechos de propiedad:» y en el anexo de inversión estratégica tras la coma; \newline de III → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 Mientras Víctor no conteste en el artifact, se aplica la opción recomendada de cada duda.
@@ -181,3 +187,5 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **III.3**: los 3 supuestos como apoyo (la tabla `tab:supuestos-impugnables`, si se quiere, como apoyo); `eq:sostenible` recuadrada; `impugnables` como apoyo (es el gráfico del 3.A.17). Al terminar III, la pizarra queda con `eq:coase` y `eq:sostenible`.
 - **III.4**: sin pizarra; la condición de la NOIE con θ, como apoyo.
 - **Pronunciación** (si hace falta): Coase, Williamson, Grossman, Holmström, Sylos-Labini, Modigliani, Weizsäcker, Panzar, Willig, Penrose, Marris.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
+

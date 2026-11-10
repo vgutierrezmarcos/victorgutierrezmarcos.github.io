@@ -196,8 +196,42 @@ en cada tema. Ver `LICENSE.md` en la raíz.
 - **Vectores con flecha** encima (`\vect{x}`, `\vect{p}`, `\vect{z}`) en
   todas las fórmulas; los escalares (x_i, W̄, p_1) sin flecha.
 - **Títulos de primer nivel** (bandas moradas): que quepan en una línea; si
-  no, cortar donde tenga sentido con `\newline` (la segunda línea queda
+  no, cortar donde tenga sentido con `\cortetitulo` (la segunda línea queda
   sangrada bajo el texto) y nunca dejar una palabra sola.
+- **Todos los títulos, en las menos líneas posibles** (Víctor, 11/11/2026, 4.ª
+  tanda): lo ideal es una línea; acortar el título antes que dejarlo en tres.
+  Si necesita dos o más, el corte se elige **uno a uno** en el mejor punto
+  (tras «:», «;» o «?», antes de una conjunción o de un complemento, nunca
+  entre artículo y nombre ni dejando una palabra sola) con `\cortetitulo`:
+  `\subsection{Los hechos estilizados:\cortetitulo ¿los reproduce el modelo?}`.
+  En el PDF es un salto de línea; en los marcadores, la web, el Word y el
+  esquema, un espacio (`\newline` en un título también corta, pero en Word
+  deja el salto: usar `\cortetitulo`). Los títulos van sin justificar y sin
+  guiones; sin huérfanas y con el párrafo siguiente en la misma página (lo
+  hace `tcee.sty`). `verificar-tema.py` avisa de los títulos de más de una
+  línea con «:» (u otro signo) y sin corte marcado.
+- **Jerarquía de los títulos** (Víctor, 11/11/2026; `tcee.sty`, `tema.css` y
+  `reference.docx` iguales): 1 `\section` banda morada en versales; 2
+  `\subsection` I.1. grande, negrita y raya; 3 `\subsubsection` I.1.1.
+  negrita; 4 `\paragraph` negrita cursiva (bloques a)-e) de un modelo); 5
+  `\subparagraph` cursiva (i), ii)…). Cada nivel, más sangrado y nunca más
+  destacado que el de arriba. Dos títulos seguidos no suman su espacio (el
+  segundo va casi pegado) y nunca hay salto de página entre ellos.
+- **Nada de indicaciones de pizarra ni de vídeo en el tema** (Víctor,
+  11/11/2026, 4.ª tanda): ni «En la pizarra, bajo la ecuación de Euler: …»,
+  «(caja siguiente)», «(ver caja)», «es la columna que se ha ido llenando en la
+  pizarra», «se deja en la pizarra», «se tacha el 110 y se escribe el 90»,
+  tampoco en las cajas (`notaopositor`, `anotaciones`), que salen en el PDF.
+  Eso va solo a «Instrucciones para el vídeo» de `revision.md`. Las tablas
+  resumen se mantienen, con fines ilustrativos, sin ese comentario.
+  `verificar-tema.py` da error si queda «pizarra», «caja siguiente», «(ver
+  caja)», «se tacha» o «en el vídeo» en el `.tex` (en la guía 1D01, solo aviso).
+- **Notación del bloque de crecimiento** (3.A.43-3.A.45 y donde aparezca;
+  Víctor, 11/11/2026): minúscula con virgulilla ($\tilde k$, $\tilde y$,
+  $\tilde c$) para los valores por unidad eficiente de trabajo y minúscula sin
+  virgulilla ($k$, $y$, $c$) para los valores per cápita. Siempre.
+- **Coste del capital**: $r$ (no $c_K$) cuando sea el coste de uso del
+  capital y no lleve a confusión (Víctor, 11/11/2026).
 - **Recuadros grises** (`anotaciones` o una `tcolorbox` gris) para
   definiciones de apoyo y resultados técnicos que se consultan (p. ej.,
   funciones homogéneas y homotéticas).
@@ -236,7 +270,14 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   de cada apartado de primer nivel y de la conclusión
   (`I. Título\esqtiempo{11}\\`). Son los mismos que los `\minutos` del cuerpo
   (verificar-tema.py lo comprueba); si cambian los minutos o la estructura, se
-  cambia también el esquema.
+  cambia también el esquema. **Cada línea enlaza con su apartado** (Víctor,
+  11/11/2026) en el PDF, la web y el Word sin escribir nada: al construir,
+  `comun.enlazar_esquema` (construir-tema.py) enlaza cada línea por su orden
+  (I., II.…; 1., 2.… sangrados con `\hspace*{1.5em}` bajo cada uno, que son
+  sus `\subsection` en orden; Introducción y Conclusión por su nombre) o por
+  el `\ref{sec:…}` con que empiece. Por eso el número de cada línea tiene que
+  ser el orden real del apartado; `verificar-tema.py` avisa de las líneas que
+  no encuentran destino.
 - **Cajas grises para lo que no se canta** (Víctor, 9/11/2026): datos de
   tablas que es imposible memorizar pero ayudan a entender, anécdotas
   biográficas, desarrollos largos y material complementario van en un
@@ -552,6 +593,15 @@ el texto original y lo que se hizo.
      también es gris (o transparente), nunca una caja blanca encima.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las
   capturas de tablas se convierten en tablas LaTeX.
+- **Gráficos e imágenes, con numeración propia** (Víctor, 11/11/2026, 4.ª
+  tanda). **Gráfico n** (`figure`, `figuracaja`, `\label{fig:…}`, «gráfico~\ref{fig:…}»):
+  todo lo dibujado (TikZ, pgfplots, infografías propias: un `graficos/x.pdf`
+  que sale de `graficos/x.tex`). **Imagen n** (`\begin{imagen}`, `imagencaja`,
+  `\label{img:…}`, «imagen~\ref{img:…}»): solo los ficheros pegados tal cual
+  (jpg, png o un pdf sin `.tex` fuente: fotos, capturas, láminas, figuras de
+  otros). Mismo `\caption`, `\grafico` y `\fuente`. `verificar-tema.py` da
+  error si un fichero sin `.tex` va en `figure` (o al revés) o si el texto
+  dice «gráfico» de una imagen.
 - Si un gráfico o una tabla pertenecen a una caja (anotaciones, ejemplo…),
   van dentro de ella (Víctor, 18/10/2026): con `figuracaja` o `tablacaja` de
   `tcee.sty` en lugar de `figure`/`table` (mismo `\caption`, `\label` y

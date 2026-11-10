@@ -49,7 +49,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import Tema, paginas_partes, destinos_temas, primer_tema  # noqa: E402
+from comun import Tema, paginas_partes, destinos_temas, primer_tema, lineas_esquema  # noqa: E402
 
 PALABRAS_POR_MINUTO = 158  # borrador de generar-video.py (≈2,75 palabras/s) con las pausas
 SECCIONES_INFORME = ['Resumen', 'Errores corregidos', 'Marcas resueltas', 'Datos actualizados',
@@ -145,7 +145,7 @@ def remisiones_a_mano(tex, ficha=False):
          r'|(?<=\bdesde)|(?<=\bhasta)|(?<=\by))[ ~]([IVX]{1,3})(?=[\s,.;:)~]|$)(?!\.\d)(?!\+)', True),
         (r'(?<=\()([IVX]{1,3})(?=[\s,.;:)~]|$)(?!\.\d)(?!\+)', True),
         (r'\b[Aa]nexos?[~ ]+([A-H])\b(?![.\w])', False),
-        (r'\b(?:[Gg]r[áa]ficos?|[Tt]ablas?|[Ff]iguras?)[~ ]+(\d{1,2})(?![.\d\w])', False),
+        (r'\b(?:[Gg]r[áa]ficos?|[Tt]ablas?|[Ff]iguras?|[Ii]m[áa]gen(?:es)?)[~ ]+(\d{1,2})(?![.\d\w])', False),
         (r'\b[Ee]cuaci[óo]n(?:es)?[~ ]*\((\d{1,3})\)', False),
     ]
     for patron, de_apartado in patrones:
@@ -427,6 +427,115 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
         datos['apellidos_sin_autor'] = len(sueltos)
 
 
+def _linea(tex, pos):
+    return tex.count('\n', 0, pos) + 1
+
+
+def comprobar_graficos_imagenes(tema, tex, errores, datos):
+    """Gráficos e imágenes con numeración propia (Víctor, 11/11/2026): en figure y
+    figuracaja («Gráfico n») solo lo dibujado, un graficos/x.pdf que sale de un
+    graficos/x.tex; en imagen e imagencaja («Imagen n») los ficheros pegados tal
+    cual (jpg, png, pdf sin .tex). Y el texto los cita con su nombre: «gráfico~\\ref»
+    a un gráfico e «imagen~\\ref» a una imagen."""
+    sin = re.sub(r'(?<!\\)%[^\n]*', lambda m: ' ' * len(m.group(0)), tex)
+    tipo_de = {}
+    n_img = 0
+    for m in re.finditer(r'\\begin\{(figure|figuracaja|imagen|imagencaja)\}(.*?)\\end\{\1\}', sin, re.S):
+        es_imagen = m.group(1).startswith('imagen')
+        n_img += es_imagen
+        for e in re.findall(r'\\label\{([^}]+)\}', m.group(2)):
+            tipo_de[e] = 'imagen' if es_imagen else 'gráfico'
+        for g in re.findall(r'\\(?:grafico|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', m.group(2)):
+            base, ext = os.path.splitext(g)
+            dibujado = os.path.exists(os.path.join(tema.graficos, os.path.basename(base) + '.tex'))
+            if es_imagen and dibujado:
+                errores.append(f'l. {_linea(tex, m.start())}: «{g}» sale de graficos/{os.path.basename(base)}.tex: '
+                               'es un gráfico (figure), no una imagen')
+            elif not es_imagen and not dibujado:
+                errores.append(f'l. {_linea(tex, m.start())}: «{g}» no tiene .tex fuente (foto, captura, lámina): '
+                               'va en \\begin{imagen} («Imagen n»), no en figure')
+    datos['imagenes'] = n_img
+    for m in re.finditer(r'\b([Gg]r[áa]ficos?|[Ii]m[áa]gen(?:es)?|[Ff]iguras?)[~ ]*\\(?:ref|autoref|pageref)\{([^}]+)\}', sin):
+        tipo = tipo_de.get(m.group(2))
+        palabra = m.group(1).lower()
+        if not tipo:
+            continue
+        if palabra.startswith('fig'):
+            errores.append(f'l. {_linea(tex, m.start())}: «{m.group(1)}» → «{tipo}» (no se dice «figura»)')
+        elif (tipo == 'imagen') != palabra.startswith('im'):
+            errores.append(f'l. {_linea(tex, m.start())}: «{m.group(1)}~\\ref{{{m.group(2)}}}» cita un{"a" if tipo == "imagen" else ""} '
+                           f'{tipo}: escribir «{tipo}~\\ref{{…}}»')
+
+
+# Ancho aproximado de una línea de cada nivel de título (en caracteres), por
+# encima del cual el título necesita dos líneas
+ANCHO_TITULO = {'section': 62, 'subsection': 68, 'subsubsection': 86, 'paragraph': 84, 'subparagraph': 86}
+
+
+def comprobar_titulos(tex, avisos):
+    """Títulos largos sin corte elegido (Víctor, 11/11/2026): un título que no cabe
+    en una línea y tiene «:» (u otro signo) dentro debería cortar ahí con
+    \\cortetitulo. Aviso para que el agente del tema los revise uno a uno."""
+    sin = re.sub(r'(?<!\\)%[^\n]*', lambda m: ' ' * len(m.group(0)), tex)
+    largos = []
+    for m in re.finditer(r'\\(section|subsection|subsubsection|paragraph|subparagraph)\*?\{', sin):
+        fin = _fin_argumento(sin, m.end() - 1)
+        titulo = sin[m.end():fin - 1] if fin else ''
+        if re.search(r'\\(?:cortetitulo|newline)\b|\\\\', titulo):
+            continue
+        visible = re.sub(r'\$[^$]*\$', 'xxx', titulo)
+        visible = re.sub(r'\\[a-zA-Z@]+\*?(?:\[[^\]]*\])?', '', visible).replace('{', '').replace('}', '')
+        visible = re.sub(r'\s+', ' ', visible).strip()
+        numero = 7 if m.group(1) in ('section', 'subsection') and not m.group(0).endswith('*{') else 0   # «III.1. »
+        if len(visible) + numero > ANCHO_TITULO[m.group(1)] and re.search(r'[:;?!—]|\.\s', visible[:-1]):
+            largos.append(f'l. {_linea(tex, m.start())} «{visible[:70]}…»')
+    if largos:
+        avisos.append(f'{len(largos)} títulos de más de una línea con «:» (u otro signo) y sin \\cortetitulo: '
+                      'revisar uno a uno dónde cortar (CRITERIOS §2): ' + '; '.join(largos[:8])
+                      + (' …' if len(largos) > 8 else ''))
+
+
+PIZARRA = [r'\bpizarra\b', r'\(\s*(?:ver\s+|v[ée]ase\s+)?(?:la\s+)?caja(?:\s+(?:siguiente|de\s+abajo|inferior|anterior))?\s*\)',
+           r'\bcaja\s+(?:siguiente|de\s+abajo|inferior)\b', r'\bse\s+tacha\b', r'\ben\s+el\s+v[íi]deo\b']
+
+
+def comprobar_pizarra(tema, tex, errores, avisos):
+    """Nada de indicaciones de pizarra o de vídeo en el tema (Víctor, 11/11/2026):
+    «en la pizarra…», «(caja siguiente)», «(ver caja)», «se tacha el 110…». Van
+    a «Instrucciones para el vídeo» de revision.md. Cuentan también las cajas
+    (notaopositor, anotaciones), que salen en el PDF. En la guía del dictamen
+    (1D01), que es un examen escrito, solo avisa."""
+    sin = re.sub(r'(?<!\\)%[^\n]*', lambda m: ' ' * len(m.group(0)), tex)
+    cuerpo_ini = sin.find('\\begin{document}')
+    halladas = []
+    for patron in PIZARRA:
+        for m in re.finditer(patron, sin[cuerpo_ini:], re.I):
+            p = cuerpo_ini + m.start()
+            halladas.append((p, sin[max(0, p - 40):p + len(m.group(0)) + 25].replace('\n', ' ')))
+    vistas, unicas = set(), []
+    for p, contexto in sorted(halladas):
+        if _linea(tex, p) not in vistas:
+            vistas.add(_linea(tex, p))
+            unicas.append((p, contexto))
+    halladas = unicas
+    for p, contexto in halladas[:15]:
+        texto = (f'Indicación de pizarra o de vídeo en el tema (l. {_linea(tex, p)}): «…{contexto.strip()}…» '
+                 '(CRITERIOS §2: va a «Instrucciones para el vídeo» de revision.md)')
+        (avisos if tema.es_dictamen else errores).append(texto)
+    if len(halladas) > 15:
+        (avisos if tema.es_dictamen else errores).append(f'… y {len(halladas) - 15} indicaciones de pizarra más')
+
+
+def comprobar_esquema_enlazado(tex, avisos):
+    """Cada línea del esquema del tema enlaza con su apartado (comun.enlazar_esquema,
+    al construir): avisa de las líneas que no encuentran a qué apartado van."""
+    lineas, titulos = lineas_esquema(tex)
+    sueltas = [tex[a:b].strip()[:50] for a, b, _, d, _ in lineas if d is None]
+    if sueltas:
+        avisos.append(f'{len(sueltas)} líneas del esquema sin apartado al que enlazar (el número no coincide con '
+                      'el orden de los apartados): ' + '; '.join(sueltas[:5]))
+
+
 def verificar(tema):
     errores, avisos, datos = [], [], {}
     tex_ruta = os.path.join(tema.dir, f'{tema.archivo}.tex')
@@ -442,7 +551,7 @@ def verificar(tema):
         for m in re.finditer(patron, tex):
             linea = tex.count('\n', 0, m.start()) + 1
             errores.append(f'{texto} en {tema.archivo}.tex:{linea}: {m.group(0)[:60]}')
-    figuras = [f[1] for f in re.findall(r'\\begin\{(figure|figuracaja)\}(.*?)\\end\{\1\}', tex, re.S)]
+    figuras = [f[1] for f in re.findall(r'\\begin\{(figure|figuracaja|imagen|imagencaja)\}(.*?)\\end\{\1\}', tex, re.S)]
     for i, fig in enumerate(figuras, 1):
         if '\\fuente{' not in fig:
             cap = re.search(r'\\caption\{([^}]*)', fig)
@@ -451,6 +560,10 @@ def verificar(tema):
     comprobar_remisiones(tema, tex, errores, datos)
     comprobar_formulas_separadas(tex, errores)
     comprobar_criterios(tema, tex, errores, avisos, datos)
+    comprobar_graficos_imagenes(tema, tex, errores, datos)
+    comprobar_titulos(tex, avisos)
+    comprobar_pizarra(tema, tex, errores, avisos)
+    comprobar_esquema_enlazado(tex, avisos)
     datos['citas'] = len(re.findall(r'\\(?:foot|auto|text|paren)?cites?\b', tex))
     datos['notas_al_pie'] = len(re.findall(r'\\footnote\b', tex)) + len(re.findall(r'\\footcite\b', tex))
     graficos_usados = set(re.findall(r'\\(?:grafico|graficonota|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', tex))

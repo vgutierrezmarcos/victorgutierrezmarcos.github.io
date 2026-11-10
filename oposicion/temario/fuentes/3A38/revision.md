@@ -122,6 +122,12 @@ Revisión autónoma (5/11/2026). Fase de integración en 2 partes: la **parte 1*
 - Gráficos copiados sin cambios: `rck-gasto`, `rck-impuesto` (3.A.43; aquí `fig:rck-gasto`, allí `fig:rck-fiscal`), `barro` (3.A.44), `demografia-pensiones` (3.A.29). `diamond-pensiones` se dibuja sobre `diamond.tex` del 3.A.29 con sus mismas unidades.
 - Para `pendientes-coherencia.md`: (1) ficha `olg-samuelson-diamond`: añadir `eq:diamond-reparto` y el dato ilustrativo τ ≈ 0,045 (exacto, 0,0451) con los parámetros de `diamond.tex` (CC9); (2) fichas nuevas `chamley-judd` y `reparto-vs-capitalizacion` con este tema de referencia (CC2, CC3); (3) `ramsey-cass-koopmans`, fila del 3.A.38: «resumen» (CC4); (4) `notacion.md`: $\rho_G$ persistencia del gasto, $s_G$, $K^G_t$ y $\alpha_G$ locales, $Z_{t+1}$ local, $r^D_{t-1}$, $\beta_K$ local en la BP (CC5); (5) `multiplicadores-fiscales`: el 3.A.38 resume (CC7); (6) `barro-1990`: lo que añade este tema (CC8).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): I, II y III: \newline → \cortetitulo{}. |
+
 ## Dudas abiertas
 
 Resueltas con la opción recomendada (se pueden cambiar):
@@ -178,3 +184,5 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 - **III.1** (5′30″): pegatina «ni contigo ni sin ti». Escribir $Y=AK^{\alpha}G^{1-\alpha}$, $G=\tau Y$ → $AK$, `eq:barro` y `eq:barro-tau` recuadrada; gráfico imprescindible: `barro` (U invertida con el máximo en $1-\alpha$). El planificador, de palabra.
 - **III.2** (2′30″): `eq:rebelo` en una línea frente a `eq:euler-tauk` (nivel frente a tasa); la jerarquía de la OCDE y la evidencia, de palabra; `inversion-publica-espana`, apoyo.
 - **Conclusión** (1′): sin pizarra, salvo las 4 funciones clave que quedan a la derecha. Empieza por «A modo de conclusión,»; relevancia con los tipos del BCE de 2026; idea final con la cigarra y la hormiga y «nivel frente a tasa». Sin la frase de Joan Robinson.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas. A la izquierda, la pregunta del enganche, la cigarra y la hormiga y las pegatinas, cada una junto a su concepto: «lo que no va en lágrimas va en suspiros» (el efecto riqueza del gasto), «no hay plazo que no se cumpla ni deuda que no se pague» (la equivalencia ricardiana), «dos no riñen si uno no quiere» (el banco central y el multiplicador), «no mates la gallina de los huevos de oro» (\autor{Chamley} y \autor{Judd}), «hijo eres, padre serás; cual hiciste, tal habrás» (el reparto), «la avaricia rompe el saco» (la ineficiencia dinámica) y «ni contigo ni sin ti» (\autor{Barro}). En el centro, los gráficos: las respuestas al gasto en el ciclo real, el plano $(x_t,\pi_t)$, el diagrama de fases con el gasto, la ley de movimiento de \autor{Diamond} con pensiones y la U invertida de \autor{Barro}. A la derecha, recuadradas y conservadas hasta el final, la restricción de recursos con el gasto \eqref{eq:rbc-acumulacion}, la ecuación de \autor{Euler} con el impuesto sobre el capital \eqref{eq:euler-tauk}, el ahorro con reparto \eqref{eq:ahorro-reparto} y el tamaño óptimo del Estado \eqref{eq:barro-tau}.
+

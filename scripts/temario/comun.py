@@ -413,3 +413,162 @@ def licencia_larga(anio, exclusivo=False):
     if exclusivo:
         return f'© {anio} {AUTOR}. Todos los derechos reservados. {AVISO_EXCLUSIVO} {RESERVA_EXCLUSIVO} Condiciones: {CONDICIONES_URL}'
     return f'© {anio} {AUTOR} · Licencia {LICENCIA} ({LICENCIA_URL}): {LICENCIA_PERMISOS}.'
+
+
+# --- Esquema del tema enlazado (Víctor, 11/11/2026) -----------------------------------
+def _fin_llave(texto, i):
+    """texto[i] == '{': posición tras la llave que lo cierra."""
+    nivel, j = 0, i
+    while j < len(texto):
+        if texto[j] == '\\':
+            j += 2
+            continue
+        nivel += (texto[j] == '{') - (texto[j] == '}')
+        if nivel == 0:
+            return j + 1
+        j += 1
+    return len(texto)
+
+
+def _sin_comentarios_igual_largo(texto):
+    """El texto con los comentarios cambiados por espacios (las posiciones no cambian)."""
+    return re.sub(r'(?<!\\)%[^\n]*', lambda m: ' ' * len(m.group(0)), texto)
+
+
+def titulos_tema(texto):
+    """Títulos del cuerpo del tema hasta \\appendix: [{nivel, estrella, titulo, etiqueta, fin}],
+    con nivel 1 (\\section), 2 (\\subsection) o 3 (\\subsubsection); «fin» es la posición
+    tras la llave de cierre del título y «etiqueta», la del \\label que lo sigue (o None)."""
+    limpio = _sin_comentarios_igual_largo(texto)
+    ini = limpio.find('\\end{esquema}')
+    ini = ini if ini >= 0 else limpio.find('\\begin{document}')
+    fin = limpio.find('\\appendix')
+    fin = fin if fin >= 0 else len(limpio)
+    titulos = []
+    niveles = {'section': 1, 'subsection': 2, 'subsubsection': 3}
+    for m in re.finditer(r'\\(section|subsection|subsubsection)(\*?)\s*\{', limpio):
+        if m.start() < limpio.find('\\begin{document}'):
+            continue
+        if m.start() >= fin and m.group(1) != 'section':
+            continue
+        if m.start() >= fin and m.group(2) != '*':
+            continue
+        cierre = _fin_llave(limpio, m.end() - 1)
+        e = re.match(r'\s*(?:\\minutos\{[^}]*\}\s*)?\\label\{([^}]+)\}', limpio[cierre:])
+        titulos.append({'nivel': niveles[m.group(1)], 'estrella': bool(m.group(2)),
+                        'titulo': limpio[m.end():cierre - 1], 'etiqueta': e.group(1) if e else None,
+                        'fin': cierre, 'antes_esquema': m.start() < ini})
+    return titulos
+
+
+def lineas_esquema(texto):
+    """Líneas del esquema del tema con su destino: [(inicio, fin, nivel, destino, clave)].
+    clave es ('intro'|'concl'|'I'|('I', 2)|('I', 2, 1)) y destino, el índice en
+    titulos_tema() (None si no se encuentra)."""
+    limpio = _sin_comentarios_igual_largo(texto)
+    m = re.search(r'\\begin\{esquema\}(?:\[[^\n]*\])?(.*?)\\end\{esquema\}', limpio, re.S)
+    if not m:
+        return [], []
+    titulos = titulos_tema(texto)
+    numerados = [i for i, t in enumerate(titulos) if t['nivel'] == 1 and not t['estrella']]
+    sin_numero = [i for i, t in enumerate(titulos) if t['nivel'] == 1 and t['estrella']]
+
+    def hijos(padre, nivel):
+        """Índices de los títulos de ese nivel bajo el título padre (hasta el siguiente de su nivel)."""
+        sal = []
+        for k in range(padre + 1, len(titulos)):
+            if titulos[k]['nivel'] < nivel:
+                break
+            if titulos[k]['nivel'] == nivel and not titulos[k]['estrella']:
+                sal.append(k)
+        return sal
+    lineas, actual, actual_sub = [], None, None
+    pos = m.start(1)
+    for trozo in re.split(r'(\\\\(?:\[[^\]]*\])?)', m.group(1)):
+        ini, pos = pos, pos + len(trozo)
+        if trozo.startswith('\\\\') or not trozo.strip():
+            continue
+        cuerpo = trozo
+        sangria = re.match(r'\s*((?:\\hspace\*?\{([\d.]+)em\}\s*)*)', cuerpo)
+        em = sum(float(x) for x in re.findall(r'\\hspace\*?\{([\d.]+)em\}', sangria.group(1)))
+        nivel = 1 if em == 0 else (2 if em < 2.5 else 3)
+        texto_l = cuerpo[sangria.end():]
+        destino, clave = None, None
+        ref = re.match(r'\\ref\{([^}]+)\}', texto_l)
+        if texto_l.lstrip().startswith('\\textbf'):
+            continue                                    # título del tema
+        if ref:
+            destino = next((i for i, t in enumerate(titulos) if t['etiqueta'] == ref.group(1)), None)
+            clave = ref.group(1)
+            if destino is not None:
+                if titulos[destino]['nivel'] == 1:
+                    actual = destino
+                elif titulos[destino]['nivel'] == 2:
+                    actual_sub = destino
+        elif nivel == 1:
+            r = re.match(r'([IVX]+)\.\s', texto_l)
+            palabra = re.match(r'([A-ZÁÉÍÓÚ][a-záéíóúñ]+)', texto_l)
+            if r:
+                n = {'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5, 'VI': 6, 'VII': 7, 'VIII': 8}.get(r.group(1))
+                clave = r.group(1)
+                destino = numerados[n - 1] if n and n <= len(numerados) else None
+                actual, actual_sub = destino, None
+            elif palabra:
+                clave = palabra.group(1)
+                destino = next((i for i in sin_numero if titulos[i]['titulo'].strip().lower()
+                                .startswith(palabra.group(1).lower())), None)
+                actual, actual_sub = None, None
+        else:
+            r = re.match(r'(\d+)\.\s', texto_l)
+            if r and actual is not None:
+                n = int(r.group(1))
+                if nivel == 2:
+                    h = hijos(actual, 2)
+                    destino = h[n - 1] if n <= len(h) else None
+                    actual_sub = destino
+                    clave = (titulos[actual]['titulo'][:20], n)
+                elif actual_sub is not None:
+                    h = hijos(actual_sub, 3)
+                    destino = h[n - 1] if n <= len(h) else None
+                    clave = (titulos[actual_sub]['titulo'][:20], n)
+            if not r:
+                continue                                # continuación de la línea anterior o letras
+        lineas.append((ini, pos, nivel, destino, clave))
+    return lineas, titulos
+
+
+def enlazar_esquema(texto):
+    """Cada línea del esquema del tema enlaza con su apartado (PDF, web y Word):
+    «I. Título\\esqtiempo{7}» → «\\esqenlace{sec:x}{I. Título}\\esqtiempo{7}». El
+    destino se busca por el orden (I, II…; 1, 2… bajo cada uno; Introducción y
+    Conclusión por su nombre) o por el \\ref{} de la línea; si el apartado no
+    tiene \\label, se le pone uno (esq:…). Solo se cambia la copia de _trabajo/:
+    la fuente no se toca. Las líneas ya enlazadas o sin destino se quedan igual."""
+    lineas, titulos = lineas_esquema(texto)
+    if not lineas:
+        return texto
+    nuevas = {}             # índice de título → etiqueta que hay que añadir
+    cambios = []            # (ini, fin, nuevo)
+    for ini, fin, nivel, destino, clave in lineas:
+        if destino is None:
+            continue
+        trozo = texto[ini:fin]
+        if '\\esqenlace' in trozo or '\\hyperref' in trozo or '\\hyperlink' in trozo:
+            continue
+        t = titulos[destino]
+        etiqueta = t['etiqueta'] or nuevas.get(destino)
+        if not etiqueta:
+            etiqueta = f'esq:{destino}'
+            nuevas[destino] = etiqueta
+        sangria = re.match(r'\s*(?:\\hspace\*?\{[\d.]+em\}\s*)*', trozo).end()
+        cola = re.search(r'(\s*\\esqtiempo\{[^}]*\}\s*|\s*)$', trozo).start()
+        contenido = trozo[sangria:cola]
+        # \ref{x}\enspace Título → el número sigue siendo \ref (dentro de un enlace no se anida)
+        contenido = re.sub(r'^\\ref\{([^}]+)\}', r'\\ref*{\1}', contenido)
+        cambios.append((ini + sangria, ini + cola, f'\\esqenlace{{{etiqueta}}}{{{contenido}}}'))
+    for destino, etiqueta in nuevas.items():
+        p = titulos[destino]['fin']
+        cambios.append((p, p, f'\\label{{{etiqueta}}}'))
+    for ini, fin, nuevo in sorted(cambios, key=lambda c: c[0], reverse=True):
+        texto = texto[:ini] + nuevo + texto[fin:]
+    return texto

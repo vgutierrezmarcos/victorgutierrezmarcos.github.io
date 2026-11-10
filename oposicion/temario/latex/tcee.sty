@@ -19,7 +19,10 @@
 % Órdenes propias:
 %   \autor{Marshall}, \concepto{…}, \vertema{3.A.9}, \vect{x}, \fuente{…},
 %   \grafico[ancho]{nombre}; cajas notaopositor, anotaciones, ideaclave y
-%   esquema; figuracaja y tablacaja (gráfico o tabla dentro de una caja).
+%   esquema; figuracaja y tablacaja (gráfico o tabla dentro de una caja);
+%   imagen e imagencaja (foto o fichero pegado: «Imagen n», numeración aparte);
+%   \cortetitulo (punto de corte de un título largo; espacio en web y Word);
+%   \esqenlace (lo pone construir-tema.py en el esquema: no se escribe a mano).
 %   \minutos{2,5}   tras el título de un apartado; entrada decimal, se ve 2′30″.
 %   \tiempo{2,5}    minutos en el texto: «introducción, \tiempo{2,5}» → 2′30″.
 %   \funcionclave{C(\vect{w},q)=\min_{\vect{z}}\{\vect{w}\cdot\vect{z}:F(\vect{z})\geq q\}}
@@ -180,24 +183,42 @@
 }
 
 % --- Apartados ---------------------------------------------------------------
-% Cada nivel se distingue a simple vista (y lo mismo en la web y en Word):
-% \section       → banda morada con texto blanco (INTRODUCCIÓN, I. …)
-% \subsection    → I.1. grande, morado, negrita y subrayado con una raya fina
-% \subsubsection → I.1.1. sangrado 1,2 em, morado, cursiva (sin negrita)
-% \paragraph     → sangrado 2,4 em, cursiva gris oscura, sin número
+% Jerarquía de los títulos (Víctor, 11/11/2026): de más a menos peso, sin que un
+% nivel inferior destaque más que uno superior, y lo mismo en la web (tema.css)
+% y en Word (crear-reference-docx.py):
+% 1 \section       → banda morada, versales blancas en negrita (INTRODUCCIÓN, I. …)
+% 2 \subsection    → I.1. grande, morado, negrita y subrayado con una raya fina
+% 3 \subsubsection → I.1.1. tamaño del texto, morado, negrita; sangría 1,2 em
+% 4 \paragraph     → sin número, morado oscuro, negrita cursiva; sangría 2,4 em
+% 5 \subparagraph  → sin número, morado oscuro, cursiva; sangría 3,6 em
+% (los bloques a), b)… e i), ii)… de un modelo llevan la letra a mano: CRITERIOS)
+% Todos los títulos van sin justificar y sin cortar palabras con guion: si no
+% caben en una línea, se cortan entre palabras, y la segunda línea queda
+% sangrada bajo el texto (no bajo el número). Para elegir el punto de corte
+% (tras «:», antes de «y»…): \cortetitulo, que en el PDF es un salto de línea y
+% en los marcadores, la web, el Word y el esquema un espacio:
+%   \subsection{Los hechos de Kaldor:\cortetitulo{} ¿los reproduce el modelo?}
+% (\newline hace lo mismo en el PDF, pero en Word es un salto de línea.)
 % Ningún título puede quedar al pie de una página: antes de cada uno se pide
 % sitio para el título y unas líneas de texto (\needspace) y los minutos del
-% cante no permiten salto. Tampoco puede haber salto entre dos títulos seguidos.
+% cante no permiten salto. Tampoco puede haber salto entre dos títulos seguidos,
+% y el segundo de dos títulos seguidos no añade su espacio de antes (\tcee@antes).
 \setcounter{secnumdepth}{3}
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\DeclareRobustCommand{\cortetitulo}{\ifvmode\else\newline\fi}
+% Sin guiones ni justificado en los títulos
+\newcommand{\tcee@singuiones}{\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
+% Espacio antes de un título: el normal, o casi nada si sigue a otro título
+% (\if@nobreak: lo deja activo el título anterior hasta el primer párrafo)
+\newcommand{\tcee@antes}[1]{\if@nobreak 0.25em\else #1\fi}
 \titleformat{\section}[block]{\normalfont}{}{0pt}{\tcee@banda}
 % Si el título no cabe en una línea, la segunda va sangrada bajo el texto (no
-% bajo el número) y sin justificar; para cortar en un sitio concreto: \newline.
+% bajo el número) y sin justificar
 \newcommand{\tcee@banda}[1]{%
   \colorbox{tceemorado}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-    \large\bfseries\color{white}\raggedright
+    \large\bfseries\color{white}\tcee@singuiones
     \setbox0\hbox{\thesection.\ }\hangindent=\wd0\hangafter=1
     \strut\box0\MakeUppercase{#1}\strut}}}
 % Introducción y Conclusión: \section*{Introducción}, banda sin número. También
@@ -205,21 +226,21 @@
 \titleformat{name=\section,numberless}[block]{\normalfont}{}{0pt}{\tcee@bandasin}
 \newcommand{\tcee@bandasin}[1]{\phantomsection\addcontentsline{toc}{section}{#1}%
   \colorbox{tceemorado}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-    \large\bfseries\color{white}\raggedright\strut\MakeUppercase{#1}\strut}}}
-\titlespacing*{\section}{0pt}{1.4em}{0.8em}
-\titleformat{\subsection}{\normalfont\large\bfseries\color{tceemorado}\nobreak}{\thesubsection.}{0.5em}{}
+    \large\bfseries\color{white}\tcee@singuiones\strut\MakeUppercase{#1}\strut}}}
+\titlespacing*{\section}{0pt}{\tcee@antes{1.4em}}{0.8em}
+\titleformat{\subsection}[hang]{\normalfont\large\bfseries\color{tceemorado}\nobreak\tcee@singuiones}{\thesubsection.}{0.5em}{}
   [\nobreak\vspace{-0.15em}{\color{tceemorado}\nobreak\titlerule[0.5pt]}\nobreak]
-\titlespacing*{\subsection}{0pt}{1.3em}{0.5em}
-\titleformat{\subsubsection}{\normalfont\itshape\color{tceemorado}\nobreak}{\upshape\thesubsubsection.}{0.5em}{}
-\titlespacing*{\subsubsection}{1.2em}{0.9em}{0.3em}
-\titleformat{\paragraph}{\normalfont\itshape\color{tceemoradooscuro}\nobreak}{}{0pt}{}
-\titlespacing*{\paragraph}{2.4em}{0.7em}{0.2em}
+\titlespacing*{\subsection}{0pt}{\tcee@antes{1.3em}}{0.5em}
+\titleformat{\subsubsection}[hang]{\normalfont\bfseries\color{tceemorado}\nobreak\tcee@singuiones}{\thesubsubsection.}{0.5em}{}
+\titlespacing*{\subsubsection}{1.2em}{\tcee@antes{0.9em}}{0.3em}
+\titleformat{\paragraph}[hang]{\normalfont\bfseries\itshape\color{tceemoradooscuro}\nobreak\tcee@singuiones}{}{0pt}{}
+\titlespacing*{\paragraph}{2.4em}{\tcee@antes{0.7em}}{0.2em}
 % Niveles 4 y 5 para la estructura de cada modelo (CRITERIOS, «Estructura de un
 % modelo»): \paragraph{a) Idea}, \paragraph{b) Modelo} y dentro
 % \subparagraph{i) Supuestos}, \subparagraph{ii) Desarrollo}… (letras a mano,
 % para que salgan igual en la web y en Word).
-\titleformat{\subparagraph}{\normalfont\small\bfseries\color{tceemoradooscuro}\nobreak}{}{0pt}{}
-\titlespacing*{\subparagraph}{3.6em}{0.5em}{0.15em}
+\titleformat{\subparagraph}[hang]{\normalfont\itshape\color{tceemoradooscuro}\nobreak\tcee@singuiones}{}{0pt}{}
+\titlespacing*{\subparagraph}{3.6em}{\tcee@antes{0.5em}}{0.15em}
 % Un título que sigue directamente a otro (\if@nobreak) no pide sitio: el
 % \Needspace forzaría el salto justo entre los dos. Así nunca hay salto de
 % página entre un título y lo que le sigue, aunque sea otro título: si el
@@ -307,6 +328,12 @@
 % solo en la línea de la introducción, de cada apartado y de la conclusión:
 % «I. Título\esqtiempo{11}\\». Un título por línea (CRITERIOS §2).
 \newcommand{\esqtiempo}[1]{\hfill{\scriptsize\itshape\color{tceegris}\tceemmss{#1}}}
+% Cada línea del esquema enlaza con su apartado (Víctor, 11/11/2026). No hay
+% que escribirlo: construir-tema.py (comun.enlazar_esquema) lo añade en la copia
+% de _trabajo/, por el orden de las líneas (I., II.…; 1., 2.… bajo cada una;
+% Introducción y Conclusión por su nombre) o por el \ref{} con que empiezan:
+% «\esqenlace{sec:x}{I. Título}\esqtiempo{7}». El texto conserva su color.
+\newcommand{\esqenlace}[2]{\begingroup\hypersetup{linkcolor=black}\hyperref[#1]{#2}\endgroup}
 
 % --- Figuras y tablas ---------------------------------------------------------
 % Título encima («Gráfico 1.– …») y fuente obligatoria debajo con \fuente{…}.
@@ -314,6 +341,16 @@
   justification=centering,position=top,skip=4pt}
 \captionsetup[figure]{name=Gráfico}
 \captionsetup[table]{name=Tabla}
+% Gráficos e imágenes se numeran por separado (Víctor, 11/11/2026):
+%   figure → «Gráfico n»: todo lo dibujado (TikZ, pgfplots, infografías propias,
+%            es decir, los graficos/*.pdf que salen de un graficos/*.tex);
+%   imagen → «Imagen n»: solo archivos pegados tal cual (jpg, png, o un pdf sin
+%            .tex fuente: fotos, capturas, láminas, figuras de otros).
+% Se escriben igual (\caption, \label{img:…}, \grafico, \fuente) y se citan con
+% «imagen~\ref{img:…}». Dentro de una caja: imagencaja (como figuracaja).
+% En la web y en Word, construir-tema.py las convierte en figuras con la marca
+% tceeimagen y tcee.lua les pone «Imagen n.–».
+\DeclareCaptionType[fileext=loi,placement={htbp}]{imagen}[Imagen][Lista de imágenes]
 \newcommand{\fuente}[1]{\par\vspace{2pt}{\centering\footnotesize\itshape Fuente: #1\par}}
 \newcommand{\grafico}[2][0.75\textwidth]{%
   \includegraphics[width=#1]{#2}}
@@ -331,6 +368,7 @@
 \newcommand{\tcee@fincaja}{\end{minipage}\par\addvspace{6pt}}
 \newenvironment{figuracaja}{\tcee@encaja{figure}}{\tcee@fincaja}
 \newenvironment{tablacaja}{\tcee@encaja{table}}{\tcee@fincaja}
+\newenvironment{imagencaja}{\tcee@encaja{imagen}}{\tcee@fincaja}
 
 % --- Notas al pie ---------------------------------------------------------------
 \renewcommand{\footnoterule}{{\color{tceemorado}\hrule width 0.3\textwidth height 0.4pt}\vspace{3pt}}
@@ -371,7 +409,7 @@
 % En los marcadores del PDF, el \newline con que se cortan los títulos largos
 % es un espacio (si no, hyperref lo quita y pega las palabras: «empresasy») y
 % el número va seguido de punto y espacio
-\pdfstringdefDisableCommands{\def\newline{ }\def\numberline#1{#1.\ }}
+\pdfstringdefDisableCommands{\def\newline{ }\def\cortetitulo{ }\def\numberline#1{#1.\ }}
 % Metadatos de la licencia (XMP: Adobe y los buscadores los leen). El título,
 % el asunto y las palabras clave los pone scripts/metadatos-pdf.py al publicar.
 \tcee@licenciaxmp

@@ -145,6 +145,12 @@ Todo el tema es nuevo (redactado desde cero con las fichas del canon y los manua
 - **Cambios opcionales a temas revisados** (para `pendientes-coherencia.md`): 3.A.21, nota de l. 695, «equilibrio perfecto en subjuegos» → «equilibrio de Nash perfecto en subjuegos»; 3.A.17, l. 1075, añadir `\vertema{3.A.14}` tras la subasta de Demsetz; 3.A.21, l. 778, principio de revelación con el enunciado común (ya anotado).
 - **Contradicciones con otros temas** (no se tocan): 4.A.19 (Word, numeración antigua) llama «holandesa» a la de precio único: es la jerga del Tesoro, opuesta a la teoría (nota al pie en III.3; su contenido es del 4.B.26); 3.A.19 repite la teoría de juegos en su anexo 1, desarrolla el Cournot bayesiano (aquí, solo remisión desde el 20/10), usa φ para la función de reacción (canon R_i) y remite *Theory of Games* al 3.A.10; 3.A.18 (nota 25) remite la teoría de juegos al 3.A.10; 3.A.27 desarrolla Nash y Rubinstein en extenso con otra notación; 3.B.7 y 3.B.8 remiten Johnson (1953) al 3.A.19; 4.A.15 remite la clemencia al 3.A.16; 3.A.6, 3.A.36, 3.A.41 y 3.A.44 remiten los juegos repetidos de Barro-Gordon al 3.A.17 o 3.A.19.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 25 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): nuevo corte en II.2 tras «información incompleta:»; \newline de I y II → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 Mientras Víctor no conteste en el artifact, se aplica la opción recomendada de cada duda.
@@ -205,3 +211,5 @@ El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada
 ### Cambios del 21/10/2026 (anexo E: un gráfico o una tabla por juego)
 
 - Anexo `anexo:clasicos`: cada juego lleva ya su matriz, árbol o gráfico, pegado a él y citado en el texto: pares o nones (`tab:pares-nones` y `fig:pares-nones`, EN en (1/2, 1/2); la inspección remite a `tab:inspeccion` y `fig:inspeccion`), Cortés (`fig:quemar-naves`, árbol con ENPS y pagos ilustrativos), cadena de tiendas (`fig:cadena-tiendas`, con los pagos de Selten, y `fig:cadena-induccion`, de la ciudad 20 a la 1), ultimátum (`fig:ultimatum`), cerveza o quiche (`fig:cerveza-quiche`), Salomón (`tab:salomon`), golfo de México (`fig:maldicion-ganador`), jarra de monedas (`tab:jarra`), 3G (`tab:subastas-3g`; 650 y 615 euros por habitante para el Reino Unido y Alemania, de la tabla 1 de Klemperer, 2002: conviene comprobarlos) y subasta alemana de 1999 (`tab:subasta-alemana`). Gráficos nuevos en `graficos-pedidos.json`.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
+

@@ -1,7 +1,10 @@
-% Externalidades del capital en tasas de crecimiento: curva de ahorro
-% s f(k)/k = sA k^(alfa+eta-1) frente a n+delta = 1,3 (y = 1 cm en cada panel).
+% Externalidades del capital (Romer, 1986, con E = K y población L constante)
+% en tasas de crecimiento: curva de ahorro s f(k)/k = sAL^eta k^(alfa+eta-1)
+% frente a delta = 1,3 (y = 1 cm en cada panel).
+% Cada panel entra en su capa (pasos 1-3: paneles a, b y c), para que el texto
+% los explique uno a uno; externalidades-paso1/2.tex los muestran recortados.
 % (a) alfa+eta = 0,5: 1,8385 k^(-0,5); corta en k* = (1,8385/1,3)^2 = 2,0 (estable).
-% (b) alfa+eta = 1: horizontal sA = 2,3; gamma = 2,3 - 1,3 = 1,0 para todo k.
+% (b) alfa+eta = 1: horizontal sAL^(1-alfa) = 2,3; gamma = 2,3 - 1,3 = 1,0 para todo k.
 % (c) alfa+eta = 1,8: 0,7466 k^(0,8); corta en k* = (1,3/0,7466)^(1/0,8) = 2,0
 %     (inestable).
 % Autor: Víctor Gutiérrez Marcos
@@ -13,23 +16,25 @@
     titulo/.style={font=\small\bfseries,anchor=south west},
     tasa/.style={<->,thick,tceegris}]
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
-  \path (-1.2,-0.6) rectangle (18.6,3.9);
-  % 1: ejes de los 3 paneles y curvas de depreciación n+delta
-  \capa{1}{\foreach \dx in {0,6.6,13.2}{
-      \begin{scope}[xshift=\dx cm]
-        \ejes{$k$}{$\gamma_k$}{4.4}{3.3}
-        \draw[curva3] (0,1.3) node[left,text=black] {$n+\delta$} -- (4.0,1.3);
-      \end{scope}}}
-  % 2: panel (a), alfa+eta < 1: curva decreciente, k* estable
-  \capa{2}{\draw[curva1] plot[domain=0.3756:4.0,samples=100] (\x,{ga(\x)})
-      node[etiqueta,right,text=tceemorado] {$sAk^{\alpha+\eta-1}$};
+  % (los pasos del PDF lo recortan al panel que muestran: \tceeancho)
+  \providecommand{\tceeancho}{18.6}
+  \path (-1.2,-0.6) rectangle (\tceeancho,3.9);
+  % 1: panel (a), alfa+eta < 1: ejes, delta, curva decreciente, k* estable
+  \capa{1}{\ejes{$k$}{$\gamma_k$}{4.4}{3.3}
+    \draw[curva3] (0,1.3) node[left,text=black] {$\delta$} -- (4.0,1.3);
+    \node[titulo,text depth=0.25ex] at (-0.9,3.45) {(a) $\alpha+\eta<1$: Solow};
+    \draw[curva1] plot[domain=0.3756:4.0,samples=100] (\x,{ga(\x)});
+    \node[etiqueta,anchor=west,text=tceemorado] at (0.75,2.75) {$sAL^{\eta}k^{\alpha+\eta-1}$};
     \node[punto] (Ea) at (2.0,1.3) {};
     \draw[guia] (Ea) -- (2.0,0) node[below,text=black] {$k^*$};
     \draw[flecha] (0.4,0) -- (1.7,0);
     \draw[flecha] (3.7,0) -- (2.3,0);}
-  % 3: panel (b), alfa+eta = 1: horizontal sA y distancia gamma constante
-  \capa{3}{\begin{scope}[xshift=6.6cm]
-    \draw[curva1] (0,2.3) node[left,text=black] {$sA$} -- (4.0,2.3);
+  % 2: panel (b), alfa+eta = 1: horizontal sAL^(1-alfa) y distancia gamma constante
+  \capa{2}{\begin{scope}[xshift=6.6cm]
+    \ejes{$k$}{$\gamma_k$}{4.4}{3.3}
+    \draw[curva3] (0,1.3) node[left,text=black] {$\delta$} -- (4.0,1.3);
+    \node[titulo,text depth=0.25ex] at (-0.9,3.45) {(b) $\alpha+\eta=1$: $AK$};
+    \draw[curva1] (0,2.3) node[left,text=black] {$sAL^{1-\alpha}$} -- (4.0,2.3);
     \draw[tasa] (1.2,1.3) -- (1.2,2.3);
     \draw[tasa] (3.0,1.3) -- (3.0,2.3);
     \node[etiqueta,right,text=black] at (3.05,1.8) {$\gamma$};
@@ -37,18 +42,17 @@
     \draw[flecha] (0.4,0) -- (1.6,0);
     \draw[flecha] (2.2,0) -- (3.4,0);
   \end{scope}}
-  % 4: panel (c), alfa+eta > 1: curva creciente, k* inestable
-  \capa{4}{\begin{scope}[xshift=13.2cm]
+  % 3: panel (c), alfa+eta > 1: curva creciente, k* inestable
+  \capa{3}{\begin{scope}[xshift=13.2cm]
+    \ejes{$k$}{$\gamma_k$}{4.4}{3.3}
+    \draw[curva3] (0,1.3) node[left,text=black] {$\delta$} -- (4.0,1.3);
+    \node[titulo,text depth=0.25ex] at (-0.9,3.45) {(c) $\alpha+\eta>1$: explosivo};
     \draw[curva1] plot[domain=0:4.0,samples=100] (\x,{gc(\x)})
-      node[etiqueta,right,text=tceemorado] {$sAk^{\alpha+\eta-1}$};
+      node[etiqueta,left,text=tceemorado] {$sAL^{\eta}k^{\alpha+\eta-1}$};
     \node[punto] (Ec) at (2.0,1.3) {};
     \draw[guia] (Ec) -- (2.0,0) node[below,text=black] {$k^*$};
     \draw[flecha] (1.7,0) -- (0.4,0);
     \draw[flecha] (2.3,0) -- (3.7,0);
   \end{scope}}
-  % 5: títulos de los paneles
-  \capa{5}{\node[titulo,text depth=0.25ex] at (-0.9,3.45) {(a) $\alpha+\eta<1$: Solow};
-    \node[titulo,text depth=0.25ex] at (5.7,3.45) {(b) $\alpha+\eta=1$: $AK$};
-    \node[titulo,text depth=0.25ex] at (12.3,3.45) {(c) $\alpha+\eta>1$: explosivo};}
 \end{tikzpicture}
 \end{document}

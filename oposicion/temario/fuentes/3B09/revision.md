@@ -154,6 +154,12 @@ Título oficial: «Comercio internacional y crecimiento económico. Especial ref
 |---|---|
 | «El párrafo del modelo de Solow en la página 17 sepáralo en 1 párrafo con varios subpárrafos con indentación para que sea más fácil de seguir idea por idea.» | II.1.1 b): la viñeta del modelo de Solow conserva la idea principal (sube el nivel, no la tasa) y debajo cuelgan 3 subviñetas (efecto mayor que el estático, efecto de acumulación a medio plazo de Baldwin (1992), mercado único de Baldwin (1989)); las 2 primeras con un 3.er nivel, una idea por línea. Mismo texto y citas. |
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 6 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): anexo B: «el modelo centro-periferia:» + corte (la coma pasa a dos puntos), con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## 7. Dudas abiertas
 
 - **D1 (enganche)**: se usa Corea del Sur, como decidió el coordinador; Ghana sale de la propuesta K1 porque su dato no se comprobó. Las cifras de Corea tienen una sola fuente (Banco Mundial).
@@ -179,6 +185,8 @@ Título oficial: «Comercio internacional y crecimiento económico. Especial ref
 - **Descartados**: el libro de Grossman y Helpman y el artículo de 2015 enlazados como `file:///` (el artículo conserva su DOI en el `.bib`).
 
 ## 8. Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: 3 columnas: ecuación de importaciones y tabla de sesgos a la izquierda; gráficos en el centro; mecanismos de Grossman-Helpman a la derecha.
 
 - **Introducción** (2′30″, `modo: guion`, sin pizarra): tras el título, la pregunta del huevo y la gallina con Corea (2,6 % → 44,4 % de exportaciones sobre el PIB; renta por habitante × 36); la relevancia con el gráfico `fig:comercio-pib-mundial` como **apoyo**; la estructura con los 2 bloques. La idea final de la conclusión tiene que retomar el dicho y responderlo (parte 2).
 - **Bloque I** (11′), pizarra en 3 columnas:

@@ -145,6 +145,12 @@ Fuentes: `propuestas-contenido.md` (C1-C24) y `propuestas-coherencia.md` (K2-K20
 
 - **Control de calidad (21/10/2026)**: 15 correcciones aplicadas. Fórmulas con `\left`/`\right` y `\text{si }i\text{ es pivotal}` para el Word. Notas al opositor con el reparto en viñetas y la Opinión en 3 subviñetas. Sin paréntesis anidados en las citas (Nobel de 2007, Simon, Samuelson 1955). Rótulos de los 4 agentes en cursiva. En el `.bib`, Wolf, Jr. y Coglianese (*ProMarket*). Gráficos corregidos: en `externalidad-intervencion`, $t^*$ fuera de la línea de $\overline q$ y las áreas bajo CMgE como $B'$, $C'$, $D'$ y $E'$, con su equivalencia en el pie; en `provision-privada`, las etiquetas fuera de las rectas; en `bowen`, un hilo que une $p^A_G+p^B_G=\mathrm{CMg}_G$ con $G^*$. `construir-tema.py 3A23` completo y `verificar-tema.py 3A23`: 0 errores (2 avisos, guion y vídeo de la entrega 3).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 4 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): anexos: cortes antes de «en el 2×2×2×2» y de «como equilibrio de Nash»; «cómo Elinor Ostrom resolvió la tragedia de los comunes» → «Elinor Ostrom y la tragedia de los comunes» (1 línea); \newline de I → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 - **Stiglitz (fallos del Estado)**: las 4 razones se citan de Stiglitz y Rosengard (2015) sin capítulo ni página; en ediciones anteriores están en el capítulo 1 («government failure»). Conviene comprobar la página si se quiere citar con precisión.
@@ -189,6 +195,7 @@ Se comparan las URL del Word original con las de `3A23.tex` y `3A23.bib` (CRITER
 
 - **Un único dibujo para el impuesto y el estándar** (Víctor, 21/10/2026): aunque el documento tenga 2 gráficos distintos (`externalidad-pigou` y `externalidad-estandar`), el guion debe usar un solo dibujo, `externalidad-intervencion` (que se conserva en `graficos/` solo para el vídeo), que crece por capas: base → áreas → $\mathrm{CMgP}+t^*$ y recaudación → $\overline q$. Coase se cuenta sobre ese mismo dibujo, sin borrarlo.
 - El cap and trade se cuenta con `cap-and-trade-instalaciones` en la pizarra (3 pasos) y el esquema y Montgomery como apoyo.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Retoques de coherencia del 21/10/2026
 

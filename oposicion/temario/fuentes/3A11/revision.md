@@ -239,6 +239,12 @@ Se aplican al tema ya revisado los criterios generales de Víctor del 16/10/2026
 
 9. **Enganche y cierre con la pregunta del vídeo** (Víctor, 16/10/2026: el enganche es la pregunta o el refrán y la idea final lo retoma, también en el documento). El vídeo ya abría con «¿Puede una sola función resumir todo lo que una empresa sabe hacer?»; esa pregunta encabeza ahora la primera viñeta del Enganche, delante de la fábrica de alfileres de Smith (sin alargarla), y la Idea final la retoma y la responde: resume lo que la empresa puede producir, no lo que producirá ni cómo se organiza por dentro; es el mapa de lo técnicamente posible. Lo mismo, en corto, en el Enganche y la Idea final de la ficha de repaso; en `guion-cante.md` se quita la aclaración de que la pregunta era propia del vídeo. El dato del enganche (Smith, 1776) es una cita clásica, no una estadística desfasada, y se mantiene; si Víctor prefiere un hecho actual (p. ej., productividad de una fábrica automatizada), haría falta una fuente. PDF: 50 páginas (tema 40, anexos 6, bibliografía 4); `verificar-tema.py`: 0 errores, 0 avisos; ficha: 4 páginas con letra de 9 pt.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» fuera (1 frase). Títulos: ya cortados en buen punto; `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
 ## Dudas abiertas
 
 Resueltas el 13/10/2026 y quitadas de esta lista: el orden de I.1 e I.2 (se vuelve al de Víctor), el autor de las etapas (Cassels, 1936, no Cassel, 1918), Hesíodo y Jenofonte (con Lowry, 1987) y el segundo nivel de III (ahora III.1 la caja de Edgeworth y III.2 la producción conjunta). El punto 13 de la versión anterior (nombres de preparadores) también queda resuelto por la instrucción de Víctor de quitarlos del tema.

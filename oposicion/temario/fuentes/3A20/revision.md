@@ -407,6 +407,12 @@ como elaboración propia.
   - 4.B.15 escribe t = a + b(C − C^a) y remite al «3.A.15» antiguo.
   - 3.A.6, 3.A.36 y 3.A.41 duplican «[ver tema 3.A.20]».
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 5 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de I y III → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 **Nuevas (23/10/2026), para que Víctor decida o confirme**:
@@ -529,6 +535,7 @@ aprueban antes de publicar, revisar los umbrales del IHH; las directrices de EE.
   - como apoyo: `separacion-vertical`, `price-cap`, `peltzman`, las tablas del 1TFEB, de los
     motivos para regular, de lo que observa el regulador y de instrumentos;
   - solo en el documento: `ciclo-politico`, `niskanen` y el grabado del Leviatán (anexo).
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Comentarios de Víctor (9/11/2026, 2.ª tanda)
 

@@ -322,6 +322,12 @@ No hay cifras nuevas. Se comprueban referencias: Jaimovich y Rebelo (2009), *AER
   - punto 9: **3.A.11** usa la misma definición de elasticidad de sustitución y la misma CES (coherente); el error de «función de producción» en un contexto de utilidad ya está corregido en 3.A.8. 3.A.10 y 3.A.18 usan $\sigma$ con el mismo sentido que 3.A.8;
   - las **preferencias KPR, GHH y JR** se remiten a 3.A.29: si allí no están, conviene llevarlas cuando se revise ese tema.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» fuera; anexo A «explicar en la pizarra» → «explicar» (2 frases). Títulos: anexo D «…sistemas completos de ecuaciones de demanda» → «…sistemas completos de demanda»; anexo F «La teoría de la demanda de características de Lancaster» → «La demanda de características de Lancaster»; anexo A: corte antes de «del problema»; I y II (fijados por Víctor) sin cambio de texto, `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
 ## Dudas abiertas
 
 Ordenadas por prioridad. Ninguna impide compilar ni publicar el tema; las de prioridad alta afectan a lo que se cita como dato o como fuente.

@@ -225,3 +225,13 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
   - Nota al pie en el primer Kalecki del bloque III: su pronunciación en Forvo (en el original, enlazada desde su nombre en la tabla de retratos). Forvo bloquea robots y no se ha podido comprobar que la búsqueda dé resultado.
   - Llegados del 3.A.5 original, con el contenido que ahora está aquí: en la fuente de la figura de los regímenes de Malinvaud, el esquema de Wikimedia Commons del que salía la imagen del original; nota al pie con la pronunciación de Leijonhufvud en Forvo (mismo aviso).
 - **Trasladados con su contenido al 3.A.5**: la curva de Phillips ya no está en este tema. Phillips (1958) y Samuelson y Solow (1960), fuentes de las imágenes del original, se citan allí con DOI y URL; la conferencia Nobel de Akerlof (2001), con su frase sobre la curva de Phillips, se ha restaurado en el 3.A.5.
+
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Reparto: quitado el plan de pizarra del reparto del cante (zonas izquierda/centro/derecha, qué se borra y qué se queda); se conservan tiempos, refranes, gráficos y funciones clave (2 frases). Títulos: II: corte tras «Keynes:» (antes caía en «formalización y / política»); anexo A: corte tras la coma. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
+## Instrucciones para el vídeo
+
+- Pizarra: izquierda refrán y 6 pegatinas; centro gráficos; derecha árbol keynesiano y demanda efectiva y preferencia por la liquidez recuadradas. (11/11/2026)

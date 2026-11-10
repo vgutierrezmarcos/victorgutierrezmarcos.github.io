@@ -1,0 +1,22 @@
+% Sendas de consumo y perfil de renta a lo largo de la vida (t de 0 a T).
+% Renta con forma de joroba (ciclo vital): y(t) = 0,6 + 3,2·sin(pi·t/10)^1,5 en [0, 10].
+% Sendas de consumo con la misma riqueza aproximada, según r frente a rho:
+%   r > rho: crece (1,55·e^{0,07 t}); r = rho: constante (2,25); r < rho: decrece (2,95·e^{-0,055 t}).
+% Lo que importa es la forma: la senda no copia la renta; su pendiente depende de r - rho.
+% Rehecho en TikZ a partir de un esquema habitual del ciclo vital (no copia ningún dibujo ajeno).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.55]
+  % 1: ejes: tiempo y renta o consumo
+  \capa{1}{\ejes{$t$}{$C_t,\ Y_t$}{11.2}{5}}
+  \capa{1}{\node[etiqueta,below] at (10,0) {$T$};}
+  % 2: renta con perfil de ciclo vital
+  \capa{2}{\draw[curva4] plot[domain=0:10,samples=80] (\x,{0.6+3.2*(sin(18*\x))^1.5}) node[etiqueta,above right=-2pt and 0pt] {$Y_t$};}
+  % 3: las 3 sendas de consumo
+  \capa{3}{\draw[curva1] plot[domain=0:10,samples=40] (\x,{1.55*exp(0.07*\x)}) node[etiqueta,right] {$r>\rho$};}
+  \capa{3}{\draw[curva2] (0,2.25) -- (10,2.25) node[etiqueta,right] {$r=\rho$};}
+  \capa{3}{\draw[curva3] plot[domain=0:10,samples=40] (\x,{2.95*exp(-0.055*\x)}) node[etiqueta,right] {$r<\rho$};}
+\end{tikzpicture}
+\end{document}

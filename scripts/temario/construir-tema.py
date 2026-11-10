@@ -35,7 +35,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import (Tema, guardar_pdf_anterior, guardar_docx_anterior, LATEX, MIKTEX, PANDOC, LYX, TEX2LYX, TEMARIO, entorno_tex, ejecutar,  # noqa: E402
                    errores_log, ruta_windows, minutos_texto, paginas_partes, linea_paginas,
                    licencia_corta, licencia_larga, LICENCIA_URL_LEGAL, destinos_temas, primer_tema,
-                   escribir_destinos_tex, es_exclusivo, AVISO_EXCLUSIVO, CONDICIONES_URL)
+                   escribir_destinos_tex, es_exclusivo, AVISO_EXCLUSIVO, CONDICIONES_URL, enlazar_esquema)
 
 PDFLATEX = os.path.join(MIKTEX, 'pdflatex.exe')
 BIBER = os.path.join(MIKTEX, 'biber.exe')
@@ -139,7 +139,12 @@ def exportar_latex(tema):
     if not os.path.exists(tex_fuente):
         raise RuntimeError(f'No hay {tema.archivo}.tex ni {tema.archivo}.lyx en {tema.dir}')
     destino = os.path.join(tema.trabajo, f'{tema.archivo}.tex')
-    shutil.copyfile(tex_fuente, destino)
+    # La copia de _trabajo/ lleva el esquema del tema enlazado a los apartados
+    # (comun.enlazar_esquema; la fuente no cambia)
+    with open(tex_fuente, encoding='utf-8') as f:
+        texto = f.read()
+    with open(destino, 'w', encoding='utf-8') as f:
+        f.write(enlazar_esquema(texto))
     return destino
 
 
@@ -300,7 +305,7 @@ def titulos_aux(tema):
     texto = open(aux, encoding='utf-8', errors='replace').read()
     titulos = {}
     for m in re.finditer(r'\\newlabel\{([^}]+)\}\{\{[^{}]*\}\{[^{}]*\}\{((?:[^{}]|\{[^{}]*\})*)\}', texto):
-        t = re.sub(r'\\(?:newline|\\)\s*', ' ', m.group(2))
+        t = re.sub(r'\\(?:newline|cortetitulo|\\)\s*', ' ', m.group(2))
         t = re.sub(r'\\[a-zA-Z@]+\s*', '', t).replace('{', '').replace('}', '').strip()
         if t:
             titulos[m.group(1)] = t
@@ -460,6 +465,15 @@ def preparar_pandoc(tema, tex, formato):
     # la web y en Word son figuras y tablas normales dentro del Div de la caja
     cuerpo = re.sub(r'\\(begin|end)\{figuracaja\}', r'\\\1{figure}', cuerpo)
     cuerpo = re.sub(r'\\(begin|end)\{tablacaja\}', r'\\\1{table}', cuerpo)
+    # Imágenes (entornos imagen e imagencaja de tcee.sty, «Imagen n», numeración
+    # aparte de los gráficos): figuras con la marca tceeimagen en el título, que
+    # tcee.lua quita al ponerles «Imagen n.–»
+    def imagen(m):
+        dentro = re.sub(r'\\caption(\[[^\]]*\])?\{', lambda c: '\\caption' + (c.group(1) or '') + '{\\textcolor{tceeimagen}{.}', m.group(2), count=1)
+        return f'\\begin{{figure}}{dentro}\\end{{figure}}'
+    cuerpo = re.sub(r'\\begin\{(imagen|imagencaja)\}(.*?)\\end\{\1\}', imagen, cuerpo, flags=re.S)
+    # \ref*{x} (número sin enlace: el esquema enlazado lo usa dentro de su enlace)
+    cuerpo = re.sub(r'\\ref\*\{([^}]+)\}', lambda m: numeros.get(m.group(1), '?'), cuerpo)
     # \grafico[\textwidth]: pandoc no entiende un ancho sin número y deja el
     # gráfico pequeño en la web; se trata como 1\textwidth
     cuerpo = re.sub(r'(?<![\d.])\\(textwidth|linewidth|columnwidth)\b', r'1\\\1', cuerpo)
@@ -476,7 +490,7 @@ def preparar_pandoc(tema, tex, formato):
     def pagina(m):
         e = m.group(1)
         n = numeros.get(e)
-        tipo = {'eq': 'ecuación ', 'fig': 'gráfico ', 'tab': 'tabla ', 'sec': 'apartado ', 'anexo': 'anexo '}
+        tipo = {'eq': 'ecuación ', 'fig': 'gráfico ', 'img': 'imagen ', 'tab': 'tabla ', 'sec': 'apartado ', 'anexo': 'anexo '}
         prefijo = next((v for k, v in tipo.items() if e.startswith(k + ':')), None)
         texto = f'{prefijo}{n}' if n and prefijo else 'véase'
         if prefijo == 'ecuación ' and n:

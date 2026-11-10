@@ -177,6 +177,12 @@ Estado de las propuestas:
 - `buchanan-tullock-mayoria-optima`, `paradoja-condorcet`, `votante-mediano` y `curva-lorenz` ya tienen gráfico de referencia en `3A24/graficos/` (cuando se dibujen);
 - `mapa.yaml`: modelos sin ficha (`fbs-utilitarista`, `juego-ultimatum`, `logrolling`), y en `faltan`, Gibbard-Satterthwaite debe remitir al 3.A.14, no al 3.A.13.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 12 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de títulos → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 1. **Orden de los bloques** (D1, A24-01): [decidido por Víctor, 23/10/2026] se mantiene el del original (I Arrow, II FBS, III axiomas), con la razón en la «Estructura».
@@ -235,6 +241,7 @@ Se comparan las URL del Word original con las de `3A24.tex` y `3A24.bib` (CRITER
   - **III.2.4**: boceto de `buchanan-tullock` (unos 20″; si falta tiempo, de palabra). Las mayorías de la Ley de Propiedad Horizontal, como apoyo.
   - **III.3**: el enunciado de Gibbard-Satterthwaite como apoyo; sus 2 salidas, dichas.
 - **Anexos**: no se cantan.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Correcciones del control de calidad (22/10/2026)
 

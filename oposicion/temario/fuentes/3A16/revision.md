@@ -143,6 +143,12 @@ Fechas y atribuciones (propuestas de datos): V1 Dupuit 1844; V2 Molina 1597; V3 
   - X9. `mapa.yaml`: telaraña remitida a 3.A.10 (es 3.A.5/3.A.6) y modelo `telarana` sin ficha (CN4, CN8).
 - **Le Châtelier**: el 3.A.12 escribe «Le Châtelier»; el `.bib` (heredado) dice «Le Chatelier», que es la grafía del autor. Conviene unificar en el canon.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 4 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): los 6 \newline de títulos → \cortetitulo{} (puntos de corte ya buenos; el de I se deja tras «equilibrio» porque tras «modelo.» la 2.ª línea no cabe). Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 Aplicado mientras Víctor no conteste en el artifact (decisiones del coordinador):
@@ -178,6 +184,7 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - Funciones clave que se conservan en la esquina: las condiciones del equilibrio (`eq:equilibrio`) desde I.2 hasta el final y la maximización del excedente total (`eq:max-et`) desde II.2.2; en III, la del largo plazo (`eq:largo-plazo`).
 - Al final quedan en la pizarra la función del equilibrio y el gráfico `corto-largo-industria`, que responden al enganche.
 - Plan de pizarra por bloques: el de `propuestas-coherencia.md`, § 3.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Comentarios de Víctor del 18/10/2026
 

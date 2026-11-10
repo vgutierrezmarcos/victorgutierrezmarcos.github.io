@@ -22,21 +22,21 @@
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
   \path (-0.9,-0.75) rectangle (10.0,6.9);
   % 1: ejes: capital y consumo por unidad de trabajo eficiente
-  \capa{1}{\begin{scope}[xshift=0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$k$};
-    \draw[eje] (0,0) -- (0,6.6) node[left] {$c$};
+  \capa{1}{\begin{scope}[xshift=0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$\tilde k$};
+    \draw[eje] (0,0) -- (0,6.6) node[left] {$\tilde c$};
     \node[below left] at (0,0) {$0$};\end{scope}}
   % 1: lugar dk/dt = 0: c = f(k) - (n+g+delta) k, máximo en k_oro y corte en k_bar
   \capa{1}{\begin{scope}[xshift=0cm]\draw[curva2] plot[domain=0:8.0,samples=80,smooth] (\x,{36*\x/(6.4+\x)-2.5*\x});
-    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot k=0$};
+    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot{\tilde k}=0$};
     \node[below] at (8.0,0) {$\bar k$};
-    \draw[guia] (3.200,4.000) -- (3.2,0) node[below,text=black] {$k_{\mathrm{oro}}$};\end{scope}}
+    \draw[guia] (3.200,4.000) -- (3.2,0) node[below,text=black] {$\tilde k_{\mathrm{oro}}$};\end{scope}}
   % 2: lugar dc/dt = 0: vertical en k* (f'(k*) = rho+delta+theta g)
-  \capa{2}{\begin{scope}[xshift=0cm]\draw[curva1] (2.000,0) node[below,text=black] {$k^*_0$} -- (2.000,6.3)
-      node[etiqueta,anchor=south west,text=tceemorado] {$\dot c=0$};\end{scope}}
+  \capa{2}{\begin{scope}[xshift=0cm]\draw[curva1] (2.000,0) node[below,text=black] {$\tilde k^*_0$} -- (2.000,6.3)
+      node[etiqueta,anchor=south west,text=tceemorado] {$\dot{\tilde c}=0$};\end{scope}}
   \capa{2}{\node[punto] (E0) at (2.000,3.571) {}; \node[etiqueta,below right=1pt] at (E0) {$E_0$};}
   % 3: lugar dc/dt = 0: vertical en k* (f'(k*) = rho+delta+theta g)
-  \capa{3}{\begin{scope}[xshift=0cm]\draw[curvanueva,desplazada] (1.344,0) node[below,text=black] {$k^*_1$} -- (1.344,6.3)
-      node[etiqueta,anchor=south east,text=tceerojo] {$\dot c=0'$};\end{scope}}
+  \capa{3}{\begin{scope}[xshift=0cm]\draw[curvanueva,desplazada] (1.344,0) node[below,text=black] {$\tilde k^*_1$} -- (1.344,6.3)
+      node[etiqueta,anchor=south east,text=tceerojo] {$\dot{\tilde c}=0'$};\end{scope}}
   \capa{3}{\node[punto,fill=tceerojo] (E1) at (1.344,2.888) {}; \node[etiqueta,text=tceerojo,below right=1pt] at (E1) {$E_1$};}
   % 4: nueva senda de silla (calculada), salto de c en t_0 y desacumulación hasta E_1
   \capa{4}{\draw[curvanueva] plot[smooth] coordinates {(0.001,0.002) (0.059,0.140) (0.118,0.278) (0.178,0.416) (0.238,0.554) (0.299,0.691) (0.360,0.828) (0.422,0.966) (0.484,1.103) (0.546,1.240) (0.609,1.376) (0.672,1.512) (0.736,1.649) (0.801,1.784) (0.866,1.920) (0.931,2.056) (0.997,2.191) (1.063,2.326) (1.129,2.461) (1.196,2.595) (1.264,2.729) (1.332,2.863) (1.400,2.997) (1.469,3.130) (1.538,3.264) (1.608,3.397) (1.678,3.530) (1.749,3.664) (1.820,3.796) (1.892,3.929) (1.964,4.062) (2.038,4.195) (2.111,4.327) (2.185,4.460) (2.259,4.591) (2.333,4.723) (2.409,4.854) (2.483,4.984) (2.559,5.114) (2.636,5.247) (2.713,5.377) (2.790,5.507) (2.867,5.636) (2.947,5.768) (3.025,5.898) (3.106,6.029) (3.188,6.162) (3.273,6.300)};

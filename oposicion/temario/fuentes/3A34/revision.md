@@ -144,6 +144,12 @@ Propuestas de datos: V1-V26 aplicadas (V24 y V25, sin poder comprobar: Sahuquill
 - Notación nueva para el canon (`notacion.md` § 7, para tema-canon): EMgK; B(K) en la ficha `q-tobin` (π(K) hoy); φ_c, φ_d y la banda 1 − φ_d ≤ q ≤ 1 + φ_c; O(V), V*, β₁, α_V, σ y π (probabilidad) en `opciones-reales` (hoy F(V) y p); RN riqueza neta y s(·) de BGG; θ local de la desgravación; λ⁰_t (valor presente) frente a λ_t (valor corriente) en la ficha nueva `optimizacion-dinamica`.
 - El anexo A es la pieza común de tiempo continuo (DK9): 3.A.29 y 3.A.43 deben copiarlo al revisarse (anotar en `pendientes-coherencia.md`).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo»; también fuera «recuadrado(s)», «que se queda(n) en la esquina», «escrita» y «pegatina»→«refrán» en las notas de cante de I, II y III. Regla 5: $c_K$ se mantiene (es el coste de uso y $r$ es el tipo de interés que entra en él, $c_K=P^K(r+\delta-\dot P^K/P^K)$; usar $r$ confundiría). Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): Anexo A (común con 3A29 y 3A43): corte tras «tiempo continuo:», como en 3A29; anexo C: corte antes de «y la igualdad de la q media y la marginal»; III: \newline → \cortetitulo{}. |
+
 ## 7. Dudas abiertas (aplicada la recomendada)
 
 - **A34-01** Notación de Jorgenson: (a) **P, W y P^K nominales con el nivel general de precios constante** (aplicada: respeta P F_K = c_K de la ficha); (b) bien como numerario, P = 1, w real (como el 3.A.25 y el 3.A.26).
@@ -180,6 +186,7 @@ Propuestas de datos: V1-V26 aplicadas (V24 y V25, sin poder comprobar: Sahuquill
 - Gráficos de datos (FBCF por activos): apoyo de la relevancia, no pizarra.
 - **III (10′)**: III.1, la banda 1 − φ_d ≤ q ≤ 1 + φ_c recuadrada a la derecha (se conserva hasta el final) y `fig:inversion-banda` por capas (ejes, marcas, banda, rectas, recta sin quiebro en discontinuo); la tabla de tipos de costes, de palabra (apoyo). III.2, de palabra; la convexidad B(p) ∝ p^{1/α} como apoyo. III.3 es el centro del bloque: la tabla de los 2 periodos escrita en la pizarra con sus números (I = 1.600; 200; 300/100; 2.200; 600 frente a 773), la regla \eqref{eq:opcion-esperar} recuadrada, la pegatina «no por mucho madrugar amanece más temprano» a la izquierda y `fig:opcion-esperar` por capas (recta V − I, O(V), tangencia en V*, más volatilidad); el gráfico de la incertidumbre de España como apoyo. III.4, de palabra, con la pegatina «dinero llama a dinero» y `fig:coste-fondos` como apoyo. III.5: la tabla de síntesis como apoyo; se dice, no se escribe.
 - **Conclusión (1′)**: sin pizarra; empieza por «En conclusión,»; la idea final retoma el refrán del enganche y responde a su pregunta (las empresas dejan de invertir cuando la incertidumbre se dispara, aunque el dinero sea barato; la política no puede quitar la incertidumbre, pero sí dejar de añadirla). Al final quedan en la pizarra las funciones clave (c_K, las 2 condiciones de la q, la banda y la regla de la opción) y el diagrama de fases.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas fijas. A la izquierda, los refranes: el del enganche, «antes de que te cases, mira lo que haces», y las pegatinas «no por mucho madrugar amanece más temprano» (opción de esperar) y «dinero llama a dinero» (acelerador financiero). En el centro, los gráficos por capas: el capital deseado de \autor{Jorgenson} (\ref{sec:jorgenson}), el diagrama de fases de la q, que se queda para las implicaciones (\ref{sec:q}), y el valor de la opción de esperar (\ref{sec:irreversibilidad}). A la derecha, recuadradas, el coste de uso $c_K$, las 2 condiciones de la q, la banda de inacción y la regla de inversión con la opción de esperar.
 
 ## Control de calidad (31/10/2026): correcciones aplicadas
 

@@ -160,6 +160,12 @@ Confirmadas las opciones recomendadas; las que piden un cambio, aplicadas el 16/
 17. **Estática comparativa**: anexo E (decisión de coherencia), con una nota en II.1.2 y la mención en III.5. ¿Prefieres un párrafo en el cuerpo (contenido proponía un II.1.4 de 1 minuto)? **Confirmada.**
 19. **Remisión a 3.A.19** (oligopolio) en el comportamiento estratégico: añadida por mí; no estaba en las propuestas. **Confirmada.**
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 3 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de títulos → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 12. **Edición de Segura**: el original dice 2004 y enlazaba un PDF de 1993; el `.bib` usa `Segura1986Analisis` (Alianza, 1986). ¿Qué edición tienes? (las páginas 282-287 del dinero dependen de ella).
@@ -188,6 +194,7 @@ Se comparan las URL del Word original con las de `3A21.tex` y `3A21.bib` (CRITER
 - El punto fijo de Brouwer se dibuja entero (cuadrado, diagonal, una curva y el punto fijo) mientras se dice el teorema; la aplicación del subastador, ec. `aplicacion-brouwer`, puede ir como apoyo y decirse en palabras.
 - Bienes libres, monopolio en la caja y los gráficos de los anexos: solo como apoyo o fuera del vídeo.
 - Pregunta de enganche sugerida: «¿Cómo es posible que millones de decisiones que nadie coordina encajen sin que sobre ni falte nada?»; la idea final de la conclusión la responde.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Cambios del 16/10/2026 (criterios nuevos)
 

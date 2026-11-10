@@ -196,6 +196,12 @@ incertidumbre. Fase «integrar» de /revisartema. Entradas: `_trabajo/original.m
   tercer nivel: I.2 lleva 3 subapartados, uno por modelo, para que se vea que hay 3 aplicaciones);
   K12 (Hansen-Sargent en la conclusión: se mantiene, D5).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» fuera; «se queda en una esquina de la pizarra» → «acompaña todo el tema»; «fórmula de la esquina de la pizarra» → «fórmula de la utilidad esperada» (3 frases). Títulos: ya cortados en buen punto; `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
 ## Dudas abiertas
 
 - **Decisiones ya tomadas por Víctor**: A10-01, Diamond-Dybvig **resumido** en el anexo C (aplicado);
@@ -251,6 +257,7 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **Ellsberg** (III): esquema de las 2 urnas, como apoyo.
 - **Decisión de cartera**: está en el anexo (`cartera-alfa`, `cartera-riqueza`): no sale en el vídeo; basta la frase de la valoración del seguro. San Petersburgo, tampoco: una frase en I.1.
 - **Enganche**: los 2 refranes, las primas de seguro (unos 86.000 millones, ~5 % del PIB) y la Lotería de Navidad; **idea final**: el patrón cuádruple de la teoría de las perspectivas, que responde a la pregunta del enganche.
+- El teorema de la utilidad esperada queda en una esquina de la pizarra todo el cante (Savage lo reutiliza). (11/11/2026)
 
 ## Comentarios de Víctor del 19/10/2026
 

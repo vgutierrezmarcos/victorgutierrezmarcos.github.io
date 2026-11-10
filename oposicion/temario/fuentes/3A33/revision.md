@@ -120,6 +120,12 @@ Fuentes de la integración: `_trabajo/original.md` (Word de Víctor del antiguo 
   7. **3.A.34**: el coste de uso del capital c_K y la (S,s) de la inversión deben reconocerse en los de los duraderos (`eq:coste-uso`).
 - **Cambios al canon** (para `tema-canon`): fichas nuevas `keynes-renta-absoluta` (DC8), `ccapm` (DC3), `bienes-duraderos` (K27, con `duraderos-ss` como gráfico de referencia), `ciclo-vital`, `ahorro-precaucion`; cambios en `hall` (b en la cuadrática) y `renta-permanente` (γ); `notacion.md`: d_t, p^d_t, I^d_t, c^d_t, h, m_{t+1}, α_L, α_b, a_0, a_1, Y^máx; `canon/modelos/optimizacion-dinamica.md` con el anexo B (K34); `mapa.yaml` según K23.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo»; también fuera «recuadrada», «que se queda en la pizarra», «ocupa en la pizarra el sitio de…» y «se quedan en la pizarra» (I.2, II, nota de II.3 y III). Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): I y II: \newline → \cortetitulo{} (corte ya antes de «con (in)certidumbre»). |
+
 ## Dudas abiertas
 
 Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
@@ -175,3 +181,5 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 - **Introducción y conclusión**, en modo guion, sin pizarra. Enganche: «En tiempo de vacas gordas, guarda para las flacas» (José y el faraón), la tasa de ahorro del 25,6 % en el confinamiento y el rebote del 69 % de los duraderos, y la pregunta «¿de qué depende lo que consumimos hoy?». Idea final: guardar para las vacas flacas es lo que hace el consumidor de la renta permanente, pero no todos tienen granero; lo que gastamos hoy depende de la vida entera y de lo que entra este mes, y ahí está el margen de la política económica.
 - **Reparto del guion** (unas 4.700 palabras): introducción ≈ 400, I ≈ 1.340 (I.1 ≈ 240, Fisher ≈ 400, renta permanente ≈ 400, ciclo vital ≈ 300), II ≈ 1.740 (II.1 ≈ 470, II.2 ≈ 400, II.3 ≈ 870), III ≈ 1.100 (III.1 ≈ 400, III.2 ≈ 310, III.3 ≈ 390), conclusión ≈ 160. Comodines si falta tiempo: el C-CAPM (una frase) y la evidencia de España.
 - No se dice «hilo» ni números de temas en voz alta.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): Pizarra: a la izquierda, el plano $(Y,C)$ (\autor{Keynes}, \autor{Kuznets}, \autor{Duesenberry} y \autor{Friedman}) y, debajo, el ciclo vital; en el centro, el gráfico de \autor{Fisher}, que se reutiliza en las salidas a \autor{Hall} (\ref{sec:salidas}); a la derecha, la ecuación de \autor{Euler}, que pasa a ser estocástica en el bloque~\ref{sec:incertidumbre} y se va modificando pieza a pieza en \ref{sec:salidas}; en el bloque~\ref{sec:duraderos}, el coste de uso y las bandas $(S,s)$.
+

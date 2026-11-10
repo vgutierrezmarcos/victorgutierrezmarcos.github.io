@@ -51,7 +51,7 @@ datos:
     nota: "con WEO de octubre de 2026 debería existir el dato de 2025"
 
   - id: clasificacion-renta-bm
-    texto: "\\emph{renta baja}: hasta 1.175 dólares (25 economías);"
+    texto: "renta baja, hasta 1.175 dólares (25 economías)"
     texto_repaso: "baja $\\leq$1.175\\,\\$ (25)"
     donde: [3B28.tex, repaso/3B28-repaso.tex]
     valor: 1175
@@ -64,22 +64,9 @@ datos:
     periodicidad: anual (1 de julio)
     proxima: 2027-07
     familia: bm-clasificacion-renta
-    frase: "las 4 líneas de la lista (l. 125-128); «Desde julio de 2026»; ficha l. 49 y 247"
-
-  - id: kenia-rnb
-    texto: "con una RNB por habitante de unos 2.200 dólares en 2025 es un país de renta media-baja, como la India"
-    texto_repaso: "Kenia RNB pc \\dato{$\\approx$2.200\\,\\$}{BM, 2025}"
-    donde: [3B28.tex, repaso/3B28-repaso.tex]
-    valor: 2200
-    unidad: USD (Atlas)
-    periodo: "2025"
-    fuente: BM2026WDI
-    organismo: Banco Mundial
-    serie: "WDI NY.GNP.PCAP.CD, KEN"
-    url: https://databank.worldbank.org/source/world-development-indicators
-    periodicidad: anual
-    proxima: 2027-07
-    familia: bm-wdi
+    depende: [datos/clasificacion-renta-bm.csv, graficos/mapa-renta.tex]
+    frase: "caja gris «La renta en detalle» (umbrales y recuento); «Desde julio de 2026, la renta baja llega hasta 1.175 dólares y la alta empieza en 14.375»; caption del gráfico mapa-renta; ficha I.1 y datos clave"
+    nota: "al cambiar la clasificación, python3 graficos/mapas-desarrollo.py --descargar y recompilar mapa-renta"
 
   - id: tabla-hechos-renta
     texto: "RNB por habitante, PPA (dólares internacionales corrientes, 2025) & 2.653 & 10.785 & 6.910 & 69.862"
@@ -185,3 +172,20 @@ datos:
     url: https://www.povertyactionlab.org/about-us
     periodicidad: continua
     familia: jpal
+
+  - id: mapa-niveles-idh
+    texto: "Niveles de desarrollo humano del PNUD, 2023"
+    donde: [3B28.tex]
+    valor: 193
+    unidad: países clasificados (74 muy alto, 50 alto, 43 medio, 26 bajo)
+    periodo: "2023 (Informe sobre Desarrollo Humano 2025)"
+    fuente: PNUD2025Series
+    organismo: PNUD
+    serie: "HDR25_Composite_indices_complete_time_series.csv, hdi_2023"
+    url: https://hdr.undp.org/data-center/documentation-and-downloads
+    periodicidad: anual
+    proxima: 2027-05
+    familia: pnud-idh
+    depende: [datos/idh-paises.csv, graficos/mapa-idh.tex]
+    frase: "caption y fuente del gráfico mapa-idh; «casi todos los países de desarrollo humano bajo están en el África subsahariana»"
+    nota: "al salir un Informe nuevo, cambiar URL_IDH y la columna hdi_2023 en graficos/mapas-desarrollo.py, ejecutarlo con --descargar y recompilar mapa-idh"

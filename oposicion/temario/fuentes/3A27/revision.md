@@ -133,6 +133,12 @@ Aplicados en la fuente (`3A27.tex`, `repaso/3A27-repaso.tex`), sin construir. Mi
 - **Generales de la 2.ª tanda**: esquema con un título por línea y `\esqtiempo` (hecho); enlaces del tema antiguo (los 3 se conservan con cita: Calmfors y Driffill con DOI, el DT de Jimeno y Thomas y la página de Sahuquillo con `url` en el `.bib`); datos que caducan en `datos-actualizables.yaml` (9 entradas: cobertura y afiliación de la OCDE, OIT, cociente propio, subida pactada, convenios de empresa e inaplicaciones del MITES).
 - **Anexos ahora**: A derivaciones de la negociación colectiva (Dunlop, derecho a gestionar, curva de contratos), B Shapiro y Stiglitz (transiciones, valores, bienestar), C centralización, D test. Gráficos: 7 nuevos o rehechos y compilados (`mapa-negociacion-colectiva`, `sindicato-monopolista-rigidez`, `curvas-contratos-riesgo`, `shapiro-stiglitz`, `shapiro-stiglitz-vigilancia`, `shapiro-stiglitz-sin-rotacion`, `shapiro-stiglitz-demanda`); en `_trabajo/graficos-pedidos.json`. Cambios para el canon, en `_trabajo/canon-pendiente.md`.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo»; también fuera los 3 «(caja de abajo)», «recuadrado/a» y «se borra el centro… se dejan a la derecha…» / «se marca en la izquierda… se apunta…» de las notas de cante de I, II.2 y II.3. Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): Anexo B: corte antes de «y contratos eficientes». |
+
 ## Dudas abiertas
 
 Todas con la opción recomendada **ya aplicada** (Víctor fuera hasta el 9/11).
@@ -170,3 +176,5 @@ Todas con la opción recomendada **ya aplicada** (Víctor fuera hasta el 9/11).
 - **Introducción y conclusión**, en modo guion, sin pizarra. Enganche: el día de 5 dólares de Ford y «Lo barato sale caro», con la pregunta «¿Por qué no bajan los salarios si sobra gente dispuesta a trabajar?». La idea final la responde: Ford no pagaba de más, pagaba lo que le salía más barato; a la empresa le sale caro bajar el salario, y el reto es que el salario más alto no lo paguen siempre los que se quedan fuera.
 - **Reparto del guion** (unas 4.700 palabras; minutos del 9/11/2026): introducción ≈ 400, I ≈ 1.800, II ≈ 1.580, III ≈ 790, conclusión ≈ 160. Si falta tiempo, el comodín que se acorta es la extensión de *insiders* (III.3: los 3 casos de palabra).
 - Las notas de los Nobel, la tabla de la conclusión y los anexos no van al cante; pueden salir como apunte. No se dice «hilo» ni números de temas en voz alta.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas fijas, como en el modelo neoclásico del mercado de trabajo \vertema{3.A.25}. A la izquierda, los supuestos que se levantan (4, atomicidad; 2, información; 6, flexibilidad salarial; 7, movilidad sin costes) y los refranes pegatina de cada bloque: «hablando se entiende la gente» para la negociación, «lo barato sale caro» para los salarios de eficiencia y «a las duras y a las maduras» para los contratos implícitos. En el centro, los gráficos, que se borran al acabar cada bloque. A la derecha, las funciones clave, que se quedan: el producto de \autor{Nash} con $\gamma=\rho_B/(\rho_S+\rho_B)$, la utilidad del sindicato, la condición de \autor{Solow}, la condición de no escaqueo y el contrato implícito.
+

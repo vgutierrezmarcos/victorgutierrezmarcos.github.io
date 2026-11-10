@@ -155,6 +155,12 @@ Título oficial: «La empresa y las decisiones de inversión. Diferentes criteri
 - **Remisiones** del bloque I y II: 3.A.10, 3.A.12, 3.A.13, 3.A.25, 3.A.33, 3.A.34, 3.A.35, 3.A.43, 3.A.44, 3.B.1, 3.B.3, 3.B.4, 3.B.23, 3.B.24, 3.B.25 y 4.B.6, todas con `\vertema`; las internas con `\ref`/`\eqref`.
 - **Contradicciones con otros temas** (no se tocan; ver `_trabajo/canon-pendiente.md`, § 7): el 3.B.3 copia el bloque de coste del capital del original y fecha Holmström y Tirole en 2013 (es 2011); el 3.B.1 usa EBIAT en el ROA y un ROE-ROA sin $(1-t_{IS})$; el 3.B.4 usa $D_0$ también para lo que recibe la empresa por su deuda y $\mathbb{E}(r_M)$ con paréntesis; el 3.A.25 dice «tasa interna de rendimiento» y remite el VAN al 3.A.34.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 9 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): ninguno (los de I y II ya cortan en su punto, decisión K2), con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## 7. Dudas abiertas
 
 El artifact de dudas no estaba disponible en esta sesión: todas las dudas quedan aquí, con la opción recomendada ya aplicada en el tema.
@@ -191,6 +197,8 @@ No restaurados:
 - Wolters Kluwer, *Guías jurídicas*, «Tasa Interna de Retorno Modificada (TIRM)»: da 404 y no se ha encontrado la dirección nueva (la guía es de pago y su dirección cambia con cada sesión). La TIRM del tema no depende de ella.
 
 ## 8. Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: línea de flujos arriba a lo ancho; VAN recuadrado a la derecha hasta el final; en III, el WACC con una flecha a la $k$ del VAN.
 
 - **Enganche e idea final**: el refrán «Más vale un hoy que dos mañanas» abre (con Intel en Magdeburgo y la pregunta «¿cómo decide una empresa qué proyectos acometer, y qué rentabilidad tiene que exigirles?») y vuelve en la idea final (parte 2): más vale un hoy que dos mañanas, salvo que esos 2 mañanas, descontados al coste del capital, valgan más. Introducción y conclusión sin pizarra (`modo: guion`), con el refrán en la esquina superior izquierda.
 - **Funciones clave que se conservan**: el VAN `eq:van` (`\funcionclave`), que se escribe en I.3.2 a la derecha de la pizarra y se conserva hasta el final (`conservar:`); el WACC `eq:wacc` (bloque III, parte 2), recuadrado con una flecha a la $k$ del VAN: es el cierre del hilo. La regla de la opción de esperar (`eq:opcion-esperar`) se escribe en una línea bajo el VAN y se borra al cambiar de bloque.

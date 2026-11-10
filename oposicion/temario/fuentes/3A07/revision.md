@@ -206,6 +206,12 @@ Las citas bibliográficas (V17-V68) se han comprobado una a una por el agente de
 - **Coherencia (K1-K28, CC1-CC9)**: aplicadas K1-K28 con el reparto de minutos de K4 y la estructura final; K22 con el reparto del coordinador (A07-12); K17 con el gráfico copiado (A07-03). CC1-CC9 quedan para la fase canon (anotadas en «Coherencia»).
 - **Pendientes (P1-P56)**: todas resueltas (ver «Marcas resueltas» y «Errores corregidos»).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Reparto: quitado el plan de pizarra del reparto del cante (zonas izquierda/centro/derecha, qué se borra y qué se queda); se conservan tiempos, refranes, gráficos y funciones clave; «lo que el tribunal espera ver en la pizarra» → «ver» (4 frases). Títulos: ninguno en 2 líneas. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
 ## Dudas abiertas
 
 Se aplicó en todas la opción recomendada; Víctor puede cambiarlas a la vuelta.
@@ -283,6 +289,7 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - **II.2** (7′): en el problema del hogar se dice $Z_t$ (perturbación de demanda) y la condición de transversalidad (`apunte:`); se explica que $z_t$ entra por $r^n_t$, y por eso en `nek-esquema` y `nek-xpi` la demanda es $r^n_t$. `nek-esquema` tiene ahora cada fórmula en una línea.
 - **II.3** (3′30″), con la pizarra de II.2 a la vista y en el orden del Word: principio de Taylor (`eq:determinacion` bajo la regla, «más vale pasarse que quedarse corto»), divina coincidencia (panel a de `nek-xpi`, «matar dos pájaros de un tiro») y su ruptura (panel b), costes de la inflación y objetivo del 2 %, expectativas y credibilidad, variables naturales; después la fiscal (3 vías), de palabra.
 - **II.4** (2′30″): nueva síntesis (`tab:nueva-sintesis` como apoyo), 2008, límite inferior, fricciones, HANK y la inflación de 2021-2023 (`frecuencia-precios` como apoyo).
+- Pizarra: izquierda refrán y pegatinas; centro costes de menú y plano (x,π); derecha IS dinámica, Phillips neokeynesiana y Taylor recuadradas. (11/11/2026)
 
 ## Comentarios de Víctor (9/11/2026)
 

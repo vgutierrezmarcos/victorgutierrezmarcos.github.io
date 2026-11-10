@@ -9,7 +9,7 @@ Lo usa scripts/temario/construir-tema.py, que pasa estas variables con -M:
 Qué hace:
   - Numera los apartados como el PDF (I, I.1, I.1.1) y pone los minutos del
     cante (\minutos{n}) junto al título.
-  - Pone «Gráfico n.–» y «Tabla n.–» en los títulos y separa la «Fuente:».
+  - Pone «Gráfico n.–», «Imagen n.–» (numeración aparte) y «Tabla n.–» en los títulos y separa la «Fuente:».
   - Cambia la ruta y la extensión de los gráficos (SVG en HTML, PNG en Word).
   - Convierte las cajas (notaopositor, anotaciones, ideaclave, esquema) en
     estilos de Word y \vertema en una clase CSS; el enlace al tema citado
@@ -483,7 +483,7 @@ end
 -- Recorrido del documento ------------------------------------------------------
 function Pandoc(doc)
   local s, ss, sss = 0, 0, 0
-  local nfig, ntab = 0, 0
+  local nfig, ntab, nimg = 0, 0, 0
   -- Nivel del primer título (en HTML, con --shift-heading-level-by=1, los
   -- apartados son h2; en Word, Heading 1): la numeración cuenta desde ahí
   local base = 7
@@ -550,8 +550,15 @@ function Pandoc(doc)
       elseif b.t == 'Figure' then
         local es_tabla = false
         b.content:walk({ Table = function() es_tabla = true end })
+        -- Imagen (entornos imagen e imagencaja): construir-tema.py deja la marca
+        -- tceeimagen al principio del título; numeración propia, «Imagen n.–»
+        local es_imagen = false
+        b.caption.long = b.caption.long:walk({ Span = function(sp)
+          if (sp.attributes['style'] or ''):match('tceeimagen') then es_imagen = true; return {} end
+        end })
         local etiqueta
         if es_tabla then ntab = ntab + 1; etiqueta = 'Tabla ' .. ntab .. '.–'
+        elseif es_imagen then nimg = nimg + 1; etiqueta = 'Imagen ' .. nimg .. '.–'
         else nfig = nfig + 1; etiqueta = 'Gráfico ' .. nfig .. '.–' end
         local cap = b.caption.long[1]
         if cap then

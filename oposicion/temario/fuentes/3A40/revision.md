@@ -121,6 +121,12 @@ Todo el tema es nuevo. De dónde sale cada parte:
 
 **Estado de los pendientes (P)**: todos resueltos (P1-P50, P52-P56) salvo P51 (fichas y `mapa.yaml`), que es de la fase canon. P46 con la tabla del anexo C; P49 con la Covid como perturbación de oferta keynesiana.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): II: \newline → \cortetitulo{}. |
+
 ## 7. Dudas abiertas
 
 *Control de calidad (5/11/2026), aplicado*: notas internas fuera de las entradas de la CBO del .bib; pies de `tipo-natural` (HLW y LW), `tipos-oficiales` (Banco de Japón sin tipo objetivo de abril de 2013 a enero de 2016) y `multiplicador-politica-monetaria` (con $\rho_L$); «desde mediados de 2007 hasta sus máximos de 2021»; la subida del impuesto sobre el consumo de Japón citada con la Agencia Tributaria japonesa (hasta el 8 % y al 10 % en 2019; sin el 5 %, que no se pudo citar); los recortes automáticos de EE. UU. de 2013 y el «ajuste prolongado» del Reino Unido, cambiados por el impulso fiscal del FMI y la OCDE (coinciden en el signo); nota de que la $t$ de $m^{\,t}_t$ es el periodo; anchos de `balances-bancos-centrales` (0,75) y `multiplicador-politica-monetaria` (0,6); pie de `policy-mix` adaptado a la versión propia del gráfico.
@@ -163,6 +169,7 @@ Aplicada en cada una la opción recomendada:
 - **III** (9′): III.1, **a la pizarra** `policy-mix` (los 4 cuadrantes, cada uno con su año: 2009/2020, 2022-2023, R. U. 2022, zona del euro 2012) y la pegatina «juntos, pero no revueltos»; la dominación, de palabra. III.2, **a la pizarra** `nek-limite-inferior` por capas (curva de Phillips, rama de Taylor, codo y rama del límite, E_0, más gasto con m > 1, comparación m < 1); la ecuación `eq:multiplicador-elb` como **apoyo** con los números 1; 1,31; 2,25 frente a 0,87, y `multiplicador-politica-monetaria` también de apoyo. III.3, sin pizarra salvo una línea temporal con las 5 fases y una palabra por fase («juntos», «revueltos»); **apoyo**: `impulso-fiscal-r-menos-g` y `tipos-oficiales`. **Gráfico conjunto**: no hay uno que lo resuma todo; al final la pizarra queda con las 2 funciones clave, el *policy mix* y las 4 pegatinas.
 - **Conclusión** (1′, sin pizarra): empieza por «En conclusión,»; la idea final señala el refrán del enganche y el cuadrante del *policy mix*.
 - **Idea final**: retoma el refrán del enganche y responde a las preguntas: el remedio (la austeridad) fue peor que la enfermedad porque el multiplicador depende del banco central; las 2 políticas son más eficaces «juntas, pero no revueltas».
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas. A la izquierda, la pregunta del enganche, el refrán y las pegatinas, cada una junto a su concepto: «no hay mal que cien años dure» (el estancamiento secular), «no se le pueden pedir peras al olmo» (el límite inferior), «todo es según el color del cristal con que se mira» (el multiplicador) y «juntos, pero no revueltos» (la combinación de políticas). En el centro, los 4 gráficos que se cantan: los fondos prestables con el tipo natural por debajo del límite, la respuesta del PIB a un aumento del gasto con los 4 multiplicadores, el modelo neokeynesiano con el codo del límite inferior y los 4 cuadrantes del \emph{policy mix}. A la derecha, recuadradas y conservadas hasta el final, las 2 funciones clave: la condición del estancamiento secular \eqref{eq:estancamiento} y el multiplicador acumulado \eqref{eq:multiplicador-acumulado}.
 
 ## Enlaces del original (9/11/2026)
 

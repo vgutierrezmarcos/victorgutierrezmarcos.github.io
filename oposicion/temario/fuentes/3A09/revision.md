@@ -258,6 +258,13 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 
 - **Bloque I, gráficos del primal y del dual (Víctor, 13/10/2026)**: la pizarra se divide en dos mitades. En la **mitad izquierda** se cuenta el primal (I.2.1): ejes, recta de balance, curvas de indiferencia, tangencia $\vec x^*=\vec x(\vec p,\overline W)$, y a su lado la resolución analítica (PMU, lagrangiana, $U_i/p_i=\lambda$, $RMS_{12}=p_1/p_2$). En la **mitad derecha**, el dual (I.2.2): curva $\overline U$ fija, isogastos, tangencia $\vec h^*=\vec h(\vec p,\overline U)$ y su resolución ($\mathcal L$ con $\mu$, $p_i/U_i=\mu$). Las propiedades de las demandas y de las funciones valor salen como **apoyo** (no se escriben). En I.3 se cuentan las **relaciones de dualidad** sobre esos dos gráficos: primero el teorema básico ($\overline W=E^*$, $\overline U=U^*$, misma cesta: gráfico conjunto `primal-dual`), después las identidades entre demandas y entre funciones valor, Roy y Shephard, hasta completar el **esquema de dualidad** (gráfico `esquema-dualidad`). Se pueden borrar los gráficos intermedios; al final la pizarra debe quedar lo más limpia posible, con el gráfico conjunto y el esquema.
 - **Bloque III, bienestar** (por analogía con el punto 12): primero el gráfico del problema; después, en dos paneles (cestas arriba, demanda abajo), la $\Delta\mathrm{EC}$, la VC y la VE de una en una, y al final el gráfico conjunto `bienestar-vc-ve`, que es el que queda en la pizarra.
+- Pizarra de I: primal en la mitad izquierda, dual en la derecha y, al final, el gráfico conjunto. (11/11/2026)
+
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» y «En la pizarra: el primal a la izquierda…» fuera (2 frases). Títulos: ya cortados en buen punto; `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
 
 ## Dudas abiertas
 

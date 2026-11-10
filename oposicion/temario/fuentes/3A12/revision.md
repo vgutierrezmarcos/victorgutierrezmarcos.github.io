@@ -229,6 +229,13 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - Bloque II, aplicaciones empíricas (50 | 50): la translog de costes y las participaciones s_i en una celda y `farrell` (EfT, EfA, EfE) en la otra; II.4 de palabra, con `christensen-greene-1970` como apoyo; `ratio-eficiencia-bancos` y las tablas, solo de apoyo.
 - Bloque III (50 | 50): `stigler` y la fórmula C^obs = (1+χ)C; III.1, III.2 y III.4, sin pizarra (como mucho, `subaditividad` de apoyo).
 - La idea final responde a la pregunta del enganche (¿cuánto del abaratamiento de la fotovoltaica se debe a la escala, al aprendizaje y a los precios de los factores?).
+- El esquema de dualidad se construye por capas en la pizarra durante todo I; la función de costes no se borra. (11/11/2026)
+
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» fuera; «En la pizarra, el esquema de dualidad… no se borra» reescrito (2 frases). Títulos: ya cortados en buen punto (I, en 3 líneas por los puntos del epígrafe oficial); `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
 
 ## Dudas abiertas
 

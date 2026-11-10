@@ -134,6 +134,12 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P58), `p
   - **4.A.12**: remite el *price cap* al 3.A.20 (hoy está en el anexo A de este tema).
 - **Canon** (para `tema-canon`): fichas nuevas `monopolio`, `discriminacion-precios`, `monopsonio`, `monopolio-bilateral`; cambios en `ramsey-boiteux`, `monopolio-natural`, `excedentes-bienestar`, `rent-seeking-tullock`, `mercados-impugnables`, `curva-aprendizaje`, `laffont-tirole` (λ en vez de μ); `mapa.yaml` del 3.A.17 (referencias corregidas y faltan); `notacion.md` (siglas y símbolos de arriba). Detalle en `_trabajo/propuestas-coherencia.md`, § 6.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 2 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de I y III → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 1. **Sentencia de Google (enganche)**: la cita («Google es un monopolista y ha actuado como tal para mantener su monopolio») y las cuotas (89,2 % y 94,9 %) están comprobadas **solo en prensa** que reproduce la sentencia, no en el texto de la *Memorandum Opinion* (D.D.C., 5/8/2024). La entrada `Mehta2024Google` no tiene URL. ¿La mantengo (cotejando la sentencia y añadiendo la URL) o dejo solo el refrán?
@@ -167,6 +173,7 @@ Se comparan las URL del Word original con las de `3A17.tex` y `3A17.bib` (CRITER
 - `subaditividad-sostenibilidad` parte del gráfico del 3.A.12 (mismas capas y rótulos).
 - Apoyo, no pizarra: la tabla del escenario base, `tercer-grado`, `tarifa-dos-partes`, `produccion-conjunta` y los gráficos de los anexos.
 - Pregunta de enganche: «Quien parte y reparte, ¿se queda siempre con la mejor parte?»; la idea final la responde.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Comentarios de Víctor del 18/10/2026
 

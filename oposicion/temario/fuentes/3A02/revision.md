@@ -212,6 +212,12 @@ Aplicados en la fuente (`3A02.tex`, `3A02.bib`, `graficos/smith-riqueza.tex`, `g
 - Gráficos recompilados (solo los del tema): `smith-riqueza` y `clasicos-tiempo`.
 - La ficha de repaso suma texto (los 6 puntos de la mano invisible, el valor de uso y de cambio, las 2 ventajas): hay que comprobar al construirla que sigue en 4 páginas.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Reparto: quitado el plan de pizarra del reparto del cante (zonas izquierda/centro/derecha, qué se borra y qué se queda); se conservan tiempos, refranes, gráficos y funciones clave; «el tribunal espera ver su ecuación en la pizarra» → «oír»; las 2 viñetas «En la pizarra… tachar el 110 y escribir 90» reescritas («basta con cambiar el 110 por el 90») (7 frases). Títulos: ninguno en 2 líneas. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
 ## Dudas abiertas
 
 Ninguna bloquea el tema: todas se han resuelto con la opción recomendada.
@@ -275,6 +281,7 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
   - II.5: de palabra.
   - III: `materialismo-historico` (base y superestructura) y, borrado este, la barra de `jornada-laboral` (10 h = 5 + 5) con «trabajar para el obispo»; la función clave `eq:valor-marx` en la columna derecha, junto a la de Ricardo, y `eq:tasas-marx` debajo; la tabla de la transformación, como apoyo; pegatina «cría cuervos y te sacarán los ojos» con la frase de los sepultureros.
   - Conclusión: sin pizarra; se señalan las 2 funciones clave (el beneficio residual de Ricardo frente a la plusvalía de Marx) y se cierra con el refrán de la feria y la respuesta a la pregunta del enganche.
+- Pizarra: izquierda refrán y pegatinas; centro, el gráfico de cada bloque (se borra al pasar al siguiente); la tabla 2×2 de Smith se reutiliza para Ricardo tachando el 110 y escribiendo el 90; derecha, las 2 funciones clave hasta el final. (11/11/2026)
 
 ## Correcciones del control de calidad (4/11/2026)
 

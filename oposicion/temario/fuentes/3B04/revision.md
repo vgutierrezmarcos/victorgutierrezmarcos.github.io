@@ -169,6 +169,12 @@ Título oficial: «Análisis del crecimiento de la empresa. Métodos de valoraci
 - Contradicciones con temas sin revisar: 3.B.2 y 3.B.3 (WACC sin escudo fiscal; $k$ con 2 significados; Holmström y Tirole «2013» en el 3.B.3); 3.B.23 duplica DCF y múltiplos; ver `canon-pendiente.md` § 7.
 - El control de concentraciones se menciona con los umbrales y se remite al 3.B.39 y al 4.A.15 (al revés de lo que hace hoy el 3.B.39 sin revisar). La maldición del ganador remite al 3.A.14 sin su refrán. Pegatinas nuevas, sin repetir las de otros temas: «no estires más el brazo que la manga», «no vendas la piel del oso antes de cazarlo» y «juntos, pero no revueltos».
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 10 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): ninguno (el del tema es el oficial), con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## 7. Dudas abiertas
 
 El artifact de dudas no estaba disponible en esta sesión: las dudas quedan aquí, con la opción recomendada ya aplicada en el tema.
@@ -211,6 +217,8 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **Decide Víctor**: el enlace a Thomson Reuters ProView (Aranzadi, monografía 134345413, comentario «Importante verlo» de la introducción) solo funciona con suscripción y no deja ver qué obra es; no se ha restaurado. Si es una obra citable, basta con decir cuál para añadirla al `.bib`.
 
 ## 8. Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: árbol «tamaño óptimo: sí / no» en la columna izquierda; gráfico de gobierno que se queda hasta las alianzas; escalera de métodos arriba a lo ancho; DCF recuadrada.
 
 - Introducción y conclusión sin pizarra. El enganche es «Roma no se hizo en un día»: la idea final lo retoma («Roma no se hizo en un día, y tampoco se compra de un día para otro»).
 - Bloque I: columna izquierda con el árbol «tamaño óptimo sí / no»; el gráfico de gobierno (`gobierno-crecimiento`) se dibuja por capas (ejes, mercado, jerarquía, híbrida, cortes, envolvente, estructuras y, al final, la capa 9 con los modos de crecimiento) y **se conserva** en una esquina hasta las alianzas del bloque III. `costes-l` y `stigler`, de apoyo. `eq:gibrat` en una línea.

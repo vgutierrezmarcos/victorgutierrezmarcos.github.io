@@ -190,6 +190,12 @@ Fecha de consulta: 8/11/2026 en todos los casos.
   9. **4.A.18-4.A.20**: remiten con la numeración antigua.
 - **Canon**: fichas nuevas propuestas `spot-futuros`, `put-call`, `binomial`, `black-scholes` y, a decidir, `estrategias-opciones`. Cambios en `expectativas-contango` ($\mathbb{E}_0[S_T]$; gráfico de referencia `fuentes/3B25/graficos/contango.tex`). Filas en `capm`, `opciones-reales`, `arrow-debreu-incertidumbre` y `paridad-intereses`. D108 ampliada. Refranes para CRITERIOS § 8. Todo en `_trabajo/canon-pendiente.md`.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 8 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): anexo A: «…teorema de Girsanov» → «…y Girsanov», con corte tras el punto; anexo B: corte antes de «de las cámaras», con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## Dudas abiertas
 
 El artifact de dudas no está disponible en esta sesión: van aquí. En todas se ha aplicado la opción recomendada.
@@ -240,6 +246,8 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
 - **No restaurado**: brokeronline.es, «Swaps» (caja de anotaciones): el dominio redirige a otro sitio y la página ya no existe.
 
 ## Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: guion de 5 pasos a la izquierda todo el tema; las 3 funciones clave recuadradas en morado arriba a la derecha.
 
 - **Enganche e idea final**: «Cubrirse las espaldas», el futuro del WTI liquidado a −37,63 $ el 20/4/2020 y la advertencia de Buffett (carta de 2002). Pregunta: «¿sirven los derivados para cubrirse las espaldas o multiplican los riesgos que deberían cubrir?».
   - La idea final la responde: los derivados no crean ni destruyen el riesgo, lo cambian de manos y le ponen precio.

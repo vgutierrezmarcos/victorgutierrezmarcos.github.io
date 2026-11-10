@@ -124,6 +124,12 @@ No usados: Pepephone y MasOrange (V31, iban con los impugnables, al 3.A.15), cif
 - **Cambios opcionales a temas revisados** (para `pendientes-coherencia.md`, de coherencia § I): 3.A.14, añadir en la negociación «y el reparto del beneficio de un cártel, con el beneficio de Cournot como punto de desacuerdo \vertema{3.A.19}» y en Shapley «estudiar qué cárteles y alianzas entre empresas son estables \vertema{3.A.19}»; 3.A.18, en `anexo:colusion`, la frase de la diferenciación horizontal ambigua (Ross, 1992; clave por crear).
 - **Contradicciones con otros temas** (no se tocan): 3.B.39 y 4.A.15 remiten la clemencia como dilema al 3.A.19 (o al 3.A.16): lo correcto es «\vertema{3.A.14} \vertema{3.A.19}», que matiza la entrada de `pendientes-coherencia.md` (l. 148); 3.B.8 usa φ_A(q_B) (→ R_A) y remite Johnson (1953) al 3.A.19 (→ 3.A.14); 3.A.23 tiene una lista de supuestos distinta de la común; 3.A.6, 3.A.36, 3.A.41 y 3.A.44 remiten los juegos repetidos de Barro-Gordon al 3.A.19 (→ 3.A.14).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 4 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de I, II y III → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 Mientras Víctor no conteste en el artifact, se aplica la opción recomendada (o la que decidió el coordinador).
@@ -183,6 +189,7 @@ Se comparan las URL del Word original con las de `3A19.tex` y `3A19.bib` (CRITER
 - **III.2**: la fórmula del reparto de Nash en una línea; v({i}) = 1, v({i,j}) = 16/9, v(N) = 4 en una línea y debajo φ_i = 4/3 y «16/9 > 4/3».
 - **III.3**: de palabra; en la pizarra, solo una flecha desde `eq:colusion` («multa ↓B^C; exención ↑B^D») y las 3 condiciones de impugnabilidad como apoyo.
 - **Pronunciación** (si hace falta): Cournot, Bertrand, Stackelberg, Edgeworth, Scheinkman, Rotemberg, Saloner, d'Aspremont, Shapley.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Cambios posteriores
 

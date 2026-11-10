@@ -210,6 +210,12 @@ dato del tema.
   huevos y la cesta es también la de Tobin en el 3.A.35 (D5). Detalle en
   `_trabajo/propuestas-coherencia.md`, «Contradicciones con otros temas».
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 7 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): I: corte tras «renta variable,» (antes, «la elección / de cartera»); anexo A: corte antes de «y otros», con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## Dudas abiertas
 
 El artifact de dudas no estaba disponible en esta sesión: en cada duda se ha
@@ -272,6 +278,8 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
 - **No restaurado**: Análisis técnico street, «Gráfico de velas japonesas» (pie de una imagen del anexo de indicadores): el dominio ya no responde y el buscador no lo encuentra.
 
 ## Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: 3 columnas en I; la SML recuadrada pasa a la esquina; tabla de eficiencia que sigue en III.
 
 - **Enganche e idea final**: «Nadie da nada por nada» y el 52 % de fondos
   indexados; vuelve en la APT (no arbitraje) y en la idea final. Introducción

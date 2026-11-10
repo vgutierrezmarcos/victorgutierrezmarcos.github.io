@@ -130,6 +130,12 @@ Fuentes de la integración: `_trabajo/original.md` (Word de Víctor del 10/08/20
   - `notacion.md` § 6: $a$ de la WS lineal; $\overline U^n$; $Z$, $P^e$, $\mathrm{PAT}^e$; confirmar ϑ; § 0, asterisco como equilibrio del modelo (A28-11);
   - `mapa.yaml`: remisiones de K18 y modelos de K28; `is-lm` como mención.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): I-III sin cambios (fijados por Víctor); \newline → \cortetitulo{} en los 2 títulos con corte. |
+
 ## Dudas abiertas
 
 Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
@@ -193,3 +199,5 @@ Aplicados en `3A28.tex` (sin construir). Copia de las fuentes anteriores en `_tr
 - **Introducción y conclusión**, en modo guion, sin pizarra. Enganche: «Agua pasada no mueve molino», el paro de España (8,2 % en 2007, 26,1 % en 2013, 10,2 % hoy) y la NAWRU que sube y baja detrás («la crisis no parece agua pasada»), con la pregunta «¿hay un paro natural al que la economía vuelve sola, o el paro de hoy fija el de mañana?». Idea final: hay un paro de equilibrio, pero no es ajeno a la historia: en el paro, el agua pasada sí mueve molino; por eso hay que impedir que el paro de hoy sea el de mañana (flexiseguridad, políticas activas).
 - **Reparto del guion** (unas 4.700 palabras): introducción ≈ 400, I ≈ 1.030, II ≈ 1.740 (II.4 ≈ 400), III ≈ 1.420, conclusión ≈ 160. Comodines si falta tiempo: la evidencia de la NAIRU (Europa frente a EE. UU. y España) y las soluciones de Barro-Gordon (una línea).
 - Las notas al pie, las cajas grises, las tablas de apoyo y los anexos no van al cante. No se dice «hilo» ni números de temas en voz alta.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas fijas. A la izquierda, los supuestos que se levantan (4, atomicidad; 6, salarios y precios flexibles) y los refranes pegatina: «no se puede estar en misa y repicando» junto a la curva aumentada (no se tiene a la vez menos paro y la misma inflación), «quien se fue a Sevilla perdió su silla» junto a los \emph{insiders} y «agua pasada no mueve molino», el del enganche, junto a la NAIRU sin histéresis, tachado al llegar a la histéresis. En el centro, los gráficos que se construyen por capas: para los tipos de paro, la tabla y la curva de \autor{Beveridge}; para la curva de \autor{Phillips}, del menú a la vertical en $U^n$, y sobre ella el gráfico de \autor{Barro} y \autor{Gordon}, con la regla, la tentación y la discreción; para la NAIRU, el modelo WS-PS en $(U,W/P)$: primero la WS sola, después la PS sola y luego las 2 juntas, que se quedan para la política de demanda y para la histéresis. A la derecha, las funciones clave, que se conservan: la curva aumentada \eqref{eq:phillips-aumentada}, la NAIRU \eqref{eq:nairu} y la histéresis \eqref{eq:histeresis}.
+

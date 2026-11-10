@@ -147,6 +147,12 @@ Fecha: 5/11/2026. Rama `revision-temario-2`. Base: Word de Víctor (10/08/2024),
 | En la guerra de Johnson, meter los gráficos de las Imágenes 4-6 (en TikZ) y llevar el anexo C al cuerpo | Anexo C suprimido; nuevo párrafo «La guerra arancelaria (Johnson, 1953)» en I.2.2, tras la valoración del arancel óptimo, en 3 pasos: (a) `johnson-paso1`, libre comercio con las CIC de $A$ y $B$ tangentes en $E_0$ (Imagen 4); (b) `johnson-paso2`, arancel óptimo de $A$, $E_1$ sobre ON$_B$, RRI$_1$ y CIC$'_A$ (Imagen 5), con la antigua nota 16 (CIC de $B$ especulares); (c) `johnson`, equilibrio de Nash (Imagen 6), que ahora marca también $E_1$. `johnson.tex` tiene las capas nuevas y un `\solopaso` para que las CIC de los pasos 1-2 no salgan en el final. Remisiones al anexo cambiadas (valoración, anexo de EE. UU.-China, nota al opositor). |
 | Gráfico 7: meter las anotaciones a mano | `metzler-lerner` lleva las anotaciones manuscritas de la Imagen 9: sobre Metzler y Lerner, «ON anómala (inelástica) del país sobre el que recae el arancel ($B$)» / «…del país que impone el arancel ($A$)»; flechas grises de la contracción de ON$_A$; debajo de cada panel, la cadena $t\uparrow\Rightarrow p_X/p_Y\ (\uparrow,\uparrow\uparrow,\downarrow)\Rightarrow p_X/[p_Y(1+t)]\ (\downarrow,\uparrow,\downarrow\downarrow)$ y los recuadros «¡Ojo! Se desprotege el bien sobre el que se pone el arancel» y «¡Ojo! El arancel empeora la RRI de quien lo pone» (capas 8 y 9). El gráfico sube tras la viñeta que lo presenta y una viñeta nueva explica las cadenas. |
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 6 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): anexos A, B, D y E: corte antes de «y…»/tras la coma, con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## 7. Dudas abiertas
 
 Las 4 del artifact, aplicadas con la opción recomendada a la espera de Víctor:
@@ -172,6 +178,8 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **No restaurado**: OMC, *Examen estadístico del comercio mundial 2023* (nota sobre el volumen del comercio mundial): la cifra que respaldaba se ha sustituido por la de 2025 (`OMC2026Perspectivas`). El enlace funciona; si Víctor quiere conservarlo como lectura, se añade al `.bib`.
 
 ## 8. Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: función clave del arancel óptimo y cifras del acero en las esquinas hasta la conclusión.
 
 - **Enganche**: el refrán «No se le pueden poner puertas al campo», los aranceles «recíprocos» del 2 de abril de 2025 y la sentencia del Supremo de febrero de 2026, y la pregunta «¿Qué consigue un país cuando le pone puertas a su comercio, y quién las paga?». La idea final (parte 2) retoma el refrán. Introducción en `modo: guion`, sin pizarra.
 - **Esquinas que se conservan**: la función clave $t^{\mathrm{opt}}=1/(\varepsilon^*-1)$ (desde el arancel óptimo hasta la conclusión) y, en la otra, las cifras del acero ($x=100-p$, $q=p$, $p^W=20$), desde I.2.1 hasta las RVE.

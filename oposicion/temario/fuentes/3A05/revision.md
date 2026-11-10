@@ -238,3 +238,13 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
   - Nota al pie en Phillips (1958): la conferencia Nobel de Akerlof (2001), que en el original estaba en el 3.A.4, con la curva de Phillips, que hoy está en este tema.
 - **Trasladados al 3.A.4** con su contenido: el esquema de Wikimedia Commons de los regímenes de Malinvaud y la pronunciación de Leijonhufvud en Forvo.
 - **No restaurados**: el enlace t.co de los apuntes de Monacelli (Bocconi) lleva a un archivo de Google Drive que ya no existe (404); el documento de scholar.smu.edu (O'Neil Center) devuelve 403 y no se ha podido identificar su título para citarlo. Si Víctor sabe cuál era, basta con añadirlo a la nota del *plucking model*.
+
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Reparto: quitado el plan de pizarra del reparto del cante (zonas izquierda/centro/derecha, qué se borra y qué se queda); se conservan tiempos, refranes, gráficos y funciones clave; «lo que el tribunal espera ver en la pizarra» → «ver» (3 frases). Títulos: II.2: corte antes de «y comparación con Keynes…» (antes separaba «Keynes / y la síntesis»). Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
+## Instrucciones para el vídeo
+
+- Pizarra: izquierda refrán y 4 pegatinas; centro planos (Y,i) y (U,π) por capas; derecha IS, LM y DA recuadradas. (11/11/2026)

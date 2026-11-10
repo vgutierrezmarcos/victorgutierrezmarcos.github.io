@@ -199,6 +199,12 @@ Todos consultados el 8/11/2026 (detalle y URL en `_trabajo/propuestas-datos.md`)
 - **Remisiones nuevas**: 3.A.1, 3.A.10, 3.A.22, 3.A.32, 3.B.11, 3.B.12, 3.B.14, 3.B.15, 3.B.17, 3.B.20, 3.B.21, 3.B.22, 3.B.23, 3.B.24, 3.B.25, 3.B.26, 3.B.27, 3.B.43, 4.A.22 y 4.B.18.
 - **Pegatinas del tema**, para añadirlas a CRITERIOS § 8 (`canon-pendiente.md`): «quien no arriesga, no gana» (enganche), «camarón que se duerme, se lo lleva la corriente», «ande yo caliente, y ríase la gente», «lo que no puede ser no puede ser, y además es imposible», «sube por la escalera y baja en ascensor» y «en todas partes cuecen habas».
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 10 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): anexos A y D: corte tras el punto, con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## Dudas abiertas
 
 El artifact de dudas no está disponible en esta sesión: en cada duda se ha aplicado la opción recomendada.
@@ -264,6 +270,8 @@ El artifact de dudas no está disponible en esta sesión: en cada duda se ha apl
 - **No restaurados**: FVP Trade, «Understanding Forex Quotes» (el dominio ya no responde y no hay dirección nueva); la «noticia» de Deutsche Bank Research (el enlace lleva a la portada; sin título no se puede localizar); Wikipedia e Investopedia sobre la crítica de Roll: hablan de la crítica de Roll (1977) al CAPM, y la nota de este tema es otro resultado de Roll (1979, la PPA y la eficiencia); esos enlaces van en el 3.B.23, donde está la crítica al CAPM.
 
 ## Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: esquema de los 3 bloques a la izquierda; PCI y PNCI recuadradas en morado arriba a la derecha hasta el final.
 
 - **Sin pizarra**: la introducción y la conclusión. En una esquina: «quien no arriesga, no gana» y «9,5 billones $/día».
   - El enganche abre con el refrán, Volcker (sin comillas), abril de 2025 y la pregunta «¿deja ganar sin arriesgar, o al menos adivina el tipo de cambio de mañana?».

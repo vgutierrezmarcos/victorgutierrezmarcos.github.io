@@ -130,6 +130,12 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P58), `p
   - **3.A.23**: resumir la información asimétrica con la terna y las soluciones públicas de I.3.3, sin repetir los modelos.
   - **3.A.25**: Spence como alternativa al capital humano (coherente); usar y para la educación.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 5 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): nuevo \cortetitulo{} tras «óptima:» en I.2 y II.2; \newline de III → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 1. **Decisiones provisionales del orquestador** (A13-01 a A13-03 del artifact y las demás de la integración), aplicadas con la opción recomendada a la espera de tu respuesta: bloque 0 a la contextualización y 3 bloques (D1); caso 2 cantado con una sola caja Z → T, casos 1 y 3 de palabra (D2); Laffont-Tirole remitido al 3.A.17 (D3); enganche con los 2 refranes y SVB (D4); tipos A/B y ν (D5, D6); principal neutral en el cuerpo y u_P solo en el anexo (D7); sin «Tema de Juan Luis Cordero Tarifa» en la bibliografía (D8). La anécdota de los capitanes romanos (sin fuente) se sustituye por la cita de Adam Smith; la cita de Schumpeter en Laffont-Martimort se mantiene (localizada en su introducción).
@@ -183,6 +189,7 @@ En este tema la pizarra es el reto: cada modelo se cuenta alternando la parte **
   - Al final de II.2 quedan en la pizarra el programa (8) a la izquierda, que se conserva hasta el final del tema, y la caja con T. La tabla de los 4 casos, como apoyo.
 - **III (2'30")**: `stiglitz-weiss` en sus 2 paneles a la derecha (rendimiento del banco con máximo en r̂*; oferta que se dobla) y la función E[B_banco] pequeña a la izquierda; se recuerda, señalando el programa (8), que la responsabilidad limitada impide «vender el negocio». Las implicaciones de detalle, las extensiones y la evidencia no se cantan.
 - **Apoyo, no pizarra**: la tabla de clasificación, `seguro-simetrico`, la tabla de los 4 casos y todo lo de los anexos.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Comentarios de Víctor del 19/10/2026
 

@@ -126,6 +126,12 @@ Revisión autónoma (Víctor fuera del 31/10 al 9/11/2026): las dudas llevan apl
   - X10: el 3.A.37 tiene que remitir aquí el ciclo financiero; el 3.A.38 usar el RBC base de II.1 con las mismas etiquetas.
   - Canon: CC1 (ficha `ciclo-financiero`), CC2 (`multiplicador-acelerador`), CC3 (`ciclos-endogenos`), CC4 (Kiyotaki-Moore en `bernanke-gertler`), CC6-CC9 (HP, brecha de crédito, Nordhaus, notación local de Goodwin y Kaldor) y CC11 (pegatinas) quedan para `tema-canon`.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): II: corte movido a «en los modelos / de equilibrio general…» (antes dejaba «de» al final de línea); I, III y III.3: \newline → \cortetitulo{}; anexo C: corte antes de «y los filtros de paso banda». |
+
 ## 7. Dudas abiertas
 
 | Id | Duda | Aplicado (recomendada) | Alternativa |
@@ -174,6 +180,7 @@ No restaurados:
 - **Pizarra** (II y III): en el centro, `irf-rbc` (Y, C, I y L con ρ_A = 0,95), el panel de demanda de `nek-xpi`, `ciclo-financiero-esquema` y `acelerador-financiero`; debajo, a la derecha, la tabla `tab:teorias-ciclo`, que se rellena fila a fila al acabar cada teoría. Apoyo (no se dibujan): `persistencia-mccallum`, `residuo-solow`, `nek-esquema`, `brecha-credito-pib-espana`, `ciclo-financiero-espana`, `recesiones-espana`, `tab:calibracion` y `tab:permanente-transitoria`.
 - **Funciones clave que se conservan**: `eq:samuelson`, `eq:mccallum` y `eq:bgg`, recuadradas a la derecha; el bloque `eq:rbc-*` también se deja escrito durante II.1.
 - **Enganche**: «Siempre que llovió, escampó» con los datos de 2020-2022 frente a 2008-2016. **Idea final**: vuelve al refrán («siempre que llovió, escampó, pero no da igual cuánto tarde») y lo matiza con la histéresis.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas, con la línea del tiempo de las 4 etapas arriba. A la izquierda, el refrán del enganche y las pegatinas, cada una junto a su concepto: «todo lo que sube baja» (el techo y el suelo de \autor{Hicks}), «al mal tiempo, buena cara» (el ciclo real), «después de la calma viene la tempestad» (\autor{Minsky}), «llueve sobre mojado» (el acelerador financiero) y «guarda pan para mayo y leña para abril» (el colchón anticíclico). En el centro, los gráficos: el ciclo alrededor de la tendencia, las regiones del multiplicador-acelerador, las respuestas a una perturbación de productividad, el plano $(x_t,\pi_t)$ con una perturbación de demanda, el ciclo financiero frente al real y la espiral del acelerador financiero. A la derecha, recuadradas y conservadas hasta el final, la ecuación de \autor{Samuelson}, el bloque del ciclo real y la prima de financiación externa; debajo, la tabla del origen, la propagación y la persistencia, que se rellena teoría a teoría (tabla~\ref{tab:teorias-ciclo}).
 
 ## 9. Propuestas aplicadas y rechazadas (parte 1)
 

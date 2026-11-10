@@ -152,6 +152,12 @@ Sin usar (no hacen falta o no se pudieron comprobar): V4 (coste de 2015), V17 (C
   14. **1D01**: escribe la descomposición con $i_t$ implícito, como `eq:descomposicion-deuda` aquí; y cita `BlanchardLeigh2013` y `SargentWallace1981` donde aquí se usan `BlanchardLeigh2013Growth` y `SargentWallace1981Some`: unificar claves en el canon.
   15. **`notacion.md` § 8**: locales nuevas $\psi$, $\psi_0$ (respuesta del superávit a la deuda en Bohn y Leeper; avisada en nota), $s^{\text{antes}}$, $s^{\text{después}}$, $s^*$, $\bar t$ (aritmética), $\mathrm{TBC}_t$, $D^{\mathrm T}$, $D^{\mathrm M}$ (anexo A), $\bar r_{t-1}$ ex post (anexo A) y $\mathrm{ADD}_t$ (ya en la 1D01).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo»; y «la restricción se escribe al empezar» → «se presenta». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): I y III: \newline → \cortetitulo{}; anexo A: corte antes de «del Tesoro y del banco central». |
+
 ## 7. Dudas abiertas
 
 Aplicada en todas la opción recomendada; Víctor puede cambiarlas al volver.
@@ -202,3 +208,4 @@ No restaurados:
 - **Al final**, la pizarra queda con las 2 funciones clave, la matriz de Leeper y las pegatinas.
 - **Conclusión** sin pizarra: empieza por «En conclusión,», recorre las 3 lecturas de la solvencia y termina con la idea final («lo que no son cuentas, son cuentos» y quién paga el déficit).
 - **Enganche**: el refrán, los datos de 2025 (déficit 2,4 %, todo intereses; deuda 100,5 % frente a 87,7 %) y la pregunta. La idea final de la conclusión retoma el refrán y responde con las 4 respuestas de la solvencia.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas. A la izquierda, la pregunta del enganche, el refrán y las pegatinas, cada una junto a su concepto: «no hay plazo que no se cumpla ni deuda que no se pague» (la equivalencia ricardiana), «lo que es de todos no es de nadie» (el fondo común), «quien debe y paga, no debe nada» (la sostenibilidad) y «nadie puede servir a dos señores» (la dominación). En el centro, los gráficos: las sendas de la suavización impositiva, el diagrama de fases de la deuda, la curva de \autor{Laffer} del señoreaje y la matriz de regímenes de \autor{Leeper}. A la derecha, recuadradas y conservadas hasta el final, la restricción en porcentaje del PIB \eqref{eq:restriccion-ratios} y la condición de solvencia \eqref{eq:solvencia}, a la que se vuelve en cada bloque.

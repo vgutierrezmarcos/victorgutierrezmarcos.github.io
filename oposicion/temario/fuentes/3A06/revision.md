@@ -236,3 +236,13 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - **Restaurados**: nota al pie en el objetivo simétrico del BCE con las 2 páginas del Banco de España que enlazaba el original (nota 25 y el enlace de «instrumentos de política monetaria»), con sus direcciones nuevas (`bde.es/wbe/…`). La de la estrategia ya estaba en el `.bib` (`BdE2026EstrategiaBCE`) pero no se citaba; la de los instrumentos es la entrada nueva `BdE2026InstrumentosBCE`.
 - **Ya cubierto**: la página de la Reserva Federal sobre la revisión de su estrategia redirige hoy a la de 2025, que ya se cita (`Fed2025Revision`).
 - **Descartado**: el enlace de Forvo del retrato de Thomas Sargent apuntaba por error a la pronunciación de Kalecki.
+
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Reparto: quitado el plan de pizarra del reparto del cante (zonas izquierda/centro/derecha, qué se borra y qué se queda); se conservan tiempos, refranes, gráficos y funciones clave; «no es realista dibujarla en la pizarra» y «no para dibujarla en la pizarra» reescritos; «(caja de abajo)» → «en la tabla» (4 frases). Títulos: II: corte tras «revolución:» (antes «política / económica»); II.3: corte tras «discrecionalidad:» (antes «(1983)» solo); `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
+## Instrucciones para el vídeo
+
+- Pizarra: izquierda refrán y pegatinas; centro gráficos (expectativas, oferta de Lucas, plano (U,π), shock de productividad); derecha expectativas racionales y oferta de Lucas recuadradas. (11/11/2026)

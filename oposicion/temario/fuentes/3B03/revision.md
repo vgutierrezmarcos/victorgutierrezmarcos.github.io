@@ -120,6 +120,12 @@
 - Contradicciones con otros temas (no tocados): 4.A.20 (Word) repite «Holmström y Tirole (2013)» y los 1,45 billones de dólares; 4.B.10 y 4.B.12 son del temario antiguo y no tratan MM ni la imposición de dividendos; 3.B.1 da el ROE-ROA sin (1 − t_IS). Detalle en `_trabajo/propuestas-coherencia.md`, § 7.
 - `.bib`: las entradas `@legislation` reutilizadas (LSC, LIS, LIRPF, BCE) se han pasado a `@article`, porque el estilo de biblatex no tiene formato para `legislation` y salían vacías en la bibliografía (el 3.B.23, el 1D01, el 3.A.20, el 3.A.22 y el 3.B.25 tienen el mismo problema).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 9 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): II.2: corte tras «coste de capital:», con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## Dudas abiertas
 
 Víctor está fuera y el artifact de dudas no está disponible en esta sesión: se anotan aquí, cada una con la opción recomendada **ya aplicada**.
@@ -170,6 +176,8 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **Descartados**: ninguno.
 
 ## Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: funciones clave a la izquierda todo el tema; números de la empresa y pegatinas a la derecha; panel b de MM dibujado sobre los ejes del panel a tras borrar sus curvas.
 
 - **Enganche**: «no hay que matar la gallina de los huevos de oro» y el recorte del dividendo de Telefónica, con la pregunta «¿se equivocó el mercado?». El dicho, en la esquina superior izquierda hasta el final. **Idea final**: la gallina se alimenta primero con lo de casa, se endeuda mientras el ahorro fiscal compense el riesgo de quiebra y solo conviene dejarle los huevos si los multiplica más deprisa de lo que exigen sus dueños; el recorte de Telefónica se juzgó por lo que decía de la gallina. La introducción y la conclusión, sin pizarra (modo guion); la conclusión empieza por «En conclusión,».
 - **Funciones clave** (columna izquierda, se conservan con `conservar:` de bloque en bloque): V = V_E + V_D con el balance financiero (II.1), `eq:mm` (II.3.2) y `eq:trade-off` (II.3.2 c). En el III se mantienen.

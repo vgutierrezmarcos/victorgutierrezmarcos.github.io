@@ -137,6 +137,12 @@ Propuestas: todas las de coherencia (K1-K35), contenido (C1-C46) y datos (V1-V17
 | Tabla 4 (Corden): ✓ verde en efectos positivos y rojo en negativos; ✗ rojo en positivos y verde en negativos; comprobar el color en HTML/Word | Colores cambiados en las filas de desviación y supresión (las de creación y reducción ya estaban así); la nota de la tabla explica la regla. Comprobado con pandoc y `latex/tcee.lua` sobre una tabla de prueba: en HTML sale con la clase `tcee-verde`/`tcee-rojo`; en Word **no salía** (✓ y × eran fórmulas, y Word no colorea las fórmulas con el estilo de carácter). Se ha añadido a `math_a_texto` de `latex/tcee.lua` el paso de `\checkmark` y `\times` a texto (✓, ×): ahora salen con los estilos «Texto verde» y «Texto rojo». Afecta a todas las tablas del temario con ✓/× en color (mejora). Sobre el saldo: el comentario dice «en el caso a el saldo es negativo»; con la regla de colores el caso a) sale todo en verde (positivo), como dice Corden: se mantiene «Positivo». Duda D-K40. |
 | Gráficos de varios pasos, explicados poco a poco | Los 2 modelos con gráfico por capas del I.2 (Lipsey parcial + Cooper-Massell, 3 gráficos; Lipsey general, 3 gráficos) se cuentan paso a paso, una viñeta por paso que dice qué se dibuja y qué significa. |
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 6 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): I.2: corte tras «sobre el bienestar»; I.3: corte tras «aranceles?», con `\cortetitulo`. Sin `c_K` en el tema. |
+
 ## Dudas abiertas
 
 1. **D-K2**: el bloque 0 de formas va a I.1 con la escalera en la pizarra (recomendada) y las 7 formas al anexo A. Alternativa: llevarlo a la contextualización de la introducción, de palabra.
@@ -168,6 +174,8 @@ Propuestas: todas las de coherencia (K1-K35), contenido (C1-C46) y datos (V1-V17
 - Ninguno descartado.
 
 ## Instrucciones para el vídeo
+
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: 3 columnas: escalera y Viner-Lipsey, tomahawk, gravedad recuadrada.
 
 - **Enganche e idea final**: refrán «Dime con quién andas y te diré quién eres» y el acuerdo UE-Mercosur (provisional desde el 1/5/2026); pregunta: ¿mejora el bienestar suprimir barreras con unos y mantenerlas frente a otros? La idea final responde con el peldaño o escollo y retoma el refrán («depende de con quién se ande y de para qué»).
 - **Introducción y conclusión**, en `modo: guion`, sin pizarra. La conclusión empieza por «En conclusión,».

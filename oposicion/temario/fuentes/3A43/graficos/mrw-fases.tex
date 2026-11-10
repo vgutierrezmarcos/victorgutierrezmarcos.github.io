@@ -13,17 +13,17 @@
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
   \path (-0.9,-0.75) rectangle (8.0,6.6);
   % 1: ejes
-  \capa{1}{\ejes{$k$}{$h$}{6.8}{6.4}}
+  \capa{1}{\ejes{$\tilde k$}{$\tilde h$}{6.8}{6.4}}
   % 2: lugar dk/dt = 0 (convexo)
   \capa{2}{\draw[curva1] plot[domain=0:4.2,samples=60] (\x,{\x*\x/3})
-      node[etiqueta,above,text=tceemorado] {$\dot k=0$};}
+      node[etiqueta,above,text=tceemorado] {$\dot{\tilde k}=0$};}
   % 3: lugar dh/dt = 0 (cóncavo)
   \capa{3}{\draw[curva2] plot[domain=0:6.3,samples=120] (\x,{sqrt(3*\x)})
-      node[etiqueta,right,text=tceeazul] {$\dot h=0$};}
+      node[etiqueta,right,text=tceeazul] {$\dot{\tilde h}=0$};}
   % 4: estado estacionario y proyecciones
   \capa{4}{\node[punto] (E) at (3,3) {};
     \node[etiqueta,below right] at (E) {$E$};
-    \proyeccion{(E)}{$k^*$}{$h^*$}}
+    \proyeccion{(E)}{$\tilde k^*$}{$\tilde h^*$}}
   % 5: flechas de la dinámica en las 4 regiones
   \capa{5}{
     % encima de los 2 lugares: k sube, h baja
@@ -36,7 +36,7 @@
     \draw[dir] (5.4,1.6) -- ++(-0.55,0); \draw[dir] (5.4,1.6) -- ++(0,0.55);}
   % 6: trayectoria de convergencia desde un punto inicial
   \capa{6}{\node[punto,fill=tceerojo] at (0.6,5.2) {};
-    \node[etiqueta,right,text=tceerojo] at (0.6,5.2) {$(k_0,h_0)$};
+    \node[etiqueta,right,text=tceerojo] at (0.6,5.2) {$(\tilde k_0,\tilde h_0)$};
     \draw[->,thick,tceerojo] plot[smooth] coordinates {(0.600,5.200) (0.683,5.035) (0.766,4.883) (0.847,4.741) (0.926,4.611) (1.022,4.460) (1.116,4.323) (1.206,4.198) (1.309,4.062) (1.407,3.941) (1.514,3.814) (1.615,3.702) (1.722,3.590) (1.832,3.481) (1.943,3.378) (2.061,3.276) (2.181,3.181) (2.303,3.094) (2.431,3.014) (2.566,2.945) (2.709,2.898) (2.859,2.901)};}
 \end{tikzpicture}
 \end{document}

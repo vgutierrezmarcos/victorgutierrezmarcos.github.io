@@ -1,0 +1,67 @@
+% Una subida del tipo de interés en el modelo de Fisher: la recta gira sobre
+% la dotación A. Elaboración propia a partir de Fisher (1930) y Romer (2019),
+% cap. 8. Mismo código que el gráfico del 3.A.33 (ejes, escala, estilos, letras):
+%   1 + r = 1,2; dotación A = (Y_1, Y_2) = (5; 1,5); beta = 1/1,2 (r = rho)
+%   recta inicial C_2 = 1,5 - 1,2 (C_1 - 5): W = 6,25, (1+r) W = 7,5
+% Utilidad CRRA con theta = 1/2 (ESI = 2), u = 2 raíz(C), para que el efecto
+% sustitución se vea (con ln C, H queda casi encima de C):
+%   U = raíz(C_1) + beta raíz(C_2); curva de nivel K: C_2 = 1,44 (K - raíz(C_1))^2
+%   Euler: C_2/C_1 = [beta (1+r)]^2
+%   óptimo inicial C = (3,409; 3,409) sobre la bisectriz; U_1: K = 3,3850
+% Subida a 1 + r' = 1,8, giro sobre A:
+%   recta nueva C_2 = 1,5 - 1,8 (C_1 - 5): W' = 5,8333, (1+r') W' = 10,5
+%   óptimo nuevo C': C_2 = 2,25 C_1, C_1 = W'/2,25 = 2,5926, C_2 = 5,8333
+%     U_2: K = 3,6228 > 3,3850 (el prestamista gana)
+%   punto H (compensación de Hicks): tangencia de U_1 con pendiente -1,8,
+%     C_2 = 2,25 C_1 sobre U_1: H = (2,2633; 5,0925)
+%     recta compensada C_2 = 5,0925 - 1,8 (C_1 - 2,2633)
+%   C_1: 3,409 (C) -> 2,263 (H): sustitución; 2,263 -> 2,593 (C'): renta + riqueza
+%   (positivo: el hogar presta); efecto total negativo (domina la sustitución).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Pasos: fisher-tipo-interes-paso1 (capas 1-3) y -paso2 (capas 1-5). En los pasos
+% (\def\tceefantasma), lo que aún no se ha dibujado ocupa su sitio sin verse.
+\ifdefined\tceefantasma
+  \renewcommand{\capa}[2]{\ifnum#1>\tceepaso\relax\begin{scope}[opacity=0]#2\end{scope}\else#2\fi}
+\fi
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.75,
+    declare function={recta(\x)=1.5-1.2*(\x-5); rectanueva(\x)=1.5-1.8*(\x-5);
+      compensada(\x)=5.0925-1.8*(\x-2.2633);
+      u1(\x)=1.44*(3.3850-sqrt(\x))^2; u2(\x)=1.44*(3.6228-sqrt(\x))^2;}]
+  % 1: ejes: renta y consumo de cada periodo
+  \capa{1}{\ejes{$Y_1,\ C_1$}{$Y_2,\ C_2$}{8.6}{11.2}}
+  % 2: la dotación A = (Y_1, Y_2), con más renta hoy
+  \capa{2}{\node[punto] (A) at (5,1.5) {};}
+  \capa{2}{\node[etiqueta,below left] at (A) {$A$};}
+  \capa{2}{\draw[guia] (0,1.5) node[left,text=black] {$Y_2$} -| (5,0) node[below,text=black] {$Y_1$};}
+  % 3: recta inicial por A, pendiente -(1+r), y óptimo C (r = rho: sobre la bisectriz)
+  \capa{3}{\draw[guia] (0,0) -- (6.8,6.8) node[etiqueta,above right,text=tceegris] {$C_1=C_2$};}
+  \capa{3}{\draw[curva2] (0,{recta(0)}) -- node[pos=0.2,sloped,anchor=north,yshift=-7pt,etiqueta,font=\footnotesize,text=tceeazul] {pendiente $-(1+r)$} (6.25,0);}
+  \capa{3}{\node[etiqueta,left] at (0,{recta(0)}) {$(1+r)\overline{W}$};}
+  \capa{3}{\node[etiqueta,below right=0pt and 0pt] at (6.25,0) {$\overline{W}$};}
+  \capa{3}{\draw[curva3] plot[domain=1.5:7.2,samples=60] (\x,{u1(\x)}) node[etiqueta,right] {$U_1$};}
+  \capa{3}{\node[punto] (C) at (3.409,3.409) {};}
+  \capa{3}{\node[etiqueta,right=3pt] at (C) {$C$};}
+  % 4: sube r: la recta gira sobre A y se hace más inclinada
+  \capa{4}{\draw[curvanueva] (0,{rectanueva(0)}) -- node[pos=0.15,sloped,anchor=north,yshift=-7pt,etiqueta,font=\footnotesize,text=tceerojo] {pendiente $-(1+r')$} (5.8333,0);}
+  \capa{4}{\node[etiqueta,left] at (0,{rectanueva(0)}) {$(1+r')\overline{W}'$};}
+  \capa{4}{\node[etiqueta,below] at (5.8333,0) {$\overline{W}'$};}
+  % 5: recta compensada, paralela a la nueva y tangente a U_1 en H
+  \capa{5}{\draw[guia,thick,dash pattern=on 5pt off 2.5pt] plot[domain=1.6:3.4] (\x,{compensada(\x)});}
+  \capa{5}{\node[punto] (H) at (2.2633,5.0925) {};}
+  \capa{5}{\node[etiqueta,below right=0pt and 0pt] at (H) {$H$};}
+  % 6: U_2 tangente a la nueva recta en C'
+  \capa{6}{\draw[curva1] plot[domain=1.75:6.9,samples=60] (\x,{u2(\x)}) node[etiqueta,right] {$U_2$};}
+  \capa{6}{\node[punto] (C') at (2.5926,5.8333) {};}
+  \capa{6}{\node[etiqueta,above right] at (C') {$C'$};}
+  \capa{6}{\draw[guia] (0,5.8333) node[left,text=black] {$C_2'$} -- (C');}
+  % 7: descomposición del cambio de C_1 bajo el eje
+  \capa{7}{\draw[guia] (C) -- (3.409,-0.5);}
+  \capa{7}{\draw[guia] (H) -- (2.2633,-1.15);}
+  \capa{7}{\draw[guia] (C') -- (2.5926,-1.15);}
+  \capa{7}{\draw[->,thick,tceerojo,>={Stealth[length=1.5mm]}] (3.409,-0.5) -- (2.2633,-0.5) node[etiqueta,left,font=\footnotesize,text=tceerojo] {sustitución};}
+  \capa{7}{\draw[->,thick,tceerojo,>={Stealth[length=1.5mm]}] (2.2633,-1.15) -- (2.5926,-1.15) node[etiqueta,right,font=\footnotesize,text=tceerojo] {renta $+$ riqueza};}
+\end{tikzpicture}
+\end{document}

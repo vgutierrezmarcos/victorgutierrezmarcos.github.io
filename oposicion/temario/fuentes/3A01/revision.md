@@ -188,6 +188,12 @@ Aplicados en la fuente (`3A01.tex`, `3A01.bib`, `graficos/mapa-temario.tex`) y e
 
 `verificar-tema.py 3A01` (sin construir): sin errores de fuente; solo pide volver a construir el PDF, el HTML, el Word y la ficha. Llaves, entornos, `\ref` y `\label` cuadran; las 4 claves nuevas del `.bib` (Akerlof, 1970; Shapiro y Stiglitz, 1984; Nobel 1990; Mirowski, 1989) están añadidas. Copia de las fuentes anteriores en `_trabajo/`.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Párrafo del reparto: quitado el plan de pizarra del reparto del cante (zonas izquierda/centro/derecha, qué se borra y qué se queda); se conservan tiempos, refranes, gráficos y funciones clave (6 frases); «En la pizarra basta con la escalera…» → «Para el cante basta…». Títulos: III ya cortado tras la coma; `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
 ## Dudas abiertas
 
 Todas resueltas con la opción recomendada; Víctor puede cambiarlas.
@@ -241,3 +247,4 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - **Bloque III** (rejilla 40|60): la `\funcionclave` β-δ `eq:beta-delta`, recuadrada arriba a la izquierda, con `conservar: [1]` hasta el final de III.1; a su lado, el gráfico `descuento` trazado por capas (imprescindible) y la RMS de palabra, con el ejemplo de 100 y 110 euros en 3 líneas; después, el boceto de la `funcion-valor` (imprescindible, con λ ≈ 2,25); la lista de desviaciones en columna (preferencias, creencias, decisiones), con sus pegatinas («Una cosa es predicar y otra dar trigo», «Virgencita, que me quede como estoy», «El que se quema con leche…», «El que calla otorga»); el gráfico de replicación, de **apoyo**. En III.2, de palabra con «Ver para creer» en la pizarra; en III.3, de palabra, con el gráfico de Hamermesh como **apoyo** y la palabra «¿evolución o revolución?» junto al dibujo de Lakatos, que se recupera como boceto.
 - **Funciones clave que se conservan**: ninguna en I y II; en el III, la del descuento cuasihiperbólico, desde que sale hasta el final de III.1.
 - **Conclusión**: empieza por «En conclusión,»; la idea final retoma el refrán y la reina y responde con Lakatos (un cinturón protector más ancho y más realista).
+- Pizarra del cante (antes en el texto): refrán en una esquina; bloque I, escalera de 8 definiciones a la izquierda, tabla positiva/normativa a la derecha y árbol micro-macro abajo; bloque II, hitos arriba y Kuhn/Lakatos debajo, se borra al pasar a los debates; descuento cuasihiperbólico recuadrado arriba a la izquierda. (11/11/2026)
