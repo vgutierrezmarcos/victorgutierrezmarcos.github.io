@@ -31,13 +31,14 @@ export interface Env {
   URL_PREGUNTAS: string;
   /** oposicion/proceso.json de la web (los documentos de cada proceso selectivo). */
   URL_PROCESO: string;
-  URL_REVISADOS: string;
   /** Carpeta de la skill desplegada en la web (con barra final): de ahí lee leer_skill. */
   URL_SKILL: string;
   /** Índice de fuentes por tema (scripts/fuentes-temas.py). */
   URL_FUENTES: string;
   ORIGENES_LOGIN: string;
   CLAVE_CIFRADO: string;
+  /** Contadores anónimos de uso (Workers Analytics Engine): herramienta, IA, oposición, resultado y duración. Sin uid ni contenido. */
+  USO?: AnalyticsEngineDataset;
 }
 
 /** Lo que guarda la biblioteca OAuth (cifrado) con cada concesión y entrega en ctx.props. */
@@ -95,8 +96,14 @@ async function bancoDePreguntas(env: Env): Promise<Banco> {
   return banco;
 }
 
-function contextoDe(env: Env, props: Props, clientId = ''): Contexto {
+function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<unknown>) => void): Contexto {
   return {
+    medir(d) {
+      if (!env.USO) return;
+      const apuntar = async () => env.USO!.writeDataPoint({ indexes: [d.herramienta], blobs: [d.herramienta, await this.cliente(), d.oposicion, d.ok ? 'ok' : 'error'], doubles: [d.ms] });
+      const p = apuntar().catch(() => undefined);
+      espera?.(p);
+    },
     uid: props.uid,
     email: props.email,
     async cliente() {
@@ -162,7 +169,7 @@ const mcpHandler = {
     const ctx = contexto as OAuthResourceContext<Props>;
     const props = ctx.props;
     if (!props?.uid || !props.refresh) return new Response('Unauthorized', { status: 401 });
-    return responderMcp(request, contextoDe(env, props, ctx.auth.clientId ?? ''), {
+    return responderMcp(request, contextoDe(env, props, ctx.auth.clientId ?? '', (p) => contexto.waitUntil(p)), {
       token: ctx.auth.token,
       clientId: ctx.auth.clientId ?? '',
       scopes: ctx.auth.scope ?? [],

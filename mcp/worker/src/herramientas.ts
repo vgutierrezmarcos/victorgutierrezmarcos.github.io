@@ -78,6 +78,8 @@ export interface Contexto {
   cliente(): Promise<string>;
   /** Revoca las concesiones OAuth del opositor y borra su token de Firebase guardado. */
   desconectar(): Promise<void>;
+  /** Apunta el uso de una herramienta, sin nada que identifique al usuario (qué herramienta, si fue bien y cuánto tardó). */
+  medir?(dato: { herramienta: string; oposicion: string; ok: boolean; ms: number }): void;
 }
 
 export class ErrorSesion extends Error {}
@@ -255,7 +257,7 @@ export function crearServidor(ctx: Contexto): McpServer {
     {
       name: 'Oposición TCEE · DCE',
       title: 'Oposición TCEE · DCE',
-      version: '0.1.0',
+      version: '1.0.0',
       // Icono y web del servidor (MCP 2025-11-25): los clientes que los admiten enseñan el icono de la app junto al conector.
       websiteUrl: 'https://www.victorgutierrezmarcos.es/oposicion/economia.html',
       icons: [
@@ -267,6 +269,22 @@ export function crearServidor(ctx: Contexto): McpServer {
       instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
     },
   );
+
+  // Medición anónima del uso: cada herramienta se envuelve para apuntar su nombre, si fue bien y cuánto tardó.
+  const registrar = server.registerTool.bind(server) as (...a: unknown[]) => unknown;
+  (server as unknown as { registerTool: (...a: unknown[]) => unknown }).registerTool = (nombre, config, manejador) =>
+    registrar(nombre, config, async (args: unknown, extra: unknown) => {
+      const t0 = Date.now();
+      let ok = false;
+      try {
+        const r = await (manejador as (a: unknown, e: unknown) => Promise<CallToolResult>)(args, extra);
+        ok = r?.isError !== true;
+        return r;
+      } finally {
+        const op = (args as { oposicion?: unknown } | null)?.oposicion;
+        ctx.medir?.({ herramienta: String(nombre), oposicion: typeof op === 'string' ? op : '', ok, ms: Date.now() - t0 });
+      }
+    });
 
   server.registerTool(
     'leer_skill',
@@ -1148,7 +1166,8 @@ export function crearServidor(ctx: Contexto): McpServer {
     'agendar_clase',
     {
       title: 'Agendar una clase en la app',
-      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+      // Mundo abierto: la petición o la clase le llega a otra persona (el preparador o el alumno).
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
       description:
         'Agenda una clase en la app. Como OPOSITOR («como»: «opositor», «con»: uid del preparador): pide la clase a su preparador (una reserva que él acepta en su app; al aceptarla, aparece en las dos agendas con la modalidad y los temas) y fija esos temas para la clase en la agenda del opositor. Como PREPARADOR («como»: «preparador», «con»: id del alumno): crea la clase en su agenda y en la del alumno (si está enlazado), con los temas como propuesta que el alumno acepta o cambia. Antes, preparar_clase y la confirmación explícita del usuario con el resumen (día, hora, duración, modalidad, temas, con quién). Hora de Madrid.',
       inputSchema: {

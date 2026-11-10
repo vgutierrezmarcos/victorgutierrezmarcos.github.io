@@ -1327,6 +1327,7 @@ def main():
     p.add_argument('--comprobar', action='store_true', help='no escribe: dice si el ZIP está al día con el manifiesto')
     p.add_argument('--solo', nargs='+', metavar='T', help='solo estos temas (3A08 3A09 1D01…)')
     p.add_argument('--salida', metavar='DIR', help='carpeta de construcción (por defecto, una temporal)')
+    p.add_argument('--kv', action='store_true', help='al terminar, sube el material exclusivo al KV del conector (mcp/publicar-contenido.py)')
     p.add_argument('--ligera', action='store_true',
                    help=f'además del ZIP completo, el ZIP «ligero» para el conector MCP ({ZIP_LIGERA}): sin temas, dictamen ni canon')
     p.add_argument('--solo-test', action='store_true',
@@ -1386,6 +1387,12 @@ def main():
     print(f'SKILL.md: {lineas_skill} líneas; description: {long_desc} caracteres')
     print(f'ZIP: {os.path.relpath(zip_destino, WT)} ({kb(tamano_zip)}); manifiesto: {os.path.relpath(REVISION, WT)} '
           f'(skill {manifiesto["skill"]["version"]})')
+    # El material exclusivo no va en la copia de la web: el conector lo sirve desde su KV. Antes de «aligerar»
+    # (que vacía la carpeta de construcción, de donde lee publicar-contenido.py).
+    if args.kv and not errores:
+        subprocess.run([sys.executable, os.path.join(RAIZ, 'mcp', 'publicar-contenido.py')], check=True)
+    elif not args.kv:
+        print('Recuerda: el conector sirve los temas desde su KV. Para subirlos, repite con --kv (o python3 mcp/publicar-contenido.py).')
     if args.ligera:  # al final: vacía temas/, dictamen/ y canon/ de la carpeta de construcción
         zip_ligera, tamano_ligera = aligerar(destino)
         print(f'ZIP ligero (conector MCP): {os.path.relpath(zip_ligera, WT)} ({kb(tamano_ligera)})')

@@ -276,6 +276,15 @@ describe('herramientas', () => {
     expect((await c.callTool({ name: 'anotar_tema', arguments: { tema: '3.A.8' } })).isError).toBe(true);
   });
 
+  it('cada llamada se mide sin datos del usuario: herramienta, oposición, resultado y duración', async () => {
+    const medidas: Array<{ herramienta: string; oposicion: string; ok: boolean; ms: number }> = [];
+    const c = await cliente({ ...ctx, medir: (d) => medidas.push(d) });
+    await c.callTool({ name: 'leer_cantes', arguments: { oposicion: 'dce' } });
+    await c.callTool({ name: 'leer_tema', arguments: { tema: 'no-es-un-tema' } });
+    expect(medidas.map((m) => [m.herramienta, m.oposicion, m.ok])).toEqual([['leer_cantes', 'dce', true], ['leer_tema', '', false]]);
+    expect(Object.keys(medidas[0]).sort()).toEqual(['herramienta', 'ms', 'ok', 'oposicion']);
+  });
+
   it('una lectura vacía avisa si los datos están en la otra oposición', async () => {
     dbDce.docs.set('cantes/d1', { id: 'd1', fecha: '2026-10-10T18:00:00.000', estado: 'hecho', temas: ['1.A.1'] });
     db.docs.clear();

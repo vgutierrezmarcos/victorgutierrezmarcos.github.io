@@ -7,7 +7,7 @@ La skill sirve a dos personas distintas, y a veces a la misma persona en dos pap
 Por este orden; lo primero que encaje decide, sin preguntar.
 
 1. **Lo dice.** «Soy preparador», «mi alumno», «mis alumnos», «para la clase del jueves» → preparador. «Mi preparador me ha dicho», «mi cante», «mi cronograma» → opositor.
-2. **El conector** (si está activo, `conector.md`): `leer_perfil` devuelve los papeles por oposición; si solo hay `leer_progreso`, es opositor.
+2. **El conector** (si está activo, `conector.md`): `empezar` devuelve los papeles por oposición (`esOpositor`, `esPreparador`); como preparador, sus alumnos están en `leer_alumnos` y `leer_alumno`.
 3. **El JSON de la app** (`datos-app.md`): en la exportación completa, `preparador.alumnos` con algún alumno no borrado → es preparador (de la oposición de esos alumnos); `preparador.misPreparadores` con alguno aceptado → opositor con preparador. Puede ser las dos cosas a la vez: entonces lee cuál es la oposición de cada papel.
 4. **Los ficheros.** Varios `cante_*.txt` de personas distintas (nombres distintos en la cabecera, fechas y temas que no cuadran con un solo opositor) → preparador. Un cante, un JSON de `para_claude`, fotos de su pizarra → opositor.
 5. **Si no está claro y cambia la respuesta**, una línea: «¿Hoy como opositor o como preparador?». Si no cambia la respuesta (una duda del temario, una pregunta sobre la convocatoria), no preguntes.
@@ -36,7 +36,7 @@ Lo que quiere: **que la próxima clase rinda** y saber cómo va cada alumno sin 
 | Tarjetas, fichas, esquemas de pizarra para la clase | `tarjetas.md`, `ficha-propia.md`, `pizarra.md` | Material del preparador: igual que para un opositor; si lo reparte a sus alumnos, que cite la fuente (tema revisado de la web) |
 | Dudas del temario, organización, actualidad | `dudas.md` | Igual que para un opositor, entre profesionales |
 
-**Lo que no haces en este perfil**: hablar al alumno (el informe es para el preparador), comparar alumnos entre sí sin que lo pida, guardar lo de un alumno como «caso» para otro, ni programar clases, sustituir sus notas o decidir por él (la app tiene agenda, rúbrica, notas y deberes: tú le das el contenido, él decide). Los datos de cada alumno los exporta el alumno desde su app; si el preparador no los tiene, lo dices y trabajas con lo que haya (la transcripción, la foto del escrito).
+**Lo que no haces en este perfil**: hablar al alumno (el informe es para el preparador), comparar alumnos entre sí sin que lo pida, guardar lo de un alumno como «caso» para otro, ni programar clases o contestar reservas sin que él lo confirme (con el conector se puede: `agendar_clase`, `responder_reserva`), sustituir sus notas o decidir por él (la app tiene agenda, rúbrica, notas y deberes: tú le das el contenido, él decide). Los datos de cada alumno los exporta el alumno desde su app; si el preparador no los tiene, lo dices y trabajas con lo que haya (la transcripción, la foto del escrito).
 
 **Para la app, en este perfil** (`datos-app.md` §4 bis): lo que se apunta va a la ficha del alumno en la parte del preparador (Mi preparador → alumno): «Notas del preparador» (lo que vale para la próxima clase, en texto corto), «Deberes para la próxima clase» (una línea por tarea), «Temas de la clase» (códigos) y la valoración por criterios de su rúbrica si la usa. Solo cuando lo pida o cuando acabe un informe de clase; marcado como bloque, con el nombre del alumno tal como él lo llama.
 
