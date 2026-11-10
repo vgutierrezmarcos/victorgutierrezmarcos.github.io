@@ -1,0 +1,74 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Sociedades no financieras de Estados Unidos, 1980-2025, en % del PIB:
+% emisión neta de acciones (barras; negativa = recompras y compras de
+% empresas pagadas en efectivo mayores que las emisiones) y dividendos netos
+% pagados (línea). Reserva Federal, Z.1, tabla F.103, y PIB del BEA, vía FRED
+% (consulta del 8/11/2026). Último dato (2025): dividendos 4,54 %; emisión
+% neta −1,13 %. La emisión neta es negativa todos los años desde 1994.
+% Paleta: emisión neta negativa, rojo suave; positiva, azul suave; dividendos,
+% morado (como la serie principal en los demás gráficos de datos del tema).
+% Capas «dic» (tikz-tcee.tex): barras → ejes y línea del 0 → línea →
+% puntos → rótulos y leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\colorlet{drnegativa}{tceerojo!45}
+\colorlet{drpositiva}{tceeazul!45}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/dividendos-recompras-eeuu.csv}\drd
+% Los ejes salen en la capa 2, después de las barras
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesdr/.style={hide axis}}
+\else
+  \pgfplotsset{ejesdr/.style={}}
+\fi
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=10cm, height=5.6cm, scale only axis,
+      xmin=1979.4, xmax=2025.6, xtick={1980,1985,...,2025},
+      ymin=-4, ymax=6, ytick={-4,-2,...,6},
+      axis x line*=bottom, axis y line*=left,
+      tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize},
+      label style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      ylabel={\% del PIB},
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.12)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize,
+        /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left,
+      dicapas, ejesdr]
+    % 1: barras de la emisión neta de acciones (negativas y positivas)
+    \capa{1}{
+      \addplot[on layer=dicbarras, forget plot, ybar, bar width=0.72, bar shift=0pt, dicbarra=drnegativa]
+        table[x=anio, y expr={min(\thisrow{emision_neta_pib},0)}] {\drd};
+      \addplot[on layer=dicbarras, forget plot, ybar, bar width=0.72, bar shift=0pt, dicbarra=drpositiva]
+        table[x=anio, y expr={max(\thisrow{emision_neta_pib},0)}] {\drd};
+    }
+    % 2: ejes (los dibuja el entorno axis) y línea del 0
+    \capa{2}{\dicraya{(1979.4,0) (2025.6,0)}}
+    % 3: dividendos netos pagados
+    \capa{3}{\addplot[forget plot, diclineahalo=tceemorado, sharp plot, mark=none]
+        table[x=anio, y=dividendos_pib] {\drd};}
+    % 4: puntos y etiquetas de 2025; leyenda
+    \capa{4}{
+      \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=tceemorado] coordinates {(2025,4.54)};
+      \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=tceerojo] coordinates {(2025,-1.13)};
+      \dicrotulo[font=\footnotesize, anchor=west, xshift=4pt, text=tceemorado]{(2025,4.54)}{4,5~\%}
+      \dicrotulo[font=\footnotesize, anchor=west, xshift=4pt, text=tceerojo]{(2025,-1.13)}{$-$1,1~\%}
+      \addlegendimage{leyenda linea corta, very thick, tceemorado}
+      \addlegendentry{Dividendos netos pagados}
+      \addlegendimage{area legend, fill=drnegativa, draw=drnegativa!65!black}
+      \addlegendentry{Emisión neta negativa}
+      \addlegendimage{area legend, fill=drpositiva, draw=drpositiva!65!black}
+      \addlegendentry{Emisión neta positiva}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Compensación bilateral (malla) frente a compensación con una ECC (estrella).
+% 6 participantes en hexágono de radio 1,9: 6·5/2 = 15 exposiciones frente a 6.
+\begin{tikzpicture}[tcee,
+    part/.style={circle,draw=tceeazul,thick,fill=tceeazul!15,minimum size=0.8cm,inner sep=0pt,font=\small},
+    ecc/.style={circle,draw=tceemorado,thick,fill=tceemorado,text=white,minimum size=1.15cm,inner sep=0pt,font=\small\bfseries},
+    malla/.style={thick,tceegris!80},
+    estrella/.style={thick,tceemorado}]
+  % 1: participantes del panel izquierdo
+  \capa{1}{\foreach \l [count=\i from 0] in {A,B,C,D,E,F}
+    \node[part] (I\l) at ({90+60*\i}:1.9) {\l};}
+  % 2: malla bilateral: todos con todos; rótulo del panel
+  \capa{2}{\foreach \a/\b in {A/B,A/C,A/D,A/E,A/F,B/C,B/D,B/E,B/F,C/D,C/E,C/F,D/E,D/F,E/F}
+      \draw[malla] (I\a) -- (I\b);
+    \node[etiqueta,font=\normalsize] at (0,2.9) {Compensación bilateral (OTC)};}
+  \begin{scope}[xshift=6.4cm]
+    % 3: participantes del panel derecho
+    \capa{3}{\foreach \l [count=\i from 0] in {A,B,C,D,E,F}
+      \node[part] (D\l) at ({90+60*\i}:1.9) {\l};}
+    % 4: la ECC en el centro y la estrella; rótulo del panel
+    \capa{4}{\node[ecc] (ECC) at (0,0) {ECC};
+      \foreach \l in {A,B,C,D,E,F} \draw[estrella] (ECC) -- (D\l);
+      \node[etiqueta,font=\normalsize] at (0,2.9) {Con una cámara (ECC)};}
+  \end{scope}
+  % 5: lo que supone cada esquema
+  \capa{5}{\node[etiqueta,font=\footnotesize,align=center] at (0,-2.85)
+      {$n(n-1)/2$ exposiciones;\\riesgo de contrapartida con cada una};
+    \node[etiqueta,font=\footnotesize,align=center] at (6.4,-2.85)
+      {$n$ exposiciones, todas frente a la ECC;\\márgenes y liquidación diaria};}
+\end{tikzpicture}
+\end{document}

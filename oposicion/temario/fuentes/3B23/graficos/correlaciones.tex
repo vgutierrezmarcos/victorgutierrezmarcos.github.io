@@ -1,0 +1,26 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Combinaciones de 2 activos según su correlación, sin ventas en corto.
+% A: sigma_A = 1,6, E[r_A] = 1,3; B: sigma_B = 4, E[r_B] = 4,2.
+% corr = -1: riesgo nulo con w = sigma_B/(sigma_A+sigma_B), E = 2,1286.
+% Curva intermedia: corr = -0,3 (mínima varianza en (1,29; 1,88)).
+\begin{tikzpicture}[tcee]
+  \capa{1}{\ejes{$\sigma_p$}{$\mathbb{E}[r_p]$}{5.6}{5}}
+  \capa{2}{\node[punto] (A) at (1.6,1.3) {};
+    \node[etiqueta,below right] at (A) {$A$};
+    \node[punto] (B) at (4,4.2) {};
+    \node[etiqueta,above right] at (B) {$B$};}
+  \capa{3}{\draw[curva1] (1.6,1.3) -- (4,4.2);
+    \node[etiqueta,right,tceemorado] at (3.05,2.75) {$\mathrm{corr}=1$};}
+  \capa{4}{\draw[curva3] plot[domain=0:1,samples=80,smooth]
+      ({sqrt(\x*\x*2.56+(1-\x)*(1-\x)*16-2*0.3*\x*(1-\x)*6.4)},{1.3*\x+4.2*(1-\x)});
+    \node[punto,inner sep=1pt,fill=tceeverde] at (1.29,1.88) {};
+    \draw[thin,tceeverde] (1.36,2.15) -- (1.05,0.95)
+      node[etiqueta,below,tceeverde] {$-1<\mathrm{corr}<1$};}
+  \capa{5}{\draw[curva2] (0,2.1286) -- (4,4.2);
+    \draw[thick,dashed,tceeazul] (1.6,1.3) -- (0,2.1286);
+    \node[punto,fill=tceeazul] at (0,2.1286) {};
+    \node[etiqueta,above,tceeazul] at (1.25,3.0) {$\mathrm{corr}=-1$};}
+\end{tikzpicture}
+\end{document}

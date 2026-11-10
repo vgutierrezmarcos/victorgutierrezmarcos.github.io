@@ -1,0 +1,68 @@
+% De Haberler a la curva de oferta neta de B, paso a paso (pareja de
+% haberler-oferta-neta-a.tex). Es el país B de ofertas-netas.tex:
+%   FPP X^2/9 + Y^2/144 = 1 (sesgada hacia Y); la misma CIS Cobb-Douglas
+%   simétrica; (p_X/p_Y)^B_aut = 4, E^B_aut = (2,121; 8,485), CIS_0: XY = 18.
+%   Con RRI = p, d = sqrt(p^2 + 16): P = (3p/d, 48/d); renta 3d (en Y);
+%   C = (3d/(2p), 3d/2). Importa X_C - X_P = 3d/(2p) - 3p/d de X y exporta
+%   Y_P - Y_C = 48/d - 3d/2 de Y.
+%   p = 3: P = (1,8; 9,6), C = (2,5; 7,5): importa 0,7 de X, exporta 2,1 de Y.
+%   p = 2: P = (1,342; 10,733), C = (3,354; 6,708): importa 2,012, exporta
+%          4,025 (justo lo que A quiere vender y comprar con p = 2).
+%   En el plano del comercio, abscisas = X (lo que B importa), ordenadas = Y
+%   (lo que B exporta): los mismos ejes que ON_A, para poder juntarlas.
+% Elaboración propia a partir de Haberler (1936), Marshall (1879) y Gandolfo
+% (2014), cap. 3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.3cm,y=0.5cm,
+    declare function={db(\p)=sqrt(\p*\p+16); xb(\p)=3*db(\p)/(2*\p)-3*\p/db(\p); yb(\p)=48/db(\p)-3*db(\p)/2;}]
+  % ---------- 1: ejes de los 2 planos ----------
+  \capa{1}{\ejes{$X$}{$Y$}{4.6}{13.2}}
+  \capa{1}{\node[etiqueta,anchor=south] at (2.3,13.8) {plano de los bienes};}
+  \begin{scope}[xshift=7.6cm,x=1.25cm,y=1.25cm]
+    \capa{1}{\ejes{$M^B$ (importación de $X$)}{$E^B$ (exportación de $Y$)}{4.4}{5.0}}
+    \capa{1}{\node[etiqueta,anchor=south] at (2.2,5.45) {plano del comercio};}
+  \end{scope}
+  % ---------- 2: autarquía ----------
+  \capa{2}{\draw[curva2] (0,12) arc[start angle=90,end angle=0,x radius=3,y radius=12];}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south west] at (0.1,12.0) {FPP};}
+  \capa{2}{\draw[curva4] plot[domain=1.45:4.0,samples=60] (\x,{18/\x}) node[etiqueta,below right=-2pt] {$\mathrm{CIS}_0$};}
+  \capa{2}{\draw[thick,tceegris] (1.2,{8.485+4*(2.121-1.2)}) -- (3.3,{8.485-4*(3.3-2.121)}) node[etiqueta,right,font=\footnotesize,text=tceegris] {$p=4$};}
+  \capa{2}{\node[punto] at (2.121,8.485) {};}
+  \capa{2}{\node[etiqueta,below left] at (2.121,8.485) {$E^B_{\mathrm{aut}}$};}
+  \begin{scope}[xshift=7.6cm,x=1.25cm,y=1.25cm]
+    \capa{2}{\draw[guia] (0,0) -- (1.1,4.4) node[etiqueta,above left=0pt and -4pt,text=tceegris,font=\footnotesize] {$p=4$};}
+    \capa{2}{\node[punto] at (0,0) {};}
+  \end{scope}
+  % ---------- 3: RRI = 3 ----------
+  \capa{3}{\draw[curva1] (1.0,{9.6+3*(1.8-1.0)}) -- (4.4,{9.6-3*(4.4-1.8)}) node[etiqueta,right,font=\footnotesize,text=tceemorado] {$p=3$};}
+  \capa{3}{\draw[curva1,thin] plot[domain=1.6:4.4,samples=60] (\x,{18.75/\x});}
+  \capa{3}{\node[punto] at (1.8,9.6) {};}
+  \capa{3}{\node[etiqueta,right,font=\footnotesize] at (1.8,9.6) {$P_1$};}
+  \capa{3}{\node[punto] at (2.5,7.5) {};}
+  \capa{3}{\node[etiqueta,below left,font=\footnotesize] at (2.5,7.5) {$C_1$};}
+  \capa{3}{\fill[area] (1.8,9.6) -- (2.5,9.6) -- (2.5,7.5) -- cycle;}
+  \begin{scope}[xshift=7.6cm,x=1.25cm,y=1.25cm]
+    \capa{3}{\draw[guia,tceemorado] (0,0) -- (1.6,4.8) node[etiqueta,above,font=\footnotesize,text=tceemorado] {$p=3$};}
+    \capa{3}{\node[punto] (Q1) at (0.7,2.1) {};}
+    \capa{3}{\node[etiqueta,right,font=\footnotesize] at (Q1) {$(M_1,E_1)$};}
+  \end{scope}
+  % ---------- 4: RRI = 2 ----------
+  \capa{4}{\draw[curvanueva] (0.6,{10.733+2*(1.342-0.6)}) -- (4.5,{10.733-2*(4.5-1.342)}) node[etiqueta,right,font=\footnotesize,text=tceerojo] {$p=2$};}
+  \capa{4}{\draw[curvanueva,thin] plot[domain=1.75:4.4,samples=60] (\x,{22.5/\x});}
+  \capa{4}{\node[punto] at (1.342,10.733) {};}
+  \capa{4}{\node[etiqueta,right,font=\footnotesize] at (1.342,10.733) {$P_2$};}
+  \capa{4}{\node[punto] at (3.354,6.708) {};}
+  \capa{4}{\node[etiqueta,above right,font=\footnotesize] at (3.354,6.708) {$C_2$};}
+  \capa{4}{\draw[thick,tceerojo] (1.342,10.733) -- (3.354,10.733) -- (3.354,6.708);}
+  \begin{scope}[xshift=7.6cm,x=1.25cm,y=1.25cm]
+    \capa{4}{\draw[guia,tceerojo] (0,0) -- (2.5,5.0) node[etiqueta,right,font=\footnotesize,text=tceerojo] {$p=2$};}
+    \capa{4}{\node[punto] (Q2) at (2.012,4.025) {};}
+    \capa{4}{\node[etiqueta,below right,font=\footnotesize] at (Q2) {$(M_2,E_2)$};}
+  % ---------- 5: la curva de oferta neta de B ----------
+    \capa{5}{\draw[curva2] plot[domain=4:1.6,samples=60] ({xb(\x)},{yb(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{ON}_B$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

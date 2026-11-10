@@ -1,0 +1,129 @@
+tema: 3B03
+fecha_inventario: 2026-11-09
+datos:
+  - id: deuda-snf-pib
+    texto: "había bajado al 61,9~\\% a mediados de 2026, por debajo del 66,1~\\% de la zona del euro"
+    texto_repaso: "61,9\\,\\% (2026); zona del euro 66,1\\,\\%"
+    donde: [3B03.tex, repaso/3B03-repaso.tex]
+    valor: 61.9
+    unidad: "% del PIB (deuda consolidada de las SNF, préstamos y valores)"
+    periodo: 2026-T2
+    fuente: BCE2026QSA
+    organismo: BCE
+    serie: "QSA.Q.N.ES.W0.S11.S1.C.L.LE.F3T4.T._Z.XDC_R_B1GQ_CY._T.S.V.N._T (e I10 para la zona del euro)"
+    url: https://data.ecb.europa.eu/data/datasets/QSA
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: bce-qsa-deuda-snf
+    depende: [datos/deuda-snf-pib.csv, graficos/deuda-snf-pib.tex]
+    frase: "también en la ficha: «Deuda SNF España \\dato{61,9\\,\\% del PIB}{BCE, 2026} (... UEM 66,1\\,\\%)» y «se ha reducido a la mitad desde 2010» (l. 726 del tema)"
+
+  - id: renta-fija-en-deuda-snf
+    texto: "los valores de renta fija son el 14~\\% de la deuda de las empresas españolas, el 18~\\% en la zona del euro y el 59~\\% en Estados Unidos"
+    texto_repaso: "renta fija en su deuda \\dato{14\\,\\%}{BCE} (EE.\\,UU. 59\\,\\%)"
+    donde: [3B03.tex, repaso/3B03-repaso.tex]
+    valor: 14
+    unidad: "% de la deuda de las SNF (fin de año)"
+    periodo: "2025"
+    fuente: BCE2026QSA
+    organismo: BCE y Reserva Federal
+    serie: "QSA (F4 sobre F3T4, S11) y Fed Z.1 L.103 (FRED NCBDBIQ027S, BCNSDODNS)"
+    url: https://data.ecb.europa.eu/data/datasets/QSA
+    periodicidad: anual (dato de fin de año)
+    proxima: 2027-04
+    familia: bce-qsa-deuda-snf
+    depende: [datos/deuda-mercado-snf.csv, graficos/deuda-mercado-snf.tex]
+    nota: "también cita Fed2026Z1"
+
+  - id: sp-grado-especulativo
+    texto: "han pasado del 24~\\% en 1981 al 48~\\% en 2024"
+    texto_repaso: "\\dato{24\\,\\% (1981) $\\to$ 48\\,\\% (2024)}{S\\&P}"
+    donde: [3B03.tex, repaso/3B03-repaso.tex]
+    valor: 48
+    unidad: "% de emisores corporativos calificados con grado especulativo"
+    periodo: "2024"
+    fuente: SP2025DefaultStudy
+    organismo: S&P Global Ratings
+    serie: "Annual Global Corporate Default and Rating Transition Study, tabla 29"
+    url: https://maalot.co.il/Publications/FTS20250331162126.pdf
+    periodicidad: anual
+    proxima: 2027-03
+    familia: sp-impagos
+    depende: [datos/sp-calificaciones-grado.csv, graficos/sp-calificaciones-grado.tex]
+    frase: "ficha, cifras clave: «Grado especulativo \\dato{48\\,\\%}{S\\&P, 2024}»"
+    nota: "posible desfase: la edición con datos de 2025 salió el 18/03/2026 (no accesible sin registro, según el CSV)"
+
+  - id: aaa-no-financieras
+    texto: "solo 2 empresas no financieras conservan la máxima calificación, Microsoft y Johnson \\& Johnson"
+    texto_repaso: "solo 2 no financieras AAA (Microsoft, J\\&J)"
+    donde: [3B03.tex, repaso/3B03-repaso.tex]
+    valor: 2
+    unidad: empresas no financieras de EE. UU. con AAA
+    periodo: mayo 2026
+    fuente: Thoelcke2026AAA
+    organismo: 24/7 Wall St. (S&P Global Ratings)
+    url: https://247wallst.com/investing/2026/05/13/the-2-us-companies-with-a-better-credit-rating-than-uncle-sam-belong-in-every-retirement-portfolio/
+    periodicidad: irregular
+    familia: sp-impagos
+    nota: "fuente secundaria (prensa); conviene contrastar con S&P"
+
+  - id: marf-saldo-vivo
+    texto: "superó en 2025 por primera vez los 10.000 millones de euros de saldo vivo"
+    texto_repaso: "\\dato{$>$10.000 M€ de saldo vivo}{BME, 2025}"
+    donde: [3B03.tex, repaso/3B03-repaso.tex]
+    valor: 10000
+    unidad: millones de euros
+    periodo: "2025"
+    fuente: BME2026InformeMercado
+    organismo: BME
+    serie: "Informe de Mercado de BME, MARF, saldo vivo"
+    url: https://www.bolsasymercados.es/dam/descargas/informes-de-mercado/informe-mercado-bme-2025-es.pdf
+    periodicidad: anual
+    proxima: 2027-02
+    familia: bme-informe-mercado
+
+  - id: recompras-sp500
+    texto: "dedicaron un récord de 1,02 billones de dólares a recomprar acciones, frente a 665.000 millones de dividendos"
+    texto_repaso: "\\dato{1,02 billones de \\$ frente a 665.000 M de dividendos}{12 meses a sept. 2025}"
+    donde: [3B03.tex, repaso/3B03-repaso.tex]
+    valor: 1.02
+    unidad: billones de USD (12 meses)
+    periodo: 12 meses hasta septiembre de 2025
+    fuente: SPDJI2025Buybacks
+    organismo: S&P Dow Jones Indices
+    serie: "S&P 500 quarterly buybacks"
+    url: https://press.spglobal.com/2025-12-18-S-P-500-Q3-2025-Buybacks-Post-Modest-6-2-Gain-to-249-0-Billion-After-Record-Q2-Expenditure
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: spdji-recompras
+    frase: "ficha, cifras clave: «recompras S\\&P~500 \\dato{1,02 billones de \\$}{S\\&P DJI, 2025}»"
+    nota: "posible desfase: ya deben de estar publicados los datos hasta el 2.º trimestre de 2026"
+
+  - id: dividendos-recompras-snf-eeuu
+    texto: "más acciones de las que emite desde 1994 (gráfico~\\ref{fig:dividendos-recompras-eeuu})"
+    donde: [3B03.tex]
+    unidad: "% del PIB y miles de millones de USD"
+    periodo: "2025"
+    fuente: Fed2026Z1
+    organismo: Reserva Federal
+    serie: "Z.1, F.103: FA106121075 (dividendos netos), FA103164105 (emisión neta de acciones); FRED BOGZ1FA106121075Q, NCBCEBQ027S, GDP"
+    url: https://www.federalreserve.gov/releases/z1/20260911/z1.pdf
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: fed-z1
+    depende: [datos/dividendos-recompras-eeuu.csv, graficos/dividendos-recompras-eeuu.tex]
+
+  - id: dividendos-cotizadas-espana
+    texto: "repartieron en 2025 unos 41.500 millones de euros en dividendos y amortizaron acciones por otros 12.500"
+    texto_repaso: "\\dato{$\\approx$41.500 M€ de dividendos y 12.500 M€ de amortizaciones}{BME, 2025}"
+    donde: [3B03.tex, repaso/3B03-repaso.tex]
+    valor: 41500
+    unidad: millones de euros
+    periodo: "2025"
+    fuente: BME2026InformeMercado
+    organismo: BME
+    serie: "Informe de Mercado de BME, dividendos y amortizaciones"
+    url: https://www.bolsasymercados.es/dam/descargas/informes-de-mercado/informe-mercado-bme-2025-es.pdf
+    periodicidad: anual
+    proxima: 2027-02
+    familia: bme-informe-mercado

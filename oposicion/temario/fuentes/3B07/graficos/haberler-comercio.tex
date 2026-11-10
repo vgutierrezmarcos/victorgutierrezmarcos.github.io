@@ -1,0 +1,45 @@
+% Modelo de Haberler para el país A: de la autarquía al libre comercio.
+% Misma geometría que fuentes/3A29/graficos/robinson-crusoe.tex (separación de
+% Fisher), con los ejes X e Y. Elaboración propia (cualitativa):
+%   FPP: X^2 + Y^2 = 36 (cóncava), RMT = X/Y.
+%   CIS Cobb-Douglas simétrica U = (XY)^(1/2) (RMS = Y/X): CIS_k: Y = U_k^2/X.
+%   Autarquía: E^A_aut = (4,243; 4,243), (p_X/p_Y)^A_aut = 1; CIS_0: Y = 18/X.
+%   Libre comercio, RRI = 2 (> 1): P^A en X/Y = 2: (5,367; 2,683);
+%   renta en unidades de Y: 13,416; C^A = (13,416/4; 13,416/2) = (3,354; 6,708);
+%   CIS_1: Y = 22,5/X (U = 4,74 > 4,24 en autarquía).
+%   Exporta X_P - X_C = 2,012 de X e importa Y_C - Y_P = 4,025 de Y (= 2·2,012).
+%   Como en el original, C^A tiene menos X que E^A_aut (efecto renta: ver nota).
+% Elaboración propia a partir de Haberler (1936) y Gandolfo (2014), cap. 3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.85,
+    declare function={ia(\x)=18/\x; ic(\x)=22.5/\x; raut(\x)=8.4853-\x;
+      rri(\x)=2.6833-2*(\x-5.3666);}]
+  % 1: ejes
+  \capa{1}{\ejes{$X$}{$Y$}{8.8}{9.0}}
+  % 2: frontera de posibilidades de producción, cóncava
+  \capa{2}{\draw[curva1] (0,6) arc[start angle=90,end angle=0,radius=6];}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (0.25,6.0) {FPP};}
+  % 3: autarquía: CIS_0 tangente a la FPP en E^A_aut, con el precio de autarquía
+  \capa{3}{\draw[curva4] plot[domain=2.15:8.2,samples=80] (\x,{ia(\x)}) node[etiqueta,right] {$\mathrm{CIS}_0$};}
+  \capa{3}{\draw[thick,tceegris] (1.6,{raut(1.6)}) -- (7.6,{raut(7.6)}) node[etiqueta,below right,font=\footnotesize,inner sep=1pt] {$(p_X/p_Y)^A_{\mathrm{aut}}$};}
+  \capa{3}{\node[punto] (E) at (4.2426,4.2426) {};}
+  \capa{3}{\node[etiqueta,below left] at (E) {$E^A_{\mathrm{aut}}$};}
+  % 4: con comercio, la RRI (más inclinada) es tangente a la FPP en P^A
+  \capa{4}{\draw[curva2] (2.62,{rri(2.62)}) -- (6.708,0) node[etiqueta,below right,font=\footnotesize,inner sep=1pt] {$\mathrm{RRI}$};}
+  \capa{4}{\node[punto] (P) at (5.3666,2.6833) {};}
+  \capa{4}{\node[etiqueta,right=2pt] at (P) {$P^A$};}
+  \capa{4}{\draw[guia] (0,2.6833) node[left,text=black] {$Y^A_P$} -| (5.3666,0) node[below,text=black] {$X^A_P$};}
+  % 5: el consumo, sobre la RRI, en una CIS más alta: tangencia en C^A
+  \capa{5}{\draw[curva3] plot[domain=2.7:8.2,samples=80] (\x,{ic(\x)}) node[etiqueta,right] {$\mathrm{CIS}_1$};}
+  \capa{5}{\node[punto] (C) at (3.3541,6.7082) {};}
+  \capa{5}{\node[etiqueta,above right] at (C) {$C^A$};}
+  \capa{5}{\draw[guia] (0,6.7082) node[left,text=black] {$Y^A_C$} -| (3.3541,0) node[below,text=black] {$X^A_C$};}
+  % 6: el triángulo de comercio
+  \capa{6}{\draw[thick,tceerojo] (C) -- (3.3541,2.6833) -- (P);}
+  \capa{6}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (3.3541,2.55) -- (5.3666,2.55) node[midway,below=4pt,etiqueta,font=\footnotesize,text=tceerojo,align=center] {exportaciones\\[-1pt]$X^A_P-X^A_C$};}
+  \capa{6}{\draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (3.23,2.6833) -- (3.23,6.7082) node[midway,left=4pt,etiqueta,font=\footnotesize,text=tceerojo,align=center] {importaciones\\[-1pt]$Y^A_C-Y^A_P$};}
+\end{tikzpicture}
+\end{document}

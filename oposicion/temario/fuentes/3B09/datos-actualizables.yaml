@@ -1,0 +1,67 @@
+tema: 3B09
+fecha_inventario: 2026-11-09
+datos:
+  - id: corea-exportaciones-pib
+    texto: "En 1960, Corea del Sur exportaba el 2,6~\\% de su PIB; en 2024, el 44,4~\\%."
+    texto_repaso: "44,4\\,\\% (2024)}{Banco Mundial, 2026}"
+    donde: [3B09.tex, repaso/3B09-repaso.tex]
+    valor: 44.4
+    unidad: "% del PIB (exportaciones de bienes y servicios)"
+    periodo: "2024"
+    fuente: BancoMundial2026Corea
+    organismo: Banco Mundial
+    serie: "WDI NE.EXP.GNFS.ZS, KOR"
+    url: https://data.worldbank.org/country/korea-republic
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    frase: "l. 830 «pasaron del 11~\\% del PIB en 1970 al 44~\\% en 2024»; ficha l. 40, 216 y 282 (tres veces)"
+
+  - id: corea-pib-habitante
+    texto: "se ha multiplicado por unas 36, de 1.038 a 37.048 dólares de 2015"
+    texto_repaso: "1.038 \\ensuremath{\\to} 37.048 \\$ de 2015"
+    donde: [3B09.tex, repaso/3B09-repaso.tex]
+    valor: 37048
+    unidad: USD constantes de 2015 por habitante
+    periodo: "2024"
+    fuente: BancoMundial2026Corea
+    organismo: Banco Mundial
+    serie: "WDI NY.GDP.PCAP.KD, KOR"
+    url: https://data.worldbank.org/country/korea-republic
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    frase: "«×36» en la ficha (l. 40) y la cifra en l. 282; ojo, si el BM cambia el año base (2015) cambian todas"
+
+  - id: comercio-pib-mundial
+    texto: "pasó del 26~\\% del PIB mundial en 1970 al 57~\\% en 2024, con un máximo del 62~\\% en 2022"
+    texto_repaso: "26\\,\\% (1970) \\ensuremath{\\to} 57\\,\\% (2024), máx. 62\\,\\% (2022)"
+    donde: [3B09.tex, repaso/3B09-repaso.tex]
+    valor: 57
+    unidad: "% del PIB mundial"
+    periodo: 1970-2024
+    fuente: BancoMundial2026Apertura
+    organismo: Banco Mundial
+    serie: "WDI NE.TRD.GNFS.ZS (WLD, HIC, LMY)"
+    url: https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/comercio-pib-mundial.csv, graficos/comercio-pib-mundial.tex]
+    frase: "caption «(1970-2024)»; nota del gráfico («se duplica en 50 años... se estanca desde 2008»); ficha l. 283. El CSV omite 2025 a propósito (agregado incompleto)"
+
+  - id: comercio-volumen-vs-pib
+    texto: "en 2025, el volumen del comercio mundial de mercancías aumentó un 4,2~\\%, 1,4 veces más que el PIB mundial (3,0~\\%)"
+    texto_repaso: "\\dato{+4,2\\,\\% frente a PIB +3,0\\,\\%}{OMC, 2026}"
+    donde: [3B09.tex, repaso/3B09-repaso.tex]
+    valor: 4.2
+    unidad: "% de crecimiento del volumen; PIB a tipos de cambio de mercado"
+    periodo: "2025"
+    fuente: OMC2026PerspectivasOct
+    organismo: OMC
+    serie: "Global Trade Outlook and Statistics, volumen del comercio de mercancías y PIB mundial"
+    url: https://www.wto.org/english/res_e/booksp_e/gtos1026_e.pdf
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-comercio-mundial
+    frase: "ficha l. 41 y 284"

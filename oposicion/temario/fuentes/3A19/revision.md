@@ -124,6 +124,12 @@ No usados: Pepephone y MasOrange (V31, iban con los impugnables, al 3.A.15), cif
 - **Cambios opcionales a temas revisados** (para `pendientes-coherencia.md`, de coherencia § I): 3.A.14, añadir en la negociación «y el reparto del beneficio de un cártel, con el beneficio de Cournot como punto de desacuerdo \vertema{3.A.19}» y en Shapley «estudiar qué cárteles y alianzas entre empresas son estables \vertema{3.A.19}»; 3.A.18, en `anexo:colusion`, la frase de la diferenciación horizontal ambigua (Ross, 1992; clave por crear).
 - **Contradicciones con otros temas** (no se tocan): 3.B.39 y 4.A.15 remiten la clemencia como dilema al 3.A.19 (o al 3.A.16): lo correcto es «\vertema{3.A.14} \vertema{3.A.19}», que matiza la entrada de `pendientes-coherencia.md` (l. 148); 3.B.8 usa φ_A(q_B) (→ R_A) y remite Johnson (1953) al 3.A.19 (→ 3.A.14); 3.A.23 tiene una lista de supuestos distinta de la común; 3.A.6, 3.A.36, 3.A.41 y 3.A.44 remiten los juegos repetidos de Barro-Gordon al 3.A.19 (→ 3.A.14).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 4 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de I, II y III → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 Mientras Víctor no conteste en el artifact, se aplica la opción recomendada (o la que decidió el coordinador).
@@ -154,6 +160,21 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada (o
 
 **Datos sin verificar o con una sola fuente**: firmeza de la multa a las constructoras (el texto dice que está recurrida); 116/53 de clemencia (una sola fuente oficial); mayor multa de cártel de la UE (solo la tabla de la Comisión); volumen de Edgeworth (1897) y de Forchheimer (1908); páginas finales de varios artículos (marcadas en `bib-datos.bib`). **Otras**: la excepción agraria de la nota 29 (art. 42 TFUE, Reglamento 1308/2013) se dejó fuera por no estar comprobada; Ross (1992), que coherencia cita para la diferenciación horizontal, no está en ningún `.bib`: el factor «diferenciación» de la tabla se dejó sin cita.
 
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A19.tex` y `3A19.bib` (CRITERIOS §4).
+
+- **Restaurados** (9):
+  - Vídeo «Game Theory: The Pinnacle of Decision Making» (Metamorphosis 77; nota de los antecedentes de la teoría de juegos): nota «Para ver» en el nacimiento de la teoría de juegos (introducción).
+  - Vídeo «Juegos repetidos - Parte 2» (URJC, desde el minuto 8:41; nota del *tit for tat*): nota «Para ver» en «donde las dan, las toman» (II).
+  - Policonomics, «Duopolio de Cournot», «Duopolio de Stackelberg», «Colusión» y «Duopolio de Edgeworth» (fuentes de gráficos): en el `\fuente` de `fig:cournot`, `fig:stackelberg`, `fig:cartel` y `fig:edgeworth`.
+  - Policonomics, «Oligopolio I» y «Oligopolio II» (bibliografía del original): nota al pie al presentar los 4 modelos (tabla `tab:modelos-oligopolio`).
+  - AulaDeEconomia, «Modelos de oligopolio» (fuente del gráfico de Edgeworth): `AulaDeEconomiaOligopolio` en el `\fuente` de `fig:edgeworth`.
+  - **Policonomics da error en todo el sitio** (WordPress, HTTP 500, 9/11/2026): las 6 entradas enlazan la copia de Internet Archive.
+- **Ya estaban**: los 2 de JSTOR (Hahn, 1962, y Green y Porter, 1984) siguen accesibles por el `doi` de sus entradas.
+- **Descartados**: el enlace a quia.com (CRITERIOS §4).
+- **Para Víctor**: si Policonomics vuelve, cambiar las `url` por las originales.
+
 ## Instrucciones para el vídeo
 
 - **Introducción y conclusión, sin pizarra** (`modo: guion`). Enganche: la frase de Smith (en castellano, como paráfrasis) y el cártel de camiones (2.926 millones, 14 años, MAN exento). Pregunta: «Si a las empresas les conviene ponerse de acuerdo, ¿por qué compiten? ¿Y por qué un acuerdo de 14 años se rompe?». La idea final la responde: a cada una le conviene romper el acuerdo; la repetición lo sostiene y la clemencia usa el mismo dilema para que al primero que confiesa (MAN) le salga a cuenta.
@@ -168,6 +189,7 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada (o
 - **III.2**: la fórmula del reparto de Nash en una línea; v({i}) = 1, v({i,j}) = 16/9, v(N) = 4 en una línea y debajo φ_i = 4/3 y «16/9 > 4/3».
 - **III.3**: de palabra; en la pizarra, solo una flecha desde `eq:colusion` («multa ↓B^C; exención ↑B^D») y las 3 condiciones de impugnabilidad como apoyo.
 - **Pronunciación** (si hace falta): Cournot, Bertrand, Stackelberg, Edgeworth, Scheinkman, Rotemberg, Saloner, d'Aspremont, Shapley.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Cambios posteriores
 

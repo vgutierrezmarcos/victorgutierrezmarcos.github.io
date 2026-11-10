@@ -1,0 +1,30 @@
+% Cadena de renovaciones con equipos idénticos: cada n años se compra un
+% equipo igual, con VAN(n) en el momento de comprarlo. Se descuenta cada
+% VAN(n) al origen y la suma es una progresión geométrica:
+% VAN_inf(n) = VAN(n)/[1 − (1+k)^{−n}].
+% Mismo estilo que esquema-pagos (eje del tiempo, flujos en azul, descuento
+% en rojo discontinuo). Elaboración propia a partir de Suárez Suárez et al.
+% (2014, cap. 18), que sustituye a su figura 18.1.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % 1: eje del tiempo con 0, n, 2n, 3n, …
+  \capa{1}{\draw[eje] (0,0) -- (11.2,0) node[below left=2pt and 0pt] {$t$};}
+  \capa{1}{\foreach \t/\r in {0/0,3/n,6/2n,9/3n} {\draw (\t,0.08) -- (\t,-0.08) node[below] {$\r$};}}
+  \capa{1}{\node at (10.2,-0.3) {$\cdots$};}
+  % 2: VAN(n) en cada renovación
+  \capa{2}{\foreach \t in {0,3,6,9} {\draw[curva2,->] (\t,0) -- (\t,1.3) node[above] {$\mathrm{VAN}(n)$};}}
+  \capa{2}{\node[text=tceeazul] at (10.2,0.65) {$\cdots$};}
+  % 3: descuento de cada VAN(n) al origen
+  \capa{3}{\draw[flecha,dashed] (3,-0.6) to[bend left=40] (0.15,-0.5);}
+  \capa{3}{\node[anchor=west,text=tceerojo] at (3.05,-0.8) {$\times\,(1+k)^{-n}$};}
+  \capa{3}{\draw[flecha,dashed] (6,-0.6) to[bend left=30] (0.15,-0.85);}
+  \capa{3}{\node[anchor=west,text=tceerojo] at (6.05,-0.8) {$\times\,(1+k)^{-2n}$};}
+  \capa{3}{\draw[flecha,dashed] (9,-0.6) to[bend left=24] (0.15,-1.2);}
+  \capa{3}{\node[anchor=west,text=tceerojo] at (9.05,-0.8) {$\times\,(1+k)^{-3n}$};}
+  % 4: suma en t = 0
+  \capa{4}{\node[anchor=east,align=right] at (-0.2,-0.85) {$\mathrm{VAN}_\infty(n)=\dfrac{\mathrm{VAN}(n)}{1-(1+k)^{-n}}$};}
+\end{tikzpicture}
+\end{document}

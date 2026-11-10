@@ -9,7 +9,7 @@ Lo usa scripts/temario/construir-tema.py, que pasa estas variables con -M:
 Qué hace:
   - Numera los apartados como el PDF (I, I.1, I.1.1) y pone los minutos del
     cante (\minutos{n}) junto al título.
-  - Pone «Gráfico n.–» y «Tabla n.–» en los títulos y separa la «Fuente:».
+  - Pone «Gráfico n.–», «Imagen n.–» (numeración aparte) y «Tabla n.–» en los títulos y separa la «Fuente:».
   - Cambia la ruta y la extensión de los gráficos (SVG en HTML, PNG en Word).
   - Convierte las cajas (notaopositor, anotaciones, ideaclave, esquema) en
     estilos de Word y \vertema en una clase CSS; el enlace al tema citado
@@ -239,9 +239,10 @@ local ESTILO_COLOR = {
   tceenaranja = 'Texto naranja', tceerojo = 'Texto rojo', tceedorado = 'Texto dorado',
 }
 
--- Fórmulas sencillas ($<0$, $\leq 0$, $i$) como texto, para que en Word tomen
+-- Fórmulas sencillas ($<0$, $\leq 0$, $i$, $\checkmark$, $\times$) como texto, para que en Word tomen
 -- el color del estilo de carácter. Las demás se dejan como fórmula.
 local SIMBOLOS = { ['\\leq'] = '≤', ['\\geq'] = '≥', ['\\neq'] = '≠', ['\\,'] = ' ', ['\\;'] = ' ',
+                   ['\\checkmark'] = '✓', ['\\times'] = '×',
                    ['{'] = '', ['}'] = '', ['-'] = '−' }
 local RELACIONES = { '<', '>', '=', '≤', '≥', '≠' }
 local function math_a_texto(m)
@@ -251,7 +252,7 @@ local function math_a_texto(m)
   for k, v in pairs(SIMBOLOS) do t = t:gsub(k:gsub('%p', '%%%0'), v) end
   t = t:gsub('%s+', ' '):gsub('^ ', ''):gsub(' $', '')
   -- Solo relaciones, signos y números (≤ ≥ ≠ − ocupan tres bytes en UTF-8)
-  local resto = t:gsub('≤', ''):gsub('≥', ''):gsub('≠', ''):gsub('−', '')
+  local resto = t:gsub('≤', ''):gsub('≥', ''):gsub('≠', ''):gsub('−', ''):gsub('✓', ''):gsub('×', '')
   if not resto:match('^[<>=%d%., ]*$') then return nil end
   for _, r in ipairs(RELACIONES) do
     if t:sub(1, #r) == r and t:sub(#r + 1, #r + 1) ~= ' ' and #t > #r then
@@ -268,6 +269,11 @@ local function Span(s)
   local color = estilo:match('color:%s*(tcee%w+)')
   if color == 'tceetiempo' then
     return pandoc.Str(mmss(pandoc.utils.stringify(s)))
+  elseif color == 'tceeesqtiempo' then
+    -- Minutos del esquema del tema: a la derecha y en gris (tema.css); en Word, tras un espacio ancho
+    local t = mmss(pandoc.utils.stringify(s))
+    if es_docx then return pandoc.Str('\u{2003}' .. t) end
+    return pandoc.Span({ pandoc.Str(t) }, pandoc.Attr('', { 'esq-tiempo' }))
   elseif color == 'tceefindemo' then
     -- ∎ de fin de demostración: a la derecha en la web; en Word, tras un espacio ancho
     if es_docx then return pandoc.Str('\u{2003}∎') end
@@ -479,7 +485,7 @@ end
 -- Recorrido del documento ------------------------------------------------------
 function Pandoc(doc)
   local s, ss, sss = 0, 0, 0
-  local nfig, ntab = 0, 0
+  local nfig, ntab, nimg = 0, 0, 0
   -- Nivel del primer título (en HTML, con --shift-heading-level-by=1, los
   -- apartados son h2; en Word, Heading 1): la numeración cuenta desde ahí
   local base = 7
@@ -546,8 +552,15 @@ function Pandoc(doc)
       elseif b.t == 'Figure' then
         local es_tabla = false
         b.content:walk({ Table = function() es_tabla = true end })
+        -- Imagen (entornos imagen e imagencaja): construir-tema.py deja la marca
+        -- tceeimagen al principio del título; numeración propia, «Imagen n.–»
+        local es_imagen = false
+        b.caption.long = b.caption.long:walk({ Span = function(sp)
+          if (sp.attributes['style'] or ''):match('tceeimagen') then es_imagen = true; return {} end
+        end })
         local etiqueta
         if es_tabla then ntab = ntab + 1; etiqueta = 'Tabla ' .. ntab .. '.–'
+        elseif es_imagen then nimg = nimg + 1; etiqueta = 'Imagen ' .. nimg .. '.–'
         else nfig = nfig + 1; etiqueta = 'Gráfico ' .. nfig .. '.–' end
         local cap = b.caption.long[1]
         if cap then

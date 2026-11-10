@@ -1,0 +1,31 @@
+tema: 3A06
+fecha_inventario: 2026-11-09
+datos:
+  - id: "residuo-solow-ciclo"
+    texto: "es de 0,82 en 1947-2026"
+    donde: [3A06.tex, repaso/3A06-repaso.tex]
+    valor: 0.82
+    unidad: "correlación (componente cíclico HP); -0,15 con la PTF corregida por utilización"
+    periodo: "1947T2-2026T2"
+    fuente: "Fernald2026TFP"
+    organismo: "Federal Reserve Bank of San Francisco (Fernald)"
+    serie: "Quarterly TFP series (dY, dtfp, dtfp_util), quarterly_tfp.xlsx"
+    url: "https://www.frbsf.org/research-and-insights/data-and-indicators/total-factor-productivity-tfp/"
+    periodicidad: "trimestral"
+    proxima: "2027-01"
+    familia: "fernald-ptf"
+    depende: [datos/residuo-solow-eeuu.csv, graficos/residuo-solow.tex]
+    frase: "título del gráfico «1947-2026» (fig:residuo-solow); repaso: «EE.\\,UU.\\ 1947-2026: correlación 0,82; corregido por utilización, $-0{,}15$» y caja de datos; la columna fred_1947T1_2026T2 de datos/hechos-estilizados-eeuu.csv también se alarga (la tabla del texto usa 1984-2019, cerrado)"
+  - id: "preguntas-test-tema"
+    texto: "17 asignadas a este tema, de 2002 a 2025"
+    donde: [3A06.tex]
+    valor: 17
+    unidad: "preguntas de test oficiales"
+    periodo: "exámenes 2002-2025"
+    fuente: null
+    nota: "sin cita (dato propio del simulador, preguntas.json)"
+    organismo: "Simulador de la web"
+    serie: "oposicion/temario/primer-ejercicio/test/preguntas.json"
+    periodicidad: "anual"
+    familia: "examenes-tcee"
+    frase: "cambia la lista de preguntas que sigue"

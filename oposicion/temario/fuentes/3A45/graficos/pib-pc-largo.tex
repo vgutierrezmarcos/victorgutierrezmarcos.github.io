@@ -16,7 +16,7 @@
 % (dicespana, el de España en todos los gráficos del tema); Corea del Sur
 % dorado; Reino Unido azul; Japón verde; India gris oscuro.
 % Capas (CRITERIOS §7): ejes y rejilla → EE. UU. → Reino Unido y Japón →
-% España → Corea del Sur e India → nombres de los países.
+% España → Corea del Sur e India → leyenda.
 \pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/pib-pc-largo-plazo-maddison.csv}\maddison
 \colorlet{pibind}{tceegris!70!black}
 \pgfplotsset{
@@ -35,6 +35,9 @@
       axis x line*=bottom, axis y line*=left, tick align=outside,
       ymajorgrids, grid style={tceegris!25}, clip=false,
       unbounded coords=jump,
+      legend style={at={(0.03,0.98)}, anchor=north west, draw=none, fill=none,
+        font=\footnotesize, legend columns=2, /tikz/every even column/.append style={column sep=6pt}},
+      legend cell align=left,
       dicapas,
     ]
     % 1: ejes y rejilla (los del axis)
@@ -64,19 +67,16 @@
       \addplot[serie, pibind, restrict x to domain=1884:2022]
         table[x=anio, y=pib_pc_ind] {\maddison};
     }
-    % 6: nombres de los países al final de cada línea (los 4 que acaban
-    % entre 34.000 y 41.000 dólares, separados con una línea guía fina)
+    % 6: leyenda arriba a la izquierda, en el hueco vacío del gráfico (11/11/2026:
+    % sin rótulos al final de las líneas ni rayas guía, que parecían una
+    % continuación de las series)
     \capa{6}{
-      \dicrotulo[font=\footnotesize, anchor=west, text=tceemorado, inner sep=2pt]{(2022.5,58487)}{EE.\,UU.}
-      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceedorado] coordinates {(2022.5,41321) (2025,47500)};
-      \dicrotulo[font=\footnotesize, anchor=west, text=tceedorado, inner sep=2pt]{(2025,47500)}{Corea del Sur}
-      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceeazul] coordinates {(2022.5,38407) (2025,39000)};
-      \dicrotulo[font=\footnotesize, anchor=west, text=tceeazul, inner sep=2pt]{(2025,39000)}{Reino Unido}
-      \addplot[on layer=axis descriptions, dicsuelto, very thin, tceeverde] coordinates {(2022.5,38269) (2025,32000)};
-      \dicrotulo[font=\footnotesize, anchor=west, text=tceeverde, inner sep=2pt]{(2025,32000)}{Japón}
-      \addplot[on layer=axis descriptions, dicsuelto, very thin, dicespana] coordinates {(2022.5,34123) (2025,26200)};
-      \dicrotulo[font=\footnotesize, anchor=west, text=dicespana, inner sep=2pt]{(2025,26200)}{España}
-      \dicrotulo[font=\footnotesize, anchor=west, text=pibind, inner sep=2pt]{(2022.5,7766)}{India}
+      \addlegendimage{very thick, tceemorado}\addlegendentry{EE.\,UU.}
+      \addlegendimage{thick, tceeazul}\addlegendentry{Reino Unido}
+      \addlegendimage{thick, tceeverde}\addlegendentry{Japón}
+      \addlegendimage{thick, dicespana}\addlegendentry{España}
+      \addlegendimage{thick, tceedorado}\addlegendentry{Corea del Sur}
+      \addlegendimage{thick, pibind}\addlegendentry{India}
     }
   \end{axis}
 \end{tikzpicture}

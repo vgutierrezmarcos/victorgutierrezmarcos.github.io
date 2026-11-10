@@ -1,0 +1,37 @@
+% Teoría del equilibrio: valor de la empresa frente a su deuda (nuestra empresa).
+%   V_U = 750; MM (1963): V_U + t_IS V_D, con t_IS = 0,25;
+%   VA(costes esperados de insolvencia) = 120 (V_D/800)^4 -> V_L(400) = 842,5,
+%   V_L(800) = 830; máximo en V_D^* = 597,5, con V_L^* = 862,0.
+% El eje vertical empieza en V = 650 (marca de corte): y = V - 650.
+% Escala: 1 cm = 125 de deuda; 1 cm = 50 de valor.
+% Colores: V_U como guía, la recta de MM (1963) en verde, V_L en morado.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.008cm,y=0.02cm,
+    declare function={vl(\d)=100+0.25*\d-120*(\d/800)^4; mm(\d)=100+0.25*\d;}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-110,-45) rectangle (1450,385);
+  % 1: ejes (deuda y valor de la empresa); el vertical, cortado
+  \capa{1}{\draw[eje] (0,0) -- (1120,0) node[below left=2pt and 0pt] {$V_D$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,375) node[above right=0pt and -2pt] {valor de la empresa, $V$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[thick] (-12,22) -- (12,28) (-12,30) -- (12,36);}
+  % 2: valor sin deuda, V_U
+  \capa{2}{\draw[very thick,tceegris] (0,100) node[left,text=black] {$V_U$} -- (1000,100);}
+  % 3: con impuesto sobre sociedades (MM, 1963): V_U + t_IS V_D, y el ahorro fiscal
+  \capa{3}{\draw[curva3] (0,100) -- (1000,{mm(1000)}) node[etiqueta,right,text=tceeverde] {$V_U+t_{IS}\,V_D$};}
+  \capa{3}{\draw[decorate,decoration={brace,amplitude=5pt},thick,tceeverde] (1010,100.5) -- (1010,{mm(1000)-0.5}) node[midway,right=6pt,align=left,text=tceeverde,font=\footnotesize] {$\mathrm{VA}$(ahorro\\fiscal)};}
+  % 4: valor de la empresa endeudada, V_L
+  \capa{4}{\draw[curva1] plot[domain=0:1000,samples=120] (\x,{vl(\x)}) node[etiqueta,below right=-2pt and 0pt,text=tceemorado] {$V_L$};}
+  % 5: costes esperados de insolvencia
+  \capa{5}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thick,tceemorado] (840,{vl(850)+1}) -- (840,{mm(850)-1}) coordinate[midway,xshift=-6pt] (CI);}
+  \capa{5}{\draw[thin,tceemorado] (CI) -- (700,345);}
+  \capa{5}{\node[etiqueta,left,text=tceemorado,font=\footnotesize] at (700,345) {$\mathrm{VA}$(costes esperados de insolvencia)};}
+  % 6: máximo del valor y deuda óptima
+  \capa{6}{\node[punto,fill=tceemorado] (M) at (597.5,212.0) {};}
+  \capa{6}{\draw[guia] (M) -- (597.5,0) node[below,text=black] {$V_D^*$};}
+  \capa{6}{\draw[guia] (M) -- (0,212.0) node[left,text=black] {$V_L^*$};}
+\end{tikzpicture}
+\end{document}

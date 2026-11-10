@@ -1,0 +1,89 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Las 3 situaciones de Viner (1950) con demanda perfectamente inelástica en x̄
+% y arancel ad valorem t = 50 % (tabla tab:viner del 3.B.10), I.2.1.
+% Panel 1: p_A = 10, p_B = 16 (24 con arancel), p_R(1+t) = 18: sin efecto.
+% Panel 2: p_A = 10, p_B = 8 (12 con arancel), p_R(1+t) = 18: creación,
+%   (p_A - p_B) x̄ = 2x̄.
+% Panel 3: p_R = 6, p_R(1+t) = 9, p_B = 8 (12 con arancel), p_A = 10:
+%   consumidores + [p_R(1+t) - p_B] x̄ = x̄; recaudación - t p_R x̄ = -3x̄;
+%   saldo (p_R - p_B) x̄ = -2x̄ (desviación).
+% Paneles 1 y 2 con 0,22 cm por unidad de precio; el 3, ampliado (0,45 cm),
+% para que se lean sus franjas: el eje no lleva cifras.
+% Colores como en viner-lipsey: demanda curva1, p_A curva2 (la oferta de A),
+% p_R curva3, p_R(1+t) curvanueva, p_B curva4, p_B(1+t) guía.
+% Autor: Víctor Gutiérrez Marcos
+\begin{tikzpicture}[tcee,
+    areaganancia/.style={fill=tceeverde,fill opacity=0.28,draw=none},
+    areaperdida/.style={fill=tceerojo,fill opacity=0.22,draw=none},
+    areaperdidatrama/.style={pattern=north east lines,pattern color=tceerojo,draw=none},
+    titulo/.style={font=\normalsize\bfseries},
+    precio/.style={etiqueta,left,font=\footnotesize},
+    resultado/.style={etiqueta,align=center,font=\footnotesize}]
+  % 1: ejes de los 3 paneles
+  \capa{1}{\begin{scope}[y=0.22cm]
+    \ejes{$x$}{$p$}{4.2}{26.5}
+    \node[titulo] at (2.1,28.5) {Situación 1};
+  \end{scope}}
+  \capa{1}{\begin{scope}[xshift=6.6cm,y=0.22cm]
+    \ejes{$x$}{$p$}{4.2}{26.5}
+    \node[titulo] at (2.1,28.5) {Situación 2};
+  \end{scope}}
+  \capa{1}{\begin{scope}[xshift=13.2cm,y=0.45cm]
+    \ejes{$x$}{$p$}{4.2}{13}
+    \node[titulo] at (2.1,13.95) {Situación 3};
+  \end{scope}}
+  % 2: demanda de A, perfectamente inelástica en x̄
+  \capa{2}{\begin{scope}[y=0.22cm]
+    \draw[curva1] (2.3,0) node[below,text=black] {$\bar{x}$} -- (2.3,26) node[etiqueta,right] {$D_A$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[xshift=6.6cm,y=0.22cm]
+    \draw[curva1] (2.3,0) node[below,text=black] {$\bar{x}$} -- (2.3,26) node[etiqueta,right] {$D_A$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[xshift=13.2cm,y=0.45cm]
+    \draw[curva1] (2.3,0) node[below,text=black] {$\bar{x}$} -- (2.3,12.7) node[etiqueta,right] {$D_A$};
+  \end{scope}}
+  % 3: panel 1, el socio es caro: A sigue produciendo a p_A
+  \capa{3}{\begin{scope}[y=0.22cm]
+    \draw[guia] (0,24) node[precio,text=black] {$p_B(1+t)$} -- (3.9,24);
+    \draw[curvanueva] (0,18) node[precio] {$p_R(1+t)$} -- (3.9,18);
+    \draw[curva4] (0,16) node[precio] {$p_B$} -- (3.9,16);
+    \draw[curva2] (0,10) node[precio] {$p_A$} -- (3.9,10);
+    \node[resultado] at (2.1,-4.8) {sin efecto:\\$A$ sigue produciendo};
+  \end{scope}}
+  % 4: panel 2, creación de comercio: de producir a p_A a importar a p_B
+  \capa{4}{\begin{scope}[xshift=6.6cm,y=0.22cm]
+    \draw[curvanueva] (0,18) node[precio] {$p_R(1+t)$} -- (3.9,18);
+    \draw[guia] (0,12) node[precio,text=black] {$p_B(1+t)$} -- (3.9,12);
+    \draw[curva2] (0,10) node[precio] {$p_A$} -- (3.9,10);
+    \draw[curva4] (0,8) node[precio] {$p_B$} -- (3.9,8);
+  \end{scope}}
+  \capa{4}{\begin{scope}[xshift=6.6cm,y=0.22cm]
+    \fill[areaganancia] (0,8) rectangle (2.3,10);
+    \node[resultado,text=tceeverde!70!black] at (2.1,-4.8) {creación de comercio:\\$(p_A-p_B)\,\bar{x}>0$};
+  \end{scope}}
+  % 5: panel 3, precios con y sin arancel: A importaba de R a p_R(1+t) y pasa a B
+  \capa{5}{\begin{scope}[xshift=13.2cm,y=0.45cm]
+    \draw[guia] (0,12) node[precio,text=black] {$p_B(1+t)$} -- (3.9,12);
+    \draw[curva2] (0,10) node[precio] {$p_A$} -- (3.9,10);
+    \draw[curvanueva] (0,9) node[precio] {$p_R(1+t)$} -- (3.9,9);
+    \draw[curva4] (0,8) node[precio] {$p_B$} -- (3.9,8);
+    \draw[curva3] (0,6) node[precio] {$p_R$} -- (3.9,6);
+  \end{scope}}
+  % 6: panel 3, ganancia del consumidor (9 a 8) y recaudación perdida (9 a 6)
+  \capa{6}{\begin{scope}[xshift=13.2cm,y=0.45cm]
+    \fill[areaganancia] (0,8) rectangle (2.3,9);
+    \node[etiqueta,font=\scriptsize] at (1.15,8.5) {consumidores};
+  \end{scope}}
+  \capa{6}{\begin{scope}[xshift=13.2cm,y=0.45cm]
+    \fill[areaperdidatrama] (0,6) rectangle (2.3,9);
+    \node[etiqueta,font=\scriptsize] at (1.15,7) {recaudación};
+  \end{scope}}
+  % 7: panel 3, saldo: la franja entre p_B y p_R, desviación de comercio
+  \capa{7}{\begin{scope}[xshift=13.2cm,y=0.45cm]
+    \fill[areaperdida] (0,6) rectangle (2.3,8);
+    \node[resultado,text=tceerojo] at (2.1,-2.35) {desviación de comercio:\\$(p_R-p_B)\,\bar{x}<0$};
+  \end{scope}}
+\end{tikzpicture}
+\end{document}

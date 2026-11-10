@@ -125,6 +125,12 @@ Consultas del 19/10/2026 (`_trabajo/propuestas-datos.md`; series en `_trabajo/da
 - **Contradicciones con otros temas** (no se tocan): 3.A.19 repite el gráfico de Bertrand diferenciado y remite aquí el oligopolio diferenciado (debe resumir y remitir a II.2 y II.3.2); 3.B.6 repite la demanda de Dixit-Stiglitz y usa F (admitido en comercio); 3.A.7 usa Dixit-Stiglitz sin remitir aquí; 3.A.15 debería remitir aquí la proliferación de marcas; 3.A.20 tiene el mercado relevante (aquí solo resumen); 4.B.2 data Downs-Hotelling en 1947 (Hotelling, 1929; Downs, 1957); el 3.A.19 conserva el enganche antiguo común.
 - **Canon** (para `tema-canon`): fichas nuevas `dixit-stiglitz`, `hotelling`, `salop`, `shaked-sutton` y, opcionales, `oligopolio-diferenciado` (Singh-Vives) y `dorfman-steiner`; cambios en `chamberlin` (corto plazo con beneficios, gráfico por capas) y `ces` (P, divergencia corregida); `notacion.md` (P, t, x̃, θ, s_A/s_B, α-β-γ locales, A, ε_{q,A}); `mapa.yaml` del 3.A.18 (K51).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 4 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): anexos: corte en «ciudad lineal… costes lineales | y con localizaciones» y «duopolio natural | en la diferenciación vertical»; «la demanda de características aplicada a la diferenciación» → «la demanda de características y la diferenciación» (1 línea); \newline de I → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 1. **α en Dixit-Stiglitz**: se usa U = x_0^{1−α} y^α, con α la parte del gasto en el grupo (como Foltyn y Neary); el original y K30 lo ponían al otro lado (x_0^α y^{1−α}, gasto (1−α)W̄). Cambiarlo es mecánico. ¿Lo dejo así?
@@ -140,6 +146,20 @@ Consultas del 19/10/2026 (`_trabajo/propuestas-datos.md`; series en `_trabajo/da
 11. **ICEX-CECO**: por la decisión del orquestador no se cita; ideas que solo venían de allí (la caracterización de la tecnología con costes fijos, el orden entrada-variedad-precio, la competencia global frente a local de la opinión, la nota de los 2 enfoques compatibles) van redactadas sin cita o se han quitado. CRITERIOS § 2 dice que las lecturas de preparadores se citan «como en el tema original»: ¿confirmas que en este tema no se cite?
 12. **Control de calidad (19/10/2026), Word, común a todos los temas** (no se arregla en este tema, es de `construir-tema.py`/plantilla Word; pasa igual en el 3.A.17): la caja «Esquema del tema» y las bandas de título largas salen justificadas línea a línea, con huecos enormes, y la caja del esquema se parte entre páginas; las listas numeradas de segundo nivel salen como a., b., c. (en «Supuesto a supuesto» no casan con los números 1-5 de la tabla 1), y la tabla 1 parte la fila 3 entre páginas con el salmón solo detrás del texto. ¿Lo encargo aparte para todos los temas?
 
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A18.tex` y `3A18.bib` (CRITERIOS §4).
+
+- **Restaurados** (7):
+  - Forvo, pronunciación de Chamberlin, Joan Robinson y Harold Hotelling (en el original, enlazados en los nombres): nota al pie nueva al final de la introducción (antecedentes), con los 3 enlaces.
+  - *The analytics of the New Keynesian 3-equation Model* (HAL; el original lo presentaba como el modelo canónico de Galí, pero es de Poutineau, Sobczak y Vermandel, 2015, *Economics and Business Review*): entrada `PoutineauSobczakVermandel2015Analytics`, citada junto a `Gali2015Monetary` en las aplicaciones macroeconómicas de Dixit-Stiglitz.
+  - Policonomics, «Modelo de Chamberlin de competencia monopolística» (fuente de los 3 gráficos de Chamberlin): `PoliconomicsChamberlin` en el `\fuente` de los 2 gráficos de Chamberlin del tema.
+  - Policonomics, «Ciudad circular de Salop» (fuente del gráfico): `PoliconomicsSalop` en el `\fuente` de `fig:salop`.
+  - Policonomics, «Competencia monopolística: demanda de características» (en la bibliografía del original): `PoliconomicsCaracteristicas`, en una nota al pie de la demanda de características de Lancaster.
+  - **Policonomics da error en todo el sitio** (WordPress, HTTP 500, 9/11/2026): las 3 entradas enlazan la copia de Internet Archive.
+- **Descartados**: el enlace a quia.com (CRITERIOS §4). Forvo responde 403 a los robots, pero las páginas existen (se abren en el navegador).
+- **Para Víctor**: si Policonomics vuelve, cambiar las `url` por las originales.
+
 ## Instrucciones para el vídeo
 
 - **Introducción y conclusión, sin pizarra**: enganche «Para gustos, los colores» (refrán cambiado por Víctor el 20/10/2026) con las más de 200 marcas de Coca-Cola y la pregunta «¿por qué las empresas no venden todas lo mismo al mismo precio? ¿cuánto pagamos por la variedad? ¿ofrece el mercado la justa?»; la idea final la responde y retoma el refrán («para gustos, los colores, y de esa diversidad de gustos nace el poder de mercado…»). La frase de Joan Robinson (mapa 1:1) puede ir como apunte en la contextualización.
@@ -149,6 +169,7 @@ Consultas del 19/10/2026 (`_trabajo/propuestas-datos.md`; series en `_trabajo/da
 - **Ritmo**: Chamberlin breve (intuiciones), Dixit-Stiglitz con el problema escrito y la resolución de palabra; Lancaster en 1'; el consumidor indiferente es la pieza que se repite en los 3 modelos espaciales y en la vertical: decirlo.
 
 - **Mapa de las decisiones (20/10/2026)**: al empezar II.3, la tabla `tab:decisiones` va a la pizarra con las columnas «decisión» y «modelo» (entrada, localización, calidad, precio; otras: publicidad y marcas) y la columna «resultado clave» se rellena al terminar cada modelo; se conserva hasta el final del bloque II, junto a la columna de márgenes. `hotelling-uniforme` es apoyo (o las primeras capas del segmento de `hotelling`); `chamberlin-ajuste` y `hotelling-discontinuidad` son de anexo: solo apoyo si el tribunal pregunta.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Cambios del 20/10/2026 (revisión de Víctor)
 

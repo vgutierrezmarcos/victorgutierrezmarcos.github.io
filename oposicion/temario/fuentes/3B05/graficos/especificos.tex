@@ -1,0 +1,58 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Diagrama de Mussa (1974): p_X·PMg_L^X = 5 e^{-0,18 L_X} desde O_X y
+% p_Y·PMg_L^Y = 4,2 e^{-0,15 L_Y} desde O_Y (L_Y = 8 - L_X). Sube p_Y un 30 %:
+% la curva de Y se multiplica por 1,3 (sube en esa proporción); el salario
+% sube de w_0 = 2,36 a w_1 = 2,73 (un 15 %, menos que el precio).
+\begin{tikzpicture}[tcee]
+  \pgfmathsetmacro{\Lb}{8}
+  \pgfmathsetmacro{\xa}{(ln(5)-ln(4.2)+0.15*\Lb)/0.33}
+  \pgfmathsetmacro{\wa}{5*exp(-0.18*\xa)}
+  \pgfmathsetmacro{\xb}{(ln(5)-ln(4.2*1.3)+0.15*\Lb)/0.33}
+  \pgfmathsetmacro{\wb}{5*exp(-0.18*\xb)}
+  % 1: base de longitud L̄ con los 2 orígenes y los 2 ejes del salario
+  \capa{1}{%
+    \draw[thick] (0,0) -- (\Lb,0);
+    \draw[eje] (0,0) -- (0,6.3) node[above] {$w$};
+    \draw[eje] (\Lb,0) -- (\Lb,6.3) node[above] {$w$};
+    \node[below left] at (0,0) {$O_X$};
+    \node[below right] at (\Lb,0) {$O_Y$};
+    \node[etiqueta,above right] at (0.05,0.05) {$L_X\rightarrow$};
+    \node[etiqueta,above left] at (\Lb-0.05,0.05) {$\leftarrow L_Y$};
+    \draw[<->,thin] (0,-1.75) -- node[below] {$\bar L = L_X+L_Y$} (\Lb,-1.75);
+  }
+  % 2: demanda de trabajo de X, desde O_X
+  \capa{2}{\draw[curva1] plot[domain=0:\Lb,samples=60] (\x,{5*exp(-0.18*\x)});}
+  \capa{2}{\node[etiqueta,above right,tceemorado] at (0.45,4.6) {$p_X\cdot\mathrm{PMg}_L^X$};}
+  % 3: demanda de trabajo de Y, desde O_Y
+  \capa{3}{\draw[curva2] plot[domain=0:\Lb,samples=60] (\x,{4.2*exp(-0.15*(\Lb-\x))});}
+  \capa{3}{\node[etiqueta,below right,tceeazul] at (0.05,1.2) {$p_Y\cdot\mathrm{PMg}_L^Y$};}
+  % 4: equilibrio E, salario w_0 y reparto del trabajo
+  \capa{4}{\node[punto,label={[etiqueta]above:$E$}] (E) at (\xa,\wa) {};}
+  \capa{4}{\draw[guia] (0,\wa) node[left,black] {$w_0$} -- (\Lb,\wa);}
+  \capa{4}{\draw[guia] (\xa,\wa) -- (\xa,0);}
+  \capa{4}{%
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt}] (0.03,-0.12) -- node[below=5pt] {$L_{X0}$} (\xa-0.03,-0.12);
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt}] (\xa+0.03,-0.12) -- node[below=5pt] {$L_{Y0}$} (\Lb-0.03,-0.12);
+  }
+  % 5: rentas de los capitales específicos (área bajo cada curva sobre w_0)
+  \capa{5}{\fill[area] (0,\wa) -- plot[domain=0:\xa,samples=40] (\x,{5*exp(-0.18*\x)}) -- cycle;}
+  \capa{5}{\node[etiqueta] at (1.05,3.05) {$r_X K_X$};}
+  \capa{5}{\fill[area2] (\xa,\wa) -- plot[domain=\xa:\Lb,samples=40] (\x,{4.2*exp(-0.15*(\Lb-\x))}) -- (\Lb,\wa) -- cycle;}
+  \capa{5}{\node[etiqueta] at (6.35,2.7) {$r_Y K_Y$};}
+  % 6: sube p_Y: la curva de Y se desplaza hacia arriba en la proporción Δp_Y/p_Y
+  \capa{6}{\draw[curvanueva,desplazada] plot[domain=0:\Lb,samples=60] (\x,{1.3*4.2*exp(-0.15*(\Lb-\x))});}
+  \capa{6}{\node[etiqueta,left,tceerojo] at (\Lb-0.1,5.75) {$p'_Y\cdot\mathrm{PMg}_L^Y$};}
+  \capa{6}{\draw[flecha] (7.3,{4.2*exp(-0.15*0.7)}) -- node[right,etiqueta] {$\Delta p_Y$} (7.3,{1.3*4.2*exp(-0.15*0.7)});}
+  % 7: nuevo equilibrio E', salario w_1 y trabajo que pasa de X a Y
+  \capa{7}{\node[punto,label={[etiqueta]above left:$E'$}] (E1) at (\xb,\wb) {};}
+  \capa{7}{\draw[guia] (0,\wb) node[left,black] {$w_1$} -- (\xb,\wb);}
+  \capa{7}{\draw[guia] (\xb,\wb) -- (\xb,0);}
+  \capa{7}{\draw[flecha] (\xa,0.55) -- (\xb,0.55);}
+  \capa{7}{%
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt},tceerojo] (0.03,-0.85) -- node[below=5pt] {$L_{X1}$} (\xb-0.03,-0.85);
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt},tceerojo] (\xb+0.03,-0.85) -- node[below=5pt] {$L_{Y1}$} (\Lb-0.03,-0.85);
+  }
+\end{tikzpicture}
+\end{document}

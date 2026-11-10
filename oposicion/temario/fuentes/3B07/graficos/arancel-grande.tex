@@ -1,0 +1,99 @@
+% Arancel en un país grande (equilibrio parcial), 3.B.7, I.2.1.
+% Importador (izquierda): demanda p = 6,2 - x, oferta nacional p = 1,4 + q;
+%   demanda de importaciones M(p) = 7,6 - 2p (autarquía: p = 3,8).
+% Exportador extranjero (derecha, con su propio origen): demanda p = 3,6 - x*,
+%   oferta p = q* - 1,2; oferta de exportaciones X*(p*) = 2p* - 2,4
+%   (autarquía: p* = 1,2).
+% Libre comercio: M = X* -> p^W = 2,5; M^0 = X*^0 = 2,6 (q^0 = 1,1, x^0 = 3,7;
+%   x*^0 = 1,1, q*^0 = 3,7).
+% Arancel t = 7/9 (77,8 %): p* = 1,8 y p*(1+t) = 3,2; M^1 = X*^1 = 1,2
+%   (q^1 = 1,8, x^1 = 3,0; x*^1 = 1,8, q*^1 = 3,0); p* < p^W < p*(1+t).
+% Importador: a = 1,995; b = d = 0,245; c = 0,84; e = (p^W - p*)M^1 = 0,84;
+%   e - (b + d) = 0,35 > 0 (el arancel óptimo de este ejemplo es t = 0,42; ver
+%   bienestar-arancel.tex). Exportador: pierde e + f + h, f = h = 0,245.
+% Elaboración propia a partir de Feenstra y Taylor (2021), cap. 8.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    areaep/.style={fill=tceedorado,fill opacity=0.30,draw=none},
+    areapie/.style={fill=tceerojo,fill opacity=0.25,draw=none},
+    arearec/.style={fill=tceeverde,fill opacity=0.25,draw=none},
+    arearri/.style={fill=tceeazul,fill opacity=0.25,draw=none},
+    llave/.style={decorate,decoration={brace,amplitude=4pt,mirror},thick},
+    muestra/.style={minimum width=0.42cm,minimum height=0.3cm,inner sep=0pt}]
+  % 1: ejes de los 2 paneles (el exportador con su propio origen)
+  \capa{1}{\ejes{$x$, $q$}{$p$}{5.8}{6.2}}
+  \capa{1}{\node[etiqueta,font=\small\bfseries] at (2.9,6.6) {País importador};}
+  \begin{scope}[xshift=7.4cm]
+    \capa{1}{\draw[eje] (0,0) -- (5.8,0) node[below left=2pt and 0pt] {$x^*$, $q^*$};}
+    \capa{1}{\draw[eje] (0,0) -- (0,6.2) node[left] {$p$};}
+    \capa{1}{\node[below left] at (0,0) {$0$};}
+    \capa{1}{\node[etiqueta,font=\small\bfseries] at (2.9,6.6) {Resto del mundo (exportador)};}
+  \end{scope}
+  % 2: demanda y oferta del importador
+  \capa{2}{\draw[curva2] (0.6,5.6) -- (5.0,1.2) node[etiqueta,right] {$D$};}
+  \capa{2}{\draw[curva1] (0,1.4) -- (4.4,5.8) node[etiqueta,right] {$S$};}
+  % 3: demanda y oferta del exportador
+  \begin{scope}[xshift=7.4cm]
+    \capa{3}{\draw[curva2] (0,3.6) -- (3.4,0.2) node[etiqueta,right] {$D^*$};}
+    \capa{3}{\draw[curva1] (1.3,0.1) -- (5.3,4.1) node[etiqueta,right] {$S^*$};}
+  \end{scope}
+  % 4: precio de libre comercio en los 2 paneles y cantidades
+  \capa{4}{\draw[guia] (0,2.5) node[etiqueta,left,text=black] {$p^W$} -- (12.9,2.5);}
+  \capa{4}{\draw[guia] (1.1,2.5) -- (1.1,0) node[below,text=black] {$q^0$};}
+  \capa{4}{\draw[guia] (3.7,2.5) -- (3.7,0) node[below,text=black] {$x^0$};}
+  \capa{4}{\draw[guia] (8.5,2.5) -- (8.5,0) node[below,text=black] {$x^{*0}$};}
+  \capa{4}{\draw[guia] (11.1,2.5) -- (11.1,0) node[below,text=black] {$q^{*0}$};}
+  \capa{4}{\node[punto] at (1.1,2.5) {};}
+  \capa{4}{\node[punto] at (3.7,2.5) {};}
+  \capa{4}{\node[punto] at (8.5,2.5) {};}
+  \capa{4}{\node[punto] at (11.1,2.5) {};}
+  % 5: precios con arancel (cada país, el suyo) y cantidades nuevas
+  \capa{5}{\draw[curvanueva] (0,3.2) node[etiqueta,left,text=black] {$p^*(1+t)$} -- (5.4,3.2);}
+  \capa{5}{\draw[guia] (5.4,3.2) -- (12.9,3.2);}
+  \capa{5}{\draw[guia] (0,1.8) node[etiqueta,left,text=black] {$p^*$} -- (7.4,1.8);}
+  \capa{5}{\draw[curvanueva] (7.4,1.8) -- (12.9,1.8);}
+  \capa{5}{\draw[guia] (1.8,3.2) -- (1.8,0) node[below,text=black] {$q^1$};}
+  \capa{5}{\draw[guia] (3.0,3.2) -- (3.0,0) node[below,text=black] {$x^1$};}
+  \capa{5}{\draw[guia] (9.2,1.8) -- (9.2,0) node[below,text=black] {$x^{*1}$};}
+  \capa{5}{\draw[guia] (10.4,1.8) -- (10.4,0) node[below,text=black] {$q^{*1}$};}
+  \capa{5}{\node[punto] at (1.8,3.2) {};}
+  \capa{5}{\node[punto] at (3.0,3.2) {};}
+  \capa{5}{\node[punto] at (9.2,1.8) {};}
+  \capa{5}{\node[punto] at (10.4,1.8) {};}
+  \capa{5}{\draw[llave] (1.8,-0.6) -- (3.0,-0.6) node[midway,below=4pt] {$M^1$};}
+  \capa{5}{\draw[llave] (9.2,-0.6) -- (10.4,-0.6) node[midway,below=4pt] {$X^{*1}=M^1$};}
+  % 6: áreas a, b, c, d del importador
+  \capa{6}{\fill[areaep] (0,2.5) -- (1.1,2.5) -- (1.8,3.2) -- (0,3.2) -- cycle;}
+  \capa{6}{\node[etiqueta] at (0.75,2.85) {$a$};}
+  \capa{6}{\fill[areapie] (1.1,2.5) -- (1.8,2.5) -- (1.8,3.2) -- cycle;}
+  \capa{6}{\node[etiqueta] at (1.58,2.72) {$b$};}
+  \capa{6}{\fill[arearec] (1.8,2.5) rectangle (3.0,3.2);}
+  \capa{6}{\node[etiqueta] at (2.4,2.85) {$c$};}
+  \capa{6}{\fill[areapie] (3.0,2.5) -- (3.7,2.5) -- (3.0,3.2) -- cycle;}
+  \capa{6}{\node[etiqueta] at (3.22,2.72) {$d$};}
+  % 7: rectángulo e (mejora de la RRI) en los 2 paneles
+  \capa{7}{\fill[arearri] (1.8,1.8) rectangle (3.0,2.5);}
+  \capa{7}{\node[etiqueta] at (2.4,2.15) {$e$};}
+  \capa{7}{\fill[arearri] (9.2,1.8) rectangle (10.4,2.5);}
+  \capa{7}{\node[etiqueta] at (9.8,2.15) {$e$};}
+  % 8: triángulos f y h del exportador
+  \capa{8}{\fill[areapie] (8.5,2.5) -- (9.2,2.5) -- (9.2,1.8) -- cycle;}
+  \capa{8}{\node[etiqueta] at (8.98,2.28) {$f$};}
+  \capa{8}{\fill[areapie] (10.4,2.5) -- (11.1,2.5) -- (10.4,1.8) -- cycle;}
+  \capa{8}{\node[etiqueta] at (10.62,2.28) {$h$};}
+  % leyenda de las áreas (con cada área)
+  \capa{6}{\node[muestra,areaep] at (0.2,-1.9) {};}
+  \capa{6}{\node[etiqueta,anchor=west,font=\footnotesize] at (0.5,-1.9) {$a$: excedente del productor};}
+  \capa{6}{\node[muestra,arearec] at (4.6,-1.9) {};}
+  \capa{6}{\node[etiqueta,anchor=west,font=\footnotesize] at (4.9,-1.9) {$c$: recaudación pagada por el importador};}
+  \capa{6}{\node[muestra,areapie] at (0.2,-2.5) {};}
+  \capa{6}{\node[etiqueta,anchor=west,font=\footnotesize] at (0.5,-2.5) {$b$, $d$: PIE del importador};}
+  \capa{7}{\node[muestra,arearri] at (4.6,-2.5) {};}
+  \capa{7}{\node[etiqueta,anchor=west,font=\footnotesize] at (4.9,-2.5) {$e$: mejora de la RRI (la paga el exportador)};}
+  \capa{8}{\node[muestra,areapie] at (0.2,-3.1) {};}
+  \capa{8}{\node[etiqueta,anchor=west,font=\footnotesize] at (0.5,-3.1) {$f$, $h$: PIE del exportador};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,90 @@
+tema: 3A41
+fecha_inventario: 2026-11-09
+datos:
+  - id: iapc-ze-ultimo
+    texto: "en octubre de 2026 la inflación de la zona del euro ha subido al 4,0~\\%, empujada por la energía, que se encarece un 20,8~\\% en un año"
+    donde: [3A41.tex, repaso/3A41-repaso.tex]
+    valor: [4.0, 20.8]
+    unidad: "% interanual (IAPC general y energía, zona del euro)"
+    periodo: octubre 2026 (avance)
+    fuente: Eurostat2026IAPCoct
+    organismo: Eurostat
+    serie: "prc_hicp_manr, CP00 y NRG, EA"
+    url: https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-04112026-ap
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: eurostat-iapc
+    depende: [datos/iapc-general-subyacente-zona-euro-espana-1999-2026.csv, graficos/inflacion-general-subyacente.tex]
+    frase: "«Y el fuego ha vuelto»: si la inflación baja, el enganche y el apartado «2026» (l. 324, 560, 762) cambian de sentido (duda para Víctor); título del gráfico «1999-2026» y pie «El dato de octubre de 2026 es un avance»; repaso: enganche, l. 126, pie del gráfico y caja"
+  - id: iapc-ze-subyacente
+    texto: "en octubre, la de la zona del euro está en el 2,5~\\%"
+    donde: [3A41.tex, repaso/3A41-repaso.tex]
+    valor: 2.5
+    unidad: "% interanual (IAPC sin energía ni alimentos, zona del euro)"
+    periodo: octubre 2026 (avance)
+    fuente: Eurostat2026IAPCoct
+    organismo: Eurostat
+    serie: "prc_hicp_manr, TOT_X_NRG_FOOD, EA"
+    url: https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-04112026-ap
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: eurostat-iapc
+    depende: [datos/iapc-general-subyacente-zona-euro-espana-1999-2026.csv]
+    frase: "«la subyacente no» (sube) depende del dato; repaso: l. 126 y caja"
+  - id: ipc-espana-ultimo
+    texto: "en España se mantiene en el 4,9~\\%"
+    donde: [3A41.tex, repaso/3A41-repaso.tex]
+    valor: [4.9, 3.1]
+    unidad: "% interanual (IPC general y subyacente del INE, indicador adelantado)"
+    periodo: octubre 2026 (adelantado)
+    fuente: INE2026IPCAdelantadoOct
+    organismo: INE
+    serie: "IPC, indicador adelantado (general y subyacente)"
+    url: https://www.ine.es/dyngs/Prensa/adIPC1026.htm
+    periodicidad: mensual
+    proxima: 2026-11
+    familia: ine-ipc
+    depende: [datos/iapc-general-subyacente-zona-euro-espana-1999-2026.csv]
+    frase: "l. 324: «la de España, la del INE, en el 3,1~\\%»; repaso: enganche, l. 126 y caja"
+  - id: ipc-eeuu
+    texto: "en Estados Unidos, el IPC sube un 3,7~\\% en septiembre"
+    donde: [3A41.tex, repaso/3A41-repaso.tex]
+    valor: 3.7
+    unidad: "% interanual (CPI-U)"
+    periodo: septiembre 2026
+    fuente: BLS2026IPC
+    organismo: U.S. Bureau of Labor Statistics
+    serie: "CUUR0000SA0"
+    url: https://data.bls.gov/timeseries/CUUR0000SA0
+    periodicidad: mensual
+    proxima: 2026-11
+    familia: bls-ipc
+    frase: "repaso: l. 126 y caja «3,7 % (BLS, sept.)»"
+  - id: expectativas-spf
+    texto: "Las expectativas a largo plazo, sin embargo, siguen ancladas en el 2,0~\\%"
+    donde: [3A41.tex, repaso/3A41-repaso.tex]
+    valor: 2.0
+    unidad: "% (expectativa de inflación a largo plazo, SPF)"
+    periodo: SPF del 4.º trimestre de 2026
+    fuente: BCE2026SPF4T
+    organismo: BCE
+    serie: "Survey of Professional Forecasters, longer-term inflation expectations"
+    url: https://www.ecb.europa.eu/stats/ecb_surveys/survey_of_professional_forecasters/html/ecb.spf2026q4.en.html
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: bce-spf
+    frase: "también l. 324 («que siguen en el 2,0~\\%»); repaso: enganche y caja «SPF 4T 2026»"
+  - id: dfr-bce
+    texto: "(la facilidad de depósito, al 2,25~\\% y al 2,50~\\%)"
+    donde: [3A41.tex, repaso/3A41-repaso.tex]
+    valor: 2.50
+    unidad: "% (facilidad de depósito del BCE)"
+    periodo: desde el 16/09/2026
+    fuente: BCE2026Tipos
+    organismo: BCE
+    serie: "FM.D.U2.EUR.4F.KR.DFR.LEV"
+    url: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html
+    periodicidad: por reunión del Consejo de Gobierno (cada 6 semanas)
+    proxima: 2026-12
+    familia: bce-tipos
+    frase: "repaso: l. 126 y caja «2,50 % (BCE, sept. 2026)»"

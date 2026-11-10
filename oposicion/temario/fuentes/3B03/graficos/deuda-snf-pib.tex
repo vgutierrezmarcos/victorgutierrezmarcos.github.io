@@ -1,0 +1,46 @@
+% Deuda consolidada (préstamos + valores) de las sociedades no financieras en
+% % del PIB, trimestral, 1999T1-2026T2: España y zona del euro (desde 1999T4).
+% Datos: ../datos/deuda-snf-pib.csv (BCE, QSA; consulta del 8/11/2026); eje x
+% = columna anio (1999T1 = 1999,00). Máximo de España: 119,6 % (2010T2);
+% último dato (2026T2): España 61,9 %, zona del euro 66,1 %.
+% Mismos colores que deuda-mercado-snf: España tceemorado, zona del euro
+% tceeazul. Capas: ejes → líneas → puntos → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\dpdatos}{../datos/deuda-snf-pib.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=9cm, height=5.2cm, scale only axis,
+      xmin=1998.5, xmax=2026.5, xtick={2000,2005,...,2025},
+      ymin=0, ymax=130, ytick={0,20,...,120},
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize},
+      label style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      ylabel={\% del PIB},
+      ymajorgrids, grid style={tceegris!25},
+      unbounded coords=jump,
+      dicapas,
+    ]
+    % 1: ejes y rejilla (los dibuja el entorno axis)
+    % 2: zona del euro
+    \capa{2}{\addplot[diclinea=tceeazul, mark=none, forget plot]
+        table[col sep=comma, comment chars={\#}, x=anio, y=zona_euro] {\dpdatos};}
+    % 3: España
+    \capa{3}{\addplot[diclinea=tceemorado, mark=none, forget plot]
+        table[col sep=comma, comment chars={\#}, x=anio, y=espana] {\dpdatos};}
+    % 4: máximo de España (2010T2)
+    \capa{4}{\addplot[dicpuntos=tceemorado, forget plot] coordinates {(2010.25,119.6)};
+      \dicrotulo[anchor=south, font=\footnotesize, yshift=3pt, text=tceemorado]{(2010.25,119.6)}{máximo: 119,6~\% (2010T2)}}
+    % 5: último dato (2026T2)
+    \capa{5}{\addplot[dicpuntos=tceeazul, forget plot] coordinates {(2026.25,66.1)};
+      \addplot[dicpuntos=tceemorado, forget plot] coordinates {(2026.25,61.9)};
+      \dicrotulo[anchor=west, font=\footnotesize, xshift=4pt, yshift=4pt, text=tceeazul]{(2026.25,66.1)}{zona del euro: 66,1~\%}
+      \dicrotulo[anchor=west, font=\footnotesize, xshift=4pt, yshift=-4pt, text=tceemorado]{(2026.25,61.9)}{España: 61,9~\%}
+      \dicrotulo[anchor=north west, font=\footnotesize, xshift=4pt, yshift=-9pt, inner ysep=0pt, text=tceegris]{(2026.25,61.9)}{(2026T2)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

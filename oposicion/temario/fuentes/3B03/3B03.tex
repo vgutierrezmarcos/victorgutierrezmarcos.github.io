@@ -1,0 +1,1209 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B03.bib}
+\tcetema[Decisión de financiación]{3.B.3}{La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital.}
+\tcefecha{08/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «No hay que matar la gallina de los huevos de oro», advierte el dicho. Toda empresa decide cada año cuántos huevos reparte a sus dueños y cuántos deja para alimentar a la gallina; y decide también con qué la alimenta: con lo que ella misma produce, con lo que ponen los socios o con lo que le prestan.
+  \item El 4 de noviembre de 2025, Telefónica presentó su plan estratégico para 2026-2030: el dividendo, de 0,30 euros por acción con cargo a 2025, sería de 0,15 euros con cargo a 2026, la mitad \parencite{Telefonica2025Plan}. Ese día la acción cayó un 13~\%, su peor sesión desde marzo de 2020 \parencite{EuropaPress2025Telefonica}. Ese mismo día la empresa presentó sus resultados y rebajó sus previsiones de caja, así que no toda la caída se debe al dividendo; pero el mercado leyó el recorte como una mala noticia.
+  \item ¿Se equivocó el mercado? Si los euros que no se reparten se quedan en la empresa, los accionistas no deberían perder nada. Detrás está la pregunta de esta exposición: ¿importa cómo se financia una empresa y cuánto reparte, o su valor depende solo de lo que rinden sus activos?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Microeconómica}: de la financiación depende que se hagan los proyectos con valor actual neto positivo \vertema{3.B.2}, cuánto puede crecer la empresa \vertema{3.B.4}, su riesgo de insolvencia y quién la controla.
+  \item \emph{Macroeconómica}: la financiación es la vía por la que el ahorro llega a la inversión productiva \vertema{3.A.34}, y el endeudamiento de las empresas amplifica el ciclo y la transmisión de la política monetaria \vertema{3.A.37}. La deuda de las sociedades no financieras españolas, que llegó al 119,6~\% del PIB a mediados de 2010, había bajado al 61,9~\% a mediados de 2026, por debajo del 66,1~\% de la zona del euro \parencite{BCE2026QSA}.
+  \item \emph{De política económica}: las empresas europeas se financian sobre todo con préstamos y las estadounidenses, en el mercado: los valores de renta fija son el 14~\% de la deuda de las empresas españolas, el 18~\% en la zona del euro y el 59~\% en Estados Unidos \parencites{BCE2026QSA}{Fed2026Z1}. De ahí la Unión de Ahorros e Inversiones \parencite{CE2025UAI} \vertema{3.B.44}. Y la fiscalidad, que deja deducir los intereses y no el coste de los fondos propios, inclina a las empresas hacia la deuda \vertema{4.B.10}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item Para la \emph{teoría microeconómica}, la empresa combina factores para producir y maximiza su beneficio \vertema{3.A.12}. Para las \emph{finanzas corporativas}, es un conjunto de decisiones de inversión que exigen sus correspondientes decisiones de financiación. Según \textcite{Friedman1970Social}, la responsabilidad social de la empresa es aumentar sus beneficios; las finanzas lo traducen en \concepto{maximizar el valor de la empresa para sus accionistas} \parencite{Jensen2001Value}.\footnote{Para ello la empresa tiene que cumplir a la vez 3 objetivos: de \emph{rentabilidad} (crear valor con sus inversiones), de \emph{solvencia} (poder hacer frente a sus deudas) y de \emph{liquidez} (que sus activos se conviertan en dinero cuando haga falta).}
+  \item Ese objetivo se concreta en 3 decisiones: de \emph{inversión}, qué proyectos acometer \vertema{3.B.2}; de \emph{financiación}, la de esta exposición, y de \emph{dimensión}, cuánto y cómo crece la empresa \vertema{3.B.4}.
+  \item \emph{Definiciones}:
+    \begin{itemize}
+    \item la \concepto{decisión de financiación} es de qué fuentes y en qué proporción obtener los fondos que exigen las inversiones, y cómo remunerar a quienes los aportan;
+    \item la \concepto{financiación propia} (los fondos propios: aportaciones de los socios y beneficios retenidos) no se devuelve ni tiene una remuneración fija; la \concepto{financiación ajena} (la deuda) hay que devolverla y remunerarla según un contrato;
+    \item la \concepto{estructura del capital} (o estructura financiera) es la proporción de una y otra con que la empresa financia sus activos, medida a valor de mercado, y la \concepto{política de dividendos}, la parte del beneficio que se reparte a los accionistas y la forma de hacerlo.
+    \end{itemize}
+  \item \emph{Historia}:
+    \begin{itemize}
+    \item hasta los años 50, la tesis tradicional sostenía que hay una mezcla de deuda y fondos propios que abarata el capital \parencite{Durand1952Costs};
+    \item \textcite{ModiglianiMiller1958Cost} la refutaron con un argumento de arbitraje\footnote{Premios Nobel: \autor{Modigliani} (1985), «por sus análisis pioneros del ahorro y de los mercados financieros» \parencite{Nobel1985Modigliani}, por la hipótesis del ciclo vital (\emph{life-cycle}) y por este teorema; \autor{Miller} (1990), con \autor{Markowitz} y \autor{Sharpe}, «por sus trabajos pioneros en la teoría de la economía financiera» \parencite{Nobel1990Markowitz}.} y \textcite{MillerModigliani1961Dividend} extendieron la irrelevancia a los dividendos; junto con la teoría de carteras de \autor{Markowitz} y \autor{Tobin} \vertema{3.B.23}, llevaron la teoría económica a las finanzas;
+    \item desde los 70, la literatura ha ido levantando sus supuestos: los impuestos \parencites{ModiglianiMiller1963Corporate}{Miller1977Debt}, los costes de insolvencia, los conflictos de agencia \parencite{JensenMeckling1976Theory} y la información asimétrica \parencites{Ross1977Determination}{MyersMajluf1984Corporate} \vertema{3.A.13}, que explican por qué la financiación sí importa.
+    \end{itemize}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Cómo pueden financiarse las empresas, y en qué se diferencian los fondos propios de la deuda?
+  \item ¿Existe una estructura del capital que maximice el valor de la empresa? Y si existe, ¿de qué depende?
+  \item ¿Cuánto beneficio conviene repartir, y por qué las empresas reparten dividendos aunque no les haga falta?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición va del balance contable al valor de mercado:
+  \begin{itemize}
+  \item una \emph{aproximación contable} (bloque~\ref{sec:fuentes}): qué fuentes tiene la empresa y en qué se diferencian la financiación propia y la ajena;
+  \item una \emph{aproximación financiera} (bloque~\ref{sec:estructura}): si existe una estructura del capital óptima y de qué depende, desde la irrelevancia de \autor{Modigliani} y \autor{Miller} hasta los impuestos, la insolvencia, la agencia y la información asimétrica;
+  \item la \emph{política de dividendos} (bloque~\ref{sec:dividendos}): cuánto beneficio repartir, que es la otra cara de la autofinanciación.
+  \end{itemize}
+  \end{itemize}
+\item La estructura del capital va antes que los dividendos, aunque el título los nombre al revés, porque la respuesta sobre los dividendos es un corolario de la que se da sobre la deuda: el mismo argumento de \autor{Modigliani} y \autor{Miller} y las mismas fricciones que lo rompen.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.B.3. La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital}\\[2pt]
+Introducción\esqtiempo{2,5}\\
+I. Aproximación contable – fuentes de financiación: ¿cómo pueden financiarse las empresas?\esqtiempo{6,5}\\
+\hspace*{1.5em}1. Clasificación\\
+\hspace*{1.5em}2. Financiación interna o autofinanciación\\
+\hspace*{1.5em}3. Financiación externa: acciones, deuda e híbridos; banco frente a mercado\\
+II. Aproximación financiera – estructura financiera óptima: ¿existe? ¿cuáles son sus determinantes?\esqtiempo{13,5}\\
+\hspace*{1.5em}1. ¿Qué es la estructura financiera?\\
+\hspace*{1.5em}2. El coste de capital\\
+\hspace*{1.5em}3. La estructura óptima: tradicional; \autor{Modigliani} y \autor{Miller} y extensiones; información y agencia; factores\\
+III. Política de dividendos: ¿cuánto beneficio debe repartirse a los accionistas?\esqtiempo{6,5}\\
+\hspace*{1.5em}1. ¿Qué hacer con los beneficios?\\
+\hspace*{1.5em}2. ¿Por qué se pagan dividendos?\\
+\hspace*{1.5em}3. ¿Afectan al valor de las acciones?\\
+Conclusión\esqtiempo{1}
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{6,5} (I.1, \tiempo{2}; I.2, \tiempo{1,5}; I.3, \tiempo{3}: acciones, deuda e híbridos, \tiempo{1,5}, y banco frente a mercado, \tiempo{1,5}); II, \tiempo{13,5} (II.1, \tiempo{1}; II.2, \tiempo{1}; II.3, \tiempo{11,5}: perspectiva tradicional, \tiempo{1}; \autor{Modigliani} y \autor{Miller} sin impuestos, \tiempo{4}; impuestos, \tiempo{2}; teoría del equilibrio, \tiempo{1,5}; información asimétrica y agencia, \tiempo{2,5}; factores en la práctica, \tiempo{0,5}); III, \tiempo{6,5} (III.1, \tiempo{1}; III.2, \tiempo{2,5}; III.3, \tiempo{3}), y conclusión, \tiempo{1}. La introducción y la conclusión llevan el dicho del enganche, «no hay que matar la gallina de los huevos de oro». Las funciones clave, hasta el final, son $V=V_E+V_D$, las proposiciones de \autor{Modigliani} y \autor{Miller} \eqref{eq:mm} y la teoría del equilibrio \eqref{eq:trade-off}. Los números de nuestra empresa acompañan todo el tema, y las pegatinas van cada una junto a su concepto: «los mismos perros con distinto collar» (irrelevancia), «ni tanto que queme al santo, ni tanto que no lo alumbre» (teoría del equilibrio), «la ocasión hace al ladrón» (flujo de caja libre), «la ropa sucia se lava en casa» (jerarquía financiera) y «despacito y buena letra» (dividendos de \autor{Lintner}). En el bloque~\ref{sec:fuentes}, la matriz de fuentes (tabla~\ref{tab:matriz-fuentes}) y la tabla~\ref{tab:propia-ajena} de palabra. En el bloque~\ref{sec:estructura}, el coste del capital frente a $V_D/V_E$ por capas (gráfico~\ref{fig:coste-capital}), imprescindible; después, el valor de la empresa frente a la deuda (gráfico~\ref{fig:valor-tradeoff}), imprescindible, y la escalera de la jerarquía financiera (gráfico~\ref{fig:jerarquia}). En el bloque~\ref{sec:dividendos}, el precio de la acción frente a la tasa de retención con las 3 curvas de \autor{Walter} (gráfico~\ref{fig:walter}). Los gráficos de datos, las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
+\end{notaopositor}
+
+% ==========================================================================
+\section{Aproximación contable – fuentes de financiación:\newline ¿cómo pueden financiarse las empresas?}\label{sec:fuentes}
+\minutos{6,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{6,5}). La apertura, de palabra. I.1, \tiempo{2}: la matriz de fuentes en el centro (tabla~\ref{tab:matriz-fuentes}), con un ejemplo en cada celda; la tabla~\ref{tab:propia-ajena}, de palabra, fila a fila. I.2, \tiempo{1,5}: una línea con el multiplicador de las reservas \eqref{eq:multiplicador} y el efecto \autor{Lohmann}-\autor{Ruchti} de palabra; el coste, $r_E$, en una palabra; ventajas e inconvenientes, de palabra. I.3, \tiempo{3}: acciones, deuda e híbridos de palabra (\tiempo{1,5}); banco frente a mercado (\tiempo{1,5}), con las 3 cifras de la relevancia y nuestra empresa. El gráfico~\ref{fig:deuda-mercado-snf} es de apoyo.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la empresa puede financiarse con lo que genera o con lo que le aportan desde fuera, y en los 2 casos con fondos propios o con deuda. La diferencia esencial entre unos y otra es la \emph{exigibilidad}: quién soporta el riesgo y quién manda.
+\item Vamos a seguir un ejemplo a lo largo de la exposición: \emph{nuestra empresa} necesita 1.000 euros para un proyecto. ¿De dónde puede sacarlos?
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Clasificación de las formas de financiación}\label{sec:clasificacion}
+
+\begin{itemize}
+\item Para invertir, la empresa necesita \concepto{recursos financieros}. Hay 2 criterios para clasificarlos, y cada uno responde a una pregunta distinta:
+  \begin{itemize}
+  \item \emph{Según su origen} (¿de dónde salen los fondos?): \concepto{financiación interna} o autofinanciación, los recursos que genera la propia empresa (reservas, amortizaciones y provisiones), y \concepto{financiación externa}, la que aportan terceros en los mercados de capitales o los bancos (acciones, obligaciones, préstamos).
+  \item \emph{Según su exigibilidad} (¿hay que devolverlos?): \concepto{financiación propia}, el patrimonio neto (capital y reservas), que no se devuelve, y \concepto{financiación ajena}, el pasivo exigible (préstamos, obligaciones, proveedores).
+  \end{itemize}
+\item Los 2 criterios se cruzan (tabla~\ref{tab:matriz-fuentes}): las reservas son internas y propias; una ampliación de capital, externa y propia; un préstamo, externo y ajeno.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las fuentes de financiación según su origen y su exigibilidad}\label{tab:matriz-fuentes}
+\begin{tabular}{>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{5.6cm}>{\centering\arraybackslash}m{5.6cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Propia (no exigible)} & \textbf{Ajena (exigible)} \\
+\midrule
+\textbf{Interna} & \cellcolor{tceesalvia}\textcolor{tceeverde}{Reservas: beneficios retenidos (enriquecimiento)} & \textcolor{tceeverde}{Provisiones (mantenimiento)} \\
+\textbf{Externa} & \textcolor{tceeazul}{Acciones: ampliaciones de capital} & \textcolor{tceedorado}{Préstamos, obligaciones, proveedores, \emph{leasing}} \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\begin{itemize}
+\item Las \emph{amortizaciones} son internas, pero no están en ninguna de las 2 columnas: no son una fuente nueva de fondos, sino la caja que se queda en la empresa para reponer el activo que se gasta (\ref{sec:tipos-autofinanciacion}).
+\item \emph{Financiación propia frente a ajena}: la tabla~\ref{tab:propia-ajena} resume en qué se diferencian. La idea de fondo es que los activos financieros no crean renta: reparten la que generan los activos reales entre quienes los financian \vertema{3.B.2}. Lo que cambia de una fuente a otra es quién cobra primero, cuánto riesgo soporta y quién decide.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Financiación propia frente a financiación ajena}\label{tab:propia-ajena}
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.8cm}>{\raggedright\arraybackslash}m{5.4cm}>{\raggedright\arraybackslash}m{5.4cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Propia (fondos propios)} & \textbf{Ajena (deuda)} \\
+\midrule
+\emph{Exigibilidad} & No se devuelve (salvo liquidación o recompra) & Se devuelve en los plazos pactados \\
+\emph{Remuneración} & Residual y discrecional: dividendos y revalorización & Fija o pactada: intereses, se gane o se pierda \\
+\emph{Prelación} & Cobra la última & Cobra antes que los socios \\
+\emph{Control} & Da voto en la junta & No da voto, salvo cláusulas o impago \\
+\emph{Fiscalidad} & El dividendo no se deduce en el impuesto sobre sociedades & El interés se deduce, con límites \\
+\emph{Riesgo para la empresa} & No obliga: amortigua las pérdidas & Obliga: con mucha deuda, riesgo de insolvencia \\
+\rowcolor{tceesalvia}\emph{Coste} & Más alto, $r_E$: quien la aporta soporta más riesgo & Más bajo, $r_D$: quien la aporta soporta menos riesgo \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\begin{itemize}
+\item En España, el tipo general del impuesto sobre sociedades es del 25~\%, y los gastos financieros netos solo se deducen hasta el 30~\% del beneficio operativo, salvo el primer millón de euros \parencite[arts.~16 y 29]{LIS2014} \vertema{4.B.10}.
+\item \emph{Nexo}: seguimos el primer criterio, el del origen, y vemos primero la financiación interna y después la externa.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Fuentes de financiación interna o autofinanciación}\label{sec:autofinanciacion}
+
+\subsubsection{Tipos de autofinanciación}\label{sec:tipos-autofinanciacion}
+
+\begin{itemize}
+\item La \concepto{autofinanciación} son los recursos que genera la propia empresa y que no salen de ella. Hay 2 tipos:
+  \begin{itemize}
+  \item la de \concepto{enriquecimiento}, las \emph{reservas}: beneficios de ejercicios anteriores que no se han repartido como dividendos. Aumentan el patrimonio neto y son el componente principal de la autofinanciación;
+  \item la de \concepto{mantenimiento}, las \emph{amortizaciones} y las \emph{provisiones}: no aumentan el patrimonio neto, sino que evitan que disminuya.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Autofinanciación de enriquecimiento: las reservas}
+
+\begin{itemize}
+\item Según su origen, las reservas son:
+  \begin{itemize}
+  \item \emph{legal}: las sociedades de capital destinan el 10~\% del beneficio de cada ejercicio a esta reserva hasta que alcance al menos el 20~\% del capital social, y mientras no supere ese límite solo puede usarse para compensar pérdidas si no hay otras reservas \parencite[art.~274]{LSC2010}. Protege a los acreedores, no a los socios;
+  \item \emph{estatutarias}: las que fijan los estatutos de la sociedad;
+  \item \emph{voluntarias}: las que decide la junta de accionistas.
+  \end{itemize}
+\item \emph{El efecto multiplicador}: si la empresa quiere mantener constante su ratio de endeudamiento $V_D/V_E$ (aquí a valores contables \vertema{3.B.2}), cada euro de reservas le permite pedir prestados otros $V_D/V_E$ euros, y los recursos totales crecen más que las reservas:
+  \begin{equation}\label{eq:multiplicador}
+  \Delta(\text{recursos totales})=\Delta V_E+\Delta V_D=\Big(1+\frac{V_D}{V_E}\Big)\,\Delta V_E.
+  \end{equation}
+  Cuanto más endeudada esté la empresa, mayor es el efecto expansivo de la autofinanciación.
+  \begin{itemize}
+  \item En nuestra empresa, financiada con 600 de fondos propios y 400 de deuda, $V_D/V_E=2/3$: 60 euros de beneficio retenido le permiten pedir prestados otros 40 e invertir 100.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Autofinanciación de mantenimiento: amortizaciones y provisiones}
+
+\begin{itemize}
+\item Las \emph{amortizaciones} son el gasto con que cada año se reconoce la depreciación de los activos.\footnote{Métodos de amortización: \emph{lineal}, en cuotas fijas, $A=(V_0-V_R)/n$, con $V_0$ el valor de compra, $V_R$ el residual y $n$ la vida útil; y \emph{acelerados}, con cuotas más altas al principio (por ejemplo, un coeficiente constante sobre una base que decrece).} Como no son un pago, la caja que representan se queda en la empresa hasta que haya que reponer el activo.
+\item Las \emph{provisiones} son gastos por obligaciones o pérdidas probables cuyo importe o fecha son inciertos (un litigio, una garantía). Mientras el riesgo no se materializa, los fondos se quedan en la empresa.
+\item \concepto{Efecto \autor{Lohmann}-\autor{Ruchti}}: si las amortizaciones se reinvierten en cuanto se dotan, la capacidad productiva no solo se mantiene, sino que crece, aunque la empresa no aporte un euro nuevo. Requiere 4 supuestos:
+  \begin{itemize}
+  \item que no haya obsolescencia: los activos nuevos rinden lo mismo que los viejos;
+  \item que los activos sean divisibles;
+  \item que no haya inflación;
+  \item y que la amortización libere de verdad recursos, es decir, que se recupere vía precios y no sea un mero apunte contable.
+  \end{itemize}
+\item El ejemplo clásico, el de una flota de barcos que crece sola, está en el anexo~\ref{anexo:lohmann}.
+\end{itemize}
+
+\subsubsection{Coste de la autofinanciación}\label{sec:coste-autofinanciacion}
+
+\begin{itemize}
+\item Las reservas no tienen un coste \emph{explícito}, como los intereses de la deuda, pero sí un coste de \emph{oportunidad}: lo que los accionistas podrían ganar si se les repartieran esos fondos y los invirtieran en otro activo de igual riesgo.
+\item Por eso su coste es el de los fondos propios, $r_E$: retener un beneficio equivale a repartirlo y pedir a la vez a los accionistas que lo vuelvan a aportar.\footnote{Con mercados perfectos (sin impuestos ni costes de emisión), retener un beneficio equivale a repartirlo y emitir a la vez acciones por el mismo importe. Con costes de emisión o información asimétrica, retener es más barato que emitir (\ref{sec:informacion}).} Es el puente con el coste del capital del apartado~\ref{sec:coste-capital}.
+\end{itemize}
+
+\subsubsection{Ventajas e inconvenientes de la autofinanciación}\label{sec:ventajas-autofinanciacion}
+
+\begin{table}[H]
+\centering
+\caption{Ventajas e inconvenientes de la autofinanciación}\label{tab:autofinanciacion}
+\begin{tabular}{>{\raggedright\arraybackslash}m{7cm}>{\raggedright\arraybackslash}m{7cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Ventajas} & \textbf{Inconvenientes} \\
+\midrule
+\emph{Autonomía}: la empresa no tiene que pedir fondos al mercado ni al banco, ni someterse a su examen & \emph{Insuficiencia}: se genera despacio, y las necesidades de inversión llegan de golpe \\
+\emph{Sin coste de emisión} ni de información: es la fuente más barata cuando los inversores saben menos que la dirección & \emph{No siempre es la más barata}: su coste de oportunidad, $r_E$, es mayor que el de la deuda \\
+\emph{Para las pymes}, la única alternativa al crédito bancario a largo plazo & \emph{Sin coste explícito}, puede llevar a invertir en proyectos que no crean valor (\ref{sec:informacion}) \\
+& \emph{Menos dividendos}, que los accionistas pueden leer como una mala señal (bloque~\ref{sec:dividendos}) \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Nexo}: por estos inconvenientes, la empresa recurre con frecuencia a los mercados de capitales y a los bancos para obtener financiación externa.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Fuentes de financiación externa o mercados de capitales}\label{sec:externa}
+
+\subsubsection{Financiación externa propia: las acciones}\label{sec:acciones}
+
+\begin{itemize}
+\item Las \concepto{acciones} son partes alícuotas del capital social de la empresa:
+  \begin{itemize}
+  \item su remuneración depende de los resultados de la empresa: no está fijada por contrato;
+  \item no tienen vencimiento: el accionista recupera su dinero vendiendo en el mercado secundario o, si la sociedad se liquida, con lo que quede tras pagar a los acreedores;
+  \item dan derechos económicos (al dividendo, a la suscripción preferente en las ampliaciones) y políticos (voto, asistencia a la junta e información) \vertema{3.B.23}.
+  \end{itemize}
+\item \emph{Clases de acciones}:
+  \begin{itemize}
+  \item \emph{según el precio de emisión}, respecto al valor nominal: \emph{a la par} o \emph{con prima de emisión}; en España no pueden emitirse por debajo del nominal \parencite[art.~59.2]{LSC2010};
+  \item \emph{según su origen y desembolso}: \emph{antiguas}, las ya en circulación; \emph{nuevas}, emitidas en una ampliación de capital; y \emph{liberadas}, total o parcialmente, cuando la ampliación se hace con cargo a reservas \parencite[art.~303]{LSC2010}. Las liberadas se asignan gratis a todos los accionistas en proporción a sus acciones (el derecho de asignación gratuita, que se puede vender, art.~306.2), pero no les dan riqueza nueva: el patrimonio neto no cambia, porque las reservas pasan a capital, y la cotización se ajusta. Son la base del dividendo flexible (\emph{scrip dividend}, bloque~\ref{sec:dividendos});
+  \item \emph{según los derechos}: ordinarias, privilegiadas (con un dividendo preferente), sin voto (hasta la mitad del capital desembolsado, con un dividendo mínimo) y, en las cotizadas, rescatables (hasta un cuarto del capital) \parencite[arts.~95, 98, 99 y 500]{LSC2010};
+  \item \emph{según su forma}: nominativas o al portador; han de ser nominativas mientras no estén enteramente desembolsadas \parencite[art.~113]{LSC2010};
+  \item \emph{según dónde se negocian}: en bolsa o fuera de ella, en el capital riesgo y el capital privado (\emph{private equity}), propios de las empresas jóvenes \vertema{3.B.4}.\footnote{La salida a bolsa clásica es la oferta pública inicial (OPI, \emph{IPO}); otra vía es fusionarse con una sociedad cotizada creada solo para comprar una empresa no cotizada (SPAC), que así cotiza sin una salida propia \vertema{3.B.23}. Cotizar da acceso a muchos más inversores, también minoristas, que la financiación privada; a cambio, dispersa la propiedad y los fundadores pierden control.}
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Financiación externa ajena: obligaciones, préstamos y otras fuentes}\label{sec:deuda}
+
+\begin{itemize}
+\item Las \concepto{obligaciones} son partes alícuotas de la deuda de la empresa, como las acciones lo son de su capital. El obligacionista es un acreedor, no un socio: cobra un interés periódico pase lo que pase, recupera el principal al vencimiento, no vota y cobra antes que el accionista si la empresa se liquida \vertema{3.B.24}.
+\item Los \concepto{préstamos} se parecen a las obligaciones (se devuelven con intereses en plazos fijados), pero suele haber un solo acreedor, normalmente un banco, frente a los muchos tenedores de una emisión. A \emph{corto plazo} sirven sobre todo para la tesorería; a \emph{largo}, para financiar el activo no corriente.
+\item \emph{Otras fuentes}, que se detallan en el anexo~\ref{anexo:instrumentos}:
+  \begin{itemize}
+  \item el \emph{arrendamiento financiero} (\emph{leasing}): la empresa usa un bien a cambio de cuotas y al final puede comprarlo; financia el 100~\% del bien sin desembolso inicial;
+  \item el \emph{factoring}: la empresa cede sus facturas a una entidad que le adelanta su importe, con descuento, y se encarga del cobro; el \emph{confirming} es lo contrario: la empresa encarga a un banco el pago a sus proveedores, que pueden cobrar por anticipado;
+  \item la financiación participativa (\emph{crowdfunding}), en forma de préstamo o de capital \parencite{CE2026Crowdfunding}; los pagarés y bonos de los mercados alternativos (el MARF en España \vertema{4.A.20}), y las emisiones en los mercados internacionales (eurobonos).
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Formas híbridas}\label{sec:hibridos}
+
+\begin{itemize}
+\item Entre los fondos propios y la deuda están los \concepto{instrumentos híbridos}, que se parecen a la deuda en la remuneración y a las acciones en el riesgo: las acciones preferentes (\emph{preferred stock}), la deuda subordinada, la deuda perpetua y las obligaciones convertibles, que llevan una opción de compra de acciones y por eso pagan menos interés \vertema{3.B.25}.
+\item Los \emph{bonos convertibles contingentes} (CoCos) son propios de los bancos: se convierten en acciones o pierden su valor automáticamente si el capital ordinario de nivel 1 del banco cae por debajo de un umbral, de al menos el 5,125~\% de sus activos ponderados por riesgo \parencite[art.~54]{UE2013CRR}, o si el supervisor lo decide \vertema{3.B.27}. El detalle de cada uno, en el anexo~\ref{anexo:instrumentos}.
+\end{itemize}
+
+\subsubsection{Financiación bancaria frente a financiación de mercado}\label{sec:banco-mercado}
+
+\begin{itemize}
+\item La deuda puede venir de un banco o de los mercados (bonos, pagarés). La diferencia es de información:
+  \begin{itemize}
+  \item el \emph{banco} selecciona y vigila a la empresa por cuenta de muchos ahorradores, que así se ahorran repetir ese trabajo: es un supervisor delegado \parencite{Diamond1984Financial}. Le compensa a la empresa pequeña, joven u opaca, que el mercado no conoce, y renegocia con más facilidad si las cosas van mal \vertema{3.A.13};
+  \item el \emph{mercado} exige tamaño, información pública y calificación crediticia, pero da plazos más largos y no depende de la salud de un banco.
+  \end{itemize}
+\item Con información asimétrica, el banco puede preferir \emph{racionar} el crédito antes que subir el tipo de interés, porque un tipo más alto atrae a los prestatarios más arriesgados \parencite{StiglitzWeiss1981Credit} \vertema{3.A.13}. Por eso las pymes dependen del banco y son las primeras en quedarse sin crédito en una crisis \vertema{4.A.8}.
+\item \emph{Europa frente a Estados Unidos}: las empresas europeas dependen mucho más del crédito; los valores son el 14~\% de la deuda de las empresas españolas y el 59~\% en Estados Unidos, aunque en España su peso se ha multiplicado desde 2008 (gráfico~\ref{fig:deuda-mercado-snf}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Valores de renta fija en la deuda de las sociedades no financieras}\label{fig:deuda-mercado-snf}
+\grafico[0.8\textwidth]{deuda-mercado-snf}
+\fuente{Banco Central Europeo, cuentas trimestrales por sectores \parencite{BCE2026QSA}, y Reserva Federal, cuentas financieras (Z.1) \parencite{Fed2026Z1}; elaboración propia. Los préstamos incluyen los no bancarios.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Política económica}: en España, el MARF, el mercado de renta fija para empresas medianas, superó en 2025 por primera vez los 10.000 millones de euros de saldo vivo, casi todo en pagarés \parencite{BME2026InformeMercado}; el ICO, ENISA y el capital riesgo público completan el acceso de las pymes \vertema{4.A.20}. En la Unión Europea, la Unión de Ahorros e Inversiones, la antigua Unión de los Mercados de Capitales, quiere que una parte mayor del ahorro llegue a las empresas a través del mercado \parencite{CE2025UAI} \vertema{3.B.44}.
+\item Volvamos a nuestra empresa: si es pequeña y poco conocida, pedirá los 1.000 euros al banco; si es grande y tiene calificación, podrá emitir bonos o pagarés.
+\item \emph{Recapitulación del bloque}: hay muchas fuentes, pero 2 grandes familias. La deuda es más barata y no quita el control, pero obliga y añade riesgo; los fondos propios cuestan más, pero amortiguan las pérdidas. La contabilidad clasifica las fuentes por su forma.
+\item \emph{Nexo}: para saber si una combinación de las 2 vale más que otra hay que pasar del valor en libros al valor de mercado: es la aproximación financiera.
+\end{itemize}
+
+% ==========================================================================
+\section{Aproximación financiera – estructura financiera óptima:\newline ¿existe? ¿cuáles son sus determinantes?}\label{sec:estructura}
+\minutos{13,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{13,5}). II.1, \tiempo{1}: el balance financiero (gráfico~\ref{fig:balance-financiero}) y la palanca financiera en una línea con nuestra empresa. II.2, \tiempo{1}: el $\mathrm{WACC}$ \eqref{eq:wacc} en una línea. II.3, \tiempo{11,5}: el gráfico~\ref{fig:coste-capital} con $V_D/V_E$ en abscisas; la tesis tradicional (panel a, \tiempo{1}); las curvas de \autor{Modigliani} y \autor{Miller} (panel b), con \eqref{eq:mm}, el arbitraje de nuestra empresa en 3 líneas y «los mismos perros con distinto collar» (\tiempo{4}); los impuestos con la fórmula de \autor{Miller} \eqref{eq:miller} en una línea y el panel c sobre los mismos ejes (\tiempo{2}); la teoría del equilibrio, \eqref{eq:trade-off}, el panel d y el gráfico~\ref{fig:valor-tradeoff}, con «ni tanto que queme al santo, ni tanto que no lo alumbre» (\tiempo{1,5}); la agencia y la jerarquía financiera con la escalera del gráfico~\ref{fig:jerarquia}, «la ocasión hace al ladrón» y «la ropa sucia se lava en casa» (\tiempo{2,5}); los factores, de palabra (\tiempo{0,5}). Las tablas~\ref{tab:supuestos-mm} y~\ref{tab:teorias-estructura} y los gráficos de datos son de apoyo.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: con mercados perfectos, la estructura del capital no importa, porque el valor lo crean los activos. Importa por las fricciones: los impuestos favorecen la deuda; los costes de insolvencia y de agencia la frenan; y la información asimétrica ordena las fuentes. No hay una fórmula única: cada empresa, según su negocio y su momento, tiene su zona razonable de endeudamiento.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Notación.} Como en el resto del bloque de finanzas: $V_E$, $V_D$ y $V=V_E+V_D$ son los valores de mercado de los fondos propios, de la deuda y de la empresa; $L=V_D/V$ es el \emph{peso} de la deuda y $V_D/V_E$, la \emph{ratio} deuda/fondos propios; $V_U$ y $V_L$, el valor de la empresa sin deuda (\emph{unlevered}) y con ella (\emph{levered}): $L$ sin subíndice es siempre el peso. $r_E$, $r_D$ y $r_A$ son las rentabilidades que exigen los accionistas, los acreedores y los activos (esta, la de la empresa sin deuda); $\mathrm{WACC}$ es el coste medio ponderado del capital. $t_{IS}$ es el tipo del impuesto sobre sociedades, y $t_E$ y $t_D$, los del impuesto sobre la renta de las personas físicas sobre los rendimientos de las acciones y de la deuda. $\mathrm{EBIT}$ es el resultado de explotación y $\mathrm{VA}(\cdot)$, el valor actual. En el bloque~\ref{sec:dividendos}, $P_0$ es el precio de la acción, $D_t$ el dividendo, $\mathrm{BPA}_t$ el beneficio por acción, $b$ la tasa de retención y $\mathrm{ROE}$ la rentabilidad de lo reinvertido, con la misma notación que el crecimiento y la valoración de la empresa \vertema{3.B.4}.
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{¿Qué es la estructura financiera?}\label{sec:que-es}
+
+\begin{itemize}
+\item La \concepto{estructura del capital} es la proporción entre las distintas fuentes con que la empresa financia sus activos. Según cuál sea, cambia el coste de financiarse; y como el valor de la empresa es el de sus flujos de caja descontados a la tasa que exigen sus financiadores \vertema{3.B.2}, la pregunta es si alguna combinación minimiza esa tasa y maximiza el valor.\footnote{La financiación no crea valor por sí misma: lo crean los activos. Si alguna estructura lo aumenta, es porque reduce el coste de financiar esos activos, o porque cambia los flujos que generan.}
+\item A partir de aquí se habla de \emph{valores de mercado}, no de valores en libros:\footnote{Tampoco se razona con el ROE, el ROA y el coste contable de la deuda, que miran al pasado, sino con lo que exige hoy el mercado: el ROA da paso al coste medio ponderado del capital ($\mathrm{WACC}$), el ROE a la rentabilidad que exigen los accionistas ($r_E$) y el coste contable de la deuda a la rentabilidad que exigen los acreedores ($r_D$).} el valor de la empresa, $V$, es lo que vale en el mercado lo que generan sus activos, y se reparte entre el valor de los fondos propios, $V_E$, y el de la deuda, $V_D$ (gráfico~\ref{fig:balance-financiero}):\footnote{Si a la deuda se le resta la caja y los activos financieros líquidos, se obtiene el \emph{valor de la empresa} que se usa para comprarla o valorarla ($\mathrm{EV}$, \emph{enterprise value}) \vertema{3.B.4}. Aquí $V_D$ es el valor de mercado de toda la deuda.}
+  \[
+  V=V_E+V_D.
+  \]
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El balance financiero: valor de la empresa, de sus fondos propios y de su deuda}\label{fig:balance-financiero}
+\grafico[0.5\textwidth]{balance-financiero}
+\fuente{elaboración propia a partir de \textcite{Vernimmen2017Corporate}.}
+\end{figure}
+
+\begin{itemize}
+\item \concepto{Palanca financiera}: el efecto de la deuda sobre la rentabilidad del accionista se ve con valores contables \eqref{eq:roe-roa}. Si el activo rinde $\mathrm{ROA}$ y la deuda cuesta $r_D$,
+  \begin{equation}\label{eq:roe-roa}
+  \mathrm{ROE}=\Big[\mathrm{ROA}+\frac{V_D}{V_E}\,(\mathrm{ROA}-r_D)\Big](1-t_{IS})
+  \end{equation}
+  \vertema{3.B.2}. Endeudarse sube el ROE si el activo rinde más que la deuda ($\mathrm{ROA}>r_D$) y lo baja en caso contrario; y siempre amplifica sus oscilaciones: es el \emph{riesgo financiero}, que soporta el accionista.
+  \begin{itemize}
+  \item Volvamos a nuestra empresa: sus activos de 1.000 generan un $\mathrm{EBIT}$ de 100 al año, un ROA del 10~\%. Si se financia con 600 de fondos propios y 400 de deuda al 5~\%, su ROE antes de impuestos es $10+(10-5)\cdot\tfrac{400}{600}=13{,}3$~\%, frente al 10~\% sin deuda. Pero si el activo pasa a rendir un 4~\%, el ROE cae al $4+(4-5)\cdot\tfrac{400}{600}=3{,}3$~\%, menos que sin deuda.
+  \item ¿Sube entonces el valor de la empresa? Esa es la pregunta de este bloque. Que la deuda suba el ROE medio no quiere decir que cree valor: el accionista gana más de media porque soporta más riesgo, y exigirá más.
+  \end{itemize}
+\item \emph{Para no confundir}: el apalancamiento se mide de 2 formas, con el \emph{peso} de la deuda, $L=V_D/V$, que va de 0 a 1, o con la \emph{ratio} deuda/fondos propios, $V_D/V_E$, que puede ser cualquier número positivo. En nuestra empresa, $L=0{,}4$ y $V_D/V_E=2/3$.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El concepto de coste de capital:\cortetitulo{} el coste de las fuentes y el coste medio ponderado}\label{sec:coste-capital}
+
+\begin{itemize}
+\item El \concepto{coste del capital} es la rentabilidad que exigen los inversores por financiar a la empresa, dado su riesgo: es la tasa con la que se descuentan sus flujos y, por tanto, la que fija su valor \vertema{3.B.2}.
+  \begin{itemize}
+  \item Los acreedores exigen $r_D$, el tipo que se paga por la deuda, menor porque cobran antes y con menos riesgo.
+  \item Los accionistas exigen $r_E$, que no es explícito: es la rentabilidad que piden por el riesgo que corren, $r_E=r_f+\beta_E\,\lambda_M$ con el modelo de valoración de activos (CAPM), con $\beta_E$ la beta de las acciones y $\lambda_M\equiv\mathbb{E}[r_M]-r_f$ la prima de riesgo del mercado \vertema{3.B.23}. Los beneficios retenidos cuestan lo mismo: $r_E$ (\ref{sec:coste-autofinanciacion}).
+  \item El riesgo del negocio lo mide la beta de los activos, $\beta_A$, y su coste es $r_A=r_f+\beta_A\,\lambda_M$.
+  \end{itemize}
+\item El \concepto{coste medio ponderado del capital} pondera el coste de cada fuente por su peso a valor de mercado, y el de la deuda después de impuestos, porque los intereses se deducen:
+  \begin{equation}\label{eq:wacc}
+  \mathrm{WACC}=r_E\,(1-L)+r_D\,(1-t_{IS})\,L,\qquad L=\frac{V_D}{V}.
+  \end{equation}
+  Es la tasa a la que se descuentan los proyectos del mismo riesgo que la empresa; sin impuestos, coincide con la rentabilidad que exigen los activos, $r_A$. Cómo se estiman $r_E$, $r_D$ y el $\mathrm{WACC}$ en la práctica se estudia aparte \vertema{3.B.2}.
+\item Con los flujos dados, maximizar el valor de la empresa es minimizar el $\mathrm{WACC}$. Sustituir fondos propios caros por deuda barata parece abaratar el capital, pero $r_E$ y $r_D$ dependen de $L$: al endeudarse, las acciones se vuelven más arriesgadas y su beta sube, $\beta_E=\beta_A\big[1+(1-t_{IS})\,V_D/V_E\big]$ \parencite{Hamada1972Effect}. Las teorías que siguen discrepan precisamente en cuánto suben.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La estructura financiera óptima de la empresa}\label{sec:optima}
+
+\begin{itemize}
+\item La \concepto{estructura financiera óptima} es la que minimiza el $\mathrm{WACC}$ y, por tanto, maximiza el valor de la empresa. ¿Existe? Hay 3 respuestas, por orden histórico: la tradicional dice que sí; \autor{Modigliani} y \autor{Miller}, que con mercados perfectos no; y las teorías modernas, que sí, pero por las fricciones.
+\end{itemize}
+
+\subsubsection{Perspectiva tradicional}\label{sec:tradicional}
+
+\begin{itemize}
+\item Antes de 1958, la discusión enfrentaba 2 extremos \parencite{Durand1952Costs}:
+  \begin{itemize}
+  \item si $r_E$ y $r_D$ no cambian con la deuda (el enfoque del \emph{resultado neto}), endeudarse siempre abarata el capital y lo óptimo es el 100~\% de deuda;
+  \item si $r_D$ no cambia y $r_E$ sube justo lo necesario (el del \emph{resultado de explotación}), el $\mathrm{WACC}$ no depende de la deuda.
+  \end{itemize}
+\item La \concepto{tesis tradicional} está entre los 2. Sin impuestos, es decir, con \eqref{eq:wacc} y $t_{IS}=0$:
+  \begin{itemize}
+  \item el coste de los fondos propios, $r_E$, crece con el endeudamiento, porque el accionista soporta más riesgo financiero, y lo hace de forma \emph{convexa}: cada vez más deprisa;
+  \item el coste de la deuda, $r_D$, es constante hasta un cierto nivel de endeudamiento y creciente después, cuando el riesgo de insolvencia empieza a pesar; siempre es menor que $r_E$, porque el acreedor cobra antes;
+  \item el $\mathrm{WACC}$ es primero decreciente, porque se sustituye financiación cara por barata, y después creciente, cuando suben a la vez $r_E$ y $r_D$: tiene forma de U, con un mínimo en $(V_D/V_E)^*$ (gráfico~\ref{fig:coste-capital}, panel a).
+  \end{itemize}
+\item \emph{Implicación}: hay un endeudamiento óptimo, y las decisiones de inversión y de financiación están ligadas, porque la tasa con que se evalúan los proyectos depende de cómo se financian.
+\item El gráfico~\ref{fig:coste-capital} reúne en 4 paneles, sobre los mismos ejes, las respuestas que se van a ver en este apartado; el panel a es el de la tesis tradicional.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El coste del capital y la estructura financiera: tesis tradicional, \autor{Modigliani} y \autor{Miller} con y sin impuestos y teoría del equilibrio}\label{fig:coste-capital}
+\grafico[0.95\textwidth]{coste-capital}
+\fuente{elaboración propia a partir de \textcite{ModiglianiMiller1958Cost}, \textcite{ModiglianiMiller1963Corporate} y \textcite{Myers1984Capital}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Valoración}: la tesis tradicional describe, pero no explica por qué los inversores dejarían que una empresa valga más solo por cómo reparte sus flujos. Esa es la pregunta de \autor{Modigliani} y \autor{Miller}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Lo que se pensaba antes de 1958.} \textcite{Durand1952Costs} ordenó la discusión en 2 enfoques extremos, el del resultado neto y el del resultado de explotación, y dejó abierta la cuestión de cuál describía mejor a las empresas: aceptaba que el segundo era coherente con un mercado que valora los flujos de los activos, pero creía que las imperfecciones del mercado acercaban la realidad a la tesis tradicional. Los manuales de finanzas corporativas la presentan como la opinión que dominaba entre los profesionales hasta \autor{Modigliani} y \autor{Miller} \parencite{Vernimmen2017Corporate}.
+\end{anotaciones}
+
+\subsubsection{Perspectiva moderna: \autor{Modigliani} y \autor{Miller} (1958)\newline y extensiones}\label{sec:mm}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{ModiglianiMiller1958Cost} se preguntan si, con mercados perfectos, una empresa puede valer más solo por cómo se financia. Su respuesta es que no: el valor lo crean los activos, y la financiación solo reparte sus flujos entre accionistas y acreedores. Es la \emph{decisión de inversión}, no la de financiación, la que determina el valor.
+\item Su propósito no era decir que la estructura del capital da igual en la realidad, sino aislar \emph{qué} la hace importar. Todo lo que sigue en este bloque consiste en levantar sus supuestos uno a uno.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Mercados de capitales perfectos}: sin impuestos, sin costes de transacción, de emisión ni de insolvencia, y con la misma información para todos.
+\item \emph{Clases de riesgo}: las empresas se agrupan en clases de riesgo equivalente; las de una misma clase generan flujos de explotación con el mismo riesgo, distintos solo en escala.
+\item \emph{Mismo tipo de interés para empresas e inversores}: cualquier inversor puede endeudarse o prestar en las mismas condiciones que una empresa, así que puede replicar por su cuenta su endeudamiento. Es crucial para el arbitraje.
+\item \emph{Inversores racionales} que prefieren más riqueza a menos y coinciden en sus expectativas sobre los flujos. No hace falta suponer nada sobre su actitud ante el riesgo, ni que no haya incertidumbre: los flujos son inciertos y el argumento es de arbitraje.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \concepto{Proposición I}: el valor de mercado de una empresa no depende de su estructura del capital; es el de sus flujos de explotación descontados a la rentabilidad de su clase de riesgo, $r_A$. \concepto{Proposición II}: la rentabilidad que exigen los accionistas crece linealmente con la ratio deuda/fondos propios, porque soportan el riesgo financiero:
+  \funcionclave[eq:mm]{V_L=V_U\qquad\text{y}\qquad r_E=r_A+(r_A-r_D)\,\frac{V_D}{V_E}}
+  Sin impuestos, $r_A$ es a la vez el $\mathrm{WACC}$ de cualquier empresa de la clase, tenga la deuda que tenga.
+\item \emph{Por qué se cumple la proposición I: el arbitraje}. Si 2 empresas generan los mismos flujos y una vale más solo por tener deuda, los inversores ganan sin riesgo vendiendo la cara y comprando la barata. Es el \emph{apalancamiento casero} (\emph{homemade leverage}): el inversor puede endeudarse o prestar por su cuenta y replicar o deshacer la estructura de cualquier empresa, así que no paga nada por ella.
+  \begin{itemize}
+  \item Volvamos a nuestra empresa, con un $\mathrm{EBIT}$ esperado de 100 al año para siempre y $r_A=10$~\%. Sin deuda (U), vale $V_U=100/0{,}10=1.000$. Con 400 de deuda al 5~\% (L), paga 20 de intereses y deja 80 a los accionistas.
+  \item Supongamos que el mercado valorase sus acciones en 700, de modo que $V_L=1.100$. Quien tenga el 1~\% de L (7 euros, que le rinden $0{,}01\cdot80=0{,}8$) puede venderlo, pedir prestados 4 euros al 5~\% (paga 0,2 de intereses) y comprar el 1~\% de U por 10 (cobra 1): sigue cobrando $1-0{,}2=0{,}8$, con el mismo riesgo, y le sobra 1 euro.
+  \item Mientras la diferencia exista, todos harán lo mismo, hasta que las acciones de L valgan 600 y $V_L=V_U=1.000$. Si L valiera menos que U, se haría al revés: vender U y comprar acciones y deuda de L en la misma proporción. El detalle, en el anexo~\ref{anexo:mm}.
+  \end{itemize}
+\item \emph{Por qué se cumple la proposición II}: si el $\mathrm{WACC}$ no cambia, la deuda barata se compensa exactamente con unos fondos propios más caros.\footnote{No es contradictorio con la proposición I: la deuda sube la rentabilidad que exigen las acciones, no el valor de la empresa, que es la suma de lo que valen sus acciones y su deuda, $V=V_E+V_D$. La derivación, en el anexo~\ref{anexo:mm}.}
+  \begin{itemize}
+  \item En nuestra empresa, con $V_E=600$ y $V_D=400$: $r_E=10+(10-5)\cdot\tfrac{400}{600}=13{,}3$~\%, y $\mathrm{WACC}=0{,}6\cdot13{,}3+0{,}4\cdot5=10$~\%, igual que $r_A$. Es la misma cifra que el ROE de la palanca financiera de \eqref{eq:roe-roa}: el accionista gana más de media, pero exige más por el mismo motivo.
+  \end{itemize}
+\item \emph{Deuda con riesgo}: si con mucha deuda aparece el riesgo de impago, $r_D$ sube con el endeudamiento y $r_E$ crece cada vez menos (se vuelve \emph{cóncava}), porque los acreedores pasan a soportar parte del riesgo. Las 2 proposiciones siguen valiendo y el $\mathrm{WACC}$ sigue plano.\footnote{Lo que pierden los acreedores lo ganan los accionistas: sin impuestos ni costes de insolvencia, el $\mathrm{WACC}$ no sube nunca, aunque suba $r_D$.}
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:coste-capital}, panel b): con $V_D/V_E$ en abscisas, $r_D$ plana, $r_E$ una recta creciente que parte de $r_A$, y el $\mathrm{WACC}=r_A$ horizontal; en trazo discontinuo, el caso de la deuda con riesgo.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Irrelevancia}: no hay una estructura del capital óptima; cualquiera es tan buena como otra.
+\item \emph{Separación}: como el $\mathrm{WACC}$ no depende de la financiación, la empresa decide qué invierte (los proyectos que rinden más que $r_A$) sin mirar cómo los financiará \vertema{3.B.2} \vertema{3.A.34}.
+\item \autor{Miller} lo explicaba con un chiste: partir la pizza en más trozos no da más pizza \parencite{ChicagoBoothMiller}. Es la idea que se queda: «los mismos perros con distinto collar».
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Nexo}: el primer supuesto que se levanta es el que más pesa en la práctica, la ausencia de impuestos; después, la de costes de insolvencia.
+\end{itemize}
+
+\subparagraph{i) Los impuestos: \autor{Modigliani} y \autor{Miller} (1963) y \autor{Miller} (1977)}
+
+\begin{itemize}
+\item \emph{El impuesto sobre sociedades} \parencite{ModiglianiMiller1963Corporate}:\footnote{\textbf{Para ver.} Las proposiciones I y II con impuesto sobre sociedades, paso a paso, en \href{https://www.youtube.com/watch?v=DoLc5CCqd3g}{«FIN 401 - Modigliani-Miller (M\&M) Proposition 1 and 2 (with tax) - Part 1»} (AllThingsMathematics, YouTube).} los intereses se deducen en el impuesto y los dividendos no, así que cada euro de intereses ahorra $t_{IS}$ euros de impuesto. Si la deuda es permanente, ese ahorro anual, $t_{IS}\,r_D\,V_D$, descontado a $r_D$, vale $t_{IS}\,V_D$: es el \concepto{escudo fiscal} de la deuda, y
+  \[
+  V_L=V_U+t_{IS}\,V_D.
+  \]
+  \begin{itemize}
+  \item La proposición II pasa a ser $r_E=r_A+(1-t_{IS})(r_A-r_D)\,V_D/V_E$, y el coste medio ponderado baja con la deuda, $\mathrm{WACC}=r_A\,(1-t_{IS}\,L)$ (gráfico~\ref{fig:coste-capital}, panel c).
+  \item Volvamos a nuestra empresa, con un impuesto del 25~\%: sin deuda vale $V_U=100\cdot0{,}75/0{,}10=750$; con 400 de deuda, $V_L=750+0{,}25\cdot400=850$, y su $\mathrm{WACC}$ baja al 8,8~\%. La pizza es la misma, pero el Estado se lleva un trozo menor y quedan 100 más para accionistas y acreedores.
+  \item La consecuencia lógica sería endeudarse casi al 100~\%, y no se observa: las empresas no se endeudan al máximo, y las más rentables, que más ahorrarían en impuestos, suelen tener poca deuda. Algo frena la deuda: según \autor{Miller}, los impuestos personales; según la teoría del equilibrio, los costes de insolvencia.
+  \end{itemize}
+\item \emph{Los impuestos personales} \parencite{Miller1977Debt}: el inversor paga $t_D$ por los intereses y $t_E$ por la renta de las acciones (dividendos y plusvalías).\footnote{Por simplicidad, los tipos personales son proporcionales. En la práctica el impuesto es progresivo, y cada acreedor y cada accionista tiene su tipo marginal.} Lo que importa es lo que queda tras todos los impuestos: un euro de beneficio de explotación pagado como interés deja al inversor $1-t_D$; pagado a los accionistas, $(1-t_{IS})(1-t_E)$. La ganancia de endeudarse es
+  \begin{equation}\label{eq:miller}
+  V_L=V_U+\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D
+  \end{equation}
+  (derivación y esquema del euro de beneficio en el anexo~\ref{anexo:mm}).
+  \begin{itemize}
+  \item Si $t_E=t_D$, la ventaja es $t_{IS}\,V_D$, la de 1963.
+  \item Si $t_D>t_E$, el cociente es mayor que $1-t_{IS}$ y la ventaja es \emph{menor} que $t_{IS}\,V_D$: el impuesto personal sobre los intereses compensa en parte el escudo.
+  \item Si $1-t_D=(1-t_{IS})(1-t_E)$, la ventaja desaparece y se vuelve a la irrelevancia; si $t_D$ es aún mayor, endeudarse resta valor.
+  \item La ventaja crece con $t_{IS}$ y con $t_E$, y baja con $t_D$.
+  \item \autor{Miller} añade un equilibrio: las empresas emiten deuda mientras haya inversores a los que les compense comprarla; como los que tienen tipos personales bajos ya la tienen, el inversor marginal acaba teniendo un $t_D$ que anula la ventaja. Hay una cantidad óptima de deuda \emph{para el conjunto de las empresas}, pero a cada una le da igual cuánta emita.
+  \end{itemize}
+\item \emph{Y en España}, para un particular, los intereses, los dividendos y las plusvalías tributan en la misma base del ahorro, con la misma escala, del 19~\% al 30~\% \parencite[arts.~66 y 76]{LIRPF2006}: $t_D\simeq t_E$, y la ventaja se acerca a la de 1963, $t_{IS}\,V_D$, con un $t_{IS}$ general del 25~\% \parencite[art.~29]{LIS2014}.
+  \begin{itemize}
+  \item El matiz es que la plusvalía tributa al venderla, lo que baja el $t_E$ efectivo por debajo de $t_D$ y reduce un poco la ventaja; y que la ley limita el escudo (\ref{sec:clasificacion}).
+  \item En Estados Unidos, los intereses tributan como renta ordinaria y los dividendos cualificados al tipo de las plusvalías \parencite{IRS2026Topic404}: $t_D>t_E$ y la ventaja es menor que $t_{IS}\,V_D$.
+  \item En nuestra empresa, con $t_D=t_E$ la ventaja sigue siendo de 100, y $V_L=850$. Con un $t_D$ del 30~\% y un $t_E$ del 15~\%, solo sería de $\big[1-0{,}75\cdot0{,}85/0{,}70\big]\cdot400\simeq36$.
+  \item El sesgo fiscal hacia la deuda y las propuestas para corregirlo \vertema{4.B.10} y la doble imposición del dividendo \vertema{4.B.12} se estudian aparte.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{ii) Los costes de insolvencia: la teoría del equilibrio}
+
+\begin{itemize}
+\item \emph{Idea}: la deuda tiene una ventaja, el escudo fiscal, y un coste, la posibilidad de no poder pagarla. Cada empresa se endeuda hasta que el beneficio de un euro más de deuda iguala su coste: hay una estructura óptima, distinta en cada empresa. Es la \concepto{teoría del equilibrio} o del \emph{trade-off} \parencites{KrausLitzenberger1973State}{Kim1978Mean}.
+\item \emph{Modelo}:
+  \begin{itemize}
+  \item \emph{Supuestos}: los de \autor{Modigliani} y \autor{Miller} con impuesto sobre sociedades, y la empresa puede no pagar su deuda. Los \concepto{costes de insolvencia} son \emph{directos} (jueces, abogados, administradores concursales) e \emph{indirectos}, mayores: clientes y proveedores que se van, directivos ocupados en sobrevivir, inversiones que no se hacen, activos vendidos con descuento.
+  \item \emph{Desarrollo}: el valor de la empresa endeudada es el de la no endeudada, más el valor actual del ahorro fiscal, menos el valor actual de los costes esperados de insolvencia:
+    \funcionclave[eq:trade-off]{V_L=V_U+\mathrm{VA}(\text{ahorro fiscal})-\mathrm{VA}(\text{costes esperados de insolvencia})}
+    Con deuda permanente, $\mathrm{VA}(\text{ahorro fiscal})=t_{IS}\,V_D$. Con poca deuda, la probabilidad de insolvencia es pequeña y domina el escudo; con mucha, el coste esperado crece más deprisa. El valor es máximo en $V_D^*$, donde la ganancia marginal del escudo iguala el coste marginal esperado de la insolvencia (gráfico~\ref{fig:valor-tradeoff}); en el coste del capital, el $\mathrm{WACC}$ vuelve a tener forma de U, con un mínimo en $(V_D/V_E)^*$ (gráfico~\ref{fig:coste-capital}, panel d).
+    \begin{itemize}
+    \item Volvamos a nuestra empresa: con 400 de deuda, el riesgo de insolvencia es pequeño y $V_L=850$. Si se endeuda hasta 800, el escudo sube a $0{,}25\cdot800=200$, pero si el valor actual de los costes esperados de insolvencia es de 120, $V_L=750+200-120=830$, menos que con 400. Hay un óptimo interior: «ni tanto que queme al santo, ni tanto que no lo alumbre».
+    \end{itemize}
+  \item \emph{Implicaciones}: se endeudan más las empresas con activos tangibles y fáciles de vender (que pierden poco en una liquidación), beneficios estables y un tipo impositivo efectivo alto; menos, las de activos intangibles, con oportunidades de crecimiento o flujos volátiles. Y cada empresa debería tener un objetivo de endeudamiento y volver a él. Es la misma cuenta que el valor actual ajustado con que se valora una compra apalancada \vertema{3.B.4}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La teoría del equilibrio: el valor de la empresa y su deuda}\label{fig:valor-tradeoff}
+\grafico[0.7\textwidth]{valor-tradeoff}
+\fuente{elaboración propia a partir de \textcite{Myers1984Capital}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Evidencia}:
+  \begin{itemize}
+  \item los costes directos son pequeños, del orden del 1~\% del valor de la empresa unos años antes de la quiebra \parencite{Warner1977Bankruptcy}; contando los indirectos, los de las dificultades financieras llegan al 10-20~\% del valor \parencite{AndradeKaplan1998How};
+  \item el 44~\% de los directores financieros de Estados Unidos dice tener un objetivo de endeudamiento estricto o bastante estricto \parencite{GrahamHarvey2002How};
+  \item la ventaja fiscal y el dinero barato han empujado a muchas empresas a endeudarse más \parencite{Wigglesworth2020Debt}: entre los emisores de empresas calificados por S\&P, los de grado especulativo han pasado del 24~\% en 1981 al 48~\% en 2024 (gráfico~\ref{fig:sp-calificaciones-grado}), y solo 2 empresas no financieras conservan la máxima calificación, Microsoft y Johnson \& Johnson \parencite{Thoelcke2026AAA}.\footnote{En 2020, con la pandemia, S\&P contó 225 impagos de empresas, el mayor número desde 2009 \parencite{SP2025DefaultStudy}. Los fondos propios amortiguan las pérdidas; la deuda las convierte en impago \parencite{StewartGlassman1988Motives}. Por eso hay quien propone igualar el trato fiscal de la deuda y de los fondos propios \vertema{4.B.10}.}
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Emisores de empresas calificados por S\&P: grado de inversión y grado especulativo}\label{fig:sp-calificaciones-grado}
+\grafico[0.8\textwidth]{sp-calificaciones-grado}
+\fuente{S\&P Global Ratings \parencite[tabla~29]{SP2025DefaultStudy}; elaboración propia. Emisores a 1 de enero de cada año, incluidos los financieros.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Valoración}: explica las diferencias entre sectores, pero no 2 hechos. Las empresas más rentables, que más ahorrarían en impuestos, son las \emph{menos} endeudadas; y muchas empresas grandes, con poco riesgo de insolvencia, tienen menos deuda de la que les convendría: podrían doblar su escudo fiscal antes de que su ventaja marginal empezara a caer \parencite{Graham2000HowBig}. Hacen falta otros costes de la deuda (la agencia) y otra lógica (la información).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item La irrelevancia no se contrasta directamente, porque sus supuestos no se cumplen; lo que se observa es que el endeudamiento no es arbitrario: varía mucho entre sectores y de forma persistente dentro de cada uno \parencites{RajanZingales1995What}{FrankGoyal2009Capital} (\ref{sec:factores}).
+\item Los impuestos importan, pero menos de lo que predicen \autor{Modigliani} y \autor{Miller} (1963): los directores financieros citan la ventaja fiscal de los intereses como un factor relevante, pero por detrás de la flexibilidad financiera y de la calificación \parencite{GrahamHarvey2001Theory}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Es el punto de partida de las finanzas corporativas modernas: la primera prueba por arbitraje de la economía financiera y la lista de lo que hay que mirar para saber cuándo importa la financiación. La tabla~\ref{tab:supuestos-mm} recoge qué pasa al levantar cada supuesto y dónde se ve en esta exposición.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Qué pasa al levantar cada supuesto de \autor{Modigliani} y \autor{Miller}}\label{tab:supuestos-mm}
+\begin{tabular}{>{\raggedright\arraybackslash}m{4cm}>{\raggedright\arraybackslash}m{7.2cm}>{\raggedright\arraybackslash}m{2.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Supuesto} & \textbf{Si se levanta} & \textbf{Dónde} \\
+\midrule
+Sin impuestos & El escudo fiscal favorece la deuda; los impuestos personales lo moderan & \ref{sec:mm} c) \\
+Sin costes de insolvencia & La deuda tiene un coste esperado: óptimo interior & \ref{sec:mm} c) \\
+Sin conflictos de intereses & La deuda disciplina a los directivos, pero tienta a los accionistas & \ref{sec:informacion} \\
+Información simétrica & Emitir acciones es una mala señal; la deuda, una buena: jerarquía de fuentes & \ref{sec:informacion} \\
+Inversores que se endeudan como las empresas & Si no pueden, la deuda de la empresa les ahorra endeudarse y puede valer algo & --- \\
+Inversores racionales & Las empresas emiten cuando sus acciones están caras (\emph{market timing}) & \ref{sec:informacion} \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{ModiglianiMiller1958Cost} y \textcite{HarrisRaviv1991Theory}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Nexo}: con impuestos y costes de insolvencia, la estructura importa; pero sigue sin explicarse por qué las empresas rentables se endeudan poco. Hay que levantar los 2 supuestos que faltan: que todos saben lo mismo y que los directivos buscan el valor de los accionistas.
+\end{itemize}
+
+\subsubsection{Información asimétrica y agencia: la jerarquía financiera}\label{sec:informacion}
+
+\begin{itemize}
+\item \autor{Modigliani} y \autor{Miller} suponen que todos saben lo mismo y que los directivos actúan en interés de los accionistas. Levantar esos 2 supuestos da 2 familias de teorías: la de la \emph{agencia}, en la que la deuda cambia los incentivos, y la de la \emph{información asimétrica}, en la que la financiación transmite información \vertema{3.A.13}.
+\end{itemize}
+
+\paragraph{Los costes de agencia}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Accionistas, directivos y acreedores no quieren lo mismo. La estructura del capital reparte los flujos, pero también los incentivos: la deuda corrige unos conflictos y crea otros \parencite{JensenMeckling1976Theory}.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\begin{itemize}
+\item \emph{Entre accionistas y directivos, la deuda disciplina}. El directivo que no es dueño, con caja de sobra, tiende a gastarla en lo que le beneficia a él: inversiones sin valor, crecer por crecer, privilegios. La deuda le obliga a pagar intereses y le quita esa caja: es la teoría del \concepto{flujo de caja libre} \parencite{Jensen1986Agency}. «La ocasión hace al ladrón»: sin caja ociosa, no hay tentación. Su caso extremo es la compra apalancada (LBO), en la que la deuda y la participación de los directivos en el capital alinean sus intereses con los del accionista \vertema{3.B.4}.
+\item \emph{Entre accionistas y acreedores, la deuda tienta}. Con deuda, el accionista se queda con lo que sobra si las cosas salen bien y deja al acreedor las pérdidas si salen mal:
+  \begin{itemize}
+  \item \concepto{Sustitución de activos} (\emph{risk shifting}) \parencite{JensenMeckling1976Theory}. Supongamos que nuestra empresa atraviesa un mal momento y debe 100 que vencen el año que viene. Puede elegir un proyecto seguro que da 110 o uno arriesgado que da 160 o 20 con la misma probabilidad. El seguro vale 110 y deja 10 a los accionistas; el arriesgado vale solo 90, pero les deja $\tfrac12\cdot60=30$, y a los acreedores, $\tfrac12\cdot100+\tfrac12\cdot20=60$. Los accionistas eligen el que destruye valor.
+  \item \concepto{Sobreendeudamiento} (\emph{debt overhang}) \parencite{Myers1977Determinants}. Si la empresa debe 100 y sus activos valen 80, un proyecto que cuesta 10 y da 15 seguro tiene un VAN positivo, pero los accionistas no lo financian: el valor pasaría a 95, todo para los acreedores, y ellos perderían los 10 que ponen. Una empresa muy endeudada invierte de menos.
+  \end{itemize}
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item la deuda conviene a las empresas maduras, con mucha caja y pocas oportunidades de inversión; es peligrosa en las que tienen muchas oportunidades de crecimiento, porque ahí el sobreendeudamiento cuesta más;
+  \item por eso los préstamos llevan cláusulas (\emph{covenants}) que limitan los dividendos, la deuda adicional o la venta de activos;
+  \item a los costes de insolvencia de la teoría del equilibrio se suman los costes de agencia de la deuda, y al escudo fiscal, su papel disciplinario.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{El control}. La deuda y los fondos propios no solo reparten flujos: reparten el control. Si la empresa paga, mandan los accionistas; si no paga, los acreedores, que pueden liquidarla o renegociar. Como los contratos son incompletos, ese reparto de los derechos de control según lo que pase es lo que distingue a las 2 fuentes \parencites{AghionBolton1992Incomplete}{HartMoore1994Theory} \vertema{3.A.15}. La deuda también refuerza a la empresa frente a los sindicatos: con la caja comprometida en pagar intereses, hay menos que repartir en la negociación salarial \parencite{Matsa2010Capital}.
+\item \emph{La liquidez}. \textcite{HolmstromTirole2011Inside}\footnote{Premios Nobel: \autor{Tirole} (2014), «por su análisis del poder de mercado y de la regulación» \parencite{Nobel2014Tirole}; \autor{Holmström} (2016), con \autor{Hart}, «por sus contribuciones a la teoría de los contratos» \parencite{Nobel2016HartHolmstrom}.} parten del riesgo moral: si el acreedor no ve cuánto se esfuerza el empresario, solo presta a quien se juega lo suficiente \parencite{HolmstromTirole1997Financial}. De ahí 3 consecuencias:
+  \begin{itemize}
+  \item sin fondos propios bastantes no hay crédito, aunque el proyecto tenga VAN positivo: es el racionamiento del crédito, y la estructura del capital importa;
+  \item las empresas guardan caja y líneas de crédito para no perder los proyectos que lleguen \vertema{3.B.2};
+  \item los sectores con proyectos fáciles de verificar (los maduros) pueden financiarse con más deuda que los difíciles de verificar (los tecnológicos), que necesitan más fondos propios.
+  \end{itemize}
+  El modelo del ingreso comprometible está en el anexo~\ref{anexo:holmstrom-tirole}, con la misma notación que el crecimiento de la empresa \vertema{3.B.4}.
+\end{itemize}
+
+\subparagraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item En las compras apalancadas de los años 80, el valor operativo de las empresas aumentó \parencite{KaplanStromberg2009Leveraged}; y las empresas con más afiliación sindical se endeudan más \parencite{Matsa2010Capital}.
+\end{itemize}
+
+\subparagraph{e) Valoración}
+
+\begin{itemize}
+\item Completa la teoría del equilibrio con otros costes y beneficios de la deuda, pero sigue sin explicar por qué las empresas rentables se endeudan poco ni por qué el mercado castiga las ampliaciones de capital. Para eso hay que mirar la información.
+\end{itemize}
+
+\paragraph{La jerarquía financiera (\autor{Myers} y \autor{Majluf}, 1984)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item La dirección sabe más que el mercado sobre lo que valen sus activos y sus proyectos. Si emite acciones cuando cree que están caras, el mercado lo sabe y lee cada emisión como una mala noticia \parencite{MyersMajluf1984Corporate}: es la selección adversa de \autor{Akerlof} aplicada a las acciones \vertema{3.A.13}.
+\item El orden ya lo había observado \textcite{Donaldson1961Corporate} en las empresas estadounidenses: primero los fondos internos, después la deuda y, solo si no queda otra, acciones. \autor{Myers} y \autor{Majluf} explican por qué.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\begin{itemize}
+\item \emph{Supuestos}:
+  \begin{itemize}
+  \item hay empresas buenas, cuyos activos en funcionamiento valen $a_{\mathrm A}$, y malas, que valen $a_{\mathrm B}<a_{\mathrm A}$, en proporción $\nu$ y $1-\nu$;
+  \item la dirección conoce su tipo y el mercado no, así que da a todas el valor medio, $\bar a=\nu\,a_{\mathrm A}+(1-\nu)\,a_{\mathrm B}$;
+  \item las 2 tienen el mismo proyecto, que cuesta $I_0$ y tiene un VAN positivo, y para hacerlo tienen que emitir acciones;
+  \item la dirección actúa en interés de los accionistas actuales.
+  \end{itemize}
+\item \emph{Desarrollo}: los nuevos accionistas pagan $I_0$ por una parte de una empresa que, para el mercado, vale $\bar a+I_0+\mathrm{VAN}$. Si la empresa es buena, esa parte vale más de lo que pagan: los accionistas actuales les regalan valor. La empresa buena solo emite si el VAN compensa ese regalo:
+  \[
+  \mathrm{VAN}\geq I_0\,\frac{a_{\mathrm A}-\bar a}{\bar a+I_0+\mathrm{VAN}}.
+  \]
+  \begin{itemize}
+  \item Volvamos a nuestra empresa, que el mercado valora en 1.000, aunque su dirección sabe que vale 1.200 (podría valer 800: $\nu=\tfrac12$). Quiere un proyecto que cuesta 200 y tiene un VAN de 20. El mercado valora la empresa ampliada en 1.220 y pide el 16,4~\% de ella (200/1.220) a cambio de los 200.
+  \item A los accionistas actuales les quedaría el 83,6~\% de $1.200+220=1.420$, unos 1.187, menos que los 1.200 que tienen: el regalo, $200\cdot200/1.220\simeq33$, supera al VAN, 20. No emiten y renuncian al proyecto.
+  \item Con beneficios retenidos o con deuda sin riesgo, que valen lo mismo para quien sabe que para quien no, no hay regalo: la empresa invierte y sus accionistas pasan de 1.200 a 1.220.
+  \end{itemize}
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item solo emiten las empresas malas o sobrevaloradas; el mercado lo sabe, y la cotización cae al anunciar una ampliación;
+  \item las empresas buenas \emph{invierten de menos}: dejan pasar proyectos con VAN positivo;
+  \item de ahí el \concepto{orden jerárquico} o \concepto{jerarquía financiera} (\emph{pecking order}) \parencite{Myers1984Capital}: primero los beneficios retenidos, después la deuda (cuanto más segura, mejor) y las acciones como último recurso (gráfico~\ref{fig:jerarquia}). «La ropa sucia se lava en casa»: lo que puede financiarse dentro no se airea en el mercado.
+    \begin{itemize}
+    \item \emph{Interpretación gráfica}: la oferta de fondos es una escalera. Los fondos internos cuestan lo mismo hasta que se agotan; la deuda cuesta algo más y su coste sube con el endeudamiento; las acciones nuevas, más, por el descuento con que hay que venderlas. La demanda de inversión de la empresa corta la escalera en el tramo que le toca: la empresa con pocos proyectos se financia sola; la que tiene muchos llega a la deuda y, si no le basta, a las acciones. Es la misma escalera con que se explica la inversión con fricciones financieras \vertema{3.A.34}.
+    \end{itemize}
+  \item no hay un endeudamiento óptimo: la deuda de cada empresa es el resultado acumulado de sus necesidades de financiación externa. Y conviene tener \emph{holgura financiera} (caja y capacidad de endeudamiento sin usar) para no tener que emitir.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La jerarquía financiera: el coste de cada fuente de fondos}\label{fig:jerarquia}
+\grafico[0.7\textwidth]{jerarquia}
+\fuente{elaboración propia a partir de \textcite{MyersMajluf1984Corporate} y \textcite{LearyRoberts2010Pecking}.}
+\end{figure}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{La capacidad de endeudamiento}: cuando una empresa se acerca al límite de deuda que le aceptan, deja de subir por la escalera y emite acciones aunque le cueste; con esa corrección, la jerarquía describe mejor a las empresas pequeñas \parencite{LearyRoberts2010Pecking}.
+\item \emph{La deuda como señal}: si a los directivos les penaliza que la empresa quiebre, endeudarse mucho solo le compensa a quien espera flujos altos; la deuda separa las empresas buenas de las malas, y el mercado valora más a las que se endeudan \parencite{Ross1977Determination}. Lo mismo hace el empresario que se queda con una parte grande de su propio proyecto \parencite{LelandPyle1977Informational}. Es la señalización de \autor{Spence} \vertema{3.A.13}. Predice que las empresas más rentables tienen \emph{más} deuda, al revés de lo que se observa; su aportación es que la estructura del capital transmite información.
+\item \emph{El aprovechamiento del momento} (\emph{market timing}): si el mercado se equivoca al valorar, las empresas emiten acciones cuando están caras y recompran cuando están baratas. La estructura del capital sería el rastro acumulado de esos intentos: las empresas que emitieron cuando su bolsa estaba alta siguen menos endeudadas años después \parencite{BakerWurgler2002Market}. Encaja con lo que dicen los directores financieros: casi 2 de cada 3 (el 62,6~\%) consideran importante, al decidir si emiten acciones, que su cotización haya subido hace poco \parencite{GrahamHarvey2001Theory}.
+\end{itemize}
+
+\subparagraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Al anunciar una ampliación de capital, la cotización cae de media en torno a un 3~\% \parencites{AsquithMullins1986Equity}{MasulisKorwar1986Seasoned}, y la de una emisión de bonos apenas se mueve \parencite{Smith1986Investment}, como predice el modelo.
+\item Para el 67~\% de los directores financieros de Estados Unidos, cuánto creen que el mercado infravalora o sobrevalora sus acciones es importante al decidir si las emiten \parencite{GrahamHarvey2001Theory}.
+\item Las empresas más rentables se endeudan menos, como predice la jerarquía y no la teoría del equilibrio \parencites{RajanZingales1995What}{FamaFrench2002Testing}; en las empresas maduras la deuda sigue de cerca el déficit de financiación \parencite{ShyamSunderMyers1999Testing}, pero no en las pequeñas y de crecimiento, que emiten mucho capital \parencite{FrankGoyal2003Testing}.
+\item La inversión de las empresas con restricciones financieras depende de su flujo de caja \parencite{FazzariHubbardPetersen1988} \vertema{3.A.34}.
+\end{itemize}
+
+\subparagraph{e) Valoración}
+
+\begin{itemize}
+\item Explica lo que la teoría del equilibrio no: por qué las empresas rentables se endeudan poco y por qué se castigan las ampliaciones. Pero no explica que las empresas jóvenes y tecnológicas, con mucha asimetría de información, se financien sobre todo con acciones, ni que se emitan acciones cuando la bolsa está alta.
+\item Las teorías no se excluyen (tabla~\ref{tab:teorias-estructura}): el equilibrio fija una zona razonable de endeudamiento; la jerarquía, el orden en que se usan las fuentes; y la agencia, cuándo conviene que la deuda discipline.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Qué predice cada teoría de la estructura del capital}\label{tab:teorias-estructura}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{2.9cm}>{\centering\arraybackslash}m{2.9cm}>{\centering\arraybackslash}m{2.9cm}>{\centering\arraybackslash}m{2.3cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Efecto sobre la deuda de\ldots} & \textbf{Equilibrio} & \textbf{Jerarquía} & \textbf{Agencia (flujo de caja libre)} & \textbf{Datos} \\
+\midrule
+\ldots más rentabilidad & \textcolor{tceeverde}{Más deuda: más escudo y menos riesgo} & \textcolor{tceerojo}{Menos deuda: más fondos internos} & \textcolor{tceeverde}{Más deuda: más caja que disciplinar} & \cellcolor{tceesalvia}\textcolor{tceerojo}{Menos} \\
+\ldots más oportunidades de crecimiento & \textcolor{tceerojo}{Menos deuda: más se pierde en la quiebra} & \textcolor{tceeverde}{Más deuda: más necesidad de fondos externos} & \textcolor{tceerojo}{Menos deuda: sobreendeudamiento} & \cellcolor{tceesalvia}\textcolor{tceerojo}{Menos} \\
+\ldots activos más tangibles & \textcolor{tceeverde}{Más deuda: menos costes de insolvencia} & \textcolor{tceeverde}{Más deuda: menos asimetría} & \textcolor{tceeverde}{Más deuda: garantías} & \cellcolor{tceesalvia}\textcolor{tceeverde}{Más} \\
+¿Hay un endeudamiento objetivo? & Sí & No & Sí & \cellcolor{tceesalvia}A medias \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{HarrisRaviv1991Theory}, \textcite{RajanZingales1995What} y \textcite{FrankGoyal2009Capital}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Enlace macroeconómico}: con información asimétrica, la financiación externa es más cara que la interna y la inversión depende de los fondos propios de las empresas; en una recesión, cae su riqueza neta, sube la prima de financiación externa y la inversión cae más. Es el \emph{acelerador financiero} \parencite{BernankeGertler1989Agency} \vertema{3.A.34} \vertema{3.A.37}.
+\end{itemize}
+
+\subsubsection{Entonces, ¿qué factores determinan el diseño de la estructura de capital?}\label{sec:factores}
+
+\begin{itemize}
+\item La estructura óptima depende de la empresa y del momento:
+  \begin{itemize}
+  \item \emph{Qué dicen los datos}: en todos los países grandes, las empresas se endeudan más cuanto más tangibles son sus activos y mayor es su tamaño, y menos cuanto más rentables son y más oportunidades de crecimiento tienen \parencite{RajanZingales1995What}. Los factores que mejor explican el endeudamiento son, además, el del sector y la inflación esperada \parencite{FrankGoyal2009Capital}.
+  \item \emph{Qué dicen los directores financieros}: lo que más pesa al decidir cuánta deuda tomar no es minimizar el $\mathrm{WACC}$, sino conservar la \emph{flexibilidad financiera} (capacidad de endeudamiento sin usar) y proteger la \emph{calificación crediticia}, sobre todo en las empresas grandes; la ventaja fiscal de los intereses pesa menos, y los costes de insolvencia, poco \parencite{GrahamHarvey2001Theory}. En 2019, la flexibilidad la citaba el 87~\% de las grandes empresas de Estados Unidos y la deducción de los intereses solo el 24~\%, tras la rebaja de su impuesto sobre sociedades del 35~\% al 21~\% \parencite{Graham2022Presidential}.
+  \item \emph{La fase de la empresa}: una empresa joven, con mucho riesgo operativo y pocos activos que ofrecer en garantía, se financia con fondos propios (fundadores, inversores informales, capital riesgo) \vertema{3.B.4}; una madura, con flujos estables, con deuda.
+  \item \emph{El contexto}: el sector, el sistema fiscal \vertema{4.B.10}, el tipo de interés y el ciclo \vertema{3.A.37}, la inflación, que abarata la deuda en términos reales, y la internacionalización, que da acceso a otros mercados y monedas.
+  \end{itemize}
+\item En España, la deuda de las sociedades no financieras se ha reducido a la mitad desde 2010 en relación con el PIB y está ya por debajo de la media de la zona del euro \parencite{BCE2026QSA} (gráfico~\ref{fig:deuda-snf-pib}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Deuda de las sociedades no financieras (\% del PIB)}\label{fig:deuda-snf-pib}
+\grafico[0.8\textwidth]{deuda-snf-pib}
+\fuente{Banco Central Europeo, cuentas trimestrales por sectores, deuda consolidada (préstamos y valores) \parencite{BCE2026QSA}; elaboración propia.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque}: sin fricciones, la estructura del capital no importa. Con impuestos importa a favor de la deuda; con insolvencia y agencia aparece un límite; con información asimétrica, un orden. Ninguna teoría lo explica todo, pero juntas dicen dónde mirar.
+\item \emph{Nexo}: si la estructura importa por los impuestos, la quiebra y la información, también importará qué se hace con los beneficios: retenerlos es financiarse con fondos propios sin pasar por el mercado.
+\end{itemize}
+
+% ==========================================================================
+\section{Política de dividendos:\newline ¿cuánto beneficio debe repartirse a los accionistas?}\label{sec:dividendos}
+\minutos{6,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{6,5}). La apertura, de palabra: el nexo con la autofinanciación y la conclusión anticipada. III.1, \tiempo{1}: retener o repartir, dividendo o recompra, de palabra, con las cifras de recompras; el gráfico~\ref{fig:dividendos-recompras-eeuu} es de apoyo. III.2, \tiempo{2,5}: la lista de las razones (\autor{Lintner}, señal, agencia, clientelas), una palabra cada una; la ecuación de \autor{Lintner} \eqref{eq:lintner} en una línea con «despacito y buena letra»; Telefónica, de palabra, al hablar de la señal. III.3, \tiempo{3}: la irrelevancia de palabra con el «dividendo casero» (\tiempo{1}); los impuestos de palabra (\tiempo{0,5}); la condición de \autor{Walter} \eqref{eq:walter} en una línea y el gráfico~\ref{fig:walter} pequeño con las 3 curvas y los números de nuestra empresa (\tiempo{1}); el pájaro en mano y su falacia, de palabra (\tiempo{0,5}).
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{Nexo}: la política de dividendos es la otra cara de la autofinanciación (\ref{sec:autofinanciacion}): cada euro que se reparte es un euro que no se retiene y que, si la empresa quiere invertir lo mismo, tiene que buscar fuera. Por eso la pregunta es la misma que en el bloque anterior: ¿afecta al valor?
+\item \emph{Conclusión anticipada}: con mercados perfectos, la política de dividendos es irrelevante \parencite{MillerModigliani1961Dividend}. Que las empresas repartan, que lo hagan de forma tan estable y que el mercado reaccione como reaccionó con Telefónica se explica por las mismas fricciones del bloque~\ref{sec:estructura}: los impuestos, la información asimétrica y la agencia.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{¿Qué podemos hacer con los beneficios?}\label{sec:beneficios}
+
+\begin{itemize}
+\item El beneficio puede seguir 2 caminos: \emph{retenerse} y reinvertirse en la empresa (la autofinanciación) o \emph{repartirse} entre los accionistas. La \concepto{política de dividendos} decide la proporción: la \emph{tasa de reparto} (\emph{payout}), $1-b$, con $b$ la tasa de retención \vertema{3.B.23}.
+\item \emph{Cómo repartir}:
+  \begin{itemize}
+  \item \concepto{Dividendos}: una cantidad por acción, \emph{ordinaria} y periódica o \emph{extraordinaria}, por un beneficio que no se repetirá. No cambia la estructura del accionariado. Sus variantes (a cuenta, flexible o \emph{scrip}, preferente), en el anexo~\ref{anexo:retribucion}.
+  \item \concepto{Recompra de acciones}: la empresa compra sus propias acciones y suele amortizarlas. Con mercados perfectos equivale a un dividendo: el accionista que vende cobra y el que no vende tiene una parte mayor de la empresa. En la práctica es más \emph{flexible}, porque no crea la expectativa de repetirse; cambia el peso de cada accionista y la ratio de endeudamiento, y para el que vende tributa como plusvalía. En las cotizadas españolas, la autocartera no puede superar el 10~\% del capital \parencite[art.~509]{LSC2010}.
+  \end{itemize}
+\item \emph{Hechos}:
+  \begin{itemize}
+  \item las recompras han ido ganando peso a los dividendos \parencite{GrullonMichaely2002Dividends}, y la proporción de empresas cotizadas de Estados Unidos que pagan dividendos cayó del 66,5~\% en 1978 al 20,8~\% en 1999 \parencite{FamaFrench2001Disappearing};
+  \item en los 12 meses hasta septiembre de 2025, las empresas del S\&P~500 dedicaron un récord de 1,02 billones de dólares a recomprar acciones, frente a 665.000 millones de dividendos \parencite{SPDJI2025Buybacks}; el conjunto de las sociedades no financieras de Estados Unidos retira cada año, con recompras y compras de empresas pagadas en efectivo, más acciones de las que emite desde 1994 (gráfico~\ref{fig:dividendos-recompras-eeuu});
+  \item en España, las cotizadas repartieron en 2025 unos 41.500 millones de euros en dividendos y amortizaron acciones por otros 12.500 \parencite{BME2026InformeMercado}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Dividendos y emisión neta de acciones de las sociedades no financieras de Estados Unidos (\% del PIB)}\label{fig:dividendos-recompras-eeuu}
+\grafico[0.8\textwidth]{dividendos-recompras-eeuu}
+\fuente{Reserva Federal, cuentas financieras de Estados Unidos (Z.1), tabla F.103 \parencites{Fed2026Z1}{FRED2026NFCorp}; elaboración propia. Una emisión neta negativa indica que las recompras y las compras de empresas pagadas en efectivo superan a las emisiones.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Nexo}: si repartir y recomprar fueran lo mismo que retener, ¿por qué se pagan dividendos, y de una forma tan estable?
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{¿Por qué se pagan dividendos?}\label{sec:por-que}
+
+\begin{itemize}
+\item \textcite{Black1976Dividend} lo llamó el \concepto{rompecabezas de los dividendos}: en Estados Unidos, hasta 2003, los dividendos tributaban más que las plusvalías \parencite{IRS2026Topic404}, y aun así las empresas los pagaban. Las respuestas se buscan, otra vez, en las fricciones.\footnote{Los dividendos de los bancos importan también a los supervisores, porque lo que se reparte deja de ser capital. Por la pandemia, el BCE recomendó en marzo de 2020 a los bancos que supervisa no repartir dividendos ni recomprar acciones, por primera vez aunque cumplieran sus requisitos de capital \parencite{BCE2020Dividendos}; después les pidió una prudencia extrema \parencite{BCE2020Dividendos62}, hasta que derogó la recomendación con efectos desde el 30 de septiembre de 2021 \parencite{BCE2021Dividendos} (\href{https://cincodias.elpais.com/cincodias/2021/07/23/companias/1627053588_202012.html}{noticia de \emph{Cinco Días} del 23 de julio de 2021}) \vertema{3.B.27}.}
+\end{itemize}
+
+\subsubsection{Los hechos: el modelo de \autor{Lintner}}\label{sec:lintner}
+
+\begin{itemize}
+\item \textcite{Lintner1956Distribution} entrevistó a los directivos de 28 grandes empresas estadounidenses y encontró que:
+  \begin{itemize}
+  \item tienen un \emph{objetivo de reparto} a largo plazo, una fracción del beneficio;
+  \item se acercan a él \emph{poco a poco}: solo suben el dividendo cuando creen que podrán mantenerlo;
+  \item y casi nunca lo bajan: un recorte es la última opción.
+  \end{itemize}
+\item Con $1-b^*$ la tasa de reparto objetivo y $c$ la velocidad de ajuste,
+  \begin{equation}\label{eq:lintner}
+  D_t-D_{t-1}=c\,\big[(1-b^{*})\,\mathrm{BPA}_t-D_{t-1}\big],\qquad 0<c\leq1.
+  \end{equation}
+  Con $c$ pequeña, el dividendo sigue al beneficio con retraso y mucho más suave. «Despacito y buena letra».
+\item Medio siglo después, los directivos siguen diciendo lo mismo: solo recortan el dividendo en casos extremos, y prefieren ajustar las recompras \parencite{BravEtAl2005Payout}. Por eso un recorte como el de Telefónica se lee como una mala noticia.
+\end{itemize}
+
+\subsubsection{La señalización}\label{sec:senal-dividendos}
+
+\begin{itemize}
+\item \emph{Idea}: la dirección sabe más que el mercado sobre los beneficios futuros. El beneficio contable se puede maquillar;\footnote{La \emph{contabilidad creativa} es el conjunto de técnicas, legales, para presentar los resultados y el patrimonio de la forma que conviene, normalmente para comunicar algo; en inglés, \emph{creative accounting} o \emph{window dressing} («decorar el escaparate»). No solo se usa para mejorar los resultados: también para empeorarlos cuando conviene.} la caja repartida, no. Un dividendo alto y estable es una señal creíble \emph{porque cuesta}: a una empresa sin flujos le obligaría a endeudarse o a emitir para pagarlo \parencites{Bhattacharya1979Imperfect}{MillerRock1985Dividend}. Es la señalización de \autor{Spence} \vertema{3.A.13}.
+\item \emph{Implicaciones}: la cotización reacciona al \emph{cambio} del dividendo, no a su nivel; mantenerlo cuando caen los beneficios dice que la caída es pasajera; y recortarlo es muy mala noticia, por lo que las empresas lo suavizan, como observó \autor{Lintner}.
+\item \emph{Evidencia}: la reacción de la cotización se confirma, pero los aumentos del dividendo confirman los beneficios pasados más que anunciar los futuros \parencite{BenartziMichaelyThaler1997Do}, y los directivos no lo ven como una señal costosa \parencite{BravEtAl2005Payout}.
+\end{itemize}
+
+\subsubsection{Los costes de agencia}\label{sec:agencia-dividendos}
+
+\begin{itemize}
+\item Repartir caja quita al directivo recursos que podría desperdiciar, igual que la deuda \parencite{Jensen1986Agency} (\ref{sec:informacion}); como decía el refrán, la ocasión hace al ladrón.
+\item Y obliga a la empresa a volver al mercado cuando quiere invertir: cada emisión trae bancos, analistas y nuevos inversores que examinan a la dirección. El dividendo es una forma barata de vigilancia \parencite{Easterbrook1984Two}.
+\end{itemize}
+
+\subsubsection{Los impuestos y las clientelas}\label{sec:clientelas}
+
+\begin{itemize}
+\item Si el dividendo tributa más que la plusvalía, o antes (la plusvalía solo cuando se vende), al accionista le conviene que la empresa retenga o recompre (\ref{sec:afectan}).
+\item \concepto{Efecto clientela}: cada inversor elige las empresas cuya política le conviene. Los que tributan mucho por los dividendos, las que reparten poco; las sociedades y los fondos de pensiones, que tributan poco o nada por ellos, las que reparten mucho \parencite{MillerModigliani1961Dividend}. Si hay bastantes empresas de cada tipo para cada clientela, ninguna gana cambiando su política.
+  \begin{itemize}
+  \item La caída de la cotización el día en que se descuenta el dividendo es menor en las acciones con dividendos altos, como si sus dueños tributaran menos \parencite{EltonGruber1970Marginal}.
+  \item Los inversores institucionales, que tributan poco y vigilan a la dirección, prefieren las empresas que reparten \parencite{AllenBernardoWelch2000Theory}.
+  \end{itemize}
+\item \emph{Evidencia}: cuando Estados Unidos bajó en 2003 el tipo máximo sobre los dividendos del 35~\% al 15~\%, los dividendos de las cotizadas subieron con fuerza y muchas empezaron a pagarlos, Microsoft entre ellas \parencite{ChettySaez2005Dividend}.
+\item \emph{En España}, para un particular el dividendo y la plusvalía tributan con la misma escala del ahorro \parencite[arts.~66 y 76]{LIRPF2006}, aunque la plusvalía se difiere hasta la venta; y para una sociedad con al menos el 5~\% del capital de otra, el dividendo que recibe está casi exento \parencite[art.~21]{LIS2014} \vertema{4.B.12}.
+\item \emph{Catering}: las empresas pagan dividendos cuando los inversores los valoran más, y dejan de pagarlos cuando no \parencite{BakerWurgler2004Catering}.
+\end{itemize}
+
+\subsubsection{Las finanzas del comportamiento}\label{sec:conductual-dividendos}
+
+\begin{itemize}
+\item Una respuesta psicológica al rompecabezas: los inversores separan en «cuentas mentales» el dividendo, que se puede gastar, del capital, que no se toca, y valoran más un dividendo que una plusvalía igual \parencite{ShefrinStatman1984} \vertema{3.B.23}. El detalle, en el anexo~\ref{anexo:walter}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{¿Afectan los dividendos al valor de las acciones?}\label{sec:afectan}
+
+\begin{itemize}
+\item Igual que con la estructura del capital, hay 4 respuestas: no (\autor{Miller} y \autor{Modigliani}); sí, en contra, por los impuestos; depende de lo que rinda la reinversión (\autor{Walter}); y sí, a favor, el «pájaro en mano» (\autor{Gordon} y \autor{Lintner}).
+\end{itemize}
+
+\subsubsection{No: la irrelevancia (\autor{Miller} y \autor{Modigliani}, 1961)}\label{sec:irrelevancia-dividendos}
+
+\begin{itemize}
+\item \emph{Supuestos}: mercados perfectos, inversores racionales, a los que les da igual un euro de dividendo que uno de revalorización,\footnote{Con mercados perfectos, el dividendo no cambia la riqueza del accionista: si la empresa reparte más, sus acciones valen menos, pero el accionista recibe más caja.} y, sobre todo, una \emph{política de inversión dada}.
+\item \emph{Resultado}: el valor depende solo de lo que generan las inversiones, no de cómo se reparte. La rentabilidad del accionista es
+  \[
+  r=\frac{D_1+P_1-P_0}{P_0},
+  \]
+  y lo que se reparte de más en $D_1$ se pierde en $P_1$. Si la empresa paga más dividendo y quiere invertir lo mismo, tiene que emitir acciones por la diferencia: los accionistas antiguos cobran más hoy, pero tienen una parte menor de la empresa, y las 2 cosas se compensan \parencite{MillerModigliani1961Dividend} (anexo~\ref{anexo:walter}).
+\item El \emph{dividendo casero}: el accionista que quiere más dividendo vende acciones; el que quiere menos, compra con lo que recibe. Se fabrica su propio dividendo, como en 1958 se fabricaba su propio endeudamiento: otra vez, los mismos perros con distinto collar.
+\end{itemize}
+
+\subsubsection{Sí, en contra: los impuestos}\label{sec:impuestos-dividendos}
+
+\begin{itemize}
+\item Si el dividendo tributa más que la plusvalía, los accionistas exigen más rentabilidad antes de impuestos a las acciones que reparten más, y valen menos \parencite{Brennan1970Taxes}. Lo óptimo sería repartir poco y, si sobra caja, recomprar.
+\item La evidencia es mixta: no se encuentra que las acciones con más dividendo rindan más \parencite{BlackScholes1974Effects}, y los inversores tienen formas de evitar el impuesto \parencite{MillerScholes1978Dividends}; pero las empresas sí responden a los impuestos (\ref{sec:clientelas}). En España, con la misma escala para el dividendo y la plusvalía, el argumento pierde fuerza.
+\end{itemize}
+
+\subsubsection{Depende de la rentabilidad de la reinversión: la tesis de \autor{Walter}}\label{sec:walter}
+
+\begin{itemize}
+\item \emph{Supuestos}: la empresa se financia solo con lo que retiene; reinvierte una fracción constante $b$ de su beneficio a la rentabilidad $\mathrm{ROE}$, y los accionistas exigen $r_E$. El dividendo crece a $g=b\cdot\mathrm{ROE}$ y, por el modelo de \textcite{GordonShapiro1956Capital} \vertema{3.B.4},
+  \begin{equation}\label{eq:walter}
+  P_0=\frac{(1-b)\,\mathrm{BPA}_1}{r_E-b\cdot\mathrm{ROE}},\qquad \frac{\partial P_0}{\partial b}\gtrless0\iff\mathrm{ROE}\gtrless r_E
+  \end{equation}
+  (derivación en el anexo~\ref{anexo:walter}).
+\item \emph{Resultado} \parencites{Walter1956Dividend}{Walter1963Dividend}:
+  \begin{itemize}
+  \item si $\mathrm{ROE}>r_E$, la empresa reinvierte mejor que el accionista: lo óptimo es retener;
+  \item si $\mathrm{ROE}=r_E$, da igual, como en \autor{Miller} y \autor{Modigliani};
+  \item si $\mathrm{ROE}<r_E$, conviene repartirlo todo.
+  \item Volvamos a nuestra empresa, con un beneficio por acción de 10 el año que viene y $r_E=10$~\%. Si lo reparte todo, $P_0=10/0{,}10=100$. Si retiene el 40~\%, $P_0=6/(0{,}10-0{,}4\cdot\mathrm{ROE})$: 115,4 si reinvierte al 12~\%; 100 si al 10~\%, y 88,2 si al 8~\% (gráfico~\ref{fig:walter}).
+  \end{itemize}
+\item \emph{Por qué no contradice la irrelevancia}: aquí la empresa no puede financiarse fuera, así que repartir es renunciar a invertir. Lo que crea o destruye valor es la inversión, no el dividendo; es la misma condición que decide si crecer crea valor \vertema{3.B.4}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La tesis de \autor{Walter}: el precio de la acción y la tasa de retención}\label{fig:walter}
+\grafico[0.6\textwidth]{walter}
+\fuente{elaboración propia a partir de \textcite{Walter1963Dividend} y \textcite{GordonShapiro1956Capital}.}
+\end{figure}
+
+\subsubsection{Sí, a favor: el «pájaro en mano» (\autor{Gordon} y \autor{Lintner})}\label{sec:pajaro}
+
+\begin{itemize}
+\item \textcite{Gordon1959Dividends} y \textcite{Lintner1962Dividends} sostienen que el dividendo de hoy es más seguro que la revalorización de mañana, así que los accionistas exigen más rentabilidad a las empresas que retienen más: $r_E$ crece con $b$, y repartir sube el valor incluso con $\mathrm{ROE}=r_E$ \parencite{Gordon1963Optimal}. Es la teoría del «pájaro en mano».
+\item \emph{Crítica}: el riesgo lo fijan los flujos de las inversiones, no cuándo se reparten; el accionista que cobra el dividendo y lo reinvierte en la misma empresa vuelve a tener el mismo riesgo. Es la «falacia del pájaro en mano» \parencites{MillerModigliani1961Dividend}{Bhattacharya1979Imperfect}.
+\item \emph{Recapitulación del bloque}: con mercados perfectos y la inversión dada, el dividendo no importa. Importa por los impuestos, que empujan a retener y a recomprar; por la información, que lo convierte en una señal y obliga a suavizarlo, y por la agencia, que lo convierte en disciplina. El recorte de Telefónica no destruyó valor por sí mismo: el mercado leyó en él una señal sobre los beneficios futuros y sobre lo que rendiría lo que se iba a retener.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item En conclusión,
+\item \textbf{\emph{Recapitulación}}:
+  \begin{itemize}
+  \item La empresa se financia con fondos propios o con deuda, por dentro o por fuera; con mercados perfectos, ni la mezcla ni los dividendos cambian su valor, que depende solo de sus activos.
+
+  \item Lo que hace que importen son los impuestos, que favorecen la deuda; los costes de insolvencia, que la frenan, y la información asimétrica y la agencia, que ordenan las fuentes y dan a los dividendos un papel de señal y de disciplina.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Por eso la financiación de las empresas es materia de política económica.
+
+  \item Los tipos de interés bajos abaratan el endeudamiento y permiten invertir más, pero pueden alimentar un apalancamiento excesivo que amplifica el ciclo \vertema{3.A.37}; la fiscalidad favorece la deuda \vertema{4.B.10}; la dependencia europea del crédito bancario explica la Unión de Ahorros e Inversiones \vertema{3.B.44}, y la regulación puede limitar los dividendos de los bancos \vertema{3.B.27}.
+
+  \item Las empresas españolas tienen hoy la mitad de deuda, en relación con el PIB, que en 2010, pero siguen dependiendo del banco.
+  \end{itemize}
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item La decisión de inversión y el coste del capital \vertema{3.B.2}; la valoración de empresas, el apalancamiento de las compras y la financiación del crecimiento \vertema{3.B.4}; la teoría de la agencia y la selección adversa \vertema{3.A.13}; los contratos incompletos y el control \vertema{3.A.15}; la inversión con fricciones financieras y el acelerador financiero \vertema{3.A.34}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item La estructura del capital importa menos por lo que ahorra en impuestos que por lo que cuesta equivocarse: la flexibilidad que buscan los directores financieros es un seguro contra la insolvencia y contra tener que emitir en el peor momento.
+
+  \item Neutralizar el trato fiscal de la deuda y de los fondos propios y facilitar a las pymes el acceso al mercado reduciría la fragilidad que trae el exceso de deuda sin frenar la inversión, y ayudaría a canalizar el ahorro hacia los proyectos que crean valor.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item Con mercados perfectos, da igual cómo se alimente a la gallina y cuántos huevos se repartan: vale lo que ponen sus activos.
+
+  \item En el mundo real, la gallina se alimenta primero con lo de casa, se endeuda mientras el ahorro fiscal compense el riesgo de quiebra, y solo conviene dejarle los huevos si los multiplica más deprisa de lo que exigen sus dueños.
+
+  \item Por eso el recorte de Telefónica no se juzgó por los huevos que dejaba de repartir, sino por lo que decía de la gallina.
+  \end{itemize}
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: instrumentos de financiación}\label{anexo:instrumentos}
+
+\subsection{Acciones y obligaciones}\label{anexo:acciones-obligaciones}
+
+\begin{itemize}
+\item Diferencias entre el accionista y el obligacionista \vertema{3.B.23} \vertema{3.B.24}:
+  \begin{enumerate}
+  \item los rendimientos de la acción dependen de los resultados de la empresa; los intereses de la obligación son una renta periódica pactada;
+  \item el obligacionista recupera el capital al vencimiento; el accionista, solo si vende en el mercado secundario o si la sociedad se liquida;
+  \item el accionista es socio, con derechos económicos y políticos; el obligacionista es acreedor, con derechos solo económicos;
+  \item el accionista soporta más riesgo, porque cobra después en la liquidación;
+  \item para la empresa, la acción es financiación propia y la obligación, ajena.
+  \end{enumerate}
+\item \emph{Préstamos}: como las obligaciones, se devuelven con intereses en plazos fijados, pero suele haber un solo acreedor. A corto plazo, para la tesorería; a largo, para el activo no corriente.
+\end{itemize}
+
+\subsection{Arrendamiento financiero, \emph{factoring} y \emph{confirming}}\label{anexo:leasing}
+
+\begin{itemize}
+\item \concepto{Arrendamiento financiero} (\emph{leasing}): la empresa usa un activo no corriente a cambio de unas cuotas y, al final del plazo, puede comprarlo, devolverlo o renovar el contrato. Intervienen la empresa, la entidad arrendadora y el fabricante del bien.
+  \begin{itemize}
+  \item Es \emph{financiero} si la empresa soporta en la práctica los riesgos y ventajas de la propiedad; si no, es \emph{operativo} (el \emph{renting}), y el riesgo de obsolescencia lo asume el arrendador.
+  \item \emph{Ventajas}: financia el 100~\% del bien sin desembolso inicial; en el operativo, la empresa puede rescindir el contrato si el bien queda obsoleto; y fiscalmente, si el arrendador es una entidad de crédito y el contrato dura al menos 2 años (muebles) o 10 (inmuebles), se deducen la carga financiera y, con un límite, la parte de la cuota que recupera el coste del bien \parencite[art.~106]{LIS2014}.
+  \item \emph{Inconvenientes}: puede salir caro a largo plazo y no todos los activos se ofrecen en \emph{leasing}.
+  \end{itemize}
+\item \concepto{\emph{Factoring}}: la empresa cede sus facturas pendientes de cobro a una entidad que le adelanta su importe, con un descuento, y se encarga del cobro, con o sin el riesgo de impago. Da liquidez inmediata, a un coste alto.
+\item \concepto{\emph{Confirming}}: es lo contrario. La empresa encarga a un banco el pago de sus facturas a los proveedores, que pueden cobrarlas por anticipado pagando unos intereses (gráfico~\ref{fig:factoring}).
+  \begin{itemize}
+  \item Por ejemplo, la empresa A pacta pagar a la empresa B a 150 días, pero B no puede esperar tanto. A abre una línea con su banco y le envía las facturas aprobadas; el banco ofrece a B cobrarlas ya, con un descuento, y A paga al banco al vencimiento.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\emph{Factoring} y \emph{confirming}}\label{fig:factoring}
+\grafico[0.8\textwidth]{factoring}
+\fuente{elaboración propia.}
+\end{figure}
+
+\subsection{Otras fuentes de financiación ajena}\label{anexo:otras-fuentes}
+
+\begin{itemize}
+\item \emph{Financiación participativa} (\emph{crowdfunding}): un proyecto se publica en una plataforma con un objetivo de financiación y un plazo. Puede ser de donación, de recompensa, de préstamo o de capital; las 2 últimas, que dan un rendimiento financiero, las regula el Reglamento (UE) 2020/1503 \parencite{CE2026Crowdfunding}.
+\item \emph{Mercados internacionales}: los \emph{eurobonos} son bonos emitidos en una moneda distinta de la del país donde se colocan (un bono en dólares colocado en Europa, por ejemplo), y el mercado de \emph{eurodivisas}, el de los depósitos y préstamos en una moneda fuera de su país de origen. Dan acceso a más inversores y a otras monedas, a cambio del riesgo de tipo de cambio \vertema{3.B.24}.
+\item \emph{Mercados alternativos} y apoyo público en España: el MARF para la renta fija de empresas medianas, BME Growth para las acciones, el ICO y ENISA \vertema{4.A.20}.
+\end{itemize}
+
+\subsection{Formas híbridas}\label{anexo:hibridos}
+
+\begin{itemize}
+\item \emph{Acciones preferentes} (\emph{preferred stock}, en el sentido estadounidense): como la deuda, tienen un dividendo fijo, normalmente acumulativo (si un año no se paga, se paga después), y sus titulares no participan en la gestión; como las acciones, sus pagos no se deducen en el impuesto y no tienen vencimiento. En la liquidación cobran después de los obligacionistas y antes que los accionistas ordinarios. En España, lo más parecido son las acciones privilegiadas y las sin voto (\ref{sec:acciones}); las \emph{participaciones preferentes} de los bancos son otra cosa: deuda perpetua y subordinada.
+\item \emph{Deuda subordinada}: en el concurso cobra después de los acreedores ordinarios.
+\item \emph{Deuda perpetua}: sin vencimiento; el emisor la amortiza cuando quiere, y el inversor solo recupera el capital si el emisor la amortiza, si la sociedad se liquida o si la vende.
+\item \emph{Obligaciones convertibles}: el tenedor puede cambiarlas por un número fijado de acciones. La conversión le interesa si sube la cotización; por esa opción, la empresa paga menos interés \vertema{3.B.25}.
+\item \emph{Bonos convertibles contingentes} (CoCos): emitidos por bancos, pagan un cupón alto mientras viven y se convierten en acciones, o pierden su valor, sin que lo decidan ni el emisor ni el inversor: cuando el capital ordinario de nivel 1 del banco cae por debajo de un umbral (al menos el 5,125~\% de sus activos ponderados por riesgo) \parencite[art.~54]{UE2013CRR} o cuando el supervisor declara que el banco no es viable. Absorben pérdidas cuando más falta hace y por eso cuentan como capital adicional de nivel 1 \vertema{3.B.27}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el efecto \autor{Lohmann}-\autor{Ruchti}}\label{anexo:lohmann}
+
+\begin{itemize}
+\item Una empresa pesquera compra 10 barcos de 1 millón de euros cada uno, con una vida útil de 10 años, sin valor residual y con amortización lineal: 100.000 euros por barco y año. Si reinvierte cada año lo que amortiza (tabla~\ref{tab:lohmann}):
+  \begin{itemize}
+  \item el primer año amortiza 1 millón y compra un barco más: tiene 11;
+  \item el segundo amortiza 1,1 millones, compra otro y le sobran 100.000 euros;
+  \item y así sucesivamente: la flota crece sin que la empresa aporte un euro nuevo.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El efecto \autor{Lohmann}-\autor{Ruchti}: una flota que reinvierte sus amortizaciones}\label{tab:lohmann}
+\begin{tabular}{>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{3cm}>{\centering\arraybackslash}m{3cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Año} & \textbf{Amortización (millones)} & \textbf{Barcos comprados} & \textbf{Barcos al final} & \textbf{Caja sobrante (millones)} \\
+\midrule
+1 & 1,0 & 1 & 11 & 0,0 \\
+2 & 1,1 & 1 & 12 & 0,1 \\
+3 & 1,2 & 1 & 13 & 0,3 \\
+4 & 1,3 & 1 & 14 & 0,6 \\
+5 & 1,4 & 2 & 16 & 0,0 \\
+\rowcolor{tceesalvia}A largo plazo & --- & --- & en torno a 18 & --- \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\begin{itemize}
+\item En el año 10 se retiran los 10 barcos iniciales y la flota baja; a largo plazo, con barcos de todas las edades, se estabiliza en torno a 18, cerca de $2n/(n+1)$ veces la inicial con $n=10$ años de vida útil.
+\item Lo que crece es la capacidad \emph{de cada periodo}, no la capacidad \emph{total}: los años de uso que quedan a la flota no aumentan, porque la flota envejece. Y el efecto depende de los 4 supuestos del texto (\ref{sec:tipos-autofinanciacion}): sin obsolescencia, con activos divisibles, sin inflación y con una amortización que se recupere de verdad con las ventas.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: derivaciones de \autor{Modigliani} y \autor{Miller}}\label{anexo:mm}
+
+\subsection{La proposición I: el arbitraje}\label{anexo:arbitraje}
+
+\begin{itemize}
+\item 2 empresas de la misma clase de riesgo generan el mismo resultado de explotación, $\mathrm{EBIT}$, cada periodo. U no tiene deuda y vale $V_U=V_E^U$; L tiene una deuda $V_D$ al tipo $r_D$ y vale $V_L=V_E^L+V_D$. Un inversor puede elegir entre 2 estrategias \parencite[págs.~594-595]{Vernimmen2017Corporate}:
+  \begin{itemize}
+  \item \emph{Estrategia 1}: comprar una fracción $s$ de las acciones de L. Paga $s V_E^L$ y cobra $s(\mathrm{EBIT}-r_DV_D)$.
+  \item \emph{Estrategia 2}: comprar la misma fracción $s$ de las acciones de U y pedir prestado $s V_D$ al mismo tipo $r_D$ (el apalancamiento casero). Paga $s(V_U-V_D)$ y cobra $s\,\mathrm{EBIT}-s r_DV_D$.
+  \end{itemize}
+\item Las 2 estrategias dan exactamente los mismos flujos, con el mismo riesgo; si no, habría arbitraje. Por tanto, deben costar lo mismo: $s V_E^L=s(V_U-V_D)$, es decir, $V_L=V_E^L+V_D=V_U$.
+\item Si $V_L>V_U$, el inversor vende L y hace la estrategia 2; si $V_L<V_U$, vende U y compra a la vez acciones y deuda de L en la proporción de su estructura del capital (comprar una fracción $s$ de las acciones y de la deuda de L da $s(\mathrm{EBIT}-r_DV_D)+s r_DV_D=s\,\mathrm{EBIT}$, lo mismo que una fracción $s$ de U).\findemo
+\item Con los números de nuestra empresa ($\mathrm{EBIT}=100$, $V_D=400$, $r_D=5$~\%, $s=1$~\%), el arbitraje está en el apartado~\ref{sec:mm}.
+\end{itemize}
+
+\subsection{La proposición II}\label{anexo:prop-ii}
+
+\begin{itemize}
+\item Sin impuestos, el $\mathrm{WACC}$ es la media ponderada de lo que exigen accionistas y acreedores, y por la proposición I es igual a $r_A$:
+  \[
+  r_A=r_E\,\frac{V_E}{V_E+V_D}+r_D\,\frac{V_D}{V_E+V_D}\ \Longrightarrow\ r_A\,(V_E+V_D)=r_E\,V_E+r_D\,V_D.
+  \]
+\item Despejando $r_E$:
+  \[
+  r_E=\frac{r_A\,(V_E+V_D)-r_D\,V_D}{V_E}=r_A+(r_A-r_D)\,\frac{V_D}{V_E}.
+  \]
+  La rentabilidad exigida a las acciones crece linealmente con la ratio deuda/fondos propios \eqref{eq:mm}.\findemo
+\end{itemize}
+
+\subsection{El escudo fiscal: \autor{Modigliani} y \autor{Miller} (1963)}\label{anexo:mm-1963}
+
+\begin{itemize}
+\item Con un impuesto sobre sociedades al tipo $t_{IS}$ y deuda permanente, lo que reciben cada periodo accionistas y acreedores de la empresa endeudada es
+  \[
+  (\mathrm{EBIT}-r_DV_D)(1-t_{IS})+r_DV_D=\mathrm{EBIT}\,(1-t_{IS})+t_{IS}\,r_DV_D.
+  \]
+\item El primer sumando es lo que reciben los accionistas de la empresa sin deuda: vale $V_U$. El segundo es tan seguro como los intereses y se descuenta a $r_D$: vale $t_{IS}\,r_DV_D/r_D=t_{IS}\,V_D$. Por tanto, $V_L=V_U+t_{IS}\,V_D$.\findemo
+\end{itemize}
+
+\subsection{Los impuestos personales: \autor{Miller} (1977)}\label{anexo:miller}
+
+\begin{itemize}
+\item Ahora el inversor paga $t_D$ por los intereses y $t_E$ por la renta de las acciones. Un euro de resultado de explotación que se paga como interés deja al inversor $1-t_D$; si se paga a los accionistas, paga primero el impuesto sobre sociedades y después el personal, y deja $(1-t_{IS})(1-t_E)$ (gráfico~\ref{fig:miller}).
+\item Lo que reciben, después de todos los impuestos, accionistas y acreedores de la empresa endeudada es
+  \[
+  (\mathrm{EBIT}-r_DV_D)(1-t_{IS})(1-t_E)+r_DV_D(1-t_D)=\mathrm{EBIT}\,(1-t_{IS})(1-t_E)+r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big].
+  \]
+\item El primer sumando es lo que recibirían los accionistas de la empresa sin deuda: vale $V_U$. El segundo es tan seguro como los intereses; para el inversor, la deuda rinde después de su impuesto $r_D(1-t_D)$, así que se descuenta a esa tasa:
+  \[
+  \frac{r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big]}{r_D\,(1-t_D)}=\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D.
+  \]
+\item Sumando, se obtiene \eqref{eq:miller}. Con $t_E=t_D$ (incluido $t_E=t_D=0$) queda el escudo de 1963, $t_{IS}\,V_D$.\findemo
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\autor{Miller} (1977): qué queda de 1 euro de resultado de explotación}\label{fig:miller}
+\grafico[0.7\textwidth]{miller}
+\fuente{elaboración propia a partir de \textcite[cap.~18]{BrealeyMyersAllen2020Principles}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: la liquidez interna y externa (\autor{Holmström} y \autor{Tirole})}\label{anexo:holmstrom-tirole}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿por qué las empresas guardan tanta caja y pagan por líneas de crédito que a menudo no usan? En un mercado sin fricciones bastaría con una caja mínima para los pagos diarios: si hiciera falta más, la empresa emitiría acciones o deuda, y lo que sobra se invertiría, se usaría para pagar deuda (que suele costar más de lo que rinde la caja) o se devolvería a los accionistas \parencite{HolmstromTirole2011Inside} \vertema{3.B.2}.
+\item \emph{El modelo del ingreso comprometible} \parencites{HolmstromTirole1997Financial}{Tirole2006Theory}, con la misma notación que el crecimiento de la empresa \vertema{3.B.4}:
+  \begin{itemize}
+  \item un empresario con fondos propios $V_E$ quiere un proyecto que cuesta $I_0>V_E$ y rinde $R$ si sale bien y nada si sale mal;
+  \item si se esfuerza, sale bien con probabilidad $\pi(e^{\mathrm A})$; si no, con $\pi(e^{\mathrm B})<\pi(e^{\mathrm A})$, pero disfruta de un beneficio privado $B^{\mathrm p}$; $\Delta\pi=\pi(e^{\mathrm A})-\pi(e^{\mathrm B})$;
+  \item el financiador no ve el esfuerzo (riesgo moral) \vertema{3.A.13}.
+  \end{itemize}
+\item \emph{Incentivos}: si el empresario se queda con $R_{\mathrm e}$ cuando el proyecto sale bien, se esfuerza si $\pi(e^{\mathrm A})R_{\mathrm e}\geq\pi(e^{\mathrm B})R_{\mathrm e}+B^{\mathrm p}$, es decir, si $R_{\mathrm e}\geq B^{\mathrm p}/\Delta\pi$.
+\item \emph{Financiación}: lo más que puede prometer a los financiadores sin quitarle el incentivo, el \emph{ingreso comprometible}, tiene que cubrir lo que pide prestado:
+  \[
+  \pi(e^{\mathrm A})\Big(R-\frac{B^{\mathrm p}}{\Delta\pi}\Big)\geq I_0-V_E.
+  \]
+  Despejando, solo se financian los proyectos de quien tiene al menos $V_E\geq I_0-\pi(e^{\mathrm A})(R-B^{\mathrm p}/\Delta\pi)$: el racionamiento del crédito, aunque el proyecto tenga VAN positivo.\findemo
+\item \emph{Consecuencias}:
+  \begin{itemize}
+  \item la estructura del capital importa: sin fondos propios bastantes no hay crédito, en contra de la irrelevancia de \autor{Modigliani} y \autor{Miller};
+  \item si las oportunidades de inversión llegan de forma imprevista, la empresa necesita liquidez a mano: caja o líneas de crédito comprometidas;
+  \item los sectores difieren: donde los proyectos son fáciles de verificar (cuanto menor es $B^{\mathrm p}/\Delta\pi$), la empresa puede endeudarse más; donde son difíciles (las tecnológicas), necesita más fondos propios;
+  \item en una crisis que destruye fondos propios, la inversión tarda en recuperarse: es la misma lógica del acelerador financiero \vertema{3.A.34}.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la política de dividendos, en detalle}\label{anexo:walter}
+
+\subsection{La irrelevancia de los dividendos}\label{anexo:irrelevancia-dividendos}
+
+\begin{itemize}
+\item Sean $n_0$ acciones al precio $P_0$, un beneficio total $B_1$, una inversión $I_1$ y un dividendo por acción $D_1$. Si $n_0D_1+I_1>B_1$, la empresa emite $m$ acciones nuevas al precio $P_1$ por la diferencia: $m\,P_1=I_1-(B_1-n_0D_1)$.
+\item El precio de hoy es el valor actual de lo que recibe el accionista, $P_0=(D_1+P_1)/(1+r_E)$. Para las $n_0$ acciones, con $V_1=(n_0+m)\,P_1$ el valor de la empresa al final del periodo:
+  \[
+  V_0=n_0P_0=\frac{n_0D_1+n_0P_1}{1+r_E}=\frac{n_0D_1+V_1-m\,P_1}{1+r_E}=\frac{B_1-I_1+V_1}{1+r_E}.
+  \]
+\item $D_1$ ha desaparecido: dada la inversión $I_1$, el valor no depende del dividendo \parencite{MillerModigliani1961Dividend}.\findemo
+\end{itemize}
+
+\subsection{La tesis de \autor{Walter} con el modelo de \autor{Gordon} y \autor{Shapiro}}\label{anexo:walter-gordon}
+
+\begin{itemize}
+\item \emph{En tiempo discreto}: si la empresa reinvierte cada periodo la fracción $b$ de su beneficio al $\mathrm{ROE}$, el beneficio crece a $g=b\cdot\mathrm{ROE}$ y el dividendo, $D_1=(1-b)\,\mathrm{BPA}_1$, también. Por el modelo de \autor{Gordon} y \autor{Shapiro}, $P_0=D_1/(r_E-g)$ \vertema{3.B.4}, que es \eqref{eq:walter}.
+\item \emph{En tiempo continuo}: el beneficio crece a la tasa $b\cdot\mathrm{ROE}$, $\mathrm{BPA}_t=\mathrm{BPA}_0\,e^{b\cdot\mathrm{ROE}\cdot t}$, y el precio es el valor actual de los dividendos, $(1-b)\,\mathrm{BPA}_t$, descontados a $r_E$:
+  \[
+  P_0=\int_0^{\infty}(1-b)\,\mathrm{BPA}_0\,e^{b\cdot\mathrm{ROE}\cdot t}\,e^{-r_E t}\,dt=\int_0^{\infty}(1-b)\,\mathrm{BPA}_0\,e^{-(r_E-b\cdot\mathrm{ROE})\,t}\,dt=\frac{(1-b)\,\mathrm{BPA}_0}{r_E-b\cdot\mathrm{ROE}},
+  \]
+  si $r_E>b\cdot\mathrm{ROE}$: el dividendo perpetuo descontado a $r_E$ menos el crecimiento.
+\item \emph{La derivada}: con la regla del cociente (la derivada del numerador por el denominador, menos la derivada del denominador por el numerador, todo entre el denominador al cuadrado),
+  \[
+  \frac{\partial P_0}{\partial b}=\frac{-\mathrm{BPA}\,(r_E-b\cdot\mathrm{ROE})+\mathrm{ROE}\,(1-b)\,\mathrm{BPA}}{(r_E-b\cdot\mathrm{ROE})^2}=\frac{\mathrm{BPA}\,(\mathrm{ROE}-r_E)}{(r_E-b\cdot\mathrm{ROE})^2},
+  \]
+  que tiene el signo de $\mathrm{ROE}-r_E$.\findemo
+\item \emph{Limitaciones}: supone una rentabilidad de la reinversión constante, cualquiera que sea lo que se invierta, y que la empresa no puede financiarse fuera; y \autor{Gordon} y \autor{Lintner} le objetan que $r_E$ crece con $b$ (\ref{sec:pajaro}).
+\end{itemize}
+
+\subsection{El rompecabezas de los dividendos y las finanzas del comportamiento}\label{anexo:conductual}
+
+\begin{itemize}
+\item \emph{Autocontrol}: el dividendo es una regla sencilla para gastar «la renta y no el capital»; vender acciones para consumir rompería esa regla \parencite{ShefrinStatman1984}.
+\item \emph{Contabilidad mental}: con la función de valor de la teoría de las perspectivas \parencite{KahnemanTversky1979} \vertema{3.A.10}, 2 ganancias separadas se disfrutan más que una igual a su suma, y una pequeña ganancia separada de una pérdida grande consuela \parencite{Thaler1985Mental}.
+  \begin{itemize}
+  \item Un beneficio de 10 euros por acción repartido como un dividendo de 2 y una plusvalía de 8 se valora más que una plusvalía de 10.
+  \item Con unas pérdidas de 10, un dividendo de 2 y una caída de 12 duelen menos que una caída de 10.
+  \item Ante lo que financieramente es idéntico, reaccionamos de forma distinta según cómo se presente.
+  \end{itemize}
+\item \emph{El exceso de volatilidad}: las cotizaciones se mueven mucho más de lo que justificarían los dividendos que luego se pagan \parencite{Shiller1981Move}. Una explicación: tras ganar, el inversor arriesga «el dinero de la casa» con menos miedo \parencite{ThalerJohnson1990}, su aversión al riesgo baja y paga más por la misma acción; tras perder, lo contrario. Las subidas y las bajadas se amplifican \parencite{BarberisHuangSantos2001Prospect} \vertema{3.B.23}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: formas de retribuir al accionista}\label{anexo:retribucion}
+
+\begin{itemize}
+\item \emph{Dividendo ordinario}: lo aprueba la junta con cargo al beneficio del ejercicio o a reservas de libre disposición.
+\item \emph{Dividendo a cuenta}: se reparte antes de cerrar el ejercicio, como anticipo, si hay liquidez suficiente y beneficios desde el último cierre \parencite[arts.~273 y 277]{LSC2010}. Suaviza el perfil de la tesorería del accionista.
+\item \emph{Dividendo extraordinario}: por un beneficio que no se repetirá (la venta de un negocio, por ejemplo).
+\item \emph{Dividendo flexible} (\emph{scrip dividend}): una ampliación liberada (\ref{sec:acciones}) en la que el accionista elige entre recibir acciones nuevas o vender sus derechos de asignación gratuita, a la empresa a un precio fijado o en bolsa. No es un dividendo en especie: la empresa conserva la caja de quien elige acciones.
+\item \emph{Dividendo preferente}: el de las acciones privilegiadas o el mínimo de las acciones sin voto \parencite[arts.~95 y 99]{LSC2010}. Algunas jurisdicciones premian la antigüedad del accionista; en España lo que permite la ley a las cotizadas es el voto doble por lealtad, tras 2 años \parencite[art.~527 ter]{LSC2010}.
+\item \emph{Recompra y amortización de acciones}: la empresa compra sus acciones, normalmente en bolsa, y las amortiza o las mantiene en autocartera. Necesita la autorización de la junta, por 5 años como máximo \parencite[art.~146]{LSC2010}, y en las cotizadas la autocartera no puede pasar del 10~\% del capital \parencite[art.~509]{LSC2010}. Las \emph{acciones rescatables}, que solo pueden emitir las cotizadas, se amortizan a petición de la sociedad o del titular al precio fijado al emitirlas \parencite[art.~500]{LSC2010}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: para el tribunal y el test}\label{anexo:test}
+
+\begin{itemize}
+\item \emph{¿Contradice la proposición II a la I?} No: la deuda sube la rentabilidad que exigen los accionistas, no el valor de la empresa, que es $V=V_E+V_D$ y no cambia (\ref{sec:mm}).
+\item \emph{¿Por qué, si la deuda es más barata, no baja el coste del capital al endeudarse?} Porque al endeudarse sube $r_E$ justo lo necesario para compensar: el riesgo de los activos, $r_A$, es el mismo y solo se reparte de otra forma \eqref{eq:mm}.
+\item \emph{¿Por qué no se endeudan las empresas al 100~\%, si la deuda ahorra impuestos?} Por los costes de insolvencia y de agencia y por la jerarquía financiera; y porque los impuestos personales pueden reducir la ventaja \eqref{eq:miller}.
+\item \emph{¿Por qué cae la cotización al anunciar una ampliación de capital?} Porque, si la dirección sabe más, emite cuando cree que las acciones están caras \parencite{MyersMajluf1984Corporate}.
+\item \emph{¿Es lo mismo un dividendo que una recompra?} Con mercados perfectos, sí; en la práctica, la recompra es más flexible, no crea la expectativa de repetirse y tributa como plusvalía (\ref{sec:beneficios}).
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Para el test.}
+\begin{itemize}
+\item \autor{Miller} (1977): si $t_D>t_E$, la ventaja de la deuda es \emph{menor} que $t_{IS}V_D$; si $1-t_D=(1-t_{IS})(1-t_E)$, desaparece.
+\item MM (1963): $V_L=V_U+t_{IS}V_D$ y $\mathrm{WACC}=r_A(1-t_{IS}L)$; la proposición II con impuestos lleva $(1-t_{IS})$.
+\item Jerarquía financiera: fondos internos → deuda → acciones (\autor{Myers} y \autor{Majluf}, 1984; observada por \autor{Donaldson}, 1961). La teoría del equilibrio, con \autor{Kraus} y \autor{Litzenberger} (1973).
+\item La tesis de que el dividendo importa según $\mathrm{ROE}\gtrless r_E$ es de \autor{Walter}; el «pájaro en mano», de \autor{Gordon} y \autor{Lintner}; la irrelevancia, de \autor{Miller} y \autor{Modigliani} (1961).
+\item Reserva legal: el 10~\% del beneficio hasta el 20~\% del capital (art.~274 LSC). Autocartera de las cotizadas: hasta el 10~\% del capital (art.~509).
+\end{itemize}
+Preguntas de test de este y de los demás temas: \parencite{GutierrezMarcos2026Simulador}, \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}.
+\end{anotaciones}
+
+\begin{anotaciones}
+\textbf{Para ampliar.} Los manuales de referencia de este tema son \textcite{Vernimmen2017Corporate}, \textcite{BrealeyMyersAllen2020Principles}, \textcite{Damodaran2015Applied}, \textcite{CopelandWestonShastri2014Financial} y, en castellano, \textcite{SuarezSuarez2014Decisiones}. Un repaso de las proposiciones de \autor{Modigliani} y \autor{Miller} 30 años después, por uno de sus autores, en \textcite{Miller1988Propositions}; y de las teorías de la estructura del capital, en \textcite{HarrisRaviv1991Theory} y \textcite{Myers2001Capital}.
+\end{anotaciones}
+
+\bibliografia
+\end{document}

@@ -1,0 +1,18 @@
+tema: 3A04
+fecha_inventario: 2026-11-09
+datos:
+  - id: "credito-privado-eeuu"
+    texto: "último dato del cuarto trimestre de 2025"
+    donde: [3A04.tex, repaso/3A04-repaso.tex]
+    valor: 140.3
+    unidad: "% del PIB"
+    periodo: "2025T4"
+    fuente: "BIS2026Credito"
+    organismo: "BIS (vía FRED)"
+    serie: "Total credit to private non-financial sector, US (QUSPAM770A, QUSHAM770A, QUSNAM770A); 2.ª comprobación Fed Z.1"
+    url: "https://fred.stlouisfed.org/series/QUSPAM770A"
+    periodicidad: "trimestral"
+    proxima: "2026-12"
+    familia: "bis-credito"
+    depende: [datos/eeuu-deuda-privada-1980-2025.csv, graficos/eeuu-deuda-privada.tex]
+    frase: "pie y título «1980-2025» del gráfico fig:deuda-privada; repaso: «140,3\\,\\% (fin 2025)» y «\\dato{140,3\\,\\% (4T 2025)}{BIS}». Máximo 172,0 % (2008T3) y 125→171 % (1990-2007) son históricos"

@@ -1,0 +1,59 @@
+% Cuota a la importación y arancel equivalente en un país pequeño (3.B.7, II.1).
+% Mismas curvas y escala que arancel-pequeno, con las cifras del acero:
+%   demanda x = 100 - p; oferta nacional q = p; p^W = 20.
+%   Libre comercio: q^0 = 20, x^0 = 80, M^0 = 60.
+%   Cuota \bar M = 40: oferta S + \bar M, q = p + 40 (para p >= p^W), que corta
+%   a D en p = 30 = p^W(1+t) con t = 50 %: q^1 = 30, x^1 = 70.
+%   a = 250; b = 50; c = renta de la cuota = 400; d = 50 (b + d = 100).
+% Áreas, con los colores de arancel-pequeno: a, excedente del productor
+% (dorado); c, renta de la cuota (verde, la recaudación del arancel); b y d, PIE (rojo).
+% Elaboración propia a partir de Feenstra y Taylor (2021, cap. 8).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.07cm,y=0.09cm,
+    areaep/.style={fill=tceedorado,fill opacity=0.30,draw=none},
+    areapie/.style={fill=tceerojo,fill opacity=0.25,draw=none},
+    arearec/.style={fill=tceeverde,fill opacity=0.25,draw=none},
+    llave/.style={decorate,decoration={brace,amplitude=4pt,mirror},thick},
+    muestra/.style={minimum width=0.42cm,minimum height=0.3cm,inner sep=0pt}]
+  % 1: ejes
+  \capa{1}{\ejes{$x$, $q$}{$p$}{108}{76}}
+  % 2: demanda y oferta nacional
+  \capa{2}{\draw[curva2] (28,72) -- (98,2) node[etiqueta,right] {$D$};}
+  \capa{2}{\draw[curva1] (0,0) -- (70,70) node[etiqueta,right] {$S$};}
+  % 3: precio mundial y libre comercio
+  \capa{3}{\draw[guia] (0,20) node[etiqueta,left,text=black] {$p^W$} -- (102,20);}
+  \capa{3}{\node[punto] at (20,20) {};}
+  \capa{3}{\node[punto] at (80,20) {};}
+  \capa{3}{\draw[guia] (20,20) -- (20,0) node[below,text=black] {$q^0$};}
+  \capa{3}{\draw[guia] (80,20) -- (80,0) node[below,text=black] {$x^0$};}
+  \capa{3}{\draw[llave] (20,-16) -- (80,-16) node[midway,below=4pt] {$M^0=x^0-q^0$};}
+  % 4: oferta con la cuota y nuevo precio
+  \capa{4}{\draw[curvanueva] (60,20) -- (98,58) node[etiqueta,right] {$S+\bar M$};}
+  \capa{4}{\draw[guia] (0,30) node[etiqueta,left,text=black] {$p^W(1+t)$} -- (70,30);}
+  \capa{4}{\node[punto] at (30,30) {};}
+  \capa{4}{\node[punto] at (70,30) {};}
+  \capa{4}{\draw[guia] (30,30) -- (30,0) node[below,text=black] {$q^1$};}
+  \capa{4}{\draw[guia] (70,30) -- (70,0) node[below,text=black] {$x^1$};}
+  % 5: áreas a, b y d
+  \capa{5}{\fill[areaep] (0,20) -- (20,20) -- (30,30) -- (0,30) -- cycle;}
+  \capa{5}{\node[etiqueta] at (11,25) {$a$};}
+  \capa{5}{\fill[areapie] (20,20) -- (30,20) -- (30,30) -- cycle;}
+  \capa{5}{\node[etiqueta] at (27,23.4) {$b$};}
+  \capa{5}{\fill[areapie] (70,20) -- (80,20) -- (70,30) -- cycle;}
+  \capa{5}{\node[etiqueta] at (73,23.4) {$d$};}
+  % 6: área c, la renta de la cuota, y la llave de la cuota
+  \capa{6}{\fill[arearec] (30,20) rectangle (70,30);}
+  \capa{6}{\node[etiqueta,font=\footnotesize,align=center,inner sep=0pt] at (45,25) {$c$: renta\\de la cuota};}
+  \capa{6}{\draw[llave] (30,-7) -- (70,-7) node[midway,below=4pt] {$\bar M=M^1$};}
+  % leyenda de las áreas (con cada área)
+  \capa{5}{\node[muestra,areaep] at (2,-34) {};}
+  \capa{5}{\node[etiqueta,anchor=west,font=\footnotesize] at (6,-34) {$a$: excedente del productor};}
+  \capa{5}{\node[muestra,areapie] at (72,-34) {};}
+  \capa{5}{\node[etiqueta,anchor=west,font=\footnotesize] at (76,-34) {$b$, $d$: PIE};}
+  \capa{6}{\node[muestra,arearec] at (2,-41) {};}
+  \capa{6}{\node[etiqueta,anchor=west,font=\footnotesize] at (6,-41) {$c$: renta de la cuota (con el arancel, recaudación)};}
+\end{tikzpicture}
+\end{document}

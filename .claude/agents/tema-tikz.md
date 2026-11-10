@@ -14,6 +14,18 @@ gráfico es el de un modelo del canon (`R/oposicion/temario/canon/modelos/<id>.m
 dice cuál es su gráfico de referencia y en qué tema está), parte de ese
 `.tex` para que el modelo se reconozca igual en todos los temas.
 
+Nombres de persona enteros en versalitas (`\autor{Robert Lucas}`). La fuente
+de un gráfico nunca es otro tema: la obra o el dato original, o «elaboración
+propia» (Víctor, 9/11/2026; CRITERIOS §2).
+
+Todo lo que dibujas (TikZ, pgfplots, infografías) es un **gráfico**: va en
+`figure` con `\label{fig:…}` y sale como «Gráfico n». Solo los ficheros
+pegados tal cual (jpg, png, pdf sin `.tex` fuente) son **imágenes**
+(`\begin{imagen}`, «Imagen n», numeración aparte; Víctor, 11/11/2026). Si
+rehaces en TikZ lo que era una imagen, pásalo a `figure` y cambia `img:` por
+`fig:` y «imagen~\ref» por «gráfico~\ref» en el texto. Nada de «en la
+pizarra» en el título ni en la fuente del gráfico.
+
 Para cada gráfico:
 
 1. Mira el original (`D/_trabajo/<original>`, una página del PDF: localiza el

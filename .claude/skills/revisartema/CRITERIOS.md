@@ -58,6 +58,10 @@ en cada tema. Ver `LICENSE.md` en la raíz.
     **Relevancia**, **Contextualización**, **Problemática** (preguntas clave) y
     **Estructura** (los apartados y por qué ese orden). Las definiciones básicas
     se dan aquí.
+    Cada bloque es una viñeta con **el rótulo solo en su línea**
+    (`\item \textbf{\emph{Enganche}}:`) y el desarrollo en viñetas
+    indentadas debajo (Víctor, 9/11/2026); nunca el texto en la misma línea
+    que el rótulo. Igual en la conclusión.
   - **Se mantiene la estructura de bloques del tema original de Víctor**:
     los apartados de primer nivel y sus títulos de segundo nivel (I.1, I.2…),
     en su orden. Por debajo se puede reorganizar. No se reestructura según la
@@ -93,7 +97,9 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   - **Conclusión**, con sus bloques: **Recapitulación** (ideas clave, sin
     repetir el tema), **Relevancia**, **Extensiones** (otros enfoques y
     partes del temario, para «lanzar la caña» al tribunal), **Opinión** (si
-    procede) e **Idea final** (p. ej., la respuesta a la problemática).
+    procede) e **Idea final** (p. ej., la respuesta a la problemática). Mismo formato que
+    la introducción: el rótulo solo en su línea y el desarrollo en viñetas
+    indentadas debajo (Víctor, 9/11/2026).
   - **Reparto de minutos** (Víctor, 13/10/2026): introducción
     **2'00"–2'30"** y conclusión **1'00"–1'30"**; el cuerpo, **26–27
     minutos**. Los `\minutos{}` de los apartados suman exactamente eso (p. ej.
@@ -164,7 +170,9 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   desarrolladas (Víctor, 16/10/2026), como notas al pie y no integradas en
   el texto ni borradas: amenizan la lectura, dan curiosidades y material
   para el cante sin ser centrales. Pueden llevar un gráfico pequeño
-  (`\graficonota{…}`).
+  (`\graficonota{…}`). En los temas de **pensamiento económico** (3.A.1-3.A.7), las
+  notas del tema antiguo que tengan interés y no quepan como nota se pueden
+  conservar en un anexo (Víctor, 9/11/2026).
 - **Numeración de páginas**: el tema (de la portada a la conclusión) en
   1…N; los anexos en A-1, A-2…; la bibliografía en B-1… La primera página
   dice cuántas páginas tiene cada parte (lo hace `tcee.sty`).
@@ -172,12 +180,15 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   cuatro páginas se harán manuales por bloques del temario; las fichas de
   un mismo bloque tienen que poder unirse sin retoques (mismo estilo,
   notación y orden de secciones).
-- **Personas en versalitas** (regla fija, para memorizar y distinguir
-  autores): el **apellido** de toda persona que se nombra va en versalitas,
-  siempre, en el texto, gráficos y cajas: `\autor{Marshall}` (1890); el
-  nombre de pila y el año, en redonda; con varios apellidos, todos
-  (`\autor{Mas-Colell}`). Las citas (`\textcite`, `\parencite`) ya salen así
-  en PDF, web y Word. La bibliografía final no.
+- **Personas en versalitas, con el nombre entero** (regla fija, para
+  memorizar y distinguir autores; Víctor, 9/11/2026): cuando se nombra a una
+  persona, **todo su nombre** va en versalitas, nombre de pila e iniciales
+  incluidos: `\autor{John Stuart Mill}`, `\autor{J. M. Keynes}`,
+  `\autor{Karl Marx}` (1867); nunca «Karl \autor{Marx}». Si solo se nombra
+  el apellido, el apellido (`\autor{Marshall}`). El año, en redonda. Vale en
+  el texto, los títulos, los gráficos, las tablas y las cajas. Las citas
+  (`\textcite`, `\parencite`) ya salen así en PDF, web y Word. La
+  bibliografía final no.
 - **Décadas y números en cifras**: «en los años 30», «los 70», «3 rasgos»
   cuando son datos o cantidades; nunca «los años treinta».
 - **Preguntas entre signos**: si el texto plantea una pregunta («detrás está
@@ -185,8 +196,42 @@ en cada tema. Ver `LICENSE.md` en la raíz.
 - **Vectores con flecha** encima (`\vect{x}`, `\vect{p}`, `\vect{z}`) en
   todas las fórmulas; los escalares (x_i, W̄, p_1) sin flecha.
 - **Títulos de primer nivel** (bandas moradas): que quepan en una línea; si
-  no, cortar donde tenga sentido con `\newline` (la segunda línea queda
+  no, cortar donde tenga sentido con `\cortetitulo` (la segunda línea queda
   sangrada bajo el texto) y nunca dejar una palabra sola.
+- **Todos los títulos, en las menos líneas posibles** (Víctor, 11/11/2026, 4.ª
+  tanda): lo ideal es una línea; acortar el título antes que dejarlo en tres.
+  Si necesita dos o más, el corte se elige **uno a uno** en el mejor punto
+  (tras «:», «;» o «?», antes de una conjunción o de un complemento, nunca
+  entre artículo y nombre ni dejando una palabra sola) con `\cortetitulo`:
+  `\subsection{Los hechos estilizados:\cortetitulo ¿los reproduce el modelo?}`.
+  En el PDF es un salto de línea; en los marcadores, la web, el Word y el
+  esquema, un espacio (`\newline` en un título también corta, pero en Word
+  deja el salto: usar `\cortetitulo`). Los títulos van sin justificar y sin
+  guiones; sin huérfanas y con el párrafo siguiente en la misma página (lo
+  hace `tcee.sty`). `verificar-tema.py` avisa de los títulos de más de una
+  línea con «:» (u otro signo) y sin corte marcado.
+- **Jerarquía de los títulos** (Víctor, 11/11/2026; `tcee.sty`, `tema.css` y
+  `reference.docx` iguales): 1 `\section` banda morada en versales; 2
+  `\subsection` I.1. grande, negrita y raya; 3 `\subsubsection` I.1.1.
+  negrita; 4 `\paragraph` negrita cursiva (bloques a)-e) de un modelo); 5
+  `\subparagraph` cursiva (i), ii)…). Cada nivel, más sangrado y nunca más
+  destacado que el de arriba. Dos títulos seguidos no suman su espacio (el
+  segundo va casi pegado) y nunca hay salto de página entre ellos.
+- **Nada de indicaciones de pizarra ni de vídeo en el tema** (Víctor,
+  11/11/2026, 4.ª tanda): ni «En la pizarra, bajo la ecuación de Euler: …»,
+  «(caja siguiente)», «(ver caja)», «es la columna que se ha ido llenando en la
+  pizarra», «se deja en la pizarra», «se tacha el 110 y se escribe el 90»,
+  tampoco en las cajas (`notaopositor`, `anotaciones`), que salen en el PDF.
+  Eso va solo a «Instrucciones para el vídeo» de `revision.md`. Las tablas
+  resumen se mantienen, con fines ilustrativos, sin ese comentario.
+  `verificar-tema.py` da error si queda «pizarra», «caja siguiente», «(ver
+  caja)», «se tacha» o «en el vídeo» en el `.tex` (en la guía 1D01, solo aviso).
+- **Notación del bloque de crecimiento** (3.A.43-3.A.45 y donde aparezca;
+  Víctor, 11/11/2026): minúscula con virgulilla ($\tilde k$, $\tilde y$,
+  $\tilde c$) para los valores por unidad eficiente de trabajo y minúscula sin
+  virgulilla ($k$, $y$, $c$) para los valores per cápita. Siempre.
+- **Coste del capital**: $r$ (no $c_K$) cuando sea el coste de uso del
+  capital y no lleve a confusión (Víctor, 11/11/2026).
 - **Recuadros grises** (`anotaciones` o una `tcolorbox` gris) para
   definiciones de apoyo y resultados técnicos que se consultan (p. ej.,
   funciones homogéneas y homotéticas).
@@ -194,6 +239,49 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   tema se canta solo**: se puede remitir con `\vertema{}`, pero **nunca** se
   dice en el texto que algo «se ha estudiado / visto / desarrollado en el
   tema …»; se cuenta lo necesario (aunque sea resumido) y se remite.
+- **Remisiones al margen de la frase** (Víctor, 9/11/2026): `\vertema{}` va
+  **detrás** de la idea a la que remite, como un enlace añadido, y la frase
+  tiene que leerse entera sin él. Nunca forma parte de la gramática de la
+  frase: ni «el desarrollo está en \vertema{3.A.5}», ni «véase / como en /
+  según \vertema{…}», ni «(\vertema{…})» como complemento. Bien: «La
+  metodología de \autor{Friedman} (1953) defiende juzgar un modelo por sus
+  predicciones \vertema{3.A.5}».
+- **Ningún gráfico ni tabla cita otro tema como fuente** (Víctor, 9/11/2026):
+  la fuente es la obra o el dato original (o «elaboración propia»); si el
+  gráfico se repite en otro tema, se dice en el texto con una remisión, no en
+  `\fuente{}`.
+- **Viñetas que se entienden solas** (Víctor, 9/11/2026, regla transversal):
+  cada viñeta tiene que poder leerse y entenderse por sí misma (sujeto y
+  verbo, sin depender de la de arriba), para que sea fácil de memorizar y,
+  a la vez, de leer y de seguir.
+- **Patrones visibles** (Víctor, 9/11/2026): lo que se repite en el tema, en
+  el bloque o en todo el temario (los bloques de la introducción y de la
+  conclusión, los de cada autor en los temas de pensamiento —«Contexto,
+  método y obra», «Lugar en la escuela», «Líneas de investigación»,
+  «Recomendaciones de política económica»—, los a)-e) de un modelo) se
+  escribe siempre igual: **el rótulo solo en su línea** y el desarrollo en
+  viñetas indentadas debajo, para que el opositor detecte el patrón. Los
+  bloques de cada autor son títulos de un nivel inferior al del autor
+  (`\paragraph`), salvo que del autor se hable poco (entonces, viñetas).
+- **Esquema del tema** (caja `esquema` al final de la introducción; Víctor,
+  9/11/2026, 2.ª tanda): **un título por línea** (nunca dos subapartados en
+  la misma línea con `\quad`) y los minutos orientativos de cada parte, a la
+  derecha y en gris, con `\esqtiempo{…}` solo en la línea de la introducción,
+  de cada apartado de primer nivel y de la conclusión
+  (`I. Título\esqtiempo{11}\\`). Son los mismos que los `\minutos` del cuerpo
+  (verificar-tema.py lo comprueba); si cambian los minutos o la estructura, se
+  cambia también el esquema. **Cada línea enlaza con su apartado** (Víctor,
+  11/11/2026) en el PDF, la web y el Word sin escribir nada: al construir,
+  `comun.enlazar_esquema` (construir-tema.py) enlaza cada línea por su orden
+  (I., II.…; 1., 2.… sangrados con `\hspace*{1.5em}` bajo cada uno, que son
+  sus `\subsection` en orden; Introducción y Conclusión por su nombre) o por
+  el `\ref{sec:…}` con que empiece. Por eso el número de cada línea tiene que
+  ser el orden real del apartado; `verificar-tema.py` avisa de las líneas que
+  no encuentran destino.
+- **Cajas grises para lo que no se canta** (Víctor, 9/11/2026): datos de
+  tablas que es imposible memorizar pero ayudan a entender, anécdotas
+  biográficas, desarrollos largos y material complementario van en un
+  recuadro gris (`anotaciones`), breve y en viñetas, sin perder información.
 - Las notas al pie salen **siempre al pie de la página** (`footmisc` con
   `bottom`), aunque la página tenga hueco.
 - En las tablas con celdas sombreadas (`\cellcolor`, como las matrices de
@@ -347,6 +435,19 @@ el texto original y lo que se hizo.
   dato cita una entrada del `.bib` del tema. Para fuentes en línea: autor institucional, título, año,
   `url` y `urldate` (fecha de consulta). Gráficos y tablas con `\fuente{…}`.
 - Se respetan las citas que ya hay en el tema (bibliografía, notas al pie).
+- **Los enlaces del tema original se conservan** (Víctor, 9/11/2026): apuntes,
+  documentos, vídeos o páginas que el original enlazaba siguen enlazados, con
+  una cita mejor para llegar a ellos con un clic (entrada del `.bib` con `url`
+  y `urldate`, o `\href{url}{título}` en una nota o en la caja). Solo se
+  quitan los de quia.com, los `file:///` y los que no funcionan (se busca
+  antes la dirección nueva y, si no hay, se anota en `revision.md`).
+- **Datos que caducan** (Víctor, 9/11/2026): toda cifra que cambia cuando se
+  publica un dato nuevo (series del INE, Eurostat, BCE, FMI…; encuesta trienal
+  del BIS; presupuestos de la UE y PGE; MFP; aranceles de la OMC; rankings)
+  se anota en `D/datos-actualizables.yaml` (formato y uso en la skill
+  `/actualizartemario`) con su texto literal, fuente, serie y periodicidad,
+  también las de gráficos de datos (`D/datos/*.csv`) y fichas. Al escribir o
+  cambiar un dato, se actualiza su entrada.
   Si una cita antigua no se puede comprobar, se anota en el informe.
 
 ## 5. Temas de otros preparadores y de Manuel
@@ -492,6 +593,15 @@ el texto original y lo que se hizo.
      también es gris (o transparente), nunca una caja blanca encima.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las
   capturas de tablas se convierten en tablas LaTeX.
+- **Gráficos e imágenes, con numeración propia** (Víctor, 11/11/2026, 4.ª
+  tanda). **Gráfico n** (`figure`, `figuracaja`, `\label{fig:…}`, «gráfico~\ref{fig:…}»):
+  todo lo dibujado (TikZ, pgfplots, infografías propias: un `graficos/x.pdf`
+  que sale de `graficos/x.tex`). **Imagen n** (`\begin{imagen}`, `imagencaja`,
+  `\label{img:…}`, «imagen~\ref{img:…}»): solo los ficheros pegados tal cual
+  (jpg, png o un pdf sin `.tex` fuente: fotos, capturas, láminas, figuras de
+  otros). Mismo `\caption`, `\grafico` y `\fuente`. `verificar-tema.py` da
+  error si un fichero sin `.tex` va en `figure` (o al revés) o si el texto
+  dice «gráfico» de una imagen.
 - Si un gráfico o una tabla pertenecen a una caja (anotaciones, ejemplo…),
   van dentro de ella (Víctor, 18/10/2026): con `figuracaja` o `tablacaja` de
   `tcee.sty` en lugar de `figure`/`table` (mismo `\caption`, `\label` y

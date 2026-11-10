@@ -1,0 +1,82 @@
+tema: 3B05
+fecha_inventario: 2026-11-09
+datos:
+  - id: comercio-mundial-valor
+    texto: "el comercio mundial de bienes y servicios alcanzó 34,65 billones de dólares en 2025"
+    texto_repaso: "34,65 billones \\$"
+    donde: [3B05.tex, repaso/3B05-repaso.tex]
+    valor: 34.65
+    unidad: billones de USD (exportaciones de bienes y servicios)
+    periodo: "2025"
+    fuente: OMC2026Perspectivas
+    organismo: OMC
+    serie: "Global Trade Outlook and Statistics, exportaciones mundiales de bienes y servicios comerciales"
+    url: https://www.wto.org/spanish/res_s/booksp_s/trade_outlook26_s.pdf
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-comercio-mundial
+    frase: "dos veces en la ficha (relevancia y cifras clave)"
+
+  - id: espana-comercio-total
+    texto: "En 2025 España exportó mercancías por 387.092 millones de euros e importó por 444.146 millones, con un déficit de 57.055 millones y una tasa de cobertura del 87,2~\\%; la Unión Europea recibió el 61,8~\\% de las exportaciones"
+    texto_repaso: "exportaciones \\textbf{387.092 M€}"
+    donde: [3B05.tex, repaso/3B05-repaso.tex]
+    valor: 387092
+    unidad: millones de euros
+    periodo: "2025 (provisional)"
+    fuente: MINECO2026InformeDic2025
+    organismo: Ministerio de Economía, Comercio y Empresa (Secretaría de Estado de Comercio)
+    serie: "Informe mensual de comercio exterior, diciembre (acumulado anual)"
+    url: https://comercio.gob.es/ImportacionExportacion/Informes_Estadisticas/Historico_Informes/Mensuales/2025/2025-12_Informe_Mensual_Comercio_Exterior.pdf
+    periodicidad: anual (informe de diciembre)
+    proxima: 2027-02
+    familia: mineco-comex-anual
+
+  - id: espana-comercio-sectores
+    texto: "Por secciones de la CUCI (gráfico~\\ref{fig:comercio-sectores-espana}), la maquinaria y el material de transporte (29,1~\\%), los alimentos (15,9~\\%) y los productos químicos (15,7~\\%) encabezan las exportaciones"
+    texto_repaso: "Déficit en combustibles (CUCI 3) \\textbf{28.562 M€}"
+    donde: [3B05.tex, repaso/3B05-repaso.tex]
+    unidad: "% del total y millones de euros (saldos por sección)"
+    periodo: "2025 (provisional)"
+    fuente: Datacomex2026
+    organismo: Secretaría de Estado de Comercio (DataComex, con datos de la AEAT)
+    serie: "exportaciones e importaciones por secciones de la CUCI (primer dígito), enero-diciembre; consulta al servidor SQL del ministerio (base CMX.TH_DEFINITIVOS_PROVISIONALES) el 10/11/2026"
+    url: https://datacomex.comercio.es/
+    periodicidad: anual
+    proxima: 2027-02
+    familia: datacomex-cuci-anual
+    depende: [datos/comercio-sectores-espana.csv, graficos/comercio-sectores-espana.tex]
+    frase: "saldos de la misma frase (14.764, 5.736, −28.562, −27.601, −21.312 millones), el enganche de la introducción («los combustibles (sección~3 de la CUCI) le dejaron un déficit comercial de 28.562 millones de euros») y la ficha («déficit en combustibles (CUCI 3) de 28.562 M€» y «superávit en alimentos (CUCI 0) 14.764 M€»). Clasificación CUCI siempre, nunca SEC (Víctor, 10/11/2026)"
+
+  - id: vcr-espana-secciones
+    texto: "la mayor ventaja está en los aceites y grasas (3,65) y los alimentos (2,15), y la mayor desventaja en los combustibles (0,52)"
+    texto_repaso: "aceites y grasas \\textbf{3,65}"
+    donde: [3B05.tex, repaso/3B05-repaso.tex]
+    unidad: índice de ventaja comparativa revelada (Balassa)
+    periodo: "2024"
+    fuente: UNComtrade2026
+    organismo: Naciones Unidas (UN Comtrade)
+    serie: "exportaciones de bienes, SITC Rev. 4, España y 149 declarantes (elaboración propia)"
+    url: https://comtradeplus.un.org/
+    periodicidad: anual
+    proxima: 2027-06
+    familia: comtrade-vcr
+    depende: [datos/vcr-secciones-cuci-espana.csv, graficos/vcr-secciones-cuci-espana.tex]
+    frase: "también en la apertura (l. 15: «más de 3 veces y media», nota con 2,1 % y 0,6 % y «un índice de 3,65») y en la ficha («3,65 veces»)"
+    nota: "es probable que ya haya datos de 2025 casi completos en Comtrade"
+
+  - id: vcr-espana-intensidad
+    texto: "en las manufacturas intensivas en trabajo y recursos naturales (1,44)"
+    texto_repaso: "intensivas en trabajo y recursos \\textbf{1,44}, tecnología media \\textbf{1,12}, alta \\dato{0,67}"
+    donde: [3B05.tex, repaso/3B05-repaso.tex]
+    unidad: índice de ventaja comparativa revelada por intensidad factorial
+    periodo: "2024"
+    fuente: UNCTAD2026RCA
+    organismo: UNCTAD y UN Comtrade
+    serie: "UNCTADstat US.RCA y clasificación por intensidad factorial (SITC Rev. 3)"
+    url: https://unctadstat.unctad.org/datacentre/dataviewer/US.RCA
+    periodicidad: anual
+    proxima: 2027-06
+    familia: comtrade-vcr
+    depende: [datos/vcr-intensidad-factorial-espana.csv]
+    frase: "la misma frase sigue con tecnología media (1,12) y alta (0,67); caption «2024»"

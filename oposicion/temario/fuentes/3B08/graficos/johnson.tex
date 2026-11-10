@@ -1,0 +1,48 @@
+% Guerra arancelaria (Johnson, 1953): estado final. Curvas de oferta neta con
+% la notación del 3.B.5: X la exporta A (la importa B), Y la exporta B.
+% Caso simétrico (para que se vea la idea, no un caso general):
+%   ON_B: Y = g(X), ON_A: X = g(Y), con g(t) = 6t/(1+t) - 0,15t (cóncava,
+%         con tramo inelástico al final)
+%   E_0: g(t) = t -> t = 4,217; RRI_0 = p_X/p_Y = 1 (la bisectriz)
+%   Con aranceles, las 2 curvas se contraen: ON_B': Y = 0,6 g(X);
+%         ON_A': X = 0,6 g(Y)
+%   E_N: 0,6 g(t) = t -> t = 2,303 (menos comercio, pero no nulo)
+%   Pendiente de ON_B' en E_N: 0,6 (6/(1+t)^2 - 0,15) = 0,240
+%   CIC_A: Y = Y_N + 0,24 (X - X_N) + 0,13 (X - X_N)^2, convexa, tangente a
+%          ON_B' en E_N y por encima de ella (A prefiere más Y y menos X)
+%   CIC_B: X = X_N + 0,24 (Y - Y_N) + 0,13 (Y - Y_N)^2, simétrica, tangente a
+%          ON_A' en E_N
+%   Al ser simétrico, la relación real de intercambio no cambia y los 2
+%   países pierden frente a E_0.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={g(\t)=6*\t/(1+\t)-0.15*\t;}]
+  % 1: ejes X e Y
+  \capa{1}{\ejes{$X$}{$Y$}{7.2}{6.8}}
+  \capa{1}{\node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (7.25,0) {exportación de $A$\\importación de $B$};}
+  \capa{1}{\node[etiqueta,font=\footnotesize,align=right,anchor=south east] at (-0.15,6.8) {importación de $A$\\exportación de $B$};}
+  % 2: curvas de oferta neta de libre comercio, E_0 y la RRI de libre comercio
+  \capa{2}{\draw[thick,tceemorado!55] plot[domain=0:6.6,samples=80] ({g(\x)},\x) node[etiqueta,above,text=tceemorado] {$\mathrm{ON}_A$};}
+  \capa{2}{\draw[thick,tceeazul!55] plot[domain=0:6.9,samples=80] (\x,{g(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{ON}_B$};}
+  \capa{2}{\draw[guia,tceeverde] (0,0) -- (5.6,5.6) node[etiqueta,above right=-2pt,text=tceeverde] {$\mathrm{RRI}_0=\frac{p_X}{p_Y}$};}
+  \capa{2}{\node[punto,label={[etiqueta]right=2pt:$E_0$}] (E0) at (4.217,4.217) {};}
+  \capa{2}{\proyeccion{(E0)}{$X_0$}{$Y_0$}}
+  % 3: ON_A' contraída por el arancel de A
+  \capa{3}{\draw[curvanueva] plot[domain=0:6.6,samples=80] ({0.6*g(\x)},\x) node[etiqueta,above,text=tceerojo] {$\mathrm{ON}_A'$};}
+  \capa{3}{\draw[->,thin,tceegris] ({g(5.5)-0.12},5.5) -- ({0.6*g(5.5)+0.15},5.5);}
+  % 4: ON_B' contraída por el arancel de B
+  \capa{4}{\draw[curvanueva,desplazada] plot[domain=0:6.9,samples=80] (\x,{0.6*g(\x)}) node[etiqueta,right,text=tceerojo] {$\mathrm{ON}_B'$};}
+  \capa{4}{\draw[->,thin,tceegris] (5.5,{g(5.5)-0.12}) -- (5.5,{0.6*g(5.5)+0.15});}
+  % 5: equilibrio de Nash en aranceles y las 2 curvas de indiferencia comercial
+  \capa{5}{\draw[thick,tceemorado] plot[domain=-1.5:1.2,samples=40] ({2.303+\x},{2.303+0.24*\x+0.13*\x*\x});}
+  \capa{5}{\draw[thin,tceemorado] (3.56,2.81) -- (4.5,3.15) node[etiqueta,anchor=west,text=tceemorado] {$\mathrm{CIC}_A$};}
+  \capa{5}{\draw[thick,tceeazul] plot[domain=-1.5:1.2,samples=40] ({2.303+0.24*\x+0.13*\x*\x},{2.303+\x});}
+  \capa{5}{\draw[thin,tceeazul] (2.81,3.56) -- (3.05,4.5) node[etiqueta,anchor=south,text=tceeazul] {$\mathrm{CIC}_B$};}
+  \capa{5}{\node[punto,label={[etiqueta]below right=1pt and 0pt:$E_N$}] (EN) at (2.303,2.303) {};}
+  \capa{5}{\proyeccion{(EN)}{$X_N$}{$Y_N$}}
+  \capa{5}{\draw[thin] (EN) ++(0.25,-0.5) -- (4.4,0.95) node[etiqueta,font=\footnotesize,align=left,anchor=west] {equilibrio de Nash en aranceles:\\menos comercio que en $E_0$};}
+\end{tikzpicture}
+\end{document}

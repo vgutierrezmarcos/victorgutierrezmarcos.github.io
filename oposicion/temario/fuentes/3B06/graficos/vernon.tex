@@ -1,0 +1,61 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Ciclo del producto de Vernon (1966): producción (continuo) y consumo
+% (discontinuo) en 3 paneles con el mismo eje de tiempo (0 a 9):
+% introducción [0, 3], madurez [3, 6] y estandarización [6, 9].
+% Sombreado verde donde la producción supera al consumo (exportaciones) y
+% dorado donde es menor (importaciones), con recortes entre las 2 curvas.
+\begin{tikzpicture}[tcee,
+    declare function={
+      pos(\s,\a)=max(\s-\a,0);
+      % país innovador: produce desde 0,5, consume algo más despacio
+      Pa(\s)=2.6*(1-exp(-0.7*pos(\s,0.5)))*(1-0.75/(1+exp(min(-1.3*(\s-6.5),9))));
+      Ca(\s)=1.9*(1-exp(-0.4*pos(\s,0.5)));
+      % otros desarrollados: la demanda llega en 1,5 y la producción en 3
+      Pb(\s)=2.2*(1-exp(-0.6*pos(\s,3)))*(1-0.7/(1+exp(min(-1.5*(\s-7.5),9))));
+      Cb(\s)=1.7*(1-exp(-0.4*pos(\s,1.5)));
+      % en desarrollo: la demanda llega en 3 y la producción en 5
+      Pc(\s)=2.4*(1-exp(-0.5*pos(\s,5)));
+      Cc(\s)=1.2*(1-exp(-0.35*pos(\s,3)));
+    },
+    expo/.style={fill=tceeverde,fill opacity=0.3,draw=none},
+    impo/.style={fill=tceedorado,fill opacity=0.35,draw=none}]
+  % 1: ejes de los 3 paneles, etapas y rótulos
+  \foreach \y/\titulo in {7.2/país innovador,3.6/otros países desarrollados,0/países en desarrollo}{
+    \capa{1}{\begin{scope}[yshift=\y cm]
+      \draw[eje] (0,0) -- (9.6,0) node[below left=2pt and 0pt] {$t$};
+      \draw[eje] (0,0) -- (0,2.9);
+      \node[etiqueta,right,font=\small\bfseries] at (0.1,2.8) {\titulo};
+    \end{scope}}
+  }
+  \capa{1}{\draw[guia] (3,-0.2) -- (3,10.3);}
+  \capa{1}{\draw[guia] (6,-0.2) -- (6,10.3);}
+  \capa{1}{\node[etiqueta,align=center] at (1.5,10.5) {introducción};}
+  \capa{1}{\node[etiqueta,align=center] at (4.5,10.5) {madurez};}
+  \capa{1}{\node[etiqueta,align=center] at (7.5,10.5) {estandarización};}
+  \capa{1}{\draw[curva1] (6.6,-0.7) -- (7.2,-0.7) node[etiqueta,right,black] {producción};}
+  \capa{1}{\draw[curva1,desplazada] (6.6,-1.1) -- (7.2,-1.1) node[etiqueta,right,black] {consumo};}
+  \capa{1}{\fill[expo] (3.0,-0.85) rectangle (3.5,-0.55);}
+  \capa{1}{\node[etiqueta,right] at (3.5,-0.7) {exportaciones};}
+  \capa{1}{\fill[impo] (3.0,-1.25) rectangle (3.5,-0.95);}
+  \capa{1}{\node[etiqueta,right] at (3.5,-1.1) {importaciones};}
+  % 2, 3 y 4: un panel cada uno (sombreados, producción y consumo)
+  \foreach \n/\y/\P/\C/\ini/\inip in {2/7.2/Pa/Ca/0.5/0.5,3/3.6/Pb/Cb/1.5/3,4/0/Pc/Cc/3/5}{
+    \capa{\n}{\begin{scope}[yshift=\y cm]
+      % exportaciones: por debajo de la producción y por encima del consumo
+      \begin{scope}
+        \clip plot[domain=0:9,samples=90] (\x,{\P(\x)}) -- (9,-0.1) -- (0,-0.1) -- cycle;
+        \fill[expo] plot[domain=0:9,samples=90] (\x,{\C(\x)}) -- (9,3) -- (0,3) -- cycle;
+      \end{scope}
+      % importaciones: por debajo del consumo y por encima de la producción
+      \begin{scope}
+        \clip plot[domain=0:9,samples=90] (\x,{\C(\x)}) -- (9,-0.1) -- (0,-0.1) -- cycle;
+        \fill[impo] plot[domain=0:9,samples=90] (\x,{\P(\x)}) -- (9,3) -- (0,3) -- cycle;
+      \end{scope}
+      \draw[curva1] plot[domain=\inip:9,samples=90] (\x,{\P(\x)});
+      \draw[curva1,desplazada] plot[domain=\ini:9,samples=80] (\x,{\C(\x)});
+    \end{scope}}
+  }
+\end{tikzpicture}
+\end{document}

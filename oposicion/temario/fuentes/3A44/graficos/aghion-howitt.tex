@@ -18,7 +18,9 @@
     titulo/.style={font=\small\bfseries,anchor=south west},
     llave/.style={decorate,decoration={brace,amplitude=4pt},thick,black}]
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
-  \path (-1.3,-0.75) rectangle (17.6,5.3);
+  % (el paso 1 del PDF lo recorta al panel (a): \tceeancho)
+  \providecommand{\tceeancho}{17.6}
+  \path (-1.3,-0.75) rectangle (\tceeancho,5.3);
   % 1: panel (a): ejes
   \capa{1}{\node[titulo,text depth=0.25ex] at (-1.2,4.85) {(a) Arbitraje de la investigación};
     \ejes{$L_I$}{}{7.0}{4.6}

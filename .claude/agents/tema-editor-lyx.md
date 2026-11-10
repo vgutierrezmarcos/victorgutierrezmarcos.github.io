@@ -63,6 +63,41 @@ sencillo y solo las órdenes de `tcee.sty`):
 - Cada modelo con sus bloques a) Idea, b) Modelo (i Supuestos, ii Desarrollo,
   iii Implicaciones), c) Extensiones, d) Evidencia, e) Valoración: a), b)…
   con `\paragraph`, i), ii)… con `\subparagraph`, letras seguidas.
+- **Reglas del 9/11/2026** (CRITERIOS §2): nombres de persona enteros en
+  versalitas (`\autor{John Stuart Mill}`); `\vertema{}` al margen de la frase
+  (nunca «el desarrollo está en \vertema{…}»); ninguna `\fuente{}` con otro
+  tema; en introducción y conclusión, el rótulo solo en su línea y el texto en
+  viñetas indentadas; viñetas que se entienden solas; rótulos repetidos con el
+  mismo formato; cajas grises para lo que no se canta. verificar-tema.py lo
+  comprueba.
+- **Esquema del tema y enlaces** (CRITERIOS §2 y §4, 9/11/2026): en la caja
+  `esquema`, un título por línea y `\esqtiempo{…}` (los mismos minutos que
+  `\minutos`) en la introducción, cada apartado y la conclusión; los enlaces
+  del tema original se conservan con una cita que lleve a ellos; cada dato que
+  caduca va a `D/datos-actualizables.yaml`.
+- **Reglas del 11/11/2026** (CRITERIOS §2 y §7, 4.ª tanda):
+  - **Nada de pizarra ni vídeo en el texto** (tampoco en `notaopositor` ni
+    `anotaciones`, que salen en el PDF): fuera «en la pizarra…», «(caja
+    siguiente)», «(ver caja)», «se deja en la pizarra», «se tacha el 110…»;
+    eso va a «Instrucciones para el vídeo» de `revision.md`. Las tablas
+    resumen se quedan, sin ese comentario. verificar-tema.py da error.
+  - **Títulos en las menos líneas posibles** (ideal, una): si necesitan dos o
+    más, revisa uno a uno dónde cortar (tras «:», «;», «?», antes de una
+    conjunción; nunca una palabra sola) y márcalo con `\cortetitulo`
+    (`\subsection{Los hechos:\cortetitulo ¿los reproduce el modelo?}`); en la
+    web y en Word es un espacio. verificar-tema.py avisa de los largos con «:».
+  - **Gráfico o imagen**: lo dibujado (TikZ, pgfplots, infografías: hay
+    `graficos/x.tex`) va en `figure` con `\label{fig:…}` y se cita
+    «gráfico~\ref{fig:…}»; un fichero pegado tal cual (jpg, png, pdf sin
+    `.tex`: fotos, capturas, láminas) va en `\begin{imagen}…\end{imagen}` (o
+    `imagencaja` dentro de una caja) con `\label{img:…}` y se cita
+    «imagen~\ref{img:…}». Cada tipo tiene su numeración.
+  - **El esquema enlaza solo**: cada línea lleva al apartado del mismo orden
+    (I., II.…; «1.», «2.» sangrados = sus `\subsection` en orden), así que el
+    número de cada línea es el orden real; no escribas `\hyperref` en él.
+  - Bloque de crecimiento: $\tilde k$, $\tilde y$, $\tilde c$ por unidad
+    eficiente de trabajo; $k$, $y$, $c$ per cápita. Coste de uso del capital:
+    $r$ (no $c_K$) si no confunde.
 - **Toda remisión es un enlace** (CRITERIOS §6): `\vertema{3.A.12}` para otros
   temas y `\ref{…}`/`\eqref{…}` para apartados, anexos, gráficos, tablas y
   ecuaciones; nunca «(II.3)», «apartado~I.2», «bloque~III» o «anexo~B» a mano.
@@ -99,7 +134,10 @@ sencillo y solo las órdenes de `tcee.sty`):
   cópialas de `_trabajo/media/` a `D/graficos/` con un nombre descriptivo.
   Las tablas van en LaTeX (`tabular` con `booktabs`) dentro de `table`. Un
   gráfico o una tabla dentro de una caja (anotaciones, ideaclave…) va en
-  `figuracaja`/`tablacaja`, no en `figure`/`table` (CRITERIOS §7).
+  `figuracaja`/`tablacaja`, no en `figure`/`table` (CRITERIOS §7). Una
+  foto, captura o lámina (jpg/png, pdf sin `.tex`) no es un gráfico: va en
+  `\begin{imagen}[H]` con `\label{img:<nombre>}` («Imagen n», numeración
+  aparte; `imagencaja` dentro de una caja).
 - **Nada privado**: ni comentarios internos, ni texto oculto, ni referencias
   a clases o grabaciones, ni marcas ⟦…⟧, ni «TODO».
 

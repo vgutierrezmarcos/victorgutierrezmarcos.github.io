@@ -1,0 +1,45 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Concentración de la exportación de bienes en los mayores exportadores en 12 países
+% europeos, 2024: cuota de las 10, 100 y 1.000 mayores empresas (%), de menor a mayor
+% cuota de las 1.000 primeras. Eurostat, TEC (ext_tec02); CSV en
+% ../datos/concentracion-exportadoras-ue.csv. España resaltada (dicespana).
+% Capas (CRITERIOS §7): barras -> ejes -> valores.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/concentracion-exportadoras-ue.csv}\ue
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11cm, height=9cm, xbar, bar width=3.2pt, 
+      xmin=0, xmax=104, ymin=-0.6, ymax=11.6,
+      ytick={0,...,11}, yticklabels from table={\ue}{pais},
+      yticklabel style={font=\footnotesize},
+      xtick={0,20,...,100}, xticklabel style={font=\footnotesize},
+      xlabel={\% del valor exportado}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      y axis line style={draw=none}, ytick style={draw=none},
+      xmajorgrids, grid style={tceegris!25},
+      legend style={at={(0.99,0.02)}, anchor=south east, draw=none, font=\footnotesize},
+      legend cell align=left, area legend, reverse legend, dicapas,
+    ]
+    % 1: barras (1.000, 100 y 10 primeras)
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=dicze, bar shift=-3.4pt] table[x=top1000, y expr=\coordindex] {\ue};
+      \addlegendentry{1.000 primeras}
+      \addplot[on layer=dicbarras, dicbarra=dicexterna, bar shift=0pt] table[x=top100, y expr=\coordindex] {\ue};
+      \addlegendentry{100 primeras}
+      \addplot[on layer=dicbarras, dicbarra=dicotroclaro, bar shift=3.4pt] table[x=top10, y expr=\coordindex] {\ue};
+      \addlegendentry{10 primeras}
+    }
+    % 2: España resaltada
+    \capa{2}{\dicsombra[fill=dicespana, fill opacity=0.12]{0}{2.5}{104}{3.5}}
+    % 3: valor de las 1.000 primeras
+    \capa{3}{
+      \addplot[on layer=axis descriptions, xbar, draw=none, fill=none, bar shift=-3.4pt, forget plot,
+        nodes near coords, nodes near coords style={font=\scriptsize, text=dicze, inner sep=1.5pt,
+        /pgf/number format/use comma, /pgf/number format/fixed, /pgf/number format/precision=1}]
+        table[x=top1000, y expr=\coordindex] {\ue};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

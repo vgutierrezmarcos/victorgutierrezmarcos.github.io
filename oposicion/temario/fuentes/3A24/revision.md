@@ -177,6 +177,12 @@ Estado de las propuestas:
 - `buchanan-tullock-mayoria-optima`, `paradoja-condorcet`, `votante-mediano` y `curva-lorenz` ya tienen gráfico de referencia en `3A24/graficos/` (cuando se dibujen);
 - `mapa.yaml`: modelos sin ficha (`fbs-utilitarista`, `juego-ultimatum`, `logrolling`), y en `faltan`, Gibbard-Satterthwaite debe remitir al 3.A.14, no al 3.A.13.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 12 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de títulos → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 1. **Orden de los bloques** (D1, A24-01): [decidido por Víctor, 23/10/2026] se mantiene el del original (I Arrow, II FBS, III axiomas), con la razón en la «Estructura».
@@ -196,6 +202,19 @@ Estado de las propuestas:
    - Gravelle y Rees (2004), cap. 13, pp. 289-290, en los juicios de valor del anexo A.
 6. **Ejemplo de los vecinos** (D8): ¿te convence como hilo del bloque III?
 7. Control de calidad, segunda pasada (22/10/2026): las 10 correcciones están bien en el PDF y en el HTML, `verificar-tema.py` da 0 errores y los párrafos reescritos no comparten con Cerezal ni con el original ninguna secuencia de 7 palabras. Queda 1 incidencia: en el HTML y en el Word, Condorcet sale en el texto como «Condorcet, Marie-Jean-Antoine-Nicolas de Caritat, marqués de (1785)» (4 veces), porque pandoc no lee `shortauthor`. En el PDF sale bien. [hecho, 22/10/2026] En el `.bib`, el autor va ahora como persona (`Condorcet, Marie-Jean-Antoine-Nicolas de Caritat`, sin `shortauthor`): sale «Condorcet (1785)» en el PDF, el HTML y el Word.
+
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A24.tex` y `3A24.bib` (CRITERIOS §4).
+
+- **Restaurados** (4):
+  - Wikipedia, «Ofelimidad» (nota sobre Pareto): nota al pie nueva en el criterio de Pareto de la introducción.
+  - Wikipedia, «May's theorem» (comentario del original): nota al pie en el resultado del teorema de May.
+  - PhilArchive, Nebel (2022) (el original lo atribuía a d'Aspremont y Gevers, 2002): la entrada `Nebel2022Aggregation` ya existía pero no se citaba; se le añade `url` y se cita en una nota nueva tras la tabla de bases informativas.
+  - Policonomics, «Economía del bienestar I: equilibrio general» (fuente del gráfico de la GFPU): `PoliconomicsBienestarEG` en el `\fuente` de `fig:fbs-gfpu-tradeoff`. **Policonomics da error en todo el sitio** (HTTP 500, 9/11/2026): se enlaza la copia de Internet Archive.
+- **Ya estaban**: Morreau, «Arrow's Theorem» (SEP): el tema enlaza la edición de invierno de 2025, que sustituye a la de 2019 y a la dirección sin edición del original.
+- **Descartados**: el enlace a quia.com (CRITERIOS §4).
+- **Para Víctor**: si Policonomics vuelve, cambiar la `url` por la original.
 
 ## Instrucciones para el vídeo
 
@@ -222,6 +241,7 @@ Estado de las propuestas:
   - **III.2.4**: boceto de `buchanan-tullock` (unos 20″; si falta tiempo, de palabra). Las mayorías de la Ley de Propiedad Horizontal, como apoyo.
   - **III.3**: el enunciado de Gibbard-Satterthwaite como apoyo; sus 2 salidas, dichas.
 - **Anexos**: no se cantan.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Correcciones del control de calidad (22/10/2026)
 

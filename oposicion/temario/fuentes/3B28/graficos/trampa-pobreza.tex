@@ -15,19 +15,19 @@
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
   \path (-1.0,-1.0) rectangle (10.4,5.2);
   % 1: ejes
-  \capa{1}{\ejes{$k$}{$\gamma_k$}{8.8}{5.0}}
+  \capa{1}{\ejes{$\tilde k$}{$\gamma_{\tilde k}$}{8.8}{5.0}}
   % 2: s f(k)/k en forma de N
   \capa{2}{\draw[curva1] plot[domain=0.3265:8.2,samples=150,smooth] (\x,{g(\x)})
-      node[etiqueta,right,text=tceemorado] {$s\,f(k)/k$};}
+      node[etiqueta,right,text=tceemorado] {$s\,f(\tilde k)/\tilde k$};}
   % 3: n+g+delta
   \capa{3}{\draw[curva3] (0,1.8) node[left,text=black] {$n+g+\delta$} -- (8.2,1.8);}
   % 4: los 3 estados estacionarios y sus proyecciones
   \capa{4}{\node[punto] (B) at (1.2529,1.8) {};
     \node[punto,fill=white,draw=black] (U) at (4.0049,1.8) {};
     \node[punto] (A) at (6.4790,1.8) {};
-    \draw[guia] (B) -- (1.2529,0) node[below,text=black] {$k_B$};
-    \draw[guia] (U) -- (4.0049,0) node[below,text=black] {$k_U$};
-    \draw[guia] (A) -- (6.4790,0) node[below,text=black] {$k_A$};
+    \draw[guia] (B) -- (1.2529,0) node[below,text=black] {$\tilde k_B$};
+    \draw[guia] (U) -- (4.0049,0) node[below,text=black] {$\tilde k_U$};
+    \draw[guia] (A) -- (6.4790,0) node[below,text=black] {$\tilde k_A$};
     \node[etiqueta,font=\footnotesize,text=tceegris,anchor=base] at (1.2529,-0.85) {trampa};
     \node[etiqueta,font=\footnotesize,text=tceegris,anchor=base] at (4.0049,-0.85) {umbral};}
   % 5: dinámica en el eje: hacia k_B y k_A, lejos de k_U

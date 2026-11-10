@@ -1,0 +1,94 @@
+% Hoja de esquema 3: el mercado de dinero y la demanda agregada, neoclásicos
+% frente a Keynes. Mismo formato que hoja-trabajo y hoja-bienes.
+% Neoclásicos: teoría cuantitativa en el plano (Y, P): OA vertical en Y_F = 3,6
+%   y la demanda P = M V / Y (hipérbolas: M V = 5,4 -> P_0 = 1,5; M V = 9 -> P_1 = 2,5).
+% Keynes: demanda de dinero i = 0,9 + 3,6 e^{-0,55 (x - 0,3)} (asíntota: la
+%   trampa de la liquidez en i = 0,9); oferta M_0/P en 1,6 (i_0 = 2,66), M_1/P
+%   en 2,6 (i_1 = 1,92) y M_2/P en 4,4 (i = 1,28, casi en la trampa).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\sube}{\mathord{\uparrow}}\newcommand{\baja}{\mathord{\downarrow}}
+\newcommand{\clave}[1]{\textcolor{tceeazul}{\textbf{#1}}}
+\begin{document}
+\begin{tikzpicture}[tcee, font=\footnotesize,
+    declare function={ld(\x)=0.9+3.6*exp(-0.55*(\x-0.3));},
+    texto/.style={anchor=north west, align=left, text width=7.7cm, inner sep=0pt,
+      execute at begin node=\hyphenpenalty 10000\relax}]
+  % Marco fijo
+  \path (-0.2,-10.1) rectangle (16.6,7.9);
+  % ======================= 1: títulos y ejes =======================
+  \capa{1}{\node[font=\large\bfseries, text=tceemorado] at (8.2,7.5) {El mercado de dinero y la demanda agregada};}
+  \capa{1}{\draw[tceedorado, thick] (0,7.05) -- (16.4,7.05);}
+  \capa{1}{\draw[tceedorado, thin] (8.2,6.8) -- (8.2,-6.8);}
+  \capa{1}{\node[font=\normalsize\bfseries] at (4.0,6.6) {Neoclásicos: la teoría cuantitativa};}
+  \capa{1}{\node[font=\normalsize\bfseries, text=tceeazul] at (12.4,6.6) {\textsc{Keynes}: la preferencia por la liquidez};}
+  \begin{scope}[shift={(1.4,0.9)}]
+    \capa{1}{\ejes{$Y$}{$P$}{5.6}{4.9}}
+  \end{scope}
+  \begin{scope}[shift={(9.8,0.9)}]
+    \capa{1}{\ejes{$M/P$}{$i$}{5.6}{4.9}}
+  \end{scope}
+  % ======================= 2: neoclásicos, gráfico =======================
+  \begin{scope}[shift={(1.4,0.9)}]
+    \capa{2}{\draw[curva4] (3.6,0) node[below, text=black] {$Y_F$} -- (3.6,4.6) node[above, etiqueta, text=tceedorado] {OA};}
+    \capa{2}{\draw[curva1] plot[domain=1.2:5.2, samples=40] (\x,{5.4/\x}) node[right, etiqueta, text=tceemorado] {$M_0V$};
+      \node[punto] at (3.6,1.5) {};
+      \draw[guia] (0,1.5) node[left, text=black] {$P_0$} -- (3.6,1.5);}
+    \capa{2}{\draw[curvanueva, desplazada] plot[domain=1.9:5.2, samples=40] (\x,{9/\x}) node[right, etiqueta, text=tceerojo] {$M_1V$};
+      \node[punto] at (3.6,2.5) {};
+      \draw[guia] (0,2.5) node[left, text=black] {$P_1$} -- (3.6,2.5);
+      \draw[flecha] (3.35,1.65) -- (3.35,2.35);
+      \node[etiqueta, text=tceerojo, font=\scriptsize, anchor=east] at (3.25,2.05) {solo $\sube P$};}
+    \capa{2}{\node[etiqueta, text=tceemorado, font=\scriptsize, anchor=west] at (4.4,3.1) {DA: $P\,Y=M\,V$};}
+  \end{scope}
+  % ======================= 3: neoclásicos, texto =======================
+  \capa{3}{\node[texto] at (0.15,-0.25) {%
+    {\small\bfseries\itshape Supuestos}\\[1pt]
+    $\bullet$ El dinero solo es medio de cambio: nadie guarda dinero ocioso.\\
+    $\bullet$ La velocidad, $V$ (o $k=1/V$), es estable: depende de hábitos de pago.\\
+    $\bullet$ La producción está en $Y_F$ y la cantidad de dinero, $M$, es exógena.\\[4pt]
+    {\small\bfseries\itshape Mecanismo}\\[1pt]
+    $M\,V=P\,Y$ (\textsc{Fisher}) o $M^D=k\,P\,Y$ (Cambridge) $\Rightarrow P=\frac{M\,V}{Y_F}$.\\
+    $\sube M\Rightarrow\sube P$ en la misma proporción.\\[4pt]
+    {\small\bfseries\itshape Conclusión}\\[1pt]
+    $\bullet$ El dinero es \textbf{neutral}: dicotomía clásica.\\
+    $\bullet$ El tipo de interés es real y lo fijan los fondos prestables, no el dinero.\\
+    $\bullet$ La demanda agregada es la hipérbola $P\,Y=M\,V$: con la OA vertical, más dinero solo sube los precios.};}
+  % ======================= 4: Keynes, gráfico =======================
+  \begin{scope}[shift={(9.8,0.9)}]
+    \capa{4}{\draw[curva1] plot[domain=0.3:5.2, samples=50] (\x,{ld(\x)}) node[right, etiqueta, text=tceemorado] {$L_1+L_2$};}
+    \capa{4}{\draw[curva2] (1.6,0) node[below, text=black] {$\frac{M_0}{P}$} -- (1.6,4.5);
+      \node[punto] at (1.6,2.66) {};
+      \draw[guia] (0,2.66) node[left, text=black] {$i_0$} -- (1.6,2.66);}
+    \capa{4}{\draw[curvanueva, desplazada] (2.6,0) node[below, text=black] {$\frac{M_1}{P}$} -- (2.6,4.5);
+      \node[punto] at (2.6,1.92) {};
+      \draw[guia] (0,1.92) node[left, text=black] {$i_1$} -- (2.6,1.92);
+      \draw[flecha] (1.7,3.6) -- (2.5,3.6);}
+    \capa{4}{\draw[curvanueva, desplazada] (4.4,0) node[below, text=black] {$\frac{M_2}{P}$} -- (4.4,3.2);
+      \draw[guia] (0,0.9) node[left, text=black] {$i_{\min}$} -- (5.3,0.9);
+      \node[etiqueta, text=tceeazul, font=\scriptsize, align=center, anchor=south] at (4.5,3.25) {\clave{trampa de}\\\clave{la liquidez}};}
+  \end{scope}
+  % ======================= 5: Keynes, texto =======================
+  \capa{5}{\node[texto] at (8.55,-0.25) {%
+    {\small\bfseries\itshape Supuestos}\\[1pt]
+    $\bullet$ El dinero es también \clave{depósito de valor}: puede atesorarse.\\
+    $\bullet$ 2 activos, dinero y bonos; $M$ exógena, la fija el banco central.\\
+    $\bullet$ Cada inversor tiene su tipo de interés «normal»: la \clave{incertidumbre} entra en el dinero.\\[4pt]
+    {\small\bfseries\itshape Mecanismo}\\[1pt]
+    \clave{Preferencia por la liquidez}: $\frac{M}{P}=k\,Y-h\,i$, por los motivos transacción, precaución y \clave{especulación} $\Rightarrow i$ es un \clave{fenómeno monetario}.\\
+    $\sube M\Rightarrow\baja i\Rightarrow\sube I\Rightarrow\sube Y$ (multiplicador).\\[4pt]
+    {\small\bfseries\itshape Conclusión}\\[1pt]
+    $\bullet$ El \clave{dinero no es neutral} a corto plazo: se rompe la dicotomía.\\
+    $\bullet$ 2 eslabones débiles: la \clave{trampa de la liquidez} ($h\to\infty$) y una inversión poco sensible al tipo ($b$ pequeño).\\
+    $\bullet$ \clave{Efecto Keynes}: $\baja P\Rightarrow\sube M/P\Rightarrow\baja i\Rightarrow\sube I$: la DA tiene pendiente negativa.};}
+  % ======================= 6: lo que cambia =======================
+  \capa{6}{\node[draw=tceedorado, fill=tceesalvia, rounded corners=3pt, line width=0.8pt,
+      anchor=north, text width=15.9cm, inner sep=6pt, align=left,
+      execute at begin node=\hyphenpenalty 10000\relax] at (8.2,-7.05) {%
+    {\small\bfseries La demanda agregada: bienes $+$ dinero}\\[2pt]
+    $\bullet$ \emph{Neoclásicos}: la DA es la ecuación cuantitativa; con la OA vertical (hoja del trabajo), la demanda solo mueve los precios.\\
+    $\bullet$ \emph{\textsc{Keynes}}: la DA sale de la \clave{demanda efectiva} (bienes) y de la \clave{preferencia por la liquidez} (dinero); con la \clave{OA creciente}, mover la demanda mueve la producción y el empleo.\\
+    $\bullet$ \emph{Implicación}: la política fiscal es la más segura; la monetaria, útil pero insegura; bajar los salarios no garantiza el pleno empleo.};}
+\end{tikzpicture}
+\end{document}

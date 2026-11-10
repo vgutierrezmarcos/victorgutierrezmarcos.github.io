@@ -1,0 +1,81 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Acuerdos comerciales regionales notificados al GATT/OMC y en vigor, por tipo,
+% 1958-2026 (a 31 de diciembre de cada año; 2026, a 5 de noviembre: parcial).
+% OMC, RTA-IS, exportación «Export all RTAs» (consulta 5/11/2026); cálculo
+% propio en ../datos/acr-en-vigor.csv (columnas alc, ua, ap, aie).
+% Paleta del bloque de comercio (gama fría, la de la demanda externa de
+% tikz-tcee): zona de libre comercio en azul marino, unión aduanera en azul
+% claro, alcance parcial en dorado y solo servicios en gris. De abajo arriba,
+% oscuro-claro-medio-gris: se distinguen también en escala de grises.
+% Capas (CRITERIOS §7): barras → ejes y rejilla → etiquetas → leyenda.
+\colorlet{acralc}{dicze}
+\colorlet{acrua}{dicexterna}
+\colorlet{acrap}{tceedorado}
+\colorlet{acraie}{dicotro}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/acr-en-vigor.csv}\acr
+% Ejes y rejilla desde la capa 2: antes, transparentes (no cambia la caja)
+\ifnum\tceepaso<2
+  \pgfplotsset{acrejes/.style={axis line style={draw=none}, major tick style={draw=none},
+    ticklabel style={opacity=0}, ylabel style={opacity=0}, ymajorgrids=false}}
+\else
+  \pgfplotsset{acrejes/.style={}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=7.5cm,
+      ybar stacked, bar width=0.7,
+      xmin=1956.8, xmax=2027.2, ymin=0, ymax=430,
+      xtick={1960,1970,...,2020}, ytick={0,100,...,400},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Número de acuerdos en vigor},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.13)}, anchor=north, legend columns=4,
+        draw=none, font=\footnotesize,
+        /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left, area legend,
+      dicapas, acrejes,
+    ]
+    % 1: barras apiladas por tipo; 2026 (parcial), con trama blanca encima
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=acralc, forget plot]
+        table[x=anio, y=alc, restrict x to domain=1958:2026] {\acr};
+      \addplot[on layer=dicbarras, dicbarra=acrua, forget plot]
+        table[x=anio, y=ua, restrict x to domain=1958:2026] {\acr};
+      \addplot[on layer=dicbarras, dicbarra=acrap, forget plot]
+        table[x=anio, y=ap, restrict x to domain=1958:2026] {\acr};
+      \addplot[on layer=dicbarras, dicbarra=acraie, forget plot]
+        table[x=anio, y=aie, restrict x to domain=1958:2026] {\acr};
+      \fill[pattern=north east lines, pattern color=white]
+        (axis cs:2025.65,0) rectangle (axis cs:2026.35,390);
+    }
+    % 2: ejes y rejilla (acrejes) y línea del cero, encima de las barras
+    \capa{2}{
+      \dicraya{(1956.8,0) (2027.2,0)}
+    }
+    % 3: hitos (total en vigor) y nota de 2026 parcial
+    \capa{3}{
+      \dicrotulo[font=\footnotesize, anchor=south east, inner sep=1pt]{(1990.4,49)}{1990: 44}
+      \dicrotulo[font=\footnotesize, anchor=south east, inner sep=1pt]{(1995.4,104)}{1995: 99}
+      \dicrotulo[font=\footnotesize, anchor=east, align=right, inner sep=2pt]{(2020,368)}{2021: 363\\[-1pt]{\scriptsize (continuidad del Reino Unido)}}
+      \dicrotulo[font=\footnotesize, anchor=south, inner sep=2pt]{(2026,394)}{2026*: 390}
+      \dicrotulo[font=\scriptsize, anchor=north west, inner sep=0pt]{(1958,418)}{* 2026: a 5 de noviembre (dato parcial)}
+    }
+    % 4: leyenda (sin caja: toma el fondo del gráfico)
+    \capa{4}{
+      \addlegendimage{dicbarra=acralc}
+      \addlegendentry{Zona de libre comercio}
+      \addlegendimage{dicbarra=acrua}
+      \addlegendentry{Unión aduanera}
+      \addlegendimage{dicbarra=acrap}
+      \addlegendentry{Alcance parcial}
+      \addlegendimage{dicbarra=acraie}
+      \addlegendentry{Solo servicios}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

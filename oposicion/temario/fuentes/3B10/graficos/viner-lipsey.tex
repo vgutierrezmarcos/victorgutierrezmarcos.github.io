@@ -1,0 +1,64 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Unión aduanera (Lipsey, 1957) y rebaja no discriminatoria (Cooper y Massell,
+% 1965), 3.B.10, I.2.3 y I.2.5. Gráfico de referencia de la ficha «viner».
+% Demanda de A: p = 7,5 - 0,6x; oferta de A: p = 0,3 + 0,8q.
+% p_R = 2,4; t = 50 %: p_R(1+t) = 3,6; p_B = 3; p_B(1+t) = 4,5 (por encima de
+% la autarquía, 4,41: B no vendía antes de la unión).
+% Con p_R(1+t): q_0 = 4,125, x_0 = 6,5. Con p_B: q_1 = 3,375, x_1 = 7,5.
+% a = 1,935; b = 0,225; c = 1,425; d = 0,3; e = 1,425 (b + d < e: domina la
+% desviación). Cooper y Massell: f = 0,45; g = 0,6.
+% Autor: Víctor Gutiérrez Marcos
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.85cm,
+    areaganancia/.style={fill=tceeverde,fill opacity=0.28,draw=none},
+    areaperdida/.style={fill=tceerojo,fill opacity=0.22,draw=none},
+    muestra/.style={minimum width=0.42cm,minimum height=0.3cm,inner sep=0pt}]
+  % 1: ejes
+  \capa{1}{\ejes{$x$, $q$}{$p$}{10.8}{8}}
+  % 2: demanda de A
+  \capa{2}{\draw[curva1] (0.5,7.2) -- (10,1.5) node[etiqueta,below] {$D_A$};}
+  % 3: oferta de A
+  \capa{3}{\draw[curva2] (0,0.3) -- (8.6,7.18) node[etiqueta,right] {$S_A$};}
+  % 4: oferta del resto del mundo, perfectamente elástica
+  \capa{4}{\draw[curva3] (0,2.4) node[etiqueta,left] {$p_R$} -- (10,2.4);}
+  % 5: precio con arancel antes de la unión y su equilibrio
+  \capa{5}{\draw[curvanueva] (0,3.6) node[etiqueta,left] {$p_R(1+t)$} -- (10,3.6);}
+  \capa{5}{\node[punto] at (4.125,3.6) {};}
+  \capa{5}{\node[punto] at (6.5,3.6) {};}
+  \capa{5}{\draw[guia] (4.125,3.6) -- (4.125,0) node[below,text=black] {$q_0$};}
+  \capa{5}{\draw[guia] (6.5,3.6) -- (6.5,0) node[below,text=black] {$x_0$};}
+  % 6: precio de B con arancel (guía, B no vende) y sin él; nuevo equilibrio
+  \capa{6}{\draw[guia] (0,4.5) node[etiqueta,left,text=black] {$p_B(1+t)$} -- (10,4.5);}
+  \capa{6}{\draw[curva4] (0,3) node[etiqueta,left] {$p_B$} -- (10,3);}
+  \capa{6}{\node[punto] at (3.375,3) {};}
+  \capa{6}{\node[punto] at (7.5,3) {};}
+  \capa{6}{\draw[guia] (3.375,3) -- (3.375,0) node[below,text=black] {$q_1$};}
+  \capa{6}{\draw[guia] (7.5,3) -- (7.5,0) node[below,text=black] {$x_1$};}
+  % 7: áreas de la unión aduanera
+  \capa{7}{\fill[area] (0,3) -- (3.375,3) -- (4.125,3.6) -- (0,3.6) -- cycle;}
+  \capa{7}{\node[etiqueta] at (1.7,3.3) {$a$};}
+  \capa{7}{\fill[area2] (3.375,3) -- (4.125,3) -- (4.125,3.6) -- cycle;}
+  \capa{7}{\node[etiqueta] at (3.9,3.19) {$b$};}
+  \capa{7}{\fill[area] (4.125,3) rectangle (6.5,3.6);}
+  \capa{7}{\node[etiqueta] at (5.3,3.3) {$c$};}
+  \capa{7}{\fill[area2] (6.5,3) -- (7.5,3) -- (6.5,3.6) -- cycle;}
+  \capa{7}{\node[etiqueta] at (6.8,3.19) {$d$};}
+  \capa{7}{\fill[areaperdida] (4.125,2.4) rectangle (6.5,3);}
+  \capa{7}{\node[etiqueta] at (5.3,2.7) {$e$};}
+  \capa{7}{\node[muestra,area] at (0.3,-1.35) {};}
+  \capa{7}{\node[etiqueta,anchor=west] at (0.55,-1.35) {$a$, $c$: transferencias};}
+  \capa{7}{\node[muestra,area2] at (5.3,-1.35) {};}
+  \capa{7}{\node[etiqueta,anchor=west] at (5.55,-1.35) {$b$, $d$: creación de comercio y de consumo};}
+  \capa{7}{\node[muestra,areaperdida] at (0.3,-2.0) {};}
+  \capa{7}{\node[etiqueta,anchor=west] at (0.55,-2.0) {$e$: desviación};}
+  % 8: rebaja no discriminatoria hasta p_R(1+t') = p_B (Cooper y Massell)
+  \capa{8}{\node[etiqueta,right] at (10,3) {$=p_R(1+t')$};}
+  \capa{8}{\fill[areaganancia] (3.375,2.4) rectangle (4.125,3);}
+  \capa{8}{\node[etiqueta] at (3.75,2.7) {$f$};}
+  \capa{8}{\fill[areaganancia] (6.5,2.4) rectangle (7.5,3);}
+  \capa{8}{\node[etiqueta] at (7,2.7) {$g$};}
+  \capa{8}{\node[muestra,areaganancia] at (5.3,-2.0) {};}
+  \capa{8}{\node[etiqueta,anchor=west] at (5.55,-2.0) {$f$, $g$: recaudación con $t'$};}
+\end{tikzpicture}
+\end{document}

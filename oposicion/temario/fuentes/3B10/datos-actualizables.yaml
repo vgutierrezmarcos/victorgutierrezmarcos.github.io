@@ -1,0 +1,68 @@
+tema: 3B10
+fecha_inventario: 2026-11-09
+datos:
+  - id: acr-en-vigor
+    texto: "a noviembre de 2026 hay 390 acuerdos comerciales regionales notificados a la OMC y en vigor"
+    texto_repaso: "\\dato{390, $\\approx$9 de cada 10 ZLC; solo 16 UA}{OMC, nov. 2026}"
+    donde: [3B10.tex, repaso/3B10-repaso.tex]
+    valor: 390
+    unidad: ACR notificados y en vigor
+    periodo: 5 de noviembre de 2026
+    fuente: OMC2026RTAIS
+    organismo: OMC
+    serie: "RTA-IS, Export all RTAs (en vigor, sin adhesiones)"
+    url: https://rtais.wto.org/UI/ExportAllRTAList.aspx
+    periodicidad: continua (actualizar una vez al año)
+    proxima: 2027-01
+    familia: omc-acr
+    depende: [datos/acr-en-vigor.csv, graficos/acr-en-vigor.tex]
+    frase: "repetido en l. 967 «hoy hay en vigor 390 acuerdos notificados a la OMC»; «casi 9 de cada 10 de ellos zonas de libre comercio»; «al menos otros 84 en vigor que aún no se han notificado»; l. 24 «solo 16 de esos acuerdos son uniones aduaneras»; caption y nota del gráfico «1958-2026», «el dato de 2026 es parcial (a 5 de noviembre)»; ficha l. 58 y 248"
+
+  - id: zona-euro-miembros
+    texto: "La zona del euro, con 21 de los 27 Estados de la UE desde la entrada de Bulgaria en 2026"
+    donde: [3B10.tex]
+    valor: 21
+    unidad: Estados miembros de la zona del euro
+    periodo: "2026"
+    fuente: CE2026PaisesEuro
+    organismo: Comisión Europea / BCE
+    serie: "EU countries and the euro"
+    url: https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro_en
+    periodicidad: irregular (cada ampliación)
+    familia: ue-zona-euro-miembros
+
+  - id: d8-miembros
+    texto: "a los que se sumó Azerbaiyán en 2025"
+    donde: [3B10.tex]
+    unidad: miembros del D-8
+    periodo: "2025"
+    fuente: D82025Azerbaiyan
+    organismo: Organización D-8
+    url: https://developing8.org/?p=7060
+    periodicidad: irregular
+    familia: miembros-bloques-regionales
+
+  - id: mercosur-miembros
+    texto: "con Bolivia como Estado parte desde 2024 y Venezuela suspendida desde 2017"
+    donde: [3B10.tex]
+    unidad: miembros del Mercosur
+    periodo: "2024"
+    fuente: AgenciaGov2024Bolivia
+    organismo: Mercosur (vía Gobierno de Brasil)
+    url: https://agenciagov.ebc.com.br/noticias/202407/adesao-da-bolivia-ao-mercosul
+    periodicidad: irregular
+    familia: miembros-bloques-regionales
+
+  - id: obr-brexit
+    texto: "supone que la salida reducirá a largo plazo la productividad un 4~\\% y el comercio un 15~\\%"
+    texto_repaso: "\\dato{productividad $-4$\\,\\%, comercio $-15$\\,\\%}{OBR, 2026}"
+    donde: [3B10.tex, repaso/3B10-repaso.tex]
+    unidad: "% a largo plazo"
+    periodo: "supuesto de las previsiones de 2026"
+    fuente: OBR2026Brexit
+    organismo: Office for Budget Responsibility
+    serie: "Brexit analysis (supuesto de las previsiones)"
+    url: https://obr.uk/forecasts-in-depth/brexit-analysis/
+    periodicidad: semestral (previsiones de primavera y otoño)
+    familia: obr-brexit
+    nota: "supuesto estable desde 2016; solo revisar si el OBR lo cambia"

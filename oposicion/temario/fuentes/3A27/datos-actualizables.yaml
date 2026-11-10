@@ -1,0 +1,122 @@
+tema: 3A27
+fecha_inventario: 2026-11-09
+datos:
+  - id: cobertura-ocde-intro
+    texto: "el 92~\\% de los asalariados con derecho a negociar tiene el salario fijado por un convenio colectivo"
+    donde: [3A27.tex]
+    valor: 92
+    unidad: "% de los asalariados con derecho a negociar"
+    periodo: 2024
+    fuente: OCDE2026ICTWSSCobertura
+    organismo: OCDE (OECD/AIAS ICTWSS)
+    serie: "Collective bargaining coverage, adjusted (DSD_TUD_CBC@DF_CBC), España"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TUD_CBC@DF_CBC,/all
+    periodicidad: anual
+    familia: ocde-ictwss
+    frase: "es la misma cifra que la de I.2 «El caso español» (cobertura-ocde-espana) y la de la caja del anexo de centralización (92,1 %)"
+  - id: cobertura-ocde-espana
+    texto: "el 92~\\% de los asalariados con derecho a negociar está cubierto por un convenio, casi 3 veces la media de la OCDE (34~\\%), aunque solo el 12,5~\\% de los asalariados está afiliado a un sindicato"
+    donde: [3A27.tex]
+    valor: [92, 34, 12.5]
+    unidad: "% (cobertura en España y media de la OCDE; afiliación sindical en España)"
+    periodo: "2024 (cobertura); 2023 (afiliación)"
+    fuente: OCDE2026ICTWSSCobertura
+    organismo: OCDE (OECD/AIAS ICTWSS)
+    serie: "DSD_TUD_CBC@DF_CBC (cobertura) y DSD_TUD_CBC@DF_TUD (afiliación), España y media OCDE"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TUD_CBC@DF_CBC,/all
+    periodicidad: anual
+    familia: ocde-ictwss
+    frase: "«casi 3 veces la media de la OCDE» depende del cociente 92/34"
+  - id: cobertura-ocde-caja
+    texto: "el 92,1~\\% de los asalariados \\emph{con derecho a negociar} en 2024, frente a una media de la OCDE del 33,6~\\%"
+    donde: [3A27.tex, repaso/3A27-repaso.tex]
+    valor: [92.1, 33.6]
+    unidad: "% de los asalariados con derecho a negociar"
+    periodo: 2024
+    fuente: OCDE2026ICTWSSCobertura
+    organismo: OCDE (OECD/AIAS ICTWSS)
+    serie: "Collective bargaining coverage, adjusted (DSD_TUD_CBC@DF_CBC), España y media OCDE"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TUD_CBC@DF_CBC,/all
+    periodicidad: anual
+    familia: ocde-ictwss
+    frase: "ficha: «cobertura \\dato{92,1\\,\\%}{OCDE, 2024} (media OCDE 33,6\\,\\%)», «\\dato{92,1\\,\\% (media OCDE 33,6\\,\\%)}{OCDE/AIAS ICTWSS, 2024}» y la pregunta «¿Cómo cubren los convenios al 92\\,\\% con un 12,5\\,\\% de afiliación?»"
+  - id: afiliacion-sindical
+    texto: "La afiliación sindical es mucho menor, el 12,5~\\% de los asalariados en 2023"
+    donde: [3A27.tex, repaso/3A27-repaso.tex]
+    valor: 12.5
+    unidad: "% de los asalariados afiliados a un sindicato"
+    periodo: 2023
+    fuente: OCDE2026ICTWSSAfiliacion
+    organismo: OCDE (OECD/AIAS ICTWSS)
+    serie: "Trade union density (DSD_TUD_CBC@DF_TUD), España"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TUD_CBC@DF_TUD,/all
+    periodicidad: anual
+    familia: ocde-ictwss
+    frase: "ficha: «afiliación \\dato{12,5\\,\\%}{OCDE, 2023}» y «\\dato{12,5\\,\\% (OCDE 15,2\\,\\%)}{OCDE, 2023}»"
+  - id: cobertura-oit
+    texto: "el 80,1~\\% en 2018, su último año para España"
+    donde: [3A27.tex, repaso/3A27-repaso.tex]
+    valor: 80.1
+    unidad: "% de los asalariados (EPA) con convenio"
+    periodo: 2018
+    fuente: OIT2026ILOSTATSindicatos
+    organismo: OIT (ILOSTAT)
+    serie: "Collective bargaining coverage rate (ILR_CBCT_NOC_RT), España"
+    url: https://sdmx.ilo.org/rest/data/ILO,DF_ILR_TUMT_NOC_RT,1.0/ESP..
+    periodicidad: irregular
+    familia: oit-ilostat-sindicatos
+    frase: "«su último año para España» cambia si la OIT publica un año posterior; ficha: «OIT \\dato{80,1\\,\\%}{2018}»"
+  - id: cobertura-cociente-propio
+    texto: "unos 13,1 millones de trabajadores con convenio con efectos económicos en 2024 sobre 19,0 millones de asalariados de la contabilidad nacional, el 69~\\%"
+    donde: [3A27.tex, repaso/3A27-repaso.tex]
+    valor: [13.1, 19.0, 69]
+    unidad: "millones de trabajadores; millones de asalariados; %"
+    periodo: 2024
+    fuente: MITES2026CCTSep
+    organismo: Ministerio de Trabajo y Economía Social (CCT) y Eurostat (nama_10_pe)
+    serie: "CCT, trabajadores con convenio con efectos económicos (CCT-1.1); Eurostat nama_10_pe, SAL_DC, España"
+    url: https://www.mites.gob.es/estadisticas/cct/cct26sepav/Resumen_resultados_CCT_septiembre-26.pdf
+    periodicidad: anual
+    familia: mites-cct
+    frase: "cociente propio: recalcular con el último año completo de la CCT y de Eurostat (Eurostat2026NamaPe); ficha: «cociente propio \\dato{69\\,\\%}{MITES y Eurostat, 2024}»"
+  - id: subida-pactada
+    texto: "los convenios registrados hasta septiembre de 2026 pactan para este año una subida media del 3,05~\\%, algo menor en los de empresa (2,60~\\%) que en los sectoriales (3,09~\\%); en 2025 fue del 3,51~\\%"
+    donde: [3A27.tex, repaso/3A27-repaso.tex]
+    valor: [3.05, 2.60, 3.09, 3.51]
+    unidad: "% de subida salarial pactada (media; empresa; sector; año anterior)"
+    periodo: "enero-septiembre 2026 (avance); 2025"
+    fuente: MITES2026CCTSep
+    organismo: Ministerio de Trabajo y Economía Social
+    serie: "Estadística de Convenios Colectivos de Trabajo, avance mensual (CCT-1.1, CCT-2.1)"
+    url: https://www.mites.gob.es/estadisticas/cct/cct26sepav/Resumen_resultados_CCT_septiembre-26.pdf
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: mites-cct
+    frase: "ficha: «Subida pactada \\dato{3,05\\,\\% en 2026}{MITES, sept. 2026} (empresa 2,60\\,\\%, sector 3,09\\,\\%; 2025: 3,51\\,\\%)» y «\\dato{3,05\\,\\% en 2026}{MITES, sept. 2026}; \\dato{3,51\\,\\% en 2025}{MITES}»"
+  - id: convenios-empresa
+    texto: "en 2025, solo el 7,4~\\% de los trabajadores con convenio lo tenía de empresa o de grupo de empresas, frente al 10,7~\\% de 2013"
+    donde: [3A27.tex, repaso/3A27-repaso.tex]
+    valor: 7.4
+    unidad: "% de los trabajadores con convenio de empresa o grupo de empresas"
+    periodo: 2025 (provisional)
+    fuente: MITES2026CCT2025
+    organismo: Ministerio de Trabajo y Economía Social
+    serie: "Estadística de Convenios Colectivos de Trabajo, resultados anuales (CCT-3.1)"
+    url: https://www.mites.gob.es/estadisticas/cct/cct25pro/cct_2025_av.xls
+    periodicidad: anual
+    familia: mites-cct
+    frase: "ficha: «\\dato{7,4\\,\\% de los trabajadores con convenio}{MITES, 2025} (10,7\\,\\% en 2013)»"
+  - id: inaplicaciones
+    texto: "295 inaplicaciones, con 13\\,723 trabajadores, entre enero y septiembre de 2026"
+    donde: [3A27.tex, repaso/3A27-repaso.tex]
+    valor: [295, 13723]
+    unidad: "inaplicaciones (descuelgues) de convenios y trabajadores afectados"
+    periodo: enero-septiembre 2026
+    fuente: MITES2026CCTSep
+    organismo: Ministerio de Trabajo y Economía Social
+    serie: "Estadística de Convenios Colectivos de Trabajo, inaplicaciones de convenios (avance mensual)"
+    url: https://www.mites.gob.es/estadisticas/cct/cct26sepav/Resumen_resultados_CCT_septiembre-26.pdf
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: mites-cct
+    frase: "ficha: «\\dato{295 y 13.723 trabajadores}{MITES, ene.-sep. 2026}»; la comparación con 2013 (2 512 y casi 160 000) es histórica"

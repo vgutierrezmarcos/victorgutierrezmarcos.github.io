@@ -1,0 +1,99 @@
+% Cronología ilustrada de la vida de John Maynard Keynes (1883-1946).
+% Línea del tiempo vertical: en el centro, los años sobre un eje coloreado por
+% las etapas del texto (formación; la Primera Guerra Mundial y sus secuelas; la
+% Gran Depresión; la Segunda Guerra Mundial). A la izquierda, la vida; a la
+% derecha, las obras (en cursiva) y, en gris, el contexto. Al margen izquierdo,
+% los 3 volúmenes de la biografía de Skidelsky (1983, 1992 y 2000).
+% Las filas van equiespaciadas (no a escala) para que quepa el texto.
+% Fuentes: Skidelsky (1983, 1992, 2000, 2003); fechas comprobadas en el texto
+% del tema y en las referencias de la caja «Keynes según Skidelsky».
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee, font=\footnotesize,
+    ano/.style={draw=#1, fill=white, rounded corners=2pt, line width=0.9pt,
+      inner sep=2pt, font=\footnotesize\bfseries, text=#1, minimum width=1.05cm},
+    vida/.style={anchor=east, align=right, text width=6cm, inner sep=1pt, execute at begin node=\hyphenpenalty 10000\relax},
+    obra/.style={anchor=west, align=left, text width=5.6cm, inner sep=1pt, execute at begin node=\hyphenpenalty 10000\relax},
+    contexto/.style={obra, text=tceegris, font=\footnotesize\itshape},
+    etapa/.style={line width=4pt, #1},
+    tomo/.style={decorate, decoration={brace, amplitude=5pt}, thick, tceedorado}]
+  \def\dy{0.9}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-9.4,1.0) rectangle (8.4,{-21*\dy-0.6});
+  % ----- 1: el eje del tiempo, coloreado por etapas, y sus rótulos -----
+  \capa{1}{\draw[etapa=tceegris] (0,0.3) -- (0,{-8.5*\dy});}
+  \capa{1}{\draw[etapa=tceeazul] (0,{-8.5*\dy}) -- (0,{-14.5*\dy});}
+  \capa{1}{\draw[etapa=tceemorado] (0,{-14.5*\dy}) -- (0,{-17.5*\dy});}
+  \capa{1}{\draw[etapa=tceeverde] (0,{-17.5*\dy}) -- (0,{-21*\dy-0.3});}
+  \capa{1}{\node[rotate=-90, font=\footnotesize\bfseries, text=tceegris] at (8.05,{-4*\dy}) {Formación};}
+  \capa{1}{\node[rotate=-90, font=\footnotesize\bfseries, text=tceeazul, align=center] at (8.05,{-11.5*\dy}) {La Primera Guerra Mundial\\y sus secuelas};}
+  \capa{1}{\node[rotate=-90, font=\footnotesize\bfseries, text=tceemorado, align=center] at (8.05,{-16*\dy}) {La Gran\\Depresión};}
+  \capa{1}{\node[rotate=-90, font=\footnotesize\bfseries, text=tceeverde, align=center] at (8.05,{-19.25*\dy}) {La Segunda\\Guerra Mundial};}
+  \capa{1}{\node[font=\small\bfseries, anchor=south] at (-3.4,0.45) {Vida};}
+  \capa{1}{\node[font=\small\bfseries, anchor=south] at (3.3,0.45) {Obra y contexto};}
+  % ----- 2: formación (1883-1913) -----
+  \capa{2}{\node[ano=tceegris] at (0,0) {1883};
+    \node[vida] at (-0.7,0) {Nace en Cambridge, hijo de \textsc{John Neville Keynes} y \textsc{Florence Ada Brown}};}
+  \capa{2}{\node[ano=tceegris] at (0,{-1*\dy}) {1897};
+    \node[vida] at (-0.7,{-1*\dy}) {Entra con beca en Eton};}
+  \capa{2}{\node[ano=tceegris] at (0,{-2*\dy}) {1902};
+    \node[vida] at (-0.7,{-2*\dy}) {Becado en el King's College de Cambridge};}
+  \capa{2}{\node[ano=tceegris] at (0,{-3*\dy}) {1903};
+    \node[vida] at (-0.7,{-3*\dy}) {Elegido para los Apóstoles, la sociedad secreta de debate de Cambridge};}
+  \capa{2}{\node[ano=tceegris] at (0,{-4*\dy}) {1905};
+    \node[vida] at (-0.7,{-4*\dy}) {Se gradúa en matemáticas; economía con \textsc{Marshall} y \textsc{Pigou}};}
+  \capa{2}{\node[ano=tceegris] at (0,{-5*\dy}) {1906};
+    \node[vida] at (-0.7,{-5*\dy}) {Segundo en el examen de la administración: entra en la India Office};}
+  \capa{2}{\node[ano=tceegris] at (0,{-6*\dy}) {1909};
+    \node[vida] at (-0.7,{-6*\dy}) {\emph{Fellow} del King's College con su disertación sobre la probabilidad};}
+  \capa{2}{\node[ano=tceegris] at (0,{-7*\dy}) {1911};
+    \node[vida] at (-0.7,{-7*\dy}) {Dirige \emph{The Economic Journal} (hasta 1945)};}
+  \capa{2}{\node[ano=tceegris] at (0,{-8*\dy}) {1913};
+    \node[obra] at (0.7,{-8*\dy}) {\emph{Indian Currency and Finance}};}
+  % ----- 3: la Primera Guerra Mundial y sus secuelas (1914-1929) -----
+  \capa{3}{\node[ano=tceeazul] at (0,{-9*\dy}) {1915};
+    \node[vida] at (-0.7,{-9*\dy}) {Entra en el Tesoro};
+    \node[contexto] at (0.7,{-9*\dy}) {1914-1918: Primera Guerra Mundial};}
+  \capa{3}{\node[ano=tceeazul] at (0,{-10*\dy}) {1919};
+    \node[vida] at (-0.7,{-10*\dy}) {Conferencia de Paz de París: dimite en desacuerdo con las reparaciones};
+    \node[obra] at (0.7,{-10*\dy}) {\emph{The Economic Consequences of the Peace}};}
+  \capa{3}{\node[ano=tceeazul] at (0,{-11*\dy}) {1921};
+    \node[obra] at (0.7,{-11*\dy}) {\emph{A Treatise on Probability}};}
+  \capa{3}{\node[ano=tceeazul] at (0,{-12*\dy}) {1923};
+    \node[obra] at (0.7,{-12*\dy}) {\emph{A Tract on Monetary Reform}};}
+  \capa{3}{\node[ano=tceeazul] at (0,{-13*\dy}) {1925};
+    \node[vida] at (-0.7,{-13*\dy}) {Se casa con la bailarina \textsc{Lydia Lopokova}};
+    \node[contexto] at (0.7,{-13*\dy}) {El Reino Unido vuelve al patrón oro a la paridad de antes de la guerra};}
+  \capa{3}{\node[ano=tceeazul] at (0,{-14*\dy}) {1926};
+    \node[obra] at (0.7,{-14*\dy}) {\emph{The End of Laissez-Faire}};}
+  % ----- 4: la Gran Depresión (1929-1939) -----
+  \capa{4}{\node[ano=tceemorado] at (0,{-15*\dy}) {1930};
+    \node[obra] at (0.7,{-15*\dy}) {\emph{A Treatise on Money} \textcolor{tceegris}{\itshape (tras el crac de 1929)}};}
+  \capa{4}{\node[ano=tceemorado] at (0,{-16*\dy}) {1936};
+    \node[vida] at (-0.7,{-16*\dy}) {Funda el Arts Theatre de Cambridge; compra manuscritos de \textsc{Newton}};
+    \node[obra, font=\footnotesize\bfseries] at (0.7,{-16*\dy}) {\emph{The General Theory of Employment, Interest and Money}};}
+  \capa{4}{\node[ano=tceemorado] at (0,{-17*\dy}) {1937};
+    \node[vida] at (-0.7,{-17*\dy}) {Sufre un infarto: la enfermedad del corazón lo acompaña hasta su muerte};
+    \node[obra] at (0.7,{-17*\dy}) {Responde a sus críticos en el \emph{Quarterly Journal of Economics}};}
+  % ----- 5: la Segunda Guerra Mundial (1939-1946) -----
+  \capa{5}{\node[ano=tceeverde] at (0,{-18*\dy}) {1940};
+    \node[vida] at (-0.7,{-18*\dy}) {Vuelve al Tesoro como asesor};
+    \node[obra] at (0.7,{-18*\dy}) {\emph{How to Pay for the War} \textcolor{tceegris}{\itshape (1939-1945: Segunda Guerra Mundial)}};}
+  \capa{5}{\node[ano=tceeverde] at (0,{-19*\dy}) {1942};
+    \node[vida] at (-0.7,{-19*\dy}) {Barón \textsc{Keynes} de Tilton};}
+  \capa{5}{\node[ano=tceeverde] at (0,{-20*\dy}) {1944};
+    \node[vida] at (-0.7,{-20*\dy}) {Bretton Woods: presenta el Plan \textsc{Keynes}};
+    \node[obra] at (0.7,{-20*\dy}) {El \emph{bancor} y el ajuste simétrico; se impone el Plan \textsc{White}};}
+  \capa{5}{\node[ano=tceeverde] at (0,{-21*\dy}) {1946};
+    \node[vida] at (-0.7,{-21*\dy}) {Savannah (FMI y Banco Mundial); muere en Tilton el 21 de abril};}
+  % ----- 6: los 3 volúmenes de la biografía de Skidelsky -----
+  \capa{6}{\draw[tomo] (-8.5,{-10.4*\dy}) -- (-8.5,0.25)
+      node[midway, rotate=90, anchor=south, xshift=-7pt, text=tceedorado, font=\footnotesize, align=center] {\textsc{Skidelsky}, vol.~1 (1983)\\\emph{Hopes Betrayed, 1883-1920}};}
+  \capa{6}{\draw[tomo] (-8.5,{-16.4*\dy}) -- (-8.5,{-10.6*\dy})
+      node[midway, rotate=90, anchor=south, xshift=-7pt, text=tceedorado, font=\footnotesize, align=center] {vol.~2 (1992)\\\emph{The Economist as Saviour, 1920-1937}};}
+  \capa{6}{\draw[tomo] (-8.5,{-21*\dy-0.25}) -- (-8.5,{-16.6*\dy})
+      node[midway, rotate=90, anchor=south, xshift=-7pt, text=tceedorado, font=\footnotesize, align=center] {vol.~3 (2000)\\\emph{Fighting for Britain, 1937-1946}};}
+\end{tikzpicture}
+\end{document}

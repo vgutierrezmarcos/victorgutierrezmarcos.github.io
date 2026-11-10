@@ -1,0 +1,28 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Gráfico de referencia del canon (expectativas-contango): trayectoria de F_t
+% hasta T = 6 con E_0[S_T] = 3 constante. Con una prima constante,
+% F_t = E_0[S_T] e^{(r-k)(T-t)}:
+%   contango, F_0 = 4:              r-k = ln(4/3)/6 =  0,047947
+%   normal backwardation, F_0 = 2:  r-k = ln(2/3)/6 = -0,067578
+\begin{tikzpicture}[tcee,scale=0.9]
+  % 1: ejes
+  \capa{1}{\ejes{$t$}{$F_t$}{7}{5}}
+  % 2: vencimiento y precio de contado esperado
+  \capa{2}{\draw[guia] (6,0) node[below] {$T$} -- (6,4.6);
+    \draw[guia] (0,3) node[left] {$\mathbb{E}_0[S_T]$} -- (6,3);}
+  % 3: hipótesis de expectativas, F_t = E_0[S_T]
+  \capa{3}{\draw[curva2] (0,3) -- (6,3);
+    \node[etiqueta,text=tceeazul,above] at (1.4,3) {Expectativas};}
+  % 4: normal backwardation, F_0 < E_0[S_T]
+  \capa{4}{\draw[curva3] plot[domain=0:6,samples=50,smooth] (\x,{3*exp(-0.067578*(6-\x))});
+    \node[etiqueta,text=tceeverde,below right] at (0.3,2.1) {\emph{Normal backwardation}};}
+  % 5: contango, F_0 > E_0[S_T]
+  \capa{5}{\draw[curva4] plot[domain=0:6,samples=50,smooth] (\x,{3*exp(0.047947*(6-\x))});
+    \node[etiqueta,text=tceedorado,above right] at (0.3,3.95) {\emph{Contango}};}
+  % 6: convergencia en T
+  \capa{6}{\node[punto] at (6,3) {};
+    \node[etiqueta,right] at (6,3) {$F_T=S_T$};}
+\end{tikzpicture}
+\end{document}

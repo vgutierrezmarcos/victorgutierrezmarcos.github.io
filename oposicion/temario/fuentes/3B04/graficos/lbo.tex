@@ -1,0 +1,36 @@
+% Esquema de una compra apalancada (LBO) (3.B.4, III.2.1). Rehace la
+% imagen 7 del original (elaboración propia); corrige el rótulo del contrato
+% de abajo, que en el original decía «Contrato de adquisición»: es el
+% contrato de financiación entre NEWCO y los acreedores.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{shapes.geometric}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    parte/.style={ellipse,draw=tceemorado,thick,fill=tceemorado!8,align=center,
+      minimum width=4.4cm,minimum height=1.7cm},
+    contrato/.style={rectangle,draw=tceeazul,thick,fill=tceeazul!8,align=center,
+      minimum width=3.8cm,minimum height=1.05cm},
+    capital/.style={->,thick,dashed},
+    partecontrato/.style={->,thick}]
+  % 1: NEWCO
+  \capa{1}{\node[parte] (N) at (7.3,4.5) {NEWCO\\ \footnotesize(sociedad vehículo)};}
+  % 2: inversor y su flecha discontinua
+  \capa{2}{\node[parte] (I) at (2.6,7.6) {Inversor institucional\\ \footnotesize(firma de capital riesgo)};}
+  \capa{2}{\draw[capital] (I) -- (N);}
+  % 3: vendedores y contrato de adquisición
+  \capa{3}{\node[contrato] (CA) at (12.2,4.5) {Contrato de adquisición};}
+  \capa{3}{\draw[partecontrato] (N) -- (CA);}
+  \capa{3}{\node[parte] (V) at (12.2,1.4) {Vendedores};}
+  \capa{3}{\draw[partecontrato] (V) -- (CA);}
+  % 4: acreedores y contrato de financiación
+  \capa{4}{\node[contrato] (CF) at (7.3,1.4) {Contrato de financiación};}
+  \capa{4}{\draw[partecontrato] (N) -- (CF);}
+  \capa{4}{\node[parte] (A) at (2.6,1.4) {Acreedores:\\ \footnotesize principales y subordinados};}
+  \capa{4}{\draw[partecontrato] (A) -- (CF);}
+  % 5: leyenda
+  \capa{5}{\draw[capital] (0.9,-0.4) -- (2.0,-0.4) node[right,black] {Participación en el capital social};}
+  \capa{5}{\draw[partecontrato] (0.9,-0.95) -- (2.0,-0.95) node[right,black] {Partes de un contrato};}
+\end{tikzpicture}
+\end{document}

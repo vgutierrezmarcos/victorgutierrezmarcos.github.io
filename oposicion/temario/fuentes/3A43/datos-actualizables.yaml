@@ -1,0 +1,59 @@
+tema: 3A43
+fecha_inventario: 2026-11-09
+datos:
+  - id: pib-pc-eeuu
+    texto: "PIB por habitante de Estados Unidos, 1870-2025 (escala logarítmica)"
+    donde: [3A43.tex, repaso/3A43-repaso.tex]
+    valor: 70020
+    unidad: "dólares de 2017 por habitante (último dato BEA); crecimiento ≈2 % anual desde la posguerra"
+    periodo: 1870-2025 (Maddison hasta 2022; BEA 1947-2025)
+    fuente: BEA2026PIBpc
+    organismo: BEA (vía FRED) y Maddison Project (BoltvanZanden2025)
+    serie: "A939RX0Q048SBEA; Maddison Project Database 2023"
+    url: https://fred.stlouisfed.org/series/A939RX0Q048SBEA
+    periodicidad: anual
+    proxima: 2027-03
+    familia: bea-pib-pc
+    depende: [datos/pib-pc-eeuu-1870-2025.csv, graficos/pib-pc-eeuu.tex]
+    frase: "«cerca del 2~\\% anual desde la posguerra» (l. 24, 936); pie del gráfico con los años de cada fuente; una nueva versión del Maddison Project cambiaría el tramo 1870-2022; repaso: pie «1870-2025» y caja"
+  - id: kaldor-eeuu
+    texto: "la relación capital-producto no muestra tendencia (3,8 en 1960 y 3,2 en 2023) y la rentabilidad real del capital ronda el 8~\\%; la participación del trabajo, en cambio, ha bajado del 64~\\% al 57~\\%"
+    donde: [3A43.tex, repaso/3A43-repaso.tex]
+    valor: [3.2, 8, 57]
+    unidad: "K/Y (veces); % (rentabilidad real del capital); % del PIB (participación del trabajo)"
+    periodo: 2023 (PWT 11.0) y 2025 (AMECO)
+    fuente: GGDC2025PWT
+    organismo: Groningen Growth and Development Centre (PWT) y Comisión Europea (CE2026AMECO)
+    serie: "PWT 11.0 (rnna, rgdpna, labsh, irr); AMECO ALCD0"
+    url: https://www.rug.nl/ggdc/productivity/pwt/
+    periodicidad: irregular (PWT, cada 2-3 años); AMECO semestral
+    familia: pwt
+    depende: [datos/kaldor-eeuu-espana.csv, graficos/kaldor-eeuu.tex]
+    frase: "título del gráfico «1950-2025» y pie «PWT 11.0, hasta 2023; AMECO, hasta 2025»; l. 405 «España es el contraste: su relación capital-producto ha seguido subiendo»; repaso: caja"
+  - id: convergencia-pwt
+    texto: "entre 1960 y 2023, los países pobres no han crecido más deprisa que los ricos"
+    donde: [3A43.tex]
+    valor: null
+    unidad: "crecimiento medio anual del PIB per cápita frente al PIB per cápita inicial (PPA, dólares de 2021)"
+    periodo: 1960-2023 y 2000-2023
+    fuente: GGDC2025PWT
+    organismo: Groningen Growth and Development Centre
+    serie: "PWT 11.0, rgdpe/pop, rgdpna/pop"
+    url: https://www.rug.nl/ggdc/productivity/pwt/
+    periodicidad: irregular (PWT, cada 2-3 años)
+    familia: pwt
+    depende: [datos/convergencia-pwt.csv, graficos/convergencia.tex]
+  - id: mrw-actual
+    texto: "un $R^2$ ajustado de 0,54), con una $\\alpha$ implícita de 0,64; al añadir un índice de capital humano, el $R^2$ ajustado llega a 0,76"
+    donde: [3A43.tex, repaso/3A43-repaso.tex]
+    valor: [0.54, 0.64, 0.76]
+    unidad: "R² ajustado y α implícita (regresión MRW, 78 países no petroleros)"
+    periodo: 1960-2023
+    fuente: GGDC2025PWT
+    organismo: Groningen Growth and Development Centre (cálculo propio)
+    serie: "PWT 11.0, csh_i, emp, rgdpna, hc"
+    url: https://www.rug.nl/ggdc/productivity/pwt/
+    periodicidad: irregular (PWT, cada 2-3 años)
+    familia: pwt
+    depende: [datos/inversion-renta-mrw.csv, graficos/inversion-renta.tex]
+    frase: "repaso: «Hoy: R² 0,54 → 0,76 (PWT 11.0, 1960-2023)»"

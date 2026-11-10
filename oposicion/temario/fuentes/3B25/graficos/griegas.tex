@@ -1,0 +1,39 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepgfplotslibrary{groupplots}
+\begin{document}
+% Griegas de una call europea sin dividendos (Black-Scholes, como valor-call):
+% K = 100, r = 0,05, sigma = 0,2, T = 1, frente a S (cada 4 unidades).
+% Delta = N(d1); Gamma = phi(d1)/(S sigma sqrt T); Vega = S sqrt T phi(d1)/100
+% (por punto de volatilidad); Theta = [-S phi(d1) sigma/(2 sqrt T)
+% - rKe^{-rT}N(d2)]/365 (por día).
+% Máximos: gamma en S = 89 (0,0217), vega en S = 97 (0,379); theta mínima en
+% S = 108 (-0,0182) y, muy dentro de dinero, tiende a -rKe^{-rT}/365 = -0,0130.
+\begin{tikzpicture}[tcee]
+\begin{groupplot}[group style={group size=2 by 2,horizontal sep=1.5cm,vertical sep=1.7cm},
+  width=6.4cm,height=4.4cm,axis lines=left,xmin=60,xmax=145,xtick={100},xticklabels={$K$},
+  xlabel={$S$},
+  every axis x label/.style={at={(ticklabel* cs:1)},anchor=north east},
+  every axis title/.style={at={(0.5,1)},above,font=\normalsize},
+  tick label style={font=\footnotesize},scaled y ticks=false,clip=false]
+\nextgroupplot[title={Delta, $\Delta$},ymin=0,ymax=1.08,ytick={0,1}]
+  % 1: delta, en forma de S entre 0 y 1
+  \capa{1}{\addplot[guia] coordinates {(60,1) (145,1)};}
+  \capa{1}{\addplot[curva1,smooth] coordinates {(60,0.014) (64,0.030) (68,0.057) (72,0.098) (76,0.153) (80,0.222) (84,0.301) (88,0.386) (92,0.473) (96,0.558) (100,0.637) (104,0.708) (108,0.769) (112,0.820) (116,0.863) (120,0.896) (124,0.923) (128,0.943) (132,0.959) (136,0.970) (140,0.979)};}
+\nextgroupplot[title={Gamma, $\Gamma$},ymin=0,ymax=0.025,ytick=\empty]
+  % 2: gamma, campana con el máximo algo por debajo de K
+  \capa{2}{\addplot[curva2,smooth] coordinates {(60,0.0029) (64,0.0053) (68,0.0084) (72,0.0120) (76,0.0156) (80,0.0186) (84,0.0207) (88,0.0217) (92,0.0216) (96,0.0206) (100,0.0188) (104,0.0165) (108,0.0141) (112,0.0117) (116,0.0095) (120,0.0075) (124,0.0058) (128,0.0044) (132,0.0033) (136,0.0025) (140,0.0018)};}
+\nextgroupplot[title={Vega, $\mathcal{V}$},ymin=0,ymax=0.43,ytick=\empty]
+  % 3: vega, campana con el máximo cerca de K
+  \capa{3}{\addplot[curva3,smooth] coordinates {(60,0.021) (64,0.043) (68,0.078) (72,0.125) (76,0.180) (80,0.238) (84,0.292) (88,0.337) (92,0.366) (96,0.379) (100,0.375) (104,0.357) (108,0.329) (112,0.294) (116,0.255) (120,0.216) (124,0.179) (128,0.146) (132,0.116) (136,0.091) (140,0.071)};}
+\nextgroupplot[title={Theta, $\Theta$},ymin=-0.021,ymax=0.002,ytick={0},
+  axis x line=middle,axis y line=left,
+  every axis x label/.style={at={(axis cs:145,0)},anchor=north east}]
+  % 4: theta, negativa; más negativa cerca del dinero y, muy dentro de
+  % dinero, no se anula: tiende a -rKe^{-rT}
+  \capa{4}{\addplot[curva4,smooth] coordinates {(60,-0.0007) (64,-0.0014) (68,-0.0026) (72,-0.0043) (76,-0.0064) (80,-0.0087) (84,-0.0111) (88,-0.0133) (92,-0.0152) (96,-0.0166) (100,-0.0176) (104,-0.0181) (108,-0.0182) (112,-0.0180) (116,-0.0176) (120,-0.0171) (124,-0.0165) (128,-0.0159) (132,-0.0154) (136,-0.0149) (140,-0.0145)};}
+  \capa{4}{\addplot[guia] coordinates {(60,-0.0130) (145,-0.0130)};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,anchor=south west] at (axis cs:61,-0.0130) {$-rKe^{-rT}$};}
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

@@ -9,7 +9,15 @@ Víctor lea el tema. Te dan `R` y `T`. `D = R/oposicion/temario/fuentes/T`.
 Sé exigente: Víctor tiene que poder fiarse del resultado.
 
 1. `python3 R/scripts/temario/verificar-tema.py T`. Todo ERROR es una
-   corrección obligatoria. Revisa también los avisos.
+   corrección obligatoria. Revisa también los avisos. Reglas del 11/11/2026
+   (CRITERIOS §2 y §7) que mira el script y que debes confirmar a ojo:
+   ninguna indicación de pizarra o de vídeo en el texto ni en las cajas
+   (error); gráficos (lo dibujado, `figure`) e imágenes (jpg/png pegados,
+   `imagen`) con su numeración y citados con su nombre (error); títulos de
+   más de una línea con «:» sin `\cortetitulo` (aviso: mira en el PDF cada
+   título de dos líneas y di dónde cortarlo si el corte es malo o deja una
+   palabra sola); líneas del esquema sin destino (aviso: en el PDF, cada
+   línea del esquema tiene que llevar a su apartado).
 2. **PDF** (`R/oposicion/temario/<ejercicio>/T.pdf`): pásalo a imágenes con
    PyMuPDF (`fitz`, 80 ppp) y mira al menos la primera página, dos de en
    medio con gráficos y la última. Busca: cajas o tablas que se salen,

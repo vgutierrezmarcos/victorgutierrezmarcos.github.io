@@ -5,7 +5,8 @@
 #ejercicio de la oposición TCEE: autor, concepto, referencia a otro tema,
 #fuente, minutos del cante (\minutos y \tiempo), gráfico en una nota al
 #pie (\graficonota) y cajas (nota al opositor, anotaciones, idea clave,
-#esquema; gráfico y tabla dentro de una caja). \funcionclave y \optim llevan fórmulas como argumento: en LyX
+#esquema; gráfico, imagen y tabla dentro de una caja) y el flotante «Imagen»
+#(jpg/png pegados tal cual; numeración aparte de los gráficos). \funcionclave y \optim llevan fórmulas como argumento: en LyX
 #van en código TeX (ERT), como las deja tex2lyx. El documento carga tcee.sty en el preámbulo.
 #DescriptionEnd
 # Autor: Víctor Gutiérrez Marcos
@@ -150,6 +151,15 @@ InsetLayout Flex:Grafico_en_caja
 	MultiPar              true
 End
 
+InsetLayout Flex:Imagen_en_caja
+	LyxType               custom
+	LabelString           "Imagen en caja"
+	LatexType             environment
+	LatexName             imagencaja
+	Decoration            classic
+	MultiPar              true
+End
+
 InsetLayout Flex:Tabla_en_caja
 	LyxType               custom
 	LabelString           "Tabla en caja"
@@ -166,4 +176,19 @@ InsetLayout Flex:Esquema
 	LatexName             esquema
 	Decoration            classic
 	MultiPar              true
+End
+
+# Imagen (tcee.sty, \DeclareCaptionType{imagen}): solo archivos pegados tal cual
+# (jpg, png o pdf sin .tex fuente); lo dibujado va en figure («Gráfico n»)
+Float
+	Type                  imagen
+	GuiName               Imagen
+	Placement             H
+	Extension             loi
+	NumberWithin          none
+	Style                 plain
+	ListName              "Lista de imágenes"
+	IsPredefined          true
+	UsesFloatPkg          false
+	RefPrefix             img
 End

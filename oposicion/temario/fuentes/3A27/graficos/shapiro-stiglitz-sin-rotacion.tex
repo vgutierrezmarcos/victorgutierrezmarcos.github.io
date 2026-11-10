@@ -1,0 +1,52 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Shapiro y Stiglitz (1984), estática comparativa (ii): sin rotación (s = 0).
+% Código base de shapiro-stiglitz.tex: Lbar = 6, ebar = 1;
+% demanda w = 0,4 + 6 e^{-0,25 JL}; con s = 0 y rho/q = 1, la CNE es horizontal
+% en w = ebar + rho ebar/q = 2, por encima de E^W. Zona sin escaqueo: por encima.
+% Cortes (calculados): LD = 2 en JL = 5,2865; tras la caída de la demanda
+% (× 0,75), 0,75 LD = 2 en JL = 3,8933: el salario no cambia.
+% Elaboración propia a partir de Shapiro y Stiglitz (1984) y Romer (2019),
+% cap. 11. Autor: Víctor Gutiérrez Marcos
+\begin{tikzpicture}[tcee, y=1.3cm,
+    demanda/.style={very thick,tceerojo},
+    declare function={LD(\x)=0.4+6*exp(-0.25*\x);}]
+  % 1: ejes
+  \capa{1}{\ejes{$J\,L$}{$w$}{7.2}{6.6}}
+  % 2: demanda y oferta de trabajo, y equilibrio walrasiano
+  \capa{2}{
+    \draw[demanda, domain=0.25:6, samples=60] plot (\x,{LD(\x)});
+    \node[etiqueta, text=tceerojo, anchor=west] at (0.55,5.85) {$L^D$};
+    \draw[curva2] (0,1) -- (6,1) -- (6,6.4) node[etiqueta, above] {$L^S$};
+    \node[left] at (0,1) {$\overline{e}$};
+    \node[below] at (6,0) {$\overline{L}$};
+    \draw[guia] (6,0) -- (6,1);
+    \node[punto] at (6,{LD(6)}) {};
+    \node[etiqueta, right] at (6,{LD(6)}) {$E^W$};
+  }
+  % 3: CNE horizontal y zona sin escaqueo
+  \capa{3}{
+    \fill[area] (0,2) rectangle (6,6.4);
+    \draw[curva1] (0,2) -- (6,2);
+    \node[etiqueta, text=tceemorado, anchor=north west] at (0.1,1.96) {CNE$\colon\ w=\overline{e}+\rho\,\dfrac{\overline{e}}{q}$};
+    \node[etiqueta, text=tceemorado, align=center] at (3.6,4.9) {no se escaquean};
+  }
+  % 4: equilibrio E
+  \capa{4}{
+    \node[punto] (Eb) at (5.2865,2) {};
+    \node[etiqueta, above right] at (Eb) {$E$};
+    \draw[guia] (5.2865,0) node[below] {$J\,L^*$} -- (Eb);
+    \node[left] at (0,2) {$w^*$};
+  }
+  % 5: caída de la demanda: E' a la misma altura, todo el ajuste en el empleo
+  \capa{5}{
+    \draw[curvanueva, desplazada, domain=0.25:6, samples=60]
+      plot (\x,{0.75*LD(\x)}) node[etiqueta, right] {$L^{D\prime}$};
+    \draw[flecha] (1.6,{LD(1.6)-0.15}) -- (1.25,{0.75*LD(1.25)+0.2});
+    \node[punto] (Eb2) at (3.8933,2) {};
+    \node[etiqueta, above right] at (Eb2) {$E'$};
+    \draw[guia] (3.8933,0) node[below] {$J\,L^{*\prime}$} -- (Eb2);
+  }
+\end{tikzpicture}
+\end{document}

@@ -322,6 +322,12 @@ No hay cifras nuevas. Se comprueban referencias: Jaimovich y Rebelo (2009), *AER
   - punto 9: **3.A.11** usa la misma definición de elasticidad de sustitución y la misma CES (coherente); el error de «función de producción» en un contexto de utilidad ya está corregido en 3.A.8. 3.A.10 y 3.A.18 usan $\sigma$ con el mismo sentido que 3.A.8;
   - las **preferencias KPR, GHH y JR** se remiten a 3.A.29: si allí no están, conviene llevarlas cuando se revise ese tema.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» fuera; anexo A «explicar en la pizarra» → «explicar» (2 frases). Títulos: anexo D «…sistemas completos de ecuaciones de demanda» → «…sistemas completos de demanda»; anexo F «La teoría de la demanda de características de Lancaster» → «La demanda de características de Lancaster»; anexo A: corte antes de «del problema»; I y II (fijados por Víctor) sin cambio de texto, `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
 ## Dudas abiertas
 
 Ordenadas por prioridad. Ninguna impide compilar ni publicar el tema; las de prioridad alta afectan a lo que se cita como dato o como fuente.
@@ -575,3 +581,16 @@ Puesta al día con los criterios del 16/10/2026 (CRITERIOS.md § 2 y «Órdenes 
 - **Apoyo (no se escribe)**: `esquema-ingredientes` que crece en la apertura de I, `preferencias-venn`, `esquema-axiomas` que crece con cada axioma, el 3D `superficie-utilidad-repaso` por estados sucesivos (nunca trazo a trazo) y el gráfico completo de referencia cuando la pizarra solo lleva una parte.
 - **Sin pizarra**: introducción, II.3 y conclusión (modo guion con sus cinco partes).
 - **Enganche e idea final**: la pregunta con que abre el documento se retoma en el cierre.
+
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Ya estaban**: Debreu (1959) en la web de Cowles (dirección nueva, `Debreu1959Theory`), el boletín ICE de Aguilar y Mateos (`AguilarMateos2015Deaton`) y la primera página de Fuleky (copia en web.archive.org, `FulekyAnatomy`: www2.hawaii.edu no responde).
+- **Restaurados**:
+  - «Ofelimidad» (Wikipedia), en la nota de Pareto de la función de utilidad.
+  - «Non-convexity (economics)» (Wikipedia), en la nota del axioma de convexidad.
+  - «Utility», ejemplos (Wikipedia), al principio del anexo de formas de la función de utilidad.
+  - «Elasticidad (economía)» (Wikipedia), en una nota nueva de la elasticidad-renta (Marshall introduce el concepto, con `Marshall1890Principles`).
+  - Segunda parte de *Anatomy of a function* de Fuleky (copia de web.archive.org de 16/1/2026) y su versión en RPubs, en la nota de la cuasiconcavidad.
+- **Descartados**: ninguno.

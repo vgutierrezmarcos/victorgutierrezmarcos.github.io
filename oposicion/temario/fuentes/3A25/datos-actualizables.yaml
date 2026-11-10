@@ -1,0 +1,58 @@
+tema: 3A25
+fecha_inventario: 2026-11-09
+datos:
+  - id: tasa-paro-espana
+    texto: "la tasa de paro era del 10{,}18~\\% en el tercer trimestre de 2026"
+    donde: [3A25.tex, repaso/3A25-repaso.tex]
+    valor: 10.18
+    unidad: "% de la población activa"
+    periodo: EPA 3T 2026
+    fuente: INE2026EPA3T
+    organismo: INE
+    serie: "EPA, tabla 65334 (continúa la 4086), total nacional, ambos sexos"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=65334
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: ine-epa
+    frase: "repaso: «10,18 % (INE, EPA 3T 2026)» en Relevancia y en Datos; en I.4 del tema y de la ficha, «sigue por encima del 10 %» depende de este dato"
+  - id: brecha-salarial-anual
+    texto: "el salario medio anual de las mujeres fue en 2024 el 83{,}9~\\% del de los hombres, una brecha del 16{,}1~\\%"
+    donde: [3A25.tex, repaso/3A25-repaso.tex]
+    valor: 16.1
+    unidad: "% (brecha del salario medio bruto anual)"
+    periodo: EAES 2024
+    fuente: INE2026EAES2024
+    organismo: INE
+    serie: "Encuesta Anual de Estructura Salarial, ganancia media anual por sexo"
+    url: https://www.ine.es/dyngs/Prensa/EAES2024.htm
+    periodicidad: anual
+    proxima: 2027-06
+    familia: ine-eaes
+    frase: "repaso: «16,1 % anual (INE, EAES 2024)»"
+  - id: brecha-salarial-hora
+    texto: "Por hora trabajada, la brecha sin ajustar es del 7{,}3~\\%, por debajo del 11{,}1~\\% de la UE"
+    donde: [3A25.tex, repaso/3A25-repaso.tex]
+    valor: [7.3, 11.1]
+    unidad: "% (brecha salarial de género sin ajustar, por hora)"
+    periodo: 2024
+    fuente: Eurostat2026BrechaSalarial
+    organismo: Eurostat
+    serie: "earn_gr_gpgr2, ES y EU27_2020"
+    url: https://ec.europa.eu/eurostat/databrowser/view/earn_gr_gpgr2/default/table
+    periodicidad: anual
+    familia: eurostat-gpg
+    frase: "repaso: «7,3 % (UE 11,1 %) (Eurostat, 2024)»"
+  - id: ees-edad-estudios
+    texto: "Con estudios universitarios largos, el salario medio a partir de los 55 años supera en un 86~\\% al de quien tiene la segunda etapa de secundaria"
+    donde: [3A25.tex, repaso/3A25-repaso.tex, datos/ganancia-edad-estudios.csv, graficos/ees-edad-estudios.tex]
+    valor: 86
+    unidad: "% de diferencia del salario medio bruto anual"
+    periodo: EES 2022
+    fuente: INE2024EES2022
+    organismo: INE
+    serie: "Encuesta Cuatrienal de Estructura Salarial, tabla 36870 (estudios y edad)"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=36870
+    periodicidad: cuatrienal
+    proxima: 2028-06
+    familia: ine-ees
+    frase: "el CSV alimenta el gráfico ees-edad-estudios; repaso: «+86 % (INE, EES 2022)» en III.3 y en Datos"

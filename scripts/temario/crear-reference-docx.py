@@ -143,19 +143,23 @@ def main():
     sombreado(h1.element.get_or_add_pPr(), '5F2987')
     h1.paragraph_format.space_before = Pt(14)
     h1.paragraph_format.space_after = Pt(6)
-    # Los niveles se distinguen como en el PDF: banda, subrayado, sangrado en
-    # cursiva y más sangrado
+    # Los niveles se distinguen como en el PDF (tcee.sty, Víctor 11/11/2026), de
+    # más a menos peso: banda, negrita grande subrayada, negrita, negrita
+    # cursiva y cursiva, cada uno más sangrado
     h2 = estilos['Heading 2']
     fuente(h2, tam=12, color=MORADO, negrita=True, mayus=False)
     bordes(h2.element.get_or_add_pPr(), '5F2987', lados=('bottom',), grosor='4', espacio='1')
     h2.paragraph_format.space_before = Pt(12)
     h3 = estilos['Heading 3']
-    fuente(h3, tam=11, color=MORADO, negrita=False, cursiva=True)
+    fuente(h3, tam=11, color=MORADO, negrita=True, cursiva=False)
     h3.paragraph_format.left_indent = Cm(0.5)
-    for nombre in ('Heading 4', 'Heading 5', 'Heading 6'):
+    h3.paragraph_format.space_before = Pt(9)
+    for nombre, cursiva_negrita, sangria, antes in (('Heading 4', True, 1.0, 7), ('Heading 5', False, 1.5, 5),
+                                                     ('Heading 6', False, 2.0, 5)):
         try:
-            fuente(estilos[nombre], tam=11, color=RGBColor(0x4A, 0x1F, 0x6B), negrita=False, cursiva=True)
-            estilos[nombre].paragraph_format.left_indent = Cm(1.0)
+            fuente(estilos[nombre], tam=11, color=RGBColor(0x4A, 0x1F, 0x6B), negrita=cursiva_negrita, cursiva=True)
+            estilos[nombre].paragraph_format.left_indent = Cm(sangria)
+            estilos[nombre].paragraph_format.space_before = Pt(antes)
         except KeyError:
             pass
     # Ningún título puede quedar solo al pie de una página; los títulos van a la

@@ -9,6 +9,11 @@
 %   D (discreción) = (U^n, pi^D), pi^D = pi* + (alpha/gamma)(U^n - U*) = 5;
 %     tangente a la CP de pi^e = 5: L = 18 (radio 4,243)
 %   Función de reacción: gamma (pi - pi*) = alpha (U - U*) -> pi = U (por T y D)
+%   Pasos intermedios del tema antiguo (imagen 3: 0, 1, 2, 3, F; Víctor, 9/11/2026):
+%     0 = R; 1 = T; 2 = (U^n, pi_T) = (5; 3,5), el público espera pi_T;
+%     CP de pi^e = pi_T: pi = 8,5 - U; 3 = su tangencia = (4,25; 4,25),
+%     pi = (gamma pi* + alpha^2 pi^e + alpha (U^n - U*))/(gamma + alpha^2) = 4,25,
+%     L = 2 * 2,25^2 = 10,125 (radio 3,182); F = D.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -33,19 +38,30 @@
   % 4: curva de Phillips con pi^e = pi* y la regla R
   \capa{4}{\draw[curva2] (1.0,6.0) -- (6.4,0.6) node[etiqueta, right, text=tceeazul] {$CP(\pi^e=\pi^*)$};}
   \capa{4}{\node[circle, fill=tceeazul, inner sep=1.6pt] (R) at (5,2) {};}
-  \capa{4}{\node[etiqueta, above right=0pt and 1pt, text=tceeazul] at (R) {$R$};}
+  \capa{4}{\node[etiqueta, above right=0pt and 1pt, text=tceeazul] at (R) {$0=R$};}
   \capa{4}{\draw[guia] (5,2) -- (0,2) node[left, text=black] {$\pi^*$};}
   \capa{4}{\draw[guia] (2,2) -- (2,0) node[below, text=black] {$U^*$};}
   \capa{4}{\node[below, text=black] at (5,0) {$U^n$};}
   % 5: la tentación T
   \capa{5}{\node[circle, draw=tceerojo, fill=white, line width=1pt, inner sep=1.4pt] (T) at (3.5,3.5) {};}
-  \capa{5}{\node[etiqueta, above right=1pt and 0pt, text=tceerojo] at (T) {$T$};}
+  \capa{5}{\node[etiqueta, above left=1pt and 0pt, text=tceerojo] at (T) {$1=T$};}
   \capa{5}{\draw[guia] (0,3.5) node[left, text=black] {$\pi_T$} -| (3.5,0) node[below, text=black] {$U_T$};}
-  % 6: lugar de las tangencias, curva de Phillips con pi^e = pi^D y discreción D
-  \capa{6}{\draw[thin, densely dotted, black] (2.15,2.15) -- (7.6,7.6) node[etiqueta, above, font=\footnotesize, align=center] {función de\\reacción};}
-  \capa{6}{\draw[curva2, desplazada] (2.2,7.8) -- (8.2,1.8) node[etiqueta, right, text=tceeazul] {$CP(\pi^e=\pi^D)$};}
-  \capa{6}{\node[circle, fill=tceerojo, inner sep=1.6pt] (D) at (5,5) {};}
-  \capa{6}{\node[etiqueta, right=2pt, text=tceerojo] at (D) {$D$};}
-  \capa{6}{\draw[guia] (5,5) -- (0,5) node[left, text=black] {$\pi^D$};}
+  % 6: el público ajusta sus expectativas a pi_T (punto 2) y la autoridad vuelve
+  %    a optimizar sobre la nueva curva de Phillips (punto 3)
+  \capa{6}{\node[circle, fill=tceeazul!60, inner sep=1.4pt] (P2) at (5,3.5) {};}
+  \capa{6}{\node[etiqueta, right=1pt, text=tceeazul!80, font=\footnotesize] at (P2) {$2$};}
+  \capa{6}{\draw[very thick, tceeazul!45] (2.1,6.4) -- (6.9,1.6);}
+  \capa{6}{\begin{scope}
+      \clip (0,0) rectangle (8.4,8.4);
+      \draw[curva1, thin, densely dashed] (2,2) circle (3.182);
+    \end{scope}}
+  \capa{6}{\node[circle, draw=tceerojo, fill=white, line width=0.8pt, inner sep=1.2pt] (P3) at (4.25,4.25) {};}
+  \capa{6}{\node[etiqueta, above left=0pt and 0pt, text=tceerojo, font=\footnotesize] at (P3) {$3$};}
+  % 7: lugar de las tangencias, curva de Phillips con pi^e = pi^D y discreción D
+  \capa{7}{\draw[thin, densely dotted, black] (2.15,2.15) -- (7.6,7.6) node[etiqueta, above, font=\footnotesize, align=center] {función de\\reacción};}
+  \capa{7}{\draw[curva2, desplazada] (2.2,7.8) -- (8.2,1.8) node[etiqueta, right, text=tceeazul] {$CP(\pi^e=\pi^D)$};}
+  \capa{7}{\node[circle, fill=tceerojo, inner sep=1.6pt] (D) at (5,5) {};}
+  \capa{7}{\node[etiqueta, right=2pt, text=tceerojo] at (D) {$F=D$};}
+  \capa{7}{\draw[guia] (5,5) -- (0,5) node[left, text=black] {$\pi^D$};}
 \end{tikzpicture}
 \end{document}

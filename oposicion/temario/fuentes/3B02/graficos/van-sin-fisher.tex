@@ -1,0 +1,23 @@
+% VAN de 2 proyectos cuyas curvas no se cortan en tasas positivas (sin punto de Fisher).
+% A: VAN_A(k) = -100 + 150/(1+k) (TIR_A = 50 %); B: VAN_B(k) = -100 + 120/(1+k) (TIR_B = 20 %).
+% Mismos colores que van-fisher (A azul, B verde).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=10cm,y=0.07cm,
+    declare function={va(\k)=-100+150/(1+\k); vb(\k)=-100+120/(1+\k);}]
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (0.68,0) node[above left=2pt and 0pt] {$k$};}
+  \capa{1}{\draw[eje] (0,-28) -- (0,58) node[left] {$\mathrm{VAN}$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: proyecto A y su TIR
+  \capa{2}{\draw[curva2] plot[domain=0:0.62,samples=60] (\x,{va(\x)}) node[etiqueta,right] {$\mathrm{VAN}_{\mathrm A}$};}
+  \capa{2}{\node[punto,fill=tceeazul] at (0.5,0) {};}
+  \capa{2}{\node[etiqueta,above right,text=tceeazul] at (0.5,0.5) {$\mathrm{TIR}_{\mathrm A}$};}
+  % 3: proyecto B y su TIR
+  \capa{3}{\draw[curva3] plot[domain=0:0.62,samples=60] (\x,{vb(\x)}) node[etiqueta,right] {$\mathrm{VAN}_{\mathrm B}$};}
+  \capa{3}{\node[punto,fill=tceeverde] at (0.2,0) {};}
+  \capa{3}{\node[etiqueta,above right,text=tceeverde] at (0.2,0.5) {$\mathrm{TIR}_{\mathrm B}$};}
+\end{tikzpicture}
+\end{document}

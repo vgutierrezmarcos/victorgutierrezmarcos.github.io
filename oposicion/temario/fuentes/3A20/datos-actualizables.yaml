@@ -1,0 +1,151 @@
+tema: 3A20
+fecha_inventario: 2026-11-09
+datos:
+  - id: cnmc-tasa-retribucion-electricidad
+    texto: "del 5,58~\\% al 6,58~\\%"
+    donde: [3A20.tex, repaso/3A20-repaso.tex]
+    valor: 6.58
+    unidad: "% tasa de retribución financiera de las redes eléctricas (transporte y distribución)"
+    periodo: periodo regulatorio 2026-2031
+    fuente: CNMC2025Circular9
+    organismo: CNMC
+    serie: "Circular 9/2025 (modifica la Circular 2/2019), tasa de retribución financiera"
+    url: https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-27019
+    periodicidad: por periodo regulatorio (6 años)
+    proxima: 2031-12
+    familia: cnmc-retribucion-redes
+    frase: "aparece 4 veces en 3A20.tex (enganche, Redes del Valle en Averch-Johnson, evidencia de la tasa de rentabilidad y aplicaciones) y 2 en el repaso; el 5,58 % es el de 2020-2025"
+  - id: cnmc-tasa-retribucion-gas
+    texto: "el 6,46~\\% para 2027-2032"
+    donde: [3A20.tex]
+    valor: 6.46
+    unidad: "% tasa de retribución financiera del transporte y la regasificación de gas"
+    periodo: periodo regulatorio 2027-2032
+    fuente: CNMC2026Circular5
+    organismo: CNMC
+    serie: "Circular 5/2026, tasa de retribución financiera del gas"
+    url: https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-19426
+    periodicidad: por periodo regulatorio (6 años)
+    proxima: 2032-12
+    familia: cnmc-retribucion-redes
+    frase: "aparece 2 veces (evidencia de la tasa de rentabilidad y aplicaciones)"
+  - id: aena-dora-ingreso-maximo
+    texto: "parte de 10,52 euros por pasajero en 2026 y llega a 10,69 en 2031"
+    donde: [3A20.tex]
+    valor: 10.69
+    unidad: EUR por pasajero (ingreso máximo anual ajustado por pasajero)
+    periodo: DORA 2027-2031
+    fuente: BOE2026DORA
+    organismo: Consejo de Ministros (BOE)
+    serie: "Documento de Regulación Aeroportuaria 2027-2031, IMAP"
+    url: https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-19507
+    periodicidad: quinquenal
+    proxima: 2031-09
+    familia: aena-dora
+    frase: "con la X del 0,33 % anual que se suma, la propuesta de la CNMC (−0,59 %) y la de Aena (+3,82 %) (CNMC2026InformeDORA); se repite en aplicaciones y en el anexo del test"
+  - id: ofgem-riio3-rentabilidad
+    texto: "una rentabilidad real del 5,70~\\% en la electricidad y del 6,12~\\% en el gas"
+    donde: [3A20.tex]
+    valor: 5.70
+    unidad: "% coste de los fondos propios real (CPIH) permitido"
+    periodo: RIIO-3, abril 2026-marzo 2031
+    fuente: Ofgem2025RIIO3Finanzas
+    organismo: Ofgem
+    serie: "RIIO-3 Final Determinations, Finance Annex, allowed cost of equity"
+    url: https://www.ofgem.gov.uk/sites/default/files/2025-12/RIIO-3-Final-Determinations-Finance-Annex.pdf
+    periodicidad: quinquenal
+    proxima: 2030-12
+    familia: ofgem-riio
+    frase: "y «exige mejorar la eficiencia un 1 % al año» (Ofgem2025RIIO3ET)"
+  - id: dma-guardianes
+    texto: "hoy son 7, Alphabet"
+    donde: [3A20.tex]
+    valor: 7
+    unidad: guardianes de acceso designados (con 23 servicios básicos de plataforma)
+    periodo: noviembre 2026
+    fuente: CE2026GuardianesDMA
+    organismo: Comisión Europea
+    serie: "DMA gatekeepers portal"
+    url: https://digital-markets-act.ec.europa.eu/gatekeepers-portal_en
+    periodicidad: irregular
+    familia: ue-dma
+    frase: "«con 23 servicios básicos de plataforma en total» y, en el anexo del test, «7 guardianes de acceso y 23 servicios básicos»"
+  - id: dma-multas
+    texto: "en julio de 2026, Google recibió 890 millones"
+    donde: [3A20.tex]
+    valor: 890
+    unidad: millones de euros (última multa por incumplimiento de la DMA)
+    periodo: julio 2026
+    fuente: CE2026DMAGoogle
+    organismo: Comisión Europea
+    serie: "Decisiones de incumplimiento de la DMA"
+    url: https://digital-markets-act.ec.europa.eu/commission-fines-google-eur890-million-breaches-digital-markets-act-2026-07-23_en
+    periodicidad: irregular
+    familia: ue-dma
+    frase: "si hay multas nuevas, añadirlas a la lista (Apple 500 y Meta 200 millones, abril de 2025)"
+  - id: renfe-cuota-alta-velocidad
+    texto: "entre el 50 y el 67~\\% de los viajeros"
+    donde: [3A20.tex]
+    valor: "50-67"
+    unidad: "% de los viajeros de Renfe en los corredores de alta velocidad con competencia"
+    periodo: 2025
+    fuente: CNMC2026InformeFerroviario2025
+    organismo: CNMC
+    serie: "Informe anual del sector ferroviario"
+    url: https://www.cnmc.es/prensa/inf-anual-ferro-25-20260717
+    periodicidad: anual
+    proxima: 2027-07
+    familia: cnmc-ferroviario
+    frase: "en la misma frase, «los precios reales habían bajado alrededor de un 40 % desde 2019» y «los cánones de ADIF llegaban al 46 % de los costes en el Madrid-Barcelona»"
+  - id: exolum-cvc
+    texto: "el mayor de ellos CVC, con el 24,84~\\%"
+    donde: [3A20.tex]
+    valor: 24.84
+    unidad: "% del capital de Exolum"
+    periodo: 2026
+    fuente: Exolum2026Capital
+    organismo: Exolum
+    serie: "Distribución del capital social"
+    url: https://exolum.com/en/shareholders-and-investors/distribution-of-share-capital/
+    periodicidad: irregular
+    familia: exolum-capital
+    frase: "el paquete de CVC estaba en venta (duda 12 de revision.md)"
+  - id: aena-aeropuertos-enaire
+    texto: "gestiona 46 aeropuertos españoles y es en un 51~\\% de ENAIRE"
+    donde: [3A20.tex]
+    valor: 51
+    unidad: "% del capital de Aena en manos de ENAIRE"
+    periodo: 2026
+    fuente: ENAIRE2025PlanActuacion2026
+    organismo: ENAIRE
+    serie: "Plan anual de actuación"
+    url: https://enaire.es/docs/inline/es_ES/plan_anual_de_actuación/Plan_anual_actuacion_2026.pdf
+    periodicidad: anual
+    familia: aena-dora
+  - id: neba-cobertura
+    texto: "Desde octubre de 2021 esa obligación ya solo afectaba al 30~\\% de la población"
+    donde: [3A20.tex]
+    valor: 30
+    unidad: "% de la población (histórico; la obligación se suprimió en agosto de 2025)"
+    periodo: 2021-2025
+    fuente: CNMC2025Desregulacion
+    organismo: CNMC
+    serie: "Análisis de los mercados de acceso local y central"
+    url: https://cnmc.es/prensa/desregulacion-banda-ancha-fija-20250813
+    periodicidad: irregular
+    familia: cnmc-telecos
+    frase: "revisar solo si la CNMC resuelve los compromisos de Telefónica sobre MARCo (CNMC2026CompromisosTelefonica, «aún sin resolver»)"
+  - id: directrices-concentraciones-ihh
+    texto: "si el IHH resultante no llega a 1.000"
+    donde: [3A20.tex, repaso/3A20-repaso.tex]
+    valor: 1000
+    unidad: umbrales del IHH de las directrices europeas de concentraciones horizontales
+    periodo: directrices de 2004 (en revisión)
+    fuente: CE2004Horizontales
+    organismo: Comisión Europea
+    serie: "Directrices sobre concentraciones horizontales"
+    url: https://competition-policy.ec.europa.eu/mergers/review-merger-guidelines_en
+    periodicidad: irregular
+    proxima: 2026-12
+    familia: ue-competencia-directrices
+    frase: "la nota al pie dice que la Comisión prevé adoptar las nuevas en el cuarto trimestre de 2026 (CE2026RevisionMerger): si se aprueban, cambiar los umbrales (también en el anexo del test y en la ficha)"

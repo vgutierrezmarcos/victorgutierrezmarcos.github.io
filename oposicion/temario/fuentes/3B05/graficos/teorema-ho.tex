@@ -1,0 +1,63 @@
+% Teorema de Heckscher-Ohlin (3.B.5, III.2): X intensivo en capital, A abundante
+% en capital (A exporta X). Elaboración propia (cualitativa), a partir de
+% Krugman, Obstfeld y Melitz (2018), cap. 5.
+%   FPP elípticas: A: (X/8)^2 + (Y/4,5)^2 = 1 (sesgada hacia X);
+%                  B: (X/4,5)^2 + (Y/8)^2 = 1 (sesgada hacia Y).
+%   CIS Cobb-Douglas U = (XY)^0,5, idénticas y homotéticas (RMS = Y/X).
+%   Autarquía: E^A_aut = (5,657; 3,182), (p_X/p_Y)^A = 4,5/8 = 0,5625;
+%              E^B_aut = (3,182; 5,657), (p_X/p_Y)^B = 8/4,5 = 1,778.
+%     Como 8·4,5 = 4,5·8, las dos tocan la misma CIS_0: XY = 18.
+%   Libre comercio, RRI = 1 (entre 0,5625 y 1,778): P^A = (6,973; 2,206),
+%     P^B = (2,206; 6,973); renta 9,179 en los dos: C^A = C^B = (4,589; 4,589)
+%     en el rayo de 45°, sobre CIS_1: XY = 21,06 (por la simetría, el mismo punto).
+%   A exporta 2,384 de X e importa 2,384 de Y; B, al revés.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.62,
+    declare function={cis0(\x)=18/\x; cis1(\x)=21.06/\x;
+      pa(\x)=3.182-0.5625*(\x-5.657); pb(\x)=5.657-1.778*(\x-3.182);
+      rri(\x)=9.179-\x;}]
+  % 1: ejes de los dos paneles y sus rótulos
+  \capa{1}{\ejes{$X$}{$Y$}{9.6}{9.4}}
+  \capa{1}{\node[etiqueta,font=\normalsize] at (4.8,10.1) {Autarquía};}
+  \begin{scope}[xshift=11.6cm]
+    \capa{1}{\ejes{$X$}{$Y$}{9.6}{9.4}}
+    \capa{1}{\node[etiqueta,font=\normalsize] at (4.8,10.1) {Libre comercio};}
+  \end{scope}
+  % 2: FPP de A (sesgada hacia X) y de B (sesgada hacia Y)
+  \capa{2}{\draw[curva1] plot[domain=0:90,samples=80] ({8*cos(\x)},{4.5*sin(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=west] at (8.1,0.45) {$\mathrm{FPP}^A$};}
+  \capa{2}{\draw[curva3] plot[domain=0:90,samples=80] ({4.5*cos(\x)},{8*sin(\x)});}
+  \capa{2}{\node[etiqueta,text=tceeverde,anchor=south west] at (1.3,7.75) {$\mathrm{FPP}^B$};}
+  % 3: la misma CIS_0 tangente a las dos FPP y los precios de autarquía (A más plana)
+  \capa{3}{\draw[curva4] plot[domain=2.0:9.0,samples=80] (\x,{cis0(\x)}) node[etiqueta,right] {$\mathrm{CIS}_0$};}
+  \capa{3}{\draw[thick,tceegris] (2.1,{pa(2.1)}) -- (8.6,{pa(8.6)}) node[etiqueta,below right,font=\footnotesize,inner sep=1pt] {$(p_X/p_Y)^A_{\mathrm{aut}}$};}
+  \capa{3}{\draw[thick,tceegris] (2.0,{pb(2.0)}) -- (5.55,{pb(5.55)}) node[etiqueta,anchor=north,xshift=8pt,font=\footnotesize] {$(p_X/p_Y)^B_{\mathrm{aut}}$};}
+  \capa{3}{\node[punto,label={[etiqueta]above right:$E^A_{\mathrm{aut}}$}] at (5.657,3.182) {};}
+  \capa{3}{\node[punto,label={[etiqueta]above right:$E^B_{\mathrm{aut}}$}] at (3.182,5.657) {};}
+  \begin{scope}[xshift=11.6cm]
+    % 4: las mismas FPP y la RRI común, tangente en P^A y P^B
+    \capa{4}{\draw[curva1] plot[domain=0:90,samples=80] ({8*cos(\x)},{4.5*sin(\x)});}
+    \capa{4}{\node[etiqueta,text=tceemorado,anchor=west] at (8.1,0.45) {$\mathrm{FPP}^A$};}
+    \capa{4}{\draw[curva3] plot[domain=0:90,samples=80] ({4.5*cos(\x)},{8*sin(\x)});}
+    \capa{4}{\node[etiqueta,text=tceeverde,anchor=north west] at (0.25,7.6) {$\mathrm{FPP}^B$};}
+    \capa{4}{\draw[curva2] (0.6,{rri(0.6)}) node[etiqueta,above,font=\footnotesize] {$\mathrm{RRI}$} -- (8.2,{rri(8.2)});}
+    \capa{4}{\node[punto,label={[etiqueta]right:$P^A$}] (PA) at (6.973,2.206) {};}
+    \capa{4}{\node[punto,label={[etiqueta]above:$P^B$}] (PB) at (2.206,6.973) {};}
+    % 5: rayo de consumo desde el origen y C^A = C^B en una CIS más alta
+    \capa{5}{\draw[guia] (0,0) -- (7.6,7.6);}
+    \capa{5}{\draw[curva4] plot[domain=2.5:9.0,samples=80] (\x,{cis1(\x)}) node[etiqueta,right] {$\mathrm{CIS}_1$};}
+    \capa{5}{\node[punto] (C) at (4.589,4.589) {};}
+    \capa{5}{\node[etiqueta,above right=1pt and 3pt] at (C) {$C^A=C^B$};}
+    % 6: triángulos de comercio: A exporta X e importa Y; B, al revés
+    \capa{6}{\fill[area] (C) -- (4.589,2.206) -- (PA) -- cycle;}
+    \capa{6}{\draw[thick,tceemorado] (C) -- (4.589,2.206) -- (PA);}
+    \capa{6}{\node[etiqueta,text=tceemorado,font=\footnotesize,below,align=center] at (5.90,2.206) {exporta $X$\\[-2pt]importa $Y$};}
+    \capa{6}{\fill[tceeverde,fill opacity=0.18] (C) -- (2.206,4.589) -- (PB) -- cycle;}
+    \capa{6}{\draw[thick,tceeverde] (C) -- (2.206,4.589) -- (PB);}
+    \capa{6}{\node[etiqueta,text=tceeverde,font=\footnotesize,left,align=right] at (2.206,5.78) {exporta $Y$\\[-2pt]importa $X$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

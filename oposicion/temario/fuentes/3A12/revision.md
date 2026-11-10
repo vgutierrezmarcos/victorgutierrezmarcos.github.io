@@ -214,6 +214,13 @@ El tema es teórico: se comprueban fechas, atribuciones y obras, y se añaden lo
 - **Propuestas al canon** (para `--fase coherencia`): μ como multiplicador de la MC (en lugar de λ^C); κ como factor de homogeneidad en precios (CC3); S(w⃗,q) para la matriz de sustitución de factores (CC4); C(w⃗,q;z̄_K), CV, CFMe, ε_{C,q} y s_i en `notacion.md` § 3 (CC1); EfT, EfA, EfE y la frontera ln C_j = ln C(w⃗_j,q_j) + v_j + u_j con u_j = ln(1+χ_j) (CC7); fichas nuevas `dualidad-produccion`, `costes-corto-largo-plazo`, `eficiencia-frontera` y, si se confirma su uso en dos temas, `curva-aprendizaje` (CC8); entradas desfasadas de `mapa.yaml` y de la ficha `rendimientos-escala` (CC5).
 - Referencias añadidas en III y IV: 3.A.15 (organización industrial, límites de la empresa, contratos), 3.A.16, 3.A.17 (monopolio natural, Harberger, monopsonio), 3.A.19 (oligopolio), 3.A.20 (regulación por comparación), 3.A.21 (precios de factores endógenos), 3.B.6 y 3.B.8. No se remite al 4.º ejercicio.
 
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4). Todos eran de Policonomics; policonomics.com da error 500 en todo el sitio el 9/11/2026 (funcionaba en abril de 2026; hay copias en web.archive.org).
+
+- **Restaurados con dirección nueva**: los vídeos de Policonomics, en su canal de YouTube (Policonomics ES), como «Para ver» en notas al pie: «C.6 Subaditividad» (definición de monopolio natural), «C.7 Economías de alcance» y «C.8 Curva de aprendizaje» y «C.9 Curva de experiencia» (análisis dinámico).
+- **No restaurados** (páginas de texto de Policonomics, sin otra dirección): «Competencia perfecta I: análisis de costes» a corto y a largo plazo, «Costes III: teoría de costes de Stigler» y «Curva de aprendizaje». Eran fuentes de gráficos del tema antiguo; los gráficos actuales se rehicieron a partir de las obras originales. Si el sitio vuelve, se pueden añadir a los `\fuente` correspondientes.
+
 ## Instrucciones para el vídeo
 
 - Bloque I: el esquema de dualidad de la empresa (`esquema-dualidad-empresa`) se construye por capas en la columna derecha durante todo el bloque (MB, sus soluciones y B con Hotelling; MC, z⃗(w⃗,q) y C con Shephard; MB en dos etapas con p = CMg; identidades; recuperación de la tecnología). En la columna izquierda se dibujan y borran `mb-un-factor` (si da tiempo), `mc` con la lagrangiana y las CPO, `concavidad-c` y, al final, el gráfico conjunto `mb-mc`. Al acabar el I quedan el gráfico conjunto y el esquema completo, con C(w⃗,q) escrita: el bloque II empieza por ella (P10, P11).
@@ -222,6 +229,13 @@ El tema es teórico: se comprueban fechas, atribuciones y obras, y se añaden lo
 - Bloque II, aplicaciones empíricas (50 | 50): la translog de costes y las participaciones s_i en una celda y `farrell` (EfT, EfA, EfE) en la otra; II.4 de palabra, con `christensen-greene-1970` como apoyo; `ratio-eficiencia-bancos` y las tablas, solo de apoyo.
 - Bloque III (50 | 50): `stigler` y la fórmula C^obs = (1+χ)C; III.1, III.2 y III.4, sin pizarra (como mucho, `subaditividad` de apoyo).
 - La idea final responde a la pregunta del enganche (¿cuánto del abaratamiento de la fotovoltaica se debe a la escala, al aprendizaje y a los precios de los factores?).
+- El esquema de dualidad se construye por capas en la pizarra durante todo I; la función de costes no se borra. (11/11/2026)
+
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» fuera; «En la pizarra, el esquema de dualidad… no se borra» reescrito (2 frases). Títulos: ya cortados en buen punto (I, en 3 líneas por los puntos del epígrafe oficial); `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
 
 ## Dudas abiertas
 

@@ -1,0 +1,88 @@
+% Situación normal, paradoja de Metzler y paradoja de Lerner con curvas de
+% oferta neta (ejes y notación de arancel-optimo.tex: E^A, exportaciones de X
+% de A, en abscisas; M^A, importaciones de Y de A, en ordenadas; la RRI es la
+% pendiente del rayo desde el origen). Cualitativo, pero calculado:
+%   g(t) = 6t/(1+t) - 0,15t (la de 3B08/graficos/johnson.tex);
+%   h(x) = 6,8 x e^(-x/2) (ON con tramo de pendiente negativa desde x = 2);
+%   k(y) = 6,8 y e^(-y/2) (la misma, con los ejes cambiados).
+% (1) Normal: ON_A: X = g(Y), ON_B: Y = g(X); E_0 = (4,217; 4,217),
+%     RRI_0 = 1. ON'_A: X = 0,6 g(Y); E_1 = (2,515; 3,916), RRI_1 = 1,557.
+% (2) Metzler: ON_B: Y = h(X), cortada en su tramo decreciente.
+%     ON_A: X = 1,1 g(Y): E_0 = (4,505; 3,221), RRI_0 = 0,715.
+%     ON'_A: X = 0,66 g(Y): E_1 = (2,800; 4,695), RRI_1 = 1,677: A importa
+%     más Y y la RRI mejora mucho.
+% (3) Lerner: ON_B: Y = g(X). ON_A: X = k(Y), cortada en su tramo
+%     decreciente: E_0 = (3,545; 4,148), RRI_0 = 1,170.
+%     ON'_A (recaudación gastada en Y): X = 0,95 k(Y/1,6), dentro de ON_A en
+%     el tramo bajo y fuera desde Y = 2,78: E_1 = (4,552; 4,236),
+%     RRI_1 = 0,931 < RRI_0.
+% Elaboración propia a partir de Metzler (1949), Lerner (1936) y Gandolfo
+% (2014), cap. 10, y del gráfico a mano del original (Imagen 9), con sus
+% anotaciones manuscritas (capas 8 y 9).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.55cm,
+    declare function={g(\t)=6*\t/(1+\t)-0.15*\t; h(\t)=6.8*\t*exp(-\t/2);}]
+  % 1: ejes de los 3 paneles
+  \foreach \dx/\titulo in {0/{Caso normal},9.6/{Paradoja de \textsc{Metzler}},19.2/{Paradoja de \textsc{Lerner}}}{
+    \capa{1}{\begin{scope}[xshift=\dx*0.55cm]
+      \draw[eje] (0,0) -- (7,0) node[below left=2pt and 0pt] {$E^A$};
+      \draw[eje] (0,0) -- (0,7) node[left] {$M^A$};
+      \node[below left] at (0,0) {$0$};
+      \node[etiqueta,anchor=south] at (3.5,7.3) {\titulo};
+    \end{scope}}
+  }
+  % ---------- (1) Caso normal ----------
+  % 2: ON_A, ON_B y el rayo de libre comercio
+  \capa{2}{\draw[curva1] plot[domain=0:6.3,samples=60] ({g(\x)},\x) node[etiqueta,above,text=tceemorado] {$\mathrm{ON}_A$};}
+  \capa{2}{\draw[curva2] plot[domain=0:6.6,samples=60] (\x,{g(\x)}) node[etiqueta,above,text=tceeazul] {$\mathrm{ON}_B$};}
+  \capa{2}{\draw[thick,tceeverde] (0,0) -- (5.8,5.8) node[etiqueta,above right=-2pt,font=\footnotesize,text=tceeverde] {$\mathrm{RRI}_0$};}
+  \capa{2}{\node[punto,label={[etiqueta]below right=-1pt:$E_0$}] at (4.217,4.217) {};}
+  % 3: ON'_A y el nuevo rayo, más inclinado
+  \capa{3}{\draw[curvanueva] plot[domain=0:6.3,samples=60] ({0.6*g(\x)},\x) node[etiqueta,above,text=tceerojo] {$\mathrm{ON}'_A$};}
+  \capa{3}{\draw[thick,tceeverde,dashed] (0,0) -- (3.8,5.917) node[etiqueta,left,font=\footnotesize,text=tceeverde] {$\mathrm{RRI}_1$};}
+  \capa{3}{\node[punto,label={[etiqueta]right=1pt:$E_1$}] at (2.515,3.916) {};}
+  % ---------- (2) Paradoja de Metzler ----------
+  \begin{scope}[xshift=9.6*0.55cm]
+    % 4: ON_A y ON_B con tramo inelástico, rayo inicial
+    \capa{4}{\draw[curva1] plot[domain=0:5.6,samples=60] ({1.1*g(\x)},\x) node[etiqueta,right,text=tceemorado] {$\mathrm{ON}_A$};}
+    \capa{4}{\draw[curva2] plot[domain=0:6.6,samples=80] (\x,{h(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{ON}_B$};}
+    \capa{4}{\draw[thick,tceeverde] (0,0) -- (6.4,4.576) node[etiqueta,right,font=\footnotesize,text=tceeverde] {$\mathrm{RRI}_0$};}
+    \capa{4}{\node[punto,label={[etiqueta]left=2pt:$E_0$}] at (4.505,3.221) {};}
+    % 5: ON'_A y el nuevo rayo, mucho más inclinado
+    \capa{5}{\draw[curvanueva] plot[domain=0:6.0,samples=60] ({0.66*g(\x)},\x) node[etiqueta,above,text=tceerojo] {$\mathrm{ON}'_A$};}
+    \capa{5}{\draw[thick,tceeverde,dashed] (0,0) -- (3.85,6.456) node[etiqueta,right,font=\footnotesize,text=tceeverde] {$\mathrm{RRI}_1$};}
+    \capa{5}{\node[punto,label={[etiqueta]above right=-1pt:$E_1$}] at (2.800,4.695) {};}
+  \end{scope}
+  % ---------- (3) Paradoja de Lerner ----------
+  \begin{scope}[xshift=19.2*0.55cm]
+    % 6: ON_A con tramo inelástico y ON_B, rayo inicial
+    \capa{6}{\draw[curva1] plot[domain=0:6.2,samples=80] ({h(\x)},\x) node[etiqueta,above,text=tceemorado] {$\mathrm{ON}_A$};}
+    \capa{6}{\draw[curva2] plot[domain=0:6.6,samples=60] (\x,{g(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{ON}_B$};}
+    \capa{6}{\draw[thick,tceeverde] (0,0) -- (5.0,5.85) node[etiqueta,above,font=\footnotesize,text=tceeverde] {$\mathrm{RRI}_0$};}
+    \capa{6}{\node[punto] (L0) at (3.545,4.148) {};}
+    \capa{6}{\draw[thin] (L0) ++(-0.2,-0.15) -- (2.4,3.2) node[etiqueta,left] {$E_0$};}
+    % 7: ON'_A con la recaudación gastada en Y y el nuevo rayo, menos inclinado
+    \capa{7}{\draw[curvanueva] plot[domain=0:6.2,samples=80] ({0.95*h(\x/1.6)},\x) node[etiqueta,above,text=tceerojo] {$\mathrm{ON}'_A$};}
+    \capa{7}{\draw[thick,tceeverde,dashed] (0,0) -- (6.6,6.143) node[etiqueta,right,font=\footnotesize,text=tceeverde] {$\mathrm{RRI}_1$};}
+    \capa{7}{\node[punto] (L1) at (4.552,4.236) {};}
+    \capa{7}{\draw[thin] (L1) ++(0.15,-0.15) -- (5.5,3.3) node[etiqueta,right] {$E_1$};}
+  \end{scope}
+  % 8: anotaciones a mano del original (Imagen 9): de qué país es la ON anómala
+  \capa{8}{\node[etiqueta,font=\scriptsize,align=center,anchor=south,text=tceegris] at (13.1,8.15) {ON anómala (inelástica) del país\\sobre el que recae el arancel ($B$)};}
+  \capa{8}{\node[etiqueta,font=\scriptsize,align=center,anchor=south,text=tceegris] at (22.7,8.15) {ON anómala (inelástica) del país\\que impone el arancel ($A$)};}
+  % 8: el arancel contrae ON_A (flecha) en cada panel
+  \capa{8}{\draw[->,thin,tceegris] ({g(5.3)-0.15},5.3) -- ({0.6*g(5.3)+0.15},5.3);}
+  \capa{8}{\draw[->,thin,tceegris] ({9.6+1.1*g(5.6)-0.15},5.6) -- ({9.6+0.66*g(5.6)+0.25},5.6);}
+  % 9: cadenas de efectos de las anotaciones a mano: RRI de A (p_X/p_Y) y
+  %    precio relativo interior de X, p_X/[p_Y(1+t)]
+  \capa{9}{\node[etiqueta,font=\footnotesize,anchor=north] at (3.5,-1.0) {$t\uparrow\ \Rightarrow\ \frac{p_X}{p_Y}\uparrow\ \Rightarrow\ \frac{p_X}{p_Y(1+t)}\downarrow$};}
+  \capa{9}{\node[etiqueta,font=\scriptsize,align=center,anchor=north] at (3.5,-2.6) {mejora la RRI de $A$\\y se protege $Y$};}
+  \capa{9}{\node[etiqueta,font=\footnotesize,anchor=north] at (13.1,-1.0) {$t\uparrow\ \Rightarrow\ \frac{p_X}{p_Y}\uparrow\uparrow\ \Rightarrow\ \frac{p_X}{p_Y(1+t)}\uparrow$};}
+  \capa{9}{\node[etiqueta,font=\scriptsize,align=center,anchor=north,draw=tceerojo,thick,inner sep=3pt] at (13.1,-2.6) {¡Ojo! Se desprotege el bien\\sobre el que se pone el arancel};}
+  \capa{9}{\node[etiqueta,font=\footnotesize,anchor=north] at (22.7,-1.0) {$t\uparrow\ \Rightarrow\ \frac{p_X}{p_Y}\downarrow\ \Rightarrow\ \frac{p_X}{p_Y(1+t)}\downarrow\downarrow$};}
+  \capa{9}{\node[etiqueta,font=\scriptsize,align=center,anchor=north,draw=tceerojo,thick,inner sep=3pt] at (22.7,-2.6) {¡Ojo! El arancel empeora\\la RRI de quien lo pone};}
+\end{tikzpicture}
+\end{document}

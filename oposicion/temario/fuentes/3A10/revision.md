@@ -196,6 +196,12 @@ incertidumbre. Fase «integrar» de /revisartema. Entradas: `_trabajo/original.m
   tercer nivel: I.2 lleva 3 subapartados, uno por modelo, para que se vea que hay 3 aplicaciones);
   K12 (Hansen-Sargent en la conclusión: se mantiene, D5).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» fuera; «se queda en una esquina de la pizarra» → «acompaña todo el tema»; «fórmula de la esquina de la pizarra» → «fórmula de la utilidad esperada» (3 frases). Títulos: ya cortados en buen punto; `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
 ## Dudas abiertas
 
 - **Decisiones ya tomadas por Víctor**: A10-01, Diamond-Dybvig **resumido** en el anexo C (aplicado);
@@ -224,6 +230,22 @@ incertidumbre. Fase «integrar» de /revisartema. Entradas: `_trabajo/original.m
   rótulo de la recta de prima justa en `seguros`; 2 entradas de la bibliografía (Bernoulli, Machina).
 - Control de calidad: sin incidencias (19/10/2026, tras los 7 comentarios de Víctor; correcciones aplicadas en esta fase, ver «Compilado y revisado» al final).
 
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Ya estaban, en otra dirección**: el trabajo de Fernández-Villaverde y Guerrón-Quintana sobre la incertidumbre (el PDF de sas.upenn.edu es la misma versión de trabajo que el NBER 26768 que enlaza `FernandezVillaverdeGuerron2020Uncertainty`); el *New Palgrave Dictionary* (2018), citado por capítulos con su DOI (`Machina2018Expected`, `Karni2018Savage`).
+- **Restaurados**:
+  - Vídeo «An Overview of Stochastic Dominance» (EconJohn) y el artículo de Yemshanov *et al.* (2013) en *NeoBiota* (fuente de un gráfico antiguo de dominancia; `Yemshanov2013Quantifying`), en una nota de la dominancia estocástica.
+  - Vídeo «Teoría de la decisión 14: la paradoja de Allais» (Juan Carlos Aguado Franco), en una nota de la paradoja de Allais.
+  - Neuroprofiler, «Cognitive Bias: The Ellsberg Paradox» (fuente del gráfico antiguo), en el `\fuente` de `fig:ellsberg` (`Neuroprofiler2022Ellsberg`).
+  - «Cardinal utility» (Wikipedia), al principio del anexo de la utilidad «cardinal que es ordinal».
+  - «Level of measurement» (Wikipedia), en el `\fuente` de `tab:escalas`.
+- **No restaurados**:
+  - Policonomics (3 páginas: «Aversión al riesgo», «Riesgo e incertidumbre II: enfoques alternativos» y el *learning path* de riesgo): todo policonomics.com da error 500 el 9/11/2026 (funcionaba en abril de 2026; hay copias en web.archive.org).
+  - Cerdá *et al.* (2004), *Teoría de juegos*, en ebooks7-24.com: el enlace da 404 y era una plataforma de préstamo con suscripción.
+  - «Equilibrio de manchas solares» y «Great Contraction» (Wikipedia): el pasaje del tema antiguo donde estaban (las expectativas autocumplidas y la Reserva Federal en la Gran Depresión) no está en el tema revisado. Si Víctor lo quiere de vuelta, habría que recuperar el pasaje.
+
 ## Instrucciones para el vídeo
 
 - **Minutos**: introducción 2'30"; I, 13' (I.1, 8': 3'30" de axiomas y teorema + 4'30" de actitud ante el riesgo; I.2, 4', solo seguros; I.3, 1'); II, 8' (II.1, 3'30"; II.2, 4'30"); III, 5'30" (III.1, 3'; III.2, 2'30"); conclusión, 1'. Lo que el tema marca «No se canta» (activo con riesgo, empresa aversa, prudencia, tabla de casos del seguro, anexos) no sale en el vídeo, salvo la frase que piden las notas al opositor.
@@ -235,6 +257,7 @@ incertidumbre. Fase «integrar» de /revisartema. Entradas: `_trabajo/original.m
 - **Ellsberg** (III): esquema de las 2 urnas, como apoyo.
 - **Decisión de cartera**: está en el anexo (`cartera-alfa`, `cartera-riqueza`): no sale en el vídeo; basta la frase de la valoración del seguro. San Petersburgo, tampoco: una frase en I.1.
 - **Enganche**: los 2 refranes, las primas de seguro (unos 86.000 millones, ~5 % del PIB) y la Lotería de Navidad; **idea final**: el patrón cuádruple de la teoría de las perspectivas, que responde a la pregunta del enganche.
+- El teorema de la utilidad esperada queda en una esquina de la pizarra todo el cante (Savage lo reutiliza). (11/11/2026)
 
 ## Comentarios de Víctor del 19/10/2026
 

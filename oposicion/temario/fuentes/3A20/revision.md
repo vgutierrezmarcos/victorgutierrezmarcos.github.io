@@ -13,6 +13,12 @@ Word de Víctor).
   II.2 2′, II.3 3′30″, II.4 2′, II.5 1′30″); III. Regulación con varias empresas y aplicaciones
   prácticas (7′30″: III.1 2′, III.2 1′30″, **III.3 2′30″, III.4 1′30″**). La introducción dura
   2′30″ y la conclusión 1′: en total, 30′.
+- **Estructura nueva (Víctor, 9/11/2026, 2.ª tanda)**: la de arriba se ha sustituido por I. Regulación,
+  poder de mercado y mercado relevante (7′30″: I.1 1′30″, I.2 2′30″, I.3 2′, I.4 1′30″); II. Regulación con
+  información completa (8′: II.1 1′30″, II.2 3′, II.3 1′30″, II.4 2′); III. Desarrollos en presencia de
+  información asimétrica y aplicaciones prácticas (11′: III.1 1′30″, III.2 2′, III.3 3′, III.4 1′30″, III.5 1′,
+  III.6 1′, III.7 1′). Introducción 2′30″ y conclusión 1′: 30′. Ver «Comentarios de Víctor (9/11/2026, 2.ª
+  tanda)».
 - **Dentro va todo lo aprovechable del Word**: la definición de regulación y sus motivos (Musgrave;
   tabla 2.1 de Baldwin, Cave y Lodge en LaTeX), su algoritmo de Braeutigam (gráfico rehecho con la
   caja vacía rellena), el dilema del monopolio natural con la subaditividad, la caja de
@@ -401,6 +407,12 @@ como elaboración propia.
   - 4.B.15 escribe t = a + b(C − C^a) y remite al «3.A.15» antiguo.
   - 3.A.6, 3.A.36 y 3.A.41 duplican «[ver tema 3.A.20]».
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 5 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de I y III → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 **Nuevas (23/10/2026), para que Víctor decida o confirme**:
@@ -433,6 +445,22 @@ como elaboración propia.
     visto en el libro (capítulos de pago).
 12. **Exolum**: el paquete de CVC (24,84 %) está en venta; revisar el dato antes de publicar.
 
+**Nuevas (9/11/2026, 2.ª tanda)**, con la opción aplicada:
+
+13. **Orden de los fallos de mercado en la tabla de motivos**: Víctor los enumeró como poder de
+    mercado, externalidades, bienes públicos e información asimétrica; se ha seguido el orden del
+    3.A.23 revisado (poder de mercado, información asimétrica, externalidades, bienes públicos), que
+    va por el supuesto del 1TFEB que levanta cada uno (3, 5, 2, 2). Si prefiere su orden, basta con
+    mover 2 filas.
+14. **Filas de elaboración propia en la tabla de motivos**: el paternalismo (bienes preferentes) y
+    los 2 motivos de estabilidad (estabilidad financiera, `\vertema{3.B.27}`; topes de precios en
+    crisis de oferta, la excepción ibérica) no están en la tabla 2.1 de Baldwin, Cave y Lodge; la
+    fuente lo dice. La continuidad del servicio y la racionalización van como «otros motivos de
+    eficiencia» (también tocan la equidad).
+15. **Punta y valle con gráfico**: para alargar el bloque II (lo pidió Víctor) se ha añadido la
+    regla $p_v=b$, $p_p=b+\beta$ con el gráfico de referencia `pico-valle` del 3.A.17 (copia), y
+    el programa de Ramsey-Boiteux con `\optim`; la derivación sigue solo en el 3.A.17 (canon).
+
 **Decididas por Víctor el 23/10/2026** (se mantienen): el refrán «Tener la sartén por el mango» y
 sus pegatinas (A20-01); Baron-Myerson en el cuerpo (A20-02); el reparto 8′ / 11′ / 7′30″ (A20-02),
 y dentro de III, 2′ / 1′30″ / 2′30″ / 1′30″ (23/10/2026); las fichas nuevas del canon (A20-03); el
@@ -456,46 +484,127 @@ aprueban antes de publicar, revisar los umbrales del IHH; las directrices de EE.
     para que nos deje ver lo que hay dentro, la renta informativa.
 - **Funciones clave que se conservan** (`\funcionclave`, `conservar:`):
   - el índice de Lerner `eq:lerner`, en la esquina superior izquierda todo el cante;
-  - la condición del esfuerzo de Laffont-Tirole `eq:laffont-tirole`, debajo, desde II.3;
-  - la regla del *price cap* `eq:price-cap`, que se escribe en II.4 y se deja en una esquina.
-- **Bloque I**:
-  - Qué es regular y los 3 motivos de Musgrave, de palabra; la tabla de Baldwin, Cave y Lodge,
-    como **apoyo** (iluminando las filas en salmón).
-  - **El algoritmo de Víctor (`algoritmo-regulacion`) va a la pizarra**, por ramas y en este orden
-    (sus 6 capas): los 3 orígenes; la llave de la defensa de la competencia; «¿es sostenible?»;
-    «¿primer óptimo?» con la caja de suma fija; «¿segundo óptimo?»; y el tercer óptimo en rojo,
-    que anuncia el bloque II. Se deja la rama del tercer óptimo visible al pasar a II.
-  - `ssnip` por capas mientras se aplica a Redes del Valle.
-  - `subaditividad-sostenibilidad` y `regulacion-monopolio-natural`; el dilema en 3 pasos («ni
-    desmantelar, ni dejar libre, ni pasarse») de palabra.
-  - La regla de Ramsey-Boiteux junto a la de Lerner («Lerner amortiguado»).
-  - Como apoyo: la tabla del 1TFEB (filas 3 y 5).
-- **Bloque II** (rejilla con franja abajo para la escala de la potencia):
+  - la condición del esfuerzo de Laffont-Tirole `eq:laffont-tirole`, debajo, desde III.3;
+  - la regla del *price cap* `eq:price-cap`, que se escribe en III.4 y se deja en una esquina.
+- **Bloque I** (estructura del 9/11/2026):
+  - I.1: qué es regular y los 3 motivos de Musgrave, de palabra; la tabla de motivos
+    (`tab:motivos-regulacion`, ordenada por eficiencia, equidad y estabilidad) como **apoyo**,
+    iluminando el bloque salmón del poder de mercado.
+  - I.2: Lerner (función clave) e IHH; las 3 ineficiencias; las conductas anticompetitivas y los
+    precios predatorios (McGee → Selten → reputación; Areeda-Turner y AKZO en una línea); el
+    estrechamiento de márgenes con Redes del Valle; la frontera entre defensa de la competencia y
+    regulación. Como apoyo: la tabla del 1TFEB (filas 3 y 5).
+  - I.3: `ssnip` por capas mientras se aplica a Redes del Valle; el celofán.
+  - I.4: **el algoritmo ampliado (`algoritmo-regulacion`) va a la pizarra**, por ramas (9 capas):
+    los 3 orígenes; la defensa de la competencia; «¿es sostenible?» con Demsetz y Baumol;
+    «¿conoce el regulador los costes y la demanda?»; la rama azul (primer óptimo, segundos
+    óptimos, industrias de red), que anuncia el bloque II; la rama roja (tercer óptimo, compromiso
+    y captura), que anuncia el III; y las aplicaciones. **Gráfico conjunto por partes**: se queda
+    en un lateral y se vuelve a él al empezar II y III, iluminando la rama que toca; Redes del
+    Valle recorre la rama roja hasta el final.
+- **Bloque II**:
+  - `subaditividad-sostenibilidad`; el dilema en 3 pasos («ni desmantelar, ni dejar libre, ni
+    pasarse») de palabra.
+  - `regulacion-monopolio-natural`, la tarifa en dos partes con la factura de Redes del Valle,
+    `pico-valle` (nuevo) y la regla de Ramsey-Boiteux junto a la de Lerner («Lerner amortiguado»).
+  - Competencia por el mercado de palabra y los mercados impugnables en una frase (rama «Sí» y
+    «No» de «¿es sostenible?»).
+  - Liberalización frente a desregulación y los CTC, de palabra; la ECPR en una línea, $A=p-c_I$;
+    **`separacion-vertical` como apoyo**, panel a panel (6 capas), con su ejemplo español
+    (Telefónica/MARCo, ADIF-Renfe y Aena, CLH/Exolum, operadores independientes de EE. UU.,
+    móviles, distribuidoras como Redes del Valle).
+- **Bloque III** (rejilla con franja abajo para la escala de la potencia):
   - `averch-johnson`, `baron-myerson` (ejemplo 80/60/40, renta 800), el menú a mano
     (`menu-contratos`), la tabla del ejemplo de Laffont-Tirole como apoyo y `price-cap` como apoyo
     por capas, con la senda $p_t=p_0(1+\mathrm{IPC}-X)^t$.
+  - El *yardstick* a mano (20-22-24 → 23-22-21) con «Las comparaciones son odiosas».
   - **Gráfico conjunto por partes**: la escala de la potencia (`escala-potencia`) crece con la
-    exposición: tasa de rentabilidad (II.1), menú (II.3), *price cap* (II.4), esquemas intermedios
-    (II.4) y *yardstick* (III.1). No se escribe 2 veces.
-  - Pegatinas: «Más sabe el loco…» al empezar II, «El que algo quiere…» junto a Φ(ē), «Poner al
+    exposición: tasa de rentabilidad (III.1), menú (III.3), *price cap* y esquemas intermedios
+    (III.4) y *yardstick* (III.5). No se escribe 2 veces.
+  - Pegatinas: «Más sabe el loco…» al empezar III, «El que algo quiere…» junto a Φ(ē), «Poner al
     zorro…» junto a la captura (Bernstein → Stigler → Posner → Peltzman, de palabra).
   - La condición de Peltzman en una línea; Becker no se canta.
-- **Bloque III**:
-  - El *yardstick* a mano (20-22-24 → 23-22-21) con «Las comparaciones son odiosas».
-  - Los mercados impugnables en una frase (enlaza con la rama «Sí» del algoritmo).
-  - Liberalización frente a desregulación y los CTC, de palabra; la ECPR en una línea, $A=p-c_I$.
-  - **`separacion-vertical` como apoyo**, panel a panel (6 capas): mientras sale cada panel se dice
-    su ejemplo español (Telefónica/MARCo, ADIF-Renfe y Aena, CLH/Exolum, operadores
-    independientes de EE. UU., móviles, distribuidoras como Redes del Valle). En la pizarra, como
-    mucho, las siglas ANC/AC de un panel si ayudan.
   - Las aplicaciones de palabra, cada una con su lectura teórica; `tab:instrumentos` como apoyo al
     final, con la escala ya completa.
 - **Ejemplo conductor**: siempre con frases naturales («Volvamos a Redes del Valle…»), nunca
   «hilo».
 - **Gráficos**:
   - en la pizarra: `algoritmo-regulacion`, `ssnip`, `subaditividad-sostenibilidad`,
-    `regulacion-monopolio-natural`, `averch-johnson`, `baron-myerson`, `menu-contratos` y
+    `regulacion-monopolio-natural`, `pico-valle`, `averch-johnson`, `baron-myerson`, `menu-contratos` y
     `escala-potencia`;
   - como apoyo: `separacion-vertical`, `price-cap`, `peltzman`, las tablas del 1TFEB, de los
     motivos para regular, de lo que observa el regulador y de instrumentos;
   - solo en el documento: `ciclo-politico`, `niskanen` y el grabado del Leviatán (anexo).
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
+
+## Comentarios de Víctor (9/11/2026, 2.ª tanda)
+
+1. **«Preguntar si ha leído el documento … `Mis temas/Tema 3.A.25.docx`»**. **Sí se había usado**:
+   es la base de toda la revisión del 22-23/10/2026 («Base: el Word de Víctor, su antiguo 3.A.25»,
+   en `_trabajo/original.md`), leída desde la copia `oposicion/temario/tercer-ejercicio/oculto/Tema
+   3.A.20.docx`. Se han vuelto a leer los 2 ficheros enteros con python-docx: el texto es
+   idéntico (537 párrafos y filas, 14.126 palabras, sin una sola diferencia). Se ha repasado otra
+   vez buscando lo que faltara y se ha recuperado: la competencia destructiva y la regulación de la
+   entrada del monopolio natural no sostenible (II.1 y el algoritmo), el ejemplo de la salud y la
+   seguridad como regulación por varios motivos (I.1), el orden «óptimos de primer, segundo y
+   tercer orden» del algoritmo (ya estaba, como primer, segundos y terceros óptimos) y, en la
+   relevancia de la conclusión, que la regulación sigue siendo esencial en el sector financiero, la
+   seguridad alimentaria y el medio ambiente. Lo demás del Word ya estaba (ver «Resumen»).
+2. **Conductas anticompetitivas y precios predatorios en este tema**. Hecho: nuevo párrafo en I.2
+   (`sec:poder-mercado`) con las 3 familias de conductas (acuerdos colusorios, abusos explotativos y
+   excluyentes, concentraciones; arts. 101-102 del TFUE y 1-2 de la Ley 15/2007), los precios
+   predatorios (McGee, 1958; Selten, 1978; Kreps-Wilson y Milgrom-Roberts, 1982; prueba de
+   Areeda-Turner, 1975, y regla en 2 escalones de AKZO, 1991; el riesgo de castigar precios bajos) y
+   el estrechamiento de márgenes (Telefónica, que se trae aquí), con Redes del Valle. Coherente con
+   el 3.A.15 (claves del .bib reutilizadas). La fila de la tabla remite ahora a I.2 y, para la
+   política de la UE, al 3.B.39. Añadidos al anexo del test (fechas, precios predatorios,
+   conductas) y una pregunta del tribunal.
+3. **Tabla de motivos como elaboración propia a partir de Baldwin, ordenada por Musgrave**. Hecho
+   (`tab:motivos-regulacion`): a) eficiencia — fallos de mercado (1. poder de mercado, con
+   monopolio y monopolio natural, conductas anticompetitivas y precios predatorios y beneficios
+   extraordinarios; 2. información asimétrica e incertidumbre con mercados incompletos; 3.
+   externalidades; 4. bienes públicos, cada uno con el supuesto del 1TFEB que levanta, como en el
+   3.A.23) y otros motivos (continuidad del servicio, racionalización y coordinación); b) equidad
+   (derechos humanos, protección social, poder de negociación desigual, escasez y racionamiento,
+   planificación, paternalismo); c) estabilidad (estabilidad financiera, topes de precios en una
+   crisis de oferta). Debajo, una viñeta con los motivos que se solapan. Fuente: «elaboración
+   propia a partir de Baldwin, Cave y Lodge (2012, cap. 2, tabla 2.1) y Musgrave (1959)». Ver
+   dudas 13 y 14.
+4. **La tabla y «¿Por qué regular?» al principio del bloque I**. Hecho: I.1 «¿Por qué regular?»
+   abre el bloque (regulación, Musgrave, 1TFEB con su tabla, motivos con su tabla, en qué se centra
+   la exposición); después I.2, el poder de mercado y la respuesta pública.
+5. **Estructura nueva en 3 bloques, con el algoritmo de Braeutigam ampliado al final del I y el
+   II más largo**. Hecho:
+   - I. Regulación, poder de mercado y mercado relevante (7′30″): I.1 ¿Por qué regular?; I.2 Poder
+     de mercado (concepto, medida, coste y conductas anticompetitivas); I.3 Definición del mercado
+     relevante; I.4 La hoja de ruta: el algoritmo de Braeutigam ampliado.
+   - II. Regulación con información completa (8′, antes 3′): II.1 El monopolio natural
+     (subaditividad, sostenibilidad, dilema); II.2 Primer y segundos óptimos, ahora como modelo con
+     sus bloques a)-e), el programa de Ramsey-Boiteux con `\optim`, la regla de punta y valle con
+     el gráfico de referencia `pico-valle` del 3.A.17 y la evidencia española; II.3 Competencia por
+     el mercado e impugnabilidad (antes III.2); II.4 Liberalización e industrias de red (antes
+     III.3).
+   - III. Desarrollos en presencia de información asimétrica y aplicaciones prácticas (11′): III.1
+     tasa de rentabilidad; III.2 Loeb-Magat y Baron-Myerson; III.3 Laffont-Tirole; III.4 *price
+     cap*; III.5 competencia por comparación (antes III.1, con un nexo nuevo); III.6 compromiso y
+     captura (con la escala de la potencia, ya completa); III.7 aplicaciones prácticas.
+   - **Algoritmo ampliado** (`algoritmo-regulacion`, rehecho y compilado): añade la pregunta
+     «¿conoce el regulador los costes y la demanda?», que separa la rama azul (bloque II: primer
+     óptimo, segundos óptimos, industrias de red; Demsetz y Baumol junto a la sostenibilidad) de la
+     roja (bloque III: tercer óptimo, «¿se compromete el regulador y es benevolente?», captura) y
+     termina en las aplicaciones; leyenda de colores por bloque. Lo explica I.4 con 4 preguntas y
+     Redes del Valle.
+   - Rehechos el esquema del tema (un título por línea y `\esqtiempo` igual a los `\minutos`), la
+     problemática, la estructura, las notas al opositor de cada bloque, las recapitulaciones (I, II
+     y III), la conclusión, la tabla de instrumentos (la subasta pasa a «información completa»; el
+     *yardstick*, a «información asimétrica») y las instrucciones del vídeo. Ficha de repaso
+     reordenada igual (sin tocar enganche ni refranes).
+
+**Comprobaciones**: llaves, entornos, `\ref`/`\label` y citas cuadran; el PDF compila en
+`_trabajo/` (47 páginas de tema); `verificar-tema.py` sin errores de fuente (solo los de «PDF/HTML/
+Word anterior a la fuente», que se van al reconstruir). **Gráficos**: `algoritmo-regulacion`
+(rehecho) y `pico-valle` (copia del 3.A.17), compilados. **Datos que caducan**:
+`datos-actualizables.yaml` nuevo (11 entradas). **Enlaces del original**: siguen todos (UBS,
+ProMarket, vídeo del Stigler Center, Energía y Sociedad, Sahuquillo, DOI de Braeutigam), con
+entrada en el .bib. **Canon**: `_trabajo/canon-pendiente.md` (números de apartado del 3.A.20 en
+las fichas). Las dudas abiertas 1-12 siguen abiertas: estos comentarios no las cierran.

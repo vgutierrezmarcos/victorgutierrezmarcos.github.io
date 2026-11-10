@@ -1,0 +1,34 @@
+% Modelo de Miller y Orr (1966), copiado del 3.A.35 (rama revision-temario) con «activos» en lugar de «bonos»: la caja de la empresa sigue un paseo
+% aleatorio y se controla con una banda. Límite inferior M^inf (aquí
+% en y = 1), punto de retorno M^ret = M^inf + z* (y = 2) y límite superior
+% M^sup = M^inf + 3z* (y = 4). Las sendas son puentes brownianos fijos
+% (semillas 7, 50 y 90 de random.Random, desviación 0,17 por paso; generadas con Python):
+% la primera sale del punto de retorno y toca el límite superior en t = 3,4;
+% la empresa compra activos y vuelve al punto de retorno; la segunda toca el
+% inferior en t = 7,2, vende activos y vuelve al punto de retorno.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=1.05cm]
+  % 1: ejes
+  \capa{1}{\ejes{tiempo}{saldo de caja}{9.6}{4.9}}
+  % 2: límites inferior y superior
+  \capa{2}{\draw[curva1] (0,1) -- (9.2,1) node[etiqueta,right,text=tceemorado] {límite inferior};}
+  \capa{2}{\node[left] at (0,1) {$M^{\mathrm{inf}}$};}
+  \capa{2}{\draw[curva1] (0,4) -- (9.2,4) node[etiqueta,right,text=tceemorado] {límite superior};}
+  \capa{2}{\node[left] at (0,4) {$M^{\mathrm{sup}}=M^{\mathrm{inf}}+3z^*$};}
+  % 3: punto de retorno
+  \capa{3}{\draw[curva2,dashed] (0,2) -- (9.2,2) node[etiqueta,right,text=tceeazul] {punto de retorno};}
+  \capa{3}{\node[left] at (0,2) {$M^{\mathrm{ret}}=M^{\mathrm{inf}}+z^*$};}
+  % 4: senda aleatoria hasta el límite superior y salto (compra activos)
+  \capa{4}{\draw[thick,tceeverde] plot coordinates {(0.00,2.00) (0.09,2.01) (0.17,2.15) (0.26,2.16) (0.34,2.16) (0.42,2.06) (0.51,2.07) (0.59,2.31) (0.68,2.44) (0.77,2.67) (0.85,2.76) (0.94,2.88) (1.02,2.97) (1.10,2.74) (1.19,2.93) (1.27,3.07) (1.36,3.21) (1.44,2.97) (1.53,2.73) (1.61,2.63) (1.70,2.61) (1.78,2.71) (1.87,2.75) (1.95,2.90) (2.04,2.84) (2.12,2.94) (2.21,3.06) (2.29,3.00) (2.38,3.35) (2.46,3.50) (2.55,3.75) (2.63,3.70) (2.72,3.63) (2.80,3.62) (2.89,3.65) (2.98,3.81) (3.06,3.91) (3.15,3.89) (3.23,3.78) (3.31,3.74) (3.40,4.00)};}
+  \capa{4}{\draw[flecha] (3.4,4) -- (3.4,2.06);}
+  \capa{4}{\node[etiqueta,text=tceerojo,anchor=west] at (3.45,3.05) {compra activos};}
+  % 5: senda hasta el límite inferior y salto (vende activos)
+  \capa{5}{\draw[thick,tceeverde] plot coordinates {(3.40,2.00) (3.48,1.87) (3.57,1.87) (3.65,1.79) (3.74,1.70) (3.82,1.25) (3.91,1.33) (3.99,1.46) (4.08,1.54) (4.16,1.51) (4.24,1.44) (4.33,1.63) (4.41,1.89) (4.50,2.04) (4.58,2.02) (4.67,2.19) (4.75,2.62) (4.84,2.51) (4.92,2.71) (5.00,2.53) (5.09,2.38) (5.17,2.75) (5.26,2.53) (5.34,2.42) (5.43,2.13) (5.51,2.20) (5.60,1.96) (5.68,1.85) (5.76,1.91) (5.85,1.87) (5.93,2.26) (6.02,2.24) (6.10,2.16) (6.19,2.28) (6.27,2.21) (6.36,2.14) (6.44,1.97) (6.52,1.95) (6.61,2.07) (6.69,1.92) (6.78,1.84) (6.86,1.65) (6.95,1.47) (7.03,1.61) (7.12,1.31) (7.20,1.00)};}
+  \capa{5}{\draw[flecha] (7.2,1) -- (7.2,1.94);}
+  \capa{5}{\node[etiqueta,text=tceerojo,anchor=west] at (7.25,1.45) {vende activos};}
+  \capa{5}{\draw[thick,tceeverde] plot coordinates {(7.20,2.00) (7.28,2.12) (7.36,2.28) (7.45,2.26) (7.53,2.16) (7.61,2.15) (7.69,2.13) (7.77,1.88) (7.85,2.08) (7.94,2.23) (8.02,2.21) (8.10,2.29) (8.18,2.45) (8.26,2.54) (8.35,2.59) (8.43,2.50) (8.51,2.22) (8.59,2.41) (8.67,2.37) (8.75,2.49) (8.84,2.50) (8.92,2.61) (9.00,2.60)};}
+\end{tikzpicture}
+\end{document}

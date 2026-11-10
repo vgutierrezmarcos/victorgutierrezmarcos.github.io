@@ -1,0 +1,45 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Zona de libre comercio (cada socio con su arancel frente a R; desviación del
+% tráfico y reglas de origen) frente a unión aduanera (una sola frontera con
+% arancel exterior común), 3.B.10, I.1. A partir de Camarero y Tamarit (2019,
+% cap. 1).
+% Autor: Víctor Gutiérrez Marcos
+\begin{tikzpicture}[tcee,
+    pais/.style={font=\large},
+    resto/.style={draw,thick,minimum width=0.9cm,minimum height=0.8cm,font=\large},
+    titulo/.style={font=\normalsize\bfseries}]
+  % ---------------- Panel izquierdo: zona de libre comercio ----------------
+  % 1: la zona (A y B, cada uno con su frontera) y el resto del mundo
+  \capa{1}{\node[titulo] at (2.5,3.55) {Zona de libre comercio};}
+  \capa{1}{\draw[curva1] (0,0) rectangle (2.5,2.6);}
+  \capa{1}{\draw[curva1] (2.5,0) rectangle (5,2.6);}
+  \capa{1}{\node[pais] at (1.25,1.75) {$A$};}
+  \capa{1}{\node[pais] at (3.75,1.75) {$B$};}
+  \capa{1}{\node[resto] (R1) at (6.4,0.85) {$R$};}
+  % 2: cada socio mantiene su arancel frente a R
+  \capa{2}{\node[etiqueta] at (1.25,2.95) {$t_A=20~\%$};}
+  \capa{2}{\node[etiqueta] at (3.75,2.95) {$t_B=5~\%$};}
+  % 3: lo de R entra por B (arancel bajo) y sigue hasta A: desviación del tráfico
+  \capa{3}{\draw[flecha] (R1.west) -- (0.7,0.85);}
+  \capa{3}{\node[etiqueta,align=center] at (2.5,-0.55) {desviación del tráfico\\[-1pt]{\footnotesize(\emph{trade deflection})}};}
+  % 4: reglas de origen en la frontera entre A y B
+  \capa{4}{\draw[curvanueva,line width=2.4pt] (2.5,0.45) -- (2.5,1.25);}
+  \capa{4}{\node[etiqueta,anchor=west,font=\footnotesize,text=tceerojo] at (2.6,0.45) {reglas de origen};}
+  % ---------------- Panel derecho: unión aduanera ----------------
+  % 5: una sola frontera exterior; entre A y B ya no hay aduana
+  \capa{5}{\node[titulo] at (11.5,3.55) {Unión aduanera};}
+  \capa{5}{\draw[curva1,line width=2pt] (9,0) rectangle (14,2.6);}
+  \capa{5}{\draw[guia] (11.5,0) -- (11.5,2.6);}
+  \capa{5}{\node[pais] at (10.25,1.75) {$A$};}
+  \capa{5}{\node[pais] at (12.75,1.75) {$B$};}
+  \capa{5}{\node[resto] (R2) at (15.4,1.3) {$R$};}
+  % 6: arancel exterior común; lo de R paga lo mismo entre por donde entre
+  \capa{6}{\node[etiqueta] at (11.5,2.95) {$t^{\mathrm{AEC}}=12~\%$};}
+  \capa{6}{\draw[flecha] (R2.west) -- (13.4,1.3);}
+  \capa{6}{\draw[flecha] (R2.south) |- (10.25,-0.75) -- (10.25,0.6);}
+  \capa{6}{\node[etiqueta,font=\footnotesize] at (14.45,1.62) {$t^{\mathrm{AEC}}$};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,anchor=west] at (10.35,-0.4) {$t^{\mathrm{AEC}}$};}
+\end{tikzpicture}
+\end{document}

@@ -152,6 +152,12 @@ Sin usar (no hacen falta o no se pudieron comprobar): V4 (coste de 2015), V17 (C
   14. **1D01**: escribe la descomposición con $i_t$ implícito, como `eq:descomposicion-deuda` aquí; y cita `BlanchardLeigh2013` y `SargentWallace1981` donde aquí se usan `BlanchardLeigh2013Growth` y `SargentWallace1981Some`: unificar claves en el canon.
   15. **`notacion.md` § 8**: locales nuevas $\psi$, $\psi_0$ (respuesta del superávit a la deuda en Bohn y Leeper; avisada en nota), $s^{\text{antes}}$, $s^{\text{después}}$, $s^*$, $\bar t$ (aritmética), $\mathrm{TBC}_t$, $D^{\mathrm T}$, $D^{\mathrm M}$ (anexo A), $\bar r_{t-1}$ ex post (anexo A) y $\mathrm{ADD}_t$ (ya en la 1D01).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo»; y «la restricción se escribe al empezar» → «se presenta». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): I y III: \newline → \cortetitulo{}; anexo A: corte antes de «del Tesoro y del banco central». |
+
 ## 7. Dudas abiertas
 
 Aplicada en todas la opción recomendada; Víctor puede cambiarlas al volver.
@@ -181,6 +187,17 @@ Aplicada en todas la opción recomendada; Víctor puede cambiarlas al volver.
 - **A39-22. Enlaces no comprobables desde la red del Ministerio** (control de calidad, 4/11/2026): el datamapper del FMI (`FMI2026WEO`, responde 403 a peticiones automáticas) y el Observatorio de deuda de la AIReF (sin respuesta). Los demás enlaces de la tabla de datos responden. Conviene abrirlos a mano al aprobar.
 - Control de calidad (4/11/2026): con correcciones pendientes de texto, `.bib` y maquetación (ver el informe de la fase 6); ninguna afecta a la estructura.
 
+## Enlaces del original (9/11/2026)
+
+Restaurados:
+- Vídeo del debate Summers-Blanchard del PIIE (YouTube, minutos de Blanchard y de Summers): caja de anotaciones nueva al final de «Otras aproximaciones al análisis de la sostenibilidad», con `PIIE2023Debate`.
+- «Balanced budget» (Wikipedia): nota al pie del teorema del presupuesto equilibrado en el anexo del IS-LM.
+- Ya estaban, con la dirección nueva: el artículo de Blanchard en el PIIE (`Blanchard2023Secular`) y la página del debate (`PIIE2023Debate`).
+
+No restaurados:
+- INE, IPC (tabla 50934), Banco Mundial (deflactor de España), Cinco Días (20/9/2022, deuda en máximo histórico) y *Informe Anual 2022* del Banco de España: eran las fuentes de las cifras de 2022 (inflación del 8,4 %, superávit necesario de 2022) que el tema revisado sustituye por datos de 2025 de Eurostat; el texto donde iban ya no existe. Si Víctor quiere conservarlos como lectura, irían en una caja de anotaciones de «La situación de la deuda pública en España».
+- Tesoro, *Estadísticas* (PDF): da 404 y la dirección antigua no tiene equivalente directo; el tipo medio de la deuda sale ahora del tipo implícito de Eurostat.
+
 ## 8. Instrucciones para el vídeo
 
 - **Pizarra en 3 zonas** (nota del reparto): izquierda, la pregunta «¿quién paga el déficit?», el refrán «lo que no son cuentas, son cuentos» y las 4 pegatinas junto a su concepto: «no hay plazo que no se cumpla ni deuda que no se pague» (equivalencia ricardiana, I.3.1), «lo que es de todos no es de nadie» (fondo común, I.3.3), «quien debe y paga, no debe nada» (sostenibilidad, II.1) y «nadie puede servir a dos señores» (dominación, III.3). Centro, los gráficos. Derecha, las 2 funciones clave.
@@ -191,3 +208,4 @@ Aplicada en todas la opción recomendada; Víctor puede cambiarlas al volver.
 - **Al final**, la pizarra queda con las 2 funciones clave, la matriz de Leeper y las pegatinas.
 - **Conclusión** sin pizarra: empieza por «En conclusión,», recorre las 3 lecturas de la solvencia y termina con la idea final («lo que no son cuentas, son cuentos» y quién paga el déficit).
 - **Enganche**: el refrán, los datos de 2025 (déficit 2,4 %, todo intereses; deuda 100,5 % frente a 87,7 %) y la pregunta. La idea final de la conclusión retoma el refrán y responde con las 4 respuestas de la solvencia.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas. A la izquierda, la pregunta del enganche, el refrán y las pegatinas, cada una junto a su concepto: «no hay plazo que no se cumpla ni deuda que no se pague» (la equivalencia ricardiana), «lo que es de todos no es de nadie» (el fondo común), «quien debe y paga, no debe nada» (la sostenibilidad) y «nadie puede servir a dos señores» (la dominación). En el centro, los gráficos: las sendas de la suavización impositiva, el diagrama de fases de la deuda, la curva de \autor{Laffer} del señoreaje y la matriz de regímenes de \autor{Leeper}. A la derecha, recuadradas y conservadas hasta el final, la restricción en porcentaje del PIB \eqref{eq:restriccion-ratios} y la condición de solvencia \eqref{eq:solvencia}, a la que se vuelve en cada bloque.

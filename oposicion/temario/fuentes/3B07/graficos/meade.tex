@@ -1,0 +1,60 @@
+% Curvas de indiferencia comercial de Meade (1952) para el país A, con el mismo
+% país que haberler-comercio.tex y ofertas-netas.tex:
+%   FPP: X^2 + Y^2 = 36; CIS Cobb-Douglas U = (XY)^(1/2): CIS_0: XY = 18
+%   (autarquía, (p_X/p_Y)^A_aut = 1) y CIS_1: XY = 22,5 (la del libre comercio
+%   con RRI = 2 en haberler-comercio).
+% Plano: exportaciones E^A a la derecha, importaciones M^A hacia arriba; el
+% consumo se mide desde O con X hacia la izquierda (la CIS queda en el 2.º
+% cuadrante) y el bloque de producción es la FPP invertida (X hacia la
+% izquierda desde su origen O'). Si el bloque toca la CIS de nivel U con
+% pendiente común s, su origen está en
+%   E = 6s/sqrt(1+s^2) - U/sqrt(s),  M = U sqrt(s) - 6/sqrt(1+s^2),
+% que es la CIC de nivel U (pendiente s en ese punto).
+%   Bloque en O (s = 1, toca CIS_0 en (-4,243; 4,243)) y en O' (s = 1,5):
+%   O' = (1,528; 1,868), toca CIS_0 en (-3,464; 5,196).
+% Oferta neta (s = RRI): E = 6p/sqrt(1+p^2) - 3 sqrt(1+p^2)/p,
+%   M = 3 sqrt(1+p^2) - 6/sqrt(1+p^2); con RRI = 2: (2,012; 4,025), sobre
+%   CIC_1 (U = 4,743) y tangente a la recta de pendiente 2.
+% Elaboración propia a partir de Meade (1952) y Gandolfo (2014), cap. 3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.62cm,
+    declare function={
+      xp(\s)=6*\s/sqrt(1+\s*\s); yp(\s)=6/sqrt(1+\s*\s);
+      ce(\s,\u)=xp(\s)-\u/sqrt(\s); cm(\s,\u)=\u*sqrt(\s)-yp(\s);
+      oe(\p)=xp(\p)-3*sqrt(1+\p*\p)/\p; om(\p)=3*sqrt(1+\p*\p)-yp(\p);}]
+  % 1: ejes: comercio a la derecha (E^A, M^A), consumo a la izquierda (X, Y)
+  \capa{1}{\draw[eje] (0,0) -- (4.4,0) node[right] {$E^A$};}
+  \capa{1}{\draw[eje] (0,0) -- (-8.0,0) node[below right=2pt and 0pt] {$X$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,8.6) node[left] {$Y$} node[right] {$M^A$};}
+  \capa{1}{\node[below] at (0,0) {$O$};}
+  \capa{1}{\node[etiqueta,font=\footnotesize,anchor=north] at (2.2,-0.55) {comercio de $A$};}
+  \capa{1}{\node[etiqueta,font=\footnotesize,anchor=north] at (-4,-0.55) {consumo de $A$};}
+  % 2: la CIS de autarquía y el bloque de producción en 2 posiciones
+  \capa{2}{\draw[curva4] plot[domain=2.15:7.6,samples=80] ({-\x},{18/\x}) node[etiqueta,above,text=tceedorado] {$\mathrm{CIS}_0$};}
+  \capa{2}{\fill[area2] (0,0) -- (-6,0) arc[start angle=180,end angle=90,radius=6] -- cycle;}
+  \capa{2}{\draw[curva1] (-6,0) arc[start angle=180,end angle=90,radius=6];}
+  \capa{2}{\node[etiqueta,font=\footnotesize,text=tceemorado] at (-2.2,1.6) {FPP};}
+  \capa{2}{\fill[area2] (1.528,1.868) -- (-4.472,1.868) arc[start angle=180,end angle=90,radius=6] -- cycle;}
+  \capa{2}{\draw[thin,tceemorado] (-4.472,1.868) -- (1.528,1.868) -- (1.528,7.868);}
+  \capa{2}{\draw[curva1] (-4.472,1.868) arc[start angle=180,end angle=90,radius=6];}
+  \capa{2}{\node[punto] (Op) at (1.528,1.868) {};}
+  \capa{2}{\node[etiqueta,below right] at (Op) {$O'$};}
+  \capa{2}{\node[punto,fill=tceedorado] at (-4.243,4.243) {};}
+  \capa{2}{\node[punto,fill=tceedorado] at (-3.464,5.196) {};}
+  % 3: CIC_0, la que traza el origen del bloque sobre la misma CIS
+  \capa{3}{\draw[curva2] plot[domain=0.8:2.9,samples=60] ({ce(\x,4.2426)},{cm(\x,4.2426)}) node[etiqueta,right,text=tceeazul] {$\mathrm{CIC}_0$};}
+  % 4: CIC_1, más arriba y a la izquierda: más bienestar
+  \capa{4}{\draw[curvanueva] plot[domain=1.08:3.3,samples=60] ({ce(\x,4.7434)},{cm(\x,4.7434)}) node[etiqueta,anchor=south west,xshift=-2pt,text=tceerojo] {$\mathrm{CIC}_1$};}
+  \capa{4}{\draw[flecha] (3.2,2.6) node[etiqueta,font=\footnotesize,text=tceerojo,anchor=north west,inner sep=1pt] {más bienestar} -- (2.0,3.9);}
+  % 5: rectas de la RRI desde el origen: autarquía (tangente a CIC_0 en O)
+  %    y RRI_1 = 2 (tangente a CIC_1)
+  \capa{5}{\draw[guia] (0,0) -- (4.2,4.2) node[etiqueta,right,text=tceegris,font=\footnotesize] {$(p_X/p_Y)^A_{\mathrm{aut}}=1$};}
+  \capa{5}{\draw[thick,tceeverde] (0,0) -- (3.4,6.8) node[etiqueta,anchor=north west,pos=0.95,text=tceeverde,font=\footnotesize] {$\mathrm{RRI}_1=2$};}
+  \capa{5}{\node[punto] (T) at (2.012,4.025) {};}
+  % 6: la curva de oferta neta, lugar de las tangencias
+  \capa{6}{\draw[curva1] plot[domain=1:2.75,samples=60] ({oe(\x)},{om(\x)}) node[etiqueta,above,xshift=-3pt,text=tceemorado] {$\mathrm{ON}_A$};}
+\end{tikzpicture}
+\end{document}

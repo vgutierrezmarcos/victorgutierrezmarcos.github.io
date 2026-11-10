@@ -1,0 +1,90 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+% Infografía de los modelos de negociación colectiva del bloque I del 3.A.27:
+% la teoría de la negociación como herramienta (Edgeworth, Hicks, Nash,
+% Rubinstein) y los 4 modelos ordenados por lo que entra en la mesa (sindicato
+% monopolista, derecho a gestionar, contratos eficientes y fuertemente
+% eficientes), con dónde queda el acuerdo, el paro y la eficiencia de cada uno;
+% abajo, su uso en la macroeconomía. Elaboración propia a partir de Booth
+% (1995), Cahuc, Carcillo y Zylberberg (2014, cap. 7) y Heijdra (2017).
+% Autor: Víctor Gutiérrez Marcos
+\begin{tikzpicture}[tcee, font=\footnotesize,
+    every node/.append style={execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+    caja/.style={draw=tceemorado, fill=tceemorado!7, rounded corners=2pt,
+      text width=3.05cm, align=center, inner sep=3pt, minimum height=1.25cm},
+    teoria/.style={draw=tceeazul, fill=tceeazul!7, rounded corners=2pt,
+      text width=3.05cm, align=center, inner sep=3pt, minimum height=1.05cm},
+    fila/.style={text width=2.3cm, align=right, font=\footnotesize\itshape, text=tceegris},
+    celda/.style={text width=3.05cm, align=center, inner sep=2pt},
+    mal/.style={celda, text=tceerojo},
+    bien/.style={celda, text=tceeverde},
+    banda/.style={draw=tceedorado, fill=tceedorado!10, rounded corners=2pt,
+      text width=13.6cm, align=center, inner sep=4pt}]
+  % 1: la herramienta: teoría de la negociación
+  \capa{1}{
+    \node[fila] at (1.15,3.3) {La herramienta: teoría de la negociación};
+    \node[teoria] (ed) at (4.2,3.3) {\textbf{\autor{Edgeworth} (1881)}\\ curva de contrato: el reparto queda indeterminado};
+    \node[teoria] (hi) at (7.7,3.3) {\textbf{\autor{Hicks} (1932)}\\ concesión y resistencia: huelgas potenciales};
+    \node[teoria] (na) at (11.2,3.3) {\textbf{\autor{Nash} (1950)}\\ producto de \autor{Nash} generalizado: poder \mbox{$\gamma$}};
+    \node[teoria] (ru) at (14.7,3.3) {\textbf{\autor{Rubinstein} (1982)}\\ \mbox{$\gamma=\rho_B/(\rho_S+\rho_B)$}: gana el más paciente};
+    \draw[->, thick, tceeazul] (ed) -- (hi);
+    \draw[->, thick, tceeazul] (hi) -- (na);
+    \draw[->, thick, tceeazul] (na) -- (ru);
+  }
+  % 2: lo que entra en la mesa, de menos a más
+  \capa{2}{
+    \draw[->, line width=1.6pt, tceedorado] (2.6,1.95) -- (16.4,1.95);
+    \node[font=\footnotesize\bfseries, text=tceedorado, fill=white, inner sep=2pt] at (9.45,1.95) {cada vez más cosas en la mesa de negociación $\longrightarrow$};
+    \node[fila] at (1.15,0.75) {Modelo};
+    \node[fila] at (1.15,-0.6) {Qué se negocia};
+    \node[fila] at (1.15,-1.6) {Dónde queda el acuerdo};
+    \node[fila] at (1.15,-2.5) {Paro involuntario};
+    \node[fila] at (1.15,-3.4) {Eficiencia};
+  }
+  % 3: sindicato monopolista
+  \capa{3}{
+    \node[caja] at (4.2,0.75) {\textbf{Sindicato monopolista}\\ \autor{Dunlop} (1944)\\ \mbox{$\gamma=1$}};
+    \node[celda] at (4.2,-0.6) {nada: el sindicato fija $w$ y la empresa elige $L$};
+    \node[celda] at (4.2,-1.6) {sobre la demanda $L^D$ (punto $M$)};
+    \node[mal] at (4.2,-2.5) {sí};
+    \node[mal] at (4.2,-3.4) {no: lente de mejoras};
+  }
+  % 4: derecho a gestionar
+  \capa{4}{
+    \node[caja] at (7.7,0.75) {\textbf{Derecho a gestionar}\\ \autor{Leontief} (1946); \autor{Nickell} y \autor{Andrews} (1983)\\ \mbox{$\gamma\in(0,1)$}};
+    \node[celda] at (7.7,-0.6) {$w$; la empresa elige $L$ después};
+    \node[celda] at (7.7,-1.6) {sobre $L^D$, entre $C$ y $M$ (punto $R$)};
+    \node[mal] at (7.7,-2.5) {sí};
+    \node[mal] at (7.7,-3.4) {no (salvo \mbox{$\gamma=0$})};
+  }
+  % 5: contratos eficientes
+  \capa{5}{
+    \node[caja] at (11.2,0.75) {\textbf{Contratos eficientes}\\ \autor{McDonald} y \autor{Solow} (1981)\\ débilmente eficientes};
+    \node[celda] at (11.2,-0.6) {$w$ y $L$ a la vez};
+    \node[celda] at (11.2,-1.6) {curva de contratos, fuera de $L^D$};
+    \node[bien] at (11.2,-2.5) {no: \mbox{$L\geq L^c$}};
+    \node[bien] at (11.2,-3.4) {en el reparto; en la producción, solo con neutralidad};
+  }
+  % 6: contratos fuertemente eficientes
+  \capa{6}{
+    \node[caja] at (14.7,0.75) {\textbf{Contratos fuertemente eficientes}\\ \autor{Booth} (1995)};
+    \node[celda] at (14.7,-0.6) {$w$, $L$ y un seguro de paro};
+    \node[celda] at (14.7,-1.6) {vertical en $L^c$, también con aversión};
+    \node[bien] at (14.7,-2.5) {no: \mbox{$L=L^c$}};
+    \node[bien] at (14.7,-3.4) {en el reparto y en la producción};
+  }
+  % 7: la empresa decide el empleo (1-2) frente a acuerdo eficiente (3-4)
+  \capa{7}{
+    \draw[decorate, decoration={brace, amplitude=5pt, mirror}, thick, tceerojo] (2.65,-4.0) -- (9.25,-4.0)
+      node[midway, below=6pt, text=tceerojo, font=\footnotesize, text width=6.4cm, align=center] {la empresa elige el empleo: más poder sindical, más $w$ y menos $L$};
+    \draw[decorate, decoration={brace, amplitude=5pt, mirror}, thick, tceeverde] (9.65,-4.0) -- (16.25,-4.0)
+      node[midway, below=6pt, text=tceeverde, font=\footnotesize, text width=6.4cm, align=center] {acuerdo eficiente: el poder sindical reparte la renta};
+  }
+  % 8: en la macroeconomía
+  \capa{8}{
+    \node[banda] at (9.45,-5.6) {\textbf{En la macroeconomía}: la regla de \autor{Nash} da la curva salarial del modelo de búsqueda (\autor{Diamond}, \autor{Mortensen} y \autor{Pissarides}) y el derecho a gestionar, la curva de fijación de salarios (WS)};
+  }
+\end{tikzpicture}
+\end{document}

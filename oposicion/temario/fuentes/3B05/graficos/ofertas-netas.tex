@@ -1,0 +1,56 @@
+% Curvas de oferta neta de A y B (notación de 3B08/graficos/johnson.tex: X la
+% exporta A y la importa B; Y la exporta B; RRI = p_X/p_Y es la pendiente del
+% rayo desde el origen). Elaboración propia, cualitativa pero calculada:
+%   A: el país de haberler-comercio.tex: FPP X^2 + Y^2 = 36, CIS Cobb-Douglas
+%      simétrica, (p_X/p_Y)^A_aut = 1. Con RRI = p:
+%        E^A = 6p/sqrt(1+p^2) - 3 sqrt(1+p^2)/p,  M^A = 3 sqrt(1+p^2) - 6/sqrt(1+p^2)
+%      (con RRI = 2 exporta 2,012 de X e importa 4,025 de Y, como allí).
+%   B: FPP X^2/9 + Y^2/144 = 1, misma CIS, (p_X/p_Y)^B_aut = 4. Con RRI = p,
+%      d = sqrt(9p^2 + 144):
+%        importa d/(2p) - 9p/d de X y exporta 144/d - d/2 de Y.
+%   Equilibrio único: E = (2,012; 4,025), RRI = 2, entre 1 y 4.
+% Panel derecho (equilibrios múltiples): la misma ON_B y una ON_A' en S,
+%   X = Y + 0,64371 Y^2 - 0,99349 Y^3 + 0,31591 Y^4 - 0,028939 Y^5
+%   (pendiente 1 en el origen), que pasa por los puntos de ON_B con RRI = 3,
+%   2 y 1,3: E_1 = (0,700; 2,100), E_2 = (2,012; 4,025), E_3 = (3,926; 5,103).
+%   E_1 y E_3 estables, E_2 inestable.
+% Elaboración propia a partir de Marshall (1879), Meade (1952) y Gandolfo
+% (2014), cap. 3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.85cm,
+    declare function={
+      da(\p)=sqrt(36*\p*\p+36); ea(\p)=36*\p/da(\p)-da(\p)/(2*\p); ma(\p)=da(\p)/2-36/da(\p);
+      db(\p)=sqrt(9*\p*\p+144); xb(\p)=db(\p)/(2*\p)-9*\p/db(\p); yb(\p)=144/db(\p)-db(\p)/2;
+      ha(\y)=\y+0.64371394*\y^2-0.99348898*\y^3+0.31590931*\y^4-0.02893936*\y^5;}]
+  % 1: ejes X e Y
+  \capa{1}{\ejes{$X$}{$Y$}{6.4}{7.8}}
+  \capa{1}{\node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (5.0,-0.45) {exportación de $A$\\importación de $B$};}
+  \capa{1}{\node[etiqueta,font=\footnotesize,align=right,anchor=south east] at (-0.15,8.15) {importación de $A$\\exportación de $B$};}
+  % 2: rayo del precio de autarquía de A y ON_A, tangente a él en el origen
+  \capa{2}{\draw[guia] (0,0) -- (6.1,6.1) node[etiqueta,right,text=tceegris,font=\footnotesize] {$(p_X/p_Y)^A_{\mathrm{aut}}=1$};}
+  \capa{2}{\draw[curva1] plot[domain=1:2.75,samples=70] ({ea(\x)},{ma(\x)}) node[etiqueta,above,text=tceemorado] {$\mathrm{ON}_A$};}
+  % 3: rayo del precio de autarquía de B y ON_B, tangente a él en el origen
+  \capa{3}{\draw[guia] (0,0) -- (1.9,7.6) node[etiqueta,above,text=tceegris,font=\footnotesize] {$(p_X/p_Y)^B_{\mathrm{aut}}=4$};}
+  \capa{3}{\draw[curva2] plot[domain=4:1.12,samples=70] ({xb(\x)},{yb(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{ON}_B$};}
+  % 4: equilibrio E y sus proyecciones
+  \capa{4}{\node[punto] (E) at (2.012,4.025) {};}
+  \capa{4}{\node[etiqueta,below right=0pt and 1pt] at (E) {$E$};}
+  \capa{4}{\proyeccion{(E)}{$E^A=M^B$}{$M^A=E^B$}}
+  % 5: rayo de la RRI de equilibrio por E
+  \capa{5}{\draw[thick,tceeverde] (0,0) -- (3.55,7.1) node[etiqueta,above right=-1pt,text=tceeverde,font=\footnotesize] {$\mathrm{RRI}=\frac{p_X}{p_Y}=2$};}
+  % 6: equilibrios múltiples (panel derecho): ON_A' en S corta 3 veces a ON_B
+  \begin{scope}[xshift=8.6cm,x=0.7cm,y=0.7cm]
+    \capa{6}{\ejes{$X$}{$Y$}{5.6}{6.8}}
+    \capa{6}{\node[etiqueta,anchor=south] at (2.8,7.0) {equilibrios múltiples};}
+    \capa{6}{\draw[curva2] plot[domain=4:1.12,samples=70] ({xb(\x)},{yb(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{ON}_B$};}
+    \capa{6}{\draw[curvanueva] plot[domain=0:5.45,samples=90] ({ha(\x)},\x) node[etiqueta,above,text=tceerojo] {$\mathrm{ON}_A'$};}
+    \capa{6}{\node[punto,label={[etiqueta]left:$E_1$}] at (0.700,2.100) {};}
+    \capa{6}{\node[punto,fill=white,draw=black,label={[etiqueta]below right=-1pt:$E_2$}] at (2.012,4.025) {};}
+    \capa{6}{\node[punto,label={[etiqueta]below right=-1pt:$E_3$}] at (3.926,5.103) {};}
+    \capa{6}{\node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (2.2,2.6) {$E_1$, $E_3$: estables\\$E_2$: inestable};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,27 @@
+% Difusión tecnológica e imitación (Barro y Sala-i-Martin, 1997).
+% Eje horizontal: N_2/N_1 entre 0 y 1 (1 = 6 cm). Líder: gamma_1 = 1,2 (cm).
+% Seguidor: gamma_2(x) = gamma_1 + ln(x*/x), con x* = (N_2/N_1)* = 0,7:
+% decreciente y convexa, corta a gamma_1 exactamente en x* (4,2 cm).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,declare function={gs(\x)=1.2+ln(0.7/\x);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.6,-0.7) rectangle (8.6,4.3);
+  % 1: ejes
+  \capa{1}{\ejes{$N_2/N_1$}{$\gamma$}{7.8}{4.2}}
+  \capa{1}{\draw (6,0.08) -- (6,-0.08) node[below] {$1$};}
+  % 2: recta horizontal del líder
+  \capa{2}{\draw[curva2] (0,1.2) -- (6.2,1.2)
+      node[etiqueta,right,text=tceeazul] {$\gamma_1$ (líder)};}
+  % 3: curva decreciente del seguidor
+  \capa{3}{\draw[curva1] plot[domain=0.05:0.97,samples=100] ({6*\x},{gs(\x)});}
+  \capa{3}{\node[etiqueta,text=tceemorado,anchor=west] at ({6*0.05+0.1},{gs(0.05)}) {$\gamma_2(N_2/N_1)$ (seguidor)};}
+  % 4: estado estacionario y flechas de convergencia sobre el eje
+  \capa{4}{\node[punto] (E) at (4.2,1.2) {};}
+  \capa{4}{\draw[guia] (E) -- (4.2,0) node[below,text=black] {$(N_2/N_1)^*$};}
+  \capa{4}{\draw[flecha] (0.5,0.25) -- (3.9,0.25);}
+  \capa{4}{\draw[flecha] (5.8,0.25) -- (4.5,0.25);}
+\end{tikzpicture}
+\end{document}

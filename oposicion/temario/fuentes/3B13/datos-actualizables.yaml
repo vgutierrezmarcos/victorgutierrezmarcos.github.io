@@ -1,0 +1,222 @@
+tema: 3B13
+fecha_inventario: 2026-11-09
+# Casi todo el tema sale de la Encuesta Trienal del BPI de abril de 2025 (datos
+# definitivos de junio de 2026). La próxima encuesta es la de abril de 2028:
+# preliminares en septiembre de 2028 y definitivos hacia junio de 2029. Cuando
+# llegue, hay que rehacer los 5 CSV, los gráficos y todas las cifras de los
+# apartados I.3 y II (volumen, divisas, plazas, contrapartidas, instrumentos).
+datos:
+  - id: trienal-volumen
+    texto: "Ese mismo mes el mercado de divisas batió su récord: 9,5 billones de dólares diarios, un 27~\\% más que en 2022"
+    texto_repaso: "9,5 billones de \\$ diarios, +27~\\%"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    valor: 9.5
+    unidad: billones de USD diarios (neto-neto)
+    periodo: abril 2025
+    fuente: BIS2026TrienalDatos
+    organismo: BIS
+    serie: "Triennial Central Bank Survey, OTC FX turnover, total (WS_DER_OTC_TOV A.U.A.B.5J.A.5J.A.TO1.TO1.A.A.3.C)"
+    url: https://www.bis.org/statistics/rpfx25.htm
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bis-trienal
+    depende: [datos/bis2025-instrumentos.csv, graficos/instrumentos-bis.tex]
+    frase: "repetido en l. 81 (pizarra), l. 220 «En abril de 2025 se negociaron de media 9,5 billones de dólares al día, un 27~\\% más que en abril de 2022»; «unos 1,5 billones diarios» por los aranceles; l. 39 «52 jurisdicciones y más de 1.100 bancos»; ficha l. 32, 37, 39, 79, 240"
+
+  - id: trienal-vs-comercio-pib
+    texto: "de modo que el mercado de divisas negocia en menos de 4 días lo que el comercio mueve en un año"
+    texto_repaso: "Comercio mundial \\dato{34,65 billones de \\$}{OMC, 2025}"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    valor: 34.65
+    unidad: billones de USD (comercio mundial de bienes y servicios)
+    periodo: "2025"
+    fuente: OMC2026GTOS
+    organismo: OMC
+    serie: "Global Trade Outlook and Statistics, exportaciones mundiales de bienes y servicios"
+    url: https://www.wto.org/english/res_e/booksp_e/gtos0326_e.pdf
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-comercio-mundial
+    frase: "«34,65 billones de dólares en 2025» (l. 222); «En menos de 4 días» (l. 16); nota «unas 5 veces el PIB anual de España» (FMI2026WEO, familia fmi-weo)"
+
+  - id: trienal-clientes-no-financieros
+    texto: "(4,6~\\% en 2025, frente al 13,4~\\% de 2010)"
+    texto_repaso: "\\dato{4,6~\\%}{2025; 13,4~\\% en 2010}"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    valor: 4.6
+    unidad: "% del volumen"
+    periodo: abril 2025
+    fuente: BIS2026TrienalDatos
+    organismo: BIS
+    serie: "Triennial Survey, contrapartida: clientes no financieros"
+    url: https://www.bis.org/statistics/rpfx25.htm
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bis-trienal
+    depende: [datos/bis2025-contrapartidas.csv, graficos/contrapartidas-bis.tex]
+    frase: "contrapartidas en l. 356 (interdealer 46,7 %), 384 (otras financieras 48,6 %), 397 (4,6 %), 408 (2,5 %), 432 (prime brokerage 22,7 %), 439 (sector oficial 1,4 %); ficha l. 91-93"
+
+  - id: trienal-espana
+    texto: "En España se negociaron 67.900 millones de dólares diarios, un 73~\\% más que en 2022, el 0,5~\\% del total mundial"
+    donde: [3B13.tex]
+    valor: 67900
+    unidad: millones de USD diarios
+    periodo: abril 2025
+    fuente: BdE2025Encuesta
+    organismo: Banco de España
+    serie: "Encuesta trienal sobre los mercados OTC de divisas y derivados, España"
+    url: https://www.bde.es/wbe/es/estadisticas/temas/
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bis-trienal
+
+  - id: trienal-divisas
+    texto: "el \\emph{dólar} está en uno de los lados del 89,1~\\% de las operaciones (88,4~\\% en 2022)"
+    texto_repaso: "USD 89,1~\\% (vehicular"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    valor: 89.1
+    unidad: "% de las operaciones (suman 200 %)"
+    periodo: abril 2025
+    fuente: BIS2026TrienalDatos
+    organismo: BIS
+    serie: "Triennial Survey, cuota por divisa y por par"
+    url: https://www.bis.org/statistics/rpfx25.htm
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bis-trienal
+    depende: [datos/bis2025-divisas.csv, datos/bis2025-pares.csv, graficos/divisas-bis.tex]
+    frase: "euro 28,5 (30,6 en 2022, 32,3 en 2019), yen 16,9, libra 10,2 (12,9), renminbi 8,6 (4,3 en 2019), par dólar-renminbi 8,2 (l. 233-237); ficha l. 80"
+
+  - id: trienal-plazas
+    texto: "El Reino Unido sigue a la cabeza, con el 37,8~\\% (su máximo fue el 43,2~\\% de 2019)"
+    texto_repaso: "Reino Unido 37,8~\\% (máx.\\ 43,2 en 2019)"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    valor: 37.8
+    unidad: "% del volumen (neto-bruto)"
+    periodo: abril 2025
+    fuente: BIS2026TrienalDatos
+    organismo: BIS
+    serie: "Triennial Survey, volumen por plaza"
+    url: https://www.bis.org/statistics/rpfx25.htm
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bis-trienal
+    depende: [datos/bis2025-plazas.csv]
+    frase: "EE. UU. 18,6, Singapur 11,8, Hong Kong 7, Japón 3,5, 5 primeros 78,7"
+
+  - id: trienal-instrumentos
+    texto: "contado (\\emph{spot}): 2,95 billones de dólares, el 31~\\%;"
+    texto_repaso: "contado 2,95 billones (31~\\%, +42~\\%)"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    valor: 2.95
+    unidad: billones de USD diarios y % del total
+    periodo: abril 2025
+    fuente: BIS2026TrienalDatos
+    organismo: BIS
+    serie: "Triennial Survey, volumen por instrumento"
+    url: https://www.bis.org/statistics/rpfx25.htm
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bis-trienal
+    depende: [datos/bis2025-instrumentos.csv, graficos/instrumentos-bis.tex]
+    frase: "lista l. 467-471 (plazo 1,75; FX swaps 4; currency swaps 0,16; opciones 0,63) y repetidas en l. 490, 499, 504 (NDF 3,5 %), 522, 535, 550; tabla l. 559-574 «Peso en 2025»; l. 1316 «en la de 2025 son el 42~\\%»; ficha l. 106, 240, 260"
+
+  - id: trienal-liquidacion
+    texto: "en abril de 2025 solo el 36~\\% de los pagos se liquidó con PvP"
+    texto_repaso: "2025: 36~\\% con PvP"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    valor: 36
+    unidad: "% de los pagos"
+    periodo: abril 2025
+    fuente: Drehmann2026Liquidacion
+    organismo: BIS
+    serie: "Triennial Survey, settlement of FX turnover"
+    url: https://www.bis.org/statistics/rpfx25.htm
+    periodicidad: trienal
+    proxima: 2029-06
+    familia: bis-trienal
+    frase: "54 % otros métodos, 10 % expuesto, «unos 1,4 billones de dólares diarios»"
+
+  - id: cls-monedas-miembros
+    texto: "hoy liquida en 18 monedas, con más de 75 miembros"
+    texto_repaso: "18 monedas, > 75 miembros"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    unidad: monedas y miembros de CLS
+    periodo: "2026"
+    fuente: CLS2026About
+    organismo: CLS Group
+    url: https://www.cls-group.com/about/
+    periodicidad: irregular
+    familia: cls
+
+  - id: deg-cesta
+    texto: "el dólar (43,38~\\%), el euro (29,31~\\%), el renminbi (12,28~\\%), el yen (7,59~\\%) y la libra (7,44~\\%)"
+    donde: [3B13.tex]
+    unidad: "% de ponderación en la cesta del DEG"
+    periodo: revisión de 2022 (en vigor desde el 1/8/2022)
+    fuente: FMI2022DEG
+    organismo: FMI
+    serie: "SDR Valuation Review"
+    url: https://www.imf.org/en/News/Articles/2022/05/14/pr22153-imf-board-concludes-sdr-valuation-review
+    periodicidad: quinquenal
+    proxima: 2027-07
+    familia: fmi-deg
+
+  - id: tce-euro
+    texto: "el efectivo nominal frente a 17 estaba en 98,2 (primer trimestre de 1999 = 100) en octubre de 2026, un 3,6~\\% por debajo de un año antes"
+    texto_repaso: "\\dato{98,2, $-3{,}6$~\\% interanual}{BCE, oct.\\ 2026}"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    valor: 98.2
+    unidad: índice (1999T1 = 100)
+    periodo: octubre 2026
+    fuente: BCE2026TCE
+    organismo: BCE
+    serie: "EXR.M.E5.EUR.EN00.A (TCE nominal frente a 17 socios, EER-18)"
+    url: https://data.ecb.europa.eu/data/datasets/EXR
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: bce-tipo-cambio
+    frase: "si el signo cambia, cambia «es decir, el euro se había \\emph{depreciado}»; los pesos «de 2022-2024, en vigor desde enero de 2026» (l. 197) cambian cada 3 años (próximos en 2029)"
+
+  - id: reservas-cofer
+    texto: "las reservas de divisas de los bancos centrales suman 13,2 billones de dólares (segundo trimestre de 2026)"
+    texto_repaso: "\\dato{13,2 billones de \\$"
+    donde: [3B13.tex, repaso/3B13-repaso.tex]
+    valor: 13.2
+    unidad: billones de USD
+    periodo: 2026-T2
+    fuente: FMI2026COFER
+    organismo: FMI
+    serie: "COFER, total foreign exchange holdings y cuotas de las reservas asignadas"
+    url: https://data.imf.org/en/datasets/IMF.STA:COFER
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: fmi-cofer
+    frase: "«el 56,7~\\% de las asignadas está en dólares, el 20,6~\\% en euros y el 2,1~\\% en renminbis»; «más de 8 veces las de 1997»; ficha l. 140 y 240"
+
+  - id: reservas-china
+    texto: "China tiene unos 3,4 billones \\parencite{SAFE2026Reservas}"
+    donde: [3B13.tex]
+    valor: 3.4
+    unidad: billones de USD
+    periodo: octubre 2026
+    fuente: SAFE2026Reservas
+    organismo: SAFE (China)
+    serie: "Official Reserve Assets, foreign currency reserves"
+    url: https://www.safe.gov.cn/en/2021/0203/2045.html
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: safe-reservas-china
+
+  - id: tesoro-manipuladores
+    texto: "en su informe de julio de 2026 no ve manipuladores, aunque mantiene a China en observación"
+    donde: [3B13.tex]
+    periodo: julio 2026
+    fuente: Tesoro2026FX
+    organismo: Departamento del Tesoro de EE. UU.
+    serie: "Macroeconomic and Foreign Exchange Policies of Major Trading Partners of the United States"
+    url: https://home.treasury.gov/policy-issues/international/exchange-rate-policies
+    periodicidad: semestral
+    proxima: 2027-01
+    familia: tesoro-eeuu-divisas
+    nota: "no es cifra; es la conclusión del último informe"

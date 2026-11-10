@@ -1,0 +1,31 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Ecuación de gravedad (esquema, no datos): comercio corregido por el tamaño
+% frente a la distancia, en logaritmos. Misma escala en los 2 ejes, de modo
+% que la pendiente -1 (elasticidad distancia) se ve a 45 grados; la recta de
+% los pares con acuerdo está desplazada hacia arriba en beta_4 = 1.
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.9]
+  % 1: ejes
+  \capa{1}{\ejes{$\ln d_{ij}$}{$\ln\dfrac{X_{ij}}{Y_i\,Y_j}$}{7}{5.8}}
+  % 2: pares sin acuerdo: pendiente -1 (elasticidad distancia)
+  \capa{2}{%
+    \draw[curva1] (1.0,4.8) -- (5.2,0.6);
+    \node[etiqueta,align=center,text=tceemorado] at (1.5,1.9)
+      {sin acuerdo\\($\mathrm{ACR}_{ij}=0$)};
+    \draw[guia] (3.4,2.4) -- (3.4,1.4) -- (4.4,1.4);
+    \node[etiqueta,left,font=\footnotesize] at (3.4,1.9) {$-1$};
+    \node[etiqueta,below,font=\footnotesize] at (3.9,1.4) {$1$};
+  }
+  % 3: pares con acuerdo: recta paralela, más arriba
+  \capa{3}{%
+    \draw[curvanueva] (2.0,4.8) -- (6.2,0.6);
+    \node[etiqueta,align=center,text=tceerojo] at (5.4,3.5)
+      {con acuerdo\\($\mathrm{ACR}_{ij}=1$)};
+  }
+  % 4: el efecto del acuerdo, beta_4
+  \capa{4}{%
+    \draw[flecha] (2.6,3.2) -- (2.6,4.2) node[etiqueta,midway,left] {$\beta_4$};
+  }
+\end{tikzpicture}
+\end{document}

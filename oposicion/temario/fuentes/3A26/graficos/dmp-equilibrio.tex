@@ -9,13 +9,16 @@
 %   (theta* = 0,8); curva de Beveridge V = [s(1-U)/(A U^alpha)]^(1/(1-alpha))
 %   con s/A = 0,15: V = 5,0625 (1 - U/15)^2 / U en el dibujo; rayo V = 0,8 U;
 %   U* = s/(s+f(theta*)) -> (2,1543; 1,7234).
+% Capas 9-12: estática comparativa de cada parámetro sobre cada curva, como la
+% imagen 6 del tema antiguo (signos del anexo B: curva salarial no depende de
+% r, s ni A; creación de empleo w = y - (r+s) c theta^alpha / A).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
 \begin{tikzpicture}[tcee]
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
-  \path (-0.7,-0.8) rectangle (16.6,5.2);
+  \path (-0.7,-0.8) rectangle (17.2,5.2);
   % ---------------- Panel izquierdo: (theta, w) ----------------------------
   % 1: ejes
   \capa{1}{\ejes{$\theta$}{$w$}{5.8}{4.6}}
@@ -26,8 +29,10 @@
       node[etiqueta, right, align=left, text=tceeverde] {creación\\de empleo};
     \node[left] at (0,3.6) {$y$};}
   % 4: equilibrio (theta*, w*)
+  % theta* en el color del rayo V = theta* U del panel derecho (es el mismo número)
   \capa{4}{\node[punto] (E) at (2.5,2.275) {};
-    \proyeccion{(E)}{$\theta^*$}{$w^*$}}
+    \draw[guia, draw=tceedorado] (E) -- (2.5,0) node[below, text=tceedorado] {$\theta^*$};
+    \draw[guia] (E) -- (0,2.275) node[left] {$w^*$};}
   % ---------------- Panel derecho: (U, V) ----------------------------------
   \begin{scope}[xshift=9.6cm]
     % 5: ejes
@@ -40,6 +45,26 @@
     % 8: equilibrio (U*, V*)
     \capa{8}{\node[punto] (B) at (2.1543,1.7234) {};
       \proyeccion{(B)}{$U^*$}{$V^*$}}
+  \end{scope}
+  % ---------------- Estática comparativa: qué mueve cada curva ------------
+  % (flechas: hacia dónde se desplaza cada curva cuando sube el parámetro)
+  % 9: la curva salarial sube con y, z, gamma y c
+  \capa{9}{\draw[flecha] (4.4,2.94) -- (3.8,3.75)
+      node[etiqueta, above, text=tceerojo] {$\uparrow y,\ \uparrow z,\ \uparrow\gamma,\ \uparrow c$};}
+  % 10: la creación de empleo sube con y y A, y baja con c, r y s
+  \capa{10}{\draw[flecha] (1.2,2.682) -- (1.75,3.4)
+      node[etiqueta, above, text=tceerojo] {$\uparrow y,\ \uparrow A$};
+    \draw[flecha] (4.0,1.924) -- (3.5,1.15)
+      node[etiqueta, below, text=tceerojo] {$\uparrow c,\ \uparrow r,\ \uparrow s$};}
+  \begin{scope}[xshift=9.6cm]
+    % 11: el rayo gira hacia arriba si sube theta* (y, A) y hacia abajo si baja
+    \capa{11}{\draw[flecha] (4.0,3.2) to[bend right=20] (3.3,3.75)
+        node[etiqueta, above left, text=tceerojo] {$\uparrow y,\ \uparrow A$};
+      \draw[flecha] (4.0,3.2) to[bend left=20] (4.6,2.65)
+        node[etiqueta, below right, align=left, text=tceerojo] {$\uparrow z,\ \uparrow\gamma,$\\$\uparrow c,\ \uparrow r,\ \uparrow s$};}
+    % 12: la curva de Beveridge se aleja del origen con s y con menos A
+    \capa{12}{\draw[flecha] (3.3,0.95) -- (3.85,1.5)
+        node[etiqueta, above, text=tceerojo] {$\uparrow s,\ \downarrow A$};}
   \end{scope}
 \end{tikzpicture}
 \end{document}

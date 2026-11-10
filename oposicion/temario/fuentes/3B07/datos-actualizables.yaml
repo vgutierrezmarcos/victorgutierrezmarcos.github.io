@@ -1,0 +1,126 @@
+tema: 3B07
+fecha_inventario: 2026-11-09
+datos:
+  - id: comercio-nmf
+    texto: "bajó del 80~\\% a principios de 2025 al 72~\\% en febrero de 2026"
+    texto_repaso: "\\dato{80\\,\\% \\ensuremath{\\Rightarrow} 72\\,\\% (inicio de 2025 a feb. 2026)}{OMC, 2026}"
+    donde: [3B07.tex, repaso/3B07-repaso.tex]
+    valor: 72
+    unidad: "% del comercio mundial de mercancías en condiciones NMF"
+    periodo: febrero 2026
+    fuente: OMC2026Perspectivas
+    organismo: OMC
+    serie: "Global Trade Outlook and Statistics, cuota del comercio en condiciones NMF"
+    url: https://www.wto.org/spanish/res_s/booksp_s/trade_outlook26_s.pdf
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-comercio-mundial
+    nota: "posible desfase: la edición de octubre de 2026 (OMC2026PerspectivasOct, ya en el .bib) puede traer un dato más reciente"
+
+  - id: comercio-mundial-valor
+    texto: "el comercio mundial de bienes y servicios alcanzó 34,65 billones de dólares en 2025"
+    texto_repaso: "\\dato{34,65 billones \\$ en 2025}{OMC, 2026}"
+    donde: [3B07.tex, repaso/3B07-repaso.tex]
+    valor: 34.65
+    unidad: billones de USD
+    periodo: "2025"
+    fuente: OMC2026Perspectivas
+    organismo: OMC
+    serie: "exportaciones mundiales de bienes y servicios comerciales"
+    url: https://www.wto.org/spanish/res_s/booksp_s/trade_outlook26_s.pdf
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-comercio-mundial
+    frase: "también en la apertura de la ficha («34,65 billones \\$ (2025)»)"
+
+  - id: aranceles-medios-omc
+    texto: "bajó del 13,1~\\% al 8,9~\\% en media simple y del 7,0~\\% al 3,9~\\% ponderado por el comercio; con las preferencias, el arancel efectivo ponderado es del 2,2~\\%"
+    texto_repaso: "simple \\dato{13,1 \\ensuremath{\\Rightarrow} 8,9\\,\\%}{OMC, 2026}"
+    donde: [3B07.tex, repaso/3B07-repaso.tex]
+    valor: 8.9
+    unidad: "% (arancel NMF aplicado medio, simple; ponderado 3,9; efectivo 2,2)"
+    periodo: 1996-2024
+    fuente: OMC2026BlogAranceles
+    organismo: OMC
+    serie: "Analytical Database, blog de datos 22/09/2026, figura 1 (124 miembros)"
+    url: https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_22sep26_491_e.htm
+    periodicidad: irregular (anual en la base de datos)
+    familia: omc-aranceles
+    depende: [datos/aranceles-medios-mundo.csv, graficos/aranceles-medios-mundo.tex]
+    frase: "«entre 1996 y 2024» y el caption «1996-2024»; la nota del gráfico «No recoge las medidas arancelarias de 2025»"
+
+  - id: ue-arancel-agricola
+    texto: "la Unión Europea aplica de media un 10,3~\\% a los productos agrícolas importados"
+    texto_repaso: "UE agrícola: media \\dato{10,3\\,\\%}{OMC, 2026}"
+    donde: [3B07.tex, repaso/3B07-repaso.tex]
+    valor: 10.3
+    unidad: "% (arancel NMF aplicado medio simple, agrícolas)"
+    periodo: "2025 (perfiles 2026)"
+    fuente: OMC2026PerfilesArancelarios
+    organismo: OMC
+    serie: "World Tariff Profiles, Unión Europea"
+    url: https://www.wto.org/spanish/res_s/booksp_s/tariffprofiles26_s.pdf
+    periodicidad: anual
+    proxima: 2027-07
+    familia: omc-aranceles
+    frase: "en la misma familia: no ad valorem «el 31,3~\\%» (l. 127), contingentes «al 13,5~\\% de las líneas agrícolas» (l. 132); ficha l. 237"
+
+  - id: india-agua-arancelaria
+    texto: "India tiene un arancel consolidado medio del 50,8~\\% y aplica el 16,0~\\%"
+    texto_repaso: "India: consolidado \\dato{50,8\\,\\%}{OMC, 2026}"
+    donde: [3B07.tex, repaso/3B07-repaso.tex]
+    valor: 50.8
+    unidad: "% (consolidado medio; aplicado 16,0)"
+    periodo: "2025 (perfiles 2026)"
+    fuente: OMC2026PerfilesArancelarios
+    organismo: OMC
+    serie: "World Tariff Profiles, India"
+    url: https://www.wto.org/spanish/res_s/booksp_s/tariffprofiles26_s.pdf
+    periodicidad: anual
+    proxima: 2027-07
+    familia: omc-aranceles
+
+  - id: bienes-intermedios
+    texto: "que hoy son algo más de la mitad, el 52~\\%, del comercio de mercancías sin combustibles"
+    texto_repaso: "\\dato{52\\,\\% del comercio de mercancías sin combustibles}{OMC, 2024}"
+    donde: [3B07.tex, repaso/3B07-repaso.tex]
+    valor: 52
+    unidad: "% del comercio de mercancías sin combustibles"
+    periodo: 4.º trimestre de 2023
+    fuente: OMC2024BienesIntermedios
+    organismo: OMC
+    serie: "Information Note on Trade in Intermediate Goods"
+    url: https://www.wto.org/english/res_e/statis_e/
+    periodicidad: trimestral
+    familia: omc-comercio-mundial
+    frase: "aparece dos veces en la ficha (l. 181 y 238)"
+    nota: "posible desfase: dato de finales de 2023"
+
+  - id: deficit-eeuu-china
+    texto: "bajó a 203.000 millones de dólares en 2025, un 31,8~\\% menos que en 2024"
+    texto_repaso: "\\dato{203.000 M\\$ (2025), $-31{,}8$\\,\\%}{Census Bureau, 2026}"
+    donde: [3B07.tex, repaso/3B07-repaso.tex]
+    valor: 203000
+    unidad: millones de USD (déficit de bienes)
+    periodo: "2025"
+    fuente: CensusBureau2026China
+    organismo: U.S. Census Bureau
+    serie: "Trade in Goods with China (c5700)"
+    url: https://www.census.gov/foreign-trade/balance/c5700.html
+    periodicidad: mensual (dato anual en febrero)
+    proxima: 2027-02
+    familia: census-comercio-eeuu
+
+  - id: aranceles-bilaterales-eeuu-china
+    texto: "el arancel medio de Estados Unidos sobre China rondaba el 35~\\% y el de China sobre Estados Unidos, el 32~\\%"
+    texto_repaso: "ago. 2026: \\dato{$\\approx$35\\,\\% y 32\\,\\%}{PIIE, 2026}"
+    donde: [3B07.tex, repaso/3B07-repaso.tex]
+    valor: 35
+    unidad: "% (arancel medio ponderado bilateral)"
+    periodo: agosto 2026
+    fuente: Bown2026Chart
+    organismo: PIIE
+    serie: "US-China Trade War Tariffs: An Up-to-Date Chart"
+    url: https://www.piie.com/research/piie-charts/2019/us-china-trade-war-tariffs-date-chart
+    periodicidad: irregular
+    familia: piie-aranceles-china

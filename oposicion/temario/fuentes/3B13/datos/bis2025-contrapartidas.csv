@@ -1,0 +1,13 @@
+# Mercado de divisas OTC: volumen medio diario de abril por contrapartida del dealer declarante (cuota en % del total). Otras instituciones financieras incluye bancos no declarantes; inversores institucionales; hedge funds y empresas de negociacion por cuenta propia (PTF); sector oficial y otras (residuo).
+# Fuente: BIS, Triennial Central Bank Survey 2025, datos definitivos, BIS Data Portal, dataflow WS_DER_OTC_TOV, claves A.U.A.B.5J.{sector}.5J.A.TO1.TO1.A.A.3.C. URL: https://stats.bis.org/api/v2/data/dataflow/BIS/WS_DER_OTC_TOV/1.0/A.U.A.B.5J.A+B+C+D+E+F+G+U.5J.A.TO1.TO1.A.A.3.C  Consulta: 8 nov. 2026.
+# Segunda comprobacion: nota del BIS de 30 sept. 2025 (preliminar: interdealer 46 %; otras financieras 50 %; bancos no declarantes 24 %; institucionales 13 %; hedge funds y PTF 8 %; no financieros 5 %). Cuadra salvo redondeo.
+# Columnas: codigo (sector BIS), contrapartida (con sangria las partidas de otras financieras), nivel (1 = grupo; 2 = desglose), c2013, c2016, c2019, c2022, c2025 (cuotas en %), v2025 (billones de dolares diarios).
+codigo,contrapartida,nivel,c2013,c2016,c2019,c2022,c2025,v2025
+B,Dealers declarantes,1,38.7,41.9,38.3,46.8,46.7,4.443
+C,Otras instituciones financieras,1,52.5,50.6,54.6,47.5,48.6,4.627
+D,Bancos no declarantes,2,23.9,22.0,24.5,21.4,23.1,2.195
+E,Inversores institucionales,2,11.3,15.7,11.8,11.3,13.3,1.261
+F,Hedge funds y PTF,2,10.7,7.7,9.0,6.9,8.0,0.760
+G,Sector oficial,2,1.0,1.5,1.3,1.3,1.4,0.138
+U,Clientes no financieros,1,8.8,7.5,7.1,5.7,4.6,0.441
+R,Otras (residuo),2,5.6,3.8,8.0,6.6,2.9,0.273

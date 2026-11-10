@@ -1,0 +1,113 @@
+tema: 3B23
+fecha_inventario: 2026-11-09
+datos:
+  - id: indexados-cuota-anual
+    texto: "52 estaban en fondos indexados, que se limitan a copiar un índice bursátil; en 2010 eran 19"
+    texto_repaso: "\\dato{52\\,\\% de los fondos a largo plazo (2025) frente a 19\\,\\% (2010)}{ICI, 2026}"
+    donde: [3B23.tex, repaso/3B23-repaso.tex]
+    valor: 52
+    unidad: "% del patrimonio de los fondos a largo plazo de EE. UU."
+    periodo: fin de 2025
+    fuente: ICI2026FactBook
+    organismo: Investment Company Institute
+    serie: "Investment Company Fact Book, cap. 2 (index mutual funds + index ETFs)"
+    url: https://icifactbook.org/
+    periodicidad: anual
+    proxima: 2027-05
+    familia: ici-fondos
+    frase: "«A finales de 2025, de cada 100 dólares...»; ficha l. 285"
+
+  - id: indexados-cuota-mensual
+    texto: "en septiembre de 2026, los fondos indexados tenían el 54,5~\\% del patrimonio"
+    texto_repaso: "\\dato{54,5\\,\\% (sept.\\ 2026)}{ICI, 2026}"
+    donde: [3B23.tex, repaso/3B23-repaso.tex]
+    valor: 54.5
+    unidad: "% del patrimonio de los fondos a largo plazo de EE. UU."
+    periodo: septiembre 2026
+    fuente: ICI2026ActiveIndex
+    organismo: Investment Company Institute
+    serie: "Combined Active and Index Investing (mensual)"
+    url: https://www.ici.org/research/stats/combined_active_index
+    periodicidad: mensual
+    proxima: 2026-11
+    familia: ici-fondos
+    frase: "también en la ficha l. 176"
+
+  - id: bme-capitalizacion
+    texto: "valían 1,10 billones de euros, unas dos terceras partes del PIB, tras subir un 40~\\% en el año, y el IBEX~35 ganó un 49~\\%"
+    texto_repaso: "\\dato{1,10 billones de €, $\\approx$2/3 del PIB, +40\\,\\%}{BME, 2025}"
+    donde: [3B23.tex, repaso/3B23-repaso.tex]
+    valor: 1.10
+    unidad: billones de euros (capitalización de las cotizadas españolas)
+    periodo: fin de 2025
+    fuente: BME2026InformeMercado
+    organismo: BME (e INE para el PIB)
+    serie: "Informe de Mercado de BME; PIB de la Contabilidad Nacional Anual (INE2026CNA)"
+    url: https://www.bolsasymercados.es/dam/descargas/informes-de-mercado/informe-mercado-bme-2025-es.pdf
+    periodicidad: anual
+    proxima: 2027-02
+    familia: bme-informe-mercado
+    frase: "IBEX +49 % (2025) en la ficha l. 36 y 286; el cociente con el PIB usa ine-pib"
+
+  - id: wfe-capitalizacion-mundial
+    texto: "En todo el mundo, las bolsas valían unos 152 billones de dólares"
+    texto_repaso: "\\dato{$\\approx$152 billones de \\$}{WFE, 2025}"
+    donde: [3B23.tex, repaso/3B23-repaso.tex]
+    valor: 152
+    unidad: billones de USD
+    periodo: fin de 2025
+    fuente: WFE2026Markets2025
+    organismo: World Federation of Exchanges
+    serie: "WFE annual market highlights, domestic market capitalisation"
+    url: https://www.world-exchanges.org/
+    periodicidad: anual (avance en febrero)
+    proxima: 2027-02
+    familia: wfe-bolsas
+    frase: "ficha l. 36 y 286"
+
+  - id: prima-historica-eeuu
+    texto: "de 1928 a 2025, las acciones han rendido de media unos 6,6 puntos al año más que las letras del Tesoro"
+    texto_repaso: "\\dato{$\\approx$6,6 pt/año sobre letras}{Damodaran, 1928-2025}"
+    donde: [3B23.tex, repaso/3B23-repaso.tex]
+    valor: 6.6
+    unidad: puntos porcentuales al año
+    periodo: 1928-2025
+    fuente: Damodaran2026Historical
+    organismo: Damodaran (NYU Stern)
+    serie: "Historical Returns on Stocks, Bonds and Bills"
+    url: https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html
+    periodicidad: anual
+    proxima: 2027-01
+    familia: damodaran-datos
+    frase: "tabla l. 777: «rindieron de media unos 6,6 puntos al año más que las letras del Tesoro y 5,5 más que los bonos a 10 años»; ficha l. 202 y 287"
+
+  - id: cape-sp500
+    texto: "en octubre de 2026, el CAPE del S\\&P~500 estaba en 40,7, más del doble de su media desde 1881 (17,8)"
+    texto_repaso: "\\dato{40,7 (oct.\\ 2026); media 17,8; máx.\\ 44,2 (dic.\\ 1999)}{Shiller, 2026}"
+    donde: [3B23.tex, repaso/3B23-repaso.tex]
+    valor: 40.7
+    unidad: ratio CAPE
+    periodo: octubre 2026
+    fuente: Shiller2026Data
+    organismo: Robert J. Shiller
+    serie: "U.S. Stock Markets 1871-Present and CAPE Ratio"
+    url: https://shillerdata.com/
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: shiller-cape
+    frase: "«cerca del máximo de diciembre de 1999 (44,2)»; ficha l. 288"
+
+  - id: sp500-soporte
+    texto: "los 6.980 puntos fueron una resistencia entre enero y febrero de 2026"
+    texto_repaso: "\\dato{6.980 puntos}{resistencia ene.-feb.\\ 2026, soporte desde la ruptura del 15/4/2026}"
+    donde: [3B23.tex, repaso/3B23-repaso.tex]
+    unidad: puntos del S&P 500
+    periodo: enero de 2025-noviembre de 2026
+    fuente: FRED2026SP500
+    organismo: S&P Dow Jones Indices (vía FRED)
+    serie: "SP500"
+    url: https://fred.stlouisfed.org/series/SP500
+    periodicidad: diaria
+    familia: fred-sp500
+    depende: [datos/sp500-soporte-medias.csv, graficos/sp500-soporte-medias.tex]
+    nota: "ejemplo ilustrativo de análisis técnico: alargar la serie solo si deja de cumplirse que 6.980 hace de soporte (entonces hay que cambiar el ejemplo, no solo el dato)"

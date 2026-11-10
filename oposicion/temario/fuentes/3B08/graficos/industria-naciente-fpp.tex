@@ -1,0 +1,65 @@
+% La industria naciente en equilibrio general (3 paneles, mismos ejes):
+% X = el bien que se protege; Y = el otro. Preferencias U = XY (iguales en
+% los 3 paneles: el consumo gasta la mitad de la renta en cada bien).
+% FPP: (X/3)^2 + (Y/4)^2 = 1; RRI de libre comercio p = p_X/p_Y = 0,8.
+%   Tangencia con la RRI: S = sqrt(a^2 p^2 + b^2), X = a^2 p/S, Y = b^2/S;
+%   renta (en Y) = S; consumo X = S/(2p), Y = S/2.
+% Izquierda (a = 3): S = 4,665; P_0 = (1,543; 3,430); C_0 = (2,916; 2,332);
+%   U_0 = 6,80: importa X (C_0 a la derecha de P_0).
+% Centro (arancel prohibitivo): autarquía A = (3/sqrt2; 4/sqrt2) =
+%   (2,121; 2,828), U_A = 6,00 < U_0; más X producida que en P_0.
+% Derecha (FPP' con a = 6, expandida hacia X; exporta porque a p > b):
+%   S = 6,248; P_1 = (4,609; 2,561); C_1 = (3,905; 3,124); U_1 = 12,20 > U_0.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.55cm,
+    declare function={fpp(\x,\a)=4*sqrt(max(1-(\x/\a)^2,0));}]
+  % ---------------- Panel izquierdo: libre comercio ----------------
+  % 1: ejes, FPP, RRI tangente en P_0
+  \capa{1}{\ejes{$X$}{$Y$}{7.2}{5.2}}
+  \capa{1}{\node[etiqueta,font=\small\itshape,anchor=south] at (3.6,5.4) {Libre comercio};}
+  \capa{1}{\draw[curva1] plot[domain=0:3,samples=80] (\x,{fpp(\x,3)});}
+  \capa{1}{\node[etiqueta,anchor=east,text=tceemorado] at (2.75,0.9) {FPP};}
+  \capa{1}{\draw[curva2] (0,4.665) -- (5.831,0) node[pos=0.88,etiqueta,above right,text=tceeazul] {RRI};}
+  \capa{1}{\node[punto,label={[etiqueta]above right=-1pt:$P_0$}] at (1.543,3.430) {};}
+  % 2: consumo C_0 sobre la RRI, tangente a I_0: importa X
+  \capa{2}{\draw[curva3] plot[domain=1.55:7.0,samples=60] (\x,{6.80/\x}) node[etiqueta,above,text=tceeverde] {$I_0$};}
+  \capa{2}{\node[punto,label={[etiqueta]above right=-1pt:$C_0$}] at (2.916,2.332) {};}
+  \capa{2}{\draw[guia] (1.543,3.430) -- (1.543,2.332);}
+  \capa{2}{\draw[->,thick,tceerojo] (1.543,2.332) -- (2.85,2.332);}
+  \capa{2}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=north east] at (2.75,2.30) {importa $X$};}
+  % ---------------- Panel central: arancel prohibitivo ----------------
+  \begin{scope}[xshift=8.6cm*0.55]
+    % 3: ejes, FPP e I_A tangente en A
+    \capa{3}{\ejes{$X$}{$Y$}{7.2}{5.2}}
+    \capa{3}{\node[etiqueta,font=\small\itshape,anchor=south] at (3.6,5.4) {Arancel prohibitivo};}
+    \capa{3}{\draw[curva1] plot[domain=0:3,samples=80] (\x,{fpp(\x,3)});}
+    \capa{3}{\node[etiqueta,anchor=east,text=tceemorado] at (1.45,1.0) {FPP};}
+    \capa{3}{\draw[curva3] plot[domain=1.36:7.0,samples=60] (\x,{6/\x}) node[etiqueta,above,text=tceeverde] {$I_A$};}
+    \capa{3}{\node[punto,label={[etiqueta]above right=-1pt:$A$}] at (2.121,2.828) {};}
+    \capa{3}{\draw[guia] (1.543,0) node[etiqueta,below left=0pt and -4pt,text=tceegris] {$X_{P_0}$} -- (1.543,{fpp(1.543,3)});}
+    \capa{3}{\draw[guia] (2.121,0) node[etiqueta,below right=0pt and -4pt] {$X_A$} -- (2.121,2.828);}
+  \end{scope}
+  % ---------------- Panel derecho: tras la protección ----------------
+  \begin{scope}[xshift=17.2cm*0.55]
+    % 4: ejes, FPP original en gris y FPP' expandida hacia X
+    \capa{4}{\ejes{$X$}{$Y$}{7.2}{5.2}}
+    \capa{4}{\node[etiqueta,font=\small\itshape,anchor=south] at (3.6,5.4) {Tras la protección};}
+    \capa{4}{\draw[very thick,tceegris!60] plot[domain=0:3,samples=80] (\x,{fpp(\x,3)}) ;}
+    \capa{4}{\node[etiqueta,anchor=east,text=tceegris] at (2.75,0.9) {FPP};}
+    \capa{4}{\draw[curvanueva] plot[domain=0:6,samples=100] (\x,{fpp(\x,6)});}
+    \capa{4}{\node[etiqueta,anchor=east,text=tceerojo] at (5.75,0.55) {FPP$'$};}
+    \capa{4}{\draw[->,thick,tceerojo,shorten <=3pt,shorten >=3pt] ({3*sqrt(1-(1.6/4)^2)},1.6) -- ({6*sqrt(1-(1.6/4)^2)},1.6);}
+    % 5: RRI tangente a FPP' en P_1, C_1 sobre I_1 (más alta que I_0): exporta X
+    \capa{5}{\draw[curva2] (2.2,4.488) -- (7.0,0.648) node[etiqueta,above right=-1pt,text=tceeazul] {RRI};}
+    \capa{5}{\draw[curva3] plot[domain=2.5:7.0,samples=60] (\x,{12.2/\x}) node[etiqueta,above,text=tceeverde] {$I_1$};}
+    \capa{5}{\node[punto,label={[etiqueta]below left=-1pt:$P_1$}] at (4.609,2.561) {};}
+    \capa{5}{\node[punto,label={[etiqueta]above=1pt:$C_1$}] at (3.905,3.124) {};}
+    \capa{5}{\draw[guia] (4.609,2.561) -- (4.609,3.124);}
+    \capa{5}{\draw[->,thick,tceerojo] (4.609,3.124) -- (3.98,3.124);}
+    \capa{5}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=south west] at (4.66,3.05) {exporta $X$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

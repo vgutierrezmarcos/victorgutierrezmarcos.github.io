@@ -11,13 +11,13 @@
 \esquemacante{%
 \apartadocante{Introducción: «el tiempo es oro»}{2,5}
 \apartadocante{I. Oferta y demanda de trabajo neoclásicas}{10}
-\subcante{1. Oferta: $\mathrm{RMS}_{OC}=w$, $w^R$, 3 efectos}{5}
-\subcante{2. Demanda: $\mathrm{VPMg}_L=w_L$}{1,5}
-\subcante{3. Equilibrio y salario mínimo}{1,5}
-\subcante{4. Valoración: monopsonio y paro}{2}
+\subcante{1. Oferta: $\mathrm{RMS}_{OC}=w$, $w^R$, 3 efectos}{4,5}
+\subcante{2. Demanda: corto y largo plazo, mercado}{2,5}
+\subcante{3. Equilibrio y salario mínimo}{1,25}
+\subcante{4. Valoración: monopsonio y paro}{1,75}
 \apartadocante{II. Oferta intertemporal: \autor{Lucas}-\autor{Rapping}}{6,5}
 \subcante{1. Idea: «hacer el agosto»}{0,75}
-\subcante{2. Modelo: salario relativo intertemporal}{3}
+\subcante{2. Modelo: infinitos periodos, ocio intertemporal}{3}
 \subcante{3. \autor{Frisch}, ciclo vital, ciclos reales}{1,25}
 \subcante{4. Evidencia}{0,75}
 \subcante{5. Valoración}{0,75}
@@ -44,7 +44,7 @@
 Con competencia y salarios flexibles, el mercado se vacía: el salario real iguala la valoración marginal del ocio y la productividad marginal del trabajo; no hay paro involuntario salvo con salario mínimo.
 \end{ideaclave}
 \begin{itemize}
-\item \textbf{8 supuestos} (y dónde se levantan): 1 racionalidad; 2 información perfecta (\autor{Spence}; búsqueda \vertema{3.A.26}; eficiencia \vertema{3.A.27}); 3 trabajo homogéneo (capital humano, \hyperref[rep:III]{III}); 4 precio-aceptación (monopsonio; sindicatos); 5 libre participación; 6 salarios flexibles (salario mínimo; rigideces \vertema{3.A.28}); 7 movilidad sin costes (formación específica, \emph{insiders}); 8 sin externalidades (\vertema{3.A.44}).
+\item \textbf{8 supuestos} (y dónde se levantan): 1 racionalidad; 2 información perfecta (\autor{Spence}; búsqueda \vertema{3.A.26}; eficiencia \vertema{3.A.27}); 3 trabajo homogéneo (capital humano, \hyperref[rep:III]{III}); 4 precio-aceptación (monopsonio; sindicatos); 5 libre participación; 6 salarios flexibles (salario mínimo; rigideces \vertema{3.A.28}); 7 movilidad sin costes (formación específica, \emph{insiders}); 8 sin externalidades \vertema{3.A.44}.
 \end{itemize}
 
 \sub{I.1. Oferta de trabajo\label{rep:I.1}}
@@ -108,7 +108,7 @@ Con competencia y salarios flexibles, el mercado se vacía: el salario real igua
 \end{itemize}
 \pareja{monopsonio}{Monopsonio: menos $L$ y menos $w$}{salario-minimo}{Salario mínimo con monopsonio: ↑$L$ hasta $w^c$}
 \begin{itemize}
-\item \emph{Anexo}: monopolio en el bien $\Rightarrow$ $\mathrm{IPMg}_L=w_L$; 4 casos, ninguno con paro involuntario (\emph{explotación}, \autor{Robinson}, 1933). \concepto{Sindicato monopolista} (\autor{Dunlop}, 1944): $L^S<L^c$, $w^S>w^c$, \emph{sí} paro involuntario. Monopolio bilateral: $w$ indeterminado (\autor{Bowley}, 1928).
+\item \emph{Demanda con poder de mercado y anexo}: monopolio en el bien $\Rightarrow$ $\mathrm{IPMg}_L=w_L$; 4 casos, ninguno con paro involuntario (\emph{explotación}, \autor{Robinson}, 1933). \concepto{Sindicato monopolista} (\autor{Dunlop}, 1944): $L^S<L^c$, $w^S>w^c$, \emph{sí} paro involuntario. Monopolio bilateral: $w$ indeterminado (\autor{Bowley}, 1928).
 \item \emph{El paro existe} y persiste (España $>$10\,\%): levantar 2 y 7 (búsqueda \vertema{3.A.26}), 6 y 4 (negociación, eficiencia, contratos implícitos \vertema{3.A.27}; tasa natural, histéresis \vertema{3.A.28}).
 \end{itemize}
 
@@ -125,35 +125,34 @@ Se trabaja más cuando trabajar compensa más: los cambios transitorios del sala
 
 \sub{II.2. Modelo\label{rep:II.2}}
 \begin{itemize}
-\item 2 periodos, sin incertidumbre ni dinero; tiempo 1 por periodo; $\beta=1/(1+\rho)$; utilidad separable $\ln C_t+b\ln(1-L_t)$; mercado de capitales perfecto a $r$; $w_1$, $w_2$ conocidos:
+\item Infinitos periodos, sin incertidumbre ni dinero; $\sum_t\beta^tU(C_t,O_t)$, separable en el tiempo y entre $C$ y $O$, $\beta=1/(1+\rho)$; $O_t+L_t=1$; $w_t$, $\overline{W}_t$ conocidos; activos $b_t$ a $r$, con no-\autor{Ponzi}:
 \begin{formula}
-\centering $\optim{\max}{C_t,L_t}{\textstyle\sum_t\beta^{t-1}\big[\ln C_t+b\ln(1-L_t)\big]}{C_1+\dfrac{C_2}{1+r}=w_1L_1+\dfrac{w_2L_2}{1+r}}$
+\centering $\optim{\max}{C_t,O_t,b_{t+1}}{\textstyle\sum_{t=0}^{\infty}\beta^tU(C_t,O_t)}{C_t+w_tO_t+b_{t+1}\leq w_t+(1+r)b_t+\overline{W}_t\\ \lim_{T\to\infty}b_T/(1+r)^T\geq0}$
 \end{formula}
-\item CPO: intratemporal $bC_t/(1-L_t)=w_t$ ($\mathrm{RMS}_{OC}=w_t$); \autor{Euler} $C_2/C_1=\beta(1+r)$ \vertema{3.A.29}; dividiendo, la condición intertemporal del ocio:
-\funcionclave{\frac{1-L_1}{1-L_2}=\frac{w_2}{\beta(1+r)\,w_1}}
-\item Oferta relativa según el \concepto{salario relativo intertemporal} $w_1(1+r)/w_2$: $L_1/L_2=f\big(\overset{+}{w_1/w_2},\overset{+}{r},\overset{-}{\rho}\big)$.
-\item \emph{Solución cerrada}: $L_1=1-\frac{b}{(1+b)(1+\beta)}\big[1+\frac{w_2}{(1+r)w_1}\big]$; con $w_2=(1+r)w_1$ y $\beta=1$, $L_1=1/(1+b)$ (estático).
+\item 3 CPO: (1) intratemporal $U_O(t)/U_C(t)=w_t$ ($\mathrm{RMS}_{OC}=w_t$); (2) \autor{Euler} $U_C(t)/U_C(t+1)=\beta(1+r)$ \vertema{3.A.29}; (3) intertemporal del ocio:
+\funcionclave{\frac{U_O(t)}{U_O(t+1)}=\frac{1+r}{1+\rho}\cdot\frac{w_t}{w_{t+1}}}
+\item Oferta relativa según el \concepto{salario relativo intertemporal} $w_t(1+r)/w_{t+1}$: $L_t/L_{t+1}=f\big(\overset{+}{w_t/w_{t+1}},\overset{+}{r},\overset{-}{\rho}\big)$.
 \end{itemize}
 {\centering\small\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{3pt}%
-\begin{tabular}{@{}lccl@{}}
+\begin{tabular}{@{}lcl@{}}
 \toprule
-\rowcolor{tceeazulpalido}\textbf{Cambio} & $L_1$ & $L_2$ & \textbf{Por qué}\\
+\rowcolor{tceeazulpalido}\textbf{Cambio} & $L_t/L_{t+1}$ & \textbf{Por qué}\\
 \midrule
-$w_1$↑ transitorio & \textcolor{tceeverde}{↑} & \textcolor{tceerojo}{↓} & \concepto{sustitución intertemporal}\\
-$w_1,w_2$↑ permanente & $=$ & $=$ & sustitución y renta se compensan\\
-$r$↑ & \textcolor{tceeverde}{↑} & \textcolor{tceerojo}{↓} & trabajar y ahorrar hoy rinde más\\
-$\rho$↑ (impaciencia) & \textcolor{tceerojo}{↓} & \textcolor{tceeverde}{↑} & el ocio de hoy vale más\\
+$w_t,w_{t+1}$↑ permanente & $=$ & sin sustitución; nivel: efecto riqueza\\
+$w_t$↑ transitorio & \textcolor{tceeverde}{↑} & \concepto{sustitución intertemporal}\\
+$r$↑ & \textcolor{tceeverde}{↑} & trabajar y ahorrar hoy rinde más\\
+$\rho$↑ (impaciencia) & \textcolor{tceerojo}{↓} & el ocio de hoy vale más\\
 \bottomrule
 \end{tabular}\par}
 \begin{itemize}
-\item \emph{Política}: rebajas \emph{temporales} de cotizaciones o impuestos mueven más las horas que las permanentes. Horizonte infinito (original): mismas 3 condiciones, con no-\autor{Ponzi}.
+\item \emph{Política}: rebajas \emph{temporales} de cotizaciones o impuestos mueven más las horas que las permanentes.
 \end{itemize}
 
 \sub{II.3. Extensiones\label{rep:II.3}}
 \begin{itemize}
 \item \concepto{Elasticidad de \autor{Frisch}}: respuesta de las horas con $\lambda$ (utilidad marginal de la riqueza) constante: sustitución intertemporal pura, cambios previstos o transitorios. Con $u=\ln C_t-\chi L_t^{1+\varphi}/(1+\varphi)$, $\chi L_t^{\varphi}=\lambda_tw_t$:
 \begin{formula}
-\centering $\varepsilon^F_{L,w}\equiv\left.\dfrac{\partial\ln L_t}{\partial\ln w_t}\right|_{\lambda}=\dfrac{1}{\varphi}$\quad (con log: $(1-L)/L$; $L=\tfrac13\Rightarrow2$)
+\centering $\varepsilon^F_{L,w}\equiv\left.\dfrac{\partial\ln L_t}{\partial\ln w_t}\right|_{\lambda}=\dfrac{1}{\varphi}$\quad ($\lambda_t=\lambda_0/(1+r)^t$)
 \end{formula}
 \item \emph{Ciclo vital}: perfil de $w$ en U invertida, previsto $\Rightarrow$ horas con elasticidad de \autor{Frisch}. \emph{Jubilación}: valor de opción (\autor{Stock}-\autor{Wise}, 1990); impuesto implícito $\Rightarrow$ antes (\autor{Gruber}-\autor{Wise}, 1999).
 \item \emph{Ciclos reales} (\autor{Kydland}-\autor{Prescott}, 1982): ↑productividad $\Rightarrow$ efecto riqueza (↓$L$) vs sustitución intertemporal (↑$L$); choque \emph{transitorio}: domina sustitución $\Rightarrow$ ciclo; \emph{permanente}: riqueza, vía inversión. Si fluctuar es óptimo, estabilizar no mejora el bienestar.
@@ -304,7 +303,7 @@ La educación es una inversión que se paga con salarios más altos toda la vida
 \item $\varepsilon^F\geq\varepsilon^h\geq\varepsilon$ (ocio normal); \autor{Frisch} $=1/\varphi$; no tiene que ver con el riesgo.
 \item Demanda a c/p: CSO $F_{LL}<0$, sin condición de rendimientos. L/p \emph{más} elástica; mercado \emph{menos} elástica. No hay factores \autor{Giffen}.
 \item Oferta lineal $w_L=c_0+c_1L$ $\Rightarrow$ $\mathrm{GMg}_L=c_0+2c_1L$. Monopsonio: salario mínimo en $(w^M,w^c]$ \emph{sube} el empleo.
-\item \autor{Lucas}-\autor{Rapping}: $r$↑ $\Rightarrow$ ↑$L_1$; $\rho$↑ $\Rightarrow$ ↓$L_1$; permanente: no cambia la oferta \emph{relativa}.
+\item \autor{Lucas}-\autor{Rapping}: $r$↑ $\Rightarrow$ ↑$L_t/L_{t+1}$; $\rho$↑ $\Rightarrow$ ↓$L_t/L_{t+1}$; permanente: no cambia la oferta \emph{relativa}.
 \item General: la paga el trabajador; específica: se reparte. \autor{Spence}: productividad $\to$ educación (no al revés).
 \item $\beta_1$ semielasticidad (exacto $e^{\beta_1}-1$); $\beta_1\approx r$; sesgo de habilidad \emph{sobre}estima, error de medida \emph{sub}estima. \autor{Oaxaca}-\autor{Blinder}: depende del grupo de referencia.
 \end{itemize}

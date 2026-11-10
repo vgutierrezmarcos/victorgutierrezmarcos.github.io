@@ -1,0 +1,48 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% La paradoja del margen forward: regresión de Fama (1984),
+% Δe_{t+1} = β0 + β1 (f_t − e_t) + ε. Gráfico ilustrativo, no datos reales.
+% Ejes con el origen en el centro (márgenes y depreciaciones de los 2 signos).
+% Predicción con PCI + PNCI + expectativas racionales: recta de 45°
+% (β0 = 0, β1 = 1). Evidencia (Froot y Thaler, 1990): pendiente ≈ −0,9.
+% Nube de 28 puntos generada con semilla fija (random.Random(1990), x
+% uniforme en [−2,3; 2,3], error normal de desviación 0,6) y ajustada para
+% que su recta de mínimos cuadrados sea exactamente y = 0,25 − 0,9 x: la
+% recta roja es la estimada de verdad con esos puntos.
+\begin{tikzpicture}[tcee]
+  % 1: ejes y sus rótulos
+  \capa{1}{
+    \draw[eje] (-2.8,0) -- (3.3,0) node[right,align=left]
+      {margen\\a plazo,\\$f_t-e_t$};
+    \draw[eje] (0,-2.9) -- (0,3.4) node[left,align=right]
+      {depreciación\\observada,\\$\Delta e_{t+1}$};
+    \node[below left] at (0,0) {$0$};
+  }
+  % 2: recta de 45°, la que predice la teoría
+  \capa{2}{
+    \draw[curva3,dashed] (-2.5,-2.5) -- (2.9,2.9) node[etiqueta,right,align=left,text=tceeverde]
+      {PNCI y expectativas\\racionales: $\beta_1=1$};
+  }
+  % 3: nube de puntos (ilustrativa)
+  \capa{3}{
+    \foreach \p in {(-2.24,2.73),(-1.91,1.01),(-1.7,1.52),(-2.18,2.97),(-1.64,2.56),
+        (-1.88,1.96),(-2.28,1.86),(0.57,0.36),(0.84,-1.61),(-0.14,-0.45),(1.15,-0.35),
+        (0.72,-0.32),(-1.44,1.98),(0.82,-0.08),(-0.56,0.81),(-0.99,0.82),(1.71,-0.79),
+        (0.89,-0.79),(-2.07,2.05),(-0.86,1.31),(-1.69,1.86),(0.51,-0.81),(2.15,-1.19),
+        (-0.25,0.34),(1.09,-0.68),(0.44,0.11),(1.54,-1.66),(-0.55,0.42)}
+      \fill[tceegris!80] \p circle (1.6pt);
+  }
+  % 4: recta estimada, y = 0,25 − 0,9 x, de pendiente negativa
+  \capa{4}{
+    \draw[curvanueva] (-2.6,2.59) -- (2.4,-1.91) node[etiqueta,right,text=tceerojo]
+      {estimada: $\beta_1\approx-0{,}9$};
+  }
+  % 5: el cuadrante de la paradoja: margen positivo, depreciación negativa
+  \capa{5}{
+    % (bajo la nube y la recta: de x = 0,6 a 2,3 y de y = −1,95 a −2,85)
+    \node[etiqueta,font=\footnotesize,align=center,text=tceegris!60!black,anchor=north]
+      at (1.45,-1.95) {la moneda\\con descuento\\a plazo se aprecia};
+  }
+\end{tikzpicture}
+\end{document}

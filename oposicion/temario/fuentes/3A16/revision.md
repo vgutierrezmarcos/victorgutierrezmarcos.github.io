@@ -143,6 +143,12 @@ Fechas y atribuciones (propuestas de datos): V1 Dupuit 1844; V2 Molina 1597; V3 
   - X9. `mapa.yaml`: telaraña remitida a 3.A.10 (es 3.A.5/3.A.6) y modelo `telarana` sin ficha (CN4, CN8).
 - **Le Châtelier**: el 3.A.12 escribe «Le Châtelier»; el `.bib` (heredado) dice «Le Chatelier», que es la grafía del autor. Conviene unificar en el canon.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 4 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): los 6 \newline de títulos → \cortetitulo{} (puntos de corte ya buenos; el de I se deja tras «equilibrio» porque tras «modelo.» la 2.ª línea no cabe). Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 Aplicado mientras Víctor no conteste en el artifact (decisiones del coordinador):
@@ -165,11 +171,20 @@ Además:
 - Word: la banda del título del III, partida con `\newline`, sale justificada con espacios anchos entre palabras (es del conversor, no del tema; afecta a cualquier título de primer nivel en dos líneas).
 - Control de calidad: sin incidencias (17/10/2026). Corregido en esta fase: llave de $t$ fuera del gráfico `incidencia` (la cruzaba la oferta desplazada) y rótulo «vendedores» recolocado; puntos $A$, $B$ y $C$ nombrados en el texto de `corto-largo-industria` y `oferta-largo-plazo`; el impuesto (II.3.2) con bloques a) Idea y b) Modelo (i, ii, iii); condición de segundo orden de la empresa (necesaria con ≤, suficiente con <); «la primera y la tercera» condiciones dan $p=\mathrm{CMg}=\mathrm{CMe}$ en la libre entrada; «quienes no lo valoran más»; gráfico de la oferta a corto plazo más grande (0,8 del ancho).
 
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Ya estaba, en otra dirección**: Walras (1874), *Éléments d'économie politique pure*, que el tema antiguo enlazaba en Google Books, va en `Walras1874Elements` con la copia de archive.org.
+- **Restaurado**: Superprof, «Teorema de Bolzano», en una nota del teorema de Bolzano (existencia del equilibrio).
+- **Descartados**: los 2 temas en PDF de fabiansalazar.es (3A-14 y 3A-21), fuentes de gráficos del tema antiguo: son temas de otro preparador (CRITERIOS §5); los gráficos actuales se rehicieron con fuentes propias.
+
 ## Instrucciones para el vídeo
 
 - Funciones clave que se conservan en la esquina: las condiciones del equilibrio (`eq:equilibrio`) desde I.2 hasta el final y la maximización del excedente total (`eq:max-et`) desde II.2.2; en III, la del largo plazo (`eq:largo-plazo`).
 - Al final quedan en la pizarra la función del equilibrio y el gráfico `corto-largo-industria`, que responden al enganche.
 - Plan de pizarra por bloques: el de `propuestas-coherencia.md`, § 3.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Comentarios de Víctor del 18/10/2026
 

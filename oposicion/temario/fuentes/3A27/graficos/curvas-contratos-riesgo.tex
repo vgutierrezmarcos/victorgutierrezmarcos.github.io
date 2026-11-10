@@ -1,0 +1,23 @@
+% Curvas de contratos según la actitud ante el riesgo de los afiliados:
+% creciente (aversión), vertical en L^c (neutralidad) y decreciente (amor al
+% riesgo), todas desde C, el salario de reserva y el empleo competitivo.
+% Rehace la imagen de la nota 20 del tema anterior. Elaboración propia a partir
+% de Booth (1995). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % 1: ejes, salario de reserva y punto C
+  \capa{1}{\ejes{$L$}{$w$}{6.4}{4.4}}
+  \capa{1}{\draw[guia] (0,1.2) node[left,text=black] {$w^R$} -- (3.2,1.2);}
+  \capa{1}{\draw[guia] (3.2,0) node[below,text=black] {$L^c$} -- (3.2,1.2);}
+  \capa{1}{\node[punto] (C) at (3.2,1.2) {};}
+  \capa{1}{\node[etiqueta,below right] at (C) {$C$};}
+  % 2: neutralidad: vertical
+  \capa{2}{\draw[curva1] (C) -- (3.2,4.0) node[etiqueta,above,text=tceemorado] {neutral};}
+  % 3: aversión: creciente, a la derecha
+  \capa{3}{\draw[curva3] (C) -- (5.7,3.0) node[etiqueta,above,text=tceeverde] {averso};}
+  % 4: amor al riesgo: decreciente, a la izquierda
+  \capa{4}{\draw[curvanueva] (C) -- (1.6,4.0) node[etiqueta,left,align=right,text=tceerojo] {amante\\ del riesgo};}
+\end{tikzpicture}
+\end{document}

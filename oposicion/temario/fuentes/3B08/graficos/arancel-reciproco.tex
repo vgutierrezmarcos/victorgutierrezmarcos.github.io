@@ -1,0 +1,50 @@
+% Mercados recíprocos con arancel (Brander y Spencer, 1984): funciones de
+% reacción en el mercado A, sin arancel y con el arancel óptimo t_A del país A.
+% Copia de 3B06/graficos/dumping-reciproco.tex (mismos ejes, escala y capas):
+% en vez de tau > 1, la extranjera paga el arancel t_A (coste c + t_A).
+% Escala: demanda p = a - bQ en A; las 2 empresas con coste marginal c.
+% Cantidades en unidades de (a-c)/b.
+%   R_A: q_B = 1 - 2 q_A, de (0, 1) a (1/2, 0)
+%   R_B (t_A = 0): q_B = 1/2 - q_A/2, de (0, 1/2) a (1, 0)
+%   E0 = (1/3, 1/3) = (q^C, q^C), en la bisectriz
+%   R_B (t_A* = (a-c)/3): q_B = (a-c-t_A)/2b - q_A/2 = 1/3 - q_A/2,
+%        de (0, 1/3) a (2/3, 0); su corte coincide con q^C
+%   E1: 1 - 2 q_A = 1/3 - q_A/2 -> q_A = 4/9; q_B = 1/9
+%     (q_A sube 1/9 y q_B baja 2/9: el doble)
+%   Cantidad total: 2/3 en E0 (recta q_A + q_B = 2/3) y 5/9 en E1, por debajo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=8cm]
+  \useasboundingbox (-0.34,-0.17) rectangle (1.4,1.17);
+  % 1: ejes
+  \capa{1}{\ejes{$q_A^A$}{$q_B^A$}{1.18}{1.12}}
+  % 2: función de reacción de la empresa nacional, R_A(q_B^A)
+  \capa{2}{\draw[curva1] (0,1) -- (0.5,0);}
+  \capa{2}{\node[etiqueta,right,text=tceemorado] at (0.03,0.97) {$R_A(q_B^A)$};}
+  \capa{2}{\node[etiqueta,left] at (0,1) {$\frac{a-c}{b}$};}
+  \capa{2}{\node[etiqueta,below] at (0.5,0) {$\frac{a-c}{2b}$};}
+  % 3: función de reacción de la extranjera sin arancel
+  \capa{3}{\draw[curva2] (0,0.5) -- (1,0);}
+  \capa{3}{\node[etiqueta,text=tceeazul,rotate={atan(-0.5)},anchor=south] at (0.8,0.1) {$R_B(q_A^A)$};}
+  \capa{3}{\node[etiqueta,left] at (0,0.5) {$\frac{a-c}{2b}$};}
+  \capa{3}{\node[etiqueta,below] at (1,0) {$\frac{a-c}{b}$};}
+  % 4: equilibrio sin arancel, en la bisectriz
+  \capa{4}{\draw[guia] (0,0) -- (0.62,0.62) node[etiqueta,above right,text=tceegris] {bisectriz};}
+  \capa{4}{\node[punto,label={[etiqueta]above right:$E_0$}] (E0) at ({1/3},{1/3}) {};}
+  \capa{4}{\proyeccion{(E0)}{$q^C$}{$q^C$}}
+  % 5: con el arancel óptimo t_A^* = (a-c)/3, R_B se desplaza hacia el origen en paralelo; solo con t_A^* su corte coincide con q^C
+  \capa{5}{\draw[curvanueva] (0,{1/3}) -- ({2/3},0);}
+  \capa{5}{\node[etiqueta,text=tceerojo,rotate={atan(-0.5)},anchor=south west] at (0.07,{1/3-0.035}) {$R_B(q_A^A;t_A^*)$};}
+  \capa{5}{\node[etiqueta,anchor=east] at (-0.055,{1/3}) {$\frac{a-c-t_A^*}{2b}=$};}
+  % 6: nuevo equilibrio: la nacional vende más y la extranjera, el doble menos
+  \capa{6}{\node[punto,label={[etiqueta]above right:$E_1$}] (E1) at ({4/9},{1/9}) {};}
+  \capa{6}{\proyeccion{(E1)}{$q_{A1}^A$}{$q_{B1}^A$}}
+  \capa{6}{\draw[flecha,shorten <=3pt,shorten >=3pt] (E0) -- (E1);}
+  % 7: cantidad total constante por E0: en E1 la cantidad total es menor
+  \capa{7}{\draw[desplazada,thick,tceegris] (0,{2/3}) -- ({2/3},0);}
+  \capa{7}{\node[etiqueta,left,text=tceegris] at (0,{2/3}) {$2q^C$};}
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceegris,rotate=-45,anchor=south] at (0.075,0.592) {cantidad total};}
+\end{tikzpicture}
+\end{document}

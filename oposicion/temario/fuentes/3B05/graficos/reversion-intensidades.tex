@@ -1,0 +1,32 @@
+% Reversión de la intensidad factorial (3.B.5, nota a los supuestos del H-O-S).
+% Elaboración propia (cualitativa), a partir de Minhas (1962).
+%   (a) Sin reversión: (K/L)_X = 1,6 (w/r)^0,6 y (K/L)_Y = 0,7 (w/r)^0,6:
+%       X es intensivo en capital para todo w/r.
+%   (b) Con reversión: (K/L)_X = 0,45 (w/r)^1,2 (elasticidad de sustitución
+%       mayor) y (K/L)_Y = (w/r)^0,5: se cortan en w/r = 2,222^(1/0,7) = 3,129,
+%       K/L = 1,769. Por debajo, X es intensivo en trabajo; por encima, en capital.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.85cm,
+    declare function={ax(\w)=1.6*\w^0.6; ay(\w)=0.7*\w^0.6; bx(\w)=0.45*\w^1.2; by(\w)=\w^0.5;}]
+  % 1: ejes de los dos paneles
+  \capa{1}{\ejes{$w/r$}{$K/L$}{5.6}{4.2}}
+  \capa{1}{\node[etiqueta,anchor=south] at (2.8,4.35) {(a) Sin reversión};}
+  \begin{scope}[xshift=6.8cm]
+    \capa{1}{\ejes{$w/r$}{$K/L$}{5.6}{4.2}}
+    \capa{1}{\node[etiqueta,anchor=south] at (2.8,4.35) {(b) Con reversión};}
+  \end{scope}
+  % 2: panel (a): las curvas no se cortan
+  \capa{2}{\draw[curva1] plot[domain=0.3:4.6,samples=60] (\x,{ax(\x)}) node[etiqueta,right] {$(K/L)_X$};}
+  \capa{2}{\draw[curva3] plot[domain=0.5:4.6,samples=60] (\x,{ay(\x)}) node[etiqueta,right] {$(K/L)_Y$};}
+  % 3: panel (b): las curvas se cortan en el punto de reversión
+  \begin{scope}[xshift=6.8cm]
+    \capa{3}{\draw[curva1] plot[domain=0.9:4.6,samples=60] (\x,{bx(\x)}) node[etiqueta,right] {$(K/L)_X$};}
+    \capa{3}{\draw[curva3] plot[domain=0.4:4.6,samples=60] (\x,{by(\x)}) node[etiqueta,right] {$(K/L)_Y$};}
+    \capa{3}{\node[punto,label={[etiqueta]above left:$I$}] (I) at (3.129,1.769) {};}
+    \capa{3}{\proyeccion{(I)}{$(w/r)_I$}{}}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

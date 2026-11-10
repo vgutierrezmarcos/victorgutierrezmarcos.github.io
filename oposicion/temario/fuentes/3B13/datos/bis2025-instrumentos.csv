@@ -1,0 +1,14 @@
+# Mercado de divisas OTC: volumen medio diario negociado en abril de cada encuesta, por instrumento. Billones de dolares (10^12 USD), base neta-neta (sin doble computo local ni transfronterizo).
+# Fuente: BIS, Triennial Central Bank Survey, datos definitivos de 2025 (publicados en junio de 2026), BIS Data Portal, dataflow WS_DER_OTC_TOV, claves A.U.{A;B;E;H;I;R;G}.B.5J.A.5J.A.TO1.TO1.A.A.3.C. URL: https://stats.bis.org/api/v2/data/dataflow/BIS/WS_DER_OTC_TOV/1.0/A.U.A+B+E+H+I+R+G.B.5J.A.5J.A.TO1.TO1.A.A.3.C  Consulta: 8 nov. 2026.
+# Segunda comprobacion: Huang Krohn y Sushko (BIS Quarterly Review dic. 2025): 9.5 billones/dia (+27 % frente a 2022); contado +42 %; plazo +51 % (1.75 billones); opciones +108 %; FX swaps +6 %. Cuadra. Ojo: las tablas xlsx de la pagina rpfx25 (preliminares y finales) dan 9.595: no se usan.
+# Columnas: anio, total, contado, plazo (outright forwards; incluye ndf), ndf (non-deliverable forwards; desde 2013), fxswaps, currencyswaps, opciones (opciones y otros), y las cuotas en % del total: c_contado, c_plazo, c_fxswaps, c_currencyswaps, c_opciones.
+anio,total,contado,plazo,ndf,fxswaps,currencyswaps,opciones,c_contado,c_plazo,c_fxswaps,c_currencyswaps,c_opciones
+2001,1.239,0.386,0.130,,0.656,0.007,0.060,31.2,10.5,52.9,0.6,4.8
+2004,1.934,0.631,0.209,,0.954,0.021,0.117,32.6,10.8,49.3,1.1,6.1
+2007,3.324,1.005,0.362,,1.714,0.031,0.212,30.2,10.9,51.6,0.9,6.4
+2010,3.973,1.489,0.475,,1.759,0.043,0.207,37.5,11.9,44.3,1.1,5.2
+2013,5.357,2.047,0.679,0.127,2.240,0.054,0.337,38.2,12.7,41.8,1.0,6.3
+2016,5.066,1.652,0.700,0.134,2.378,0.082,0.254,32.6,13.8,46.9,1.6,5.0
+2019,6.581,1.979,0.998,0.259,3.198,0.108,0.298,30.1,15.2,48.6,1.6,4.5
+2022,7.468,2.085,1.157,0.259,3.798,0.124,0.303,27.9,15.5,50.9,1.7,4.1
+2025,9.510,2.952,1.747,0.333,4.015,0.164,0.632,31.0,18.4,42.2,1.7,6.6

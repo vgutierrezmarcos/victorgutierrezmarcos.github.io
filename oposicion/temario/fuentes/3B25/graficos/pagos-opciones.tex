@@ -1,0 +1,57 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Pago (gris discontinuo) y beneficio (color) a vencimiento de las 4
+% posiciones simples. K = 2,4; c = p = 0,9. Umbrales: K+c = 3,3 y K-p = 1,5.
+\begin{tikzpicture}[tcee,scale=0.75,
+    pago/.style={thick,dashed,tceegris}]
+  % #1 título; #2 posición del rótulo K (below en el comprador, above en el
+  % vendedor, para que no lo pise ninguna línea)
+  \newcommand{\panel}[2]{%
+    \draw[eje] (0,0) -- (5.9,0) node[below left] {$S_T$};
+    \draw[eje] (0,-3) -- (0,3.1) node[left,font=\footnotesize,align=right] {Pago /\\beneficio};
+    \node[etiqueta,font=\normalsize] at (2.9,3.6) {#1};
+    \draw (2.4,0.08) -- (2.4,-0.08);
+    \node[#2] at (2.4,0) {$K$};}
+  % 1: comprador de call
+  \capa{1}{\panel{Comprador de \emph{call}}{below}}
+  % 2: pago, beneficio, -c y umbral K+c
+  \capa{2}{\draw[pago] (0,0) -- (2.4,0) -- (5.2,2.8);
+    \draw[curva1] (0,-0.9) -- (2.4,-0.9) -- (5.2,1.9);
+    \node[etiqueta,left] at (0,-0.9) {$-c$};
+    \node[punto] at (3.3,0) {};
+    \node[etiqueta,below right] at (3.3,0) {$K+c$};}
+  \begin{scope}[xshift=7.7cm]
+    % 3: vendedor de call
+    \capa{3}{\panel{Vendedor de \emph{call}}{above}}
+    % 4: pago, beneficio, c y umbral K+c
+    \capa{4}{\draw[pago] (0,0) -- (2.4,0) -- (5.2,-2.8);
+      \draw[curva2] (0,0.9) -- (2.4,0.9) -- (5.2,-1.9);
+      \node[etiqueta,left] at (0,0.9) {$c$};
+      \node[punto] at (3.3,0) {};
+      \node[etiqueta,above right] at (3.3,0) {$K+c$};}
+  \end{scope}
+  \begin{scope}[yshift=-7.5cm]
+    % 5: comprador de put
+    \capa{5}{\panel{Comprador de \emph{put}}{below}}
+    % 6: pago, beneficio, -p, máximo K-p y umbral K-p
+    \capa{6}{\draw[pago] (0,2.4) -- (2.4,0) -- (5.2,0);
+      \draw[curva1] (0,1.5) -- (2.4,-0.9) -- (5.2,-0.9);
+      \node[etiqueta,left] at (0,1.5) {$K-p$};
+      \node[etiqueta,left] at (0,-0.9) {$-p$};
+      \node[punto] at (1.5,0) {};
+      \node[etiqueta,below left] at (1.5,0) {$K-p$};}
+  \end{scope}
+  \begin{scope}[xshift=7.7cm,yshift=-7.5cm]
+    % 7: vendedor de put
+    \capa{7}{\panel{Vendedor de \emph{put}}{above}}
+    % 8: pago, beneficio, p, pérdida máxima -(K-p) y umbral K-p
+    \capa{8}{\draw[pago] (0,-2.4) -- (2.4,0) -- (5.2,0);
+      \draw[curva2] (0,-1.5) -- (2.4,0.9) -- (5.2,0.9);
+      \node[etiqueta,left] at (0,0.9) {$p$};
+      \node[etiqueta,left] at (0,-1.5) {$-(K-p)$};
+      \node[punto] at (1.5,0) {};
+      \node[etiqueta,above left] at (1.5,0) {$K-p$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

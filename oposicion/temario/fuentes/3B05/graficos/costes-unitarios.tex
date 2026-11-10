@@ -1,0 +1,43 @@
+% Curvas de coste unitario, igualación del precio de los factores y
+% Stolper-Samuelson (3.B.5, III.2). Misma geometría y mismos números que
+% fuentes/3A21/graficos/costes-unitarios.tex, con X e Y intercambiados: aquí X
+% es intensivo en capital y sube p_Y; w = salario, r = renta del capital.
+% Costes unitarios Cobb-Douglas: c_X = w^0,4 r^0,6 (X intensivo en capital) y
+%   c_Y = w^0,6 r^0,4 (Y intensivo en trabajo). p_X = p_Y = 2: corte A = (2, 2).
+% c_X = p_X: r = 3,175 w^-0,667; c_Y = p_Y: r = 5,657 w^-1,5.
+% Pendientes en A (-a_Lj/a_Kj): -1,5 en Y (más inclinada) y -0,667 en X.
+% Sube p_Y a p'_Y = 2,3 (+13,98 % en logaritmos): c_Y = p'_Y: r = 8,02 w^-1,5.
+%   Nuevo corte B: ln w sube 3·0,1398 = 0,419 (w = 3,041) y ln r baja
+%   2·0,1398 = 0,280 (r = 1,512): w sube más que p_Y y r baja.
+% Elaboración propia a partir de Jones (1965).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={cy(\w)=5.6569*\w^(-1.5); cyn(\w)=8.0203*\w^(-1.5); cx(\w)=3.1748*\w^(-2/3);}]
+  % 1: ejes
+  \capa{1}{\ejes{$w$}{$r$}{6}{5.4}}
+  % 2: c_X = p_X (X intensivo en capital: la más plana) y su pendiente
+  \capa{2}{\draw[curva1] plot[domain=0.5:5.5,samples=100] (\x,{cx(\x)})
+    node[etiqueta,right] {$c_X(w,r)=p_X$};}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (3.9,{cx(3.9)+0.2}) {$-a_{LX}/a_{KX}$};}
+  % 3: c_Y = p_Y (Y intensivo en trabajo: la más inclinada) y su pendiente
+  \capa{3}{\draw[curva3] plot[domain=1.1:5.5,samples=100] (\x,{cy(\x)})
+    node[etiqueta,right] {$c_Y(w,r)=p_Y$};}
+  \capa{3}{\node[etiqueta,text=tceeverde,below=5pt] at (4.0,{cy(4.0)}) {$-a_{LY}/a_{KY}$};}
+  % 4: corte A: precios de los factores (igualación) y proyecciones
+  \capa{4}{\node[punto,label={[etiqueta]below left:$A$}] (A) at (2,2) {};}
+  \capa{4}{\proyeccion{(A)}{$w_0$}{$r_0$}}
+  % 5: sube p_Y: c_Y = p'_Y se desplaza hacia fuera
+  \capa{5}{\draw[curvanueva,desplazada] plot[domain=5.5:1.42,samples=100] (\x,{cyn(\x)})
+    node[etiqueta,above right=0pt and -8pt] {$c_Y(w,r)=p'_Y$};}
+  \capa{5}{\draw[flecha] (1.6,2.9) -- (1.93,2.9);}
+  \capa{5}{\node[etiqueta,text=tceerojo,anchor=west] at (2.15,2.95) {sube $p_Y$};}
+  % 6: nuevo corte B, proyecciones y cambios en w (sube) y r (baja)
+  \capa{6}{\node[punto,label={[etiqueta]above=2pt:$B$}] (B) at (3.0412,1.5120) {};}
+  \capa{6}{\proyeccion{(B)}{$w_1$}{$r_1$}}
+  \capa{6}{\draw[flecha] (2,-0.75) -- (3.0412,-0.75);}
+  \capa{6}{\draw[flecha] (-0.8,2) -- (-0.8,1.512);}
+\end{tikzpicture}
+\end{document}

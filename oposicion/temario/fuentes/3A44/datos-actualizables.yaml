@@ -1,0 +1,32 @@
+tema: 3A44
+fecha_inventario: 2026-11-09
+datos:
+  - id: gasto-id-pib
+    texto: "En 2024, China dedicaba el 2,69~\\% (el 2,80~\\% en 2025) y España el 1,50~\\%, lejos de la media de la Unión Europea (UE, 2,26~\\%), de Estados Unidos (3,44~\\%) y de Corea del Sur (5,13~\\%)"
+    donde: [3A44.tex, repaso/3A44-repaso.tex]
+    valor: [2.69, 2.80, 1.50, 2.26, 3.44, 5.13]
+    unidad: "% del PIB (gasto interno bruto en I+D)"
+    periodo: 2024 (China, avance de 2025)
+    fuente: OCDE2026MSTI
+    organismo: OCDE (MSTI), Eurostat (Eurostat2026GERD), INE (INE2025IMASD), ONE de China (ONEChina2026ID)
+    serie: "MSTI G PT_B1GQ; rd_e_gerdtot; INE Estadística sobre actividades de I+D"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.STI.STP,DSD_MSTI@DF_MSTI,/
+    periodicidad: anual
+    proxima: 2026-11
+    familia: id-gasto
+    depende: [datos/gasto-id-pib.csv, graficos/gasto-id-pib.tex]
+    frase: "título «2000-2024»; l. 1033 «con un gasto del 1,50~\\% del PIB»; el 0,88 % de 2000 es histórico; el INE publica la I+D de 2025 hacia noviembre-diciembre de 2026 (comprobar); repaso: relevancia, pie del gráfico y caja"
+  - id: ptf-investigadores-eeuu
+    texto: "desde 1970 ha crecido, de media, un 0,9~\\%"
+    donde: [3A44.tex, repaso/3A44-repaso.tex]
+    valor: 0.9
+    unidad: "% anual (crecimiento medio de la PTF del sector empresarial de EE. UU., 1970-último año)"
+    periodo: 1970-2025
+    fuente: FRBSF2026PTF
+    organismo: Federal Reserve Bank of San Francisco (Fernald) y OCDE (MSTI, investigadores y gasto en I+D)
+    serie: "Fernald quarterly TFP (anual); MSTI researchers, GERD constant USD"
+    url: https://www.frbsf.org/research-and-insights/data-and-indicators/total-factor-productivity-tfp/
+    periodicidad: anual
+    familia: frbsf-ptf
+    depende: [datos/investigadores-ptf-eeuu.csv, graficos/efecto-escala.tex]
+    frase: "«el número de investigadores se ha duplicado desde 1991 y el gasto real en I+D se ha multiplicado casi por 5 desde 1981»; título «1950-2025»; repaso: pie y caja"

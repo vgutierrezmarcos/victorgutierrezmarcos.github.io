@@ -1,0 +1,48 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% SML del CAPM con el alfa de Jensen. Escala: beta = 1 -> 3,5 cm; r_f = 1,2;
+% E[r_M] = 3,0 (lambda_M = 1,8): recta y = 1,2 + (1,8/3,5) x.
+\begin{tikzpicture}[tcee,scale=0.9]
+  \def\sml(#1){1.2+1.8/3.5*#1}
+  % 1: ejes
+  \capa{1}{\ejes{$\beta$}{$\mathbb{E}[r]$}{8}{5.8}}
+  % 2: r_f
+  \capa{2}{\node[etiqueta,left] at (0,1.2) {$r_f$};}
+  % 3: SML y su rótulo
+  \capa{3}{
+    \draw[curva1] (0,1.2) -- (7.4,{\sml(7.4)});
+    \node[etiqueta,above left,text=tceemorado] at (7.4,{\sml(7.4)}) {SML: $\mathbb{E}[r_i]=r_f+\beta_i\,\lambda_M$};
+  }
+  % 4: cartera de mercado en beta = 1
+  \capa{4}{
+    \node[punto,label={above left:$M$}] (M) at (3.5,3.0) {};
+    \proyeccion{(M)}{$1$}{$\mathbb{E}[r_M]$}
+  }
+  % 5: triángulo de la pendiente
+  \capa{5}{
+    \draw[guia] (0,1.2) -- (3.5,1.2);
+    \draw[<->,thin] (3.62,1.22) -- (3.62,2.98);
+    \node[etiqueta,right] at (3.65,1.6) {$\lambda_M=\mathbb{E}[r_M]-r_f$};
+  }
+  % 6: activo A, infravalorado
+  \capa{6}{
+    \node[punto,fill=tceeverde,label={[align=center,text=tceeverde]above:$A$\\infravalorado}] (A) at (1.75,3.35) {};
+    \draw[<->,thin] (1.75,3.28) -- (1.75,{\sml(1.75)+0.05});
+    \node[etiqueta,left,text=tceeverde] at (1.75,{(3.35+\sml(1.75))/2}) {$\alpha_A>0$};
+    \draw[flecha] (2.05,3.35) -- (2.05,2.75);
+  }
+  % 7: activo B, sobrevalorado
+  \capa{7}{
+    \node[punto,fill=tceerojo,label={[align=center,text=tceerojo]below:$B$\\sobrevalorado}] (B) at (5.6,3.05) {};
+    \draw[<->,thin] (5.6,3.12) -- (5.6,{\sml(5.6)-0.05});
+    \node[etiqueta,right,text=tceerojo] at (5.6,{(3.05+\sml(5.6))/2}) {$\alpha_B<0$};
+    \draw[flecha] (5.3,3.05) -- (5.3,3.65);
+  }
+  % 8: activos defensivos y agresivos
+  \capa{8}{
+    \node[etiqueta,font=\footnotesize,text=tceegris] at (1.75,-0.45) {defensivos};
+    \node[etiqueta,font=\footnotesize,text=tceegris] at (5.6,-0.45) {agresivos};
+  }
+\end{tikzpicture}
+\end{document}

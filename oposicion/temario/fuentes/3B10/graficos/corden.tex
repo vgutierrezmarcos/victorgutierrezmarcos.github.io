@@ -1,0 +1,45 @@
+% Corden (1972), caso a): economías de escala y unión aduanera, 3.B.10, I.3.3.
+% Demandas: D_A = D_B: p = 10 - 2Q; D_{A+B}: p = 10 - Q (el doble en horizontal).
+% Costes medios: CMe_A = 4/Q + 4; CMe_B = 4/Q + 2,4; p_R = 1,6; p_R(1+t) = 7,2 (arancel prohibitivo).
+% 1: CMe_A = D_A en Q_A = 2, p_A = 6.   2: CMe_B = D_B en Q_B = 3,169, p_B = 3,663.
+% Unión: CMe_B = D_{A+B} en Q^UA = 7,031, p^UA = 2,969; 3: D_A a p^UA, Q = 3,516 = Q^UA/2.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.68cm,y=0.68cm]
+  % 1: ejes
+  \capa{1}{\ejes{$Q$}{$p$, $CMe$}{11}{10.8}}
+  % 2: demanda de cada país (idénticas)
+  \capa{2}{\draw[curva1] (0,10) -- (5,0) node[etiqueta,above right,pos=0.97,tceemorado] {$D_A=D_B$};}
+  % 3: demanda conjunta de la unión
+  \capa{3}{\draw[curva4] (0,10) -- (10,0) node[etiqueta,above right,pos=0.97,tceedorado] {$D_{A+B}$};}
+  % 4: costes medios decrecientes; B, más eficiente
+  \capa{4}{\draw[curva3] plot[domain=1.3:8.5,samples=50,smooth] (\x,{4/\x+4})
+    node[etiqueta,right,tceeverde] {$CMe_A$};}
+  \capa{4}{\draw[curva2] plot[domain=1.3:8.5,samples=50,smooth] (\x,{4/\x+2.4})
+    node[etiqueta,right,tceeazul] {$CMe_B$};}
+  % 5: resto del mundo y arancel prohibitivo
+  \capa{5}{\draw[curvanueva] (0,1.6) node[etiqueta,left] {$p_R$} -- (10.5,1.6);}
+  \capa{5}{\draw[guia] (0,7.2) node[etiqueta,left,black] {$p_R(1+t)$} -- (10.5,7.2);}
+  % 6: equilibrios antes de la unión
+  \capa{6}{\node[punto] (E1) at (2,6) {};
+    \node[etiqueta,above right] at (E1) {$1$};
+    \proyeccion{(E1)}{$Q_A$}{$p_A$}}
+  \capa{6}{\node[punto] (E2) at (3.169,3.663) {};
+    \node[etiqueta,above right] at (E2) {$2$};
+    \proyeccion{(E2)}{$Q_B$}{$p_B$}}
+  % 7: unión aduanera: B abastece a los dos mercados
+  \capa{7}{\node[punto] (EU) at (7.031,2.969) {};
+    \proyeccion{(EU)}{$Q^{\mathrm{UA}}$}{$p^{\mathrm{UA}}$}
+    \node[punto] (E3) at (3.516,2.969) {};
+    \node[etiqueta,above right] at (E3) {$3$};}
+  % 8: creación de comercio en A
+  \capa{8}{\fill[on background layer,area] (0,6) -- (2,6) -- (3.516,2.969) -- (0,2.969) -- cycle;
+    \node[etiqueta,tceemorado,font=\scriptsize,align=center] at (0.85,4.3) {creación\\de comercio};}
+  % 9: reducción de costes en B
+  \capa{9}{\fill[on background layer,pattern=north east lines,pattern color=tceedorado] (0,3.663) -- (3.169,3.663) -- (3.516,2.969) -- (0,2.969) -- cycle;
+    \node[etiqueta,tceedorado!70!black,font=\scriptsize,align=center] (rc) at (1.6,2.25) {reducción\\de costes};
+    \draw[->,thin,tceedorado!70!black] (rc.north) -- (1.6,3.2);}
+\end{tikzpicture}
+\end{document}

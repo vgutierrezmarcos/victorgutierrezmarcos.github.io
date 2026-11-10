@@ -1,0 +1,27 @@
+% Esquema de pagos de un proyecto de inversión: eje temporal con -I_0, FC_1 ... FC_n y VR,
+% descontados al origen a la tasa k. Los números (1)-(5) son las 5 variables del texto.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    num/.style={font=\scriptsize,text=tceegris,inner sep=1pt}]
+  % 1: eje del tiempo con sus marcas
+  \capa{1}{\draw[eje] (-0.4,0) -- (10.6,0) node[below left=2pt and 0pt] {$t$};}
+  \capa{1}{\foreach \t/\r in {0/0,2/1,4/2,6.6/n-1,8.8/n} {\draw (\t,0.08) -- (\t,-0.08) node[below] {$\r$};}}
+  \capa{1}{\node at (5.3,-0.3) {$\cdots$};}
+  \capa{1}{\node[num] at (9.15,-0.55) {(3)};}
+  % 2: desembolso inicial
+  \capa{2}{\draw[curva1,->] (0,0) -- (0,-1.6) node[below] {$-I_0$};}
+  \capa{2}{\node[num,right] at (0.15,-1.5) {(1)};}
+  % 3: flujos de caja
+  \capa{3}{\foreach \t/\r/\h in {2/1/1.0,4/2/1.3,6.6/{n-1}/1.15,8.8/n/0.95} {\draw[curva2,->] (\t,0) -- (\t,\h) node[above] {$\mathrm{FC}_{\r}$};}}
+  \capa{3}{\node at (5.3,0.7) {$\cdots$};}
+  \capa{3}{\node[num,right] at (2.05,0.5) {(2)};}
+  % 4: valor residual
+  \capa{4}{\draw[curva3,->] (9.5,0) -- (9.5,1.7) node[above] {$\mathrm{VR}$};}
+  \capa{4}{\node[num,right] at (9.55,0.9) {(4)};}
+  % 5: descuento al origen a la tasa k
+  \capa{5}{\draw[flecha,dashed] (9.3,2.45) to[out=170,in=75] node[pos=0.45,above,text=tceerojo] {$\times\,(1+k)^{-t}$\,\textcolor{tceegris}{\scriptsize(5)}} (0.08,0.25);}
+\end{tikzpicture}
+\end{document}

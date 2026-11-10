@@ -1,0 +1,543 @@
+# Familias de datos que caducan (lista viva). Un mismo dato que aparece en
+# varios temas lleva la misma familia en cada datos-actualizables.yaml y se
+# actualiza de una vez con /actualizartemario. «temas» se rellena con lo que
+# hay inventariado; el coordinador la completa al reunir todos los inventarios.
+# proxima: AAAA-MM de la próxima publicación conocida (a 9/11/2026).
+fecha: 2026-11-09
+familias:
+  # --- Las de la skill (aparecen en muchos temas) ---
+  bis-trienal:
+    organismo: BIS (y Banco de España para los datos de España)
+    que_es: "Encuesta Trienal de Bancos Centrales: volumen del mercado de divisas y de derivados OTC de tipos en abril (divisas, pares, plazas, contrapartidas, instrumentos, liquidación)"
+    periodicidad: trienal (preliminares en septiembre, definitivos al año siguiente)
+    url: https://www.bis.org/statistics/rpfx25.htm
+    proxima: 2028-09
+    temas: [3B13, 3B25]
+  mff-ue:
+    organismo: Consejo de la UE / Comisión Europea
+    que_es: "Marco financiero plurianual: techos de compromisos y pagos por rúbrica (2021-2027 en vigor; 2028-2034 en negociación)"
+    periodicidad: septenal (con ajustes técnicos anuales)
+    url: https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget_en
+    proxima: "irregular: acuerdo del MFP 2028-2034 previsto para 2026-2027"
+    temas: []
+  presupuesto-ue:
+    organismo: Parlamento Europeo y Consejo (Comisión Europea)
+    que_es: "Presupuesto anual de la UE: créditos de compromiso y de pago, ingresos por recurso propio"
+    periodicidad: anual (adopción en noviembre-diciembre)
+    url: https://commission.europa.eu/strategy-and-policy/eu-budget/annual-eu-budget_en
+    proxima: 2026-12
+    temas: []
+  pge:
+    organismo: Ministerio de Hacienda
+    que_es: "Presupuestos Generales del Estado: gasto por políticas, ingresos, déficit previsto (o prórroga)"
+    periodicidad: "anual (proyecto en otoño; puede haber prórroga)"
+    url: https://www.sepg.pap.hacienda.gob.es/sitios/sepg/es-ES/Presupuestos/PGE/Paginas/PGE.aspx
+    proxima: "irregular (depende de que se presente y apruebe el proyecto)"
+    temas: []
+  ngeu:
+    organismo: Comisión Europea (y Gobierno de España para el Plan de Recuperación)
+    que_es: "Next Generation EU y Mecanismo de Recuperación y Resiliencia: asignaciones, desembolsos, hitos cumplidos"
+    periodicidad: continua (cuadro de indicadores; el MRR termina en 2026)
+    url: https://ec.europa.eu/economy_finance/recovery-and-resilience-scoreboard/
+    proxima: 2026-12
+    temas: []
+  omc-aranceles:
+    organismo: OMC
+    que_es: "Aranceles NMF aplicados y consolidados (medias simples y ponderadas, por país y producto; perfiles arancelarios y base analítica)"
+    periodicidad: anual (World Tariff Profiles en julio)
+    url: https://www.wto.org/spanish/res_s/reser_s/tariff_profiles_s.htm
+    proxima: 2027-07
+    temas: [3B07]
+  fmi-weo:
+    organismo: FMI
+    que_es: "World Economic Outlook: PIB (nivel y crecimiento), ahorro, inflación, previsiones por país y grupo"
+    periodicidad: semestral (abril y octubre, con actualizaciones en enero y julio)
+    url: https://www.imf.org/en/Publications/WEO
+    proxima: 2027-04
+    temas: [3B02, 3B13, 3B28]
+  ine-epa:
+    organismo: INE
+    que_es: "Encuesta de Población Activa: ocupados, parados, tasa de paro, actividad"
+    periodicidad: trimestral (unas 4 semanas tras el trimestre)
+    url: https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176918
+    proxima: 2027-01
+    temas: []
+  ine-pib:
+    organismo: INE
+    que_es: "Contabilidad Nacional (trimestral y anual): PIB, componentes, deflactor"
+    periodicidad: trimestral (avance a los 30 días) y anual (septiembre)
+    url: https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736164439
+    proxima: 2027-01
+    temas: [3B23]
+  ine-ipc:
+    organismo: INE
+    que_es: "Índice de Precios de Consumo e IPCA: inflación general y subyacente"
+    periodicidad: mensual (indicador adelantado a fin de mes)
+    url: https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176802
+    proxima: 2026-11
+    temas: []
+  bce-tipos:
+    organismo: BCE
+    que_es: "Tipos de interés oficiales del Eurosistema (facilidad de depósito, operaciones principales, facilidad marginal)"
+    periodicidad: cada reunión de política monetaria (unas 6 semanas)
+    url: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.es.html
+    proxima: 2026-12
+    temas: []
+  eurostat-deuda:
+    organismo: Eurostat
+    que_es: "Deuda y déficit públicos (PDE) de los Estados miembros en % del PIB"
+    periodicidad: trimestral (y notificaciones PDE en abril y octubre)
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt/default/table
+    proxima: 2027-01
+    temas: []
+  bde-balanza:
+    organismo: Banco de España
+    que_es: "Balanza de pagos y posición de inversión internacional de España: cuenta corriente, capacidad de financiación, PII neta, deuda externa"
+    periodicidad: mensual (balanza) y trimestral (PII)
+    url: https://www.bde.es/wbe/es/estadisticas/temas/sector-exterior/
+    proxima: 2026-11
+    temas: []
+
+  # --- Comercio internacional ---
+  omc-comercio-mundial:
+    organismo: OMC
+    que_es: "Global Trade Outlook and Statistics: valor del comercio mundial de bienes y servicios, volumen de mercancías, cuota NMF, bienes intermedios"
+    periodicidad: semestral (abril y octubre)
+    url: https://www.wto.org/english/res_e/publications_e/trade_outlook_e.htm
+    proxima: 2027-04
+    temas: [3B05, 3B06, 3B07, 3B09, 3B13]
+  omc-acr:
+    organismo: OMC
+    que_es: "Acuerdos comerciales regionales notificados y en vigor (RTA-IS), por tipo"
+    periodicidad: continua (se revisa una vez al año)
+    url: https://rtais.wto.org/UI/ExportAllRTAList.aspx
+    proxima: 2027-01
+    temas: [3B10]
+  mineco-comex-anual:
+    organismo: Ministerio de Economía, Comercio y Empresa (Secretaría de Estado de Comercio)
+    que_es: "Informe mensual de comercio exterior de diciembre: exportaciones e importaciones anuales de España, sectores, destinos, número y concentración de exportadores"
+    periodicidad: anual (informe de diciembre, en febrero)
+    url: https://comercio.gob.es/ImportacionExportacion/Informes_Estadisticas/Paginas/Informes-periodicos.aspx
+    proxima: 2027-02
+    temas: [3B05, 3B06]
+  eurostat-comext:
+    organismo: Eurostat
+    que_es: "Comercio de bienes de la UE por producto y socio (Comext)"
+    periodicidad: mensual (anual cerrado en primavera)
+    url: https://ec.europa.eu/eurostat/comext/newxtweb/
+    proxima: 2027-03
+    temas: [3B06]
+  eurostat-tec:
+    organismo: Eurostat
+    que_es: "Comercio por características de la empresa (tamaño de los exportadores)"
+    periodicidad: anual
+    url: https://ec.europa.eu/eurostat/databrowser/view/ext_tec01/default/table
+    proxima: 2027-06
+    temas: [3B06]
+  comtrade-vcr:
+    organismo: Naciones Unidas (UN Comtrade) y UNCTAD
+    que_es: "Exportaciones por producto de todos los declarantes; índices de ventaja comparativa revelada"
+    periodicidad: anual
+    url: https://comtradeplus.un.org/
+    proxima: 2027-06
+    temas: [3B05]
+  unctad-comercio:
+    organismo: UNCTAD
+    que_es: "Key statistics and trends in international trade; Global Trade Update"
+    periodicidad: anual (con actualizaciones trimestrales)
+    url: https://unctad.org/topic/trade-analysis
+    proxima: 2027-03
+    temas: [3B06]
+  census-comercio-eeuu:
+    organismo: U.S. Census Bureau
+    que_es: "Saldo comercial de bienes de EE. UU. por país (p. ej. con China)"
+    periodicidad: mensual (anual en febrero)
+    url: https://www.census.gov/foreign-trade/balance/
+    proxima: 2027-02
+    temas: [3B07]
+  piie-aranceles-china:
+    organismo: PIIE (Chad Bown)
+    que_es: "Aranceles medios bilaterales EE. UU.-China"
+    periodicidad: irregular
+    url: https://www.piie.com/research/piie-charts/2019/us-china-trade-war-tariffs-date-chart
+    temas: [3B07]
+  diferencias-omc:
+    organismo: OMC / partes
+    que_es: "Estado de diferencias y treguas (p. ej. Airbus-Boeing)"
+    periodicidad: irregular
+    url: https://www.wto.org/spanish/tratop_s/dispu_s/dispu_s.htm
+    temas: [3B08]
+  red-exterior-comercial:
+    organismo: ICEX / Secretaría de Estado de Comercio
+    que_es: "Número de Oficinas Económicas y Comerciales en el exterior"
+    periodicidad: anual (memoria del ICEX)
+    url: https://www.icex.es/
+    proxima: 2027-06
+    temas: [3B08]
+  icex-programas:
+    organismo: ICEX
+    que_es: "Condiciones de los programas de apoyo (ICEX Next: porcentaje y máximo subvencionable)"
+    periodicidad: anual (convocatoria)
+    url: https://www.icex.es/es/todos-nuestros-servicios/programas-y-servicios-de-apoyo/icex-next
+    proxima: 2027-10
+    temas: [3B08]
+  estrategia-internacionalizacion:
+    organismo: Secretaría de Estado de Comercio
+    que_es: "Países PASE y planes de la Estrategia de Internacionalización"
+    periodicidad: irregular
+    url: https://comercio.gob.es/estrategia_internacionalizacion/
+    temas: [3B08]
+  ocde-consenso-creditos:
+    organismo: OCDE
+    que_es: "Consenso sobre créditos a la exportación con apoyo oficial (plazos máximos)"
+    periodicidad: irregular
+    url: https://www.oecd.org/en/topics/export-credits.html
+    temas: [3B08]
+  miembros-bloques-regionales:
+    organismo: varios (Mercosur, D-8, ASEAN…)
+    que_es: "Miembros de bloques de integración regional"
+    periodicidad: irregular
+    temas: [3B10]
+  ue-zona-euro-miembros:
+    organismo: Comisión Europea / BCE
+    que_es: "Número de Estados de la zona del euro"
+    periodicidad: irregular (cada ampliación)
+    url: https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro_en
+    temas: [3B10]
+  obr-brexit:
+    organismo: Office for Budget Responsibility
+    que_es: "Supuesto del efecto del Brexit sobre la productividad y el comercio británicos"
+    periodicidad: semestral (previsiones)
+    url: https://obr.uk/forecasts-in-depth/brexit-analysis/
+    temas: [3B10]
+
+  # --- Empresa y mercados financieros ---
+  damodaran-datos:
+    organismo: Aswath Damodaran (NYU Stern)
+    que_es: "Primas de riesgo (histórica, implícita, país), WACC medio y caja de las cotizadas de EE. UU."
+    periodicidad: anual (enero)
+    url: https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datacurrent.html
+    proxima: 2027-01
+    temas: [3B02, 3B23]
+  eurostat-sectores:
+    organismo: Eurostat
+    que_es: "Cuentas no financieras por sector institucional (inversión de las sociedades no financieras)"
+    periodicidad: anual (abril y octubre)
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table
+    proxima: 2027-04
+    temas: [3B02]
+  eurostat-sbs:
+    organismo: Eurostat
+    que_es: "Estadísticas estructurales de empresas por tamaño (productividad por ocupado)"
+    periodicidad: anual
+    url: https://ec.europa.eu/eurostat/databrowser/view/sbs_sc_ovw/default/table
+    proxima: 2027-06
+    temas: [3B04, 3B08]
+  ine-dirce:
+    organismo: INE
+    que_es: "Directorio Central de Empresas: empresas activas por tamaño a 1 de enero"
+    periodicidad: anual (diciembre)
+    url: https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736160707
+    proxima: 2026-12
+    temas: [3B04]
+  cifras-pyme:
+    organismo: Ministerio de Industria y Turismo
+    que_es: "Cifras PYME: empresas y empleo por tamaño (afiliación)"
+    periodicidad: mensual
+    url: https://ipyme.org/es-ES/Publicaciones/Paginas/CifrasPYME.aspx
+    proxima: 2026-11
+    temas: [3B04, 3B08]
+  bce-qsa-deuda-snf:
+    organismo: BCE
+    que_es: "Cuentas trimestrales por sectores: deuda de las sociedades no financieras en % del PIB y peso de los valores"
+    periodicidad: trimestral
+    url: https://data.ecb.europa.eu/data/datasets/QSA
+    proxima: 2027-01
+    temas: [3B03]
+  fed-z1:
+    organismo: Reserva Federal
+    que_es: "Financial Accounts of the United States (Z.1): dividendos, emisión neta de acciones, deuda de las empresas"
+    periodicidad: trimestral
+    url: https://www.federalreserve.gov/releases/z1/
+    proxima: 2026-12
+    temas: [3B03]
+  sp-impagos:
+    organismo: S&P Global Ratings
+    que_es: "Estudio anual de impagos y transiciones de calificación (peso del grado especulativo, impagos)"
+    periodicidad: anual (marzo-abril)
+    url: https://www.spglobal.com/ratings/en/research-insights/
+    proxima: 2027-03
+    temas: [3B02, 3B03]
+  spdji-recompras:
+    organismo: S&P Dow Jones Indices
+    que_es: "Recompras y dividendos del S&P 500"
+    periodicidad: trimestral
+    url: https://www.spglobal.com/spdji/en/
+    proxima: 2026-12
+    temas: [3B03]
+  bme-informe-mercado:
+    organismo: BME
+    que_es: "Informe de Mercado anual: capitalización, IBEX, dividendos, MARF, MEFF, VIBEX"
+    periodicidad: anual (febrero)
+    url: https://www.bolsasymercados.es/bme-exchange/es/Publicaciones/Informe-de-Mercado
+    proxima: 2027-02
+    temas: [3B03, 3B23, 3B25]
+  lseg-fya:
+    organismo: LSEG Deals Intelligence
+    que_es: "Fusiones y adquisiciones anunciadas en el mundo"
+    periodicidad: anual (avances trimestrales)
+    url: https://www.lseg.com/en/data-analytics/financial-data/deals-data
+    proxima: 2027-01
+    temas: [3B04]
+  ttr-fya:
+    organismo: TTR Data
+    que_es: "Fusiones y adquisiciones en España"
+    periodicidad: anual (enero)
+    url: https://www.ttrdata.com/
+    proxima: 2027-01
+    temas: [3B04]
+  spaincap:
+    organismo: SpainCap
+    que_es: "Inversión de capital privado en España"
+    periodicidad: anual
+    url: https://www.spaincap.org/
+    proxima: 2027-04
+    temas: [3B04]
+  spacinsider:
+    organismo: SPACInsider
+    que_es: "Salidas a bolsa de SPAC en EE. UU."
+    periodicidad: trimestral
+    url: https://www.spacinsider.com/
+    proxima: 2027-01
+    temas: [3B04]
+  ici-fondos:
+    organismo: Investment Company Institute
+    que_es: "Peso de los fondos indexados en EE. UU. (Fact Book anual y serie mensual)"
+    periodicidad: mensual y anual (Fact Book en mayo)
+    url: https://www.ici.org/research/stats
+    proxima: 2026-11
+    temas: [3B23]
+  wfe-bolsas:
+    organismo: World Federation of Exchanges
+    que_es: "Capitalización bursátil mundial"
+    periodicidad: anual (febrero)
+    url: https://www.world-exchanges.org/our-work/statistics
+    proxima: 2027-02
+    temas: [3B23]
+  shiller-cape:
+    organismo: Robert J. Shiller
+    que_es: "CAPE del S&P 500"
+    periodicidad: mensual
+    url: https://shillerdata.com/
+    proxima: 2026-12
+    temas: [3B23]
+  fred-sp500:
+    organismo: S&P Dow Jones Indices (vía FRED)
+    que_es: "Cotización diaria del S&P 500 (ejemplo de análisis técnico)"
+    periodicidad: diaria
+    url: https://fred.stlouisfed.org/series/SP500
+    temas: [3B23]
+  bis-otc-derivados:
+    organismo: BIS
+    que_es: "Estadísticas semestrales de derivados OTC: nocional, valor de mercado bruto, por riesgo"
+    periodicidad: semestral (junio en noviembre; diciembre en mayo)
+    url: https://data.bis.org/topics/OTC_DER
+    proxima: 2026-11
+    temas: [3B25]
+  fia-derivados:
+    organismo: Futures Industry Association
+    que_es: "Contratos de futuros y opciones negociados en el mundo y ranking de bolsas"
+    periodicidad: anual (enero) y mensual
+    url: https://www.fia.org/fia/etd-tracker
+    proxima: 2027-01
+    temas: [3B25]
+  aeat-recaudacion:
+    organismo: AEAT
+    que_es: "Informe anual de recaudación tributaria"
+    periodicidad: anual (abril)
+    url: https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informes-anuales.html
+    proxima: 2027-04
+    temas: [3B25]
+
+  # --- Divisas y reservas ---
+  fmi-cofer:
+    organismo: FMI
+    que_es: "Composición por monedas de las reservas oficiales de divisas"
+    periodicidad: trimestral
+    url: https://data.imf.org/en/datasets/IMF.STA:COFER
+    proxima: 2026-12
+    temas: [3B13]
+  fmi-deg:
+    organismo: FMI
+    que_es: "Ponderaciones de la cesta del DEG"
+    periodicidad: quinquenal
+    url: https://www.imf.org/en/About/Factsheets/Sheets/2023/special-drawing-rights-sdr
+    proxima: 2027-07
+    temas: [3B13]
+  bce-tipo-cambio:
+    organismo: BCE
+    que_es: "Tipos de cambio de referencia y tipos de cambio efectivos del euro"
+    periodicidad: diaria / mensual
+    url: https://data.ecb.europa.eu/data/datasets/EXR
+    proxima: 2026-12
+    temas: [3B13]
+  safe-reservas-china:
+    organismo: SAFE (China)
+    que_es: "Reservas de divisas de China"
+    periodicidad: mensual
+    url: https://www.safe.gov.cn/en/
+    proxima: 2026-12
+    temas: [3B13]
+  tesoro-eeuu-divisas:
+    organismo: Departamento del Tesoro de EE. UU.
+    que_es: "Informe semestral sobre políticas cambiarias (manipuladores, lista de observación)"
+    periodicidad: semestral
+    url: https://home.treasury.gov/policy-issues/international/exchange-rate-policies
+    proxima: 2027-01
+    temas: [3B13]
+  cls:
+    organismo: CLS Group
+    que_es: "Monedas y miembros del sistema de liquidación CLS"
+    periodicidad: irregular
+    url: https://www.cls-group.com/about/
+    temas: [3B13]
+
+  # --- Desarrollo ---
+  bm-wdi:
+    organismo: Banco Mundial
+    que_es: "World Development Indicators: apertura comercial, PIB por habitante, empleo, demografía, Gini, crédito"
+    periodicidad: anual (actualizaciones en julio y diciembre)
+    url: https://databank.worldbank.org/source/world-development-indicators
+    proxima: 2027-07
+    temas: [3B06, 3B09, 3B28]
+  bm-pip-pobreza:
+    organismo: Banco Mundial
+    que_es: "Poverty and Inequality Platform: pobreza extrema mundial y por regiones"
+    periodicidad: semestral (primavera y septiembre)
+    url: https://pip.worldbank.org
+    proxima: 2027-06
+    temas: [3B28]
+  bm-clasificacion-renta:
+    organismo: Banco Mundial
+    que_es: "Clasificación de países por renta (umbrales Atlas y número de economías)"
+    periodicidad: anual (1 de julio)
+    url: https://datahelpdesk.worldbank.org/knowledgebase/articles/906519
+    proxima: 2027-07
+    temas: [3B28]
+  pnud-idh:
+    organismo: PNUD
+    que_es: "Índice de desarrollo humano e índice de pobreza multidimensional"
+    periodicidad: anual (IDH en primavera; IPM en octubre)
+    url: https://hdr.undp.org/data-center
+    proxima: 2026-12
+    temas: [3B28]
+  oit-informalidad:
+    organismo: OIT
+    que_es: "Peso del empleo informal"
+    periodicidad: irregular
+    url: https://ilostat.ilo.org/
+    temas: [3B28]
+  jpal:
+    organismo: J-PAL
+    que_es: "Número de evaluaciones aleatorias y países"
+    periodicidad: continua
+    url: https://www.povertyactionlab.org/about-us
+    temas: [3B28]
+
+  # --- Clima ---
+  copernicus-clima:
+    organismo: Copernicus (C3S)
+    que_es: "Temperatura media global sobre 1850-1900 (ERA5)"
+    periodicidad: anual (enero) y mensual
+    url: https://climate.copernicus.eu/
+    proxima: 2027-01
+    temas: [3B31]
+  omm-gei:
+    organismo: OMM (y NOAA)
+    que_es: "Concentración de gases de efecto invernadero (Boletín de GEI)"
+    periodicidad: anual (octubre-noviembre)
+    url: https://wmo.int/publication-series/greenhouse-gas-bulletin
+    proxima: 2027-10
+    temas: [3B31]
+  igcc-forster:
+    organismo: Indicators of Global Climate Change (Forster et al.)
+    que_es: "Calentamiento de origen humano y presupuesto de carbono restante"
+    periodicidad: anual (junio)
+    url: https://igcc.earth/
+    proxima: 2027-06
+    temas: [3B31]
+  edgar-emisiones:
+    organismo: Comisión Europea (JRC, EDGAR)
+    que_es: "Emisiones de GEI por país, totales y por habitante"
+    periodicidad: anual (septiembre)
+    url: https://edgar.jrc.ec.europa.eu/
+    proxima: 2027-09
+    temas: [3B31]
+  gcp-carbon-budget:
+    organismo: Global Carbon Project
+    que_es: "Emisiones de CO2 fósil (Global Carbon Budget)"
+    periodicidad: anual (noviembre)
+    url: https://globalcarbonbudget.org/
+    proxima: 2026-11
+    temas: [3B31]
+  pnuma-brecha-emisiones:
+    organismo: PNUMA
+    que_es: "Emissions Gap Report: calentamiento proyectado con políticas y contribuciones"
+    periodicidad: anual (octubre-noviembre)
+    url: https://www.unep.org/resources/emissions-gap-report
+    proxima: 2026-11
+    temas: [3B31]
+  puntos-inflexion:
+    organismo: Global Tipping Points Report
+    que_es: "Puntos de inflexión climáticos ya cruzados o cercanos"
+    periodicidad: irregular
+    url: https://global-tipping-points.org/
+    temas: [3B31]
+  bm-precio-carbono:
+    organismo: Banco Mundial (e ICAP)
+    que_es: "Instrumentos de precio del carbono en el mundo, cobertura y recaudación"
+    periodicidad: anual (mayo-junio)
+    url: https://www.worldbank.org/en/publication/state-and-trends-of-carbon-pricing
+    proxima: 2027-06
+    temas: [3B31]
+  rcde-precio:
+    organismo: EEX / Comisión Europea
+    que_es: "Precio de los derechos de emisión de la UE y de los certificados del MAFC"
+    periodicidad: diaria / trimestral (MAFC)
+    url: https://www.eex.com/en/markets/environmental-markets/eu-ets-auctions
+    proxima: 2026-12
+    temas: [3B31]
+  rcde-emisiones:
+    organismo: Comisión Europea
+    que_es: "Emisiones verificadas del RCDE"
+    periodicidad: anual (abril)
+    url: https://climate.ec.europa.eu/eu-action/carbon-markets/eu-emissions-trading-system-eu-ets_en
+    proxima: 2027-04
+    temas: [3B31]
+  aema-emisiones-ue:
+    organismo: Agencia Europea de Medio Ambiente
+    que_es: "Emisiones netas de GEI de la UE frente a 1990"
+    periodicidad: anual (otoño)
+    url: https://www.eea.europa.eu/en/analysis/indicators/total-greenhouse-gas-emission-trends
+    proxima: 2026-11
+    temas: [3B31]
+  ocde-financiacion-clima:
+    organismo: OCDE
+    que_es: "Financiación climática movilizada por los países desarrollados"
+    periodicidad: irregular (anual)
+    url: https://www.oecd.org/en/topics/climate-finance-and-the-usd-100-billion-goal.html
+    temas: [3B31]
+  tratados-clima-partes:
+    organismo: Naciones Unidas (Colección de Tratados)
+    que_es: "Número de partes de la CMNUCC y del Acuerdo de París"
+    periodicidad: irregular
+    url: https://treaties.un.org/
+    proxima: 2027-02
+    temas: [3B31]
+  cmnucc-cop:
+    organismo: CMNUCC
+    que_es: "Conferencia de las Partes del año (sede, fechas, resultados)"
+    periodicidad: anual (noviembre)
+    url: https://unfccc.int/
+    proxima: 2026-11
+    temas: [3B31]

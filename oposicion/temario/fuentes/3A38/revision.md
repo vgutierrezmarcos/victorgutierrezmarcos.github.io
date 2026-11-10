@@ -122,6 +122,12 @@ Revisión autónoma (5/11/2026). Fase de integración en 2 partes: la **parte 1*
 - Gráficos copiados sin cambios: `rck-gasto`, `rck-impuesto` (3.A.43; aquí `fig:rck-gasto`, allí `fig:rck-fiscal`), `barro` (3.A.44), `demografia-pensiones` (3.A.29). `diamond-pensiones` se dibuja sobre `diamond.tex` del 3.A.29 con sus mismas unidades.
 - Para `pendientes-coherencia.md`: (1) ficha `olg-samuelson-diamond`: añadir `eq:diamond-reparto` y el dato ilustrativo τ ≈ 0,045 (exacto, 0,0451) con los parámetros de `diamond.tex` (CC9); (2) fichas nuevas `chamley-judd` y `reparto-vs-capitalizacion` con este tema de referencia (CC2, CC3); (3) `ramsey-cass-koopmans`, fila del 3.A.38: «resumen» (CC4); (4) `notacion.md`: $\rho_G$ persistencia del gasto, $s_G$, $K^G_t$ y $\alpha_G$ locales, $Z_{t+1}$ local, $r^D_{t-1}$, $\beta_K$ local en la BP (CC5); (5) `multiplicadores-fiscales`: el 3.A.38 resume (CC7); (6) `barro-1990`: lo que añade este tema (CC8).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): I, II y III: \newline → \cortetitulo{}. |
+
 ## Dudas abiertas
 
 Resueltas con la opción recomendada (se pueden cambiar):
@@ -151,6 +157,21 @@ Resueltas con la opción recomendada (se pueden cambiar):
 - **A38-23** (control de calidad, 5/11/2026) I.3 dice que con regla de Taylor el multiplicador es «mayor que con precios flexibles». Vale con la regla sobre la brecha $x_t$, que es la del tema; con una regla sobre la producción observada podría quedar por debajo. No se ha comprobado en Woodford (2011): si se puede abrir, confirmarlo (como A38-10).
 - Control de calidad (5/11/2026): con correcciones pendientes (lista entregada al coordinador: el texto, para `tema-editor-lyx`; los gráficos, para `tema-tikz`).
 
+## Enlaces del original (9/11/2026)
+
+Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
+
+- **Restaurados** (2):
+  - «The legacy of Alberto Alesina» (*The Economist*, 28/5/2020; nota 28 del original): nota en los efectos no keynesianos (I), junto a Alesina, Favero y Giavazzi (2019). La revista no deja comprobarlo de forma automática (403, de pago), pero el artículo existe.
+  - «Balanced budget» (Wikipedia), que el original enlazaba en la demostración del teorema del presupuesto equilibrado: nota en ese teorema (IV).
+- **Ya estaban** (por otra vía): Blanchard (2023) en el blog del PIIE (`Blanchard2023Secular`), las notas de Sims de 2017 con su dirección nueva (`Sims2017Fiscal`) y la tabla 50934 del INE.
+- **No restaurados**:
+  - Notas de Sims de 2015 (`fiscal_policy_sp2015.pdf`): la dirección ya no existe (404) y son la versión anterior de las de 2017, que el tema cita.
+  - Notas de Sims sobre Galí, López-Salido y Vallés (`GLS_may_2021.pdf`): la dirección antigua redirige a `academicweb.nd.edu`, que da 403, y no se ha encontrado en la web nueva de Sims; el tema cita el artículo original de Galí, López-Salido y Vallés.
+  - Figura de ResearchGate de las generaciones solapadas: era la fuente de un gráfico que el tema ha redibujado (elaboración propia).
+  - Tema de otro preparador (fabiansalazar.es), fuente de una simulación: no se enlazan temas de otros preparadores; el gráfico es de elaboración propia.
+- **Para Víctor**: el *Informe Anual 2022* del Banco de España se citaba en un párrafo de la introducción (la inflación tras la invasión de Ucrania) que el tema revisado ya no tiene; no se ha añadido. Si quiere conservarlo, iría en una nota del enganche.
+
 ## Instrucciones para el vídeo
 
 - **Enganche e idea final**: la fábula de la cigarra y la hormiga (Samaniego, 1781) y los datos de 2025 (déficit 2,4 %, deuda 100,5 %, ahorro nacional 25,0 %, el más alto desde 1995; las AA. PP. vuelven a ahorrar por primera vez desde 2008); la pregunta «¿es la política fiscal cigarra u hormiga?». La idea final vuelve a la fábula: «a corto plazo, cuando llega el invierno, puede cantar; a largo plazo, lo que cuenta es qué guarda y en qué lo invierte». Hilo de todo el tema: «nivel frente a tasa» (el ahorro decide el nivel del capital; el crecimiento endógeno, su tasa). Nunca decir «hilo» en voz alta.
@@ -163,3 +184,5 @@ Resueltas con la opción recomendada (se pueden cambiar):
 - **III.1** (5′30″): pegatina «ni contigo ni sin ti». Escribir $Y=AK^{\alpha}G^{1-\alpha}$, $G=\tau Y$ → $AK$, `eq:barro` y `eq:barro-tau` recuadrada; gráfico imprescindible: `barro` (U invertida con el máximo en $1-\alpha$). El planificador, de palabra.
 - **III.2** (2′30″): `eq:rebelo` en una línea frente a `eq:euler-tauk` (nivel frente a tasa); la jerarquía de la OCDE y la evidencia, de palabra; `inversion-publica-espana`, apoyo.
 - **Conclusión** (1′): sin pizarra, salvo las 4 funciones clave que quedan a la derecha. Empieza por «A modo de conclusión,»; relevancia con los tipos del BCE de 2026; idea final con la cigarra y la hormiga y «nivel frente a tasa». Sin la frase de Joan Robinson.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas. A la izquierda, la pregunta del enganche, la cigarra y la hormiga y las pegatinas, cada una junto a su concepto: «lo que no va en lágrimas va en suspiros» (el efecto riqueza del gasto), «no hay plazo que no se cumpla ni deuda que no se pague» (la equivalencia ricardiana), «dos no riñen si uno no quiere» (el banco central y el multiplicador), «no mates la gallina de los huevos de oro» (\autor{Chamley} y \autor{Judd}), «hijo eres, padre serás; cual hiciste, tal habrás» (el reparto), «la avaricia rompe el saco» (la ineficiencia dinámica) y «ni contigo ni sin ti» (\autor{Barro}). En el centro, los gráficos: las respuestas al gasto en el ciclo real, el plano $(x_t,\pi_t)$, el diagrama de fases con el gasto, la ley de movimiento de \autor{Diamond} con pensiones y la U invertida de \autor{Barro}. A la derecha, recuadradas y conservadas hasta el final, la restricción de recursos con el gasto \eqref{eq:rbc-acumulacion}, la ecuación de \autor{Euler} con el impuesto sobre el capital \eqref{eq:euler-tauk}, el ahorro con reparto \eqref{eq:ahorro-reparto} y el tamaño óptimo del Estado \eqref{eq:barro-tau}.
+

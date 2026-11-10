@@ -1,0 +1,30 @@
+% Externalidades del capital con apertura en tasas de crecimiento (alfa+eta = 1):
+% panel central de 3A44/graficos/externalidades.tex con el grado de apertura.
+% s f(k)/k = s A [(X+M)/Y]^eta, horizontal: 2,3 con la apertura inicial y 3,1
+% con más apertura; n+delta = 1,3. gamma = 2,3 - 1,3 = 1,0 y gamma' = 3,1 - 1,3
+% = 1,8 > gamma, para todo k (modelo AK: la apertura sube la tasa para siempre).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.6,-0.6) rectangle (8.2,4.0);
+  % 1: ejes
+  \capa{1}{\ejes{$k$}{$\gamma_k$}{5.2}{3.8}}
+  % 2: depreciación más población
+  \capa{2}{\draw[curva2] (0,1.3) -- (4.6,1.3)
+      node[etiqueta,right,text=tceeazul] {$n+\delta$};}
+  % 3: curva de ahorro horizontal con la apertura inicial y la distancia gamma
+  \capa{3}{\draw[curva1] (0,2.3) -- (4.6,2.3)
+      node[etiqueta,right,text=tceemorado] {$s\,A\,[(X+M)/Y]^{\eta}$};}
+  \capa{3}{\draw[llave] (1.3,1.3) -- (1.3,2.3)
+      node[midway,left=5pt,text=black] {$\gamma$};}
+  % 4: más apertura: la recta sube y gamma' > gamma
+  \capa{4}{\draw[curvanueva] (0,3.1) -- (4.6,3.1)
+      node[etiqueta,right,text=tceerojo,align=left] {$s\,A\,[((X+M)/Y)']^{\eta}$\\[-1pt]{\footnotesize (más apertura)}};}
+  \capa{4}{\draw[llave,tceerojo] (3.3,3.1) -- (3.3,1.3);}
+  \capa{4}{\node[etiqueta,text=tceerojo,anchor=west] at (3.5,1.78) {$\gamma'>\gamma$};}
+\end{tikzpicture}
+\end{document}

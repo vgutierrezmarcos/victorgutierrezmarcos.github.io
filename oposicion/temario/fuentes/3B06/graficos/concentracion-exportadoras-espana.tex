@@ -1,0 +1,54 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Curva de concentración de la exportación de bienes de España, 2019 y 2025: cuota
+% acumulada del valor exportado (eje Y, %) frente al % de empresas exportadoras,
+% ordenadas de mayor a menor (eje X, escala logarítmica, porque el 99 % del valor lo
+% hace menos del 20 % de las empresas). Elaboración propia con los microdatos de la
+% AEAT (solo agregados); CSV en ../datos/curva-concentracion-exportadoras.csv.
+% Paleta del bloque de comercio: 2025 en azul marino (dicze), 2019 en gris (dicotro).
+% Capas (CRITERIOS §7): ejes -> líneas -> puntos -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/curva-concentracion-exportadoras.csv}\cur
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=10.5cm, height=7cm, xmode=log, log basis x=10,
+      xmin=0.003, xmax=100, ymin=0, ymax=102,
+      xtick={0.01,0.1,1,10,100}, xticklabels={0{,}01,0{,}1,1,10,100},
+      ytick={0,20,...,100}, xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={\% de empresas exportadoras, de mayor a menor (escala logarítmica)},
+      ylabel={\% acumulado del valor exportado},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.97,0.06)}, anchor=south east, draw=none, font=\footnotesize},
+      legend cell align=left, dicapas,
+    ]
+    % 1: curva de 2019
+    \capa{1}{\addplot[diclinea=dicotro, smooth, tension=0.3] table[x=pct_empresas, y=cuota_acumulada,
+      restrict expr to domain={\thisrow{anio}}{2019:2019}] {\cur};
+      \addlegendentry{2019 (209.395 exportadoras)}}
+    % 2: curva de 2025
+    \capa{2}{\addplot[diclinea=dicze, smooth, tension=0.3] table[x=pct_empresas, y=cuota_acumulada,
+      restrict expr to domain={\thisrow{anio}}{2025:2025}] {\cur};
+      \addlegendentry{2025 (127.336 exportadoras)}}
+    % 3: puntos de las 10, 100 y 1.000 primeras
+    \capa{3}{
+      \addplot[on layer=dicpuntos, dicpuntos=dicotro, forget plot] coordinates
+        {(0.0048,15.02) (0.0478,39.16) (0.4776,66.73)};
+      \addplot[on layer=dicpuntos, dicpuntos=dicze, forget plot] coordinates
+        {(0.0079,13.92) (0.0785,36.17) (0.7853,65.14)};
+    }
+    % 4: rótulos: las 10, 100 y 1.000 primeras de 2025 y las cuotas del 1 % y el 10 %
+    \capa{4}{
+      \dicrotulo[right,font=\scriptsize,text=dicze]{(0.0079,12.5)}{10 primeras}
+      \dicrotulo[right,font=\scriptsize,text=dicze]{(0.0785,34.5)}{100}
+      \dicrotulo[right,font=\scriptsize,text=dicze]{(0.7853,63.5)}{1.000}
+      \dicrotulo[above left,font=\scriptsize,text=dicotro!70!black]{(1,77.5)}{1~\%: 76,7}
+      \dicrotulo[right,font=\scriptsize,text=dicze]{(1.6,72.5)}{1~\%: 68,6}
+      \dicrotulo[above left,font=\scriptsize,text=dicotro!70!black]{(10,99.5)}{10~\%: 98,6}
+      \dicrotulo[below right,font=\scriptsize,text=dicze]{(10,95.68)}{10~\%: 95,7}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

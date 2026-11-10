@@ -1,0 +1,90 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+% Infografía del hilo lógico del apartado I.2 del 3.B.10 y su salida al I.3:
+% con país pequeño, competencia perfecta y análisis estático, cada modelo
+% levanta un supuesto del anterior (Viner, Meade, Lipsey, factores) y el saldo
+% de la unión aduanera sigue siendo ambiguo, hasta que Cooper y Massell muestran
+% que una rebaja no discriminatoria del arancel gana siempre. De ahí la pregunta
+% clave (¿por qué se forman uniones aduaneras?) y las respuestas, los supuestos
+% que se levantan en el I.3. Elaboración propia a partir de Viner (1950),
+% Meade (1955), Lipsey (1957), Cooper y Massell (1965) y Wonnacott y Wonnacott (1981).
+% Autor: Víctor Gutiérrez Marcos
+\begin{tikzpicture}[tcee, font=\footnotesize,
+    every node/.append style={execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+    caja/.style={draw=tceemorado, fill=tceemorado!7, rounded corners=2pt,
+      text width=2.75cm, align=center, inner sep=3pt, minimum height=1.6cm},
+    clave/.style={draw=tceeverde, fill=tceeverde!8, rounded corners=2pt, line width=0.9pt,
+      text width=2.75cm, align=center, inner sep=3pt, minimum height=1.6cm},
+    salida/.style={draw=tceeazul, fill=tceeazul!7, rounded corners=2pt,
+      text width=2.3cm, align=center, inner sep=2.5pt, minimum height=1.45cm},
+    fila/.style={text width=2.0cm, align=right, font=\footnotesize\itshape, text=tceegris},
+    celda/.style={text width=2.75cm, align=center, inner sep=2pt},
+    ambiguo/.style={celda, text=tceedorado},
+    bien/.style={celda, text=tceeverde},
+    banda/.style={draw=tceedorado, fill=tceedorado!10, rounded corners=2pt,
+      text width=15.3cm, align=center, inner sep=4pt},
+    pregunta/.style={draw=tceerojo, fill=tceerojo!6, rounded corners=2pt, line width=0.9pt,
+      text width=11.5cm, align=center, inner sep=5pt}]
+  % 1: el marco común de I.2
+  \capa{1}{
+    \node[banda] at (9.6,4.1) {\textbf{El marco de I.2}: país pequeño $\cdot$ competencia perfecta $\cdot$ análisis estático: lo que gana o pierde $A$ es lo que gana o pierde el mundo};
+    \draw[->, line width=1.6pt, tceedorado] (2.3,3.1) -- (17.0,3.1);
+    \node[font=\footnotesize\bfseries, text=tceedorado, fill=white, inner sep=2pt] at (9.6,3.1) {cada modelo levanta un supuesto del anterior $\longrightarrow$};
+    \node[fila] at (1.0,1.9) {Modelo};
+    \node[fila] at (1.0,0.25) {Qué añade};
+    \node[fila] at (1.0,-0.9) {Saldo de la unión};
+  }
+  % 2: Viner
+  \capa{2}{
+    \node[caja] (vi) at (3.6,1.9) {\textbf{\autor{Viner} (1950)}\\ demanda fija, costes constantes};
+    \node[celda] at (3.6,0.25) {creación frente a desviación de comercio};
+    \node[ambiguo] at (3.6,-0.9) {ambiguo};
+  }
+  % 3: Meade
+  \capa{3}{
+    \node[caja] (me) at (6.6,1.9) {\textbf{\autor{Meade} (1955)}\\ entra la demanda};
+    \node[celda] at (6.6,0.25) {expansión del comercio; segundo óptimo};
+    \node[ambiguo] at (6.6,-0.9) {ambiguo: más cerca del libre comercio $\neq$ mejor};
+    \draw[->, thick, tceemorado] (vi) -- (me);
+  }
+  % 4: Lipsey
+  \capa{4}{
+    \node[caja] (li) at (9.6,1.9) {\textbf{\autor{Lipsey} (1957)}\\ demanda con pendiente y oferta creciente};
+    \node[celda] at (9.6,0.25) {parcial: $b+d-e$; general: la desviación puede mejorar};
+    \node[ambiguo] at (9.6,-0.9) {ambiguo};
+    \draw[->, thick, tceemorado] (me) -- (li);
+  }
+  % 5: factores
+  \capa{5}{
+    \node[caja] (fa) at (12.6,1.9) {\textbf{Factores}\\ \autor{Lipsey} (1960), \autor{Bhagwati} y \autor{Panagariya}};
+    \node[celda] at (12.6,0.25) {de qué depende el signo del saldo};
+    \node[ambiguo] at (12.6,-0.9) {más o menos probable que mejore};
+    \draw[->, thick, tceemorado] (li) -- (fa);
+  }
+  % 6: Cooper y Massell
+  \capa{6}{
+    \node[clave] (cm) at (15.6,1.9) {\textbf{\autor{Cooper} y \autor{Massell} (1965)}\\ rebaja no discriminatoria del arancel};
+    \node[celda] at (15.6,0.25) {mismo precio, pero se sigue importando de $R$};
+    \node[bien] at (15.6,-0.9) {\textbf{la rebaja gana siempre}: \mbox{$b+d+f+g>0$}};
+    \draw[->, thick, tceemorado] (fa) -- (cm);
+  }
+  % 7: la pregunta clave
+  \capa{7}{
+    \node[pregunta] (pr) at (9.6,-2.6) {\textbf{¿Por qué, entonces, se forman uniones aduaneras en vez de rebajar el arancel a todos?}\\ Porque el análisis es incompleto (\autor{Wonnacott} y \autor{Wonnacott}, 1981): se levantan sus supuestos};
+    \draw[->, thick, tceerojo] (15.6,-1.45) |- (pr.east);
+  }
+  % 8: los supuestos que se levantan (apartado I.3)
+  \capa{8}{
+    \node[salida] (s1) at (2.9,-4.55) {\textbf{a) Sin compensaciones}\\ \autor{Kemp} y \autor{Wan} (1976)};
+    \node[salida] (s2) at (5.55,-4.55) {\textbf{b) País pequeño}\\ RRI y arancel óptimo (\autor{Mundell}, 1964)};
+    \node[salida] (s3) at (8.2,-4.55) {\textbf{c) Competencia perfecta}\\ \autor{Corden}, \autor{Krugman}, \autor{Melitz}};
+    \node[salida] (s4) at (10.85,-4.55) {\textbf{d) Análisis estático}\\ efectos sobre el crecimiento};
+    \node[salida] (s5) at (13.5,-4.55) {\textbf{e) Socio sin aranceles}\\ acceso al mercado del socio};
+    \node[salida] (s6) at (16.15,-4.55) {\textbf{f) Solo excedentes}\\ la industria como bien público};
+    \foreach \s in {s1,s2,s3,s4,s5,s6} {\draw[->, thick, tceeazul] (pr.south) -- (\s.north);}
+    \node[font=\footnotesize\itshape, text=tceegris, text width=15.3cm, align=center] at (9.6,-5.75) {y, a cambio, la integración redistribuye entre factores (\autor{Stolper} y \autor{Samuelson}), empresas y regiones};
+  }
+\end{tikzpicture}
+\end{document}

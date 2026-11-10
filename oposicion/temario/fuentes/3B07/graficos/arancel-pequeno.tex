@@ -1,0 +1,66 @@
+% Arancel en un país pequeño (equilibrio parcial), 3.B.7, I.2.1.
+% Ejemplo del acero del texto: demanda x = 100 - p, oferta nacional q = p,
+% p^W = 20, t = 50 %: p^W(1+t) = 30. Autarquía: p = 50 (arancel prohibitivo
+% del 150 %).
+% Libre comercio: q^0 = 20, x^0 = 80, M^0 = 60. Con el arancel: q^1 = 30,
+% x^1 = 70, M^1 = 40.
+% a = 250 (excedente del productor), b = 50 y d = 50 (distorsiones en la
+% producción y en el consumo), c = 400 (recaudación); el consumidor pierde
+% a + b + c + d = 750.
+% Elaboración propia a partir de Feenstra y Taylor (2021), cap. 8, y Krugman,
+% Obstfeld y Melitz (2018), cap. 9.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.07cm,y=0.09cm,
+    areaep/.style={fill=tceedorado,fill opacity=0.30,draw=none},
+    areapie/.style={fill=tceerojo,fill opacity=0.25,draw=none},
+    arearec/.style={fill=tceeverde,fill opacity=0.25,draw=none},
+    llave/.style={decorate,decoration={brace,amplitude=4pt,mirror},thick},
+    muestra/.style={minimum width=0.42cm,minimum height=0.3cm,inner sep=0pt}]
+  % 1: ejes
+  \capa{1}{\ejes{$x$, $q$}{$p$}{108}{76}}
+  % 2: demanda nacional
+  \capa{2}{\draw[curva2] (28,72) -- (98,2) node[etiqueta,right] {$D$};}
+  % 3: oferta nacional
+  \capa{3}{\draw[curva1] (0,0) -- (70,70) node[etiqueta,right] {$S$};}
+  % 4: precio mundial, libre comercio y sus importaciones
+  \capa{4}{\draw[guia] (0,20) node[etiqueta,left,text=black] {$p^W$} -- (102,20);}
+  \capa{4}{\node[punto] at (20,20) {};}
+  \capa{4}{\node[punto] at (80,20) {};}
+  \capa{4}{\draw[guia] (20,20) -- (20,0) node[below,text=black] {$q^0$};}
+  \capa{4}{\draw[guia] (80,20) -- (80,0) node[below,text=black] {$x^0$};}
+  \capa{4}{\draw[llave] (20,-16) -- (80,-16) node[midway,below=4pt] {$M^0=x^0-q^0$};}
+  % 5: precio con arancel, cantidades nuevas y sus importaciones
+  \capa{5}{\draw[curvanueva] (0,30) node[etiqueta,left,text=black] {$p^W(1+t)$} -- (102,30);}
+  \capa{5}{\node[punto] at (30,30) {};}
+  \capa{5}{\node[punto] at (70,30) {};}
+  \capa{5}{\draw[guia] (30,30) -- (30,0) node[below,text=black] {$q^1$};}
+  \capa{5}{\draw[guia] (70,30) -- (70,0) node[below,text=black] {$x^1$};}
+  \capa{5}{\draw[llave] (30,-7) -- (70,-7) node[midway,below=4pt] {$M^1=x^1-q^1$};}
+  % 6: excedente del productor
+  \capa{6}{\fill[areaep] (0,20) -- (20,20) -- (30,30) -- (0,30) -- cycle;}
+  \capa{6}{\node[etiqueta] at (11,25) {$a$};}
+  % 7: distorsión en la producción
+  \capa{7}{\fill[areapie] (20,20) -- (30,20) -- (30,30) -- cycle;}
+  \capa{7}{\node[etiqueta] at (27,23.4) {$b$};}
+  % 8: recaudación
+  \capa{8}{\fill[arearec] (30,20) rectangle (70,30);}
+  \capa{8}{\node[etiqueta] at (50,25) {$c$};}
+  % 9: distorsión en el consumo
+  \capa{9}{\fill[areapie] (70,20) -- (80,20) -- (70,30) -- cycle;}
+  \capa{9}{\node[etiqueta] at (73,23.4) {$d$};}
+  % 10: precio de autarquía (arancel prohibitivo)
+  \capa{10}{\draw[guia] (0,50) node[etiqueta,left,text=black] {$p^{\mathrm{aut}}$} -- (50,50);}
+  \capa{10}{\node[punto] at (50,50) {};}
+  \capa{10}{\node[etiqueta,anchor=west,font=\footnotesize] at (55,50) {arancel prohibitivo};}
+  % leyenda de las áreas (con cada área)
+  \capa{6}{\node[muestra,areaep] at (2,-34) {};}
+  \capa{6}{\node[etiqueta,anchor=west,font=\footnotesize] at (6,-34) {$a$: excedente del productor};}
+  \capa{7}{\node[muestra,areapie] at (72,-34) {};}
+  \capa{7}{\node[etiqueta,anchor=west,font=\footnotesize] at (76,-34) {$b$, $d$: PIE};}
+  \capa{8}{\node[muestra,arearec] at (2,-41) {};}
+  \capa{8}{\node[etiqueta,anchor=west,font=\footnotesize] at (6,-41) {$c$: recaudación};}
+\end{tikzpicture}
+\end{document}

@@ -8,6 +8,8 @@
 %   creación de empleo 3,6 - 1,2892 sqrt(theta); theta1* = 1,6108, w1* = 1,9638;
 %   curva de Beveridge con s/A' = 0,2308: V = 11,9822 (1 - U/15)^2 / U;
 %   rayo V = 0,5155 U: (3,6487; 1,8807).
+% theta* en el color del rayo V = theta* U (dorado) y theta1* en el del rayo
+% nuevo (rojo), en los 2 paneles (Víctor, 9/11/2026).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -24,7 +26,8 @@
     \draw[curva3] plot[domain=0:2.2804, samples=60, smooth] ({(\x)^2},{3.6-0.838*\x})
       node[etiqueta, right, text=tceeverde] {creación de empleo};
     \node[punto] (E) at (2.5,2.275) {};
-    \proyeccion{(E)}{$\theta^*$}{$w^*$}
+    \draw[guia, draw=tceedorado] (E) -- (2.5,0) node[below, text=tceedorado] {$\theta^*$};
+    \draw[guia] (E) -- (0,2.275) node[left] {$w^*$};
     \begin{scope}[xshift=9.6cm]
       \ejes{$U$}{$V$}{5.8}{4.8}
       \draw[curva1] plot[domain=1.12:5.3, samples=80, smooth] (\x,{5.0625*(1-\x/15)^2/\x})
@@ -45,7 +48,7 @@
   % 3: nuevo equilibrio (theta1*, w1*)
   \capa{3}{
     \node[punto, fill=tceerojo] (E1) at (2.9975,2.7491) {};
-    \draw[guia] (E1) -- (2.9975,0) node[below] {$\theta_1^*$};
+    \draw[guia, draw=tceerojo] (E1) -- (2.9975,0) node[below, text=tceerojo] {$\theta_1^*$};
     \draw[guia] (E1) -- (0,2.7491) node[left] {$w_1^*$};
   }
   % 4: el rayo gira hacia arriba y el punto recorre la curva de Beveridge
@@ -68,7 +71,8 @@
       \draw[curva3] plot[domain=0:2.2804, samples=60, smooth] ({(\x)^2},{3.6-0.838*\x})
         node[etiqueta, right, align=left, text=tceeverde] {creación\\de empleo};
       \node[punto] (F) at (2.5,2.275) {};
-      \proyeccion{(F)}{$\theta^*$}{$w^*$}
+      \draw[guia, draw=tceedorado] (F) -- (2.5,0) node[below, text=tceedorado] {$\theta^*$};
+    \draw[guia] (F) -- (0,2.275) node[left] {$w^*$};
       \begin{scope}[xshift=9.6cm]
         \ejes{$U$}{$V$}{5.8}{4.8}
         \draw[curva1] plot[domain=1.12:5.3, samples=80, smooth] (\x,{5.0625*(1-\x/15)^2/\x})
@@ -84,7 +88,7 @@
         node[etiqueta, right, align=left, text=tceerojo] {creación\\de empleo$'$};
       \draw[flecha] (4.3,1.85) -- (4.3,1.08);
       \node[punto, fill=tceerojo] (F1) at (1.6108,1.9638) {};
-      \draw[guia] (F1) -- (1.6108,0) node[below] {$\theta_1^*$};
+      \draw[guia, draw=tceerojo] (F1) -- (1.6108,0) node[below, text=tceerojo] {$\theta_1^*$};
       \draw[guia] (F1) -- (0,1.9638) node[below left] {$w_1^*$};
     }
     % 7: la curva de Beveridge se aleja del origen y el rayo gira hacia abajo

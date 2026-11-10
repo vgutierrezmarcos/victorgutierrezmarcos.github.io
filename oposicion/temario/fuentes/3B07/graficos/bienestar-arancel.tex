@@ -1,0 +1,39 @@
+% Bienestar de un país grande según su arancel ad valorem t, 3.B.7, I.2.1.
+% Mismo mercado que arancel-grande.tex: M(p) = 7,6 - 2p y X*(p*) = 2p* - 2,4.
+% Con el arancel: p* = 5/(2+t), p = p*(1+t), M = 2p* - 2,4 y
+%   W - W^LC = -[7,6(p - 2,5) - (p^2 - 6,25)] + t p* M
+% (excedentes del consumidor y del productor más la recaudación).
+% Máximo en t^opt = 0,419 = 1/eps*_X (eps*_X = 2,38 en p* = 2,067), con
+% W - W^LC = 0,563; vuelve a 0 en t = 1,06; arancel prohibitivo en
+% t = 19/6 - 1 = 2,167 (p* = 1,2, p = 3,8), con W - W^LC = -1,69 (autarquía).
+% Eje vertical en escala 1,2 cm por unidad.
+% Elaboración propia a partir de Feenstra y Taylor (2021), cap. 8 (fig. 8-10).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=2cm,y=1.2cm,
+    declare function={
+      ps(\t)=5/(2+\t); pp(\t)=ps(\t)*(1+\t); mm(\t)=2*ps(\t)-2.4;
+      dw(\t)=-(7.6*(pp(\t)-2.5)-(pp(\t)*pp(\t)-6.25))+\t*ps(\t)*mm(\t);}]
+  % 1: ejes; el horizontal es la recta del 0 (libre comercio)
+  \capa{1}{\draw[eje] (0,0) -- (2.9,0) node[right] {$t$};}
+  \capa{1}{\draw[eje] (0,-2.0) -- (0,1.0) node[above] {$W-W^{\mathrm{LC}}$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: curva de bienestar hasta el arancel prohibitivo
+  \capa{2}{\draw[curva1] plot[domain=0:2.1667,samples=120,smooth] (\x,{dw(\x)});}
+  % 3: arancel óptimo
+  \capa{3}{\node[punto] (O) at (0.419,0.563) {};}
+  \capa{3}{\draw[guia] (O) -- (0.419,0) node[below,text=black] {$t^{\mathrm{opt}}=\frac{1}{\varepsilon^*_X}$};}
+  % 4: arancel prohibitivo y tramo horizontal (sin comercio)
+  \capa{4}{\node[punto] (P) at (2.1667,-1.69) {};}
+  \capa{4}{\draw[curva1] (P) -- (2.85,-1.69);}
+  \capa{4}{\draw[guia] (P) -- (2.1667,0) node[above,text=black] {$t^{\mathrm{pro}}$};}
+  \capa{4}{\draw[guia] (P) -- (0,-1.69) node[left,text=black] {$W^{\mathrm{aut}}-W^{\mathrm{LC}}$};}
+  % 5: rótulos
+  \capa{5}{\node[punto] at (0,0) {};}
+  \capa{5}{\node[etiqueta,anchor=south east,font=\footnotesize] at (-0.03,0.03) {libre comercio};}
+  \capa{5}{\node[etiqueta,anchor=south west,font=\footnotesize] at (0.5,0.6) {arancel óptimo};}
+  \capa{5}{\node[etiqueta,anchor=north west,font=\footnotesize,align=left] at (2.2,-1.72) {arancel prohibitivo\\(sin comercio)};}
+\end{tikzpicture}
+\end{document}

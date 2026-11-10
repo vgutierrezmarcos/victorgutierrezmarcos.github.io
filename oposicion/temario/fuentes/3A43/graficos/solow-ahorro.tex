@@ -25,14 +25,14 @@
   % 1: panel (a): plano (k, inversión)
   \capa{1}{\begin{scope}[x=0.8cm]
     \node[titulo,text depth=0.25ex] at (-1.125,3.15) {(a) Estado estacionario};
-    \ejes{$k$}{inversión}{7.0}{3.0}
-    \draw[curva3] (0,0) -- (6.4,2.432) node[etiqueta,right,text=tceeverde] {$(n+g+\delta)k$};
-    \draw[curva2] plot[domain=0:6.4,samples=80] (\x,{0.63*sqrt(\x)}) node[etiqueta,below right,text=tceeazul] {$s_0f(k)$};
-    \draw[curvanueva] plot[domain=0:6.4,samples=80] (\x,{0.85*sqrt(\x)}) node[etiqueta,below right,text=tceerojo] {$s_1f(k)$};
+    \ejes{$\tilde k$}{inversión}{7.0}{3.0}
+    \draw[curva3] (0,0) -- (6.4,2.432) node[etiqueta,right,text=tceeverde] {$(n+g+\delta)\tilde k$};
+    \draw[curva2] plot[domain=0:6.4,samples=80] (\x,{0.63*sqrt(\x)}) node[etiqueta,below right,text=tceeazul] {$s_0f(\tilde k)$};
+    \draw[curvanueva] plot[domain=0:6.4,samples=80] (\x,{0.85*sqrt(\x)}) node[etiqueta,below right,text=tceerojo] {$s_1f(\tilde k)$};
     \node[punto] (A0) at (2.7487,1.0445) {};
     \node[punto] (A1) at (5.0035,1.9013) {};
-    \draw[guia] (A0) -- (2.7487,0) node[below,text=black] {$k^*_0$};
-    \draw[guia] (A1) -- (5.0035,0) node[below,text=black] {$k^*_1$};
+    \draw[guia] (A0) -- (2.7487,0) node[below,text=black] {$\tilde k^*_0$};
+    \draw[guia] (A1) -- (5.0035,0) node[below,text=black] {$\tilde k^*_1$};
     \draw[->,thick,tceerojo] (2.9,0.25) -- (4.85,0.25);
   \end{scope}}
   % 2: panel (b): k_t (y c_t)
@@ -41,20 +41,20 @@
     \draw[eje] (0,0) -- (5.4,0) node[below left=2pt and 0pt] {$t$};
     \draw[eje] (0,0) -- (0,3.0);
     \draw[guia] (1.2,0) -- (1.2,2.7); \node[below] at (1.2,0) {$t_0$};
-    \draw[guia] (0,0.4) -- (5.2,0.4); \node[left] at (0,0.4) {$k^*_0$};
-    \draw[guia] (0,2.3) -- (5.2,2.3); \node[left] at (0,2.3) {$k^*_1$};
+    \draw[guia] (0,0.4) -- (5.2,0.4); \node[left] at (0,0.4) {$\tilde k^*_0$};
+    \draw[guia] (0,2.3) -- (5.2,2.3); \node[left] at (0,2.3) {$\tilde k^*_1$};
     \draw[curva1] (0,0.4) -- (1.2,0.4) -- plot[domain=0:42,samples=60] ({1.2+0.095*\x},{yk(\x)})
-      node[etiqueta,right,text=tceemorado] {$k_t$};
+      node[etiqueta,right,text=tceemorado] {$\tilde k_t$};
     \draw[curva4] (0,1.476) -- (1.2,1.476);
     \draw[salto] (1.2,1.476) -- (1.2,1.0);
     \draw[curva4] plot[domain=0:42,samples=60] ({1.2+0.095*\x},{yc(\x)})
-      node[etiqueta,right,text=tceedorado] {$c_t$};
+      node[etiqueta,right,text=tceedorado] {$\tilde c_t$};
   \end{scope}}
   % 3: panel (c): tasa de crecimiento de la renta por trabajador
   \capa{3}{\begin{scope}[yshift=-4.4cm]
-    \node[titulo,text depth=0.25ex] at (-0.9,3.15) {(c) Crecimiento de $Y/L$};
+    \node[titulo,text depth=0.25ex] at (-0.9,3.15) {(c) Crecimiento de $y$};
     \draw[eje] (0,0) -- (5.4,0) node[below left=2pt and 0pt] {$t$};
-    \draw[eje] (0,0) -- (0,3.0) node[left] {$\gamma_{Y/L}$};
+    \draw[eje] (0,0) -- (0,3.0) node[left] {$\gamma_y$};
     \draw[guia] (1.2,0) -- (1.2,2.7); \node[below] at (1.2,0) {$t_0$};
     \draw[guia] (0,0.8) -- (5.2,0.8); \node[left] at (0,0.8) {$g$};
     \draw[curva1] (0,0.8) -- (1.2,0.8);
@@ -63,9 +63,9 @@
   \end{scope}}
   % 4: panel (d): logaritmo de la renta por trabajador
   \capa{4}{\begin{scope}[shift={(7.6,-4.4)}]
-    \node[titulo,text depth=0.25ex] at (-0.9,3.15) {(d) Nivel de $Y/L$ (en logaritmos)};
+    \node[titulo,text depth=0.25ex] at (-0.9,3.15) {(d) Nivel de $y$ (en logaritmos)};
     \draw[eje] (0,0) -- (5.4,0) node[below left=2pt and 0pt] {$t$};
-    \draw[eje] (0,0) -- (0,3.0) node[left] {$\ln(Y/L)$};
+    \draw[eje] (0,0) -- (0,3.0) node[left] {$\ln y$};
     \draw[guia] (1.2,0) -- (1.2,2.7); \node[below] at (1.2,0) {$t_0$};
     \draw[desplazada,tceegris,thick] (1.2,0.7528) -- (4.99,1.9288)
       node[etiqueta,right,text=tceegris,font=\footnotesize] {pendiente $g$};

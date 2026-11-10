@@ -122,6 +122,12 @@ Revisión autónoma del 5/11/2026 (Víctor fuera: las dudas se resuelven con la 
 - Para el canon (CC1-CC10 de coherencia): fichas nuevas `miu-sidrauski`, `cia` y `kiyotaki-wright` con este tema de referencia; terminología «pago por adelantado» a unificar en el 3.A.21 y el 3.A.29 (cosmético).
 - Remisiones de la parte 2: 3.A.3, 3.A.4, 3.A.5, 3.A.7, 3.A.8, 3.A.10, 3.A.21, 3.A.34, 3.A.36, 3.A.37, 3.A.39, 3.A.40, 3.A.41, 3.A.42, 3.A.43, 3.B.2, 3.B.23.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo»; incluida «La introducción y la conclusión se cantan sin pizarra». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): I, II y III: \newline → \cortetitulo{} (cortes ya en el mejor punto). |
+
 ## 7. Dudas abiertas
 
 Resueltas con la opción recomendada (decisiones del coordinador y de coherencia): D1 a (III con título ampliado), D2 a (Kiyotaki-Wright en I.2), D3 a (Keynes y Friedman en resumen, fuera las «3 razones»), D5 a (anexo «El origen del dinero» reducido), D6 a (enganche), D7 a (etiquetas), D8 a (Salamanca completa aquí), D9 → $w_{\mathrm B}$ en Tobin; $M^D=M^*/2$ sin barra.
@@ -144,6 +150,18 @@ Resueltas con la opción recomendada (decisiones del coordinador y de coherencia
 - **A35-15** (control de calidad, 5/11/2026) · $\pi^*$ significa 2 cosas en III: la inflación de la regla de Friedman ($\pi^*\simeq-r$, `eq:regla-friedman`, III.1) y la que maximiza el señoreaje ($\pi^*=1/\alpha$, III.3 y el gráfico `laffer-senoreaje` copiado del 3.A.39, que lo rotula así). (a) **dejarlo** (cada uno es el canon de su tema de referencia, 3.A.41 y 3.A.39, y van en apartados distintos); (b) en este tema, escribir $\pi^{S}=1/\alpha$ (o $\pi^{\max}$) en III.3 y en el gráfico.
 - **A35-16** (control de calidad) · «Milton Friedman» sin `\autor` en el título del vídeo del Fraser Institute (anotaciones de I.1.2): es el título literal del vídeo y no se toca (el aviso de verificar-tema se acepta).
 
+## Enlaces del original (9/11/2026)
+
+Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
+
+- **Restaurados** (2):
+  - Documento de trabajo de Sargent en el repositorio de la Universidad de Minnesota (n.º 1975-56, pp. 60-66), que el original enlazaba en la nota de neutralidad y dicotomía: `\href` en la nota de la neutralidad del dinero (I.1), con el identificador permanente `hdl.handle.net/11299/54808`, porque la dirección antigua (`/bitstream/handle/…`) es de la versión anterior del repositorio. El repositorio bloquea las consultas automáticas (403), así que **no se ha podido ver el título del documento**: conviene que Víctor lo abra y, si es el borrador de *Macroeconomic Theory*, se pase al `.bib`.
+  - Documento de trabajo del NBER de Schmitt-Grohé y Uribe (w16054), que el original citaba en la nota de la regla de Friedman: `url` (versión de libre acceso) y `urldate` en la entrada `SchmittGroheUribe2010Optimal`, que cita la versión publicada en el *Handbook*.
+- **Ya estaban** (por otra vía): los 2 vídeos de Khan Academy (funciones del dinero y curva de demanda de dinero), en las cajas de anotaciones; Feenstra (1986), con su DOI en el `.bib`; el estudio de hábitos de uso del efectivo del Banco de España, sustituido por la edición de 2026 y por la página con todas las ediciones (`BdE2026HabitosWeb`).
+- **No restaurados**:
+  - `econ.ccu.edu.tw/graduate/1051114.pdf` (nota al opositor de Kiyotaki y Wright): da 404 y no se ha encontrado otra dirección; el tema ya enlaza el documento de trabajo del NBER de Kiyotaki y Wright.
+  - Documento de Google Docs con la estructura del tema de otro preparador: privado y de otro preparador.
+
 ## 8. Instrucciones para el vídeo
 
 - Introducción y conclusión sin pizarra. Enganche: Quevedo y la paradoja del efectivo (cada vez se paga menos con billetes y nunca ha habido tantos); idea final que lo retoma (K28): don Dinero es poderoso, pero su poder es prestado.
@@ -151,3 +169,4 @@ Resueltas con la opción recomendada (decisiones del coordinador y de coherencia
 - II: se borra todo menos `eq:liquidez`. A la derecha, `eq:demanda-general`, que se llena con los argumentos y elasticidades de cada teoría hasta ser la versión corta de `tab:modelos-demanda-dinero` (nunca se escribe 2 veces). `baumol-tobin` por capas, imprescindible (dientes de sierra, luego la U y el giro al subir $i$), con `eq:baumol-tobin` recuadrada y el ejemplo de Lucía de palabra con 2 cifras; Miller-Orr y Whalen de palabra (sus gráficos, como apoyo). `eq:miu` recuadrada; $C_t\leq m_t$ y $\psi(C_t,m_t)$ en una línea cada una. `tobin-cartera` en 2 cuadrantes, recomendado. Cagan en una línea (`eq:cagan`). `velocidad-dinero` como apoyo.
 - III: se conservan `eq:liquidez` y `eq:miu`; junto a esta, «$i=0\Rightarrow\pi=-r$». De palabra, las pendientes, Poole y Goodhart. $S=\pi\,M/P$ y $\pi^*=1/\alpha$ escritos; `laffer-senoreaje` y `medios-pago-space` como apoyo. Al final la pizarra queda con las 3 funciones clave y la tabla de síntesis.
 - Pegatinas (una vez cada una, junto a su concepto): «en el término medio está la virtud» (Baumol-Tobin), «por si las moscas» (Whalen), «el dinero no da la felicidad» (MIU), «por dinero baila el perro» (CIA), «no poner todos los huevos en la misma cesta» (Tobin), «ojos que no ven, corazón que no siente» (Rogoff y el efectivo).
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La introducción y la conclusión se cantan sin pizarra. La pizarra se organiza en 3 zonas. A la izquierda, el refrán del enganche y las pegatinas, cada una junto a su concepto: «puedes llevar el caballo al río, pero no obligarlo a beber» (la trampa de la liquidez), «cuando seas padre, comerás huevos» (\autor{Samuelson}), «juntarse el hambre con las ganas de comer» (la doble coincidencia de \autor{Kiyotaki} y \autor{Wright}), «en el término medio está la virtud» (\autor{Baumol}-\autor{Tobin}), «por si las moscas» (la precaución), «el dinero no da la felicidad» (el dinero en la utilidad), «por dinero baila el perro» (el pago por adelantado), «no poner todos los huevos en la misma cesta» (\autor{Tobin}) y «ojos que no ven, corazón que no siente» (el efectivo). En el centro, los gráficos, que se borran al cambiar de bloque: la preferencia por la liquidez (gráfico~\ref{fig:liquidez}), imprescindible, y en el bloque de los determinantes el de \autor{Baumol}-\autor{Tobin}, imprescindible, y el de \autor{Tobin}, recomendado. A la derecha, recuadradas y conservadas desde que se escriben, las funciones clave: la preferencia por la liquidez \eqref{eq:liquidez}, \autor{Baumol}-\autor{Tobin} \eqref{eq:baumol-tobin} y el dinero en la utilidad \eqref{eq:miu}; debajo, la función general de demanda de dinero \eqref{eq:demanda-general}, que se va llenando con cada teoría hasta convertirse en la tabla~\ref{tab:modelos-demanda-dinero}.

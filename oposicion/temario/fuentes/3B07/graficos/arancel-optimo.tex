@@ -1,0 +1,62 @@
+% El arancel óptimo con curvas de oferta neta (Johnson, 1953-54). Gráfico de
+% referencia del modelo del canon arancel-optimo. Mismos países que
+% 3B05/graficos/ofertas-netas.tex y meade.tex (X la exporta A, Y la exporta B;
+% RRI = p_X/p_Y es la pendiente del rayo desde el origen):
+%   A: FPP X^2 + Y^2 = 36, CIS Cobb-Douglas simétrica. Con RRI = p y arancel
+%      t sobre Y, precio interior q = p/(1+t); produce en (xp(q), yp(q)) y,
+%      con la recaudación devuelta, consume sobre la recta de precios mundiales
+%      con Y_C/X_C = q:
+%        X_C = (p xp(q) + yp(q))/(p+q),  E^A = xp(q) - X_C,  M^A = q X_C - yp(q)
+%      (t = 0 da la ON_A de ofertas-netas.tex).
+%   B: ON_B de ofertas-netas.tex.
+%   E_0 = (2,012; 4,025), RRI_0 = 2, U_0 = 4,743 (CIC_{A,0}, tangente al rayo).
+%   Arancel óptimo: el punto de ON_B con más bienestar de A es
+%   E_1 = (1,179; 3,005), RRI_1 = 2,549 > 2; allí la pendiente de ON_B,
+%   RMT* = 1,590, es la de CIC_{A,1} (U_1 = 4,917) y la del precio interior:
+%   t^opt = 2,549/1,590 - 1 = 0,604. ON'_A con ese t pasa por E_1 y corta al
+%   rayo RRI_0 en E'_1 = (0,642; 1,284).
+%   CIC de nivel U (Meade): E = xp(s) - U/sqrt(s), M = U sqrt(s) - yp(s),
+%   con pendiente s en cada punto.
+% Elaboración propia a partir de Johnson (1953-54), Meade (1952) y Gandolfo
+% (2014), cap. 10.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=2.0cm,y=0.75cm,
+    declare function={
+      xp(\s)=6*\s/sqrt(1+\s*\s); yp(\s)=6/sqrt(1+\s*\s);
+      xc(\p,\t)=(\p*xp(\p/(1+\t))+yp(\p/(1+\t)))/(\p+\p/(1+\t));
+      oe(\p,\t)=xp(\p/(1+\t))-xc(\p,\t); om(\p,\t)=\p/(1+\t)*xc(\p,\t)-yp(\p/(1+\t));
+      ce(\s,\u)=xp(\s)-\u/sqrt(\s); cm(\s,\u)=\u*sqrt(\s)-yp(\s);
+      db(\p)=sqrt(9*\p*\p+144); xb(\p)=db(\p)/(2*\p)-9*\p/db(\p); yb(\p)=144/db(\p)-db(\p)/2;}]
+  % 1: ejes E^A y M^A
+  \capa{1}{\ejes{$E^A$}{$M^A$}{4.1}{7.4}}
+  \capa{1}{\node[etiqueta,font=\footnotesize,align=left,anchor=west] at (4.15,0) {exportación de $X$ de $A$\\importación de $B$};}
+  \capa{1}{\node[etiqueta,font=\footnotesize,align=right,anchor=south east] at (-0.1,7.75) {importación de $Y$ de $A$\\exportación de $B$};}
+  % 2: ON_A
+  \capa{2}{\draw[curva1] plot[domain=1:2.75,samples=70] ({oe(\x,0)},{om(\x,0)}) node[etiqueta,above,text=tceemorado] {$\mathrm{ON}_A$};}
+  % 3: ON_B, curvada hacia el eje E^A
+  \capa{3}{\draw[curva2] plot[domain=4:1.45,samples=70] ({xb(\x)},{yb(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{ON}_B$};}
+  % 4: equilibrio de libre comercio E_0 y el rayo RRI_0
+  \capa{4}{\draw[thick,tceeverde] (0,0) -- (3.1,6.2) node[etiqueta,above right=-2pt,text=tceeverde,font=\footnotesize] {$\mathrm{RRI}_0$};}
+  \capa{4}{\node[punto] (E0) at (2.012,4.025) {};}
+  \capa{4}{\node[etiqueta,below right=0pt and 1pt] at (E0) {$E_0$};}
+  % 5: CIC_{A,0}, tangente al rayo RRI_0 en E_0
+  \capa{5}{\draw[thick,tceedorado] plot[domain=1.7:2.6,samples=50] ({ce(\x,4.7434)},{cm(\x,4.7434)}) node[etiqueta,right,text=tceedorado,font=\footnotesize] {$\mathrm{CIC}_{A,0}$};}
+  % 6: ON'_A, contraída hacia el eje de Y por el arancel
+  \capa{6}{\draw[curvanueva] plot[domain=1.6037:3.35,samples=70] ({oe(\x,0.60361)},{om(\x,0.60361)}) node[etiqueta,above,text=tceerojo] {$\mathrm{ON}'_A$};}
+  \capa{6}{\draw[->,thin,tceegris] (2.11,4.8) -- (1.6,4.8);}
+  % 7: E'_1, corte de ON'_A con el rayo RRI_0: exceso de demanda de X
+  \capa{7}{\node[punto,fill=white,draw=black] (E1p) at (0.642,1.284) {};}
+  \capa{7}{\draw[thin] (E1p) ++(0.06,-0.1) -- (1.05,0.62) node[etiqueta,right,font=\footnotesize,align=left] {$E'_1$: a $\mathrm{RRI}_0$, exceso\\de demanda de $X$};}
+  % 8: nuevo equilibrio E_1 y el rayo RRI_1, más inclinado
+  \capa{8}{\draw[thick,tceeverde,dashed] (0,0) -- (2.12,5.4) node[etiqueta,above,text=tceeverde,font=\footnotesize] {$\mathrm{RRI}_1$};}
+  \capa{8}{\node[punto] (E1) at (1.179,3.005) {};}
+  \capa{8}{\node[etiqueta,left=3pt] at (E1) {$E_1$};}
+  % 9: CIC_{A,1}, tangente a ON_B en E_1, y la condición del óptimo
+  \capa{9}{\draw[thick,tceedorado] plot[domain=1.2:2.1,samples=50] ({ce(\x,4.9171)},{cm(\x,4.9171)});}
+  \capa{9}{\draw[thin,tceedorado] (0.58,2.13) -- (0.32,3.0) node[etiqueta,above,text=tceedorado,font=\footnotesize] {$\mathrm{CIC}_{A,1}$};}
+  \capa{9}{\draw[thin] (E1) ++(-0.04,0.22) -- (0.6,5.6) node[etiqueta,font=\footnotesize,anchor=south,align=center] {en $E_1$: $\mathrm{RMS}_{XY}=\mathrm{RMT}_{XY}$\\$=\mathrm{RMT}^*_{XY}$};}
+\end{tikzpicture}
+\end{document}

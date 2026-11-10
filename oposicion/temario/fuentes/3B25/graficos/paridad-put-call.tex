@@ -1,0 +1,38 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Pagos al vencimiento de las 2 carteras de la paridad put-call (K = 2).
+% Izquierda: bono que paga K + call = max(S_T,K).
+% Derecha: acción + put = max(S_T,K). Activo (bono o acción) en azul y opción
+% en dorado, discontinuos; la suma, en morado e idéntica en los 2 paneles.
+\begin{tikzpicture}[tcee,scale=0.85,
+    activo/.style={thick,dashed,tceeazul},
+    opcion/.style={thick,dashed,tceedorado}]
+  % 1: ejes y título del panel izquierdo, guía en K
+  \capa{1}{\ejes{$S_T$}{Pago}{4.8}{4.6}}
+  \capa{1}{\node[etiqueta,font=\normalsize] at (2.4,5.05) {\emph{Call} fiduciaria};}
+  \capa{1}{\draw[guia] (2,0) node[below] {$K$} -- (2,2);}
+  % 2: bono que paga K
+  \capa{2}{\draw[activo] (0,2) -- (4.4,2) node[etiqueta,below,pos=0.62,text=tceeazul] {bono};}
+  \capa{2}{\node[etiqueta,left] at (0,2) {$K$};}
+  % 3: call
+  \capa{3}{\draw[opcion] (0,0) -- (2,0) -- (4.2,2.2) node[etiqueta,right,text=tceedorado] {\emph{call}};}
+  % 4: suma
+  \capa{4}{\draw[curva1] (0,2) -- (2,2) -- (4.2,4.2);}
+  \capa{4}{\node[etiqueta,above,text=tceemorado] at (1,2) {$\max(S_T,K)$};}
+  \begin{scope}[xshift=6.6cm]
+    % 5: ejes y título del panel derecho, guía en K
+    \capa{5}{\ejes{$S_T$}{Pago}{4.8}{4.6}}
+    \capa{5}{\node[etiqueta,font=\normalsize] at (2.4,5.05) {\emph{Put} protectora};}
+    \capa{5}{\draw[guia] (2,0) node[below] {$K$} -- (2,2);}
+    \capa{5}{\node[etiqueta,left] at (0,2) {$K$};}
+    % 6: acción
+    \capa{6}{\draw[activo] (0,0) -- (4.5,4.5) node[etiqueta,right,text=tceeazul] {acción};}
+    % 7: put
+    \capa{7}{\draw[opcion] (0,2) -- (2,0) -- (4.4,0) node[etiqueta,above,text=tceedorado] {\emph{put}};}
+    % 8: suma
+    \capa{8}{\draw[curva1] (0,2) -- (2,2) -- (4.2,4.2);}
+    \capa{8}{\node[etiqueta,above,text=tceemorado] at (1,2) {$\max(S_T,K)$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

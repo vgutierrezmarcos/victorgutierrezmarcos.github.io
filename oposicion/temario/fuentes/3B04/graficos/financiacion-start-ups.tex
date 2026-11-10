@@ -1,0 +1,61 @@
+% Fuentes de financiación de la empresa según crece (3.B.4, anexo F).
+% Rehace en castellano la figura de la Comisión Europea (DG FISMA) de la
+% imagen 13 del original; posiciones leídas de la figura (1 cm = 45 px en
+% horizontal, 40 px en vertical).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    fmercado/.style={<->,thick,tceeazul},
+    fbanco/.style={<->,thick,tceenaranja},
+    finterno/.style={<->,thick,tceeverde},
+    rotulo/.style={font=\footnotesize,above,inner sep=1.5pt},
+    etapa/.style={font=\footnotesize,align=left,anchor=north west}]
+  % 1: ejes y curva de necesidades
+  \capa{1}{\ejes{}{}{14.6}{10.3}}
+  \capa{1}{\node[below] at (7.3,-0.15) {Crecimiento de la empresa};}
+  \capa{1}{\node[rotate=90,align=center] at (-0.75,5) {Necesidades de financiación\\ y fuentes disponibles};}
+  \capa{1}{\draw[curva1] plot[smooth,tension=0.6] coordinates
+    {(0,1.75) (3.07,2.12) (5.91,3.0) (8.78,4.25) (11.56,6.25) (14.2,7.95)}
+    node[etiqueta,right,align=left,text=tceemorado] {necesidades de\\ financiación};}
+  % 2: etapas
+  \capa{2}{\foreach \x in {3.07,5.91,8.78,11.6}
+    \draw[thick,dotted,tceegris] (\x,0) -- (\x,10);}
+  \capa{2}{\node[etapa] at (0.05,10) {1. Inicio\\ (I+D, idea)};}
+  \capa{2}{\node[etapa] at (3.12,10) {2. Semilla y primer\\ crecimiento};}
+  \capa{2}{\node[etapa] at (5.96,10) {3. Expansión};}
+  \capa{2}{\node[etapa] at (8.83,10) {4. Siguiente impulso\\ (salida a bolsa)};}
+  % 3: mercados de capitales
+  \capa{3}{\draw[fmercado] (8.82,8.0) -- node[rotulo] {Mercados de deuda} (11.67,8.0);}
+  \capa{3}{\draw[fmercado] (8.82,7.55) -- node[rotulo] {Salida a bolsa} (11.67,7.55);}
+  \capa{3}{\draw[fmercado] (5.96,7.1) -- (11.6,7.1);}
+  \capa{3}{\node[rotulo,text=tceeazul] at (7.35,7.1) {Colocación privada};}
+  \capa{3}{\draw[fmercado] (5.96,6.65) -- (9.89,6.65);}
+  \capa{3}{\node[rotulo,text=tceeazul] at (7.35,6.65) {Capital privado};}
+  \capa{3}{\draw[fmercado] (5.96,6.2) -- node[rotulo] {Capital riesgo} (8.78,6.2);}
+  \capa{3}{\draw[fmercado] (3.07,5.75) -- node[rotulo] {Micromecenazgo} (5.89,5.75);}
+  \capa{3}{\draw[fmercado] (1.67,5.3) -- node[rotulo] {\emph{Business angels}} (7.11,5.3);}
+  \capa{3}{\draw[fmercado] (1.67,4.85) -- (5.89,4.85);}
+  \capa{3}{\node[rotulo,below,align=center,text=tceeazul] at (4.49,4.85) {Préstamos entre\\ particulares (P2P)};}
+  % 4: bancos
+  \capa{4}{\draw[fbanco] (3.07,3.75) -- (11.56,3.75);}
+  \capa{4}{\node[rotulo,align=center,text=tceenaranja] at (10.19,3.75) {Arrendamiento\\ financiero};}
+  \capa{4}{\draw[fbanco] (3.07,3.3) -- (11.56,3.3);}
+  \capa{4}{\node[rotulo,text=tceenaranja] at (10.19,3.3) {Préstamos bancarios};}
+  \capa{4}{\draw[fbanco] (3.07,2.85) -- (11.56,2.85);}
+  \capa{4}{\node[rotulo,text=tceenaranja] at (10.19,2.85) {Crédito comercial};}
+  \capa{4}{\draw[fbanco] (3.07,2.4) -- (7.33,2.4);}
+  \capa{4}{\node[rotulo,below,align=center,text=tceenaranja] at (7.35,2.4) {Descubiertos\\ bancarios};}
+  % 5: recursos internos y leyenda
+  \capa{5}{\draw[finterno] (3.07,1.4) -- (13.16,1.4);}
+  \capa{5}{\node[rotulo,text=tceeverde] at (10.19,1.4) {Beneficios retenidos};}
+  \capa{5}{\draw[finterno] (0,0.6) -- (6.78,0.6);}
+  \capa{5}{\node[rotulo,align=center,text=tceeverde] at (1.53,0.6) {Recursos propios,\\ familia y amigos};}
+  \capa{5}{\node[draw=tceegris,thick,anchor=north west,align=left,font=\footnotesize,inner sep=4pt]
+    at (11.9,5.6) {\textbf{Fuente de financiación}\\[1pt]
+      \tikz\fill[tceeazul] (0,0) rectangle (0.35,0.22); Mercados de capitales\\
+      \tikz\fill[tceenaranja] (0,0) rectangle (0.35,0.22); Bancos\\
+      \tikz\fill[tceeverde] (0,0) rectangle (0.35,0.22); Recursos internos};}
+\end{tikzpicture}
+\end{document}

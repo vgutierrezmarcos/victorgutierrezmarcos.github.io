@@ -1,0 +1,48 @@
+% La RRI en el modelo de Ricardo con la demanda: oferta de exportaciones de
+% paño de Inglaterra y demanda de importaciones de paño de Portugal (la
+% construcción de Feenstra y Taylor, que estaba en la nota 16 del tema
+% anterior), con los números de tab:pano-vino.
+%   L̄^A = L̄^B = 2.400; a_X^A = 100, a_Y^A = 120, a_X^B = 90, a_Y^B = 80.
+%   Preferencias Cobb-Douglas: Inglaterra gasta la mitad en paño; Portugal,
+%   el 40 %.
+%   Inglaterra: con p = p_X/p_Y < 100/120 no produce paño; con p = 0,833 es
+%   indiferente (oferta horizontal de 0 a 12); con p > 0,833 se especializa
+%   (24 de paño) y consume 12: exporta 12, recta vertical.
+%   Portugal: con p > 90/80 = 1,125 produciría paño; con p = 1,125 es
+%   indiferente (demanda horizontal de 0 a 30·0,4/1,125 = 10,67); con
+%   p < 1,125 se especializa en vino (30) e importa 0,4·30/p = 12/p de paño.
+%   Equilibrio: 12 = 12/p -> RRI = 1, comercio de 12 de paño por 12 de vino.
+%   Capa 5 (país grande): si Inglaterra tuviera L̄^A = 6.000, su tramo
+%   horizontal llegaría a 30: corta a la demanda portuguesa en p = 0,833 con
+%   12/0,833 = 14,4: la RRI es el coste comparativo de Inglaterra, que sigue
+%   produciendo los 2 bienes y no gana.
+% Escala: x = 0,3 cm por unidad de paño; y = 5 cm por unidad de precio, desde 0,5.
+% Elaboración propia a partir de Feenstra y Taylor (2014), cap. 2.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.3cm,y=5cm,
+    declare function={dp(\p)=12/\p;}]
+  \begin{scope}[shift={(0,-0.5)}]
+  % 1: ejes (precio relativo desde 0,5)
+  \capa{1}{\draw[eje] (0,0.5) -- (32,0.5) node[below left=2pt and 0pt] {cantidad de paño, $X$};}
+  \capa{1}{\draw[eje] (0,0.5) -- (0,1.55) node[left] {$p_X/p_Y$};}
+  % 2: oferta de exportaciones de Inglaterra
+  \capa{2}{\draw[guia] (0,0.8333) node[left,text=black] {$\frac{100}{120}$} -- (12,0.8333);}
+  \capa{2}{\draw[curva1] (0,0.8333) -- (12,0.8333) -- (12,1.48) node[etiqueta,above,text=tceemorado,align=center] {oferta de exportaciones\\de Inglaterra};}
+  \capa{2}{\node[etiqueta,below] at (12,0.5) {$12$};}
+  % 3: demanda de importaciones de Portugal
+  \capa{3}{\draw[guia] (0,1.125) node[left,text=black] {$\frac{90}{80}$} -- (10.67,1.125);}
+  \capa{3}{\draw[curva2] (0,1.125) -- (10.67,1.125) -- plot[domain=1.125:0.6,samples=40] ({dp(\x)},\x) node[etiqueta,right,text=tceeazul,align=left] {demanda de importaciones\\de Portugal};}
+  % 4: equilibrio: RRI = 1
+  \capa{4}{\node[punto] (E) at (12,1) {};}
+  \capa{4}{\node[etiqueta,above right] at (E) {$E$};}
+  \capa{4}{\draw[guia] (0,1) node[left,text=black] {$\mathrm{RRI}=1$} -- (E);}
+  % 5: si Inglaterra fuera muy grande, la RRI sería su coste comparativo
+  \capa{5}{\draw[curvanueva,desplazada] (12,0.8333) -- (30,0.8333) -- (30,1.1) node[etiqueta,above,text=tceerojo,align=center] {Inglaterra\\muy grande};}
+  \capa{5}{\node[punto] (E2) at (14.4,0.8333) {};}
+  \capa{5}{\node[etiqueta,below right] at (E2) {$E'$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

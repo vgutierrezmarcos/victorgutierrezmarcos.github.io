@@ -9,25 +9,27 @@
 % ==========================================================================
 \bloque{Esquema del cante}
 \esquemacante{%
-\apartadocante{Introducción: «poco a poco se va lejos»}{2,5}
+\apartadocante{Introducción: «poco a poco se llega lejos»}{2,5}
 \apartadocante{I. El modelo de \autor{Solow}}{10}
 \subcante{1. Idea: de \autor{Harrod}-\autor{Domar} ($s/v=n$) a \autor{Solow}}{1,5}
-\subcante{2. Modelo: $\dot k=sf(k)-(n+g+\delta)k$; regla de oro}{7}
+\subcante{2. Modelo: $\dot k=sf(k)-(n+\delta)k$; regla de oro; solo $g$}{7}
 \subcante{3. Evidencia y valoración}{1,5}
 \apartadocante{II. \autor{Solow} con capital humano y extensiones}{5,5}
 \subcante{1. \autor{Mankiw}-\autor{Romer}-\autor{Weil} (1992)}{4}
 \subcante{2. Trampas, recursos, hacia el endógeno}{1,5}
 \apartadocante{III. \autor{Ramsey}-\autor{Cass}-\autor{Koopmans}}{11}
-\subcante{1. Solución descentralizada: \autor{Euler} y fases}{6}
-\subcante{2. Normativo: $f'(k^*)=\rho+\delta+\theta g$}{2,5}
-\subcante{3. Sector público, evidencia y valoración}{2,5}
+\subcante{a) Idea: ahorro óptimo}{0,75}
+\subcante{b) Modelo: \autor{Euler}, fases; implicaciones}{7,5}
+\subcante{c) Evidencia}{0,75}
+\subcante{d) Extensiones: sector público}{1,5}
+\subcante{e) Valoración}{0,5}
 \apartadocante{Conclusión}{1}}
-\emph{Pizarra} en 3 zonas: izquierda, ecuaciones recuadradas que se quedan (\autor{Solow}, regla de oro, renta de MRW; en \hyperref[rep:III]{III}, \autor{Euler}, acumulación y regla de oro modificada); centro, gráficos de \autor{Solow} (plano con capa de regla de oro y tasas; se borran al empezar \hyperref[rep:III]{III}); derecha, diagrama de fases de RCK por capas. Refranes en una esquina: «poco a poco se va lejos», «la avaricia rompe el saco» (ineficiencia dinámica; tachado en \hyperref[rep:III]{III}) y «al perro flaco todo son pulgas» (trampa). Intro y conclusión sin pizarra.
+Refranes: «poco a poco se llega lejos» (enganche), «la avaricia rompe el saco» (ineficiencia dinámica; no vale en \hyperref[rep:III]{III}) y «al perro flaco todo son pulgas» (trampa).
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
 \begin{itemize}
-\item \textbf{Enganche}: «Poco a poco se va lejos», pero depende de \emph{cómo}. 1956, \autor{Jruschov}: la URSS «os enterrará»; crecía más que EE.\,UU. en los 50, pero acumulando factores (capital, horas, población en la industria), sin aprender a usarlos mejor; poca sustitución $K$-$L$ $\Rightarrow$ cada máquina rendía menos; casi parada en los 80 (\autor{Krugman}, 1994; \autor{Easterly}-\autor{Fischer}, 1995). ¿Se puede crecer siempre acumulando capital? ¿Por qué unos países son más ricos?
+\item \textbf{Enganche}: «Poco a poco se llega lejos», pero depende de \emph{cómo}. 18/11/1956, recepción en la embajada polaca en Moscú, en plena Guerra Fría (Hungría, Suez): \autor{Jruschov}, «os enterraremos» (\emph{Time}, 1956); crecía más que EE.\,UU. en los 50, pero acumulando factores (capital, horas, población en la industria), sin aprender a usarlos mejor; poca sustitución $K$-$L$ $\Rightarrow$ cada máquina rendía menos; casi parada en los 80 (\autor{Krugman}, 1994; \autor{Easterly}-\autor{Fischer}, 1995). ¿Se puede crecer siempre acumulando capital? ¿Por qué unos países son más ricos?
 \item \textbf{Relevancia}: interés compuesto, regla del 70: al 1\,\% la renta se duplica en $\approx$70 años, al 2\,\% en $\approx$35. EE.\,UU. (frontera): PIB pc $\approx$2\,\% anual desde la posguerra (algo menos desde 1870); parte transitoria, educación e investigadores; la natalidad puede frenarlo (\autor{Jones}, 2023). \autor{Lucas} (1988): «difícil pensar en otra cosa». Determina nivel de vida, deuda, pensiones; base de la macro dinámica.
 \item \textbf{Contextualización}: \concepto{crecimiento económico}: aumento sostenido de la producción por habitante. \concepto{Senda de crecimiento equilibrado}: todo crece a tasas constantes = \concepto{estado estacionario} en unidades de trabajo eficiente. \concepto{Convergencia} absoluta / condicional. \concepto{Causas próximas} ($K$, $H$, progreso técnico) vs. \concepto{últimas} (instituciones, geografía, cultura); progreso técnico \concepto{exógeno}. \concepto{Hechos de \autor{Kaldor}} (1961), a LP: (1) $Y/L$ crece a tasa $\approx$constante; (2) $K/L$ también; (3) rendimiento real del capital $\approx$constante; (4) $K/Y$ $\approx$constante; (5) participaciones estables; (6) crecimiento muy distinto entre países. EE.\,UU.: $K/Y$ 3,8 (1960) y 3,2 (2023), rentabilidad $\approx$8\,\%; trabajo 64$\to$57\,\% \vertema{3.A.45}. Historia: clásicos (\autor{Smith}, \autor{Ricardo}, \autor{Malthus}) $\to$ \autor{Harrod} (1939)-\autor{Domar} (1946), inestable $\to$ \autor{Solow}-\autor{Swan} (1956) $\to$ \autor{Cass}-\autor{Koopmans} (1965) con \autor{Ramsey} (1928) $\to$ MRW (1992) $\to$ endógeno desde los 80 \vertema{3.A.44}.
 \item \textbf{Problemática}: ¿puede la acumulación sostener el crecimiento a LP? ¿Por qué unos países son más ricos? ¿Convergerán? ¿Ahorra el mercado lo que conviene? ¿Puede la política acelerar el crecimiento?
@@ -56,32 +58,30 @@ Con una función de producción neoclásica, la economía converge a un estado e
 \begin{itemize}
 \item \emph{Supuestos}: cerrada, sin SP, 1 bien ($Y=C+I$), tiempo continuo. \concepto{Función de producción neoclásica} con progreso aumentador del trabajo, $Y=F(K,AL)$, $AL$ = \concepto{trabajo eficiente}: PMg $>0$ y decrecientes; RCE (réplica) \vertema{3.A.11}; \concepto{condiciones de \autor{Inada}} (1963): esencial, $F_K\to\infty$ si $K\to0$, $F_K\to0$ si $K\to\infty$ (garantizan EE interior). Tecnología no rival y no excluible \vertema{3.A.23}. $\gamma_A=g$, $\gamma_L=n$ exógenas; agente representativo, $S=sY$ (no optimiza); competencia perfecta, $r+\delta=F_K$, $w=F_L$ (\autor{Euler}: beneficio nulo); $\dot K=I-\delta K$.
 \item \concepto{Teorema de \autor{Uzawa}} (1961): con RCE, si hay senda equilibrada, la tecnología admite la forma $F(K,AL)$ (neutral \autor{Harrod}); condición necesaria (\autor{Jones}-\autor{Scrimgeour}, 2008). Cobb-Douglas: \autor{Hicks}, \autor{Solow} y \autor{Harrod} coinciden. \concepto{Controversia del capital}: \autor{Robinson} (1953), \autor{Sraffa} (1960, \emph{reswitching}), \autor{Samuelson} (1966) lo reconoce \vertema{3.A.4}.
-\item Notación: $k\equiv K/AL$, $y=f(k)$ (\concepto{forma intensiva}). \concepto{Ecuación fundamental}:
-\funcionclave{\dot k_t=s\,f(k_t)-(n+g+\delta)\,k_t}
-\item[] Carrera entre \concepto{inversión efectiva} $sf(k)$ e \concepto{inversión de reposición} (\emph{break-even}) $(n+g+\delta)k$: depreciación, nuevos trabajadores y nuevas unidades de eficiencia. Con $g=0$, recta $(n+\delta)k$; al meter $g$, gira hacia arriba.
-\item \emph{EE}: $sf(k^*)=(n+g+\delta)k^*$; \autor{Inada} $\Rightarrow$ existe y es único; \emph{estable} (no hay filo de la navaja). Cobb-Douglas:
+\item Notación: $k\equiv K/L$, $y$, $c$ \emph{per cápita}; con virgulilla, $\tilde k\equiv K/(AL)$, por unidad de trabajo eficiente. Con $g=0$ ($A=1$), $y=f(k)$ (\concepto{forma intensiva}). Derivando $k=K/L$ con $\dot K=sF(K,L)-\delta K$: $\dot k=\dot K/L-nk$. \concepto{Ley fundamental de movimiento}:
+\funcionclave{\dot k_t=s\,f(k_t)-(n+\delta)\,k_t}
+\item[] Carrera entre la \concepto{curva de ahorro} $sf(k)$ (\emph{actual investment}) y la \concepto{recta de inversión de reposición} (\emph{break-even}) $(n+\delta)k$: depreciación y nuevos trabajadores.
+\item \emph{EE}: $sf(k^*)=(n+\delta)k^*$; \autor{Inada} $\Rightarrow$ existe y es único; \emph{estable} (no hay filo de la navaja). Cobb-Douglas:
 \begin{formula}
-\centering $k^*=\Big(\dfrac{s}{n+g+\delta}\Big)^{\frac1{1-\alpha}},\quad y^*=\Big(\dfrac{s}{n+g+\delta}\Big)^{\frac\alpha{1-\alpha}}$
+\centering $k^*=\Big(\dfrac{s}{n+\delta}\Big)^{\frac1{1-\alpha}},\quad y^*=\Big(\dfrac{s}{n+\delta}\Big)^{\frac\alpha{1-\alpha}}$
 \end{formula}
-\item \emph{Senda equilibrada}: $k,y,c$ constantes; $Y/L$, $K/L$, $C/L$ crecen a $g$; agregados a $n+g$; $r^*$ constante, $w$ crece a $g$ $\Rightarrow$ hechos 1-5 de \autor{Kaldor}.
+\item[] En el EE, $\gamma_k=\gamma_y=\gamma_c=0$: \emph{sin crecimiento per cápita}; agregados a $n$.
+\item \concepto{Regla de oro} (\autor{Phelps}, 1961; libro de 1966): «haz a los demás…» (Mt 7, 12) entre generaciones; $s$ que maximiza $c^*=f(k^*)-(n+\delta)k^*$:
+\funcionclave{f'(k_{\mathrm{oro}})=n+\delta}
+\item[] $r_{\mathrm{oro}}=n$; $s_{\mathrm{oro}}=k_{\mathrm{oro}}f'/f$ = participación del capital; Cobb-Douglas: $s_{\mathrm{oro}}=\alpha$; $c^*$ en U invertida frente a $s$.
 \end{itemize}
-\graficorepaso[0.78\linewidth]{solow}{EE de \autor{Solow} ($sf(k)=(n+g+\delta)k$) y regla de oro: pendiente de $f$ = $n+g+\delta$}
+\graficorepaso[0.78\linewidth]{solow}{Regla de oro: tangente a $f$ paralela a $(n+\delta)k$}
 \begin{itemize}
-\item \concepto{Regla de oro} (\autor{Phelps}, 1961): $s$ que maximiza $c^*=f(k^*)-(n+g+\delta)k^*$:
-\funcionclave{f'(k_{\mathrm{oro}})=n+g+\delta}
-\item[] $r_{\mathrm{oro}}=n+g$; Cobb-Douglas: $s_{\mathrm{oro}}=\alpha$; $c^*$ en U invertida frente a $s$.
 \item \concepto{Ineficiencia dinámica} ($s>s_{\mathrm{oro}}$, $k^*>k_{\mathrm{oro}}$): bajar $s$ sube $c$ ya y siempre: mejora de \autor{Pareto} entre generaciones. «La avaricia rompe el saco». Si $s<s_{\mathrm{oro}}$, subir $s$ cuesta consumo en la transición: conflicto intergeneracional, sin preferencias no se puede decidir. No es un óptimo ni nada lleva a ella.
+\item \emph{En tasas}: $\gamma_k=s\,f(k)/k-(n+\delta)$. «¡A largo plazo la economía debe dejar de crecer!» 2 resultados clave: (1) sin $g$, no hay crecimiento per cápita a LP; (2) \concepto{convergencia condicional}: más deprisa cuanto más lejos de \emph{su} EE.
 \end{itemize}
-\graficorepaso[0.6\linewidth]{consumo-ahorro}{$c^*$ frente a $s$: máximo en $s_{\mathrm{oro}}=\alpha$; a la derecha, ineficiencia dinámica}
+\graficorepaso[0.72\linewidth]{solow-tasas}{\autor{Solow} en tasas: el pobre ($k_P$) crece más que el rico ($k_R$); ↑$s$ y ↓$n+\delta$ suben $k^*$}
 \begin{itemize}
-\item \emph{En tasas}: $\gamma_k=s\,f(k)/k-(n+g+\delta)$; $sf(k)/k$ decreciente (de $\infty$ a 0) $\Rightarrow$ más lejos del EE, más deprisa se crece.
-\end{itemize}
-\graficorepaso[0.72\linewidth]{solow-tasas}{\autor{Solow} en tasas: ↑$s$ ($k^*_0\to k^*_1$); el pobre ($k_P$) crece más que el rico ($k_R$)}
-\begin{itemize}
-\item \emph{Estática comparativa}: ↑$s$: $c$ cae al instante, $\gamma_{Y/L}>g$ en la transición, a LP vuelve a $g$ en senda más alta: \emph{efecto nivel}, no crecimiento; con límite ($s\le1$). ↓$n$ o ↓$\delta$: ↑$k^*$, nivel. ↑$A_0$: igual $k^*$, ↑$Y/L$. ↑$g$: ↓$k^*$, $y^*$, pero ↑$\gamma_{Y/L}$: \emph{única} vía de crecer más a LP, y no la explica.
+\item \emph{Estática comparativa}: ↑$s$: $c$ cae al instante, crece en la transición, a LP vuelve a no crecer, más alto: \emph{efecto nivel}, con límite ($s\le1$) y coste en consumo. ↓$n$ o ↓$\delta$: ↑$k^*$, nivel, con límite. \emph{Progreso técnico, única salida}: con $A$ creciendo a $g$, $y$ crece a $g$.
+\item \emph{Con progreso técnico}: $\dot{\tilde k}=sf(\tilde k)-(n+g+\delta)\tilde k$; la recta gira hacia arriba; $\gamma_y=\gamma_k=\gamma_c=g$, agregados a $n+g$, $r^*$ constante, $w$ crece a $g$ $\Rightarrow$ hechos 1-5 de \autor{Kaldor}; $f'(\tilde k_{\mathrm{oro}})=n+g+\delta$. ↑$A_0$: igual $\tilde k^*$, ↑$y$. ↑$g$: ↓$\tilde k^*$, $\tilde y^*$, pero ↑$\gamma_y$.
 \item \concepto{Velocidad de convergencia} (linealizando):
 \begin{formula}
-\centering $\dfrac{d\ln k}{dt}\simeq-\lambda(\ln k-\ln k^*),\quad \lambda=(1-\alpha)(n+g+\delta)$
+\centering $\dfrac{d\ln\tilde k}{dt}\simeq-\lambda(\ln\tilde k-\ln\tilde k^*),\quad \lambda=(1-\alpha)(n+g+\delta)$
 \end{formula}
 \item[] $\alpha=1/3$, $n+g+\delta=0{,}06$: $\lambda=4$\,\%, \concepto{semivida} $\ln2/\lambda\approx17$ años. ↑$\lambda$ con ↑$(n+g+\delta)$ y ↓$\alpha$.
 \item \emph{Implicaciones}: crecimiento exógeno («maná caído del cielo»): la política cambia nivel y transición, no la tasa a LP. \concepto{Convergencia condicional} (cada uno a su EE); absoluta solo con parámetros iguales; en tasas, todos a $g$. Paradoja de \autor{Lucas} (1990): el capital no fluye a los pobres.
@@ -104,21 +104,21 @@ Con capital humano, \autor{Solow} explica buena parte de las diferencias de rent
 
 \sub{II.1. \autor{Mankiw}-\autor{Romer}-\autor{Weil} (1992)\label{rep:II.1}}
 \begin{itemize}
-\item Problema: con $\alpha=1/3$, elasticidad de $Y/L$ a $s$ = 0,5 y $\lambda=4$\,\%; en datos, más respuesta y convergencia más lenta. Falta un factor acumulable, \concepto{capital humano} $H$: conocimientos y habilidades que ↑productividad \vertema{3.A.25}; capital amplio $\approx2/3$.
+\item Problema: con $\alpha=1/3$, elasticidad de $y$ a $s$ = 0,5 y $\lambda=4$\,\%; en datos, más respuesta y convergencia más lenta. Falta un factor acumulable, \concepto{capital humano} $H$: conocimientos y habilidades que ↑productividad \vertema{3.A.25}; capital amplio $\approx2/3$.
 \item Supuestos: los de \autor{Solow}, con
 \begin{formula}
 \centering $Y=K^{\alpha}H^{\beta}(AL)^{1-\alpha-\beta},\quad \alpha+\beta<1$
 \end{formula}
 \item[] ($\alpha+\beta=1$: endógeno \vertema{3.A.44}); $s_K$, $s_H$ (educación, con coste de oportunidad); 1 bien; misma $\delta$.
-\item $\dot k=s_Ky-(n+g+\delta)k$, $\dot h=s_Hy-(n+g+\delta)h$; EE único y estable, $h^*/k^*=s_H/s_K$. \concepto{Ecuación de MRW}:
-\funcionclave{\ln\tfrac{Y}{L}=\ln A_0+gt+\tfrac{\alpha\ln s_K+\beta\ln s_H-(\alpha+\beta)\ln(n+g+\delta)}{1-\alpha-\beta}}
-\item[] Con $h^*$: \autor{Solow} + término $\frac{\beta}{1-\alpha}\ln h^*$; omitirlo sesga al alza los coeficientes de $s$ y $n$ ($\alpha$ de 0,6).
+\item $\dot{\tilde k}=s_K\tilde y-(n+g+\delta)\tilde k$, $\dot{\tilde h}=s_H\tilde y-(n+g+\delta)\tilde h$; EE único y estable, $\tilde h^*/\tilde k^*=s_H/s_K$. \concepto{Ecuación de MRW}:
+\funcionclave{\ln y=\ln A_0+gt+\tfrac{\alpha\ln s_K+\beta\ln s_H-(\alpha+\beta)\ln(n+g+\delta)}{1-\alpha-\beta}}
+\item[] Con $\tilde h^*$: \autor{Solow} + término $\frac{\beta}{1-\alpha}\ln\tilde h^*$; omitirlo sesga al alza los coeficientes de $s$ y $n$ ($\alpha$ de 0,6).
 \item \emph{Implicaciones} ($\alpha=\beta=1/3$): elasticidad a $s_K$ = 1 (doble), a $n+g+\delta$ = $-2$ (cuádruple); $\lambda=(1-\alpha-\beta)(n+g+\delta)=2$\,\%, semivida $\approx35$ años; a LP sigue $g$; regla de oro $s_K=\alpha$, $s_H=\beta$.
 \item \emph{Evidencia}: 98 países no petroleros, 1960-85, $g+\delta=0{,}05$: \autor{Solow} $R^2\approx0{,}59$ ($\alpha=0{,}60$); ampliado \textbf{78\,\%}, $\alpha\approx0{,}31$, $\beta\approx0{,}28$. PWT 11.0, 1960-2023: $R^2$ 0,54 ($\alpha$ 0,64) $\to$ 0,76 con capital humano.
 \item \emph{Extensiones}: $h=e^{\phi(S)}$ con rendimientos de \autor{Mincer} (\autor{Hall}-\autor{Jones}, 1999); \concepto{contabilidad del desarrollo} (\autor{Klenow}-\autor{Rodríguez-Clare}, 1997; \autor{Caselli}, 2005): la mayor parte es $A$ \vertema{3.A.45}.
 \item \emph{Críticas}: matrícula en secundaria, mala medida de $s_H$; $A_0$ correlacionado con la inversión (instituciones); misma tecnología y $g$; $g$ sin explicar $\to$ \autor{Uzawa}-\autor{Lucas} \vertema{3.A.44}.
 \end{itemize}
-\graficorepaso[0.5\linewidth]{mrw-fases}{MRW en $(k,h)$: $\dot k=0$ convexa, $\dot h=0$ cóncava; EE único y estable}
+\graficorepaso[0.5\linewidth]{mrw-fases}{MRW en $(\tilde k,\tilde h)$: $\dot{\tilde k}=0$ convexa, $\dot{\tilde h}=0$ cóncava; EE único y estable}
 
 \sub{II.2. Otras extensiones\label{rep:II.2}}
 \begin{itemize}
@@ -135,65 +135,71 @@ Con capital humano, \autor{Solow} explica buena parte de las diferencias de rent
 Con ahorro elegido por hogares que optimizan, se mantienen los resultados positivos de \autor{Solow} (EE estable, crecimiento exógeno, convergencia condicional) y se gana el análisis normativo: el equilibrio competitivo es eficiente, sigue la regla de oro modificada y nunca acumula de más. Marco de la política fiscal.
 \end{ideaclave}
 
-\sub{III.1. Idea y solución descentralizada\label{rep:III.1}}
+\sub{a) Idea\label{rep:III.a}}
 \begin{itemize}
 \item \autor{Ramsey} (1928): ¿cuánto debe ahorrar una nación? \autor{Cass} (1965), \autor{Koopmans} (1965): \autor{Solow} con hogares que optimizan a horizonte infinito. 2 ventajas: $s$ endógena (responde a $r$ y expectativas) y utilidad $\Rightarrow$ análisis normativo. 3 formas, mismo resultado: descentralizada, hogar productor, planificador.
-\item Supuestos: producción de \autor{Solow}; $r=f'(k)-\delta$, $w=A[f(k)-kf'(k)]$. \emph{Hogar representativo} (\autor{Gorman} \vertema{3.A.9}), vida infinita, $L=e^{nt}$, trabajo inelástico:
-\begin{formula}
-\centering $U_0=\displaystyle\int_0^\infty e^{-(\rho-n)t}u\Big(\frac{C}{L}\Big)dt,\quad u(x)=\frac{x^{1-\theta}-1}{1-\theta}$
-\end{formula}
-\item[] CRRA: $\theta$ = \concepto{deseo de suavizar el consumo}, \concepto{elasticidad de sustitución intertemporal} $1/\theta$ \vertema{3.A.10}; $\theta\to1$, $\ln x$. $\rho$: \concepto{tasa de preferencia temporal} (\autor{Samuelson}, 1937; exponencial = consistente, \autor{Strotz}, 1956). Descuento efectivo $\rho-n$.
-\item Restricción $\dot b=w+(r-n)b-C/L$; \concepto{no juego de \autor{Ponzi}}: $\lim b\,e^{-\int(r-n)}\ge0$. \concepto{Utilidad acotada}: $\rho-n>(1-\theta)g$.
-\item Control óptimo, \concepto{principio del máximo} (\autor{Pontriaguin} et al., 1962) \vertema{3.A.29}; hamiltoniano en valor corriente, $\lambda_t$ = valor de un euro más de activos. CPO: $(C/L)^{-\theta}=\lambda$; $\dot\lambda/\lambda=\rho-r$; \concepto{transversalidad} $\lim e^{-(\rho-n)t}\lambda b=0$ (necesaria, \autor{Michel}, 1982). \concepto{Ecuación de \autor{Euler}} (\autor{Keynes}-\autor{Ramsey}):
-\funcionclave{\frac{\dot c}{c}=\frac{f'(k)-\delta-\rho-\theta g}{\theta}\quad\big(\gamma_{C/L}=\tfrac{r-\rho}{\theta}\big)}
-\item[] $c$ crece si $r>\rho$, más cuanto mayor $1/\theta$; $\theta g$: espera ser más rico y adelanta consumo; al revés, $r=\rho+\theta\gamma$, fórmula de \autor{Ramsey} del descuento climático \vertema{3.B.31}; depende de toda la senda (renta permanente \vertema{3.A.33}).
-\item Equilibrio: $b=Ak$ $\Rightarrow$ acumulación (\autor{Solow} con ahorro $f(k)-c$ endógeno):
-\funcionclave{\dot k=f(k)-c-(n+g+\delta)\,k}
-\item \emph{Fases}: $\dot c=0$ vertical en $f'(k^*)=\rho+\delta+\theta g$; $\dot k=0$, U invertida con máximo en $k_{\mathrm{oro}}$, corta en $\bar k$. Utilidad acotada $\Rightarrow$ $\rho+\theta g>n+g$ $\Rightarrow$ $k^*<k_{\mathrm{oro}}$. Cobb-Douglas: $s^*=\alpha(n+g+\delta)/(\rho+\delta+\theta g)<\alpha$; con $\alpha=1/3$, $\rho=0{,}02$, $\delta=0{,}05$, $n=0{,}01$, $g=0{,}02$, $\theta=2$: $s^*=24$\,\%. Senda equilibrada como \autor{Solow}; $r^*=\rho+\theta g$.
-\item \concepto{Punto de silla}: $k$ predeterminada, $c$ salta a la \concepto{senda de silla}. Por encima (B): se agota $k$, $c$ tendría que desplomarse (viola \autor{Euler}); por debajo (C): a $(\bar k,0)$, $r<n+g$, viola transversalidad.
-\end{itemize}
-\graficorepaso[0.7\linewidth]{rck-fases}{Diagrama de fases de RCK: $E$ a la izquierda de $k_{\mathrm{oro}}$; senda de silla}
-\begin{itemize}
-\item ↓$\rho$ (más pacientes): $\dot c=0$ a la derecha; $c$ cae al instante a la nueva silla, luego $k$ y $c$ suben; ↑$s$, ↓$r^*$; a LP vuelve a $g$: efecto nivel.
 \end{itemize}
 
-\sub{III.2. Análisis normativo e implicaciones\label{rep:III.2}}
+\sub{b) Modelo\label{rep:III.b}}
 \begin{itemize}
+\item Supuestos: producción de \autor{Solow}; $r=f'(\tilde k)-\delta$, $w=A[f(\tilde k)-\tilde kf'(\tilde k)]$. \emph{Hogar representativo} (\autor{Gorman} \vertema{3.A.9}), vida infinita, $L=e^{nt}$, trabajo inelástico:
+\begin{formula}
+\centering $U_0=\displaystyle\int_0^\infty e^{-(\rho-n)t}u(c)dt,\quad u(x)=\frac{x^{1-\theta}-1}{1-\theta}$
+\end{formula}
+\item[] CRRA: $\theta$ = \concepto{deseo de suavizar el consumo}, \concepto{elasticidad de sustitución intertemporal} $1/\theta$ \vertema{3.A.10}; $\theta\to1$, $\ln x$. $\rho$: \concepto{tasa de preferencia temporal} (\autor{Samuelson}, 1937; exponencial = consistente, \autor{Strotz}, 1956). Descuento efectivo $\rho-n$.
+\item Restricción $\dot b=w+(r-n)b-c$; \concepto{no juego de \autor{Ponzi}}: $\lim b\,e^{-\int(r-n)}\ge0$. \concepto{Utilidad acotada}: $\rho-n>(1-\theta)g$.
+\item Control óptimo, \concepto{principio del máximo} (\autor{Pontriaguin} et al., 1962) \vertema{3.A.29}; hamiltoniano en valor corriente, $\lambda_t$ = valor de un euro más de activos. CPO: $c^{-\theta}=\lambda$; $\dot\lambda/\lambda=\rho-r$; \concepto{transversalidad} $\lim e^{-(\rho-n)t}\lambda b=0$ (necesaria, \autor{Michel}, 1982). \concepto{Ecuación de \autor{Euler}} (\autor{Keynes}-\autor{Ramsey}):
+\funcionclave{\gamma_c=\frac{r-\rho}{\theta}\ \Leftrightarrow\ \frac{\dot{\tilde c}}{\tilde c}=\frac{f'(\tilde k)-\delta-\rho-\theta g}{\theta}}
+\item[] $c$ crece si $r>\rho$, más cuanto mayor $1/\theta$; $\theta g$: espera ser más rico y adelanta consumo; al revés, $r=\rho+\theta\gamma$, fórmula de \autor{Ramsey} del descuento climático \vertema{3.B.31}; depende de toda la senda (renta permanente \vertema{3.A.33}).
+\item Equilibrio: $b=k=A\tilde k$ $\Rightarrow$ acumulación (\autor{Solow} con ahorro $f(\tilde k)-\tilde c$ endógeno):
+\funcionclave{\dot{\tilde k}=f(\tilde k)-\tilde c-(n+g+\delta)\,\tilde k}
+\item \emph{Fases}: $\dot{\tilde c}=0$ vertical en $f'(\tilde k^*)=\rho+\delta+\theta g$; $\dot{\tilde k}=0$, U invertida con máximo en $\tilde k_{\mathrm{oro}}$, corta en $\bar k$. Utilidad acotada $\Rightarrow$ $\rho+\theta g>n+g$ $\Rightarrow$ $\tilde k^*<\tilde k_{\mathrm{oro}}$. Cobb-Douglas: $s^*=\alpha(n+g+\delta)/(\rho+\delta+\theta g)<\alpha$; con $\alpha=1/3$, $\rho=0{,}02$, $\delta=0{,}05$, $n=0{,}01$, $g=0{,}02$, $\theta=2$: $s^*=24$\,\%. Senda equilibrada como \autor{Solow}; $r^*=\rho+\theta g$.
+\item \concepto{Punto de silla}: $\tilde k$ predeterminada, $\tilde c$ salta a la \concepto{senda de silla}. Por encima (B): se agota $\tilde k$, $\tilde c$ tendría que desplomarse (viola \autor{Euler}); por debajo (C): a $(\bar k,0)$, $r<n+g$, viola transversalidad.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{rck-fases}{Diagrama de fases de RCK: $E$ a la izquierda de $\tilde k_{\mathrm{oro}}$; senda de silla}
+\begin{itemize}
+\item ↓$\rho$ (más pacientes): $\dot{\tilde c}=0$ a la derecha; $\tilde c$ cae al instante a la nueva silla, luego $\tilde k$ y $\tilde c$ suben; ↑$s$, ↓$r^*$; a LP vuelve a $g$: efecto nivel.
+\item \emph{Implicaciones}: las 2 de \autor{Solow}: \emph{crecimiento exógeno} (per cápita a $g$; endogenizar el ahorro no cambia la conclusión) y \emph{convergencia condicional}.
+\item \emph{Convergencia y velocidad}: $\lambda$ ↓ con $\theta$ (silla más plana): 10\,\% ($\theta=1$), 8\,\% ($\theta=2$), 7\,\% ($\theta=4$) vs. 5\,\% de \autor{Solow} ($n+g+\delta=0{,}08$); para el 2\,\% observado, capital amplio $\approx0{,}75$.
+\item \emph{Ahorro en la transición}: baja al enriquecerse si $\theta<1/s^*$ ($\approx4$), sube si $\theta>1/s^*$; constante si $\theta=1/s^*$ (= \autor{Solow}).
 \item \emph{Planificador benevolente}: máx. utilidad s.\,a. recursos; mismas \autor{Euler}, acumulación y transversalidad. \concepto{1TFEB}: equilibrio = planificador, óptimo de \autor{Pareto} (precio-aceptantes, mercados completos, sin externalidades: $g$ exógena, información perfecta) \vertema{3.A.22}. \concepto{2TFEB}: el óptimo se descentraliza con $r=f'-\delta$, $w$; sin transferencias (hogares idénticos). En \autor{Solow} no se puede plantear.
 \item \concepto{Regla de oro modificada}:
-\funcionclave{f'(k^*)=\rho+\delta+\theta g}
-\item[] La impaciencia $\Rightarrow$ menos capital que $k_{\mathrm{oro}}$: \emph{nunca} ineficiencia dinámica («la avaricia» no «rompe el saco»); sin razón de eficiencia para fomentar el ahorro. Con generaciones solapadas (\autor{Diamond}, 1965) puede haberla \vertema{3.A.29}; con externalidades, se invierte de menos \vertema{3.A.44}.
+\funcionclave{f'(\tilde k^*)=\rho+\delta+\theta g}
+\item[] La impaciencia $\Rightarrow$ menos capital que $\tilde k_{\mathrm{oro}}$: \emph{nunca} ineficiencia dinámica («la avaricia» no «rompe el saco»); sin razón de eficiencia para fomentar el ahorro. Con generaciones solapadas (\autor{Diamond}, 1965) puede haberla \vertema{3.A.29}; con externalidades, se invierte de menos \vertema{3.A.44}.
 \end{itemize}
 {\centering\scriptsize\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2pt}%
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.37\linewidth}>{\raggedright\arraybackslash}p{0.39\linewidth}@{}}
 \toprule
 \rowcolor{tceeazulpalido} & \textbf{Regla de oro (\autor{Solow}, \autor{Phelps})} & \textbf{Modificada (RCK)}\\
 \midrule
-Condición & $f'(k_{\mathrm{oro}})=n+g+\delta$ & $f'(k^*)=\rho+\delta+\theta g$\\
+Condición & $f'(\tilde k_{\mathrm{oro}})=n+g+\delta$ & $f'(\tilde k^*)=\rho+\delta+\theta g$\\
 Maximiza & consumo de EE & utilidad descontada\\
-Relación & \multicolumn{2}{l}{$\rho-n>(1-\theta)g$ $\Rightarrow$ $\rho+\theta g>n+g$ $\Rightarrow$ $k^*<k_{\mathrm{oro}}$}\\
+Relación & \multicolumn{2}{l}{$\rho-n>(1-\theta)g$ $\Rightarrow$ $\rho+\theta g>n+g$ $\Rightarrow$ $\tilde k^*<\tilde k_{\mathrm{oro}}$}\\
 Inef. dinámica & posible si $s>s_{\mathrm{oro}}$ & imposible (impaciencia)\\
 \bottomrule
 \end{tabular}\par}
-\begin{itemize}
-\item \emph{Convergencia} condicional; $\lambda$ ↓ con $\theta$ (silla más plana): 10\,\% ($\theta=1$), 8\,\% ($\theta=2$), 7\,\% ($\theta=4$) vs. 5\,\% de \autor{Solow} ($n+g+\delta=0{,}08$); para el 2\,\% observado, capital amplio $\approx0{,}75$.
-\item \emph{Ahorro en la transición}: baja al enriquecerse si $\theta<1/s^*$ ($\approx4$), sube si $\theta>1/s^*$; constante si $\theta=1/s^*$ (= \autor{Solow}).
-\item Crecimiento por persona a $g$: endogenizar el ahorro no cambia la conclusión.
-\end{itemize}
-\pareja{rck-rho}{↓$\rho$: $\dot c=0$ a la derecha, $c$ cae y luego sube}{rck-theta}{$\theta$ alto: silla más plana, convergencia más lenta}
+\pareja{rck-rho}{↓$\rho$: $\dot{\tilde c}=0$ a la derecha, $\tilde c$ cae y luego sube}{rck-theta}{$\theta$ alto: silla más plana, convergencia más lenta}
 
-\sub{III.3. Extensiones, evidencia y valoración\label{rep:III.3}}
+\sub{c) Evidencia\label{rep:III.c}}
 \begin{itemize}
-\item \emph{Gasto público} $G$ (sin utilidad ni producción) con impuestos de suma fija \vertema{3.A.38}: \autor{Euler} igual, $\dot k=0$ baja en $G$. \emph{Permanente}: $c$ cae en $G$, $k$ y $r$ igual: expulsión completa del consumo. \emph{Temporal}: $c$ cae menos, $k$↓ y $r$↑ mientras dura; al acabar, en la silla original. Deuda = impuestos: \concepto{equivalencia ricardiana} (\autor{Barro}, 1974) \vertema{3.A.39}.
-\item \emph{Impuestos}: sobre consumo constante o trabajo (inelástico) = suma fija. Sobre rentas del capital $\tau_K$: $\dot c/c=[(1-\tau_K)(f'-\delta)-\rho-\theta g]/\theta$; $\dot c=0$ a la izquierda, menos $k$, $y$, $c$; $c$ salta arriba al subir. Riqueza = capital. Óptimo a LP: \emph{nulo} (\autor{Chamley}, 1986; \autor{Judd}, 1985).
+\item RCK converge al 7-10\,\% vs. 1,4-2\,\% observado; ahorro subió en el despegue de Japón y este de Asia ($\theta$ muy alto o hábitos: \autor{Carroll}-\autor{Overland}-\autor{Weil}, 2000); beneficios del capital > inversión: eficiencia dinámica (\autor{Abel} et al., 1989); caída de $r^*$ natural con la del crecimiento tendencial (\autor{Holston}-\autor{Laubach}-\autor{Williams}, 2017).
 \end{itemize}
-\graficorepaso[0.95\linewidth]{rck-gasto}{↑$G$ permanente (izq.: $c$ cae en $G$, $E\to E'$) y temporal (der.: de $t_0$ a $t_1$)}
+
+\sub{d) Extensiones\label{rep:III.d}}
+\begin{itemize}
+\item \emph{Gasto público} $G$ (sin utilidad ni producción) con impuestos de suma fija \vertema{3.A.38}: \autor{Euler} igual, $\dot{\tilde k}=0$ baja en $G$. \emph{Permanente}: $\tilde c$ cae en $G$, $\tilde k$ y $r$ igual: expulsión completa del consumo. \emph{Temporal}: $\tilde c$ cae menos, $\tilde k$↓ y $r$↑ mientras dura; al acabar, en la silla original. Deuda = impuestos: \concepto{equivalencia ricardiana} (\autor{Barro}, 1974) \vertema{3.A.39}.
+\item \emph{Impuestos}: sobre consumo constante o trabajo (inelástico) = suma fija. Sobre rentas del capital $\tau_K$: $\dot{\tilde c}/\tilde c=[(1-\tau_K)(f'-\delta)-\rho-\theta g]/\theta$; $\dot{\tilde c}=0$ a la izquierda, menos $\tilde k$, $y$, $\tilde c$; $\tilde c$ salta arriba al subir. Riqueza = capital. Óptimo a LP: \emph{nulo} (\autor{Chamley}, 1986; \autor{Judd}, 1985).
+\end{itemize}
+\graficorepaso[0.95\linewidth]{rck-gasto}{↑$G$ permanente (izq.: $\tilde c$ cae en $G$, $E\to E'$) y temporal (der.: de $t_0$ a $t_1$)}
 \begin{itemize}
 \item \emph{Clima}: DICE de \autor{Nordhaus} = RCK + daños + abatimiento \vertema{3.B.31}. \emph{Ciclos reales}: + horas y perturbaciones (\autor{Kydland}-\autor{Prescott}, 1982; \autor{King}-\autor{Plosser}-\autor{Rebelo}, 1988); núcleo DSGE \vertema{3.A.42}.
-\item \emph{Evidencia}: converge al 7-10\,\% vs. 1,4-2\,\% observado; ahorro subió en el despegue de Japón y este de Asia ($\theta$ muy alto o hábitos: \autor{Carroll}-\autor{Overland}-\autor{Weil}, 2000); beneficios del capital > inversión: eficiencia dinámica (\autor{Abel} et al., 1989); caída de $r^*$ natural con la del crecimiento tendencial (\autor{Holston}-\autor{Laubach}-\autor{Williams}, 2017).
+\end{itemize}
+\graficorepaso[0.6\linewidth]{rck-impuesto}{Impuesto sobre las rentas del capital: menos $\tilde k^*$ y $\tilde c^*$}
+
+\sub{e) Valoración\label{rep:III.e}}
+\begin{itemize}
 \item \emph{+} microfundamenta el ahorro, bienestar; $s$ varía con $\theta$; base de política fiscal, RBC y modelos de bancos centrales. \emph{$-$} crecimiento exógeno; agente representativo de vida infinita (sin conflicto generacional); mercados completos, nada que corregir.
 \end{itemize}
-\graficorepaso[0.6\linewidth]{rck-impuesto}{Impuesto sobre las rentas del capital: menos $k^*$ y $c^*$}
 
 % ==========================================================================
 \bloque[1]{Conclusión}
@@ -202,7 +208,7 @@ Inef. dinámica & posible si $s>s_{\mathrm{oro}}$ & imposible (impaciencia)\\
 \item \textbf{Relevancia}: ahorro, inversión y educación suben el nivel; solo la productividad sostiene el crecimiento; contabilidad \vertema{3.A.45}; núcleo de los modelos de política \vertema{3.A.42}.
 \item \textbf{Extensiones}: ¿de dónde sale $g$? endógeno (\autor{Romer}, 1986; \autor{Lucas}, 1988) \vertema{3.A.44}; evidencia \vertema{3.A.45}; causas últimas y desarrollo \vertema{3.B.28}; clima \vertema{3.B.31}.
 \item \textbf{Opinión}: no explican por qué se crece, pero sí qué no basta: acumular capital; obliga a mirar la productividad. \autor{Lucas} (2003): ganar más con políticas de LP que afinando la estabilización.
-\item \textbf{Idea final}: la URSS acumuló y se apagó; EE.\,UU., $\approx$2\,\% durante siglo y medio aprendiendo a producir más con lo mismo. «Poco a poco se va lejos», si cada paso mejora la forma de andar: no acumular, sino innovar.
+\item \textbf{Idea final}: la URSS acumuló y se apagó; EE.\,UU., $\approx$2\,\% durante siglo y medio aprendiendo a producir más con lo mismo. «Poco a poco se llega lejos», si cada paso mejora la forma de andar: no acumular, sino innovar.
 \end{itemize}
 
 % ==========================================================================
@@ -248,25 +254,26 @@ Inef. dinámica & posible si $s>s_{\mathrm{oro}}$ & imposible (impaciencia)\\
 \begin{enumerate}
 \item \textbf{¿Qué diferencia a \autor{Solow} de \autor{Harrod}-\autor{Domar}?} Solo las proporciones fijas: con sustitución, $v$ se ajusta y $s/v^*=n+g+\delta$ se cumple sola; EE estable, sin filo de la navaja.
 \item \textbf{¿Por qué progreso técnico aumentador del trabajo?} \autor{Uzawa} (1961): con RCE y senda equilibrada, la tecnología admite $F(K,AL)$; con Cobb-Douglas las 3 neutralidades coinciden.
-\item \textbf{¿Puede una economía ahorrar demasiado?} En \autor{Solow}, sí: $s>s_{\mathrm{oro}}$, ineficiencia dinámica (bajar $s$ ↑$c$ siempre). En RCK, no: $k^*<k_{\mathrm{oro}}$. Sí con OLG (\autor{Diamond}).
+\item \textbf{¿Puede una economía ahorrar demasiado?} En \autor{Solow}, sí: $s>s_{\mathrm{oro}}$, ineficiencia dinámica (bajar $s$ ↑$c$ siempre). En RCK, no: $\tilde k^*<\tilde k_{\mathrm{oro}}$. Sí con OLG (\autor{Diamond}).
 \item \textbf{¿Por qué MRW mejora a \autor{Solow}?} Capital amplio 2/3: ↑elasticidad al ahorro, $\lambda=2$\,\%, $R^2$ 0,78 con $\alpha$ realista; omitir $H$ sesgaba $\alpha$ a 0,6.
 \item \textbf{¿Qué implica $\theta$ en RCK?} $1/\theta$ = ESI; ↑$\theta$ $\Rightarrow$ silla más plana, convergencia más lenta; ahorro baja en la transición si $\theta<1/s^*$.
 \item \textbf{¿Efecto de ↑$G$ permanente con suma fija?} $c$ cae en $G$, $k$ y $r$ no cambian: expulsión completa; temporal: $c$ cae menos, $k$↓, $r$↑.
-\item \textbf{¿Por qué el impuesto óptimo al capital es nulo a LP?} $\tau_K$ ↓ rendimiento del ahorro, ↓$k^*$, $y$ y $c$ (\autor{Chamley}-\autor{Judd}).
+\item \textbf{¿Por qué el impuesto óptimo al capital es nulo a LP?} $\tau_K$ ↓ rendimiento del ahorro, ↓$\tilde k^*$, $\tilde y$ y $\tilde c$ (\autor{Chamley}-\autor{Judd}).
 \item \textbf{¿Por qué es eficiente el equilibrio de RCK?} Precio-aceptantes, mercados completos, sin externalidades ($g$ exógena) e información perfecta: 1TFEB; $r$ hace de precio sombra del capital.
 \item \textbf{¿Qué es una trampa de pobreza?} $f$ en S: 2 EE estables ($k_B$, $k_A$) y umbral $k_U$; gran empujón; poca evidencia por países (\autor{Kraay}-\autor{McKenzie}, 2014).
 \end{enumerate}
 
 \begin{trampa}
 \begin{itemize}
-\item Regla de oro: $f'(k_{\mathrm{oro}})=n+g+\delta$ ($r=n+g$); modificada: $f'(k^*)=\rho+\delta+\theta g$ ($r=\rho+\theta g$); $k^*<k_{\mathrm{oro}}$.
+\item Regla de oro: $f'(k_{\mathrm{oro}})=n+\delta$ sin progreso técnico; con él, $f'(\tilde k_{\mathrm{oro}})=n+g+\delta$ ($r=n+g$); modificada: $f'(\tilde k^*)=\rho+\delta+\theta g$ ($r=\rho+\theta g$); $\tilde k^*<\tilde k_{\mathrm{oro}}$.
 \item $s_{\mathrm{oro}}=\alpha$ solo con Cobb-Douglas; en MRW, $s_K=\alpha$ y $s_H=\beta$.
-\item ↑$s$ y ↓$n$: efecto \emph{nivel}; solo ↑$g$ sube $\gamma_{Y/L}$ a LP; ↑$g$ \emph{baja} $k^*$ e $y^*$; ↑$n$ sube $\gamma_Y$ (agregada), no $\gamma_{Y/L}$.
+\item ↑$s$ y ↓$n$: efecto \emph{nivel}; solo ↑$g$ sube $\gamma_y$ a LP; ↑$g$ \emph{baja} $\tilde k^*$ e $\tilde y^*$; ↑$n$ sube $\gamma_Y$ (agregada), no $\gamma_y$.
 \item $\lambda=(1-\alpha)(n+g+\delta)$ en \autor{Solow}, $(1-\alpha-\beta)(n+g+\delta)$ en MRW; RCK converge \emph{más} deprisa que \autor{Solow}.
+\item Notación: $k$, $y$, $c$ per cápita; $\tilde k$, $\tilde y$, $\tilde c$ por unidad de trabajo eficiente.
 \item Condicional $\neq$ absoluta: absoluta solo con mismos parámetros.
 \item MRW: $\alpha+\beta<1$; con $=1$, crecimiento endógeno.
 \item \autor{Inada} se cumplen aun con trampa de pobreza; \emph{Sobelow} sí incumple una.
-\item RCK: $\dot c=0$ vertical; $\dot k=0$ con máximo en $k_{\mathrm{oro}}$; descuento efectivo $\rho-n$; utilidad acotada $\rho-n>(1-\theta)g$.
+\item RCK: $\dot{\tilde c}=0$ vertical; $\dot{\tilde k}=0$ con máximo en $\tilde k_{\mathrm{oro}}$; descuento efectivo $\rho-n$; utilidad acotada $\rho-n>(1-\theta)g$.
 \item $\theta$ aquí = suavizar en el tiempo (ESI $1/\theta$), no aversión al riesgo (no hay incertidumbre).
 \item ↓$\rho$: $c$ cae al instante; ↑$\tau_K$: $c$ \emph{sube} al instante.
 \item Equivalencia ricardiana: deuda = impuestos de suma fija con horizonte infinito.

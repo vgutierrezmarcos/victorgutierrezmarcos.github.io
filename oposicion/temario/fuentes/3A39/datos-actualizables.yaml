@@ -1,0 +1,154 @@
+tema: 3A39
+fecha_inventario: 2026-11-09
+datos:
+  - id: deficit-espana
+    texto: "En 2025 las Administraciones Públicas españolas cerraron con un déficit del 2,4~\\% del PIB y, por primera vez desde 2007, sin déficit primario"
+    donde: [3A39.tex, repaso/3A39-repaso.tex]
+    valor: [2.4, 0.0, 2.4]
+    unidad: "% del PIB (saldo total, saldo primario, intereses)"
+    periodo: 2025
+    fuente: Eurostat2026EDP
+    organismo: Eurostat (y Hacienda2026Deficit2025)
+    serie: "gov_10dd_edpt1, B9 y D41, ES"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table
+    periodicidad: semestral (notificaciones PDE de abril y octubre)
+    proxima: 2027-04
+    familia: eurostat-deuda
+    depende: [datos/saldos-espana-zona-euro.csv, graficos/saldo-primario-espana.tex]
+    frase: "«por primera vez desde 2007» y «todo su déficit fueron los intereses, otro 2,4 %»; también l. 187 (saldo total −2,4 y primario nulo), l. 960 («pagó en 2025 el 2,4~\\% de su PIB en intereses»), l. 1100 («hasta el equilibrio de 2025»), l. 536 («Su saldo primario fue nulo»); título del gráfico «1995-2025 y previsión hasta 2027»; repaso: enganche, l. 231 y caja"
+  - id: deuda-espana-ze
+    texto: "la deuda, del 100,5~\\% del PIB, sigue casi 13 puntos por encima de la de la zona del euro, del 87,7~\\%"
+    donde: [3A39.tex, repaso/3A39-repaso.tex]
+    valor: [100.5, 87.7]
+    unidad: "% del PIB (deuda PDE, España y EA20)"
+    periodo: 2025
+    fuente: Eurostat2026EDP
+    organismo: Eurostat
+    serie: "gov_10dd_edpt1, GD, ES y EA20"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table
+    periodicidad: semestral (notificaciones PDE de abril y octubre)
+    proxima: 2027-04
+    familia: eurostat-deuda
+    depende: [datos/deuda-pde-espana-zona-euro.csv, graficos/deuda-pde-espana-zona-euro.tex, datos/descomposicion-deuda-espana-zona-euro.csv, graficos/descomposicion-deuda-espana.tex]
+    frase: "«casi 13 puntos»; l. 637 («la deuda bajó al 100,5~\\%», «sumó 2,2 en 2025»), l. 648 (zona del euro «del 86,6~\\% al 87,7~\\%», déficit primario 1,1, crecimiento 3,6 %, implícito 2,3 %, ADD 1,1), l. 1102 (ADD 2,2 puntos, 37.100 millones); títulos de gráficos «1996-2025»; pie del gráfico de deuda «notificación de octubre de 2026»; repaso: enganche, pie del gráfico, l. 168 y caja"
+  - id: deuda-espana-mensual
+    texto: "En agosto de 2026 la deuda era del 99,7~\\%"
+    donde: [3A39.tex, repaso/3A39-repaso.tex]
+    valor: 99.7
+    unidad: "% del PIB (deuda PDE, dato mensual)"
+    periodo: agosto 2026
+    fuente: BdE2026DeudaAgosto
+    organismo: Banco de España
+    serie: "Deuda según el PDE, avance mensual"
+    url: https://www.bde.es/wbe/es/noticias-eventos/actualidad-banco-espana/deuda-aapp-agosto26.html
+    periodicidad: mensual
+    familia: bde-deuda-pde
+    frase: "repaso: l. 168 «Ago. 2026: 99,7 %» y caja"
+  - id: deuda-espana-prevision-fmi
+    texto: "el FMI prevé el 97,6~\\% para final de año"
+    donde: [3A39.tex, repaso/3A39-repaso.tex]
+    valor: 97.6
+    unidad: "% del PIB (deuda bruta, previsión)"
+    periodo: previsión para finales de 2026 (WEO de octubre de 2026)
+    fuente: FMI2026WEO
+    organismo: FMI
+    serie: "WEO, GGXWDG_NGDP, ESP"
+    url: https://www.imf.org/en/publications/weo/issues/2026/10/13/world-economic-outlook-october-2026
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: fmi-weo
+    depende: [datos/deuda-pde-espana-zona-euro.csv, datos/saldos-espana-zona-euro.csv]
+    frase: "los CSV llevan previsiones 2026-2027 de FMI y AMECO; al cerrar 2026 pasan a observados; repaso: «FMI fin de 2026: 97,6 %»"
+  - id: saldo-estructural
+    texto: "el FMI calcula un saldo estructural del $-2{,}8$~\\% del PIB potencial, 4 décimas mejor que el de la Comisión, del $-3{,}2$~\\%"
+    donde: [3A39.tex, repaso/3A39-repaso.tex]
+    valor: [-2.8, -3.2]
+    unidad: "% del PIB potencial"
+    periodo: 2025
+    fuente: FMI2026FM
+    organismo: FMI (Fiscal Monitor) y Comisión Europea (CE2026AMECO)
+    serie: "Fiscal Monitor, structural balance, ESP; AMECO UBLGAPS"
+    url: https://www.imf.org/en/publications/fm/issues/2026/10/05/fiscal-monitor-october-2026
+    periodicidad: semestral
+    proxima: 2026-11
+    familia: ameco
+    frase: "también l. 187 («fue del $-3{,}2$~\\% del PIB potencial \\parencite{CE2026AMECO}»); repaso: l. 68 y l. 168 «estructural −3,2 %»"
+  - id: bola-nieve-2025
+    texto: "con una deuda del 101,4~\\% del PIB al empezar el año, un tipo implícito (los intereses de 2025 sobre la deuda de final de 2024) del 2,5~\\% y un crecimiento nominal del 5,7~\\%"
+    donde: [3A39.tex, repaso/3A39-repaso.tex]
+    valor: [101.4, 2.5, 5.7]
+    unidad: "% (deuda inicial / PIB; tipo implícito; crecimiento del PIB nominal)"
+    periodo: 2025
+    fuente: Eurostat2026EDP
+    organismo: Eurostat
+    serie: "gov_10dd_edpt1 (GD, D41), nama_10_gdp (B1GQ CP_MEUR)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-deuda
+    depende: [datos/bola-nieve-espana-zona-euro.csv, graficos/bola-nieve-espana.tex, datos/r-menos-g-implicito-espana-zona-euro.csv]
+    frase: "el ejemplo numérico de la sección (l. 532-536: «cabía un déficit primario de hasta unos 3 puntos») y l. 673 («$r-\\gamma_Y$ fue en 2025 de $-3{,}1$ puntos en España y de $-1{,}2$ en la zona del euro»); l. 637 «del 1,9 al 2,5 %»; repaso: l. 137, l. 176, l. 276 y caja"
+  - id: gasto-publico-pib
+    texto: "el gasto de las Administraciones Públicas fue en 2025 el 45,3~\\% del PIB en España y el 49,8~\\% en la zona del euro"
+    donde: [3A39.tex, repaso/3A39-repaso.tex]
+    valor: [45.3, 49.8]
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026GovMain
+    organismo: Eurostat
+    serie: "gov_10a_main, TE, S13"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: eurostat-gov
+    frase: "repaso: relevancia"
+  - id: seguridad-social-deficit
+    texto: "en 2025 fue del 0,3~\\% del PIB"
+    donde: [3A39.tex]
+    valor: 0.3
+    unidad: "% del PIB (déficit de los fondos de la Seguridad Social)"
+    periodo: 2025
+    fuente: Hacienda2026Deficit2025
+    organismo: IGAE / Ministerio de Hacienda (y Eurostat gov_10a_main S1314)
+    url: https://www.hacienda.gob.es/es-ES/Prensa/Noticias/Paginas/2026/20260331-NP-CIERRE-DEFICIT.aspx
+    periodicidad: anual
+    proxima: 2027-03
+    familia: hacienda-cierre-deficit
+  - id: brecha-iva
+    texto: "la brecha de cumplimiento del IVA (fraude, evasión, insolvencias y errores) subió en 2023 hasta cerca del 7,5~\\% de la recaudación teórica"
+    donde: [3A39.tex]
+    valor: [7.5, 8000, 9.5]
+    unidad: "% de la recaudación teórica (España; UE 9,5 %); casi 8.000 M€"
+    periodo: 2023
+    fuente: CE2025MindTheGapES
+    organismo: Comisión Europea (VAT Gap report)
+    serie: "VAT compliance gap, ES y EU27"
+    periodicidad: anual
+    proxima: 2026-12
+    familia: ce-vat-gap
+    frase: "el informe de 2026 (datos de 2024) puede haber salido ya: comprobar"
+  - id: bce-perdidas
+    texto: "el BCE perdió 7.944 millones de euros en 2024"
+    donde: [3A39.tex, repaso/3A39-repaso.tex]
+    valor: 7944
+    unidad: millones de EUR (resultado del BCE)
+    periodo: 2024
+    fuente: BCE2025Cuentas2024
+    organismo: BCE
+    serie: "Cuentas anuales del BCE"
+    url: https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.pr250220~eca25e4e21.en.html
+    periodicidad: anual
+    proxima: 2027-02
+    familia: bce-cuentas
+    frase: "SOSPECHOSO DE DESFASE: las cuentas de 2025 se publicaron en febrero de 2026; comprobar y, si procede, citar el resultado de 2025; repaso: l. 224 y caja «pérdida 2024 7.944 M €»"
+  - id: pepp-tamano
+    texto: "PEPP, de hasta 1,85 billones de euros desde 2020"
+    donde: [3A39.tex, repaso/3A39-repaso.tex]
+    valor: 1.85
+    unidad: billones de EUR (dotación máxima del PEPP)
+    periodo: 2020-2021 (cerrado)
+    fuente: BCE2026PEPP
+    organismo: BCE
+    periodicidad: irregular
+    familia: bce-balance
+    frase: "dato cerrado (dotación histórica); solo cambia si se reescribe como cartera viva"

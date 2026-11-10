@@ -1,0 +1,143 @@
+tema: 3A26
+fecha_inventario: 2026-11-09
+datos:
+  - id: parados-epa
+    texto: "había 2.591.200 parados en el tercer trimestre de 2026"
+    donde: [3A26.tex, repaso/3A26-repaso.tex]
+    valor: 2591200
+    unidad: personas paradas (EPA, 16 y más años)
+    periodo: 3T 2026
+    fuente: INE2026EPA3T
+    organismo: INE
+    serie: "EPA, tabla 65337 (serie EPA424411, parados, ambos sexos, total nacional)"
+    url: https://www.ine.es/dyngs/Prensa/EPA3T26.htm
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: ine-epa
+    frase: "repaso: «\\dato{2.591.200, 10,18\\,\\%}{INE, EPA 3T 2026}» (enganche y «Datos clave»); cambia también parados-por-vacante"
+  - id: tasa-paro-epa
+    texto: "el 10,18~\\% de los activos"
+    donde: [3A26.tex, repaso/3A26-repaso.tex]
+    valor: 10.18
+    unidad: "% de los activos"
+    periodo: 3T 2026
+    fuente: INE2026EPA3T
+    organismo: INE
+    serie: "EPA, tabla 65334 (serie EPA452434, tasa de paro, ambos sexos, 16 y más años)"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=65334
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: ine-epa
+    frase: "aparece también en el anexo de indicadores: «tasa de paro, $u=U/A$: el 10,18~\\% en el tercer trimestre de 2026»"
+  - id: tasa-actividad-epa
+    texto: "el 59,5~\\% en el tercer trimestre de 2026"
+    donde: [3A26.tex, repaso/3A26-repaso.tex]
+    valor: 59.5
+    unidad: "% de la población de 16 y más años"
+    periodo: 3T 2026
+    fuente: INE2026EPA3T
+    organismo: INE
+    serie: "EPA, tasa de actividad, ambos sexos, 16 y más años"
+    url: https://www.ine.es/dyngs/Prensa/EPA3T26.htm
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: ine-epa
+  - id: vacantes-espana
+    texto: "150.765 puestos vacantes sin cubrir"
+    donde: [3A26.tex, repaso/3A26-repaso.tex]
+    valor: 150765
+    unidad: puestos vacantes
+    periodo: 2T 2026
+    fuente: Eurostat2026jvs
+    organismo: Eurostat (ETCL del INE)
+    serie: "jvs_q_r21, ES, JOBVAC, NACE Rev. 2.1 B-S; segunda comprobación: INE, ETCL, tabla 6047 (serie ETCL2925)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/jvs_q_r21/default/table
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: eurostat-vacantes
+    frase: "cambia también parados-por-vacante; revisión del 31/10/2026 (A26-10): al publicarse el 3T de la ETCL, poner parados y vacantes del mismo trimestre"
+  - id: parados-por-vacante
+    texto: "unos 16,5 parados por vacante si se comparan los datos del mismo trimestre"
+    donde: [3A26.tex, repaso/3A26-repaso.tex]
+    valor: 16.5
+    unidad: parados (EPA) por vacante (ETCL)
+    periodo: 2T 2026
+    fuente: INE2026EPAParados
+    organismo: INE y Eurostat
+    serie: "parados EPA (tabla 65337) / vacantes jvs_q_r21 del mismo trimestre"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=65337
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: eurostat-vacantes
+    frase: "conclusión, idea final: «hoy en España hay unos 16,5 parados por cada vacante»; repaso: «16,5 parados por vacante»"
+  - id: tasa-vacantes-espana-ze
+    texto: "el 0,9~\\% frente al 2,1~\\% de la zona del euro en el segundo trimestre de 2026"
+    donde: [3A26.tex, repaso/3A26-repaso.tex]
+    valor: 0.9
+    unidad: "% de los puestos (tasa de vacantes); zona del euro, 2,1"
+    periodo: 2T 2026
+    fuente: Eurostat2026jvs
+    organismo: Eurostat
+    serie: "jvs_q_r21, JVR, ES y EA21"
+    url: https://ec.europa.eu/eurostat/databrowser/view/jvs_q_r21/default/table
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: eurostat-vacantes
+    frase: "aparece también en el anexo de indicadores («En España fue del 0,9~\\% en el segundo trimestre de 2026, frente al 2,1~\\%…»)"
+  - id: beveridge-espana-reciente
+    texto: "la tasa de vacantes se mantiene en el 0,9~\\% desde 2022 con un paro que baja al 10,2~\\% en 2026, y la ratio de vacantes por parado ha pasado de 0,03 en 2019 a 0,06 en 2026"
+    donde: [3A26.tex, repaso/3A26-repaso.tex, datos/beveridge-espana-zona-euro.csv]
+    valor: 10.2
+    unidad: "tasa de paro 15-74 desestacionalizada (%), media 1T-2T 2026; vacantes 0,9 %; ratio 0,06"
+    periodo: 2026 (media 1T-2T)
+    fuente: Eurostat2026une
+    organismo: Eurostat e INE
+    serie: "une_rt_q (ES, 15-74, SA) y jvs_q_r21 (ES, JVR); ratio = vacantes / parados EPA"
+    url: https://ec.europa.eu/eurostat/databrowser/view/une_rt_q/default/table
+    periodicidad: trimestral (media anual en el gráfico)
+    proxima: 2026-12
+    familia: eurostat-vacantes
+    depende: [datos/beveridge-espana-zona-euro.csv, graficos/beveridge-espana-zona-euro.tex]
+    frase: "«la más alta desde 2006-2007»; caption del gráfico «2008-2026» y su fuente «2026, media del primer y el segundo trimestres»; repaso: «vacantes 0,9 % desde 2022, paro 10,2 %; vacantes/parado 0,03 → 0,06»"
+  - id: beveridge-zona-euro-reciente
+    texto: "paro del 6,3~\\% y vacantes del 2,2~\\% en 2026, tras un máximo del 3,2~\\% en 2022"
+    donde: [3A26.tex, repaso/3A26-repaso.tex, datos/beveridge-espana-zona-euro.csv]
+    valor: 6.3
+    unidad: "tasa de paro (%) de la zona del euro, media 1T-2T 2026; vacantes 2,2 %"
+    periodo: 2026 (media 1T-2T)
+    fuente: Eurostat2026jvs
+    organismo: Eurostat
+    serie: "une_rt_q y jvs_q_r21, EA21"
+    url: https://ec.europa.eu/eurostat/databrowser/view/jvs_q_r21/default/table
+    periodicidad: trimestral (media anual en el gráfico)
+    proxima: 2026-12
+    familia: eurostat-vacantes
+    depende: [datos/beveridge-espana-zona-euro.csv, graficos/beveridge-espana-zona-euro.tex]
+  - id: flujos-epa
+    texto: "Con los flujos de la EPA de 2025, cada trimestre encontró empleo el 26,8~\\% de los parados y perdió el suyo el 2,6~\\% de los ocupados"
+    donde: [3A26.tex, repaso/3A26-repaso.tex]
+    valor: 26.8
+    unidad: "% trimestral (salida del paro al empleo, f); entrada en el paro desde el empleo, s = 2,6"
+    periodo: media de 2025
+    fuente: INE2026EPAFlujos
+    organismo: INE
+    serie: "EPA, flujos, tabla 66257 (EFPA1025, EFPA1026, EFPA1031, EFPA1035, EFPA1037, EFPA1041)"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=66257
+    periodicidad: anual (media de los trimestres)
+    proxima: 2027-02
+    familia: ine-epa
+    frase: "cambian también «un paro de estado estacionario del 8,8~%, cerca del 10,5~% observado» (s/(s+f) y la tasa de paro media del año)"
+  - id: temporalidad
+    texto: "del 25,6~\\% en el cuarto trimestre de 2021 al 15,4~\\% en el tercero de 2026"
+    donde: [3A26.tex, repaso/3A26-repaso.tex]
+    valor: 15.4
+    unidad: "% de asalariados con contrato temporal"
+    periodo: 3T 2026
+    fuente: INE2026EPAContrato
+    organismo: INE
+    serie: "EPA, tabla 65132 (series EPA400155 y EPA400159)"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=65132
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: ine-epa
+    frase: "solo cambia el dato final (15,4 % del último trimestre); el de 2021 es la referencia de la reforma"

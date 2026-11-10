@@ -5,10 +5,10 @@
 % De las causas últimas a las próximas y a la renta por habitante (Acemoglu,
 % 2009, caps. 1 y 4; las palabras del anexo F del 3.A.43): suerte (equilibrios
 % múltiples), geografía, cultura e instituciones (resaltada) → capital físico,
-% capital humano y tecnología (PTF) → Y/L. La flecha discontinua de vuelta,
-% de Y/L a las instituciones, es la causalidad inversa que resuelven
+% capital humano y tecnología (PTF) → y (renta por habitante, minúscula sin virgulilla). La flecha discontinua de vuelta,
+% de y a las instituciones, es la causalidad inversa que resuelven
 % Acemoglu, Johnson y Robinson con la mortalidad de los colonos.
-% Capas: causas últimas → causas próximas y flecha → Y/L y flecha →
+% Capas: causas últimas → causas próximas y flecha → y y flecha →
 % causalidad inversa.
 \tikzset{
   caja/.style={draw=tceemorado, line width=0.6pt, rounded corners=2pt,
@@ -40,7 +40,7 @@
   }
   % 3: la renta por habitante
   \capa{3}{
-    \node[caja, text width=1.3cm, minimum height=1.1cm, font=\normalsize] (y) at (8.9,0) {$Y/L$};
+    \node[caja, text width=1.3cm, minimum height=1.1cm, font=\normalsize] (y) at (8.9,0) {$y$};
     \draw[paso] (proximas.east) -- (y.west);
   }
   % 4: la causalidad inversa (de la renta a las instituciones)

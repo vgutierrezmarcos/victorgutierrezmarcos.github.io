@@ -1,0 +1,43 @@
+% Lipsey (1957) en equilibrio general: libre comercio, arancel no discriminatorio
+% y unión aduanera, 3.B.10, anexo B.
+% FPP de A: (X/5)^2 + (Y/4,5)^2 = 1. Preferencias U = X^0,15 Y^0,85.
+% Libre comercio: p_X^A/p_Y^R = 2 -> P = (4,560; 1,847), C = (0,822; 9,321), U_0 = 6,476.
+% Arancel: precio interior p_X^A/[p_Y^R(1+t)] = 0,5 (t = 300 %) -> P' = (2,428; 3,934);
+%   consumo sobre la paralela a la RRI por P', con RMS = 0,5: C' = (1,819; 5,153), U_1 = 4,408.
+% Unión: p_X^A/p_Y^B = 0,9998 (el precio de B que deja el bienestar igual que con el arancel)
+%   -> P'' = (3,716; 3,011), C'' = (1,009; 5,717), sobre la misma I_1.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=0.62cm]
+  % 1: ejes y frontera de posibilidades de producción
+  \capa{1}{\ejes{$X$}{$Y$}{7.4}{11}}
+  \capa{1}{\draw[curva1] plot[domain=0:90,samples=60,smooth] ({5*cos(\x)},{4.5*sin(\x)});
+    \node[etiqueta,tceemorado] at (1.0,3.75) {$FPP$};}
+  % 2: libre comercio: RRI tangente en P, consumo en C sobre I_0
+  \capa{2}{\draw[curva4] (0.33,10.3) -- (5.48,0) node[etiqueta,below right,tceedorado] {$p_X^A/p_Y^R$};
+    \node[punto] (P) at (4.5596,1.8466) {};
+    \node[etiqueta,left] at (P) {$P$};
+    \draw[curva2,thick] plot[domain=0.6:4.8,samples=60,smooth] (\x,{(6.4760/(\x)^0.15)^(1/0.85)})
+      node[etiqueta,right,tceeazul] {$I_0$};
+    \node[punto] (C) at (0.8224,9.3210) {};
+    \node[etiqueta,right] at (C) {$C$};}
+  % 3: arancel: precio interior tangente en P', paralela a la RRI y consumo en C' sobre I_1
+  \capa{3}{\draw[curva3] (0,5.1478) -- (6.9,1.6978) node[etiqueta,right,tceeverde] {$p_X^A/[p_Y^R(1+t)]$};
+    \node[punto] (P1) at (2.4282,3.9337) {};
+    \node[etiqueta,above right] at (P1) {$P'$};
+    \draw[curva4,desplazada] (2.4282,3.9337) -- (0.4,7.99);
+    \draw[curva3,desplazada] (0,6.0622) -- (6.9,2.6122);
+    \draw[curva2,thick] plot[domain=0.6:5.6,samples=60,smooth] (\x,{(4.4076/(\x)^0.15)^(1/0.85)})
+      node[etiqueta,right,tceeazul] {$I_1$};
+    \node[punto] (C1) at (1.8186,5.1528) {};
+    \node[etiqueta,above right] at (C1) {$C'$};}
+  % 4: unión aduanera: recta p_X^A/p_Y^B tangente en P'' y consumo en C'' sobre la misma I_1
+  \capa{4}{\draw[curvanueva] (0.3,6.4263) -- (6.3,0.4274) node[etiqueta,above right,tceerojo] {$p_X^A/p_Y^B$};
+    \node[punto] (P2) at (3.7162,3.0106) {};
+    \node[etiqueta,below left] at (P2) {$P''$};
+    \node[punto] (C2) at (1.0091,5.7173) {};
+    \node[etiqueta,above right] at (C2) {$C''$};}
+\end{tikzpicture}
+\end{document}

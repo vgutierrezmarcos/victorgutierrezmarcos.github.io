@@ -113,13 +113,76 @@ Datos aplicados: V1-V5, V7-V13, V15-V19 (V15, Lucas 2003, no: la cita la usa el 
 - Test: la respuesta oficial de 2014 (pregunta 31) y la de 2022 (pregunta 33) sobre Grossman y Helpman coinciden con el tema (V19); contenido decía que la de 2014 iba en sentido contrario: lo resuelve el 3.B.9 con el libro delante.
 - Fichas nuevas para el canon (CC1-CC4): `ak`, `arrow-romer-spillovers`, `sobelow`, `semiendogeno`.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Pasar el anexo A al cuerpo; Barro como en el tema antiguo, con ahorro constante; efecto positivo del impuesto en verde y negativo en rojo; Barro con Ramsey al anexo | El $AK$ con hogares de Ramsey (salto a la senda, $c/k$, $s$ endógena, utilidad acotada) pasa al cuerpo del $AK$. Barro se desarrolla en el cuerpo con ahorro constante y $n$, paso a paso como el antiguo (acumulación, restricción del Estado, forma $AK$, ec. `eq:barro`), con $(1-\tau)$ en `tceerojo` y $\tau^{(1-\alpha)/\alpha}$ en `tceeverde` en la ecuación, en la lista de efectos y en el gráfico (rótulos de los 2 efectos coloreados; extremos en $-(n+\delta)$). El anexo A es ahora «Barro (1990) con hogares de Ramsey» (rendimiento privado, $\tau^*$, planificador). |
+| Sobelow y Romer con tasa de ahorro constante, explicando que con Ramsey se obtiene lo mismo | Sobelow: ya era con $s$; se añade el párrafo con Ramsey ($r\to A-\delta$, $\gamma\to(A-\delta-\rho)/\theta$). Romer: nueva versión con $s$ y $s_I=L_I/L$ constantes (Jones, 2002, cap. 5): intermedios como bienes de capital, $Y=K^{\alpha}(NL_Y)^{1-\alpha}$, $\tilde k\equiv K/(NL_Y)$, ec. `eq:romer-solow` $\gamma=\eta_Is_IL$; después, «con el mercado y hogares de Ramsey», el desarrollo de antes ($r=\alpha\eta_IL_Y$, $\gamma^{\mathrm E}$, $\gamma^{\mathrm P}$). Externalidades también con $s$ constante y Ramsey como alternativa. AK: la versión con $s$ queda como la principal. |
+| Orden del antiguo; Sobelow al final del bloque, justificándolo con la tabla (basta con incumplir Inada en ∞; el resto incumple PMg decreciente) | Orden del I: $AK$, Barro, externalidades, Uzawa-Lucas, Sobelow (como el antiguo). Columnas de la tabla de supuestos y filas de la tabla resumen reordenadas. «La lección de la tabla», la idea y las implicaciones del Sobelow y los nexos dicen que todos levantan Inada en ∞ y todos salvo el Sobelow el PMg decreciente. Nombre: «modelo Sobelow (Jones y Manuelli, 1990)», el del tema y el del antiguo. Esquema y ficha, con el nuevo orden. |
+| Antigua nota al pie 21 en caja gris (sale también Lucas) | Caja gris «Romer (1986) frente a Lucas (1988): dónde está la externalidad», con las 2 funciones ($K^{\eta}$ frente a $k^{\eta}$), la variante sin efecto escala y la pregunta de test de 2024 (antes en una nota al opositor). El cuerpo desarrolla Romer: $E=K$ con $L$ constante, $y=AL^{\eta}k^{\alpha+\eta}$, curva de depreciación $\delta$; gráfico rotulado de nuevo. |
+| Uzawa-Lucas: supuestos bien explicados desde el principio y en orden coherente | Supuestos numerados 1-8: economía y población (con la definición de $k$, $h$, $y$, $c$), hogares, las 2 decisiones (controles $c$, $u$), rivalidad del capital humano, sector de bienes (con la externalidad), sector educativo lineal (supuesto clave), acumulación de los 2 capitales (estados) y mercados. Se evita la $u$ de la utilidad (choca con el reparto del tiempo). |
+| ¿Jones al cuerpo o a anexos? | No se mueve. Recomendación: mantenerlo (duda A44-18). |
+| Gráficos con varios pasos, construidos y explicados poco a poco | Pasos nuevos (envoltorios `-pasoN.tex` con `\tceepaso`): `tasas-endogeno` (3), `barro` (2), `externalidades` (3, recortados al panel con `\tceeancho`), `sobelow` (3), `aghion-howitt` (2, el 1.º recortado al panel a), `jones` (3). Cada paso con su párrafo. `romer-sectores` sigue de una vez (es un esquema). |
+| Reglas generales 1-5 | 1: fuera «en la pizarra…», «(caja siguiente)», «la columna que se ha ido llenando»; las notas al opositor (que salen en el PDF) se reescriben sin instrucciones de pizarra; en la ficha, la línea «Pizarra en 3 zonas» pasa a «Hilo». 3: todo es TikZ (Gráfico). 4: recuadro de notación con virgulilla (solo Romer con ahorro constante) y sin ella por trabajador; el $\tilde x$ local del anexo de Romer pasa a $\bar x$. 5: el coste marginal de los intermedios de Romer es $r+\delta$; no había $c_K$. 2: lo hace la plantilla. |
+| Minutos, esquema y ficha | Minutos por bloque iguales (I 11,5; II 9; III 6); dentro del I: $AK$ 2,5, Barro 1,5, externalidades 1,5, Uzawa-Lucas 3, Sobelow 0,5. Esquema y ficha con el orden nuevo, Barro con $s$, Romer con $s$ y la variante de Lucas. |
+
+## Revisión externa (11/11/2026)
+
+Revisión de Manuel Cabado (otro preparador) sobre la versión del 31/10. Confirma sin cambios Romer ($r$, $\gamma^{\mathrm E}$, planificador, 2 instrumentos) y Aghion-Howitt.
+
+| Punto | Aplicado | Por qué |
+|---|---|---|
+| 1. Versión de laboratorio de Romer «sin efecto escala» | Sí | BSM (2004, p. 297) y Acemoglu (2009, p. 439): mantiene el efecto escala; única distorsión, el margen; basta un instrumento. |
+| 2. Gráfico de Barro: los 2 extremos en el mismo valor | Sí | Con ahorro constante, ambos en $-(n+\delta)$ (con $\tau=0$ no hay producción). La curva ya no sale de 0. |
+| 3. Conclusión contradice I.3 | Sí | «Nacen para explicar el crecimiento a largo plazo sin progreso técnico exógeno; los de 1.ª generación lo logran sin explicar el progreso técnico». |
+| 4. Kurz (1968): artículo de la RES, no la IER; quitar «la propuso por primera vez» | Sí | Bib cambiado a «The General Instability of a Class of Competitive Growth Processes», RES 35(2): 155-174 (BSM p. 66 n. 32). Nota: «se la conoce como función de Kurz (1968) (Saint-Paul, 1992, n. 2)». DOI 10.2307/2296547 sin comprobar en línea. |
+| 5. «Menos margen, menos I+D» en Romer | Sí | «(con precio límite)» y nota bajo la tabla con $\partial\gamma^{\mathrm E}/\partial\alpha>0$ (derivada comprobada). |
+| 6. Romer investiga con $H_A$ | Sí | Nota al pie: versión con trabajo de Acemoglu (2009, sec. 13.2). |
+| 7. Salvedad de Lucas | Sí | «siempre que la tasa del planificador sea factible (con θ ≥ 1 lo es siempre)». |
+| 8. Jones usó 1950-1988 | Sí | «Es el mismo tipo de evidencia, con datos de 1950-1988, con el que…». |
+| 9. φ < 1 y fishing out | Sí | Idea y supuestos de Jones: lo común a φ < 1 es que cada idea eleva el conocimiento un porcentaje menor; «las fáciles ya se han encontrado» solo con φ < 0 (Jones, 1995, pp. 765 y 768). |
+| 10. Primera función AK: von Neumann (1937) | Sí | Citado de BSM (p. 63, n. 29) sin entrada propia en el .bib. |
+| 11. Q = K/L es de Frankel (1962) | Sí | Nombrado en la nota del salario (BSM p. 219), sin entrada propia en el .bib. |
+| 12. «Arrow, 1962b» en títulos y tabla | Sí | biblatex lo cita como 1962b en el texto; títulos de I.2.3 y tabla resumen, igual. |
+| 13. Wright: airframes, no fuselajes | Sí | «la estructura de un avión (sin motores)». |
+| No comprobado por él (cifras I+D, Fernald, Bom-Ligthart, Bloom p. 1110, Grossman-Helpman) | No | Sin acceso a las fuentes en esta tanda: duda A44-21. |
+| Añadidos: Jones (2022) «planeta vacío»; Saint-Paul (1992) con generaciones solapadas | No | Jones (2022) ya está en «el freno de la población»; Saint-Paul ya se cita en la ineficiencia dinámica del $AK$. No se amplía (sin comprobar las páginas). |
+
+### Tema 44 de Manuel Cabado (`Tema_44_Crecimiento_II_Endogeno.pdf`, 55 pp.), comparado con el 3A44 (11/11/2026)
+
+Incorporado, con redacción propia:
+
+| Idea del documento | Dónde ha entrado |
+|---|---|
+| Solow (1957): 87,5 % del aumento del producto por hora, cambio técnico (EE. UU., 1909-1949) | I.1, «Por qué Solow deja de crecer» (Solow1957 añadido al .bib) |
+| AK de 2 sectores de Rebelo: lo lineal es la tecnología de acumulación, salarios positivos (Acemoglu, 2009, pp. 395-398) | Extensiones del $AK$ |
+| Velocidad de convergencia $(1-\alpha)(g+n+\delta)$: 5,6 % con α = 0,3; 2 % con α ≈ 0,75; el $AK$ como límite (BSM, pp. 58-59 y 210) | Evidencia del $AK$ (cuentas comprobadas) |
+| El $AK$ predice que la distribución mundial de la renta se ensancha sin límite (Acemoglu, p. 403) | Valoración del $AK$, en contra |
+| La regla de Barro es consistente en el tiempo (Barro, 1990, p. S114) | Nota al pie en Barro |
+| Romer (1986) original: inversión deliberada en conocimiento; los manuales lo simplifican como subproducto (p. 1003) | Idea de externalidades |
+| Subvención al capital de tipo 1−α o a la producción de tipo (1−α)/α, con impuesto de suma fija (BSM, pp. 217-218) | Implicaciones de externalidades |
+| Lucas defiende la linealidad de la educación para la familia o la sociedad (Lucas, 1988, p. 19) | Valoración de Uzawa-Lucas |
+| Lucas (1990): por qué el capital no va a los países pobres (58 → 5 → ≈ 1) | Extensiones de Uzawa-Lucas (Lucas1990Why añadido) |
+| Trampa de estancamiento de Romer y «subvencionar el capital físico no basta» (Romer, 1990, pp. S94-S96) | Implicaciones de Romer (adaptada a la versión con $L$: $\alpha\eta_IL<\rho$) |
+| Efectos escala atenuados de Jones (Acemoglu, p. 448) y las 3 razones de Jones (1995, pp. 777-778) | Nota al pie en las implicaciones de Jones |
+| «Planeta vacío» de Jones (2022) | Evidencia del bloque III |
+
+Descartado:
+- Contraste con Mankiw, Romer y Weil y su cuadro: es del 3.A.43 (remisión ya puesta).
+- Versión discreta de Aghion-Howitt ($\mu(\lambda-1)$, $\varphi(z)$): el tema sigue la continua del artículo; la discreta ya se menciona en el anexo D. Ventaja del atraso (Gerschenkron), efecto reemplazo y economía política: ya estaban (o están en el 3.A.45).
+- Romer con $H$, $L$ y $\Lambda$ (Romer, 1990, ec. 13-14): el tema usa la versión con trabajo de Acemoglu (nota de la revisión externa, punto 6); el desglose del margen y del desbordamiento en el denominador se recoge ya en las 2 distorsiones.
+- Gráficos nuevos (transición de Uzawa-Lucas en el plano ω-γ; Romer frente a Jones en el plano H-γ): no se añaden en esta tanda, porque el tema ya tiene 19 gráficos y la transición se explica en el texto. Quedan como propuesta (duda A44-22).
+- Harrod-Domar frente a $AK$ y la CES como apéndice: el 3.A.43 trata Harrod-Domar; la CES ya está en el Sobelow.
+- Densidades de Kremer por región y la cita de los «abogados y MBA»: detalle de más para el cante (la segunda queda parafraseada sin comillas).
+
 ## Dudas abiertas
 
 - **A44-01** Estructura y minutos: se aplica la de coherencia (DK1, K1) con el reparto del coordinador (I 11′30″, II 9′, III 6′) y no la de contenido (C1: I 12′, III 5′30″ con otro título).
 - **A44-02** Anexo de control óptimo: no se copia el anexo común del 3.A.34 (D7 de contenido, decisión del coordinador); una caja gris con las condiciones en valor corriente y `\vertema{3.A.34}` en el cuerpo de Uzawa-Lucas. Coherencia (DK8) recomendaba copiarlo. Letras de la caja: $x_t$ estado y $z_t$ control (locales; $u$ es la fracción de Uzawa-Lucas: CC9).
 - **A44-03** Enganche: Jefferson y «más vale maña que fuerza» (coherencia DK4) en lugar del Nobel 2025 y «renovarse o morir» (contenido C2); el Nobel pasa a la relevancia. Pegatinas: «quien guarda, halla», «quien a buen árbol se arrima…», «a hombros de gigantes», «rey muerto, rey puesto» (comprobado con grep que no salen en otros temas). Contenido proponía «machacando se aprende el oficio» y «más ven cuatro ojos que dos»: no se usan.
-- **A44-04** Barro con la población normalizada a 1 y $Y=AK^{\alpha}G^{1-\alpha}$ (ficha) en lugar de $G/L$ por trabajador (contenido); la versión con ahorro constante del anexo puede llevar $n$.
-- **A44-05** Externalidades con hogares: se presenta la variante $E=k$ ($r=\alpha A-\delta$ privado frente a $A-\delta$ social, sin $L$) como principal y la de Romer con $E=K$ para el efecto escala.
+- **A44-04** *Resuelta por Víctor (11/11/2026)*: Barro con ahorro constante y $n$ en el cuerpo. Antes: Barro con la población normalizada a 1 y $Y=AK^{\alpha}G^{1-\alpha}$ (ficha) en lugar de $G/L$ por trabajador (contenido); la versión con ahorro constante del anexo puede llevar $n$.
+- **A44-05** *Resuelta por Víctor (11/11/2026)*: el cuerpo desarrolla Romer ($E=K$) y la caja gris, Lucas ($E=k$). Antes: Externalidades con hogares: se presenta la variante $E=k$ ($r=\alpha A-\delta$ privado frente a $A-\delta$ social, sin $L$) como principal y la de Romer con $E=K$ para el efecto escala.
 - **A44-06** Letras de Jones: λ y φ, las del artículo, locales y avisadas en nota (D6 de contenido); función clave $\gamma_N=\lambda n/(1-\phi)$ (con λ = 1, $n/(1-\phi)$), como pide el coordinador; esquema y nota del reparto dicen lo mismo.
 - **A44-07** Tabla resumen en II.3 (K20) y no en III.3 (C18), con la fila de Jones adelantada y marcada con la remisión a III.2; la columna «$r$ que no cae» es la de la pizarra.
 - **A44-08** Solo 2 funciones clave (Euler y Jones): las tasas de Uzawa-Lucas, Romer y Aghion-Howitt van numeradas sin recuadro (contenido proponía recuadrar Romer y Aghion-Howitt).
@@ -130,18 +193,33 @@ Datos aplicados: V1-V5, V7-V13, V15-V19 (V15, Lucas 2003, no: la cita la usa el 
 - **A44-13** Grafía de Sala-i-Martín: se deja como la publica cada obra («Sala-i-Martín» en los *Apuntes* de Antoni Bosch, 2000; «Sala-i-Martin» en el *Economic Growth* del MIT, 2004), aunque en una misma fuente de gráfico salen las 2 formas. Recomendada: mantenerlo así (es la cita fiel); la alternativa es unificar con tilde en el texto.
 - **A44-14** Modo oscuro de la web: las celdas de color de las tablas (salvia y salmón: fila de Solow y de Jones en la tabla 4, primera fila de la tabla 1) siguen claras con letra oscura sobre el fondo berenjena. Se leen bien, pero destacan; es del CSS común de todos los temas, no de este.
 - **A44-15** Nombre del modelo de externalidades (coordinador): «Arrow (1962) y Romer (1986)», con nota al opositor por el test de 2024 («de Lucas»).
-- **A44-16** Orden del I: AK, Sobelow, Barro, externalidades, Uzawa-Lucas (DK2/D2).
-- **A44-17** Barro (1990) con hogares de Ramsey en el cuerpo (D050); ahorro constante en el anexo A (DK11/D4).
+- **A44-16** *Resuelta por Víctor (11/11/2026)*: orden del antiguo, Sobelow al final. Antes: Orden del I: AK, Sobelow, Barro, externalidades, Uzawa-Lucas (DK2/D2).
+- **A44-17** *Resuelta por Víctor (11/11/2026)*: al revés, ahorro constante en el cuerpo y Ramsey en el anexo A. Antes: Barro (1990) con hogares de Ramsey en el cuerpo (D050); ahorro constante en el anexo A (DK11/D4).
+- **A44-18** (11/11/2026) ¿Jones (1995) en el cuerpo o en anexos? Opciones: (a) mantenerlo en III.2 (2,5 min) como ahora; (b) llevarlo a un anexo y dejar el III con la idea del efecto escala y la evidencia y política (I y II ganarían 2,5 min); (c) resumirlo en el III.1 en 1 minuto (ecuación de ideas y $\gamma_N=\lambda n/(1-\phi)$) con el desarrollo en anexo. Recomendada (a): el título oficial pide «rendimientos crecientes», y el efecto escala y su corrección semiendógena son la respuesta actual a esa parte (Jones, 2005 y 2022; documento del Nobel 2025); sin Jones el III queda en evidencia sin modelo, y la política «de nivel frente a tasa» se apoya en él. En el test no se ha preguntado (las 9 preguntas del 3.A.44, 2003-2026, son de $AK$, Uzawa-Lucas y endógenos en general), pero el 3.A.45 no lo desarrolla y el tribunal puede pedirlo al preguntar por la convergencia o la política de I+D. **Aplicada: (a)**.
+- **A44-19** (11/11/2026) Romer con ahorro constante: versión de Jones (2002, cap. 5), con intermedios como bienes de capital (coste $r+\delta$). El anexo de Romer sigue a BSM (2004, cap. 6), con el coste del intermedio normalizado a 1 unidad de bien final: las 2 dan la misma $\gamma^{\mathrm E}$ con hogares, pero no son idénticas. Opciones: (a) dejarlo así, avisado en el cuerpo; (b) rehacer el anexo con capital duradero (Romer, 1990, con $\Lambda=1/\alpha$). **Aplicada: (a)**.
+- **A44-20** (11/11/2026) Externalidades de Romer con $L$ constante: la curva de depreciación pasa a ser $\delta$ (sin $n$), y la caja de Lucas mantiene $n+\delta$. Opción alternativa: desarrollar el cuerpo con $E=k$ (Lucas) y Romer en la caja; se ha leído el comentario («aunque en el cuerpo desarrolles el de Romer») como que el cuerpo es Romer. **Aplicada: cuerpo Romer**.
+- **A44-21** (11/11/2026) De la revisión externa, sin comprobar: cifras de I+D (Eurostat, OCDE, INE, China 2025), serie de Fernald (FRBSF), Bom y Ligthart (2014), Bloom et al. (2020, p. 1110) y el recuadro de Grossman-Helpman sobre aranceles; DOI del Kurz (1968) de la RES; von Neumann (1937) y Frankel (1962) citados a través de BSM, sin entrada propia. Pendiente para `/actualizartemario` o una pasada con las fuentes delante.
+- **A44-22** (11/11/2026) Gráficos propuestos a partir del tema de otro preparador: (a) transición de Uzawa-Lucas en el plano $\omega=k/h$ frente a $\gamma_K$ y $\gamma_H$ (BSM, pp. 257-258); (b) Romer frente a Jones en el plano tamaño-tasa. Opciones: añadirlos (caja gris o cuerpo) o no. **Aplicada: no añadirlos** (hay 19 gráficos y la transición se explica en el texto).
 - Control de calidad (01/11/2026): verificar-tema.py sin errores; quedan correcciones menores de gráficos (gasto-id-pib, efecto-escala, aghion-howitt), encargadas a tema-tikz.
 - Control de calidad (1/11/2026): correcciones aplicadas: autor «Lucas, Jr., Robert E.»; fecha del vídeo de Óscar Vara (8/5/2019); Jefferson como capítulo de *The Founders' Constitution* (vol. 3, ed. Kurland y Lerner); fuera la nota «Endogeneous» de Barro (1990) y la frase sobre Frisch de la nota de las letras de Jones; la tabla 4 deja de dejar media página en blanco (la recapitulación del II va tras ella); PTF de EE. UU., 0,9 % de media desde 1970; «Datos actualizados» en tabla.
 
+## Enlaces del original (9/11/2026)
+
+Restaurados:
+- Aghion y Howitt (1992), PDF de libre acceso en Harvard DASH (estaba en la caja de anotaciones del modelo schumpeteriano): `url` de `AghionHowitt1992`, que el tema ya cita en ese apartado.
+- t.co/S7U5PS6uDy: lleva a Jones (2023), «The Outlook for Long-Term Economic Growth», ya citado con su `url` (`Jones2023`).
+
+No restaurados:
+- Tema 3A-43 de otro preparador (alfonsosahuquillo.com), fuente de un gráfico del original: CRITERIOS § 5.
+
 ## Instrucciones para el vídeo
 
-(Sin vídeo en esta revisión autónoma; se dejan las instrucciones.)
+(Actualizadas el 11/11/2026: el texto del tema ya no lleva indicaciones de pizarra; van solo aquí.)
 
 - Introducción y conclusión, sin pizarra.
-- Pizarra en 3 zonas: a la izquierda, la ecuación de Euler recuadrada (funcionclave) y, debajo, una línea por modelo con su $r$ ($AK$: $A-\delta$; externalidades: $\alpha A-\delta<A-\delta$; U-L: $B-\delta_H$; Barro: $(1-\tau)\alpha A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-\delta$…), que se conserva todo el tema. En el centro, el gráfico en tasas (`tasas-endogeno`, panel derecho) construido por capas: $n+\delta$ y Solow discontinua → $sA$ → subida a $s'A$ → curva del Sobelow → los 3 casos de las externalidades; se borra al empezar el II. La U invertida de Barro, a mano alzada en una esquina (15″). En Uzawa-Lucas, las 2 ecuaciones de acumulación a la izquierda, bajo Euler.
-- Apoyo (no pizarra): la tabla de supuestos, la tabla $AK$ frente a Solow y el gráfico `gasto-id-pib`.
-- En el II, a la derecha: el esquema de los 3 sectores de Romer (`romer-sectores`) y el arbitraje de Aghion-Howitt (`aghion-howitt`, el panel de la escalera como apoyo); a la izquierda se completan las líneas «Romer: $r=\alpha\eta_IL_Y$» y «A-H: $\gamma=\lambda_IL_I^*\ln\gamma_q$». En el III, el gráfico `jones` por capas (Romer horizontal → curva de Jones → desplazamiento al crecer $L_I$) y $\gamma_N=\lambda n/(1-\phi)$ recuadrada bajo Euler; `efecto-escala` como apoyo.
-- Al final, la pizarra limpia con las 2 funciones clave y la columna de la izquierda completa (la tabla resumen); `tab:resumen-modelos` como apoyo en II.3.
-- Enganche y cierre: la vela de Jefferson y «más vale maña que fuerza»; la idea final responde a la pregunta del enganche (sí se puede crecer siempre, encendiendo unas ideas en otras) y lo retoma.
+- Pizarra en 3 zonas: a la izquierda, la ecuación de Euler recuadrada (funcionclave) y, debajo, una línea por modelo con su $r$ que no cae: «$AK$: $r=A-\delta$», «Barro: $(1-\tau)\alpha A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-\delta$», «externalidades: $r=\alpha AL^{1-\alpha}-\delta$ (privado) $<AL^{1-\alpha}-\delta$ (social)», «U-L: $r=B-\delta_H$», «Romer: $r=\alpha\eta_IL_Y$», «A-H: $\gamma=\lambda_IL_I^*\ln\gamma_q$»; es la tabla resumen, que se completa en II.3 (`tab:resumen-modelos`). En el centro, el gráfico en tasas, paso a paso como en el PDF: `tasas-endogeno` (niveles y Solow → $sA$ → $s'A$); Barro, `barro` (U invertida y máximo → efectos en verde y rojo, con $(1-\tau)$ en rojo y $\tau^{(1-\alpha)/\alpha}$ en verde también en la ecuación); `externalidades` panel a panel; Uzawa-Lucas, las 2 ecuaciones de acumulación; al final, `sobelow` (asíntotas → curvas → dinámica) con «basta con incumplir Inada en ∞». Se borra al empezar el II.
+- Pegatinas en una esquina: «más vale maña que fuerza», «quien guarda, halla» ($AK$), «quien a buen árbol se arrima, buena sombra le cobija» (externalidades), «a hombros de gigantes» (Romer: $\dot N=\eta_IL_IN$), «rey muerto, rey puesto» (destrucción creativa).
+- Apoyo (no pizarra): la tabla de supuestos, la tabla $AK$ frente a Solow, la caja Romer frente a Lucas y el gráfico `gasto-id-pib`.
+- En el II, a la derecha: «no rival + excluible ⇒ rendimientos crecientes ⇒ competencia imperfecta», el esquema de los 3 sectores de Romer (`romer-sectores`), $\gamma=\eta_Is_IL$ con ahorro constante y, con hogares, $\gamma^{\mathrm E}<\gamma^{\mathrm P}$; el arbitraje de Aghion-Howitt (`aghion-howitt-paso1` → completo con la escalera). En el III, `jones` en 3 pasos (Romer horizontal y su subida → curva de Jones y senda → desplazamiento) y $\gamma_N=\lambda n/(1-\phi)$ recuadrada bajo Euler; `efecto-escala` como apoyo.
+- Al final, la pizarra limpia con las 2 funciones clave y la columna de la izquierda completa.
+- Enganche y cierre: la vela de Jefferson y «más vale maña que fuerza»; la idea final responde a la pregunta del enganche y lo retoma.

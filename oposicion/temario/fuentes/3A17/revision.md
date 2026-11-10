@@ -134,6 +134,12 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P58), `p
   - **4.A.12**: remite el *price cap* al 3.A.20 (hoy está en el anexo A de este tema).
 - **Canon** (para `tema-canon`): fichas nuevas `monopolio`, `discriminacion-precios`, `monopsonio`, `monopolio-bilateral`; cambios en `ramsey-boiteux`, `monopolio-natural`, `excedentes-bienestar`, `rent-seeking-tullock`, `mercados-impugnables`, `curva-aprendizaje`, `laffont-tirole` (λ en vez de μ); `mapa.yaml` del 3.A.17 (referencias corregidas y faltan); `notacion.md` (siglas y símbolos de arriba). Detalle en `_trabajo/propuestas-coherencia.md`, § 6.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 2 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de I y III → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 1. **Sentencia de Google (enganche)**: la cita («Google es un monopolista y ha actuado como tal para mantener su monopolio») y las cuotas (89,2 % y 94,9 %) están comprobadas **solo en prensa** que reproduce la sentencia, no en el texto de la *Memorandum Opinion* (D.D.C., 5/8/2024). La entrada `Mehta2024Google` no tiene URL. ¿La mantengo (cotejando la sentencia y añadiendo la URL) o dejo solo el refrán?
@@ -147,6 +153,18 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P58), `p
 9. **Control de calidad (17/10/2026)**: sin incidencias pendientes. Tras el control se pasaron a bloques (supuestos, desarrollo, implicaciones) la conjetura de Coase, las proporciones fijas, Laffont-Tirole y la competencia por comparación; se amplió `subaditividad-sostenibilidad` (eje vertical cortado, con p' y q' del anexo B.6; D' pasa a q' = 2,5) y se recolocaron los rótulos de `autoseleccion`. Los títulos de primer nivel del Word salían justificados: corregido en `latex/reference.docx` (títulos alineados a la izquierda) para todos los temas.
 10. **Harberger (1954)**: «una treceava parte del 1 %» no se ha podido recomprobar en el control de calidad (la página de la Fed de Minneapolis no carga sin JavaScript); la segunda comprobación del informe es Cowling y Mueller.
 
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A17.tex` y `3A17.bib` (CRITERIOS §4).
+
+- **Restaurados** (5):
+  - Entrevista a Tirole en *Nobel Perspectives* de UBS (estaba en una nota al opositor del menú de contratos): en la nota del Nobel de Tirole (I.3, nueva teoría de la regulación).
+  - Wikipedia, «Ratchet effect» y «Robert Higgs» (nota del efecto trinquete): nota al pie nueva en el anexo del efecto trinquete.
+  - Apuntes «Yardstick Competition» (City, University of London; nota de la competencia por comparación): nota al pie en el anexo de *yardstick competition*.
+  - Policonomics, «Subaditividad» (fuente de los gráficos de subaditividad y sostenibilidad): entrada `PoliconomicsSubaditividad` en el `\fuente` del gráfico `fig:subaditividad-sostenibilidad`. **Policonomics da error en todo el sitio** (WordPress, HTTP 500, 9/11/2026): se enlaza la copia de Internet Archive (abril de 2026).
+- **Descartados**: el enlace a quia.com (CRITERIOS §4).
+- **Para Víctor**: si Policonomics vuelve a funcionar, basta con cambiar la `url` de la entrada por la original.
+
 ## Instrucciones para el vídeo
 
 - `equilibrio-monopolio` es el gráfico central: se dibuja en I.2 en una celda propia que **no se borra** hasta acabar I.3 y crece capa a capa (bienestar en I.3); la discriminación de 1.er grado es una capa más (la demanda pasa a ser el IMg y el triángulo desaparece) al empezar II.1.
@@ -155,6 +173,7 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P58), `p
 - `subaditividad-sostenibilidad` parte del gráfico del 3.A.12 (mismas capas y rótulos).
 - Apoyo, no pizarra: la tabla del escenario base, `tercer-grado`, `tarifa-dos-partes`, `produccion-conjunta` y los gráficos de los anexos.
 - Pregunta de enganche: «Quien parte y reparte, ¿se queda siempre con la mejor parte?»; la idea final la responde.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Comentarios de Víctor del 18/10/2026
 

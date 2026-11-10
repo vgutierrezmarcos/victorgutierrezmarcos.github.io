@@ -1,0 +1,45 @@
+% Cuota con un monopolio nacional (3.B.7, II.1): el monopolista de la demanda
+% residual. Misma escala y curvas que cuota y arancel-pequeno (acero):
+%   demanda x = 100 - p; CMg = q de la única empresa nacional; p^W = 20.
+%   Cuota \bar M = 40: demanda residual x - \bar M = 60 - p; IMg_r = 60 - 2q.
+%   IMg_r = CMg: 60 - 2q = q -> q = 20 (CMg = 20 = p^W); precio 60 - 20 = 40;
+%   consumo x(40) = 60 = 20 + 40.
+%   Arancel equivalente (50 %): precio 30, producción competitiva 30.
+% Estética del monopolio de 3A17 (equilibrio-monopolio).
+% Elaboración propia a partir de Bhagwati (1965) y Feenstra y Taylor (2021, cap. 9).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.07cm,y=0.09cm,
+    llave/.style={decorate,decoration={brace,amplitude=4pt},thick},
+    rotulo/.style={etiqueta,font=\footnotesize,anchor=west}]
+  % 1: ejes
+  \capa{1}{\ejes{$x$, $q$}{$p$}{108}{76}}
+  % 2: demanda
+  \capa{2}{\draw[curva2] (28,72) -- (98,2) node[etiqueta,right] {$D$};}
+  % 3: coste marginal de la empresa nacional
+  \capa{3}{\draw[curva1] (0,0) -- (70,70) node[etiqueta,right] {CMg};}
+  % 4: precio mundial
+  \capa{4}{\draw[guia] (0,20) node[etiqueta,left,text=black] {$p^W=20$} -- (102,20);}
+  % 5: demanda residual, paralela a D, 40 a la izquierda
+  \capa{5}{\draw[curvanueva] (0,60) -- (56,4) node[etiqueta,right] {$D-\bar M$};}
+  \capa{5}{\node[rotulo] at (0,-13) {\textcolor{tceerojo}{$D-\bar M$}: la demanda residual, $x-\bar M=60-p$};}
+  % 6: su ingreso marginal
+  \capa{6}{\draw[curva4] (0,60) -- (28,4) node[etiqueta,above right=-1pt and 1pt] {$\mathrm{IMg}_r$};}
+  % 7: equilibrio IMg_r = CMg y precio sobre la demanda residual
+  \capa{7}{\node[punto] (E) at (20,20) {};}
+  \capa{7}{\draw[guia] (20,0) node[below,text=black] {$20$} -- (20,40);}
+  \capa{7}{\node[punto,label={[etiqueta]above left:$M$}] (M) at (20,40) {};}
+  \capa{7}{\draw[guia] (0,40) node[left,text=black] {$40$} -- (60,40);}
+  \capa{7}{\node[punto] (X) at (60,40) {};}
+  \capa{7}{\draw[guia] (X) -- (60,0) node[below,text=black] {$60$};}
+  \capa{7}{\draw[llave] (20.5,42) -- (59.5,42);}
+  \capa{7}{\node[etiqueta,anchor=south east] at (40,45.5) {$\bar M=40$};}
+  % 8: arancel equivalente y rótulos
+  \capa{8}{\node[punto,label={[etiqueta]right:$A$}] (A) at (30,30) {};}
+  \capa{8}{\draw[guia] (0,30) node[left,text=black] {$30$} -- (A) -- (30,0) node[below,text=black] {$30$};}
+  \capa{8}{\node[rotulo] at (0,-20) {$M$: la cuota: precio 40, producción 20};}
+  \capa{8}{\node[rotulo] at (0,-27) {$A$: el arancel: precio 30, producción 30};}
+\end{tikzpicture}
+\end{document}

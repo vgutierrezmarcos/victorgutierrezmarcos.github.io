@@ -1,0 +1,38 @@
+% Oferta y demanda relativas mundiales en el modelo de Ricardo, con los números
+% de tab:pano-vino (A = Inglaterra, B = Portugal; X = paño, Y = vino):
+%   a_X^A/a_Y^A = 100/120 = 0,833; a_X^B/a_Y^B = 90/80 = 1,125
+%   L^A = L^B = 2.400: Q* = (2.400/100)/(2.400/80) = 24/30 = 0,8
+%   RS: horizontal en 0,833 hasta Q*, vertical en Q* y horizontal en 1,125
+%   RD:  p = 0,8/Q, corta el tramo vertical en (0,8; 1): RRI = 1
+%   RD': p = 0,375/Q, corta el tramo inferior en (0,45; 0,833): RRI = coste
+%        comparativo de Inglaterra, que produce los 2 bienes y no gana
+% Elaboración propia a partir de Krugman, Obstfeld y Melitz (2018), cap. 3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=3cm,y=4.2cm,
+    declare function={rd(\q)=0.8/\q; rdp(\q)=0.375/\q;}]
+  % 1: ejes
+  \capa{1}{\ejes{$\dfrac{X^A+X^B}{Y^A+Y^B}$}{$p_X/p_Y$}{2.05}{1.45}}
+  % 2: tramo horizontal inferior de la oferta relativa: coste comparativo de A
+  \capa{2}{\draw[curva2] (0,0.8333) -- (0.8,0.8333);}
+  \capa{2}{\node[etiqueta,left] at (0,0.8333) {$a_X^A/a_Y^A=0{,}83$};}
+  % 3: tramo vertical en Q*: los 2 países especializados
+  \capa{3}{\draw[curva2] (0.8,0.8333) -- (0.8,1.125);}
+  \capa{3}{\draw[guia] (0.8,0.8333) -- (0.8,0) node[below,text=black,font=\footnotesize] {$\dfrac{\overline L^A/a_X^A}{\overline L^B/a_Y^B}=0{,}8$};}
+  % 4: tramo horizontal superior: coste comparativo de B
+  \capa{4}{\draw[curva2] (0.8,1.125) -- (2.0,1.125) node[etiqueta,above left,text=tceeazul] {$\mathrm{RS}$};}
+  \capa{4}{\draw[guia] (0,1.125) -- (0.8,1.125);}
+  \capa{4}{\node[etiqueta,left] at (0,1.125) {$a_X^B/a_Y^B=1{,}125$};}
+  % 5: demanda relativa RD que corta el tramo vertical
+  \capa{5}{\draw[curva1] plot[domain=0.56:1.95,samples=60] (\x,{rd(\x)}) node[etiqueta,right,text=tceemorado] {$\mathrm{RD}$};}
+  \capa{5}{\node[punto] (E) at (0.8,1) {};}
+  \capa{5}{\draw[guia] (E) -- (0,1) node[left,text=black] {$\mathrm{RRI}=1$};}
+  \capa{5}{\draw[thin] (E) ++(0.04,0.01) -- (1.05,0.98) node[etiqueta,font=\footnotesize,align=left,anchor=west] {los 2 se especializan\\y ganan};}
+  % 6: demanda relativa RD' que corta el tramo horizontal inferior
+  \capa{6}{\draw[curvanueva] plot[domain=0.27:1.05,samples=60] (\x,{rdp(\x)}) node[etiqueta,right,text=tceerojo] {$\mathrm{RD}'$};}
+  \capa{6}{\node[punto] (Ep) at (0.45,0.8333) {};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,align=left,anchor=north west,text=tceerojo] at (1.02,0.3) {país grande: Inglaterra produce\\los 2 bienes y no gana};}
+\end{tikzpicture}
+\end{document}

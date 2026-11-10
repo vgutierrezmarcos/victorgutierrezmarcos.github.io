@@ -203,6 +203,12 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 - Las conclusiones del 3.A.23 y del 3.A.24 no deben repetir el cierre de Pigou y Pareto ni el refrán «No hay mal que por bien no venga».
 - `mapa.yaml`: añadir al 3.A.22 los modelos `diseno-mecanismos`, `clarke-groves`, `gibbard-satterthwaite`, `industria-naciente` y `ramsey-boiteux`, y crear la ficha `criterios-compensacion` con el 3.A.22 (anexo) como tema de referencia (K33, CC1).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 1 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): anexo del planificador: corte antes de «con $I$ consumidores». Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 - **Gode y Sunder (1993)** y **Smith (1962)**: referencias comprobadas en Crossref; el contenido («eficiencia casi completa», convergencia en pocas rondas) es el resultado conocido de los 2 artículos, sin cifra exacta ni página: no se ha leído el texto completo.
@@ -218,6 +224,22 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 - **Lipsey (2007)**: solo se ha visto su ficha; la frase que se le atribuye es prudente.
 - **Davis y Whinston (1965)**: referencia comprobada, contenido leído solo en fuentes secundarias (V25).
 - **Little (1950), p. 90**: la página viene de HET (2.ª ed.).
+
+## Enlaces del original (9/11/2026)
+
+Se comparan las URL del Word original con las de `3A22.tex` y `3A22.bib` (CRITERIOS §4).
+
+- **Restaurados** (6):
+  - Wikipedia, «Ofelimidad» (nota de la ruptura de Pareto con la utilidad cardinal): en la nota de la ofelimidad de la introducción.
+  - Wikipedia, «Juego del ultimátum» (nota del juego del ultimátum): junto a la cita de Güth, Schmittberger y Schwarze (1982).
+  - HET, *The Paretian System: Contents* (nota de la concavidad de la FPU): entrada `HETParetoContents`, en una nota nueva sobre la forma de la GFPU (I).
+  - HET, portada (comentario que recomendaba el sitio para profundizar): en la caja «Para ampliar» de los criterios de compensación.
+  - Policonomics, «Equilibrio general» (fuente de la caja de Edgeworth de la producción y de la FPP): `PoliconomicsEquilibrioGeneral` en el `\fuente` de `fig:caja-edgeworth-fpp`.
+  - Policonomics, «Economía del bienestar I: equilibrio general» (fuente de la construcción de la GFPU): `PoliconomicsBienestarEG` en el `\fuente` del gráfico de la GFPU.
+  - **Policonomics da error en todo el sitio** (WordPress, HTTP 500, 9/11/2026): las 2 entradas enlazan la copia de Internet Archive.
+- **Ya estaban**: HET, *Social Welfare* (con y sin `#social`), en `HETParetoSocial` y en la caja «Para ampliar».
+- **Descartados**: el enlace a quia.com (CRITERIOS §4).
+- **Para Víctor**: si Policonomics vuelve, cambiar las `url` por las originales.
 
 ## Instrucciones para el vídeo
 
@@ -257,6 +279,7 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 - **III.4**: de palabra (sin la frase de Joan Robinson).
 - **Conclusión**: sin pizarra. Empieza por «En conclusión,» y termina con la idea final que retoma el refrán. Responde a la pregunta del enganche: el mercado asigna bien cuando se cumplen todas las condiciones, y cuando no, no hay mal que por bien no venga: una distorsión bien elegida puede compensar otra que no se puede quitar, pero solo quien sabe cuál es el óptimo sabe qué mal trae un bien.
 - Los anexos no se cantan.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
 ## Control de calidad (21/10/2026)
 

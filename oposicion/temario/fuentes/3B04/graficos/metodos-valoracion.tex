@@ -1,0 +1,38 @@
+% La escalera de los métodos de valoración (3.B.4, gráfico de referencia de la
+% ficha dcf del canon). Elaboración propia a partir de Fernández (2008).
+% 5 peldaños que suben de izquierda a derecha: de lo que la empresa tiene
+% (balance) a lo que generará (descuento de flujos, comparables, otros).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Mercado, en la gama del balance (azul), más claro
+\colorlet{tceeazulclaro}{tceeazul!60}
+\tikzset{
+  peldano/.style={draw=#1,fill=#1!10,thick,rounded corners=3pt,
+    text width=3.05cm,minimum height=2.5cm,align=flush left,anchor=south west,
+    inner sep=4pt,font=\footnotesize},
+}
+\newcommand{\titulo}[2]{\textcolor{#1}{\small\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: flecha de arriba con sus 2 rótulos
+  \capa{1}{\draw[->,very thick,tceegris] (0,5.2) -- (17,5.2);}
+  \capa{1}{\node[etiqueta,anchor=south west] at (0,5.3) {lo que la empresa \emph{tiene} (pasado)};}
+  \capa{1}{\node[etiqueta,anchor=south east] at (17,5.3) {lo que \emph{generará} (futuro)};}
+  % 2: peldaño Balance
+  \capa{2}{\node[peldano=tceeazul] at (0,0) {\titulo{tceeazul}{Balance}
+    valor contable\\ valor contable ajustado\\ valor de liquidación\\ valor sustancial};}
+  % 3: peldaño Mercado
+  \capa{3}{\node[peldano=tceeazulclaro] at (3.45,0.6) {\titulo{tceeazul!70!black}{Mercado}
+    capitalización bursátil\\ $P/$valor contable\\ ($\approx q$ de \textsc{Tobin})};}
+  % 4: peldaño Descuento de flujos (el centro del bloque)
+  \capa{4}{\node[peldano=tceemorado,very thick] at (6.9,1.2) {\titulo{tceemorado}{Descuento de flujos}
+    dividendos\\ (\textsc{Gordon}-\textsc{Shapiro})\\ FCL con WACC\\ FCLA con $r_E$\\ APV};}
+  % 5: peldaño Comparables
+  \capa{5}{\node[peldano=tceeverde] at (10.35,1.8) {\titulo{tceeverde}{Comparables}
+    directos: PER\\ indirectos:\\ $\mathrm{EV}/\mathrm{EBITDA}$, $\mathrm{EV}/\mathrm{EBIT}$};}
+  % 6: peldaño Otros
+  \capa{6}{\node[peldano=tceedorado] at (13.8,2.4) {\titulo{tceedorado}{Otros}
+    mixtos\\ (fondo de comercio)\\ suma de las partes\\ opciones reales};}
+\end{tikzpicture}
+\end{document}

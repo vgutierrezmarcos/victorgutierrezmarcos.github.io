@@ -137,6 +137,12 @@ Fecha de consulta de todo: 5/11/2026 (fase de datos; claves de `bib-datos.bib`).
 - **Delimitación** (K13): sin el catálogo de instrumentos ni la regla de Taylor en desarrollo (3.A.36), sin la eficacia agregada desde 2008 (3.A.40), sin el ciclo financiero como teoría del ciclo (3.A.42); el enganche no repite las cifras del 3.A.36 (facilidad de −0,50 a 4 %, 8,4 %) ni McCandless y Weber.
 - **Contradicciones con otros temas** (no se tocan; § 16 de coherencia): (1) 3.A.42, l. 840, falta `\vertema{3.A.37}` antes de `\vertema{3.A.40}` en las compras de activos (ya en `pendientes-coherencia.md`); (2) 3.A.29 usa «cota cero» frente a «límite inferior de los tipos» del canon; (3) el 3.A.7 escribe Fischer con $w^j_t=\mathbb{E}_{t-j}[p_t]$ y este tema usará la forma general con $p^*_t$ (compatibles); (4) 3.A.36 y P78: «orientación de la política», no «orientación sobre los tipos»; (5) en el mapa, el 3.A.41 `faltan` («las islas de Lucas se repiten en el 3.A.37») ya no aplica: aquí van en 2 líneas con `\vertema{3.A.6}`; (6) el mapa del 3.A.37 lista `blinder-stiglitz` y `ciclo-financiero-global`, sin ficha. (7) Las 3 fechas de la tabla de instrumentos del 3.A.40 que el canon pedía comprobar (A40-16: compras del Banco de Japón de 2001-2006, sus préstamos desde 2010 y las TLTRO desde 2014) son correctas según contenido (C36); este tema solo usa la de las TLTRO (`BCE2014TLTRO`): nada que cambiar en el 3.A.40.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Quitado del texto el plan de pizarra de la nota de reparto del cante («La pizarra se organiza en 3 zonas…»: zonas, gráficos que se borran o se quedan, funciones recuadradas, pegatinas), movido a «Instrucciones para el vídeo». Títulos (cortes con \cortetitulo{}, sin tocar los títulos de I/II/III fijados): I, II y III: \newline → \cortetitulo{}. |
+
 ## 7. Dudas abiertas
 
 Todas con la opción recomendada aplicada.
@@ -168,6 +174,17 @@ Todas con la opción recomendada aplicada.
 - **A37-25** (control de calidad, 5/11/2026). El 3.A.6 (l. 1126) y el 3.A.42 (l. 1019) remiten a este tema diciendo que los VAR y la narrativa «encuentran efectos reales grandes y rápidos», pero aquí la producción cae «poco a poco» y toca fondo al cabo de varios trimestres (I.3). No se toca en esos temas. *Propuesta*: cambiar «grandes y rápidos» por «grandes y con retraso» en los 2 cuando se vuelvan a abrir (anotarlo en `pendientes-coherencia.md`).
 - **A37-26** (control de calidad, 5/11/2026). `transmision-tipos-2022` no usa la paleta pedida (tipo oficial morado, Euríbor gris, crédito en azules, depósitos en verdes): usa la de `canales-transmision` (tipo oficial azul marino, crédito en dorados, depósitos en verdes) y no marca el último dato con un punto. Se lee bien y casa con el gráfico 1. *Recomendada*: dejarla así.
 
+## Enlaces del original (9/11/2026)
+
+Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
+
+- **Restaurados** (9):
+  - En la caja de la introducción (la de la estrategia del BCE): la página del BCE sobre sus funciones en política monetaria (dirección nueva), la del cambio de objetivo de 2021, el artículo de *Economía 3* sobre los objetivos y funciones del BCE y el *Informe Anual 2022* del Banco de España (`BdE2023InformeAnual2022`; la dirección antigua del PDF sigue valiendo).
+  - Los 3 vídeos de Khan Academy sobre la expansión cuantitativa: nota «Para ver» en «Las compras de activos» (III.3).
+  - Las 2 entradas de Blanchard en el blog del PIIE (2021 y 2023, direcciones nuevas): `Blanchard2021LowRates` y `Blanchard2023Secular` (igual que en el 3.A.38), en una nota sobre el tipo natural bajo en el límite inferior (III.1), junto a `Blanchard2023Fiscal`, que estaba en el `.bib` sin citar.
+- **Ya estaban** (por otra vía): Galí (2020) sobre el dinero helicóptero (cepr.org), el artículo del Boletín Económico del BCE de 2018 (Habib y Venditti), la página del BCE sobre la transmisión (en español) y la tabla 50934 del INE.
+- **Descartados**: ninguno.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche y cierre**: «Las cosas de palacio van despacio»; la pregunta, por qué caminos y con qué retraso llega un tipo a un día a los precios, y qué se hace cuando ya no puede bajar. La idea final la retoma: la política monetaria actúa hoy sobre la economía de dentro de 2 años; por eso tiene que mirar hacia delante y ser creíble, porque, cuando el tipo de interés ya no puede bajar, su palabra es lo que le queda. Introducción sin pizarra.
@@ -177,3 +194,4 @@ Todas con la opción recomendada aplicada.
 - **Funciones clave que se conservan**: `eq:taylor-contratos` (II.2) y `eq:bgg` (II.3) se escriben recuadradas y se borran al acabar el bloque II; `eq:tipo-largo` se escribe en el centro de la zona derecha en III.1 y se conserva hasta la conclusión, porque cada instrumento de III se dibuja como una flecha a uno de sus sumandos. Las 3 ecuaciones de la NEK (II.1), arriba del centro, hasta el final de II.2.
 - **Ejemplo conductor**: la familia con hipoteca a Euríbor más 1 (la cuota de 530 a 890 euros, I.2) y la pyme de azulejos que exporta (menos pedidos con el euro apreciado, I.2); en II, el convenio de 3 años, el local que vale menos como garantía, la familia sin ahorros; en III, el Euríbor negativo de 2016-2021. Nunca «hilo» en voz alta.
 - **Pegatinas**: «cuando Estados Unidos estornuda, el mundo se resfría» (I.2, ciclo financiero global); las 7 de II y III en la nota del reparto.
+- Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas. A la izquierda, durante todo el bloque~\ref{sec:convencional}, la lista de escuelas con su canal y, debajo, el esquema de los canales (gráfico~\ref{fig:canales-transmision}), que se queda; la respuesta con forma de joroba (gráfico~\ref{fig:respuesta-joroba}) se dibuja a mano alzada en un rincón. En el centro, el bloque~\ref{sec:rigideces}: las ecuaciones del modelo arriba y, debajo, un gráfico tras otro (la subida de tipos en el modelo neokeynesiano, los contratos de \autor{Fischer} y \autor{Taylor} y el coste de los fondos con la prima de financiación externa), que se borran de uno en uno. A la derecha, el esquema de la política no convencional, que crece rama a rama en el bloque~\ref{sec:no-convencional} con el tipo largo en el centro y se queda para la conclusión. Las pegatinas, una por concepto: «cuando Estados Unidos estornuda, el mundo se resfría» (el tipo de cambio y el ciclo financiero global), «despacito y buena letra» (los precios a la \autor{Calvo}), «a lo hecho, pecho» (los contratos firmados), «el banco te presta el paraguas cuando hace sol y te lo quita cuando llueve» (el acelerador financiero), «donde no hay harina, todo es mohína» (los hogares sin liquidez), «las palabras se las lleva el viento» (la paradoja de la orientación), «cada mochuelo a su olivo» (el hábitat preferente) y «tanto va el cántaro a la fuente que al final se rompe» (el tipo de reversión).

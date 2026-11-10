@@ -1,0 +1,79 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% S&P 500 (cierre diario) y sus medias móviles simples de 50 y 200 sesiones,
+% del 2/1/2025 al 5/11/2026. S&P Dow Jones Indices vía FRED (serie SP500,
+% consulta 8/11/2026); medias calculadas con los cierres desde el 2/1/2024.
+% Eje x: n.º de sesión (fila del CSV, sin huecos de fines de semana); marcas
+% en la primera sesión de cada trimestre. Filas clave: 65 = 8/4/2025 (mínimo),
+% 69 = 14/4/2025 (cruce de la muerte), 122 = 1/7/2025 (cruce dorado),
+% 250 = 2/1/2026, 320 = 15/4/2026 (ruptura de la resistencia de ≈6.980).
+% Capas «dic» (tikz-tcee.tex): ejes → resistencia y soporte → líneas →
+% puntos → rótulos y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/sp500-soporte-medias.csv}\spx
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=15cm, height=8cm,
+      xmin=-3, xmax=466,
+      xtick={0,60,122,186,250,311,373,437},
+      xticklabels={ene.\ 2025,abr.,jul.,oct.,ene.\ 2026,abr.,jul.,oct.},
+      ymin=4700, ymax=8000, ytick={5000,5500,...,8000},
+      yticklabel style={/pgf/number format/.cd,1000 sep={.}},
+      ticklabel style={font=\footnotesize},
+      ylabel={Puntos del índice},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.13)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left, dicapas,
+    ]
+    % 1: ejes y fechas (los dibuja el entorno axis)
+    % 2: resistencia (ene.-abr. 2026) y soporte tras la ruptura, en 6.980
+    \capa{2}{
+      \dicraya[thick, dashed, tceerojo]{(250,6980) (320,6980)}
+      \dicraya[thick, dashed, tceeverde]{(320,6980) (462,6980)}
+    }
+    % 3: cierres
+    \capa{3}{
+      \addplot[forget plot, thin, tceegris!70!black] table[x expr=\coordindex, y=cierre] {\spx};
+    }
+    % 4: media de 200 sesiones
+    \capa{4}{
+      \addplot[forget plot, ultra thick, tceemorado] table[x expr=\coordindex, y=mm200] {\spx};
+    }
+    % 5: media de 50 sesiones
+    \capa{5}{
+      \addplot[forget plot, thick, tceedorado] table[x expr=\coordindex, y=mm50] {\spx};
+    }
+    % 6: puntos: mínimo, cruce de la muerte, cruce dorado y ruptura
+    \capa{6}{
+      \addplot[on layer=dicpuntos, dicsuelto, only marks, mark=*, mark size=2pt,
+        mark options={fill=white, draw=black, line width=0.9pt}]
+        coordinates {(65,4982.77) (69,5748.25) (122,5846.34) (320,7022.95)};
+    }
+    % 7: rótulos y leyenda
+    \capa{7}{
+      \dicrotulo[font=\footnotesize, anchor=west]{(72,4982.77)}{mínimo: 4.982,77 (8/4/2025)}
+      \addplot[on layer=axis descriptions, dicsuelto, guia, solid] coordinates {(69,5748.25) (85,6330)};
+      \dicrotulo[font=\footnotesize, anchor=south, align=center]{(85,6330)}{cruce de la muerte\\(14/4/2025)}
+      \addplot[on layer=axis descriptions, dicsuelto, guia, solid] coordinates {(122,5846.34) (150,5450)};
+      \dicrotulo[font=\footnotesize, anchor=north, align=center]{(150,5450)}{cruce dorado\\(1/7/2025)}
+      \dicrotulo[font=\footnotesize, anchor=south east, text=tceerojo]{(250,6980)}{resistencia $\approx$\,6.980}
+      \addplot[on layer=axis descriptions, dicsuelto, guia, solid] coordinates {(320,7022.95) (300,7500)};
+      \dicrotulo[font=\footnotesize, anchor=south, align=center]{(300,7500)}{ruptura: 7.022,95\\(15/4/2026)}
+      \dicrotulo[font=\footnotesize, anchor=north, text=tceeverde]{(420,6980)}{soporte}
+      \addlegendimage{leyenda linea corta, thin, tceegris!70!black}
+      \addlegendentry{Cierre}
+      \addlegendimage{leyenda linea corta, thick, tceedorado}
+      \addlegendentry{Media móvil de 50 sesiones}
+      \addlegendimage{leyenda linea corta, ultra thick, tceemorado}
+      \addlegendentry{Media móvil de 200 sesiones}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,35 @@
+% Modelo de Solow con progreso técnico: la recta de reposición gira de (n+delta) k a
+% (n+g+delta) k~ y el estado estacionario pasa a medirse por unidad de trabajo eficiente.
+% Curvas calculadas (Cobb-Douglas con alfa = 1/2, en unidades del dibujo, como solow.tex):
+%   f = 1,8 k^(1/2); s f = 0,63 k^(1/2)
+%   (n+delta) k = 0,26 k  -> k* = (0,63/0,26)^2 = 5,8713; s f(k*) = 1,5265
+%   (n+g+delta) k~ = 0,38 k~ -> k~* = (0,63/0,38)^2 = 2,7487; s f(k~*) = 1,0445
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=1.1cm,
+    declare function={f(\k)=1.8*sqrt(\k); sf(\k)=0.63*sqrt(\k);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-0.7) rectangle (9.8,5.6);
+  % 1: ejes
+  \capa{1}{\ejes{$\tilde k$}{$\tilde y$, inversión}{7.8}{5.4}}
+  % 2: producción e inversión efectiva por unidad de trabajo eficiente
+  \capa{2}{\draw[curva1] plot[domain=0:7.2,samples=80] (\x,{f(\x)})
+      node[etiqueta,right,text=tceemorado] {$f(\tilde k)$};
+    \draw[curva2] plot[domain=0:7.2,samples=80] (\x,{sf(\x)})
+      node[etiqueta,right,text=tceeazul] {$s\,f(\tilde k)$};}
+  % 3: recta de reposición sin progreso técnico y su estado estacionario
+  \capa{3}{\draw[thick,dashed,tceegris] (0,0) -- (7.2,1.872)
+      node[etiqueta,above right,text=tceegris] {$(n+\delta)\,k$};
+    \node[punto,fill=tceegris] (E0) at (5.8713,1.5265) {};
+    \draw[guia] (E0) -- (5.8713,0) node[below,text=black] {$k^*$};}
+  % 4: con progreso técnico la recta gira hacia arriba y el estado estacionario baja
+  \capa{4}{\draw[curva3] (0,0) -- (7.2,2.736)
+      node[etiqueta,right,text=tceeverde] {$(n+g+\delta)\,\tilde k$};
+    \draw[->,thick,tceeverde] (6.2,1.66) to[bend right=30] node[etiqueta,right,pos=0.6] {$+g$} (6.2,2.30);
+    \node[punto] (E1) at (2.7487,1.0445) {};
+    \draw[guia] (E1) -- (2.7487,0) node[below,text=black] {$\tilde k^*$};
+    \draw[->,thick,tceerojo] (5.6,0.3) -- (3.0,0.3);}
+\end{tikzpicture}
+\end{document}

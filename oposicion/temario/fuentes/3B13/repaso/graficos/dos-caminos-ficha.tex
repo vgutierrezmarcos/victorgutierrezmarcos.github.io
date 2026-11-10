@@ -1,0 +1,31 @@
+\documentclass[tikz,border=2pt]{standalone}
+\input{../../../../latex/tikz-tcee}
+\begin{document}
+% Versión compacta para la ficha de repaso del gráfico «dos-caminos» del tema:
+% los 2 caminos del inversor (PCI cubierto, en morado; PNCI sin cubrir, en dorado).
+\begin{tikzpicture}[tcee,
+    valor/.style={etiqueta,font=\small,inner sep=2pt},
+    paso/.style={->,thick,black},
+    rot/.style={etiqueta,font=\footnotesize,inner sep=1pt},
+    cubierta/.style={->,thick,tceemorado},
+    sincubrir/.style={->,thick,tceedorado,dashed},
+    llave/.style={thick,decorate,decoration={brace,amplitude=4pt}}]
+  \node[etiqueta,text=tceegris,font=\footnotesize] at (0,0.55) {$t$};
+  \node[etiqueta,text=tceegris,font=\footnotesize] at (5.6,0.55) {$t+1$};
+  \node[valor] (A) at (0,0) {$1$ €};
+  \node[valor,anchor=west] (B) at (4.75,0) {$(1+i)$ €};
+  \draw[paso] (A) -- node[rot,above] {en euros ($i$)} (B);
+  \node[valor] (C) at (0,-1.9) {$1/E_t$ \$};
+  \draw[paso] (A) -- node[rot,left,align=right] {contado\\$\times1/E_t$} (C);
+  \node[valor] (Dd) at (2.35,-1.9) {$\frac{1+i^{*}}{E_t}$ \$};
+  \draw[paso] (C) -- node[rot,above] {$i^{*}$} (Dd);
+  \node[valor,anchor=west,text=tceemorado] (Fc) at (4.75,-1.05) {$(1+i^{*})\frac{F_t^{t+1}}{E_t}$ €};
+  \draw[cubierta] (Dd.north east) -- node[rot,above,sloped,text=tceemorado] {a plazo hoy} (Fc.west);
+  \node[valor,anchor=west,text=tceedorado!85!black] (Fs) at (4.75,-2.75) {$(1+i^{*})\frac{E^{e}_{t+1}}{E_t}$ €};
+  \draw[sincubrir] (Dd.south east) -- node[rot,below=5pt,sloped,text=tceedorado!85!black] {contado en $t+1$} (Fs.west);
+  \draw[llave,tceemorado] (7.45,0.2) -- (7.45,-1.35)
+    node[midway,right=4pt,text=tceemorado,font=\footnotesize\bfseries] {PCI};
+  \draw[llave,tceedorado!85!black] (8.25,0.2) -- (8.25,-3.05)
+    node[midway,right=4pt,text=tceedorado!85!black,font=\footnotesize,align=center] {\textbf{PNCI}\\(esp.)};
+\end{tikzpicture}
+\end{document}

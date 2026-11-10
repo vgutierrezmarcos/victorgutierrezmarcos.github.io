@@ -239,6 +239,12 @@ Se aplican al tema ya revisado los criterios generales de Víctor del 16/10/2026
 
 9. **Enganche y cierre con la pregunta del vídeo** (Víctor, 16/10/2026: el enganche es la pregunta o el refrán y la idea final lo retoma, también en el documento). El vídeo ya abría con «¿Puede una sola función resumir todo lo que una empresa sabe hacer?»; esa pregunta encabeza ahora la primera viñeta del Enganche, delante de la fábrica de alfileres de Smith (sin alargarla), y la Idea final la retoma y la responde: resume lo que la empresa puede producir, no lo que producirá ni cómo se organiza por dentro; es el mapa de lo técnicamente posible. Lo mismo, en corto, en el Enganche y la Idea final de la ficha de repaso; en `guion-cante.md` se quita la aclaración de que la pregunta era propia del vídeo. El dato del enganche (Smith, 1776) es una cita clásica, no una estadística desfasada, y se mantiene; si Víctor prefiere un hecho actual (p. ej., productividad de una fábrica automatizada), haría falta una fuente. PDF: 50 páginas (tema 40, anexos 6, bibliografía 4); `verificar-tema.py`: 0 errores, 0 avisos; ficha: 4 páginas con letra de 9 pt.
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» fuera (1 frase). Títulos: ya cortados en buen punto; `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
+
 ## Dudas abiertas
 
 Resueltas el 13/10/2026 y quitadas de esta lista: el orden de I.1 e I.2 (se vuelve al de Víctor), el autor de las etapas (Cassels, 1936, no Cassel, 1918), Hesíodo y Jenofonte (con Lowry, 1987) y el segundo nivel de III (ahora III.1 la caja de Edgeworth y III.2 la producción conjunta). El punto 13 de la versión anterior (nombres de preparadores) también queda resuelto por la instrucción de Víctor de quitarlos del tema.
@@ -274,3 +280,11 @@ Resueltas el 13/10/2026 y quitadas de esta lista: el orden de I.1 e I.2 (se vuel
 - **Apoyo (no se escribe)**: todo lo 3D (`funcion-produccion-3d`, `plazos-3d` y sus cortes de corto, largo y muy largo plazo, `rendimientos-globales-locales-superficies`) por estados sucesivos según se narra; `region-economica` completa como referencia; `progreso-tecnico-neutral` por paneles.
 - **Sin pizarra**: introducción y conclusión.
 - **Enganche e idea final**: la pregunta con que abre el documento se retoma en el cierre.
+
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Ya estaba**: Fuleky, *Anatomy of C-D Production/Utility Functions* (`FulekyAnatomy`, copia de web.archive.org: www2.hawaii.edu no responde).
+- **Restaurado**: el artículo de JSTOR (`https://www.jstor.org/stable/4101869`) que el tema antiguo daba para la distinción entre rendimientos locales y globales a escala, junto con Jehle y Reny (pp. 133-134), en una nota al principio de «Rendimientos globales y locales a escala».
+- **Duda para Víctor**: JSTOR bloquea las consultas automáticas y no se ha podido ver qué artículo es (quizá Podinovski, 2004, «Local and global returns to scale in performance measurement», *Journal of the Operational Research Society*, 55: sin comprobar). Si se identifica, conviene pasarlo a una entrada del `.bib` con `\textcite`.

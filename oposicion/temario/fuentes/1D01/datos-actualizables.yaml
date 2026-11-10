@@ -1,0 +1,503 @@
+tema: 1D01
+fecha_inventario: 2026-11-09
+# Guía del dictamen de coyuntura. Solo cifras de coyuntura que cambian con un dato
+# nuevo y los CSV de los gráficos de series. Quedan fuera los umbrales del
+# procedimiento de desequilibrios (PDM), Basilea, la ABE y el Tratado (normas), los
+# ejemplos ilustrativos y los datos históricos cerrados (2009, 2013, 2020, 2022…).
+# La carpeta examen-espana/ (examen de práctica con sus propios datos) no está
+# inventariada aquí.
+datos:
+  # --- Demanda y PIB ---
+  - id: consumo-peso-ue
+    texto: "algo más de la mitad del PIB en la UE (53~\\% en 2025)"
+    donde: [1D01.tex]
+    valor: 53
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026nama10gdp
+    organismo: Eurostat
+    serie: "nama_10_gdp, P31_S14_S15 / B1GQ, CP_MEUR, EU27_2020"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-cuentas-nacionales
+  - id: consumo-peso-ue-repaso
+    texto: "el mayor componente (53~\\% del PIB en la UE)"
+    donde: [repaso/1D01-repaso.tex]
+    valor: 53
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026nama10gdp
+    organismo: Eurostat
+    serie: "nama_10_gdp, P31_S14_S15 / B1GQ"
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-cuentas-nacionales
+    nota: "mismo dato que consumo-peso-ue"
+  - id: fbcf-peso-ue
+    texto: "la FBCF fue el 21,5~\\% del PIB en la UE en 2025"
+    donde: [1D01.tex]
+    valor: 21.5
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026nama10gdp
+    organismo: Eurostat
+    serie: "nama_10_gdp, P51G / B1GQ, CP_MEUR, EU27_2020"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-cuentas-nacionales
+  - id: contribuciones-pib-zona-euro
+    texto: "resta en 2025 ($-0{,}7$~pp)"
+    donde: [1D01.tex]
+    valor: -0.7
+    unidad: puntos porcentuales (contribución de la demanda externa neta)
+    periodo: 2025
+    fuente: Eurostat2026nama10gdp
+    organismo: Eurostat
+    serie: "nama_10_gdp, CLV_PCH_PRE y CON_PPCH_PRE, EA21 (2012-2025)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-cuentas-nacionales
+    depende: [datos/contribuciones-pib-zona-euro.csv, graficos/contribuciones-pib-zona-euro.tex]
+    frase: "pie del gráfico: «zona del euro de 21 países, 2012-2025» (alargar la serie)"
+  - id: consumo-renta-ahorro-zona-euro
+    texto: "Desde 2023 el ahorro sigue alto (en torno al 15~\\%)"
+    donde: [1D01.tex]
+    valor: 14.7
+    unidad: "% de la renta disponible (tasa de ahorro bruto de los hogares)"
+    periodo: 2025
+    fuente: Eurostat2026nama10gdp
+    organismo: Eurostat
+    serie: "nama_10_gdp (P31_S14_S15), nasa_10_nf_tr (B6G) y nasa_10_ki (SRG_S14_S15), EA21"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_ki/default/table
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-cuentas-nacionales
+    depende: [datos/consumo-renta-ahorro-zona-euro.csv, graficos/consumo-renta-ahorro-zona-euro.tex]
+    frase: "el gráfico sale también en la ficha (\\graficorepaso consumo-renta-ahorro-zona-euro)"
+  - id: apertura-espana
+    texto: "exportaciones más importaciones en torno al 70~\\% del PIB"
+    donde: [1D01.tex]
+    valor: 70
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026nama10gdp
+    organismo: Eurostat
+    serie: "nama_10_gdp, (P6+P7)/B1GQ, CP_MEUR, ES"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-cuentas-nacionales
+  - id: pib-comercio-mundial
+    texto: "\\textcite{FMI2026WEO}; 2026 y 2027, previsiones"
+    donde: [1D01.tex]
+    valor: 3.1
+    unidad: "% (PIB mundial 2026; comercio mundial 4,6 %)"
+    periodo: WEO octubre de 2026 (2005-2027)
+    fuente: FMI2026WEO
+    organismo: FMI
+    serie: "WEO, G001.NGDP_RPCH y G001.TRADEPCH"
+    url: https://data.imf.org/en/datasets/IMF.RES:WEO
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: fmi-weo
+    depende: [datos/pib-comercio-mundial.csv, graficos/pib-comercio-mundial.tex]
+    frase: "años de previsión del pie («2026 y 2027, previsiones»)"
+  # --- España: FMI, artículo IV ---
+  - id: espana-crecimiento-art4
+    texto: "3,5~\\% en 2024 y 2,8~\\% en 2025"
+    donde: [1D01.tex]
+    valor: 2.8
+    unidad: "% (PIB real de España)"
+    periodo: 2025
+    fuente: FMI2026ArticuloIV
+    organismo: FMI
+    serie: "Spain: Article IV Consultation, cuadro de indicadores"
+    periodicidad: anual
+    familia: fmi-articulo-iv-espana
+  - id: espana-deficit-art4
+    texto: "cuentas públicas con déficit (2,5~\\% del PIB en 2025)"
+    donde: [1D01.tex]
+    valor: -2.5
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: FMI2026ArticuloIV
+    organismo: FMI
+    serie: "Spain: Article IV Consultation, saldo de las AA. PP."
+    periodicidad: anual
+    familia: fmi-articulo-iv-espana
+    nota: "alternativa primaria: Eurostat gov_10dd_edpt1 / IGAE (notificación PDE de abril)"
+  - id: espana-ajuste-fiscal-art4
+    texto: "unos 0,5 puntos del PIB al año entre 2026 y 2030"
+    donde: [1D01.tex]
+    valor: 0.5
+    unidad: puntos del PIB al año
+    periodo: 2026-2030
+    fuente: FMI2026ArticuloIV
+    organismo: FMI
+    serie: "Spain: Article IV Consultation, recomendación de ajuste"
+    periodicidad: anual
+    familia: fmi-articulo-iv-espana
+  # --- Mercado de trabajo ---
+  - id: actividad-espana-1564
+    texto: "la tasa de actividad de España (74,9~\\% en 2025)"
+    donde: [1D01.tex]
+    valor: 74.9
+    unidad: "% (15-64 años)"
+    periodo: 2025
+    fuente: Eurostat2026lfsa
+    organismo: Eurostat
+    serie: "lfsa_argan, Y15-64, ES"
+    url: https://ec.europa.eu/eurostat/databrowser/view/lfsa_argan/default/table
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-epa
+    frase: "cambia también «ya no está por debajo de la media de la OCDE» si se invierte"
+  - id: actividad-espana-1564-examen
+    texto: "la tasa de actividad de 15 a 64 años (74,9~\\% en 2025)"
+    donde: [1D01.tex]
+    valor: 74.9
+    unidad: "% (15-64 años)"
+    periodo: 2025
+    fuente: Eurostat2026lfsa
+    organismo: Eurostat
+    serie: "lfsa_argan, Y15-64, ES"
+    periodicidad: anual
+    proxima: 2027-04
+    familia: eurostat-epa
+    frase: "«ya está por encima de la media de la OCDE»"
+  - id: actividad-ocde
+    texto: "media de la OCDE (73,9~\\% en 2024)"
+    donde: [1D01.tex]
+    valor: 73.9
+    unidad: "% (15-64 años)"
+    periodo: 2024
+    fuente: OCDE2026LFS
+    organismo: OCDE
+    serie: "Labour Force Statistics, activity rate 15-64, OECD total"
+    periodicidad: anual
+    familia: ocde-lfs
+  - id: actividad-espana-16mas
+    texto: "sobre la población de 16 y más años es del 58~\\%"
+    donde: [1D01.tex]
+    valor: 58
+    unidad: "% (16 y más años)"
+    periodo: 2025
+    fuente: INE2025EPA
+    organismo: INE
+    serie: "EPA, tasa de actividad, ambos sexos, 16 y más años"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=65080
+    periodicidad: trimestral
+    familia: ine-epa
+  - id: actividad-espana-repaso
+    texto: "(España: 74,9~\\% y 58~\\%)"
+    donde: [repaso/1D01-repaso.tex]
+    valor: 74.9
+    unidad: "% (15-64) y % (16 y más)"
+    periodo: 2025
+    fuente: Eurostat2026lfsa
+    organismo: Eurostat / INE
+    serie: "lfsa_argan Y15-64 y EPA 16 y más"
+    periodicidad: anual
+    familia: eurostat-epa
+    nota: "mismos datos que actividad-espana-1564 y actividad-espana-16mas"
+  - id: paro-espana-2025
+    texto: "el paro sigue siendo alto (10,5~\\% en 2025)"
+    donde: [1D01.tex]
+    valor: 10.5
+    unidad: "% (15-74 años)"
+    periodo: 2025
+    fuente: Eurostat2026une
+    organismo: Eurostat
+    serie: "une_rt_a / une_rt_q, Y15-74, ES"
+    url: https://ec.europa.eu/eurostat/databrowser/view/une_rt_q/default/table
+    periodicidad: anual
+    proxima: 2027-01
+    familia: eurostat-paro
+  - id: empleo-horas-actividad-zona-euro
+    texto: "hoy el empleo supera en un 6~\\% el nivel de 2019 y las horas solo en un 5~\\% (baja la jornada media); el paro, del 6,4~\\% a mediados de 2026"
+    donde: [1D01.tex]
+    valor: 6.4
+    unidad: "% (paro EA21); empleo y horas, índice 4T2019 = 100 (106,0 y 105,2)"
+    periodo: 2.º trimestre de 2026
+    fuente: Eurostat2026namq10a10e
+    organismo: Eurostat
+    serie: "namq_10_a10_e (EMP_DC, THS_PER y THS_HW, SCA), lfsq_argan (Y15-74), une_rt_q (Y15-74), EA21"
+    url: https://ec.europa.eu/eurostat/databrowser/view/namq_10_a10_e/default/table
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: eurostat-paro
+    depende: [datos/empleo-horas-actividad-zona-euro.csv, graficos/empleo-horas-actividad-zona-euro.tex]
+  - id: pib-por-pet-espana
+    texto: "($+3{,}9~\\%$) y poco por la productividad por hora ($+1{,}7~\\%$)"
+    donde: [1D01.tex]
+    valor: 3.9
+    unidad: "% acumulado desde 4T2019 (horas por PET; PIB por hora +1,7 %)"
+    periodo: 2.º trimestre de 2026
+    fuente: Eurostat2026namq10gdp
+    organismo: Eurostat
+    serie: "namq_10_gdp (B1GQ, CLV20_MEUR, SCA), namq_10_a10_e (THS_HW), lfsq_pganws (15-64), ES; cálculo propio"
+    url: https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: eurostat-cuentas-nacionales
+    depende: [datos/pib-por-pet-espana.csv, graficos/pib-por-pet-espana.tex]
+    frase: "la conclusión «sobre todo por más horas por persona» se repite en el examen de España (gráfico pib-por-pet)"
+  - id: beveridge-espana-zona-euro
+    texto: "España tiene muy pocas vacantes (en torno al 0,9~\\%)"
+    donde: [1D01.tex]
+    valor: 0.9
+    unidad: "% de puestos de trabajo (tasa de vacantes, España)"
+    periodo: 2026 (media 1T-2T)
+    fuente: Eurostat2026jvs
+    organismo: Eurostat
+    serie: "jvs_q_r21 (JVR, B-T) y une_rt_q (Y15-74), ES y EA21"
+    url: https://ec.europa.eu/eurostat/databrowser/view/jvs_q_r21/default/table
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: eurostat-paro
+    depende: [datos/beveridge-espana-zona-euro.csv, graficos/beveridge-espana-zona-euro.tex]
+    frase: "«máximo de vacantes, 3,2 %, con paro mínimo en 2022» deja de valer si se supera"
+  - id: beveridge-repaso
+    texto: "España, con pocas vacantes (0,9~\\%)"
+    donde: [repaso/1D01-repaso.tex]
+    valor: 0.9
+    unidad: "% de puestos de trabajo"
+    periodo: 2026 (media 1T-2T)
+    fuente: Eurostat2026jvs
+    organismo: Eurostat
+    serie: "jvs_q_r21 (JVR, B-T), ES"
+    periodicidad: trimestral
+    familia: eurostat-paro
+    nota: "mismo dato que beveridge-espana-zona-euro"
+  - id: nawru-ce
+    texto: "NAWRU en torno al 6-7~\\% en la zona del euro y al 12~\\% en España"
+    donde: [1D01.tex]
+    valor: 12
+    unidad: "% (NAWRU España; zona del euro 6-7 %)"
+    periodo: previsiones de la Comisión de 2026
+    fuente: CE2026AMECO
+    organismo: Comisión Europea
+    serie: "AMECO, ZNAWRU"
+    url: https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en
+    periodicidad: semestral (previsiones de primavera y otoño)
+    proxima: 2026-11
+    familia: ce-ameco
+  - id: nawru-ce-repaso
+    texto: "NAWRU de la Comisión: 6-7~\\% en el euro, 12~\\% en España"
+    donde: [repaso/1D01-repaso.tex]
+    valor: 12
+    unidad: "%"
+    periodo: previsiones de la Comisión de 2026
+    fuente: CE2026AMECO
+    organismo: Comisión Europea
+    serie: "AMECO, ZNAWRU"
+    periodicidad: semestral
+    proxima: 2026-11
+    familia: ce-ameco
+  # --- Precios, petróleo y política monetaria ---
+  - id: iapc-zona-euro
+    texto: "En 2026 la energía vuelve a empujar (IAPC del 3,8~\\% en septiembre) con la subyacente estable en el 2,5~\\%"
+    donde: [1D01.tex]
+    valor: 3.8
+    unidad: "% interanual (IAPC general; subyacente 2,5 %)"
+    periodo: septiembre de 2026
+    fuente: Eurostat2026hicp
+    organismo: Eurostat
+    serie: "prc_hicp_minr (RCH_A, TOTAL y TOT_X_NRG_FOOD) y prc_hicp_ctr (PC_PNT), zona del euro"
+    url: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table
+    periodicidad: mensual
+    proxima: 2026-11
+    familia: eurostat-iapc
+    depende: [datos/iapc-zona-euro.csv, graficos/iapc-zona-euro.tex]
+    frase: "pie: «enero de 2017-septiembre de 2026»"
+  - id: brent
+    texto: "2026 (117 dólares en abril y 114 en septiembre"
+    donde: [1D01.tex]
+    valor: 114.16
+    unidad: dólares por barril (media mensual)
+    periodo: septiembre de 2026
+    fuente: EIA2026Brent
+    organismo: EIA
+    serie: "RBRTE (FRED MCOILBRENTEU); en euros con EXR.M.USD.EUR.SP00.A del BCE"
+    url: https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RBRTE&f=M
+    periodicidad: mensual
+    proxima: 2026-11
+    familia: eia-brent
+    depende: [datos/brent.csv, graficos/brent.tex]
+    frase: "«por el conflicto de Oriente Medio» y los picos citados si cambia el máximo"
+  - id: balance-eurosistema
+    texto: "y bajó a 5,9 en octubre de 2026"
+    donde: [1D01.tex]
+    valor: 5.935
+    unidad: billones de euros (activo total del Eurosistema)
+    periodo: semana 41 de 2026 (16/10/2026)
+    fuente: BCE2026ILM
+    organismo: BCE
+    serie: "ILM.W.U2.C.T000000.Z5.Z01 y componentes"
+    url: https://data.ecb.europa.eu/data/datasets/ILM
+    periodicidad: semanal
+    proxima: 2026-11
+    familia: bce-balance
+    depende: [datos/balance-eurosistema.csv, graficos/tipos-balance-bce.tex]
+  - id: balance-eurosistema-repaso
+    texto: "y a 5,9 (octubre de 2026)"
+    donde: [repaso/1D01-repaso.tex]
+    valor: 5.9
+    unidad: billones de euros
+    periodo: octubre de 2026
+    fuente: BCE2026ILM
+    organismo: BCE
+    serie: "ILM.W.U2.C.T000000.Z5.Z01"
+    periodicidad: semanal
+    familia: bce-balance
+  - id: tipos-bce
+    texto: "2 subidas en 2026 (2,50~\\% desde septiembre)"
+    donde: [1D01.tex]
+    valor: 2.5
+    unidad: "% (facilidad de depósito)"
+    periodo: desde el 16/09/2026
+    fuente: BCE2026TiposOficiales
+    organismo: BCE
+    serie: "FM.B.U2.EUR.4F.KR.DFR.LEV, MRR_FR.LEV y MLFR.LEV"
+    url: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html
+    periodicidad: irregular (reuniones de política monetaria cada 6 semanas)
+    familia: bce-tipos
+    depende: [datos/tipos-bce.csv, graficos/tipos-balance-bce.tex]
+    frase: "pie: «hasta octubre de 2026»"
+  # --- Política fiscal ---
+  - id: impulso-fiscal
+    texto: "\\textcite{FMI2026FMdatos}; impulso"
+    donde: [1D01.tex]
+    valor: 0.4
+    unidad: puntos del PIB potencial (zona del euro, 2026)
+    periodo: Fiscal Monitor (edición vigente en octubre de 2026), 2019-2027
+    fuente: FMI2026FMdatos
+    organismo: FMI
+    serie: "Fiscal Monitor, CAPB_S13_POPGDP_PT (USA, GBR, G163, JPN, ESP)"
+    url: https://data.imf.org/en/datasets/IMF.FAD:FM
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: fmi-fiscal-monitor
+    depende: [datos/impulso-fiscal.csv, graficos/impulso-fiscal.tex]
+    frase: "«2026 y 2027, previsiones»; el CSV avisa de comprobar si la edición es la de octubre de 2026"
+  # --- Euro y sistema financiero ---
+  - id: euro-miembros
+    texto: "hoy 21 países \\parencite{BCE2026Bulgaria}"
+    donde: [1D01.tex]
+    valor: 21
+    unidad: países de la zona del euro
+    periodo: desde el 1/1/2026
+    fuente: BCE2026Bulgaria
+    organismo: BCE
+    periodicidad: irregular
+    familia: euro-miembros
+    frase: "los CSV de Eurostat usan EA21 y el pie «zona del euro de 21 países»"
+  - id: ccyb-espana
+    texto: "España: 1~\\% desde octubre de 2026"
+    donde: [1D01.tex]
+    valor: 1
+    unidad: "% de las exposiciones en España (colchón anticíclico)"
+    periodo: desde octubre de 2026
+    fuente: BdE2025CCA
+    organismo: Banco de España
+    serie: "Resolución trimestral sobre el porcentaje del colchón de capital anticíclico"
+    url: https://www.bde.es/wbe/es/areas-actuacion/estabilidad-financiera/
+    periodicidad: trimestral
+    familia: bde-ccyb
+    nota: "cita la resolución del 4T2025; revisar la última resolución trimestral"
+  - id: requisitos-mus
+    texto: "Requisitos y recomendación totales medios del MUS en 2026 & 11,2 & — & 15,6"
+    donde: [1D01.tex]
+    valor: 11.2
+    unidad: "% de los APR (CET1; total 15,6 %)"
+    periodo: SREP para 2026
+    fuente: BCE2025SREP
+    organismo: BCE (Supervisión Bancaria)
+    serie: "Aggregate SREP results"
+    url: https://www.bankingsupervision.europa.eu/activities/srep/html/index.en.html
+    periodicidad: anual
+    proxima: 2026-12
+    familia: bce-srep
+    frase: "repetido en el texto («rondan el 11~\\% de CET1 y el 16~\\% de capital total»), en la tabla de indicadores («requisitos totales del MUS: 11,2~\\% CET1 y 15,6~\\% total») y en la ficha («MUS $\\approx$ 11 y 16~\\%»)"
+  - id: ratios-banca-tabla
+    texto: "\\textbf{España, 2.º trim. 2026}"
+    donde: [1D01.tex]
+    valor: 16.05
+    unidad: "% (ROE de la banca en España; tabla completa de ratios: CET1, Tier 1, total, dudosos, apalancamiento, LCR, NSFR, LTD, eficiencia)"
+    periodo: 2.º trimestre de 2026 (UE y MUS, 2026)
+    fuente: BdE2026EstadSupervisoras
+    organismo: Banco de España / BCE / ABE
+    serie: "Estadísticas supervisoras del BdE; Supervisory banking statistics (SI) del BCE; Risk Dashboard de la ABE"
+    url: https://www.bde.es/wbe/es/estadisticas/temas/entidades-de-credito/
+    periodicidad: trimestral
+    familia: banca-ratios
+    depende: []
+    frase: "columnas «Entidades significativas del MUS, 2026» y «UE (ABE), 2026» (BCE2026SupervisionSI, ABE2026RiskDashboard); la lectura del pie (LTD por debajo del 100 %, más rentable y menos CET1)"
+  - id: ratios-banca-repaso
+    texto: "\\textbf{España 2026}"
+    donde: [repaso/1D01-repaso.tex]
+    valor: 16.05
+    unidad: "% (tabla de ratios de la ficha)"
+    periodo: 2.º trimestre de 2026
+    fuente: BdE2026EstadSupervisoras
+    organismo: Banco de España / ABE
+    periodicidad: trimestral
+    familia: banca-ratios
+    nota: "misma tabla que ratios-banca-tabla (sin la columna del MUS)"
+  - id: banca-roe-cet1-texto
+    texto: "una banca rentable (ROE del 16~\\% a mediados de 2026)"
+    donde: [1D01.tex]
+    valor: 16
+    unidad: "% (ROE)"
+    periodo: 2.º trimestre de 2026
+    fuente: BdE2026EstadSupervisoras
+    organismo: Banco de España
+    periodicidad: trimestral
+    familia: banca-ratios
+    frase: "y «(CET1 del 14~\\%, frente al 16~\\%)» unas líneas más abajo"
+  - id: banca-cet1-texto
+    texto: "media europea (CET1 del 14~\\%, frente al 16~\\%)"
+    donde: [1D01.tex]
+    valor: 14
+    unidad: "% de los APR (España; UE 16 %)"
+    periodo: 2026
+    fuente: BdE2026EstadSupervisoras
+    organismo: Banco de España / ABE
+    periodicidad: trimestral
+    familia: banca-ratios
+  - id: banca-semaforo-repaso
+    texto: "España, 2026: ROE del 16~\\% (UE, 11~\\%), CET1 del 14~\\% (UE, 16~\\%)"
+    donde: [repaso/1D01-repaso.tex]
+    valor: 16
+    unidad: "%"
+    periodo: 2026
+    fuente: BdE2026EstadSupervisoras
+    organismo: Banco de España / ABE
+    periodicidad: trimestral
+    familia: banca-ratios
+  # --- Exámenes ---
+  - id: examenes-dictamen
+    texto: "en 13 de los 14 dictámenes de 2011 a 2026; no en 2025"
+    donde: [1D01.tex]
+    valor: 14
+    unidad: dictámenes analizados
+    periodo: convocatorias de 2011 a 2026
+    fuente: ATCEE2026Examenes
+    organismo: ATCEE / Ministerio
+    periodicidad: anual (cada convocatoria)
+    familia: examenes-tcee
+    frase: "también las tablas tab:formato («convocatorias de 2011 a 2026») y tab:bloques-anio (una columna por año) y los recuentos de qué se preguntó cada año"
+  - id: banca-roe-cet1-solvencia
+    texto: "(ROE del 16~\\%, frente al 11~\\%) pero tenía menos capital de máxima calidad (CET1 del 14~\\%, frente al 16~\\%)"
+    donde: [1D01.tex]
+    valor: 16
+    unidad: "% (ROE España; UE 11 %; CET1 14 % frente a 16 %)"
+    periodo: 2.º trimestre de 2026
+    fuente: BdE2026EstadSupervisoras
+    organismo: Banco de España / ABE
+    periodicidad: trimestral
+    familia: banca-ratios
+    frase: "«A mediados de 2026 la banca española era más rentable que la europea»"

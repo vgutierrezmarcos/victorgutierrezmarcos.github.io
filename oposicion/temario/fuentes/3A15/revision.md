@@ -125,6 +125,12 @@ No se usan V6 (peso de las pymes), V8 (Cifras PYME de agosto de 2026), V10 (conc
 - **Cambios opcionales a temas revisados** (para `pendientes-coherencia.md`): PC1 (3.A.13, matiz del equilibrio separador en el precio límite como señal), PC2 (3.A.11, «teoría de la empresa y de la organización industrial»), PC3 (3.A.14, citas de Spence y Dixit y remisión de la predación).
 - **Contradicciones con otros temas** (no se tocan): 3.A.19 (6 condiciones erróneas de impugnabilidad, notas de las aerolíneas y Pepephone, juego en 3 etapas con π y «beneficios unitarios», precio límite sin fórmula: al revisarlo, resumir y remitir aquí); 3.B.4 (copia del bloque de costes de transacción con los mismos errores: Coase en totales, frecuencia, «contratos incompletos de Williamson», título de Penrose, Marris en agencia); 3.A.23 (índice con numeración antigua; su Coase, 1960, debe distinguirse del de 1937); 4.B.15 (resumir los impugnables con los supuestos canónicos); 3.B.39 (remitir la depredación aquí); 3.A.1 (Harvard y Simon, coherente).
 
+## Comentarios de Víctor (11/11/2026, 4.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 4 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): corte en II.3 tras «derechos de propiedad:» y en el anexo de inversión estratégica tras la coma; \newline de III → \cortetitulo{}. Sin c_K en el tema. |
+
 ## Dudas abiertas
 
 Mientras Víctor no conteste en el artifact, se aplica la opción recomendada de cada duda.
@@ -155,6 +161,17 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada de
 
 **Otras**: la frase reservada de Joan Robinson (mapa a escala 1:1) no encaja aquí. El tema es largo (unas 15.500 palabras de fuente, con los anexos): el cante se ciñe a las notas al opositor. Compilado con `construir-tema.py 3A15` (PDF, HTML y Word) y comprobado con `verificar-tema.py`: **0 errores**, 4 avisos (2 «cifra sin cita» en las cajas de lecturas, falsos positivos por las URL, y la falta de `guion-cante.md` y `escenas.yaml`, de la fase de vídeo); 33 páginas de tema, 4 de anexos y 8 de bibliografía (45 en total), 0 cajas desbordadas.
 
+## Enlaces del original (9/11/2026)
+
+Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).
+
+- **Restaurados**:
+  - Los vídeos de Policonomics, con dirección nueva en su canal de YouTube (policonomics.com da error 500 el 9/11/2026), como «Para ver» en notas: «C.5 Economías de escala» (escala mínima eficiente), «C.6 Subaditividad» y «C.7 Economías de alcance».
+  - Vídeo «La empresa que estafó a todo un país. Caso Enron» (Emprende Aprendiendo), en una nota de los escándalos financieros y el gobierno corporativo.
+  - Economipedia, «Costos de transacción», en una nota de la definición de Coase (`Economipedia2026CostosTransaccion`; la web bloquea las consultas automáticas, pero la página existe).
+  - Las 2 introducciones a la economía industrial de la bibliografía antigua, en una nota «Para repasar» al empezar la Teoría de la Organización Industrial: diapositivas de la Universidade de Vigo (`UVigoEconomiaIndustrial`) y de Matilde Machado, UC3M (`Machado2006Introduccion`; eco.uc3m.es da 403, así que se enlaza la copia de web.archive.org de 2020).
+- **No restaurado**: Policonomics, «Costes III: teoría de costes de Stigler» (página de texto, sin dirección nueva; el sitio da error 500).
+
 ## Instrucciones para el vídeo
 
 - **Introducción y conclusión, sin pizarra** (`modo: guion`). Enganche: Coase, con 20 años, cruza el Atlántico en 1931 con una beca; Lenin quería una economía como una gran fábrica, los economistas occidentales decían que era imposible y, sin embargo, en Occidente había fábricas enormes. Pregunta: «Si el mercado coordina tan bien, ¿por qué existen las empresas? Y, si dentro de una empresa se planifica con éxito, ¿por qué no se organiza toda la economía como una sola?». La idea final la responde retomando a Lenin y a los profesores de Coase: los 2 cuestan; hay empresas porque los contratos no lo prevén todo, y no hay una sola porque la jerarquía también tiene costes: islas de organización en un mar de mercado.
@@ -170,3 +187,5 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada de
 - **III.3**: los 3 supuestos como apoyo (la tabla `tab:supuestos-impugnables`, si se quiere, como apoyo); `eq:sostenible` recuadrada; `impugnables` como apoyo (es el gráfico del 3.A.17). Al terminar III, la pizarra queda con `eq:coase` y `eq:sostenible`.
 - **III.4**: sin pizarra; la condición de la NOIE con θ, como apoyo.
 - **Pronunciación** (si hace falta): Coase, Williamson, Grossman, Holmström, Sylos-Labini, Modigliani, Weizsäcker, Panzar, Willig, Penrose, Marris.
+- (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
+

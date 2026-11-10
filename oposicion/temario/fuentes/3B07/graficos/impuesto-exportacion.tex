@@ -1,0 +1,60 @@
+% Impuesto a la exportación en un país pequeño (3.B.7, II.3).
+% El de subvencion al revés: mismas curvas y escala (x = 100 - p, q = p).
+% Cifras orientativas: p^W = 70; precio interior p^W/(1+t) = 60 (t = 1/6).
+%   Libre comercio: x^0 = 30, q^0 = 70, X^0 = 40.
+%   Con el impuesto: x^1 = 40, q^1 = 60, X^1 = 20.
+%   a = 350 (trapecio de 0 a la demanda); b = 50; c = 10 x 20 = 200
+%   (recaudación, de x^1 a q^1); d = 50. Productores: -(a+b+c+d) = -650 (el
+%   trapecio entre los 2 precios a la izquierda de S); PIE: b+d = 100.
+% Colores de arancel-pequeno: c, recaudación (verde); b y d, PIE (rojo); a,
+% ganancia de los consumidores (morado, el excedente del consumidor de 3A16).
+% Elaboración propia a partir de Feenstra y Taylor (2021, cap. 10).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.07cm,y=0.075cm,
+    areacons/.style={fill=tceemorado,fill opacity=0.18,draw=none},
+    arearec/.style={fill=tceeverde,fill opacity=0.25,draw=none},
+    areapie/.style={fill=tceerojo,fill opacity=0.25,draw=none},
+    llave/.style={decorate,decoration={brace,amplitude=4pt,mirror},thick},
+    muestra/.style={minimum width=0.42cm,minimum height=0.3cm,inner sep=0pt}]
+  % 1: ejes
+  \capa{1}{\ejes{$x$, $q$}{$p$}{108}{94}}
+  % 2: demanda y oferta nacionales
+  \capa{2}{\draw[curva2] (12,88) -- (98,2) node[etiqueta,right] {$D$};}
+  \capa{2}{\draw[curva1] (0,0) -- (84,84) node[etiqueta,right] {$S$};}
+  % 3: precio mundial y exportaciones de libre comercio
+  \capa{3}{\draw[guia] (0,70) node[etiqueta,left,text=black] {$p^W$} -- (102,70);}
+  \capa{3}{\node[punto] at (30,70) {};}
+  \capa{3}{\node[punto] at (70,70) {};}
+  \capa{3}{\draw[guia] (30,70) -- (30,0) node[below,text=black] {$x^0$};}
+  \capa{3}{\draw[guia] (70,70) -- (70,0) node[below,text=black] {$q^0$};}
+  \capa{3}{\draw[llave] (30,-19) -- (70,-19) node[midway,below=4pt] {$X^0=q^0-x^0$};}
+  % 4: precio interior con el impuesto y exportaciones nuevas
+  \capa{4}{\draw[curvanueva] (0,60) node[etiqueta,left,text=black] {$p^W/(1+t)$} -- (102,60);}
+  \capa{4}{\node[punto] at (40,60) {};}
+  \capa{4}{\node[punto] at (60,60) {};}
+  \capa{4}{\draw[guia] (40,60) -- (40,0) node[below,text=black] {$x^1$};}
+  \capa{4}{\draw[guia] (60,60) -- (60,0) node[below,text=black] {$q^1$};}
+  \capa{4}{\draw[llave] (40,-8) -- (60,-8) node[midway,below=4pt] {$X^1=q^1-x^1$};}
+  % 5: áreas a (consumidores), b y d (pérdida)
+  \capa{5}{\fill[areacons] (0,60) -- (40,60) -- (30,70) -- (0,70) -- cycle;}
+  \capa{5}{\node[etiqueta] at (14,65) {$a$};}
+  \capa{5}{\fill[areapie] (30,70) -- (40,70) -- (40,60) -- cycle;}
+  \capa{5}{\node[etiqueta] at (37,66.8) {$b$};}
+  \capa{5}{\fill[areapie] (60,60) -- (60,70) -- (70,70) -- cycle;}
+  \capa{5}{\node[etiqueta] at (63,66.8) {$d$};}
+  % 6: área c, la recaudación
+  \capa{6}{\fill[arearec] (40,60) rectangle (60,70);}
+  \capa{6}{\node[etiqueta] at (50,65) {$c$};}
+  % leyenda de las áreas (con cada área)
+  \capa{5}{\node[muestra,areacons] at (2,-40) {};}
+  \capa{5}{\node[etiqueta,anchor=west,font=\footnotesize] at (6,-40) {$a$: de los productores a los consumidores};}
+  \capa{5}{\node[muestra,areapie] at (2,-49) {};}
+  \capa{5}{\node[etiqueta,anchor=west,font=\footnotesize] at (6,-49) {$b$, $d$: PIE};}
+  \capa{6}{\node[muestra,arearec] at (2,-58) {};}
+  \capa{6}{\node[etiqueta,anchor=west,font=\footnotesize] at (6,-58) {$c$: recaudación};}
+  \capa{6}{\node[etiqueta,anchor=west,font=\footnotesize] at (2,-67) {los productores pierden $a+b+c+d$};}
+\end{tikzpicture}
+\end{document}

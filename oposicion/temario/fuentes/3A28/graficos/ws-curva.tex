@@ -1,0 +1,28 @@
+% La curva de fijación de salarios (WS) sola, en el plano (U, W/P): rehace la
+% imagen 8 del tema antiguo («Curva de salario real negociado»).
+% Misma función y escala que ws-ps.tex: WS: W/P = g(U) = 1 + 5,2 e^{-0,3 U}.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm,
+    declare function={g(\u)=1+5.2*exp(-0.3*\u);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-0.8) rectangle (12.6,6.4);
+  % 1: ejes (U, W/P)
+  \capa{1}{\ejes{$U$}{$W/P$}{8.6}{6.1}}
+  % 2: la curva de fijación de salarios, decreciente
+  \capa{2}{\draw[curva1] plot[domain=0.55:8.2, samples=80, smooth] (\x,{g(\x)});}
+  \capa{2}{\node[etiqueta, anchor=west, text=tceemorado, align=left] at (1.0,{g(0.55)+0.2})
+      {WS: $\dfrac{W}{P^e}=F(\underset{-}{U},\underset{+}{Z})\cdot\mathrm{PAT}^e$};}
+  % 3: menos paro, más salario real reclamado
+  \capa{3}{\draw[guia] (2,0) node[below, text=black] {$U_1$} -- (2,{g(2)}) -- (0,{g(2)});}
+  \capa{3}{\draw[guia] (5.5,0) node[below, text=black] {$U_2$} -- (5.5,{g(5.5)}) -- (0,{g(5.5)});}
+  \capa{3}{\draw[flecha] (5.3,{g(5.5)-0.35}) -- (2.3,{g(2)-0.45});}
+  \capa{3}{\node[etiqueta, text=tceerojo, font=\footnotesize, align=left, anchor=north west] at (5.7,1.5)
+      {menos paro: los trabajadores\\reclaman más salario real};}
+  % 4: Z desplaza la WS hacia arriba
+  \capa{4}{\draw[curva1, desplazada] plot[domain=1.4:8.2, samples=80, smooth] (\x,{g(\x-0.9)});}
+  \capa{4}{\node[etiqueta, right, text=tceemorado, font=\footnotesize] at (8.2,{g(7.3)+0.05}) {WS$'$ (sube $Z$)};}
+\end{tikzpicture}
+\end{document}

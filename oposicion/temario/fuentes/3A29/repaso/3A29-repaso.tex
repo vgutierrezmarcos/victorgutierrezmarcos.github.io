@@ -10,17 +10,15 @@
 \bloque{Esquema del cante}
 \esquemacante{%
 \apartadocante{Introducción: «no dejes para mañana\ldots»}{2,5}
-\apartadocante{I. La modelización dinámica: enfoque micro}{8,5}
-\subcante{1. Consumidores: componentes, 3 métodos, \autor{Fisher}}{6}
+\apartadocante{I. La modelización dinámica de las tomas de decisiones}{8,5}
+\subcante{1. Consumidores: componentes, 3 métodos, \autor{Fisher}, estática comparativa}{6}
 \subcante{2. Empresas: \autor{Fisher}, q de \autor{Tobin}, \autor{Hotelling}}{2,5}
-\apartadocante{II. El agente representativo de vida infinita}{8}
+\apartadocante{II. Modelos de agente representativo}{18}
 \subcante{1. El agente representativo}{2}
 \subcante{2. Horizonte infinito y \autor{Ramsey}-\autor{Cass}-\autor{Koopmans}}{6}
-\apartadocante{III. Generaciones solapadas y heterogeneidad}{10}
-\subcante{1. \autor{Samuelson} (1958) y \autor{Diamond} (1965)}{8}
-\subcante{2. Limitaciones y nuevos enfoques}{2}
+\subcante{3. Generaciones solapadas (\autor{Samuelson}, \autor{Diamond}) y límites}{10}
 \apartadocante{Conclusión}{1}}
-\emph{Pizarra} en 3 columnas: izquierda, recuadrados hasta el final, el problema del consumidor, \autor{Euler}, \autor{Bellman} y la ley de movimiento de \autor{Diamond}; centro, tabla de los 3 métodos (se borra al acabar I) y luego las 3 ecuaciones de RCK; derecha, gráfico de \autor{Diamond} y cuadro MHI vs. MGS. Pegatinas: «cada cosa a su tiempo» (\autor{Bellman}), «de tal palo, tal astilla» (dinastía), «cuando seas padre, comerás huevos» (MGS), «la avaricia rompe el saco» (ineficiencia dinámica).
+Pegatinas: «cada cosa a su tiempo» (\autor{Bellman}), «de tal palo, tal astilla» (dinastía), «cuando seas padre, comerás huevos» (MGS), «la avaricia rompe el saco» (ineficiencia dinámica).
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
@@ -29,11 +27,11 @@
 \item \textbf{Relevancia}: casi todas las decisiones importantes son dinámicas (ahorrar, invertir, educarse, endeudarse, extraer, cotizar); lenguaje de la macro actual desde \autor{Lucas}; reparto entre generaciones: \concepto{mecanismo de equidad intergeneracional} (desde 2023), 0,90 p.p. en 2026 $\to$ 1,2 en 2029, hasta 2050, al Fondo de Reserva, sin derecho a prestación.
 \item \textbf{Contextualización}: \concepto{análisis estático} (variables de un mismo momento) vs. \concepto{dinámico} (de momentos distintos: subíndices temporales); \concepto{estática comparativa} entre ambos; \concepto{principio de correspondencia} (\autor{Samuelson}, 1947): la estática comparativa solo tiene sentido si el equilibrio es estable. \autor{Tinbergen}: 2 formas de estudiar, no 2 fenómenos; aporta si la decisión es \concepto{genuinamente intertemporal}. Historia: clásicos mezclan; marginalistas, estática; \autor{Fisher} (1930), \autor{Ramsey} (1928), \autor{Frisch} (1933); microfundamentos (\autor{Friedman}, \autor{Modigliani}, \autor{Jorgenson}, \autor{Baumol}-\autor{Tobin}, \autor{Lucas}-\autor{Rapping}); \autor{Bellman} (1957), \autor{Pontryagin} et al. (1962); MHI (\autor{Cass}, \autor{Koopmans}, 1965) y MGS (\autor{Samuelson}, 1958; \autor{Diamond}, 1965); tras \autor{Lucas} (1976), agentes representativos y luego heterogéneos.
 \item \textbf{Problemática}: ¿cómo deciden cuando hoy cambia mañana, y con qué herramienta? ¿Qué cambia entre un agente inmortal y generaciones que se suceden? ¿Ahorra el mercado lo que conviene?
-\item \textbf{Estructura}: de lo individual a lo agregado: \hyperref[rep:I]{I}, la herramienta (3 métodos, una \autor{Euler}); \hyperref[rep:II]{II}, el agente de vida infinita (RCK, eficiente); \hyperref[rep:III]{III}, generaciones solapadas (puede ahorrar de más) y límites. Fuera: juegos dinámicos \vertema{3.A.14}.
+\item \textbf{Estructura}: de lo individual a lo agregado: \hyperref[rep:I]{I}, la herramienta (3 métodos, una \autor{Euler}); \hyperref[rep:II]{II}, modelos de agente representativo: de vida infinita (RCK, eficiente) y generaciones solapadas (puede ahorrar de más), y sus límites. Fuera: juegos dinámicos \vertema{3.A.14}.
 \end{itemize}
 
 % ==========================================================================
-\bloque[8,5]{I. La modelización dinámica: enfoque micro\label{rep:I}}
+\bloque[8,5]{I. La modelización dinámica de las tomas de decisiones\label{rep:I}}
 \begin{ideaclave}
 Un problema es genuinamente dinámico cuando una variable de estado une los periodos. Con cualquiera de los 3 métodos, la solución es una condición de arbitraje, la ecuación de \autor{Euler}, y un precio sombra del estado.
 \end{ideaclave}
@@ -41,10 +39,12 @@ Un problema es genuinamente dinámico cuando una variable de estado une los peri
 \sub{I.1. Decisiones intertemporales de los consumidores\label{rep:I.1}}
 \begin{itemize}
 \item \concepto{Variables flujo} = \concepto{de control} ($C_t$, $I_t$); \concepto{variables stock} = \concepto{de estado} ($b_t$, $K_t$, reservas). 4 piezas: preferencias sobre sendas, restricciones, método, senda óptima.
-\item \emph{Preferencias}: $U_0=U(C_0,C_1,\dots)$; \autor{Ramsey}: $\sum D(t)u(C_t)$; \autor{Samuelson} (1937), \concepto{descuento exponencial}:
+\item \emph{Componentes}: preferencias $\to$ función de utilidad; + restricción intertemporal $\to$ problema de maximización $\to$ senda óptima.
+\item \emph{3 especificaciones}: general, $U_0=U(C_0,C_1,\dots)$; \autor{Ramsey}: $\sum D(t)u(C_t)$; \autor{Samuelson} (1937), \concepto{descuento exponencial}:
 \begin{formula}
 \centering $U_0\equiv\sum_{t=0}^{T}\beta^t u(C_t),\quad \beta\equiv\dfrac1{1+\rho},\ \rho>0,\ 0<\beta<1$
 \end{formula}
+\item[] \emph{Crítica conductual} (\autor{Thaler}): descuento \concepto{hiperbólico} (\autor{Loewenstein}-\autor{Prelec}, 1992) o \concepto{cuasihiperbólico} (\autor{Laibson}, 1997): cae deprisa al principio; \emph{inconsistencia temporal}.
 \item[] $u'>0$, $u''<0$ (alisar), bienes no duraderos. \concepto{ESI} $\equiv d\ln(C_{t+1}/C_t)/d\ln|\mathrm{RMS}_{t,t+1}|$. \concepto{CRRA}:
 \begin{formula}
 \centering $u(C)=\dfrac{C^{1-\theta}-1}{1-\theta}\ (\theta>0,\theta\neq1);\ \ \ln C\ (\theta=1);\ \ \mathrm{ESI}=\dfrac1\theta$
@@ -53,7 +53,7 @@ Un problema es genuinamente dinámico cuando una variable de estado une los peri
 \item \emph{Propiedades} (MWG, 20.B): impaciencia; estacionariedad; separabilidad aditiva (sin hábitos); duración del periodo; recursividad $U_0=u(C_0)+\beta U_1$; altruismo (dinastía). Impaciencia + estacionariedad $\Rightarrow$ exponencial, el único consistente. Lo intertemporal viene de la \emph{restricción}.
 \item \emph{Restricción} por periodo (ecuación de estado):
 \begin{formula}
-\centering $C_t+b_{t+1}=Y_t+(1+r)b_t\iff b_{t+1}-b_t=Y_t+rb_t-C_t$
+\centering $P_tC_t+b_{t+1}=Y_t+(1+r)b_t$, con $P_t=1$ (numerario): $b_{t+1}-b_t=Y_t+rb_t-C_t$
 \end{formula}
 \item[] $b_0$ dado, $b_{T+1}\geq0$ (= 0 en el óptimo); con $T=\infty$, \emph{no-Ponzi}. Intertemporal: VA del consumo = $(1+r)b_0$ + VA de las rentas (con incertidumbre, exige mercados completos; activos redundantes: indeterminada la cartera, no el consumo).
 \item \textbf{a) \autor{Lagrange}} (discreto, finito): CPO $\beta^tu'(C_t)=\lambda/(1+r)^t$; cociente $\Rightarrow$ \concepto{ecuación de \autor{Euler}}:
@@ -79,7 +79,7 @@ Un problema es genuinamente dinámico cuando una variable de estado une los peri
 \centering $\dfrac{C_{t+1}}{C_t}=[\beta(1+r)]^{1/\theta}\ \Rightarrow\ \ln\dfrac{C_{t+1}}{C_t}\simeq\dfrac{r-\rho}{\theta}$
 \end{formula}
 \item[] $r\gtrless\rho$: el consumo crece/decrece; no dice si presta (depende de la senda de la renta). ESI baja (\autor{Hall}, 1988; \autor{Campbell}-\autor{Mankiw}, 1989). \concepto{Alisamiento}: tasa según $r,\rho,\theta$; nivel según la riqueza total $\Rightarrow$ renta permanente y ciclo vital \vertema{3.A.33}.
-\item[] ↑$r$: \emph{sustitución} ↓$C_0$; \emph{renta} ↑$C_0$ si presta; \emph{riqueza} ↓$C_0$. Total ambiguo si presta, negativo si pide. Política: con ESI baja, gravar menos el interés apenas ↑ahorro.
+\item[] \emph{Estática comparativa}: ↑ESI, curvas de indiferencia menos curvadas y más respuesta a $r$; ↑renta: desplazamiento paralelo, se reparte entre periodos (transitoria, poco; permanente, mucho). ↑$r$ (la recta gira sobre la dotación): \emph{sustitución} ↓$C_1$ (de $C$ a $H$); \emph{renta} ↑$C_1$; \emph{riqueza} ↓$C_1$; renta + riqueza con el signo del ahorro. Total ambiguo si presta, negativo si pide (tabla de \autor{Slutsky} con dotación). Política: con ESI baja, gravar menos el interés apenas ↑ahorro.
 \item[] \emph{Tipo real} (bono 10 años EE.\,UU., IPC): 2,0\,\% (1962-2025); 4,2\,\% (1980-1999); 0,5\,\% (2008-2021); $-0{,}5$\,\% (2022-2025); TIPS 2,60\,\% (30/10/2026).
 \item \autor{Becker} (1962): capital humano; \concepto{teorema de separación} (\autor{Fisher}; \autor{Hirshleifer}, 1958; \autor{Acemoglu}-\autor{Autor}, 2011) \vertema{3.A.25}. Con $u$ cuadrática y $\beta(1+r)=1$, \concepto{paseo aleatorio} (\autor{Hall}, 1978); C-CAPM (\autor{Lucas}, 1978; \autor{Breeden}, 1979).
 \item \emph{Cota cero}: con efectivo, $i_t\geq0$; si el tipo que vacía exige $i_t<0$, ajustan cantidades (\autor{Krugman}, 1998).
@@ -102,9 +102,9 @@ Un problema es genuinamente dinámico cuando una variable de estado une los peri
 \end{itemize}
 
 % ==========================================================================
-\bloque[8]{II. El agente representativo de vida infinita\label{rep:II}}
+\bloque[18]{II. Modelos de agente representativo\label{rep:II}}
 \begin{ideaclave}
-Llevar las decisiones a la macro exige un agente representativo; el de vida infinita da un equilibrio eficiente que nunca acumula de más: el mercado ahorra lo que conviene.
+Llevar las decisiones a la macro exige un agente representativo; el de vida infinita da un equilibrio eficiente que nunca acumula de más. Basta con vidas finitas que se solapan para que el equilibrio competitivo, sin fallo de mercado, pueda acumular demasiado capital; entonces dinero, deuda y reparto pueden mejorar a todas las generaciones.
 \end{ideaclave}
 
 \sub{II.1. El agente representativo\label{rep:II.1}}
@@ -134,22 +134,16 @@ Llevar las decisiones a la macro exige un agente representativo; el de vida infi
 \begin{itemize}
 \item[] Gobierno con agentes que miran al futuro: inconsistencia de la política (\autor{Kydland}-\autor{Prescott}, 1977) \vertema{3.A.36}.
 \item[] (4) \emph{Resolución}: planificador (1TFEB) \vertema{3.A.22}; EE y fases; \concepto{senda de silla}: única solución estable si raíces inestables = variables que saltan (\autor{Blanchard}-\autor{Kahn}, 1980); calibración e impulso-respuesta \vertema{3.A.42}. (5) Análisis de bienestar.
-\item \textbf{RCK} (\autor{Ramsey}, 1928; \autor{Cass}, \autor{Koopmans}, 1965): \autor{Solow} con hogares que eligen el ahorro; $L_t=e^{nt}$, $\int e^{-(\rho-n)t}u(C_t/L_t)dt$, utilidad acotada si $\rho-n>(1-\theta)g$; $r_t=f'(k_t)-\delta$:
+\item \textbf{RCK} (\autor{Ramsey}, 1928; \autor{Cass}, \autor{Koopmans}, 1965): \autor{Solow} con hogares que eligen el ahorro; $L_t=e^{nt}$, $\int e^{-(\rho-n)t}u(C_t/L_t)dt$, utilidad acotada si $\rho-n>(1-\theta)g$; $r_t=f'(\tilde k_t)-\delta$:
 \begin{formula}
-\centering $\dfrac{\dot c_t}{c_t}=\dfrac{f'(k_t)-\delta-\rho-\theta g}{\theta}$\\[2pt]
-$\dot k_t=f(k_t)-c_t-(n+g+\delta)k_t$
+\centering $\dfrac{\dot{\tilde c}_t}{\tilde c_t}=\dfrac{f'(\tilde k_t)-\delta-\rho-\theta g}{\theta}$\\[2pt]
+$\dot{\tilde k}_t=f(\tilde k_t)-\tilde c_t-(n+g+\delta)\tilde k_t$
 \end{formula}
-\item[] EE único, punto de silla; \concepto{regla de oro modificada} $f'(k^*)=\rho+\delta+\theta g>n+g+\delta=f'(k_{\mathrm{oro}})$: \emph{nunca acumula de más}; equilibrio eficiente \vertema{3.A.43}.
+\item[] EE único, punto de silla; \concepto{regla de oro modificada} $f'(\tilde k^*)=\rho+\delta+\theta g>n+g+\delta=f'(\tilde k_{\mathrm{oro}})$: \emph{nunca acumula de más}; equilibrio eficiente \vertema{3.A.43}.
 \item \emph{Aplicaciones}: parcial: consumo \vertema{3.A.33}, q \vertema{3.A.34}, dinero (\autor{Sidrauski}, \autor{Clower}, \autor{McCallum}) \vertema{3.A.35}, trabajo \vertema{3.A.25} \vertema{3.A.26}; general: RCK, $AK$, \autor{Uzawa}-\autor{Lucas} \vertema{3.A.44}, ciclo real y EGDE NK \vertema{3.A.7}, deuda, BP intertemporal \vertema{3.B.12}, DICE (\autor{Nordhaus}, 1992).
 \end{itemize}
 
-% ==========================================================================
-\bloque[10]{III. Generaciones solapadas y heterogeneidad\label{rep:III}}
-\begin{ideaclave}
-Basta con vidas finitas que se solapan para que el equilibrio competitivo, sin fallo de mercado, pueda acumular demasiado capital; entonces dinero, deuda y reparto pueden mejorar a todas las generaciones.
-\end{ideaclave}
-
-\sub{III.1. Los modelos de generaciones solapadas\label{rep:III.1}}
+\sub{II.3. Generaciones solapadas y heterogeneidad\label{rep:II.3}}
 \begin{itemize}
 \item \concepto{MGS}: vida finita, convive con los sucesores; la economía no acaba (\autor{Allais}, 1947; \autor{Samuelson}, 1958; \autor{Diamond}, 1965). Rasgos: (1) se solapan hogares, no empresas; (2) equilibrio general (o intercambio puro); (3) heterogeneidad por edad; (4) existencia, unicidad y estabilidad no garantizadas (\autor{Galor}-\autor{Ryder}, 1989); (5) el \emph{1TFEB puede fallar}: \concepto{doble infinitud} (\autor{Shell}, 1971): valor de la dotación agregada infinito; (6) posible ineficiencia dinámica.
 \item \textbf{\autor{Samuelson}} (1958), \emph{el dinero como contrato social}: 2 periodos, dotación $e$ perecedera de joven, nada de viejo. Sin dinero, \emph{autarquía} ($C^J=e$, $C^V=0$). Factible en EE:
@@ -160,17 +154,17 @@ Basta con vidas finitas que se solapan para que el equilibrio competitivo, sin f
 \end{itemize}
 \graficorepaso[0.6\linewidth]{samuelson}{\autor{Samuelson}: autarquía $A$ y equilibrio monetario $M$ (pendiente $-(1+n)$)}
 \begin{itemize}
-\item \textbf{\autor{Diamond}} (1965): \autor{Samuelson} + producción de \autor{Solow}. Jóvenes trabajan, consumen y ahorran $S_t$; viejos, $C^V_{t+1}=(1+r_{t+1})S_t$; $\ln C^J+\beta\ln C^V$; $f=k^\alpha$, $\delta=1$ (periodos de 30 años):
+\item \textbf{\autor{Diamond}} (1965): \autor{Samuelson} + producción de \autor{Solow}. Jóvenes trabajan, consumen y ahorran $S_t$; viejos, $C^V_{t+1}=(1+r_{t+1})S_t$; $\ln C^J+\beta\ln C^V$; $f=\tilde k^\alpha$, $\delta=1$ (periodos de 30 años):
 \begin{formula}
 \centering $S_t=\dfrac{\beta}{1+\beta}\,w_t$ (no depende de $r$)
 \end{formula}
 \item[] $K_{t+1}=L_tS_t$ $\Rightarrow$ \concepto{ley de movimiento}:
-\funcionclave{k_{t+1}=\frac{\beta(1-\alpha)}{(1+\beta)(1+n)(1+g)}\,k_t^{\alpha}}
-\item[] Cóncava, único EE estable (pendiente $\alpha<1$); ↑$\beta$ ↑$k^*$; ↑$n$, $g$ ↓$k^*$. Ahorro $=\beta(1-\alpha)/(1+\beta)$. CRRA general: $S$ ↑ con $r$ si $\theta<1$.
+\funcionclave{\tilde k_{t+1}=\frac{\beta(1-\alpha)}{(1+\beta)(1+n)(1+g)}\,\tilde k_t^{\alpha}}
+\item[] Cóncava, único EE estable (pendiente $\alpha<1$); ↑$\beta$ ↑$\tilde k^*$; ↑$n$, $g$ ↓$\tilde k^*$. Ahorro $=\beta(1-\alpha)/(1+\beta)$. CRRA general: $S$ ↑ con $r$ si $\theta<1$.
 \end{itemize}
-\graficorepaso[0.8\linewidth]{diamond}{\autor{Diamond}: ley de movimiento cóncava, bisectriz y EE estable; ineficiencia si $k^*>k_{\mathrm{oro}}$}
+\graficorepaso[0.8\linewidth]{diamond}{\autor{Diamond}: ley de movimiento cóncava, bisectriz y EE estable; ineficiencia si $\tilde k^*>\tilde k_{\mathrm{oro}}$}
 \begin{itemize}
-\item \concepto{Regla de oro} (\autor{Phelps}, 1961): $f'(k_{\mathrm{oro}})-\delta=(1+n)(1+g)-1\simeq n+g$. \concepto{Ineficiencia dinámica} si
+\item \concepto{Regla de oro} (\autor{Phelps}, 1961): $f'(\tilde k_{\mathrm{oro}})-\delta=(1+n)(1+g)-1\simeq n+g$. \concepto{Ineficiencia dinámica} si
 \begin{formula}
 \centering $r^*<(1+n)(1+g)-1\simeq n+g$
 \end{formula}
@@ -181,12 +175,12 @@ Basta con vidas finitas que se solapan para que el equilibrio competitivo, sin f
 \end{itemize}
 \graficorepaso[0.9\linewidth]{r-menos-g}{$r-g$ (tipo real a largo menos crecimiento), medias de 5 años: España, zona del euro y EE.\,UU. (AMECO)}
 \begin{itemize}
-\item[] Pero $r<g$ en la deuda \emph{no prueba} ineficiencia: cuenta $f'(k)-\delta$. \concepto{Criterio de \autor{Abel}-\autor{Mankiw}-\autor{Summers}-\autor{Zeckhauser}} (1989): rentas del capital $>$ inversión $\Rightarrow$ eficiente; 2025: rentas 43-46\,\% del PIB, inversión 21-22\,\%. \autor{Geerolf} (2018): Japón y Corea, quizá de más.
+\item[] Pero $r<g$ en la deuda \emph{no prueba} ineficiencia: cuenta $f'(\tilde k)-\delta$. \concepto{Criterio de \autor{Abel}-\autor{Mankiw}-\autor{Summers}-\autor{Zeckhauser}} (1989): rentas del capital $>$ inversión $\Rightarrow$ eficiente; 2025: rentas 43-46\,\% del PIB, inversión 21-22\,\%. \autor{Geerolf} (2018): Japón y Corea, quizá de más.
 \item \emph{Cuadro MHI vs. MGS}: hogar inmortal vs. 2 periodos; \autor{Euler} vs. $S=\beta w/(1+\beta)$; siempre eficiente vs. no si $r^*<n+g$; 1TFEB sí vs. puede fallar; ricardiana sí vs. no; dinero/deuda/reparto neutrales vs. pueden mejorar; ciclo y crecimiento vs. demografía, pensiones, deuda.
 \end{itemize}
 
-\sub{III.2. Limitaciones y nuevos enfoques\label{rep:III.2}}
 \begin{itemize}
+\item \textbf{Limitaciones y nuevos enfoques}.
 \item Validez teórica limitada (\autor{Gorman}, SMD; analogía con \autor{Arrow} \vertema{3.A.24}); puede engañar: reacciona al revés que todos (\autor{Kirman}, 1992).
 \item \emph{Nuevos}: heterogéneos con mercados incompletos (\autor{Aiyagari}, 1994; \autor{Krusell}-\autor{Smith}, 1998); \concepto{HANK} (\autor{Kaplan}-\autor{Moll}-\autor{Violante}, 2018): la política monetaria actúa por la renta de los hogares con poca liquidez, no por \autor{Euler}; 2 tipos de hogares (\autor{Galí}-\autor{López-Salido}-\autor{Vallés}, 2007) \vertema{3.A.37}; basados en agentes; conocimiento imperfecto (\autor{Frydman}-\autor{Goldberg}); comportamiento (\autor{De Grauwe}); \autor{Wren-Lewis} (2018): convivencia.
 \end{itemize}
@@ -247,7 +241,7 @@ Basta con vidas finitas que se solapan para que el equilibrio competitivo, sin f
 \item \textbf{¿Cuándo es genuinamente dinámico un problema?} Cuando una variable de estado une los periodos; si no, es una sucesión de estáticos (la empresa sin costes de ajuste).
 \item \textbf{¿Por qué los 3 métodos dan lo mismo?} Resuelven el mismo problema; $\lambda$, $\lambda_t$ y $V'(b_t)$ son el mismo precio sombra; cambia la comodidad.
 \item \textbf{¿Para qué la transversalidad?} Elige, entre las sendas que cumplen el resto, la que va al EE; no dejar nada de valor al final. No-Ponzi: no endeudarse sin límite.
-\item \textbf{¿Por qué RCK no es ineficiente?} Utilidad acotada $\Rightarrow$ $\rho+\theta g>n+g$, luego $k^*<k_{\mathrm{oro}}$.
+\item \textbf{¿Por qué RCK no es ineficiente?} Utilidad acotada $\Rightarrow$ $\rho+\theta g>n+g$, luego $\tilde k^*<\tilde k_{\mathrm{oro}}$.
 \item \textbf{¿Por qué puede serlo \autor{Diamond} sin fallo de mercado?} Solo se ahorra para la vejez con capital y no se presta a los no nacidos; doble infinitud.
 \item \textbf{¿$r<g$ prueba ineficiencia?} No: cuenta la rentabilidad del capital; criterio de \autor{Abel} et al.: rentas $>$ inversión.
 \end{enumerate}

@@ -1,0 +1,47 @@
+% Comercio de bienes y servicios (X + M) en % del PIB, 1970-2024: mundo, países
+% de renta alta y de renta baja y media. Datos: ../datos/comercio-pib-mundial.csv
+% (Banco Mundial, WDI, NE.TRD.GNFS.ZS; consulta del 05/11/2026). La serie se para
+% en 2024: el agregado mundial de 2025 está incompleto.
+% Capas (CRITERIOS §7): bandas → ejes → líneas → puntos → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=12.5cm,height=7cm,xmin=1968,xmax=2026,ymin=0,ymax=70,
+    axis lines=left,xlabel={año},ylabel={comercio, \% del PIB},
+    xtick={1970,1980,...,2020},ytick={0,10,...,70},
+    xticklabel style={/pgf/number format/.cd,set thousands separator={}},
+    ymajorgrids,grid style={tceegris!25},
+    legend style={draw=none,font=\footnotesize,at={(0.02,0.98)},anchor=north west},
+    legend cell align=left,dicapas]
+  % 1: bandas de las recesiones de 2009 y 2020
+  \capa{1}{\dicsombra[fill=tceegris,fill opacity=0.18]{2008.5}{0}{2009.5}{70}}
+  \capa{1}{\dicsombra[fill=tceegris,fill opacity=0.18]{2019.5}{0}{2020.5}{70}}
+  % 2: ejes y rótulos (los dibuja el axis; siempre visibles)
+  % 3: línea del mundo
+  \capa{3}{\addplot[diclinea=tceemorado,line width=1.8pt,forget plot]
+    table[x=anio,y=mundo,col sep=comma,comment chars={\#}] {../datos/comercio-pib-mundial.csv};}
+  % 4: renta alta y renta baja y media
+  \capa{4}{\addplot[diclinea=tceeazul,forget plot]
+    table[x=anio,y=renta_alta,col sep=comma,comment chars={\#}] {../datos/comercio-pib-mundial.csv};}
+  \capa{4}{\addplot[diclinea=tceedorado,dashed,forget plot]
+    table[x=anio,y=renta_baja_media,col sep=comma,comment chars={\#}] {../datos/comercio-pib-mundial.csv};}
+  % 5: puntos de la serie mundial
+  \capa{5}{\addplot[on layer=dicpuntos,dicpuntos=tceemorado,forget plot]
+    coordinates {(1970,25.75) (2008,60.32) (2022,62.15) (2024,56.72)};}
+  % 6: etiquetas y leyenda
+  \capa{6}{\dicrotulo[below right,font=\footnotesize,text=tceemorado]{(1970,25.75)}{25,8}}
+  \capa{6}{\dicrotulo[above left,font=\footnotesize,text=tceemorado]{(2008,60.32)}{60,3}}
+  \capa{6}{\dicrotulo[anchor=south east,inner sep=1pt,font=\footnotesize,text=tceemorado]{(2021.35,63.3)}{62,2}}
+  \capa{6}{\dicrotulo[below right,xshift=-2pt,font=\footnotesize,text=tceemorado]{(2024,56.72)}{56,7}}
+  \capa{6}{\dicrotulo[below,font=\footnotesize,text=tceegris]{(2009,7)}{2009}}
+  \capa{6}{\dicrotulo[below,font=\footnotesize,text=tceegris]{(2020,7)}{2020}}
+  \capa{6}{
+    \addlegendimage{diclinea=tceemorado,line width=1.8pt}\addlegendentry{mundo}
+    \addlegendimage{diclinea=tceeazul}\addlegendentry{renta alta}
+    \addlegendimage{diclinea=tceedorado,dashed}\addlegendentry{renta baja y media}
+  }
+\end{axis}
+\end{tikzpicture}
+\end{document}

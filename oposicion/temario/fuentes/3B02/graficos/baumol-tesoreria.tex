@@ -1,0 +1,68 @@
+% Modelo de Baumol (1952) y Tobin (1956) aplicado a la tesorería de la
+% empresa, adaptado de baumol-tobin.tex del 3.A.35 (misma estética, capas y
+% notación) al ejemplo del texto: Y = 3,6 millones de euros de pagos al año,
+% b = 50 euros por venta de letras, i = 4 %.
+% a) Caja en dientes de sierra: M* = sqrt(2·50·3.600.000/0,04) = 94.868 euros,
+%    Y/M* = 37,9 reposiciones al año (una cada 0,316 meses, unos 9,6 días);
+%    saldo medio M^D = M*/2 = 47.434 euros.
+% b) Costes al año frente a M (en miles de euros en el código): reposición
+%    bY/M = 180.000/m (hipérbola), oportunidad iM/2 = 20 m (recta);
+%    CT mínimo en M* = 94,87 con CT* = 3.795 (1.897 cada coste: se cortan en M*).
+%    Con i' = 8 %: i'M/2 = 40 m; CT' mínimo en M*' = 67,08, CT*' = 5.367.
+% Escalas: a) x = 2,7 cm por mes, y = 0,045 cm por mil euros;
+%          b) x = 0,03 cm por mil euros, y = 0,6 cm por mil euros de coste.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={repo(\m)=180/\m; opo(\m)=0.02*\m; ct(\m)=repo(\m)+opo(\m);
+                      opon(\m)=0.04*\m; ctn(\m)=repo(\m)+opon(\m);}]
+  \def\Mopt{94.868}% miles de euros
+  \def\Mnue{67.082}
+  \def\per{0.31623}% meses entre reposiciones
+  % ---------------------------------------------------------------- panel a
+  \begin{scope}[x=2.7cm,y=0.045cm]
+    % 1: ejes y título
+    \capa{1}{\ejes{$t$ (meses)}{caja (euros)}{2.6}{125}}
+    \capa{1}{\node[font=\small\bfseries,anchor=south west] at (-0.3,131) {a) La caja de la empresa};}
+    \capa{1}{\foreach \k in {0.5,1,1.5,2} {\draw (\k,0) -- (\k,-2.2) node[below,font=\small] {\pgfmathprintnumber[use comma]{\k}};}}
+    % 2: dientes de sierra de altura M*
+    \capa{2}{\draw[curva1] (0,\Mopt)
+      \foreach \k in {1,...,6} { -- ({\k*\per},0) -- ({\k*\per},\Mopt) } -- (2.1,{\Mopt*(1-(2.1-6*\per)/\per)});}
+    \capa{2}{\draw[guia] (0,\Mopt) -- (2.25,\Mopt);}
+    \capa{2}{\node[left,align=right] at (0,\Mopt) {$M^*$\\[-1pt]{\small 94.900}};}
+    \capa{2}{\node[etiqueta,font=\small,text=tceemorado,align=center,anchor=south] at (1.05,\Mopt) {repone $M^*$ unas 38 veces al año};}
+    % 3: saldo medio M*/2 = M^D
+    \capa{3}{\draw[curva2,dashed] (0,{\Mopt/2}) -- (2.25,{\Mopt/2}) node[etiqueta,right,text=tceeazul] {$M^D=\dfrac{M^*}{2}$};}
+    \capa{3}{\node[left,align=right] at (0,{\Mopt/2}) {{\small 47.400}};}
+  \end{scope}
+  % ---------------------------------------------------------------- panel b
+  \begin{scope}[xshift=9.6cm,x=0.03cm,y=0.6cm]
+    % 4: ejes y título
+    \capa{4}{\ejes{$M$ (euros)}{euros al año}{250}{9.4}}
+    \capa{4}{\node[font=\small\bfseries,anchor=south west] at (-30,9.85) {b) Sus costes};}
+    % 5: coste de reposición bY/M (hipérbola)
+    \capa{5}{\draw[curva1] plot[domain=22:235,samples=150,smooth] (\x,{repo(\x)});}
+    \capa{5}{\node[etiqueta,text=tceemorado,anchor=west] at (235,{repo(235)}) {$bY/M$ (reposición)};}
+    % 6: coste de oportunidad iM/2 (recta desde el origen)
+    \capa{6}{\draw[curva2] (0,0) -- (235,{opo(235)});}
+    \capa{6}{\node[etiqueta,text=tceeazul,anchor=west] at (235,{opo(235)}) {$iM/2$ (oportunidad)};}
+    % 7: coste total en U
+    \capa{7}{\draw[curva3] plot[domain=23:225,samples=150,smooth] (\x,{ct(\x)});}
+    \capa{7}{\node[etiqueta,text=tceeverde,anchor=south] at (225,{ct(225)}) {$CT$};}
+    % 8: mínimo M*, CT* y proyecciones; los 2 costes se cortan en M*
+    \capa{8}{\node[punto,fill=tceeverde] (E) at (\Mopt,{ct(\Mopt)}) {};}
+    \capa{8}{\node[punto,fill=black,inner sep=1pt] at (\Mopt,{opo(\Mopt)}) {};}
+    \capa{8}{\draw[guia] (E) -- (\Mopt,0) node[below,align=center,anchor=north west,xshift=-6pt,text=black] {$M^*$\\[-1pt]{\small 94.900}};}
+    \capa{8}{\draw[guia] (E) -- (0,{ct(\Mopt)}) node[left,align=right,text=black] {$CT^*$\\[-1pt]{\small 3.800}};}
+    % 9: subida del tipo al 8 %: i'M/2 más empinada, nueva U y M*'
+    \capa{9}{\draw[curvanueva,desplazada] (0,0) -- (205,{opon(205)}) node[etiqueta,above,text=tceerojo] {$i'M/2$};}
+    \capa{9}{\draw[curvanueva] plot[domain=24:175,samples=150,smooth] (\x,{ctn(\x)}) node[etiqueta,above,text=tceerojo] {$CT'$};}
+    \capa{9}{\node[punto,fill=tceerojo] (E2) at (\Mnue,{ctn(\Mnue)}) {};}
+    \capa{9}{\draw[guia] (E2) -- (\Mnue,0) node[below,align=center,anchor=north east,xshift=6pt,text=black] {$M^{*\prime}$\\[-1pt]{\small 67.100}};}
+    \capa{9}{\draw[guia] (E2) -- (0,{ctn(\Mnue)}) node[left,align=right,text=black] {$CT^{*\prime}$\\[-1pt]{\small 5.370}};}
+    \capa{9}{\draw[flecha] ({\Mopt-2},-1.75) -- ({\Mnue+2},-1.75);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

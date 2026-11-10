@@ -1,0 +1,39 @@
+% Modelo de Melitz (2003) en autarquía (antes de la apertura): beneficio operativo
+% frente a u = phi^(sigma-1), con la misma recta que melitz-umbrales (wF^d = 1):
+%   B^d_aut = 0,55 u - 1 -> (phi*_aut)^(sigma-1) = 1,818.
+% Las que sacan phi < phi*_aut salen y se quedan en 0 de beneficio operativo (pierden el
+% coste hundido wF^e = 1,5); recuperan wF^e las que ganan más de 1,5 (u > 4,545).
+% Elaboración propia a partir de Melitz (2003) y Melitz y Redding (2014).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm,
+    llave/.style={decorate,decoration={brace,mirror,amplitude=5pt},thick,tceegris},
+    grupo/.style={etiqueta,font=\footnotesize,align=center,anchor=north}]
+  % 1: ejes; el beneficio operativo B toma valores negativos
+  \capa{1}{\draw[eje] (0,0) -- (8.6,0) node[below left=2pt and 0pt] {$\varphi^{\sigma-1}$};}
+  \capa{1}{\draw[eje] (0,-1.6) -- (0,4.6) node[left] {$B$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: beneficio operativo en el mercado interior, desde -wF^d
+  \capa{2}{\draw[curva1] (0,-1) node[left,text=black] {$-wF^d$} -- (7.6,3.18)
+    node[etiqueta,right] {$B^d_{\mathrm{aut}}$};}
+  % 3: umbral de corte cero
+  \capa{3}{\node[punto] at (1.818,0) {};}
+  \capa{3}{\node[etiqueta,above left] at (1.818,0) {$(\varphi^*_{\mathrm{aut}})^{\sigma-1}$};}
+  % 4: las que no llegan salen: su beneficio operativo es 0, no negativo
+  \capa{4}{\draw[curvanueva,line width=2pt] (0,0) -- (1.818,0);}
+  % 5: el coste hundido de entrada
+  \capa{5}{\draw[guia] (0,1.5) node[left,text=black] {$wF^e$} -- (8,1.5);}
+  \capa{5}{\node[punto] at (4.545,1.5) {};}
+  % 6: los grupos
+  \capa{6}{\draw[llave] (0.03,-1.7) -- (1.79,-1.7)
+    node[midway,below=5pt,grupo] {salen\\($B^d<0$)};}
+  \capa{6}{\draw[llave] (1.85,-1.7) -- (7.6,-1.7)
+    node[midway,below=5pt,grupo] {producen ($B^d\geq 0$)};}
+  \capa{6}{\draw[llave] (0.03,-2.75) -- (4.52,-2.75)
+    node[midway,below=5pt,grupo] {no recuperan $wF^e$};}
+  \capa{6}{\draw[llave] (4.57,-2.75) -- (7.6,-2.75)
+    node[midway,below=5pt,grupo] {recuperan $wF^e$};}
+\end{tikzpicture}
+\end{document}

@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Contabilidad y convergencia]{3.A.45}{Evidencia empírica sobre el crecimiento económico y la distribución de la renta entre los factores de producción. Contabilidad del crecimiento, con especial referencia a la productividad total de los factores. Convergencia económica internacional.}
-\tcefecha{03/11/2026}
+\tcefecha{11/11/2026}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
@@ -9,105 +9,67 @@
 % ==========================================================================
 \bloque{Esquema del cante}
 \esquemacante{%
-\apartadocante{Introducción: «por sus frutos los conoceréis»}{2,5}
-\apartadocante{I. Hechos del crecimiento y distribución de la renta}{7}
-\subcante{1. Algunos hechos empíricos}{2}
-\subcante{2. \autor{Kaldor} y los nuevos hechos}{2,5}
-\subcante{3. Distribución de la renta entre los factores}{2,5}
-\apartadocante{II. Contabilidad del crecimiento y PTF}{9,5}
-\subcante{1. Enfoques clásicos: primal (3) y dual (1)}{4}
-\subcante{2. Enfoque econométrico}{0,5}
-\subcante{3. Contabilidad del desarrollo}{2}
-\subcante{4. Problemas}{1}
-\subcante{5. Evidencia sobre la PTF}{2}
-\apartadocante{III. Convergencia y factores del crecimiento}{10}
-\subcante{1. Convergencia $\beta$ y $\sigma$}{2}
-\subcante{2. Evidencia}{3,5}
-\subcante{3. Causas próximas}{2}
-\subcante{4. Causas últimas: las instituciones}{2,5}
+\apartadocante{Introducción: «por sus frutos los conoceréis» (Mt 7, 16-20)}{2,5}
+\apartadocante{I. Contabilidad del crecimiento y PTF}{10}
+\subcante{1. Hechos de \autor{Kaldor}}{1,5}
+\subcante{2. Enfoques clásicos: primal y dual}{3}
+\subcante{3. Enfoque econométrico}{0,5}
+\subcante{4. Contabilidad del desarrollo}{2,5}
+\subcante{5. Problemas}{1}
+\subcante{6. Evidencia sobre la PTF y el reparto}{1,5}
+\apartadocante{II. Evidencia sobre la convergencia}{8}
+\subcante{1. Convergencia $\beta$ y $\sigma$; clubes}{3}
+\subcante{2. Evidencia}{5}
+\apartadocante{III. Factores que influyen sobre el crecimiento}{8,5}
+\subcante{1. \autor{Barro} (1991)}{2,5}
+\subcante{2. Otros determinantes y robustez}{2,5}
+\subcante{3. Las instituciones}{3,5}
 \apartadocante{Conclusión}{1}}
-\emph{Pizarra}: izquierda, residuo de \autor{Solow} y regresión de convergencia (hasta el final); centro, el gráfico de cada bloque; derecha, \autor{Kaldor} con $\checkmark$/$\times$, \autor{Hall}-\autor{Jones} y causas últimas. Corea del Sur vs. Nigeria en cada bloque. Pegatinas: «las apariencias engañan», «unos cardan la lana\ldots», «no se ganó Zamora en una hora», «Dios los cría\ldots», «árbol que nace torcido\ldots».
+Corea del Sur vs. Nigeria en cada bloque. Refranes: «las apariencias engañan», «unos cardan la lana\ldots», «no se ganó Zamora en una hora», «Dios los cría\ldots», «árbol que nace torcido\ldots».
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
 \begin{itemize}
-\item \textbf{Enganche}: «Por sus frutos los conoceréis». Nogales, partida por una valla: misma gente, clima e historia hasta 1853; Arizona, renta mediana $\approx$30.000\,\$ (hoy $>$43.000); Sonora, 1/3, sin escuela, mortalidad infantil alta (\autor{Acemoglu}-\autor{Robinson}, 2012). Las separan las \emph{instituciones}. ¿Por qué unos países son más ricos y crecen y otros no?
+\item \textbf{Enganche}: «Por sus frutos los conoceréis» (proverbio bíblico: Mt 7, 16-20; Lc 6, 44). Nogales, partida por una valla: misma gente, clima e historia hasta 1853; Arizona, renta mediana $\approx$30.000\,\$ (hoy $>$43.000); Sonora, 1/3, sin escuela, mortalidad infantil alta (\autor{Acemoglu}-\autor{Robinson}, 2012). Las separan las \emph{instituciones}. ¿Por qué unos países son más ricos y crecen y otros no?
 \item \textbf{Relevancia}: \emph{interés compuesto} (\autor{Lucas}, 1988: difícil pensar en otra cosa); \emph{pobreza} $<$3\,\$/día 43\,\% (1990) $\to$ 10\,\% (2024), India 52 $\to$ 5\,\%; la \emph{evidencia ordena la teoría} (Nobel 2024 a \autor{Acemoglu}, \autor{Johnson}, \autor{Robinson}); \emph{reparto}: ↓ del trabajo desde los 80.
 \item \textbf{Contextualización}: \concepto{crecimiento}: ↑ sostenido de la producción pc \vertema{3.A.43} \vertema{3.A.44}. \concepto{Distribución funcional}: entre factores ($\neq$ personal). \concepto{Contabilidad del crecimiento}: más factores vs. usarlos mejor (\concepto{PTF}). \concepto{Convergencia}: pobres crecen más; \emph{absoluta} o \emph{condicional} (mismos determinantes del EE). \concepto{Causas próximas} ($K$, $H$, tecnología) vs. \concepto{últimas} (instituciones, geografía, cultura, suerte). Historia: \autor{Smith}, \autor{Ricardo}, \autor{Malthus}; \autor{Solow}-\autor{Swan} (1956); \autor{Solow} (1957); \autor{Kaldor} (1961); \autor{Jorgenson}-\autor{Griliches} (1967); \autor{Summers}-\autor{Heston} (1988), \autor{Baumol} (1986); \autor{Barro} (1991), MRW (1992), \autor{Hall}-\autor{Jones} (1999); AJR (2001); \autor{Karabarbounis}-\autor{Neiman} y \autor{Piketty} (2014).
-\item \textbf{Problemática}: ¿se mantienen los hechos de \autor{Kaldor}, y el reparto estable? ¿Cuánto es acumulación y cuánto PTF, y qué mide esta? ¿Se igualan las rentas pc? Si no, ¿por qué?
-\item \textbf{Estructura}: hechos $\to$ medida $\to$ causas: \hyperref[rep:I]{I}, hechos y reparto; \hyperref[rep:II]{II}, contabilidad y PTF; \hyperref[rep:III]{III}, convergencia, de las causas próximas a las últimas.
+\item \textbf{Problemática}: ¿cuánto es acumulación y cuánto PTF, y qué mide esta? ¿Se igualan las rentas pc, a qué ritmo y con qué condiciones? ¿Qué factores influyen y por qué unos acumulan e innovan y otros no?
+\item \textbf{Estructura}: de la medida a las causas: \hyperref[rep:I]{I}, contabilidad y PTF (tras \autor{Kaldor}); \hyperref[rep:II]{II}, convergencia; \hyperref[rep:III]{III}, factores del crecimiento e instituciones.
+\item \emph{Caja de hechos}: EE.\,UU. ×12 en 1870-2022 (1,6\,\%; con 1 punto menos, ×$<$3; con 1 más, ×56); 111 países 1960-2023, media 1,9\,\%, d.\,t. 1,3; Corea/Nigeria 1960, 1.400 y 2.200\,\$; 2023, 52.400 y 4.600: ¿por qué?
 \end{itemize}
 
 % ==========================================================================
-\bloque[7]{I. Hechos del crecimiento y distribución de la renta\label{rep:I}}
-\begin{ideaclave}
-La frontera crece a un ritmo notablemente estable; los demás difieren muchísimo en nivel y ritmo. Casi todos los hechos de \autor{Kaldor} se mantienen salvo uno: la participación del trabajo cae desde los 80, sobre todo en EE.\,UU.
-\end{ideaclave}
-
-\sub{I.1. Algunos hechos empíricos\label{rep:I.1}}
-\begin{itemize}
-\item \emph{Frontera}: EE.\,UU., PIB pc ×12 en 1870-2022, 1,6\,\% anual (Maddison). Con 1 punto menos, ×$<$3 (como Indonesia, Perú o Egipto); con 1 más, ×56. Casi una recta en escala log.
-\end{itemize}
-\graficorepaso[0.9\linewidth]{pib-pc-largo}{PIB pc 1870-2022 (escala log.): EE.\,UU. casi recta; Japón, España y Corea se acercan; India despega tarde}
-\begin{itemize}
-\item \emph{Niveles}: EE.\,UU./Etiopía 36 (1960); EE.\,UU./Sudán del Sur 117 (2023). \emph{Ritmos}: 111 países, 1960-2023, media 1,9\,\%, desv. típica 1,3 puntos: China 6,1\,\%, Corea 5,4\,\%, R.\,D. Congo $-1{,}5$\,\%. \concepto{Milagros} ($>$3\,\% sostenido) y \concepto{desastres} (\autor{Panagariya}, 2004).
-\item \emph{Corea del Sur vs. Nigeria}: 1.400 y 2.200\,\$ en 1960; 5,4 y 0,5\,\% anual; en 2023, 52.400 (más que España, 46.700) y 4.600: 11 veces. ¿Por qué?
-\end{itemize}
-
-\sub{I.2. \autor{Kaldor} y los nuevos hechos\label{rep:I.2}}
-\begin{itemize}
-\item \concepto{Hechos estilizados} (\autor{Kaldor}, 1961), a LP: (1) $Y/L$ crece a tasa $\approx$ constante; (2) $K/L$ también; (3) rendimiento real del capital $\approx$ constante; (4) $K/Y$ $\approx$ constante; (5) participaciones estables; (6) tasas muy distintas entre países. (1)+(4) $\Rightarrow$ (2); (3)+(4) $\Rightarrow$ (5), pues $\alpha=c_KK/Y$, $c_K=r+\delta$.
-\item \concepto{Senda de crecimiento equilibrado} (todo a tasas constantes; en \autor{Solow}, el EE) \vertema{3.A.43}: reproduce 1-5 ($\gamma_{Y/L}=\gamma_{K/L}=g$, $r^*$, $k^*/f(k^*)$, $\alpha=k^*f'(k^*)/f(k^*)$); el 6.º, solo en la transición.
-\item \emph{Datos} 1960-2023 (PWT): EE.\,UU. cumple ($\gamma_{Y/L}$ 2\,\%, $K/Y$ 3,8 $\to$ 3,2, rentabilidad $\approx$8\,\%); España, $K/Y$ 4,0 $\to$ 6,2 y rentabilidad 9,9 $\to$ 6,7\,\%: convergía. Con vivienda, riqueza/renta 2-3 $\to$ 4-6 (\autor{Piketty}-\autor{Zucman}, 2014). El 5.º, el que más cambia.
-\item \concepto{Nuevos hechos} (\autor{Jones}-\autor{Romer}, 2010): mercados más amplios; crecimiento acelerado; varianza ↑ con la distancia a la frontera; enormes diferencias de renta y PTF; $h$ ↑ en todo el mundo; salarios relativos estables $\Rightarrow$ ideas \vertema{3.A.44}, PTF e instituciones.
-\end{itemize}
-
-\sub{I.3. Distribución de la renta entre los factores\label{rep:I.3}}
-\begin{itemize}
-\item Son el 5.º hecho y las ponderaciones de la contabilidad. \emph{Neoclásica}: RCE y pago por PMg; \autor{Euler} \vertema{3.A.11}:
-\begin{formula}
-\centering $Y=c_KK+wL,\qquad \alpha\equiv\dfrac{c_KK}{Y},\quad 1-\alpha\equiv\dfrac{wL}{Y}$
-\end{formula}
-\item[] \emph{Cobb-Douglas}: $\alpha$ fija ($\sigma=1$: lo que gana en cantidad lo pierde en precio; \autor{Cobb}-\autor{Douglas}, 1928). \emph{CES}, $\rho\equiv(\sigma-1)/\sigma$:
-\begin{formula}
-\centering $\alpha_t=a_K\left(K_t/Y_t\right)^{\rho}$:\ ↑ con $K/Y$ si $\sigma>1$, ↓ si $\sigma<1$
-\end{formula}
-\item[] Caída duradera: $\sigma\neq1$, progreso sesgado (automatización) o márgenes (renta de monopolio).
-\item \autor{Piketty} (2014): $\alpha=r\,v$ y $v\to s/\gamma_Y$; $r>g$ concentra la riqueza. Críticas: exige $\sigma>1$ y es vivienda (\autor{Rognlie}, 2015); ahorro neto (\autor{Krusell}-\autor{Smith}, 2015); sin instituciones; $r>g$ casi siempre (\autor{Mankiw}, 2015) \vertema{3.A.24}.
-\item \emph{Medida}: autónomos (España 2025: 48,4\,\% sin ajustar, 56,6\,\% con la \concepto{participación salarial ajustada}; \autor{Gollin}, 2002: 65-80\,\% $\Rightarrow$ $\alpha\approx1/3$); vivienda y depreciación.
-\item \emph{Evidencia}: estable hasta los 80 (capital 0,3-0,5); $\approx-5$ puntos en el mundo, dentro de cada sector (\autor{Karabarbounis}-\autor{Neiman}, 2014). EE.\,UU. 63 $\to$ 54\,\%; España 67,5\,\% (1976) $\to$ 55\,\% (2007) $\to$ 53-58\,\%; zona del euro 58,4 $\to$ 54,2 $\to$ 56,9\,\%. Con series homogéneas, solo EE.\,UU. y Canadá (\autor{Gutiérrez}-\autor{Piton}, 2020).
-\end{itemize}
-\graficorepaso[0.9\linewidth]{participacion-trabajo}{Participación salarial ajustada, 1960-2025 (\% del PIB; AMECO)}
-\begin{itemize}
-\item \emph{Explicaciones}: \emph{precio del capital} ($\sigma\approx1{,}25$ explica la mitad; pero $\sigma<1$ casi siempre); \emph{globalización} (y 1/3 de EE.\,UU. es imputación de autónomos: \autor{Elsby}-\autor{Hobijn}-\autor{Şahin}, 2013); \emph{superestrellas} (\autor{Autor} et al., 2020); \emph{márgenes} 21 $\to$ 61\,\% (\autor{De Loecker}-\autor{Eeckhout}-\autor{Unger}, 2020): caen \emph{las 2} (\autor{Barkai}, 2020) \vertema{3.A.15}; \emph{sindicatos}. Ninguna lo explica todo.
-\end{itemize}
-
-% ==========================================================================
-\bloque[9,5]{II. Contabilidad del crecimiento y PTF\label{rep:II}}
+\bloque[10]{I. Contabilidad del crecimiento y PTF\label{rep:I}}
 \begin{ideaclave}
 La acumulación explica buena parte del crecimiento en el tiempo, pero no la mayor parte de las diferencias de renta entre países, que son sobre todo productividad. La PTF es un residuo: mide todo lo que no medimos.
 \end{ideaclave}
 
-\sub{II.1. Enfoques clásicos: primal y dual\label{rep:II.1}}
+\sub{I.1. Hechos de \autor{Kaldor}\label{rep:I.1}}
 \begin{itemize}
-\item \textbf{Primal} (\autor{Solow}, 1957): $Y=A\,F(K,L)$ \concepto{neutral de \autor{Hicks}} (no cambia la RMST), RCE, pago por PMg $\Rightarrow$ elasticidades = participaciones. \concepto{Residuo de \autor{Solow}}:
+\item \concepto{Hechos estilizados} (\autor{Kaldor}, 1961), a LP: (1) $Y/L$ crece a tasa $\approx$ constante; (2) $K/L$ también; (3) rendimiento real del capital $\approx$ constante; (4) $K/Y$ $\approx$ constante; (5) participaciones estables; (6) tasas muy distintas entre países. (1)+(4) $\Rightarrow$ (2); (3)+(4) $\Rightarrow$ (5), pues $\alpha=rK/Y$.
+\item \concepto{Senda de crecimiento equilibrado} (en \autor{Solow}, el EE) \vertema{3.A.43}: reproduce 1-5 ($\gamma_{Y/L}=\gamma_{K/L}=g$, $r^*$, $\tilde k^*/f(\tilde k^*)$, $\alpha=\tilde k^*f'(\tilde k^*)/f(\tilde k^*)$); el 6.º, solo en la transición. Datos: EE.\,UU. cumple; España, $K/Y$ 4,0 $\to$ 6,2 (convergía); el 5.º, el que más cambia.
+\item \concepto{Nuevos hechos} (\autor{Jones}-\autor{Romer}, 2010): mercados más amplios; crecimiento acelerado; varianza ↑ con la distancia a la frontera; enormes diferencias de PTF; $h$ ↑; salarios relativos estables.
+\end{itemize}
+
+\sub{I.2. Enfoques clásicos: primal y dual\label{rep:I.2}}
+\begin{itemize}
+\item \textbf{Primal} (\autor{Solow}, 1957): $Y=A\,F(K,L)$ \concepto{neutral de \autor{Hicks}}, RCE, pago por PMg $\Rightarrow$ elasticidades = participaciones. 3 pasos: en tasas, despejar, por hora. \concepto{Residuo de \autor{Solow}}:
 \funcionclave{\gamma_A=\gamma_Y-\alpha\,\gamma_K-(1-\alpha)\,\gamma_L}
-\item[] Por hora: $\gamma_{Y/L}=\gamma_A+\alpha\,\gamma_{K/L}$; datos anuales, $\bar\alpha_t$ media de 2 años (\concepto{\autor{Törnqvist}}). \autor{Harrod} $Y=K^\alpha(AL)^{1-\alpha}$ = \autor{Hicks} con PTF $A^{1-\alpha}$.
-\item[] EE.\,UU. 1909-1949: $Y/L$ ×2; capital 1/8, residuo 7/8. Residuo = técnica + organización + asignación + calidad no medida + errores. Choque de los ciclos reales (\autor{Kydland}-\autor{Prescott}, 1982) \vertema{3.A.42}. Críticas: competencia perfecta; progreso incorporado (\autor{Kaldor}, 1957); «\concepto{medida de nuestra ignorancia}» (\autor{Abramovitz}, 1956); no es causalidad.
-\item \textbf{Dual} (\autor{Hsieh}, 2002): con \emph{precios}; solo $Y=c_KK+wL$:
+\item[] Por hora: $\gamma_{Y/L}=\gamma_A+\alpha\,\gamma_{K/L}$; datos anuales, $\bar\alpha_t$ (\concepto{\autor{Törnqvist}}). \autor{Harrod} $=$ \autor{Hicks} con PTF $(A^{\mathrm H})^{1-\alpha}$.
+\item[] EE.\,UU. 1909-1949: $Y/L$ ×2; capital 1/8, residuo 7/8. Choque de los ciclos reales \vertema{3.A.42}. Críticas: competencia perfecta; participaciones estables; progreso incorporado (\autor{Kaldor}, 1957); «\concepto{medida de nuestra ignorancia}» (\autor{Abramovitz}, 1956); no es causalidad.
+\item \textbf{Dual} (\autor{Hsieh}, 2002): con \emph{precios}; solo $Y=rK+wL$:
 \begin{formula}
-\centering $\underbrace{\gamma_Y-\alpha\gamma_K-(1-\alpha)\gamma_L}_{\text{primal}}=\underbrace{\alpha\,\gamma_{c_K}+(1-\alpha)\,\gamma_w}_{\text{dual}}=\gamma_A$
+\centering $\underbrace{\dfrac{\dot Y}{Y}-\dfrac{rK}{Y}\dfrac{\dot K}{K}-\dfrac{wL}{Y}\dfrac{\dot L}{L}}_{\text{primal}}=\underbrace{\dfrac{rK}{Y}\dfrac{\dot r}{r}+\dfrac{wL}{Y}\dfrac{\dot w}{w}}_{\text{dual}}$
 \end{formula}
-\item[] Sin progreso, sobre la \concepto{frontera de precios de los factores}: ↑$w$ $\Rightarrow$ ↓$c_K$. Identidad: si difieren, fallan los datos.
-\item[] \emph{Tigres}: \autor{Young} (1995): acumulación; Singapur, PTF 0,2\,\% (1966-1990); \autor{Krugman} (1994), como la URSS: «las apariencias engañan». \autor{Hsieh}: el rendimiento del capital apenas cae, PTF dual +2 puntos (inversión inflada). \autor{Young} (1998): dual $\approx$ primal.
+\item[] \concepto{Frontera de precios de los factores}: acumular $K$ baja $r$ y sube $w$; que suban los 2 exige PTF. \emph{Tigres}: \autor{Young} (1995), Singapur PTF 0,2\,\%; «las apariencias engañan»; \autor{Hsieh}: dual +2 puntos; \autor{Young} (1998): dual $\approx$ primal.
 \end{itemize}
 
-\sub{II.2. Enfoque econométrico\label{rep:II.2}}
+\sub{I.3. Enfoque econométrico\label{rep:I.3}}
 \begin{itemize}
-\item $\gamma_{Y,t}=\beta_0+\beta_1\gamma_{K,t}+\beta_2\gamma_{L,t}+u_t$, $\beta_0$ = PTF media; no supone pago por PMg. Pero \emph{simultaneidad} (\autor{Marschak}-\autor{Andrews}, 1944); residuo no exógeno (\autor{Hall}, 1988); elasticidades que cambian.
+\item $\gamma_{Y,t}=\beta_0+\beta_1\gamma_{K,t}+\beta_2\gamma_{L,t}+u_t$: $\beta_0$ = crecimiento medio de la PTF; $\beta_1$, $\beta_2$ = elasticidades al capital y al trabajo. No supone pago por PMg. Pero \emph{simultaneidad} (\autor{Marschak}-\autor{Andrews}, 1944); residuo no exógeno (\autor{Hall}, 1988); elasticidades que cambian.
 \end{itemize}
 
-\sub{II.3. Contabilidad del desarrollo\label{rep:II.3}}
+\sub{I.4. Contabilidad del desarrollo\label{rep:I.4}}
 \begin{itemize}
 \item Niveles entre países. $Y=K^\alpha(AhL)^{1-\alpha}$, $h=e^{\phi(S)}$ (\autor{Mincer}) \vertema{3.A.25}:
 \funcionclave{\frac{Y}{L}=\left(\frac{K}{Y}\right)^{\frac{\alpha}{1-\alpha}}h\,A}
@@ -123,8 +85,7 @@ La acumulación explica buena parte del crecimiento en el tiempo, pero no la may
 \begin{itemize}
 \item \textbf{\autor{Caselli}} (2005): \concepto{éxito} $=\mathrm{var}[\ln(Y/L)_{KH}]/\mathrm{var}[\ln(Y/L)]$: 0,39 (1996), 0,30 (2023). MRW: «casi todo acumulación»; desarrollo: «casi todo productividad».
 \end{itemize}
-
-\sub{II.4. Problemas\label{rep:II.4}}
+\sub{I.5. Problemas\label{rep:I.5}}
 \begin{itemize}
 \item \emph{Factores}: \concepto{inventario permanente}, $K_{t+1}=(1-\delta)K_t+I_t$ (stock $\neq$ servicios: \concepto{índice de servicios}); horas y composición. Calidad no medida $\Rightarrow$ PTF: \autor{Jorgenson}-\autor{Griliches} (1967), residuo 1,6 $\to$ 0,1\,\%; debate con \autor{Denison}. Servicios y sector público.
 \item \emph{Bruta o VAB}: la bruta depende de la integración vertical: VAB o \concepto{pesos de \autor{Domar}}.
@@ -133,8 +94,7 @@ La acumulación explica buena parte del crecimiento en el tiempo, pero no la may
 \centering $\gamma_{Y/L}=\dfrac{\gamma_A}{1-\alpha}+\dfrac{\alpha}{1-\alpha}\,\gamma_{K/Y}$
 \end{formula}
 \end{itemize}
-
-\sub{II.5. Evidencia sobre la PTF\label{rep:II.5}}
+\sub{I.6. Evidencia sobre la PTF y el reparto\label{rep:I.6}}
 \begin{itemize}
 \item \emph{Mundo} 1960-2000, 84 países: $Y/L$ 2,3\,\% = capital 1 + educación 0,3 + PTF 0,9 (\autor{Bosworth}-\autor{Collins}, 2003).
 \item \emph{España} 1996-2007: 3,6\,\% = capital 1,8 + horas 2,0 + $h$ 0,4 + PTF $-0{,}5$; en 1971-1985, PTF 2 de 2,8 puntos \vertema{4.A.27}. EE.\,UU. 1996-2007, PTF 1,2 (TIC): la diferencia con Europa.
@@ -143,32 +103,30 @@ La acumulación explica buena parte del crecimiento en el tiempo, pero no la may
 \begin{itemize}
 \item \emph{Desaceleración} (EE.\,UU.): 2,1\,\% (1948-1973), 0,5\,\% (1974-1995), 1,8\,\% (1996-2004), 0,5\,\% (2005-2019); \autor{Denison} (1985). Causas: petróleo, no; medición, no (\autor{Syverson}, 2017); servicios (\autor{Baumol}); ideas más difíciles (\autor{Bloom} et al., 2020; \autor{Gordon}, 2016); mala asignación (España); \concepto{curva en J} de la IA (\autor{Brynjolfsson}-\autor{Rock}-\autor{Syverson}, 2021).
 \item PTF $\neq$ productividad aparente $Y/L$ (sube también al acumular; en España, en las recesiones, por composición).
+\item \emph{Reparto}: $\alpha$ entre 0,3 y 0,5 (mediana 0,38); con autónomos, trabajo 65-80\,\% (\autor{Gollin}, 2002). Cae desde los 80 ($\approx-5$ puntos, \autor{Karabarbounis}-\autor{Neiman}, 2014): EE.\,UU. 61 $\to$ 54\,\%; España 53-58\,\% desde 2007. Teoría (\autor{Euler}, CES con $\sigma$), \autor{Piketty} y explicaciones (precio del capital, superestrellas, márgenes), en el anexo.
 \end{itemize}
 
 % ==========================================================================
-\bloque[10]{III. Convergencia y factores del crecimiento\label{rep:III}}
+\bloque[8]{II. Evidencia sobre la convergencia\label{rep:II}}
 \begin{ideaclave}
-Los pobres no alcanzaron a los ricos en la 2.ª mitad del s.\,XX; sí las economías parecidas, despacio ($\approx$2\,\% anual), y desde 2000 asoma algo en el mundo. Detrás, las causas próximas y, en último término, las instituciones.
+Los pobres no alcanzaron a los ricos en la 2.ª mitad del s.\,XX; sí las economías parecidas, despacio ($\approx$2\,\% anual), y desde 2000 asoma algo en el mundo.
 \end{ideaclave}
 
-\sub{III.1. Convergencia $\beta$ y $\sigma$\label{rep:III.1}}
+\sub{II.1. Convergencia $\beta$ y $\sigma$\label{rep:II.1}}
 \begin{itemize}
 \item \concepto{Convergencia} real ($\neq$ nominal \vertema{3.B.40}): predicción de \autor{Solow}; en $AK$, no \vertema{3.A.44}.
-\item \concepto{Convergencia $\beta$} (\autor{Barro}-\autor{Sala-i-Martín}, 1991):
-\funcionclave{\frac1T\ln\frac{(Y/L)_{i,t}}{(Y/L)_{i,t-T}}=\beta_0+\beta_1\ln\Big(\frac YL\Big)_{i,t-T}+\vect{x}_i\cdot\vect{\psi}+u_{i,t}}
-\item[] \concepto{Absoluta}: $\beta_1<0$ sin controles; \concepto{condicional}: controlando $\vect{x}_i$ (cada una a \emph{su} EE). $\beta_1=-(1-e^{-\lambda T})/T$, $\lambda=(1-\alpha)(n+g+\delta)$: con $\alpha=1/3$, $\lambda\simeq4$\,\% (17 años de semivida); con 2/3, $\simeq2$\,\% (35).
-\item \concepto{Convergencia $\sigma$}: $\sigma_t<\sigma_{t-T}$. $\sigma\Rightarrow\beta$, $\beta\not\Rightarrow\sigma$: adelantamiento o perturbaciones:
-\begin{formula}
-\centering $\sigma_t^2=(1-b)^2\sigma_{t-1}^2+\sigma_u^2\ \to\ \sigma^{*2}=\dfrac{\sigma_u^2}{1-(1-b)^2}$
-\end{formula}
+\item \concepto{Convergencia $\beta$} (\autor{Sala-i-Martín}, 1990; \autor{Barro}-\autor{Sala-i-Martín}, 1991), $y$ renta pc:
+\funcionclave{\gamma^{y}_{t,t-1}=\beta_0+\beta_1\ln y_{t-1}+\vect{\eta}\cdot\vect{z}_{t-1}+u_t}
+\item[] $\vect{z}$: determinantes del EE (ahorro, población, escolarización). \concepto{Absoluta}: $\beta_1<0$ sin controles; \concepto{condicional}: controlando $\vect{z}$ (cada una a \emph{su} EE). $\lambda=(1-\alpha)(n+g+\delta)$: con $\alpha=1/3$, $\simeq4$\,\%; con 2/3, $\simeq2$\,\%.
+\item \concepto{Convergencia $\sigma$}: $\sigma^2_{y,t-1}>\sigma^2_{y,t}$. \quad $\beta\text{-conv.}\ \overset{\Leftarrow}{\not\Rightarrow}\ \sigma\text{-conv.}$ (adelantamiento; perturbaciones).
 \end{itemize}
 \graficorepaso[0.9\linewidth]{beta-sigma}{(a) $\beta$ y $\sigma$; (b) ninguna; (c) $\beta$ sin $\sigma$: adelantamiento}
 \begin{itemize}
-\item \concepto{Clubes de convergencia} (trampas) \vertema{3.B.28}. \concepto{Falacia de \autor{Galton}}: regresión a la media; mirar toda la distribución (\autor{Quah}, 1993).
-\item Predicen convergencia: neoclásica, Sobelow, \autor{Jones}; no: $AK$, \autor{Romer}; kaldorianos y nueva geografía, posible divergencia.
+\item \concepto{Clubes}: \emph{mismos} parámetros, EE distintos según el punto de partida (equilibrios múltiples, trampas) $\neq$ condicional (parámetros distintos) (\autor{Galor}, 1996) \vertema{3.B.28}. \concepto{Falacia de \autor{Galton}} (\autor{Quah}, 1993).
+\item Predicen convergencia condicional: \autor{Solow}, Sobelow, \autor{Jones} (1995); ninguna: $AK$, \autor{Barro} (1990), externalidades, \autor{Uzawa}-\autor{Lucas} (en niveles), \autor{Romer} (1990), \autor{Aghion}-\autor{Howitt}; clubes: trampas; nueva geografía, centro-periferia.
 \end{itemize}
 
-\sub{III.2. Evidencia\label{rep:III.2}}
+\sub{II.2. Evidencia\label{rep:II.2}}
 \begin{itemize}
 \item \autor{Baumol} (1986): 16 industrializados, 1870-1979, convergen; \autor{De Long} (1988): \emph{sesgo de selección} (con los ricos de 1870, desaparece). MRW: 98 países, coeficiente $+$; \autor{Pritchett} (1997): «divergencia a lo grande», ricos/pobres 8,7 $\to$ 45. Se leyó a favor de los endógenos.
 \end{itemize}
@@ -180,15 +138,24 @@ Los pobres no alcanzaron a los ricos en la 2.ª mitad del s.\,XX; sí las econom
 \item \concepto{Picos gemelos} (\autor{Quah}, 1996; \autor{Durlauf}-\autor{Johnson}, 1995): «Dios los cría y ellos se juntan».
 \item \emph{Desde 2000}: absoluta (\autor{Kremer}-\autor{Willis}-\autor{You}, 2022); \autor{Acemoglu}-\autor{Molina} (2022): con efectos fijos, no. Solo 0,5\,\% anual: frágil. Manufacturas, incondicional (\autor{Rodrik}, 2013).
 \end{itemize}
+% ==========================================================================
+\bloque[8,5]{III. Factores que influyen sobre el crecimiento\label{rep:III}}
+\begin{ideaclave}
+Crecen más los países con más capital humano e inversión y menos consumo público, inestabilidad y distorsiones, pero pocas variables son robustas. Detrás, en último término, las instituciones.
+\end{ideaclave}
 
-\sub{III.3. Causas próximas\label{rep:III.3}}
+\sub{III.1. \autor{Barro} (1991)\label{rep:III.1}}
 \begin{itemize}
-\item \autor{Barro} (1991), 98 países: convergencia dado $h$ inicial; + capital humano; $-$ consumo público; $-$ inestabilidad política; $-$ distorsiones; ficticias de África y América Latina $<0$. Inflación alta, $-$ (1995).
-\item Inversión; finanzas (\autor{King}-\autor{Levine}, 1993); comercio instrumentado con geografía (\autor{Frankel}-\autor{Romer}, 1999) \vertema{3.B.9}. Corea/Nigeria: $h$ 3,9 vs. 2,1; ¿por qué?
-\item \emph{Robustez}: \autor{Levine}-\autor{Renelt} (1992), \concepto{cotas extremas} (\autor{Leamer}): solo inversión; \autor{Sala-i-Martín} (1997), millones de regresiones; bayesiano (2004): 18 de 67.
+\item Regresión de convergencia condicional con $\vect{x}$; 98 países, 1960-1985, paso a paso: (1) sin controles, no converge; (2) con escolarización de 1960, $\beta_1<0$; (3) $-$ consumo público, $-$ inestabilidad política, $-$ distorsiones (precio de la inversión); (4) ficticias de África y América Latina $<0$: falta algo. Inflación alta, $-$ (1995). Corea/Nigeria: $h$ 3,9 vs. 2,1; ¿por qué?
 \end{itemize}
 
-\sub{III.4. Causas últimas: las instituciones\label{rep:III.4}}
+\sub{III.2. Otros determinantes y robustez\label{rep:III.2}}
+\begin{itemize}
+\item Inversión; finanzas (\autor{King}-\autor{Levine}, 1993); comercio instrumentado con geografía (\autor{Frankel}-\autor{Romer}, 1999) \vertema{3.B.9}; geografía, salud y demografía.
+\item \autor{Levine}-\autor{Renelt} (1992), \concepto{cotas extremas} (\autor{Leamer}): $\gamma_i=\beta_0+\vect\beta_I\cdot\vect I_i+\beta_MM_i+\vect\beta_Z\cdot\vect Z_i+u_i$; robusta si $\beta_M$ no cambia de signo ni de significación: solo inversión. \autor{Sala-i-Martín} (1997): en probabilidad; bayesiano (2004): 18 de 67. \autor{Kneller} et al. (1999): gasto productivo +, impuestos distorsionantes $-$ \vertema{3.A.38}.
+\end{itemize}
+
+\sub{III.3. Las instituciones\label{rep:III.3}}
 \begin{itemize}
 \item 4 causas (\autor{Acemoglu}, 2009): suerte (equilibrios múltiples), geografía (\autor{Sachs}; \autor{Diamond}), cultura (\autor{Weber}; \autor{Tabellini}), instituciones. Contra la geografía: \concepto{inversión de la fortuna} (AJR, 2002). \concepto{Instituciones}: «las reglas del juego» (\autor{North}, 1990).
 \item \textbf{AJR} (2001), \concepto{instrumento}: mortalidad de colonos $\Rightarrow$ \concepto{instituciones extractivas} $\Rightarrow$ persisten $\Rightarrow$ renta; \emph{exclusión}: «árbol que nace torcido\ldots». 64 colonias:
@@ -202,11 +169,11 @@ Los pobres no alcanzaron a los ricos en la 2.ª mitad del s.\,XX; sí las econom
 % ==========================================================================
 \bloque[1]{Conclusión}
 \begin{itemize}
-\item \textbf{Recapitulación}: «En conclusión,» \autor{Kaldor} se cumple salvo el reparto; acumular explica el crecimiento en el tiempo, la PTF las diferencias entre países, y se ha frenado; sin convergencia absoluta en el s.\,XX, sí condicional ($\approx$2\,\%); detrás, las instituciones.
+\item \textbf{Recapitulación}: «En conclusión,» \autor{Solow} reproduce \autor{Kaldor}; acumular explica el crecimiento en el tiempo, la PTF las diferencias entre países, y se ha frenado; sin convergencia absoluta en el s.\,XX, sí condicional ($\approx$2\,\%); pocas variables robustas; detrás, las instituciones.
 \item \textbf{Relevancia}: agenda de productividad (competencia, asignación, innovación, instituciones): informe \autor{Draghi} (2024); España, PTF casi plana desde los 90.
 \item \textbf{Extensiones}: \vertema{3.A.43} \vertema{3.A.44} \vertema{3.B.40} \vertema{4.A.27} \vertema{3.B.28}.
 \item \textbf{Opinión}: de «cuánto capital» a «cuánta productividad» y a «qué instituciones»; impulsos que se agotan (\autor{Jones}, 2023).
-\item \textbf{Idea final}: Nogales, misma tierra y gente, frutos distintos según las reglas del juego: «por sus frutos los conoceréis».
+\item \textbf{Idea final}: Nogales, misma tierra y gente, frutos distintos según las reglas del juego: a las economías, como a los árboles, se las conoce por sus frutos.
 \end{itemize}
 
 % ==========================================================================
@@ -253,7 +220,7 @@ Los pobres no alcanzaron a los ricos en la 2.ª mitad del s.\,XX; sí las econom
 \bloque{Preguntas del tribunal}
 \begin{enumerate}
 \item \textbf{¿Qué mide la PTF?} Un residuo: técnica, organización, asignación, calidad no medida y errores.
-\item \textbf{¿Por qué primal y dual dan lo mismo?} Identidad $Y=c_KK+wL$; si difieren, fallan cantidades o precios (Singapur).
+\item \textbf{¿Por qué primal y dual dan lo mismo?} Identidad $Y=rK+wL$; si difieren, fallan cantidades o precios (Singapur).
 \item \textbf{¿Por qué $K/Y$ en \autor{Hall}-\autor{Jones}?} El capital acumulado por ser productivo se atribuye a la PTF.
 \item \textbf{¿Implica la $\beta$ la $\sigma$?} No (adelantamiento, perturbaciones); $\sigma\Rightarrow\beta$.
 \item \textbf{¿Por qué la regresión absoluta oculta la convergencia?} Variable omitida: los pobres ahorran menos y su población crece más.
@@ -261,6 +228,7 @@ Los pobres no alcanzaron a los ricos en la 2.ª mitad del s.\,XX; sí las econom
 \item \textbf{¿Es causal la contabilidad?} No: en el EE de \autor{Solow} el capital crece porque crece la PTF; corregir con $K/Y$.
 \item \textbf{¿Por qué la convergencia es tan lenta?} $\approx$2\,\% frente al 4\,\% de \autor{Solow} con $\alpha=1/3$: exige un capital amplio (con $H$) de 0,7-0,8; los rendimientos decrecientes llegan despacio.
 \item \textbf{¿Instituciones o geografía?} Las instituciones mandan (\autor{Rodrik} et al., 2004); la geografía actúa sobre todo a través de ellas (inversión de la fortuna), aunque la malaria pesa (\autor{Sachs}, 2003).
+\item \textbf{¿En qué se diferencian los clubes de la convergencia condicional?} En la condicional, cada economía va a su EE por sus parámetros; en los clubes, economías con los mismos parámetros van a EE distintos según su punto de partida (equilibrios múltiples).
 \item \textbf{¿Qué supuesto clave en AJR?} Exclusión: la mortalidad solo afecta a la renta vía instituciones; críticas de \autor{Albouy} y \autor{Glaeser}.
 \end{enumerate}
 
@@ -278,6 +246,9 @@ Los pobres no alcanzaron a los ricos en la 2.ª mitad del s.\,XX; sí las econom
 \item \autor{De Long}: sesgo de \emph{selección}; la absoluta, de \emph{variable omitida}.
 \item Remuneración de asalariados $\neq$ participación ajustada (autónomos).
 \item AJR: VI (0,94) $>$ MCO (0,52); el instrumento explica el \emph{nivel}, no el crecimiento.
+\item Clubes $\neq$ condicional: en los clubes los parámetros son \emph{iguales} y separa el punto de partida; en la condicional, los parámetros.
+\item Econométrico: $\beta_0$ es la PTF media; $\beta_1$, $\beta_2$, las elasticidades (en el primal, $\alpha$ y $1-\alpha$).
+\item Notación: $y$ (sin virgulilla), renta por habitante; $\tilde y$, por unidad eficiente; $r$, coste de uso del capital.
 \end{itemize}
 \end{trampa}
 

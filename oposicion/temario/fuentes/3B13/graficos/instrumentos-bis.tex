@@ -1,0 +1,91 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Volumen medio diario del mercado de divisas OTC en abril de cada Encuesta
+% Trienal (2001-2025), por instrumento, en billones de dólares (base
+% neta-neta). BPI, datos definitivos de 2025 (consulta 8/11/2026).
+% Barras apiladas de abajo arriba: FX swaps, contado, plazo, opciones,
+% currency swaps. Paleta por familias (la misma que la tabla de instrumentos
+% y el 3.B.25): swaps, morada (FX swap pleno; currency swap claro); contado y
+% plazo, azul (contado oscuro; plazo claro); opciones, dorado.
+% Capas «dic» (tikz-tcee.tex): barras → ejes y leyenda → totales y cuotas.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bis2025-instrumentos.csv}\ins
+% Los ejes salen en la capa 4, después de las barras
+\ifnum4>\tceepaso\relax
+  \pgfplotsset{ejesins/.style={hide axis}}
+\else
+  \pgfplotsset{ejesins/.style={}}
+\fi
+\colorlet{insfxswap}{tceemorado}
+\colorlet{inscurrswap}{tceemorado!35}
+\colorlet{inscontado}{dicze}
+\colorlet{insplazo}{dicfmc}
+\colorlet{insopciones}{tceedorado}
+\pgfplotsset{
+  barra ins/.style={on layer=dicbarras, forget plot, dicbarra=#1, ybar stacked, bar width=0.62cm},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=12cm, height=8cm,
+      xmin=1999.4, xmax=2027.2, xtick={2001,2004,...,2025},
+      xticklabel style={/pgf/number format/.cd,1000 sep={}},
+      ymin=0, ymax=10.5, ytick={0,2,...,10},
+      yticklabel style={/pgf/number format/.cd,use comma},
+      ylabel={Billones de dólares diarios},
+      ticklabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      major x tick style={draw=none},
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, stack plots=y,
+      legend style={at={(0.5,-0.13)}, anchor=north, legend columns=5,
+        draw=none, font=\footnotesize,
+        /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left,
+      dicapas, ejesins]
+    % 1: FX swaps, en la base
+    \capa{1}{
+      \addplot[barra ins=insfxswap] table[x=anio, y=fxswaps] {\ins};
+    }
+    % 2: contado y plazo
+    \capa{2}{
+      \addplot[barra ins=inscontado] table[x=anio, y=contado] {\ins};
+      \addplot[barra ins=insplazo] table[x=anio, y=plazo] {\ins};
+    }
+    % 3: opciones y currency swaps, arriba
+    \capa{3}{
+      \addplot[barra ins=insopciones] table[x=anio, y=opciones] {\ins};
+      \addplot[barra ins=inscurrswap] table[x=anio, y=currencyswaps] {\ins};
+    }
+    % 4: ejes (los dibuja el entorno axis) y leyenda
+    \capa{4}{
+      \addlegendimage{area legend, dicbarra=insfxswap}
+      \addlegendentry{FX \emph{swaps}}
+      \addlegendimage{area legend, dicbarra=inscontado}
+      \addlegendentry{Contado}
+      \addlegendimage{area legend, dicbarra=insplazo}
+      \addlegendentry{Plazo}
+      \addlegendimage{area legend, dicbarra=insopciones}
+      \addlegendentry{Opciones}
+      \addlegendimage{area legend, dicbarra=inscurrswap}
+      \addlegendentry{\emph{Currency swaps}}
+    }
+    % 5: total encima de cada barra y, en la de 2025, la cuota
+    % de cada instrumento (c_… del CSV redondeadas: 42, 31, 18, 7 y 2 %): las
+    % 3 grandes dentro de su tramo; opciones y currency swaps, que no caben,
+    % a la derecha de la barra (algo separadas)
+    \capa{5}{
+      \addplot[on layer=axis descriptions, dicsuelto, draw=none,
+        nodes near coords={\pgfmathprintnumber[/pgf/number format/.cd,
+          use comma, fixed, fixed zerofill, precision=1]{\pgfplotspointmeta}},
+        nodes near coords style={font=\footnotesize, anchor=south, fill=none},
+        point meta=y] table[x=anio, y=total] {\ins};
+      \dicrotulo[font=\footnotesize, text=white]{(2025,2.01)}{42~\%}
+      \dicrotulo[font=\footnotesize, text=white]{(2025,5.49)}{31~\%}
+      \dicrotulo[font=\footnotesize, text=dicze]{(2025,7.84)}{18~\%}
+      \dicrotulo[font=\footnotesize, anchor=west, text=insopciones]{(2025.9,9.0)}{7~\%}
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceemorado!70]{(2025.9,9.5)}{2~\%}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,129 @@
+tema: 3B25
+fecha_inventario: 2026-11-09
+datos:
+  - id: otc-nocional
+    texto: "El nocional de los derivados OTC vivos alcanzó 845 billones de dólares en diciembre de 2025, cerca de su máximo histórico, aunque su valor de mercado bruto, que mide mejor el riesgo, era de 22,8 billones"
+    texto_repaso: "\\dato{845 billones de \\$, valor bruto 22,8}{BIS, dic.\\ 2025}"
+    donde: [3B25.tex, repaso/3B25-repaso.tex]
+    valor: 845
+    unidad: billones de USD (nocional vivo)
+    periodo: diciembre 2025
+    fuente: BIS2026OTCDerivados
+    organismo: BIS
+    serie: "OTC derivatives statistics, WS_OTC_DERIV2 H.A.A.5J.A.5J.A.TO1.TO1.A.A.3.C (nocional) y H.D... (valor bruto)"
+    url: https://data.bis.org/topics/OTC_DER
+    periodicidad: semestral (datos de junio en noviembre; de diciembre en mayo)
+    proxima: 2026-11
+    familia: bis-otc-derivados
+    depende: [datos/bis-otc-derivados.csv, graficos/bis-otc-derivados.tex]
+    frase: "l. 973 «en diciembre de 2025 alcanzó 845 billones, cerca de su máximo histórico»; l. 975 tipos 669,5 y divisas 148,7 (ISDA2026KeyTrends); l. 976 «el 78,7~\\%» con ECC; l. 978 valor bruto 22,8, 2,7 % del nocional y exposición 3,35; nota del gráfico «de 1998 a diciembre de 2025»; ficha l. 47, 262, 310"
+    nota: "posible desfase inminente: el BPI publica en noviembre los datos de junio de 2026"
+
+  - id: otc-irs
+    texto: "suman 545 billones de dólares de nominal"
+    texto_repaso: "\\dato{545 billones de \\$, $\\approx$2/3 del OTC}{BIS, dic.\\ 2025}"
+    donde: [3B25.tex, repaso/3B25-repaso.tex]
+    valor: 545
+    unidad: billones de USD (swaps de tipos de interés)
+    periodo: diciembre 2025
+    fuente: BIS2026OTCDerivados
+    organismo: BIS
+    serie: "OTC derivatives statistics, interest rate swaps"
+    url: https://data.bis.org/topics/OTC_DER
+    periodicidad: semestral
+    proxima: 2026-11
+    familia: bis-otc-derivados
+
+  - id: otc-cds
+    texto: "hasta 61 billones de dólares, y desde entonces ha caído a 11 billones (diciembre de 2025)"
+    texto_repaso: "\\dato{61 billones (2007) $\\to$ 11 (dic.\\ 2025)}{BIS}"
+    donde: [3B25.tex, repaso/3B25-repaso.tex]
+    valor: 11
+    unidad: billones de USD (nocional de CDS)
+    periodo: diciembre 2025
+    fuente: BIS2026OTCDerivados
+    organismo: BIS
+    serie: "OTC derivatives statistics, credit default swaps"
+    url: https://data.bis.org/topics/OTC_DER
+    periodicidad: semestral
+    proxima: 2026-11
+    familia: bis-otc-derivados
+
+  - id: fx-swaps-trienal
+    texto: "4 billones de dólares diarios en abril de 2025, el 42~\\% de los 9,5 billones del total"
+    texto_repaso: "\\dato{4 billones de \\$ diarios, 42\\,\\% de 9,5}{BIS, abr.\\ 2025}"
+    donde: [3B25.tex, repaso/3B25-repaso.tex]
+    valor: 4
+    unidad: billones de USD diarios
+    periodo: abril 2025
+    fuente: BIS2025Trienal
+    organismo: BIS
+    serie: "Triennial Central Bank Survey, FX swaps"
+    url: https://www.bis.org/statistics/rpfx25.htm
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bis-trienal
+
+  - id: fia-contratos-mundo
+    texto: "en 2025 se negociaron en todo el mundo 119.000 millones de contratos de futuros y opciones, un 42~\\% menos que en 2024"
+    texto_repaso: "\\dato{119.000 M de contratos, $-42$\\,\\%}{FIA, 2025}"
+    donde: [3B25.tex, repaso/3B25-repaso.tex]
+    valor: 119000
+    unidad: millones de contratos
+    periodo: "2025"
+    fuente: FIA2026ETDDic
+    organismo: Futures Industry Association
+    serie: "ETD Volume, total mundial anual; ranking de bolsas (Trends in ETD Trading Q4)"
+    url: https://www.fia.org/fia/articles/etd-volume-december-2025
+    periodicidad: anual (avance mensual)
+    proxima: 2027-01
+    familia: fia-derivados
+    depende: [datos/fia-bolsas-2025.csv, graficos/fia-bolsas-2025.tex]
+    frase: "«la NSE de la India sea la primera bolsa de derivados del mundo por contratos»; caption «en 2025»; ficha l. 263 y 311"
+
+  - id: meff-contratos
+    texto: "En 2025 MEFF negoció algo más de 35 millones de contratos, un 22,6~\\% más que en 2024"
+    texto_repaso: "\\dato{35 M de contratos, +22,6\\,\\%}{BME, 2025}"
+    donde: [3B25.tex, repaso/3B25-repaso.tex]
+    valor: 35
+    unidad: millones de contratos
+    periodo: "2025"
+    fuente: BME2026InformeMercado
+    organismo: BME
+    serie: "Informe de Mercado, MEFF"
+    url: https://www.bolsasymercados.es/dam/descargas/informes-de-mercado/informe-mercado-bme-2025-es.pdf
+    periodicidad: anual
+    proxima: 2027-02
+    familia: bme-informe-mercado
+    frase: "«sobre todo opciones sobre acciones (16,3 millones, un 48~\\% más)»; última fila del CSV fia-bolsas-2025.csv"
+
+  - id: vibex-media
+    texto: "con una media del 15,1~\\% en 2025"
+    texto_repaso: "\\dato{media 15,1\\,\\%}{BME, 2025}"
+    donde: [3B25.tex, repaso/3B25-repaso.tex]
+    valor: 15.1
+    unidad: "% (volatilidad implícita media)"
+    periodo: "2025"
+    fuente: BME2026InformeMercado
+    organismo: BME
+    serie: "Informe de Mercado, VIBEX"
+    url: https://www.bolsasymercados.es/dam/descargas/informes-de-mercado/informe-mercado-bme-2025-es.pdf
+    periodicidad: anual
+    proxima: 2027-02
+    familia: bme-informe-mercado
+    frase: "ficha l. 207 y 311"
+
+  - id: itf-recaudacion
+    texto: "En 2025 recaudó 339 millones de euros, un 36,5~\\% más que en 2024"
+    texto_repaso: "339 M€, +36,5\\,\\%}{AEAT, 2025}"
+    donde: [3B25.tex, repaso/3B25-repaso.tex]
+    valor: 339
+    unidad: millones de euros
+    periodo: "2025"
+    fuente: AEAT2026Recaudacion
+    organismo: AEAT
+    serie: "Informe anual de recaudación tributaria, cap. 6, impuesto sobre las transacciones financieras"
+    url: https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informes-anuales.html
+    periodicidad: anual
+    proxima: 2027-04
+    familia: aeat-recaudacion

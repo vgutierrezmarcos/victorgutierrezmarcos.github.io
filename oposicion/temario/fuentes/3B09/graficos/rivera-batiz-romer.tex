@@ -1,0 +1,39 @@
+% Rivera-Batiz y Romer (1991): equilibrio de crecimiento en el plano (gamma, r).
+% Valores de ejemplo: alfa = 0,5; theta = 1; rho = 0,01; eta_I L = 0,1.
+% Hogares (Euler): r = rho + theta gamma = 0,01 + gamma.
+% Tecnología con L: r = alfa eta_I L - alfa gamma = 0,05 - 0,5 gamma (corta el
+%   eje en gamma = eta_I L = 0,1).
+% Equilibrio: gamma^E = (alfa eta_I L - rho)/(alfa + theta) = 0,04/1,5 = 0,0267;
+%   r^E = 0,0367.
+% Integración (2L): r = 0,1 - 0,5 gamma; gamma^E' = 0,09/1,5 = 0,06; r^E' = 0,07.
+% Escala: 1 cm = 0,02 en gamma (x 50) y 0,025 en r (x 40).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=50cm,y=40cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.02,-0.016) rectangle (0.16,0.118);
+  % 1: ejes gamma y r
+  \capa{1}{\draw[eje] (0,0) -- (0.122,0) node[below left=2pt and 0pt] {$\gamma$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,0.115) node[left] {$r$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: recta de los hogares (Euler), creciente, con ordenada rho
+  \capa{2}{\draw[curva1] (0,0.01) node[left,text=black] {$\rho$} -- (0.1,0.11)
+      node[etiqueta,right,text=tceemorado] {hogares};}
+  % 3: recta de la tecnología con L, decreciente
+  \capa{3}{\draw[curva2] (0,0.05) node[left,text=black] {$\alpha\,\eta_I L$} -- (0.1,0)
+      node[below,text=black] {$\eta_I L$};}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=south west] at (0.074,0.014) {tecnología ($L$)};}
+  % 4: equilibrio y proyecciones
+  \capa{4}{\node[punto] (E) at (0.02667,0.03667) {};}
+  \capa{4}{\proyeccion{(E)}{$\gamma^{\mathrm E}$}{$r^{\mathrm E}$}}
+  % 5: integración: la recta de la tecnología con 2L, paralela y más alta
+  \capa{5}{\draw[curvanueva] (0,0.1) node[left,text=black] {$2\,\alpha\,\eta_I L$} -- (0.11,0.045)
+      node[etiqueta,right,text=tceerojo] {integración ($2L$)};}
+  % 6: nuevo equilibrio, más crecimiento y más interés
+  \capa{6}{\node[punto] (E2) at (0.06,0.07) {};}
+  \capa{6}{\proyeccion{(E2)}{$\gamma^{\mathrm E\prime}$}{$r^{\mathrm E\prime}$}}
+  \capa{6}{\draw[flecha] (0.0300,0.006) -- (0.0565,0.006);}
+\end{tikzpicture}
+\end{document}

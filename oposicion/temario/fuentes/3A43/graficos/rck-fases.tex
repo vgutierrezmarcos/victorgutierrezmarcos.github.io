@@ -21,25 +21,25 @@
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
   \path (-0.9,-0.75) rectangle (10.0,6.9);
   % 1: ejes: capital y consumo por unidad de trabajo eficiente
-  \capa{1}{\begin{scope}[xshift=0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$k$};
-    \draw[eje] (0,0) -- (0,6.6) node[left] {$c$};
+  \capa{1}{\begin{scope}[xshift=0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$\tilde k$};
+    \draw[eje] (0,0) -- (0,6.6) node[left] {$\tilde c$};
     \node[below left] at (0,0) {$0$};\end{scope}}
   % 2: lugar dk/dt = 0: c = f(k) - (n+g+delta) k, máximo en k_oro y corte en k_bar
   \capa{2}{\begin{scope}[xshift=0cm]\draw[curva2] plot[domain=0:8.0,samples=80,smooth] (\x,{36*\x/(6.4+\x)-2.5*\x});
-    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot k=0$};
+    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot{\tilde k}=0$};
     \node[below] at (8.0,0) {$\bar k$};
-    \draw[guia] (3.200,4.000) -- (3.2,0) node[below,text=black] {$k_{\mathrm{oro}}$};\end{scope}}
+    \draw[guia] (3.200,4.000) -- (3.2,0) node[below,text=black] {$\tilde k_{\mathrm{oro}}$};\end{scope}}
   % 3: dinámica de k: por debajo de dk/dt = 0, k crece; por encima, decrece
   \capa{3}{\draw[dir] (0.55,5.6) -- ++(-0.5,0); \draw[dir] (1.35,0.22) -- ++(0.5,0); \draw[dir] (5.4,5.5) -- ++(-0.5,0); \draw[dir] (4.6,2.2) -- ++(0.5,0);}
   % 4: lugar dc/dt = 0: vertical en k* (f'(k*) = rho+delta+theta g)
-  \capa{4}{\begin{scope}[xshift=0cm]\draw[curva1] (2.000,0) node[below,text=black] {$k^*$} -- (2.000,6.3)
-      node[etiqueta,anchor=south,text=tceemorado] {$\dot c=0$};\end{scope}}
+  \capa{4}{\begin{scope}[xshift=0cm]\draw[curva1] (2.000,0) node[below,text=black] {$\tilde k^*$} -- (2.000,6.3)
+      node[etiqueta,anchor=south,text=tceemorado] {$\dot{\tilde c}=0$};\end{scope}}
   % 5: dinámica de c: a la izquierda de k*, c crece; a la derecha, decrece
   \capa{5}{\draw[dir] (0.55,5.6) -- ++(0,0.5); \draw[dir] (1.35,0.22) -- ++(0,0.45); \draw[dir] (5.4,5.5) -- ++(0,-0.5); \draw[dir] (4.6,2.2) -- ++(0,-0.5);}
   % 6: estado estacionario E
   \capa{6}{\begin{scope}[xshift=0cm]\node[punto] (E) at (2.000,3.571) {};
     \node[etiqueta,below right=1pt] at (2.000,3.571) {$E$};
-    \draw[guia] (0,3.571) node[left,text=black] {$c^*$} -- (2.000,3.571);\end{scope}}
+    \draw[guia] (0,3.571) node[left,text=black] {$\tilde c^*$} -- (2.000,3.571);\end{scope}}
   % 7: senda de silla (calculada), la única que lleva al estado estacionario
   \capa{7}{\begin{scope}[xshift=0cm]\draw[curva3] plot[smooth] coordinates {(0.001,0.001) (0.069,0.135) (0.138,0.268) (0.207,0.401) (0.277,0.535) (0.347,0.668) (0.417,0.801) (0.488,0.933) (0.559,1.066) (0.630,1.198) (0.701,1.330) (0.774,1.463) (0.846,1.594) (0.919,1.727) (0.993,1.858) (1.067,1.990) (1.141,2.121) (1.216,2.251) (1.291,2.382) (1.366,2.512) (1.442,2.643) (1.518,2.772) (1.595,2.902) (1.672,3.031) (1.749,3.160) (1.827,3.288) (1.905,3.416) (1.983,3.544) (2.062,3.672) (2.141,3.799) (2.221,3.927) (2.302,4.054) (2.382,4.180) (2.464,4.308) (2.546,4.435) (2.628,4.561) (2.710,4.687) (2.793,4.813) (2.877,4.940) (2.961,5.065) (3.046,5.191) (3.131,5.317) (3.217,5.442) (3.302,5.567) (3.389,5.693) (3.478,5.819) (3.566,5.945) (3.653,6.069) (3.743,6.195) (3.818,6.300)};
     \node[etiqueta,text=tceeverde,anchor=west] at (3.87,6.30) {senda de silla};
@@ -49,7 +49,7 @@
   \capa{8}{\draw[divergente] plot[smooth] coordinates {(1.024,2.706) (0.989,2.822) (0.944,2.934) (0.889,3.045) (0.828,3.151) (0.761,3.256) (0.692,3.357) (0.619,3.456) (0.546,3.551) (0.472,3.646) (0.392,3.745) (0.312,3.841) (0.235,3.933) (0.157,4.027) (0.077,4.120) (0.001,4.211)};
     \draw[divergente] plot[smooth] coordinates {(1.024,1.374) (1.130,1.432) (1.241,1.482) (1.356,1.523) (1.473,1.555) (1.592,1.578) (1.714,1.595) (1.834,1.605) (1.954,1.609) (2.077,1.609) (2.198,1.604) (2.320,1.595) (2.442,1.583) (2.564,1.568) (2.685,1.550) (2.805,1.531) (2.927,1.509) (3.046,1.486) (3.167,1.460) (3.285,1.434) (3.404,1.407) (3.524,1.378) (3.644,1.348) (3.765,1.317) (3.885,1.285) (4.005,1.252) (4.125,1.219) (4.243,1.185) (4.361,1.152) (4.478,1.118) (4.593,1.083) (4.711,1.048) (4.827,1.013) (4.945,0.977) (5.061,0.941) (5.178,0.905) (5.293,0.869) (5.408,0.833) (5.524,0.796) (5.640,0.760) (5.756,0.723) (5.870,0.686) (5.987,0.649) (6.102,0.612) (6.217,0.575) (6.332,0.538) (6.449,0.500) (6.563,0.463) (6.679,0.426) (6.794,0.389) (6.908,0.351) (7.024,0.314) (7.139,0.277) (7.253,0.240) (7.368,0.203) (7.483,0.166) (7.597,0.129) (7.711,0.092) (7.826,0.055) (7.940,0.019) (8.000,0.000)};}
   % 9: el consumo inicial: A en la senda de silla, B por encima y C por debajo
-  \capa{9}{\draw[guia] (1.024,2.706) -- (1.024,0) node[below,text=black] {$k_0$};
+  \capa{9}{\draw[guia] (1.024,2.706) -- (1.024,0) node[below,text=black] {$\tilde k_0$};
     \node[punto] at (1.024,1.914) {}; \node[etiqueta,anchor=west] at (1.124,1.864) {$A$};
     \node[punto,fill=tceegris] at (1.024,2.706) {}; \node[etiqueta,anchor=east] at (0.964,2.706) {$B$};
     \node[punto,fill=tceegris] at (1.024,1.374) {}; \node[etiqueta,anchor=north west] at (1.074,1.344) {$C$};}
