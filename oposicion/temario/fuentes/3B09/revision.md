@@ -148,6 +148,12 @@ Título oficial: «Comercio internacional y crecimiento económico. Especial ref
 - **Contradicción para el canon (anotada en `_trabajo/canon-pendiente.md`)**: la revisión del 3.A.44 (V19) y la ficha `grossman-helpman` dicen que la respuesta oficial de 2014 (pregunta 31) «coincide» con el modelo y atribuyen el mecanismo de Stolper-Samuelson al AER de 1990. Aquí (decisión C21 del coordinador): el mecanismo es el de la economía pequeña con 2 factores (WP 2970, 1989; Grossman y Helpman, 1991) y la de 2014 coincide solo en sentido amplio. No se toca el 3.A.44.
 - **Otras para el canon**: «especialización perversa» con 2 sentidos (3.B.10 frente al original del 3.B.9, que aquí desaparece); fichas `grossman-helpman`, `difusion-tecnologica` y `prebisch-singer` con el 3.B.9 como «desarrollo»; `difusion` es el gráfico de referencia de su ficha; claves duplicadas (`GrossmanHelpman1991` / `GrossmanHelpman1991Innovation`, `Romer1990Endogenous` / `Romer1990`, `Arrow1962Economic` / `Arrow1962`, `Acemoglu2009` / `Acemoglu2009Introduction`, `Panagariya2004Miracles` / `Panagariya2004`, `RodriguezRodrik2000Trade` / `RodriguezRodrik2000`, `FrankelRomer1999Does` / `FrankelRomer1999`).
 
+## Comentarios de Víctor (10/11/2026, 3.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| «El párrafo del modelo de Solow en la página 17 sepáralo en 1 párrafo con varios subpárrafos con indentación para que sea más fácil de seguir idea por idea.» | II.1.1 b): la viñeta del modelo de Solow conserva la idea principal (sube el nivel, no la tasa) y debajo cuelgan 3 subviñetas (efecto mayor que el estático, efecto de acumulación a medio plazo de Baldwin (1992), mercado único de Baldwin (1989)); las 2 primeras con un 3.er nivel, una idea por línea. Mismo texto y citas. |
+
 ## 7. Dudas abiertas
 
 - **D1 (enganche)**: se usa Corea del Sur, como decidió el coordinador; Ghana sale de la propuesta K1 porque su dato no se comprobó. Las cifras de Corea tienen una sola fuente (Banco Mundial).

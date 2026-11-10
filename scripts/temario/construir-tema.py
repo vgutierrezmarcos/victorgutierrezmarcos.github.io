@@ -452,6 +452,10 @@ def preparar_pandoc(tema, tex, formato):
         return f'\\href{{{url}}}{{{m.group(0)}}}'
     cuerpo = re.sub(r'\\vertema(?:corto)?\{([^{}]*)\}', enlace_tema, cuerpo)
     cuerpo = expandir_funcionclave(expandir_optim(cuerpo))
+    # \tachado{x} (tcee-comun.sty): texmath no entiende \cancel; en Word va como
+    # recuadro con una marca (\phantom{|}) que tachado_docx convierte en tachado
+    if formato == 'docx':
+        cuerpo = re.sub(r'\\tachado(?![a-zA-Z])\s*\{', r'\\boxed{\\phantom{|}', cuerpo)
     # Gráfico o tabla dentro de una caja (figuracaja, tablacaja de tcee.sty): en
     # la web y en Word son figuras y tablas normales dentro del Div de la caja
     cuerpo = re.sub(r'\\(begin|end)\{figuracaja\}', r'\\\1{figure}', cuerpo)
@@ -864,7 +868,19 @@ def retocar_docx(ruta, anio, exclusivo=False):
     if exclusivo:
         aviso_portada_docx(partes)
     imagenes_notas_docx(partes)
+    tachado_docx(partes)
     _guardar_docx(ruta, partes, infos)
+
+
+def tachado_docx(partes):
+    """\\tachado{x}: el recuadro marcado (preparar_pandoc) pasa a ser solo una
+    raya diagonal sobre x, como \\cancel en el PDF."""
+    xml = partes['word/document.xml'].decode('utf-8')
+    marca = re.compile(r'<m:borderBox>\s*<m:e>\s*<m:phant>(?:(?!</m:phant>).)*?<m:t>\|</m:t>(?:(?!</m:phant>).)*?</m:phant>', re.S)
+    propiedades = ('<m:borderBox><m:borderBoxPr><m:hideTop m:val="1"/><m:hideBot m:val="1"/>'
+                   '<m:hideLeft m:val="1"/><m:hideRight m:val="1"/><m:strikeBLTR m:val="1"/>'
+                   '</m:borderBoxPr><m:e>')
+    partes['word/document.xml'] = marca.sub(propiedades, xml).encode('utf-8')
 
 
 def cajas_docx(partes):

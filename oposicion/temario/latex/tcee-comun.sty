@@ -201,5 +201,14 @@
 % \findemo → ∎ al final de una demostración, alineado a la derecha (Víctor,
 % 17/10/2026). En una fórmula en display va tras un \quad.
 \newcommand{\findemo}{\ifmmode\quad\blacksquare\else\unskip\nobreak\hfill\penalty50\hskip1em\null\nobreak\hfill$\blacksquare$\fi}
+% \nuevo{…} y \tachado{…} → en las funciones de beneficio o bienestar de un
+% modelo, el término que añade respecto del anterior (en rojo) y el que se
+% cancela o desaparece (tachado en rojo), como en la versión antigua de los temas
+% (Víctor, 10/11/2026). En la web, rojo y \cancel de MathJax; en Word, rojo no
+% (texmath no lo lee) y el tachado lo pone construir-tema.py.
+\RequirePackage{cancel}
+\renewcommand{\CancelColor}{\color{tceerojo}}
+\newcommand{\nuevo}[1]{\ifmmode\begingroup\color{tceerojo}#1\endgroup\else\textcolor{tceerojo}{#1}\fi}% sin grupo {}: los signos +/− conservan su espaciado de operador
+\newcommand{\tachado}[1]{\cancel{#1}}
 
 \endinput

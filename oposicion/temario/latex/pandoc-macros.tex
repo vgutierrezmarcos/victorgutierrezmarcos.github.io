@@ -13,6 +13,10 @@
 \newcommand{\tcefecha}[1]{}
 \newcommand{\minutos}[1]{\textcolor{tceeminutos}{#1}}
 \newcommand{\vect}[1]{\vec{#1}}
+% \nuevo y \tachado (términos que añade o cancela un modelo): rojo y \cancel en
+% MathJax; en Word construir-tema.py cambia \tachado por un recuadro con tachado
+\newcommand{\nuevo}[1]{{\color{red}{#1}}}
+\newcommand{\tachado}[1]{\cancel{#1}}
 % \tiempo{2,5} → 2′30″ (lo calcula tcee.lua, como \minutos)
 \newcommand{\tiempo}[1]{\textcolor{tceetiempo}{#1}}
 % \esqtiempo{11}: minutos de cada parte en el esquema (tcee.lua: a la derecha y en gris)

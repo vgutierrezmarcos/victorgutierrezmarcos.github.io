@@ -222,7 +222,15 @@ Todas las consultas se hicieron el 5/11/2026. Las URL están en `3B08.bib`.
   7. **4.A.24 y 4.A.25**: ICEX va al 4.A.25 (`mapa.yaml`); FIEM, CESCE y COFIDES, al 4.A.24.
 - **Refranes**: «Arrieros somos y en el camino nos encontraremos» (enganche e idea final); como pegatinas, «Poderoso caballero es don Dinero», «A caballo regalado no le mires el diente», «Muerto el perro, se acabó la rabia», «Quien paga, manda» y «Dos no riñen si uno no quiere». Se comprobó que no los usa ningún otro tema. Quedan para añadir a CRITERIOS § 8 cuando se apruebe el tema.
 
+## Comentarios de Víctor (10/11/2026, 3.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| «Pocos comentarios. Está bastante bien, lo único si pudieras mantener en las funciones de los modelos (p.ej. el modelo de Brander y Spencer) los argumentos adicionales marcados en rojo y tachar para que sea al menos tan visual como estaba en la versión antigua.» | Órdenes nuevas en `latex/tcee-comun.sty`: `\nuevo{…}` (término o argumento que añade el modelo, en rojo `tceerojo`) y `\tachado{…}` (lo que se cancela, tachado en diagonal en rojo, paquete `cancel`). Aplicadas en todas las funciones de los modelos: Brander y Spencer (1985) (beneficio de $A$ con $+s_A q_A$; CPO con $+s_A$; $R_A(q_B;s_A)$; $W_A=B_A-s_Aq_A$ con los 2 términos $s_Aq_A$ tachados, como en la pág. 11 del antiguo); Eaton y Grossman (beneficio con $+s_A$, $R_A(p_B;s_A)$ y $W_A$ con la misma cancelación); mercados recíprocos (coste $c+t_A$, $R_B(q_A^A;t_A)$ y la recaudación en $W_A$); anexo A (funciones de reacción con $s_A$, Eaton y Grossman, y $s_B$ en la guerra de subvenciones). Web: `pandoc-macros.tex` da rojo y `\cancel` de MathJax. Word: texmath no entiende `\cancel`, así que `construir-tema.py` cambia `\tachado` por un recuadro marcado y `tachado_docx` lo convierte en raya diagonal (OMML `strikeBLTR`); el rojo no sale en Word (texmath ignora `\color`). Ver D5. |
+
 ## 7. Dudas abiertas
+
+- **D5, tachado y color en las fórmulas (10/11/2026)**: (a) raya diagonal (`\cancel`) en PDF, web y Word; (b) raya horizontal, como en el antiguo, que MathJax y Word no tienen. **Aplicada: (a)**. En Word las fórmulas no salen en rojo (solo el tachado); para tenerlo habría que pasar los términos a texto, que rompe la ecuación.
 
 - **D1, título del III**: se aplicó la propuesta recomendada, «Comportamiento estratégico entre gobiernos: represalias y guerras comerciales». La alternativa es mantener el título original entero.
 - **D2, bloque II**: se mantiene con 5′ aunque la promoción exterior ya no esté en el título de 2023, porque el 3.B.41 la da por tratada aquí. Si Víctor lo quitara, esa remisión del 3.B.41 quedaría rota.
