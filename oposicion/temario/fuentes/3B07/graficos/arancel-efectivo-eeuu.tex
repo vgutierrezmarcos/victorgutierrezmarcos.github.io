@@ -1,0 +1,35 @@
+% Arancel efectivo de Estados Unidos por socio, 2024, 2025 y agosto de 2026 (%):
+% derechos recaudados / importaciones de bienes. USAFacts, con datos de la
+% Oficina del Censo; CSV en ../datos/arancel-efectivo-eeuu-socios.csv.
+% Capas (CRITERIOS §7): ejes → barras de 2024 → 2025 → agosto de 2026 → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/arancel-efectivo-eeuu-socios.csv}\ar
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      name=ar, width=11cm, height=12cm,
+      xbar=0pt, bar width=6.5pt,
+      xmin=0, xmax=34, ymin=0.4, ymax=9.6, y dir=reverse,
+      ytick={1,...,9},
+      yticklabels={China,Japón,India,Alemania,España,Vietnam,México,Canadá,\textbf{Total}},
+      yticklabel style={font=\footnotesize},
+      xtick={0,5,...,30}, xticklabel style={font=\footnotesize},
+      xlabel={\%}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+      xmajorgrids, grid style={tceegris!25},
+      legend style={font=\footnotesize, draw=none, fill=none, at={(0.98,0.30)}, anchor=south east}, area legend, reverse legend,
+      legend cell align=left,
+      nodes near coords, nodes near coords style={font=\scriptsize, anchor=west, /pgf/number format/use comma, /pgf/number format/fixed, /pgf/number format/precision=1, /pgf/number format/fixed zerofill},
+    ]
+    \capa{2}{\addplot[fill=tceegris!50, draw=none] table[y=orden, x=a2024] {\ar};
+      \addlegendentry{2024}}
+    \capa{3}{\addplot[fill=tceemorado, draw=none] table[y=orden, x=a2025] {\ar};
+      \addlegendentry{2025}}
+    \capa{4}{\addplot[fill=tceedorado, draw=none] table[y=orden, x=ago2026] {\ar};
+      \addlegendentry{agosto de 2026}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

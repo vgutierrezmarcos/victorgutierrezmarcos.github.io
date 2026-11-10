@@ -17,7 +17,8 @@
 %     el tramo bajo y fuera desde Y = 2,78: E_1 = (4,552; 4,236),
 %     RRI_1 = 0,931 < RRI_0.
 % Elaboración propia a partir de Metzler (1949), Lerner (1936) y Gandolfo
-% (2014), cap. 10, y del gráfico a mano del original (Imagen 9).
+% (2014), cap. 10, y del gráfico a mano del original (Imagen 9), con sus
+% anotaciones manuscritas (capas 8 y 9).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -69,9 +70,19 @@
     \capa{7}{\node[punto] (L1) at (4.552,4.236) {};}
     \capa{7}{\draw[thin] (L1) ++(0.15,-0.15) -- (5.5,3.3) node[etiqueta,right] {$E_1$};}
   \end{scope}
-  % 8: rótulos de cada panel
-  \capa{8}{\node[etiqueta,font=\footnotesize,align=center,anchor=north] at (3.5,-1.0) {la RRI de $A$ mejora\\y $p_Y(1+t)/p_X$ sube};}
-  \capa{8}{\node[etiqueta,font=\footnotesize,align=center,anchor=north] at (13.1,-1.0) {$p_Y(1+t)/p_X$ baja:\\se desprotege $Y$};}
-  \capa{8}{\node[etiqueta,font=\footnotesize,align=center,anchor=north] at (22.7,-1.0) {recaudación gastada en $Y$:\\la RRI de $A$ empeora};}
+  % 8: anotaciones a mano del original (Imagen 9): de qué país es la ON anómala
+  \capa{8}{\node[etiqueta,font=\scriptsize,align=center,anchor=south,text=tceegris] at (13.1,8.15) {ON anómala (inelástica) del país\\sobre el que recae el arancel ($B$)};}
+  \capa{8}{\node[etiqueta,font=\scriptsize,align=center,anchor=south,text=tceegris] at (22.7,8.15) {ON anómala (inelástica) del país\\que impone el arancel ($A$)};}
+  % 8: el arancel contrae ON_A (flecha) en cada panel
+  \capa{8}{\draw[->,thin,tceegris] ({g(5.3)-0.15},5.3) -- ({0.6*g(5.3)+0.15},5.3);}
+  \capa{8}{\draw[->,thin,tceegris] ({9.6+1.1*g(5.6)-0.15},5.6) -- ({9.6+0.66*g(5.6)+0.25},5.6);}
+  % 9: cadenas de efectos de las anotaciones a mano: RRI de A (p_X/p_Y) y
+  %    precio relativo interior de X, p_X/[p_Y(1+t)]
+  \capa{9}{\node[etiqueta,font=\footnotesize,anchor=north] at (3.5,-1.0) {$t\uparrow\ \Rightarrow\ \frac{p_X}{p_Y}\uparrow\ \Rightarrow\ \frac{p_X}{p_Y(1+t)}\downarrow$};}
+  \capa{9}{\node[etiqueta,font=\scriptsize,align=center,anchor=north] at (3.5,-2.6) {mejora la RRI de $A$\\y se protege $Y$};}
+  \capa{9}{\node[etiqueta,font=\footnotesize,anchor=north] at (13.1,-1.0) {$t\uparrow\ \Rightarrow\ \frac{p_X}{p_Y}\uparrow\uparrow\ \Rightarrow\ \frac{p_X}{p_Y(1+t)}\uparrow$};}
+  \capa{9}{\node[etiqueta,font=\scriptsize,align=center,anchor=north,draw=tceerojo,thick,inner sep=3pt] at (13.1,-2.6) {¡Ojo! Se desprotege el bien\\sobre el que se pone el arancel};}
+  \capa{9}{\node[etiqueta,font=\footnotesize,anchor=north] at (22.7,-1.0) {$t\uparrow\ \Rightarrow\ \frac{p_X}{p_Y}\downarrow\ \Rightarrow\ \frac{p_X}{p_Y(1+t)}\downarrow\downarrow$};}
+  \capa{9}{\node[etiqueta,font=\scriptsize,align=center,anchor=north,draw=tceerojo,thick,inner sep=3pt] at (22.7,-2.6) {¡Ojo! El arancel empeora\\la RRI de quien lo pone};}
 \end{tikzpicture}
 \end{document}
