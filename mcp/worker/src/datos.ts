@@ -479,7 +479,8 @@ export function cronogramaActivo(docs: Array<{ id: string; datos: Obj }>): { id:
   return (
     docs
       .filter((c) => c.datos.archivado !== true)
-      .sort((a, b) => texto(b.datos.creado).localeCompare(texto(a.datos.creado)))[0] ?? null
+      // La app guarda «creado» en hora de Madrid sin zona; lo que venga con zona se pasa a esa hora antes de comparar.
+      .sort((a, b) => texto(aHoraMadrid(b.datos.creado)).localeCompare(texto(aHoraMadrid(a.datos.creado))))[0] ?? null
   );
 }
 
@@ -556,7 +557,8 @@ export function construirCronograma(p: PropuestaCronograma, ahora = new Date(), 
   }
   const conTemas = semanas.filter((s) => s.descanso !== true).length;
   const temasPorSemana = p.temasPorSemana && p.temasPorSemana > 0 ? Math.round(p.temasPorSemana) : Math.max(1, Math.round(temas.length / Math.max(1, conTemas)));
-  const marca = ahora.toISOString();
+  // Como la app: hora de Madrid sin zona (`DateTime.now().toIso8601String()`).
+  const marca = ahoraMadrid(ahora);
   const documento: Obj = {
     id: nuevoId(),
     ejercicio: p.ejercicio,
@@ -636,7 +638,12 @@ export function construirInforme(i: InformeCante, ahora = new Date(), cliente = 
   if (Object.keys(valoraciones).length) resultado.valoraciones = valoraciones;
   if (comentarios) resultado.comentarios = comentarios;
   if (Object.keys(criterios).length) resultado.criterios = criterios;
-  return { id: marca.replace(/[:.]/g, '-').slice(0, 19), documento, resultado, errores };
+  // Con varios temas, la valoración general es la media redondeada de las de cada tema (lo que leen las estadísticas).
+  if (resultado.valoraciones && resultado.valoracion === undefined) {
+    const notas = Object.values(valoraciones);
+    resultado.valoracion = Math.round(notas.reduce((s, v) => s + v, 0) / notas.length);
+  }
+  return { id: marca.replace(/[:.]/g, '-').slice(0, 23), documento, resultado, errores };
 }
 
 // ------------------------------------------------------------ Visión de conjunto
@@ -678,4 +685,66 @@ export function semanaDe(c: CronogramaResumen, hoy: string): { actual: SemanaRes
   const actual = c.semanas.find((s) => s.lunes <= hoy && hoy <= s.cante) ?? null;
   const siguiente = c.semanas.find((s) => s.lunes > hoy && !s.descanso) ?? null;
   return { actual, siguiente };
+}
+
+// ------------------------------------------------------------ Escrituras prudentes
+
+/**
+ * Lo que un cronograma nuevo conserva del que sustituye (si es del mismo ejercicio): si estaba compartido con el
+ * preparador, sigue compartido (si no, el preparador dejaría de verlo sin aviso), y los temas ya hechos o
+ * desmarcados que siguen en el nuevo no se pierden.
+ */
+export function heredarCronograma(nuevo: Obj, anterior: Obj | null): { compartido: boolean; hechos: number } {
+  if (!anterior || numero(anterior.ejercicio, 3) !== numero(nuevo.ejercicio, 3)) return { compartido: false, hechos: 0 };
+  const temas = new Set(lista(nuevo.temas));
+  const hechos = Object.fromEntries(Object.entries(objeto(anterior.hechos)).filter(([t]) => temas.has(t)));
+  nuevo.hechos = hechos;
+  nuevo.desmarcados = lista(anterior.desmarcados).filter((t) => temas.has(t));
+  nuevo.compartir = anterior.compartir === true;
+  return { compartido: nuevo.compartir === true, hechos: Object.keys(hechos).length };
+}
+
+const conValor = (v: Json | undefined): boolean => (typeof v === 'number' ? v > 0 : typeof v === 'string' ? v.trim() !== '' : esObj(v) ? Object.keys(v).length > 0 : false);
+
+/**
+ * Lo que ya está apuntado en el diario del cante (por el opositor o su preparador) no se pisa: de `resultado`
+ * se quitan los campos que ya tienen un valor distinto y se devuelven aparte, para que la IA lo diga.
+ */
+export function sinPisar(resultado: Obj, previo: Json | undefined): { escribir: Obj; yaHabia: Obj } {
+  const antes = objeto(previo);
+  const escribir: Obj = {};
+  const yaHabia: Obj = {};
+  for (const [k, v] of Object.entries(resultado)) {
+    if (conValor(antes[k]) && JSON.stringify(antes[k]) !== JSON.stringify(v)) yaHabia[k] = antes[k];
+    else escribir[k] = v;
+  }
+  return { escribir, yaHabia };
+}
+
+/** Las tareas de una corrección como deberes del cante (`Tarea.toJson`, tipo «libre»), sin repetir las que ya están. */
+export function anadirDeberes(actuales: Json | undefined, textos: string[], marca: string): { tareas: Json[]; nuevas: number } {
+  const tareas = Array.isArray(actuales) ? [...actuales] : [];
+  const ya = new Set(tareas.filter(esObj).map((t) => texto(t.texto).trim().toLowerCase()));
+  let nuevas = 0;
+  for (const t of textos.map((x) => x.trim()).filter(Boolean)) {
+    if (ya.has(t.toLowerCase())) continue;
+    ya.add(t.toLowerCase());
+    tareas.push({ id: nuevoId(), tipo: 'libre', texto: t.slice(0, 200), creada: marca });
+    nuevas++;
+  }
+  return { tareas, nuevas };
+}
+
+/** Apuntes nuevos para la agenda de un tema (`Apunte.toJson`), sin repetir los que siguen pendientes. */
+export function anadirApuntes(actuales: Json | undefined, textos: string[], marca: string): { pendientes: Json[]; nuevos: number } {
+  const pendientes = Array.isArray(actuales) ? [...actuales] : [];
+  const ya = new Set(pendientes.filter(esObj).filter((a) => a.hecho == null && a.borrado !== true).map((a) => texto(a.texto).trim().toLowerCase()));
+  let nuevos = 0;
+  for (const t of textos.map((x) => x.trim()).filter(Boolean)) {
+    if (ya.has(t.toLowerCase())) continue;
+    ya.add(t.toLowerCase());
+    pendientes.push({ id: nuevoId(), texto: t, creado: marca, hecho: null, borrado: false });
+    nuevos++;
+  }
+  return { pendientes, nuevos };
 }

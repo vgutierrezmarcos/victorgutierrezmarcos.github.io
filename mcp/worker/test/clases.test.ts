@@ -39,6 +39,9 @@ class Vista implements AlmacenDatos {
     for (const campo of soloCampos) actual[campo] = datos[campo];
     this.base.docs.set(abs, actual);
   }
+  async lote(escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[] }>) {
+    for (const e of escrituras) await this.escribir(e.ruta, e.datos, e.soloCampos);
+  }
 }
 
 describe('clases.ts', () => {

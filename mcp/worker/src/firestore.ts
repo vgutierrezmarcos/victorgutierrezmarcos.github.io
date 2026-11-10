@@ -86,6 +86,15 @@ export interface AlmacenDatos {
   listar(coleccion: string): Promise<Array<{ id: string; datos: { [k: string]: Json } }>>;
   consultar(coleccion: string, consulta: Consulta): Promise<Array<{ id: string; datos: { [k: string]: Json }; creado?: string }>>;
   escribir(ruta: string, datos: { [k: string]: Json }, soloCampos?: string[]): Promise<void>;
+  /** Varias escrituras a la vez: o entran todas o ninguna. */
+  lote(escrituras: Escritura[]): Promise<void>;
+}
+
+export interface Escritura {
+  ruta: string;
+  datos: { [k: string]: Json };
+  /** Si se da, solo cambian esos campos; si no, se sustituye (o crea) el documento entero. */
+  soloCampos?: string[];
 }
 
 /**
@@ -175,6 +184,16 @@ export class Firestore implements AlmacenDatos {
     const url = new URL(this.url(ruta));
     for (const campo of soloCampos ?? []) url.searchParams.append('updateMask.fieldPaths', campo);
     await this.peticion('PATCH', url.toString(), { fields: aCampos(datos) });
+  }
+
+  /** `:commit`: todas las escrituras en una sola operación atómica (archivar un cronograma y crear el nuevo, por ejemplo). */
+  async lote(escrituras: Escritura[]): Promise<void> {
+    if (!escrituras.length) return;
+    const writes = escrituras.map((e) => ({
+      update: { name: `${this.documentos}/${[this.raiz, e.ruta].filter(Boolean).join('/')}`, fields: aCampos(e.datos) },
+      ...(e.soloCampos ? { updateMask: { fieldPaths: e.soloCampos } } : {}),
+    }));
+    await this.peticion('POST', `${this.base}:commit`, { writes });
   }
 }
 

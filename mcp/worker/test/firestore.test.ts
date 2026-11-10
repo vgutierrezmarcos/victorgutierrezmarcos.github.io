@@ -110,6 +110,21 @@ describe('Firestore por REST con el fetch global', () => {
     await expect(db.leer('cantes/c1')).rejects.toMatchObject({ estado: 403, message: 'Missing or insufficient permissions.' });
   });
 
+  it('lote: varias escrituras en un solo commit, con sus nombres completos y sus máscaras', async () => {
+    const db = new Firestore('p', 'tok', 'users/u1');
+    respuestas = [{}];
+    await db.lote([
+      { ruta: 'cronogramas/viejo', datos: { archivado: true }, soloCampos: ['archivado'] },
+      { ruta: 'cronogramas/nuevo', datos: { id: 'nuevo' } },
+    ]);
+    expect(llamadas).toHaveLength(1);
+    expect(llamadas[0].url).toBe(`${base}:commit`);
+    const { writes } = llamadas[0].cuerpo as { writes: Array<{ update: { name: string }; updateMask?: { fieldPaths: string[] } }> };
+    expect(writes.map((w) => w.update.name)).toEqual(['projects/p/databases/(default)/documents/users/u1/cronogramas/viejo', 'projects/p/databases/(default)/documents/users/u1/cronogramas/nuevo']);
+    expect(writes[0].updateMask).toEqual({ fieldPaths: ['archivado'] });
+    expect(writes[1].updateMask).toBeUndefined();
+  });
+
   it('tramo: un id que viene de la IA no puede cambiar la ruta', () => {
     expect(Firestore.tramo(' c1/../../x?y ')).toBe('c1%2F..%2F..%2Fx%3Fy');
   });
