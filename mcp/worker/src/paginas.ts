@@ -133,3 +133,27 @@ export function paginaPortada(urlMcp: string): string {
     1,
   );
 }
+
+/** Mensajes de la biblioteca OAuth (en inglés) que puede ver el opositor, en español. */
+export function traducirErrorOAuth(mensaje: string): string {
+  if (/not started in this browser/i.test(mensaje))
+    return 'Esta conexión no se empezó en este navegador, o ha pasado demasiado tiempo. Empieza de nuevo desde tu asistente de IA y termina los tres pasos en la misma ventana.';
+  if (/expired/i.test(mensaje)) return 'La conexión ha caducado antes de terminar. Empieza de nuevo desde tu asistente de IA.';
+  return mensaje;
+}
+
+/** El conector se añadió con la dirección antigua (workers.dev): hay que quitarlo y añadirlo con la nueva. */
+export function paginaMudanza(urlMcp: string): string {
+  return pagina(
+    'El conector ha cambiado de dirección',
+    `<h1>El conector ha cambiado de dirección</h1>
+<p>Tienes añadido el conector con su dirección antigua (puede que con el nombre «Prepara con Claude»). Desde esa dirección ya no se puede conectar.</p>
+<ol>
+  <li>En tu asistente de IA, abre los conectores y <strong>quita</strong> este conector (Desconectar o Eliminar).</li>
+  <li>Añade uno nuevo con esta dirección: <code>${escapar(urlMcp)}</code></li>
+  <li>Pulsa Conectar y sigue los tres pasos.</li>
+</ol>
+<p class="nota">Paso a paso, con capturas: <a href="${WEB}/oposicion/economia.html#conector">EconomIA</a>. No pierdes nada: tus datos están en la app.</p>`,
+    1,
+  );
+}

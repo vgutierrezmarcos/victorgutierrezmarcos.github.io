@@ -101,7 +101,7 @@ describe('herramientas', () => {
           '3.B.26': { oposicion: 'tcee', titulo: 'Crisis financieras y pánicos bancarios', ejercicio: 3, parte: 'B', bloque: 'Economía Corporativa y Financiera', categoria: 'Microeconomía', revisado: false,
             web: { pdf: null, disponible: false }, manuel: [], atcee: [{ autor: 'Tebar', promocion: 'LXXV', anio: 2026, numeracion: 'actual', fichero: 'B.26.docx', url: 'https://drive.google.com/file/d/1AAAAAAAAAAAAAAAAAAAAAAAA/view' }, { autor: 'Fuentes', promocion: 'LXXI', anio: 2022, numeracion: 'antigua', fichero: '26B.docx', url: 'https://drive.google.com/file/d/1BBBBBBBBBBBBBBBBBBBBBBBB/view' }] },
         },
-        dce: {},
+        dce: { '1.A.4': { oposicion: 'dce', titulo: 'La oferta y la demanda', ejercicio: 1, parte: 'A · Economía general', manuel: 'https://manuelcabadogarcia.es/microeconomia/03-tema-a3.html' } },
       }),
       apuntes: async (id) => ({ formato: 'docx', esquema: ['I. Introducción'], texto: id === '1AAAAAAAAAAAAAAAAAAAAAAAA' ? 'uno dos tres cuatro' : '' }),
       textos: async (tema) => (tema === '3.B.26' ? { web: { url: 'w', texto: 'I. Introducción a las crisis\nTexto del tema' }, atcee: { '1BBBBBBBBBBBBBBBBBBBBBBBB': { autor: 'Fuentes', fichero: '26B.pdf', texto: 'apuntes en pdf' } } } : null),
@@ -110,6 +110,7 @@ describe('herramientas', () => {
         (({
           'SKILL.md': '---\nname: prepara-oposicion\n---\n\n# EconomIA\n\nEres el equipo.\n\n## Cómo empezar\n\nTabla.\n\n## Reglas comunes a todos los agentes\n\n- Crítico.\n\n## Cómo termina toda entrega\n\nAviso.',
           'references/agentes/dudas.md': '# Dudas',
+          'references/temario/indices-temas.md': '# Índices\n\n## parte_A.pdf\n\n- Curva de Phillips (p. 2)\n\n## 3.B.26. Crisis financieras y pánicos bancarios (3B26.pdf)\n\n- 1. MODELOS (p. 3)\n  - 1.1. Modelo de Diamond y Dybvig (p. 4)\n    - Pánicos bancarios en Diamond-Dybvig (p. 5)\n',
           'references/agentes/corrector-cante.md': '# Corrector del cante',
           'references/temas/3A08/ficha.md': '# Ficha',
         }) as Record<string, string>)[ruta] ?? null,
@@ -192,6 +193,13 @@ describe('herramientas', () => {
     expect(manuel.autor).toBe('Manuel Cabado García');
     const ajeno = await c.callTool({ name: 'leer_fuente', arguments: { enlace: '1ZZZZZZZZZZZZZZZZZZZZZZZZ' } });
     expect(ajeno.isError).toBe(true);
+    // Por contenido: lo que no está en ningún título sale por los apartados del PDF del tema
+    const dd = json(await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'Diamond Dybvig' } }));
+    expect((dd.porContenido as Obj[]).map((t) => t.codigo)).toEqual(['3.B.26']);
+    expect((dd.porContenido as Obj[])[0].apartados).toEqual(['1.1. Modelo de Diamond y Dybvig (p. 4)', 'Pánicos bancarios en Diamond-Dybvig (p. 5)']);
+    // DCE sin consulta: el programa por partes (antes daba error)
+    const dce = json(await c.callTool({ name: 'buscar_temario', arguments: { oposicion: 'dce' } }));
+    expect((dce.bloques as Obj[])[0]).toMatchObject({ bloque: 'A · Economía general', categoria: 'Ejercicio 1' });
     const nada = await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'astronomía' } });
     expect(nada.isError).toBe(true);
   });
