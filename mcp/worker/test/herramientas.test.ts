@@ -112,7 +112,6 @@ describe('herramientas', () => {
           'references/agentes/dudas.md': '# Dudas',
           'references/temario/indices-temas.md': '# Índices\n\n## parte_A.pdf\n\n- Curva de Phillips (p. 2)\n\n## 3.B.26. Crisis financieras y pánicos bancarios (3B26.pdf)\n\n- 1. MODELOS (p. 3)\n  - 1.1. Modelo de Diamond y Dybvig (p. 4)\n    - Pánicos bancarios en Diamond-Dybvig (p. 5)\n',
           'references/agentes/corrector-cante.md': '# Corrector del cante',
-          'references/temas/3A08/ficha.md': '# Ficha',
         }) as Record<string, string>)[ruta] ?? null,
       cliente: async () => 'Le Chat',
       desconectar: async () => {
@@ -134,7 +133,7 @@ describe('herramientas', () => {
     expect(s).toContain('# EconomIA');
     expect(s).toContain('leer_skill(ruta)');
     expect(texto(await c.callTool({ name: 'leer_skill', arguments: { ruta: './references/agentes/dudas.md' } }))).toBe('# Dudas');
-    expect(texto(await c.callTool({ name: 'leer_skill', arguments: { ruta: 'references/temas/3A08/ficha.md' } }))).toContain('Material exclusivo');
+    expect(texto(await c.callTool({ name: 'leer_skill', arguments: { ruta: 'references/temas/3A08/ficha.md' } }))).toMatch(/Material exclusivo[\s\S]*# Ficha 3\.A\.8/);
     const malo = await c.callTool({ name: 'leer_skill', arguments: { ruta: '../../index.html' } });
     expect(malo.isError).toBe(true);
     const falta = await c.callTool({ name: 'leer_skill', arguments: { ruta: 'references/no-existe.md' } });

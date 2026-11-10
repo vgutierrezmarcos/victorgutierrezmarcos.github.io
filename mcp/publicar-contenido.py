@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Sube al KV CONTENIDO del Worker los materiales exclusivos de la skill «EconomIA».
 
-Lee la carpeta desplegada de la skill (la genera scripts/skill-opositor.py):
-    oposicion/temario/app/skill/prepara-oposicion/references/{temas,dictamen,canon}
+Lee la carpeta de construcción de la skill (la genera scripts/skill-opositor.py; --origen para otra):
+    ~/.cache/skill-opositor/prepara-oposicion/references/{temas,dictamen,canon}
+(la copia desplegada en la web no lleva este material: solo se sirve con sesión)
 y la sube con `wrangler kv bulk put` con las mismas rutas relativas como claves
 (temas/3A08/tema.md, temas/3A08/ficha.md, temas/3A08/guion-cante.md,
 dictamen/guia-1D01.md, canon/notacion.md…) más un indice.json con lo que hay, que es
@@ -27,7 +28,9 @@ import tempfile
 from datetime import datetime, timezone
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SKILL = os.path.join(RAIZ, 'oposicion', 'temario', 'app', 'skill', 'prepara-oposicion', 'references')
+# La carpeta de construcción de scripts/skill-opositor.py (completa). La copia desplegada en la web ya no lleva
+# el material exclusivo: solo se sirve con sesión, desde este KV.
+SKILL = os.path.join(os.path.expanduser('~'), '.cache', 'skill-opositor', 'prepara-oposicion', 'references')
 WORKER = os.path.join(RAIZ, 'mcp', 'worker')
 CARPETAS = ('temas', 'dictamen', 'canon')
 # KV admite valores de hasta 25 MB; los .md de un tema rondan los 100-300 kB.
@@ -102,7 +105,9 @@ def recoger():
     if carpetas != enIndice or not temas:
         sys.exit(f'INDICE.md no cuadra con las carpetas de temas: sin fila {sorted(carpetas - enIndice)}, sin carpeta {sorted(enIndice - carpetas)}')
     commit = re.search(r'commit ([0-9a-f]{7,})', leer(indice_md)) if os.path.exists(indice_md) else None
+    version = re.search(r'^version:\s*(\S+)', leer(os.path.join(os.path.dirname(SKILL), 'VERSION.txt')), re.M) if os.path.exists(os.path.join(os.path.dirname(SKILL), 'VERSION.txt')) else None
     indice = {
+        'version': version.group(1) if version else None,
         'generado': datetime.now(timezone.utc).isoformat(timespec='seconds'),
         'commit': commit.group(1) if commit else None,
         'temas': temas,
@@ -136,7 +141,11 @@ def main():
     p.add_argument('--local', action='store_true', help='subir al KV local de wrangler dev en vez del remoto')
     p.add_argument('--limpiar', action='store_true', help='borrar antes las claves de temas, dictamen y canon')
     p.add_argument('--solo-json', metavar='FICHERO', help='escribir el fichero bulk y no subir nada')
+    p.add_argument('--origen', metavar='CARPETA', help='carpeta references/ de la skill completa (por defecto, la de construcción de skill-opositor.py)')
     args = p.parse_args()
+    if args.origen:
+        global SKILL
+        SKILL = os.path.abspath(args.origen)
 
     pares, indice = recoger()
     print(f'{len(pares) - 1} ficheros .md ({len(indice["temas"])} temas, {len(indice["dictamen"])} del dictamen, {len(indice["canon"])} del canon) + indice.json')
