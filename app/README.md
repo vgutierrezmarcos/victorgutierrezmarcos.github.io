@@ -419,6 +419,24 @@ Pruebas: `motor_test_test.dart` (acierto por tema, más falladas, pesos, composi
 - `GOOGLE_SERVICES_JSON`: `google-services.json` en base64.
 - `KEYSTORE_BASE64` y `KEYSTORE_PASSWORD`: almacén `tcee-upload.jks` en base64 y su contraseña (alias `tcee`).
 
+## iOS (preparado, sin publicar)
+
+La app no está en la App Store: se deja lista por si hace falta (decisión del 27 oct. 2026: medir antes en GA4 cuántos usuarios de `/app/abrir/` entran desde iPhone; mientras, esos usuarios tienen la versión web). Sin Mac, sin iPhone y sin cuenta de Apple, la comprobación se hace en la nube:
+
+- `.github/workflows/build-app-ios.yml` (runner macOS, gratis en un repositorio público) compila el binario de iPhone en Release **sin firmar**, lo compila para el simulador, lo abre en un iPhone simulado y guarda capturas (8, 20 y 40 s), la salida y, si se cierra sola, los informes de fallo (artefacto `ios-simulador`). Se lanza a mano (`gh workflow run build-app-ios.yml`), al cambiar `app/ios/` o `pubspec`, y el día 1 de cada mes por si Flutter o Xcode lo rompen. Cada ejecución tarda unos 15 min.
+- Proyecto: `ios/` (bundle `es.victorgutierrezmarcos.tceeApp`, iOS 15.0), `Podfile` con iOS 15 en todos los pods, `Info.plist` con los textos de micrófono y fotos, modos de fondo `fetch` y `remote-notification` y sin cifrado propio (`ITSAppUsesNonExemptEncryption`).
+- El código ya separa lo que solo existe en Android (`Platform.isAndroid` o `defaultTargetPlatform` en `avisos_fondo_io.dart`, `widget_inicio_io.dart`, `permisos_io.dart`, `enlaces_io.dart`, `dictado_io.dart`, `actualizaciones.dart`): en iOS no hay tarea periódica de avisos, widget, dictado propio ni actualización desde la app.
+- Sin `GoogleService-Info.plist` la app arranca en modo local (sin cuenta). Secreto opcional `GOOGLE_SERVICE_INFO_PLIST` (base64): el workflow lo mete en la app del simulador con el esquema de URL de Google Sign-In.
+
+**Qué falta el día que se publique** (en este orden):
+
+1. Cuenta de Apple Developer (99 $/año; individual, la de organización pide D-U-N-S).
+2. Registrar la app iOS en Firebase (`web-vgm`) y añadir `GoogleService-Info.plist` al proyecto de Xcode (recurso de Runner) y `REVERSED_CLIENT_ID` en `CFBundleURLTypes`; clave APNs en Firebase para los avisos push.
+3. **Iniciar sesión con Apple** (norma 4.8 de la App Store: obligatoria si se ofrece Google). Firebase Auth lo admite (`sign_in_with_apple`); en la web y en Android no hace falta.
+4. Avisos con la app cerrada: en iOS no hay WorkManager. Los de la red y los temas anticipados tienen que ir por push (como `push_proceso.dart`) o programarse de antemano como notificaciones locales.
+5. Widget de inicio: extensión WidgetKit en Swift aparte (opcional).
+6. Firma y subida a TestFlight desde el workflow (certificado + perfil o clave de App Store Connect), manifiesto de privacidad `PrivacyInfo.xcprivacy` de la app si el código propio usa API con motivo declarado, ficha, capturas de 6,7" y 6,5" y el mismo aviso «no oficial» con fuentes que pidió Google.
+
 ## Distribución del APK
 
 El APK se publica como release `app-latest` del repositorio, y la web lo enlaza desde `urlApk`. Para publicar una versión nueva:

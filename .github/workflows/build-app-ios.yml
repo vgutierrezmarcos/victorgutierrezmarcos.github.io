@@ -1,0 +1,104 @@
+name: Build app iOS (comprobación, sin firmar)
+
+# Deja la app lista para iOS sin Mac ni cuenta de Apple: compila en un runner
+# macOS de GitHub (gratis en un repositorio público), la abre en el simulador
+# de iPhone y guarda capturas y el registro. No firma ni publica nada.
+# Ver «iOS» en app/README.md.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'app/ios/**'
+      - 'app/pubspec.yaml'
+      - 'app/pubspec.lock'
+      - '.github/workflows/build-app-ios.yml'
+  schedule:
+    # Una vez al mes, por si una versión nueva de Flutter o de Xcode rompe iOS.
+    - cron: '0 5 1 * *'
+
+concurrency:
+  group: build-app-ios
+  cancel-in-progress: true
+
+jobs:
+  ios:
+    runs-on: macos-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - run: flutter --version && xcodebuild -version
+      - run: flutter pub get
+
+      - name: CocoaPods
+        working-directory: app/ios
+        run: pod install --repo-update
+
+      # Binario de verdad (arm64, Release) sin firmar: lo que algún día iría a TestFlight.
+      - name: Compilar para iPhone (Release, sin firmar)
+        run: flutter build ios --release --no-codesign
+
+      - name: Compilar para el simulador (Debug)
+        run: flutter build ios --simulator --debug
+
+      # Sin este secreto la app arranca en modo local (sin cuenta), como en Android.
+      # Al tenerlo, se mete en la app ya compilada (en el proyecto de Xcode no está
+      # aún: ver app/README.md) con el esquema de URL que pide Google Sign-In.
+      - name: Credenciales Firebase (secreto GOOGLE_SERVICE_INFO_PLIST, base64)
+        if: ${{ env.GSI != '' }}
+        env:
+          GSI: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}
+        run: |
+          APP=build/ios/iphonesimulator/Runner.app
+          echo "$GSI" | base64 -d > "$APP/GoogleService-Info.plist"
+          REV=$(/usr/libexec/PlistBuddy -c 'Print :REVERSED_CLIENT_ID' "$APP/GoogleService-Info.plist")
+          /usr/libexec/PlistBuddy -c "Add :CFBundleURLTypes array" "$APP/Info.plist" || true
+          /usr/libexec/PlistBuddy -c "Add :CFBundleURLTypes:0 dict" "$APP/Info.plist"
+          /usr/libexec/PlistBuddy -c "Add :CFBundleURLTypes:0:CFBundleURLSchemes array" "$APP/Info.plist"
+          /usr/libexec/PlistBuddy -c "Add :CFBundleURLTypes:0:CFBundleURLSchemes:0 string $REV" "$APP/Info.plist"
+
+      - name: Abrir en el simulador y sacar capturas
+        run: |
+          set -euo pipefail
+          mkdir -p ../ios-prueba
+          # El primer iPhone disponible (los nombres cambian con cada imagen del runner).
+          UDID=$(xcrun simctl list devices available -j | python3 -c '
+          import json, sys
+          d = json.load(sys.stdin)["devices"]
+          ios = sorted((k for k in d if "iOS" in k), reverse=True)
+          print(next(x["udid"] for k in ios for x in d[k] if x["name"].startswith("iPhone")))')
+          xcrun simctl list devices | grep "$UDID" | tee ../ios-prueba/dispositivo.txt
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl install "$UDID" build/ios/iphonesimulator/Runner.app
+          xcrun simctl launch --stdout=$PWD/../ios-prueba/stdout.txt --stderr=$PWD/../ios-prueba/stderr.txt \
+            "$UDID" es.victorgutierrezmarcos.tceeApp
+          for t in 8 20 40; do
+            sleep $(( t - ${prev:-0} )); prev=$t
+            xcrun simctl io "$UDID" screenshot "../ios-prueba/captura-${t}s.png"
+          done
+          # Si la app se ha cerrado sola, es que ha fallado al arrancar.
+          if ! xcrun simctl spawn "$UDID" launchctl list | grep -q tceeApp; then
+            echo "::error::La app no sigue abierta a los 40 s (mira stderr.txt y los informes de fallo)"
+            cp ~/Library/Logs/DiagnosticReports/Runner* ../ios-prueba/ 2>/dev/null || true
+            exit 1
+          fi
+
+      - name: Guardar capturas y registro
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-simulador
+          path: ios-prueba/
+          if-no-files-found: ignore
