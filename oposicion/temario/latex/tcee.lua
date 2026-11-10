@@ -237,9 +237,10 @@ local ESTILO_COLOR = {
   tceenaranja = 'Texto naranja', tceerojo = 'Texto rojo', tceedorado = 'Texto dorado',
 }
 
--- Fórmulas sencillas ($<0$, $\leq 0$, $i$) como texto, para que en Word tomen
+-- Fórmulas sencillas ($<0$, $\leq 0$, $i$, $\checkmark$, $\times$) como texto, para que en Word tomen
 -- el color del estilo de carácter. Las demás se dejan como fórmula.
 local SIMBOLOS = { ['\\leq'] = '≤', ['\\geq'] = '≥', ['\\neq'] = '≠', ['\\,'] = ' ', ['\\;'] = ' ',
+                   ['\\checkmark'] = '✓', ['\\times'] = '×',
                    ['{'] = '', ['}'] = '', ['-'] = '−' }
 local RELACIONES = { '<', '>', '=', '≤', '≥', '≠' }
 local function math_a_texto(m)
@@ -249,7 +250,7 @@ local function math_a_texto(m)
   for k, v in pairs(SIMBOLOS) do t = t:gsub(k:gsub('%p', '%%%0'), v) end
   t = t:gsub('%s+', ' '):gsub('^ ', ''):gsub(' $', '')
   -- Solo relaciones, signos y números (≤ ≥ ≠ − ocupan tres bytes en UTF-8)
-  local resto = t:gsub('≤', ''):gsub('≥', ''):gsub('≠', ''):gsub('−', '')
+  local resto = t:gsub('≤', ''):gsub('≥', ''):gsub('≠', ''):gsub('−', ''):gsub('✓', ''):gsub('×', '')
   if not resto:match('^[<>=%d%., ]*$') then return nil end
   for _, r in ipairs(RELACIONES) do
     if t:sub(1, #r) == r and t:sub(#r + 1, #r + 1) ~= ' ' and #t > #r then
