@@ -15,6 +15,7 @@ import {
   resumenCronograma,
   resumenProgreso,
   resumenTest,
+  desdeMadrid,
   type TemasPorPregunta,
 } from './datos';
 import { type Apuntes, ErrorApuntes, idDeDrive } from './drive';
@@ -104,6 +105,26 @@ function manualesPara(indice: IndiceFuentes, tema: TemaFuentes) {
     const b = sinTildes(m.bloque);
     return b.split(/[^a-zñ]+/).filter((p) => p.length > 4).some((p) => claves.includes(p.slice(0, 7)));
   });
+}
+
+/** Apartados de cada tema según los marcadores de su PDF (references/temario/indices-temas.md), para buscar por contenido. */
+let apartadosEnMemoria: { md: string; porTema: Map<string, string[]> } | null = null;
+export function apartadosPorTema(md: string): Map<string, string[]> {
+  if (apartadosEnMemoria?.md === md) return apartadosEnMemoria.porTema;
+  const porTema = new Map<string, string[]>();
+  let actual: string[] | null = null;
+  for (const linea of md.split('\n')) {
+    if (linea.startsWith('## ')) {
+      const cod = linea.match(/^## (\d\.[A-Z]\.\d{1,2})\. /)?.[1];
+      actual = cod ? [] : null;
+      if (cod) porTema.set(cod, actual!);
+    } else if (actual) {
+      const t = linea.replace(/^\s*-\s*/, '').trim();
+      if (t) actual.push(t);
+    }
+  }
+  apartadosEnMemoria = { md, porTema };
+  return porTema;
 }
 
 const AVISO_EXCLUSIVO =
@@ -349,7 +370,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Buscar en el programa',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'Busca en el programa de TCEE y DCE por materia, bloque o palabras del título y devuelve los temas que encajan, agrupados por bloque de la organización del temario, con su idea clave y qué fuentes tienen (revisado, PDF de la web, Manuel, número de apuntes de la ATCEE). Úsala para «¿qué temas forman la teoría microeconómica?», «¿dónde se estudia la curva de Phillips?», «¿qué temas de comercio internacional hay?». Sin consulta, devuelve los bloques con sus temas.',
+        'Busca en el programa de TCEE y DCE por materia, bloque o palabras del título, y también por contenido (los apartados de cada tema del temario de la web: un modelo, una curva, un autor), y devuelve los temas que encajan, agrupados por bloque de la organización del temario, con su idea clave, qué fuentes tienen (revisado, PDF de la web, Manuel, número de apuntes de la ATCEE) y, en «porContenido», los apartados donde aparece lo buscado. Úsala para «¿qué temas forman la teoría microeconómica?», «¿dónde se estudia la curva de Phillips?», «¿qué temas de comercio internacional hay?». Sin consulta, devuelve los bloques con sus temas (en DCE, las partes del programa).',
       inputSchema: {
         consulta: z.string().max(120).default('').describe('Materia, bloque o palabras: «microeconomía», «crecimiento», «Phillips», «parte B»…'),
         oposicion: oposicionParam,
@@ -374,14 +395,30 @@ export function crearServidor(ctx: Contexto): McpServer {
         const bloques = indice.bloques
           .filter((b) => oposicion === 'tcee' && (!palabras.length || encaja(`${b.nombre} ${b.categoria}`)))
           .map((b) => ({ bloque: b.nombre, categoria: b.categoria, temas: b.temas.map(resumen).filter(Boolean) }));
+        if (oposicion === 'dce' && !palabras.length) {
+          // DCE no tiene bloques propios: sin consulta, el programa por partes.
+          const partes = new Map<string, string[]>();
+          for (const [c, t] of Object.entries(temas)) partes.set(t.parte, [...(partes.get(t.parte) ?? []), c]);
+          for (const [parte, codigos] of partes) bloques.push({ bloque: parte, categoria: `Ejercicio ${temas[codigos[0]].ejercicio}`, temas: codigos.map(resumen).filter(Boolean) });
+        }
         const enBloques = new Set(bloques.flatMap((b) => b.temas.map((t) => t!.codigo)));
         const sueltos = palabras.length
           ? Object.entries(temas).filter(([c, t]) => !enBloques.has(c) && encaja(`${c} ${t.titulo} ${t.bloque ?? ''} ${t.categoria ?? ''} ${t.idea ?? ''} ${t.parte}`)).map(([c]) => resumen(c))
           : [];
-        if (!bloques.length && !sueltos.length) return error(`Nada en el programa de ${oposicion.toUpperCase()} encaja con «${consulta}». Prueba con otra palabra o sin consulta para ver los bloques.`);
+        // Por contenido: los apartados de los PDF del temario (solo TCEE) que llevan todas las palabras.
+        const indices = palabras.length && oposicion === 'tcee' ? await ctx.skill('references/temario/indices-temas.md').catch(() => null) : null;
+        const porContenido = indices
+          ? [...apartadosPorTema(indices)]
+              .map(([cod, lineas]) => ({ cod, lineas: lineas.filter((l) => encaja(l)) }))
+              .filter((x) => x.lineas.length && temas[x.cod])
+              .sort((a, b) => b.lineas.length - a.lineas.length)
+              .slice(0, 12)
+              .map((x) => ({ ...resumen(x.cod)!, apartados: x.lineas.slice(0, 6), masApartados: x.lineas.length > 6 ? x.lineas.length - 6 : undefined }))
+          : [];
+        if (!bloques.length && !sueltos.length && !porContenido.length) return error(`Nada en el programa de ${oposicion.toUpperCase()} encaja con «${consulta}». Prueba con otra palabra o sin consulta para ver los bloques.`);
         return json({
-          consulta, oposicion, bloques, otrosTemas: sueltos.slice(0, 40),
-          nota: 'Los bloques y categorías son la organización del temario de victorgutierrezmarcos.es (oposicion/organizacion.html): agrupan temas que comparten modelos y conviene estudiar juntos. Para las fuentes de un tema concreto, fuentes_tema.',
+          consulta, oposicion, bloques, otrosTemas: sueltos.slice(0, 40), porContenido: porContenido.length ? porContenido : undefined,
+          nota: 'Los bloques y categorías son la organización del temario de victorgutierrezmarcos.es (oposicion/organizacion.html): agrupan temas que comparten modelos y conviene estudiar juntos. «porContenido» son los temas cuyos apartados (marcadores del PDF de la web, con su página) llevan lo buscado, ordenados por número de apartados. Para las fuentes de un tema concreto, fuentes_tema.',
         });
       }),
   );
@@ -426,7 +463,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       protegido(async () => {
         const db = await ctx.almacen(oposicion);
         const banco = await ctx.banco();
-        const where = desde && /^\d{4}-\d{2}-\d{2}$/.test(desde) ? { campo: 'timestamp', op: 'GREATER_THAN_OR_EQUAL' as const, valor: `${desde}T00:00:00Z` } : undefined;
+        const where = desde && /^\d{4}-\d{2}-\d{2}$/.test(desde) ? { campo: 'timestamp', op: 'GREATER_THAN_OR_EQUAL' as const, valor: desdeMadrid(desde), marcaDeTiempo: true } : undefined;
         const docs = await db.consultar('exam_results', { orderBy: 'timestamp', descendente: true, limite, where });
         const tests = docs.map((d) => resumenTest(d.id, d.datos, banco));
         return json({ oposicion, tests });
@@ -535,13 +572,14 @@ export function crearServidor(ctx: Contexto): McpServer {
         const { id, documento, resultado, errores } = construirInforme({ informe, valoracion, valoraciones, comentarios, criterios, tareas }, new Date(), await ctx.cliente());
         if (errores.length) return error(`No se ha guardado el informe:\n- ${errores.join('\n- ')}`);
         const db = await ctx.almacen(oposicion);
-        const cante = await db.leer(`cantes/${canteId}`);
+        const cid = Firestore.tramo(canteId);
+        const cante = await db.leer(`cantes/${cid}`);
         if (!cante) return error(`No hay ningún cante con id «${canteId}» en la app.`);
-        await db.escribir(`cantes/${canteId}/informes/${id}`, documento);
+        await db.escribir(`cantes/${cid}/informes/${id}`, documento);
         let diario = false;
         if (Object.keys(resultado).length && cante.estado === 'hecho') {
           const campos = Object.keys(resultado).map((k) => `resultado.${k}`);
-          await db.escribir(`cantes/${canteId}`, { resultado, updatedAt: new Date().toISOString() }, [...campos, 'updatedAt']);
+          await db.escribir(`cantes/${cid}`, { resultado, updatedAt: new Date().toISOString() }, [...campos, 'updatedAt']);
           diario = true;
         }
         return json({ guardado: true, informe: id, diarioActualizado: diario, aviso: diario ? undefined : 'El cante no está marcado como hecho en la app: el informe se ha guardado, pero la valoración y los comentarios no (que lo cierre en la app).' });
@@ -811,11 +849,12 @@ export function crearServidor(ctx: Contexto): McpServer {
         const ahora = ahoraMadrid();
 
         if (como === 'opositor') {
-          const vinculo = await yo.leer(`preparadores/${con}`);
-          const enlaceRed = await leerSeguro(red, `preparadores/${con}/alumnos/${ctx.uid}`);
+          const conId = Firestore.tramo(con);
+          const vinculo = await yo.leer(`preparadores/${conId}`);
+          const enlaceRed = await leerSeguro(red, `preparadores/${conId}/alumnos/${ctx.uid}`);
           if (!vinculo || !enlaceRed || enlaceRed.aceptado === false)
             return error('Ese preparador no está enlazado contigo (o aún no ha aceptado el enlace). Mira preparar_clase.');
-          const huecos = await leerSeguro(red, `huecos/${con}`);
+          const huecos = await leerSeguro(red, `huecos/${conId}`);
           const p: PeticionClase = { fecha, minutos: minutos ?? num(((huecos?.huecos as Doc[] | undefined) ?? [])[0]?.minutos, MINUTOS_CLASE), modalidad, temas, nota, lugar, enlace };
           const errores = erroresPeticion(p, ahora);
           if (errores.length) return error(`No se ha pedido la clase: ${errores.join('; ')}.`);
@@ -845,7 +884,7 @@ export function crearServidor(ctx: Contexto): McpServer {
         // Como preparador
         const perfil = await yo.leer('progress/preparador');
         if (perfil?.activo !== true) return error('En esta oposición no eres preparador en la app (Más → Soy preparador).');
-        const alumno = await yo.leer(`alumnos/${con}`);
+        const alumno = await yo.leer(`alumnos/${Firestore.tramo(con)}`);
         if (!alumno || alumno.borrado === true) return error(`No tienes ningún alumno con id «${con}». Mira preparar_clase.`);
         const p: PeticionClase = { fecha, minutos: minutos ?? num(perfil.minutosClase, MINUTOS_CLASE), modalidad, temas, nota, lugar, enlace };
         const errores = erroresPeticion(p, ahora);

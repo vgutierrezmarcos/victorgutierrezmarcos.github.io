@@ -4,6 +4,7 @@
 // Sin red: todo lo que entra viene ya leído, y por eso se prueba sin Firestore.
 
 import type { Json } from './firestore';
+import { ahoraMadrid } from './clases';
 
 type Obj = { [k: string]: Json };
 
@@ -109,12 +110,27 @@ export function aciertoPorTema(
   return out;
 }
 
+/** Una marca de tiempo de Firestore («…Z», UTC) como hora de Madrid sin zona, que es como guarda la app todas las demás fechas. */
+export function aHoraMadrid(iso: Json | undefined): Json | undefined {
+  if (typeof iso !== 'string' || !/(Z|[+-]\d\d:\d\d)$/.test(iso)) return iso;
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? iso : ahoraMadrid(d);
+}
+
+/** El comienzo de un día de Madrid («AAAA-MM-DD») como instante UTC, para filtrar marcas de tiempo. */
+export function desdeMadrid(dia: string): string {
+  const medianocheUtc = new Date(`${dia}T00:00:00Z`);
+  // Lo que marca el reloj de Madrid en ese instante dice cuánto va adelantado (1 o 2 horas).
+  const adelanto = Date.parse(`${ahoraMadrid(medianocheUtc).slice(0, 19)}Z`) - medianocheUtc.getTime();
+  return new Date(medianocheUtc.getTime() - adelanto).toISOString();
+}
+
 export function resumenTest(
   id: string,
   d: Obj,
   banco: { temas: TemasPorPregunta; respuestas: Map<number, string[]> },
 ): TestResumen {
-  const fecha = d.timestamp;
+  const fecha = aHoraMadrid(d.timestamp);
   return {
     id,
     fecha: soloFecha(fecha),

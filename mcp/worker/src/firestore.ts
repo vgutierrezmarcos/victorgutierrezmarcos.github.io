@@ -77,7 +77,7 @@ export interface Consulta {
   descendente?: boolean;
   limite?: number;
   /** Filtro de campo único (no necesita índice compuesto si coincide con orderBy). */
-  where?: { campo: string; op: 'EQUAL' | 'GREATER_THAN_OR_EQUAL' | 'LESS_THAN_OR_EQUAL'; valor: Json };
+  where?: { campo: string; op: 'EQUAL' | 'GREATER_THAN_OR_EQUAL' | 'LESS_THAN_OR_EQUAL'; valor: Json; /** true: `valor` es un texto ISO y el campo, una marca de tiempo de Firestore (un texto nunca casa con un Timestamp). */ marcaDeTiempo?: boolean };
 }
 
 /** Interfaz mínima que usan las herramientas (así se simula en las pruebas). */
@@ -100,7 +100,8 @@ export class Firestore implements AlmacenDatos {
     proyecto: string,
     private readonly idToken: string,
     private readonly raiz: string,
-    private readonly fetchFn: typeof fetch = fetch,
+    // Nunca el `fetch` global tal cual: llamado como `this.fetchFn(…)` recibe la instancia como `this` y workerd lo rechaza («Illegal invocation»).
+    private readonly fetchFn: typeof fetch = (entrada, opciones) => fetch(entrada, opciones),
   ) {
     this.documentos = `projects/${proyecto}/databases/(default)/documents`;
     this.base = `https://firestore.googleapis.com/v1/${this.documentos}`;
@@ -109,6 +110,11 @@ export class Firestore implements AlmacenDatos {
   /** URL de un documento o colección bajo la raíz (la raíz vacía es la de la base de datos). */
   private url(ruta: string): string {
     return [this.base, this.raiz, ruta].filter(Boolean).join('/');
+  }
+
+  /** Un id de documento que llega de fuera (de la IA), listo para ir en una ruta: sin barras ni interrogaciones que la cambien. */
+  static tramo(id: string): string {
+    return encodeURIComponent(id.trim());
   }
 
   static raizDe(uid: string, oposicion: string): string {
@@ -156,7 +162,7 @@ export class Firestore implements AlmacenDatos {
 
   async consultar(coleccion: string, c: Consulta): Promise<Array<{ id: string; datos: { [k: string]: Json }; creado?: string }>> {
     const structuredQuery: Record<string, unknown> = { from: [{ collectionId: coleccion }] };
-    if (c.where) structuredQuery.where = { fieldFilter: { field: { fieldPath: c.where.campo }, op: c.where.op, value: aValor(c.where.valor) } };
+    if (c.where) structuredQuery.where = { fieldFilter: { field: { fieldPath: c.where.campo }, op: c.where.op, value: c.where.marcaDeTiempo ? { timestampValue: String(c.where.valor) } : aValor(c.where.valor) } };
     if (c.orderBy) structuredQuery.orderBy = [{ field: { fieldPath: c.orderBy }, direction: c.descendente ? 'DESCENDING' : 'ASCENDING' }];
     if (c.limite) structuredQuery.limit = c.limite;
     const padre = this.raiz ? `${this.base}/${this.raiz}` : this.base;

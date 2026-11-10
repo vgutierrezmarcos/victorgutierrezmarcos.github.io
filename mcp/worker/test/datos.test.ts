@@ -37,7 +37,7 @@ describe('acierto por tema', () => {
   it('ignora preguntas que no están en el banco y los tests sin respuestas (web)', () => {
     expect(aciertoPorTema({ '999': 'a' }, banco)).toEqual({});
     const t = resumenTest('r1', { timestamp: '2026-10-28T09:30:00Z', notaSobre10: 6.444, correctas: 48, totalPreguntas: 75, temas: ['3.A.8'] }, banco);
-    expect(t).toMatchObject({ id: 'r1', fecha: '2026-10-28', hora: '09:30', tipo: 'test', origen: 'web', notaSobre10: 6.44, correctas: 48, porTema: {} });
+    expect(t).toMatchObject({ id: 'r1', fecha: '2026-10-28', hora: '10:30', tipo: 'test', origen: 'web', notaSobre10: 6.44, correctas: 48, porTema: {} });
   });
 });
 

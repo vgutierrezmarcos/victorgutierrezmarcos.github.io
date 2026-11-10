@@ -17,7 +17,7 @@ import { Firestore } from './firestore';
 import { htmlATexto, leerApuntesDrive } from './drive';
 import { type Banco, type Contexto, ErrorSesion, type IndiceFuentes, type Oposicion, type PaqueteTextos } from './herramientas';
 import { responderMcp } from './mcp';
-import { paginaConsentimiento, paginaError, paginaPortada } from './paginas';
+import { paginaConsentimiento, paginaError, paginaMudanza, paginaPortada, traducirErrorOAuth } from './paginas';
 
 export interface Env {
   OAUTH_KV: KVNamespace;
@@ -192,6 +192,11 @@ const defaultHandler = {
       return new Response(r.body, { headers: { 'Content-Type': svg ? 'image/svg+xml' : 'image/png', 'Cache-Control': 'public, max-age=86400' } });
     }
     const oauth = env.OAUTH_PROVIDER;
+    // Dirección antigua (…workers.dev): la autorización empezaría aquí y acabaría en el dominio nuevo, donde no está
+    // la cookie que ata la sesión al navegador («not started in this browser»). Se explica el cambio en vez de fallar al final.
+    const propio = new URL(env.URL_WORKER).hostname;
+    const local = url.hostname === 'localhost' || url.hostname === '127.0.0.1';
+    if (!local && url.hostname !== propio && (url.pathname === '/authorize' || url.pathname === '/callback')) return html(paginaMudanza(urlMcp(env)));
     try {
       if (url.pathname === '/' || url.pathname === '') return html(paginaPortada(urlMcp(env)));
 
@@ -254,7 +259,7 @@ const defaultHandler = {
       return new Response('No encontrado', { status: 404 });
     } catch (e) {
       if (e instanceof AuthorizationError && e.redirectTo) return Response.redirect(e.redirectTo, 302);
-      if (e instanceof AuthorizationError) return html(paginaError('No se ha podido autorizar', e.description), 400);
+      if (e instanceof AuthorizationError) return html(paginaError('No se ha podido autorizar', traducirErrorOAuth(e.description)), 400);
       if (e instanceof CimdFetchError) return html(paginaError('No se ha podido comprobar la aplicación', 'No se ha podido leer el documento de identidad de la aplicación que pide acceso.'), 400);
       throw e;
     }
