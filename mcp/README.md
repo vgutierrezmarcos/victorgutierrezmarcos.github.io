@@ -58,6 +58,7 @@ Escrituras (siempre con confirmación del usuario en la conversación):
 |---|---|
 | `proponer_cronograma` | `cronogramas/{id}` como `Cronograma.toJson()` y archiva el anterior en un solo `:commit`; hereda `compartir`, `hechos` y `desmarcados` |
 | `guardar_informe_cante` | `cantes/{id}/informes/{fecha}`; en el diario solo lo que no estuviera ya puesto (salvo `sustituir`); las tareas, como deberes en un cante propio |
+| `borrar_datos_oposicion` | Borra todo lo del usuario en una oposición (`src/borrado.ts`: la misma lista de colecciones que `UsuarioRepo.coleccionesOposicion` de la app, sus enlaces y lo suyo en la red) y deja la marca `users/{uid}/cuenta/app.borrados.{oposicion}` para que la app borre su copia local. Dos pasos: recuento + código (sello con secreto, 10-20 min) y frase «BORRAR DCE» escrita por el usuario |
 | `anotar_tema` | `notes/{tema}.pendientes` y, opcional, `temasEstudiados` / `temasEnRepaso` |
 | `agendar_clase` | Opositor: `reservas/{id}` y `temasClases`. Preparador: `sesiones/{id}` y la copia en los `cantes` del alumno |
 | `responder_reserva`, `guardar_nota_alumno`, `guardar_deberes` | Preparadores: estado de la reserva y la clase `res_{id}` en las dos agendas; `alumnos/{id}.notas`; `tareas` de la sesión y de su copia |

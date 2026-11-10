@@ -150,6 +150,9 @@ function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<
       const r = await fetch(env.URL_SKILL + ruta, { cf: { cacheTtl: 600, cacheEverything: true } });
       return r.ok ? r.text() : null;
     },
+    async sello(texto: string) {
+      return sha256(`${env.CLAVE_CIFRADO}:${texto}`);
+    },
     async desconectar() {
       await env.SESIONES.delete(`id:${await sha256(props.uid)}`);
       let cursor: string | undefined;

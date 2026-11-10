@@ -35,6 +35,7 @@ import {
 import { type Apuntes, ErrorApuntes, idDeDrive } from './drive';
 import { MINUTOS_CLASE, MODALIDADES, ahoraMadrid, construirReserva, construirSesion, copiaParaAlumno, erroresPeticion, fechaClase, fijarTemasClase, huecosLibres, proximas, seSolapan, temasDelCante, type PeticionClase } from './clases';
 import { type AlmacenDatos, ErrorFirestore, Firestore, type Json } from './firestore';
+import { borrarOposicion, recuentoOposicion } from './borrado';
 
 export const OPOSICIONES = ['tcee', 'dce'] as const;
 export type Oposicion = (typeof OPOSICIONES)[number];
@@ -78,6 +79,8 @@ export interface Contexto {
   cliente(): Promise<string>;
   /** Revoca las concesiones OAuth del opositor y borra su token de Firebase guardado. */
   desconectar(): Promise<void>;
+  /** Resumen criptográfico de un texto con un secreto del servidor: para códigos de confirmación que la IA no puede inventarse. */
+  sello(texto: string): Promise<string>;
   /** Apunta el uso de una herramienta, sin nada que identifique al usuario (qué herramienta, si fue bien y cuánto tardó). */
   medir?(dato: { herramienta: string; oposicion: string; ok: boolean; ms: number }): void;
 }
@@ -266,7 +269,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, y solo con la frase que el usuario escriba él mismo. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
     },
   );
 
@@ -1040,6 +1043,71 @@ export function crearServidor(ctx: Contexto): McpServer {
       protegido(async () => {
         await ctx.desconectar();
         return json({ desconectado: true, aviso: 'Acceso revocado. Para volver a usar el conector, el opositor tiene que conectarlo de nuevo en su asistente de IA.' });
+      }),
+  );
+
+  // ------------------------------------------------------------ Borrar una oposición
+
+  /** Código de confirmación del borrado: sale del usuario, la oposición y un tramo de diez minutos; vale en ese tramo y en el siguiente. */
+  const TRAMO_CODIGO = 10 * 60 * 1000;
+  const codigoBorrado = async (op: Oposicion, tramo: number) => (await ctx.sello(`borrar:${ctx.uid}:${op}:${tramo}`)).slice(0, 8).toUpperCase();
+  const fraseBorrado = (op: Oposicion) => `BORRAR ${op.toUpperCase()}`;
+
+  server.registerTool(
+    'borrar_datos_oposicion',
+    {
+      title: 'Borrar todos los datos de una oposición',
+      annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: true, openWorldHint: true },
+      description:
+        'Borra TODOS los datos del usuario en UNA oposición (TCEE o DCE) y no se puede deshacer: tests, repaso, temas, notas, cantes e informes, cronogramas, clases, alumnos, reservas, y sus enlaces con preparadores y alumnos de esa oposición. No toca la otra oposición ni la cuenta. Es lo mismo que Cuenta → «Borrar mis datos de una oposición» en la app. NUNCA por iniciativa tuya: solo si el usuario lo pide expresamente. Va en dos pasos. PASO 1: llámala solo con «oposicion»; no borra nada y devuelve qué se borraría, un «codigo» y la «frase» de confirmación. Enseña al usuario ese recuento, dile que no se puede deshacer y que puede exportar antes sus datos en la app (Más → Cuenta), y pídele que escriba ÉL, tal cual, la frase. PASO 2: solo cuando la haya escrito literalmente en la conversación (no vale «sí», «adelante» ni que la escribas tú), llámala otra vez con «codigo» y con «frase» copiada de su mensaje. El código caduca en unos minutos. Si duda, no borres.',
+      inputSchema: {
+        oposicion: z.enum(OPOSICIONES).describe('Oposición cuyos datos se borran: «tcee» o «dce». Sin valor por defecto: tiene que decirla el usuario.'),
+        codigo: z.string().max(20).optional().describe('Paso 2: el código que devolvió el paso 1.'),
+        frase: z.string().max(40).optional().describe('Paso 2: la frase de confirmación tal como la ha escrito el usuario en la conversación.'),
+      },
+    },
+    async ({ oposicion, codigo, frase }) =>
+      protegido(async () => {
+        const db = await ctx.almacen(oposicion);
+        const tramo = Math.floor(Date.now() / TRAMO_CODIGO);
+        const esperada = fraseBorrado(oposicion);
+        if (!codigo && !frase) {
+          const r = await recuentoOposicion(db);
+          if (!r.total) return json({ oposicion, borrado: false, aviso: `No hay datos en ${oposicion.toUpperCase()}: no hay nada que borrar.` });
+          return json({
+            oposicion,
+            borrado: false,
+            seBorraria: r.resumen,
+            documentos: r.total,
+            ademas: 'Se romperán sus enlaces con preparadores y alumnos de esa oposición y se borrarán sus reservas de clase. No se toca la otra oposición ni la cuenta. No se puede deshacer.',
+            frase: esperada,
+            codigo: await codigoBorrado(oposicion, tramo),
+            siguiente: `Enseña esto al usuario y pídele que escriba él, tal cual, «${esperada}». Solo entonces vuelve a llamar con «codigo» y «frase».`,
+          });
+        }
+        if (!codigo || !frase) return error('Faltan «codigo» o «frase». Empieza por el paso 1 (solo «oposicion») y sigue sus indicaciones.');
+        if (frase.trim().toUpperCase() !== esperada) return error(`La frase no coincide: el usuario tiene que escribir exactamente «${esperada}». No se ha borrado nada.`);
+        const dado = codigo.trim().toUpperCase();
+        if (dado !== (await codigoBorrado(oposicion, tramo)) && dado !== (await codigoBorrado(oposicion, tramo - 1)))
+          return error('El código no vale o ha caducado. No se ha borrado nada: repite el paso 1 y vuelve a pedir la confirmación al usuario.');
+        const r = await borrarOposicion({
+          uid: ctx.uid,
+          oposicion,
+          db,
+          red: await ctx.almacenEn(raizRed(oposicion)),
+          cuenta: await ctx.almacenEn(`users/${ctx.uid}`),
+          deOtro: (uid) => ctx.almacenEn(Firestore.raizDe(uid, oposicion)),
+          ahora: new Date().toISOString(),
+          temas: Object.keys((await ctx.fuentes().catch(() => null))?.[oposicion] ?? {}),
+        });
+        return json({
+          oposicion,
+          borrado: true,
+          documentosBorrados: r.borrados,
+          enlacesRotos: r.enlacesRotos,
+          ...(r.avisos.length ? { avisos: r.avisos } : {}),
+          aviso: `Borrados los datos de ${oposicion.toUpperCase()} en la nube. La app borra su copia en cada dispositivo la próxima vez que sincronice (hace falta la versión 1.25.0 o posterior: una anterior podría volver a subir lo que tenga guardado; si pasa, que actualice la app y lo borre desde Cuenta).`,
+        });
       }),
   );
 
