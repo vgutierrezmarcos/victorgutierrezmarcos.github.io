@@ -56,17 +56,63 @@ export function nuevoId(): string {
 /** Tema(s) de cada pregunta del banco (preguntas.json → id → temas). */
 export type TemasPorPregunta = Map<number, string[]>;
 
-export function temasDePreguntas(banco: { preguntas?: Array<{ id: number; temas?: string[]; respuesta?: string[] }> }): {
+/** Una pregunta oficial del banco, con lo que hace falta para plantearla. */
+export interface PreguntaBanco {
+  id: number;
+  examen: string;
+  numero: number;
+  temas: string[];
+  enunciado: string;
+  opciones: Record<string, string>;
+  respuesta: string[];
+  /** Lleva figura (está en el simulador de la web y en la app; aquí solo se avisa). */
+  figura: boolean;
+  nota?: string;
+}
+
+export function temasDePreguntas(banco: { preguntas?: Array<{ id: number; temas?: string[]; respuesta?: string[]; examen?: string; numero?: number; enunciado?: string; opciones?: Record<string, string>; imagenes?: unknown[]; nota?: string }> }): {
   temas: TemasPorPregunta;
   respuestas: Map<number, string[]>;
+  preguntas: Map<number, PreguntaBanco>;
 } {
   const temas: TemasPorPregunta = new Map();
   const respuestas = new Map<number, string[]>();
+  const preguntas = new Map<number, PreguntaBanco>();
   for (const p of banco.preguntas ?? []) {
+    const respuesta = (p.respuesta ?? []).map((r) => r.toLowerCase());
     temas.set(p.id, p.temas ?? []);
-    respuestas.set(p.id, (p.respuesta ?? []).map((r) => r.toLowerCase()));
+    respuestas.set(p.id, respuesta);
+    if (p.enunciado && p.opciones)
+      preguntas.set(p.id, { id: p.id, examen: p.examen ?? '', numero: Number(p.numero ?? 0), temas: p.temas ?? [], enunciado: p.enunciado, opciones: p.opciones, respuesta, figura: (p.imagenes?.length ?? 0) > 0, ...(p.nota ? { nota: p.nota } : {}) });
   }
-  return { temas, respuestas };
+  return { temas, respuestas, preguntas };
+}
+
+/**
+ * Preguntas oficiales de unos temas para un test a medida, según lo que el opositor ya ha hecho
+ * (`progress/spaced_repetition.questions`): «falladas» (solo las que ha fallado, las más falladas primero),
+ * «no_dominadas» (fuera las que tiene acertadas dos veces sin fallo o en las cajas 4-5; primero las falladas,
+ * luego las que no ha visto) o «todas». Las anuladas (sin respuesta) no entran. `azar` ordena las no vistas.
+ */
+export function elegirPreguntas(
+  banco: Map<number, PreguntaBanco>,
+  temas: string[],
+  n: number,
+  modo: 'falladas' | 'no_dominadas' | 'todas',
+  leitner: Obj | null,
+  azar: () => number = Math.random,
+): Array<PreguntaBanco & { aciertos: number; fallos: number }> {
+  const quiere = new Set(temas);
+  const estado = objeto(leitner?.questions);
+  const candidatas = [...banco.values()]
+    .filter((p) => p.respuesta.length > 0 && p.temas.some((t) => quiere.has(t)))
+    .map((p) => {
+      const e = objeto(estado[String(p.id)]);
+      return { ...p, aciertos: numero(e.timesCorrect), fallos: numero(e.timesFailed), caja: numero(e.box, 0), orden: azar() };
+    })
+    .filter((p) => (modo === 'falladas' ? p.fallos > 0 : modo === 'no_dominadas' ? !((p.aciertos >= 2 && p.fallos === 0) || p.caja >= 4) : true));
+  candidatas.sort((a, b) => b.fallos - a.fallos || (a.aciertos + a.fallos === 0 ? 0 : 1) - (b.aciertos + b.fallos === 0 ? 0 : 1) || a.orden - b.orden);
+  return candidatas.slice(0, n).map(({ caja: _c, orden: _o, ...p }) => p);
 }
 
 // --------------------------------------------------------------------- Tests
@@ -222,7 +268,8 @@ export interface Progreso {
   notas: Record<string, string>;
   horario: Record<string, string> | null;
   leitner: LeitnerResumen;
-  ajustes: { rubrica: string[]; temasExtraidos: number; fechaConvocatoria: string | null; noCantar: string[] };
+  ajustes: { rubrica: string[]; temasExtraidos: number; fechaConvocatoria: string | null; noCantar: string[]; noCantarDesde: Record<string, string>; temasClases: Array<{ clase: string; fijados: string; temas: string[] }> };
+  uso: { mejorRacha: number; ultimoUso: string | null };
 }
 
 export function resumenProgreso(
@@ -272,7 +319,13 @@ export function resumenProgreso(
       temasExtraidos: numero(settings?.temasExtraidos, 3),
       fechaConvocatoria: soloFecha(settings?.fechaConvocatoria),
       noCantar,
+      noCantarDesde: Object.fromEntries(lista(settings?.noCantar).map((s) => [s.split('@')[0], soloFecha(s.split('@')[1]) ?? ''])),
+      temasClases: lista(settings?.temasClases)
+        .map((e) => e.split('@'))
+        .filter((p) => p.length === 3)
+        .map(([clase, fijados, temas]) => ({ clase, fijados: fijados.slice(0, 16), temas: temas.split(',').filter(Boolean) })),
     },
+    uso: { mejorRacha: numero(settings?.mejorRacha), ultimoUso: typeof settings?.ultimoUso === 'string' ? settings.ultimoUso : null },
   };
 }
 
@@ -292,6 +345,9 @@ export interface CanteResumen {
   notas: string;
   resultado: Obj | null;
   deberes: Array<{ texto: string; hecha: boolean }>;
+  modalidad?: string;
+  lugar?: string;
+  temasPropuestos?: string[];
 }
 
 export function resumenCante(id: string, d: Obj): CanteResumen {
@@ -313,6 +369,9 @@ export function resumenCante(id: string, d: Obj): CanteResumen {
     notas: texto(d.notas),
     resultado: esObj(d.resultado) ? d.resultado : null,
     deberes: tareas,
+    ...(typeof d.modalidad === 'string' ? { modalidad: d.modalidad } : {}),
+    ...(typeof d.lugar === 'string' && d.lugar ? { lugar: d.lugar } : {}),
+    ...(Array.isArray(d.temasPropuestos) && d.temasPropuestos.length ? { temasPropuestos: lista(d.temasPropuestos) } : {}),
   };
 }
 
@@ -346,7 +405,7 @@ export function resumenCantes(docs: Array<{ id: string; datos: Obj }>, n: number
     .sort((a, b) => texto(a.datos.fecha).localeCompare(texto(b.datos.fecha)))
     .slice(0, 5)
     .map((c) => resumenCante(c.id, c.datos));
-  return { hechos, pendientes, totalHechos: vivos.filter((c) => c.datos.estado === 'hecho').length };
+  return { hechos, pendientes, totalHechos: vivos.filter((c) => c.datos.estado === 'hecho').length, cancelados: vivos.filter((c) => c.datos.estado === 'cancelado').length };
 }
 
 // --------------------------------------------------------------- Cronograma
@@ -372,6 +431,7 @@ export interface CronogramaResumen {
   fases: Array<{ tipo: string; inicio: string; fin: string; saltada?: boolean }>;
   examen: string | null;
   propuestasPendientes: number;
+  propuestas: Array<{ de: string; fecha: string | null; nota: string; temasPorSemana: number | null; fin: string | null; temas: number }>;
   creado: string | null;
 }
 
@@ -388,7 +448,8 @@ export function resumenCronograma(id: string, d: Obj): CronogramaResumen {
   });
   const hechos: Record<string, string> = {};
   for (const [k, v] of Object.entries(objeto(d.hechos))) hechos[k] = soloFecha(v) ?? '';
-  const propuestas = Object.keys(objeto(d.propuestas)).length + (esObj(d.propuesta) ? 1 : 0);
+  const sueltas = [...Object.values(objeto(d.propuestas)), ...(esObj(d.propuesta) ? [d.propuesta] : [])].filter(esObj);
+  const propuestas = sueltas.length;
   return {
     id,
     ejercicio: numero(d.ejercicio, 3),
@@ -408,6 +469,7 @@ export function resumenCronograma(id: string, d: Obj): CronogramaResumen {
     })),
     examen: soloFecha(d.examen),
     propuestasPendientes: propuestas,
+    propuestas: sueltas.map((p) => ({ de: texto(p.nombre) || 'Preparador', fecha: soloFecha(p.fecha), nota: texto(p.nota), temasPorSemana: typeof p.temasPorSemana === 'number' ? p.temasPorSemana : null, fin: soloFecha(p.fin), temas: Array.isArray(p.temas) ? p.temas.length : 0 })),
     creado: soloFecha(d.creado),
   };
 }
@@ -575,4 +637,45 @@ export function construirInforme(i: InformeCante, ahora = new Date(), cliente = 
   if (comentarios) resultado.comentarios = comentarios;
   if (Object.keys(criterios).length) resultado.criterios = criterios;
   return { id: marca.replace(/[:.]/g, '-').slice(0, 19), documento, resultado, errores };
+}
+
+// ------------------------------------------------------------ Visión de conjunto
+
+/** Un informe guardado de un cante (`cantes/{id}/informes/{fecha}`), con el texto recortado si se pide. */
+export function resumenInforme(id: string, canteId: string, d: Obj, maximo = 0) {
+  const informe = texto(d.informe);
+  return {
+    id,
+    canteId,
+    fecha: soloFecha(d.fecha),
+    hechoPor: texto(d.cliente) || texto(d.origen) || 'IA',
+    valoracion: typeof d.valoracion === 'number' ? d.valoracion : undefined,
+    valoraciones: esObj(d.valoraciones) ? d.valoraciones : undefined,
+    criterios: esObj(d.criterios) ? d.criterios : undefined,
+    comentarios: texto(d.comentarios) || undefined,
+    tareas: lista(d.tareas),
+    informe: maximo && informe.length > maximo ? `${informe.slice(0, maximo)}\n[… recortado: ${informe.length} caracteres en total; pídelo con completo: true]` : informe,
+  };
+}
+
+/** Los deberes sin hacer de todos los cantes (los que pone el preparador o el propio opositor al cerrar un cante). */
+export function deberesPendientes(cantes: Array<{ id: string; datos: Obj }>): Array<{ texto: string; cante: string | null; canteId: string }> {
+  return cantes
+    .filter((c) => c.datos.borrado !== true)
+    .sort((a, b) => texto(b.datos.fecha).localeCompare(texto(a.datos.fecha)))
+    .flatMap((c) => resumenCante(c.id, c.datos).deberes.filter((t) => !t.hecha && t.texto).map((t) => ({ texto: t.texto, cante: soloFecha(c.datos.fecha), canteId: c.id })))
+    .slice(0, 30);
+}
+
+/** Días naturales de `hoy` a `fecha` (los dos «AAAA-MM-DD»); negativo si ya pasó. */
+export function diasEntre(hoy: string, fecha: string): number | null {
+  const a = diaDe(hoy), b = diaDe(fecha);
+  return a && b ? Math.round((b.getTime() - a.getTime()) / 86_400_000) : null;
+}
+
+/** La semana del cronograma en la que cae `hoy` y la siguiente con temas. */
+export function semanaDe(c: CronogramaResumen, hoy: string): { actual: SemanaResumen | null; siguiente: SemanaResumen | null } {
+  const actual = c.semanas.find((s) => s.lunes <= hoy && hoy <= s.cante) ?? null;
+  const siguiente = c.semanas.find((s) => s.lunes > hoy && !s.descanso) ?? null;
+  return { actual, siguiente };
 }

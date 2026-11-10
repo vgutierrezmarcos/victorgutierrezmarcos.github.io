@@ -13,7 +13,7 @@ import { cifrar, descifrar, sha256 } from './cifrado';
 import { Contenido } from './contenido';
 import { temasDePreguntas } from './datos';
 import { datosDelIdToken, renovarIdToken } from './firebase';
-import { Firestore } from './firestore';
+import { Firestore, type Json } from './firestore';
 import { htmlATexto, leerApuntesDrive } from './drive';
 import { type Banco, type Contexto, ErrorSesion, type IndiceFuentes, type Oposicion, type PaqueteTextos } from './herramientas';
 import { responderMcp } from './mcp';
@@ -29,6 +29,8 @@ export interface Env {
   URL_WORKER: string;
   URL_LOGIN: string;
   URL_PREGUNTAS: string;
+  /** oposicion/proceso.json de la web (los documentos de cada proceso selectivo). */
+  URL_PROCESO: string;
   URL_REVISADOS: string;
   /** Carpeta de la skill desplegada en la web (con barra final): de ahí lee leer_skill. */
   URL_SKILL: string;
@@ -87,7 +89,7 @@ let bancoEnMemoria: { url: string; banco: Banco } | null = null;
 async function bancoDePreguntas(env: Env): Promise<Banco> {
   if (bancoEnMemoria?.url === env.URL_PREGUNTAS) return bancoEnMemoria.banco;
   const r = await fetch(env.URL_PREGUNTAS, { cf: { cacheTtl: 86_400, cacheEverything: true } });
-  if (!r.ok) return { temas: new Map(), respuestas: new Map() };
+  if (!r.ok) return { temas: new Map(), respuestas: new Map(), preguntas: new Map() };
   const banco = temasDePreguntas((await r.json()) as Parameters<typeof temasDePreguntas>[0]);
   bancoEnMemoria = { url: env.URL_PREGUNTAS, banco };
   return banco;
@@ -110,6 +112,16 @@ function contextoDe(env: Env, props: Props, clientId = ''): Contexto {
       return new Firestore(env.FIREBASE_PROJECT, await idTokenDe(env, props), Firestore.raizDe(props.uid, oposicion));
     },
     banco: () => bancoDePreguntas(env),
+    async explicaciones(examen: string) {
+      if (!/^[\w-]{4,60}$/.test(examen)) return {};
+      const r = await fetch(new URL(`explicaciones/${examen}.json`, env.URL_PREGUNTAS).toString(), { cf: { cacheTtl: 86_400, cacheEverything: true } });
+      if (!r.ok) return {};
+      return ((await r.json()) as { explicaciones?: Record<string, { clave?: string }> }).explicaciones ?? {};
+    },
+    async proceso() {
+      const r = await fetch(env.URL_PROCESO, { cf: { cacheTtl: 900, cacheEverything: true } });
+      return r.ok ? ((await r.json()) as Json) : null;
+    },
     contenido: new Contenido(env.CONTENIDO),
     async textos(tema: string) {
       return (await env.CONTENIDO.get(`textos/${tema}`, 'json')) as PaqueteTextos | null;
