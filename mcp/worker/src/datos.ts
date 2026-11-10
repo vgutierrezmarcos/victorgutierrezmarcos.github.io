@@ -748,3 +748,38 @@ export function anadirApuntes(actuales: Json | undefined, textos: string[], marc
   }
   return { pendientes, nuevos };
 }
+
+// ------------------------------------------------------------ Preparador
+
+export interface TareaNueva {
+  tipo: 'estudiar' | 'esquema' | 'cantar' | 'test' | 'libre';
+  tema?: string;
+  texto?: string;
+  preguntas?: number;
+}
+
+/** Deberes que pone el preparador en una clase (`Tarea.toJson`), añadidos a los que ya hubiera; devuelve los errores. */
+export function anadirTareas(actuales: Json | undefined, nuevas: TareaNueva[], marca: string): { tareas: Json[]; errores: string[] } {
+  const tareas = Array.isArray(actuales) ? [...actuales] : [];
+  const errores: string[] = [];
+  for (const t of nuevas) {
+    if (t.tipo === 'libre' && !(t.texto ?? '').trim()) errores.push('una tarea libre necesita texto');
+    if (t.tipo !== 'libre' && t.tipo !== 'test' && !reTema.test(t.tema ?? '')) errores.push(`la tarea «${t.tipo}» necesita un tema (formato 3.A.8)`);
+    if (t.tema && !reTema.test(t.tema)) errores.push(`tema no válido: «${t.tema}»`);
+    tareas.push({ id: nuevoId(), tipo: t.tipo, ...(t.tema ? { tema: t.tema } : {}), ...((t.texto ?? '').trim() ? { texto: t.texto!.trim().slice(0, 200) } : {}), ...(t.preguntas && t.preguntas > 0 ? { preguntas: Math.round(t.preguntas) } : {}), creada: marca });
+  }
+  return { tareas, errores };
+}
+
+/** Las clases de un preparador con un alumno: las últimas hechas (con resultado, notas y deberes) y las próximas. */
+export function clasesConAlumno(sesiones: Array<{ id: string; datos: Obj }>, alumnoId: string, n: number, ahora: string) {
+  const suyas = sesiones.filter((s) => s.datos.borrado !== true && s.datos.alumno === alumnoId);
+  const porFecha = (a: { datos: Obj }, b: { datos: Obj }) => texto(a.datos.fecha).localeCompare(texto(b.datos.fecha));
+  const hechas = suyas.filter((s) => s.datos.estado === 'hecho').sort((a, b) => porFecha(b, a));
+  return {
+    hechas: hechas.slice(0, n).map((s) => resumenCante(s.id, s.datos)),
+    totalHechas: hechas.length,
+    proximas: suyas.filter((s) => texto(s.datos.estado, 'pendiente') === 'pendiente' && texto(s.datos.fecha) >= ahora.slice(0, 19)).sort(porFecha).slice(0, 5).map((s) => resumenCante(s.id, s.datos)),
+    canceladas: suyas.filter((s) => s.datos.estado === 'cancelado').length,
+  };
+}
