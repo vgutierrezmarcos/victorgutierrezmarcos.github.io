@@ -1,50 +1,58 @@
 % Diagrama de Samuelson-Johnson de la igualación del precio de los factores
-% (3.B.5, anexo). Eje horizontal común: w/r. Cuadrante superior: K/L; cuadrante
-% inferior: p_X/p_Y (hacia abajo). Elaboración propia (cualitativa), a partir
-% de Johnson (1957) y Gandolfo (2014), p. 75.
-%   (K/L)_X = 2 (w/r)^0,6 y (K/L)_Y = 0,8 (w/r)^0,6: X intensivo en capital,
-%   sin reversión (no se cortan).
-%   p_X/p_Y = 3,2 (w/r)^-0,5: al subir w/r se abarata el bien intensivo en
-%   capital (relación monótona); en el dibujo, p_X/p_Y a escala 0,9.
-%   Dotaciones: (K̄/L̄)^A = 2,4 > (K̄/L̄)^B = 1,6 (A abundante en capital).
-%   A diversifica con w/r entre 1,355 ((K/L)_X = 2,4) y 6,24 ((K/L)_Y = 2,4);
-%   B, entre 0,689 y 3,175. Los dos a la vez: (w/r)' = 1,355 y (w/r)'' = 3,175.
-%   RRI común: p_X/p_Y = 2,263 -> w/r = 2 en los dos países ->
+% (3.B.5, caja del teorema 3), con los ejes del tema anterior, que lo había
+% adaptado de Gandolfo (2014, p. 75) para que el orden de K y L sea el del
+% resto del tema: eje horizontal común r/w (precio relativo del capital);
+% cuadrante superior K/L; cuadrante inferior p_X/p_Y (hacia abajo).
+% Elaboración propia (cualitativa), a partir de Johnson (1957) y Gandolfo.
+%   Con ω = r/w: (K/L)_X = 2 ω^-0,6 y (K/L)_Y = 0,8 ω^-0,6: decrecientes (si el
+%   capital se encarece, se usa menos por trabajador), X por encima
+%   (intensivo en capital), sin reversión (no se cortan).
+%   p_X/p_Y = 3,2 ω^0,5: si el capital se encarece, se encarece el bien
+%   intensivo en capital (relación monótona); en el dibujo, a escala 0,9.
+%   Dotaciones: (K̄/L̄)^A = 2,4 > (K̄/L̄)^B = 1,8 (A abundante en capital).
+%   A diversifica con ω entre 0,160 ((K/L)_Y = 2,4) y 0,738 ((K/L)_X = 2,4);
+%   B, entre 0,259 y 0,839. Los dos a la vez: (r/w)' = 0,259 y (r/w)'' = 0,738.
+%   RRI común: p_X/p_Y = 2,263 -> r/w = 0,5 en los dos países ->
 %   (K/L)_X = 3,03 y (K/L)_Y = 1,21 en los dos.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
-\begin{tikzpicture}[tcee,x=1.3cm,y=1cm,
-    declare function={kx(\w)=2*\w^0.6; ky(\w)=0.8*\w^0.6; pr(\w)=-0.9*3.2*\w^(-0.5);}]
+\begin{tikzpicture}[tcee,x=4.6cm,y=1cm,
+    declare function={kx(\w)=2*\w^(-0.6); ky(\w)=0.8*\w^(-0.6); pr(\w)=-0.9*3.2*\w^(0.5);}]
   % 1: ejes de los dos cuadrantes y sus rótulos
-  \capa{1}{\draw[eje] (0,0) -- (7,0) node[below left=2pt and 0pt] {$w/r$};}
-  \capa{1}{\draw[eje] (0,0) -- (0,5.3) node[left] {$K/L$};}
-  \capa{1}{\draw[eje] (0,0) -- (0,-4.3) node[left] {$p_X/p_Y$};}
+  \capa{1}{\draw[eje] (0,0) -- (1.95,0) node[below left=2pt and 0pt] {$r/w$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,5.6) node[left] {$K/L$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,-4.6) node[left] {$p_X/p_Y$};}
   \capa{1}{\node[left] at (0,0) {$0$};}
   % 2: relaciones capital-trabajo de cada sector (X por encima: intensivo en capital)
-  \capa{2}{\draw[curva1] plot[domain=0.25:4.6,samples=80] (\x,{kx(\x)})
-    node[etiqueta,right] {$(K/L)_X$};}
-  \capa{2}{\draw[curva3] plot[domain=0.25:6.6,samples=80] (\x,{ky(\x)})
-    node[etiqueta,below=3pt] {$(K/L)_Y$};}
-  % 3: relación monótona entre p_X/p_Y y w/r en el cuadrante inferior
-  \capa{3}{\draw[curva2] plot[domain=0.62:6.6,samples=80] (\x,{pr(\x)})
+  \capa{2}{\draw[curva1] plot[domain=0.30:1.85,samples=80] (\x,{kx(\x)})
+    node[etiqueta,above right=-2pt] {$(K/L)_X$};}
+  \capa{2}{\draw[curva3] plot[domain=0.11:1.85,samples=80] (\x,{ky(\x)})
+    node[etiqueta,right] {$(K/L)_Y$};}
+  % 3: relación monótona entre p_X/p_Y y r/w en el cuadrante inferior
+  \capa{3}{\draw[curva2] plot[domain=0.06:1.85,samples=80] (\x,{pr(\x)})
     node[etiqueta,right] {$p_X/p_Y$};}
-  % 4: dotaciones y cono de diversificación, con sus límites (w/r)' y (w/r)''
-  \capa{4}{\draw[thick,tceedorado] (1.355,2.4) -- (6.24,2.4) node[etiqueta,above left=1pt and 4pt,text=black] {$(\overline K/\overline L)^A$};}
-  \capa{4}{\draw[thick,tceedorado] (0.689,1.6) -- (3.175,1.6) node[etiqueta,below right=0pt and 2pt,text=black] {$(\overline K/\overline L)^B$};}
-  \capa{4}{\draw[guia] (1.355,2.4) -- (1.355,{pr(1.355)});}
-  \capa{4}{\draw[guia] (3.175,1.6) -- (3.175,{pr(3.175)});}
-  \capa{4}{\node[etiqueta,font=\footnotesize,below left=1pt and -2pt] at (1.355,0) {$(w/r)'$};}
-  \capa{4}{\node[etiqueta,font=\footnotesize,below right=1pt and -2pt] at (3.175,0) {$(w/r)''$};}
-  % 5: una RRI común da un solo w/r y las mismas K/L sectoriales en A y en B
-  \capa{5}{\node[punto] (R) at (2,{pr(2)}) {};}
-  \capa{5}{\draw[thick,tceerojo] (0,{pr(2)}) node[left,text=black] {$\mathrm{RRI}$} -- (R);}
-  \capa{5}{\draw[thick,tceerojo,->] (R) -- (2,3.03);}
-  \capa{5}{\node[etiqueta,font=\footnotesize,above right=0pt and 1pt,text=tceerojo] at (2,0) {$(w/r)^*$};}
-  \capa{5}{\node[punto] at (2,3.03) {};}
-  \capa{5}{\node[punto] at (2,1.213) {};}
-  \capa{5}{\draw[guia] (2,3.03) -- (0,3.03) node[left,text=black] {$(K/L)^*_X$};}
-  \capa{5}{\draw[guia] (2,1.213) -- (0,1.213) node[left,text=black] {$(K/L)^*_Y$};}
+  % 4: dotaciones e intervalo común de diversificación, entre (r/w)' y (r/w)''
+  \capa{4}{\draw[thick,tceedorado] (0.160,2.4) -- (0.738,2.4);}
+  \capa{4}{\node[etiqueta,left] at (0,2.4) {$(\overline K/\overline L)^A$};}
+  \capa{4}{\draw[guia] (0,2.4) -- (0.160,2.4);}
+  \capa{4}{\draw[thick,tceedorado] (0.259,1.8) -- (0.839,1.8);}
+  \capa{4}{\node[etiqueta,left] at (0,1.8) {$(\overline K/\overline L)^B$};}
+  \capa{4}{\draw[guia] (0,1.8) -- (0.259,1.8);}
+  \capa{4}{\draw[guia] (0.259,1.8) -- (0.259,{pr(0.259)});}
+  \capa{4}{\draw[guia] (0.738,2.4) -- (0.738,{pr(0.738)});}
+  \capa{4}{\draw[line width=2.2pt,tceedorado] (0.259,0) -- (0.738,0);}
+  \capa{4}{\node[etiqueta,font=\footnotesize,below left=1pt and -2pt] at (0.259,0) {$(r/w)'$};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,below right=1pt and -2pt] at (0.738,0) {$(r/w)''$};}
+  % 5: una RRI común da un solo r/w y las mismas K/L sectoriales en A y en B
+  \capa{5}{\node[punto] (R) at (0.5,{pr(0.5)}) {};}
+  \capa{5}{\draw[thick,tceerojo] (0,{pr(0.5)}) node[left,text=black] {$\mathrm{RRI}$} -- (R);}
+  \capa{5}{\draw[thick,tceerojo,->] (R) -- (0.5,3.03);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,above right=0pt and 1pt,text=tceerojo] at (0.5,0) {$(r/w)^*$};}
+  \capa{5}{\node[punto] at (0.5,3.03) {};}
+  \capa{5}{\node[punto] at (0.5,1.213) {};}
+  \capa{5}{\draw[guia] (0.5,3.03) -- (0,3.03) node[left,text=black] {$(K/L)^*_X$};}
+  \capa{5}{\draw[guia] (0.5,1.213) -- (0,1.213) node[left,text=black] {$(K/L)^*_Y$};}
 \end{tikzpicture}
 \end{document}

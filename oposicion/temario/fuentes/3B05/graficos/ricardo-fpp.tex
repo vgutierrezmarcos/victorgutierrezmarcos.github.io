@@ -1,12 +1,17 @@
 % Ventaja comparativa de Ricardo con los números de tab:pano-vino.
 % A = Inglaterra, B = Portugal; X = paño (abscisas), Y = vino (ordenadas).
-% L^A = L^B = 2.400 hombres-año; a_X^A = 100, a_Y^A = 120, a_X^B = 90, a_Y^B = 80.
-%   FPP de A: de (24, 0) a (0, 20), pendiente -100/120 = -0,83.
-%   FPP de B: de (26,7, 0) a (0, 30), pendiente -90/80 = -1,125.
-%   RRI = p_X/p_Y = 1: A se especializa en P^A = (24, 0) y consume en X + Y = 24;
-%   B se especializa en P^B = (0, 30) y consume en X + Y = 30.
-%   Consumo (opcional): C^A = (14, 10) y C^B = (10, 20): A exporta 10 de paño,
-%   que B importa; B exporta 10 de vino, que A importa (comercio equilibrado).
+% Notación del tema antiguo: FPP (frontera de posibilidades de producción) y
+% FPC (frontera de posibilidades de consumo), con los cortes en función de
+% la dotación de trabajo, L̄ (la misma en los dos países; en el dibujo,
+% L̄ = 2.400 hombres-año).
+%   a_X^A = 100, a_Y^A = 120, a_X^B = 90, a_Y^B = 80.
+%   FPP de A: de (L̄/100, 0) = (24, 0) a (0, L̄/120) = (0, 20), pendiente -0,83.
+%   FPP de B: de (L̄/90, 0) = (26,7, 0) a (0, L̄/80) = (0, 30), pendiente -1,125.
+%   RRI = p_X/p_Y = 1: A se especializa en P^A = (L̄/100, 0) y su FPC llega a
+%   (0, L̄/100); B se especializa en P^B = (0, L̄/80) y su FPC llega a (L̄/80, 0).
+%   Consumo (capa 6): C^A = (12, 12) y C^B = (12, 18): A exporta 12 de paño,
+%   que B importa; B exporta 12 de vino, que A importa (los mismos números que
+%   el anexo de la RRI en Ricardo, ricardo-oferta-exportacion.tex).
 % Elaboración propia a partir de Krugman, Obstfeld y Melitz (2018), cap. 3.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
@@ -14,46 +19,46 @@
 \begin{document}
 \begin{tikzpicture}[tcee,x=0.2cm,y=0.2cm]
   % 1: ejes de los 2 paneles, con la misma escala
-  \capa{1}{\ejes{$X$ (paño)}{$Y$ (vino)}{40}{34}}
+  \capa{1}{\ejes{$X$ (paño)}{$Y$ (vino)}{44}{34}}
   \capa{1}{\node[etiqueta,font=\small\bfseries,anchor=south] at (20,35.5) {Inglaterra (A)};}
-  \capa{1}{\begin{scope}[xshift=9.6cm]
-    \ejes{$X$ (paño)}{$Y$ (vino)}{40}{34}
+  \capa{1}{\begin{scope}[xshift=10.2cm]
+    \ejes{$X$ (paño)}{$Y$ (vino)}{44}{34}
     \node[etiqueta,font=\small\bfseries,anchor=south] at (20,35.5) {Portugal (B)};
   \end{scope}}
-  % 2: FPP de A, con sus cortes y su pendiente (coste comparativo)
+  % 2: FPP de A, con sus cortes (dotación de trabajo entre el trabajo por unidad)
   \capa{2}{\draw[curva1] (0,20) -- (24,0);}
-  \capa{2}{\node[etiqueta,left] at (0,20) {$20$};}
-  \capa{2}{\node[etiqueta,below] at (24,0) {$24$};}
-  \capa{2}{\node[etiqueta,font=\footnotesize,text=tceemorado,anchor=east,align=right] at (8.5,8) {FPP$^A$\\[-1pt]pendiente $-0{,}83$\\[-1pt](coste comparativo)};}
+  \capa{2}{\node[etiqueta,left] at (0,20) {$\overline L/120$};}
+  \capa{2}{\node[etiqueta,below] at (24,0) {$\overline L/100$};}
+  \capa{2}{\node[etiqueta,font=\footnotesize,text=tceemorado,anchor=east,align=right] at (9.5,7.5) {FPP$^A$\\[-1pt]pendiente $-\frac{100}{120}$};}
   % 3: FPP de B
-  \capa{3}{\begin{scope}[xshift=9.6cm]
+  \capa{3}{\begin{scope}[xshift=10.2cm]
     \draw[curva2] (0,30) -- (26.67,0);
-    \node[etiqueta,left] at (0,30) {$30$};
-    \node[etiqueta,anchor=north east,inner sep=1pt] at (26.9,-0.4) {$26{,}7$};
-    \node[etiqueta,font=\footnotesize,text=tceeazul,anchor=east,align=right] at (13.5,8) {FPP$^B$\\[-1pt]pendiente $-1{,}125$\\[-1pt](coste comparativo)};
+    \node[etiqueta,left] at (0,30) {$\overline L/80$};
+    \node[etiqueta,anchor=north east,inner sep=1pt] at (26.9,-0.4) {$\overline L/90$};
+    \node[etiqueta,font=\footnotesize,text=tceeazul,anchor=east,align=right] at (13.5,8) {FPP$^B$\\[-1pt]pendiente $-\frac{90}{80}$};
   \end{scope}}
-  % 4: A se especializa en paño (P^A) y consume en la recta de la RRI = 1
+  % 4: A se especializa en paño (P^A) y consume en su FPC, la recta de la RRI = 1
   \capa{4}{\node[punto] (PA) at (24,0) {};}
   \capa{4}{\node[etiqueta,above right] at (PA) {$P^A$};}
   \capa{4}{\draw[curvanueva,desplazada] (24,0) -- (0,24);}
-  \capa{4}{\node[etiqueta,left] at (0,24) {$24$};}
-  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west,align=left] at (13,15) {frontera de consumo\\[-1pt]$\mathrm{RRI}=p_X/p_Y=1$};}
-  % 5: B se especializa en vino (P^B) y consume en la recta de la RRI = 1
-  \capa{5}{\begin{scope}[xshift=9.6cm]
+  \capa{4}{\node[etiqueta,left] at (0,24.6) {$\overline L/100$};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west,align=left] at (14,15) {FPC$^A$\\[-1pt]pendiente $-\mathrm{RRI}=-1$};}
+  % 5: B se especializa en vino (P^B) y consume en su FPC
+  \capa{5}{\begin{scope}[xshift=10.2cm]
     \node[punto] (PB) at (0,30) {};
     \node[etiqueta,above right] at (PB) {$P^B$};
     \draw[curvanueva,desplazada] (0,30) -- (30,0);
-    \node[etiqueta,anchor=north west,inner sep=1pt] at (29.6,-0.4) {$30$};
-    \node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west,align=left] at (17,17) {frontera de consumo\\[-1pt]$\mathrm{RRI}=p_X/p_Y=1$};
+    \node[etiqueta,anchor=north west,inner sep=1pt] at (29.6,-0.4) {$\overline L/80$};
+    \node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west,align=left] at (17,17) {FPC$^B$\\[-1pt]pendiente $-\mathrm{RRI}=-1$};
   \end{scope}}
   % 6 (opcional): la ganancia del comercio y los puntos de consumo
   \capa{6}{\fill[area2] (0,20) -- (24,0) -- (0,24) -- cycle;}
-  \capa{6}{\node[punto] (CA) at (14,10) {};}
+  \capa{6}{\node[punto] (CA) at (12,12) {};}
   \capa{6}{\node[etiqueta,above right] at (CA) {$C^A$};}
-  \capa{6}{\begin{scope}[xshift=9.6cm]
+  \capa{6}{\begin{scope}[xshift=10.2cm]
     \fill[area2] (0,30) -- (26.67,0) -- (30,0) -- cycle;
-    \node[punto] at (10,20) {};
-    \node[etiqueta,above right] at (10,20) {$C^B$};
+    \node[punto] at (12,18) {};
+    \node[etiqueta,above right] at (12,18) {$C^B$};
   \end{scope}}
 \end{tikzpicture}
 \end{document}

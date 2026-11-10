@@ -151,6 +151,25 @@ Revisión autónoma (Víctor fuera del 31/10 al 9/11/2026). La fuente nueva est�
   - el 3.A.3 llama a las curvas de Marshall «de oferta recíproca»: aquí se dice «oferta neta (u oferta recíproca)»;
   - el 3.B.6 y el 3.B.10 son coherentes con lo escrito (sus remisiones a la RRI, a Stolper-Samuelson y a Mundell tienen contenido aquí).
 
+## Comentarios de Víctor (10/11/2026, 3.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Comercio internacional: nada de SEC, todo en sectores CUCI, con datos de los servidores del ministerio | Consulta al SQL Server de comercio (`CMX.TH_DEFINITIVOS_PROVISIONALES`, enero-diciembre de 2025, primer dígito de la CUCI). Nuevo `datos/comercio-sectores-espana.csv` (10 secciones CUCI, sustituye al de sectores SEC del informe mensual) y nueva cita `Datacomex2026`. El gráfico `comercio-sectores-espana` (antiguo gráfico 20) y el texto del anexo de datos pasan a secciones CUCI; el déficit energético del enganche pasa a la sección 3 de la CUCI (−28.562 M€, antes −29.292 M€ de la SEC «productos energéticos»); la ficha y `datos-actualizables.yaml`, igual. |
+| Refrán: «El que mucho abarca, poco aprieta» en lugar de «Lo que abunda no daña» | Cambiado en el enganche (la especialización: España no intenta producirlo todo), la idea final de la conclusión, la nota al opositor del reparto, la ficha (esquema, enganche e idea final) y las instrucciones del vídeo. |
+| Gráfico 1: notación FPP y FPC, mismo ejemplo con $\overline L$ en los ejes; gráfico combinado en nota al pie | `ricardo-fpp` rehecho: cortes $\overline L/100$, $\overline L/120$, $\overline L/90$, $\overline L/80$, rótulos FPP$^A$, FPC$^A$, FPP$^B$, FPC$^B$; el texto explica las 4 capas. Nuevo `ricardo-fpp-conjunto` (los 2 países en un solo plano, como la imagen 1 del tema anterior) en la nota al pie con `\graficonota`. |
+| Tabla 2: los comentarios del 3.A.2 | Quitada la fila del coste relativo; sombreada y en azul la ventaja comparativa de cada país; viñetas con el porqué (desventaja menor de Inglaterra en paño, 1,11 frente a 1,5; ventaja mayor de Portugal en vino, 0,67 frente a 0,9, con los costes comparativos); la tabla 1 de Smith se presenta como el ejemplo de Ricardo con una cifra cambiada y en la pizarra se tacha el 110 y se escribe el 90. Mismos números que el 3.A.2. |
+| Nota al pie 16 antigua en una caja gris en el cuerpo | Caja gris «El país grande: cuándo la especialización no es completa» tras las implicaciones de Ricardo; remite al anexo nuevo. |
+| Enlace al vídeo y desarrollo de Haberler: curvas de oferta neta desde el gráfico de Haberler y RRI (Ricardo, a un anexo) | Enlace conservado (nota «Para ver» del paso 2). El apartado II desarrolla, en 4 pasos: 1) triángulo de comercio (`haberler-comercio`); 2) curva de oferta neta de A girando la RRI ($p=1$, 1,5, 2), plano de bienes y plano del comercio lado a lado, como el gráfico 5 del 3.B.7 (nuevo `haberler-oferta-neta-a`, 5 capas); 3) la de B ($p=4$, 3, 2; nuevo `haberler-oferta-neta-b`); 4) equilibrio y RRI (`ofertas-netas`). Los números de los 3 gráficos son los mismos (corte en RRI = 2). El ejemplo de Ricardo con la demanda va al anexo nuevo «La RRI con el ejemplo de Ricardo», con la oferta relativa escalonada y un gráfico nuevo, `ricardo-oferta-exportacion` (oferta de exportaciones de Inglaterra y demanda de importaciones de Portugal, la construcción de Feenstra y Taylor de la antigua nota 16; RRI = 1 y, en una capa, el país grande). |
+| Gráfico 5 (Meade) en una caja gris | La derivación de Meade y su gráfico, en una caja gris (`figuracaja`) tras el equilibrio. |
+| No dividir el apartado 2 en 2 modelos | Apartado II único, «Teoría neoclásica (1): determinación de la RRI. Modelo de Haberler», con a) idea (RRI, Haberler, demanda recíproca de Mill), b) modelo (supuestos, desarrollo en 4 pasos, implicaciones), c) evidencia, d) valoración con los usos de las curvas de oferta neta. |
+| En todos los modelos, implicaciones con las 4 preguntas | Ricardo, Haberler, H-O-S y factores específicos responden a por qué se comercia, qué se produce, a qué RRI y quién gana (también en la ficha). |
+| Factores específicos: anexo C al cuerpo en una caja gris | Caja gris «Cambios en las dotaciones» con los 2 gráficos (`especificos-ky`, `especificos-l`) dentro del modelo; el anexo desaparece. |
+| Anexo G: quitar el gráfico 21 y rehacer el 20 en CUCI | Quitado `vcr-intensidad-factorial-espana` (borrados sus ficheros; la frase con los índices por intensidad factorial se queda, sin gráfico, y su CSV sigue en `datos/`). El 20, en secciones CUCI (ver primera fila). |
+| Todos los teoremas con gráfico, numerados 1-4, primera frase en negrita; igualación con el gráfico del tema antiguo en una caja; Rybczynski con la caja de factores | Teorema 1 (H-O, `teorema-ho`), 2 (Stolper-Samuelson, `costes-unitarios`, explicado por capas), 3 (igualación; caja gris con `samuelson-johnson` rehecho con el orden de ejes del tema antiguo: $r/w$ en abscisas, $K/L$ decreciente, $p_X/p_Y$ hacia abajo) y 4 (Rybczynski, `rybczynski-caja` al cuerpo; `rybczynski-fpp`, en nota al pie). Enunciados con la primera frase en negrita. El orden es el que da Víctor (H-O, S-S, igualación, Rybczynski). |
+| Reestructurar con el esquema del título | I. Teoría clásica (1. Antecedentes: Smith; 2. Ricardo-Torrens); II. Teoría neoclásica (1): RRI y Haberler; III. Teoría neoclásica (2): H-O-S, con a) idea, b) modelo (supuestos, 4 teoremas, implicaciones), c) evidencia (Leontief, salidas y paso a las extensiones), d) extensiones (i HOV con su evidencia; ii Jones y Deardorff; iii factores específicos, con idea, supuestos, desarrollo, 4 preguntas, extensiones, evidencia y valoración; caja gris con los demás levantamientos de supuestos), e) valoración e influencia. Actualizados la estructura de la introducción, el esquema, `\esqtiempo` y minutos (2,5 + 6,5 + 6 + 13,5 + 1,5 = 30), las notas al opositor, la tabla de los 4 modelos (H-O-S antes que los factores específicos) y la ficha. Los anexos quedan: A extensiones de Ricardo; B la RRI con el ejemplo de Ricardo (nuevo); C transferencias; D igualación (demostración, reversión y coeficientes fijos); E álgebra de Jones y reciprocidad; F Leontief; G datos de España; H test. |
+| Gráficos por pasos explicados poco a poco | Cada gráfico nuevo o rehecho tiene capas (`\capa`) y el texto las recorre en orden (FPP/FPC de Ricardo, pasos 2-3 de Haberler, curvas de coste unitario, Samuelson-Johnson, caja de Rybczynski, anexo de Ricardo). |
+
 ## 7. Dudas abiertas
 
 1. **D1-D5 (estructura)**, aplicadas con la opción recomendada:
@@ -159,7 +178,7 @@ Revisión autónoma (Víctor fuera del 31/10 al 9/11/2026). La fuente nueva est�
    - D3: el enganche del aceite (punto 2);
    - D4: X intensivo en capital, como el original, con los gráficos del 3.A.21 intercambiados;
    - D5: el anexo de Keynes y Ohlin se queda aquí.
-   ¿Las da por buenas?
+   ¿Las da por buenas? *Resuelta por Víctor (10/11/2026)*: D1 y D2, con otra estructura (factores específicos como extensión del H-O-S y apartado II único con Haberler); D3 se mantiene con otro refrán.
 2. **Enganche sin cifra del aceite de oliva**: no se ha encontrado en una fuente oficial comprobada la cuota de España en las exportaciones mundiales de aceite de oliva. Se usan 2 datos oficiales comprobados:
    - la ventaja comparativa revelada de los aceites y grasas (sección 4 de la CUCI) en 2024, 3,65 (UN Comtrade, elaboración propia);
    - el déficit energético de 2025 (−29.292 M€).
@@ -179,11 +198,16 @@ Revisión autónoma (Víctor fuera del 31/10 al 9/11/2026). La fuente nueva est�
    - Stolper-Samuelson con la `\funcionclave` de la cadena de precios, y la de cantidades como ecuación normal, para no tener 2 funciones clave en el mismo bloque;
    - DFS y EK como `\subparagraph` dentro de las extensiones de Ricardo;
    - el gráfico del mercado de factores (propuesta C32) no se usa en el tema, para no pasar de ~32 páginas (ver el punto 8);
-   - la caja de Rybczynski, el plano de los bienes, el diagrama de Samuelson-Johnson, la reversión y los coeficientes fijos van a los anexos (no se dibujan en la pizarra);
+   - la caja de Rybczynski, el plano de los bienes, el diagrama de Samuelson-Johnson, la reversión y los coeficientes fijos van a los anexos (no se dibujan en la pizarra); *Resuelta por Víctor (10/11/2026)*: la caja de Rybczynski y el diagrama de Samuelson-Johnson pasan al cuerpo (este, en caja gris) y el plano de los bienes, a una nota;
    - en la estructura y el esquema se ha escrito «Pensamiento neoclásico» sin «(I)» ni «(II)», porque `verificar-tema.py` lo toma por una remisión a mano.
 8. **Control de calidad (05/11/2026)**, para que decida:
    - `graficos/mercado-factores` (propuesta C32) está dibujado y compilado, pero el `.tex` no lo usa. Recomendado: no incluirlo (repite lo que muestran las curvas de coste unitario y alargaría el tema). ¿Se queda fuera, o lo incluimos en el anexo de Rybczynski y Jones?
    - Magee (1980) es Stephen P. Magee y Magee, Davidson y Matusz (2005) es Christopher S. P. Magee: son autores distintos, así que las citas salen con iniciales («S. P. Magee», «C. S. P. Magee»). Es correcto; si prefiere evitarlo, habría que citar el de 2005 sin `\textcite` del apellido junto al de 1980.
+
+9. **D-09. Totales del comercio de España de 2025** (10/11/2026): la consulta a DataComex da 387.404 M€ de exportaciones y 449.733 M€ de importaciones, algo más que el informe mensual de diciembre (387.092 y 444.146), por las revisiones posteriores. Opciones: (a) dejar los totales del informe mensual en el texto y usar DataComex solo para el reparto por secciones CUCI, avisándolo en la fuente del gráfico; (b) pasar también los totales a DataComex. **Aplicada: (a)**.
+10. **D-10. Sentido del precio relativo de los factores** (10/11/2026): el canon (`notacion.md` § 10) fija $w/r$; Víctor pide el diagrama de Samuelson-Johnson con el orden de ejes del tema antiguo ($r/w$). Opciones: (a) $r/w$ solo en ese gráfico, $w/r$ en el resto del tema; (b) $r/w$ en todo el tema. **Aplicada: (a)**, apuntado en `_trabajo/canon-pendiente.md`.
+11. **D-11. Puntos de consumo del gráfico 1** (10/11/2026): para que coincidan con el anexo nuevo de la RRI con el ejemplo de Ricardo (Inglaterra gasta la mitad en paño, Portugal el 40 %), los consumos pasan a $C^A=(12,12)$ y $C^B=(12,18)$ (antes 14,10 y 10,20). Opciones: (a) estos números; (b) los antiguos, sin relación con el anexo. **Aplicada: (a)**.
+12. **D-12. La caja gris de la antigua nota 16** (10/11/2026): la nota tenía 3 imágenes de Feenstra y Taylor; en la caja va solo el texto y su gráfico, rehecho con los números de Ricardo, está en el anexo B (`ricardo-oferta-exportacion`). Opciones: (a) así; (b) meter el gráfico también en la caja. **Aplicada: (a)**.
 
 ## Enlaces del original (9/11/2026)
 
@@ -199,22 +223,21 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 
 ## 8. Instrucciones para el vídeo
 
-(Aún no hay guion ni escenas: entrega 3.)
+(Aún no hay guion ni escenas: entrega 3. Actualizadas el 10/11/2026 con la 3.ª tanda de Víctor.)
 
-- **Enganche e idea final**: «Lo que abunda no daña», con los aceites de España (pesan 3 veces y media más en sus exportaciones que en las del mundo) y la energía que importa. La pregunta es por qué comercian los países, qué intercambian, a qué precio y quién gana. La idea final retoma el refrán: no daña al país, pero sí al dueño del factor escaso. Introducción y conclusión, sin pizarra.
+- **Enganche e idea final**: «El que mucho abarca, poco aprieta», con los aceites de España (pesan 3 veces y media más en sus exportaciones que en las del mundo) y la energía que no intenta producir y compra fuera (combustibles, sección 3 de la CUCI). La pregunta es por qué comercian los países, qué intercambian, a qué precio y quién gana. La idea final retoma el refrán: especializarse gana, aunque se sea mejor o peor en todo, pero tiene perdedores dentro. Introducción y conclusión, sin pizarra.
 - **Gráfico conjunto por partes**: la tabla `tab:modelos` (4 preguntas × 4 modelos).
-  - Se dibuja vacía en una esquina al empezar el I y se rellena una fila al terminar Ricardo, Haberler y la RRI, los factores específicos y el H-O-S.
+  - Se dibuja vacía en una esquina al empezar el I y se rellena una fila al terminar Ricardo, Haberler, el H-O-S y los factores específicos (en este orden).
   - Se queda todo el cante y en la conclusión se señala, sin escribirla otra vez.
-  - Cada pegatina se apunta junto a su fila: Mill, factores específicos, igualación, Stolper-Samuelson y Leontief.
+  - Cada pegatina se apunta junto a su fila: Mill, igualación, Stolper-Samuelson, Leontief y factores específicos.
 - **Funciones clave que se conservan**:
   - `eq:ventaja-comparativa`, desde el I.2 hasta el final del II;
   - `eq:mill`, durante el II;
-  - `eq:magnificacion`, desde Stolper-Samuelson hasta el final; la cadena de Rybczynski (`eq:magnificacion-ryb`) se escribe debajo de ella, porque son duales.
+  - `eq:magnificacion`, desde el teorema 2 hasta el final; la cadena de Rybczynski (`eq:magnificacion-ryb`) se escribe debajo de ella, porque son duales.
 - **Rejillas sugeridas**:
-  - I, «35|65»: la tabla de Smith y Ricardo (se tacha el 110 y se escribe el 90) a la izquierda, `ricardo-fpp` a la derecha;
-  - II, «50|50»: `haberler-comercio` a la izquierda; a la derecha, `ofertas-netas`, que se deriva del triángulo de al lado, y `ricardo-oferta-relativa` como boceto de 30″;
-  - III.1, «100»: `especificos`, con la subida de $p_Y$ como capa nueva y la cadena `eq:especificos-magnificacion` debajo;
-  - III.2, «45|55»: `costes-unitarios` y las cadenas a la izquierda, `teorema-ho` a la derecha.
-- **Gráficos de apoyo**, sin escribirlos: `dfs`, `meade`, `rybczynski-caja` y `rybczynski-fpp`. Los de los anexos (`frontera-mundial`, `cadena-ventaja`, `viner`, `especificos-ky`, `especificos-l`, `samuelson-johnson`, `reversion-intensidades`, `fpp-coeficientes-fijos`) y los 3 de datos, nunca a mano.
-- **De palabra**: Eaton-Kortum, la evidencia de Ricardo salvo MacDougall y Japón, Harrigan, Prebisch-Singer, la evidencia de los factores específicos salvo Magee, el HOV (solo «el comercio que falta» de Trefler) y las extensiones del H-O-S salvo HOV y Bernard-Redding-Schott.
+  - I, «35|65»: la tabla de Smith y Ricardo (se tacha el 110 y se escribe el 90, y se sombrea la ventaja comparativa) a la izquierda, `ricardo-fpp` por capas (ejes, FPP de A, FPP de B, especialización y FPC de A, de B, ganancia) a la derecha;
+  - II, «100» en 4 pasos: `haberler-comercio`; después `haberler-oferta-neta-a` (5 capas: ejes de los 2 planos, autarquía, $p=1{,}5$, $p=2$, la curva) y `haberler-oferta-neta-b` (las mismas capas); por último `ofertas-netas` (el equilibrio);
+  - III, «45|55»: `teorema-ho`; `costes-unitarios` con las cadenas; `rybczynski-caja`; después «100» para `especificos`, con la subida de $p_Y$ como capa nueva y la cadena `eq:especificos-magnificacion` debajo.
+- **Gráficos de apoyo**, sin escribirlos: `ricardo-fpp-conjunto` (nota), `dfs`, `meade` (caja gris), `samuelson-johnson` (caja gris, 5 capas), `rybczynski-fpp` (nota), `especificos-ky` y `especificos-l` (caja gris). Los de los anexos (`frontera-mundial`, `cadena-ventaja`, `viner`, `ricardo-oferta-exportacion`, `ricardo-oferta-relativa`, `reversion-intensidades`, `fpp-coeficientes-fijos`) y los 2 de datos, nunca a mano.
+- **De palabra**: Eaton-Kortum, la evidencia de Ricardo salvo MacDougall y Japón, Harrigan, Prebisch-Singer, la evidencia de los factores específicos salvo Magee, el HOV (solo «el comercio que falta» de Trefler) y los otros levantamientos de supuestos del H-O-S.
 - **Nunca** se dice en voz alta el número de un tema.

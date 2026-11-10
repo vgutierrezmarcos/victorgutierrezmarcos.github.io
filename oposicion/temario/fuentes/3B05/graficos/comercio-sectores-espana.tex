@@ -2,11 +2,11 @@
 \input{../../../latex/tikz-tcee}
 \usepackage{pgfplotstable}
 \begin{document}
-% Comercio exterior de mercancías de España en 2025 por sectores económicos:
+% Comercio exterior de mercancías de España en 2025 por secciones de la CUCI:
 % peso en las exportaciones y en las importaciones (panel izquierdo, %) y saldo
 % (panel derecho, miles de millones de euros), de mayor a menor peso en las
-% exportaciones. Ministerio de Economía, Comercio y Empresa, Informe mensual
-% de comercio exterior, diciembre de 2025 (datos provisionales); CSV en
+% exportaciones. Datacomex (Secretaría de Estado de Comercio, datos de la
+% AEAT), enero-diciembre de 2025 (datos provisionales); CSV en
 % ../datos/comercio-sectores-espana.csv.
 % Paleta del bloque de comercio (la de acr-en-vigor del 3.B.10): exportaciones
 % en azul marino (dicze), importaciones en dorado (otra gama), saldo en gris.
@@ -36,10 +36,10 @@
   \begin{axis}[
       name=pct, width=8.6cm, height=10cm,
       xbar, bar width=5pt, y dir=reverse,
-      xmin=0, xmax=27.5, ymin=-0.6, ymax=9.6,
+      xmin=0, xmax=35.5, ymin=-0.6, ymax=9.6,
       ytick={0,...,9}, yticklabels from table={\comord}{sector},
       yticklabel style={font=\footnotesize, text width=4.1cm, align=right},
-      xtick={0,5,...,25}, xticklabel style={font=\footnotesize},
+      xtick={0,5,...,35}, xticklabel style={font=\footnotesize},
       xlabel={\% del total}, xlabel style={font=\footnotesize},
       axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
       y axis line style={draw=none}, ytick style={draw=none},
@@ -74,7 +74,7 @@
     }
   \end{axis}
   \begin{axis}[
-      name=sal, at={(pct.east)}, anchor=west, xshift=0.6cm, width=5.2cm, height=10cm,
+      name=sal, at={(pct.east)}, anchor=west, xshift=1.1cm, width=5.2cm, height=10cm,
       xbar, bar width=7pt, y dir=reverse,
       xmin=-40, xmax=30, ymin=-0.6, ymax=9.6,
       ytick=\empty, xtick={-30,-15,0,15}, xticklabel style={font=\footnotesize},
@@ -99,6 +99,6 @@
     }
   \end{axis}
   % caja del dibujo: los rótulos en capas no la amplían
-  \path (pct.outer south west) ($(sal.outer north east)+(0.4,0)$);
+  \path (pct.outer south west) ($(sal.outer north east)+(1.0,0)$);
 \end{tikzpicture}
 \end{document}

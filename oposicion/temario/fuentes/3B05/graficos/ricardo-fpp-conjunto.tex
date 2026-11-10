@@ -1,0 +1,40 @@
+% Las dos fronteras de Ricardo en un solo plano (nota del gráfico ricardo-fpp).
+% Mismos números que ricardo-fpp.tex: L̄ igual en los dos países (2.400 en el
+% dibujo); FPP^A de (0, L̄/120) a (L̄/100, 0); FPP^B de (0, L̄/80) a (L̄/90, 0);
+% con RRI = 1, FPC^A de (0, L̄/100) a (L̄/100, 0) y FPC^B de (0, L̄/80) a (L̄/80, 0).
+% Se ve que la FPP de Portugal queda por fuera de la de Inglaterra (ventaja
+% absoluta en los dos bienes), pero con distinta pendiente (coste comparativo),
+% y que cada FPC sale del vértice de especialización con la pendiente de la RRI.
+% Elaboración propia a partir del gráfico del tema anterior (Khan Academy).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.2cm,y=0.2cm]
+  % 1: ejes
+  \capa{1}{\ejes{$X$ (paño)}{$Y$ (vino)}{42}{34}}
+  % 2: las 2 FPP
+  \capa{2}{\draw[curva1] (0,20) -- (24,0);}
+  \capa{2}{\node[etiqueta,left] at (0,20) {$\overline L/120$};}
+  \capa{2}{\node[etiqueta,below] at (23.6,0) {$\overline L/100$};}
+  \capa{2}{\node[etiqueta,text=tceemorado,font=\footnotesize,rotate=-39.8,anchor=north] at (11,10.8) {FPP$_{\text{Inglaterra}}$};}
+  \capa{2}{\draw[curva2] (0,30) -- (26.67,0);}
+  \capa{2}{\node[etiqueta,left] at (0,30) {$\overline L/80$};}
+  \capa{2}{\node[etiqueta,below=11pt] at (26.67,0) {$\overline L/90$};\draw[guia] (26.67,0) -- (26.67,-2.2);}
+  \capa{2}{\node[etiqueta,text=tceeazul,font=\footnotesize,rotate=-48.4,anchor=north] at (14,14.3) {FPP$_{\text{Portugal}}$};}
+  % 3: las 2 FPC con la RRI = 1, desde los vértices de especialización
+  \capa{3}{\draw[desplazada,tceemorado] (24,0) -- (0,24);}
+  \capa{3}{\node[etiqueta,left] at (0,24) {$\overline L/100$};}
+  \capa{3}{\node[etiqueta,text=tceemorado,font=\footnotesize,rotate=-45,anchor=south] at (9,15) {FPC$_{\text{Inglaterra}}$};}
+  \capa{3}{\draw[desplazada,tceeazul] (0,30) -- (30,0);}
+  \capa{3}{\node[etiqueta,below] at (31.2,0) {$\overline L/80$};}
+  \capa{3}{\node[etiqueta,text=tceeazul,font=\footnotesize,rotate=-45,anchor=south] at (18,12) {FPC$_{\text{Portugal}}$};}
+  \capa{3}{\node[punto] at (24,0) {};}
+  \capa{3}{\node[punto] at (0,30) {};}
+  % 4: los ángulos de la RRI
+  \capa{4}{\draw[thin,tceerojo] (21,0) arc[start angle=180,end angle=135,radius=3];}
+  \capa{4}{\node[etiqueta,text=tceerojo,font=\footnotesize] at (19.3,1.3) {RRI};}
+  \capa{4}{\draw[thin,tceerojo] (27,0) arc[start angle=180,end angle=135,radius=3];}
+  \capa{4}{\node[etiqueta,text=tceerojo,font=\footnotesize] at (25.6,2.6) {RRI};}
+\end{tikzpicture}
+\end{document}

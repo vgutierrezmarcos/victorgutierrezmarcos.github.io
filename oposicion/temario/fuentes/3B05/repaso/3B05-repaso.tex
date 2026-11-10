@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Comercio internacional (I)]{3.B.5}{Teoría del comercio internacional (I). La teoría ricardiana de la ventaja comparativa. Determinación de la relación real de intercambio. El modelo de factores específicos. El Modelo Hecksher-Ohlin-Samuelson (H-O-S); teoremas derivados del modelo y extensiones.}
-\tcefecha{05/11/2026}
+\tcefecha{10/11/2026}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
@@ -9,57 +9,57 @@
 % ==========================================================================
 \bloque{Esquema del cante}
 \esquemacante{%
-\apartadocante{Introducción: «lo que abunda no daña»}{2,5}
-\apartadocante{I. Pensamiento clásico}{6,5}
-\subcante{1. Ventaja absoluta (\autor{Smith})}{1}
-\subcante{2. Ventaja comparativa (\autor{Ricardo}-\autor{Torrens})}{5,5}
-\apartadocante{II. Neoclásico (I): modelo general y RRI}{6}
-\subcante{1. Modelo general (\autor{Haberler}, 1936)}{2,5}
-\subcante{2. RRI (\autor{Mill}, \autor{Marshall}, \autor{Meade})}{3,5}
-\apartadocante{III. Neoclásico (II): dotaciones}{13,5}
-\subcante{1. Factores específicos (\autor{Ricardo}-\autor{Viner})}{3,5}
-\subcante{2. H-O-S: teoremas, evidencia, extensiones}{10}
+\apartadocante{Introducción: «el que mucho abarca, poco aprieta»}{2,5}
+\apartadocante{I. Teoría clásica: ventaja comparativa ricardiana}{6,5}
+\subcante{1. Antecedentes: \autor{Adam Smith}}{1}
+\subcante{2. \autor{Ricardo}-\autor{Torrens}}{5,5}
+\apartadocante{II. Neoclásica (1): RRI. Modelo de \autor{Haberler}}{6}
+\apartadocante{III. Neoclásica (2): dotaciones. H-O-S}{13,5}
+\subcante{a)-b) Idea, supuestos, 4 teoremas, implicaciones}{8}
+\subcante{c) Evidencia: \autor{Leontief} y salidas}{1,5}
+\subcante{d) Extensiones: HOV; \autor{Jones} y \autor{Deardorff}; específicos}{4}
 \apartadocante{Conclusión}{1,5}}
-\emph{Reparto fino de H-O-S}: supuestos \tiempo{1}; H-O \tiempo{1,5}; igualación \tiempo{1,5}; S-S \tiempo{1,5}; \autor{Rybczynski} \tiempo{1}; evidencia \tiempo{1,5}; extensiones y valoración \tiempo{2}. \emph{Pizarra}: tabla de los 4 modelos × 4 preguntas en una esquina, una fila al cerrar cada modelo. Imprescindibles: FPP lineales de \autor{Ricardo} con la RRI, triángulo de \autor{Haberler}, ofertas netas, diagrama de \autor{Mussa}, 2 FPP de H-O, curvas de coste unitario. Pegatinas: «a buen hambre no hay pan duro» (\autor{Mill}), «cada mochuelo a su olivo» (específicos), «si la montaña no va a Mahoma\ldots» (igualación), «no hay rosa sin espinas» (S-S), «donde menos se piensa, salta la liebre» (\autor{Leontief}).
+\emph{Reparto fino de III}: idea y supuestos \tiempo{1,5}; T1 H-O \tiempo{1,5}; T2 S-S \tiempo{1,5}; T3 igualación \tiempo{1}; T4 \autor{Rybczynski} \tiempo{1}; implicaciones \tiempo{0,5}; evidencia \tiempo{1,5}; extensiones \tiempo{4} (específicos \tiempo{3}); valoración \tiempo{1}. \emph{Pizarra}: tabla de los 4 modelos × 4 preguntas en una esquina, una fila al cerrar cada modelo. Imprescindibles: FPP lineales de \autor{Ricardo} con su FPC, triángulo de \autor{Haberler}, derivación de las ofertas netas y su equilibrio, 2 FPP de H-O, curvas de coste unitario, caja de \autor{Rybczynski}, diagrama de \autor{Mussa}. Pegatinas: «a buen hambre no hay pan duro» (\autor{Mill}), «si la montaña no va a Mahoma\ldots» (igualación), «no hay rosa sin espinas» (S-S), «donde menos se piensa, salta la liebre» (\autor{Leontief}), «cada mochuelo a su olivo» (específicos).
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
 \begin{itemize}
-\item \textbf{Enganche}: «lo que abunda no daña». España: aceites y grasas pesan en sus exportaciones 3,65 veces lo que en las mundiales (VCR de \autor{Balassa}); la energía, escasa, deja un déficit de 29.292 M€ (2025). \autor{Ricardo} va más lejos: se gana comerciando aunque no sobre nada y se produzca todo peor. ¿Por qué comercian los países, qué, a qué precio y quién gana?
+\item \textbf{Enganche}: «el que mucho abarca, poco aprieta». España se especializa: aceites y grasas pesan en sus exportaciones 3,65 veces lo que en las mundiales (VCR de \autor{Balassa}); no produce toda su energía y la compra: déficit en combustibles (CUCI 3) de 28.562 M€ (2025). \autor{Ricardo} va más lejos: conviene especializarse aunque se produzca todo mejor (o peor) que los demás. ¿Por qué comercian los países, qué, a qué precio y quién gana?
 \item \textbf{Relevancia}: comercio mundial de bienes y servicios: 34,65 billones \$ (2025). Enfoque \emph{positivo} (por qué y con qué efectos) y \emph{normativo} (qué política mejora el bienestar); base del bloque \vertema{3.B.7} \vertema{3.B.8} \vertema{3.B.9} \vertema{3.B.10}. El comercio gana para el país, no para todos dentro \ensuremath{\Rightarrow} presiones proteccionistas.
 \item \textbf{Contextualización}: \emph{clásicos} (\autor{Smith}, \autor{Ricardo}): tecnología, 1 factor. \emph{Neoclásicos}: \autor{Mill} y \autor{Marshall}, la demanda fija la \concepto{RRI} ($p_X/p_Y$); \autor{Haberler} (1936), costes de oportunidad crecientes; \autor{Heckscher} (1919), \autor{Ohlin} (1933), \autor{Samuelson}: dotaciones. Supuestos comunes: CP, RCE, bienes homogéneos. Fuera: comercio intraindustrial \vertema{3.B.6}.
 \item \textbf{Problemática}: 4 preguntas por modelo: ¿por qué se comercia?, ¿qué produce y exporta cada país?, ¿a qué RRI?, ¿quién gana (país y cada factor)?
-\item \textbf{Estructura}: orden del título y de la historia; cada modelo levanta un supuesto del anterior: \hyperref[rep:I]{I}, clásicos (tecnología, 1 factor); \hyperref[rep:II]{II}, \autor{Haberler} y la RRI (demanda); \hyperref[rep:III]{III}, 2 factores: específicos (c/p) y H-O-S (l/p).
+\item \textbf{Estructura}: orden del título y de la historia; cada modelo levanta un supuesto del anterior: \hyperref[rep:I]{I}, clásicos (\autor{Smith} y \autor{Ricardo}: tecnología, 1 factor); \hyperref[rep:II]{II}, la RRI en el modelo de \autor{Haberler} (demanda); \hyperref[rep:III]{III}, H-O-S (dotaciones): 4 teoremas, evidencia y extensiones, entre ellas los factores específicos (c/p).
 \end{itemize}
 
 % ==========================================================================
-\bloque[6,5]{I. Pensamiento clásico\label{rep:I}}
+\bloque[6,5]{I. Teoría clásica: ventaja comparativa ricardiana\label{rep:I}}
 \begin{ideaclave}
 Con un solo factor, la tecnología explica el comercio: ganan los 2 países aunque uno sea mejor en todo, porque cuenta el coste comparativo, no el absoluto. Queda abierto el precio (la RRI) y no hay perdedores internos.
 \end{ideaclave}
 
-\sub{I.1. Ventaja absoluta (\autor{Smith}, 1776)\label{rep:I.1}}
+\sub{I.1. Antecedentes: ventaja absoluta (\autor{Smith}, 1776)\label{rep:I.1}}
 \begin{itemize}
 \item Contra el mercantilismo: el comercio no es de suma cero. El padre de familia prudente no hace en casa lo que le cuesta más hacer que comprar.
-\item \concepto{Ventaja absoluta}: producir un bien con menos trabajo por unidad que el otro país \ensuremath{\Rightarrow} especialización completa y exportación. Ej.: $a_X^A=100<a_X^B=110$ (paño), $a_Y^B=80<a_Y^A=120$ (vino).
+\item \concepto{Ventaja absoluta}: producir un bien con menos trabajo por unidad que el otro país \ensuremath{\Rightarrow} especialización completa y exportación. Ej.: el de \autor{Ricardo} con una cifra cambiada: $a_X^A=100<a_X^B=110$ (paño), $a_Y^B=80<a_Y^A=120$ (vino).
 \item Comercio \ensuremath{\Rightarrow} ↑ mercado \ensuremath{\Rightarrow} ↑ \concepto{división del trabajo} \ensuremath{\Rightarrow} crecimiento \vertema{3.A.2}.
 \item Deja 2 preguntas: ¿y si un país tiene ventaja en \emph{todo}? (\autor{Ricardo}); ¿a qué precio? (\autor{Mill}).
 \end{itemize}
 
-\sub{I.2. Ventaja comparativa (\autor{Ricardo}, 1817/1821)\label{rep:I.2}}
+\sub{I.2. \autor{Ricardo}-\autor{Torrens}: ventaja comparativa (1817/1821)\label{rep:I.2}}
 \begin{itemize}
 \item \emph{Contexto}: Leyes de Granos (1815); derogadas en junio de 1846 (\autor{Peel}, hambruna irlandesa). Antecedentes: folleto anónimo (1814) y \autor{Torrens} (1815), incompletos.
 \item \concepto{Ventaja comparativa}: especializarse en el bien de menor \concepto{coste comparativo} (de oportunidad), medido en el otro bien. Variable clave: la \emph{tecnología}.
 \item \emph{Supuestos}: 2 países, 2 bienes, 1 factor (trabajo) móvil dentro e inmóvil entre países; tecnología lineal ($a_X^A$ cte., RCE, $\mathrm{PMg}_L=\mathrm{PMe}_L$) y distinta entre países; valor trabajo; CP, libre comercio sin transporte.
-\item \emph{Ejemplo}: Portugal pasa a $a_X^B=90$ \ensuremath{\Rightarrow} ventaja absoluta en los 2. Coste del paño $a_X/a_Y$: Inglaterra 100/120 = 0,83; Portugal 90/80 = 1,125 \ensuremath{\Rightarrow} A exporta paño, B vino.
+\item \emph{Ejemplo}: en la pizarra se tacha el 110 y se escribe 90 \ensuremath{\Rightarrow} Portugal, ventaja absoluta en los 2. Inglaterra, ventaja comparativa en paño (\emph{desventaja menor}: 100/90 = 1,11 frente a 120/80 = 1,5); Portugal, en vino (\emph{ventaja mayor}: 80/120 = 0,67 frente a 90/100 = 0,9). Coste del paño $a_X/a_Y$: 0,83 en A, 1,125 en B.
 \item \emph{Condición necesaria}: $a_X^A/a_Y^A\neq a_X^B/a_Y^B$. \emph{Suficiente}: RRI estrictamente entre los costes comparativos:
 \funcionclave{\frac{a_X^A}{a_Y^A}=\frac{100}{120}<\mathrm{RRI}=\frac{p_X}{p_Y}<\frac{a_X^B}{a_Y^B}=\frac{90}{80}}
-\item RRI = coste comparativo de un país \ensuremath{\Rightarrow} ese país (grande) produce los 2 bienes y no gana: todo al otro. Fuera de los límites, no hay equilibrio.
+\item \emph{Gráfico}: FPP de cada país de $\overline L/a_X$ a $\overline L/a_Y$ (pendiente = coste comparativo); FPC desde el vértice de especialización con pendiente $-\mathrm{RRI}$, por fuera de la FPP.
+\item RRI = coste comparativo de un país \ensuremath{\Rightarrow} ese país (grande) produce los 2 bienes y no gana: todo al otro (hace falta la demanda). Fuera de los límites, no hay equilibrio.
 \item \emph{Salario relativo}: $w^A=p_X/a_X^A$, $w^B=p_Y/a_Y^B$:
 \begin{formula}\centering $\displaystyle \frac{a_Y^B}{a_Y^A}=\frac{80}{120}<\frac{w^A}{w^B}=\mathrm{RRI}\,\frac{a_Y^B}{a_X^A}<\frac{a_X^B}{a_X^A}=\frac{90}{100}$\end{formula}
   Portugal paga entre un 11\,\% y un 50\,\% más: los salarios reflejan la productividad (contra la «mano de obra barata»).
 \item \emph{Ganancia como ahorro de trabajo}: vino directo, 120; vía paño, $100/\mathrm{RRI}$ \ensuremath{\Rightarrow} gana si $\mathrm{RRI}>100/120$. El comercio es una técnica indirecta de producción.
-\item \emph{Implicaciones}: especialización completa; RRI acotada, no determinada (falta la demanda); ganan los 2, más cuanto más se aleja la RRI de su autarquía; 1 factor \ensuremath{\Rightarrow} \emph{sin perdedores internos}.
+\item \emph{4 preguntas}: ¿por qué? tecnología; ¿qué? especialización completa (salvo país grande); ¿RRI? acotada, no determinada (falta la demanda); ¿quién gana? los 2, más cuanto más se aleja la RRI de su autarquía; 1 factor \ensuremath{\Rightarrow} \emph{sin perdedores internos}.
 \item \concepto{DFS} (\autor{Dornbusch}, \autor{Fischer} y \autor{Samuelson}, 1977): continuo $z\in[0,1]$, $a^B(z)/a^A(z)$ decreciente; Cobb-Douglas. Oferta (decreciente) y demanda, por la balanza (creciente):
 \begin{formula}\centering $\displaystyle \frac{w^A}{w^B}=\frac{a^B(\tilde z)}{a^A(\tilde z)},\qquad \frac{w^A}{w^B}=\frac{\vartheta(\tilde z)}{1-\vartheta(\tilde z)}\,\frac{\overline L^B}{\overline L^A}$\end{formula}
   El corte fija salario relativo y especialización. ↑$\overline L^A$ \ensuremath{\Rightarrow} ↓$w^A/w^B$, más bienes en A; costes iceberg \ensuremath{\Rightarrow} banda de no comerciables.
@@ -71,59 +71,96 @@ Con un solo factor, la tecnología explica el comercio: ganan los 2 países aunq
 \end{itemize}
 
 % ==========================================================================
-\bloque[6]{II. Neoclásico (I): modelo general y RRI\label{rep:II}}
+\bloque[6]{II. Neoclásica (1): RRI. Modelo de \autor{Haberler}\label{rep:II}}
 \begin{ideaclave}
-Con costes de oportunidad crecientes la especialización es incompleta, y con la demanda la RRI deja de ser un dato: la fijan juntas las ofertas netas de los 2 países, y con ella se reparten las ganancias: gana más quien menos necesita al otro.
+Con costes de oportunidad crecientes la especialización es incompleta, y con la demanda la RRI deja de ser un dato: cada triángulo de comercio es un punto de la curva de oferta neta del país, y el corte de las 2 curvas fija la RRI y reparte las ganancias: gana más quien menos necesita al otro.
 \end{ideaclave}
 \begin{itemize}
 \item 3 avances: mejor análisis gráfico y matemático; incorporan la demanda (RRI); levantan supuestos (más factores, tecnología no lineal).
-\end{itemize}
-
-\sub{II.1. Modelo general (\autor{Haberler}, 1930/1936)\label{rep:II.1}}
-\begin{itemize}
-\item Libera la ventaja comparativa del valor trabajo: \concepto{coste de oportunidad} = pendiente de la FPP. Comercio por tecnología, dotaciones o gustos; H-O-S es un caso particular.
-\item \emph{Supuestos}: 2×2×2 (L y K, móviles dentro, inmóviles fuera); tecnología neoclásica (RCE, PMg > 0 decrecientes); \concepto{FPP} cóncava (de la curva de contrato de la caja de \autor{Edgeworth} \vertema{3.A.21}); \concepto{CIS} de buen comportamiento; CP y libre comercio.
-\item \emph{Autarquía}: $\mathrm{RMT}_{XY}=\mathrm{RMS}_{XY}=(p_X/p_Y)^A_{\mathrm{aut}}$; se consume lo producido.
-\item \emph{Libre comercio} ($\mathrm{RRI}>(p_X/p_Y)^A_{\mathrm{aut}}$ \ensuremath{\Rightarrow} A exporta $X$): se separan producción ($P^A$: $\mathrm{RMT}=\mathrm{RRI}$, más $X$) y consumo ($C^A$: $\mathrm{RMS}=\mathrm{RRI}$, CIS más alta). \concepto{Triángulo de comercio}: exporta $X^A_P-X^A_C$, importa $Y^A_C-Y^A_P$.
-\item 2 ganancias: \emph{del intercambio} (misma producción, consumo a la RRI) y \emph{de la especialización} (producción hasta $\mathrm{RMT}=\mathrm{RRI}$). FPP cóncava \ensuremath{\Rightarrow} \emph{especialización incompleta}.
+\item \emph{Idea}: \concepto{RRI}: precio relativo de las exportaciones en términos de las importaciones ($p_X/p_Y$ para A): reparte las ganancias. \autor{Haberler} (1930/1936) libera la ventaja comparativa del valor trabajo (\concepto{coste de oportunidad} = pendiente de la FPP). \concepto{Ecuación de la demanda internacional} (\autor{Mill}, 1844/1848): la RRI iguala el valor de exportaciones e importaciones:
+\funcionclave{p_X\,(X^A_P-X^A_C)=p_Y\,(Y^A_C-Y^A_P)}
+  \emph{Gana más quien menos necesita al otro} («a buen hambre no hay pan duro»).
+\item \emph{Supuestos}: 2×2×2 (L y K, móviles dentro, inmóviles fuera); tecnología neoclásica (RCE, PMg > 0 decrecientes); \concepto{FPP} cóncava (caja de \autor{Edgeworth} \vertema{3.A.21}); \concepto{CIS} de buen comportamiento; CP, libre comercio; trueque.
+\item \emph{Paso 1}: autarquía, $\mathrm{RMT}_{XY}=\mathrm{RMS}_{XY}=(p_X/p_Y)^A_{\mathrm{aut}}$. Libre comercio ($\mathrm{RRI}>(p_X/p_Y)^A_{\mathrm{aut}}$): producción en $P^A$ ($\mathrm{RMT}=\mathrm{RRI}$), consumo en $C^A$ ($\mathrm{RMS}=\mathrm{RRI}$, CIS más alta); \concepto{triángulo de comercio}. Ganancias del intercambio y de la especialización; especialización incompleta.
 \end{itemize}
 \graficorepaso[0.62\linewidth]{haberler-comercio}{\autor{Haberler}: de $E^A_{\mathrm{aut}}$ a $P^A$ (producción) y $C^A$ (consumo); triángulo de comercio.}
 \begin{itemize}
-\item \emph{Evidencia}: \autor{Harrigan} (1997, 10 países OCDE): tecnología + dotaciones explican juntas mejor que por separado.
-\item \emph{Valoración}: marco general; predice poco sobre \emph{qué} exporta cada país, nada sobre el reparto interno, y la RRI aún es un dato.
-\end{itemize}
-
-\sub{II.2. Determinación de la RRI\label{rep:II.2}}
-\begin{itemize}
-\item \concepto{RRI}: precio relativo de las exportaciones en términos de las importaciones ($p_X/p_Y$ para A): reparte las ganancias entre países. La oferta solo la acota.
-\item \concepto{Ecuación de la demanda internacional} (\autor{Mill}, 1844/1848): la RRI iguala el valor de exportaciones e importaciones (demanda recíproca):
-\funcionclave{p_X\,(X^A_P-X^A_C)=p_Y\,(Y^A_C-Y^A_P)}
-\item \emph{Gana más quien menos necesita al otro}: la RRI se acerca a la autarquía del que más desea el bien ajeno («a buen hambre no hay pan duro»).
-\item \emph{Con \autor{Ricardo}}: oferta relativa mundial escalonada (horizontal en cada coste comparativo, vertical en $(\overline L^A/a_X^A)/(\overline L^B/a_Y^B)$ entre ellos); la demanda relativa la corta: tramo vertical \ensuremath{\Rightarrow} especialización completa y ganan los 2; horizontal \ensuremath{\Rightarrow} país grande, no gana.
-\end{itemize}
-\graficorepaso[0.66\linewidth]{ricardo-oferta-relativa}{Oferta relativa escalonada de \autor{Ricardo}: con RD, RRI = 1 y los 2 se especializan; con RD$'$, país grande.}
-\begin{itemize}
-\item \concepto{Curva de oferta neta} (\autor{Marshall}, 1879): exportaciones $E^A$ e importaciones $M^A$ para cada RRI; cada punto es un triángulo de comercio y cumple $M^A=\mathrm{RRI}\cdot E^A$. Sale del origen tangente al precio de autarquía y se curva hacia el bien importado. Forma según $\varepsilon^A_M$:
+\item \emph{Pasos 2 y 3}: se gira la recta de la RRI ($p=1$, 1,5, 2 para A; 4, 3, 2 para B) y cada triángulo de comercio se lleva al plano $(E,M)$: sus vértices trazan la \concepto{curva de oferta neta} (\autor{Marshall}, 1879), sobre rayos $M^A=\mathrm{RRI}\cdot E^A$, tangente en el origen al precio de autarquía. Forma según $\varepsilon^A_M$:
 \begin{formula}\centering $\hat E^A=(\varepsilon^A_M-1)\,\widehat{\mathrm{RRI}}$\end{formula}
-  elástica ($\varepsilon^A_M>1$): sube; unitaria: vertical; inelástica: se dobla hacia atrás.
-\item \autor{Meade} (1952): bloque de producción deslizado sobre una CIS \ensuremath{\Rightarrow} \concepto{curva de indiferencia comercial} (CIC, pendiente > 0); oferta neta = tangencias CIC-rectas de la RRI. Herramienta del arancel \vertema{3.B.7}.
-\item \emph{Equilibrio}: corte ON$_A$-ON$_B$; la RRI es la pendiente del rayo al origen. Existencia: sí; unicidad: no garantizada (tramos inelásticos); estabilidad: \autor{Marshall}-\autor{Lerner} en trueque, $\lvert\varepsilon^A_M\rvert+\lvert\varepsilon^B_M\rvert>1$ \vertema{3.B.12}.
+  elástica: sube; unitaria: vertical; inelástica: se dobla hacia atrás.
+\end{itemize}
+\graficorepaso[\linewidth]{haberler-oferta-neta-a}{De los triángulos de comercio de A a ON$_A$.}
+\begin{itemize}
+\item \emph{Paso 4, equilibrio}: corte ON$_A$-ON$_B$; la RRI es la pendiente del rayo al origen (en el ejemplo, 2, entre 1 y 4). Existencia: sí; unicidad: no garantizada; estabilidad: \autor{Marshall}-\autor{Lerner} en trueque, $\lvert\varepsilon^A_M\rvert+\lvert\varepsilon^B_M\rvert>1$ \vertema{3.B.12}.
 \end{itemize}
 \graficorepaso[\linewidth]{ofertas-netas}{Ofertas netas de A y B: la RRI de equilibrio queda entre los 2 precios de autarquía.}
 \begin{itemize}
-\item \emph{Implicaciones}: RRI entre autarquías, ahora determinada; se aleja del país de oferta neta más elástica; el país pequeño comercia a la autarquía del grande y se queda toda la ganancia.
-\item \emph{Extensiones}: arancel (precio interno $p_X/[p_Y(1+t)]$, la ON se contrae; arancel óptimo \vertema{3.B.7}, guerra arancelaria \vertema{3.B.8}); crecimiento sesgado al exportado \ensuremath{\Rightarrow} ↓RRI, \concepto{crecimiento empobrecedor} (\autor{Bhagwati}, 1958) \vertema{3.B.9}; uniones aduaneras \vertema{3.B.10}; transferencias (\autor{Keynes}-\autor{Ohlin}, 1929: carga secundaria frente a efecto renta; RRI del pagador empeora sii suma de PMg a importar < 1, \autor{Samuelson} 1952/1954; paradoja de \autor{Leontief}, 1936).
-\item \emph{Evidencia}: \autor{Prebisch} (1949)-\autor{Singer} (1950): deterioro de la RRI de los exportadores primarios \vertema{3.B.9} \vertema{3.B.28}.
-\item \emph{Valoración}: cierra el modelo y reparte las ganancias entre países; con factores agregados no dice qué causa el comercio ni quién gana dentro (\hyperref[rep:III]{III}).
+\item \emph{Caja}: \autor{Meade} (1952): bloque de producción deslizado sobre una CIS \ensuremath{\Rightarrow} \concepto{curva de indiferencia comercial} (CIC); ON = tangencias CIC-rayos de la RRI \vertema{3.B.7}.
+\item \emph{4 preguntas}: ¿por qué? autarquías distintas (tecnología, dotaciones o gustos); ¿qué? los 2 bienes, especialización incompleta; ¿RRI? el corte de las ofertas netas, entre autarquías, más lejos de la del país de oferta más elástica; el país pequeño comercia a la autarquía del grande; ¿quién gana? cada país; dentro, el modelo no lo dice.
+\item \emph{Evidencia}: \autor{Harrigan} (1997, 10 países OCDE): tecnología + dotaciones explican juntas mejor; \autor{Prebisch} (1949)-\autor{Singer} (1950): deterioro de la RRI de los exportadores primarios \vertema{3.B.9} \vertema{3.B.28}.
+\item \emph{Valoración}: marco general; cierra la RRI. Usos: arancel (ON se contrae; arancel óptimo \vertema{3.B.7}), crecimiento empobrecedor (\autor{Bhagwati}, 1958) \vertema{3.B.9}, uniones aduaneras \vertema{3.B.10}, transferencias (\autor{Keynes}-\autor{Ohlin}, 1929). Predice poco sobre \emph{qué} exporta cada país y nada sobre el reparto interno (\hyperref[rep:III]{III}).
+\item \emph{Con \autor{Ricardo}} (anexo): oferta de exportaciones de Inglaterra y demanda de importaciones de Portugal \ensuremath{\Rightarrow} RRI = 1; con un país muy grande, su coste comparativo.
 \end{itemize}
 
 % ==========================================================================
-\bloque[13,5]{III. Neoclásico (II): dotaciones\label{rep:III}}
+\bloque[13,5]{III. Neoclásica (2): dotaciones. H-O-S: teoremas, evidencia y extensiones\label{rep:III}}
 \begin{ideaclave}
-Con 2 factores, causa nueva (dotaciones) y efecto nuevo (reparto interno de la renta). A corto plazo gana el factor específico del sector que se encarece y el móvil queda en medio; a largo, gana el factor abundante y pierde el escaso.
+Con 2 factores, causa nueva (dotaciones) y efecto nuevo (reparto interno de la renta). A largo plazo gana el factor abundante y pierde el escaso; a corto, con factores específicos, gana el específico del sector que se encarece y el móvil queda en medio.
 \end{ideaclave}
 
-\sub{III.1. Factores específicos (\autor{Ricardo}-\autor{Viner})\label{rep:III.1}}
+\sub{a)-b) Idea, supuestos y los 4 teoremas\label{rep:III.2}}
+\begin{itemize}
+\item \autor{Heckscher} (1919), \autor{Ohlin} (1933); \autor{Samuelson}: S-S (1941), igualación (1948-1949), reciprocidad (1953); \autor{Rybczynski} (1955), álgebra de \autor{Jones} (1965). Nobel: \autor{Samuelson} 1970; \autor{Ohlin} y \autor{Meade} 1977.
+\item \emph{Idea}: tecnología y gustos iguales; solo difieren las \concepto{dotaciones relativas}. Caso particular de \autor{Haberler}: menos generalidad, predicciones firmes.
+\item \emph{Supuestos}: 2×2×2, factores inmóviles entre países (si se movieran, sustituirían al comercio: \autor{Mundell}, 1957); misma tecnología, RCE; \emph{sin reversión}: $(K/L)_X>(K/L)_Y$ para todo $w/r$; preferencias \emph{idénticas y homotéticas}; especialización incompleta; CP, libre comercio sin transporte.
+\item \concepto{Abundancia}: \emph{física} $\overline K^A/\overline L^A>\overline K^B/\overline L^B$; \emph{por precios} $(w/r)^A_{\mathrm{aut}}>(w/r)^B_{\mathrm{aut}}$. Coinciden sin sesgo de demanda.
+\end{itemize}
+\textbf{Teorema 1: Heckscher-Ohlin}
+\begin{itemize}
+\item \textbf{Cada país exporta el bien intensivo en su factor abundante}: A (capital) exporta $X$ (paño). FPP de A sesgada a $X$ \ensuremath{\Rightarrow} $X$ más barato en autarquía; con comercio, A produce más $X$. Consumo de los 2 sobre el mismo rayo (homotéticas).
+\end{itemize}
+\graficorepaso[0.98\linewidth]{teorema-ho}{H-O: FPP sesgadas; con comercio, triángulos iguales y consumo sobre el mismo rayo.}
+\textbf{Teorema 2: Stolper-Samuelson (1941)}
+\begin{itemize}
+\item \textbf{↑ precio relativo de un bien \ensuremath{\Rightarrow} ↑ remuneración \emph{real} del factor que usa intensivamente (en los 2 bienes) y ↓ la del otro (en los 2)}.
+\item Intuición: ↑$p_Y$ \ensuremath{\Rightarrow} $X$ se contrae y libera más $K$ por trabajador del que $Y$ absorbe \ensuremath{\Rightarrow} ↑$w/r$, técnicas más intensivas en $K$ en los 2 sectores.
+\item Álgebra de \autor{Jones}: $\hat p_j=s_{Lj}\hat w+s_{Kj}\hat r$ (media ponderada), con $s_{KX}>s_{KY}$; \concepto{efecto magnificación}:
+\funcionclave{\hat p_Y>\hat p_X\;\Longrightarrow\;\hat w>\hat p_Y>\hat p_X>\hat r}
+\item Apertura: gana el abundante, pierde el escaso; protección, al revés («no hay rosa sin espinas»). PED: favorecería al poco cualificado, pero subió la prima por cualificación (\autor{Goldberg}-\autor{Pavcnik}, 2007). Compensación: 2TFEB con transferencias de suma fija \vertema{3.A.22}; sin ellas, \autor{Kaldor}-\autor{Hicks} no basta.
+\end{itemize}
+\graficorepaso[0.68\linewidth]{costes-unitarios}{Curvas de coste unitario: un solo $(w,r)$; al subir $p_Y$, más $w$ y menos $r$ (S-S).}
+\textbf{Teorema 3: igualación del precio de los factores (Samuelson, 1948-1949)}
+\begin{itemize}
+\item \textbf{El comercio de bienes iguala los precios relativos y absolutos de los factores sin moverlos} (libre comercio, misma tecnología con RCE, sin reversión, especialización incompleta) (\autor{Lerner}, 1933/1952). «Si la montaña no va a Mahoma\ldots»: viajan los bienes que llevan los factores dentro.
+\item Curvas de coste unitario: $c_X(w,r)=p_X$, $c_Y(w,r)=p_Y$ \ensuremath{\Rightarrow} un solo $(w,r)$, independiente de las dotaciones. Condición: mismo \concepto{cono de diversificación}.
+\item Caja: \autor{Samuelson}-\autor{Johnson} (1957), eje $r/w$: $K/L$ de cada sector decreciente, $p_X/p_Y$ creciente; $(r/w)'$ y $(r/w)''$ = tramo común de diversificación; sin solapamiento, ni siquiera se iguala el precio relativo.
+\item Realidad: costes de transporte, aranceles, tecnologías distintas, especialización completa \ensuremath{\Rightarrow} no se igualan.
+\end{itemize}
+\textbf{Teorema 4: Rybczynski (1955)}
+\begin{itemize}
+\item \textbf{A precios de los bienes constantes, ↑ dotación de un factor \ensuremath{\Rightarrow} el bien intensivo en él crece \emph{más que proporcionalmente} y el otro \emph{cae} en términos absolutos.} Caja de \autor{Edgeworth}: rayos con la misma pendiente, la caja crece. $w$, $r$ constantes: consecuencia, no supuesto. Con $\ell_{KX}>\ell_{LX}$:
+\begin{formula}\centering $\hat{\overline K}>\hat{\overline L}\;\Longrightarrow\;\hat X>\hat{\overline K}>\hat{\overline L}>\hat Y$\end{formula}
+\item \emph{Dualidad} (\autor{Samuelson}, 1953): con $G(p,\overline L,\overline K)$, $\partial w/\partial p_Y=\partial Y/\partial\overline L$ y $\partial r/\partial p_X=\partial X/\partial\overline K$: S-S y \autor{Rybczynski} son el mismo resultado.
+\item Explica el sesgo de la FPP en H-O y el crecimiento empobrecedor \vertema{3.B.9}.
+\end{itemize}
+\textbf{Implicaciones: las 4 preguntas}
+\begin{itemize}
+\item ¿Por qué? solo dotaciones relativas; ¿qué? los 2 bienes, más del intensivo en el abundante (intercambio indirecto de factores); ¿RRI? ofertas netas; ¿quién gana? el país; dentro, el abundante (pierde el escaso).
+\end{itemize}
+\textbf{c) Evidencia}
+\begin{itemize}
+\item \concepto{Paradoja de Leontief} (1953, tabla \emph{input-output} de EE.\,UU. de 1947 \vertema{3.A.31}): sustitutos de importaciones 18.184 \$ de capital por año-hombre frente a 13.991 de las exportaciones (+30\,\%) («donde menos se piensa, salta la liebre»).
+\item Explicaciones: capital humano (\autor{Keesing}, 1966; \autor{Kenen}, 1965); recursos naturales (\autor{Vanek}, 1963); contraste mal planteado (\autor{Leamer}, 1980: comparar $K/L$ de producción y consumo); también el año (repite con 1951), productividad (\autor{Leontief}: 3×; \autor{Kreinin}, 1965: $\le$25\,\%), reversión (\autor{Minhas}, 1962), aranceles (\autor{Travis}, \autor{Baldwin}).
+\item Cada salida levanta un supuesto \ensuremath{\Rightarrow} extensiones.
+\end{itemize}
+\textbf{d) Extensiones}
+\begin{itemize}
+\item i) \concepto{HOV} (\autor{Vanek}, 1968): contenido factorial neto
+\begin{formula}\centering $F_k^i=V_k^i-\varsigma^i\,V_k^W$\end{formula}
+  BLS (1987): predice mal; \autor{Trefler} (1995): \emph{comercio que falta}, mejora con productividades distintas y sesgo nacional; \autor{Davis}-\autor{Weinstein} (2001): funciona en la OCDE; \autor{Romalis} (2004); \autor{Schott} (2004): especialización dentro de cada producto.
+\item ii) Más bienes: cadena de bienes (\autor{Jones}, 1956); eslabones débiles (\autor{Deardorff}, 1979: falla con costes de comercio \emph{y} intermedios). Más bienes que factores: producción indeterminada, contenido factorial sí (\autor{Ethier}, 1984).
+\end{itemize}
+\textbf{iii) Factores específicos (\autor{Ricardo}-\autor{Viner}): corto plazo}\label{rep:III.1}
 \begin{itemize}
 \item Formalizan \autor{Jones} (1971) y \autor{Samuelson} (1971); \autor{Mussa} (1974) y \autor{Neary} (1978): el \emph{corto plazo} de H-O-S. Leyes de Granos: pierden los terratenientes, factor específico del sector abierto («cada mochuelo a su olivo»).
 \item \emph{Supuestos}: 2 bienes, 3 factores: $L$ móvil ($L_X+L_Y=\overline L$), $K_X$ y $K_Y$ específicos; $X=F_X(L_X,K_X)$, $Y=F_Y(L_Y,K_Y)$ con RCE \ensuremath{\Rightarrow} $\mathrm{PMg}_L$ decreciente; CP, pleno empleo. Salario común:
@@ -135,59 +172,16 @@ Con 2 factores, causa nueva (dotaciones) y efecto nuevo (reparto interno de la r
 \end{itemize}
 \graficorepaso[0.72\linewidth]{especificos}{Al subir $p_Y$: el trabajo pasa a $Y$ y $w_0\to w_1$, menos que el precio.}
 \begin{itemize}
-\item \emph{Dotaciones} (a precios dados): ↑$K_Y$ \ensuremath{\Rightarrow} ↑$w$, ↓$r_X$, ↓$r_Y$; ↑$\overline L$ \ensuremath{\Rightarrow} ↓$w$, ↑ las 2 rentas del capital.
-\item \emph{Implicaciones}: comercio por tecnología o por cualquiera de los 3 factores; especialización incompleta; ganan el país y el capital exportador, pierde el capital que compite con importaciones. Intereses \emph{por sector}, no por factor \ensuremath{\Rightarrow} grupos de presión \vertema{3.B.8}.
+\item \emph{Caja, dotaciones} (a precios dados): ↑$K_Y$ \ensuremath{\Rightarrow} ↑$w$, ↓$r_X$, ↓$r_Y$; ↑$\overline L$ \ensuremath{\Rightarrow} ↓$w$, ↑ las 2 rentas del capital.
+\item \emph{4 preguntas}: ¿por qué? tecnología o cualquiera de los 3 factores; ¿qué? los 2 bienes, especialización incompleta; ¿RRI? ofertas netas; ¿quién gana? el país y el capital exportador, pierde el capital que compite con importaciones, el trabajo ambiguo. Intereses \emph{por sector}, no por factor \ensuremath{\Rightarrow} grupos de presión \vertema{3.B.8}.
 \item \emph{Extensiones}: con movilidad gradual del capital converge a H-O-S; \concepto{enfermedad holandesa} (\autor{Corden}-\autor{Neary}, 1982) \vertema{3.B.9}.
 \item \emph{Evidencia}: \autor{Magee} (1980): capital y trabajo de la misma industria, misma postura en 19 de 21 sectores (reforma de 1973 en EE.\,UU.); \autor{Grossman}-\autor{Levinsohn} (1989, bolsa); \autor{Kovak} (2013, Brasil, años 90).
 \item \emph{Valoración}: el mejor para el reparto a c/p; con 3 factores y 2 bienes no hay igualación ni S-S/\autor{Rybczynski} en forma fuerte.
 \end{itemize}
 
-\sub{III.2. Heckscher-Ohlin-Samuelson\label{rep:III.2}}
+\textbf{e) Valoración e influencia}
 \begin{itemize}
-\item \autor{Heckscher} (1919), \autor{Ohlin} (1933); \autor{Samuelson}: S-S (1941), igualación (1948-1949), reciprocidad (1953); \autor{Rybczynski} (1955), álgebra de \autor{Jones} (1965). Nobel: \autor{Samuelson} 1970; \autor{Ohlin} y \autor{Meade} 1977.
-\item \emph{Idea}: tecnología y gustos iguales; solo difieren las \concepto{dotaciones relativas}. Caso particular de \autor{Haberler}: menos generalidad, predicciones firmes.
-\item \emph{Supuestos}: 2×2×2, factores inmóviles entre países (si se movieran, sustituirían al comercio: \autor{Mundell}, 1957); misma tecnología, RCE; \emph{sin reversión}: $(K/L)_X>(K/L)_Y$ para todo $w/r$; preferencias \emph{idénticas y homotéticas}; especialización incompleta; CP, libre comercio sin transporte.
-\item \concepto{Abundancia}: \emph{física} $\overline K^A/\overline L^A>\overline K^B/\overline L^B$; \emph{por precios} $(w/r)^A_{\mathrm{aut}}>(w/r)^B_{\mathrm{aut}}$. Coinciden sin sesgo de demanda.
-\end{itemize}
-\textbf{Teorema de Heckscher-Ohlin}
-\begin{itemize}
-\item Cada país exporta el bien intensivo en su factor abundante: A (capital) exporta $X$ (paño). FPP de A sesgada a $X$ \ensuremath{\Rightarrow} $X$ más barato en autarquía; con comercio, A produce más $X$. Consumo de los 2 sobre el mismo rayo (homotéticas).
-\end{itemize}
-\graficorepaso[0.98\linewidth]{teorema-ho}{H-O: FPP sesgadas; con comercio, triángulos iguales y consumo sobre el mismo rayo.}
-\textbf{Igualación del precio de los factores (Samuelson, 1948-1949)}
-\begin{itemize}
-\item Libre comercio, misma tecnología con RCE, sin reversión y especialización incompleta \ensuremath{\Rightarrow} se igualan $w/r$ \emph{y} $w$, $r$ absolutos sin mover factores (\autor{Lerner}, 1933/1952). «Si la montaña no va a Mahoma\ldots»: viajan los bienes que llevan los factores dentro.
-\item Curvas de coste unitario: $c_X(w,r)=p_X$, $c_Y(w,r)=p_Y$ \ensuremath{\Rightarrow} un solo $(w,r)$, independiente de las dotaciones. Condición: mismo \concepto{cono de diversificación}.
-\item \autor{Samuelson}-\autor{Johnson} (1957): con $w/r$ bajo, $p_X/p_Y$ alto y el país se especializa en $X$ (intensivo en $K$); $(w/r)'$ y $(w/r)''$ = tramo común a los 2 países; sin solapamiento, ni siquiera se iguala $w/r$.
-\item Realidad: costes de transporte, aranceles, tecnologías distintas, especialización completa \ensuremath{\Rightarrow} no se igualan.
-\end{itemize}
-\graficorepaso[0.68\linewidth]{costes-unitarios}{Curvas de coste unitario: un solo $(w,r)$; al subir $p_Y$, más $w$ y menos $r$ (S-S).}
-\textbf{Stolper-Samuelson (1941)}
-\begin{itemize}
-\item ↑ precio relativo de un bien \ensuremath{\Rightarrow} ↑ remuneración \emph{real} del factor que usa intensivamente (en los 2 bienes) y ↓ la del otro (en los 2).
-\item Intuición: ↑$p_Y$ \ensuremath{\Rightarrow} $X$ se contrae y libera más $K$ por trabajador del que $Y$ absorbe \ensuremath{\Rightarrow} ↑$w/r$, técnicas más intensivas en $K$ en los 2 sectores.
-\item Álgebra de \autor{Jones}: $\hat p_j=s_{Lj}\hat w+s_{Kj}\hat r$ (media ponderada), con $s_{KX}>s_{KY}$; \concepto{efecto magnificación}:
-\funcionclave{\hat p_Y>\hat p_X\;\Longrightarrow\;\hat w>\hat p_Y>\hat p_X>\hat r}
-\item Apertura: gana el abundante, pierde el escaso; protección, al revés («no hay rosa sin espinas»). PED: favorecería al poco cualificado, pero subió la prima por cualificación (\autor{Goldberg}-\autor{Pavcnik}, 2007). Compensación: 2TFEB con transferencias de suma fija \vertema{3.A.22}; sin ellas, \autor{Kaldor}-\autor{Hicks} no basta.
-\end{itemize}
-\textbf{Rybczynski (1955)}
-\begin{itemize}
-\item A precios de los bienes constantes, ↑ dotación de un factor \ensuremath{\Rightarrow} el bien intensivo en él crece \emph{más que proporcionalmente} y el otro \emph{cae} en términos absolutos. $w$, $r$ constantes: consecuencia, no supuesto. Con $\ell_{KX}>\ell_{LX}$:
-\begin{formula}\centering $\hat{\overline K}>\hat{\overline L}\;\Longrightarrow\;\hat X>\hat{\overline K}>\hat{\overline L}>\hat Y$\end{formula}
-\item \emph{Dualidad} (\autor{Samuelson}, 1953): con $G(p,\overline L,\overline K)$, $\partial w/\partial p_Y=\partial Y/\partial\overline L$ y $\partial r/\partial p_X=\partial X/\partial\overline K$: S-S y \autor{Rybczynski} son el mismo resultado.
-\item Explica el sesgo de la FPP en H-O y el crecimiento empobrecedor \vertema{3.B.9}.
-\end{itemize}
-\textbf{Evidencia}
-\begin{itemize}
-\item \concepto{Paradoja de Leontief} (1953, tabla \emph{input-output} de EE.\,UU. de 1947 \vertema{3.A.31}): sustitutos de importaciones 18.184 \$ de capital por año-hombre frente a 13.991 de las exportaciones (+30\,\%) («donde menos se piensa, salta la liebre»).
-\item Explicaciones: capital humano (\autor{Keesing}, 1966; \autor{Kenen}, 1965); recursos naturales (\autor{Vanek}, 1963); contraste mal planteado (\autor{Leamer}, 1980: comparar $K/L$ de producción y consumo); también el año (repite con 1951), productividad (\autor{Leontief}: 3×; \autor{Kreinin}, 1965: $\le$25\,\%), reversión (\autor{Minhas}, 1962), aranceles (\autor{Travis}, \autor{Baldwin}).
-\item \concepto{HOV} (\autor{Vanek}, 1968): contenido factorial neto
-\begin{formula}\centering $F_k^i=V_k^i-\varsigma^i\,V_k^W$\end{formula}
-  BLS (1987): predice mal; \autor{Trefler} (1995): \emph{comercio que falta}, mejora con productividades distintas y sesgo nacional; \autor{Davis}-\autor{Weinstein} (2001): funciona en la OCDE; \autor{Romalis} (2004); \autor{Schott} (2004): especialización dentro de cada producto.
-\end{itemize}
-\textbf{Extensiones, valoración e influencia}
-\begin{itemize}
-\item Más bienes que factores: producción indeterminada, contenido factorial sí (\autor{Ethier}, 1984); cadena de bienes (\autor{Jones}, 1956); eslabones débiles (\autor{Deardorff}, 1979: falla con costes de comercio \emph{y} intermedios); reversión; transporte y no comerciables; tecnología + dotaciones \ensuremath{\Rightarrow} intraindustrial en CP (\autor{Davis}, 1995); empresas heterogéneas (\autor{Bernard}-\autor{Redding}-\autor{Schott}, 2007) \vertema{3.B.6}.
+\item Caja, otros levantamientos: reversión; transporte y no comerciables; tecnología + dotaciones \ensuremath{\Rightarrow} intraindustrial en CP (\autor{Davis}, 1995); empresas heterogéneas (\autor{Bernard}-\autor{Redding}-\autor{Schott}, 2007) \vertema{3.B.6}.
 \item \emph{Explica bien}: Norte-Sur, efectos distributivos, comercio como intercambio indirecto de factores. \emph{Mal}: volumen entre parecidos, intraindustrial, comercio que falta; la igualación no se observa.
 \item \emph{Influencia}: economía política del arancel \vertema{3.B.7} \vertema{3.B.8}; crecimiento sesgado \vertema{3.B.9}; \autor{Wood} (1994); «shock de China» $\approx$1/4 de la caída del empleo manufacturero de EE.\,UU. 1990-2007 (\autor{Autor}-\autor{Dorn}-\autor{Hanson}, 2013); incidencia de \autor{Harberger} \vertema{4.B.8}.
 \end{itemize}
@@ -195,11 +189,11 @@ Con 2 factores, causa nueva (dotaciones) y efecto nuevo (reparto interno de la r
 % ==========================================================================
 \bloque[1,5]{Conclusión}
 \begin{itemize}
-\item \textbf{Recapitulación}: una idea, la ventaja comparativa, con causa distinta: tecnología (\autor{Ricardo}: ganan los 2; salarios = productividad); demanda (\autor{Mill}, \autor{Marshall}, \autor{Haberler}: RRI entre autarquías, gana quien menos necesita al otro); dotaciones (c/p el específico del sector que se encarece; l/p el abundante, pierde el escaso).
+\item \textbf{Recapitulación}: una idea, la ventaja comparativa, con causa distinta: tecnología (\autor{Ricardo}: ganan los 2; salarios = productividad); demanda (\autor{Mill}, \autor{Marshall}, \autor{Haberler}: RRI en el corte de las ofertas netas, gana quien menos necesita al otro); dotaciones (H-O-S: l/p el abundante, pierde el escaso; c/p el específico del sector que se encarece).
 \item \textbf{Relevancia}: \autor{Ulam} retó a \autor{Samuelson} (1969): la ventaja comparativa, verdadera y no trivial. Sus efectos distributivos explican los detractores del librecambio.
 \item \textbf{Extensiones}: \vertema{3.B.7} \vertema{3.B.8} \vertema{3.B.9} \vertema{3.B.10}; nueva teoría \vertema{3.B.6}.
 \item \textbf{Opinión}: la nueva teoría completa a la tradicional; los modelos cuantitativos actuales (\autor{Eaton}-\autor{Kortum}) son ricardianos.
-\item \textbf{Idea final}: «lo que abunda no daña» al país, pero sí al dueño del factor escaso; que ganen todos depende de qué se haga con las ganancias.
+\item \textbf{Idea final}: «el que mucho abarca, poco aprieta»: especializarse gana, aunque se sea mejor (o peor) en todo; pero tiene perdedores dentro (el factor escaso); que ganen todos depende de qué se haga con las ganancias.
 \end{itemize}
 
 \textbf{Los 4 modelos}\\[1pt]
@@ -209,9 +203,9 @@ Con 2 factores, causa nueva (dotaciones) y efecto nuevo (reparto interno de la r
 & \textbf{¿Por qué?} & \textbf{¿Qué?} & \textbf{¿RRI?} & \textbf{¿Quién gana?}\\
 \midrule
 \autor{Ricardo} & Tecnología & Esp. completa & Acotada, no fijada & Los 2 y todos\\
-\autor{Haberler} y RRI & Tecnol., dotac., gustos & Incompleta & Ofertas netas & Países; dentro, ¿?\\
-Específicos & Dotaciones (3 fact.) & Incompleta & Ofertas netas & Específico del sector que sube\\
+\autor{Haberler} & Tecnol., dotac., gustos & Incompleta & Ofertas netas & Países; dentro, ¿?\\
 H-O-S & Dotaciones relativas & Más del intensivo en el abundante & Ofertas netas & Abundante; pierde el escaso\\
+Específicos & Dotaciones (3 fact.) & Incompleta & Ofertas netas & Específico del sector que sube\\
 \bottomrule
 \end{tabular}}
 
@@ -250,7 +244,7 @@ H-O-S & Dotaciones relativas & Más del intensivo en el abundante & Ofertas neta
 \begin{itemize}
 \item Comercio mundial de bienes y servicios: \dato{34,65 billones \$}{OMC, 2025}.
 \item España, mercancías: exportaciones \textbf{387.092 M€}, importaciones \textbf{444.146 M€}, déficit \textbf{57.055 M€}, cobertura \textbf{87,2\,\%}; a la UE, \dato{61,8\,\%}{Ministerio de Economía, Comercio y Empresa, 2025}.
-\item Déficit energético \textbf{29.292 M€}; superávit en alimentación \dato{17.180 M€}{Ministerio de Economía, Comercio y Empresa, 2025}.
+\item Déficit en combustibles (CUCI 3) \textbf{28.562 M€}; superávit en alimentos (CUCI 0) \dato{14.764 M€}{Datacomex, 2025}.
 \item VCR de España: aceites y grasas \textbf{3,65}, alimentos \textbf{2,15}, combustibles \dato{0,52}{UN Comtrade, 2024}; intensivas en trabajo y recursos \textbf{1,44}, tecnología media \textbf{1,12}, alta \dato{0,67}{UN Comtrade y UNCTAD, 2024}.
 \end{itemize}
 

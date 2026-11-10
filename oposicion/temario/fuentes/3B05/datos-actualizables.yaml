@@ -33,20 +33,20 @@ datos:
     familia: mineco-comex-anual
 
   - id: espana-comercio-sectores
-    texto: "Los bienes de equipo (19,4~\\%), la alimentación, bebidas y tabaco (19,3~\\%) y los productos químicos (17,1~\\%) encabezan las exportaciones"
-    texto_repaso: "Déficit energético \\textbf{29.292 M€}"
+    texto: "Por secciones de la CUCI (gráfico~\\ref{fig:comercio-sectores-espana}), la maquinaria y el material de transporte (29,1~\\%), los alimentos (15,9~\\%) y los productos químicos (15,7~\\%) encabezan las exportaciones"
+    texto_repaso: "Déficit en combustibles (CUCI 3) \\textbf{28.562 M€}"
     donde: [3B05.tex, repaso/3B05-repaso.tex]
-    unidad: "% del total y millones de euros (saldos por sector)"
+    unidad: "% del total y millones de euros (saldos por sección)"
     periodo: "2025 (provisional)"
-    fuente: MINECO2026InformeDic2025
-    organismo: Ministerio de Economía, Comercio y Empresa
-    serie: "Informe mensual de comercio exterior, diciembre, cuadros 7 y 17 (sectores económicos)"
-    url: https://comercio.gob.es/ImportacionExportacion/Informes_Estadisticas/Historico_Informes/Mensuales/2025/2025-12_Informe_Mensual_Comercio_Exterior.pdf
+    fuente: Datacomex2026
+    organismo: Secretaría de Estado de Comercio (DataComex, con datos de la AEAT)
+    serie: "exportaciones e importaciones por secciones de la CUCI (primer dígito), enero-diciembre; consulta al servidor SQL del ministerio (base CMX.TH_DEFINITIVOS_PROVISIONALES) el 10/11/2026"
+    url: https://datacomex.comercio.es/
     periodicidad: anual
     proxima: 2027-02
-    familia: mineco-comex-anual
+    familia: datacomex-cuci-anual
     depende: [datos/comercio-sectores-espana.csv, graficos/comercio-sectores-espana.tex]
-    frase: "saldos de la misma frase (17.180, 6.289, −30.280, −29.292 millones) y en la ficha «la energía, escasa, deja un déficit de 29.292 M€ (2025)» y «superávit en alimentación \\dato{17.180 M€}»"
+    frase: "saldos de la misma frase (14.764, 5.736, −28.562, −27.601, −21.312 millones), el enganche de la introducción («los combustibles (sección~3 de la CUCI) le dejaron un déficit comercial de 28.562 millones de euros») y la ficha («déficit en combustibles (CUCI 3) de 28.562 M€» y «superávit en alimentos (CUCI 0) 14.764 M€»). Clasificación CUCI siempre, nunca SEC (Víctor, 10/11/2026)"
 
   - id: vcr-espana-secciones
     texto: "la mayor ventaja está en los aceites y grasas (3,65) y los alimentos (2,15), y la mayor desventaja en los combustibles (0,52)"
@@ -78,5 +78,5 @@ datos:
     periodicidad: anual
     proxima: 2027-06
     familia: comtrade-vcr
-    depende: [datos/vcr-intensidad-factorial-espana.csv, graficos/vcr-intensidad-factorial-espana.tex]
+    depende: [datos/vcr-intensidad-factorial-espana.csv]
     frase: "la misma frase sigue con tecnología media (1,12) y alta (0,67); caption «2024»"
