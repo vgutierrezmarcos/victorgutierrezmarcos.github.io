@@ -77,7 +77,8 @@ describe('progreso', () => {
     expect(p.examen).toEqual({ fechas: { '1': '2027-03-06', '3': '2027-06-15' }, hitos: [{ titulo: 'Simulacro', fecha: '2027-02-20' }] });
     expect(p.temas).toEqual({ estudiados: ['3.A.1', '3.A.2'], enRepaso: ['3.A.8'], agenda: { '3.A.8': { vueltas: ['2026-09-12'], pendientes: ['cruzado'] } } });
     expect(p.notas).toEqual({ '3.A.8': 'Repasar Slutsky' });
-    expect(p.ajustes).toEqual({ rubrica: ['Esquema', 'Rigor'], temasExtraidos: 3, fechaConvocatoria: '2027-03-06', noCantar: ['3.A.2'] });
+    expect(p.ajustes).toMatchObject({ rubrica: ['Esquema', 'Rigor'], temasExtraidos: 3, fechaConvocatoria: '2027-03-06', noCantar: ['3.A.2'] });
+    expect(p.ajustes.noCantarDesde).toEqual({ '3.A.2': '2026-10-01' });
     expect(p.leitner.porCaja['1']).toBe(0);
   });
 

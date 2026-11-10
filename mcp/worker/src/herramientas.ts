@@ -16,6 +16,14 @@ import {
   resumenProgreso,
   resumenTest,
   desdeMadrid,
+  aHoraMadrid,
+  deberesPendientes,
+  diasEntre,
+  elegirPreguntas,
+  resumenInforme,
+  semanaDe,
+  soloFecha,
+  type PreguntaBanco,
   type TemasPorPregunta,
 } from './datos';
 import { type Apuntes, ErrorApuntes, idDeDrive } from './drive';
@@ -28,6 +36,8 @@ export type Oposicion = (typeof OPOSICIONES)[number];
 export interface Banco {
   temas: TemasPorPregunta;
   respuestas: Map<number, string[]>;
+  /** Enunciado y opciones de cada pregunta oficial (para preguntas_test). */
+  preguntas?: Map<number, PreguntaBanco>;
 }
 
 /** Lo que las herramientas necesitan del Worker (se simula en las pruebas). */
@@ -54,6 +64,10 @@ export interface Contexto {
   textos(tema: string): Promise<PaqueteTextos | null>;
   /** Una página de manuelcabadogarcia.es convertida a texto. */
   pagina(url: string): Promise<{ esquema: string[]; texto: string } | null>;
+  /** Explicaciones «¿Por qué?» de un examen del test (id de pregunta → clave), o vacío si no hay. */
+  explicaciones(examen: string): Promise<Record<string, { clave?: string }>>;
+  /** oposicion/proceso.json: los documentos que publica el Ministerio de cada proceso selectivo. */
+  proceso(): Promise<Json>;
   /** Nombre del asistente de IA conectado (el que dio al registrarse: «Claude», «ChatGPT»…), para firmar lo que guarda. */
   cliente(): Promise<string>;
   /** Revoca las concesiones OAuth del opositor y borra su token de Firebase guardado. */
@@ -90,6 +104,7 @@ export interface IndiceFuentes {
   dce: Record<string, TemaFuentes>;
 }
 
+const esObjeto = (v: unknown): v is { [k: string]: Json } => typeof v === 'object' && v !== null && !Array.isArray(v);
 const sinTildes = (t: string): string => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
 /** «3B26», «3.b.26» o «3.B.26» → «3.B.26». */
@@ -165,7 +180,7 @@ const NOMBRES_TAREAS = Object.keys(TAREAS) as [Tarea, ...Tarea[]];
 const APARTADOS_COMUNES = ['Reglas comunes', 'Cómo termina'];
 
 const NOTA_METODO =
-  '[Método cargado desde el conector «Oposición TCEE · DCE». Síguelo durante toda la tarea. Cada ruta relativa que cite (references/…, assets/…, scripts/…) se lee con leer_skill(ruta); para los temas revisados usa leer_tema y leer_ficha, y para los datos del opositor, las herramientas leer_* (no le pidas el JSON). Si tu entorno no puede ejecutar código, entrega en Markdown lo que aquí sale en PDF y dilo en una línea.]';
+  '[Método cargado desde el conector «Oposición TCEE · DCE». Síguelo durante toda la tarea. Cada ruta relativa que cite (references/…, assets/…, scripts/…) se lee con leer_skill(ruta); para los temas revisados usa leer_tema y leer_ficha, y para los datos del opositor, las herramientas del conector (empezar, leer_*; no le pidas el JSON). Antes de escribir un bloque «Para la app» o un cronograma lee los formatos en leer_skill(«references/datos-app.md»), y qué herramienta guarda cada cosa, en leer_skill(«references/conector.md»). Si tu entorno no puede ejecutar código, entrega en Markdown lo que aquí sale en PDF y dilo en una línea.]';
 
 const oposicionParam = z.enum(OPOSICIONES).default('tcee').describe('Oposición de la que se leen los datos: «tcee» (la de siempre) o «dce».');
 
@@ -179,6 +194,40 @@ function textoMd(texto: string): CallToolResult {
 
 function error(mensaje: string): CallToolResult {
   return { content: [{ type: 'text', text: mensaje }], isError: true };
+}
+
+/** Lo que se devuelve de un texto largo en una llamada (las IA cortan o rechazan los resultados enormes). */
+const LIMITE_TEXTO = 40_000;
+const tramoParams = {
+  desde: z.number().int().min(0).default(0).describe('Carácter desde el que se devuelve el texto (para seguir leyendo donde se quedó).'),
+  limite: z.number().int().min(2000).max(120_000).default(LIMITE_TEXTO).describe('Caracteres que se devuelven como mucho (por defecto 40.000).'),
+};
+
+/** Un tramo de un texto largo, cortado en un salto de línea, con la indicación de cómo seguir. */
+export function tramoTexto(texto: string, desde: number, limite: number, cabecera = '', consejo = ''): CallToolResult {
+  if (desde > 0 && desde >= texto.length) return error(`«desde» (${desde}) pasa del final del texto (${texto.length} caracteres).`);
+  let fin = Math.min(texto.length, desde + limite);
+  if (fin < texto.length) {
+    const corte = texto.lastIndexOf('\n', fin);
+    if (corte > desde + limite / 2) fin = corte;
+  }
+  const pie = fin < texto.length ? `\n\n[Sigue: has leído hasta el carácter ${fin} de ${texto.length}. Para continuar, repite la llamada con desde: ${fin}.${consejo ? ` ${consejo}` : ''}]` : '';
+  return textoMd(`${cabecera}${texto.slice(desde, fin)}${pie}`);
+}
+
+const otraOposicion = (o: Oposicion): Oposicion => (o === 'tcee' ? 'dce' : 'tcee');
+
+/** Si una lectura sale vacía, mira si los datos del opositor están en la otra oposición (el parámetro va a «tcee» por defecto). */
+async function avisoOtraOposicion(ctx: Contexto, oposicion: Oposicion): Promise<string | undefined> {
+  try {
+    const otra = otraOposicion(oposicion);
+    const db = await ctx.almacen(otra);
+    const [cantes, cronos, ajustes] = await Promise.all([db.listar('cantes'), db.listar('cronogramas'), db.leer('progress/settings')]);
+    const hay = cantes.length > 0 || cronos.length > 0 || (Array.isArray(ajustes?.temasEstudiados) && ajustes.temasEstudiados.length > 0);
+    return hay ? `Aquí no hay datos de ${oposicion.toUpperCase()}, pero sí de ${otra.toUpperCase()}: repite la llamada con oposicion «${otra}» y úsala en el resto de la conversación.` : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 /** Convierte los fallos previsibles en un mensaje útil para la IA y el opositor. */
@@ -209,7 +258,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. ANTES de cualquier tarea sobre la oposición, llama a leer_metodo(tarea) (sin tarea, la lista) y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante) solo cuando lo confirme.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, agendar_clase) solo cuando lo confirme. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
     },
   );
 
@@ -219,12 +268,13 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Cargar las instrucciones del equipo de preparación',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'LLÁMALA PRIMERO, antes de cualquier tarea sobre la oposición. Sin ruta devuelve SKILL.md: las instrucciones de todo el equipo de preparación (qué agente usar para cada petición, reglas, formatos de la app, aviso final). Con ruta devuelve el fichero que SKILL.md cite: «references/agentes/corrector-cante.md», «references/datos-app.md», «references/perfiles.md», «assets/plantilla-informe-cante.md»… Siempre la última versión publicada.',
+        'Sin ruta devuelve SKILL.md: las instrucciones generales de todo el equipo de preparación (para una tarea concreta es mejor leer_metodo, que ya trae lo necesario) (qué agente usar para cada petición, reglas, formatos de la app, aviso final). Con ruta devuelve el fichero que SKILL.md cite: «references/agentes/corrector-cante.md», «references/datos-app.md», «references/perfiles.md», «assets/plantilla-informe-cante.md»… Siempre la última versión publicada.',
       inputSchema: {
         ruta: z.string().max(160).default('SKILL.md').describe('Ruta relativa dentro de la skill, como la cita SKILL.md (por defecto, SKILL.md).'),
+        ...tramoParams,
       },
     },
-    async ({ ruta }) =>
+    async ({ ruta, desde, limite }) =>
       protegido(async () => {
         const limpia = ruta.trim().replace(/^\.?\//, '').replace(/^prepara-oposicion\//, '');
         if (!RUTA_SKILL.test(limpia) || limpia.includes('..')) {
@@ -234,8 +284,8 @@ export function crearServidor(ctx: Contexto): McpServer {
         const exclusivo = /^references\/((?:temas\/[^/]+|dictamen|canon)\/.+)$/.exec(limpia)?.[1];
         const texto = exclusivo ? await ctx.contenido.crudo(exclusivo) : await ctx.skill(limpia);
         if (texto === null) return error(`No existe «${limpia}» en la skill publicada. Comprueba la ruta en SKILL.md${exclusivo ? ' o en listar_temas_revisados' : ''}.`);
-        if (limpia === 'SKILL.md') return textoMd(`${NOTA_CONECTOR}\n\n${texto}`);
-        return textoMd(exclusivo ? `${AVISO_EXCLUSIVO}\n\n${texto}` : texto);
+        const cabecera = desde > 0 ? '' : limpia === 'SKILL.md' ? `${NOTA_CONECTOR}\n\n` : exclusivo ? `${AVISO_EXCLUSIVO}\n\n` : '';
+        return tramoTexto(texto, desde, limite, cabecera);
       }),
   );
 
@@ -431,20 +481,22 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Leer el progreso del opositor',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'Resumen de la preparación tal como lo exporta la app para la IA: fechas de los ejercicios e hitos, temas estudiados y en repaso, agenda por tema (vueltas y pendientes), notas propias, horario semanal, repaso Leitner por caja (vencidas y temas con más fallos) y ajustes (rúbrica, temas que no quiere cantar). Mismo formato que oposicion_<id>_para_claude.json sin «cantes», «cronograma» ni «tests»: para eso están las otras herramientas.',
+        'Resumen de la preparación tal como lo exporta la app para la IA: fechas de los ejercicios e hitos, temas estudiados y en repaso, agenda por tema (vueltas y pendientes), notas propias, horario semanal, repaso Leitner por caja (vencidas y temas con más fallos) y ajustes (rúbrica, temas que no quiere cantar y desde cuándo, temas fijados para cada clase), los deberes pendientes de sus cantes y su mejor racha. Mismo formato que oposicion_<id>_para_claude.json sin «cantes», «cronograma» ni «tests»: para eso están las otras herramientas.',
       inputSchema: { oposicion: oposicionParam },
     },
     async ({ oposicion }) =>
       protegido(async () => {
         const db = await ctx.almacen(oposicion);
-        const [settings, plan, leitner, notas, banco] = await Promise.all([
+        const [settings, plan, leitner, notas, banco, cantes] = await Promise.all([
           db.leer('progress/settings'),
           db.leer('progress/plan'),
           db.leer('progress/spaced_repetition'),
           db.listar('notes'),
           ctx.banco(),
+          db.listar('cantes'),
         ]);
-        return json(resumenProgreso(oposicion, settings, plan, leitner, notas, banco.temas));
+        const aviso = !settings && !plan && !cantes.length ? await avisoOtraOposicion(ctx, oposicion) : undefined;
+        return json({ ...resumenProgreso(oposicion, settings, plan, leitner, notas, banco.temas), deberesPendientes: deberesPendientes(cantes), ...(aviso ? { aviso } : {}) });
       }),
   );
 
@@ -468,7 +520,8 @@ export function crearServidor(ctx: Contexto): McpServer {
         const where = desde && /^\d{4}-\d{2}-\d{2}$/.test(desde) ? { campo: 'timestamp', op: 'GREATER_THAN_OR_EQUAL' as const, valor: desdeMadrid(desde), marcaDeTiempo: true } : undefined;
         const docs = await db.consultar('exam_results', { orderBy: 'timestamp', descendente: true, limite, where });
         const tests = docs.map((d) => resumenTest(d.id, d.datos, banco));
-        return json({ oposicion, tests });
+        const aviso = !tests.length && !where ? await avisoOtraOposicion(ctx, oposicion) : undefined;
+        return json({ oposicion, tests, ...(aviso ? { aviso } : {}) });
       }),
   );
 
@@ -488,7 +541,8 @@ export function crearServidor(ctx: Contexto): McpServer {
       protegido(async () => {
         const db = await ctx.almacen(oposicion);
         const docs = await db.listar('cantes');
-        return json({ oposicion, ...resumenCantes(docs, n) });
+        const aviso = !docs.length ? await avisoOtraOposicion(ctx, oposicion) : undefined;
+        return json({ oposicion, ...resumenCantes(docs, n), ...(aviso ? { aviso } : {}), nota: 'Las correcciones guardadas de cada cante (informes anteriores) se leen con leer_informes_cante.' });
       }),
   );
 
@@ -498,7 +552,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Leer el cronograma activo',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'El cronograma de estudio en curso (semana a semana: primer día, día del cante y temas; las de descanso marcadas), con los temas ya hechos, los desmarcados, el ritmo (temasPorSemana), el día de cante (1 = lunes … 7 = domingo), las fases si es por fases y cuántas propuestas de preparadores tiene pendientes. Null si no tiene ninguno activo.',
+        'El cronograma de estudio en curso (semana a semana: primer día, día del cante y temas; las de descanso marcadas), con los temas ya hechos, los desmarcados, el ritmo (temasPorSemana), el día de cante (1 = lunes … 7 = domingo), las fases si es por fases, las propuestas de cambio de sus preparadores que tiene pendientes (quién, nota, ritmo y fin) y los cronogramas completos que le han mandado y aún no ha respondido. Null si no tiene ninguno activo.',
       inputSchema: { oposicion: oposicionParam },
     },
     async ({ oposicion }) =>
@@ -506,7 +560,11 @@ export function crearServidor(ctx: Contexto): McpServer {
         const db = await ctx.almacen(oposicion);
         const docs = await db.listar('cronogramas');
         const activo = cronogramaActivo(docs);
-        return json({ oposicion, cronograma: activo ? resumenCronograma(activo.id, activo.datos) : null, archivados: docs.length - (activo ? 1 : 0) });
+        const recibidos = (await db.listar('cronogramasRecibidos').catch(() => []))
+          .filter((r) => r.datos.respuesta == null)
+          .map((r) => ({ id: r.id, de: typeof r.datos.deNombre === 'string' ? r.datos.deNombre : 'Preparador', enviado: soloFecha(r.datos.enviado), nota: typeof r.datos.nota === 'string' ? r.datos.nota : '', ...(({ semanas, ejercicio, fin }) => ({ ejercicio, fin, semanas }))(resumenCronograma(r.id, r.datos)) }));
+        const aviso = !docs.length ? await avisoOtraOposicion(ctx, oposicion) : undefined;
+        return json({ oposicion, cronograma: activo ? resumenCronograma(activo.id, activo.datos) : null, archivados: docs.length - (activo ? 1 : 0), recibidosSinResponder: recibidos.length ? recibidos : undefined, ...(aviso ? { aviso } : {}) });
       }),
   );
 
@@ -588,6 +646,187 @@ export function crearServidor(ctx: Contexto): McpServer {
       }),
   );
 
+  // ------------------------------------------------------------ Visión de conjunto
+
+  /** Lo esencial de una oposición para arrancar una conversación; null si no tiene nada en ella. */
+  const panorama = async (op: Oposicion, hoy: string) => {
+    const db = await ctx.almacen(op);
+    const [ajustes, plan, cantes, cronos, tests, perfil, preparadores] = await Promise.all([
+      db.leer('progress/settings'),
+      db.leer('progress/plan'),
+      db.listar('cantes'),
+      db.listar('cronogramas'),
+      db.consultar('exam_results', { orderBy: 'timestamp', descendente: true, limite: 15 }),
+      db.leer('progress/preparador'),
+      db.listar('preparadores'),
+    ]);
+    const estudiados = Array.isArray(ajustes?.temasEstudiados) ? ajustes.temasEstudiados.length : 0;
+    const esPreparador = perfil?.activo === true;
+    const esOpositor = cantes.length > 0 || cronos.length > 0 || estudiados > 0 || preparadores.length > 0;
+    if (!esOpositor && !esPreparador && !tests.length) return null;
+    const diario = resumenCantes(cantes, 3);
+    const activo = cronogramaActivo(cronos);
+    const crono = activo ? resumenCronograma(activo.id, activo.datos) : null;
+    const examenes = Object.entries(esObjeto(plan?.fechas) ? plan.fechas : {})
+      .map(([ejercicio, f]) => ({ ejercicio, fecha: soloFecha(f) ?? '' }))
+      .filter((e) => e.fecha)
+      .map((e) => ({ ...e, dias: diasEntre(hoy, e.fecha) }))
+      .sort((a, b) => a.fecha.localeCompare(b.fecha));
+    const semana = tests.map((t) => ({ fecha: soloFecha(aHoraMadrid(t.datos.timestamp)) ?? '', nota: typeof t.datos.notaSobre10 === 'number' ? t.datos.notaSobre10 : 0 })).filter((t) => (diasEntre(t.fecha, hoy) ?? 99) <= 7);
+    // Las tareas que dejó la última corrección guardada, para retomarlas sin que el opositor las repita.
+    let ultimaCorreccion: { cante: string | null; fecha: string | null; tareas: string[] } | undefined;
+    if (diario.hechos[0]) {
+      const informes = await db.listar(`cantes/${Firestore.tramo(diario.hechos[0].id)}/informes`).catch(() => []);
+      const ultimo = informes.sort((a, b) => String(b.datos.fecha).localeCompare(String(a.datos.fecha)))[0];
+      if (ultimo) ultimaCorreccion = { cante: diario.hechos[0].fecha, fecha: soloFecha(ultimo.datos.fecha), tareas: Array.isArray(ultimo.datos.tareas) ? ultimo.datos.tareas.map(String) : [] };
+    }
+    return {
+      oposicion: op,
+      esOpositor,
+      esPreparador,
+      preparadores: preparadores.map((p) => (typeof p.datos.nombre === 'string' ? p.datos.nombre : 'Preparador')),
+      examenes,
+      temasEstudiados: estudiados,
+      cronograma: crono ? { ejercicio: crono.ejercicio, fin: crono.fin, temasHechos: Object.keys(crono.hechos).length, temasTotales: crono.semanas.reduce((n, s) => n + s.temas.length, 0), estaSemana: semanaDe(crono, hoy).actual, siguiente: semanaDe(crono, hoy).siguiente, propuestasPendientes: crono.propuestasPendientes } : null,
+      ultimosCantes: diario.hechos.map((c) => ({ id: c.id, fecha: c.fecha, temas: c.temas, esquema: c.esquema || undefined, valoracion: c.resultado?.valoracion, comentarios: c.resultado?.comentarios })),
+      cantesHechos: diario.totalHechos,
+      proximasClases: diario.pendientes.slice(0, 3).map((c) => ({ fecha: c.fecha, hora: c.hora, temas: c.temas.length ? c.temas : c.temasPropuestos, con: c.preparadorNombre ?? undefined })),
+      deberesPendientes: deberesPendientes(cantes).slice(0, 8),
+      ultimaCorreccion,
+      testsUltimos7Dias: { hechos: semana.length, notaMedia: semana.length ? Math.round((semana.reduce((s, t) => s + t.nota, 0) / semana.length) * 100) / 100 : null },
+      mejorRacha: typeof ajustes?.mejorRacha === 'number' ? ajustes.mejorRacha : undefined,
+      ultimoUso: typeof ajustes?.ultimoUso === 'string' ? ajustes.ultimoUso : undefined,
+    };
+  };
+
+  server.registerTool(
+    'empezar',
+    {
+      title: 'Ponerse al día con el usuario',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'LLÁMALA AL EMPEZAR cualquier conversación sobre la oposición, antes que las demás: en una sola llamada dice quién es el usuario en la app (opositor, preparador o las dos cosas, y en qué oposición: TCEE o DCE), cuántos días faltan para cada ejercicio, qué temas tocan esta semana según su cronograma, sus tres últimos cantes con la valoración, sus próximas clases, los deberes pendientes, las tareas que dejó la última corrección guardada, sus tests de la última semana y qué contenido revisado sirve el conector. Con eso se sabe qué «oposicion» pasar a las demás herramientas y no hay que preguntar lo que ya está en la app. Después, leer_metodo(tarea).',
+      inputSchema: {},
+    },
+    async () =>
+      protegido(async () => {
+        const hoy = ahoraMadrid().slice(0, 10);
+        const [tcee, dce, indice, versionWeb] = await Promise.all([panorama('tcee', hoy), panorama('dce', hoy), ctx.contenido.indice(), ctx.skill('VERSION.txt').catch(() => null)]);
+        const con = [tcee, dce].filter((p): p is NonNullable<typeof p> => p !== null);
+        const peso = (p: (typeof con)[number]) => p.cantesHechos * 3 + p.temasEstudiados + (p.cronograma ? 5 : 0) + p.testsUltimos7Dias.hechos;
+        const principal = con.length ? [...con].sort((a, b) => peso(b) - peso(a))[0].oposicion : null;
+        const version = versionWeb?.match(/^version:\s*(\S+)/m)?.[1];
+        return json({
+          hoy,
+          oposicionPrincipal: principal,
+          comoSeguir: principal
+            ? `Pasa oposicion «${principal}» a las demás herramientas${con.length > 1 ? ' (tiene datos en las dos: pregunta de cuál habla si no queda claro)' : ''}. Antes de la tarea, leer_metodo(tarea).`
+            : 'Este usuario aún no tiene datos en la app (ni cantes, ni cronograma, ni temas marcados): trabaja con lo que te cuente y propónle apuntarlo en la app. Antes de la tarea, leer_metodo(tarea).',
+          oposiciones: con,
+          contenido: indice ? { temasRevisados: indice.temas.map((t) => t.tema), dictamen: indice.dictamen.length > 0, version: indice.version ?? undefined, ...(version && indice.version && version !== indice.version ? { aviso: `El método publicado en la web es la versión ${version} y los temas del conector, la ${indice.version}: puede haber un tema recién aprobado que aún no esté aquí.` } : {}) } : null,
+        });
+      }),
+  );
+
+  server.registerTool(
+    'leer_informes_cante',
+    {
+      title: 'Leer las correcciones guardadas de los cantes',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Los informes de corrección que se guardaron en la app con guardar_informe_cante (los de esta IA u otra): fecha, valoración general y por tema, criterios, comentarios, tareas que se pusieron y el informe. Úsala antes de corregir un cante nuevo (para ver si repite los mismos fallos y si hizo las tareas), para el informe de la semana y para «¿cómo voy?». Con «canteId», los de ese cante; sin él, los más recientes de los últimos cantes.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        canteId: z.string().optional().describe('Id del cante (de leer_cantes); si falta, los últimos informes de cualquier cante.'),
+        n: z.number().int().min(1).max(10).default(3).describe('Cuántos informes como mucho.'),
+        completo: z.boolean().default(false).describe('true: el informe entero; por defecto, sus primeros 6.000 caracteres.'),
+      },
+    },
+    async ({ oposicion, canteId, n, completo }) =>
+      protegido(async () => {
+        const db = await ctx.almacen(oposicion);
+        const ids = canteId ? [canteId] : resumenCantes(await db.listar('cantes'), 8).hechos.map((c) => c.id);
+        const porCante = await Promise.all(ids.map(async (id) => (await db.listar(`cantes/${Firestore.tramo(id)}/informes`)).map((d) => resumenInforme(d.id, id, d.datos, completo ? 0 : 6000))));
+        const informes = porCante.flat().sort((a, b) => b.id.localeCompare(a.id)).slice(0, n);
+        return json({ oposicion, informes, ...(informes.length ? {} : { aviso: canteId ? 'Ese cante no tiene ninguna corrección guardada.' : 'No hay correcciones guardadas en los últimos cantes: se guardan con guardar_informe_cante cuando el opositor lo confirma.' }) });
+      }),
+  );
+
+  server.registerTool(
+    'preguntas_test',
+    {
+      title: 'Preguntas oficiales del test por tema',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Preguntas oficiales del test del primer ejercicio de TCEE (exámenes desde 2002; DCE practica con el mismo banco) de los temas que se pidan, con su respuesta y la explicación «¿Por qué?» de la web, elegidas según lo que el opositor ya ha hecho en la app: «no_dominadas» (por defecto: primero las que ha fallado, luego las que no ha visto; fuera las que ya domina), «falladas» (solo las que ha fallado) o «todas». Úsala para un test a medida en vez de leer los ficheros del banco. No enseñes la respuesta ni la explicación hasta que conteste. Si una pregunta lleva figura, dilo y remite al simulador de la web o a la app.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        temas: z.array(z.string()).min(1).max(10).describe('Códigos de los temas, «3.A.8» (los flojos salen de leer_resultados_test y leer_progreso).'),
+        n: z.number().int().min(1).max(30).default(10).describe('Cuántas preguntas (1-30).'),
+        modo: z.enum(['no_dominadas', 'falladas', 'todas']).default('no_dominadas'),
+      },
+    },
+    async ({ oposicion, temas, n, modo }) =>
+      protegido(async () => {
+        const codigos = temas.map((t) => codigoTema(t)).filter((t): t is string => !!t);
+        if (!codigos.length) return error(`Ningún código de tema válido en ${JSON.stringify(temas)} (formato «3.A.8»).`);
+        const banco = await ctx.banco();
+        if (!banco.preguntas?.size) return error('El banco de preguntas no está disponible ahora mismo. Inténtalo más tarde o remite al simulador de la web.');
+        const db = await ctx.almacen(oposicion);
+        const elegidas = elegirPreguntas(banco.preguntas, codigos, n, modo, await db.leer('progress/spaced_repetition'));
+        const explicaciones = new Map<string, Record<string, { clave?: string }>>();
+        await Promise.all([...new Set(elegidas.map((p) => p.examen))].map(async (ex) => explicaciones.set(ex, await ctx.explicaciones(ex).catch(() => ({})))));
+        const disponibles = [...banco.preguntas.values()].filter((p) => p.respuesta.length && p.temas.some((t) => codigos.includes(t))).length;
+        return json({
+          temas: codigos,
+          modo,
+          oficialesDeEsosTemas: disponibles,
+          preguntas: elegidas.map((p) => ({
+            id: p.id,
+            cabecera: `[${p.temas.join(', ')} · ${p.examen}, pregunta ${p.numero}]`,
+            enunciado: p.enunciado,
+            opciones: p.opciones,
+            ...(p.figura ? { figura: 'Lleva una figura que no se ve aquí: está en el simulador de la web y en la app.' } : {}),
+            respuesta: p.respuesta,
+            ...(p.respuesta.length > 1 ? { variasValidas: true } : {}),
+            porQue: explicaciones.get(p.examen)?.[String(p.id)]?.clave,
+            ...(p.nota ? { nota: p.nota } : {}),
+            historial: p.aciertos + p.fallos > 0 ? { aciertos: p.aciertos, fallos: p.fallos } : 'no la ha hecho',
+          })),
+          ...(elegidas.length < n ? { aviso: `Solo hay ${elegidas.length} preguntas oficiales de esos temas en el modo «${modo}». Completa con preguntas nuevas del mismo estilo, marcadas como «nueva», o prueba otro modo.` } : {}),
+          comoUsarlas: 'Plantéalas sin la respuesta; corrige cuando conteste, con la explicación («porQue») y la fuente. El desarrollo completo de cada explicación está en el simulador de la web y en la app («¿Por qué?»).',
+        });
+      }),
+  );
+
+  server.registerTool(
+    'leer_proceso',
+    {
+      title: 'Leer el proceso selectivo en curso',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Lo que ha publicado el Ministerio del proceso selectivo en curso de TCEE o DCE (la web lo rastrea varias veces al día): convocatoria, enlace oficial y los documentos por sección (convocatoria, admitidos, cada ejercicio, cronograma del tribunal), con la fecha en que apareció cada uno. Úsala para fechas de examen, plazos y novedades en vez de responder de memoria; si algo no está aquí, dilo y remite a la página oficial.',
+      inputSchema: { oposicion: oposicionParam, seccion: z.string().optional().describe('Solo una sección: «Tercer ejercicio», «Convocatoria», «Cronograma»…') },
+    },
+    async ({ oposicion, seccion }) =>
+      protegido(async () => {
+        const todo = await ctx.proceso();
+        const datos = esObjeto(todo) && esObjeto(todo[oposicion]) ? todo[oposicion] : null;
+        const procesos = datos && Array.isArray(datos.procesos) ? datos.procesos.filter(esObjeto) : [];
+        if (!procesos.length) return error('No se ha podido leer el proceso selectivo ahora mismo. Remite a la página del Ministerio.');
+        const quiere = seccion ? sinTildes(seccion) : '';
+        const salida = procesos.slice(0, 2).map((p, i) => {
+          const docs = (Array.isArray(p.documentos) ? p.documentos : []).filter(esObjeto).filter((d) => !quiere || sinTildes(String(d.seccion ?? '')).includes(quiere));
+          const porSeccion: Record<string, Array<{ titulo: string; url: string; desde?: string }>> = {};
+          for (const d of docs) (porSeccion[String(d.seccion ?? 'Otros')] ??= []).push({ titulo: String(d.titulo ?? ''), url: String(d.url ?? ''), ...(typeof d.desde === 'string' ? { desde: d.desde } : {}) });
+          const novedades = docs.filter((d) => typeof d.desde === 'string').sort((a, b) => String(b.desde).localeCompare(String(a.desde))).slice(0, 5).map((d) => ({ desde: String(d.desde), seccion: String(d.seccion ?? ''), titulo: String(d.titulo ?? ''), url: String(d.url ?? '') }));
+          // Del proceso anterior, solo lo último (sirve para estimar fechas del siguiente).
+          return i === 0 ? { convocatoria: p.convocatoria, paginaOficial: p.url, ultimasNovedades: novedades, documentos: porSeccion } : { convocatoria: p.convocatoria, paginaOficial: p.url, ultimasNovedades: novedades };
+        });
+        return json({ oposicion, actualizado: esObjeto(todo) ? todo.actualizado : undefined, procesos: salida, nota: '«desde» es el día en que la web vio aparecer el documento (no siempre el de su firma). Los que no lo llevan estaban ya al empezar el rastreo.' });
+      }),
+  );
+
   server.registerTool(
     'listar_temas_revisados',
     {
@@ -612,10 +851,10 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Leer un tema revisado',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'El texto completo de un tema revisado (como se canta: introducción, apartados con sus minutos, conclusión y anexos) en Markdown, o solo un apartado («Introducción», «II», «B», o parte de su título). Sin «apartado» devuelve la lista de apartados y el tema entero si cabe. Material exclusivo: solo para el opositor conectado.',
-      inputSchema: { tema: temaParam, apartado: z.string().optional().describe('Apartado concreto; si falta, el tema entero.'), guion: z.boolean().default(false).describe('true: el guion del cante de 30 minutos en vez del tema.') },
+        'El texto completo de un tema revisado (como se canta: introducción, apartados con sus minutos, conclusión y anexos) en Markdown, o solo un apartado («Introducción», «II», «B», o parte de su título). Sin «apartado» devuelve la lista de apartados y el tema por tramos de 40.000 caracteres (desde/limite): para corregir o explicar algo concreto, pide el apartado. Material exclusivo: solo para el opositor conectado.',
+      inputSchema: { tema: temaParam, apartado: z.string().optional().describe('Apartado concreto; si falta, el tema entero.'), guion: z.boolean().default(false).describe('true: el guion del cante de 30 minutos en vez del tema.'), ...tramoParams },
     },
-    async ({ tema, apartado, guion }) =>
+    async ({ tema, apartado, guion, desde, limite }) =>
       protegido(async () => {
         const codigo = normalizarCodigo(tema);
         if (!codigo) return error(`Código de tema no válido: «${tema}».`);
@@ -625,7 +864,7 @@ export function crearServidor(ctx: Contexto): McpServer {
           const parte = extraerApartado(md, apartado);
           return parte ? textoMd(`${AVISO_EXCLUSIVO}\n\n${parte}`) : error(`No hay ningún apartado «${apartado}» en ${codigoConPuntos(codigo)}. Apartados: ${apartadosDe(md).join(' · ')}`);
         }
-        return textoMd(`${AVISO_EXCLUSIVO}\n\nApartados: ${apartadosDe(md).join(' · ')}\n\n${md}`);
+        return tramoTexto(md, desde, limite, desde > 0 ? '' : `${AVISO_EXCLUSIVO}\n\nApartados: ${apartadosDe(md).join(' · ')}\n\n`, 'O pide solo el apartado que necesites («apartado»).');
       }),
   );
 
@@ -635,14 +874,14 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Leer la ficha de repaso de un tema',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description: 'La ficha de repaso de cuatro páginas de un tema revisado, en Markdown. Material exclusivo: solo para el opositor conectado.',
-      inputSchema: { tema: temaParam },
+      inputSchema: { tema: temaParam, ...tramoParams },
     },
-    async ({ tema }) =>
+    async ({ tema, desde, limite }) =>
       protegido(async () => {
         const codigo = normalizarCodigo(tema);
         if (!codigo) return error(`Código de tema no válido: «${tema}».`);
         const md = await ctx.contenido.tema(codigo, 'ficha');
-        return md ? textoMd(`${AVISO_EXCLUSIVO}\n\n${md}`) : error(`No hay ficha de repaso de ${codigoConPuntos(codigo)} (mira listar_temas_revisados).`);
+        return md ? tramoTexto(md, desde, limite, desde > 0 ? '' : `${AVISO_EXCLUSIVO}\n\n`) : error(`No hay ficha de repaso de ${codigoConPuntos(codigo)} (mira listar_temas_revisados).`);
       }),
   );
 
@@ -652,13 +891,14 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Leer la guía del dictamen de coyuntura',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'La guía del dictamen (1D01) y sus piezas: «guia-1D01» (la guía entera), «resumen-1D01» (resumen de 6-8 páginas), «guion-1D01» (guion del vídeo), «examen-espana» (examen de ejemplo) y «solucion-espana» (solución de máximos). Con «seccion» devuelve solo ese apartado de nivel 2. Material exclusivo.',
+        'La guía del dictamen (1D01) y sus piezas: «guia-1D01» (la guía entera), «resumen-1D01» (resumen de 6-8 páginas), «guion-1D01» (guion del vídeo), «examen-espana» (examen de ejemplo) y «solucion-espana» (solución de máximos). Con «seccion» devuelve solo ese apartado de nivel 2 (lo normal: la guía entera ocupa unos 360.000 caracteres); sin ella, la lista de secciones y el documento por tramos (desde/limite). Material exclusivo.',
       inputSchema: {
         documento: z.enum(documentosDictamen).default('guia-1D01'),
-        seccion: z.string().optional().describe('Apartado concreto (número, letra o parte del título); si falta, el documento entero.'),
+        seccion: z.string().optional().describe('Apartado concreto (número, letra o parte del título); si falta, el documento por tramos.'),
+        ...tramoParams,
       },
     },
-    async ({ documento, seccion }) =>
+    async ({ documento, seccion, desde, limite }) =>
       protegido(async () => {
         const md = await ctx.contenido.dictamen(documento);
         if (!md) return error(`El documento «${documento}» no está publicado en el conector.`);
@@ -666,7 +906,7 @@ export function crearServidor(ctx: Contexto): McpServer {
           const parte = extraerApartado(md, seccion);
           return parte ? textoMd(`${AVISO_EXCLUSIVO}\n\n${parte}`) : error(`No hay ninguna sección «${seccion}». Secciones: ${apartadosDe(md).join(' · ')}`);
         }
-        return textoMd(`${AVISO_EXCLUSIVO}\n\n${md}`);
+        return tramoTexto(md, desde, limite, desde > 0 ? '' : `${AVISO_EXCLUSIVO}\n\nSecciones: ${apartadosDe(md).join(' · ')}\n\n`, 'O pide solo la sección que necesites («seccion»): la guía entera es muy larga.');
       }),
   );
 
@@ -675,13 +915,18 @@ export function crearServidor(ctx: Contexto): McpServer {
     {
       title: 'Leer el canon del temario',
       annotations: { readOnlyHint: true, openWorldHint: false },
-      description: 'El canon común del temario revisado: «notacion» (convenciones de notación y símbolos) y «modelos-indice» (índice de los modelos y en qué tema vive cada uno). Material exclusivo.',
-      inputSchema: { documento: z.enum(documentosCanon).default('notacion') },
+      description: 'El canon común del temario revisado: «notacion» (convenciones de notación y símbolos) y «modelos-indice» (índice de los modelos y en qué tema vive cada uno). Son largos: pide una «seccion» o léelos por tramos (desde/limite). Material exclusivo.',
+      inputSchema: { documento: z.enum(documentosCanon).default('notacion'), seccion: z.string().optional().describe('Apartado concreto (parte del título); si falta, el documento por tramos.'), ...tramoParams },
     },
-    async ({ documento }) =>
+    async ({ documento, seccion, desde, limite }) =>
       protegido(async () => {
         const md = await ctx.contenido.canon(documento);
-        return md ? textoMd(`${AVISO_EXCLUSIVO}\n\n${md}`) : error(`El documento «${documento}» no está publicado en el conector.`);
+        if (!md) return error(`El documento «${documento}» no está publicado en el conector.`);
+        if (seccion) {
+          const parte = extraerApartado(md, seccion);
+          return parte ? tramoTexto(parte, desde, limite, desde > 0 ? '' : `${AVISO_EXCLUSIVO}\n\n`) : error(`No hay ninguna sección «${seccion}». Secciones: ${apartadosDe(md).join(' · ')}`);
+        }
+        return tramoTexto(md, desde, limite, desde > 0 ? '' : `${AVISO_EXCLUSIVO}\n\nSecciones: ${apartadosDe(md).join(' · ')}\n\n`, 'O pide solo la sección que necesites («seccion»).');
       }),
   );
 

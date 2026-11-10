@@ -52,7 +52,16 @@ const kv = new Map<string, string>([
   ['dictamen/guia-1D01.md', '# Guía\n\n## 1. Qué es\n\nTexto.\n'],
 ]);
 
-const banco = temasDePreguntas({ preguntas: [{ id: 1, temas: ['3.A.8'], respuesta: ['a'] }] });
+const opciones = { a: 'Una', b: 'Dos', c: 'Tres', d: 'Cuatro' };
+const banco = temasDePreguntas({
+  preguntas: [
+    { id: 1, temas: ['3.A.8'], respuesta: ['a'], examen: '2026-marzo', numero: 12, enunciado: '¿Primera?', opciones },
+    { id: 2, temas: ['3.A.8'], respuesta: ['b'], examen: '2026-marzo', numero: 13, enunciado: '¿Segunda?', opciones },
+    { id: 3, temas: ['3.A.8', '3.A.9'], respuesta: ['c'], examen: '2025-marzo-A', numero: 4, enunciado: '¿Tercera?', opciones },
+    { id: 4, temas: ['3.A.8'], respuesta: [], examen: '2025-marzo-A', numero: 5, enunciado: '¿Anulada?', opciones },
+    { id: 5, temas: ['3.B.1'], respuesta: ['d'], examen: '2025-marzo-A', numero: 6, enunciado: '¿De otro tema?', opciones },
+  ],
+});
 
 export async function cliente(ctx: Contexto) {
   const servidor = crearServidor(ctx);
@@ -114,6 +123,8 @@ describe('herramientas', () => {
           'references/agentes/corrector-cante.md': '# Corrector del cante',
         }) as Record<string, string>)[ruta] ?? null,
       cliente: async () => 'Le Chat',
+  explicaciones: async () => ({ '1': { clave: 'Porque sí.' } }),
+  proceso: async () => ({ actualizado: 'hoy', tcee: { procesos: [{ convocatoria: '2025', url: 'https://ministerio', documentos: [{ seccion: 'Tercer ejercicio', titulo: 'Convocatoria', url: 'https://doc', desde: '2026-10-07' }, { seccion: 'Convocatoria', titulo: 'BOE', url: 'https://boe', desde: null }] }] } }),
       desconectar: async () => {
         desconectado = true;
       },
@@ -123,7 +134,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma'].sort());
+    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'leer_proceso'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -201,6 +212,70 @@ describe('herramientas', () => {
     expect((dce.bloques as Obj[])[0]).toMatchObject({ bloque: 'A · Economía general', categoria: 'Ejercicio 1' });
     const nada = await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'astronomía' } });
     expect(nada.isError).toBe(true);
+  });
+
+  it('empezar resume las dos oposiciones, elige la principal y trae las tareas de la última corrección', async () => {
+    db.docs.set('cantes/c1/informes/2026-10-11T10-00-00', { fecha: '2026-10-11T10:00:00.000Z', cliente: 'Claude', informe: 'x'.repeat(7000), valoracion: 2, tareas: ['Repasar la ecuación de Slutsky'] });
+    db.docs.set('cantes/c1', { ...db.docs.get('cantes/c1')!, tareas: [{ tipo: 'estudiar', tema: '3.A.9', hecha: false }, { tipo: 'libre', texto: 'Hecha', hecha: true }] });
+    const c = await cliente(ctx);
+    const e = json(await c.callTool({ name: 'empezar', arguments: {} }));
+    expect(e.oposicionPrincipal).toBe('tcee');
+    const [tcee, dce] = e.oposiciones as Obj[];
+    expect(tcee).toMatchObject({ oposicion: 'tcee', esOpositor: true, esPreparador: false, cantesHechos: 1, ultimaCorreccion: { tareas: ['Repasar la ecuación de Slutsky'] }, deberesPendientes: [{ texto: 'Estudiar 3.A.9', canteId: 'c1' }] });
+    expect((tcee.examenes as Obj[])[0]).toMatchObject({ ejercicio: '3', fecha: '2027-06-15' });
+    expect((tcee.ultimosCantes as Obj[])[0]).toMatchObject({ id: 'c1', valoracion: 2 });
+    expect(dce.oposicion).toBe('dce');
+    expect((e.contenido as Obj).temasRevisados).toEqual(['3.A.8']);
+    // Y las correcciones guardadas se pueden releer, recortadas salvo que se pida entero
+    const inf = json(await c.callTool({ name: 'leer_informes_cante', arguments: {} }));
+    expect((inf.informes as Obj[])[0]).toMatchObject({ canteId: 'c1', hechoPor: 'Claude', valoracion: 2 });
+    expect(String((inf.informes as Obj[])[0].informe)).toContain('recortado');
+    const entero = json(await c.callTool({ name: 'leer_informes_cante', arguments: { canteId: 'c1', completo: true } }));
+    expect(String((entero.informes as Obj[])[0].informe)).toHaveLength(7000);
+  });
+
+  it('una lectura vacía avisa si los datos están en la otra oposición', async () => {
+    dbDce.docs.set('cantes/d1', { id: 'd1', fecha: '2026-10-10T18:00:00.000', estado: 'hecho', temas: ['1.A.1'] });
+    db.docs.clear();
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'leer_cantes', arguments: {} }));
+    expect(r.aviso).toContain('oposicion «dce»');
+    expect(json(await c.callTool({ name: 'leer_cantes', arguments: { oposicion: 'dce' } })).aviso).toBeUndefined();
+  });
+
+  it('preguntas_test elige por tema y por lo que el opositor ha fallado, con la explicación', async () => {
+    db.docs.set('progress/spaced_repetition', { sessionCount: 3, questions: { '1': { box: 1, timesFailed: 2, timesCorrect: 0 }, '2': { box: 5, timesFailed: 0, timesCorrect: 3 } } });
+    const c = await cliente(ctx);
+    const t = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3a8'], n: 5 } }));
+    const ps = t.preguntas as Obj[];
+    expect(ps.map((p) => p.id)).toEqual([1, 3]); // la fallada primero; la 2, dominada, fuera; la 4, anulada, fuera
+    expect(ps[0]).toMatchObject({ respuesta: ['a'], porQue: 'Porque sí.', historial: { aciertos: 0, fallos: 2 } });
+    expect(ps[1].historial).toBe('no la ha hecho');
+    expect(t.aviso).toContain('Solo hay 2');
+    const f = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'falladas' } }));
+    expect((f.preguntas as Obj[]).map((p) => p.id)).toEqual([1]);
+  });
+
+  it('leer_proceso agrupa los documentos por sección y da las últimas novedades', async () => {
+    const c = await cliente(ctx);
+    const p = json(await c.callTool({ name: 'leer_proceso', arguments: {} }));
+    const actual = (p.procesos as Obj[])[0];
+    expect(Object.keys(actual.documentos as Obj)).toEqual(['Tercer ejercicio', 'Convocatoria']);
+    expect((actual.ultimasNovedades as Obj[])[0]).toMatchObject({ desde: '2026-10-07', seccion: 'Tercer ejercicio' });
+    expect((await c.callTool({ name: 'leer_proceso', arguments: { oposicion: 'dce' } })).isError).toBe(true);
+  });
+
+  it('los textos largos salen por tramos con la indicación de cómo seguir', async () => {
+    kv.set('temas/3A08/ficha.md', `# Ficha 3.A.8\n\n${'Línea de la ficha.\n'.repeat(400)}`);
+    const c = await cliente(ctx);
+    const uno = texto(await c.callTool({ name: 'leer_ficha', arguments: { tema: '3.A.8', limite: 2000 } }));
+    expect(uno).toContain('Material exclusivo');
+    const sigue = Number(/desde: (\d+)/.exec(uno)![1]);
+    expect(sigue).toBeLessThanOrEqual(2000);
+    const dos = texto(await c.callTool({ name: 'leer_ficha', arguments: { tema: '3.A.8', desde: sigue, limite: 2000 } }));
+    expect(dos.startsWith('\nLínea de la ficha.') || dos.startsWith('Línea de la ficha.')).toBe(true);
+    expect(dos).not.toContain('Material exclusivo');
+    kv.set('temas/3A08/ficha.md', '# Ficha 3.A.8\n\nResumen.');
   });
 
   it('leer_progreso devuelve el formato de la skill y respeta la oposición', async () => {
