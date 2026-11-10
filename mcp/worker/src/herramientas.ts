@@ -16,6 +16,8 @@ import {
   resumenProgreso,
   resumenTest,
   desdeMadrid,
+  anadirTareas,
+  clasesConAlumno,
   anadirApuntes,
   anadirDeberes,
   heredarCronograma,
@@ -262,7 +264,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase) solo cuando lo confirme. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
     },
   );
 
@@ -798,6 +800,7 @@ export function crearServidor(ctx: Contexto): McpServer {
           comoSeguir: principal
             ? `Pasa oposicion «${principal}» a las demás herramientas${con.length > 1 ? ' (tiene datos en las dos: pregunta de cuál habla si no queda claro)' : ''}. Antes de la tarea, leer_metodo(tarea).`
             : 'Este usuario aún no tiene datos en la app (ni cantes, ni cronograma, ni temas marcados): trabaja con lo que te cuente y propónle apuntarlo en la app. Antes de la tarea, leer_metodo(tarea).',
+          ...(con.some((p) => p.esPreparador) ? { siEsPreparador: `Es preparador en ${con.filter((p) => p.esPreparador).map((p) => p.oposicion.toUpperCase()).join(' y ')}: sus alumnos, sus clases y las reservas que le piden están en leer_alumnos y leer_alumno (método: leer_metodo(«preparador»)).` } : {}),
           oposiciones: con,
           contenido: indice ? { temasRevisados: indice.temas.map((t) => t.tema), dictamen: indice.dictamen.length > 0, version: indice.version ?? undefined, ...(version && indice.version && version !== indice.version ? { aviso: `El método publicado en la web es la versión ${version} y los temas del conector, la ${indice.version}: puede haber un tema recién aprobado que aún no esté aquí.` } : {}) } : null,
         });
@@ -1258,6 +1261,248 @@ export function crearServidor(ctx: Contexto): McpServer {
               ? 'La clase está en tu agenda; la app la copiará a la del alumno la próxima vez que la abras (hace falta que tu perfil de preparador esté verificado).'
               : 'La clase está en tu agenda. Este alumno no usa la app, así que no le llega: avísale tú.',
         });
+      }),
+  );
+
+  // ------------------------------------------------------------ Preparadores
+
+  /** El perfil de preparador del usuario en esa oposición, o el error que se le devuelve si no lo es. */
+  const perfilPreparador = async (yo: AlmacenDatos): Promise<Doc | CallToolResult> => {
+    const perfil = await yo.leer('progress/preparador');
+    return perfil?.activo === true ? perfil : error('En esta oposición no eres preparador en la app (Más → Soy preparador). Si eres opositor, usa empezar y las herramientas leer_*.');
+  };
+  const esError = (v: Doc | CallToolResult): v is CallToolResult => Array.isArray((v as CallToolResult).content);
+  const AVISO_ALUMNOS = 'Datos de un alumno, que el preparador ve porque el alumno se ha enlazado con él en la app: úsalos solo para preparar su clase y hablar de él con este preparador. No lo compares con otros alumnos salvo que el preparador lo pida.';
+
+  server.registerTool(
+    'leer_alumnos',
+    {
+      title: 'Preparador: mis alumnos',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Para PREPARADORES: sus alumnos en la app (nombre, ejercicio, si están enlazados, su próxima clase y la última con su valoración), las reservas de clase que le han pedido y aún no ha contestado (con responder_reserva las acepta o rechaza) y las peticiones de enlace pendientes. Es el punto de partida para «¿qué tengo esta semana?», «¿cómo van mis alumnos?» o preparar una clase; el detalle de uno, con leer_alumno.',
+      inputSchema: { oposicion: oposicionParam },
+    },
+    async ({ oposicion }) =>
+      protegido(async () => {
+        const yo = await ctx.almacen(oposicion);
+        const perfil = await perfilPreparador(yo);
+        if (esError(perfil)) return perfil;
+        const red = await ctx.almacenEn(raizRed(oposicion));
+        const ahora = ahoraMadrid();
+        const [alumnos, sesiones, reservas, enlaces] = await Promise.all([
+          yo.listar('alumnos'),
+          yo.listar('sesiones'),
+          red.consultar('reservas', { where: { campo: 'preparador', op: 'EQUAL', valor: ctx.uid } }).catch(() => []),
+          red.listar(`preparadores/${ctx.uid}/alumnos`).catch(() => []),
+        ]);
+        return json({
+          oposicion,
+          ahora_en_madrid: ahora.slice(0, 16),
+          preparador: { nombre: txt(perfil.nombre), minutosClase: num(perfil.minutosClase, MINUTOS_CLASE), rubrica: Array.isArray(perfil.rubrica) ? perfil.rubrica : undefined },
+          alumnos: alumnos
+            .filter((a) => a.datos.borrado !== true && a.datos.suelto !== true)
+            .map((a) => {
+              const c = clasesConAlumno(sesiones, a.id, 1, ahora);
+              return {
+                id: a.id,
+                nombre: txt(a.datos.nombre),
+                ejercicio: num(a.datos.ejercicio, 3),
+                enlazado: !!txt(a.datos.uid),
+                clasesHechas: c.totalHechas,
+                ultimaClase: c.hechas[0] ? { fecha: c.hechas[0].fecha, temas: c.hechas[0].temas, valoracion: c.hechas[0].resultado?.valoracion } : undefined,
+                proximaClase: c.proximas[0] ? { id: c.proximas[0].id, fecha: c.proximas[0].fecha, hora: c.proximas[0].hora, temas: c.proximas[0].temas.length ? c.proximas[0].temas : c.proximas[0].temasPropuestos } : undefined,
+              };
+            }),
+          reservasPorResponder: reservas
+            .filter((r) => txt(r.datos.estado) === 'pedida' && txt(r.datos.fecha) > ahora)
+            .sort((a, b) => txt(a.datos.fecha).localeCompare(txt(b.datos.fecha)))
+            .map((r) => ({ id: r.id, alumno: txt(r.datos.alumnoNombre) || 'Alumno', fecha: txt(r.datos.fecha).slice(0, 16), minutos: num(r.datos.minutos, MINUTOS_CLASE), modalidad: txt(r.datos.modalidad) || undefined, temas: Array.isArray(r.datos.temas) ? r.datos.temas : undefined, nota: txt(r.datos.nota) || undefined })),
+          enlacesPorAceptar: enlaces.filter((e) => e.datos.aceptado === false).map((e) => txt(e.datos.nombre) || 'Alumno'),
+          aviso: AVISO_ALUMNOS,
+        });
+      }),
+  );
+
+  server.registerTool(
+    'leer_alumno',
+    {
+      title: 'Preparador: la ficha de un alumno',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Para PREPARADORES: todo lo que el preparador tiene de un alumno para preparar su clase. De sus propios datos: sus notas privadas sobre él, las últimas clases con el tema cantado, la valoración, los comentarios, los criterios de su rúbrica y los deberes, y las próximas. Y, si el alumno está enlazado, lo que comparte: temas estudiados y en repaso, temas que pide no cantar, los temas fijados para cada clase, su cronograma (si lo comparte) con lo que lleva hecho y los informes de corrección de las clases con este preparador. No da sus tests ni sus notas personales (el alumno no los comparte). «alumno» es el id de leer_alumnos.',
+      inputSchema: { oposicion: oposicionParam, alumno: z.string().describe('Id del alumno (de leer_alumnos).'), n: z.number().int().min(1).max(30).default(8).describe('Cuántas clases hechas, de la más reciente a la más antigua.') },
+    },
+    async ({ oposicion, alumno, n }) =>
+      protegido(async () => {
+        const yo = await ctx.almacen(oposicion);
+        const perfil = await perfilPreparador(yo);
+        if (esError(perfil)) return perfil;
+        const ficha = await yo.leer(`alumnos/${Firestore.tramo(alumno)}`);
+        if (!ficha || ficha.borrado === true) return error(`No tienes ningún alumno con id «${alumno}». Mira leer_alumnos.`);
+        const ahora = ahoraMadrid();
+        const salida: Record<string, unknown> = {
+          alumno: { id: alumno, nombre: txt(ficha.nombre), ejercicio: num(ficha.ejercicio, 3), enlazado: !!txt(ficha.uid) && ficha.suelto !== true, misNotas: txt(ficha.notas) || undefined, temasQueLleva: Array.isArray(ficha.temas) && ficha.temas.length ? ficha.temas : undefined },
+          clases: clasesConAlumno(await yo.listar('sesiones'), alumno, n, ahora),
+        };
+        const uidAlumno = ficha.suelto === true ? '' : txt(ficha.uid);
+        if (uidAlumno) {
+          const suyo = await ctx.almacenEn(Firestore.raizDe(uidAlumno, oposicion));
+          const ajustes = await leerSeguro(suyo, 'progress/settings');
+          let crono: Doc | null = null;
+          let informes: unknown[] = [];
+          try {
+            crono = await cronogramaDe(suyo, true);
+            // Solo las clases que firma este preparador: lo que el alumno hace por su cuenta o con otros no se enseña aquí.
+            const mias = (await suyo.listar('cantes')).filter((c) => c.datos.preparador === ctx.uid && c.datos.estado === 'hecho').sort((a, b) => txt(b.datos.fecha).localeCompare(txt(a.datos.fecha))).slice(0, 4);
+            informes = (await Promise.all(mias.map(async (c) => (await suyo.listar(`cantes/${Firestore.tramo(c.id)}/informes`).catch(() => [])).map((d) => resumenInforme(d.id, c.id, d.datos, 3000))))).flat().slice(0, 4);
+          } catch (e) {
+            if (!(e instanceof ErrorFirestore && e.estado === 403)) throw e;
+          }
+          const r = crono ? resumenCronograma('', crono) : null;
+          salida.loQueComparte = {
+            temasEstudiados: Array.isArray(ajustes?.temasEstudiados) ? ajustes.temasEstudiados : undefined,
+            temasEnRepaso: Array.isArray(ajustes?.temasEnRepaso) ? ajustes.temasEnRepaso : undefined,
+            noCantar: Array.isArray(ajustes?.noCantar) ? ajustes.noCantar.map((x) => String(x).split('@')[0]) : undefined,
+            cronograma: r ? { ejercicio: r.ejercicio, fin: r.fin, temasHechos: Object.keys(r.hechos), estaSemana: semanaDe(r, ahora.slice(0, 10)).actual, proximas: r.semanas.filter((s) => s.cante >= ahora.slice(0, 10)).slice(0, 6) } : 'no lo comparte',
+            correccionesDeSusClases: informes.length ? informes : undefined,
+            ...(ajustes ? {} : { aviso: 'No se ha podido leer lo que comparte (puede que el enlace no esté aceptado todavía).' }),
+          };
+        }
+        return json({ ...salida, aviso: AVISO_ALUMNOS });
+      }),
+  );
+
+  server.registerTool(
+    'responder_reserva',
+    {
+      title: 'Preparador: aceptar o rechazar una reserva',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: true },
+      description:
+        'Para PREPARADORES: contesta a una clase que le ha pedido un alumno (las ve en leer_alumnos, «reservasPorResponder»). Al aceptarla se crea la clase en su agenda y en la del alumno, con la modalidad y los temas que pidió (como propuesta), igual que al aceptarla en la app; al rechazarla, el alumno lo ve en la suya. SOLO después de que el preparador lo confirme con el resumen (alumno, día, hora y duración).',
+      inputSchema: {
+        oposicion: oposicionParam,
+        reserva: z.string().describe('Id de la reserva (de leer_alumnos).'),
+        aceptar: z.boolean().describe('true: aceptarla; false: rechazarla.'),
+        aunque_choque: z.boolean().default(false).describe('true solo si el preparador ya sabe que pisa otra clase suya y quiere seguir.'),
+      },
+    },
+    async ({ oposicion, reserva, aceptar, aunque_choque }) =>
+      protegido(async () => {
+        const yo = await ctx.almacen(oposicion);
+        const perfil = await perfilPreparador(yo);
+        if (esError(perfil)) return perfil;
+        const red = await ctx.almacenEn(raizRed(oposicion));
+        const rid = Firestore.tramo(reserva);
+        const r = await leerSeguro(red, `reservas/${rid}`);
+        if (!r || txt(r.preparador) !== ctx.uid) return error(`No tienes ninguna reserva con id «${reserva}». Mira leer_alumnos.`);
+        if (txt(r.estado) !== 'pedida') return error(`Esa reserva ya está ${txt(r.estado)}: no hay nada que contestar.`);
+        const ahora = ahoraMadrid();
+        if (!aceptar) {
+          await red.escribir(`reservas/${rid}`, { estado: 'rechazada', updatedAt: ahora }, ['estado', 'updatedAt']);
+          return json({ rechazada: true, alumno: txt(r.alumnoNombre), fecha: txt(r.fecha).slice(0, 16) });
+        }
+        const fecha = txt(r.fecha);
+        const minutos = num(r.minutos, MINUTOS_CLASE);
+        const choques = proximas(await yo.listar('sesiones'), ahora, 800).filter((c) => seSolapan(fecha, minutos, c.fecha, c.minutos));
+        if (choques.length && !aunque_choque) return error(`Pisa otra clase tuya: ${choques.map((c) => c.fecha.slice(0, 16)).join(', ')}. Pregunta al preparador y, si quiere seguir, repite con aunque_choque: true.`);
+        // La ficha del alumno: la suya de siempre o, si no la tenía, una nueva con su uid (como la app).
+        const uidAlumno = txt(r.alumno);
+        const alumnos = await yo.listar('alumnos');
+        let ficha = alumnos.find((a) => txt(a.datos.uid) === uidAlumno && a.datos.borrado !== true);
+        if (!ficha) {
+          const datos: Doc = { id: uidAlumno, nombre: txt(r.alumnoNombre) || 'Alumno', ejercicio: 3, notas: '', temas: [], uid: uidAlumno, creado: ahora, updatedAt: ahora, borrado: false };
+          await yo.escribir(`alumnos/${Firestore.tramo(uidAlumno)}`, datos);
+          ficha = { id: uidAlumno, datos };
+        }
+        const nombre = txt(perfil.nombre);
+        const modalidad = txt(r.modalidad) === 'online' ? 'online' : 'presencial';
+        const id = `res_${reserva}`;
+        const sesion = construirSesion(id, { fecha, minutos, modalidad, temas: Array.isArray(r.temas) ? r.temas.map(String) : [], nota: txt(r.nota) }, ficha.id, num(ficha.datos.ejercicio, 3), oposicion === 'tcee' ? 30 : 20, { nombre, minutosClase: minutos, plataforma: txt(perfil.plataforma), numTemas: num(perfil.temasPorClase, oposicion === 'tcee' ? 1 : 2) }, ahora);
+        if (!txt(r.modalidad)) delete sesion.modalidad;
+        await yo.escribir(`sesiones/${Firestore.tramo(id)}`, sesion);
+        let enSuAgenda = false;
+        try {
+          await (await ctx.almacenEn(Firestore.raizDe(uidAlumno, oposicion))).escribir(`cantes/${Firestore.tramo(id)}`, copiaParaAlumno(sesion, ctx.uid, nombre));
+          enSuAgenda = true;
+        } catch (e) {
+          if (!(e instanceof ErrorFirestore && e.estado === 403)) throw e;
+        }
+        await red.escribir(`reservas/${rid}`, { estado: 'aceptada', updatedAt: ahora }, ['estado', 'updatedAt']);
+        return json({ aceptada: true, sesion: id, alumno: txt(ficha.datos.nombre), fecha: fecha.slice(0, 16), minutos, en_la_agenda_del_alumno: enSuAgenda, aviso: enSuAgenda ? 'La clase está en las dos agendas. Al abrir tu app se crea el evento de Google Calendar (y el enlace de Meet si es online y lo tienes activado).' : 'La clase está en tu agenda; la app la copiará a la del alumno la próxima vez que la abras.' });
+      }),
+  );
+
+  server.registerTool(
+    'guardar_nota_alumno',
+    {
+      title: 'Preparador: apuntar en sus notas de un alumno',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+      description:
+        'Para PREPARADORES: añade una anotación, con su fecha, a sus notas privadas sobre un alumno (la ficha del alumno en su app; el alumno no las ve). Úsala al acabar de preparar o de repasar una clase («arrastra la introducción», «insistir en gráficos») SOLO cuando el preparador lo confirme. No borra lo que ya había.',
+      inputSchema: { oposicion: oposicionParam, alumno: z.string().describe('Id del alumno (de leer_alumnos).'), nota: z.string().min(3).max(600).describe('La anotación, breve.') },
+    },
+    async ({ oposicion, alumno, nota }) =>
+      protegido(async () => {
+        const yo = await ctx.almacen(oposicion);
+        const perfil = await perfilPreparador(yo);
+        if (esError(perfil)) return perfil;
+        const ruta = `alumnos/${Firestore.tramo(alumno)}`;
+        const ficha = await yo.leer(ruta);
+        if (!ficha || ficha.borrado === true) return error(`No tienes ningún alumno con id «${alumno}». Mira leer_alumnos.`);
+        const ahora = ahoraMadrid();
+        const [a, m, d] = ahora.slice(0, 10).split('-');
+        const notas = `${txt(ficha.notas).trimEnd()}${txt(ficha.notas).trim() ? '\n' : ''}${Number(d)}/${Number(m)}/${a}: ${nota.trim()}`;
+        if (notas.length > 8000) return error('Las notas de este alumno ya son muy largas: que el preparador las resuma en la app antes de añadir más.');
+        await yo.escribir(ruta, { notas, updatedAt: ahora }, ['notas', 'updatedAt']);
+        return json({ guardada: true, alumno: txt(ficha.nombre), aviso: 'Está en la ficha del alumno en tu app (solo la ves tú).' });
+      }),
+  );
+
+  server.registerTool(
+    'guardar_deberes',
+    {
+      title: 'Preparador: poner deberes en una clase',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
+      description:
+        'Para PREPARADORES: añade deberes a una clase (la sesión sale de leer_alumno o leer_alumnos), como en la app: «estudiar», «esquema» (esquema a ciegas) o «cantar» un tema, «test» (con un mínimo de preguntas y, si se quiere, de un tema) o «libre» (texto). Los automáticos se tachan solos cuando el alumno lo hace en su app. El alumno enlazado los ve en la clase. SOLO cuando el preparador lo confirme.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        sesion: z.string().describe('Id de la clase.'),
+        tareas: z
+          .array(z.object({ tipo: z.enum(['estudiar', 'esquema', 'cantar', 'test', 'libre']), tema: z.string().optional().describe('«3.A.8» (obligatorio en estudiar, esquema y cantar).'), texto: z.string().max(200).optional().describe('El texto, en las libres.'), preguntas: z.number().int().min(1).max(200).optional().describe('Mínimo de preguntas, en los test.') }))
+          .min(1)
+          .max(8),
+      },
+    },
+    async ({ oposicion, sesion, tareas }) =>
+      protegido(async () => {
+        const yo = await ctx.almacen(oposicion);
+        const perfil = await perfilPreparador(yo);
+        if (esError(perfil)) return perfil;
+        const sid = Firestore.tramo(sesion);
+        const clase = await yo.leer(`sesiones/${sid}`);
+        if (!clase || clase.borrado === true) return error(`No tienes ninguna clase con id «${sesion}».`);
+        const ahora = ahoraMadrid();
+        const { tareas: lista, errores } = anadirTareas(clase.tareas, tareas, ahora);
+        if (errores.length) return error(`No se han guardado los deberes: ${errores.join('; ')}.`);
+        await yo.escribir(`sesiones/${sid}`, { tareas: lista, updatedAt: ahora }, ['tareas', 'updatedAt']);
+        // La copia de la clase en la agenda del alumno, si está enlazado.
+        const ficha = typeof clase.alumno === 'string' ? await yo.leer(`alumnos/${Firestore.tramo(clase.alumno)}`) : null;
+        const uidAlumno = ficha && ficha.suelto !== true ? txt(ficha.uid) : '';
+        let leLlega = false;
+        if (uidAlumno) {
+          try {
+            const suyo = await ctx.almacenEn(Firestore.raizDe(uidAlumno, oposicion));
+            if (await suyo.leer(`cantes/${sid}`)) {
+              await suyo.escribir(`cantes/${sid}`, { tareas: lista, preparador: ctx.uid, updatedAt: ahora }, ['tareas', 'preparador', 'updatedAt']);
+              leLlega = true;
+            }
+          } catch (e) {
+            if (!(e instanceof ErrorFirestore && e.estado === 403)) throw e;
+          }
+        }
+        return json({ guardados: tareas.length, deberesDeLaClase: lista.length, le_llegan_al_alumno: leLlega, aviso: leLlega ? undefined : uidAlumno ? 'Están en tu clase; la app los pasará a la del alumno la próxima vez que la abras.' : 'Este alumno no usa la app: díselos tú.' });
       }),
   );
 
