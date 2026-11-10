@@ -16,6 +16,8 @@ export interface EntradaIndice {
 }
 
 export interface Indice {
+  /** Versión de la skill con la que se subió (VERSION.txt). */
+  version?: string | null;
   generado: string;
   commit?: string;
   temas: EntradaIndice[];
@@ -91,6 +93,11 @@ export class Contenido {
     } catch {
       return null;
     }
+  }
+
+  /** Un fichero del material exclusivo por su clave («temas/3A08/ficha.md», «canon/notacion.md»…). */
+  crudo(clave: string): Promise<string | null> {
+    return this.kv.get(clave, 'text');
   }
 
   tema(codigo: string, fichero: 'tema' | 'ficha' | 'guion-cante'): Promise<string | null> {

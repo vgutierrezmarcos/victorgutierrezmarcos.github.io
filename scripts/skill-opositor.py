@@ -1179,6 +1179,19 @@ def sha_instrucciones(destino):
     return h.hexdigest()[:16]
 
 
+def sin_exclusivo(carpeta, nombres):
+    """Para la copia desplegada en la web (pública): fuera el material exclusivo (references/temas/<T>/,
+    dictamen/ y canon/), que solo se sirve con sesión (el conector lo lee de su KV, mcp/publicar-contenido.py)
+    o dentro del ZIP. Queda temas/INDICE.md, que dice qué temas hay."""
+    partes = os.path.normpath(carpeta).split(os.sep)
+    fuera = {n for n in nombres if n == '__pycache__'}
+    if partes[-1] == 'references':
+        fuera |= {'dictamen', 'canon'} & set(nombres)
+    if partes[-2:] == ['references', 'temas']:
+        fuera |= {n for n in nombres if os.path.isdir(os.path.join(carpeta, n))}
+    return fuera
+
+
 def empaquetar(destino, manifiesto, temas, sin_temas):
     """ZIP con la carpeta prepara-oposicion/ dentro (en la rama de revisión), la skill
     desplegada en main (SKILL_RUTA) con su version.json, y la entrada «skill» del manifiesto."""
@@ -1200,7 +1213,7 @@ def empaquetar(destino, manifiesto, temas, sin_temas):
     desplegada = os.path.join(RAIZ, SKILL_RUTA)
     if os.path.exists(desplegada):
         shutil.rmtree(desplegada)
-    shutil.copytree(destino, os.path.join(desplegada, NOMBRE))
+    shutil.copytree(destino, os.path.join(desplegada, NOMBRE), ignore=sin_exclusivo)
     with open(os.path.join(desplegada, 'version.json'), 'w', encoding='utf-8', newline='\n') as f:
         json.dump(version, f, ensure_ascii=False, indent=1)
         f.write('\n')

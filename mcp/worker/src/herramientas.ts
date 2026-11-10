@@ -230,10 +230,12 @@ export function crearServidor(ctx: Contexto): McpServer {
         if (!RUTA_SKILL.test(limpia) || limpia.includes('..')) {
           return error(`Ruta no válida: «${ruta}». Usa una ruta relativa de la skill, como «SKILL.md» o «references/agentes/dudas.md».`);
         }
-        const texto = await ctx.skill(limpia);
-        if (texto === null) return error(`No existe «${limpia}» en la skill publicada. Comprueba la ruta en SKILL.md.`);
+        // El material exclusivo no está en la web: sale del KV del conector, que solo se lee con sesión.
+        const exclusivo = /^references\/((?:temas\/[^/]+|dictamen|canon)\/.+)$/.exec(limpia)?.[1];
+        const texto = exclusivo ? await ctx.contenido.crudo(exclusivo) : await ctx.skill(limpia);
+        if (texto === null) return error(`No existe «${limpia}» en la skill publicada. Comprueba la ruta en SKILL.md${exclusivo ? ' o en listar_temas_revisados' : ''}.`);
         if (limpia === 'SKILL.md') return textoMd(`${NOTA_CONECTOR}\n\n${texto}`);
-        return textoMd(/^references\/(temas|dictamen|canon)\//.test(limpia) ? `${AVISO_EXCLUSIVO}\n\n${texto}` : texto);
+        return textoMd(exclusivo ? `${AVISO_EXCLUSIVO}\n\n${texto}` : texto);
       }),
   );
 
