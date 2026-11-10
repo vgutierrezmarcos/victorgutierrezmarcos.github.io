@@ -155,8 +155,8 @@ describe('cronograma', () => {
       compartir: false,
       propuesta: null,
       propuestaResuelta: null,
-      creado: '2026-11-01T10:00:00.000Z',
-      updatedAt: '2026-11-01T10:00:00.000Z',
+      creado: '2026-11-01T11:00:00.000',
+      updatedAt: '2026-11-01T11:00:00.000',
       diaCante: 6,
       manual: true,
     });
@@ -181,7 +181,7 @@ describe('informe del cante', () => {
   it('construye el documento del informe y los campos del resultado', () => {
     const r = construirInforme({ informe: '# Informe', valoracion: 3, valoraciones: { '3.A.8': 3, '3.B.1': 4 }, comentarios: ' Bien la intro ', criterios: { Esquema: 4 }, tareas: ['a', 'b'] }, new Date('2026-11-01T10:12:00.500Z'), 'ChatGPT');
     expect(r.errores).toEqual([]);
-    expect(r.id).toBe('2026-11-01T10-12-00');
+    expect(r.id).toBe('2026-11-01T10-12-00-500');
     expect(r.documento).toEqual({ fecha: '2026-11-01T10:12:00.500Z', origen: 'ia', cliente: 'ChatGPT', informe: '# Informe', valoracion: 3, valoraciones: { '3.A.8': 3, '3.B.1': 4 }, comentarios: 'Bien la intro', criterios: { Esquema: 4 }, tareas: ['a', 'b'] });
     expect(r.resultado).toEqual({ valoracion: 3, valoraciones: { '3.A.8': 3, '3.B.1': 4 }, comentarios: 'Bien la intro', criterios: { Esquema: 4 } });
   });

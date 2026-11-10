@@ -16,6 +16,10 @@ import {
   resumenProgreso,
   resumenTest,
   desdeMadrid,
+  anadirApuntes,
+  anadirDeberes,
+  heredarCronograma,
+  sinPisar,
   aHoraMadrid,
   deberesPendientes,
   diasEntre,
@@ -258,7 +262,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, agendar_clase) solo cuando lo confirme. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase) solo cuando lo confirme. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
     },
   );
 
@@ -574,7 +578,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Guardar en la app un cronograma nuevo',
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
       description:
-        'Crea en la app el cronograma acordado con el opositor (pasa a ser el activo; el anterior queda archivado, no se borra). Úsalo SOLO después de enseñárselo entero y de que confirme expresamente que lo quiere guardar. Una entrada por semana de cante, con la fecha del cante (AAAA-MM-DD, siempre en el día de cante) y los códigos de los temas («3.A.8»); las semanas sin cante entre la primera y la última quedan de descanso. La app lo muestra al sincronizar (al abrirla o cada pocos minutos).',
+        'Crea en la app el cronograma acordado con el opositor (pasa a ser el activo; el anterior queda archivado, no se borra; si era del mismo ejercicio, conserva los temas que ya tenía hechos y sigue compartido con su preparador si lo estaba). Úsalo SOLO después de enseñárselo entero y de que confirme expresamente que lo quiere guardar. Una entrada por semana de cante, con la fecha del cante (AAAA-MM-DD, siempre en el día de cante) y los códigos de los temas («3.A.8»); las semanas sin cante entre la primera y la última quedan de descanso. La app lo muestra al sincronizar (al abrirla o cada pocos minutos).',
       inputSchema: {
         oposicion: oposicionParam,
         ejercicio: z.number().int().min(1).max(5).describe('Ejercicio (3 o 4 en TCEE; 1 en DCE).'),
@@ -591,20 +595,30 @@ export function crearServidor(ctx: Contexto): McpServer {
       protegido(async () => {
         const { documento, errores } = construirCronograma({ semanas, diaCante, ejercicio, temasPorSemana, examen }, new Date(), await ctx.cliente());
         if (errores.length) return error(`No se ha guardado el cronograma:\n- ${errores.join('\n- ')}`);
+        // Un código que no está en el programa se queda en la app como un tema fantasma: mejor pararlo aquí.
+        const programa = await ctx.fuentes().then((i) => (oposicion === 'dce' ? i.dce : i.tcee)).catch(() => null);
+        if (programa && Object.keys(programa).length >= 20) {
+          const ajenos = (documento.temas as string[]).filter((t) => !programa[t]);
+          if (ajenos.length) return error(`No se ha guardado el cronograma: ${ajenos.join(', ')} no ${ajenos.length > 1 ? 'están' : 'está'} en el programa de ${oposicion.toUpperCase()} (míralo con buscar_temario).`);
+        }
         const db = await ctx.almacen(oposicion);
         const anteriores = await db.listar('cronogramas');
-        const marca = new Date().toISOString();
-        for (const c of anteriores) {
-          if (c.datos.archivado !== true) await db.escribir(`cronogramas/${c.id}`, { archivado: true, updatedAt: marca }, ['archivado', 'updatedAt']);
-        }
-        await db.escribir(`cronogramas/${documento.id as string}`, documento);
+        const marca = ahoraMadrid();
+        const heredado = heredarCronograma(documento, cronogramaActivo(anteriores)?.datos ?? null);
+        // Archivar el anterior y crear el nuevo, a la vez: si algo falla, no se queda sin cronograma activo.
+        await db.lote([
+          ...anteriores.filter((c) => c.datos.archivado !== true).map((c) => ({ ruta: `cronogramas/${Firestore.tramo(c.id)}`, datos: { archivado: true, updatedAt: marca }, soloCampos: ['archivado', 'updatedAt'] })),
+          { ruta: `cronogramas/${documento.id as string}`, datos: documento },
+        ]);
         return json({
           guardado: true,
+          sigueCompartido: heredado.compartido || undefined,
+          temasYaHechosConservados: heredado.hechos || undefined,
           id: documento.id,
           semanas: (documento.semanas as Json[]).length,
           temas: (documento.temas as Json[]).length,
           archivados: anteriores.filter((c) => c.datos.archivado !== true).map((c) => c.id),
-          aviso: 'Dile al opositor que lo verá en la app (Cronograma) al sincronizar y que puede retocar cada semana allí.',
+          aviso: `Dile al opositor que lo verá en la app (Cronograma) al sincronizar y que puede retocar cada semana allí.${heredado.compartido ? ' Sigue compartido con su preparador, como el anterior.' : ' No está compartido con ningún preparador: si quiere que su preparador lo vea, que lo comparta desde la app.'}`,
         });
       }),
   );
@@ -615,7 +629,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Guardar en la app el informe de un cante',
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
       description:
-        'Guarda el informe de corrección de un cante en la app (cantes/{id}/informes) y, si se dan, pone en el diario la valoración (1-5, general y por tema), los comentarios (hasta 300 caracteres) y los criterios de la rúbrica, como haría el opositor en «¿Cómo ha ido el cante?». Úsalo SOLO con un cante que ya está en el diario (su «id» viene de leer_cantes) y después de que el opositor confirme el bloque «Para la app».',
+        'Guarda el informe de corrección de un cante en la app (cantes/{id}/informes) y, si se dan, pone en el diario la valoración (1-5, general y por tema), los comentarios (hasta 300 caracteres) y los criterios de la rúbrica, como haría el opositor en «¿Cómo ha ido el cante?». No cambia una valoración o unos comentarios que ya estuvieran puestos (lo dice en «yaHabia») salvo con «sustituir». Úsalo SOLO con un cante que ya está en el diario (su «id» viene de leer_cantes) y después de que el opositor confirme el bloque «Para la app».',
       inputSchema: {
         oposicion: oposicionParam,
         canteId: z.string().min(1).describe('Id del cante (de leer_cantes).'),
@@ -624,10 +638,11 @@ export function crearServidor(ctx: Contexto): McpServer {
         valoraciones: z.record(z.string(), z.number().int().min(1).max(5)).optional().describe('Valoración por tema cantado («3.A.8»: 3).'),
         comentarios: z.string().max(300).optional().describe('Comentarios para el diario, lo más importante primero (≤ 300 caracteres).'),
         criterios: z.record(z.string(), z.number().int().min(1).max(5)).optional().describe('Nota 1-5 por criterio de la rúbrica, solo si el opositor la usa.'),
-        tareas: z.array(z.string()).max(10).optional().describe('Tareas para antes del próximo cante.'),
+        tareas: z.array(z.string()).max(10).optional().describe('Tareas para antes del próximo cante (en un cante propio se apuntan también como deberes en la app).'),
+        sustituir: z.boolean().default(false).describe('true solo si el opositor ha confirmado que quiere cambiar la valoración o los comentarios que ya había en el diario.'),
       },
     },
-    async ({ oposicion, canteId, informe, valoracion, valoraciones, comentarios, criterios, tareas }) =>
+    async ({ oposicion, canteId, informe, valoracion, valoraciones, comentarios, criterios, tareas, sustituir }) =>
       protegido(async () => {
         const { id, documento, resultado, errores } = construirInforme({ informe, valoracion, valoraciones, comentarios, criterios, tareas }, new Date(), await ctx.cliente());
         if (errores.length) return error(`No se ha guardado el informe:\n- ${errores.join('\n- ')}`);
@@ -636,13 +651,74 @@ export function crearServidor(ctx: Contexto): McpServer {
         const cante = await db.leer(`cantes/${cid}`);
         if (!cante) return error(`No hay ningún cante con id «${canteId}» en la app.`);
         await db.escribir(`cantes/${cid}/informes/${id}`, documento);
-        let diario = false;
-        if (Object.keys(resultado).length && cante.estado === 'hecho') {
-          const campos = Object.keys(resultado).map((k) => `resultado.${k}`);
-          await db.escribir(`cantes/${cid}`, { resultado, updatedAt: new Date().toISOString() }, [...campos, 'updatedAt']);
-          diario = true;
+        const marca = ahoraMadrid();
+        const avisos: string[] = [];
+        // Lo que ya apuntó el opositor o su preparador no se pisa sin que él lo pida.
+        const { escribir, yaHabia } = sustituir ? { escribir: resultado, yaHabia: {} } : sinPisar(resultado, cante.resultado);
+        const cambios: { [k: string]: Json } = {};
+        const campos: string[] = [];
+        if (Object.keys(escribir).length && cante.estado === 'hecho') {
+          cambios.resultado = escribir;
+          campos.push(...Object.keys(escribir).map((k) => `resultado.${k}`));
+        } else if (Object.keys(resultado).length && cante.estado !== 'hecho') {
+          avisos.push('El cante no está marcado como hecho en la app: el informe se ha guardado, pero la valoración y los comentarios no (que lo cierre en la app).');
         }
-        return json({ guardado: true, informe: id, diarioActualizado: diario, aviso: diario ? undefined : 'El cante no está marcado como hecho en la app: el informe se ha guardado, pero la valoración y los comentarios no (que lo cierre en la app).' });
+        if (Object.keys(yaHabia).length)
+          avisos.push(`En el diario ya había ${Object.keys(yaHabia).join(', ')} (puesto por el opositor o por su preparador) y se ha dejado como estaba. Díselo y, si quiere cambiarlo, repite con sustituir: true.`);
+        // Las tareas, como deberes del cante, solo si es suyo: en una clase los deberes los pone el preparador.
+        let deberes = 0;
+        if (tareas?.length && typeof cante.preparador !== 'string') {
+          const d = anadirDeberes(cante.tareas, tareas, marca);
+          if (d.nuevas) {
+            cambios.tareas = d.tareas;
+            campos.push('tareas');
+            deberes = d.nuevas;
+          }
+        } else if (tareas?.length) {
+          avisos.push('Es una clase con su preparador: las tareas quedan en el informe, no como deberes (esos los pone el preparador).');
+        }
+        if (campos.length) await db.escribir(`cantes/${cid}`, { ...cambios, updatedAt: marca }, [...campos, 'updatedAt']);
+        return json({ guardado: true, informe: id, diarioActualizado: 'resultado' in cambios, deberesApuntados: deberes || undefined, yaHabia: Object.keys(yaHabia).length ? yaHabia : undefined, aviso: avisos.join(' ') || undefined });
+      }),
+  );
+
+  server.registerTool(
+    'anotar_tema',
+    {
+      title: 'Apuntar en la agenda de un tema',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+      description:
+        'Apunta en la app, en la agenda de un tema, lo que el opositor tiene que arreglar en su próxima vuelta («repasar la ecuación de Slutsky», «aprender la fecha del Acta Única») y, si lo pide, marca el tema como estudiado o en repaso. Úsala al terminar una corrección, una duda o un test, SOLO después de enseñarle lo que vas a apuntar y de que lo confirme. No repite un apunte que ya esté pendiente. La app lo muestra al sincronizar (Temario → el tema → Agenda).',
+      inputSchema: {
+        oposicion: oposicionParam,
+        tema: z.string().describe('Código del tema, «3.A.8».'),
+        pendientes: z.array(z.string().min(3).max(200)).max(8).default([]).describe('Apuntes para la próxima vuelta: cortos y concretos, uno por cosa que arreglar.'),
+        marcar: z.enum(['estudiado', 'en_repaso']).optional().describe('Marca además el tema como estudiado o en repaso (solo si el opositor lo pide).'),
+      },
+    },
+    async ({ oposicion, tema, pendientes, marcar }) =>
+      protegido(async () => {
+        const cod = codigoTema(tema);
+        if (!cod) return error(`«${tema}» no parece un código de tema (por ejemplo, «3.A.8»).`);
+        if (!pendientes.length && !marcar) return error('No hay nada que apuntar: pasa «pendientes» o «marcar».');
+        const db = await ctx.almacen(oposicion);
+        const marca = ahoraMadrid();
+        const salida: Record<string, unknown> = { tema: cod };
+        if (pendientes.length) {
+          const ruta = `notes/${cod.replace(/\./g, '_')}`;
+          const { pendientes: lista, nuevos } = anadirApuntes((await db.leer(ruta))?.pendientes, pendientes, marca);
+          if (nuevos) await db.escribir(ruta, { tema: cod, pendientes: lista, agendaUpdatedAt: marca }, ['tema', 'pendientes', 'agendaUpdatedAt']);
+          salida.apuntados = nuevos;
+          if (nuevos < pendientes.length) salida.yaEstaban = pendientes.length - nuevos;
+        }
+        if (marcar) {
+          const campo = marcar === 'estudiado' ? 'temasEstudiados' : 'temasEnRepaso';
+          const ajustes = (await db.leer('progress/settings')) ?? {};
+          const actuales = Array.isArray(ajustes[campo]) ? (ajustes[campo] as Json[]).map(String) : [];
+          if (!actuales.includes(cod)) await db.escribir('progress/settings', { [campo]: [...actuales, cod].sort(), updatedAt: marca }, [campo, 'updatedAt']);
+          salida.marcado = marcar;
+        }
+        return json({ ...salida, aviso: 'Lo verá en la app al sincronizar (al abrirla o a los pocos minutos).' });
       }),
   );
 
@@ -1102,14 +1178,17 @@ export function crearServidor(ctx: Contexto): McpServer {
           if (!vinculo || !enlaceRed || enlaceRed.aceptado === false)
             return error('Ese preparador no está enlazado contigo (o aún no ha aceptado el enlace). Mira preparar_clase.');
           const huecos = await leerSeguro(red, `huecos/${conId}`);
-          const p: PeticionClase = { fecha, minutos: minutos ?? num(((huecos?.huecos as Doc[] | undefined) ?? [])[0]?.minutos, MINUTOS_CLASE), modalidad, temas, nota, lugar, enlace };
+          if (huecos && huecos.activo === false) return error('Ese preparador no tiene abiertas las reservas en la app ahora mismo: no se le puede pedir clase desde aquí. Que el opositor hable con él.');
+          // Si la hora coincide con un hueco libre del preparador, su duración; si no, se pide igual y se avisa.
+          const libre = huecosLibres(huecos, [], ahora, 8).find((h) => h.inicio.slice(0, 16) === fecha.slice(0, 16));
+          const p: PeticionClase = { fecha, minutos: minutos ?? libre?.minutos ?? num(((huecos?.huecos as Doc[] | undefined) ?? [])[0]?.minutos, MINUTOS_CLASE), modalidad, temas, nota };
           const errores = erroresPeticion(p, ahora);
           if (errores.length) return error(`No se ha pedido la clase: ${errores.join('; ')}.`);
           const choques = proximas(await yo.listar('cantes'), ahora, 800).filter((c) => seSolapan(fecha, p.minutos, c.fecha, c.minutos));
           if (choques.length && !aunque_choque)
             return error(`Pisa otra clase tuya: ${choques.map((c) => `${c.fecha.slice(0, 16)}${c.con ? ` con ${c.con}` : ''}`).join(', ')}. Pregunta al usuario y, si quiere seguir, repite con aunque_choque: true.`);
           const id = nuevoId();
-          const ahoraIso = new Date().toISOString();
+          const ahoraIso = ahora;
           await red.escribir(`reservas/${id}`, construirReserva(id, p, con, ctx.uid, txt(enlaceRed.nombre) || ctx.email.split('@')[0], ahoraIso));
           if (temas.length) {
             const ajustes = (await yo.leer('progress/settings')) ?? {};
@@ -1124,7 +1203,7 @@ export function crearServidor(ctx: Contexto): McpServer {
             modalidad,
             temas,
             preparador: txt(vinculo.nombre) || 'tu preparador',
-            aviso: 'Es una petición: tu preparador la verá en su app y tiene que aceptarla. Cuando la acepte, la clase aparecerá en tu agenda con estos temas. Puedes anularla desde la app mientras esté pendiente.',
+            aviso: `Es una petición: tu preparador la verá en su app y tiene que aceptarla. Cuando la acepte, la clase aparecerá en tu agenda con estos temas. Puedes anularla desde la app mientras esté pendiente.${huecos && !libre ? ' Ojo: esa hora no es uno de los huecos que tu preparador tiene libres en la app; puede que la rechace.' : ''}${lugar || enlace ? ' El lugar o el enlace no viajan en la petición: los pone el preparador al aceptarla (díselo en la nota si importa).' : ''}`,
           });
         }
 
@@ -1150,7 +1229,7 @@ export function crearServidor(ctx: Contexto): McpServer {
         if (choques.length && !aunque_choque)
           return error(`Pisa otra clase (tuya o del alumno): ${choques.map((c) => c.fecha.slice(0, 16)).join(', ')}. Pregunta al usuario y, si quiere seguir, repite con aunque_choque: true.`);
         const id = nuevoId();
-        const ahoraIso = new Date().toISOString();
+        const ahoraIso = ahora;
         const nombre = txt(perfil.nombre);
         const numTemas = num(perfil.temasPorClase, oposicion === 'tcee' ? 1 : 2);
         const sesion = construirSesion(id, p, con, num(alumno.ejercicio, 3), oposicion === 'tcee' ? 30 : 20, { nombre, minutosClase: p.minutos, plataforma: txt(perfil.plataforma), numTemas }, ahoraIso);

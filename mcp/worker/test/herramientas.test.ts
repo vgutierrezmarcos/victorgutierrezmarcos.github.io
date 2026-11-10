@@ -43,6 +43,11 @@ export class FirestoreSimulado implements AlmacenDatos {
     }
     this.docs.set(ruta, actual);
   }
+  lotes = 0;
+  async lote(escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[] }>) {
+    this.lotes++;
+    for (const e of escrituras) await this.escribir(e.ruta, e.datos, e.soloCampos);
+  }
 }
 
 const kv = new Map<string, string>([
@@ -134,7 +139,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'leer_proceso'].sort());
+    expect(nombres).toEqual(['desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'leer_proceso', 'anotar_tema'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -232,6 +237,43 @@ describe('herramientas', () => {
     expect(String((inf.informes as Obj[])[0].informe)).toContain('recortado');
     const entero = json(await c.callTool({ name: 'leer_informes_cante', arguments: { canteId: 'c1', completo: true } }));
     expect(String((entero.informes as Obj[])[0].informe)).toHaveLength(7000);
+  });
+
+  it('el cronograma nuevo se guarda de una vez y conserva lo hecho y el compartir del anterior', async () => {
+    db.docs.set('cronogramas/viejo', { id: 'viejo', archivado: false, compartir: true, creado: '2026-09-01T00:00:00.000', ejercicio: 3, semanas: [], hechos: { '3.A.8': '2026-09-10T00:00:00.000', '3.A.1': '2026-09-03T00:00:00.000' }, desmarcados: ['3.A.9'] });
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'proponer_cronograma', arguments: { ejercicio: 3, diaCante: 7, semanas: [{ cante: '2027-01-10', temas: ['3.A.8', '3.A.9'] }] } }));
+    expect(r).toMatchObject({ guardado: true, sigueCompartido: true, temasYaHechosConservados: 1, archivados: ['viejo'] });
+    expect(db.lotes).toBe(1);
+    const nuevo = db.docs.get(`cronogramas/${r.id as string}`)!;
+    expect(nuevo).toMatchObject({ compartir: true, hechos: { '3.A.8': '2026-09-10T00:00:00.000' }, desmarcados: ['3.A.9'], archivado: false });
+    expect(String(nuevo.creado)).not.toMatch(/Z$/); // hora de Madrid sin zona, como la app
+    expect(db.docs.get('cronogramas/viejo')!.archivado).toBe(true);
+  });
+
+  it('guardar_informe_cante no pisa lo que ya había en el diario salvo que se pida, y apunta los deberes', async () => {
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c1', informe: 'Informe', valoracion: 4, comentarios: 'mejor', criterios: { Rigor: 3 }, tareas: ['Repasar Slutsky', 'Repasar Slutsky'] } }));
+    expect(r.yaHabia).toEqual({ valoracion: 2, comentarios: 'regular' });
+    expect(r.deberesApuntados).toBe(1);
+    const cante = db.docs.get('cantes/c1')!;
+    expect(cante.resultado).toMatchObject({ valoracion: 2, comentarios: 'regular', criterios: { Rigor: 3 } });
+    expect((cante.tareas as Obj[])[0]).toMatchObject({ tipo: 'libre', texto: 'Repasar Slutsky' });
+    const s = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c1', informe: 'Informe', valoraciones: { '3.A.8': 4, '3.A.9': 5 }, sustituir: true } }));
+    expect(s.yaHabia).toBeUndefined();
+    expect(db.docs.get('cantes/c1')!.resultado).toMatchObject({ valoracion: 5, valoraciones: { '3.A.8': 4, '3.A.9': 5 } });
+  });
+
+  it('anotar_tema añade apuntes sin repetir y marca el tema', async () => {
+    db.docs.set('notes/3_A_8', { tema: '3.A.8', texto: 'nota', pendientes: [{ id: 'a', texto: 'Repasar Slutsky', creado: 'x', hecho: null, borrado: false }] });
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'anotar_tema', arguments: { tema: '3a8', pendientes: ['repasar slutsky', 'Preferencia revelada: axioma débil'], marcar: 'en_repaso' } }));
+    expect(r).toMatchObject({ tema: '3.A.8', apuntados: 1, yaEstaban: 1, marcado: 'en_repaso' });
+    const nota = db.docs.get('notes/3_A_8')!;
+    expect(nota.texto).toBe('nota');
+    expect((nota.pendientes as Obj[]).map((p) => p.texto)).toEqual(['Repasar Slutsky', 'Preferencia revelada: axioma débil']);
+    expect(db.docs.get('progress/settings')).toMatchObject({ temasEnRepaso: ['3.A.8'], temasEstudiados: ['3.A.1'] });
+    expect((await c.callTool({ name: 'anotar_tema', arguments: { tema: '3.A.8' } })).isError).toBe(true);
   });
 
   it('una lectura vacía avisa si los datos están en la otra oposición', async () => {
@@ -332,7 +374,7 @@ describe('herramientas', () => {
 
   it('guardar_informe_cante escribe el informe y actualiza el resultado del cante hecho', async () => {
     const c = await cliente(ctx);
-    const r = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c1', informe: '# Informe', valoracion: 3, comentarios: 'Mejor' } }));
+    const r = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c1', informe: '# Informe', valoracion: 3, comentarios: 'Mejor', sustituir: true } }));
     expect(r.guardado).toBe(true);
     expect(r.diarioActualizado).toBe(true);
     const informe = db.escrituras.find((e) => e.ruta.startsWith('cantes/c1/informes/'))!;
