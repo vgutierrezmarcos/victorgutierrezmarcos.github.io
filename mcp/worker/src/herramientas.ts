@@ -855,7 +855,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Preguntas oficiales del test por tema',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'Preguntas oficiales del test del primer ejercicio de TCEE (exámenes desde 2002; DCE practica con el mismo banco) de los temas que se pidan, con su respuesta y la explicación «¿Por qué?» de la web, elegidas según lo que el opositor ya ha hecho en la app: «no_dominadas» (por defecto: primero las que ha fallado, luego las que no ha visto; fuera las que ya domina), «falladas» (solo las que ha fallado) o «todas». Úsala para un test a medida en vez de leer los ficheros del banco. No enseñes la respuesta ni la explicación hasta que conteste. Si una pregunta lleva figura, dilo y remite al simulador de la web o a la app.',
+        'Preguntas oficiales del test del primer ejercicio de TCEE (exámenes desde 2002; DCE practica con el mismo banco) de los temas que se pidan, con su respuesta y la explicación «¿Por qué?» de la web, elegidas según lo que el opositor ya ha hecho en la app: «no_dominadas» (por defecto: primero las que ha fallado, luego las que no ha visto; fuera las que ya domina), «falladas» (solo las que ha fallado) o «todas». Úsala para un test a medida en vez de leer los ficheros del banco. No enseñes la respuesta ni la explicación hasta que conteste. Si una pregunta lleva figura, viene en «figuras» con la dirección de la imagen y su descripción en texto: describe la figura con esas palabras y pon el enlace (si no viene, remite al simulador de la web o a la app).',
       inputSchema: {
         oposicion: oposicionParam,
         temas: z.array(z.string()).min(1).max(10).describe('Códigos de los temas, «3.A.8» (los flojos salen de leer_resultados_test y leer_progreso).'),
@@ -883,7 +883,7 @@ export function crearServidor(ctx: Contexto): McpServer {
             cabecera: `[${p.temas.join(', ')} · ${p.examen}, pregunta ${p.numero}]`,
             enunciado: p.enunciado,
             opciones: p.opciones,
-            ...(p.figura ? { figura: 'Lleva una figura que no se ve aquí: está en el simulador de la web y en la app.' } : {}),
+            ...(p.figura ? { figura: p.figuras?.length ? 'Lleva figura: descríbela con «descripcion» y enlaza «url» para que la abra.' : 'Lleva una figura que no se ve aquí: está en el simulador de la web y en la app.', ...(p.figuras?.length ? { figuras: p.figuras } : {}) } : {}),
             respuesta: p.respuesta,
             ...(p.respuesta.length > 1 ? { variasValidas: true } : {}),
             porQue: explicaciones.get(p.examen)?.[String(p.id)]?.clave,

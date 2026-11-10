@@ -197,3 +197,14 @@ describe('informe del cante', () => {
     expect(r.errores).toEqual(['el informe está vacío', 'valoracion tiene que ser un entero de 1 a 5', 'valoración no válida para «mal»', 'comentarios tiene que tener 300 caracteres como mucho']);
   });
 });
+
+describe('figurasDe', () => {
+  it('da la dirección completa y la descripción de cada figura', async () => {
+    const { figurasDe } = await import('../src/datos');
+    expect(figurasDe([{ src: 'img/a.webp', alt: 'Dos rectas', ancho: 600 }, 'img/b.webp', { alt: 'sin src' }])).toEqual([
+      { url: 'https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/img/a.webp', descripcion: 'Dos rectas' },
+      { url: 'https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/img/b.webp' },
+    ]);
+    expect(figurasDe(undefined)).toEqual([]);
+  });
+});

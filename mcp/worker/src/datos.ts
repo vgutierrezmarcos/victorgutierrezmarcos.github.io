@@ -65,9 +65,25 @@ export interface PreguntaBanco {
   enunciado: string;
   opciones: Record<string, string>;
   respuesta: string[];
-  /** Lleva figura (está en el simulador de la web y en la app; aquí solo se avisa). */
+  /** Lleva figura. */
   figura: boolean;
+  /** Sus figuras: dirección de la imagen en la web y la descripción en texto (el «alt»), con la que se puede contestar sin verla. */
+  figuras?: Array<{ url: string; descripcion?: string }>;
   nota?: string;
+}
+
+const URL_TEST = 'https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/';
+
+/** Las imágenes de una pregunta del banco ({src, alt}) con la dirección completa. */
+export function figurasDe(imagenes: unknown[] | undefined): Array<{ url: string; descripcion?: string }> {
+  const out: Array<{ url: string; descripcion?: string }> = [];
+  for (const i of imagenes ?? []) {
+    const src = typeof i === 'string' ? i : (i as { src?: unknown })?.src;
+    if (typeof src !== 'string' || !src) continue;
+    const alt = typeof i === 'object' && i ? (i as { alt?: unknown }).alt : undefined;
+    out.push({ url: /^https?:/.test(src) ? src : URL_TEST + src.replace(/^\.?\//, ''), ...(typeof alt === 'string' && alt ? { descripcion: alt } : {}) });
+  }
+  return out;
 }
 
 export function temasDePreguntas(banco: { preguntas?: Array<{ id: number; temas?: string[]; respuesta?: string[]; examen?: string; numero?: number; enunciado?: string; opciones?: Record<string, string>; imagenes?: unknown[]; nota?: string }> }): {
@@ -83,7 +99,7 @@ export function temasDePreguntas(banco: { preguntas?: Array<{ id: number; temas?
     temas.set(p.id, p.temas ?? []);
     respuestas.set(p.id, respuesta);
     if (p.enunciado && p.opciones)
-      preguntas.set(p.id, { id: p.id, examen: p.examen ?? '', numero: Number(p.numero ?? 0), temas: p.temas ?? [], enunciado: p.enunciado, opciones: p.opciones, respuesta, figura: (p.imagenes?.length ?? 0) > 0, ...(p.nota ? { nota: p.nota } : {}) });
+      preguntas.set(p.id, { id: p.id, examen: p.examen ?? '', numero: Number(p.numero ?? 0), temas: p.temas ?? [], enunciado: p.enunciado, opciones: p.opciones, respuesta, figura: (p.imagenes?.length ?? 0) > 0, ...(figurasDe(p.imagenes).length ? { figuras: figurasDe(p.imagenes) } : {}), ...(p.nota ? { nota: p.nota } : {}) });
   }
   return { temas, respuestas, preguntas };
 }
