@@ -1,51 +1,59 @@
 % Modelo de Melitz (2003): beneficios frente a phi^(sigma-1), umbrales en autarquía y
-% con comercio. Rectas en u = phi^(sigma-1) (cualitativas, wF^d = 1, wF^x = 1,65):
-%   B^d_aut   = 0,6 u - 1     -> (phi*_aut)^(sigma-1) = 1,667
+% con comercio. Rectas en u = phi^(sigma-1) (cualitativas, wF^d = 1, wF^x = 1,4):
+%   B^d_aut   = 0,55 u - 1    -> (phi*_aut)^(sigma-1) = 1,818
 %   B^d       = 0,4 u - 1     -> (phi*)^(sigma-1)     = 2,5   (gira hacia abajo al bajar P/w)
-%   B^x       = 0,3 u - 1,65  -> (phi*_x)^(sigma-1)   = 5,5   (pendiente tau^(1-sigma) = 0,75 la de B^d)
-%   B^d + B^x = 0,7 u - 2,65 desde phi*_x (más empinada que B^d_aut).
-%   tau^(sigma-1) F^x / F^d = 1,65/0,75 = 2,2 > 1: phi*_x > phi*.
+%   B^x       = 0,3 u - 1,4   -> (phi*_x)^(sigma-1)   = 4,667 (pendiente tau^(1-sigma) = 0,75 la de B^d)
+%   B^d + B^x = 0,7 u - 2,4 desde phi*_x; corta a B^d_aut en u = 9,333 (B = 4,133): por
+%   encima, las exportadoras ganan más que en autarquía; por debajo, menos.
+%   tau^(sigma-1) F^x / F^d = 1,4/0,75 = 1,87 > 1: phi*_x > phi*.
+% 5 grupos: 1 no producen; 2 cierran; 3 solo interior (pierden); 4a exportan y ganan
+% menos que en autarquía; 4b exportan y ganan más.
 % Elaboración propia a partir de Melitz (2003) y Melitz y Redding (2014).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
-\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+\begin{tikzpicture}[tcee,x=1.05cm,y=0.95cm,
     llave/.style={decorate,decoration={brace,mirror,amplitude=5pt},thick,tceegris},
     grupo/.style={etiqueta,font=\footnotesize,align=center,anchor=north}]
   % 1: ejes; el beneficio B toma valores negativos
-  \capa{1}{\draw[eje] (0,0) -- (10.2,0) node[below left=2pt and 0pt] {$\varphi^{\sigma-1}$};}
-  \capa{1}{\draw[eje] (0,-1.85) -- (0,4.8) node[left] {$B$};}
+  \capa{1}{\draw[eje] (0,0) -- (11.2,0) node[below left=2pt and 0pt] {$\varphi^{\sigma-1}$};}
+  \capa{1}{\draw[eje] (0,-1.85) -- (0,5.6) node[left] {$B$};}
   \capa{1}{\node[below left] at (0,0) {$0$};}
-  % 2: beneficio en autarquía, desde -wF^d
-  \capa{2}{\draw[curva1] (0,-1) node[left,text=black] {$-wF^d$} -- (8.5,4.1)
-    node[etiqueta,right] {$B^d_{\mathrm{aut}}$};}
+  % 2: beneficio en autarquía, desde -wF^d (el del gráfico anterior)
+  \capa{2}{\draw[curva1] (0,-1) node[left,text=black] {$-wF^d$} -- (10.5,4.775)
+    node[etiqueta,below right] {$B^d_{\mathrm{aut}}$};}
   % 3: umbral de autarquía
-  \capa{3}{\node[punto] at (1.6667,0) {};}
-  \capa{3}{\node[etiqueta,above left] at (1.6667,0) {$(\varphi^*_{\mathrm{aut}})^{\sigma-1}$};}
+  \capa{3}{\node[punto] at (1.818,0) {};}
+  \capa{3}{\node[etiqueta,above left] at (1.818,0) {$(\varphi^*_{\mathrm{aut}})^{\sigma-1}$};}
   % 4: con comercio, la recta del beneficio interior gira hacia abajo
-  \capa{4}{\draw[curvanueva] (0,-1) -- (9.5,2.8) node[etiqueta,right] {$B^d$};}
+  \capa{4}{\draw[curvanueva] (0,-1) -- (10.5,3.2) node[etiqueta,right] {$B^d$};}
   % 5: umbral de supervivencia con comercio
   \capa{5}{\node[punto] at (2.5,0) {};}
   \capa{5}{\node[etiqueta,below right] at (2.5,0) {$(\varphi^*)^{\sigma-1}$};}
   % 6: beneficio de exportar, desde -wF^x
-  \capa{6}{\draw[curva3] (0,-1.65) node[left,text=black] {$-wF^x$} -- (9.5,1.2)
+  \capa{6}{\draw[curva3] (0,-1.4) node[left,text=black] {$-wF^x$} -- (10.5,1.75)
     node[etiqueta,right] {$B^x$};}
   % 7: umbral de exportación
-  \capa{7}{\node[punto] at (5.5,0) {};}
-  \capa{7}{\node[etiqueta,below right] at (5.5,0) {$(\varphi^*_x)^{\sigma-1}$};}
+  \capa{7}{\node[punto] at (4.667,0) {};}
+  \capa{7}{\node[etiqueta,below right] at (4.667,0) {$(\varphi^*_x)^{\sigma-1}$};}
   % 8: beneficio total de las exportadoras
-  \capa{8}{\draw[curva4,thick] (5.5,{0.4*5.5-1}) -- (8.5,{0.7*8.5-2.65})
+  \capa{8}{\draw[curva4,thick] (4.667,0.867) -- (10.5,4.95)
     node[etiqueta,right] {$B^d+B^x$};}
-  \capa{8}{\draw[guia] (5.5,0) -- (5.5,{0.4*5.5-1});}
-  % 9: los 4 grupos de empresas
-  \capa{9}{\draw[llave] (0.03,-1.95) -- (1.6367,-1.95)
-    node[midway,below=5pt,grupo] {no\\producen};}
-  \capa{9}{\draw[llave] (1.6967,-1.95) -- (2.47,-1.95)
-    node[midway,below=5pt,grupo] {cierran};}
-  \capa{9}{\draw[llave] (2.53,-1.95) -- (5.47,-1.95)
-    node[midway,below=5pt,grupo] {solo mercado\\interior};}
-  \capa{9}{\draw[llave] (5.53,-1.95) -- (9.5,-1.95)
-    node[midway,below=5pt,grupo] {exportan};}
+  \capa{8}{\draw[guia] (4.667,0) -- (4.667,0.867);}
+  % 9: corte del beneficio total con el de autarquía
+  \capa{9}{\node[punto] at (9.333,4.133) {};}
+  \capa{9}{\draw[guia] (9.333,4.133) -- (9.333,0) node[below,text=black] {$\hat\varphi^{\sigma-1}$};}
+  % 10: los 5 grupos de empresas
+  \capa{10}{\draw[llave] (0.03,-1.95) -- (1.79,-1.95)
+    node[midway,below=5pt,grupo] {1\\no\\producen};}
+  \capa{10}{\draw[llave] (1.85,-1.95) -- (2.47,-1.95)
+    node[midway,below=5pt,grupo] {2\\cierran};}
+  \capa{10}{\draw[llave] (2.53,-1.95) -- (4.64,-1.95)
+    node[midway,below=5pt,grupo] {3\\solo interior:\\pierden};}
+  \capa{10}{\draw[llave] (4.7,-1.95) -- (9.3,-1.95)
+    node[midway,below=5pt,grupo] {4a\\exportan, pero ganan\\menos que en autarquía};}
+  \capa{10}{\draw[llave] (9.37,-1.95) -- (10.5,-1.95)
+    node[midway,below=5pt,grupo] {4b\\exportan\\y ganan};}
 \end{tikzpicture}
 \end{document}

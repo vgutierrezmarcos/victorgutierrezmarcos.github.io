@@ -1,0 +1,34 @@
+% Efecto procompetitivo del comercio con 2 monopolistas del mismo bien (antigua nota 23).
+% Mercado de A: demanda p = 10 - Q, IMg = 10 - 2Q, CMg = 1 + Q.
+%   Autarquía: IMg = CMg en Q0 = 3, p_M = 7.
+%   Si pudiera vender fuera al precio p_M sin rebajar el de casa (mercados segmentados),
+%   le compensaría producir hasta CMg = p_M, Q = 6: la diferencia, 3, son exportaciones.
+% Elaboración propia a partir de Brander (1981) y Krugman, Obstfeld y Melitz (2018).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.5cm,
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thick,tceegris}]
+  % 1: ejes
+  \capa{1}{\ejes{$Q$}{$p$}{10.6}{11}}
+  % 2: demanda del mercado interior
+  \capa{2}{\draw[curva2] (0,10) -- (10,0) node[etiqueta,above right] {$D$};}
+  % 3: ingreso marginal
+  \capa{3}{\draw[curva3] (0,10) -- (5,0) node[etiqueta,below] {IMg};}
+  % 4: coste marginal
+  \capa{4}{\draw[curva1] (0,1) -- (8.5,9.5) node[etiqueta,right] {CMg};}
+  % 5: equilibrio de monopolio en autarquía
+  \capa{5}{\node[punto] (I) at (3,4) {};}
+  \capa{5}{\node[punto] (M) at (3,7) {};}
+  \capa{5}{\draw[guia] (I) -- (3,0) node[below,text=black] {$Q_0$};}
+  \capa{5}{\draw[guia] (M) -- (I);}
+  \capa{5}{\draw[guia] (M) -- (0,7) node[left,text=black] {$p_M$};}
+  % 6: con comercio, cada unidad de más vendida fuera a p_M deja p_M - CMg > 0
+  \capa{6}{\draw[curvanueva] (M) -- (6,7);}
+  \capa{6}{\node[punto] at (6,7) {};}
+  \capa{6}{\draw[guia] (6,7) -- (6,0) node[below,text=black] {$Q_1$};}
+  \capa{6}{\draw[llave] (3.05,7.4) -- (5.95,7.4)
+    node[midway,above=6pt,etiqueta,text=tceerojo,align=center,font=\footnotesize] {exportaciones};}
+\end{tikzpicture}
+\end{document}

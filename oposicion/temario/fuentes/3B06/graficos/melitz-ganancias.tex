@@ -1,0 +1,40 @@
+% Modelo de Melitz (2003): beneficio operativo de cada empresa en autarquía y con
+% comercio (envolventes de melitz-umbrales: mismas rectas). Las que no producen se
+% quedan en 0 de beneficio operativo (y pierden el coste hundido, wF^e = 1,5).
+%   Autarquía: 0 hasta u = 1,818; después 0,55 u - 1.
+%   Comercio (hasta u = 12,5):  0 hasta u = 2,5; 0,4 u - 1 hasta 4,667; 0,7 u - 2,4 desde 4,667.
+%   Pierden con el comercio las de 1,818 < u < 9,333 (área roja); ganan las de u > 9,333.
+% Elaboración propia a partir de Melitz (2003) y Melitz y Redding (2014).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.8cm]
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (13.2,0) node[below left=2pt and 0pt] {$\varphi^{\sigma-1}$};}
+  \capa{1}{\draw[eje] (0,-0.3) -- (0,7) node[left] {$B$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: beneficio en autarquía (0 para las que salen)
+  \capa{2}{\draw[curva1] (0,0) -- (1.818,0) -- (12.5,5.875)
+    node[etiqueta,below right] {autarquía};}
+  % 3: beneficio con comercio (0 para las que salen; quiebro al exportar)
+  \capa{3}{\draw[curvanueva] (0,0) -- (2.5,0) -- (4.667,0.867) -- (12.5,6.35)
+    node[etiqueta,above right] {comercio};}
+  % 4: lo que pierden (entre las 2 curvas, a la izquierda del corte)
+  \capa{4}{\fill[fill=tceerojo,fill opacity=0.2] (1.818,0) -- (2.5,0) -- (4.667,0.867)
+    -- (9.333,4.133) -- cycle;}
+  \capa{4}{\node[etiqueta,text=tceerojo,align=center,font=\footnotesize] at (5.0,3.2)
+    {pierden con\\el comercio};}
+  % 5: lo que ganan (a la derecha del corte)
+  \capa{5}{\fill[fill=tceeverde,fill opacity=0.3] (9.333,4.133) -- (12.5,5.875) -- (12.5,6.35) -- cycle;}
+  \capa{5}{\node[punto] at (9.333,4.133) {};}
+  \capa{5}{\draw[guia] (9.333,4.133) -- (9.333,0) node[below,text=black] {$\hat\varphi^{\sigma-1}$};}
+  \capa{5}{\node[etiqueta,text=tceeverde,align=center,font=\footnotesize] at (11.6,6.6)
+    {ganan con\\el comercio};}
+  % 6: los cortes y el coste hundido
+  \capa{6}{\draw[guia] (0,1.5) node[left,text=black] {$wF^e$} -- (12.8,1.5);}
+  \capa{6}{\node[etiqueta,below,font=\footnotesize] at (1.5,0) {$(\varphi^*_{\mathrm{aut}})^{\sigma-1}$};}
+  \capa{6}{\node[etiqueta,below,font=\footnotesize] at (2.5,-0.45) {$(\varphi^*)^{\sigma-1}$};}
+  \capa{6}{\draw[guia] (4.667,0.867) -- (4.667,0) node[below,text=black,font=\footnotesize] {$(\varphi^*_x)^{\sigma-1}$};}
+\end{tikzpicture}
+\end{document}
