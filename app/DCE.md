@@ -125,6 +125,7 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [x] Víctor: mandar a Manuel el correo pidiendo los enlaces (resumen arriba, en «Enlazar la app desde su web»). — **20 oct.: enviado; esperar su respuesta y comprobar los enlaces en su web.**
 - [ ] Víctor: Search Console → Inspección de URL → Solicitar indexación de `/app/`, `/`, `/oposicion/` y `/oposicion/por-que-tcee.html`. — **20 oct.: publicado a las 23:40 e `indexnow.yml` lanzado a mano (sitemap entero); `/app/` estaba indexada con el último rastreo del 15 oct., falta pedir el nuevo.**
 - [x] Al poner `urlPlayStore`: en el JSON-LD de `app/index.html`, `downloadUrl` → URL de Play y `"sameAs": ["<URL de Play>"]`; `softwareVersion` = `versionActual`. — **26 oct.: hecho (1.19.2).**
+- [ ] iOS (11 nov. 2026): proyecto y `build-app-ios.yml` preparados (compila sin firmar y abre en el simulador; ver «iOS» en `README.md`). Antes de pagar la cuenta de Apple, medir en GA4 qué parte de `/app/abrir/` entra desde iPhone; si compensa, seguir la lista «Qué falta el día que se publique».
 - [ ] A las 2 y 4 semanas: `python3 scripts/estadisticas-web.py --dias 28` (ya saca «Búsquedas con «dce» o «diplomado»»).
 - [ ] Decidir si se hace una guía informativa de DCE (`oposicion/…`), hermana de `por-que-tcee.html`: es el tipo de página que Google premia para «Diplomado Comercial del Estado»; Víctor la descartó el 20 oct. (sin páginas nuevas), queda apuntada.
 
