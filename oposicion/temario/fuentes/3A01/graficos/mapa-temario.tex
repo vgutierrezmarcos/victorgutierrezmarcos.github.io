@@ -1,12 +1,11 @@
 % El mapa de la oposición (3.A.1, anexo): las ramas de la economía y los
 % bloques del temario con los colores de la organización del temario de
 % Víctor (oposicion/organizacion/estructura_temario.json y .ppsx).
-% Arriba, la historia del pensamiento (3.A.1-3.A.7) y, debajo, los hechos de
-% la historia económica que movieron cada escuela; en medio, microeconomía
-% (verdes) y macroeconomía (cálidos), unidas por la microfundamentación; las 2
-% desembocan en la economía del sector público (asignación y distribución;
-% estabilización); debajo, organismos, UE y economía española (la UE como marco
-% de España) y, al pie, los hilos clave entre temas. Revisado el 11/11/2026.
+% Arriba, la economía mundial: instituciones (organismos y UE, marco de la
+% economía española) e historia económica por temas, con los hechos que
+% pusieron a prueba cada escuela; debajo, la historia del pensamiento, de la
+% que salen micro y macro, unidas por la microfundamentación; las 2 desembocan
+% en el sector público y, al pie, los hilos clave entre temas. 11/11/2026.
 % Unos 16 cm de ancho, letra \footnotesize y \scriptsize: cabe en una página.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
@@ -39,95 +38,108 @@
     escuela/.style={fill=bqpensamiento, draw=none, rounded corners=2pt,
       text width=1.62cm, minimum height=1.32cm, inner sep=2pt, align=center,
       font=\scriptsize, anchor=north west},
-    hecho/.style={fill=bqhistoria, text=white, draw=none, rounded corners=2pt,
+    hecho/.style={fill=bqhistoria!75, text=white, draw=none, rounded corners=2pt,
       text width=1.62cm, minimum height=0.85cm, inner sep=2pt, align=center,
       font=\scriptsize, anchor=north west},
+    periodo/.style={fill=bqhistoria, text=white, draw=none, rounded corners=2pt,
+      minimum height=0.6cm, inner sep=2pt, align=center, font=\scriptsize, anchor=north west},
     cabecera/.style={font=\footnotesize\bfseries, text=tceemorado},
     sentido/.style={->, thick, tceegris},
     rotulo/.style={font=\scriptsize, align=center, text=tceegris, inner sep=1pt}]
-  \path (-0.35,1.0) rectangle (16.35,-19.4);
+  \path (-0.35,1.0) rectangle (16.45,-21.9);
 
-  % 1: la historia del pensamiento
-  \capa{1}{\node[cabecera, anchor=west] at (0,0.6) {Historia del pensamiento económico: cada escuela, un objeto y un método};}
-  \capa{1}{\node[escuela, fill=tceemorado, text=white, text width=2.55cm] (t1) at (0,0.2)
-    {\textbf{3.A.1}\\ Objeto y método:\\ este mapa};}
-  \capa{1}{\node[escuela] (t2) at (3.00,0.2) {\textbf{3.A.2}\\ Clásicos\\ y \autor{Marx}};}
-  \capa{1}{\node[escuela] (t3) at (4.85,0.2) {\textbf{3.A.3}\\ Neoclásicos};}
-  \capa{1}{\node[escuela] (t4) at (6.70,0.2) {\textbf{3.A.4}\\ \autor{Keynes}};}
-  \capa{1}{\node[escuela] (t5) at (8.55,0.2) {\textbf{3.A.5}\\ Síntesis y\\ monetarismo};}
-  \capa{1}{\node[escuela] (t6) at (10.40,0.2) {\textbf{3.A.6}\\ Nueva macro-\\economía clásica};}
-  \capa{1}{\node[escuela] (t7) at (12.25,0.2) {\textbf{3.A.7}\\ Nueva economía\\ keynesiana};}
-  \capa{1}{\draw[sentido] (14.0,-0.32) -- (15.9,-0.32) node[rotulo, above left, text width=1.7cm] {en el tiempo};}
-
-  % 2: la historia económica, que mueve el pensamiento
-  \capa{2}{\node[hecho, text width=2.55cm, minimum height=0.95cm] (h0) at (0,-1.42)
-    {\textbf{Historia económica}\\ 3.B.20, 3.B.21, 3.B.32};}
-  \capa{2}{\node[hecho] (h2) at (3.00,-1.42) {Revolución\\ industrial};}
-  \capa{2}{\node[hecho] (h3) at (4.85,-1.42) {Patrón oro\\ (1870-1914)};}
-  \capa{2}{\node[hecho] (h4) at (6.70,-1.42) {Gran\\ Depresión};}
-  \capa{2}{\node[hecho] (h5) at (8.55,-1.42) {Bretton\\ Woods};}
-  \capa{2}{\node[hecho] (h6) at (10.40,-1.42) {Estanflación\\ (años 70)};}
-  \capa{2}{\node[hecho] (h7) at (12.25,-1.42) {Gran\\ Recesión};}
-  \capa{2}{\foreach \i in {2,...,7} {\draw[sentido] (h\i.north) -- (t\i.south);}}
-  \capa{2}{\node[rotulo, anchor=west, text width=2.1cm] at (14.0,-1.85) {los hechos ponen a prueba las teorías};}
-
-  % 3: la microeconomía (columna izquierda)
-  \capa{3}{\node[cabecera, anchor=west] at (0.6,-2.65) {MICROECONOMÍA: elegir con recursos escasos};}
-  \capa{3}{\node[bloque=bqneoclasico] (m1) at (0.6,-3.0)
-    {\textbf{Modelo neoclásico básico}\\ \scriptsize Consumidor, empresa, competencia perfecta y equilibrio general: \mbox{3.A.8--3.A.12}, 3.A.16, 3.A.21, 3.A.29};}
-  \capa{3}{\node[bloque=bqinformacion] (m2) at (0.6,-4.65)
-    {\textbf{Información y poder de mercado}\\ \scriptsize Información asimétrica, juegos, tamaño de la empresa, monopolio y oligopolio: \mbox{3.A.13--3.A.15}, \mbox{3.A.17--3.A.20}};}
-  \capa{3}{\node[bloque=bqfinanciera] (m3) at (0.6,-6.3)
-    {\textbf{Economía corporativa y financiera}\\ \scriptsize Inversión y financiación de la empresa, divisas, renta variable y fija, derivados, crisis y regulación: \mbox{3.B.1--3.B.4}, 3.B.13, \mbox{3.B.23--3.B.27}};}
-  \capa{3}{\node[bloque=bqcomercio] (m4) at (0.6,-7.95)
-    {\textbf{Comercio internacional}\\ \scriptsize Ventaja comparativa, nueva teoría, política comercial, crecimiento e integración: \mbox{3.B.5--3.B.10}};}
-  \capa{3}{\node[bloqueclaro=bqbienestar] (m5) at (0.6,-9.6)
-    {\textbf{Economía del bienestar}\\ \scriptsize Teoremas del bienestar, fallos de mercado, elección colectiva y clima: \mbox{3.A.22--3.A.24}, 3.B.31};}
-  \capa{3}{\draw[sentido] (0.4,-3.1) -- (0.4,-10.8) node[rotulo, midway, rotate=90, yshift=0.22cm] {del modelo básico a sus fallos};}
-
-  % 4: la macroeconomía (columna derecha) y la microfundamentación
-  \capa{4}{\node[cabecera, anchor=west] at (8.9,-2.65) {MACROECONOMÍA: la economía en su conjunto};}
-  \capa{4}{\node[bloque=bqcontabilidad] (M1) at (8.9,-3.0)
-    {\textbf{Contabilidad nacional}\\ \scriptsize Medir la economía: magnitudes, tablas \emph{input-output} y balanza de pagos: 3.A.30, 3.A.31, 3.B.11};}
-  \capa{4}{\node[bloque=bqdaoa] (M2) at (8.9,-4.65)
-    {\textbf{Demanda y oferta agregadas}\\ \scriptsize Mercado de trabajo, consumo, inversión y modelo OA-DA: \mbox{3.A.25--3.A.28}, \mbox{3.A.32--3.A.34}};}
-  \capa{4}{\node[bloque=bqcrecimiento] (M3) at (8.9,-6.3)
-    {\textbf{Crecimiento económico}\\ \scriptsize \autor{Solow}, crecimiento endógeno, evidencia y desarrollo: \mbox{3.A.43--3.A.45}, 3.B.28};}
-  \capa{4}{\node[bloqueclaro=bqabierta] (M4) at (8.9,-7.95)
-    {\textbf{Economía abierta}\\ \scriptsize Ajuste de la balanza de pagos, tipo de cambio, crisis, globalización y deuda: 3.B.12, \mbox{3.B.14--3.B.19}, 3.B.29};}
-  \capa{4}{\node[bloque=bqciclo] (M5) at (8.9,-9.6)
-    {\textbf{Ciclo y políticas de demanda}\\ \scriptsize Dinero, política monetaria y fiscal, déficit, inflación y ciclos: \mbox{3.A.35--3.A.42}};}
-  \capa{4}{\draw[sentido] (15.55,-3.1) -- (15.55,-10.8) node[rotulo, midway, rotate=-90, yshift=0.22cm] {de medir a explicar y a actuar};}
-  \capa{4}{\draw[->, line width=2.2pt, tceemorado!60] (7.1,-6.95) -- (8.75,-6.95);}
-  \capa{4}{\node[rotulo, text width=1.6cm, text=tceemorado] at (7.92,-6.2) {micro-\\fundamen-\\tación};}
-  \capa{4}{\node[rotulo, text width=1.6cm, text=tceemorado] at (7.92,-7.65) {la macro, sobre decisiones individuales};}
-
-  % 5: el sector público, donde desembocan las 2 ramas
-  \capa{5}{\node[bloqueclaro=bqpublico, text width=7.4cm, anchor=north] (sp) at (8.0,-11.9)
-    {\textbf{Economía del sector público} (4.º ejercicio, parte B)\\ \scriptsize Presupuesto, gasto, impuestos, imposición óptima y federalismo fiscal: \mbox{4.B.1--4.B.26}};}
-  \capa{5}{\draw[sentido] (m5.south) |- ([yshift=-0.35cm]sp.west) node[rotulo, pos=0.45, left, text width=2.3cm, align=right] {asignación y distribución};}
-  \capa{5}{\draw[sentido] (M5.south) |- ([yshift=-0.35cm]sp.east) node[rotulo, pos=0.45, right, text width=2.3cm, align=left] {estabilización y sostenibilidad};}
-
-  % 6: instituciones y España
-  \capa{6}{\node[bloque=bqorganismos, text width=4.65cm] (x2) at (0.6,-14.1)
+  % 1: la economía mundial: instituciones y economía española
+  \capa{1}{\node[cabecera, anchor=west] at (0,0.6) {La economía mundial: instituciones, historia y España};}
+  \capa{1}{\node[bloque=bqorganismos, text width=4.65cm] (x2) at (0,0.2)
     {\textbf{Organismos internacionales}\\ \scriptsize FMI, Banco Mundial, OMC e integración no comunitaria: 3.B.22, 3.B.30, \mbox{3.B.33--3.B.35}};}
-  \capa{6}{\node[bloqueclaro=bque, text width=4.65cm] (x3) at (5.65,-14.1)
+  \capa{1}{\node[bloqueclaro=bque, text width=4.65cm] (x3) at (5.6,0.2)
     {\textbf{Unión Europea}\\ \scriptsize Tratados, presupuesto, políticas, euro, Unión Bancaria y gobernanza: \mbox{3.B.36--3.B.45}};}
-  \capa{6}{\node[bloque=bqespanola, text width=4.65cm] (e1) at (10.70,-14.1)
+  \capa{1}{\node[bloque=bqespanola, text width=4.65cm] (e1) at (11.2,0.2)
     {\textbf{Economía española} (4.º, parte A)\\ \scriptsize Población, sectores, empresa, finanzas, sector exterior e historia: \mbox{4.A.1--4.A.30}};}
-  \capa{6}{\draw[sentido] (sp.south -| 12.9,0) -- (12.9,-14.1) node[rotulo, midway, right] {en España};}
-  \capa{6}{\draw[sentido] (x3.south) -- ++(0,-0.3) -| node[rotulo, pos=0.25, below] {marco: mercado único, euro, fondos y reglas fiscales} (e1.south);}
+  \capa{1}{\draw[sentido] (x3.east) -- (e1.west);}
+  \capa{1}{\draw[sentido] (x2.south) -- ++(0,-0.25) -| node[rotulo, pos=0.25, below] {reglas del comercio y las finanzas: FMI, OMC, euro, mercado único y reglas fiscales} (e1.south);}
+  \capa{1}{\draw[sentido] (x3.south) -- ++(0,-0.25);}
+
+  % 2: la historia económica, por temas, y los hechos que movieron cada escuela
+  \capa{2}{\node[periodo, fill=bqhistoria, text width=2.5cm, minimum height=1.6cm] (h0) at (0,-2.0)
+    {\textbf{Historia\\ económica}};}
+  \capa{2}{\node[periodo, text width=7.1cm] at (3.0,-2.0) {\textbf{3.B.20}: del siglo XIX a la ruptura de Bretton Woods};}
+  \capa{2}{\node[periodo, text width=3.4cm] at (10.4,-2.0) {\textbf{3.B.21}: desde 1971};}
+  \capa{2}{\node[periodo, text width=2.0cm, minimum height=1.6cm] at (14.0,-2.0) {\textbf{3.B.32}:\\ perspectivas\\ y flujos de hoy};}
+  \capa{2}{\node[hecho] (h2) at (3.00,-2.75) {Revolución\\ industrial};}
+  \capa{2}{\node[hecho] (h3) at (4.85,-2.75) {Patrón oro\\ (1870-1914)};}
+  \capa{2}{\node[hecho] (h4) at (6.70,-2.75) {Gran\\ Depresión};}
+  \capa{2}{\node[hecho] (h5) at (8.55,-2.75) {Bretton\\ Woods};}
+  \capa{2}{\node[hecho] (h6) at (10.40,-2.75) {Estanflación\\ (años 70)};}
+  \capa{2}{\node[hecho] (h7) at (12.25,-2.75) {Gran\\ Recesión};}
+
+  % 3: la historia del pensamiento, puesta a prueba por los hechos
+  \capa{3}{\node[escuela, fill=tceemorado, text=white, text width=2.55cm] (t1) at (0,-4.3)
+    {\textbf{3.A.1}\\ Pensamiento:\\ objeto y método};}
+  \capa{3}{\node[escuela] (t2) at (3.00,-4.3) {\textbf{3.A.2}\\ Clásicos\\ y \autor{Marx}};}
+  \capa{3}{\node[escuela] (t3) at (4.85,-4.3) {\textbf{3.A.3}\\ Neoclásicos};}
+  \capa{3}{\node[escuela] (t4) at (6.70,-4.3) {\textbf{3.A.4}\\ \autor{Keynes}};}
+  \capa{3}{\node[escuela] (t5) at (8.55,-4.3) {\textbf{3.A.5}\\ Síntesis y\\ monetarismo};}
+  \capa{3}{\node[escuela] (t6) at (10.40,-4.3) {\textbf{3.A.6}\\ Nueva macro-\\economía clásica};}
+  \capa{3}{\node[escuela] (t7) at (12.25,-4.3) {\textbf{3.A.7}\\ Nueva economía\\ keynesiana};}
+  \capa{3}{\foreach \i in {2,...,7} {\draw[sentido] (h\i.south) -- (t\i.north);}}
+  \capa{3}{\node[rotulo, anchor=west, text width=2.1cm] at (14.0,-4.2) {los hechos ponen a prueba las teorías};}
+  \capa{3}{\draw[sentido] (14.0,-5.3) -- (15.9,-5.3) node[rotulo, above left, text width=1.7cm] {en el tiempo};}
+
+  % 4: la microeconomía, de clásicos y neoclásicos
+  \capa{4}{\draw[decorate, decoration={brace, mirror, amplitude=4pt}, tceegris] (3.0,-5.75) -- (6.47,-5.75);}
+  \capa{4}{\draw[sentido] (4.74,-5.95) -- (4.74,-6.35);}
+  \capa{4}{\node[cabecera, anchor=west] at (0.6,-6.6) {MICROECONOMÍA: elegir con recursos escasos};}
+  \capa{4}{\node[bloque=bqneoclasico] (m1) at (0.6,-6.95)
+    {\textbf{Modelo neoclásico básico}\\ \scriptsize Consumidor, empresa, competencia perfecta y equilibrio general: \mbox{3.A.8--3.A.12}, 3.A.16, 3.A.21, 3.A.29};}
+  \capa{4}{\node[bloque=bqinformacion] (m2) at (0.6,-8.6)
+    {\textbf{Información y poder de mercado}\\ \scriptsize Información asimétrica, juegos, tamaño de la empresa, monopolio y oligopolio: \mbox{3.A.13--3.A.15}, \mbox{3.A.17--3.A.20}};}
+  \capa{4}{\node[bloque=bqfinanciera] (m3) at (0.6,-10.25)
+    {\textbf{Economía corporativa y financiera}\\ \scriptsize Inversión y financiación de la empresa, divisas, renta variable y fija, derivados, crisis y regulación: \mbox{3.B.1--3.B.4}, 3.B.13, \mbox{3.B.23--3.B.27}};}
+  \capa{4}{\node[bloque=bqcomercio] (m4) at (0.6,-11.9)
+    {\textbf{Comercio internacional}\\ \scriptsize Ventaja comparativa, nueva teoría, política comercial, crecimiento e integración: \mbox{3.B.5--3.B.10}};}
+  \capa{4}{\node[bloqueclaro=bqbienestar] (m5) at (0.6,-13.55)
+    {\textbf{Economía del bienestar}\\ \scriptsize Teoremas del bienestar, fallos de mercado, elección colectiva y clima: \mbox{3.A.22--3.A.24}, 3.B.31};}
+  \capa{4}{\draw[sentido] (0.4,-7.05) -- (0.4,-14.75) node[rotulo, midway, rotate=90, yshift=0.22cm] {del modelo básico a sus fallos};}
+
+  % 5: la macroeconomía, de Keynes en adelante, y la microfundamentación
+  \capa{5}{\draw[decorate, decoration={brace, mirror, amplitude=4pt}, tceegris] (6.70,-5.75) -- (13.87,-5.75);}
+  \capa{5}{\draw[sentido] (12.0,-5.95) -- (12.0,-6.35);}
+  \capa{5}{\node[cabecera, anchor=west] at (8.9,-6.6) {MACROECONOMÍA: la economía en su conjunto};}
+  \capa{5}{\node[bloque=bqcontabilidad] (M1) at (8.9,-6.95)
+    {\textbf{Contabilidad nacional}\\ \scriptsize Medir la economía: magnitudes, tablas \emph{input-output} y balanza de pagos: 3.A.30, 3.A.31, 3.B.11};}
+  \capa{5}{\node[bloque=bqdaoa] (M2) at (8.9,-8.6)
+    {\textbf{Demanda y oferta agregadas}\\ \scriptsize Mercado de trabajo, consumo, inversión y modelo OA-DA: \mbox{3.A.25--3.A.28}, \mbox{3.A.32--3.A.34}};}
+  \capa{5}{\node[bloque=bqcrecimiento] (M3) at (8.9,-10.25)
+    {\textbf{Crecimiento económico}\\ \scriptsize \autor{Solow}, crecimiento endógeno, evidencia y desarrollo: \mbox{3.A.43--3.A.45}, 3.B.28};}
+  \capa{5}{\node[bloqueclaro=bqabierta] (M4) at (8.9,-11.9)
+    {\textbf{Economía abierta}\\ \scriptsize Ajuste de la balanza de pagos, tipo de cambio, crisis, globalización y deuda: 3.B.12, \mbox{3.B.14--3.B.19}, 3.B.29};}
+  \capa{5}{\node[bloque=bqciclo] (M5) at (8.9,-13.55)
+    {\textbf{Ciclo y políticas de demanda}\\ \scriptsize Dinero, política monetaria y fiscal, déficit, inflación y ciclos: \mbox{3.A.35--3.A.42}};}
+  \capa{5}{\draw[sentido] (15.55,-7.05) -- (15.55,-14.75) node[rotulo, midway, rotate=-90, yshift=0.22cm] {de medir a explicar y a actuar};}
+  \capa{5}{\draw[->, line width=2.2pt, tceemorado!60] (7.1,-10.9) -- (8.75,-10.9);}
+  \capa{5}{\node[rotulo, text width=1.6cm, text=tceemorado] at (7.92,-10.15) {micro-\\fundamen-\\tación};}
+  \capa{5}{\node[rotulo, text width=1.6cm, text=tceemorado] at (7.92,-11.6) {la macro, sobre decisiones individuales};}
+
+  % 6: el sector público, donde desembocan las 2 ramas, aplicado a España
+  \capa{6}{\node[bloqueclaro=bqpublico, text width=7.4cm, anchor=north] (sp) at (8.0,-15.85)
+    {\textbf{Economía del sector público} (4.º ejercicio, parte B)\\ \scriptsize Presupuesto, gasto, impuestos, imposición óptima y federalismo fiscal: \mbox{4.B.1--4.B.26}};}
+  \capa{6}{\draw[sentido] (m5.south) |- ([yshift=-0.35cm]sp.west) node[rotulo, pos=0.45, left, text width=2.3cm, align=right] {asignación y distribución};}
+  \capa{6}{\draw[sentido] (M5.south) |- ([yshift=-0.35cm]sp.east) node[rotulo, pos=0.45, right, text width=2.3cm, align=left] {estabilización y sostenibilidad};}
+  \capa{6}{\draw[sentido, dashed] (sp.south) -- ++(0,-0.25) -| (16.3,-16.6) |- (e1.east);}
+  \capa{6}{\node[rotulo, anchor=north] at (12.4,-17.47) {el sector público español};}
 
   % 7: los hilos clave entre temas
-  \capa{7}{\node[draw=tceegris, rounded corners=3pt, anchor=north west, text width=15.6cm, inner sep=4pt, font=\scriptsize, align=left] at (0,-16.3)
+  \capa{7}{\node[draw=tceegris, rounded corners=3pt, anchor=north west, text width=15.6cm, inner sep=4pt, font=\scriptsize, align=left] at (0,-18.2)
     {\textbf{\footnotesize Hilos clave entre temas}\\[2pt]
     \begin{tabular}{@{}p{7.6cm}@{\hspace{0.3cm}}p{7.6cm}@{}}
     \textbf{Decisiones intertemporales}: 3.A.29 $\to$ consumo (3.A.33), inversión (3.A.34), crecimiento (3.A.43, 3.A.44) y ciclo real (3.A.6, 3.A.42) &
     \textbf{Información asimétrica}: 3.A.13 $\to$ salarios de eficiencia (3.A.27), crisis financieras (3.B.26) y regulación (3.B.27)\\[1pt]
     \textbf{Competencia imperfecta}: 3.A.18, 3.A.19 $\to$ rigideces de precios (3.A.7), nueva teoría del comercio (3.B.6) y política comercial estratégica (3.B.8) &
     \textbf{Externalidades}: 3.A.23 $\to$ crecimiento endógeno (3.A.44) y cambio climático (3.B.31)\\[1pt]
-    \textbf{Paro e inflación}: NAIRU (3.A.28) $\to$ curva de \autor{Phillips} (3.A.5, 3.A.6, 3.A.41) &
-    \textbf{Del tipo de cambio al euro}: 3.B.14--3.B.16 $\to$ 3.B.43; integración (3.B.10) $\to$ mercado único (3.B.39)
+    \textbf{Clima y crecimiento}: 3.B.31 $\leftrightarrow$ 3.A.43--3.A.45: los daños del clima frenan el crecimiento, y el crecimiento emite; los modelos integrados unen los 2 &
+    \textbf{Del tipo de cambio al euro}: 3.B.14--3.B.16 $\to$ 3.B.43; integración (3.B.10) $\to$ mercado único (3.B.39)\\[1pt]
+    \textbf{Paro e inflación}: NAIRU (3.A.28) $\to$ curva de \autor{Phillips} (3.A.5, 3.A.6, 3.A.41) & 
     \end{tabular}};}
 \end{tikzpicture}
 \end{document}
