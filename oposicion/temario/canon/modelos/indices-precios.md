@@ -29,7 +29,7 @@ Gráfico de referencia: plano $(x_1,x_2)$, cesta $x^0$ en $\overline U^0$, recta
 |---|---|---|---|---|
 | 3.A.9 | Medidas de cambio en el bienestar | desarrollo (hecho, 13/10/2026) | Variaciones $L$ y $P$ con sus cotas, Konüs en sus dos versiones, cotas de Laspeyres y Paasche, homotéticas, superlativos, sesgo y su magnitud; cajas del IPC (base 2025) y del deflactor | La metodología estadística (4.A.1) |
 | 4.A.1 | Fuentes estadísticas | resumen | IPC como Laspeyres encadenado con ponderaciones $\omega_{i,t-1}$ actualizadas cada año; sesgos (sustitución, calidad, nuevos bienes); deflactor del PIB como Paasche encadenado | La derivación con la función de gasto (remitir a 3.A.9) |
-| 3.A.30 | Contabilidad nacional | mención | Deflactor implícito del PIB como Paasche encadenado | — |
+| 3.A.30 | Contabilidad nacional | mención (hecho, 11/11/2026; III.1 con `\vertema{3.A.9}`) | Deflactor implícito del PIB como **Paasche encadenado**, con la frase del 3.A.9 (l. 1343: el PIB en volumen se calcula con Laspeyres encadenados) y $P_t/P_{t-1}=\vect{p}^{t}\cdot\vect{x}^{t}/\vect{p}^{t-1}\cdot\vect{x}^{t}$; el dato del deflactor de 2025 (+3,0 %, `INE2026CNA2025`), el mismo que el 3.A.9; no repite el «infravalora» | Los índices de coste de vida |
 | 3.A.8 | Preferencia revelada | mención | Las comparaciones con Laspeyres y Paasche se basan en el ADPR [3.A.9] | — |
 | 1D01 | Dictamen de coyuntura | Mención | IPC Laspeyres encadenado y deflactor Paasche encadenado, con $\vect{p}^t\cdot\vect{x}^0$ (no $q_i$) | La teoría |
 | 3.A.3 | Los neoclásicos | mención (hecho, 4/11/2026) | III.2 c): el índice ideal de Fisher (1922), la media geométrica de los de Laspeyres y Paasche ($I_F$), de palabra, `\vertema{3.A.9}` | La teoría de los índices |

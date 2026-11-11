@@ -1,0 +1,606 @@
+% Bibliografía del tema 3.A.30 (fase integrar, 11/11/2026): la de datos (bib-datos.bib),
+% las del Word y las de las propuestas de contenido. Sin @legislation (sale vacía en biblatex).
+% «REUTILIZADA tema»: misma clave y mismos datos que en un tema ya revisado (solo cambia urldate si se ha releído).
+% «NUEVA»: no está en ningún otro .bib del temario.
+
+% ===================================================================== Normas y manuales
+
+@online{SEC2010, % REUTILIZADA 3B11 (forma @online, que compila; la @legislation de 1D01 y 3A31 sale vacía)
+  author      = {{Parlamento Europeo y Consejo de la Unión Europea}},
+  title       = {Reglamento (UE) n.º 549/2013, de 21 de mayo de 2013, relativo al Sistema Europeo de Cuentas Nacionales y Regionales de la Unión Europea (SEC 2010)},
+  note        = {Diario Oficial de la Unión Europea, L 174},
+  date        = {2013-06-26},
+  url         = {https://eur-lex.europa.eu/eli/reg/2013/549/oj},
+  urldate     = {2026-11-11}
+}
+% Releído el 11/11/2026 (PDF del BOE: https://www.boe.es/doue/2013/174/L00001-00727.pdf, enlace del
+% original, funciona). Art. 5: se aplica «a los datos … que deban transmitirse a partir del 1 de
+% septiembre de 2014». Anexo A: 24 capítulos (el 24, «Las cuentas»). §1.29 g)-h) y §3.08: producción
+% ilegal y no declarada dentro de la frontera de producción. §1.61: residencia («un año o más»).
+% §3.19: criterio del 50 % «de forma continuada a lo largo de varios años». §1.126 y §5.17: el saldo
+% de la cuenta financiera es la capacidad/necesidad de financiación (B.9).
+
+@online{RegUE2023SEC2010, % NUEVA (@online, como SEC2010)
+  author      = {{Parlamento Europeo y Consejo de la Unión Europea}},
+  title       = {Reglamento (UE) 2023/734, de 15 de marzo de 2023, por el que se modifica el Reglamento (UE) n.º 549/2013 relativo al Sistema Europeo de Cuentas Nacionales y Regionales de la Unión Europea y se derogan once actos jurídicos en el ámbito de las cuentas nacionales},
+  note        = {Diario Oficial de la Unión Europea, L 97},
+  date        = {2023-04-05},
+  url         = {https://eur-lex.europa.eu/eli/reg/2023/734/oj},
+  urldate     = {2026-11-11}
+}
+
+@book{Eurostat2013SEC2010, % REUTILIZADA 3A31
+  author    = {{Eurostat}},
+  title     = {European System of Accounts: ESA 2010},
+  number    = {KS-02-13-269},
+  publisher = {Oficina de Publicaciones de la Unión Europea},
+  location  = {Luxemburgo},
+  year      = {2013},
+  url       = {https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF/44cd9d01-bc64-40e5-bd40-d17df0c69334},
+  urldate   = {2026-11-11}
+}
+
+@online{Eurostat2026ESA2030, % NUEVA
+  author  = {{Eurostat}},
+  title   = {ESA 2010 — Overview (Towards ESA 2030)},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/web/esa-2010},
+  urldate = {2026-11-11}
+}
+% «ESA 2010 … since its implementation in September 2014»; «an amended ESA 2010 regulation entered into
+% force in April 2023, introducing some changes in transmission requirements from 1 September 2024»;
+% «the preparation towards an update of ESA – the ESA 2030 has started. It aims to introduce new
+% requirements in Europe from 2030».
+
+@misc{Verrinder2026SCN2025, % NUEVA
+  author       = {Verrinder, John},
+  title        = {Présentation du SCN 2025 et du SEC 2026},
+  howpublished = {Presentación de Eurostat en el 19.º coloquio de la Association de Comptabilité Nationale, París, 11-12 de junio de 2026},
+  year         = {2026},
+  url          = {https://www.insee.fr/fr/statistiques/fichier/8992587/3.ACN_presentation_SNA_SEC_John_Verrinder.pdf},
+  urldate      = {2026-11-11}
+}
+% «Commission legislative proposal by end-2026»; «Implementation of core changes in 2030, non-core
+% changes progressively afterwards – alongside BPM7 (revised BOP regulation) – revised classifications
+% (NACE, CPA)». Ojo: el título dice «SEC 2026»; la web de Eurostat dice «ESA 2030».
+
+@book{ONU2025SCN, % REUTILIZADA 3A31
+  author    = {{Naciones Unidas} and {Comisión Europea} and {Fondo Monetario Internacional} and {OCDE} and {Banco Mundial}},
+  title     = {System of National Accounts 2025},
+  note      = {Versión previa a la edición (\emph{pre-edit}); adoptado por la Comisión de Estadística de las Naciones Unidas en su 56.º periodo de sesiones (4-7 de marzo de 2025)},
+  publisher = {Naciones Unidas},
+  location  = {Nueva York},
+  year      = {2025},
+  url       = {https://unstats.un.org/unsd/nationalaccount/docs/2025_SNA_Pre-edit.pdf},
+  urldate   = {2026-11-11}
+}
+
+@online{ONU2026HistoriaSCN, % NUEVA
+  author  = {{División de Estadística de las Naciones Unidas}},
+  title   = {Historic versions of the System of National Accounts},
+  year    = {2026},
+  url     = {https://unstats.un.org/unsd/nationalaccount/HistoricSNA.asp},
+  urldate = {2026-11-11}
+}
+% Primera norma de 1953; revisiones principales de 1968, 1993 y 2008 (la página es anterior al SCN 2025).
+
+@online{FMI2025MBP7, % REUTILIZADA 1D01 y 3B11
+  author  = {{Fondo Monetario Internacional}},
+  title   = {IMF and Statistical Community Release New Global Standards for Macroeconomic Statistics},
+  note    = {Nota de prensa 25/072, 20 de marzo de 2025 (séptima edición del Manual de Balanza de Pagos y Posición de Inversión Internacional)},
+  year    = {2025},
+  url     = {https://www.imf.org/en/news/articles/2025/03/20/pr25072-imf-and-statistical-community-release-new-global-standards-for-macroeconomic-stats},
+  urldate = {2026-10-23}
+}
+
+@online{BCE2026CalidadBP, % REUTILIZADA 3B11 y 3A31
+  author  = {{Banco Central Europeo}},
+  title   = {Euro area and national balance of payments and international investment position statistics. Quality Report (data to Q2 2025)},
+  year    = {2026},
+  url     = {https://www.ecb.europa.eu/press/bopips/html/ecb.bopips202606.en.html},
+  urldate = {2026-11-05}
+}
+
+% ===================================================================== INE
+
+@online{INE2026CNA2025, % REUTILIZADA 3A09, 3A31, 3A33, 3A39, 3A42 y 3B11 (en 3A28 y 3B23 la misma nota es INE2026CNA)
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Contabilidad Nacional Anual de España: principales agregados. Revisión Estadística 2024. Años 2023-2025. Nota de prensa},
+  year    = {2026},
+  date    = {2026-09-18},
+  url     = {https://www.ine.es/dyngs/Prensa/CNA2025.htm},
+  urldate = {2026-11-11}
+}
+
+@online{INE2026avCNTR3T26, % REUTILIZADA 3A33, 3A34 y 3A42
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Contabilidad Nacional Trimestral de España. Estimación avance del PIB, tercer trimestre de 2026. Nota de prensa de 30 de octubre de 2026},
+  year    = {2026},
+  url     = {https://www.ine.es/dyngs/Prensa/avCNTR3T26.htm},
+  urldate = {2026-11-11}
+}
+
+@online{INE2026CTNFSI2T26, % REUTILIZADA 3A33 y 3A38
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Cuentas trimestrales no financieras de los sectores institucionales. Segundo trimestre de 2026. Nota de prensa de 30 de septiembre de 2026},
+  year    = {2026},
+  url     = {https://www.ine.es/dyngs/Prensa/CTNFSI2T26.htm},
+  urldate = {2026-11-11}
+}
+
+@online{INE2026AhorroNacional, % REUTILIZADA 3A38
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {S1. Total de la economía. Saldos contables (tabla 80333)},
+  note    = {Ahorro bruto y capacidad o necesidad de financiación trimestrales de la economía nacional (serie CTNFSI10851)},
+  year    = {2026},
+  url     = {https://www.ine.es/jaxiT3/Tabla.htm?t=80333},
+  urldate = {2026-11-11}
+}
+
+@online{INE2024CNARE2024, % NUEVA
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Contabilidad Nacional Anual de España: principales agregados. Revisión Estadística 2024. Serie 1995-2023. Nota de prensa},
+  year    = {2024},
+  date    = {2024-09-18},
+  url     = {https://www.ine.es/dyngs/Prensa/CNA2023.htm},
+  urldate = {2026-11-11}
+}
+
+@report{INE2014Base2010, % NUEVA
+  author      = {{Instituto Nacional de Estadística}},
+  title       = {Contabilidad Nacional de España. Base 2010. Proyecto},
+  type        = {Documento para la Comisión Permanente del Consejo Superior de Estadística},
+  institution = {INE},
+  location    = {Madrid},
+  date        = {2014-02},
+  url         = {https://www.ine.es/proyectos/proyecto_conta_nacional_base2010.pdf},
+  urldate     = {2026-11-11}
+}
+% Base 2010 desde septiembre de 2014; I+D como FBCF; estimación de actividades ilegales (prostitución,
+% tráfico de drogas, contrabando de tabaco y juego ilegal). El anexo 1 del Word sigue casi al pie de
+% la letra este documento.
+
+@online{INE2026Experimentales, % NUEVA
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Estadísticas experimentales},
+  year    = {2026},
+  url     = {https://www.ine.es/experimental/experimental.htm},
+  urldate = {2026-11-11}
+}
+
+% ===================================================================== Eurostat
+
+@online{Eurostat2026nama10gdp, % REUTILIZADA 1D01 (en 3A08, 3A09, 3A33, 3A38, 3A45… la clave es Eurostat2026Nama10gdp)
+  author  = {{Eurostat}},
+  title   = {GDP and main components (output, expenditure and income) [nama\_10\_gdp]},
+  note    = {Actualizada el 5 de noviembre de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table},
+  urldate = {2026-11-11}
+}
+
+@online{Eurostat2026nasa10nftr, % REUTILIZADA 1D01 y 3A38
+  author  = {{Eurostat}},
+  title   = {Non-financial transactions – annual sector accounts [nasa\_10\_nf\_tr]},
+  note    = {Actualizada el 29 de octubre de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table},
+  urldate = {2026-11-11}
+}
+
+@online{Eurostat2026nasq10nftr, % NUEVA
+  author  = {{Eurostat}},
+  title   = {Non-financial transactions – quarterly sector accounts [nasq\_10\_nf\_tr]},
+  note    = {Actualizada el 29 de octubre de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/nasq_10_nf_tr/default/table},
+  urldate = {2026-11-11}
+}
+
+@online{Eurostat2026nasa10ftr, % NUEVA
+  author  = {{Eurostat}},
+  title   = {Financial transactions – annual sector accounts [nasa\_10\_f\_tr]},
+  note    = {Actualizada el 29 de octubre de 2026. Datos de España: Cuentas Financieras de la Economía Española (Banco de España)},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/nasa_10_f_tr/default/table},
+  urldate = {2026-11-11}
+}
+
+@online{Eurostat2026nasq10ftr, % NUEVA (segunda comprobación de la cuenta financiera)
+  author  = {{Eurostat}},
+  title   = {Financial transactions – quarterly data [nasq\_10\_f\_tr]},
+  note    = {Actualizada el 28 de octubre de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/nasq_10_f_tr/default/table},
+  urldate = {2026-11-11}
+}
+
+% ===================================================================== Banco de España y Comisión
+
+@online{BdE2026CuentasFinancieras, % NUEVA (sin leer: bde.es no respondió desde aquí el 11/11/2026; comprobar a mano)
+  author  = {{Banco de España}},
+  title   = {Cuentas financieras de la economía española},
+  year    = {2026},
+  url     = {https://www.bde.es/webbe/es/estadisticas/temas/cuentas-financieras.html},
+  urldate = {2026-11-11}
+}
+
+@online{CE2026AMECO, % REUTILIZADA 3A45 (participación salarial ajustada, ALCD0)
+  author  = {{Comisión Europea}},
+  title   = {AMECO: base de datos macroeconómica anual de la DG ECFIN (previsión de primavera de 2026)},
+  year    = {2026},
+  url     = {https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en},
+  urldate = {2026-11-01},
+  note    = {Series ILRV, OVGD, ALCD0 (participación salarial ajustada), UITT y UVGD. Próxima actualización: 17/11/2026}
+}
+
+% ===================================================================== Historia
+
+@online{Nobel1971Kuznets, % REUTILIZADA 3A31, 3A33 y 3B11
+  author  = {{Nobel Prize Outreach}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1971: Simon Kuznets},
+  year    = {1971},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1971/summary/},
+  urldate = {2026-10-31}
+}
+
+@online{Nobel1984Stone, % REUTILIZADA 3A31 y 3B11
+  author  = {{Nobel Prize Outreach}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1984: Richard Stone},
+  year    = {1984},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1984/summary/},
+  urldate = {2026-11-05}
+}
+
+@online{Nobel1977Meade, % REUTILIZADA 3A31
+  author  = {{Nobel Prize Outreach}},
+  title   = {James E. Meade -- Biographical},
+  year    = {1977},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1977/meade/biographical/},
+  urldate = {2026-11-05}
+}
+
+@book{Lacey2011, % REUTILIZADA 3A31 y 3B11 (solo reseñas leídas)
+  author    = {Lacey, Jim},
+  title     = {Keep From All Thoughtful Men: How {U.S.} Economists Won World War {II}},
+  publisher = {Naval Institute Press},
+  location  = {Annapolis},
+  year      = {2011}
+}
+
+@incollection{Matloff1960Gamble, % REUTILIZADA 3A31
+  author    = {Matloff, Maurice},
+  title     = {The 90-Division Gamble},
+  booktitle = {Command Decisions},
+  editor    = {Greenfield, Kent Roberts},
+  publisher = {Office of the Chief of Military History, United States Army},
+  location  = {Washington},
+  year      = {1960},
+  chapter   = {15},
+  url       = {https://webdoc.sub.gwdg.de/ebook/p/2005/CMH_2/www.army.mil/cmh-pg/books/70-7/70-7_15.htm},
+  urldate   = {2026-11-05}
+}
+
+@report{Kuznets1934NationalIncome, % NUEVA
+  author      = {Kuznets, Simon},
+  title       = {National Income, 1929-1932},
+  type        = {Senate Document},
+  number      = {124},
+  institution = {73rd Congress, 2nd session; U.S. Department of Commerce, Bureau of Foreign and Domestic Commerce},
+  location    = {Washington},
+  date        = {1934-01-04},
+  url         = {https://fraser.stlouisfed.org/title/971}
+}
+% FRASER no respondió desde aquí el 11/11/2026; los datos (resolución 220 de 1932, informe de enero de
+% 1934) están comprobados en BEA2020Cuentas1930.
+
+@article{BEA2020Cuentas1930, % NUEVA
+  author       = {{Bureau of Economic Analysis}},
+  title        = {The Evolution of U.S. National Income Accounting: Reprints from the 1930s},
+  journaltitle = {Survey of Current Business},
+  volume       = {100},
+  number       = {9},
+  date         = {2020-09},
+  url          = {https://apps.bea.gov/scb/issues/2020/09-september/0920-reprints-1930s.htm},
+  urldate      = {2026-11-11}
+}
+
+% ===================================================================== PIB y bienestar
+
+@incollection{Easterlin1974Does, % REUTILIZADA 3A01 y 3A10
+  author    = {Easterlin, Richard A.},
+  title     = {Does Economic Growth Improve the Human Lot? Some Empirical Evidence},
+  booktitle = {Nations and Households in Economic Growth},
+  editor    = {David, Paul A. and Reder, Melvin W.},
+  publisher = {Academic Press},
+  address   = {Nueva York},
+  year      = {1974},
+  pages     = {89--125},
+  doi       = {10.1016/B978-0-12-205050-3.50008-7}
+}
+
+@report{HelliwellLayardSachs2012WHR, % NUEVA
+  author      = {Helliwell, John F. and Layard, Richard and Sachs, Jeffrey},
+  title       = {World Happiness Report 2012},
+  institution = {Earth Institute, Columbia University},
+  location    = {Nueva York},
+  year        = {2012},
+  url         = {https://worldhappiness.report/ed/2012/},
+  urldate     = {2026-11-11}
+}
+
+@article{JonesKlenow2016Beyond, % NUEVA
+  author       = {Jones, Charles I. and Klenow, Peter J.},
+  title        = {Beyond {GDP}? Welfare across Countries and Time},
+  journaltitle = {American Economic Review},
+  volume       = {106},
+  number       = {9},
+  pages        = {2426--2457},
+  year         = {2016},
+  doi          = {10.1257/aer.20110236}
+}
+
+@incollection{NordhausTobin1972Growth, % NUEVA
+  author    = {Nordhaus, William D. and Tobin, James},
+  title     = {Is Growth Obsolete?},
+  booktitle = {Economic Research: Retrospect and Prospect, Volume 5, Economic Growth},
+  publisher = {National Bureau of Economic Research},
+  location  = {Nueva York},
+  year      = {1972},
+  url       = {https://www.nber.org/books-and-chapters/economic-research-retrospect-and-prospect-volume-5-economic-growth/growth-obsolete},
+  urldate   = {2026-11-11}
+}
+% Páginas sin comprobar (el capítulo está en NBER c7620).
+
+@report{StiglitzSenFitoussi2009, % NUEVA
+  author      = {Stiglitz, Joseph E. and Sen, Amartya and Fitoussi, Jean-Paul},
+  title       = {Report by the Commission on the Measurement of Economic Performance and Social Progress},
+  institution = {Commission on the Measurement of Economic Performance and Social Progress},
+  location    = {París},
+  year        = {2009},
+  url         = {https://ec.europa.eu/eurostat/documents/8131721/8131772/Stiglitz-Sen-Fitoussi-Commission-report.pdf},
+  urldate     = {2026-11-11}
+}
+
+@report{ONU2026BeyondGDP, % NUEVA
+  author      = {{Grupo de Expertos de Alto Nivel sobre Más allá del PIB del Secretario General de las Naciones Unidas}},
+  title       = {Counting What Counts: A Compass of Progress for People and Planet},
+  institution = {Naciones Unidas},
+  location    = {Nueva York},
+  date        = {2026-05},
+  url         = {https://www.un.org/sites/un2.un.org/files/high-level_expert_group_on_beyond_gdp_final_report.pdf},
+  urldate     = {2026-11-11}
+}
+% Panel de 31 indicadores. UNCTAD fecha la publicación el 4/5/2026; la presentación en la Asamblea
+% General fue el 7/5/2026.
+
+@report{WEF2018IDI, % NUEVA
+  author      = {{Foro Económico Mundial}},
+  title       = {The Inclusive Development Index 2018: Summary and Data Highlights},
+  institution = {World Economic Forum},
+  location    = {Ginebra},
+  date        = {2018-01},
+  url         = {https://www3.weforum.org/docs/WEF_Forum_IncGrwth_2018.pdf},
+  urldate     = {2026-11-11}
+}
+% Cuadro 1: España 4,40, puesto 26 de 29 avanzadas (PIB per cápita: 23); Italia 27, Portugal 28,
+% Grecia 29; Noruega 1.
+
+@book{PNUD2025IDH, % REUTILIZADA 3B28
+  author    = {{Programa de las Naciones Unidas para el Desarrollo}},
+  title     = {Human Development Report 2025. A Matter of Choice: People and Possibilities in the Age of AI},
+  year      = {2025},
+  publisher = {PNUD},
+  location  = {Nueva York},
+  url       = {https://hdr.undp.org/content/human-development-report-2025},
+  urldate   = {2026-11-03}
+}
+
+@article{ChenEtAl2019Forensic, % NUEVA
+  author       = {Chen, Wei and Chen, Xilu and Hsieh, Chang-Tai and Song, Zheng},
+  title        = {A Forensic Examination of {China}'s National Accounts},
+  journaltitle = {Brookings Papers on Economic Activity},
+  volume       = {2019},
+  number       = {1},
+  pages        = {77--141},
+  year         = {2019},
+  doi          = {10.1353/eca.2019.0001}
+}
+
+@article{KohSantaeulaliaZheng2020, % NUEVA
+  author       = {Koh, Dongya and Santaeulàlia-Llopis, Raül and Zheng, Yu},
+  title        = {Labor Share Decline and Intellectual Property Products Capital},
+  journaltitle = {Econometrica},
+  volume       = {88},
+  number       = {6},
+  pages        = {2609--2628},
+  year         = {2020},
+  doi          = {10.3982/ECTA17477}
+}
+
+% ===================================================================== Bibliografía del original
+
+@book{MunozCidadEtAl2020, % REUTILIZADA 3A31 (propuesta; ISBN con discrepancia, ver 3A31 D5)
+  author    = {Muñoz Cidad, Cándido and Iráizoz Apezteguía, Belén and Rapún Gárate, Manuel},
+  title     = {Introducción a la economía aplicada: magnitudes y cuentas económicas},
+  edition   = {6},
+  publisher = {Civitas Thomson Reuters},
+  location  = {Cizur Menor (Navarra)},
+  year      = {2020},
+  isbn      = {978-84-1308-987-4},
+  url       = {https://proview.thomsonreuters.com/launchapp/title/aranz/monografias/116004025/v6/page/RB-6.1},
+  urldate   = {2026-11-11}
+}
+% El enlace de ProView es el del original: responde, pero exige suscripción.
+
+@report{IGAE2014SEC2010, % NUEVA (enlace del original, dirección nueva)
+  author      = {{Intervención General de la Administración del Estado}},
+  title       = {Nota sobre los cambios metodológicos de aplicación del nuevo SEC 2010 que afectan a las Cuentas de las Administraciones Públicas},
+  institution = {IGAE},
+  location    = {Madrid},
+  date        = {2014-09-30},
+  url         = {https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/Nota_metodologica_SEC_2010.pdf},
+  urldate     = {2026-11-11}
+}
+
+@article{MurielDeLaRiva2015, % NUEVA (enlace del original, dirección nueva)
+  author       = {Muriel de la Riva, Sixto},
+  title        = {Las novedades metodológicas del {SEC} 2010 desde el enfoque institucional de la Contabilidad Nacional},
+  journaltitle = {Índice. Revista de Estadística y Sociedad},
+  number       = {65},
+  date         = {2015-10},
+  url          = {https://www.revistaindice.com/docs/Indice_65.pdf},
+  urldate      = {2026-11-11}
+}
+% Página final sin comprobar; el artículo empieza en la pág. 9 del número.
+
+@book{LequillerBlades2018, % NUEVA (enlace del original era file:///)
+  author    = {Lequiller, François and Blades, Derek},
+  title     = {Comprendiendo las cuentas nacionales},
+  edition   = {2},
+  translator= {Álvarez Blanco, Rafael},
+  publisher = {OCDE},
+  location  = {París},
+  year      = {2018},
+  isbn      = {9789264299023},
+  doi       = {10.1787/9789264299023-es}
+}
+% Año de la edición española: 2018 según dos catálogos (la inglesa es de 2014); oecd.org responde 403
+% a los programas: no lo he podido leer.
+
+@article{CardeneteMoniche2001, % NUEVA
+  author       = {Cardenete Flores, Manuel Alejandro and Moniche Bermejo, Laura María},
+  title        = {El nuevo marco input-output y la {SAM} de {Andalucía} para 1995},
+  journaltitle = {Cuadernos de Ciencias Económicas y Empresariales},
+  year         = {2001},
+  url          = {https://hdl.handle.net/20.500.12412/4001},
+  urldate      = {2026-11-11}
+}
+% Número y páginas sin comprobar (el repositorio de la Universidad Loyola no los da).
+
+% ===================================================================== Vídeos del original
+
+@online{FRdP2023Prados, % NUEVA (enlace de la caja del anexo 7; funciona)
+  author  = {{Fundación Rafael del Pino}},
+  title   = {Conferencia magistral de Leandro Prados de la Escosura},
+  year    = {2023},
+  date    = {2023-02-22},
+  url     = {https://youtu.be/DRg-HM2GzXw},
+  urldate = {2026-11-11}
+}
+
+@online{VisualPolitik2019China, % NUEVA (enlace de la nota 32; funciona)
+  author  = {{VisualPolitik EN}},
+  title   = {Is China lying about its GDP growth?},
+  year    = {2019},
+  date    = {2019-12-11},
+  url     = {https://youtu.be/G632a6M2hC0},
+  urldate = {2026-11-11}
+}
+
+% ===================================================================== Añadidas en la integración
+
+@book{FMI2009MBP6, % REUTILIZADA 3B11
+  author    = {{Fondo Monetario Internacional}},
+  title     = {Manual de Balanza de Pagos y Posición de Inversión Internacional},
+  edition   = {6},
+  publisher = {FMI},
+  location  = {Washington D.~C.},
+  year      = {2009},
+  url       = {https://www.imf.org/external/pubs/ft/bop/2007/pdf/bpm6.pdf},
+  urldate   = {2026-10-23}
+}
+
+@online{RegUE2021Disposiciones, % NUEVA (comprobado en EUR-Lex el 11/11/2026: art. 108.2.a, regiones NUTS 2 menos desarrolladas, PIB per cápita en PPA inferior al 75 % de la media de la UE-27)
+  author      = {{Parlamento Europeo y Consejo de la Unión Europea}},
+  title       = {Reglamento (UE) 2021/1060, de 24 de junio de 2021, por el que se establecen las disposiciones comunes relativas al Fondo Europeo de Desarrollo Regional, al Fondo Social Europeo Plus, al Fondo de Cohesión, al Fondo de Transición Justa y al Fondo Europeo Marítimo, de Pesca y de Acuicultura},
+  note        = {Diario Oficial de la Unión Europea, L 231},
+  date        = {2021-06-30},
+  url         = {https://eur-lex.europa.eu/eli/reg/2021/1060/oj},
+  urldate     = {2026-11-11}
+}
+
+@online{RegUE2011Ambientales, % NUEVA (propuesta de contenido, pasada a @online)
+  author      = {{Parlamento Europeo y Consejo de la Unión Europea}},
+  title       = {Reglamento (UE) n.º 691/2011, de 6 de julio de 2011, relativo a las cuentas económicas europeas medioambientales},
+  note        = {Diario Oficial de la Unión Europea, L 192},
+  date        = {2011-07-22},
+  url         = {https://eur-lex.europa.eu/eli/reg/2011/691/oj},
+  urldate     = {2026-11-11}
+}
+
+@book{Eurostat2013QNA, % NUEVA (manual de la ficha contribuciones-crecimiento; ISBN y URL sin comprobar)
+  author    = {{Eurostat}},
+  title     = {Handbook on Quarterly National Accounts},
+  edition   = {2013},
+  publisher = {Oficina de Publicaciones de la Unión Europea},
+  location  = {Luxemburgo},
+  year      = {2013}
+}
+
+@article{StevensonWolfers2008, % NUEVA
+  author       = {Stevenson, Betsey and Wolfers, Justin},
+  title        = {Economic Growth and Subjective Well-Being: Reassessing the Easterlin Paradox},
+  journaltitle = {Brookings Papers on Economic Activity},
+  volume       = {2008},
+  number       = {1},
+  year         = {2008},
+  pages        = {1--87}
+}
+
+@online{CE2009MasAllaPIB, % NUEVA
+  author  = {{Comisión Europea}},
+  title   = {Más allá del PIB: evaluación del progreso en un mundo cambiante},
+  note    = {COM(2009) 433 final, 20 de agosto de 2009},
+  year    = {2009},
+  url     = {https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:52009DC0433},
+  urldate = {2026-11-11}
+}
+
+@book{ONU2014SCAE, % NUEVA
+  author    = {{Naciones Unidas} and {Comisión Europea} and {FAO} and {Fondo Monetario Internacional} and {OCDE} and {Banco Mundial}},
+  title     = {System of Environmental-Economic Accounting 2012: Central Framework},
+  publisher = {Naciones Unidas},
+  location  = {Nueva York},
+  year      = {2014}
+}
+
+@article{CamachoPerezQuiros2011, % NUEVA (comprobado en Crossref el 11/11/2026)
+  author       = {Camacho, Máximo and Pérez-Quirós, Gabriel},
+  title        = {Spain-{STING}: Spain Short-Term Indicator of Growth},
+  journaltitle = {The Manchester School},
+  volume       = {79},
+  number       = {s1},
+  year         = {2011},
+  pages        = {594--616}
+}
+
+@online{AIReF2026MIPred, % NUEVA (airef.es no respondió el 11/11/2026: dirección exacta sin comprobar)
+  author  = {{Autoridad Independiente de Responsabilidad Fiscal}},
+  title   = {MIPred: modelo de predicción en tiempo real del PIB},
+  year    = {2026},
+  url     = {https://www.airef.es},
+  urldate = {2026-11-11}
+}
+
+@book{Prados2022, % NUEVA
+  author    = {Prados de la Escosura, Leandro},
+  title     = {Human Development and the Path to Freedom: 1870 to the Present},
+  publisher = {Cambridge University Press},
+  location  = {Cambridge},
+  year      = {2022}
+}
+
+@misc{GutierrezHernandez2021, % NUEVA (cita del Word, imagen 3; nombre de pila sin comprobar)
+  author       = {{Gutiérrez Hernández}},
+  title        = {Cuentas nacionales},
+  howpublished = {Material docente, Facultad de Economía, Empresa y Turismo, Universidad de La Laguna},
+  year         = {2021}
+}
+
+@misc{FMI2013Curso, % NUEVA (cita del Word; manual de curso sin publicación localizable; el enlace era file:///)
+  author       = {{Fondo Monetario Internacional}},
+  title        = {Analytical and Methodological Background for a Country Case Study},
+  howpublished = {IMF Institute for Capacity Development, manual del curso, cap.~2},
+  year         = {2013}
+}

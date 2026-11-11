@@ -38,6 +38,7 @@ con $\mathrm{OV}^K$ las revalorizaciones del capital y $\mathrm{OV}^F$ las otras
 |---|---|---|---|---|
 | 3.B.11 | Interpretación del saldo agregado | desarrollo (hecho, 5/11/2026) | a)-c) completo: `eq:riqueza`, `eq:variacion-riqueza`, `eq:dinamica-piin` de palabra en el cante, los descalces, `balance-nacion`; las 3 medidas en II.7 | La derivación del saldo estabilizador (anexo E, ficha `sostenibilidad-deuda-externa`) |
 | 1D01 | Dictamen de coyuntura | Uso | «Enfoque de balances» (l. 1305): las crisis de los 90 y los descalces de cada sector, con `Allen2002Balances`; PIIN y deuda externa | El balance de la nación |
+| 3.A.30 | Contabilidad nacional | mención (hecho, 11/11/2026; II.4, balances, con `\vertema{3.B.11}`) | Riqueza nacional neta = capital no financiero + PIIN, sin letra; `eq:balance` en palabras; la solvencia y el riesgo de los balances por sectores | Los descalces y la dinámica |
 | 3.B.12 | Sostenibilidad del déficit y de la deuda exterior | resumen (sin revisar) | La composición de la deuda (moneda, plazo, instrumento) como complemento de la condición de estabilidad, con `\vertema{3.B.11}` | El balance de la nación y los descalces en detalle |
 | 3.B.17 | Crisis cambiarias | mención (sin revisar) | Descalces de monedas y plazos en las crisis de tercera generación y las crisis gemelas | — |
 | 3.B.22 | El FMI | mención (sin revisar) | Los análisis de vulnerabilidad del FMI (balance por sectores) | — |

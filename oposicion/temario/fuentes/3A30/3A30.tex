@@ -1,0 +1,1372 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A30.bib}
+\tcetema[Magnitudes macroeconómicas y contabilidad nacional]{3.A.30}{Magnitudes macroeconómicas y contabilidad nacional.}
+\tcefecha{11/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «A ojo de buen cubero», dice el refrán: calcular sin medir, a simple vista.
+  \item Así se hacía la política económica hasta los años 30. Cuando llegó la Gran Depresión, ningún Gobierno sabía cuánto había caído la renta de su país.
+  \item En 1932 el Senado de Estados Unidos encargó que se midiera. El trabajo lo dirigió \autor{Simon Kuznets}, y en enero de 1934 el Senado recibió la primera estimación oficial de la renta nacional del país, para los años 1929-1932 \parencites{Kuznets1934NationalIncome}{BEA2020Cuentas1930}.
+  \item Hoy el Instituto Nacional de Estadística (INE) publica el PIB de España 30 días después de acabar cada trimestre: el 30 de octubre de 2026 adelantó que en el tercer trimestre había crecido un 0,6~\% \parencite{INE2026avCNTR3T26}.
+  \item Un aforismo de la gestión lo resume: \emph{no se puede gestionar lo que no se puede medir}. La \concepto{contabilidad nacional} es la que mide una economía entera, y sus \concepto{magnitudes macroeconómicas} son las cifras con las que se discute, se gobierna y se reparte.
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Para la política económica}: las cuentas nacionales son la base de las previsiones, de los presupuestos y de la evaluación de las políticas.
+    \begin{itemize}
+    \item En la Unión Europea tienen además efectos jurídicos y financieros: con ellas se miden el déficit y la deuda del procedimiento de déficit excesivo \vertema{3.A.39}.
+    \item Con ellas se calcula también la aportación de cada Estado al presupuesto de la Unión, a través del recurso propio basado en la renta nacional bruta, y se reparten los fondos de la política de cohesión \parencite{SEC2010}.
+    \end{itemize}
+  \item \emph{Para la teoría}: la macroeconomía razona con agregados (producción, consumo, inversión, ahorro), y la contabilidad nacional es la que los define y los mide \vertema{3.A.4}. Sus identidades son el punto de partida de cualquier modelo: ninguna teoría puede contradecirlas.
+  \item \emph{Para el bienestar}: el PIB por habitante es la medida más usada del nivel de vida, y el ahorro y la inversión indican si ese nivel se podrá mantener. Por eso importa saber bien qué mide y qué deja fuera (apartado~\ref{sec:pib-bienestar}).
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Una teoría y una necesidad}: la contabilidad nacional moderna nace en los años 30 y 40. La empujan la teoría keynesiana, que piensa en agregados, y la economía de guerra, que necesita saber cuánto puede producir un país.\footnote{Aunque fue la revolución keynesiana la que dio el impulso decisivo a los sistemas de cuentas nacionales, hoy se consideran neutrales, tanto desde el punto de vista analítico como desde el ideológico: sirven a cualquier escuela.}
+  \item \emph{Los pioneros}: \autor{Simon Kuznets} en Estados Unidos y \autor{Richard Stone} y \autor{James Meade} en el Reino Unido.
+    \begin{itemize}
+    \item En 1940-1941, \autor{Meade} y \autor{Stone}, desde la oficina económica del Gabinete de Guerra británico y animados por \autor{John Maynard Keynes}, prepararon las primeras estimaciones oficiales de la renta nacional, ya en \emph{partida doble} \parencites{Nobel1977Meade}{Nobel1984Stone}.
+    \item \autor{Stone} llevó a las cuentas de un país la lógica contable de la empresa y dirigió después los trabajos de normalización de Naciones Unidas.\footnote{\autor{Kuznets} y \autor{Stone} recibieron el Premio Nobel: \autor{Kuznets} en 1971, por su interpretación del crecimiento económico fundada en los datos, y \autor{Stone} en 1984, por sus aportaciones a los sistemas de cuentas nacionales, que mejoraron la base del análisis empírico \parencites{Nobel1971Kuznets}{Nobel1984Stone} (\autor{Meade} lo recibió en 1977, por su teoría del comercio internacional \parencite{Nobel1977Meade}). El de \autor{Kuznets} premia sobre todo su trabajo empírico sobre el crecimiento, más que la contabilidad nacional en sí. Las cuentas nacionales se estrenaron como instrumento de política en la Segunda Guerra Mundial: en 1942, \autor{Kuznets} y \autor{Robert Nathan}, desde la Junta de Producción de Guerra de Estados Unidos, usaron las cifras de la renta nacional para sostener que los planes de producción militar no eran viables con los recursos del país, frente a la oposición del general \autor{Brehon Somervell}. \textcite{Lacey2011} sostiene que aquel ajuste de los planes pesó en la victoria aliada; es una tesis discutida.}
+    \end{itemize}
+  \item \emph{La armonización}: el primer Sistema de Cuentas Nacionales de Naciones Unidas (SCN) es de 1953, y la última revisión, de 2025. En la Unión Europea rige su versión europea, el Sistema Europeo de Cuentas (SEC 2010), que es un reglamento de obligado cumplimiento \parencites{SEC2010}{ONU2025SCN}.
+  \item \emph{La idea de partida}: las unidades de una economía actúan a la vez como \emph{productores}, como \emph{perceptores de renta} y como \emph{agentes del gasto}. Por eso lo que se produce, la renta que genera y el gasto que la absorbe son 3 medidas del mismo flujo.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Pueden unas pocas cifras resumir la actividad de millones de agentes?
+  \item ¿Qué es una magnitud macroeconómica, y por qué la producción, la renta y el gasto de un país son la misma cifra?
+  \item ¿Con qué reglas se registra la actividad de toda una economía para que las cifras sean comparables entre países y en el tiempo?
+  \item ¿Cómo se pasa de lo que se produce a la renta, al ahorro y a la financiación, y qué magnitud mide cada paso?
+  \item ¿Qué dicen esas magnitudes y qué dejan fuera?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición tiene 3 partes, que responden a las preguntas por orden:
+    \begin{itemize}
+    \item el bloque~\ref{sec:sec2010} presenta \emph{qué se mide y con qué reglas}: las magnitudes que salen del flujo circular de la renta y el sistema que las define, el SEC 2010, con sus unidades y sus principios contables;
+    \item el bloque~\ref{sec:sucesion} explica \emph{cómo se miden}: la sucesión de cuentas, de la producción al patrimonio, con el agregado que sale de cada cuenta y para qué sirve;
+    \item el bloque~\ref{sec:uso-limites} trata \emph{el uso y los límites} de las magnitudes: cómo se pasa del valor al volumen, con qué fuentes se elaboran y qué no mide el PIB.
+    \end{itemize}
+  \item El orden va de la regla a la cifra y de la cifra a su lectura: sin saber cómo se registra una operación no se puede interpretar el saldo que resulta, y sin saber cómo se construye el PIB no se puede juzgar lo que deja fuera.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}[unbreakable]
+\textbf{3.A.30. Magnitudes macroeconómicas y contabilidad nacional}\\[2pt]
+Introducción\esqtiempo{2,5}\\
+I. Características generales y principios fundamentales del SEC 2010\esqtiempo{6,5}\\
+\hspace*{1.5em}1. Concepto y características generales: ¿qué es el SEC 2010?\\
+\hspace*{1.5em}2. Medición y principios fundamentales del SEC 2010 como sistema\\
+II. La sucesión de cuentas\esqtiempo{13,5}\\
+\hspace*{1.5em}1. Cuenta de bienes y servicios\\
+\hspace*{1.5em}2. Cuentas corrientes\\
+\hspace*{1.5em}3. Cuentas de acumulación\\
+\hspace*{1.5em}4. Balances\\
+\hspace*{1.5em}5. Cuentas del resto del mundo\\
+\hspace*{1.5em}6. Otras cuentas y aportaciones del SEC 2010\\
+III. Uso y límites de las magnitudes macroeconómicas\esqtiempo{6,5}\\
+\hspace*{1.5em}1. Del valor al volumen: deflactor y contribuciones al crecimiento\\
+\hspace*{1.5em}2. Elaboración, fuentes y datos de alta frecuencia\\
+\hspace*{1.5em}3. El PIB y el bienestar: limitaciones e indicadores alternativos\\
+Conclusión\esqtiempo{1}
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante:
+\begin{itemize}
+\item introducción, \tiempo{2,5};
+\item I, \tiempo{6,5} (I.1, \tiempo{2,5}; I.2, \tiempo{4});
+\item II, \tiempo{13,5} (II.1, \tiempo{1}; II.2, \tiempo{6}; II.3, \tiempo{3,5}; II.4, \tiempo{1}; II.5, \tiempo{1}; II.6, \tiempo{1});
+\item III, \tiempo{6,5} (III.1, \tiempo{2,5}; III.2, \tiempo{1,5}; III.3, \tiempo{2,5});
+\item conclusión, \tiempo{1}.
+\end{itemize}
+Es un tema de definiciones encadenadas. Lo que se canta es la cadena de saldos, de la producción a la capacidad o necesidad de financiación, qué mide cada agregado y por qué cuadran las cuentas. Las cuentas en forma de T, los códigos del SEC y los anexos son para las preguntas del tribunal.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Características generales\cortetitulo y principios fundamentales del SEC 2010}\label{sec:sec2010}
+\minutos{6,5}
+
+\begin{itemize}
+\item Empezamos por lo que se mide y por las reglas con que se mide, porque sin ellas no se puede leer ninguna cuenta.
+\item \emph{Conclusión anticipada}: la producción, la renta y el gasto de un país son 3 formas de ver un mismo flujo, y de esa igualdad salen todas las identidades macroeconómicas. El SEC 2010 convierte esa idea en un sistema contable, con unas unidades, unas operaciones y 4 principios (partida cuádruple, devengo, valoración y residencia) comunes a toda la Unión Europea.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Concepto y características generales: ¿qué es el SEC 2010?}\label{sec:concepto}
+
+\subsubsection{Las magnitudes macroeconómicas y el flujo circular de la renta}\label{sec:magnitudes}
+
+\begin{itemize}
+\item Una \concepto{magnitud macroeconómica} (o \concepto{agregado}) resume en una cifra el resultado de las decisiones de millones de hogares, empresas y administraciones.
+  \begin{itemize}
+  \item Casi todas son \emph{flujos}, que se miden por unidad de tiempo: la producción, la renta, el consumo o el ahorro de un año.
+  \item La riqueza y la deuda son \emph{stocks}, que se miden en una fecha.
+  \end{itemize}
+\item La idea que las ordena es el \concepto{flujo circular de la renta} (gráfico~\ref{fig:triangulo-pib}):
+  \begin{itemize}
+  \item las empresas producen con el trabajo y el capital que aportan los hogares;
+  \item lo que producen se reparte como renta entre quienes han aportado esos factores;
+  \item esa renta se gasta en lo producido, y el circuito vuelve a empezar.
+  \end{itemize}
+\item Medido en cualquiera de los 3 puntos del circuito, el flujo es el mismo. De ahí salen las 3 vías de cálculo del producto:
+  \begin{itemize}
+  \item \emph{por la producción}, se suman los valores añadidos brutos de todas las unidades, para no contar 2 veces los bienes intermedios: $Y\equiv\sum\mathrm{VAB}$;
+  \item \emph{por la renta}, se suma lo que cobran el trabajo y el capital: $Y\equiv\mathrm{RA}+\mathrm{EBE}$, con $\mathrm{RA}$ la remuneración de los asalariados y $\mathrm{EBE}$ el excedente, que es residual (lo que queda tras pagar al trabajo);
+  \item \emph{por el gasto}, se suma lo que se consume y lo que se invierte: $Y\equiv C+I$.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El flujo circular de la renta: producción, renta y gasto}\label{fig:triangulo-pib}
+\grafico[0.7\textwidth]{triangulo-pib}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{LequillerBlades2018}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{La primera identidad}: como el ahorro es la renta que no se consume, $S\equiv Y-C$, en una economía cerrada y sin sector público \uline{el ahorro es, por definición, igual a la inversión}: $S\equiv I$.
+\item \emph{Con sector público y con el exterior}: el gasto incluye el consumo de las administraciones ($G$) y las ventas netas al resto del mundo, $Y\equiv C+I+G+(X-M)$. La igualdad entre ahorro e inversión ya no se cumple sector a sector, sino para el conjunto:
+  \begin{itemize}
+  \item lo que un sector ahorra por encima de lo que invierte lo presta a otro;
+  \item lo que la nación entera ahorra por encima de lo que invierte lo presta al resto del mundo (apartado~\ref{sec:acumulacion}).
+  \end{itemize}
+\item \emph{La cadena de saldos}: toda la contabilidad nacional se puede leer como una cadena que va de la producción a la financiación. Cada eslabón suma o resta una operación, y cada saldo es una magnitud que se desarrolla en el bloque~\ref{sec:sucesion}:
+\funcionclave[eq:cadena-agregados]{\begin{gathered}\mathrm{PIB}\xrightarrow{\;+\mathrm{RP}\;}\mathrm{RNB}\xrightarrow{\;+\mathrm{RS}\;}\mathrm{RNDB}\xrightarrow{\;-(C+G)\;}S\\ S\xrightarrow{\;-I+\mathrm{CK}\;}\text{capacidad }(+)\text{ o necesidad }(-)\text{ de financiación}\end{gathered}}
+  \begin{itemize}
+  \item $\mathrm{RP}$ y $\mathrm{RS}$ son las rentas primarias y secundarias netas que se reciben del resto del mundo; $\mathrm{RNB}$ y $\mathrm{RNDB}$, la renta nacional bruta y la renta nacional disponible bruta; $S$, el ahorro nacional, y $\mathrm{CK}$, las transferencias de capital netas.
+  \item \emph{En palabras}: \uline{son identidades, no teorías}. Se cumplen siempre, por cómo se definen las variables, y no dicen qué causa qué; pero ninguna explicación del crecimiento, del ciclo o del saldo exterior puede contradecirlas.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Proceso de armonización internacional e importancia de un sistema homogéneo}\label{sec:armonizacion}
+
+\begin{itemize}
+\item El \concepto{Sistema Europeo de Cuentas Nacionales y Regionales} (SEC 2010) es el marco contable con el que los Estados de la Unión describen de forma sistemática y comparable toda su economía, sus partes y sus relaciones con las demás economías.
+  \begin{itemize}
+  \item Lo establece el Reglamento (UE) n.º 549/2013, que se aplica a los datos transmitidos desde septiembre de 2014 \parencite{SEC2010}.
+  \item Un reglamento de 2023 lo actualizó y cambió los requisitos de transmisión de datos desde septiembre de 2024 \parencite{RegUE2023SEC2010}.
+  \end{itemize}
+\item \emph{De dónde viene}:
+  \begin{itemize}
+  \item el \emph{Sistema de Cuentas Nacionales} de Naciones Unidas es la norma mundial. El primero es de 1953, y se ha revisado en 1968, 1993, 2008 y 2025; desde 1993 lo elaboran juntos Naciones Unidas, la Comisión Europea, el FMI, la OCDE y el Banco Mundial \parencites{ONU2026HistoriaSCN}{ONU2025SCN};
+  \item el SEC es su versión europea: el SEC 2010 adapta el SCN 2008, igual que el SEC 95 adaptó el de 1993. Es más preciso en lo que la Unión necesita, como la frontera del sector público o las operaciones con las instituciones europeas (anexo~\ref{anexo:scn2008});
+  \item respecto al SEC 95, la estructura básica apenas cambia, pero sí algunos conceptos: el más conocido, que el gasto en I+D pasa a ser inversión (anexo~\ref{anexo:sec95}).
+  \end{itemize}
+\item \emph{Lo que viene}: en marzo de 2025 la Comisión de Estadística de Naciones Unidas adoptó el \concepto{SCN 2025}, a la vez que el FMI publicaba la séptima edición de su manual de balanza de pagos (MBP7) \parencites{ONU2025SCN}{FMI2025MBP7}.
+  \begin{itemize}
+  \item La Unión lo trasladará con un nuevo SEC, que Eurostat llama provisionalmente SEC 2030.
+  \item La Comisión debe proponerlo a finales de 2026, y los cambios principales se aplicarán desde 2030 \parencites{Eurostat2026ESA2030}{Verrinder2026SCN2025}.
+  \item Hasta entonces, las cuentas españolas siguen el SEC 2010, que el INE aplica desde septiembre de 2014 \parencite{INE2014Base2010}.
+  \end{itemize}
+\item \emph{Por qué es necesario un sistema común}: hace comparables las cifras entre países y en el tiempo. En la Unión es, además, una condición del gobierno económico: el Pacto de Estabilidad y Crecimiento y el Semestre Europeo se aplican sobre cifras del SEC, y sin cifras homogéneas no se podrían vigilar.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Rasgos y usos del SEC 2010}
+\begin{itemize}
+\item Para equilibrar lo que se querría saber con lo que se puede medir, las cuentas del SEC 2010 tienen 8 rasgos \parencite[cap.~1]{SEC2010}:
+  \begin{enumerate}
+  \item son compatibles a escala internacional, porque siguen el SCN;
+  \item están armonizadas con las demás estadísticas económicas y sociales, porque usan las mismas clasificaciones (como la CNAE de actividades);
+  \item son coherentes: cada operación se anota igual en todas las cuentas a las que afecta, y eso permite obtener partidas por diferencia;
+  \item son operativas: sus conceptos están definidos para que se puedan medir;
+  \item se apartan de los conceptos administrativos de cada país, para que las cifras sean comparables entre países y en el tiempo;
+  \item son estables: sus conceptos se mantienen durante periodos largos;
+  \item describen el proceso económico en términos monetarios y observables;
+  \item sirven para fines distintos y en situaciones distintas.
+  \end{enumerate}
+\item Con ellas se analiza la estructura de una economía, sus sectores o aspectos concretos, su evolución en el tiempo y su posición frente a otras economías.
+\end{itemize}
+\end{anotaciones}
+
+\subsubsection{Estructura general del SEC}\label{sec:estructura-sec}
+
+\begin{itemize}
+\item El SEC 2010 tiene 24 capítulos y 2 grandes conjuntos de cuentas \parencite{SEC2010}:
+  \begin{itemize}
+  \item las \emph{cuentas de los sectores institucionales}, que describen, sector a sector, las fases del proceso económico: la producción, la generación, la distribución, la redistribución y la utilización de la renta, y la acumulación no financiera y financiera, con los balances al principio y al final del periodo (bloque~\ref{sec:sucesion});
+  \item el \emph{marco input-output} y las cuentas por ramas de actividad, que describen con más detalle el proceso productivo y los flujos de productos (apartado~\ref{sec:otras-cuentas}) \vertema{3.A.31}.
+  \end{itemize}
+\item En España elaboran las cuentas el INE (las no financieras), el Banco de España (las financieras y la balanza de pagos) y la Intervención General de la Administración del Estado (las de las Administraciones Públicas) (apartado~\ref{sec:fuentes}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Medición y principios fundamentales del SEC 2010 como sistema}\label{sec:medicion}
+
+\subsubsection{Registro de las operaciones: los flujos y los stocks}\label{sec:flujos-stocks}
+
+\begin{itemize}
+\item El SEC registra 2 tipos de variables:
+  \begin{itemize}
+  \item los \concepto{flujos}, que ocurren a lo largo de un periodo y crean, transforman, intercambian, transfieren o extinguen valor económico;
+  \item los \concepto{stocks}, que son la situación de los activos y pasivos en una fecha.
+  \end{itemize}
+\item Los flujos explican cómo se pasa del stock inicial al final, como el agua que entra y sale de un depósito. «Gota a gota se llena la bota»: el patrimonio de un país es la suma de los flujos que lo han ido formando.
+\item Los flujos son de 2 clases:
+  \begin{itemize}
+  \item las \concepto{operaciones}, que son interacciones de mutuo acuerdo entre unidades, o acciones dentro de una misma unidad cuando actúa con 2 papeles distintos (la empresa que fabrica su propia maquinaria). Hay 4 grupos \parencite[cap.~1]{SEC2010}:
+    \begin{enumerate}
+    \item las \emph{operaciones de bienes y servicios} (P) dicen de dónde salen los productos (producción e importaciones) y a qué se destinan (consumo intermedio, consumo final, formación de capital y exportaciones);
+    \item las \emph{operaciones de distribución} (D) dicen cómo se reparte el valor añadido entre el trabajo, el capital y las Administraciones Públicas, y cómo se redistribuyen la renta y la riqueza;
+    \item las \emph{operaciones financieras} (F) recogen la adquisición neta de activos financieros y la contracción neta de pasivos, por instrumentos; son la contrapartida de las demás o se hacen solo entre instrumentos financieros;
+    \item las \emph{otras operaciones de acumulación} recogen las adquisiciones menos cesiones de activos no financieros no producidos (tierras, licencias, marcas);
+    \end{enumerate}
+  \item las \concepto{otras variaciones de los activos}, que cambian el patrimonio sin que haya una operación:
+    \begin{itemize}
+    \item las \emph{otras variaciones del volumen}: descubrimientos, catástrofes, expropiaciones sin indemnización, cambios de clasificación;
+    \item las \emph{ganancias y pérdidas de posesión}, por la variación de los precios de los activos. Las \emph{neutrales} son las que acompañan al nivel general de precios, y las \emph{reales}, lo que va más allá \parencite[cap.~6]{SEC2010}.
+    \end{itemize}
+  \end{itemize}
+\item Los stocks se anotan en los \concepto{balances}, al principio y al final del periodo. La población y el empleo también se registran, pero por su media del periodo (apartado~\ref{sec:otras-cuentas}).
+\end{itemize}
+
+\subsubsection{¿Quién realiza las operaciones? Las unidades y su agrupación}\label{sec:unidades}
+
+\begin{itemize}
+\item El SEC usa 2 tipos de unidades, para 2 fines distintos:
+  \begin{itemize}
+  \item para la renta, el gasto, la financiación y los balances, agrupa \concepto{unidades institucionales} en \emph{sectores}, según su función y su comportamiento;
+  \item para la producción y el análisis \emph{input-output}, agrupa \concepto{unidades de actividad económica locales} en \emph{ramas de actividad}.
+  \end{itemize}
+\item Una \concepto{unidad institucional} es una entidad que decide por sí misma y lleva cuentas completas: puede tener bienes y activos, contraer pasivos y hacer operaciones en nombre propio.
+\item Las unidades residentes forman 5 \concepto{sectores institucionales}, que no se solapan (gráfico~\ref{fig:sectores}):
+  \begin{enumerate}
+  \item las \emph{sociedades no financieras} (S.11) producen bienes y servicios no financieros de mercado y se financian con sus ventas;
+  \item las \emph{instituciones financieras} (S.12) prestan servicios financieros de mercado; el banco central es uno de sus subsectores (S.121);
+  \item las \emph{Administraciones Públicas} (S.13) producen servicios no de mercado y redistribuyen la renta, y se financian sobre todo con pagos obligatorios (impuestos y cotizaciones). Tienen 4 subsectores: la administración central, las comunidades autónomas, las corporaciones locales y los fondos de la Seguridad Social \vertema{4.B.1};
+  \item los \emph{hogares} (S.14) consumen, ofrecen trabajo y, como empresarios individuales, también producen, incluso para su propio uso; se financian sobre todo con las rentas de sus factores;
+  \item las \emph{instituciones sin fines de lucro al servicio de los hogares} (ISFLSH, S.15), como sindicatos, partidos, asociaciones y fundaciones, prestan servicios no de mercado y se financian con aportaciones voluntarias.\footnote{Que cada sector decida por sí mismo no quiere decir que no se relacione con los demás: sus operaciones entre sí son precisamente lo que registran las cuentas.}
+  \end{enumerate}
+\item Las unidades no residentes que operan con ellas forman el \concepto{resto del mundo} (S.2). No es un sector, pero tiene sus propias cuentas (apartado~\ref{sec:resto-mundo}).
+\item \emph{De mercado o no de mercado}: un productor es de mercado si vende a precios económicamente significativos.
+  \begin{itemize}
+  \item La regla cuantitativa es que sus ventas cubran al menos el 50~\% de sus costes de producción de forma continuada durante varios años \parencite{SEC2010}.
+  \item La regla se completa con criterios cualitativos: a quién vende y si compite con otros productores.
+  \item Una empresa pública que pasa la prueba va a S.11 o S.12; si no la pasa, a S.13 \vertema{4.B.1}.
+  \end{itemize}
+\item La balanza de pagos agrupa a los residentes de otra manera, en 4 sectores pensados para ver quién se relaciona con el exterior. La contabilidad nacional agrupa primero a todas las instituciones financieras y después distingue entre ellas al banco central, porque mira cómo se relacionan los sectores dentro de la economía \vertema{3.B.11}.
+\item \emph{Ramas de actividad}: una \concepto{unidad de actividad económica local} (UAE local) es la parte de una unidad institucional que produce en un solo lugar y se dedica a una sola actividad, definida al nivel de 4 dígitos de la CNAE.
+  \begin{itemize}
+  \item Las ramas de actividad agrupan UAE locales con la misma actividad.
+  \item Las ramas homogéneas, que son las de la tabla \emph{input-output} simétrica, agrupan \emph{unidades de producción homogénea}, que hacen un solo producto \parencite[cap.~2]{SEC2010} \vertema{3.A.31}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Cómo se asigna una unidad institucional a su sector}\label{fig:sectores}
+\grafico[0.85\textwidth]{sectores-sec}
+\fuente{elaboración propia a partir del SEC 2010 \parencite[cap.~2 y 20]{SEC2010}.}
+\end{figure}
+
+\subsubsection{Principios contables}\label{sec:principios}
+
+\begin{itemize}
+\item Una \concepto{cuenta} registra los flujos de una unidad o de un sector según su naturaleza. Tiene 2 lados, y lo que los iguala es el \concepto{saldo contable}, que pasa como primera partida a la cuenta siguiente: así se encadenan las cuentas.
+  \begin{itemize}
+  \item En las \emph{cuentas corrientes} van a la izquierda los \emph{empleos} (lo que reduce el valor económico de la unidad) y a la derecha los \emph{recursos} (lo que lo aumenta).
+  \item En las \emph{cuentas de acumulación} van a la izquierda las variaciones de los activos y a la derecha las de los pasivos y el patrimonio neto.
+  \item En los \emph{balances} van a la izquierda los activos y a la derecha los pasivos y el patrimonio neto.
+  \end{itemize}
+\item Las operaciones se anotan con los mismos principios que la balanza de pagos, que los desarrolla con un ejemplo de asientos y una tabla de equivalencias entre los 2 sistemas \vertema{3.B.11}:
+  \begin{enumerate}
+  \item la \emph{partida cuádruple} dice cuántos asientos hay;
+  \item el \emph{devengo} dice cuándo se anotan;
+  \item la \emph{valoración} dice por cuánto;
+  \item la \emph{residencia} dice quién está dentro y quién fuera.
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{Registro: partida doble y partida cuádruple}
+
+\begin{itemize}
+\item \emph{Partida doble}: cada unidad anota cada operación 2 veces y por el mismo importe, en una cuenta no financiera y en la financiera, o 2 veces en la financiera. Así las cuentas de cada unidad cuadran.
+\item \emph{Partida cuádruple}: casi todas las operaciones tienen 2 partes, y cada una anota la operación 2 veces, de modo que hay 4 asientos.
+  \begin{itemize}
+  \item Por ejemplo, cuando una administración paga una prestación por desempleo, anota un empleo (la transferencia) y una disminución de su efectivo; el hogar que la cobra anota un recurso (la transferencia) y un aumento de su efectivo \parencite[cap.~1]{SEC2010}.
+  \item Es lo que hace que las cuentas de todos los sectores cuadren entre sí.
+  \end{itemize}
+\item Las operaciones dentro de una misma unidad (lo que una empresa produce para sí misma) solo llevan 2 asientos, y su valor se estima.
+\end{itemize}
+
+\paragraph{Momento del registro: el devengo}
+
+\begin{itemize}
+\item Las operaciones se anotan cuando se crea, transforma, intercambia, transfiere o extingue el valor económico, no cuando se cobran o se pagan.
+  \begin{itemize}
+  \item La producción se anota cuando se produce, y la venta de un activo, cuando cambia la propiedad.
+  \item Los intereses se anotan en el periodo en que se devengan, aunque se paguen después.
+  \end{itemize}
+\item También los impuestos y las cotizaciones se anotan por devengo. Como parte de lo devengado nunca se cobra, en la práctica se usa la \emph{caja ajustada en el tiempo}: lo recaudado, llevado al periodo en que nació la obligación \parencite[cap.~4]{SEC2010}. Por eso el déficit de la contabilidad nacional no coincide con el de caja \vertema{3.A.39}.
+\end{itemize}
+
+\paragraph{Valoración}
+
+\begin{itemize}
+\item \emph{En términos monetarios y a precios de mercado}: los flujos y los stocks se valoran por lo que se intercambian, o podrían intercambiarse, por dinero. Cuando no hay precio de mercado, se usa, por este orden \parencite[cap.~1]{SEC2010}:
+  \begin{enumerate}
+  \item el precio de mercado de bienes o activos parecidos, como en el alquiler imputado de la vivienda en propiedad;\footnote{Hay que imputarlo: si no, el PIB cambiaría solo con que más hogares pasaran de vivir de alquiler a comprar su casa.}
+  \item los costes de producción, como en los servicios no de mercado de las Administraciones Públicas (la educación, la sanidad);
+  \item como último recurso, el valor actual de los rendimientos futuros esperados.
+  \end{enumerate}
+\item \emph{Los stocks} se valoran a los precios de la fecha del balance, no a los de cuando se compraron.
+\item \emph{Precios básicos y precios de adquisición}: el productor y el comprador ven el mismo bien a precios distintos, por los impuestos sobre los productos y los márgenes. El SEC anota la producción por lo que recibe el productor y los empleos por lo que paga el comprador (gráfico~\ref{fig:valoracion}):
+  \begin{itemize}
+  \item el \concepto{precio básico} es lo que cobra el productor por unidad: no incluye los impuestos sobre los productos (IVA, impuestos especiales) y sí las subvenciones a los productos; incluye los \emph{otros} impuestos netos sobre la producción, los que se pagan por producir y no por cada unidad vendida (el IBI de la fábrica, las tasas) \parencite{Eurostat2013SEC2010};
+  \item el \concepto{precio de adquisición} es lo que paga el comprador: el básico, más los márgenes de comercio y de transporte y los impuestos netos sobre los productos que el comprador no puede deducirse.
+  \end{itemize}
+\item Por eso los valores añadidos se miden a precios básicos y el PIB a precios de mercado, y la diferencia entre los 2 son los impuestos netos sobre los productos, que no se asignan a ninguna rama:
+\begin{equation}\label{eq:valoracion}
+\mathrm{PIB}_{\mathrm{pm}}=\sum\mathrm{VAB}_{\mathrm{pb}}+(\text{impuestos}-\text{subvenciones})_{\text{productos}} .
+\end{equation}
+\item \emph{Las exportaciones y las importaciones} se valoran FOB (\emph{free on board}), en la frontera del país exportador; el flete y el seguro posteriores son servicios. Es el mismo criterio que el de la balanza de pagos \vertema{3.B.11}.
+\item \emph{A precios constantes}: para separar en la variación de un valor la parte que se debe a los precios y la que se debe al volumen, los flujos se valoran a los precios de otro periodo. Hoy se hace con \emph{volúmenes encadenados} (apartado~\ref{sec:volumen}).\footnote{Un cambio de \emph{volumen} no es un cambio de \emph{cantidad}: incluye los cambios de calidad. Muchos flujos, como la renta, no tienen precio ni cantidad propios; se deflactan con un índice de precios, y entonces se dice que se expresan \emph{en términos reales}.}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{De los precios básicos a los precios de adquisición}\label{fig:valoracion}
+\grafico[0.8\textwidth]{valoracion-precios}
+\fuente{elaboración propia a partir de \textcite{Eurostat2013SEC2010}.}
+\end{figure}
+
+\begin{anotaciones}
+\textbf{Los impuestos y las subvenciones ligados a la producción}
+\begin{tablacaja}
+\caption{Impuestos y subvenciones sobre la producción y las importaciones en el SEC 2010}\label{tab:impuestos-sec}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.4\linewidth}>{\raggedright\arraybackslash}m{0.5\linewidth}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Partida} & \textbf{Qué incluye} \\
+\midrule
+D.21 Impuestos sobre los productos & Se pagan por unidad producida o vendida: IVA, impuestos especiales, derechos de importación \\
+D.29 Otros impuestos sobre la producción & Se pagan por producir, se venda lo que se venda: IBI de los inmuebles de las empresas, IAE, tasas por licencias \\
+D.31 Subvenciones a los productos & Se reciben por unidad producida o vendida \\
+D.39 Otras subvenciones a la producción & Se reciben por producir: ayudas a la contratación, a la reducción de la contaminación \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir del SEC 2010 \parencite[cap.~4]{SEC2010}.}
+\end{tablacaja}
+\begin{itemize}
+\item El PIB a precios de mercado suma a los VAB a precios básicos los impuestos netos sobre los productos, $\mathrm{D.21}-\mathrm{D.31}$.
+\item El VAB a precios básicos ya incluye los otros impuestos netos sobre la producción, $\mathrm{D.29}-\mathrm{D.39}$.
+\item El antiguo «VAB al coste de los factores» (el VAB a precios básicos menos $\mathrm{D.29}-\mathrm{D.39}$) ya no es un saldo del SEC 2010. La clasificación completa de los impuestos se estudia aparte \vertema{4.B.7}.
+\end{itemize}
+\end{anotaciones}
+
+\paragraph{Residencia}
+
+\begin{itemize}
+\item Una unidad es \concepto{residente} de un país si su \emph{centro de interés económico predominante} está en su territorio económico: allí vive o produce, y desde allí opera de forma significativa durante un año o más, una referencia que no es una regla rígida \parencite{SEC2010}. Manda la residencia, no la nacionalidad: «no es de donde naces, sino de donde paces».
+\item Se aplica igual que en la balanza de pagos \vertema{3.B.11}:
+  \begin{itemize}
+  \item los \emph{hogares} son residentes donde tienen su vivienda principal; los estudiantes, los pacientes y los turistas siguen siendo residentes de su país;
+  \item las \emph{filiales} son residentes donde operan, y también las \emph{sucursales} con una producción significativa en ese territorio durante un año o más;
+  \item las \emph{Administraciones Públicas} son residentes con todos sus organismos, incluidas las embajadas y las bases militares en el exterior;
+  \item los \emph{organismos internacionales} no son residentes de ninguna economía, tampoco de la que los acoge: para España, el Banco Central Europeo es resto del mundo.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Interior y nacional, bruto y neto}
+
+\begin{itemize}
+\item La residencia separa 2 maneras de medir:
+  \begin{itemize}
+  \item lo \concepto{interior} es lo que ocurre en el territorio, lo haga quien lo haga: el \emph{producto interior bruto} (PIB) mide lo que se produce dentro;
+  \item lo \concepto{nacional} es lo que hacen o ingresan los residentes, estén donde estén: la \emph{renta nacional bruta} (RNB) suma al PIB las rentas primarias netas que llegan del exterior (apartado~\ref{sec:asignacion}).
+  \end{itemize}
+\item La depreciación separa otras 2:
+  \begin{itemize}
+  \item los agregados \concepto{brutos} incluyen el \concepto{consumo de capital fijo} (CCF), el desgaste y la obsolescencia del capital en el periodo;
+  \item los \concepto{netos} lo descuentan: $\mathrm{PIN}=\mathrm{PIB}-\mathrm{CCF}$. Son más correctos como medida de lo que se crea, pero se usan menos, porque la depreciación se mide peor.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulando}: sabemos qué se mide, las magnitudes del flujo circular y sus identidades, y con qué reglas: unidades y sectores, partida cuádruple, devengo, valoración y residencia. Con ellas pasamos a la sucesión de cuentas, donde cada magnitud aparece como el saldo de una cuenta.
+\end{itemize}
+
+
+% ==========================================================================
+\section{La sucesión de cuentas}\label{sec:sucesion}
+\minutos{13,5}
+
+\begin{itemize}
+\item Una vez fijadas las reglas, pasamos a las cuentas, que es donde se obtienen las magnitudes.
+\item \emph{Conclusión anticipada}: las cuentas forman una cadena. Cada una describe una fase del proceso económico, y su saldo (el valor añadido, el excedente, la renta, el ahorro, la capacidad de financiación) pasa a la siguiente. Los \concepto{agregados} son esos saldos para el total de la economía.
+\item La sucesión tiene 3 grandes bloques, precedidos por la cuenta de bienes y servicios y cerrados por la del resto del mundo (gráfico~\ref{fig:sucesion-cuentas}):
+  \begin{enumerate}
+  \item las \emph{cuentas corrientes} van de la producción a la utilización de la renta y terminan en el ahorro;
+  \item las \emph{cuentas de acumulación} cuentan cómo se usa el ahorro para comprar activos y cómo se financia la diferencia, y terminan en la capacidad o necesidad de financiación;
+  \item los \emph{balances} dan el patrimonio al principio y al final del periodo.
+  \end{enumerate}
+\item Cada cuenta se presenta con las mismas 4 preguntas: qué registra, qué hay en sus empleos y recursos, cuál es su saldo y qué mide ese saldo. Las cuentas completas, con sus códigos, están en el anexo~\ref{anexo:sucesion}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La sucesión de cuentas y sus saldos}\label{fig:sucesion-cuentas}
+\grafico[0.95\textwidth]{sucesion-cuentas}
+\fuente{elaboración propia a partir del SEC 2010 \parencite[cap.~8]{SEC2010}.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Cuenta de bienes y servicios}\label{sec:cuenta-bys}
+
+\begin{itemize}
+\item \emph{Qué registra}:
+  \begin{itemize}
+  \item La cuenta de bienes y servicios (cuenta 0) es la identidad de partida del sistema: todo lo que se ofrece en la economía, producido dentro o importado, tiene un destino.
+  \item Es una cuenta de productos y no de unidades: se hace para el total de la economía y, en las tablas de origen y destino, para cada producto.
+  \end{itemize}
+\item \emph{Recursos y empleos}:
+  \begin{itemize}
+  \item En los recursos van la producción a precios básicos, las importaciones y los impuestos netos sobre los productos.
+  \item En los empleos van el consumo intermedio, el gasto en consumo final, la formación bruta de capital y las exportaciones, a precios de adquisición.
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item No tiene: recursos y empleos son iguales por construcción. No es la suma de todos los empleos y recursos de la sucesión, sino el equilibrio entre la oferta y los usos de los productos.
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item De ella sale el PIB por el gasto. Restando a los 2 lados los consumos intermedios y las importaciones, lo que queda a un lado es el PIB por la producción y al otro, el PIB por el gasto:
+\[
+\underbrace{\mathrm{P.1}-\mathrm{P.2}+(\mathrm{D.21}-\mathrm{D.31})}_{\text{PIB por la producción}}=\underbrace{C+I+G+(X-M)}_{\text{PIB por el gasto}} .
+\]
+  \item Producto a producto, es la identidad que las tablas de origen y destino obligan a cumplir (apartado~\ref{sec:otras-cuentas}).
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Cuentas corrientes}\label{sec:corrientes}
+
+\begin{itemize}
+\item Las \concepto{cuentas corrientes} registran la producción, la generación, la distribución y la redistribución de la renta, y su utilización en consumo y ahorro.
+\item Empiezan en la producción, porque de ella sale toda la renta que después se reparte, y terminan en el ahorro, que enlaza con la acumulación.
+\end{itemize}
+
+\subsubsection{Cuenta de producción}\label{sec:produccion}
+
+\begin{itemize}
+\item \emph{Qué registra}:
+  \begin{itemize}
+  \item El proceso de producción: lo que se produce y lo que se gasta para producirlo.
+  \end{itemize}
+\item \emph{Empleos y recursos}:
+  \begin{itemize}
+  \item En los recursos va la producción a precios básicos.
+  \item En los empleos van los \concepto{consumos intermedios}: los bienes y servicios que se gastan en el proceso (energía, materiales, transporte, publicidad, alquileres, programas), a precios de adquisición. No son consumos intermedios los salarios ni los activos fijos.\footnote{Desde el SEC 2010, el gasto en I+D ya no es consumo intermedio, sino formación bruta de capital fijo, porque tiene los rasgos de un activo: es de alguien, se usa una y otra vez y rinde durante más de un año. El cambio elevó el PIB y, con él, el excedente bruto de explotación, de modo que baja la participación medida del trabajo. En Estados Unidos, la capitalización de la propiedad intelectual explica la caída de esa participación que registran sus cuentas \parencite{KohSantaeulaliaZheng2020} \vertema{3.A.45}.}
+  \item Para el total de la economía, los impuestos netos sobre los productos se suman a sus recursos, porque no se asignan a ningún sector.
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item El \concepto{valor añadido bruto} (VAB) de cada sector o rama, a precios básicos.
+  \item Para el total, el \concepto{producto interior bruto} (PIB) a precios de mercado, que es la suma de los VAB más los impuestos netos sobre los productos (ecuación~\eqref{eq:valoracion}).
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item El valor que crea la producción, sin contar 2 veces los bienes intermedios.
+  \item El PIB es el agregado central del sistema: mide la actividad, su ciclo y su crecimiento, y es el denominador de las ratios de déficit y de deuda.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{El PIB por las 3 vías}
+
+\begin{itemize}
+\item El \concepto{PIB a precios de mercado} es el resultado final de la actividad productiva de las unidades residentes en un territorio: el valor de mercado de todos los bienes y servicios nuevos y finales producidos en ese territorio en un periodo \parencite{SEC2010}.
+\item Se mide de 3 formas, que son los 3 vértices del flujo circular (gráfico~\ref{fig:triangulo-pib}):
+\funcionclave[eq:pib-tres-vias]{\begin{aligned}\mathrm{PIB}&=\underbrace{\textstyle\sum\mathrm{VAB}+(\text{impuestos}-\text{subvenciones})_{\text{productos}}}_{\text{producción}}\\&=\underbrace{\mathrm{RA}+\mathrm{EBE}+\mathrm{RMB}+(\text{impuestos}-\text{subvenciones})_{\text{prod. e import.}}}_{\text{rentas}}\\&=\underbrace{C+I+G+(X-M)}_{\text{gasto}}\end{aligned}}
+  \begin{itemize}
+  \item \emph{la producción} (la oferta) suma los valores añadidos brutos de los sectores o ramas, que son la producción menos los consumos intermedios, y los impuestos netos sobre los productos;
+  \item \emph{las rentas} suman la remuneración de los asalariados ($\mathrm{RA}$), el excedente bruto de explotación ($\mathrm{EBE}$) y la renta mixta bruta ($\mathrm{RMB}$), que se definen en la cuenta de explotación (apartado~\ref{sec:explotacion}), y los impuestos netos sobre la producción y las importaciones;
+  \item \emph{el gasto} (la demanda) suma los empleos finales de los residentes y las exportaciones, y resta las importaciones.
+  \end{itemize}
+\item Las letras del gasto tienen un sentido preciso:
+  \begin{itemize}
+  \item $C$ es el gasto en consumo final de los hogares y de las ISFLSH; la compra de vivienda nueva no es consumo, sino inversión \vertema{3.A.33};
+  \item $I$ es la formación bruta de capital, con 3 partidas: la formación bruta de capital fijo, la variación de existencias y las adquisiciones menos cesiones de objetos valiosos \vertema{3.A.34};
+  \item $G$ es el gasto en consumo final de las Administraciones Públicas; la inversión pública va en $I$;
+  \item $X$ y $M$ son las exportaciones y las importaciones de bienes y servicios.
+  \end{itemize}
+\item \emph{En la práctica}: las 3 vías no salen iguales de las fuentes. El INE las equilibra producto a producto y rama a rama en las \emph{tablas de origen y destino}, que fijan un único nivel del PIB, coherente con sus 3 descomposiciones \parencite[cap.~9]{SEC2010} \vertema{3.A.31}.
+\item \emph{Las reglas del agregado}: al pasar de las cuentas de cada unidad al total, los contables nacionales buscan 3 cosas \parencite[cap.~1]{LequillerBlades2018}:
+  \begin{itemize}
+  \item no contar 2 veces lo mismo;
+  \item que los agregados tengan sentido económico y no cambien por razones ajenas a la economía, como que una empresa se divida en 2;
+  \item que se puedan medir.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{El PIB de España en 2025 por las 3 vías}
+\begin{tablacaja}
+\caption{PIB de España en 2025 por las 3 vías (millones de euros corrientes)}\label{tab:pib-espana-2025}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{7.4cm}>{\raggedleft\arraybackslash}m{2.1cm}>{\raggedleft\arraybackslash}m{1.5cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Millones} & \textbf{\% PIB}\\
+\midrule
+\rowcolor{tceesalvia}\multicolumn{3}{l}{\textbf{Producción}}\\
+VAB a precios básicos & 1.531.681 & 90,6\\
+$+$ Impuestos netos sobre los productos & 158.331 & 9,4\\
+\midrule
+\rowcolor{tceesalvia}\multicolumn{3}{l}{\textbf{Rentas}}\\
+Remuneración de los asalariados ($\mathrm{RA}$) & 817.261 & 48,4\\
+$+$ Excedente bruto de explotación y renta mixta bruta & 703.714 & 41,6\\
+$+$ Impuestos netos sobre la producción y las importaciones & 169.037 & 10,0\\
+\midrule
+\rowcolor{tceesalvia}\multicolumn{3}{l}{\textbf{Gasto}}\\
+Gasto en consumo final de los hogares y las ISFLSH ($C$) & 932.945 & 55,2\\
+$+$ Gasto en consumo final de las AAPP ($G$) & 324.514 & 19,2\\
+$+$ Formación bruta de capital ($I$) & 367.451 & 21,7\\
+$+$ Exportaciones ($X$) & 616.488 & 36,5\\
+$-$ Importaciones ($M$) & 551.386 & 32,6\\
+\midrule
+\textbf{PIB a precios de mercado} & \textbf{1.690.012} & \textbf{100,0}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia con datos del INE \parencite{INE2026CNA2025}, tomados de Eurostat \parencites{Eurostat2026nama10gdp}{Eurostat2026nasa10nftr}; presentación por las 3 vías a partir de \textcite{GutierrezHernandez2021}. Avance de 2025.}
+\end{tablacaja}
+\begin{itemize}
+\item Las 3 vías suman exactamente lo mismo: 1,69 billones de euros. En 2025 el PIB creció un 2,6~\% en volumen y su deflactor, un 3,0~\% \parencite{INE2026CNA2025}.
+\item La formación bruta de capital se reparte entre la formación bruta de capital fijo (354.333 millones) y la variación de existencias y objetos valiosos (13.118) \parencite{Eurostat2026nama10gdp}.
+\end{itemize}
+\end{anotaciones}
+
+\subsubsection{Cuenta de explotación}\label{sec:explotacion}
+
+\begin{itemize}
+\item \emph{Qué registra}:
+  \begin{itemize}
+  \item Cómo se reparte el valor añadido entre quienes han intervenido en la producción: el trabajo, el capital y las Administraciones Públicas, por los impuestos ligados a la producción.
+  \end{itemize}
+\item \emph{Empleos y recursos}:
+  \begin{itemize}
+  \item En los recursos va el saldo de la cuenta anterior: el VAB y, para el total, el PIB.
+  \item En los empleos va la \concepto{remuneración de los asalariados}: todo lo que los empleadores residentes pagan por el trabajo, a residentes y no residentes, en dinero o en especie; incluye los sueldos y salarios y las cotizaciones sociales a cargo del empleador.
+  \item En los empleos van también los impuestos netos sobre la producción y las importaciones. En un sector, solo los \emph{otros} impuestos netos sobre la producción, porque los que gravan los productos no forman parte de su VAB a precios básicos.
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item El \concepto{excedente bruto de explotación} (EBE) de las sociedades.
+  \item En los hogares, la \concepto{renta mixta bruta} (RMB) de los autónomos y empresarios individuales, que remunera a la vez su trabajo y su capital, porque no se pueden separar.
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item Lo que queda para el capital antes de pagar intereses, rentas de la tierra y dividendos: es la base para medir la rentabilidad y los márgenes.
+  \item Mide la distribución funcional de la renta. La remuneración de los asalariados sobre el PIB es la medida habitual de la participación del trabajo: en España, el 48,4~\% en 2025 \parencite{Eurostat2026nama10gdp}.
+  \item Esa medida hay que corregirla por la renta mixta, que en parte remunera trabajo: imputando a cada autónomo el salario medio de un asalariado, la participación ajustada sube al 56,6~\% \parencite{CE2026AMECO} \vertema{3.A.45}.
+  \item Para el total, los empleos de esta cuenta dan el PIB por las rentas, la segunda línea de~\eqref{eq:pib-tres-vias}.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Cuenta de asignación de la renta primaria}\label{sec:asignacion}
+
+\begin{itemize}
+\item \emph{Qué registra}:
+  \begin{itemize}
+  \item Las rentas primarias que cobran las unidades residentes por su papel en la producción o por prestar sus activos. Mira a las unidades como perceptoras de renta y no como productoras.
+  \end{itemize}
+\item \emph{Empleos y recursos}:
+  \begin{itemize}
+  \item En los recursos van el EBE y la renta mixta, la remuneración de los asalariados que cobran los hogares residentes (también la que pagan empleadores de fuera), los impuestos netos sobre la producción y las importaciones que cobran las Administraciones Públicas y las rentas de la propiedad a cobrar: intereses, dividendos, rentas de la tierra.
+  \item En los empleos van las rentas de la propiedad a pagar.
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item El \concepto{saldo de las rentas primarias} de cada sector.
+  \item Para el total, la \concepto{renta nacional bruta} (RNB), que es el PIB más las rentas primarias netas que llegan del resto del mundo, $\mathrm{RNB}=\mathrm{PIB}+\mathrm{RP}$.\footnote{La RNB sustituyó en el SEC 95 al antiguo producto nacional bruto (PNB): tiene el mismo importe, pero recibe el nombre que le corresponde, porque es un concepto de renta y no de producción.}
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item Lo que ingresan los residentes por producir. Es la base del principal recurso propio del presupuesto de la Unión.
+  \item Se aleja del PIB en los países con mucha inversión extranjera, que pagan fuera buena parte de los beneficios (Irlanda tiene una RNB muy por debajo de su PIB), o con muchos trabajadores en el exterior.
+  \item La regla de que un país deudor neto tiene una RNB menor que su PIB no siempre se cumple. En 2025 la de España superó al PIB en un 0,2~\%, aunque es deudora neta: los salarios que cobran sus residentes fuera y las subvenciones de la Unión compensan las rentas de la propiedad que paga al exterior \parencites{INE2026CNA2025}{Eurostat2026nasa10nftr}.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Cuenta de distribución secundaria de la renta}\label{sec:distribucion}
+
+\begin{itemize}
+\item \emph{Qué registra}:
+  \begin{itemize}
+  \item La redistribución en dinero: las transferencias corrientes sin contrapartida que una unidad hace a otra, por obligación o de forma voluntaria.
+  \end{itemize}
+\item \emph{Empleos y recursos}:
+  \begin{itemize}
+  \item En los recursos va el saldo de las rentas primarias, más las transferencias corrientes a cobrar; en los empleos, las transferencias a pagar.
+  \item Las transferencias son de 4 tipos:
+    \begin{enumerate}
+    \item los \emph{impuestos corrientes sobre la renta, el patrimonio, etc.} (D.5): el IRPF, el impuesto sobre sociedades, el de patrimonio;
+    \item las \emph{cotizaciones sociales netas} (D.61), reales e imputadas; las imputadas son las de un empleador que paga él mismo las prestaciones de sus empleados, como la Administración con las clases pasivas;
+    \item las \emph{prestaciones sociales distintas de las transferencias sociales en especie} (D.62): pensiones, prestaciones por desempleo;
+    \item las \emph{otras transferencias corrientes} (D.7): primas y siniestros de seguros, cooperación internacional, remesas, aportaciones corrientes a la Unión.
+    \end{enumerate}
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item La \concepto{renta disponible bruta} (RDB) de cada sector.
+  \item Para el total, la \concepto{renta nacional disponible bruta} (RNDB). Las transferencias entre residentes se compensan, y solo quedan las rentas secundarias netas con el resto del mundo, $\mathrm{RS}$:
+\begin{equation}\label{eq:rndb}
+\mathrm{RNB}=\mathrm{PIB}+\mathrm{RP},\qquad \mathrm{RNDB}=\mathrm{RNB}+\mathrm{RS}=\mathrm{PIB}+\mathrm{RP}+\mathrm{RS}.
+\end{equation}
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item Lo que cada sector puede consumir o ahorrar después de la redistribución.
+  \item La renta disponible de los hogares es la variable de las funciones de consumo \vertema{3.A.33}.
+  \item En 2025 la RNDB de España fue de 1.679.739 millones, algo menos que la RNB: España transfiere al exterior más rentas secundarias de las que recibe \parencite{Eurostat2026nasa10nftr}.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Cuenta de redistribución de la renta en especie}\label{sec:especie}
+
+\begin{itemize}
+\item \emph{Qué registra}:
+  \begin{itemize}
+  \item Las \concepto{transferencias sociales en especie}: los bienes y servicios individuales que las Administraciones Públicas y las ISFLSH dan a los hogares gratis o casi gratis, como la sanidad, la educación o los servicios sociales.
+  \end{itemize}
+\item \emph{Empleos y recursos}:
+  \begin{itemize}
+  \item En los recursos va la renta disponible.
+  \item Las transferencias en especie son un recurso de los hogares y un empleo de las Administraciones Públicas y de las ISFLSH.
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item La \concepto{renta disponible bruta ajustada} (RDBA) de cada sector.
+  \item Para el total de la economía coincide con la RNDB, porque estas transferencias se hacen entre residentes.
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item La renta de los hogares con los servicios públicos que reciben.
+  \item Permite comparar el bienestar material entre países con sistemas distintos: si en un país la sanidad la pagan los hogares y en otro las Administraciones, sin el ajuste el segundo parecería más pobre de lo que es.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Cuentas de utilización de la renta}\label{sec:utilizacion}
+
+\begin{itemize}
+\item \emph{Qué registran}:
+  \begin{itemize}
+  \item Cómo se reparte la renta entre el consumo y el ahorro. Hay 2 versiones, una por cada renta:
+    \begin{itemize}
+    \item la \emph{cuenta de utilización de la renta disponible} anota el \concepto{gasto en consumo final}, es decir, \emph{quién paga} el consumo. Las Administraciones Públicas tienen un gasto en consumo \emph{individual} (lo que transfieren en especie) y uno \emph{colectivo}: los servicios que se prestan a todos a la vez, de los que no se puede excluir a nadie y que el uso de uno no reduce para los demás (la defensa, la justicia, el orden público);
+    \item la \emph{cuenta de utilización de la renta disponible ajustada} anota el \concepto{consumo final efectivo}, es decir, \emph{quién consume}. El de los hogares es su gasto más las transferencias sociales en especie; el de las Administraciones, solo el colectivo.
+    \end{itemize}
+  \end{itemize}
+\item \emph{Empleos y recursos}:
+  \begin{itemize}
+  \item En los recursos va la renta disponible, o la ajustada, y en los empleos, el consumo.
+  \item En los hogares se suma a los recursos el \emph{ajuste por la variación de los derechos por pensiones}, porque las reservas de los planes de pensiones privados se consideran suyas.\footnote{Las cotizaciones a esos planes y las pensiones que pagan se anotan como transferencias, pero el ahorro que acumulan es de los hogares: el ajuste devuelve a sus recursos lo que restaron las cotizaciones netas y lo quita a las instituciones financieras que gestionan los planes.}
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item El \concepto{ahorro bruto}, que es el mismo con las 2 versiones; restando el consumo de capital fijo, el ahorro neto.
+  \item Para el total, el \concepto{ahorro nacional bruto}, que es la renta nacional disponible que no se consume, $S=\mathrm{RNDB}-C-G$: la misma definición que usa la balanza de pagos \vertema{3.B.11}. En 2025 fue el 25,0~\% del PIB de España \parencite{Eurostat2026nasa10nftr}.
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item La renta que no se consume. Puede ser negativo: entonces la unidad vende activos o se endeuda.
+  \item Es el enlace entre las cuentas corrientes y las de acumulación: lo que se ahorra financia la inversión.
+  \item El \emph{consumo} de los modelos macroeconómicos es el gasto en consumo final de los hogares \vertema{3.A.33}.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los agregados de la sucesión de cuentas: qué mide cada uno y para qué sirve}\label{tab:agregados}
+\renewcommand{\arraystretch}{1.2}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.18\linewidth}>{\raggedright\arraybackslash}m{0.18\linewidth}>{\raggedright\arraybackslash}m{0.255\linewidth}>{\raggedright\arraybackslash}m{0.255\linewidth}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Cuenta} & \textbf{Agregado del total} & \textbf{Qué mide} & \textbf{Para qué sirve} \\
+\midrule
+Producción & PIB (VAB por sectores y ramas) & Lo que se produce dentro, sin duplicaciones & Actividad, ciclo y crecimiento; denominador de las ratios fiscales \\
+Explotación & EBE y renta mixta & Lo que queda para el capital tras pagar al trabajo y los impuestos netos & Rentabilidad, márgenes, participación del trabajo \\
+Asignación de la renta primaria & RNB & Lo que ingresan los residentes por producir & Renta de un país con mucha inversión extranjera; recurso propio de la Unión \\
+Distribución secundaria & RNDB & Lo que pueden gastar o ahorrar los residentes & Poder de compra de los hogares; efecto de las remesas y la cooperación \\
+Redistribución en especie & RDBA (igual a la RNDB en el total) & La renta con los servicios públicos individuales que se reciben & Comparar el bienestar de los hogares entre países \\
+Utilización de la renta & Ahorro nacional & Lo que no se consume & Tasa de ahorro; sostenibilidad del gasto \\
+Capital & Capacidad o necesidad de financiación & Lo que se presta o se pide prestado & Déficit público; saldo exterior; desequilibrios \\
+Balances & Patrimonio neto & La riqueza en una fecha & Solvencia; efecto riqueza \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir del SEC 2010 \parencite[cap.~8]{SEC2010}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Recapitulando}: de la producción hemos llegado al ahorro, y por el camino han salido el PIB, el excedente, la renta nacional y la disponible (tabla~\ref{tab:agregados}). Con el ahorro pasamos a la acumulación: qué se compra con él y cómo se financia lo que falta.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Cuentas de acumulación}\label{sec:acumulacion}
+
+\begin{itemize}
+\item Las \concepto{cuentas de acumulación} registran por qué cambian los activos, los pasivos y el patrimonio neto. A la izquierda van las variaciones de los activos y a la derecha las de los pasivos y del patrimonio neto, con signo positivo si aumentan y negativo si disminuyen.
+\item Son 3: la cuenta de capital, la cuenta financiera y la de otras variaciones de los activos.
+\end{itemize}
+
+\subsubsection{Cuenta de capital}\label{sec:cuenta-capital}
+
+\begin{itemize}
+\item \emph{Qué registra}:
+  \begin{itemize}
+  \item En qué medida las compras netas de activos no financieros se han pagado con el ahorro y con las transferencias de capital. Tiene 2 partes:
+    \begin{itemize}
+    \item la \emph{cuenta de variaciones del patrimonio neto debidas al ahorro y a las transferencias de capital} suma al ahorro las \concepto{transferencias de capital} a cobrar y le resta las que hay que pagar. Se distinguen de las corrientes en que van ligadas a la compra o la cesión de un activo: las ayudas a la inversión de los fondos europeos, el impuesto de sucesiones, una condonación de deuda;
+    \item la \emph{cuenta de adquisiciones de activos no financieros} dice a qué se destinan esos recursos.
+    \end{itemize}
+  \end{itemize}
+\item \emph{Variaciones de activos y de pasivos}:
+  \begin{itemize}
+  \item En el lado de los activos va la \concepto{formación bruta de capital}, con sus 3 partidas:
+    \begin{itemize}
+    \item la \emph{formación bruta de capital fijo}, las compras menos ventas de activos fijos, que se usan para producir durante más de un año: viviendas y otras construcciones, maquinaria y bienes de equipo, y productos de la propiedad intelectual (la I+D, los programas informáticos, los originales literarios y artísticos);
+    \item la \emph{variación de existencias};
+    \item las adquisiciones menos cesiones de \emph{objetos valiosos}, como las joyas o las obras de arte \vertema{3.A.34}.
+    \end{itemize}
+  \item En el mismo lado van las adquisiciones menos cesiones de activos no financieros no producidos: los recursos naturales (la tierra), los contratos, arrendamientos y licencias, y el fondo de comercio y los activos comerciales, como las marcas.
+  \item En el lado de los pasivos y el patrimonio neto van el ahorro y las transferencias de capital netas.
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item La \concepto{capacidad} ($+$) o \concepto{necesidad} ($-$) \concepto{de financiación} (B.9): lo que una unidad o un sector puede prestar a los demás, o lo que tiene que pedirles prestado.
+  \item Para el total de la economía, lo que el país presta al resto del mundo o le pide.
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item Es el saldo más vigilado del sistema, porque dice quién financia a quién.
+  \item Sumado por sectores, y dejando a un lado las transferencias de capital, el saldo de la nación reparte entre el sector privado y el público lo que el país ahorra de más o de menos:
+\funcionclave[eq:ahorro-inversion]{\underbrace{S-I}_{\text{nación}}=\underbrace{(S_P-I_P)}_{\text{sector privado}}+\underbrace{(S_G-I_G)}_{\text{Administraciones Públicas}}=\underbrace{\mathrm{CC}}_{\text{cuenta corriente}}}
+  \item \emph{En palabras}: \uline{lo que un sector ahorra de más lo financia otro, dentro o fuera del país}. Con las transferencias de capital, el saldo de la nación es $\mathrm{CC}+\mathrm{CK}$, el mismo que el de la balanza de pagos, salvo por las diferencias de fuentes \vertema{3.B.11}.\footnote{$S_G-I_G$ es el $T-G$ con que la balanza de pagos escribe esta identidad, con $T$ los ingresos públicos netos de transferencias y $G$ el gasto público total, corriente y de inversión. Aquí $G$ es solo el consumo público, como en el PIB por el gasto~\eqref{eq:pib-tres-vias}, y la inversión pública va en $I_G$.}
+  \item En las \emph{Administraciones Públicas}, el saldo es el \concepto{déficit} (si es negativo) o el \concepto{superávit} público que se mide en el procedimiento de déficit excesivo, salvo unos ajustes por las permutas financieras. En 2025, el de España fue una necesidad de financiación del 2,4~\% del PIB \parencite{Eurostat2026nasa10nftr} \vertema{3.A.39} \vertema{4.B.1}.
+  \item En los \emph{hogares} y las \emph{sociedades} dice quién financia a quién dentro del país.
+  \end{itemize}
+\item \emph{Lo que dicen los datos} (gráfico~\ref{fig:capacidad-sectores}):
+  \begin{itemize}
+  \item En 2025 la economía española prestó al resto del mundo el 4,3~\% del PIB, 72.218 millones de euros \parencite{Eurostat2026nasa10nftr}.
+  \item Los hogares (2,8~\% del PIB), las instituciones financieras (2,7~\%) y las sociedades no financieras (1,2~\%) ahorraron más de lo que invirtieron, y con ello financiaron también la necesidad de las Administraciones Públicas (2,4~\%).
+  \item No siempre fue así: en 2007 la nación pedía prestado el 9,0~\% del PIB, porque las empresas y los hogares invertían mucho más de lo que ahorraban. Desde 2012 es prestamista neta \parencite{Eurostat2026nasa10nftr}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Capacidad o necesidad de financiación de España por sectores (\% del PIB)}\label{fig:capacidad-sectores}
+\grafico[0.9\textwidth]{capacidad-financiacion-sectores-espana}
+\fuente{elaboración propia con datos del INE tomados de Eurostat \parencite{Eurostat2026nasa10nftr}. Qué hay que ver: la necesidad de financiación de la nación hasta 2011, debida a las empresas y los hogares, y desde 2012 la capacidad del sector privado, que financia el déficit público.}
+\end{figure}
+
+\begin{anotaciones}[unbreakable]
+\textbf{Dos «cuentas de capital» distintas}
+\begin{itemize}
+\item La \emph{cuenta de capital del SEC 2010} registra el ahorro, las transferencias de capital y la inversión de cada sector; su saldo es la capacidad o necesidad de financiación (B.9).
+\item La \emph{cuenta de capital de la balanza de pagos} ($\mathrm{CK}$) solo recoge las transferencias de capital con el exterior y las adquisiciones netas de activos no producidos, como las marcas o los derechos de emisión. La inversión de un país no está en ella \vertema{3.B.11}.
+\end{itemize}
+\end{anotaciones}
+
+\subsubsection{Cuenta financiera}\label{sec:cuenta-financiera}
+
+\begin{itemize}
+\item \emph{Qué registra}:
+  \begin{itemize}
+  \item Cómo se financia la necesidad de financiación, o en qué se coloca la capacidad, por instrumentos: efectivo y depósitos, valores de deuda, préstamos, participaciones en el capital y en fondos de inversión, seguros y pensiones, derivados y otras cuentas.
+  \end{itemize}
+\item \emph{Variaciones de activos y de pasivos}:
+  \begin{itemize}
+  \item A la izquierda va la adquisición neta de activos financieros ($\mathrm{VNA}$) y a la derecha, la contracción neta de pasivos ($\mathrm{VNP}$).
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item La cuenta financiera no tiene un saldo que pase a otra cuenta. La diferencia entre sus 2 lados, $\mathrm{VNA}-\mathrm{VNP}$, es otra vez la \concepto{capacidad o necesidad de financiación}, que en teoría tiene que ser igual a la de la cuenta de capital \parencite{SEC2010}.
+  \item Es la contrapartida financiera de las cuentas de la economía real: lo que la cuenta de capital calcula como ahorro menos inversión, la financiera lo calcula como activos menos pasivos financieros.
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item Por qué instrumentos se canaliza el ahorro de unos sectores hacia otros: si una necesidad de financiación se cubre con préstamos bancarios, con bonos o con capital, y frente a quién.
+  \item En la práctica las 2 cifras no coinciden, porque se calculan con fuentes distintas: las cuentas no financieras, el INE, y las financieras, el Banco de España. La diferencia se publica como \concepto{discrepancia estadística}, y cuadrarlas es una de las tareas más difíciles de la elaboración de las cuentas.
+  \item En 2025, la capacidad de financiación de España fue de 72.218 millones según la cuenta de capital y de 85.151 según la financiera. La diferencia, 12.933 millones, es casi exactamente la partida de errores y omisiones de la balanza de pagos (12.940) \parencites{Eurostat2026nasa10nftr}{Eurostat2026nasa10ftr} \vertema{3.B.11}.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}[unbreakable]
+\textbf{La cuenta financiera de España en 2025}
+\begin{tablacaja}
+\caption{Cuenta financiera de España por sectores, 2025 (millones de euros)}\label{tab:cuenta-financiera-2025}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\raggedleft\arraybackslash}m{1.45cm}>{\raggedleft\arraybackslash}m{1.45cm}>{\raggedleft\arraybackslash}m{1.45cm}>{\raggedleft\arraybackslash}m{1.45cm}>{\raggedleft\arraybackslash}m{1.45cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Socieda\-des no finan\-cieras} & \textbf{Institu\-ciones finan\-cieras} & \textbf{AAPP} & \textbf{Hogares e ISFLSH} & \textbf{Total}\\
+\midrule
+Adquisición neta de activos financieros & 97.848 & 208.952 & 27.240 & 101.372 & 435.413\\
+Contracción neta de pasivos & 77.531 & 166.269 & 67.999 & 38.462 & 350.262\\
+\midrule
+\rowcolor{tceesalvia}Capacidad ($+$) o necesidad ($-$): cuenta financiera & 20.317 & 42.682 & $-$40.759 & 62.910 & 85.151\\
+Capacidad ($+$) o necesidad ($-$): cuenta de capital & 20.402 & 45.318 & $-$40.641 & 47.139 & 72.218\\
+Discrepancia estadística & $-$85 & $-$2.636 & $-$118 & 15.771 & 12.933\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia con las cuentas financieras del Banco de España \parencite{Eurostat2026nasa10ftr} y las cuentas no financieras del INE \parencite{Eurostat2026nasa10nftr}, tomadas de Eurostat.}
+\end{tablacaja}
+\begin{itemize}
+\item Los hogares colocaron su ahorro sobre todo en fondos de inversión (52.900 millones) y en depósitos (48.417), y se endeudaron con préstamos por 31.182 \parencite{Eurostat2026nasa10ftr}.
+\item Las Administraciones Públicas se financiaron sobre todo emitiendo deuda (65.090 millones) y con préstamos (18.099) \parencite{Eurostat2026nasa10ftr}.
+\item El total es la cuenta financiera de la balanza de pagos con el resto del mundo, que la cuenta del resto del mundo recoge con el signo cambiado (apartado~\ref{sec:resto-mundo}).
+\end{itemize}
+\end{anotaciones}
+
+\subsubsection{Cuenta de otras variaciones de los activos}\label{sec:otras-variaciones}
+
+\begin{itemize}
+\item \emph{Qué registra}:
+  \begin{itemize}
+  \item Lo que cambia el patrimonio sin operaciones (apartado~\ref{sec:flujos-stocks}). Tiene 2 partes:
+    \begin{itemize}
+    \item la \emph{cuenta de otras variaciones del volumen de los activos} recoge las apariciones y desapariciones de activos por causas no económicas (un descubrimiento de petróleo, un terremoto, una expropiación sin indemnización) o por cambios de clasificación;
+    \item la \emph{cuenta de revalorización} recoge las \concepto{ganancias y pérdidas de posesión} nominales por la variación de los precios de los activos que se tienen. Se dividen en \emph{neutrales}, las que mantienen el valor real al ritmo del nivel general de precios, y \emph{reales}, lo que sube o baja el precio relativo del activo.
+    \end{itemize}
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item Las variaciones del patrimonio neto debidas a otras variaciones del volumen y a las ganancias y pérdidas de posesión.
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item Los efectos riqueza: la subida del precio de la vivienda o de la bolsa cambia el patrimonio de los hogares sin que ahorren más \vertema{3.A.33}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Balances}\label{sec:balances}
+
+\begin{itemize}
+\item \emph{Qué registran}:
+  \begin{itemize}
+  \item Los activos y los pasivos, financieros y no financieros, al principio y al final del periodo, a los precios de cada fecha.
+  \item Son 3: el balance inicial, las variaciones del balance y el balance final.
+  \end{itemize}
+\item \emph{Cómo se enlazan}:
+  \begin{itemize}
+  \item El balance inicial más las variaciones del periodo da el balance final. Las variaciones son las que registran las cuentas de acumulación: las operaciones (el ahorro y las transferencias de capital), las otras variaciones del volumen y las ganancias y pérdidas de posesión:
+\begin{equation}\label{eq:balance}
+\begin{aligned}\text{patrimonio neto}_t={}&\text{patrimonio neto}_{t-1}+\text{ahorro y transferencias de capital netas}_t\\&+\text{otras variaciones}_t .\end{aligned}
+\end{equation}
+  \end{itemize}
+\item \emph{Saldo}:
+  \begin{itemize}
+  \item El \concepto{patrimonio neto}, los activos menos los pasivos.
+  \item Para el total de la economía, la \concepto{riqueza nacional neta}, que es el capital no financiero más la posición de inversión internacional neta \vertema{3.B.11}.
+  \end{itemize}
+\item \emph{Qué mide y para qué sirve}:
+  \begin{itemize}
+  \item La solvencia de cada sector y el riesgo de sus balances: la deuda de los hogares frente a su riqueza, la de las empresas frente a sus activos.
+  \item Cierra la sucesión: el patrimonio final es el punto de partida del periodo siguiente.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Cuentas del resto del mundo}\label{sec:resto-mundo}
+
+\begin{itemize}
+\item \emph{Qué registran}:
+  \begin{itemize}
+  \item Las operaciones entre residentes y no residentes. El resto del mundo no es un sector, pero tiene cuentas con la misma estructura que los sectores, para cerrar el sistema: con ellas, todas las operaciones tienen sus 2 partes dentro de las cuentas.
+  \end{itemize}
+\item \emph{Desde fuera}:
+  \begin{itemize}
+  \item Se escriben desde el punto de vista del resto del mundo, de modo que \uline{van con el signo cambiado}: una importación del país es un recurso del resto del mundo y una exportación, un empleo; un activo financiero del resto del mundo frente al país es un pasivo del país.
+  \item Por eso el superávit corriente de un país es un saldo negativo de su resto del mundo.
+  \end{itemize}
+\item \emph{Las cuentas y sus saldos} (tabla~\ref{tab:resto-mundo}):
+  \begin{itemize}
+  \item cada cuenta del resto del mundo tiene su equivalente en la balanza de pagos, con el signo cambiado.
+  \end{itemize}
+\item \emph{Qué miden y para qué sirven}:
+  \begin{itemize}
+  \item Son la balanza de pagos del país vista desde el otro lado. La balanza la elabora el Banco de España con el manual del FMI y los mismos principios, y es la que se usa para analizar las relaciones con el exterior \vertema{3.B.11}.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las cuentas del resto del mundo y su equivalencia en la balanza de pagos}\label{tab:resto-mundo}
+\renewcommand{\arraystretch}{1.2}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.28\linewidth}>{\raggedright\arraybackslash}m{0.32\linewidth}>{\raggedright\arraybackslash}m{0.3\linewidth}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Cuenta (SEC 2010)} & \textbf{Recursos y empleos del resto del mundo} & \textbf{Saldo y equivalencia} \\
+\midrule
+V.I Cuenta de intercambios exteriores de bienes y servicios & Recursos: importaciones del país; empleos: sus exportaciones & B.11 Saldo de intercambios exteriores de bienes y servicios, $M-X$ \\
+V.II Cuenta de rentas primarias y de transferencias corrientes con el exterior & Recursos: rentas y transferencias que paga el país; empleos: las que cobra & B.12 Saldo de operaciones corrientes con el exterior, $-\mathrm{CC}$ \\
+V.III.1 Cuenta de capital & Transferencias de capital y activos no producidos & B.9 del resto del mundo, $-(\mathrm{CC}+\mathrm{CK})$ \\
+V.III.2 Cuenta financiera & Activos y pasivos frente a los residentes & La cuenta financiera de la balanza, con el signo cambiado \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir del SEC 2010 \parencite[cap.~8]{SEC2010} y de \textcite{FMI2009MBP6}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Otras cuentas y aportaciones del SEC 2010}\label{sec:otras-cuentas}
+
+\begin{itemize}
+\item La sucesión de cuentas es el núcleo del sistema, pero no todo el sistema. El SEC 2010 la completa con otras cuentas, que dan más detalle, más frecuencia o un ámbito distinto:
+  \begin{itemize}
+  \item las \concepto{cuentas económicas integradas} reúnen en un solo cuadro todas las cuentas de todos los sectores, del resto del mundo y del total de la economía, con las operaciones en el centro, los empleos y los recursos de cada sector a los lados y los saldos entre medias. De un vistazo se ve la sucesión entera y cómo cuadra \parencite[cap.~8]{SEC2010} (anexo~\ref{anexo:cei});
+  \item el \concepto{marco \emph{input-output}} describe la producción por ramas y productos: las tablas de origen (quién produce cada producto y cuánto se importa), las de destino (a qué se destina cada producto y qué valor añade cada rama) y la tabla simétrica que se deriva de ellas. Cumplen 2 identidades, producción igual a consumos intermedios más valor añadido por ramas, y oferta igual a empleos por productos, y con ellas se cuadra el PIB por las 3 vías \parencite[cap.~9]{SEC2010} \vertema{3.A.31};
+  \item la \emph{población y el empleo}: el SEC mide el empleo en personas ocupadas, puestos de trabajo, horas trabajadas y puestos equivalentes a tiempo completo \parencite[cap.~11]{SEC2010}. Las horas son la medida preferida para la productividad, y el empleo de las cuentas no coincide con el de la Encuesta de Población Activa, porque se ajusta a la producción y a la residencia \vertema{4.A.1};
+  \item las \emph{cuentas trimestrales} dan el PIB y sus componentes cada trimestre, en series corregidas de estacionalidad y de efectos de calendario; el INE publica un avance a los 30 días de acabar el trimestre y lo revisa después \parencites[cap.~12]{SEC2010}{INE2026avCNTR3T26} \vertema{3.A.42};
+  \item las \emph{cuentas regionales} dan el PIB, la renta de los hogares y el empleo por regiones \parencite[cap.~13]{SEC2010}. Con el PIB por habitante de cada región, en paridades de poder adquisitivo, se reparten los fondos estructurales: las regiones menos desarrolladas son las que no llegan al 75~\% de la media de la Unión \parencite{RegUE2021Disposiciones} \vertema{3.B.40};
+  \item las \concepto{cuentas satélite} amplían el sistema para un área concreta sin cambiar el marco central: cambian algún concepto o dan más detalle \parencite[cap.~22]{SEC2010}. En España, el INE elabora la cuenta satélite del turismo y las cuentas medioambientales, que un reglamento europeo de 2011 hizo obligatorias \parencite{RegUE2011Ambientales} \vertema{3.B.31}.
+  \end{itemize}
+\item El SCN 2025 lleva al marco central parte de lo que hoy está en las cuentas satélite, como los datos o el agotamiento de los recursos naturales (anexo~\ref{anexo:sec95}).
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulando}: la sucesión de cuentas lleva de la producción al patrimonio, y cada saldo es un agregado con un uso: el PIB, para la actividad; la renta disponible, para el consumo; el ahorro y la capacidad de financiación, para la sostenibilidad; el patrimonio, para la solvencia. Pero las cifras en euros corrientes no bastan para leer la economía: hay que pasarlas a volumen, saber de dónde salen y qué dejan fuera. Es lo que vemos en el último bloque.
+\end{itemize}
+
+% ==========================================================================
+\section{Uso y límites de las magnitudes macroeconómicas}\label{sec:uso-limites}
+\minutos{6,5}
+
+\begin{itemize}
+\item Una vez construidas las magnitudes, pasamos a cómo se usan y hasta dónde llegan.
+\item \emph{Conclusión anticipada}: para leerlas hay que pasarlas a volumen y descomponer su crecimiento; se elaboran cruzando muchas fuentes que se revisan, y los datos de alta frecuencia las acercan al tiempo real. Su agregado central, el PIB, mide bien la actividad, pero no el bienestar ni la sostenibilidad: por eso se completa con otros indicadores, no se sustituye.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Del valor al volumen:\cortetitulo deflactor y contribuciones al crecimiento}\label{sec:volumen}
+
+\begin{itemize}
+\item \emph{El problema}: el PIB nominal crece porque se produce más y porque suben los precios. Para saber cuánto ha crecido la producción hay que valorarla a los precios de otro periodo.
+\item \emph{Volúmenes encadenados}:
+  \begin{itemize}
+  \item El SEC no usa un año base fijo, porque los precios relativos cambian (los ordenadores se abaratan cada año) y unos pesos antiguos exageran el crecimiento de lo que más se abarata.
+  \item Cada año se valora a los precios del año anterior, y las tasas se encadenan \parencite[cap.~10]{SEC2010}:
+\begin{equation}\label{eq:volumen-encadenado}
+1+\gamma_{Y,t}=\frac{\vect{p}^{t-1}\cdot\vect{x}^{t}}{\vect{p}^{t-1}\cdot\vect{x}^{t-1}} .
+\end{equation}
+  \item Es un índice de volumen de \autor{Laspeyres} con los precios del año anterior. Su producto acumulado, expresado en euros de un año de referencia, es el \concepto{PIB en volumen encadenado}.
+  \end{itemize}
+\item \emph{El deflactor}:
+  \begin{itemize}
+  \item El \concepto{deflactor implícito del PIB} es el cociente entre el PIB nominal y el PIB en volumen, $P\equiv\frac{\text{PIB nominal}}{\text{PIB en volumen}}\times100$, y su tasa es aproximadamente la del PIB nominal menos la del real, $\gamma_P\approx\gamma^N-\gamma_Y$.
+  \item Año a año, $\dfrac{P_t}{P_{t-1}}=\dfrac{\vect{p}^{t}\cdot\vect{x}^{t}}{\vect{p}^{t-1}\cdot\vect{x}^{t}}$: pondera los precios con las cantidades del año corriente. Como el PIB en volumen se calcula con índices de \autor{Laspeyres} encadenados, con los precios del año anterior, su deflactor implícito es un \emph{índice de \autor{Paasche} encadenado} \vertema{3.A.9}.
+  \item En 2025 el deflactor del PIB de España creció un 3,0~\% \parencite{INE2026CNA2025}.
+  \end{itemize}
+\item \emph{Las contribuciones al crecimiento}: restando a la identidad del gasto la del año anterior y dividiendo por $Y_{t-1}$, el crecimiento del PIB se reparte entre sus componentes:
+\funcionclave[eq:contribuciones]{\gamma_{Y,t}=\underbrace{\frac{C_{t-1}}{Y_{t-1}}\gamma_{C,t}+\frac{I_{t-1}}{Y_{t-1}}\gamma_{I,t}+\frac{G_{t-1}}{Y_{t-1}}\gamma_{G,t}}_{\text{contribución de la demanda interna}}+\underbrace{\frac{X_{t-1}}{Y_{t-1}}\gamma_{X,t}-\frac{M_{t-1}}{Y_{t-1}}\gamma_{M,t}}_{\text{contribución de la demanda externa}}}
+  \begin{itemize}
+  \item \emph{En palabras}: cada contribución es el \emph{peso} del componente en el año anterior por su \emph{crecimiento} de este año, y se mide en \uline{puntos porcentuales, no en porcentaje}. Las importaciones restan; las existencias también contribuyen.
+  \item Por ejemplo, con un PIB de 100, si el consumo pesa 60 y crece un 2~\%, la inversión pesa 20 y crece un 5~\%, el consumo público pesa 20 y crece un 1~\%, y las exportaciones y las importaciones pesan 30 cada una y crecen un 4 y un 6~\%, la demanda interna aporta $1{,}2+1{,}0+0{,}2=2{,}4$ puntos, la externa resta $1{,}2-1{,}8=-0{,}6$, y el PIB crece un 1,8~\%.
+  \item \emph{La cautela de los volúmenes encadenados}: los componentes en euros encadenados \emph{no suman} el PIB encadenado, salvo en el año de referencia y el siguiente (la \concepto{no aditividad}). Las contribuciones sí suman si cada peso es la participación \emph{nominal} del componente en el año anterior; por eso se usan las que publica el INE (anexo~\ref{anexo:encadenados}) \parencite{Eurostat2013QNA}.
+  \end{itemize}
+\item \emph{Cómo se leen}: la demanda interna es \emph{procíclica} y la externa tiende a ser \emph{contracíclica}, porque las importaciones caen con la renta \vertema{3.A.42}. Es la lectura que se hace en el dictamen de coyuntura del primer ejercicio.
+  \begin{itemize}
+  \item En 2025 el PIB de España creció un 2,6~\%: la demanda nacional aportó 3,4 puntos y la externa restó 0,8 \parencite{INE2026CNA2025}. En el tercer trimestre de 2026 crecía un 2,7~\% interanual, casi todo por la demanda nacional \parencite{INE2026avCNTR3T26}.
+  \item En 2009 la demanda nacional restó 6,6 puntos y la externa sumó 2,8; en 2020 restaron las 2 (gráfico~\ref{fig:contribuciones-pib-espana}) \parencite{Eurostat2026nama10gdp} \vertema{4.A.29}.
+  \end{itemize}
+\item \emph{Para comparar niveles de vida}, el PIB se divide por la población y se convierte en paridades de poder adquisitivo, que corrigen las diferencias de precios entre países. Es el que usa la política de cohesión para clasificar las regiones; el índice de desarrollo humano usa la renta nacional bruta por habitante, también en paridades de poder adquisitivo \vertema{3.B.28}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Contribuciones al crecimiento del PIB de España (puntos porcentuales)}\label{fig:contribuciones-pib-espana}
+\grafico[0.9\textwidth]{contribuciones-pib-espana}
+\fuente{elaboración propia con datos del INE tomados de Eurostat \parencite{Eurostat2026nama10gdp}. Qué hay que ver: la demanda nacional es procíclica y la externa, contracíclica (2009); en 2020 cayeron las 2.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Elaboración, fuentes y datos de alta frecuencia}\label{sec:fuentes}
+
+\begin{itemize}
+\item \emph{Quién elabora qué en España}:
+  \begin{itemize}
+  \item el INE, la contabilidad nacional anual y trimestral, las cuentas no financieras de los sectores, la contabilidad regional y el marco \emph{input-output};
+  \item el Banco de España, las cuentas financieras, la balanza de pagos y la posición de inversión internacional;
+  \item la IGAE, las cuentas de las Administraciones Públicas con las que se notifican el déficit y la deuda a la Unión \vertema{4.B.1}.
+  \end{itemize}
+\item \emph{Con qué fuentes}: no hay una encuesta de la contabilidad nacional.
+  \begin{itemize}
+  \item Las cuentas combinan estadísticas de empresas y de comercio exterior, encuestas a los hogares y registros administrativos (declaraciones de impuestos, afiliación a la Seguridad Social, ejecución presupuestaria), y las tablas de origen y destino las hacen cuadrar \vertema{4.A.1}.
+  \item Los registros ganan peso: el INE ya usa para el año 2025 la contabilidad de cerca de 1,35 millones de empresas \parencite{INE2026CNA2025}.
+  \end{itemize}
+\item \emph{Las revisiones}: cada cifra se publica varias veces.
+  \begin{itemize}
+  \item Las \emph{ordinarias} incorporan datos nuevos: el avance trimestral a los 30 días se revisa después, y cada año pasa de avance a provisional y a definitivo.
+  \item Las \emph{extraordinarias}, coordinadas en la Unión, cambian fuentes y métodos: la Revisión Estadística 2024 del INE elevó el PIB de 2023 un 2,5~\% \parencite{INE2024CNARE2024}, y la siguiente llegará en 2027 \parencite{INE2026avCNTR3T26}.
+  \end{itemize}
+\item \emph{Datos de alta frecuencia y} nowcasting: para conocer el PIB antes de que se publique se usan indicadores mensuales, semanales o diarios. «A buen entendedor, pocas palabras bastan»: unas pocas señales tempranas anticipan la cifra.
+  \begin{itemize}
+  \item \emph{Indicadores clásicos}: la afiliación a la Seguridad Social, la producción industrial, la cifra de negocios, el consumo de electricidad, las encuestas de gestores de compras.
+  \item \emph{Fuentes nuevas}: el IVA que las empresas declaran casi en tiempo real a la Agencia Tributaria, los pagos con tarjeta, las búsquedas en internet, la movilidad y las estadísticas experimentales del INE \parencite{INE2026Experimentales}.
+  \item \emph{Modelos}: los modelos factoriales dinámicos combinan indicadores de distinta frecuencia y se actualizan con cada dato nuevo, como el Spain-STING del Banco de España \parencite{CamachoPerezQuiros2011} o el MIPred de la AIReF \parencite{AIReF2026MIPred}.
+  \end{itemize}
+\item \emph{Su límite}: en la crisis de la COVID-19 permitieron seguir la caída de la actividad casi semana a semana, pero miden mejor el cambio que el nivel y se apoyan en muestras que no siempre representan a toda la economía. Complementan a la contabilidad nacional, no la sustituyen.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El PIB y el bienestar:\cortetitulo limitaciones e indicadores alternativos}\label{sec:pib-bienestar}
+
+\begin{itemize}
+\item \emph{Sus ventajas}: el PIB es una cifra única, en dinero, comparable entre países y en el tiempo, elaborada con las mismas reglas en todo el mundo y coherente con el resto de las cuentas. Mide bien lo que pretende medir: la producción de mercado y su ciclo.
+  \begin{itemize}
+  \item Además, va muy ligado al bienestar. \textcite{JonesKlenow2016Beyond} construyen una medida de bienestar con el consumo, el ocio, la esperanza de vida y la desigualdad, y la encuentran muy correlacionada con el PIB por habitante, aunque con desviaciones grandes: Europa occidental está más cerca de Estados Unidos en bienestar que en renta.
+  \end{itemize}
+\item \emph{Sus limitaciones}: ya \autor{Kuznets}, al presentar la primera estimación, advirtió que de la renta nacional no se puede deducir el bienestar de un país \parencite{Kuznets1934NationalIncome}. «No solo de pan vive el hombre»:
+  \begin{itemize}
+  \item \emph{lo que no pasa por el mercado} queda fuera: el trabajo doméstico y de cuidados, el voluntariado, el ocio;
+  \item \emph{lo que se mide mal}: los servicios públicos, que se valoran por su coste; las mejoras de calidad y los servicios digitales gratuitos; y la economía no observada, que el SEC 2010 obliga a incluir, también la ilegal, y que el INE estima desde 2014, aunque con métodos indirectos \parencites{SEC2010}{INE2014Base2010};
+  \item \emph{la distribución}: un PIB por habitante mayor puede ir con más desigualdad \vertema{3.A.24};
+  \item \emph{la sostenibilidad}: el PIB suma lo producido aunque agote recursos o contamine, y también los gastos que solo reparan daños \vertema{3.B.31};
+  \item \emph{la fiabilidad}: en algunos países la medición es débil o se maquilla. \textcite{ChenEtAl2019Forensic} estiman que las cifras oficiales exageraron el crecimiento de China entre 2010 y 2016 en algo menos de 2 puntos al año.\footnote{Un vídeo divulgativo sobre esta cuestión: \href{https://youtu.be/G632a6M2hC0}{\emph{Is China lying about its GDP growth?}} \parencite{VisualPolitik2019China}.}
+  \end{itemize}
+\item \emph{Indicadores alternativos}: la respuesta no ha sido sustituir el PIB, sino completarlo.
+  \begin{itemize}
+  \item \emph{Corregir el PIB}: la medida del bienestar económico de \textcite{NordhausTobin1972Growth} parte del consumo, suma el valor del ocio y del trabajo doméstico y resta los daños ambientales (anexo~\ref{anexo:pib-bienestar}).
+  \item \emph{Índices compuestos}: el índice de desarrollo humano del PNUD combina la renta con la salud y la educación; en el de 2023, España ocupa el puesto 28 \parencite{PNUD2025IDH} \vertema{3.B.28}.
+  \item \emph{Cuadros de indicadores}: la comisión de \autor{Joseph Stiglitz}, \autor{Amartya Sen} y \autor{Jean-Paul Fitoussi} recomendó mirar la renta y el consumo de los hogares antes que la producción, su distribución, las dimensiones no materiales del bienestar y la sostenibilidad \parencite{StiglitzSenFitoussi2009}. En esa línea están la comunicación «Más allá del PIB» de la Comisión Europea \parencite{CE2009MasAllaPIB} y el panel de 31 indicadores que un grupo de expertos de Naciones Unidas propuso en 2026 \parencite{ONU2026BeyondGDP}.
+  \item \emph{Cuentas ampliadas}: el Sistema de Contabilidad Ambiental y Económica aplica la lógica de las cuentas nacionales a la relación entre la economía y el medio ambiente \parencite{ONU2014SCAE}, y el SCN 2025 incorpora el agotamiento de los recursos naturales, los datos y la distribución de la renta de los hogares (anexo~\ref{anexo:sec95}).
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulando}: las magnitudes se leen en volumen y por contribuciones, se elaboran con fuentes que se revisan y se adelantan con datos de alta frecuencia; el PIB es imprescindible para medir la actividad y no basta para medir el bienestar.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}:
+  \begin{itemize}
+  \item En conclusión, las magnitudes macroeconómicas son 3 caras de un mismo flujo, la producción, la renta y el gasto, y de esa igualdad salen identidades que ninguna teoría puede saltarse.
+  \item El SEC 2010 las mide con reglas comunes y con una cadena de cuentas en la que cada saldo es un agregado: del PIB a la renta disponible, de ella al ahorro y del ahorro a la capacidad o necesidad de financiación y al patrimonio.
+  \item Para leerlas hay que pasarlas a volumen y descomponer su crecimiento, sin olvidar lo que dejan fuera.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Sin ellas no habría diagnóstico del ciclo, ni reglas fiscales, ni presupuesto europeo: en la Unión, las cifras del SEC tienen efectos jurídicos y financieros.
+  \end{itemize}
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item Las cuentas nacionales son la base de la balanza de pagos \vertema{3.B.11}, del análisis \emph{input-output} \vertema{3.A.31}, de las cuentas de las Administraciones Públicas \vertema{4.B.1} y del dictamen de coyuntura.
+  \item Sus identidades son el punto de partida de los modelos del consumo, de la inversión y del crecimiento \vertema{3.A.33} \vertema{3.A.34} \vertema{3.A.45}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item Al PIB se le critica por lo que no mide, pero a menudo se le pide lo que no promete: es una medida de la actividad, y como tal funciona bien.
+  \item Lo razonable es completarlo, leyéndolo junto a la renta disponible de los hogares, los balances y las cuentas ambientales y distributivas, que es lo que hace el SCN 2025.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item Ya no se hace la política económica a ojo de buen cubero: se sabe cuánto crece la economía 30 días después de acabar cada trimestre.
+  \item A la pregunta del principio, unas pocas cifras sí resumen la actividad de millones de agentes, si se sabe cómo se han hecho y qué dejan fuera. El reto es medir igual de bien lo que el PIB no mide, porque solo se gestiona bien lo que se mide bien.
+  \end{itemize}
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: del SEC 95 al SEC 2010 y al SCN 2025}\label{anexo:sec95}
+
+\begin{itemize}
+\item \emph{Por qué cambió}: el SEC 2010 sustituyó al SEC 95 para adaptar las cuentas a una economía con más peso de las tecnologías de la información, de los activos inmateriales y de la globalización \parencites{IGAE2014SEC2010}{MurielDeLaRiva2015}.
+\item \emph{Sus cambios principales} \parencite{INE2014Base2010}:
+  \begin{itemize}
+  \item el gasto en \emph{I+D} pasa de consumo intermedio a formación bruta de capital, porque tiene los rasgos de un activo fijo: derechos de propiedad definidos, uso repetido y beneficios durante más de un año;
+  \item el \emph{gasto militar} en armas y sus sistemas de apoyo también es formación de capital, aunque no tenga uso civil; antes solo lo era el que tenía un equivalente civil (aeródromos, hospitales);
+  \item se amplía la frontera de las actividades financieras, con más contratos de derivados;
+  \item se precisan los criterios para delimitar el sector de las Administraciones Públicas y se tratan con más detalle las operaciones del sector público;
+  \item los bienes enviados fuera para transformarlos sin cambio de propiedad dejan de ser exportaciones e importaciones: solo se anota el servicio de transformación;
+  \item se estiman de forma explícita las actividades ilegales (prostitución, tráfico de drogas, contrabando), que la base 2010 del INE incorporó en 2014.
+  \end{itemize}
+\item \emph{Lo que sigue fuera}: el capital humano no es un activo del sistema, y el trabajo doméstico no remunerado no es producción. El SCN 2025 los trata en cuentas ampliadas, no en el marco central \parencite{ONU2025SCN}.
+\item \emph{Lo que trae el SCN 2025}, que la Unión aplicará con un nuevo SEC, con los cambios principales desde 2030 \parencites{Eurostat2026ESA2030}{Verrinder2026SCN2025}:
+  \begin{itemize}
+  \item el agotamiento de los recursos naturales pasa a ser un coste, que reduce los agregados netos;
+  \item los datos pasan a ser un activo producido, como lo fue la I+D en 2008, y la economía digital y las plataformas tienen más detalle;
+  \item más detalle de las multinacionales y de la globalización;
+  \item la distribución de la renta y de la riqueza de los hogares y el bienestar entran entre los ejes del sistema.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el SEC 2010 frente al SCN 2008}\label{anexo:scn2008}
+
+\begin{itemize}
+\item El SEC 2010 se basa en los conceptos del SCN 2008, la guía mundial, pero se aparta de él en 2 cosas \parencite[cap.~1]{SEC2010}.
+\item \emph{La presentación}:
+  \begin{itemize}
+  \item el SEC dedica capítulos distintos a las operaciones de bienes y servicios, a las de distribución y a las financieras; el SCN ordena sus capítulos por cuentas (producción, distribución primaria, capital, resto del mundo);
+  \item el SEC define cada concepto con lo que incluye y lo que excluye; el SCN los describe en términos más generales y explica por qué se adoptan sus convenciones.
+  \end{itemize}
+\item \emph{La precisión}: en varios puntos el SEC es más concreto, porque se aplica en la Unión y tiene efectos jurídicos:
+  \begin{itemize}
+  \item da criterios detallados para separar la producción de mercado, la producción para uso final propio y la no de mercado;
+  \item no registra cierta producción de bienes de los hogares para sí mismos (la confección o los muebles), por no ser significativa en los Estados miembros;
+  \item recoge instituciones de la Unión, como el sistema Intrastat del comercio entre los Estados miembros o sus aportaciones al presupuesto europeo;
+  \item usa clasificaciones europeas (la CPA de productos y la NACE Rev.~2 de actividades, armonizadas con las de Naciones Unidas);
+  \item separa las operaciones exteriores con residentes de la Unión de las del resto del mundo;
+  \item reordena los subsectores de las instituciones financieras para atender a la unión monetaria.
+  \end{itemize}
+\end{itemize}
+
+\clearpage
+% ==========================================================================
+\section{Anexo: la sucesión completa de cuentas}\label{anexo:sucesion}
+
+\begin{itemize}
+\item Las cuentas de toda la economía, en forma de T resumida: a la izquierda los empleos (en las cuentas de acumulación, las variaciones de los activos) y a la derecha los recursos (las variaciones de los pasivos y del patrimonio neto); el saldo, en salvia, pasa a la cuenta siguiente \parencite[cap.~8]{SEC2010}. La cuenta de bienes y servicios va al revés, con los recursos a la izquierda (tabla~\ref{tab:cuentas-corrientes}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La cuenta de bienes y servicios y las cuentas corrientes}\label{tab:cuentas-corrientes}
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.2\linewidth}>{\raggedright\arraybackslash}m{0.33\linewidth}>{\raggedright\arraybackslash}m{0.37\linewidth}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Cuenta} & \textbf{Empleos} & \textbf{Recursos} \\
+\midrule
+C.0 Bienes y servicios & \emph{Recursos}: producción (P.1, precios básicos); impuestos menos subvenciones sobre los productos (D.21 $-$ D.31); importaciones (P.7, FOB) & \emph{Empleos}: consumos intermedios (P.2); gasto en consumo final (P.3); formación bruta de capital (P.5: P.51g, P.52, P.53); exportaciones (P.6, FOB) \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{Sin saldo: recursos $=$ empleos}\\
+C.I Producción & Consumos intermedios (P.2, precios de adquisición) & Producción (P.1, precios básicos); en el total, $+$ D.21 $-$ D.31 \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.1g VAB a precios básicos; en el total, B.1*g PIB a precios de mercado; $-$ P.51c $=$ valores netos}\\
+C.II.1.1 Explotación & Remuneración de los asalariados (D.1); otros impuestos menos subvenciones sobre la producción (D.29 $-$ D.39; en el total, D.2 $-$ D.3) & B.1g VAB (en el total, B.1*g PIB) \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.2g excedente bruto de explotación y B.3g renta mixta bruta}\\
+C.II.1.2 Asignación de la renta primaria & Rentas de la propiedad a pagar (D.4) & B.2g y B.3g; remuneración de los asalariados (D.1, hogares); D.2 $-$ D.3 (AAPP); rentas de la propiedad a cobrar (D.4) \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.5g saldo de las rentas primarias; en el total, B.5*g RNB}\\
+C.II.2 Distribución secundaria & Impuestos sobre la renta y el patrimonio (D.5), cotizaciones (D.61), prestaciones (D.62) y otras transferencias corrientes (D.7) a pagar & B.5g; D.5, D.61, D.62 y D.7 a cobrar \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.6g renta disponible bruta; en el total, RNDB}\\
+C.II.3 Redistribución en especie & Transferencias sociales en especie (D.63) a pagar (AAPP e ISFLSH) & B.6g; D.63 a cobrar (hogares) \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.7g renta disponible ajustada bruta (en el total, igual a la RNDB)}\\
+C.II.4.1 Utilización de la renta disponible & Gasto en consumo final (P.3); ajuste por pensiones (D.8, instituciones financieras) & B.6g; ajuste por pensiones (D.8, hogares) \\
+C.II.4.2 Utilización de la renta disponible ajustada & Consumo final efectivo (P.4); D.8 & B.7g; D.8 \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.8g ahorro bruto (el mismo en las 2 versiones); en el total, ahorro nacional bruto}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir del SEC 2010 \parencite[cap.~8]{SEC2010} y de \textcite[caps.~6-8]{MunozCidadEtAl2020}.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Las cuentas de acumulación y los balances}\label{tab:cuentas-acumulacion}
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.2\linewidth}>{\raggedright\arraybackslash}m{0.35\linewidth}>{\raggedright\arraybackslash}m{0.35\linewidth}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Cuenta} & \textbf{Variaciones de los activos} & \textbf{Variaciones de los pasivos y del patrimonio neto} \\
+\midrule
+C.III.1.1 Variaciones del patrimonio neto por el ahorro y las transferencias de capital & & Ahorro neto (B.8n); $+$ transferencias de capital a cobrar (D.9); $-$ transferencias de capital a pagar (D.9) \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.101 variaciones del patrimonio neto debidas al ahorro y a las transferencias de capital}\\
+C.III.1.2 Adquisiciones de activos no financieros & Formación bruta de capital fijo (P.51g); $-$ consumo de capital fijo (P.51c); variación de existencias (P.52); objetos valiosos (P.53); activos no producidos (NP) & B.101 \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.9 capacidad ($+$) o necesidad ($-$) de financiación}\\
+C.III.2 Financiera & Adquisición neta de activos financieros (F.1 a F.8) & Contracción neta de pasivos (F.2 a F.8) \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.9F capacidad o necesidad de financiación (igual a B.9 salvo la discrepancia estadística)}\\
+C.III.3.1 Otras variaciones del volumen & Apariciones, desapariciones y reclasificaciones de activos & Las mismas, de pasivos \\
+C.III.3.2 Revalorización & Ganancias y pérdidas de posesión de los activos (neutrales y reales) & Las mismas, de los pasivos \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.102 y B.103: variaciones del patrimonio neto por otras variaciones del volumen y por revalorización}\\
+C.IV Balances (inicial, variaciones y final) & Activos no financieros y financieros & Pasivos \\
+\rowcolor{tceesalvia}\multicolumn{3}{l}{B.90 patrimonio neto; balance final $=$ inicial $+$ variaciones~\eqref{eq:balance}}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir del SEC 2010 \parencite[caps.~5-8]{SEC2010}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{La renta nacional disponible, sin ajustar y ajustada}: las 2 versiones de la utilización de la renta reparten lo mismo de 2 formas.
+  \begin{itemize}
+  \item La RNDB es la suma de las rentas disponibles de los sectores (hogares, ISFLSH, Administraciones Públicas y sociedades) y se reparte en el gasto en consumo final de los hogares, de las ISFLSH y de las Administraciones Públicas, más el ahorro.
+  \item La RNDB ajustada es la suma de las rentas disponibles ajustadas, que en el total coincide con la RNDB, y se reparte en el consumo final efectivo, individual (de los hogares) y colectivo (de las Administraciones Públicas), más el mismo ahorro.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Presentación sinóptica: cuentas, saldos y agregados}\label{tab:sinoptica}
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.3\linewidth}>{\raggedright\arraybackslash}m{0.24\linewidth}>{\raggedright\arraybackslash}m{0.16\linewidth}>{\raggedright\arraybackslash}m{0.18\linewidth}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Cuenta} & \textbf{Saldo contable} & \textbf{Agregado del total} & \textbf{Relación} \\
+\midrule
+\rowcolor{tceemoradopalido}\multicolumn{4}{l}{\textbf{Cuentas corrientes}}\\
+C.0 Bienes y servicios & --- (identidad) & --- & recursos $=$ empleos \\
+C.I Producción & B.1g VAB & PIB & \eqref{eq:valoracion} \\
+C.II.1.1 Explotación & B.2g EBE; B.3g RMB & --- & \eqref{eq:pib-tres-vias} \\
+C.II.1.2.1 Renta empresarial & B.4g renta empresarial & --- & --- \\
+C.II.1.2.2 Asignación de otra renta primaria & B.5g saldo de las rentas primarias & RNB & $\mathrm{PIB}+\mathrm{RP}$ \\
+C.II.2 Distribución secundaria & B.6g renta disponible & RNDB & $\mathrm{RNB}+\mathrm{RS}$ \\
+C.II.3 Redistribución en especie & B.7g renta disponible ajustada & RNDB & --- \\
+C.II.4 Utilización de la renta & B.8g ahorro & ahorro nacional & $\mathrm{RNDB}-C-G$ \\
+\rowcolor{tceesalvia}\multicolumn{4}{l}{\textbf{Cuentas de acumulación}}\\
+C.III.1.1 Ahorro y transferencias de capital & B.101 & --- & --- \\
+C.III.1.2 Activos no financieros & B.9 capacidad o necesidad & la de la nación & $\mathrm{CC}+\mathrm{CK}$ \\
+C.III.2 Financiera & B.9F & --- & $\mathrm{VNA}-\mathrm{VNP}$ \\
+C.III.3 Otras variaciones & B.102 y B.103 & --- & --- \\
+\rowcolor{tceeazulpalido}\multicolumn{4}{l}{\textbf{Balances}}\\
+C.IV Balances & B.90 patrimonio neto & riqueza nacional neta & \eqref{eq:balance} \\
+C.V Resto del mundo & B.11, B.12, B.9 & --- & signo cambiado \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir del SEC 2010 \parencite[cap.~8]{SEC2010} y de \textcite[cap.~2]{FMI2013Curso}.}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: cuentas económicas integradas\cortetitulo y matriz de contabilidad social}\label{anexo:cei}
+
+\begin{itemize}
+\item \emph{Las cuentas económicas integradas} ponen todas las cuentas en un solo cuadro (tabla~\ref{tab:cei}). En el centro van las operaciones y los saldos, en el orden de la sucesión; a la izquierda, los empleos de los bienes y servicios, del resto del mundo, del total y de cada sector; a la derecha, en orden inverso, los recursos de cada sector, del total, del resto del mundo y de los bienes y servicios. Cada fila cuadra: lo que unos emplean lo reciben otros \parencite[cap.~8]{SEC2010}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Esquema de las cuentas económicas integradas}\label{tab:cei}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{4.2cm}>{\centering\arraybackslash}m{2.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Empleos} & \textbf{Operaciones y saldos} & \textbf{Recursos}\\
+\midrule
+bienes y servicios · S.2 · S.1 · S.15 \dots{} S.11 & producción, consumos intermedios, impuestos sobre los productos & S.11 \dots{} S.15 · S.1 · S.2 · bienes y servicios\\
+\rowcolor{tceesalvia} & B.1 valor añadido / PIB & \\
+\dots & remuneración, impuestos, rentas de la propiedad, transferencias, consumo & \dots\\
+\rowcolor{tceesalvia} & B.2, B.3, B.5, B.6, B.8 & \\
+\dots & formación de capital, operaciones financieras & \dots\\
+\rowcolor{tceesalvia} & B.9 capacidad o necesidad de financiación & \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir del SEC 2010 \parencite[cuadro~8.18]{SEC2010}.}
+\end{table}
+
+\begin{itemize}
+\item Una \concepto{matriz de contabilidad social} presenta las cuentas como una tabla cuadrada: cada cuenta (ramas, factores, hogares, Administraciones Públicas, ahorro-inversión, resto del mundo) tiene una fila, con sus ingresos, y una columna, con sus pagos, y la suma de cada fila es igual a la de su columna (tabla~\ref{tab:mcs}).
+  \begin{itemize}
+  \item Es el flujo circular de la renta escrito en forma de matriz (gráfico~\ref{fig:triangulo-pib}).
+  \item Amplía la tabla \emph{input-output} con la distribución de la renta entre los factores y los hogares \vertema{3.A.31}.
+  \item Es la base de datos con la que se calibran los modelos de equilibrio general aplicado, porque recoge a la vez todos los mercados y todos los agentes \vertema{3.A.21}.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Estructura simplificada de una matriz de contabilidad social}\label{tab:mcs}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\raggedright\arraybackslash}m{1.9cm}*{6}{>{\centering\arraybackslash}m{1.75cm}}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Ingresos \textbackslash{} pagos} & \textbf{Ramas} & \textbf{Factores} & \textbf{Hogares} & \textbf{AAPP} & \textbf{Ahorro-inversión} & \textbf{Resto del mundo}\\
+\midrule
+\textbf{Ramas} & consumos intermedios & & consumo privado & consumo público & formación de capital & exportaciones\\
+\textbf{Factores} & valor añadido & & & & & rentas de factores del exterior\\
+\textbf{Hogares} & & rentas de los factores & & transferencias & & transferencias del exterior\\
+\textbf{AAPP} & impuestos netos sobre la producción & & impuestos directos y cotizaciones & & & \\
+\textbf{Ahorro-inversión} & & & ahorro privado & ahorro público & & ahorro exterior\\
+\textbf{Resto del mundo} & importaciones & rentas pagadas al exterior & & & & \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{CardeneteMoniche2001}.}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: volúmenes encadenados y no aditividad}\label{anexo:encadenados}
+
+\begin{itemize}
+\item Una economía produce 2 bienes, $A$ y $B$. El precio de $B$ (un ordenador) cae a la mitad cada año y su cantidad se duplica; $A$ mantiene su cantidad y su precio sube un 20~\% al año (tabla~\ref{tab:encadenados}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Un ejemplo de volúmenes encadenados}\label{tab:encadenados}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{6.2cm}>{\centering\arraybackslash}m{1.7cm}>{\centering\arraybackslash}m{1.7cm}>{\centering\arraybackslash}m{1.7cm}}
+\toprule
+\rowcolor{tceeazulpalido}
+ & \textbf{Año 0} & \textbf{Año 1} & \textbf{Año 2} \\
+\midrule
+$A$: precio y cantidad & 1 y 50 & 1,2 y 50 & 1,44 y 50 \\
+$B$: precio y cantidad & 1 y 50 & 0,5 y 100 & 0,25 y 200 \\
+PIB nominal & 100 & 110 & 122 \\
+Crecimiento en volumen, a precios del año anterior & --- & 50~\% & 45,5~\% \\
+PIB encadenado (referencia: año 0) & 100 & 150 & 218,2 \\
+$A$ encadenado $+$ $B$ encadenado & $50+50$ & $50+100$ & $50+200=250$ \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia, con el método del SEC 2010 \parencite[cap.~10]{SEC2010}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{El crecimiento en volumen}: en el año 1, $(1\cdot50+1\cdot100)/100=1{,}5$; en el año 2, $(1{,}2\cdot50+0{,}5\cdot200)/110=160/110=1{,}455$. Encadenando, el PIB en volumen del año 2 es $100\cdot1{,}5\cdot1{,}455=218{,}2$.
+\item \emph{La no aditividad}: en el año de referencia y en el siguiente, los componentes encadenados suman el total; en el año 2 ya no (250 frente a 218,2), porque cada componente se ha encadenado con sus propios precios y el total con los de cada año.
+\item \emph{Las contribuciones sí suman}: en el año 2, con los pesos nominales del año 1 ($A$: $60/110$; $B$: $50/110$) y los crecimientos en volumen ($A$: 0~\%; $B$: 100~\%), la contribución de $B$ es $\frac{50}{110}\times100=45{,}5$ puntos, exactamente el crecimiento del PIB~\eqref{eq:contribuciones}.
+\item \emph{El deflactor}: en el año 2 el PIB nominal crece un 10,9~\% y el volumen un 45,5~\%, así que el deflactor cae un $1{,}109/1{,}455-1=-23{,}8~\%$. Es un índice de \autor{Paasche}: $\frac{1{,}44\cdot50+0{,}25\cdot200}{1{,}2\cdot50+0{,}5\cdot200}=\frac{122}{160}=0{,}7625$.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el PIB y el bienestar}\label{anexo:pib-bienestar}
+
+\begin{anotaciones}
+\textbf{Para ampliar}
+\begin{itemize}
+\item Una conferencia sobre la historia del bienestar y del desarrollo humano: \href{https://youtu.be/DRg-HM2GzXw}{\emph{Conferencia magistral de Leandro Prados de la Escosura}} \parencite{FRdP2023Prados}. Sus series históricas de desarrollo humano están en \textcite{Prados2022}.
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Problemas de medición}: algunas producciones se miden mal porque no pasan por el mercado (el voluntariado), y las mejoras de calidad pueden no reflejarse, lo que infravalora el crecimiento.
+  \begin{itemize}
+  \item La economía sumergida y la ilegal no faltan: el SEC 2010 obliga a estimarlas y el INE lo hace desde 2014 \parencite{INE2014Base2010}. Se aproximan, por ejemplo, con la demanda de efectivo o con las diferencias entre la renta y el gasto declarados.
+  \item Si la economía no observada crece más deprisa que la observada y se estima mal, el crecimiento se infravalora.
+  \end{itemize}
+\item \emph{La medida del bienestar económico} de \textcite{NordhausTobin1972Growth} parte del consumo final, no del PIB: suma los servicios de los bienes duraderos, el valor del ocio y del trabajo doméstico, y resta los gastos que no aumentan el bienestar (los desplazamientos al trabajo, la defensa) y los daños de la urbanización y del medio ambiente. En Estados Unidos creció entre 1929 y 1965, aunque más despacio que el PIB.
+\item \emph{La paradoja de Easterlin}: dentro de un país, los más ricos se declaran más felices, pero la felicidad media no subía con el crecimiento \parencite{Easterlin1974Does}. La explicación más citada es que importa la renta relativa, frente a los demás o frente al propio pasado (los hábitos). Con más países y más años, \textcite{StevensonWolfers2008} encuentran una relación positiva entre la renta y la satisfacción vital también entre países y en el tiempo. El \emph{World Happiness Report}, que suele citarse en este debate, es muy posterior: empezó en 2012 \parencite{HelliwellLayardSachs2012WHR}.
+\item \emph{El bienestar de \autor{Jones} y \autor{Klenow}}: miden cuánto consumo de más necesitaría un estadounidense para estar indiferente entre vivir en su país o en otro, teniendo en cuenta el consumo, el ocio, la esperanza de vida y la desigualdad de cada uno; la esperanza de vida es lo que más separa el bienestar de la renta \parencite{JonesKlenow2016Beyond}.
+\item \emph{Un índice de hace unos años}: en el Índice de Desarrollo Inclusivo de 2018 del Foro Económico Mundial, que combinaba empleo, esperanza de vida, renta de los hogares, pobreza, emisiones y deuda pública, España quedaba en el puesto 26 de 29 economías avanzadas (23 en PIB por habitante), solo por delante de Italia, Portugal y Grecia; Noruega era la primera \parencite{WEF2018IDI}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: lecturas y preguntas de test}\label{anexo:lecturas}
+
+\begin{itemize}
+\item \emph{Lecturas}:
+  \begin{itemize}
+  \item el propio reglamento del SEC 2010 \parencite{SEC2010}, cuyo primer anexo, el de la metodología, es muy explicativo: el capítulo~1 (características y principios) es la base de la exposición; el 8 da los nombres oficiales de las cuentas, y el 11 (población y empleo) es útil para el dictamen de coyuntura. Hay también versión de Eurostat \parencite{Eurostat2013SEC2010};
+  \item \textcite[caps.~6-8]{MunozCidadEtAl2020}, para el desarrollo de las cuentas;
+  \item \textcite{LequillerBlades2018}, un manual de la OCDE que explica las cuentas con ejemplos;
+  \item \textcite[cap.~2]{FMI2013Curso}, un resumen de las cuentas, sus saldos y sus agregados.
+  \end{itemize}
+\item Preguntas de test sobre este tema, en el simulador:
+  \begin{itemize}
+  \item \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}
+  \end{itemize}
+\end{itemize}
+
+\bibliografia
+\end{document}

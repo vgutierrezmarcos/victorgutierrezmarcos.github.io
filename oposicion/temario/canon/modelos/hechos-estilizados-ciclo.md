@@ -43,6 +43,7 @@ Cada variable se caracteriza por 4 rasgos (3.A.42), con el componente cíclico $
 |---|---|---|---|---|
 | 3.A.42 | Teorías del ciclo | desarrollo (hecho, 4/11/2026) | Los 4 rasgos con corr(·,·); los 5 hechos; `tab:hechos-ciclo` con datos de 3 economías y persistencia; el empleo frente a las horas; España; la pandemia; la Gran Moderación (Kim y Nelson, 1999; McConnell y Pérez-Quirós, 2000; Stock y Watson, 2002; Bernanke, 2004; Lucas, 2003) | — |
 | 3.A.33, 3.A.34 | Consumo, inversión | Mención (los 2 hechos, 31/10/2026; el 3.A.33 en III.3 a) con datos de España, 1996-2026, y `\vertema{3.A.42}`; el 3.A.34 en la introducción, con los datos de la CNTR) | Consumo menos volátil que el PIB; duraderos mucho más (desviación típica de la tasa interanual 10,6 frente a 3,9 del PIB); inversión varias veces más | La tabla |
+| 3.A.30 | Contabilidad nacional | Mención (hecho, 11/11/2026; III.1 con `\vertema{3.A.42}`) | Demanda interna procíclica y externa contracíclica al leer las contribuciones (2009, 2020) | Los hechos estilizados |
 | 1D01 | Dictamen de coyuntura | Resumen | Tabla sin persistencia, con existencias, vivienda, paro, curva de tipos y bolsa; lectura del cuadernillo | La teoría |
 | 3.A.6 | NMC: ciclo real | mención (hecho, 4/11/2026) | `tab:calibracion` (σ_Y, σ_C/σ_Y, σ_I/σ_Y, σ_L/σ_Y, σ_L/σ_{Y/L} y corr(horas, productividad)) con 1984-2019 | Los hechos estilizados en general |
 

@@ -1,0 +1,59 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Árbol de decisión que asigna una unidad institucional a su sector del SEC
+% 2010 (el «diagrama de delimitación» de la ficha sec-2010 del canon), de
+% izquierda a derecha. Elaboración propia a partir del SEC 2010, caps. 2 y 20.
+% Hojas con un color por sector (relleno pálido y borde del color): S.11 azul,
+% S.12 morado, S.13 rojo, S.14 verde, S.15 dorado y S.2 gris.
+% Capas: residencia -> resto del mundo -> hogares -> productor de mercado ->
+% instituciones financieras o sociedades -> AAPP o ISFLSH -> nota.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  inicio/.style={draw=black, line width=0.7pt, fill=white, rounded corners=2pt,
+    align=center, text width=1.75cm, inner sep=4pt, minimum height=1.0cm},
+  pregunta/.style={draw=tceegris, line width=0.6pt, fill=tceegris!10, rounded corners=6pt,
+    align=center, text width=2.2cm, inner sep=4pt, minimum height=1.0cm},
+  hoja/.style={draw=#1, line width=0.9pt, fill=#1!12, rounded corners=2pt,
+    align=center, text width=2.4cm, inner sep=4pt, minimum height=0.9cm},
+  rama/.style={->, thick, tceegris!80!black},
+  si/.style={font=\scriptsize\itshape, text=tceegris!80!black, inner sep=2pt}]
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-1.1,-3.75) rectangle (18.4,2.95);
+  % 1: la unidad institucional y la primera pregunta
+  \capa{1}{\node[inicio] (ui) at (0,0) {\textbf{Unidad institucional}};}
+  \capa{1}{\node[pregunta] (q1) at (3.0,0) {¿Es residente?};}
+  \capa{1}{\draw[rama] (ui) -- (q1);}
+  % 2: rama «no»: resto del mundo
+  \capa{2}{\node[hoja=tceegris] (s2) at (3.0,-2.1) {\textbf{Resto del mundo}\\ (S.2)};}
+  \capa{2}{\draw[rama] (q1) -- node[si, right] {no} (s2);}
+  % 3: ¿hogar o empresario individual? -> hogares
+  \capa{3}{\node[pregunta] (q2) at (6.2,0) {¿Es un hogar o un empresario individual?};}
+  \capa{3}{\draw[rama] (q1) -- node[si, above] {sí} (q2);}
+  \capa{3}{\node[hoja=tceeverde] (s14) at (6.2,-2.1) {\textbf{Hogares}\\ (S.14)};}
+  \capa{3}{\draw[rama] (q2) -- node[si, right] {sí} (s14);}
+  % 4: ¿productor de mercado? (criterio del 50 %)
+  \capa{4}{\node[pregunta, text width=2.75cm] (q3) at (9.75,0)
+    {¿Es productor de mercado?\\[1pt] {\scriptsize\color{tceegris!80!black} ventas ${\geq}\,50$~\% de los costes durante varios años y criterios cualitativos}};}
+  \capa{4}{\draw[rama] (q2) -- node[si, above] {no} (q3);}
+  % 5: ¿servicios financieros? -> S.12 o S.11
+  \capa{5}{\node[pregunta] (q4) at (13.3,1.55) {¿Presta servicios financieros?};}
+  \capa{5}{\draw[rama] (q3.north) |- node[si, pos=0.75, above] {sí} (q4.west);}
+  \capa{5}{\node[hoja=tceemorado] (s12) at (16.9,2.25) {\textbf{Instituciones financieras} (S.12)};}
+  \capa{5}{\node[hoja=tceeazul] (s11) at (16.9,0.85) {\textbf{Sociedades no financieras} (S.11)};}
+  \capa{5}{\draw[thick, tceegris!80!black] (q4.east) -- ++(0.35,0);}
+  \capa{5}{\draw[rama] ([xshift=0.35cm]q4.east) |- node[si, pos=0.7, above] {sí} (s12.west);}
+  \capa{5}{\draw[rama] ([xshift=0.35cm]q4.east) |- node[si, pos=0.7, below] {no} (s11.west);}
+  % 6: ¿controlada por las AAPP? -> S.13 o S.15
+  \capa{6}{\node[pregunta] (q5) at (13.3,-1.55) {¿La controlan las Administraciones Públicas?};}
+  \capa{6}{\draw[rama] (q3.south) |- node[si, pos=0.75, below] {no} (q5.west);}
+  \capa{6}{\node[hoja=tceerojo] (s13) at (16.9,-0.85) {\textbf{Administraciones Públicas} (S.13)};}
+  \capa{6}{\node[hoja=tceedorado] (s15) at (16.9,-2.25) {\textbf{ISFLSH}\\ (S.15)};}
+  \capa{6}{\draw[thick, tceegris!80!black] (q5.east) -- ++(0.35,0);}
+  \capa{6}{\draw[rama] ([xshift=0.35cm]q5.east) |- node[si, pos=0.7, above] {sí} (s13.west);}
+  \capa{6}{\draw[rama] ([xshift=0.35cm]q5.east) |- node[si, pos=0.7, below] {no} (s15.west);}
+  % 7: nota sobre las sociedades públicas
+  \capa{7}{\node[font=\scriptsize, text=tceegris!80!black, anchor=east] at (18.35,-3.45)
+    {Las sociedades públicas de mercado van a S.11 o S.12.};}
+\end{tikzpicture}
+\end{document}

@@ -1452,3 +1452,23 @@ El 3.A.37 es el **8.º y último revisado del bloque de ciclo económico y polí
 **Orden** (§ 10): con el 3.A.37 **queda revisado el bloque de ciclo y políticas**; sigue la **Contabilidad Nacional** (3.B.11, ya en revisión en paralelo; después el 3.A.31 y el 3.A.30) y, en la fase 3, la economía abierta (3.A.32, 3.B.12, 3.B.16, 3.B.14, 3.B.15, 3.B.19), que recibe del 3.A.37 el canal del tipo de cambio, Corsetti-Pesenti y el ciclo financiero global.
 
 **Ideas para la organización** (§ 11): el 3.A.37 es la **bisagra del bloque monetario**: el 3.A.36 dice qué quiere el banco central y con qué instrumentos actúa, el 3.A.37 por qué caminos llega y qué fricciones lo permiten, el 3.A.40 si funcionó desde 2008 y el 3.A.41 qué pasa cuando falla por arriba (inflación) o por abajo (deflación). En el PowerPoint, 2 láminas comunes: `canales-transmision` (que amplía el esquema de la 1D01, con cada grupo enlazado a su tema: tipo de interés → 3.A.33 y 3.A.34; crédito → 3.A.13, 3.A.34 y 3.A.42; activos → 3.A.35; tipo de cambio → 3.B.14; expectativas → 3.A.36) y `no-convencionales-canales` (con el tipo largo en el centro, enlazada al 3.A.36, el 3.A.40 y el 3.B.24). La tabla `tab:escuelas-transmision` resume en 8 filas el recorrido del bloque de historia del pensamiento (3.A.3-3.A.7) desde la pregunta de la transmisión.
+
+## 49. Decisiones abiertas tras la revisión del 3.A.30 (11/11/2026)
+
+El 3.A.30 cierra, con el 3.B.11 y el 3.A.31, el **bloque de Contabilidad Nacional**. Base: tu Word (antiguo 3.A.26, 2024), con su estructura, corregido (precios básicos, VAB y PIB, EBE, objetos valiosos, economía no observada, Reglamento 549/2013, residencia como el 3.B.11…). El canon no ha tocado ningún tema.
+
+**Que tocan el canon:**
+
+- **[decidir] Ficha nueva `identidades-contabilidad-nacional`** con el 3.A.30 de referencia (CC1): la sucesión general de cuentas, la cadena de saldos y las identidades; gráficos de referencia `sucesion-cuentas` y `triangulo-pib`.
+- **[decidir] Referencia repartida de `sec-2010`** (CC4): el marco general y la sucesión general, en el 3.A.30 (3.er ejercicio); la delimitación del S.13 y sus cuentas, en el 4.B.1. *Alternativa*: todo en el 4.B.1, con el 3.A.30 en resumen.
+- **[decidir] $(S_G-I_G)$ frente a $(T-G)$** (C1, A30-05): el 3.B.11 escribe $(T-G)$ con $G$ gasto total en la misma ecuación en que $G$ es consumo público; el 3.A.30, $(S_G-I_G)$ con nota. *Recomendado*: dejar el 3.B.11 y añadirle una nota igual. *Alternativa*: $(S_G-I_G)$ también en el 3.B.11 y en el canon.
+- **[decidir] RA y los impuestos en palabras** en el PIB por la renta (A30-04, C2), frente a $W$ y $(T-Sub)$ de la 1D01 (aprobada; el cambio en ella, opcional).
+- **[decidir] 4 funciones clave** en el 3.A.30 (A30-06): la cadena de saldos, las 3 vías, ahorro-inversión y contribuciones.
+- **[decidir] Gráfico de referencia de las contribuciones**: el de España del 3.A.30 para el 3.er ejercicio; el de la zona del euro, para el dictamen.
+- **Canon sin decisión, aplicado**: con volúmenes encadenados, las contribuciones con **pesos nominales del año anterior suman exactamente** (lo que no suma son los niveles); la ficha decía lo contrario, igual que la 1D01 (l. 377, pendiente). Clave común **`SEC2010` como `@online`**. Terminología del 3.A.30 en § 14 (**[decidir]**).
+
+**Para los temas ya revisados** (`pendientes-coherencia.md`, «Pendiente del 3.A.30»): **3.B.11** (C1); **1D01**, sin tocarla sin ti: $W$ y $T-Sub$, la razón del sesgo del deflactor (Paasche, no las importaciones), «RNB < PIB, típico de un deudor neto» (en 2025 España, deudora neta, tiene RNB > PIB), «la suma no es exacta» y la remisión de «IPC frente a deflactor»; **3.A.30** («VA» → VAB); claves del SEC en el 3.A.9, el 3.A.34, el 3.A.31 y la 1D01. Todo menor o cosmético.
+
+**Para los temas que se revisen después**: **4.B.1** (solo el S.13; la sucesión general, resumida), **4.A.1** (remisiones al 3.A.30 y la base de la contabilidad), **4.B.12** (clasificación de impuestos en el 4.B.7), **4.A.21**.
+
+**Dudas del tema que no tocan el canon** (`fuentes/3A30/revision.md`): A30-01 (magnitudes dentro de I.1), A30-02 (enganche «A ojo de buen cubero»), A30-03 («SEC 2030»), A30-07 (cuentas en T al anexo), A30-08 (Meade y Stone «animados por Keynes»), A30-10 a A30-13 y A30-15; A30-11 (la cuenta financiera del Banco de España, leída en Eurostat) conviene mirarla a mano antes de publicar.

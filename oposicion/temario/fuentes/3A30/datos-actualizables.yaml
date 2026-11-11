@@ -1,0 +1,258 @@
+tema: 3A30
+fecha_inventario: 2026-11-11
+# Partes 1 y 2 del tema (11/11/2026).
+# Las cifras históricas cerradas (Kuznets 1932-1934, SCN de 1953, Nobel) no están.
+datos:
+  - id: pib-avance-trimestral
+    texto: "el 30 de octubre de 2026 adelantó que en el tercer trimestre había crecido un 0,6 %"
+    donde: [3A30.tex]
+    valor: 0.6
+    unidad: "% de variación trimestral del PIB en volumen"
+    periodo: 3T2026 (avance)
+    fuente: INE2026avCNTR3T26
+    organismo: INE
+    serie: "Contabilidad Nacional Trimestral, avance (PIB, volumen encadenado, corregido de estacionalidad y calendario)"
+    url: https://www.ine.es/dyngs/Prensa/avCNTR3T26.htm
+    periodicidad: trimestral
+    proxima: 2027-01-30
+    familia: ine-pib
+  - id: nuevo-sec
+    texto: "La Comisión debe proponerlo a finales de 2026, y los cambios principales se aplicarán desde 2030"
+    donde: [3A30.tex]
+    valor: [2026, 2030]
+    unidad: años (propuesta legislativa y aplicación)
+    periodo: 2026-2030
+    fuente: Eurostat2026ESA2030
+    organismo: Eurostat
+    serie: "Página del SEC 2010 (preparación del ESA 2030)"
+    url: https://ec.europa.eu/eurostat/web/esa-2010
+    periodicidad: irregular
+    proxima: 2026-12
+    familia: eurostat-sec
+  - id: pib-tres-vias-2025
+    texto: "tabla tab:pib-espana-2025 (PIB de España en 2025 por las 3 vías, millones de euros corrientes y % del PIB)"
+    donde: [3A30.tex]
+    valor: 1690012
+    unidad: millones de euros
+    periodo: 2025 (avance)
+    fuente: INE2026CNA2025
+    organismo: INE (vía Eurostat)
+    serie: "Eurostat nama_10_gdp (CP_MEUR: B1G, D21X31, D1, B2A3G, D2X3, P31_S14_S15, P3_S13, P5G, P51G, P52_P53, P6, P7, B1GQ)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual (septiembre)
+    proxima: 2027-09
+    familia: ine-pib
+    csv: datos/macromagnitudes-espana-2025.csv
+  - id: pib-deflactor-2025
+    texto: "En 2025 el PIB creció un 2,6 % en volumen y su deflactor, un 3,0 %"
+    donde: [3A30.tex]
+    valor: [2.6, 3.0]
+    unidad: "% anual"
+    periodo: 2025 (avance)
+    fuente: INE2026CNA2025
+    organismo: INE
+    serie: "Contabilidad Nacional Anual: PIB en volumen y deflactor implícito"
+    url: https://www.ine.es/dyngs/Prensa/CNA2025.htm
+    periodicidad: anual (septiembre)
+    proxima: 2027-09
+    familia: ine-pib
+  - id: participacion-trabajo-2025
+    texto: "en España, el 48,4 % en 2025 … la participación ajustada sube al 56,6 %"
+    donde: [3A30.tex]
+    valor: [48.4, 56.6]
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: [Eurostat2026nama10gdp, CE2026AMECO]
+    organismo: Eurostat (INE) y Comisión Europea (AMECO, ALCD0)
+    serie: "D1/B1GQ (nama_10_gdp) y participación salarial ajustada ALCD0 (AMECO)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual
+    proxima: 2026-11-17
+    familia: participacion-trabajo
+  - id: rnb-pib-2025
+    texto: "En 2025 la de España superó al PIB en un 0,2 %, aunque es deudora neta"
+    donde: [3A30.tex]
+    valor: 0.2
+    unidad: "% del PIB (RNB − PIB = 3.726 millones)"
+    periodo: 2025
+    fuente: [INE2026CNA2025, Eurostat2026nasa10nftr]
+    organismo: INE (vía Eurostat)
+    serie: "nasa_10_nf_tr, S.1: B5GQ y B1GQ (D.1, D.2, D.3, D.4 pagados y recibidos)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table
+    periodicidad: anual (septiembre-octubre)
+    proxima: 2027-09
+    familia: ine-pib
+  - id: rndb-2025
+    texto: "En 2025 la RNDB de España fue de 1.679.739 millones, algo menos que la RNB"
+    donde: [3A30.tex]
+    valor: 1679739
+    unidad: millones de euros
+    periodo: 2025
+    fuente: Eurostat2026nasa10nftr
+    organismo: INE (vía Eurostat)
+    serie: "nasa_10_nf_tr, S.1, B6G"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table
+    periodicidad: anual
+    proxima: 2027-09
+    familia: ine-pib
+  - id: ahorro-nacional-2025
+    texto: "En 2025 fue el 25,0 % del PIB de España"
+    donde: [3A30.tex]
+    valor: 25.0
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026nasa10nftr
+    organismo: INE (vía Eurostat)
+    serie: "nasa_10_nf_tr, S.1, B8G / B1GQ"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table
+    periodicidad: anual
+    proxima: 2027-09
+    familia: ine-pib
+  - id: capacidad-sectores-2025
+    texto: "En 2025 la economía española prestó al resto del mundo el 4,3 % del PIB, 72.218 millones … hogares (2,8 %), instituciones financieras (2,7 %), sociedades no financieras (1,2 %) … Administraciones Públicas (2,4 %) … en 2007 la nación pedía prestado el 9,0 % del PIB"
+    donde: [3A30.tex]
+    valor: [4.3, 2.8, 2.7, 1.2, -2.4, -9.0]
+    unidad: "% del PIB"
+    periodo: 2025 (y 2007)
+    fuente: Eurostat2026nasa10nftr
+    organismo: INE (vía Eurostat)
+    serie: "nasa_10_nf_tr, B9 de S.1, S.11, S.12, S.13 y S.14+S.15"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table
+    periodicidad: anual (octubre) / trimestral (INE, CTNFSI)
+    proxima: 2026-12
+    familia: ine-sectores
+    csv: datos/capacidad-financiacion-sectores-espana.csv
+    grafico: graficos/capacidad-financiacion-sectores-espana.tex
+  - id: deficit-aapp-2025
+    texto: "En 2025, el de España fue una necesidad de financiación del 2,4 % del PIB"
+    donde: [3A30.tex]
+    valor: -2.4
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026nasa10nftr
+    organismo: INE e IGAE (vía Eurostat)
+    serie: "nasa_10_nf_tr, S.13, B9"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_nf_tr/default/table
+    periodicidad: anual (notificación PDE de abril y octubre)
+    proxima: 2027-04
+    familia: ine-sectores
+  - id: discrepancia-cuenta-financiera-2025
+    texto: "En 2025, la capacidad de financiación de España fue de 72.218 millones según la cuenta de capital y de 85.151 según la financiera. La diferencia, 12.933 millones, es casi exactamente la partida de errores y omisiones de la balanza de pagos (12.940)"
+    donde: [3A30.tex]
+    valor: [72218, 85151, 12933, 12940]
+    unidad: millones de euros
+    periodo: 2025
+    fuente: [Eurostat2026nasa10nftr, Eurostat2026nasa10ftr]
+    organismo: INE y Banco de España (vía Eurostat)
+    serie: "nasa_10_nf_tr B9 y nasa_10_f_tr (F_TR activos menos pasivos) de S.1; errores y omisiones de la balanza (BdE, como en el 3.B.11)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_f_tr/default/table
+    periodicidad: anual / trimestral
+    proxima: 2027-01
+    familia: bde-cuentas-financieras
+  - id: cuenta-financiera-2025
+    texto: "tabla tab:cuenta-financiera-2025 y viñetas de la caja (fondos de inversión 52.900, depósitos 48.417, préstamos 31.182; deuda pública 65.090, préstamos 18.099)"
+    donde: [3A30.tex]
+    valor: [85151, 52900, 48417, 31182, 65090, 18099]
+    unidad: millones de euros
+    periodo: 2025
+    fuente: Eurostat2026nasa10ftr
+    organismo: Banco de España (vía Eurostat)
+    serie: "nasa_10_f_tr por sectores e instrumentos (F.1 a F.8)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_f_tr/default/table
+    periodicidad: anual / trimestral
+    proxima: 2027-01
+    familia: bde-cuentas-financieras
+    csv: datos/cuenta-financiera-espana-2025.csv
+  - id: contribuciones-2025
+    texto: "En 2025 el PIB de España creció un 2,6 %: la demanda nacional aportó 3,4 puntos y la externa restó 0,8 … En 2009 la demanda nacional restó 6,6 puntos y la externa sumó 2,8"
+    donde: [3A30.tex]
+    valor: [2.6, 3.4, -0.8]
+    unidad: "% y puntos porcentuales"
+    periodo: 2025 (y 2009)
+    fuente: [INE2026CNA2025, Eurostat2026nama10gdp]
+    organismo: INE (vía Eurostat)
+    serie: "nama_10_gdp, CLV_PCH_PRE (PIB) y CON_PPCH_PRE (contribuciones)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual (septiembre)
+    proxima: 2027-09
+    familia: ine-pib
+    csv: datos/contribuciones-pib-espana.csv
+    grafico: graficos/contribuciones-pib-espana.tex
+  - id: pib-interanual-3t2026
+    texto: "En el tercer trimestre de 2026 crecía un 2,7 % interanual, casi todo por la demanda nacional"
+    donde: [3A30.tex]
+    valor: 2.7
+    unidad: "% interanual"
+    periodo: 3T2026 (avance)
+    fuente: INE2026avCNTR3T26
+    organismo: INE
+    serie: "Contabilidad Nacional Trimestral, avance"
+    url: https://www.ine.es/dyngs/Prensa/avCNTR3T26.htm
+    periodicidad: trimestral
+    proxima: 2027-01-30
+    familia: ine-pib
+  - id: deflactor-pib-2025
+    texto: "En 2025 el deflactor del PIB de España creció un 3,0 %"
+    donde: [3A30.tex]
+    valor: 3.0
+    unidad: "% anual"
+    periodo: 2025
+    fuente: INE2026CNA2025
+    organismo: INE
+    serie: "Contabilidad Nacional Anual, deflactor implícito del PIB"
+    url: https://www.ine.es/dyngs/Prensa/CNA2025.htm
+    periodicidad: anual (septiembre)
+    proxima: 2027-09
+    familia: ine-pib
+  - id: registros-empresas-cna
+    texto: "el INE ya usa para el año 2025 la contabilidad de cerca de 1,35 millones de empresas"
+    donde: [3A30.tex]
+    valor: 1.35
+    unidad: millones de empresas
+    periodo: CNA 2025
+    fuente: INE2026CNA2025
+    organismo: INE
+    serie: "Nota metodológica de la CNA"
+    url: https://www.ine.es/dyngs/Prensa/CNA2025.htm
+    periodicidad: anual
+    proxima: 2027-09
+    familia: ine-pib
+  - id: revision-estadistica
+    texto: "la Revisión Estadística 2024 del INE elevó el PIB de 2023 un 2,5 %, y la siguiente llegará en 2027"
+    donde: [3A30.tex]
+    valor: [2.5, 2027]
+    unidad: "% y año"
+    periodo: 2024-2027
+    fuente: [INE2024CNARE2024, INE2026avCNTR3T26]
+    organismo: INE
+    serie: "Revisiones extraordinarias de la contabilidad nacional"
+    url: https://www.ine.es/dyngs/Prensa/CNA2023.htm
+    periodicidad: quinquenal
+    proxima: 2027-09
+    familia: ine-pib
+  - id: idh-espana
+    texto: "en el de 2023, España ocupa el puesto 28"
+    donde: [3A30.tex]
+    valor: 28
+    unidad: puesto
+    periodo: 2023 (Informe de 2025)
+    fuente: PNUD2025IDH
+    organismo: PNUD
+    serie: "Índice de desarrollo humano"
+    url: https://hdr.undp.org/content/human-development-report-2025
+    periodicidad: anual
+    proxima: sin fecha
+    familia: pnud-idh
+  - id: onu-beyond-gdp
+    texto: "el panel de 31 indicadores que un grupo de expertos de Naciones Unidas propuso en 2026"
+    donde: [3A30.tex]
+    valor: 31
+    unidad: indicadores
+    periodo: 2026
+    fuente: ONU2026BeyondGDP
+    organismo: Naciones Unidas
+    serie: "Counting What Counts (Más allá del PIB)"
+    url: https://www.un.org/sites/un2.un.org/files/high-level_expert_group_on_beyond_gdp_final_report.pdf
+    periodicidad: irregular
+    proxima: sin fecha
+    familia: onu-beyond-gdp
