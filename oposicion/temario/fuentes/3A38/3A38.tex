@@ -98,12 +98,12 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9,5} (I.1, \tiempo{1,
 \item \emph{Idea}: con precios y salarios rígidos, la demanda determina la producción. El gasto público la eleva directamente y, por el \concepto{multiplicador} de \textcite{Kahn1931Relation}, a través del consumo inducido: más gasto, más renta, más consumo y otra vez más renta. \autor{Keynes} prefería el gasto a las rebajas de impuestos, porque una parte de estas se ahorra \vertema{3.A.4}.
 \item \emph{En el modelo IS-LM} \vertema{3.A.5}, con el consumo $C=\overline{C}+c\,(1-t)\,Y$, la inversión $I=\overline{I}-b\,i$ y la demanda de dinero $M/P=kY-h\,i$, el multiplicador del gasto es
   \begin{equation}\label{eq:multiplicador-fiscal}
-  \frac{\Delta Y^*}{\Delta\overline{G}}=\frac{1}{1-c(1-t)+b\,k/h},
+  \frac{\Delta Y}{\Delta\overline{G}}=\frac{1}{1-c(1-t)+b\,k/h},
   \end{equation}
   con $c$ la propensión marginal a consumir, $t$ el tipo impositivo, $b$ la sensibilidad de la inversión al tipo de interés y $k$ y $h$ las de la demanda de dinero a la renta y al tipo. El término $b\,k/h$, que se \emph{suma} en el denominador, es la \concepto{expulsión} (\emph{crowding-out}): el gasto eleva la renta y la demanda de dinero, sube el tipo de interés y cae la inversión privada (gráfico~\ref{fig:islm-escuelas}, el mismo que en otro tema \vertema{3.A.39}). El multiplicador del tipo impositivo y el del presupuesto equilibrado están en el anexo~\ref{anexo:islm}.
 \item \emph{Las escuelas} discrepan por las pendientes de las curvas, es decir, por $b$ y $h$:
   \begin{itemize}
-  \item \emph{clásicos}: el dinero solo se demanda para las transacciones ($h=0$), la LM es vertical y la expulsión, total: $\Delta Y^*/\Delta\overline{G}=0$;
+  \item \emph{clásicos}: el dinero solo se demanda para las transacciones ($h=0$), la LM es vertical y la expulsión, total: $\Delta Y/\Delta\overline{G}=0$;
   \item \emph{keynesianos}: la inversión depende de los «espíritus animales» y poco del tipo ($b$ pequeño) y la demanda de dinero es muy sensible al tipo por el motivo especulación ($h$ grande; en el límite, la trampa de la liquidez). Con la IS inclinada y la LM plana, el multiplicador se acerca al simple, $1/[1-c(1-t)]$;
   \item \emph{monetaristas}: la inversión es muy sensible al tipo ($b$ grande) y la demanda de dinero poco, porque el dinero compite con muchos activos ($h$ pequeño): la expulsión es casi total. \autor{Friedman} lo debatió en público con \autor{Walter Heller} \parencite{FriedmanHeller1969Monetary} y añadió que, a largo plazo, con la curva de \autor{Phillips} vertical, la expansión solo deja inflación \vertema{3.A.28}.
   \end{itemize}
@@ -703,11 +703,11 @@ Para el debate sobre si el tipo de interés seguirá por debajo del crecimiento:
 \item \emph{La LM}: la demanda de dinero depende de la renta (motivos transacción y precaución) y del tipo de interés (motivo especulación) \vertema{3.A.35}, y la oferta la fija el banco central: $M/P=kY-h\,i$, es decir, $i=(kY-M/P)/h$.
 \item \emph{El equilibrio}: sustituyendo la LM en la IS,
   \begin{equation*}
-  Y^*=\frac{\overline{A}+(b/h)\,M/P}{1-c(1-t)+b\,k/h},
+  Y_0=\frac{\overline{A}+(b/h)\,M/P}{1-c(1-t)+b\,k/h},
   \end{equation*}
   de donde salen el multiplicador del gasto \eqref{eq:multiplicador-fiscal} y el del tipo impositivo,
   \begin{equation*}
-  \frac{\partial Y^*}{\partial t}=-\frac{c\,Y^*}{1-c(1-t)+b\,k/h}<0
+  \frac{\partial Y_0}{\partial t}=-\frac{c\,Y_0}{1-c(1-t)+b\,k/h}<0
   \end{equation*}
   \vertema{3.A.5}.
 \item \emph{Las 2 proposiciones keynesianas}: con $b\,k/h$ pequeño, el multiplicador del gasto supera 1, y es mayor que el de los impuestos, porque el gasto entra entero en la demanda y una rebaja de impuestos solo en la parte que se consume.
@@ -832,7 +832,7 @@ Restricción del Estado & $G_t+r^D_{t-1}D_{t-1}=T_t+\tau_{L,t}w_tL_t+\tau_{K,t}r
 \item \emph{Las restricciones de liquidez}: con hogares que consumen su renta corriente, el multiplicador puede superar 1 \parencite{GaliLopezSalidoValles2007}.
 \item \emph{La financiación}: los impuestos futuros que pagan el gasto pueden hacer negativo el multiplicador a largo plazo; los ajustes basados en recortes de gasto cuestan mucha menos producción que los basados en subidas de impuestos \parencite{AlesinaFaveroGiavazzi2019Austerity} \vertema{3.A.39}.
 \item \emph{La deuda pública}: con una deuda alta, un estímulo puede encarecer la financiación del país y reducir el multiplicador.
-\item \emph{La unión monetaria}: el tipo de interés común no responde al gasto de un solo país, así que el multiplicador nacional es mayor y la política fiscal es el instrumento que le queda frente a perturbaciones propias \parencite{GaliMonacelli2008Optimal} \vertema{3.B.40}.
+\item \emph{La unión monetaria}: el tipo de interés común no responde al gasto de un solo país, así que el multiplicador nacional es mayor y la política fiscal es el instrumento que le queda frente a perturbaciones propias \parencite{GaliMonacelli2008Optimal} \vertema{3.B.16}.
 \item \emph{La apertura}: cuanto mayor la propensión a importar, menor el multiplicador.
 \item \emph{El tipo de cambio}: con tipo flexible, la apreciación compensa parte del efecto (anexo~\ref{anexo:islm}).
 \item \emph{Los estabilizadores automáticos}: cuanto mayores, más amortiguan la perturbación y menor es el multiplicador de una medida discrecional.
