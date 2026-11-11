@@ -59,7 +59,7 @@ Ejemplo de referencia: España 2025, deuda inicial 101,4 %, tipo implícito 2,5 
 | 3.A.6 | NMC: aritmética monetarista | Mención (hecho, 4/11/2026) | La solvencia con saldos primarios y señoreaje en % del PIB, la misma de `eq:solvencia` | La derivación |
 | 3.A.44 | Crecimiento endógeno con sector público (Barro, 1990) | Mención (hecho, 1/11/2026) | Presupuesto equilibrado $G_t=\tau Y_t$; la restricción como motivo, con el matiz «en valor actual y si el tipo supera al crecimiento» (pendiente) | — |
 | 3.A.29 | OLG y deuda | Mención (hecho, 1/11/2026) | Con $r<\gamma_Y$ la deuda se renueva (Blanchard, 2019), coherente con II.6 del 3.A.39 | — |
-| 3.B.12 | Deuda externa | Mención (sin revisar) | La misma ecuación con la balanza por cuenta corriente (ficha `sostenibilidad-deuda-externa`) | — |
+| 3.B.12 | Deuda externa | Mención (hecho, 11/11/2026) | La misma forma (nominal, real, saldo estabilizador, solvencia, casos 3 y 4 del diagrama) **con el saldo comercial en lugar del primario** (no la cuenta corriente, que ya lleva los intereses), `\vertema{3.A.39}` en III.4 a) y b); gráfico `dinamica-deuda-externa.tex` hecho sobre `dinamica-deuda.tex`. **Letras propias de la deuda exterior** ($b$ deuda, $d$ déficit, $r^*$, umbral $\overline b$; ficha `sostenibilidad-deuda-externa`): al revés que aquí ($d$ deuda, $b$ saldo); aviso en `notacion.md` § 9 | Las letras de esta ficha |
 
 ## Divergencias encontradas en el temario actual
 
@@ -67,6 +67,7 @@ Ejemplo de referencia: España 2025, deuda inicial 101,4 %, tipo implícito 2,5 
 - **3.A.39 resuelto** (4/11/2026): γ^Y nominal combinado con r real → $\gamma^N_t$ con $i_{t-1}$ (exacta) y $\gamma_{Y,t}$ con $r_{t-1}$; Τ (tau mayúscula) → $T_t$; índice de suma $i$ → $k$; $\mathrm{E}_{t-1}$ → $\mathbb{E}_{t-1}$; solvencia con el factor $(1+\gamma_Y)/(1+r)$, que el Word no tenía (descontaba a $1/(1+r)^i$ sin crecimiento); la deuda como $b$ en el ejemplo → $d$; el caso 4 decía $r<\gamma$ en el texto y $r>\gamma$ en la imagen → $r>\gamma_Y$; España 2022 mezclaba nominal y real.
 - **Señoreaje:** «Señoreaje» sin símbolo (Word del 3.A.35, resuelto el 5/11/2026 con $S_t$), s_t (4.B.26): canon **S_t** en nivel real y **s_t** en % del PIB.
 - **Copia:** el bloque restricción-señoreaje-Cagan está casi literal en 3.A.35, 3.A.39 y 3.A.41: desarrollado en 3.A.39 (restricción, hecho) y 3.A.41 (Cagan); los otros 2 remiten.
+- **$b$ y $d$ en la deuda exterior** (fase canon del 3.B.12, 11/11/2026): la ficha `sostenibilidad-deuda-externa` usa $b$ para la deuda exterior y $d$ para el déficit comercial (§ 9), al revés que esta ($d$ deuda pública, $b$ saldo presupuestario, § 8 y § 12). Su fila «4.B: idéntica forma y notación ($b$, $d$, $r$, $\gamma_Y$)» decía lo contrario que esta ficha: corregida (misma forma, letras de cada bloque, aviso local; **[decidir]**).
 - **3.A.44** (revisado, l. 364): «A largo plazo el Estado no puede gastar más de lo que ingresa» es cierto en valor actual y con $r>\gamma_Y$; con $r<\gamma_Y$ cabe un déficit primario permanente (`pendientes-coherencia.md`, Pendiente del 3.A.39).
 
 Autor: Víctor Gutiérrez Marcos

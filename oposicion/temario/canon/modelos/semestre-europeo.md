@@ -47,6 +47,7 @@ Sin ecuaciones; la tabla del cuadro de indicadores es el «gráfico» de referen
 | 4.B.26 | Déficit y deuda | Resumen | REP fiscales a España | — |
 | 1D01 | Dictamen de coyuntura | Uso | El umbral de cada indicador como «referencia oficial», separado de las orientativas (D-03 de la 1D01) | El procedimiento |
 | 3.B.16 | Unión monetaria incompleta: solución imperfecta | mención (hecho, 11/11/2026) | La coordinación de las políticas fiscales nacionales; desde 2024, con los planes fiscales-estructurales a medio plazo; `\vertema{3.B.45}` | El procedimiento |
+| 3.B.12 | Sostenibilidad exterior | mención (hecho, 11/11/2026) | Los 2 indicadores exteriores del cuadro (CC media de 3 años entre −4 % y +6 %; PIIN −35 %) en `tab:indicadores-externos` y en el texto (también alerta por superávit), con `CE2025AMR2026`; España 2025: CC media 3,1 %, PIIN −42,7 %; `\vertema{3.B.45}` | El cuadro completo |
 
 ## Divergencias encontradas en el temario actual
 - **Esta ficha** daba el cuadro anterior a 2024 (deuda privada 133 %, crédito privado 14 %, vivienda real, pasivos financieros, sin cifras de TCER, cuotas y CLU): rehecho el 24/10/2026 con el cuadro del IMA 2025-2026 (C7 de la 1D01). Las cifras de `pendientes.md` de la 1D01 (P85, P93) y las del C7 de su `propuestas-coherencia.md` también eran las antiguas.

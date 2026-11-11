@@ -158,7 +158,7 @@ const tercerEjercicioParteB = [
   { num: 9, titulo: 'Comercio internacional y crecimiento económico. Especial referencia a los efectos del comercio sobre el crecimiento.', disponible: true, file: '3B09.html' },
   { num: 10, titulo: 'Teoría de la integración económica.', disponible: true, file: '3B10.html' },
   { num: 11, titulo: 'Balanza de pagos: concepto, medición e interpretación.', disponible: true, file: '3B11.pdf' },
-  { num: 12, titulo: 'Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior.', disponible: true, file: '3B12.pdf' },
+  { num: 12, titulo: 'Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior.', disponible: true, file: '3B12.html' },
   { num: 13, titulo: 'Mercados de divisas: operaciones e instrumentos.', disponible: true, file: '3B13.html' },
   { num: 14, titulo: 'Teorías de la determinación del tipo de cambio.', disponible: true, file: '3B14.html' },
   { num: 15, titulo: 'Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio.', disponible: true, file: '3B15.pdf' },

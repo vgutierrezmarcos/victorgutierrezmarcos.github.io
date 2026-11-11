@@ -1,0 +1,110 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% España, 1995-2025, % del PIB (datos anuales; Banco de España, Boletín
+% Estadístico, cap. 17, y Eurostat tipsii10 y nama_10_gdp; consulta 11/11/2026;
+% fuente y segunda comprobación en la cabecera del CSV). Dos paneles apilados:
+%  a) bienes y servicios (barras, mismo color que en el 3.B.11) y cuenta
+%     corriente (línea);
+%  b) posición de inversión internacional neta (línea) con el umbral del PDM.
+% Paleta: comercio en azul claro (dicexterna, como en el 3.B.11); la cuenta
+% corriente en azul marino (dicze), para no confundirla con la capacidad de
+% financiación, que en el 3.B.11 es morada; la PIIN en rojo España.
+% Capas (CRITERIOS §7): barras -> cero -> línea -> puntos -> rótulos, panel a
+% y luego panel b.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/cc-piin-espana.csv}\cc
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1,mark repeat=2,mark phase=2] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}},
+  panelcc/.style={
+    scale only axis, width=13cm, height=4.2cm,
+    xmin=1994.4, xmax=2025.6, xtick={1995,2000,...,2025}, minor xtick={1995,...,2025},
+    xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+    yticklabel style={font=\footnotesize, /pgf/number format/use comma},
+    ylabel={\% del PIB}, ylabel style={font=\footnotesize},
+    axis lines*=left, tick align=outside, clip=false,
+    ymajorgrids, grid style={tceegris!25},
+    legend style={at={(0.5,-0.15)}, anchor=north, legend columns=3,
+      draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+    legend cell align=left,
+  },
+  dicapas,
+}
+\colorlet{ccbys}{dicexterna}
+\colorlet{cccc}{dicze}
+\colorlet{ccpiin}{dicespana}
+\begin{tikzpicture}[tcee]
+  % ---------------- Panel a: cuenta corriente ----------------
+  \begin{axis}[panelcc, name=pa, at={(0,0)}, bar width=0.26cm,
+      ymin=-12, ymax=6, ytick={-12,-10,...,6},
+      title={\textbf{a)} Saldo por cuenta corriente y de bienes y servicios},
+      title style={font=\small, at={(0,1.04)}, anchor=south west},
+    ]
+    % 1: bienes y servicios (barras)
+    \capa{1}{
+      \addplot[ybar, on layer=dicbarras, dicbarra=ccbys, area legend] table[x=anio, y=bys] {\cc};
+      \addlegendentry{Bienes y servicios}
+    }
+    % 2: el cero
+    \capa{2}{
+      \dicraya{(1994.4,0) (2025.6,0)}
+    }
+    % 3: cuenta corriente (línea)
+    \capa{3}{
+      \addplot[sharp plot, diclineahalo=cccc, leyenda linea corta,
+        legend image post style={mark=*, mark size=1.8pt, mark options={fill=white, line width=0.9pt}}]
+        table[x=anio, y=cuenta_corriente] {\cc};
+      \addlegendentry{Cuenta corriente}
+    }
+    % 4: sus puntos
+    \capa{4}{
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=cccc]
+        table[x=anio, y=cuenta_corriente] {\cc};
+    }
+    % 5: rótulos: el mínimo de 2007 y el último dato
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, text=cccc, anchor=north, inner sep=4pt]
+        {(2007,-9.4)}{2007: $-9{,}4$}
+      \dicrotulo[font=\footnotesize, text=cccc, anchor=south, inner sep=6pt]
+        {(2025,4.0)}{$+3{,}2$}
+    }
+  \end{axis}
+  % ---------------- Panel b: posición de inversión internacional neta --------
+  \begin{axis}[panelcc, name=pb, at={(0,-6.8cm)},
+      ymin=-100, ymax=0, ytick={-100,-80,...,0},
+      title={\textbf{b)} Posición de inversión internacional neta (PIIN)},
+      title style={font=\small, at={(0,1.04)}, anchor=south west},
+    ]
+    % 6: el umbral del procedimiento de desequilibrios
+    \capa{6}{
+      \dicraya[dicumbral]{(1994.4,-35) (2025.6,-35)}
+      \addlegendimage{dicumbral}
+      \addlegendentry{Umbral del PDM ($-35$~\%)}
+    }
+    % 7: la PIIN (línea)
+    \capa{7}{
+      \addplot[sharp plot, diclinea=ccpiin, leyenda linea corta,
+        legend image post style={mark=*, mark size=1.8pt, mark options={fill=white, line width=0.9pt}}]
+        table[x=anio, y=piin] {\cc};
+      \addlegendentry{PIIN}
+    }
+    % 8: sus puntos
+    \capa{8}{
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=ccpiin]
+        table[x=anio, y=piin] {\cc};
+    }
+    % 9: rótulos: los años del ejemplo y el último dato
+    \capa{9}{
+      \dicrotulo[font=\footnotesize, text=ccpiin, anchor=east, inner sep=4pt]
+        {(2007,-85.0)}{2007: $-85{,}0$}
+      \dicrotulo[font=\footnotesize, text=ccpiin, anchor=north west, inner sep=2pt]
+        {(2015.2,-89)}{2015: $-87{,}7$}
+      \dicrotulo[font=\footnotesize, text=ccpiin, anchor=south east, inner sep=2pt]
+        {(2018.9,-71)}{2019: $-72{,}0$}
+      \dicrotulo[font=\footnotesize, text=ccpiin, anchor=north, inner sep=5pt]
+        {(2025,-42.7)}{$-42{,}7$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

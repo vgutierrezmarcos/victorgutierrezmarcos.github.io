@@ -30,7 +30,7 @@
 | 3.B.11 | Balanza de pagos | mención (hecho, 5/11/2026) | El tipo real en tasas, $\gamma_q\simeq\gamma_E+\pi^*-\pi$ (ficha `tipo-cambio-real`) | — |
 | 3.B.13 | Mercado de divisas | mención (hecho, 8/11/2026) | La PPA *ex ante* de Roll (1979) en nota, l. 947, `\vertema{3.B.14}` | — |
 | 3.B.16 | Integración monetaria | mención (hecho, 11/11/2026) | Diferenciales de inflación de equilibrio (con Balassa-Samuelson), `\vertema{3.B.14}` | — |
-| 3.B.12 | Ajuste de la BP | supuesto | La PPA del enfoque monetario de la BP ($P=EP^*$), `\vertema{3.B.14}` | La evidencia |
+| 3.B.12 | Ajuste de la BP | supuesto (hecho, 11/11/2026) | Ley del precio único en el enfoque monetario de la BP ($P=\overline EP^*$, sin remisión: es un supuesto); $\gamma_q=0$ en la deuda en divisas «con la paridad del poder adquisitivo» (anexo D) | La evidencia |
 | 3.B.15 | Regímenes cambiarios | mención | La PPA relativa como referencia para valorar el régimen | La evidencia |
 | 3.B.17 | Crisis cambiarias | supuesto | PPA relativa en los modelos de primera generación, `\vertema{3.B.14}` (su `faltan`) | — |
 | 3.B.19 | Coordinación internacional | supuesto | La PPA del modelo monetario | — |

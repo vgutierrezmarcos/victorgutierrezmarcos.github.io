@@ -30,13 +30,14 @@ $$\mathrm{BM}=\mathrm{Ef}+\mathrm{Res},\qquad M=\mathrm{Ef}+\mathrm{Dep},\qquad 
 | 3.A.5 | Monetarismo: la Gran Depresión | mención (hecho, 3/11/2026) | Los 2 cocientes y la base que no cae, en palabras; `\vertema{3.A.36}` | La fórmula |
 | 3.A.35 | Demanda de dinero | mención (hecho, 5/11/2026) | El dinero endógeno: el banco central fija el precio de las reservas y la cantidad la decide la demanda; la demanda de dinero ya no fija el tipo; `\vertema{3.A.36}` (sin escribir el multiplicador) | Los balances, `eq:multiplicador-dinero` |
 | 3.A.37 | Transmisión | mención (hecho, 5/11/2026) | Las compras de activos crean reservas, no préstamos: el dinero de hogares y empresas solo crece si los bancos prestan más (III.3, anexo E); el canal del crédito bancario no es el multiplicador (II.3); los préstamos crean los depósitos (nota de I.1); `\vertema{3.A.36}` | — |
-| 3.B.12, 3.B.20 | Ajuste de la balanza de pagos (enfoque monetario); patrón oro y sistema internacional hasta Bretton Woods | mención | Con esta notación (sin $q$): el ajuste automático con reservas que mueven la base y el dinero; `\vertema{3.A.36}` | — |
+| 3.B.12 | Ajuste de la balanza de pagos (enfoque monetario) | mención (hecho, 11/11/2026) | II.2, supuestos: «multiplicador del dinero igual a 1: el dinero es la base monetaria», sin letra, `\vertema{3.A.36}`; $M^S=\mathrm{CI}+R$ | — |
+| 3.B.20 | Patrón oro y sistema internacional hasta Bretton Woods | mención | Con esta notación (sin $q$): el ajuste automático con reservas que mueven la base y el dinero; `\vertema{3.A.36}` | — |
 | 3.B.43, 4.A.19 | El origen del euro; entidades de crédito en España | mención | Reservas mínimas (1 % desde 2012, 0 % de remuneración desde el 20/9/2023), exceso de liquidez; `\vertema{3.A.36}` | El multiplicador |
 
 ## Divergencias encontradas en el temario actual
 
 - **Resuelto en el 3.A.36 (4/11/2026)**: el Word escribía el multiplicador con $E$, $e$, $q$, $b$, $M_0$, CI, AG, ASP, RI, decía «el pasivo representa M1» y que el pasivo de los bancos frente al banco central eran «activos frente al sector privado»; «reservas legales remuneradas y voluntarias no remuneradas»; el «97 % de M4» sin decir que era el Reino Unido, con una tabla de agregados con M4; «McLeay y Radia (2014)».
-- **3.B.12 y 3.B.20 (sin revisar)**: llaman $q$ al multiplicador («igual a uno, i.e. q = 1») y remiten al 3.A.36: al revisarlos, esta notación (sin letra para el multiplicador).
+- **3.B.12 resuelto (11/11/2026)**; **3.B.20 (sin revisar)**: llaman $q$ al multiplicador («igual a uno, i.e. q = 1») y remiten al 3.A.36: al revisarlos, esta notación (sin letra para el multiplicador).
 - **3.A.5 (revisado)**: `eq:multiplicador-monetario` es allí el multiplicador de la política monetaria del IS-LM ($dY/dM$), no el del dinero. No es un error; el 3.A.36 dice «multiplicador del dinero» y avisa de la diferencia, y la ficha `is-lm` lo anota. Sin cambio en el 3.A.5.
 
 Autor: Víctor Gutiérrez Marcos
