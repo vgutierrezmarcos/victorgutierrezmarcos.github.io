@@ -5,7 +5,8 @@ scripts/video-claude/assets/: fuentes (Pagella, Latin Modern para DCE y Source
 Sans 3), GSAP, el asterisco del logo de Claude (solo el símbolo: el nombre va
 en la letra del vídeo), el icono de la app, las capturas de la app y de
 claude.ai en el móvil reducidas a WebP, las páginas del informe en PDF, las
-tomas grabadas en claude.ai (MP4) y la banda sonora compuesta para este vídeo
+tomas grabadas en claude.ai (MP4, aceleradas según guion.json), las capturas de las
+vistas interactivas del conector (vistas/capturar.py) y la banda sonora compuesta para este vídeo
 (musica.py: misma música que el promocional, de una pieza, sin bucle).
 
     python3 scripts/video-claude/preparar.py [--tomas CARPETA]
@@ -35,7 +36,9 @@ CAPTURAS = os.path.join(RAIZ, 'app', 'promo', 'capturas')
 FUENTES_APP = os.path.join(RAIZ, 'app', 'assets', 'fonts')
 FUENTES_SKILL = os.path.join(RAIZ, 'claude', 'prepara-con-claude', 'assets', 'fuentes')
 TOMAS_DEF = '/mnt/c/Users/vgutierrez/AppData/Local/Temp/claude-video/tomas'
-TOMAS = ['G2c', 'G4a', 'G4b', 'G5a', 'G5b', 'G6a', 'G6b', 'G10a', 'G10b', 'G7b', 'G8', 'G9na', 'G9nb']
+TOMAS = ['G2c', 'G4a', 'G4b', 'G5a', 'G5b', 'G6a', 'G6b', 'G10a', 'G10b', 'G8', 'G9na', 'G9nb']
+# Capturas de las vistas interactivas del conector (vistas/capturar.py)
+VISTAS = ['test-a', 'test-b', 'cronograma-a', 'cronograma-b', 'informe-a', 'informe-b', 'clase-a', 'clase-b']
 # Capturas de claude.ai en el móvil (cdp.mjs con CDP_MOVIL=1, en la carpeta de grabación): chat con el cante adjunto y respuesta
 MOVIL = {'claude-movil-1': 'movil-2.png', 'claude-movil-2': 'movil-4.png'}
 # Capturas de la app que usa la composición
@@ -46,7 +49,7 @@ ANCHO_MOVIL = 760
 
 def sincronizar_guion():
     """Lleva a index.html los compases de guion.json (data-start y data-duration de
-    cada escena, las tablas E y BLOQUE y la duración)."""
+    cada escena y de cada toma, las tablas E y BLOQUE y la duración)."""
     with open(os.path.join(AQUI, 'guion.json'), encoding='utf-8') as f:
         guion = json.load(f)
     compas = 4 * 60 / guion['bpm']
@@ -74,9 +77,36 @@ def sincronizar_guion():
                       rf'\g<1>data-duration="{guion["duracion"]:.4f}"', html)
     if n != 2:
         sys.exit('No encuentro las capas de rótulos y barrido en index.html')
+    # Cada toma empieza «desde» segundos después de su escena y se ve «dura» segundos (acelerada por ritmo()).
+    empieza = {e['id']: e['compas'] * compas for e in escenas}
+    for t in guion['tomas']:
+        html, n = re.subn(rf'(<video id="toma-{t["id"]}" class="toma" src=")[^"]*(" muted playsinline data-start=")[\d.]+(" data-duration=")[\d.]+',
+                          rf'\g<1>assets/tomas/r-{t["fichero"]}.mp4\g<2>{empieza[t["escena"]] + t["desde"]:.4f}\g<3>{t["dura"]}', html)
+        if n != 1:
+            sys.exit(f'No encuentro la toma «{t["id"]}» en index.html')
     with open(ruta, 'w', encoding='utf-8') as f:
         f.write(html)
     return guion['duracion']
+
+
+def ritmo():
+    """Acelera cada toma para que su tramo («corte», en segundos de la grabación) quepa en lo que dura en el vídeo
+    (guion.json): assets/tomas/r-<toma>.mp4, sin sonido, a 30 fotogramas y con el último fotograma sostenido."""
+    with open(os.path.join(AQUI, 'guion.json'), encoding='utf-8') as f:
+        tomas = json.load(f)['tomas']
+    ffmpeg = os.environ.get('FFMPEG') or shutil.which('ffmpeg')
+    for t in tomas:
+        origen = os.path.join(ASSETS, 'tomas', t['fichero'] + '.mp4')
+        if not os.path.exists(origen):
+            print('Falta la toma', t['fichero'])
+            continue
+        a, b = t['corte']
+        factor = (b - a) / t['dura']
+        subprocess.run([ffmpeg, '-y', '-loglevel', 'error', '-ss', str(a), '-t', str(b - a), '-i', origen,
+                        '-vf', f'setpts=PTS/{factor:.5f},fps=30,tpad=stop_mode=clone:stop_duration=0.5', '-an',
+                        '-c:v', 'libx264', '-preset', 'slow', '-crf', '15', '-pix_fmt', 'yuv420p', '-g', '15',
+                        os.path.join(ASSETS, 'tomas', 'r-' + t['fichero'] + '.mp4')], check=True)
+        print(f'  {t["fichero"]}: ×{factor:.2f}')
 
 
 def musica():
@@ -156,6 +186,10 @@ def main():
         else:
             print('Falta la toma', t)
     print(f'{n} tomas')
+    ritmo()
+    for v in VISTAS:
+        shutil.copy(os.path.join(AQUI, 'vistas', v + '.webp'), os.path.join(ASSETS, 'capturas', 'vista-' + v + '.webp'))
+    print(f'{len(VISTAS)} capturas de las vistas del conector')
 
     musica()
     print('Recursos listos en', ASSETS)

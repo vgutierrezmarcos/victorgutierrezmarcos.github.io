@@ -43,11 +43,10 @@ CUERPO = ESCENAS['quehace']  # el ritmo entra al acabar el gancho
 CAMBIOS = [ESCENAS[e] for i, e in enumerate(ORDEN) if i and BLOQUES[e] != BLOQUES[ORDEN[i - 1]]]
 RESPIROS = {c for c in CAMBIOS if CUERPO < c < CIERRE}
 # Secciones con el arpegio de semicorcheas (las más activas); el resto lleva corcheas.
-ARPEGIO = [(ESCENAS['cante_app'], ESCENAS['dictamen']), (ESCENAS['cronograma'], ESCENAS['carpeta']),
-           (ESCENAS['movil'], ESCENAS['actualiza'])]
+ARPEGIO = [(ESCENAS['cante_app'], ESCENAS['dictamen']), (ESCENAS['cronograma_app'], ESCENAS['carpeta']),
+           (ESCENAS['movil'], CIERRE)]
 # Tramos más calmados: sin palmadas y bombo a la mitad (la explicación, DCE y el final).
-CALMA = [(ESCENAS['porque'], ESCENAS['instalar']), (ESCENAS['cronograma_dce'], ESCENAS['cronograma_app']),
-         (ESCENAS['actualiza'], CIERRE)]
+CALMA = [(ESCENAS['porque'], ESCENAS['instalar']), (ESCENAS['cronograma_dce'], ESCENAS['cronograma_app'])]
 
 
 def inicio(escena):
@@ -142,36 +141,38 @@ def banda_sonora(ruta):
         if CUERPO < c <= CIERRE:
             poner(efectos, m._golpe(0.28), m.compas(c))
     # Gancho: la segunda línea y el titular.
-    poner(efectos, m._toque(0.05), inicio('gancho') + 1.6 * PULSO)
-    aviso(inicio('gancho') + 2 * COMPAS + 0.3, 0.06)
+    poner(efectos, m._toque(0.05), inicio('gancho') + 1.2 * PULSO)
+    aviso(inicio('gancho') + 1.5 * COMPAS + 0.3, 0.06)
     # Qué hace y por qué: una tarjeta, un toque.
     toques(inicio('quehace') + 0.8, 6, 0.9 * PULSO)
     toques(inicio('porque') + 0.9, 4, 1.3 * PULSO)
-    # Instalar: los cuatro pasos.
-    for t in (3.4, 7.8, 13.6, 17.4):
+    toques(inicio('plataformas') + 0.9, 4, 1.1 * PULSO)
+    # Conectar: los tres pasos.
+    for t in (1.4, 5.9, 9.8):
         poner(efectos, m._toque(0.045), inicio('instalar') + t)
-    aviso(inicio('instalar') + 17.6, 0.05)
-    # Un cante: los móviles, la pastilla del minuto y las páginas del PDF.
+    aviso(inicio('instalar') + 9.9, 0.05)
+    # Un cante: los móviles, la pastilla del minuto, la página del PDF y el botón de guardar.
     entra_movil(inicio('cante_app') + 0.1)
     entra_movil(inicio('cante_app') + 0.5)
     aviso(inicio('cante_app') + 2 * PULSO, 0.06)
-    for t in (10.0, 10.3):
-        for k, h in enumerate((1.0, 0.45)):
-            poner(efectos, m._madera(0.16 * h, 480), inicio('cante_informe') + t + k * 0.12)
-    # Cronograma: exportar, DCE y traerlo a la app.
-    entra_movil(inicio('cronograma') + 0.1)
-    entra_movil(inicio('cronograma') + 0.5)
-    entra_movil(inicio('cronograma_app') + 5.1)
-    entra_movil(inicio('cronograma_app') + 5.5)
+    for k, h in enumerate((1.0, 0.45)):
+        poner(efectos, m._madera(0.16 * h, 480), inicio('cante_informe') + 4.7 + k * 0.12)
+    # Las vistas del conector: un toque al pulsar el botón y la campana cuando queda hecho.
+    for escena, clic in (('cante_informe', 7.0), ('cronograma_app', 3.4), ('test', 3.8), ('reserva', 5.4)):
+        poner(efectos, m._toque(0.06), inicio(escena) + clic)
+        aviso(inicio(escena) + clic + 0.2, 0.045)
+    # Cronograma y clase: los móviles de la app.
+    entra_movil(inicio('cronograma_app') + 4.3)
+    entra_movil(inicio('cronograma_app') + 4.7)
+    entra_movil(inicio('reserva') + 6.2)
     # La carpeta: la estructura (cuatro tarjetas) y el informe que aparece.
-    toques(inicio('carpeta') + 0.7, 4, 0.75 * PULSO)
-    aviso(inicio('carpeta') + 16.8, 0.05)
+    toques(inicio('carpeta') + 0.5, 4, 0.3)
+    aviso(inicio('carpeta') + 8.4, 0.05)
     # El móvil: los tres teléfonos.
     for i in range(3):
         entra_movil(inicio('movil') + 0.2 + i * 0.6)
-    # Y además: las seis peticiones; al día: las tres tarjetas.
+    # Y además: las seis peticiones.
     toques(inicio('ademas') + 0.8, 6, 1.1 * PULSO)
-    toques(inicio('actualiza') + 0.9, 3, 1.6 * PULSO)
 
     golpes = np.convolve(np.abs(bombos), np.ones(int(0.01 * SR)) / int(0.01 * SR), mode='same')
     env = np.clip(golpes / (golpes.max() + 1e-9), 0, 1)
