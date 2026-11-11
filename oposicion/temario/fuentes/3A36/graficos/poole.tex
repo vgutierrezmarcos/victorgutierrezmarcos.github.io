@@ -1,8 +1,8 @@
 % Análisis de Poole (1970): variabilidad de la producción con la cantidad de
 % dinero fija o con el tipo de interés fijo, ante perturbaciones reales
 % (epsilon^IS: la IS oscila) o monetarias (epsilon^LM: la LM oscila).
-% Colores del IS-LM del 3.A.5 (fuentes/3A05/graficos/is-lm.tex): IS morada,
-% LM azul, desplazadas en discontinuo.
+% Colores del IS-LM del 3.A.5 (fuentes/3A05/graficos/is-lm.tex): IS azul,
+% LM morada, desplazadas en discontinuo.
 %   IS: i = 8 - y; IS+: i = 9,5 - y; IS-: i = 6,5 - y (dibujada hasta y = 5)
 %   LM: i = Y - 1; LM+: i = Y + 0,5; LM-: i = Y - 2,5; tipo fijo: i = 3,5
 %   a) dinero fijo, IS±: Y en [3,75; 5,25]   b) tipo fijo, IS±: Y en [3; 6]
@@ -19,10 +19,10 @@
   \begin{scope}[yshift=12*0.42cm]
     \capa{1}{\node[font=\footnotesize\bfseries, anchor=south west, align=left, inner sep=0pt] at (-0.8,8.6) {a) Perturbación real ($\varepsilon^{\mathrm{IS}}$),\\cantidad de dinero fija};}
     \capa{1}{\ejes{$y$}{$i$}{8.8}{8}}
-    \capa{1}{\draw[curva2] (1.5,0.5) -- (8,7) node[etiqueta, right, text=tceeazul] {LM};}
-    \capa{1}{\draw[curva1] (1,7) -- (7,1) node[etiqueta, below, text=tceemorado] {IS};}
-    \capa{1}{\draw[curva1, desplazada] (2.5,7) -- (8.5,1) node[etiqueta, anchor=west, text=tceemorado] {IS$^+$};}
-    \capa{1}{\draw[curva1, desplazada] (0.5,6) -- (5,1.5) node[etiqueta, anchor=north, xshift=-0.19cm, text=tceemorado] {IS$^-$};}
+    \capa{1}{\draw[curva1] (1.5,0.5) -- (8,7) node[etiqueta, right, text=tceemorado] {LM};}
+    \capa{1}{\draw[curva2] (1,7) -- (7,1) node[etiqueta, below, text=tceeazul] {IS};}
+    \capa{1}{\draw[curva2, desplazada] (2.5,7) -- (8.5,1) node[etiqueta, anchor=west, text=tceeazul] {IS$^+$};}
+    \capa{1}{\draw[curva2, desplazada] (0.5,6) -- (5,1.5) node[etiqueta, anchor=north, xshift=-0.19cm, text=tceeazul] {IS$^-$};}
     \capa{2}{\draw[guia] (3.75,2.75) -- (3.75,0); \draw[guia] (5.25,4.25) -- (5.25,0);}
     \capa{2}{\node[punto] at (3.75,2.75) {}; \node[punto] at (5.25,4.25) {};}
     \capa{2}{\rango{3.75}{5.25}}
@@ -31,11 +31,11 @@
   \begin{scope}[xshift=11.5*0.42cm, yshift=12*0.42cm]
     \capa{3}{\node[font=\footnotesize\bfseries, anchor=south west, align=left, inner sep=0pt] at (-0.8,8.6) {b) Perturbación real ($\varepsilon^{\mathrm{IS}}$),\\tipo de interés fijo};}
     \capa{3}{\ejes{$y$}{$i$}{8.8}{8}}
-    \capa{3}{\draw[curva2] (0,3.5) -- (8.4,3.5) node[etiqueta, above left, text=tceeazul] {LM ($\bar{\imath}$)};}
+    \capa{3}{\draw[curva1] (0,3.5) -- (8.4,3.5) node[etiqueta, above left, text=tceemorado] {LM ($\bar{\imath}$)};}
     \capa{3}{\node[etiqueta, left] at (0,3.5) {$\bar{\imath}$};}
-    \capa{3}{\draw[curva1] (1,7) -- (7,1) node[etiqueta, below, text=tceemorado] {IS};}
-    \capa{3}{\draw[curva1, desplazada] (2.5,7) -- (8.5,1) node[etiqueta, anchor=west, text=tceemorado] {IS$^+$};}
-    \capa{3}{\draw[curva1, desplazada] (0.5,6) -- (5,1.5) node[etiqueta, anchor=north, xshift=-0.19cm, text=tceemorado] {IS$^-$};}
+    \capa{3}{\draw[curva2] (1,7) -- (7,1) node[etiqueta, below, text=tceeazul] {IS};}
+    \capa{3}{\draw[curva2, desplazada] (2.5,7) -- (8.5,1) node[etiqueta, anchor=west, text=tceeazul] {IS$^+$};}
+    \capa{3}{\draw[curva2, desplazada] (0.5,6) -- (5,1.5) node[etiqueta, anchor=north, xshift=-0.19cm, text=tceeazul] {IS$^-$};}
     \capa{4}{\draw[guia] (3,3.5) -- (3,0); \draw[guia] (6,3.5) -- (6,0);}
     \capa{4}{\node[punto] at (3,3.5) {}; \node[punto] at (6,3.5) {};}
     \capa{4}{\rango{3}{6}}
@@ -44,10 +44,10 @@
   \begin{scope}
     \capa{5}{\node[font=\footnotesize\bfseries, anchor=south west, align=left, inner sep=0pt] at (-0.8,8.6) {c) Perturbación monetaria ($\varepsilon^{\mathrm{LM}}$),\\cantidad de dinero fija};}
     \capa{5}{\ejes{$y$}{$i$}{8.8}{8}}
-    \capa{5}{\draw[curva1] (1,7) -- (7,1) node[etiqueta, below, text=tceemorado] {IS};}
-    \capa{5}{\draw[curva2] (1.5,0.5) -- (8,7) node[etiqueta, right, text=tceeazul] {LM};}
-    \capa{5}{\draw[curva2, desplazada] (0.3,0.8) -- (6.8,7.3) node[etiqueta, above, text=tceeazul] {LM$^+$};}
-    \capa{5}{\draw[curva2, desplazada] (3,0.5) -- (8.5,6) node[etiqueta, right, text=tceeazul] {LM$^-$};}
+    \capa{5}{\draw[curva2] (1,7) -- (7,1) node[etiqueta, below, text=tceeazul] {IS};}
+    \capa{5}{\draw[curva1] (1.5,0.5) -- (8,7) node[etiqueta, right, text=tceemorado] {LM};}
+    \capa{5}{\draw[curva1, desplazada] (0.3,0.8) -- (6.8,7.3) node[etiqueta, above, text=tceemorado] {LM$^+$};}
+    \capa{5}{\draw[curva1, desplazada] (3,0.5) -- (8.5,6) node[etiqueta, right, text=tceemorado] {LM$^-$};}
     \capa{6}{\draw[guia] (3.75,4.25) -- (3.75,0); \draw[guia] (5.25,2.75) -- (5.25,0);}
     \capa{6}{\node[punto] at (3.75,4.25) {}; \node[punto] at (5.25,2.75) {};}
     \capa{6}{\rango{3.75}{5.25}}
@@ -56,8 +56,8 @@
   \begin{scope}[xshift=11.5*0.42cm]
     \capa{7}{\node[font=\footnotesize\bfseries, anchor=south west, align=left, inner sep=0pt] at (-0.8,8.6) {d) Perturbación monetaria ($\varepsilon^{\mathrm{LM}}$),\\tipo de interés fijo};}
     \capa{7}{\ejes{$y$}{$i$}{8.8}{8}}
-    \capa{7}{\draw[curva1] (1,7) -- (7,1) node[etiqueta, below, text=tceemorado] {IS};}
-    \capa{7}{\draw[curva2] (0,3.5) -- (8.4,3.5) node[etiqueta, above left, text=tceeazul] {LM ($\bar{\imath}$)};}
+    \capa{7}{\draw[curva2] (1,7) -- (7,1) node[etiqueta, below, text=tceeazul] {IS};}
+    \capa{7}{\draw[curva1] (0,3.5) -- (8.4,3.5) node[etiqueta, above left, text=tceemorado] {LM ($\bar{\imath}$)};}
     \capa{7}{\node[etiqueta, left] at (0,3.5) {$\bar{\imath}$};}
     \capa{8}{\draw[guia] (4.5,3.5) -- (4.5,0); \node[punto] at (4.5,3.5) {}; \node[punto, tceerojo] at (4.5,0) {};}
     \capa{8}{\node[etiqueta, below, text=tceerojo] at (4.5,0) {sin variación};}
