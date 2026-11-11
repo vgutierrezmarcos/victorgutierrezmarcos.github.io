@@ -44,6 +44,11 @@ import { metaVista, registrarVistas } from './vistas';
 export const OPOSICIONES = ['tcee', 'dce'] as const;
 export type Oposicion = (typeof OPOSICIONES)[number];
 
+/** Repaso espaciado de las preguntas del banco propio: aparte del de las oficiales, que la app lee entero. */
+const LEITNER_BANCO = 'progress/spaced_repetition_banco';
+const AVISO_BANCO = 'No oficial · banco de EconomIA';
+const AVISO_IA = 'No oficial · generada por la IA, sin revisar';
+
 export interface Banco {
   temas: TemasPorPregunta;
   respuestas: Map<number, string[]>;
@@ -64,6 +69,8 @@ export interface Contexto {
   almacenEn(raiz: string): Promise<AlmacenDatos>;
   /** Banco de preguntas del test (para el acierto por tema). */
   banco(): Promise<Banco>;
+  /** Banco propio de preguntas no oficiales (KV, banco/preguntas.json; lo publica scripts/banco-test.py). Vacío si aún no hay. */
+  bancoPropio?(): Promise<Map<number, PreguntaBanco>>;
   contenido: Contenido;
   /** Un fichero de la skill desplegada en la web (SKILL.md, references/…, assets/…), o null si no existe. */
   skill(ruta: string): Promise<string | null>;
@@ -275,7 +282,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase, apuntar_test y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, y solo con la frase que el usuario escriba él mismo. Algunas herramientas llevan una vista interactiva que ciertos clientes (Claude) pintan dentro del chat: test_interactivo (el usuario contesta con botones y, al terminar, el cuadro apunta el test en la app) y, con vistaPrevia: true, proponer_cronograma, guardar_informe_cante y agendar_clase (el usuario revisa y guarda él con un botón); como no puedes saber si tu cliente la pinta, di siempre al usuario qué va a ver y qué hacer si no ve ningún cuadro. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. En los test hay tres tipos de pregunta, por este orden de preferencia: oficiales (de exámenes reales), del banco de EconomIA (no oficiales, revisadas) y generadas por ti al vuelo (sin revisar, solo si el usuario lo pide); di siempre de qué tipo es cada una y deja que elija. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase, apuntar_test, reportar_pregunta y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, y solo con la frase que el usuario escriba él mismo. Algunas herramientas llevan una vista interactiva que ciertos clientes (Claude) pintan dentro del chat: test_interactivo (el usuario contesta con botones y, al terminar, el cuadro apunta el test en la app) y, con vistaPrevia: true, proponer_cronograma, guardar_informe_cante y agendar_clase (el usuario revisa y guarda él con un botón); como no puedes saber si tu cliente la pinta, di siempre al usuario qué va a ver y qué hacer si no ve ningún cuadro. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
     },
   );
 
@@ -891,76 +898,125 @@ export function crearServidor(ctx: Contexto): McpServer {
       }),
   );
 
+  /** De dónde salen las preguntas de un test, por orden de preferencia: oficiales, banco (no oficiales, revisadas) y, lo último, las que genere la IA. */
+  const tipoPreguntas = z
+    .enum(['oficiales', 'banco', 'oficiales_y_banco'])
+    .default('oficiales')
+    .describe('«oficiales» (por defecto): solo preguntas de exámenes oficiales. «banco»: solo las del banco de EconomIA, no oficiales pero revisadas y con explicación. «oficiales_y_banco»: primero las oficiales y se completa con el banco. Usa «oficiales» salvo que el usuario pida otra cosa o no queden oficiales de ese tema.');
+  const JERARQUIA =
+    'Hay tres tipos de pregunta y este es el orden de preferencia: 1) OFICIALES, de exámenes reales; 2) del BANCO de EconomIA, no oficiales pero revisadas y con explicación; 3) GENERADAS por ti al vuelo, sin revisar, solo si el usuario lo pide o necesita algo muy concreto que no cubren las otras. Dile siempre de qué tipo es lo que le pones y deja que elija.';
+
   /** Las preguntas de un test a medida (para preguntas_test y test_interactivo), o el error que se devuelve. */
-  const testDe = async (oposicion: Oposicion, temas: string[], n: number, modo: 'no_dominadas' | 'falladas' | 'todas'): Promise<CallToolResult | { [k: string]: unknown }> => {
+  const testDe = async (oposicion: Oposicion, temas: string[], n: number, modo: 'no_dominadas' | 'falladas' | 'todas', tipo: 'oficiales' | 'banco' | 'oficiales_y_banco' = 'oficiales'): Promise<CallToolResult | { [k: string]: unknown }> => {
     const codigos = temas.map((t) => codigoTema(t)).filter((t): t is string => !!t);
     if (!codigos.length) return error(`Ningún código de tema válido en ${JSON.stringify(temas)} (formato «3.A.8»).`);
     const banco = await ctx.banco();
     if (!banco.preguntas?.size) return error('El banco de preguntas no está disponible ahora mismo. Inténtalo más tarde o remite al simulador de la web.');
+    const propio = (await ctx.bancoPropio?.().catch(() => null)) ?? new Map<number, PreguntaBanco>();
     const db = await ctx.almacen(oposicion);
-    const elegidas = elegirPreguntas(banco.preguntas, codigos, n, modo, await db.leer('progress/spaced_repetition'));
+    const deEsosTemas = (m: Map<number, PreguntaBanco>) => [...m.values()].filter((p) => p.respuesta.length && p.temas.some((t) => codigos.includes(t))).length;
+    const [oficialesDeEsosTemas, delBancoDeEsosTemas] = [deEsosTemas(banco.preguntas), deEsosTemas(propio)];
+    const oficiales = tipo === 'banco' || n === 0 ? [] : elegirPreguntas(banco.preguntas, codigos, n, modo, await db.leer('progress/spaced_repetition'));
+    const faltan = n - oficiales.length;
+    const delBanco = tipo === 'oficiales' || faltan <= 0 || !delBancoDeEsosTemas ? [] : elegirPreguntas(propio, codigos, faltan, modo, await db.leer(LEITNER_BANCO));
+    const elegidas = [...oficiales, ...delBanco];
     const explicaciones = new Map<string, Record<string, { clave?: string }>>();
-    await Promise.all([...new Set(elegidas.map((p) => p.examen))].map(async (ex) => explicaciones.set(ex, await ctx.explicaciones(ex).catch(() => ({})))));
-    const disponibles = [...banco.preguntas.values()].filter((p) => p.respuesta.length && p.temas.some((t) => codigos.includes(t))).length;
+    await Promise.all([...new Set(oficiales.map((p) => p.examen))].map(async (ex) => explicaciones.set(ex, await ctx.explicaciones(ex).catch(() => ({})))));
+    const quedan = n - elegidas.length;
     return {
       temas: codigos,
       modo,
-      oficialesDeEsosTemas: disponibles,
+      tipo,
+      oficialesDeEsosTemas,
+      delBancoDeEsosTemas,
       preguntas: elegidas.map((p) => ({
         id: p.id,
-        cabecera: `[${p.temas.join(', ')} · ${p.examen}, pregunta ${p.numero}]`,
+        tipo: p.tipo === 'banco' ? 'banco' : 'oficial',
+        cabecera: p.tipo === 'banco' ? `[${p.temas.join(', ')} · banco de EconomIA]` : `[${p.temas.join(', ')} · ${p.examen}, pregunta ${p.numero}]`,
+        ...(p.tipo === 'banco' ? { aviso: AVISO_BANCO } : {}),
         enunciado: p.enunciado,
         opciones: p.opciones,
         ...(p.figura ? { figura: p.figuras?.length ? 'Lleva figura: descríbela con «descripcion» y enlaza «url» para que la abra.' : 'Lleva una figura que no se ve aquí: está en el simulador de la web y en la app.', ...(p.figuras?.length ? { figuras: p.figuras } : {}) } : {}),
         respuesta: p.respuesta,
         ...(p.respuesta.length > 1 ? { variasValidas: true } : {}),
-        porQue: explicaciones.get(p.examen)?.[String(p.id)]?.clave,
+        porQue: p.tipo === 'banco' ? p.porQue : explicaciones.get(p.examen)?.[String(p.id)]?.clave,
         ...(p.nota ? { nota: p.nota } : {}),
         historial: p.aciertos + p.fallos > 0 ? { aciertos: p.aciertos, fallos: p.fallos } : 'no la ha hecho',
       })),
-      ...(elegidas.length < n ? { aviso: `Solo hay ${elegidas.length} preguntas oficiales de esos temas en el modo «${modo}». Completa con preguntas nuevas del mismo estilo, marcadas como «nueva», o prueba otro modo.` } : {}),
+      ...(quedan > 0
+        ? {
+            aviso:
+              tipo === 'oficiales' && delBancoDeEsosTemas
+                ? `Solo hay ${elegidas.length} preguntas oficiales de esos temas en el modo «${modo}». Antes de inventar ninguna, ofrécele completar con las ${delBancoDeEsosTemas} del banco de EconomIA (no oficiales, revisadas): tipo «oficiales_y_banco».`
+                : `Solo hay ${elegidas.length} preguntas de esos temas en el modo «${modo}»${tipo === 'oficiales' ? ' y el banco de EconomIA aún no tiene de esos temas' : ''}. Prueba otro modo; si el usuario quiere más, puedes generar tú preguntas del mismo estilo, diciéndole claramente que no son oficiales ni están revisadas.`,
+          }
+        : {}),
+      tipos: JERARQUIA,
     };
   };
 
   server.registerTool(
     'preguntas_test',
     {
-      title: 'Preguntas oficiales del test por tema',
+      title: 'Preguntas de test por tema (oficiales y del banco)',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'Preguntas oficiales del test del primer ejercicio de TCEE (exámenes desde 2002; DCE practica con el mismo banco) de los temas que se pidan, con su respuesta y la explicación «¿Por qué?» de la web, elegidas según lo que el opositor ya ha hecho en la app: «no_dominadas» (por defecto: primero las que ha fallado, luego las que no ha visto; fuera las que ya domina), «falladas» (solo las que ha fallado) o «todas». Úsala para un test a medida en vez de leer los ficheros del banco, cuando vayas a plantear tú las preguntas en el chat. Si el usuario quiere HACER el test (un test interactivo, con botones), usa test_interactivo, que ya trae su cuadro: no construyas tú un widget, una visualización ni un artefacto con estas preguntas. No enseñes la respuesta ni la explicación hasta que conteste. Si una pregunta lleva figura, viene en «figuras» con la dirección de la imagen y su descripción en texto: describe la figura con esas palabras y pon el enlace (si no viene, remite al simulador de la web o a la app).',
+        'Preguntas de test del primer ejercicio de TCEE (DCE practica con las mismas) de los temas que se pidan: por defecto las OFICIALES (exámenes desde 2002) y, con «tipo», las del BANCO de EconomIA (no oficiales, pero revisadas y con explicación; llevan «aviso»). Vienen con su respuesta y la explicación «¿Por qué?» de la web, elegidas según lo que el opositor ya ha hecho en la app: «no_dominadas» (por defecto: primero las que ha fallado, luego las que no ha visto; fuera las que ya domina), «falladas» (solo las que ha fallado) o «todas». Úsala para un test a medida en vez de leer los ficheros del banco, cuando vayas a plantear tú las preguntas en el chat. Si el usuario quiere HACER el test (un test interactivo, con botones), usa test_interactivo, que ya trae su cuadro: no construyas tú un widget, una visualización ni un artefacto con estas preguntas. No enseñes la respuesta ni la explicación hasta que conteste. Si una pregunta lleva figura, viene en «figuras» con la dirección de la imagen y su descripción en texto: describe la figura con esas palabras y pon el enlace (si no viene, remite al simulador de la web o a la app).',
       inputSchema: {
         oposicion: oposicionParam,
         temas: z.array(z.string()).min(1).max(10).describe('Códigos de los temas, «3.A.8» (los flojos salen de leer_resultados_test y leer_progreso).'),
         n: z.number().int().min(1).max(30).default(10).describe('Cuántas preguntas (1-30).'),
         modo: z.enum(['no_dominadas', 'falladas', 'todas']).default('no_dominadas'),
+        tipo: tipoPreguntas,
       },
     },
-    async ({ oposicion, temas, n, modo }) =>
+    async ({ oposicion, temas, n, modo, tipo }) =>
       protegido(async () => {
-        const t = await testDe(oposicion, temas, n, modo);
-        return 'content' in t ? (t as CallToolResult) : json({ ...t, comoUsarlas: 'Plantéalas sin la respuesta; corrige cuando conteste, con la explicación («porQue») y la fuente. El desarrollo completo de cada explicación está en el simulador de la web y en la app («¿Por qué?»).' });
+        const t = await testDe(oposicion, temas, n, modo, tipo);
+        return 'content' in t ? (t as CallToolResult) : json({ ...t, comoUsarlas: 'Plantéalas sin la respuesta; corrige cuando conteste, con la explicación («porQue») y la fuente. Las del banco llevan «aviso»: díselo en pequeño junto a la pregunta («No oficial · banco de EconomIA»). Si el usuario ve un error en una pregunta, su respuesta o su explicación, repórtalo con reportar_pregunta. El desarrollo completo de cada explicación está en el simulador de la web y en la app («¿Por qué?»).' });
       }),
   );
 
   server.registerTool(
     'test_interactivo',
     {
-      title: 'Test interactivo con preguntas oficiales',
+      title: 'Test interactivo (oficiales, banco o generadas)',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'Abre un test interactivo dentro del chat: las mismas preguntas oficiales que preguntas_test (mismos parámetros), pero el usuario las contesta con botones en un cuadro, con la figura a la vista, la corrección al momento y el «¿Por qué?», y al terminar te llega su resultado con los fallos para que se los expliques y el cuadro lo apunta en la app (historial de tests y repaso espaciado), como si lo hubiera hecho allí. Es la herramienta para «hazme un test», «test interactivo» o «ponme preguntas» en Claude (web, escritorio y móvil) y en los demás clientes con vistas interactivas: el cuadro lo pone el conector, así que NO construyas otro (ni widget, ni visualización, ni artefacto) y NO copies las preguntas ni las respuestas en el chat; dile que conteste en el cuadro. Si el usuario dice que no ve ningún cuadro, o tu cliente no pinta vistas, usa preguntas_test y plantéaselas tú.',
+        'Abre un test interactivo dentro del chat: las mismas preguntas que preguntas_test (mismos parámetros; oficiales por defecto, del banco de EconomIA con «tipo» y, como último recurso, las que generes tú en «nuevas»; cada una sale con su etiqueta), pero el usuario las contesta con botones en un cuadro, con la figura a la vista, la corrección al momento y el «¿Por qué?», y al terminar te llega su resultado con los fallos para que se los expliques y el cuadro lo apunta en la app (historial de tests y repaso espaciado), como si lo hubiera hecho allí. Es la herramienta para «hazme un test», «test interactivo» o «ponme preguntas» en Claude (web, escritorio y móvil) y en los demás clientes con vistas interactivas: el cuadro lo pone el conector, así que NO construyas otro (ni widget, ni visualización, ni artefacto) y NO copies las preguntas ni las respuestas en el chat; dile que conteste en el cuadro. Si el usuario dice que no ve ningún cuadro, o tu cliente no pinta vistas, usa preguntas_test y plantéaselas tú.',
       inputSchema: {
         oposicion: oposicionParam,
         temas: z.array(z.string()).min(1).max(10).describe('Códigos de los temas, «3.A.8».'),
-        n: z.number().int().min(1).max(30).default(10).describe('Cuántas preguntas (1-30).'),
+        n: z.number().int().min(0).max(30).default(10).describe('Cuántas preguntas oficiales o del banco (0-30; 0 solo si pasas «nuevas»).'),
         modo: z.enum(['no_dominadas', 'falladas', 'todas']).default('no_dominadas'),
+        tipo: tipoPreguntas,
+        nuevas: z
+          .array(
+            z.object({
+              tema: z.string().max(12).describe('Código del tema, «3.A.8».'),
+              enunciado: z.string().min(10).max(3000),
+              opciones: z.record(z.string().regex(/^[a-d]$/), z.string().min(1).max(600)).describe('Cuatro opciones: a, b, c y d.'),
+              respuesta: z.string().regex(/^[a-d]$/),
+              porQue: z.string().max(2000).optional().describe('Por qué esa es la correcta, en dos o tres frases.'),
+            }),
+          )
+          .max(20)
+          .optional()
+          .describe('Preguntas que generas tú al vuelo (tercer tipo, el último recurso): solo si el usuario las pide o quiere algo muy concreto que no cubren las oficiales ni el banco. Salen en el cuadro marcadas como «No oficial · generada por la IA, sin revisar» y no cuentan en su repaso. Mismo formato y nivel que las oficiales: cuatro opciones, una sola correcta, basadas en el temario (leer_tema, leer_ficha).'),
       },
       _meta: metaVista('test'),
     },
-    async ({ oposicion, temas, n, modo }) =>
+    async ({ oposicion, temas, n, modo, tipo, nuevas }) =>
       protegido(async () => {
-        const t = await testDe(oposicion, temas, n, modo);
+        if (n === 0 && !nuevas?.length) return error('Con n = 0 hacen falta preguntas en «nuevas».');
+        const t = await testDe(oposicion, temas, n, modo, tipo);
+        if ('content' in t) return t as CallToolResult;
+        // Las generadas por la IA llevan id negativo: no están en ningún banco y apuntar_test no las cuenta.
+        const generadas = (nuevas ?? [])
+          .filter((p) => ['a', 'b', 'c', 'd'].every((l) => p.opciones[l]))
+          .map((p, k) => ({ id: -(k + 1), tipo: 'ia', cabecera: `[${codigoTema(p.tema) ?? p.tema} · generada por la IA]`, aviso: AVISO_IA, enunciado: p.enunciado, opciones: p.opciones, respuesta: [p.respuesta], ...(p.porQue ? { porQue: p.porQue } : {}) }));
+        if (nuevas?.length && generadas.length < nuevas.length) return error('Cada pregunta nueva necesita las cuatro opciones: a, b, c y d.');
+        (t as { preguntas: unknown[] }).preguntas = [...(t.preguntas as unknown[]), ...generadas];
         return 'content' in t
           ? (t as CallToolResult)
           : json({
@@ -977,7 +1033,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Apuntar en la app un test hecho en el chat',
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false },
       description:
-        'Apunta en la app un test de preguntas oficiales que el usuario acaba de contestar en el chat: queda en su historial de tests (marcado como hecho con la IA) y cuenta para su repaso espaciado, igual que si lo hubiera hecho en la app o en el simulador de la web. El cuadro de test_interactivo la llama solo al terminar: NO la llames tú después de un test interactivo. Llámala tú únicamente si le planteaste las preguntas en el chat con preguntas_test, las contestó todas y te confirma que quiere apuntarlo; pasa lo que marcó de verdad, nunca respuestas supuestas. El conector corrige contra el banco: no hace falta decirle cuáles acertó.',
+        'Apunta en la app un test de preguntas oficiales o del banco de EconomIA que el usuario acaba de contestar en el chat (las que generes tú no se apuntan): queda en su historial de tests (marcado como hecho con la IA) y cuenta para su repaso espaciado, igual que si lo hubiera hecho en la app o en el simulador de la web. El cuadro de test_interactivo la llama solo al terminar: NO la llames tú después de un test interactivo. Llámala tú únicamente si le planteaste las preguntas en el chat con preguntas_test, las contestó todas y te confirma que quiere apuntarlo; pasa lo que marcó de verdad, nunca respuestas supuestas. El conector corrige contra el banco: no hace falta decirle cuáles acertó.',
       inputSchema: {
         oposicion: oposicionParam,
         respuestas: z.record(z.string().regex(/^\d{1,6}$/), z.string().regex(/^[a-eA-E]$/)).describe('Lo que marcó en cada pregunta: id de la pregunta (el «id» de preguntas_test) → letra.'),
@@ -990,21 +1046,59 @@ export function crearServidor(ctx: Contexto): McpServer {
         if (Object.keys(respuestas).length > 30) return error('Como mucho, 30 preguntas por test.');
         const banco = await ctx.banco();
         if (!banco.preguntas?.size) return error('El banco de preguntas no está disponible ahora mismo: no se ha apuntado nada.');
-        const { detalle, resultado } = corregirTest(respuestas, banco.preguntas, segundos ?? 0);
-        if (!detalle.length) return error('Ninguna de esas preguntas es del banco oficial: no hay nada que apuntar.');
+        const propio = (await ctx.bancoPropio?.().catch(() => null)) ?? new Map<number, PreguntaBanco>();
+        const { oficiales, propias, resultado } = corregirTest(respuestas, new Map([...banco.preguntas, ...propio]), segundos ?? 0);
+        if (!oficiales.length && !propias.length) return error('Ninguna de esas preguntas es oficial ni del banco de EconomIA: no hay nada que apuntar (las generadas por la IA no cuentan en el repaso).');
         const db = await ctx.almacen(oposicion);
         const ahora = new Date();
         const ruta = `exam_results/ia_${clave ?? ahora.getTime()}`;
-        const resumen = { notaSobre10: resultado.notaSobre10, correctas: resultado.correctas, incorrectas: resultado.incorrectas, preguntas: resultado.totalPreguntas };
+        const resumen = { notaSobre10: resultado.notaSobre10, correctas: resultado.correctas, incorrectas: resultado.incorrectas, preguntas: resultado.totalPreguntas, fuente: resultado.fuente };
         // El cuadro puede repetir la llamada (se vuelve a pintar): el mismo test no cuenta dos veces.
         if (clave && (await db.leer(ruta))) return json({ apuntado: true, yaEstaba: true, oposicion, ...resumen });
         const marca = marcaDeTiempo(ahora.toISOString());
-        const leitner = apuntarLeitner(await db.leer('progress/spaced_repetition'), detalle, ahora.getTime());
-        await db.lote([
-          { ruta, datos: { ...resultado, timestamp: marca } },
-          { ruta: 'progress/spaced_repetition', datos: { ...leitner, updatedAt: marca } },
-        ]);
+        // Cada tipo, a su repaso: el de las oficiales es el que la app lee entero; el del banco va aparte.
+        const repasos = await Promise.all(
+          ([['progress/spaced_repetition', oficiales], [LEITNER_BANCO, propias]] as const)
+            .filter(([, d]) => d.length)
+            .map(async ([donde, d]) => ({ ruta: donde, datos: { ...apuntarLeitner(await db.leer(donde), [...d], ahora.getTime()), updatedAt: marca } })),
+        );
+        await db.lote([{ ruta, datos: { ...resultado, timestamp: marca } }, ...repasos]);
         return json({ apuntado: true, oposicion, ...resumen, donde: 'En el historial de tests de la app (y de la web) y en el repaso espaciado; la app lo recoge al sincronizar.' });
+      }),
+  );
+
+  server.registerTool(
+    'reportar_pregunta',
+    {
+      title: 'Reportar un error en una pregunta de test',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
+      description:
+        'Envía a Víctor el aviso de que una pregunta de test (oficial o del banco de EconomIA), su respuesta o su explicación está mal planteada o desactualizada; es lo mismo que «Reportar» en la app. El cuadro de test_interactivo tiene su propio botón. Llámala tú solo cuando el usuario te lo pida o confirme, con su explicación en «comentario» (no la tuya sin que la haya visto). No sirve para las preguntas generadas por la IA.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        pregunta: z.number().int().min(1).describe('El «id» de la pregunta.'),
+        motivo: z.enum(['respuesta', 'explicacion', 'enunciado', 'otro']).describe('Qué está mal: la respuesta dada por buena, la explicación, el enunciado u otra cosa.'),
+        comentario: z.string().min(5).max(2000).describe('Qué está mal y por qué, con la fuente si la hay.'),
+        elegida: z.string().regex(/^[a-eA-E]$/).optional().describe('La letra que marcó el usuario, si viene al caso.'),
+      },
+    },
+    async ({ oposicion, pregunta, motivo, comentario, elegida }) =>
+      protegido(async () => {
+        const banco = await ctx.banco();
+        const propio = (await ctx.bancoPropio?.().catch(() => null)) ?? new Map<number, PreguntaBanco>();
+        const p = banco.preguntas?.get(pregunta) ?? propio.get(pregunta);
+        if (!p) return error('Esa pregunta no es oficial ni del banco de EconomIA: no se puede reportar.');
+        const red = await ctx.almacenEn('');
+        const id = `ia_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
+        // Las mismas claves que escribe la app (las reglas no admiten otras); «creado» lo pone Firestore.
+        await red.lote([
+          {
+            ruta: `reportesTest/${id}`,
+            datos: { uid: ctx.uid, correo: ctx.email, nombre: '', oposicion, pregunta, examen: p.examen, numero: p.numero, elegida: (elegida ?? '').toLowerCase(), motivo, comentario, version: `conector (${await ctx.cliente()})`, enviado: false },
+            ahora: ['creado'],
+          },
+        ]);
+        return json({ reportado: true, pregunta, tipo: p.tipo === 'banco' ? 'banco' : 'oficial', aviso: 'Enviado. Víctor lo revisa y, si procede, corrige la pregunta o la explicación.' });
       }),
   );
 

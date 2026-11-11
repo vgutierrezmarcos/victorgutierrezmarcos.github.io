@@ -70,6 +70,31 @@ export interface PreguntaBanco {
   /** Sus figuras: dirección de la imagen en la web y la descripción en texto (el «alt»), con la que se puede contestar sin verla. */
   figuras?: Array<{ url: string; descripcion?: string }>;
   nota?: string;
+  /** «banco»: pregunta no oficial del banco de EconomIA (las oficiales no llevan este campo). */
+  tipo?: 'banco';
+  /** Solo en las del banco: la explicación va con la pregunta (las oficiales la tienen en explicaciones/<examen>.json). */
+  porQue?: string;
+}
+
+/** Las preguntas del banco propio (no oficiales) valen de 100000 en adelante: nunca chocan con las oficiales. */
+export const PRIMER_ID_BANCO = 100_000;
+
+/**
+ * El banco propio tal como lo publica scripts/banco-test.py en el KV (banco/preguntas.json):
+ * mismas claves que preguntas.json más `explicacion: { clave, desarrollo }`.
+ */
+export function bancoPropioDe(datos: { preguntas?: Array<{ id: number; temas?: string[]; enunciado?: string; opciones?: Record<string, string>; respuesta?: string[]; explicacion?: { clave?: string }; imagenes?: unknown[]; nota?: string }> } | null): Map<number, PreguntaBanco> {
+  const out = new Map<number, PreguntaBanco>();
+  for (const p of datos?.preguntas ?? []) {
+    if (!(p.id >= PRIMER_ID_BANCO) || !p.enunciado || !p.opciones || !p.respuesta?.length) continue;
+    out.set(p.id, {
+      id: p.id, examen: 'banco', numero: p.id % 100, temas: p.temas ?? [], enunciado: p.enunciado, opciones: p.opciones,
+      respuesta: p.respuesta.map((r) => r.toLowerCase()), figura: (p.imagenes?.length ?? 0) > 0,
+      ...(figurasDe(p.imagenes).length ? { figuras: figurasDe(p.imagenes) } : {}), ...(p.nota ? { nota: p.nota } : {}),
+      tipo: 'banco', ...(p.explicacion?.clave ? { porQue: p.explicacion.clave } : {}),
+    });
+  }
+  return out;
 }
 
 const URL_TEST = 'https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/';
@@ -134,38 +159,46 @@ export function elegirPreguntas(
 /**
  * Corrige contra el banco lo que el usuario contestó en un test del conector (id de pregunta → letra) y lo deja
  * con el esquema de exam_results de la app y la web (app/lib/data/models/resultado.dart; acierto 1, fallo −0,33).
- * Solo cuentan las preguntas del banco con respuesta; las demás se ignoran.
+ * `banco` lleva las oficiales y, si las hay, las del banco propio (no oficiales): las respuestas de estas van aparte
+ * (`respuestasBanco`), porque la app busca cada id de `respuestas` en el banco oficial, y el test dice de qué está hecho
+ * (`fuente`: oficiales, banco o mixto). Las preguntas que no están en ningún banco (las que genera la IA) se ignoran.
  */
 export function corregirTest(respuestas: Record<string, string>, banco: Map<number, PreguntaBanco>, segundos = 0) {
-  const detalle: Array<{ id: number; ok: boolean }> = [];
+  const oficiales: Array<{ id: number; ok: boolean }> = [];
+  const propias: Array<{ id: number; ok: boolean }> = [];
   const limpias: Record<string, string> = {};
+  const limpiasBanco: Record<string, string> = {};
   const temas = new Set<string>();
   for (const [idTexto, letra] of Object.entries(respuestas)) {
     const p = banco.get(Number(idTexto));
     if (!p || !p.respuesta.length) continue;
     const marcada = letra.toLowerCase();
-    limpias[String(p.id)] = marcada;
-    detalle.push({ id: p.id, ok: p.respuesta.includes(marcada) });
+    (p.tipo === 'banco' ? limpiasBanco : limpias)[String(p.id)] = marcada;
+    (p.tipo === 'banco' ? propias : oficiales).push({ id: p.id, ok: p.respuesta.includes(marcada) });
     p.temas.forEach((t) => temas.add(t));
   }
-  const correctas = detalle.filter((d) => d.ok).length;
-  const incorrectas = detalle.length - correctas;
+  const total = oficiales.length + propias.length;
+  const correctas = [...oficiales, ...propias].filter((d) => d.ok).length;
+  const incorrectas = total - correctas;
   const puntos = Math.round((correctas - 0.33 * incorrectas) * 100) / 100;
   return {
-    detalle,
+    oficiales,
+    propias,
     resultado: {
       puntosBrutos: puntos,
-      maxPuntos: detalle.length,
-      notaSobre10: detalle.length ? Math.round((puntos / detalle.length) * 1000) / 100 : 0,
+      maxPuntos: total,
+      notaSobre10: total ? Math.round((puntos / total) * 1000) / 100 : 0,
       correctas,
       incorrectas,
       sinResponder: 0,
-      totalPreguntas: detalle.length,
+      totalPreguntas: total,
       tiempoSeconds: segundos,
       temas: [...temas].sort(),
       respuestas: limpias,
       origen: 'ia',
       tipo: 'test',
+      fuente: !propias.length ? 'oficiales' : !oficiales.length ? 'banco' : 'mixto',
+      ...(propias.length ? { respuestasBanco: limpiasBanco, banco: { correctas: propias.filter((d) => d.ok).length, incorrectas: propias.filter((d) => !d.ok).length } } : {}),
     },
   };
 }

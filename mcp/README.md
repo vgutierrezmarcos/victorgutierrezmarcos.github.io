@@ -48,6 +48,7 @@ Lecturas (todas con `oposicion`: `tcee` por defecto o `dce`; si una sale vacía 
 | `preguntas_test(temas, n, modo)` | Preguntas oficiales de `preguntas.json` por tema, filtradas con `progress/spaced_repetition`, con la clave de `explicaciones/<examen>.json` |
 | `test_interactivo(temas, n, modo)` | Lo mismo que `preguntas_test`, con la vista interactiva del test (ver «Vistas interactivas») |
 | `apuntar_test(respuestas, segundos?, clave?)` | Apunta en la app un test hecho en el chat: lo corrige contra el banco, lo deja en `exam_results` (`origen: "ia"`) y actualiza el repaso espaciado (`progress/spaced_repetition`, misma regla que la app). La vista del test la llama sola al terminar; con `clave` no cuenta dos veces |
+| `reportar_pregunta(pregunta, motivo, comentario, elegida?)` | Reporta un error en una pregunta oficial o del banco (colección `reportesTest`, las mismas claves que la app; el correo lo manda `reportes-test.yml`). La vista del test tiene su botón |
 | `figura_test(url)` | Solo para la vista del test (`visibility: ["app"]`): la imagen de una figura en base64 cuando el cliente no deja cargarla de la web |
 | `leer_proceso(seccion)` | `oposicion/proceso.json` (documentos del proceso selectivo en curso) |
 | `fuentes_tema(tema)`, `buscar_temario(consulta)`, `leer_fuente(enlace)` | `fuentes-temas.json`; la búsqueda mira también los apartados de cada PDF (`references/temario/indices-temas.md`); `leer_fuente` lee apuntes de la ATCEE, PDF de la web (`textos/{tema}` en KV) y páginas de Manuel |
@@ -70,7 +71,17 @@ Escrituras (siempre con confirmación del usuario: en la conversación o con el 
 Las fechas se escriben como la app: hora de Madrid sin zona. Los ids que llegan de la IA se codifican antes de ir en una ruta.
 
 
-### Vistas interactivas (MCP Apps, «interactive connectors»)
+### Tres tipos de pregunta de test
+
+Por orden de preferencia, y siempre con su etiqueta a la vista:
+
+1. **Oficiales**: las de los exámenes (`preguntas.json` de la web). Es lo que se usa por defecto.
+2. **Del banco de EconomIA**: no oficiales, revisadas y con explicación; ids de 100000 en adelante. Material exclusivo: la fuente vive en la rama de revisión (`banco-test/<tema>.json`) y `python3 scripts/banco-test.py --publicar` la valida y la sube al KV `CONTENIDO` (`banco/preguntas.json`), que es de donde las lee el conector. Se piden con `tipo: "banco"` u `"oficiales_y_banco"`. El número de preguntas por tema guarda la proporción de los exámenes oficiales (`--cupos`).
+3. **Generadas al vuelo** por la IA del usuario (`nuevas` en `test_interactivo`): sin revisar, id negativo, no se apuntan ni se pueden reportar.
+
+Al apuntar un test, las oficiales van a `progress/spaced_repetition` (el que lee la app) y las del banco a `progress/spaced_repetition_banco`; en `exam_results` las respuestas del banco van en `respuestasBanco` y `fuente` dice si el test es de oficiales, del banco o mixto.
+
+## Vistas interactivas (MCP Apps, «interactive connectors»)
 
 Cinco herramientas declaran una vista (`_meta.ui.resourceUri`) que los clientes compatibles (Claude) pintan dentro del chat; los demás reciben el mismo texto de siempre. Las vistas son recursos `ui://economia/*.html` (`text/html;profile=mcp-app`) que salen de `src/vistas/*.html` (texto empaquetado con la regla `Text` de `wrangler.toml`) y `src/vistas.ts`: `comun.html` lleva los estilos y el puente con el cliente (JSON-RPC por `postMessage`, sin dependencias) y cada vista, su cuerpo.
 
