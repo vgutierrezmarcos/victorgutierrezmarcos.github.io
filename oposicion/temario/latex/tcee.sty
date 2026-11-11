@@ -155,25 +155,58 @@
 \pagestyle{tcee}
 
 % --- Título del tema --------------------------------------------------------
-% Las líneas del título salen equilibradas: se mide el título, se calcula
-% cuántas líneas necesita y se compone en una caja de 1/n de su anchura (con
-% un poco de holgura para que quepan las palabras), centrada.
+% (Víctor, 11/11/2026) El título se compone en el mínimo de líneas posible y con
+% las líneas equilibradas (sin una palabra suelta al final): se busca la caja
+% más estrecha en la que el título sigue cabiendo en ese mínimo de líneas
+% (búsqueda binaria sobre la anchura, contando las líneas con \prevgraf).
+% El bloque reserva siempre la altura de tres líneas de \large y centra el
+% título en ella, para que la introducción empiece a la misma altura en todos
+% los temas; si el título necesitara más de tres líneas, baja a \normalsize y,
+% si aún no cabe, a \small. Corte manual opcional en un título rebelde:
+% \cortetitulo dentro del título de \tcetema (en la web y Word es un espacio);
+% entonces no se equilibra y se respeta el corte.
 \newlength{\tcee@ancho}
 \newlength{\tcee@maximo}
+\newlength{\tcee@bajo}
+\newlength{\tcee@alto}
+\newlength{\tcee@reserva}
 \newcount\tcee@lineas
-\newcommand{\tcee@formatotitulo}{\large\bfseries\color{tceemorado}\hyphenpenalty=10000\exhyphenpenalty=10000}
+\newcount\tcee@minimo
+\newif\iftcee@corte
+\newcommand{\tcee@tamtitulo}{\large}
+\newcommand{\tcee@formatotitulo}{\tcee@tamtitulo\bfseries\color{tceemorado}\hyphenpenalty=10000\exhyphenpenalty=10000}
+\newcommand{\tcee@textotitulo}{\MakeUppercase{\tcee@codigo:\ \tcee@titulo}}
+% Compone el título en la anchura #1 (caja 0) y deja sus líneas en \tcee@lineas
+\newcommand{\tcee@probar}[1]{%
+  \setbox0\vbox{\hsize=#1\relax\centering\tcee@formatotitulo\tcee@textotitulo\par
+    \global\tcee@lineas=\prevgraf}}
 \newcommand{\tceetitulo}{%
   \thispagestyle{tceeprimera}%
   \begingroup
   \setlength{\tcee@maximo}{0.92\textwidth}%
-  \sbox0{\tcee@formatotitulo\MakeUppercase{\tcee@codigo:\ \tcee@titulo}}%
-  \tcee@lineas=\numexpr\wd0/\tcee@maximo\relax
-  \ifdim\tcee@lineas\tcee@maximo<\wd0 \advance\tcee@lineas by 1 \fi
-  \ifnum\tcee@lineas<1 \tcee@lineas=1 \fi
-  \setlength{\tcee@ancho}{\dimexpr\wd0/\tcee@lineas+2.2em\relax}%
-  \ifdim\tcee@ancho>\textwidth \setlength{\tcee@ancho}{\textwidth}\fi
+  \global\tcee@cortefalse
+  \sbox0{\def\cortetitulo{\global\tcee@cortetrue}\tcee@formatotitulo\tcee@textotitulo}%
+  \tcee@probar{\tcee@maximo}%
+  \ifnum\tcee@lineas>3 \renewcommand{\tcee@tamtitulo}{\normalsize}\tcee@probar{\tcee@maximo}\fi
+  \ifnum\tcee@lineas>3 \renewcommand{\tcee@tamtitulo}{\small}\tcee@probar{\tcee@maximo}\fi
+  \tcee@minimo=\tcee@lineas
+  \setlength{\tcee@ancho}{\tcee@maximo}%
+  \iftcee@corte\else\ifnum\tcee@minimo>1
+    \setlength{\tcee@bajo}{0.3\tcee@maximo}\setlength{\tcee@alto}{\tcee@maximo}%
+    \loop\ifdim\dimexpr\tcee@alto-\tcee@bajo\relax>0.5pt
+      \setlength{\tcee@ancho}{\dimexpr(\tcee@alto+\tcee@bajo)/2\relax}%
+      \tcee@probar{\tcee@ancho}%
+      \ifnum\tcee@lineas>\tcee@minimo \setlength{\tcee@bajo}{\tcee@ancho}\else\setlength{\tcee@alto}{\tcee@ancho}\fi
+    \repeat
+    % un poco de holgura sobre la anchura mínima, para que no quede apretado
+    \setlength{\tcee@ancho}{\dimexpr\tcee@alto+0.8em\relax}%
+    \ifdim\tcee@ancho>\tcee@maximo \setlength{\tcee@ancho}{\tcee@maximo}\fi
+  \fi\fi
+  \tcee@probar{\tcee@ancho}%
+  % altura reservada: tres líneas de \large
+  {\large\global\tcee@reserva=\dimexpr 2\baselineskip+\ht\strutbox+\dp\strutbox\relax}%
   \begin{center}
-    \parbox{\tcee@ancho}{\centering\tcee@formatotitulo\MakeUppercase{\tcee@codigo:\ \tcee@titulo}\par}\par
+    \vbox to \tcee@reserva{\vss\hbox to\linewidth{\hss\box0\hss}\vss}\par
     \vspace{0.5em}{\color{tceemorado}\rule{0.6\textwidth}{0.8pt}}\par
     \vspace{0.3em}\tcee@lineapaginas
     \vspace{0.15em}\tcee@linealicencia
