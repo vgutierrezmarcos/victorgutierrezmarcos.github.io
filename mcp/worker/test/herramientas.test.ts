@@ -498,6 +498,30 @@ describe('herramientas', () => {
     expect((await c.callTool({ name: 'reportar_pregunta', arguments: { pregunta: 424242, motivo: 'otro', comentario: 'No existe.' } })).isError).toBe(true);
   });
 
+  it('nivel: en primera vuelta no salen las difíciles (del banco, por su dificultad; oficiales, por los aciertos de todos) y las figuras del banco las da el conector', async () => {
+    const propio = bancoPropioDe({ preguntas: [
+      { id: 310801, temas: ['3.A.8'], enunciado: '¿Fácil del banco?', opciones, respuesta: ['a'], dificultad: 1, imagenes: [{ src: 'banco:310801.webp', alt: 'Una recta.' }] },
+      { id: 310802, temas: ['3.A.8'], enunciado: '¿Difícil del banco?', opciones, respuesta: ['a'], dificultad: 3 },
+    ] });
+    const c = await cliente({
+      ...ctx,
+      bancoPropio: async () => propio,
+      dificultad: async () => ({ '1': { v: 10, a: 1 }, '2': { v: 10, a: 8 }, '3': { v: 2, a: 0 } }),
+      figura: async (ruta) => (ruta === 'banco:310801.webp' ? { mime: 'image/webp', base64: 'QkFOQ08=' } : null),
+    });
+    const ids = async (nivel: string) => (json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'todas', n: 10, tipo: 'oficiales_y_banco', nivel } })).preguntas as Obj[]).map((p) => p.id).sort();
+    expect(await ids('cualquiera')).toEqual([1, 2, 3, 310801, 310802]);
+    expect(await ids('primera_vuelta')).toEqual([2, 3, 310801]); // la 1 la acierta el 10 %; la 3 no tiene datos y entra
+    expect(await ids('avanzado')).toEqual([1, 3, 310802]);
+    const t = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'todas', n: 10, tipo: 'oficiales_y_banco', nivel: 'primera_vuelta' } }));
+    const porId = Object.fromEntries((t.preguntas as Obj[]).map((p) => [p.id, p]));
+    expect(porId[2].dificultad).toBe('fácil');
+    expect(porId[3].dificultad).toBeUndefined();
+    expect(porId[310801]).toMatchObject({ dificultad: 'fácil', figuras: [{ url: 'banco:310801.webp', descripcion: 'Una recta.' }] });
+    expect((await c.callTool({ name: 'figura_test', arguments: { url: 'banco:310801.webp' } })).content).toEqual([{ type: 'image', data: 'QkFOQ08=', mimeType: 'image/webp' }]);
+    expect((await c.callTool({ name: 'figura_test', arguments: { url: 'banco:../indice.json' } })).isError).toBe(true);
+  });
+
   it('con vistaPrevia, proponer_cronograma y guardar_informe_cante validan y enseñan, pero no escriben', async () => {
     const c = await cliente(ctx);
     const args = { ejercicio: 3, diaCante: 6, semanas: [{ cante: '2026-11-07', temas: ['3.A.8'] }, { cante: '2026-11-21', temas: ['3.A.9'] }] };

@@ -129,6 +129,10 @@ function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<
     },
     banco: () => bancoDePreguntas(env),
     bancoPropio: () => bancoPropio(env),
+    async dificultad() {
+      const r = await fetch(new URL('dificultad.json', env.URL_PREGUNTAS).toString(), { cf: { cacheTtl: 86_400, cacheEverything: true } });
+      return r.ok ? (((await r.json()) as { preguntas?: Record<string, { v?: number; a?: number }> }).preguntas ?? {}) : {};
+    },
     async explicaciones(examen: string) {
       if (!/^[\w-]{4,60}$/.test(examen)) return {};
       const r = await fetch(new URL(`explicaciones/${examen}.json`, env.URL_PREGUNTAS).toString(), { cf: { cacheTtl: 86_400, cacheEverything: true } });
@@ -161,13 +165,16 @@ function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<
       return r.ok ? r.text() : null;
     },
     async figura(ruta: string) {
-      const r = await fetch(new URL(ruta, env.URL_PREGUNTAS).toString(), { cf: { cacheTtl: 86_400, cacheEverything: true } });
-      if (!r.ok) return null;
-      const bytes = new Uint8Array(await r.arrayBuffer());
+      // Las del banco propio («banco:310811.webp») están en el KV de contenido exclusivo; las oficiales, en la web.
+      const delBanco = /^banco:([\w.-]+)$/.exec(ruta);
+      const r = delBanco ? null : await fetch(new URL(ruta, env.URL_PREGUNTAS).toString(), { cf: { cacheTtl: 86_400, cacheEverything: true } });
+      const datos = delBanco ? await env.CONTENIDO.get(`banco/img/${delBanco[1]}`, 'arrayBuffer') : r!.ok ? await r!.arrayBuffer() : null;
+      if (!datos) return null;
+      const bytes = new Uint8Array(datos);
       if (bytes.length > 1_500_000) return null;
       let binario = '';
       for (let i = 0; i < bytes.length; i += 0x8000) binario += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-      return { mime: r.headers.get('content-type')?.split(';')[0] || 'image/webp', base64: btoa(binario) };
+      return { mime: delBanco ? (ruta.endsWith('.png') ? 'image/png' : 'image/webp') : r!.headers.get('content-type')?.split(';')[0] || 'image/webp', base64: btoa(binario) };
     },
     async sello(texto: string) {
       return sha256(`${env.CLAVE_CIFRADO}:${texto}`);

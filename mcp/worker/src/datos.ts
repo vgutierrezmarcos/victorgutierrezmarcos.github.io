@@ -72,6 +72,8 @@ export interface PreguntaBanco {
   nota?: string;
   /** «banco»: pregunta no oficial del banco de EconomIA (las oficiales no llevan este campo). */
   tipo?: 'banco';
+  /** 1 fácil, 2 media, 3 difícil. Las del banco la traen; a las oficiales se la pone el conector con los aciertos de todos los usuarios, si hay datos. */
+  dificultad?: number;
   /** Solo en las del banco: la explicación va con la pregunta (las oficiales la tienen en explicaciones/<examen>.json). */
   porQue?: string;
 }
@@ -83,7 +85,7 @@ export const PRIMER_ID_BANCO = 100_000;
  * El banco propio tal como lo publica scripts/banco-test.py en el KV (banco/preguntas.json):
  * mismas claves que preguntas.json más `explicacion: { clave, desarrollo }`.
  */
-export function bancoPropioDe(datos: { preguntas?: Array<{ id: number; temas?: string[]; enunciado?: string; opciones?: Record<string, string>; respuesta?: string[]; explicacion?: { clave?: string }; imagenes?: unknown[]; nota?: string }> } | null): Map<number, PreguntaBanco> {
+export function bancoPropioDe(datos: { preguntas?: Array<{ id: number; temas?: string[]; enunciado?: string; opciones?: Record<string, string>; respuesta?: string[]; explicacion?: { clave?: string }; imagenes?: unknown[]; nota?: string; dificultad?: number }> } | null): Map<number, PreguntaBanco> {
   const out = new Map<number, PreguntaBanco>();
   for (const p of datos?.preguntas ?? []) {
     if (!(p.id >= PRIMER_ID_BANCO) || !p.enunciado || !p.opciones || !p.respuesta?.length) continue;
@@ -91,7 +93,7 @@ export function bancoPropioDe(datos: { preguntas?: Array<{ id: number; temas?: s
       id: p.id, examen: 'banco', numero: p.id % 100, temas: p.temas ?? [], enunciado: p.enunciado, opciones: p.opciones,
       respuesta: p.respuesta.map((r) => r.toLowerCase()), figura: (p.imagenes?.length ?? 0) > 0,
       ...(figurasDe(p.imagenes).length ? { figuras: figurasDe(p.imagenes) } : {}), ...(p.nota ? { nota: p.nota } : {}),
-      tipo: 'banco', ...(p.explicacion?.clave ? { porQue: p.explicacion.clave } : {}),
+      tipo: 'banco', ...(p.explicacion?.clave ? { porQue: p.explicacion.clave } : {}), ...(p.dificultad ? { dificultad: p.dificultad } : {}),
     });
   }
   return out;
@@ -106,7 +108,7 @@ export function figurasDe(imagenes: unknown[] | undefined): Array<{ url: string;
     const src = typeof i === 'string' ? i : (i as { src?: unknown })?.src;
     if (typeof src !== 'string' || !src) continue;
     const alt = typeof i === 'object' && i ? (i as { alt?: unknown }).alt : undefined;
-    out.push({ url: /^https?:/.test(src) ? src : URL_TEST + src.replace(/^\.?\//, ''), ...(typeof alt === 'string' && alt ? { descripcion: alt } : {}) });
+    out.push({ url: /^(https?|banco):/.test(src) ? src : URL_TEST + src.replace(/^\.?\//, ''), ...(typeof alt === 'string' && alt ? { descripcion: alt } : {}) });
   }
   return out;
 }
@@ -223,6 +225,16 @@ export function apuntarLeitner(estado: Obj | null, resultados: Array<{ id: numbe
       : { ...e, box: 1, timesFailed: numero(e.timesFailed) + 1, lastSession: sesion, lastDate: ahoraMs };
   }
   return { ...(estado ?? {}), questions: preguntas, sessionCount: sesion + 1 };
+}
+
+/**
+ * Dificultad de una pregunta oficial a partir de lo que han hecho con ella todos los usuarios (dificultad.json de la web:
+ * v veces vista, a aciertos): difícil si la acierta menos del 30 %, fácil si el 60 % o más. Sin cinco respuestas no se sabe.
+ */
+export function dificultadOficial(d: { v?: number; a?: number } | undefined): number | undefined {
+  if (!d || !(Number(d.v) >= 5)) return undefined;
+  const tasa = Number(d.a ?? 0) / Number(d.v);
+  return tasa < 0.3 ? 3 : tasa >= 0.6 ? 1 : 2;
 }
 
 // --------------------------------------------------------------------- Tests
