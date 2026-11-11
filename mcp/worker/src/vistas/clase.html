@@ -58,7 +58,7 @@
           el('dt', {}, opositor ? 'Preparador' : 'Alumno'), el('dd', {}, quien),
           el('dt', {}, 'Duración'), el('dd', {}, (d.minutos || '') + ' min'),
           el('dt', {}, 'Modalidad'), el('dd', {}, MODALIDAD[d.modalidad] || d.modalidad || ''),
-          el('dt', {}, 'Temas'), el('dd', {}, temas.length ? temas.map(function (t) { return el('div', {}, [el('span', { class: 'codigo' }, t), titulos[t] ? ' · ' + titulos[t] : '']); }) : 'Sin fijar'),
+          el('dt', {}, 'Temas'), el('dd', {}, temas.length ? temas.map(function (t) { return el('div', {}, [el('span', { class: 'codigo' }, t), titulos[t] ? ' · ' + tituloCorto(titulos[t]) : '']); }) : 'Sin fijar'),
           d.lugar ? el('dt', {}, 'Lugar') : null, d.lugar ? el('dd', {}, d.lugar) : null,
           d.enlace ? el('dt', {}, 'Enlace') : null, d.enlace ? el('dd', {}, d.enlace) : null,
           d.nota ? el('dt', {}, 'Nota') : null, d.nota ? el('dd', {}, d.nota) : null,
