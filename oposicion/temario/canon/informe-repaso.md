@@ -1479,11 +1479,11 @@ El 3.A.32 es el **primero del bloque de economía abierta** y el **último de lo
 
 **Que tocan el canon:**
 
-- **[decidir] $\beta_K$ para la movilidad del capital en todo el temario** (CC1, A32-02): la ficha `mundell-fleming` y `notacion.md` § 9 pasan de β a $\beta_K$, como los 3 temas revisados que escriben la BP (3.A.32, 3.A.37, 3.A.38); β sin subíndice queda para el descuento. *Alternativa*: β en general y $\beta_K$ solo donde conviva con el descuento.
+- **$\beta_K$ para la movilidad del capital en todo el temario** (CC1, A32-02; decidido (Víctor, 11/11/2026): se mantiene $\beta_K$, porque β es el factor de descuento): la ficha `mundell-fleming` y `notacion.md` § 9 pasan de β a $\beta_K$, como los 3 temas revisados que escriben la BP (3.A.32, 3.A.37, 3.A.38); β sin subíndice queda para el descuento.
 - **[decidir] Fichas nuevas `oa-da` y `gali-monacelli`** con referencia en el 3.A.32 (CC3, CC4, A32-04). La OA-DA cerrada sigue desarrollada en el 3.A.5 (ficha `is-lm`). *Alternativa*: sin fichas, como secciones de `is-lm` y `nek-3-ecuaciones`.
 - **[decidir] $\gamma_{P^*,t}$ para la inflación exterior** donde $\pi^*$ es el objetivo (A32-08), frente a $\pi^*$ en la fila del tipo real en tasas del 3.B.11. *Recomendado*: las 2 según el tema (sin choque, $\pi^*$). *Alternativa*: $\pi^*$ siempre para la exterior y $\pi^{\mathrm{obj}}$ para el objetivo.
 - **[decidir] $\tau_t$ para la relación de intercambio en Galí-Monacelli** (A32-09), no la $s_t$ de Galí (es el ahorro).
-- **[decidir] Colores de IS y LM** (A32-10): el `is-lm` del 3.A.5 (IS morada, LM azul) y el `mundell-fleming-dos-paises` del 3.A.37 (IS azul, LM morada) no coinciden; el 3.A.32 sigue al 3.A.37. Hay que elegir uno y rehacer los gráficos del otro.
+- **Colores de IS y LM** (A32-10; decidido (Víctor, 11/11/2026): **IS azul, LM morada**, como el 3.A.37 y el 3.A.32): rehechos el 11/11/2026 los gráficos del 3.A.5 (`is-lm`, `pendientes`, `da-oa`; IS$'$ roja y LM$'$ verde, sin cambio). Quedan con los colores al revés `poole` (3.A.36), `islm-escuelas` (3.A.38, 3.A.39, 3.A.40) e `islm-financiacion` (3.A.39): `pendientes-coherencia.md`, «Pendiente del 3.A.32».
 - **Canon sin decisión, aplicado**: **$Y^*$ solo renta exterior**; los equilibrios, $Y_0$, $Y_1$ y los puntos $A$, $B$, $C$ (D038, K11); la regla de Taylor **sin suavización** en los temas con XN (ν es la sensibilidad del saldo comercial); la LM $M/P=kY-h\,i$ (nunca $M^S/P$); `tab:mundell-fleming` con las 2 políticas como tabla de referencia; filas del 3.A.32 en 16 fichas.
 - **Sin ficha `identificacion-choques`** por ahora (A32-07, CC9): con el 3.A.32 son 3 los temas que identifican perturbaciones (3.A.37, 3.A.40, 3.A.32). **[decidir]** si se crea con referencia en el 3.A.40.
 

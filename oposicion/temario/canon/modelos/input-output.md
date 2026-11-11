@@ -4,7 +4,7 @@
 - **Temas que lo usan:** 3.A.31 (desarrollo), 3.A.30 (resumen; hecho, 11/11/2026), 4.A.1 (resumen), 3.B.18 y 4.A.22 (resumen de la medición de las cadenas globales de valor), 3.B.11 (mención: comercio en valor añadido), 3.B.5 (mención: la paradoja como $\vect{a}_L^{\top}(I-A)^{-1}$), 3.B.7 (mención: $a_{ij}$ en la protección efectiva), 3.A.21 (mención: MCS y calibración de los MEGC), 3.B.28 (mención: eslabonamientos de Hirschman), 3.B.31 (mención posible: emisiones incorporadas).
 - **Manuales de referencia:** Miller y Blair, *Input-Output Analysis* (3.ª ed., 2022; `MillerBlair2022`); Eurostat, *Manual of Supply, Use and Input-Output Tables* (2008; `Eurostat2008Manual`); SEC 2010, cap. 9 (`SEC2010`); Leontief (1936, 1941); Hawkins y Simon (1949); Rasmussen (1956); Chenery y Watanabe (1958).
 - **Decisión D112 (13/10/2026):** tema de referencia, el 3.A.31. Confirmado por su revisión (11/11/2026).
-- **Notación:** la de `notacion.md` § 0 (regla de las matrices) y § 7, «Contabilidad nacional y marco *input-output*» (CC1-CC2 del 3.A.31, **[decidir]**).
+- **Notación:** la de `notacion.md` § 0 (regla de las matrices) y § 7, «Contabilidad nacional y marco *input-output*» (CC1 del 3.A.31, la regla de las matrices, decidido (Víctor, 11/11/2026); CC2, **[decidir]**).
 
 ## Presentación de referencia (3.A.31)
 
