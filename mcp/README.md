@@ -47,6 +47,7 @@ Lecturas (todas con `oposicion`: `tcee` por defecto o `dce`; si una sale vacía 
 | `leer_informes_cante(canteId, n, completo)` | `cantes/{id}/informes`: las correcciones guardadas |
 | `preguntas_test(temas, n, modo)` | Preguntas oficiales de `preguntas.json` por tema, filtradas con `progress/spaced_repetition`, con la clave de `explicaciones/<examen>.json` |
 | `test_interactivo(temas, n, modo)` | Lo mismo que `preguntas_test`, con la vista interactiva del test (ver «Vistas interactivas») |
+| `apuntar_test(respuestas, segundos?, clave?)` | Apunta en la app un test hecho en el chat: lo corrige contra el banco, lo deja en `exam_results` (`origen: "ia"`) y actualiza el repaso espaciado (`progress/spaced_repetition`, misma regla que la app). La vista del test la llama sola al terminar; con `clave` no cuenta dos veces |
 | `figura_test(url)` | Solo para la vista del test (`visibility: ["app"]`): la imagen de una figura en base64 cuando el cliente no deja cargarla de la web |
 | `leer_proceso(seccion)` | `oposicion/proceso.json` (documentos del proceso selectivo en curso) |
 | `fuentes_tema(tema)`, `buscar_temario(consulta)`, `leer_fuente(enlace)` | `fuentes-temas.json`; la búsqueda mira también los apartados de cada PDF (`references/temario/indices-temas.md`); `leer_fuente` lee apuntes de la ATCEE, PDF de la web (`textos/{tema}` en KV) y páginas de Manuel |

@@ -143,7 +143,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'figura_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
+    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'apuntar_test', 'figura_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -423,6 +423,35 @@ describe('herramientas', () => {
     expect((await cf.callTool({ name: 'figura_test', arguments: { url: 'https://otro.example/img/a.webp' } })).isError).toBe(true);
     const fig = (await cf.listTools()).tools.find((t) => t.name === 'figura_test')!;
     expect((fig._meta as { ui: { visibility: string[] } }).ui.visibility).toEqual(['app']);
+  });
+
+  it('apuntar_test corrige contra el banco y deja el test en el historial y en el repaso, una sola vez', async () => {
+    const c = await cliente(ctx);
+    const t = json(await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], modo: 'todas', n: 2 } }));
+    const [p1, p2] = t.preguntas as Array<{ id: number; respuesta: string[]; opciones: Obj }>;
+    const mala = Object.keys(p2.opciones).find((l) => !p2.respuesta.includes(l))!;
+    db.docs.set('progress/spaced_repetition', { sessionCount: 4, questions: { [String(p1.id)]: { box: 2, lastSession: 1, timesCorrect: 1, timesFailed: 1 }, '999': { box: 3, lastSession: 2, timesCorrect: 2, timesFailed: 1 } } });
+    const args = { respuestas: { [String(p1.id)]: p1.respuesta[0].toUpperCase(), [String(p2.id)]: mala, '424242': 'a' }, clave: 'tabc123', segundos: 95 };
+    const r = json(await c.callTool({ name: 'apuntar_test', arguments: args }));
+    expect(r).toMatchObject({ apuntado: true, correctas: 1, incorrectas: 1, preguntas: 2 });
+    const doc = db.docs.get('exam_results/ia_tabc123')!;
+    expect(doc).toMatchObject({ correctas: 1, incorrectas: 1, sinResponder: 0, totalPreguntas: 2, maxPuntos: 2, puntosBrutos: 0.67, notaSobre10: 3.35, tiempoSeconds: 95, origen: 'ia', tipo: 'test' });
+    expect(doc.temas).toContain('3.A.8');
+    expect(doc.respuestas).toEqual({ [String(p1.id)]: p1.respuesta[0], [String(p2.id)]: mala });
+    expect(doc.timestamp).toEqual({ $marcaDeTiempo: expect.stringMatching(/^\d{4}-\d\d-\d\dT/) });
+    const l = db.docs.get('progress/spaced_repetition')! as { sessionCount: number; questions: Record<string, Obj> };
+    expect(l.sessionCount).toBe(5);
+    expect(l.questions[String(p1.id)]).toMatchObject({ box: 3, timesCorrect: 2, timesFailed: 1, lastSession: 4 });
+    expect(l.questions[String(p2.id)]).toMatchObject({ box: 1, timesCorrect: 0, timesFailed: 1, lastSession: 4 });
+    expect(l.questions['999']).toEqual({ box: 3, lastSession: 2, timesCorrect: 2, timesFailed: 1 });
+    // La vista puede repetir la llamada: no cuenta dos veces.
+    const otra = json(await c.callTool({ name: 'apuntar_test', arguments: args }));
+    expect(otra).toMatchObject({ apuntado: true, yaEstaba: true });
+    expect((db.docs.get('progress/spaced_repetition') as { sessionCount: number }).sessionCount).toBe(5);
+    // Sin preguntas del banco no se apunta nada.
+    expect((await c.callTool({ name: 'apuntar_test', arguments: { respuestas: { '424242': 'a' } } })).isError).toBe(true);
+    // Y leer_resultados_test lo enseña como hecho con la IA.
+    expect(JSON.stringify(json(await c.callTool({ name: 'leer_resultados_test', arguments: {} })))).toContain('"origen":"ia"');
   });
 
   it('con vistaPrevia, proponer_cronograma y guardar_informe_cante validan y enseñan, pero no escriben', async () => {

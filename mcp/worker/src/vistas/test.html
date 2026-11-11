@@ -28,6 +28,8 @@
 <script>
   (function () {
     var datos = null, i = 0, marcadas = [], cargando = false, figuras = {};
+    // Apunte del test en la app (historial y repaso): '' sin hacer, 'pendiente', 'hecho' o el texto del fallo.
+    var apunte = '', clave = '', empezado = 0;
 
     function formulas() {
       // Las fórmulas van en LaTeX: si MathJax no carga (el cliente no deja), se ven tal cual.
@@ -114,8 +116,9 @@
     function fin() {
       var total = datos.preguntas.length, bien = 0, falladas = [];
       datos.preguntas.forEach(function (p, k) { if (p.respuesta.indexOf(marcadas[k]) >= 0) bien++; else falladas.push({ p: p, k: k }); });
-      Vista.contar(resumenTexto(true));
       var estado = el('p', { class: 'apagado' });
+      var nota = el('p', { class: 'apagado' }, textoApunte());
+      apuntar(function () { nota.textContent = textoApunte(); });
       pintar([
         el('div', { class: 'sobre' }, 'Resultado · ' + datos.temas.join(', ')),
         el('div', { class: 'nota-final' }, bien + ' / ' + total),
@@ -130,7 +133,7 @@
               ]);
             }))])
           : el('p', { class: 'aviso aviso--bien' }, 'Sin fallos.'),
-        el('p', { class: 'apagado' }, 'Este test no se apunta en el historial de la app: para que cuente en tu repaso, hazlo en la app o en el simulador de la web.'),
+        nota,
         el('div', { class: 'fila pie' }, [
           Vista.puedeDecir() && falladas.length
             ? el('button', { class: 'boton', type: 'button', onclick: function () {
@@ -142,6 +145,25 @@
         estado,
       ]);
       formulas();
+    }
+
+    function textoApunte() {
+      if (apunte === 'hecho') return 'Apuntado en tu historial de tests y en tu repaso de la app: lo verás allí al sincronizar.';
+      if (apunte === 'pendiente' || apunte === '') return 'Apuntándolo en la app…';
+      return 'No se ha podido apuntar en la app (' + apunte + '). El resultado sigue aquí, pero no cuenta en tu repaso.';
+    }
+
+    /** Al terminar, el test se apunta en la app una sola vez (el conector lo corrige de nuevo contra el banco). */
+    function apuntar(alAcabar) {
+      if (apunte === 'pendiente' || apunte === 'hecho') { if (apunte === 'hecho') Vista.contar(resumenTexto(true) + '\nYa está apuntado en la app (historial y repaso): no llames a apuntar_test.'); return; }
+      apunte = 'pendiente';
+      var respuestas = {};
+      datos.preguntas.forEach(function (p, k) { if (marcadas[k] !== undefined) respuestas[String(p.id)] = marcadas[k]; });
+      Vista.llamar('apuntar_test', { oposicion: Vista.argumentos().oposicion, respuestas: respuestas, clave: clave, segundos: Math.min(86400, Math.round((Date.now() - empezado) / 1000)) }).then(function (r) {
+        apunte = r && r.apuntado ? 'hecho' : ((r && r.error) || 'sin respuesta del conector');
+        Vista.contar(resumenTexto(true) + (apunte === 'hecho' ? '\nYa está apuntado en la app (historial y repaso): no llames a apuntar_test.' : '\nNo se ha podido apuntar en la app: díselo y no lo des por guardado.'));
+        alAcabar();
+      });
     }
 
     function otras() {
@@ -157,7 +179,8 @@
         pintar(el('p', { class: 'aviso aviso--mal' }, (d && (d.error || d.aviso)) || 'No hay preguntas que enseñar.'));
         return;
       }
-      datos = d; i = 0; marcadas = [];
+      datos = d; i = 0; marcadas = []; apunte = ''; empezado = Date.now();
+      clave = 't' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
       pregunta();
     }
 
