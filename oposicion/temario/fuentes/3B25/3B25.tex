@@ -527,7 +527,7 @@ La paridad \emph{put-call}, explicada con sus 2 carteras: \url{https://youtu.be/
   \end{itemize}
 \item Las 2 valen $\max(S_T,K)$ en $T$, suba o baje el subyacente: si $S_T<K$, la primera vale el bono, $K$, y la segunda se vende a $K$ con la \emph{put}; si $S_T\geq K$, las 2 valen $S_T$. Si pagan lo mismo en todos los estados, «son dos caras de la misma moneda» y tienen que costar lo mismo hoy:
   \funcionclave[eq:put-call]{c+K\,e^{-rT}=p+S_0}
-\item Si la igualdad no se cumple, se compra la cartera barata y se vende la cara, y se gana sin riesgo. \emph{Ejemplo}: una acción sin dividendos cotiza a 105, y las opciones a un año en el dinero ($K=105$) cotizan a $c=9$ y $p=2$, con un tipo del 5~\%. La paridad exige $c-p=S_0-K/1{,}05=105-100=5$, pero en el mercado $c-p=7$: la \emph{call} está cara respecto de la \emph{put}. Se vende la \emph{call}, se compran la \emph{put} y la acción y se pide prestado el valor actual de $K$; hoy se ingresan 2, y en $T$ la posición vale cero en cualquier caso.\footnote{Es la pregunta 35 del primer ejercicio de marzo de 2026 (anexo~\ref{anexo:test}), con el tipo en capitalización simple. Con capitalización continua, $Ke^{-0{,}05}=99{,}88$ y la paridad exige $c-p=5{,}12$: la conclusión es la misma.}
+\item Si la igualdad no se cumple, se compra la cartera barata y se vende la cara, y se gana sin riesgo. \emph{Ejemplo}: una acción sin dividendos cotiza a 105, y las opciones a un año en el dinero ($K=105$) cotizan a $c=9$ y $p=2$, con un tipo del 5~\%. La paridad exige $c-p=S_0-K/1{,}05=105-100=5$, pero en el mercado $c-p=7$: la \emph{call} está cara respecto de la \emph{put}. Se vende la \emph{call}, se compran la \emph{put} y la acción y se pide prestado el valor actual de $K$; hoy se ingresan 2, y en $T$ la posición vale cero en cualquier caso.\footnote{Es la pregunta 35 del primer ejercicio de marzo de 2026, con el tipo en capitalización simple. Con capitalización continua, $Ke^{-0{,}05}=99{,}88$ y la paridad exige $c-p=5{,}12$: la conclusión es la misma.}
 \end{itemize}
 
 \subparagraph{iii) Implicaciones}
@@ -1288,20 +1288,9 @@ Comprar futuro + vender \emph{call} & $=$ & \textcolor{tceedorado}{Vender \emph{
 % ==========================================================================
 \section{Anexo: para el test}\label{anexo:test}
 
-\begin{itemize}
-\item Preguntas oficiales del primer ejercicio sobre este tema y apartado donde se contestan (las respuestas, en el simulador):
-  \begin{itemize}
-  \item paridad \emph{put-call} y arbitraje: marzo de 2026 (n.º 35) (\ref{sec:put-call});
-  \item pagos de la \emph{put}: junio de 2024 (n.º 40) (gráfico~\ref{fig:pagos-opciones});
-  \item estrategias sintéticas y diferenciales: junio de 2023 (n.º 37), julio de 2021 (n.º 42), noviembre de 2016 (n.º 36) y octubre de 2002 (n.º 35) (\ref{sec:opciones-especulacion} y anexo~\ref{anexo:estrategias});
-  \item valor intrínseco, valor temporal y cotas: enero de 2018 (n.º 35), enero de 2020 (n.º 37) y julio de 2007 (n.º 36) (\ref{sec:valor-temporal});
-  \item definición del futuro y márgenes: noviembre de 2013 (n.º 25) y enero de 2016 (n.º 39) (\ref{sec:futuros-mercado});
-  \item volatilidad y precio de las opciones: septiembre de 2006 (n.º 32) (tabla~\ref{tab:determinantes});
-  \item \autor{Black} y \autor{Scholes}: junio de 2004 (n.º 33) y octubre de 2002 (n.º 37) (\ref{sec:black-scholes});
-  \item \emph{swaps} de tipos de interés y ventaja comparativa: julio de 2003 (n.º 40) (\ref{sec:estrategias-swaps}).
-  \end{itemize}
-\item Para practicar, el simulador de test de la web\nocite{GutierrezMarcos2026Simulador}.
-\end{itemize}
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html?tema=3.B.25}{simulador de test}.
+\end{anotaciones}
 
 \bibliografia
 \end{document}

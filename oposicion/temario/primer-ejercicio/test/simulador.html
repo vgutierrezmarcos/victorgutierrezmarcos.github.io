@@ -91,6 +91,14 @@
         }
 
         /* FASE 1: SELECCIÓN */
+        .aviso-tema-url {
+            margin-bottom: 1.5rem; padding: 0.9rem 1.1rem;
+            border: 1px solid var(--color-border); border-left: 3px solid var(--color-primary);
+            border-radius: var(--radius-control); background: var(--color-bg-light);
+            font-family: var(--font-ui); font-size: 0.92rem; line-height: 1.5;
+        }
+        .aviso-tema-url.sin-preguntas { border-left-color: var(--color-accent-gold); }
+        .aviso-tema-url a { color: var(--color-primary); }
         .tema-selector { margin-bottom: 2rem; }
         .tema-selector h3 {
             font-family: var(--font-display);
@@ -889,6 +897,8 @@
                     </div>
 
                     <div id="main-content" style="display: none;">
+                        <!-- Aviso cuando se llega con ?tema= (enlace desde un tema del temario) -->
+                        <div id="aviso-tema-url" class="aviso-tema-url" role="status" hidden></div>
                         <!-- Selector de temas Parte A -->
                         <div class="tema-selector collapsed" id="selector-parte-a">
                             <h3 onclick="toggleAcordeon('selector-parte-a')">
@@ -1339,6 +1349,7 @@
                 
                 // Inicializar la interfaz
                 inicializarSelectores();
+                aplicarTemaDeURL();
                 initRepasoToggle();
                 actualizarBadgeRepaso();
                 loadingIndicator.style.display = 'none';
@@ -1442,6 +1453,46 @@
 
             // Actualizar contadores inicial
             actualizarContadores();
+        }
+
+        // ?tema=3.A.17 (también 3A17, 3.A.08 o varios separados por comas):
+        // deja seleccionados solo esos temas para empezar el test directamente.
+        function normalizarCodigoTema(texto) {
+            const m = String(texto).trim().toUpperCase().match(/^(\d)\.?([AB])\.?0*(\d{1,2})$/);
+            return m ? `${m[1]}.${m[2]}.${parseInt(m[3], 10)}` : null;
+        }
+
+        function aplicarTemaDeURL() {
+            const param = new URLSearchParams(window.location.search).get('tema');
+            if (!param) return;
+            const pedidos = param.split(',').map(t => t.trim()).filter(Boolean);
+            const codigos = [...new Set(pedidos.map(normalizarCodigoTema).filter(c => c && datosTest.temas[c]))];
+            const aviso = document.getElementById('aviso-tema-url');
+            const todos = '<a href="simulador.html">practicar con todos los temas</a>';
+            if (codigos.length === 0) {
+                aviso.classList.add('sin-preguntas');
+                aviso.innerHTML = `No encontramos el tema indicado. Puedes elegir los temas abajo o ${todos}.`;
+                aviso.hidden = false;
+                return;
+            }
+            document.querySelectorAll('.tema-checkbox input[type="checkbox"]').forEach(cb => {
+                const marcar = codigos.includes(cb.value);
+                if (cb.checked !== marcar) {
+                    cb.checked = marcar;
+                    cb.dispatchEvent(new Event('change'));
+                }
+            });
+            actualizarContadores();
+            actualizarToggleAllText();
+            const etiqueta = codigos.map(c => `${c} ${datosTest.temas[c]}`).join('; ');
+            const conPreguntas = codigos.filter(c => datosTest.preguntas.some(p => p.temas.includes(c)));
+            if (conPreguntas.length === 0) {
+                aviso.classList.add('sin-preguntas');
+                aviso.innerHTML = `Todavía no hay preguntas de test para <strong>${etiqueta}</strong>: en los exámenes oficiales recopilados no ha caído ninguna. Puedes ${todos} o elegir otros abajo.`;
+            } else {
+                aviso.innerHTML = `Test solo de <strong>${etiqueta}</strong>: ${preguntasFiltradas.length} preguntas. Pulsa «Comenzar examen» o ${todos}.`;
+            }
+            aviso.hidden = false;
         }
 
         function actualizarToggleAllText() {
