@@ -1,0 +1,42 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% La bañera: flujos y stocks (elaboración propia). El grifo es el flujo de
+% entrada (la inversión bruta, FBCF), el desagüe el de salida (la
+% depreciación, consumo de capital fijo) y el nivel del agua el stock (el
+% capital). El nivel sube si entra más de lo que sale.
+% Capas: bañera y agua (stock) -> grifo (entrada) -> desagüe (salida) ->
+% nivel final y ecuación.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  rotulo/.style={align=left, font=\footnotesize, text width=4.4cm},
+  flujo/.style={-{Stealth[length=7pt]}, line width=2.2pt}]
+  \path (-4.9,-1.3) rectangle (11.3,5.9);
+  % 1: la bañera y el agua de partida (stock inicial)
+  \capa{1}{\fill[tceeazul!22] (0.15,0.15) rectangle (5.85,1.9);}
+  \capa{1}{\draw[line width=1.6pt, tceegris!80!black, rounded corners=10pt]
+    (-0.2,3.3) -- (0,0) -- (6,0) -- (6.2,3.3);}
+  \capa{1}{\draw[thick, tceegris!80!black] (0.6,0) -- (0.6,-0.5) (5.4,0) -- (5.4,-0.5);}
+  \capa{1}{\draw[dashed, tceeazul] (0.15,1.9) -- (5.85,1.9);}
+  \capa{1}{\node[rotulo, anchor=west, text=tceeazul] at (6.5,1.2)
+    {\textbf{stock inicial}: el capital a 1 de enero, $K_t$ (se mide \emph{en una fecha}: euros)};}
+  % 2: el grifo, flujo de entrada
+  \capa{2}{\draw[line width=5pt, tceegris] (-1.6,4.6) -- (1.2,4.6) -- (1.2,4.1);}
+  \capa{2}{\fill[tceegris] (-0.6,4.6) circle (0.22);}
+  \capa{2}{\draw[flujo, tceeverde] (1.2,4.0) -- (1.2,2.5);}
+  \capa{2}{\node[rotulo, anchor=east, align=right, text=tceeverde] at (-0.5,3.3)
+    {\textbf{flujo de entrada (grifo)}: la inversión bruta del año, $I_t$ (formación bruta de capital fijo; euros \emph{por año})};}
+  % 3: el desagüe, flujo de salida
+  \capa{3}{\fill[tceegris] (4.6,0) rectangle (5.0,-0.15);}
+  \capa{3}{\draw[flujo, tceerojo] (4.8,-0.15) -- (4.8,-1.1);}
+  \capa{3}{\node[rotulo, anchor=west, text=tceerojo] at (5.4,-0.75)
+    {\textbf{flujo de salida (desagüe)}: la depreciación, $\delta K_t$ (consumo de capital fijo; euros \emph{por año})};}
+  % 4: el nivel final y la ecuación
+  \capa{4}{\fill[tceeazul!45] (0.15,1.9) rectangle (5.85,2.45);}
+  \capa{4}{\draw[thick, tceeazul] (0.15,2.45) -- (5.85,2.45);}
+  \capa{4}{\node[rotulo, anchor=west, text=tceeazul] at (6.5,3.0)
+    {\textbf{stock final}: $K_{t+1}$, más alto si $I_t>\delta K_t$};}
+  \capa{4}{\node[draw=tceemorado, line width=0.8pt, rounded corners=2pt, fill=white, inner sep=4pt]
+    at (3,5.55) {$K_{t+1}=K_t+I_t-\delta K_t$\quad (stock final $=$ stock inicial $+$ entradas $-$ salidas)};}
+\end{tikzpicture}
+\end{document}

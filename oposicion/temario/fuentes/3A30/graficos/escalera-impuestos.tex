@@ -1,0 +1,55 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\definecolor{tceesalmon}{HTML}{FBE4D5}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Escalera de valoración: del VAB al coste de los factores al PIB a precios de
+% mercado, con los datos de España en 2025 (millones de euros; INE vía
+% Eurostat, datos/impuestos-produccion-espana-2025.csv). Eje vertical cortado
+% en 1,45 billones: escala y(v) = (v - 1.450.000)/250.000 * 7 cm.
+% Colores: salvia para las rentas de los factores, salmón para los impuestos
+% netos (como en valoracion-precios).
+% Capas: barra 1 (coste de los factores) -> barra 2 (+ D.29 - D.39, precios
+% básicos) -> barra 3 (+ D.21 - D.31, precios de mercado) -> llave D.2 - D.3.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  tramo/.style={draw=tceegris, line width=0.6pt},
+  imp/.style={tramo, fill=tceesalmon},
+  fac/.style={tramo, fill=tceesalvia},
+  cifra/.style={font=\scriptsize\bfseries},
+  nota/.style={font=\scriptsize, align=left, anchor=west},
+  pie/.style={font=\footnotesize\bfseries, align=center, text width=3.0cm, anchor=north},
+  escalon/.style={dashed, tceegris}]
+  \path (-1.2,-2.0) rectangle (15.6,7.4);
+  \draw[tceegris] (-0.3,-0.6) -- (11.9,-0.6);
+  % 1: VAB al coste de los factores
+  \capa{1}{\draw[fac] (0,-0.6) rectangle (2,1.99);
+    \node[align=center, font=\scriptsize] at (1,0.9) {RA\\$+$ EBE\\y renta mixta\\[2pt]\textbf{1.520.975}};
+    \node[pie] at (1,-0.75) {VAB al coste\\de los factores};}
+  % 2: + otros impuestos netos sobre la producción = VAB a precios básicos
+  \capa{2}{\draw[escalon] (2,1.99) -- (3.5,1.99);
+    \draw[fac] (3.5,-0.6) rectangle (5.5,1.99);
+    \draw[imp] (3.5,1.99) rectangle (5.5,2.29);
+    \node[cifra] at (4.5,2.55) {1.531.681};
+    \draw[tceegris] (3.5,2.14) -- (2.6,3.6);
+    \node[nota, text width=3.6cm, anchor=south west] at (0.2,3.6) {$+$ \textbf{D.29} otros impuestos sobre la producción (IBI, IAE, tasas)\\ $-$ \textbf{D.39} otras subvenciones (a la contratación)\\ $=$ \textbf{10.706}};
+    \node[pie] at (4.5,-0.75) {VAB a precios básicos\\ \mdseries(el precio básico)};}
+  % 3: + impuestos netos sobre los productos = PIB a precios de mercado
+  \capa{3}{\draw[escalon] (5.5,2.29) -- (7,2.29);
+    \draw[fac] (7,-0.6) rectangle (9,1.99);
+    \draw[imp] (7,1.99) rectangle (9,2.29);
+    \draw[imp, fill=tceesalmon!60!tceerojo!40] (7,2.29) rectangle (9,6.72);
+    \node[align=center, font=\scriptsize] at (8,4.5) {$+$ \textbf{D.21} IVA,\\ especiales,\\ aranceles\\[2pt] $-$ \textbf{D.31}\\ subvenciones\\ a los productos\\[2pt]\textbf{158.331}};
+    \node[cifra] at (8,6.98) {1.690.012};
+    \node[pie] at (8,-0.75) {PIB a precios\\ de mercado};}
+  % corte del eje (encima de las barras)
+  \foreach \x/\cp in {0/1,3.5/2,7/3}
+    {\capa{\cp}{\fill[white] (\x-0.1,-0.05) -- (\x+2.1,0.15) -- (\x+2.1,0.3) -- (\x-0.1,0.1) -- cycle;}}
+  \foreach \x/\cp in {0/1,3.5/2,7/3}
+    {\capa{\cp}{\draw[tceegris] (\x-0.1,-0.05) -- (\x+2.1,0.15) (\x-0.1,0.1) -- (\x+2.1,0.3);}}
+  % 4: la llave de los impuestos netos sobre la producción y las importaciones
+  \capa{4}{\draw[decorate, decoration={brace, amplitude=6pt}, thick] (9.2,6.72) -- (9.2,1.99)
+    node[midway, right=9pt, nota, text width=5.6cm]
+    {\textbf{D.2 $-$ D.3} impuestos netos sobre la producción y las importaciones $=$ \textbf{169.037}\\[3pt]
+     \textcolor{tceegris!80!black}{En la cuenta de explotación se restan juntos del PIB para llegar al EBE: PIB $=$ RA $+$ (D.2 $-$ D.3) $+$ EBE y renta mixta}};}
+\end{tikzpicture}
+\end{document}

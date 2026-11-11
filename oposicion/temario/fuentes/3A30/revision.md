@@ -210,6 +210,19 @@ anotado); entradas en `datos-actualizables.yaml`.
   - Precios básicos: se cita `Eurostat2013SEC2010` (la del 3.A.31) donde la frase es la del 3.A.31, y
     `SEC2010` en el resto.
 
+## Comentarios de Víctor (11/11/2026, 7.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| 1. Infografía de la bañera para flujo y stock | Gráfico TikZ nuevo `banera-flujo-stock` (`fig:banera`) en I.2.1: grifo = inversión bruta ($I_t$), desagüe = depreciación ($\delta K_t$), nivel = stock de capital, con $K_{t+1}=K_t+I_t-\delta K_t$; el texto lo explica en 4 viñetas y lo extiende a ahorro/riqueza. 4 capas |
+| 2. Gráfico aparte de la tabla de impuestos y subvenciones | Gráfico nuevo `escalera-impuestos` (`fig:escalera-impuestos`) tras la caja: escalera VAB al coste de los factores → + (D.29 − D.39) → VAB a precios básicos (el del gráfico de valoración) → + (D.21 − D.31) → PIB pm, con datos de España 2025 (D.29 − D.39 = 10.706, calculado; datos en `datos/impuestos-produccion-espana-2025.csv`) y llave D.2 − D.3 = 169.037 que enlaza con la cuenta de explotación; 2 viñetas que lo leen junto con el gráfico de valoración |
+| 3. Gráfico 4 más parecido a la imagen 2 antigua | `sucesion-cuentas` rehecho: II.3 en paralelo a II.2 (recibe B.6) e II.4.2 en paralelo a II.4.1, con «el mismo ahorro» hacia III.1; abajo, IV.1 balance inicial → IV.3 balance final con IV.2 (variaciones de III.1-III.3); los agregados van dentro de cada caja. Viñetas nuevas tras el gráfico. Interpretación: lo que va en paralelo es la rama de la renta en especie (II.3 y II.4.2), como en la imagen 2 de Eurostat; II.3 sale de la renta disponible (B.6), como en el SEC, no del saldo de rentas primarias como dibujaba la imagen |
+| 4. Cuentas en T de toda la sucesión, en una página tras el gráfico 4 | Gráfico nuevo `cuentas-t-sucesion` (`fig:cuentas-t`, flotante de página entera): 13 cuentas en T con la estructura del gráfico 4 (I con la cuenta 0 al lado; II.3/II.4.2 y III.3 y los balances en la columna derecha) y flechas del saldo de cada cuenta a su primer recurso. Cifras ilustrativas coherentes (PIB 1.000; RNB 992; RNDB 985; ahorro 235; B.9 = 33 por la cuenta de capital y por la financiera; patrimonio neto 4.800 → 4.903); el cuadre está comentado en la cabecera del .tex. No se usan datos de España porque no hay todas las partidas de una misma fuente |
+| Plantilla nueva | \parencite → \nocite (script, más 1 a mano en «Fuentes nuevas», que el script saltaba); anexo de lecturas sin la lista del simulador y anexo nuevo `anexo:test` con la caja estándar; títulos con \cortetitulo ya estaban; no hay jpg/png pegados (ninguna «Imagen») |
+| SCN 2025 | Ver «SCN 2025 y SEC» abajo |
+
+**SCN 2025 y SEC (comprobado el 11/11/2026).** Adoptado por la Comisión de Estadística de la ONU en marzo de 2025 (56.º periodo de sesiones); la versión disponible en unstats.un.org es la previa a la edición (*pre-edit*). En la UE sigue en vigor el SEC 2010; Eurostat prevé la propuesta legislativa del nuevo SEC a finales de 2026 y los cambios principales desde 2030, junto al MBP7. Añadido al tema: viñeta en I.1.2 con lo que cambia (el marco de cuentas y saldos se mantiene); en «bruto y neto», que el SCN 2025 da más peso a los netos y resta el agotamiento; en el anexo A, el agotamiento como coste de producción (antes otra variación del volumen), criptoactivos sin pasivo como activos no producidos, activos de comercialización fuera del marco central, enfoque de activo dividido y renovables (fuente nueva `Harper2025SNA`, presentación del jefe del proyecto del SCN, marzo de 2025); enlaces al SCN 2025 y a la página de Eurostat en el anexo de lecturas. **Pendiente de actualizar** cuando se publique la edición final del SCN 2025 y el reglamento del nuevo SEC: nombre oficial del nuevo SEC (A30-03), códigos nuevos (agotamiento, datos), si cambian nombres de cuentas o saldos, y el calendario de la base contable del INE que lo aplique.
+
 ## 7. Dudas abiertas
 
 - **A30-01 · Estructura de I**: las magnitudes y el flujo circular van como I.1.1, dentro de «Concepto y
@@ -256,6 +269,10 @@ anotado); entradas en `datos-actualizables.yaml`.
 - **A30-09 resuelta**: el umbral del 75 % se ha comprobado en EUR-Lex (art. 108.2.a del Reglamento
   2021/1060); el texto habla ahora de los fondos estructurales (el Fondo de Cohesión usa la RNB).
 
+- **A30-17 · Gráfico 4, qué va en paralelo (11/11/2026)**: (a) II.3 e II.4.2 en paralelo a II.2 e II.4.1, con II.3 alimentada por la renta disponible (SEC); (b) copiar la imagen de Eurostat, con II.3 alimentada por el saldo de rentas primarias. **Aplicada: (a)**.
+- **A30-18 · Cifras de las cuentas en T (11/11/2026)**: (a) ilustrativas y coherentes (PIB = 1.000); (b) España 2025 (faltan partidas de distribución secundaria, especie y balances en una misma fuente). **Aplicada: (a)**.
+- **A30-19 · Activos de comercialización en el SCN 2025 (11/11/2026)**: la fuente usada (Harper, 2025) no los lista entre los cambios del marco central; no se ha podido leer en el SCN 2025 el párrafo exacto. Comprobar con la edición final.
+
 ## 8. Instrucciones para el vídeo
 
 - **Introducción** (sin pizarra, modo guion): enganche con el refrán «a ojo de buen cubero», el encargo
@@ -266,12 +283,16 @@ anotado); entradas en `datos-actualizables.yaml`.
   (vértices, flechas, «PIB» en el centro) mientras se cuenta el flujo circular; debajo,
   `eq:cadena-agregados` como función clave (se conserva hasta el final de II). A la derecha, en I.2,
   la fila de sectores «S.11 S.12 S.13 S.14 S.15 | S.2» escrita a mano (el árbol `sectores-sec` va de
-  apoyo) y la escalera de valoración `valoracion-precios` de apoyo. Pegatinas, una vez y junto a su
+  apoyo) y la escalera de valoración `valoracion-precios` de apoyo. La **bañera** `banera-flujo-stock` (4 capas: agua inicial, grifo, desagüe, nivel final con la ecuación)
+  se dibuja de apoyo al contar flujos y stocks, y la **escalera** `escalera-impuestos` (4 capas: una por
+  barra y la llave D.2 − D.3) junto a la de valoración. Pegatinas, una vez y junto a su
   concepto: «gota a gota se llena la bota» (flujos y stocks) y «no es de donde naces, sino de donde
   paces» (residencia).
 - **Bloque II** (rejilla «30|70»): a la derecha, la **cascada** `sucesion-cuentas`, construida capa a
-  capa a la vez que se cuentan las cuentas (capa 1 en II.1; capas 2-8 en II.2; 9-12 en II.3; 13-14 en
-  II.4; 15, la columna del resto del mundo con el «−», en II.5); nunca se escribe 2 veces. A la
+  capa a la vez que se cuentan las cuentas (capa 1 en II.1; capas 2-8 en II.2, con II.3 a la derecha de
+  II.2 en la capa 6 y las 2 cuentas de utilización en paralelo en la 7; 9-12 en II.3; 13-14, balance
+  inicial → final con IV.2, en II.4; 15, la columna del resto del mundo con el «−», en II.5). Las cuentas
+  en T `cuentas-t-sucesion` (12 capas, una por cuenta) son de apoyo, no se escriben; la cascada nunca se escribe 2 veces. A la
   izquierda, el triángulo conservado: en II.2.1 se escriben junto a sus vértices las 3 fórmulas de
   `eq:pib-tres-vias` (capas 6-8 del triángulo), y en II.3, bajo la caja de B.9 de la cascada,
   `eq:ahorro-inversion`. De apoyo (no se escriben): `tab:pib-espana-2025`, `tab:agregados`,
