@@ -1,5 +1,7 @@
 <style>
-  .mes { margin-top: 16px; }
+  details.mes { margin-top: 14px; }
+  details.mes > summary { cursor: pointer; padding: 8px 0; min-height: 40px; list-style-position: inside; }
+  details.mes > summary .resto { color: var(--apagado); font-variant-caps: normal; letter-spacing: 0; }
   .semana { display: grid; grid-template-columns: 5.2em 1fr; gap: 10px; padding: 7px 0; border-top: 1px solid var(--linea); align-items: baseline; }
   .semana .dia { font-variant-numeric: tabular-nums; color: var(--apagado); }
   .semana .dia b { color: var(--texto); font-weight: 600; }
@@ -9,7 +11,6 @@
   .cifras { display: flex; gap: 22px; flex-wrap: wrap; margin: 4px 0 0; }
   .cifras div { font-variant-numeric: tabular-nums; }
   .cifras b { font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, Georgia, serif; font-weight: 400; font-size: 24px; color: var(--tinta); display: block; line-height: 1.1; }
-  #lista { max-height: 460px; overflow-y: auto; padding-right: 4px; }
 </style>
 <div id="raiz"><p class="apagado">Preparando el cronograma…</p></div>
 <script>
@@ -23,12 +24,17 @@
         var clave = f ? f.mes + ' de ' + f.anio : '';
         if (clave !== mesActual) {
           mesActual = clave;
-          caja = el('div', { class: 'mes' }, el('div', { class: 'sobre' }, clave));
+          // Cada mes se pliega (sin barras de desplazamiento dentro de la vista, que en el móvil no se pueden arrastrar): abiertos los dos primeros.
+          caja = el('details', { class: 'mes', open: bloques.length < 2 }, el('summary', { class: 'sobre' }, [clave, el('span', { class: 'resto' })]));
+          caja.addEventListener('toggle', Vista.medir);
+          caja.cuenta = { semanas: 0, temas: 0 };
           bloques.push(caja);
         }
         var temas = (s.temas || []).map(function (t) {
-          return el('span', { class: 'tema' }, [el('span', { class: 'codigo' }, t), titulos[t] ? el('span', { class: 'titulo' }, ' · ' + titulos[t]) : null]);
+          return el('span', { class: 'tema' }, [el('span', { class: 'codigo' }, t), titulos[t] ? el('span', { class: 'titulo' }, ' · ' + tituloCorto(titulos[t])) : null]);
         });
+        if (!s.descanso && temas.length) { caja.cuenta.semanas++; caja.cuenta.temas += temas.length; }
+        caja.querySelector('.resto').textContent = ' · ' + caja.cuenta.semanas + (caja.cuenta.semanas === 1 ? ' cante, ' : ' cantes, ') + caja.cuenta.temas + (caja.cuenta.temas === 1 ? ' tema' : ' temas');
         caja.appendChild(el('div', { class: 'semana' }, [
           el('div', { class: 'dia' }, f ? [f.dia.slice(0, 3) + ' ', el('b', {}, String(f.n))] : s.cante),
           el('div', {}, s.descanso || !temas.length ? el('span', { class: 'descanso' }, 'Descanso') : temas),
@@ -91,7 +97,8 @@
         ]),
         el('div', { id: 'lista' }, semanas(c, titulos)),
         yaGuardado ? null : el('p', { class: 'apagado pie' }, 'Al guardarlo pasa a ser tu cronograma activo. El anterior queda archivado (no se borra) y, si era del mismo ejercicio, se conservan los temas que ya tenías hechos.'),
-        el('div', { class: 'fila pie' }, yaGuardado ? null : boton),
+        el('div', { class: 'fila pie' }, [yaGuardado ? null : boton,
+          Vista.puedeAmpliar() ? el('button', { class: 'boton boton--secundario', type: 'button', onclick: function (e) { var b = e.currentTarget; Vista.ampliar().then(function (ok) { if (ok) b.classList.add('oculto'); }); } }, 'Ver a pantalla completa') : null]),
         estado,
       ]);
       if (yaGuardado) hecho(d);
