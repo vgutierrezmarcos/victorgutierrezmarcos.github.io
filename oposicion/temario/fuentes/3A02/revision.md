@@ -218,6 +218,13 @@ Aplicados en la fuente (`3A02.tex`, `3A02.bib`, `graficos/smith-riqueza.tex`, `g
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Reparto: quitado el plan de pizarra del reparto del cante (zonas izquierda/centro/derecha, qué se borra y qué se queda); se conservan tiempos, refranes, gráficos y funciones clave; «el tribunal espera ver su ecuación en la pizarra» → «oír»; las 2 viñetas «En la pizarra… tachar el 110 y escribir 90» reescritas («basta con cambiar el 110 por el 90») (7 frases). Títulos: ninguno en 2 líneas. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
 
+
+## Comentarios de Víctor (11/11/2026, 5.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Tema aprobado; solo regla de citas (fuentes secundarias fuera del texto) | `\textcite` → texto sin la cita + `\nocite`: Schumpeter (1954) en la introducción («los 4 motivos que da Schumpeter») y en el «vicio ricardiano» («Schumpeter llamó…», sin año); Landreth y Colander (2006) en el anexo de la economía preclásica. Blaug (1997), Landreth y Colander y el Banco de Inglaterra solo quedan en líneas `\fuente{…}`. Las obras originales (Smith, Ricardo, Malthus, Marx, Mill, Sraffa…) se mantienen. Los `\textcite` de las líneas `\fuente{…}` bajo gráficos y tablas se mantienen (no interrumpen la lectura, igual que en el resto del temario). |
+
 ## Dudas abiertas
 
 Ninguna bloquea el tema: todas se han resuelto con la opción recomendada.

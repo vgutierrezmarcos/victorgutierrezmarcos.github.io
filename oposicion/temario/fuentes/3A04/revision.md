@@ -232,6 +232,13 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Reparto: quitado el plan de pizarra del reparto del cante (zonas izquierda/centro/derecha, qué se borra y qué se queda); se conservan tiempos, refranes, gráficos y funciones clave (2 frases). Títulos: II: corte tras «Keynes:» (antes caía en «formalización y / política»); anexo A: corte tras la coma. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
 
+
+## Comentarios de Víctor (11/11/2026, 5.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| Tema aprobado; solo regla de citas (fuentes secundarias fuera del texto) | `\textcite` → texto sin la cita + `\nocite`: Schumpeter (1954) en la introducción y De Vroey (2016) en el desarrollo del modelo de Patinkin («que redibuja los de De Vroey» fuera). Fonseca, Heijdra, De Vroey, Tsoulfidis, Skidelsky, BIS y Banco de Inglaterra solo quedan en líneas `\fuente{…}`. Las obras originales (Keynes, Patinkin, Clower, Barro y Grossman, Malinvaud…) se mantienen. Los `\textcite` de las líneas `\fuente{…}` bajo gráficos y tablas se mantienen (no interrumpen la lectura, igual que en el resto del temario). |
+
 ## Instrucciones para el vídeo
 
 - Pizarra: izquierda refrán y 6 pegatinas; centro gráficos; derecha árbol keynesiano y demanda efectiva y preferencia por la liquidez recuadradas. (11/11/2026)

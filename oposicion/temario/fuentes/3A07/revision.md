@@ -212,6 +212,14 @@ Las citas bibliográficas (V17-V68) se han comprobado una a una por el agente de
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Pizarra: Reparto: quitado el plan de pizarra del reparto del cante (zonas izquierda/centro/derecha, qué se borra y qué se queda); se conservan tiempos, refranes, gráficos y funciones clave; «lo que el tribunal espera ver en la pizarra» → «ver» (4 frases). Títulos: ninguno en 2 líneas. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
 
+
+## Comentarios de Víctor (11/11/2026, 5.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| «El mapa de la nota al pie 5 mucho más pequeño lo quiero, lo puedes encajar a la derecha del texto.» | El mapa `mapa-agua-salada` sale de la nota 5 (se quita `\graficonota[0.85]`) y va a la derecha de la lista de universidades de I.1 («La NEK es de agua salada… / La NMC es de agua dulce…»), a 5,3 cm (≈ 0,32 del ancho), con 2 `minipage` del tema (sin tocar la plantilla: `wrapfig` no está cargado y no funciona dentro de listas). En la nota se quita la frase de los colores, que ya da la leyenda del mapa (se mantiene `\nocite{WojcikKrestonMcGill2012}`). Ver duda A07-31 para HTML y Word. |
+| Regla de citas (fuentes secundarias fuera del texto) | `\textcite` → texto sin la cita + `\nocite`: Schumpeter (1954) en la introducción; De Vroey (2016) en la valoración de la 1.ª generación (por qué no frenaron a la NMC), la caracterización de la 2.ª (frente a la 1.ª generación) y el anexo de historia de la macroeconomía; Blanchard y Fischer (1989) en la caja de equilibrios múltiples; Carlin y Soskice (2015) queda como «el IS-PC-MR de Carlin y Soskice» sin año (es su modelo). Galí (2015) y los artículos originales se mantienen. Los `\textcite` de las líneas `\fuente{…}` bajo gráficos y tablas se mantienen (no interrumpen la lectura, igual que en el resto del temario). |
+
 ## Dudas abiertas
 
 Se aplicó en todas la opción recomendada; Víctor puede cambiarlas a la vuelta.
@@ -251,6 +259,7 @@ Se aplicó en todas la opción recomendada; Víctor puede cambiarlas a la vuelta
 - **A07-28. Límite inferior y fricciones financieras**: estaban en la política monetaria de III.1; con el orden del Word pasan a II.4 («cómo ha cambiado el modelo»), que es donde el Word trataba lo posterior a 2008.
 - **A07-29. Mapa de la nota de las universidades**: redibujado en TikZ como mapa esquemático (contorno aproximado de Estados Unidos, franjas de color como el original y las universidades con su punto), no a escala. La fuente es la del Word (Wójcik, Kreston y McGill, 2012).
 - **A07-30. Extensión**: el documento crece (prueba de compilación en `_trabajo/`: 33 páginas de tema frente a 27, por el método de la 1.ª generación, las cajas y el anexo A). El cante sigue en 30′: lo nuevo que no se canta va en cajas grises (Calvo, equilibrios múltiples) y en el anexo A.
+- **A07-31. Mapa a la derecha en HTML y Word (11/11/2026)**: en el PDF va a la derecha de la lista con 2 `minipage`; pandoc no sabe poner 2 bloques en paralelo y lo deja debajo de la lista, a 5,3 cm de ancho (comprobado con pandoc: `<div class="minipage">` + `<img style="width:5.3cm">`). Opciones: (a) aceptar esa degradación; (b) añadir a la plantilla común un entorno `graficoderecha` (en LaTeX `wrapfigure` o minipage; en `tcee.lua`, `float: right` en HTML) para reutilizarlo en otros temas. **Aplicada: (a)**; (b) queda propuesta para el agente de la plantilla.
 
 ## Enlaces del original (9/11/2026)
 
