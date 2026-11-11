@@ -25,6 +25,12 @@ export interface Documento {
   updateTime?: string;
 }
 
+const MARCA = '$marcaDeTiempo';
+/** Para escribir una marca de tiempo de Firestore (y no un texto): `{ timestamp: marcaDeTiempo(new Date().toISOString()) }`. */
+export function marcaDeTiempo(iso: string): Json {
+  return { [MARCA]: iso };
+}
+
 /** JSON → valor tipado. Los enteros van como integerValue; los demás números, como doubleValue. */
 export function aValor(v: Json): Valor {
   if (v === null || v === undefined) return { nullValue: null };
@@ -32,6 +38,8 @@ export function aValor(v: Json): Valor {
   if (typeof v === 'number') return Number.isInteger(v) ? { integerValue: String(v) } : { doubleValue: v };
   if (typeof v === 'string') return { stringValue: v };
   if (Array.isArray(v)) return { arrayValue: { values: v.map(aValor) } };
+  // marcaDeTiempo(iso): un Timestamp de Firestore (lo que la app y la web guardan con serverTimestamp).
+  if (typeof v[MARCA] === 'string' && Object.keys(v).length === 1) return { timestampValue: v[MARCA] };
   return { mapValue: { fields: aCampos(v) } };
 }
 

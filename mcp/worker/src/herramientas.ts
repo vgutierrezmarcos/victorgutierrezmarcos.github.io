@@ -26,6 +26,8 @@ import {
   aHoraMadrid,
   deberesPendientes,
   diasEntre,
+  apuntarLeitner,
+  corregirTest,
   elegirPreguntas,
   resumenInforme,
   semanaDe,
@@ -35,7 +37,7 @@ import {
 } from './datos';
 import { type Apuntes, ErrorApuntes, idDeDrive } from './drive';
 import { MINUTOS_CLASE, MODALIDADES, ahoraMadrid, construirReserva, construirSesion, copiaParaAlumno, erroresPeticion, fechaClase, fijarTemasClase, huecosLibres, proximas, seSolapan, temasDelCante, type PeticionClase } from './clases';
-import { type AlmacenDatos, ErrorFirestore, Firestore, type Json } from './firestore';
+import { type AlmacenDatos, ErrorFirestore, Firestore, type Json, marcaDeTiempo } from './firestore';
 import { borrarOposicion, recuentoOposicion } from './borrado';
 import { metaVista, registrarVistas } from './vistas';
 
@@ -273,7 +275,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, y solo con la frase que el usuario escriba él mismo. Algunas herramientas llevan una vista interactiva que ciertos clientes (Claude) pintan dentro del chat: test_interactivo (el usuario contesta con botones) y, con vistaPrevia: true, proponer_cronograma, guardar_informe_cante y agendar_clase (el usuario revisa y guarda él con un botón); como no puedes saber si tu cliente la pinta, di siempre al usuario qué va a ver y qué hacer si no ve ningún cuadro. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase, apuntar_test y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, y solo con la frase que el usuario escriba él mismo. Algunas herramientas llevan una vista interactiva que ciertos clientes (Claude) pintan dentro del chat: test_interactivo (el usuario contesta con botones y, al terminar, el cuadro apunta el test en la app) y, con vistaPrevia: true, proponer_cronograma, guardar_informe_cante y agendar_clase (el usuario revisa y guarda él con un botón); como no puedes saber si tu cliente la pinta, di siempre al usuario qué va a ver y qué hacer si no ve ningún cuadro. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
     },
   );
 
@@ -947,7 +949,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Test interactivo con preguntas oficiales',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'Abre un test interactivo dentro del chat: las mismas preguntas oficiales que preguntas_test (mismos parámetros), pero el usuario las contesta con botones en un cuadro, con la figura a la vista, la corrección al momento y el «¿Por qué?», y al terminar te llega su resultado con los fallos para que se los expliques. Es la herramienta para «hazme un test», «test interactivo» o «ponme preguntas» en Claude (web, escritorio y móvil) y en los demás clientes con vistas interactivas: el cuadro lo pone el conector, así que NO construyas otro (ni widget, ni visualización, ni artefacto) y NO copies las preguntas ni las respuestas en el chat; dile que conteste en el cuadro. Si el usuario dice que no ve ningún cuadro, o tu cliente no pinta vistas, usa preguntas_test y plantéaselas tú.',
+        'Abre un test interactivo dentro del chat: las mismas preguntas oficiales que preguntas_test (mismos parámetros), pero el usuario las contesta con botones en un cuadro, con la figura a la vista, la corrección al momento y el «¿Por qué?», y al terminar te llega su resultado con los fallos para que se los expliques y el cuadro lo apunta en la app (historial de tests y repaso espaciado), como si lo hubiera hecho allí. Es la herramienta para «hazme un test», «test interactivo» o «ponme preguntas» en Claude (web, escritorio y móvil) y en los demás clientes con vistas interactivas: el cuadro lo pone el conector, así que NO construyas otro (ni widget, ni visualización, ni artefacto) y NO copies las preguntas ni las respuestas en el chat; dile que conteste en el cuadro. Si el usuario dice que no ve ningún cuadro, o tu cliente no pinta vistas, usa preguntas_test y plantéaselas tú.',
       inputSchema: {
         oposicion: oposicionParam,
         temas: z.array(z.string()).min(1).max(10).describe('Códigos de los temas, «3.A.8».'),
@@ -963,9 +965,46 @@ export function crearServidor(ctx: Contexto): McpServer {
           ? (t as CallToolResult)
           : json({
               vista:
-                'El usuario tiene estas preguntas delante en un cuadro interactivo: las contesta con botones y ve la corrección y el «¿Por qué?» al momento. NO las copies ni des las respuestas en el chat: dile solo, en una línea, que conteste en el cuadro. Cuando termine te llegará su resultado con los fallos: entonces explícaselos con la fuente. Si dice que no ve ningún cuadro, su cliente no pinta vistas: plantéale tú estas mismas preguntas, sin la respuesta.',
+                'El usuario tiene estas preguntas delante en un cuadro interactivo: las contesta con botones y ve la corrección y el «¿Por qué?» al momento. NO las copies ni des las respuestas en el chat: dile solo, en una línea, que conteste en el cuadro. Cuando termine te llegará su resultado con los fallos: entonces explícaselos con la fuente. Al terminar, el cuadro lo apunta solo en la app (historial y repaso): no llames a apuntar_test. Si dice que no ve ningún cuadro, su cliente no pinta vistas: plantéale tú estas mismas preguntas, sin la respuesta.',
               ...t,
             });
+      }),
+  );
+
+  server.registerTool(
+    'apuntar_test',
+    {
+      title: 'Apuntar en la app un test hecho en el chat',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+      description:
+        'Apunta en la app un test de preguntas oficiales que el usuario acaba de contestar en el chat: queda en su historial de tests (marcado como hecho con la IA) y cuenta para su repaso espaciado, igual que si lo hubiera hecho en la app o en el simulador de la web. El cuadro de test_interactivo la llama solo al terminar: NO la llames tú después de un test interactivo. Llámala tú únicamente si le planteaste las preguntas en el chat con preguntas_test, las contestó todas y te confirma que quiere apuntarlo; pasa lo que marcó de verdad, nunca respuestas supuestas. El conector corrige contra el banco: no hace falta decirle cuáles acertó.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        respuestas: z.record(z.string().regex(/^\d{1,6}$/), z.string().regex(/^[a-eA-E]$/)).describe('Lo que marcó en cada pregunta: id de la pregunta (el «id» de preguntas_test) → letra.'),
+        segundos: z.number().int().min(0).max(86_400).optional().describe('Cuánto tardó, en segundos, si se sabe.'),
+        clave: z.string().regex(/^[\w-]{6,40}$/).optional().describe('Identificador del test, para no apuntarlo dos veces (lo pone el cuadro interactivo).'),
+      },
+    },
+    async ({ oposicion, respuestas, segundos, clave }) =>
+      protegido(async () => {
+        if (Object.keys(respuestas).length > 30) return error('Como mucho, 30 preguntas por test.');
+        const banco = await ctx.banco();
+        if (!banco.preguntas?.size) return error('El banco de preguntas no está disponible ahora mismo: no se ha apuntado nada.');
+        const { detalle, resultado } = corregirTest(respuestas, banco.preguntas, segundos ?? 0);
+        if (!detalle.length) return error('Ninguna de esas preguntas es del banco oficial: no hay nada que apuntar.');
+        const db = await ctx.almacen(oposicion);
+        const ahora = new Date();
+        const ruta = `exam_results/ia_${clave ?? ahora.getTime()}`;
+        const resumen = { notaSobre10: resultado.notaSobre10, correctas: resultado.correctas, incorrectas: resultado.incorrectas, preguntas: resultado.totalPreguntas };
+        // El cuadro puede repetir la llamada (se vuelve a pintar): el mismo test no cuenta dos veces.
+        if (clave && (await db.leer(ruta))) return json({ apuntado: true, yaEstaba: true, oposicion, ...resumen });
+        const marca = marcaDeTiempo(ahora.toISOString());
+        const leitner = apuntarLeitner(await db.leer('progress/spaced_repetition'), detalle, ahora.getTime());
+        await db.lote([
+          { ruta, datos: { ...resultado, timestamp: marca } },
+          { ruta: 'progress/spaced_repetition', datos: { ...leitner, updatedAt: marca } },
+        ]);
+        return json({ apuntado: true, oposicion, ...resumen, donde: 'En el historial de tests de la app (y de la web) y en el repaso espaciado; la app lo recoge al sincronizar.' });
       }),
   );
 

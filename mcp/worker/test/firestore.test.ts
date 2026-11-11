@@ -1,9 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { ErrorFirestore, Firestore, aCampos, aValor, deCampos, deValor, idDe, type Json } from '../src/firestore';
+import { ErrorFirestore, Firestore, aCampos, aValor, deCampos, deValor, idDe, marcaDeTiempo, type Json } from '../src/firestore';
 
 describe('conversión de valores de Firestore', () => {
   it('JSON → valor tipado: enteros, decimales, textos, booleanos, nulos, listas y mapas', () => {
     expect(aValor(3)).toEqual({ integerValue: '3' });
+    expect(aValor(marcaDeTiempo('2026-11-11T08:00:00.000Z'))).toEqual({ timestampValue: '2026-11-11T08:00:00.000Z' });
+    expect(aCampos({ t: marcaDeTiempo('2026-11-11T08:00:00Z'), m: { a: 1 } })).toEqual({ t: { timestampValue: '2026-11-11T08:00:00Z' }, m: { mapValue: { fields: { a: { integerValue: '1' } } } } });
     expect(aValor(6.4)).toEqual({ doubleValue: 6.4 });
     expect(aValor('3.A.8')).toEqual({ stringValue: '3.A.8' });
     expect(aValor(true)).toEqual({ booleanValue: true });

@@ -131,6 +131,67 @@ export function elegirPreguntas(
   return candidatas.slice(0, n).map(({ caja: _c, orden: _o, ...p }) => p);
 }
 
+/**
+ * Corrige contra el banco lo que el usuario contestó en un test del conector (id de pregunta → letra) y lo deja
+ * con el esquema de exam_results de la app y la web (app/lib/data/models/resultado.dart; acierto 1, fallo −0,33).
+ * Solo cuentan las preguntas del banco con respuesta; las demás se ignoran.
+ */
+export function corregirTest(respuestas: Record<string, string>, banco: Map<number, PreguntaBanco>, segundos = 0) {
+  const detalle: Array<{ id: number; ok: boolean }> = [];
+  const limpias: Record<string, string> = {};
+  const temas = new Set<string>();
+  for (const [idTexto, letra] of Object.entries(respuestas)) {
+    const p = banco.get(Number(idTexto));
+    if (!p || !p.respuesta.length) continue;
+    const marcada = letra.toLowerCase();
+    limpias[String(p.id)] = marcada;
+    detalle.push({ id: p.id, ok: p.respuesta.includes(marcada) });
+    p.temas.forEach((t) => temas.add(t));
+  }
+  const correctas = detalle.filter((d) => d.ok).length;
+  const incorrectas = detalle.length - correctas;
+  const puntos = Math.round((correctas - 0.33 * incorrectas) * 100) / 100;
+  return {
+    detalle,
+    resultado: {
+      puntosBrutos: puntos,
+      maxPuntos: detalle.length,
+      notaSobre10: detalle.length ? Math.round((puntos / detalle.length) * 1000) / 100 : 0,
+      correctas,
+      incorrectas,
+      sinResponder: 0,
+      totalPreguntas: detalle.length,
+      tiempoSeconds: segundos,
+      temas: [...temas].sort(),
+      respuestas: limpias,
+      origen: 'ia',
+      tipo: 'test',
+    },
+  };
+}
+
+/**
+ * Repaso espaciado (Leitner) tras un test: réplica de EstadoLeitner.registrarExamen de la app
+ * (app/lib/features/test/leitner.dart) y de spaced-repetition.js de la web. Una pregunta nueva solo entra
+ * si se falla; acertar sube de caja (hasta la 5), fallar la devuelve a la 1; el test cuenta como una sesión.
+ */
+export function apuntarLeitner(estado: Obj | null, resultados: Array<{ id: number; ok: boolean }>, ahoraMs: number): Obj {
+  const sesion = numero(estado?.sessionCount);
+  const preguntas: Obj = { ...objeto(estado?.questions) };
+  for (const { id, ok } of resultados) {
+    const k = String(id);
+    const e = preguntas[k];
+    if (!esObj(e)) {
+      if (!ok) preguntas[k] = { box: 1, lastSession: sesion, timesCorrect: 0, timesFailed: 1, lastDate: ahoraMs };
+      continue;
+    }
+    preguntas[k] = ok
+      ? { ...e, box: Math.min(5, numero(e.box, 1) + 1), timesCorrect: numero(e.timesCorrect) + 1, lastSession: sesion, lastDate: ahoraMs }
+      : { ...e, box: 1, timesFailed: numero(e.timesFailed) + 1, lastSession: sesion, lastDate: ahoraMs };
+  }
+  return { ...(estado ?? {}), questions: preguntas, sessionCount: sesion + 1 };
+}
+
 // --------------------------------------------------------------------- Tests
 
 export interface TestResumen {
