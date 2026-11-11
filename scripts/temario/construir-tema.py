@@ -506,9 +506,41 @@ def preparar_pandoc(tema, tex, formato):
             return f'\\tag{{{n}}}'
         return ''
 
+    def filas(texto):
+        # Filas de un align/gather separadas por «\\» de primer nivel (no las de
+        # matrices o cases de dentro)
+        trozos, nivel, actual, i = [], 0, '', 0
+        while i < len(texto):
+            if texto.startswith('\\begin{', i):
+                nivel += 1
+            elif texto.startswith('\\end{', i):
+                nivel -= 1
+            if nivel == 0 and texto.startswith('\\\\', i):
+                trozos.append(actual)
+                actual = ''
+                i += 2
+                continue
+            actual += texto[i]
+            i += 1
+        return trozos + [actual]
+
     def formula(m):
         # Las etiquetas de dentro se quitan (o pasan a \tag) y su ancla va delante
         anclas = ''.join(f'\\hypertarget{{{e}}}{{}}' for e in re.findall(r'\\label\{([^}]+)\}', m.group(1)))
+        entorno = re.match(r'\\begin\{(\w+)', m.group(1)).group(1)
+        if formato == 'html' and entorno in ('align', 'gather') and '\\label{' in m.group(1):
+            # pandoc convierte align en aligned y MathJax no admite \tag dentro de
+            # aligned (enseña el LaTeX en bruto): en la web, una ecuación por fila,
+            # cada una con su número
+            dentro = re.sub(r'^\\begin\{\w+\*?\}|\\end\{\w+\*?\}$', '', m.group(1).strip())
+            ecuaciones = []
+            for fila in filas(dentro):
+                fila = re.sub(r'\\label\{([^}]+)\}', etiqueta, fila)
+                fila = re.sub(r'^\s*\[[^\]]*\]', '', fila)  # «\\[2pt]»
+                fila = re.sub(r'\\(nonumber|notag)\b', '', fila).replace('&', '').strip()
+                if fila:
+                    ecuaciones.append(f'\\begin{{equation*}}\n{fila}\n\\end{{equation*}}')
+            return anclas + '\n'.join(ecuaciones)
         return anclas + re.sub(r'\\label\{([^}]+)\}', etiqueta, m.group(1))
     # Solo las etiquetas dentro de fórmulas; las de figuras y apartados las usa pandoc
     cuerpo = re.sub(r'(\\begin\{(equation|align|gather|multline)\*?\}.*?\\end\{\2\*?\})',
