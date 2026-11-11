@@ -113,13 +113,13 @@ En el cante (\tiempo{8,5}): los consumidores (\tiempo{6}), con los componentes e
   \item \concepto{variables flujo}, referidas a un intervalo de tiempo y elegidas directamente: en optimización dinámica, las \concepto{variables de control} (el consumo, $C_t$; la inversión, $I_t$);
   \item \concepto{variables stock}, referidas a un instante y determinadas por las decisiones de flujo pasadas: las \concepto{variables de estado} (los activos, $b_t$; el capital, $K_t$; las reservas de un recurso).
   \end{itemize}
-\item El tiempo puede ser discreto ($t=0,1,2,\dots$) o continuo, y el horizonte, finito o infinito. El consumidor elige una \emph{senda} de consumo, $(C_0,C_1,\dots,C_T)$, y el problema tiene 4 piezas: unas preferencias sobre sendas, unas restricciones (la ecuación de estado y las condiciones inicial y final), un método de resolución y, como resultado, la senda óptima.\footnote{La senda óptima de consumo no copia la de la renta. Con una renta en forma de joroba a lo largo de la vida, como la del ciclo vital, el consumo es una senda suave cuya pendiente solo depende de la comparación entre $r$ y $\rho$ (creciente si $r>\rho$, constante si $r=\rho$ y decreciente si $r<\rho$) y cuyo nivel depende de la riqueza total (\ref{sec:aplicaciones-consumo}). La diferencia entre la renta y el consumo es el ahorro: negativo al principio y al final de la vida y positivo en la madurez.\graficonota[0.55]{sendas-consumo}}
-\item Es el mismo camino que en el consumidor estático \vertema{3.A.8}, con el tiempo dentro de cada pieza. Empieza por las preferencias intertemporales, que se representan con una función de utilidad intertemporal (gráfico~\ref{fig:componentes-a})\footnote{Contar con una función de utilidad permite aplicar el cálculo diferencial y, por tanto, plantear y resolver el problema como uno de optimización.}.
+\item El tiempo puede ser discreto ($t=0,1,2,\dots$) o continuo, y el horizonte, finito o infinito. El consumidor elige una \emph{senda} de consumo, $(C_0,C_1,\dots,C_T)$, y el problema tiene 4 piezas: unas preferencias sobre sendas, unas restricciones (la ecuación de estado y las condiciones inicial y final), un método de resolución y, como resultado, la senda óptima.\footnote{La senda óptima de consumo no copia la de la renta. Con una renta en forma de joroba a lo largo de la vida, como la del ciclo vital, el consumo es una senda suave cuya pendiente solo depende de la comparación entre $r$ y $\rho$ (creciente si $r>\rho$, constante si $r=\rho$ y decreciente si $r<\rho$) y cuyo nivel depende de la riqueza total (\ref{sec:aplicaciones-consumo}). La diferencia entre la renta y el consumo es el ahorro: negativo al principio y al final de la vida y positivo en la madurez.\graficonota[0.45]{sendas-consumo}}
+\item Es el mismo camino que en el consumidor estático \vertema{3.A.8}, con el tiempo dentro de cada pieza. Con 2 periodos se ve de un vistazo (gráfico~\ref{fig:componentes}): las preferencias intertemporales, representadas con una función de utilidad intertemporal\footnote{Contar con una función de utilidad permite aplicar el cálculo diferencial y, por tanto, plantear y resolver el problema como uno de optimización.}, dan curvas de indiferencia entre el consumo de hoy y el de mañana; la restricción intertemporal es una recta que pasa por la dotación, $A$, con pendiente $-(1+r)$; y la senda óptima, $E$, está en la tangencia, donde la relación marginal de sustitución entre periodos es igual a $1+r$.
   \begin{figure}[H]
   \centering
-  \caption{Componentes del problema dinámico del consumidor: de las preferencias a la función de utilidad}\label{fig:componentes-a}
-  \grafico[0.6\textwidth]{componentes-consumidor-paso1}
-  \fuente{elaboración propia. Primer paso del gráfico~\ref{fig:componentes}.}
+  \caption{Componentes del problema dinámico del consumidor con 2 periodos}\label{fig:componentes}
+  \grafico[0.6\textwidth]{componentes-consumidor}
+  \fuente{elaboración propia a partir de \textcite{Fisher1930Theory}. Utilidad CRRA con $\theta=1/2$, $1+r=1{,}1$ y $\beta=1/1{,}1$.}
   \end{figure}
 \end{itemize}
 
@@ -192,13 +192,7 @@ En el cante (\tiempo{8,5}): los consumidores (\tiempo{6}), con los componentes e
   \sum_{t=0}^{T}\frac{C_t}{(1+r)^t}=(1+r)\,b_0+\sum_{t=0}^{T}\frac{Y_t}{(1+r)^t}:
   \end{equation*}
   el valor actual del consumo es igual a la riqueza.\footnote{Con certidumbre y un activo sin riesgo, las restricciones de cada periodo siempre se resumen así. Con incertidumbre hacen falta mercados \emph{completos}; si no lo son, se trabaja con las restricciones de cada periodo y cada estado (\ref{sec:metodos}). Con activos \emph{redundantes} (unos replican a otros), la restricción intertemporal se sigue cumpliendo: lo que queda indeterminado es la composición de la cartera, no el consumo.}
-\item \emph{El esquema completo}: la función de utilidad y la restricción intertemporal de recursos forman el problema de maximización de la utilidad; resolverlo, con alguno de los 3 métodos que siguen, da la senda óptima de consumo (gráfico~\ref{fig:componentes}).
-  \begin{figure}[H]
-  \centering
-  \caption{Componentes del problema dinámico del consumidor}\label{fig:componentes}
-  \grafico[0.9\textwidth]{componentes-consumidor}
-  \fuente{elaboración propia.}
-  \end{figure}
+\item \emph{El esquema completo}: la función de utilidad y la restricción intertemporal de recursos forman el problema de maximización de la utilidad; resolverlo, con alguno de los 3 métodos que siguen, da la senda óptima de consumo, la tangencia $E$ del gráfico~\ref{fig:componentes}.
 \end{itemize}
 
 \subsubsection{Métodos de resolución:\cortetitulo{} sustitución, control óptimo y programación dinámica}\label{sec:metodos}
@@ -348,7 +342,7 @@ En el cante (\tiempo{8,5}): los consumidores (\tiempo{6}), con los componentes e
   \begin{figure}[H]
   \centering
   \caption{La ESI y la curvatura de las curvas de indiferencia intertemporales}\label{fig:esi-curvatura}
-  \grafico[0.55\textwidth]{esi-curvatura}
+  \grafico[0.42\textwidth]{esi-curvatura}
   \fuente{elaboración propia. Curvas de indiferencia de $u(C_1)+u(C_2)$ con la CRRA, que pasan por el mismo punto de la bisectriz.}
   \end{figure}
 \item Por eso, con una ESI más alta, el consumo responde más al tipo de interés: los agentes con más ESI ofrecen o demandan más fondos en el mercado de capitales.
@@ -369,38 +363,46 @@ En el cante (\tiempo{8,5}): los consumidores (\tiempo{6}), con los componentes e
 
 \begin{itemize}
 \item El tipo de interés es el precio del modelo, y su efecto sobre el consumo de hoy es en general ambiguo, porque hay 3 efectos\nocite{ObstfeldRogoff1996Foundations}. Lo vemos con un consumidor que presta, con más renta hoy que mañana, paso a paso.
-\item \emph{El punto de partida} (gráfico~\ref{fig:fisher-tipo-interes-a}): la dotación es $A=(Y_1,Y_2)$; la recta de balance pasa por $A$ con pendiente $-(1+r)$ y corta los ejes en $\overline W$ y $(1+r)\overline W$. El óptimo, $C$, está donde la curva de indiferencia $U_1$ es tangente a la recta; con $r=\rho$, sobre la bisectriz. El consumidor presta $Y_1-C_1$.
+\item \emph{El punto de partida} (gráfico~\ref{fig:fisher-tipo-interes-pasos}, izquierda), que es el del gráfico~\ref{fig:componentes}: la dotación es $A=(Y_1,Y_2)$; la recta de balance pasa por $A$ con pendiente $-(1+r)$ y corta los ejes en $\overline W$ y $(1+r)\overline W$. El óptimo, $C$, está donde la curva de indiferencia $U_1$ es tangente a la recta; con $r=\rho$, sobre la bisectriz. El consumidor presta $Y_1-C_1$.
+\item \emph{El efecto sustitución} (gráfico~\ref{fig:fisher-tipo-interes-pasos}, centro): el tipo sube a $r'$ y la recta gira sobre la dotación $A$, que sigue siendo alcanzable, y se hace más inclinada. Una subida de $r$ encarece el consumo de hoy, cuyo coste de oportunidad es el rendimiento del ahorro. Para aislar ese efecto, se traza una recta paralela a la nueva y tangente a la curva inicial, $U_1$: su tangencia, $H$, tiene menos consumo hoy. A utilidad constante, el consumo de hoy baja de $C$ a $H$.
+\item \emph{El nuevo óptimo} (gráfico~\ref{fig:fisher-tipo-interes-pasos}, derecha): $C'$, donde $U_2$ es tangente a la nueva recta.
   \begin{figure}[H]
   \centering
-  \caption{Una subida del tipo de interés en el modelo de \autor{Fisher}: el punto de partida}\label{fig:fisher-tipo-interes-a}
-  \grafico[0.55\textwidth]{fisher-tipo-interes-paso1}
-  \fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite[cap.~8]{Romer2019Advanced}. Primer paso del gráfico~\ref{fig:fisher-tipo-interes}.}
+  \caption{Una subida del tipo de interés en el modelo de \autor{Fisher}: el punto de partida, el giro de la recta con el efecto sustitución y el nuevo óptimo}\label{fig:fisher-tipo-interes-pasos}
+  \grafico[0.32\textwidth]{fisher-tipo-interes-paso1}\hfill
+  \grafico[0.32\textwidth]{fisher-tipo-interes-paso2}\hfill
+  \grafico[0.32\textwidth]{fisher-tipo-interes-paso3}
+  \fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite[cap.~8]{Romer2019Advanced}. Primeros pasos del gráfico~\ref{fig:fisher-tipo-interes}.}
   \end{figure}
-\item \emph{El efecto sustitución} (gráfico~\ref{fig:fisher-tipo-interes-b}): el tipo sube a $r'$ y la recta gira sobre la dotación $A$, que sigue siendo alcanzable, y se hace más inclinada. Una subida de $r$ encarece el consumo de hoy, cuyo coste de oportunidad es el rendimiento del ahorro. Para aislar ese efecto, se traza una recta paralela a la nueva y tangente a la curva inicial, $U_1$: su tangencia, $H$, tiene menos consumo hoy. A utilidad constante, el consumo de hoy baja de $C$ a $H$.
-  \begin{figure}[H]
-  \centering
-  \caption{Una subida del tipo de interés en el modelo de \autor{Fisher}: el giro de la recta y el efecto sustitución}\label{fig:fisher-tipo-interes-b}
-  \grafico[0.55\textwidth]{fisher-tipo-interes-paso2}
-  \fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite[cap.~8]{Romer2019Advanced}. Segundo paso del gráfico~\ref{fig:fisher-tipo-interes}.}
-  \end{figure}
-\item \emph{Los efectos renta y riqueza} (gráfico~\ref{fig:fisher-tipo-interes}): de $H$ al nuevo óptimo, $C'$, donde $U_2$ es tangente a la nueva recta, actúan otros 2 efectos, que se separan con la ecuación de \autor{Slutsky} con dotación (anexo~\ref{anexo:optimizacion}):
+\item \emph{Los efectos renta y riqueza} (gráfico~\ref{fig:fisher-tipo-interes}): de $H$ al nuevo óptimo, $C'$, actúan otros 2 efectos, que se separan con la ecuación de \autor{Slutsky} con dotación \eqref{eq:slutsky-dotacion}:
   \begin{itemize}
-  \item el \emph{efecto renta ordinario}: con la riqueza dada, el mismo ahorro da más consumo mañana y, por el alisamiento, también se consume más hoy; es el paso al punto en que estaría el consumidor si la recta girase sobre su corte con el eje horizontal, como si no tuviera renta futura\nocite{Heijdra2009Foundations};
-  \item el \emph{efecto riqueza} o renta-dotación: las rentas futuras valen menos hoy; la riqueza cae, y el consumo de hoy, también.
+  \item el \emph{efecto renta ordinario}: con la riqueza dada, el mismo ahorro da más consumo mañana y, por el alisamiento, también se consume más hoy; es el paso de $H$ a $D$, el punto en que estaría el consumidor si la recta nueva girase sobre el corte de la inicial con el eje horizontal, $\overline W$, como si no tuviera renta futura\nocite{Heijdra2009Foundations};
+  \item el \emph{efecto riqueza} o renta-dotación, de $D$ a $C'$: las rentas futuras valen menos hoy; la riqueza cae de $\overline W$ a $\overline W'$, y el consumo de hoy, también.
   \end{itemize}
   Los 2 juntos tienen el signo del ahorro, $Y_1-C_1$: en quien presta, como aquí, aumentan el consumo de hoy, y el prestamista gana bienestar ($U_2>U_1$); en quien pide prestado lo reducen, refuerzan el efecto sustitución y le hacen perder bienestar, porque pedir prestado se encarece. Por eso el efecto total es ambiguo en quien presta, y en el gráfico domina la sustitución, y negativo en quien pide prestado.
   \begin{figure}[H]
   \centering
   \caption{Una subida del tipo de interés en el modelo de \autor{Fisher}: efectos sustitución, renta y riqueza}\label{fig:fisher-tipo-interes}
-  \grafico[0.55\textwidth]{fisher-tipo-interes}
-  \fuente{elaboración propia a partir de \textcite{Fisher1930Theory} y \textcite[cap.~8]{Romer2019Advanced}. Prestamista con $1+r=1{,}2$, $1+r'=1{,}8$, $\beta=1/1{,}2$ y $\theta=1/2$.}
+  \grafico[0.75\textwidth]{fisher-tipo-interes}
+  \fuente{elaboración propia a partir de \textcite{Fisher1930Theory}, \textcite[cap.~8]{Romer2019Advanced} y \textcite{Heijdra2009Foundations}. Prestamista con $A=(4,3)$, $1+r=1{,}1$, $1+r'=1{,}6$, $\beta=1/1{,}1$ y $\theta=1/2$.}
   \end{figure}
 \end{itemize}
 
 \begin{anotaciones}
-\textbf{Los signos de la ecuación de \autor{Slutsky} con dotación}
+\textbf{La ecuación de \autor{Slutsky} con dotación y sus signos}
 \begin{itemize}
-\item La ecuación de \autor{Slutsky} con dotación \eqref{eq:slutsky-dotacion} separa los 3 efectos con el precio del consumo de hoy, $p\equiv1/(1+r)$: una subida de $r$ es una bajada de $p$, así que los signos de la ecuación respecto a $p$ se invierten respecto a $r$. Por eso el efecto renta aparece a veces como positivo (medido respecto a $r$) y otras como negativo (respecto al precio del consumo de hoy): es el mismo efecto medido con precios inversos. Los efectos renta y riqueza juntos tienen el signo del ahorro, $Y_1-C_1$ (tabla~\ref{tab:signos-tipo}).
+\item Con 2 periodos, el precio del consumo de mañana en términos del de hoy es $p\equiv 1/(1+r)$, y la riqueza es $\overline{W}=Y_1+p\,Y_2$, que depende de $p$ porque el consumidor tiene una dotación, $(Y_1,Y_2)$. La ecuación de \autor{Slutsky} con dotación \vertema{3.A.9} descompone el efecto de un cambio de $p$ sobre $C_1$:
+  \begin{equation}
+  \frac{dC_1}{dp}=\underbrace{\frac{\partial h_{C_1}(p,\overline{U})}{\partial p}}_{\text{sustitución}\ (>0)}\ \underbrace{-\,C_2\,\frac{\partial C_1(p,\overline{W})}{\partial\overline{W}}}_{\text{renta}\ (<0)}\ \underbrace{+\,Y_2\,\frac{\partial C_1(p,\overline{W})}{\partial\overline{W}}}_{\text{riqueza o dotación}\ (>0)}=\frac{\partial h_{C_1}(p,\overline{U})}{\partial p}+(Y_2-C_2)\,\frac{\partial C_1(p,\overline{W})}{\partial\overline{W}},\label{eq:slutsky-dotacion}
+  \end{equation}
+  donde $h_{C_1}(p,\overline{U})$ es la demanda compensada (hicksiana), $C_1(p,\overline{W})$ la ordinaria y $C_1$ es un bien normal.
+\item Una subida de $r$ baja $p$. Entonces, como en el gráfico~\ref{fig:fisher-tipo-interes}:
+  \begin{itemize}
+  \item el \emph{efecto sustitución} reduce $C_1$: el consumo de hoy se encarece frente al de mañana;
+  \item el \emph{efecto renta} lo aumenta: el consumo de mañana se abarata y el consumidor es, en ese sentido, más rico;
+  \item el \emph{efecto riqueza} lo reduce: la renta de mañana vale menos hoy.
+  \end{itemize}
+\item La ecuación de \autor{Slutsky} con dotación \eqref{eq:slutsky-dotacion} separa los 3 efectos con el precio del consumo de mañana, $p\equiv1/(1+r)$: una subida de $r$ es una bajada de $p$, así que los signos de la ecuación respecto a $p$ se invierten respecto a $r$. Por eso el efecto renta aparece a veces como positivo (medido respecto a $r$) y otras como negativo (respecto a $p$): es el mismo efecto medido con precios inversos. Los efectos renta y riqueza juntos tienen el signo del ahorro, $Y_1-C_1$ (tabla~\ref{tab:signos-tipo}).
 \end{itemize}
   \begin{tablacaja}
   \caption{Efectos de una subida del tipo de interés sobre el consumo de hoy, $C_1$}\label{tab:signos-tipo}
@@ -523,7 +525,13 @@ En el cante (\tiempo{18}): el agente representativo (\tiempo{2}), de palabra (la
 \subsection{El agente representativo}\label{sec:agente-representativo}
 
 \begin{itemize}
-\item \emph{Por qué}: desde la crítica de \textcite{Lucas1976Econometric}, las relaciones macroeconómicas se buscan en sus fundamentos (preferencias, tecnología y dotaciones), que no cambian con la política\footnote{\autor{Lucas} mostró que las relaciones estimadas con datos pasados no sirven para evaluar una política nueva si cambian con ella, porque los agentes cambian su conducta. La oferta intertemporal de trabajo de \textcite{LucasRapping1969Real} es uno de los primeros usos modernos del agente representativo \vertema{3.A.25}.}. Un equilibrio general walrasiano con agentes distintos es intratable; el \concepto{agente representativo} lo hace manejable a costa de la heterogeneidad. Es la base de los modelos EGDE \vertema{3.A.6}.
+\item \emph{Por qué}: desde la crítica de \textcite{Lucas1976Econometric}, las relaciones macroeconómicas se buscan en sus fundamentos (preferencias, tecnología y dotaciones), que no cambian con la política\footnote{\autor{Lucas} mostró que las relaciones estimadas con datos pasados no sirven para evaluar una política nueva si cambian con ella, porque los agentes cambian su conducta. La oferta intertemporal de trabajo de \textcite{LucasRapping1969Real} es uno de los primeros usos modernos del agente representativo \vertema{3.A.25}.}. Un equilibrio general walrasiano con agentes distintos es intratable; el \concepto{agente representativo} lo hace manejable a costa de la heterogeneidad. Es la base de los modelos de \concepto{equilibrio general dinámico y estocástico} (EGDE) \vertema{3.A.6}, que se definen por las 4 palabras de su nombre\nocite{Kocherlakota2010Modern}:
+  \begin{itemize}
+  \item \emph{equilibrio}: se explicitan los objetivos y las restricciones de hogares y empresas, que optimizan, y los mercados se vacían;
+  \item \emph{general}: se incluye toda la economía, con todos sus mercados a la vez;
+  \item \emph{dinámico}: hogares y empresas miran hacia delante y deciden a lo largo del tiempo, con las herramientas del apartado~\ref{sec:micro};
+  \item \emph{estocástico}: hay perturbaciones aleatorias (\emph{shocks}) que mueven la economía; por eso las decisiones se toman con la esperanza que aparece en la ecuación de \autor{Euler} estocástica \eqref{eq:euler-estocastica}.
+  \end{itemize}
 \item \emph{Su historia} es antigua\nocite{Hartley1996Origins}: los \emph{trading bodies} de la teoría del intercambio de \textcite{Jevons1871Theory}, defendidos por \autor{Edgeworth}, y la «empresa representativa» de \autor{Marshall}, que \textcite{Robbins1928Representative} criticó con dureza y dejó en el olvido hasta la macroeconomía de los 70.
 \item \emph{Qué es}: el término se usa en 3 sentidos:
   \begin{enumerate}
@@ -984,23 +992,6 @@ Este anexo es la parte en tiempo discreto de la pieza común de optimización di
 \item \emph{Horizonte infinito}: con $T\to\infty$, la condición terminal pasa a ser la de no-Ponzi, $\lim_{T\to\infty}b_{T+1}/(1+r)^T\geq 0$, que se cumple con igualdad en el óptimo (condición de transversalidad), la de los modelos de horizonte infinito (apartado~\ref{sec:horizonte-infinito}).
 \end{itemize}
 
-\paragraph{d) Los efectos de un cambio del tipo de interés: la ecuación de \autor{Slutsky} con dotación}
-
-\begin{itemize}
-\item Con 2 periodos, el precio del consumo de mañana en términos del de hoy es $p\equiv 1/(1+r)$, y la riqueza es $\overline{W}=Y_1+p\,Y_2$, que depende de $p$ porque el consumidor tiene una dotación, $(Y_1,Y_2)$. La ecuación de \autor{Slutsky} con dotación \vertema{3.A.9} descompone el efecto de un cambio de $p$ sobre $C_1$:
-  \begin{equation}
-  \frac{dC_1}{dp}=\underbrace{\frac{\partial h_{C_1}(p,\overline{U})}{\partial p}}_{\text{sustitución}\ (>0)}\ \underbrace{-\,C_2\,\frac{\partial C_1(p,\overline{W})}{\partial\overline{W}}}_{\text{renta}\ (<0)}\ \underbrace{+\,Y_2\,\frac{\partial C_1(p,\overline{W})}{\partial\overline{W}}}_{\text{riqueza o dotación}\ (>0)}=\frac{\partial h_{C_1}(p,\overline{U})}{\partial p}+(Y_2-C_2)\,\frac{\partial C_1(p,\overline{W})}{\partial\overline{W}},\label{eq:slutsky-dotacion}
-  \end{equation}
-  donde $h_{C_1}(p,\overline{U})$ es la demanda compensada (hicksiana), $C_1(p,\overline{W})$ la ordinaria y $C_1$ es un bien normal.
-\item Una subida de $r$ baja $p$. Entonces:
-  \begin{itemize}
-  \item el \emph{efecto sustitución} reduce $C_1$: el consumo de hoy se encarece frente al de mañana;
-  \item el \emph{efecto renta} lo aumenta: el consumo de mañana se abarata y el consumidor es, en ese sentido, más rico;
-  \item el \emph{efecto riqueza} lo reduce: la renta de mañana vale menos hoy.
-  \end{itemize}
-\item Los 2 últimos juntos tienen el signo de $C_2-Y_2=(1+r)(Y_1-C_1)$, es decir, del ahorro. En quien pide prestado ($Y_1<C_1$), el efecto riqueza pesa más que el de renta, los 2 juntos refuerzan el de sustitución y $C_1$ baja; en quien presta ($Y_1>C_1$), pesa más el de renta, los 2 juntos se oponen al de sustitución y el resultado es ambiguo, como se ve en el gráfico~\ref{fig:fisher-tipo-interes}; la estática comparativa completa, con la tabla de signos, está en el apartado~\ref{sec:aplicaciones-consumo}.\findemo
-\end{itemize}
-
 % ==========================================================================
 \section{Anexo: optimización dinámica en tiempo continuo:\cortetitulo{} el control óptimo}\label{anexo:control-optimo}
 
@@ -1334,11 +1325,13 @@ Este anexo completa la pieza común de optimización dinámica (anexos~\ref{anex
 % ==========================================================================
 \section{Anexo: preguntas de test}\label{anexo:test}
 
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html?tema=3.A.29}{simulador de test}.
+\end{anotaciones}
+
 \begin{itemize}
 \item En la pregunta 7 del examen de julio de 2021 se preguntó cuándo alisa el consumo un consumidor con utilidad de \autor{Samuelson}, tasa de descuento y tipo de interés constantes y mercado de capitales perfecto. La respuesta correcta es la a): el alisamiento del consumo no depende de los valores que tomen $\rho$ y $r$ (\ref{sec:aplicaciones-consumo}).
-\item Más preguntas de este tema en el simulador de test: \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}\nocite{GutierrezMarcos2026Simulador}.
 \end{itemize}
-
 
 \bibliografia
 \end{document}

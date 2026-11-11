@@ -1,35 +1,38 @@
-% Componentes del problema dinámico del consumidor (rehace la tabla-esquema
-% «Componentes» del tema antiguo, en analogía con esquema-ingredientes del 3.A.8):
-% preferencias intertemporales -> función de utilidad intertemporal; con la
-% restricción intertemporal de recursos -> problema de maximización -> senda óptima.
-% Pasos: componentes-consumidor-paso1 (capas 1 y 2) y este gráfico completo.
+% Componentes del problema dinámico del consumidor con 2 periodos, con la misma
+% forma que la elección del consumidor estático (3.A.8): restricción
+% intertemporal como recta, curvas de indiferencia sobre (C_1, C_2) y tangencia.
+% Mismos números que el punto de partida de fisher-tipo-interes.tex:
+%   dotación A = (Y_1, Y_2) = (4, 3); 1 + r = 1,1; beta = 1/1,1; theta = 1/2
+%   recta C_2 = 3 - 1,1 (C_1 - 4): W = 6,7273, (1+r) W = 7,4
+%   curvas de nivel U = raíz(C_1) + beta raíz(C_2) = K: C_2 = 1,21 (K - raíz(C_1))^2
+%   óptimo E = (3,5238; 3,5238) con K = 3,5837 (tangente); U_0: K = 3,3; U_2: K = 3,85
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
-% En los pasos (\def\tceefantasma), lo que aún no se ha dibujado ocupa su sitio
-% sin verse, para que todos los pasos tengan el mismo tamaño
-\ifdefined\tceefantasma
-  \renewcommand{\capa}[2]{\ifnum#1>\tceepaso\relax\begin{scope}[opacity=0]#2\end{scope}\else#2\fi}
-\fi
 \begin{document}
-\begin{tikzpicture}[tcee,node distance=0.7cm and 0.9cm,
-    caja/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=3pt,align=center,
-                 minimum height=1.3cm,inner sep=5pt},
-    clave/.style={caja,fill=tceemorado!12,very thick},
-    une/.style={->,thick,tceemorado}]
-  % 1: las preferencias intertemporales, sobre sendas de consumo
-  \capa{1}{\node[caja] (P) at (0,0) {Preferencias\\ intertemporales\\ sobre sendas $(C_0,\dots,C_T)$};}
-  % 2: la función de utilidad intertemporal que las representa
-  \capa{2}{\node[caja] (U) at (5.6,0) {Función de utilidad intertemporal\\ $U_0=\sum_{t=0}^{T}\beta^t\,u(C_t)$};}
-  \capa{2}{\draw[une] (P) -- (U);}
-  % 3: la restricción intertemporal de recursos
-  \capa{3}{\node[caja] (R) at (0,-2.6) {Restricción intertemporal\\ de recursos\\ $b_{t+1}=(1+r)\,b_t+Y_t-C_t$\\ $b_0$ dado, $b_{T+1}\geq0$};}
-  % 4: el problema de maximización de la utilidad, que se resuelve con un método
-  \capa{4}{\node[clave] (M) at (5.6,-2.6) {Problema de maximización\\ $\max\ U_0$ s.a. las restricciones\\ {\footnotesize(\textsc{Lagrange}, control óptimo, \textsc{Bellman})}};}
-  \capa{4}{\draw[une] (U) -- (M);}
-  \capa{4}{\draw[une] (R) -- (M);}
-  % 5: el resultado, la senda óptima de consumo
-  \capa{5}{\node[caja] (S) at (5.6,-5.0) {Senda óptima de consumo\\ $\{C_t^*\}_{t=0}^{T}$ y de activos $\{b_{t+1}^*\}_{t=0}^{T}$};}
-  \capa{5}{\draw[une] (M) -- (S);}
+\begin{tikzpicture}[tcee,xscale=1,yscale=0.75,
+    declare function={recta(\x)=3-1.1*(\x-4); ind(\k,\x)=1.21*(\k-sqrt(\x))^2;}]
+  % 1: ejes: consumo (y renta) de hoy y de mañana
+  \capa{1}{\ejes{$Y_1,\ C_1$}{$Y_2,\ C_2$}{8.4}{9.4}}
+  % 2: la dotación A = (Y_1, Y_2)
+  \capa{2}{\node[punto] (A) at (4,3) {};}
+  \capa{2}{\node[etiqueta,above right] at (A) {$A$};}
+  \capa{2}{\draw[guia] (0,3) node[left,text=black] {$Y_2$} -| (4,0) node[below,text=black] {$Y_1$};}
+  % 3: la restricción intertemporal: recta por A con pendiente -(1+r)
+  \capa{3}{\draw[curva2] (0,{recta(0)}) -- (6.7273,0);}
+  \capa{3}{\node[etiqueta,left] at (0,{recta(0)}) {$(1+r)\overline{W}$};}
+  \capa{3}{\node[etiqueta,below right=0pt and 0pt] at (6.7273,0) {$\overline{W}$};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west,align=center] at (4.3,8.4) {$C_1+\dfrac{C_2}{1+r}=Y_1+\dfrac{Y_2}{1+r}\equiv\overline{W}$\\[1pt] (pendiente $-(1+r)$)};}
+  % 4: las preferencias: curvas de indiferencia de U = u(C_1) + beta u(C_2)
+  \capa{4}{\draw[curva3] plot[domain=1.2:7.3,samples=70] (\x,{ind(3.3,\x)}) node[etiqueta,right] {$U_0$};}
+  \capa{4}{\draw[curva3] plot[domain=1.5:7.5,samples=70] (\x,{ind(3.5837,\x)}) node[etiqueta,right] {$U_1$};}
+  \capa{4}{\draw[curva3] plot[domain=1.9:7.8,samples=70] (\x,{ind(3.85,\x)}) node[etiqueta,right] {$U_2$};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceeverde,anchor=west] at (4.9,6.6) {$U=u(C_1)+\beta\,u(C_2)$};}
+  % 5: la tangencia: la senda óptima E = (C_1^*, C_2^*)
+  \capa{5}{\node[punto] (E) at (3.5238,3.5238) {};}
+  \capa{5}{\node[etiqueta,above right] at (E) {$E$};}
+  \capa{5}{\proyeccion{(E)}{$C_1^*$}{$C_2^*$}}
+  \capa{5}{\node[etiqueta,font=\footnotesize,anchor=east] at (3.2,1.4) {$\lvert\mathrm{RMS}\rvert=\dfrac{u'(C_1)}{\beta\,u'(C_2)}=1+r$};}
+  \capa{5}{\draw[thin] (3.25,1.45) -- (3.47,3.3);}
 \end{tikzpicture}
 \end{document}
