@@ -127,7 +127,7 @@ Es la pregunta más larga y casi siempre aparece (en 13 de los 14 dictámenes de
 \]
   \item \emph{renta}: la remuneración de los asalariados, más los impuestos netos de subvenciones sobre la producción y las importaciones, más el excedente bruto de explotación y la renta mixta bruta,
 \[
-\mathrm{PIB}=\underbrace{W}_{\text{remuneración de los asalariados}}+\underbrace{(T-Sub)_{\text{prod. e import.}}}_{\text{impuestos netos}}+\underbrace{\mathrm{EBE}+\mathrm{RMB}}_{\text{beneficios y renta mixta}} .
+\mathrm{PIB}=\underbrace{\mathrm{RA}}_{\text{remuneración de los asalariados}}+\underbrace{(\text{impuestos}-\text{subvenciones})_{\text{prod. e import.}}}_{\text{impuestos netos}}+\underbrace{\mathrm{EBE}+\mathrm{RMB}}_{\text{beneficios y renta mixta}} .
 \]
   \end{itemize}
 \item \emph{De la producción a la renta de los residentes}: la renta nacional bruta suma las rentas primarias netas recibidas del resto del mundo, y la renta nacional disponible bruta, además, las rentas secundarias (transferencias corrientes) netas:
@@ -320,7 +320,7 @@ El potencial no se observa: se estima con una \emph{función de producción} (po
 \item \emph{Umbral o referencia}: no hay; importa el signo y si la diferencia es grande y persistente.
 \item \emph{Cómo se lee}:
   \begin{itemize}
-  \item $\mathrm{RNB}<\mathrm{PIB}$: el país paga al exterior más rentas de las que recibe. Es típico de un deudor neto (intereses de la deuda externa) o de un país con mucha inversión extranjera directa, cuyas multinacionales repatrían beneficios.
+  \item $\mathrm{RNB}<\mathrm{PIB}$: el país paga al exterior más rentas de las que recibe. Es típico de un deudor neto (intereses de la deuda externa) o de un país con mucha inversión extranjera directa, cuyas multinacionales repatrían beneficios. No es automático: en 2025 España, deudora neta, tuvo una RNB algo mayor que el PIB (un 0,2~\%) \parencite{INE2026CNA2025,Eurostat2026nasa10nftr}.
   \item $\mathrm{RNB}>\mathrm{PIB}$: acreedor neto (rentas de sus inversiones fuera) o país con muchos trabajadores en el extranjero.
   \item Un salto puntual suele deberse a multinacionales que trasladan activos (patentes) o beneficios: el PIB sube sin que suba la renta de los residentes, como en Irlanda en 2015 \parencite{Eurostat2026nama10gdp}.
   \end{itemize}
@@ -372,7 +372,7 @@ En la contabilidad nacional, $G$ es solo el consumo público; la inversión púb
 \funcionclave[eq:contribuciones]{\gamma_{Y,t}=\underbrace{\frac{C_{t-1}}{Y_{t-1}}\gamma_{C,t}+\frac{I_{t-1}}{Y_{t-1}}\gamma_{I,t}+\frac{G_{t-1}}{Y_{t-1}}\gamma_{G,t}}_{\text{contribución de la demanda interna}}+\underbrace{\frac{X_{t-1}}{Y_{t-1}}\gamma_{X,t}-\frac{M_{t-1}}{Y_{t-1}}\gamma_{M,t}}_{\text{contribución de la demanda externa}}}
 En palabras: el crecimiento del PIB es la suma de las contribuciones de los componentes de la demanda, y cada contribución es el peso del componente en el año anterior por su crecimiento: depende de los 2. Las importaciones restan. La derivación paso a paso está en el anexo~\ref{anexo:calc-ciclo}.
 \item \emph{Unidades}: \uline{las contribuciones se miden en puntos porcentuales, no en porcentaje}. Si el PIB crece un 3~\% y la demanda interna contribuye con 2~pp, no se puede decir que la demanda interna haya crecido un 2~\%: de los 3 puntos de crecimiento, 2 se deben a la demanda interna y 1 a la externa.
-\item \emph{Cuidado}: con volúmenes encadenados la suma no es exacta, y las existencias también contribuyen (si el cuadro no las da, se suponen nulas). Si el cuadernillo da las contribuciones, se usan esas \parencite{Eurostat2026nama10gdp}.
+\item \emph{Cuidado}: con volúmenes encadenados los componentes no suman el PIB en volumen (no aditividad), así que las contribuciones no se calculan con los niveles encadenados: se usan los pesos nominales del año anterior (con ellos la suma es exacta) o las contribuciones que publica el INE; las existencias también contribuyen (si el cuadro no las da, se suponen nulas). Si el cuadernillo da las contribuciones, se usan esas \parencite{Eurostat2026nama10gdp}.
 \item \emph{Cómo se lee}:
   \begin{itemize}
   \item contribuciones positivas y parecidas de las 2: \emph{crecimiento equilibrado};
@@ -423,7 +423,7 @@ y la renta disponible real, a su vez, depende de
   \item \emph{Tipo de interés real a corto plazo} ($-$): es el coste de endeudarse y lo que rinde el ahorro (los nominales se corrigen con el IPC).\footnote{El signo negativo es el del \emph{efecto sustitución} (consumir hoy sale más caro frente a mañana) y el de los hogares endeudados. Pero el tipo tiene también un \emph{efecto renta}: si los hogares son \emph{acreedores netos} (mucho ahorro en depósitos, pocos préstamos), una subida de tipos les da más renta y puede elevar su consumo. El signo agregado depende, por tanto, de quién tenga la deuda y quién el ahorro, y de la \emph{distribución de la renta}: los hogares de renta baja ahorran poco y tienen más restricciones de crédito, así que su consumo sigue sobre todo a su renta corriente \parencite{FMI2022edXFPP}.}
   \item \emph{Inflación} ($-$ la actual; ambiguo la esperada): la actual reduce la renta real; la esperada también, pero adelanta compras.\footnote{El precio del petróleo pesa mucho en la renta real de los hogares, porque la demanda de energía es poco elástica.}
   \item \emph{Crédito} ($+$), que depende también de la regulación financiera y de los límites prudenciales, y \emph{endeudamiento de los hogares} ($-$).
-  \item \emph{Incertidumbre, volatilidad y paro esperado} ($-$): por la aversión al riesgo, ahorro precautorio \vertema{3.A.10}.
+  \item \emph{Incertidumbre, volatilidad y paro esperado} ($-$): por prudencia ($u'''>0$; no basta la aversión al riesgo), ahorro precautorio \vertema{3.A.10} \vertema{3.A.33}.
   \item \emph{Demografía}: crece con la población ($N$); con la estructura de edades el efecto es ambiguo. Según la hipótesis del ciclo vital, ahorran sobre todo las personas en edad de trabajar \parencite{ModiglianiBrumberg1954}: más población dependiente (joven o mayor) supone más consumo en proporción a la renta \parencite{Leff1969Dependencia}.
   \item \emph{Expectativas} ($+$): de crecimiento (pendiente de la curva de tipos), de paro ($-$), confianza de los consumidores y de los gestores de compras (PMI), crecimiento de la economía mundial. Una tasa de ahorro alta frena el consumo, y el índice de miseria de \autor{Okun} (inflación más paro) resume 2 frenos.
   \item \emph{Políticas futuras}: si los hogares esperan más impuestos para pagar la deuda que se emite hoy, ahorran más y el estímulo fiscal pierde fuerza (\concepto{equivalencia ricardiana}, \textcite{Barro1974}, \vertema{3.A.39}); una bajada de tipos anunciada adelanta consumo.
@@ -586,7 +586,7 @@ con $\alpha$ la participación del capital en la renta y $\gamma_A$ el crecimien
 \centering
 \caption{Precio del petróleo Brent en dólares y en euros}\label{fig:brent}
 \grafico[0.72\textwidth]{brent}
-\fuente{\textcite{EIA2026Brent}; en euros con el tipo de referencia del BCE \parencite{BCE2026EXR}. Qué hay que ver: los grandes picos, 2008 (133 dólares), 2011-2012 (125 dólares en marzo de 2012), 2022 (123 dólares; en euros, 116, por la depreciación del euro) y 2026 (117 dólares en abril y 114 en septiembre, por el conflicto de Oriente Medio).}
+\fuente{\textcite{EIA2026Brent}; en euros con el tipo de referencia del BCE \parencite{BCE2026EXR}. Qué hay que ver: los grandes picos, 2008 (133 dólares), 2011-2012 (125 dólares en marzo de 2012), 2022 (123 dólares; en euros, 116, por la depreciación del euro) y 2026 (117 dólares en abril y 124 en octubre, por el conflicto de Oriente Medio: más que en 2022 en dólares, pero no en euros, 111, porque el euro está más fuerte).}
 \end{figure}
 
 \subsection{Anticipar el diagnóstico}\label{sec:anticipar}
@@ -618,7 +618,7 @@ Crecimiento & potencial del 1-2~\%; menos volátil & potencial mayor (4-6~\%); m
 Inflación & cerca del objetivo (2~\%) & más alta y volátil; mayor traspaso del tipo de cambio \\
 Estructura productiva & servicios en torno a 3 cuartas partes del VAB; primario pequeño & más peso de la agricultura y de las materias primas; dependencia de un sector \\
 Política fiscal & contracíclica o acíclica; deuda en moneda propia & a menudo procíclica; ingresos bajos (informalidad); deuda en divisas \\
-Política monetaria & tipos de interés y objetivo de inflación creíble & a veces agregados o tipo de cambio; posible dominancia fiscal \\
+Política monetaria & tipos de interés y objetivo de inflación creíble & a veces agregados o tipo de cambio; posible dominación fiscal \\
 Sector exterior & déficits financiables con inversión directa y de cartera & riesgo de frenazo súbito de capitales; remesas; reservas como seguro \\
 Sistema financiero & profundo, con mercados de capitales & bancarizado y poco profundo; préstamos en divisas \\
 Estabilidad macroeconómica & inflación controlada y cuentas públicas saneadas & sistema financiero débil (prima de riesgo alta, poca credibilidad, fuertes variaciones de M3, monetización del déficit) y tipos de interés altos \\
@@ -784,11 +784,11 @@ Como $\mathrm{CLU}=P\cdot\frac{WL}{PY}$, el \concepto{CLU real} ($\mathrm{CLU}/P
 \begin{itemize}
 \item Relacionan el paro con el crecimiento y con la inflación, y sirven para cruzar el mercado de trabajo con el ciclo y con los precios \vertema{3.A.28}:
   \begin{itemize}
-  \item la \textbf{ley de \autor{Okun}} relaciona la variación de la tasa de paro ($U$) con el crecimiento por encima del potencial; en EE.~UU., en torno a medio punto menos de paro por cada punto de crecimiento por encima del potencial \parencite{Okun1962}:
+  \item la \textbf{ley de \autor{Okun}} relaciona la variación de la tasa de paro ($U$) con el crecimiento por encima del potencial; en EE.~UU., en torno a medio punto menos de paro por cada punto de crecimiento por encima del potencial \parencite{Ball2017Okun}:
 \begin{equation}\label{eq:okun}
 \Delta U_t\approx-0{,}5\,(\gamma_{Y,t}-\gamma_{Y^p,t}) .
 \end{equation}
-  En el cuadro sirve para ver a partir de qué crecimiento baja el paro (si el PIB crece mucho y el empleo poco, la elasticidad es baja);
+  \textcite{Okun1962} la daba al revés: unos 3 puntos de PIB por cada punto de paro. En el cuadro sirve para ver a partir de qué crecimiento baja el paro (si el PIB crece mucho y el empleo poco, la elasticidad es baja);
   \item la \textbf{curva de \autor{Phillips}} con expectativas relaciona la inflación con la distancia entre la tasa de paro y la NAIRU \parencite{Phillips1958}:\footnote{En la curva de \autor{Phillips}, $U_t$ es la \emph{tasa} de paro y $U^n$ la NAIRU, con la notación del temario \vertema{3.A.28}; en las fórmulas de la EPA, $U$ son los parados y $u=U/A$ la tasa.}
 \funcionclave{\pi_t=\pi^e_t-a\,(U_t-U^n)+\varepsilon_t}
   \end{itemize}
@@ -897,7 +897,7 @@ I_L\equiv\frac{\sum_{i=1}^{N}p_i^t\,x_i^0}{\sum_{i=1}^{N}p_i^0\,x_i^0}\times100=
 \text{Deflactor}_{\mathrm{PIB}}=\frac{\sum_{i=1}^{N}p_i^t\,x_i^t}{\sum_{i=1}^{N}p_i^0\,x_i^t}\times100=\frac{\vect{p}^t\cdot\vect{x}^t}{\vect{p}^0\cdot\vect{x}^t}\times100\equiv I_P .
 \]
 \item \emph{Cesta variable}: al contrario que el IPC, no usa una cesta fija: la cesta cambia con los patrones de consumo e inversión, y recoge que los agentes responden a los cambios de los precios relativos. Como el PIB en volumen se calcula encadenado, es un \autor{Paasche} encadenado.
-\item \emph{Sesgo}: \emph{infravalora} la inflación. Aunque es una medida completa de los precios de lo que se produce, no refleja bien el efecto de la inflación en el bienestar de los consumidores, porque no incluye las importaciones \vertema{3.A.9} \vertema{3.A.30} \vertema{4.A.1}.
+\item \emph{Sesgo}: \emph{infravalora} la inflación porque es un índice de \autor{Paasche} (usa la cesta final, en la que pesan menos los bienes que más se encarecen). Además, aunque es una medida completa de los precios de lo que se produce, no refleja bien el efecto de la inflación en el bienestar de los consumidores, porque no incluye las importaciones \vertema{3.A.9} \vertema{3.A.30} \vertema{4.A.1}.
 \end{itemize}
 \end{anotaciones}
 
@@ -957,8 +957,8 @@ I_L\equiv\frac{\sum_{i=1}^{N}p_i^t\,x_i^0}{\sum_{i=1}^{N}p_i^0\,x_i^0}\times100=
 \begin{itemize}
 \item La clasificación sigue el «modelo del triángulo» de \textcite{Gordon2011Phillips}: la inflación depende de la \textbf{demanda}, de los \textbf{costes} (choques de oferta) y de la \textbf{inercia} (gráfico~\ref{fig:esquema-inflacion}) \vertema{3.A.41}.
 \item \emph{De demanda} (\emph{demand-pull}): la demanda interna (desagregada por componentes) crece más que el PIB, la brecha de producción es positiva, el crédito y los agregados monetarios crecen con fuerza, hay estímulo fiscal o las expectativas de inflación suben.
-\item \emph{De costes} (\emph{cost-push}): suben los salarios y los CLU (inflación incorporada, \emph{built-in}), la energía y las materias primas, o se deprecia la moneda (más cuanto más pesan las importaciones); los márgenes amplios (el excedente bruto de explotación) señalan poca competencia, y los productores que miran al futuro suben precios si esperan más inflación.
-\item \emph{Inercia}: expectativas, contratos e indexación. Cuanto más indexados los salarios, las pensiones o los alquileres a la inflación pasada, más persiste un choque.
+\item \emph{De costes} (\emph{cost-push}): suben los salarios y los CLU, la energía y las materias primas, o se deprecia la moneda (más cuanto más pesan las importaciones); los márgenes amplios (el excedente bruto de explotación) señalan poca competencia, y los productores que miran al futuro suben precios si esperan más inflación.
+\item \emph{Inercia} (inflación incorporada, \emph{built-in}): expectativas, contratos e indexación. Cuanto más indexados los salarios, las pensiones o los alquileres a la inflación pasada, más persiste un choque.
 \item \emph{A largo plazo, la inflación es un fenómeno monetario}: en las comparaciones entre países y décadas, la inflación sigue de cerca al crecimiento del dinero menos el crecimiento real, $\pi\approx\gamma_M-\gamma_Y$ \parencite{McCandlessWeber1995}. Sirve de contraste: un M3 que crece muy por encima del PIB nominal durante años es difícil de cuadrar con una inflación baja (salvo que cambie la demanda de dinero).
 \end{itemize}
 
@@ -1379,7 +1379,7 @@ donde el tipo de cambio ($E$) solo cuenta si la deuda está en divisas.
 \end{ideaclave}
 
 \begin{notaopositor}
-La política monetaria ha caído en 11 de los 14 dictámenes \parencite{ATCEE2026Examenes}: casi siempre el tono y si debe seguir (2016, 2018, 2021, 2022 y 2025), y además los canales de transmisión (2020 y 2024), la dominancia fiscal y el balance del banco central (2021), la «última milla» de la desinflación (2024) y su eficacia sobre las variables nominales y reales (2026). A menudo lleva una coletilla sobre el sistema financiero (apartado~\ref{sec:estabilidad}).
+La política monetaria ha caído en 11 de los 14 dictámenes \parencite{ATCEE2026Examenes}: casi siempre el tono y si debe seguir (2016, 2018, 2021, 2022 y 2025), y además los canales de transmisión (2020 y 2024), la dominación fiscal y el balance del banco central (2021), la «última milla» de la desinflación (2024) y su eficacia sobre las variables nominales y reales (2026). A menudo lleva una coletilla sobre el sistema financiero (apartado~\ref{sec:estabilidad}).
 \end{notaopositor}
 
 \paragraph{Diseño, objetivo e instrumentos}
@@ -1428,7 +1428,7 @@ La política monetaria ha caído en 11 de los 14 dictámenes \parencite{ATCEE202
 \item \emph{Eficacia sobre variables nominales y reales}: si tras las subidas baja la inflación (con 1 o 2 años de retraso), se frena el crédito y se aprecia la moneda, la transmisión funciona. Es menos eficaz:
   \begin{itemize}
   \item con un sistema financiero poco desarrollado o mucha dolarización;
-  \item con \textbf{dominancia fiscal} (abajo);
+  \item con \textbf{dominación fiscal} (abajo);
   \item con el \textbf{canal del crédito roto}: si el crédito al sector privado cae año tras año aunque los tipos bajen, el problema no está en el tipo oficial sino en la banca (descapitalizada o con mucha morosidad), y la receta es estructural: sanear y recapitalizar los bancos, no seguir bajando tipos \parencite{BernankeGertler1995}.
   \end{itemize}
 \item \emph{La deuda privada cambia la fuerza de la transmisión}: con hogares y empresas muy endeudados a tipo variable, una subida de tipos se nota enseguida en la carga de la deuda y frena más el gasto; una contractiva es más eficaz, pero también más dolorosa.
@@ -1445,7 +1445,7 @@ La política monetaria ha caído en 11 de los 14 dictámenes \parencite{ATCEE202
 \begin{itemize}
 \item \emph{Balance del banco central}: crece con las compras de activos, los préstamos a los bancos y la compra de divisas. El del Eurosistema pasó de 2 billones de euros en 2014 a 8,8 a mediados de 2022 y bajó a 5,9 en octubre de 2026 \parencite{BCE2026ILM} (gráfico~\ref{fig:tipos-balance-bce}).
 \item \emph{Desequilibrios a vigilar}: además de la inflación, las condiciones de liquidez (agregados monetarios), la monetización del déficit y los \concepto{tensionamientos de liquidez} (\emph{liquidity crunch}): los bancos dejan de prestarse en el interbancario por desconfianza, lo que se ve en picos de los tipos interbancarios que no se deben a decisiones del banco central, como en 2007-2008 \parencite{TaylorWilliams2009}.
-\item \concepto{Dominancia fiscal}: cuando manda la política fiscal y el banco central acaba financiando el déficit (directamente o manteniendo tipos bajos para que la deuda sea pagable), pierde el control de la inflación \parencite{SargentWallace1981,Leeper1991}. Indicios: déficit y deuda altos, crédito del banco central al Estado, tipos reales muy negativos con inflación alta, objetivos incumplidos \vertema{3.A.39}.
+\item \concepto{Dominación fiscal} (o dominancia): cuando manda la política fiscal y el banco central acaba financiando el déficit (directamente o manteniendo tipos bajos para que la deuda sea pagable), pierde el control de la inflación \parencite{SargentWallace1981Some,Leeper1991}. Indicios: déficit y deuda altos, crédito del banco central al Estado, tipos reales muy negativos con inflación alta, objetivos incumplidos \vertema{3.A.39}.
 \end{itemize}
 
 \begin{figure}[!htb]
@@ -1652,14 +1652,14 @@ La política fiscal ha caído en todos los dictámenes, casi siempre con el tono
 \paragraph{Efectos no keynesianos}
 \begin{itemize}
 \item \emph{Qué son}: cuando hay dudas sobre la sostenibilidad de las finanzas públicas, una consolidación fiscal creíble hoy podría despejar la incertidumbre y generar confianza en el futuro, de modo que los agentes, esperando una recuperación (y menos impuestos futuros), desahorren y consuman más hoy. Es tanto como suponer un \emph{multiplicador keynesiano negativo}.
-\item \emph{Evidencia}: el argumento nació de las consolidaciones de Dinamarca e Irlanda en los años 80 \parencite{GiavazziPagano1990}; la evidencia posterior indica que, en la mayoría de los casos, las consolidaciones fiscales reducen la actividad a corto plazo \parencite{Guajardo2014Austeridad} \vertema{3.A.38}.
+\item \emph{Evidencia}: el argumento nació de las consolidaciones de Dinamarca e Irlanda en los años 80 \parencite{GiavazziPagano1990}; la evidencia posterior indica que, en la mayoría de los casos, las consolidaciones fiscales reducen la actividad a corto plazo \parencite{Guajardo2014Austeridad} \vertema{3.A.39}.
 \item \emph{Cómo se ve en el cuadro}: consumo e inversión privados que se aceleran justo cuando el saldo estructural primario mejora con fuerza, con una prima de riesgo o unos tipos a largo que bajan. Con prudencia: puede haber otras causas (depreciación, demanda externa, política monetaria).
-\item \emph{Los multiplicadores dependen del instrumento y del momento}: en los modelos de los bancos centrales y los organismos internacionales, el gasto público (sobre todo la inversión) y las transferencias focalizadas en hogares con restricciones de liquidez tienen multiplicadores mayores que las rebajas generales de impuestos, y todos son mayores si la política monetaria acompaña (tipos en su límite inferior) \parencite{Coenen2012Multiplicadores}. Tras la crisis financiera, los multiplicadores resultaron mayores de lo que se había supuesto al diseñar las consolidaciones \parencite{BlanchardLeigh2013}. \uline{Un paquete fiscal tiene más impacto si es inversión que si es gasto corriente o rebajas generales de impuestos.}
+\item \emph{Los multiplicadores dependen del instrumento y del momento}: en los modelos de los bancos centrales y los organismos internacionales, el gasto público (sobre todo la inversión) y las transferencias focalizadas en hogares con restricciones de liquidez tienen multiplicadores mayores que las rebajas generales de impuestos, y todos son mayores si la política monetaria acompaña (tipos en su límite inferior) \parencite{Coenen2012Multiplicadores}. Tras la crisis financiera, los multiplicadores resultaron mayores de lo que se había supuesto al diseñar las consolidaciones \parencite{BlanchardLeigh2013Growth}. \uline{Un paquete fiscal tiene más impacto si es inversión que si es gasto corriente o rebajas generales de impuestos.}
 \end{itemize}
 \paragraph{Las reglas fiscales de la UE}
 \begin{itemize}
 \item \emph{Qué se mantiene}: los valores de referencia del Tratado (déficit del 3~\% y deuda del 60~\% del PIB) y el procedimiento de déficit excesivo \parencite{TFUE2012Protocolo12}.
-\item \emph{Qué cambia} \parencite{RegUE2024Preventivo,RegUE2024Correctivo} \vertema{3.B.45}:
+\item \emph{Qué cambia} \parencite{UE2024Reglamento1263,UE2024Reglamento1264} \vertema{3.B.45}:
   \begin{itemize}
   \item un solo indicador operativo, la senda de \concepto{gasto primario neto} (sin intereses, sin el gasto cíclico en desempleo y sin las medidas discrecionales de ingresos);
   \item un plan fiscal-estructural a 4 años, ampliable a 7 con reformas e inversiones, que debe dejar la deuda en una trayectoria descendente plausible;
@@ -1698,7 +1698,7 @@ donde el segundo término es el \concepto{efecto bola de nieve}, \uline{lo que d
 \item \emph{Preguntas guía para enlazar los bloques}: ¿es la deuda pública también deuda \emph{externa} (en manos de no residentes, en divisas)? ¿La financia el banco central? Cada forma de financiar el déficit tiene su desequilibrio típico \parencite{FMI2013CaseStudy}:
   \begin{itemize}
   \item con \textbf{el exterior}: apreciación y, si es en divisas, riesgo cambiario;
-  \item con \textbf{el banco central}: más base monetaria e inflación (dominancia fiscal);
+  \item con \textbf{el banco central}: más base monetaria e inflación (dominación fiscal);
   \item con \textbf{la banca nacional}: expulsión del crédito privado y bucle bancario-soberano;
   \item con \textbf{el sector no bancario}: tipos más altos y, si la deuda no se controla, inflación futura.
   \end{itemize}
@@ -1755,7 +1755,7 @@ Indexación, estructura de la deuda y expectativas del mercado & Intereses y ser
 \begin{itemize}
 \item \emph{Nivel de ingresos y gastos sobre el PIB}: se comparan con los de países de renta parecida; la pregunta no es el tamaño, sino si los ingresos financian el gasto de forma sostenible y si el gasto es eficiente \vertema{4.B.5} \vertema{4.B.7}. Con ingresos bajos hay 2 vías para subirlos sin dañar el crecimiento:
   \begin{itemize}
-  \item \emph{más impuestos}: actuar sobre los tipos (subirlos o reordenarlos hacia impuestos menos distorsionadores) o sobre las bases: nuevos impuestos, menos exenciones y bonificaciones, políticas estructurales que aumenten la producción, lucha contra el fraude y la economía sumergida (por ejemplo, más pagos electrónicos para reducir el uso del efectivo) y políticas que suban la tasa de actividad (más recaudación por la renta);
+  \item \emph{más impuestos}: actuar sobre los tipos (subirlos o reordenarlos hacia impuestos menos distorsionantes) o sobre las bases: nuevos impuestos, menos exenciones y bonificaciones, políticas estructurales que aumenten la producción, lucha contra el fraude y la economía sumergida (por ejemplo, más pagos electrónicos para reducir el uso del efectivo) y políticas que suban la tasa de actividad (más recaudación por la renta);
   \item \emph{más ingresos no tributarios}: tasas, contribuciones especiales, cotizaciones sociales y sanciones.
   \end{itemize}
 \item \emph{Gasto corriente frente a gasto de capital}: el gasto se divide en \emph{corriente} (remuneración de los empleados públicos, compras, subvenciones, prestaciones sociales e intereses de la deuda) y \emph{de capital} (inversión en infraestructuras y otros activos, transferencias de capital) \parencite{SEC2010}: un ajuste que recorta sobre todo la inversión pública daña el crecimiento potencial.
@@ -1841,7 +1841,7 @@ Impago o casi & CC & Ca & CC & \textit{CC} & — \\
 \begin{figure}[!htb]
 \centering
 \caption{Los 4 cuadrantes del \emph{policy mix}}\label{fig:policy-mix}
-\grafico[0.46\textwidth]{policy-mix}
+\grafico[0.6\textwidth]{policy-mix}
 \fuente{Elaboración propia. Qué hay que ver: el tono de cada política se sitúa en un eje; la coherencia depende de la situación (inflación, brecha, deuda), no de que las 2 vayan en el mismo sentido.}
 \end{figure}
 
@@ -2006,7 +2006,7 @@ Superávit exterior persistente & CC por encima del $+6$~\% del PIB; inversión 
 Crecimiento del PIB real & $\gamma_Y$ & — & $<0$ contracción; 0-1~\% estancamiento; 1-2~\% moderado; 2-3~\% por encima del potencial; $\geq3~\%$ sólido (avanzadas) & \vertema{3.A.30} \\
 Brecha de producción & $(Y-Y^p)/Y^p\times100$ & 0: producción en su potencial & Su variación en puntos: $\gamma_Y-\gamma_{Y^p}$ & \vertema{4.B.4} \\
 Contribución al crecimiento & $\frac{X_{t-1}}{Y_{t-1}}\gamma_{X,t}$ & — & En pp; interna procíclica, externa contracíclica & \vertema{3.A.30} \\
-PIB frente a RNB & RNB $=$ PIB $+$ rentas primarias netas & — & RNB $<$ PIB: deudor neto o mucha IED & \vertema{3.B.11} \\
+PIB frente a RNB & RNB $=$ PIB $+$ rentas primarias netas & — & RNB $<$ PIB: a menudo, deudor neto o mucha IED & \vertema{3.B.11} \\
 PMI & índice de difusión & 50 & $>50$: la actividad crece frente al mes anterior & \vertema{3.A.42} \\
 Sentimiento económico (ESI) & encuestas & 100 (media de largo plazo) & — & \vertema{3.A.42} \\
 Pendiente de la curva de tipos & tipo a largo $-$ tipo a corto & — & Negativa: anticipa recesión & \vertema{3.B.24} \\
@@ -2018,7 +2018,7 @@ CLU nominales & $\gamma_W-\gamma_{\mathrm{PAT}}$ & PDM: $+9~\%$ en 3 años (euro
 CLU reales y margen & $\gamma_{\mathrm{CLU}}-\gamma_P$; $\gamma_P-\gamma_{\mathrm{CLU}}$ & — & CLU reales al alza: menos margen y empleo & \vertema{3.A.28} \\
 \rowcolor{tceesalvia}\multicolumn{5}{l}{\emph{Precios}} \\
 Inflación (IPC, IAPC) & $\pi_t$ & BCE: 2~\% simétrico a medio plazo & Mirar subyacente, efecto base y expectativas & \vertema{3.A.41} \\
-IPC frente a deflactor & $\pi^{\mathrm{IPC}}-\gamma_P$ & — & $>0$: inflación importada; $<0$: mejora de la RRI & \vertema{3.A.30} \\
+IPC frente a deflactor & $\pi^{\mathrm{IPC}}-\gamma_P$ & — & $>0$: inflación importada; $<0$: mejora de la RRI & \vertema{3.A.9} \vertema{4.A.1} \\
 \bottomrule
 \end{tabular}
 \fuente{PDM: \textcite{CE2025AMR2026}; BCE: \textcite{BCE2025Estrategia}; NAWRU: \textcite{CE2026AMECO}; el resto, como en los capítulos~\ref{sec:perfil} y~\ref{sec:factores}. Los indicadores del sistema financiero están en la tabla~\ref{tab:indicadores-financiero} y la escala de calificaciones, en la tabla~\ref{tab:calificaciones} (apartado~\ref{sec:fiscal}).}
@@ -2051,7 +2051,7 @@ Necesidades brutas de financiación & déficit $+$ vencimientos a 12 meses & —
 Calificación & escala de las agencias & Grado de inversión: BBB$-$/Baa3 o mejor (CQS~3 del Eurosistema) & — & \vertema{4.B.26} \\
 \bottomrule
 \end{tabular}
-\fuente{PDM: \textcite{CE2025AMR2026}; Tratado y reglas: \textcite{TFUE2012Protocolo12,RegUE2024Preventivo,RegUE2024Correctivo}; reservas: \textcite{FMI2011Reservas}; deuda externa: \textcite{FMI2014DeudaExterna}; necesidades de financiación: \textcite{FMI2021DSA}; calificaciones: \textcite{BCE2026ECAF}.}
+\fuente{PDM: \textcite{CE2025AMR2026}; Tratado y reglas: \textcite{TFUE2012Protocolo12,UE2024Reglamento1263,UE2024Reglamento1264}; reservas: \textcite{FMI2011Reservas}; deuda externa: \textcite{FMI2014DeudaExterna}; necesidades de financiación: \textcite{FMI2021DSA}; calificaciones: \textcite{BCE2026ECAF}.}
 \end{table}
 
 \begin{table}[H]
@@ -2215,7 +2215,7 @@ Y_t=\underbrace{C_t+I_t+G_t}_{\text{demanda interna}}+\underbrace{(X_t-M_t)}_{\t
 \funcionclave{\gamma_{Y,t}=\frac{C_{t-1}}{Y_{t-1}}\gamma_{C,t}+\frac{I_{t-1}}{Y_{t-1}}\gamma_{I,t}+\frac{G_{t-1}}{Y_{t-1}}\gamma_{G,t}+\frac{X_{t-1}}{Y_{t-1}}\gamma_{X,t}-\frac{M_{t-1}}{Y_{t-1}}\gamma_{M,t}}
 \item \emph{En palabras}: el crecimiento del PIB es la suma de las contribuciones de los componentes de la demanda, y cada contribución es el \emph{peso} del componente en el año anterior por su \emph{crecimiento} de este año. Depende de las 2 cosas.
 \item \emph{Ejemplo}: si el consumo pesa el 55~\% del PIB y crece un 2~\%, contribuye $0{,}55\times2=1{,}1$ puntos porcentuales.
-\item \emph{Cuidado}: con volúmenes encadenados la suma no es exacta; si el cuadro da las contribuciones, se usan esas. Las existencias también contribuyen (si no se dan, se suponen nulas).
+\item \emph{Cuidado}: con volúmenes encadenados los componentes no suman el PIB en volumen (no aditividad); los pesos son las participaciones nominales del año anterior, y con ellos la suma es exacta. Si el cuadro da las contribuciones, se usan esas. Las existencias también contribuyen (si no se dan, se suponen nulas).
 \end{itemize}
 
 \paragraph{Brecha de producción y PIB potencial}
