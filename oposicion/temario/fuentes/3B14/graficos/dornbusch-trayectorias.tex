@@ -1,0 +1,52 @@
+% Dornbusch (1976): trayectorias de m, p, i y e tras un aumento permanente y no
+% anticipado de la oferta monetaria en t_0. Gráfico de referencia de la ficha
+% dornbusch. Ajuste exponencial a velocidad 0,8 (en unidades del dibujo):
+%   p = p1 - (p1 - p0) exp(-0,8 (t - t0));  i = i* - 0,8 exp(-0,8 (t - t0));
+%   e = ē1 + 0,8 exp(-0,8 (t - t0)), con ē1 - ē0 = p̄1 - p̄0 = m1 - m0 = 0,8:
+%   la sobrerreacción (0,8) es la de 1/(hθ) = 1.
+% Con precios flexibles (discontinua), e salta de una vez de ē0 a ē1.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \def\tz{2.7}  % t_0
+  % 1: ejes de los 4 paneles (de arriba abajo: m, p, i, e) y guía de t_0
+  \capa{1}{%
+    \foreach \b/\v in {8.1/m,5.7/p,3.3/i,0/e}{
+      \draw[eje] (0,\b) -- (8.1,\b) node[below left=2pt and 0pt] {$t$};
+      \draw[eje] (0,\b) -- (0,{\b+(\b==0?2.5:1.9)}) node[left] {$\v$};}
+    \draw[guia] (\tz,-0.15) node[below,text=black] {$t_0$} -- (\tz,10.0);}
+  % 2: m, escalón en t_0
+  \capa{2}{%
+    \draw[guia] (0,9.4) node[left,text=black] {$m_1$} -- (7.8,9.4);
+    \draw[curva3] (0,8.6) node[left,text=black] {$m_0$} -- (\tz,8.6);
+    \draw[curva3] (\tz,9.4) -- (7.8,9.4);
+    \draw[guia,thin,dotted] (\tz,8.6) -- (\tz,9.4);}
+  % 3: p, ajuste lento hasta p̄_1
+  \capa{3}{%
+    \draw[guia] (0,7.0) node[left,text=black] {$\bar p_1$} -- (7.8,7.0);
+    \draw[curva2] (0,6.2) node[left,text=black] {$\bar p_0$} -- (\tz,6.2)
+      plot[domain=\tz:7.8,samples=50] (\x,{7.0-0.8*exp(-0.8*(\x-\tz))});}
+  % 4: i, cae en t_0 y vuelve poco a poco a i*
+  \capa{4}{%
+    \draw[guia] (0,4.5) node[left,text=black] {$i^*$} -- (7.8,4.5);
+    \draw[curva4] (0,4.5) -- (\tz,4.5);
+    \draw[curva4] plot[domain=\tz:7.8,samples=50] (\x,{4.5-0.8*exp(-0.8*(\x-\tz))});
+    \draw[guia,thin,dotted] (\tz,4.5) -- (\tz,3.7);}
+  % 5: e con precios flexibles: salto directo a ē_1
+  \capa{5}{%
+    \draw[guia] (0,1.2) node[left,text=black] {$\bar e_1$} -- (7.8,1.2);
+    \draw[curva1] (0,0.4) node[left,text=black] {$\bar e_0$} -- (\tz,0.4);
+    \draw[curvanueva,desplazada,thick] (\tz,0.4) -- (\tz,1.2) -- (7.8,1.2);
+    \node[etiqueta,text=tceerojo,anchor=north] at (5.6,1.15) {precios flexibles};}
+  % 6: e de Dornbusch: salta por encima de ē_1 y se aprecia
+  \capa{6}{%
+    \draw[guia,thin,dotted] (\tz,1.2) -- (\tz,2.0);
+    \draw[curva1] plot[domain=\tz:7.8,samples=50] (\x,{1.2+0.8*exp(-0.8*(\x-\tz))})
+      node[etiqueta,above] {$e$};}
+  % 7: cota de la sobrerreacción
+  \capa{7}{%
+    \draw[decorate,decoration={brace,amplitude=4pt},thick] (\tz-0.12,1.2) -- (\tz-0.12,2.0)
+      node[midway,left=5pt,etiqueta] {sobrerreacción};}
+\end{tikzpicture}
+\end{document}

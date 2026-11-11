@@ -1,0 +1,68 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Modelo monetario con precios flexibles: subida permanente en t_0 de la TASA
+% de crecimiento del dinero, de γ_M0 a γ_M1 (no del nivel). Con la renta de
+% pleno empleo, la inflación esperada sube en Δγ_M = γ_M1 − γ_M0 y, por el
+% efecto Fisher, el tipo de interés también (i_1 = i_0 + Δγ_M). Como
+% p = m − k y + h i, el nivel de precios salta h·Δγ_M en t_0 y crece después
+% a γ_M1; con la PPA (e = p − p*, p* dado), el tipo de cambio hace lo mismo.
+% Colores por variable como en dornbusch-trayectorias (dinero verde, p azul,
+% i dorado, e morado). Rehace KOM (2018, pág. 458; 2022, cap. 16). 4 paneles 2×2, t_0 = 2,2.
+% Panel: 5 de ancho y 3 de alto; p y e: 0,45 + 0,25 t hasta t_0 (1,0), salto
+% de 0,55 (a 1,55) y pendiente 0,5 después (2,8 en t = 4,7).
+\begin{tikzpicture}[tcee,
+    rot/.style={etiqueta,font=\footnotesize},
+    titulo/.style={etiqueta,anchor=south west,font=\small}]
+  % 1: ejes de los 4 paneles y guía de t_0
+  \capa{1}{
+    \foreach \x/\y/\v/\t in {0/4.4/{\gamma_M}/{a) Crecimiento del dinero},
+                             6.6/4.4/{i}/{b) Tipo de interés},
+                             0/0/{p}/{c) Nivel de precios (log.)},
+                             6.6/0/{e}/{d) Tipo de cambio (log.)}}{
+      \begin{scope}[shift={(\x,\y)}]
+        \draw[eje] (0,0) -- (5.2,0) node[below] {$t$};
+        \draw[eje] (0,0) -- (0,3.1) node[left] {$\v$};
+        \node[titulo] at (-0.2,3.2) {\t};
+        \draw[guia] (2.2,0) node[below] {$t_0$} -- (2.2,3);
+      \end{scope}}}
+  % 2: γ_M sube en escalón
+  \capa{2}{\begin{scope}[shift={(0,4.4)}]
+    \draw[curva3] (0,0.9) -- (2.2,0.9);
+    \draw[curva3] (2.2,2.1) -- (4.9,2.1);
+    \node[punto] at (2.2,2.1) {};
+    \node[etiqueta,left] at (0,0.9) {$\gamma_{M0}$};
+    \node[etiqueta,left] at (0,2.1) {$\gamma_{M1}$};
+    \draw[guia] (0,2.1) -- (2.2,2.1);
+  \end{scope}}
+  % 3: i salta en lo mismo (efecto Fisher)
+  \capa{3}{\begin{scope}[shift={(6.6,4.4)}]
+    \draw[curva4] (0,0.9) -- (2.2,0.9);
+    \draw[curva4] (2.2,2.1) -- (4.9,2.1);
+    \node[punto] at (2.2,2.1) {};
+    \node[etiqueta,left] at (0,0.9) {$i_0$};
+    \node[etiqueta,left] at (0,2.1) {$i_1$};
+    \draw[guia] (0,2.1) -- (2.2,2.1);
+    \draw[<->,thin,tceegris] (3.6,0.9) -- node[rot,right,text=tceegris] {$\Delta\gamma_M$} (3.6,2.1);
+    \draw[guia] (2.2,0.9) -- (3.6,0.9);
+  \end{scope}}
+  % 4: p salta y crece más deprisa
+  \capa{4}{\begin{scope}[shift={(0,0)}]
+    \draw[curva2] (0,0.45) -- (2.2,1.0);
+    \node[rot,align=center,anchor=south,text=tceeazul] at (1.0,0.95) {pendiente\\$\gamma_{M0}$};
+    \draw[curva2] (2.2,1.55) -- (4.7,2.8) node[rot,pos=0.55,below right=1pt,text=tceeazul] {pendiente $\gamma_{M1}$};
+    \node[punto] at (2.2,1.55) {};
+    \draw[guia] (2.2,1.0) -- (2.5,1.0);
+    \draw[<->,thin,tceegris] (2.42,1.0) -- node[rot,right,text=tceegris] {$h\,\Delta\gamma_M$} (2.42,1.55);
+  \end{scope}}
+  % 5: e, igual que p (PPA)
+  \capa{5}{\begin{scope}[shift={(6.6,0)}]
+    \draw[curva1] (0,0.45) -- (2.2,1.0);
+    \node[rot,align=center,anchor=south,text=tceemorado] at (1.0,0.95) {pendiente\\$\gamma_{M0}$};
+    \draw[curva1] (2.2,1.55) -- (4.7,2.8) node[rot,pos=0.55,below right=1pt,text=tceemorado] {pendiente $\gamma_{M1}$};
+    \node[punto] at (2.2,1.55) {};
+    \draw[guia] (2.2,1.0) -- (2.5,1.0);
+    \draw[<->,thin,tceegris] (2.42,1.0) -- node[rot,right,text=tceegris] {$h\,\Delta\gamma_M$} (2.42,1.55);
+  \end{scope}}
+\end{tikzpicture}
+\end{document}

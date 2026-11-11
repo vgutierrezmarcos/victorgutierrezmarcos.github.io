@@ -1,0 +1,71 @@
+tema: 3B14
+fecha_inventario: 2026-11-11
+# El tema tiene pocos datos que caducan: el volumen del mercado de divisas (como el
+# 3B13), el comercio mundial para compararlo (como 3B05, 3B06, 3B07 y 3B13) y el
+# índice Big Mac (familia economist-bigmac, nueva). Los valores históricos del euro
+# del enganche (1999-2022, BCE2026EURUSD) no caducan. La evaluación del External
+# Sector Report del FMI (III.1.3) caduca cada año.
+datos:
+  - id: trienal-volumen
+    texto: "Se forma en el \\concepto{mercado de divisas}, el mayor del mundo: en abril de 2025 se negociaron de media 9,5 billones de dólares al día"
+    donde: [3B14.tex]
+    valor: 9.5
+    unidad: billones de USD diarios (neto-neto)
+    periodo: abril 2025
+    fuente: BIS2026TrienalDatos
+    organismo: BIS
+    serie: "Triennial Central Bank Survey, OTC FX turnover, total (WS_DER_OTC_TOV A.U.A.B.5J.A.5J.A.TO1.TO1.A.A.3.C)"
+    url: https://www.bis.org/statistics/rpfx25.htm
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bis-trienal
+    frase: "introducción, Relevancia, 1.ª viñeta (l. 22); misma cifra y clave que el 3B13"
+    nota: "la página del BIS titula «9,6 billones» (tablas xlsx, 9,595); el 3B13 usa 9,5 (Data Portal neto-neto y Huang, Krohn y Sushko, 2025). Mantener 9,5 en los dos temas"
+
+  - id: trienal-vs-comercio
+    texto: "el comercio mundial de bienes y servicios sumó 34,65 billones de dólares en 2025 \\parencite{OMC2026GTOS}: el mercado de divisas negocia en menos de 4 días lo que el comercio mueve en un año"
+    donde: [3B14.tex]
+    valor: 34.65
+    unidad: billones de USD (bienes y servicios, base de balanza de pagos)
+    periodo: "2025"
+    fuente: OMC2026GTOS
+    organismo: OMC
+    serie: "Global Trade Outlook and Statistics (marzo de 2026), comercio mundial de bienes y servicios"
+    url: https://www.wto.org/english/res_e/booksp_e/gtos0326_e.pdf
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-comercio-mundial
+    depende_de: [trienal-volumen]
+    frase: "introducción, Relevancia, viñeta de 2.º nivel (l. 24)"
+    nota: "el cociente (34,65 / 9,5 = 3,6 días) cambia con cualquiera de los dos datos; si se dan mercancías y servicios por separado: 26,26 y 9,56 (servicios comerciales, otra base: no suman 34,65)"
+
+  - id: big-mac
+    texto: "En julio de 2026, un Big Mac costaba 6,22 dólares en Estados Unidos y 6,19 euros en la zona del euro, de modo que la PPA Big Mac estaba casi en la paridad (0,995 euros por dólar). Al tipo de mercado, 0,874 euros por dólar, costaba 7,08 dólares: el euro estaba sobrevalorado un 13,8~\\%"
+    donde: [3B14.tex]
+    valor: 13.8
+    unidad: "% de desviación del tipo de mercado respecto a la PPA Big Mac (positivo = sobrevalorada)"
+    periodo: julio 2026 (datos de 1/7/2026)
+    fuente: Economist2026BigMacDatos
+    organismo: The Economist
+    serie: "big-mac-full-index.csv, columnas local_price, dollar_ex, USD_raw y USD_adjusted"
+    url: https://github.com/TheEconomist/big-mac-data
+    periodicidad: semestral (enero y julio; datos en el repositorio unas semanas después)
+    proxima: 2027-02
+    familia: economist-bigmac
+    depende: [datos/bigmac-2026-07.csv, graficos/big-mac.tex]
+    frase: "caja gris del índice Big Mac en I.2.1 c) (l. 233-236): la frase de arriba; «El franco suizo estaba sobrevalorado un 45~\\%; el yen, infravalorado un 50~\\%, el renminbi un 37~\\% y la rupia indonesia un 62~\\%»; con el índice ajustado por el PIB por habitante, «el renminbi pasa de estar infravalorado un 37~\\% a un 24~\\%, y el euro, de sobrevalorado un 14~\\% a un 29~\\%»; pie del gráfico big-mac («julio de 2026»). Si cambia el signo del euro, cambia «sobrevalorado»"
+
+  - id: fmi-esr-evaluacion
+    texto: "En el último, con datos de 2025, juzga la posición exterior de la zona del euro en línea con sus fundamentos; la de Estados Unidos, más débil, y las de China, Alemania y España, más fuertes, y la de Japón, algo más fuerte"
+    donde: [3B14.tex]
+    valor: "zona del euro: broadly in line; EE. UU.: weaker; China, Alemania, España: stronger; Japón: moderately stronger"
+    unidad: evaluación cualitativa de la posición exterior (overall assessment)
+    periodo: "2025"
+    fuente: FMI2026ESR
+    organismo: FMI
+    serie: "External Sector Report 2026, cap. 1, tabla de evaluaciones y resúmenes por economía (Overall 2025 Assessment)"
+    url: https://www.imf.org/en/publications/esr/issues/2026/07/30/external-sector-report-2026
+    periodicidad: anual (julio)
+    proxima: 2027-07
+    frase: "III.1.3 c) Evidencia empírica, 1.ª viñeta; si cambia la de la zona del euro o la de España, cambiar también el orden de la frase"
+    nota: "misma clave que el 3B11 y el 3B12; la fase de contenido solo pudo comprobarlo dentro del propio informe (2 listas que coinciden)"

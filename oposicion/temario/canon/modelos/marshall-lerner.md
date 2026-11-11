@@ -27,6 +27,7 @@ elasticidades-precio con su signo (D047) y en valor absoluto en la condición. S
 | 1D01 | Dictamen de coyuntura | Uso | La condición, la curva J y cómo se ve en el cuadro (saldo de bienes y servicios 1-2 años después de una depreciación real); los 2 sentidos del traspaso | La derivación |
 | 3.A.32 | OA-DA abierta | supuesto (hecho, 11/11/2026) | Supuesto de Mundell-Fleming: una depreciación real mejora el saldo comercial, `\vertema{3.B.12}` | La derivación |
 | 3.B.16 | Valoración de las AMO | mención (hecho, 11/11/2026) | Las críticas de los 80: la devaluación solo da competitividad mientras los salarios no la alcanzan, y si se cumple la condición; `\vertema{3.B.12}` | La derivación |
+| 3.B.14 | Determinación del tipo de cambio | mención (hecho, 11/11/2026) | I.1: la oferta de divisas solo crece con $E$ si $|\varepsilon_{X,q}|+|\varepsilon_{M,q}|>1$ (si no, el mercado de divisas puede ser inestable); II.2: la depreciación mejora la cuenta corriente en Branson; `\vertema{3.B.12}` | La derivación |
 
 ## Divergencias encontradas en el temario actual
 - 3.B.12 (Word) llama *pass-through* solo al traslado a los precios de exportación; definir los 2 sentidos al revisarlo (contradicción 5 de la 1D01).

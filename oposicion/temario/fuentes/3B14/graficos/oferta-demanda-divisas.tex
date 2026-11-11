@@ -1,0 +1,28 @@
+\documentclass[tikz,border=4pt]{standalone}
+% Copia de fuentes/3B13/graficos/oferta-demanda-divisas.tex con el tipo de vaciado rotulado E_0 (notacion.md § 9).
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Oferta y demanda de divisas con tipo directo E (euros por dólar).
+% D: de (0,8; 4,4) a (5,4; 0,8); O: de (0,8; 0,8) a (5,4; 4,4); se cortan en
+% (3,1; 2,6). Con el tipo fijo 3,4 > E_0: D en x = 2,078 y O en x = 4,122.
+\begin{tikzpicture}[tcee,scale=0.9]
+  % 1: ejes y sus rótulos
+  \capa{1}{\ejes{cantidad de divisas}{$E$ (€/\$)}{6.2}{5}}
+  % 2: demanda de divisas
+  \capa{2}{\draw[curva1] (0.8,4.4) -- (5.4,0.8) node[etiqueta,right,align=left,text=tceemorado]
+      {$D$: importaciones\\\phantom{$D$: }+ salidas de capital};}
+  % 3: oferta de divisas
+  \capa{3}{\draw[curva2] (0.8,0.8) -- (5.4,4.4) node[etiqueta,right,align=left,text=tceeazul]
+      {$O$: exportaciones\\\phantom{$O$: }+ entradas de capital};}
+  % 4: tipo de vaciado y su proyección
+  \capa{4}{\node[punto] (Eq) at (3.1,2.6) {};
+    \draw[guia] (Eq) -- (0,2.6) node[left] {$E_0$};
+    \node[etiqueta,font=\footnotesize] at (3.1,1.95) {$\mathrm{CC}=\mathrm{CF}$};}
+  % 5: tipo fijo por encima del de vaciado
+  \capa{5}{\draw[desplazada] (0,3.4) node[left] {$\bar E$} -- (5.9,3.4);}
+  % 6: exceso de oferta: el banco central compra divisas
+  \capa{6}{\draw[<->,thick,tceerojo] (2.078,3.4) -- (4.122,3.4);
+    \node[etiqueta,font=\footnotesize,align=left,anchor=north west,text=tceerojo] at (4.45,3.3)
+      {\textbf{exceso de oferta}:\\el banco central\\compra divisas\\($\Delta R>0$)};}
+\end{tikzpicture}
+\end{document}

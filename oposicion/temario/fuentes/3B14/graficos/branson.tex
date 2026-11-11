@@ -1,0 +1,50 @@
+% Modelo de cartera (Branson, 1977): equilibrio a corto plazo en el plano
+% (i, E), i en abscisas (el mismo que el panel superior de dornbusch-mercados).
+% Gráfico de referencia de la ficha branson. Rectas:
+%   MM:      E = 2,5 + 0,9 (i - 3)      (creciente)
+%   BB:      E = 8,5 - 2 i               (decreciente, inclinada)
+%   B*B*:    E = 3,85 - 0,45 i           (decreciente, menos inclinada)
+%   A = (3; 2,5).
+% Compra de bonos nacionales: MM' y BB' a la izquierda, B*B* quieta;
+%   B = (1,8; 3,04) sobre B*B*; MM': E = 3,04 + 0,9 (i - 1,8); BB': E = 6,64 - 2 i.
+% Compra de bonos extranjeros (misma dM): MM' (la misma), BB quieta, B*B*' arriba;
+%   C = MM' ∩ BB = (7,08/2,9; …) = (2,441; 3,617); B*B*': E = 4,7155 - 0,45 i.
+% En cada equilibrio se cortan las 3 curvas (ley de Walras).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes (i, E)
+  \capa{1}{\ejes{$i$}{$E$}{6}{5.2}}
+  % 2: MM
+  \capa{2}{\draw[curva1] (0.9,0.61) -- (5.2,4.48) node[etiqueta,right] {$MM$};}
+  % 3: B*B*
+  \capa{3}{\draw[curva3] (0.4,3.67) -- (5.4,1.42) node[etiqueta,right] {$B^*B^*$};}
+  % 4: BB (trazo fino)
+  \capa{4}{\draw[curva2,thick] (2.05,4.4) node[etiqueta,above] {$BB$} -- (3.9,0.7);}
+  % 5: equilibrio A
+  \capa{5}{%
+    \node[punto] (A) at (3,2.5) {};
+    \node[etiqueta,right=2pt] at (A) {$A$};
+    \proyeccion{(A)}{$i_0$}{$E_0$}}
+  % 6: compra de bonos nacionales: MM' y BB' a la izquierda
+  \capa{6}{%
+    \draw[curva1,desplazada] (0.4,1.69) -- (3.7,4.66) node[etiqueta,above right=-2pt] {$MM'$};
+    \draw[curva2,desplazada,thick] (1.12,4.4) node[etiqueta,above] {$BB'$} -- (3.0,0.64);
+    \draw[flecha] (4.2,3.55) -- (3.5,3.55);}
+  % 7: equilibrio B
+  \capa{7}{%
+    \node[punto] (B) at (1.8,3.04) {};
+    \node[etiqueta,below left=1pt] at (B) {$B$};
+    \proyeccion{(B)}{$i_1$}{$E_1$}}
+  % 8: compra de bonos extranjeros: B*B*' hacia arriba
+  \capa{8}{%
+    \draw[curva3,desplazada] (0.4,4.535) -- (5.4,2.285) node[etiqueta,right] {$B^*B^{*\prime}$};
+    \draw[flecha] (4.9,1.75) -- (4.9,2.45);}
+  % 9: equilibrio C
+  \capa{9}{%
+    \node[punto] (C) at (2.441,3.617) {};
+    \node[etiqueta,above right=1pt] at (C) {$C$};
+    \proyeccion{(C)}{$i_2$}{$E_2$}}
+\end{tikzpicture}
+\end{document}

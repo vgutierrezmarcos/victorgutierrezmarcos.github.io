@@ -1,0 +1,63 @@
+% La paradoja de la apreciación: un dato de inflación inesperadamente alto en t_0.
+% a) Dinero exógeno (enfoque monetario): más inflación esperada, i sube por el
+%    efecto Fisher y se queda alto; E salta hacia arriba (depreciación) y sigue
+%    subiendo; antes de t_0, E plana en E_0.
+% b) Regla de Taylor (φ_π > 1) con PNCI: i sube y vuelve poco a poco a i*;
+%    E cae en t_0 (apreciación) y luego sube poco a poco (la depreciación
+%    esperada compensa i > i*) hasta algo por encima de E_0.
+%    i = i* + 1,0 exp(-0,8 (t - t_0));  E = 1,45 - 0,85 exp(-0,8 (t - t_0)).
+% Colores por variable como en dornbusch-trayectorias (i dorado, E morado);
+% salto: depreciación en rojo, apreciación en verde. Sin cifras.
+% Fuente: elaboración propia a partir de Clarida y Waldman (2008) y Engel y West (2006).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    titulo/.style={etiqueta,anchor=south west,font=\small\bfseries}]
+  \def\tz{2.0}  % t_0
+  % 1: ejes de los 4 subpaneles (columna a y columna b; i arriba, E abajo) y t_0
+  \capa{1}{%
+    \foreach \x/\t in {0/{a) Dinero exógeno (enfoque monetario)},
+                       6.6/{b) Regla de \textsc{Taylor} (con PNCI)}}{
+      \begin{scope}[shift={(\x,0)}]
+        \node[titulo] at (-0.4,5.95) {\t};
+        \foreach \b/\v in {3.2/i,0/E}{
+          \draw[eje] (0,\b) -- (5.3,\b) node[below] {$t$};
+          \draw[eje] (0,\b) -- (0,{\b+2.5}) node[left] {$\v$};}
+        \draw[guia] (\tz,-0.05) node[below,text=black] {$t_0$} -- (\tz,2.4);
+        \draw[guia] (\tz,3.15) node[below,text=black] {$t_0$} -- (\tz,5.6);
+      \end{scope}}}
+  % 2: panel a, i sube en t_0 y se queda alto
+  \capa{2}{%
+    \draw[curva4] (0,3.9) node[left,text=black] {$i_0$} -- (\tz,3.9);
+    \draw[guia,thin,dotted] (\tz,3.9) -- (\tz,4.9);
+    \draw[curva4] (\tz,4.9) -- (5.0,4.9);
+    \draw[guia] (0,4.9) node[left,text=black] {$i_1$} -- (\tz,4.9);}
+  % 3: panel a, E salta hacia arriba (depreciación) y sigue subiendo
+  \capa{3}{%
+    \draw[curva1] (0,0.86) node[left,text=black] {$E_0$} -- (\tz,0.86);
+    \draw[->,thick,tceerojo] (\tz,0.86) -- (\tz,1.45);
+    \draw[curva1] (\tz,1.45) -- (5.0,2.25);
+    \draw[guia] (\tz,0.86) -- (5.0,0.86);}
+  % 4: panel b, i sube (φ_π > 1) y vuelve poco a poco a i*
+  \capa{4}{\begin{scope}[shift={(6.6,0)}]
+    \draw[guia] (0,3.9) node[left,text=black] {$i^*$} -- (5.0,3.9);
+    \draw[curva4] (0,3.9) -- (\tz,3.9);
+    \draw[guia,thin,dotted] (\tz,3.9) -- (\tz,4.9);
+    \draw[curva4] plot[domain=\tz:5.0,samples=50] (\x,{3.9+1.0*exp(-0.8*(\x-\tz))});
+    \node[etiqueta,anchor=west,text=tceedorado] at (2.6,4.75) {$\phi_\pi>1$};
+  \end{scope}}
+  % 5: panel b, E cae en t_0 (apreciación) y luego sube hasta algo más que E_0
+  \capa{5}{\begin{scope}[shift={(6.6,0)}]
+    \draw[guia] (0,1.2) node[left,text=black] {$E_0$} -- (5.0,1.2);
+    \draw[curva1] (0,1.2) -- (\tz,1.2);
+    \draw[->,thick,tceeverde] (\tz,1.2) -- (\tz,0.6);
+    \draw[curva1] plot[domain=\tz:5.0,samples=50] (\x,{1.45-0.85*exp(-0.8*(\x-\tz))});
+  \end{scope}}
+  % 6: rótulos «depreciación» y «apreciación»
+  \capa{6}{%
+    \node[etiqueta,anchor=east,text=tceerojo] at ({\tz-0.05},1.6) {depreciación};
+    \node[etiqueta,anchor=west,text=tceeverde] at ({6.6+\tz+0.08},0.5) {apreciación};
+    \node[etiqueta,anchor=south,text=tceegris,font=\footnotesize] at (6.6+3.9,1.75) {$E$ sube: $i>i^*$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,36 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\pie}[1]{{\footnotesize\color{tceegris}#1}}
+\begin{document}
+% El cuadro de las paridades: 4 diferenciales en los vértices de un rombo y,
+% en los lados, las condiciones que los unen. La diagonal vertical es la PNCI
+% (morado, el color de las funciones clave). Tipo directo E; γE^e es la
+% depreciación esperada. Si se cumplen todas, r = r*.
+% Elaboración propia a partir de Gandolfo (2002, cap. 4) y Sarno y Taylor
+% (2002, cap. 2).
+\begin{tikzpicture}[tcee,
+    vertice/.style={draw=black,fill=tceesalvia,thick,rounded corners=3pt,
+      align=center,inner sep=4pt},
+    lado/.style={thick,black},
+    rotulo/.style={etiqueta,align=center}]
+  % 1: los 4 diferenciales
+  \capa{1}{
+    \node[vertice] (A) at (0,3.1) {$i-i^{*}$\\\pie{diferencial de intereses}};
+    \node[vertice] (I) at (-4.7,0) {$(F_t^{t+1}-E_t)/E_t$\\\pie{margen a plazo}};
+    \node[vertice] (D) at (4.7,0) {$\pi^{e}-\pi^{*e}$\\\pie{diferencial de}\\[-2pt]\pie{inflación esperada}};
+    \node[vertice] (B) at (0,-3.1) {$\gamma E^{e}$\\\pie{depreciación esperada}};}
+  % 2: paridad cubierta
+  \capa{2}{\draw[lado] (I) -- node[rotulo,above left] {\textbf{PCI}} (A);}
+  % 3: paridad no cubierta, la diagonal
+  \capa{3}{\draw[very thick,tceemorado] (A) -- (B);
+    \node[etiqueta,text=tceemorado,anchor=east] at (-0.1,0.55) {\textbf{PNCI}};}
+  % 4: efecto Fisher internacional
+  \capa{4}{\draw[lado] (A) -- node[rotulo,above right] {efecto \textsc{Fisher}\\internacional} (D);}
+  % 5: PPA relativa esperada
+  \capa{5}{\draw[lado] (B) -- node[rotulo,below right] {PPA relativa\\(esperada)} (D);}
+  % 6: insesgadez del tipo a plazo y el resultado si se cumplen todas
+  \capa{6}{\draw[lado] (I) -- node[rotulo,below left] {insesgadez del \emph{forward}\\($F_t^{t+1}=E^{e}_{t+1}$)} (B);
+    \node[etiqueta,font=\footnotesize,text=tceegris,align=center,anchor=west] at (0.25,-0.45)
+      {si se cumplen\\todas: $r=r^{*}$};}
+\end{tikzpicture}
+\end{document}

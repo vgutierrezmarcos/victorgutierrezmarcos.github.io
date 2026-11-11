@@ -1,7 +1,7 @@
 # Enfoque monetario de la balanza de pagos
 
 - **Área:** macro-abierta · **Tema de referencia:** 3.B.12 (Mecanismos de ajuste de la balanza de pagos) — lo tiene en el título (mecanismos de ajuste) y lo desarrolla con supuestos y ecuaciones.
-- **Temas que lo usan:** 3.B.12 (desarrollo), 3.B.22 (mención). También 3.A.5 (mención; hecho, 3/11/2026: III.1.3, Harry Johnson y el enfoque monetario con tipo fijo (Frenkel y Johnson, 1976), `\vertema{3.B.12}`).
+- **Temas que lo usan:** 3.B.12 (desarrollo), 3.B.22 (mención). También 3.A.5 (mención; hecho, 3/11/2026: III.1.3, Harry Johnson y el enfoque monetario con tipo fijo (Frenkel y Johnson, 1976), `\vertema{3.B.12}`). También 3.B.14 (contraste; hecho, 11/11/2026). **Ficha hermana:** `enfoque-monetario-tc` (referencia el 3.B.14): la misma demanda de dinero ($k$, $h$ de la LM del 3.A.35); con tipo fijo se ajustan las reservas y con flexible el tipo de cambio.
 - **Manuales de referencia:** Frenkel y Johnson (eds.), *The Monetary Approach to the Balance of Payments* (1976); Johnson (1972); Gandolfo, *International Finance and Open-Economy Macroeconomics*, cap. 12; Krugman, Obstfeld y Melitz, cap. 18 (intervención y reservas); Polak (1957) para la programación financiera del FMI.
 
 ## Presentación de referencia
@@ -24,6 +24,7 @@ Con $P = EP^*$ e $i=i^*$ dados, toda expansión del crédito interno se pierde e
 | 3.B.22 | El FMI | mención | Enfoque monetario (Johnson, 1972) y absorción (Alexander, 1952) como fundamento del modelo de Polak y la programación financiera | Derivación del modelo |
 | 3.B.17 | Crisis de BP | (implícito) | La 1.ª generación (Krugman, 1979; Flood-Garber, 1984) parte de $M = CI + R$: remitir aquí | Volver a derivar $M = CI+R$ |
 | 3.A.5 | Monetarismo (economía abierta) | mención (hecho, 3/11/2026) | Con tipo de cambio fijo, un desequilibrio exterior es un exceso de oferta o de demanda de dinero que se corrige con las reservas (Frenkel y Johnson, 1976), `\vertema{3.B.12}` | $M = CI + R$ y la derivación |
+| 3.B.14 | Determinación del tipo de cambio | contraste (hecho, 11/11/2026) | Presentación del II: nace para la BP con tipo fijo (`FrenkelJohnson1976Monetary`): un exceso de oferta de dinero se va por la BP y se pierden reservas, `\vertema{3.B.12}`; con tipo flexible ajusta el tipo de cambio (ficha hermana `enfoque-monetario-tc`, referencia el 3.B.14) | El ajuste de las reservas |
 
 ## Divergencias encontradas en el temario actual
 - 3.B.12 escribe $BP \equiv R$ (stock) en lugar de $BP \equiv \Delta R$ (flujo). Corregir.

@@ -1,0 +1,1300 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B14.bib}
+\tcetema[Determinación del tipo de cambio]{3.B.14}{Teorías de la determinación del tipo de cambio.}
+\tcefecha{11/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «El hombre propone y Dios dispone», dice el refrán. Con el tipo de cambio, los economistas proponen modelos y el mercado dispone otra cosa.
+  \item El euro nació el 4 de enero de 1999 a 1,1789 dólares. En 21 meses perdió un 30~\%: el 26 de octubre de 2000 valía 0,8252 dólares. En los 8 años siguientes casi duplicó su valor, hasta 1,5990 el 15 de julio de 2008, y el 28 de septiembre de 2022 volvió a valer menos que un dólar, 0,9565 \parencite{BCE2026EURUSD}.
+  \item Ni los precios, ni el dinero, ni la producción de las 2 orillas del Atlántico se movieron así. ¿Qué determina, entonces, el precio de una moneda? ¿Lo explican sus fundamentos, aunque sea a la larga, o es un precio que ninguna teoría consigue predecir?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item El \concepto{tipo de cambio} es el precio de una moneda en términos de otra. Se forma en el \concepto{mercado de divisas}, el mayor del mundo: en abril de 2025 se negociaron de media 9,5 billones de dólares al día \parencite{BIS2026TrienalDatos,HuangKrohnSushko2025FX}.
+    \begin{itemize}
+    \item Para hacerse una idea, el comercio mundial de bienes y servicios sumó 34,65 billones de dólares en 2025 \parencite{OMC2026GTOS}: el mercado de divisas negocia en menos de 4 días lo que el comercio mueve en un año \vertema{3.B.13}.
+    \end{itemize}
+  \item Saber de qué depende el tipo de cambio es necesario para la política económica:\footnote{La idea de que el tipo de cambio es uno de los precios más importantes de una economía, porque influye en todos los demás, es de \autor{Paul Volcker} \parencite{VolckerGyohten1992}, 12.º presidente de la Junta de Gobernadores de la Reserva Federal de Estados Unidos, del 6 de agosto de 1979 al 11 de agosto de 1987 \parencite{FedHistory2026Volcker}.}
+    \begin{itemize}
+    \item para la política monetaria, porque el tipo de cambio es uno de sus canales de transmisión: una expansión monetaria deprecia la moneda, abarata las exportaciones y encarece las importaciones \vertema{3.A.37};
+    \item para elegir entre fijarlo, dejarlo flotar o intervenir en el mercado, porque hay que saber qué lo mueve y si la intervención sirve de algo \vertema{3.B.15};
+    \item y para saber si una apreciación real es una pérdida de competitividad o el efecto natural de crecer.
+    \end{itemize}
+  \item Para empresas e inversores, de él dependen la rentabilidad de exportar, importar o invertir fuera y el riesgo que se asume al hacerlo.\footnote{La determinación del tipo de cambio interesa sobre todo con tipos flexibles, pero también con flexibilidad limitada o con tipos fijos: si el tipo fijado no es el de equilibrio, el mercado presiona sobre él y obliga a la autoridad monetaria a intervenir \vertema{3.B.15}.}
+  \item Y es la prueba más dura de la macroeconomía abierta: casi todos sus modelos acaban diciendo algo del tipo de cambio, y los datos han obligado a replantearlos una y otra vez.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Los orígenes}: la idea de que una moneda vale lo que compra es de la Escuela de Salamanca, en el siglo XVI \parencite{GriceHutchinson1952School}. El nombre de paridad del poder adquisitivo es de \textcite{Cassel1918Abnormal}, tras las inflaciones de la Primera Guerra Mundial, y la paridad de intereses la formuló \autor{John Maynard Keynes} en 1923 \parencite{Keynes1923Tract}.
+  \item \emph{Con Bretton Woods} (1944-1973), los tipos de cambio eran fijos y la pregunta era cómo se ajustaba la balanza de pagos \vertema{3.B.12} \vertema{3.B.20}.
+    \begin{itemize}
+    \item Las teorías del tipo de cambio de entonces eran \emph{de flujos}: el tipo de cambio es el que equilibra la oferta y la demanda de divisas que generan el comercio y los movimientos de capital.
+    \end{itemize}
+  \item \emph{Desde 1973}, con tipos flexibles entre las grandes monedas y capitales cada vez más móviles \vertema{3.B.21}, el tipo de cambio pasa a verse como el precio relativo de 2 \emph{activos}.
+    \begin{itemize}
+    \item En un contexto de inflación alta y mucha volatilidad, los modelos de los años 70 ponen el acento en el dinero: los modelos monetarios, la sobrerreacción de \textcite{Dornbusch1976Expectations} y los modelos de cartera.
+    \end{itemize}
+  \item \emph{El fracaso empírico}: \textcite{Mussa1979Empirical} recoge los hechos que los modelos tienen que explicar, y \textcite{MeeseRogoff1983} muestran que ninguno predice mejor que un paseo aleatorio.
+    \begin{itemize}
+    \item Es la \emph{desconexión} entre el tipo de cambio y sus fundamentos \parencite{ObstfeldRogoff2000Puzzles}, que ha guiado la investigación desde entonces.
+    \end{itemize}
+  \item \emph{Las respuestas} han ido por 2 caminos:
+    \begin{itemize}
+    \item una fundamentación microeconómica sólida, con modelos de equilibrio general y rigideces nominales, más rigurosos pero difíciles de contrastar \vertema{3.B.19};
+    \item y nuevas líneas teóricas: el tipo de cambio como precio de un activo, que se parece a un paseo aleatorio aunque dependa de los fundamentos \parencite{EngelWest2005}; la política monetaria como regla de \autor{Taylor}; la microestructura del mercado y los intermediarios financieros.
+    \end{itemize}
+  \item \emph{El tipo de cambio real}: la PPA relativa sigue siendo una buena primera aproximación a largo plazo, pero las desviaciones duran años \parencite{Rogoff1996PPA}. En la práctica, el FMI y los analistas estiman tipos reales de equilibrio con modelos empíricos \parencite{FMI2013EBA}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿De qué depende el tipo de cambio a largo plazo? ¿Y a corto?
+  \item ¿Por qué es mucho más volátil que sus fundamentos?
+  \item ¿Se puede predecir? Y si los modelos no lo predicen, ¿son malos modelos?
+  \item ¿Por qué el tipo de cambio real se aleja tanto y durante tanto tiempo de la PPA?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición estudia cómo se determina el tipo de cambio con tipos \emph{flexibles}: con tipo fijo, lo fija la autoridad monetaria interviniendo en el mercado de divisas.
+  \item Sigue el orden en que han ido apareciendo las teorías, porque cada una nace de los fallos de la anterior:
+  \begin{itemize}
+  \item En el bloque~\ref{sec:tradicionales}, las teorías tradicionales, de flujos y de condiciones de arbitraje: el modelo de la balanza de pagos, la paridad del poder adquisitivo con el efecto \autor{Balassa}-\autor{Samuelson}, las paridades de intereses y el modelo IS-LM-BP.
+  \item En el bloque~\ref{sec:activos}, el enfoque moderno, que trata el tipo de cambio como el precio de un activo: el enfoque monetario, con precios flexibles y con la sobrerreacción de \autor{Dornbusch}; el enfoque de cartera de \autor{Branson}, y su contrastación empírica.
+  \item En el bloque~\ref{sec:recientes}, los desarrollos recientes: las nuevas líneas teóricas (la regla de \autor{Taylor}, la paradoja del margen \emph{forward} y el tipo de cambio real de equilibrio) y los modelos con fundamentación microeconómica.
+  \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.B.14. Teorías de la determinación del tipo de cambio}\\[2pt]
+Introducción\esqtiempo{2,5}\\
+I. Teorías tradicionales: flujos y condiciones de paridad\esqtiempo{6,5}\\
+\hspace*{1.5em}1. El modelo de la balanza de pagos\\
+\hspace*{1.5em}2. La paridad del poder adquisitivo y el efecto \autor{Balassa}-\autor{Samuelson}\\
+\hspace*{1.5em}3. Las paridades de intereses (PCI y PNCI)\\
+\hspace*{1.5em}4. El modelo IS-LM-BP\\
+II. Enfoque moderno: modelos de activos\esqtiempo{12,5}\\
+\hspace*{1.5em}1. Enfoque monetario: precios flexibles y sobrerreacción de \autor{Dornbusch}\\
+\hspace*{1.5em}2. Enfoque de cartera (\autor{Branson})\\
+\hspace*{1.5em}3. Contrastación empírica: \autor{Mussa}, \autor{Meese} y \autor{Rogoff}\\
+III. Desarrollos recientes\esqtiempo{7,5}\\
+\hspace*{1.5em}1. Nuevas líneas: regla de \autor{Taylor}, margen \emph{forward}, tipo real de equilibrio\\
+\hspace*{1.5em}2. Fundamentación microeconómica: NOEM, flujo de órdenes, intermediarios\\
+Conclusión\esqtiempo{1}
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{6,5} (I.1, \tiempo{1}; I.2, \tiempo{3,5}: PPA, \tiempo{2}, y \autor{Balassa}-\autor{Samuelson}, \tiempo{1,5}; I.3, \tiempo{1,5}; I.4, \tiempo{0,5}); II, \tiempo{12,5} (presentación, \tiempo{0,5}; II.1, \tiempo{6}: precios flexibles, \tiempo{1,5}, y \autor{Dornbusch}, \tiempo{4,5}; II.2, \tiempo{3,5}; II.3, \tiempo{2,5}); III, \tiempo{7,5} (III.1, \tiempo{3,5}: regla de \autor{Taylor}, \tiempo{1,5}, margen \emph{forward}, \tiempo{1,25}, y tipo real de equilibrio, \tiempo{0,75}; III.2, \tiempo{4}: nueva macroeconomía abierta, \tiempo{1}, flujo de órdenes, \tiempo{1,5}, e intermediarios, \tiempo{1,5}), y conclusión, \tiempo{1}. \autor{Dornbusch} es el modelo de referencia del tema y el que más pregunta el tribunal: sus trayectorias y la condición de sobrerreacción \eqref{eq:sobrerreaccion} no pueden faltar. Las 3 funciones clave son la de \autor{Balassa}-\autor{Samuelson} \eqref{eq:balassa-samuelson}, la del enfoque monetario \eqref{eq:monetario} y la de la sobrerreacción. Conviene decir en voz alta, al empezar, que el tipo de cambio es siempre el directo: la convención indirecta está muy extendida en los mercados y en las estadísticas. En este tema la evidencia empírica manda: cada modelo nace para explicar un hecho que el anterior no explicaba (la volatilidad, la sobrerreacción, la desconexión con los fundamentos, la lentitud de la vuelta a la PPA). No hace falta detallar los contrastes, pero conviene cerrar cada modelo con una línea de evidencia, con un autor y un año. Las pegatinas: «el hombre propone y Dios dispone» (enganche e idea final), «dar tiempo al tiempo» (la PPA a largo plazo), «las prisas no son buenas consejeras» (la sobrerreacción) y «cada día trae su afán» (el paseo aleatorio).
+\end{notaopositor}
+
+\begin{anotaciones}[unbreakable]
+\textbf{Notación.} $E_t$ es el tipo de cambio nominal \emph{directo} al contado (euros por dólar para España; $\uparrow E$ = depreciación del euro), $F_t^{t+1}$ el tipo a plazo pactado en $t$ para $t+1$ y $E^e_{t+1}$ el tipo de contado que se espera en $t$ para $t+1$, con $\gamma E^e\equiv(E^e_{t+1}-E_t)/E_t$ la depreciación esperada; $\gamma_E$ es la depreciación observada. $i$ e $i^{*}$ son los tipos de interés nacional y extranjero; $P$, $P^*$, $Y$, $Y^*$, $\pi$ y $\pi^*$, los precios, las rentas y las inflaciones nacionales y extranjeras (el asterisco es siempre el resto del mundo). $q\equiv EP^{*}/P$ es el tipo de cambio real ($\uparrow q$ = depreciación real) \vertema{3.B.13}. En los modelos en logaritmos, las minúsculas $e$, $f$, $m$, $p$, $y$ y $q$ son los logaritmos de las mayúsculas (salvo los tipos de interés), $\bar e$ y $\bar p$ los valores de largo plazo y $\mathbb{E}_t[\cdot]$ la esperanza con lo que se sabe en $t$. $\rho$ es la prima de riesgo cambiaria.
+\end{anotaciones}
+
+% ==========================================================================
+\section{Teorías tradicionales: flujos y condiciones de paridad}\label{sec:tradicionales}
+\minutos{6,5}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: hasta la caída de Bretton Woods (1973), las teorías del tipo de cambio lo explican por la igualdad de unos \emph{flujos} o por una condición de \emph{arbitraje}. Sirven como piezas de los modelos posteriores, pero ninguna basta: los flujos olvidan los saldos de activos, y la PPA solo se cumple a largo plazo.
+\item \emph{Las 4 teorías} se distinguen por lo que iguala el tipo de cambio:
+  \begin{itemize}
+  \item el \emph{modelo de la balanza de pagos}, la oferta y la demanda de divisas que generan los flujos de bienes y de capitales;
+  \item la \emph{paridad del poder adquisitivo}, el poder de compra de las monedas (flujos de bienes);
+  \item las \emph{paridades de intereses}, la rentabilidad de invertir en activos nacionales y extranjeros (flujos de capitales);
+  \item el \emph{modelo IS-LM-BP}, que suma los flujos de bienes y de capitales en un modelo de renta.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El modelo de la balanza de pagos:\cortetitulo{} flujos de bienes y de capitales}\label{sec:balanza}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item El tipo de cambio se determina en el mercado de divisas por la oferta y la demanda de divisas, y se mueve, si es libre, para igualarlas y equilibrar la balanza de pagos.
+\item Que el tipo de cambio lo fijan la oferta y la demanda es indiscutible, salvo con controles de cambios. El problema está en explicar qué hay detrás de esa oferta y esa demanda.
+\item El \concepto{enfoque de flujos} tradicional las entiende como flujos que salen del comercio, que depende del tipo de cambio y, en los modelos keynesianos, de la renta. Añadir los movimientos de capital no cambia el enfoque mientras se vean también como flujos.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item La \concepto{demanda de divisas} la generan las \emph{importaciones} y las \emph{salidas de capital}, que se pagan en moneda extranjera. Es \emph{decreciente} con $E$: si la moneda nacional se deprecia ($\uparrow E$), lo extranjero se encarece en moneda nacional y se demanda menos.
+\item La \concepto{oferta de divisas} la generan las \emph{exportaciones} y las \emph{entradas de capital}. Es \emph{creciente} con $E$: si la moneda nacional se deprecia, lo nacional se abarata para los extranjeros, aumentan las exportaciones y las entradas de capital y, por tanto, \emph{aumenta la oferta} de divisas.
+\item La oferta solo crece con $E$ si las exportaciones y las importaciones responden lo bastante al tipo de cambio real, $|\varepsilon_{X,q}|+|\varepsilon_{M,q}|>1$ (condición de \autor{Marshall}-\autor{Lerner}) \vertema{3.B.12}. Si no, el mercado de divisas puede ser inestable.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item Con tipo flexible y sin intervención, el \concepto{tipo de cambio de vaciado}, $E_0$, iguala la oferta y la demanda de divisas (gráfico~\ref{fig:oferta-demanda-divisas}). Equilibra la balanza de pagos, aunque no cada una de sus cuentas \vertema{3.B.11}:
+  \begin{equation}\label{eq:vaciado}
+  \underbrace{X+\text{entradas de capital}}_{\text{oferta de divisas}}=\underbrace{M+\text{salidas de capital}}_{\text{demanda de divisas}}\quad\Longleftrightarrow\quad\underbrace{X-M}_{\mathrm{CC}}=\underbrace{\text{salidas}-\text{entradas}}_{\mathrm{CF}} .
+  \end{equation}
+\item Sin movimientos de capital, el tipo flexible equilibraría la cuenta corriente ($\mathrm{CF}=0\Rightarrow\mathrm{CC}=0$). Con capitales móviles, es compatible con déficits corrientes persistentes financiados con la cuenta financiera.\footnote{Los movimientos de capital no son nuevos: fueron muy grandes con el patrón oro (1870-1914), se hundieron entre las guerras y con Bretton Woods y volvieron con la liberalización de los años 70 y 80 \parencite{ObstfeldTaylor2004Global}. Las teorías del ajuste de la balanza de pagos nacieron con Bretton Woods, cuando eran pequeños y los tipos fijos, y por eso se plantean sobre todo con tipo fijo \vertema{3.B.12}.}
+\item \emph{Como teoría del tipo de cambio}: si se escriben los determinantes de cada cuenta, $XN_t(q_t,Y_t,\allowbreak Y^*_t,Z_t,\allowbreak Z^*_t)=SK_t(i_t-i^*_t)$, y se despeja el tipo de cambio en logaritmos (salvo los tipos de interés), depende de los precios, las rentas y los tipos de interés relativos:
+  \begin{equation}\label{eq:flujos-e}
+  e_t=\beta_0+\beta_1\,(p_t-p^{*}_t)+\beta_2\,(y_t-y^{*}_t)+\beta_3\,(i_t-i^{*}_t)+\beta_4\,(z_t-z^{*}_t)+\varepsilon_t,\qquad \beta_1,\beta_2>0,\ \beta_3,\beta_4<0,
+  \end{equation}
+  con $Z_t$ y $Z^*_t$ las distorsiones al comercio (aranceles, subvenciones) del país y del resto del mundo \parencite[cap.~3]{Kallianiotis2013Exchange} \vertema{3.B.13}. La ecuación se puede ampliar con otros diferenciales: de deuda pública, de inversión, de ahorro o de salarios reales.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El mercado de divisas con tipo flexible y con tipo fijo}\label{fig:oferta-demanda-divisas}
+\grafico[0.62\textwidth]{oferta-demanda-divisas}
+\fuente{elaboración propia.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item Se deprecia la moneda del país con \emph{más inflación} ($\beta_1>0$: pierde competitividad), con \emph{más crecimiento} ($\beta_2>0$: importa más) y con \emph{menos tipo de interés} ($\beta_3<0$: salen capitales). Una política comercial que mejore la cuenta corriente la aprecia ($\beta_4<0$).
+\item Con \emph{tipo fijo}, $\bar E$, distinto del de vaciado, el mercado no se vacía solo. Si la moneda está infravalorada ($\bar E>E_0$), hay un exceso de oferta de divisas que el banco central compra con reservas; si está sobrevalorada, las pierde.
+\item El tipo que vaciaría el mercado si el banco central dejara de intervenir es el \concepto{tipo de cambio sombra}, $\tilde E$. Cuando las reservas se agotan, el tipo fijo cae si $\tilde E>\bar E$: es la base de los modelos de crisis cambiarias \vertema{3.B.17}.
+\end{itemize}
+
+\paragraph{c) Valoración}
+\begin{itemize}
+\item Trata los movimientos de capital como \emph{flujos} permanentes, cuando son ajustes de \emph{stocks}: un diferencial de tipos de interés provoca una recomposición de las carteras, una entrada de capital de una vez, no un flujo indefinido.
+\item Los datos tampoco lo apoyan: no hay una relación fuerte y sistemática entre los movimientos del tipo de cambio y la cuenta corriente \parencite{Mussa1984Theory}.
+\item No invalida lo esencial: es la interacción de la oferta y la demanda lo que fija el tipo de cambio. Pero esas ofertas y demandas hay que explicarlas como demandas de activos, que es lo que hará el bloque~\ref{sec:activos}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La paridad del poder adquisitivo: flujos de bienes}\label{sec:ppa}
+
+\begin{itemize}
+\item Una vez visto el enfoque de flujos, pasamos a la teoría más antigua del tipo de cambio: la que lo liga a los precios por el arbitraje de bienes. Primero la paridad en sí y después por qué falla, con el modelo de \autor{Balassa}-\autor{Samuelson}.
+\end{itemize}
+
+\subsubsection{La PPA absoluta y relativa}\label{sec:ppa-modelo}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item La \concepto{paridad del poder adquisitivo} (PPA) dice que una misma cesta de bienes debe costar lo mismo en todos los países: el tipo de cambio nominal se ajusta para igualar el poder de compra de las monedas \parencite{TaylorTaylor2004PPP}.
+\item \emph{Origen}: la idea aparece en la Escuela de Salamanca, en el siglo XVI \parencite{Azpilcueta1556Cambios,GriceHutchinson1952School}. El nombre lo pone \textcite{Cassel1918Abnormal}, en el debate sobre las paridades a las que debían volver las monedas tras las inflaciones de la Primera Guerra Mundial.\footnote{\textcite[138-139]{Cassel1922Money}: «Nuestra disposición a pagar un cierto precio por el dinero extranjero se debe, en última instancia y en esencia, a que ese dinero tiene un poder de compra sobre los bienes y servicios de ese país extranjero. Por otra parte, cuando ofrecemos tanto o cuanto de nuestro dinero, en realidad ofrecemos un poder de compra sobre los bienes y servicios de nuestro país. Nuestra valoración de una moneda extranjera en términos de la nuestra depende, por tanto, sobre todo del poder de compra relativo de las 2 monedas en sus respectivos países» (traducción propia).}
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item Los bienes se comercian libremente: no hay barreras al comercio ni costes de transporte.
+\item Los mercados son perfectamente competitivos: las empresas no tienen poder de mercado y no pueden discriminar precios entre países.
+\item Los bienes son homogéneos y comerciables, y la cesta de consumo es la misma en todos los países.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item \emph{Ley del precio único}: con esos supuestos no hay oportunidades de arbitraje, y el precio de cada bien expresado en la misma moneda es igual en todas partes, $P_k=E\,P^*_k$.
+\item \emph{PPA absoluta}: si se cumple para todos los bienes y las cestas son iguales, se cumple para los niveles de precios:
+  \begin{equation}\label{eq:ppa-absoluta}
+  P=E\,P^*\quad\Longleftrightarrow\quad E=\frac{P}{P^*}\quad\Longleftrightarrow\quad q\equiv\frac{E\,P^*}{P}=1 .
+  \end{equation}
+  Cuanto más alto es el nivel de precios de un país respecto al extranjero, más depreciada tiene que estar su moneda, y el tipo de cambio real es constante e igual a 1.
+\item \emph{PPA relativa}: los supuestos no se cumplen, pero si las barreras, los no comerciables o las diferencias de cesta son estables en el tiempo, se cumplen las tasas de variación. Tomando logaritmos en $q=EP^*/P$ y derivando respecto al tiempo, $\gamma_q\simeq\gamma_E+\pi^*-\pi$ \vertema{3.B.11}, y con $\gamma_q=0$:
+  \begin{equation}\label{eq:ppa-relativa}
+  \gamma_E=\pi-\pi^* .
+  \end{equation}
+  La moneda del país con más inflación se deprecia en la diferencia de inflaciones, y el tipo de cambio real es constante, aunque no tiene por qué ser 1.\footnote{La PPA relativa es menos restrictiva: admite que los precios en una moneda común difieran entre países, siempre que la diferencia no cambie. La absoluta implica la relativa ($q=1$ es un caso de $q$ constante), pero no al revés.}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item Los determinantes del tipo de cambio nominal son los niveles de precios (versión absoluta) o las inflaciones (versión relativa); el tipo de cambio real no cambia.
+\item Si la PPA se cumple a largo plazo, las desviaciones del tipo real son transitorias: el tipo real \emph{revierte a la media}.\footnote{Una rama de la literatura, iniciada por \textcite{Roll1979PPP}, sostiene que no tiene por qué volver. Si los agentes tienen expectativas racionales y especulan con bienes, el rendimiento esperado de comprar un bien extranjero y guardarlo un periodo, $\mathbb{E}_t[\Delta p^*_{t+1}]+\mathbb{E}_t[\Delta e_{t+1}]-\mathbb{E}_t[\Delta p_{t+1}]$ en moneda nacional, tiene que ser igual al de guardar uno nacional, es decir, nulo en términos relativos. Como ese rendimiento es $\mathbb{E}_t[\Delta q_{t+1}]$ (con $q\equiv e+p^*-p$ en logaritmos), el tipo real sería un paseo aleatorio, $q_{t+1}=q_t+\eta_{t+1}$ con $\mathbb{E}_t[\eta_{t+1}]=0$. Es la llamada PPA \emph{ex ante} o de mercados eficientes: la mejor predicción del tipo real de mañana es el de hoy, las perturbaciones son permanentes y la PPA no se cumpliría ni a largo plazo. Otros autores no comparten esta conclusión.} Es el ancla de largo plazo de los modelos monetarios (\ref{sec:monetario}).
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+\begin{itemize}
+\item \emph{A corto plazo no se cumple}: con tipos flexibles, el tipo nominal se mueve unas 3 veces más que los precios relativos, y el tipo real se mueve casi a la par que el nominal \parencite{Mussa1984Theory}; con tipos flexibles, el tipo real es mucho más volátil que con tipos fijos \parencite{Mussa1986Nominal}.
+\item \emph{A largo plazo se cumple la relativa}, pero despacio: las desviaciones tardan de 3 a 5 años en reducirse a la mitad \parencite{Rogoff1996PPA,TaylorTaylor2004PPP}. Se cumple mejor con inflaciones muy altas, cuando dominan las perturbaciones monetarias, como en la hiperinflación alemana de los años 20 \parencite{Frenkel1978PPP}.
+  \begin{itemize}
+  \item Pegatina: «dar tiempo al tiempo». La PPA se cumple, pero a su ritmo.
+  \end{itemize}
+\item \emph{La paradoja de la PPA} \parencite{Rogoff1996PPA}: una volatilidad tan alta del tipo real solo parece explicable con perturbaciones monetarias y precios rígidos, pero los precios se ajustan en 1 o 2 años, no en 3 a 5. ¿Cómo puede ser a la vez tan volátil y tan lento en volver?
+\item \emph{Una explicación, la no linealidad}: con costes de transporte y de entrar en el mercado, no compensa arbitrar las diferencias pequeñas, y el tipo real se mueve sin volver dentro de una banda. Fuera de ella, el arbitraje lo devuelve, y más deprisa cuanto mayor es la desviación (lo intuyó \autor{Eli Heckscher} en 1916). Con perturbaciones del 1 al 5~\%, la vida media es inferior a 3 años, y con las mayores, mucho menor \parencite{TaylorPeelSarno2001Nonlinear,TaylorTaylor2004PPP}.
+\item Los contrastes (regresiones, raíz unitaria, cointegración entre $e$, $p$ y $p^*$, paneles y series de 2 siglos) y las demás explicaciones de la persistencia están en el anexo~\ref{anexo:ppa}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{El índice Big Mac.} \emph{The Economist} lo publica desde 1986 como una forma desenfadada de aplicar la PPA absoluta a un solo bien, la hamburguesa Big Mac de McDonald's, que se vende casi igual en más de 50 países.
+\begin{itemize}
+\item La \emph{PPA Big Mac} es el tipo de cambio que haría que la hamburguesa costase lo mismo en dólares en todas partes. Si al tipo de mercado sale más cara que en Estados Unidos, la moneda está sobrevalorada respecto a esa PPA; si sale más barata, infravalorada.
+\item En julio de 2026, un Big Mac costaba 6,22 dólares en Estados Unidos y 6,19 euros en la zona del euro, de modo que la PPA Big Mac estaba casi en la paridad (0,995 euros por dólar). Al tipo de mercado, 0,874 euros por dólar, costaba 7,08 dólares: el euro estaba sobrevalorado un 13,8~\% \parencite{Economist2026BigMacDatos} (gráfico~\ref{fig:big-mac}).
+\item El franco suizo estaba sobrevalorado un 45~\%; el yen, infravalorado un 50~\%, el renminbi un 37~\% y la rupia indonesia un 62~\%.
+\item Las monedas de los países pobres salen casi siempre «baratas»: la hamburguesa lleva mucho trabajo local no comerciable, que allí cuesta menos. Es el efecto \autor{Balassa}-\autor{Samuelson} (\ref{sec:balassa-samuelson}), y por eso \emph{The Economist} publica también un índice ajustado por el PIB por habitante: con él, el renminbi pasa de estar infravalorado un 37~\% a un 24~\%, y el euro, de sobrevalorado un 14~\% a un 29~\%.
+\end{itemize}
+\begin{figuracaja}
+\caption{El índice Big Mac, julio de 2026: desviación del tipo de cambio de mercado respecto a la PPA Big Mac frente al dólar (\%; positivo, moneda sobrevalorada)}\label{fig:big-mac}
+\grafico[0.8\textwidth]{big-mac}
+\fuente{\emph{The Economist}, índice Big Mac de julio de 2026, sin ajustar \parencite{Economist2026BigMacDatos}. Elaboración propia.}
+\end{figuracaja}
+Datos y método: \href{https://www.economist.com/interactive/big-mac-index}{economist.com/interactive/big-mac-index} \parencite{Economist2026BigMac}.
+\end{anotaciones}
+
+\paragraph{d) Valoración}
+\begin{itemize}
+\item Las desviaciones a corto plazo llevaron a muchos economistas a abandonarla como teoría del tipo de cambio: muy pocos defienden hoy que se cumpla de forma continua.
+\item Pero la PPA relativa sirve como \emph{ancla de largo plazo} del tipo de cambio real, y sus estimaciones se usan como uno de los indicadores del ajuste del tipo nominal. La retoma el enfoque monetario (\ref{sec:monetario}).
+\item Es más una condición de equilibrio que una teoría completa: dice cómo se relacionan el tipo de cambio y los precios, pero no qué mueve a cada uno. Y sus supuestos no se cumplen, que es lo que estudia el modelo siguiente.
+\end{itemize}
+
+\subsubsection{Las desviaciones de la PPA: el efecto \autor{Balassa}-\autor{Samuelson}}\label{sec:balassa-samuelson}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item La PPA falla porque fallan sus supuestos:
+  \begin{itemize}
+  \item \emph{hay barreras y costes de transporte}, como señaló ya \autor{Cassel}, y crean una banda dentro de la cual no compensa arbitrar;
+  \item \emph{hay competencia imperfecta}: las empresas con poder de mercado discriminan precios entre países y los mantienen en la moneda del comprador aunque cambie el tipo de cambio (\emph{pricing to market}) \parencite{Krugman1987PTM,Dornbusch1987Prices}. Además, gran parte del comercio se factura en dólares \parencite{Gopinath2020DCP}. Por eso el traspaso del tipo de cambio a los precios es incompleto \vertema{3.A.32} \vertema{3.A.37};
+  \item \emph{no todos los bienes se comercian}: los servicios no comerciables no tienen un precio que iguale el arbitraje.
+  \end{itemize}
+\item El último caso lo formaliza el modelo de \autor{Balassa}-\autor{Samuelson}. ¿Por qué un corte de pelo es más caro en Madrid que en Bogotá, y por qué los países ricos tienen niveles de precios más altos? \textcite{Harrod1933International}, \textcite{Balassa1964} y \textcite{Samuelson1964} lo explican por la productividad: los países ricos lo son, sobre todo, porque son más productivos en los bienes que se comercian.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item Hay 2 sectores en cada país: comerciables ($T$) y no comerciables ($N$).
+\item Los comerciables cumplen la ley del precio único, $P_T=E\,P^*_T$.
+\item Hay un solo factor, el trabajo, móvil entre sectores pero no entre países, con productividades $A_T$ y $A_N$: $Y_j=A_jL_j$, con $j=T,N$.
+\item Hay competencia perfecta: el precio es igual al coste marginal en cada sector.
+\item El nivel de precios pondera los no comerciables con el mismo peso, $\omega_N$, en los 2 países.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item Como el trabajo es móvil, el salario nominal es el mismo en los 2 sectores e igual al valor del producto marginal, $W=P_TA_T=P_NA_N$. El precio relativo de los no comerciables lo fija la productividad relativa:
+  \begin{equation}\label{eq:bs-precio-relativo}
+  \frac{P_N}{P_T}=\frac{A_T}{A_N}\quad\Longleftrightarrow\quad p_N-p_T=a_T-a_N ,
+  \end{equation}
+  con las minúsculas en logaritmos ($a\equiv\ln A$).
+\item El nivel de precios pondera los 2 sectores, $p=(1-\omega_N)\,p_T+\omega_N\,p_N=p_T+\omega_N\,(p_N-p_T)$, y lo mismo fuera.
+  \Needspace{12\baselineskip}
+\item Sustituyendo en el tipo real, $q\equiv e+p^*-p$, con la ley del precio único en los comerciables ($e+p^*_T-p_T=0$) y \eqref{eq:bs-precio-relativo} en los 2 países:
+  \funcionclave[eq:balassa-samuelson]{q=-\,\omega_N\big[(a_T-a_N)-(a^{*}_T-a^{*}_N)\big]}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item El país cuya productividad en los comerciables crece más que en los no comerciables, y más que en el extranjero, ve \emph{apreciarse} su tipo real ($\downarrow q$), sin que cambie el tipo nominal de los comerciables (gráfico~\ref{fig:balassa-samuelson}):
+  \begin{itemize}
+  \item sube la productividad en los comerciables y, con su precio fijado por la ley del precio único, sube el salario en ese sector;
+  \item como el trabajo es móvil, sube el salario en toda la economía;
+  \item los no comerciables, sin más productividad, suben su precio para cubrir el mayor coste;
+  \item sube el nivel de precios y se aprecia el tipo de cambio real.
+  \end{itemize}
+\item Los países ricos tienen niveles de precios más altos (el llamado \emph{efecto Penn}): por eso las monedas de los países pobres salen «baratas» en el índice Big Mac.
+\item Con el tipo nominal fijo, o dentro de una unión monetaria, la apreciación real llega por una inflación más alta: los países que convergen tienen más inflación sin perder competitividad en los comerciables \vertema{3.B.11} \vertema{3.B.16}.
+\item Es una teoría del precio \emph{relativo} de los no comerciables, y de él depende el tipo real: no explica los niveles absolutos de precios.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El efecto \autor{Balassa}-\autor{Samuelson}}\label{fig:balassa-samuelson}
+\grafico[0.9\textwidth]{balassa-samuelson}
+\fuente{elaboración propia a partir de \textcite{Balassa1964} y \textcite{Samuelson1964}.}
+\end{figure}
+
+\paragraph{c) Extensiones}
+\begin{itemize}
+\item \emph{Con capital}: si hay capital además de trabajo y el capital se mueve entre países, el tipo de interés mundial fija su coste y el resultado es el mismo, con los coeficientes de las participaciones del trabajo en cada sector \parencite[cap.~4]{ObstfeldRogoff1996Foundations}.
+\item \emph{Con demanda}: el modelo determina el precio relativo solo por la oferta. Si el trabajo no es perfectamente móvil, el gasto público, que se dirige sobre todo a los no comerciables, y el desplazamiento de la demanda hacia los servicios cuando sube la renta también los encarecen \parencite{DeGregorioGiovanniniWolf1994International}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item En el corte transversal funciona: los niveles de precios suben con la renta por habitante. La apreciación real del yen frente al dólar en los años 70 y 80, mientras Japón alcanzaba a Estados Unidos, fue el ejemplo clásico; más recientemente, se ha discutido si se aplica a China.
+\item En las series temporales el apoyo es más débil y depende de la muestra. Si se tiene en cuenta que la productividad mueve el tipo real de equilibrio, la vuelta a ese equilibrio es más rápida de lo que se pensaba \parencite{ChongJordaTaylor2012Harrod}; pero a corto plazo la variación del tipo real la explican sobre todo los comerciables, no los servicios \parencite{Engel1999Accounting}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item Da una razón por la que una parte de las desviaciones de la PPA no se corrige: no son desequilibrios, sino un equilibrio que se mueve. En un país que converge, la apreciación real no es una pérdida de competitividad preocupante: es el efecto colateral de crecer.
+\item Sus límites: supone que la ley del precio único se cumple en los comerciables, y no se cumple a corto plazo (diferenciación del producto, \emph{pricing to market}), y deja fuera la demanda.
+\item Con los precios dados, la productividad también aprecia la moneda a largo plazo por otro camino, el de la demanda de los bienes nacionales, que se abaratan; el anexo~\ref{anexo:mishkin} reúne estos factores reales y los reconcilia con \autor{Balassa}-\autor{Samuelson}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Las paridades de intereses (PCI y PNCI): flujos de capitales}\label{sec:paridades}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item Una vez vista la paridad de los bienes, pasamos a la de los activos. Si los capitales se mueven libremente, el tipo de cambio tiene que igualar la rentabilidad de invertir en activos nacionales y extranjeros: sin oportunidades de \emph{arbitraje} (paridad cubierta) ni de \emph{especulación} con beneficio esperado (paridad no cubierta).
+\item La popularizó \autor{John Maynard Keynes} en su \emph{Breve tratado sobre la reforma monetaria} \parencite{Keynes1923Tract}. Su derivación completa y su evidencia son materia de los mercados de divisas \vertema{3.B.13}; aquí interesa como teoría del tipo de cambio.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item \concepto{Movilidad perfecta de capitales}: la cartera se ajusta al instante a la deseada, sin costes de transacción ni controles. Basta, sin riesgo de impago, para la paridad cubierta.
+\item \concepto{Sustituibilidad perfecta} entre activos nacionales y extranjeros: a igual rentabilidad esperada, al inversor le da igual tener unos u otros (neutralidad al riesgo). Es más exigente y hace falta para la paridad no cubierta.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item Un euro invertido en casa rinde $1+i$. Cambiado a divisa, invertido fuera y vuelto a cambiar, rinde $(1+i^*)$ por el tipo al que se deshace la operación dividido por el de hoy.
+\item \concepto{Paridad cubierta de intereses} (PCI): si se cubre el riesgo con un contrato a plazo, el tipo al que se deshace es el tipo a plazo de hoy, y el arbitraje sin riesgo impone:\footnote{La misma lógica de arbitraje fija el precio a plazo de otros activos \vertema{3.B.13} \vertema{3.B.25}.}
+  \begin{equation}\label{eq:pci}
+  1+i=(1+i^{*})\,\frac{F_t^{t+1}}{E_t}\quad\Longrightarrow\quad i-i^{*}\approx\underbrace{\frac{F_t^{t+1}-E_t}{E_t}}_{\text{margen a plazo}} .
+  \end{equation}
+\item \concepto{Paridad no cubierta de intereses} (PNCI): si no se cubre, el tipo al que se deshace es el de contado futuro, desconocido, y con neutralidad al riesgo cuenta el esperado:
+  \begin{equation}\label{eq:pnci}
+  1+i=(1+i^{*})\,\frac{E^e_{t+1}}{E_t}\quad\Longrightarrow\quad i-i^{*}\approx\underbrace{\frac{E^e_{t+1}-E_t}{E_t}}_{\text{depreciación esperada}}\equiv\gamma E^e .
+  \end{equation}
+  Las aproximaciones salen de tomar logaritmos, que convierte el producto en una suma, $\ln(1+i)=\ln(1+i^*)+\ln E^e_{t+1}-\ln E_t$, y de $\ln(1+x)\approx x$ para $x$ pequeño.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item \emph{Como teoría del tipo de cambio}: despejando $E_t$ de \eqref{eq:pnci}, el tipo de contado de hoy depende del diferencial de intereses y del tipo esperado. Si sube $i$ con $i^*$ y $E^e_{t+1}$ dados, entran capitales y la moneda se aprecia hoy ($\downarrow E_t$) hasta que la depreciación esperada compense el diferencial. Es el canal del tipo de cambio de la política monetaria \vertema{3.A.37}.
+\item \emph{El cuadro de las paridades} (gráfico~\ref{fig:paridades}): la PCI, la PNCI, el efecto \autor{Fisher} internacional ($i-i^*=\pi^e-\pi^{*e}$) y la PPA relativa esperada ($\gamma E^e=\pi^e-\pi^{*e}$) unen 4 diferenciales.
+  \begin{itemize}
+  \item Si se cumplen todas, el tipo a plazo es un predictor insesgado del contado futuro ($F_t^{t+1}=E^e_{t+1}$) y los tipos de interés reales se igualan entre países ($r=r^*$).
+  \item Algunos autores convierten las paridades en un modelo del tipo de cambio: si el tipo a plazo predice sin sesgo, basta conocer el tipo esperado y los tipos de interés para tener el de contado \parencite{HelliwellBoothe1983,Gandolfo2002International}.
+  \end{itemize}
+\item Con expectativas estáticas ($\gamma E^e=0$), la PNCI se reduce a $i=i^*$, la balanza de pagos horizontal del modelo de \autor{Mundell}-\autor{Fleming} (\ref{sec:mundell-fleming}).
+\item Si los activos no son sustitutos perfectos, aparece una \concepto{prima de riesgo}, $i-i^*\approx\gamma E^e+\rho$, que es la base del enfoque de cartera (\ref{sec:cartera}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El cuadro de las paridades}\label{fig:paridades}
+\grafico[0.6\textwidth]{paridades}
+\fuente{elaboración propia a partir de \textcite[cap.~4]{Gandolfo2002International} y \textcite[cap.~2]{SarnoTaylor2002Economics}.}
+\end{figure}
+
+\paragraph{c) Evidencia empírica}
+\begin{itemize}
+\item \emph{La PCI} se cumplía casi exactamente hasta 2008. Desde entonces hay desviaciones persistentes, la \emph{base} de los \emph{swaps} de divisas, porque arbitrar consume balance de los bancos, que la regulación encarece \parencite{DuTepperVerdelhan2018Deviations}.
+\item \emph{La PNCI} falla a corto plazo: la moneda con el tipo de interés más alto, que debería depreciarse, tiende a apreciarse. Es la paradoja del margen \emph{forward} (\ref{sec:paradoja-forward}) \parencite{Fama1984Forward,FrootThaler1990}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+\begin{itemize}
+\item Las 2 paridades son relaciones de equilibrio entre el tipo de contado, el tipo a plazo, el esperado y los tipos de interés, no teorías completas: para cerrar el modelo hace falta decir qué determina las expectativas y los tipos de interés.
+\item Pero la PNCI es la pieza que convierte las expectativas en tipo de cambio de hoy en todos los modelos de activos del bloque~\ref{sec:activos}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El modelo IS-LM-BP (\autor{Mundell}-\autor{Fleming})}\label{sec:mundell-fleming}
+
+\begin{itemize}
+\item \textcite{Mundell1963Capital} y \textcite{Fleming1962Domestic}, sobre el análisis de \textcite{Meade1951}, llevan el IS-LM a la economía abierta con una tercera curva, la BP, en la que la cuenta financiera neta depende del diferencial de tipos, $\beta_K(i-i^{*})$ (lleva subíndice para distinguirla de los coeficientes $\beta$ de la regresión \eqref{eq:flujos-e}). Con tipo flexible, el tipo de cambio es el que equilibra la balanza de pagos dada la renta: es una teoría de \emph{flujos} y, más que del tipo de cambio, de política económica \vertema{3.A.32}.\footnote{El nombre de «modelo de \autor{Mundell}-\autor{Fleming}» lo popularizó \autor{Rudiger Dornbusch}: las primeras referencias publicadas son suyas, de 1976, y su manual lo generalizó \parencite{Boughton2003Origins,Dornbusch1976Policy}.}
+\item Con movilidad perfecta ($\beta_K\to\infty$) y expectativas estáticas, la PNCI se reduce a $i=i^{*}$ (la BP horizontal): una expansión monetaria deprecia la moneda, y una fiscal la aprecia sin mover la renta.
+\item Su límite como teoría del tipo de cambio es el de los flujos: no tiene \emph{stocks} ni expectativas. \textcite{Dornbusch1976Expectations} le añade expectativas racionales y precios rígidos, y de ahí sale la sobrerreacción (\ref{sec:dornbusch}).
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:tradicionales}}: la oferta y la demanda de divisas fijan el tipo de cambio, pero explicarlas como flujos no basta; la PPA lo ancla a los precios solo a largo plazo, y \autor{Balassa}-\autor{Samuelson} explica por qué ni siquiera entonces del todo; las paridades de intereses lo ligan cada día a los tipos de interés y a las expectativas.
+\item \emph{Nexo}: con estas piezas pasamos a los modelos que tratan el tipo de cambio como el precio de un activo.
+\end{itemize}
+
+% ==========================================================================
+\section{Enfoque moderno: modelos de activos (\emph{stocks})}\label{sec:activos}
+\minutos{12,5}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: tratar el tipo de cambio como el precio relativo de 2 activos explica a la vez su ancla de largo plazo (el dinero y los precios) y su volatilidad (las expectativas y la rigidez de los precios). Pero, a corto plazo, ningún modelo lo predice mejor que un paseo aleatorio.
+\item \emph{Nexo}: una vez vistos los flujos y las paridades, pasamos a los modelos que tratan el tipo de cambio como el precio de un activo. Se mueve para que los agentes quieran mantener los \emph{saldos} que existen de dinero y de bonos de cada país. Tras la ruptura de Bretton Woods, con capitales muy móviles, es el enfoque dominante.
+\item Todos los modelos de activos suponen \emph{movilidad perfecta} de capitales; se distinguen por la \emph{sustituibilidad} entre bonos nacionales y extranjeros \parencite{Gandolfo2002International}:
+  \begin{itemize}
+  \item el \emph{enfoque monetario} supone sustituibilidad perfecta (se cumple la PNCI): los bonos de los 2 países son un solo activo y basta con mirar el mercado de dinero;
+  \item el \emph{enfoque de cartera} supone sustituibilidad imperfecta: cuentan también las ofertas de bonos, y aparece una prima de riesgo.
+  \end{itemize}
+\item El enfoque monetario nace para la balanza de pagos con tipo fijo \parencite{FrenkelJohnson1976Monetary}: un exceso de oferta de dinero se va por la balanza de pagos y el banco central pierde reservas \vertema{3.B.12}. Con tipo flexible, el banco central no interviene, las reservas no cambian y lo que se ajusta es el tipo de cambio: es el \emph{enfoque monetario del tipo de cambio}.
+\item Cada modelo levanta un supuesto del anterior (tabla~\ref{tab:supuestos-activos}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los modelos de activos: qué supuesto levanta cada uno}\label{tab:supuestos-activos}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.3cm}>{\centering\arraybackslash}m{3cm}>{\centering\arraybackslash}m{3cm}>{\centering\arraybackslash}m{3cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Supuesto} & \textbf{Monetario flexible} & \textbf{\autor{Dornbusch}} & \textbf{Cartera (\autor{Branson})}\\
+\midrule
+Movilidad perfecta de capitales & sí & sí & sí\\
+Sustituibilidad perfecta (PNCI) & sí & sí & \cellcolor{tceesalmon}no: prima de riesgo\\
+Precios flexibles (PPA continua) & sí & \cellcolor{tceesalmon}no: solo a largo plazo & dados a corto plazo\\
+Demanda de dinero & $m-p=k\,y-h\,i$ & $m-p=k\,y-h\,i$ & \cellcolor{tceesalmon}parte de la riqueza\\
+Expectativas & racionales & regresivas (racionales con el $\theta$ adecuado) & estáticas a corto plazo\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Gandolfo2002International} y \textcite{SarnoTaylor2002Economics}. En salmón, el supuesto que levanta cada modelo.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Enfoque monetario: el \emph{stock} de dinero}\label{sec:monetario}
+
+\begin{itemize}
+\item El tipo de cambio es el precio relativo de 2 monedas, así que lo determinan la oferta y la demanda relativas de dinero.
+\item Los 2 modelos monetarios se distinguen por la flexibilidad de los precios: con precios flexibles, el modelo es de largo plazo; con precios rígidos, explica también el corto plazo.
+\end{itemize}
+
+\subsubsection{Precios flexibles: \autor{Frenkel}, \autor{Mussa} y \autor{Bilson}}\label{sec:monetario-flexible}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item El modelo monetario con precios flexibles es de \textcite{Frenkel1976Monetary}, \textcite{Mussa1976Exchange} y \textcite{Bilson1978Monetary}. Une la PPA, que liga el tipo de cambio a los precios, con la teoría cuantitativa, que liga los precios al dinero: el precio se determina en el mercado de dinero y, a través de la PPA, determina el tipo de cambio.\footnote{Un precedente más simple parte de la ecuación de cambios de \textcite{Fisher1911Purchasing}, $MV=PY$, cuyo antecedente es \textcite{Hume1752Money}, en los 2 países, y de la PPA absoluta: $E=P/P^*=(MV/Y)/(M^*V^*/Y^*)$. Con la PPA relativa, en tasas, $\gamma_E=(\gamma_M-\gamma_{M^*})+(\gamma_V-\gamma_{V^*})-(\gamma_Y-\gamma_{Y^*})$ \vertema{3.A.35}. Es el modelo de abajo con elasticidad-renta 1 y sin tipo de interés.}
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item Se cumple la PPA absoluta de forma continua: en logaritmos, $e=p-p^*$.
+\item Se cumple la PNCI: movilidad y sustituibilidad perfectas.\footnote{El enfoque es, implícitamente, de equilibrio general. Una economía abierta tiene 6 mercados: bienes, trabajo, dinero nacional, dinero extranjero, bonos nacionales y bonos extranjeros. Los precios y salarios flexibles vacían los de bienes y trabajo; el tipo de cambio flexible permite tratar los 2 de dinero como uno, y la sustituibilidad perfecta, los 2 de bonos como uno. Si el mercado de dinero está en equilibrio, el de bonos también lo está, por la ley de \autor{Walras}: basta con mirar el mercado de dinero.}
+\item La demanda de saldos reales de cada país, $(M/P)^D=Y^k\mathrm{e}^{-h\,i}$, crece con la renta y baja con el tipo de interés, con la misma forma en los 2 países. En logaritmos (salvo $i$):
+  \begin{equation}\label{eq:demanda-dinero-log}
+  m-p=k\,y-h\,i,\qquad m^*-p^*=k\,y^*-h\,i^* ,
+  \end{equation}
+  donde $k$ es la elasticidad-renta y $h$ la semielasticidad respecto al tipo de interés: son la $k$ y la $h$ de la demanda de dinero $M/P=kY-hi$, aquí en logaritmos \vertema{3.A.35}.
+\item La oferta de dinero y la renta, de pleno empleo, son exógenas.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item Despejando los precios de \eqref{eq:demanda-dinero-log}, $p=m-k\,y+h\,i$, restando los del extranjero y usando la PPA:
+  \funcionclave[eq:monetario]{e=(m-m^*)-k\,(y-y^*)+h\,(i-i^*)}
+\item Con la PNCI y la PPA relativa, el diferencial de intereses es el de inflación esperada, $i-i^*=\pi^e-\pi^{*e}$: se igualan los tipos de interés \emph{reales}, $r=r^*$ (paridad de intereses reales). La ecuación se puede escribir con $h\,(\pi^e-\pi^{*e})$ en el último término.
+\item \emph{El tipo de cambio como precio de un activo}: con expectativas racionales \vertema{3.A.6} y la PNCI en logaritmos, $i-i^*=\mathbb{E}_t[e_{t+1}]-e_t$, y \eqref{eq:monetario} se resuelve hacia delante:
+  \begin{equation}\label{eq:valor-presente}
+  e_t=\frac{1}{1+h}\sum_{j=0}^{\infty}\Big(\frac{h}{1+h}\Big)^{j}\,\mathbb{E}_t\big[(m-m^*)_{t+j}-k\,(y-y^*)_{t+j}\big] .
+  \end{equation}
+  El tipo de cambio de hoy es el valor descontado de los fundamentos esperados: cambia con las \emph{noticias} sobre el futuro aunque los fundamentos de hoy no cambien \parencite{Mussa1976Exchange,Frenkel1981News}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item \emph{Más dinero relativo} deprecia en la misma proporción ($\partial e/\partial m=1$): el dinero es neutral y la PPA traslada la subida de precios al tipo de cambio.\footnote{El lado derecho de \eqref{eq:monetario} mide el exceso de oferta de dinero relativo: todo lo que aumente la oferta de dinero relativa deprecia, y todo lo que aumente la demanda relativa aprecia.}
+\item \emph{Más renta relativa} aprecia: sube la demanda de dinero y, con la oferta dada, bajan los precios.
+\item \emph{Más tipo de interés relativo} \emph{deprecia}: refleja más inflación esperada (efecto \autor{Fisher}), baja la demanda de dinero, suben los precios y, por la PPA, el tipo de cambio. Es lo contrario de lo que dicen los modelos keynesianos y la intuición de la PNCI; \textcite{Frankel1979Mark} los reconcilia (\ref{sec:dornbusch}).
+\item El gráfico~\ref{fig:monetario-flexible} lo muestra con una subida permanente de la \emph{tasa de crecimiento} del dinero: el tipo de interés sube en lo que sube la inflación esperada, la demanda de dinero cae, y los precios y el tipo de cambio dan un salto al alza y crecen después más deprisa.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Modelo monetario con precios flexibles: subida permanente de la tasa de crecimiento del dinero en $t_0$}\label{fig:monetario-flexible}
+\grafico[0.8\textwidth]{monetario-flexible}
+\fuente{elaboración propia a partir de \textcite[cap.~16]{KrugmanObstfeldMelitz2022International}.}
+\end{figure}
+
+\paragraph{c) Evidencia empírica}
+\begin{itemize}
+\item Funciona con inflaciones muy altas, cuando dominan las perturbaciones monetarias, como en la hiperinflación alemana de los años 20 \parencite{Frenkel1976Monetary}. Entre las grandes monedas, con muy poca diferencia de crecimiento del dinero, apenas se ve relación \parencite{Mussa1984Theory}, y la predicción de que un tipo de interés más alto deprecia va contra la evidencia salvo con inflaciones excepcionales.
+\item Se ajustó bien a los primeros años de la flotación y dejó de hacerlo a finales de los 70; fuera de la muestra no supera a un paseo aleatorio \parencite{MeeseRogoff1983}. A horizontes de varios años, los fundamentos monetarios recuperan algo de capacidad de predicción \parencite{Mark1995}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+\begin{itemize}
+\item Es simple y da el ancla de largo plazo, los fundamentos monetarios y la PPA, pero sus supuestos son muy exigentes: PPA continua, precios y salarios flexibles, sustituibilidad y movilidad perfectas.
+\item Con precios flexibles, el tipo real no se mueve, y en los datos se mueve casi tanto como el nominal: hacen falta precios rígidos.
+\end{itemize}
+
+\subsubsection{Precios rígidos: la sobrerreacción de \autor{Dornbusch} (1976)}\label{sec:dornbusch}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item El modelo monetario no explica por qué el tipo de cambio es mucho más volátil que los precios y que sus fundamentos, ni por qué el tipo real se mueve casi como el nominal. \textcite{Dornbusch1976Expectations} le añade un supuesto realista: los precios de los bienes se ajustan despacio, y los de los activos, al instante.
+\item Con expectativas racionales, eso basta para que el tipo de cambio \concepto{sobrerreaccione} (\emph{overshooting}): ante una expansión monetaria se deprecia a corto plazo \emph{más} de lo que lo hará a largo plazo, sin especuladores irracionales ni burbujas.
+\item Pegatina: «las prisas no son buenas consejeras». Los mercados financieros se adelantan a los de bienes y se pasan de largo.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item País pequeño: $i^*$ está dado, y los precios extranjeros se normalizan a 1 ($p^*=0$). La renta está en su nivel de pleno empleo, $\bar y$.
+\item Movilidad y sustituibilidad perfectas: se cumple la PNCI.
+\item \emph{Precios rígidos a corto plazo}: el nivel de precios se ajusta poco a poco al exceso de demanda de bienes; a largo plazo se cumple la PPA.
+\item La demanda de dinero es la de \eqref{eq:demanda-dinero-log}.
+\item \emph{Expectativas regresivas}: se espera que el tipo de cambio vuelva a su valor de largo plazo, $\bar e$, a una velocidad $\theta$. Con el $\theta$ adecuado, esas expectativas son racionales: aciertan (anexo~\ref{anexo:dornbusch}).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item El modelo tiene 4 piezas, en logaritmos (salvo los tipos de interés):
+  \begin{align}
+  i&=i^{*}+\dot e^{\,e}\qquad\text{PNCI en tiempo continuo,}\label{eq:dornbusch-pnci}\\
+  \dot e^{\,e}&=\theta\,(\bar e-e),\quad \theta>0\qquad\text{expectativas regresivas,}\label{eq:dornbusch-expectativas}\\
+  m-p&=k\,\bar y-h\,i\qquad\text{mercado de dinero,}\label{eq:dornbusch-dinero}\\
+  \dot p&=\psi\,(d-\bar y),\quad d=\bar a+\nu\,(e-p)-b\,i\qquad\text{ajuste lento de los precios,}\label{eq:dornbusch-precios}
+  \end{align}
+  donde $\dot e^{\,e}$ es la depreciación esperada (la $\gamma E^e$ de la PNCI \eqref{eq:pnci}, en logaritmos y en tiempo continuo); $\theta$, la velocidad a la que se espera que el tipo vuelva a su largo plazo (la letra de \autor{Dornbusch}: aquí no es la aversión al riesgo); $\psi$, la velocidad de ajuste de los precios; $d$, la demanda de bienes, con $\bar a$ su parte autónoma, $\nu$ la sensibilidad al tipo de cambio real, $e-p$ (la misma $\nu$ del saldo comercial $XN=x\,Y^{*}-m\,Y+\nu\,q$ \vertema{3.A.32}), y $b$ la sensibilidad al tipo de interés (la de la IS).
+\item \emph{Largo plazo}: con $\dot p=0$ e $i=i^*$, $\bar p=m-k\,\bar y+h\,i^*$ y $\bar e=\bar p+(\bar y+b\,i^*-\bar a)/\nu$. Un aumento permanente de $m$ sube $\bar p$ y $\bar e$ en la misma proporción: el dinero es neutral, como en el modelo con precios flexibles.
+\item \emph{Equilibrio de los mercados de activos}: restando el equilibrio monetario de largo plazo del de corto, $i-i^*=(p-\bar p)/h$, y con \eqref{eq:dornbusch-pnci} y \eqref{eq:dornbusch-expectativas}:
+  \begin{equation}\label{eq:dornbusch-activos}
+  e=\bar e-\frac{1}{h\,\theta}\,(p-\bar p) .
+  \end{equation}
+  Si el nivel de precios está por debajo del de largo plazo, el tipo de interés está por debajo de $i^*$, y la moneda tiene que estar más depreciada que a largo plazo, para que se espere una apreciación que compense el menor interés.
+\item \emph{Una expansión monetaria permanente y no anticipada} ($dm>0$): $\bar e$ y $\bar p$ suben en $dm$, pero en el impacto $p$ no se mueve. De \eqref{eq:dornbusch-activos}:
+  \funcionclave[eq:sobrerreaccion]{\frac{de}{dm}=1+\frac{1}{h\,\theta}>1}
+\item \emph{Gráficamente} (gráfico~\ref{fig:dornbusch-mercados}: en el panel superior, la PNCI en el plano $(i,E)$; en el inferior, el mercado de dinero, con los saldos reales hacia abajo):
+  \begin{itemize}
+  \item con los precios fijos, la oferta real de dinero sube y el tipo de interés baja de $i_0$ a $i_1$ (efecto liquidez);
+  \item los agentes saben que a largo plazo el tipo de cambio será más alto, y la curva de la PNCI se desplaza \emph{hacia arriba}: a cada tipo de interés le corresponde una moneda más depreciada;
+  \item al nuevo tipo de interés, más bajo, le corresponde un tipo de cambio $E_1$ aún más alto que el de largo plazo, $E_2$: la moneda sobrerreacciona (del punto $A$ al $B$);
+  \item a medida que suben los precios, los saldos reales vuelven a su nivel inicial, el tipo de interés vuelve a $i_0$ y la moneda se aprecia hasta $E_2$ (punto $C$).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de \autor{Dornbusch}: los mercados de activos tras un aumento permanente de la oferta monetaria}\label{fig:dornbusch-mercados}
+\grafico[0.62\textwidth]{dornbusch-mercados}
+\fuente{elaboración propia a partir de \textcite[cap.~15]{KrugmanObstfeldMelitz2022International}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Dinámica} (gráfico~\ref{fig:dornbusch-trayectorias}): la depreciación real y el menor tipo de interés crean un exceso de demanda de bienes; los precios suben poco a poco, la oferta real de dinero baja, el tipo de interés vuelve a $i^*$ y la moneda se \emph{aprecia} hasta $\bar e$. Con precios flexibles, en cambio, el tipo de cambio saltaría de una vez a su nuevo nivel de largo plazo (en discontinua). La derivación completa, con el diagrama de fases, está en el anexo~\ref{anexo:dornbusch}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Trayectorias tras un aumento permanente y no anticipado de la oferta monetaria en $t_0$}\label{fig:dornbusch-trayectorias}
+\grafico[0.8\textwidth]{dornbusch-trayectorias}
+\fuente{elaboración propia a partir de \textcite{Dornbusch1976Expectations} y \textcite{Rogoff2002Dornbusch}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item El tipo de cambio puede ser \emph{muy volátil} a corto plazo y moverse a la vez de forma coherente con sus fundamentos: un salto brusco no prueba que haya especulación desestabilizadora.
+\item La sobrerreacción es \emph{mayor} cuanto \emph{menor} es $h$ (el tipo de interés cae más, en $dm/h$) y cuanto menor es $\theta$ (las expectativas tardan más en volver), y desaparece si los precios son flexibles. Con expectativas racionales, $\theta$ depende de lo rápido que se ajustan los precios: cuanto más lentos, más sobrerreacción.
+\item La política monetaria mueve el \emph{tipo de cambio real} a corto plazo, porque el nominal salta y los precios no: con precios rígidos a corto plazo y flexibles a largo plazo, cambia la competitividad a corto plazo y es neutral a largo plazo.
+\item Si la expansión se \emph{anuncia} antes de aplicarse, el tipo de cambio salta al anunciarse (menos que si no se anticipa), se sigue depreciando hasta que se aplica y después se aprecia hasta su nuevo nivel \parencite{Wilson1979Anticipated}.\footnote{Con el anuncio en $t_0$ y la expansión en $t_1$, la moneda se deprecia en $t_0$ y sigue depreciándose entre $t_0$ y $t_1$; desde $t_1$ se aprecia hacia su nuevo nivel de largo plazo, más alto que el inicial.\graficonota{dornbusch-anticipado}}
+\end{itemize}
+
+\paragraph{c) Extensiones}
+\begin{itemize}
+\item \emph{El diferencial de intereses reales}: \textcite{Frankel1979Mark} junta el modelo monetario y el de \autor{Dornbusch}. Con inflación esperada,
+  \begin{equation}\label{eq:frankel}
+  e=(m-m^*)-k\,(y-y^*)-\frac{1}{\theta}\big[(i-\pi^e)-(i^*-\pi^{*e})\big]+h\,(\pi^e-\pi^{*e}) .
+  \end{equation}
+  Una subida del tipo nominal que \emph{no} refleja más inflación esperada (una política monetaria restrictiva con precios rígidos) aprecia; una que la refleja deprecia. Así se resuelve la aparente contradicción entre el modelo monetario y la PNCI.
+\item \emph{Producción variable}: si la renta responde a corto plazo, parte del ajuste lo hace la producción, y la sobrerreacción puede no darse \parencite{Dornbusch1976Expectations}.
+\item \emph{PPA solo para los comerciables}: si la PPA vale solo para ellos, los factores reales, de oferta (dotaciones, productividad) o de demanda (preferencias, gasto público), mueven también el tipo de cambio nominal de largo plazo (\ref{sec:balassa-samuelson}).
+\item \emph{Microfundamentos}: en los modelos de la nueva macroeconomía abierta con precios rígidos \parencite{ObstfeldRogoff1995Redux} no hay sobrerreacción si los exportadores fijan los precios en su moneda; sí la hay si los fijan en la del comprador \parencite{BettsDevereux2000} (\ref{sec:corsetti-pesenti}).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item Apoya su mecanismo: al pasar de tipos fijos a flexibles, el tipo de cambio real se vuelve mucho más volátil sin que cambien los fundamentos reales, señal de que los precios son rígidos \parencite{Mussa1986Nominal}.
+\item Pero la sobrerreacción no es inmediata: tras una política monetaria restrictiva de Estados Unidos, el dólar se sigue apreciando durante 2 o 3 años antes de volver, la \concepto{sobrerreacción retardada} (\emph{delayed overshooting}) \parencite{EichenbaumEvans1995}; con otras formas de identificar la política monetaria, el momento del máximo es muy incierto \parencite{FaustRogers2003Monetary}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item Explica a la vez la volatilidad del tipo nominal y que el real se mueva casi como el nominal, y a largo plazo vuelve al modelo monetario. Para \textcite{Rogoff2002Dornbusch}, está entre los artículos más influyentes de la economía internacional desde la Segunda Guerra Mundial.
+\item Sus límites: la sobrerreacción de los datos es retardada; las expectativas regresivas son una forma reducida, y fuera de la muestra predice tan mal como los demás (\ref{sec:meese-rogoff}).
+\item La volatilidad que explica es uno de los costes de la flotación que se pesan al elegir el régimen cambiario \vertema{3.B.15}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Enfoque de cartera (\autor{Branson}):\cortetitulo{} dinero y otros activos financieros}\label{sec:cartera}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item El enfoque monetario mira solo el dinero porque supone que los bonos nacionales y extranjeros son sustitutos perfectos. Si no lo son, por el riesgo cambiario, el riesgo país o el sesgo hacia lo nacional, los inversores \emph{diversifican}, y el tipo de cambio se mueve también con las ofertas de bonos y con la riqueza.
+\item El modelo lleva a la economía abierta la teoría de la cartera de \textcite{Tobin1958Liquidity} y su enfoque de equilibrio general de los activos \parencite{Tobin1969General} \vertema{3.A.35}. Su precedente en la balanza de pagos es \textcite{McKinnonOates1966Implications}; lo formulan \textcite{Branson1977Asset} y \textcite{BransonHalttunenMasson1977}, y la síntesis de referencia es \textcite{BransonHenderson1985}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item País pequeño, con 3 activos en manos de los residentes: dinero, $M$; bonos nacionales, $B$, que rinden $i$; y bonos extranjeros, $B^*$, en divisa, que rinden $i^*+\gamma E^e$ en moneda nacional.
+\item \emph{Sustituibilidad imperfecta}: no se cumple la PNCI; la diferencia de rendimientos es una prima de riesgo.
+\item La demanda de cada activo es una parte de la \emph{riqueza} (no de la renta), que depende de los rendimientos.
+\item A corto plazo, los precios, la renta y los saldos de activos están dados, y las expectativas son estáticas ($\gamma E^e=0$). A medio plazo, $B^*$ cambia con la cuenta corriente.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item La riqueza financiera ($W$, local de este modelo) y el equilibrio de los 3 mercados son:
+  \begin{align}
+  W&=M+B+E\,B^{*},\label{eq:riqueza-branson}\\
+  M&=w_{\mathrm M}\big(\underset{-}{i},\,\underset{-}{i^{*}+\gamma E^e}\big)\,W,\qquad
+  B=w_{\mathrm B}\big(\underset{+}{i},\,\underset{-}{i^{*}+\gamma E^e}\big)\,W,\nonumber\\
+  E\,B^{*}&=w_{\mathrm B^*}\big(\underset{-}{i},\,\underset{+}{i^{*}+\gamma E^e}\big)\,W,\label{eq:demandas-branson}
+  \end{align}
+  con $w_{\mathrm M}+w_{\mathrm B}+w_{\mathrm B^*}=1$ las partes de la riqueza en cada activo (las de la cartera de \autor{Tobin}: aquí $w$ no es el salario). Por la ley de \autor{Walras}, si 2 mercados están en equilibrio, también el tercero.
+\item La sustituibilidad imperfecta se resume en una prima de riesgo, $i=i^*+\gamma E^e+\rho$, con $\rho$ creciente en la oferta relativa de activos nacionales: para que los inversores tengan más bonos nacionales, hay que pagarles más.
+\item \emph{Gráficamente}, en el plano $(i,E)$, con $i$ en abscisas, el mismo que el de \autor{Dornbusch} (gráfico~\ref{fig:branson}). Una depreciación ($\uparrow E$) sube el valor en moneda nacional de $B^*$ y, con él, la riqueza; por eso:
+  \begin{itemize}
+  \item $MM$ (dinero) tiene pendiente \emph{positiva}: la mayor riqueza aumenta la demanda de dinero, y $i$ tiene que subir para reducirla;
+  \item $BB$ (bonos nacionales) tiene pendiente \emph{negativa}: aumenta la demanda de bonos, y $i$ tiene que bajar;
+  \item $B^*B^*$ (bonos extranjeros) tiene pendiente \emph{negativa} y es \emph{menos inclinada} que $BB$: si sube $i$, se demandan menos bonos extranjeros, y hace falta una apreciación que reduzca su valor. La demanda de bonos nacionales responde más a $i$ que la de extranjeros.
+  \end{itemize}
+  Las pendientes, con su derivación, están en el anexo~\ref{anexo:cartera}.
+\item \emph{A medio plazo}, la cuenta corriente en moneda nacional es el saldo comercial, que depende del tipo real, más las rentas de los bonos extranjeros. Con tipo flexible y sin intervención, el superávit corriente es la acumulación de bonos extranjeros:
+  \begin{equation}\label{eq:acumulacion-branson}
+  E\,\dot B^{*}=\mathrm{CC}=XN(q)+i^{*}E\,B^{*} .
+  \end{equation}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de cartera: equilibrio a corto plazo, compra de bonos nacionales y compra de bonos extranjeros}\label{fig:branson}
+\grafico[0.62\textwidth]{branson}
+\fuente{elaboración propia a partir de \textcite{Branson1977Asset} y \textcite{BransonHenderson1985}. Plano $(i,E)$; $\uparrow E$ es depreciación.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item El tipo de cambio se mueve no solo con las perturbaciones del mercado de dinero, sino también con las de los mercados de bonos, porque los agentes recomponen su cartera hasta la diversificación deseada. La tabla~\ref{tab:branson} resume las perturbaciones habituales.
+\item \emph{La regla para mover las curvas}: a cada $E$, ¿qué $i$ vacía el mercado? ($MM$ y $BB$ se desplazan a izquierda o derecha); a cada $i$, ¿qué $E$? ($B^*B^*$, arriba o abajo).
+  \begin{itemize}
+  \item \emph{Expansión monetaria por compra de bonos nacionales}: $MM$ y $BB$ se desplazan a la izquierda; baja $i$ y se deprecia la moneda (punto $B$ del gráfico).
+  \item \emph{Expansión monetaria por compra de bonos extranjeros}: $MM$ a la izquierda y $B^*B^*$ hacia arriba; el efecto sobre el tipo de cambio es mayor (punto $C$), porque $B^*B^*$ es menos inclinada que $BB$.
+  \end{itemize}
+\item \emph{La intervención esterilizada funciona}: si el banco central compra divisas y vende bonos nacionales sin cambiar la cantidad de dinero, cambia la composición de las carteras y la moneda se deprecia. En el modelo monetario no tendría efecto \vertema{3.B.15}.
+\item \emph{Dinámica}: la depreciación mejora la cuenta corriente (si se cumple \autor{Marshall}-\autor{Lerner} \vertema{3.B.12}), se acumulan bonos extranjeros y la moneda se aprecia poco a poco. El tipo de cambio sobrerreacciona, como en \autor{Dornbusch}, pero no por la rigidez de los precios, sino por la interacción entre el tipo de cambio, la cuenta corriente y la riqueza.
+\item \emph{Largo plazo}: se alcanza cuando la cuenta corriente es nula y $B^*$ deja de cambiar: $XN(q)=-i^*E\,B^*$. Un país acreedor ($B^*>0$) puede tener un déficit comercial permanente, pagado con las rentas de sus activos.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Efectos a corto plazo en el modelo de cartera}\label{tab:branson}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{5.4cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.4cm}>{\centering\arraybackslash}m{1.1cm}>{\centering\arraybackslash}m{1.3cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Perturbación} & $MM$ & $BB$ & $B^*B^*$ & $i$ & $E$\\
+\midrule
+Más dinero, $\uparrow M$ (sube la riqueza) & izq. & izq. & arriba & $\downarrow$ & \textcolor{tceerojo}{$\uparrow$}\\
+Compra de bonos nacionales, $dM=-dB$ & izq. & izq. & --- & $\downarrow$ & \textcolor{tceerojo}{$\uparrow$}\\
+Compra de bonos extranjeros, $dM=-E\,dB^*$ & izq. & --- & arriba & $\downarrow$ & \textcolor{tceerojo}{$\uparrow\uparrow$}\\
+Intervención esterilizada, $dB=-E\,dB^*$ & --- & dcha. & arriba & $\uparrow$ & \textcolor{tceerojo}{$\uparrow$}\\
+Déficit público financiado con deuda, $\uparrow B$ & dcha. & dcha. & arriba & $\uparrow$ & ?\\
+Superávit corriente, $\uparrow B^*$ & dcha. & izq. & abajo & ? & \textcolor{tceeverde}{$\downarrow$}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{BransonHenderson1985} y \textcite{Gandolfo2002International}. En rojo, depreciación; en verde, apreciación. ?: depende de si los bonos nacionales sustituyen más al dinero o a los bonos extranjeros.}
+\end{table}
+
+\begin{notaopositor}
+En el cante basta con 2 curvas, $MM$ y $B^*B^*$: por la ley de \autor{Walras}, la tercera no añade nada. Para moverlas sin liarse: $MM$ y $BB$ se mueven a izquierda o derecha (a cada tipo de cambio, ¿qué tipo de interés vacía el mercado?); $B^*B^*$, arriba o abajo (a cada tipo de interés, ¿qué tipo de cambio?). La tabla de efectos se cuenta de palabra. En el déficit público financiado con deuda, el efecto sobre el tipo de cambio es ambiguo: la mayor riqueza aumenta la demanda de bonos extranjeros, pero el mayor tipo de interés la desvía hacia los nacionales.
+\end{notaopositor}
+
+\paragraph{c) Extensiones}
+\begin{itemize}
+\item \emph{Expectativas racionales}: el modelo las admite y mantiene casi todos sus resultados, pero obliga a distinguir las perturbaciones anticipadas, que ya están en el tipo de cambio de hoy, de las no anticipadas.
+\item \emph{Microfundamentos}: los modelos de intermediarios financieros con capacidad limitada para asumir riesgo dan una base a la prima de riesgo y al canal de cartera: los flujos de cartera mueven el tipo de cambio porque alguien tiene que absorberlos \parencite{GabaixMaggiori2015} (\ref{sec:gabaix-maggiori}).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item Los primeros contrastes encontraron algo de apoyo a que la cuenta corriente mueve el tipo de cambio \parencite{BransonHalttunenMasson1977}, pero la prima de riesgo que predicen las ofertas de bonos no aparece en los datos \parencite{Frankel1982Search}, y fuera de la muestra el modelo no supera al paseo aleatorio.
+\item Sí hay evidencia del canal de cartera en la intervención esterilizada \parencite{DominguezFrankel1993Does}, y la intervención ha servido para frenar la apreciación de las monedas emergentes ante entradas de capital \parencite{BlanchardAdlerCarvalho2015Can}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item \emph{Aportaciones}: da efectos parecidos a los del enfoque monetario, incluida la sobrerreacción, y un análisis más rico de las perturbaciones y de los canales: la prima de riesgo, la riqueza y la cuenta corriente como determinantes del tipo de cambio, y por qué puede funcionar la intervención esterilizada.
+\item \emph{Límites}: es más complejo; las demandas de activos no se derivan de la optimización; las expectativas son estáticas, y los saldos de bonos por monedas son difíciles de medir.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Contrastación empírica}\label{sec:contraste}
+
+\begin{itemize}
+\item Una vez vistos los modelos, pasamos a contrastarlos. Cada uno da una respuesta distinta a la pregunta de qué mueve el tipo de cambio (tabla~\ref{tab:modelos}); la evidencia dice que explican el largo plazo, pero no el corto.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las teorías del tipo de cambio en resumen}\label{tab:modelos}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.6cm}>{\raggedright\arraybackslash}m{3.6cm}>{\centering\arraybackslash}m{1.9cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Modelo} & \textbf{Determinantes de $E$} & \textbf{Horizonte} & \textbf{Efecto de $\uparrow m$} & \textbf{Efecto de $\uparrow i$}\\
+\midrule
+Balanza de pagos & precios, rentas y tipos de interés relativos (flujos) & corto & \textcolor{tceerojo}{deprecia} (por los precios y la renta) & \textcolor{tceeverde}{aprecia} (entran capitales)\\
+PPA & precios relativos & largo & \textcolor{tceerojo}{deprecia} en proporción & ---\\
+Monetario flexible & dinero, renta y tipos de interés relativos & largo & \textcolor{tceerojo}{deprecia} en proporción & \textcolor{tceerojo}{deprecia} (más inflación esperada)\\
+\autor{Dornbusch} & los mismos, con precios rígidos & corto y largo & \textcolor{tceerojo}{deprecia} más que en proporción & \textcolor{tceeverde}{aprecia} (política restrictiva)\\
+Cartera & ofertas de activos, riqueza y cuenta corriente & corto y medio & \textcolor{tceerojo}{deprecia} & \textcolor{tceeverde}{aprecia} (salvo deuda: ?)\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia. En rojo, depreciación; en verde, apreciación.}
+\end{table}
+
+\subsubsection{Los hechos de \autor{Mussa} (1979)}\label{sec:mussa}
+
+\begin{itemize}
+\item Un modelo del tipo de cambio tiene que explicar los hechos de la flotación. \textcite{Mussa1979Empirical} los ordena (tabla~\ref{tab:mussa}) y concluye que ningún modelo de los años 70 los explica todos.
+\item El primero es el más incómodo: las variaciones del tipo de cambio son casi por completo imprevisibles, y el margen a plazo anticipa, como mucho, una pequeña parte de ellas. Pegatina: «cada día trae su afán».
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los hechos de la flotación según \autor{Mussa}}\label{tab:mussa}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{2.2cm}>{\raggedright\arraybackslash}m{11.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Horizonte} & \textbf{Hecho}\\
+\midrule
+\multirow{4}{=}[-6pt]{\centering A corto plazo} & 1. El logaritmo del tipo de contado es, aproximadamente, un paseo aleatorio: las variaciones mensuales son grandes y casi todas imprevistas.\\
+ & 2. Los tipos de contado y a plazo se mueven juntos: las variaciones imprevistas del contado son, sobre todo, cambios en el tipo que se espera para el futuro.\\
+ & 3. El tipo nominal se mueve unas 3 veces más que los precios relativos, y el tipo real casi a la par que el nominal: la PPA no se cumple.\\
+ & 4. Los tipos de cambio sobrerreaccionan respecto a sus valores de equilibrio, que se mueven más suavemente.\\
+\midrule
+\multirow{3}{=}[-4pt]{\centering A largo plazo} & 5. Las monedas de los países con más inflación se deprecian, aproximadamente en la diferencia de inflaciones: la PPA relativa se cumple a largo plazo.\\
+ & 6. Solo en los países con un crecimiento monetario muy alto se deprecia claramente la moneda; entre las grandes monedas, la relación es débil.\\
+ & 7. No hay una relación fuerte y sistemática entre el tipo de cambio y la cuenta corriente.\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Mussa1979Empirical}, \textcite[15-17]{Mussa1984Theory} y \textcite[1691]{FrankelRose1995Survey}.}
+\end{table}
+
+\subsubsection{\autor{Meese} y \autor{Rogoff} (1983) y la desconexión}\label{sec:meese-rogoff}
+
+\begin{itemize}
+\item \emph{Idea}: si un modelo predice mal, ¿es porque no conocemos bien las condiciones iniciales o porque el modelo está mal especificado? Es la pregunta metodológica de \textcite{Blaug1992Methodology}, y el tipo de cambio es un buen ejemplo.
+\item \emph{El contraste} de \textcite{MeeseRogoff1983} tiene 3 ideas:
+  \begin{itemize}
+  \item \emph{fuera de la muestra}: se estiman los modelos (el monetario flexible, el de \autor{Dornbusch} y \autor{Frankel} y uno con la cuenta corriente) con una parte de los datos y se predice el resto, porque ajustarse bien dentro de la muestra no prueba nada;
+  \item \emph{frente a un paseo aleatorio}: la predicción ingenua de que el tipo de mañana será el de hoy;\footnote{Comparar con un paseo aleatorio no supone que el tipo de cambio lo siga: es tomar como referencia el modelo de predicción más simple, el de un agente que no tiene idea de lo que va a pasar y da la misma probabilidad a una apreciación que a una depreciación.}
+  \item \emph{con los fundamentos observados} (predicciones \emph{ex post}): se da a los modelos el valor que de verdad tuvieron el dinero, la renta o los tipos de interés, para que no fallen por predecirlos mal.\footnote{Por ejemplo, con datos de 1970 a 2020, se estiman las ecuaciones con los de 1970 a 1995 y se predice de 1996 a 2020 con los valores observados de las variables exógenas en esos años. La muestra de \autor{Meese} y \autor{Rogoff} iba de marzo de 1973 a junio de 1981.}
+  \end{itemize}
+\item \emph{Resultado}: a 1, 6 y 12 meses, ningún modelo predice mejor que el paseo aleatorio. El fallo no es de estimación sino de especificación: los modelos, o la estabilidad de sus parámetros, están mal. El error de un paseo aleatorio crece con el horizonte, y aun así no lo superan; solo a varios años los fundamentos monetarios recuperan algo de capacidad \parencite{Mark1995}.
+\item Es la manifestación más conocida de lo que \textcite{ObstfeldRogoff2000Puzzles} llaman la \concepto{paradoja de la desconexión} (\emph{exchange rate disconnect puzzle}): el tipo de cambio apenas se relaciona con los fundamentos macroeconómicos a corto y medio plazo.\footnote{Otra lectura posible de un comportamiento que parece aleatorio es el \emph{caos determinista}: un sistema dinámico determinista con dependencia sensible de las condiciones iniciales genera series que pasan por aleatorias \parencite{Lorenz1963Deterministic}. La economía empezó a contrastarlo en los años 80, más de 20 años después \parencite{Brock1986Distinguishing}. En los tipos de cambio, las no linealidades que se encuentran las explica sobre todo una volatilidad que cambia en el tiempo y se agrupa, no el caos \parencite{Hsieh1989Testing}: que el residuo de un modelo no sea ruido blanco no prueba que haya caos.}
+\end{itemize}
+
+\begin{notaopositor}
+\autor{Meese} y \autor{Rogoff} se cantan con 3 ideas: fuera de la muestra, frente a un paseo aleatorio y con los fundamentos observados. Si los modelos pierden incluso conociendo el valor futuro de los fundamentos, el problema es del modelo.
+\end{notaopositor}
+
+\begin{itemize}
+\item \emph{¿Son malos los modelos?}
+  \begin{itemize}
+  \item \textcite{EngelWest2005}: si el tipo de cambio es el valor presente de los fundamentos esperados \eqref{eq:valor-presente}, los fundamentos tienen raíz unitaria y el factor de descuento es próximo a 1, el tipo de cambio se comporta casi como un paseo aleatorio \emph{aunque el modelo sea correcto}. Perder frente al paseo aleatorio no basta para rechazarlo: el criterio debería ser si el tipo de cambio predice los fundamentos, y encuentran que algo los predice.
+  \item Con muchos países a la vez, el tipo de cambio sí se relaciona con los fundamentos nominales (precios, dinero, PIB nominal), mucho menos con los reales \parencite{SarnoSchmeling2014}.
+  \item Otros trabajos valoran los modelos con criterios económicos en lugar de estadísticos: si sus predicciones dan dinero a quien invierte con ellas.
+  \item El balance de \textcite{Rossi2013}: hay éxitos parciales (las reglas de \autor{Taylor}, los activos exteriores netos), pero dependen del país, del periodo y del horizonte, y ningún modelo supera al paseo aleatorio de forma sistemática.
+  \end{itemize}
+\item Las explicaciones de la desconexión y las nuevas líneas teóricas son el objeto del bloque~\ref{sec:recientes}.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:activos}}: el modelo monetario da el ancla de largo plazo; \autor{Dornbusch} explica la volatilidad con precios rígidos; el de cartera añade la prima de riesgo, la riqueza y la cuenta corriente. Los 3 explican el largo plazo, pero ninguno predice el corto.
+\item \emph{Nexo}: ¿qué falta en los modelos? Pasamos a las respuestas de los últimos 30 años.
+\end{itemize}
+
+% ==========================================================================
+\section{Desarrollos recientes}\label{sec:recientes}
+\minutos{7,5}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: desde \autor{Meese} y \autor{Rogoff}, la investigación ha explicado buena parte de lo que los modelos de activos no explicaban: por qué una inflación inesperada aprecia la moneda, por qué el tipo a plazo predice mal y por qué el tipo de cambio se desconecta de sus fundamentos. Lo ha hecho con la política monetaria como regla, con la microestructura del mercado y con intermediarios financieros que no pueden asumir todo el riesgo. Hoy se entiende mejor por qué el tipo de cambio es imprevisible a corto plazo, pero sigue sin poder predecirse.
+\item \emph{Nexo}: una vez visto el fracaso empírico de los modelos de activos, pasamos a las respuestas. Los resultados de \autor{Meese} y \autor{Rogoff} se han confirmado muchas veces y han provocado 2 reacciones opuestas:
+  \begin{itemize}
+  \item unos autores intentan \emph{mejorar los modelos estructurales} con técnicas más sofisticadas (modelos de corrección de errores, coeficientes que cambian en el tiempo, cointegración), sin mejoras apreciables en la mayoría de los casos;
+  \item otros toman el fallo de los modelos como un fallo de la teoría y se pasan al \concepto{análisis técnico}: buscan patrones en la evolución del tipo de cambio para predecirlo sin explicarlo. A quienes lo usan se les llama \emph{chartistas}, frente a los \emph{fundamentalistas}, que confían en los fundamentos de la teoría económica.\footnote{Se suele hablar indistintamente de análisis técnico y de análisis chartista, pero no son lo mismo: el chartista se basa solo en el estudio de los gráficos, y el técnico añade herramientas matemáticas o estadísticas, como las medias móviles o los indicadores de la fuerza de una tendencia \vertema{3.B.23}.}
+  \end{itemize}
+\item Entre los 2 extremos están los desarrollos de este bloque: las \emph{nuevas líneas teóricas}, que cambian un supuesto concreto de los modelos de activos, y los modelos con \emph{fundamentación microeconómica}, que derivan el tipo de cambio de las decisiones de hogares, empresas e intermediarios.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Nuevas líneas teóricas}\label{sec:nuevas-lineas}
+
+\begin{itemize}
+\item Cada una de las 3 líneas parte de un supuesto de los modelos de activos que falla en los datos:
+  \begin{itemize}
+  \item la regla de \autor{Taylor}, de la política monetaria exógena;
+  \item la paradoja del margen \emph{forward}, de la PNCI con expectativas racionales;
+  \item el tipo de cambio real de equilibrio, de la PPA como referencia del tipo real.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{La paradoja de la apreciación y la regla de \autor{Taylor}}\label{sec:taylor-tc}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item En los modelos de activos, el país con más inflación ve depreciarse su moneda: lo dicen la PPA (\ref{sec:ppa-modelo}) y el enfoque monetario, en el que la inflación esperada sube el tipo de interés y deprecia (\ref{sec:monetario-flexible}).
+\item Pero en los países con un objetivo de inflación, un dato de inflación peor de lo esperado \emph{aprecia} la moneda. Es la \concepto{paradoja de la apreciación}.
+  \begin{itemize}
+  \item \textcite{ClaridaWaldman2008} la comprueban en 10 países entre 2001 y 2005: en los minutos que siguen a un dato de inflación más alto de lo esperado, la moneda se aprecia, sobre todo donde el banco central tiene un objetivo de inflación.\footnote{La prensa financiera lo contaba así: «La inflación empuja al alza el dólar canadiense», titulaba el \emph{Financial Times} en mayo de 2007 \parencite{Garnham2007Canadian}.}
+  \item Va contra todo lo visto hasta ahora y necesita una explicación.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item Hasta ahora, la política monetaria era una perturbación exógena: el banco central cambiaba la cantidad de dinero. Ahora es \emph{endógena}: el banco central fija el tipo de interés con una \concepto{regla de \autor{Taylor}}, que lo sube cuando la inflación se aleja de su objetivo o la producción de su potencial \vertema{3.A.36}.
+\item Los 2 bancos centrales siguen una regla de este tipo y cumplen el \emph{principio de \autor{Taylor}}: suben el tipo nominal más que la inflación, para que suba el tipo real.
+\item Se cumple la PNCI y las expectativas son racionales.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item Restando las 2 reglas, el diferencial de tipos de interés responde a los diferenciales de inflación y de brecha de producción \parencite{EngelWest2006Taylor,MolodtsovaPapell2009}:
+  \begin{equation}\label{eq:taylor-tc}
+  i_t-i^{*}_t=\phi_\pi\,(\pi_t-\pi^{*}_t)+\phi_x\,(x_t-x^{*}_t)+\varepsilon_t,\qquad \phi_\pi>1 ,
+  \end{equation}
+  donde $x_t$ y $x^*_t$ son las brechas de producción, y $\phi_\pi$ y $\phi_x$, las respuestas de la regla, las del 3.A.36. Aquí $\pi^*_t$ es la inflación \emph{extranjera}, no el objetivo de inflación.
+\item Una inflación más alta de lo esperado anuncia tipos de interés más altos, hoy y en los próximos meses.
+\item Por la PNCI, la moneda tiene que ofrecer una rentabilidad esperada igual a la extranjera: entran capitales y la moneda se \emph{aprecia} hoy, lo bastante para que la depreciación esperada desde entonces compense el mayor tipo de interés (gráfico~\ref{fig:paradoja-apreciacion}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Un dato de inflación inesperadamente alto en $t_0$: con dinero exógeno y con una regla de \autor{Taylor}}\label{fig:paradoja-apreciacion}
+\grafico[0.85\textwidth]{paradoja-apreciacion}
+\fuente{elaboración propia a partir de \textcite{ClaridaWaldman2008} y \textcite{EngelWest2006Taylor}. $\uparrow E$ es depreciación.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item Hacer endógena la política monetaria resuelve la paradoja: la moneda no se aprecia \emph{a pesar} de la inflación, sino por la respuesta que el mercado espera del banco central.
+\item El signo depende de la credibilidad: donde el banco central no tiene un objetivo creíble, una inflación inesperada se lee como más inflación futura, y la moneda se deprecia.
+\item Los fundamentos que importan para el tipo de cambio son los de la regla (la inflación y la brecha de producción relativas), no la cantidad de dinero.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+\begin{itemize}
+\item Los modelos con los fundamentos de la regla de \autor{Taylor} predicen fuera de la muestra mejor que el paseo aleatorio a 1 mes en muchas monedas frente al dólar \parencite{MolodtsovaPapell2009}, y el tipo real del marco frente al dólar que implican las reglas de los 2 bancos centrales se mueve con el observado \parencite{EngelWest2006Taylor}.
+\item Pero el resultado no se mantiene en todos los periodos ni en todos los países \parencite{Rossi2013}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+\begin{itemize}
+\item Es de los pocos enfoques que mejoran algo la predicción a corto plazo, y su lógica es la de la política monetaria actual.
+\item Pero sigue apoyándose en la PNCI, y la PNCI es justo lo que falla en los datos a corto plazo, que es la paradoja siguiente.
+\end{itemize}
+
+\subsubsection{La paradoja del margen \emph{forward}}\label{sec:paradoja-forward}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item Si se cumplen la PCI y la PNCI y las expectativas son racionales, el margen a plazo es la depreciación esperada, y esta es una predicción insesgada de la que ocurre. En la regresión de \textcite{Fama1984Forward}, en logaritmos,
+  \begin{equation}\label{eq:fama-tc}
+  \Delta e_{t+1}=\beta_0+\beta_1\,(f_t-e_t)+\varepsilon_{t+1},
+  \end{equation}
+  tendría que salir $\beta_0=0$ y $\beta_1=1$ \vertema{3.B.13}.
+\end{itemize}
+
+\paragraph{b) Evidencia empírica}
+\begin{itemize}
+\item La pendiente sale casi siempre \emph{negativa} en las grandes monedas: la media de unas 75 estimaciones publicadas es $-0{,}88$, y ninguna llega a 1 \parencite{FrootThaler1990}.
+\item La moneda con el tipo de interés más alto, que según la PNCI debería depreciarse, tiende a depreciarse menos de lo que dice el margen a plazo o incluso a apreciarse. Por eso gana dinero, en media, el \emph{carry trade}: endeudarse en la moneda de tipo bajo e invertir en la de tipo alto.
+\item Más que una apreciación sistemática, es un \emph{sesgo} del tipo a plazo como predictor: con una constante $\beta_0$ positiva y grande, la regresión puede predecir una depreciación, aunque menor que el margen \parencite{Hodrick1987Empirical}.
+\end{itemize}
+
+\paragraph{c) Valoración}
+\begin{itemize}
+\item Para las teorías del tipo de cambio es un problema serio: la PNCI es la pieza que convierte las expectativas en tipo de cambio de hoy en el enfoque monetario y en \autor{Dornbusch} (bloque~\ref{sec:activos}).
+\item Las salidas son 3:
+  \begin{itemize}
+  \item \emph{una prima de riesgo que varía en el tiempo} \parencite{Fama1984Forward}, que acerca los modelos al de cartera (\ref{sec:cartera}) y que retoman los intermediarios financieros (\ref{sec:gabaix-maggiori});
+  \item \emph{sucesos raros} que el mercado teme y la muestra no recoge, como una fuerte devaluación: el \emph{peso problem};
+  \item \emph{expectativas no racionales y heterogéneas}: con fundamentalistas y chartistas que se turnan, el tipo de cambio puede alejarse de sus fundamentos durante años y volver de golpe \parencite{FrankelFroot1990Chartists,DeGrauweGrimaldi2006}, en la línea de la economía conductual \vertema{3.A.1} \vertema{3.A.10}.
+  \end{itemize}
+\item La última da una explicación de la desconexión. Las demás teorías de las expectativas (las noticias, las burbujas racionales y los chivos expiatorios) están en el anexo~\ref{anexo:expectativas}.
+\end{itemize}
+
+\subsubsection{El tipo de cambio real de equilibrio: FEER, BEER y EBA}\label{sec:equilibrio-real}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item La tercera línea cierra lo que abrió la PPA (\ref{sec:ppa}): ¿está sobrevalorada una moneda? La PPA da una referencia ingenua, como el índice Big Mac, pero \autor{Balassa}-\autor{Samuelson} muestra que el tipo real de equilibrio se mueve con la productividad (\ref{sec:balassa-samuelson}).
+\item Los organismos internacionales y los analistas estiman un \concepto{tipo de cambio real de equilibrio}, el que corresponde a los fundamentos, y llaman \emph{desalineamiento} a la diferencia con el observado.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\begin{itemize}
+\item \emph{Con un modelo de largo plazo}: en una economía pequeña y abierta con el tipo de interés mundial dado, el ahorro que no se invierte dentro sale fuera, y el tipo real se ajusta para que las exportaciones netas lo igualen, $S-I(r^*)=XN(q)$ \parencite[cap.~6]{Mankiw2014Macroeconomia}.
+  \begin{itemize}
+  \item Una política fiscal expansiva reduce el ahorro y aprecia el tipo real.
+  \item Un arancel aumenta la demanda de exportaciones netas y aprecia el tipo real, sin cambiar las exportaciones netas, que fija el ahorro.
+  \end{itemize}
+\item \emph{Con métodos empíricos} (tabla~\ref{tab:equilibrio-real}): el tipo de equilibrio fundamental \parencite{Williamson1983Exchange}, el de equilibrio conductual \parencite{ClarkMacDonald1999BEER} y el método del FMI \parencite{FMI2013EBA}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El tipo de cambio real de equilibrio: los métodos}\label{tab:equilibrio-real}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.9cm}>{\raggedright\arraybackslash}m{5.2cm}>{\raggedright\arraybackslash}m{5.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Método} & \textbf{Qué tipo real busca} & \textbf{Cómo se estima}\\
+\midrule
+PPA (índice Big Mac) & el que iguala los precios de una cesta & comparación de precios; ingenuo: no recoge la productividad\\
+FEER \newline (\autor{Williamson}, 1983) & el de \emph{equilibrio fundamental}: pleno empleo y una cuenta corriente sostenible & se fija la cuenta corriente «sostenible» y se busca el tipo real que la da\\
+BEER \newline (\autor{Clark} y \autor{MacDonald}, 1999) & el de \emph{equilibrio conductual}: el que predicen los fundamentos & regresión del tipo real sobre la productividad relativa, la relación real de intercambio y los activos exteriores netos\\
+EBA (FMI, 2013) & el que da la cuenta corriente que corresponde a los fundamentos y a unas políticas deseables & regresión de la cuenta corriente de muchos países; la brecha se traduce en una brecha del tipo real\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Williamson1983Exchange}, \textcite{ClarkMacDonald1999BEER} y \textcite{FMI2013EBA}.}
+\end{table}
+
+\paragraph{c) Evidencia empírica}
+\begin{itemize}
+\item El FMI publica cada año su evaluación en el \emph{External Sector Report}. En el último, con datos de 2025, juzga la posición exterior de la zona del euro en línea con sus fundamentos; la de Estados Unidos, más débil, y las de China, Alemania y España, más fuertes, y la de Japón, algo más fuerte \parencite{FMI2026ESR} \vertema{3.B.11} \vertema{3.B.22}.
+  \begin{itemize}
+  \item Una posición más fuerte de lo que justifican los fundamentos corresponde a un tipo real infravalorado, y una más débil, a uno sobrevalorado.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{d) Valoración}
+\begin{itemize}
+\item Son la herramienta práctica de hoy, pero incorporan juicios sobre cuáles son los niveles «deseables» de la cuenta corriente o de las políticas, y sus estimaciones cambian mucho de un método a otro.
+\item Sirven para orientar la supervisión y el debate de política, no para predecir el tipo de cambio.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Fundamentación microeconómica sólida}\label{sec:micro}
+
+\begin{itemize}
+\item Una vez vistas las nuevas líneas, que cambian un supuesto de los modelos de activos, pasamos a los modelos que derivan el tipo de cambio de las decisiones de los agentes. Atacan el problema por 3 lados:
+  \begin{itemize}
+  \item la nueva macroeconomía abierta, por la forma en que las empresas fijan los precios;
+  \item la microestructura, por la forma en que se negocia en el mercado de divisas;
+  \item los mercados financieros imperfectos, por la capacidad limitada de los intermediarios para asumir riesgo.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{La nueva macroeconomía abierta: \autor{Corsetti} y \autor{Pesenti}}\label{sec:corsetti-pesenti}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item La \concepto{nueva macroeconomía de la economía abierta} (NOEM, por sus siglas en inglés) nace con el modelo \emph{Redux} de \textcite{ObstfeldRogoff1995Redux}: modelos de equilibrio general dinámicos con agentes que optimizan, competencia monopolística y rigideces nominales, en 2 países \vertema{3.A.7} \vertema{3.B.19}.
+  \begin{itemize}
+  \item Son modelos de ciclo real ampliados con rasgos neokeynesianos y llevados a la economía abierta.
+  \item Se han convertido en el modelo de trabajo de muchos bancos centrales y organismos internacionales, como el SIGMA de la Reserva Federal \parencite{ErcegGuerrieriGust2005} o el GEM del FMI \parencite{Bayoumi2004GEM}.
+  \end{itemize}
+\item \textcite{CorsettiPesenti2009} reducen un modelo de este tipo a unas pocas curvas, para que se pueda enseñar como el IS-LM. Para el tipo de cambio, su aportación es mostrar que lo que hace depende de la moneda en que las empresas fijan los precios.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\begin{itemize}
+\item En la versión simple, el tipo de cambio es el cociente de las políticas monetarias de los 2 países, $E=\mu/\mu^*$, con $\mu$ el tono de la política monetaria (el gasto nominal que sostiene; aquí $\mu$ no es el margen).
+\item \emph{Precios en la moneda del productor} (\emph{producer currency pricing}, PCP): el exportador extranjero fija su precio en su moneda, y el importador nacional paga $EP^*$.
+  \begin{itemize}
+  \item La depreciación que causa una expansión monetaria pasa entera a los precios de importación, y la depreciación nominal es real.
+  \item Aunque haya rigideces nominales internas, vuelve el resultado del modelo monetario con precios flexibles: el tipo de cambio salta de una vez a su valor de largo plazo y no hay sobrerreacción.
+  \end{itemize}
+\item \emph{Precios en la moneda del comprador} (\emph{local currency pricing}, LCP): el exportador extranjero fija su precio en la moneda nacional.
+  \begin{itemize}
+  \item El tipo de cambio apenas mueve los precios de importación, que es una rigidez nominal más.
+  \item Para absorber la misma expansión monetaria, el tipo de cambio tiene que moverse más: vuelve la sobrerreacción de \autor{Dornbusch} \parencite{BettsDevereux2000}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{c) Valoración}
+\begin{itemize}
+\item Aportan rigor microeconómico y permiten analizar el bienestar y la política óptima, y explican el traspaso incompleto del tipo de cambio a los precios.
+\item Pero sus resultados dependen de supuestos difíciles de contrastar (en qué moneda se fijan los precios, qué activos se negocian), y en su forma reducida predicen el tipo de cambio tan mal como los modelos clásicos.
+\item Hoy gran parte del comercio se factura en dólares, ni en la moneda del exportador ni en la del comprador, y el tipo de cambio frente al dólar pesa más que el bilateral en los precios y en el comercio \parencite{Gopinath2020DCP} \vertema{3.A.32} \vertema{3.A.37}.
+\end{itemize}
+
+\subsubsection{El flujo de órdenes: \autor{Evans} y \autor{Lyons} (2002)}\label{sec:evans-lyons}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item Las variables macroeconómicas de los modelos cambian despacio y no pueden explicar los movimientos del tipo de cambio a horizontes inferiores a 2 años. Hay que mirar cómo se negocia en el mercado de divisas: qué información tienen los agentes y cómo llega a los precios.
+\item Es el enfoque de la \concepto{microestructura} del mercado de divisas \parencite{EvansLyons2002}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item Con la información pública apenas hay margen para predecir el tipo de cambio. Pero parte de la información sobre los fundamentos está dispersa y es \emph{privada}: está en las operaciones de los clientes.
+\item El mercado tiene 2 tipos de agentes: los \emph{creadores de mercado}, que cotizan precios de compra (\emph{bid}) y de venta (\emph{ask}), y sus clientes, que operan con ellos \vertema{3.B.13}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item Las órdenes de los clientes son información privada para cada creador de mercado: le dicen cómo interpretan los clientes las noticias.
+\item Esa información pasa al resto del mercado cuando los creadores de mercado operan entre sí para ajustar sus posiciones, en el mercado interbancario.
+\item El \concepto{flujo de órdenes}, $\mathrm{FO}_t$ (compras menos ventas de una divisa iniciadas por quien acepta la cotización), mide la demanda neta de esa divisa. \textcite{EvansLyons2002} lo añaden a un modelo con el diferencial de tipos de interés:
+  \begin{equation}\label{eq:evans-lyons}
+  \Delta e_t=\beta_0+\beta_1\,\Delta(i_t-i^{*}_t)+\beta_2\,\mathrm{FO}_t+\varepsilon_t .
+  \end{equation}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item El flujo de órdenes es el determinante inmediato del tipo de cambio: agrega la información dispersa sobre los fundamentos que tienen los clientes.
+\item La desconexión a corto plazo no es ausencia de causas: las causas se ven en el mercado, en las órdenes, y no en las estadísticas macroeconómicas, que se publican tarde y con poca frecuencia.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+\begin{itemize}
+\item Con datos diarios, el diferencial de tipos de interés explica casi nada, y el flujo de órdenes, más del 60~\% de las variaciones del marco frente al dólar y más del 40~\% de las del yen \parencite{EvansLyons2002}.
+\item Fuera de la muestra, a horizontes de 1 día a 1 mes, el modelo predice mejor que los modelos macroeconómicos y que el paseo aleatorio \parencite{EvansLyons2005}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+\begin{itemize}
+\item Es el primer enfoque que explica bien una parte grande de los movimientos a corto plazo.
+\item Pero los datos de flujo de órdenes son privados y de cada banco, y queda abierta la pregunta de fondo: qué mueve el flujo de órdenes.
+\end{itemize}
+
+\subsubsection{Mercados financieros imperfectos y desconexión}\label{sec:gabaix-maggiori}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item La prima de riesgo del modelo de cartera (\ref{sec:cartera}) vuelve con fundamentos microeconómicos: si los intermediarios que tienen que absorber los flujos de divisas no pueden asumir todo el riesgo, los flujos mueven el tipo de cambio.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\begin{itemize}
+\item \textcite{GabaixMaggiori2015}: los flujos de comercio y de cartera dejan desequilibrios entre la oferta y la demanda de divisas que tienen que absorber unos intermediarios con balance limitado.
+  \begin{itemize}
+  \item Para que los absorban, el tipo de cambio tiene que moverse hasta que les compense el riesgo: una salida de capital deprecia la moneda, y la deprecia más cuanto menor es la capacidad de los intermediarios.
+  \item Da fundamento al canal de cartera: la intervención en el mercado de divisas funciona porque cambia los flujos que los intermediarios tienen que absorber \vertema{3.B.15}.
+  \end{itemize}
+\item \textcite{ItskhokiMukhin2021}: en un modelo de equilibrio general estándar, basta con una perturbación financiera en la PNCI, una prima de riesgo $\rho_t$ que se mueve por la demanda de inversores con expectativas sesgadas y por el arbitraje limitado,
+  \begin{equation}\label{eq:pnci-prima}
+  i_t-i^{*}_t=\mathbb{E}_t[e_{t+1}]-e_t+\rho_t ,
+  \end{equation}
+  para reproducir a la vez la desconexión, la volatilidad del tipo de cambio, que el tipo real se mueva como el nominal y la paradoja del margen \emph{forward}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+\begin{itemize}
+\item Desde la crisis financiera de 2008, las compras de bonos extranjeros de los inversores de Estados Unidos y los indicadores de riesgo global explican una parte importante de los movimientos del dólar, cuando antes apenas lo hacían: es la \emph{reconexión} del tipo de cambio con las variables financieras \parencite{LilleyEtAl2022}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+\begin{itemize}
+\item Cierra el hilo del tema: lo que \autor{Meese} y \autor{Rogoff} abrieron se explica hoy, en buena parte, con la prima de riesgo que \autor{Branson} ya tenía, ahora derivada de la conducta de los intermediarios.
+\item Pero las perturbaciones financieras que mueven la prima son tan difíciles de observar y de predecir como el propio tipo de cambio: el modelo explica por qué no se puede predecir, no lo predice.
+\end{itemize}
+
+\begin{ideaclave}
+Cada respuesta a la desconexión mira a un sitio distinto: la regla de \autor{Taylor}, al banco central; la paradoja del margen \emph{forward}, a las expectativas; \autor{Corsetti} y \autor{Pesenti}, a la moneda en que se fijan los precios; \autor{Evans} y \autor{Lyons}, a las órdenes de los clientes; \autor{Gabaix}, \autor{Maggiori}, \autor{Itskhoki} y \autor{Mukhin}, al balance de los intermediarios. Todas explican por qué el tipo de cambio es imprevisible a corto plazo; ninguna permite predecirlo.
+\end{ideaclave}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:recientes}}: la regla de \autor{Taylor} explica la paradoja de la apreciación; la paradoja del margen \emph{forward} pone en duda la PNCI y abre la puerta a las primas de riesgo y a las expectativas heterogéneas; el tipo real de equilibrio es la herramienta práctica; y los modelos con fundamentación microeconómica explican la sobrerreacción, el corto plazo y la desconexión.
+\item \emph{Nexo}: con esto podemos responder a las preguntas del principio.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}:
+  \begin{itemize}
+  \item En conclusión, las teorías del tipo de cambio son complementarias: no son incorrectas, sino incompletas, y cada una sirve para un horizonte.
+  \item \emph{A largo plazo}, el tipo de cambio es más predecible y sigue a sus fundamentos: se deprecia con más dinero relativo y con más inflación relativa (la PPA relativa) y se aprecia con más renta y, en el tipo real, con más productividad en los comerciables (\autor{Balassa}-\autor{Samuelson}). Un tipo de interés más alto deprecia si refleja más inflación esperada y aprecia si refleja una política monetaria más restrictiva \parencite{Frankel1979Mark}.
+  \item \emph{A corto plazo} es casi impredecible: dominan las expectativas, las noticias, la prima de riesgo y el flujo de órdenes. Y su volatilidad puede ser coherente con los fundamentos (\autor{Dornbusch}): un movimiento brusco no prueba que haya especulación desestabilizadora.
+  \item La evidencia lo confirma: hay éxitos parciales, pero ningún modelo supera de forma sistemática al paseo aleatorio en todos los países, periodos y horizontes \parencite{Rossi2013}.
+  \item \autor{Francis Ysidro Edgeworth} comparaba el movimiento a lo largo de las curvas de oferta de \autor{Marshall} con el de las agujas de un reloj, que responde a muchos movimientos imperceptibles de la maquinaria. Lo mismo puede decirse del tipo de cambio.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Para la política económica, estas teorías dicen qué cabe esperar del tipo de cambio: que transmite la política monetaria \vertema{3.A.37}, que la intervención esterilizada solo funciona si los activos no son sustitutos perfectos \vertema{3.B.15} y que una apreciación real no siempre es una pérdida de competitividad.
+  \item Para la zona del euro, explican por qué el euro puede alejarse durante años de su valor de PPA y por qué los países que convergen tienen más inflación sin perder competitividad en los comerciables.
+  \end{itemize}
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item El mercado en el que se forma el tipo de cambio y la paradoja del margen \emph{forward} \vertema{3.B.13}.
+  \item La elección del régimen cambiario y la intervención \vertema{3.B.15}, las uniones monetarias \vertema{3.B.16} y las crisis cambiarias \vertema{3.B.17}.
+  \item La coordinación internacional de las políticas y la nueva macroeconomía abierta \vertema{3.B.19}, y la supervisión de los desequilibrios exteriores \vertema{3.B.22}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item Que los modelos no predigan el tipo de cambio de mañana no los hace inútiles: explican hacia dónde tiende y por qué se mueve como se mueve, que es lo que necesita quien decide la política económica.
+  \item Lo que no conviene es pedirles lo que el propio modelo dice que no pueden dar: a horizontes de años orientan la PPA y el enfoque monetario; a horizontes de días mandan el flujo de órdenes y la prima de riesgo.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item Volviendo al refrán, con el tipo de cambio el economista propone y el mercado dispone. ¿Qué determina el precio de una moneda? A la larga, sus fundamentos: el euro volvió una y otra vez hacia su valor de PPA, y la productividad explica por qué ese valor cambia.
+  \item A corto plazo, el mercado dispone, y lo que hoy sabemos es por qué nadie ha conseguido predecir el camino.
+  \end{itemize}
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: la evidencia empírica sobre la PPA}\label{anexo:ppa}
+
+\begin{itemize}
+\item Los contrastes de la PPA se han hecho más sofisticados a la par que las técnicas econométricas \parencite{TaylorTaylor2004PPP,SarnoTaylor2002Economics}.
+\item \emph{Las regresiones de los años 70}: regresando el tipo de cambio sobre los precios relativos, los primeros estudios no encontraban apoyo a la PPA, salvo con inflaciones muy altas, como en la hiperinflación alemana de los años 20 \parencite{Frenkel1976Monetary,Frenkel1978PPP}.
+  \begin{itemize}
+  \item La conclusión fue que la PPA solo se cumple cuando dominan las perturbaciones monetarias sobre las reales.
+  \end{itemize}
+\item \emph{Raíz unitaria, en los años 80}: con las nuevas técnicas, muchos estudios contrastaron si el tipo de cambio real es \emph{estacionario}, es decir, si vuelve a un valor de equilibrio, que es lo que implica la PPA a largo plazo.
+  \begin{itemize}
+  \item Con los datos de la flotación posterior a Bretton Woods, en general no se podía rechazar que el tipo real fuera un paseo aleatorio: las desviaciones de la PPA serían permanentes.
+  \end{itemize}
+\item \emph{Cointegración, desde finales de los 80}: se contrasta si el tipo de cambio nominal y los precios relativos, $e$, $p$ y $p^*$, comparten una tendencia común y mantienen una relación estable a largo plazo.
+  \begin{itemize}
+  \item Los resultados fueron mixtos. El problema de fondo es que el periodo de flotación era demasiado corto para distinguir una vuelta lenta a la PPA de ninguna vuelta.
+  \end{itemize}
+\item \emph{Series largas y paneles}: con series de 2 siglos \parencite{LothianTaylor1996Real} o con paneles de muchos países a la vez, para tener más datos, se encuentra que el tipo real revierte a la media, con vidas medias de 3 a 5 años \parencite{Rogoff1996PPA}.
+\item \emph{La persistencia, sin explicar}: aunque la PPA relativa se cumpla a largo plazo, falta explicar por qué las desviaciones duran tanto. Las perturbaciones reales no pueden explicar la volatilidad a corto plazo (la tecnología y las preferencias no cambian tanto), y las monetarias solo duran lo que tardan en ajustarse precios y salarios. Hay 3 explicaciones:
+  \begin{itemize}
+  \item \emph{la no linealidad}: con costes de transporte y costes hundidos de entrar en el mercado, el tipo real se mueve sin volver mientras no supera los umbrales que hacen rentable el arbitraje; si los supera, empieza el arbitraje, más intenso cuanto mayor es la desviación. Los modelos no lineales se ajustan bien a los tipos de cambio desde 1973 y dan velocidades de ajuste mayores que los lineales: con perturbaciones del 1 al 5~\%, vidas medias inferiores a 3 años, y con las mayores, mucho menores \parencite{TaylorPeelSarno2001Nonlinear,TaylorTaylor2004PPP};
+  \item \emph{el sesgo de agregación}: los precios de los distintos bienes vuelven a velocidades distintas, y mezclarlos en un índice exagera la persistencia \parencite{ImbsEtAl2005PPP};
+  \item \emph{un equilibrio que se mueve}: si el tipo real de equilibrio cambia con la productividad (\ref{sec:balassa-samuelson}), medir la vuelta a una media fija la hace parecer más lenta de lo que es \parencite{ChongJordaTaylor2012Harrod}.
+  \end{itemize}
+\item \emph{En resumen}: la PPA relativa se cumple a muy largo plazo, el ajuste es muy lento y, a corto plazo, las desviaciones son grandes y volátiles.
+\item \emph{Una advertencia}: en Estados Unidos, casi toda la variación del tipo real, a cualquier horizonte, viene de los precios relativos de los bienes \emph{comerciables}, no de los no comerciables \parencite{Engel1999Accounting}. A corto plazo, la ley del precio único falla incluso en los bienes que se comercian, lo que limita lo que \autor{Balassa}-\autor{Samuelson} puede explicar.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo de \autor{Dornbusch} completo}\label{anexo:dornbusch}
+
+\begin{itemize}
+\item \emph{Ecuaciones}: las de \eqref{eq:dornbusch-pnci}-\eqref{eq:dornbusch-precios}, en logaritmos (salvo los tipos de interés), con los precios extranjeros normalizados a 1 ($p^*=0$) y la renta en su nivel de pleno empleo, $\bar y$:
+  \begin{align*}
+  m-p&=k\,\bar y-h\,i,\\
+  i&=i^{*}+\dot e^{\,e},\qquad \dot e^{\,e}=\theta\,(\bar e-e),\\
+  \dot p&=\psi\,\big[\bar a+\nu\,(e-p)-b\,i-\bar y\big] .
+  \end{align*}
+  Los precios suben si la demanda de bienes supera a la producción, a una velocidad $\psi>0$; la demanda crece con el tipo real ($\nu>0$) y baja con el tipo de interés ($b>0$).
+\item \emph{Estado estacionario} ($\dot p=0$, $\dot e=0$, $i=i^*$): $\bar p=m-k\,\bar y+h\,i^*$ y $\bar e=\bar p+(\bar y+b\,i^*-\bar a)/\nu$. Por tanto, $d\bar p/dm=d\bar e/dm=1$: el dinero es neutral, y los estados estacionarios posibles están sobre una recta de pendiente 1, la de la PPA a largo plazo.
+\item \emph{Curva de los activos}: restando el equilibrio monetario de largo plazo del de corto, $i-i^*=(p-\bar p)/h$, y con la PNCI y las expectativas, $\theta(\bar e-e)=(p-\bar p)/h$:
+  \[
+  e=\bar e-\frac{1}{h\,\theta}\,(p-\bar p),
+  \]
+  decreciente en el plano $(p,e)$.
+\item \emph{Curva $\dot e=0$}: con previsión perfecta, la depreciación es el diferencial de intereses, $\dot e=i-i^*=(p-\bar p)/h$, que es nulo en $p=\bar p$: una vertical. A su derecha, la moneda se deprecia; a su izquierda, se aprecia.
+\item \emph{Curva $\dot p=0$}: restando el estado estacionario y con $i-i^*=(p-\bar p)/h$,
+  \[
+  \dot p=\psi\Big[\nu\,(e-\bar e)-\Big(\nu+\frac{b}{h}\Big)(p-\bar p)\Big],
+  \]
+  y $\dot p=0$ es la recta $e-\bar e=\big(1+\tfrac{b}{\nu h}\big)(p-\bar p)$, más inclinada que la de 45°. Por encima de ella, los precios suben; por debajo, bajan.
+\item \emph{Expectativas racionales}: a lo largo de la curva de los activos, $\dot p=-\psi\big(\tfrac{\nu}{h\theta}+\nu+\tfrac{b}{h}\big)(p-\bar p)$ y la depreciación que ocurre es $\dot e=-\dot p/(h\theta)$. Para que coincida con la esperada, $(p-\bar p)/h$, tiene que cumplirse $\psi\big(\tfrac{\nu}{h\theta}+\nu+\tfrac{b}{h}\big)=\theta$, es decir, $\theta^2-\psi\big(\nu+\tfrac{b}{h}\big)\theta-\tfrac{\psi\nu}{h}=0$, cuya raíz positiva es
+  \begin{equation}\label{eq:theta-racional}
+  \theta=\frac{\psi}{2}\Big(\nu+\frac{b}{h}\Big)+\sqrt{\frac{\psi^2}{4}\Big(\nu+\frac{b}{h}\Big)^2+\frac{\psi\,\nu}{h}} .
+  \end{equation}
+  \begin{itemize}
+  \item Con este $\theta$, la curva de los activos es la \emph{senda de silla}: la única que lleva al estado estacionario. Las demás trayectorias se alejan de él.
+  \item Cuanto más rápido se ajustan los precios (mayor $\psi$), mayor es $\theta$ y menor la sobrerreacción, $1/(h\theta)$ en \eqref{eq:sobrerreaccion}; con precios flexibles ($\psi\to\infty$), no la hay.
+  \item Sin el efecto del tipo de interés en la demanda ($b=0$), $\theta=\psi\nu/2+\sqrt{\psi^2\nu^2/4+\psi\nu/h}$.
+  \end{itemize}
+\item \emph{Una expansión monetaria permanente y no anticipada} (gráfico~\ref{fig:dornbusch-fases}):
+  \begin{itemize}
+  \item el estado estacionario pasa de $A$ a $C$ por la recta de la PPA, y la senda de silla se desplaza de $SS_0$ a $SS_1$;
+  \item en el impacto, $p$ no se mueve, y el tipo de cambio salta hasta la nueva senda de silla, al punto $B$, por encima de $\bar e_1$: es la sobrerreacción;
+  \item después, la economía baja por la senda de $B$ a $C$: los precios suben y la moneda se aprecia hasta $\bar e_1$. \findemo
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Diagrama de fases del modelo de \autor{Dornbusch}: expansión monetaria permanente y no anticipada}\label{fig:dornbusch-fases}
+\grafico[0.62\textwidth]{dornbusch-fases}
+\fuente{elaboración propia a partir de \textcite{Dornbusch1976Expectations} y \textcite[cap.~9]{ObstfeldRogoff1996Foundations}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Una expansión anunciada}: en el anuncio, $p$ tampoco se mueve, y el tipo de cambio salta, menos que si no se anticipa, a una trayectoria que, siguiendo la dinámica con el dinero inicial, llega a la nueva senda de silla justo cuando la expansión se aplica. Hasta entonces la moneda se sigue depreciando, y después se aprecia hacia su nuevo nivel de largo plazo \parencite{Wilson1979Anticipated}.
+\item \emph{Producción variable}: si la renta responde a corto plazo a la demanda, la expansión monetaria sube también la renta y, con ella, la demanda de dinero, y el tipo de interés cae menos. Como $e-\bar e=(i-i^*)/\theta$, la moneda sobrerreacciona solo si el tipo de interés baja, es decir, si el aumento de la demanda de dinero que causa la mayor renta es menor que el de la oferta; si es mayor, el tipo de interés sube y la moneda se deprecia menos que a largo plazo \parencite{Dornbusch1976Expectations}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: las pendientes del modelo de cartera}\label{anexo:cartera}
+
+\begin{itemize}
+\item Con $W=M+B+E\,B^*$ \eqref{eq:riqueza-branson}, una depreciación sube la riqueza en $dW=B^*\,dE$. Diferenciando las 3 condiciones de equilibrio \eqref{eq:demandas-branson} con las ofertas de activos dadas, $i^*$ fijo y expectativas estáticas:
+  \begin{align*}
+  MM:&\quad 0=w'_{\mathrm M}\,W\,di+w_{\mathrm M}\,B^*\,dE &&\Longrightarrow\quad \left.\frac{dE}{di}\right|_{MM}=-\frac{w'_{\mathrm M}\,W}{w_{\mathrm M}\,B^*}>0,\\
+  BB:&\quad 0=w'_{\mathrm B}\,W\,di+w_{\mathrm B}\,B^*\,dE &&\Longrightarrow\quad \left.\frac{dE}{di}\right|_{BB}=-\frac{w'_{\mathrm B}\,W}{w_{\mathrm B}\,B^*}<0,\\
+  B^*B^*:&\quad B^*\,dE=w'_{\mathrm B^*}\,W\,di+w_{\mathrm B^*}\,B^*\,dE &&\Longrightarrow\quad \left.\frac{dE}{di}\right|_{B^*B^*}=\frac{w'_{\mathrm B^*}\,W}{(1-w_{\mathrm B^*})\,B^*}<0,
+  \end{align*}
+  con $w'_{\mathrm M}<0$, $w'_{\mathrm B}>0$ y $w'_{\mathrm B^*}<0$ las derivadas de las partes de la riqueza respecto a $i$.
+\item En el mercado de bonos extranjeros, una depreciación sube a la vez el valor de la oferta, $B^*dE$, y el de la demanda, $w_{\mathrm B^*}B^*dE$. Como $w_{\mathrm B^*}<1$, sube más la oferta, y hace falta que $i$ baje para que se demanden más bonos extranjeros: no hay ambigüedad.
+\item $BB$ es más inclinada que $B^*B^*$ si $w'_{\mathrm B}/w_{\mathrm B}>|w'_{\mathrm B^*}|/(1-w_{\mathrm B^*})$. Basta con que la demanda de bonos nacionales responda a $i$ al menos tanto como la de extranjeros, $w'_{\mathrm B}\geq|w'_{\mathrm B^*}|$, porque $w_{\mathrm B}<1-w_{\mathrm B^*}$ (la diferencia es $w_{\mathrm M}>0$).
+\item Como $w_{\mathrm M}+w_{\mathrm B}+w_{\mathrm B^*}=1$ para todo $i$, también $w'_{\mathrm M}+w'_{\mathrm B}+w'_{\mathrm B^*}=0$: si 2 mercados se vacían, el tercero también (ley de \autor{Walras}). \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: otros factores reales a largo plazo}\label{anexo:mishkin}
+
+\begin{itemize}
+\item Con los precios dados, todo lo que aumente la demanda de los bienes comerciables nacionales frente a los extranjeros tiende a \emph{apreciar} la moneda ($\downarrow E$) a largo plazo: los bienes nacionales se siguen vendiendo bien aunque la moneda valga más. Lo que aumente la demanda de los extranjeros la deprecia \parencite{MishkinMatthewsGiuliodori2013}. Hay 4 factores:
+  \begin{itemize}
+  \item \emph{el nivel de precios relativo}: si suben los precios de los bienes europeos, con los de Estados Unidos dados, cae su demanda y el euro tiende a depreciarse; si suben los de Estados Unidos, el euro tiende a apreciarse;
+  \item \emph{las barreras al comercio}: si España sube el arancel al acero de Estados Unidos, aumenta la demanda de acero español y el euro tiende a apreciarse;
+  \item \emph{las preferencias}: si en Estados Unidos aumenta el gusto por el vino español, aumentan las exportaciones y el euro tiende a apreciarse; si en España se demandan más bienes de Estados Unidos, tiende a depreciarse;
+  \item \emph{la productividad}: cuando un país se hace más productivo que los demás, sobre todo en los comerciables, sus bienes se abaratan, aumenta su demanda y su moneda se aprecia.
+  \end{itemize}
+\item \emph{La productividad y \autor{Balassa}-\autor{Samuelson}} (\ref{sec:balassa-samuelson}): los 2 dicen que más productividad aprecia la moneda, pero por caminos distintos y no se contradicen.
+  \begin{itemize}
+  \item En este enfoque, con los precios dados, la productividad abarata los bienes nacionales y aumenta su demanda: es una apreciación del tipo \emph{nominal}.
+  \item En \autor{Balassa}-\autor{Samuelson}, con la ley del precio único en los comerciables, la productividad sube los salarios y encarece los no comerciables: es una apreciación del tipo \emph{real}, que con el tipo nominal fijo llega por una inflación más alta.
+  \end{itemize}
+\item Los factores de la demanda de activos, que mueven el tipo de cambio a corto plazo (los tipos de interés, las expectativas, la prima de riesgo), son los de la paridad no cubierta y del modelo de cartera (\ref{sec:paridades} y \ref{sec:cartera}) \vertema{3.B.13}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: los modelos de expectativas}\label{anexo:expectativas}
+
+\begin{itemize}
+\item Estas teorías parten de 2 hechos: los modelos de activos no explican la volatilidad del tipo de cambio a corto plazo, y los economistas dan cada vez más importancia a las expectativas de los agentes.
+\end{itemize}
+
+\paragraph{a) Las noticias}
+\begin{itemize}
+\item Si el tipo de cambio es el precio de un activo, el valor presente de los fundamentos esperados \eqref{eq:valor-presente}, un cambio en los valores futuros esperados de un fundamento lo mueve hoy, aunque los fundamentos de hoy no cambien \parencite{Mussa1976Exchange,Mussa1982Model}.
+\item Con expectativas racionales, lo que ya se esperaba está en el tipo de cambio: solo lo mueve la información \emph{nueva}, las \emph{noticias}, que por definición son imprevisibles \parencite{Frenkel1981News}. Por eso reacciona con fuerza y en el acto ante una información no anticipada (por ejemplo, una subida inesperada de los tipos de interés).
+\item El modelo explica que el tipo de cambio se parezca a un paseo aleatorio aunque dependa de los fundamentos, la misma idea que formalizan \textcite{EngelWest2005}. La síntesis del enfoque está en \textcite{FrenkelMussa1985}.
+\end{itemize}
+
+\paragraph{b) Las burbujas racionales}
+\begin{itemize}
+\item \textcite{BlanchardWatson1982} muestran que una burbuja es compatible con las expectativas racionales. En el modelo monetario, $e_t=\frac{1}{1+h}\,z_t+\frac{h}{1+h}\,\mathbb{E}_t[e_{t+1}]$, con $z_t$ los fundamentos; además de la solución de los fundamentos, $e^F_t$, también es solución $e_t=e^F_t+b_t$ con
+  \begin{equation}\label{eq:burbuja}
+  \mathbb{E}_t[b_{t+1}]=\frac{1+h}{h}\,b_t ,
+  \end{equation}
+  un componente que no depende de los fundamentos y que se espera que crezca a la tasa $1/h$.
+\item La burbuja puede estallar: si sigue con probabilidad $\pi_b$ y estalla con $1-\pi_b$, mientras sigue tiene que crecer a la tasa $(1+h)/(h\,\pi_b)-1$, más deprisa, para compensar el riesgo de estallar. Quien la sostiene no es irracional: cobra el crecimiento esperado y asume el riesgo.
+\item Las burbujas permiten que el tipo de cambio se aleje de sus fundamentos sin abandonar las expectativas racionales; pero no son fáciles de distinguir de un cambio en los fundamentos que el investigador no observa.
+\end{itemize}
+
+\paragraph{c) Las expectativas heterogéneas}
+\begin{itemize}
+\item En el mercado de divisas conviven \emph{chartistas}, que extrapolan la tendencia reciente, y \emph{fundamentalistas}, que esperan la vuelta al valor de equilibrio \parencite{FrankelFroot1990Chartists}.
+\item Si los fundamentalistas saben que hay chartistas, pueden dudar de que el tipo de cambio vuelva pronto al equilibrio y renunciar a apostar por esa vuelta. Así se explica que el tipo de cambio se aleje mucho y durante mucho tiempo de sus fundamentos.
+\item \textcite{DeGrauweGrimaldi2006} lo modelizan con agentes que eligen la regla de predicción que mejor les ha rendido, y con muchas reglas a la vez \parencite{DeGrauweRovira2006}: hay equilibrios múltiples, burbujas que estallan y dinámicas complejas \vertema{3.B.13}.
+\end{itemize}
+
+\paragraph{d) El chivo expiatorio}
+\begin{itemize}
+\item \textcite{BacchettaVanWincoop2004,BacchettaVanWincoop2013} explican por qué cambia tanto con el tiempo la relación entre el tipo de cambio y cada fundamento. No lo atribuyen a cambios frecuentes de los parámetros, sino a las \emph{expectativas} sobre ellos.
+  \begin{itemize}
+  \item Los agentes conocen bastante bien la relación de largo plazo entre los fundamentos y el tipo de cambio, pero no sus parámetros a corto y medio plazo.
+  \item Cuando el tipo de cambio se mueve por causas que no ven, lo atribuyen a algún fundamento visible, sobre todo a uno que esté lejos de su valor habitual, y le dan más peso: ese fundamento es el \emph{chivo expiatorio}, al que se culpa de lo que han hecho otros.
+  \item Es racional hacerlo, y explica la inestabilidad de las relaciones estimadas sin que cambie la estructura de la economía.
+  \end{itemize}
+\item Las encuestas a los operadores de divisas sobre el peso que dan a cada fundamento apoyan la teoría \parencite{FratzscherSarnoZinna2012}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: para el test}\label{anexo:test}
+
+\begin{itemize}
+\item Preguntas oficiales del primer ejercicio sobre este tema y apartado donde se contestan (las respuestas, en el simulador):
+  \begin{itemize}
+  \item PPA absoluta y relativa: julio de 2003 (n.º 33), junio de 2004 (n.º 29) y julio de 2022 (n.º 35) (\ref{sec:ppa-modelo});
+  \item paridades de intereses y tipo a plazo: septiembre de 2005 (n.º 31), septiembre de 2006 (n.º 31, tipo fijo creíble), enero de 2016 (n.º 31), febrero de 2019 (n.º 31) y junio de 2024 (n.º 32, con prima de riesgo) (\ref{sec:paridades});
+  \item paridad de intereses reales: julio de 2008 (n.º 29) (\ref{sec:monetario-flexible});
+  \item enfoque de flujos y fondos prestables: noviembre de 2016 (n.º 32) (\ref{sec:balanza} y \ref{sec:equilibrio-real});
+  \item modelo monetario: julio de 2008 (n.º 32), enero de 2016 (n.º 32) y junio de 2023 (n.º 30) (\ref{sec:monetario-flexible});
+  \item \autor{Dornbusch}: septiembre de 2006 (n.º 30) y enero de 2020 (n.º 33), de qué depende la sobrerreacción; octubre de 2002 (n.º 32), expansión anticipada (\ref{sec:dornbusch} y anexo~\ref{anexo:dornbusch});
+  \item modelo de cartera: junio de 2023 (n.º 30) y marzo de 2025 (n.º 33) (\ref{sec:cartera}). Ojo: en la de 2023, el efecto de más bonos nacionales sobre el tipo de cambio es ambiguo, no una depreciación;
+  \item \autor{Balassa}-\autor{Samuelson}: octubre de 2009 (n.º 32) y junio de 2024 (n.º 33) (\ref{sec:balassa-samuelson});
+  \item paradoja del margen \emph{forward} y teorías recientes: septiembre de 2006 (n.º 27), julio de 2022 (n.º 36) y marzo de 2026 (n.º 30) (\ref{sec:paradoja-forward} y anexo~\ref{anexo:expectativas}). Ojo: la de 2006 da por buena la redacción «la paridad cubierta de intereses señalaría…»; la teoría es la paridad \emph{no} cubierta. En la de 2022, las burbujas de \autor{Blanchard} y \autor{Watson} \emph{son} compatibles con las expectativas racionales.
+  \end{itemize}
+\item Estas y las demás preguntas, en el \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test de la web}.
+\end{itemize}
+
+\bibliografia
+\end{document}
