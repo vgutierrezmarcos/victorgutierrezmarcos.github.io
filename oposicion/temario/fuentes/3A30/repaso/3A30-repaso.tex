@@ -1,0 +1,283 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Magnitudes y contabilidad nacional]{3.A.30}{Magnitudes macroeconómicas y contabilidad nacional.}
+\tcefecha{11/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «a ojo de buen cubero»}{2,5}
+\apartadocante{I. Características y principios del SEC 2010}{6,5}
+\subcante{1. Concepto: ¿qué es el SEC 2010?}{2,5}
+\subcante{2. Medición y principios fundamentales}{4}
+\apartadocante{II. La sucesión de cuentas}{13,5}
+\subcante{1. Cuenta de bienes y servicios}{1}
+\subcante{2. Cuentas corrientes}{6}
+\subcante{3. Cuentas de acumulación}{3,5}
+\subcante{4. Balances}{1}
+\subcante{5. Cuentas del resto del mundo}{1}
+\subcante{6. Otras cuentas y aportaciones}{1}
+\apartadocante{III. Uso y límites de las magnitudes}{6,5}
+\subcante{1. Del valor al volumen: deflactor y contribuciones}{2,5}
+\subcante{2. Elaboración, fuentes y alta frecuencia}{1,5}
+\subcante{3. El PIB y el bienestar}{2,5}
+\apartadocante{Conclusión}{1}}
+\emph{Qué se canta}: la \emph{cadena de saldos}, qué mide cada agregado y por qué cuadran las cuentas; cuentas en T y códigos, para el tribunal.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{A ojo de buen cubero}»: así se hacía la política económica hasta los años 30; en la Gran Depresión nadie sabía cuánto había caído la renta. 1932: el Senado de EE.\,UU. lo encarga; \autor{Kuznets} entrega en enero de 1934 la 1.ª estimación oficial (1929-1932). Hoy, el INE da el PIB a los 30 días: \dato{+0,6\,\% en el 3T 2026}{INE, avance 30/10/2026}. «No se puede gestionar lo que no se puede medir».
+\item \textbf{Relevancia}: \emph{política} (previsiones, presupuestos, evaluación; en la UE, efectos jurídicos y financieros: déficit y deuda del PDE \vertema{3.A.39}, recurso RNB, fondos de cohesión); \emph{teoría} (define y mide los agregados \vertema{3.A.4}; sus identidades no se pueden contradecir); \emph{bienestar} (PIB per cápita, ahorro e inversión; qué deja fuera, \hyperref[rep:III.3]{III.3}).
+\item \textbf{Contextualización}: nace en los 30-40, por la teoría keynesiana (agregados) y la economía de guerra. \autor{Kuznets} (EE.\,UU.); \autor{Meade} y \autor{Stone} (Gabinete de Guerra británico, 1940-1941, con \autor{Keynes}; ya en partida doble). Nobel: \autor{Kuznets} 1971, \autor{Meade} 1977 (comercio), \autor{Stone} 1984. SCN 1953 $\to$ SCN 2025; en la UE, SEC 2010 (reglamento). Idea de partida: cada unidad es \emph{productor}, \emph{perceptor de renta} y \emph{agente del gasto} $\Rightarrow$ 3 medidas del mismo flujo.
+\item \textbf{Problemática}: ¿pueden unas pocas cifras resumir a millones de agentes? ¿Por qué producción, renta y gasto son la misma cifra? ¿Con qué reglas comparables? ¿Cómo se pasa de la producción a la renta, al ahorro y a la financiación? ¿Qué dejan fuera?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, \emph{qué se mide y con qué reglas} (flujo circular, SEC 2010, unidades, principios); \hyperref[rep:II]{II}, \emph{cómo se mide} (sucesión de cuentas: un saldo = un agregado); \hyperref[rep:III]{III}, \emph{uso y límites} (volumen, fuentes, PIB y bienestar). De la regla a la cifra y de la cifra a su lectura.
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{I. Características y principios del SEC 2010\label{rep:I}}
+\begin{ideaclave}
+Producción, renta y gasto son 3 formas de ver un mismo flujo: de esa igualdad salen todas las identidades. El SEC 2010 la convierte en un sistema contable con unidades, operaciones y 4 principios (partida cuádruple, devengo, valoración, residencia) comunes en la UE.
+\end{ideaclave}
+
+\sub{I.1. Concepto: ¿qué es el SEC 2010?\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Magnitud macroeconómica} (\concepto{agregado}): resume en una cifra las decisiones de millones de hogares, empresas y AA.\,PP. Casi todas \emph{flujos} (por periodo); riqueza y deuda, \emph{stocks} (en una fecha).
+\item \concepto{Flujo circular de la renta}: empresas producen con trabajo y capital de los hogares $\to$ se reparte como renta $\to$ se gasta en lo producido. 3 vías: \emph{producción} $Y\equiv\sum\mathrm{VA}$ (sin doble cómputo); \emph{renta} $Y\equiv\mathrm{RA}+\mathrm{EBE}$ (EBE residual); \emph{gasto} $Y\equiv C+I$.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{triangulo-pib}{Flujo circular: producción, renta y gasto}
+\begin{itemize}
+\item \emph{1.ª identidad}: $S\equiv Y-C$ $\Rightarrow$ economía cerrada sin sector público, \textbf{$S\equiv I$}. Con AA.\,PP. y exterior, $Y\equiv C+I+G+(X-M)$: $S=I$ solo para el conjunto; lo que un sector ahorra de más lo presta a otro; la nación, al resto del mundo.
+\item \emph{La cadena de saldos} (eje del tema):
+\funcionclave{\begin{gathered}\mathrm{PIB}\xrightarrow{\;+\mathrm{RP}\;}\mathrm{RNB}\xrightarrow{\;+\mathrm{RS}\;}\mathrm{RNDB}\xrightarrow{\;-(C+G)\;}S\\ S\xrightarrow{\;-I+\mathrm{CK}\;}\text{capacidad }(+)\text{ o necesidad }(-)\end{gathered}}
+\item[] RP, RS: rentas primarias y secundarias netas del resto del mundo; CK: transferencias de capital netas. \uline{Identidades, no teorías}: siempre se cumplen y no dicen qué causa qué.
+\item \concepto{SEC 2010}: marco contable con el que los Estados de la UE describen de forma sistemática y comparable su economía, sus partes y sus relaciones con las demás. Reglamento (UE) 549/2013, datos desde sept. 2014 (INE, desde entonces); actualizado en 2023 (transmisión desde sept. 2024).
+\item \emph{Origen}: SCN de la ONU: 1953, 1968, 1993, 2008, 2025; desde 1993, ONU + Comisión + FMI + OCDE + Banco Mundial. SEC 95 $\leftarrow$ SCN 1993; SEC 2010 $\leftarrow$ SCN 2008, más preciso (frontera del sector público, operaciones con la UE). Frente al SEC 95: la I+D pasa a inversión.
+\item \emph{Lo que viene}: SCN 2025 (ONU, marzo 2025) + MBP7 del FMI; nuevo SEC («SEC 2030»): propuesta a finales de 2026, cambios desde 2030.
+\item \emph{Por qué común}: comparabilidad entre países y en el tiempo; PEC y Semestre Europeo se aplican sobre cifras SEC.
+\item \emph{Estructura}: 24 capítulos; 2 conjuntos: \emph{cuentas de los sectores institucionales} (\hyperref[rep:II]{II}) y \emph{marco input-output} y cuentas por ramas \vertema{3.A.31}. España: INE (no financieras), Banco de España (financieras y BP), IGAE (AA.\,PP.).
+\end{itemize}
+
+\sub{I.2. Medición y principios fundamentales\label{rep:I.2}}
+\begin{itemize}
+\item \concepto{Flujos}: crean, transforman, intercambian, transfieren o extinguen valor en un periodo; \concepto{stocks}: activos y pasivos en una fecha (\emph{balances}). «Gota a gota se llena la bota».
+\item \concepto{Operaciones} (mutuo acuerdo, o dentro de una unidad con 2 papeles): \textbf{P} bienes y servicios; \textbf{D} distribución; \textbf{F} financieras; \emph{otras de acumulación} (activos no producidos: tierras, licencias, marcas). \concepto{Otras variaciones de los activos} (sin operación): de \emph{volumen} (descubrimientos, catástrofes, expropiaciones) y \emph{ganancias y pérdidas de posesión} (neutrales / reales).
+\item \concepto{Unidad institucional}: decide por sí misma y lleva cuentas completas $\to$ \emph{sectores} (renta, gasto, financiación, balances). \concepto{UAE local}: un solo lugar y una sola actividad (4 dígitos CNAE) $\to$ \emph{ramas} (producción, \emph{input-output}).
+\item 5 \concepto{sectores institucionales}: S.11 sociedades no financieras; S.12 instituciones financieras (S.121 banco central); S.13 AA.\,PP. (central, CC.\,AA., CC.\,LL., fondos de la SS) \vertema{4.B.1}; S.14 hogares; S.15 ISFLSH. S.2 \emph{resto del mundo}: no es sector, pero tiene cuentas.
+\item \emph{De mercado}: ventas $\geq$ \textbf{50\,\%} de los costes de forma continuada (+ criterios cualitativos). Empresa pública que no pasa $\Rightarrow$ S.13.
+\item \concepto{Cuenta}: 2 lados; el \concepto{saldo contable} los iguala y pasa a la cuenta siguiente. Corrientes: \emph{empleos} (izq.) / \emph{recursos} (dcha.); acumulación: variaciones de activos / de pasivos y PN; balances: activos / pasivos y PN.
+\item \emph{4 principios} (los mismos que la BP \vertema{3.B.11}): \emph{partida cuádruple} (cuántos asientos), \emph{devengo} (cuándo), \emph{valoración} (por cuánto), \emph{residencia} (quién dentro).
+\item \emph{Partida cuádruple}: 2 partes $\times$ 2 asientos (prestación por desempleo: AA.\,PP. empleo + $\downarrow$ efectivo; hogar recurso + $\uparrow$ efectivo) $\Rightarrow$ cuadran todos los sectores. Dentro de una unidad, 2 asientos.
+\item \emph{Devengo}: cuando nace el valor, no al cobrar o pagar. Impuestos: \emph{caja ajustada en el tiempo} $\Rightarrow$ déficit CN $\neq$ caja \vertema{3.A.39}.
+\item \emph{Valoración}: precios de mercado; si no hay: 1) bienes parecidos (alquiler imputado), 2) costes (sanidad, educación públicas), 3) valor actual de rendimientos. Stocks, a precios de la fecha del balance. X y M, \textbf{FOB}.
+\item \concepto{Precio básico}: lo que cobra el productor; sin impuestos s/ productos (IVA, especiales), con subvenciones a los productos; \emph{incluye} otros impuestos netos s/ producción (IBI, tasas). \concepto{Precio de adquisición} = básico + márgenes de comercio y transporte + impuestos netos s/ productos no deducibles.
+\item VAB a precios básicos, PIB a precios de mercado:
+\begin{formula}
+\centering $\mathrm{PIB}_{\mathrm{pm}}=\sum\mathrm{VAB}_{\mathrm{pb}}+(\text{impuestos}-\text{subvenciones})_{\text{productos}}$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.78\linewidth]{valoracion-precios}{De precios básicos a precios de adquisición}
+\begin{itemize}
+\item D.21 impuestos s/ productos (IVA, especiales, aranceles); D.29 otros s/ producción (IBI, IAE, tasas); D.31 y D.39, subvenciones. «VAB al coste de los factores» ya no es saldo del SEC 2010 \vertema{4.B.7}.
+\item \concepto{Residente}: \emph{centro de interés económico predominante} en el territorio (referencia de 1 año, no rígida). «No es de donde naces, sino de donde paces». Estudiantes, pacientes, turistas: residentes de su país; filiales y sucursales significativas, donde operan; embajadas y bases, del país; organismos internacionales: de ninguno (BCE = resto del mundo).
+\item \concepto{Interior} (territorio: PIB) vs \concepto{nacional} (residentes: RNB). \concepto{Bruto} (con \concepto{consumo de capital fijo}) vs \concepto{neto}: $\mathrm{PIN}=\mathrm{PIB}-\mathrm{CCF}$ (más correcto, se usa menos: CCF se mide peor).
+\end{itemize}
+
+% ==========================================================================
+\bloque[13,5]{II. La sucesión de cuentas\label{rep:II}}
+\begin{ideaclave}
+Las cuentas forman una cadena: cada una describe una fase del proceso económico y su saldo (VAB, EBE, renta, ahorro, capacidad de financiación) pasa a la siguiente. Los \emph{agregados} son esos saldos para el total de la economía.
+\end{ideaclave}
+\begin{itemize}
+\item Cuenta 0 (bienes y servicios) + 3 bloques: \emph{corrientes} (hasta el ahorro), \emph{acumulación} (hasta la capacidad/necesidad), \emph{balances} (patrimonio) + resto del mundo. Cada cuenta: qué registra, empleos y recursos, saldo, qué mide.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{sucesion-cuentas}{La sucesión de cuentas y sus saldos}
+
+\sub{II.1. Cuenta de bienes y servicios\label{rep:II.1}}
+\begin{itemize}
+\item Identidad de partida: todo lo ofrecido (producido o importado) tiene destino. Cuenta de \emph{productos}, no de unidades. Recursos: producción (pb) + M + impuestos netos s/ productos; empleos (pa): CI + consumo final + FBC + X. \emph{Sin saldo}. Restando CI y M a los 2 lados:
+\begin{formula}
+\centering $\underbrace{\mathrm{P.1}-\mathrm{P.2}+(\mathrm{D.21}-\mathrm{D.31})}_{\text{PIB producción}}=\underbrace{C+I+G+(X-M)}_{\text{PIB gasto}}$
+\end{formula}
+\end{itemize}
+
+\sub{II.2. Cuentas corrientes\label{rep:II.2}}
+\begin{itemize}
+\item De la producción (de ella sale toda la renta) al ahorro (enlace con la acumulación).
+\item \emph{Producción}: recursos, producción (pb); empleos, \concepto{consumos intermedios} (pa; energía, materiales, transporte\dots; no salarios ni activos fijos). Saldo: \concepto{VAB} (pb); total, \concepto{PIB} pm. Mide el valor creado sin duplicaciones; agregado central (ciclo, crecimiento, denominador de déficit y deuda). I+D: desde SEC 2010, FBCF ($\uparrow$ PIB y EBE, $\downarrow$ participación del trabajo medida) \vertema{3.A.45}.
+\item \concepto{PIB pm}: resultado final de la actividad productiva de las unidades residentes en un territorio; valor de mercado de los bienes y servicios nuevos y finales producidos en él en un periodo.
+\funcionclave{\begin{aligned}\mathrm{PIB}&=\textstyle\sum\mathrm{VAB}+(\text{imp.}-\text{subv.})_{\text{productos}}\\&=\mathrm{RA}+\mathrm{EBE}+\mathrm{RMB}+(\text{imp.}-\text{subv.})_{\text{prod. e import.}}\\&=C+I+G+(X-M)\end{aligned}}
+\item[] $C$: hogares + ISFLSH (vivienda nueva = inversión \vertema{3.A.33}); $I$: FBC = FBCF + existencias + objetos valiosos \vertema{3.A.34}; $G$: consumo final de las AA.\,PP. (inversión pública en $I$). Las 3 vías no salen iguales: el INE las cuadra en las \emph{tablas de origen y destino} (un solo nivel del PIB) \vertema{3.A.31}. Reglas del agregado: no contar 2 veces, sentido económico, medible.
+\item \emph{España 2025} (M€): producción $1.531.681+158.331$; rentas $817.261+703.714+169.037$; gasto $932.945+324.514+367.451+616.488-551.386$; PIB \dato{1.690.012 M€}{INE, avance}. Crece 2,6\,\% en volumen; deflactor 3,0\,\%.
+\item \emph{Explotación}: recursos, VAB (PIB); empleos, \concepto{remuneración de los asalariados} (todo lo pagado por empleadores residentes por el trabajo, incl. cotizaciones del empleador) + impuestos netos s/ producción (en un sector, solo los \emph{otros}). Saldo: \concepto{EBE} (sociedades) y \concepto{renta mixta bruta} (autónomos: trabajo + capital). Mide márgenes y \emph{distribución funcional}: RA/PIB \dato{48,4\,\%}{2025}; ajustada por la renta mixta \dato{56,6\,\%}{AMECO} \vertema{3.A.45}. Da el PIB por las rentas.
+\item \emph{Asignación de la renta primaria}: unidades como perceptoras. Recursos: EBE, RMB, RA cobrada por residentes, impuestos netos (AA.\,PP.), rentas de la propiedad a cobrar; empleos: rentas de la propiedad a pagar. Saldo: \concepto{saldo de las rentas primarias}; total, \concepto{RNB} $=\mathrm{PIB}+\mathrm{RP}$ (antiguo PNB: mismo importe, nombre de renta). Base del recurso propio RNB. Irlanda: RNB $\ll$ PIB. España 2025: RNB = PIB $\times$ 1,002, aun siendo deudora neta (salarios de fuera y subvenciones UE).
+\item \emph{Distribución secundaria}: transferencias corrientes sin contrapartida: D.5 impuestos s/ renta y patrimonio; D.61 cotizaciones (reales e imputadas: clases pasivas); D.62 prestaciones (no en especie); D.7 otras (seguros, cooperación, remesas, aportación a la UE). Saldo: \concepto{renta disponible bruta}; total, \concepto{RNDB}:
+\begin{formula}
+\centering $\mathrm{RNB}=\mathrm{PIB}+\mathrm{RP},\qquad\mathrm{RNDB}=\mathrm{RNB}+\mathrm{RS}=\mathrm{PIB}+\mathrm{RP}+\mathrm{RS}$
+\end{formula}
+\item[] RDB de los hogares: variable de las funciones de consumo \vertema{3.A.33}. España 2025: RNDB \dato{1.679.739 M€}{Eurostat} < RNB.
+\item \emph{Redistribución en especie}: \concepto{transferencias sociales en especie} (sanidad, educación, servicios sociales) de AA.\,PP. e ISFLSH a hogares. Saldo: \concepto{RDBA}; total = RNDB. Compara bienestar entre países con sistemas distintos.
+\item \emph{Utilización de la renta}: 2 versiones. Disponible: \concepto{gasto en consumo final} (\emph{quién paga}; AA.\,PP. individual + \emph{colectivo}: defensa, justicia, orden público). Ajustada: \concepto{consumo final efectivo} (\emph{quién consume}: hogares = gasto + TS en especie; AA.\,PP., solo colectivo). Hogares: + ajuste por derechos de pensiones. Saldo: \concepto{ahorro bruto} (igual en las 2); total, $S=\mathrm{RNDB}-C-G$ = \dato{25,0\,\% del PIB}{2025}. Puede ser $<0$.
+\end{itemize}
+
+\sub{II.3. Cuentas de acumulación\label{rep:II.3}}
+\begin{itemize}
+\item Por qué cambian activos, pasivos y PN: \emph{capital}, \emph{financiera}, \emph{otras variaciones}.
+\item \emph{Capital}: ahorro $\pm$ \concepto{transferencias de capital} (ligadas a un activo: ayudas a la inversión de fondos UE, sucesiones, condonaciones); activos: \concepto{FBC} (FBCF: construcciones, equipo, propiedad intelectual; existencias; objetos valiosos) + activos no producidos. Saldo: \concepto{capacidad} ($+$) o \concepto{necesidad} ($-$) \concepto{de financiación} (\textbf{B.9}): quién financia a quién. Sin transferencias de capital:
+\funcionclave{\underbrace{S-I}_{\text{nación}}=\underbrace{(S_P-I_P)}_{\text{privado}}+\underbrace{(S_G-I_G)}_{\text{AA.\,PP.}}=\underbrace{\mathrm{CC}}_{\text{c. corriente}}}
+\item[] Con ellas, B.9 nación = $\mathrm{CC}+\mathrm{CK}$ (= BP salvo fuentes) \vertema{3.B.11}. $S_G-I_G$ = el $T-G$ de la BP. AA.\,PP.: B.9 = \concepto{déficit} del PDE (salvo \emph{swaps}): \dato{$-$2,4\,\% del PIB}{2025} \vertema{3.A.39}.
+\item \emph{España 2025}: capacidad de la nación \dato{4,3\,\% del PIB, 72.218 M€}{Eurostat}: hogares 2,8, IF 2,7, SNF 1,2; AA.\,PP. $-$2,4. 2007: necesidad 9,0\,\%; prestamista neta desde 2012.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{capacidad-financiacion-sectores-espana}{Capacidad (+) o necesidad ($-$) de financiación por sectores (\% PIB)}
+\begin{itemize}
+\item \emph{Ojo}: cuenta de capital del SEC (ahorro, transf., inversión; saldo B.9) $\neq$ cuenta de capital de la BP (CK: solo transf. de capital y no producidos; sin inversión).
+\item \emph{Financiera}: por instrumentos (efectivo y depósitos, valores, préstamos, participaciones, seguros y pensiones, derivados). VNA $-$ VNP = otra vez la capacidad/necesidad (B.9F). INE vs Banco de España $\Rightarrow$ \concepto{discrepancia estadística}: 2025, \dato{72.218 vs 85.151 M€}{Eurostat}; diferencia 12.933 $\approx$ errores y omisiones de la BP (12.940). Hogares: fondos 52.900, depósitos 48.417; AA.\,PP.: deuda 65.090.
+\item \emph{Otras variaciones}: de volumen (petróleo, terremoto, expropiación) y \emph{revalorización} (ganancias y pérdidas de posesión neutrales y reales): efectos riqueza \vertema{3.A.33}.
+\end{itemize}
+
+\sub{II.4. Balances\label{rep:II.4}}
+\begin{itemize}
+\item Activos y pasivos (financieros y no) al inicio y al final, a precios de cada fecha:
+\begin{formula}
+\centering $\text{PN}_t=\text{PN}_{t-1}+(S+\mathrm{CK})_t+{}$otras variaciones$_t$
+\end{formula}
+\item[] Saldo: \concepto{patrimonio neto}; total, \concepto{riqueza nacional neta} = capital no financiero + PIIN \vertema{3.B.11}. Solvencia y riesgo de balance; cierra la sucesión.
+\end{itemize}
+
+\sub{II.5. Cuentas del resto del mundo\label{rep:II.5}}
+\begin{itemize}
+\item Cierran el sistema (todas las operaciones con sus 2 partes); desde fuera, \uline{signo cambiado}: importación = recurso del resto del mundo. Superávit corriente del país = saldo negativo del resto del mundo. V.I: B.11 $=M-X$; V.II: B.12 $=-\mathrm{CC}$; V.III.1: B.9 $=-(\mathrm{CC}+\mathrm{CK})$; V.III.2: cuenta financiera con signo cambiado. Es la BP vista desde el otro lado \vertema{3.B.11}.
+\end{itemize}
+
+\sub{II.6. Otras cuentas y aportaciones\label{rep:II.6}}
+\begin{itemize}
+\item \concepto{Cuentas económicas integradas}: todas las cuentas de todos los sectores en un cuadro (operaciones en el centro, empleos y recursos a los lados).
+\item \concepto{Marco \emph{input-output}}: tablas de origen, destino y simétrica; 2 identidades (producción = CI + VA por ramas; oferta = empleos por productos): cuadran el PIB \vertema{3.A.31}.
+\item \emph{Población y empleo}: personas, puestos, horas (la preferida para la productividad), ETC; $\neq$ EPA \vertema{4.A.1}. \emph{Trimestrales}: corregidas de estacionalidad y calendario, avance a 30 días \vertema{3.A.42}. \emph{Regionales}: PIB pc en PPA; menos desarrolladas $<$ 75\,\% de la media UE \vertema{3.B.40}. \concepto{Cuentas satélite}: área concreta sin cambiar el marco (turismo; medioambientales, obligatorias desde 2011) \vertema{3.B.31}.
+\item \concepto{Matriz de contabilidad social}: cuentas en tabla cuadrada (fila = ingresos, columna = pagos); flujo circular en forma de matriz; calibra los MEGC \vertema{3.A.21}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{III. Uso y límites de las magnitudes\label{rep:III}}
+\begin{ideaclave}
+Para leerlas hay que pasarlas a volumen y descomponer su crecimiento; se elaboran cruzando fuentes que se revisan y se adelantan con datos de alta frecuencia. El PIB mide bien la actividad, no el bienestar ni la sostenibilidad: se \emph{completa}, no se sustituye.
+\end{ideaclave}
+
+\sub{III.1. Del valor al volumen\label{rep:III.1}}
+\begin{itemize}
+\item PIB nominal crece por cantidades y por precios. Sin año base fijo (precios relativos cambian: pesos antiguos exageran lo que se abarata): \emph{volúmenes encadenados}, precios del año anterior:
+\begin{formula}
+\centering $1+\gamma_{Y,t}=\dfrac{\vect{p}^{t-1}\cdot\vect{x}^{t}}{\vect{p}^{t-1}\cdot\vect{x}^{t-1}}$\quad (\autor{Laspeyres} de volumen)
+\end{formula}
+\item \concepto{Deflactor implícito}: $P\equiv\frac{\text{PIB nominal}}{\text{PIB en volumen}}\times100$; $\gamma_P\approx\gamma^N-\gamma_Y$. Pondera con cantidades corrientes: \autor{Paasche} encadenado \vertema{3.A.9}. España 2025: +3,0\,\%.
+\item \emph{Contribuciones} (en \uline{puntos porcentuales}): peso del año anterior $\times$ crecimiento:
+\funcionclave{\gamma_{Y,t}=\underbrace{\tfrac{C_{t-1}}{Y_{t-1}}\gamma_{C,t}+\tfrac{I_{t-1}}{Y_{t-1}}\gamma_{I,t}+\tfrac{G_{t-1}}{Y_{t-1}}\gamma_{G,t}}_{\text{demanda interna}}+\underbrace{\tfrac{X_{t-1}}{Y_{t-1}}\gamma_{X,t}-\tfrac{M_{t-1}}{Y_{t-1}}\gamma_{M,t}}_{\text{demanda externa}}}
+\item[] Ejemplo: C 60 (+2\,\%), I 20 (+5\,\%), G 20 (+1\,\%), X y M 30 (+4 y +6\,\%) $\Rightarrow$ interna 2,4, externa $-$0,6, PIB +1,8\,\%.
+\item \concepto{No aditividad}: los componentes encadenados no suman el total (salvo año de referencia y siguiente); las contribuciones sí, con pesos \emph{nominales} del año anterior (usar las del INE). Ejemplo del anexo: año 2, PIB 218,2 vs $A+B=250$; deflactor $-$23,8\,\%.
+\item Demanda interna \emph{procíclica}, externa \emph{contracíclica} \vertema{3.A.42}. 2025: +2,6\,\% = 3,4 (nacional) $-$ 0,8 (externa); 3T 2026 +2,7\,\% interanual. 2009: nacional $-$6,6, externa +2,8; 2020, restan las 2 \vertema{4.A.29}.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{contribuciones-pib-espana}{Contribuciones al crecimiento del PIB de España (p.\,p.)}
+
+\sub{III.2. Elaboración, fuentes y alta frecuencia\label{rep:III.2}}
+\begin{itemize}
+\item INE (anual, trimestral, sectores no financieros, regional, \emph{input-output}); Banco de España (financieras, BP, PII); IGAE (AA.\,PP., déficit y deuda a la UE) \vertema{4.B.1}.
+\item No hay una encuesta de CN: estadísticas de empresas y comercio, encuestas a hogares y registros (impuestos, afiliación, presupuestos), cuadrados en las tablas de origen y destino \vertema{4.A.1}. Para 2025, contabilidad de \dato{$\approx$1,35 M de empresas}{INE}.
+\item \emph{Revisiones}: ordinarias (avance $\to$ provisional $\to$ definitivo); extraordinarias (fuentes y métodos): RE 2024 elevó el PIB de 2023 un \dato{2,5\,\%}{INE}; la siguiente, en 2027.
+\item \emph{Alta frecuencia y} nowcasting: afiliación, producción industrial, cifra de negocios, electricidad, PMI; nuevas (IVA casi en tiempo real, tarjetas, búsquedas, movilidad, experimentales del INE); modelos factoriales dinámicos (\emph{Spain-STING} del BdE, MIPred de la AIReF). Límite: miden mejor el cambio que el nivel; muestras no representativas. Complementan, no sustituyen.
+\end{itemize}
+
+\sub{III.3. El PIB y el bienestar\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Ventajas}: cifra única, monetaria, comparable, mismas reglas, coherente; mide bien la producción de mercado y su ciclo. \autor{Jones}-\autor{Klenow} (2016): bienestar (consumo, ocio, esperanza de vida, desigualdad) muy correlacionado con el PIB pc; Europa occidental, más cerca de EE.\,UU. en bienestar que en renta.
+\item \emph{Limitaciones}: ya \autor{Kuznets} (1934) avisó. «No solo de pan vive el hombre»: fuera del mercado (trabajo doméstico y de cuidados, voluntariado, ocio); mal medido (servicios públicos a coste, calidad, digital gratuito, economía no observada, incluida la ilegal, que el INE estima desde 2014); distribución \vertema{3.A.24}; sostenibilidad (agota recursos, suma gastos reparadores) \vertema{3.B.31}; fiabilidad (\autor{Chen} et al., 2019: China exageró $<$2 p.\,p./año en 2010-2016).
+\item \emph{Alternativas: completar}. Corregir: \concepto{MEW} de \autor{Nordhaus}-\autor{Tobin} (1972: consumo + ocio + trabajo doméstico $-$ daños). Índices: IDH del PNUD (España, puesto 28 en 2023). Cuadros: \autor{Stiglitz}-\autor{Sen}-\autor{Fitoussi} (2009: renta y consumo de los hogares, distribución, no material, sostenibilidad); «Más allá del PIB» (CE, 2009); panel de 31 indicadores (ONU, 2026). Cuentas ampliadas: SCAE; SCN 2025 (agotamiento, datos, distribución).
+\item \emph{Paradoja de \autor{Easterlin}} (1974): en un país los ricos son más felices, pero la media no sube con el crecimiento (renta relativa, hábitos); \autor{Stevenson}-\autor{Wolfers} (2008): relación positiva también entre países y en el tiempo.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: 3 caras de un mismo flujo (producción, renta, gasto) $\Rightarrow$ identidades; el SEC 2010 las mide con reglas comunes y una cadena de cuentas en que cada saldo es un agregado (PIB $\to$ renta disponible $\to$ ahorro $\to$ capacidad/necesidad $\to$ patrimonio); leerlas en volumen, por contribuciones y sabiendo qué dejan fuera.
+\item \textbf{Relevancia}: sin ellas no hay diagnóstico del ciclo, ni reglas fiscales, ni presupuesto europeo.
+\item \textbf{Extensiones}: BP \vertema{3.B.11}; \emph{input-output} \vertema{3.A.31}; AA.\,PP. \vertema{4.B.1}; dictamen de coyuntura; consumo, inversión y crecimiento \vertema{3.A.33} \vertema{3.A.34} \vertema{3.A.45}.
+\item \textbf{Opinión}: al PIB se le pide lo que no promete: mide la actividad y lo hace bien. Completarlo con renta disponible de los hogares, balances y cuentas ambientales y distributivas (SCN 2025).
+\item \textbf{Idea final}: ya no se hace política «a ojo de buen cubero» (el PIB, a 30 días). Unas pocas cifras sí resumen a millones de agentes si se sabe cómo se hacen y qué dejan fuera: solo se gestiona bien lo que se mide bien.
+\end{itemize}
+
+{\centering\scriptsize\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.4\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Cuenta} & \textbf{Agregado} & \textbf{Para qué sirve}\\
+\midrule
+Producción & PIB (VAB) & Actividad, ciclo; ratios fiscales\\
+Explotación & EBE y RMB & Márgenes; participación del trabajo\\
+Renta primaria & RNB $=$ PIB $+$ RP & Inversión extranjera; recurso UE\\
+Distrib. secundaria & RNDB $=$ RNB $+$ RS & Poder de compra; remesas\\
+En especie & RDBA ($=$ RNDB total) & Bienestar entre países\\
+Utilización & $S=$ RNDB $-C-G$ & Tasa de ahorro\\
+Capital & B.9 $=S-I+$ CK & Déficit público; saldo exterior\\
+Balances & Patrimonio neto & Solvencia; efecto riqueza\\
+\bottomrule
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1934}{\autor{Kuznets}: 1.ª renta nacional oficial de EE.\,UU. (encargo del Senado, 1932)}
+\hito{1941}{\autor{Meade} y \autor{Stone}: renta nacional británica en partida doble}
+\hito{1953}{1.er SCN de Naciones Unidas (revisiones 1968, 1993, 2008, 2025)}
+\hito{1971}{Nobel a \autor{Kuznets} (\autor{Meade} 1977; \autor{Stone} 1984)}
+\hito{1972}{\autor{Nordhaus}-\autor{Tobin}: medida del bienestar económico}
+\hito{1974}{\autor{Easterlin}: la paradoja}
+\hito{2008}{\autor{Stevenson}-\autor{Wolfers}; SCN 2008}
+\hito{2009}{\autor{Stiglitz}-\autor{Sen}-\autor{Fitoussi}; «Más allá del PIB» (CE)}
+\hito{2013}{Reglamento (UE) 549/2013: SEC 2010 (datos desde sept. 2014)}
+\hito{2016}{\autor{Jones}-\autor{Klenow}: bienestar frente a PIB per cápita}
+\hito{2024}{Revisión Estadística 2024 del INE (PIB 2023 +2,5\,\%)}
+\hito{2025}{SCN 2025 y MBP7 (marzo)}
+\hito{2030}{Nuevo SEC («SEC 2030»): cambios principales}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item PIB España 2025: \dato{1.690.012 M€}{INE}; +2,6\,\% vol., deflactor +3,0\,\%; 3T 2026: \dato{+0,6\,\% trim., +2,7\,\% interanual}{INE}.
+\item Pesos 2025 (\% PIB): C 55,2; G 19,2; FBC 21,7; X 36,5; M 32,6; RA 48,4; EBE + RMB 41,6; impuestos netos s/ producción e import. 10,0.
+\item Contribuciones 2025: \dato{nacional 3,4; externa $-$0,8 p.\,p.}{INE}.
+\item Ahorro nacional \dato{25,0\,\% PIB}{2025}; RNB = PIB $\times$1,002; RNDB 1.679.739 M€.
+\item Capacidad de la nación \dato{4,3\,\% PIB}{2025}; AA.\,PP. $-$2,4\,\%; 2007: $-$9,0\,\%.
+\item Participación del trabajo ajustada: \dato{56,6\,\%}{AMECO}; IDH: España \dato{28.ª}{PNUD, 2023}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué coinciden las 3 vías del PIB?} Lo producido se reparte como renta y se gasta: el mismo flujo medido en 3 puntos; el INE lo cuadra en las tablas de origen y destino.
+\item \textbf{¿Diferencia entre PIB y RNB?} Interior vs nacional: RNB $=$ PIB $+$ rentas primarias netas del exterior (Irlanda, RNB $\ll$ PIB).
+\item \textbf{¿Qué es la capacidad de financiación?} Saldo B.9 de la cuenta de capital: ahorro $+$ transf. de capital netas $-$ inversión; en la nación, $\mathrm{CC}+\mathrm{CK}$.
+\item \textbf{¿Por qué no coinciden B.9 y B.9F?} Fuentes distintas (INE y Banco de España): discrepancia estadística.
+\item \textbf{¿Gasto en consumo final vs consumo final efectivo?} Quién paga vs quién consume; difieren en las transferencias sociales en especie.
+\item \textbf{¿Por qué no suman los componentes encadenados?} Cada uno con sus precios; las contribuciones sí suman con pesos nominales del año anterior.
+\item \textbf{¿Cuándo es de mercado un productor?} Si sus ventas cubren $\geq$50\,\% de los costes de forma continuada (+ criterios cualitativos).
+\item \textbf{¿Qué es la RDBA y para qué sirve?} RDB + transferencias sociales en especie: compara el bienestar de los hogares entre países con sistemas distintos.
+\item \textbf{¿Mide el PIB el bienestar?} No (\autor{Kuznets}, 1934): deja fuera lo no de mercado, la distribución y la sostenibilidad; se completa (\autor{Stiglitz}-\autor{Sen}-\autor{Fitoussi}, SCN 2025), no se sustituye.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Precio básico \emph{incluye} los otros impuestos netos s/ producción (D.29$-$D.39) y \emph{excluye} los impuestos s/ productos; PIB pm $=\sum$VAB pb $+$ (D.21$-$D.31).
+\item RNB (antes PNB) es \emph{renta}, no producción. Deudor neto $\not\Rightarrow$ RNB $<$ PIB (España 2025).
+\item RDBA total $=$ RNDB (transferencias en especie entre residentes). Ahorro igual en las 2 versiones.
+\item Vivienda nueva de los hogares = \emph{inversión}, no consumo; inversión pública en $I$, no en $G$; I+D = FBCF desde SEC 2010.
+\item Organismos internacionales: no residentes de ninguna economía (BCE = resto del mundo); turistas y estudiantes, de su país.
+\item Cuentas del resto del mundo, con \emph{signo cambiado}; cuenta de capital del SEC $\neq$ la de la BP.
+\item Contribuciones en \emph{puntos porcentuales}; $M$ resta. Volumen: \autor{Laspeyres} encadenado; deflactor implícito: \autor{Paasche}.
+\item Banco central: subsector S.121 de las instituciones financieras (S.12); ISFLSH = S.15; resto del mundo S.2 no es sector.
+\item Bruto incluye CCF; neto lo descuenta. Interior = territorio; nacional = residentes.
+\item Devengo: impuestos por \emph{caja ajustada en el tiempo} $\Rightarrow$ déficit de la CN $\neq$ déficit de caja.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

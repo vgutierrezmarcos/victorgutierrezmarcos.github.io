@@ -1,0 +1,66 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Colores de las tablas del tema (los de tcee-comun.sty)
+\definecolor{tceeazulpalido}{HTML}{DDEBF7}
+\definecolor{tceesalmon}{HTML}{FBE4D5}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Las tablas de origen y destino y sus 2 identidades (Eurostat, 2008, fig. 2.1,
+% rehecho): oferta = empleos por producto y producción = consumos intermedios
+% + VAB por rama; con ellas, el PIB por las 3 vías.
+% Colores: salvia los bloques productos x ramas, azul pálido la demanda final,
+% salmón el valor añadido (los mismos que tabla-simetrica).
+% Capas: origen -> destino -> identidad por producto -> identidad por rama -> PIB.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  bloque/.style={draw=tceegris, line width=0.6pt, align=center},
+  total/.style={draw=tceegris, line width=0.6pt, fill=tceegris!12},
+  vert/.style={rotate=90, align=center, font=\scriptsize},
+  titulo/.style={font=\small\bfseries},
+  cab/.style={font=\scriptsize, text=tceegris},
+  identidad/.style={<->, thick, tceerojo},
+  rid/.style={font=\scriptsize, text=tceerojo, align=center}]
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-0.7,-3.55) rectangle (13.6,5.25);
+  % 1: la tabla de origen
+  \capa{1}{%
+    \node[titulo] at (2.7,3.75) {Tabla de origen};
+    \node[cab] at (1.5,3.2) {ramas};
+    \node[cab, rotate=90] at (-0.3,1.5) {productos};
+    \draw[bloque, fill=tceesalvia] (0,0) rectangle (3,3);
+    \node at (1.5,1.5) {\textbf{producción}};
+    \draw[bloque] (3,0) rectangle (3.8,3);
+    \node[vert] at (3.4,1.5) {importaciones};
+    \draw[bloque] (3.8,0) rectangle (4.6,3);
+    \node[vert, text width=2.8cm] at (4.2,1.5) {márgenes e impuestos netos sobre los productos};
+    \draw[total] (4.6,0) rectangle (5.4,3);
+    \node[vert, text width=2.8cm] at (5.0,1.5) {\textbf{oferta} por producto};
+    \draw[total] (0,0) rectangle (3,-0.7);
+    \node at (1.5,-0.35) {\textbf{producción} por rama};}
+  % 2: la tabla de destino
+  \capa{2}{%
+    \node[titulo] at (10.3,3.75) {Tabla de destino};
+    \node[cab] at (8.7,3.2) {ramas};
+    \node[cab] at (11.4,3.2) {demanda final};
+    \node[cab, rotate=90] at (6.9,1.5) {productos};
+    \draw[bloque, fill=tceesalvia] (7.2,0) rectangle (10.2,3);
+    \node at (8.7,1.5) {\textbf{consumos intermedios}};
+    \draw[bloque, fill=tceeazulpalido] (10.2,0) rectangle (12.6,3);
+    \node[text width=2.2cm, align=center] at (11.4,1.5) {\textbf{demanda final}\\ (consumo, FBC, exportaciones)};
+    \draw[total] (12.6,0) rectangle (13.4,3);
+    \node[vert, text width=2.8cm] at (13.0,1.5) {\textbf{empleos} por producto};
+    \draw[bloque, fill=tceesalmon] (7.2,0) rectangle (10.2,-0.7);
+    \node at (8.7,-0.35) {\textbf{valor añadido bruto}};
+    \draw[total] (7.2,-0.7) rectangle (10.2,-1.4);
+    \node at (8.7,-1.05) {\textbf{producción} por rama};}
+  % 3: identidad 1, por producto
+  \capa{3}{\draw[identidad] (5.0,3.05) .. controls (6.6,5.0) and (11.4,5.0) .. (13.0,3.05)
+      node[pos=0.5, above, rid] {identidad 1: oferta $=$ empleos (por producto)};}
+  % 4: identidad 2, por rama
+  \capa{4}{\draw[identidad] (1.5,-0.75) .. controls (1.5,-2.0) and (5.8,-1.05) .. (7.15,-1.05)
+      node[pos=0.45, below=3pt, rid, text width=5.2cm] {identidad 2: producción $=$ consumos intermedios $+$ VAB (por rama)};}
+  % 5: el PIB por las 3 vías
+  \capa{5}{\node[draw=tceemorado, fill=tceemorado!8, line width=0.8pt, rounded corners=2pt,
+      align=center, text width=13.2cm, inner sep=4pt] at (6.45,-3.0)
+      {\textbf{PIB por las 3 vías}: producción ($\sum$ VAB $+$ impuestos netos sobre los productos) $=$ gasto (demanda final $-$ importaciones) $=$ rentas (RA $+$ EBE y renta mixta $+$ impuestos netos)};}
+\end{tikzpicture}
+\end{document}

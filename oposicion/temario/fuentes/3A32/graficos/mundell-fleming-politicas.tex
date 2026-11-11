@@ -1,0 +1,83 @@
+% Mundell-Fleming con movilidad perfecta del capital: políticas fiscal y
+% monetaria expansivas con tipo de cambio fijo (arriba) y flexible (abajo)
+% (3.A.32, II.1.1). Plano (Y, i); colores como is-lm-bp y como
+% mundell-fleming-dos-paises del 3.A.37 (IS azul, LM morado, BP verde).
+%   BP: i = i* = 2,5
+%   IS:  i = 2,5 - (Y - 3)          LM:  i = 2,5 + 0,8 (Y - 3)
+%   IS': i = 2,5 - (Y - 4,5)        LM': i = 2,5 + 0,8 (Y - 4,5)
+%   A = (3; 2,5) inicial; C = (4,5; 2,5) final en a) y d); C = A en b) y c)
+%   B (antes de que reaccionen las reservas o el tipo de cambio):
+%     expansión fiscal, IS' con LM: (3,833; 3,167)
+%     expansión monetaria, IS con LM': (3,667; 1,833)
+% Capas: primero los paneles eficaces (a y d), que son los del cante.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.85cm,
+    declare function={is(\y)=2.5-(\y-3); isn(\y)=2.5-(\y-4.5);
+      lm(\y)=2.5+0.8*(\y-3); lmn(\y)=2.5+0.8*(\y-4.5);},
+    titulo/.style={font=\small\bfseries,anchor=base west},
+    explica/.style={etiqueta,text=tceerojo,font=\footnotesize,align=center,anchor=north}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-8.6) rectangle (16.8,5.4);
+  % Lo común a los 4 paneles: ejes, título, BP, IS, LM y A con su proyección
+  \def\dA{0pt}
+  \def\base#1#2{%
+    \node[titulo] at (0,5.0) {#1};
+    \ejes{$Y$}{$i$}{7.0}{4.7}
+    \draw[curva3] (0,2.5) node[left,text=black] {$i^*$} -- (6.7,2.5) node[etiqueta,right,text=tceeverde] {BP};
+    \draw[curva2] (1.0,{is(1.0)}) -- (5.2,{is(5.2)}) node[etiqueta,right,text=tceeazul] {IS};
+    \draw[curva1] (1.5,{lm(1.5)}) -- (4.85,{lm(4.85)}) node[etiqueta,right,text=tceemorado] {LM};
+    \draw[guia] (3,2.5) -- (3,0) node[below,text=black] {$Y_0$};
+    \node[punto,label={[etiqueta,label distance=\dA]90:#2}] at (3,2.5) {};}
+  % ======== a) Tipo fijo: política fiscal (eficaz) ========
+  \begin{scope}
+  % 1: ejes, título, BP, IS, LM y A
+  \capa{1}{\base{a) Tipo fijo: política fiscal}{$A$}}
+  % 2: expansión fiscal: IS'
+  \capa{2}{\draw[curva2,desplazada] (2.5,{isn(2.5)}) -- (6.5,{isn(6.5)}) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  % 3: B; entra capital y el banco central compra divisas: la LM se desplaza
+  \capa{3}{\node[punto,label={[etiqueta]90:$B$}] at (3.833,3.167) {};}
+  \capa{3}{\draw[flecha] (4.45,3.5) -- (5.6,3.5);}
+  \capa{3}{\node[explica] at (3.6,-0.55) {entra capital: el banco\\central compra divisas};}
+  % 4: LM' y C, con su proyección a Y_1
+  \capa{4}{\draw[curva1,desplazada] (2.4,{lmn(2.4)}) -- (6.2,{lmn(6.2)}) node[etiqueta,right,text=tceemorado] {LM$'$};}
+  \capa{4}{\draw[guia,tceerojo] (4.5,2.5) -- (4.5,0) node[below,text=tceerojo] {$Y_1$};}
+  \capa{4}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]90:$C$}] at (4.5,2.5) {};}
+  \end{scope}
+  % ======== d) Tipo flexible: política monetaria (eficaz) ========
+  \begin{scope}[shift={(8.6,-7.0)}]
+  % 5: ejes, título, BP, IS, LM y A
+  \capa{5}{\base{d) Tipo flexible: política monetaria}{$A$}}
+  % 6: expansión monetaria: LM'
+  \capa{6}{\draw[curva1,desplazada] (2.4,{lmn(2.4)}) -- (6.2,{lmn(6.2)}) node[etiqueta,right,text=tceemorado] {LM$'$};}
+  % 7: B; sale capital y la moneda se deprecia: la IS se desplaza
+  \capa{7}{\node[punto,label={[etiqueta]270:$B$}] at (3.667,1.833) {};}
+  \capa{7}{\draw[flecha] (4.6,1.0) -- (5.8,1.0);}
+  \capa{7}{\node[explica] at (3.6,-0.55) {depreciación};}
+  % 8: IS' y C, con su proyección a Y_1
+  \capa{8}{\draw[curva2,desplazada] (2.5,{isn(2.5)}) -- (6.5,{isn(6.5)}) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  \capa{8}{\draw[guia,tceerojo] (4.5,2.5) -- (4.5,0) node[below,text=tceerojo] {$Y_1$};}
+  \capa{8}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]90:$C$}] at (4.5,2.5) {};}
+  \end{scope}
+  % ======== b) Tipo fijo: política monetaria (ineficaz) ========
+  \begin{scope}[shift={(8.6,0)}]
+  % 9: base, LM', B, salida de capital y vuelta de la LM; C = A
+  \capa{9}{\def\dA{0.26cm}\base{b) Tipo fijo: política monetaria}{$A{=}C$}}
+  \capa{9}{\draw[curva1,desplazada] (2.4,{lmn(2.4)}) -- (6.2,{lmn(6.2)}) node[etiqueta,right,text=tceemorado] {LM$'$};}
+  \capa{9}{\node[punto,label={[etiqueta]270:$B$}] at (3.667,1.833) {};}
+  \capa{9}{\node[explica] at (3.6,-0.55) {sale capital: el banco\\central vende divisas};}
+  \capa{9}{\draw[flecha] (5.6,3.5) -- (4.45,3.5);}
+  \end{scope}
+  % ======== c) Tipo flexible: política fiscal (ineficaz) ========
+  \begin{scope}[shift={(0,-7.0)}]
+  % 10: base, IS', B, apreciación y vuelta de la IS; C = A
+  \capa{10}{\def\dA{0.26cm}\base{c) Tipo flexible: política fiscal}{$A{=}C$}}
+  \capa{10}{\draw[curva2,desplazada] (2.5,{isn(2.5)}) -- (6.5,{isn(6.5)}) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  \capa{10}{\node[punto,label={[etiqueta]90:$B$}] at (3.833,3.167) {};}
+  \capa{10}{\node[explica] at (3.6,-0.55) {apreciación};}
+  \capa{10}{\draw[flecha] (5.8,1.0) -- (4.6,1.0);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,79 @@
+% La demanda y la oferta agregadas en una economía abierta con tipo de cambio
+% fijo. Variante del gráfico da-oa del 3.A.5 (mismos valores, estilos y
+% colores): DA en morado, OA de corto plazo en azul, OA de largo plazo en verde
+% y lo desplazado, discontinuo (la DA', en rojo).
+%   Y^n = 7; DA: Y = 11/3 + 14/(P + 2); OA_CP(W_0): P = Y - 4,8; A = (7; 2,2)
+%   a) Expansión fiscal con tipo fijo: DA' = DA + 4/3; B = (7,8; 3) sobre
+%      OA_CP(W_0); OA_CP(W_1): P = Y - 2; C = (7; 5) (da(5) + 4/3 = 7)
+%   b) Devaluación interna: OA_CP(W_0): P = Y - 1 corta a la DA en
+%      A = (5,743; 4,743) ((Y - 11/3)(Y + 1) = 14); baja hasta
+%      OA_CP(W_1): P = Y - 4,8 y la economía va por la DA a C = (7; 2,2)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.5cm,
+    declare function={da(\p)=11/3+14/(\p+2);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.2,-2.2) rectangle (32,10.4);
+  % 1: ejes de los 2 paneles y títulos
+  \capa{1}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \capa{1}{\node[anchor=base west, font=\small\bfseries] at (-1.2,9.2) {a) Expansión fiscal con tipo fijo};}
+  \begin{scope}[xshift=9.6cm]
+  \capa{1}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \capa{1}{\node[anchor=base west, font=\small\bfseries] at (-1.2,9.2) {b) Devaluación interna};}
+  \end{scope}
+  % ------------------------------------------------------------ panel a
+  % 2: la OA de largo plazo, vertical en Y^n
+  \capa{2}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  % 3: la DA y el punto A
+  \capa{3}{\draw[curva1] plot[domain=6.2:1.2, samples=60, smooth] ({da(\x)},\x)
+      node[etiqueta, right, text=tceemorado] {DA};}
+  \capa{3}{\draw[guia] (7,2.2) -- (0,2.2) node[left, text=black] {$P_0$};}
+  \capa{3}{\node[punto] (aA) at (7,2.2) {};}
+  \capa{3}{\node[etiqueta] at (6.62,1.3) {$A$};}
+  % 4: la OA de corto plazo con W_0
+  \capa{4}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{4}{\node[punto] at (7,2.2) {};}
+  % 5: expansión fiscal: la DA se desplaza a la derecha
+  \capa{5}{\draw[curvanueva, desplazada] plot[domain=6.3:1.0, samples=60, smooth] ({da(\x)+4/3},\x)
+      node[etiqueta, right, text=tceerojo] {DA$'$};}
+  % 6: corto plazo: B, con más renta y más precios
+  \capa{6}{\draw[guia] (7.8,3) -- (0,3) node[left, text=black] {$P_1$};}
+  \capa{6}{\draw[guia] (7.8,0) node[below, text=black] {$Y_1$} -- (7.8,3);}
+  \capa{6}{\node[punto] (aB) at (7.8,3) {};}
+  \capa{6}{\node[etiqueta, right=3pt] at (aB) {$B$};}
+  % 7: medio plazo: suben los salarios, la OA de corto sube y la economía
+  %    vuelve a Y^n con precios más altos (C)
+  \capa{7}{\draw[curva2, desplazada] (2.5,0.5) -- (8.4,6.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_1)$};}
+  \capa{7}{\draw[guia] (7,5) -- (0,5) node[left, text=black] {$P_2$};}
+  \capa{7}{\node[punto] (aC) at (7,5) {};}
+  \capa{7}{\node[etiqueta, above left=1pt and 1pt] at (aC) {$C$};}
+  \capa{7}{\draw[flecha, shorten <=3pt, shorten >=3pt] (aB) to[bend right=25] (aC);}
+  % 8: lo que hace la expulsión: se aprecia el tipo real
+  \capa{8}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize] at (0.3,7.6)
+      {$q\downarrow$: apreciación real,\\menos $XN$};}
+  % ------------------------------------------------------------ panel b
+  \begin{scope}[xshift=9.6cm]
+  % 9: OA de largo plazo, DA y OA de corto plazo alta: A en recesión
+  \capa{9}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \capa{9}{\draw[curva1] plot[domain=6.2:1.2, samples=60, smooth] ({da(\x)},\x)
+      node[etiqueta, right, text=tceemorado] {DA};}
+  \capa{9}{\draw[curva2] (1.6,0.6) -- (7.6,6.6) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{9}{\draw[guia] (5.743,0) node[below, text=black] {$Y_0$} |- (0,4.743) node[left, text=black] {$P_0$};}
+  \capa{9}{\node[punto] (bA) at (5.743,4.743) {};}
+  \capa{9}{\node[etiqueta, left=3pt] at (bA) {$A$};}
+  % 10: los salarios y los precios crecen menos que fuera: la OA de corto baja
+  \capa{10}{\draw[flecha] (6.75,5.75) -- (8.85,4.05);}
+  \capa{10}{\draw[flecha] (3.1,2.1) -- (5.2,0.4);}
+  \capa{10}{\draw[curva2, desplazada] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_1)$};}
+  % 11: la economía baja por la DA hasta C, en Y^n
+  \capa{11}{\draw[flecha, shorten <=4pt, shorten >=4pt] plot[domain=4.6:2.35, samples=30, smooth] ({da(\x)+0.3},\x+0.3);}
+  \capa{11}{\draw[guia] (7,2.2) -- (0,2.2) node[left, text=black] {$P_1$};}
+  \capa{11}{\node[punto] (bC) at (7,2.2) {};}
+  \capa{11}{\node[etiqueta] at (6.62,1.3) {$C$};}
+  \capa{11}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize] at (0.3,7.6)
+      {$P\downarrow$, $q\uparrow$:\\depreciación real};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,64 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Panorama de las cuentas internacionales (MBP6, cap. 2; Banco de España):
+% PII inicial + transacciones de la balanza de pagos (CF) + otras variaciones
+% = PII final. Gráfico de referencia de la ficha identidad-balanza-pagos.
+% Familias de color: lo no financiero (CC, CK) en verde, lo financiero (CF y
+% PII) en azul y las otras variaciones en dorado.
+% Capas en el orden de la pizarra: PII inicial -> balanza de pagos -> CC -> CK
+% -> capacidad o necesidad -> CF -> EO -> identidad -> OV -> PII final ->
+% flechas -> ecuación de la posición.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  caja/.style={draw=#1, fill=#1!12, line width=0.8pt, rounded corners=2pt,
+    align=center, inner sep=3pt, minimum height=1cm},
+  nofin/.style={caja=tceeverde, text width=4.3cm},
+  fin/.style={caja=tceeazul, text width=4.3cm},
+  pii/.style={caja=tceeazul, fill=tceeazul!22, text width=2.55cm, minimum height=2.2cm},
+  sig/.style={-{Stealth[length=2.2mm]}, thick, tceegris}]
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-1.45,-4.3) rectangle (14.45,3.75);
+  % 1: la posición de partida
+  \capa{1}{\node[pii] (pii0) at (0,-0.9)
+    {\textbf{PII al comienzo}\\ (fin de $t-1$)\\[2pt] activos $-$ pasivos\\ ${{}=\mathrm{PIIN}_{t-1}}$};}
+  % 2: la balanza de pagos (las transacciones del periodo)
+  \capa{2}{\draw[tceemorado, dashed, rounded corners=3pt] (2.95,-2.0) rectangle (11.05,3.3);
+    \node[tceemorado, font=\footnotesize\bfseries, anchor=south west] at (2.95,3.3)
+      {Balanza de pagos: transacciones del periodo $t$};}
+  % 3: la cuenta corriente
+  \capa{3}{\node[nofin] (cc) at (5.55,2.45)
+    {\textbf{Cuenta corriente} (CC)\\ bienes y servicios ($X-M$),\\ rentas primarias (RP) y secundarias (RS)};}
+  % 4: la cuenta de capital
+  \capa{4}{\node[nofin] (ck) at (5.55,1.05) {\textbf{Cuenta de capital} (CK)};}
+  % 5: capacidad o necesidad de financiación
+  \capa{5}{\draw[decorate, decoration={brace, amplitude=5pt}, thick, tceeverde]
+      (7.95,3.0) -- (7.95,0.6)
+      node[midway, right=7pt, align=left, text=tceeverde]
+      {capacidad ($+$) o\\ necesidad ($-$)\\ de financiación};}
+  % 6: la cuenta financiera
+  \capa{6}{\node[fin] (cf) at (5.55,-1.2)
+    {\textbf{Cuenta financiera} (CF)\\ VNA $-$ VNP: ID, IC, D, OI\\ y reservas ($\Delta R$)};}
+  % 7: errores y omisiones
+  \capa{7}{\node[caja=tceegris, dashed, text width=4.3cm, minimum height=0.7cm] (eo) at (5.55,-0.05)
+    {Errores y omisiones (EO)};}
+  % 8: la identidad
+  \capa{8}{\node[tceemorado, font=\small\bfseries] at (9.5,-0.05)
+    {$\mathrm{CC}+\mathrm{CK}+\mathrm{EO}=\mathrm{CF}$};}
+  % 9: la cuenta de otras variaciones (no son transacciones)
+  \capa{9}{\node[caja=tceedorado, text width=4.3cm] (ov) at (5.55,-3.55)
+    {\textbf{Otras variaciones} (OV)\\ revalorizaciones (precios y tipo de cambio) y cambios de volumen};}
+  % 10: la posición final
+  \capa{10}{\node[pii] (pii1) at (13.05,-1.2)
+    {\textbf{PII al final}\\ (fin de $t$)\\[2pt] activos $-$ pasivos\\ ${{}=\mathrm{PIIN}_{t}}$};}
+  % 11: la posición inicial pasa a la final
+  \capa{11}{\draw[sig] (pii0.south) |- ([xshift=-6mm]pii1.south |- 0,-2.55) -- ([xshift=-6mm]pii1.south);}
+  % 12: la cuenta financiera la cambia por transacciones
+  \capa{12}{\draw[sig, tceeazul] (cf.east) -- (cf.east -| pii1.west);}
+  % 13: las otras variaciones la cambian sin transacciones
+  \capa{13}{\draw[sig, tceedorado] (ov.east) -| ([xshift=6mm]pii1.south);}
+  % 14: la ecuación de la posición
+  \capa{14}{\node[tceemorado, font=\small\bfseries, align=center] at (13.05,0.65)
+    {${\mathrm{PIIN}_t=\mathrm{PIIN}_{t-1}}$\\ ${{}+\mathrm{CF}_t+\mathrm{OV}_t}$};}
+\end{tikzpicture}
+\end{document}

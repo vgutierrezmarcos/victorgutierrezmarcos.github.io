@@ -1,0 +1,50 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% De la absorción a la renta nacional disponible bruta (Feenstra y Taylor,
+% 2014, rehecho): A + (X - M) = PIB; PIB + RP = RNB; RNB + RS = RNDB; luego
+% RNDB - A = (X - M) + RP + RS = CC y CC + CK = capacidad o necesidad de
+% financiación = CF salvo errores y omisiones.
+% Colores: los agregados de las cuentas nacionales en morado; las subcuentas
+% de la balanza que se suman, en verde sobre salvia (lo no financiero, como en
+% el panorama de las cuentas internacionales); la cuenta financiera, en azul.
+% Capas: A -> +(X-M) -> PIB -> +RP -> RNB -> +RS -> RNDB -> CC -> CK y CF.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  ag/.style={draw=tceemorado, fill=tceemorado!8, line width=0.8pt, rounded corners=2pt,
+    align=center, text width=4.6cm, minimum height=0.9cm, inner sep=3pt},
+  bp/.style={draw=tceeverde, fill=tceesalvia, line width=0.6pt, rounded corners=2pt,
+    align=center, text width=2.3cm, inner sep=2pt, font=\scriptsize},
+  sig/.style={-{Stealth[length=2.2mm]}, thick, tceegris},
+  suma/.style={right=3pt, font=\footnotesize, text=tceeverde}]
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-5.0,-7.0) rectangle (6.4,0.6);
+  % 1: la absorción (gasto nacional)
+  \capa{1}{\node[ag] (A) at (0,0) {\textbf{Absorción} (gasto nacional)\\ ${A=C+I+G}$};}
+  % 2: + bienes y servicios
+  \capa{2}{\draw[sig] (A.south) -- ++(0,-0.75) node[midway, suma] {$+\,(X-M)$};
+    \node[bp, anchor=east] at (-0.35,-0.83) {bienes y servicios};}
+  % 3: el PIB
+  \capa{3}{\node[ag] (Y) at (0,-1.65) {\textbf{Producto interior bruto} (PIB)};}
+  % 4: + rentas primarias
+  \capa{4}{\draw[sig] (Y.south) -- ++(0,-0.75) node[midway, suma] {$+\,\mathrm{RP}$};
+    \node[bp, anchor=east] at (-0.35,-2.43) {rentas primarias};}
+  % 5: la RNB
+  \capa{5}{\node[ag] (RNB) at (0,-3.25) {\textbf{Renta nacional bruta} (RNB)};}
+  % 6: + rentas secundarias
+  \capa{6}{\draw[sig] (RNB.south) -- ++(0,-0.75) node[midway, suma] {$+\,\mathrm{RS}$};
+    \node[bp, anchor=east] at (-0.35,-4.03) {rentas secundarias};}
+  % 7: la RNDB
+  \capa{7}{\node[ag] (RNDB) at (0,-4.85) {\textbf{Renta nacional disponible bruta}\\ (RNDB)};}
+  % 8: la cuenta corriente: lo que separa la RNDB de la absorción
+  \capa{8}{\draw[decorate, decoration={brace, amplitude=5pt}, thick, tceeverde]
+      (2.55,0.3) -- (2.55,-5.25)
+      node[midway, right=8pt, align=left, text=tceeverde]
+      {${\mathrm{RNDB}-A}$\\ ${{}=(X-M)+\mathrm{RP}+\mathrm{RS}}$\\ ${{}=\mathrm{CC}=S-I}$};}
+  % 9: con la cuenta de capital, la capacidad o necesidad, que es la CF
+  \capa{9}{\node[draw=tceeazul, fill=tceeazul!10, line width=0.8pt, rounded corners=2pt,
+      align=center, text width=8.6cm, inner sep=4pt] at (0.7,-6.25)
+      {${\mathrm{CC}+\mathrm{CK}={}}$ \textbf{capacidad ($+$) o necesidad ($-$) de financiación}\\
+       ${{}=\mathrm{CF}}$, salvo errores y omisiones};}
+\end{tikzpicture}
+\end{document}

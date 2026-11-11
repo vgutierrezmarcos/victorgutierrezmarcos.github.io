@@ -1,0 +1,89 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% España, 2000-2025: crecimiento del PIB en volumen (%) y contribuciones de la
+% demanda (pp). INE (Contabilidad Nacional Anual, RE 2024), vía Eurostat
+% nama_10_gdp (consulta 11/11/2026; el CSV empieza en 1996 y se recorta).
+% Mismo estilo, paleta y orden de capas que el gráfico de referencia del
+% modelo (1D01/graficos/contribuciones-pib-zona-euro.tex): demanda interna en
+% gama cálida (consumo en naranjas, FBCF en verde, existencias en gris con
+% trama) y externa en azul; el PIB en morado.
+% Orden de capas (CRITERIOS §7; capas «dic»): barras -> cero -> línea del PIB
+% -> puntos -> rótulos.
+\pgfplotsset{leyenda linea corta/.style={legend image code/.code={%
+  \draw[##1,mark repeat=2,mark phase=2] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}}}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/contribuciones-pib-espana.csv}\contrib
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=7.5cm,
+      ybar stacked, stack negative=separate, bar width=0.3cm,
+      xmin=1999.4, xmax=2025.6,
+      restrict x to domain=1999.5:2025.5,
+      xtick={2000,...,2025},
+      xticklabel style={/pgf/number format/1000 sep=, font=\scriptsize, rotate=90, anchor=east},
+      ymin=-12, ymax=8, ytick={-12,-10,...,8},
+      yticklabel style={font=\footnotesize},
+      ylabel={puntos porcentuales y \%},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.17)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left, area legend, dicapas,
+    ]
+    % 1-2: consumo privado y público (familia del consumo, naranjas)
+    % (stack negative=separate: las positivas se apilan hacia arriba y las
+    % negativas hacia abajo, cada una en su lado del cero)
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=dicconspriv] table[x=anio, y=consumo_privado] {\contrib};
+      \addlegendentry{Consumo privado}
+    }
+    \capa{2}{
+      \addplot[on layer=dicbarras, dicbarra=dicconspub] table[x=anio, y=consumo_publico] {\contrib};
+      \addlegendentry{Consumo público}
+    }
+    % 3: inversión (verde)
+    \capa{3}{
+      \addplot[on layer=dicbarras, dicbarra=dicfbcf] table[x=anio, y=fbcf] {\contrib};
+      \addlegendentry{Formación bruta de capital fijo}
+    }
+    % 4: existencias y objetos valiosos (gris con trama, aparte)
+    \capa{4}{
+      \addplot[on layer=dicbarras, dicbarratrama=dicexistencias] table[x=anio, y=existencias] {\contrib};
+      \addlegendentry{Existencias y objetos valiosos}
+    }
+    % 5: demanda externa neta (azul: la gama fría)
+    \capa{5}{
+      \addplot[on layer=dicbarras, dicbarra=dicexterna] table[x=anio, y=demanda_externa_neta] {\contrib};
+      \addlegendentry{Demanda externa neta}
+    }
+    % 6: eje del cero, encima de las barras
+    \capa{6}{
+      \dicraya{(1999.4,0) (2025.6,0)}
+    }
+    % 7: crecimiento del PIB en volumen (línea) sobre las barras
+    \capa{7}{
+      \addplot[stack plots=false, sharp plot, diclineahalo=dicpib, leyenda linea corta,
+        legend image post style={mark=*, mark size=1.8pt, mark options={fill=white, line width=0.9pt}}]
+        table[x=anio, y=pib_real] {\contrib};
+      \addlegendentry{Crecimiento del PIB en volumen (\%)}
+    }
+    % 8: puntos del PIB
+    \capa{8}{
+      \addplot[on layer=dicpuntos, forget plot, stack plots=false, dicpuntos=dicpib]
+        table[x=anio, y=pib_real] {\contrib};
+    }
+    % 9: rótulos de 2009, 2020, 2021 y 2025
+    \capa{9}{
+      \dicrotulo[font=\footnotesize, text=dicpib, anchor=east, inner sep=2pt]
+        {(2008.72,-3.8)}{$-3{,}8$}
+      \dicrotulo[font=\footnotesize, text=dicpib, anchor=east, inner sep=2pt]
+        {(2019.72,-10.9)}{$-10{,}9$}
+      \dicrotulo[font=\footnotesize, text=dicpib, anchor=south, inner sep=2pt]
+        {(2021,7.0)}{$+6{,}7$}
+      \dicrotulo[font=\footnotesize, text=dicpib, anchor=south, inner sep=2pt]
+        {(2025,3.5)}{$+2{,}6$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,67 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Clasificación de las ramas por los coeficientes de Rasmussen (1956): poder de
+% dispersión PD_j (hacia atrás) en el eje horizontal y sensibilidad de
+% dispersión SD_i (hacia delante) en el vertical; referencias en 1. Puntos del
+% ejemplo de la tabla del tema: industria I = (1,14; 0,86), impulsora;
+% servicios S = (0,86; 1,14), estratégica. Mismos ejes, rótulos y paleta que
+% rasmussen-espana: clave en morado, impulsoras en azul, estratégicas en
+% dorado e independientes en gris (y marcas distintas).
+\colorlet{rclave}{tceemorado}
+\colorlet{rimpulsor}{tceeazul}
+\colorlet{restrategico}{tceedorado}
+\colorlet{rindependiente}{tceegris}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      scale only axis, width=7cm, height=7cm,
+      xmin=0.6, xmax=1.4, ymin=0.6, ymax=1.4,
+      xtick={0.6,0.8,1,1.2,1.4}, ytick={0.6,0.8,1,1.2,1.4},
+      /pgf/number format/use comma, /pgf/number format/fixed, /pgf/number format/fixed zerofill,
+      /pgf/number format/precision=1,
+      ticklabel style={font=\footnotesize},
+      xlabel={Poder de dispersión $\mathrm{PD}_j$ (hacia atrás)},
+      ylabel={Sensibilidad de dispersión $\mathrm{SD}_i$ (hacia delante)},
+      label style={font=\footnotesize},
+      axis lines=left, tick align=outside, clip=false,
+      dicapas,
+    ]
+    % 1: ejes (los dibuja pgfplots)
+    % 2: líneas de referencia en 1
+    \capa{2}{
+      \dicraya[dicumbral, thick]{(1,0.6) (1,1.4)}
+      \dicraya[dicumbral, thick]{(0.6,1) (1.4,1)}
+    }
+    % 3: rótulos de los cuadrantes
+    \capa{3}{
+      \dicrotulo[anchor=north east, text=rclave, font=\footnotesize\bfseries, align=right]
+        {(1.38,1.38)}{Clave\\[-1pt]\normalfont\scriptsize PD $>1$, SD $>1$}
+      \dicrotulo[anchor=south east, text=rimpulsor, font=\footnotesize\bfseries, align=right]
+        {(1.38,0.62)}{Impulsoras\\[-1pt]\normalfont\scriptsize PD $>1$, SD $<1$}
+      \dicrotulo[anchor=north west, text=restrategico, font=\footnotesize\bfseries, align=left]
+        {(0.62,1.38)}{Estratégicas o de base\\[-1pt]\normalfont\scriptsize PD $<1$, SD $>1$}
+      \dicrotulo[anchor=south west, text=rindependiente, font=\footnotesize\bfseries, align=left]
+        {(0.62,0.62)}{Independientes\\[-1pt]\normalfont\scriptsize PD $<1$, SD $<1$}
+    }
+    % 4: punto I (industria)
+    \capa{4}{
+      \addplot[on layer=dicpuntos, only marks, mark=square*, mark size=3pt,
+        mark options={fill=rimpulsor, draw=rimpulsor!65!black}]
+        coordinates {(1.14,0.86)};
+    }
+    % 5: punto S (servicios)
+    \capa{5}{
+      \addplot[on layer=dicpuntos, only marks, mark=triangle*, mark size=3.6pt,
+        mark options={fill=restrategico, draw=restrategico!65!black}]
+        coordinates {(0.86,1.14)};
+    }
+    % 6: etiquetas de los puntos
+    \capa{6}{
+      \dicrotulo[anchor=west, xshift=4pt, font=\footnotesize]
+        {(1.14,0.86)}{Industria: $(1{,}14;\ 0{,}86)$}
+      \dicrotulo[anchor=south, yshift=4pt, font=\footnotesize, align=center]
+        {(0.86,1.14)}{Servicios\\$(0{,}86;\ 1{,}14)$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

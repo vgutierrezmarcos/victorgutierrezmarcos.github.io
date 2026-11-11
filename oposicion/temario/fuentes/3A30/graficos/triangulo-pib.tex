@@ -1,0 +1,50 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\definecolor{tceemoradopalido}{HTML}{F3EEF7}
+\begin{document}
+% El flujo circular de la renta como triángulo: producción (arriba), rentas
+% (abajo a la derecha) y gasto (abajo a la izquierda), unidos por flechas en
+% sentido horario; en el centro, el PIB, y junto a cada vértice su fórmula
+% (la misma forma que eq:pib-tres-vias). Elaboración propia a partir de
+% Lequiller y Blades (2018), cap. 1.
+% Capas: producción -> rentas -> gasto -> cierre del circuito -> PIB ->
+% fórmula de cada vértice.
+\begin{tikzpicture}[tcee,
+  vertice/.style={draw=tceemorado, fill=tceemoradopalido, line width=0.8pt,
+    rounded corners=3pt, align=center, minimum width=3.0cm, minimum height=1.1cm,
+    inner sep=4pt},
+  circuito/.style={->, very thick, tceegris},
+  rotulo/.style={font=\footnotesize\itshape, text=tceegris!80!black, align=center},
+  formula/.style={font=\footnotesize, text=tceemorado, align=center}]
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-6.9,-2.9) rectangle (6.9,5.3);
+  % 1: producción (vértice de arriba)
+  \capa{1}{\node[vertice] (prod) at (0,3.6)
+    {\textbf{Producción}\\[-1pt]{\footnotesize\color{tceegris!80!black} productores}};}
+  % 2: rentas (abajo a la derecha) y la flecha «se reparte como renta»
+  \capa{2}{\node[vertice] (rent) at (4.4,-1.2)
+    {\textbf{Rentas}\\[-1pt]{\footnotesize\color{tceegris!80!black} perceptores de renta}};}
+  \capa{2}{\draw[circuito] (prod.east) to[bend left=28]
+    node[rotulo, pos=0.45, above right=0pt and 2pt] {se reparte\\ como renta} (rent.north);}
+  % 3: gasto (abajo a la izquierda) y la flecha «se gasta»
+  \capa{3}{\node[vertice] (gast) at (-4.4,-1.2)
+    {\textbf{Gasto}\\[-1pt]{\footnotesize\color{tceegris!80!black} agentes del gasto}};}
+  \capa{3}{\draw[circuito] (rent.west) to[bend left=12]
+    node[rotulo, below=2pt] {se gasta} (gast.east);}
+  % 4: la flecha que cierra el circuito
+  \capa{4}{\draw[circuito] (gast.north) to[bend left=28]
+    node[rotulo, pos=0.55, above left=0pt and 2pt] {se produce\\ lo que se compra} (prod.west);}
+  % 5: el PIB en el centro
+  \capa{5}{\node[font=\huge\bfseries, text=tceemorado] (pib) at (0,1.05) {PIB};}
+  \capa{5}{\node[font=\footnotesize, below=1pt of pib] {producción $=$ renta $=$ gasto};}
+  % 6: fórmula de la producción, encima de su vértice
+  \capa{6}{\node[formula, above=4pt of prod]
+    {$\sum\mathrm{VAB}+(\text{impuestos}-\text{subvenciones})$\\ sobre los productos};}
+  % 7: fórmula de las rentas, debajo de su vértice
+  \capa{7}{\node[formula, below=4pt of rent]
+    {$\mathrm{RA}+\mathrm{EBE}+\mathrm{RMB}+(\text{impuestos}-\text{subvenciones})$\\ sobre la producción y las importaciones};}
+  % 8: fórmula del gasto, debajo de su vértice
+  \capa{8}{\node[formula, below=4pt of gast]
+    {$C+I+G+(X-M)$};}
+\end{tikzpicture}
+\end{document}

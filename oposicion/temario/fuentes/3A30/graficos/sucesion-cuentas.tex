@@ -1,0 +1,105 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Colores de las cajas del tema (los de tcee-comun.sty)
+\definecolor{tceemoradopalido}{HTML}{F3EEF7}
+\definecolor{tceeazulpalido}{HTML}{DDEBF7}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% La sucesión de cuentas del SEC 2010 y sus saldos (elaboración propia a
+% partir del SEC 2010, cap. 8). Cascada vertical: cada flecha lleva el saldo
+% que pasa a la cuenta siguiente (negrita y morado) y a la derecha de cada caja
+% va el agregado del total de la economía. Colores por bloque: cuentas
+% corrientes en morado, acumulación en salvia y verde, balances en azul; la
+% cuenta de bienes y servicios y el resto del mundo, en gris.
+% Es el gráfico de referencia de la ficha identidades-contabilidad-nacional.
+% Capas: cuenta 0 -> I -> II.1.1 -> II.1.2 -> II.2 -> II.3 -> II.4 -> llave
+% corrientes -> III.1 -> III.2 -> III.3 -> llave acumulación -> IV -> llave
+% balances -> resto del mundo.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  cuenta/.style={draw=#1, line width=0.8pt, rounded corners=2pt, align=center,
+    text width=4.7cm, minimum height=0.8cm, inner sep=3pt},
+  corriente/.style={cuenta=tceemorado, fill=tceemoradopalido},
+  acumulacion/.style={cuenta=tceeverde, fill=tceesalvia},
+  balance/.style={cuenta=tceeazul, fill=tceeazulpalido},
+  cuentabys/.style={cuenta=tceegris, fill=tceegris!12},
+  paso/.style={->, thick, tceegris!80!black},
+  saldo/.style={font=\footnotesize\bfseries, text=tceemorado, anchor=west, align=left,
+    inner sep=2pt},
+  agregado/.style={font=\footnotesize, anchor=west, align=left, inner sep=2pt},
+  total/.style={font=\scriptsize, text=tceegris!80!black},
+  llave/.style={decorate, decoration={brace, amplitude=6pt, mirror}, thick, tceegris!80!black},
+  bloque/.style={rotate=90, font=\footnotesize\itshape, text=tceegris!80!black},
+  rdm/.style={draw=tceegris, line width=0.6pt, fill=tceegris!12, rounded corners=2pt,
+    align=center, text width=3.1cm, inner sep=3pt, minimum height=0.8cm}]
+  % Altura de cada cuenta (centro de la caja); las cajas miden 0,8 de alto
+  \foreach \n/\y in {c0/0, c1/-1.6, c211/-3.2, c212/-4.8, c22/-6.4, c23/-8.0,
+      c24/-9.6, c31/-11.2, c32/-13.0, c33/-14.8, c4/-16.6}
+    \coordinate (\n) at (0,\y);
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-3.9,-18.6) rectangle (11.6,2.1);
+  % 1: cuenta de bienes y servicios, la identidad de partida
+  \capa{1}{\node[cuentabys] at (c0) {\textbf{0.} Cuenta de bienes y servicios};}
+  \capa{1}{\node[agregado, text=tceegris!80!black] at ($(c0)+(2.75,0)$) {recursos $=$ empleos (sin saldo)};}
+  % 2: producción; saldo VAB; agregado PIB
+  \capa{2}{\draw[paso] ($(c0)+(0,-0.4)$) -- ($(c1)+(0,0.4)$);}
+  \capa{2}{\node[corriente] at (c1) {\textbf{I.} Producción};}
+  \capa{2}{\draw[paso] ($(c1)+(0,-0.4)$) -- node[saldo, right] {VAB} ($(c211)+(0,0.4)$);}
+  \capa{2}{\node[agregado] at ($(c1)+(2.75,0)$) {\textcolor{tceegris!80!black}{total:} PIB};}
+  % 3: explotación; saldo EBE y renta mixta
+  \capa{3}{\node[corriente] at (c211) {\textbf{II.1.1} Explotación};}
+  \capa{3}{\draw[paso] ($(c211)+(0,-0.4)$) -- node[saldo, right] {EBE y renta mixta} ($(c212)+(0,0.4)$);}
+  % 4: asignación de la renta primaria; saldo de rentas primarias; RNB
+  \capa{4}{\node[corriente] at (c212) {\textbf{II.1.2} Asignación de la renta primaria};}
+  \capa{4}{\draw[paso] ($(c212)+(0,-0.4)$) -- node[saldo, right] {saldo de rentas primarias} ($(c22)+(0,0.4)$);}
+  \capa{4}{\node[agregado] at ($(c212)+(2.75,0)$) {\textcolor{tceegris!80!black}{total:} RNB};}
+  % 5: distribución secundaria; renta disponible; RNDB
+  \capa{5}{\node[corriente] at (c22) {\textbf{II.2} Distribución secundaria de la renta};}
+  \capa{5}{\draw[paso] ($(c22)+(0,-0.4)$) -- node[saldo, right] {renta disponible} ($(c23)+(0,0.4)$);}
+  \capa{5}{\node[agregado] at ($(c22)+(2.75,0)$) {\textcolor{tceegris!80!black}{total:} RNDB};}
+  % 6: redistribución en especie; renta disponible ajustada
+  \capa{6}{\node[corriente] at (c23) {\textbf{II.3} Redistribución de la renta en especie};}
+  \capa{6}{\draw[paso] ($(c23)+(0,-0.4)$) -- node[saldo, right] {renta disponible ajustada} ($(c24)+(0,0.4)$);}
+  \capa{6}{\node[agregado] at ($(c23)+(2.75,0)$) {\textcolor{tceegris!80!black}{total:} $=$ RNDB};}
+  % 7: utilización de la renta; ahorro
+  \capa{7}{\node[corriente] at (c24) {\textbf{II.4} Utilización de la renta};}
+  \capa{7}{\draw[paso] ($(c24)+(0,-0.4)$) -- node[saldo, right] {ahorro} ($(c31)+(0,0.4)$);}
+  \capa{7}{\node[agregado] at ($(c24)+(2.75,0)$) {\textcolor{tceegris!80!black}{total:} $S=\mathrm{RNDB}-C-G$};}
+  % 8: llave de las cuentas corrientes
+  \capa{8}{\draw[llave] ($(c1)+(-2.75,0.4)$) -- ($(c24)+(-2.75,-0.4)$)
+    node[midway, left=8pt, bloque, anchor=south] {cuentas corrientes};}
+  % 9: capital; capacidad o necesidad de financiación
+  \capa{9}{\node[acumulacion] at (c31) {\textbf{III.1} Capital};}
+  \capa{9}{\draw[paso] ($(c31)+(0,-0.4)$) -- node[saldo, right]
+    {capacidad ($+$) o necesidad ($-$)\\ de financiación (B.9)} ($(c32)+(0,0.4)$);}
+  % 10: financiera; B.9 = VNA - VNP
+  \capa{10}{\node[acumulacion] at (c32) {\textbf{III.2} Financiera};}
+  \capa{10}{\draw[paso] ($(c32)+(0,-0.4)$) -- node[saldo, right]
+    {$\mathbf{B.9=VNA-VNP}$\\ \mdseries\textcolor{tceegris!80!black}{(salvo la discrepancia estadística)}} ($(c33)+(0,0.4)$);}
+  % 11: otras variaciones de los activos
+  \capa{11}{\node[acumulacion] at (c33) {\textbf{III.3} Otras variaciones de los activos};}
+  \capa{11}{\draw[paso] ($(c33)+(0,-0.4)$) -- node[saldo, right]
+    {revalorizaciones y otros\\ cambios de volumen} ($(c4)+(0,0.4)$);}
+  % 12: llave de las cuentas de acumulación
+  \capa{12}{\draw[llave] ($(c31)+(-2.75,0.4)$) -- ($(c33)+(-2.75,-0.4)$)
+    node[midway, left=8pt, bloque, anchor=south] {cuentas de acumulación};}
+  % 13: balances; patrimonio neto y vuelta al balance inicial
+  \capa{13}{\node[balance] at (c4) {\textbf{IV.} Balances};}
+  \capa{13}{\draw[paso] ($(c4)+(0,-0.4)$) -- node[saldo, right] {patrimonio neto} ($(c4)+(0,-1.2)$);}
+  \capa{13}{\draw[paso, tceeazul] ($(c4)+(0,-1.2)$) -- ++(0,-0.3) -| ($(c4)+(2.75,0)$) -- ($(c4)+(2.42,0)$);}
+  \capa{13}{\node[agregado, text=tceeazul] at ($(c4)+(2.9,-0.75)$)
+    {balance final $=$\\ balance inicial $+$ variaciones};}
+  % 14: llave de los balances
+  \capa{14}{\draw[llave] ($(c4)+(-2.75,0.4)$) -- ($(c4)+(-2.75,-0.4)$)
+    node[midway, left=8pt, bloque, anchor=south] {balances};}
+  % 15: el resto del mundo, con el signo cambiado
+  \capa{15}{\draw[thin, dashed, tceegris] (7.9,2.0) -- (7.9,-13.6);}
+  \capa{15}{\node[font=\small\bfseries, align=center] at (9.85,1.5)
+    {Resto del mundo (S.2)};}
+  \capa{15}{\node[font=\scriptsize, text=tceegris!80!black] at (9.85,0.98)
+    {{\normalsize$\boldsymbol{-}$}\, con el signo cambiado};}
+  \capa{15}{\node[rdm] at (9.85,0) {\textbf{V.I} bienes y servicios:\\ $M-X$};}
+  \capa{15}{\node[rdm, minimum height=2.4cm] at (9.85,-5.6) {\textbf{V.II} rentas primarias y secundarias:\\ $-\mathrm{CC}$};}
+  \capa{15}{\node[rdm] at (9.85,-11.2) {\textbf{V.III.1} capital:\\ $-(\mathrm{CC}+\mathrm{CK})$};}
+  \capa{15}{\node[rdm] at (9.85,-13.0) {\textbf{V.III.2} financiera};}
+\end{tikzpicture}
+\end{document}

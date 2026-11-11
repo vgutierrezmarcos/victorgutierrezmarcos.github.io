@@ -1,0 +1,144 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% España, 2008-2025, % del PIB (datos anuales; Banco de España, Boletín
+% Estadístico, cap. 17, y Eurostat, PIB; consulta 05/11/2026; el CSV llega a
+% 1995). Dos paneles apilados (un axis encima de otro):
+%  a) capacidad (+) o necesidad (-) de financiación = CC + CK, por componentes;
+%  b) la cuenta financiera (VNA - VNP) por instrumentos, con el Banco de España
+%     (TARGET y reservas) aparte; su saldo es la capacidad de a) más los EO.
+% Paleta: comercio en azul claro (gama fría, como la demanda externa de la
+% 1D01), rentas en gris claro, cuenta de capital en dorado; en la cuenta
+% financiera, inversión directa en verde, cartera en bermellón, otra inversión
+% y derivados en azul marino y el Banco de España en gris con trama. El saldo
+% (capacidad o CF), en morado en los 2 paneles: es el mismo número salvo EO.
+% Capas (CRITERIOS §7): barras -> cero -> línea -> puntos -> rótulos, panel a
+% y luego panel b.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bp-espana-capacidad-cuenta-financiera.csv}\bp
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1,mark repeat=2,mark phase=2] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}},
+  panelbp/.style={
+    scale only axis, width=13cm, height=4.4cm,
+    ybar stacked, stack negative=separate, bar width=0.42cm,
+    xmin=2007.4, xmax=2025.6, xtick={2008,...,2025},
+    restrict x to domain=2007.5:2025.5,
+    xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+    yticklabel style={font=\footnotesize},
+    ylabel={\% del PIB}, ylabel style={font=\footnotesize},
+    axis lines*=left, tick align=outside, clip=false,
+    ymajorgrids, grid style={tceegris!25},
+    legend style={at={(0.5,-0.13)}, anchor=north, legend columns=4,
+      draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+    legend cell align=left, area legend,
+  },
+  dicapas,
+}
+\colorlet{bpbys}{dicexterna}
+\colorlet{bprentas}{dicotroclaro}
+\colorlet{bpck}{dicprestamos}
+\colorlet{bpid}{dicfbcf}
+\colorlet{bpcartera}{dicenergia}
+\colorlet{bpoi}{dicze}
+\colorlet{bpbde}{dicotro}
+\colorlet{bpsaldo}{dicpib}
+\begin{tikzpicture}[tcee]
+  % ---------------- Panel a: capacidad o necesidad de financiación ----------
+  \begin{axis}[panelbp, name=pa, at={(0,0)},
+      ymin=-10, ymax=6, ytick={-10,-8,...,6},
+      title={\textbf{a)} Capacidad ($+$) o necesidad ($-$) de financiación: $\mathrm{CC}+\mathrm{CK}$},
+      title style={font=\small, at={(0,1.04)}, anchor=south west},
+    ]
+    % 1: bienes y servicios
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=bpbys] table[x=anio, y=bys] {\bp};
+      \addlegendentry{Bienes y servicios}
+    }
+    % 2: rentas primarias y secundarias
+    \capa{2}{
+      \addplot[on layer=dicbarras, dicbarra=bprentas] table[x=anio, y=rentas_prim_sec] {\bp};
+      \addlegendentry{Rentas primarias y secundarias}
+    }
+    % 3: cuenta de capital
+    \capa{3}{
+      \addplot[on layer=dicbarras, dicbarra=bpck] table[x=anio, y=cuenta_capital] {\bp};
+      \addlegendentry{Cuenta de capital}
+    }
+    % 4: el cero
+    \capa{4}{
+      \dicraya{(2007.4,0) (2025.6,0)}
+    }
+    % 5: capacidad o necesidad de financiación (línea)
+    \capa{5}{
+      \addplot[stack plots=false, sharp plot, diclineahalo=bpsaldo, leyenda linea corta,
+        legend image post style={mark=*, mark size=1.8pt, mark options={fill=white, line width=0.9pt}}]
+        table[x=anio, y=cap_nec_financiacion] {\bp};
+      \addlegendentry{Capacidad o necesidad}
+    }
+    % 6: sus puntos
+    \capa{6}{
+      \addplot[on layer=dicpuntos, forget plot, stack plots=false, dicpuntos=bpsaldo]
+        table[x=anio, y=cap_nec_financiacion] {\bp};
+    }
+    % 7: rótulos: el mínimo de 2008 y el último dato
+    \capa{7}{
+      \dicrotulo[font=\footnotesize, text=bpsaldo, anchor=south west, inner sep=2pt]
+        {(2008.1,-8.3)}{$-8{,}4$}
+      \dicrotulo[font=\footnotesize, text=bpsaldo, anchor=south, inner sep=3pt]
+        {(2025,5.0)}{$+4{,}3$}
+    }
+  \end{axis}
+  % ---------------- Panel b: cuenta financiera por instrumentos ------------
+  \begin{axis}[panelbp, name=pb, at={(0,-7.0cm)}, legend columns=3,
+      ymin=-20, ymax=20, ytick={-20,-15,...,20},
+      title={\textbf{b)} Cuenta financiera ($\mathrm{VNA}-\mathrm{VNP}$) por instrumentos},
+      title style={font=\small, at={(0,1.04)}, anchor=south west},
+    ]
+    % 8: inversión directa
+    \capa{8}{
+      \addplot[on layer=dicbarras, dicbarra=bpid] table[x=anio, y=inv_directa] {\bp};
+      \addlegendentry{Inversión directa}
+    }
+    % 9: inversión de cartera (sin el Banco de España)
+    \capa{9}{
+      \addplot[on layer=dicbarras, dicbarra=bpcartera] table[x=anio, y=cartera_exc_bde] {\bp};
+      \addlegendentry{Cartera}
+    }
+    % 10: otra inversión y derivados (sin el Banco de España)
+    \capa{10}{
+      \addplot[on layer=dicbarras, dicbarra=bpoi]
+        table[x=anio, y expr=\thisrow{otra_inv_exc_bde}+\thisrow{derivados_exc_bde}] {\bp};
+      \addlegendentry{Otra inversión y derivados}
+    }
+    % 11: Banco de España (TARGET, reservas y resto)
+    \capa{11}{
+      \addplot[on layer=dicbarras, dicbarratrama=bpbde] table[x=anio, y=cf_bde] {\bp};
+      \addlegendentry{Banco de España}
+    }
+    % 12: el cero
+    \capa{12}{
+      \dicraya{(2007.4,0) (2025.6,0)}
+    }
+    % 13: saldo de la cuenta financiera (línea)
+    \capa{13}{
+      \addplot[stack plots=false, sharp plot, diclineahalo=bpsaldo, leyenda linea corta,
+        legend image post style={mark=*, mark size=1.8pt, mark options={fill=white, line width=0.9pt}}]
+        table[x=anio, y=cuenta_financiera] {\bp};
+      \addlegendentry{Cuenta financiera}
+    }
+    % 14: sus puntos
+    \capa{14}{
+      \addplot[on layer=dicpuntos, forget plot, stack plots=false, dicpuntos=bpsaldo]
+        table[x=anio, y=cuenta_financiera] {\bp};
+    }
+    % 15: rótulos: la salida de capital privado de 2012 y el último dato
+    \capa{15}{
+      \dicrotulo[font=\footnotesize, text=bpbde!70!black, anchor=west, inner sep=2pt]
+        {(2012.3,-15.5)}{Banco de España (TARGET), 2012: $-16{,}0$}
+      \dicrotulo[font=\footnotesize, text=bpsaldo, anchor=south, inner sep=3pt]
+        {(2025,7.2)}{$+5{,}0$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

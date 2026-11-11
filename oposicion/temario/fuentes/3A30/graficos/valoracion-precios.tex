@@ -1,0 +1,45 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Colores de las tablas del tema (los de tcee-comun.sty)
+\definecolor{tceeazulpalido}{HTML}{DDEBF7}
+\definecolor{tceesalmon}{HTML}{FBE4D5}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% De los costes al precio de adquisición (SEC 2010, cap. 9): una barra
+% apilada que se lee de izquierda a derecha. Consumos intermedios + valor
+% añadido = precio básico; + impuestos netos sobre los productos + márgenes de
+% comercio y de transporte = precio de adquisición.
+% Colores: los de las tablas del tema (salvia para lo que produce la rama,
+% salmón para los impuestos, azul pálido para los márgenes).
+% Capas: CI -> VA -> llave precio básico -> impuestos -> márgenes -> llave
+% precio de adquisición.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  tramo/.style={draw=tceegris, line width=0.6pt, align=center, inner sep=3pt},
+  llave/.style={decorate, decoration={brace, mirror, amplitude=6pt}, thick},
+  rotulo/.style={font=\small\bfseries, below=9pt}]
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-0.1,-2.0) rectangle (13.1,2.45);
+  % sentido de lectura
+  \draw[->, thick, tceegris] (0,2.1) -- (13,2.1)
+    node[midway, above=-1pt, font=\scriptsize, text=tceegris] {de los costes al precio que paga el comprador};
+  % 1: consumos intermedios
+  \capa{1}{\draw[tramo, fill=tceesalvia] (0,0) rectangle (3.0,1.75);
+    \node[text width=2.7cm, align=center] at (1.5,0.875) {\textbf{consumos intermedios}};}
+  % 2: valor añadido
+  \capa{2}{\draw[tramo, fill=tceeverde!25!tceesalvia] (3.0,0) rectangle (7.0,1.75);
+    \node[text width=3.8cm, align=center] at (5.0,0.875)
+      {\textbf{valor añadido}: RA $+$ EBE y renta mixta $+$ otros impuestos netos sobre la producción};}
+  % 3: precio básico
+  \capa{3}{\draw[llave] (0,-0.08) -- (7.0,-0.08) node[midway, rotulo] {precio básico};}
+  % 4: impuestos netos sobre los productos
+  \capa{4}{\draw[tramo, fill=tceesalmon] (7.0,0) rectangle (10.2,1.75);
+    \node[text width=3.0cm, align=center] at (8.6,0.875)
+      {\textbf{impuestos netos sobre los productos} (IVA no deducible, impuestos especiales, menos subvenciones)};}
+  % 5: márgenes de comercio y de transporte
+  \capa{5}{\draw[tramo, fill=tceeazulpalido] (10.2,0) rectangle (13.0,1.75);
+    \node[text width=2.5cm, align=center] at (11.6,0.875)
+      {\textbf{márgenes} de comercio y de transporte};}
+  % 6: precio de adquisición
+  \capa{6}{\draw[llave] (0,-1.15) -- (13.0,-1.15) node[midway, rotulo] {precio de adquisición};}
+\end{tikzpicture}
+\end{document}

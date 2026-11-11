@@ -1,0 +1,303 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Análisis de las tablas «input-output»]{3.A.31}{Análisis de las tablas «input-output».}
+\tcefecha{11/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «tirando del hilo se saca el ovillo»}{2,5}
+\apartadocante{I. Descripción. El marco \emph{input-output} en las cuentas}{7}
+\subcante{1. Tablas de origen y destino}{2}
+\subcante{2. La tabla simétrica (ejemplo de 2 ramas)}{3}
+\subcante{3. Los coeficientes técnicos}{2}
+\apartadocante{II. Aplicaciones del marco \emph{input-output}}{16}
+\subcante{1. Modelo de demanda: $(I-A)^{-1}$}{6,5}
+\subcante{2. Modelo de precios: dualidad}{3,5}
+\subcante{3. Eslabonamientos interindustriales}{3,5}
+\subcante{4. Estudios de economía aplicada}{2,5}
+\apartadocante{III. Utilidad y limitaciones}{3,5}
+\subcante{1. Utilidad hoy: medir, no planificar}{1}
+\subcante{2. Origen de las limitaciones}{2,5}
+\apartadocante{Conclusión}{1}}
+\emph{Ejemplo conductor}: 2 ramas (industria y servicios, M€, precios básicos): todo a mano.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{Tirando del hilo se saca el ovillo}». Turistas: \dato{83,5 M en 2019, 18,9 M en 2020, 96,8 M en 2025}{INE, FRONTUR}. El golpe de 2020 llegó de los hoteles a lavanderías, agricultores, transporte y, por los salarios, a las tiendas. ¿\emph{Hasta dónde llega un euro que se gasta (o no) en una rama?} Hay que saber quién compra a quién: \concepto{tablas \emph{input-output}}.
+\item \textbf{Relevancia}: única fuente que muestra la economía \emph{por dentro}. Miden efectos directos, indirectos e inducidos de la demanda final (turismo, gasto público, exportaciones, fondos europeos) sobre producción, empleo e importaciones; propagación de costes a precios; comercio en valor añadido, CGV, huella de carbono \vertema{3.B.18}. Base de calibración de los MEGC \vertema{3.A.21}; con ellas se cuadra la contabilidad nacional \vertema{3.A.30}.
+\item \textbf{Contextualización}: \autor{Quesnay}, \emph{Tableau économique} (1758): circulación como la sangre \vertema{3.A.2}; \autor{Walras} (1874): ecuaciones simultáneas \vertema{3.A.21}. \autor{Leontief}: 1.ª tabla de EE.\,UU. (1936, año 1919, 44 sectores) y modelo (1941); simplifica a \autor{Walras} con \emph{proporciones fijas} \vertema{3.A.11}; llenar las «cajas vacías». Nobel 1973. A la vez, contabilidad nacional: \autor{Kuznets} y \autor{Stone} (Nobel 1971 y 1984) \vertema{3.A.30}. Hoy, \concepto{marco \emph{input-output}}: cap.~9 del SEC 2010; en España, el INE.
+\item \concepto{Tabla \emph{input-output}}: registro contable de los flujos de bienes y servicios entre las ramas, y de estas con la demanda final y los inputs primarios, en un periodo (normalmente un año).
+\item \concepto{Rama de actividad} (misma actividad productiva) $\neq$ \concepto{sector institucional} (mismo tipo de decisiones: hogares, sociedades, AA.\,PP.). Las tablas trabajan con ramas.
+\item \textbf{Problemática}: ¿cómo se registra quién produce qué y para quién? ¿Cuánto debe producir cada rama para una demanda final dada y cómo se reparte una subida de costes? ¿Qué ramas tiran y hasta dónde fiarse?
+\item \textbf{Estructura}: de la contabilidad al modelo y del modelo a sus límites: \hyperref[rep:I]{I}, descripción (origen y destino, simétrica, coeficientes); \hyperref[rep:II]{II}, aplicaciones (demanda, precios, eslabonamientos, economía aplicada); \hyperref[rep:III]{III}, utilidad y limitaciones.
+\end{itemize}
+
+% ==========================================================================
+\bloque[7]{I. Descripción. El marco \emph{input-output}\label{rep:I}}
+\begin{ideaclave}
+Los datos llegan por ramas y productos (origen y destino); la simétrica los reordena: cada columna = \emph{tecnología} de una rama, cada fila = \emph{destino} de lo que produce. Dividiendo cada columna por la producción, los coeficientes técnicos: la pieza de los modelos.
+\end{ideaclave}
+\begin{itemize}
+\item \concepto{Marco \emph{input-output}}: parte del sistema de cuentas que detalla la economía rama a rama y producto a producto (producción, consumos intermedios, VAB y componentes, oferta y demanda de cada producto, comercio exterior). 2 formas: \emph{origen y destino} (datos tal como llegan) y \emph{simétrica} (derivada con supuestos; la del análisis).
+\item SEC 2010 = versión europea del SCN 2008; SCN 2025 añade TiVA y tablas digitales; nuevo SEC, a finales de la década.
+\end{itemize}
+
+\sub{I.1. Tablas de origen y destino\label{rep:I.1}}
+\begin{itemize}
+\item Ramas = UAE locales clasificadas por la CNAE; productos por la CPA. INE: \dato{110 productos × 81 ramas, año 2023}{INE, sept. 2026}, avance 2024 (oct. 2026).
+\item \concepto{Tabla de origen}: de dónde sale la \emph{oferta} de cada producto (qué produce cada rama + importaciones). Filas productos, columnas ramas; no cuadrada. Fuera de la diagonal, \emph{producciones secundarias} (electricidad de una papelera).
+\item \concepto{Precio básico}: lo que cobra el productor; sin impuestos sobre los productos (IVA, especiales), con subvenciones a los productos; \emph{incluye} los \emph{otros impuestos netos sobre la producción} (IBI, tasas). \concepto{Precio de adquisición}: el que paga el comprador = básico + márgenes de comercio y transporte + impuestos netos sobre los productos no deducibles.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{valoracion-precios}{De precios básicos a precios de adquisición}
+\begin{itemize}
+\item \concepto{Tabla de destino}: los \emph{empleos} de cada producto (consumo intermedio de cada rama o demanda final) a precios de adquisición; debajo, el VAB de cada rama y sus componentes. Filas: destino de cada producto; columnas: estructura de costes de cada rama.
+\item 2 identidades: \emph{por ramas}, producción $=$ CI $+$ VAB; \emph{por productos}, oferta $=$ empleos (producción + importaciones + márgenes + impuestos netos s/ productos $=$ CI + consumo final + FBC + $X$).
+\item \emph{Para qué}: cuadrar fuentes distintas, equilibrar la contabilidad y fijar el \emph{nivel del PIB} (igual por producción, gasto y rentas) \vertema{3.A.30}.
+\end{itemize}
+
+\sub{I.2. La tabla simétrica\label{rep:I.2}}
+\begin{itemize}
+\item \concepto{Tabla simétrica}: misma clasificación en filas y columnas (producto × producto o rama × rama); cuadrada; cada columna = \emph{una sola} tecnología. Nadie mide los CI de cada \emph{producto} (establecimientos multiproducto).
+\item Se obtiene repartiendo las producciones secundarias: \emph{tecnología de producto} (cada producto igual, lo haga quien lo haga; producto × producto) o \emph{de rama} (misma estructura para todo lo que produce la rama; rama × rama). INE: combina ambas; \dato{65 productos, la de 2022}{INE, dic. 2025}. \concepto{Ramas homogéneas}: unidades de producción homogénea (no observadas; se reconstruyen).
+\item \emph{3 bloques}: I \emph{consumos intermedios} $Z=[z_{ij}]$ ($n\times n$; lo que $j$ compra a $i$; el original); II \emph{demanda final} a la derecha ($C$, $G$, FBC, $X$; suma $d_i$); III \emph{inputs primarios} debajo ($M_j$ importaciones intermedias y $\mathrm{VAB}_j=\mathrm{RA}_j+\mathrm{EBE}_j+$ otros impuestos netos sobre la producción).
+\item \emph{Fila} $i$: a quién vende $i$; \emph{columna} $j$: con qué produce $j$. Producción igual por fila y por columna.
+\item \emph{Ejemplo}: industria produce 100: vende 20 a sí, 20 a servicios, 60 a demanda final (25 exportados); compra 20 a sí y 40 a servicios, importa 10, VAB 30 (RA 20, EBE 10). Servicios: 200, $d_2=120$, VAB 130 (RA 90, EBE 40). Empleo 10 y 40 miles.
+\item \emph{Filas y columnas}:
+\begin{formula}
+\centering $x_i=\sum_j z_{ij}+d_i$,\qquad $x_j=\sum_i z_{ij}+M_j+\mathrm{VAB}_j$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.84\linewidth]{tabla-simetrica}{Los 3 bloques y el ejemplo de 2 ramas}
+\begin{itemize}
+\item \emph{El PIB}: los CI se cancelan:
+\begin{formula}
+\centering $\sum_j\mathrm{VAB}_j=\sum_i d_i-\sum_j M_j=C+G+\mathrm{FBC}+X-M$
+\end{formula}
+\item[] Ejemplo: producción $30+130=160$; gasto $100+30+20+30-20=160$; rentas $110+50=160$.
+\item \emph{Ojo}: a precios básicos, $\sum\mathrm{VAB}$ = VAB pb; PIB pm $=$ VAB pb $+$ impuestos netos s/ productos (coinciden solo si son 0). España 2022: \dato{PIB 1.375.863 M€}{INE, TIO 2022} = VAB pb 1.254.715 + 121.148; otros impuestos netos s/ producción 11.247.
+\end{itemize}
+
+\sub{I.3. Los coeficientes técnicos\label{rep:I.3}}
+\begin{itemize}
+\item \concepto{Coeficiente técnico}: lo que $j$ compra a $i$ por euro producido:
+\funcionclave{a_{ij}\equiv\frac{z_{ij}}{x_j},\qquad A=Z\operatorname{diag}(\vect{x})^{-1}=\begin{pmatrix}0{,}2 & 0{,}1\\ 0{,}4 & 0{,}2\end{pmatrix}}
+\item Inputs primarios: $m_j\equiv M_j/x_j$, $v_j\equiv\mathrm{VAB}_j/x_j$, trabajo $a_{Lj}\equiv L_j/x_j$ \vertema{3.A.21}. Cada columna reparte un euro:
+\begin{formula}
+\centering $\sum_i a_{ij}+m_j+v_j=1$;\ \ $\vect{m}=(0{,}10;\,0{,}05)$, $\vect{v}=(0{,}30;\,0{,}65)$, $\vect{a}_L=(0{,}1;\,0{,}2)$
+\end{formula}
+\item \emph{No son físicos} (toneladas de \autor{Leontief}): en euros, cambian con los precios relativos; en una rama agregada son una \emph{media}. Ya describen: quién compra más, quién añade más valor o importa más. Los $a_{ij}$ ponderan aranceles en la protección efectiva \vertema{3.B.7}.
+\item \emph{Enlace}: si las proporciones son estables, la foto se convierte en \emph{modelo}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[16]{II. Aplicaciones del marco \emph{input-output}\label{rep:II}}
+\begin{ideaclave}
+Una sola matriz, la inversa de \autor{Leontief} $(I-A)^{-1}$, responde a todo: por columnas, cuánto producir para una demanda (modelo de demanda); por filas, cómo se trasladan los costes (modelo de precios). Y de ella salen eslabonamientos y comercio en valor añadido.
+\end{ideaclave}
+
+\sub{II.1. Modelo de demanda\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Idea}: coche $\to$ acero, electricidad $\to$ más electricidad\dots: el modelo suma la cadena (hotel $\to$ lavandería $\to$ eléctrica). Demanda final \emph{exógena}, oferta pasiva: espíritu keynesiano.
+\item \emph{Supuestos}: \concepto{homogeneidad} (1 rama = 1 producto); \concepto{proporcionalidad} ($z_{ij}=a_{ij}x_j$, coeficientes fijos, sin sustitución ni escala) \vertema{3.A.11}; \concepto{aditividad} (sin externalidades entre ramas); \emph{oferta sin restricciones}; $\vect{d}$ exógena.
+\item \emph{Solución}: sustituyendo en las filas, $n$ ecuaciones lineales:
+\funcionclave{\vect{x}=A\vect{x}+\vect{d}\ \Longrightarrow\ \vect{x}=(I-A)^{-1}\vect{d}}
+\item[] $I-A$ = \concepto{matriz de \autor{Leontief}}; $(I-A)^{-1}=[r_{ij}]$, su \concepto{inversa} (cuadrada $\Rightarrow$ hace falta la simétrica). Ejemplo, $\det(I-A)=0{,}8\cdot0{,}8-0{,}1\cdot0{,}4=0{,}6$:
+\begin{formula}
+\centering $(I-A)^{-1}=\dfrac{1}{0{,}6}\begin{pmatrix}0{,}8 & 0{,}1\\ 0{,}4 & 0{,}8\end{pmatrix}=\begin{pmatrix}4/3 & 1/6\\ 2/3 & 4/3\end{pmatrix}$;\ \ $(I-A)^{-1}\!\begin{pmatrix}60\\120\end{pmatrix}=\begin{pmatrix}100\\200\end{pmatrix}$
+\end{formula}
+\item \concepto{Condición de \autor{Hawkins}-\autor{Simon}} (1949): $\vect{x}\geq0$ para todo $\vect{d}\geq0$ $\Leftrightarrow$ todos los menores principales directores de $I-A$ positivos (ejemplo: 0,8 y 0,6). Economía \emph{productiva}; 1 rama: $a_{11}<1$. Basta que cada columna de $A$ sume $<1$ (algo de VAB o importaciones).
+\item \emph{Rondas}: con esa condición, serie convergente:
+\begin{formula}
+\centering $(I-A)^{-1}=I+A+A^2+A^3+\cdots$
+\end{formula}
+\item[] $\vect{d}$ inicial; $A\vect{d}$ directo; $A^2\vect{d}$\dots{} indirectos. $\vect{d}=(1;0)$: $(0{,}2;0{,}4)$, $(0{,}08;0{,}16)$, $(0{,}032;0{,}064)$\dots; cada ronda, 40\,\% de la anterior: $1+0{,}6/(1-0{,}4)=2$ = $4/3+2/3$, columna 1 de la inversa.
+\end{itemize}
+\graficorepaso[0.66\linewidth]{rondas-iterativo}{Rondas tras +1 de demanda industrial: cada una, 40\,\% de la anterior; suman 2}
+\begin{itemize}
+\item \emph{Implicaciones}: $r_{ij}$ = lo que produce $i$, directa e indirectamente, por 1 € más de demanda final de $j$; $\Delta x_i=\sum_j r_{ij}\Delta d_j$; diagonal $>1$.
+\item \concepto{Multiplicador de producción} de $j$ = suma de la \emph{columna} $j$ (\emph{arrastre}): \textbf{2} industria, \textbf{1,5} servicios. Suma de la \emph{fila} $i$ = \emph{sensibilidad} a la expansión de todas: 1,5 y 2 (a los servicios les compran todos).
+\item $A^{\mathrm t}=A^{\mathrm d}+A^{\mathrm m}$: para efectos \emph{en el país}, la interior $A^{\mathrm d}$ (la total sobrestima).
+\item \emph{Contenidos}: empleo $\vect{a}_L^{\top}(I-A)^{-1}\vect{d}$ (\emph{multiplicador de empleo}); importaciones $\vect{m}^{\top}(I-A)^{-1}\vect{d}$ (\emph{contenido importado}); valor añadido $\vect{v}^{\top}(I-A)^{-1}\vect{d}$. Cada euro de demanda final acaba en VAB del país o en importaciones:
+\begin{formula}
+\centering $(\vect{v}+\vect{m})^{\top}(I-A)^{-1}=\vect{1}^{\top}$
+\end{formula}
+\item[] Ejemplo: $\vect{v}^{\top}(I-A)^{-1}=(0{,}83;\,0{,}92)$, $\vect{m}^{\top}(I-A)^{-1}=(0{,}17;\,0{,}08)$ (de 0,83, 0,43 en servicios); empleo $(0{,}27;\,0{,}28)$ miles/M€: la industria emplea 100 por M€, su demanda crea 267.
+\item \emph{Efecto inducido}: se \emph{cierra} el modelo con los hogares (fila de salarios por unidad, columna de consumo por renta; \autor{Miller}-\autor{Blair}). \concepto{Tipo~I} (directo + indirecto) $<$ \concepto{tipo~II} (+ inducido): con consumo del 80\,\% de los salarios, 2 y 1,5 $\to$ \textbf{3,4 y 3,1}; ganan más los servicios (más salarios por euro). Tipo II = cota superior.
+\end{itemize}
+\graficorepaso[0.88\linewidth]{efectos-multiplicadores}{Efectos directo, indirecto (tipo I) e inducido (tipo II)}
+\begin{itemize}
+\item \emph{Evidencia}: INE publica en diciembre la simétrica de $t-3$ con inversas interior y total. 2022: multiplicador medio \dato{1,74}{63 ramas}; máx. alimentación y bebidas 2,29, mín. alquiler imputado 1,14. \dato{61,8\,\% de las importaciones son CI}{INE, 2022}; refino 87,6\,\%, metalurgia 49,5\,\%, química 45,3\,\%: más filtración y exposición a precios exteriores. \dato{5,2 M empleos ligados a la exportación (24,0\,\%)}{INE, 2024}.
+\item \emph{Valoración}: + poca teoría, datos existentes, efectos por ramas (turismo, eventos, inversión). $-$ oferta pasiva: con pleno empleo o cuellos de botella sobrestima; sin sustitución.
+\end{itemize}
+
+\sub{II.2. Modelo de precios\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Idea}: cada columna = estructura de costes; los precios forman un \emph{sistema}. «Pagar los platos rotos»: la energía la acaban pagando ramas que apenas la compran.
+\item \emph{Supuestos}: coeficientes fijos; \emph{traslación íntegra} (excedente unitario fijo); cantidades dadas; precios índice $=1$ en el año base.
+\item Precio = coste unitario: $p_j=\sum_i a_{ij}p_i+p^{\mathrm M}m_j+v_j$. Sin importaciones (con ellas, $\vect{v}^{\top}+p^{\mathrm M}\vect{m}^{\top}$):
+\funcionclave{\vect{p}^{\top}=\vect{p}^{\top}A+\vect{v}^{\top}\ \Longrightarrow\ \vect{p}^{\top}=\vect{v}^{\top}(I-A)^{-1}}
+\item[] En columna, $\vect{p}=(I-A^{\top})^{-1}\vect{v}$. \concepto{Dualidad}: la \emph{misma} inversa, por filas. Cantidades hacia atrás (de clientes a proveedores); costes hacia delante.
+\begin{formula}
+\centering $\vect{p}^{\top}\vect{d}=\vect{v}^{\top}\vect{x}\ (+\,p^{\mathrm M}\vect{m}^{\top}\vect{x})$:\ identidad del PIB como resultado
+\end{formula}
+\item \emph{Implicaciones}: $\Delta\vect{p}^{\top}=\Delta\vect{v}^{\top}(I-A)^{-1}$. Salarios +10\,\%: precios \textbf{+5,7\,\%} industria, \textbf{+6,3\,\%} servicios; media de la demanda final +6,1\,\% (11/180): traslación entera. Precio de $k$ \emph{fijado fuera}: sale del sistema y es coste exógeno; industria +20\,\% $\Rightarrow$ servicios $0{,}2\cdot0{,}1/0{,}8=$ +2,5\,\%. Importaciones: $\Delta\vect{p}^{\top}=\Delta p^{\mathrm M}\vect{m}^{\top}(I-A)^{-1}$; +50\,\% $\Rightarrow$ +8,3\,\% y +4,2\,\% (directo en servicios solo 2,5\,\%).
+\item \emph{Márgenes proporcionales}: $\mathrm{EBE}_j=k_jp_jx_j$:
+\begin{formula}
+\centering $\vect{p}^{\top}\bigl(I-A-\operatorname{diag}(\vect{k})\bigr)=\bigl(\vect{v}_{\mathrm{RA}}+p^{\mathrm M}\vect{m}\bigr)^{\top}$
+\end{formula}
+\item[] $\vect{k}=(0{,}1;0{,}2)$: salarios +10\,\% $\Rightarrow$ +7,9\,\% y +8,8\,\%: los márgenes amplifican; inflación de márgenes de 2022 \vertema{3.A.41}.
+\item \emph{Evidencia}: bienes expuestos a la energía, \dato{0,9 de 4,7 puntos de la subyacente}{\autor{Ibáñez de Aldecoa}, 2023; dic. 2022} (19,5\,\% con peso de 9,8\,\%); zona euro, energía \dato{3,8 puntos}{\autor{Arce} et al., 2024}.
+\item \emph{Valoración}: + 1.ª ronda rama a rama con poca información. $-$ cota superior (sin sustitución); sin segundas rondas ni respuesta de la demanda: \autor{Phillips}, MEGC \vertema{3.A.41}.
+\end{itemize}
+
+\sub{II.3. Eslabonamientos interindustriales\label{rep:II.3}}
+\begin{itemize}
+\item \autor{Hirschman} (1958): crecimiento \emph{desequilibrado} (frente al equilibrado de \autor{Rosenstein-Rodan} y \autor{Nurkse}): invertir en las ramas con más \concepto{eslabonamientos} \vertema{3.B.28}. \emph{Hacia atrás}: compra mucho, arrastra con su demanda (automóvil). \emph{Hacia delante}: vende a muchas, empuja su oferta (acero, energía). «Tirar del carro».
+\item \autor{Chenery}-\autor{Watanabe} (1958), \emph{directos}: $\mathrm{EA}_j=\sum_i z_{ij}/x_j$, $\mathrm{ED}_i=\sum_j z_{ij}/x_i$; 4 grupos: manufacturas de destino intermedio (alto-alto: siderurgia, química), de destino final (EA alto: automóvil, alimentación), primarias de destino intermedio (ED alto: minería, energía), primarias de destino final. Ejemplo: EA 0,6 y 0,3; ED 0,4 y 0,4. Límite: solo efecto directo, sin ponderar.
+\item \autor{Rasmussen} (1956), \emph{totales} (con la inversa), normalizados por la media:
+\begin{formula}
+\centering $\mathrm{PD}_j=\dfrac{\frac1n\sum_i r_{ij}}{\frac{1}{n^2}\sum_i\sum_j r_{ij}}$,\qquad $\mathrm{SD}_i=\dfrac{\frac1n\sum_j r_{ij}}{\frac{1}{n^2}\sum_i\sum_j r_{ij}}$
+\end{formula}
+\item[] \concepto{Poder de dispersión} $>1$: arrastra más que la media (atrás); \concepto{sensibilidad de dispersión} $>1$: arrastrada más (delante). Ramas \emph{clave} (ambos $>1$), \emph{impulsoras} (PD), \emph{estratégicas o de base} (SD), \emph{independientes}. Ejemplo: media $3{,}5/4=0{,}875$; PD $=(1{,}14;0{,}86)$, SD $=(0{,}86;1{,}14)$: industria impulsora, servicios estratégicos. Límite: + coef. de variación; ponderar.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{rasmussen-cuadrantes}{Cuadrantes de \autor{Rasmussen} con el ejemplo}
+\begin{itemize}
+\item \emph{España 2022} (inversa interior): \dato{14 de 63 ramas clave, 22\,\% del VAB}{INE}; atrás, alimentación y bebidas (1,32); delante, comercio mayorista (2,29), electricidad y gas (2,25), servicios a edificios (2,24); automóvil impulsor; refino bajo atrás (crudo importado).
+\item \autor{Streit} (1969): rama a rama (media de 4 ligazones de oferta y demanda, entre 0 y 1): complejos que se localizan juntos; sobrevalora ramas pequeñas muy ligadas. \autor{Ghosh} (1958): modelo de oferta con $b_{ij}\equiv z_{ij}/x_i$ y VAB exógeno; poco creíble como cantidades (\autor{Oosterhaven}, 1988), sí como precios (\autor{Dietzenbacher}, 1997).
+\end{itemize}
+
+\sub{II.4. Economía aplicada\label{rep:II.4}}
+\begin{itemize}
+\item El álgebra de $(\vect{v}+\vect{m})^{\top}(I-A)^{-1}$ vale para todo lo que se mida por euro producido. 5 usos:
+\item \concepto{Paradoja de \autor{Leontief}} (1953; tabla de EE.\,UU. de 1947): capital por año-hombre, sustitutos de importaciones 18.184 \$ $>$ exportaciones 13.991 \$: el país más rico en capital exporta trabajo \vertema{3.B.5}.
+\item \emph{CGV}: tablas multirregionales (WIOD, \autor{Timmer} et al., 2015; OCDE TiVA, 81 economías, 1995-2022; FIGARO, hasta 2024); exportaciones = VA nacional + extranjero (\autor{Johnson}-\autor{Noguera}, 2012; \autor{Koopman}-\autor{Wang}-\autor{Wei}, 2014) \vertema{3.B.18}. VA extranjero en las exportaciones = participación \emph{hacia atrás}; VA propio en exportaciones ajenas = \emph{hacia delante}.
+\end{itemize}
+\graficorepaso[0.66\linewidth]{contenido-importado-ue}{UE 2024: España, 25,7\,\% hacia atrás y 19,9\,\% hacia delante}
+\begin{itemize}
+\item[] España: \dato{25,7\,\% (UE 38,4\,\%)}{Eurostat FIGARO, 2024}; solo por encima de Alemania, Croacia y Rumanía \vertema{4.A.22}; INE 27,7\,\% (VA español en exportaciones 21,5\,\% del PIB); OCDE 26,6\,\% (2022).
+\item \emph{Medio ambiente} (\autor{Leontief}, 1970): $\vect{e}^{\top}(I-A)^{-1}\vect{d}$ = emisiones incorporadas; \emph{huella de carbono} del consumo $\neq$ emisiones de la producción: fuga de carbono \vertema{3.B.31}. Exportaciones de 2024: \dato{87,5 Mt CO$_2$eq}{INE}.
+\item \concepto{Matriz de contabilidad social} (MCS; \autor{Pyatt}-\autor{Round}, 1979): añade sectores institucionales; \emph{cierra el flujo circular de la renta}; base de calibración de los MEGC \vertema{3.A.21}.
+\item \emph{Redes de producción}: ciclo real multisectorial (\autor{Long}-\autor{Plosser}, 1983) \vertema{3.A.42}; \autor{Acemoglu} et al. (2012): si pocas ramas abastecen a muchas, sus \emph{shocks} no se compensan $\Rightarrow$ fluctuaciones agregadas; \autor{Hulten} (1978): efecto $\approx$ peso de sus ventas en el PIB; \autor{Baqaee}-\autor{Farhi} (2019): sin sustitutos, el 2.º orden pesa (chips 2021, energía 2022).
+\end{itemize}
+
+% ==========================================================================
+\bloque[3,5]{III. Utilidad y limitaciones\label{rep:III}}
+\begin{ideaclave}
+Nacieron cerca de la planificación y no sirvieron para eso; hoy son imprescindibles para \emph{medir}. Sus límites son los de su sencillez (coeficientes fijos, en valor, lineales) y los de su estadística (retraso, coste).
+\end{ideaclave}
+
+\sub{III.1. Utilidad hoy\label{rep:III.1}}
+\begin{itemize}
+\item \emph{Sueño planificador}: \autor{Leontief}, formado en la Rusia revolucionaria; \autor{Stone} y \autor{Meade}, renta nacional en el Gabinete de Guerra; URSS e ISI \vertema{3.B.28}.
+\item \emph{Límite de la información} \vertema{3.A.3}: \autor{Barone} (1908): el planificador podría resolver las ecuaciones de \autor{Walras}; \autor{Mises} (1920): sin propiedad ni mercados de capital no hay precios; \autor{Lange} (1936): tanteo; \autor{Hayek} (1945): el problema es el \emph{conocimiento disperso}, que resumen los precios y ninguna tabla recoge.
+\item \emph{Usos de hoy}: estadísticos (cuadrar cuentas, nivel del PIB, \hyperref[rep:I.1]{I.1}); de impacto (\hyperref[rep:II.1]{II.1}); de precios (\hyperref[rep:II.2]{II.2}); de estructura (ramas clave, TiVA, huella, MEGC, \hyperref[rep:II.3]{II.3}-\hyperref[rep:II.4]{II.4}).
+\end{itemize}
+
+\sub{III.2. Origen de las limitaciones\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Hipótesis}: \autor{Walras} sin sustitución: coeficientes fijos, sin escala, sin externalidades, sin factores escasos. \autor{Chenery}-\autor{Clark} (1959): teoría de la producción simplificada a propósito para medirla. La agregación rompe la homogeneidad; las empresas sí sustituyen.
+\item \emph{Coeficientes}: \emph{monetarios} (cambian con precios relativos; tablas a precios constantes); \emph{medias}; \emph{envejecen} (progreso técnico, sustitución, escala): «nadie se baña 2 veces en el mismo río».
+\item \emph{Uso}: \emph{lineal} (bien para \emph{shocks} pequeños; exagera el cierre del turismo de 2020); \emph{estático} (el \emph{modelo dinámico} de \autor{Leontief} añade una matriz de capital); $\vect{d}$ exógena (salvo modelo cerrado). \concepto{Método RAS} (\autor{Stone}, 1961): actualiza $A$ con factores por filas y columnas hasta cuadrar con totales nuevos; barato, pero cambio uniforme por fila o columna.
+\item \emph{Estadísticas}: SEC 2010 obliga a la simétrica cada 5 años; INE anual desde 2021; 2022 en dic. 2025, 2023 el 15/12/2026: \emph{\textasciitilde 3 años de retraso}; origen y destino antes. Caras; regionales estimadas. Multirregionales: comercio bilateral que no cuadra $\Rightarrow$ cifras distintas (25,7 / 27,7 / 26,6\,\%).
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: registran quién compra a quién (origen y destino; simétrica); con coeficientes fijos, 2 modelos gemelos con una inversa (columnas: cantidades; filas: precios); de ella, multiplicadores, ramas clave y contenidos de empleo, importaciones, VA y emisiones; límites de sencillez y estadística.
+\item \textbf{Relevancia}: CGV y \emph{shocks} de oferta que se propagan (pandemia, energía): saber por dónde se transmite un cambio.
+\item \textbf{Extensiones}: contabilidad nacional \vertema{3.A.30}; fuentes de la economía española \vertema{4.A.1}; MEGC \vertema{3.A.21}; desarrollo \vertema{3.B.28}; CGV \vertema{3.B.18} y España en ellas \vertema{4.A.22}.
+\item \textbf{Opinión}: su fuerza es su debilidad: la linealidad que permite calcularlo todo impide ver sustitución y precios relativos. No sirvieron para planificar; sí para hacer visibles las interdependencias que el mercado coordina sin que nadie las vea.
+\item \textbf{Idea final}: el ovillo tiene un final: el euro del turista se reparte ronda a ronda, cada una menor, hasta convertirse entero en VA del país o en importaciones. Las tablas dicen por dónde pasa, cuánto empleo deja y cuánto se va fuera.
+\end{itemize}
+
+{\centering\scriptsize\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.5\linewidth}cc@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Ejemplo de 2 ramas} & \textbf{Industria} & \textbf{Servicios}\\
+\midrule
+Columna de la inversa & $4/3;\ 2/3$ & $1/6;\ 4/3$\\
+Multiplicador de producción tipo I / II & 2 / 3,44 & 1,5 / 3,11\\
+Suma de la fila de la inversa & 1,5 & 2\\
+Multiplicador de empleo (miles/M€) & 0,267 & 0,283\\
+Contenido importado / VA incorporado & 0,167 / 0,833 & 0,083 / 0,917\\
+PD / SD (\autor{Rasmussen}) & 1,14 / 0,86 & 0,86 / 1,14\\
+EA / ED (\autor{Chenery}-\autor{Watanabe}) & 0,6 / 0,4 & 0,3 / 0,4\\
+Precio: salarios +10\,\% (con márgenes) & +5,7 (+7,9)\,\% & +6,3 (+8,8)\,\%\\
+Precio: importaciones +50\,\% & +8,3\,\% & +4,2\,\%\\
+\bottomrule
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1758}{\autor{Quesnay}: \emph{Tableau économique}}
+\hito{1874}{\autor{Walras}: equilibrio general}
+\hito{1920}{\autor{Mises}: cálculo económico socialista (\autor{Barone}, 1908)}
+\hito{1936}{\autor{Leontief}: 1.ª tabla (EE.\,UU., 1919); modelo, 1941}
+\hito{1945}{\autor{Hayek}: el uso del conocimiento (\autor{Lange}, 1936)}
+\hito{1949}{\autor{Hawkins}-\autor{Simon}: condición de productividad}
+\hito{1953}{\autor{Leontief}: la paradoja}
+\hito{1956}{\autor{Rasmussen}: poder y sensibilidad de dispersión}
+\hito{1958}{\autor{Hirschman}; \autor{Chenery}-\autor{Watanabe}; \autor{Ghosh}}
+\hito{1961}{\autor{Stone}: método RAS}
+\hito{1969}{\autor{Streit}: coeficientes rama a rama}
+\hito{1970}{\autor{Leontief}: contaminación}
+\hito{1973}{Nobel a \autor{Leontief} (\autor{Kuznets} 1971, \autor{Stone} 1984)}
+\hito{1978}{\autor{Hulten}: efecto de un \emph{shock} sectorial $\approx$ peso de sus ventas}
+\hito{1979}{\autor{Pyatt}-\autor{Round}: MCS}
+\hito{1983}{\autor{Long}-\autor{Plosser}: ciclo real multisectorial}
+\hito{2010}{SEC 2010: cap. 9, marco \emph{input-output}}
+\hito{2012}{\autor{Acemoglu} et al.: redes; \autor{Johnson}-\autor{Noguera}: TiVA}
+\hito{2019}{\autor{Baqaee}-\autor{Farhi}: segundo orden}
+\hito{2025}{SCN 2025; TIO 2022 del INE}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Tablas de origen y destino: \dato{110 productos × 81 ramas}{INE, 2023}; simétrica: \dato{65 productos}{INE, 2022}.
+\item PIB 2022 por las 3 vías: \dato{1.375.863 M€}{INE, TIO 2022}; PIB 2025: \dato{1.690.012 M€}{INE}.
+\item Multiplicador de producción medio: \dato{1,74}{INE, 2022}; alimentación 2,29; alquiler imputado 1,14.
+\item Importaciones que son CI: \dato{61,8\,\%}{INE, 2022}.
+\item Empleo ligado a la exportación: \dato{5,2 M, 24,0\,\%}{INE, 2024}.
+\item Ramas clave: \dato{14 de 63, 22\,\% del VAB}{INE, 2022}; energía en la subyacente: \dato{0,9 de 4,7 puntos}{dic. 2022}.
+\item VA extranjero en las exportaciones: \dato{25,7\,\% (UE 38,4\,\%)}{Eurostat, 2024}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Qué indica la suma de la columna $j$ de la inversa?} El aumento de la producción de todas las ramas si la demanda final de $j$ sube 1: multiplicador de producción (arrastre).
+\item \textbf{¿Por qué hace falta la tabla simétrica?} El modelo necesita una matriz cuadrada y cada columna con una sola tecnología; la de origen no es cuadrada.
+\item \textbf{¿Qué garantiza \autor{Hawkins}-\autor{Simon}?} Producciones no negativas para toda demanda final no negativa; se cumple si cada rama paga algo de VAB o importaciones.
+\item \textbf{¿Qué relación hay entre los modelos de demanda y de precios?} Dualidad: misma inversa, por columnas y por filas; $\vect{p}^{\top}\vect{d}=\vect{v}^{\top}\vect{x}$.
+\item \textbf{¿Por qué el tipo II supera al I?} Suma el efecto inducido del gasto de los salarios.
+\item \textbf{¿Qué es una rama clave?} PD y SD de \autor{Rasmussen} $>1$: arrastra y es arrastrada más que la media.
+\item \textbf{¿Qué hace una MCS?} Cierra el flujo circular de la renta; calibra los MEGC.
+\item \textbf{¿Por qué no sirvieron para planificar?} \autor{Hayek}: el conocimiento disperso no cabe en una tabla; y los coeficientes son fijos, en valor y envejecen.
+\item \textbf{¿Qué es la paradoja de \autor{Leontief}?} Con la tabla de 1947, los sustitutos de importaciones de EE.\,UU. usaban más capital por trabajador que sus exportaciones.
+\item \textbf{¿Cómo se actualiza $A$ sin una tabla nueva?} Método RAS (\autor{Stone}, 1961): factores por filas y columnas hasta cuadrar con los totales nuevos.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $a_{ij}=z_{ij}/x_j$: se divide por la producción de la rama \emph{compradora} (columna), no de la vendedora; $z_{ij}/x_i$ es el coeficiente de \emph{destino} de \autor{Ghosh}.
+\item Multiplicador de producción = suma de la \emph{columna} (hacia atrás, PD); la fila mide sensibilidad (hacia delante, SD).
+\item Precios: $\vect{p}^{\top}=\vect{v}^{\top}(I-A)^{-1}$ (vector \emph{fila}); en columna, $(I-A^{\top})^{-1}$.
+\item Precio básico \emph{incluye} los otros impuestos netos sobre la producción y \emph{excluye} los impuestos sobre los productos; PIB pm $=$ VAB pb $+$ impuestos netos s/ productos.
+\item \autor{Chenery}-\autor{Watanabe}: efectos \emph{directos}; \autor{Rasmussen}: \emph{totales}. Hacia atrás = compra; hacia delante = vende.
+\item Para efectos interiores, matriz \emph{interior} $A^{\mathrm d}$; la total sobrestima. Tipo~II $>$ tipo~I (cota superior).
+\item Modelo de precios: traslación íntegra $\Rightarrow$ cota \emph{superior} de la 1.ª ronda; sin segundas rondas.
+\item Diagonal de la inversa $>1$; $I+A+A^2+\dots$ converge con \autor{Hawkins}-\autor{Simon}.
+\item \autor{Hirschman}: crecimiento \emph{desequilibrado} (el equilibrado es de \autor{Rosenstein-Rodan} y \autor{Nurkse}).
+\item MCS: \autor{Pyatt}-\autor{Round} (1979); redes: \autor{Hulten} = 1.er orden; \autor{Baqaee}-\autor{Farhi}, 2.º orden.
+\item \autor{Leontief}: tabla 1936, modelo 1941, paradoja 1953, Nobel 1973. RAS es de \autor{Stone} (1961).
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

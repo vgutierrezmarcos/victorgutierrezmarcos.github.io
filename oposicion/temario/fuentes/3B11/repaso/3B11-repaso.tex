@@ -1,0 +1,306 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Balanza de pagos]{3.B.11}{Balanza de pagos: concepto, medición e interpretación.}
+\tcefecha{05/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. Concepto y medición}{6,5}
+\subcante{1. Concepto: BP, PII y otras variaciones}{2,5}
+\subcante{2. Medición: residencia y principios contables}{4}
+\apartadocante{II. Estructura e interpretación de las cuentas}{11,5}
+\subcante{1. Visión general: la identidad}{1}
+\subcante{2. Cuenta corriente}{3,5}
+\subcante{3. Cuenta de capital}{1}
+\subcante{4. Cuenta financiera, PII y rentas}{3}
+\subcante{5. Errores y omisiones}{0,5}
+\subcante{6. Otras variaciones de la PII}{1}
+\subcante{7. Posición de inversión internacional}{1,5}
+\apartadocante{III. Interpretación del saldo agregado}{8,5}
+\subcante{Entrada: \autor{Meade}, presentación analítica}{0,5}
+\subcante{1. CC $=S-I$}{3}
+\subcante{2. Reservas (TARGET) y ajuste}{1,5}
+\subcante{3. Enfoque de la hoja de balance}{2}
+\subcante{4. Desequilibrios globales}{1,5}
+\apartadocante{Conclusión}{1}}
+\emph{Ejemplo}: almazara cooperativa de Jaén que vende aceite a un importador de Nueva York. \emph{Pizarra}: panorama de las cuentas a la izquierda todo el cante; identidad de la BP y CC $=S-I$ recuadradas a la derecha; el centro se borra en cada apartado. \emph{Pegatinas}: «toda moneda tiene dos caras» (partida doble), «las cuentas del Gran Capitán» (EO), «de grano en grano hace la gallina el granero» (PII), «las cuentas de la lechera» (déficit por rentas futuras).
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{No se puede estirar el brazo más que la manga}». España 2007: déficit corriente 9,4\,\% del PIB, el resto del mundo prestaba la diferencia. Desde 2012 presta: capacidad 4,3\,\% (2025); PIIN de $-97$\,\% (2009) a $-42{,}7$\,\% (2025). Hilo: la almazara de Jaén.
+\item \textbf{Relevancia}: \emph{política} (supervisión del FMI, \emph{External Sector Report} \vertema{3.B.22}; PDM de la UE: CC media de 3 años fuera de $[-4,+6]$\,\% o PIIN $<-35$\,\%); \emph{teoría} (base del ajuste e intertemporal \vertema{3.B.12} y de las crisis \vertema{3.B.17}; PIIN deudora, sobre todo en deuda, predice crisis: \autor{Catão}-\autor{Milesi-Ferretti}, 2014); \emph{comparación} (mismo manual del FMI).
+\item \textbf{Contextualización}: BP + PII = \concepto{cuentas internacionales}; en España, el Banco de España. Parte exterior de la contabilidad nacional (\autor{Kuznets}, \autor{Stone}, años 30-40) \vertema{3.A.30}. Hoy MBP6 (2009, UE desde datos de 2014); MBP7 (marzo 2025, con el SCN 2025, aplicación a finales de la década). Lectura cambiante: Bretton Woods (reservas) $\to$ libre movilidad (déficit que invierte) $\to$ crisis de los 90 y 2008 (importan los \emph{stocks}).
+\item \textbf{Problemática}: ¿qué registran BP y PII y con qué reglas? ¿Qué dice cada cuenta? Si la BP siempre cuadra, ¿qué es un desequilibrio? ¿Es malo un déficit? ¿Cuándo preocupa?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, concepto y medición; \hyperref[rep:II]{II}, estructura y lectura de cada cuenta; \hyperref[rep:III]{III}, interpretación del saldo agregado. De la regla contable al diagnóstico.
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{I. Concepto y medición\label{rep:I}}
+\begin{ideaclave}
+Las cuentas internacionales son 3 estados enlazados (BP, PII y otras variaciones) elaborados con los principios de la contabilidad nacional: residencia, partida doble, devengo y precios de mercado.
+\end{ideaclave}
+
+\sub{I.1. Concepto\label{rep:I.1}}
+\begin{itemize}
+\item 3 estados (MBP6, cap.~2): \emph{BP} (flujos: transacciones del periodo); \emph{PII} (saldos en una fecha); \emph{cuenta de otras variaciones} (flujos que no son transacciones).
+\item \concepto{Balanza de pagos}: registro sistemático y contable de las transacciones económicas entre residentes y no residentes de un país durante un periodo. \emph{Sistemático}: cuentas normalizadas por el FMI; \emph{contable}: partida doble $\Rightarrow$ \textbf{siempre cuadra en conjunto}, no por cuentas; \emph{transacción}: interacción entre 2 unidades, por mutuo acuerdo o imperativo legal, con intercambio o transferencia de valor; \emph{residencia}, no nacionalidad ni moneda; \emph{periodo}: flujo (año; también trimestre y mes).
+\item Equilibrio contable $\neq$ económico: \concepto{desequilibrio exterior} = saldo parcial (CC o capacidad/necesidad) que no se puede mantener indefinidamente.
+\item \concepto{PII}: balance financiero con el exterior en una fecha. \concepto{PIIN} $\equiv$ activos exteriores $-$ pasivos exteriores: $>0$ acreedor neto, $<0$ deudor neto. Parte exterior del balance de la nación.
+\item \concepto{Otras variaciones}: revalorizaciones (precios, tipo de cambio) y otros cambios de volumen; fuera de la BP, pero sin ellas no se explica la PII final.
+\end{itemize}
+\graficorepaso[0.97\linewidth]{panorama-cuentas-internacionales}{Panorama de las cuentas internacionales: PII inicial + CF + OV = PII final}
+\begin{itemize}
+\item Almazara: vende a Nueva York $\Rightarrow$ BP; a Sevilla $\Rightarrow$ no aparece; depósito en dólares en Nueva York $\Rightarrow$ activo de la PII; si el dólar se deprecia, vale menos euros sin transacción $\Rightarrow$ otra variación.
+\end{itemize}
+
+\sub{I.2. Medición\label{rep:I.2}}
+\begin{itemize}
+\item Manual del FMI: 1.\textsuperscript{a} ed. 1948; MBP5 1993; \textbf{MBP6 2009}; MBP7 20/3/2025 (aplicación 2029-2030). Cada revisión: más cerca del SCN y más peso de los \emph{stocks}.
+\item \emph{MBP5 $\to$ MBP6}: PII en el título; \textbf{signo de la CF} = VNA $-$ VNP; rentas y transferencias $\to$ rentas primarias y secundarias; transformación sin cambio de propiedad $\to$ servicios; \emph{merchanting} $\to$ bienes; I+D, activo producido (fuera de la CK). \emph{MBP7}: criptoactivos sin pasivo de contrapartida (bitcóin) = activo no financiero no producido en la CK, no reservas; reservas internacionales netas; más detalle sectorial y digital.
+\item \concepto{Flujos}: \emph{transacciones} (intercambios o transferencias) y \emph{otros flujos} (revalorización, cancelación unilateral, catástrofe, expropiación sin indemnización). \concepto{Posiciones}: saldos en una fecha, unidos por los flujos.
+\item \concepto{Residente}: \emph{centro de interés económico predominante} en el territorio económico (referencia: 1 año o más, no rígida). Hogares: vivienda principal (estudiantes, pacientes y turistas, residentes de origen); filiales donde operan; sucursales si producción significativa $\geq$1 año; entidades con fines especiales, donde se constituyen; AA.~PP. con embajadas y bases; \textbf{organismos internacionales: de ninguna economía} (el BCE es resto del mundo para España). Filial de la almazara en Nueva Jersey: residente de EE.~UU.; el capital, inversión directa.
+\item \emph{4 sectores} (MBP6): banco central; sociedades de depósito salvo el BC (otras IFM); AA.~PP.; otros sectores. La CN (SEC 2010): 5 (S.11-S.15), con el BC dentro de S.12.
+\item \concepto{Partida doble} (vertical): cada transacción, 2 asientos por igual importe. \emph{Créditos}: X, rentas a cobrar, $\downarrow$ activos, $\uparrow$ pasivos. \emph{Débitos}: M, rentas a pagar, $\uparrow$ activos, $\downarrow$ pasivos. CC y CK en bruto; CF en neto por instrumento: \concepto{VNA} y \concepto{VNP}, $+$ si aumentan. \emph{Horizontal}: las 2 partes, mismo importe y momento. \concepto{Partida cuádruple}: 4 asientos en el sistema mundial (en la práctica no se cumple: el mundo no cuadra).
+\item Almazara: exporta 100 y cobra en Nueva York (bienes $+100$; VNA $+100$); vende acciones por 50 a depósito (solo composición); préstamo italiano de 70 para una envasadora (bienes $-70$; VNP $+70$) $\Rightarrow$ CC $=30=$ CF.
+\item \concepto{Devengo}: cuando se crea, transforma, intercambia, transfiere o extingue el valor, no al cobrar. Bienes y activos: cambio de \emph{propiedad económica}; servicios: al prestarse; rentas: al nacer el derecho (intereses, día a día). Pago aplazado $\Rightarrow$ \concepto{crédito comercial} en la CF.
+\item \emph{Valoración}: precios de mercado (préstamos y depósitos a valor nominal; no cotizadas, por fondos propios); moneda nacional al tipo del momento (posiciones, al del día de referencia). \textbf{Mercancías FOB} en X y M; Aduanas (ONU): M \concepto{CIF} $\Rightarrow$ M de Aduanas $>$ M de la BP.
+\item BP frente a CN: mismos principios; distinto \emph{punto de vista}: la cuenta del resto del mundo se ve desde fuera, signo cambiado. Saldo común: CC $+$ CK = B.9.
+\item \emph{Fuentes} (BdE): proveedores de servicios de pago ($>$50.000~€; común a CC y CF); Aduanas (DUA e Intrastat, ajustadas: CIF$\to$FOB, \emph{merchanting}, transformación); INE (EGATUR, FRONTUR, servicios); declaraciones directas (Circular 4/2012: mensual $\geq$300~M€); Registro de Inversiones Exteriores. Reglamento (CE) 184/2005, adaptado por el (UE) 555/2012.
+\end{itemize}
+
+% ==========================================================================
+\bloque[11,5]{II. Estructura e interpretación de las cuentas\label{rep:II}}
+\begin{ideaclave}
+CC y CK dicen cuánto presta o pide prestado el país; la CF, con qué instrumentos y qué sectores; la PII, cuánto ha acumulado y con qué riesgo.
+\end{ideaclave}
+
+\sub{II.1. Visión general de las cuentas\label{rep:II.1}}
+\begin{itemize}
+\item 3 cuentas: \concepto{cuenta corriente} (CC: bienes y servicios, RP, RS); \concepto{cuenta de capital} (CK: transferencias de capital, activos no financieros no producidos); \concepto{cuenta financiera} (CF $=$ VNA $-$ VNP). Las 2 primeras, créditos y débitos; la CF, VNA y VNP. Todo desde el residente. Con $\mathrm{CC}=(X-M)+\mathrm{RP}+\mathrm{RS}$, \textbf{identidad} (MBP6):
+\funcionclave{\mathrm{CC}+\mathrm{CK}+\mathrm{EO}=\mathrm{CF}=\mathrm{ID}+\mathrm{IC}+\mathrm{D}+\mathrm{OI}+\Delta R}
+\item CC $+$ CK $>0$: \concepto{capacidad de financiación} (acumula activos o cancela pasivos: sale capital neto, CF $>0$); $<0$: \concepto{necesidad de financiación} (se endeuda o vende activos: entra capital).
+\item España 2025: capacidad 4,3\,\% del PIB (servicios compensan con creces bienes; CK, 1 punto por fondos UE); 12 meses a agosto de 2026: 3,7\,\%.
+\end{itemize}
+
+\sub{II.2. Cuenta corriente\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Bienes}: cambio de propiedad económica, crucen o no la frontera: mercancías generales, \emph{merchanting} (por el margen), oro no monetario. \emph{Servicios}: 12 componentes (transporte, viajes, financieros, propiedad intelectual, otros empresariales\ldots). Almazara: aceite = bienes; flete de naviera española = servicios; canon de marca extranjera = M de servicios.
+\item Servicios: algo más de 1/4 del comercio mundial bruto (9,6 de 34,7 billones de \$, 2025); en valor añadido $\approx$1/2: \concepto{servicificación} (OCDE, TiVA). \emph{Curva de la sonrisa} (\autor{Shih}): más valor añadido en I+D, diseño, marca y posventa \vertema{3.B.18}.
+\item Saldo: $-$ renta nacional, $+$ renta de los socios, $+$ competitividad. \emph{Precio}: \concepto{tipo de cambio efectivo real},
+\begin{formula}
+\centering $q^{ef}=\prod_i\left(\dfrac{E_iP_i^*}{P}\right)^{\omega_i},\quad\sum_i\omega_i=1$
+\end{formula}
+\item[] $\uparrow q^{ef}$ = depreciación real = ganancia de competitividad \vertema{3.B.13}; deflactores: IPC, CLU o precios de exportación. \textbf{Ojo}: BCE y BdE publican al revés (subida = apreciación). \emph{No precio}: capital físico, humano, tecnológico, calidad, marca, instituciones (B-READY sustituye al \emph{Doing Business}, 2021). \emph{Resultados}: cuota de mercado, tasa de cobertura $X/M$, propensión exportadora $X/\mathrm{PIB}$, contenido importado.
+\item \emph{Unión monetaria}: $\gamma_q\simeq\gamma_E+\pi^*-\pi$ y, con $E$ fijo,
+\begin{formula}
+\centering $\gamma_q\simeq\pi^*-\pi$: inflación $>$ socios = apreciación real \vertema{3.A.41}
+\end{formula}
+\item[] CLU: $\gamma_{\mathrm{CLU}}=\gamma_W-\gamma_{\mathrm{PAT}}$. Solo queda la \concepto{devaluación interna} (lenta, costosa en empleo; sur del euro tras la crisis \vertema{3.B.16}, \vertema{4.A.22}). Pero \autor{Balassa}-\autor{Samuelson} (1964): país que converge $\Rightarrow$ inflación de no comerciables sin pérdida de competitividad $\Rightarrow$ mirar CLU de manufacturas o precios de exportación. El PDM vigila TCER y CLU.
+\item España 2025: bienes $-3{,}0$\,\% (energía); servicios $+6{,}8$\,\%, turismo 4,3 puntos.
+\item \concepto{Rentas primarias}: uso temporal de factores: \emph{trabajo} (fronterizos, temporada, $<$1 año), \emph{inversión} (intereses, dividendos, beneficios reinvertidos; el grueso), \emph{otra} (impuestos sobre producción e importaciones, subvenciones, recursos naturales). Explican PIB $\neq$ RNB (Irlanda: RNB $\ll$ PIB). Más deudor $\Rightarrow$ más rentas pagadas $\Rightarrow$ peor CC futura.
+\item \concepto{Rentas secundarias}: transferencias corrientes: remesas, cooperación corriente, aportaciones UE (IVA, RNB), impuestos sobre la renta y prestaciones, seguros no vida. \emph{NGEU}: gasto corriente $\to$ RS; inversión $\to$ CK; préstamos del MRR $\to$ OI de AA.~PP. (intereses, RP).
+\end{itemize}
+
+\sub{II.3. Cuenta de capital\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Transferencias de capital} (activo fijo, ayuda condicionada a invertir, condonación pactada; España: FEDER, Cohesión, MRR de inversión) y \emph{compraventa de activos no financieros no producidos} (tierra, pesca, espectro, contratos, licencias, marcas, logotipos, dominios).
+\item \textbf{No va aquí}: patentes y derechos de autor (producidos desde el SCN 2008 $\to$ servicios); cancelación unilateral (otro cambio de volumen); transferencias de gasto corriente (RS).
+\item CC $+$ CK = capacidad/necesidad; CK pequeña en avanzados, no en España desde 2021 (1,0\,\% en 2025). Almazara: ayuda UE para la envasadora = CK $+$; la máquina = bienes $-$.
+\item \textbf{Cuenta de capital $\neq$ «balanza de capital»} de los manuales antiguos (= hoy CF).
+\end{itemize}
+
+\sub{II.4. Cuenta financiera, PII y rentas de la inversión\label{rep:II.4}}
+\begin{itemize}
+\item 3 caras: CF (flujo), PII (saldo), rentas de la inversión (rendimiento). Encadenadas: $\uparrow$ entradas netas $\Rightarrow$ $\downarrow$ PIIN $\Rightarrow$ $\uparrow$ rentas pagadas $\Rightarrow$ $\downarrow$ CC. Se netea por instrumento, no activos con pasivos; clasificación \emph{funcional}:
+\begin{enumerate}
+\item \concepto{Inversión directa}: control o influencia significativa, $\geq$10\,\% de los votos; participaciones, beneficios reinvertidos, deuda intragrupo. La más estable; trae tecnología \vertema{4.A.23}.
+\item \concepto{Inversión de cartera}: acciones $<$10\,\%, fondos, valores de deuda negociables; sin control, volátil.
+\item \emph{Derivados} (y opciones de empleados): solo neto \vertema{3.B.25}.
+\item \emph{Otra inversión} (residual): préstamos, depósitos, créditos comerciales, repos, billetes; en el euro, posición del BCN frente al Eurosistema.
+\item \concepto{Reservas internacionales}: activos exteriores que el BC controla y puede usar de inmediato: oro monetario, DEG, posición en el FMI, divisas. $\Delta R>0$ si aumentan.
+\end{enumerate}
+\item Compra de divisas $\Rightarrow$ $\uparrow$ base monetaria; \concepto{esterilizar}: vender títulos en moneda nacional \vertema{3.B.15}. Motivos: \emph{precaución} (parada súbita; tras 1997), \emph{frenar la apreciación} (China, 2000), materias primas (fondos soberanos). \concepto{Dilema de \autor{Triffin}} (1960): el mundo acumula dólares si EE.~UU. tiene déficit, que erosiona la confianza.
+\item Reservas de divisas: 13,2 billones de \$ (jun. 2026), China 1/4; dólar 71\,\% (1999) $\to$ 56,7\,\%; euro 20,6\,\%; yen 5\,\%; libra 4,6\,\%.
+\item \emph{Zona del euro}: reservas, activos netos frente al Eurosistema, otros. La posición frente al Eurosistema cuadra la BP:
+\begin{formula}
+\centering $\mathrm{CF}=\mathrm{CF}^{\text{exc. BdE}}+\mathrm{CF}^{\text{BdE}},\ \mathrm{CF}^{\text{BdE}}=\Delta R+\Delta\text{TARGET}+\text{otros}$
+\end{formula}
+\item[] T2 sustituye a TARGET2 (20/3/2023). Importador francés paga a la almazara: $\uparrow$ activo del BdE frente al Eurosistema; saldos suman 0. Saldo deudor que crece: parada súbita (\autor{Sinn}-\autor{Wollmershäuser}, 2012: rescate encubierto) o reparto de la liquidez y del programa de compras (\autor{Whelan}, 2014). BdE: $\approx-414.000$~M€ (fin 2025) \vertema{4.A.21}.
+\end{itemize}
+
+\sub{II.5. Errores y omisiones\label{rep:II.5}}
+\begin{itemize}
+\item Los 2 asientos salen de fuentes distintas (Aduanas, bancos) $\Rightarrow$ residuo: «\emph{las cuentas del Gran Capitán}»:
+\begin{formula}
+\centering $\mathrm{EO}=\mathrm{CF}-(\mathrm{CC}+\mathrm{CK})$
+\end{formula}
+\item[] EO $>0$: CF sobrevalorada o CC $+$ CK infravaloradas. Grandes, persistentes y de un signo: fuga de capital no declarada. \textbf{No son una cuenta}; no se reparten. España 2025: 0,8\,\% del PIB.
+\end{itemize}
+
+\sub{II.6. Cambios en la PII no recogidos en la CF\label{rep:II.6}}
+\begin{itemize}
+\item Variación de la posición:
+\begin{formula}
+\centering $\mathrm{PIIN}_t-\mathrm{PIIN}_{t-1}=\mathrm{CF}_t+\mathrm{OV}_t$
+\end{formula}
+\item[] OV: \emph{revalorizaciones} (precios, tipo de cambio) y \emph{otros cambios de volumen} (cancelaciones unilaterales, reclasificaciones, expropiaciones, cambios de residencia).
+\item \emph{Depreciación}: $\uparrow$ valor de lo que está en divisas: mejora a EE.~UU. (pasivos en \$), empeora a emergentes con deuda en \$. Bonos vuelven al nominal; el efecto se concentra en acciones. \textbf{Lo que pesa}: deuda en divisas revalorizada por una depreciación (\autor{Lane}-\autor{Milesi-Ferretti}, 2007).
+\item España 2025: PIIN $-83.000$~M€ pese a CF $+85.200$: OV $\approx-168.000$ ($\approx$10 puntos del PIB).
+\end{itemize}
+
+\sub{II.7. Posición de inversión internacional\label{rep:II.7}}
+\begin{itemize}
+\item Balance frente al exterior, mismas categorías funcionales que la CF; suma de CF pasadas $+$ OV: «\emph{de grano en grano hace la gallina el granero}».
+\item 3 medidas: \concepto{PIIN}; \concepto{PIIN excluidos los instrumentos sin riesgo de impago} (Eurostat: sin acciones ni deuda intragrupo); \concepto{deuda externa bruta} (solo pasivos con pago de principal o intereses).
+\item Lectura: signo y nivel (PDM: $-35$\,\%); por qué cambia; \textbf{composición}: capital mejor que deuda (y ID), largo mejor que corto, moneda nacional, sectores (pasivo del BC frente al Eurosistema $\neq$ deuda bancaria a corto). ¿Brutos (\autor{Shin}, 2012) o netos de deuda (\autor{Catão}-\autor{Milesi-Ferretti}, 2014)?
+\item España: $-97{,}0$\,\% (2009) $\to$ $-39{,}9$\,\% (2024) $\to$ $-42{,}7$\,\% (2025, revalorizaciones) $\to$ $-40{,}7$\,\% (mediados de 2026); sin BdE $-31{,}1$\,\%; sin instrumentos sin riesgo de impago, $-9{,}6$\,\% (2025); deuda externa bruta 168\,\%.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8,5]{III. Interpretación del saldo agregado\label{rep:III}}
+\begin{ideaclave}
+Un saldo exterior no es bueno ni malo en sí: el saldo corriente es la brecha ahorro-inversión; se financia con capitales o reservas (TARGET en el euro) y su sostenibilidad depende de la posición que deja, su composición y el crecimiento.
+\end{ideaclave}
+\begin{itemize}
+\item \autor{Meade} (1951): transacciones \emph{autónomas} (por sus motivos) frente a \emph{compensatorias} (de las autoridades: reservas, FMI); desequilibrio = hacen falta las segundas. MBP6: \concepto{presentación analítica}: por encima de la línea todo salvo reservas y vinculadas = \emph{saldo global}; debajo, $\Delta R$, crédito del FMI y financiación excepcional.
+\end{itemize}
+
+\sub{III.1. Cuenta corriente: brecha entre ahorro e inversión\label{rep:III.1}}
+\begin{itemize}
+\item $\mathrm{RNDB}=\mathrm{PIB}+\mathrm{RP}+\mathrm{RS}$; absorción $A=C+I+G$; $Y=A+(X-M)$; $S=\mathrm{RNDB}-C-G$:
+\funcionclave{\mathrm{CC}=(Y-A)+\mathrm{RP}+\mathrm{RS}=S-I=(S_P-I_P)+(T-G)}
+\item Déficit = gastar más de lo que se ingresa o invertir más de lo que se ahorra. \textbf{Identidades, no teorías}: un arancel o una devaluación solo mueven la CC si cambian $S$ o $I$ \vertema{3.B.12}.
+\item \emph{Mismo déficit, distinto diagnóstico}: poco ahorro (sobrecalentamiento) o inversión productiva (convergencia); construcción con crédito: España 2000-2007. «\emph{Las cuentas de la lechera}». Corto plazo: igual ahorrar que invertir menos; largo, no.
+\end{itemize}
+\graficorepaso[0.97\linewidth]{arbol-deficit-corriente}{Diagnóstico de un déficit: financiar lo temporal, ajustar lo permanente}
+\begin{itemize}
+\item \concepto{Déficits gemelos}: déficit público $\Rightarrow$ corriente (multiplicador; \autor{Mundell}-\autor{Fleming}: tipos, entradas, apreciación). Equivalencia ricardiana: no \vertema{3.A.39}. Evidencia: consolidación de 1 punto $\Rightarrow$ CC $+0{,}6$ (\autor{Bluedorn}-\autor{Leigh}, 2011).
+\item \concepto{Enfoque intertemporal} (\autor{Sachs}, 1981; \autor{Obstfeld}-\autor{Rogoff}, 1995): CC = reparto de consumo e inversión en el tiempo; pedir prestado ante un choque temporal o para invertir donde rinde más es óptimo si la deuda es sostenible.
+\item \concepto{Paradoja de \autor{Feldstein}-\autor{Horioka}} (1980): OCDE, $I$ sigue a $S$ (coeficiente $\approx$0,9), contra la movilidad perfecta; sesgo nacional, costes, riesgo cambiario, objetivo exterior. Cae con la integración, sobre todo en el euro (Grecia, Portugal: \autor{Blanchard}-\autor{Giavazzi}, 2002).
+\end{itemize}
+
+\sub{III.2. Reservas y ajuste de la balanza de pagos\label{rep:III.2}}
+\begin{itemize}
+\item Despejando la identidad:
+\begin{formula}
+\centering $\Delta R=(\mathrm{CC}+\mathrm{CK})+\mathrm{EO}-(\mathrm{ID}+\mathrm{IC}+\mathrm{D}+\mathrm{OI})$
+\end{formula}
+\item[] Las reservas cubren lo que no cubre el capital privado; pueden caer con capacidad si sale más capital. Tipo fijo: reservas (salvo esterilización, $\downarrow$ dinero); flexible: tipo de cambio \vertema{3.B.15}.
+\item Euro: $\Delta\text{TARGET}+\Delta R+\text{otros}=\mathrm{CF}^{\text{BdE}}$; \textbf{TARGET sin límite}: ajuste por el coste de la financiación privada, no por el BC.
+\item Financiación cortada: temporal $\Rightarrow$ reservas suavizan; permanente $\Rightarrow$ ataque especulativo \vertema{3.B.17}; sin reservas ni crédito: \concepto{parada súbita} (\autor{Calvo}, 1998).
+\item \emph{Ajuste}: reducir el gasto (fiscal y monetaria) y desviarlo (depreciación si \autor{Marshall}-\autor{Lerner}: $|\varepsilon_X|+|\varepsilon_M|>1$), reformas, financiación oficial; sin ajuste del gasto, la depreciación se va en inflación.
+\item \emph{Suficiencia de reservas} (FMI, 2011): 3 meses de M; 100\,\% de la deuda a corto (\autor{Greenspan}-\autor{Guidotti}); 20\,\% de M2; métrica ARA. Demasiadas también cuestan.
+\end{itemize}
+
+\sub{III.3. El enfoque de la hoja de balance\label{rep:III.3}}
+\begin{itemize}
+\item \textbf{a) Idea}: las crisis de los 90 (Asia, Rusia, Brasil, Argentina) no se veían en la CC, sino en los \emph{balances} por sectores (\autor{Allen} et al., 2002).
+\item \textbf{b) Modelo}. \emph{Supuestos}: precios de mercado; consolidado, se cancela lo de residentes. \emph{Desarrollo}: riqueza nacional neta $=K+\mathrm{PIIN}$;
+\begin{formula}
+\centering $\Delta\text{riqueza}=(S-\delta K)+\mathrm{CK}+\mathrm{OV}^K+\mathrm{OV}^F$
+\end{formula}
+\item[] Dinámica en \% del PIB, con $\gamma^N$ el crecimiento nominal:
+\begin{formula}
+\centering $\mathrm{PIIN}_t-\mathrm{PIIN}_{t-1}\approx\mathrm{CF}_t+\mathrm{OV}_t-\dfrac{\gamma^N_t}{1+\gamma^N_t}\mathrm{PIIN}_{t-1}$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.97\linewidth]{balance-nacion}{El balance de la nación y sus descalces}
+\begin{itemize}
+\item \emph{Implicaciones}: solo enriquece ahorrar, recibir transferencias de capital o ganar plusvalías; pedir prestado no (si financia inversión, cambia deuda por capital; si consumo, empobrece). \emph{Sostenibilidad}: estable si el saldo sin rentas de la inversión cubre tipo $-$ crecimiento: la manga es el crecimiento; el brazo, el tipo. Saldo estabilizador (anexo):
+\begin{formula}
+\centering $b_t=\dfrac{1+i^*}{1+\gamma^N}b_{t-1}+d_t-\mathrm{ov}_t\ \Rightarrow\ -d=\dfrac{i^*-\gamma^N}{1+\gamma^N}\,b$
+\end{formula}
+\item[] $i^*>\gamma^N$: superávit solo para estabilizar (\emph{bola de nieve}). Con $b=41$\,\% y $\gamma^N-i^*=2$ puntos, cabe un déficit de $\approx$0,8 puntos.
+\item \emph{Descalces}: de \emph{estructura de capital} (deuda, no acciones); de \emph{plazos}; de \emph{monedas} (\concepto{pecado original}, \autor{Eichengreen}-\autor{Hausmann}-\autor{Panizza}, 2005; crisis gemelas, \autor{Kaminsky}-\autor{Reinhart}, 1999); de \emph{solvencia} (contagio entre sectores vía banca); \emph{concentración} de acreedores. Equilibrios múltiples (\autor{Obstfeld}, 1996) $\Rightarrow$ margen.
+\item \textbf{c) Valoración}: completa los flujos con los saldos; FMI y PDM lo usan. Límites: datos por sector, moneda y plazo; no dice qué deuda es demasiada.
+\end{itemize}
+
+\sub{III.4. Desequilibrios globales\label{rep:III.4}}
+\begin{itemize}
+\item \concepto{Desequilibrios globales}: saldos corrientes grandes y persistentes de las grandes economías; suma de valores absolutos en \% del PIB mundial (los saldos mundiales no suman 0 por medición).
+\item Máximo 2006-2008 (EE.~UU. frente a China, Japón, Alemania, petroleros); se amplían: 4,0 $\to$ 4,4 billones de \$ (2024-2025), $\approx$3,7\,\% del PIB mundial; FMI: 2/3 excesivos. 2025: EE.~UU. $-3{,}7$\,\%; China $+3{,}7$, Alemania $+4{,}5$, Japón $+4{,}9$.
+\item \emph{Por qué}: \concepto{exceso de ahorro mundial} (\autor{Bernanke}, 2005); \concepto{privilegio exorbitante}: de banquero a capitalista de riesgo del mundo (\autor{Gourinchas}-\autor{Rey}, 2007); causas internas (déficit público de EE.~UU.; ahorro alto e inversión débil en China y Alemania).
+\item \emph{¿Problema?} No si son decisiones intertemporales (envejecimiento); sí si nacen de distorsiones o acumulan riesgos (\autor{Blanchard}-\autor{Milesi-Ferretti}, 2012). Causas comunes con 2008 (\autor{Obstfeld}-\autor{Rogoff}, 2009).
+\item \concepto{Materia oscura} (\autor{Hausmann}-\autor{Sturzenegger}, 2007): EE.~UU. deudor que cobra más rentas; discutida (\autor{Curcuru}-\autor{Dvorak}-\autor{Warnock}, 2008).
+\item Vigilancia: FMI (metodología EBA, ESR) \vertema{3.B.22}; PDM; G-20 \vertema{3.B.19}. España: superávit desde 2012 (3,2\,\% en 2025), dentro de la banda \vertema{4.A.21}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: en conclusión, la BP registra las transacciones con el exterior con las reglas de la contabilidad; la PII, lo acumulado; las OV las unen. Siempre cuadra: importan los saldos parciales, sobre todo capacidad/necesidad = $S-I$. Un déficit no es bueno ni malo: origen, financiación y sostenibilidad.
+\item \textbf{Relevancia}: base de la supervisión del FMI y del PDM; parte del dictamen de coyuntura.
+\item \textbf{Extensiones}: ajuste e intertemporal \vertema{3.B.12}, crisis \vertema{3.B.17}, capitales \vertema{3.B.18}, FMI y reservas \vertema{3.B.22}, BP de España \vertema{4.A.21}; reto del MBP7: digitalización, criptoactivos, propiedad intelectual de multinacionales.
+\item \textbf{Opinión}: en una unión monetaria la BP no desaparece: se esconde en TARGET; mirar menos el saldo y más origen, financiación y posición con su composición.
+\item \textbf{Idea final}: «no se puede estirar el brazo más que la manga», salvo que otro preste la manga: la BP dice cuánto se estira y quién presta; la PII, hasta cuándo.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1948}{1.\textsuperscript{er} Manual de Balanza de Pagos del FMI}
+\hito{1951}{\autor{Meade}: transacciones autónomas y compensatorias}
+\hito{1960}{\autor{Triffin}: dilema del dólar}
+\hito{1964}{\autor{Balassa}-\autor{Samuelson}}
+\hito{1980}{\autor{Feldstein}-\autor{Horioka}: paradoja}
+\hito{1981}{\autor{Sachs}: enfoque intertemporal}
+\hito{1993}{MBP5}
+\hito{1995}{\autor{Obstfeld}-\autor{Rogoff}: enfoque intertemporal}
+\hito{1998}{\autor{Calvo}: paradas súbitas}
+\hito{1999}{\autor{Kaminsky}-\autor{Reinhart}: crisis gemelas}
+\hito{2002}{\autor{Allen} et al.: enfoque de balances; \autor{Blanchard}-\autor{Giavazzi}}
+\hito{2005}{\autor{Bernanke}: exceso de ahorro; pecado original}
+\hito{2007}{\autor{Gourinchas}-\autor{Rey}; \autor{Hausmann}-\autor{Sturzenegger}; \autor{Lane}-\autor{Milesi-Ferretti}}
+\hito{2009}{MBP6}
+\hito{2012}{\autor{Sinn}-\autor{Wollmershäuser}: TARGET; Reglamento 555/2012}
+\hito{2014}{\autor{Catão}-\autor{Milesi-Ferretti}; MBP6 en la UE}
+\hito{2023}{T2 sustituye a TARGET2}
+\hito{2025}{MBP7 y SCN 2025}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item España: capacidad de financiación \dato{4,3\,\% del PIB (2025)}{BdE, 2026}; CC \dato{3,2\,\%}{BdE, 2026}; bienes \dato{$-3{,}0$\,\%}{BdE, 2026}; servicios \dato{$+6{,}8$\,\%, turismo 4,3}{BdE, 2026}; EO \dato{0,8\,\%}{BdE, 2026}.
+\item PIIN: \dato{$-42{,}7$\,\% del PIB (2025)}{BdE, 2026}; \dato{$-40{,}7$\,\% (mediados de 2026)}{BdE, 2026}; mínimo \dato{$-97$\,\% (2009)}{BdE, 2026}; deuda externa bruta \dato{168\,\%}{BdE, 2026}.
+\item Saldo TARGET del BdE: \dato{$\approx-414.000$~M€ (fin 2025)}{BCE, 2026}.
+\item Reservas de divisas mundiales: \dato{13,2 billones de \$; dólar 56,7\,\%, euro 20,6\,\%}{FMI COFER, jun. 2026}.
+\item Desequilibrios: \dato{4,4 billones de \$, $\approx$3,7\,\% del PIB mundial}{FMI ESR, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{Si la BP siempre cuadra, ¿qué es un desequilibrio?} Cuadra por partida doble; desequilibrio = saldo parcial insostenible o necesidad de transacciones compensatorias (\autor{Meade}): saldo global de la presentación analítica.
+\item \textbf{¿Es malo un déficit corriente?} No en sí: si financia inversión productiva o suaviza un choque temporal (enfoque intertemporal) es óptimo; preocupa si es por poco ahorro, consumo o crédito y deja una PIIN grande en deuda, a corto y en divisas.
+\item \textbf{¿Por qué empeoró la PIIN española en 2025 con CF positiva?} Revalorizaciones ($\approx-168.000$~M€): subieron de precio los pasivos (acciones españolas); no son más obligaciones de pago.
+\item \textbf{¿Qué es TARGET y qué indica?} Posición del BCN frente al Eurosistema; hace de reservas sin límite; deudor creciente = parada súbita privada (\autor{Sinn}) o reparto de la liquidez (\autor{Whelan}).
+\item \textbf{¿Qué medida de la PII predice mejor las crisis?} Netos de deuda (\autor{Catão}-\autor{Milesi-Ferretti}) o brutos (\autor{Shin}); se mira también la PIIN sin instrumentos sin riesgo de impago y la deuda externa bruta.
+\item \textbf{¿Qué cambia el MBP7?} Criptoactivos sin pasivo a la CK, no reservas; reservas netas normalizadas; más detalle sectorial y digital; se aplicará a finales de la década.
+\item \textbf{¿Causa el déficit público el corriente?} Déficits gemelos (multiplicador; \autor{Mundell}-\autor{Fleming}); con equivalencia ricardiana, no; evidencia: 1 punto de consolidación $\Rightarrow$ CC $+0{,}6$.
+\item \textbf{¿Cuántas reservas bastan?} 3 meses de M, 100\,\% de la deuda a corto (\autor{Greenspan}-\autor{Guidotti}), 20\,\% de M2 o la métrica ARA del FMI; tenerlas y esterilizarlas cuesta.
+\item \textbf{¿Cuándo es sostenible una PIIN deudora?} Si el saldo sin rentas de la inversión cubre $(i^*-\gamma^N)\,b/(1+\gamma^N)$; importan también composición (deuda, plazo, moneda) y efectos de valoración.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item MBP6: CF $=$ VNA $-$ VNP; capacidad (CC $+$ CK $>0$) = CF $>0$ (salida neta). MBP5: signo contrario, CC $+$ CK $+$ CF$'$ $+$ EO $=0$.
+\item Créditos: X, rentas a cobrar, $\downarrow$ activos, $\uparrow$ pasivos; débitos: M, $\uparrow$ activos, $\downarrow$ pasivos.
+\item Cuenta de capital $\neq$ «balanza de capital» antigua (= CF). Patentes: servicios; marcas y dominios: CK.
+\item Residencia, no nacionalidad: organismos internacionales, de ninguna economía; estudiantes y pacientes, del país de origen; el BCE es resto del mundo para España.
+\item Mercancías FOB en X y M en la BP; Aduanas: M CIF.
+\item ID: $\geq$10\,\% de los votos. EO: residuo, no una cuenta.
+\item TCER: $\uparrow q^{ef}$ = depreciación real; BCE y BdE publican al revés.
+\item Beneficios reinvertidos: renta primaria y, a la vez, ID. NGEU: corriente $\to$ RS; inversión $\to$ CK.
+\item Compra de divisas por el BC: $\uparrow$ base monetaria; esterilizar = \emph{vender} títulos en moneda nacional.
+\item \autor{Feldstein}-\autor{Horioka}: correlación $S$-$I$ alta ($\approx$0,9) = \emph{poca} movilidad aparente del capital.
+\item Depreciación: mejora la PIIN de quien tiene activos en divisas y pasivos en moneda propia (EE.~UU.), la empeora con deuda en divisas.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

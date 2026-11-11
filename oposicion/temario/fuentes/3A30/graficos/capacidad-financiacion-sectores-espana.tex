@@ -1,0 +1,88 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% España, 1995-2025: capacidad (+) o necesidad (-) de financiación (B.9) por
+% sectores institucionales, % del PIB. INE (cuentas no financieras de los
+% sectores institucionales), vía Eurostat nasa_10_nf_tr (consulta 11/11/2026).
+% Paleta «dictamen» (tikz-tcee.tex), la misma que en el resto de temas: la
+% (eje de -16 a 14: las barras positivas de 2012 y 2020 pasan de 10)
+% nación en morado (el saldo de 3B11/graficos/bp-espana-capacidad), las AAPP
+% en rojo (el déficit del 3.A.39), los hogares en verde, las sociedades no
+% financieras en azul claro y las instituciones financieras en dorado.
+% Orden de capas (CRITERIOS §7; capas «dic»): barras -> cero -> línea de la
+% nación -> puntos -> rótulos.
+\pgfplotsset{leyenda linea corta/.style={legend image code/.code={%
+  \draw[##1,mark repeat=2,mark phase=2] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}}}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/capacidad-financiacion-sectores-espana.csv}\cap
+\colorlet{secsnf}{dicexterna}
+\colorlet{secif}{dicprestamos}
+\colorlet{secaapp}{dicespana}
+\colorlet{sechogares}{dicfbcf}
+\colorlet{secnacion}{dicpib}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=7.5cm,
+      ybar stacked, stack negative=separate, bar width=0.26cm,
+      xmin=1994.4, xmax=2025.6,
+      xtick={1995,...,2025},
+      xticklabel style={/pgf/number format/1000 sep=, font=\scriptsize, rotate=90, anchor=east},
+      ymin=-16, ymax=14, ytick={-16,-12,...,12},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% del PIB},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.5,-0.17)}, anchor=north, legend columns=3,
+        draw=none, font=\footnotesize, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left, area legend, dicapas,
+    ]
+    % 1: sociedades no financieras (S.11)
+    % (stack negative=separate: las positivas se apilan hacia arriba y las
+    % negativas hacia abajo, cada una en su lado del cero)
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=secsnf] table[x=anio, y=snf] {\cap};
+      \addlegendentry{Sociedades no financieras}
+    }
+    % 2: instituciones financieras (S.12)
+    \capa{2}{
+      \addplot[on layer=dicbarras, dicbarra=secif] table[x=anio, y=if] {\cap};
+      \addlegendentry{Instituciones financieras}
+    }
+    % 3: Administraciones Públicas (S.13)
+    \capa{3}{
+      \addplot[on layer=dicbarras, dicbarra=secaapp] table[x=anio, y=aapp] {\cap};
+      \addlegendentry{Administraciones Públicas}
+    }
+    % 4: hogares e ISFLSH (S.14 + S.15)
+    \capa{4}{
+      \addplot[on layer=dicbarras, dicbarra=sechogares] table[x=anio, y=hogares] {\cap};
+      \addlegendentry{Hogares e ISFLSH}
+    }
+    % 5: el cero, encima de las barras
+    \capa{5}{
+      \dicraya{(1994.4,0) (2025.6,0)}
+    }
+    % 6: la nación (S.1 = -S.2), línea sobre las barras
+    \capa{6}{
+      \addplot[stack plots=false, sharp plot, diclineahalo=secnacion, leyenda linea corta,
+        legend image post style={mark=*, mark size=1.8pt, mark options={fill=white, line width=0.9pt}}]
+        table[x=anio, y=total] {\cap};
+      \addlegendentry{Total de la economía (nación)}
+    }
+    % 7: puntos de la nación
+    \capa{7}{
+      \addplot[on layer=dicpuntos, forget plot, stack plots=false, dicpuntos=secnacion]
+        table[x=anio, y=total] {\cap};
+    }
+    % 8: rótulos: la nación en 2007 y 2025, las AAPP en 2012
+    \capa{8}{
+      \dicrotulo[font=\footnotesize, text=secnacion, anchor=north, inner sep=2pt]
+        {(2007,-12.85)}{$-9{,}0$}
+      \dicrotulo[font=\footnotesize, text=secaapp, anchor=north, inner sep=2pt]
+        {(2012,-11.55)}{$-11{,}5$}
+      \dicrotulo[font=\footnotesize, text=secnacion, anchor=west, inner sep=2pt]
+        {(2025.3,4.27)}{$+4{,}3$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

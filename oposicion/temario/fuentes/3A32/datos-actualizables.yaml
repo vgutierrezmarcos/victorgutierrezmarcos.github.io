@@ -1,0 +1,303 @@
+tema: 3A32
+fecha_inventario: 2026-11-11
+datos:
+  - id: brent-2021-2022-usd-eur
+    texto: "Entre enero de 2021 y junio de 2022 el barril de Brent subió un 124~\\% en dólares, pero un 158~\\% en euros"
+    donde: [3A32.tex]
+    valor: [124, 158]
+    unidad: "% de variación (Brent, dólares y euros por barril)"
+    periodo: enero 2021-junio 2022
+    fuente: [EIA2026Brent, BCE2026EXR]
+    organismo: EIA y BCE
+    serie: "RBRTE; EXR.M.USD.EUR.SP00.A"
+    url: https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RBRTE&f=M
+    periodicidad: histórico (fijo salvo revisión)
+    proxima: null
+    familia: eia-brent
+    depende: [datos/energia-tipo-cambio-zona-euro-2019-2026.csv, graficos/energia-tipo-cambio-zona-euro.tex]
+    frase: "Enganche (introducción) y caja «Las cifras de los episodios» (III.2): «en ese periodo el euro se depreció un 13~\\% frente al dólar, y siguió cayendo hasta 0,98 dólares en octubre de 2022, un 19~\\% menos que en enero de 2021»"
+  - id: brent-ultimo
+    texto: "con el conflicto de Oriente Medio, el Brent llegó a 123,9 dólares en octubre, por encima del máximo de 2022"
+    donde: [3A32.tex]
+    valor: 123.9
+    unidad: "dólares por barril (media mensual)"
+    periodo: octubre 2026
+    fuente: EIA2026Brent
+    organismo: U.S. Energy Information Administration
+    serie: RBRTE
+    url: https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RBRTE&f=M
+    periodicidad: mensual
+    proxima: 2026-11-12
+    familia: eia-brent
+    depende: [datos/energia-tipo-cambio-zona-euro-2019-2026.csv, graficos/energia-tipo-cambio-zona-euro.tex]
+    frase: "Enganche: «Y en 2026 la historia se repite» depende de que el Brent siga alto; si baja, cambiar el sentido de la frase y la idea final"
+  - id: iapc-ze-ultimo
+    texto: "la inflación volvió al 4,0~\\%; en octubre la energía se encarece un 20,8~\\% en un año, la inflación está en el 4,0~\\% y la subyacente en el 2,5~\\%"
+    donde: [3A32.tex]
+    valor: [4.0, 20.8, 2.5]
+    unidad: "% interanual (IAPC general, energía y subyacente, zona del euro)"
+    periodo: octubre 2026 (avance)
+    fuente: Eurostat2026IAPCoct
+    organismo: Eurostat
+    serie: "prc_hicp_minr, TOTAL, NRG y TOT_X_NRG_FOOD, EA"
+    url: https://ec.europa.eu/eurostat/web/euro-indicators
+    periodicidad: mensual
+    proxima: 2026-11 (definitivo de octubre a mediados de noviembre)
+    familia: eurostat-iapc
+    depende: []
+    frase: "Enganche e III.2 («3 episodios», 2026). Mismas cifras y clave que 3A36, 3A37 y 3A41"
+  - id: iapc-ze-2022
+    texto: "La inflación tocó techo en el 10,6~\\% en octubre de 2022 y la subyacente, con retraso, en el 5,7~\\% en marzo de 2023; la energía se encareció un 44,3~\\% interanual en marzo"
+    donde: [3A32.tex]
+    valor: [10.6, 5.7, 44.3]
+    unidad: "% interanual (IAPC, zona del euro)"
+    periodo: 2022-2023
+    fuente: Eurostat2026IAPC
+    organismo: Eurostat
+    serie: "prc_hicp_minr"
+    url: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table
+    periodicidad: histórico (revisiones)
+    proxima: null
+    familia: eurostat-iapc
+    depende: []
+    frase: "Enganche (10,6 %) y III.2"
+  - id: iapc-espana-energia-2022
+    texto: "En España la energía llegó a subir un 60,3~\\% en marzo de 2022, pero en octubre solo un 7,9~\\%, frente al 41,5~\\% de la zona del euro"
+    donde: [3A32.tex]
+    valor: [60.3, 7.9, 41.5]
+    unidad: "% interanual (IAPC, energía)"
+    periodo: 2022
+    fuente: Eurostat2026IAPC
+    organismo: Eurostat
+    serie: "prc_hicp_minr, NRG, ES y EA"
+    url: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table
+    periodicidad: histórico
+    proxima: null
+    familia: eurostat-iapc
+    depende: []
+    frase: "Caja «España ante la energía cara de 2022» (III.2)"
+  - id: apertura-espana
+    texto: "en 2025 sus exportaciones de bienes y servicios fueron el 36,5~\\% del PIB y sus importaciones el 32,6~\\%, una apertura del 69~\\%"
+    donde: [3A32.tex]
+    valor: [36.5, 32.6, 69]
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: [INE2026CNA2025, Eurostat2026nama10gdp]
+    organismo: INE y Eurostat
+    serie: "CNA (P6, P7, B1GQ); nama_10_gdp"
+    url: https://www.ine.es/dyngs/Prensa/CNA2025.htm
+    periodicidad: anual (septiembre)
+    proxima: 2027-09
+    familia: ine-cna
+    depende: []
+    frase: "Relevancia (introducción) y I.1 («Con una apertura del 69~\\%»)"
+  - id: dependencia-energetica
+    texto: "importa en términos netos el 69~\\% de la energía que consume, frente al 57~\\% de la UE"
+    donde: [3A32.tex]
+    valor: [68.9, 57.3]
+    unidad: "% (importaciones netas / energía bruta disponible)"
+    periodo: 2024
+    fuente: Eurostat2026nrgindid
+    organismo: Eurostat
+    serie: nrg_ind_id
+    url: https://ec.europa.eu/eurostat/databrowser/view/nrg_ind_id/default/table
+    periodicidad: anual (julio)
+    proxima: 2027-07
+    familia: eurostat-energia
+    depende: []
+    frase: "III.1"
+  - id: traspaso-tipo-cambio
+    texto: "una depreciación del 1~\\% sube los precios de importación un 0,3~\\% en un año, pero el IAPC solo un 0,04~\\%"
+    donde: [3A32.tex]
+    valor: [0.3, 0.04]
+    unidad: "% (respuesta a una depreciación del 1 %)"
+    periodo: estimación publicada en abril de 2020
+    fuente: OrtegaOsbat2020ERPT
+    organismo: BCE
+    serie: "Occasional Paper 241"
+    url: https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op241~c7c3080d60.en.pdf
+    periodicidad: irregular (nuevas estimaciones)
+    proxima: null
+    familia: bce-estudios
+    depende: []
+    frase: "I.2.3"
+  - id: regimenes-fmi
+    texto: "a 30 de abril de 2023, el 44,8~\\% de sus miembros tenía un anclaje blando, el 32,5~\\% flotaba, el 13,4~\\% tenía un anclaje duro y el 9,3~\\% otros regímenes gestionados"
+    donde: [3A32.tex]
+    valor: [44.8, 32.5, 13.4, 9.3]
+    unidad: "% de los miembros del FMI (y territorios)"
+    periodo: 30 de abril de 2023
+    fuente: FMI2024AREAER2023
+    organismo: FMI
+    serie: "AREAER, clasificación de hecho (tabla 3)"
+    url: https://www.elibrary.imf.org/fileasset/downloads/AEIEA2023001-S001.pdf
+    periodicidad: anual (irregular)
+    proxima: null
+    familia: fmi-areaer
+    depende: []
+    frase: "Caja «Los regímenes cambiarios en el mundo» (II.1). No se encontró un AREAER 2024 ni 2025: comprobar a mano"
+  - id: cuenta-corriente-espana
+    texto: "El déficit por cuenta corriente, que llegó al 9,4~\\% del PIB en 2007, dio paso a un superávit desde 2012"
+    donde: [3A32.tex]
+    valor: -9.4
+    unidad: "% del PIB"
+    periodo: 2007-2012
+    fuente: BdE2026BE17
+    organismo: Banco de España
+    serie: "Boletín Estadístico, cap. 17"
+    url: https://www.bde.es/webbe/es/estadisticas/compartido/datos/zip/be17.zip
+    periodicidad: histórico (revisiones anuales)
+    proxima: null
+    familia: bde-balanza-pagos
+    depende: []
+    frase: "II.2. Mismas cifras que el 3.B.11 (enganche y l. 838)"
+  - id: bce-tipos
+    texto: "el BCE ha subido la facilidad de depósito al 2,25~\\% en junio y al 2,50~\\% en septiembre"
+    donde: [3A32.tex]
+    valor: [2.25, 2.50]
+    unidad: "% (facilidad de depósito)"
+    periodo: junio y septiembre de 2026
+    fuente: BCE2026TiposOficiales
+    organismo: BCE
+    serie: "D.U2.EUR.4F.KR.DFR.LEV"
+    url: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html
+    periodicidad: cada reunión de política monetaria
+    proxima: 2026-12
+    familia: bce-tipos
+    depende: []
+    frase: "III.2 («3 episodios», 2026). Si cambian los tipos en diciembre, actualizar"
+  - id: bce-subidas-2022-2023
+    texto: "El BCE subió los tipos por primera vez en 11 años el 21 de julio de 2022 y, en 10 subidas, hasta septiembre de 2023, llevó la facilidad de depósito del $-0{,}50$~\\% al 4~\\%"
+    donde: [3A32.tex]
+    valor: [-0.50, 4.00]
+    unidad: "%"
+    periodo: julio 2022-septiembre 2023
+    fuente: [BCE2022DecisionesJulio, BCE2026TiposOficiales]
+    organismo: BCE
+    serie: "D.U2.EUR.4F.KR.DFR.LEV"
+    url: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html
+    periodicidad: histórico
+    proxima: null
+    familia: bce-tipos
+    depende: []
+    frase: "III.2"
+  - id: pib-2022-2023
+    texto: "La zona del euro pasó de crecer un 3,7~\\% en 2022 a un 0,4~\\% en 2023, y España, del 6,4~\\% al 2,4~\\%"
+    donde: [3A32.tex]
+    valor: [3.7, 0.4, 6.4, 2.4]
+    unidad: "% de variación del PIB real"
+    periodo: 2022-2023
+    fuente: [Eurostat2026nama10gdp, INE2026CNA2025]
+    organismo: Eurostat e INE
+    serie: "nama_10_gdp (CLV_PCH_PRE)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual (revisiones)
+    proxima: 2027-04
+    familia: eurostat-pib
+    depende: []
+    frase: "Caja «Las cifras de los episodios» (III.2)"
+  - id: gas-ttf-2022
+    texto: "el gas europeo costó más de 8 veces lo que en 2019, y en agosto llegó a unos 236 euros por megavatio hora"
+    donde: [3A32.tex]
+    valor: [8.4, 236]
+    unidad: "veces; euros por MWh"
+    periodo: 2019-2022
+    fuente: BancoMundial2026PinkSheet
+    organismo: Banco Mundial
+    serie: "Pink Sheet, Natural gas, Europe"
+    url: https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx
+    periodicidad: histórico
+    proxima: null
+    familia: bm-pinksheet
+    depende: [datos/energia-tipo-cambio-zona-euro-2019-2026.csv]
+    frase: "Caja «Las cifras de los episodios» (III.2)"
+  - id: petroleo-70
+    texto: "el precio del petróleo se multiplicó casi por 4 entre 1973 y 1974 y casi se triplicó entre 1978 y 1980; de 2,8 a 11,0 dólares; de 12,9 a 36,9"
+    donde: [3A32.tex]
+    valor: [2.8, 11.0, 12.9, 36.9]
+    unidad: "dólares por barril (media anual)"
+    periodo: 1973-1980
+    fuente: [BancoMundial2026PinkSheet, Hamilton2011Historical]
+    organismo: Banco Mundial
+    serie: "Pink Sheet anual, Crude oil, average"
+    url: https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Annual.xlsx
+    periodicidad: histórico (revisiones)
+    proxima: null
+    familia: bm-pinksheet
+    depende: [datos/petroleo-1970-2025.csv]
+    frase: "III.2, «3 episodios» y su caja"
+  - id: ocde-70
+    texto: "en la OCDE la inflación llegó al 15,5~\\% en 1974 y al 13,6~\\% en 1980, y el crecimiento cayó al 0,4~\\% en 1975 y al 0,2~\\% en 1982"
+    donde: [3A32.tex]
+    valor: [15.5, 13.6, 0.4, 0.2]
+    unidad: "%"
+    periodo: 1974-1982
+    fuente: BancoMundial2026WDIhist
+    organismo: Banco Mundial
+    serie: "FP.CPI.TOTL.ZG; NY.GDP.MKTP.KD.ZG (OCDE)"
+    url: https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG
+    periodicidad: histórico (revisiones)
+    proxima: null
+    familia: bm-wdi
+    depende: []
+    frase: "Caja «Las cifras de los episodios» (III.2)"
+  - id: espana-70
+    texto: "llegó a una inflación del 28,4~\\% en agosto de 1977 y apenas creció en 1975 (0,5~\\%) y en 1979 (0~\\%)"
+    donde: [3A32.tex]
+    valor: [28.4, 0.5, 0.0]
+    unidad: "%"
+    periodo: 1975-1979
+    fuente: [INE2026IPCSerie, CE2026AMECO]
+    organismo: INE y Comisión Europea
+    serie: "IPC251856; AMECO OVGD"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=76134
+    periodicidad: histórico
+    proxima: null
+    familia: ine-ipc
+    depende: []
+    frase: "Caja «Las cifras de los episodios» (III.2)"
+  - id: excepcion-iberica
+    texto: "40 euros por megavatio hora durante 6 meses y después una senda creciente, hasta 65 euros en diciembre de 2023"
+    donde: [3A32.tex]
+    valor: [40, 65]
+    unidad: "euros por MWh"
+    periodo: junio 2022-diciembre 2023
+    fuente: [BOE2022RDL10, BOE2023RDL3]
+    organismo: BOE
+    serie: "RDL 10/2022 y RDL 3/2023"
+    url: https://www.boe.es/buscar/act.php?id=BOE-A-2022-7843
+    periodicidad: norma (fija)
+    proxima: null
+    familia: boe-normas
+    depende: []
+    frase: "Caja «España ante la energía cara de 2022» (III.2)"
+  - id: ayudas-energia-2022
+    texto: "Las medidas europeas bajaron la inflación de 2022 en 1 o 2 puntos"
+    donde: [3A32.tex]
+    valor: [1, 2]
+    unidad: "puntos porcentuales"
+    periodo: 2022
+    fuente: DaoEtAl2023Unconventional
+    organismo: FMI
+    serie: "documento de trabajo"
+    url: null
+    periodicidad: histórico
+    proxima: null
+    familia: fmi-estudios
+    depende: []
+    frase: "III.2, política fiscal. Mismo dato que el 3A40"
+  - id: csv-energia-tipo-cambio
+    texto: "gráfico «El petróleo en dólares y en euros y el tipo de cambio del euro, 2019-2026»"
+    donde: [3A32.tex, datos/energia-tipo-cambio-zona-euro-2019-2026.csv]
+    valor: null
+    unidad: "dólares y euros por barril; dólares por euro"
+    periodo: enero 2019-octubre 2026
+    fuente: [EIA2026Brent, BCE2026EXR, BancoMundial2026PinkSheet]
+    organismo: EIA, BCE y Banco Mundial
+    serie: "RBRTE; EXR.M.USD.EUR.SP00.A; Pink Sheet (gas); EXR.M.E03.EUR.EN00.A"
+    url: https://data.ecb.europa.eu/data/datasets/EXR
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: eia-brent
+    depende: [graficos/energia-tipo-cambio-zona-euro.tex]
+    frase: "Título del gráfico («2019-2026») y pie («enero de 2019-octubre de 2026»)"

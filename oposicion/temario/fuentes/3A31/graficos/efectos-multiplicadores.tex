@@ -1,0 +1,63 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Efectos inicial, directo, indirecto e inducido de un aumento de la demanda
+% final y los multiplicadores de tipo I (modelo abierto) y II (modelo cerrado
+% con los hogares). Idea de la figura del original (efecto inicial -> directo
+% -> indirecto -> inducido), redibujada en cadena con la notación del tema
+% (d, efecto inicial; A d, directo; A^2 d..., indirectos). Las llaves empiezan
+% en el efecto inicial porque el multiplicador (2 en la industria) lo incluye.
+% Números del ejemplo del tema. Elaboración propia a partir de Miller y Blair
+% (2022, cap. 6).
+\begin{tikzpicture}[tcee,
+  caja/.style={draw=#1, fill=#1!8, rounded corners=2pt, line width=0.8pt,
+    text width=3.1cm, align=center, minimum height=2.35cm, inner sep=4pt},
+  sig/.style={-{Stealth[length=2mm]}, thick, tceegris!80!black},
+  llave/.style={decorate, decoration={brace, amplitude=6pt}, thick, #1},
+  ]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.3,-2.35) rectangle (13.6,2.75);
+  % 1: el aumento de la demanda final (efecto inicial)
+  \capa{1}{
+    \node[circle, draw=tceerojo, fill=tceerojo!8, line width=0.8pt,
+      text width=2.05cm, align=center, inner sep=1pt, font=\footnotesize] (d) at (0,0)
+      {Aumento de la demanda final\\ (efecto inicial)\\ $\Delta\vect{d}$};
+  }
+  % 2: efecto directo
+  \capa{2}{
+    \node[caja=tceemorado, anchor=west] (dir) at (1.85,0)
+      {\textbf{Efecto directo}\\[2pt] \footnotesize los inputs que pide la rama que recibe la demanda\\ ($A\,\Delta\vect{d}$)};
+    \draw[sig] (d) -- (dir);
+  }
+  % 3: efecto indirecto
+  \capa{3}{
+    \node[caja=tceeazul, anchor=west] (ind) at (5.95,0)
+      {\textbf{Efecto indirecto}\\[2pt] \footnotesize los inputs de esos inputs: proveedores de los proveedores\\ ($A^2\Delta\vect{d}$, $A^3\Delta\vect{d}$\ldots)};
+    \draw[sig] (dir) -- (ind);
+  }
+  % 4: llave del multiplicador de tipo I
+  \capa{4}{
+    \draw[llave=tceemorado] (-1.15,1.45) -- (9.4,1.45)
+      node[midway, above=7pt, text=tceemorado, font=\small\bfseries] {Multiplicador de tipo I};
+  }
+  % 5: efecto inducido
+  \capa{5}{
+    \node[caja=tceeverde, anchor=west] (indu) at (10.05,0)
+      {\textbf{Efecto inducido}\\[2pt] \footnotesize el gasto de las rentas generadas (modelo cerrado con los hogares)};
+    \draw[sig] (ind) -- (indu);
+  }
+  % 6: llave del multiplicador de tipo II
+  \capa{6}{
+    \draw[llave=tceeverde!70!black] (-1.15,2.25) -- (13.5,2.25)
+      node[midway, above=7pt, text=tceeverde!70!black, font=\small\bfseries] {Multiplicador de tipo II};
+  }
+  % 7: números del ejemplo
+  \capa{7}{
+    \node[anchor=north, font=\footnotesize, align=center] at (4.15,-1.5)
+      {En el ejemplo, \textbf{\textcolor{tceemorado}{tipo I}} (inicial $+$ directo $+$ indirecto):\\ industria $2$; servicios $1{,}5$};
+    \node[anchor=north, font=\footnotesize, align=center] at (11.6,-1.5)
+      {\textbf{\textcolor{tceeverde!70!black}{Tipo II}} ($+$ inducido):\\ industria $3{,}4$; servicios $3{,}1$};
+  }
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,77 @@
+% Una perturbación de oferta adversa y una política de oferta en una economía
+% abierta. Mismos estilos, colores y base que da-oa-abierta (y que da-oa del
+% 3.A.5): DA en morado, OA de corto plazo en azul, OA de largo plazo en verde;
+% lo desplazado, discontinuo (la DA', en rojo).
+%   Base: Y^n = 7; DA: Y = 11/3 + 14/(P + 2); OA_CP: P = Y - 4,8; A = (7; 2,2)
+%   a) Encarecimiento de la energía importada: OA_CP': P = Y - 3;
+%      OA_LP' en Y^n' = 6,4; DA' = DA - 0,5; B = (5,979; 2,979)
+%      ((Y - 3,1667)(Y - 1) = 14)
+%   b) Política de oferta: OA_CP'': P = Y - 6,3; OA_LP'' en Y^n'' = 8,5;
+%      B = (7,738; 1,438) sobre la DA ((Y - 3,6667)(Y - 4,3) = 14) y
+%      C = (8,5; 0,897) (14/4,8333 - 2). Desplazamiento algo mayor que el
+%      pedido (P = Y - 5,8 e Y = 8) para que A, B y C se lean por separado.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,y=0.6cm,
+    declare function={da(\p)=11/3+14/(\p+2);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.2,-2.6) rectangle (31.4,9.9);
+  % 1: ejes de los 2 paneles y títulos
+  \capa{1}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \capa{1}{\node[anchor=base west, font=\small\bfseries] at (-1.2,9.0) {a) Encarecimiento de la energía importada};}
+  \begin{scope}[xshift=10.2cm]
+  \capa{1}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \capa{1}{\node[anchor=base west, font=\small\bfseries] at (-1.2,9.0) {b) Política de oferta};}
+  \end{scope}
+  % ------------------------------------------------------------ panel a
+  % 2: OA de largo plazo, DA, OA de corto plazo y punto A
+  \capa{2}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, anchor=south west, xshift=-4pt, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \capa{2}{\draw[curva1] plot[domain=6.2:0.6, samples=60, smooth] ({da(\x)},\x)
+      node[etiqueta, right, text=tceemorado] {DA};}
+  \capa{2}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}$};}
+  \capa{2}{\draw[guia] (7,2.2) -- (0,2.2) node[left, text=black] {$P_0$};}
+  \capa{2}{\node[punto] (aA) at (7,2.2) {};}
+  \capa{2}{\node[etiqueta, right=3pt] at (aA) {$A$};}
+  % 3: la energía importada encarece producir: la OA de corto plazo sube
+  \capa{3}{\draw[curva2, desplazada] (3.5,0.5) -- (9.4,6.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}'$};}
+  % 4: la cuña exterior sube la NAIRU: la OA de largo plazo, a la izquierda
+  \capa{4}{\draw[curva3, desplazada] (6.4,0) -- (6.4,7.6) node[etiqueta, anchor=south east, xshift=4pt, text=tceeverde] {OA$_{\mathrm{LP}}'$};}
+  \capa{4}{\node[below=11pt, text=black] at (6.4,0) {$Y^{n\prime}$};}
+  % 5: empeora la relación real de intercambio: la DA cae algo
+  \capa{5}{\draw[curvanueva, desplazada] plot[domain=6.2:0.6, samples=60, smooth] ({da(\x)-0.5},\x);}
+  \capa{5}{\node[etiqueta, left, text=tceerojo] at ({da(6.2)-0.5},6.2) {DA$'$};}
+  % 6: B: menos producción y más precios
+  \capa{6}{\draw[guia] (5.979,0) node[below, text=black] {$Y_1$} |- (0,2.979) node[left, text=black] {$P_1$};}
+  \capa{6}{\node[punto] (aB) at (5.979,2.979) {};}
+  \capa{6}{\node[etiqueta, left=3pt] at (aB) {$B$};}
+  \capa{6}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize] at (0.3,7.6)
+      {estanflación:\\$Y\downarrow$, $P\uparrow$};}
+  % ------------------------------------------------------------ panel b
+  \begin{scope}[xshift=10.2cm]
+  % 7: la misma base: OA de largo plazo, DA, OA de corto plazo y A
+  \capa{7}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, anchor=south east, xshift=4pt, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \capa{7}{\draw[curva1] plot[domain=6.2:0.45, samples=60, smooth] ({da(\x)},\x)
+      node[etiqueta, right, text=tceemorado] {DA};}
+  \capa{7}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}$};}
+  \capa{7}{\draw[guia] (7,2.2) -- (0,2.2) node[left, text=black] {$P_0$};}
+  \capa{7}{\node[punto] (bA) at (7,2.2) {};}
+  \capa{7}{\node[etiqueta] at (7.32,3.25) {$A$};}
+  % 8: la política de oferta baja la OA de corto plazo: B, a corto plazo
+  \capa{8}{\draw[curva2, desplazada] (6.8,0.5) -- (10.8,4.5) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}''$};}
+  \capa{8}{\draw[guia] (7.738,0) node[below=11pt, text=black] {$Y_1$} |- (0,1.438) node[left, text=black] {$P_1$};}
+  \capa{8}{\node[punto] (bB) at (7.738,1.438) {};}
+  \capa{8}{\node[etiqueta, left=2pt] at (bB) {$B$};}
+  % 9: y desplaza a la derecha la de largo plazo: C, a medio plazo
+  \capa{9}{\draw[curva3, desplazada] (8.5,0) -- (8.5,7.6) node[etiqueta, anchor=south west, xshift=-4pt, text=tceeverde] {OA$_{\mathrm{LP}}''$};}
+  \capa{9}{\draw[guia] (8.5,0) node[below, text=black] {$Y^{n\prime\prime}$} -- (8.5,0.897);}
+  \capa{9}{\draw[guia] (8.5,0.897) -- (0,0.897) node[left, text=black] {$P_2$};}
+  \capa{9}{\node[punto] (bC) at (8.5,0.897) {};}
+  \capa{9}{\node[etiqueta, above right=0pt and 1pt] at (bC) {$C$};}
+  % 10: más producción, precios más bajos y un tipo real más depreciado
+  \capa{10}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize] at (0.3,7.6)
+      {$Y\uparrow$, $P\downarrow$, $q\uparrow$:\\depreciación real};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

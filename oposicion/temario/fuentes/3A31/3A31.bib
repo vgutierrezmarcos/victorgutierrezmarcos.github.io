@@ -1,0 +1,765 @@
+% 3A31.bib — Análisis de las tablas «input-output» (3.A.31). Revisión del 11/11/2026.
+
+
+% ---------------------------------------------------------------- INE
+
+@online{INE2025TIO2022, % NUEVA
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Contabilidad Nacional Anual de España: Tablas Input-Output. Revisión Estadística 2024. Año 2022},
+  note    = {Nota de prensa de 19 de diciembre de 2025},
+  year    = {2025},
+  url     = {https://www.ine.es/dyngs/Prensa/TIO2022.htm},
+  urldate = {2026-11-05}
+}
+% Leído: TIO 2022 publicada el 19/12/2025 con la serie 2016-2020 en la misma base; «En diciembre de
+% 2026, junto a la publicación de las TIO definitivas de 2023, se difundirán las TIO provisionales de
+% 2024»; transmisión quinquenal según el Reglamento 549/2013 y publicación anual por el INE «desde el
+% año 2021»; supuestos de tecnología de producto y de rama; coque y refino: 87,6 % de sus consumos
+% intermedios importados; metalurgia 49,5 %; química 45,3 %; automóvil 37,0 %; electricidad y gas
+% 39,1 %; sanidad 26,8 %; 61,8 % de las importaciones a consumos intermedios y 19,0 % al consumo de
+% los hogares (todas reproducidas con el fichero de datos, salvo el 8,5 % de activos fijos, que no cuadra).
+
+@online{INE2025TIODatos, % NUEVA
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Contabilidad Nacional Anual de España: Tablas Input-Output 2022 (tablas 1-8: tabla a precios básicos, producción interior, importaciones, coeficientes técnicos y matrices inversas)},
+  note    = {Revisión Estadística 2024; fichero cne\_tio\_22.xlsx publicado el 19 de diciembre de 2025; 65 productos (64 de la CPA más el alquiler imputado)},
+  year    = {2025},
+  url     = {https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177058&menu=resultados&idp=1254735576581},
+  urldate = {2026-11-05}
+}
+% Fichero directo: https://www.ine.es/daco/daco42/cne24/cne_tio_22.xlsx
+
+@online{INE2026TOD, % NUEVA
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Contabilidad Nacional Anual de España: Tablas de Origen y Destino. Revisión Estadística 2024. Años 2023 y 2024 (avance)},
+  note    = {TOD 2023 publicadas el 30 de septiembre de 2026 (110 productos por 81 ramas); avance de 2024 publicado el 29 de octubre de 2026 (64 ramas)},
+  year    = {2026},
+  url     = {https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177059&menu=resultados&idp=1254735576581},
+  urldate = {2026-11-05}
+}
+% Ficheros: https://www.ine.es/daco/daco42/cne24/cne_tod_23.xlsx y .../cne_tod_24.xlsx
+
+@online{INE2026Calendario, % NUEVA
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Calendario de disponibilidad de estadísticas del INE 2026},
+  note    = {Última actualización: 30 de octubre de 2026. Tablas Input-Output, año 2023: 15 de diciembre de 2026},
+  year    = {2026},
+  url     = {https://www.ine.es/dynt3/Calendario/calenHTML.htm},
+  urldate = {2026-11-05}
+}
+
+@online{INE2026CNA2025, % REUTILIZADA 3A09 y 3A33
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Contabilidad Nacional Anual de España: principales agregados. Revisión Estadística 2024. Años 2023-2025. Nota de prensa},
+  year    = {2026},
+  date    = {2026-09-18},
+  url     = {https://www.ine.es/dyngs/Prensa/CNA2025.htm},
+  urldate = {2026-10-13}
+}
+
+@online{INE2026CNTRDemanda, % REUTILIZADA 3A08
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Contabilidad Nacional Trimestral de España: principales agregados. PIB pm. Demanda (precios corrientes) (tabla 67823)},
+  year    = {2026},
+  url     = {https://www.ine.es/jaxiT3/Tabla.htm?t=67823},
+  urldate = {2026-10-10}
+}
+% Comprobado otra vez el 05/11/2026 por la API (servicios.ine.es/wstempus/js/ES/DATOS_TABLA/67823):
+% suma de 2025 igual a la de Eurostat. Las tablas de oferta y rentas son la 67821 y la 67825
+% (clave INE2026CNTR del 3.A.11 para la 67825).
+
+@online{INE2026CNTR, % REUTILIZADA 3A11
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Contabilidad Nacional Trimestral de España: principales agregados. PIB pm Rentas (precios corrientes)},
+  year    = {2026},
+  url     = {https://www.ine.es/jaxiT3/Tabla.htm?t=67825},
+  urldate = {2026-10-13}
+}
+
+% ---------------------------------------------------------------- Eurostat
+
+@online{Eurostat2026nama10gdp, % REUTILIZADA 1D01
+  author  = {{Eurostat}},
+  title   = {GDP and main components (output, expenditure and income) [nama\_10\_gdp]},
+  note    = {Actualizada el 22 de octubre de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table},
+  urldate = {2026-10-23}
+}
+
+@online{Eurostat2026FIGAROcgv, % NUEVA
+  author  = {{Eurostat}},
+  title   = {Global value chain participation -- EU country perspective (FIGARO application) [naio\_10\_fggvcm]},
+  note    = {Edición FIGARO 2026, años 2010-2024; actualizada el 20 de julio de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/naio_10_fggvcm/default/table},
+  urldate = {2026-11-05}
+}
+
+@online{Eurostat2026FIGAROcgvUE, % NUEVA
+  author  = {{Eurostat}},
+  title   = {Global value chain participation -- EU perspective (FIGARO application) [naio\_10\_fggvce]},
+  note    = {Edición FIGARO 2026, años 2010-2024; actualizada el 20 de julio de 2026},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/databrowser/view/naio_10_fggvce/default/table},
+  urldate = {2026-11-05}
+}
+
+@online{Eurostat2026FIGARO, % NUEVA
+  author  = {{Eurostat}},
+  title   = {EU inter-country supply, use and input-output tables (FIGARO): database},
+  note    = {Edición 2026: tablas de 2010 a 2024, 64 ramas (NACE Rev. 2) y 64 productos (CPA 2.1), e indicadores de globalización},
+  year    = {2026},
+  url     = {https://ec.europa.eu/eurostat/web/esa-supply-use-input-tables/database},
+  urldate = {2026-11-05}
+}
+
+@book{Eurostat2008Manual, % NUEVA (enlace del original, comprobado)
+  author    = {{Eurostat}},
+  title     = {Eurostat Manual of Supply, Use and Input-Output Tables},
+  series    = {Methodologies and Working Papers},
+  number    = {KS-RA-07-013},
+  publisher = {Oficina de Publicaciones Oficiales de las Comunidades Europeas},
+  location  = {Luxemburgo},
+  year      = {2008},
+  url       = {https://ec.europa.eu/eurostat/documents/3859598/5902113/KS-RA-07-013-EN.PDF/b0b3d71e-3930-4442-94be-70b36cea9b39},
+  urldate   = {2026-11-05}
+}
+
+@book{Eurostat2013SEC2010, % NUEVA (enlace del original, comprobado)
+  author    = {{Eurostat}},
+  title     = {European System of Accounts: ESA 2010},
+  number    = {KS-02-13-269},
+  publisher = {Oficina de Publicaciones de la Unión Europea},
+  location  = {Luxemburgo},
+  year      = {2013},
+  url       = {https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF/44cd9d01-bc64-40e5-bd40-d17df0c69334},
+  urldate   = {2026-11-05}
+}
+% Leído: cap. 9 «Supply and use tables and the input-output framework» (9.02: el núcleo son las
+% tablas de origen y destino; las simétricas «se derivan… usando supuestos o datos adicionales»);
+% 2.150 rama de actividad = grupo de UAE locales; 2.153-2.156 unidad de producción homogénea y rama
+% homogénea («cannot usually be observed directly»).
+
+@legislation{SEC2010, % REUTILIZADA 1D01 y 3A39
+  author      = {{Parlamento Europeo y Consejo de la Unión Europea}},
+  title       = {Reglamento (UE) n.º 549/2013, de 21 de mayo de 2013, relativo al Sistema Europeo de Cuentas Nacionales y Regionales de la Unión Europea (SEC 2010)},
+  journaltitle= {Diario Oficial de la Unión Europea},
+  number      = {L 174},
+  date        = {2013-06-26},
+  url         = {https://eur-lex.europa.eu/eli/reg/2013/549/oj},
+  urldate     = {2026-10-23}
+}
+
+% ---------------------------------------------------------------- OCDE, ONU, FMI
+
+@online{OCDE2025TiVA, % NUEVA
+  author  = {{OCDE}},
+  title   = {Trade in Value Added (TiVA) 2025 edition: Principal Indicators},
+  note    = {Inter-Country Input-Output Tables 2025: 81 economías y 50 actividades, 1995-2022. Indicadores EXGR\_FVA y FEXGR\_DVA (\% de las exportaciones brutas)},
+  year    = {2025},
+  url     = {https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_TIVA_MAINSH%40DF_MAINSH&df[ag]=OECD.STI.PIE},
+  urldate = {2026-11-05}
+}
+% API usada: https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_MAINSH@DF_MAINSH,1.1/EXGR_FVA.._T.W..A
+% La clave OCDE2023TiVA (3.B.11, 1D01) es la edición anterior: no usarla para datos de 2022.
+
+@book{ONU2018ManualTOD, % NUEVA (enlace del original, comprobado)
+  author    = {{Naciones Unidas}},
+  title     = {Handbook on Supply and Use Tables and Input-Output Tables with Extensions and Applications},
+  series    = {Studies in Methods, Handbook of National Accounting},
+  number    = {Series F, n.º 74, Rev. 1},
+  publisher = {Naciones Unidas},
+  location  = {Nueva York},
+  year      = {2018},
+  url       = {https://unstats.un.org/unsd/nationalaccount/docs/SUT_IOT_HB_Final_Cover.pdf},
+  urldate   = {2026-11-05}
+}
+% Recuadro 2.5 «Three approaches to measuring GDP» con datos de Austria de 2011 (pág. 64 del PDF):
+% es la imagen image12 del original.
+
+@book{ONU2025SCN, % NUEVA
+  author    = {{Naciones Unidas} and {Comisión Europea} and {Fondo Monetario Internacional} and {OCDE} and {Banco Mundial}},
+  title     = {System of National Accounts 2025},
+  note      = {Versión previa a la edición (\emph{pre-edit}); adoptado por la Comisión de Estadística de las Naciones Unidas en su 56.º periodo de sesiones (4-7 de marzo de 2025)},
+  publisher = {Naciones Unidas},
+  location  = {Nueva York},
+  year      = {2025},
+  url       = {https://unstats.un.org/unsd/nationalaccount/docs/2025_SNA_Pre-edit.pdf},
+  urldate   = {2026-11-05}
+}
+% Leído: cap. 15 «Supply and use tables», cap. 23 «Globalization», cap. 36 «Input-output tables»
+% (3.169-3.170); resumen: «The development of extended supply and use tables and estimates on trade
+% in value added, as supplementary information, is encouraged»; «The compilation of thematic digital
+% supply and use tables is encouraged»; los datos pasan a ser activo fijo producido.
+
+@online{FMI2025MBP7, % REUTILIZADA 1D01 y 3B11
+  author  = {{Fondo Monetario Internacional}},
+  title   = {IMF and Statistical Community Release New Global Standards for Macroeconomic Statistics},
+  note    = {Nota de prensa 25/072, 20 de marzo de 2025 (séptima edición del Manual de Balanza de Pagos y Posición de Inversión Internacional)},
+  year    = {2025},
+  url     = {https://www.imf.org/en/news/articles/2025/03/20/pr25072-imf-and-statistical-community-release-new-global-standards-for-macroeconomic-stats},
+  urldate = {2026-10-23}
+}
+
+@online{BCE2026CalidadBP, % REUTILIZADA 3B11
+  author  = {{Banco Central Europeo}},
+  title   = {Euro area and national balance of payments and international investment position statistics. Quality Report (data to Q2 2025)},
+  year    = {2026},
+  url     = {https://www.ecb.europa.eu/press/bopips/html/ecb.bopips202606.en.html},
+  urldate = {2026-11-05}
+}
+% Leído en el 3.B.11: aplicación del SEC/SCN 2025 y del MBP7 «en Europa para finales de la década».
+
+% ---------------------------------------------------------------- Nobel e historia
+
+@online{Nobel1973Leontief, % NUEVA
+  author  = {{Nobel Prize Outreach}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1973: Wassily Leontief},
+  year    = {1973},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1973/summary/},
+  urldate = {2026-11-05}
+}
+% Motivación: «for the development of the input-output method and for its application to important
+% economic problems». Autobiografía (…/1973/leontief/biographical/): NBER en 1931, Harvard en 1932;
+% beca para las primeras tablas (1919 y 1929) en 1932; Structure of American Economy en 1941.
+
+@online{Nobel1971Kuznets, % REUTILIZADA 3A33 y 3B11
+  author  = {{Nobel Prize Outreach}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1971: Simon Kuznets},
+  year    = {1971},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1971/summary/},
+  urldate = {2026-10-31}
+}
+
+@online{Nobel1984Stone, % REUTILIZADA 3B11
+  author  = {{Nobel Prize Outreach}},
+  title   = {The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1984: Richard Stone},
+  year    = {1984},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1984/summary/},
+  urldate = {2026-11-05}
+}
+% Autobiografía de Stone (…/1984/stone/biographical/): en el verano de 1940, al Central Economic
+% Information Service de las Oficinas del Gabinete de Guerra, con Meade; estimaciones de la renta
+% nacional publicadas con el presupuesto de 1941; en el servicio público hasta el final de la guerra.
+
+@online{Nobel1977Meade, % NUEVA
+  author  = {{Nobel Prize Outreach}},
+  title   = {James E. Meade -- Biographical},
+  year    = {1977},
+  url     = {https://www.nobelprize.org/prizes/economic-sciences/1977/meade/biographical/},
+  urldate = {2026-11-05}
+}
+% «Economic Section of the War Cabinet Secretariat… till 1947, becoming Director in 1946»; «in 1940
+% and 1941, Richard Stone and I prepared the first official estimates of the UK national income…
+% the first true double-entry social accounts».
+
+@article{Leontief1936Quantitative, % REUTILIZADA 3A11 (título corregido: «Systems», según Crossref)
+  author       = {Leontief, Wassily W.},
+  title        = {Quantitative Input and Output Relations in the Economic Systems of the United States},
+  journaltitle = {The Review of Economic Statistics},
+  volume       = {18},
+  number       = {3},
+  year         = {1936},
+  pages        = {105--125},
+  doi          = {10.2307/1927837}
+}
+
+@book{Leontief1941, % REUTILIZADA 3A43
+  author    = {Leontief, Wassily W.},
+  title     = {The Structure of American Economy, 1919-1929},
+  publisher = {Harvard University Press},
+  address   = {Cambridge (Massachusetts)},
+  year      = {1941}
+}
+
+@article{Leontief1951Input, % NUEVA (Crossref)
+  author       = {Leontief, Wassily W.},
+  title        = {Input-Output Economics},
+  journaltitle = {Scientific American},
+  volume       = {185},
+  number       = {4},
+  year         = {1951},
+  pages        = {15--21},
+  doi          = {10.1038/scientificamerican1051-15}
+}
+
+@article{Clapham1922Empty, % NUEVA (Crossref da la pág. inicial 305; la final, 314, no comprobada)
+  author       = {Clapham, John H.},
+  title        = {Of Empty Economic Boxes},
+  journaltitle = {The Economic Journal},
+  volume       = {32},
+  number       = {127},
+  year         = {1922},
+  pages        = {305--314},
+  doi          = {10.2307/2222943}
+}
+
+@article{Leontief1971Theoretical, % REUTILIZADA 3A01
+  author       = {Leontief, Wassily W.},
+  title        = {Theoretical Assumptions and Nonobserved Facts},
+  journaltitle = {American Economic Review},
+  volume       = {61},
+  number       = {1},
+  year         = {1971},
+  pages        = {1--7}
+}
+
+@article{Kohli2001Leontief, % NUEVA (datos del Monthly Labor Review; texto no leído entero: ver propuestas V12)
+  author       = {Kohli, Martin C.},
+  title        = {The Leontief-BLS Partnership: A New Framework for Measurement},
+  journaltitle = {Monthly Labor Review},
+  volume       = {124},
+  number       = {6},
+  year         = {2001},
+  pages        = {29--37},
+  url          = {https://www.bls.gov/opub/mlr/2001/06/art3full.pdf},
+  urldate      = {2026-11-05}
+}
+
+@book{Quesnay1758Tableau, % REUTILIZADA 3A02
+  author    = {Quesnay, François},
+  title     = {Tableau économique},
+  address   = {Versalles},
+  year      = {1758},
+  note      = {Primera versión manuscrita (1758); versiones impresas de 1759}
+}
+
+@book{Schumpeter1954History, % REUTILIZADA 3A01 y 3A02
+  author    = {Schumpeter, Joseph A.},
+  title     = {History of Economic Analysis},
+  publisher = {Oxford University Press},
+  address   = {Nueva York},
+  year      = {1954}
+}
+
+@book{Hirschman1958, % REUTILIZADA 3B28
+  author    = {Hirschman, Albert O.},
+  title     = {The Strategy of Economic Development},
+  year      = {1958},
+  publisher = {Yale University Press},
+  location  = {New Haven}
+}
+
+@book{Lacey2011, % REUTILIZADA 3B11 (solo reseñas leídas)
+  author    = {Lacey, Jim},
+  title     = {Keep From All Thoughtful Men: How {U.S.} Economists Won World War {II}},
+  publisher = {Naval Institute Press},
+  location  = {Annapolis},
+  year      = {2011}
+}
+
+@incollection{Matloff1960Gamble, % NUEVA (leído en la copia de la Universidad de Gotinga)
+  author    = {Matloff, Maurice},
+  title     = {The 90-Division Gamble},
+  booktitle = {Command Decisions},
+  editor    = {Greenfield, Kent Roberts},
+  publisher = {Office of the Chief of Military History, United States Army},
+  location  = {Washington},
+  year      = {1960},
+  chapter   = {15},
+  note      = {El capítulo empieza en la pág. 365},
+  url       = {https://webdoc.sub.gwdg.de/ebook/p/2005/CMH_2/www.army.mil/cmh-pg/books/70-7/70-7_15.htm},
+  urldate   = {2026-11-05}
+}
+% Leído: a finales de 1942 el Estado Mayor Conjunto rebajó los planes de aprovisionamiento de 1943
+% «in response to a War Production Board recommendation»; la decisión de quedarse en 90 divisiones,
+% ratificada en mayo de 1944, fue «a compound of necessity and choice». Página final: no comprobada.
+
+@book{AlcaideEtAl1958Estructura, % NUEVA (catálogos bibliotecarios; libro no consultado)
+  author    = {Alcaide Inchausti, Ángel and others},
+  title     = {La estructura de la economía española: tabla «input-output»},
+  publisher = {Instituto de Estudios Políticos},
+  location  = {Madrid},
+  year      = {1958},
+  note      = {Tabla de 1954; trabajo dirigido por Valentín Andrés Álvarez}
+}
+
+@book{MunozCidadEtAl2020, % NUEVA (catálogos de la UNAV y de la UGR)
+  author    = {Muñoz Cidad, Cándido and Iráizoz Apezteguía, Belén and Rapún Gárate, Manuel},
+  title     = {Introducción a la economía aplicada: magnitudes y cuentas económicas},
+  edition   = {6},
+  publisher = {Civitas Thomson Reuters},
+  location  = {Cizur Menor (Navarra)},
+  year      = {2020},
+  isbn      = {978-84-1308-987-4}
+}
+
+% ---------------------------------------------------------------- Eslabonamientos y CGV (Crossref)
+
+@book{Rasmussen1956Studies, % NUEVA (datos estándar; no en Crossref)
+  author    = {Rasmussen, P. Nørregaard},
+  title     = {Studies in Inter-Sectoral Relations},
+  publisher = {Einar Harcks Forlag},
+  location  = {Copenhague},
+  year      = {1956}
+}
+
+@article{CheneryWatanabe1958, % NUEVA (Crossref)
+  author       = {Chenery, Hollis B. and Watanabe, Tsunehiko},
+  title        = {International Comparisons of the Structure of Production},
+  journaltitle = {Econometrica},
+  volume       = {26},
+  number       = {4},
+  year         = {1958},
+  pages        = {487--521},
+  doi          = {10.2307/1907514}
+}
+
+@article{Ghosh1958Input, % NUEVA (Crossref)
+  author       = {Ghosh, Ambica},
+  title        = {Input-Output Approach in an Allocation System},
+  journaltitle = {Economica},
+  volume       = {25},
+  number       = {97},
+  year         = {1958},
+  pages        = {58--64},
+  doi          = {10.2307/2550694}
+}
+
+@article{Streit1969Spatial, % NUEVA (Crossref; el registro escribe «Strcit»)
+  author       = {Streit, Marian E.},
+  title        = {Spatial Associations and Economic Linkages between Industries},
+  journaltitle = {Journal of Regional Science},
+  volume       = {9},
+  number       = {2},
+  year         = {1969},
+  pages        = {177--188},
+  doi          = {10.1111/j.1467-9787.1969.tb01332.x}
+}
+
+@article{HawkinsSimon1949, % NUEVA (Crossref da la pág. inicial 245; la final, 248, no comprobada)
+  author       = {Hawkins, David and Simon, Herbert A.},
+  title        = {Note: Some Conditions of Macroeconomic Stability},
+  journaltitle = {Econometrica},
+  volume       = {17},
+  number       = {3/4},
+  year         = {1949},
+  pages        = {245--248},
+  doi          = {10.2307/1905526}
+}
+
+@article{JohnsonNoguera2012, % NUEVA (Crossref)
+  author       = {Johnson, Robert C. and Noguera, Guillermo},
+  title        = {Accounting for Intermediates: Production Sharing and Trade in Value Added},
+  journaltitle = {Journal of International Economics},
+  volume       = {86},
+  number       = {2},
+  year         = {2012},
+  pages        = {224--236},
+  doi          = {10.1016/j.jinteco.2011.10.003}
+}
+
+@article{KoopmanWangWei2014, % NUEVA (Crossref)
+  author       = {Koopman, Robert and Wang, Zhi and Wei, Shang-Jin},
+  title        = {Tracing Value-Added and Double Counting in Gross Exports},
+  journaltitle = {American Economic Review},
+  volume       = {104},
+  number       = {2},
+  year         = {2014},
+  pages        = {459--494},
+  doi          = {10.1257/aer.104.2.459}
+}
+
+% ---------------------------------------------------------------- Claves de otros temas revisados
+
+% REUTILIZADA 3A03
+@book{Walras1874Elements,
+  author    = {Walras, Léon},
+  title     = {Éléments d'économie politique pure, ou théorie de la richesse sociale},
+  publisher = {Corbaz},
+  address   = {Lausana},
+  year      = {1874},
+  note      = {Publicado en dos entregas (1874 y 1877)},
+  url       = {https://books.google.com.ec/books?id=3TpBAAAAIAAJ},
+  urldate   = {2026-11-09}
+}
+
+% REUTILIZADA 1D01
+@book{Keynes1936,
+  author    = {Keynes, John Maynard},
+  title     = {The General Theory of Employment, Interest and Money},
+  publisher = {Macmillan},
+  address   = {Londres},
+  year      = {1936}
+}
+
+% REUTILIZADA 3A01
+@article{AcemogluEtAl2012Network,
+  author       = {Acemoglu, Daron and Carvalho, Vasco M. and Ozdaglar, Asuman and Tahbaz-Salehi, Alireza},
+  title        = {The Network Origins of Aggregate Fluctuations},
+  journaltitle = {Econometrica},
+  volume       = {80},
+  number       = {5},
+  year         = {2012},
+  pages        = {1977--2016}
+}
+
+% REUTILIZADA 3A06
+@article{LongPlosser1983Real,
+  author       = {Long, John B. and Plosser, Charles I.},
+  title        = {Real Business Cycles},
+  journaltitle = {Journal of Political Economy},
+  volume       = {91},
+  number       = {1},
+  year         = {1983},
+  pages        = {39--69},
+  doi          = {10.1086/261128}
+}
+
+% REUTILIZADA 3B28
+@book{Nurkse1953,
+  author    = {Nurkse, Ragnar},
+  title     = {Problems of Capital Formation in Underdeveloped Countries},
+  year      = {1953},
+  publisher = {Basil Blackwell},
+  location  = {Oxford}
+}
+
+% REUTILIZADA 3A43
+@article{RosensteinRodan1943Problems,
+  author       = {Rosenstein-Rodan, Paul N.},
+  title        = {Problems of Industrialisation of Eastern and South-Eastern Europe},
+  journaltitle = {The Economic Journal},
+  volume       = {53},
+  number       = {210/211},
+  pages        = {202--211},
+  year         = {1943},
+  doi          = {10.2307/2226317}
+}
+
+% REUTILIZADA 3A01
+@article{Mises1920Wirtschaftsrechnung,
+  author       = {von Mises, Ludwig},
+  title        = {Die Wirtschaftsrechnung im sozialistischen Gemeinwesen},
+  journaltitle = {Archiv für Sozialwissenschaft und Sozialpolitik},
+  volume       = {47},
+  year         = {1920},
+  pages        = {86--121}
+}
+
+% REUTILIZADA 3A01
+@article{Hayek1945Use,
+  author       = {Hayek, Friedrich A.},
+  title        = {The Use of Knowledge in Society},
+  journaltitle = {American Economic Review},
+  volume       = {35},
+  number       = {4},
+  year         = {1945},
+  pages        = {519--530}
+}
+
+% REUTILIZADA 3A01
+@article{Lange1936Socialism,
+  author       = {Lange, Oskar},
+  title        = {On the Economic Theory of Socialism: Part One},
+  journaltitle = {Review of Economic Studies},
+  volume       = {4},
+  number       = {1},
+  year         = {1936},
+  pages        = {53--71},
+  addendum     = {Segunda parte: \emph{Review of Economic Studies}, 4(2), 1937, págs. 123-142}
+}
+
+% REUTILIZADA 3A03
+@article{Barone1908Ministro,
+  author       = {Barone, Enrico},
+  title        = {Il Ministro della Produzione nello Stato Collettivista},
+  journaltitle = {Giornale degli Economisti},
+  year         = {1908}
+}
+
+% REUTILIZADA 3A41
+@report{ArceEtAl2024What,
+  author      = {Arce, Óscar and Ciccarelli, Matteo and Kornprobst, Antoine and Montes-Galdón, Carlos},
+  title       = {What Caused the Euro Area Post-Pandemic Inflation? An Application of Bernanke and Blanchard (2023)},
+  type        = {ECB Occasional Paper Series},
+  number      = {343},
+  institution = {Banco Central Europeo},
+  year        = {2024},
+  doi         = {10.2866/361869},
+  url         = {https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op343~ab3e870d21.en.pdf},
+  urldate     = {2026-11-05}
+}
+
+% REUTILIZADA 3B05
+@article{Leontief1953Domestic,
+  author       = {Leontief, Wassily W.},
+  title        = {Domestic Production and Foreign Trade: The American Capital Position Re-Examined},
+  journaltitle = {Proceedings of the American Philosophical Society},
+  volume       = {97},
+  number       = {4},
+  year         = {1953},
+  pages        = {332--349}
+}
+
+% REUTILIZADA 3A18
+@book{Robinson1962Essays,
+  author    = {Robinson, Joan},
+  title     = {Essays in the Theory of Economic Growth},
+  publisher = {Macmillan},
+  address   = {Londres},
+  year      = {1962}
+}
+
+% ---------------------------------------------------------------- Nuevas (fase de integración, 11/11/2026)
+
+@online{INE2026TiVA2024,
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Panel de Indicadores de Comercio Internacional de Valor Añadido ({TiVA}). Año 2024},
+  date    = {2026-07-20},
+  note    = {Nota de prensa},
+  url     = {https://www.ine.es/dyngs/Prensa/TiVA2024.htm},
+  urldate = {2026-11-11}
+}
+
+@online{INE2026FRONTUR2025,
+  author  = {{Instituto Nacional de Estadística}},
+  title   = {Estadística de Movimientos Turísticos en Fronteras ({FRONTUR}). Diciembre 2025 y año 2025. Datos provisionales},
+  date    = {2026-02-03},
+  note    = {Nota de prensa},
+  url     = {https://www.ine.es/dyngs/Prensa/FRONTUR1225.htm},
+  urldate = {2026-11-11}
+}
+
+@book{MillerBlair2022,
+  author    = {Miller, Ronald E. and Blair, Peter D.},
+  title     = {Input-Output Analysis: Foundations and Extensions},
+  edition   = {3},
+  publisher = {Cambridge University Press},
+  location  = {Cambridge},
+  year      = {2022},
+  doi       = {10.1017/9781108676212}
+}
+
+@article{Leontief1970,
+  author       = {Leontief, Wassily W.},
+  title        = {Environmental Repercussions and the Economic Structure: An Input-Output Approach},
+  journaltitle = {The Review of Economics and Statistics},
+  volume       = {52},
+  number       = {3},
+  year         = {1970},
+  pages        = {262--271},
+  doi          = {10.2307/1926294}
+}
+
+@article{PyattRound1979,
+  author       = {Pyatt, Graham and Round, Jeffery I.},
+  title        = {Accounting and Fixed Price Multipliers in a Social Accounting Matrix Framework},
+  journaltitle = {The Economic Journal},
+  volume       = {89},
+  number       = {356},
+  year         = {1979},
+  pages        = {850--873},
+  doi          = {10.2307/2231503}
+}
+
+@article{Hulten1978,
+  author       = {Hulten, Charles R.},
+  title        = {Growth Accounting with Intermediate Inputs},
+  journaltitle = {The Review of Economic Studies},
+  volume       = {45},
+  number       = {3},
+  year         = {1978},
+  pages        = {511--518},
+  doi          = {10.2307/2297252}
+}
+
+@article{BaqaeeFarhi2019,
+  author       = {Baqaee, David Rezza and Farhi, Emmanuel},
+  title        = {The Macroeconomic Impact of Microeconomic Shocks: Beyond {Hulten}'s Theorem},
+  journaltitle = {Econometrica},
+  volume       = {87},
+  number       = {4},
+  year         = {2019},
+  pages        = {1155--1203},
+  doi          = {10.3982/ECTA15202}
+}
+
+@article{Oosterhaven1988,
+  author       = {Oosterhaven, Jan},
+  title        = {On the Plausibility of the Supply-Driven Input-Output Model},
+  journaltitle = {Journal of Regional Science},
+  volume       = {28},
+  number       = {2},
+  year         = {1988},
+  pages        = {203--217},
+  doi          = {10.1111/j.1467-9787.1988.tb01208.x}
+}
+
+@article{Dietzenbacher1997,
+  author       = {Dietzenbacher, Erik},
+  title        = {In Vindication of the {Ghosh} Model: A Reinterpretation as a Price Model},
+  journaltitle = {Journal of Regional Science},
+  volume       = {37},
+  number       = {4},
+  year         = {1997},
+  pages        = {629--651}
+}
+
+@article{SeguraRestoy1987,
+  author       = {Segura, Julio and Restoy, Fernando},
+  title        = {Notas sobre el cambio en la estructura productiva de la economía española (1975-1980)},
+  journaltitle = {Investigaciones Económicas},
+  volume       = {11},
+  number       = {3},
+  year         = {1987},
+  pages        = {521--552}
+}
+
+@article{Timmer2015WIOD,
+  author       = {Timmer, Marcel P. and Dietzenbacher, Erik and Los, Bart and Stehrer, Robert and de Vries, Gaaitzen J.},
+  title        = {An Illustrated User Guide to the World Input-Output Database: The Case of Global Automotive Production},
+  journaltitle = {Review of International Economics},
+  volume       = {23},
+  number       = {3},
+  year         = {2015},
+  pages        = {575--605}
+}
+
+@online{IbanezdeAldecoa2023,
+  author       = {Ibáñez de Aldecoa Fuster, Javier},
+  title        = {Determinantes de la inflación española en 2023: efectos indirectos y alimentos},
+  organization = {CaixaBank Research},
+  year         = {2023},
+  url          = {https://www.caixabankresearch.com/es/node/11342},
+  urldate      = {2026-11-11}
+}
+
+@article{BrinPage1998,
+  author       = {Brin, Sergey and Page, Lawrence},
+  title        = {The Anatomy of a Large-Scale Hypertextual Web Search Engine},
+  journaltitle = {Computer Networks and ISDN Systems},
+  volume       = {30},
+  number       = {1-7},
+  year         = {1998},
+  pages        = {107--117},
+  doi          = {10.1016/S0169-7552(98)00110-X}
+}
+
+@article{Franceschet2011,
+  author       = {Franceschet, Massimo},
+  title        = {{PageRank}: Standing on the Shoulders of Giants},
+  journaltitle = {Communications of the ACM},
+  volume       = {54},
+  number       = {6},
+  year         = {2011},
+  pages        = {92--101},
+  doi          = {10.1145/1953122.1953146}
+}
+
+@book{CheneryClark1959,
+  author    = {Chenery, Hollis B. and Clark, Paul G.},
+  title     = {Interindustry Economics},
+  publisher = {Wiley},
+  location  = {Nueva York},
+  year      = {1959}
+}
+
+@book{Stone1961,
+  author    = {Stone, Richard},
+  title     = {Input-Output and National Accounts},
+  publisher = {Organización Europea de Cooperación Económica},
+  location  = {París},
+  year      = {1961}
+}
