@@ -1,0 +1,79 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Las rondas de pedidos tras 1 millón más de demanda final de la industria,
+% d = (1; 0), en el ejemplo de 2 ramas (tabla 3 del tema), con
+% A = (0,2 0,1; 0,4 0,2). Ronda k = A^k d: (1; 0), (0,2; 0,4), (0,08; 0,16),
+% (0,032; 0,064), (0,0128; 0,0256). Desde la ronda 1 cada ronda es el 40 % de
+% la anterior ((0,2; 0,4) es vector propio de A con valor propio 0,4), y la
+% suma es la columna 1 de la inversa: (4/3; 2/3), 2 en total.
+% Escala: 1 millón = 2,6 cm. Colores: industria tceeazul, servicios tceeverde.
+% Capas: ejes -> ronda 0 -> ronda 1 -> rondas 2 a 4 con las flechas -> total
+% -> la serie bajo el eje.
+\begin{tikzpicture}[tcee, font=\footnotesize, y=2.6cm,
+  ind/.style={fill=tceeazul!80, draw=tceeazul!65!black, line width=0.4pt},
+  ser/.style={fill=tceeverde!70, draw=tceeverde!65!black, line width=0.4pt},
+  cifra/.style={font=\scriptsize, above=1pt},
+  ronda/.style={font=\footnotesize},
+  efecto/.style={font=\scriptsize, text=tceegris, align=center},
+  termino/.style={font=\small, text=tceemorado},
+  por/.style={->, thin, tceerojo},
+  rpor/.style={font=\scriptsize, text=tceerojo}]
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-1.3,-0.72) rectangle (9.6,2.3);
+  % 1: ejes
+  \capa{1}{%
+    \draw[eje] (0,0) -- (9.5,0);
+    \draw[eje] (0,0) -- (0,2.25) node[above, font=\scriptsize] {millones de euros};
+    \foreach \v/\t in {0/0,0.5/{0{,}5},1/1,1.5/{1{,}5},2/2} {
+      \draw (0,\v) -- (-0.08,\v) node[left, font=\scriptsize] {$\t$};}
+    \draw[ind] (4.6,2.06) rectangle (4.85,2.14);
+    \node[anchor=west, font=\scriptsize] at (4.9,2.1) {industria};
+    \draw[ser] (6.4,2.06) rectangle (6.65,2.14);
+    \node[anchor=west, font=\scriptsize] at (6.7,2.1) {servicios};}
+  % 2: ronda 0, el efecto inicial: d = (1; 0)
+  \capa{2}{%
+    \draw[ind] (0.6,0) rectangle (1.4,1);
+    \node[cifra] at (1.0,1) {$1$};
+    \node[ronda] at (1.0,-0.12) {ronda 0};
+    \node[efecto] at (1.0,-0.26) {inicial};}
+  % 3: ronda 1, el efecto directo: A d = (0,2; 0,4)
+  \capa{3}{%
+    \draw[ind] (1.9,0) rectangle (2.7,0.2);
+    \draw[ser] (1.9,0.2) rectangle (2.7,0.6);
+    \node[cifra] at (2.3,0.6) {$0{,}6$};
+    \node[ronda] at (2.3,-0.12) {ronda 1};
+    \node[efecto] at (2.3,-0.26) {directo};}
+  % 4: rondas 2 a 4, los efectos indirectos, cada una el 40 % de la anterior
+  \capa{4}{%
+    \draw[ind] (3.2,0) rectangle (4.0,0.08);
+    \draw[ser] (3.2,0.08) rectangle (4.0,0.24);
+    \node[cifra] at (3.6,0.24) {$0{,}24$};
+    \draw[ind] (4.5,0) rectangle (5.3,0.032);
+    \draw[ser] (4.5,0.032) rectangle (5.3,0.096);
+    \node[cifra] at (4.9,0.096) {$0{,}096$};
+    \draw[ind] (5.8,0) rectangle (6.6,0.0128);
+    \draw[ser] (5.8,0.0128) rectangle (6.6,0.0384);
+    \node[cifra] at (6.2,0.0384) {$0{,}038$};
+    \node at (7.3,0.06) {$\cdots$};
+    \foreach \x/\t in {3.6/2,4.9/3,6.2/4} {\node[ronda] at (\x,-0.12) {ronda \t};}
+    \node[efecto] at (4.9,-0.26) {indirectos};
+    \draw[por] (2.55,0.75) to[bend left=35] node[above right=-3pt, rpor] {$\times\,0{,}4$} (3.55,0.42);
+    \draw[por] (3.85,0.42) to[bend left=35] node[above right=-3pt, rpor] {$\times\,0{,}4$} (4.85,0.27);
+    \draw[por] (5.15,0.27) to[bend left=35] node[above right=-3pt, rpor] {$\times\,0{,}4$} (6.15,0.21);}
+  % 5: el total, la columna 1 de la inversa: (4/3; 2/3)
+  \capa{5}{%
+    \draw[ind] (8.2,0) rectangle (9.0,4/3);
+    \draw[ser] (8.2,4/3) rectangle (9.0,2);
+    \node[font=\scriptsize, text=white] at (8.6,2/3) {$4/3$};
+    \node[font=\scriptsize, text=white] at (8.6,5/3) {$2/3$};
+    \node[cifra] at (8.6,2) {$2$};
+    \node[ronda] at (8.6,-0.12) {total};
+    \node[efecto] at (8.6,-0.29) {columna 1\\[-2pt] de la inversa};}
+  % 6: la serie de la inversa, cada término bajo su ronda
+  \capa{6}{%
+    \foreach \x/\t in {1.0/{I},2.3/{+\,A},3.6/{+\,A^2},4.9/{+\,A^3},6.2/{+\,A^4},7.3/{+\,\cdots},8.6/{=(I-A)^{-1}}} {
+      \node[termino] at (\x,-0.56) {$\t$};}}
+\end{tikzpicture}
+\end{document}

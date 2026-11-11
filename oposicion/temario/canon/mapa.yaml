@@ -162,7 +162,7 @@ modelos:
       3.A.8: resumen (límite de la CES)
       3.A.11: resumen
       3.A.12: mencion
-      3.A.31: mencion
+      3.A.31: 'mencion (hecho, 11/11/2026; proporcionalidad en II.1 b), con \vertema{3.A.11})'
       3.A.43: 'mencion (hecho, 31/10/2026; anexo A de Harrod-Domar)'
     decision: D087 (13/10/2026)
   pmu:
@@ -837,6 +837,7 @@ modelos:
       3.A.21: resumen
       3.B.31: mencion (MIE frente a MEGC)
       4.B.8: mencion
+      3.A.31: 'mencion (hecho, 11/11/2026; MCS y calibración, II.4)'
   nucleo:
     nombre: Intercambio de Edgeworth y núcleo de una economía (Debreu y Scarf, 1963)
     area: equilibrio-general-bienestar
@@ -1870,14 +1871,22 @@ modelos:
       3.A.41: 'mencion (hecho, 5/11/2026; I.2 y III.2.3, \vertema{3.A.28})'
       3.A.42: 'mencion (hecho, 4/11/2026; III.3 d), Cerra y Saxena, 2008, y conclusión, \vertema{3.A.28})'
   input-output:
-    nombre: Marco input-output (tablas de origen y destino)
+    nombre: Marco input-output (tablas de origen, destino y simétrica; modelos de Leontief de cantidades y de precios)
     area: macro-cerrada
     tema_referencia: 3.A.31
-    motivo: Lo tiene en el título (sin fuente).
+    motivo: 'Lo tiene en el título y es el único que lo desarrolla (revisado el 11/11/2026, con fuente: el antiguo 3.A.27 de Víctor). Ficha rehecha en su fase canon (CC3): notación sin negritas, x minúscula, z_ij, «eslabonamientos», VAB con «otros impuestos netos sobre la producción»; gráficos de referencia tabla-simetrica y rasmussen-cuadrantes; ejemplo canónico de 2 ramas.'
     temas:
-      3.A.30: resumen
-      3.A.31: desarrollo (previsto, sin fuente)
+      3.A.30: resumen (en revisión, 11/11/2026)
+      3.A.31: 'desarrollo (hecho, 11/11/2026)'
       4.A.1: resumen
+      3.B.18: resumen (medición de las CGV)
+      4.A.22: resumen (medición de las CGV)
+      3.B.11: 'mencion (hecho, 5/11/2026; comercio en valor añadido, sin \vertema{3.A.31}: pendiente de coherencia)'
+      3.B.5: 'mencion (hecho, 10/11/2026; paradoja de Leontief, con \vertema{3.A.31})'
+      3.B.7: 'mencion (hecho, 5/11/2026; a_ij en la protección efectiva, con \vertema{3.A.31})'
+      3.A.21: 'mencion (hecho, 14/10/2026; MCS y calibración de los MEGC)'
+      3.B.28: 'mencion (hecho, 3/11/2026; eslabonamientos de Hirschman, sin \vertema{3.A.31}: pendiente de coherencia)'
+      3.B.31: mencion (posible; emisiones incorporadas)
     decision: D112 (13/10/2026)
   jorgenson:
     nombre: Modelo neoclásico (Jorgenson, 1963)
@@ -2666,6 +2675,7 @@ modelos:
       3.A.45: 'mencion (hecho, 1/11/2026; dice «gran impulso», l. 939)'
       3.B.29: mencion (prevista; la ayuda)
       3.B.42: mencion (prevista)
+      3.A.31: 'mencion (hecho, 11/11/2026; Hirschman y la medición de los eslabonamientos, II.3)'
   rostow:
     nombre: Etapas del crecimiento de Rostow (1960) y la brecha de financiación
     area: historia-organismos
@@ -5809,7 +5819,7 @@ temas:
       contexto: 'Curva de contrato de la producción, optimalidad con competencia perfecta y pérdida de bienestar fuera de ella (III.2, Conclusión)'
     - a: 3.A.31
       estado: ok
-      contexto: 'Leontief: tecnología de las tablas input-output'
+      contexto: 'Leontief: tecnología de las tablas input-output Cumplida (3.A.31, 11/11/2026: la proporcionalidad de II.1 b), con \vertema{3.A.11}).'
     - a: 3.A.42
       estado: ok
       contexto: 'Cobb-Douglas como tecnología de los ciclos reales'
@@ -7250,7 +7260,7 @@ temas:
       contexto: 'Preferencia por el estado (III.4)'
     - a: 3.A.31
       estado: ok
-      contexto: 'Matrices de contabilidad social en la calibración de los MEGC (III.5)'
+      contexto: 'Matrices de contabilidad social en la calibración de los MEGC (III.5) Cumplida (3.A.31, 11/11/2026: II.4, Pyatt y Round, 1979).'
     - a: 3.B.31
       estado: ok
       contexto: 'Modelo DICE de Nordhaus (III.5); economía del clima (conclusión)'
@@ -8479,12 +8489,86 @@ temas:
   3.A.31:
     titulo: Análisis de las tablas «input-output».
     bloque: contabilidad-nacional
-    fuente_disponible: 'no'
-    referencias: []
+    fuente_disponible: si
+    nota: 'Revisado el 11/11/2026 (revisión autónoma). Hay original de Víctor con la numeración antigua (Tema 3.A.27): borrador a medias que seguía a Muñoz Cidad, con el bloque II casi vacío; redactado de nuevo con su estructura de 3 bloques (I descripción, II aplicaciones, III utilidad y limitaciones) y anexos A-D. Ejemplo conductor de 2 ramas (industria y servicios). Tema de referencia de input-output (D112); fija la regla de las matrices (notacion.md § 0) y la notación del marco input-output (§ 7, «Contabilidad nacional y marco input-output»), [decidir].'
+    referencias:
+    - a: 3.A.2
+      estado: ok
+      contexto: 'Tableau économique de Quesnay como antecedente (introducción, contextualización)'
+    - a: 3.A.3
+      estado: ok
+      contexto: 'El debate del cálculo económico en el socialismo: Barone, Mises, Lange, Hayek (III.1)'
+    - a: 3.A.11
+      estado: ok
+      contexto: 'Tecnología de coeficientes fijos de Leontief como supuesto de proporcionalidad (II.1 b); función de coeficientes fijos citada sin repetirla'
+    - a: 3.A.21
+      estado: ok
+      contexto: 'Walras (contextualización); a_Lj con la misma letra (I.3); MCS y calibración de los MEGC (II.4); conclusión'
+    - a: 3.A.30
+      estado: ok
+      contexto: 'Contabilidad nacional: unidades, precios básicos y de adquisición, PIB a precios de mercado = VAB + impuestos netos sobre los productos (I.1, I.2); conclusión'
+    - a: 3.A.41
+      estado: ok
+      contexto: 'Inflación de márgenes y segunda ronda de la energía en 2022 (II.2), con ArceEtAl2024What'
+    - a: 3.A.42
+      estado: ok
+      contexto: 'Long y Plosser, ciclo real multisectorial; redes de producción (II.4)'
+    - a: 3.B.5
+      estado: ok
+      contexto: 'Paradoja de Leontief con las cifras 18.184 y 13.991 (II.4), misma clave Leontief1953Domestic'
+    - a: 3.B.7
+      estado: ok
+      contexto: 'Los a_ij ponderan los aranceles de los insumos en la protección efectiva (I.3, nota)'
+    - a: 3.B.18
+      estado: ok
+      contexto: 'Cadenas globales de valor: descomposición de las exportaciones en valor añadido nacional y extranjero (introducción, II.4); conclusión'
+    - a: 3.B.28
+      estado: ok
+      contexto: 'Hirschman y el crecimiento desequilibrado frente a Rosenstein-Rodan y Nurkse (II.3); la ISI y la planificación de la posguerra (III.1); conclusión'
+    - a: 3.B.31
+      estado: ok
+      contexto: 'Emisiones incorporadas, huella de carbono y fuga de carbono (II.4)'
+    - a: 4.A.1
+      estado: ok
+      contexto: 'Tablas del INE (TIO, TiVA) como fuente estadística (conclusión)'
+      uso: ampliar
+      nota: 'Aplicación o técnica del 4.º ejercicio; el 3.A.31 se canta sin ella (D138).'
+    - a: 4.A.22
+      estado: ok
+      contexto: 'España en las cadenas globales de valor (II.4, conclusión)'
+      uso: ampliar
+      nota: 'Aplicación o técnica del 4.º ejercicio; el 3.A.31 se canta sin ella (D138).'
     faltan: []
+    contradicciones:
+    - tema: 3.B.11
+      que: 'Revisado. La nota de la servicificación y del déficit bilateral de Estados Unidos con China en valor añadido (l. 381, OCDE2023TiVA) no remite al 3.A.31, que da el álgebra del comercio en valor añadido (eq:contenido): añadir \vertema{3.A.31} (pendientes-coherencia.md, «Pendiente del 3.A.31», cosmético).'
+    - tema: 3.B.28
+      que: 'Revisado. Hirschman y los eslabonamientos hacia atrás y hacia delante (l. 580) sin \vertema{3.A.31}, que es donde se miden (Chenery-Watanabe, Rasmussen); misma tesis (desequilibrado) y mismos ejemplos (automóvil, acero): conforme en el contenido (pendientes-coherencia.md, cosmético).'
+    - tema: 3.A.42
+      que: 'Revisado. El anexo del filtro HP (l. 1066) escribe las matrices en negrita y la traspuesta con prima, (\mathbf{I}+\lambda\,\mathbf{D}''\mathbf{D}): con la regla de las matrices (notacion.md § 0, CC1, [decidir]), cursiva y ^\top (pendientes-coherencia.md, cosmético).'
+    - tema: 3.A.28
+      que: 'Revisado. Usa \textcolor{tceegris} en 2 celdas de tablas (l. 132, «Estacional» y «no es macroeconómico»; l. 736, «Neoclásicos»), y tcee.lua convierte el gris en remisión a tema (clase vertema, estilo «Referencia a tema» en Word): en la web y el Word salen como si fueran enlaces. Cambiar de color o de marca (pendientes-coherencia.md; detectado al revisar el 3.A.31).'
+    - tema: 3.A.9
+      que: 'Revisado. Cita el SEC 2010 con la clave UE2013SEC2010; la común es SEC2010 (3.A.30, 3.A.31, 3.A.39, 3.B.11, 1D01; CC7, cosmético).'
+    - tema: 3.A.34
+      que: 'Revisado. Cita el SEC 2010 con la clave RegUE2013SEC2010; la común es SEC2010 (CC7, cosmético).'
+    - tema: 3.A.2
+      que: 'Revisado. En el anexo de la fisiocracia (l. 1389-1395) el Tableau de Quesnay es antecedente de los esquemas de Marx y del equilibrio general; Leontief presentó su tabla como heredera del Tableau. Opcional: «y de la tabla input-output \vertema{3.A.31}» (pendientes-coherencia.md, opcional).'
+    - tema: 3.A.30
+      que: 'En revisión (11/11/2026). Su Word repetía casi palabra por palabra las 3 tablas y sus 3 bloques (l. 1266-1340), tenía el mismo enganche que el Word del 3.A.31 («no se puede gestionar lo que no se puede medir»: se queda en el 3.A.30; el 3.A.31 cambió de enganche) y escribía las exportaciones como E en la tabla: X (canon). Un párrafo con el lugar del marco en el SEC 2010 y \vertema{3.A.31}.'
+    - tema: 4.A.1
+      que: 'Sin revisar. «Tablas input-output (TIO) [ver tema 3.A.27]», numeración antigua: \vertema{3.A.31}; «VA = RA + EBE + RX» con RX sin definir: VAB = RA + EBE + otros impuestos netos sobre la producción (ficha input-output).'
+    - tema: 3.B.18
+      que: 'Sin revisar. Medición de las CGV con el álgebra del 3.A.31 (eq:contenido, participación hacia atrás y hacia delante) y \vertema{3.A.31}; ficha cadenas-globales-valor al revisarlo (CC8).'
+    - tema: 4.A.22
+      que: 'Sin revisar. Contenido extranjero de las exportaciones españolas: FIGARO 25,7 % (2024), INE 27,7 % (2024), OCDE 26,6 % (2022); usar las mismas cifras y la nota de por qué difieren (A31-08).'
     modelos:
     - input-output
-    revisado: null
+    - leontief
+    - egc
+    - big-push
+    - paradoja-leontief
+    revisado: 2026-11-11
   3.A.32:
     titulo: 'El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis
       de las políticas monetaria y fiscal, y de los shocks y políticas de oferta.'
@@ -10628,7 +10712,7 @@ temas:
     - a: 3.A.21
       por_que: usa la caja de Edgeworth y el equilibrio general (Haberler, HOS) sin remitir
     - a: 3.A.31
-      por_que: la paradoja de Leontief se basa en tablas input-output
+      por_que: 'la paradoja de Leontief se basa en tablas input-output. Cumplida: el 3.B.5 revisado (10/11/2026) remite (\vertema{3.A.31}) y el 3.A.31 da la paradoja con la misma clave y cifras (II.4).'
     - a: 3.A.22
       por_que: menciona el 2.º teorema del bienestar (compensación) sin remitir
     - a: 3.A.2
@@ -11294,7 +11378,9 @@ temas:
     - a: 4.A.23
       estado: ok
       contexto: 'Inversión directa de España (II.4)'
-    faltan: []
+    faltan:
+    - a: 3.A.31
+      por_que: 'La servicificación y el déficit bilateral en valor añadido (l. 381) sin remisión al 3.A.31, que da el álgebra del comercio en valor añadido (eq:contenido). Pendiente de coherencia (Pendiente del 3.A.31, 11/11/2026).'
     contradicciones:
     - tema: 1D01
       que: 'Aprobada: no se toca sin Víctor. (a) La clave BdE2021NGEU (anexo de casos, l. 2440) tiene el título y el año equivocados: la nota del Banco de España es de marzo de 2022, «Los fondos Next Generation EU (NGEU): cómo se contabilizan en la balanza de pagos/posición de inversión internacional» (BdE2022NGEU del 3.B.11). (b) El saldo que estabiliza la deuda externa (l. 1322-1326) usa D* y CC^{sin int.}, que en la ficha sostenibilidad-deuda-externa son b y −d (la misma condición; choca con D, d déficit y con la D* del 3.B.17). (c) «Enfoque de balances» frente a «enfoque de la hoja de balance»: los 2 nombres son canon (sin cambio). Todo en pendientes-coherencia.md, «Pendiente del 3.B.11», [decidir]. Lo que remite al 3.B.11 (l. 325, 1125, 1264, 1272, 2006, 2036) se cumple: eq:identidad-bp y eq:dinamica-piin con la misma forma y etiqueta, la deuda externa como pasivos exigibles, PIB frente a RNB, los umbrales del PDM; el árbol del déficit copiado sin cambios.'
@@ -12343,7 +12429,9 @@ temas:
       contexto: 'Cuasiexperimentos y evaluación de políticas públicas en España, para ampliar (III.4.2, anexo C, III.5, conclusión)'
       uso: ampliar
       nota: 'Aplicación o técnica del 4.º ejercicio; el 3.B.28 se canta sin ella (D138).'
-    faltan: []
+    faltan:
+    - a: 3.A.31
+      por_que: 'Los eslabonamientos de Hirschman (l. 580) sin remisión al 3.A.31, donde se miden (Chenery-Watanabe, Rasmussen). Pendiente de coherencia (Pendiente del 3.A.31, 11/11/2026).'
     contradicciones:
     - tema: 3.A.1
       que: 'Resuelto al revisar el 3.A.1 (4/11/2026: resumen en III.2 con la frase del 3.B.28 y «Ver para creer»; ventajas y límites en lista en el anexo D, con la errata corregida). Antes: Sin revisar. Su apartado «Randomized Control Trials» copia palabra por palabra la valoración del Word del 3.B.28 (ventajas 1-3 y limitaciones 1-3), con la errata «intervenciones muy particulares a nivel macroeconómico» (es microeconómico) y la cita de Deaton sin fuente. Al revisarlo: resumen (revolución de la credibilidad; inductivo frente a deductivo) con \vertema{3.B.28}, que es la referencia del 3.er ejercicio de la técnica (ficha rct); la cita de Deaton, solo si se encuentra (el 3.B.28 la dejó sin comillas: Deaton, 2010, de palabra); Card y Krueger «(1992)» → 1994 (AER), comprobar.'

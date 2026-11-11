@@ -1,0 +1,90 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Poder de dispersión (hacia atrás, «atras») y sensibilidad de dispersión
+% (hacia delante, «delante») de las 63 ramas de España en 2022, con la inversa
+% interior de la tabla simétrica del INE (cálculo propio; consulta 05/11/2026).
+% Mismos ejes, rótulos y paleta que rasmussen-cuadrantes: clave en morado
+% (círculo), impulsoras en azul (cuadrado), estratégicas en dorado
+% (triángulo) e independientes en gris (rombo). Se rotulan las 16 ramas con
+% etiqueta = 1, sin fondo y, si hace falta, desplazadas con una guía fina.
+% Capas: ejes y referencias -> rótulos de cuadrantes -> puntos -> etiquetas.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/rasmussen-espana-2022.csv}\ras
+\colorlet{rclave}{tceemorado}
+\colorlet{rimpulsor}{tceeazul}
+\colorlet{restrategico}{tceedorado}
+\colorlet{rindependiente}{tceegris}
+% \rama[opciones del nodo]{(x,y) del rótulo}{texto}
+\newcommand{\rama}[3][]{\dicrotulo[font=\scriptsize, inner sep=1.5pt, #1]{#2}{#3}}
+% \ramaguia{(punto)}{(rótulo)}: guía fina del punto al rótulo desplazado
+\newcommand{\ramaguia}[2]{%
+  \addplot[on layer=axis descriptions, dicsuelto, very thin, tceegris] coordinates {#1 #2};}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      scale only axis, width=11cm, height=9.5cm,
+      xmin=0.6, xmax=1.4, ymin=0.5, ymax=2.4,
+      xtick={0.6,0.7,...,1.41}, ytick={0.6,0.8,...,2.41},
+      /pgf/number format/use comma, /pgf/number format/fixed,
+      /pgf/number format/fixed zerofill, /pgf/number format/precision=1,
+      ticklabel style={font=\footnotesize},
+      xlabel={Poder de dispersión $\mathrm{PD}_j$ (hacia atrás)},
+      ylabel={Sensibilidad de dispersión $\mathrm{SD}_i$ (hacia delante)},
+      label style={font=\footnotesize},
+      axis lines=left, tick align=outside, clip=false,
+      dicapas,
+    ]
+    % 1: ejes (los dibuja pgfplots) y líneas de referencia en 1
+    \capa{1}{
+      \dicraya[dicumbral, thick]{(1,0.5) (1,2.4)}
+      \dicraya[dicumbral, thick]{(0.6,1) (1.4,1)}
+    }
+    % 2: rótulos de los cuadrantes
+    \capa{2}{
+      \dicrotulo[anchor=north east, text=rclave, font=\footnotesize\bfseries, align=right]
+        {(1.39,2.39)}{Clave\\[-1pt]\normalfont\scriptsize PD $>1$, SD $>1$}
+      \dicrotulo[anchor=south east, text=rimpulsor, font=\footnotesize\bfseries, align=right]
+        {(1.39,0.51)}{Impulsoras\\[-1pt]\normalfont\scriptsize PD $>1$, SD $<1$}
+      \dicrotulo[anchor=north west, text=restrategico, font=\footnotesize\bfseries, align=left]
+        {(0.61,2.05)}{Estratégicas o de base\\[-1pt]\normalfont\scriptsize PD $<1$, SD $>1$}
+      \dicrotulo[anchor=north west, text=rindependiente, font=\footnotesize\bfseries, align=left]
+        {(0.61,0.97)}{Independientes\\[-1pt]\normalfont\scriptsize PD $<1$, SD $<1$}
+    }
+    % 3: puntos de las 63 ramas, con color y marca por cuadrante
+    \capa{3}{
+      \addplot[on layer=dicpuntos, scatter, only marks,
+        point meta=explicit symbolic,
+        scatter/classes={
+          clave={mark=*, mark size=2.2pt, fill=rclave, draw=rclave!65!black},
+          impulsor={mark=square*, mark size=2pt, fill=rimpulsor, draw=rimpulsor!65!black},
+          estrategico={mark=triangle*, mark size=2.6pt, fill=restrategico, draw=restrategico!65!black},
+          independiente={mark=diamond*, mark size=2.6pt, fill=rindependiente, draw=rindependiente!65!black}}]
+        table[x=atras, y=delante, meta=cuadrante] {\ras};
+    }
+    % 4: etiquetas de las 16 ramas marcadas
+    \capa{4}{
+      % estratégicas
+      \rama[anchor=west]{(1.010,2.291)}{Comercio al por mayor}
+      \rama[anchor=east]{(0.960,2.272)}{Electricidad y gas}
+      \rama[anchor=east]{(0.960,2.205)}{Servicios a edificios y administrativos}
+      \rama[anchor=west]{(0.686,1.152)}{Refino de petróleo}
+      % clave
+      \rama[anchor=south]{(1.158,1.990)}{Almacenamiento y anexos al transporte}
+      \rama[anchor=west]{(1.051,1.762)}{Transporte terrestre}
+      \rama[anchor=south east]{(1.322,1.440)}{Alimentación y bebidas}
+      \rama[anchor=west]{(1.133,1.304)}{Construcción}
+      \rama[anchor=west]{(1.233,1.115)}{Silvicultura}
+      \rama[anchor=west]{(1.171,1.049)}{Telecomunicaciones}
+      % impulsoras
+      \ramaguia{(1.077,0.769)}{(1.225,0.705)}
+      \rama[anchor=west]{(1.225,0.705)}{Automóviles}
+      % independientes
+      \rama[anchor=west]{(1.006,0.962)}{Hostelería}
+      \rama[anchor=south east]{(0.812,0.762)}{Sanidad}
+      \rama[anchor=south]{(0.761,0.662)}{Administración pública}
+      \rama[anchor=north]{(0.722,0.627)}{Educación}
+      \rama[anchor=north west]{(0.640,0.560)}{Alquiler imputado de vivienda}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

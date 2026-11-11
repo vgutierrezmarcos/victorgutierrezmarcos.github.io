@@ -1,0 +1,85 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Colores de las tablas del tema (los de tcee-comun.sty)
+\definecolor{tceeazulpalido}{HTML}{DDEBF7}
+\definecolor{tceesalmon}{HTML}{FBE4D5}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% Los 3 bloques de la tabla input-output simétrica (Miller y Blair, 2022,
+% cap. 2): I, consumos intermedios Z = [z_ij] (n x n); II, demanda final d_i
+% (C, G, FBC, X); III, inputs primarios (M_j, RA_j, EBE_j, otros impuestos
+% netos sobre la producción; los 3 últimos suman el VAB_j). Producción por
+% filas x_i y por columnas x_j. Gráfico de referencia de la ficha input-output.
+% Capa 7: los números del ejemplo de 2 ramas (tabla 3 del tema), en el orden
+% (industria; servicios).
+% Colores: salvia los consumos intermedios, azul pálido la demanda final,
+% salmón los inputs primarios (los mismos que las tablas y origen-destino).
+% Capas: I -> z_ij -> II -> III -> x_i y x_j -> flechas de lectura -> ejemplo.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  bloque/.style={draw=tceegris, line width=0.6pt},
+  total/.style={draw=tceegris, line width=0.6pt, fill=tceegris!12},
+  division/.style={draw=tceegris, thin},
+  cab/.style={font=\scriptsize, text=tceegris},
+  fila/.style={anchor=west, font=\scriptsize, text width=3.3cm, align=left, inner sep=1pt},
+  lectura/.style={->, thick, tceerojo},
+  rlect/.style={font=\scriptsize, text=tceerojo, align=left},
+  ej/.style={font=\scriptsize, text=tceemorado}]
+  % Marco fijo: todas las capas del vídeo con el mismo tamaño
+  \path (-0.75,-3.95) rectangle (11.4,4.75);
+  % 1: bloque I, consumos intermedios
+  \capa{1}{%
+    \draw[bloque, fill=tceesalvia] (0,0) rectangle (5,4);
+    \node[cab] at (2.5,4.25) {ramas compradoras $j=1,\dots,n$};
+    \node[cab, rotate=90] at (-0.3,2) {ramas vendedoras $i=1,\dots,n$};
+    \node[align=left, anchor=north west] at (0.1,3.9)
+      {\textbf{I. Consumos intermedios}\\ $Z=[z_{ij}]$};}
+  % 2: la casilla z_ij (fila i, columna j)
+  \capa{2}{%
+    \draw[bloque, fill=tceeverde!35] (3.6,1.6) rectangle (4.2,2.2);
+    \node at (3.9,1.9) {$z_{ij}$};
+    \node[cab] at (0.0,1.9) [right] {$i$};}
+  % 3: bloque II, demanda final
+  \capa{3}{%
+    \draw[bloque, fill=tceeazulpalido] (5,0) rectangle (7.8,4);
+    \foreach \x in {5.7,6.4,7.1} {\draw[division] (\x,0) -- (\x,4);}
+    \node[cab, text=black] at (6.4,4.25) {\textbf{II. Demanda final}, $d_i$};
+    \foreach \x/\t in {5.35/$C$,6.05/$G$,6.75/FBC,7.45/$X$} {\node[font=\scriptsize] at (\x,3.7) {\t};}}
+  % 4: bloque III, inputs primarios
+  \capa{4}{%
+    \draw[bloque, fill=tceesalmon] (0,-2.4) rectangle (5,0);
+    \foreach \y in {-0.6,-1.2,-1.8} {\draw[division] (0,\y) -- (5,\y);}
+    \node[font=\scriptsize\bfseries, rotate=90] at (-0.3,-1.2) {III. Inputs primarios};
+    \node[fila] at (0.05,-0.3) {$M_j$: importaciones intermedias};
+    \node[fila] at (0.05,-0.9) {$\mathrm{RA}_j$: remuneración de asalariados};
+    \node[fila] at (0.05,-1.5) {$\mathrm{EBE}_j$: excedente bruto y renta mixta};
+    \node[fila] at (0.05,-2.1) {otros impuestos netos sobre la producción};
+    \draw[decorate, decoration={brace, amplitude=5pt}, thick] (5.1,-0.62) -- (5.1,-2.4)
+      node[midway, right=6pt] (vab) {$\mathrm{VAB}_j$};}
+  % 5: producción por filas (x_i) y por columnas (x_j)
+  \capa{5}{%
+    \draw[total] (8.0,0) rectangle (8.8,4);
+    \node at (8.4,4.25) {$x_i$};
+    \node[font=\scriptsize, align=center] at (8.4,-0.4) {producción\\[-2pt] por filas};
+    \draw[total] (0,-3.3) rectangle (5,-2.6);
+    \node[fila] at (0.05,-2.95) {$x_j$: producción por columnas};}
+  % 6: flechas de lectura por filas y por columnas
+  \capa{6}{%
+    \draw[lectura] (0.25,1.9) -- (3.55,1.9);
+    \draw[lectura] (4.25,1.9) -- (8.95,1.9)
+      node[right, rlect, text width=2.2cm] {fila $i$: a quién vende la rama $i$};
+    \draw[lectura] (3.9,3.95) -- (3.9,2.25);
+    \draw[lectura] (3.9,1.55) -- (3.9,-3.45)
+      node[below, rlect, align=center] {columna $j$: con qué produce la rama $j$};}
+  % 7: los números del ejemplo de 2 ramas (industria; servicios)
+  \capa{7}{%
+    \node[ej] at (1.7,0.75) {ejemplo: $\begin{array}{cc}20&20\\40&40\end{array}$};
+    \node[ej] at (6.4,0.35) {$(60;\ 120)$};
+    \node[ej, align=center] at (8.4,0.65) {$100$\\ $200$};
+    \node[ej] at (4.55,-0.3) {$10;\,10$};
+    \node[ej] at (4.55,-0.9) {$20;\,90$};
+    \node[ej] at (4.55,-1.5) {$10;\,40$};
+    \node[ej] at (4.55,-2.1) {$0;\,0$};
+    \node[ej, anchor=west] at (vab.east) {$(30;\ 130)$};
+    \node[ej] at (4.5,-2.95) {$100;\,200$};}
+\end{tikzpicture}
+\end{document}

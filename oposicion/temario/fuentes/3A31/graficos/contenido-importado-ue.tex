@@ -1,0 +1,89 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Participación en las cadenas globales de valor de los países de la UE-27 y
+% su media simple, 2024 (% de las exportaciones brutas; Eurostat, FIGARO,
+% naio_10_fggvcm; consulta 05/11/2026). Barras apiladas: hacia atrás (valor
+% añadido extranjero en las exportaciones del país) + hacia delante (valor
+% añadido del país en las exportaciones de otros) = total. Filas ordenadas por
+% la participación hacia atrás (el CSV ya va ordenado).
+% Paleta del tema: hacia atrás en azul (gama fría), hacia delante en dorado
+% (gama cálida); España y la media, en los mismos colores más oscuros.
+% Capas: barras hacia atrás -> barras hacia delante -> ejes -> resalte de
+% España y de la media -> etiquetas y leyenda.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/cgv-figaro-ue-2024.csv}\cgv
+\colorlet{cgvatras}{dicopf}
+\colorlet{cgvdelante}{dicprestamos!70!white}
+\colorlet{cgvatrasosc}{dicze}
+\colorlet{cgvdelanteosc}{tceedorado}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      scale only axis, width=10.5cm, height=10cm,
+      xbar stacked, bar width=0.25cm,
+      xmin=0, xmax=70, xtick={0,10,...,70},
+      xticklabel style={font=\footnotesize},
+      xlabel={\% de las exportaciones brutas}, xlabel style={font=\footnotesize},
+      ymin=-0.7, ymax=27.7, y dir=reverse,
+      ytick={0,...,27}, yticklabel style={font=\footnotesize},
+      yticklabels={Luxemburgo, Malta, Chipre, Eslovaquia, Hungría, Irlanda,
+        Grecia, Chequia, Estonia, Bélgica, Dinamarca, Finlandia, Austria,
+        Portugal, \textbf{Media simple UE-27}, Lituania, Países Bajos,
+        Eslovenia, Suecia, Bulgaria, Italia, Letonia, Polonia, Francia,
+        \textbf{\textcolor{dicespana}{España}}, Rumanía, Croacia, Alemania},
+      major tick length=0pt,
+      axis lines*=left, clip=false,
+      xmajorgrids, grid style={tceegris!25},
+      legend style={font=\footnotesize, draw=none, at={(0.5,-0.085)},
+        anchor=north, cells={anchor=west}, row sep=1pt},
+      legend cell align=left, area legend,
+      dicapas,
+    ]
+    % 1: participación hacia atrás
+    \capa{1}{
+      \addplot[on layer=dicbarras, fill=cgvatras, draw=none]
+        table[x=atras_2024, y expr=\coordindex] {\cgv};
+      \addlegendentry{Hacia atrás: valor añadido extranjero en sus exportaciones}
+    }
+    % 2: participación hacia delante (apilada sobre la anterior)
+    \capa{2}{
+      \addplot[on layer=dicbarras, fill=cgvdelante, draw=none]
+        table[x=delante_2024, y expr=\coordindex] {\cgv};
+      \addlegendentry{Hacia delante: su valor añadido en las exportaciones de otros}
+    }
+    % 3: ejes (los dibuja pgfplots en su capa; aquí, la línea del cero)
+    \capa{3}{
+      \dicraya{(0,-0.7) (0,27.7)}
+    }
+  \end{axis}
+  % Segundo eje, idéntico y sin marcas, para el resalte y las etiquetas: así
+  % las barras resaltadas tapan las normales sin alterar el apilado.
+  \begin{axis}[
+      scale only axis, width=10.5cm, height=10cm,
+      xmin=0, xmax=70, ymin=-0.7, ymax=27.7, y dir=reverse,
+      hide axis, clip=false, dicapas,
+    ]
+    % (un trazo invisible para que el eje no esté vacío en los pasos 1-3 del vídeo)
+    \addplot[draw=none, forget plot, mark=none] coordinates {(0,-0.7) (70,27.7)};
+    % 4: resalte de la media (fila 14) y de España (fila 24): las mismas barras
+    % en los tonos oscuros; primero el total (dorado) y encima la parte de atrás
+    \capa{4}{
+      \addplot[on layer=dicbarras, forget plot, xbar, bar width=0.25cm,
+        fill=cgvdelanteosc, draw=none] coordinates {(54.9,14) (45.6,24)};
+      \addplot[on layer=dicbarras, forget plot, xbar, bar width=0.25cm,
+        fill=cgvatrasosc, draw=none] coordinates {(38.4,14) (25.7,24)};
+    }
+    % 5: etiquetas del valor hacia atrás de la media y de España, y total
+    \capa{5}{
+      \dicrotulo[anchor=east, font=\scriptsize\bfseries, text=white, inner sep=1.5pt]
+        {(38.4,14)}{38,4}
+      \dicrotulo[anchor=east, font=\scriptsize\bfseries, text=white, inner sep=1.5pt]
+        {(25.7,24)}{25,7}
+      \dicrotulo[anchor=west, font=\scriptsize, inner sep=2pt]
+        {(54.9,14)}{total 54,9}
+      \dicrotulo[anchor=west, font=\scriptsize, text=dicespana, inner sep=2pt]
+        {(45.6,24)}{total 45,6}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

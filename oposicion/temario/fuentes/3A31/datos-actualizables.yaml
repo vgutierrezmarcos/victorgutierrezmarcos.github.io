@@ -1,0 +1,164 @@
+tema: 3A31
+fecha_inventario: 2026-11-11
+# Las cifras históricas cerradas (Leontief 1936 y 1953, Quesnay,
+# los ejemplos ficticios) no están: no caducan.
+datos:
+  - id: turistas-frontur
+    texto: "En 2019 llegaron a España 83,5 millones de turistas internacionales; en 2020, con la pandemia, 18,9 millones; en 2025, un récord de 96,8 millones"
+    donde: [3A31.tex]
+    valor: [83.5, 18.9, 96.8]
+    unidad: millones de turistas
+    periodo: 2019, 2020 y 2025 (2025 provisional)
+    fuente: INE2026FRONTUR2025
+    organismo: INE
+    serie: "FRONTUR, llegadas de turistas internacionales, total anual"
+    url: https://www.ine.es/dyngs/Prensa/FRONTUR1225.htm
+    periodicidad: anual
+    proxima: 2027-02
+    familia: ine-frontur
+  - id: tio-ultima
+    texto: "la última es la de 2022, publicada en diciembre de 2025"
+    donde: [3A31.tex]
+    valor: 2022
+    unidad: año de la tabla simétrica
+    periodo: 2022
+    fuente: INE2025TIO2022
+    organismo: INE
+    serie: "Tablas input-output simétricas (65 productos); la de 2023 sale el 15/12/2026"
+    url: https://www.ine.es/dyngs/Prensa/TIO2022.htm
+    periodicidad: anual
+    proxima: 2026-12-15
+    familia: ine-tio
+  - id: tod-ultima
+    texto: "Las últimas del INE, de 2023, cruzan 110 productos con 81 ramas; en octubre de 2026 se publicó además un avance de 2024"
+    donde: [3A31.tex]
+    valor: [110, 81]
+    unidad: productos × ramas
+    periodo: 2023 (y avance de 2024)
+    fuente: INE2026TOD
+    organismo: INE
+    serie: "Tablas de origen y destino"
+    url: https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177059&menu=resultados&idp=1254735576581
+    periodicidad: anual
+    proxima: 2027-09
+    familia: ine-tio
+  - id: pib-tres-vias-tio
+    texto: "tabla tab:pib-espana (PIB de España en 2022 por las 3 vías, millones de euros)"
+    donde: [3A31.tex]
+    valor: 1375863
+    unidad: millones de euros
+    periodo: 2022
+    fuente: INE2025TIODatos
+    organismo: INE
+    serie: "TIO 2022, tabla 1 (producción, consumos intermedios, VAB, impuestos netos sobre los productos, RA, EBE, demanda final)"
+    url: https://www.ine.es/daco/daco42/cne24/cne_tio_22.xlsx
+    periodicidad: anual
+    proxima: 2026-12-15
+    familia: ine-tio
+  - id: pib-2025
+    texto: "El último año de la contabilidad nacional es 2025, con un PIB de 1.690.012 millones de euros"
+    donde: [3A31.tex]
+    valor: 1690012
+    unidad: millones de euros
+    periodo: 2025
+    fuente: INE2026CNTRDemanda
+    organismo: INE
+    serie: "CNTR, PIB pm a precios corrientes, suma de 4 trimestres (tabla 67823)"
+    url: https://www.ine.es/jaxiT3/Tabla.htm?t=67823
+    periodicidad: trimestral
+    proxima: 2027-03
+    familia: ine-cntr
+  - id: multiplicadores-espana
+    texto: "el multiplicador de producción medio de las 63 ramas con consumos intermedios es 1,74; el más alto es el de la alimentación y las bebidas (2,29) … el del alquiler imputado de la vivienda (1,14)"
+    donde: [3A31.tex]
+    valor: [1.74, 2.29, 1.14]
+    unidad: euros de producción por euro de demanda final
+    periodo: 2022
+    fuente: INE2025TIODatos
+    organismo: INE (cálculo propio)
+    serie: "TIO 2022, tabla 7 (inversa interior)"
+    url: https://www.ine.es/daco/daco42/cne24/cne_tio_22.xlsx
+    periodicidad: anual
+    proxima: 2026-12-15
+    familia: ine-tio
+    depende: [_trabajo/datos/rasmussen-espana-2022.csv]
+  - id: importaciones-intermedias
+    texto: "en 2022, el 61,8 % de las importaciones españolas fueron consumos intermedios … refino (87,6 %), metalurgia (49,5 %), química (45,3 %), electricidad y gas (39,1 %), vehículos (37,0 %)"
+    donde: [3A31.tex]
+    valor: [61.8, 87.6, 49.5, 45.3, 39.1, 37.0]
+    unidad: "%"
+    periodo: 2022
+    fuente: INE2025TIO2022
+    organismo: INE
+    serie: "TIO 2022, tablas 1 y 3"
+    url: https://www.ine.es/dyngs/Prensa/TIO2022.htm
+    periodicidad: anual
+    proxima: 2026-12-15
+    familia: ine-tio
+  - id: rasmussen-espana
+    texto: "14 de las 63 ramas son clave, con el 22 % del VAB … alimentación (1,32) … comercio al por mayor (2,29), electricidad y gas (2,25), servicios a edificios (2,24)"
+    donde: [3A31.tex, graficos/rasmussen-espana.tex]
+    valor: [14, 22]
+    unidad: "ramas; % del VAB"
+    periodo: 2022
+    fuente: INE2025TIODatos
+    organismo: INE (cálculo propio)
+    serie: "TIO 2022, tabla 7; índices de Rasmussen"
+    url: https://www.ine.es/daco/daco42/cne24/cne_tio_22.xlsx
+    periodicidad: anual
+    proxima: 2026-12-15
+    familia: ine-tio
+    depende: [_trabajo/datos/rasmussen-espana-2022.csv]
+  - id: tiva-ine-2024
+    texto: "en 2024 había 5,2 millones de empleos vinculados a la exportación, el 24,0 % del total; 72,3 % / 27,7 %; 21,5 % del PIB; 87,5 millones de toneladas de CO2 equivalente"
+    donde: [3A31.tex]
+    valor: [5.2, 24.0, 72.3, 27.7, 21.5, 87.5]
+    unidad: varias
+    periodo: 2024
+    fuente: INE2026TiVA2024
+    organismo: INE
+    serie: "Panel de indicadores TiVA"
+    url: https://www.ine.es/dyngs/Prensa/TiVA2024.htm
+    periodicidad: anual
+    proxima: 2027-07
+    familia: ine-tiva
+  - id: cgv-figaro
+    texto: "el 25,7 % en 2024, menos que la media simple de la Unión (38,4 %) … otro 19,9 %"
+    donde: [3A31.tex, graficos/contenido-importado-ue.tex]
+    valor: [25.7, 38.4, 19.9]
+    unidad: "% de las exportaciones brutas"
+    periodo: 2024
+    fuente: Eurostat2026FIGAROcgv
+    organismo: Eurostat
+    serie: "naio_10_fggvcm"
+    url: https://ec.europa.eu/eurostat/databrowser/view/naio_10_fggvcm/default/table
+    periodicidad: anual
+    proxima: 2027-07
+    familia: eurostat-figaro
+    depende: [_trabajo/datos/cgv-figaro-ue-2024.csv]
+  - id: tiva-ocde-2022
+    texto: "la OCDE da un 26,6 % de contenido extranjero en 2022"
+    donde: [3A31.tex]
+    valor: 26.6
+    unidad: "% de las exportaciones brutas"
+    periodo: 2022
+    fuente: OCDE2025TiVA
+    organismo: OCDE
+    serie: "TiVA 2025, EXGR_FVA, ESP"
+    url: https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_TIVA_MAINSH%40DF_MAINSH&df[ag]=OECD.STI.PIE
+    periodicidad: bienal
+    proxima: 2027
+    familia: ocde-tiva
+  - id: tio-calendario
+    texto: "La de 2022 se publicó en diciembre de 2025 y la de 2023 está prevista para el 15 de diciembre de 2026"
+    donde: [3A31.tex]
+    valor: 2026-12-15
+    unidad: fecha de publicación
+    periodo: TIO 2023
+    fuente: INE2026Calendario
+    organismo: INE
+    serie: "Calendario de disponibilidad de estadísticas"
+    url: https://www.ine.es/dynt3/Calendario/calenHTML.htm
+    periodicidad: anual
+    proxima: 2026-12-15
+    familia: ine-tio

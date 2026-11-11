@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas input-output y modelo de Leontief | Tema 3.A.31 TCEE</title>
+    <meta name="description" content="Tablas de origen, destino y simétrica; coeficientes técnicos, modelo de Leontief de cantidades y de precios, multiplicadores, Rasmussen y cadenas de valor.">
+    <meta name="keywords" content="tablas input-output, modelo de Leontief, inversa de Leontief, tablas de origen y destino, tabla simétrica, coeficientes técnicos, multiplicador de producción, modelo de precios de Leontief, condición de Hawkins-Simon, eslabonamientos hacia atrás y hacia delante, Rasmussen, Chenery y Watanabe, Hirschman, paradoja de Leontief, comercio en valor añadido, cadenas globales de valor, SEC 2010, Contabilidad nacional">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Tablas input-output y modelo de Leontief | Tema 3.A.31 TCEE">
+    <meta property="og:description" content="Tablas de origen, destino y simétrica; coeficientes técnicos, modelo de Leontief de cantidades y de precios, multiplicadores, Rasmussen y cadenas de valor.">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3A31.html">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Google Académico (etiquetas Highwire Press) -->
+    <meta name="citation_title" content="Análisis de las tablas «input-output»">
+    <meta name="citation_author" content="Gutiérrez Marcos, Víctor">
+    <meta name="citation_publication_date" content="2026/11/11">
+    <meta name="citation_online_date" content="2026/11/11">
+    <meta name="citation_pdf_url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3A31.pdf">
+    <meta name="citation_abstract_html_url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3A31.html">
+    <meta name="citation_language" content="es">
+    <meta name="citation_publisher" content="victorgutierrezmarcos.es">
+    <meta name="citation_keywords" content="tablas input-output, modelo de Leontief, inversa de Leontief, tablas de origen y destino, tabla simétrica, coeficientes técnicos, multiplicador de producción, modelo de precios de Leontief, condición de Hawkins-Simon, eslabonamientos hacia atrás y hacia delante, Rasmussen, Chenery y Watanabe, Hirschman, paradoja de Leontief, comercio en valor añadido, cadenas globales de valor, SEC 2010, Contabilidad nacional">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../search-styles.css">
+    <link rel="stylesheet" href="../../../cookie-consent.css">
+    <link rel="stylesheet" href="../latex/tema.css">
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3A31.html">
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">
+    <script>
+    window.MathJax = {
+        tex: { tags: 'ams', macros: { R: '\\mathbb{R}' } },
+        chtml: { scale: 0.97 },
+        options: { enableMenu: false }
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.victorgutierrezmarcos.es/"},
+            {"@type": "ListItem", "position": 2, "name": "Oposición", "item": "https://www.victorgutierrezmarcos.es/oposicion/"},
+            {"@type": "ListItem", "position": 3, "name": "Temario", "item": "https://www.victorgutierrezmarcos.es/oposicion/temario.html"},
+            {"@type": "ListItem", "position": 4, "name": "Tercer ejercicio", "item": "https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio.html"},
+            {"@type": "ListItem", "position": 5, "name": "Tema 3.A.31"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["LearningResource", "Article"],
+        "@id": "https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3A31.html#tema",
+        "url": "https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3A31.html",
+        "name": "Tablas input-output y modelo de Leontief",
+        "headline": "Análisis de las tablas «input-output».",
+        "description": "Tablas de origen, destino y simétrica; coeficientes técnicos, modelo de Leontief de cantidades y de precios, multiplicadores, Rasmussen y cadenas de valor.",
+        "author": {"@type": "Person", "@id": "https://www.victorgutierrezmarcos.es/#victor", "name": "Víctor Gutiérrez Marcos", "url": "https://www.victorgutierrezmarcos.es/sobre-mi.html"},
+        "datePublished": "2026-11-11",
+        "dateModified": "2026-11-11",
+        "inLanguage": "es",
+        "educationalLevel": "universitario",
+        "learningResourceType": "apuntes",
+        "about": {"@type": "Thing", "name": "Macroeconomía"},
+        "keywords": "tablas input-output, modelo de Leontief, inversa de Leontief, tablas de origen y destino, tabla simétrica, coeficientes técnicos, multiplicador de producción, modelo de precios de Leontief, condición de Hawkins-Simon, eslabonamientos hacia atrás y hacia delante, Rasmussen, Chenery y Watanabe, Hirschman, paradoja de Leontief, comercio en valor añadido, cadenas globales de valor, SEC 2010, Contabilidad nacional",
+        "isAccessibleForFree": true,
+        "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "copyrightHolder": {"@id": "https://www.victorgutierrezmarcos.es/#victor"},
+        "copyrightYear": "2026",
+        "copyrightNotice": "© 2026 Víctor Gutiérrez Marcos · Licencia CC BY-NC-ND 4.0",
+        "image": "https://www.victorgutierrezmarcos.es/social-preview.png",
+        "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3A31.pdf"},
+        "isPartOf": {"@type": "Course", "name": "Temario de la oposición a Técnico Comercial y Economista del Estado (TCEE)", "url": "https://www.victorgutierrezmarcos.es/oposicion/temario.html", "provider": {"@type": "Person", "@id": "https://www.victorgutierrezmarcos.es/#victor", "name": "Víctor Gutiérrez Marcos"}}
+    }
+    </script>
+</head>
+<body class="pagina-tema">
+    <header class="site-header">
+        <div class="header-content">
+            <p class="site-title"><a href="../../../index.html">Víctor Gutiérrez Marcos</a></p>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="../../../index.html">Inicio</a></li>
+                <li><a href="../../index.html" class="active">Oposición</a></li>
+                <li><a href="../../../blog/index.html">Blog</a></li>
+                <!-- <li><a href="../../../comunidad.html">Comunidad</a></li> -->
+                <li><a href="../../../sobre-mi.html">Sobre mí</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="sub-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="../../index.html">Introducción</a></li>
+                <li><a href="../../temario.html" class="active">Temario</a></li>
+                <li><a href="../../organizacion.html">Organización</a></li>
+                <li><a href="../../enlaces.html">Enlaces</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="tema-layout">
+            <aside class="tema-indice">
+                <nav aria-label="Índice del tema">
+                <p class="tema-indice-titulo">Índice</p>
+<ul>
+<li><a href="#esq:0" id="toc-esq:0">Introducción<span class="minutos" aria-hidden="true">2′30″</span></a></li>
+<li><a href="#sec:descripcion" id="toc-sec:descripcion"><span class="numero">I.</span> Descripción de las tablas <em>input-output</em>. El marco <em>input-output</em> en el sistema de cuentas nacionales<span class="minutos" aria-hidden="true">7′</span></a>
+<ul>
+<li><a href="#sec:origen-destino" id="toc-sec:origen-destino"><span class="numero">I.1.</span> Tablas de origen y destino</a></li>
+<li><a href="#sec:simetrica" id="toc-sec:simetrica"><span class="numero">I.2.</span> La tabla <em>input-output</em> simétrica</a></li>
+<li><a href="#sec:coeficientes" id="toc-sec:coeficientes"><span class="numero">I.3.</span> Los coeficientes técnicos</a></li>
+</ul></li>
+<li><a href="#sec:aplicaciones" id="toc-sec:aplicaciones"><span class="numero">II.</span> Aplicaciones del marco <em>input-output</em><span class="minutos" aria-hidden="true">16′</span></a>
+<ul>
+<li><a href="#sec:demanda" id="toc-sec:demanda"><span class="numero">II.1.</span> Modelo de demanda</a></li>
+<li><a href="#sec:precios" id="toc-sec:precios"><span class="numero">II.2.</span> Modelo de precios</a></li>
+<li><a href="#sec:eslabonamientos" id="toc-sec:eslabonamientos"><span class="numero">II.3.</span> Otros estudios de interdependencia: los eslabonamientos interindustriales</a></li>
+<li><a href="#sec:economia-aplicada" id="toc-sec:economia-aplicada"><span class="numero">II.4.</span> La técnica <em>input-output</em> en estudios de economía aplicada</a></li>
+</ul></li>
+<li><a href="#sec:utilidad-limitaciones" id="toc-sec:utilidad-limitaciones"><span class="numero">III.</span> Utilidad y limitaciones de las tablas <em>input-output</em><span class="minutos" aria-hidden="true">3′30″</span></a>
+<ul>
+<li><a href="#sec:utilidad" id="toc-sec:utilidad"><span class="numero">III.1.</span> Utilidad de las tablas en la actualidad</a></li>
+<li><a href="#sec:limitaciones" id="toc-sec:limitaciones"><span class="numero">III.2.</span> Origen de algunas limitaciones</a></li>
+</ul></li>
+<li><a href="#esq:15" id="toc-esq:15">Conclusión<span class="minutos" aria-hidden="true">1′</span></a></li>
+<li><a href="#anexo:inversa" id="toc-anexo:inversa">A. Anexo: cálculo de la inversa de <span class="smallcaps">Leontief</span></a></li>
+<li><a href="#anexo:ejemplo" id="toc-anexo:ejemplo">B. Anexo: los ejemplos completos</a>
+<ul>
+<li><a href="#anexo:ejemplo-2" id="toc-anexo:ejemplo-2">B.1. El ejemplo de 2 ramas</a></li>
+<li><a href="#anexo:ejemplo-3" id="toc-anexo:ejemplo-3">B.2. Un ejemplo de 3 ramas</a></li>
+</ul></li>
+<li><a href="#anexo:extensiones" id="toc-anexo:extensiones">C. Anexo: extensiones de los modelos</a></li>
+<li><a href="#anexo:test" id="toc-anexo:test">D. Anexo: aspectos para el test</a></li>
+<li><a href="#bibliografia" id="toc-bibliografia">Bibliografía</a></li>
+</ul>
+                </nav>
+            </aside>
+            <article class="tema-documento">
+                <nav class="breadcrumb"><a href="../../temario.html">Temario</a><span>›</span><a href="../tercer-ejercicio.html">Tercer ejercicio</a><span>›</span>Tema 3.A.31</nav>
+                <header class="tema-cabecera">
+                    <p class="tema-codigo">Tema 3.A.31</p>
+                    <h1 class="tema-titulo">Análisis de las tablas «input-output».</h1>
+                    <p class="tema-meta">Última actualización: 11/11/2026 · Cante: 30 minutos</p>
+                    <p class="tema-meta tema-paginas">Tema: 27 págs. · Anexos: 5 · Bibliografía: 4 (PDF)</p>
+                    <div class="tema-descargas">
+                        <a href="3A31.pdf" target="_blank">Descargar PDF</a>
+                        <a href="3A31.docx" download>Descargar Word</a>
+                        <a href="3A31-repaso.pdf" target="_blank">Ficha de repaso (4 págs.)</a>
+                    </div>
+                    <p class="tema-resumen">Tablas de origen, destino y simétrica; coeficientes técnicos, modelo de Leontief de cantidades y de precios, multiplicadores, Rasmussen y cadenas de valor.</p>
+                </header>
+                <p class="aviso-exclusivo"><strong class="etiqueta-exclusivo">Exclusivo</strong> Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. Puedes usarlo libremente para tu estudio personal. No se autoriza su incorporación a otras plataformas, aplicaciones o servicios. <a href="https://www.victorgutierrezmarcos.es/condiciones-materiales.html">Condiciones de uso</a>.</p>
+<section id="esq:0" class="level2 unnumbered" data-minutos="2′30″">
+<h2 class="unnumbered" data-minutos="2′30″">Introducción<span class="minutos" aria-hidden="true">2′30″</span></h2>
+<ul>
+<li><p><strong><em>Enganche</em></strong>:</p>
+<ul>
+<li><p>«Tirando del hilo se saca el ovillo», dice el refrán: basta encontrar una punta para llegar a todo lo demás.</p></li>
+<li><p>En 2019 llegaron a España 83,5 millones de turistas internacionales; en 2020, con la pandemia, 18,9 millones; en 2025, un récord de 96,8 millones <span class="citation" data-cites="INE2026FRONTUR2025">(<a href="#ref-INE2026FRONTUR2025" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2026d</a>)</span>.</p></li>
+<li><p>El golpe de 2020 no se quedó en los hoteles y los restaurantes. Llegó a las lavanderías industriales, a los agricultores que les vendían, a las empresas de limpieza y de transporte y, a través de los salarios perdidos, a las tiendas de todo el país. En 2025 el hilo tiró en sentido contrario.</p></li>
+<li><p>Detrás está la pregunta de esta exposición: <em>¿hasta dónde llega un euro que se gasta, o que se deja de gastar, en una rama de la economía?</em> Para responderla hace falta saber quién compra a quién, y eso es lo que registran las <strong>tablas <em>input-output</em></strong>.</p></li>
+</ul></li>
+<li><p><strong><em>Relevancia</em></strong>:</p>
+<ul>
+<li><p>Las tablas <em>input-output</em> son la única fuente estadística que muestra la economía <em>por dentro</em>: qué necesita cada rama de las demás y del exterior para producir.</p></li>
+<li><p>Con un modelo sencillo construido sobre ellas se miden:</p>
+<ul>
+<li><p>los efectos directos, indirectos e inducidos de un cambio de la demanda final (turismo, gasto público, exportaciones, fondos europeos) sobre lo que se produce, el empleo y lo que se importa;</p></li>
+<li><p>la propagación a los precios de una subida de costes (energía, salarios, impuestos);</p></li>
+<li><p>el comercio en valor añadido y las cadenas globales de valor, la huella de carbono y la dependencia de insumos importados <a data-app="https://www.victorgutierrezmarcos.es/oposicion/temario/tema-no-disponible.html?tema=3.B.18" href="../tema-no-disponible.html?tema=3.B.18" class="vertema"><span class="vertema">[ver tema 3.B.18]</span></a>.</p></li>
+</ul></li>
+<li><p>Son, además, la base de datos con la que se calibran los modelos de equilibrio general computable <a data-app="3A21.pdf" href="3A21.html" class="vertema"><span class="vertema">[ver tema 3.A.21]</span></a>, y el instrumento con el que los institutos de estadística cuadran la contabilidad nacional <a data-app="3A30.pdf" href="3A30.html" class="vertema"><span class="vertema">[ver tema 3.A.30]</span></a>.</p></li>
+</ul></li>
+<li><p><strong><em>Contextualización</em></strong>:</p>
+<ul>
+<li><p>La idea de que todas las partes de una economía dependen unas de otras es antigua. <span class="smallcaps">François Quesnay</span>, médico de la corte de Luis XV, representó en su <em>Tableau économique</em> de 1758 la circulación del producto entre las clases sociales, como la de la sangre por el cuerpo <span class="citation" data-cites="Quesnay1758Tableau">(<a href="#ref-Quesnay1758Tableau" role="doc-biblioref"><span class="smallcaps">Quesnay</span>, 1758</a>)</span> <a data-app="3A02.pdf" href="3A02.html" class="vertema"><span class="vertema">[ver tema 3.A.2]</span></a>.</p></li>
+<li><p><span class="citation" data-cites="Walras1874Elements"><span class="smallcaps">Walras</span> (<a href="#ref-Walras1874Elements" role="doc-biblioref">1874</a>)</span> convirtió esa interdependencia en un sistema de ecuaciones simultáneas en el que se determinan a la vez todos los precios y todas las cantidades <a data-app="3A21.pdf" href="3A21.html" class="vertema"><span class="vertema">[ver tema 3.A.21]</span></a>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+<li><p><span class="smallcaps">Wassily Leontief</span> lo hizo medible. En 1936 publicó la primera tabla de la economía de Estados Unidos, para 1919, con 44 sectores, 41 de ellos productivos, y la presentó como un <em>tableau économique</em> empírico <span class="citation" data-cites="Leontief1936Quantitative Kohli2001Leontief">(<a href="#ref-Leontief1936Quantitative" role="doc-biblioref"><span class="smallcaps">Leontief</span>, 1936</a>; <a href="#ref-Kohli2001Leontief" role="doc-biblioref"><span class="smallcaps">Kohli</span>, 2001</a>)</span>; en 1941 publicó el modelo que la usa <span class="citation" data-cites="Leontief1941">(<a href="#ref-Leontief1941" role="doc-biblioref"><span class="smallcaps">Leontief</span>, 1941</a>)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+<li><p>Para poder resolverlo con datos, <span class="smallcaps">Leontief</span> simplificó a <span class="smallcaps">Walras</span>: los inputs se usan en proporciones fijas, sin sustitución entre ellos <a data-app="3A11.pdf" href="3A11.html" class="vertema"><span class="vertema">[ver tema 3.A.11]</span></a>. Su programa era llenar de hechos las «cajas vacías» de la teoría económica.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
+<li><p>La contabilidad nacional moderna nació a la vez, en los años 30 y 40, con <span class="smallcaps">Simon Kuznets</span> en Estados Unidos y <span class="smallcaps">Richard Stone</span> en el Reino Unido, impulsada por la macroeconomía de <span class="citation" data-cites="Keynes1936"><span class="smallcaps">Keynes</span> (<a href="#ref-Keynes1936" role="doc-biblioref">1936</a>)</span> y por la economía de guerra <a data-app="3A30.pdf" href="3A30.html" class="vertema"><span class="vertema">[ver tema 3.A.30]</span></a>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
+<li><p>Hoy las tablas forman parte de ese sistema como <strong>marco <em>input-output</em></strong>: es el capítulo 9 del Sistema Europeo de Cuentas (SEC 2010) <span class="citation" data-cites="SEC2010">(<a href="#ref-SEC2010" role="doc-biblioref"><span class="smallcaps">Parlamento Europeo y Consejo de la Unión Europea</span>, 2013</a>)</span>, y en España las elabora el Instituto Nacional de Estadística (INE).</p></li>
+<li><p>Dos definiciones de partida:</p>
+<ul>
+<li><p>una <strong>tabla <em>input-output</em></strong> es un registro contable de los flujos de bienes y servicios entre las ramas de una economía, y de estas con la demanda final y con los inputs primarios, en un periodo, normalmente un año;</p></li>
+<li><p>una <strong>rama de actividad</strong> agrupa las unidades que hacen la misma actividad productiva, mientras que un <strong>sector institucional</strong> agrupa las que toman el mismo tipo de decisiones (hogares, sociedades, administraciones públicas). El lenguaje corriente llama «sectores» a las ramas; las tablas trabajan con ramas.</p></li>
+</ul></li>
+</ul></li>
+<li><p><strong><em>Problemática</em></strong>:</p>
+<ul>
+<li><p>¿Cómo se registra quién produce qué y para quién?</p></li>
+<li><p>¿Cuánto tiene que producir cada rama para atender una demanda final dada, y cómo se reparte entre las ramas una subida de costes?</p></li>
+<li><p>¿Qué ramas tiran de la economía, y hasta dónde podemos fiarnos de las respuestas?</p></li>
+</ul></li>
+<li><p><strong><em>Estructura</em></strong>:</p>
+<ul>
+<li><p>La exposición va de la contabilidad al modelo, y del modelo a sus límites; cada apartado responde a una de las 3 preguntas:</p>
+<ul>
+<li><p><strong>I. Descripción de las tablas</strong> (<a href="#sec:descripcion">I</a>): las tablas de origen y destino, la tabla simétrica y los coeficientes técnicos;</p></li>
+<li><p><strong>II. Aplicaciones del marco <em>input-output</em></strong> (<a href="#sec:aplicaciones">II</a>): con coeficientes fijos, la tabla se convierte en el modelo de demanda y en su gemelo, el de precios; de ellos salen los eslabonamientos entre ramas y las aplicaciones de hoy;</p></li>
+<li><p><strong>III. Utilidad y limitaciones</strong> (<a href="#sec:utilidad-limitaciones">III</a>): para qué sirven hoy las tablas y de dónde vienen sus límites.</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="esquema">
+<p><strong>3.A.31. Análisis de las tablas <em>input-output</em></strong><br />
+<a href="#esq:0">Introducción</a><span class="esq-tiempo">2′30″</span><br />
+<a href="#sec:descripcion">I. Descripción de las tablas <em>input-output</em>. El marco <em>input-output</em> en el sistema de cuentas nacionales</a><span class="esq-tiempo">7′</span><br />
+<a href="#sec:origen-destino">1. Tablas de origen y destino</a><br />
+<a href="#sec:simetrica">2. La tabla <em>input-output</em> simétrica</a><br />
+<a href="#sec:coeficientes">3. Los coeficientes técnicos</a><br />
+<a href="#sec:aplicaciones">II. Aplicaciones del marco <em>input-output</em></a><span class="esq-tiempo">16′</span><br />
+<a href="#sec:demanda">1. Modelo de demanda</a><br />
+<a href="#sec:precios">2. Modelo de precios</a><br />
+<a href="#sec:eslabonamientos">3. Otros estudios de interdependencia: los eslabonamientos interindustriales</a><br />
+<a href="#sec:economia-aplicada">4. La técnica <em>input-output</em> en estudios de economía aplicada</a><br />
+<a href="#sec:utilidad-limitaciones">III. Utilidad y limitaciones de las tablas <em>input-output</em></a><span class="esq-tiempo">3′30″</span><br />
+<a href="#sec:utilidad">1. Utilidad de las tablas en la actualidad</a><br />
+<a href="#sec:limitaciones">2. Origen de algunas limitaciones</a><br />
+<a href="#esq:15">Conclusión</a><span class="esq-tiempo">1′</span></p>
+</div>
+<div class="notaopositor">
+<p>Reparto del cante: introducción, 2′30″; I, 7′ (I.1, 2′; I.2, 3′; I.3, 2′); II, 16′ (II.1, 6′30″; II.2, 3′30″; II.3, 3′30″; II.4, 2′30″); III, 3′30″ (III.1, 1′; III.2, 2′30″), y conclusión, 1′. Todo el tema sigue una misma economía de 2 ramas, industria y servicios (tabla <a href="#tab:ejemplo">3</a>): sus números permiten hacer cada cálculo a mano. El ejemplo completo y otro de 3 ramas están en el anexo <a href="#anexo:ejemplo">B</a>.</p>
+</div>
+</section>
+<section id="sec:descripcion" class="level2" data-minutos="7′">
+<h2 data-minutos="7′"><span class="numero">I.</span> Descripción de las tablas <em>input-output</em>. El marco <em>input-output</em> en el sistema de cuentas nacionales<span class="minutos" aria-hidden="true">7′</span></h2>
+<ul>
+<li><p><em>Conclusión anticipada</em>: los datos llegan por ramas y por productos en las tablas de origen y destino; la tabla simétrica los reordena para que cada columna sea la <em>tecnología</em> de una rama y cada fila el <em>destino</em> de lo que produce. Dividiendo cada columna por la producción salen los coeficientes técnicos, la pieza con la que se construyen los modelos.</p></li>
+<li><p>El <strong>marco <em>input-output</em></strong> es la parte del sistema de cuentas que detalla la economía rama a rama y producto a producto. Reúne la producción, los consumos intermedios, el valor añadido y sus componentes, la oferta y la demanda de cada producto y las importaciones y exportaciones <span class="citation" data-cites="Eurostat2013SEC2010">(<a href="#ref-Eurostat2013SEC2010" role="doc-biblioref"><span class="smallcaps">Eurostat</span>, 2013, cap. 9</a>)</span>.</p></li>
+<li><p>Se presenta de 2 formas:</p>
+<ul>
+<li><p>las <em>tablas de origen y destino</em>, que se elaboran con los datos tal como llegan, por ramas y por productos (<a href="#sec:origen-destino">I.1</a>);</p></li>
+<li><p>la <em>tabla <em>input-output</em> simétrica</em>, que se deriva de ellas con supuestos adicionales y es la que sirve para el análisis (<a href="#sec:simetrica">I.2</a>).</p></li>
+</ul></li>
+</ul>
+<div class="anotaciones">
+<p><strong>Del SEC 95 al SCN 2025</strong></p>
+<ul>
+<li><p>Desde el SEC 95 no se habla de una tabla <em>input-output</em> aislada, sino de un <em>marco</em>: tablas de origen y destino, a precios básicos y de adquisición, con los flujos interiores y los importados por separado, y tablas simétricas.</p></li>
+<li><p>El SEC 2010 dedica su capítulo 9 a ese marco: las tablas de origen y destino son su núcleo, y la simétrica se deriva de ellas con supuestos o datos adicionales <span class="citation" data-cites="Eurostat2013SEC2010">(<a href="#ref-Eurostat2013SEC2010" role="doc-biblioref"><span class="smallcaps">Eurostat</span>, 2013</a>)</span>. Es la versión europea del Sistema de Cuentas Nacionales (SCN) de 2008 de Naciones Unidas.</p></li>
+<li><p>La última versión del sistema de Naciones Unidas es el SCN 2025, adoptado en marzo de 2025 <span class="citation" data-cites="ONU2025SCN">(<a href="#ref-ONU2025SCN" role="doc-biblioref"><span class="smallcaps">Naciones Unidas</span> et al., 2025</a>)</span>. Mantiene el esquema y anima a ampliarlo con tablas de comercio en valor añadido y tablas digitales. Mientras la Unión Europea no apruebe el nuevo SEC, previsto para finales de la década <span class="citation" data-cites="BCE2026CalidadBP">(<a href="#ref-BCE2026CalidadBP" role="doc-biblioref"><span class="smallcaps">Banco Central Europeo</span>, 2026</a>)</span>, las cuentas españolas siguen el SEC 2010.</p></li>
+<li><p>Los manuales de referencia para elaborar las tablas son los de <span class="citation" data-cites="Eurostat2008Manual"><span class="smallcaps">Eurostat</span> (<a href="#ref-Eurostat2008Manual" role="doc-biblioref">2008</a>)</span> y <span class="citation" data-cites="ONU2018ManualTOD"><span class="smallcaps">Naciones Unidas</span> (<a href="#ref-ONU2018ManualTOD" role="doc-biblioref">2018</a>)</span>.</p></li>
+</ul>
+</div>
+<section id="sec:origen-destino" class="level3">
+<h3><span class="numero">I.1.</span> Tablas de origen y destino</h3>
+<ul>
+<li><p><em>Las unidades</em>: las tablas de origen y destino se elaboran por <strong>ramas de actividad</strong>, que agrupan <em>unidades de actividad económica locales</em> (UAE locales: la parte de una empresa que, en un lugar, hace una actividad), clasificadas por la CNAE; los productos se clasifican por la CPA <span class="citation" data-cites="Eurostat2013SEC2010">(<a href="#ref-Eurostat2013SEC2010" role="doc-biblioref"><span class="smallcaps">Eurostat</span>, 2013</a>)</span>.</p></li>
+<li><p>Las últimas del INE, de 2023, cruzan 110 productos con 81 ramas; en octubre de 2026 se publicó además un avance de 2024 <span class="citation" data-cites="INE2026TOD">(<a href="#ref-INE2026TOD" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2026b</a>)</span>.</p></li>
+</ul>
+<section id="sec:origen" class="level4">
+<h4><span class="numero">I.1.1.</span> Tabla de origen</h4>
+<ul>
+<li><p>La <strong>tabla de origen</strong> recoge de dónde sale la <em>oferta</em> de cada producto: qué productos produce cada rama y cuánto se importa de cada uno (tabla <a href="#tab:origen">1</a>).</p>
+<ul>
+<li><p>Por filas van los productos y por columnas las ramas. No es cuadrada, porque hay más productos que ramas.</p></li>
+<li><p>Una rama puede producir varios productos: la diagonal recoge su producción principal, y lo que queda fuera de ella son las <em>producciones secundarias</em> (la electricidad que genera una papelera).</p></li>
+</ul></li>
+<li><p><em>De la producción a la oferta</em>: la producción por productos más las importaciones da la oferta a <strong>precios básicos</strong>; añadiendo los impuestos netos sobre los productos y los márgenes de comercio y de transporte se llega a la oferta a <strong>precios de adquisición</strong> (gráfico <a href="#fig:valoracion">1</a>).</p>
+<ul>
+<li><p>El <em>precio básico</em> es lo que cobra el productor por unidad: no incluye los impuestos sobre los productos (IVA, impuestos especiales) y sí las subvenciones a los productos; incluye los <em>otros</em> impuestos netos sobre la producción, los que se pagan por producir y no por cada unidad vendida (el IBI de la fábrica, las tasas) <span class="citation" data-cites="Eurostat2013SEC2010">(<a href="#ref-Eurostat2013SEC2010" role="doc-biblioref"><span class="smallcaps">Eurostat</span>, 2013</a>)</span>.</p></li>
+<li><p>El <em>precio de adquisición</em> es lo que paga el comprador: el básico, más los márgenes de comercio y de transporte y los impuestos netos sobre los productos que el comprador no puede deducirse.</p></li>
+</ul></li>
+</ul>
+<div id="tab:origen">
+<table>
+<caption><span class="etiqueta">Tabla 1.–</span> Esquema de la tabla de origen</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Ramas</strong> <br />
+(CNAE)</th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Importaciones</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Oferta a precios básicos</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Márgenes e impuestos netos sobre los productos</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Oferta a precios de adquisición</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>Productos</strong> <br />
+(CPA)</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">producción de cada producto por cada rama</td>
+<td style="text-align: center; vertical-align: middle;">importaciones de cada producto</td>
+<td style="text-align: center; vertical-align: middle;">producción <span class="math inline">\(+\)</span> importaciones</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+\)</span> márgenes <span class="math inline">\(+\)</span> impuestos netos</td>
+<td style="text-align: center; vertical-align: middle;">recursos de cada producto</td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>Total</strong></td>
+<td style="text-align: center; vertical-align: middle;">producción de cada rama</td>
+<td style="text-align: center; vertical-align: middle;">importaciones totales</td>
+<td style="text-align: center; vertical-align: middle;">oferta total</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;">recursos totales</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="Eurostat2008Manual"><span class="smallcaps">Eurostat</span> (<a href="#ref-Eurostat2008Manual" role="doc-biblioref">2008</a>)</span> y <span class="citation" data-cites="Eurostat2013SEC2010"><span class="smallcaps">Eurostat</span> (<a href="#ref-Eurostat2013SEC2010" role="doc-biblioref">2013, cap. 9</a>)</span>.</em></p>
+<figure id="fig:valoracion">
+<figcaption><span class="etiqueta">Gráfico 1.–</span> De los precios básicos a los precios de adquisición</figcaption>
+<img src="../fuentes/3A31/graficos/valoracion-precios.svg" style="width:80.0%" loading="lazy" alt="Gráfico 1.– De los precios básicos a los precios de adquisición" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="Eurostat2013SEC2010"><span class="smallcaps">Eurostat</span> (<a href="#ref-Eurostat2013SEC2010" role="doc-biblioref">2013</a>)</span>.</p>
+</div>
+</figure>
+</section>
+<section id="sec:destino" class="level4">
+<h4><span class="numero">I.1.2.</span> Tabla de destino</h4>
+<ul>
+<li><p>La <strong>tabla de destino</strong> muestra los <em>empleos</em>: en qué se usa cada producto, como consumo intermedio de cada rama o como demanda final, a precios de adquisición. Debajo, por columnas, el valor añadido bruto (VAB) de cada rama y sus componentes (tabla <a href="#tab:destino">2</a>).</p></li>
+<li><p>Se lee de 2 formas:</p>
+<ul>
+<li><p><em>por filas</em>, el destino de cada producto: cuánto va a cada rama y cuánto a la demanda final (consumo de los hogares y de las administraciones públicas, formación bruta de capital y exportaciones);</p></li>
+<li><p><em>por columnas</em>, la estructura de costes de cada rama: sus consumos intermedios y su valor añadido, que suman su producción.</p></li>
+</ul></li>
+<li><p>Las 2 tablas juntas cumplen 2 identidades <span class="citation" data-cites="Eurostat2013SEC2010">(<a href="#ref-Eurostat2013SEC2010" role="doc-biblioref"><span class="smallcaps">Eurostat</span>, 2013, cap. 9</a>)</span>:</p>
+<ul>
+<li><p><em>por ramas</em>: producción <span class="math inline">\(=\)</span> consumos intermedios <span class="math inline">\(+\)</span> VAB;</p></li>
+<li><p><em>por productos</em>: oferta <span class="math inline">\(=\)</span> empleos, es decir, producción <span class="math inline">\(+\)</span> importaciones <span class="math inline">\(+\)</span> márgenes <span class="math inline">\(+\)</span> impuestos netos sobre los productos <span class="math inline">\(=\)</span> consumos intermedios <span class="math inline">\(+\)</span> consumo final <span class="math inline">\(+\)</span> formación bruta de capital <span class="math inline">\(+\)</span> exportaciones.</p></li>
+</ul></li>
+<li><p><em>Para qué sirven</em>: obligan a que cuadren datos que vienen de fuentes distintas (encuestas a empresas, comercio exterior, gasto de los hogares, impuestos). Con ellas los institutos de estadística equilibran la contabilidad nacional y fijan el nivel del PIB, que sale el mismo por las vías de la producción, del gasto y de las rentas (gráfico <a href="#fig:origen-destino">2</a>) <a data-app="3A30.pdf" href="3A30.html" class="vertema"><span class="vertema">[ver tema 3.A.30]</span></a>.</p></li>
+</ul>
+<div id="tab:destino">
+<table>
+<caption><span class="etiqueta">Tabla 2.–</span> Esquema de la tabla de destino</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Ramas</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Demanda final</strong>: consumo final, FBC, exportaciones</th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Total empleos</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>Productos</strong></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">consumos intermedios de cada producto en cada rama</td>
+<td style="text-align: center; vertical-align: middle;">empleos finales de cada producto</td>
+<td style="text-align: center; vertical-align: middle;">empleos de cada producto</td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>Valor añadido</strong></td>
+<td style="text-align: center; vertical-align: middle;">remuneración de asalariados, excedente bruto de explotación y renta mixta, otros impuestos netos sobre la producción</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>Producción</strong></td>
+<td style="text-align: center; vertical-align: middle;">producción de cada rama (precios básicos)</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="Eurostat2008Manual"><span class="smallcaps">Eurostat</span> (<a href="#ref-Eurostat2008Manual" role="doc-biblioref">2008</a>)</span> y <span class="citation" data-cites="Eurostat2013SEC2010"><span class="smallcaps">Eurostat</span> (<a href="#ref-Eurostat2013SEC2010" role="doc-biblioref">2013, cap. 9</a>)</span>.</em></p>
+<figure id="fig:origen-destino">
+<figcaption><span class="etiqueta">Gráfico 2.–</span> Las tablas de origen y destino y sus identidades</figcaption>
+<img src="../fuentes/3A31/graficos/origen-destino.svg" style="width:85.0%" loading="lazy" alt="Gráfico 2.– Las tablas de origen y destino y sus identidades" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="Eurostat2008Manual"><span class="smallcaps">Eurostat</span> (<a href="#ref-Eurostat2008Manual" role="doc-biblioref">2008</a>)</span>.</p>
+</div>
+</figure>
+</section>
+</section>
+<section id="sec:simetrica" class="level3">
+<h3><span class="numero">I.2.</span> La tabla <em>input-output</em> simétrica</h3>
+<ul>
+<li><p>La <strong>tabla simétrica</strong> tiene la misma clasificación en filas y en columnas: producto por producto o rama por rama. Es cuadrada, y es la que se usa en los modelos, porque cada columna describe <em>una sola</em> tecnología.</p></li>
+<li><p><em>Por qué hay que elaborarla</em>: las empresas informan de lo que produce y consume cada establecimiento, que suele hacer varias cosas (una siderurgia produce acero, pero también gas, coque y servicios). Nadie mide directamente qué consumos intermedios lleva cada <em>producto</em>.</p></li>
+<li><p><em>Cómo se obtiene</em>: a partir de las tablas de origen y destino, con un supuesto para repartir las producciones secundarias <span class="citation" data-cites="Eurostat2008Manual">(<a href="#ref-Eurostat2008Manual" role="doc-biblioref"><span class="smallcaps">Eurostat</span>, 2008</a>)</span>:</p>
+<ul>
+<li><p>con la <em>tecnología de producto</em>, cada producto se fabrica igual, lo haga la rama que lo haga; da tablas producto por producto;</p></li>
+<li><p>con la <em>tecnología de rama</em>, cada rama usa la misma estructura de insumos para todo lo que produce; da tablas rama por rama.</p></li>
+</ul></li>
+<li><p>El INE combina los 2 supuestos y publica una tabla producto por producto de 65 productos; la última es la de 2022, publicada en diciembre de 2025 <span class="citation" data-cites="INE2025TIO2022">(<a href="#ref-INE2025TIO2022" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2025b</a>)</span>.</p></li>
+<li><p>Las ramas de la tabla simétrica son <strong>ramas homogéneas</strong>: agrupan <em>unidades de producción homogénea</em>, que hacen una sola actividad. Esas unidades no se observan directamente; se reconstruyen con los supuestos de tecnología <span class="citation" data-cites="Eurostat2013SEC2010">(<a href="#ref-Eurostat2013SEC2010" role="doc-biblioref"><span class="smallcaps">Eurostat</span>, 2013</a>)</span>.</p></li>
+</ul>
+<section id="los-3-bloques" class="level5">
+<h5>Los 3 bloques</h5>
+<ul>
+<li><p>La tabla simétrica se divide en 3 bloques (gráfico <a href="#fig:simetrica">3</a>):<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<ul>
+<li><p>el primer bloque, de <em>consumos intermedios</em>, es el cuadrado central de <span class="math inline">\(n\times n\)</span> casillas: <span class="math inline">\(z_{ij}\)</span> es lo que la rama <span class="math inline">\(j\)</span> compra a la rama <span class="math inline">\(i\)</span> para producir, y la matriz de esos flujos es <span class="math inline">\(Z=[z_{ij}]\)</span>. Es el bloque que da su originalidad a la tabla;</p></li>
+<li><p>el segundo bloque, de <em>demanda final</em>, va a la derecha: lo que cada rama vende para consumo final de los hogares (<span class="math inline">\(C\)</span>) y de las administraciones públicas (<span class="math inline">\(G\)</span>), para formación bruta de capital (FBC) y al exterior (<span class="math inline">\(X\)</span>). Su suma por filas es la demanda final <span class="math inline">\(d_i\)</span> de la rama <span class="math inline">\(i\)</span>;</p></li>
+<li><p>el tercer bloque, de <em>inputs primarios</em>, va debajo: lo que cada rama paga por lo que no compra a otras ramas del país, es decir, sus importaciones intermedias <span class="math inline">\(M_j\)</span> y su valor añadido, <span class="math inline">\(\mathrm{VAB}_j\)</span>, que se reparte en remuneración de asalariados (<span class="math inline">\(\mathrm{RA}_j\)</span>), excedente bruto de explotación y renta mixta (<span class="math inline">\(\mathrm{EBE}_j\)</span>) y otros impuestos netos sobre la producción.</p></li>
+</ul></li>
+<li><p><em>La lectura</em>: la <em>fila</em> <span class="math inline">\(i\)</span> dice a quién vende la rama <span class="math inline">\(i\)</span>, a otras ramas y a la demanda final; la <em>columna</em> <span class="math inline">\(j\)</span> dice con qué produce la rama <span class="math inline">\(j\)</span>, con consumos intermedios y con inputs primarios. La producción de cada rama es la misma leída por su fila y por su columna.</p></li>
+</ul>
+<figure id="fig:simetrica">
+<figcaption><span class="etiqueta">Gráfico 3.–</span> Los 3 bloques de la tabla <em>input-output</em> simétrica</figcaption>
+<img src="../fuentes/3A31/graficos/tabla-simetrica.svg" style="width:80.0%" loading="lazy" alt="Gráfico 3.– Los 3 bloques de la tabla input-output simétrica" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="MillerBlair2022"><span class="smallcaps">Miller</span> y <span class="smallcaps">Blair</span> (<a href="#ref-MillerBlair2022" role="doc-biblioref">2022, cap. 2</a>)</span>.</p>
+</div>
+</figure>
+</section>
+<section id="un-ejemplo-una-economía-de-2-ramas" class="level5">
+<h5>Un ejemplo: una economía de 2 ramas</h5>
+<ul>
+<li><p>Seguiremos durante toda la exposición una economía con 2 ramas, la industria y los servicios, en millones de euros y a precios básicos (tabla <a href="#tab:ejemplo">3</a>). Para simplificar, todas las importaciones son de inputs intermedios y no hay impuestos sobre los productos.</p>
+<ul>
+<li><p><em>Por filas</em>: la industria produce 100; vende 20 a sí misma, 20 a los servicios y 60 a la demanda final, de los que 25 se exportan.</p></li>
+<li><p><em>Por columnas</em>: para producir esos 100, la industria compra 20 a sí misma y 40 a los servicios, importa 10 y genera 30 de valor añadido, que reparte entre salarios (20) y excedente (10).</p></li>
+<li><p><em>El PIB sale el mismo por las 3 vías</em>: por la producción, la suma de los valores añadidos, <span class="math inline">\(30+130=160\)</span>; por el gasto, <span class="math inline">\(C+G+\mathrm{FBC}+X-M=100+30+20+30-20=160\)</span>; por las rentas, <span class="math inline">\(\mathrm{RA}+\mathrm{EBE}=110+50=160\)</span>.</p></li>
+</ul></li>
+</ul>
+<div id="tab:ejemplo">
+<table>
+<caption><span class="etiqueta">Tabla 3.–</span> Tabla simétrica de una economía de 2 ramas (millones de euros, precios básicos)</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Industria</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Servicios</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(C\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;">FBC</th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(X\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Demanda</strong> <br />
+<strong>final</strong> <span class="math inline">\(d_i\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Producción</strong> <span class="math inline">\(x_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Industria</strong></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">20</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">20</td>
+<td style="text-align: center; vertical-align: middle;">20</td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;">15</td>
+<td style="text-align: center; vertical-align: middle;">25</td>
+<td style="text-align: center; vertical-align: middle;">60</td>
+<td style="text-align: center; vertical-align: middle;">100</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Servicios</strong></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">40</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">40</td>
+<td style="text-align: center; vertical-align: middle;">80</td>
+<td style="text-align: center; vertical-align: middle;">30</td>
+<td style="text-align: center; vertical-align: middle;">5</td>
+<td style="text-align: center; vertical-align: middle;">5</td>
+<td style="text-align: center; vertical-align: middle;">120</td>
+<td style="text-align: center; vertical-align: middle;">200</td>
+</tr>
+<tr>
+<td style="text-align: left;">Importaciones intermedias <span class="math inline">\(M_j\)</span></td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">10</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">10</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Remuneración de asalariados <span class="math inline">\(\mathrm{RA}_j\)</span></td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">20</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">90</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Excedente bruto y renta mixta <span class="math inline">\(\mathrm{EBE}_j\)</span></td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">10</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">40</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Valor añadido <span class="math inline">\(\mathrm{VAB}_j\)</span></td>
+<td style="text-align: center; vertical-align: middle;">30</td>
+<td style="text-align: center; vertical-align: middle;">130</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Producción</strong> <span class="math inline">\(x_j\)</span></td>
+<td style="text-align: center; vertical-align: middle;">100</td>
+<td style="text-align: center; vertical-align: middle;">200</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Empleo <span class="math inline">\(L_j\)</span> (miles)</td>
+<td style="text-align: center; vertical-align: middle;">10</td>
+<td style="text-align: center; vertical-align: middle;">40</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia (economía ficticia). En salvia, los consumos intermedios; en salmón, los inputs primarios; a la derecha, la demanda final.</em></p>
+</section>
+<section id="la-formalización" class="level5">
+<h5>La formalización</h5>
+<ul>
+<li><p><em>Por filas</em>, la producción de la rama <span class="math inline">\(i\)</span> se reparte entre lo que venden a las ramas y lo que va a la demanda final: <span id="eq:filas"></span><span class="math display">\[\tag{1}
+x_i=\sum_{j=1}^{n}z_{ij}+d_i,\qquad i=1,\dots,n.\]</span></p></li>
+<li><p><em>Por columnas</em>, la producción de la rama <span class="math inline">\(j\)</span> cubre sus consumos intermedios, sus importaciones intermedias y su valor añadido: <span id="eq:columnas"></span><span class="math display">\[\tag{2}
+x_j=\sum_{i=1}^{n}z_{ij}+M_j+\mathrm{VAB}_j,\qquad j=1,\dots,n,\]</span> donde <span class="math inline">\(\mathrm{VAB}_j=\mathrm{RA}_j+\mathrm{EBE}_j+{}\)</span>otros impuestos netos sobre la producción de la rama <span class="math inline">\(j\)</span>.</p></li>
+<li><p><em>El PIB</em>: la producción total es la misma sumada por filas y por columnas, y los consumos intermedios están en las 2 sumas, así que se cancelan: <span id="eq:pib-io"></span><span class="math display">\[\tag{3}
+\sum_{j}\mathrm{VAB}_j=\sum_{i}d_i-\sum_{j}M_j\quad\Longleftrightarrow\quad \sum_{j}\mathrm{VAB}_j=C+G+\mathrm{FBC}+X-M.\]</span> Lo que la economía gasta en bienes finales, descontado lo que viene de fuera, es lo que ganan sus ramas.</p></li>
+<li><p><em>Ojo con los impuestos</em>: la tabla está a precios básicos, así que la suma de los valores añadidos es el VAB a precios básicos. El PIB a precios de mercado es ese VAB <em>más los impuestos netos sobre los productos</em>; los 2 coinciden solo si estos impuestos son nulos, como en el ejemplo <a data-app="3A30.pdf" href="3A30.html" class="vertema"><span class="vertema">[ver tema 3.A.30]</span></a>.</p></li>
+<li><p><em>Las importaciones en una tabla real</em>: cada casilla tiene 3 cifras, el total, la parte de origen interior y la importada. Por eso la tabla de destino se puede dividir en una de producción interior y otra de importaciones, y también se importan bienes finales, que van en la demanda final y en <span class="math inline">\(M\)</span> de (<a href="#eq:pib-io">3</a>).</p></li>
+</ul>
+<div class="anotaciones">
+<p><strong>El PIB de España por las 3 vías con la tabla simétrica de 2022</strong></p>
+<div id="tab:pib-espana">
+<table>
+<caption><span class="etiqueta">Tabla 4.–</span> PIB de España en 2022 por las 3 vías (millones de euros)</caption>
+<tbody>
+<tr>
+<td colspan="2" class="celda-tceeazulpalido" style="text-align: left;"><strong>Producción</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Producción (precios básicos)</td>
+<td style="text-align: left;">2.664.587</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(-\)</span> Consumos intermedios</td>
+<td style="text-align: left;">1.409.872</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(=\)</span> VAB a precios básicos</td>
+<td style="text-align: left;">1.254.715</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(+\)</span> Impuestos netos sobre los productos</td>
+<td style="text-align: left;">121.148</td>
+</tr>
+<tr>
+<td colspan="2" class="celda-tceeazulpalido" style="text-align: left;"><strong>Rentas</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Remuneración de asalariados</td>
+<td style="text-align: left;">656.283</td>
+</tr>
+<tr>
+<td style="text-align: left;">Excedente bruto de explotación y renta mixta</td>
+<td style="text-align: left;">587.185</td>
+</tr>
+<tr>
+<td style="text-align: left;">Otros impuestos netos sobre la producción</td>
+<td style="text-align: left;">11.247</td>
+</tr>
+<tr>
+<td style="text-align: left;">Impuestos netos sobre los productos</td>
+<td style="text-align: left;">121.148</td>
+</tr>
+<tr>
+<td colspan="2" class="celda-tceeazulpalido" style="text-align: left;"><strong>Gasto</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Consumo final</td>
+<td style="text-align: left;">1.092.917</td>
+</tr>
+<tr>
+<td style="text-align: left;">Formación bruta de capital</td>
+<td style="text-align: left;">312.178</td>
+</tr>
+<tr>
+<td style="text-align: left;">Exportaciones</td>
+<td style="text-align: left;">494.239</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(-\)</span> Importaciones</td>
+<td style="text-align: left;">523.471</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PIB a precios de mercado</strong></td>
+<td style="text-align: left;"><strong>1.375.863</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: <span class="citation" data-cites="INE2025TIODatos"><span class="smallcaps">Instituto Nacional de Estadística</span> (<a href="#ref-INE2025TIODatos" role="doc-biblioref">2025a</a>)</span>; el PIB y el VAB coinciden con los de <span class="citation" data-cites="Eurostat2026nama10gdp"><span class="smallcaps">Eurostat</span> (<a href="#ref-Eurostat2026nama10gdp" role="doc-biblioref">2026b</a>)</span>.</em></p>
+<ul>
+<li><p>En la tabla <em>input-output</em> el consumo es interior (incluye el gasto de los no residentes en España) y las exportaciones e importaciones no incluyen las compras directas de residentes y no residentes; por eso esas partidas difieren de las de la contabilidad nacional, aunque el PIB es el mismo.</p></li>
+<li><p>El último año de la contabilidad nacional es 2025, con un PIB de 1.690.012 millones de euros <span class="citation" data-cites="INE2026CNTRDemanda">(<a href="#ref-INE2026CNTRDemanda" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2026c</a>)</span>.</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="sec:coeficientes" class="level3">
+<h3><span class="numero">I.3.</span> Los coeficientes técnicos</h3>
+<ul>
+<li><p>El <strong>coeficiente técnico</strong> <span class="math inline">\(a_{ij}\)</span> es lo que la rama <span class="math inline">\(j\)</span> compra a la rama <span class="math inline">\(i\)</span> por cada euro que produce: <span id="eq:coeficiente"></span><span class="math display">\[\tag{4}
+a_{ij}\equiv\frac{z_{ij}}{x_j}\quad\Longleftrightarrow\quad z_{ij}=a_{ij}\,x_j,\qquad A=Z\operatorname{diag}(\vec{x})^{-1},\]</span> donde <span class="math inline">\(\operatorname{diag}(\vec{x})\)</span> es la matriz con las producciones en la diagonal: cada columna de los consumos intermedios se divide por la producción de su rama.</p>
+<ul>
+<li><p>Siguiendo con nuestras 2 ramas, la industria compra 40 a los servicios para producir 100, así que <span class="math inline">\(a_{21}=0{,}4\)</span>; los servicios compran 20 a la industria para producir 200, así que <span class="math inline">\(a_{12}=0{,}1\)</span>. La matriz entera es <span class="math display">\[A=\begin{pmatrix}0{,}2 &amp; 0{,}1\\ 0{,}4 &amp; 0{,}2\end{pmatrix}.\]</span></p></li>
+</ul></li>
+<li><p>Del mismo modo se definen los coeficientes de los <em>inputs primarios</em>:</p>
+<ul>
+<li><p>el de importaciones, <span class="math inline">\(m_j\equiv M_j/x_j\)</span>, y el de valor añadido, <span class="math inline">\(v_j\equiv\mathrm{VAB}_j/x_j\)</span>, por euro de producción;</p></li>
+<li><p>el requerimiento de trabajo, <span class="math inline">\(a_{Lj}\equiv L_j/x_j\)</span>, el empleo por unidad de producción (la misma letra que en el equilibrio general <a data-app="3A21.pdf" href="3A21.html" class="vertema"><span class="vertema">[ver tema 3.A.21]</span></a>).</p></li>
+</ul></li>
+<li><p>Cada columna reparte un euro de producción, así que suma 1: <span id="eq:suma-columna"></span><span class="math display">\[\tag{5}
+\sum_{i}a_{ij}+m_j+v_j=1,\qquad j=1,\dots,n.\]</span></p>
+<ul>
+<li><p>En el ejemplo, <span class="math inline">\(\vec{m}=(0{,}10;\ 0{,}05)\)</span>, <span class="math inline">\(\vec{v}=(0{,}30;\ 0{,}65)\)</span> y <span class="math inline">\(\vec{a}_L=(0{,}1;\ 0{,}2)\)</span> miles de empleos por millón de euros. La industria gasta 0,60 de cada euro en otras ramas y los servicios, 0,30: <span class="math inline">\(0{,}2+0{,}4+0{,}10+0{,}30=1\)</span> y <span class="math inline">\(0{,}1+0{,}2+0{,}05+0{,}65=1\)</span>.</p></li>
+</ul></li>
+<li><p><em>No son coeficientes físicos</em>: <span class="smallcaps">Leontief</span> pensaba en toneladas de carbón por tonelada de acero, pero las tablas están en euros.</p>
+<ul>
+<li><p>Un coeficiente cambia si cambian los precios relativos, aunque la técnica no cambie.</p></li>
+<li><p>En una rama agregada, el coeficiente es la media de técnicas y productos distintos. Es el origen de varias limitaciones del método (<a href="#sec:limitaciones">III.2</a>).</p></li>
+</ul></li>
+<li><p><em>Ya describen la economía</em>: qué ramas compran más a otras, cuáles generan más valor añadido o importan más por euro producido.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p></li>
+</ul>
+<ul>
+<li><p><em>Recapitulación</em>: hasta aquí, las tablas <em>describen</em>: quién compra a quién y cuánto valor añade cada rama. Los coeficientes técnicos resumen esa descripción por euro producido.</p></li>
+<li><p><em>Enlace</em>: si suponemos que esas proporciones son estables, la tabla deja de ser una foto y se convierte en un <em>modelo</em>. Es lo que hace el análisis <em>input-output</em>, al que pasamos.</p></li>
+</ul>
+</section>
+</section>
+<section id="sec:aplicaciones" class="level2" data-minutos="16′">
+<h2 data-minutos="16′"><span class="numero">II.</span> Aplicaciones del marco <em>input-output</em><span class="minutos" aria-hidden="true">16′</span></h2>
+<ul>
+<li><p><em>Conclusión anticipada</em>: una sola matriz, la inversa de <span class="smallcaps">Leontief</span>, <span class="math inline">\((I-A)^{-1}\)</span>, responde a las 2 preguntas centrales. Leída por columnas, dice cuánto tiene que producir cada rama para atender una demanda final (modelo de demanda); leída por filas, cómo se trasladan los costes a los precios (modelo de precios). Con ella se miden además los eslabonamientos entre ramas y el comercio en valor añadido.</p></li>
+<li><p>Una vez descrita la tabla, pasamos a usarla: tomamos los coeficientes técnicos como una <em>tecnología</em> estable.</p></li>
+</ul>
+<section id="sec:demanda" class="level3">
+<h3><span class="numero">II.1.</span> Modelo de demanda</h3>
+<section id="a-idea" class="level5">
+<h5>a) Idea</h5>
+<ul>
+<li><p>¿Cuánto tiene que producir cada rama para atender una demanda final dada? No basta con producir lo que se vende al cliente final: para fabricar un coche hacen falta acero, electricidad y transporte, y para producir ese acero, más electricidad y más transporte. El modelo suma toda la cadena.</p></li>
+<li><p>Volviendo al enganche, es la pregunta del euro del turista: el hotel compra a la lavandería, la lavandería a la eléctrica, y la eléctrica a su vez a otras ramas.</p></li>
+<li><p>La demanda final se toma como <em>exógena</em> y la producción se ajusta a ella: es un modelo de demanda, de espíritu keynesiano, con la oferta pasiva.</p></li>
+</ul>
+</section>
+<section id="b-modelo" class="level5">
+<h5>b) Modelo</h5>
+<section id="i-supuestos" class="level6">
+<h6>i) Supuestos</h6>
+<ul>
+<li><p><em>Homogeneidad</em>: cada rama produce un solo producto y cada producto lo produce una sola rama.</p></li>
+<li><p><em>Proporcionalidad</em>: los inputs que usa una rama son proporcionales a su producción, <span class="math inline">\(z_{ij}=a_{ij}x_j\)</span>, con coeficientes fijos. No hay sustitución entre inputs ni economías de escala: es la tecnología de coeficientes fijos de <span class="smallcaps">Leontief</span> <a data-app="3A11.pdf" href="3A11.html" class="vertema"><span class="vertema">[ver tema 3.A.11]</span></a>.</p></li>
+<li><p><em>Aditividad</em>: el efecto de varias producciones a la vez es la suma de sus efectos por separado; no hay economías ni deseconomías externas entre ramas.</p></li>
+<li><p><em>Oferta sin restricciones</em>: hay capacidad, trabajo e importaciones para producir lo que se pida.</p></li>
+<li><p><em>Demanda final exógena</em>, <span class="math inline">\(\vec{d}\)</span>, y coeficientes conocidos, los de la tabla.</p></li>
+</ul>
+</section>
+<section id="ii-desarrollo" class="level6">
+<h6>ii) Desarrollo</h6>
+<ul>
+<li><p><em>De la tabla al sistema</em>: si en cada fila (<a href="#eq:filas">1</a>) se sustituye <span class="math inline">\(z_{ij}=a_{ij}x_j\)</span>, queda un sistema de <span class="math inline">\(n\)</span> ecuaciones lineales cuyas incógnitas son las producciones: <span class="math display">\[x_i=\sum_{j=1}^{n}a_{ij}\,x_j+d_i,\qquad i=1,\dots,n.\]</span></p>
+<ul>
+<li><p>Con 2 ramas se resuelve a mano: <span class="math inline">\((1-a_{11})x_1-a_{12}x_2=d_1\)</span> y <span class="math inline">\(-a_{21}x_1+(1-a_{22})x_2=d_2\)</span>.</p></li>
+<li><p>Con las 65 ramas del INE hace falta escribirlo con matrices.</p></li>
+</ul></li>
+<li><p><em>La solución</em>: la producción es lo que piden las ramas más lo que pide la demanda final; despejando,</p>
+<div class="funcionclave">
+<div id="eq:modelo-demanda">
+
+</div>
+<p><span class="math display">\[\vec{x}=A\,\vec{x}+\vec{d}\quad\Longrightarrow\quad\vec{x}=(I-A)^{-1}\,\vec{d}\tag{6}\]</span></p>
+</div>
+<ul>
+<li><p><span class="math inline">\(I-A\)</span> es la <strong>matriz de <span class="smallcaps">Leontief</span></strong> y <span class="math inline">\((I-A)^{-1}=[r_{ij}]\)</span>, su <strong>inversa</strong>. Es una matriz cuadrada: por eso el modelo necesita la tabla simétrica.</p></li>
+<li><p>En el ejemplo, <span class="math inline">\(\det(I-A)=0{,}8\cdot0{,}8-0{,}1\cdot0{,}4=0{,}6\)</span> y <span class="math display">\[(I-A)^{-1}=\frac{1}{0{,}6}\begin{pmatrix}0{,}8 &amp; 0{,}1\\ 0{,}4 &amp; 0{,}8\end{pmatrix}=\begin{pmatrix}4/3 &amp; 1/6\\ 2/3 &amp; 4/3\end{pmatrix};\]</span> con la demanda final de la tabla, <span class="math inline">\((I-A)^{-1}(60;\ 120)=(100;\ 200)\)</span>, la producción de la tabla. El cálculo de la inversa en general está en el anexo <a href="#anexo:inversa">A</a>.</p></li>
+</ul></li>
+<li><p><em>¿Tiene sentido económico la solución?</em> Hace falta que, con cualquier demanda final no negativa, las producciones lo sean.</p>
+<ul>
+<li><p>Ocurre si y solo si son positivos todos los menores principales directores de <span class="math inline">\(I-A\)</span>, los de su esquina superior izquierda: es la <strong>condición de <span class="smallcaps">Hawkins</span>-<span class="smallcaps">Simon</span></strong> <span class="citation" data-cites="HawkinsSimon1949">(<a href="#ref-HawkinsSimon1949" role="doc-biblioref"><span class="smallcaps">Hawkins</span> y <span class="smallcaps">Simon</span>, 1949</a>)</span>. En el ejemplo, <span class="math inline">\(0{,}8&gt;0\)</span> y <span class="math inline">\(0{,}6&gt;0\)</span>.</p></li>
+<li><p>En palabras, la economía tiene que ser <em>productiva</em>: capaz de producir más de lo que gasta en producir y dejar algo para la demanda final. Con una sola rama, basta con <span class="math inline">\(a_{11}&lt;1\)</span>.</p></li>
+<li><p>Se cumple siempre que cada columna de <span class="math inline">\(A\)</span> sume menos de 1, es decir, que cada rama pague algo de valor añadido o de importaciones (<a href="#eq:suma-columna">5</a>), como ocurre en cualquier tabla real.</p></li>
+</ul></li>
+<li><p><em>Las rondas</em>: con esa misma condición, la inversa se puede escribir como una serie convergente, <span id="eq:serie"></span><span class="math display">\[\tag{7}
+(I-A)^{-1}=I+A+A^2+A^3+\cdots,\]</span> y cada término es una ronda de pedidos: <span class="math inline">\(\vec{d}\)</span> es la demanda final (efecto inicial); <span class="math inline">\(A\vec{d}\)</span>, los inputs que hacen falta para producirla (efecto directo); <span class="math inline">\(A^2\vec{d}\)</span>, los inputs de esos inputs, y así sucesivamente (efectos indirectos). Cada ronda es más pequeña que la anterior, y la suma es la inversa.</p>
+<ul>
+<li><p>Volvamos a nuestras 2 ramas y pidamos 1 millón más de productos industriales, <span class="math inline">\(\vec{d}=(1;\ 0)\)</span>. En la primera ronda la industria pide <span class="math inline">\(0{,}2\)</span> a sí misma y <span class="math inline">\(0{,}4\)</span> a los servicios (la columna 1 de <span class="math inline">\(A\)</span>); en la segunda, esas compras piden <span class="math inline">\((0{,}08;\ 0{,}16)\)</span>; en la tercera, <span class="math inline">\((0{,}032;\ 0{,}064)\)</span> (gráfico <a href="#fig:iterativo">4</a>).</p></li>
+<li><p>Desde la primera, cada ronda es el 40 % de la anterior, así que la producción total crece <span class="math inline">\(1+0{,}6+0{,}24+0{,}096+\dots=1+0{,}6/(1-0{,}4)=2\)</span> millones: <span class="math inline">\(4/3\)</span> en la industria y <span class="math inline">\(2/3\)</span> en los servicios, que es la columna 1 de la inversa.</p></li>
+</ul></li>
+</ul>
+<figure id="fig:iterativo">
+<figcaption><span class="etiqueta">Gráfico 4.–</span> Las rondas de pedidos tras 1 millón más de demanda de la industria</figcaption>
+<img src="../fuentes/3A31/graficos/rondas-iterativo.svg" style="width:75.0%" loading="lazy" alt="Gráfico 4.– Las rondas de pedidos tras 1 millón más de demanda de la industria" />
+<div class="fuente">
+<p>Fuente: elaboración propia con el ejemplo de la tabla <a href="#tab:ejemplo">3</a>.</p>
+</div>
+</figure>
+</section>
+<section id="iii-implicaciones" class="level6">
+<h6>iii) Implicaciones</h6>
+<ul>
+<li><p><em>Cada elemento de la inversa</em>: <span class="math inline">\(r_{ij}\)</span> es lo que tiene que producir la rama <span class="math inline">\(i\)</span>, directa e indirectamente, para que la rama <span class="math inline">\(j\)</span> entregue una unidad más a la demanda final, de modo que <span class="math inline">\(\Delta x_i=\sum_j r_{ij}\,\Delta d_j\)</span>.</p>
+<ul>
+<li><p>Los de la diagonal son mayores que 1: la unidad que se entrega más lo que la rama se pide a sí misma.</p></li>
+</ul></li>
+<li><p><em>Por columnas</em>: la suma de la columna <span class="math inline">\(j\)</span>, <span class="math inline">\(\sum_i r_{ij}\)</span>, es el <strong>multiplicador de producción</strong> de la rama <span class="math inline">\(j\)</span>: lo que crece la producción de <em>toda</em> la economía cuando la demanda final de <span class="math inline">\(j\)</span> sube en una unidad. Mide su capacidad de <em>arrastre</em>.</p></li>
+<li><p><em>Por filas</em>: la suma de la fila <span class="math inline">\(i\)</span>, <span class="math inline">\(\sum_j r_{ij}\)</span>, es lo que tendría que producir la rama <span class="math inline">\(i\)</span> si la demanda final de <em>todas</em> las ramas subiera una unidad. Mide su <em>sensibilidad</em> a la expansión del conjunto.</p></li>
+<li><p><em>En el ejemplo</em>:</p>
+<ul>
+<li><p>los multiplicadores de producción son 2 en la industria y 1,5 en los servicios: un millón más de exportaciones industriales genera 2 millones de producción en el país;</p></li>
+<li><p>por filas, la suma es 1,5 en la industria y 2 en los servicios: los servicios son los que más crecen cuando crece todo, porque todas las ramas les compran.</p></li>
+</ul></li>
+<li><p><em>Una vez calculada la inversa</em>, cualquier escenario de demanda final se resuelve con una multiplicación, sin volver a resolver el sistema.</p></li>
+</ul>
+</section>
+</section>
+<section id="c-extensiones" class="level5">
+<h5>c) Extensiones</h5>
+<ul>
+<li><p><em>Coeficientes interiores y totales</em>: en una economía abierta cada coeficiente se divide en la parte comprada en el país y la importada, <span class="math inline">\(A^{\mathrm t}=A^{\mathrm d}+A^{\mathrm m}\)</span>.</p>
+<ul>
+<li><p>Para medir efectos sobre la producción <em>del país</em> se usa la matriz interior, <span class="math inline">\(A^{\mathrm d}\)</span>, con la demanda final de productos nacionales. Es lo que hacen el INE y Eurostat al calcular multiplicadores, y lo que hace el ejemplo, cuya <span class="math inline">\(A\)</span> ya es interior.</p></li>
+<li><p>Con la matriz total, el modelo atribuye a las ramas del país insumos que en realidad se importan; si las importaciones no se restan aparte como un dato, sobrestima los efectos interiores.</p></li>
+</ul></li>
+<li><p><em>Lo que lleva incorporado la demanda final</em>: multiplicando la inversa por los coeficientes de los inputs primarios se obtiene lo que cada euro de demanda final exige, directa e indirectamente, de cada uno:</p>
+<ul>
+<li><p>empleo, <span class="math inline">\(\vec{a}_L^{\top}(I-A)^{-1}\vec{d}\)</span>: cada elemento de <span class="math inline">\(\vec{a}_L^{\top}(I-A)^{-1}\)</span> es el <em>multiplicador de empleo</em> de una rama;</p></li>
+<li><p>importaciones, <span class="math inline">\(\vec{m}^{\top}(I-A)^{-1}\vec{d}\)</span>: el <em>contenido importado</em> de la demanda final, la parte de cada euro que se filtra al exterior;</p></li>
+<li><p>valor añadido, <span class="math inline">\(\vec{v}^{\top}(I-A)^{-1}\vec{d}\)</span>.</p></li>
+</ul></li>
+<li><p>Como cada columna reparte un euro (<a href="#eq:suma-columna">5</a>), los 2 últimos suman la unidad: <span id="eq:contenido"></span><span class="math display">\[\tag{8}
+(\vec{v}+\vec{m})^{\top}(I-A)^{-1}=\vec{1}^{\top}.\]</span> Cada euro de demanda final acaba entero en valor añadido de alguna rama del país o en importaciones. Es el cálculo con el que se mide el comercio en valor añadido (<a href="#sec:economia-aplicada">II.4</a>).</p>
+<ul>
+<li><p>En el ejemplo, <span class="math inline">\(\vec{v}^{\top}(I-A)^{-1}=(0{,}83;\ 0{,}92)\)</span> y <span class="math inline">\(\vec{m}^{\top}(I-A)^{-1}=(0{,}17;\ 0{,}08)\)</span>: un euro de demanda industrial deja 0,83 de valor añadido en el país, y más de la mitad, 0,43, en los servicios.</p></li>
+<li><p>Los multiplicadores de empleo son <span class="math inline">\(\vec{a}_L^{\top}(I-A)^{-1}=(0{,}27;\ 0{,}28)\)</span> miles por millón: la industria emplea 100 personas por millón que produce, pero su demanda crea 267: 133 en la propia industria y otros 133 en los servicios.</p></li>
+</ul></li>
+<li><p><em>El efecto inducido</em>: los efectos directos e indirectos suben las rentas de los hogares, que gastan una parte y piden más producción (gráfico <a href="#fig:efectos">5</a>).</p>
+<ul>
+<li><p>Para recogerlo se <em>cierra</em> el modelo con los hogares: se añade una fila con los salarios por unidad de producción y una columna con el consumo por unidad de renta, como si los hogares fueran una rama más <span class="citation" data-cites="MillerBlair2022">(<a href="#ref-MillerBlair2022" role="doc-biblioref"><span class="smallcaps">Miller</span> y <span class="smallcaps">Blair</span>, 2022, cap. 6</a>)</span>.</p></li>
+<li><p>Los multiplicadores del modelo abierto son de <strong>tipo I</strong> (efectos directos e indirectos); los del modelo cerrado, de <strong>tipo II</strong> (además, el inducido), y son mayores.</p></li>
+<li><p>En el ejemplo, si los hogares gastan el 80 % de sus salarios, los multiplicadores pasan de 2 y 1,5 a 3,4 y 3,1: los servicios, que pagan más salarios por euro producido, son los que más ganan (anexo <a href="#anexo:extensiones">C</a>).</p></li>
+</ul></li>
+</ul>
+<figure id="fig:efectos">
+<figcaption><span class="etiqueta">Gráfico 5.–</span> Efectos directo, indirecto e inducido de un aumento de la demanda final</figcaption>
+<img src="../fuentes/3A31/graficos/efectos-multiplicadores.svg" style="width:80.0%" loading="lazy" alt="Gráfico 5.– Efectos directo, indirecto e inducido de un aumento de la demanda final" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="MillerBlair2022"><span class="smallcaps">Miller</span> y <span class="smallcaps">Blair</span> (<a href="#ref-MillerBlair2022" role="doc-biblioref">2022, cap. 6</a>)</span>.</p>
+</div>
+</figure>
+</section>
+<section id="d-evidencia-empírica" class="level5">
+<h5>d) Evidencia empírica</h5>
+<ul>
+<li><p><em>Las tablas españolas</em>: el INE publica cada mes de diciembre la tabla simétrica del año <span class="math inline">\(t-3\)</span>, con las matrices inversas interior y total <span class="citation" data-cites="INE2025TIO2022">(<a href="#ref-INE2025TIO2022" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2025b</a>)</span>.</p>
+<ul>
+<li><p>Con la de 2022, el multiplicador de producción medio de las 63 ramas con consumos intermedios es 1,74; el más alto es el de la alimentación y las bebidas (2,29), que compra mucho al campo del país, y el más bajo, el del alquiler imputado de la vivienda (1,14) <span class="citation" data-cites="INE2025TIODatos">(elaboración propia con <a href="#ref-INE2025TIODatos" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2025a</a>)</span>.</p></li>
+</ul></li>
+<li><p><em>La dependencia exterior</em>: en 2022, el 61,8 % de las importaciones españolas fueron consumos intermedios <span class="citation" data-cites="INE2025TIO2022">(<a href="#ref-INE2025TIO2022" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2025b</a>)</span>.</p>
+<ul>
+<li><p>Las ramas que más importan de lo que consumen son el refino de petróleo (87,6 %), la metalurgia (49,5 %), la química (45,3 %), la electricidad y el gas (39,1 %) y los vehículos (37,0 %).</p></li>
+<li><p>Son las que más filtran al exterior un aumento de su demanda, y también las más expuestas a una subida de los precios de importación.</p></li>
+</ul></li>
+<li><p><em>El empleo de las exportaciones</em>: con el mismo método aplicado a las tablas multirregionales, el INE estima que en 2024 había 5,2 millones de empleos vinculados a la exportación, el 24,0 % del total <span class="citation" data-cites="INE2026TiVA2024">(<a href="#ref-INE2026TiVA2024" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2026e</a>)</span>.</p></li>
+</ul>
+</section>
+<section id="e-valoración" class="level5">
+<h5>e) Valoración</h5>
+<ul>
+<li><p><em>A favor</em>: con muy poca teoría y con datos que ya existen, cuantifica efectos que ningún otro instrumento separa por ramas. Por eso es la base de los estudios de impacto del turismo, de un gran evento o de un plan de inversión.</p></li>
+<li><p><em>En contra</em>: la oferta es pasiva. Si hay pleno empleo o cuellos de botella, la demanda adicional sube los precios o desplaza otra producción, y el modelo sobrestima el efecto; con coeficientes fijos, además, no hay sustitución.</p></li>
+<li><p><em>Enlace</em>: el modelo de demanda deja los precios fuera. Para verlos hay que leer la misma tabla por columnas: es el modelo de precios.</p></li>
+</ul>
+</section>
+</section>
+<section id="sec:precios" class="level3">
+<h3><span class="numero">II.2.</span> Modelo de precios</h3>
+<section id="a-idea-1" class="level5">
+<h5>a) Idea</h5>
+<ul>
+<li><p>Cada columna de la tabla es la estructura de costes de una rama. Si sube el precio de un input, sube el coste de quien lo compra; si este lo traslada, sube también el de quien le compra a él. Los precios forman un <em>sistema</em>: no se puede cambiar uno sin tocar los demás.</p></li>
+<li><p>«Pagar los platos rotos»: una subida de la energía la acaban pagando, a través de la cadena, ramas que apenas compran energía, y al final la demanda final.</p></li>
+</ul>
+</section>
+<section id="b-modelo-1" class="level5">
+<h5>b) Modelo</h5>
+<section id="i-supuestos-1" class="level6">
+<h6>i) Supuestos</h6>
+<ul>
+<li><p><em>Coeficientes técnicos fijos</em>, los del modelo de demanda: ninguna rama sustituye el input que se encarece.</p></li>
+<li><p><em>Traslación íntegra</em>: cada rama traslada al precio todo el aumento de sus costes y mantiene fijo su excedente por unidad.</p></li>
+<li><p><em>Cantidades dadas</em>: se calculan los precios para la tabla existente.</p></li>
+<li><p><em>Precios como índices</em>: en el año base todos valen 1, porque la tabla está en euros y una «unidad» de cada producto es lo que valía un euro.</p></li>
+</ul>
+</section>
+<section id="ii-desarrollo-1" class="level6">
+<h6>ii) Desarrollo</h6>
+<ul>
+<li><p><em>El precio de cada rama es su coste unitario</em>: lo que paga por los inputs de las demás ramas, por los importados y por los inputs primarios. Con <span class="math inline">\(p^{\mathrm M}\)</span> el índice de precios de las importaciones, <span class="math display">\[p_j=\sum_{i}a_{ij}\,p_i+p^{\mathrm M}m_j+v_j,\qquad j=1,\dots,n.\]</span></p></li>
+<li><p>Sin importaciones, en forma matricial y con el vector de precios en fila,</p>
+<div class="funcionclave">
+<div id="eq:modelo-precios">
+
+</div>
+<p><span class="math display">\[\vec{p}^{\top}=\vec{p}^{\top}A+\vec{v}^{\top}\quad\Longrightarrow\quad\vec{p}^{\top}=\vec{v}^{\top}(I-A)^{-1}\tag{9}\]</span></p>
+</div>
+<ul>
+<li><p>Con importaciones, <span class="math inline">\(\vec{v}^{\top}\)</span> se sustituye por <span class="math inline">\(\vec{v}^{\top}+p^{\mathrm M}\vec{m}^{\top}\)</span>.</p></li>
+<li><p>Escrito con vectores columna es <span class="math inline">\(\vec{p}=(I-A^{\top})^{-1}\vec{v}\)</span>: la misma matriz, traspuesta.</p></li>
+</ul></li>
+<li><p><em>La dualidad</em>: es la <em>misma</em> inversa del modelo de demanda, leída por filas en lugar de por columnas.</p>
+<ul>
+<li><p>Las cantidades se propagan hacia atrás, de los clientes a los proveedores; los costes, hacia delante, de los proveedores a los clientes.</p></li>
+<li><p>Multiplicando (<a href="#eq:modelo-precios">9</a>) por <span class="math inline">\(\vec{x}\)</span> y (<a href="#eq:modelo-demanda">6</a>) por <span class="math inline">\(\vec{p}^{\top}\)</span>, <span id="eq:dualidad"></span><span class="math display">\[\tag{10}
+\vec{p}^{\top}\vec{d}=\vec{v}^{\top}\vec{x}:\]</span> el valor de la demanda final es igual al valor añadido. Es la identidad del PIB de (<a href="#eq:pib-io">3</a>), ahora como resultado del modelo (con importaciones, a la derecha se suma <span class="math inline">\(p^{\mathrm M}\vec{m}^{\top}\vec{x}\)</span>).</p></li>
+<li><p>En el ejemplo, con <span class="math inline">\(\vec{p}=\vec{1}\)</span> y <span class="math inline">\(p^{\mathrm M}=1\)</span> se recupera la tabla: cada columna suma 1 por (<a href="#eq:suma-columna">5</a>).</p></li>
+</ul></li>
+</ul>
+<div class="anotaciones">
+<p><strong>Una anécdota: la misma matemática ordena las páginas web</strong></p>
+<ul>
+<li><p><span class="smallcaps">Sergey Brin</span> y <span class="smallcaps">Larry Page</span> presentaron en 1998 el algoritmo con el que su buscador, Google, ordenaba las páginas web: <em>PageRank</em> <span class="citation" data-cites="BrinPage1998">(<a href="#ref-BrinPage1998" role="doc-biblioref"><span class="smallcaps">Brin</span> y <span class="smallcaps">Page</span>, 1998</a>)</span>.</p></li>
+<li><p>Su idea es circular: cuenta más una página cuanto más importantes son las que apuntan a ella. Con <span class="math inline">\(N\)</span> páginas y <span class="math inline">\(H\)</span> la matriz de enlaces (cada página reparte su relevancia a partes iguales entre las que enlaza), la relevancia <span class="math inline">\(\vec{r}\)</span> cumple <span class="math display">\[\vec{r}^{\top}=\alpha\,\vec{r}^{\top}H+\frac{1-\alpha}{N}\vec{1}^{\top}\quad\Longrightarrow\quad\vec{r}^{\top}=\frac{1-\alpha}{N}\vec{1}^{\top}(I-\alpha H)^{-1},\]</span> con <span class="math inline">\(\alpha=0{,}85\)</span>.</p></li>
+<li><p>Es el modelo de precios de <span class="smallcaps">Leontief</span>: <span class="math inline">\(\alpha H\)</span> hace de <span class="math inline">\(A\)</span> y la relevancia mínima común, de valor añadido. Que <span class="math inline">\(\alpha\)</span> sea menor que 1 garantiza que la serie converja, como un valor añadido positivo en la condición de <span class="smallcaps">Hawkins</span>-<span class="smallcaps">Simon</span>.</p></li>
+<li><p><span class="citation" data-cites="Franceschet2011"><span class="smallcaps">Franceschet</span> (<a href="#ref-Franceschet2011" role="doc-biblioref">2011</a>)</span> sitúa el modelo de <span class="smallcaps">Leontief</span> entre los antecedentes de PageRank, aunque advierte de que <span class="smallcaps">Leontief</span> no pretendía ordenar ramas.</p></li>
+</ul>
+</div>
+</section>
+<section id="iii-implicaciones-1" class="level6">
+<h6>iii) Implicaciones</h6>
+<ul>
+<li><p><em>Un input primario más caro</em>: si sube el coste unitario de algún componente del valor añadido (salarios, impuestos, excedente) en una o en todas las ramas, <span class="math inline">\(\Delta\vec{p}^{\top}=\Delta\vec{v}^{\top}(I-A)^{-1}\)</span>.</p>
+<ul>
+<li><p>En el ejemplo, una subida de los salarios del 10 % en las 2 ramas eleva los precios un 5,7 % en la industria y un 6,3 % en los servicios, que pagan más salarios por euro producido. El precio medio de la demanda final sube un 6,1 %: los 11 millones de salarios adicionales sobre los 180 de demanda final. El coste se traslada entero, como dice (<a href="#eq:dualidad">10</a>).</p></li>
+</ul></li>
+<li><p><em>El precio de una rama fijado fuera</em>: si el precio de una rama <span class="math inline">\(k\)</span> lo fija un regulador o el mercado mundial, se saca del sistema, y su producto pasa a ser un coste exógeno más para las demás ramas (anexo <a href="#anexo:extensiones">C</a>).</p>
+<ul>
+<li><p>En el ejemplo, si el precio de la industria sube un 20 % por una decisión externa, el de los servicios sube <span class="math inline">\(0{,}2\cdot a_{12}/(1-a_{22})=0{,}2\cdot0{,}1/0{,}8\)</span>, un 2,5 %.</p></li>
+</ul></li>
+<li><p><em>Las importaciones intermedias más caras</em>: es el mismo caso con un precio exterior, <span class="math inline">\(\Delta\vec{p}^{\top}=\Delta p^{\mathrm M}\,\vec{m}^{\top}(I-A)^{-1}\)</span>. El contenido importado de cada rama, calculado en el modelo de demanda, dice cuánto le afecta.</p>
+<ul>
+<li><p>En el ejemplo, si los insumos importados (pensemos en la energía) suben un 50 %, los precios suben un 8,3 % en la industria y un 4,2 % en los servicios. En los servicios el efecto directo es solo del 2,5 % (<span class="math inline">\(0{,}5\cdot0{,}05\)</span>): el resto les llega a través de lo que compran a la industria.</p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="c-extensiones-1" class="level5">
+<h5>c) Extensiones</h5>
+<ul>
+<li><p><em>Márgenes proporcionales</em>: hasta ahora el excedente por unidad era fijo. Muchas empresas, en cambio, fijan los precios con un <em>margen sobre los costes</em>: su excedente es una proporción <span class="math inline">\(k_j\)</span> del valor de lo que venden, <span class="math inline">\(\mathrm{EBE}_j=k_j\,p_j\,x_j\)</span>.</p>
+<ul>
+<li><p>Entonces una subida salarial sube también los beneficios por unidad, y el sistema pasa a ser <span class="math inline">\(\vec{p}^{\top}\bigl(I-A-\operatorname{diag}(\vec{k})\bigr)=\bigl(\vec{v}_{\mathrm{RA}}+p^{\mathrm M}\vec{m}\bigr)^{\top}\)</span>, con <span class="math inline">\(\vec{v}_{\mathrm{RA}}\)</span> la remuneración de asalariados por unidad (anexo <a href="#anexo:extensiones">C</a>).</p></li>
+<li><p>En el ejemplo, con márgenes de 0,1 y 0,2, la misma subida salarial del 10 % eleva los precios un 7,9 % en la industria y un 8,8 % en los servicios, frente al 5,7 % y el 6,3 % de antes: los márgenes amplifican la subida. Es el mecanismo de la inflación de márgenes de 2022 <a data-app="3A41.pdf" href="3A41.html" class="vertema"><span class="vertema">[ver tema 3.A.41]</span></a>.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="d-evidencia-empírica-1" class="level5">
+<h5>d) Evidencia empírica</h5>
+<ul>
+<li><p><em>La energía en 2022</em>: con las tablas <em>input-output</em> españolas, los bienes y servicios más expuestos a los costes energéticos aportaron 0,9 puntos de los 4,7 de la inflación subyacente sin el transporte público de diciembre de 2022, el 19,5 % del total, con un peso en la cesta del 9,8 % <span class="citation" data-cites="IbanezdeAldecoa2023">(<a href="#ref-IbanezdeAldecoa2023" role="doc-biblioref"><span class="smallcaps">Ibáñez de Aldecoa Fuster</span>, 2023</a>)</span>.</p>
+<ul>
+<li><p>Es el efecto indirecto que predice el modelo: la energía no entra en la inflación subyacente, pero sí en los costes de lo que se mide en ella.</p></li>
+</ul></li>
+<li><p>En la zona del euro, la energía llegó a aportar 3,8 puntos a la inflación en 2022 <span class="citation" data-cites="ArceEtAl2024What">(<a href="#ref-ArceEtAl2024What" role="doc-biblioref"><span class="smallcaps">Arce</span> et al., 2024</a>)</span>.</p></li>
+</ul>
+</section>
+<section id="e-valoración-1" class="level5">
+<h5>e) Valoración</h5>
+<ul>
+<li><p><em>A favor</em>: da, rama a rama y con poca información, el efecto de primera ronda de cualquier subida de costes.</p></li>
+<li><p><em>En contra</em>: como supone traslación íntegra y ninguna sustitución, es una cota superior de ese efecto. No recoge las segundas rondas (salarios que se indician a los precios, márgenes que se ajustan) ni la respuesta de la demanda: eso pertenece a la curva de <span class="smallcaps">Phillips</span> y a los modelos de equilibrio general <a data-app="3A41.pdf" href="3A41.html" class="vertema"><span class="vertema">[ver tema 3.A.41]</span></a>.</p></li>
+<li><p><em>Enlace</em>: con los 2 modelos se puede responder ya a la tercera pregunta: ¿qué ramas tiran más de las demás?</p></li>
+</ul>
+</section>
+</section>
+<section id="sec:eslabonamientos" class="level3">
+<h3><span class="numero">II.3.</span> Otros estudios de interdependencia: los eslabonamientos interindustriales</h3>
+<ul>
+<li><p><em>La idea</em>: en los años 50, con el auge de la planificación del desarrollo, se buscó en las tablas qué ramas tiran más de las demás.</p>
+<ul>
+<li><p><span class="citation" data-cites="Hirschman1958"><span class="smallcaps">Hirschman</span> (<a href="#ref-Hirschman1958" role="doc-biblioref">1958</a>)</span> sostuvo que un país pobre no puede invertir en todos los sectores a la vez, frente al crecimiento <em>equilibrado</em> de <span class="smallcaps">Paul Rosenstein-Rodan</span> y <span class="smallcaps">Ragnar Nurkse</span>.</p></li>
+<li><p>Propuso un crecimiento <em>desequilibrado</em>: concentrar la inversión en las ramas con más <strong>eslabonamientos</strong>, para que sus cuellos de botella tiren de las demás <a data-app="3B28.pdf" href="3B28.html" class="vertema"><span class="vertema">[ver tema 3.B.28]</span></a>.</p></li>
+</ul></li>
+<li><p>Hay 2 tipos de eslabonamientos:</p>
+<ul>
+<li><p>los <strong>eslabonamientos hacia atrás</strong> son los de una rama que compra mucho a otras y las arrastra con su demanda (el automóvil);</p></li>
+<li><p>los <strong>eslabonamientos hacia delante</strong> son los de una rama que vende a muchas otras y empuja su oferta (el acero, la energía).</p></li>
+</ul></li>
+<li><p>«Tirar del carro»: las tablas permiten medir qué ramas tiran del carro y cuáles van detrás.</p></li>
+</ul>
+<section id="los-coeficientes-de-chenery-y-watanabe-1958" class="level5">
+<h5>Los coeficientes de <span class="smallcaps">Chenery</span> y <span class="smallcaps">Watanabe</span> (1958)</h5>
+<ul>
+<li><p><em>Qué miden</em>: los eslabonamientos <em>directos</em>, con la tabla tal cual <span class="citation" data-cites="CheneryWatanabe1958">(<a href="#ref-CheneryWatanabe1958" role="doc-biblioref"><span class="smallcaps">Chenery</span> y <span class="smallcaps">Watanabe</span>, 1958</a>)</span>.</p>
+<ul>
+<li><p>Hacia atrás, <span class="math inline">\(\mathrm{EA}_j=\sum_i z_{ij}/x_j\)</span>: la parte de la producción de <span class="math inline">\(j\)</span> que son compras a otras ramas.</p></li>
+<li><p>Hacia delante, <span class="math inline">\(\mathrm{ED}_i=\sum_j z_{ij}/x_i\)</span>: la parte de las ventas de <span class="math inline">\(i\)</span> que va a otras ramas y no a la demanda final.</p></li>
+</ul></li>
+<li><p><em>Cómo se clasifican</em>: comparando cada coeficiente con su media, las ramas caen en 4 grupos (tabla <a href="#tab:cuadrantes">5</a>).</p></li>
+<li><p><em>En el ejemplo</em>: la industria compra a otras ramas el 60 % de lo que produce y los servicios, el 30 %; las 2 venden el 40 % de su producción a otras ramas.</p></li>
+<li><p><em>Límites</em>: solo ven el efecto directo y no ponderan por el tamaño de la rama.</p></li>
+</ul>
+<div id="tab:cuadrantes">
+<table>
+<caption><span class="etiqueta">Tabla 5.–</span> Los 4 grupos de ramas de <span class="smallcaps">Chenery</span> y <span class="smallcaps">Watanabe</span></caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong><span class="math inline">\(\mathrm{ED}_i\)</span> alto</strong> <br />
+(destino intermedio)</th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong><span class="math inline">\(\mathrm{ED}_i\)</span> bajo</strong> <br />
+(destino final)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong><span class="math inline">\(\mathrm{EA}_j\)</span> alto</strong> <br />
+(compra mucho a otras)</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="tcee-verde"><strong>manufacturas de destino intermedio</strong></span> <br />
+(siderurgia, química)</td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-azul"><strong>manufacturas de destino final</strong></span> <br />
+(automóvil, alimentación)</td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong><span class="math inline">\(\mathrm{EA}_j\)</span> bajo</strong> <br />
+(compra poco a otras)</td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-dorado"><strong>producción primaria de destino intermedio</strong></span> <br />
+(minería, energía, agricultura)</td>
+<td style="text-align: center; vertical-align: middle;"><strong>producción primaria de destino final</strong> <br />
+(servicios a los hogares)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="CheneryWatanabe1958"><span class="smallcaps">Chenery</span> y <span class="smallcaps">Watanabe</span> (<a href="#ref-CheneryWatanabe1958" role="doc-biblioref">1958</a>)</span>.</em></p>
+</section>
+<section id="los-coeficientes-de-rasmussen-1956" class="level5">
+<h5>Los coeficientes de <span class="smallcaps">Rasmussen</span> (1956)</h5>
+<ul>
+<li><p><em>Qué miden</em>: los eslabonamientos <em>totales</em>, directos e indirectos, porque usan la inversa de <span class="smallcaps">Leontief</span>, normalizada por su media para comparar ramas <span class="citation" data-cites="Rasmussen1956Studies">(<a href="#ref-Rasmussen1956Studies" role="doc-biblioref"><span class="smallcaps">Rasmussen</span>, 1956</a>)</span>.</p></li>
+<li><p><em>Cómo se calculan</em>: el <strong>poder de dispersión</strong> de la rama <span class="math inline">\(j\)</span> y la <strong>sensibilidad de dispersión</strong> de la rama <span class="math inline">\(i\)</span> son <span id="eq:rasmussen"></span><span class="math display">\[\tag{11}
+\mathrm{PD}_j=\frac{\frac{1}{n}\sum_i r_{ij}}{\frac{1}{n^2}\sum_i\sum_j r_{ij}},\qquad \mathrm{SD}_i=\frac{\frac{1}{n}\sum_j r_{ij}}{\frac{1}{n^2}\sum_i\sum_j r_{ij}}.\]</span></p>
+<ul>
+<li><p>El poder de dispersión es el multiplicador de la rama sobre el multiplicador medio: si <span class="math inline">\(\mathrm{PD}_j&gt;1\)</span>, la rama arrastra a las demás más que la media (hacia atrás).</p></li>
+<li><p>La sensibilidad de dispersión es lo mismo por filas: si <span class="math inline">\(\mathrm{SD}_i&gt;1\)</span>, la rama es arrastrada por la expansión del conjunto más que la media (hacia delante).</p></li>
+</ul></li>
+<li><p><em>Cómo se clasifican</em>: cruzando los 2 índices, las ramas son <em>clave</em> (los 2 mayores que 1), <em>impulsoras</em> (solo el poder), <em>estratégicas o de base</em> (solo la sensibilidad) o <em>independientes</em> (ninguno) (gráfico <a href="#fig:rasmussen">6</a>).</p></li>
+<li><p><em>En el ejemplo</em>: la media de los elementos de la inversa es <span class="math inline">\(3{,}5/4=0{,}875\)</span>, así que <span class="math inline">\(\mathrm{PD}=(1{,}14;\ 0{,}86)\)</span> y <span class="math inline">\(\mathrm{SD}=(0{,}86;\ 1{,}14)\)</span>. La industria es impulsora: compra mucho a los servicios. Los servicios son estratégicos: venden a todos.</p></li>
+<li><p><em>Límites</em>: una rama puede arrastrar mucho a una sola rama y poco a las demás. Por eso <span class="smallcaps">Rasmussen</span> añadió el coeficiente de variación de cada columna y de cada fila de la inversa (cuanto menor, más repartido el efecto), y es habitual ponderar los índices según lo que pesa cada rama en la demanda final.</p></li>
+</ul>
+<figure id="fig:rasmussen">
+<figcaption><span class="etiqueta">Gráfico 6.–</span> Clasificación de las ramas por los coeficientes de <span class="smallcaps">Rasmussen</span></figcaption>
+<img src="../fuentes/3A31/graficos/rasmussen-cuadrantes.svg" style="width:60.0%" loading="lazy" alt="Gráfico 6.– Clasificación de las ramas por los coeficientes de Rasmussen" />
+<div class="fuente">
+<p>Fuente: elaboración propia con el ejemplo de la tabla <a href="#tab:ejemplo">3</a>, a partir de <span class="citation" data-cites="Rasmussen1956Studies"><span class="smallcaps">Rasmussen</span> (<a href="#ref-Rasmussen1956Studies" role="doc-biblioref">1956</a>)</span>.</p>
+</div>
+</figure>
+<ul>
+<li><p><em>Evidencia en España</em>: con la tabla de 2022 y la inversa interior, 14 de las 63 ramas son clave, con el 22 % del VAB (gráfico <a href="#fig:rasmussen-espana">7</a>) <span class="citation" data-cites="INE2025TIODatos">(elaboración propia con <a href="#ref-INE2025TIODatos" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2025a</a>)</span>.</p>
+<ul>
+<li><p>Entre ellas están la alimentación y las bebidas, que es la de más arrastre hacia atrás (1,32), la construcción, el transporte terrestre, el almacenamiento y las telecomunicaciones.</p></li>
+<li><p>Las de más arrastre hacia delante son el comercio al por mayor (2,29), la electricidad y el gas (2,25) y los servicios a edificios y administrativos (2,24): ramas estratégicas, de las que dependen todas.</p></li>
+<li><p>El automóvil es impulsor, y el refino sale bajo hacia atrás porque su insumo principal, el crudo, es importado.</p></li>
+</ul></li>
+</ul>
+<figure id="fig:rasmussen-espana">
+<figcaption><span class="etiqueta">Gráfico 7.–</span> Poder y sensibilidad de dispersión de las ramas de España, 2022</figcaption>
+<img src="../fuentes/3A31/graficos/rasmussen-espana.svg" style="width:80.0%" loading="lazy" alt="Gráfico 7.– Poder y sensibilidad de dispersión de las ramas de España, 2022" />
+<div class="fuente">
+<p>Fuente: elaboración propia con la tabla <em>input-output</em> simétrica de 2022 del INE <span class="citation" data-cites="INE2025TIODatos">(<a href="#ref-INE2025TIODatos" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2025a</a>)</span>; índices de <span class="citation" data-cites="Rasmussen1956Studies"><span class="smallcaps">Rasmussen</span> (<a href="#ref-Rasmussen1956Studies" role="doc-biblioref">1956</a>)</span> con la inversa interior, para las 63 ramas con consumos intermedios.</p>
+</div>
+</figure>
+</section>
+<section id="los-coeficientes-de-streit-1969" class="level5">
+<h5>Los coeficientes de <span class="smallcaps">Streit</span> (1969)</h5>
+<ul>
+<li><p><em>Qué miden</em>: las relaciones <em>rama a rama</em>, para detectar complejos de ramas que se compran y se venden mucho entre sí y tienden a localizarse juntas <span class="citation" data-cites="Streit1969Spatial">(<a href="#ref-Streit1969Spatial" role="doc-biblioref"><span class="smallcaps">Streit</span>, 1969</a>)</span>.</p></li>
+<li><p><em>Cómo se calculan</em>: para cada par de ramas se combinan la parte de las ventas de una que va a la otra y la parte de las compras de una que viene de la otra; su media es el coeficiente de <span class="smallcaps">Streit</span>, entre 0 y 1 (la fórmula, en el anexo <a href="#anexo:extensiones">C</a>).</p></li>
+<li><p><em>Límites</em>: destaca a las ramas que concentran sus compras y ventas entre sí, aunque pesen poco en la economía.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p></li>
+</ul>
+<ul>
+<li><p><em>Enlace</em>: los eslabonamientos miran dentro de un país. Las mismas herramientas, aplicadas a tablas de muchos países, a las emisiones o a las rentas, son hoy el núcleo de la economía aplicada.</p></li>
+</ul>
+</section>
+</section>
+<section id="sec:economia-aplicada" class="level3">
+<h3><span class="numero">II.4.</span> La técnica <em>input-output</em> en estudios de economía aplicada</h3>
+<ul>
+<li><p><em>Conclusión anticipada</em>: el álgebra de (<a href="#eq:contenido">8</a>) sirve para cualquier cosa que se pueda medir por euro producido: trabajo, capital, emisiones o valor añadido de otros países. Son 5 usos principales.</p></li>
+</ul>
+<section id="el-comercio-la-paradoja-de-leontief" class="level5">
+<h5>El comercio: la paradoja de <span class="smallcaps">Leontief</span></h5>
+<ul>
+<li><p><span class="citation" data-cites="Leontief1953Domestic"><span class="smallcaps">Leontief</span> (<a href="#ref-Leontief1953Domestic" role="doc-biblioref">1953</a>)</span> calculó con la tabla de Estados Unidos de 1947 cuánto capital y cuánto trabajo, contando los insumos de los insumos, hacían falta para producir 1 millón de dólares de exportaciones y 1 millón de sustitutos de las importaciones: es <span class="math inline">\(\vec{a}_L^{\top}(I-A)^{-1}\)</span> aplicado al comercio.</p></li>
+<li><p>Los sustitutos de las importaciones usaban unos 18.184 dólares de capital por año-hombre y las exportaciones unos 13.991. El país más abundante en capital del mundo parecía exportar trabajo: es la <strong>paradoja de <span class="smallcaps">Leontief</span></strong> <a data-app="3B05.pdf" href="3B05.html" class="vertema"><span class="vertema">[ver tema 3.B.5]</span></a>.</p></li>
+</ul>
+</section>
+<section id="las-cadenas-globales-de-valor" class="level5">
+<h5>Las cadenas globales de valor</h5>
+<ul>
+<li><p><em>Las tablas multirregionales</em>: enlazando las tablas de muchos países con el comercio bilateral se construyen tablas mundiales: la WIOD <span class="citation" data-cites="Timmer2015WIOD">(<a href="#ref-Timmer2015WIOD" role="doc-biblioref"><span class="smallcaps">Timmer</span> et al., 2015</a>)</span>, las de la OCDE (81 economías, de 1995 a 2022) y las de Eurostat (FIGARO, hasta 2024) <span class="citation" data-cites="OCDE2025TiVA Eurostat2026FIGARO">(<a href="#ref-OCDE2025TiVA" role="doc-biblioref"><span class="smallcaps">OCDE</span>, 2025</a>; <a href="#ref-Eurostat2026FIGARO" role="doc-biblioref"><span class="smallcaps">Eurostat</span>, 2026a</a>)</span>.</p></li>
+<li><p><em>Qué miden</em>: con ellas y con (<a href="#eq:contenido">8</a>) se descomponen las exportaciones brutas en valor añadido nacional y extranjero <span class="citation" data-cites="JohnsonNoguera2012 KoopmanWangWei2014">(<a href="#ref-JohnsonNoguera2012" role="doc-biblioref"><span class="smallcaps">Johnson</span> y <span class="smallcaps">Noguera</span>, 2012</a>; <a href="#ref-KoopmanWangWei2014" role="doc-biblioref"><span class="smallcaps">Koopman</span>, <span class="smallcaps">Wang</span> y <span class="smallcaps">Wei</span>, 2014</a>)</span> <a data-app="https://www.victorgutierrezmarcos.es/oposicion/temario/tema-no-disponible.html?tema=3.B.18" href="../tema-no-disponible.html?tema=3.B.18" class="vertema"><span class="vertema">[ver tema 3.B.18]</span></a>.</p>
+<ul>
+<li><p>El valor añadido extranjero contenido en las exportaciones de un país mide su participación <em>hacia atrás</em> en las cadenas.</p></li>
+<li><p>Su valor añadido contenido en las exportaciones de otros países mide su participación <em>hacia delante</em>.</p></li>
+</ul></li>
+<li><p><em>España</em>: en torno a una cuarta parte del valor de sus exportaciones es valor añadido extranjero, el 25,7 % en 2024, menos que la media simple de la Unión (38,4 %) y solo por encima de Alemania, Croacia y Rumanía; otro 19,9 % es valor añadido español que viaja en las exportaciones de otros países (gráfico <a href="#fig:contenido-importado">8</a>) <a data-app="../cuarto-ejercicio/4A22.pdf" href="../cuarto-ejercicio/4A22.pdf" class="vertema"><span class="vertema">[ver tema 4.A.22]</span></a>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p></li>
+</ul>
+<figure id="fig:contenido-importado">
+<figcaption><span class="etiqueta">Gráfico 8.–</span> Participación en las cadenas globales de valor de los países de la Unión Europea, 2024</figcaption>
+<img src="../fuentes/3A31/graficos/contenido-importado-ue.svg" style="width:85.0%" loading="lazy" alt="Gráfico 8.– Participación en las cadenas globales de valor de los países de la Unión Europea, 2024" />
+<div class="fuente">
+<p>Fuente: Eurostat, indicadores de globalización basados en FIGARO <span class="citation" data-cites="Eurostat2026FIGAROcgv">(<a href="#ref-Eurostat2026FIGAROcgv" role="doc-biblioref"><span class="smallcaps">Eurostat</span>, 2026c</a>)</span>; media simple de la UE-27, cálculo propio. Porcentaje de las exportaciones brutas de cada país.</p>
+</div>
+</figure>
+</section>
+<section id="el-medio-ambiente" class="level5">
+<h5>El medio ambiente</h5>
+<ul>
+<li><p><span class="citation" data-cites="Leontief1970"><span class="smallcaps">Leontief</span> (<a href="#ref-Leontief1970" role="doc-biblioref">1970</a>)</span> añadió a la tabla filas de contaminantes por unidad de producción. Con un vector <span class="math inline">\(\vec{e}\)</span> de emisiones por euro producido, <span class="math inline">\(\vec{e}^{\top}(I-A)^{-1}\vec{d}\)</span> son las <em>emisiones incorporadas</em> en la demanda final.</p></li>
+<li><p>Con tablas multirregionales se calcula la <em>huella de carbono</em> del consumo de un país, distinta de las emisiones de su producción; la diferencia es la que preocupa en la fuga de carbono <a data-app="3B31.pdf" href="3B31.html" class="vertema"><span class="vertema">[ver tema 3.B.31]</span></a>. Las exportaciones españolas de 2024, por ejemplo, generaron en España 87,5 millones de toneladas de CO<span class="math inline">\(_2\)</span> equivalente <span class="citation" data-cites="INE2026TiVA2024">(<a href="#ref-INE2026TiVA2024" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2026e</a>)</span>.</p></li>
+</ul>
+</section>
+<section id="las-matrices-de-contabilidad-social-y-el-equilibrio-general" class="level5">
+<h5>Las matrices de contabilidad social y el equilibrio general</h5>
+<ul>
+<li><p>Una <strong>matriz de contabilidad social</strong> (MCS) amplía la tabla con las cuentas de los sectores institucionales: las rentas que pagan las ramas llegan a los hogares, a las empresas y a las administraciones, que las gastan en la demanda final. Cierra así el flujo circular de la renta <span class="citation" data-cites="PyattRound1979">(<a href="#ref-PyattRound1979" role="doc-biblioref"><span class="smallcaps">Pyatt</span> y <span class="smallcaps">Round</span>, 1979</a>)</span>.</p></li>
+<li><p>Es la base de datos con la que se calibran los modelos de equilibrio general computable, que añaden a la tabla precios relativos y sustitución <a data-app="3A21.pdf" href="3A21.html" class="vertema"><span class="vertema">[ver tema 3.A.21]</span></a>.</p></li>
+</ul>
+</section>
+<section id="las-redes-de-producción" class="level5">
+<h5>Las redes de producción</h5>
+<ul>
+<li><p>Si las ramas se compran unas a otras, una perturbación en una se propaga a sus clientes; el ciclo real ya era multisectorial en <span class="citation" data-cites="LongPlosser1983Real"><span class="smallcaps">Long</span> y <span class="smallcaps">Plosser</span> (<a href="#ref-LongPlosser1983Real" role="doc-biblioref">1983</a>)</span> <a data-app="3A42.pdf" href="3A42.html" class="vertema"><span class="vertema">[ver tema 3.A.42]</span></a>.</p></li>
+<li><p><span class="citation" data-cites="AcemogluEtAl2012Network"><span class="smallcaps">Acemoglu</span> et al. (<a href="#ref-AcemogluEtAl2012Network" role="doc-biblioref">2012</a>)</span> muestran que, si unas pocas ramas abastecen a muchas, sus perturbaciones no se compensan entre sí y generan fluctuaciones agregadas.</p></li>
+<li><p>Con eficiencia, el efecto sobre el PIB de una perturbación de productividad en una rama es, en primera aproximación, el peso de sus ventas en el PIB <span class="citation" data-cites="Hulten1978">(<a href="#ref-Hulten1978" role="doc-biblioref"><span class="smallcaps">Hulten</span>, 1978</a>)</span>; <span class="citation" data-cites="BaqaeeFarhi2019"><span class="smallcaps">Baqaee</span> y <span class="smallcaps">Farhi</span> (<a href="#ref-BaqaeeFarhi2019" role="doc-biblioref">2019</a>)</span> mostraron que, cuando un insumo tiene pocos sustitutos, los efectos de segundo orden pesan mucho más. La escasez de semiconductores de 2021 y la crisis energética de 2022 lo ilustraron.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
+</ul>
+<ul>
+<li><p><em>Recapitulación</em>: con coeficientes fijos, la tabla da 2 modelos gemelos, de cantidades y de precios, con la misma inversa; de ella salen los multiplicadores, los eslabonamientos y el contenido de empleo, importaciones, valor añadido y emisiones de lo que se demanda.</p></li>
+<li><p><em>Enlace</em>: todas estas aplicaciones descansan en supuestos fuertes y en estadísticas que llegan con retraso. Pasamos a valorar para qué sirven hoy las tablas y dónde están sus límites.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="sec:utilidad-limitaciones" class="level2" data-minutos="3′30″">
+<h2 data-minutos="3′30″"><span class="numero">III.</span> Utilidad y limitaciones de las tablas <em>input-output</em><span class="minutos" aria-hidden="true">3′30″</span></h2>
+<ul>
+<li><p><em>Conclusión anticipada</em>: las tablas no han servido para lo que se pensó al principio, planificar una economía, pero hoy son imprescindibles para medirla. Sus límites vienen de las mismas simplificaciones que las hacen útiles y de la estadística con la que se elaboran.</p></li>
+<li><p>Vistos sus usos, valoramos el instrumento.</p></li>
+</ul>
+<section id="sec:utilidad" class="level3">
+<h3><span class="numero">III.1.</span> Utilidad de las tablas en la actualidad</h3>
+<ul>
+<li><p><em>El sueño de la planificación</em>: las primeras tablas nacieron cerca de la idea de planificar.</p>
+<ul>
+<li><p><span class="smallcaps">Leontief</span> se había formado en la Rusia revolucionaria, y <span class="smallcaps">Stone</span> y <span class="smallcaps">James Meade</span> prepararon desde el Gabinete de Guerra británico las primeras estimaciones oficiales de la renta nacional <span class="citation" data-cites="Nobel1977Meade">(<a href="#ref-Nobel1977Meade" role="doc-biblioref"><span class="smallcaps">Nobel Prize Outreach</span>, 1977</a>)</span>.</p></li>
+<li><p>La Unión Soviética parecía demostrar que la planificación funcionaba, y la industrialización por sustitución de importaciones de la posguerra pedía saber qué ramas desarrollar <a data-app="3B28.pdf" href="3B28.html" class="vertema"><span class="vertema">[ver tema 3.B.28]</span></a>.</p></li>
+</ul></li>
+<li><p><em>El límite de la información</em>: la polémica sobre si una economía socialista puede calcular ya lo había señalado <a data-app="3A03.pdf" href="3A03.html" class="vertema"><span class="vertema">[ver tema 3.A.3]</span></a>.</p>
+<ul>
+<li><p><span class="citation" data-cites="Barone1908Ministro"><span class="smallcaps">Barone</span> (<a href="#ref-Barone1908Ministro" role="doc-biblioref">1908</a>)</span> mostró que un planificador podría, en teoría, reproducir el equilibrio competitivo resolviendo las ecuaciones de <span class="smallcaps">Walras</span>.</p></li>
+<li><p><span class="citation" data-cites="Mises1920Wirtschaftsrechnung"><span class="smallcaps">Mises</span> (<a href="#ref-Mises1920Wirtschaftsrechnung" role="doc-biblioref">1920</a>)</span> replicó que sin propiedad ni mercados de los bienes de capital no hay precios con los que calcular, y <span class="citation" data-cites="Lange1936Socialism"><span class="smallcaps">Lange</span> (<a href="#ref-Lange1936Socialism" role="doc-biblioref">1936</a>)</span>, que el planificador podría tantear los precios como el mercado.</p></li>
+<li><p><span class="citation" data-cites="Hayek1945Use"><span class="smallcaps">Hayek</span> (<a href="#ref-Hayek1945Use" role="doc-biblioref">1945</a>)</span> cerró el argumento: el problema no es resolver un sistema de ecuaciones, sino reunir un conocimiento disperso entre millones de personas, que los precios resumen y ninguna tabla recoge.</p></li>
+<li><p>El final de la Unión Soviética confirmó en la práctica la dificultad de planificar una economía compleja.</p></li>
+</ul></li>
+<li><p><em>Los usos de hoy</em>: las tablas sirven para medir, no para planificar.</p>
+<ul>
+<li><p>Los usos <em>estadísticos</em>: equilibrar la contabilidad nacional y fijar el nivel del PIB (<a href="#sec:origen-destino">I.1</a>).</p></li>
+<li><p>Los usos <em>de impacto</em>: la producción, el empleo y las importaciones que arrastra un gasto, un evento o una inversión (<a href="#sec:demanda">II.1</a>).</p></li>
+<li><p>Los usos <em>de precios</em>: la traslación de la energía, de los impuestos o de los salarios (<a href="#sec:precios">II.2</a>).</p></li>
+<li><p>Los usos <em>de estructura</em>: las ramas clave, el comercio en valor añadido, la huella de carbono y la calibración de los modelos de equilibrio general (<a href="#sec:eslabonamientos">II.3</a> y <a href="#sec:economia-aplicada">II.4</a>).</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="sec:limitaciones" class="level3">
+<h3><span class="numero">III.2.</span> Origen de algunas limitaciones</h3>
+<section id="las-hipótesis-de-partida" class="level5">
+<h5>Las hipótesis de partida</h5>
+<ul>
+<li><p><span class="smallcaps">Leontief</span> hizo operativo el equilibrio general de <span class="smallcaps">Walras</span> quitándole la sustitución: coeficientes fijos, sin economías de escala, sin externalidades entre ramas y sin factores escasos. Son la homogeneidad, la proporcionalidad y la aditividad del modelo de demanda (<a href="#sec:demanda">II.1</a>).</p></li>
+<li><p><span class="citation" data-cites="CheneryClark1959"><span class="smallcaps">Chenery</span> y <span class="smallcaps">Clark</span> (<a href="#ref-CheneryClark1959" role="doc-biblioref">1959</a>)</span> presentaron el análisis <em>input-output</em> como una teoría general de la producción simplificada a propósito para poder medirla.</p></li>
+<li><p>La simplificación es deliberada; el riesgo está en olvidarla al sacar conclusiones prácticas:</p>
+<ul>
+<li><p>la agregación de actividades distintas en una rama rompe la homogeneidad;</p></li>
+<li><p>en la realidad las empresas sí sustituyen los inputs que se encarecen.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="limitaciones-de-los-coeficientes-técnicos" class="level5">
+<h5>Limitaciones de los coeficientes técnicos</h5>
+<ul>
+<li><p><em>Son monetarios</em>: cambian con los precios relativos aunque la técnica no cambie (si sube la energía, sube su coeficiente en todas las ramas que la compran). Para comparar años hacen falta tablas a precios constantes.</p></li>
+<li><p><em>Son medias</em>: una rama agrega productos y técnicas distintas, y su coeficiente es la media de todos ellos.</p></li>
+<li><p><em>Envejecen</em>: cambian con el progreso técnico, la sustitución y la escala, así que una tabla de hace 3 años describe una economía que ya no es exactamente la de hoy. «Nadie se baña 2 veces en el mismo río».</p></li>
+</ul>
+</section>
+<section id="sobre-la-utilización-de-coeficientes" class="level5">
+<h5>Sobre la utilización de coeficientes</h5>
+<ul>
+<li><p><em>El modelo es lineal</em>: los efectos son proporcionales al cambio, sea pequeño o enorme. Para un <em>shock</em> pequeño la aproximación es buena; para uno grande, como el cierre del turismo en 2020, exagera, porque las empresas se adaptan.</p></li>
+<li><p><em>El modelo es estático</em>: no hay tiempo ni inversión. El <em>modelo dinámico</em> de <span class="smallcaps">Leontief</span> añade una matriz de capital que convierte la producción de hoy en capacidad de mañana.</p></li>
+<li><p><em>La demanda final es exógena</em>: no responde a los precios ni a las rentas, salvo en el modelo cerrado con hogares (<a href="#sec:demanda">II.1</a>).</p></li>
+<li><p><em>Para actualizar los coeficientes</em> sin hacer otra tabla se usa el <strong>método RAS</strong> de <span class="citation" data-cites="Stone1961"><span class="smallcaps">Stone</span> (<a href="#ref-Stone1961" role="doc-biblioref">1961</a>)</span>: se ajustan las filas y las columnas de la última matriz, multiplicándolas por factores, hasta que cuadren con los totales nuevos de producción y de demanda intermedia. Es barato, pero supone que el cambio afecta por igual a toda una fila o a toda una columna.</p></li>
+</ul>
+</section>
+<section id="limitaciones-estadísticas" class="level5">
+<h5>Limitaciones estadísticas</h5>
+<ul>
+<li><p><em>El retraso</em>: el reglamento del SEC 2010 solo obliga a transmitir la tabla simétrica cada 5 años, aunque el INE la publica cada año desde 2021 <span class="citation" data-cites="INE2025TIO2022">(<a href="#ref-INE2025TIO2022" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2025b</a>)</span>.</p>
+<ul>
+<li><p>La de 2022 se publicó en diciembre de 2025 y la de 2023 está prevista para el 15 de diciembre de 2026 <span class="citation" data-cites="INE2026Calendario">(<a href="#ref-INE2026Calendario" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2026a</a>)</span>: unos 3 años de retraso.</p></li>
+<li><p>Las tablas de origen y destino llegan antes: las de 2023 salieron en septiembre de 2026, con un avance de 2024 en octubre <span class="citation" data-cites="INE2026TOD">(<a href="#ref-INE2026TOD" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2026b</a>)</span>.</p></li>
+</ul></li>
+<li><p><em>El coste</em>: exigen encuestas por productos y supuestos para repartir las producciones secundarias, y las tablas regionales son en muchos casos estimaciones a partir de la nacional.</p></li>
+<li><p><em>Las tablas multirregionales</em> dependen de datos de comercio que no cuadran entre países (lo que uno anota como exportación no coincide con lo que el otro anota como importación); por eso distintas bases dan cifras distintas para lo mismo, como el contenido extranjero de las exportaciones españolas (<a href="#sec:economia-aplicada">II.4</a>).</p></li>
+</ul>
+<ul>
+<li><p><em>Recapitulación</em>: las tablas han pasado de herramienta de planificación a herramienta de medición. Sus límites son los de su sencillez (coeficientes fijos, en valor y lineales) y los de su estadística (publicada con retraso y cara de elaborar).</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="esq:15" class="level2 unnumbered" data-minutos="1′">
+<h2 class="unnumbered" data-minutos="1′">Conclusión<span class="minutos" aria-hidden="true">1′</span></h2>
+<ul>
+<li><p><strong><em>Recapitulación</em></strong>:</p>
+<ul>
+<li><p>Las tablas <em>input-output</em> registran quién compra a quién: las de origen y destino, tal como llegan los datos, y la simétrica, preparada para el análisis.</p></li>
+<li><p>Con coeficientes fijos dan 2 modelos gemelos con una misma inversa de <span class="smallcaps">Leontief</span>: leída por columnas, dice cuánto hay que producir para atender una demanda; leída por filas, cómo se trasladan los costes a los precios.</p></li>
+<li><p>De esa inversa salen los multiplicadores, las ramas clave y el contenido en empleo, importaciones, valor añadido y emisiones de lo que se demanda; sus límites son los de su sencillez y los de su estadística.</p></li>
+</ul></li>
+<li><p><strong><em>Relevancia</em></strong>:</p>
+<ul>
+<li><p>Con la producción repartida en cadenas globales de valor y con <em>shocks</em> de oferta que se propagan, de la pandemia a la energía, saber por dónde se transmite un cambio es una necesidad de la política económica.</p></li>
+</ul></li>
+<li><p><strong><em>Extensiones</em></strong>:</p>
+<ul>
+<li><p>Las tablas son una pieza de la contabilidad nacional <a data-app="3A30.pdf" href="3A30.html" class="vertema"><span class="vertema">[ver tema 3.A.30]</span></a>, y el INE las publica como fuente de la economía española <a data-app="../cuarto-ejercicio/4A01.pdf" href="../cuarto-ejercicio/4A01.pdf" class="vertema"><span class="vertema">[ver tema 4.A.1]</span></a>.</p></li>
+<li><p>Añadiéndoles precios relativos y sustitución se llega a los modelos de equilibrio general computable <a data-app="3A21.pdf" href="3A21.html" class="vertema"><span class="vertema">[ver tema 3.A.21]</span></a>.</p></li>
+<li><p>Sus eslabonamientos están en el origen de la teoría del desarrollo <a data-app="3B28.pdf" href="3B28.html" class="vertema"><span class="vertema">[ver tema 3.B.28]</span></a>, y su versión multirregional mide las cadenas globales de valor <a data-app="https://www.victorgutierrezmarcos.es/oposicion/temario/tema-no-disponible.html?tema=3.B.18" href="../tema-no-disponible.html?tema=3.B.18" class="vertema"><span class="vertema">[ver tema 3.B.18]</span></a> y el lugar de España en ellas <a data-app="../cuarto-ejercicio/4A22.pdf" href="../cuarto-ejercicio/4A22.pdf" class="vertema"><span class="vertema">[ver tema 4.A.22]</span></a>.</p></li>
+</ul></li>
+<li><p><strong><em>Opinión</em></strong>:</p>
+<ul>
+<li><p>Su fuerza es también su debilidad: la linealidad que permite calcularlo todo con una inversa es la que impide ver la sustitución y los precios relativos.</p></li>
+<li><p>Nacieron para planificar y no sirvieron para eso; hoy sirven para algo más modesto y más útil: hacer visibles las interdependencias que el mercado coordina sin que nadie las vea.</p></li>
+</ul></li>
+<li><p><strong><em>Idea final</em></strong>:</p>
+<ul>
+<li><p>Tirando del hilo se saca el ovillo, pero el ovillo tiene un final. El euro del turista se reparte, ronda a ronda, entre todas las ramas, y cada ronda es más pequeña que la anterior, hasta que el euro entero se ha convertido en valor añadido del país o en importaciones.</p></li>
+<li><p>Las tablas <em>input-output</em> dicen hasta dónde llega ese euro: por qué ramas pasa, cuánto empleo deja y cuánto se va fuera.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="anexo:inversa" class="level2 unnumbered">
+<h2 class="unnumbered">A. Anexo: cálculo de la inversa de <span class="smallcaps">Leontief</span></h2>
+<div class="notaopositor">
+<p>Se incluye para entender de dónde salen los números; no se espera que se exponga ante el tribunal.</p>
+</div>
+<ul>
+<li><p><em>El método de la adjunta</em>: la inversa de una matriz cuadrada <span class="math inline">\(B\)</span> con determinante distinto de 0 es la traspuesta de su matriz de cofactores dividida por el determinante, <span class="math inline">\(B^{-1}=\operatorname{adj}(B)/\det B\)</span>. El cofactor del elemento <span class="math inline">\((i,j)\)</span> es <span class="math inline">\((-1)^{i+j}\)</span> por el determinante que queda al quitar la fila <span class="math inline">\(i\)</span> y la columna <span class="math inline">\(j\)</span>.</p></li>
+<li><p><em>Con 2 ramas</em> la fórmula es directa: si <span class="math inline">\(I-A=\begin{pmatrix}\alpha &amp; \beta\\ \gamma &amp; \delta\end{pmatrix}\)</span>, entonces <span class="math display">\[(I-A)^{-1}=\frac{1}{\alpha\delta-\beta\gamma}\begin{pmatrix}\delta &amp; -\beta\\ -\gamma &amp; \alpha\end{pmatrix}.\]</span></p>
+<ul>
+<li><p>En el ejemplo conductor, <span class="math inline">\(I-A=\begin{pmatrix}0{,}8 &amp; -0{,}1\\ -0{,}4 &amp; 0{,}8\end{pmatrix}\)</span>, el determinante es <span class="math inline">\(0{,}64-0{,}04=0{,}6\)</span> y la inversa, <span class="math inline">\(\begin{pmatrix}4/3 &amp; 1/6\\ 2/3 &amp; 4/3\end{pmatrix}\)</span>.</p></li>
+</ul></li>
+<li><p><em>Otro ejemplo de 2 ramas</em>: si cada rama solo compra a la otra, con <span class="math inline">\(A=\begin{pmatrix}0 &amp; 0{,}6\\ 0{,}3 &amp; 0\end{pmatrix}\)</span>, <span class="math display">\[I-A=\begin{pmatrix}1 &amp; -0{,}6\\ -0{,}3 &amp; 1\end{pmatrix},\qquad \det(I-A)=1-0{,}18=0{,}82,\]</span> <span class="math display">\[(I-A)^{-1}=\frac{1}{0{,}82}\begin{pmatrix}1 &amp; 0{,}6\\ 0{,}3 &amp; 1\end{pmatrix}=\begin{pmatrix}1{,}2195 &amp; 0{,}7317\\ 0{,}3659 &amp; 1{,}2195\end{pmatrix}.\]</span></p>
+<ul>
+<li><p>Con una unidad más de demanda final en cada rama, <span class="math inline">\(\vec{d}=(1;\ 1)\)</span>, hay que producir <span class="math inline">\(x_1=1{,}9512\)</span> y <span class="math inline">\(x_2=1{,}5854\)</span>.</p></li>
+<li><p>Sumando la demanda inicial y las 8 primeras rondas de pedidos de la serie (<a href="#eq:serie">7</a>) se llega a <span class="math inline">\(1{,}9502\)</span> y <span class="math inline">\(1{,}5848\)</span>; lo que falta son las rondas siguientes, cada una el 18 % de la de 2 pasos antes (<span class="math inline">\(0{,}6\cdot0{,}3=0{,}18\)</span>). Por eso las rondas se acercan a la inversa sin alcanzarla nunca del todo.</p></li>
+</ul></li>
+<li><p><em>Con 3 ramas</em> (el ejemplo del anexo <a href="#anexo:ejemplo">B</a>): <span class="math display">\[I-A=\begin{pmatrix}0{,}90 &amp; -0{,}20 &amp; -0{,}02\\ -0{,}20 &amp; 0{,}70 &amp; -0{,}10\\ -0{,}10 &amp; -0{,}15 &amp; 0{,}80\end{pmatrix},\qquad \det(I-A)=0{,}4545,\]</span> <span class="math display">\[\operatorname{adj}(I-A)=\begin{pmatrix}0{,}545 &amp; 0{,}163 &amp; 0{,}034\\ 0{,}170 &amp; 0{,}718 &amp; 0{,}094\\ 0{,}100 &amp; 0{,}155 &amp; 0{,}590\end{pmatrix},\qquad (I-A)^{-1}=\begin{pmatrix}1{,}199 &amp; 0{,}359 &amp; 0{,}075\\ 0{,}374 &amp; 1{,}580 &amp; 0{,}207\\ 0{,}220 &amp; 0{,}341 &amp; 1{,}298\end{pmatrix}.\]</span></p>
+<ul>
+<li><p>Por ejemplo, el primer cofactor es <span class="math inline">\(0{,}70\cdot0{,}80-(-0{,}10)(-0{,}15)=0{,}545\)</span>, y <span class="math inline">\(r_{11}=0{,}545/0{,}4545=1{,}199\)</span>.</p></li>
+</ul></li>
+<li><p><em>Con muchas ramas</em>: la inversa se calcula por eliminación de Gauss-Jordan (se escribe <span class="math inline">\([I-A\mid I]\)</span> y se hacen operaciones por filas hasta llegar a <span class="math inline">\([I\mid(I-A)^{-1}]\)</span>), o se aproxima con unas pocas rondas de la serie (<a href="#eq:serie">7</a>).</p></li>
+<li><p><em>Operaciones con la inversa</em>: una vez calculada, cualquier escenario es una multiplicación. En el ejemplo de 3 ramas, <span class="math inline">\((I-A)^{-1}(45;\ 95;\ 160)=(100;\ 200;\ 250)\)</span>, la producción de la tabla; si la demanda de la industria sube 10, la producción sube 10 veces la columna 2 de la inversa: <span class="math inline">\((3{,}6;\ 15{,}8;\ 3{,}4)\)</span>.</p></li>
+</ul>
+</section>
+<section id="anexo:ejemplo" class="level2 unnumbered">
+<h2 class="unnumbered">B. Anexo: los ejemplos completos</h2>
+<section id="anexo:ejemplo-2" class="level3 unnumbered">
+<h3 class="unnumbered">B.1. El ejemplo de 2 ramas</h3>
+<div id="tab:ejemplo-resultados">
+<table>
+<caption><span class="etiqueta">Tabla 6.–</span> Resultados del ejemplo de 2 ramas</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Industria</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Servicios</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Coeficientes técnicos (columna de <span class="math inline">\(A\)</span>)</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(0{,}2;\ 0{,}4\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(0{,}1;\ 0{,}2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Importaciones por unidad, <span class="math inline">\(m_j\)</span></td>
+<td style="text-align: center; vertical-align: middle;">0,10</td>
+<td style="text-align: center; vertical-align: middle;">0,05</td>
+</tr>
+<tr>
+<td style="text-align: left;">Valor añadido por unidad, <span class="math inline">\(v_j\)</span></td>
+<td style="text-align: center; vertical-align: middle;">0,30</td>
+<td style="text-align: center; vertical-align: middle;">0,65</td>
+</tr>
+<tr>
+<td style="text-align: left;">Trabajo por unidad, <span class="math inline">\(a_{Lj}\)</span> (miles por millón)</td>
+<td style="text-align: center; vertical-align: middle;">0,1</td>
+<td style="text-align: center; vertical-align: middle;">0,2</td>
+</tr>
+<tr>
+<td style="text-align: left;">Columna de la inversa</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(4/3;\ 2/3\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(1/6;\ 4/3\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Multiplicador de producción (tipo I)</td>
+<td style="text-align: center; vertical-align: middle;">2</td>
+<td style="text-align: center; vertical-align: middle;">1,5</td>
+</tr>
+<tr>
+<td style="text-align: left;">Multiplicador de producción (tipo II)</td>
+<td style="text-align: center; vertical-align: middle;">3,44</td>
+<td style="text-align: center; vertical-align: middle;">3,11</td>
+</tr>
+<tr>
+<td style="text-align: left;">Suma de la fila de la inversa</td>
+<td style="text-align: center; vertical-align: middle;">1,5</td>
+<td style="text-align: center; vertical-align: middle;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">Multiplicador de empleo (miles por millón)</td>
+<td style="text-align: center; vertical-align: middle;">0,267</td>
+<td style="text-align: center; vertical-align: middle;">0,283</td>
+</tr>
+<tr>
+<td style="text-align: left;">Contenido importado de la demanda final</td>
+<td style="text-align: center; vertical-align: middle;">0,167</td>
+<td style="text-align: center; vertical-align: middle;">0,083</td>
+</tr>
+<tr>
+<td style="text-align: left;">Valor añadido incorporado</td>
+<td style="text-align: center; vertical-align: middle;">0,833</td>
+<td style="text-align: center; vertical-align: middle;">0,917</td>
+</tr>
+<tr>
+<td style="text-align: left;">Poder de dispersión (<span class="smallcaps">Rasmussen</span>)</td>
+<td style="text-align: center; vertical-align: middle;">1,14</td>
+<td style="text-align: center; vertical-align: middle;">0,86</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sensibilidad de dispersión (<span class="smallcaps">Rasmussen</span>)</td>
+<td style="text-align: center; vertical-align: middle;">0,86</td>
+<td style="text-align: center; vertical-align: middle;">1,14</td>
+</tr>
+<tr>
+<td style="text-align: left;">Compras a otras ramas sobre la producción (<span class="math inline">\(\mathrm{EA}_j\)</span>)</td>
+<td style="text-align: center; vertical-align: middle;">0,6</td>
+<td style="text-align: center; vertical-align: middle;">0,3</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ventas a otras ramas sobre la producción (<span class="math inline">\(\mathrm{ED}_i\)</span>)</td>
+<td style="text-align: center; vertical-align: middle;">0,4</td>
+<td style="text-align: center; vertical-align: middle;">0,4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Precio: salarios <span class="math inline">\(+10~\%\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+5{,}7~\%\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+6{,}3~\%\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Precio: salarios <span class="math inline">\(+10~\%\)</span> con márgenes proporcionales</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+7{,}9~\%\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+8{,}8~\%\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Precio: importaciones <span class="math inline">\(+50~\%\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+8{,}3~\%\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+4{,}2~\%\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Precio: industria <span class="math inline">\(+20~\%\)</span> fijado fuera</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+20~\%\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+2{,}5~\%\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia con la tabla <a href="#tab:ejemplo">3</a>.</em></p>
+<ul>
+<li><p>Los resultados están en la tabla <a href="#tab:ejemplo-resultados">6</a>.</p></li>
+<li><p><em>Las 3 vías del PIB</em>: producción, <span class="math inline">\(30+130=160\)</span>; gasto, <span class="math inline">\(100+30+20+30-20=160\)</span>; rentas, <span class="math inline">\(110+50=160\)</span>. Por la dualidad (<a href="#eq:dualidad">10</a>), con precios 1 la demanda final (180) es el valor añadido (160) más las importaciones (20).</p></li>
+<li><p><em>Las rondas</em>: como <span class="math inline">\(A\)</span> tiene un autovalor de 0,4 y otro de 0, cada ronda tras la primera es el 40 % de la anterior, para cualquier demanda inicial. Con <span class="math inline">\(\vec{d}=(0;\ 1)\)</span> (un millón más de servicios), las rondas son <span class="math inline">\((0{,}1;\ 0{,}2)\)</span>, <span class="math inline">\((0{,}04;\ 0{,}08)\)</span>, <span class="math inline">\((0{,}016;\ 0{,}032)\)</span>… y suman la columna 2 de la inversa, <span class="math inline">\((1/6;\ 4/3)\)</span>.</p></li>
+<li><p><em>El empleo total</em>: <span class="math inline">\(\vec{a}_L^{\top}(I-A)^{-1}\vec{d}=0{,}267\cdot60+0{,}283\cdot120=50\)</span> miles, los 10 de la industria y los 40 de los servicios.</p></li>
+</ul>
+</section>
+<section id="anexo:ejemplo-3" class="level3 unnumbered">
+<h3 class="unnumbered">B.2. Un ejemplo de 3 ramas</h3>
+<ul>
+<li><p>Una economía con agricultura, industria y servicios, en millones de euros y a precios básicos, con importaciones solo intermedias y sin impuestos sobre los productos (tabla <a href="#tab:ejemplo3">7</a>). Sirve para practicar con una inversa de 3×3 (anexo <a href="#anexo:inversa">A</a>).</p></li>
+</ul>
+<div id="tab:ejemplo3">
+<table>
+<caption><span class="etiqueta">Tabla 7.–</span> Tabla simétrica de una economía de 3 ramas (millones de euros, precios básicos)</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Agricultura</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Industria</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Servicios</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(C\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;">FBC</th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(X\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Producción</strong> <span class="math inline">\(x_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Agricultura</strong></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">10</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">40</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">5</td>
+<td style="text-align: center; vertical-align: middle;">30</td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;">5</td>
+<td style="text-align: center; vertical-align: middle;">10</td>
+<td style="text-align: center; vertical-align: middle;">100</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Industria</strong></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">20</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">60</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">25</td>
+<td style="text-align: center; vertical-align: middle;">35</td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;">30</td>
+<td style="text-align: center; vertical-align: middle;">30</td>
+<td style="text-align: center; vertical-align: middle;">200</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Servicios</strong></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">10</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">30</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">50</td>
+<td style="text-align: center; vertical-align: middle;">100</td>
+<td style="text-align: center; vertical-align: middle;">40</td>
+<td style="text-align: center; vertical-align: middle;">15</td>
+<td style="text-align: center; vertical-align: middle;">5</td>
+<td style="text-align: center; vertical-align: middle;">250</td>
+</tr>
+<tr>
+<td style="text-align: left;">Importaciones intermedias</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">5</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">30</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">5</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Remuneración de asalariados</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">20</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">25</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">105</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Excedente bruto y renta mixta</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">35</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">15</td>
+<td class="celda-tceesalmon" style="text-align: center; vertical-align: middle;">60</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Producción</strong> <span class="math inline">\(x_j\)</span></td>
+<td style="text-align: center; vertical-align: middle;">100</td>
+<td style="text-align: center; vertical-align: middle;">200</td>
+<td style="text-align: center; vertical-align: middle;">250</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Empleo (miles)</td>
+<td style="text-align: center; vertical-align: middle;">10</td>
+<td style="text-align: center; vertical-align: middle;">8</td>
+<td style="text-align: center; vertical-align: middle;">30</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia (economía ficticia).</em></p>
+<ul>
+<li><p><em>El PIB por las 3 vías</em>: por la producción, <span class="math inline">\(55+40+165=260\)</span>; por el gasto, <span class="math inline">\(165+40+50+45-40=260\)</span>; por las rentas, <span class="math inline">\(150+110=260\)</span>.</p></li>
+<li><p><em>Coeficientes</em>: <span class="math inline">\(A=\begin{pmatrix}0{,}10 &amp; 0{,}20 &amp; 0{,}02\\ 0{,}20 &amp; 0{,}30 &amp; 0{,}10\\ 0{,}10 &amp; 0{,}15 &amp; 0{,}20\end{pmatrix}\)</span>, <span class="math inline">\(\vec{m}=(0{,}05;\ 0{,}15;\ 0{,}02)\)</span> y <span class="math inline">\(\vec{v}=(0{,}55;\ 0{,}20;\ 0{,}66)\)</span>. La industria es la que más compra a otras ramas (0,65 por euro) y la que menos valor añadido genera (0,20).</p></li>
+<li><p><em>Multiplicadores de producción</em>: 1,79 (agricultura), 2,28 (industria) y 1,58 (servicios); por filas, la industria es la más sensible (2,16).</p></li>
+<li><p><em>Rasmussen</em>: con la suma de los elementos de la inversa, 5,652, el poder de dispersión es <span class="math inline">\((0{,}95;\ 1{,}21;\ 0{,}84)\)</span> y la sensibilidad, <span class="math inline">\((0{,}87;\ 1{,}15;\ 0{,}99)\)</span>. La industria es clave; la agricultura y los servicios, independientes.</p></li>
+<li><p><em>Contenido importado y valor añadido</em>: un euro de demanda final de cada rama deja fuera <span class="math inline">\((0{,}12;\ 0{,}26;\ 0{,}06)\)</span> y en el país <span class="math inline">\((0{,}88;\ 0{,}74;\ 0{,}94)\)</span>; en cada rama, las 2 cifras suman 1 (<a href="#eq:contenido">8</a>).</p></li>
+<li><p><em>Coeficientes de <span class="smallcaps">Streit</span></em> (anexo <a href="#anexo:extensiones">C</a>): agricultura-industria 0,43; industria-servicios 0,28; agricultura-servicios 0,13. El par agricultura-industria es el complejo más ligado: el agroalimentario.</p></li>
+</ul>
+</section>
+</section>
+<section id="anexo:extensiones" class="level2 unnumbered">
+<h2 class="unnumbered">C. Anexo: extensiones de los modelos</h2>
+<section id="el-modelo-cerrado-con-hogares-y-los-multiplicadores-de-tipo-ii" class="level5">
+<h5>El modelo cerrado con hogares y los multiplicadores de tipo II</h5>
+<ul>
+<li><p>Se añade a <span class="math inline">\(A\)</span> una fila con la remuneración de asalariados por unidad de producción y una columna con el consumo de los hogares por unidad de esa renta; los hogares pasan a ser una rama más.</p></li>
+<li><p>En el ejemplo de 2 ramas, la fila es <span class="math inline">\((0{,}2;\ 0{,}45)\)</span> y, si los hogares gastan el 80 % de sus salarios repartido como su consumo de la tabla (20 y 80), la columna es <span class="math inline">\(0{,}8\cdot(0{,}2;\ 0{,}8)=(0{,}16;\ 0{,}64)\)</span>: <span class="math display">\[\bar A=\begin{pmatrix}0{,}2 &amp; 0{,}1 &amp; 0{,}16\\ 0{,}4 &amp; 0{,}2 &amp; 0{,}64\\ 0{,}2 &amp; 0{,}45 &amp; 0\end{pmatrix},\qquad (I-\bar A)^{-1}\simeq\begin{pmatrix}1{,}69 &amp; 0{,}57 &amp; 0{,}63\\ 1{,}75 &amp; 2{,}54 &amp; 1{,}90\\ 1{,}12 &amp; 1{,}26 &amp; 1{,}98\end{pmatrix}.\]</span></p></li>
+<li><p>Sumando en cada columna las 2 primeras filas (las ramas) salen los multiplicadores de tipo II: 3,44 en la industria y 3,11 en los servicios, frente a 2 y 1,5 de tipo I. La razón entre los 2 es mayor en los servicios (2,07 frente a 1,72), porque pagan más salarios por euro producido.</p></li>
+<li><p>El tipo II es una cota superior: supone que todo el salario adicional se gasta igual que el de antes y que no hay ahorro, impuestos ni importaciones de consumo distintos de los de la tabla <span class="citation" data-cites="MillerBlair2022">(<a href="#ref-MillerBlair2022" role="doc-biblioref"><span class="smallcaps">Miller</span> y <span class="smallcaps">Blair</span>, 2022, cap. 6</a>)</span>.</p></li>
+</ul>
+</section>
+<section id="una-rama-con-precio-fijado-fuera" class="level5">
+<h5>Una rama con precio fijado fuera</h5>
+<ul>
+<li><p>Se ordena la rama <span class="math inline">\(k\)</span> la última y se parten <span class="math inline">\(A\)</span> y <span class="math inline">\(\vec{p}\)</span>: <span class="math inline">\(A_{-k,-k}\)</span> es la matriz sin la fila ni la columna <span class="math inline">\(k\)</span>, y <span class="math inline">\(\vec{a}_{k,-k}^{\top}\)</span> la fila <span class="math inline">\(k\)</span> sin su elemento propio. Las ecuaciones de las demás ramas son <span class="math display">\[\vec{p}_{-k}^{\top}=\vec{p}_{-k}^{\top}A_{-k,-k}+p_k\,\vec{a}_{k,-k}^{\top}+\vec{v}_{-k}^{\top}\quad\Longrightarrow\quad\vec{p}_{-k}^{\top}=\bigl(p_k\,\vec{a}_{k,-k}^{\top}+\vec{v}_{-k}^{\top}\bigr)(I-A_{-k,-k})^{-1}.\]</span></p></li>
+<li><p>La ecuación de la rama <span class="math inline">\(k\)</span> se abandona: su excedente absorbe la diferencia entre el precio fijado y su coste. En variaciones, <span class="math inline">\(\Delta\vec{p}_{-k}^{\top}=\Delta p_k\,\vec{a}_{k,-k}^{\top}(I-A_{-k,-k})^{-1}\)</span>.</p></li>
+<li><p>En el ejemplo de 2 ramas, con la industria fijada fuera, <span class="math inline">\(\Delta p_2=\Delta p_1\,a_{12}/(1-a_{22})=0{,}2\cdot0{,}1/0{,}8=0{,}025\)</span>.</p></li>
+</ul>
+</section>
+<section id="márgenes-proporcionales" class="level5">
+<h5>Márgenes proporcionales</h5>
+<ul>
+<li><p>Si el excedente por unidad es una proporción del precio, <span class="math inline">\(k_jp_j\)</span>, la ecuación de la rama <span class="math inline">\(j\)</span> es <span class="math display">\[p_j=\sum_i a_{ij}p_i+p^{\mathrm M}m_j+v_{\mathrm{RA},j}+k_jp_j,\]</span> y en matrices <span class="math inline">\(\vec{p}^{\top}\bigl(I-A-\operatorname{diag}(\vec{k})\bigr)=\bigl(\vec{v}_{\mathrm{RA}}+p^{\mathrm M}\vec{m}\bigr)^{\top}\)</span>. Si los otros impuestos netos sobre la producción también son proporcionales, se suman a <span class="math inline">\(\vec{k}\)</span>.</p></li>
+<li><p>La solución es no negativa si cada columna de <span class="math inline">\(A+\operatorname{diag}(\vec{k})\)</span> suma menos de 1, lo que se cumple porque los salarios y las importaciones son positivos.</p></li>
+<li><p>En el ejemplo de 2 ramas, <span class="math inline">\(\vec{k}=(0{,}1;\ 0{,}2)\)</span> y <span class="math inline">\(I-A-\operatorname{diag}(\vec{k})=\begin{pmatrix}0{,}7 &amp; -0{,}1\\ -0{,}4 &amp; 0{,}6\end{pmatrix}\)</span>, con determinante 0,38. Con los precios base, <span class="math inline">\((0{,}3;\ 0{,}5)\)</span> por su inversa da <span class="math inline">\((1;\ 1)\)</span>; con los salarios un 10 % más altos, <span class="math inline">\(\Delta\vec{v}_{\mathrm{RA}}=(0{,}02;\ 0{,}045)\)</span> y <span class="math inline">\(\Delta\vec{p}=(0{,}079;\ 0{,}088)\)</span>.</p></li>
+</ul>
+</section>
+<section id="la-identidad-de-los-2-modelos" class="level5">
+<h5>La identidad de los 2 modelos</h5>
+<ul>
+<li><p>Multiplicando por la derecha (<a href="#eq:modelo-precios">9</a>), con importaciones, por <span class="math inline">\(\vec{x}\)</span>, y por la izquierda (<a href="#eq:modelo-demanda">6</a>) por <span class="math inline">\(\vec{p}^{\top}\)</span>: <span class="math display">\[\vec{p}^{\top}\vec{x}=\vec{p}^{\top}A\vec{x}+\vec{v}^{\top}\vec{x}+p^{\mathrm M}\vec{m}^{\top}\vec{x},\qquad \vec{p}^{\top}\vec{x}=\vec{p}^{\top}A\vec{x}+\vec{p}^{\top}\vec{d},\]</span> de donde <span class="math inline">\(\vec{p}^{\top}\vec{d}=\vec{v}^{\top}\vec{x}+p^{\mathrm M}\vec{m}^{\top}\vec{x}\)</span>: el valor de la demanda final es el valor añadido más las importaciones intermedias.</p></li>
+<li><p>En variaciones, con cantidades dadas, <span class="math inline">\(\Delta\vec{p}^{\top}\vec{d}=\Delta\vec{v}^{\top}\vec{x}\)</span>: una subida de costes se traslada entera a la demanda final. En el ejemplo, <span class="math inline">\(11/180=6{,}1~\%\)</span>.<span class="findemo">∎</span></p></li>
+</ul>
+</section>
+<section id="los-coeficientes-de-streit" class="level5">
+<h5>Los coeficientes de <span class="smallcaps">Streit</span></h5>
+<ul>
+<li><p>Para 2 ramas <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> se calculan 4 ligazones con los consumos intermedios:</p>
+<ul>
+<li><p>de oferta, <span class="math inline">\(z_{ij}/\sum_k z_{ik}\)</span> y <span class="math inline">\(z_{ji}/\sum_k z_{jk}\)</span>: la parte de las ventas intermedias de cada rama que va a la otra;</p></li>
+<li><p>de demanda, <span class="math inline">\(z_{ij}/\sum_k z_{kj}\)</span> y <span class="math inline">\(z_{ji}/\sum_k z_{ki}\)</span>: la parte de las compras intermedias de cada rama que viene de la otra.</p></li>
+</ul></li>
+<li><p>El <em>coeficiente de <span class="smallcaps">Streit</span></em> es su media, entre 0 y 1 y simétrico; su suma para una rama, con todas las demás, es su <em>ligazón global</em>.</p></li>
+<li><p>En el ejemplo de 3 ramas, agricultura-industria: <span class="math inline">\((40/55+20/105+40/130+20/40)/4=0{,}43\)</span>.</p></li>
+</ul>
+</section>
+<section id="el-modelo-de-oferta-de-ghosh-y-la-extracción-hipotética" class="level5">
+<h5>El modelo de oferta de <span class="smallcaps">Ghosh</span> y la extracción hipotética</h5>
+<ul>
+<li><p><span class="citation" data-cites="Ghosh1958Input"><span class="smallcaps">Ghosh</span> (<a href="#ref-Ghosh1958Input" role="doc-biblioref">1958</a>)</span> usa coeficientes de destino, <span class="math inline">\(b_{ij}\equiv z_{ij}/x_i\)</span> (la parte de las ventas de <span class="math inline">\(i\)</span> que va a <span class="math inline">\(j\)</span>), y toma como dato el valor añadido (los inputs primarios): <span class="math inline">\(\vec{x}^{\top}=\vec{x}^{\top}B+\vec{w}^{\top}\Rightarrow\vec{x}^{\top}=\vec{w}^{\top}(I-B)^{-1}\)</span>, con <span class="math inline">\(\vec{w}\)</span> los inputs primarios de cada rama.</p>
+<ul>
+<li><p>Las sumas por filas de <span class="math inline">\((I-B)^{-1}\)</span> son la medida de eslabonamientos hacia delante que recomiendan <span class="citation" data-cites="MillerBlair2022"><span class="smallcaps">Miller</span> y <span class="smallcaps">Blair</span> (<a href="#ref-MillerBlair2022" role="doc-biblioref">2022, cap. 12</a>)</span>.</p></li>
+<li><p>Como modelo de cantidades es poco creíble <span class="citation" data-cites="Oosterhaven1988">(<a href="#ref-Oosterhaven1988" role="doc-biblioref"><span class="smallcaps">Oosterhaven</span>, 1988</a>)</span>; <span class="citation" data-cites="Dietzenbacher1997"><span class="smallcaps">Dietzenbacher</span> (<a href="#ref-Dietzenbacher1997" role="doc-biblioref">1997</a>)</span> mostró que se puede leer como un modelo de precios.</p></li>
+</ul></li>
+<li><p>La <em>extracción hipotética</em> mide la importancia de una rama por lo que caería la producción total si se suprimieran sus compras y ventas intermedias: se recalcula la inversa sin ellas y se compara con la original <span class="citation" data-cites="MillerBlair2022">(<a href="#ref-MillerBlair2022" role="doc-biblioref"><span class="smallcaps">Miller</span> y <span class="smallcaps">Blair</span>, 2022, cap. 12</a>)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="anexo:test" class="level2 unnumbered">
+<h2 class="unnumbered">D. Anexo: aspectos para el test</h2>
+<ul>
+<li><p>En el banco del primer ejercicio han salido 3 preguntas de este tema, y la exposición permite contestarlas:</p>
+<ul>
+<li><p>qué indica la suma de la columna <span class="math inline">\(j\)</span> de la inversa de <span class="smallcaps">Leontief</span> en una economía cerrada: el aumento de la producción de todas las ramas cuando sube en una unidad la demanda final de la rama <span class="math inline">\(j\)</span> (<a href="#sec:demanda">II.1</a>);</p></li>
+<li><p>qué hacen las matrices de contabilidad social: cerrar el flujo circular de la renta, relacionando los inputs primarios con la demanda final (<a href="#sec:economia-aplicada">II.4</a>);</p></li>
+<li><p>qué estudian los modelos de redes de producción de <span class="citation" data-cites="AcemogluEtAl2012Network"><span class="smallcaps">Acemoglu</span> et al. (<a href="#ref-AcemogluEtAl2012Network" role="doc-biblioref">2012</a>)</span>: cómo una perturbación de productividad en una rama se propaga a las demás (<a href="#sec:economia-aplicada">II.4</a>).</p></li>
+</ul></li>
+<li><p>La paradoja de <span class="smallcaps">Leontief</span> se pregunta con el comercio internacional <a data-app="3B05.pdf" href="3B05.html" class="vertema"><span class="vertema">[ver tema 3.B.5]</span></a>.</p></li>
+<li><p>Preguntas de test sobre este tema, en el simulador:</p>
+<ul>
+<li><p><a href="https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html" class="uri">https://www.<wbr>victorgutierrezmarcos.<wbr>es/<wbr>oposicion/<wbr>temario/<wbr>primer-<wbr>ejercicio/<wbr>test/<wbr>simulador.<wbr>html</a></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="bibliografia" class="level2 unnumbered">
+<h2 class="unnumbered">Bibliografía</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-AcemogluEtAl2012Network" class="csl-entry" role="listitem">
+Acemoglu, Daron, Vasco M. Carvalho, Asuman Ozdaglar y Alireza Tahbaz-Salehi (2012). <span>«The Network Origins of Aggregate Fluctuations»</span>. <em>Econometrica</em> 80 (5): 1977-2016.
+</div>
+<div id="ref-AlcaideEtAl1958Estructura" class="csl-entry" role="listitem">
+Alcaide Inchausti, Ángel et al. (1958). <em>La estructura de la economía española: tabla «input-output»</em>. Madrid: Instituto de Estudios Políticos.
+</div>
+<div id="ref-ArceEtAl2024What" class="csl-entry" role="listitem">
+Arce, Óscar, Matteo Ciccarelli, Antoine Kornprobst y Carlos Montes-Galdón (2024). <span>«What Caused the Euro Area Post-Pandemic Inflation? An Application of Bernanke and Blanchard (2023)»</span>. ECB Occasional Paper Series 343. Banco Central Europeo. <a href="https://doi.org/10.2866/361869">https://doi.<wbr>org/<wbr>10.<wbr>2866/<wbr>361869</a>.
+</div>
+<div id="ref-BCE2026CalidadBP" class="csl-entry" role="listitem">
+Banco Central Europeo (2026). <span>«Euro area and national balance of payments and international investment position statistics. Quality Report (data to Q2 2025)»</span>. 2026. <a href="https://www.ecb.europa.eu/press/bopips/html/ecb.bopips202606.en.html">https://www.<wbr>ecb.<wbr>europa.<wbr>eu/<wbr>press/<wbr>bopips/<wbr>html/<wbr>ecb.<wbr>bopips202606.<wbr>en.<wbr>html</a>.
+</div>
+<div id="ref-BaqaeeFarhi2019" class="csl-entry" role="listitem">
+Baqaee, David Rezza y Emmanuel Farhi (2019). <span>«The Macroeconomic Impact of Microeconomic Shocks: Beyond <span>Hulten</span>’s Theorem»</span>. <em>Econometrica</em> 87 (4): 1155-1203. <a href="https://doi.org/10.3982/ECTA15202">https://doi.<wbr>org/<wbr>10.<wbr>3982/<wbr>ECTA15202</a>.
+</div>
+<div id="ref-Barone1908Ministro" class="csl-entry" role="listitem">
+Barone, Enrico (1908). <span>«Il Ministro della Produzione nello Stato Collettivista»</span>. <em>Giornale degli Economisti</em>.
+</div>
+<div id="ref-BrinPage1998" class="csl-entry" role="listitem">
+Brin, Sergey y Lawrence Page (1998). <span>«The Anatomy of a Large-Scale Hypertextual Web Search Engine»</span>. <em>Computer Networks and ISDN Systems</em> 30 (1-7): 107-17. <a href="https://doi.org/10.1016/S0169-7552(98)00110-X">https://doi.<wbr>org/<wbr>10.<wbr>1016/<wbr>S0169-<wbr>7552(98)00110-<wbr>X</a>.
+</div>
+<div id="ref-CheneryClark1959" class="csl-entry" role="listitem">
+Chenery, Hollis B. y Paul G. Clark (1959). <em>Interindustry Economics</em>. Nueva York: Wiley.
+</div>
+<div id="ref-CheneryWatanabe1958" class="csl-entry" role="listitem">
+Chenery, Hollis B. y Tsunehiko Watanabe (1958). <span>«International Comparisons of the Structure of Production»</span>. <em>Econometrica</em> 26 (4): 487-521. <a href="https://doi.org/10.2307/1907514">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1907514</a>.
+</div>
+<div id="ref-Clapham1922Empty" class="csl-entry" role="listitem">
+Clapham, John H. (1922). <span>«Of Empty Economic Boxes»</span>. <em>The Economic Journal</em> 32 (127): 305-14. <a href="https://doi.org/10.2307/2222943">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>2222943</a>.
+</div>
+<div id="ref-Dietzenbacher1997" class="csl-entry" role="listitem">
+Dietzenbacher, Erik (1997). <span>«In Vindication of the <span>Ghosh</span> Model: A Reinterpretation as a Price Model»</span>. <em>Journal of Regional Science</em> 37 (4): 629-51.
+</div>
+<div id="ref-Eurostat2008Manual" class="csl-entry" role="listitem">
+Eurostat (2008). <em>Eurostat Manual of Supply, Use and Input-Output Tables</em>. Methodologies y Working Papers, KS-RA-07-013. Luxemburgo: Oficina de Publicaciones Oficiales de las Comunidades Europeas. <a href="https://ec.europa.eu/eurostat/documents/3859598/5902113/KS-RA-07-013-EN.PDF/b0b3d71e-3930-4442-94be-70b36cea9b39">https://ec.<wbr>europa.<wbr>eu/<wbr>eurostat/<wbr>documents/<wbr>3859598/<wbr>5902113/<wbr>KS-<wbr>RA-<wbr>07-<wbr>013-<wbr>EN.<wbr>PDF/<wbr>b0b3d71e-<wbr>3930-<wbr>4442-<wbr>94be-<wbr>70b36cea9b39</a>.
+</div>
+<div id="ref-Eurostat2013SEC2010" class="csl-entry" role="listitem">
+Eurostat (2013). <em>European System of Accounts: ESA 2010</em>. KS-02-13-269. Luxemburgo: Oficina de Publicaciones de la Unión Europea. <a href="https://ec.europa.eu/eurostat/documents/3859598/5925693/KS-02-13-269-EN.PDF/44cd9d01-bc64-40e5-bd40-d17df0c69334">https://ec.<wbr>europa.<wbr>eu/<wbr>eurostat/<wbr>documents/<wbr>3859598/<wbr>5925693/<wbr>KS-<wbr>02-<wbr>13-<wbr>269-<wbr>EN.<wbr>PDF/<wbr>44cd9d01-<wbr>bc64-<wbr>40e5-<wbr>bd40-<wbr>d17df0c69334</a>.
+</div>
+<div id="ref-Eurostat2026FIGARO" class="csl-entry" role="listitem">
+Eurostat (2026a). <span>«EU inter-country supply, use and input-output tables (FIGARO): database»</span>. 2026. <a href="https://ec.europa.eu/eurostat/web/esa-supply-use-input-tables/database">https://ec.<wbr>europa.<wbr>eu/<wbr>eurostat/<wbr>web/<wbr>esa-<wbr>supply-<wbr>use-<wbr>input-<wbr>tables/<wbr>database</a>.
+</div>
+<div id="ref-Eurostat2026nama10gdp" class="csl-entry" role="listitem">
+Eurostat (2026b). <span>«GDP and main components (output, expenditure and income) [nama_10_gdp]»</span>. 2026. <a href="https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table">https://ec.<wbr>europa.<wbr>eu/<wbr>eurostat/<wbr>databrowser/<wbr>view/<wbr>nama_<wbr>10_<wbr>gdp/<wbr>default/<wbr>table</a>.
+</div>
+<div id="ref-Eurostat2026FIGAROcgv" class="csl-entry" role="listitem">
+Eurostat (2026c). <span>«Global value chain participation – EU country perspective (FIGARO application) [naio_10_fggvcm]»</span>. 2026. <a href="https://ec.europa.eu/eurostat/databrowser/view/naio_10_fggvcm/default/table">https://ec.<wbr>europa.<wbr>eu/<wbr>eurostat/<wbr>databrowser/<wbr>view/<wbr>naio_<wbr>10_<wbr>fggvcm/<wbr>default/<wbr>table</a>.
+</div>
+<div id="ref-Franceschet2011" class="csl-entry" role="listitem">
+Franceschet, Massimo (2011). <span>«<span>PageRank</span>: Standing on the Shoulders of Giants»</span>. <em>Communications of the ACM</em> 54 (6): 92-101. <a href="https://doi.org/10.1145/1953122.1953146">https://doi.<wbr>org/<wbr>10.<wbr>1145/<wbr>1953122.<wbr>1953146</a>.
+</div>
+<div id="ref-Ghosh1958Input" class="csl-entry" role="listitem">
+Ghosh, Ambica (1958). <span>«Input-Output Approach in an Allocation System»</span>. <em>Economica</em> 25 (97): 58-64. <a href="https://doi.org/10.2307/2550694">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>2550694</a>.
+</div>
+<div id="ref-HawkinsSimon1949" class="csl-entry" role="listitem">
+Hawkins, David y Herbert A. Simon (1949). <span>«Note: Some Conditions of Macroeconomic Stability»</span>. <em>Econometrica</em> 17 (3/4): 245-48. <a href="https://doi.org/10.2307/1905526">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1905526</a>.
+</div>
+<div id="ref-Hayek1945Use" class="csl-entry" role="listitem">
+Hayek, Friedrich A. (1945). <span>«The Use of Knowledge in Society»</span>. <em>American Economic Review</em> 35 (4): 519-30.
+</div>
+<div id="ref-Hirschman1958" class="csl-entry" role="listitem">
+Hirschman, Albert O. (1958). <em>The Strategy of Economic Development</em>. New Haven: Yale University Press.
+</div>
+<div id="ref-Hulten1978" class="csl-entry" role="listitem">
+Hulten, Charles R. (1978). <span>«Growth Accounting with Intermediate Inputs»</span>. <em>The Review of Economic Studies</em> 45 (3): 511-18. <a href="https://doi.org/10.2307/2297252">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>2297252</a>.
+</div>
+<div id="ref-IbanezdeAldecoa2023" class="csl-entry" role="listitem">
+Ibáñez de Aldecoa Fuster, Javier (2023). <span>«Determinantes de la inflación española en 2023: efectos indirectos y alimentos»</span>. CaixaBank Research. 2023. <a href="https://www.caixabankresearch.com/es/node/11342">https://www.<wbr>caixabankresearch.<wbr>com/<wbr>es/<wbr>node/<wbr>11342</a>.
+</div>
+<div id="ref-INE2025TIODatos" class="csl-entry" role="listitem">
+Instituto Nacional de Estadística (2025a). <span>«Contabilidad Nacional Anual de España: Tablas Input-Output 2022 (tablas 1-8: tabla a precios básicos, producción interior, importaciones, coeficientes técnicos y matrices inversas)»</span>. 2025. <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=1254736177058&amp;menu=resultados&amp;idp=1254735576581">https://www.<wbr>ine.<wbr>es/<wbr>dyngs/<wbr>INEbase/<wbr>es/<wbr>operacion.<wbr>htm?<wbr>c=<wbr>Estadistica_<wbr>C&amp;<wbr>cid=<wbr>1254736177058&amp;<wbr>menu=<wbr>resultados&amp;<wbr>idp=<wbr>1254735576581</a>.
+</div>
+<div id="ref-INE2025TIO2022" class="csl-entry" role="listitem">
+Instituto Nacional de Estadística (2025b). <span>«Contabilidad Nacional Anual de España: Tablas Input-Output. Revisión Estadística 2024. Año 2022»</span>. 2025. <a href="https://www.ine.es/dyngs/Prensa/TIO2022.htm">https://www.<wbr>ine.<wbr>es/<wbr>dyngs/<wbr>Prensa/<wbr>TIO2022.<wbr>htm</a>.
+</div>
+<div id="ref-INE2026Calendario" class="csl-entry" role="listitem">
+Instituto Nacional de Estadística (2026a). <span>«Calendario de disponibilidad de estadísticas del INE 2026»</span>. 2026. <a href="https://www.ine.es/dynt3/Calendario/calenHTML.htm">https://www.<wbr>ine.<wbr>es/<wbr>dynt3/<wbr>Calendario/<wbr>calenHTML.<wbr>htm</a>.
+</div>
+<div id="ref-INE2026TOD" class="csl-entry" role="listitem">
+Instituto Nacional de Estadística (2026b). <span>«Contabilidad Nacional Anual de España: Tablas de Origen y Destino. Revisión Estadística 2024. Años 2023 y 2024 (avance)»</span>. 2026. <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=1254736177059&amp;menu=resultados&amp;idp=1254735576581">https://www.<wbr>ine.<wbr>es/<wbr>dyngs/<wbr>INEbase/<wbr>es/<wbr>operacion.<wbr>htm?<wbr>c=<wbr>Estadistica_<wbr>C&amp;<wbr>cid=<wbr>1254736177059&amp;<wbr>menu=<wbr>resultados&amp;<wbr>idp=<wbr>1254735576581</a>.
+</div>
+<div id="ref-INE2026CNTRDemanda" class="csl-entry" role="listitem">
+Instituto Nacional de Estadística (2026c). <span>«Contabilidad Nacional Trimestral de España: principales agregados. PIB pm. Demanda (precios corrientes) (tabla 67823)»</span>. 2026. <a href="https://www.ine.es/jaxiT3/Tabla.htm?t=67823">https://www.<wbr>ine.<wbr>es/<wbr>jaxiT3/<wbr>Tabla.<wbr>htm?<wbr>t=<wbr>67823</a>.
+</div>
+<div id="ref-INE2026FRONTUR2025" class="csl-entry" role="listitem">
+Instituto Nacional de Estadística (2026d). <span>«Estadística de Movimientos Turísticos en Fronteras (<span>FRONTUR</span>). Diciembre 2025 y año 2025. Datos provisionales»</span>. 3 de febrero de 2026. <a href="https://www.ine.es/dyngs/Prensa/FRONTUR1225.htm">https://www.<wbr>ine.<wbr>es/<wbr>dyngs/<wbr>Prensa/<wbr>FRONTUR1225.<wbr>htm</a>.
+</div>
+<div id="ref-INE2026TiVA2024" class="csl-entry" role="listitem">
+Instituto Nacional de Estadística (2026e). <span>«Panel de Indicadores de Comercio Internacional de Valor Añadido (<span>TiVA</span>). Año 2024»</span>. 20 de julio de 2026. <a href="https://www.ine.es/dyngs/Prensa/TiVA2024.htm">https://www.<wbr>ine.<wbr>es/<wbr>dyngs/<wbr>Prensa/<wbr>TiVA2024.<wbr>htm</a>.
+</div>
+<div id="ref-JohnsonNoguera2012" class="csl-entry" role="listitem">
+Johnson, Robert C. y Guillermo Noguera (2012). <span>«Accounting for Intermediates: Production Sharing and Trade in Value Added»</span>. <em>Journal of International Economics</em> 86 (2): 224-36. <a href="https://doi.org/10.1016/j.jinteco.2011.10.003">https://doi.<wbr>org/<wbr>10.<wbr>1016/<wbr>j.<wbr>jinteco.<wbr>2011.<wbr>10.<wbr>003</a>.
+</div>
+<div id="ref-Keynes1936" class="csl-entry" role="listitem">
+Keynes, John Maynard (1936). <em>The General Theory of Employment, Interest and Money</em>. Londres: Macmillan.
+</div>
+<div id="ref-Kohli2001Leontief" class="csl-entry" role="listitem">
+Kohli, Martin C. (2001). <span>«The Leontief-BLS Partnership: A New Framework for Measurement»</span>. <em>Monthly Labor Review</em> 124 (6): 29-37. <a href="https://www.bls.gov/opub/mlr/2001/06/art3full.pdf">https://www.<wbr>bls.<wbr>gov/<wbr>opub/<wbr>mlr/<wbr>2001/<wbr>06/<wbr>art3full.<wbr>pdf</a>.
+</div>
+<div id="ref-KoopmanWangWei2014" class="csl-entry" role="listitem">
+Koopman, Robert, Zhi Wang y Shang-Jin Wei (2014). <span>«Tracing Value-Added and Double Counting in Gross Exports»</span>. <em>American Economic Review</em> 104 (2): 459-94. <a href="https://doi.org/10.1257/aer.104.2.459">https://doi.<wbr>org/<wbr>10.<wbr>1257/<wbr>aer.<wbr>104.<wbr>2.<wbr>459</a>.
+</div>
+<div id="ref-Lacey2011" class="csl-entry" role="listitem">
+Lacey, Jim (2011). <em>Keep From All Thoughtful Men: How <span>U.S.</span> Economists Won World War <span>II</span></em>. Annapolis: Naval Institute Press.
+</div>
+<div id="ref-Lange1936Socialism" class="csl-entry" role="listitem">
+Lange, Oskar (1936). <span>«On the Economic Theory of Socialism: Part One»</span>. <em>Review of Economic Studies</em> 4 (1): 53-71.
+</div>
+<div id="ref-Leontief1936Quantitative" class="csl-entry" role="listitem">
+Leontief, Wassily W. (1936). <span>«Quantitative Input and Output Relations in the Economic Systems of the United States»</span>. <em>The Review of Economic Statistics</em> 18 (3): 105-25. <a href="https://doi.org/10.2307/1927837">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1927837</a>.
+</div>
+<div id="ref-Leontief1941" class="csl-entry" role="listitem">
+Leontief, Wassily W. (1941). <em>The Structure of American Economy, 1919-1929</em>. Cambridge (Massachusetts): Harvard University Press.
+</div>
+<div id="ref-Leontief1951Input" class="csl-entry" role="listitem">
+Leontief, Wassily W. (1951). <span>«Input-Output Economics»</span>. <em>Scientific American</em> 185 (4): 15-21. <a href="https://doi.org/10.1038/scientificamerican1051-15">https://doi.<wbr>org/<wbr>10.<wbr>1038/<wbr>scientificamerican1051-<wbr>15</a>.
+</div>
+<div id="ref-Leontief1953Domestic" class="csl-entry" role="listitem">
+Leontief, Wassily W. (1953). <span>«Domestic Production and Foreign Trade: The American Capital Position Re-Examined»</span>. <em>Proceedings of the American Philosophical Society</em> 97 (4): 332-49.
+</div>
+<div id="ref-Leontief1970" class="csl-entry" role="listitem">
+Leontief, Wassily W. (1970). <span>«Environmental Repercussions and the Economic Structure: An Input-Output Approach»</span>. <em>The Review of Economics and Statistics</em> 52 (3): 262-71. <a href="https://doi.org/10.2307/1926294">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1926294</a>.
+</div>
+<div id="ref-Leontief1971Theoretical" class="csl-entry" role="listitem">
+Leontief, Wassily W. (1971). <span>«Theoretical Assumptions and Nonobserved Facts»</span>. <em>American Economic Review</em> 61 (1): 1-7.
+</div>
+<div id="ref-LongPlosser1983Real" class="csl-entry" role="listitem">
+Long, John B. y Charles I. Plosser (1983). <span>«Real Business Cycles»</span>. <em>Journal of Political Economy</em> 91 (1): 39-69. <a href="https://doi.org/10.1086/261128">https://doi.<wbr>org/<wbr>10.<wbr>1086/<wbr>261128</a>.
+</div>
+<div id="ref-MillerBlair2022" class="csl-entry" role="listitem">
+Miller, Ronald E. y Peter D. Blair (2022). <em>Input-Output Analysis: Foundations and Extensions</em>. 3.ª ed. Cambridge: Cambridge University Press. <a href="https://doi.org/10.1017/9781108676212">https://doi.<wbr>org/<wbr>10.<wbr>1017/<wbr>9781108676212</a>.
+</div>
+<div id="ref-Mises1920Wirtschaftsrechnung" class="csl-entry" role="listitem">
+Mises, Ludwig von (1920). <span>«Die Wirtschaftsrechnung im sozialistischen Gemeinwesen»</span>. <em>Archiv für Sozialwissenschaft und Sozialpolitik</em> 47: 86-121.
+</div>
+<div id="ref-ONU2018ManualTOD" class="csl-entry" role="listitem">
+Naciones Unidas (2018). <em>Handbook on Supply and Use Tables and Input-Output Tables with Extensions and Applications</em>. Studies en Methods, Handbook of National Accounting, Series F, n.º 74, Rev. 1. Nueva York: Naciones Unidas. <a href="https://unstats.un.org/unsd/nationalaccount/docs/SUT_IOT_HB_Final_Cover.pdf">https://unstats.<wbr>un.<wbr>org/<wbr>unsd/<wbr>nationalaccount/<wbr>docs/<wbr>SUT_<wbr>IOT_<wbr>HB_<wbr>Final_<wbr>Cover.<wbr>pdf</a>.
+</div>
+<div id="ref-ONU2025SCN" class="csl-entry" role="listitem">
+Naciones Unidas, Comisión Europea, Fondo Monetario Internacional, OCDE y Banco Mundial (2025). <em>System of National Accounts 2025</em>. Nueva York: Naciones Unidas. <a href="https://unstats.un.org/unsd/nationalaccount/docs/2025_SNA_Pre-edit.pdf">https://unstats.<wbr>un.<wbr>org/<wbr>unsd/<wbr>nationalaccount/<wbr>docs/<wbr>2025_<wbr>SNA_<wbr>Pre-<wbr>edit.<wbr>pdf</a>.
+</div>
+<div id="ref-Nobel1971Kuznets" class="csl-entry" role="listitem">
+Nobel Prize Outreach (1971). <span>«The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1971: Simon Kuznets»</span>. 1971. <a href="https://www.nobelprize.org/prizes/economic-sciences/1971/summary/">https://www.<wbr>nobelprize.<wbr>org/<wbr>prizes/<wbr>economic-<wbr>sciences/<wbr>1971/<wbr>summary/</a>.
+</div>
+<div id="ref-Nobel1973Leontief" class="csl-entry" role="listitem">
+Nobel Prize Outreach (1973). <span>«The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1973: Wassily Leontief»</span>. 1973. <a href="https://www.nobelprize.org/prizes/economic-sciences/1973/summary/">https://www.<wbr>nobelprize.<wbr>org/<wbr>prizes/<wbr>economic-<wbr>sciences/<wbr>1973/<wbr>summary/</a>.
+</div>
+<div id="ref-Nobel1977Meade" class="csl-entry" role="listitem">
+Nobel Prize Outreach (1977). <span>«James E. Meade – Biographical»</span>. 1977. <a href="https://www.nobelprize.org/prizes/economic-sciences/1977/meade/biographical/">https://www.<wbr>nobelprize.<wbr>org/<wbr>prizes/<wbr>economic-<wbr>sciences/<wbr>1977/<wbr>meade/<wbr>biographical/</a>.
+</div>
+<div id="ref-Nobel1984Stone" class="csl-entry" role="listitem">
+Nobel Prize Outreach (1984). <span>«The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1984: Richard Stone»</span>. 1984. <a href="https://www.nobelprize.org/prizes/economic-sciences/1984/summary/">https://www.<wbr>nobelprize.<wbr>org/<wbr>prizes/<wbr>economic-<wbr>sciences/<wbr>1984/<wbr>summary/</a>.
+</div>
+<div id="ref-OCDE2025TiVA" class="csl-entry" role="listitem">
+OCDE (2025). <span>«Trade in Value Added (TiVA) 2025 edition: Principal Indicators»</span>. 2025. <a href="https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&amp;df[id]=DSD_TIVA_MAINSH%40DF_MAINSH&amp;df[ag]=OECD.STI.PIE">https://data-<wbr>explorer.<wbr>oecd.<wbr>org/<wbr>vis?<wbr>df[ds]=<wbr>dsDisseminateFinalDMZ&amp;<wbr>df[id]=<wbr>DSD_<wbr>TIVA_<wbr>MAINSH%40DF_<wbr>MAINSH&amp;<wbr>df[ag]=<wbr>OECD.<wbr>STI.<wbr>PIE</a>.
+</div>
+<div id="ref-Oosterhaven1988" class="csl-entry" role="listitem">
+Oosterhaven, Jan (1988). <span>«On the Plausibility of the Supply-Driven Input-Output Model»</span>. <em>Journal of Regional Science</em> 28 (2): 203-17. <a href="https://doi.org/10.1111/j.1467-9787.1988.tb01208.x">https://doi.<wbr>org/<wbr>10.<wbr>1111/<wbr>j.<wbr>1467-<wbr>9787.<wbr>1988.<wbr>tb01208.<wbr>x</a>.
+</div>
+<div id="ref-SEC2010" class="csl-entry" role="listitem">
+Parlamento Europeo y Consejo de la Unión Europea (2013). <em>Reglamento (UE) n.º 549/2013, de 21 de mayo de 2013, relativo al Sistema Europeo de Cuentas Nacionales y Regionales de la Unión Europea (SEC 2010)</em>. <em>Diario Oficial de la Unión Europea</em>. <a href="https://eur-lex.europa.eu/eli/reg/2013/549/oj">https://eur-<wbr>lex.<wbr>europa.<wbr>eu/<wbr>eli/<wbr>reg/<wbr>2013/<wbr>549/<wbr>oj</a>.
+</div>
+<div id="ref-PyattRound1979" class="csl-entry" role="listitem">
+Pyatt, Graham y Jeffery I. Round (1979). <span>«Accounting and Fixed Price Multipliers in a Social Accounting Matrix Framework»</span>. <em>The Economic Journal</em> 89 (356): 850-73. <a href="https://doi.org/10.2307/2231503">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>2231503</a>.
+</div>
+<div id="ref-Quesnay1758Tableau" class="csl-entry" role="listitem">
+Quesnay, François (1758). <em>Tableau économique</em>. Versalles.
+</div>
+<div id="ref-Rasmussen1956Studies" class="csl-entry" role="listitem">
+Rasmussen, P. Nørregaard (1956). <em>Studies in Inter-Sectoral Relations</em>. Copenhague: Einar Harcks Forlag.
+</div>
+<div id="ref-Schumpeter1954History" class="csl-entry" role="listitem">
+Schumpeter, Joseph A. (1954). <em>History of Economic Analysis</em>. Nueva York: Oxford University Press.
+</div>
+<div id="ref-SeguraRestoy1987" class="csl-entry" role="listitem">
+Segura, Julio y Fernando Restoy (1987). <span>«Notas sobre el cambio en la estructura productiva de la economía española (1975-1980)»</span>. <em>Investigaciones Económicas</em> 11 (3): 521-52.
+</div>
+<div id="ref-Stone1961" class="csl-entry" role="listitem">
+Stone, Richard (1961). <em>Input-Output and National Accounts</em>. París: Organización Europea de Cooperación Económica.
+</div>
+<div id="ref-Streit1969Spatial" class="csl-entry" role="listitem">
+Streit, Marian E. (1969). <span>«Spatial Associations and Economic Linkages between Industries»</span>. <em>Journal of Regional Science</em> 9 (2): 177-88. <a href="https://doi.org/10.1111/j.1467-9787.1969.tb01332.x">https://doi.<wbr>org/<wbr>10.<wbr>1111/<wbr>j.<wbr>1467-<wbr>9787.<wbr>1969.<wbr>tb01332.<wbr>x</a>.
+</div>
+<div id="ref-Timmer2015WIOD" class="csl-entry" role="listitem">
+Timmer, Marcel P., Erik Dietzenbacher, Bart Los, Robert Stehrer y Gaaitzen J. de Vries (2015). <span>«An Illustrated User Guide to the World Input-Output Database: The Case of Global Automotive Production»</span>. <em>Review of International Economics</em> 23 (3): 575-605.
+</div>
+<div id="ref-Walras1874Elements" class="csl-entry" role="listitem">
+Walras, Léon (1874). <em>Éléments d’économie politique pure, ou théorie de la richesse sociale</em>. Lausana: Corbaz. <a href="https://books.google.com.ec/books?id=3TpBAAAAIAAJ">https://books.<wbr>google.<wbr>com.<wbr>ec/<wbr>books?<wbr>id=<wbr>3TpBAAAAIAAJ</a>.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><span class="citation" data-cites="Schumpeter1954History"><span class="smallcaps">Schumpeter</span> (<a href="#ref-Schumpeter1954History" role="doc-biblioref">1954, 242</a>)</span> llamó a ese sistema de ecuaciones «la Carta Magna de la teoría económica» (traducción propia).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><span class="smallcaps">Leontief</span> (1905-1999) recibió el Premio Nobel de Economía en 1973 «por el desarrollo del método <em>input-output</em> y por su aplicación a importantes problemas económicos» <span class="citation" data-cites="Nobel1973Leontief">(<a href="#ref-Nobel1973Leontief" role="doc-biblioref"><span class="smallcaps">Nobel Prize Outreach</span>, 1973</a>, traducción propia)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>La expresión «cajas vacías» es de <span class="citation" data-cites="Clapham1922Empty"><span class="smallcaps">Clapham</span> (<a href="#ref-Clapham1922Empty" role="doc-biblioref">1922</a>)</span>, que criticaba que nadie supiera llenar con industrias concretas las categorías de rendimientos crecientes y decrecientes de <span class="smallcaps">Alfred Marshall</span>. <span class="smallcaps">Leontief</span> la retomó para el gran público en <span class="citation" data-cites="Leontief1951Input"><span class="smallcaps">Leontief</span> (<a href="#ref-Leontief1951Input" role="doc-biblioref">1951</a>)</span> y volvió a la crítica de la teoría sin hechos en su discurso ante la Asociación Económica Americana <span class="citation" data-cites="Leontief1971Theoretical">(<a href="#ref-Leontief1971Theoretical" role="doc-biblioref"><span class="smallcaps">Leontief</span>, 1971</a>)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Los 2 recibieron el Premio Nobel: <span class="smallcaps">Kuznets</span> en 1971, por su interpretación del crecimiento económico fundada en los datos, y <span class="smallcaps">Stone</span> en 1984, por sus aportaciones a los sistemas de cuentas nacionales, que mejoraron la base del análisis empírico <span class="citation" data-cites="Nobel1971Kuznets Nobel1984Stone">(<a href="#ref-Nobel1971Kuznets" role="doc-biblioref"><span class="smallcaps">Nobel Prize Outreach</span>, 1971</a>, <a href="#ref-Nobel1984Stone" role="doc-biblioref">1984</a>)</span>. Las cuentas nacionales se estrenaron como instrumento de política en la Segunda Guerra Mundial: en 1942, <span class="smallcaps">Kuznets</span> y <span class="smallcaps">Robert Nathan</span>, desde la Junta de Producción de Guerra de Estados Unidos, usaron las cifras de la renta nacional para sostener que los planes de producción militar no eran viables con los recursos del país, frente a la oposición del general <span class="smallcaps">Brehon Somervell</span>. <span class="citation" data-cites="Lacey2011"><span class="smallcaps">Lacey</span> (<a href="#ref-Lacey2011" role="doc-biblioref">2011</a>)</span> sostiene que aquel ajuste de los planes pesó en la victoria aliada; es una tesis discutida.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Notación del tema: matrices en mayúscula cursiva (<span class="math inline">\(A\)</span>, <span class="math inline">\(Z\)</span>; <span class="math inline">\(I\)</span> es la matriz identidad), vectores columna con flecha y <span class="math inline">\(^{\top}\)</span> para la traspuesta. La producción se escribe en minúscula, <span class="math inline">\(\vec{x}\)</span>, porque <span class="math inline">\(X\)</span> son las exportaciones, y la formación bruta de capital como FBC, porque <span class="math inline">\(I\)</span> es aquí la matriz identidad.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Los mismos <span class="math inline">\(a_{ij}\)</span> ponderan los aranceles de los insumos en el cálculo de la protección efectiva de una rama <a data-app="3B07.pdf" href="3B07.html" class="vertema"><span class="vertema">[ver tema 3.B.7]</span></a>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Los eslabonamientos hacia delante también se han medido con el <em>modelo de oferta</em> de <span class="citation" data-cites="Ghosh1958Input"><span class="smallcaps">Ghosh</span> (<a href="#ref-Ghosh1958Input" role="doc-biblioref">1958</a>)</span>, que usa coeficientes de destino, <span class="math inline">\(b_{ij}\equiv z_{ij}/x_i\)</span>, y toma como dato el valor añadido en lugar de la demanda final. Como explicación de las cantidades es poco creíble: supone que, si una rama vende más, sus clientes producen más aunque nadie les pida más <span class="citation" data-cites="Oosterhaven1988">(<a href="#ref-Oosterhaven1988" role="doc-biblioref"><span class="smallcaps">Oosterhaven</span>, 1988</a>)</span>. <span class="citation" data-cites="Dietzenbacher1997"><span class="smallcaps">Dietzenbacher</span> (<a href="#ref-Dietzenbacher1997" role="doc-biblioref">1997</a>)</span> mostró que se puede leer como un modelo de precios.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>El INE, con la misma base de Eurostat, estima que en 2024 el 72,3 % del valor de las exportaciones españolas se generó en España y el 27,7 % fuera, y que el valor añadido español incorporado en ellas fue el 21,5 % del PIB <span class="citation" data-cites="INE2026TiVA2024">(<a href="#ref-INE2026TiVA2024" role="doc-biblioref"><span class="smallcaps">Instituto Nacional de Estadística</span>, 2026e</a>)</span>; la OCDE da un 26,6 % de contenido extranjero en 2022 <span class="citation" data-cites="OCDE2025TiVA">(<a href="#ref-OCDE2025TiVA" role="doc-biblioref"><span class="smallcaps">OCDE</span>, 2025</a>)</span>. Las diferencias vienen de las tablas de partida y del tratamiento de las reexportaciones; todas coinciden en el orden de magnitud.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>En España, la primera tabla, de 1954, la publicó el Instituto de Estudios Políticos en 1958 <span class="citation" data-cites="AlcaideEtAl1958Estructura">(<a href="#ref-AlcaideEtAl1958Estructura" role="doc-biblioref"><span class="smallcaps">Alcaide Inchausti</span> et al., 1958</a>)</span>; con las de 1975 y 1980, <span class="citation" data-cites="SeguraRestoy1987"><span class="smallcaps">Segura</span> y <span class="smallcaps">Restoy</span> (<a href="#ref-SeguraRestoy1987" role="doc-biblioref">1987</a>)</span> estudiaron el cambio de la estructura productiva española en esos años.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+                <footer class="tema-pie">
+                    <section class="tema-oposicion">
+                        <h2 class="tema-pie-titulo">Tema de la oposición TCEE</h2>
+                        <p>Este tema forma parte del temario de la oposición a Técnico Comercial y Economista del Estado: es el tema 3.A.31 del <a href="../tercer-ejercicio.html">Tercer ejercicio</a>. Tienes el resto del <a href="../../temario.html">temario</a>, el <a href="../primer-ejercicio/test/simulador.html">simulador de test</a> con preguntas de exámenes oficiales, una <a href="../../que-es-tcee.html">guía de la oposición</a> y la <a href="../../../app/">app</a> para organizar el estudio y cantar los temas.</p>
+                    </section>
+                    <section class="tema-cita">
+                        <h2 class="tema-pie-titulo">Cómo citar</h2>
+                        <p>Gutiérrez Marcos, V. (2026). <em>Análisis de las tablas «input-output».</em> [Tema 3.A.31 del temario de la oposición a Técnico Comercial y Economista del Estado]. https://www.<wbr>victorgutierrezmarcos.<wbr>es/<wbr>oposicion/<wbr>temario/<wbr>tercer-<wbr>ejercicio/<wbr>3A31.<wbr>html</p>
+                        <p class="licencia-fin">© 2026 Víctor Gutiérrez Marcos · Todos los derechos reservados · <strong class="etiqueta-exclusivo">Exclusivo</strong> Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE, para tu estudio personal; no se autoriza su incorporación a otras plataformas, aplicaciones o servicios, ni la minería de textos y datos. <a href="https://www.victorgutierrezmarcos.es/condiciones-materiales.html">Condiciones de uso</a>.</p>
+                    </section>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-columnas">
+            <nav class="footer-col" aria-label="Secciones">
+                <p class="footer-col-titulo">Secciones</p>
+                <ul>
+                    <li><a href="../../../oposicion/index.html">Oposición</a></li>
+                    <li><a href="../../../oposicion/temario.html">Temario</a></li>
+                    <li><a href="../../../oposicion/temario/primer-ejercicio/test/simulador.html">Simulador de test</a></li>
+                    <li><a href="../../../oposicion/por-que-tcee.html">¿Por qué TCEE?</a></li>
+                    <li><a href="../../../app/">La app</a></li>
+                    <li><a href="../../../blog/index.html">Blog</a></li>
+                    <li><a href="../../../novedades.html">Novedades</a></li>
+                    <li><a href="../../../sobre-mi.html">Sobre mí</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Fuentes oficiales">
+                <p class="footer-col-titulo">Fuentes oficiales</p>
+                <ul>
+                    <li><a href="https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx" target="_blank" rel="noopener">Procesos selectivos del Ministerio</a></li>
+                    <li><a href="https://atcee.es/la-oposicion-tcee/" target="_blank" rel="noopener">Asociación de Técnicos Comerciales y Economistas del Estado</a></li>
+                    <li><a href="https://www.boe.es/" target="_blank" rel="noopener">Boletín Oficial del Estado</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-licencia">
+            <a class="footer-cc" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener" aria-label="Licencia Creative Commons BY-NC-ND 4.0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M10.4 9.7a2.7 2.7 0 1 0 0 4.6M16.4 9.7a2.7 2.7 0 1 0 0 4.6" transform="translate(-1.4 0)"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><circle cx="12" cy="6.9" r="1.45" fill="currentColor" stroke="none"/><path d="M9.6 9.6h4.8v4.3h-1.25v4h-2.3v-4H9.6z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M14.5 9.7c-.5-.8-1.4-1.2-2.5-1.2-1.3 0-2.3.7-2.3 1.6 0 2.3 4.9 1.3 4.9 3.8 0 1-1.1 1.7-2.6 1.7-1.2 0-2.2-.5-2.7-1.4M12 6.7v1.7M12 15.6v1.7M4.8 4.8l14.4 14.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M7.6 10h8.8M7.6 14h8.8" stroke-width="1.8"/></svg></a>
+            <p>El temario y los artículos se publican con licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener">Creative Commons BY-NC-ND 4.0</a>: puedes copiarlos y compartirlos citando al autor y enlazando el original, pero no venderlos ni publicar versiones modificadas.</p>
+        </div>
+        <div class="footer-inf">
+            <span>© Víctor Gutiérrez Marcos</span>
+            <nav aria-label="Enlaces legales">
+                <a href="../../../politica-cookies.html">Política de cookies</a>
+                <a href="../../../sobre-mi.html">Contacto</a>
+            </nav>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/victorgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://x.com/i/lists/2013750304991268900" target="_blank" rel="noopener noreferrer" aria-label="Lista de X (Twitter)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                </a>
+                <a href="https://github.com/vgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a href="mailto:contacto@victorgutierrezmarcos.es" aria-label="Correo electrónico">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script>
+    // En la app, la página se abre desde jsDelivr (con <base> en el commit del
+    // manifiesto) y los enlaces a otros temas se abren fuera: jsDelivr da las
+    // páginas HTML como texto, así que cada [ver tema …] lleva al PDF del tema
+    // (data-app, lo pone construir-tema.py).
+    (function () {
+        if (!/^https:\/\/cdn\.jsdelivr\.net\//.test(document.baseURI)) return;
+        document.querySelectorAll('a.vertema[data-app]').forEach(function (a) {
+            a.setAttribute('href', a.getAttribute('data-app'));
+        });
+    })();
+    </script>
+    <script src="../../../search-engine.js"></script>
+    <script src="../../../search-ui.js"></script>
+    <script src="../../../cookie-consent.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Configuración y Lógica de Auth -->
+    <script src="../../../firebase-config.js"></script>
+    <script src="../../../auth.js"></script>
+</body>
+</html>
